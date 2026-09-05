@@ -1,0 +1,78 @@
+<h2 id="understand">The outside wheel has farther to go</h2>
+
+The two wheels of a turning axle follow arcs with different radii. They share the same time, but the outside wheel travels farther. If both tires keep rolling, they need different angular speeds. An open differential permits that difference while keeping both outputs mechanically connected to the drive. [Eaton’s introduction](https://www.eaton.com/gb/en-gb/products/differentials-traction-control/open-differential.html) describes this role and the associated traction limitation.
+
+Follow a bronze pinion through two distinct motions. In straight travel, the carrier takes the cross pin and pinions around the axle. The pinions do not spin relative to their own shafts. When side speeds differ, they also spin on the cross pin, allowing the side gears to move in opposite directions relative to the carrier.
+
+**Carrier speed is the average of the side speeds.** It does not require both sides to be identical at every instant. The fourth chapter fixes the average while increasing and then reducing the difference. Angles come from the analytic integral of that changing speed, so seeking backward reconstructs the same state.
+
+The geometry matters too. The teeth taper along cones, the gear axes intersect, and the pitch cones share one apex. Contact highlights are calculated on conjugate tooth flanks rather than pinned to the cone tangency. [KHK’s bevel-gear introduction](https://khkgears.net/product-category/bevel-gears/) describes this intersecting-axis geometry.
+
+<h2 id="try">Hold one condition and inspect the consequence</h2>
+
+In exploration, inspect the mechanism, compare wheel paths or examine torque limits. Each range has an explicit text label and supports arrow keys. Reset restores every parameter, constraint, view and inspection time.
+
+Select turning and change the axle-center radius or direction. As radius approaches half the track width, the required speed difference grows. At the 0.8 m lower limit the inside wheel stops. This is a geometrical limit of the rolling-axle model, not a claim that a complete car can make that turn: wheelbase, front steering and lateral tire behavior are absent.
+
+Holding the left wheel makes the right output turn at twice carrier speed. Holding the carrier instead applies input to the right half-shaft and turns the left at equal speed in reverse. These are bench constraints, so they are not drawn as rolling road paths. Holding one wheel does not lock the differential.
+
+The torque view lets you change the carrier request and the reaction-torque limits available at each tire. These N·m values are stated teaching inputs, not measured road properties. The comparison preserves the same request and prescribed speeds, then compares sufficient capacity with constrained capacity.
+
+<h2 id="deeper">Keep speed, torque and power distinct</h2>
+
+<details>
+<summary>The mean-speed constraint and circular paths</summary>
+
+Use one spatial positive direction along the axle for carrier speed `ωC` and wheel speeds `ωL`, `ωR`. Equal side gears give:
+
+<div className="formula">
+  ωL + ωR = 2ωC
+  <br />
+  ωL = ωC − Δω, ωR = ωC + Δω
+  <br />
+  ωP,relative = −(24/16)Δω
+</div>
+
+The final expression uses each pinion’s outward local shaft direction. It is spin relative to the carrier, not the pinion’s entire motion in the stationary frame. The carrier orbit is superimposed on that spin. [MathWorks’ differential model](https://www.mathworks.com/help/sdl/ref/differential.html) gives the relative-to-carrier kinematic constraints.
+
+For track `b = 1.6 m`, rolling radius `rw = 0.31 m`, axle-center turn radius `R` and center speed `v`, a left turn gives distances `(R − b/2)ψ` and `(R + b/2)ψ`, where `ψ` is the shared yaw angle. Hence `ωL = v(1 − b/2R)/rw` and `ωR = v(1 + b/2R)/rw`. A right turn swaps the inside and outside.
+
+Mechanical rig lengths are illustration units, separate from the road model’s meters. The film slows eight model seconds for inspection; rad/s readouts remain model angular speeds.
+
+</details>
+
+<details>
+<summary>Conical flanks and conjugate contact</summary>
+
+Each side gear has 24 teeth and each pinion 16, with perpendicular axes. Pitch-cone angles are `δS = atan(24/16)` and `δP = atan(16/24)`, adding to 90°. At a common cone distance `Rcone`, both gears have the same circular pitch `2πRcone sin(δ)/z`. Pitch scales down toward the shared apex.
+
+The model uses theoretical spherical-involute straight bevel gears with a 25° pressure angle. Base-cone angle satisfies `sin(δb) = sin(δ)cos(25°)`. Unwinding a great-circle arc of length `L` from the base cone gives the azimuth function `invS(θ) = L/sin(δb) − atan2(sin L, sin(δb)cos L)`, with `L = acos(cos θ/cos δb)`. Tooth thickness is half the circular pitch at the pitch cone; the flank narrows according to this function.
+
+The renderer samples this analytic surface and scales it along rays from the apex. A half-tooth initial phase and the 24:16 relative-speed ratio satisfy all four meshes. Contact calculation enforces zero relative normal velocity and then checks the mating flank position. The highlight is not snapped to a pitch-cone intersection.
+
+The technical basis is [Lee, Lee and Chung’s spherical-involute kinematic study](https://journals.sagepub.com/doi/10.1243/09544062JMES1624) and the [published derivation of spherical-involute straight bevel geometry](https://patents.google.com/patent/US20160047454A1/en). Tool generation, root fillets, flank corrections, manufacturing tolerances and loaded elastic deformation are excluded. This is an ideal meshing model, not a manufacturing drawing.
+
+</details>
+
+<details>
+<summary>Why the weaker reaction can limit both sides</summary>
+
+With negligible gear inertia, friction and losses, pinion torque balance gives equal side torques: `TL = TR = TC/2`. This is distinct from the speed relationship. [MathWorks’ differential example](https://www.mathworks.com/help/sdl/ug/custom-gear-library.html) states both ideal constraints.
+
+Let `Trequest` be requested carrier torque and `CL`, `CR` the available tire reaction-torque limits. The scene’s quasistatic capacity model is:
+
+<div className="formula">
+  Tside = min(Trequest/2, CL, CR)
+  <br />
+  TC,accepted = 2Tside
+  <br />
+  PL = Tside ωL, PR = Tside ωR
+  <br />
+  PC = TC,accepted ωC = PL + PR
+</div>
+
+With a 400 N·m request, lowering one reaction limit from 300 to 60 N·m limits both sides to 60 N·m. Sustainable carrier torque becomes 120 N·m. The remaining 280 N·m is an unmet request, not torque already delivered and then lost.
+
+A real engine, tires and rotating inertias can instead lead to acceleration or slip, requiring additional dynamics. Here speeds are prescribed independently; the capacity bars do not predict them. This also avoids claiming that all torque goes to the low-traction wheel. Limited-slip devices, differential locks and electronic brake control are outside this model.
+
+</details>

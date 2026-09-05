@@ -1,0 +1,51 @@
+---
+import {
+  interferenceAt,
+  interferenceSamples,
+  INTERFERENCE_DEFAULT,
+} from '../../models/wave-interference';
+interface Props {
+  color?: string;
+}
+const { color = '#87cbd6' } = Astro.props;
+const samples = interferenceSamples({ ...INTERFERENCE_DEFAULT, time: 0 }, -0.8, 0.8, 241);
+const x = (value: number) => 34 + ((value + 0.8) / 1.6) * 332;
+const wave = (key: 'first' | 'second') =>
+  samples.map((s, i) => `${i ? 'L' : 'M'}${x(s.x)},${112 - s[key].y * 11800}`).join(' ');
+const sum = samples.map((s, i) => `${i ? 'L' : 'M'}${x(s.x)},${112 - s.y * 11800}`).join(' ');
+const energy = samples
+  .map((s, i) => `${i ? 'L' : 'M'}${x(s.x)},${204 - s.kinetic * 60000}`)
+  .join(' ');
+const arrows = [-0.2, 0.2].map((position) => {
+  const state = interferenceAt({ ...INTERFERENCE_DEFAULT, time: 0 }, position);
+  const end = 112 - state.dt * 90,
+    back = Math.sign(state.dt) * 5;
+  return `M${x(position)},112V${end}m-4,${back} 4,${-back} 4,${back}`;
+});
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="230" fill="#1b2e40"></rect>
+  <path d="M34 112H366" stroke="#9aacbb" stroke-opacity=".25"></path>
+  <path d={wave('first')} stroke={color} stroke-width="2" stroke-dasharray="5 5"></path>
+  <path d={wave('second')} stroke="#e8aa91" stroke-width="2" stroke-dasharray="2 5"></path>
+  <path d="M34 114H366" stroke="#000" stroke-opacity=".25" stroke-width="7"></path>
+  <path d={sum} stroke="#fff1cd" stroke-width="3"></path>
+  {
+    [...Array(17)].map((_, i) => (
+      <circle cx={34 + (i * 332) / 16} cy="112" r="2.5" fill="#20364a" stroke="#e4decc" />
+    ))
+  }
+  <circle cx={x(0.2)} cy="112" r="6" fill="#e8ca82"></circle>
+  {arrows.map((d) => <path d={d} stroke="#a2c6e7" stroke-width="1.5" />)}
+  <path
+    d={energy + `L366,204H34Z`}
+    fill="#9cbedf"
+    fill-opacity=".17"
+    stroke="#9cbedf"
+    stroke-width="1.5"></path>
+  <path d="M50 37h39m-6-4 6 4-6 4M350 37h-39m6-4-6 4 6 4" stroke={color} stroke-width="1.5"></path>
+  <text x="200" y="42" text-anchor="middle" fill="#dce3e9" font-size="18" font-family="sans-serif"
+    >y = 0</text
+  >
+</svg>

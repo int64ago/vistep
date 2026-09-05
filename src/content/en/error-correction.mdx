@@ -1,0 +1,47 @@
+<h2 id="understand">Overlapping checks give one flipped bit a location signature</h2>
+
+A single overall parity bit can expose one flip, but cannot locate it. Hamming(7,4) keeps four data bits at positions **3, 5, 6, 7** and adds check bits at **1, 2, 4**. This scene uses even parity: each group must contain an even number of ones, or equivalently, its bits must XOR to zero.
+
+The groups are `C1 = {1,3,5,7}`, `C2 = {2,3,6,7}`, and `C4 = {4,5,6,7}`. Their overlap is deliberate. Every position belongs to a different combination of checks. Position 6, written as binary 110, belongs to C4 and C2 but not C1. The small numbers identify **positions**; the zero or one inside each circle is the bit's value.
+
+The film follows the message `1011`, encoded as `0110011`. A channel flip at position 6 produces `0110001`. Rechecking gives C1=0, C2=1, C4=1. Read in the order C4, C2, C1, the syndrome is `110₂ = 6`. Assuming at most one error, flip that position back and extract positions 3, 5, 6, 7 to recover `1011`. The decoder uses only the received word. The original data remains visible as a teaching comparison, not as an input to decoding.
+
+<h2 id="try">Make a wrong repair, then let the extended code stop it</h2>
+
+Enter exploration, select a four-bit message and code, then toggle channel flips by position. Each button shows its fixed position number and current received value. Tab moves keyboard focus; Space or Enter toggles a bit. Presets select no flips, a single flip at 6, or double flips at 3 and 5. Reset restores message `1011`, the extended code, and a flip at 6. The shared player provides pause, replay and chapter seeking.
+
+With ordinary Hamming selected, flip positions 3 and 5. Their combined syndrome is `3 XOR 5 = 6`. The single-error decoder wrongly flips position 6, yielding `0100101` and payload `0101`. **That is a valid codeword for a different message.** In a detection-only policy, a nonzero Hamming syndrome can flag every double error. The problem is that this policy cannot simultaneously distinguish double errors from the single errors it is supposed to correct.
+
+Switch to extended Hamming(8,4). An eighth bit makes the whole word even. The comparison preserves the four data bits and the same channel positions, 3 and 5. Let `s` be the original three-check syndrome and `q` the XOR of all eight received bits:
+
+| Received checks | Assuming at most two flips             | Decoder action                      |
+| --------------- | -------------------------------------- | ----------------------------------- |
+| s=0, q=0        | No error detected                      | Accept                              |
+| s≠0, q=1        | One error in the first seven positions | Flip position s                     |
+| s=0, q=1        | Error in the added overall check bit   | Flip position 8                     |
+| s≠0, q=0        | Double error                           | Flag; withhold data; do not correct |
+
+Either flipped position can be a data bit, an ordinary check bit, or the added eighth bit. Detecting a double error does not identify the two damaged positions: several original codewords remain equally plausible.
+
+<h2 id="deeper">Matrices, distance and the limit of the promise</h2>
+
+Columns below are positions 1 through 7. Rows of the generator matrix correspond to data bits d1 through d4. The model calculates `c = dG` over the binary field GF(2), where addition is XOR. Data columns 3, 5, 6, 7 form an identity matrix, making this a systematic code: the message bits remain directly extractable.
+
+```text
+G = 1 1 1 0 0 0 0
+    1 0 0 1 1 0 0
+    0 1 0 1 0 1 0
+    1 1 0 1 0 0 1
+
+H = 1 0 1 0 1 0 1   C1
+    0 1 1 0 0 1 1   C2
+    0 0 0 1 1 1 1   C4
+```
+
+The matrices satisfy `HGᵀ = 0`. For a received column vector r, `Hr` gives the three check results. The extended encoder appends the XOR of the first seven bits at position 8. Its check matrix adds a zero column to H and a final row of eight ones.
+
+**Hamming distance** counts positions where two equal-length words differ. **Parity** is the XOR of a selected group of bits. These are different quantities. Exhaustively comparing all 16 valid codewords gives minimum distance 3 for the ordinary code and 4 for the extended code. The SECDED decoding rule used here guarantees single-error correction and double-error detection, not double-error correction.
+
+Exploration allows more than two flips so you can test the boundary. In the extended code, flips at 1, 2, 3 masquerade as an error at position 8. Flips at 1, 2, 3, 8 produce a different valid word and go undetected. “No error detected” is therefore not a universal guarantee that the original message survived. This is a complete small binary block-code model, not a particular memory device's full ECC system, retransmission protocol or statistical fault model.
+
+See [Hamming's original 1950 paper, sections 3–5](https://ineffectivetheory.com/edu/papers/hamming-codes-1950.pdf) for the construction and extension, [MIT 6.02's error-correction lecture](https://web.mit.edu/6.02/www/s2010/handouts/lectures/L6.pdf) for distance and correction capability, and the [MIT 6.111 tutorial answers](https://web.mit.edu/6.111/www/f2004/tutprobs/temp/info.htm) for double-error and overall-parity reasoning. The example words and counterexamples here are computed by the independent scene model.

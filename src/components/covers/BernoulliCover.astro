@@ -1,0 +1,87 @@
+---
+import {
+  bernoulliAt,
+  bernoulliGeometry,
+  bernoulliParcels,
+  solveBernoulli,
+} from '../../models/bernoulli';
+interface Props {
+  color?: string;
+}
+const { color = '#759798' } = Astro.props;
+const id = `bernoulli-${Math.random().toString(36).slice(2, 9)}`;
+const run = solveBernoulli(),
+  p = run.parameters;
+const pos = (s: number) => {
+  const g = bernoulliGeometry(p, s);
+  return { x: 30 + (340 * s) / p.length, y: 160, r: (28 * g.diameter) / p.diameter };
+};
+const path = (a: number, b: number) => {
+  const points = Array.from({ length: 65 }, (_, i) => pos(a + ((b - a) * i) / 64));
+  return (
+    points.map((v, i) => `${i ? 'L' : 'M'}${v.x},${v.y - v.r}`).join(' ') +
+    points
+      .toReversed()
+      .map((v) => `L${v.x},${v.y + v.r}`)
+      .join(' ') +
+    'Z'
+  );
+};
+const taps = [0.08, 0.45, 0.92].map((w) => bernoulliAt(run, p.length * w));
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <defs
+    ><linearGradient id={`${id}-glass`} x1="0" y1="0" x2="0" y2="1"
+      ><stop stop-color={color} stop-opacity=".3"></stop><stop
+        offset=".55"
+        stop-color={color}
+        stop-opacity=".7"></stop><stop offset="1" stop-color="#cddcd1" stop-opacity=".5"
+      ></stop></linearGradient
+    ></defs
+  >
+  {
+    taps.map((s) => {
+      const v = pos(s.s),
+        head = 160 - s.hydraulicHead * 68;
+      return (
+        <g>
+          <path d={`M${v.x},${v.y - v.r}V40`} stroke="#879d94" stroke-width="11" />
+          <path d={`M${v.x},${v.y - v.r}V40`} stroke="#edf0e5" stroke-width="7" />
+          <path d={`M${v.x},${v.y - v.r + 1}V${head}`} stroke={color} stroke-width="7" />
+          <path d={`M${v.x - 5},${head}h10`} stroke={color} stroke-width="1.8" />
+        </g>
+      );
+    })
+  }
+  <path d={path(0, p.length)} fill={`url(#${id}-glass)`} stroke={color} stroke-width="1.5"></path>
+  {
+    bernoulliParcels(run, 0.38).map((parcel) => (
+      <path d={path(parcel.start, parcel.end)} fill="#c49d58" fill-opacity=".68" />
+    ))
+  }
+  <path d={path(0, p.length)} stroke={color} stroke-width="1.5"></path>
+  <ellipse cx="30" cy="160" rx="4" ry="29" stroke="#94aaa0" stroke-width="4"></ellipse><ellipse
+    cx="370"
+    cy="160"
+    rx="4"
+    ry="29"
+    stroke="#94aaa0"
+    stroke-width="4"></ellipse>
+  <path d="M38 214H361" stroke="#9caba0" stroke-opacity=".55"></path>
+  {
+    [0.18, 0.45, 0.8].map((f) => {
+      const s = bernoulliAt(run, f * p.length),
+        v = pos(s.s),
+        length = 7 + s.velocity * 4;
+      return (
+        <path
+          d={`M${v.x - length / 2},160h${length}m-5-4 5 4-5 4`}
+          stroke="#476971"
+          stroke-width="1.6"
+        />
+      );
+    })
+  }
+  <path d="M57 27H343" stroke="#b78b4c" stroke-width="1.7" stroke-dasharray="4 5"></path>
+</svg>

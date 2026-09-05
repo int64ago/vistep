@@ -1,0 +1,72 @@
+<h2 id="understand">Why does the narrow throat have a lower water column?</h2>
+
+Follow the connected water path. Inlet, throat and outlet belong to one filled tube. With steady flow and constant density, the same volume passes every cross-section each second. A smaller cross-section therefore requires a larger mean velocity:
+
+<div className="formula">Q = Av</div>
+
+The gold material band retains its physical volume. It lengthens and moves faster through the throat, then shortens in the wider outlet. A material identity leaves the finite tube instead of teleporting back to its inlet. There are no competing paths and no equal-transit-time assumption. [NASA's mass-flow explanation](https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/mass-flow-rate/) connects area, velocity and density through conservation of mass.
+
+Pressure must also fit the energy balance. For steady, incompressible, lossless flow along a streamline:
+
+<div className="formula">p/(ρg) + v²/(2g) + z = H</div>
+
+All three terms have units of length: pressure head, velocity head and elevation. The chart uses gauge pressure relative to the atmosphere; the model separately evaluates absolute pressure for its vapor check. In the horizontal baseline, increasing velocity head through the throat accompanies decreasing pressure head. Pressure gradients and acceleration must satisfy the same momentum, continuity and energy constraints. Speed is not a universal switch that sets pressure. [NASA's Bernoulli derivation](https://www.grc.nasa.gov/www/k-12/airplane/bern.html) describes the assumptions behind simplified forms of the relation.
+
+<h2 id="try">Change one condition at a time</h2>
+
+- **Area ratio.** Make the throat and inlet equal. In the horizontal lossless case, neither velocity nor pressure changes along the tube.
+- **Elevation.** Keep a uniform cross-section and fixed flow while raising the outlet. The velocities remain equal, yet the outlet pressure is lower because elevation has increased.
+- **Zero flow.** Set Q to zero in the same inclined tube. All three open-column surfaces remain level, although local pressure still differs with elevation.
+- **Distributed loss.** Add an authored Darcy friction factor. Compare with a lossless trial using exactly the same flow, inlet pressure and geometry. Outlet pressure no longer fully recovers.
+- **Inlet absolute pressure.** Reduce it until the minimum reaches vapor pressure. The display distinguishes the requested input from the liquid model's limiting input instead of presenting the rejected state as real flow.
+- **Physical time and probe.** Scrub time to track material identities; move the probe to read pressure, velocity and accumulated loss at one location. A changed apparatus setting restarts physical time at zero.
+
+Changes to the apparatus show a family of independently solved steady states. They do not simulate a moving pipe, pump startup or pressure wave. Material motion follows Q/A and is then slowed for viewing; the physical clock retains seconds. Native SVG provides the main section view without a WebGL dependency. Phone chapters select the assembly, volume close-up or energy account rather than stacking every instrument.
+
+<h2 id="deeper">Instruments, energy and limits</h2>
+
+<details>
+<summary>How are the pressure taps connected?</summary>
+
+Each of the three taps meets the same pipe wall. Neglecting flow in the narrow measuring tubes and surface oscillations, an atmospheric column has a free-surface elevation z + pgauge/(ρg). Surface elevation therefore indicates hydraulic head, not pressure alone. The main bore diameter is enlarged for legibility, but water-column elevation and centerline elevation share one vertical scale. Relative circular diameters come from the actual cross-sectional areas.
+
+When pressure cannot support a column above the tap, or the surface would be obscured by the enlarged bore drawing, the view switches to connected sealed absolute-pressure instruments. Readouts refer to centerline pressure. It does not depict an impossible filled open column with a free surface below its mouth. Measuring-tube storage and capillary effects are omitted.
+
+Real Venturi meters need appropriate installation and calibration coefficients. The [US Bureau of Reclamation's Water Measurement Manual](https://www.usbr.gov/tsc/techreferences/mands/wmm/chap14_03.html) relates upstream/throat differential head to discharge and discusses effective coefficients. This illustration is not a calibrated meter.
+
+</details>
+
+<details>
+<summary>What does the independent model solve?</summary>
+
+The authored tube is 1.8m long with a 60mm inlet bore and a default throat/inlet area ratio of 0.36. Circular area varies smoothly in piecewise sections. Defaults are Q=4L/s, inlet absolute pressure 113.1kPa, water density 998.2kg/m³ and g=9.80665m/s². An external supply prescribes inlet flow and pressure. Outlet pressure is an output, not an additional atmospheric-pressure boundary. Water crosses both ends of the finite modeled domain.
+
+Integrating A(s) gives cumulative volume V(s). Each material boundary advances by V(t)=V(0)+Qt, then the inverse volume map locates it along the pipe. This yields local velocity Q/A without an independent animation-speed law or random particles. A band is a volume slice in a section-averaged flow; it does not claim to resolve three-dimensional streamlines, radial profiles or mixing.
+
+The kinetic-energy correction factor is one. Radial structure, separation, local contraction/expansion losses and compressibility are omitted. These are explicit teaching approximations rather than universal properties of real meters.
+
+</details>
+
+<details>
+<summary>How is the loss comparison calculated?</summary>
+
+<div className="formula">
+  hL(s) = ∫₀ˢ f v(ξ)² / [2gD(ξ)] dξ
+  <br />
+  H(s) + hL(s) = H(0)
+</div>
+
+The comparison specifies f=0.035 and integrates using the local circular diameter and the same discharge. The reference changes only f to zero. Composite Simpson integration splits at geometry breakpoints. The default 240 segments are checked against 60, 120 and 1920 segments, and a uniform tube is compared with the analytic Darcy relation.
+
+The [US EPA SWMM Hydraulics Reference Manual, section 7.3.2](https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100S9AS.txt) gives the Darcy loss gradient in terms of velocity and diameter. A real friction factor depends on Reynolds number and relative roughness. Here it is an authored coefficient, not an automatic turbulence prediction or a claim about a particular material. Lost mechanical energy transfers to untracked internal-energy modes; energy as a whole does not vanish.
+
+</details>
+
+<details>
+<summary>Why stop at vapor pressure?</summary>
+
+The scene uses approximately 2338Pa for water vapor pressure at 20°C, following the [NIST vapor-pressure relation](https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An3p213_A1b.pdf). The model locates the minimum absolute pressure throughout the tube, refining minima between grid points. If requested inlet pressure is insufficient, it displays the limiting steady state whose minimum just reaches vapor pressure, freezes material motion, and separately reports the requested inlet value.
+
+Negative gauge pressure is possible. That does not justify extending a liquid-only Bernoulli calculation to arbitrary absolute pressures. Vapor formation, cavitation, trapped gas, two-phase flow and consequent changes in discharge need additional physics. Reverse flow, invalid sections, nonfinite inputs and material coordinates outside the finite domain are rejected.
+
+</details>

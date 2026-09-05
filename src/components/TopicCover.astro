@@ -1,4 +1,10 @@
 ---
+import DifferentialCover from './covers/DifferentialCover.astro';
+import ErrorCorrectionCover from './covers/ErrorCorrectionCover.astro';
+import BernoulliCover from './covers/BernoulliCover.astro';
+import DopplerCover from './covers/DopplerCover.astro';
+import InductionMotorCover from './covers/InductionMotorCover.astro';
+import WaveInterferenceCover from './covers/WaveInterferenceCover.astro';
 import RainbowCover from './covers/RainbowCover.astro';
 import WaterHammerCover from './covers/WaterHammerCover.astro';
 import SuspensionCover from './covers/SuspensionCover.astro';
@@ -869,4 +875,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'suspension' && <SuspensionCover color={color} />}
   {slug === 'water-hammer' && <WaterHammerCover color={color} />}
   {slug === 'rainbow' && <RainbowCover color={color} />}
+  {slug === 'wave-interference' && <WaveInterferenceCover color={color} />}
+  {slug === 'induction-motor' && <InductionMotorCover color={color} />}
+  {slug === 'doppler' && <DopplerCover color={color} />}
+  {slug === 'bernoulli' && <BernoulliCover color={color} />}
+  {slug === 'error-correction' && <ErrorCorrectionCover color={color} />}
+  {slug === 'differential' && <DifferentialCover color={color} />}
 </svg>

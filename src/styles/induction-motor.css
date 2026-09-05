@@ -1,0 +1,342 @@
+.induction-motor {
+  --im-ink: #284b48;
+  --im-green: #2d7d70;
+  color: var(--im-ink);
+  font-size: 16px;
+  line-height: 1.55;
+  min-width: 0;
+}
+.indmotor-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(255px, 1fr);
+  background: #eff1e8;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 42px #294b4310;
+}
+.indmotor-machine {
+  background: radial-gradient(ellipse at 65% 40%, #2f5057, #142d37 80%);
+  color: #dfebe6;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.indmotor-heading {
+  padding: 20px 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+}
+.indmotor-heading span:last-child {
+  color: #a9c2bd;
+}
+.indmotor-object {
+  height: 400px;
+  position: relative;
+  min-width: 0;
+}
+.indmotor-studio {
+  height: 100%;
+  min-height: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+.indmotor-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.indmotor-speeds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 24px 20px;
+  font-variant-numeric: tabular-nums;
+}
+.indmotor-speeds span {
+  display: flex;
+  flex-direction: column;
+}
+.indmotor-speeds b {
+  font-weight: 500;
+  font-size: 21px;
+  white-space: nowrap;
+}
+.indmotor-proof {
+  padding: 26px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.indmotor-instrument-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.indmotor-field-slice svg {
+  display: block;
+  width: 100%;
+  max-height: 275px;
+  overflow: visible;
+}
+.indmotor-phase-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.indmotor-phase-values span {
+  display: flex;
+  flex-direction: column;
+}
+.indmotor-phase-values b {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.indmotor-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.indmotor-slip-strip {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #728d7830;
+  margin-top: 17px;
+  padding-top: 12px;
+  font-variant-numeric: tabular-nums;
+  gap: 12px;
+}
+.indmotor-slip-strip b {
+  font-weight: 600;
+}
+.indmotor-caption {
+  grid-column: 1/-1;
+  margin: 0 !important;
+  padding: 20px 25px;
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 69px;
+  border-top: 1px solid #728d781f;
+}
+.indmotor-plot svg {
+  display: block;
+  width: 100%;
+  margin-top: -12px;
+  overflow: visible;
+}
+.indmotor-plot-unit {
+  font-size: 16px;
+}
+.indmotor-instrument-note {
+  font-size: 16px;
+  margin: 13px 0 0;
+  line-height: 1.5;
+}
+.indmotor-sync-proof {
+  display: grid;
+  gap: 15px;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.indmotor-sync-proof span {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.indmotor-sync-proof b {
+  font-weight: 500;
+}
+.indmotor-sync-proof p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+.indmotor-power-input {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #71927e40;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+.indmotor-power-row {
+  margin: 14px 0;
+}
+.indmotor-power-row > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.indmotor-power-track {
+  height: 8px;
+  border-radius: 8px;
+  background: #dbe3d7;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.indmotor-power-track i {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+}
+.indmotor-power p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 16px 0 0;
+}
+.indmotor-explore {
+  padding: 22px 0 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+}
+.indmotor-switches {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  grid-column: 1/-1;
+}
+.indmotor-explore button {
+  border: 1px solid #7c9d8c60;
+  background: #f7f8f2;
+  color: var(--im-ink);
+  border-radius: 24px;
+  min-height: 44px;
+  padding: 9px 17px;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    color 0.18s;
+}
+.indmotor-explore button[aria-pressed='true'] {
+  background: #d7e8db;
+  border-color: #739783;
+}
+.indmotor-explore label {
+  font-size: 16px;
+  display: block;
+  min-width: 0;
+}
+.indmotor-explore label > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.indmotor-explore output {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.indmotor-explore input {
+  width: 100%;
+  height: 44px;
+  accent-color: var(--im-green);
+  cursor: pointer;
+}
+.indmotor-explore :focus-visible,
+.indmotor-scope summary:focus-visible {
+  outline: 3px solid #3b9182;
+  outline-offset: 3px;
+}
+.indmotor-scope {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.indmotor-scope summary {
+  min-height: 44px;
+  display: list-item;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.indmotor-scope p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.induction-motor[data-narrow='true'] .indmotor-stage {
+  grid-template-columns: minmax(0, 1fr);
+  border-radius: 18px;
+}
+.induction-motor[data-narrow='true'] .indmotor-heading {
+  padding: 15px 16px 0;
+}
+.induction-motor[data-narrow='true'] .indmotor-heading span:last-child {
+  display: none;
+}
+.induction-motor[data-narrow='true'] .indmotor-object {
+  height: 248px;
+}
+.induction-motor[data-narrow='true'] .indmotor-speeds {
+  padding: 0 16px 13px;
+  gap: 12px;
+  font-size: 16px;
+}
+.induction-motor[data-narrow='true'] .indmotor-speeds b {
+  font-size: 19px;
+}
+.induction-motor[data-narrow='true'] .indmotor-proof {
+  padding: 14px 16px;
+  justify-content: start;
+}
+.induction-motor[data-narrow='true'] .indmotor-field-slice svg {
+  height: 213px;
+  max-height: none;
+}
+.induction-motor[data-narrow='true'] .indmotor-field-slice .indmotor-instrument-title {
+  display: none;
+}
+.induction-motor[data-narrow='true'] .indmotor-slip-strip {
+  margin-top: 11px;
+  padding-top: 8px;
+}
+.induction-motor[data-narrow='true'] .indmotor-caption {
+  padding: 14px 16px;
+  font-size: 16px;
+  min-height: 94px;
+}
+.induction-motor[data-narrow='true'] .indmotor-plot svg {
+  height: 150px;
+}
+.induction-motor[data-narrow='true'] .indmotor-plot .indmotor-instrument-note {
+  display: none;
+}
+.induction-motor[data-narrow='true'] .indmotor-explore {
+  grid-template-columns: minmax(0, 1fr);
+}
+.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-stage {
+  min-height: 790px;
+  grid-template-rows: auto 1fr auto;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='cage'] .indmotor-object {
+  height: 263px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='cage'] .indmotor-slip-strip {
+  display: none;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='sync'] .indmotor-sync-proof {
+  padding: 14px 0;
+  gap: 10px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-object {
+  height: 206px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-power-row {
+  margin: 9px 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .indmotor-explore button {
+    transition: none;
+  }
+}
+
+.induction-motor[data-watch='true'] .indmotor-caption {
+  display: none;
+}

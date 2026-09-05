@@ -1,0 +1,125 @@
+---
+import {
+  DIFFERENTIAL as D,
+  differentialMotion,
+  differentialBevel,
+  differentialBevelOutline,
+  differentialFrame,
+  differentialGearPhase,
+  type DifferentialVector,
+  type DifferentialGearId,
+} from '../../models/differential';
+interface Props {
+  color?: string;
+}
+const { color = '#69838a' } = Astro.props;
+const m = differentialMotion('turn', 0.9, 1.7, 2);
+const project = (p: DifferentialVector) => [
+  200 + 43 * (0.952 * p[0] - 0.305 * p[2]),
+  116 - 43 * (-0.065 * p[0] + 0.978 * p[1] - 0.202 * p[2]),
+];
+const point = (p: DifferentialVector) =>
+  project(p)
+    .map((n) => n.toFixed(2))
+    .join(',');
+const faces: { points: string; depth: number; fill: string }[] = [];
+for (const id of ['left', 'right', 'upper', 'lower'] as DifferentialGearId[]) {
+  const side = id === 'left' || id === 'right',
+    g = differentialBevel(side ? 'side' : 'pinion'),
+    o = differentialBevelOutline(g).filter((_, i) => i % 2 === 0),
+    phase = differentialGearPhase(id, m);
+  const toWorld = (p: (typeof o)[number], r: number) => {
+    const a = p.azimuth + phase;
+    return differentialFrame(
+      [
+        r * Math.sin(p.polar) * Math.cos(a),
+        r * Math.sin(p.polar) * Math.sin(a),
+        r * Math.cos(p.polar),
+      ],
+      id,
+      m.carrierAngle,
+    );
+  };
+  for (let i = 0; i < o.length; i++) {
+    const next = o[(i + 1) % o.length],
+      a = toWorld(o[i], g.inner),
+      b = toWorld(next, g.inner),
+      c = toWorld(next, g.outer),
+      d = toWorld(o[i], g.outer),
+      hub = differentialFrame([0, 0, g.outer], id, m.carrierAngle);
+    faces.push({
+      points: [a, b, c, d].map(point).join(' '),
+      depth: (a[2] + b[2] + c[2] + d[2]) / 4,
+      fill: side ? (id === 'left' ? '#bc9677' : '#8aafb8') : '#c89b66',
+    });
+    faces.push({
+      points: [d, c, hub].map(point).join(' '),
+      depth: (d[2] + c[2] + hub[2]) / 3,
+      fill: side ? '#6e8992' : '#9e784f',
+    });
+  }
+}
+faces.sort((a, b) => a.depth - b.depth);
+const ring = (x: number, r: number) =>
+  Array.from({ length: 65 }, (_, i) =>
+    point([x, r * Math.cos((i * Math.PI) / 32), r * Math.sin((i * Math.PI) / 32)]),
+  ).join(' ');
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs
+    ><radialGradient id="diff-cover-bg"
+      ><stop stop-color="#29434f"></stop><stop offset="1" stop-color="#182d38"
+      ></stop></radialGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#diff-cover-bg)"></rect>
+  <path d="M30 202H367" stroke="#52717a" stroke-width="4" opacity=".5"></path>
+  <path
+    d={`M${point([-3.6, 0, 0])}L${point([-D.axleStart, 0, 0])}M${point([D.axleStart, 0, 0])}L${point([3.6, 0, 0])}`}
+    stroke="#b9c9ca"
+    stroke-width="7"></path>
+  {
+    [-1, 1].map((sign) => (
+      <g>
+        <>
+          <polyline
+            points={ring(sign * D.carrierHalfLength, 1.62)}
+            stroke={color}
+            stroke-width="5"
+          />
+          <path
+            d={`M${point([sign * 2.1, 0, 0])}L${point([sign * 2.1, -1.9, 0])}`}
+            stroke={color}
+            stroke-width="9"
+          />
+          <polyline points={ring(sign * 3.6, 0.69)} stroke="#111f27" stroke-width="12" />
+          <polyline points={ring(sign * 3.6, 0.45)} stroke="#a5b8bd" stroke-width="5" />
+        </>
+      </g>
+    ))
+  }
+  <path
+    d={`M${point(differentialFrame([0, 0, -1.65], 'upper', m.carrierAngle))}L${point(differentialFrame([0, 0, 1.65], 'upper', m.carrierAngle))}`}
+    stroke="#aabec0"
+    stroke-width="5"></path>
+  {faces.map((f) => <polygon points={f.points} fill={f.fill} stroke={f.fill} stroke-width=".15" />)}
+  {
+    [Math.PI / 4, (5 * Math.PI) / 4].map((a) => (
+      <path
+        d={`M${point([-1.48, 1.58 * Math.cos(a + m.carrierAngle), 1.58 * Math.sin(a + m.carrierAngle)])}L${point([1.48, 1.58 * Math.cos(a + m.carrierAngle), 1.58 * Math.sin(a + m.carrierAngle)])}`}
+        stroke={color}
+        stroke-width="4"
+      />
+    ))
+  }
+  <path d="M169 33h62m-6-4 6 4-6 4" stroke="#c9b28d" stroke-width="1.5"></path>
+  <circle cx="200" cy="33" r="3.5" fill="#dac39a"></circle>
+</svg>

@@ -1,0 +1,249 @@
+.doppler-scene {
+  --doppler-ink: #263e48;
+  --doppler-coral: #ad533d;
+  --doppler-teal: #176d68;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1060px;
+  margin-inline: auto;
+  color: var(--doppler-ink);
+  background: #f6f6f0;
+  border-radius: 24px;
+  padding: 22px 24px 18px;
+  font-size: 16px;
+  line-height: 1.55;
+  overflow: hidden;
+}
+.doppler-scene *,
+.doppler-scene *::before,
+.doppler-scene *::after {
+  box-sizing: border-box;
+}
+.doppler-frequency {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 12px;
+  align-items: center;
+  max-width: 470px;
+  margin: 0 auto 12px;
+}
+.doppler-frequency > div {
+  display: grid;
+  gap: 2px;
+}
+.doppler-frequency > div:last-child {
+  text-align: right;
+}
+.doppler-frequency span {
+  font-size: 16px;
+}
+.doppler-frequency strong {
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+.doppler-frequency strong small {
+  font-size: 19px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.doppler-frequency-link {
+  text-align: center;
+  color: #748887;
+}
+.doppler-frequency i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-inline-end: 7px;
+  vertical-align: 2px;
+}
+.doppler-source-dot {
+  border-radius: 50%;
+  background: var(--doppler-coral);
+}
+.doppler-observer-dot {
+  background: var(--doppler-teal);
+  transform: rotate(45deg);
+}
+.doppler-field-wrap {
+  position: relative;
+}
+.doppler-medium {
+  position: absolute;
+  left: 18px;
+  top: 12px;
+  font-size: 16px;
+  color: #617575;
+  z-index: 1;
+  pointer-events: none;
+}
+.doppler-field,
+.doppler-ruler {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  font-family: inherit;
+}
+.doppler-field {
+  max-height: 405px;
+}
+.doppler-ruler {
+  max-height: 140px;
+}
+.doppler-arrivals {
+  padding: 10px 4px 0;
+}
+.doppler-ruler-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #536b6c;
+  font-size: 16px;
+}
+.doppler-ruler-label b,
+.doppler-footnote b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--doppler-ink);
+  white-space: nowrap;
+}
+.doppler-explanation {
+  font-size: 17px;
+  min-height: 27px;
+  margin: 2px 4px 12px;
+  line-height: 1.6;
+}
+.doppler-footnote {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  color: #607576;
+  padding: 10px 4px 0;
+  border-top: 1px solid #dbe2de;
+}
+.doppler-explore {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid #dbe2de;
+}
+.doppler-explore p,
+.doppler-explore small,
+.doppler-explore summary,
+.doppler-explore .control-top {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.doppler-explore .control {
+  margin-block: 14px;
+}
+.doppler-explore input[type='range'] {
+  min-height: 44px;
+  width: 100%;
+  accent-color: var(--doppler-teal);
+}
+.doppler-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 14px;
+}
+.doppler-explore button {
+  min-height: 44px;
+  border: 1px solid #c7d7d0;
+  border-radius: 14px;
+  background: #fdfef8;
+  color: var(--doppler-ink);
+  font: inherit;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.doppler-explore button:hover {
+  background: #e8f1e9;
+  border-color: #87a79c;
+}
+.doppler-explore button:focus-visible,
+.doppler-explore summary:focus-visible,
+.doppler-explore input:focus-visible {
+  outline: 3px solid #4a8f85;
+  outline-offset: 3px;
+}
+.doppler-explore summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-block: 12px;
+}
+.doppler-explore details {
+  margin-top: 14px;
+}
+.doppler-explore details p {
+  margin-block: 12px;
+}
+@media (max-width: 760px) {
+  .doppler-scene {
+    padding: 16px 10px 14px;
+    border-radius: 18px;
+  }
+  .doppler-frequency {
+    gap: 6px;
+    grid-template-columns: 1fr 22px 1fr;
+    padding-inline: 4px;
+    margin-bottom: 9px;
+  }
+  .doppler-frequency strong {
+    font-size: 25px;
+  }
+  .doppler-frequency span {
+    font-size: 16px;
+  }
+  .doppler-medium {
+    left: 12px;
+    top: 9px;
+    font-size: 16px;
+  }
+  .doppler-field {
+    max-height: 330px;
+  }
+  .doppler-ruler {
+    max-height: 142px;
+  }
+  .doppler-ruler-label {
+    gap: 6px;
+  }
+  .doppler-ruler-label span {
+    font-size: 16px;
+  }
+  .doppler-arrivals {
+    padding-inline: 0;
+  }
+  .doppler-explanation {
+    margin: 4px 2px 0;
+    font-size: 16px;
+    min-height: 77px;
+  }
+  .doppler-footnote {
+    display: none;
+  }
+  .doppler-explore {
+    margin-top: 14px;
+  }
+  .doppler-explore .control-top {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .doppler-explore .control-top output {
+    margin-left: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .doppler-explore button {
+    transition: none;
+  }
+}
