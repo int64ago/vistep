@@ -1,0 +1,55 @@
+<h2 id="understand">Move first, then grip</h2>
+
+The lever moves a master piston. Initially, a compensation port connects its chamber to the reservoir. Once the piston passes the port, displaced liquid enters the closed brake circuit.
+
+The opposing pistons first take up pad clearance. After contact, further displacement compresses the liquid, hose and pad assembly slightly, raising pressure strongly. Pressure acting over piston area produces pad force. This scene uses a fixed, opposed-piston caliper; a floating caliper works with a different mechanical arrangement.
+
+The main apparatus preserves component proportions. The lower section explicitly enlarges travel. Amber identifies liquid and pressure; it does not depict liquid circulating around a hose loop.
+
+<h2 id="try">Watch three distinct changes</h2>
+
+- Increase master stroke from zero. Separate port closure, clearance take-up and strong pressure buildup.
+- Add air while keeping the same stroke. Pressure falls because gas compression absorbs displaced volume.
+- Change master diameter. Fixed stroke and fixed pressure are different comparisons: the film holds pressure steady, while manual exploration keeps your selected stroke.
+- Release and reset to recover zero pressure, pad clearance and an open compensation port.
+
+These authored parameters are not for selecting parts, servicing a brake or predicting real stopping distances.
+
+<h2 id="deeper">Connect force, volume and energy</h2>
+
+<details>
+<summary>Specified teaching assumptions</summary>
+
+The default master diameter is 10 mm, with two 18 mm caliper pistons, 0.4 mm port-closing travel and 0.25 mm clearance on each side. The lever uses an ideal 4:1 force ratio. Its illustrated linkage establishes connections rather than solving a production lever's contact friction or cam profile.
+
+Combined liquid/hose compliance is 5 mm³/MPa. Each pad/support has equivalent stiffness 10,000 N/mm. Dimensions and stiffness are authored assumptions, not the specifications of a commercial product. Seal friction, height differences and pressure-wave propagation are omitted; pressure is quasistatic and relative to the environment.
+
+</details>
+
+<details>
+<summary>Where does the displaced volume go?</summary>
+
+Let Aₘ be master area and Aₚ be each caliper-piston area. After port closure, the master displaces Aₘ(x − 0.4 mm). This first takes up two pad gaps, then supplies liquid/hose compression, pad deformation and trapped-air compression:
+
+<div className="formula">ΔV = 2Aₚδ + Cliquid·p + 2Aₚ²p/k + ΔVair</div>
+
+Travel δ rises to 0.25 mm before contact and then remains fixed. Each pad force is pAₚ; the sum of the two normal forces is 2pAₚ. At fixed pressure, a larger master requires more force and less travel to displace the same volume.
+
+Air uses an isothermal ideal-gas relationship at initial absolute pressure 0.101325 MPa. Gas compression uses absolute pressure, while the readout shows gauge pressure:
+
+<div className="formula">Vair = V₀ · patmosphere / (patmosphere + p)</div>
+
+The solver balances all displaced volume. Numerical checks also integrate master force over travel and compare the result with stored elastic and gas energy.
+
+</details>
+
+<details>
+<summary>Why is braking heat much larger than hand work?</summary>
+
+Brake torque is T = 2μpAₚr, with assumed friction coefficient μ = 0.38 and effective radius r = 0.07 m. The energy chapter uses 100 kg combined bicycle/rider mass, 0.35 m wheel radius and initial speed 5 m/s. One constant-pressure brake decelerates ideal rolling motion. Wheel rotational inertia, load transfer, tire grip limits, fade and heat loss are omitted.
+
+Playback slows the event and labels physical time. Lost kinetic energy equals brake torque integrated over rotor angle. “Braking heat” is accumulated energy, not a calculated rotor temperature. The hand controls grip and stores a little elastic energy; the moving vehicle supplies most of the energy dissipated during braking.
+
+Release follows reversible quasistatic recovery. Actual pad retraction involves seal deformation, springs and wear compensation; those details are outside this model.
+
+</details>

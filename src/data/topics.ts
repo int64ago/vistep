@@ -14,6 +14,37 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'hydraulic-brake',
+    name: '液压刹车',
+    title: '轻轻一捏，怎样夹紧远处的碟片？',
+    question: '一条油路，传递压力。',
+    description: '打开主缸与对置活塞卡钳，跟随排液、接触、加压和释放，理解力、行程与制动能量。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#a1765b',
+    number: '19',
+    tag: '液压 · 力与位移',
+    related: ['bicycle', 'four-stroke-engine'],
+    sources: [
+      {
+        title: 'OpenStax · Pascal’s principle and hydraulics',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-3-pascals-principle-and-hydraulics',
+      },
+      {
+        title: 'Shimano · The easy-to-understand guide to brakes',
+        url: 'https://bike.shimano.com/en-SG/stories/article/the-easy-to-understand-guide-to-brakes.html',
+      },
+      {
+        title: 'Brembo · Master-cylinder free stroke',
+        url: 'https://www.brembo.com/en/news-archive/brembo-brake-master-cylinder',
+      },
+      {
+        title: 'Brembo · Factors behind braking torque',
+        url: 'https://www.brembo.com/en/news-archive/5-factors-that-make-a-brembo-braking-system-unbeatable',
+      },
+    ],
+  },
+  {
     slug: 'binary-adder',
     name: '二进制加法',
     title: '只靠零和一，计算机怎样做加法？',

@@ -16,7 +16,9 @@ The active objective is **50 additional complete scenes**, taking the 12 scenes 
 
 | Binary addition | Aligned place values, connected logic gates, timed carries and signed interpretation | Chinese and English, 178.0 s each | In production; desktop and English 320 px, keyboard limits and chapter heights reviewed |
 
-The six integrated scenes have bilingual articles, sources, unique covers, lazy imports, transcripts, social images and sitemap entries. The other 44 subjects remain planned and unregistered. **No new scene is marked fully accepted.**
+| Hydraulic brakes | Connected 3D apparatus, magnified compensation port and pad sections, gas compression and energy balance | Chinese and English, 177.0 s each | In production; desktop cutaway and English 320 px keyboard limits and fallback reviewed |
+
+The seven integrated scenes have bilingual articles, sources, unique covers, lazy imports, transcripts, social images and sitemap entries. The other 43 subjects remain planned and unregistered. **No new scene is marked fully accepted.**
 
 ## Review evidence — 2026-09-05
 
@@ -39,6 +41,8 @@ The first checkpoint below describes commit `c0deca7`. The subsequent planetary/
 
 - Binary-adder tests exhaust all 65,536 eight-bit input pairs and verify carry timing, unknown outputs, signed overflow and input limits. Desktop chapters measure 620 px and mobile chapters 520 px after review; phone gates use vertical signal flow. Keyboard controls reached 255 + 255 = 510, all unknown outputs at zero readiness, and a full adder with three one-valued inputs. All 16 recorded chapter/language pairs passed independent ASR (minimum similarity 0.8143); revised wording makes the signed interpretation explicit. The local collection now has 18 topics. Full `pnpm verify` and `pnpm build:preview` passed: 75 tests in 14 files, 116 type-checked files without diagnostics, and 39 canonical bilingual pages audited (40 generated HTML pages including the 404).
 
+- The local hydraulic-brake scene extends the collection to 19. Final `pnpm verify` and `pnpm build:preview` passed: 80 tests in 15 files, 121 type-checked files with no diagnostics, and 41 canonical bilingual pages audited (42 generated HTML pages including the 404). Five model tests check gap take-up, displaced-volume balance, isothermal gas behavior, integrated input work and braking energy. All 16 chapter/language pairs passed ASR (minimum similarity 0.9006). The 320 px keyboard review reached a 4 mm stroke, 14 mm bore and 100 mm³ initial air volume: 18.24 MPa, with no negative SVG widths or horizontal overflow. Selecting 2D removed the WebGL canvas; reset returned zero stroke, air and pressure with an open port. Experimental buttons measured 44 px high. The gas sequence was revised to start with uncompressed air and compare pressures at the same stroke; current assets are `hydraulic-brake-zh-7db5287a3fc4.mp3` and `hydraulic-brake-en-1bbd2d3fd947.mp3`. The final ASR attempt first returned 401, then passed after refreshing the existing login. A shared mobile transport defect was also corrected: the timeline now has its own row, so all four 44 px buttons fit at 320 px. Brake and existing pendulum layouts were checked.
+
 The current runtime does not accept audio input. **No complete listening review or claim about vocal naturalness is recorded.** ASR and browser media behavior are separate evidence. Complete continuous visual viewing, all chapter boundaries, broader accessibility/failure cases, listening and physical-phone performance remain outstanding. A viewport override is not a physical-phone test.
 
 ## Preview and next work
@@ -47,6 +51,6 @@ The first optics preview used an immutable asset snapshot: version `f39215c2-84a
 
 The earlier three-scene preview is version `878fc77f-01ca-47cc-9911-5102a69dc3c3`, matching the runtime content in commit `c0deca7`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33964115154) passed. The engine route returned HTTP 200 with `noindex, nofollow`; the browser rendered the cutaway and selected the updated Chinese track `four-stroke-engine-zh-b6e022d75bc2.mp3`. This confirms delivery and selection, not a listening review.
 
-The latest public preview has 17 topics from `669e670`; [its branch CI](https://github.com/int64ago/vistep/actions/runs/33965709434) passed. Binary addition is still local at this checkpoint.
+The latest public preview has 18 topics from `1315188`; [its branch CI](https://github.com/int64ago/vistep/actions/runs/33967054629) passed. Preview version `6724c685-97bf-49f1-b5fb-9a74bd0b467e` came from an immutable asset snapshot. Its binary-adder route returned HTTP 200 with noindex, and the browser rendered the carry progression while selecting `binary-adder-zh-3a905247d908.mp3`.
 
 Continue visual review and the remaining subjects. Before final main publication, accept all 50 additions, verify the full 62-topic collection and recordings, update bilingual catalog documentation, and record preview/production evidence through the existing deployment workflow. Main publication remains outstanding.
