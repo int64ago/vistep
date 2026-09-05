@@ -18,12 +18,12 @@ export default function ElectricGeneratorFlat({
   narrow: boolean;
 }) {
   const id = useId().replace(/:/g, ''),
-    w = narrow ? 330 : 650,
-    h = narrow ? 340 : 330,
-    scale = narrow ? 42 : 58;
+    w = narrow ? 278 : 650,
+    h = narrow ? 230 : 330,
+    scale = narrow ? 32 : 58;
   const project = ([x, y, z]: GeneratorPoint) =>
     narrow
-      ? [w / 2 + (x - 0.2 * z) * scale, 112 - y * scale + z * 29]
+      ? [w / 2 + (x - 0.2 * z) * scale, 88 - y * scale + z * 16]
       : [226 + (x + 0.65 * z) * scale, 140 - y * scale + z * 19];
   const path = (points: GeneratorPoint[], rotating = false) =>
     points

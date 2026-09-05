@@ -36,15 +36,15 @@ export function DiffractionAperture({
     spacing = (state.parameters.wavelengthNm / 550) * 18;
   if (compact) {
     const cx = width / 2,
-      apertureY = 73,
-      screenY = 127 + distanceRatio * 64;
+      apertureY = 57,
+      screenY = 111 + distanceRatio * 36;
     const targetX = cx + (state.sample.yMm / state.spanMm) * (width / 2 - 24);
     return (
       <svg
         className="diffraction-aperture"
         width={width}
-        height="223"
-        viewBox={`0 0 ${width} 223`}
+        height="185"
+        viewBox={`0 0 ${width} 185`}
         role="img"
         aria-label={t('手机剖面：平面波向下通过横向狭缝，抵达下方的屏幕。')}
       >
@@ -59,8 +59,8 @@ export function DiffractionAperture({
             key={i}
             x1="20"
             x2={width - 20}
-            y1={9 + i * 13 + ((time * 0.25) % 1) * 13}
-            y2={9 + i * 13 + ((time * 0.25) % 1) * 13}
+            y1={5 + (i + ((time * 0.25) % 1)) * (spacing * 0.55)}
+            y2={5 + (i + ((time * 0.25) % 1)) * (spacing * 0.55)}
             stroke={color}
             strokeOpacity=".32"
             strokeWidth="1.3"
@@ -85,7 +85,7 @@ export function DiffractionAperture({
         <line
           x1={cx}
           x2={cx}
-          y1="88"
+          y1="69"
           y2={screenY}
           stroke="#8b9c8c"
           strokeDasharray="3 5"
@@ -132,10 +132,10 @@ export function DiffractionAperture({
         <text x={width - 15} y={(apertureY + screenY) / 2 + 5} textAnchor="end">
           L
         </text>
-        <text x={cx} y="64" textAnchor="middle">
+        <text x={cx} y="48" textAnchor="middle">
           a
         </text>
-        <text x={cx} y="221" textAnchor="middle">
+        <text x={cx} y="179" textAnchor="middle">
           {t('屏幕位置')} y
         </text>
       </svg>
@@ -298,10 +298,10 @@ export function DiffractionPhasors({
   const scale = Math.min(
     600,
     Math.min(width - 48, 300) / Math.max(0.01, maxRe - minRe),
-    127 / Math.max(0.01, maxIm - minIm),
+    (compact ? 84 : 127) / Math.max(0.01, maxIm - minIm),
   );
   const ox = width / 2 - ((minRe + maxRe) / 2) * scale,
-    oy = (compact ? 122 : 111) + ((minIm + maxIm) / 2) * scale;
+    oy = (compact ? 112 : 111) + ((minIm + maxIm) / 2) * scale;
   const point = (v: { re: number; im: number }) => ({ x: ox + v.re * scale, y: oy - v.im * scale });
   const trace = Array.from({ length: 101 }, (_, i) =>
     point(diffractionPartial(state.sample.beta, (i / 100) * reveal)),
@@ -311,8 +311,8 @@ export function DiffractionPhasors({
     <svg
       className="diffraction-phasors"
       width={width}
-      height="248"
-      viewBox={`0 0 ${width} 248`}
+      height={compact ? 200 : 248}
+      viewBox={`0 0 ${width} ${compact ? 200 : 248}`}
       role="img"
       aria-label={t(
         '首尾相加的箭头是各段狭缝的电场贡献，合成电场为中心的 {0}。',
@@ -352,7 +352,14 @@ export function DiffractionPhasors({
         </g>
       )}
       <line x1="12" y1={oy} x2={width - 12} y2={oy} stroke="#83948a" strokeOpacity=".18" />
-      <line x1={ox} y1="38" x2={ox} y2="182" stroke="#83948a" strokeOpacity=".18" />
+      <line
+        x1={ox}
+        y1={compact ? 65 : 38}
+        x2={ox}
+        y2={compact ? 158 : 182}
+        stroke="#83948a"
+        strokeOpacity=".18"
+      />
       {state.contributions.map((part, i) => {
         const a = point(part.start),
           b = point(part.end),
@@ -395,18 +402,27 @@ export function DiffractionPhasors({
           : `E / E₀ = ${state.sample.amplitude.toFixed(3)}`}
       </text>
       <path
-        d={`M${width / 2 - scale / 8} 208H${width / 2 + scale / 8}`}
+        d={`M${width / 2 - scale / 8} ${compact ? 170 : 208}H${width / 2 + scale / 8}`}
         stroke="#879582"
         strokeWidth="2"
       />
-      <text x={width / 2} y="241" textAnchor="middle">
+      <text x={width / 2} y={compact ? 195 : 241} textAnchor="middle">
         {t('标尺')} 0.25 E₀
       </text>
     </svg>
   );
 }
 
-export function DiffractionDistance({ state, width }: { state: DiffractionState; width: number }) {
+export function DiffractionDistance({
+  state,
+  width,
+  compact = false,
+}: {
+  state: DiffractionState;
+  width: number;
+  compact?: boolean;
+}) {
+  const y = (desktop: number, phone: number) => (compact ? phone : desktop);
   const n = state.validity.fullWidthFresnel;
   const left = 22,
     right = width - 22,
@@ -415,37 +431,47 @@ export function DiffractionDistance({ state, width }: { state: DiffractionState;
   return (
     <svg
       width={width}
-      height="248"
-      viewBox={`0 0 ${width} 248`}
+      height={y(248, 185)}
+      viewBox={`0 0 ${width} ${y(248, 185)}`}
       className="diffraction-distance"
       role="img"
       aria-label={t('以完整缝宽定义 N = a² / (λL)，当前为 {0}。', n.toFixed(3))}
     >
-      <text x={width / 2} y="46" textAnchor="middle">
+      <text x={width / 2} y={y(46, 27)} textAnchor="middle">
         N = a² / (λL)
       </text>
-      <text x={width / 2} y="94" textAnchor="middle" className="diffraction-svg-large">
+      <text x={width / 2} y={y(94, 71)} textAnchor="middle" className="diffraction-svg-large">
         {n.toFixed(3)}
       </text>
-      <path d={`M${left} 136H${right}`} stroke="#9ca99a" strokeWidth="3" strokeLinecap="round" />
       <path
-        d={`M${left} 136H${threshold}`}
+        d={`M${left} ${y(136, 106)}H${right}`}
+        stroke="#9ca99a"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d={`M${left} ${y(136, 106)}H${threshold}`}
         stroke="#588b75"
         strokeWidth="6"
         strokeLinecap="round"
       />
-      <path d={`M${threshold} 123V150`} stroke="#5b7e69" strokeWidth="1" />
-      <circle cx={at} cy="136" r="6" fill={state.validity.farField ? '#4c856f' : '#b17355'} />
-      <text x={left} y="181">
+      <path d={`M${threshold} ${y(123, 93)}V${y(150, 119)}`} stroke="#5b7e69" strokeWidth="1" />
+      <circle
+        cx={at}
+        cy={y(136, 106)}
+        r="6"
+        fill={state.validity.farField ? '#4c856f' : '#b17355'}
+      />
+      <text x={left} y={y(181, 151)}>
         0
       </text>
-      <text x={threshold + 7} y="162">
+      <text x={threshold + 7} y={y(162, 132)}>
         0.1
       </text>
-      <text x={right} y="181" textAnchor="end">
+      <text x={right} y={y(181, 151)} textAnchor="end">
         1
       </text>
-      <text x={width / 2} y="223" textAnchor="middle">
+      <text x={width / 2} y={y(223, 178)} textAnchor="middle">
         {t('边缘相位误差')} {state.validity.edgePhaseError.toFixed(3)} rad
       </text>
     </svg>
@@ -457,17 +483,21 @@ export function DiffractionScreen({
   profile,
   width,
   field,
+  compact = false,
 }: {
   state: DiffractionState;
   profile: DiffractionSample[];
   width: number;
   field: boolean;
+  compact?: boolean;
 }) {
   const id = useId().replace(/:/g, '');
   const pad = 21,
     span = width - 2 * pad,
-    base = 166,
-    height = field ? 230 : 211;
+    base = compact ? 112 : 166,
+    gain = compact ? 60 : 82,
+    stripHeight = compact ? 30 : 47,
+    height = compact ? (field ? 170 : 151) : field ? 230 : 211;
   const x = (yMm: number) => pad + ((yMm / state.spanMm + 1) / 2) * span;
   const color = diffractionColor(state.parameters.wavelengthNm);
   const min = state.firstMinimum,
@@ -483,10 +513,10 @@ export function DiffractionScreen({
     >
       <defs>
         <clipPath id={`${id}-strip`}>
-          <rect x={pad} y="4" width={span} height="47" rx="8" />
+          <rect x={pad} y="4" width={span} height={stripHeight} rx="8" />
         </clipPath>
       </defs>
-      <rect x={pad} y="4" width={span} height="47" rx="8" fill="#233a34" />
+      <rect x={pad} y="4" width={span} height={stripHeight} rx="8" fill="#233a34" />
       <g clipPath={`url(#${id}-strip)`}>
         {profile.map((sample, i) => (
           <rect
@@ -494,7 +524,7 @@ export function DiffractionScreen({
             x={x(sample.yMm) - span / profile.length / 2}
             y="4"
             width={span / (profile.length - 1) + 0.5}
-            height="47"
+            height={stripHeight}
             fill={color}
             opacity={sample.intensity ** 0.35}
           />
@@ -503,7 +533,7 @@ export function DiffractionScreen({
       {minima.map((yMm) => (
         <g key={yMm}>
           <path
-            d={`M${x(yMm)} 2v53M${x(yMm)} 74v${base - 74}`}
+            d={`M${x(yMm)} 2v${stripHeight + 6}M${x(yMm)} ${base - gain - 10}v${gain + 10}`}
             stroke="#9e8c70"
             strokeWidth="1"
             strokeDasharray="3 5"
@@ -514,12 +544,12 @@ export function DiffractionScreen({
       <line
         x1={pad}
         x2={width - pad}
-        y1={base - 82}
-        y2={base - 82}
+        y1={base - gain}
+        y2={base - gain}
         stroke="#8da08d"
         strokeOpacity=".13"
       />
-      <text x="1" y={base - 76}>
+      <text x="1" y={base - gain + 6}>
         1
       </text>
       <text x="1" y={base + 5}>
@@ -527,7 +557,7 @@ export function DiffractionScreen({
       </text>
       {field && (
         <path
-          d={diffractionPath(profile.map((p) => ({ x: x(p.yMm), y: base - p.amplitude * 82 })))}
+          d={diffractionPath(profile.map((p) => ({ x: x(p.yMm), y: base - p.amplitude * gain })))}
           stroke="#b77858"
           strokeWidth="1.6"
           strokeDasharray="5 4"
@@ -535,28 +565,28 @@ export function DiffractionScreen({
         />
       )}
       <path
-        d={diffractionPath(profile.map((p) => ({ x: x(p.yMm), y: base - p.intensity * 82 })))}
+        d={diffractionPath(profile.map((p) => ({ x: x(p.yMm), y: base - p.intensity * gain })))}
         fill="none"
         stroke="#477d68"
         strokeWidth="2.2"
         strokeLinejoin="round"
       />
       <path
-        d={`M${x(state.sample.yMm)} 0V${field ? 193 : 181}`}
+        d={`M${x(state.sample.yMm)} 0V${compact ? (field ? 136 : 126) : field ? 193 : 181}`}
         stroke="#b37451"
         strokeWidth="1.2"
         strokeOpacity=".62"
       />
       <circle
         cx={x(state.sample.yMm)}
-        cy={base - state.sample.intensity * 82}
+        cy={base - state.sample.intensity * gain}
         r="4"
         fill="#477d68"
       />
       {field && (
         <circle
           cx={x(state.sample.yMm)}
-          cy={base - state.sample.amplitude * 82}
+          cy={base - state.sample.amplitude * gain}
           r="3.5"
           fill="#b77858"
         />

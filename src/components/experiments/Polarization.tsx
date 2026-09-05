@@ -8,6 +8,7 @@ import {
 import { useShowcase } from '../lab/Showcase';
 import {
   PolarizationDetail,
+  PolarizationFocus,
   PolarizationOptics,
   polarizationColors,
 } from '../lab/PolarizationOptics';
@@ -110,7 +111,7 @@ export default function Polarization() {
     const host = root.current;
     if (!host) return;
     const observer = new ResizeObserver(([entry]) =>
-      setWidth(Math.max(240, entry.contentRect.width)),
+      setWidth(Math.max(200, entry.contentRect.width)),
     );
     observer.observe(host);
     return () => observer.disconnect();
@@ -122,6 +123,7 @@ export default function Polarization() {
   // No private clock. A seek, a pause, a hidden tab and reduced motion all use
   // the shared director. Exploration is a static field sample updated by input.
   const time = demo.watch ? demo.time : 3.6;
+  const phoneFilm = demo.watch && width < 620;
   const angle = selected === 'A' ? first : selected === 'M' ? middle : last;
   const updateAngle = selected === 'A' ? setFirst : selected === 'M' ? setMiddle : setLast;
   const label =
@@ -141,45 +143,59 @@ export default function Polarization() {
   };
   return (
     <div
+      ref={root}
       className="polarization-installation"
+      data-phone-film={phoneFilm}
       data-polarization-view={demo.watch ? shot.view : 'explore'}
     >
-      <div className="polarization-header">
-        <span>{t('偏振 · 电场的方向')}</span>
-        <span>{t('理想吸收型偏振片')}</span>
-      </div>
-      <div className="polarization-source-line">
-        <span>
-          <i className="polarization-source-dot" />
-          {t(state.source === 'unpolarized' ? '非偏振入射' : '线偏振入射')}
-        </span>
-        <span>I₀ = 100%</span>
-      </div>
-      <div ref={root} className="polarization-optics-host">
-        <PolarizationOptics
+      {phoneFilm ? (
+        <PolarizationFocus
           state={state}
           time={time}
           width={width}
-          view={demo.watch ? shot.view : 'energy'}
-          middleVisibility={demo.watch ? shot.middleVisibility : 1}
+          view={shot.view}
+          energyStep={shot.energyStep}
         />
-      </div>
-      <div className="polarization-readout">
-        <span>{t('最终透过')}</span>
-        <div className="polarization-ruler" aria-hidden="true">
-          <i style={{ width: `${state.output.intensity * 100}%` }} />
-        </div>
-        <output>
-          {(state.output.intensity * 100).toFixed(1)}
-          <small>%</small>
-        </output>
-      </div>
-      <PolarizationDetail
-        state={state}
-        view={demo.watch ? shot.view : 'energy'}
-        time={time}
-        energyStep={demo.watch ? shot.energyStep : -1}
-      />
+      ) : (
+        <>
+          <div className="polarization-header">
+            <span>{t('偏振 · 电场的方向')}</span>
+            <span>{t('理想吸收型偏振片')}</span>
+          </div>
+          <div className="polarization-source-line">
+            <span>
+              <i className="polarization-source-dot" />
+              {t(state.source === 'unpolarized' ? '非偏振入射' : '线偏振入射')}
+            </span>
+            <span>I₀ = 100%</span>
+          </div>
+          <div className="polarization-optics-host">
+            <PolarizationOptics
+              state={state}
+              time={time}
+              width={width}
+              view={demo.watch ? shot.view : 'energy'}
+              middleVisibility={demo.watch ? shot.middleVisibility : 1}
+            />
+          </div>
+          <div className="polarization-readout">
+            <span>{t('最终透过')}</span>
+            <div className="polarization-ruler" aria-hidden="true">
+              <i style={{ width: `${state.output.intensity * 100}%` }} />
+            </div>
+            <output>
+              {(state.output.intensity * 100).toFixed(1)}
+              <small>%</small>
+            </output>
+          </div>
+          <PolarizationDetail
+            state={state}
+            view={demo.watch ? shot.view : 'energy'}
+            time={time}
+            energyStep={demo.watch ? shot.energyStep : -1}
+          />
+        </>
+      )}
       {!demo.watch && (
         <div className="polarization-explore">
           <div className="polarization-presets" role="group" aria-label={t('偏振实验设置')}>

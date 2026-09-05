@@ -8,13 +8,14 @@
   justify-content: space-between;
   gap: 20px;
   color: #92a0b7;
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.08em;
 }
 .fiber-materials {
   display: flex;
   justify-content: center;
-  gap: 48px;
+  gap: 28px;
+  flex-wrap: wrap;
   margin: 30px 0 0;
   font-size: 16px;
   color: #a6b9cb;
@@ -44,7 +45,7 @@
   display: block;
   width: 100%;
   height: auto;
-  max-height: 370px;
+  max-width: 100%;
   overflow: visible;
 }
 .fiber-interface {
@@ -68,7 +69,7 @@
 }
 .fiber-result > span {
   text-align: right;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: #96aac1;
   font-variant-numeric: tabular-nums;
@@ -123,7 +124,7 @@
   color: #d9d7c8;
 }
 .fiber-pulse-heading small {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 }
 .fiber-pulses p {
@@ -166,13 +167,13 @@
     padding: 22px 14px;
   }
   .fiber-heading {
-    font-size: 10px;
+    font-size: 16px;
     letter-spacing: 0.02em;
   }
   .fiber-materials {
-    gap: 24px;
-    margin-top: 26px;
-    font-size: 14px;
+    gap: 10px 20px;
+    margin-top: 18px;
+    font-size: 16px;
   }
   .fiber-materials span {
     gap: 7px;
@@ -190,7 +191,7 @@
     line-height: 1.5;
   }
   .fiber-result > span {
-    font-size: 12px;
+    font-size: 16px;
     min-width: 90px;
   }
   .fiber-bits {
@@ -228,7 +229,7 @@
     flex-wrap: wrap;
   }
   .fiber-controls .segmented button {
-    font-size: 13px;
+    font-size: 16px;
     padding: 12px;
     min-height: 44px;
   }
@@ -262,6 +263,149 @@
 }
 @media (max-width: 760px) {
   .showcase[data-mode='watch'] .fiber-study {
-    min-height: 500px;
+    min-height: 530px;
+  }
+}
+
+.fiber-study {
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.fiber-study * {
+  box-sizing: border-box;
+}
+.fiber-heading {
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.fiber-drawing,
+.fiber-pulses {
+  min-width: 0;
+  width: 100%;
+}
+.fiber-study svg text {
+  font-family: inherit;
+  font-size: 16px;
+}
+.fiber-controls :is(.control, .control-top, .control output, .segmented button, .btn) {
+  font-size: 16px;
+}
+.fiber-controls .segmented {
+  display: flex;
+  flex-wrap: wrap;
+}
+.fiber-controls .segmented button {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 10px 14px;
+}
+.fiber-result {
+  flex-wrap: wrap;
+  padding-inline: 0;
+}
+.fiber-result > span {
+  display: block;
+  font-size: 16px;
+}
+.fiber-pulse-axis {
+  font-size: 16px;
+  text-align: right;
+  color: #9eafc2;
+}
+.fiber-model-note {
+  margin-top: 16px;
+  border-top: 1px solid #9bb0cf24;
+  font-size: 16px;
+  color: #a6b9cb;
+}
+.fiber-model-note summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.fiber-model-note p {
+  margin: 8px 0 0;
+  line-height: 1.75;
+  font-size: 16px;
+}
+.fiber-model-note summary:focus-visible {
+  outline: 2px solid #edc485;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .showcase[data-mode='watch'] .fiber-heading > span:first-child {
+    display: none;
+  }
+  .fiber-heading {
+    letter-spacing: 0;
+  }
+  .fiber-result {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding-top: 10px;
+  }
+  .fiber-result strong {
+    max-width: none;
+    font-size: 18px;
+  }
+  .fiber-result > span {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .fiber-materials {
+    justify-content: space-between;
+  }
+  .fiber-pulse-heading {
+    gap: 14px;
+    margin-block: 18px 12px;
+    flex-wrap: wrap;
+  }
+  .fiber-pulse-heading strong {
+    font-size: 22px;
+  }
+  .fiber-pulse-heading small {
+    font-size: 16px;
+  }
+  .fiber-interface {
+    margin-top: 12px;
+  }
+  .fiber-bits {
+    padding-inline: 0;
+    padding-bottom: 14px;
+  }
+  .fiber-bits > div > div {
+    gap: 7px;
+  }
+  .fiber-pulses p {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 760px) {
+  .showcase[data-mode='watch'] .fiber-heading {
+    display: none;
+  }
+  .fiber-materials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 6px;
+  }
+  .fiber-materials span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .fiber-materials i {
+    display: none;
+  }
+  .fiber-pulse-axis {
+    line-height: 1.55;
+  }
+  .showcase[data-mode='watch'] .fiber-pulses p span {
+    display: none;
   }
 }

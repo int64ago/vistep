@@ -284,13 +284,66 @@
   }
 }
 
-@media (max-width: 760px) {
-  .cmos-scene[data-watch='true'] .cmos-film {
-    min-height: 840px;
-    display: flex;
-    flex-direction: column;
+.cmos-phone-film {
+  box-sizing: border-box;
+  min-height: 520px;
+  padding: 12px 8px;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at 34% 20%, #fffdf7, #eef3ef 78%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cmos-phone-film .cmos-state {
+  display: grid;
+  gap: 0;
+  min-height: 56px;
+}
+.cmos-phone-film .cmos-state > span {
+  min-width: 0;
+}
+.cmos-phone-film .cmos-circuit {
+  flex: none;
+  width: 100%;
+  height: auto;
+}
+.cmos-phone-film .cmos-charge-circuit {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cmos-phone-film .cmos-proof svg {
+  height: 100px;
+  max-height: none;
+}
+.cmos-phone-film .cmos-proof-legend > span:first-child {
+  flex-basis: 100%;
+}
+.cmos-phone-film .cmos-evidence {
+  margin-top: 0;
+}
+.cmos-phone-film .cmos-evidence strong {
+  font-size: 23px;
+}
+.cmos-phone-film .cmos-energy-key {
+  display: grid;
+}
+.cmos-phone-film[data-focus='energy'] .cmos-energy-bar {
+  height: 28px;
+}
+.cmos-phone-film .cmos-cascade-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 601px) {
+  .cmos-phone-film {
+    max-width: 540px;
+    margin: auto;
   }
-  .cmos-scene[data-watch='true'] .cmos-note {
-    margin-top: auto;
+  .cmos-phone-film .cmos-circuit {
+    max-height: 338px;
+  }
+  .cmos-phone-film .cmos-charge-circuit {
+    max-height: 186px;
   }
 }

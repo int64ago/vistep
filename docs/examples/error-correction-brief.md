@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/error-correction-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **211.0 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 The question is how a receiver can locate a flipped bit without an original copy. Follow message `1011` and preserve numbered positions across encoding, transmission and decoding. The turning point is an actual double-error miscorrection: checks pass after repair, yet the message changes. Adding overall parity turns the same double error into a refusal to guess.
 
 ## Art direction and causal shots

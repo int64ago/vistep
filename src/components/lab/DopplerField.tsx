@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import { t } from '../../i18n';
+import { dopplerFieldLayout, dopplerVelocityArrow } from './dopplerLayout';
 import {
   dopplerLength,
   type DopplerFocus,
@@ -24,18 +25,11 @@ export function DopplerField({
   compact?: boolean;
 }) {
   const id = useId().replaceAll(':', '');
-  const width = compact ? 320 : 900,
-    height = compact ? 306 : 370;
-  const halfWidth = Math.max(
-    5.3,
-    Math.abs(frame.source.x) + 1.2,
-    Math.abs(frame.observer.x) + 1.2,
-    (Math.abs(frame.observer.y) * width) / height + 1.2,
+  const { width, height, halfWidth, scale, cx, cy, project } = dopplerFieldLayout(
+    frame,
+    focus,
+    compact,
   );
-  const scale = width / (2 * halfWidth),
-    cx = width / 2,
-    cy = height * (focus === 'bearing' ? 0.65 : 0.54);
-  const project = (v: DopplerVector) => ({ x: cx + v.x * scale, y: cy - v.y * scale });
   const s = project(frame.source),
     o = project(frame.observer),
     past = project(frame.retarded.center);
@@ -61,17 +55,18 @@ export function DopplerField({
     project({ x: wave.center.x + side * wave.radius, y: wave.center.y }),
   );
   const spacingY = cy + (compact ? 58 : 70);
-  const velocityArrow = (p: DopplerVector, speed: number, color: string) =>
-    Math.abs(speed) > 0.001 && (
+  const velocityArrow = (p: DopplerVector, speed: number, color: string) => {
+    if (Math.abs(speed) <= 0.001) return null;
+    const { start, tip, sign } = dopplerVelocityArrow(p, speed);
+    return (
       <g stroke={color} fill="none" strokeWidth="1.7" strokeLinecap="round">
+        <path d={`M ${start.x} ${start.y} L ${tip.x} ${tip.y}`} />
         <path
-          d={`M ${p.x - Math.sign(speed) * 16} ${p.y - 25} h ${Math.sign(speed) * (24 + 25 * Math.abs(speed))}`}
-        />
-        <path
-          d={`M ${p.x + Math.sign(speed) * (8 + 25 * Math.abs(speed))} ${p.y - 25} l ${-Math.sign(speed) * 6} -4 m ${Math.sign(speed) * 6} 4 l ${-Math.sign(speed) * 6} 4`}
+          d={`M ${tip.x - sign * 6} ${tip.y - 4} L ${tip.x} ${tip.y} L ${tip.x - sign * 6} ${tip.y + 4}`}
         />
       </g>
     );
+  };
   return (
     <svg
       className="doppler-field"

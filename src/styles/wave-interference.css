@@ -283,7 +283,7 @@
   text-align: left;
 }
 .wi-study[data-compact='true'][data-watch='true'] {
-  min-height: 860px;
+  min-height: 540px;
   display: flex;
   flex-direction: column;
 }
@@ -304,4 +304,31 @@
   .wi-study button {
     transition: none;
   }
+}
+
+/* A single phone sheet couples the actual string with this chapter's evidence. */
+.wi-study[data-compact='true'][data-watch='true'] {
+  padding: 16px 12px 12px;
+}
+.wi-study[data-compact='true'][data-watch='true'] .wi-heading > span:first-child {
+  display: none;
+}
+.wi-study[data-compact='true'][data-watch='true'] .wi-heading > span:last-child {
+  display: block;
+}
+.wi-study[data-compact='true'][data-watch='true'] .wi-heading {
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.wi-phone-instrument {
+  width: 100%;
+  height: auto;
+  font-size: 16px;
+}
+.wi-phone-instrument text:not([fill]) {
+  fill: #bfcfdb;
+}
+.wi-study[data-compact='true'][data-watch='true'] .wi-fact {
+  margin: 4px 0 8px;
+  line-height: 1.5;
 }

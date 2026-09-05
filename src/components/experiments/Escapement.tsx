@@ -1,6 +1,7 @@
 import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import { escapementInitial, escapementPose, escapementShot } from '../../models/escapement';
 import EscapementStudio from '../three/EscapementStudio';
 import { EscapementDiagram, EscapementEnergy, EscapementPeriod } from '../three/EscapementDiagram';
@@ -19,7 +20,8 @@ export default function Escapement() {
   const film = useShowcase(),
     id = useId(),
     [input, setInput] = useState(escapementInitial),
-    [epoch, setEpoch] = useState(0);
+    [epoch, setEpoch] = useState(0),
+    compact = useCompact();
   const shot = escapementShot(film.chapter, film.chapterProgress),
     pose = film.watch ? shot.pose : escapementPose(input.cycles, input.amplitude, input.length);
   const focus = film.watch
@@ -66,12 +68,14 @@ export default function Escapement() {
         </div>
       ) : (
         <div className="escapement-visual">
-          <div className="escapement-object">
-            {(focus === 'entry' || focus === 'exit' || focus === 'lock') && (
-              <span className="escapement-cut-label">{t('局部剖面')}</span>
-            )}
-            <EscapementStudio key={epoch} pose={pose} focus={focus} progress={shot.progress} />
-          </div>
+          {!(compact && ['entry', 'exit', 'lock'].includes(focus)) && (
+            <div className="escapement-object">
+              {(focus === 'entry' || focus === 'exit' || focus === 'lock') && (
+                <span className="escapement-cut-label">{t('局部剖面')}</span>
+              )}
+              <EscapementStudio key={epoch} pose={pose} focus={focus} progress={shot.progress} />
+            </div>
+          )}
           {(focus === 'entry' || focus === 'exit' || focus === 'lock') && (
             <div className="escapement-contact">
               <EscapementDiagram pose={pose} focus={focus} />

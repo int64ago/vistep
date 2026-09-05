@@ -172,7 +172,7 @@ function FieldSlice({ shot }: { shot: MotorShot }) {
     </div>
   );
 }
-function MotorPlot({ shot }: { shot: MotorShot }) {
+export function MotorPlot({ shot }: { shot: MotorShot }) {
   const s = shot.state,
     start = shot.focus === 'start',
     points = Array.from({ length: 151 }, (_, i) => {
@@ -186,14 +186,14 @@ function MotorPlot({ shot }: { shot: MotorShot }) {
   return (
     <div className="indmotor-plot">
       <div className="indmotor-instrument-title">
-        {t(start ? '从静止开始的启动轨迹' : '转速与电磁转矩')}
+        {t(start ? '从静止开始的启动轨迹' : '转速与转矩的量值')}
       </div>
-      <div className="indmotor-plot-unit">{start ? '|n| · 3000 rpm' : '30 N·m'}</div>
+      <div className="indmotor-plot-unit">{start ? '|n| · 3000 rpm' : '|τ| · 30 N·m'}</div>
       <svg
         viewBox="0 0 300 160"
         role="img"
         aria-label={t(
-          start ? '按惯量与转矩积分得到的启动转速曲线' : '低转差稳定运行支上的负载交点',
+          start ? '按惯量与转矩积分得到的启动转速曲线' : '转速与转矩绝对值；深色区为低转差稳定支',
         )}
       >
         <path d="M8 14V148H292" fill="none" stroke="#b6c8bc" />
@@ -213,7 +213,7 @@ function MotorPlot({ shot }: { shot: MotorShot }) {
       </svg>
       <div className="indmotor-axis">
         <span>0</span>
-        <span>{start ? '2 s' : '3000 rpm'}</span>
+        <span>{start ? '2 s' : '|n| · 3000 rpm'}</span>
       </div>
       <p className="indmotor-instrument-note">
         {t(start ? '准稳态电路 + 转动惯量；负载 1 N·m' : '深色区：低转差稳定支；虚线：负载转矩')}
@@ -260,6 +260,7 @@ export default function InductionMotor() {
   const film = useShowcase(),
     host = useRef<HTMLDivElement>(null),
     id = useId();
+  const [viewVersion, setViewVersion] = useState(0);
   const [width, setWidth] = useState(800),
     [manualMode, setManualMode] = useState<'slip' | 'load'>('load');
   const [slip, setSlip] = useState(0.045),
@@ -321,6 +322,7 @@ export default function InductionMotor() {
       data-watch={film.watch}
       data-narrow={narrow}
       data-focus={shot.focus}
+      data-chapter={shot.chapter}
     >
       <div className="indmotor-stage">
         <div className="indmotor-machine">
@@ -329,7 +331,11 @@ export default function InductionMotor() {
             <span>{t('两极 · 三相 · 鼠笼转子')}</span>
           </div>
           <div className="indmotor-object">
-            <InductionMotorStudio key={narrow ? 'phone' : 'wide'} shot={shot} narrow={narrow} />
+            <InductionMotorStudio
+              key={`${narrow}-${film.run}-${viewVersion}`}
+              shot={shot}
+              narrow={narrow}
+            />
           </div>
           <div className="indmotor-speeds">
             <span>
@@ -430,6 +436,7 @@ export default function InductionMotor() {
             <button
               type="button"
               onClick={() => {
+                setViewVersion((v) => v + 1);
                 setManualMode('load');
                 setLoad(2);
                 setSlip(0.045);

@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/packet-routing-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **181.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Integrated film
 
 The assembled Chinese and English tracks share **182 seconds**. The original 176-second storyboard below is the initial handoff; measured speech determines the final windows here. Authored chapter titles, captions and spoken wording are unchanged. Temporary packet paths below refer to the consumed handoff. `src/data/narration.json`, `film-timeline.json`, `audio-tracks.json` and `audio-manifest.json` are canonical.

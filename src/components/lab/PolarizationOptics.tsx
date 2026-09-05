@@ -387,7 +387,16 @@ function ProjectionFace({
   );
 }
 
-function PolarizationCurve({ state, middle }: { state: PolarizationState; middle: boolean }) {
+function PolarizationCurve({
+  state,
+  middle,
+  width = 228,
+}: {
+  state: PolarizationState;
+  middle: boolean;
+  width?: number;
+}) {
+  const plot = width - 48;
   const a = state.stages[0]?.angle ?? 0;
   const beta = state.stages.find((s) => s.id === 'M')?.angle ?? 0;
   const theta = (state.stages.at(-1)?.angle ?? 0) - a;
@@ -396,12 +405,15 @@ function PolarizationCurve({ state, middle }: { state: PolarizationState; middle
     const y = middle
       ? polarizationSetup(0, degree, 90).output.intensity / 0.125
       : malusTransmission(degree);
-    return { x: 20 + (degree / 90) * 180, y: 78 - y * 62 };
+    return { x: 20 + (degree / 90) * plot, y: 78 - y * 62 };
   });
   return (
     <svg
       className="polarization-curve"
-      viewBox="0 0 228 118"
+      width={width}
+      height="118"
+      style={{ width, maxWidth: '100%' }}
+      viewBox={`0 0 ${width} 118`}
       role="img"
       aria-label={t(
         middle
@@ -409,18 +421,18 @@ function PolarizationCurve({ state, middle }: { state: PolarizationState; middle
           : '马吕斯曲线：相对透过率等于夹角余弦的平方。',
       )}
     >
-      <path d="M20 12V78H205" fill="none" stroke="#6b8596" strokeOpacity=".5" />
+      <path d={`M20 12V78H${width - 23}`} fill="none" stroke="#6b8596" strokeOpacity=".5" />
       <path d={polarizationPath(points)} fill="none" stroke="#7facae" strokeWidth="2" />
       <line
-        x1={20 + ((middle ? beta : Math.min(90, Math.abs(theta))) / 90) * 180}
-        x2={20 + ((middle ? beta : Math.min(90, Math.abs(theta))) / 90) * 180}
+        x1={20 + ((middle ? beta : Math.min(90, Math.abs(theta))) / 90) * plot}
+        x2={20 + ((middle ? beta : Math.min(90, Math.abs(theta))) / 90) * plot}
         y1="78"
         y2={78 - (value / (middle ? 0.125 : 1)) * 62}
         stroke="#e8c588"
         strokeDasharray="2 4"
       />
       <circle
-        cx={20 + ((middle ? beta : Math.min(90, Math.abs(theta))) / 90) * 180}
+        cx={20 + ((middle ? beta : Math.min(90, Math.abs(theta))) / 90) * plot}
         cy={78 - (value / (middle ? 0.125 : 1)) * 62}
         r="4"
         fill="#e8c588"
@@ -434,10 +446,10 @@ function PolarizationCurve({ state, middle }: { state: PolarizationState; middle
       <text x="20" y="108" textAnchor="middle">
         0°
       </text>
-      <text x="110" y="108" textAnchor="middle">
+      <text x={20 + plot / 2} y="108" textAnchor="middle">
         45°
       </text>
-      <text x="200" y="108" textAnchor="middle">
+      <text x={20 + plot} y="108" textAnchor="middle">
         90°
       </text>
     </svg>
@@ -530,6 +542,157 @@ export function PolarizationDetail({
         )}
         {view === 'middle' && <span>{t('每片都只留下当前电场的投影。')}</span>}
       </div>
+    </div>
+  );
+}
+
+/** Phone director: keep the current projection, curve or energy account in focus.
+ * Every field, axis and fraction still comes from the same polarization state.
+ * Text stays in HTML or an SVG whose width equals the measured content width.
+ */
+export function PolarizationFocus({
+  state,
+  time,
+  width,
+  view,
+  energyStep,
+}: {
+  state: PolarizationState;
+  time: number;
+  width: number;
+  view: PolarizationView;
+  energyStep: number;
+}) {
+  const sourceView = view === 'direction' || view === 'ensemble';
+  const focus =
+    view === 'first'
+      ? state.stages[0]
+      : view === 'middle' || view === 'sweep'
+        ? state.stages.find((s) => s.id === 'M')
+        : state.stages.at(-1);
+  const middle = state.stages.find((s) => s.id === 'M');
+  return (
+    <div className="polarization-focus" data-focus={view}>
+      {sourceView ? (
+        <>
+          <div className="polarization-focus-source">
+            {t(state.source === 'unpolarized' ? '非偏振入射' : '线偏振入射')} <span>I₀ = 100%</span>
+          </div>
+          <svg
+            width={width}
+            height="128"
+            viewBox={`0 0 ${width} 128`}
+            role="img"
+            aria-label={t('电场方向 ⟂ 传播方向')}
+          >
+            <path
+              d={`M18 62H${width - 18}m-6 -5 6 5-6 5`}
+              stroke="#a6bec8"
+              strokeWidth="1.4"
+              fill="none"
+            />
+            {(['y', 'z'] as const).map((axis) => (
+              <path
+                key={axis}
+                d={polarizationPath(
+                  Array.from({ length: 161 }, (_, i) => {
+                    const x = i / 160,
+                      field = polarizationField(state, x, time);
+                    return { x: 18 + x * (width - 36), y: 62 - field[axis] * 24 };
+                  }),
+                )}
+                fill="none"
+                stroke={axis === 'y' ? '#eed098' : '#a4c6cd'}
+                strokeWidth="1.8"
+              />
+            ))}
+            <text x="18" y="20" fill="#eed098">
+              E
+            </text>
+            <text x={width - 18} y="116" textAnchor="end" fill="#a6bec8">
+              {t('传播方向')}
+            </text>
+          </svg>
+          <div className="polarization-focus-face">
+            <ProjectionFace state={state} view={view} time={time} />
+            <span>{t('迎着光看')}</span>
+          </div>
+          <div className="polarization-focus-equation">
+            {view === 'direction' ? 'E ⟂ k' : '⟨Ey²⟩ = ⟨Ez²⟩'}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="polarization-focus-source">
+            <span>I₀ = 100%</span>
+            <span>{t('理想吸收型偏振片')}</span>
+          </div>
+          <ol className="polarization-sequence" aria-label={t('偏振实验设置')}>
+            {state.stages.map((stage) => (
+              <li key={stage.id} style={{ color: polarizationColors[stage.id] }}>
+                <span>
+                  {stage.id} · {Math.round(stage.angle)}°
+                </span>
+                <b>{percent(stage.after.intensity)}</b>
+              </li>
+            ))}
+          </ol>
+          {view === 'energy' ? (
+            <PolarizationDetail state={state} view={view} time={time} energyStep={energyStep} />
+          ) : view === 'middle' ? (
+            <>
+              <div className="polarization-double-projection">
+                <div>
+                  <span>M · {Math.round(middle?.angle ?? 0)}°</span>
+                  <ProjectionFace state={state} view="middle" time={time} />
+                  <b>{percent(middle?.after.intensity ?? 0)}</b>
+                </div>
+                <div>
+                  <span>B · {Math.round(state.stages.find((s) => s.id === 'B')?.angle ?? 0)}°</span>
+                  <ProjectionFace state={state} view="crossed" time={time} />
+                  <b>{percent(state.output.intensity)}</b>
+                </div>
+              </div>
+              <div className="polarization-focus-equation">
+                ½ cos²β sin²β = {percent(state.output.intensity)}
+              </div>
+              <span>{t('两次投影')}</span>
+            </>
+          ) : view === 'sweep' ? (
+            <>
+              <div className="polarization-focus-equation">
+                β = {Math.round(middle?.angle ?? 0)}°
+              </div>
+              <PolarizationCurve state={state} middle width={width} />
+              <div className="polarization-focus-equation">I / I₀ = ⅛ sin²(2β)</div>
+              <output>
+                {t('最终透过')} · {percent(state.output.intensity)}
+              </output>
+            </>
+          ) : (
+            <>
+              <div className="polarization-projection-readout">
+                <ProjectionFace state={state} view={view} time={time} />
+                <div>
+                  <span>
+                    {focus?.id} · {Math.round(focus?.angle ?? 0)}°
+                  </span>
+                  <b>{view === 'first' ? 'I₁ / I₀' : 'I₂ / I₁'}</b>
+                  <output>{percent(focus?.relativeTransmission ?? 0)}</output>
+                </div>
+              </div>
+              {view === 'first' ? (
+                <div className="polarization-focus-equation">I₁ / I₀ = ½</div>
+              ) : (
+                <>
+                  <PolarizationCurve state={state} middle={false} width={width} />
+                  <div className="polarization-focus-equation">I₂ / I₁ = cos²θ</div>
+                </>
+              )}
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 }

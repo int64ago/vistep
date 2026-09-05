@@ -2,6 +2,8 @@
 
 [English](../../examples/tides-brief.md)
 
+当前录音修订（2026-09-06）：中英文均为 **202.0 秒**。实际章节窗口和审看边界见[修订记录](../qa-expansion-refinements.md)。下文较早的资产名、时间与审看结果属于此前版本。
+
 ## 集成影片
 
 中英文录音共享 **202.5 秒**时间线。下方原始 176 秒分镜保留为交接记录；实测语音决定以下最终窗口。章节标题、字幕和配音措辞保持原稿。原文中的临时 packet 已消费，`src/data/narration.json`、`film-timeline.json`、`audio-tracks.json` 和 `audio-manifest.json` 为正式数据源。

@@ -118,7 +118,7 @@ export default function Diffraction() {
                     )}
                   </p>
                   {showDistance ? (
-                    <DiffractionDistance state={state} width={panelWidth} />
+                    <DiffractionDistance state={state} width={panelWidth} compact={compact} />
                   ) : (
                     <DiffractionPhasors
                       state={state}
@@ -158,6 +158,7 @@ export default function Diffraction() {
                 profile={profile}
                 width={width}
                 field={view === 'square'}
+                compact={compact}
               />
             ) : (
               <div className="diffraction-withheld">

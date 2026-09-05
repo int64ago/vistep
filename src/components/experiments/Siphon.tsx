@@ -12,7 +12,7 @@ const statusLabels: Record<SiphonStatus, string> = {
   flow: '水柱连通，落差正在驱动流动。',
   level: '出口不低于水面，持续流量归零。',
   vented: '顶部进气，连续液柱已经断开。',
-  vapor: '顶部压力达到汽化边界，连续液柱解失效。',
+  vapor: '沿管最低压已触及汽化边界。',
   uncovered: '入口露出水面，空气进入管路。',
 };
 export default function Siphon() {
@@ -63,22 +63,17 @@ export default function Siphon() {
       <div className="siphon-reading">
         <div>
           <span>
-            {t(
-              showPressure ? (s.status === 'vapor' ? '单相假设压力' : '顶部绝对压力') : '瞬时流量',
-            )}
+            {t(showPressure ? (s.pressureValid ? '弯顶压力' : '弯顶压力（假设液柱）') : '瞬时流量')}
           </span>
           <strong>
-            {showPressure ? (s.crestPressure / 1000).toFixed(1) : (s.flow * 1000).toFixed(3)}
+            {showPressure ? (s.crestPressure / 1000).toFixed(3) : (s.flow * 1000).toFixed(3)}
             <small>{showPressure ? 'kPa' : 'L/s'}</small>
           </strong>
         </div>
         {showPressure && (
           <div className="siphon-boundary">
-            <span>{t('汽化边界')}</span>
-            <b>{(s.vaporPressure / 1000).toFixed(2)} kPa</b>
-            <span>
-              {s.temperature.toFixed(0)} °C · {t('环境')} {(s.atmosphere / 1000).toFixed(1)} kPa
-            </span>
+            <span>{t(s.pressureValid ? '沿管最低压' : '最低压（假设液柱）')}</span>
+            <b>{(s.minimumPressure / 1000).toFixed(3)} kPa</b>
           </div>
         )}
         {!showPressure && (
@@ -95,10 +90,12 @@ export default function Siphon() {
           </span>
         )}
       </div>
-      <SiphonApparatus shot={shot} flat={flat} />
-      <p className="siphon-observation" role="status">
-        {t(statusLabels[s.status])}
-      </p>
+      <SiphonApparatus shot={shot} flat={flat} compact={demo.watch} />
+      {(!demo.watch || s.status === 'vapor') && (
+        <p className="siphon-observation" role="status">
+          {t(statusLabels[s.status])}
+        </p>
+      )}
       {shot.view === 'height' && (
         <div className="siphon-limit">
           <p>
@@ -107,14 +104,27 @@ export default function Siphon() {
           <div className="siphon-limit-track">
             <i
               style={{
-                width: `${Math.max(0, Math.min(100, ((s.crestPressure - s.vaporPressure) / (s.atmosphere - s.vaporPressure)) * 100))}%`,
+                width: `${Math.max(0, Math.min(100, ((s.minimumPressure - s.vaporPressure) / (s.atmosphere - s.vaporPressure)) * 100))}%`,
               }}
             />
           </div>
           <p>
-            {t('连续液柱压力余量')}{' '}
-            <b>{((s.crestPressure - s.vaporPressure) / 1000).toFixed(1)} kPa</b>
+            {t('汽化边界')} <b>{(s.vaporPressure / 1000).toFixed(3)} kPa</b>
           </p>
+          {!demo.watch && (
+            <p>
+              {t('最低压余量')}{' '}
+              <b>{((s.minimumPressure - s.vaporPressure) / 1000).toFixed(3)} kPa</b>
+              {' · '}
+              {s.temperature.toFixed(0)} °C · {t('环境')} {(s.atmosphere / 1000).toFixed(3)} kPa
+            </p>
+          )}
+          {!demo.watch && (
+            <p>
+              {t('最低压位置：距入口')} {s.minimumPressureAt.toFixed(3)} m{' · '}
+              {t('弯顶位置')} {s.geometry.crestAt.toFixed(3)} m
+            </p>
+          )}
         </div>
       )}
       <div className="siphon-volume">
@@ -222,6 +232,7 @@ export default function Siphon() {
                 setSeconds(0);
                 setPrimed(false);
                 setVented(false);
+                setFlat(false);
               }}
             >
               {t('空管重新开始')}
@@ -237,6 +248,16 @@ export default function Siphon() {
           v² = 2gΔh / (1 + K + fL/D)
           <br />
           p꜀ = pₐ + ρg(zₛ − z꜀ − v²/2g − hₗ,ᵤ)
+        </p>
+        <p>
+          {t(
+            '弯顶压力是最高点的独立读数。沿程损失可让最低压出现在弯顶下游；单相有效性与余量均用沿管最低压判断。',
+          )}
+        </p>
+        <p>
+          {t(
+            '所有压力均为绝对压力。模型失效后，读数只表示假设液柱仍连通所需的压力；不代表真实汽化后的压力或流量。',
+          )}
         </p>
         <p>
           {t(

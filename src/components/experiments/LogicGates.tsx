@@ -2,7 +2,7 @@ import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
 import { useCompact } from '../lab/useCompact';
-import CmosCircuit, { CmosCascadeCircuit } from '../lab/CmosCircuit';
+import CmosCircuit, { CmosCascadeCircuit, CmosChargeCircuit } from '../lab/CmosCircuit';
 import {
   CMOS_THRESHOLDS,
   cmosCascade,
@@ -164,6 +164,40 @@ function CmosEvidence({ shot }: { shot: CmosShot }) {
     </div>
   );
 }
+/** Chapter-selected instruments; every value still comes from the director's RC trace. */
+export function CmosPhoneFilm({ shot }: { shot: CmosShot }) {
+  const s = shot.sample;
+  const network = shot.focus === 'nand' || shot.focus === 'nor';
+  return (
+    <div className="cmos-phone-film" data-focus={shot.focus}>
+      <div className="cmos-state">
+        <span>
+          {t(names[shot.trace.kind])} · A {s.inputs[0]}
+          {shot.trace.kind !== 'inverter' ? ` · B ${s.inputs[1]}` : ''}
+        </span>
+        <span>
+          {shot.second ? 'Y₁' : 'Y'} {fmt(s.voltage)} V{' '}
+          <b className={s.level === 'X' ? 'is-unknown' : ''}>{s.level}</b>
+        </span>
+      </div>
+      {network ? (
+        <>
+          <div className="cmos-device-types">
+            <span>{t('pMOS 上拉')}</span>
+            <span>{t('nMOS 下拉')}</span>
+          </div>
+          <CmosCircuit shot={shot} compact />
+        </>
+      ) : shot.second ? (
+        <CmosCascadeCircuit shot={shot} compact />
+      ) : (
+        <CmosChargeCircuit shot={shot} />
+      )}
+      {!network && shot.focus !== 'energy' && <VoltageProof shot={shot} />}
+      <CmosEvidence shot={shot} />
+    </div>
+  );
+}
 export default function LogicGates() {
   const showcase = useShowcase(),
     compact = useCompact(),
@@ -207,38 +241,42 @@ export default function LogicGates() {
       data-watch={showcase.watch}
       aria-label={t('从晶体管通路到逻辑电平的 CMOS 电路')}
     >
-      <div className="cmos-film">
-        <div className="cmos-heading">
-          <h2>{t(showcase.watch ? titles[chapter] : '检查输入变化后的电压')}</h2>
-          <span className="cmos-desktop-only">CMOS · {t('过程慢放')}</span>
+      {showcase.watch && compact ? (
+        <CmosPhoneFilm shot={shot} />
+      ) : (
+        <div className="cmos-film">
+          <div className="cmos-heading">
+            <h2>{t(showcase.watch ? titles[chapter] : '检查输入变化后的电压')}</h2>
+            <span className="cmos-desktop-only">CMOS · {t('过程慢放')}</span>
+          </div>
+          <div className="cmos-state">
+            <span>
+              {t(names[shot.trace.kind])} · A {s.inputs[0]}
+              {shot.trace.kind !== 'inverter' ? ` · B ${s.inputs[1]}` : ''}
+            </span>
+            <span>
+              Y {fmt(s.voltage)} V <b className={s.level === 'X' ? 'is-unknown' : ''}>{s.level}</b>
+            </span>
+          </div>
+          <div className="cmos-device-types">
+            <span>{t('pMOS 上拉')}</span>
+            <span>{t('nMOS 下拉')}</span>
+          </div>
+          {shot.second ? (
+            <CmosCascadeCircuit shot={shot} compact={compact} />
+          ) : (
+            <CmosCircuit shot={shot} compact={compact} />
+          )}
+          <div className="cmos-instruments">
+            <VoltageProof shot={shot} />
+            <CmosEvidence shot={shot} />
+          </div>
+          <div className="cmos-note">
+            <span>{t('沟道实线表示接通，栅极与沟道绝缘')}</span>
+            <span>{t('模型：互补开关与 RC')}</span>
+          </div>
         </div>
-        <div className="cmos-state">
-          <span>
-            {t(names[shot.trace.kind])} · A {s.inputs[0]}
-            {shot.trace.kind !== 'inverter' ? ` · B ${s.inputs[1]}` : ''}
-          </span>
-          <span>
-            Y {fmt(s.voltage)} V <b className={s.level === 'X' ? 'is-unknown' : ''}>{s.level}</b>
-          </span>
-        </div>
-        <div className="cmos-device-types">
-          <span>{t('pMOS 上拉')}</span>
-          <span>{t('nMOS 下拉')}</span>
-        </div>
-        {shot.second ? (
-          <CmosCascadeCircuit shot={shot} compact={compact} />
-        ) : (
-          <CmosCircuit shot={shot} compact={compact} />
-        )}
-        <div className="cmos-instruments">
-          <VoltageProof shot={shot} />
-          <CmosEvidence shot={shot} />
-        </div>
-        <div className="cmos-note">
-          <span>{t('沟道实线表示接通，栅极与沟道绝缘')}</span>
-          <span>{t('模型：互补开关与 RC')}</span>
-        </div>
-      </div>
+      )}
       {!showcase.watch && (
         <div className="cmos-explore">
           <p>

@@ -6,10 +6,12 @@ import { SIPHON, siphonPoint, siphonPressure, type SiphonShot } from '../../mode
 export default function SiphonApparatus({
   shot,
   flat = false,
+  compact = false,
   initialWidth = 880,
 }: {
   shot: SiphonShot;
   flat?: boolean;
+  compact?: boolean;
   initialWidth?: number;
 }) {
   const host = useRef<HTMLDivElement>(null),
@@ -18,24 +20,28 @@ export default function SiphonApparatus({
   useLayoutEffect(() => {
     const element = host.current;
     if (!element) return;
-    const observer = new ResizeObserver(([entry]) =>
-      setWidth(Math.max(240, entry.contentRect.width)),
-    );
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry.contentRect.width > 0) setWidth(entry.contentRect.width);
+    });
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
   const s = shot.state,
     g = s.geometry,
     phone = width < 620;
-  const height = phone ? 365 : 490,
-    tall = shot.view === 'height';
+  const tight = phone && compact,
+    tall = shot.view === 'height',
+    pressureFocus = tight && (tall || shot.view === 'pressure'),
+    height = phone ? (tight ? (pressureFocus ? 214 : 288) : 365) : 490;
   const scaleX = phone ? (width - 88) / 2.25 : Math.min(210, (width - 220) / 3.2);
   const originX = phone ? 44 + scaleX * 0.55 : width / 2 - scaleX * 0.55;
-  const ground = phone ? 235 : 348,
-    scaleY = phone ? 84 : 143;
+  const ground = phone ? (tight ? 164 : 235) : 348,
+    scaleY = phone ? (tight ? 56 : 84) : 143;
   const project = (p: { x: number; y: number }) => ({
     x: originX + p.x * scaleX,
-    y: ground - (tall && p.y > 1.25 ? 1.25 * scaleY + (p.y - 1.25) * 10 : p.y * scaleY),
+    y:
+      ground -
+      (tall && p.y > 1.25 ? 1.25 * scaleY + (p.y - 1.25) * (tight ? 6 : 10) : p.y * scaleY),
   });
   const at = (distance: number) => project(siphonPoint(g, distance));
   const points = Array.from({ length: 181 }, (_, n) => at((g.length * n) / 180));
@@ -61,6 +67,7 @@ export default function SiphonApparatus({
   const source = project({ x: 0, y: s.sourceLevel }),
     receiver = project({ x: g.outlet.x, y: s.receiverLevel });
   const crest = at(g.crestAt),
+    minimum = at(s.minimumPressureAt),
     inlet = at(0),
     outlet = at(g.length);
   const vessel = (
@@ -133,17 +140,19 @@ export default function SiphonApparatus({
   const waterIntervals = s.wet;
   const headX = phone ? width - 18 : Math.min(width - 55, outlet.x + 92);
   return (
-    <div className="siphon-apparatus" ref={host} data-flat={flat}>
+    <div className="siphon-apparatus" ref={host} data-flat={flat} data-compact={compact}>
       <div className="siphon-apparatus-note">
         {tall ? (
           <>
-            <span>
-              {t('顶部抬升')} {(g.crest.y - s.sourceLevel).toFixed(2)} m
-            </span>
-            <span>{t('上段高度压缩显示')}</span>
+            {!compact && (
+              <span>
+                {t('顶部抬升')} {(g.crest.y - s.sourceLevel).toFixed(2)} m
+              </span>
+            )}
+            <span>{t(compact ? '上段压缩 · 管径放大' : '上段高度压缩显示')}</span>
           </>
         ) : (
-          <span>{t('管径放大显示 · 刚性弯管')}</span>
+          <span>{t(compact ? '管径放大 · 刚性弯管' : '管径放大显示 · 刚性弯管')}</span>
         )}
       </div>
       <svg
@@ -169,7 +178,9 @@ export default function SiphonApparatus({
             <stop offset="1" stopColor="#b1c7b5" />
           </linearGradient>
         </defs>
-        <path d={`M24,${ground + 82}H${width - 24}`} stroke="#bdc8b4" strokeWidth="1" />
+        {!pressureFocus && (
+          <path d={`M24,${ground + 82}H${width - 24}`} stroke="#bdc8b4" strokeWidth="1" />
+        )}
         {vessel(-0.325, 0, 1.2, s.sourceLevel, 0.625, 'source')}
         {vessel(g.outlet.x, SIPHON.receiverFloor, 0.12, s.receiverLevel, 0.325, 'receiver')}
         <path
@@ -238,9 +249,9 @@ export default function SiphonApparatus({
         )}
         {gap && (
           <g fill="#f5e9bb" stroke="#aa925f">
-            <circle cx={crest.x - 8} cy={crest.y} r="4" />
-            <circle cx={crest.x + 3} cy={crest.y + 1} r="5" />
-            <circle cx={crest.x + 11} cy={crest.y + 2} r="3" />
+            <circle cx={minimum.x - 8} cy={minimum.y} r="4" />
+            <circle cx={minimum.x + 3} cy={minimum.y + 1} r="5" />
+            <circle cx={minimum.x + 11} cy={minimum.y + 2} r="3" />
           </g>
         )}
         {s.pump && (
@@ -281,24 +292,30 @@ export default function SiphonApparatus({
         >
           Δh {s.head.toFixed(2)} m
         </text>
-        <text x={project({ x: -0.325, y: 0 }).x} y={ground + 31} textAnchor="middle">
-          {t('水源')}
-        </text>
-        <text
-          x={project({ x: -0.325, y: 0 }).x}
-          y={ground + 54}
-          textAnchor="middle"
-          className="siphon-amount"
-        >
-          {(s.sourceVolume * 1000).toFixed(1)} L
-        </text>
-        <text
-          x={phone ? width - 10 : receiver.x}
-          y={ground + 111}
-          textAnchor={phone ? 'end' : 'middle'}
-        >
-          {t('已接收')} {(s.receiverVolume * 1000).toFixed(1)} L
-        </text>
+        {!pressureFocus && (
+          <text x={project({ x: -0.325, y: 0 }).x} y={ground + 31} textAnchor="middle">
+            {t('水源')}
+          </text>
+        )}
+        {!pressureFocus && (
+          <text
+            x={project({ x: -0.325, y: 0 }).x}
+            y={ground + 54}
+            textAnchor="middle"
+            className="siphon-amount"
+          >
+            {(s.sourceVolume * 1000).toFixed(1)} L
+          </text>
+        )}
+        {!pressureFocus && (
+          <text
+            x={phone ? width - 10 : receiver.x}
+            y={ground + 111}
+            textAnchor={phone ? 'end' : 'middle'}
+          >
+            {t('已接收')} {(s.receiverVolume * 1000).toFixed(1)} L
+          </text>
+        )}
         {tall ? (
           <>
             {[0, 1.6].map((x) => {
@@ -343,7 +360,7 @@ export default function SiphonApparatus({
             </span>
           </div>
           <svg
-            viewBox={`0 0 ${width} 115`}
+            viewBox={`0 0 ${width} ${tight ? 90 : 115}`}
             role="img"
             aria-label={t('沿管压力先下降，在下行段恢复；出口回到大气压。')}
           >
@@ -355,7 +372,7 @@ export default function SiphonApparatus({
               d={Array.from(
                 { length: 121 },
                 (_, i) =>
-                  `${i ? 'L' : 'M'}${24 + ((width - 48) * i) / 120},${32 + (s.atmosphere - siphonPressure(s, (g.length * i) / 120)) / 270}`,
+                  `${i ? 'L' : 'M'}${24 + ((width - 48) * i) / 120},${32 + (s.atmosphere - siphonPressure(s, (g.length * i) / 120)) / (tight ? 400 : 270)}`,
               ).join(' ')}
               fill="none"
               stroke="#478c7d"
@@ -363,7 +380,7 @@ export default function SiphonApparatus({
             />
             <circle
               cx={24 + ((width - 48) * g.crestAt) / g.length}
-              cy={32 + (s.atmosphere - s.crestPressure) / 270}
+              cy={32 + (s.atmosphere - s.crestPressure) / (tight ? 400 : 270)}
               r="4"
               fill="#ac8a4d"
             />

@@ -455,12 +455,8 @@
 }
 @media (max-width: 640px) {
   .electric-transformer[data-watch='true'] {
-    min-height: 880px;
     display: flex;
     flex-direction: column;
-  }
-  .electric-transformer[data-watch='true'] .electric-notes {
-    margin-top: auto;
   }
   .electric-transformer[data-watch='true'] .electric-object {
     height: 236px;
@@ -490,5 +486,38 @@
 @media (prefers-reduced-motion: reduce) {
   .electric-transformer button {
     transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .electric-transformer[data-watch='true'] .electric-kicker {
+    display: none;
+  }
+  .electric-transformer[data-watch='true'] .electric-object {
+    height: 220px;
+  }
+  .electric-transformer[data-watch='true'] .electric-terminals {
+    padding-bottom: 8px;
+  }
+  .electric-transformer[data-watch='true'][data-power='false'][data-dc='false']
+    .electric-terminals
+    small {
+    display: none;
+  }
+  .electric-transformer[data-watch='true'] .electric-trace {
+    padding: 5px 0;
+  }
+  .electric-transformer[data-watch='true'] .electric-trace svg {
+    height: 44px;
+  }
+  .electric-transformer[data-watch='true'] .electric-relation > span:last-child {
+    display: none;
+  }
+  .electric-transformer[data-watch='true'] .electric-notes {
+    padding-bottom: 6px;
+  }
+  .electric-transformer[data-watch='true'] .electric-power {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

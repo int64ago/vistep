@@ -32,15 +32,17 @@ export function PublicKeyPower({
   trace,
   completed,
   privateSide = false,
+  compact = false,
 }: {
   trace: PowerTrace;
   completed: number;
   privateSide?: boolean;
+  compact?: boolean;
 }) {
   const state = pkAt(trace, completed),
     row = state.current;
   return (
-    <div className="pk-power" data-private={privateSide}>
+    <div className="pk-power" data-private={privateSide} data-compact={compact}>
       <div className="pk-power-heading">
         <span>{privateSide ? t('私人指数') : t('公开指数')}</span>
         <b>{trace.exponent}</b>
@@ -52,23 +54,35 @@ export function PublicKeyPower({
             .join(' + ')}
         </span>
       </div>
-      <div className="pk-power-tape" aria-label={t('平方得到的幂及其余数')}>
-        {trace.steps.map((s, i) => (
-          <div
-            key={s.power}
-            data-active={i === completed - 1}
-            data-selected={s.selected}
-            data-past={i < completed}
-          >
-            <span>
+      {compact ? (
+        row && (
+          <div className="pk-current-power" data-power={row.power} data-selected={row.selected}>
+            <code>
               {trace.base}
-              <sup>{s.power}</sup>
-            </span>
-            <strong>{s.factor}</strong>
-            <small>{s.selected ? t('取用') : t('不取用')}</small>
+              <sup>{row.power}</sup> mod {trace.modulus} = <b>{row.factor}</b>
+            </code>
+            <span>{row.selected ? t('取用') : t('不取用')}</span>
           </div>
-        ))}
-      </div>
+        )
+      ) : (
+        <div className="pk-power-tape" aria-label={t('平方得到的幂及其余数')}>
+          {trace.steps.map((s, i) => (
+            <div
+              key={s.power}
+              data-active={i === completed - 1}
+              data-selected={s.selected}
+              data-past={i < completed}
+            >
+              <span>
+                {trace.base}
+                <sup>{s.power}</sup>
+              </span>
+              <strong>{s.factor}</strong>
+              <small>{s.selected ? t('取用') : t('不取用')}</small>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="pk-power-work">
         {row ? (
           <>
@@ -117,26 +131,41 @@ export function PublicKeyPower({
     </div>
   );
 }
-export function PublicKeyOrigin({ k, phase }: { k: TeachingKey; phase: number }) {
+export function PublicKeyOrigin({
+  k,
+  phase,
+  compact = false,
+}: {
+  k: TeachingKey;
+  phase: number;
+  compact?: boolean;
+}) {
   const rows = k.inverse.filter((r) => r.quotient > 0 && r.remainder > 0);
   return (
     <div className="pk-origin">
-      <div className="pk-primes">
-        <div>
-          <span>p</span>
-          <strong>{k.p}</strong>
+      {!compact || phase === 0 ? (
+        <div className="pk-primes">
+          <div>
+            <span>p</span>
+            <strong>{k.p}</strong>
+          </div>
+          <span>×</span>
+          <div>
+            <span>q</span>
+            <strong>{k.q}</strong>
+          </div>
+          <span>=</span>
+          <div>
+            <span>n</span>
+            <strong>{k.n}</strong>
+          </div>
         </div>
-        <span>×</span>
-        <div>
-          <span>q</span>
-          <strong>{k.q}</strong>
+      ) : (
+        <div className="pk-origin-context">
+          n = {k.n} · e = {k.e}
+          {phase > 1 ? ` · λ = ${k.lambda}` : ''}
         </div>
-        <span>=</span>
-        <div>
-          <span>n</span>
-          <strong>{k.n}</strong>
-        </div>
-      </div>
+      )}
       <div className="pk-key-proof">
         {phase === 0 ? (
           <>
@@ -178,22 +207,24 @@ export function PublicKeyOrigin({ k, phase }: { k: TeachingKey; phase: number })
           </>
         )}
       </div>
-      <div className="pk-key-pair">
-        <div>
-          <span>{t('可公开')}</span>
-          <b>(n, e)</b>
-          <code>
-            ({k.n}, {k.e})
-          </code>
+      {(!compact || phase === 3) && (
+        <div className="pk-key-pair">
+          <div>
+            <span>{t('可公开')}</span>
+            <b>(n, e)</b>
+            <code>
+              ({k.n}, {k.e})
+            </code>
+          </div>
+          <div>
+            <span>{t('应保密')}</span>
+            <b>(n, d)</b>
+            <code>
+              ({k.n}, {phase === 3 ? k.d : '…'})
+            </code>
+          </div>
         </div>
-        <div>
-          <span>{t('应保密')}</span>
-          <b>(n, d)</b>
-          <code>
-            ({k.n}, {phase === 3 ? k.d : '…'})
-          </code>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -245,10 +276,12 @@ export function PublicKeyResidues({
   r,
   k,
   domain,
+  compact = false,
 }: {
   r: Exchange;
   k: TeachingKey;
   domain: { count: number; correct: number };
+  compact?: boolean;
 }) {
   return (
     <div className="pk-residues">
@@ -282,11 +315,13 @@ export function PublicKeyResidues({
           </div>
         ))}
       </div>
-      <p>
-        {r.gcd === 1
-          ? t('两边余数都吻合，范围内的消息唯一。')
-          : t('不互素也能恢复；不能只用互素情形来证明。')}
-      </p>
+      {!compact && (
+        <p>
+          {r.gcd === 1
+            ? t('两边余数都吻合，范围内的消息唯一。')
+            : t('不互素也能恢复；不能只用互素情形来证明。')}
+        </p>
+      )}
       <div className="pk-domain-stamp">
         <b>
           {domain.correct} / {domain.count}
@@ -300,12 +335,14 @@ export function PublicKeyGuesses({
   r,
   attempts,
   count,
+  compact = false,
 }: {
   r: Exchange;
   attempts: ReturnType<typeof pkGuess>;
   count: number;
+  compact?: boolean;
 }) {
-  const shown = attempts.slice(Math.max(0, count - 3), count),
+  const shown = attempts.slice(Math.max(0, count - (compact ? 2 : 3)), count),
     found = shown.at(-1)?.matches;
   return (
     <div className="pk-guesses">

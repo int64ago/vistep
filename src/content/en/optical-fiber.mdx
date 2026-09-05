@@ -35,6 +35,8 @@ With `ncore=1.48`, `nclad=1.46` and `n₀=1`, the entrance half-angle is about 1
 
 Unpolarized Fresnel reflectance averages two orthogonal polarization reflectances. At a lossless boundary, `R + T = 1`. Each encounter assigns fraction `T` of its incoming power to the escaped branch and retains fraction `R`. All escaped powers plus the final core power equal the power normalized just inside the entrance.
 
+At each encounter, this teaching model reuses the unpolarized average coefficient. It does not carry the changing s- and p-polarized powers between reflections. After partial reflection, real light need not remain unpolarized, so the repeated average is an approximation for the trend of branch powers, not an exact polarization-resolved loss prediction.
+
 Line opacity uses the square root of power to keep weak branches visible; it is not an irradiance measurement. Entrance reflection losses, end coupling, the outer cladding boundary and absorption are omitted. Moving markers drastically slow propagation to show direction. They are not individual photons splitting apart or a representation of real light speed.
 
 </details>

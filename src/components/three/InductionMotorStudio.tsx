@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
+import { createElectricalFraming } from './electrical-framing';
 import InductionMotorFlat from './InductionMotorFlat';
 import { t } from '../../i18n';
 import {
@@ -43,7 +44,7 @@ export default function InductionMotorStudio({
       span={narrow ? 7.1 : 8.2}
       fitHeight={narrow ? 5.7 : 7}
       fallback={<InductionMotorFlat shot={shot} narrow={narrow} />}
-      create={({ root, controls }) => {
+      create={({ root, controls, camera }) => {
         const assembly = new THREE.Group();
         assembly.position.y = M.axisY;
         root.add(assembly);
@@ -227,6 +228,7 @@ export default function InductionMotorStudio({
           assembly.add(a);
           return a;
         });
+        const framing = createElectricalFraming(root, camera, controls, [rotor], [-0.09, 0]);
         return {
           update() {
             const sh = latest.current,
@@ -265,7 +267,11 @@ export default function InductionMotorStudio({
               );
               a.setLength(0.12 + Math.abs(value) / 8, 0.09, 0.055);
             });
+            framing.update();
             if (!controls.enabled) root.rotation.y = sh.chapter === 2 ? -0.09 : 0;
+          },
+          dispose() {
+            framing.dispose();
           },
         };
       }}

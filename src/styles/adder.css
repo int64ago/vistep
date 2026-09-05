@@ -56,7 +56,7 @@
   gap: 36px;
   margin: 26px 0 8px;
   color: #58694f;
-  font-size: 15px;
+  font-size: 16px;
 }
 .adder-flags span {
   display: flex;
@@ -123,7 +123,7 @@
   }
   .adder-flags {
     gap: 18px;
-    font-size: 12px;
+    font-size: 16px;
     justify-content: space-between;
     margin-top: 22px;
   }
@@ -144,7 +144,7 @@
     max-height: none;
   }
   .adder-circuit p {
-    font-size: 14px;
+    font-size: 16px;
   }
   .showcase[data-mode='watch'] .adder-study {
     min-height: 520px;
@@ -221,4 +221,140 @@
 
 .adder-columns svg {
   max-height: 330px;
+}
+
+.adder-topline > span:last-child {
+  font-size: 16px;
+  letter-spacing: normal;
+}
+.adder-bit-columns {
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.adder-native-grid > [role='row'] {
+  display: grid;
+  grid-template-columns: 42px repeat(var(--adder-bits), minmax(0, 1fr));
+  gap: 4px;
+  text-align: center;
+  align-items: center;
+  min-height: 30px;
+}
+.adder-native-grid > [role='row'] > :first-child {
+  text-align: left;
+  font-size: 16px;
+}
+.adder-native-grid b {
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.adder-native-grid .adder-native-weights b {
+  font-size: 16px;
+}
+.adder-native-carry {
+  color: #8f5339;
+}
+.adder-native-carry > [role='cell'] {
+  position: relative;
+  font-size: 16px;
+}
+.adder-native-carry i {
+  position: absolute;
+  left: -8px;
+  font-style: normal;
+  color: #73826b;
+}
+.adder-native-carry > :nth-child(2) i {
+  display: none;
+}
+.adder-native-sum {
+  border-top: 1px solid #9eaf92;
+  background: #d7dfc766;
+  border-radius: 0 0 8px 8px;
+}
+.adder-outside-word,
+.adder-carry-key,
+.adder-word-reading {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #58694f;
+}
+.adder-outside-word {
+  color: #8f5339;
+}
+.adder-word-reading {
+  text-align: right;
+}
+.adder-bank-bridge {
+  font-size: 16px;
+  color: #8f5339;
+  text-align: center;
+  padding: 5px 0;
+}
+.adder-circuit-map {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.adder-circuit-map svg {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+}
+.adder-circuit-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: #566d4f;
+  pointer-events: none;
+}
+.adder-signal-value {
+  font-size: 18px;
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .adder-study {
+    padding: 16px 14px;
+  }
+  .adder-expression {
+    margin: 12px 0;
+    font-size: 28px;
+    gap: 12px;
+  }
+  .adder-native-grid > [role='row'] {
+    grid-template-columns: 36px repeat(var(--adder-bits), minmax(0, 1fr));
+    min-height: 24px;
+    gap: 3px;
+  }
+  .adder-native-grid b {
+    font-size: 22px;
+  }
+  .adder-native-grid .adder-native-weights b {
+    font-size: 16px;
+  }
+  .adder-flags {
+    display: grid;
+    gap: 6px;
+    margin: 12px 0 0;
+  }
+  .adder-flags span {
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 16px;
+  }
+  .adder-interpretation {
+    margin-top: 12px;
+  }
+  .adder-circuit p {
+    margin-top: 12px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
 }

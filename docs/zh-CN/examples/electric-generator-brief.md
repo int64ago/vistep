@@ -2,6 +2,8 @@
 
 [English](../../examples/electric-generator-brief.md)
 
+当前录音修订（2026-09-06）：中英文均为 **207.0 秒**。实际章节窗口和审看边界见[修订记录](../qa-expansion-refinements.md)。下文较早的资产名、时间与审看结果属于此前版本。
+
 交接包为 公共专题、讲解与翻译登记。专题 `electric-generator`，主组件 `ElectricGenerator`。计划 8 个各 22 秒章节，共 176 秒。检查时，关联专题 `transformer-electric` 和 `ball-bearing` 均已登记。
 
 ## 因果主线与镜头

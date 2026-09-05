@@ -6,6 +6,21 @@
   line-height: 1.55;
   overflow: hidden;
 }
+.siphon-study[data-watch='true'] {
+  min-height: 740px;
+  display: flex;
+  flex-direction: column;
+}
+.siphon-study[data-watch='true'] .siphon-heading {
+  display: none;
+}
+.siphon-study[data-watch='true'] .siphon-assumptions {
+  margin-top: auto;
+}
+.siphon-study[data-watch='true'] .siphon-reading {
+  min-height: 0;
+  padding-top: 8px;
+}
 .siphon-heading {
   display: flex;
   align-items: center;
@@ -126,7 +141,7 @@
   stroke-linejoin: round;
 }
 .siphon-pressure-strip {
-  padding: 0 12px;
+  padding: 0;
   margin-top: 0;
 }
 .siphon-pressure-strip > div {
@@ -274,6 +289,10 @@
   color: #3f6a54;
 }
 @media (max-width: 620px) {
+  .siphon-study[data-watch='true'] {
+    min-height: 588px;
+    padding: 12px 8px;
+  }
   .siphon-study {
     padding: 16px 8px;
   }
@@ -383,7 +402,54 @@
     margin-bottom: 14px;
   }
   .siphon-study[data-watch='true'] .siphon-observation {
-    margin-bottom: 10px;
-    min-height: 40px;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 6px 0;
+    min-height: 0;
+  }
+  .siphon-study[data-watch='true'] .siphon-reading {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+    padding: 4px 4px 2px;
+    gap: 8px;
+  }
+  .siphon-study[data-watch='true'] .siphon-reading span {
+    line-height: 1.4;
+  }
+  .siphon-study[data-watch='true'] .siphon-reading strong,
+  .siphon-study[data-watch='true'] .siphon-boundary b {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  .siphon-study[data-watch='true'] .siphon-reading strong small {
+    margin-left: 4px;
+    font-size: 16px;
+  }
+  .siphon-study[data-watch='true'] .siphon-boundary {
+    grid-template-columns: 1fr;
+    text-align: right;
+  }
+  .siphon-study[data-watch='true'][data-view='apparatus'] .siphon-reading {
+    grid-template-columns: 1fr;
+  }
+  .siphon-study[data-watch='true'] .siphon-apparatus-note {
+    padding: 6px 4px 0;
+    line-height: 1.4;
+  }
+  .siphon-study[data-watch='true'] .siphon-pressure-strip > div > span:last-child {
+    display: none;
+  }
+  .siphon-study[data-watch='true'] .siphon-volume {
+    padding: 8px 4px;
+  }
+  .siphon-study[data-watch='true'] .siphon-limit {
+    width: 100%;
+    margin: 0 0 6px;
+    padding-inline: 4px;
+  }
+  .siphon-study[data-watch='true'] .siphon-limit p {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
   }
 }

@@ -134,19 +134,24 @@
   stroke: #faf8ee;
   stroke-width: 1.8;
 }
+/* HTML text stays 16px; its anchor uses the same 600-unit projection as the SVG. */
 .generator-axis {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  position: relative;
+  height: 26px;
   font-size: 16px;
   color: var(--eg-muted);
-  padding: 0 4px;
   font-variant-numeric: tabular-nums;
 }
-.generator-axis span:not(:first-child):not(:last-child) {
-  text-align: center;
+.generator-axis span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.generator-axis span:first-child {
+  transform: none;
 }
 .generator-axis span:last-child {
-  text-align: right;
+  transform: translateX(-100%);
 }
 .generator-instrument-foot {
   display: flex;
@@ -300,13 +305,10 @@
   font-variant-numeric: tabular-nums;
 }
 .electric-generator[data-watch='true'][data-narrow='true'] {
-  min-height: 760px;
   display: flex;
   flex-direction: column;
 }
-.electric-generator[data-watch='true'][data-narrow='true'] .generator-notes {
-  margin-top: auto;
-}
+
 .electric-generator[data-watch='true'][data-narrow='true'] .generator-topline span:last-child,
 .electric-generator[data-watch='true'][data-narrow='true'] .generator-shaft-label span:last-child,
 .electric-generator[data-watch='true'][data-narrow='true'] .generator-instrument-foot {
@@ -318,11 +320,11 @@
 }
 .electric-generator[data-watch='true'][data-narrow='true'][data-shot='2'] .generator-object,
 .electric-generator[data-watch='true'][data-narrow='true'][data-shot='7'] .generator-object {
-  height: 210px;
+  height: 230px;
 }
 .electric-generator[data-watch='true'][data-narrow='true'][data-shot='3'] .generator-object,
 .electric-generator[data-watch='true'][data-narrow='true'][data-shot='4'] .generator-object {
-  height: 240px;
+  height: 232px;
 }
 .electric-generator[data-watch='true'][data-narrow='true'][data-shot='2'] .generator-observation,
 .electric-generator[data-watch='true'][data-narrow='true'][data-shot='0'] .generator-observation,
@@ -399,4 +401,38 @@
   .electric-generator button {
     transition: none;
   }
+}
+
+/* Phone chapters keep one proof under the machine, without a blank-height floor. */
+.electric-generator[data-watch='true'][data-narrow='true'] .generator-topline {
+  display: none;
+}
+.electric-generator[data-watch='true'][data-narrow='true'] .generator-object {
+  height: 252px;
+}
+.electric-generator[data-watch='true'][data-narrow='true']:is(
+    [data-shot='2'],
+    [data-shot='3'],
+    [data-shot='4'],
+    [data-shot='7']
+  )
+  .generator-object {
+  height: 230px;
+}
+.electric-generator[data-watch='true'][data-narrow='true'] .generator-shaft-label {
+  padding: 0 17px 10px;
+}
+.electric-generator[data-watch='true'][data-narrow='true'] .generator-proof {
+  padding: 12px 17px;
+}
+.electric-generator[data-watch='true'][data-narrow='true'] .generator-instrument svg {
+  height: 88px;
+}
+.electric-generator[data-watch='true'][data-narrow='true']
+  .generator-contact-detail
+  :is(p, .generator-instrument-heading span:last-child) {
+  display: none;
+}
+.electric-generator[data-watch='true'][data-narrow='true'] .generator-notes {
+  padding: 0 17px 6px;
 }

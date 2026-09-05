@@ -45,15 +45,15 @@ This branch contains 62 explorations, each with Chinese and English articles, a 
 | [JPEG compression](../src/content/en/jpeg.mdx)                 | 3:21 | When a photo shrinks, what survives?                            |
 | [Training & generation](../src/content/en/transformer.mdx)     | 4:00 | How does a model learn the next token?                          |
 | [Binary addition](../src/content/en/binary-adder.mdx)          | 2:58 | How do zeros and ones add up?                                   |
-| [CPU instruction pipeline](../src/content/en/cpu-pipeline.mdx) | 3:07 | If one instruction is no faster, why is the program faster?     |
-| [Memory and cache](../src/content/en/memory-cache.mdx)         | 3:11 | Why can a cache miss when there is still empty space?           |
+| [CPU instruction pipeline](../src/content/en/cpu-pipeline.mdx) | 3:09 | If one instruction is no faster, why is the program faster?     |
+| [Memory and cache](../src/content/en/memory-cache.mdx)         | 3:12 | Why can a cache miss when there is still empty space?           |
 | [Error correction](../src/content/en/error-correction.mdx)     | 3:31 | How can a flipped data bit find its way back?                   |
 | [QR Code](../src/content/en/qr-code.mdx)                       | 3:34 | How does a tiny grid hold an entire URL?                        |
 | [Hash](../src/content/en/hash.mdx)                             | 3:05 | Why can one changed bit alter an entire digest?                 |
 | [Public-key cryptography](../src/content/en/public-key.mdx)    | 3:16 | How can a public key help keep a message private?               |
 | [Logic gates](../src/content/en/logic-gates.mdx)               | 2:57 | Logic gates: how voltage becomes zero and one                   |
 | [Database index](../src/content/en/database-index.mdx)         | 3:22 | How does a database find a row without reading the whole table? |
-| [Packet routing](../src/content/en/packet-routing.mdx)         | 3:02 | How do packets cross a changing network?                        |
+| [Packet routing](../src/content/en/packet-routing.mdx)         | 3:01 | How do packets cross a changing network?                        |
 
 ## Space & waves
 

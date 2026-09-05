@@ -19,6 +19,7 @@ import {
   WaveInterferenceString,
   WaveInterferenceTrace,
 } from '../lab/WaveInterferenceString';
+import { WaveInterferencePhone } from '../lab/WaveInterferencePhone';
 import '../../styles/wave-interference.css';
 
 export default function WaveInterference() {
@@ -64,24 +65,6 @@ export default function WaveInterference() {
       ratio: mode === 'pulses' ? -1 : 1,
       probe: mode === 'pulses' ? 0.2 : 0.4,
     });
-  const statement =
-    view === 'material'
-      ? '金点上下运动，不随波峰走。'
-      : view === 'cancel'
-        ? '在同一个位置，把两项位移相加。'
-        : view === 'energy'
-          ? input.time === 0
-            ? '绳子此刻平直，物质点仍有速度。'
-            : '运动让绳形重新显现；能量没有消失。'
-          : view === 'pass'
-            ? '波形穿过彼此，金点仍留在原处。'
-            : view === 'phase'
-              ? '只改相位差，看同一点的合振幅。'
-              : view === 'amplitude'
-                ? '反相却不等高，仍有剩余振动。'
-                : view === 'formation'
-                  ? '两列波进入，重叠区逐渐形成波节。'
-                  : '波节不动，动能与形变能仍在交换。';
   return (
     <section
       className="wi-study"
@@ -93,94 +76,105 @@ export default function WaveInterference() {
         <span>{t(compact ? '波的干涉' : '波的干涉 · 一根绳，两列波')}</span>
         <span>{t('理想弦 · 慢动作')}</span>
       </div>
-      <p className="wi-current">{t(demo.watch ? statement : '调整时间和输入，观察同一模型。')}</p>
+      {!demo.watch && <p className="wi-current">{t('调整时间和输入，观察同一模型。')}</p>}
       <div className="wi-body" ref={host}>
-        {!(demo.watch && compact && phase) && (
+        {demo.watch && compact ? (
           <>
-            <div className="wi-legend">
-              <span className="wi-key-a">A</span>
-              <span className="wi-key-b">B</span>
-              <span className="wi-key-sum">{t('实际绳形')}</span>
-              <span>{t('虚线：分量')}</span>
+            <WaveInterferencePhone input={input} view={view} width={width} />
+            {view === 'nodes' && <p className="wi-fact">{t('波节间距：0.8 m')}</p>}
+          </>
+        ) : (
+          <>
+            {!(demo.watch && compact && phase) && (
+              <>
+                <div className="wi-legend">
+                  <span className="wi-key-a">A</span>
+                  <span className="wi-key-b">B</span>
+                  <span className="wi-key-sum">{t('实际绳形')}</span>
+                  <span>{t('虚线：分量')}</span>
+                </div>
+                <WaveInterferenceString
+                  input={input}
+                  width={width}
+                  compact={compact && demo.watch}
+                  view={view}
+                />
+              </>
+            )}
+            <div className="wi-evidence">
+              {(view === 'material' || view === 'pass') && (
+                <WaveInterferenceTrace input={input} width={width} />
+              )}
+              {(view === 'cancel' || view === 'formation' || phase) && (
+                <WaveInterferencePoint input={input} width={width} view={view} />
+              )}
+              {phase && compact && <WaveInterferencePhase input={input} width={width} />}
+              {energy && (
+                <>
+                  <div className="wi-energy-key">
+                    <span>{t('动能')}</span>
+                    <span>{t('形变能')}</span>
+                    <span>{t(compact ? '瞬时能流' : '箭头：瞬时能流')}</span>
+                  </div>
+                  <WaveInterferenceEnergy input={input} width={width} span={energySpan} />
+                  <div className="wi-energy-totals">
+                    <span>
+                      {t('观察窗内')}
+                      <b>{(totals.total * 1000).toFixed(3)} mJ</b>
+                    </span>
+                    <div className="wi-energy-bar" aria-label={t('动能与形变能所占比例')}>
+                      <i
+                        style={{
+                          width: `${totals.total ? (totals.kinetic / totals.total) * 100 : 0}%`,
+                        }}
+                      />
+                    </div>
+                    <span>
+                      K {(totals.total ? (totals.kinetic / totals.total) * 100 : 0).toFixed(0)}% · U{' '}
+                      {(totals.total ? (totals.potential / totals.total) * 100 : 0).toFixed(0)}%
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
-            <WaveInterferenceString
-              input={input}
-              width={width}
-              compact={compact && demo.watch}
-              view={view}
-            />
+            <div className="wi-readout">
+              {phase ? (
+                <>
+                  <span>
+                    Δφ <b>{((input.phase * 180) / Math.PI).toFixed(0)}°</b>
+                  </span>
+                  <span>
+                    {t('合振幅')}{' '}
+                    <b>{(samePointAmplitude(input.ratio, input.phase) * 1000).toFixed(2)} mm</b>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>
+                    {t('模型时间')} <b>{input.time.toFixed(3)} s</b>
+                  </span>
+                  <span>
+                    P · y <b>{(point.y * 1000).toFixed(2)} mm</b>
+                  </span>
+                </>
+              )}
+            </div>
+            {view === 'nodes' && (
+              <p className="wi-fact">
+                {t(
+                  input.ratio !== 1
+                    ? '振幅不等，没有始终静止的波节。'
+                    : compact
+                      ? '波节间距：0.8 m'
+                      : '相邻波节相隔 λ/2 = 0.8 m；它们不是夹具。',
+                )}
+              </p>
+            )}
+            {phase && (
+              <p className="wi-fact">{t('比较不同输入；调相位或振幅时不作能量守恒比较。')}</p>
+            )}
           </>
         )}
-        <div className="wi-evidence">
-          {(view === 'material' || view === 'pass') && (
-            <WaveInterferenceTrace input={input} width={width} />
-          )}
-          {(view === 'cancel' || view === 'formation' || phase) && (
-            <WaveInterferencePoint input={input} width={width} view={view} />
-          )}
-          {phase && compact && <WaveInterferencePhase input={input} width={width} />}
-          {energy && (
-            <>
-              <div className="wi-energy-key">
-                <span>{t('动能')}</span>
-                <span>{t('形变能')}</span>
-                <span>{t(compact ? '瞬时能流' : '箭头：瞬时能流')}</span>
-              </div>
-              <WaveInterferenceEnergy input={input} width={width} span={energySpan} />
-              <div className="wi-energy-totals">
-                <span>
-                  {t('观察窗内')}
-                  <b>{(totals.total * 1000).toFixed(3)} mJ</b>
-                </span>
-                <div className="wi-energy-bar" aria-label={t('动能与形变能所占比例')}>
-                  <i
-                    style={{
-                      width: `${totals.total ? (totals.kinetic / totals.total) * 100 : 0}%`,
-                    }}
-                  />
-                </div>
-                <span>
-                  K {(totals.total ? (totals.kinetic / totals.total) * 100 : 0).toFixed(0)}% · U{' '}
-                  {(totals.total ? (totals.potential / totals.total) * 100 : 0).toFixed(0)}%
-                </span>
-              </div>
-            </>
-          )}
-        </div>
-        <div className="wi-readout">
-          {phase ? (
-            <>
-              <span>
-                Δφ <b>{((input.phase * 180) / Math.PI).toFixed(0)}°</b>
-              </span>
-              <span>
-                {t('合振幅')}{' '}
-                <b>{(samePointAmplitude(input.ratio, input.phase) * 1000).toFixed(2)} mm</b>
-              </span>
-            </>
-          ) : (
-            <>
-              <span>
-                {t('模型时间')} <b>{input.time.toFixed(3)} s</b>
-              </span>
-              <span>
-                P · y <b>{(point.y * 1000).toFixed(2)} mm</b>
-              </span>
-            </>
-          )}
-        </div>
-        {view === 'nodes' && (
-          <p className="wi-fact">
-            {t(
-              input.ratio !== 1
-                ? '振幅不等，没有始终静止的波节。'
-                : compact
-                  ? '波节间距：0.8 m'
-                  : '相邻波节相隔 λ/2 = 0.8 m；它们不是夹具。',
-            )}
-          </p>
-        )}
-        {phase && <p className="wi-fact">{t('比较不同输入；调相位或振幅时不作能量守恒比较。')}</p>}
       </div>
       {!demo.watch && (
         <div className="wi-explore">

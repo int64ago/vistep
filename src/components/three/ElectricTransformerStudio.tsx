@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
+import { createElectricalFraming } from './electrical-framing';
 import { t } from '../../i18n';
 import {
   ELECTRIC_TRANSFORMER as C,
@@ -67,7 +68,7 @@ export default function ElectricTransformerStudio({
       span={narrow ? 6.9 : 8.45}
       fitHeight={narrow ? 7.3 : 5.3}
       fallback={<ElectricTransformerFlat shot={shot} narrow={narrow} />}
-      create={({ root, controls }) => {
+      create={({ root, controls, camera }) => {
         const g = C.geometry;
         if (narrow) root.position.y = 1.5;
         const iron = new THREE.MeshStandardMaterial({
@@ -262,6 +263,7 @@ export default function ElectricTransformerStudio({
         for (const x of [-1.65, 1.65]) {
           put(new THREE.BoxGeometry(1.1, 0.18, 1.35), dark, [x, 0.15, 0]);
         }
+        const framing = createElectricalFraming(root, camera, controls, [], [-0.12, 0.08]);
         return {
           update() {
             const s = latest.current,
@@ -304,10 +306,12 @@ export default function ElectricTransformerStudio({
             copper.emissiveIntensity = copper2.emissiveIntensity = s.showLosses
               ? Math.min(0.25, s.ac.copperWatts * 3)
               : 0;
+            framing.update();
             if (controls.enabled) return;
             root.rotation.y = 0.08 * s.fieldFocus - 0.12 * s.laminationFocus;
           },
           dispose() {
+            framing.dispose();
             // Studio owns scene traversal, geometries, materials, controls and renderer.
             // ArrowHelper owns its shared internal geometry; Studio traversal releases it.
           },

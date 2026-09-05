@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/cpu-pipeline-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **189.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Question and visual argument
 
 Why can a program finish sooner when its first instruction still takes five cycles? Follow the same instruction IDs through a carefully spaced paper workshop and a timing record. The object of attention is an instruction and its actual operands, not a decorative processor enclosure.

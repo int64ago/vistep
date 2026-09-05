@@ -45,15 +45,15 @@
 | [JPEG 压缩](../../src/content/jpeg.mdx)               | 3:21 | 照片变小了，什么被留下？               |
 | [大模型训练与生成](../../src/content/transformer.mdx) | 4:00 | 下一个字，是怎样学会的？               |
 | [二进制加法](../../src/content/binary-adder.mdx)      | 2:58 | 只靠零和一，计算机怎样做加法？         |
-| [CPU 指令流水线](../../src/content/cpu-pipeline.mdx)  | 3:07 | 一条指令没变快，程序为什么更快了？     |
-| [内存与缓存](../../src/content/memory-cache.mdx)      | 3:11 | 明明还有空位，缓存为什么仍然未命中？   |
+| [CPU 指令流水线](../../src/content/cpu-pipeline.mdx)  | 3:09 | 一条指令没变快，程序为什么更快了？     |
+| [内存与缓存](../../src/content/memory-cache.mdx)      | 3:12 | 明明还有空位，缓存为什么仍然未命中？   |
 | [纠错编码](../../src/content/error-correction.mdx)    | 3:31 | 数据翻错一位，为什么还能找回来？       |
 | [二维码](../../src/content/qr-code.mdx)               | 3:34 | 小小的方阵，怎么装下一整段网址？       |
 | [哈希](../../src/content/hash.mdx)                    | 3:05 | 只改一个位，为什么整段摘要都变了？     |
 | [公钥密码](../../src/content/public-key.mdx)          | 3:16 | 公钥可以公开，消息怎样只让收件人解开？ |
 | [逻辑门](../../src/content/logic-gates.mdx)           | 2:57 | 逻辑门：电压如何变成零和一             |
 | [数据库索引](../../src/content/database-index.mdx)    | 3:22 | 不用翻遍整张表，数据库怎样找到一行？   |
-| [网络分组路由](../../src/content/packet-routing.mdx)  | 3:02 | 分组怎样穿过不断变化的网络？           |
+| [网络分组路由](../../src/content/packet-routing.mdx)  | 3:01 | 分组怎样穿过不断变化的网络？           |
 
 ## 空间与波动
 

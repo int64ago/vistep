@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/memory-cache-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **192.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Causal argument
 
 Track an addressed byte through a read-only cache. The turning point is a conflict miss while other sets are empty. A second run changes associativity at the same data capacity, with the same address trace and cold start.

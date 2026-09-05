@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useLayoutEffect, useId, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import {
   bernoulliAt,
@@ -10,10 +10,12 @@ import {
 export function useBernoulliWidth(initialWidth = 840) {
   const ref = useRef<HTMLDivElement>(null),
     [width, setWidth] = useState(initialWidth);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const measure = () => setWidth(Math.max(260, el.clientWidth));
+    const measure = () => {
+      if (el.clientWidth > 0) setWidth(el.clientWidth);
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
@@ -45,14 +47,13 @@ export default function BernoulliTube({
     p = run.parameters,
     parcelView = shot.view === 'parcel';
   const W = width,
-    H = phone ? (parcelView ? 350 : 370) : 400,
+    H = phone ? (parcelView ? 292 : 274) : 400,
     pad = phone ? 24 : 65;
   const span = W - 2 * pad,
-    base = phone ? 256 : 285,
-    radius = phone ? 27 : 38;
+    base = phone ? (parcelView ? 213 : 195) : 285,
+    radius = phone ? 23 : 38;
   const taps = [0.08, 0.45, 0.92].map((w) => bernoulliAt(run, w * p.length));
-  const headScale =
-    (phone ? 151 : 182) / Math.max(1.35, ...taps.map((s) => s.hydraulicHead + 0.15));
+  const headScale = (phone ? 95 : 182) / Math.max(1.35, ...taps.map((s) => s.hydraulicHead + 0.15));
   const pos = (s: number) => {
     const g = bernoulliGeometry(p, s);
     return {
@@ -108,7 +109,11 @@ export default function BernoulliTube({
             <path d={shape(0, p.length)} />
           </clipPath>
         </defs>
-        <path d={`M${pad},${base + 62}H${W - pad}`} stroke="#c9cebe" strokeWidth="1" />
+        <path
+          d={`M${pad},${base + (phone ? 40 : 62)}H${W - pad}`}
+          stroke="#c9cebe"
+          strokeWidth="1"
+        />
         {parcelView ? (
           <g>
             {[taps[0], taps[1]].map((s, i) => {
@@ -139,7 +144,7 @@ export default function BernoulliTube({
               fill="none"
               strokeWidth="1.8"
             />
-            <text x={W / 2} y={200} textAnchor="middle" fill={colors.gold}>
+            <text x={W / 2} y={phone ? 178 : 200} textAnchor="middle" fill={colors.gold}>
               {t('同一体积')} · {(run.totalVolume * 0.065 * 1000).toFixed(3)} L
             </text>
           </g>
@@ -280,7 +285,7 @@ export default function BernoulliTube({
         {!parcelView && (
           <g>
             <path
-              d={`M${probe.x},${probe.y + probe.r + 4}V${base + 56}`}
+              d={`M${probe.x},${probe.y + probe.r + 4}V${base + (phone ? 34 : 56)}`}
               stroke={colors.gold}
               strokeDasharray="3 3"
             />
@@ -312,10 +317,10 @@ export function BernoulliHeads({
     run = shot.run,
     p = run.parameters;
   const W = width,
-    H = phone ? 310 : 345,
-    left = phone ? 27 : 60,
+    H = phone ? 270 : 345,
+    left = phone ? 36 : 60,
     right = W - (phone ? 20 : 50),
-    bottom = phone ? 220 : 245;
+    bottom = phone ? 180 : 245;
   const ymin = Math.min(-0.05, ...run.stations.map((s) => Math.min(s.z, s.hydraulicHead))),
     ymax = Math.max(1.45, ...run.stations.map((s) => s.totalHead + 0.1));
   const y = (v: number) => bottom - ((v - ymin) / (ymax - ymin)) * (bottom - 50),

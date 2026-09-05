@@ -76,6 +76,71 @@ describe('siphon geometry, pressure and conserved water', () => {
     );
     expect(siphonState({ geometry: siphonGeometry(0, 11.5) }).status).toBe('vapor');
   });
+  it('rejects the UI-reachable 7.4 m / 70.250 kPa / 25 °C case before the crest itself reaches vapor pressure', () => {
+    const s = siphonTrial({ top: 7.4, atmosphere: 70250, temperature: 25 });
+    expect(s.crestPressure).toBeGreaterThan(s.vaporPressure);
+    expect(s.minimumPressure).toBeCloseTo(3158.13415052787, 7);
+    expect(s.minimumPressureAt - s.geometry.crestAt).toBeCloseTo(0.03819186959, 10);
+    expect(s.minimumPressure).toBeLessThan(s.vaporPressure - 8);
+    expect(s.status).toBe('vapor');
+    expect(s.pressureValid).toBe(false);
+    expect(s.velocity).toBe(0);
+    expect(s.flow).toBe(0);
+    expect(
+      siphonTrial({ top: 7.4, atmosphere: 70250, temperature: 25, seconds: 300 }).sourceVolume,
+    ).toBe(s.sourceVolume);
+    expect(s.totalVolume).toBeCloseTo(SIPHON.totalVolume, 14);
+  });
+  it('finds the global pressure minimum with an independent dense pressure/energy check on rotated and tall tubes', () => {
+    const geometries = [
+      ...[0, 0.2, 0.45, 0.7].map((angle) => siphonGeometry(angle)),
+      ...[3, 7.4, 8.5, 11.5].map((top) => siphonGeometry(0, top)),
+    ];
+    for (const geometry of geometries) {
+      const s = siphonState({ geometry });
+      let sampledMinimum = Infinity;
+      for (let i = 0; i <= 2000; i++) {
+        const at = (geometry.length * i) / 2000,
+          point = siphonPoint(geometry, at),
+          bendFraction = Math.max(0, Math.min(1, (at - geometry.leg) / (Math.PI * SIPHON.radius))),
+          loss =
+            ((0.5 + (0.03 * at) / 0.012 + 0.4 * bendFraction) * s.candidateVelocity ** 2) /
+            (2 * SIPHON.gravity);
+        const pressure = siphonPressure(s, at);
+        const energyHead =
+          (pressure - s.atmosphere) / (SIPHON.density * SIPHON.gravity) +
+          point.y +
+          s.candidateVelocity ** 2 / (2 * SIPHON.gravity) +
+          loss;
+        expect(energyHead).toBeCloseTo(s.sourceLevel, 10);
+        expect(pressure).toBeGreaterThanOrEqual(s.minimumPressure - 1e-8);
+        if (s.pressureValid) expect(pressure).toBeGreaterThan(s.vaporPressure);
+        sampledMinimum = Math.min(sampledMinimum, pressure);
+      }
+      expect(sampledMinimum - s.minimumPressure).toBeLessThan(0.2);
+      expect(siphonPressure(s, s.minimumPressureAt)).toBe(s.minimumPressure);
+      expect(siphonPressure(s, geometry.crestAt)).toBe(s.crestPressure);
+      if (s.head >= 0) expect(siphonPressure(s, geometry.length)).toBeCloseTo(s.atmosphere, 8);
+    }
+  });
+  it('stops at the actual minimum-pressure equality, and restores the same flow immediately above it', () => {
+    const geometry = siphonGeometry(0, 7.4),
+      reference = siphonState({ geometry, temperature: 25 }),
+      threshold = reference.atmosphere - reference.minimumPressure + reference.vaporPressure;
+    for (const offset of [-0.01, 0, 0.01]) {
+      const s = siphonState({ geometry, temperature: 25, atmosphere: threshold + offset });
+      expect(s.minimumPressure - s.vaporPressure).toBeCloseTo(offset, 8);
+      expect(s.status).toBe(offset > 0 ? 'flow' : 'vapor');
+      expect(s.pressureValid).toBe(offset > 0);
+      expect(s.flow).toBe(offset > 0 ? reference.flow : 0);
+      expect(s.totalVolume).toBeCloseTo(SIPHON.totalVolume, 14);
+    }
+    const raised = siphonGeometry(0.5),
+      still = siphonState({ geometry: raised, sourceVolume: raised.outlet.y * SIPHON.sourceArea });
+    expect(still.velocity).toBe(0);
+    expect(still.minimumPressureAt).toBeCloseTo(raised.crestAt, 12);
+    expect(still.minimumPressure).toBeCloseTo(still.crestPressure, 9);
+  });
   it('stops at zero/negative head, air, venting and an uncovered inlet', () => {
     const g = siphonGeometry(0.5),
       equal = siphonState({ geometry: g, sourceVolume: g.outlet.y * SIPHON.sourceArea });

@@ -9,28 +9,34 @@ import {
   traceFiber,
   type RayPoint,
 } from '../../models/fiber';
-import { useCompact } from './useCompact';
+/** Fit the real axial section, including the coating and dimension label. */
+export function fiberDrawingLayout(width: number) {
+  const compact = width < 620;
+  const length = compact ? 450 : 1200;
+  const scale = (width - 70) / length;
+  const center = Math.max(compact ? 92 : 135, 125 * scale + 14);
+  const height = Math.max(200, center + 125 * scale + 50);
+  return { compact, width, length, scale, center, height };
+}
 export function FiberDrawing({
+  width,
   angle,
   cladding,
   time,
   reveal,
   digital,
 }: {
+  width: number;
   angle: number;
   cladding: number;
   time: number;
   reveal: number;
   digital: boolean;
 }) {
-  const compact = useCompact(),
+  const { compact, length, scale, center, height } = fiberDrawingLayout(width),
     id = useId().replace(/:/g, ''),
-    width = compact ? 320 : 840;
-  const length = compact ? 450 : 1200,
-    ray = traceFiber(angle, cladding, length),
-    scale = (width - 70) / length;
-  const center = compact ? 115 : 135,
-    map = (p: RayPoint) => ({ x: 35 + p.x * scale, y: center - p.y * scale });
+    ray = traceFiber(angle, cladding, length);
+  const map = (p: RayPoint) => ({ x: 35 + p.x * scale, y: center - p.y * scale });
   const path = (a: RayPoint, b: RayPoint) => {
     const p = map(a),
       q = map(b);
@@ -40,7 +46,9 @@ export function FiberDrawing({
   return (
     <div className="fiber-drawing">
       <svg
-        viewBox={`0 0 ${width} ${compact ? 260 : 300}`}
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
         role="img"
         aria-label={t('光线在纤芯边界反射或进入包层，位置和强度由折射模型计算')}
       >
@@ -149,7 +157,7 @@ export function FiberDrawing({
           y={center + 125 * scale + 43}
           fill="#9aa7bd"
           textAnchor="middle"
-          fontSize="13"
+          fontSize="16"
         >
           {compact ? '450 μm' : '1.2 mm'} · {t('轴向剖面')}
         </text>
@@ -177,13 +185,20 @@ export function FiberDrawing({
     </div>
   );
 }
-export function InterfaceDrawing({ degrees, time }: { degrees: number; time: number }) {
-  const compact = useCompact(),
-    width = compact ? 320 : 840,
-    height = 340,
+export function InterfaceDrawing({
+  degrees,
+  time,
+  width,
+}: {
+  degrees: number;
+  time: number;
+  width: number;
+}) {
+  const compact = width < 620,
+    height = compact ? 300 : 340,
     cx = width / 2,
-    cy = 155,
-    length = compact ? 125 : 155;
+    cy = compact ? 135 : 155,
+    length = Math.min(compact ? 125 : 155, (width - 40) / 2, cy - 20, height - cy - 20);
   const angle = (degrees * Math.PI) / 180,
     state = dielectric(1.5, 1, angle);
   const incoming = { x: cx - length * Math.sin(angle), y: cy + length * Math.cos(angle) },
@@ -208,6 +223,8 @@ export function InterfaceDrawing({ degrees, time }: { degrees: number; time: num
   return (
     <svg
       className="fiber-interface"
+      width={width}
+      height={height}
       viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('玻璃到空气的反射与折射，角度相对法线测量')}
@@ -216,10 +233,10 @@ export function InterfaceDrawing({ degrees, time }: { degrees: number; time: num
       <rect y={cy} width={width} height={height - cy} fill="#8199b0" fillOpacity=".17" />
       <path d={`M0 ${cy}H${width}`} stroke="#c5d5e1" strokeOpacity=".5" />
       <path d={`M${cx} 20V${height - 20}`} stroke="#8593ad" strokeDasharray="3 5" />
-      <text x="18" y="29" fill="#9aaac1" fontSize="14">
+      <text x="18" y="29" fill="#9aaac1" fontSize="16">
         {t('空气')} · n = 1.00
       </text>
-      <text x="18" y={height - 18} fill="#adbdce" fontSize="14">
+      <text x="18" y={height - 18} fill="#adbdce" fontSize="16">
         {t('玻璃')} · n = 1.50
       </text>
       <path d={`M${incoming.x} ${incoming.y}L${cx} ${cy}`} stroke="#e9c18d" strokeWidth="3" />
@@ -262,11 +279,13 @@ export function InterfaceDrawing({ degrees, time }: { degrees: number; time: num
     </svg>
   );
 }
-export function PulseDrawing({ progress }: { progress: number }) {
-  const compact = useCompact(),
-    width = compact ? 320 : 840,
+export function PulseDrawing({ progress, width }: { progress: number; width: number }) {
+  const compact = width < 620,
     left = compact ? 34 : 60,
     right = width - 24;
+  const firstBase = compact ? 85 : 105,
+    secondBase = compact ? 190 : 244,
+    gain = compact ? 45 : 60;
   const amount = Math.max(0, Math.min(1, (progress - 0.12) / 0.65)),
     distance = 1000 * amount * amount * (3 - 2 * amount);
   const delays = [0, 4, 8].map((a) => (flightTime(distance, a) - flightTime(distance, 0)) * 1e9),
@@ -289,28 +308,30 @@ export function PulseDrawing({ progress }: { progress: number }) {
         </strong>
       </div>
       <svg
-        viewBox={`0 0 ${width} 300`}
+        width={width}
+        height={compact ? 229 : 282}
+        viewBox={`0 0 ${width} ${compact ? 229 : 282}`}
         role="img"
         aria-label={t('三条路径的到达时间不同，叠加后的脉冲变宽')}
       >
-        <text x={left} y="25" fill="#879bb6" fontSize="14">
+        <text x={left} y="25" fill="#879bb6" fontSize="16">
           {t('入射脉冲')}
         </text>
-        <path d={`M${left} 105H${right}`} stroke="#7890ac" strokeOpacity=".3" />
+        <path d={`M${left} ${firstBase}H${right}`} stroke="#7890ac" strokeOpacity=".3" />
         <path
-          d={curve((ns) => pulse(ns, 0, 6), 105, 60)}
+          d={curve((ns) => pulse(ns, 0, 6), firstBase, gain)}
           stroke="#b8d4e0"
           strokeWidth="2"
           fill="none"
         />
-        <text x={left} y="146" fill="#879bb6" fontSize="14">
+        <text x={left} y={compact ? 123 : 146} fill="#879bb6" fontSize="16">
           {t('不同路径的叠加')}
         </text>
-        <path d={`M${left} 244H${right}`} stroke="#7890ac" strokeOpacity=".3" />
+        <path d={`M${left} ${secondBase}H${right}`} stroke="#7890ac" strokeOpacity=".3" />
         {delays.map((d, i) => (
           <path
             key={i}
-            d={curve((ns) => pulse(ns, d, 6) / 3, 244, 60)}
+            d={curve((ns) => pulse(ns, d, 6) / 3, secondBase, gain)}
             stroke={['#9ecfc8', '#baa5d4', '#d6b181'][i]}
             strokeWidth="1.6"
             opacity=".65"
@@ -318,24 +339,30 @@ export function PulseDrawing({ progress }: { progress: number }) {
           />
         ))}
         <path
-          d={curve((ns) => delays.reduce((v, d) => v + pulse(ns, d, 6) / 3, 0), 244, 60)}
+          d={curve((ns) => delays.reduce((v, d) => v + pulse(ns, d, 6) / 3, 0), secondBase, gain)}
           stroke="#ecd0a0"
           strokeWidth="2.5"
           fill="none"
         />
         {[0, 25, 50, 75].map((ns) => (
           <g key={ns}>
-            <path d={`M${map(ns)} 244v5`} stroke="#71849b" />
-            <text x={map(ns)} y="271" textAnchor="middle" fill="#9eafc2" fontSize="13">
+            <path d={`M${map(ns)} ${secondBase}v5`} stroke="#71849b" />
+            <text
+              x={map(ns)}
+              y={compact ? 218 : 271}
+              textAnchor="middle"
+              fill="#9eafc2"
+              fontSize="16"
+            >
               {ns}
             </text>
           </g>
         ))}
-        <text x={right} y="294" textAnchor="end" fill="#9eafc2" fontSize="13">
-          {t('相对最早到达')} / ns
-        </text>
       </svg>
-      <p>{t('同一束脉冲，三条几何路径')} · 0° / 4° / 8°</p>
+      <div className="fiber-pulse-axis">{t('相对最早到达')} / ns</div>
+      <p>
+        <span>{t('同一束脉冲，三条几何路径')} · </span>β = 0° / 4° / 8°
+      </p>
     </div>
   );
 }

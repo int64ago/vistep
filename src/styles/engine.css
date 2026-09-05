@@ -1,16 +1,15 @@
 .engine-study {
   background: #e7eadf;
-  padding: 24px 30px 18px;
+  padding: 22px 30px 18px;
   color: #405d4c;
-  overflow: hidden;
+  font-size: 16px;
 }
 .engine-titleline {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: #748875;
+  font-size: 16px;
+  color: #687d68;
 }
 .engine-scene {
   position: relative;
@@ -29,50 +28,95 @@
   left: 0;
   width: 160px;
   pointer-events: none;
-  color: #648071;
+  color: #526e5f;
+}
+.engine-scene[data-chart='true'] {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: 24px;
+}
+.engine-scene[data-chart='true'] > .studio {
+  grid-column: 2;
+  grid-row: 1;
 }
 .engine-inset[data-chart='true'] {
-  top: 115px;
-  width: 260px;
+  position: static;
+  width: 100%;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
 }
-.engine-inset > svg {
+.engine-dial {
   width: 100%;
   display: block;
 }
-.engine-inset text {
+.engine-dial text {
   fill: currentColor;
   font: 500 25px var(--mono);
 }
-.engine-inset .engine-cycle-label {
-  font-size: 12px;
+.engine-dial .engine-cycle-label {
+  font-size: 17px;
   font-weight: 400;
-  opacity: 0.65;
 }
 .engine-inset p {
   text-align: center;
-  font-size: 18px;
-  margin: 0;
+  font-size: 16px;
+  margin: 8px 0;
 }
 .engine-inset p strong {
   display: block;
   font-size: 28px;
   font-weight: 500;
-  margin-top: 9px;
+  margin-top: 4px;
 }
 .engine-inset p small {
-  font-size: 14px;
+  font-size: 16px;
 }
-.engine-inset .engine-pv text {
-  font-size: 14px;
+.engine-phase b {
+  display: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+.engine-pv {
+  width: 100%;
+  font-size: 16px;
   font-family: inherit;
-  font-weight: 400;
+}
+.engine-pv-unit {
+  padding-left: 32px;
+  line-height: 28px;
+}
+.engine-pv-plot {
+  height: 200px;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 4px;
+}
+.engine-pv-plot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.engine-pv-ticks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+  line-height: 20px;
+}
+.engine-pv-volume {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0 0 32px;
+  line-height: 26px;
 }
 .engine-stroke-strip {
   display: flex;
   justify-content: center;
-  gap: 34px;
-  padding: 8px 0 22px;
-  color: #82907e;
+  gap: 30px;
+  padding: 8px 0 18px;
+  color: #6b7d68;
 }
 .engine-stroke-strip span {
   display: flex;
@@ -89,7 +133,7 @@
   height: 6px;
   background: currentColor;
   border-radius: 50%;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 .engine-stroke-strip [data-active='true'] i {
   opacity: 1;
@@ -99,29 +143,29 @@
   display: flex;
   justify-content: space-around;
   border-top: 1px solid #7e997429;
-  padding: 18px 0;
+  padding: 14px 0;
   gap: 15px;
 }
 .engine-measures span {
   font-size: 16px;
-  color: #74866c;
+  color: #65765e;
 }
 .engine-measures strong {
   display: block;
-  font-size: 28px;
-  line-height: 1.6;
+  font-size: 27px;
+  line-height: 1.5;
   color: #405d4c;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 .engine-measures small {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 400;
 }
 .engine-note {
   font-size: 16px;
-  line-height: 1.8;
-  color: #7a8972;
+  line-height: 1.5;
+  color: #617159;
   margin: 0;
 }
 .engine-explore {
@@ -131,6 +175,14 @@
   align-items: end;
   padding: 10px 0 25px;
 }
+.engine-explore :is(.control-top, .btn) {
+  font-size: 16px;
+}
+.engine-explore .btn,
+.engine-study .studio-mode {
+  min-height: 44px;
+  font-size: 16px;
+}
 .engine-flat {
   display: block;
   width: 100%;
@@ -138,91 +190,158 @@
   max-height: 430px;
 }
 .engine-flat text {
-  font-size: 17px;
+  font-size: 22px;
   font-family: inherit;
 }
 @media (max-width: 760px) {
   .engine-study {
-    padding: 19px 12px 15px;
+    padding: 12px;
+    color: #405d4c;
+  }
+  .engine-study[data-watch='true'] {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
   }
   .engine-titleline {
-    font-size: 10px;
-    gap: 10px;
-    letter-spacing: 0.02em;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .engine-titleline > span:first-child {
+    display: none;
   }
   .engine-scene {
-    height: 530px;
+    height: auto;
   }
   .engine-scene > .studio {
-    height: 380px;
+    height: 292px;
   }
-  .engine-inset,
-  .engine-inset[data-chart='true'] {
-    top: auto;
-    bottom: 0;
-    left: 0;
+  .engine-study[data-watch='true'] .engine-scene {
+    height: 328px;
+  }
+  .engine-inset {
+    position: static;
     width: 100%;
-    height: 140px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
   }
-  .engine-inset > svg {
-    height: 125px;
-    width: 125px;
+  .engine-dial {
+    display: none;
+  }
+  .engine-inset .engine-phase {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+    line-height: 24px;
+    margin: 0;
+  }
+  .engine-phase b {
+    display: inline;
+  }
+  .engine-scene[data-chart='true'] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .engine-inset[data-chart='true'] {
-    gap: 4px;
-  }
-  .engine-inset .engine-pv {
-    width: 65%;
+    display: block;
     height: auto;
-    max-height: 140px;
   }
-  .engine-inset p {
-    font-size: 16px;
+  .engine-study[data-watch='true'][data-chart='true'] .engine-scene {
+    height: 328px;
+    display: flex;
+    justify-content: center;
+  }
+  .engine-pv-plot {
+    height: 184px;
   }
   .engine-inset p strong {
     font-size: 24px;
   }
-  .engine-inset .engine-pv text {
-    font-size: 17px;
-  }
   .engine-stroke-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px 20px;
-    padding: 18px 15px;
+    gap: 12px;
+    padding: 14px 0;
   }
-  .engine-stroke-strip span {
-    font-size: 14px;
-    gap: 5px;
+  .engine-study[data-watch='true'] .engine-stroke-strip {
+    display: none;
   }
   .engine-measures {
-    gap: 12px;
-    padding: 16px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px 0;
   }
-  .engine-measures span {
-    font-size: 12px;
+  .engine-measures > span {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
   }
   .engine-measures strong {
-    font-size: 24px;
+    font-size: 22px;
+    white-space: nowrap;
   }
-  .engine-measures small {
-    font-size: 10px;
+  .engine-study[data-watch='true'] .engine-measures > span {
+    display: none;
+  }
+  .engine-study[data-watch='true'][data-chapter='0'] .engine-measures > span:first-child,
+  .engine-study[data-watch='true'][data-chapter='1'] .engine-measures > span:first-child,
+  .engine-study[data-watch='true'][data-chapter='5'] .engine-measures > span:first-child,
+  .engine-study[data-watch='true'][data-chapter='2'] .engine-measures > span:nth-child(2),
+  .engine-study[data-watch='true'][data-chapter='3'] .engine-measures > span:nth-child(2),
+  .engine-study[data-watch='true'][data-chapter='4'] .engine-measures > span:nth-child(3),
+  .engine-study[data-watch='true'][data-chapter='6'] .engine-measures > span:nth-child(3),
+  .engine-study[data-watch='true'][data-chapter='7'] .engine-measures > span:nth-child(-n + 2) {
+    display: flex;
+  }
+  .engine-note {
+    line-height: 1.4;
+  }
+  .engine-study[data-watch='true'] .engine-note {
+    margin-top: auto;
   }
   .engine-explore {
     grid-template-columns: 1fr;
     gap: 10px;
   }
   .engine-explore .btn {
-    justify-self: center;
-    min-height: 44px;
+    justify-self: stretch;
+  }
+  .showcase:has(.engine-study) .film-caption {
+    gap: 8px;
+    padding: 12px 12px 4px;
+  }
+  .showcase:has(.engine-study) .film-chapter {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .engine-stroke-strip span {
     transition: none;
   }
+}
+
+.engine-flat-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+}
+.engine-flat-wrap .engine-flat {
+  flex: 1;
+  min-height: 0;
+  height: calc(100% - 28px);
+}
+.engine-flat-wrap p {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 4px 0 0;
 }

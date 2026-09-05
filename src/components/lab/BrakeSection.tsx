@@ -6,9 +6,11 @@ type State = ReturnType<typeof brakeState>;
 export default function BrakeSection({
   state,
   view,
+  readouts = true,
 }: {
   state: State;
   view: 'master' | 'caliper';
+  readouts?: boolean;
 }) {
   const compact = useCompact(),
     id = useId().replace(/:/g, ''),
@@ -24,7 +26,7 @@ export default function BrakeSection({
         <small>{t('位移放大示意')}</small>
       </div>
       <svg
-        viewBox={`0 0 ${w} ${view === 'master' ? 220 : 190}`}
+        viewBox={`0 0 ${w} ${view === 'master' ? 172 : 164}`}
         role="img"
         aria-label={t(
           view === 'master'
@@ -85,16 +87,7 @@ export default function BrakeSection({
                 stroke="#b9925d"
               />
             )}
-            <text x="88" y="24" textAnchor="middle" fill="#617268" fontSize="16">
-              {t('储液腔')}
-            </text>
-            <path d="M75.6 147V169H123" stroke="#9ba899" fill="none" />
-            <text x="128" y="175" fontSize="16" fill="#617268">
-              {t(state.portOpen ? '补偿孔开启' : '补偿孔关闭')}
-            </text>
-            <text x={compact ? 160 : 215} y="210" textAnchor="middle" fill="#86684d" fontSize="18">
-              {state.stroke.toFixed(2)} mm · {state.pressure.toFixed(2)} MPa
-            </text>
+            <path d="M75.6 147V169" stroke="#9ba899" fill="none" />
           </g>
         ) : (
           <g>
@@ -142,24 +135,35 @@ export default function BrakeSection({
                     strokeWidth="2"
                     opacity={0.35 + Math.min(1, state.pressure) / 2}
                   />
-                  <text
-                    x={center + sign * 87}
-                    y="155"
-                    textAnchor="middle"
-                    fill="#74624a"
-                    fontSize="18"
-                  >
-                    {state.padForce.toFixed(0)} N
-                  </text>
                 </g>
               );
             })}
-            <text x={center} y="186" textAnchor="middle" fill="#68776a" fontSize="16">
-              {state.contact ? t('接触后，压力与夹紧力一起上升') : t('先消除间隙')}
-            </text>
           </g>
         )}
       </svg>
+      <div className="brake-section-copy">
+        {view === 'master' ? (
+          <>
+            <div className="brake-port-state">
+              <span>{t('储液腔')}</span>
+              <strong>{t(state.portOpen ? '补偿孔开启' : '补偿孔关闭')}</strong>
+            </div>
+            <p>
+              {state.stroke.toFixed(2)} mm · {state.pressure.toFixed(2)} MPa
+            </p>
+          </>
+        ) : (
+          <>
+            {readouts && (
+              <div className="brake-pad-readouts">
+                <span>{state.padForce.toFixed(0)} N</span>
+                <span>{state.padForce.toFixed(0)} N</span>
+              </div>
+            )}
+            <p>{state.contact ? t('接触后，压力与夹紧力一起上升') : t('先消除间隙')}</p>
+          </>
+        )}
+      </div>
     </div>
   );
 }

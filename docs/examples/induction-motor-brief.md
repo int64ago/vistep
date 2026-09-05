@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/induction-motor-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **184.0 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 Topic metadata, translations and narration are integrated in the canonical registries; the temporary handoff has been consumed. `src/data/narration.json` and `src/data/film-timeline.json` own the recorded timing.
 
 ## Causal argument and visual direction
