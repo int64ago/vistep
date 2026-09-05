@@ -53,7 +53,8 @@ export default function PlanetaryStudio({
   assembly: number;
 }) {
   const demo = useShowcase(),
-    current = useRef({ angle, mode, assembly, demo });
+    current = useRef({ angle, mode, assembly, demo }),
+    explorationDirection = useRef<THREE.Vector3 | null>(null);
   current.current = { angle, mode, assembly, demo };
   return (
     <Studio
@@ -235,6 +236,20 @@ export default function PlanetaryStudio({
             new THREE.Box3().setFromObject(object).translate(new THREE.Vector3(0, 0, travel)),
           );
         }
+        if (!current.current.demo.watch && explorationDirection.current) {
+          camera.position.copy(controls.target).add(explorationDirection.current);
+        }
+        const frameExploration = () => {
+          if (current.current.demo.watch) return;
+          const direction = camera.position.clone().sub(controls.target).normalize();
+          explorationDirection.current = direction;
+          const frame = fitPlanetaryCamera(assemblyBounds, camera.aspect, direction, camera.fov);
+          controls.target.copy(frame.target);
+          camera.position.copy(frame.position);
+        };
+        // Refine the distance after OrbitControls/resize while retaining the user's direction.
+        controls.addEventListener('change', frameExploration);
+        frameExploration();
         return {
           update() {
             const { angle: a, mode: m, assembly: split, demo: d } = current.current,
@@ -274,7 +289,10 @@ export default function PlanetaryStudio({
               const frame = fitPlanetaryCamera(assemblyBounds, camera.aspect, desired, camera.fov);
               controls.target.copy(frame.target);
               camera.position.copy(frame.position);
-            }
+            } else frameExploration();
+          },
+          dispose() {
+            controls.removeEventListener('change', frameExploration);
           },
         };
       }}

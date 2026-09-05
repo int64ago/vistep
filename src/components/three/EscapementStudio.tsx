@@ -14,6 +14,12 @@ import {
   type EscPose,
 } from '../../models/escapement';
 import { EscapementDiagram } from './EscapementDiagram';
+import {
+  ESC_HARDWARE as H,
+  escapementHanger,
+  escapementSupport,
+  escapementSupportGeometry,
+} from './EscapementGeometry';
 function plate(points: EscPoint[], depth: number) {
   const s = new THREE.Shape();
   points.forEach(([x, y], i) => (i ? s.lineTo(x, y) : s.moveTo(x, y)));
@@ -92,17 +98,42 @@ export default function EscapementStudio({
       o.scale.y = v.length();
       return o;
     };
-    box(mechanism, [3.8, 0.25, 2], [0, -2.085, -0.15], wood, 0.075);
+    box(
+      mechanism,
+      [H.baseWidth, H.baseTop - H.baseBottom, 2],
+      [0, (H.baseTop + H.baseBottom) / 2, -0.15],
+      wood,
+      0.075,
+    );
     for (const x of [-1.72, 1.72]) {
       box(mechanism, [0.16, 4.42, 0.2], [x, 0.25, -0.85], dark, 0.035);
       cylinder(0.1, 0.12, brass, mechanism, x, -1.72, -0.69);
     }
-    for (const y of [0, ESC.height, 2.48])
-      box(mechanism, [3.5, 0.15, 0.18], [0, y, -0.85], dark, 0.025);
-    // Two bored rear bearing seats; no shaft terminates in empty space.
+    box(mechanism, [H.beamWidth, H.beamHeight, H.beamDepth], [0, 2.48, -0.85], dark, 0.025);
+    // Rotating arbors run inside bored bearings; the frame boss has a matching through bore.
+    const support = escapementSupport();
     for (const y of [0, ESC.height]) {
-      mesh(ring(0.095, 0.2, 0.3), brass, mechanism, 0, y, -0.82);
-      cylinder(0.09, 0.96, steel, mechanism, 0, y, -0.33);
+      const bearingSeat = mesh(escapementSupportGeometry(), dark, mechanism, 0, y, H.beamBack);
+      bearingSeat.name = 'escapement-bored-frame';
+      const bearing = mesh(
+        ring(H.bearingBore, H.bearingOuter, H.bearingDepth),
+        brass,
+        mechanism,
+        0,
+        y,
+        support.bearingBack,
+      );
+      bearing.name = 'escapement-arbor-bearing';
+      const shaft = cylinder(
+        H.shaftRadius,
+        support.shaftLength,
+        steel,
+        mechanism,
+        0,
+        y,
+        support.shaftCentre,
+      );
+      shaft.name = 'escapement-arbor';
       cylinder(0.14, 0.06, brass, mechanism, 0, y, 0.15);
     }
     const wheel = new THREE.Group();
@@ -161,10 +192,27 @@ export default function EscapementStudio({
         ESC.drumZ - 0.09 + i * 0.022,
       );
     const weight = new THREE.Group();
+    weight.name = 'escapement-weight';
     mechanism.add(weight);
     cylinder(0.14, 0.13, brass, weight, ESC.drumRadius, -0.38, ESC.drumZ);
-    box(weight, [0.28, 0.57, 0.28], [ESC.drumRadius, -0.315, ESC.drumZ], brass, 0.07);
+    box(
+      weight,
+      [H.weightWidth, H.weightHeight, 0.28],
+      [ESC.drumRadius, H.weightTop - H.weightHeight / 2, ESC.drumZ],
+      brass,
+      0.07,
+    );
+    const eye = mesh(
+      ring(H.eyeInner, H.eyeOuter, H.eyeDepth),
+      brass,
+      weight,
+      ESC.drumRadius,
+      -H.eyeOuter,
+      ESC.drumZ - H.eyeDepth / 2,
+    );
+    eye.name = 'escapement-weight-eye';
     const rope = mesh(new THREE.CylinderGeometry(0.009, 0.009, 1, 10), wood);
+    rope.name = 'escapement-weight-rope';
     const anchor = new THREE.Group();
     anchor.position.y = ESC.height;
     mechanism.add(anchor);
@@ -230,9 +278,10 @@ export default function EscapementStudio({
         bob.position.y = -3 * p.length;
         boss.position.y = bob.position.y;
         nut.position.y = bob.position.y - 0.31;
-        weight.position.y = p.weightTop;
-        rope.position.set(ESC.drumRadius, p.weightTop / 2, ESC.drumZ);
-        rope.scale.y = -p.weightTop;
+        const hanger = escapementHanger(p);
+        weight.position.y = hanger.attachment[1];
+        rope.position.set(hanger.attachment[0], hanger.ropeCentre, hanger.attachment[2]);
+        rope.scale.y = hanger.ropeLength;
         contact.visible = p.contact !== null;
         if (p.contact) contact.position.set(p.contact[0], p.contact[1], 0.145);
         const changed = oldFocus !== s.focus || Math.abs(oldAspect - camera.aspect) > 0.001;

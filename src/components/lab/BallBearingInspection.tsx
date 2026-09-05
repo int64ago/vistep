@@ -8,6 +8,7 @@ import {
   type BearingState,
 } from '../../models/ball-bearing';
 import BallBearingDiagram from './BallBearingDiagram';
+import BallBearingCage from './BallBearingCage';
 
 const titles = {
   assembly: '一条连续的支撑路径',
@@ -79,82 +80,66 @@ function Contact({
       <circle cx={x} cy={y} r="3" fill={color} />
     );
   return (
-    <svg
-      viewBox={compact ? '75 78 165 145' : '0 0 300 275'}
-      role="img"
-      aria-label={
-        slipping
-          ? t('禁用自转的对照：两处接触都产生滑动')
-          : t('跟随球心的局部视图；速度箭头仍以固定外圈为参考')
-      }
-    >
-      <defs>
-        <clipPath id={id}>
-          <rect x="12" y="48" width="276" height="177" rx="12" />
-        </clipPath>
-      </defs>
-      <g clipPath={`url(#${id})`}>
-        <circle cx="150" cy={centerY} r={outer + 30} fill="#506b79" />
-        <circle cx="150" cy={centerY} r={outer} fill="#102b37" stroke="#b4c7cf" />
-        <circle cx="150" cy={centerY} r={inner} fill="#6a8793" stroke="#b4c7cf" />
-        <circle cx="150" cy="140" r={B.ball * scale} fill="#dec28b" stroke="#f5e3b9" />
-        <line
-          x1="150"
-          y1="140"
-          x2={150 + Math.sin(slipping ? -state.balls[0].angle : rel) * B.ball * scale * 0.84}
-          y2={140 - Math.cos(slipping ? -state.balls[0].angle : rel) * B.ball * scale * 0.84}
-          stroke="#263d47"
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-        {[140 - B.ball * scale, 140 + B.ball * scale].map((y) => (
-          <circle key={y} cx="150" cy={y} r="3" fill={slipping ? '#eea78b' : '#f9edd0'} />
-        ))}
-        {arrow(165, 140, 62 * v.center, '#f8e4b9')}
-        {arrow(165, 140 - B.ball * scale, 62 * v.outerBall, '#f8e4b9')}
-        {arrow(165, 140 + B.ball * scale, 62 * v.innerBall, '#f8e4b9')}
-        {arrow(165, 207, 62, '#bfd6de')}
-        {slipping && (
-          <>
-            {arrow(96, 140 - B.ball * scale - 9, 50 * v.outerSlip, '#efa489')}
-            {arrow(121, 140 + B.ball * scale + 9, 50 * v.innerSlip, '#efa489')}
-          </>
-        )}
-      </g>
+    <div className="bb-contact-view">
+      {!compact && <p className="bb-contact-surface">{t('外圈固定')} · 0</p>}
+      <svg
+        viewBox={compact ? '75 78 165 145' : '12 48 276 177'}
+        role="img"
+        aria-label={
+          slipping
+            ? t('禁用自转的对照：两处接触都产生滑动')
+            : t('跟随球心的局部视图；速度箭头仍以固定外圈为参考')
+        }
+      >
+        <defs>
+          <clipPath id={id}>
+            <rect x="12" y="48" width="276" height="177" rx="12" />
+          </clipPath>
+        </defs>
+        <g clipPath={`url(#${id})`}>
+          <circle cx="150" cy={centerY} r={outer + 30} fill="#506b79" />
+          <circle cx="150" cy={centerY} r={outer} fill="#102b37" stroke="#b4c7cf" />
+          <circle cx="150" cy={centerY} r={inner} fill="#6a8793" stroke="#b4c7cf" />
+          <circle cx="150" cy="140" r={B.ball * scale} fill="#dec28b" stroke="#f5e3b9" />
+          <line
+            x1="150"
+            y1="140"
+            x2={150 + Math.sin(slipping ? -state.balls[0].angle : rel) * B.ball * scale * 0.84}
+            y2={140 - Math.cos(slipping ? -state.balls[0].angle : rel) * B.ball * scale * 0.84}
+            stroke="#263d47"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          {[140 - B.ball * scale, 140 + B.ball * scale].map((y) => (
+            <circle key={y} cx="150" cy={y} r="3" fill={slipping ? '#eea78b' : '#f9edd0'} />
+          ))}
+          {arrow(165, 140, 62 * v.center, '#f8e4b9')}
+          {arrow(165, 140 - B.ball * scale, 62 * v.outerBall, '#f8e4b9')}
+          {arrow(165, 140 + B.ball * scale, 62 * v.innerBall, '#f8e4b9')}
+          {arrow(165, 207, 62, '#bfd6de')}
+          {slipping && (
+            <>
+              {arrow(96, 140 - B.ball * scale - 9, 50 * v.outerSlip, '#efa489')}
+              {arrow(121, 140 + B.ball * scale + 9, 50 * v.innerSlip, '#efa489')}
+            </>
+          )}
+        </g>
+      </svg>
       {!compact && (
-        <>
-          <text x="16" y="29">
-            {t('外圈固定')} · 0
-          </text>
-          <text x="16" y="254">
-            {t('内圈表面')} · v
-          </text>
-          <text x="20" y="145" className="bb-svg-muted">
-            v/2
-          </text>
-        </>
+        <div className="bb-contact-reading">
+          <span>{t('球心')} · v/2</span>
+          <span>{t('内圈表面')} · v</span>
+        </div>
       )}
-    </svg>
+    </div>
   );
 }
-function Patch({
-  progress,
-  lossIndex,
-  compact = false,
-}: {
-  progress: number;
-  lossIndex: number;
-  compact?: boolean;
-}) {
+function Patch({ progress, lossIndex }: { progress: number; lossIndex: number }) {
   const a = 9 + 45 * progress,
     height = 5 + 16 * progress;
   if (lossIndex === 3)
     return (
-      <svg
-        viewBox={compact ? '0 0 300 198' : '0 0 300 230'}
-        role="img"
-        aria-label={t('接触式密封剖面示意，主装配未安装密封')}
-      >
+      <svg viewBox="0 0 300 198" role="img" aria-label={t('接触式密封剖面示意，主装配未安装密封')}>
         <path d="M20 156H280V187H20Z" fill="#89a4af" />
         <path
           d="M45 25H114V75L163 148Q158 157 147 156L83 96H45Z"
@@ -164,19 +149,10 @@ function Patch({
         />
         <path d="M147 156h20" stroke="#e8b374" strokeWidth="4" />
         <path d="M185 173h62m-7-5 7 5-7 5" fill="none" stroke="#e9d0a2" strokeWidth="2" />
-        {!compact && (
-          <text x="18" y="216">
-            {t('可选密封 · 主装配未安装')}
-          </text>
-        )}
       </svg>
     );
   return (
-    <svg
-      viewBox={compact ? '0 0 300 198' : '0 0 300 230'}
-      role="img"
-      aria-label={t('接触斑与润滑膜的定性放大图，不按比例')}
-    >
+    <svg viewBox="0 0 300 198" role="img" aria-label={t('接触斑与润滑膜的定性放大图，不按比例')}>
       <path d="M20 157Q90 142 150 147T280 157V190H20Z" fill="#5f7e8a" />
       <path
         d="M42 20H258Q251 112 196 137Q150 148 104 137Q49 112 42 20Z"
@@ -211,11 +187,6 @@ function Patch({
             strokeWidth="2"
           />
         ))}
-      {!compact && (
-        <text x="150" y="219" textAnchor="middle">
-          {t('形变与膜厚均夸大')}
-        </text>
-      )}
     </svg>
   );
 }
@@ -260,14 +231,13 @@ export default function BallBearingInspection({
             {compact && <p className="bb-contact-surface">{t('内圈表面')} · v</p>}
           </div>
         )}
-        {(focus === 'cage' || focus === 'load') && (
-          <BallBearingDiagram state={state} loadVisible={focus === 'load'} />
-        )}
+        {focus === 'cage' && <BallBearingCage state={state} />}
+        {focus === 'load' && <BallBearingDiagram state={state} loadVisible />}
         {(focus === 'patch' || focus === 'losses') && (
-          <Patch progress={shot.patchProgress} lossIndex={shot.lossIndex} compact={compact} />
+          <Patch progress={shot.patchProgress} lossIndex={shot.lossIndex} />
         )}
       </div>
-      {compact && (focus === 'patch' || focus === 'losses') && (
+      {(focus === 'patch' || focus === 'losses') && (
         <p className="bb-diagram-note">
           {t(shot.lossIndex === 3 ? '可选密封 · 主装配未安装' : '形变与膜厚均夸大')}
         </p>

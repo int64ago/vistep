@@ -603,3 +603,38 @@
   color: var(--bb-muted);
   margin: 8px 0 12px;
 }
+
+/* Readouts live in CSS pixels; shrinking the contact drawing never shrinks its words. */
+.bb-contact-view {
+  min-width: 0;
+}
+.bb-contact-view > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bb-contact-view > .bb-contact-surface,
+.bb-contact-reading {
+  color: var(--bb-muted);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+.bb-contact-view > .bb-contact-surface {
+  margin: 0 0 6px;
+}
+.bb-contact-reading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 4px 14px;
+  margin-top: 6px;
+}
+.bb-contact-reading > span:first-child {
+  color: var(--bb-gold);
+}
+.bb-inspection-image > .bb-cage-section {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+}

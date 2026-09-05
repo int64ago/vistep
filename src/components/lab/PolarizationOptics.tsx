@@ -6,6 +6,7 @@ import {
   polarizationLayout,
   polarizationPath,
   polarizationSetup,
+  polarizationShot,
   malusTransmission,
   projectPolarizationField,
   type PolarizationState,
@@ -14,6 +15,61 @@ import {
 
 export const polarizationColors = { A: '#88c9c3', M: '#bcade1', B: '#e8c588' };
 const percent = (value: number) => `${(100 * value).toFixed(1)}%`;
+
+/** Same receiver response as the full optical train. Keep the chapter's actual
+ * initial state beside the current state so darkness has a visible reference.
+ * No accumulated exposure, private animation or view-dependent normalization.
+ */
+export function PolarizationReceiverComparison({ state }: { state: PolarizationState }) {
+  const id = useId().replace(/:/g, '');
+  const initial = polarizationShot(4, 0).state;
+  const fraction = (beam: PolarizationState) =>
+    beam.input.intensity > 0 ? beam.output.intensity / beam.input.intensity : 0;
+  const samples = [
+    { key: 'initial', label: t('起始'), value: fraction(initial) },
+    { key: 'current', label: t('当前'), value: fraction(state) },
+  ];
+  return (
+    <div
+      className="polarization-receiver-comparison"
+      role="img"
+      aria-label={t(
+        '接收屏对照：起始 {0}，当前 {1}，均相对入射光。',
+        percent(samples[0].value),
+        percent(samples[1].value),
+      )}
+    >
+      <span>{t('接收屏')}</span>
+      <div className="polarization-screen-samples">
+        {samples.map((sample) => (
+          <div key={sample.key} data-polarization-screen={sample.key}>
+            <span>{sample.label}</span>
+            <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+              <defs>
+                <radialGradient id={`${id}-${sample.key}`}>
+                  <stop stopColor="#ffebbb" />
+                  <stop offset="1" stopColor="#e8c588" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              <rect x="1" y="2" width="46" height="42" rx="6" fill="#0e202c" stroke="#647b87" />
+              <path d="M8 46H40" stroke="#425f70" strokeWidth="2" strokeLinecap="round" />
+              <circle
+                cx="24"
+                cy="23"
+                r="20"
+                fill={`url(#${id}-${sample.key})`}
+                opacity={Math.sqrt(sample.value)}
+                data-screen-intensity={sample.value}
+              />
+            </svg>
+            <output>{percent(sample.value)}</output>
+          </div>
+        ))}
+      </div>
+      <span>I / I₀</span>
+    </div>
+  );
+}
 
 export function PolarizationOptics({
   state,
@@ -668,6 +724,21 @@ export function PolarizationFocus({
               <output>
                 {t('最终透过')} · {percent(state.output.intensity)}
               </output>
+            </>
+          ) : view === 'crossed' ? (
+            <>
+              <div className="polarization-crossed-observation">
+                <div className="polarization-crossed-projection">
+                  <ProjectionFace state={state} view={view} time={time} />
+                  <div className="polarization-crossed-ratio">
+                    <span>I₂ / I₁</span>
+                    <output>{percent(focus?.relativeTransmission ?? 0)}</output>
+                  </div>
+                </div>
+                <PolarizationReceiverComparison state={state} />
+              </div>
+              <PolarizationCurve state={state} middle={false} width={width} />
+              <div className="polarization-focus-equation">I₂ / I₁ = cos²θ</div>
             </>
           ) : (
             <>

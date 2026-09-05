@@ -364,6 +364,9 @@ function mainFilm() {
 }
 export type SiphonShot = {
   state: SiphonState;
+  /** Read-only slopes of the film's conserved inventories, in m³ per model second.
+   * These describe the prescribed vent drainage, not continuous-column velocity. */
+  branchFlow?: { source: number; receiver: number };
   view: 'apparatus' | 'pressure' | 'height';
   focus: number;
   comparison: boolean;
@@ -401,6 +404,15 @@ export function siphonShot(chapter: number, progress: number): SiphonShot {
   });
   return {
     state,
+    // The same adjacent frames interpolate both wet intervals and reservoir volumes.
+    // Use their right-hand slope at a knot; the final frame has zero drainage.
+    branchFlow:
+      a.status === 'vented' && b.status === 'vented'
+        ? {
+            source: Math.max(0, (b.source - a.source) / STEP),
+            receiver: Math.max(0, (b.receiver - a.receiver) / STEP),
+          }
+        : undefined,
     view: c === 3 ? 'pressure' : 'apparatus',
     focus:
       c === 2

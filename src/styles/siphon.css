@@ -100,6 +100,11 @@
   max-width: 210px;
   text-align: right;
 }
+.siphon-branch-reading {
+  display: grid;
+  gap: 3px;
+  text-align: right;
+}
 .siphon-apparatus {
   width: 100%;
   min-width: 0;
@@ -431,6 +436,27 @@
   }
   .siphon-study[data-watch='true'][data-view='apparatus'] .siphon-reading {
     grid-template-columns: 1fr;
+  }
+  .siphon-reading[data-branch='true'],
+  .siphon-study[data-watch='true'][data-view='apparatus'] .siphon-reading[data-branch='true'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+  }
+  .siphon-reading[data-branch='true'] > div {
+    min-width: 0;
+  }
+  .siphon-reading[data-branch='true'] > div > span {
+    min-height: 2.8em;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .siphon-reading[data-branch='true'] strong {
+    font-size: 22px;
+    white-space: nowrap;
+  }
+  .siphon-reading[data-branch='true'] strong small {
+    margin-left: 4px;
+    font-size: 16px;
   }
   .siphon-study[data-watch='true'] .siphon-apparatus-note {
     padding: 6px 4px 0;
