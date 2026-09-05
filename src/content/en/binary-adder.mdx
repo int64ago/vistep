@@ -1,0 +1,54 @@
+<h2 id="understand">Pass what does not fit to the next place</h2>
+
+A decimal place holds a digit from zero through nine. A binary place holds only zero or one. Adding two ones leaves zero in the current place and carries one into the next: `10₂`, representing decimal two.
+
+A half adder asks whether the inputs differ, using XOR for the sum bit, and whether both are one, using AND for the carry. A full adder also accepts the carry from a lower place, allowing three input bits to be combined.
+
+Connecting each carry output to the next higher carry input creates a ripple-carry adder. The displayed sums, carries and overflow flags come from the gates. A dot means that a signal is not yet guaranteed known; it does not mean zero.
+
+<h2 id="try">From one circuit to a complete word</h2>
+
+- Choose One full adder and vary A, B and the incoming carry. Three ones produce a sum bit of one and a carry of one: `1 + 1 + 1 = 1 + 2`.
+- In Add a word, enter 255 and 1. Reset signal readiness and advance it slowly. The complete answer is 256; the low eight bits are zero and carry-out is one.
+- Try 127 and 1. Carry-out is zero, but signed overflow is one: the mathematical result exceeds the signed eight-bit maximum of 127.
+- Try 42 and 19. Some outputs can be guaranteed early rather than waiting for a long carry dependency.
+
+Crossing wires without a junction dot are not electrically connected. The phone circuit is rearranged vertically while preserving the same connections.
+
+<h2 id="deeper">Logic, dependencies and numerical range</h2>
+
+<details>
+<summary>How do five gates form a full adder?</summary>
+
+Set `P = A XOR B` and `G = A AND B`:
+
+<div className="formula">S = P XOR Cin</div>
+<div className="formula">Cout = G OR (P AND Cin)</div>
+
+The carry has twice the current place's weight, so `A + B + Cin = S + 2Cout`. Two XOR gates, two AND gates and one OR gate implement this relationship. Physical chips can use other equivalent structures.
+
+Numerical validation enumerates all 65,536 pairs of eight-bit operands, checking the retained result, the full integer reconstructed with carry, and signed-range overflow.
+
+</details>
+
+<details>
+<summary>What does the timing represent?</summary>
+
+The model tracks when a result can be guaranteed known. Inputs are known at the start. XOR requires both values; AND can determine zero from one known zero, and OR can determine one from one known one.
+
+Relative delays are two units for XOR and one for AND/OR. In `255 + 1`, successive carries become guaranteed at 2, 4, 6…16 units. Moving color shows these dependencies. These are not measured nanoseconds, transistor voltages or a simulation of switching glitches.
+
+Real delay depends on devices, wiring, loads and circuit architecture. Faster adders combine carry information ahead of time; this ripple structure is not presented as the implementation used by every processor.
+
+</details>
+
+<details>
+<summary>Why are carry-out and overflow different?</summary>
+
+Unsigned eight-bit values span 0–255. The low eight result bits equal the complete sum modulo 256; carry-out preserves the extra ninth bit.
+
+Eight-bit two's complement spans −128–127. The highest place has weight −128 while the others remain positive. Thus `10000000₂` means 128 unsigned and −128 signed. Signed overflow means the mathematical result lies outside the signed range. It equals the XOR of the carry into and out of the highest bit.
+
+The film first retains the full result, then outlines the low eight stored bits. Its signed chapter changes the weights and interpretation without changing the circuit or bit pattern. An arrow denotes reading a finite-width result rather than falsely equating a wrapped value with the ordinary integer sum.
+
+</details>

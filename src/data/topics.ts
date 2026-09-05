@@ -14,6 +14,30 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'binary-adder',
+    name: '二进制加法',
+    title: '只靠零和一，计算机怎样做加法？',
+    question: '一位相加，一路进位。',
+    description: '拆开一位加法的逻辑，再追踪进位穿过整串数字，区分位宽、进位与溢出。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#a98662',
+    number: '18',
+    tag: '计算 · 逻辑门与进位',
+    related: ['transformer', 'network'],
+    sources: [
+      {
+        title: 'MIT 6.004 · Design Tradeoffs',
+        url: 'https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c8/c8s1/',
+      },
+      {
+        title: 'Computation Structures · CMOS Adder',
+        url: 'https://computationstructures.org/exercises/adder/lab.html',
+      },
+      { title: 'Nand2Tetris · Boolean Arithmetic', url: 'https://www.nand2tetris.org/project02' },
+    ],
+  },
+  {
     slug: 'optical-fiber',
     name: '光纤',
     title: '玻璃里，光为什么跑不出去？',

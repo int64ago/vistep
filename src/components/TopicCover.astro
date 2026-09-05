@@ -7,6 +7,7 @@ import { engineCycle } from '../models/four-stroke';
 import { planetaryOutlines, planetaryState } from '../models/planetary';
 import type { Point2 } from '../models/mechanisms';
 import { traceFiber } from '../models/fiber';
+import { fullAdder } from '../models/adder';
 const { slug, color } = Astro.props;
 const grid = Array.from({ length: 8 }, (_, i) => i);
 const engine = engineCycle(2.4 * Math.PI);
@@ -20,6 +21,7 @@ const planetary =
 const gearPath = (points: Point2[]) =>
   points.map((v, i) => `${i ? 'L' : 'M'}${v.x} ${v.y}`).join(' ') + 'Z';
 const fiber = slug === 'optical-fiber' ? traceFiber(12, 1.46, 600) : null;
+const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
 ---
 
 <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -37,6 +39,66 @@ const fiber = slug === 'optical-fiber' ? traceFiber(12, 1.46, 600) : null;
     width="400"
     height="230"
     fill={`url(#dots-${slug})`}></rect>
+  {
+    adder && (
+      <g>
+        <rect width="400" height="230" fill="#e9eddf" />
+        <path
+          d="M70 79C130 79 132 77 173 77M70 147C122 147 117 99 173 99M70 79C96 79 105 151 173 151M70 147C132 147 132 173 173 173"
+          fill="none"
+          stroke="#ac8767"
+          stroke-width="2"
+        />
+        <path
+          d="M177 65Q212 65 238 88Q212 111 177 111Q195 88 177 65ZM170 65Q188 88 170 111"
+          fill="#f4f3e9"
+          stroke="#839677"
+          stroke-width="1.6"
+        />
+        <path
+          d="M173 140H209A22 22 0 0 1 209 184H173Z"
+          fill="#f4f3e9"
+          stroke="#a47f5f"
+          stroke-width="1.6"
+        />
+        <path d="M238 88H309M231 162H309" stroke="#8da386" stroke-width="2" />
+        {[79, 147].map((y) => (
+          <g>
+            <circle cx="70" cy={y} r="16" fill="#edf0e3" stroke="#a7b499" />
+            <text
+              x="70"
+              y={y + 6}
+              text-anchor="middle"
+              font-size="20"
+              font-family="Manrope"
+              fill="#af7651"
+            >
+              1
+            </text>
+          </g>
+        ))}
+        <text x="323" y="95" font-size="23" font-family="Manrope" fill="#6e8a67">
+          {adder.p.value}
+        </text>
+        <text x="323" y="169" font-size="23" font-family="Manrope" fill="#ad7853">
+          {adder.g.value}
+        </text>
+        <text
+          x="30"
+          y="32"
+          fill="#839675"
+          font-family="Manrope"
+          font-size="11"
+          letter-spacing="1.5"
+        >
+          ONE + ONE
+        </text>
+        <text x="370" y="210" text-anchor="end" fill="#879379" font-family="Manrope" font-size="11">
+          SUM / CARRY
+        </text>
+      </g>
+    )
+  }
   {
     fiber && (
       <g>

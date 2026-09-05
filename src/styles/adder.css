@@ -1,0 +1,224 @@
+.adder-study {
+  padding: 28px 36px 30px;
+  color: #47644d;
+  background: radial-gradient(ellipse at 42% 10%, #f6f4e9, #e5e9dc);
+}
+.adder-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #8a9981;
+  font-size: 12px;
+  letter-spacing: 0.09em;
+}
+.adder-columns {
+  margin-top: 30px;
+}
+.adder-expression {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 26px;
+  font-size: 34px;
+  font-weight: 500;
+  color: #617b58;
+  font-variant-numeric: tabular-nums;
+  margin: 20px 0 25px;
+}
+.adder-expression i {
+  font-size: 26px;
+  font-style: normal;
+  color: #596a50;
+}
+.adder-expression strong {
+  font-weight: 500;
+  color: #a76f50;
+}
+.adder-columns svg,
+.adder-circuit svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  overflow: visible;
+}
+.adder-digit {
+  font-size: 34px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.adder-digit:not(.adder-sum) {
+  fill: #5e7655;
+}
+.adder-flags {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin: 26px 0 8px;
+  color: #58694f;
+  font-size: 15px;
+}
+.adder-flags span {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.adder-flags span[data-on='true'] {
+  color: #8f5339;
+}
+.adder-flags b {
+  font-weight: 500;
+  font-size: 19px;
+}
+.adder-circuit {
+  margin-top: 45px;
+}
+.adder-circuit p {
+  text-align: center;
+  color: #5d6e53;
+  font-size: 16px;
+  margin: 18px 0 0;
+  line-height: 1.8;
+}
+.adder-controls {
+  display: grid;
+  gap: 25px;
+  margin-top: 36px;
+}
+.adder-operands {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+.adder-controls .btn {
+  justify-self: center;
+}
+.showcase[data-mode='watch'] .adder-study {
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+}
+.showcase[data-mode='watch'] .adder-columns,
+.showcase[data-mode='watch'] .adder-circuit {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media (max-width: 760px) {
+  .adder-study {
+    padding: 22px 14px;
+  }
+  .adder-topline {
+    font-size: 10px;
+  }
+  .adder-expression {
+    font-size: 29px;
+    gap: 17px;
+    margin: 25px 0 30px;
+  }
+  .adder-expression i {
+    font-size: 22px;
+  }
+  .adder-digit {
+    font-size: 27px;
+  }
+  .adder-flags {
+    gap: 18px;
+    font-size: 12px;
+    justify-content: space-between;
+    margin-top: 22px;
+  }
+  .adder-flags span {
+    gap: 8px;
+  }
+  .adder-flags b {
+    font-size: 17px;
+  }
+  .adder-operands {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .adder-circuit {
+    margin-top: 25px;
+  }
+  .adder-circuit svg {
+    max-height: none;
+  }
+  .adder-circuit p {
+    font-size: 14px;
+  }
+  .showcase[data-mode='watch'] .adder-study {
+    min-height: 520px;
+  }
+}
+.adder-interpretation {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  color: #58694f;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.adder-interpretation span {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  transition: color 0.25s;
+}
+.adder-interpretation b {
+  font-weight: 500;
+  font-size: 24px;
+}
+.adder-interpretation span[data-selected='true'] {
+  color: #8f5339;
+}
+@media (max-width: 760px) {
+  .adder-interpretation {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 16px;
+  }
+  .adder-interpretation b {
+    font-size: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adder-interpretation span {
+    transition: none;
+  }
+}
+.adder-circuit,
+.adder-columns {
+  animation: adder-arrive 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes adder-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adder-circuit,
+  .adder-columns {
+    animation: none;
+  }
+}
+@media (max-width: 760px) {
+  .adder-interpretation span {
+    display: grid;
+    gap: 3px;
+    text-align: center;
+  }
+}
+.adder-study:not([data-playing='true']) .adder-circuit,
+.adder-study:not([data-playing='true']) .adder-columns {
+  animation: none;
+}
+
+.adder-columns svg {
+  max-height: 330px;
+}

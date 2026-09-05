@@ -2570,5 +2570,121 @@
         }
       ]
     }
+  },
+  "binary-adder": {
+    "zh": {
+      "src": "/narration/binary-adder-zh-3a905247d908.mp3",
+      "duration": 178.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 19.53218,
+          "text": "一加一当然是二。可如果每一位只能放零或者一，二要写在哪里？看右边这一列：本位留下零，向左进一个一，就成了二进制的一零。它仍然表示二，只是换了一套位权。计算机的加法，就从这两个小输出开始。",
+          "tempo": 1
+        },
+        {
+          "at": 20.95,
+          "end": 41.61551,
+          "text": "换到线路里面看。第一条路问：两个输入是不是不同？不同就输出一，这个门叫异或门。另一条路问：是不是两个输入都是一？都为一，才需要进位，这个门叫与门。四种输入轮流走一遍，两个输出合起来，正好完成一位相加。",
+          "tempo": 1
+        },
+        {
+          "at": 42.95,
+          "end": 63.93649,
+          "text": "但一串数字不能只顾自己。低一位还可能送来一个进位，所以这里多了第三个输入。先看一加零，再把进位的一送进来，结果就变了。如果三个输入都是一，本位是一，还要再进一个一。这套线路叫全加器，可以接住来自旁边的一步。",
+          "tempo": 1
+        },
+        {
+          "at": 65.45,
+          "end": 85.14488,
+          "text": "把这样的电路按位排起来，就能算更长的数。现在是五加七。两行数字按位权对齐，从右边的一开始。每一列都算自己的本位和，再把进位交给左边。最后留下的这一行是一一零零，换回我们平时的数法，就是十二。",
+          "tempo": 1
+        },
+        {
+          "at": 86.95,
+          "end": 109.05789,
+          "text": "来一个特别容易看清进位的例子：二百五十五加一。八个一，每一位都要把进位继续送过去。看这条铜色的路线，从右向左，一步步确定结果。还没确定的位置先留着小点，不要把它当成零。真实电路也需要传播时间，画面把这种依赖放大了。",
+          "tempo": 1
+        },
+        {
+          "at": 110.45,
+          "end": 130.53773,
+          "text": "结果出来了：原来的八位都变成零，左边多出来一个一。完整答案是二百五十六。如果只保留八位，这个一就放不进去，所以必须另外记录最高位进位，或者使用更多位数。零不是完整答案；它只是八位范围里留下来的部分。",
+          "tempo": 1
+        },
+        {
+          "at": 132.45,
+          "end": 154.89016,
+          "text": "最后再看一百二十七加一。按无符号数读，结果是一百二十八，没有最高位进位。现在换成八位有符号读法，最高位的权重变成负的一百二十八，同样的位串就被读成负数。线路没有变，是表示范围不够了：这叫有符号溢出，和进位不是一回事。",
+          "tempo": 1
+        },
+        {
+          "at": 156.45,
+          "end": 177.1824,
+          "text": "换成四十二加十九，再走一遍。这次有些位置可以早一点确定，有些要等前面的进位。结果是六十一。计算机没有背下每一道加法题，而是用简单的逻辑关系，把每一位连起来。你可以换两个数，也可以停在某个信号还没确定的时刻。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/binary-adder-en-cc905617944e.mp3",
+      "duration": 178.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 18.03939,
+          "text": "One plus one is two. But where does two go if each place can hold only zero or one? The current place keeps zero and sends a carry to the left. Binary one-zero still means two. It uses different place values. Those two little outputs are the beginning of a computer adder.",
+          "tempo": 1
+        },
+        {
+          "at": 20.95,
+          "end": 39.85873,
+          "text": "Look inside the circuit. One path asks whether the inputs differ: that is XOR. The other asks whether both inputs are one: that is AND. When both are one, a carry is needed. Watch the four input combinations. Together, these two outputs perform a one-bit addition.",
+          "tempo": 1
+        },
+        {
+          "at": 42.95,
+          "end": 63.20415,
+          "text": "A longer number needs one more input: a carry from the lower place. Start with one plus zero, then add that incoming carry. The result changes. If all three inputs are one, the sum bit is one and another carry leaves. A full adder handles all three inputs, so one stage can connect to the next.",
+          "tempo": 1
+        },
+        {
+          "at": 65.45,
+          "end": 85.38898,
+          "text": "Arrange those circuits by place value. Here we add five and seven. Corresponding bits line up, with the ones place on the right. Each stage produces its sum bit and passes any carry toward the higher place. The final binary row represents twelve. A larger calculation is built from repeated small operations.",
+          "tempo": 1
+        },
+        {
+          "at": 86.95,
+          "end": 106.83585,
+          "text": "Now add one to two hundred fifty-five: eight ones followed by a long carry chain. Watch the copper trace move toward the higher places. Outputs become known step by step. A dot means unresolved, not zero. Real gates take time to respond; this teaching clock makes their logical dependencies visible.",
+          "tempo": 1
+        },
+        {
+          "at": 110.45,
+          "end": 130.76322,
+          "text": "The eight stored bits are now zero, with one extra bit beyond them. The complete answer is two hundred fifty-six. An eight-bit result cannot hold that ninth bit. Keep the carry separately or use a wider result. Zero is only the portion left inside the eight-bit word, not the complete mathematical answer.",
+          "tempo": 1
+        },
+        {
+          "at": 132.45,
+          "end": 150.70147,
+          "text": "Add one to one hundred twenty-seven. With no sign bit, the result is one hundred twenty-eight and there is no carry-out. Now interpret the highest bit with a negative weight. Those same stored bits read as negative one hundred twenty-eight. That is signed overflow. It is different from carry-out.",
+          "tempo": 1
+        },
+        {
+          "at": 156.45,
+          "end": 176.99871,
+          "text": "Try forty-two plus nineteen. Some outputs can become known early; others depend on a carry. The result is sixty-one. The circuit does not memorize every addition problem. It connects small logical operations by place value. Change the inputs yourself, or pause while an intermediate signal is still unresolved.",
+          "tempo": 1
+        }
+      ]
+    }
   }
 }
