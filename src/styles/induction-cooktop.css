@@ -64,6 +64,7 @@
   overflow: visible;
 }
 .ic-study svg text {
+  font-size: 16px;
   fill: #476052;
 }
 .ic-readings {
@@ -119,18 +120,11 @@
   overflow-wrap: anywhere;
 }
 .ic-study[data-watch='true'] {
-  min-height: 796px;
   display: flex;
   flex-direction: column;
 }
-.ic-study[data-watch='true'] .ic-notes {
-  margin-top: auto;
-}
 .ic-study[data-watch='true'] .ic-current {
   display: none;
-}
-.ic-study[data-compact='true'][data-watch='true'] {
-  min-height: 780px;
 }
 .ic-study[data-compact='true'] {
   padding: 20px 17px 12px;
@@ -229,4 +223,38 @@
   .ic-study button {
     transition: none;
   }
+}
+
+.ic-instrument-title {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 6px;
+}
+.ic-study[data-watch='true'] .ic-key {
+  margin: 8px 0;
+}
+.ic-study[data-watch='true'] .ic-notes {
+  margin-top: 8px;
+}
+/* Keep the current apparatus and one instrument together on a phone. */
+.ic-study[data-compact='true'][data-watch='true'] {
+  padding: 12px 16px 8px;
+}
+.ic-study[data-compact='true'][data-watch='true'] .ic-heading {
+  display: none;
+}
+.ic-study[data-compact='true'][data-watch='true'][data-ic-view='flux'] .ic-studio {
+  height: 222px;
+}
+.ic-study[data-compact='true'][data-watch='true'][data-ic-view='skin'] .ic-studio {
+  height: 198px;
+}
+.ic-study[data-compact='true'][data-watch='true'][data-ic-view='duty'] .ic-studio {
+  height: 230px;
+}
+.ic-study[data-compact='true'][data-watch='true'] .ic-readings {
+  padding: 8px 0;
+}
+.ic-study[data-compact='true'][data-watch='true'] .ic-material-name {
+  font-size: 16px;
 }

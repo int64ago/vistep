@@ -236,7 +236,7 @@
 }
 @media (max-width: 760px) {
   .rainbow-study[data-watch='true'] {
-    min-height: 770px;
+    min-height: 540px;
     display: flex;
     flex-direction: column;
   }
@@ -343,5 +343,54 @@
 @media (prefers-reduced-motion: reduce) {
   .rainbow-study button {
     transition: none;
+  }
+}
+
+/* The phone follows one contact or one cause/result pair; exploration retains all readouts. */
+.rainbow-controls .control output {
+  font-size: 16px;
+}
+@media (max-width: 760px) {
+  .rainbow-study[data-watch='true'] .rainbow-heading > span:first-child {
+    display: none;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-visual {
+    min-height: 0;
+    padding: 8px 0;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-path-steps {
+    display: block;
+    margin: 6px 0;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-path-steps > span:not([data-active='true']) {
+    display: none;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-readout {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 0;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-readout > span {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-readout small {
+    min-width: 0;
+    line-height: 1.45;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-readout b {
+    font-size: 20px;
+    white-space: nowrap;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .rainbow-study[data-watch='false'] .rainbow-path-steps {
+    grid-template-columns: 1fr;
+  }
+  .rainbow-study[data-watch='false'] .rainbow-path-steps > span {
+    justify-content: flex-start;
   }
 }

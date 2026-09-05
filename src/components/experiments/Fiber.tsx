@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import {
   acceptance,
@@ -13,6 +13,17 @@ import { useShowcase } from '../lab/Showcase';
 import { FiberDrawing, InterfaceDrawing, PulseDrawing } from '../lab/FiberDrawing';
 import '../../styles/fiber.css';
 export default function Fiber() {
+  const root = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(840);
+  useEffect(() => {
+    const host = root.current;
+    if (!host) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setWidth(Math.max(200, entry.contentRect.width)),
+    );
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, []);
   const demo = useShowcase(),
     [medium, setMedium] = useState<'fiber' | 'interface' | 'pulse'>('fiber'),
     [angle, setAngle] = useState(9),
@@ -27,7 +38,7 @@ export default function Fiber() {
     ray = traceFiber(currentAngle, currentClad),
     cone = acceptance(FIBER.core, currentClad);
   return (
-    <div className="fiber-study">
+    <div className="fiber-study" data-fiber-view={view} ref={root}>
       <div className="fiber-heading">
         <span>LIGHT / GUIDED</span>
         <span>
@@ -47,6 +58,7 @@ export default function Fiber() {
             </span>
           </div>
           <FiberDrawing
+            width={width}
             angle={currentAngle}
             cladding={currentClad}
             time={demo.watch ? (demo.chapter === 7 ? shot.packetTime : demo.time) : 0}
@@ -64,7 +76,11 @@ export default function Fiber() {
       )}
       {view === 'interface' && (
         <>
-          <InterfaceDrawing degrees={currentIncidence} time={demo.watch ? demo.time : 0} />
+          <InterfaceDrawing
+            width={width}
+            degrees={currentIncidence}
+            time={demo.watch ? demo.time : 0}
+          />
           <div className="fiber-result">
             <strong>{t(boundary.tir ? '全反射' : '同时反射与折射')}</strong>
             <span>
@@ -74,10 +90,20 @@ export default function Fiber() {
           </div>
         </>
       )}
-      {view === 'pulse' && <PulseDrawing progress={demo.watch ? demo.chapterProgress : 1} />}
+      {view === 'pulse' && (
+        <PulseDrawing width={width} progress={demo.watch ? demo.chapterProgress : 1} />
+      )}
+      <details className="fiber-model-note">
+        <summary>{t('光量模型的范围')}</summary>
+        <p>
+          {t(
+            '每次碰壁都重新使用未偏振平均反射率；不追踪连续反射中的偏振演化。分支亮度只用于说明光量的分配趋势。',
+          )}
+        </p>
+      </details>
       {!demo.watch && (
         <div className="fiber-controls">
-          <Segments
+          <Segments<'fiber' | 'interface' | 'pulse'>
             value={medium}
             options={[
               { value: 'fiber', label: t('纤芯与包层') },

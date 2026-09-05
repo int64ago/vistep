@@ -43,7 +43,10 @@ function ElectricTraces({
   const cursor = dc
     ? Math.max(0, Math.min(1, shot.dcTime / end))
     : (((shot.phase / (Math.PI * 2)) % 1) + 1) % 1;
-  const labels = [t('共用磁通 Φ'), t('次级端电压 v₂')],
+  const labels = [
+      t(!manual && width < 320 ? '磁通 Φ' : '共用磁通 Φ'),
+      t(!manual && width < 320 ? '端电压 v₂' : '次级端电压 v₂'),
+    ],
     units = ['mWb', 'V'];
   return (
     <div className="electric-traces" aria-label={t('磁通与电压共用同一物理时间轴')}>
@@ -166,6 +169,7 @@ export default function ElectricTransformer() {
   const film = useShowcase(),
     host = useRef<HTMLDivElement>(null),
     id = useId();
+  const [viewVersion, setViewVersion] = useState(0);
   const [width, setWidth] = useState(760),
     [turns, setTurns] = useState(12),
     [frequency, setFrequency] = useState(50);
@@ -219,6 +223,7 @@ export default function ElectricTransformer() {
       data-losses={shot.showLosses}
       data-side={width >= 760}
       data-watch={film.watch}
+      data-power={shot.showPower}
     >
       <div className="electric-kicker">
         <span>{t('一个磁路 · 两个电路')}</span>
@@ -231,7 +236,7 @@ export default function ElectricTransformer() {
       <div className="electric-visuals">
         <div className="electric-object">
           <ElectricTransformerStudio
-            key={narrow ? 'portrait' : 'landscape'}
+            key={`${narrow}-${film.run}-${viewVersion}`}
             shot={shot}
             narrow={narrow}
           />
@@ -239,7 +244,7 @@ export default function ElectricTransformer() {
         <div className="electric-terminals">
           <div>
             <span>
-              {t(narrow && film.watch ? '初级' : '初级绕组')} · N₁ = {C.primaryTurns}
+              {!(narrow && film.watch) && <>{t('初级绕组')} · </>}N₁ = {C.primaryTurns}
             </span>
             <strong>
               {shot.dc
@@ -254,7 +259,7 @@ export default function ElectricTransformer() {
           </div>
           <div>
             <span>
-              {t(narrow && film.watch ? '次级' : '次级绕组')} · N₂ = {shot.input.secondaryTurns}
+              {!(narrow && film.watch) && <>{t('次级绕组')} · </>}N₂ = {shot.input.secondaryTurns}
             </span>
             <strong>
               {shot.dc
@@ -380,6 +385,7 @@ export default function ElectricTransformer() {
           <button
             className="electric-reset"
             onClick={() => {
+              setViewVersion((v) => v + 1);
               setTurns(12);
               setFrequency(50);
               setLoad(12);

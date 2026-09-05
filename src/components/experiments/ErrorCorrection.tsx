@@ -17,6 +17,7 @@ import {
   type EcShot,
 } from '../../models/error-correction';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import '../../styles/error-correction.css';
 
 const colors = ['#397f79', '#a07832', '#956685'];
@@ -31,57 +32,33 @@ const titles = [
   '能修一位，能拦两位',
 ];
 
-function explanation(shot: EcShot) {
-  const { chapter: c, sample: s, corrected, built, revealed } = shot;
-  if (c === 0)
-    return built < 3
-      ? t('数据保留在 3、5、6、7 位；依次补齐三个偶校验位。')
-      : t('每条彩线覆盖的四个位，异或结果都等于零。');
-  if (c === 1) return t('每个位参加的校验组合不同；这就是单错的位置指纹。');
-  if (c === 2)
-    return s.flips.length
-      ? t('信道只翻转第 6 位；校验位也随数据一起传输。')
-      : t('发送和接收按相同位编号对齐，先观察没有错误的情况。');
-  if (c === 3)
-    return revealed < 3
-      ? t('接收端重新检查：偶数个 1 得 0，奇数个 1 得 1。')
-      : t('C4、C2、C1 得到 110₂ = 6；假定只有单错，位置就是 6。');
-  if (c === 4)
-    return corrected
-      ? t('翻回第 6 位，三项校验归零；提取原来的四个数据位置。')
-      : t('综合征定位 6；纠错前先保留接收到的码字。');
-  if (c === 5 && !s.flips.length) return t('先保留发送码字，接下来同时翻转第 3、5 位。');
-  if (c === 5)
-    return corrected
-      ? t('误翻第 6 位后，校验全通过，数据却错了。普通解码器无法分辨。')
-      : t('第 3、5 位同时翻转，也给出 110₂；它与单错 6 的指纹相同。');
-  if (c === 6)
-    return s.flips.length
-      ? t('相同双错：综合征非零，总奇偶仍为偶。报警，并且不交付数据。')
-      : t('第 8 位检查全部八个位，使整字中 1 的数量为偶数。');
-  return t('以下判断以最多两位翻转为前提；三位及以上可能误纠或漏检。');
-}
-
 function Word({
   word,
   flips = [],
   correction = null,
   label,
   className = '',
+  positions = true,
 }: {
   word: readonly EcBit[];
   flips?: readonly number[];
   correction?: number | null;
   label: string;
   className?: string;
+  positions?: boolean;
 }) {
   return (
     <div className={`ec-word ${className}`}>
       <span>{label}</span>
       <div className="ec-word-bits" style={{ '--ec-n': word.length } as CSSProperties}>
         {word.map((b, i) => (
-          <div key={i} data-flip={flips.includes(i + 1)} data-correct={correction === i + 1}>
-            <small>{i + 1}</small>
+          <div
+            key={i}
+            data-position={i + 1}
+            data-flip={flips.includes(i + 1)}
+            data-correct={correction === i + 1}
+          >
+            {positions && <small>{i + 1}</small>}
             <b>{b}</b>
           </div>
         ))}
@@ -377,8 +354,151 @@ function Reasoning({ shot }: { shot: EcShot }) {
   );
 }
 
+/** Phone film switches from geometric membership to an identity-preserving decoder ledger. */
+export function EcPhoneFilm({ shot }: { shot: EcShot }) {
+  const { chapter: c, sample: s, corrected, revealed } = shot;
+  const output = corrected ? s.decoded.corrected : null;
+  const status = s.decoded.status;
+  return (
+    <div className="ec-phone-film" data-chapter={c}>
+      {c < 2 ? (
+        <>
+          <ParityWeave shot={shot} />
+          <div className="ec-phone-data-map">
+            {EC_DATA_POSITIONS.map((pos, i) => (
+              <span key={pos}>
+                d{i + 1} → {pos}
+              </span>
+            ))}
+          </div>
+          {c === 1 && (
+            <div className="ec-phone-fingerprint">
+              <span>C4 C2 C1</span>
+              <b>110₂ → 6</b>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {(c === 2 || c === 6) && <Word word={s.encoded} label={t('发送')} />}
+          <Word word={s.received} flips={s.flips} label={t('接收')} className="ec-phone-received" />
+          {c === 2 ? (
+            <div className="ec-phone-channel">
+              <span>
+                {t('信道翻转')} · {s.flips.join(' + ') || t('无翻转')}
+              </span>
+              <div>
+                <span>{t('翻转第 {0} 位', 6)}</span>
+                <b>
+                  {s.encoded[5]} → {s.received[5]}
+                </b>
+              </div>
+              <p>{t('位编号标明位置；格内的 0、1 才是数据值。')}</p>
+            </div>
+          ) : (
+            <>
+              {c === 3 && (
+                <div className="ec-phone-check-work">
+                  {EC_GROUPS.map((group, i) => (
+                    <div key={i} data-active={shot.focus === i}>
+                      <span>
+                        C{EC_CHECK_POSITIONS[i]} · {group.join(' · ')}
+                      </span>
+                      <code>
+                        {group.map((pos) => s.received[pos - 1]).join(' ⊕ ')} ={' '}
+                        {i < revealed ? s.decoded.checks[i] : '?'}
+                      </code>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="ec-phone-syndrome">
+                <div aria-label={t('接收综合征')}>
+                  <span>s · C4 C2 C1</span>
+                  <strong>
+                    {revealed === 3
+                      ? `${[...s.decoded.checks].reverse().join('')}₂ = ${s.decoded.syndrome}`
+                      : '···₂ = ?'}
+                  </strong>
+                </div>
+                {s.mode === 'extended' && (
+                  <div aria-label={t('接收总奇偶')}>
+                    <span>q · 1…8</span>
+                    <strong>{s.decoded.overall}</strong>
+                  </div>
+                )}
+              </div>
+              {c === 5 && (
+                <div className="ec-phone-alias">
+                  <span>{t('相同综合征，两个解释')}</span>
+                  <code>6 → 110₂ · 3 ⊕ 5 → 110₂</code>
+                </div>
+              )}
+              {c === 6 && (
+                <div className="ec-phone-overall">
+                  <span>{t('接收总奇偶')}</span>
+                  <code>
+                    {s.received.join(' ⊕ ')} = {s.decoded.overall}
+                  </code>
+                </div>
+              )}
+              {c === 7 && (
+                <div className="ec-phone-rule">
+                  <span>{t('最多两位翻转时')}</span>
+                </div>
+              )}
+              {shot.decision && (
+                <div
+                  className="ec-verdict"
+                  data-warning={status === 'detected' || (corrected && !s.recovered)}
+                >
+                  {status === 'detected'
+                    ? t('检出双错，不纠正')
+                    : s.decoded.correction
+                      ? t('翻转第 {0} 位', s.decoded.correction)
+                      : t('未检出错误')}
+                </div>
+              )}
+              {output && (
+                <>
+                  <Word
+                    word={output}
+                    flips={s.flips.filter((pos) => pos !== s.decoded.correction)}
+                    correction={s.decoded.correction}
+                    label={t('解码器输出码字')}
+                    positions={false}
+                  />
+                  <div className="ec-phone-output" data-warning={!s.recovered}>
+                    {c !== 7 && (
+                      <span>C1, C2, C4 = {ecDecode(output, s.mode).checks.join(', ')}</span>
+                    )}
+                    <span>
+                      {t('提取数据')}
+                      {c !== 7 ? ' · 3, 5, 6, 7' : ''}
+                    </span>
+                    <b>{s.decoded.payload?.join('')}</b>
+                    <span>{t(s.recovered ? '与原数据相同' : '与原数据不同')}</span>
+                  </div>
+                </>
+              )}
+              {status === 'detected' && (
+                <div className="ec-phone-output">
+                  <span>{t('提取数据')}</span>
+                  <b>{t('不交付')}</b>
+                </div>
+              )}
+              {c === 7 && <p className="ec-phone-limit">{t('三位以上可能误纠或漏检。')}</p>}
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function ErrorCorrection() {
   const director = useShowcase(),
+    compact = useCompact(),
     id = useId();
   const [value, setValue] = useState(11),
     [mode, setMode] = useState<EcMode>('extended'),
@@ -411,6 +531,7 @@ export default function ErrorCorrection() {
       className="ec-study"
       data-chapter={shot.chapter}
       data-watch={director.watch}
+      data-phone={director.watch && compact}
       data-moving={director.playing}
       aria-label={t('纠错编码实验')}
     >
@@ -418,21 +539,25 @@ export default function ErrorCorrection() {
         <span>{sample.mode === 'extended' ? 'Hamming (8,4) · SECDED' : 'Hamming (7,4)'}</span>
         <span>{t('偶校验 · 教学模型')}</span>
       </header>
-      <div className="ec-intro">
-        <h3>{t(director.watch ? titles[shot.chapter] : '亲手翻转，同一套解码规则')}</h3>
-        <p>
-          {director.watch ? explanation(shot) : t('选择数据与位编号；解码器只能看到接收码字。')}
-        </p>
-      </div>
+      {!(director.watch && compact) && (
+        <div className="ec-intro">
+          <h3>{t(director.watch ? titles[shot.chapter] : '亲手翻转，同一套解码规则')}</h3>
+          {!director.watch && <p>{t('选择数据与位编号；解码器只能看到接收码字。')}</p>}
+        </div>
+      )}
       <div className="ec-original">
         <span>{t('原数据')}</span>
         <b>{sample.data.join('')}</b>
         <span>d1 d2 d3 d4</span>
       </div>
-      <div className="ec-composition">
-        <ParityWeave shot={shot} />
-        <Reasoning shot={shot} />
-      </div>
+      {director.watch && compact ? (
+        <EcPhoneFilm shot={shot} />
+      ) : (
+        <div className="ec-composition">
+          <ParityWeave shot={shot} />
+          <Reasoning shot={shot} />
+        </div>
+      )}
       {!director.watch && (
         <div className="ec-explore">
           <div className="ec-explore-settings">
@@ -523,7 +648,7 @@ export default function ErrorCorrection() {
           </p>
         </div>
       )}
-      {director.watch && (
+      {director.watch && !compact && (
         <p className="ec-footnote">
           {t(
             shot.chapter < 5

@@ -311,12 +311,8 @@
 .induction-motor[data-narrow='true'] .indmotor-explore {
   grid-template-columns: minmax(0, 1fr);
 }
-.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-stage {
-  min-height: 790px;
-  grid-template-rows: auto 1fr auto;
-}
 .induction-motor[data-watch='true'][data-narrow='true'][data-focus='cage'] .indmotor-object {
-  height: 263px;
+  height: 230px;
 }
 .induction-motor[data-watch='true'][data-narrow='true'][data-focus='cage'] .indmotor-slip-strip {
   display: none;
@@ -326,7 +322,7 @@
   gap: 10px;
 }
 .induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-object {
-  height: 206px;
+  height: 210px;
 }
 .induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-power-row {
   margin: 9px 0;
@@ -339,4 +335,33 @@
 
 .induction-motor[data-watch='true'] .indmotor-caption {
   display: none;
+}
+
+.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-heading {
+  display: none;
+}
+.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-object {
+  height: 210px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='cage'] .indmotor-object {
+  height: 230px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-field-slice svg {
+  height: 190px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-proof {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='field'] .indmotor-slip-strip,
+.induction-motor[data-watch='true'][data-narrow='true'][data-chapter='1'] .indmotor-phase-values {
+  display: none;
+}
+.induction-motor[data-watch='true'][data-narrow='true'] .indmotor-scope {
+  margin-top: 0;
+  padding: 0 16px;
+}
+
+.indmotor-field-slice svg text {
+  font-size: 20px;
 }

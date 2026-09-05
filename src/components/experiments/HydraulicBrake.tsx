@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { t } from '../../i18n';
 import { brakeShot, brakeState } from '../../models/brake';
 import { Range } from '../lab/Controls';
+import { useCompact } from '../lab/useCompact';
 import { useShowcase } from '../lab/Showcase';
 import BrakeStudio from '../three/BrakeStudio';
 import BrakeSection from '../lab/BrakeSection';
@@ -10,7 +11,9 @@ export default function HydraulicBrake() {
   const demo = useShowcase(),
     [stroke, setStroke] = useState(0),
     [diameter, setDiameter] = useState(10),
-    [air, setAir] = useState(0);
+    [air, setAir] = useState(0),
+    [epoch, setEpoch] = useState(0),
+    compact = useCompact();
   const auto = brakeShot(demo.chapter, demo.chapterProgress),
     shot = demo.watch
       ? auto
@@ -23,9 +26,16 @@ export default function HydraulicBrake() {
           showEnergy: false,
           comparison: 'none' as const,
         },
-    s = shot.state;
+    s = shot.state,
+    phoneDetail = compact && demo.watch && [1, 2, 3, 4, 5].includes(demo.chapter),
+    sectionVisible = !compact || !demo.watch || phoneDetail;
   return (
-    <div className="brake-study">
+    <div
+      className="brake-study"
+      data-watch={demo.watch}
+      data-chapter={demo.chapter}
+      data-detail={phoneDetail}
+    >
       <div className="brake-topline">
         <span>HYDRAULIC / TWO PISTONS</span>
         <span>
@@ -33,7 +43,7 @@ export default function HydraulicBrake() {
         </span>
       </div>
       <div className="brake-apparatus">
-        <BrakeStudio shot={shot} />
+        {!phoneDetail && <BrakeStudio key={epoch} shot={shot} />}
         <div className="brake-pressure">
           <span>{t('油路表压')}</span>
           <strong>
@@ -101,14 +111,18 @@ export default function HydraulicBrake() {
               </strong>
             </div>
           </div>
-          <BrakeSection
-            state={s}
-            view={shot.focus === 'master' || shot.comparison === 'air' ? 'master' : 'caliper'}
-          />
+          {sectionVisible && (
+            <BrakeSection
+              readouts={!(compact && demo.watch)}
+              state={s}
+              view={shot.focus === 'master' || shot.comparison === 'air' ? 'master' : 'caliper'}
+            />
+          )}
         </div>
       )}
       {!demo.watch && (
         <div className="brake-controls">
+          <p className="brake-linkage-note">{t('推杆保持固定长度；手力采用理想 4:1 杠杆近似。')}</p>
           <Range
             label={t('主缸行程')}
             value={stroke}
@@ -142,6 +156,7 @@ export default function HydraulicBrake() {
               setStroke(0);
               setDiameter(10);
               setAir(0);
+              setEpoch((v) => v + 1);
             }}
           >
             {t('释放并重置刹车')}

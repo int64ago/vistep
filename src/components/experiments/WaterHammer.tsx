@@ -96,11 +96,13 @@ export default function WaterHammer({ initialWidth = 880 }: { initialWidth?: num
       ) : (
         <WaterHammerBench shot={shot} initialWidth={initialWidth} />
       )}
-      <p className="water-hammer-observation" role="status">
-        {t(s.failure ? '绝对压力触及蒸气压，单相计算到此停止。' : observations[shot.annotation])}
-      </p>
+      {!demo.watch && (
+        <p className="water-hammer-observation" role="status">
+          {t(s.failure ? '绝对压力触及蒸气压，单相计算到此停止。' : observations[shot.annotation])}
+        </p>
+      )}
       {s.failure && (
-        <div className="water-hammer-failure">
+        <div className="water-hammer-failure" role="status">
           <span>
             {t('最低绝对压力')} <b>{(s.minPressure / 1000).toFixed(3)} kPa</b>
           </span>

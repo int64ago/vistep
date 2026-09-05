@@ -483,25 +483,36 @@ export default function MemoryCache() {
           </div>
           <div className="cache-step-buttons">
             <button
-              disabled={cursor === 0}
-              onClick={() => setCursor(Math.max(0, Math.floor(cursor) - 1))}
+              disabled={view.state.accesses === 0}
+              onClick={() => setCursor(Math.max(0, view.state.accesses - 1))}
             >
               {t('上一次读取')}
             </button>
             <button
-              disabled={cursor >= addresses.length}
-              onClick={() => setCursor(Math.min(addresses.length, Math.floor(cursor) + 1))}
+              disabled={view.state.accesses >= addresses.length}
+              onClick={() => setCursor(Math.min(addresses.length, view.state.accesses + 1))}
             >
               {t('下一次读取')}
             </button>
             <button onClick={() => setCursor(0)}>{t('重新从空缓存开始')}</button>
             <button onClick={() => setCursor(addresses.length)}>{t('读完整个序列')}</button>
+            <button
+              onClick={() => {
+                setPreset('spatial');
+                setAddresses([...CACHE_TRACES.spatial]);
+                setWays(1);
+                setCursor(0);
+                setCustomAddress(18);
+              }}
+            >
+              {t('恢复缓存默认设置')}
+            </button>
           </div>
           <label className="cache-range" htmlFor={`${controlId}-progress`}>
             <span>
               {t('访问进度')}
               <output>
-                {Math.floor(cursor)} / {addresses.length}
+                {view.state.accesses} / {addresses.length}
               </output>
             </span>
             <input
@@ -511,6 +522,7 @@ export default function MemoryCache() {
               max={addresses.length}
               step={0.05}
               value={cursor}
+              aria-valuetext={`${view.state.accesses} / ${addresses.length}`}
               onChange={(e) => setCursor(Number(e.target.value))}
             />
           </label>

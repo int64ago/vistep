@@ -1,15 +1,15 @@
 .brake-study {
-  padding: 26px 30px 20px;
+  padding: 22px 30px 20px;
   background: radial-gradient(ellipse at 35% 15%, #f2f0e8, #e2e6da);
   color: #46574f;
+  font-size: 16px;
 }
 .brake-topline {
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  color: #778477;
-  font-size: 12px;
-  letter-spacing: 0.05em;
+  color: #647163;
+  font-size: 16px;
 }
 .brake-apparatus {
   height: 440px;
@@ -21,29 +21,28 @@
 }
 .brake-pressure {
   position: absolute;
-  top: 35px;
-  left: 22px;
+  top: 28px;
+  left: 16px;
   pointer-events: none;
   display: grid;
   gap: 6px;
-  background: #efefe5d9;
-  padding: 13px 16px;
+  background: #efefe5e8;
+  padding: 12px 16px;
   border-radius: 14px;
 }
 .brake-pressure > span {
-  font-size: 14px;
-  color: #657466;
+  font-size: 16px;
+  color: #596956;
 }
 .brake-pressure strong {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   color: #8f6349;
 }
 .brake-pressure small {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  color: #7c806d;
 }
 .brake-pressure > div {
   height: 3px;
@@ -56,24 +55,32 @@
   height: 100%;
   background: #b17a4f;
 }
+.brake-pressure p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+.brake-pressure p b {
+  font-size: 18px;
+  font-weight: 500;
+}
 .brake-evidence {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   align-items: center;
-  gap: 45px;
+  gap: 32px;
   border-top: 1px solid #bdc4b266;
-  padding: 22px 10px 0;
-  min-height: 260px;
+  padding: 18px 0 0;
 }
 .brake-forces {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 22px;
+  gap: 16px;
   align-items: center;
 }
 .brake-forces > div {
   display: grid;
-  gap: 8px;
+  gap: 4px;
   text-align: center;
 }
 .brake-forces > div:last-child {
@@ -81,37 +88,41 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  gap: 16px;
+  gap: 12px;
 }
 .brake-forces span {
   font-size: 16px;
-  color: #677868;
+  color: #586951;
 }
 .brake-forces strong {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 500;
   color: #8c684c;
   font-variant-numeric: tabular-nums;
 }
 .brake-forces small {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 }
 .brake-forces > div:last-child strong {
   font-size: 20px;
-  color: #5d715e;
+  color: #52664f;
+}
+.brake-section {
+  min-width: 0;
+  width: 100%;
 }
 .brake-section-title {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 16px;
+  gap: 12px;
   font-size: 16px;
-  color: #60715f;
+  color: #53694f;
 }
 .brake-section-title small {
-  font-size: 12px;
-  color: #7a846f;
+  font-size: 16px;
+  color: #67705e;
 }
 .brake-section svg {
   display: block;
@@ -119,30 +130,59 @@
   height: auto;
   max-height: 210px;
 }
+.brake-section-copy {
+  font-size: 16px;
+  line-height: 1.45;
+}
+.brake-section-copy p {
+  margin: 4px 0;
+  text-align: center;
+}
+.brake-port-state {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.brake-port-state strong {
+  font-weight: 500;
+}
+.brake-pad-readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  gap: 16px;
+  color: #86684d;
+}
 .brake-apparatus .studio-fallback {
-  padding: 100px 20px 55px;
+  padding: 90px 20px 55px;
+}
+.brake-apparatus:has(.studio-fallback) + .brake-evidence > .brake-section {
+  display: none;
+}
+.brake-apparatus:has(.studio-fallback) + .brake-evidence {
+  grid-template-columns: 1fr;
 }
 .brake-energy {
-  min-height: 260px;
-  padding: 30px 40px;
+  padding: 22px 24px;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 25px 50px;
+  gap: 18px 32px;
   align-items: center;
   border-top: 1px solid #bdc4b266;
 }
 .brake-energy > div:first-child {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 .brake-energy strong {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 500;
   color: #80694c;
   font-variant-numeric: tabular-nums;
 }
 .brake-energy strong small {
-  font-size: 15px;
+  font-size: 16px;
 }
 .brake-energy-flow > div {
   display: flex;
@@ -160,50 +200,70 @@
 .brake-energy-flow p {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   font-size: 16px;
-  color: #6c785f;
+  color: #566648;
 }
 .brake-energy > small {
   grid-column: 1/-1;
   text-align: center;
-  font-size: 14px;
-  color: #758269;
+  font-size: 16px;
+  color: #606e54;
 }
 .brake-controls {
   display: grid;
-  gap: 22px;
-  padding: 28px 20px;
+  gap: 18px;
+  padding: 24px 0;
 }
 .brake-controls .btn {
   justify-self: center;
 }
+.brake-controls :is(.control-top, .btn),
+.brake-study .studio-mode {
+  font-size: 16px;
+}
+.brake-study .studio-mode,
+.brake-controls .btn {
+  min-height: 44px;
+}
+.brake-linkage-note {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
 @media (max-width: 760px) {
   .brake-study {
-    padding: 20px 12px 18px;
+    padding: 12px;
+  }
+  .brake-study[data-watch='true'] {
+    min-height: 530px;
+    display: flex;
+    flex-direction: column;
   }
   .brake-topline {
-    font-size: 10px;
-    letter-spacing: 0;
-    gap: 15px;
-    min-height: 34px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .brake-topline > span:first-child {
+    display: none;
   }
   .brake-apparatus {
-    height: 365px;
+    height: 310px;
     display: flex;
     flex-direction: column;
   }
   .brake-apparatus > .studio {
     order: 2;
-    height: auto;
+    height: 238px;
     flex: 1;
+    min-height: 0;
   }
   .brake-pressure {
     position: static;
     order: 1;
-    min-height: 78px;
-    padding: 5px 8px 10px;
-    gap: 2px 16px;
+    min-height: 68px;
+    padding: 5px 0 8px;
+    gap: 2px 12px;
     grid-template-columns: 1fr 1fr;
     background: transparent;
     flex-shrink: 0;
@@ -221,30 +281,27 @@
   }
   .brake-pressure > p {
     grid-column: 2;
-    grid-row: 1 / 3;
+    grid-row: 1/3;
     margin: 0;
     align-self: center;
-  }
-  .brake-pressure > span {
-    font-size: 12px;
+    font-size: 16px;
   }
   .brake-pressure strong {
-    font-size: 25px;
+    font-size: 26px;
   }
-  .brake-pressure small {
-    font-size: 12px;
+  .brake-study[data-detail='true'] .brake-apparatus {
+    height: auto;
   }
   .brake-evidence {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 20px 0 0;
-    min-height: 356px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0 0;
+    min-height: 0;
   }
   .brake-forces {
-    gap: 12px;
-  }
-  .brake-forces span {
-    font-size: 13px;
+    width: 100%;
+    gap: 10px;
   }
   .brake-forces strong {
     font-size: 25px;
@@ -252,47 +309,102 @@
   .brake-forces > div:last-child strong {
     font-size: 18px;
   }
+  .brake-study[data-watch='true']:not([data-chapter='4']) .brake-forces > div:last-child {
+    display: none;
+  }
+  .brake-study[data-detail='true'] .brake-section {
+    order: -1;
+  }
   .brake-section-title {
-    font-size: 14px;
-    gap: 10px;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.4;
   }
   .brake-section-title small {
-    font-size: 11px;
+    font-size: 16px;
   }
   .brake-section svg {
     max-height: none;
   }
+  .brake-port-state {
+    gap: 8px;
+  }
+  .brake-section-copy p {
+    line-height: 1.45;
+  }
   .brake-energy {
-    min-height: 356px;
-    padding: 25px 10px;
-    grid-template-columns: 1fr;
-    gap: 22px;
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
   }
   .brake-energy > div:first-child {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
     align-items: baseline;
-  }
-  .brake-energy-flow p {
-    font-size: 13px;
     gap: 12px;
   }
+  .brake-energy-flow p {
+    margin: 8px 0 0;
+    gap: 10px;
+    flex-direction: column;
+  }
   .brake-energy > small {
-    font-size: 12px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .brake-study[data-watch='true'][data-chapter='6'] .brake-apparatus {
+    height: 250px;
   }
   .brake-controls {
-    padding: 25px 0 0;
+    padding: 20px 0 0;
+  }
+  .brake-controls .btn {
+    justify-self: stretch;
+  }
+  .brake-apparatus .studio-fallback {
+    padding: 0 0 52px;
+  }
+  .brake-apparatus:has(.studio-fallback) {
+    height: auto;
+  }
+  .brake-apparatus:has(.studio-fallback) > .studio {
+    height: 350px;
+    flex: none;
+  }
+  .showcase:has(.brake-study) .film-caption {
+    gap: 8px;
+    padding: 12px 12px 4px;
+  }
+  .showcase:has(.brake-study) .film-chapter {
+    display: none;
   }
 }
 
-.brake-pressure p {
-  font-size: 12px;
-  line-height: 1.65;
-  color: #6e7f6c;
-  margin: 8px 0 0;
+.brake-apparatus .studio-fallback {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 125px;
 }
-.brake-pressure p b {
-  font-size: 15px;
-  font-weight: 500;
+.brake-apparatus .studio-fallback .brake-section {
+  max-width: 620px;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 4px;
+}
+.brake-apparatus .studio-fallback .brake-section svg {
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+}
+@media (max-width: 760px) {
+  .brake-apparatus .studio-fallback {
+    padding-top: 0;
+  }
 }

@@ -365,6 +365,134 @@ function Comparison({
   );
 }
 
+/** Phone close-up: the rail preserves every live identity; details follow the current cause. */
+function PhoneCausality({
+  state,
+  focus,
+  trace,
+}: {
+  state: CpuState;
+  focus: number[];
+  trace: CpuState[];
+}) {
+  const forwards = state.events.filter((e) => e.type === 'forward');
+  const stall = state.events.find((e) => e.type === 'stall');
+  const selected = state.slots
+    .flatMap((token, slot) => {
+      if (!token || token.squashed) return [];
+      const relevant = forwards.length
+        ? forwards.some((e) => e.consumer === token.uid)
+        : stall
+          ? token.uid === stall.consumer ||
+            stall.registers.includes(cpuDestination(token.instruction) ?? -1)
+          : focus.includes(token.pc);
+      return relevant ? [{ token, slot }] : [];
+    })
+    .slice(-3);
+  const removed = state.flushed.map((uid) => {
+    const token = trace
+      .slice(0, state.cycle + 1)
+      .flatMap((f) => f.slots)
+      .find((p) => p?.uid === uid);
+    return token ? cpuIdentity(token.pc) : `#${uid}`;
+  });
+  return (
+    <div className="cpu-phone-causality">
+      <div className="cpu-position-rail" aria-label={t('当前五个工位中的指令')}>
+        {CPU_STAGES.map((stage, slot) => {
+          const token = state.slots[slot];
+          return (
+            <div key={stage} style={tokenStyle(token?.pc ?? 0)} data-squashed={!!token?.squashed}>
+              <span>{stage}</span>
+              <b data-uid={token?.uid}>{token ? cpuIdentity(token.pc) : '·'}</b>
+              {token?.squashed && <i aria-label={t('已清除')}>×</i>}
+            </div>
+          );
+        })}
+      </div>
+      <div className="cpu-phone-instructions">
+        {selected.map(({ token, slot }) => (
+          <div
+            className="cpu-phone-instruction"
+            key={token.uid}
+            data-uid={token.uid}
+            style={tokenStyle(token.pc)}
+          >
+            <header>
+              <b>{cpuIdentity(token.pc)}</b>
+              <span>
+                {CPU_STAGES[slot]} ·{' '}
+                {selected.length === 1 ? t(stageNames[slot]) : token.instruction.op}
+              </span>
+            </header>
+            {selected.length === 1 && <code>{cpuAssembly(token.instruction)}</code>}
+            <span>{tokenDetail(token, slot)}</span>
+          </div>
+        ))}
+      </div>
+      <EventReceipt state={state} />
+      {removed.length > 0 && (
+        <p className="cpu-phone-cancelled">
+          {removed.join(' · ')} × {t('已清除')} · M[4]={state.memory[4] ?? 0}
+        </p>
+      )}
+      <RegisterStrip state={state} />
+    </div>
+  );
+}
+
+function PhoneComparison({
+  pipeline,
+  reference,
+  total,
+  verify,
+}: {
+  pipeline: CpuState;
+  reference: CpuState;
+  total: number;
+  verify: boolean;
+}) {
+  const equal = pipeline.done && reference.done && cpuSameResult(pipeline, reference);
+  return (
+    <div className="cpu-phone-comparison">
+      <p>{t('同程序、同初值、每级一拍')}</p>
+      {[pipeline, reference].map((state, index) => (
+        <div className="cpu-phone-lane" key={index}>
+          <header>
+            <b>{t(index === 0 ? '流水执行' : '逐条执行')}</b>
+            <span>
+              {state.cycle} / {total} {t('拍')}
+            </span>
+          </header>
+          <div className="cpu-duration-rail">
+            <div style={{ width: `${(100 * state.cycle) / total}%` }} />
+            <span>{state.done ? t('完成') : t('进行中')}</span>
+          </div>
+          <div className="cpu-phone-retired" aria-label={t('已完成的有效指令')}>
+            {state.retiredPcs.map((pc, i) => (
+              <span key={i} style={tokenStyle(pc)}>
+                {cpuIdentity(pc)}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+      <p className="cpu-phone-latency">{t('两种方式：I1 都走五拍')}</p>
+      <strong className="cpu-phone-equality" data-equal={equal}>
+        {t(equal ? '结果一致，完成时间不同' : '等待两种方式完成后核对')}
+      </strong>
+      {verify && (
+        <p className="cpu-phone-proof">
+          <b>{pipeline.cycle}</b> = {pipeline.retired.length} + 4 + {pipeline.stalls} +{' '}
+          {pipeline.flushed.length}
+          <small>{t('有效指令 + 填充排空 + 数据停顿 + 分支空位')}</small>
+        </p>
+      )}
+      <RegisterStrip state={pipeline} />
+    </div>
+  );
+}
+
 export default function CpuPipeline() {
   const demo = useShowcase();
   const controlId = useId();
@@ -397,6 +525,7 @@ export default function CpuPipeline() {
       data-playing={demo.watch && demo.playing}
       data-watch={demo.watch}
       data-view={comparison ? 'compare' : 'workshop'}
+      data-chapter={demo.chapter}
       aria-label={t('CPU 指令流水线')}
     >
       <div className="cpu-masthead">
@@ -410,27 +539,43 @@ export default function CpuPipeline() {
           <b>{String(comparison ? shot.cycle : cycle).padStart(2, '0')}</b>
         </div>
       </div>
-      {comparison ? (
-        <Comparison
-          pipeline={shot.state}
-          reference={shot.reference}
-          total={storyTraces.sequential.length - 1}
-          verify={shot.verify}
-        />
-      ) : (
-        <>
-          <Workshop state={state} focus={focus} />
-          <EventReceipt state={state} />
-          <TimingPaper trace={trace} cycle={cycle} focus={focus} all={!demo.watch} />
-          <TimingPaper
-            trace={trace}
-            cycle={cycle}
-            focus={focus.length ? focus : [0, 1, 2]}
-            compact
-          />
-          <RegisterStrip state={state} />
-        </>
+      {demo.watch && (
+        <div className="cpu-watch-phone">
+          {comparison ? (
+            <PhoneComparison
+              pipeline={shot.state}
+              reference={shot.reference}
+              total={storyTraces.sequential.length - 1}
+              verify={shot.verify}
+            />
+          ) : (
+            <PhoneCausality state={state} focus={focus} trace={trace} />
+          )}
+        </div>
       )}
+      <div className={demo.watch ? 'cpu-watch-wide' : undefined}>
+        {comparison ? (
+          <Comparison
+            pipeline={shot.state}
+            reference={shot.reference}
+            total={storyTraces.sequential.length - 1}
+            verify={shot.verify}
+          />
+        ) : (
+          <>
+            <Workshop state={state} focus={focus} />
+            <EventReceipt state={state} />
+            <TimingPaper trace={trace} cycle={cycle} focus={focus} all={!demo.watch} />
+            <TimingPaper
+              trace={trace}
+              cycle={cycle}
+              focus={focus.length ? focus : [0, 1, 2]}
+              compact
+            />
+            <RegisterStrip state={state} />
+          </>
+        )}
+      </div>
       {!demo.watch && (
         <div className="cpu-explore">
           <div className="cpu-step-controls">
@@ -442,6 +587,15 @@ export default function CpuPipeline() {
             </button>
             <button onClick={() => setManualCycle(0)}>{t('回到第零拍')}</button>
             <button onClick={() => setManualCycle(trace.length - 1)}>{t('运行到完成')}</button>
+            <button
+              onClick={() => {
+                setInput(11);
+                setForwarding(true);
+                setManualCycle(5);
+              }}
+            >
+              {t('恢复流水线默认设置')}
+            </button>
           </div>
           <label className="cpu-range" htmlFor={`${controlId}-cycle`}>
             <span>

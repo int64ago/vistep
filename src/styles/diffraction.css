@@ -306,7 +306,7 @@
   margin-left: 0;
 }
 .diffraction-study[data-compact='true'][data-watch='true'] {
-  min-height: 900px;
+  min-height: 575px;
   display: flex;
   flex-direction: column;
 }
@@ -331,7 +331,13 @@
   border: 0;
 }
 .diffraction-study[data-compact='true'][data-watch='true'] .diffraction-observation {
-  margin-top: 8px;
+  margin-top: 6px;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-observation span {
+  display: none;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-observation b {
+  font-size: 16px;
 }
 .diffraction-study[data-compact='true'][data-watch='true'] .diffraction-notes {
   margin-top: auto;
@@ -360,4 +366,39 @@
   .diffraction-study button {
     transition: none;
   }
+}
+
+/* The phone film selects its causal instrument; the shared caption carries prose. */
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-notes {
+  margin-top: auto;
+  padding-top: 6px;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-parameters {
+  gap: 8px;
+  padding-bottom: 8px;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-parameters > span {
+  gap: 0;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-minimum {
+  margin-top: 8px;
+  gap: 3px 12px;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-minimum strong {
+  font-size: 20px;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-minimum > span:last-child {
+  display: none;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-limits {
+  padding: 12px 0;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-limits > p {
+  display: none;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-limit-result {
+  margin-top: 12px;
+}
+.diffraction-study[data-compact='true'][data-watch='true'] .diffraction-limit-result strong {
+  font-size: 22px;
 }

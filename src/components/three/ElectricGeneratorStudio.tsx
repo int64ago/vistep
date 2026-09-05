@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
+import { createElectricalFraming } from './electrical-framing';
 import ElectricGeneratorFlat from './ElectricGeneratorFlat';
 import { t } from '../../i18n';
 import {
@@ -41,7 +42,7 @@ export default function ElectricGeneratorStudio({
       span={narrow ? 6.7 : 9.2}
       fitHeight={narrow ? 7.6 : 5.7}
       fallback={<ElectricGeneratorFlat shot={shot} narrow={narrow} />}
-      create={({ root, controls }) => {
+      create={({ root, controls, camera }) => {
         const assembly = new THREE.Group();
         assembly.position.y = G.axisY;
         root.add(assembly);
@@ -270,6 +271,7 @@ export default function ElectricGeneratorStudio({
           0.12,
         );
         assembly.add(torqueArrow);
+        const framing = createElectricalFraming(root, camera, controls, [rotor], [-0.09, 0]);
         return {
           update() {
             const shot = latest.current,
@@ -300,9 +302,11 @@ export default function ElectricGeneratorStudio({
             torqueArrow.visible = shot.showForces && Math.abs(s.torque) > 1e-7;
             torqueArrow.setDirection(new THREE.Vector3(-Math.sign(s.torque) || 1, 0, 0));
             torqueArrow.setLength(0.18 + Math.min(0.65, Math.abs(s.torque) * 180), 0.12, 0.085);
+            framing.update();
             if (!controls.enabled) root.rotation.y = -0.09 * shot.contactFocus;
           },
           dispose() {
+            framing.dispose();
             textures.forEach((texture) => texture.dispose());
           },
         };

@@ -94,3 +94,7 @@ Two specimens that fit at a nominal stitch pitch clipped at the longer pitch dur
 ### Parallel production continues through acceptance
 
 Finishing source authoring does not finish the parallel task. Reassign workers from a frozen handoff to a concrete repair or an unreviewed group while the integrator merges, checks and publishes the authorized preview. Track authorship, findings, repair ownership and evidence gaps separately. Normal-speed runs with sampled stills establish less than continuous visual observation; neither establishes native listening or physical-device performance. Keep that distinction in the release record.
+
+## Responsive direction includes the spoken script
+
+Moving a desktop graph into a phone detail view left recordings pointing “to the right” or describing a timing paper that was no longer visible. Check the actual referent in every composition before recording. Stable instruction IDs, signal names and instrument names survive layout changes more reliably than screen directions. Keep physical directions where they explain the mechanism, and remeasure changed speech instead of assuming a similar word count preserves duration.

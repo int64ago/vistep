@@ -14,7 +14,7 @@ The pale dots and gold tracer follow the same tube. The source falls, the receiv
 - **Use a taller crest.** This prepares a different tube with longer upright legs. The tube is refilled, and the same total water inventory determines the new source level.
 - **Lower ambient pressure.** The short tube keeps essentially the same flow. A tall tube can cross the vapor-pressure boundary. Warmer water also has a higher saturation vapor pressure.
 
-Changing an apparatus setting restarts trial time. Scrubbing time reconstructs the accumulated transfer from the beginning, independently of earlier interactions.
+Starting again with an empty tube also restores the default shaded cutaway. Changing an apparatus setting restarts trial time. Scrubbing time reconstructs the accumulated transfer from the beginning, independently of earlier interactions.
 
 <h2 id="deeper">Head, losses and the column's limits</h2>
 
@@ -42,7 +42,7 @@ Local pressure uses that same speed, centerline and accumulated losses:
 
 <div className="formula">p(s) = pₐ + ρg[zₛ − z(s) − v²/(2g) − hloss(0→s)]</div>
 
-Entrance loss occurs at entry, wall loss accumulates with tube length, and bend loss is distributed along the semicircular arc. Pressure returns to ambient at the free outlet. The crest neighborhood has low pressure. All pressure values shown here are absolute, not gauge pressure relative to the room.
+Entrance loss occurs at entry, wall loss accumulates with tube length, and bend loss is distributed along the semicircular arc. Pressure returns to ambient at the free outlet. The crest neighborhood has low pressure. The crest reading samples the geometrical highest point. Because losses continue to accumulate downstream, the actual pressure minimum usually lies a little beyond that point. The two readings are calculated separately. All pressures are absolute, not gauge pressure relative to the room.
 
 See [OpenStax on Bernoulli's equation and energy conservation](https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation). These are one-dimensional, quasi-steady calculations rather than CFD.
 
@@ -51,7 +51,13 @@ See [OpenStax on Bernoulli's equation and energy conservation](https://openstax.
 <details>
 <summary>Why is crest height limited?</summary>
 
-In ordinary water containing gas, vapor formation, dissolved-gas release or air leakage can interrupt the column when absolute pressure becomes too low. This scene uses crest pressure reaching saturation vapor pressure as a stop boundary for its single-phase model. It predicts neither bubble sizes nor a real failure time. Gold bubbles are failure glyphs: liquid inventory remains accounted for, and their drawn area is not a computed gas volume.
+In ordinary water containing gas, vapor formation, dissolved-gas release or air leakage can interrupt the column when absolute pressure becomes too low. The model stops its single-phase flow output when the minimum pressure anywhere along the tube reaches saturation vapor pressure. The separate crest reading still describes the highest point; the margin bar uses minimum pressure minus vapor pressure. Gold glyphs mark the calculated minimum-pressure location. They do not predict real bubble size, formation time or gas volume; liquid inventory remains accounted for.
+
+The minimum is not chosen from a sparse set of samples. Pressure has a constant gradient along each straight leg, so their endpoints suffice. Within the circular bend, the solver also finds the stationary pressure point:
+
+<div className="formula">dp/ds = −ρg[dz/ds + (f/D + Kbend/(πR)) v²/(2g)] = 0</div>
+
+Comparing that point with both joins and both mouths gives the global minimum for the current rotation and flow. At zero flow, losses vanish and the minimum returns to the geometrical crest.
 
 At 20 °C, water's saturation vapor pressure is about 2.34 kPa. Ignoring speed and losses gives roughly 10.1 m of static water-column allowance at standard atmospheric pressure. Flow subtracts velocity head and upstream losses from that allowance. This is an ordinary-water engineering assumption, not an absolute theorem covering specially treated liquids under all conditions.
 

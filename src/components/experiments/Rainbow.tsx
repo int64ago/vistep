@@ -41,6 +41,7 @@ export default function Rainbow() {
     both = demo.watch ? shot.twoDrops : twoDrops;
   const micro = view === 'drop' || view === 'concentration' || view === 'dispersion';
   const stage = demo.watch ? shot.normal : 0;
+  const phoneFilm = compact && demo.watch;
   return (
     <div className="rainbow-study" data-view={view} data-watch={demo.watch}>
       <div className="rainbow-heading">
@@ -90,13 +91,15 @@ export default function Rainbow() {
                 {both ? 'B' : 'A'} · 400 nm
               </span>
             </div>
-            <p className="rainbow-view-note">
-              {t(
-                both
-                  ? '红光和紫光，来自不同位置的水滴。'
-                  : '同一入射位置的紫光沿虚线离开，错过眼睛。',
-              )}
-            </p>
+            {!demo.watch && (
+              <p className="rainbow-view-note">
+                {t(
+                  both
+                    ? '红光和紫光，来自不同位置的水滴。'
+                    : '同一入射位置的紫光沿虚线离开，错过眼睛。',
+                )}
+              </p>
+            )}
           </>
         ) : (
           <>
@@ -105,13 +108,15 @@ export default function Rainbow() {
               <span>{t('横线：地平线')}</span>
               <span>{t('十字：反太阳方向')}</span>
             </div>
-            <p className="rainbow-view-note">
-              {t(
-                altitude > rainbowStationary(700).angle
-                  ? '太阳太高，主虹落在地平线下。'
-                  : '每个颜色占据不同的角度圆锥。',
-              )}
-            </p>
+            {!demo.watch && (
+              <p className="rainbow-view-note">
+                {t(
+                  altitude > rainbowStationary(700).angle
+                    ? '太阳太高，主虹落在地平线下。'
+                    : '每个颜色占据不同的角度圆锥。',
+                )}
+              </p>
+            )}
           </>
         )}
       </div>
@@ -125,7 +130,9 @@ export default function Rainbow() {
                     ? '入射角 / 折射角'
                     : stage === 2
                       ? '内部反射的部分'
-                      : '当前光线偏离反向的角度',
+                      : phoneFilm
+                        ? '出射角'
+                        : '当前光线偏离反向的角度',
                 )}
               </small>
               <b>
@@ -136,24 +143,26 @@ export default function Rainbow() {
                     : `${ray.angle.toFixed(2)}°`}
               </b>
             </span>
-            <span>
-              <small>
-                {t(
-                  view === 'concentration'
-                    ? '最集中的入口 b/R'
+            {(!phoneFilm || stage === 3 || view === 'dispersion') && (
+              <span>
+                <small>
+                  {t(
+                    view === 'concentration'
+                      ? '最集中的入口 b/R'
+                      : view === 'dispersion'
+                        ? '水的折射率'
+                        : '主虹支路 / 入射光',
+                  )}
+                </small>
+                <b>
+                  {view === 'concentration'
+                    ? ray.stationary.impact.toFixed(4)
                     : view === 'dispersion'
-                      ? '水的折射率'
-                      : '主虹支路 / 入射光',
-                )}
-              </small>
-              <b>
-                {view === 'concentration'
-                  ? ray.stationary.impact.toFixed(4)
-                  : view === 'dispersion'
-                    ? ray.index.toFixed(5)
-                    : `${(100 * ray.power.primary).toFixed(1)}%`}
-              </b>
-            </span>
+                      ? ray.index.toFixed(5)
+                      : `${(100 * ray.power.primary).toFixed(1)}%`}
+                </b>
+              </span>
+            )}
           </>
         ) : (
           <>
@@ -161,14 +170,16 @@ export default function Rainbow() {
               <small>{t('太阳高度角')}</small>
               <b>{altitude.toFixed(1)}°</b>
             </span>
-            <span>
-              <small>{t(view === 'observer' ? '阳光来自身后' : '主虹角：紫到红')}</small>
-              <b>
-                {view === 'observer'
-                  ? '☀ →'
-                  : `${rainbowStationary(400).angle.toFixed(1)}°–${rainbowStationary(700).angle.toFixed(1)}°`}
-              </b>
-            </span>
+            {(!phoneFilm || view !== 'observer') && (
+              <span>
+                <small>{t(view === 'observer' ? '阳光来自身后' : '主虹角：紫到红')}</small>
+                <b>
+                  {view === 'observer'
+                    ? '☀ →'
+                    : `${rainbowStationary(400).angle.toFixed(1)}°–${rainbowStationary(700).angle.toFixed(1)}°`}
+                </b>
+              </span>
+            )}
           </>
         )}
       </div>

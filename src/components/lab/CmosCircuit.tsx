@@ -210,6 +210,42 @@ export default function CmosCircuit({ shot, compact }: { shot: CmosShot; compact
   );
 }
 
+/** A close view of the same inverter, with shorter wires rather than scaled text. */
+export function CmosChargeCircuit({ shot }: { shot: CmosShot }) {
+  const s = shot.sample,
+    p = shot.trace.parameters;
+  return (
+    <svg
+      className="cmos-charge-circuit"
+      viewBox="0 0 280 186"
+      role="img"
+      aria-label={t('从电源、晶体管沟道到输出电容和地的完整 CMOS 网络；栅极控制线与沟道绝缘')}
+    >
+      <g fill="none" stroke={quiet} strokeWidth="2.3" strokeLinecap="round">
+        <path d="M125 24V36M125 68V114M125 146V164H225M125 92H225M105 24H145M105 164H145M114 171H136" />
+        <path d="M35 52H98M35 52V130H111" stroke={s.inputs[0] ? blue : copper} />
+        <circle cx="125" cy="92" r="3" fill={quiet} />
+        {s.network.devices[0].on && <path d="M125 24V36M125 68V92H225" stroke={copper} />}
+        {s.network.devices[1].on && <path d="M225 92H125V114M125 146V164" stroke={blue} />}
+      </g>
+      <Mos device={s.network.devices[0]} x={125} y={52} label={false} />
+      <Mos device={s.network.devices[1]} x={125} y={130} label={false} />
+      <Capacitor x={225} outputY={92} groundY={164} voltage={s.voltage} vdd={p.vdd} />
+      <g fontSize="20" fill="#425e69" textAnchor="middle">
+        <text x="125" y="18">
+          VDD
+        </text>
+        <text x="35" y="36">
+          A
+        </text>
+        <text x="225" y="81">
+          Y
+        </text>
+      </g>
+    </svg>
+  );
+}
+
 export function CmosCascadeCircuit({ shot, compact }: { shot: CmosShot; compact: boolean }) {
   if (!shot.secondSample) return null;
   const s1 = shot.sample,
@@ -218,8 +254,8 @@ export function CmosCascadeCircuit({ shot, compact }: { shot: CmosShot; compact:
   const width = compact ? 310 : 740;
   const stages = compact
     ? [
-        { x: 84, top: 33, py: 71, out: 109, ny: 157, bottom: 192, cap: 129 },
-        { x: 230, top: 152, py: 185, out: 223, ny: 270, bottom: 307, cap: 282 },
+        { x: 80, top: 33, py: 64, out: 101, ny: 143, bottom: 176, cap: 126 },
+        { x: 224, top: 33, py: 64, out: 101, ny: 143, bottom: 176, cap: 280 },
       ]
     : [
         { x: 200, top: 30, py: 83, out: 157, ny: 231, bottom: 304, cap: 280 },
@@ -231,7 +267,7 @@ export function CmosCascadeCircuit({ shot, compact }: { shot: CmosShot; compact:
   return (
     <svg
       className="cmos-circuit cmos-cascade"
-      viewBox={`0 0 ${width} 337`}
+      viewBox={`0 0 ${width} ${compact ? 208 : 337}`}
       role="img"
       aria-label={t('两级反相器：第一级输出以连续导线连接第二级的两个绝缘栅极')}
     >

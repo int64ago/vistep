@@ -17,7 +17,7 @@ import '../../styles/electric-generator.css';
 
 const fmt = (value: number, digits = 2) =>
   (Math.abs(value) < 0.5 * 10 ** -digits ? 0 : value).toFixed(digits);
-function SlipRingDetail({ shot }: { shot: GeneratorShot }) {
+function SlipRingDetail({ shot, narrow }: { shot: GeneratorShot; narrow: boolean }) {
   return (
     <div className="generator-contact-detail">
       <div className="generator-instrument-heading">
@@ -25,14 +25,14 @@ function SlipRingDetail({ shot }: { shot: GeneratorShot }) {
         <span>{t('铜线接点在转；电刷不转')}</span>
       </div>
       <svg
-        viewBox="0 0 320 145"
+        viewBox={`0 0 ${narrow ? 244 : 320} 145`}
         role="img"
         aria-label={t('两个滑环分别保持 A 与 B 接通，没有每半圈交换端子')}
       >
         {[0, 1].map((i) => {
-          const cx = 69 + i * 159,
+          const cx = narrow ? 54 + i * 121 : 69 + i * 159,
             cy = 68,
-            scale = 108,
+            scale = narrow ? 90 : 108,
             outer = (G.ringRadius + G.ringTube) * scale;
           const p = rotateGeneratorPoint(generatorRotorLeads()[i].at(-1)!, shot.state.theta);
           return (
@@ -76,7 +76,9 @@ function SlipRingDetail({ shot }: { shot: GeneratorShot }) {
   );
 }
 
-function GeneratorInstrument({ shot }: { shot: GeneratorShot }) {
+export const generatorPhaseX = (phase: number) => 12 + phase * 576;
+
+export function GeneratorInstrument({ shot }: { shot: GeneratorShot }) {
   const s = shot.state,
     angle = (((s.theta / (Math.PI * 2)) % 1) + 1) % 1,
     selected = shot.showWork ? shot.progress : angle;
@@ -92,7 +94,7 @@ function GeneratorInstrument({ shot }: { shot: GeneratorShot }) {
     values
       .map(
         (value, i) =>
-          `${i ? 'L' : 'M'}${12 + (i / 200) * 576},${energy ? 118 - (value / limit) * 96 : 72 - (value / limit) * 48}`,
+          `${i ? 'L' : 'M'}${generatorPhaseX(i / 200)},${energy ? 118 - (value / limit) * 96 : 72 - (value / limit) * 48}`,
       )
       .join(' ');
   const voltage = samples.map((v) => ('voltage' in v ? v.voltage : 0));
@@ -117,7 +119,7 @@ function GeneratorInstrument({ shot }: { shot: GeneratorShot }) {
         )}
       >
         {[0, 0.25, 0.5, 0.75, 1].map((p) => (
-          <path key={p} d={`M${12 + p * 576} 12V130`} className="generator-grid" />
+          <path key={p} d={`M${generatorPhaseX(p)} 12V130`} className="generator-grid" />
         ))}
         <path d={`M12 ${shot.showWork ? 118 : 72}H588`} className="generator-zero" />
         {shot.showWork ? (
@@ -155,9 +157,9 @@ function GeneratorInstrument({ shot }: { shot: GeneratorShot }) {
             <path d={path(voltage, voltsLimit)} className="generator-voltage-wave" />
           </>
         )}
-        <path d={`M${12 + selected * 576} 8V131`} className="generator-cursor" />
+        <path d={`M${generatorPhaseX(selected)} 8V131`} className="generator-cursor" />
         <circle
-          cx={12 + selected * 576}
+          cx={generatorPhaseX(selected)}
           cy={
             shot.showWork
               ? 118 - (shot.work.shaft / maxWork) * 96
@@ -168,11 +170,11 @@ function GeneratorInstrument({ shot }: { shot: GeneratorShot }) {
         />
       </svg>
       <div className="generator-axis">
-        <span>0°</span>
-        <span>90°</span>
-        <span>180°</span>
-        <span>270°</span>
-        <span>360°</span>
+        {[0, 0.25, 0.5, 0.75, 1].map((phase) => (
+          <span key={phase} style={{ left: `${generatorPhaseX(phase) / 6}%` }}>
+            {phase * 360}°
+          </span>
+        ))}
       </div>
       {shot.showWork ? (
         <div className="generator-energy-account">
@@ -206,6 +208,7 @@ export default function ElectricGenerator() {
   const film = useShowcase(),
     host = useRef<HTMLDivElement>(null),
     id = useId();
+  const [viewVersion, setViewVersion] = useState(0);
   const [width, setWidth] = useState(800),
     [angle, setAngle] = useState(45),
     [rpm, setRpm] = useState(360),
@@ -251,7 +254,11 @@ export default function ElectricGenerator() {
           <span>{t('单匝交流发电机')}</span>
         </div>
         <div className="generator-object">
-          <ElectricGeneratorStudio key={narrow ? 'portrait' : 'wide'} shot={shot} narrow={narrow} />
+          <ElectricGeneratorStudio
+            key={`${narrow}-${film.run}-${viewVersion}`}
+            shot={shot}
+            narrow={narrow}
+          />
         </div>
         <div className="generator-shaft-label">
           <span>
@@ -265,7 +272,7 @@ export default function ElectricGenerator() {
       </div>
       <div className="generator-proof">
         {film.watch && shot.chapter === 2 ? (
-          <SlipRingDetail shot={shot} />
+          <SlipRingDetail shot={shot} narrow={narrow} />
         ) : phoneSample ? (
           <div className="generator-phone-sample">
             <span>
@@ -370,6 +377,7 @@ export default function ElectricGenerator() {
             </button>
             <button
               onClick={() => {
+                setViewVersion((v) => v + 1);
                 setAngle(45);
                 setRpm(360);
                 setField(0.8);

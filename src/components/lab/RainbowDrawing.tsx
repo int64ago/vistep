@@ -1,5 +1,6 @@
 import { useId, useMemo } from 'react';
 import { t } from '../../i18n';
+import { rainbowContactLabels, rainbowDropLayout } from './rainbowLayout';
 import {
   rainbowAdd,
   rainbowAngle,
@@ -46,12 +47,10 @@ export function RainbowDrop({
   spectrum?: boolean;
   compact: boolean;
 }) {
-  const id = useId().replace(/:/g, ''),
-    width = compact ? 340 : 820,
-    height = compact ? (fan ? 300 : 440) : 440;
-  const radius = compact ? (fan ? 77 : 100) : 122,
-    cx = compact ? 220 : 520,
-    cy = compact ? (fan ? 120 : 186) : 170;
+  const id = useId().replace(/:/g, '');
+  const layout = rainbowDropLayout(compact, fan || (compact && spectrum));
+  const { width, height, radius, cx, cy } = layout;
+  const labels = rainbowContactLabels(ray, layout, reveal);
   const project = (p: RainbowPoint) => ({ x: cx + p.x * radius, y: cy - p.y * radius });
   const actual = rainbowReveal(ray.points, reveal),
     packet = project(actual[actual.length - 1]);
@@ -198,27 +197,42 @@ export function RainbowDrop({
           </>
         )}
         {[ray.entry, ray.reflection, ray.exit].map((p, i) => {
-          const q = project(p),
-            label = project(rainbowScale(p, 1.2));
-          return reveal >= i + 1 ? (
-            <g key={i}>
-              <circle cx={q.x} cy={q.y} r="4" fill="#ecddb5" />
-              <circle
-                cx={label.x}
-                cy={label.y}
-                r="12"
-                fill="#203441"
-                stroke="#829ead"
-                strokeOpacity=".48"
-              />
-              <text x={label.x} y={label.y + 7} textAnchor="middle">
-                {i + 1}
-              </text>
-            </g>
-          ) : null;
+          const q = project(p);
+          return reveal >= i + 1 ? <circle key={i} cx={q.x} cy={q.y} r="4" fill="#ecddb5" /> : null;
         })}
         <circle cx={packet.x} cy={packet.y} r="5.5" fill="#fff0c9" />
       </g>
+      {labels.map((label) => (
+        <g
+          key={label.contacts.join('-')}
+          className="rainbow-contact-label"
+          data-contacts={label.contacts.join('/')}
+        >
+          {label.anchors.map((anchor, i) => (
+            <path
+              key={i}
+              d={`M${anchor.x},${anchor.y}L${label.center.x},${label.center.y}`}
+              fill="none"
+              stroke="#b6cbd2"
+              strokeOpacity=".65"
+              strokeWidth="1"
+            />
+          ))}
+          <rect
+            x={label.center.x - label.width / 2}
+            y={label.center.y - label.height / 2}
+            width={label.width}
+            height={label.height}
+            rx="16"
+            fill="#203441"
+            stroke="#829ead"
+            strokeOpacity=".6"
+          />
+          <text x={label.center.x} y={label.center.y + 8} textAnchor="middle">
+            {label.contacts.join(' / ')}
+          </text>
+        </g>
+      ))}
       <path
         d={`M${cx - radius - 22},${cy}V${cy - ray.impact * radius}m-5 0h10m-10 ${ray.impact * radius}h10`}
         stroke="#c9d4c8"

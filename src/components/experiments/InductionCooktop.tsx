@@ -74,6 +74,16 @@ export default function InductionCooktop() {
     warming: '锅体先升温，玻璃通过接触传热逐渐变暖。',
     cooling: '电输入已经停止，余热仍会在锅和玻璃之间流动。',
   };
+  const explanation = thermal
+    ? '温度是两个均匀热节点的结果。'
+    : shot.view === 'skin'
+      ? '曲线为归一化周期平均电损耗，颜色不是发光。'
+      : '前半透明剖开观察；蓝色回路代表闭合涡流的等效模式。';
+  const limit = thermal
+    ? '均温热节点'
+    : shot.view === 'skin'
+      ? '损耗，不是温度'
+      : '蓝环：等效电流回路';
   const set = (key: keyof InductionInput, value: number | InductionMaterial) =>
     setManual((old) => ({ ...old, [key]: value }));
   const reset = () => {
@@ -113,10 +123,10 @@ export default function InductionCooktop() {
         ) : thermal ? (
           <InductionThermalView shot={shot} width={width} />
         ) : null}
-        {!thermal && shot.view !== 'flux' && (
+        {!thermal && shot.view !== 'flux' && !(compact && film.watch && shot.view === 'skin') && (
           <div className="ic-readings">
             <span>
-              {t('锅底电损耗')}
+              {t(compact && film.watch ? '锅底功率' : '锅底电损耗')}
               <b>{(shot.on ? shot.response.panPower : 0).toFixed(1)} W</b>
             </span>
             <span>
@@ -150,15 +160,7 @@ export default function InductionCooktop() {
             </span>
           </div>
         )}
-        <p className="ic-key">
-          {t(
-            thermal
-              ? '温度是两个均匀热节点的结果。'
-              : shot.view === 'skin'
-                ? '曲线为归一化周期平均电损耗，颜色不是发光。'
-                : '前半透明剖开观察；蓝色回路代表闭合涡流的等效模式。',
-          )}
-        </p>
+        {!film.watch && <p className="ic-key">{t(explanation)}</p>}
       </div>
       {!film.watch && (
         <div className="ic-explore">
@@ -252,8 +254,11 @@ export default function InductionCooktop() {
         </div>
       )}
       <details className="ic-notes">
-        <summary>{t('等效模型与真实锅具')}</summary>
+        <summary aria-label={film.watch ? `${t('模型边界')}: ${t(limit)}` : undefined}>
+          {t(film.watch ? limit : '模型边界')}
+        </summary>
         <div>
+          {film.watch && <p>{t(explanation)}</p>}
           <p>
             {t(
               '高频电源规定线圈的有效值电流；图中源内支路闭合回路。省略逆变器、谐振补偿、检测保护与硬件实现。所有数值是教学参数，不是烹饪设置。',

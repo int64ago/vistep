@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/electric-generator-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **207.0 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 Packet: the central topic, narration and translation registries. Slug: `electric-generator`. Component: `ElectricGenerator`. Planned film: eight 22-second chapters, 176 seconds. Related topics already registered when checked: `transformer-electric` and `ball-bearing`.
 
 ## Causal argument and direction

@@ -2,6 +2,8 @@
 
 [English](../../examples/induction-motor-brief.md)
 
+当前录音修订（2026-09-06）：中英文均为 **184.0 秒**。实际章节窗口和审看边界见[修订记录](../qa-expansion-refinements.md)。下文较早的资产名、时间与审看结果属于此前版本。
+
 专题、译文与旁白已汇入中央登记，临时交接包已消费。正式时序由 `src/data/narration.json` 与 `src/data/film-timeline.json` 维护。
 
 ## 因果主线与器物表达

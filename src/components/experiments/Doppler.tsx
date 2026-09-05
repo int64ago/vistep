@@ -70,7 +70,7 @@ export default function Doppler() {
         </div>
         <DopplerArrivalRuler frame={frame} compact={compact} />
       </div>
-      <p className="doppler-explanation">{t(explanations[focus])}</p>
+      {!director.watch && <p className="doppler-explanation">{t(explanations[focus])}</p>}
       <div className="doppler-footnote">
         {['front', 'rear', 'limit', 'together'].includes(focus) ? (
           <span>

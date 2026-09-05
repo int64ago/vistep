@@ -1,6 +1,7 @@
 import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import {
   PK_DEFAULT_MESSAGE,
   PK_KEYS,
@@ -32,6 +33,7 @@ const titles = [
 ];
 export default function PublicKey() {
   const director = useShowcase(),
+    compact = useCompact(),
     id = useId();
   const [preset, setPreset] = useState(0),
     [message, setMessage] = useState(String(PK_DEFAULT_MESSAGE)),
@@ -71,6 +73,7 @@ export default function PublicKey() {
     <section
       className="public-key-study"
       data-watch={director.watch}
+      data-phone={director.watch && compact}
       data-chapter={chapter}
       data-playing={director.playing}
       aria-label={t('公钥密码整数实验')}
@@ -79,17 +82,19 @@ export default function PublicKey() {
         <span>RSA</span>
         <span>{t('微型教具 · 不安全')}</span>
       </header>
-      <div className="pk-intro">
-        <h3>{t(director.watch ? titles[chapter] : '亲手走一次整数往返')}</h3>
-        {!director.watch && <p>{t('选消息与一组小钥匙，逐项观察平方和乘入。')}</p>}
-      </div>
+      {!(director.watch && compact) && (
+        <div className="pk-intro">
+          <h3>{t(director.watch ? titles[chapter] : '亲手走一次整数往返')}</h3>
+          {!director.watch && <p>{t('选消息与一组小钥匙，逐项观察平方和乘入。')}</p>}
+        </div>
+      )}
       <div className="pk-film-surface">
         {director.watch ? (
           <>
             {chapter === 0 && (
               <PublicKeyRoute k={k} r={film.exchange} phase={shot.phase} travel={shot.travel} />
             )}
-            {chapter === 1 && <PublicKeyOrigin k={k} phase={shot.phase} />}
+            {chapter === 1 && <PublicKeyOrigin k={k} phase={shot.phase} compact={compact} />}
             {chapter === 2 && (
               <div className="pk-remainder">
                 <PublicKeyEnvelope value={film.exchange.message} label={t('整数消息 m')} />
@@ -125,20 +130,35 @@ export default function PublicKey() {
               </div>
             )}
             {chapter === 3 && (
-              <PublicKeyPower trace={film.exchange.encryption} completed={shot.encryptionSteps} />
+              <PublicKeyPower
+                trace={film.exchange.encryption}
+                completed={shot.encryptionSteps}
+                compact={compact}
+              />
             )}
             {chapter === 4 && (
               <PublicKeyPower
                 trace={film.exchange.decryption}
                 completed={shot.decryptionSteps}
                 privateSide
+                compact={compact}
               />
             )}
             {chapter === 5 && (
-              <PublicKeyResidues r={film.cases[shot.caseIndex]} k={k} domain={film.domain} />
+              <PublicKeyResidues
+                r={film.cases[shot.caseIndex]}
+                k={k}
+                domain={film.domain}
+                compact={compact}
+              />
             )}
             {chapter === 6 && (
-              <PublicKeyGuesses r={film.exchange} attempts={film.attempts} count={shot.guesses} />
+              <PublicKeyGuesses
+                r={film.exchange}
+                attempts={film.attempts}
+                count={shot.guesses}
+                compact={compact}
+              />
             )}
             {chapter === 7 && <PublicKeySecure stage={shot.secureStage} />}
           </>
@@ -155,13 +175,15 @@ export default function PublicKey() {
         )}
       </div>
       {director.watch ? (
-        <p className="pk-film-note">
-          {t(
-            chapter === 7
-              ? '这是加密原理，不是签名演示，也不提供真实加密。'
-              : '小素数与私钥刻意公开，仅用于看清算法。',
-          )}
-        </p>
+        !compact && (
+          <p className="pk-film-note">
+            {t(
+              chapter === 7
+                ? '这是加密原理，不是签名演示，也不提供真实加密。'
+                : '小素数与私钥刻意公开，仅用于看清算法。',
+            )}
+          </p>
+        )
       ) : (
         <div className="pk-explore">
           <div className="pk-fields">

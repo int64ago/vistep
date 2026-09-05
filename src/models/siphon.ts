@@ -101,11 +101,16 @@ export type SiphonState = {
   flow: number;
   candidateVelocity: number;
   crestPressure: number;
+  /** Pressure required by the continuous-column hypothesis, including after its failure. */
+  minimumPressure: number;
+  /** Arc length from the inlet; need not coincide with the geometrical crest. */
+  minimumPressureAt: number;
   vaporPressure: number;
   atmosphere: number;
   temperature: number;
   lossHead: number;
   velocityHead: number;
+  /** Crest-only head allowance; single-phase validity instead uses minimumPressure. */
   crestLimit: number;
   pressureValid: boolean;
   travel: number;
@@ -124,6 +129,53 @@ export type SiphonInput = {
   travel?: number;
   seconds?: number;
 };
+function pressureAt(
+  g: SiphonGeometry,
+  sourceLevel: number,
+  atmosphere: number,
+  velocityHead: number,
+  distance: number,
+) {
+  const at = bound(distance, 0, g.length),
+    p = siphonPoint(g, at);
+  const k =
+    SIPHON.entranceK +
+    (SIPHON.darcy * at) / SIPHON.diameter +
+    SIPHON.bendK * bound((at - g.leg) / (Math.PI * SIPHON.radius), 0, 1);
+  return (
+    atmosphere + SIPHON.density * SIPHON.gravity * (sourceLevel - p.y - (1 + k) * velocityHead)
+  );
+}
+
+/** Exact extrema of this piecewise straight/circular tube, not a sampled pressure grid. */
+function minimumPressure(
+  g: SiphonGeometry,
+  sourceLevel: number,
+  atmosphere: number,
+  velocityHead: number,
+) {
+  const bendEnd = g.leg + Math.PI * SIPHON.radius;
+  const candidates = [0, g.leg, bendEnd, g.length, g.crestAt];
+  // On the bend: dp/ds = -ρg[dz/ds + (f/D + Kbend/(πR))·v²/(2g)].
+  // With this rotation, dz/ds = -cos(π - (s-leg)/R + angle).
+  const lossSlope =
+    (SIPHON.darcy / SIPHON.diameter + SIPHON.bendK / (Math.PI * SIPHON.radius)) * velocityHead;
+  if (lossSlope <= 1) {
+    const stationary = g.leg + SIPHON.radius * (Math.PI + g.angle - Math.acos(lossSlope));
+    if (stationary >= g.leg && stationary <= bendEnd) candidates.push(stationary);
+  }
+  // Straight-leg pressure gradients are constant; their endpoints suffice.
+  let at = candidates[0],
+    pressure = pressureAt(g, sourceLevel, atmosphere, velocityHead, at);
+  for (const candidate of candidates.slice(1)) {
+    const value = pressureAt(g, sourceLevel, atmosphere, velocityHead, candidate);
+    if (value < pressure) {
+      at = candidate;
+      pressure = value;
+    }
+  }
+  return { pressure, at };
+}
 export function siphonState(input: SiphonInput = {}): SiphonState {
   const geometry = input.geometry ?? siphonGeometry();
   const wet = input.wet ?? [[0, geometry.length]];
@@ -156,11 +208,14 @@ export function siphonState(input: SiphonInput = {}): SiphonState {
     SIPHON.entranceK +
     (SIPHON.darcy * geometry.crestAt) / SIPHON.diameter +
     SIPHON.bendK * bound((geometry.crestAt - geometry.leg) / (Math.PI * SIPHON.radius), 0, 1);
-  const crestPressure =
-    atmosphere +
-    SIPHON.density *
-      SIPHON.gravity *
-      (sourceLevel - geometry.crest.y - (1 + upstreamK) * velocityHead);
+  const crestPressure = pressureAt(
+    geometry,
+    sourceLevel,
+    atmosphere,
+    velocityHead,
+    geometry.crestAt,
+  );
+  const minimum = minimumPressure(geometry, sourceLevel, atmosphere, velocityHead);
   const vaporPressure = siphonVaporPressure(temperature);
   let status = input.status ?? 'flow';
   const columnFull = Math.abs(tubeVolume - tubeArea * geometry.length) < 1e-10;
@@ -169,7 +224,7 @@ export function siphonState(input: SiphonInput = {}): SiphonState {
     status =
       sourceLevel <= geometry.inlet.y
         ? 'uncovered'
-        : crestPressure <= vaporPressure
+        : minimum.pressure <= vaporPressure + 1e-8 // Pa: roundoff at exact equality.
           ? 'vapor'
           : head <= 1e-7
             ? 'level'
@@ -191,6 +246,8 @@ export function siphonState(input: SiphonInput = {}): SiphonState {
     flow: velocity * tubeArea,
     candidateVelocity,
     crestPressure,
+    minimumPressure: minimum.pressure,
+    minimumPressureAt: minimum.at,
     vaporPressure,
     atmosphere,
     temperature,
@@ -207,17 +264,8 @@ export function siphonState(input: SiphonInput = {}): SiphonState {
   };
 }
 export function siphonPressure(s: SiphonState, distance: number) {
-  const g = s.geometry,
-    at = bound(distance, 0, g.length),
-    p = siphonPoint(g, at);
-  const k =
-    SIPHON.entranceK +
-    (SIPHON.darcy * at) / SIPHON.diameter +
-    SIPHON.bendK * bound((at - g.leg) / (Math.PI * SIPHON.radius), 0, 1);
-  return (
-    s.atmosphere +
-    SIPHON.density * SIPHON.gravity * (s.sourceLevel - p.y - (1 + k) * s.velocityHead)
-  );
+  finite(distance);
+  return pressureAt(s.geometry, s.sourceLevel, s.atmosphere, s.velocityHead, distance);
 }
 // Fixed-step replay cache: independent of RAF cadence, playback direction and measured voice lengths.
 const STEP = 0.1;

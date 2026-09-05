@@ -5,6 +5,7 @@ import { engineCycle, ENGINE } from '../../models/four-stroke';
 import { useShowcase } from '../lab/Showcase';
 import EngineDiagram, { strokeColors } from '../lab/EngineDiagram';
 import Studio from './Studio';
+import { engineFrameDistance, engineBoxCorners } from './EngineFraming';
 import { box, material, roller, screw } from './parts';
 export default function EngineStudio({ angle, leverage }: { angle: number; leverage: boolean }) {
   const demo = useShowcase(),
@@ -223,7 +224,10 @@ export default function EngineStudio({ angle, leverage }: { angle: number; lever
           new THREE.MeshBasicMaterial({ color: '#d7ad6d' }),
         );
         root.add(pinHalo);
-        const v = new THREE.Vector3();
+        const v = new THREE.Vector3(),
+          assembly = new THREE.Box3();
+        let framedAspect = 0,
+          manualFramed = false;
         return {
           update(dt, _elapsed, settle) {
             const { angle: a, leverage: lever, demo: d } = current.current,
@@ -251,7 +255,8 @@ export default function EngineStudio({ angle, leverage }: { angle: number; lever
             });
             const burn = s.cycle - 2 * Math.PI;
             spark.visible = burn >= 0 && burn < 0.14;
-            spark.scale.setScalar(1 + Math.max(0, 1 - burn / 0.14) * 1.4);
+            // Keep the dormant flash bounded as well: Box3 includes invisible meshes.
+            spark.scale.setScalar(1 + Math.max(0, Math.min(1, 1 - burn / 0.14)) * 1.4);
             const forceLength = 0.25 + Math.min(0.65, (s.pressure / 6e6) * 0.65);
             force.visible = s.stage === 2 || lever;
             force.position.set(0.05, crown + forceLength + 0.05, 0.82);
@@ -260,25 +265,43 @@ export default function EngineStudio({ angle, leverage }: { angle: number; lever
             pinHalo.position.set(s.crankX * scale, origin + s.crankY * scale, 0.65);
             marker.visible = true;
             pin.visible = true;
-            if (d.watch) {
-              const close = [1, 2, 3, 5].includes(d.chapter);
-              const framing = new THREE.Vector3(
-                0,
-                close ? (camera.aspect > 1 ? 5.2 : 4.4) : 3.35,
-                0,
-              );
-              const amount = settle ? 1 : 1 - Math.exp(-dt * 2);
-              const viewHeight = close
-                ? Math.max(4.4, 4.7 / camera.aspect)
-                : Math.max(6.5 / camera.aspect, 7.7);
-              const homeDistance = viewHeight / (2 * Math.tan((camera.fov * Math.PI) / 360));
+            if (d.watch || !manualFramed || framedAspect !== camera.aspect) {
+              const close = d.watch && [1, 2, 3, 5].includes(d.chapter);
+              root.updateMatrixWorld(true);
+              assembly.setFromObject(root);
+              const framing = close
+                ? new THREE.Vector3(0, camera.aspect > 1 ? 5.2 : 4.4, 0)
+                : assembly.getCenter(new THREE.Vector3());
+              const amount = settle || !d.watch ? 1 : 1 - Math.exp(-dt * 2);
               controls.target.lerp(framing, amount);
               v.set(close ? 3.5 : 5.8, close ? 6.1 : 6.3, 12)
                 .sub(framing)
-                .normalize()
-                .multiplyScalar(homeDistance)
-                .add(controls.target);
-              camera.position.lerp(v, amount);
+                .normalize();
+              const corners = engineBoxCorners(assembly.min.toArray(), assembly.max.toArray());
+              const distance = close
+                ? Math.max(4.4, 4.7 / camera.aspect) / (2 * Math.tan((camera.fov * Math.PI) / 360))
+                : engineFrameDistance(
+                    corners,
+                    controls.target.toArray(),
+                    v.toArray(),
+                    camera.aspect,
+                    camera.fov,
+                  );
+              camera.position.lerp(v.multiplyScalar(distance).add(controls.target), amount);
+              // Even during a return from a close-up, keep the complete assembly in frame.
+              if (!close) {
+                v.copy(camera.position).sub(controls.target);
+                const safe = engineFrameDistance(
+                  corners,
+                  controls.target.toArray(),
+                  v.toArray(),
+                  camera.aspect,
+                  camera.fov,
+                );
+                if (v.length() < safe) camera.position.copy(controls.target).add(v.setLength(safe));
+              }
+              framedAspect = camera.aspect;
+              manualFramed = true;
             }
           },
         };

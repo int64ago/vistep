@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/siphon-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **185.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Question and direction
 
 How can water climb a crest without a running pump? Follow one gold tracer through a transparent U tube, then remove one enabling condition at a time. The turning point is the vent: the outlet is still lower, but admitting air interrupts sustained flow. The final comparison separates the role of ambient pressure in the energy balance from its role in keeping the column feasible.
@@ -33,7 +35,7 @@ Chinese and English speech were authored independently in the packet. Each cue h
 - Exact analytic line–semicircle–line geometry supplies length, top location, pressure taps, liquid intervals and tracer positions. Tube bore is enlarged in the image. Dot speed is 22% of model speed; the single gold parcel exits rather than teleporting back upstream.
 - A lazy fixed-step cache advances the first six chapters at 0.1 s resolution. Seeking interpolates conserved reservoir inventories and wet intervals. Manual trial time replays the same equations from its prepared starting condition.
 - Prefill and vent drainage use prescribed teaching progress, while their segment volumes balance exactly. The first chapter shows the static source-connected meniscus. Manual venting starts a new drained trial; it does not claim to continue an arbitrary prior manipulation.
-- Crest pressure reaching vapor pressure is the stated ordinary-water failure criterion. It is not a two-phase prediction, an exact failure location/time, or a universal claim about specially degassed liquids under tension. Gold bubbles are a warning glyph over the last single-phase inventory, not a calculated gas volume. After failure, the displayed pressure is the hypothetical continuous-column demand; flow output stops.
+- The minimum pressure anywhere along the modeled tube reaching vapor pressure is the ordinary-water failure criterion; crest pressure is reported separately. Accumulated losses can place the minimum slightly downstream of the crest. It is not a two-phase prediction, an exact failure location/time, or a universal claim about specially degassed liquids under tension. Gold bubbles are a warning glyph over the last single-phase inventory, not a calculated gas volume. After failure, the displayed pressure is the hypothetical continuous-column demand; flow output stops.
 
 ## Phone, interaction and fallback
 

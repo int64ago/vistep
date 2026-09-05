@@ -32,7 +32,8 @@
 }
 .bernoulli-stage {
   max-width: 1020px;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
   min-width: 0;
 }
 .bernoulli-tube,
@@ -226,12 +227,27 @@
 }
 @media (max-width: 600px) {
   .bernoulli-study[data-watch='true'] {
-    min-height: 900px;
+    min-height: 560px;
     display: flex;
     flex-direction: column;
   }
   .bernoulli-study[data-watch='true'] > .bernoulli-method {
     margin-top: auto;
+  }
+  .bernoulli-study[data-watch='true'] .bernoulli-kicker {
+    display: none;
+  }
+  .bernoulli-study[data-watch='true'] .bernoulli-convention {
+    margin-top: 10px;
+  }
+  .bernoulli-study[data-watch='true'] .bernoulli-boundary {
+    padding: 8px 10px;
+  }
+  .bernoulli-study[data-watch='true'] .bernoulli-boundary strong {
+    font-size: 16px;
+  }
+  .bernoulli-study[data-watch='true'] .bernoulli-boundary p {
+    display: none;
   }
   .bernoulli-study {
     padding: 17px 12px 10px;

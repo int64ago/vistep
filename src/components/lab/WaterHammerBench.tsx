@@ -12,7 +12,9 @@ function useBenchWidth(initialWidth: number) {
     [width, setWidth] = useState(initialWidth);
   useLayoutEffect(() => {
     if (!ref.current) return;
-    const observer = new ResizeObserver(([e]) => setWidth(Math.max(220, e.contentRect.width)));
+    const observer = new ResizeObserver(([e]) => {
+      if (e.contentRect.width > 0) setWidth(e.contentRect.width);
+    });
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
@@ -70,9 +72,9 @@ export default function WaterHammerBench({
   const s = shot.state,
     p = s.parameters,
     phone = width < 620,
-    height = phone ? 390 : 360;
-  const start = phone ? 96 : 154,
-    end = phone ? 276 : width - 126,
+    height = phone ? 290 : 360;
+  const start = phone ? 76 : 154,
+    end = phone ? 184 : width - 126,
     axis = phone ? width * 0.47 : 182;
   const point = (ratio: number) =>
     phone
@@ -111,17 +113,17 @@ export default function WaterHammerBench({
         {phone ? (
           <>
             <path
-              d={`M${axis - 54},18h108v78h-108Z`}
+              d={`M${axis - 58},8h116v68h-116Z`}
               fill="#2c4450"
               stroke="#8ea4a7"
               strokeWidth="1.4"
             />
-            <path d={`M${axis - 51},53h102v40h-102Z`} fill="#547a86" />
-            <path d={`M${axis - 54},18h108m-108,7h108`} stroke="#b7c5bf" strokeWidth="3" />
-            <text x={axis} y={44} textAnchor="middle">
+            <path d={`M${axis - 55},37h110v36h-110Z`} fill="#547a86" />
+            <path d={`M${axis - 58},8h116m-116,7h116`} stroke="#b7c5bf" strokeWidth="3" />
+            <text x={axis} y={32} textAnchor="middle">
               {t('恒压上游')}
             </text>
-            <text x={axis} y={80} textAnchor="middle">
+            <text x={axis} y={62} textAnchor="middle">
               {(p.pressure / 1e6).toFixed(2)} MPa
             </text>
           </>
@@ -193,10 +195,10 @@ export default function WaterHammerBench({
         <Gate x={point(1).x} y={point(1).y} vertical={phone} opening={s.opening} />
         {phone ? (
           <>
-            <text x={axis} y="356" textAnchor="middle">
+            <text x={axis} y="262" textAnchor="middle">
               {t('末端阀门')} · {(s.opening * 100).toFixed(0)}%
             </text>
-            <text x={width - 10} y="383" textAnchor="end">
+            <text x={width - 10} y="284" textAnchor="end">
               {t('下游')} {(p.downstream / 1e6).toFixed(3)} MPa
             </text>
             <path d={`M35,${start}V${end}m-4,0h8M31,${start}h8`} stroke="#5e7a87" />
@@ -223,7 +225,7 @@ export default function WaterHammerBench({
             <text x={end} y="307" textAnchor="middle">
               {t('末端阀门')} · {(s.opening * 100).toFixed(0)}%
             </text>
-            <text x={end + 45} y="338" textAnchor="middle">
+            <text x={width - 8} y="338" textAnchor="end">
               {t('下游')} {(p.downstream / 1e6).toFixed(3)} MPa
             </text>
             <circle cx={tap.x} cy={tap.y} r="5" fill="#f2d99d" />
@@ -283,13 +285,13 @@ export function WaterHammerElastic({
   const magnification = 800,
     wall = 1 + s.hoopStrain * magnification;
   const contraction = 1 / (1 + s.densityStrain * magnification),
-    radius = (phone ? 48 : 76) * wall;
+    radius = (phone ? 44 : 76) * wall;
   const centerX = phone ? width / 2 : width * 0.7,
-    centerY = phone ? 243 : 156;
+    centerY = phone ? 205 : 156;
   const waterWidth = (phone ? 150 : 230) * contraction,
     waterX = phone ? (width - waterWidth) / 2 : width * 0.25 - waterWidth / 2;
-  const waterY = phone ? 58 : 112,
-    blockHeight = phone ? 50 : 92;
+  const waterY = phone ? 42 : 112,
+    blockHeight = phone ? 40 : 92;
   const e = s.energy,
     denom = p.initialEnergy || 1;
   return (
@@ -299,7 +301,7 @@ export function WaterHammerElastic({
         <span>{t('形变放大')} ×800</span>
       </div>
       <svg
-        viewBox={`0 0 ${width} ${phone ? 350 : 285}`}
+        viewBox={`0 0 ${width} ${phone ? 306 : 285}`}
         role="img"
         aria-label={t('同一压力增量让水微微压缩、管壁微微扩张；形变放大八百倍。')}
       >
@@ -344,7 +346,7 @@ export function WaterHammerElastic({
           <circle
             cx={centerX}
             cy={centerY}
-            r={phone ? 48 : 76}
+            r={phone ? 44 : 76}
             fill="none"
             stroke="#a2b1b6"
             strokeDasharray="4 5"
@@ -405,7 +407,8 @@ export function WaterHammerComparison({
     a = shot.reference!,
     b = shot.state;
   const samples = [a, b],
-    names = shot.view === 'closure' ? ['快速关闭', '缓慢关闭'] : ['较硬管壁', '较软管壁'];
+    closing = shot.view === 'closure',
+    names = closing ? ['快速关闭', '缓慢关闭'] : ['较硬管壁', '较软管壁'];
   return (
     <div ref={ref} className="water-hammer-comparison">
       <div className="water-hammer-pair-labels">
@@ -427,14 +430,14 @@ export function WaterHammerComparison({
         ))}
       </div>
       <svg
-        viewBox={`0 0 ${width} ${phone ? 268 : 220}`}
+        viewBox={`0 0 ${width} ${phone ? (closing ? 174 : 268) : closing ? 150 : 220}`}
         role="img"
         aria-label={t('两次对照使用相同的初始流速、长度和管径，在同一物理时间观察。')}
       >
         {samples.map((s, j) => {
           const start = phone ? 32 : 52,
-            end = phone ? 200 : width - 52,
-            axis = phone ? width * (j === 0 ? 0.28 : 0.72) : 61 + j * 108;
+            end = phone ? (closing ? 106 : 200) : width - 52,
+            axis = phone ? width * (j === 0 ? 0.28 : 0.72) : closing ? 38 + j * 60 : 61 + j * 108;
           const pos = (f: number) =>
             phone
               ? { x: axis, y: start + (end - start) * f }
@@ -480,13 +483,13 @@ export function WaterHammerComparison({
               </g>
               <text
                 x={phone ? axis : (start + end) / 2}
-                y={phone ? 231 : axis + 40}
+                y={phone ? (closing ? 137 : 231) : axis + 40}
                 textAnchor="middle"
               >
                 {phone ? '2L/a' : t('往返')} {!phone && `${p.roundTrip.toFixed(3)} s`}
               </text>
               {phone && (
-                <text x={axis} y={257} textAnchor="middle">
+                <text x={axis} y={closing ? 163 : 257} textAnchor="middle">
                   {p.roundTrip.toFixed(3)} s
                 </text>
               )}

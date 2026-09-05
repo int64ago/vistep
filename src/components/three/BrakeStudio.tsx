@@ -5,6 +5,7 @@ import { BRAKE, type brakeShot } from '../../models/brake';
 import { useShowcase } from '../lab/Showcase';
 import BrakeSection from '../lab/BrakeSection';
 import Studio from './Studio';
+import { BRAKE_LINK, brakeLinkage, brakeBoxCorners, brakeFrameDistance } from './BrakeGeometry';
 import { box, material, roller, tube } from './parts';
 type Shot = ReturnType<typeof brakeShot>;
 const TAU = Math.PI * 2,
@@ -21,7 +22,11 @@ export default function BrakeStudio({ shot }: { shot: Shot }) {
       fitHeight={5.7}
       label={t('主缸通过连续油管连接对置活塞卡钳，刹车片从两侧夹住碟片')}
       fallback={
-        <BrakeSection state={shot.state} view={shot.focus === 'master' ? 'master' : 'caliper'} />
+        <BrakeSection
+          readouts={false}
+          state={shot.state}
+          view={shot.focus === 'master' ? 'master' : 'caliper'}
+        />
       }
       create={({ root, camera, controls, scene }) => {
         scene.environmentIntensity = 0.8;
@@ -184,7 +189,8 @@ export default function BrakeStudio({ shot }: { shot: Shot }) {
         const masterPiston = roller(masterBody, 0.124, 0.3, [0, 0, -0.4], steel);
         ring(masterPiston, 0.127, 0.108, 0.035, 0.13, black);
         const oil = roller(masterBody, 0.123, 1, [0, 0, 0.15], fluid);
-        const pushrod = roller(master, 0.045, 1, [0, 0, 0], steel);
+        const pushrod = roller(master, 0.045, BRAKE_LINK.length, [0, 0, 0], steel);
+        pushrod.name = 'brake-pushrod';
         const reservoir = new THREE.Group();
         master.add(reservoir);
         box(reservoir, [0.54, 0.34, 0.37], [-0.23, 0.4, 0], shell, 0.04);
@@ -237,6 +243,9 @@ export default function BrakeStudio({ shot }: { shot: Shot }) {
         let hose: THREE.Mesh | undefined,
           inside: THREE.Mesh | undefined,
           small: boolean | undefined;
+        let manualFramed = false,
+          framedAspect = 0;
+        const assembly = new THREE.Box3();
         const target = new THREE.Vector3(),
           desired = new THREE.Vector3(),
           rodStart = new THREE.Vector3(),
@@ -290,15 +299,12 @@ export default function BrakeStudio({ shot }: { shot: Shot }) {
               length = 0.6 - face;
             oil.position.z = (face + 0.6) / 2;
             oil.scale.z = length;
-            pivot.rotation.z = -Math.asin(Math.min(0.5, (state.handTravel * scale) / 1.3));
-            rodStart
-              .set(-0.14, -0.25, 0)
-              .applyAxisAngle(rodAxis, pivot.rotation.z)
-              .add(pivot.position);
-            rodEnd.set(-0.55 + state.stroke * scale, 0, 0);
+            const linkage = brakeLinkage(state.stroke);
+            pivot.rotation.z = linkage.angle;
+            rodStart.set(...linkage.start);
+            rodEnd.set(...linkage.end);
             rodDirection.copy(rodEnd).sub(rodStart);
             pushrod.position.copy(rodStart).add(rodEnd).multiplyScalar(0.5);
-            pushrod.scale.z = rodDirection.length();
             pushrod.quaternion.setFromUnitVectors(rodAxis, rodDirection.normalize());
             port.visible = state.portOpen;
             shell.opacity = 1 - 0.82 * s.cutaway;
@@ -325,32 +331,47 @@ export default function BrakeStudio({ shot }: { shot: Shot }) {
             bubble.position.set(0.18, 0, 0);
             bridge.visible = foot.visible = bracket.visible = true;
             gallery.visible = s.cutaway > 0.1;
-            if (d.watch) {
-              const close = s.focus !== 'assembly',
-                mix = settle ? 1 : 1 - Math.exp(-dt * 2.2);
-              if (s.focus === 'master')
-                target.copy(master.position).add(new THREE.Vector3(-0.1, -0.05, 0));
-              else if (s.focus === 'caliper')
-                target.copy(main.position).add(new THREE.Vector3(0, 1.6, 0));
-              else target.set(compact ? 0 : -0.05, compact ? 3.1 : 2.65, 0);
+            if (d.watch || !manualFramed || framedAspect !== camera.aspect) {
+              const close = d.watch && (s.focus === 'master' || s.focus === 'caliper');
+              const mix = settle || !d.watch ? 1 : 1 - Math.exp(-dt * 2.2);
+              // The circular disc has the same envelope at every rotation. Avoid fitting its
+              // rotated local AABB, which would make a stationary camera breathe with the wheel.
+              const rotation = disk.rotation.z;
+              disk.rotation.z = 0;
+              root.updateMatrixWorld(true);
+              assembly.setFromObject(close ? (s.focus === 'master' ? master : caliper) : root);
+              disk.rotation.z = rotation;
+              root.updateMatrixWorld(true);
+              assembly.getCenter(target);
               controls.target.lerp(target, mix);
-              const viewHeight = close
-                  ? Math.max(
-                      (s.focus === 'master' ? 3.1 : 2.6) / camera.aspect,
-                      s.focus === 'master' ? 2.9 : 2.5,
-                    )
-                  : Math.max((compact ? 5.0 : 8.6) / camera.aspect, compact ? 6.4 : 5.8),
-                distance = viewHeight / (2 * Math.tan((camera.fov * Math.PI) / 360));
               desired
                 .set(
-                  s.focus === 'caliper' ? 8 : close ? 4 : 2.5,
+                  s.focus === 'caliper' && close ? 8 : close ? 4 : 2.5,
                   close ? 2.5 : 2.2,
-                  s.focus === 'caliper' ? 3.5 : 8,
+                  s.focus === 'caliper' && close ? 3.5 : 8,
                 )
-                .normalize()
-                .multiplyScalar(distance)
-                .add(controls.target);
-              camera.position.lerp(desired, mix);
+                .normalize();
+              const corners = brakeBoxCorners(assembly.min.toArray(), assembly.max.toArray());
+              const distance = brakeFrameDistance(
+                corners,
+                controls.target.toArray(),
+                desired.toArray(),
+                camera.aspect,
+                camera.fov,
+              );
+              camera.position.lerp(desired.multiplyScalar(distance).add(controls.target), mix);
+              desired.copy(camera.position).sub(controls.target);
+              const safe = brakeFrameDistance(
+                corners,
+                controls.target.toArray(),
+                desired.toArray(),
+                camera.aspect,
+                camera.fov,
+              );
+              if (desired.length() < safe)
+                camera.position.copy(controls.target).add(desired.setLength(safe));
+              framedAspect = camera.aspect;
+              manualFramed = true;
             }
           },
         };

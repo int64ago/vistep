@@ -70,7 +70,7 @@
   overflow: hidden;
 }
 .escapement-diagram text {
-  font: 16px var(--font-body, system-ui, sans-serif);
+  font: 17px var(--font-body, system-ui, sans-serif);
   fill: #334c50;
 }
 .escapement-instrument {
@@ -194,7 +194,7 @@
     padding: 0 8px;
   }
   .escapement-diagram text {
-    font-size: 17px;
+    font-size: 18px;
   }
   .escapement-instrument {
     box-sizing: border-box;
@@ -284,11 +284,90 @@
 
 @media (max-width: 760px) {
   .escapement-scene[data-watch='true'] {
-    min-height: 720px;
+    min-height: 550px;
     display: flex;
     flex-direction: column;
   }
   .escapement-scene[data-watch='true'] .escapement-limits {
     margin-top: auto;
   }
+}
+
+.escapement-instrument-content {
+  width: 100%;
+  min-width: 0;
+}
+.escapement-instrument-note {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 4px 0 8px;
+}
+@media (max-width: 760px) {
+  .escapement-scene[data-watch='true'] .escapement-heading h2 {
+    display: none;
+  }
+  .escapement-scene[data-watch='true'] .escapement-studio {
+    height: 320px !important;
+  }
+  .escapement-scene[data-watch='true'] .escapement-heading {
+    padding: 12px 12px 6px;
+  }
+  .escapement-scene[data-watch='true'] .escapement-state {
+    min-height: 52px;
+  }
+  .escapement-instrument-note {
+    margin: 4px 0;
+    line-height: 1.4;
+  }
+  .showcase:has(.escapement-scene) .film-caption {
+    gap: 8px;
+    padding: 12px 12px 4px;
+  }
+  .showcase:has(.escapement-scene) .film-chapter {
+    display: none;
+  }
+}
+
+.escapement-section-content {
+  width: 100%;
+  min-width: 0;
+}
+.escapement-section-title {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 4px 8px 8px;
+}
+.escapement-section-legend {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 4px 8px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.escapement-section-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.escapement-section-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.escapement-studio .studio-fallback {
+  padding-bottom: 52px;
+}
+.escapement-studio .escapement-section-content {
+  height: 100%;
+  max-width: 580px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.escapement-studio .escapement-section-content svg {
+  height: 100%;
+  min-height: 0;
 }

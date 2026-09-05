@@ -86,7 +86,7 @@ export default function Bernoulli({ initialWidth = 840 }: { initialWidth?: numbe
         <span>{t('流速与压强 / 沿一条水路')}</span>
         <span>{`Q = ${(p.flow * 1000).toFixed(1)} L/s`}</span>
       </div>
-      <p className="bernoulli-observation">{t(note)}</p>
+      {!demo.watch && <p className="bernoulli-observation">{t(note)}</p>}
       <div className="bernoulli-stage">
         {account ? (
           <BernoulliHeads shot={shot} initialWidth={initialWidth} />
@@ -170,17 +170,23 @@ export default function Bernoulli({ initialWidth = 840 }: { initialWidth?: numbe
       )}
       <p className="bernoulli-convention">
         {t(
-          account
-            ? '水头以米为单位，压力相对大气压。'
-            : shot.comparingSteadyStates
-              ? '各帧为独立稳态，不模拟改变装置的瞬态。'
-              : shot.view === 'parcel'
-                ? '同一水体只进出这段管道，不在两端瞬移循环。'
-                : '主图管径放大示意，水柱与高程共用高度标尺。',
+          demo.watch
+            ? account
+              ? '水头 · m（表压）'
+              : shot.comparingSteadyStates
+                ? '各帧独立稳态'
+                : '管径放大 · 水柱/高程同标尺'
+            : account
+              ? '水头以米为单位，压力相对大气压。'
+              : shot.comparingSteadyStates
+                ? '各帧为独立稳态，不模拟改变装置的瞬态。'
+                : shot.view === 'parcel'
+                  ? '同一水体只进出这段管道，不在两端瞬移循环。'
+                  : '主图管径放大示意，水柱与高程共用高度标尺。',
         )}
         {!account && p.flow > 0 && !shot.comparingSteadyStates && (
           <span>
-            {t('物理时间')} {shot.physicalTime.toFixed(3)} s · {t('运动已放慢')}
+            t = {shot.physicalTime.toFixed(3)} s · {t('运动已放慢')}
           </span>
         )}
       </p>

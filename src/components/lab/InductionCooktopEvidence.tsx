@@ -11,7 +11,16 @@ import {
 } from '../../models/induction-cooktop';
 export function InductionCooktopFlat({ shot, width }: { shot: InductionShot; width: number }) {
   const g = inductionGeometry(shot.input.lift),
-    height = width < 680 ? (shot.view === 'skin' ? 210 : 270) : 380;
+    height =
+      width < 680
+        ? shot.view === 'skin'
+          ? 198
+          : shot.view === 'flux'
+            ? 222
+            : shot.view === 'duty'
+              ? 230
+              : 278
+        : 380;
   const project = ([x, y, z]: InductionPoint) => [x - 0.32 * z, -y + 0.58 * z];
   const bounds = inductionBounds(shot.input.lift, shot.view === 'flux').map(project);
   const xs = bounds.map((p) => p[0]),
@@ -20,12 +29,12 @@ export function InductionCooktopFlat({ shot, width }: { shot: InductionShot; wid
     right = Math.max(...xs),
     top = Math.min(...ys),
     bottom = Math.max(...ys);
-  const scale = Math.min((width - 20) / (right - left), (height - 132) / (bottom - top));
+  const scale = Math.min((width - 20) / (right - left), (height - 78) / (bottom - top));
   const xy = (point: InductionPoint) => {
     const p = project(point);
     return [
       width / 2 + (p[0] - (left + right) / 2) * scale,
-      45 + (height - 132) / 2 + (p[1] - (top + bottom) / 2) * scale,
+      30 + (height - 78) / 2 + (p[1] - (top + bottom) / 2) * scale,
     ];
   };
   const path = (ps: InductionPoint[], closed = false) =>
@@ -66,10 +75,7 @@ export function InductionCooktopFlat({ shot, width }: { shot: InductionShot; wid
       <path d={path([g.terminalB, g.terminalA])} stroke="#d8cbb0" strokeWidth="18" />
       <path d={path([g.terminalB, g.terminalA])} stroke="#556e65" strokeWidth="1.5" />
       <text x="0" y="25">
-        {t('闭合线圈 · 玻璃 · 锅底')}
-      </text>
-      <text x="0" y={height - 60}>
-        {t('等效涡流回路')}
+        {t('线圈 · 玻璃 · 锅底')}
       </text>
       {shot.view === 'flux' && (
         <g>
@@ -90,12 +96,14 @@ export function InductionCooktopFlat({ shot, width }: { shot: InductionShot; wid
   );
 }
 export function InductionSkinPlot({ shot, width }: { shot: InductionShot; width: number }) {
-  const r = shot.response,
+  const compact = width < 680,
+    height = compact ? 146 : 182,
+    r = shot.response,
     limit = r.skin.depth < 0.001 ? 0.001 : G.panThickness,
     left = 14,
     right = width - 17,
-    top = 42,
-    bottom = 150,
+    top = 8,
+    bottom = compact ? 84 : 120,
     max = inductionDepthLoss(r, 0);
   const x = (z: number) => left + (z / limit) * (right - left),
     y = (q: number) => bottom - (bottom - top) * q;
@@ -104,49 +112,51 @@ export function InductionSkinPlot({ shot, width }: { shot: InductionShot; width:
     return `${i ? 'L' : 'M'}${x(z)},${y(max > 0 ? inductionDepthLoss(r, z) / max : 0)}`;
   }).join(' ');
   return (
-    <svg
-      className="ic-skin"
-      width={width}
-      height="208"
-      viewBox={`0 0 ${width} 208`}
-      role="img"
-      aria-label={t('从锅底入射面向内的归一化周期平均电损耗密度')}
-    >
-      <text x="0" y="20">
-        {t('电损耗沿深度衰减')}
-      </text>
-      <path d={`${d}L${right},${bottom}L${left},${bottom}Z`} fill="#c38d50" fillOpacity=".14" />
-      <path d={d} stroke="#b8783d" strokeWidth="2.5" fill="none" />
-      <line x1={left} x2={right} y1={bottom} y2={bottom} stroke="#94a79c" />
-      <line
-        x1={x(Math.min(limit, r.skin.depth))}
-        x2={x(Math.min(limit, r.skin.depth))}
-        y1={top}
-        y2={bottom}
-        stroke="#3a8795"
-        strokeDasharray="3 4"
-      />
-      {[0, 0.5, 1].map((q) => (
-        <text
-          key={q}
-          x={x(limit * q)}
-          y="176"
-          textAnchor={q === 0 ? 'start' : q === 1 ? 'end' : 'middle'}
-        >
-          {(limit * q * 1000).toFixed(1)}
+    <div className="ic-depth-evidence">
+      <div className="ic-instrument-title">{t(compact ? '归一化电损耗' : '电损耗沿深度衰减')}</div>
+      <svg
+        className="ic-skin"
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        role="img"
+        aria-label={t('从锅底入射面向内的归一化周期平均电损耗密度')}
+      >
+        <path d={`${d}L${right},${bottom}L${left},${bottom}Z`} fill="#c38d50" fillOpacity=".14" />
+        <path d={d} stroke="#b8783d" strokeWidth="2.5" fill="none" />
+        <line x1={left} x2={right} y1={bottom} y2={bottom} stroke="#94a79c" />
+        <line
+          x1={x(Math.min(limit, r.skin.depth))}
+          x2={x(Math.min(limit, r.skin.depth))}
+          y1={top}
+          y2={bottom}
+          stroke="#3a8795"
+          strokeDasharray="3 4"
+        />
+        {[0, 0.5, 1].map((q) => (
+          <text
+            key={q}
+            x={x(limit * q)}
+            y={bottom + 25}
+            textAnchor={q === 0 ? 'start' : q === 1 ? 'end' : 'middle'}
+          >
+            {(limit * q * 1000).toFixed(1)}
+          </text>
+        ))}
+        <text x="0" y={height - 9}>
+          δ = {(r.skin.depth * 1000).toFixed(3)} mm
         </text>
-      ))}
-      <text x="0" y="203">
-        δ = {(r.skin.depth * 1000).toFixed(3)} mm
-      </text>
-      <text x={width} y="203" textAnchor="end">
-        {t('深度')} / mm
-      </text>
-    </svg>
+        <text x={width} y={height - 9} textAnchor="end">
+          {t('深度')} / mm
+        </text>
+      </svg>
+    </div>
   );
 }
 export function InductionFluxReadout({ shot, width }: { shot: InductionShot; width: number }) {
-  const z = shot.instant,
+  const compact = width < 680,
+    height = compact ? 134 : 165,
+    z = shot.instant,
     rows = [
       { name: 'Φ', value: z.flux * 1e6, unit: 'µWb', max: 65 },
       { name: '−dΦ/dt', value: z.emf, unit: 'V', max: 10 },
@@ -156,13 +166,13 @@ export function InductionFluxReadout({ shot, width }: { shot: InductionShot; wid
     <svg
       className="ic-flux"
       width={width}
-      height="165"
-      viewBox={`0 0 ${width} 165`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('磁通、感应电动势与锅底等效电流的相位关系')}
     >
       {rows.map((r, i) => {
-        const y = 23 + i * 51,
+        const y = (compact ? 20 : 23) + i * (compact ? 42 : 51),
           mid = width / 2;
         return (
           <g key={r.name}>
@@ -234,7 +244,17 @@ export function InductionDutyPlot({ shot, width }: { shot: InductionShot; width:
   );
 }
 export function InductionThermalView({ shot, width }: { shot: InductionShot; width: number }) {
-  const cooling = shot.view === 'cooling',
+  const compact = width < 680,
+    height = compact ? 312 : 390,
+    panTop = compact ? 6 : 10,
+    panHeight = compact ? 36 : 42,
+    glassTop = compact ? 84 : 103,
+    glassHeight = compact ? 34 : 37,
+    flowTop = panTop + panHeight + 8,
+    flowBottom = glassTop - 9,
+    chartTop = compact ? 166 : 201,
+    chartBottom = compact ? 250 : 329,
+    cooling = shot.view === 'cooling',
     duration = cooling ? 240 : Math.max(180, shot.time),
     r = shot.response,
     warm = inductionThermalProgram(shot.input, 180, r);
@@ -246,8 +266,8 @@ export function InductionThermalView({ shot, width }: { shot: InductionShot; wid
   });
   const topTemp =
     Math.ceil(Math.max(50, ...samples.map((p) => p.pan), ...samples.map((p) => p.glass)) / 10) * 10;
-  const x = (time: number) => 28 + ((width - 46) * time) / duration,
-    y = (temp: number) => 365 - ((temp - 20) / (topTemp - 20)) * 128;
+  const x = (time: number) => 36 + ((width - 48) * time) / duration,
+    y = (temp: number) => chartBottom - ((temp - 20) / (topTemp - 20)) * (chartBottom - chartTop);
   const curve = (key: 'pan' | 'glass') =>
     samples.map((p, i) => `${i ? 'L' : 'M'}${x((duration * i) / 60)},${y(p[key])}`).join(' ');
   const glow = Math.max(0, Math.min(1, (shot.thermal.pan - 20) / 60)),
@@ -256,24 +276,32 @@ export function InductionThermalView({ shot, width }: { shot: InductionShot; wid
     <svg
       className="ic-thermal"
       width={width}
-      height="426"
-      viewBox={`0 0 ${width} 426`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('锅与玻璃的温度、相互传热及加热或冷却曲线')}
     >
-      <rect x="10" y="24" width={width - 20} height="44" rx="12" fill="#d4d1be" />
-      <rect x="10" y="24" width={width - 20} height="44" rx="12" fill="#c79054" opacity={glow} />
-      <text x="22" y="52">
+      <rect x="10" y={panTop} width={width - 20} height={panHeight} rx="12" fill="#d4d1be" />
+      <rect
+        x="10"
+        y={panTop}
+        width={width - 20}
+        height={panHeight}
+        rx="12"
+        fill="#c79054"
+        opacity={glow}
+      />
+      <text x="22" y={panTop + Math.round(panHeight * 0.68)}>
         {t('锅体')}
       </text>
-      <text x={width - 22} y="52" textAnchor="end">
+      <text x={width - 22} y={panTop + Math.round(panHeight * 0.68)} textAnchor="end">
         {shot.thermal.pan.toFixed(1)} °C
       </text>
       <line
         x1={width / 2}
         x2={width / 2}
-        y1="77"
-        y2="105"
+        y1={flowTop}
+        y2={flowBottom}
         stroke="#ae8552"
         strokeWidth={2 + Math.min(6, Math.abs(shot.heat.toGlass) / 10)}
         strokeLinecap="round"
@@ -281,41 +309,43 @@ export function InductionThermalView({ shot, width }: { shot: InductionShot; wid
       {Math.abs(shot.heat.toGlass) > 0.01 && (
         <path
           d={
-            shot.heat.toGlass > 0 ? `M${width / 2 - 5} 99l5 7 5-7` : `M${width / 2 - 5} 83l5-7 5 7`
+            shot.heat.toGlass > 0
+              ? `M${width / 2 - 5} ${flowBottom - 6}l5 6 5-6`
+              : `M${width / 2 - 5} ${flowTop + 6}l5-6 5 6`
           }
           stroke="#ae8552"
           fill="none"
           strokeWidth="2"
         />
       )}
-      <text x={width - 5} y="94" textAnchor="end">
+      <text x={width - 5} y={(flowTop + flowBottom) / 2 + 5} textAnchor="end">
         {shot.heat.toGlass.toFixed(1)} W
       </text>
-      <rect x="10" y="119" width={width - 20} height="37" rx="10" fill="#c2d9d3" />
+      <rect x="10" y={glassTop} width={width - 20} height={glassHeight} rx="10" fill="#c2d9d3" />
       <rect
         x="10"
-        y="119"
+        y={glassTop}
         width={width - 20}
-        height="37"
+        height={glassHeight}
         rx="10"
         fill="#d0aa74"
         opacity={glassGlow}
       />
-      <text x="22" y="145">
+      <text x="22" y={glassTop + 25}>
         {t('玻璃')}
       </text>
-      <text x={width - 22} y="145" textAnchor="end">
+      <text x={width - 22} y={glassTop + 25} textAnchor="end">
         {shot.thermal.glass.toFixed(1)} °C
       </text>
-      <text x="0" y="194">
+      <text x="0" y={chartTop - 24}>
         {t('储存的热量')}
       </text>
-      <text x={width} y="194" textAnchor="end">
+      <text x={width} y={chartTop - 24} textAnchor="end">
         {(shot.heat.energy / 1000).toFixed(1)} kJ
       </text>
       {[20, (20 + topTemp) / 2, topTemp].map((temp) => (
         <g key={temp}>
-          <line x1="28" x2={width - 18} y1={y(temp)} y2={y(temp)} stroke="#cad3c6" />
+          <line x1="36" x2={width - 12} y1={y(temp)} y2={y(temp)} stroke="#cad3c6" />
           <text x="0" y={y(temp) + 5}>
             {temp.toFixed(0)}
           </text>
@@ -326,8 +356,8 @@ export function InductionThermalView({ shot, width }: { shot: InductionShot; wid
       <line
         x1={x(Math.min(duration, shot.time))}
         x2={x(Math.min(duration, shot.time))}
-        y1="229"
-        y2="365"
+        y1={chartTop - 5}
+        y2={chartBottom}
         stroke="#879886"
         strokeDasharray="3 5"
       />
@@ -338,13 +368,13 @@ export function InductionThermalView({ shot, width }: { shot: InductionShot; wid
         r="4"
         fill="#4f9293"
       />
-      <text x="28" y="391">
+      <text x="36" y={chartBottom + 24}>
         0
       </text>
-      <text x={width - 18} y="391" textAnchor="end">
+      <text x={width - 12} y={chartBottom + 24} textAnchor="end">
         {duration} s
       </text>
-      <text x="0" y="420">
+      <text x="0" y={height - 10}>
         {t('棕色：锅体；蓝色：玻璃')}
       </text>
     </svg>
