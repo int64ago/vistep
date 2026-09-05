@@ -14,6 +14,79 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'four-stroke-engine',
+    name: '四冲程发动机',
+    title: '一次燃烧，怎样变成转动？',
+    question: '四个行程，一次做功。',
+    description: '剖开一个气缸，跟住气门、活塞、连杆和曲轴，把压力变化与转动接起来。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#9a956e',
+    number: '15',
+    tag: '机械 · 热与功',
+    related: ['bicycle', 'refrigerator'],
+    sources: [
+      {
+        title: 'NASA Glenn · Internal Combustion Engine Stages',
+        url: 'https://www.grc.nasa.gov/www/k-12/airplane/engstage.html',
+      },
+      {
+        title: 'NASA Glenn · Engine Thermodynamic Analysis',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/engine-thermodynamic-analysis/',
+      },
+    ],
+  },
+  {
+    slug: 'camera-lens',
+    name: '镜头成像',
+    title: '一束光，怎样成为一幅像？',
+    question: '清楚，发生在光线相遇的地方。',
+    description: '移动光学台上的物体与成像屏，追踪合焦、倒像和虚像的形成。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#8d9d79',
+    number: '13',
+    tag: '光路 · 对焦与成像',
+    related: ['aperture', 'printer'],
+    sources: [
+      {
+        title: 'OpenStax · University Physics 3: Thin Lenses',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/2-4-thin-lenses',
+      },
+      {
+        title: 'OpenStax · Image Formation by Lenses',
+        url: 'https://openstax.org/books/college-physics-2e/pages/25-6-image-formation-by-lenses',
+      },
+    ],
+  },
+  {
+    slug: 'aperture',
+    name: '光圈与景深',
+    title: '背景虚化，究竟发生在哪里？',
+    question: '同一朵花，两种清晰的选择。',
+    description: '从一张花与灯光的画面出发，看见光圈、景深、曝光与衍射之间的关系。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#9a9863',
+    number: '14',
+    tag: '摄影 · 清晰范围',
+    related: ['camera-lens', 'jpeg'],
+    sources: [
+      {
+        title: 'Edmund Optics · System Throughput, f/#, and Numerical Aperture',
+        url: 'https://www.edmundoptics.com/knowledge-center/application-notes/imaging/lens-iris-aperture-setting/',
+      },
+      {
+        title: 'Edmund Optics · Gauging Depth of Field',
+        url: 'https://www.edmundoptics.com/knowledge-center/application-notes/testing-and-detection/gauging-depth-of-field-in-your-imaging-system/',
+      },
+      {
+        title: 'Nikon · What is Aperture?',
+        url: 'https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/what-is-aperture',
+      },
+    ],
+  },
+  {
     slug: 'bicycle',
     name: '自行车变速',
     title: '换一个齿轮，为什么就省力了？',

@@ -1,0 +1,40 @@
+<h2 id="understand">Aperture controls the bundle; depth of field sets a tolerance</h2>
+
+The foreground leaves, main flower, vase and background sit at 1.3, 2, 3 and 6 meters. Focus on the main flower and its point bundles meet near the sensor. Light from other distances is intercepted before or after its own ideal image plane, leaving a patch instead of a point.
+
+Closing the aperture narrows those bundles and reduces the defocused patches. More distances then look acceptably sharp. **Only one object plane is exactly in focus.** A depth-of-field boundary is a chosen tolerance, not a wall where sharpness suddenly changes.
+
+The opening diagram represents the entrance pupil: the effective aperture seen from the lens front. It is not a mechanical model of a particular iris. The f-number divides focal length by pupil diameter, so f-two is a larger opening than f-eight.
+
+<h2 id="try">Choose what deserves attention</h2>
+
+1. Focus at two meters and compare a wide and narrow aperture. Watch the flower center, nearby leaves, vase and distant lights separately.
+2. Keep aperture fixed and move focus toward six meters. Attention passes from the flower to the background.
+3. Turn brightness compensation off and change from f-two to f-four. The ideal pupil area falls to one quarter; at equal shutter time, light throughput also falls to about one quarter.
+4. Restore brightness compensation before judging depth alone. A darker image is not necessarily a sharper image.
+
+A very small opening introduces another cost: its diffraction spot grows. The enlarged spot in the film shows that size trend, not a measured sharpness test of a real lens.
+
+<h2 id="deeper">Calculate the blur and the acceptable range</h2>
+
+<details>
+<summary>Use the same lens for every depth</summary>
+
+<div className="formula">D = f/N　　c = D · |1 − vₛ/v|</div>
+
+`D` is entrance-pupil diameter and `N` is f-number. The focus setting determines sensor distance `vₛ`; another object distance has ideal image distance `v`. The blur disc follows from where its bundle intersects the sensor, rather than an arbitrary animation parameter.
+
+The green range uses a 0.03 mm sensor-plane diameter as acceptable blur for an ideal 50 mm thin lens. Output size, viewing distance and resolution requirements can justify another tolerance and therefore another reported depth of field.
+
+Relative light uses f-two as the reference, holding focus, transmission and shutter time equal, and varies as `1/N²`. Display brightness applies an approximate display response. It is not a linear irradiance meter or a complete shutter, ISO and noise simulation.
+
+</details>
+
+<details>
+<summary>How the picture is rendered</summary>
+
+The flowers, leaves, vase, buildings and lights are original programmatically drawn layers. Each layer receives defocus calculated from its distance. Isolated lights use geometric discs; extended artwork uses a Gaussian approximation sized from the same circle of confusion. This is not a full lens point-spread simulation.
+
+The diffraction illustration uses central-spot diameter `2.44λN` at 550 nm, excluding finite-conjugate corrections and real lens aberrations. This experiment establishes relationships rather than replacing measurements for a particular camera system.
+
+</details>

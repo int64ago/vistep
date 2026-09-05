@@ -1,0 +1,228 @@
+.engine-study {
+  background: #e7eadf;
+  padding: 24px 30px 18px;
+  color: #405d4c;
+  overflow: hidden;
+}
+.engine-titleline {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #748875;
+}
+.engine-scene {
+  position: relative;
+  height: 490px;
+}
+.engine-scene > .studio {
+  height: 100%;
+  min-height: 0;
+}
+.engine-scene .studio-fallback {
+  padding-bottom: 58px;
+}
+.engine-inset {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 160px;
+  pointer-events: none;
+  color: #648071;
+}
+.engine-inset[data-chart='true'] {
+  top: 115px;
+  width: 260px;
+}
+.engine-inset > svg {
+  width: 100%;
+  display: block;
+}
+.engine-inset text {
+  fill: currentColor;
+  font: 500 25px var(--mono);
+}
+.engine-inset .engine-cycle-label {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.65;
+}
+.engine-inset p {
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+}
+.engine-inset p strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 9px;
+}
+.engine-inset p small {
+  font-size: 14px;
+}
+.engine-inset .engine-pv text {
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 400;
+}
+.engine-stroke-strip {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  padding: 8px 0 22px;
+  color: #82907e;
+}
+.engine-stroke-strip span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+.engine-stroke-strip span[data-active='true'] {
+  color: var(--stroke-color);
+}
+.engine-stroke-strip i {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.engine-stroke-strip [data-active='true'] i {
+  opacity: 1;
+  box-shadow: 0 0 0 4px #a0b39b25;
+}
+.engine-measures {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #7e997429;
+  padding: 18px 0;
+  gap: 15px;
+}
+.engine-measures span {
+  font-size: 16px;
+  color: #74866c;
+}
+.engine-measures strong {
+  display: block;
+  font-size: 28px;
+  line-height: 1.6;
+  color: #405d4c;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.engine-measures small {
+  font-size: 13px;
+  font-weight: 400;
+}
+.engine-note {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #7a8972;
+  margin: 0;
+}
+.engine-explore {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+  padding: 10px 0 25px;
+}
+.engine-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 430px;
+}
+.engine-flat text {
+  font-size: 17px;
+  font-family: inherit;
+}
+@media (max-width: 760px) {
+  .engine-study {
+    padding: 19px 12px 15px;
+  }
+  .engine-titleline {
+    font-size: 10px;
+    gap: 10px;
+    letter-spacing: 0.02em;
+  }
+  .engine-scene {
+    height: 530px;
+  }
+  .engine-scene > .studio {
+    height: 380px;
+  }
+  .engine-inset,
+  .engine-inset[data-chart='true'] {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  .engine-inset > svg {
+    height: 125px;
+    width: 125px;
+  }
+  .engine-inset[data-chart='true'] {
+    gap: 4px;
+  }
+  .engine-inset .engine-pv {
+    width: 65%;
+    height: auto;
+    max-height: 140px;
+  }
+  .engine-inset p {
+    font-size: 16px;
+  }
+  .engine-inset p strong {
+    font-size: 24px;
+  }
+  .engine-inset .engine-pv text {
+    font-size: 17px;
+  }
+  .engine-stroke-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    padding: 18px 15px;
+  }
+  .engine-stroke-strip span {
+    font-size: 14px;
+    gap: 5px;
+  }
+  .engine-measures {
+    gap: 12px;
+    padding: 16px 0;
+  }
+  .engine-measures span {
+    font-size: 12px;
+  }
+  .engine-measures strong {
+    font-size: 24px;
+  }
+  .engine-measures small {
+    font-size: 10px;
+  }
+  .engine-explore {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .engine-explore .btn {
+    justify-self: center;
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .engine-stroke-strip span {
+    transition: none;
+  }
+}

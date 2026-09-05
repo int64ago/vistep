@@ -3,8 +3,13 @@ interface Props {
   slug: string;
   color: string;
 }
+import { engineCycle } from '../models/four-stroke';
 const { slug, color } = Astro.props;
 const grid = Array.from({ length: 8 }, (_, i) => i);
+const engine = engineCycle(2.4 * Math.PI);
+const enginePin = 184 - engine.pinY * 650;
+const engineCrankX = 200 + engine.crankX * 650;
+const engineCrankY = 184 - engine.crankY * 650;
 ---
 
 <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -22,6 +27,158 @@ const grid = Array.from({ length: 8 }, (_, i) => i);
     width="400"
     height="230"
     fill={`url(#dots-${slug})`}></rect>
+  {
+    slug === 'four-stroke-engine' && (
+      <g>
+        <path
+          d="M170 44V151M230 44V151M170 44H230"
+          stroke="#789487"
+          stroke-width="8"
+          stroke-linejoin="round"
+        />
+        <rect
+          x="174"
+          y="44"
+          width="52"
+          height={Math.max(1, enginePin - 17 - 44)}
+          fill="#bc9160"
+          fill-opacity=".3"
+        />
+        <path
+          d="M112 32H186V44M288 32H214V44"
+          stroke="#8d9e8e"
+          stroke-width="9"
+          stroke-linejoin="round"
+        />
+        <path d="M186 18V44m-7 0h14M214 18V44m-7 0h14" stroke="#bac3a9" stroke-width="4" />
+        <rect
+          x="175"
+          y={enginePin - 17}
+          width="50"
+          height="29"
+          rx="4"
+          fill="#afbca7"
+          stroke="#8da28e"
+          stroke-width="2"
+        />
+        <path
+          d={`M176 ${enginePin - 10}H224M176 ${enginePin - 5}H224`}
+          stroke="#829a85"
+          stroke-width="2"
+        />
+        <circle
+          cx="200"
+          cy="184"
+          r="34"
+          fill="#a4b49d"
+          fill-opacity=".2"
+          stroke="#9caa91"
+          stroke-width="6"
+        />
+        <path
+          d={`M200 184L${engineCrankX} ${engineCrankY}`}
+          stroke="#738b78"
+          stroke-width="16"
+          stroke-linecap="round"
+        />
+        <path
+          d={`M200 ${enginePin}L${engineCrankX} ${engineCrankY}`}
+          stroke="#b29968"
+          stroke-width="12"
+          stroke-linecap="round"
+        />
+        {[
+          [200, enginePin],
+          [engineCrankX, engineCrankY],
+          [200, 184],
+        ].map(([cx, cy]) => (
+          <circle cx={cx} cy={cy} r="5" fill="#e2e5cf" stroke="#6f8775" stroke-width="2" />
+        ))}
+        <path d="M200 20V44" stroke="#b8a272" stroke-width="5" stroke-linecap="round" />
+        <circle cx="200" cy="50" r="4" fill="#cf9e61" />
+      </g>
+    )
+  }
+  {
+    slug === 'camera-lens' && (
+      <g>
+        <path d="M42 174H360" stroke="#9aa890" stroke-width="8" stroke-linecap="round" />
+        <path d="M76 169V94m-8 12 8-12 8 12" stroke="#bb975b" stroke-width="4" />
+        <path
+          d="M204 54Q178 106 204 158Q230 106 204 54Z"
+          fill="#c5d9d0"
+          fill-opacity=".5"
+          stroke="#84a895"
+          stroke-width="2"
+        />
+        <path d="M302 62V159" stroke="#3f5b4a" stroke-width="5" />
+        <path
+          d="M76 94L204 80L302 116M76 94L204 106L302 116M76 94L204 132L302 116"
+          stroke="#c0a063"
+          stroke-width="1.8"
+          fill="none"
+        />
+        <>
+          <circle cx="76" cy="94" r="4" fill="#d2ab66" />
+          <circle cx="302" cy="116" r="5" fill="#a5ba89" />
+        </>
+        <path d="M204 158V170M302 158V170" stroke="#819479" stroke-width="4" />
+        <text
+          x="204"
+          y="202"
+          text-anchor="middle"
+          fill="#6f836a"
+          font-size="12"
+          font-family="Manrope"
+        >
+          LIGHT → IMAGE
+        </text>
+      </g>
+    )
+  }
+  {
+    slug === 'aperture' && (
+      <g>
+        <defs>
+          <linearGradient id="aperture-cover" x1="0" y1="0" x2="1" y2="1">
+            <>
+              <stop stop-color="#25473a" />
+              <stop offset="1" stop-color="#607b59" />
+            </>
+          </linearGradient>
+        </defs>
+        <rect x="42" y="34" width="316" height="165" rx="18" fill="url(#aperture-cover)" />
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <circle
+            cx={70 + i * 50}
+            cy={65 + Math.sin(i) * 12}
+            r={8 + (i % 3) * 3}
+            fill="#d1c08c"
+            opacity=".4"
+          />
+        ))}
+        <path d="M185 198Q199 157 188 110" stroke="#9da977" stroke-width="4" />
+        {Array.from({ length: 12 }, (_, i) => (
+          <ellipse
+            cx={188 + Math.cos((i * Math.PI) / 6) * 19}
+            cy={108 + Math.sin((i * Math.PI) / 6) * 19}
+            rx="20"
+            ry="7"
+            transform={`rotate(${i * 30} ${188 + Math.cos((i * Math.PI) / 6) * 19} ${108 + Math.sin((i * Math.PI) / 6) * 19})`}
+            fill="#e3ddbe"
+          />
+        ))}
+        <circle cx="188" cy="108" r="17" fill="#b59952" />
+        <>
+          <circle cx="309" cy="151" r="29" fill="#1a3428" stroke="#b4bd9a" stroke-width="2" />
+          <circle cx="309" cy="151" r="13" fill="#ddd6ab" />
+        </>
+        <text x="61" y="179" fill="#e4e8cf" font-family="Manrope" font-size="14">
+          ƒ / 2.0
+        </text>
+      </g>
+    )
+  }
   {
     slug === 'bicycle' && (
       <g>
