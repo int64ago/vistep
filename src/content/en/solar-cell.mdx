@@ -1,0 +1,48 @@
+# How does sunlight complete a circuit?
+
+A solar cell does not turn every incoming photon into an electron in a wire. Some light is reflected, some passes through, and some excites charges that recombine before collection. Even a successfully collected pair does not deliver all the photon's energy as electricity.
+
+<h2 id="understand">Follow one photon, then one pair</h2>
+
+A photon's energy depends on its wavelength:
+
+<div className="formula">Eγ = hc/λ ≈ 1239.842/λ[nm] eV</div>
+
+The silicon bandgap in this model is 1.121 eV at 25°C. A photon below that threshold cannot excite a band-to-band electron–hole pair here. An absorbed photon above it creates one pair. Excess energy above the bandgap is assigned to **thermalization**: energy transferred to the material while excited carriers relax. A higher-energy photon does not create two pairs in this single-junction teaching model. The [U.S. Department of Energy's cell overview](https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics) explains absorption, carrier generation and extraction.
+
+The cutaway follows a deliberately selected, absorbed 800 nm photon. Its electron and hole appear together at the same position, so their net charge is zero. The electron diffuses toward the junction, where the electric field directs it toward the front n contact. The hole moves toward the rear p contact. The field arrow covers only the depletion region; transport through neutral material is not drawn as a uniform field everywhere.
+
+The front contact joins a continuous wire, load and rear contact. The selected electron travels this entire path; the hole remains inside the cell and recombines with the returning electron at the contact. Conventional current points opposite to electron motion. The pair's slow path is a schematic sequence, not a microscopic transit-time simulation or a literal count of amperes.
+
+## Current and voltage must agree with the load
+
+The electrical model uses one photocurrent source, a diode, a shunt resistance and a series resistance. At junction voltage U:
+
+<div className="formula">U = V + IRₛ</div>
+<div className="formula">I = Iₗ − I₀[exp(U/a) − 1] − U/Rₛₕ</div>
+
+Here a is the ideality factor times thermal voltage for one equivalent cell. The calculation balances all three parallel-branch currents, rather than sliding a drawn curve around. A resistor also requires V = IR. Their intersection determines the operating point. Output power is P = VI, represented by the shaded rectangle. The hollow point independently maximizes this product over the usable I–V curve. The circuit convention follows the [Sandia/NIST single-diode model](https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/single-diode-equivalent-circuit-models/).
+
+An open circuit has voltage but no external current. An ideal short has current but zero load voltage. Both deliver zero power to the external load. Internal recombination, leakage or series dissipation can still consume absorbed energy; zero external power does not mean zero internal loss.
+
+Increase irradiance while holding temperature and load fixed: photocurrent rises and the intersection moves. In darkness, this passive circuit supplies no power. Heating the illuminated cell gives a different result. For the fitted silicon parameters used here, short-circuit current rises slightly while open-circuit voltage and maximum power fall. Irradiance and cell temperature are independent inputs; the scene does not calculate a thermal equilibrium with air or weather. The temperature and irradiance laws use the [De Soto parameter model](https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/single-diode-equivalent-circuit-models/de-soto-five-parameter-module-model/).
+
+<h2 id="try">Change one cause at a time</h2>
+
+- In **Operating point**, change load resistance, compare open and short circuits, or match the maximum-power load. The matching action is unavailable when the required resistance exceeds the supported 10 Ω limit. Darkness has no unique optimum.
+- In **Follow one pair**, use the progress slider to trace the selected electron and hole. Switch between return through the load and recombination inside the cell. Entering this view restores the fixed reference illumination and 800 nm event so that its path has a consistent interpretation.
+- In **Photon threshold**, change wavelength at fixed incident watts. Photon count changes with photon energy. The display shows whether a selected photon can excite a pair; the energy ledger also includes rejected and uncollected photons.
+- In **Energy ledger**, open the loss controls. Reduce charge collection first, then restore it and increase series resistance. The two operations change different model parameters and loss channels.
+- Every range has an explicit accessible name and supports arrow keys, Home and End. **Reset experiment** restores all inputs, spectrum choice, route, selected-event time and view, including hidden state.
+
+<h2 id="deeper">An auditable, deliberately limited model</h2>
+
+Electrical parameters come from the public [pvlib CS5P-220M example](https://pvlib-python.readthedocs.io/en/stable/gallery/iv-modeling/plot_singlediode.html). We divide its 96-cell series string into identical equivalent cells: current is unchanged, while voltages, power, a, Rₛ and Rₛₕ are divided by 96. The apportioned incident area is 1.7/96 m² of module aperture, **not** a measurement of active silicon area. This is a reference-parameter simulation, not a new laboratory measurement.
+
+At 25°C and 1000 W/m², Iₗ = 5.114 A, I₀ = 8.196×10⁻¹⁰ A, a = 2.6373/96 V, Rₛ = 1.065/96 Ω and Rₛₕ = 381.68/96 Ω. Irradiance scales photocurrent and inverse shunt resistance. Temperature changes bandgap, photocurrent, saturation current and a; series resistance remains constant unless explicitly adjusted. Six published pvlib operating cases independently check the numerical solver.
+
+The optical teaching spectrum assigns 22%, 46% and 32% of incident power to 0.90, 1.55 and 2.55 eV respectively. It is **not an AM1.5 spectrum**. We assume 4% reflection, then absorption of 90% of the remaining above-gap light. Below-gap light passes through apart from reflection. This abrupt absorption threshold excludes real silicon's indirect-transition physics and wavelength-dependent absorption depth. A collection factor is calibrated so the reference optical calculation gives the published photocurrent. Reducing the factor represents additional loss before collection.
+
+The steady energy ledger is closed algebraically. Let Iᵍ be the charge-equivalent current of all generated pairs and Eᵍ the bandgap expressed in volts per elementary charge. Its entries are reflection, transmission, thermalization, precollection recombination Eᵍ(Iᵍ−Iₗ), diode recombination UIᵈ, leakage UIˢʰ, series heating I²Rₛ and load output VI. One additional entry, (Eᵍ−U)Iₗ, accounts for the difference between band-edge energy and available junction free energy. It is a **lumped energy residual**, not a spatial temperature map or an independent material measurement. The visual combines the two recombination terms and combines reflected with transmitted power; the model retains all nine channels.
+
+Recombination, thermalization and resistance are physically different reasons for reduced useful output; the [DOE efficiency overview](https://www.energy.gov/cmei/systems/solar-photovoltaic-performance-and-efficiency-basics) discusses these loss mechanisms. This scene does not model a module's local shading, bypass diodes, reverse breakdown, carrier diffusion equations, contact capacitance, optical interference or transient heating. Its supported inputs are 0–1200 W/m², −10–75°C, 0–10 Ω loads and 350–1400 nm monochromatic light. Layer thickness and motion time are explicitly schematic. SVG renders the same geometry without WebGL, textures, remote assets or a second fallback model.

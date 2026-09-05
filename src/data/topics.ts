@@ -14,6 +14,192 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'escapement',
+    name: '机械钟擒纵',
+    title: '擒纵怎样让钟走得有节拍？',
+    question: '钟摆一直在摆，为什么齿轮只走一小步？',
+    description: '跟随格雷厄姆静止式擒纵的一枚齿尖，看锁定、冲量与放行怎样把持续供能分成节拍。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#9a7950',
+    tag: '锁定与放行',
+    related: ['pendulum', 'sewing-machine', 'differential'],
+    sources: [
+      {
+        title: 'Princeton TimeTeam — Graham escapement project',
+        url: 'https://www.princeton.edu/~timeteam/graham.html',
+      },
+      {
+        title:
+          'Laurie Penman, Clockmaking Elements Part 6 — Horological Times, July 2010, pp. 14–18',
+        url: 'https://www.awci.com/wp-content/uploads/ht/July2010.pdf',
+      },
+      {
+        title: 'OpenStax University Physics 15.4 — Pendulums',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums',
+      },
+      {
+        title: 'OpenStax University Physics 15.5 — Damped Oscillations',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations',
+      },
+    ],
+    number: '56',
+  },
+  {
+    slug: 'lithium-battery',
+    name: '锂离子电池',
+    title: '电池充电时，究竟存进了什么？',
+    question: '锂离子和电子为什么要分开走？',
+    description: '跟随石墨与磷酸铁锂之间的锂和外部电荷，看清充放电、压降、发热与休息回升。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#789a88',
+    tag: '可逆储能 · 电化学',
+    related: ['induction-cooktop', 'speaker', 'transformer-electric'],
+    sources: [
+      {
+        title: 'DOE — Batteries and separated ionic/electronic paths',
+        url: 'https://www.energy.gov/science/doe-explainsbatteries',
+      },
+      {
+        title: 'DOE — Critical Materials Assessment, lithium-ion cell components',
+        url: 'https://www.energy.gov/sites/default/files/2023-07/doe-critical-material-assessment_07312023.pdf',
+      },
+      {
+        title: 'Sandia — Lithium insertion in LFP particles',
+        url: 'https://newsreleases.sandia.gov/popcorn_batteries/',
+      },
+      {
+        title: 'Nature Communications — LFP insertion reaction and charge balance',
+        url: 'https://www.nature.com/articles/ncomms2705',
+      },
+      {
+        title: 'MathWorks — Passive battery equivalent circuit and polarization dynamics',
+        url: 'https://www.mathworks.com/help/simscape-battery/ref/batteryequivalentcircuit.html',
+      },
+      {
+        title: 'DOE — Copper and aluminum current collectors, porous separator',
+        url: 'https://www.energy.gov/eere/vehicles/articles/propulsion-materials-rd-2010-annual-progress-report',
+      },
+    ],
+    number: '55',
+  },
+  {
+    slug: 'logic-gates',
+    name: '逻辑门',
+    title: '逻辑门：电压如何变成零和一',
+    question: '晶体管怎样把输入变成逻辑，为什么还需要时间？',
+    description: '沿 CMOS 的上拉与下拉通路，观察电容电压、传播延迟和翻转能量。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#4c8795',
+    tag: '晶体管与电荷',
+    related: ['binary-adder', 'cpu-pipeline', 'buck-converter'],
+    sources: [
+      {
+        title: 'MIT 6.004: CMOS Technology — Annotated Slides',
+        url: 'https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c3/c3s1/',
+      },
+      {
+        title: 'Texas Instruments: CMOS Power Consumption and CPD Calculation',
+        url: 'https://www.ti.com/lit/an/scaa035b/scaa035b.pdf',
+      },
+    ],
+    number: '54',
+  },
+  {
+    slug: 'public-key',
+    name: '公钥密码',
+    title: '公钥可以公开，消息怎样只让收件人解开？',
+    question: '把 42 送出去，再用另一种指数带回来。',
+    description:
+      '用刻意不安全的小整数走完 RSA：造钥匙、求逆元、平方乘法、加密与解密，并亲眼看见教具的安全边界。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#944e50',
+    tag: '信息 · 公钥与私钥',
+    related: ['hash', 'network', 'error-correction'],
+    sources: [
+      {
+        title: 'RFC 8017 · PKCS #1 v2.2',
+        url: 'https://www.rfc-editor.org/rfc/rfc8017.html',
+      },
+      {
+        title:
+          'Rivest, Shamir & Adleman · A Method for Obtaining Digital Signatures and Public-Key Cryptosystems',
+        url: 'https://people.csail.mit.edu/rivest/Rsapaper.pdf',
+      },
+      {
+        title: 'NIST SP 800-56B Rev. 2 · RSA key establishment',
+        url: 'https://csrc.nist.gov/pubs/sp/800/56/b/r2/final',
+      },
+    ],
+    number: '53',
+  },
+  {
+    slug: 'solar-cell',
+    name: '太阳能电池',
+    title: '阳光怎样走完一条电路？',
+    question: '一束光照上硅片，为什么能让外面的电流流动？',
+    description:
+      '跟住一个被吸收的光子，穿过结区与闭合回路，再用实际求解的 I–V 曲线核算输出与损失。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#8c9b72',
+    tag: '光伏 · 电荷与能量',
+    related: ['electric-generator', 'seasons', 'rainbow'],
+    sources: [
+      {
+        title: 'U.S. DOE — Solar Photovoltaic Cell Basics',
+        url: 'https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics',
+      },
+      {
+        title: 'U.S. DOE — Solar Photovoltaic Performance and Efficiency Basics',
+        url: 'https://www.energy.gov/cmei/systems/solar-photovoltaic-performance-and-efficiency-basics',
+      },
+      {
+        title: 'Sandia / NIST PVPMC — Single Diode Equivalent Circuit Models',
+        url: 'https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/single-diode-equivalent-circuit-models/',
+      },
+      {
+        title: 'Sandia / NIST PVPMC — De Soto Five-Parameter Model',
+        url: 'https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/single-diode-equivalent-circuit-models/de-soto-five-parameter-module-model/',
+      },
+      {
+        title: 'pvlib — Calculating a Module’s IV Curves, CS5P-220M Reference Example',
+        url: 'https://pvlib-python.readthedocs.io/en/stable/gallery/iv-modeling/plot_singlediode.html',
+      },
+    ],
+    number: '52',
+  },
+  {
+    slug: 'convection',
+    name: '热对流',
+    title: '热，怎样开始自己流动？',
+    question: '为什么从下面加热会形成循环，从上面加热却不一样？',
+    description: '在封闭格子里计算温度、浮力与流动，追踪热量怎样被携带。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#ad8455',
+    tag: '温度与浮力',
+    related: ['bernoulli', 'siphon', 'water-hammer'],
+    sources: [
+      {
+        title: 'University College Dublin — Rayleigh–Bénard convection lecture notes',
+        url: 'https://maths.ucd.ie/~onaraigh/acm40740/acm_40890_jan2018_v2.pdf',
+      },
+      {
+        title: 'Dedalus — Rayleigh–Bénard convection (2D IVP)',
+        url: 'https://dedalus-project.readthedocs.io/en/latest/pages/examples/ivp_2d_rayleigh_benard.html',
+      },
+      {
+        title: 'Bridson and Müller-Fischer — Fluid Simulation course notes',
+        url: 'https://www.cs.ubc.ca/~rbridson/fluidsimulation/fluids_notes.pdf',
+      },
+    ],
+    number: '51',
+  },
+  {
     slug: 'rectifier',
     name: '整流器',
     title: '交流换向，负载为什么不换向？',

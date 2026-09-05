@@ -1,0 +1,409 @@
+.convection-phone-focus {
+  display: none;
+}
+.convection-study {
+  background: radial-gradient(ellipse at 50% 34%, #faf3df, #e8dfcb 73%);
+  color: #534331;
+  padding: 24px 28px 18px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+.convection-study * {
+  box-sizing: border-box;
+}
+.convection-kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 16px;
+  color: #78634a;
+}
+.convection-observation {
+  font-size: 22px;
+  line-height: 1.5;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 16px auto 22px;
+  max-width: 800px;
+  color: #52412e;
+  font-weight: 450;
+}
+.convection-cells {
+  max-width: 660px;
+  margin: auto;
+  width: 100%;
+}
+.convection-cells.convection-compare {
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.convection-vessel {
+  margin: 0;
+  min-width: 0;
+}
+.convection-vessel figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 38px;
+  color: #715b42;
+}
+.convection-vessel figcaption > span:last-child {
+  white-space: nowrap;
+  color: #705b43;
+}
+.convection-glass {
+  position: relative;
+  width: 100%;
+  border-left: 7px solid #ddcdb28c;
+  border-right: 7px solid #ddcdb28c;
+  box-shadow: inset 0 0 15px #70563b22;
+  background: #ddd1b6;
+}
+.convection-glass canvas,
+.convection-glass svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.5;
+  outline: 1px solid #6b52311c;
+  outline-offset: -1px;
+}
+.convection-top-plate,
+.convection-bottom-plate {
+  min-height: 35px;
+  color: #fff9e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1.5;
+  text-shadow: 0 1px 1px #57382145;
+  box-shadow:
+    inset 0 2px 3px #ffffff24,
+    0 2px 6px #73503217;
+  padding: 4px 8px;
+}
+.convection-top-plate {
+  border-radius: 9px 9px 2px 2px;
+}
+.convection-bottom-plate {
+  border-radius: 2px 2px 9px 9px;
+}
+.convection-tracer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 11px 0 0;
+  font-size: 16px;
+}
+.convection-tracer b {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.convection-temperature-key {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  max-width: 660px;
+  margin: 17px auto;
+  font-size: 16px;
+  color: #715c43;
+}
+.convection-temperature-key > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.convection-temperature-key > span:nth-child(2) {
+  text-align: center;
+  justify-content: center;
+}
+.convection-temperature-key i {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background: #628493;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.convection-temperature-key > span:last-child i {
+  background: #c15c31;
+}
+.convection-readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 26px;
+  max-width: 660px;
+  margin: auto;
+  padding: 13px 0 5px;
+  border-top: 1px solid #b8a48580;
+}
+.convection-readouts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #715b42;
+}
+.convection-readouts > div:nth-child(2) {
+  text-align: right;
+}
+.convection-readouts b {
+  font-size: 26px;
+  font-weight: 450;
+  letter-spacing: 0.02em;
+  color: #61442b;
+}
+.convection-readouts p {
+  grid-column: 1/-1;
+  text-align: center;
+  margin: 5px 0 0;
+  font-size: 16px;
+}
+.convection-convention {
+  font-size: 16px;
+  line-height: 1.55;
+  text-align: center;
+  max-width: 850px;
+  margin: 13px auto 4px;
+  color: #705b43;
+}
+.convection-method {
+  margin-top: 18px;
+  border-top: 1px solid #ad987955;
+  color: #725d43;
+}
+.convection-method summary {
+  font-size: 16px;
+  min-height: 44px;
+  cursor: pointer;
+  padding: 11px 0;
+}
+.convection-method p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 13px 0;
+}
+.convection-method dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px 24px;
+  font-size: 16px;
+}
+.convection-method dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.convection-method dd {
+  margin: 0;
+}
+.convection-explore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 21px 24px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid #af987555;
+}
+.convection-switches {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.convection-explore button {
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  border: 1px solid #a58b6f;
+  border-radius: 22px;
+  color: #765a3d;
+  background: #f3ebd8;
+  cursor: pointer;
+  padding: 9px 15px;
+  transition: background 0.2s ease;
+}
+.convection-explore button[aria-pressed='true'] {
+  background: #78634a;
+  color: #fff5df;
+  border-color: #78634a;
+}
+.convection-explore button:hover {
+  background: #e3d4b6;
+}
+.convection-explore button[aria-pressed='true']:hover {
+  background: #69543b;
+}
+.convection-study .convection-explore .control {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  font-size: 16px;
+  min-width: 0;
+}
+.convection-study .convection-explore .control .control-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.convection-study .convection-explore .control .control-top span,
+.convection-study .convection-explore .control output {
+  font-size: 16px;
+  color: #74583d;
+}
+.convection-study .convection-explore .control input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  accent-color: #9c754c;
+  cursor: pointer;
+}
+.convection-study :focus-visible {
+  outline: 3px solid #936843;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .convection-study {
+    padding: 16px 16px 10px;
+  }
+  .convection-kicker {
+    justify-content: center;
+    min-height: 25px;
+  }
+  .convection-kicker > span:first-child {
+    display: none;
+  }
+  .convection-observation {
+    font-size: 18px;
+    line-height: 1.5;
+    min-height: 108px;
+    margin: 5px 0 15px;
+  }
+  .convection-cells {
+    max-width: 370px;
+  }
+  .convection-cells.convection-compare {
+    display: block;
+    max-width: 370px;
+  }
+  .convection-compare .convection-vessel {
+    width: 100%;
+  }
+  .convection-study[data-focus='false'] .convection-compare .convection-vessel:nth-child(2),
+  .convection-study[data-focus='true'] .convection-compare .convection-vessel:first-child {
+    display: none;
+  }
+  .convection-study .convection-phone-focus {
+    display: block;
+    min-height: 44px;
+    width: 100%;
+    margin-top: 12px;
+    border: 1px solid #a58b6f;
+    border-radius: 22px;
+    background: #f3ebd8;
+    font: inherit;
+    color: #765a3d;
+    padding: 8px 12px;
+  }
+  .convection-vessel figcaption {
+    min-height: 33px;
+    gap: 8px;
+  }
+  .convection-glass {
+    border-left-width: 5px;
+    border-right-width: 5px;
+  }
+  .convection-top-plate,
+  .convection-bottom-plate {
+    min-height: 30px;
+    padding: 3px 4px;
+  }
+  .convection-temperature-key {
+    gap: 7px;
+    margin: 12px auto;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .convection-temperature-key > span:first-child,
+  .convection-temperature-key > span:last-child {
+    white-space: nowrap;
+  }
+  .convection-temperature-key i {
+    display: none;
+  }
+  .convection-readouts {
+    gap: 8px 16px;
+    padding-top: 11px;
+  }
+  .convection-readouts b {
+    font-size: 22px;
+  }
+  .convection-readouts p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .convection-convention {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .convection-method {
+    margin-top: 14px;
+  }
+  .convection-method dl {
+    grid-template-columns: 1fr;
+  }
+  .convection-explore {
+    grid-template-columns: 1fr;
+  }
+  .convection-switches {
+    gap: 8px;
+  }
+  .convection-options {
+    grid-template-columns: 1fr;
+  }
+  .convection-explore button {
+    padding: 9px 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .convection-study * {
+    transition: none !important;
+  }
+}
+
+.convection-study[data-watch='true'] .convection-kicker {
+  margin-bottom: 20px;
+}
+.convection-status {
+  font-size: 16px;
+  color: #705b43;
+}
+
+@media (max-width: 760px) {
+  .convection-study[data-watch='true'] {
+    min-height: 760px;
+    display: flex;
+    flex-direction: column;
+  }
+  .convection-study[data-watch='true'] .convection-method {
+    margin-top: auto;
+  }
+}

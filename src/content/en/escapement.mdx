@@ -1,0 +1,56 @@
+<section id="understand">
+
+## A steady pull, an intermittent wheel
+
+A Graham deadbeat escapement alternately stops the escape wheel on an entry pallet and an exit pallet. The pendulum swings the anchor. At the appropriate angle, a tooth leaves the locking face, crosses the impulse face and clears the pallet.
+
+Follow one tooth tip. During lock, it stays at the same point in space while the locking surface slides beneath it. That surface is a circular arc centred on the anchor arbor, so anchor motion does not force the wheel backwards. On the flat impulse face, the advancing wheel does work on the anchor. The brief free movement before the opposite pallet catches a tooth is called _drop_.
+
+<div className="formula">
+  30 teeth → 360° / 30 = 12° per tooth
+  <br />
+  One complete swing → two releases → one tooth pitch
+</div>
+
+Power, periodic motion and counting have different jobs. The weight supplies energy, the pendulum provides an approximate period, and the escapement connects them.
+
+</section>
+<section id="try">
+
+## Inspect a contact, then compare the consequences
+
+In exploration, choose “Contact section” and move through a complete swing. Follow entry lock, entry impulse, drop, exit lock and exit impulse. The range controls also respond to arrow keys.
+
+Prescribed half-amplitude changes the anchor’s excursion while retaining the same tooth and pallet geometry. A wider swing does not change the tooth count or make a locked wheel creep.
+
+In the energy comparison, both pendulums start with the same state. Set the impulse multiplier to zero and their energy traces coincide. Restore it to one and each ideal impulse replaces the loss over a half-period. The length comparison uses the same elapsed time for both pendulums. Reset restores every input, comparison time and view.
+
+</section>
+<section id="deeper">
+
+## Two models with separate jobs
+
+The mechanism uses quasi-static contact geometry: 30 teeth, a 7.5-pitch pallet span, a tooth-tip radius of 1.5 display units, and an arbor spacing of `1.5√2 u`. Locking arcs are concentric with the anchor arbor. Each impulse plane joins two derived contact endpoints. During an impulse the anchor turns through 3° and the wheel advances 5°; a further 1° drop reaches the opposite half-pitch locking position. Drop is drawn with a finite-duration accelerating curve.
+
+This mechanism prescribes swing amplitude and phase. It does not solve train inertia, impact or friction. A demonstration drum directly drives the escape-wheel arbor, omitting a real clock’s gear train. The anchor and pendulum share an arbor here; actual suspensions and crutches can differ.
+
+The separate energy instrument solves a linear small-angle pendulum with `m = 0.20 kg`, `g = 9.81 m/s²`, and damping rate `γ = 0.025 s⁻¹`. At each centre crossing the velocity increases in its existing direction, adding exactly the specified work `Q`. Motion between impulses follows the analytic damped-oscillator solution.
+
+<div className="formula">
+  T ≈ 2π√(L/g)
+  <br />E = ½mL²ω² + ½mgLθ²
+  <br />
+  E(t) + accumulated loss = initial energy + accumulated input
+</div>
+
+Energy is displayed in mJ. Instantaneous impulses isolate loss replacement; they do not predict the contact mechanism’s actual torque, efficiency, impact losses or timing accuracy. The freely decaying pendulum is disconnected from the escapement in this comparison. It does not imply that a vanishing swing can still release the wheel.
+
+The locking surfaces do slide. “Deadbeat” means the wheel rests during lock, not that contact friction vanishes. Real timekeeping also depends on amplitude, temperature, suspension and drive variations.
+
+### Sources
+
+- [Princeton TimeTeam: Graham escapement project](https://www.princeton.edu/~timeteam/graham.html), covering locking, impulse, drop and physical adjustment.
+- [Laurie Penman, “Clockmaking Elements, Part 6,” Horological Times, July 2010, pp. 14–18](https://www.awci.com/wp-content/uploads/ht/July2010.pdf), covering deadbeat contact geometry and tooth rake.
+- OpenStax on [pendulums](https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums) and [damped oscillations](https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations), for the small-angle period and decay model.
+
+</section>

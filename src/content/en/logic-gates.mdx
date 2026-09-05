@@ -1,0 +1,54 @@
+<h2 id="understand">Inside a logic gate, voltage takes time</h2>
+
+Start with the inverter. A low input enables the upper pMOS path and disables the lower nMOS path. The output capacitance charges through the pull-up. A high input swaps the paths, allowing that capacitance to discharge through the pull-down. The input controls an insulated gate; its wire does not deliver direct current through the insulation into the channel.
+
+The Boolean function tells us the eventual destination. It does not make the output voltage jump there. A rising output can still read 0, then pass through an X region, before reaching a valid 1. X means that a reliable binary interpretation is not guaranteed here. The capacitor still has a definite calculated voltage.
+
+A NAND gate puts its nMOS devices in series: both inputs must be high to complete the pull-down. Its pMOS devices are parallel, so either low input can enable a pull-up. A NOR gate exchanges those series and parallel arrangements. Either high input completes a pull-down. The connections implement the logic. [MIT: CMOS technology and timing](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c3/c3s1/)
+
+<h2 id="try">Stop partway through a transition</h2>
+
+- Enter exploration, select the initial and new inputs, then move sample time. Keeping the same inputs does not invent a transition.
+- Choose NAND and change `00` to `10`, then try `11`. Follow the connected channels and watch whether the output actually discharges.
+- With the inverter and supply unchanged, increase capacitance from 10 fF to 40 fF. The time to half supply becomes four times longer on the same time axis.
+- Select the inverter and connect the next stage. Y₁ crosses the model boundary before Y₂ begins changing. Selecting another gate exits the cascade view.
+- Reset restores gate type, both input pairs, capacitance, both channel resistances, supply, sample time and cascade connection. Native buttons and ranges support keyboard operation.
+
+A solid channel means enabled; a dashed channel means disabled. An enabled channel need not carry steady current. Once the node settles at a rail, charging or discharging current tends to zero in this ideal model. The violet column indicates `V/VDD`; it is not a fluid or a separate charge simulation. Physical time is calculated in picoseconds and slowed for viewing.
+
+<h2 id="deeper">A connected network, continuous charge</h2>
+
+<details>
+<summary>How are the curves calculated?</summary>
+
+An enabled channel is a finite resistor; a disabled channel is an open circuit. The model traverses the actual graph, verifies that the output connects to exactly one supply rail, then solves internal-node current balance to obtain equivalent resistance. Truly disconnected internal nodes remain floating. Internal-node capacitance is omitted; output capacitance is retained throughout.
+
+<div className="formula">C dV/dt = (Vtarget − V) / Req</div>
+<div className="formula">V(t) = Vtarget + (Vinitial − Vtarget) exp(−t / ReqC)</div>
+
+An input event changes the resistor network, but each segment starts at the previous segment's final voltage. Charge remains continuous. Exact exponential segments reconstruct any requested time from a deterministic event schedule.
+
+The teaching defaults are 1.2 V, 20 fF and 5 kΩ per enabled channel. An inverter has a 100 ps time constant and takes about 69.3 ps to reach half supply from either rail. Two equal pull-down resistors in series double that time; two parallel pull-up resistors halve it. These are results of the declared circuit, not measured chip specifications.
+
+</details>
+
+<details>
+<summary>Why separate a switching boundary from a logic label?</summary>
+
+The film labels `V ≤ 0.3 VDD` as 0 and `V ≥ 0.7 VDD` as 1, with X between them. The cascade separately uses `0.5 VDD` to select the next stage's ideal switches. It can therefore begin responding while Y₁ still reads X. Those markers serve different purposes. Real input/output guarantees and transistor thresholds depend on technology and device specifications; these teaching numbers are not universal.
+
+This model does not solve MOSFET gate-to-source voltage, nonlinear current curves, or partial simultaneous conduction. Equal pMOS and nMOS resistance is an authored comparison condition. The first stage's output capacitance already includes its wire and downstream gate load; connecting the second stage does not count that load twice.
+
+</details>
+
+<details>
+<summary>Where does switching energy go?</summary>
+
+<div className="formula">Psupply = Σ Ichannel²Rchannel + d(½CV²)/dt</div>
+<div className="formula">Settled 0 → 1 → 0 cycle: Esupply → C VDD²</div>
+
+Charging from zero to the supply rail puts half the supplied energy into the capacitor and dissipates half in the pull-up resistance. Discharging releases the stored half as heat in the pull-down. A sufficiently settled cycle with the defaults consumes about 28.8 fJ. The film allows twelve time constants per half-cycle and displays finite-time integrals, so it approaches rather than imposes that limit.
+
+Zero permanent DC current at an ideal settled level does not mean zero static power in a real chip. Leakage, switching overlap, input-driver energy and additional parasitics are outside this model. Real CMOS power accounting includes those contributions. [TI: CMOS Power Consumption and CPD Calculation](https://www.ti.com/lit/an/scaa035b/scaa035b.pdf)
+
+</details>

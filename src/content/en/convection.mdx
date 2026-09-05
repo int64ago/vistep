@@ -1,0 +1,80 @@
+<h2 id="understand">Heat can travel without a circulating fluid</h2>
+
+At first the fluid is motionless and has one uniform temperature. Its lower plate is held warm and its upper plate cool. Heat spreads inward by **conduction**, even though the tracers do not move. An exactly horizontal temperature field remains motionless in this symmetric numerical setup; the program does not secretly draw a rising current.
+
+The next chapter starts a separate controlled experiment: a linear conductive temperature layer with a small, specified sideways disturbance. When heated from below, that disturbance grows into circulation. Warm fluid moves upward while other fluid returns downward. Temperature changes the buoyancy force, and the resulting motion carries temperature in return.
+
+The same small disturbance decays when the warm plate is above. That stable arrangement still transports heat, mainly by conduction downward. “Hot rises” is therefore an incomplete explanation: the surrounding temperature distribution, gravity, pressure constraints, diffusion and motion all matter.
+
+The pale dots are material tracers; the purple dye is a separate transported scalar. Neither follows a prescribed circular animation. The cell is closed, so the flow cannot leave through its walls.
+
+<h2 id="try">Compare the same elapsed model time</h2>
+
+- Keep the default settings and advance model time to about 16. A seeded layer heated from below develops visible rolls. Swap the plates: the same disturbance fades instead.
+- Set buoyancy coupling to zero. Temperature still diffuses between the plates, while the initially resting fluid has no buoyant drive. Compare its heat flux with the circulating case.
+- Set the disturbance amplitude to zero. Exact numerical symmetry leaves the conductive state motionless, even under conditions where a small disturbance would grow. This is not a claim that real experiments are perfectly quiet.
+- Increase momentum diffusivity while keeping the other parameters and elapsed time fixed. The calculation changes the circulation rather than merely slowing a decorative animation.
+- Enable dye and follow the bright tracer. The tracer's local temperature can change as it moves; a parcel is not permanently “the hot one.” In the reversed-temperature comparison, the phone button switches the displayed cell while both readings remain available.
+
+The native ranges support keyboard arrows. “Reset convection experiment” restores heating below, coupling 1, momentum diffusivity 0.02, disturbance 0.02, model time zero, temperature view, comparison off and the baseline phone view. Changing an input reconstructs the requested time from its initial state. The shared player handles film pause, replay and seeking; film seconds and model time are different quantities.
+
+<h2 id="deeper">A coupled flow and heat calculation</h2>
+
+<details>
+<summary>What the model solves</summary>
+
+The Boussinesq approximation treats density as constant except in the buoyancy term. In this dimensionless, two-dimensional cell:
+
+<div className="formula">∇ · u = 0</div>
+<div className="formula">∂u/∂t + u · ∇u = −∇π + ν∇²u + B(T − Tref) eᵧ</div>
+<div className="formula">∂T/∂t + u · ∇T = κ∇²T</div>
+
+The width is 1.5 and height 1. Default coefficients are `B = 1`, `ν = 0.02`, `κ = 0.01`; dye diffusivity is 0.0005. These are authored dimensionless parameters, not measured properties of water. Temperature `T* = 0…1` spans the imposed cold and warm references. Model time is not the number of seconds required to heat a cup, and heat flux is not in watts.
+
+Pressure is eliminated by taking the curl. With upward y, vorticity `ω = ∂v/∂x − ∂u/∂y` and streamfunction `u = ∂ψ/∂y`, `v = −∂ψ/∂x`, the implementation advances vorticity and solves:
+
+<div className="formula">∂ω/∂t + u · ∇ω = ν∇²ω + B ∂T/∂x</div>
+<div className="formula">−∇²ψ = ω</div>
+
+A separable sine transform solves the discrete Poisson equation. Taking differences of the same streamfunction gives the face velocities, whose cell divergence cancels algebraically. This is a streamfunction formulation, not a simulated compressible fluid or an artistic vector field.
+
+</details>
+
+<details>
+<summary>Closed walls, but idealized friction</summary>
+
+The four walls are impermeable and **free-slip**: streamfunction and wall vorticity are zero. The sides are thermally insulated. Top and bottom temperatures are prescribed; this model does not include the heat capacity of the plates. The glass rendering is illustrative. A real glass wall usually imposes no-slip, a different velocity boundary condition.
+
+The default initial temperature is the linear conductive profile plus `−0.02 cos(2πx/1.5) sin(πy)`. This prescribed disturbance has no random seed. The opening chapter instead uses a uniform temperature of 0.5 and no disturbance. The cooling chapter begins with developed circulation, then sets both plates to 0.5 at model time 24. It removes the imposed temperature difference, not every remaining temperature variation or all kinetic energy instantly.
+
+</details>
+
+<details>
+<summary>Where does the heat go?</summary>
+
+Each cell stores temperature and dye. Conservative fluxes across shared faces update these quantities: what leaves one cell enters the next. No heat or dye crosses the side walls, and dye crosses no wall. Heat enters or leaves only through the prescribed-temperature plates.
+
+<div className="formula">
+  Change in stored heat = integrated lower-plate influx − integrated upper-plate outflux
+</div>
+
+The displayed central-section transport separates the computed advective flux from explicit conduction. Positive means upward. The advective face value uses the upwind temperature, so the displayed flux is consistent with the numerical heat budget. The signed conductive contribution can locally oppose the advective one; do not add magnitudes and discard the signs.
+
+The foldout reports the heat-budget residual, dye-mass residual, maximum cell divergence and transport Courant number. Small residuals verify conservation in the code. They do not establish that a coarse two-dimensional model captures all real convection.
+
+</details>
+
+<details>
+<summary>Resolution and things this cannot predict</summary>
+
+The main grid has 30 × 20 cells; the last chapter compares 42 × 28 at the same nominal elapsed time. Both show convection, with different speeds and transport. First-order upwind advection adds **numerical diffusion**, including extra momentum dissipation beyond the chosen viscosity. Explicit diffusion and a bounded timestep control stability. Unsafe states stop with an error; temperatures are not silently clipped into range.
+
+The model does not estimate a critical Rayleigh number. Thresholds depend on geometry and mechanical and thermal boundary conditions, and this coarse dissipative grid is not a stability experiment. It also omits three-dimensional turbulence, boiling, phase changes, free surfaces and temperature-dependent material properties beyond buoyancy.
+
+Tracers use the same streamfunction-derived velocity with midpoint integration; their identities persist and there is no wall wrapping. Dye opacity is amplified eightfold and saturated for visibility; conservation diagnostics use unmodified dye concentrations. Temperature colors are interpolated between cold, neutral and warm references. Grid mode reveals the actual cells rather than adding fake fine structure.
+
+A Worker normally reconstructs requested states. If it is unavailable, bounded main-thread chunks evaluate the same solver. If Canvas is unavailable, an SVG view renders the same temperature/dye cells and tracer coordinates. Neither fallback substitutes a canned convection loop.
+
+Sources: [University College Dublin: Rayleigh–Bénard convection notes](https://maths.ucd.ie/~onaraigh/acm40740/acm_40890_jan2018_v2.pdf), [Dedalus: two-dimensional Rayleigh–Bénard example](https://dedalus-project.readthedocs.io/en/latest/pages/examples/ivp_2d_rayleigh_benard.html), and [Bridson and Müller-Fischer: Fluid Simulation notes](https://www.cs.ubc.ca/~rbridson/fluidsimulation/fluids_notes.pdf). The Dedalus example has different lateral and velocity boundaries; it supplies an equation reference, not validation of this implementation.
+
+</details>
