@@ -1,0 +1,54 @@
+<h2 id="understand">Five steps per instruction, several instructions in flight</h2>
+
+Follow an instruction's ID through fetch, decode, execute, memory and writeback. Fetch brings in the instruction. Decode identifies its operation and register inputs. Execute performs arithmetic or calculates an address. Memory reads or writes data, and writeback updates the destination register. An addition passes through the memory position without accessing data memory.
+
+This is a **toy five-stage, single-issue, in-order processor**, with one cycle per stage. A sequential reference runs the very same program, completing all five stages of one instruction before starting the next. Both schedules receive identical initial registers and memory.
+
+Overlapping work shortens the interval between completed instructions. It does not turn a five-cycle instruction into a one-cycle instruction. The first instruction takes five cycles in both schedules. This is a throughput comparison under equal, ideal stage durations; the numbers do not predict a real processor's clock frequency or speedup.
+
+<h2 id="try">Inspect the program one cycle at a time</h2>
+
+- Enter exploration and stop at cycle 5. I3 adds 4 and 7 in execute, producing 11. Register r3 is still zero because writeback has not happened. Two forwarding records identify the actual value sources.
+- Disable forwarding and revisit cycles 5 and 6. I3 waits in decode for the needed register writes. Its ID is preserved while older instructions keep moving.
+- Enable forwarding and inspect cycle 7. I4 is reading memory, I5 remains in decode, and execute contains a bubble. At cycle 8 the load result reaches I5's execution input.
+- Keep initial `M[0] = 11` and stop at cycle 9. I6 finds `r4 == r3`, flushing I7 and I8. I7 would have written `M[4]`; that wrong-path write never occurs.
+- Change `M[0]` to 5 and run to completion. The branch is not taken, all ten instructions finish, and `M[4]` becomes 16. The final check still compares against a sequential run with that same input.
+
+Changing the input or forwarding setting returns to cycle zero. The slider and step buttons all use the same deterministic execution trace, including prior memory effects. Stations show the work **during** the current cycle; register and memory values show the state **at its end**. The timing paper uses `Ⅱ` for a hold, `×` for a flushed instruction and a dot for an empty slot.
+
+<h2 id="deeper">Correctness determines which work may overlap</h2>
+
+<details>
+<summary>Why does forwarding sometimes still require a stall?</summary>
+
+An arithmetic result exists at the end of execute and is held in a pipeline latch. A later instruction can take that value directly into execute. This model chooses the newest matching EX/MEM value before considering MEM/WB. Register r0 is fixed at zero and never becomes a forwarding producer.
+
+A load only calculates its address in execute; its data arrives at the end of memory. An immediate consumer therefore needs a one-cycle hold in fetch and decode, with a bubble inserted into execute. The same rule applies here when the consumer is a store or branch. Decode reads operands after any writeback in that cycle.
+
+The [Brown pipeline lesson](https://cs.brown.edu/courses/csci1952y/2024/notes/pipelined_cpu.html) illustrates forwarding from latches, newest-value priority and the remaining load-use dependency.
+
+</details>
+
+<details>
+<summary>How is flushing different from stalling?</summary>
+
+A stall preserves an instruction so it can finish later. A flush cancels a wrong-path instruction and prevents all of its register and memory effects. Here, fetch assumes a branch will fall through. Execute resolves the branch; if taken, the younger instructions in fetch and decode are squashed. Target fetching begins the following cycle. There is no architectural branch delay slot.
+
+Resolution stage is a design choice. This scene follows the execute-stage decision and two-instruction flush in the [Harris and Harris five-stage design](https://pages.hmc.edu/harris/class/e85/old/fall21/lect22.pdf). Brown's lesson resolves branches a stage later, so its three-instruction flush count should not be transferred to this model.
+
+</details>
+
+<details>
+<summary>Why fifteen cycles, and what has been left out?</summary>
+
+With the default input, eight useful instructions finish. An ideal five-stage pipeline adds four cycles for filling and draining. This execution also needs one load-use stall and two branch bubbles:
+
+<div className="formula">15 = 8 + 4 + 1 + 2</div>
+
+The sequential schedule takes `8 × 5 = 40` cycles. At completion, `r3 = 11`, `r4 = 11`, `r5 = 22`, `r7 = 23`, `M[4] = 0` and `M[8] = 22`. Verification compares every register, memory location and useful instruction in order against an independent interpreter, rather than comparing a single checksum.
+
+The small instruction subset draws on [RISC-V RV32I semantics](https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html): ADDI, ADD, SUB, LW, SW and BEQ. This model has only eight 32-bit registers, named r0–r7. Instructions are already decoded, branch targets are instruction indices, and memory contains aligned 32-bit words at byte addresses. Arithmetic retains the low 32 bits, displayed as signed integers. This is not a complete RISC-V emulator.
+
+Instruction and data memories are separate, with a fixed one-cycle access. Cache misses, exceptions, out-of-order execution, multiple issue, sophisticated prediction and actual gate delays are omitted. Unwritten valid memory locations read as zero. Teaching cycles are not labelled as GHz or nanoseconds.
+
+</details>

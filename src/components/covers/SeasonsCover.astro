@@ -1,0 +1,123 @@
+---
+import {
+  seasonDailyCurve,
+  seasonLightPath,
+  seasonPortrait,
+  seasonSurface,
+  seasonsState,
+} from '../../models/seasons';
+interface Props {
+  color?: string;
+}
+const { color = '#d6bd84' } = Astro.props;
+const state = seasonsState(90, 50);
+const delta = (state.declination * Math.PI) / 180;
+const sun = seasonPortrait({ x: 0, y: Math.sin(delta), z: Math.cos(delta) });
+const latitude = (lat: number) => {
+  let path = '',
+    last = false;
+  for (let hour = 0; hour <= 24; hour += 0.1) {
+    const point = seasonPortrait(seasonSurface(lat, hour));
+    if (point.z >= 0) path += `${last ? 'L' : 'M'}${120 + point.x * 79},${110 - point.y * 79}`;
+    last = point.z >= 0;
+  }
+  return path;
+};
+const shadow = state.solar.shadow!;
+const ground = (east: number, north: number, up = 0) => ({
+  x: 296 + 30 * (0.9 * east - 0.56 * north),
+  y: 158 + 30 * (0.32 * east + 0.47 * north - 0.9 * up),
+});
+const base = ground(0, 0),
+  tip = ground(0, 0, 1),
+  end = ground(shadow.east, shadow.north);
+const solar = ground(state.solar.east * 2.8, state.solar.north * 2.8, state.solar.up * 2.8);
+const curve = seasonDailyCurve(state.latitude, state.declination)
+  .map((p, i) => `${i ? 'L' : 'M'}${224 + (p.hour / 24) * 146},${213 - p.incident * 25}`)
+  .join('');
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  aria-hidden="true"
+>
+  <defs>
+    <radialGradient id="seasons-cover-bg" cx="28%" cy="38%" r="90%"
+      ><stop stop-color="#284951"></stop><stop offset="1" stop-color="#102633"
+      ></stop></radialGradient
+    >
+    <radialGradient id="seasons-cover-day" cx="35%" cy="28%" r="90%"
+      ><stop stop-color="#b4d6be"></stop><stop offset=".6" stop-color="#52898b"></stop><stop
+        offset="1"
+        stop-color="#244954"></stop></radialGradient
+    >
+    <radialGradient id="seasons-cover-night"
+      ><stop stop-color="#2b4b53"></stop><stop offset="1" stop-color="#0e2432"
+      ></stop></radialGradient
+    >
+  </defs>
+  <rect width="400" height="230" fill="url(#seasons-cover-bg)"></rect>
+  <ellipse
+    cx="120"
+    cy="110"
+    rx="98"
+    ry="88"
+    stroke={color}
+    stroke-opacity=".23"
+    transform="rotate(-25 120 110)"></ellipse>
+  <path d="M120 15V205" stroke={color} stroke-opacity=".65"></path>
+  <circle cx="120" cy="110" r="79" fill="url(#seasons-cover-night)"></circle>
+  <path
+    d={seasonLightPath(sun)}
+    transform="translate(120 110) scale(79)"
+    fill="url(#seasons-cover-day)"></path>
+  {
+    [-66.56, -30, 0, 30, 66.56].map((lat) => (
+      <path
+        d={latitude(lat)}
+        stroke="#d8e7d9"
+        stroke-opacity={lat === 0 ? '.55' : '.22'}
+        stroke-width=".7"
+      />
+    ))
+  }
+  <path d={latitude(50)} stroke={color} stroke-width="2"></path>
+  <path d={latitude(-50)} stroke="#95c6d1" stroke-width="1.6"></path>
+  <ellipse
+    cx="296"
+    cy="158"
+    rx="72"
+    ry="39"
+    fill="#416063"
+    fill-opacity=".3"
+    stroke="#b5c7b2"
+    stroke-opacity=".25"></ellipse>
+  {
+    [1, 2].map((r) => (
+      <ellipse cx="296" cy="158" rx={r * 24} ry={r * 13} stroke="#b5c7b2" stroke-opacity=".16" />
+    ))
+  }
+  <path
+    d={`M${base.x},${base.y}L${end.x},${end.y}`}
+    stroke="#091d2b"
+    stroke-width="7"
+    stroke-linecap="round"></path>
+  <path
+    d={`M${base.x},${base.y}L${tip.x},${tip.y}`}
+    stroke={color}
+    stroke-width="5"
+    stroke-linecap="round"></path>
+  <path
+    d={`M${solar.x},${solar.y}L${base.x},${base.y}`}
+    stroke={color}
+    stroke-opacity=".55"
+    stroke-dasharray="3 5"></path>
+  <circle cx={solar.x} cy={solar.y} r="7" fill="#f3d69b"></circle>
+  <circle cx={solar.x} cy={solar.y} r="14" fill="#f3d69b" fill-opacity=".08"></circle>
+  <path d="M224 213H370" stroke="#9db4b2" stroke-opacity=".22"></path>
+  <path d={curve} stroke={color} stroke-width="1.5"></path>
+</svg>

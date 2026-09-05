@@ -1,4 +1,10 @@
 ---
+import SiphonCover from './covers/SiphonCover.astro';
+import BallBearingCover from './covers/BallBearingCover.astro';
+import SeasonsCover from './covers/SeasonsCover.astro';
+import PolarizationCover from './covers/PolarizationCover.astro';
+import CpuPipelineCover from './covers/CpuPipelineCover.astro';
+import ElectricTransformerCover from './covers/ElectricTransformerCover.astro';
 interface Props {
   slug: string;
   color: string;
@@ -845,4 +851,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
       </g>
     )
   }
+  {slug === 'transformer-electric' && <ElectricTransformerCover color={color} />}
+  {slug === 'cpu-pipeline' && <CpuPipelineCover color={color} />}
+  {slug === 'polarization' && <PolarizationCover color={color} />}
+  {slug === 'seasons' && <SeasonsCover color={color} />}
+  {slug === 'ball-bearing' && <BallBearingCover color={color} />}
+  {slug === 'siphon' && <SiphonCover color={color} />}
 </svg>

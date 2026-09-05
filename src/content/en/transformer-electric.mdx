@@ -1,0 +1,67 @@
+<h2 id="understand">The wires never meet. How does a voltage appear?</h2>
+
+Trace each copper conductor from end to end. The primary connects to a source; the secondary connects to a load. Their electrical circuits are separate, but both windings link a changing magnetic flux in the closed iron core.
+
+The useful question is **how quickly the flux changes**. At the crest of the green flux trace, its slope is zero, and the induced secondary voltage is momentarily zero. As the flux crosses zero, its slope is steepest and the voltage magnitude is greatest. Green arrows indicate field direction, not particles carrying charge around the core.
+
+Each turn links the same flux in this model. More turns therefore produce proportionally more induced voltage. The film compares an actual 24-turn primary with 12-, 24- and 48-turn secondaries. Each winding and its two leads follow continuous geometry.
+
+<h2 id="try">Stop where the slope changes</h2>
+
+- Enter exploration and scrub through one cycle. Stop at a flux crest, then at a zero crossing; compare the green slope with the copper-colored voltage trace.
+- Change secondary turns from 12 to 48 while keeping input voltage and frequency fixed. With a fixed load resistance, voltage, current and power all change.
+- Open the secondary circuit. Its terminal voltage remains, but load current becomes zero. A finite magnetizing inductance still draws primary excitation current.
+- Connect the load and enable losses. Watch average input power divide between the resistor, winding copper loss and core loss.
+- Select DC switch-on and move through the millisecond timeline. Current and flux settle while secondary voltage fades towards zero.
+
+The film's equal-power comparison changes load resistance along with turns. Exploration keeps the resistance you selected, so it answers a different question unless you change that resistance yourself.
+
+<h2 id="deeper">Polarity, excitation and loss</h2>
+
+<details>
+<summary>Where did Faraday's minus sign go?</summary>
+
+Positive flux goes up the left core limb and down the right. The windings have opposite handedness, with both upper terminals marked by polarity dots. Terminal voltages are measured from dotted to undotted terminal. Primary current enters its dot; secondary load current leaves its dot.
+
+<div className="formula">e = −N dΦ/dt; v winding = +N dΦ/dt</div>
+
+The loop EMF e and terminal voltage v use different reference directions. For an ideal winding they have equal magnitudes and opposite signs. With winding resistance, the internal induced voltage also differs from the loaded external terminal voltage by a resistive drop.
+
+AC calculations use cosine-reference RMS phasors. The independent model uses volts, amperes, webers, teslas, ohms and watts. Traces display flux in milliwebers and time in milliseconds. The film slows observation without changing the physical frequency relationship.
+
+</details>
+
+<details>
+<summary>Does stepping up voltage create power?</summary>
+
+For a lossless, perfectly coupled ideal transformer, V₂/V₁ = N₂/N₁. Load current produces an opposing magnetomotive force. Additional primary current supplied by the source balances it: N₁I₁,load = N₂I₂. The subscript “load” matters.
+
+Other AC chapters retain a 0.5 H magnetizing inductance. Total primary current then also includes excitation current, so its RMS magnitude cannot simply be substituted into the ideal current-ratio equation. The field stores and returns energy, W = Lₘiₘ²/2. Without loss, cycle-average input real power still equals load power. The film's ideal power comparison takes the infinite-magnetizing-inductance limit and explicitly neglects excitation current.
+
+With 24:12 turns, a 4 V RMS input and a 12 Ω load give an ideal output of 2 V, 1/6 A and 1/3 W. Changing to 24:48 turns and a 192 Ω load gives 8 V, 1/24 A and the same 1/3 W. Holding resistance fixed instead would change the output power.
+
+</details>
+
+<details>
+<summary>What exactly happens when DC is switched on?</summary>
+
+This is a separate transient calculation: an open secondary, a 0.5 H primary magnetizing inductance, a 4 V DC source and 128 Ω total series resistance. That resistance includes an external current limiter; it is not the winding resistance used in the loss chapter.
+
+<div className="formula">τ = L/R = 3.90625 ms; i₁(t) = (4/128)(1 − exp(−t/τ))</div>
+
+Flux is L i₁/N₁. As current builds, the secondary voltage decays with exp(−t/τ). A field that has become static cannot sustain an induced secondary voltage. An actual transformer connected to DC without current limiting can saturate and overheat; this linear, current-limited example does not predict that behavior.
+
+</details>
+
+<details>
+<summary>What do the laminations prevent?</summary>
+
+A changing field can induce local eddy currents in conducting iron. Insulated sheets restrict conducting loops across the stack and reduce eddy-current loss. They do not eliminate magnetic hysteresis or the separate I²R loss in copper windings.
+
+The loss example uses 0.6 Ω primary resistance, 0.0125 Ω per secondary turn, and a 400 Ω core-loss resistance across the excitation branch. These are teaching parameters, not product specifications. The equivalent core resistor combines loss mechanisms into one average-power model; it does not fit a material's hysteresis loop or separately predict the frequency dependence of its losses. Core loss can remain with the secondary open.
+
+Effective core area is 8 × 10⁻⁴ m², with a chosen linear-model boundary of 1.4 T. The available controls stay below it. The 84 sheets have proportions corresponding to approximately 0.35 mm pitch; their insulating gaps are exaggerated for visibility. Leakage flux, parasitic capacitance, skin effect, AC switch-on inrush and temperature rise are omitted. Perfect coupling is a teaching approximation: real windings placed on opposite limbs have leakage flux.
+
+</details>
+
+Technical basis: [MIT 8.02: mutual inductance and transformers](https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/1762da3d55d1798e584c08bddb29235c_summary_w09d3.pdf), [OpenStax: transformers](https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers), [OpenStax: RL circuits](https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits), [TDK: inductance, DC transients and laminations](https://www.tdk.com/en/tech-mag/electronics_primer/2), and [Texas Instruments: power transformer design](https://www.ti.com/lit/ml/slup126/slup126.pdf). The model and artwork are original to this scene.

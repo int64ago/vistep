@@ -9,12 +9,15 @@ import imageio_ffmpeg
 
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--only', help='One topic slug')
+parser.add_argument('--only', nargs='+', help='One or more topic slugs')
 args=parser.parse_args()
 account=os.environ['CLOUDFLARE_ACCOUNT_ID']; token=os.environ['CLOUDFLARE_API_TOKEN']
 url=f'https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/@cf/openai/whisper-large-v3-turbo'
 cache=ROOT/'.voice-cache/asr';cache.mkdir(parents=True,exist_ok=True)
 manifest=json.loads((ROOT/'src/data/audio-manifest.json').read_text())
+selected=set(args.only or manifest)
+unknown=selected-manifest.keys()
+if unknown: raise SystemExit('Unknown topics: '+', '.join(sorted(unknown)))
 ffmpeg=imageio_ffmpeg.get_ffmpeg_exe()
 def normalized(text): return ''.join(re.findall(r'[a-z0-9\u3400-\u9fff]',text.lower()))
 def inspect(job):
@@ -40,7 +43,7 @@ def inspect(job):
     entry={'topic':slug,'locale':locale,'chapter':index+1,'audioSha256':digest,'language':language,'similarity':round(similarity,4),'pass':passed,'expected':cue['text'],'transcript':transcript}
     print(f'{slug}/{locale}/{index+1}: {language} {similarity:.3f} {"PASS" if passed else "REVIEW"}',flush=True)
     return entry
-jobs=[(slug,locale,i,track,cue) for slug,locales in manifest.items() if not args.only or slug==args.only for locale,track in locales.items() for i,cue in enumerate(track['cues'])]
+jobs=[(slug,locale,i,track,cue) for slug,locales in manifest.items() if slug in selected for locale,track in locales.items() for i,cue in enumerate(track['cues'])]
 with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool: results=list(pool.map(inspect,jobs))
 out=ROOT/'artifacts';out.mkdir(exist_ok=True)
 (out/'narration-transcription.json').write_text(json.dumps({'method':'Independent ASR, no language hint or reference prompt. Does not certify vocal delivery.','chapters':results},ensure_ascii=False,indent=2)+'\n')

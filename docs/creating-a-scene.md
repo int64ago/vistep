@@ -57,6 +57,8 @@ Production uses Microsoft Edge online speech through pinned `edge-tts`; see [pro
 
 Listen to both tracks for intelligibility, technical pronunciation, delivery and synchronization. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, without a reference prompt or language hint. It can catch wrong-language output and gibberish; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
 
+For a reviewed batch, both narration tools accept several slugs after `--only`. This shares the bounded worker pool and commits measured metadata after the selected recordings finish. One integration owner runs these tools; parallel scene workers do not write shared audio manifests. Cached unchanged tracks keep their original content hashes.
+
 ## Register the scene
 
 | Integration                          | Required work                                                                          |
@@ -69,6 +71,8 @@ Listen to both tracks for intelligibility, technical pronunciation, delivery and
 | Cover artwork                        | A distinct `TopicCover.astro` rendering; selected objects also use `ObjectCover.astro` |
 
 Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Check that new artwork also fits the social card. The registry tests catch missing files; they cannot judge communication quality.
+
+When parallel production is authorized, assign each worker a distinct scene and file set: its model, renderer, style, bilingual article, brief and cover. Handoffs under `src/data/scene-packets/` contain proposed metadata, translations and narration; they do not register a public route. The integration owner reviews each handoff, resolves shared wording, assigns a number and produces the recordings. The internal packet helper validates without writing by default and refuses conflicting translations or existing recorded topics. Remove consumed handoff packets after integration so the published registries remain the source of truth. Workers must not run global formatting, builds, narration generation or deployments against shared outputs.
 
 ## Review and release
 

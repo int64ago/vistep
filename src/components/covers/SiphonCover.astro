@@ -1,0 +1,59 @@
+---
+interface Props {
+  color?: string;
+}
+const { color = '#70a38b' } = Astro.props;
+const uid = `siphon-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id={`${uid}-water`} x1="0" y1="0" x2="1" y2="1"
+      ><stop stop-color={color} stop-opacity=".52"></stop><stop
+        offset="1"
+        stop-color={color}
+        stop-opacity=".82"></stop></linearGradient
+    >
+    <linearGradient id={`${uid}-glass`}
+      ><stop stop-color="#f6faf0" stop-opacity=".18"></stop><stop
+        offset=".8"
+        stop-color="#f6faf0"
+        stop-opacity=".66"></stop><stop offset="1" stop-color="#dae9d7" stop-opacity=".32"
+      ></stop></linearGradient
+    >
+  </defs>
+  <ellipse cx="112" cy="190" rx="79" ry="6" fill="#5f826c" opacity=".09"></ellipse>
+  <ellipse cx="307" cy="214" rx="45" ry="5" fill="#5f826c" opacity=".09"></ellipse>
+  <path
+    d="M42 91V185H180V91l7-6v94l-7 6M42 91l7-6h138M42 91h138"
+    fill={`url(#${uid}-glass)`}
+    stroke="#9caf9c"
+    stroke-width="1.4"></path>
+  <path d="M45 118H177V182H45Z" fill={`url(#${uid}-water)`}></path>
+  <path d="m45 118 6-5h131l-5 5H45Z" fill={color} fill-opacity=".32" stroke={color}></path>
+  <path
+    d="M272 168v41h68v-41l6-5v40l-6 6M272 168l6-5h68M272 168h68"
+    fill={`url(#${uid}-glass)`}
+    stroke="#9caf9c"
+    stroke-width="1.4"></path>
+  <path d="M275 193h62v13h-62Z" fill={`url(#${uid}-water)`}></path>
+  <path d="m275 193 6-5h62l-6 5h-62Z" fill={color} fill-opacity=".36" stroke={color}></path>
+  <path d="M139 169V101a82 66 0 0 1 164 0v53" stroke="#849e90" stroke-width="12"></path>
+  <path d="M139 169V101a82 66 0 0 1 164 0v53" stroke="#f2f8e9" stroke-width="9"></path>
+  <path d="M139 169V101a82 66 0 0 1 164 0v53" stroke={color} stroke-width="5"></path>
+  <path d="M303 154v36" stroke={color} stroke-width="2.7" opacity=".8"></path>
+  <path d="M221 30v-9m-6 0h12" stroke="#b39a64" stroke-width="3" stroke-linecap="round"></path>
+  <g fill="#f3f8df"
+    ><circle cx="139" cy="142" r="2"></circle><circle cx="148" cy="72" r="2"></circle><circle
+      cx="189"
+      cy="40"
+      r="2"></circle><circle cx="258" cy="42" r="2"></circle><circle cx="300" cy="81" r="2"
+    ></circle><circle cx="303" cy="133" r="2"></circle></g
+  >
+  <path
+    d="M180 118h182m-51 36h51m-4-36v36m-4-33 4-3 4 3m-8 30 4 3 4-3"
+    stroke="#a68e54"
+    stroke-width="1.2"
+    stroke-dasharray="3 4"></path>
+  <circle cx="189" cy="40" r="6" stroke="#b39a64" stroke-width="1.5"></circle>
+</svg>

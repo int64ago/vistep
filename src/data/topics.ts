@@ -14,6 +14,185 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'siphon',
+    name: '虹吸',
+    title: '水为什么能先爬高，再流向低处？',
+    question: '水柱连通，落差才有路可走。',
+    description: '跟随透明弯管里的水，连接预充、水头、压力分布、进气断流与顶部高度的边界。',
+    category: '空间与系统',
+    duration: '3 分钟',
+    color: '#70a38b',
+    tag: '流体 · 水头与连续液柱',
+    related: ['hydraulic-brake', 'refrigerator'],
+    sources: [
+      {
+        title: 'USBR · Small Tubes or Siphons',
+        url: 'https://www.usbr.gov/tsc/techreferences/mands/wmm/chap14_14.html',
+      },
+      {
+        title: 'OpenStax · Bernoulli’s Equation',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation',
+      },
+      {
+        title: 'NIST Chemistry WebBook · Water vapor pressure',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Mask=4&Type=ANTOINE&Plot=on',
+      },
+      {
+        title: 'NIST · Vapor pressure equation for water, 0–100 °C',
+        url: 'https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An3p213_A1b.pdf',
+      },
+    ],
+    number: '26',
+  },
+  {
+    slug: 'ball-bearing',
+    name: '滚珠轴承',
+    title: '一颗滚珠，怎样让转轴轻快地转动？',
+    question: '两处接触，一起滚动。',
+    description: '跟随一颗球穿过承载区，从无滑动几何推导保持架与自转，再放大真实接触中的损耗。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#b59b73',
+    tag: '机械 · 接触与滚动',
+    related: ['bicycle', 'planetary-gears', 'four-stroke-engine'],
+    sources: [
+      {
+        title: 'SKF · Rolling bearings catalogue',
+        url: 'https://www.skf.com/binaries/pub12/Images/0901d196802809de-Rolling-bearings---17000_1-EN_tcm_12-121486.pdf',
+      },
+      {
+        title: 'SKF · Wear and surface fatigue in rolling bearings',
+        url: 'https://evolution.skf.com/wear-and-surface-fatigue-in-rolling-bearings/',
+      },
+      {
+        title: 'SKF · Using a friction model as an engineering tool',
+        url: 'https://evolution.skf.com/en/using-a-friction-model-as-an-engineering-tool-3/',
+      },
+      {
+        title: 'SKF · Grease lubrication mechanisms in rolling bearing systems',
+        url: 'https://evolution.skf.com/grease-lubrication-mechanisms-in-rolling-bearing-systems/',
+      },
+      {
+        title: 'Schaeffler · Technical pocket guide, cages',
+        url: 'https://www.schaeffler.com/remotemedien/media/_shared_media/08_media_library/01_publications/schaeffler_2/catalogue_1/downloads_6/stt_de_en.pdf',
+      },
+    ],
+    number: '25',
+  },
+  {
+    slug: 'seasons',
+    name: '季节',
+    title: '地轴一倾斜，为什么就有了四季？',
+    question: '跟随一根影子，读懂两半球的季节。',
+    description: '从太阳高度、白昼长短与日影出发，连接地轴倾斜、分至点、极昼极夜和零倾角对照。',
+    category: '空间与系统',
+    duration: '3 分钟',
+    color: '#b8bd91',
+    tag: '天文 · 倾角与日照',
+    related: ['moon-phases', 'camera-lens'],
+    sources: [
+      {
+        title: 'NASA Space Place · What Causes the Seasons?',
+        url: 'https://spaceplace.nasa.gov/seasons/en/',
+      },
+      {
+        title: 'NOAA GML · General Solar Position Calculations',
+        url: 'https://gml.noaa.gov/grad/solcalc/solareqns.PDF',
+      },
+      {
+        title: 'NASA Science · Earth Facts',
+        url: 'https://science.nasa.gov/earth/facts/',
+      },
+    ],
+    number: '24',
+  },
+  {
+    slug: 'polarization',
+    name: '偏振',
+    title: '多放一片偏振片，为什么反而透光？',
+    question: '两片变暗，三片透光。',
+    description: '跟随电场穿过三片滤光片，连接偏振方向、马吕斯定律与每一步的能量去向。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#88aaa9',
+    tag: '光学 · 电场与投影',
+    related: ['optical-fiber', 'camera-lens', 'noise'],
+    sources: [
+      {
+        title: 'The Feynman Lectures on Physics · Polarization, §33–4',
+        url: 'https://www.feynmanlectures.caltech.edu/I_33.html',
+      },
+      {
+        title: 'OpenStax · University Physics III: Polarization',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization',
+      },
+    ],
+    number: '23',
+  },
+  {
+    slug: 'cpu-pipeline',
+    name: 'CPU 指令流水线',
+    title: '一条指令没变快，程序为什么更快了？',
+    question: '让不同指令，占据不同工位。',
+    description:
+      '追踪同一份程序里的指令身份，逐拍看清重叠、数据前递、加载停顿和分支清除，再核对最终结果。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#527b70',
+    tag: '计算机 · 时序与依赖',
+    related: ['binary-adder', 'transformer', 'network'],
+    sources: [
+      {
+        title: 'Harris & Harris · RISC-V Microarchitecture, five-stage pipeline',
+        url: 'https://pages.hmc.edu/harris/class/e85/old/fall21/lect22.pdf',
+      },
+      {
+        title: 'Brown CSCI1952y · Building a five-stage pipelined CPU',
+        url: 'https://cs.brown.edu/courses/csci1952y/2024/notes/pipelined_cpu.html',
+      },
+      {
+        title: 'RISC-V International · RV32I Base Integer Instruction Set',
+        url: 'https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html',
+      },
+    ],
+    number: '22',
+  },
+  {
+    slug: 'transformer-electric',
+    name: '变压器',
+    title: '铜线没有相连，电压怎样传过去？',
+    question: '一个磁路，连接两个电路。',
+    description: '跟随闭合铁芯里的变化磁通，理解感应电压、匝数比、负载电流和损耗。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#b17b52',
+    tag: '电磁 · 变化与传递',
+    related: ['noise', 'optical-fiber'],
+    sources: [
+      {
+        title: 'MIT 8.02 · Mutual inductance and transformers',
+        url: 'https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/1762da3d55d1798e584c08bddb29235c_summary_w09d3.pdf',
+      },
+      {
+        title: 'OpenStax · Transformers',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers',
+      },
+      {
+        title: 'OpenStax · RL circuits',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits',
+      },
+      {
+        title: 'TDK · Inductance, DC transients and laminations',
+        url: 'https://www.tdk.com/en/tech-mag/electronics_primer/2',
+      },
+      {
+        title: 'Texas Instruments · Power transformer design',
+        url: 'https://www.ti.com/lit/ml/slup126/slup126.pdf',
+      },
+    ],
+    number: '21',
+  },
+  {
     slug: 'moon-phases',
     name: '月相',
     title: '月亮为什么一会儿弯，一会儿圆？',

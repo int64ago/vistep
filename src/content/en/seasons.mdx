@@ -1,0 +1,55 @@
+<h2 id="understand">Follow one shadow through the year</h2>
+
+Imagine identical one-metre posts at 50° north and 50° south. At the June solstice, the northern post casts a shorter noon shadow. Six months later, the southern post does. Their distance from the Sun is almost the same. Earth's tilted axis gives the two places different Sun heights and different lengths of daylight.
+
+Follow the gold latitude circle down to the observing field. When a beam arrives at a shallow angle, it spreads across a larger horizontal area. Each square metre intercepts less power. A longer day provides more time to accumulate that incoming energy. The daily curve combines both effects in a single visible measurement.
+
+The globe is a geometric observing instrument, not a satellite photograph. Its gold marker and the field's post represent the same location. The blue circle marks the opposite latitude. The close-up camera follows the direction of sunlight to keep the day–night boundary readable; the orbit plate keeps a fixed orientation in space, so its four miniature axes remain parallel.
+
+<h2 id="try">Change one cause at a time</h2>
+
+- Enter exploration, keep the observer at 50° north and solar noon, then advance half a year. Compare the shadow, Sun height and daylight ribbons.
+- Select “Equal-width beam.” Its cross-section stays the same width while its footprint changes. A lower Sun spreads the same beam over more ground.
+- Choose “Midnight at 75° N.” Near the June solstice the Sun is still above the horizon at midnight. Advance half a year to see polar night.
+- Set the axis upright and move around the orbit. Except at the poles' special horizon boundary, daylight lasts twelve hours. At a fixed latitude, noon shadow length and daily geometric input no longer change through the year.
+- Set solar longitude to 0° or 180° and change latitude. At an equinox the Sun's declination is zero. Most latitudes divide the day in half; at either exact pole, our ideal point Sun remains on the horizon all day.
+
+<h2 id="deeper">Inside the observing model</h2>
+
+<details>
+<summary>From a fixed axis to the Sun in a local sky</summary>
+
+We use a circular orbit, a fixed rotation axis and parallel sunlight. Obliquity ε is measured from the normal to the orbital plane and defaults to 23.44°. Solar longitude λ starts at the March equinox: 0°, 90°, 180° and 270° mark the March equinox, June solstice, September equinox and December solstice. This is an orbital angle, not a calendar date.
+
+The dot product of the fixed axis and the direction toward the Sun determines declination δ. Latitude φ and local solar time locate the observer's surface normal. That same geometry determines solar altitude α:
+
+<div className="formula">sin δ = sin ε · sin λ</div>
+<div className="formula">sin α = sin φ sin δ + cos φ cos δ cos H</div>
+
+Here H = 15° × (solar hour − 12). Local solar noon is when the Sun crosses the observer's meridian. It need not match noon on a civil clock. We omit longitude, time-zone and daylight-saving conversions and the equation of time. The altitude relationship is documented in [NOAA's solar-position equations](https://gml.noaa.gov/grad/solcalc/solareqns.PDF). Declination here comes directly from our circular orbit rather than NOAA's calendar-based fit.
+
+</details>
+
+<details>
+<summary>A shadow is the continuation of a light ray</summary>
+
+Write the unit vector toward the Sun in local east, north and up components E, N and U. When the Sun is above the horizon, the shadow tip of our one-metre post lies at (−E/U, −N/U). Its distance from the base is 1 / tan α metres. The line from the post's tip to the shadow tip is parallel to the incoming light. No finite direct-sun shadow is drawn at or below the horizon.
+
+A fixed-width beam spreads across the horizontal ground by a factor of 1 / sin α. The incoming power per horizontal square metre, relative to a surface facing the beam directly, is sin α. Shadows longer than the observing plate stop at its edge; the numerical reading retains their full length. At very low Sun heights, the beam diagram also clips footprints outside its drawing area and labels that truncation.
+
+For an ordinary sunrise and sunset, cos H₀ = −tan φ tan δ, and geometric daylight lasts 24H₀/π hours. The model handles polar day and night by checking the day's maximum and minimum Sun heights before evaluating an inverse cosine. Its geometric horizon is the centre of a point Sun at altitude zero. We deliberately omit atmospheric refraction and the Sun's angular radius, including NOAA's usual 90.833° zenith correction for observed sunrise and sunset.
+
+</details>
+
+<details>
+<summary>Incoming geometry is not a temperature forecast</summary>
+
+Let S₀ be the incoming power per square metre on a plane facing the Sun. The horizontal-plane input in this model is S₀ × max(sin α, 0). Integrate over one day and divide by S₀ to obtain the displayed Q / S₀ in hours. This is the equivalent duration of perpendicular illumination from the same beam.
+
+<div className="formula">Q / S₀ = ∫ max(sin α, 0) dt</div>
+
+The gold and blue annual curves give this daily integral for opposite latitudes. The pale dashed line is the zero-tilt comparison at the same latitude. We do not calculate absorption, scattering, clouds, reflectivity, heat storage or energy transport. The curve is neither surface temperature nor weather. A solstice's geometric maximum does not require the hottest day to fall on that date.
+
+Earth's real orbit is slightly elliptical, and changing distance modulates incoming sunlight. We hold the radius at 1 AU to isolate the role of tilt. This teaching choice does not claim that the real orbit is a perfect circle. [NASA's explanation of the seasons](https://spaceplace.nasa.gov/seasons/en/) connects the tilted axis to the opposing seasonal cycles of the two hemispheres.
+
+</details>

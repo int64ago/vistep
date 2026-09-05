@@ -1,0 +1,55 @@
+<h2 id="understand">One ball, two contacts</h2>
+
+The outer ring sits in a fixed housing. The inner ring turns with the shaft. Between them, the balls provide a path for radial load to reach the housing and its feet. Gold identifies the ball we follow; its dimensions match every other ball.
+
+Start with ideal rolling. At the fixed outer race, the ball's instantaneous contact point is at rest. Its center is still moving: the ball's spin cancels that motion at this side. At the inner race, translation and spin add together, matching the moving race surface.
+
+Neither spinning in place nor simply orbiting the shaft will satisfy both contacts. **The ball must orbit and spin in a coordinated way.** The cage separates and guides the balls while following their centers around the shaft. The main radial load path runs through the balls and races, rather than through the cage.
+
+This illustration uses a simplified ball-guided crown cage. Its concave spherical fingers have clearance around each ball and connect to a continuous rear ring. They avoid the radial race contacts. The inspection window removes only part of the front material; the rear raceway and the shaft and housing connections remain in place.
+
+<h2 id="try">Move the marked ball through the bearing</h2>
+
+Choose exploration, then drag the inner-ring angle. Stop the same gold ball underneath the shaft, at the side, or above it. Reverse the direction. Ball positions, painted marks and cage pockets are reconstructed from the same input angle.
+
+In the cage view, compare the two speed ratios. The cage turns at about 0.403 times the inner-ring speed. The ball spins at about −2.074 times that speed, measured from the fixed housing. The minus sign means the opposite direction. Orbital angular speed and surface linear speed are different quantities.
+
+The sliding comparison keeps the same moving-race speed and the same ball-center speed. It then imposes an artificial constraint on the second ball: no spin. Both contacts acquire a surface-speed mismatch. This isolates the role of spin; it is not a performance comparison with a particular plain bearing and does not calculate a friction coefficient.
+
+In the load-zone view, change the applied load direction. The bright region follows that direction while individual balls pass through it. Remove the illustrative load and the glow disappears. Brightness represents an assumed relative weighting, not force in newtons or a solved load distribution.
+
+<h2 id="deeper">Deriving the cage motion and ball spin</h2>
+
+<details>
+<summary>Open: two no-slip constraints in a fixed frame</summary>
+
+Let `R` be the ball-center pitch radius, `a` the ball radius and `ri = R − a` the inner contact radius. The inner-ring angular velocity is `ωi`. The cage angular velocity is `ωc`, and `ωb` is the ball's spin relative to the stationary housing. Take the inner-ring direction as positive.
+
+<div className="formula">
+  Outer contact: ωc R + ωb a = 0
+  <br />
+  Inner contact: ωc R − ωb a = ωi (R − a)
+  <br />
+  ωc / ωi = (R − a) / (2R)
+  <br />
+  ωb / ωi = −(R − a) / (2a)
+</div>
+
+Adding the constraints gives a ball-center speed equal to half the inner-race surface speed. Substitution gives the opposing spin. Our pitch radius is 1.75 and ball radius 0.34, in arbitrary illustration units. These dimensions do not identify a commercial bearing.
+
+From a coordinate system rotating with the cage, the spin is instead `ωb,relative = ωb − ωc`. A manufacturer's rolling-element frequency stated in that rotating frame is not the same as the ball rotation seen by a stationary camera.
+
+</details>
+
+<details>
+<summary>Open: where the ideal model ends</summary>
+
+The load glow uses `max(0, cos θ)^(3/2)`, where `θ` is the angle between a ball's position and the imposed load direction. This is a teaching assumption for entering and leaving a loaded region. It does not solve for elastic displacement, operating clearance or force equilibrium, and is unsuitable for design calculations.
+
+The overall bearing motion assumes rigid balls, zero radial clearance, zero contact angle and ideal no-slip contacts. The magnified contact view deliberately changes to a qualitative explanation: real loading produces a finite contact area, with lubricant films, local slip and material behavior affecting the contact. Deformation, contact size and film thickness are exaggerated and have no quantitative relationship to the illustrative load setting.
+
+Rolling reduces sustained macroscopic sliding, but does not eliminate losses. Local slip can occur inside a finite contact patch. Lubricant shear and churning consume energy. Contact seals, when fitted, add sliding friction at their lips. Perfectly elastic deformation alone does not imply energy dissipation. The main assembly is open; the seal detail in chapter seven illustrates an optional additional loss source. No efficiency, temperature rise, fatigue life or load rating is predicted.
+
+</details>
+
+References: [SKF rolling bearings catalogue](https://www.skf.com/binaries/pub12/Images/0901d196802809de-Rolling-bearings---17000_1-EN_tcm_12-121486.pdf), [SKF on sliding and wear in rolling bearings](https://evolution.skf.com/wear-and-surface-fatigue-in-rolling-bearings/), [SKF's friction-model explanation](https://evolution.skf.com/en/using-a-friction-model-as-an-engineering-tool-3/), and [SKF on grease lubrication mechanisms](https://evolution.skf.com/grease-lubrication-mechanisms-in-rolling-bearing-systems/). The kinematic equations above are derived directly from the stated no-slip constraints.

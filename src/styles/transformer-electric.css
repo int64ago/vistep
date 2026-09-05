@@ -1,0 +1,494 @@
+.electric-transformer {
+  --et-ink: #30483e;
+  --et-muted: #617069;
+  --et-flux: #287d6f;
+  --et-copper: #a86c3f;
+  color: var(--et-ink);
+  background: radial-gradient(ellipse at 50% 25%, #f8f3e8 0, #f0eee5 62%, #e9eee7 100%);
+  border-radius: 22px;
+  overflow: hidden;
+  min-width: 0;
+  font-size: 16px;
+}
+.electric-transformer * {
+  box-sizing: border-box;
+}
+.electric-transformer .electric-kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 28px 0;
+  color: var(--et-muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.electric-object {
+  height: 350px;
+  position: relative;
+  min-width: 0;
+}
+.electric-transformer[data-side='true'] .electric-visuals {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: start;
+}
+.electric-transformer[data-side='true'] .electric-object {
+  grid-column: 1;
+  grid-row: 1;
+}
+.electric-transformer[data-side='true'] .electric-terminals {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 0 20px 24px 28px;
+  gap: 20px;
+}
+.electric-transformer[data-side='true'] .electric-terminals strong {
+  font-size: 25px;
+}
+.electric-transformer[data-side='true'] .electric-traces {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding: 26px 24px 20px 16px;
+  min-width: 0;
+}
+.electric-transformer[data-side='true'] .electric-relation {
+  align-items: start;
+  flex-direction: column;
+  gap: 8px;
+}
+.electric-transformer[data-side='true'] .electric-relation > span:last-child {
+  text-align: left;
+}
+.electric-transformer .electric-transformer-studio {
+  height: 100%;
+  min-height: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.electric-transformer-studio .studio-canvas,
+.electric-transformer-studio .studio-fallback {
+  height: 100%;
+  min-height: 0;
+}
+.electric-transformer-studio .studio-fallback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.electric-transformer-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+.electric-terminals {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 30px;
+  padding: 0 40px 24px;
+}
+.electric-terminals > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.electric-terminals > div:last-child {
+  text-align: right;
+}
+.electric-terminals span,
+.electric-terminals small {
+  color: var(--et-muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.electric-terminals strong {
+  font-size: clamp(23px, 3vw, 31px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+.electric-traces {
+  padding: 6px 24px 18px;
+}
+.electric-trace {
+  padding: 12px 0 10px;
+  border-top: 1px solid #72867829;
+}
+.electric-trace-heading,
+.electric-axis {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.electric-trace-heading {
+  padding: 0 12px;
+  color: var(--et-flux);
+}
+.electric-trace-1 .electric-trace-heading {
+  color: var(--et-copper);
+}
+.electric-trace-heading strong {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-size: 20px;
+  white-space: nowrap;
+}
+.electric-trace-heading small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.electric-trace svg {
+  display: block;
+  width: 100%;
+  height: 101px;
+  overflow: visible;
+}
+.electric-grid {
+  stroke: #68827520;
+  stroke-width: 1;
+}
+.electric-zero {
+  stroke: #60766c50;
+  stroke-width: 1;
+}
+.electric-wave {
+  stroke: var(--et-flux);
+  stroke-width: 2.7;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.electric-trace-1 .electric-wave {
+  stroke: var(--et-copper);
+}
+.electric-cursor {
+  stroke: #516458;
+  stroke-dasharray: 3 5;
+  stroke-width: 1;
+}
+.electric-trace-dot {
+  fill: var(--et-flux);
+  stroke: #f7f4e9;
+  stroke-width: 2;
+}
+.electric-trace-1 .electric-trace-dot {
+  fill: var(--et-copper);
+}
+.electric-axis {
+  padding: 0 12px;
+  color: var(--et-muted);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.electric-relation {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 12px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.electric-relation > span:first-child {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  white-space: nowrap;
+}
+.electric-relation > span:last-child {
+  text-align: right;
+}
+.electric-power {
+  padding: 18px 36px 22px;
+  border-top: 1px solid #72867829;
+}
+.electric-power-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.electric-power-head strong {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.electric-power-ribbon {
+  display: flex;
+  gap: 3px;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #82917b20;
+}
+.electric-power-ribbon i {
+  flex-basis: 0;
+  background: #4c8a74;
+}
+.electric-power-ribbon i:nth-child(2) {
+  background: #b47948;
+}
+.electric-power-ribbon i:nth-child(3) {
+  background: #7d7870;
+}
+.electric-power-legend {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 22px;
+  row-gap: 9px;
+  margin-top: 14px;
+}
+.electric-power-legend span {
+  font-size: 16px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.electric-power-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #4c8a74;
+}
+.electric-power-legend span:nth-child(2) i {
+  background: #b47948;
+}
+.electric-power-legend span:nth-child(3) i {
+  background: #7d7870;
+}
+.electric-transformer .electric-power p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--et-muted);
+  margin: 14px 0 0;
+}
+.electric-explore {
+  padding: 24px 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  border-top: 1px solid #72867829;
+}
+.electric-explore fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.electric-explore legend {
+  padding: 0 0 10px;
+  font-size: 16px;
+}
+.electric-segments {
+  display: flex;
+  gap: 6px;
+}
+.electric-transformer button {
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid #788d772e;
+  border-radius: 13px;
+  font: inherit;
+  color: var(--et-ink);
+  background: #ffffff70;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+.electric-segments button {
+  flex: 1;
+}
+.electric-transformer button:hover {
+  background: #ffffffc2;
+}
+.electric-transformer button[aria-pressed='true'] {
+  background: #d8e4d8;
+  box-shadow: inset 0 0 0 1px #59785b40;
+}
+.electric-transformer :focus-visible {
+  outline: 2px solid #39785b;
+  outline-offset: 4px;
+}
+.electric-range {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.electric-range > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+}
+.electric-range output {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.electric-range input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  accent-color: #54816c;
+  cursor: pointer;
+}
+.electric-options {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.electric-explore .electric-reset {
+  align-self: end;
+  justify-self: start;
+}
+.electric-notes {
+  padding: 0 36px 20px;
+}
+.electric-transformer .electric-notes summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 16px;
+}
+.electric-transformer .electric-notes p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--et-muted);
+  margin: 10px 0;
+}
+.electric-equations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  padding: 12px 0;
+  font-size: 17px;
+}
+@media (max-width: 640px) {
+  .electric-transformer {
+    border-radius: 17px;
+  }
+  .electric-transformer .electric-kicker {
+    padding: 19px 16px 0;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .electric-object {
+    height: 312px;
+  }
+  .electric-terminals {
+    padding: 0 17px 20px;
+    gap: 15px;
+  }
+  .electric-terminals > div:last-child {
+    text-align: left;
+  }
+  .electric-terminals span,
+  .electric-terminals small {
+    line-height: 1.6;
+  }
+  .electric-terminals strong {
+    font-size: 22px;
+    white-space: nowrap;
+  }
+  .electric-traces {
+    padding: 0 12px 14px;
+  }
+  .electric-trace-heading,
+  .electric-axis {
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+  .electric-trace-heading {
+    flex-wrap: wrap;
+    gap: 2px 9px;
+  }
+  .electric-trace-heading strong {
+    font-size: 19px;
+  }
+  .electric-trace svg {
+    height: 72px;
+  }
+  .electric-relation {
+    padding: 12px 4px 0;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .electric-relation > span:last-child {
+    text-align: left;
+  }
+  .electric-power {
+    padding: 18px 17px;
+  }
+  .electric-power-head {
+    gap: 7px;
+  }
+  .electric-power-legend {
+    display: grid;
+    gap: 8px;
+  }
+  .electric-explore {
+    padding: 22px 17px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .electric-notes {
+    padding: 0 17px 18px;
+  }
+}
+@media (max-width: 360px) {
+  .electric-object {
+    height: 284px;
+  }
+  .electric-terminals {
+    gap: 12px;
+  }
+  .electric-terminals strong {
+    font-size: 19px;
+  }
+}
+@media (max-width: 640px) {
+  .electric-transformer[data-watch='true'] {
+    min-height: 880px;
+    display: flex;
+    flex-direction: column;
+  }
+  .electric-transformer[data-watch='true'] .electric-notes {
+    margin-top: auto;
+  }
+  .electric-transformer[data-watch='true'] .electric-object {
+    height: 236px;
+  }
+  .electric-transformer[data-watch='true'] .electric-terminals {
+    padding: 0 16px 14px;
+    gap: 10px;
+  }
+  .electric-transformer[data-watch='true'] .electric-terminals span,
+  .electric-transformer[data-watch='true'] .electric-terminals small {
+    line-height: 1.45;
+  }
+  .electric-transformer[data-watch='true'] .electric-trace {
+    padding: 8px 0;
+  }
+  .electric-transformer[data-watch='true'] .electric-trace svg {
+    height: 60px;
+  }
+  .electric-transformer[data-watch='true'] .electric-relation {
+    padding-top: 8px;
+  }
+  .electric-transformer[data-watch='true'] .electric-power p {
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .electric-transformer button {
+    transition: none;
+  }
+}

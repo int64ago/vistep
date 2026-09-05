@@ -1,0 +1,61 @@
+<h2 id="understand">Polarization describes the electric field</h2>
+
+Light travels forward while its electric field oscillates across the direction of travel. The **propagation direction** tells us where the light is going. Its **polarization** describes the electric field. The drawn wave is a field diagram, not a winding route taken by light.
+
+In linearly polarized light, the electric field oscillates along a fixed axis. Unpolarized light has no persistent preferred transverse direction: averaged over time, any pair of perpendicular transverse components has equal intensity. The many lines in the circular view represent time statistics. They are neither twelve simultaneous electric fields nor the regular rotation of circular polarization.
+
+An ideal linear polarizer keeps the component of the electric field along its **transmission axis**. This establishes a polarization direction while removing energy. For unpolarized input, the first ideal polarizer transmits half the average intensity, whichever way its axis points.
+
+<h2 id="try">Make two filters dark, then add a third</h2>
+
+- Open exploration and choose “Cross two filters.” With A at 0° and B at 90°, the output is zero.
+- Choose “Insert a 45° middle filter.” The outer filters stay crossed, but 12.5% of the original intensity now reaches the screen.
+- Select M and turn the dial through 0°, 45°, and 90°. Transmission peaks at 45° and vanishes at either endpoint. Arrow keys change the angle by 1°; hold Shift for 10° steps.
+- Remove M and B, leaving A alone. Unpolarized input always gives 50%. Switch to “Linear polarization · 0°” and rotate A: transmission now varies. The half-intensity rule depends on the input being unpolarized.
+
+The dial sets a transmission axis. It does not represent a physical slit cut in a filter. Turning an axis through 180° restores the same physical setting.
+
+<h2 id="deeper">How can another filter bring light back?</h2>
+
+<details>
+<summary>From a field projection to Malus’s law</summary>
+
+For linearly polarized input, the transmitted field component is `Eout = Ein cos θ`. Average intensity in the same medium is proportional to the square of the field amplitude, giving:
+
+<div className="formula">Iout = Iin cos²θ</div>
+
+The angle is between the arriving electric field and the current filter's axis. At every stage, use the intensity and polarization **arriving at that stage**. Two crossed axes differ by 90°, leaving no transmitted projection at the second filter.
+
+Unpolarized input cannot be assigned one fixed incident angle. Its time average gives `⟨cos²θ⟩ = 1/2`, explaining the first filter's half transmission. Subsequent filters act on an established linear polarization.
+
+</details>
+
+<details>
+<summary>Account for all the energy</summary>
+
+With the middle filter at 45°, the first filter leaves 50% of the input. The middle filter projects this field onto its own axis, leaving 25% of the input intensity with a new polarization direction. That direction is only 45° from the final axis, so half of the remaining intensity passes: 12.5% of the original.
+
+<div className="formula">I / I₀ = ½ × cos²45° × cos²45° = ⅛</div>
+
+The increase from zero does not create energy. The middle filter changes the polarization arriving at the final filter. Follow the three-filter path and intensity decreases at every stage. In this ideal absorbing model, A absorbs 50% of the original energy, M absorbs 25%, and B absorbs 12.5%. The remaining 12.5% is transmitted; the account still totals 100%.
+
+Keeping the outer axes crossed and setting the middle axis to `β` gives:
+
+<div className="formula">I / I₀ = ½ cos²β sin²β = ⅛ sin²(2β)</div>
+
+This determines the final chapter's curve. The result is specific to three ideal linear polarizers in this arrangement.
+
+</details>
+
+<details>
+<summary>What the installation simplifies</summary>
+
+The independent model represents average intensity with a two-dimensional electric-field coherency matrix. Unpolarized input is `C = (I₀/2)·identity`. Each transmission axis `u` defines a projection `P = uuᵀ`, giving `Cout = P Cin P`. The field drawing, transmitted intensities, and absorption budget use the same projections.
+
+The unpolarized waveform is an illustrative deterministic signal with different frequencies in two perpendicular directions. Over a common period, the components have equal mean squares and zero cross-correlation. This is not a microscopic random-source simulation. After each filter, the drawing uses the projected version of that same signal. Fixed arrows in the circular view represent RMS amplitudes. Screen brightness uses a square-root display mapping to keep dim light visible; the numbers and energy bars show linear intensity fractions.
+
+Incidence is normal, the surrounding medium is uniform, and each filter covers the whole beam. Reflection, diffraction, surface scattering, leakage, and additional losses in real filters are omitted. The magnetic field is omitted and both oscillation and propagation are greatly slowed. Chapter changes establish ideal component configurations; the middle filter appears parallel to the first, then rotates. The animation does not simulate partial coverage while sliding a filter across the beam. The phone view turns the optical train down the screen; its electric field is still transverse to propagation.
+
+References: [The Feynman Lectures I, 33–4: Polarizers](https://www.feynmanlectures.caltech.edu/I_33.html) and [OpenStax University Physics III, 1.7: Polarization](https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization).
+
+</details>
