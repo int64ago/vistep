@@ -35,7 +35,6 @@
 
 在线版本与资源核对结果见部署记录。正式 Worker 和原域名绑定保持原配置。
 
-
 ## 线上核对
 
 最终预览：<https://vistep-preview.int64ago.workers.dev/>，英文入口：<https://vistep-preview.int64ago.workers.dev/en/>。

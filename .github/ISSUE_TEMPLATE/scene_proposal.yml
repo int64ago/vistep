@@ -1,0 +1,23 @@
+name: Scene proposal / 新场景
+description: Propose a question and a visual way to explain it.
+title: '[Scene] '
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: What should the reader understand? / 解释哪个问题？
+      description: One clear question and the intuition it should change.
+    validations:
+      required: true
+  - type: textarea
+    id: visual
+    attributes:
+      label: What would we follow and observe? / 追踪什么，看到什么变化？
+      description: Describe the decisive change; a layout or list of sliders is not necessary.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources and teaching boundaries / 资料与教学边界
+      description: Prefer papers, textbooks, standards or manufacturer documentation.

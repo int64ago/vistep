@@ -1,20 +1,10 @@
 import { t } from '../i18n';
 import { Component, lazy, Suspense, type ReactNode } from 'react';
 import Showcase from './lab/Showcase';
-const experiments = {
-  pendulum: lazy(() => import('./experiments/Pendulum')),
-  printer: lazy(() => import('./experiments/Printer')),
-  jpeg: lazy(() => import('./experiments/Jpeg')),
-  bicycle: lazy(() => import('./experiments/Bicycle')),
-  refrigerator: lazy(() => import('./experiments/Refrigerator')),
-  noise: lazy(() => import('./experiments/Noise')),
-  gps: lazy(() => import('./experiments/Gps')),
-  network: lazy(() => import('./experiments/Network')),
-  transformer: lazy(() => import('./experiments/Transformer')),
-  dimensions: lazy(() => import('./experiments/Dimensions')),
-  elevator: lazy(() => import('./experiments/Elevator')),
-  traffic: lazy(() => import('./experiments/Traffic')),
-};
+import { experimentLoaders, type ExperimentSlug } from '../data/experiments';
+const experiments = Object.fromEntries(
+  Object.entries(experimentLoaders).map(([slug, load]) => [slug, lazy(load)]),
+);
 class Boundary extends Component<
   {
     children: ReactNode;
@@ -41,7 +31,7 @@ class Boundary extends Component<
     );
   }
 }
-export default function Experiment({ slug }: { slug: keyof typeof experiments }) {
+export default function Experiment({ slug }: { slug: ExperimentSlug }) {
   const Scene = experiments[slug];
   return (
     <Boundary>

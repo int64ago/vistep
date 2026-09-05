@@ -11,7 +11,15 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
     "deploy": "pnpm build && wrangler deploy",
-    "deploy:preview": "pnpm build && wrangler deploy --env preview"
+    "deploy:preview": "pnpm build:preview && wrangler deploy --env preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "scene:new": "node scripts/new-scene.mjs",
+    "scene:check": "vitest run src/data src/i18n",
+    "audit:build": "node scripts/audit-build.mjs",
+    "build:preview": "node scripts/build-preview.mjs && node scripts/audit-build.mjs dist-preview --preview",
+    "verify": "pnpm format:check && pnpm audit:docs && pnpm check && pnpm test && pnpm build && pnpm audit:build",
+    "audit:docs": "node scripts/audit-docs.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "8.0.0",
@@ -34,5 +42,18 @@
     "typescript": "^5.9.3",
     "vitest": "5.0.0",
     "wrangler": "4.129.0"
+  },
+  "description": "Bilingual visual explanations of everyday mechanisms, with browser-based experiments and synchronized narration.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/int64ago/vistep.git"
+  },
+  "homepage": "https://vistep.ai",
+  "bugs": {
+    "url": "https://github.com/int64ago/vistep/issues"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
