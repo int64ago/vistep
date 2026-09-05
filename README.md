@@ -23,6 +23,14 @@
 
 名字来自 **Visualize Every Step with AI → vis step ai → 相邻两个 s 合并 → vistep ai → vistep.ai**。首页以紧凑的文字动画保留这一演变，支持重播与减少动态效果。
 
+## 新增场景
+
+直接使用 [vistep-scene 技能](.agents/skills/vistep-scene/SKILL.md)，告诉它想解释什么：
+
+> 使用 $vistep-scene，新增一个“感应电机为什么会转”的演示。
+
+技能负责资料、分镜、独立视觉设计、模型、实现、中英文讲解与配音，以及完整验收。只需描述选题和偏好，制作工具由技能内部调用。
+
 ## 本地运行
 
 需要 Node.js 22.12+（推荐 Node 24，见 `.nvmrc`）与 `pnpm@11.25.0`。无需 Cloudflare 登录。
@@ -38,7 +46,6 @@ pnpm dev
 打开 [localhost:4321](http://127.0.0.1:4321/)。音轨已提交，日常安装和构建不生成语音、不调用供应商服务。
 
 ```sh
-pnpm scene:new induction-motor --medium three  # 创建未发布草稿
 pnpm scene:check                              # 专题、双语和配音登记
 pnpm verify                                  # 格式、类型、测试、生产构建与产物审计
 pnpm build:preview                           # 独立预览构建与 noindex 检查
