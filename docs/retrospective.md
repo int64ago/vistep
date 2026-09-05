@@ -42,3 +42,7 @@ Use separate `dist/` and `dist-preview/` outputs. Preview permits crawling so se
 Documentation should explain the product and its contribution contract. Put historical implementation details in dated review records. Use authentic images and badges with verifiable meaning; do not imply adoption, performance or accessibility certification from decorative labels.
 
 The historical changes are traceable through [`045f2ce`](https://github.com/int64ago/vistep/commit/045f2ce), [`ade846b`](https://github.com/int64ago/vistep/commit/ade846b), [`8b2cdc1`](https://github.com/int64ago/vistep/commit/8b2cdc1), [`d571587`](https://github.com/int64ago/vistep/commit/d571587) and [`edc3f3b`](https://github.com/int64ago/vistep/commit/edc3f3b). Those commits are historical evidence, not certification of current quality. See the [production guide](creating-a-scene.md) for the current workflow.
+
+## Exported artwork needs its own font review
+
+Browser text looked correct while rasterized documentation artwork showed missing arrows and angle symbols. The export pipeline intentionally excludes system fonts, so its bundled font coverage must include every symbol it renders. Retain the font licenses, inspect the exported PNGs themselves and check both letters and mathematical notation. A successful image build does not establish glyph coverage.

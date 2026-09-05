@@ -33,6 +33,8 @@ The narrow sweep opened all twelve Chinese experiments at 320 px and verified th
 
 Chinese printer playback ran continuously from 0 to 181 seconds. Its audio and visual clocks ended together. Switching to English loaded the English track. Manual English selection survived a return to the neutral root; an explicit `?lang=zh` selected Chinese. The 320 px homepage retained its complete brand phrase without horizontal overflow. A 2D spatial view released its canvas and responded to an arrow-key angle change from 25 to 26 degrees.
 
+All 146 chapter buttons were subsequently exercised in alternating forward/backward order through the visible player, pausing after each jump. Every requested chapter matched the displayed chapter, with no browser warnings or errors. English JPEG playback reached 201.5 seconds continuously and stopped with matching media and visual clocks. After replay, moving the entire film out of view paused its audio at 15.19 seconds; returning to the film resumed from that position.
+
 ## Scope of evidence
 
 A viewport override does not certify physical-device performance. Automated transcription is separate from a person listening to both full recordings. Sampled frames are separate from continuously watching a full film. Reduced-motion preferences, unavailable WebGL, blocked audio and storage restrictions must remain explicit review cases. Do not replace unperformed checks with a general claim that all visual or audio quality is verified.
