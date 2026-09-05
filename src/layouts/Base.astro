@@ -5,6 +5,7 @@ import '../styles/interaction.css';
 import '../styles/showcase.css';
 import '../styles/language.css';
 import { translate, localPath, type Locale } from '../i18n';
+import { topics } from '../data/topics';
 interface Props {
   title?: string;
   description?: string;
@@ -14,8 +15,7 @@ const { locale = 'zh' } = Astro.props;
 const tr = (s: string) => translate(s, locale);
 const title = Astro.props.title ?? tr('vistep.ai — 让每一步原理变得可见');
 const description =
-  Astro.props.description ??
-  tr('12 个可以亲手探索的原理。从自行车到大模型，用可视化看懂生活和工作背后的每一步。');
+  Astro.props.description ?? tr('从自行车到大模型，用可视化看懂生活和工作背后的每一步。');
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const home = localPath('/', locale);
 const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
@@ -74,7 +74,9 @@ const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
         >vistep<span class="wordmark-ai">.ai</span></a
       >
       <nav aria-label={tr('主导航')}>
-        <a href={`${home}#collection`}>{tr('全部探索')} <span class="nav-count">12</span></a>
+        <a href={`${home}#collection`}
+          >{tr('全部探索')} <span class="nav-count">{topics.length}</span></a
+        >
         <a href={`${home}#name`} class="name-link"
           >{tr('关于 vistep')} <span aria-hidden="true">↗</span></a
         >

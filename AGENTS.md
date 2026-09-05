@@ -16,3 +16,7 @@
 - 科学计算保留独立模型。教学简化直接说明，引用可信技术资料。生成不更新权重，不将 JPEG 系数估算当作真实文件大小。
 
 技术：Astro + React + TypeScript + MDX，pnpm，Cloudflare Workers Static Assets。专题在 `src/data/topics.ts` 登记，内容在 `src/content/`，模型在 `src/models/`，交互在 `src/components/experiments/`。程序化实体模型在 `src/components/three/`；页面视觉样式在 `src/styles/editorial.css`。
+
+新增或大幅修改专题时，使用仓库技能 `.agents/skills/vistep-scene/SKILL.md`，制作步骤见 `docs/creating-a-scene.md`，历史反馈与根因见 `docs/retrospective.md`。`pnpm scene:new <slug> --medium <three|svg|canvas|audio|hybrid>` 生成未发布草稿；`pnpm scene:check` 检查登记、双语和声音契约。复用流程和基础设施，每篇保留独立表达形式。
+
+交付前执行与改动对应的检查；完整场景执行 `pnpm verify` 和 `pnpm build:preview`。视觉停帧、完整观看、配音试听、真机性能与自动测试分别记录，不得把一类证据当成另一类。生产和预览资产分别在 `dist/`、`dist-preview/`，后者带 noindex；不要改变正式域名或仓库可见性来完成普通内容贡献。

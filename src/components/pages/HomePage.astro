@@ -43,7 +43,9 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
     <section class="discovery" id="collection" aria-labelledby="collection-title">
       <div class="section-rule">
         <div>
-          <span class="section-index">01 — 12</span><h2 id="collection-title">
+          <span class="section-index">01 — {String(topics.length).padStart(2, '0')}</span><h2
+            id="collection-title"
+          >
             {tr('值得打开的世界')}
           </h2>
         </div><p>{tr('先跟着看懂，再自由探索。')}</p>

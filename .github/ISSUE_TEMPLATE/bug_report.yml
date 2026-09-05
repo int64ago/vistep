@@ -1,0 +1,28 @@
+name: Bug / 体验问题
+description: Report a reproducible issue with an existing scene or the site.
+title: '[Bug] '
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL and language / 页面与语言
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps, expected behavior and actual behavior / 复现与预期
+      description: Include playback time or chapter when relevant. Screenshots or short recordings help.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, OS and device / 浏览器与设备
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Other evidence / 补充证据
+      description: Do not include tokens, account data or other private information.

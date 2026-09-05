@@ -1,0 +1,22 @@
+name: Scientific or language correction / 原理与语言纠错
+description: Improve a claim, model, translation or spoken explanation.
+title: '[Correction] '
+body:
+  - type: input
+    id: location
+    attributes:
+      label: URL, language and chapter / 页面、语言、章节
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Current claim and proposed correction / 当前内容与修正建议
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Reasoning or primary source / 理由或一手资料
+    validations:
+      required: true

@@ -9,12 +9,12 @@
 ## 发布
 
 1. `pnpm install --frozen-lockfile`
-2. `pnpm check`，需要调整模型时执行 `pnpm test`
+2. `pnpm verify`（格式、类型、模型与发布契约、构建、产物审计）
 3. `pnpm deploy:preview`
-4. 在预览检查最终视觉与核心交互后，执行 `pnpm deploy`
-5. 检查正式域名、深链接与不存在路径的 404 行为，并记录 Wrangler 输出的版本 ID。
+4. 在预览检查最终视觉、核心交互和中英文实播；正式发布属于独立发布操作，确认本次任务包含该范围后执行 `pnpm deploy`
+5. 检查正式域名、深链接与不存在路径的 404 行为，并记录 Wrangler 输出的版本 ID。再按 [Search Console 手册](search-console.md) 检查和提交正式 sitemap。
 
-`wrangler.jsonc` 显式记录两个生产 custom domain；预览环境的 `routes` 为空。静态资产由 Workers Static Assets 托管，没有自定义运行时后端。HTML 强制尾斜杠，未知路径返回构建的 404 页。
+`wrangler.jsonc` 显式记录两个生产 custom domain；预览环境的 `routes` 为空。生产资产从 `dist/` 发布；`pnpm build:preview` 单独构建 `dist-preview/`，所有预览路径通过响应头设置 `noindex, nofollow`，预览允许爬虫读取该指令。两个目录不能混用。静态资产由 Workers Static Assets 托管，没有自定义运行时后端。HTML 强制尾斜杠，未知路径返回构建的 404 页。
 
 ## 回滚
 
@@ -34,4 +34,14 @@ pnpm exec wrangler rollback d31022c8-a4ad-446c-898e-19a7298503e1 --name vistep
 
 ```sh
 pnpm exec wrangler rollback e856b90b-558a-461a-8541-9312d068da06 --name vistep-preview
+```
+
+## 其他维护者自行部署
+
+Fork 不会继承 Cloudflare 登录或域名权限。部署到自己的账户时，修改 `astro.config.mjs` 的 site、`scripts/audit-build.mjs` 的 origin、`public/robots.txt` 的 sitemap 和 `wrangler.jsonc` 的服务名、域名配置，再生成产物。先用独立预览 Worker 验证。不要运行原仓库的生产配置去占用并不属于自己的域名。CI 不自动部署，也不注入 Cloudflare 或 Google 凭据。
+
+2026-09-05 搜索与维护配套：`vistep-preview` 版本 `06c011e9-7589-49f0-b924-0145b601209b`，生产仍未更新。新增独立预览产物与 noindex 响应头。回退本次预览可用：
+
+```sh
+pnpm exec wrangler rollback 6b038697-c5c2-4bf3-b294-e37b89ad012f --name vistep-preview
 ```
