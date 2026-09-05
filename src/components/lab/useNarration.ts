@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import manifest from '../../data/audio-tracks.json';
 import { browserLocale, type Locale } from '../../i18n';
+import { narrationPreference, rememberNarration } from './narration-preference';
 type Soundtrack = { src: string; duration: number };
 const tracks = manifest as Record<string, Record<Locale, Soundtrack>>;
 
@@ -16,18 +17,13 @@ export function useNarration(
   const audio = useRef<HTMLAudioElement | null>(null);
   const ended = useRef(onEnded);
   ended.current = onEnded;
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState(!!track);
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState(false);
   const [blocked, setBlocked] = useState(false);
   const alive = useRef(true);
   const desired = useRef(false);
   const targetTime = useRef(0);
-  const remember = (on: boolean) => {
-    try {
-      sessionStorage.setItem('vistep:narration', on ? 'on' : 'off');
-    } catch {}
-  };
   const makeAudio = () => {
     if (audio.current || !track) return audio.current;
     const a = new Audio(track.src);
@@ -90,7 +86,7 @@ export function useNarration(
     setWaiting(true);
     setEnabled(true);
     desired.current = true;
-    remember(true);
+    rememberNarration(true);
     const a = makeAudio()!;
     if (a.error) a.load();
     seek(time);
@@ -104,18 +100,15 @@ export function useNarration(
     setWaiting(false);
     setError(false);
     setBlocked(false);
-    remember(false);
+    rememberNarration(false);
   };
   useEffect(() => {
     alive.current = true;
-    try {
-      if (sessionStorage.getItem('vistep:narration') === 'on' && track) {
-        desired.current = true;
-        setEnabled(true);
-        setWaiting(true);
-        makeAudio();
-      }
-    } catch {}
+    const requested = !!track && narrationPreference();
+    desired.current = requested;
+    setEnabled(requested);
+    setWaiting(requested);
+    if (requested) makeAudio();
     const leave = () => audio.current?.pause();
     window.addEventListener('pagehide', leave);
     return () => {

@@ -23,6 +23,7 @@
 - [首次正式发布](qa-production.md)
 - [长演示、语言与 SEO](qa-longform.md)
 - [首页一体化开场](qa-home-opening.md)
+- [宣传动图与默认讲解](qa-showcase-audio.md)
 
 ## 社区
 

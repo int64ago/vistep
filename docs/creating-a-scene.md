@@ -43,6 +43,8 @@ A complete silent sequence comes before optional controls. Explicitly disclose t
 
 Write English and Chinese for speech, separately. Point out the detail on screen, allow a question to settle, then explain the change. Do not read UI text, force literal translations or stretch a short visual with more prose.
 
+Narration is requested by default; honor the saved manual choice and the page language. Browser autoplay rejection must leave a clear user-activated retry while the silent film remains usable. The noise experiment’s pure tone still requires a separate explicit action.
+
 The canonical source is `src/data/narration.json`. Each cue includes `id`, `title`, `titleEn`, `caption`, `captionEn`, `zh`, `en`, `seconds` (minimum planned window), `chapterAt` and `at`. The generator measures both voices and derives a shared window with breathing room. It produces `film-timeline.json`, `audio-tracks.json`, `audio-manifest.json` and content-addressed MP3s together. Speech is **never time-stretched**.
 
 ```sh

@@ -1,6 +1,6 @@
 <div align="center">
 
-# vistep.ai
+[![vistep.ai 原创品牌动图](docs/media/vistep-showcase.gif)](https://vistep.ai/zh/)
 
 **Visualize Every Step with AI**
 
@@ -15,7 +15,7 @@
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-b88953?logo=cloudflare&logoColor=white)](docs/zh-CN/deployment.md)
 [![Languages](https://img.shields.io/badge/languages-English%20%2B%20中文-827393)](docs/zh-CN/localization-and-seo.md)
 
-[![vistep.ai 原理可视化](docs/media/overview.png)](https://vistep.ai/zh/)
+[查看静态画面](docs/media/vistep-showcase-poster.png)
 
 </div>
 
@@ -33,11 +33,9 @@
 
 - **先观看，再实验。** 每篇 2–5 分钟，支持章节、暂停、重播与定位；调参按需展开。
 - **计算驱动画面。** 机构几何、运动和读数使用同一模型。JPEG 与小型 Transformer 在 Worker 中实际计算，明确标注教学简化。
-- **双语阅读与讲解。** 中英文分别撰稿与录音，共用镜头时间线。声音默认关闭，字幕和分段讲解始终可用。
+- **双语阅读与讲解。** 中英文分别撰稿与录音，共用镜头时间线。语音讲解默认开启，并记住你的选择；浏览器限制自动播放时，点击即可开启。字幕和分段讲解始终可用。
 - **浏览器内运行。** 无需账号、API 密钥或实时 AI 服务。语言偏好保存在本地。
 - **适配不同使用方式。** 分别安排桌面与手机构图，支持键盘、减少动态效果，以及 WebGL 场景的二维替代视图。
-
-![机构、图像重建与空间推理](docs/media/explorations.png)
 
 ## 本地开发
 

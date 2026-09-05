@@ -32,6 +32,8 @@
 
 中英文分别写成自然口语，指出此时该看哪里，给观众反应时间，再解释变化。不要照读 UI，也不要用更多文字填充缺少画面的时段。
 
+语音讲解默认开启，遵循已保存的手动选择及页面语言。浏览器阻止有声自动播放时，保留明确的主动开启入口，静音演示仍可继续。降噪实验的纯音仍须单独主动开启。
+
 源文件为 `src/data/narration.json`。每段包含 `id`、`title`、`titleEn`、`caption`、`captionEn`、`zh`、`en`、`seconds`（最低计划窗口）、`chapterAt`、`at`。生成器测量两种语音并留出停顿，共同生成 `film-timeline.json`、`audio-tracks.json`、`audio-manifest.json` 与内容哈希 MP3。**不对语音变速。**
 
 ```sh
