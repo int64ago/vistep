@@ -1,33 +1,42 @@
+import { t } from '../../i18n';
 import { useState } from 'react';
 import { Range, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import PrinterStudio from '../three/PrinterStudio';
 import { useShowcase } from '../lab/Showcase';
-const stages = ['充电', '曝光', '显影', '转印', '定影', '清洁'];
+const stages = [t('充电'), t('曝光'), t('显影'), t('转印'), t('定影'), t('清洁')];
 const stageEnglish = ['CHARGE', 'EXPOSE', 'DEVELOP', 'TRANSFER', 'FUSE', 'CLEAN'];
 const headlines = [
-  '先准备一层看不见的底色。',
-  '光，把电荷图案写在鼓面。',
-  '让电荷的差别，变成碳粉的去留。',
-  '这个像素，终于来到纸上。',
-  '让暂时的吸附，成为牢固的印迹。',
-  '擦净，准备下一个故事。',
+  t('先准备一层看不见的底色。'),
+  t('光，把电荷图案写在鼓面。'),
+  t('让电荷的差别，变成碳粉的去留。'),
+  t('这个像素，终于来到纸上。'),
+  t('让暂时的吸附，成为牢固的印迹。'),
+  t('擦净，准备下一个故事。'),
 ];
 const notes = [
-  '充电辊让感光鼓均匀带负电。此时，图案还不存在。你选中的那个位置，和周围一样，等待一束光到来。',
-  '激光扫描感光鼓。被照射的位置电位升高，变得没那么负；没被照到的地方保持原状。文字先以电荷差异的形式出现。',
-  '显影辊带着细小的碳粉经过鼓面。在电场作用下，带负电的碳粉移向曝光区，电荷潜像第一次变成可见图案。',
-  '纸张经过感光鼓下方。转印电场把碳粉从鼓面拉向纸张。此时碳粉只是附着在纸上，还没有真正固定。',
-  '纸张穿过加热辊和压力辊之间。热使碳粉中的树脂软化，压力让它与纸纤维黏合。打印完成后，图案才不易擦掉。',
-  '清洁刮片移去未转印的残粉，剩余电荷被消除。感光鼓恢复到可重新使用的状态，一圈又一圈地完成成像。',
+  t('充电辊让感光鼓均匀带负电。此时，图案还不存在。你选中的那个位置，和周围一样，等待一束光到来。'),
+  t(
+    '激光扫描感光鼓。被照射的位置电位升高，变得没那么负；没被照到的地方保持原状。文字先以电荷差异的形式出现。',
+  ),
+  t(
+    '显影辊带着细小的碳粉经过鼓面。在电场作用下，带负电的碳粉移向曝光区，电荷潜像第一次变成可见图案。',
+  ),
+  t('纸张经过感光鼓下方。转印电场把碳粉从鼓面拉向纸张。此时碳粉只是附着在纸上，还没有真正固定。'),
+  t(
+    '纸张穿过加热辊和压力辊之间。热使碳粉中的树脂软化，压力让它与纸纤维黏合。打印完成后，图案才不易擦掉。',
+  ),
+  t(
+    '清洁刮片移去未转印的残粉，剩余电荷被消除。感光鼓恢复到可重新使用的状态，一圈又一圈地完成成像。',
+  ),
 ];
 const microNotes = [
-  '均匀负电位 · 尚未成像',
-  '曝光区电位升高 · 形成潜像',
-  '碳粉只在选定区域聚集',
-  '转印电场 · 鼓面 → 纸张',
-  '加热与压力 · 树脂黏合',
-  '残粉被移除 · 鼓面复位',
+  t('均匀负电位 · 尚未成像'),
+  t('曝光区电位升高 · 形成潜像'),
+  t('碳粉只在选定区域聚集'),
+  t('转印电场 · 鼓面 → 纸张'),
+  t('加热与压力 · 树脂黏合'),
+  t('残粉被移除 · 鼓面复位'),
 ];
 const patterns: Record<string, string[]> = {
   heart: [
@@ -171,16 +180,16 @@ export default function Printer() {
               }}
               aria-pressed={focus}
             >
-              跟随近看
+              {t('跟随近看')}
             </button>
             <button onClick={() => setExploded(!exploded)} aria-pressed={exploded}>
-              {exploded ? '内部结构' : '完整外观'}
+              {exploded ? t('内部结构') : t('完整外观')}
             </button>
             <button
               onClick={() => setView(view === 'top' ? 'perspective' : 'top')}
               aria-pressed={view === 'top'}
             >
-              俯视光路
+              {t('俯视光路')}
             </button>
           </div>
         </div>
@@ -189,9 +198,9 @@ export default function Printer() {
             0{stage + 1} / {stageEnglish[stage]}
           </span>
           <h2>{stages[stage]}</h2>
-          <p>{stage === 5 ? '选中的像素，已留在纸上。' : '橙色光点 · 正在追踪的像素'}</p>
+          <p>{stage === 5 ? t('选中的像素，已留在纸上。') : t('橙色光点 · 正在追踪的像素')}</p>
         </div>
-        <span className="printer-drag-note">拖动旋转 · 方向键同样可用</span>
+        <span className="printer-drag-note">{t('拖动旋转 · 方向键同样可用')}</span>
       </div>
       <div className="printer-transport">
         <button
@@ -201,7 +210,7 @@ export default function Printer() {
             setExploded(true);
             setPlaying(!playing);
           }}
-          aria-label={playing ? '暂停打印' : '开始打印'}
+          aria-label={playing ? t('暂停打印') : t('开始打印')}
         >
           {playing ? (
             <svg viewBox="0 0 20 20" fill="currentColor">
@@ -215,7 +224,7 @@ export default function Printer() {
         </button>
         <Segments
           className="printer-filmstrip"
-          label="打印阶段"
+          label={t('打印阶段')}
           value={String(stage)}
           options={stages.map((name, i) => ({
             value: String(i),
@@ -234,7 +243,7 @@ export default function Printer() {
         />
         <button
           className="transport-reset"
-          aria-label="重置打印"
+          aria-label={t('重置打印')}
           onClick={() => {
             setProgress(0);
             setPlaying(false);
@@ -245,12 +254,12 @@ export default function Printer() {
       </div>
       <div className="printer-explanation">
         <div className="printer-paper">
-          <div className="printer-pixels" role="group" aria-label="选择要追踪的像素">
+          <div className="printer-pixels" role="group" aria-label={t('选择要追踪的像素')}>
             {bits.map((bit, i) => (
               <button
                 key={i}
                 disabled={bit === '0'}
-                aria-label={`追踪第 ${Math.floor(i / 8) + 1} 行第 ${(i % 8) + 1} 列像素`}
+                aria-label={t('追踪第 {0} 行第 {1} 列像素', Math.floor(i / 8) + 1, (i % 8) + 1)}
                 aria-pressed={selected === i}
                 onClick={() => setSelected(i)}
                 style={{
@@ -261,7 +270,7 @@ export default function Printer() {
           </div>
           <div>
             <label>
-              这次，打印什么？
+              {t('这次，打印什么？')}
               <select
                 value={pattern}
                 onChange={(e) => {
@@ -271,9 +280,9 @@ export default function Printer() {
                   setPlaying(false);
                 }}
               >
-                <option value="heart">一颗心</option>
-                <option value="letter">字母 I</option>
-                <option value="arrow">一个箭头</option>
+                <option value="heart">{t('一颗心')}</option>
+                <option value="letter">{t('字母 I')}</option>
+                <option value="arrow">{t('一个箭头')}</option>
               </select>
             </label>
             <button
@@ -283,7 +292,7 @@ export default function Printer() {
                 setSelected(filled[(filled.indexOf(selected) + 1) % filled.length]);
               }}
             >
-              换一个像素 ↗
+              {t('换一个像素 ↗')}
             </button>
           </div>
         </div>
@@ -293,15 +302,15 @@ export default function Printer() {
           <p>{notes[stage]}</p>
         </div>
         <div className="printer-micro" key={`micro-${stage}`}>
-          <span className="section-index">SURFACE / 鼓面与纸面</span>
+          <span className="section-index">{t('SURFACE / 鼓面与纸面')}</span>
           <MicroView stage={stage} />
           <p>{microNotes[stage]}</p>
         </div>
       </div>
       <div className="printer-scrub">
-        <span>慢慢看每一步</span>
+        <span>{t('慢慢看每一步')}</span>
         <Range
-          label="打印进度"
+          label={t('打印进度')}
           value={progress}
           min={0}
           max={5.99}
@@ -312,11 +321,14 @@ export default function Printer() {
           }}
         />
         <span>
-          像素 {Math.floor(selected / 8) + 1}:{(selected % 8) + 1}
+          {t('像素')}
+          {Math.floor(selected / 8) + 1}:{(selected % 8) + 1}
         </span>
       </div>
       <p className="lab-caption">
-        电子照相式单色激光打印机的教学剖面。结构比例与过程速度经过简化；采用负电荷、曝光区显影模型，实际部件布局与电位因机型而异。
+        {t(
+          '电子照相式单色激光打印机的教学剖面。结构比例与过程速度经过简化；采用负电荷、曝光区显影模型，实际部件布局与电位因机型而异。',
+        )}
       </p>
     </div>
   );

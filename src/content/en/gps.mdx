@@ -1,0 +1,43 @@
+<h2 id="understand">Distance is not direction</h2>
+
+If you are exactly three kilometers from a lighthouse, you could be anywhere on a circle around it. A second distance usually reduces the possibilities to two intersections. Another independent measurement can resolve the ambiguity.
+
+Each circle in the 2D view is one such constraint. Moving a source recalculates its distance from the same true receiver position. The radii and intersection angles change, but all measurements still describe one location.
+
+GPS satellites do not look down and spot your phone. They broadcast orbit and timing information. Your receiver estimates signal travel time and multiplies it by propagation speed. **The receiver calculates its own position locally.**
+
+Its clock is less accurate than the satellites' clocks. The measured time therefore includes a receiver clock bias: the result is a pseudorange rather than a perfect geometric distance.
+
+<h2 id="try">Add the same error to every distance</h2>
+
+In 2D, set the clock bias to an equivalent distance of 20 and turn off clock-error solving. The circles no longer meet at the true point. A least-squares estimate compromises between the inconsistent measurements.
+
+Turn clock solving back on. The shared bias becomes an unknown, solved together with position. Remove sources and observe when there are too few constraints.
+
+Two position coordinates plus a clock bias make three unknowns. In 3D there are usually four: x, y, z and clock bias. At least four independent pseudorange measurements are generally needed.
+
+> “The fourth satellite is only for time” is a convenient shortcut, but all the measurements jointly determine position and clock bias.
+
+Rotate the 3D scene and change satellite heights. Enough sources do not guarantee good geometry. Sources clustered in similar directions make the solution more sensitive to errors.
+
+<h2 id="deeper">Put time into the distance equation</h2>
+
+<details>
+<summary>The pseudorange equation</summary>
+
+For source i, the simplified relationship is:
+
+<div className="formula">ρᵢ = ‖receiver position − satellite positionᵢ‖ + b</div>
+
+`ρᵢ` is measured pseudorange. `b` is receiver clock error multiplied by the speed of light. In teaching coordinates, a local least-squares iteration adjusts position and `b` to match predicted and measured ranges.
+
+Constraint count is only a necessary condition. Repeated or degenerate geometry may not add independent information. Nonlinear equations can also have multiple solutions or convergence problems. The interface leaves the answer undetermined when it cannot solve reliably.
+
+</details>
+
+<details>
+<summary>What else does real GPS handle?</summary>
+
+Orbit and clock corrections, the ionosphere and troposphere, reflected signals, multipath and relativity all matter. Phones may combine several navigation systems and other sensors. This experiment isolates geometry and common clock bias; it uses no real satellite feed and never reads your location.
+
+</details>

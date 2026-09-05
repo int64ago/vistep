@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
@@ -8,7 +9,10 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
   current.current = state;
   return (
     <Studio
-      label={`八层建筑与两部电梯的三维剖面，${state.requests.filter((r) => r.status === 'waiting').length} 人候梯`}
+      label={t(
+        '八层建筑与两部电梯的三维剖面，{0} 人候梯',
+        state.requests.filter((r) => r.status === 'waiting').length,
+      )}
       span={6.4}
       fitHeight={7.5}
       target={[0, 2.95, 0]}
@@ -195,7 +199,7 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
         };
       }}
       fallback={
-        <svg viewBox="0 0 530 430" role="img" aria-label="八层楼的电梯与候梯人数二维图">
+        <svg viewBox="0 0 530 430" role="img" aria-label={t('八层楼的电梯与候梯人数二维图')}>
           <rect x="300" y="25" width="140" height="363" fill="#dce5d8" />
           {Array.from({ length: 8 }, (_, i) => {
             const y = 375 - i * 44;
@@ -207,7 +211,7 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
                 </text>
                 <text x="95" y={y - 14} fill="#8aa177" fontSize="12">
                   {state.requests.filter((r) => r.status === 'waiting' && r.from === i).length}{' '}
-                  人候梯
+                  {t('人候梯')}
                 </text>
               </g>
             );
@@ -229,7 +233,8 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
                 fontSize="12"
                 textAnchor="middle"
               >
-                {car.passengers.length}人
+                {car.passengers.length}
+                {t('人')}
               </text>
             </g>
           ))}

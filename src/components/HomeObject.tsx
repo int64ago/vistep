@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import { useState, useEffect } from 'react';
 import PrinterStudio from './three/PrinterStudio';
 import { useSimulation } from './lab/useSimulation';
@@ -45,14 +46,14 @@ export default function HomeObject() {
         />
         <div className="object-caption">
           <span>
-            熟悉的外表，
+            {t('熟悉的外表，')}
             <br />
-            <b>意想不到的内部。</b>
+            <b>{t('意想不到的内部。')}</b>
           </span>
           <button
             className="object-toggle"
             onClick={() => setPlaying(!playing)}
-            aria-label={playing ? '暂停首页演示' : '播放首页演示'}
+            aria-label={playing ? t('暂停首页演示') : t('播放首页演示')}
           >
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -62,10 +63,10 @@ export default function HomeObject() {
                 strokeLinejoin="round"
               />
             </svg>
-            {playing ? '暂停' : '播放'}
+            {playing ? t('暂停') : t('播放')}
           </button>
         </div>
-        <span className="object-hint">一束光，一张纸，一步一步看见。</span>
+        <span className="object-hint">{t('一束光，一张纸，一步一步看见。')}</span>
       </div>
     </FilmContext.Provider>
   );

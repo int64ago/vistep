@@ -1,0 +1,177 @@
+.site-header .language-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 13px;
+  background: #dbe3d54d;
+  color: #405844;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  transition: background 200ms ease;
+}
+.site-header .language-switch:hover {
+  background: #dbe3d5a3;
+}
+.home-object-placeholder {
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+}
+.home-object-placeholder svg {
+  width: 88%;
+  max-height: 480px;
+  opacity: 0.6;
+}
+html[lang='en'] .opening h1 {
+  font-size: clamp(48px, 5vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+html[lang='en'] .lesson-heading h1 {
+  font-size: clamp(28px, 2.65vw, 38px);
+  line-height: 1.2;
+}
+html[lang='en'] .lesson-heading .title-phrase {
+  display: inline;
+}
+html[lang='en'] .film-caption p {
+  line-height: 1.5;
+}
+html[lang='en'] .film-mode {
+  white-space: nowrap;
+}
+html[lang='en'] .segmented button {
+  line-height: 1.3;
+}
+html[lang='en'] .training-core .token {
+  font-size: 18px;
+}
+html[lang='en'] .printer-annotation h2 {
+  font-size: 18px;
+}
+html[lang='en'] .reading-nav a {
+  line-height: 1.45;
+}
+@media (max-width: 760px) {
+  .site-header nav {
+    gap: 12px;
+  }
+  .site-header .name-link {
+    display: none;
+  }
+  .site-header .language-switch {
+    padding-inline: 10px;
+    min-width: 44px;
+  }
+  html[lang='en'] .opening h1 {
+    font-size: 43px;
+  }
+  html[lang='en'] .lesson-heading h1 {
+    font-size: 28px;
+  }
+  html[lang='en'] .film-caption p {
+    font-size: 16px;
+  }
+  html[lang='en'] .film-caption {
+    min-height: 86px;
+  }
+  html[lang='en'] .lesson-printer .component-picks {
+    flex-wrap: wrap;
+  }
+  html[lang='en'] .segmented {
+    flex-wrap: wrap;
+  }
+  html[lang='en'] .segmented button {
+    min-height: 44px;
+  }
+  html[lang='en'] .lesson-transformer .tokens span {
+    font-size: 16px;
+  }
+  html[lang='en'] .lesson-jpeg .jpeg-panel h3 {
+    min-height: 38px;
+    line-height: 1.3;
+  }
+  html[lang='en'] .control-top {
+    align-items: start;
+    gap: 10px;
+  }
+}
+@media (max-width: 360px) {
+  .site-header nav {
+    gap: 6px;
+  }
+  .site-header .wordmark {
+    font-size: 25px;
+    gap: 7px;
+  }
+  html[lang='en'] .opening h1 {
+    font-size: 37px;
+  }
+}
+
+.film-transport .film-voice {
+  gap: 8px;
+  padding-inline: 12px;
+  white-space: nowrap;
+  border-radius: 22px;
+  font-size: 12px;
+}
+.film-voice[aria-pressed='true'] {
+  color: #356d60;
+  background: #e8f0e9;
+}
+.film-voice svg {
+  flex-shrink: 0;
+}
+.voice-status {
+  margin: 0;
+  padding: 0 24px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+@media (max-width: 600px) {
+  .film-transport .film-voice {
+    width: 44px;
+    padding: 0;
+    flex: 0 0 44px;
+  }
+  .film-voice span {
+    display: none;
+  }
+}
+.error-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.film-transport .film-voice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.film-model-stats {
+  flex-wrap: wrap;
+}
+.film-model-stats > span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+}
+/* Reserve exactly the longest translated caption, so the controls never jump between shots. */
+.film-caption-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+}
+.film-caption-copy > p {
+  grid-area: 1 / 1;
+}
+.film-caption-copy .film-caption-measure {
+  visibility: hidden;
+  animation: none;
+  pointer-events: none;
+}

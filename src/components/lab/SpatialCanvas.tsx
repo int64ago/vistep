@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import * as THREE from 'three';
 import { useShowcase } from './Showcase';
@@ -182,7 +183,7 @@ export default function SpatialCanvas({
         ref={host}
         tabIndex={demo.watch ? -1 : 0}
         role="img"
-        aria-label={demo.watch ? label : label + '；拖动或使用方向键旋转'}
+        aria-label={demo.watch ? label : label + t('；拖动或使用方向键旋转')}
         style={{
           position: 'absolute',
           inset: 0,
@@ -193,12 +194,12 @@ export default function SpatialCanvas({
       {(failed || flat) && (
         <>
           <div style={{ height: '100%' }}>{fallback}</div>
-          <span className="dimension-fallback">二维交互模式 · 空间运算保持不变</span>
+          <span className="dimension-fallback">{t('二维交互模式 · 空间运算保持不变')}</span>
         </>
       )}
       {!failed && (
         <button className="btn spatial-mode" onClick={() => setFlat(!flat)} aria-pressed={flat}>
-          {flat ? '返回三维视图' : '二维视图'}
+          {flat ? t('返回三维视图') : t('二维视图')}
         </button>
       )}
     </div>

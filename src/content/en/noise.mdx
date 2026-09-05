@@ -1,0 +1,39 @@
+<h2 id="understand">Your ear receives the sum at one place</h2>
+
+Sound makes air pressure oscillate around its resting value. For the small amplitudes used here, pressure variations from different sources add. If one raises pressure while the other lowers it by the same amount, the total becomes smaller.
+
+Blue is ambient sound, orange is the canceling sound, and green is their sum at the observation point. Equal amplitudes and a 180° phase difference align every peak with a trough. Under ideal conditions, the total pressure variation is zero.
+
+Enable the quiet listening example and move phase toward 0°. The sound grows as peaks meet peaks. **Adding sound can make things quieter or louder, depending on how and where the waves meet.**
+
+Noise-canceling headphones measure noise and create an appropriate sound near your ear. They control the result near the eardrum, not everywhere in a room.
+
+<h2 id="try">Why does a tiny delay break the match?</h2>
+
+Start with 160 Hz, 180° phase and amplitude 1. Increase delay from 0 to 1 ms, then raise frequency. The same timing error now causes a larger phase error because each cycle is shorter.
+
+<div className="formula">phase error = 360° × frequency × delay in seconds</div>
+
+Change only the canceling amplitude. Even perfectly opposite phases leave a residual when their amplitudes differ. Good cancellation needs both the right timing and the right size.
+
+> At 500 Hz, what does a 1 ms delay do to a signal that was intended to be 180° out of phase?
+
+<h2 id="deeper">Real noise is more than a sine wave</h2>
+
+<details>
+<summary>Why is steady low-frequency noise easier to handle?</summary>
+
+Real noise contains many frequencies. Head movement, fit and the surroundings change acoustic paths. Headphones must estimate these paths and adjust quickly. High frequencies tolerate smaller spatial and timing errors, while steady low-frequency noise is easier to predict.
+
+Real systems use techniques such as adaptive filtering. Simply inverting a microphone recording is not enough. Passive isolation contributes too, especially at higher frequencies.
+
+</details>
+
+<details>
+<summary>Pressure level and energy</summary>
+
+The readout is the residual amplitude of equal-frequency tones at one point. Relative pressure-level change is `20 log10(residual / original)`. Zero amplitude gives mathematical negative infinity, not unlimited real-world noise reduction.
+
+Local cancellation does not erase all energy in the sound field. Other locations, energy exchange with sources and absorption belong to the full analysis. This experiment isolates linear superposition at one point. Narration is separate from the synthetic listening example.
+
+</details>

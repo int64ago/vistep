@@ -29,3 +29,9 @@ pnpm exec wrangler rollback d31022c8-a4ad-446c-898e-19a7298503e1 --name vistep
 ## 本次预览
 
 2026-09-05 自动演示与机械细节改版：`vistep-preview` 版本 `e856b90b-558a-461a-8541-9312d068da06`。预览地址：<https://vistep-preview.int64ago.workers.dev/>。本次未发布正式 Worker。检查范围与结果见 [自动演示检查记录](qa-automatic-demos.md)。
+
+2026-09-05 中英文与同步语音：`vistep-preview` 版本 `6b038697-c5c2-4bf3-b294-e37b89ad012f`。包含 26 个中英文内容页面、双语 404、24 条静态配音与字幕稳定排版。此版本取代上面的自动演示预览，仍未发布正式 Worker。详情见 [双语与讲解检查记录](qa-bilingual-narration.md)。回滚预览可执行：
+
+```sh
+pnpm exec wrangler rollback e856b90b-558a-461a-8541-9312d068da06 --name vistep-preview
+```

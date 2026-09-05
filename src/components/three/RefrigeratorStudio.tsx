@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
@@ -15,7 +16,7 @@ export default function RefrigeratorStudio({
   current.current = { phase, cutaway };
   return (
     <Studio
-      label="冰箱剖面与制冷管路：箱内蒸发器、压缩机、外部冷凝器与毛细管"
+      label={t('冰箱剖面与制冷管路：箱内蒸发器、压缩机、外部冷凝器与毛细管')}
       span={7.3}
       fitHeight={6.3}
       cameraPosition={[7, 4.2, 10]}

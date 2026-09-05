@@ -1,0 +1,16 @@
+---
+import LessonPage from '../../../components/pages/LessonPage.astro';
+import { topics } from '../../../data/topics';
+export async function getStaticPaths() {
+  const modules = import.meta.glob<{ Content: any }>('../../../content/en/*.mdx');
+  return Promise.all(
+    topics.map(async (topic) => {
+      const mod = await modules[`../../../content/en/${topic.slug}.mdx`]();
+      return { params: { slug: topic.slug }, props: { topic, Content: mod.Content } };
+    }),
+  );
+}
+const { topic, Content } = Astro.props;
+---
+
+<LessonPage topic={topic} Content={Content} locale="en" />

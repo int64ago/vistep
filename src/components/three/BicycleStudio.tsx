@@ -1,10 +1,10 @@
+import { t } from '../../i18n';
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
 import { box, roller, material } from './parts';
 import { useSimulation } from '../lab/useSimulation';
 import { chainLoop, TAU, sprocketOutline } from '../../models/mechanisms';
-
 export default function BicycleStudio({
   front,
   rear,
@@ -27,7 +27,7 @@ export default function BicycleStudio({
       fitHeight={3.3}
       target={[0, 1.4, 0]}
       cameraPosition={[1.3, 2.8, 11]}
-      label="闭合滚子链传动：链销、内外链板、齿槽、轴承与曲柄"
+      label={t('闭合滚子链传动：链销、内外链板、齿槽、轴承与曲柄')}
       create={({ root, camera, controls }) => {
         root.position.y = 1.5;
         const chain = chainLoop(front, rear),
@@ -198,7 +198,6 @@ export default function BicycleStudio({
     />
   );
 }
-
 function BicycleFlat({
   front,
   rear,
@@ -219,7 +218,7 @@ function BicycleFlat({
   const points = Array.from({ length: chain.count }, (_, i) => chain.sample(i + phase));
   return (
     <div ref={host} style={{ height: '100%' }}>
-      <svg viewBox="-3 -1.8 6 3.6" role="img" aria-label="闭合链传动，金色链节沿两轮之间循环">
+      <svg viewBox="-3 -1.8 6 3.6" role="img" aria-label={t('闭合链传动，金色链节沿两轮之间循环')}>
         <g transform="scale(1,-1)">
           {[
             [front, chain.ra, -chain.distance / 2, chain.alpha - (phase * TAU) / front],

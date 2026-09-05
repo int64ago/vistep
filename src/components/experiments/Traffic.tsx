@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
@@ -21,7 +22,12 @@ export default function Traffic() {
     cars = useRef<Vehicle[]>(newTraffic(count, params)),
     canvas = useRef<HTMLCanvasElement>(null),
     chart = useRef<HTMLCanvasElement>(null),
-    history = useRef<{ position: number; speed: number }[][]>([]),
+    history = useRef<
+      {
+        position: number;
+        speed: number;
+      }[][]
+    >([]),
     clock = useRef(0),
     refresh = useRef(0);
   const color = (speed: number) => (speed < 2 ? '#e17e66' : speed < 7 ? '#eab474' : '#83b7c9');
@@ -83,17 +89,17 @@ export default function Traffic() {
     ctx.fillText(
       demo.watch
         ? demo.time < 6
-          ? '匀速前进'
+          ? t('匀速前进')
           : demo.time < 12
-            ? '一次轻刹'
-            : '减速波向后'
-        : '一个小扰动',
+            ? t('一次轻刹')
+            : t('减速波向后')
+        : t('一个小扰动'),
       cx,
       cy - 5,
     );
     ctx.font = '12px sans-serif';
     ctx.fillStyle = '#8098b8';
-    ctx.fillText(demo.watch ? '车辆向前 →' : '会在哪里停下来？', cx, cy + 20);
+    ctx.fillText(demo.watch ? t('车辆向前 →') : t('会在哪里停下来？'), cx, cy + 20);
     ctx.textAlign = 'left';
     ctx.font = '11px monospace';
     ctx.fillText('RING ROAD / 500 m', 20, 29);
@@ -182,16 +188,18 @@ export default function Traffic() {
   return (
     <div ref={host}>
       <div className="lab-toolbar">
-        <h2>没有路口，也没有事故。</h2>
+        <h2>{t('没有路口，也没有事故。')}</h2>
         <div className="lab-actions">
           <button className="btn primary" onClick={brake}>
-            让 {selected + 1} 号车轻踩刹车
+            {t('让')}
+            {selected + 1}
+            {t('号车轻踩刹车')}
           </button>
           <button className="btn" onClick={() => setPlaying(!playing)}>
-            {playing ? 'Ⅱ 暂停' : '▷ 运行'}
+            {playing ? t('Ⅱ 暂停') : t('▷ 运行')}
           </button>
           <button className="btn" onClick={() => reset()}>
-            ↻ 重置
+            {t('↻ 重置')}
           </button>
         </div>
       </div>
@@ -201,28 +209,30 @@ export default function Traffic() {
             ref={canvas}
             className="traffic-canvas"
             role="img"
-            aria-label="环形道路上的车辆，蓝色较快，橙色较慢，红色接近停止；可用选择车辆滑块代替点击"
+            aria-label={t(
+              '环形道路上的车辆，蓝色较快，橙色较慢，红色接近停止；可用选择车辆滑块代替点击',
+            )}
             onPointerDown={pick}
           />
           <div className="traffic-chart">
-            时空图：横轴是道路位置，纵轴是时间 ↓
-            <canvas ref={chart} role="img" aria-label="车辆位置随时间变化，速度由颜色表示" />
+            {t('时空图：横轴是道路位置，纵轴是时间 ↓')}
+            <canvas ref={chart} role="img" aria-label={t('车辆位置随时间变化，速度由颜色表示')} />
           </div>
         </div>
         <div className="lab-controls">
           <Range
-            label="道路上的车辆"
+            label={t('道路上的车辆')}
             value={count}
             min={12}
             max={45}
-            unit="辆"
+            unit={t('辆')}
             onChange={(v) => {
               setCount(v);
               reset(v);
             }}
           />
           <Range
-            label="期望跟车时距"
+            label={t('期望跟车时距')}
             value={headway}
             min={0.6}
             max={2.4}
@@ -234,7 +244,7 @@ export default function Traffic() {
             }}
           />
           <Range
-            label="自由行驶期望速度"
+            label={t('自由行驶期望速度')}
             value={desired}
             min={10}
             max={30}
@@ -245,26 +255,31 @@ export default function Traffic() {
             }}
           />
           <Range
-            label="选择车辆"
+            label={t('选择车辆')}
             value={selected + 1}
             min={1}
             max={count}
-            unit="号"
+            unit={t('号')}
             onChange={(v) => setSelected(v - 1)}
           />
           <div className="lab-callout">
-            先让车流平稳运行，再轻踩刹车。观察：车向前开，低速区域却可能向后移动。增加车流密度，再试一次。
+            {t(
+              '先让车流平稳运行，再轻踩刹车。观察：车向前开，低速区域却可能向后移动。增加车流密度，再试一次。',
+            )}
           </div>
         </div>
       </div>
       <div className="metrics">
-        <Metric label="车流平均速度" value={(stats.average * 3.6).toFixed(1)} unit="km/h" />
-        <Metric label="速度低于 2 m/s" value={stats.slow} unit="辆" />
-        <Metric label="模拟时间" value={stats.time.toFixed(1)} unit="s" />
+        <Metric label={t('车流平均速度')} value={(stats.average * 3.6).toFixed(1)} unit="km/h" />
+        <Metric label={t('速度低于 2 m/s')} value={stats.slow} unit={t('辆')} />
+        <Metric label={t('模拟时间')} value={stats.time.toFixed(1)} unit="s" />
       </div>
       <p className="lab-caption">
-        使用 <strong>IDM 智能驾驶员模型</strong>，同参数下从相同的均匀稳态起步。车辆长度 4.5
-        m，禁止超车；刹车扰动持续 1.5 秒。跟车时距是期望间隔，并不等同于显式反应延迟。
+        {t('使用')}
+        <strong>{t('IDM 智能驾驶员模型')}</strong>
+        {t(
+          '，同参数下从相同的均匀稳态起步。车辆长度 4.5 m，禁止超车；刹车扰动持续 1.5 秒。跟车时距是期望间隔，并不等同于显式反应延迟。',
+        )}
       </p>
     </div>
   );

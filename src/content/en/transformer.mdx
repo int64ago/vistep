@@ -1,0 +1,43 @@
+<h2 id="understand">Guess, then let the error change the model</h2>
+
+This tiny model learns three sentences: “cat likes eating fish,” “dog likes eating meat,” and “bird likes eating worms.” It performs real Transformer calculations. Its initial weights come from a seeded random generator, not a memorized answer.
+
+Training predicts the next token at each position and compares the result with the known continuation. Lower probability for the correct token means higher cross-entropy loss.
+
+Backpropagation traces how changes to parameters would affect that loss. An optimizer makes small weight updates. Repeating this is learning. The displayed Q weights, attention matrix and probabilities come from the live model.
+
+**Training changes weights. Generation uses the weights already learned.** Generating another token performs no backpropagation. Context and probabilities change while the weights stay fixed.
+
+<h2 id="try">How does it choose fish rather than meat?</h2>
+
+Before training, switch between cat, dog and bird. Train for several rounds and compare the same inputs again. Loss can vary between nearby steps because the training sentence changes; look at the broader trend.
+
+Each attention row belongs to a position. It can use earlier positions and itself, but not the future. The crosses in the upper right mark the causal mask.
+
+The word “eating” alone cannot tell fish from meat or worms. The subject supplies distinguishing context. Attention is a learnable route for exchanging information between positions; a large attention value does not by itself explain the whole decision.
+
+Generation adds one token to the context at a time. At temperature zero, sampling chooses the most likely token. Higher temperatures make lower-probability tokens easier to sample. Temperature changes the sampling rule, not the model's knowledge.
+
+<h2 id="deeper">Inside one forward pass</h2>
+
+<details>
+<summary>Tokens, Q/K/V and the feed-forward network</summary>
+
+The underlying teaching vocabulary has nine symbols: eight Chinese characters and a period. The English interface shows their meaning as word labels. This keeps the exact same model and weights in both languages; it is not a separate English language model.
+
+Each token selects an 8D embedding and adds a learned positional vector. Normalized representations are projected to Q, K and V. Dot products between a query and visible keys, scaled by the square root of dimension, pass through softmax to form attention weights that sum to one. These weights mix the values.
+
+An output projection, residual connections, normalization and a feed-forward network lead to vocabulary probabilities. This model uses RMSNorm and a 16D hidden feed-forward layer.
+
+</details>
+
+<details>
+<summary>How far is this from a large language model?</summary>
+
+There is one layer, one attention head and a four-token context. Large models use far more parameters, longer contexts, multiple heads, much more data and additional engineering. Their tokenizers do not necessarily split by character or word.
+
+Learning three sentences demonstrates a few statistical relationships, not general language ability or understanding of the world. The animal sentences are training examples, not comprehensive biological claims.
+
+Training runs in your browser without uploading inputs or calling an AI service. Frozen weights refer to this experiment's generation step; whether a commercial product later retains data for training is a separate design decision.
+
+</details>

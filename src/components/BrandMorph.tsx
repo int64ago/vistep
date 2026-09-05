@@ -1,6 +1,8 @@
+import { translate, type Locale } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
 const timings = [650, 2100, 3200, 4100, 5050, 6400, 7900];
-export default function BrandMorph() {
+export default function BrandMorph({ locale = 'zh' }: { locale?: Locale }) {
+  const tr = (s: string) => translate(s, locale);
   const [phase, setPhase] = useState(7),
     [reduced, setReduced] = useState(false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -44,8 +46,9 @@ export default function BrandMorph() {
   return (
     <div className={`brand-signature signature-${phase}`} id="name">
       <span className="sr-only">
-        vistep.ai，Visualize Every Step with AI。提取 vis、step、ai，共用两个相邻的 s，形成
-        vistep.ai。
+        {tr(
+          'vistep.ai，Visualize Every Step with AI。提取 vis、step、ai，共用两个相邻的 s，形成 vistep.ai。',
+        )}
       </span>
       <div className="signature-line" aria-hidden="true">
         <span className="signature-word">
@@ -66,7 +69,7 @@ export default function BrandMorph() {
         <button
           onClick={run}
           className="signature-replay"
-          aria-label="重播域名解释动画"
+          aria-label={tr('重播域名解释动画')}
           disabled={reduced}
         >
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">

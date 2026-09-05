@@ -1,10 +1,10 @@
+import { t } from '../../i18n';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { softEase } from './motion';
 import { useShowcase } from '../lab/Showcase';
-
 export type StudioContext = {
   scene: THREE.Scene;
   root: THREE.Group;
@@ -258,7 +258,7 @@ export default function Studio({
         className="studio-canvas"
         ref={host}
         role="img"
-        aria-label={film.watch ? label : `${label}。拖动或用方向键旋转。`}
+        aria-label={film.watch ? label : t('{0}。拖动或用方向键旋转。', label)}
         tabIndex={failed || flat || film.watch ? -1 : 0}
         style={{
           display: failed || flat ? 'none' : undefined,
@@ -267,12 +267,12 @@ export default function Studio({
       />
       {(failed || flat) && (
         <div className="studio-fallback">
-          {fallback || <p>三维视图暂不可用，下方仍可逐步探索原理。</p>}
+          {fallback || <p>{t('三维视图暂不可用，下方仍可逐步探索原理。')}</p>}
         </div>
       )}
       {!failed && !film.watch && film.duration > 1 && fallback && (
         <button className="btn studio-mode" aria-pressed={flat} onClick={() => setFlat(!flat)}>
-          {flat ? '返回三维' : '二维剖面'}
+          {flat ? t('返回三维') : t('二维剖面')}
         </button>
       )}
     </div>

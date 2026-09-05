@@ -1,0 +1,47 @@
+<h2 id="understand">Why is the bob fastest at the bottom?</h2>
+
+Pull the bob aside. Although it is stationary, it has **gravitational potential energy** relative to the bottom of its path. On release, gravity's tangential component accelerates it downward, converting potential energy into kinetic energy.
+
+At the bottom, the tangential component of gravity is zero. But the bob already has speed. Inertia carries it past the bottom and up the opposite side, converting kinetic energy back into potential energy.
+
+Zero restoring force does not mean zero velocity. Watch the two energy bands: **speed is greatest where potential energy is smallest**.
+
+Damping transfers mechanical energy to the air and support. Energy does not disappear; less remains in the motion we are tracking. With zero damping, the two bands exchange energy while their sum stays nearly constant.
+
+<h2 id="try">What makes a swing slower?</h2>
+
+Start at 10° on Earth. Change one thing at a time.
+
+1. **Double the mass.** Gravity increases, but so does resistance to acceleration. The period stays essentially unchanged, while the energy increases.
+2. **Make the length four times larger.** Going from 0.5 m to 2 m approximately doubles the period.
+3. **Move to the Moon.** Lower gravity makes the same pendulum swing more slowly.
+
+> Compare a release from 80° with one from 10°. Does the bob return at exactly the same time?
+
+Large-amplitude swings take longer. The period readout is deliberately labeled a small-angle approximation. The animation uses the full nonlinear equation.
+
+<h2 id="deeper">Why is mass missing from the period formula?</h2>
+
+<details>
+<summary>From restoring force to period</summary>
+
+The tangential force is `−mg sin θ`, and tangential acceleration is `L θ″`. In Newton's second law, mass cancels:
+
+<div className="formula">θ″ = −(g / L) sin θ − b θ′</div>
+
+Here `b` is angular-velocity damping, in inverse seconds. For small angles in radians, `sin θ ≈ θ`. Without damping this gives simple harmonic motion:
+
+<div className="formula">T ≈ 2π √(L / g)</div>
+
+The simulation integrates the nonlinear equation in small steps, allowing you to observe where the approximation becomes inaccurate.
+
+</details>
+
+<details>
+<summary>Why does a pendulum clock keep running?</summary>
+
+An escapement gives the pendulum small, timed pushes to replace damping losses. It is not perpetual motion. Real clocks also have massive rods, pivot friction and temperature-dependent lengths. This model uses a massless, rigid suspension and a concentrated bob.
+
+</details>
+
+Look for three distinct states: position, velocity and tangential force. Their different rhythms make a complete swing.

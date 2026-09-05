@@ -1,3 +1,4 @@
+import { t, tokenLabel } from '../../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
@@ -28,7 +29,7 @@ export default function Transformer() {
       w.onmessage = (e) => {
         const data = e.data;
         if (data.type === 'error') {
-          setError(data.message);
+          setError(t(data.message));
           setRunning(false);
           return;
         }
@@ -41,12 +42,12 @@ export default function Transformer() {
         if (data.type === 'sample') setText((old) => old + data.next);
       };
       w.onerror = () => {
-        setError('后台计算未能运行。请刷新页面重试，原理讲解仍可阅读。');
+        setError(t('后台计算未能运行。请刷新页面重试，原理讲解仍可阅读。'));
         setRunning(false);
       };
       return () => w.terminate();
     } catch {
-      setError('此浏览器暂不支持后台模型计算。');
+      setError(t('此浏览器暂不支持后台模型计算。'));
     }
   }, []);
   useEffect(() => {
@@ -102,7 +103,14 @@ export default function Transformer() {
   const visibleProbs = demo.watch
     ? ['鱼', '。', '肉', '虫']
         .map((token) => probs.find((p) => p.token === token))
-        .filter((p): p is { p: number; token: string } => !!p)
+        .filter(
+          (
+            p,
+          ): p is {
+            p: number;
+            token: string;
+          } => !!p,
+        )
     : probs.slice(0, 6);
   const grid = matrix === 'attention' ? inspection?.attention : inspection?.embeddings;
   const tokens = [...(inspection?.context || text.slice(-4))];
@@ -110,14 +118,14 @@ export default function Transformer() {
   return (
     <div>
       <div className="lab-toolbar">
-        <h2>让一个很小的模型，真实地学一件事。</h2>
+        <h2>{t('让一个很小的模型，真实地学一件事。')}</h2>
         <div className="lab-actions">
           <Segments
-            label="模型工作阶段"
+            label={t('模型工作阶段')}
             value={mode}
             options={[
-              { value: 'train', label: '训练：更新权重' },
-              { value: 'generate', label: '生成：权重不变' },
+              { value: 'train', label: t('训练：更新权重') },
+              { value: 'generate', label: t('生成：权重不变') },
             ]}
             onChange={(v) => {
               if (running) worker.current?.postMessage({ type: 'stop' });
@@ -125,7 +133,7 @@ export default function Transformer() {
             }}
           />
           <button className="btn" onClick={reset}>
-            ↻ 重置模型
+            {t('↻ 重置模型')}
           </button>
         </div>
       </div>
@@ -135,34 +143,36 @@ export default function Transformer() {
             {mode === 'train' ? 'THE TRAINING EXAMPLE' : 'AUTOREGRESSIVE GENERATION'}
           </p>
           <h3 className="lab-subtitle">
-            {mode === 'train' ? '看过这些句子，猜下一个字' : '每次只生成一个字，再把它放回上下文'}
+            {mode === 'train'
+              ? t('看过这些句子，猜下一个字')
+              : t('每次只生成一个字，再把它放回上下文')}
           </h3>
           <div className="token-row">
             {[...text].map((ch, i) => (
               <span className={`token ${i >= 3 ? 'predicted' : ''}`} key={i}>
-                {ch}
+                {tokenLabel(ch)}
               </span>
             ))}
             {mode === 'generate' && !text.endsWith('。') && <span className="token">?</span>}
           </div>
           <div className="lab-actions" style={{ marginBottom: 23 }}>
             <Segments
-              label="示例句子的主语"
+              label={t('示例句子的主语')}
               value={subject}
               options={[
-                { value: '猫', label: '猫' },
-                { value: '狗', label: '狗' },
-                { value: '鸟', label: '鸟' },
+                { value: '猫', label: tokenLabel('猫') },
+                { value: '狗', label: tokenLabel('狗') },
+                { value: '鸟', label: tokenLabel('鸟') },
               ]}
               onChange={switchSubject}
             />
           </div>
           <Segments
-            label="模型内部视图"
+            label={t('模型内部视图')}
             value={matrix}
             options={[
-              { value: 'attention', label: '注意力矩阵' },
-              { value: 'embedding', label: '词元 + 位置向量' },
+              { value: 'attention', label: t('注意力矩阵') },
+              { value: 'embedding', label: t('词元 + 位置向量') },
             ]}
             onChange={setMatrix}
           />
@@ -170,14 +180,14 @@ export default function Transformer() {
             {matrix === 'attention' && (
               <div className="attention-cols">
                 {tokens.map((ch, i) => (
-                  <span key={i}>{ch}</span>
+                  <span key={i}>{tokenLabel(ch)}</span>
                 ))}
               </div>
             )}
             <div className="attention-view">
               <div className="attention-labels">
                 {tokens.map((ch, i) => (
-                  <span key={i}>{ch}</span>
+                  <span key={i}>{tokenLabel(ch)}</span>
                 ))}
               </div>
               <div
@@ -191,7 +201,12 @@ export default function Transformer() {
                     <div
                       key={`${i}-${j}`}
                       className="matrix-cell"
-                      title={`${tokens[i]} → ${matrix === 'attention' ? tokens[j] : `维度 ${j + 1}`}：${n.toFixed(4)}`}
+                      title={t(
+                        '{0} → {1}：{2}',
+                        tokenLabel(tokens[i]),
+                        matrix === 'attention' ? tokenLabel(tokens[j]) : t('维度 {0}', j + 1),
+                        n.toFixed(4),
+                      )}
                       style={{
                         background:
                           matrix === 'attention'
@@ -208,31 +223,31 @@ export default function Transformer() {
               </div>
             </div>
           </div>
-          <div className="transformer-path" aria-label="模型计算路径">
-            <span>字与位置</span>
+          <div className="transformer-path" aria-label={t('模型计算路径')}>
+            <span>{t('字与位置')}</span>
             <i>→</i>
-            <span className="active">注意力</span>
+            <span className="active">{t('注意力')}</span>
             <i>→</i>
-            <span>前馈网络</span>
+            <span>{t('前馈网络')}</span>
             <i>→</i>
-            <span>下一字概率</span>
+            <span>{t('下一字概率')}</span>
           </div>
           <div className="transformer-loop">
             {mode === 'train'
-              ? '训练时：预测误差 → 反向传播 → Adam 更新权重 ↺'
-              : '生成时：采样一个字 → 追加到上下文 ↺'}
+              ? t('训练时：预测误差 → 反向传播 → Adam 更新权重 ↺')
+              : t('生成时：采样一个字 → 追加到上下文 ↺')}
           </div>
           <p className="note" style={{ marginTop: 15 }}>
             {matrix === 'attention'
-              ? '每行对应一个词元。因果掩码隐藏右上方的“未来”；颜色深浅来自模型实际计算。'
-              : '每个字用 8 个数表示，并加入当前位置的可学习向量。这里显示实际张量值。'}
+              ? t('每行对应一个词元。因果掩码隐藏右上方的“未来”；颜色深浅来自模型实际计算。')
+              : t('每个字用 8 个数表示，并加入当前位置的可学习向量。这里显示实际张量值。')}
           </p>
           <svg
             className="loss-chart"
             preserveAspectRatio="none"
             viewBox="0 0 420 110"
             role="img"
-            aria-label="训练损失曲线，越低表示模型给正确字更高概率"
+            aria-label={t('训练损失曲线，越低表示模型给正确字更高概率')}
           >
             <path d="M24 15v75h376" stroke="#dfd5e9" fill="none" />
             {history.length > 1 && (
@@ -252,20 +267,20 @@ export default function Transformer() {
               CROSS-ENTROPY LOSS
             </text>
             <text x="352" y="105" fill="#a78bb9" fontSize="9">
-              训练步数 →
+              {t('训练步数 →')}
             </text>
           </svg>
         </div>
         <div className="training-side">
-          <h3 className="lab-subtitle">下一个字的概率</h3>
+          <h3 className="lab-subtitle">{t('下一个字的概率')}</h3>
           {!inspection && !error && (
             <p className="note" role="status">
-              正在初始化 8 维教学模型…
+              {t('正在初始化 8 维教学模型…')}
             </p>
           )}
           {visibleProbs.map(({ p, token }) => (
-            <div className="prob-row" key={token}>
-              <span>{token}</span>
+            <div className="prob-row" key={tokenLabel(token)}>
+              <span>{tokenLabel(token)}</span>
               <div className="prob-track">
                 <span style={{ width: `${p * 100}%` }} />
               </div>
@@ -275,17 +290,17 @@ export default function Transformer() {
           {mode === 'train' ? (
             <>
               <div className="control" style={{ margin: '22px 0 13px' }}>
-                <span className="control-top">训练语料（固定）</span>
+                <span className="control-top">{t('训练语料（固定）')}</span>
                 <p className="note">
-                  猫爱吃鱼。
+                  {t('猫爱吃鱼。')}
                   <br />
-                  狗爱吃肉。
+                  {t('狗爱吃肉。')}
                   <br />
-                  鸟爱吃虫。
+                  {t('鸟爱吃虫。')}
                 </p>
               </div>
               <Range
-                label="学习率"
+                label={t('学习率')}
                 value={rate}
                 min={0.005}
                 max={0.03}
@@ -309,20 +324,20 @@ export default function Transformer() {
                   });
                 }}
               >
-                {running ? 'Ⅱ 暂停训练' : '训练 50 步 →'}
+                {running ? t('Ⅱ 暂停训练') : t('训练 50 步 →')}
               </button>
-              <p className="train-stat">一次更新：预测 → 计算损失 → 反向传播 → Adam 更新</p>
+              <p className="train-stat">{t('一次更新：预测 → 计算损失 → 反向传播 → Adam 更新')}</p>
             </>
           ) : (
             <>
               <Range
-                label="采样温度"
+                label={t('采样温度')}
                 value={temperature}
                 min={0}
                 max={1.5}
                 step={0.1}
                 onChange={setTemperature}
-                help="0 选择最可能的字；更高温度增加随机性。"
+                help={t('0 选择最可能的字；更高温度增加随机性。')}
               />
               <button
                 className="btn primary"
@@ -335,25 +350,29 @@ export default function Transformer() {
                   })
                 }
               >
-                生成下一个字 →
+                {t('生成下一个字 →')}
               </button>
               <p className="note" style={{ marginTop: 12 }}>
-                原始概率显示在上方；采样时再应用温度。输入只保留最近 4 个字，权重不会因此改变。
+                {t(
+                  '原始概率显示在上方；采样时再应用温度。输入只保留最近 4 个字，权重不会因此改变。',
+                )}
               </p>
             </>
           )}
           {demo.watch && (
             <div className="film-model-stats">
               <span>
-                权重更新 <b>{inspection?.step || 0}</b> 次
+                {t('权重更新')}
+                <b>{inspection?.step || 0}</b>
               </span>
               <span>
-                预测误差 <b>{loss === null ? '—' : loss.toFixed(3)}</b>
+                {t('预测误差')}
+                <b>{loss === null ? '—' : loss.toFixed(3)}</b>
               </span>
             </div>
           )}
           <h3 className="lab-subtitle weight-title" style={{ marginTop: 24 }}>
-            Q 权重的一行 · 实际参数
+            {t('Q 权重的一行 · 实际参数')}
           </h3>
           <div className="weight-values">
             {inspection?.weights.map((v, i) => (
@@ -368,14 +387,15 @@ export default function Transformer() {
         </div>
       </div>
       <div className="metrics">
-        <Metric label="已更新权重" value={inspection?.step || 0} unit="次" />
-        <Metric label="最近训练损失" value={loss === null ? '尚未训练' : loss.toFixed(3)} />
-        <Metric label="可学习参数" value={inspection?.parameterCount || '—'} />
+        <Metric label={t('已更新权重')} value={inspection?.step || 0} unit={t('次')} />
+        <Metric label={t('最近训练损失')} value={loss === null ? t('尚未训练') : loss.toFixed(3)} />
+        <Metric label={t('可学习参数')} value={inspection?.parameterCount || '—'} />
       </div>
       <p className="lab-caption">
-        <strong>真实计算的教学 Transformer：</strong>1 层、1 个注意力头、8 维向量、4 字上下文、9
-        字词表；包含因果注意力、残差、RMSNorm
-        和前馈网络。规模与语料刻意很小，不具备通用语言能力。训练在本地后台线程运行，不调用 AI 服务。
+        <strong>{t('真实计算的教学 Transformer：')}</strong>
+        {t(
+          '1 层、1 个注意力头、8 维向量、4 字上下文、9 字词表；包含因果注意力、残差、RMSNorm 和前馈网络。规模与语料刻意很小，不具备通用语言能力。训练在本地后台线程运行，不调用 AI 服务。',
+        )}
       </p>
     </div>
   );

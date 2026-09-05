@@ -1,0 +1,43 @@
+<h2 id="understand">A traffic jam can begin with one brake</h2>
+
+This road has no entrances, traffic lights or accidents. Cars begin equally spaced at the same steady speed. Let them run, then ask one car to brake gently.
+
+The following driver sees the gap shrink and slows down. The next responds to the changed speed and gap ahead. At some densities and driver settings, these adjustments persist rather than fading away, forming a slow-moving region.
+
+Cars travel forward while the congestion can travel backward. **The moving thing is the state of being slowed down, not a permanent group of cars.** One vehicle leaves the queue as another enters it.
+
+The space–time chart unfolds this pattern: horizontal position is distance around the road, and time runs downward. Color represents speed. Diagonal bands reveal the direction of the traffic wave.
+
+<h2 id="try">Why does the same brake have different effects?</h2>
+
+Use fewer cars so a disturbance has room to fade. Then increase their number, restart from the same kind of steady state, and apply the same brake. On a fixed-length road, more cars mean smaller average gaps.
+
+Change the desired following time gap. This controls the spacing drivers aim for; it is not an explicit delay between seeing the car ahead and reacting.
+
+Do not watch only average speed. Two flows can have similar averages but different numbers of nearly stopped cars. Individual vehicles, aggregate measures and the space–time chart offer complementary views.
+
+> Find settings that absorb the disturbance, then settings that sustain a slow wave. The outcome comes from both parameters and interactions.
+
+<h2 id="deeper">What rules do the cars follow?</h2>
+
+<details>
+<summary>The Intelligent Driver Model</summary>
+
+Each car combines a tendency to approach its desired speed on an open road with a tendency to keep enough space behind another car. Braking depends on the current gap, its own speed and the relative speed ahead.
+
+Desired spacing includes a minimum gap, a speed-dependent time gap and extra space when approaching a slower vehicle. These terms determine acceleration; small integration steps update speed and position.
+
+No rule says “make a jam here.” Congestion emerges from repeated interactions between the cars.
+
+</details>
+
+<details>
+<summary>What does the ring road leave out?</summary>
+
+The road is a fixed 500 m single lane. Vehicles are 4.5 m long and cannot overtake. The default film has 36 cars and one 1.5-second brake. Lane changes, varied driving styles and weather are omitted. Changing parameters rebuilds the uniform initial state.
+
+Small time steps and a discrete collision constraint prevent cars from crossing. Real driving and traffic control are more complex; a slider setting is not a universal road-management recommendation.
+
+</details>
+
+Phantom jams reveal a wider idea: individually reasonable adjustments can combine into an outcome nobody wanted.

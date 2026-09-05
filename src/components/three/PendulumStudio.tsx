@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
@@ -19,7 +20,7 @@ export default function PendulumStudio({
   current.current = { angle, length, mass, onDrag, onRelease };
   return (
     <Studio
-      label="黄铜摆球、悬线与精密支架构成的单摆。拖动摆球后释放"
+      label={t('黄铜摆球、悬线与精密支架构成的单摆。拖动摆球后释放')}
       cameraPosition={[2.9, 2.1, 10]}
       target={[0, 1.85, 0]}
       span={5.8}
@@ -190,7 +191,11 @@ export default function PendulumStudio({
         };
       }}
       fallback={
-        <svg viewBox="0 0 500 400" role="img" aria-label="单摆二维侧视图；使用角度滑块设置并释放">
+        <svg
+          viewBox="0 0 500 400"
+          role="img"
+          aria-label={t('单摆二维侧视图；使用角度滑块设置并释放')}
+        >
           <path d="M120 45H380" stroke="#718269" strokeWidth="4" />
           <path
             d={`M250 45l${Math.sin(angle) * length * 110} ${Math.cos(angle) * length * 110}`}

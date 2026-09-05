@@ -1,0 +1,37 @@
+<h2 id="understand">An image need not be described pixel by pixel</h2>
+
+A smooth gradient can be recorded as 64 brightness values. But its overall brightness and direction of change may describe it more economically. Transform coding looks for this opportunity.
+
+This experiment begins with an **8×8 luminance block**. The discrete cosine transform, or DCT, rewrites it as a weighted sum of 64 patterns. The top-left coefficient represents average brightness. Others describe brightness variation at different frequencies and directions.
+
+Select a coefficient and inspect its basis pattern. Low frequencies change slowly; high frequencies have denser stripes. **A coefficient describes a pattern, not the pixel at the same grid position.**
+
+The DCT itself need not lose information. Quantization is the lossy step: divide each coefficient by a step size and round. Small coefficients may become zero; larger ones lose precision. Multiplication during reconstruction cannot recover the discarded fractions.
+
+<h2 id="try">What survives if you keep one number?</h2>
+
+Keep just one low-frequency position. Only average brightness remains. Add more and watch the outline return before fine detail. This is an extra teaching control: ordinary JPEG mainly controls loss through quantization, rather than simply retaining the first N positions.
+
+Keep all 64 positions and lower quality. Compare the patterns. A **gradient** often needs few low frequencies. A **diagonal edge** needs more, and coarse quantization can produce ringing nearby. **Texture** loses its fine structure when high-frequency information disappears.
+
+The reconstruction and mean squared error are computed, not illustrated. Find two results with similar MSE but different visual quality: one number cannot fully represent perception.
+
+<h2 id="deeper">How do zeros become a smaller file?</h2>
+
+<details>
+<summary>From coefficients to encoding</summary>
+
+JPEG orders coefficients so runs of high-frequency zeros are easy to encode. Average-brightness coefficients can be coded as differences from the previous block; others use run-length and entropy coding. Dimensions, coding tables, markers and metadata also consume space.
+
+Fewer nonzero coefficients can help compression, but removing 20 coefficients does not necessarily save 20 bytes. This experiment creates no complete JPEG file, so it reports only coefficients and reconstruction error.
+
+</details>
+
+<details>
+<summary>What about color?</summary>
+
+Common JPEG pipelines separate luminance from color-difference information and may sample chroma at a lower resolution. Vision is often more sensitive to luminance structure, although small colored text can be noticeably affected.
+
+This grayscale block isolates the DCT and quantization. It omits neighboring-block seams, full color conversion and chroma subsampling. One block cannot predict the final size of an entire photograph.
+
+</details>
