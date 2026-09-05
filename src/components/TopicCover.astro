@@ -1,0 +1,399 @@
+---
+interface Props {
+  slug: string;
+  color: string;
+}
+const { slug, color } = Astro.props;
+const grid = Array.from({ length: 8 }, (_, i) => i);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs
+    ><pattern id={`dots-${slug}`} width="18" height="18" patternUnits="userSpaceOnUse"
+      ><circle cx="1" cy="1" r=".65" fill="#7b90b1" opacity=".2"></circle></pattern
+    ><linearGradient id={`fade-${slug}`} x1="0" x2="1" y2="1"
+      ><stop stop-color={color} stop-opacity=".14"></stop><stop
+        offset="1"
+        stop-color={color}
+        stop-opacity="0"></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill={`url(#fade-${slug})`}></rect><rect
+    width="400"
+    height="230"
+    fill={`url(#dots-${slug})`}></rect>
+  {
+    slug === 'bicycle' && (
+      <g>
+        <path d="m230 160 20 17h13" stroke="#3f5572" stroke-width="4" />
+        {Array.from({ length: 8 }, (_, i) => (
+          <path
+            d={`M271 160l${Math.cos((i * Math.PI) / 4) * 48} ${Math.sin((i * Math.PI) / 4) * 48}`}
+            stroke="#8da0b8"
+            opacity=".3"
+          />
+        ))}
+        <path d="M310 67h39m-8-6 8 6-8 6" stroke={color} stroke-width="2" />
+        <text x="291" y="50" fill="#708198" font-size="9" font-family="monospace">
+          FORCE → MOTION
+        </text>
+      </g>
+    )
+  }
+  {
+    slug === 'refrigerator' && (
+      <g>
+        <>
+          <rect
+            x="72"
+            y="48"
+            width="100"
+            height="152"
+            rx="12"
+            fill="white"
+            stroke="#869ab1"
+            stroke-width="2"
+          />
+          <path d="M73 108h97m-77-42v24m0 35v40" stroke="#9cb1c7" stroke-width="3" />
+          <rect x="185" y="153" width="47" height="34" rx="12" fill="#344d68" />
+          <path
+            d="M208 153V62h86v45h-67v26h67v35h-61M186 169h-23v-24H125V77h61"
+            stroke="#bcc9d7"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M208 151V62h85v45" stroke="#e88567" stroke-width="4" stroke-linecap="round" />
+          <path
+            d="M294 136v32h-61M186 169h-23v-24H125V77h61"
+            stroke="#4caac8"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <circle cx="125" cy="119" r="5" fill="#4caac8" />
+          <path
+            d="m105 87-8 6 8 6m0 39-8 6 8 6M315 73l8 6-8 6m0 54 8 6-8 6"
+            stroke="#acb8c8"
+            stroke-width="2"
+          />
+          <text x="278" y="48" fill="#d4795c" font-size="10" font-family="monospace">
+            HEAT OUT
+          </text>
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'printer' && (
+      <g>
+        <>
+          <path
+            d="M72 166v-54l38-53h176l31 53v54H72Z"
+            fill="#dfe4ef"
+            stroke="#8898af"
+            stroke-width="1.5"
+          />
+          <path d="M144 52h99v69h-99z" fill="white" stroke="#b1bed0" />
+          <path d="M155 68h76m-76 10h55m-55 10h69" stroke="#c1cddd" stroke-width="3" />
+          <circle cx="192" cy="146" r="30" fill="#745bc7" stroke="#4b3d92" stroke-width="2" />
+          <circle cx="192" cy="146" r="9" fill="#e1d8fa" />
+          <path d="m116 87 79 27" stroke="#e47970" stroke-width="2" />
+          <path d="m194 115-5 6" stroke="#f2c65b" stroke-width="4" />
+          <rect x="253" y="135" width="16" height="45" rx="8" fill="#dda66a" />
+          <rect x="272" y="135" width="16" height="45" rx="8" fill="#dc8a69" />
+          <path d="M82 172h108l17 20h116" stroke="white" stroke-width="6" />
+          <path d="M208 191h90" stroke={color} stroke-width="2" />
+          <circle cx="192" cy="177" r="4" fill="#e67275" />
+          <text x="251" y="119" fill="#8c799b" font-size="9" font-family="monospace">
+            LIGHT → INK
+          </text>
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'noise' && (
+      <g>
+        {[0, 1, 2].map((row) => (
+          <g>
+            <path d={`M35 ${80 + row * 45}H368`} stroke="#a1b4bf" opacity=".2" />
+            <path
+              d={Array.from(
+                { length: 101 },
+                (_, i) =>
+                  `${i ? 'L' : 'M'}${38 + i * 3.25} ${80 + row * 45 + Math.sin(i / 7) * (row === 2 ? 2 : 20) * (row === 1 ? -1 : 1)}`,
+              ).join(' ')}
+              stroke={row === 0 ? '#4192ab' : row === 1 ? '#dd926d' : color}
+              stroke-width="2.5"
+            />
+          </g>
+        ))}
+        <text x="49" y="46" fill="#627c86" font-size="10" font-family="monospace">
+          NOISE + ANTI-NOISE
+        </text>
+        <>
+          <text x="314" y="201" fill={color} font-size="11" font-family="monospace">
+            ≈ SILENCE
+          </text>
+          <path d="M188 101v6m-3-3h6M188 144h6m-6 5h6" stroke="#78929e" stroke-width="1.5" />
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'gps' && (
+      <g>
+        <ellipse
+          cx="201"
+          cy="134"
+          rx="112"
+          ry="77"
+          transform="rotate(40 201 134)"
+          stroke="#93b3d4"
+          stroke-dasharray="4 5"
+        />
+        {[
+          [116, 69],
+          [305, 102],
+          [181, 45],
+        ].map(([x, y]) => (
+          <g>
+            <path d={`M${x} ${y} 211 153`} stroke={color} stroke-dasharray="3 4" opacity=".55" />
+            <rect x={x - 5} y={y - 6} width="10" height="12" rx="2" fill="#5d7baf" />
+            <path d={`M${x - 18} ${y}h10m16 0h10`} stroke="#739aca" stroke-width="7" />
+          </g>
+        ))}
+        <circle cx="211" cy="153" r="12" fill="#447cf230" />
+        <circle cx="211" cy="153" r="5" fill={color} />
+      </g>
+    )
+  }
+  {
+    slug === 'network' && (
+      <g>
+        {[
+          [46, 108, 'YOU'],
+          [151, 76, 'DNS'],
+          [261, 76, 'SERVER'],
+          [296, 158, 'PAGE'],
+        ].map(([x, y, label]) => (
+          <g>
+            <rect
+              x={Number(x) - 23}
+              y={Number(y) - 18}
+              width="58"
+              height="46"
+              rx="7"
+              fill="#fff"
+              stroke="#91a8c8"
+            />
+            <text
+              x={Number(x) + 6}
+              y={Number(y) + 8}
+              text-anchor="middle"
+              font-family="monospace"
+              font-size="9"
+              fill="#6682a8"
+            >
+              {label}
+            </text>
+          </g>
+        ))}
+        <path
+          d="M82 116h33V99h12m59-1h51m54 11v24h12M82 133v50h190"
+          stroke="#8caed8"
+          stroke-width="2"
+          stroke-dasharray="4 4"
+        />
+        <>
+          <rect x="103" y="108" width="10" height="7" rx="2" fill={color} />
+          <rect x="210" y="94" width="10" height="7" rx="2" fill={color} />
+          <rect x="187" y="179" width="10" height="7" rx="2" fill="#50a59d" />
+          <text x="174" y="52" fill="#7187a3" font-size="10" font-family="monospace">
+            A REQUEST'S JOURNEY
+          </text>
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'jpeg' && (
+      <g>
+        {grid.flatMap((y) =>
+          grid.map((x) => (
+            <rect
+              x={62 + x * 12}
+              y={71 + y * 12}
+              width="12"
+              height="12"
+              fill={`rgb(${Math.round(120 + 100 * Math.sin(x * 0.4 + y * 0.2))},${Math.round(95 + 70 * Math.sin(x * 0.4 + y * 0.2))},${Math.round(110 + 55 * Math.cos(x * 0.4 + y * 0.2))})`}
+            />
+          )),
+        )}
+        <path d="M178 119h39m-7-6 7 6-7 6" stroke="#ac91a2" stroke-width="2" />
+        {grid.flatMap((y) =>
+          grid.map((x) => (
+            <rect
+              x={239 + x * 12}
+              y={71 + y * 12}
+              width="11"
+              height="11"
+              rx="1"
+              fill={x + y < 5 ? `rgba(183,94,121,${1 - (x + y) / 6})` : '#dbe1eb'}
+            />
+          )),
+        )}
+        <text x="65" y="190" fill="#8a7890" font-size="10" font-family="monospace">
+          64 PIXELS
+        </text>
+        <text x="242" y="190" fill="#8a7890" font-size="10" font-family="monospace">
+          64 FREQUENCIES
+        </text>
+      </g>
+    )
+  }
+  {
+    slug === 'transformer' && (
+      <g>
+        {[0, 1, 2, 3].flatMap((layer) =>
+          [0, 1, 2, 3].flatMap((n) =>
+            layer < 3
+              ? [0, 1, 2, 3].map((m) => (
+                  <path
+                    d={`M${87 + layer * 70} ${72 + n * 30} ${157 + layer * 70} ${72 + m * 30}`}
+                    stroke={color}
+                    stroke-opacity={(n + m) % 3 === 0 ? 0.35 : 0.1}
+                  />
+                ))
+              : [],
+          ),
+        )}
+        {[0, 1, 2, 3].flatMap((layer) =>
+          [0, 1, 2, 3].map((n) => (
+            <circle
+              cx={87 + layer * 70}
+              cy={72 + n * 30}
+              r={layer === 3 ? 7 : 6}
+              fill={layer === 3 && n === 1 ? color : '#f7f4ff'}
+              stroke={color}
+              stroke-opacity=".7"
+            />
+          )),
+        )}
+        <text x="66" y="199" fill="#8b7ba8" font-size="10" font-family="monospace">
+          TOKEN
+        </text>
+        <>
+          <text x="161" y="199" fill="#8b7ba8" font-size="10" font-family="monospace">
+            ATTENTION
+          </text>
+          <text x="273" y="199" fill="#8b7ba8" font-size="10" font-family="monospace">
+            NEXT?
+          </text>
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'dimensions' && (
+      <g>
+        <>
+          <path
+            d="m122 85 98-27 69 39-96 31-71-43v79l70 37 97-29V97M192 128v73M220 58v77l-98 29m98-29 69 37"
+            stroke="#8b78b8"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="m151 104 58-17 43 26-60 17-41-26v46l41 22 60-18v-41M192 130v42M209 87v44l-58 19m58-19 43 23M122 85l29 19m69-46-11 29m80 10-37 16m-130 51 29-14m41 51v-29m97 0-37-18"
+            stroke={color}
+            stroke-width="1.5"
+            stroke-opacity=".55"
+          />
+          <path d="M89 194h34m-34 0v-34" stroke="#a9a0bc" />
+          <text x="274" y="54" fill="#9685af" font-size="11" font-family="monospace">
+            4D → 3D
+          </text>
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'pendulum' && (
+      <g>
+        <>
+          <path d="M96 55h180" stroke="#8293a7" stroke-width="3" />
+          <path d="M181 55v133" stroke="#a4afbe" stroke-dasharray="4 5" />
+          <path d="M102 169a128 128 0 0 0 157 0" stroke="#b2bfce" stroke-dasharray="4 4" />
+          <path d="m181 55 76 119" stroke="#6e8097" stroke-width="2.5" />
+          <circle cx="181" cy="55" r="4" fill="#5e718d" />
+          <circle cx="257" cy="174" r="19" fill={color} />
+          <circle cx="252" cy="168" r="6" fill="#ffffff35" />
+          <path d="M181 99a44 44 0 0 0 24-7" stroke={color} stroke-width="2" />
+          <text x="190" y="85" fill={color} font-size="14" font-family="serif">
+            θ
+          </text>
+          <path d="M60 204h280" stroke="#c1c9d3" />
+          <text x="274" y="129" fill="#9b8664" font-size="10" font-family="monospace">
+            E = K + U
+          </text>
+        </>
+      </g>
+    )
+  }
+  {
+    slug === 'elevator' && (
+      <g>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <g>
+            <path d={`M93 ${58 + i * 31}h229`} stroke="#bdcec8" />
+            <text x="68" y={64 + i * 31} fill="#8ba197" font-size="10" font-family="monospace">
+              {5 - i}F
+            </text>
+          </g>
+        ))}
+        <rect x="140" y="54" width="44" height="134" fill="#dfeae6" stroke="#a8c0b6" />
+        <path d="M162 54v33m97-33v94" stroke="#7e9d8c" stroke-width="2" />
+        {[
+          [112, 143],
+          [122, 143],
+          [112, 112],
+          [305, 81],
+        ].map(([x, y]) => (
+          <g>
+            <circle cx={x} cy={y - 6} r="3" fill="#617f71" />
+            <path d={`M${x} ${y - 2}v7`} stroke="#617f71" stroke-width="3" />
+          </g>
+        ))}
+        <text x="143" y="212" fill="#739384" font-size="10" font-family="monospace">
+          WHO GOES FIRST?
+        </text>
+      </g>
+    )
+  }
+  {
+    slug === 'traffic' && (
+      <g>
+        <ellipse cx="200" cy="129" rx="127" ry="64" stroke="#f4f7fc" stroke-dasharray="7 7" />
+        {Array.from({ length: 17 }, (_, i) => {
+          const a = (i * Math.PI * 2) / 17;
+          return (
+            <rect
+              x={200 + 127 * Math.cos(a) - 9}
+              y={129 + 64 * Math.sin(a) - 4}
+              width="18"
+              height="8"
+              rx="3"
+              fill={i > 12 ? '#de865b' : '#667d9d'}
+              transform={`rotate(${(Math.atan2(64 * Math.cos(a), -127 * Math.sin(a)) * 180) / Math.PI} ${200 + 127 * Math.cos(a)} ${129 + 64 * Math.sin(a)})`}
+            />
+          );
+        })}
+        <path d="M172 129h60m-8-6 8 6-8 6" stroke="#a6b3c4" />
+        <text x="160" y="115" fill="#7d8aa0" font-size="10" font-family="monospace">
+          STOP & GO
+        </text>
+      </g>
+    )
+  }
+</svg>

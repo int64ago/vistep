@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vistep",
+  "compatibility_date": "2026-09-05",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "force-trailing-slash",
+  },
+  "routes": [
+    { "pattern": "vistep.ai", "custom_domain": true },
+    { "pattern": "www.vistep.ai", "custom_domain": true },
+  ],
+  "workers_dev": true,
+  "env": {
+    "preview": {
+      "name": "vistep-preview",
+      "routes": [],
+      "workers_dev": true,
+      "assets": {
+        "directory": "./dist",
+        "not_found_handling": "404-page",
+        "html_handling": "force-trailing-slash",
+      },
+    },
+  },
+}

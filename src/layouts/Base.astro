@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import '../styles/editorial.css';
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'vistep.ai — 让每一步原理变得可见',
+  description = '12 个可以亲手探索的原理。从自行车到大模型，用可视化看懂生活和工作背后的每一步。',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f7f2" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">跳到主要内容</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="vistep.ai 首页"
+        ><span class="brand-symbol" aria-hidden="true"
+          ><svg viewBox="0 0 28 28" fill="none"
+            ><path
+              d="m3 6 9 17L25 3M9 6l6 11M15 6l3 5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="square"></path></svg
+          ></span
+        >vistep<span class="wordmark-ai">.ai</span></a
+      >
+      <nav aria-label="主导航">
+        <a href="/#collection">全部探索 <span class="nav-count">12</span></a><a
+          href="/#name"
+          class="name-link">关于 vistep <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <a class="wordmark" href="/">vistep<span class="wordmark-ai">.ai</span></a><p>
+        Visualize Every Step with AI<span>让每一步原理变得可见</span>
+      </p><span class="footer-note"
+        >好奇心，是最好的起点。<small>© {new Date().getFullYear()} vistep</small></span
+      >
+    </footer>
+  </body>
+</html>
