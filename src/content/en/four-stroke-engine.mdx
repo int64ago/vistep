@@ -1,0 +1,49 @@
+<h2 id="understand">Four strokes, one powered expansion</h2>
+
+Follow the piston through one complete cycle. It descends with the intake valve open, admitting fresh gas. Both valves then close while the rising piston compresses the charge. A spark initiates combustion near the top, and the resulting high-pressure gas expands against the piston. Finally, the exhaust valve opens and the piston rises to expel spent gas.
+
+Those four strokes require two crankshaft revolutions. Combustion supplies energy; **the connecting rod and offset crank constrain reciprocating motion into rotation**. The flywheel, other cylinders or a starter must carry the mechanism through the other strokes. A downward stroke does not always mean that fuel has just ignited.
+
+The cutaway retains the cylinder wall, piston crown, wrist pin, rod, crankpin, main shaft and flywheel connections. Bright markers in the intake and exhaust paths indicate flow direction only. They stop crossing the valves when those valves close.
+
+<h2 id="try">The same position can mean a different process</h2>
+
+- Compare 90° and 450°. The piston occupies the same position, but one state is intake and the other is powered expansion. Valve positions and pressure differ.
+- Between 180° and 360°, decreasing volume raises pressure. Net gas torque is negative: the crankshaft is doing work on the gas.
+- Stop at 360°. Ideal heat addition raises pressure sharply, yet instantaneous torque remains zero at dead center. Advance the crank a little to gain a turning effect.
+- Follow the dot around the pressure–volume diagram. The enclosed area represents net work delivered by one ideal cycle.
+
+Choose “Try it yourself” to inspect the crank angle one degree at a time using the slider or arrow keys. A setting of 720° reconstructs the same cycle state as 0°.
+
+<h2 id="deeper">Connecting geometry with thermodynamics</h2>
+
+<details>
+<summary>A rod that keeps its length</summary>
+
+The crank radius is `r = 40 mm` and rod length is `l = 140 mm`. Relative to the shaft center, the crankpin lies at `(r sin θ, r cos θ)`. The wrist pin moves only along the cylinder axis, giving its height:
+
+<div className="formula">y = r cos θ + √(l² − r² sin² θ)</div>
+
+Piston displacement from the top is `x = r + l − y`. An 80 mm bore gives area `A = πb²/4` and volume `V = Vc + Ax`. Clearance volume `Vc` follows from the 9:1 compression ratio. The 3D assembly, 2D cutaway and readouts share this geometry.
+
+Virtual work gives net gas torque `τ = (p − p₀)A dx/dθ`. The finite rod length affects piston velocity, so a simple sine alone would not capture this relationship. Reciprocating inertia, friction and bearing loads are outside the calculation.
+
+</details>
+
+<details>
+<summary>Why the pressure jumps</summary>
+
+The teaching model uses an air-standard Otto cycle with heat-capacity ratio `γ = 1.4`, an initial temperature of 300 K, initial pressure of 101325 Pa and heat input of 1.3 MJ per kilogram of gas. Compression and expansion follow `pV^γ = constant`. Heat is added instantaneously at constant volume at top dead center; pressure returns to ambient at the end of expansion. These ideal boundaries create discontinuities.
+
+The four-stroke illustration also includes intake and exhaust at ambient pressure. Net cycle work is calculated from heat input minus heat rejection and cross-checked against the pressure–volume integral. This is an **ideal gas-cycle result**, not a measured engine output or fuel-economy prediction.
+
+</details>
+
+<details>
+<summary>What is deliberately omitted?</summary>
+
+The assembly represents a single-cylinder spark-ignition engine. Valve-drive hardware, lubrication, cooling, fuel injection, flame propagation and actual gas flow fields are omitted. Ideal valve timing has no advance, late closing or overlap; real engines do not time every event precisely at dead center.
+
+Crank motion is prescribed at a slow explanatory pace. Flywheel inertia and speed fluctuations are not dynamically integrated. The flywheel shows its mechanical connection and energy-storage role; steady animation speed does not imply steady output torque. Gas colors, spark size and moving dots are explanatory marks rather than temperature or particle-flow measurements.
+
+</details>

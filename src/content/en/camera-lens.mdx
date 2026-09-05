@@ -1,0 +1,38 @@
+<h2 id="understand">A sharp point is a meeting of many paths</h2>
+
+Each point on a subject sends light in many directions. A lens captures part of that light and redirects it. When the captured bundle reaches one small region on the sensor, the point can be recorded sharply. An extended image combines many such bundles.
+
+The bright marker on the optical bench identifies the same object point throughout the demonstration. Place the screen too near or too far away and its rays spread across different positions. **Focusing adjusts the relationship between subject, optics and image plane.** Our bench moves the screen to expose that distance. A camera normally moves lens elements relative to a fixed sensor.
+
+Moving the object point downward moves its image upward. This inversion follows from geometry. The lens is not running an image-flipping operation; the camera's viewing and display system presents the resulting picture in a useful orientation.
+
+<h2 id="try">Keep two settings fixed and change the third</h2>
+
+- With a 50 mm focal length and a subject 200 mm away, the ideal image plane is about 66.7 mm behind the lens.
+- Move the subject to 110 mm without moving the screen. The spot spreads. Move the screen to about 91.7 mm to bring it back together.
+- Increase focal length at a fixed subject distance. The image plane moves farther away and magnification grows. The focus button only enables when the required real image is within the screen's travel.
+- Move the subject inside the focal distance. The outgoing rays diverge. Their dashed backward extensions identify an upright virtual image on the subject side; the screen on the right cannot collect it.
+
+Exploration controls change object distance, focal length and screen position. Returning to the film or seeking a chapter reconstructs its settings directly.
+
+<h2 id="deeper">One calculation drives the rays and the numbers</h2>
+
+<details>
+<summary>The thin-lens equation and its signs</summary>
+
+<div className="formula">1/f = 1/u + 1/v　　m = −v/u</div>
+
+Here `u` is object distance, `f` is positive focal length and `v` is image distance. Positive `v` denotes a real image on the far side; negative `v` denotes a virtual image on the object side. Negative magnification means inversion. At exactly the focal distance, the outgoing rays from one object point are parallel. The display reports infinity instead of passing an infinite coordinate to the renderer.
+
+A ray from object height `h₀` arriving at lens height `h` has incoming slope `(h − h₀)/u`. The ideal lens changes that slope by `−h/f`. All admitted rays from the same object point therefore converge at, or extend backward to, the same image point.
+
+</details>
+
+<details>
+<summary>What the teaching model leaves out</summary>
+
+This is a paraxial, ideal thin lens. The visible glass thickness identifies the object; rays are not individually refracted at its two physical surfaces. The model excludes aberrations, diffraction, lens barrels, compound lens groups and autofocus algorithms. Moving light markers communicate direction, not the actual speed of light.
+
+The green marker is the theoretical image location if rays continue propagating. A marker away from the screen does not mean the screen receives a sharp image. Dashed backward extensions describe geometry, not light traveling backward.
+
+</details>

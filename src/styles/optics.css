@@ -1,0 +1,471 @@
+.optical-bench {
+  background: #eaece2;
+  padding: 24px 30px 18px;
+}
+.optics-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #71816b;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+.lens-object {
+  height: 410px;
+}
+.lens-views {
+  height: 410px;
+}
+.lens-plan {
+  height: 410px;
+  align-content: center;
+}
+.lens-plan .lens-diagram {
+  max-height: 360px;
+}
+.lens-views [hidden] {
+  display: none;
+}
+.lens-object .studio {
+  height: 100%;
+  min-height: 0;
+}
+.lens-observations {
+  display: flex;
+  justify-content: space-around;
+  gap: 22px;
+  padding: 0 12px 20px;
+  border-bottom: 1px solid #758a6826;
+}
+.lens-observations > span {
+  display: grid;
+  gap: 6px;
+  color: #687d61;
+  font-size: 16px;
+}
+.lens-observations strong {
+  font-weight: 500;
+  font-size: 27px;
+  color: #38513f;
+  font-variant-numeric: tabular-nums;
+}
+.lens-observations small {
+  font-size: 14px;
+  font-weight: 400;
+}
+.lens-diagram {
+  display: block;
+  width: 100%;
+  max-height: 250px;
+  overflow: visible;
+}
+.lens-diagram text {
+  fill: #728068;
+  font-family: inherit;
+  font-size: 16px;
+}
+.optics-explore {
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: end;
+}
+.optics-explore > .btn {
+  grid-column: 1/-1;
+  justify-self: center;
+  min-height: 44px;
+}
+.optics-model-note {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #7a8471;
+  margin: 10px 0 0;
+}
+.aperture-study {
+  background: #e6e9db;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 265px;
+  gap: 0 24px;
+  align-items: center;
+}
+.aperture-viewfinder {
+  position: relative;
+  max-width: 840px;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #243d32;
+}
+.aperture-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+}
+.viewfinder-top,
+.viewfinder-bottom {
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #eee9d1;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 7px #13291d;
+}
+.viewfinder-top {
+  top: 18px;
+}
+.viewfinder-bottom {
+  bottom: 18px;
+}
+.viewfinder-focus {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  transition:
+    left 0.7s,
+    top 0.7s;
+}
+.viewfinder-bottom > span:first-child {
+  white-space: nowrap;
+}
+.viewfinder-bottom > span:last-child {
+  text-align: right;
+}
+.viewfinder-focus i {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border: solid #e0eac8;
+  opacity: 0.7;
+}
+.viewfinder-focus i:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+.viewfinder-focus i:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+.viewfinder-focus i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+.viewfinder-focus i:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}
+.aperture-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 8px;
+}
+.aperture-observation {
+  width: 100%;
+}
+.aperture-study > .optics-model-note,
+.aperture-explore,
+.blur-study,
+.diffraction-note {
+  grid-column: 1/-1;
+}
+.pupil-view {
+  text-align: center;
+  color: #68785f;
+  font-size: 14px;
+}
+.pupil-view svg {
+  width: 112px;
+  display: block;
+  margin: 0 auto 8px;
+}
+.aperture-main-number {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: #4d664d;
+}
+.aperture-main-number strong {
+  font-size: 32px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.aperture-main-number span {
+  font-size: 16px;
+}
+.depth-scale {
+  position: relative;
+  margin: 26px 0 54px;
+  height: 13px;
+  background: #cbd2bd;
+  border-radius: 7px;
+}
+.depth-acceptable {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #6f8b61;
+  border-radius: 7px;
+}
+.depth-scale i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d9e3ca;
+  top: 3px;
+  transform: translateX(-50%);
+}
+.depth-scale i[data-focused='true'] {
+  background: #f6f5d3;
+  box-shadow: 0 0 0 2px #eff7d84d;
+}
+.depth-scale i span {
+  position: absolute;
+  font-size: 12px;
+  font-style: normal;
+  top: 18px;
+  transform: translateX(-35%);
+  white-space: nowrap;
+  color: #6e7e65;
+}
+.depth-scale > b {
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: 26px;
+  background: #425b43;
+}
+.depth-scale i:nth-of-type(odd) span {
+  top: 34px;
+}
+.aperture-observation p {
+  font-size: 16px;
+  color: #6e7d64;
+}
+.aperture-observation p strong {
+  font-weight: 500;
+  margin-left: 12px;
+  color: #425c42;
+}
+.aperture-explore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px 12px;
+}
+.aperture-explore > .btn {
+  grid-column: 1/-1;
+  justify-self: center;
+  min-height: 44px;
+}
+.blur-study {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #69795e;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.blur-study svg {
+  width: 75%;
+}
+.blur-study span {
+  max-width: 130px;
+}
+.diffraction-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 18px 22px;
+  color: #748369;
+  font-size: 16px;
+  border-top: 1px solid #89977c44;
+}
+.diffraction-note svg {
+  width: 180px;
+  max-height: 90px;
+}
+.diffraction-note span {
+  line-height: 1.8;
+}
+.aperture-viewfinder .blur-study,
+.aperture-viewfinder .diffraction-note {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  border: 0;
+  background: #e6e9db;
+  text-align: center;
+}
+.aperture-viewfinder .diffraction-note {
+  background: #243d32;
+  color: #dde5c6;
+}
+.aperture-viewfinder .blur-study svg {
+  width: 100%;
+  max-height: 170px;
+}
+.aperture-viewfinder .blur-study span {
+  max-width: none;
+  line-height: 1.7;
+}
+.aperture-viewfinder .diffraction-note svg {
+  width: 100%;
+  max-height: 210px;
+}
+.aperture-viewfinder .diffraction-note strong {
+  display: block;
+  white-space: nowrap;
+  font-size: 26px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+@media (max-width: 760px) {
+  .optical-bench {
+    padding: 20px 12px 16px;
+  }
+  .optics-eyebrow {
+    font-size: 10px;
+  }
+  .lens-object {
+    height: 340px;
+    margin: 0 -8px;
+  }
+  .lens-views,
+  .lens-plan {
+    height: 340px;
+  }
+  .lens-observations {
+    gap: 12px;
+    padding: 0 4px 15px;
+  }
+  .lens-observations > span {
+    font-size: 13px;
+  }
+  .lens-observations strong {
+    font-size: 24px;
+  }
+  .lens-observations small {
+    font-size: 11px;
+  }
+  .lens-diagram {
+    min-height: 170px;
+    margin: 5px 0;
+  }
+  .lens-diagram text {
+    font-size: 20px;
+  }
+  .optics-explore {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px 10px;
+  }
+  .optics-model-note {
+    font-size: 16px;
+  }
+  .aperture-study {
+    padding: 12px;
+    display: block;
+  }
+  .aperture-photo {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+  .aperture-viewfinder {
+    border-radius: 12px;
+  }
+  .viewfinder-top,
+  .viewfinder-bottom {
+    left: 15px;
+    right: 15px;
+    font-size: 13px;
+  }
+  .viewfinder-top {
+    top: 12px;
+  }
+  .viewfinder-focus {
+    width: 44px;
+    height: 44px;
+  }
+  .viewfinder-bottom {
+    bottom: 12px;
+  }
+  .aperture-strip {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    gap: 15px;
+    padding: 20px 2px 5px;
+  }
+  .pupil-view svg {
+    width: 74px;
+  }
+  .pupil-view {
+    font-size: 12px;
+  }
+  .aperture-main-number {
+    display: block;
+  }
+  .aperture-main-number strong {
+    font-size: 27px;
+    display: block;
+  }
+  .aperture-main-number span {
+    font-size: 14px;
+  }
+  .aperture-observation p strong {
+    display: block;
+    margin: 4px 0 0;
+  }
+  .aperture-explore {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 18px 6px;
+  }
+  .blur-study {
+    display: block;
+    padding: 10px 0;
+  }
+  .blur-study svg {
+    width: 100%;
+  }
+  .diffraction-note {
+    display: grid;
+    padding: 16px 2px;
+  }
+  .aperture-viewfinder .blur-study,
+  .aperture-viewfinder .diffraction-note {
+    padding: 12px;
+    gap: 12px;
+    font-size: 16px;
+  }
+  .aperture-viewfinder .diffraction-note svg {
+    max-height: 110px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .viewfinder-focus {
+    transition: none;
+  }
+}
