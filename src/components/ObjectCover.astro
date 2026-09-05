@@ -1,0 +1,251 @@
+---
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const gearPath = (cx: number, cy: number, r: number, n: number) =>
+  Array.from({ length: n * 4 }, (_, i) => {
+    const a = (i / n / 4) * Math.PI * 2,
+      rr = r * (i % 4 === 1 || i % 4 === 2 ? 1 : 0.93);
+    return `${i ? 'L' : 'M'}${cx + Math.cos(a) * rr} ${cy + Math.sin(a) * rr}`;
+  }).join(' ') + 'Z';
+---
+
+<svg viewBox="0 0 480 350" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id={`metal-${slug}`} x1=".1" y1="0" x2=".85" y2="1"
+      ><stop stop-color="#aeb9bb"></stop><stop offset=".32" stop-color="#e3e8e6"></stop><stop
+        offset=".53"
+        stop-color="#8e9b9b"></stop><stop offset=".8" stop-color="#c2ceca"></stop><stop
+        offset="1"
+        stop-color="#6e7d7d"></stop></linearGradient
+    >
+    <radialGradient id={`brass-${slug}`} cx=".3" cy=".25" r=".75"
+      ><stop stop-color="#f6e7b7"></stop><stop offset=".28" stop-color="#cbb375"></stop><stop
+        offset=".65"
+        stop-color="#a18a51"></stop><stop offset=".9" stop-color="#746542"></stop><stop
+        offset="1"
+        stop-color="#b29c61"></stop></radialGradient
+    >
+    <filter id={`shadow-${slug}`} x="-50%" y="-50%" width="200%" height="200%"
+      ><feGaussianBlur stdDeviation="8"></feGaussianBlur></filter
+    >
+  </defs>
+  {
+    slug === 'bicycle' && (
+      <>
+        <ellipse
+          cx="249"
+          cy="271"
+          rx="153"
+          ry="21"
+          fill="#53625a"
+          opacity=".12"
+          filter={`url(#shadow-${slug})`}
+        />
+        <g transform="matrix(.96,-.15,.16,.78,-16,74)">
+          {[8, 7, 6, 5, 4, 3, 2, 1, 0].map((i) => (
+            <g transform={`translate(${i * 1.1},${-i * 3})`}>
+              <path
+                d={gearPath(342, 174, 30 + i * 4.4, 18 + i * 2)}
+                fill={`url(#metal-${slug})`}
+                stroke="#71827e"
+                stroke-width=".6"
+              />
+              <circle cx="342" cy="174" r="13" fill="#5f7270" />
+            </g>
+          ))}
+          <path d={gearPath(148, 174, 93, 44)} fill="#4c5a58" stroke="#bcc7c1" stroke-width="1.1" />
+          <circle cx="148" cy="174" r="77" fill="#e5eae0" />
+          {Array.from({ length: 5 }, (_, i) => {
+            const a = (i * Math.PI * 2) / 5;
+            return (
+              <g>
+                <path
+                  d={`M148 174L${148 + Math.cos(a) * 77} ${174 + Math.sin(a) * 77}`}
+                  stroke="#4a5855"
+                  stroke-width="13"
+                />
+                <circle
+                  cx={148 + Math.cos(a) * 58}
+                  cy={174 + Math.sin(a) * 58}
+                  r="5"
+                  fill={`url(#metal-${slug})`}
+                  stroke="#718079"
+                />
+              </g>
+            );
+          })}
+          <>
+            <circle cx="148" cy="174" r="22" fill="#4d5b57" />
+            <circle cx="148" cy="174" r="10" fill={`url(#metal-${slug})`} />
+          </>
+          <path
+            d="M156 82 344 112a62 62 0 0 1 0 124l-188 30a93 93 0 1 1 0-184Z"
+            stroke="#7c8e86"
+            stroke-width="7"
+          />
+          <path
+            d="M156 82 344 112a62 62 0 0 1 0 124l-188 30a93 93 0 1 1 0-184Z"
+            stroke="#d6dfd5"
+            stroke-width="4"
+            stroke-dasharray="3 5"
+          />
+          <>
+            <path d="m148 174-71 90" stroke="#78827a" stroke-width="16" stroke-linecap="round" />
+            <path d="m148 174-71 90" stroke="#33413a" stroke-width="11" stroke-linecap="round" />
+          </>
+          <path d="m53 259 37 4-8 17-37-4z" fill="#425347" stroke="#99a894" />
+        </g>
+        <>
+          <path d="M322 76h37m-5-5 5 5-5 5" stroke="#7f9478" />
+          <text
+            x="300"
+            y="60"
+            fill="#8da17f"
+            font-size="9"
+            font-family="sans-serif"
+            letter-spacing="1"
+          >
+            POWER IN MOTION
+          </text>
+        </>
+      </>
+    )
+  }
+  {
+    slug === 'pendulum' && (
+      <>
+        <ellipse
+          cx="250"
+          cy="297"
+          rx="151"
+          ry="17"
+          fill="#827b5d"
+          opacity=".12"
+          filter={`url(#shadow-${slug})`}
+        />
+        <>
+          <path d="m97 276 219-23 76 32-219 27-76-36Z" fill="#bbbbaa" />
+          <path d="m97 276 76 28 219-26v9l-219 27-76-30Z" fill="#a2a491" />
+        </>
+        <path d="M147 278V60m195 201V42M142 61l205-21" stroke="#536056" stroke-width="6" />
+        <path d="m147 175 35 119m160-148 32 122" stroke="#8b9787" stroke-width="2" />
+        <path d="m242 53 34 7v15l-34-7V53Z" fill="#b5a071" />
+        <>
+          <path d="m260 67 63 163" stroke="#c9c9b5" stroke-width="2.4" />
+          <path d="m260 67 63 163" stroke="#696f5b" stroke-width=".6" />
+        </>
+        <path d="M260 72v170" stroke="#b4b59f" stroke-dasharray="3 5" />
+        <path d="M169 214a162 162 0 0 0 180 1" stroke="#b8b8a0" stroke-dasharray="2 5" />
+        <ellipse
+          cx="300"
+          cy="279"
+          rx="28"
+          ry="7"
+          fill="#858161"
+          opacity=".18"
+          filter={`url(#shadow-${slug})`}
+        />
+        <>
+          <circle cx="326" cy="237" r="28" fill={`url(#brass-${slug})`} />
+          <circle cx="318" cy="225" r="9" fill="#f5eac2" opacity=".24" />
+        </>
+        <>
+          <path d="M260 100a34 34 0 0 1 12-2" stroke="#a39264" />
+          <text x="274" y="100" fill="#a9996e" font-size="13" font-style="italic">
+            θ
+          </text>
+        </>
+        <text
+          x="94"
+          y="328"
+          fill="#9b9d82"
+          font-size="8"
+          font-family="sans-serif"
+          letter-spacing="1.6"
+        >
+          POTENTIAL ⇄ KINETIC
+        </text>
+      </>
+    )
+  }
+  {
+    slug === 'jpeg' && (
+      <>
+        <ellipse
+          cx="240"
+          cy="279"
+          rx="151"
+          ry="23"
+          fill="#68627c"
+          opacity=".13"
+          filter={`url(#shadow-${slug})`}
+        />
+        {[0, 1, 2].map((layer) => (
+          <g
+            transform={`translate(${86 + layer * 82},${103 + layer * 19}) matrix(.82,-.3,.05,.9,0,0)`}
+          >
+            <rect
+              x="-9"
+              y="-9"
+              width="172"
+              height="172"
+              rx="1"
+              fill={layer === 1 ? '#dedcea' : '#edecf1'}
+              stroke="#c2becf"
+            />
+            {Array.from({ length: 64 }, (_, i) => {
+              const x = i % 8,
+                y = Math.floor(i / 8),
+                v =
+                  layer === 0
+                    ? Math.round(140 + 90 * Math.cos((x - y) * 0.6))
+                    : layer === 2
+                      ? Math.round(140 + 80 * Math.cos((x - y) * 0.56))
+                      : 0;
+              return (
+                <rect
+                  x={x * 19.2}
+                  y={y * 19.2}
+                  width={layer === 1 ? 17.5 : 19.2}
+                  height={layer === 1 ? 17.5 : 19.2}
+                  fill={
+                    layer === 1
+                      ? x + y < 6
+                        ? `rgba(127,99,140,${1 - (x + y) / 7})`
+                        : '#e6e3ed'
+                      : `rgb(${v + 9},${v - 4},${v + 14})`
+                  }
+                />
+              );
+            })}
+          </g>
+        ))}
+        <>
+          <path d="M341 101v-24h-51" stroke="#a398b4" />
+          <text
+            x="212"
+            y="63"
+            fill="#94859f"
+            font-size="9"
+            font-family="sans-serif"
+            letter-spacing="1"
+          >
+            LESS DATA. SAME IDEA.
+          </text>
+        </>
+        <text
+          x="91"
+          y="306"
+          fill="#9d90ac"
+          font-size="8"
+          font-family="sans-serif"
+          letter-spacing="1.4"
+        >
+          PIXELS → FREQUENCIES → PIXELS
+        </text>
+      </>
+    )
+  }
+</svg>

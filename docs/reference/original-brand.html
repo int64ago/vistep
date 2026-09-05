@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>vistep.ai — Visualize Every Step with AI</title>
+  <meta name="description" content="AI-made animations of how things work. Visualize Every Step with AI.">
+  <meta name="theme-color" content="#0c1018">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/martian-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: "Martian Mono";
+      font-style: normal;
+      font-weight: 400 800;
+      font-display: swap;
+      src: url("/fonts/martian-mono-latin.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    :root {
+      --bg: oklch(0.13 0.014 250);
+      --fg: oklch(0.97 0.004 250);
+      --muted: oklch(0.58 0.014 250);
+      --dim: oklch(0.55 0.014 250);
+      --hint: oklch(0.6 0.014 250);
+      --foot: oklch(0.44 0.014 250);
+      --accent: oklch(0.84 0.16 195);
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+    }
+
+    #morph-root {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Martian Mono", ui-monospace, "Cascadia Code", "SF Mono", monospace;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: oklch(0.93 0.11 195); }
+
+    .grid {
+      position: absolute;
+      inset: -10%;
+      background-image:
+        linear-gradient(to right, oklch(0.97 0.004 250 / 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, oklch(0.97 0.004 250 / 0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      transform: perspective(700px) rotateX(58deg) scale(1.5);
+      transform-origin: 50% 100%;
+      pointer-events: none;
+    }
+
+    .glow {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: min(900px, 130vw);
+      height: min(380px, 55vh);
+      border-radius: 50%;
+      background: radial-gradient(closest-side, oklch(0.84 0.16 195 / 0.17), transparent 72%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .scan {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 140px;
+      background: linear-gradient(to bottom, transparent, oklch(0.84 0.16 195 / 0.09), transparent);
+      animation: mp-scan 7s linear infinite;
+      pointer-events: none;
+    }
+
+    .scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        oklch(0 0 0 / 0.16) 0px,
+        oklch(0 0 0 / 0.16) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: clamp(18px, 4vw, 30px) clamp(18px, 5vw, 40px);
+      font-size: clamp(9px, 2.4vw, 10px);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .live {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+      animation: mp-blink 2.4s steps(1) infinite;
+    }
+
+    main {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(26px, 6vw, 46px);
+      padding: 30px clamp(14px, 4vw, 28px) clamp(40px, 10vw, 80px);
+    }
+
+    .morph-box { position: relative; overflow: visible; }
+
+    .word {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      font-weight: 800;
+      font-size: min(4.4vw, 40px);
+      line-height: 1.5;
+      letter-spacing: 0;
+      white-space: nowrap;
+      transform: scale(1);
+      transform-origin: center center;
+      transition: transform 1.5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .word.expanded { transform: scale(1.85); }
+
+    .ch {
+      display: inline-block;
+      flex: 0 0 auto;
+      overflow: visible;
+      height: 1.5em;
+      text-align: center;
+      white-space: pre;
+      transition: width .75s cubic-bezier(.22, 1, .36, 1), opacity .75s ease, color .4s ease, transform .75s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .hint {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      font-size: clamp(8px, 2.3vw, 9px);
+      font-weight: 400;
+      letter-spacing: clamp(0.14em, 0.8vw, 0.32em);
+      text-transform: uppercase;
+      color: var(--hint);
+      transition: opacity .6s ease .2s;
+      opacity: 0.2;
+    }
+
+    .hint.shown { opacity: 1; }
+
+    .rule {
+      width: 30px;
+      height: 1px;
+      background: oklch(0.6 0.014 250 / 0.45);
+    }
+
+    footer {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 20px;
+      padding: clamp(14px, 4vw, 20px) clamp(18px, 5vw, 40px) clamp(20px, 6vw, 32px);
+      font-size: clamp(8px, 2.2vw, 9px);
+      letter-spacing: clamp(0.12em, 0.6vw, 0.24em);
+      text-transform: uppercase;
+      color: var(--foot);
+      border-top: 1px solid oklch(0.97 0.004 250 / 0.07);
+    }
+
+    @keyframes mp-blink {
+      0%, 45% { opacity: 1; }
+      50%, 95% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes mp-scan {
+      0% { transform: translateY(-30vh); opacity: 0; }
+      12% { opacity: .5; }
+      88% { opacity: .5; }
+      100% { transform: translateY(130vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="morph-root">
+    <div class="grid" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="scan" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <header>
+      <span>vistep.ai</span>
+      <span class="live">
+        <span class="live-dot" aria-hidden="true"></span>
+        Coming soon
+      </span>
+    </header>
+
+    <main>
+      <div class="morph-box" data-morph-box="1">
+        <div class="word" data-word></div>
+      </div>
+      <div class="hint" data-hint>
+        <span class="rule" aria-hidden="true"></span>
+        AI-made animations of how things work
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+    </main>
+
+    <footer>
+      <span>Visualize Every Step with AI</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+
+  <script>
+    const SCRAMBLE = "▚▞#%&$@*/\\<>=+—•░▒";
+    const ACCENT = "oklch(0.84 0.16 195)";
+    const BASE = "oklch(0.97 0.004 250)";
+    const DIM = "oklch(0.55 0.014 250)";
+
+    function spec() {
+      const out = [];
+      const push = (t, role) => out.push({ t, role });
+      const word = (w, roles) => [...w].forEach((c, i) => push(c, roles[i]));
+      word("visualize", ["k", "k", "k", "d", "d", "d", "d", "d", "d"]);
+      push(" ", "g");
+      word("every", ["d", "d", "d", "d", "d"]);
+      push(" ", "d");
+      word("step", ["m", "k", "k", "k"]);
+      push(" ", "g2");
+      word("with", ["d", "d", "d", "d"]);
+      push(" ", "d");
+      push(".", ".");
+      word("ai", ["k", "k"]);
+      return out;
+    }
+
+    const charsSpec = spec();
+    const root = document.getElementById("morph-root");
+    const wordEl = document.querySelector("[data-word]");
+    const hintEl = document.querySelector("[data-hint]");
+    const spans = charsSpec.map((c) => {
+      const el = document.createElement("span");
+      el.className = "ch";
+      wordEl.appendChild(el);
+      return el;
+    });
+
+    const state = { phase: 0, settled: 0, seed: 0 };
+    const timers = [];
+
+    function stop() {
+      timers.splice(0).forEach((t) => { clearTimeout(t); clearInterval(t); });
+    }
+
+    function charView(c, i) {
+      const p = state.phase;
+      const scrambling = state.settled <= i;
+      let t = c.t;
+      let w = "1ch";
+      let op = 1;
+      let color = BASE;
+      let tf = "none";
+
+      if (scrambling && c.t !== " " && c.role !== ".") {
+        t = SCRAMBLE[(i * 7 + state.seed * 3) % SCRAMBLE.length];
+        color = ACCENT;
+        op = 0.5;
+      }
+
+      if (c.role === "d") {
+        if (p >= 1) op = 0;
+        if (p >= 2) w = "0ch";
+        else if (!scrambling && c.t !== " ") color = DIM;
+      }
+
+      if (c.role === "g") {
+        if (p >= 4) {
+          w = "0ch";
+          op = 0;
+        }
+      }
+
+      if (c.role === "g2") {
+        if (p >= 5) {
+          w = "0ch";
+          op = 0;
+        }
+      }
+
+      if (c.role === ".") {
+        t = ".";
+        color = ACCENT;
+        if (p < 5) {
+          w = "0ch";
+          op = 0;
+        } else {
+          w = "0.7ch";
+          op = 1;
+        }
+      }
+
+      if (c.role === "m") {
+        if (p >= 3) color = ACCENT;
+        if (p >= 4) {
+          tf = "translateX(-1ch)";
+          op = 0;
+          w = "0ch";
+        }
+      }
+
+      if (c.role === "k" && c.t === "s" && p >= 3 && p < 5) color = ACCENT;
+      if (p >= 5 && (c.role === "." || (c.role === "k" && i >= 20))) color = ACCENT;
+
+      return { t, w, op, color, tf };
+    }
+
+    function render() {
+      const p = state.phase;
+      wordEl.classList.toggle("expanded", p >= 5);
+      hintEl.classList.toggle("shown", p >= 6);
+
+      charsSpec.forEach((c, i) => {
+        const v = charView(c, i);
+        const el = spans[i];
+        const colorWithScale = c.role === "k" && c.t === "s" && p >= 5;
+        el.style.transition = colorWithScale
+          ? "width .75s cubic-bezier(.22, 1, .36, 1), opacity .75s ease, color 1.3s ease, transform .75s cubic-bezier(.22, 1, .36, 1)"
+          : "";
+        el.textContent = v.t;
+        el.style.width = v.w;
+        el.style.opacity = String(v.op);
+        el.style.color = v.color;
+        el.style.transform = v.tf;
+      });
+    }
+
+    function sequence() {
+      const at = (ms, phase) => timers.push(setTimeout(() => {
+        state.phase = phase;
+        render();
+      }, ms));
+      at(500, 1);   // extras fade in place
+      at(950, 2);   // empty slots close → vis step ai
+      at(2000, 3);  // hold, light both S's
+      at(2600, 4);  // two S's merge into one → vistep ai
+      at(3600, 5);  // the gap becomes the dot → vistep.ai
+      at(4700, 6);  // settle
+      timers.push(setTimeout(run, 12500));
+    }
+
+    function run() {
+      stop();
+      state.phase = 0;
+      state.settled = 0;
+      state.seed = 0;
+      render();
+
+      const n = charsSpec.length;
+      const iv = setInterval(() => {
+        const next = state.settled + 1;
+        if (next >= n) {
+          clearInterval(iv);
+          state.settled = n;
+          state.seed += 1;
+          render();
+          sequence();
+          return;
+        }
+        state.settled = next;
+        state.seed += 1;
+        render();
+      }, 90);
+      timers.push(iv);
+    }
+
+    root.addEventListener("click", run);
+    run();
+  </script>
+</body>
+</html>
