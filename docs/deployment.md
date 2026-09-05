@@ -1,5 +1,11 @@
 # 部署与回滚
 
+## 当前正式版本
+
+2026-09-05，完整站点已发布至 [vistep.ai](https://vistep.ai/) 与 [www.vistep.ai](https://www.vistep.ai/)。Worker `vistep` 的版本为 `740c58e2-4c63-488c-b1a5-c7546f89a836`，发布代码基于 `259d443`。下方预览记录中的“未发布正式站”描述的是当时状态。
+
+发布检查见 [首次正式发布记录](qa-production.md)。如需恢复发布前的原品牌站，仍使用下方记录的旧版本；不需要修改 DNS 或删除 Search Console 验证 TXT。
+
 ## 保留的现有配置
 
 正式服务：`vistep`。自定义域名 `vistep.ai`、`www.vistep.ai` 均绑定该服务。不要删除或重新创建 DNS 记录。生产和预览分别使用不同 Worker，预览不绑定正式域名。

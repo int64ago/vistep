@@ -20,6 +20,7 @@ Start with the bilingual [project README](../README.md) / [English README](../RE
 - [自动演示与机械细节](qa-automatic-demos.md)
 - [双语与同步讲解](qa-bilingual-narration.md)
 - [维护配套与搜索接入](qa-maintenance.md)
+- [首次正式发布](qa-production.md)
 
 ## 社区与许可
 

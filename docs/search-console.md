@@ -6,9 +6,10 @@
 - 已通过 Cloudflare 根域 TXT 完成域名所有权验证；Google 页面显示 **Ownership verified**，CLI 返回 **siteOwner**。
 - 只新增 `google-site-verification=…` TXT，保留现有 `vistep.ai` 和 `www.vistep.ai` Worker 绑定。不要删除此 TXT；Google 会持续检查所有权。
 - 管理入口：[vistep.ai Search Console](https://search.google.com/search-console?resource_id=sc-domain%3Avistep.ai)。
-- 未提交 sitemap：正式站当前仍是原品牌页，`/sitemap-index.xml` 返回 HTML，而不是 XML。新版完整页面与正确 sitemap 目前只在预览构建中，不能向 Google 提交尚未上线的正式专题地址。
+- 新版正式站已上线，索引地图与子地图均返回正确 XML，包含 26 个中英文页面。
+- 已于 `2026-09-05T08:06:10.481Z` 提交 `https://vistep.ai/sitemap-index.xml`。提交后列表可查，初始状态为 `isPending: true`、0 errors、0 warnings，等待 Google 处理。
 
-本次首页 URL 检查返回 `URL is unknown to Google`，当前 sitemap 列表为空。域名验证完成不代表页面已经收录，也不保证排名。新属性没有数据属于可能的正常状态，后续以 Google 的抓取和索引报告为准。
+正式发布前的首页 URL 检查返回 `URL is unknown to Google`。现在地图已提交，但提交成功不代表页面已收录，也不保证排名。新属性没有数据属于可能的正常状态，后续以 Google 的抓取和索引报告为准。
 
 ## 本机命令
 
@@ -22,7 +23,7 @@ google-search-console-cli inspect sc-domain:vistep.ai https://vistep.ai/
 
 添加属性不等于验证所有权。本次现有 OAuth 凭据可访问 Search Console，但没有 Site Verification API 的授权范围，因此通过已经登录的 Google 页面取得 TXT，并在 Cloudflare 页面新增记录后完成验证。无需把验证接口权限扩大到日常工具，也无需在网站上增加访客跟踪脚本。
 
-## 新版正式上线之后
+## 后续发布与地图维护
 
 1. 按 [部署手册](deployment.md) 发布确认过的版本，并记录回滚 ID。
 2. 检查 `https://vistep.ai/sitemap-index.xml` 与它引用的子地图都返回 200、XML 内容；检查 `robots.txt` 为纯文本规则，没有误混入 HTML。

@@ -4,9 +4,9 @@
 
 用精细的视觉演示，解释生活和工作背后的原理。先看变化如何发生，再按自己的兴趣探索细节。
 
-[体验新版预览](https://vistep-preview.int64ago.workers.dev/) · [制作一个场景](docs/creating-a-scene.md) · [贡献指南](CONTRIBUTING.md) · [文档目录](docs/README.md)
+[访问 vistep.ai](https://vistep.ai/) · [开发预览](https://vistep-preview.int64ago.workers.dev/) · [制作一个场景](docs/creating-a-scene.md) · [贡献指南](CONTRIBUTING.md) · [文档目录](docs/README.md)
 
-> 当前完整站点在预览地址；`vistep.ai` 正式域名仍保留原品牌页。仓库按开源协作方式整理，许可证为 MIT；仓库是否公开由所有者决定。
+> 完整站点已部署至 `vistep.ai`，包含全部 12 个中英文专题与同步讲解。预览站独立部署并禁止搜索收录。仓库按开源协作方式整理，许可证为 MIT；仓库是否公开由所有者决定。
 
 ## 可以看到什么
 

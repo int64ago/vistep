@@ -4,6 +4,7 @@ Notable changes are recorded here. Commit history remains the source for individ
 
 ## Unreleased
 
+- Published the complete bilingual site to `vistep.ai` and `www.vistep.ai`; retained the old brand page as a rollback version and submitted the production sitemap to Search Console.
 - Verified the `vistep.ai` Search Console domain property through a Cloudflare DNS TXT record.
 - Added a scene production guide, evidence-based retrospective, repository skill and unpublished draft generator.
 - Added catalog consistency and static build audits; topic counts now follow the catalog.
