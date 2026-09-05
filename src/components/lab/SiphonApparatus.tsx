@@ -1,6 +1,7 @@
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import { SIPHON, siphonPoint, siphonPressure, type SiphonShot } from '../../models/siphon';
+import { siphonOutletFlow } from './siphonBranchFlow';
 
 /** Hybrid apparatus: a depth-shaded orthographic vessel section with an exact planar tube. */
 export default function SiphonApparatus({
@@ -138,6 +139,8 @@ export default function SiphonApparatus({
   const gap = s.status === 'vapor';
   // Vapor glyphs flag invalid single-phase physics; no invented gas volume is subtracted.
   const waterIntervals = s.wet;
+  const outflow = siphonOutletFlow(shot);
+  const jet = outflow.jet && { from: project(outflow.jet.from), to: project(outflow.jet.to) };
   const headX = phone ? width - 18 : Math.min(width - 55, outlet.x + 92);
   return (
     <div className="siphon-apparatus" ref={host} data-flat={flat} data-compact={compact}>
@@ -212,9 +215,10 @@ export default function SiphonApparatus({
             const q = at(distance);
             return <circle key={n} cx={q.x} cy={q.y} r="2.1" fill="#f1fae5" />;
           })}
-        {s.status === 'flow' && (
+        {jet && (
           <path
-            d={`M${outlet.x},${outlet.y}L${receiver.x},${receiver.y}`}
+            data-siphon-jet={outflow.kind}
+            d={`M${jet.from.x},${jet.from.y}L${jet.to.x},${jet.to.y}`}
             stroke="#6cae9b"
             strokeWidth="4"
             opacity=".8"
@@ -223,11 +227,12 @@ export default function SiphonApparatus({
         )}
         <ellipse cx={inlet.x} cy={inlet.y} rx="6" ry="2.8" fill="#428779" stroke="#e4f2dc" />
         <ellipse
+          data-siphon-outlet={outflow.outletWet ? 'wet' : 'dry'}
           cx={outlet.x}
           cy={outlet.y}
           rx="6"
           ry="2.8"
-          fill={s.status === 'flow' ? '#428779' : '#fafaf0'}
+          fill={outflow.outletWet ? '#428779' : '#fafaf0'}
           stroke="#819d89"
         />
         <g transform={`translate(${crest.x},${crest.y})`}>

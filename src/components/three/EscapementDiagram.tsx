@@ -1,4 +1,5 @@
 import { ESC_ENERGY_PLOT, escapementEnergyY } from './EscapementEnergyPlot';
+import { ESC_HARDWARE as H, escapementHanger, escapementOverviewFrame } from './EscapementGeometry';
 import { useId } from 'react';
 import { t } from '../../i18n';
 import { useCompact } from '../lab/useCompact';
@@ -23,10 +24,26 @@ export function EscapementDiagram({ pose, focus }: { pose: EscPose; focus: strin
     macro = focus === 'entry' || focus === 'exit' || focus === 'lock',
     locking = focus === 'lock',
     side = focus === 'exit' ? 1 : 0;
-  const scale = locking ? (compact ? 100 : 135) : macro ? (compact ? 250 : 290) : compact ? 54 : 63,
+  const overview = escapementOverviewFrame(compact),
+    hanger = escapementHanger(pose),
+    scale = locking ? (compact ? 100 : 135) : macro ? (compact ? 250 : 290) : overview.scale,
     cx = locking ? -0.42 : macro ? (side ? 1.08 : -1.02) : 0,
     cy = locking ? 1.65 : macro ? 1.04 : 0.5;
-  const to = (p: EscPoint): EscPoint => [w / 2 + (p[0] - cx) * scale, h / 2 - (p[1] - cy) * scale];
+  const to = (p: EscPoint, z = 0): EscPoint =>
+    macro ? [w / 2 + (p[0] - cx) * scale, h / 2 - (p[1] - cy) * scale] : overview.to(p, z);
+  const baseLeft = to([-H.baseWidth / 2, H.baseTop]),
+    baseRight = to([H.baseWidth / 2, H.baseBottom]),
+    drum = to([0, 0], ESC.drumZ),
+    ropeStart = to([hanger.drumTangent[0], hanger.drumTangent[1]], hanger.drumTangent[2]),
+    ropeEnd = to([hanger.attachment[0], hanger.attachment[1]], hanger.attachment[2]),
+    eye = to([hanger.eyeCentre[0], hanger.eyeCentre[1]], hanger.eyeCentre[2]),
+    weightTop = to([hanger.attachment[0] - H.weightWidth / 2, hanger.bodyTop], ESC.drumZ),
+    wheelCentre = to([0, 0]),
+    circlePath = (radius: number) => {
+      const [x, y] = wheelCentre,
+        r = radius * scale;
+      return `M${x + r},${y}A${r},${r} 0 1 0 ${x - r},${y}A${r},${r} 0 1 0 ${x + r},${y}Z`;
+    };
   const pallet = ESC_PALLETS[side],
     corner = to(escWorld(pallet.corner, pose.anchor)),
     end = to(escWorld(pallet.discharge, pose.anchor));
@@ -52,17 +69,101 @@ export function EscapementDiagram({ pose, focus }: { pose: EscPose; focus: strin
         <g clipPath={`url(#${clipId})`}>
           {!macro && (
             <>
-              <rect x={w / 2 - 100} y={h - 45} width="200" height="9" rx="4" fill="#777160" />
+              <rect
+                data-esc-base="true"
+                x={baseLeft[0]}
+                y={baseLeft[1]}
+                width={baseRight[0] - baseLeft[0]}
+                height={baseRight[1] - baseLeft[1]}
+                rx="3"
+                fill="#777160"
+              />
               <path
-                d={`M${w / 2 - 90} ${h - 45}V35H${w / 2 + 90}V${h - 45}`}
+                d={`M${to([-1.72, H.baseTop]).join(' ')}V${to([-1.72, 2.48])[1]}H${to([1.72, 2.48])[0]}V${to([1.72, H.baseTop])[1]}`}
                 stroke="#c5c9c2"
                 strokeWidth="7"
                 fill="none"
               />
+              <g data-esc-drive="true">
+                <line
+                  x1={drum[0]}
+                  y1={drum[1]}
+                  x2={wheelCentre[0]}
+                  y2={wheelCentre[1]}
+                  stroke="#647d7d"
+                  strokeWidth="4"
+                />
+                <circle
+                  cx={drum[0]}
+                  cy={drum[1]}
+                  r={0.315 * scale}
+                  fill="#c5a166"
+                  stroke="#8e774c"
+                  strokeWidth="1"
+                />
+                <circle cx={drum[0]} cy={drum[1]} r={ESC.drumRadius * scale} fill="#6b6d5b" />
+                <line
+                  x1={drum[0]}
+                  y1={drum[1]}
+                  x2={
+                    to(
+                      [
+                        ESC.drumRadius * Math.sin(pose.wheel),
+                        ESC.drumRadius * Math.cos(pose.wheel),
+                      ],
+                      ESC.drumZ,
+                    )[0]
+                  }
+                  y2={
+                    to(
+                      [
+                        ESC.drumRadius * Math.sin(pose.wheel),
+                        ESC.drumRadius * Math.cos(pose.wheel),
+                      ],
+                      ESC.drumZ,
+                    )[1]
+                  }
+                  stroke="#e4c991"
+                  strokeWidth="2"
+                />
+                <line
+                  data-esc-rope="true"
+                  x1={ropeStart[0]}
+                  y1={ropeStart[1]}
+                  x2={ropeEnd[0]}
+                  y2={ropeEnd[1]}
+                  stroke="#645d4a"
+                  strokeWidth={Math.max(1, 0.018 * scale)}
+                />
+                <rect
+                  data-esc-weight="true"
+                  x={weightTop[0]}
+                  y={weightTop[1]}
+                  width={H.weightWidth * scale}
+                  height={H.weightHeight * scale}
+                  rx={0.055 * scale}
+                  fill="#b8985b"
+                  stroke="#8f794e"
+                  strokeWidth=".8"
+                />
+                <circle
+                  data-esc-eye="true"
+                  cx={eye[0]}
+                  cy={eye[1]}
+                  r={((H.eyeOuter + H.eyeInner) / 2) * scale}
+                  fill="none"
+                  stroke="#927747"
+                  strokeWidth={(H.eyeOuter - H.eyeInner) * scale}
+                />
+              </g>
             </>
           )}
-          <circle cx={to([0, 0])[0]} cy={to([0, 0])[1]} r={ESC.rootRadius * scale} fill="#c5a971" />
-          <circle cx={to([0, 0])[0]} cy={to([0, 0])[1]} r={0.89 * scale} fill="#f3f1e8" />
+          <path
+            d={circlePath(ESC.rootRadius) + circlePath(0.89)}
+            fill="#c5a971"
+            fillRule="evenodd"
+            fillOpacity={macro ? 1 : 0.55}
+          />
           {Array.from({ length: 5 }, (_, i) => {
             const a = (i * Math.PI * 2) / 5 - pose.wheel;
             return (
@@ -80,7 +181,7 @@ export function EscapementDiagram({ pose, focus }: { pose: EscPose; focus: strin
           {Array.from({ length: 30 }, (_, i) => (
             <path
               key={i}
-              d={path(escapementTooth(i, pose.wheel).map(to))}
+              d={path(escapementTooth(i, pose.wheel).map((p) => to(p)))}
               fill={i === 0 ? '#4e9287' : '#b8985b'}
               stroke="#8f794e"
               strokeWidth=".7"
@@ -113,20 +214,28 @@ export function EscapementDiagram({ pose, focus }: { pose: EscPose; focus: strin
               <line
                 x1={to([0, ESC.height])[0]}
                 y1={to([0, ESC.height])[1]}
-                x2={to([pose.bob[0], pose.bob[1]])[0]}
-                y2={to([pose.bob[0], pose.bob[1]])[1]}
+                x2={to([0, ESC.height], pose.bob[2])[0]}
+                y2={to([0, ESC.height], pose.bob[2])[1]}
+                stroke="#536d73"
+                strokeWidth="4"
+              />
+              <line
+                x1={to([0, ESC.height], pose.bob[2])[0]}
+                y1={to([0, ESC.height], pose.bob[2])[1]}
+                x2={to([pose.bob[0], pose.bob[1]], pose.bob[2])[0]}
+                y2={to([pose.bob[0], pose.bob[1]], pose.bob[2])[1]}
                 stroke="#536d73"
                 strokeWidth="3"
               />
               <circle
-                cx={to([pose.bob[0], pose.bob[1]])[0]}
-                cy={to([pose.bob[0], pose.bob[1]])[1]}
-                r="15"
+                cx={to([pose.bob[0], pose.bob[1]], pose.bob[2])[0]}
+                cy={to([pose.bob[0], pose.bob[1]], pose.bob[2])[1]}
+                r={0.3 * scale}
                 fill="#b8985b"
               />
               <circle
-                cx={to([0, ESC.height])[0]}
-                cy={to([0, ESC.height])[1]}
+                cx={to([0, ESC.height], pose.bob[2])[0]}
+                cy={to([0, ESC.height], pose.bob[2])[1]}
                 r="5"
                 fill="#536d73"
               />
@@ -209,7 +318,9 @@ export function EscapementDiagram({ pose, focus }: { pose: EscPose; focus: strin
           </span>
         </div>
       ) : (
-        <p className="escapement-instrument-note">{t('每次完整往返：前进一齿')}</p>
+        <p className="escapement-instrument-note escapement-drive-key">
+          {t('重锤 → 卷筒 → 擒纵轮')}
+        </p>
       )}
     </div>
   );

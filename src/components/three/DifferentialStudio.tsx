@@ -102,7 +102,8 @@ export default function DifferentialStudio({
   progress: number;
 }) {
   const film = useShowcase(),
-    state = useRef({ motion, focus, progress, film });
+    state = useRef({ motion, focus, progress, film }),
+    explorationDirection = useRef<THREE.Vector3 | null>(null);
   state.current = { motion, focus, progress, film };
   return (
     <Studio
@@ -357,15 +358,34 @@ export default function DifferentialStudio({
           direction = new THREE.Vector3();
         // The outer bridge/pin ends enclose the bevels for every angular phase.
         // Revolve their axial envelope once; framing never accumulates playback history.
-        const radius = Math.max(
-          detailBounds.max.y - root.position.y,
-          root.position.y - detailBounds.min.y,
-          Math.abs(detailBounds.min.z),
-          Math.abs(detailBounds.max.z),
-        );
+        let radius = 0;
+        const point = new THREE.Vector3();
+        carrier.traverse((object) => {
+          if (!(object instanceof THREE.Mesh)) return;
+          const positions = object.geometry.getAttribute('position');
+          for (let i = 0; i < positions.count; i++) {
+            point.fromBufferAttribute(positions, i).applyMatrix4(object.matrixWorld);
+            radius = Math.max(radius, Math.hypot(point.y - root.position.y, point.z));
+          }
+        });
         detailBounds.min.setY(root.position.y - radius).setZ(-radius);
         detailBounds.max.setY(root.position.y + radius).setZ(radius);
         overviewBounds.union(detailBounds);
+        if (!state.current.film.watch && explorationDirection.current) {
+          camera.position.copy(controls.target).add(explorationDirection.current);
+        }
+        const frameExploration = () => {
+          if (state.current.film.watch) return;
+          const direction = camera.position.clone().sub(controls.target).normalize();
+          explorationDirection.current = direction;
+          const frame = fitDifferentialCamera(overviewBounds, camera.aspect, direction, camera.fov);
+          controls.target.copy(frame.target);
+          camera.position.copy(frame.position);
+        };
+        // OrbitControls emits after drag/keyboard movement and Studio's resize. Refitting
+        // here happens before drawing and keeps the reader's direction, even with zoom disabled.
+        controls.addEventListener('change', frameExploration);
+        frameExploration();
         return {
           update() {
             const v = state.current,
@@ -404,7 +424,10 @@ export default function DifferentialStudio({
               );
               controls.target.copy(frame.target);
               camera.position.copy(frame.position);
-            }
+            } else frameExploration();
+          },
+          dispose() {
+            controls.removeEventListener('change', frameExploration);
           },
         };
       }}

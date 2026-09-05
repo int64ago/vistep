@@ -9,14 +9,21 @@ import {
   traceFiber,
   type RayPoint,
 } from '../../models/fiber';
-/** Fit the real axial section, including the coating and dimension label. */
+/** A fixed physical window, independent of angle, cladding and film time.
+ * traceFiber draws 100 μm escaped tails; reserve their entire possible extent
+ * on every shot. A 25 μm wall plus a 100 μm tail also fits inside ±125 μm.
+ * The regression checks these bounds against actual model segments.
+ */
 export function fiberDrawingLayout(width: number) {
   const compact = width < 620;
   const length = compact ? 450 : 1200;
-  const scale = (width - 70) / length;
+  const start = 28,
+    tailExtent = 100,
+    scale = (width - start - 14) / (length + tailExtent),
+    end = start + length * scale;
   const center = Math.max(compact ? 92 : 135, 125 * scale + 14);
   const height = Math.max(200, center + 125 * scale + 50);
-  return { compact, width, length, scale, center, height };
+  return { compact, width, length, scale, center, height, start, end };
 }
 export function FiberDrawing({
   width,
@@ -33,10 +40,10 @@ export function FiberDrawing({
   reveal: number;
   digital: boolean;
 }) {
-  const { compact, length, scale, center, height } = fiberDrawingLayout(width),
+  const { compact, length, scale, center, height, start, end } = fiberDrawingLayout(width),
     id = useId().replace(/:/g, ''),
     ray = traceFiber(angle, cladding, length);
-  const map = (p: RayPoint) => ({ x: 35 + p.x * scale, y: center - p.y * scale });
+  const map = (p: RayPoint) => ({ x: start + p.x * scale, y: center - p.y * scale });
   const path = (a: RayPoint, b: RayPoint) => {
     const p = map(a),
       q = map(b);
@@ -63,27 +70,27 @@ export function FiberDrawing({
           </filter>
         </defs>
         <rect
-          x="35"
+          x={start}
           y={center - 125 * scale}
-          width={width - 70}
+          width={end - start}
           height={250 * scale}
           rx="3"
           fill="#7b80a0"
           opacity={0.08 + (1 - reveal) * 0.62}
         />
         <rect
-          x="35"
+          x={start}
           y={center - 62.5 * scale}
-          width={width - 70}
+          width={end - start}
           height={125 * scale}
           fill={`url(#${id}-glass)`}
           stroke="#a1adc5"
           strokeOpacity=".27"
         />
         <rect
-          x="35"
+          x={start}
           y={center - 25 * scale}
-          width={width - 70}
+          width={end - start}
           height={50 * scale}
           fill="#a9d0dc"
           fillOpacity=".15"
@@ -91,7 +98,7 @@ export function FiberDrawing({
           strokeOpacity=".7"
         />
         <path
-          d={`M14 ${center + 21 * Math.tan((angle * Math.PI) / 180)}L35 ${center}`}
+          d={`M8 ${center + (start - 8) * Math.tan((angle * Math.PI) / 180)}L${start} ${center}`}
           stroke={digital && !bitSignal(time) ? '#556680' : '#edc485'}
           strokeWidth="2"
         />
@@ -148,12 +155,12 @@ export function FiberDrawing({
           />
         ))}
         <path
-          d={`M35 ${center + 125 * scale + 22}H${width - 35}`}
+          d={`M${start} ${center + 125 * scale + 22}H${end}`}
           stroke="#6f7894"
           strokeWidth="1"
         />
         <text
-          x={width / 2}
+          x={(start + end) / 2}
           y={center + 125 * scale + 43}
           fill="#9aa7bd"
           textAnchor="middle"

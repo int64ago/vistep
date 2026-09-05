@@ -585,3 +585,70 @@
 .polarization-installation[data-phone-film='true'] .polarization-note {
   margin-top: 14px;
 }
+
+/* The crossed chapter pairs the projected field with a physical receiving
+   surface. Reference and current screen share one response and fixed sizes. */
+.polarization-crossed-observation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(116px, 1fr);
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+.polarization-crossed-projection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.polarization-crossed-projection .polarization-face {
+  width: min(100%, 140px);
+  height: auto;
+}
+.polarization-crossed-ratio {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.polarization-crossed-ratio output {
+  color: #eadab8;
+}
+.polarization-receiver-comparison {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.polarization-screen-samples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+}
+.polarization-screen-samples > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.polarization-screen-samples svg {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+.polarization-screen-samples span {
+  color: var(--pol-muted);
+}
+.polarization-screen-samples output {
+  color: #eadab8;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

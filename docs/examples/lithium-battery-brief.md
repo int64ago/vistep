@@ -2,7 +2,7 @@
 
 [简体中文](../zh-CN/examples/lithium-battery-brief.md)
 
-Current recording revision (2026-09-06): both tracks run **187.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+Current recording revision (2026-09-06): both tracks run **186.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
 
 ## Integrated film
 

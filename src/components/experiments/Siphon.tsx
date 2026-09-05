@@ -4,6 +4,7 @@ import { SIPHON, siphonShot, siphonTrial, type SiphonStatus } from '../../models
 import { Range } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
 import SiphonApparatus from '../lab/SiphonApparatus';
+import { siphonOutletFlow } from '../lab/siphonBranchFlow';
 import '../../styles/siphon.css';
 
 const statusLabels: Record<SiphonStatus, string> = {
@@ -48,6 +49,8 @@ export default function Siphon() {
       };
   const s = shot.state,
     showPressure = shot.view === 'pressure' || shot.view === 'height';
+  const showBranchFlow = !showPressure && (demo.watch ? demo.chapter === 5 : s.status === 'vented');
+  const outflow = siphonOutletFlow(shot);
   const resetTrial = (apply: () => void) => {
     apply();
     setSeconds(0);
@@ -60,10 +63,18 @@ export default function Siphon() {
           {t(flat ? '立体剖视' : '线稿剖视')}
         </button>
       </div>
-      <div className="siphon-reading">
+      <div className="siphon-reading" data-branch={showBranchFlow}>
         <div>
           <span>
-            {t(showPressure ? (s.pressureValid ? '弯顶压力' : '弯顶压力（假设液柱）') : '瞬时流量')}
+            {t(
+              showPressure
+                ? s.pressureValid
+                  ? '弯顶压力'
+                  : '弯顶压力（假设液柱）'
+                : showBranchFlow
+                  ? '持续穿管流量'
+                  : '瞬时流量',
+            )}
           </span>
           <strong>
             {showPressure ? (s.crestPressure / 1000).toFixed(3) : (s.flow * 1000).toFixed(3)}
@@ -76,7 +87,16 @@ export default function Siphon() {
             <b>{(s.minimumPressure / 1000).toFixed(3)} kPa</b>
           </div>
         )}
-        {!showPressure && (
+        {showBranchFlow && (
+          <div className="siphon-branch-reading">
+            <span>{t('暂态支路排水')}</span>
+            <strong>
+              {outflow.branchReading}
+              <small>L/s</small>
+            </strong>
+          </div>
+        )}
+        {!showPressure && !showBranchFlow && (
           <span className="siphon-condition">
             {t(
               s.status === 'air' || s.status === 'priming'
@@ -267,6 +287,11 @@ export default function Siphon() {
         <p>
           {t(
             '预充和进气排空采用指定的教学进度，分段水量仍逐项守恒；汽化后不再把单相流量当作真实结果。',
+          )}
+        </p>
+        <p>
+          {t(
+            '持续穿管流量描述连通液柱；暂态支路排水来自进气后接水段水量的减少，按同一模型时间计算，排尽归零。',
           )}
         </p>
         <p>

@@ -15,7 +15,7 @@ import Studio from './Studio';
 import { box, material, roller, screw } from './parts';
 
 /** Crown-cage fingers are spherical shells, with a real clearance to the ball. */
-function pocketGeometry(side: number) {
+export function bearingPocketGeometry(side: number) {
   const vertices: number[] = [],
     indices: number[] = [],
     rows = 32,
@@ -38,20 +38,23 @@ function pocketGeometry(side: number) {
         b = a + 1,
         d = a + cols + 1,
         c = d + 1;
-      quad(a, d, c, b);
-      quad(a + layer, b + layer, c + layer, d + layer);
+      // Cavity normals face the ball; the outer shell faces away from it.
+      quad(a, b, c, d);
+      quad(a + layer, d + layer, c + layer, b + layer);
     }
   for (let i = 0; i < rows; i++)
     for (const j of [0, cols]) {
       const a = i * (cols + 1) + j,
         b = a + cols + 1;
-      quad(a, b, b + layer, a + layer);
+      if (j === 0) quad(a, b, b + layer, a + layer);
+      else quad(a, a + layer, b + layer, b);
     }
   for (let j = 0; j < cols; j++)
     for (const i of [0, rows]) {
       const a = i * (cols + 1) + j,
         b = a + 1;
-      quad(a, b, b + layer, a + layer);
+      if (i === 0) quad(a, a + layer, b + layer, b);
+      else quad(a, b, b + layer, a + layer);
     }
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
@@ -99,7 +102,8 @@ export default function BallBearingStudio({
   shot: BearingShot;
 }) {
   const demo = useShowcase(),
-    current = useRef({ state, shot, demo });
+    current = useRef({ state, shot, demo }),
+    explorationDirection = useRef<THREE.Vector3 | null>(null);
   current.current = { state, shot, demo };
   return (
     <Studio
@@ -266,7 +270,7 @@ export default function BallBearingStudio({
         const cage = new THREE.Group();
         root.add(cage);
         annulus(cage, B.pitch + 0.11, B.pitch - 0.11, 0.05, B.cageBack - 0.025, brass);
-        const pockets = [pocketGeometry(0), pocketGeometry(Math.PI)];
+        const pockets = [bearingPocketGeometry(0), bearingPocketGeometry(Math.PI)];
         for (let i = 0; i < B.count; i++) {
           const a = -Math.PI / 2 + (i * TAU) / B.count,
             pocket = new THREE.Group();
@@ -308,6 +312,20 @@ export default function BallBearingStudio({
         // Fixed housing and base enclose every ball/cage/shaft phase and both cutaway states.
         const assemblyBounds = new THREE.Box3().setFromObject(root),
           desired = new THREE.Vector3();
+        if (!current.current.demo.watch && explorationDirection.current) {
+          camera.position.copy(controls.target).add(explorationDirection.current);
+        }
+        const frameExploration = () => {
+          if (current.current.demo.watch) return;
+          const direction = camera.position.clone().sub(controls.target).normalize();
+          explorationDirection.current = direction;
+          const frame = fitBallBearingCamera(assemblyBounds, camera.aspect, direction, camera.fov);
+          controls.target.copy(frame.target);
+          camera.position.copy(frame.position);
+        };
+        // Refine the distance after OrbitControls/resize while retaining the user's direction.
+        controls.addEventListener('change', frameExploration);
+        frameExploration();
         return {
           update() {
             const { state: s, shot: sh, demo: d } = current.current;
@@ -357,9 +375,10 @@ export default function BallBearingStudio({
               );
               controls.target.copy(frame.target);
               camera.position.copy(frame.position);
-            }
+            } else frameExploration();
           },
           dispose() {
+            controls.removeEventListener('change', frameExploration);
             contactMaterial.dispose();
           },
         };

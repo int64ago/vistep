@@ -287,7 +287,8 @@ export function WaterHammerElastic({
   const contraction = 1 / (1 + s.densityStrain * magnification),
     radius = (phone ? 44 : 76) * wall;
   const centerX = phone ? width / 2 : width * 0.7,
-    centerY = phone ? 205 : 156;
+    // 16px Manrope/Noto glyph bounds: leave ~8px between the two phone instruments.
+    centerY = phone ? 213 : 156;
   const waterWidth = (phone ? 150 : 230) * contraction,
     waterX = phone ? (width - waterWidth) / 2 : width * 0.25 - waterWidth / 2;
   const waterY = phone ? 42 : 112,

@@ -2,6 +2,11 @@ import { t } from '../../i18n';
 import { ENGINE, engineCycle } from '../../models/four-stroke';
 export const strokeNames = ['进气', '压缩', '做功', '排气'];
 export const strokeColors = ['#668f96', '#ba9a63', '#c57750', '#8d9290'];
+/** Same ignition window as the 3D cutaway; this is a light marker, not a flame solver. */
+export function engineIgnition(cycle: number) {
+  const burn = cycle - 2 * Math.PI;
+  return { visible: burn >= 0 && burn < 0.14, strength: Math.max(0, Math.min(1, 1 - burn / 0.14)) };
+}
 export default function EngineDiagram({ angle }: { angle: number }) {
   const s = engineCycle(angle),
     scale = 1100,
@@ -14,7 +19,10 @@ export default function EngineDiagram({ angle }: { angle: number }) {
     22 -
     (2 * ENGINE.crank * scale) / (ENGINE.compression - 1);
   const crankX = 150 + s.crankX * scale,
-    crankY = origin - s.crankY * scale;
+    crankY = origin - s.crankY * scale,
+    ignition = engineIgnition(s.cycle),
+    sparkY = head + 5.5,
+    sparkRadius = 3 + 1.2 * ignition.strength;
   return (
     <div className="engine-flat-wrap">
       <svg
@@ -65,6 +73,41 @@ export default function EngineDiagram({ angle }: { angle: number }) {
             <path d="M-10 0H10" stroke="#a8b4a1" strokeWidth="5" strokeLinecap="round" />
           </g>
         ))}
+        <g data-engine-plug="true">
+          <rect
+            x="146"
+            y={head - 33}
+            width="8"
+            height="20"
+            rx="2"
+            fill="#e9e5ce"
+            stroke="#89988a"
+          />
+          <rect x="144.5" y={head - 15} width="11" height="10" rx="2" fill="#819487" />
+          <path
+            d={`M150 ${head - 5}V${head + 2}M154 ${head - 5}V${head + 3}H152`}
+            fill="none"
+            stroke="#657d6e"
+            strokeWidth="1.5"
+          />
+        </g>
+        {ignition.visible && (
+          <g data-engine-ignition="true">
+            <circle cx="150" cy={sparkY} r="5" fill="#edb447" opacity=".25" />
+            <path
+              d={
+                Array.from({ length: 16 }, (_, i) => {
+                  const a = (i * Math.PI) / 8,
+                    r = sparkRadius * (i % 2 ? 0.36 : 1);
+                  return `${i ? 'L' : 'M'}${150 + r * Math.cos(a)},${sparkY + r * Math.sin(a)}`;
+                }).join(' ') + 'Z'
+              }
+              fill="#fff5c2"
+              stroke="#b78330"
+              strokeWidth=".75"
+            />
+          </g>
+        )}
         <rect x="108" y={crown} width="84" height="38" rx="5" fill="url(#engine-flat-metal)" />
         <path d={`M110 ${crown + 7}H190M110 ${crown + 13}H190`} stroke="#678276" strokeWidth="2" />
         <circle
@@ -98,7 +141,16 @@ export default function EngineDiagram({ angle }: { angle: number }) {
         ))}
       </svg>
       <p>
-        {t(strokeNames[s.stage])} · {Math.round((s.cycle * 180) / Math.PI)}°
+        <span>
+          {t(strokeNames[s.stage])} · {Math.round((s.cycle * 180) / Math.PI)}°
+        </span>
+        <span
+          className="engine-ignition-label"
+          data-active={ignition.visible}
+          aria-hidden={!ignition.visible}
+        >
+          {t('点火')}
+        </span>
       </p>
     </div>
   );
