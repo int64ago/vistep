@@ -175,7 +175,11 @@ export function BrownianLens({
         stroke="#587268"
         strokeWidth="1.5"
       />
-      <text x={20 + (bar * scale) / 2} y={height - 3} textAnchor="middle">
+      <text
+        x={width < 640 ? 20 : 20 + (bar * scale) / 2}
+        y={height - 3}
+        textAnchor={width < 640 ? 'start' : 'middle'}
+      >
         {barLabel} {centroid ? 'nm' : 'µm'}
       </text>
       <text x={width - 4} y={height - 13} textAnchor="end">
@@ -188,10 +192,12 @@ export function BrownianImpulsePanel({
   track,
   time,
   width,
+  compact = false,
 }: {
   track: BrownianTrack;
   time: number;
   width: number;
+  compact?: boolean;
 }) {
   const impulse = brownianImpulse(track, time),
     c = brownianCoefficients(track.parameters);
@@ -207,16 +213,20 @@ export function BrownianImpulsePanel({
     [track],
   );
   const center = width / 2,
-    half = width * 0.4;
+    half = width * 0.4,
+    row = compact ? 52 : 58;
   return (
     <div className="bm-instrument">
       <div className="bm-instrument-title">
-        {t('最近完整采样窗 · x 方向')} <span>Δt = {(impulse.duration / c.tau).toFixed(1)}τ</span>
+        {t(compact ? '完整采样窗' : '最近完整采样窗 · x 方向')}{' '}
+        <span>
+          {compact && 'x · '}Δt = {(impulse.duration / c.tau).toFixed(1)}τ
+        </span>
       </div>
       <svg
         width={width}
-        height="174"
-        viewBox={`0 0 ${width} 174`}
+        height={row * 3}
+        viewBox={`0 0 ${width} ${row * 3}`}
         role="img"
         aria-label={t('热浴冲量与阻力冲量合成动量变化')}
       >
@@ -228,15 +238,15 @@ export function BrownianImpulsePanel({
           ] as const
         ).map(([label, value, color], i) => (
           <g key={label}>
-            <text x="0" y={20 + i * 58}>
+            <text x="0" y={20 + i * row}>
               {t(label)}
             </text>
-            <text x={width} y={20 + i * 58} textAnchor="end" className="bm-muted">
+            <text x={width} y={20 + i * row} textAnchor="end" className="bm-muted">
               {(value * 1e18).toFixed(2)} aN·s
             </text>
-            <path d={`M${center},${32 + i * 58}v20`} stroke="#617c7355" />
+            <path d={`M${center},${32 + i * row}v20`} stroke="#617c7355" />
             <path
-              d={`M${center},${42 + i * 58}h${(value / maximum) * half}`}
+              d={`M${center},${42 + i * row}h${(value / maximum) * half}`}
               stroke={color}
               strokeWidth="9"
               strokeLinecap="round"
@@ -251,10 +261,12 @@ export function BrownianMemory({
   track,
   time,
   width,
+  compact = false,
 }: {
   track: BrownianTrack;
   time: number;
   width: number;
+  compact?: boolean;
 }) {
   const c = brownianCoefficients(track.parameters),
     q = Math.min(8, time / c.tau),
@@ -265,7 +277,7 @@ export function BrownianMemory({
   return (
     <div className="bm-instrument">
       <div className="bm-instrument-title">
-        {t('关闭热噪声后的速度')}
+        {compact ? 'T = 0' : t('关闭热噪声后的速度')}
         <span>v / v₀ = {Math.exp(-q).toFixed(3)}</span>
       </div>
       <svg
@@ -312,11 +324,13 @@ export function BrownianMSDPlot({
   tracks,
   time,
   width,
+  compact = false,
   horizon = 4,
 }: {
   tracks: BrownianTrack[];
   time: number;
   width: number;
+  compact?: boolean;
   horizon?: number;
 }) {
   const values = useMemo(
@@ -388,8 +402,10 @@ export function BrownianMSDPlot({
       </svg>
       <div className="bm-legend">
         <span style={{ color: '#ad773d' }}>{t('单条')}</span>
-        <span style={{ color: '#477f86' }}>{t('64 次平均')}</span>
-        <span>{t('虚线：理论')}</span>
+        <span style={{ color: '#477f86' }}>{t(compact ? '平均（64次）' : '64 次平均')}</span>
+        <span className={compact ? 'bm-theory-key' : undefined}>
+          {t(compact ? '理论' : '虚线：理论')}
+        </span>
       </div>
     </div>
   );

@@ -78,12 +78,27 @@ export default function BrownianMotion() {
   const c = brownianCoefficients(selected[0].parameters),
     time = director.watch ? shot.time : active === 'impulse' ? microTime * c.tau : elapsed;
   const compact = width < 640,
+    phoneFilm = director.watch && compact,
     centroid = active === 'impulse' || active === 'memory',
     ensemble = active === 'msd' || active === 'mean',
     compare = active === 'temperature' || active === 'resistance';
   const current = brownianSample(selected[0], time),
     stats = brownianStatistics(selected, time),
     lensHeight = compact ? (active === 'msd' ? 180 : centroid ? 170 : 270) : 400;
+  const context =
+    active === 'impulse'
+      ? '热浴冲量 + 阻力冲量 = 动量变化；不是瞬时白噪声力。'
+      : active === 'memory'
+        ? 'T = 0 是经典模型极限；保留初速度，不代表液体能冷到零开尔文。'
+        : active === 'overdamped'
+          ? '金色：带惯性；蓝色虚线：同一热浴的过阻尼极限。'
+          : active === 'mean'
+            ? '深色菱形是平均位置，不是一颗真的粒子。'
+            : active === 'msd'
+              ? '64 次独立重复。圆圈是理论均方根尺度，不是围墙。'
+              : compare
+                ? 'D = kᴮT / (6πηa)'
+                : '轨迹连接离散观测点；视野边缘不是物理边界。';
   const reset = () => {
     setTemperature(300);
     setViscosity(1);
@@ -99,6 +114,7 @@ export default function BrownianMotion() {
       data-watch={director.watch}
       data-view={active}
       data-compact={compact}
+      data-phone-film={phoneFilm}
     >
       <div className="bm-eyebrow">
         {t(
@@ -128,15 +144,16 @@ export default function BrownianMotion() {
           overdamped={active === 'overdamped'}
         />
         {active === 'impulse' ? (
-          <BrownianImpulsePanel track={selected[0]} time={time} width={width} />
+          <BrownianImpulsePanel track={selected[0]} time={time} width={width} compact={phoneFilm} />
         ) : active === 'memory' ? (
-          <BrownianMemory track={selected[0]} time={time} width={width} />
+          <BrownianMemory track={selected[0]} time={time} width={width} compact={phoneFilm} />
         ) : active === 'msd' ? (
           <BrownianMSDPlot
             tracks={selected}
             time={time}
             width={width}
             horizon={director.watch ? 2 : 4}
+            compact={phoneFilm}
           />
         ) : compare ? (
           <div className="bm-comparisons">
@@ -195,23 +212,20 @@ export default function BrownianMotion() {
             </div>
           </div>
         )}
-        <p className="bm-note bm-context">
-          {t(
-            active === 'impulse'
-              ? '热浴冲量 + 阻力冲量 = 动量变化；不是瞬时白噪声力。'
-              : active === 'memory'
-                ? 'T = 0 是经典模型极限；保留初速度，不代表液体能冷到零开尔文。'
-                : active === 'overdamped'
-                  ? '金色：带惯性；蓝色虚线：同一热浴的过阻尼极限。'
-                  : active === 'mean'
-                    ? '深色菱形是平均位置，不是一颗真的粒子。'
-                    : active === 'msd'
-                      ? '64 次独立重复。圆圈是理论均方根尺度，不是围墙。'
-                      : compare
-                        ? 'D = kᴮT / (6πηa)'
-                        : '轨迹连接离散观测点；视野边缘不是物理边界。',
-          )}
-        </p>
+        {!phoneFilm && <p className="bm-note bm-context">{t(context)}</p>}
+        {phoneFilm && active === 'overdamped' && (
+          <div className="bm-path-key">
+            <span>
+              <i />
+              {t('保留惯性')}
+            </span>
+            <span>
+              <i className="bm-dashed-key" />
+              {t('过阻尼')}
+            </span>
+          </div>
+        )}
+        {phoneFilm && active === 'mean' && <p className="bm-mean-key">◆ {t('平均位置')}</p>}
         {centroid && !(director.watch && compact) && (
           <p className="bm-note bm-scale-note">{t('只放大质心位移；圆点大小不代表粒子半径。')}</p>
         )}
@@ -302,6 +316,16 @@ export default function BrownianMotion() {
       <details className="bm-notes">
         <summary>{t('布朗模型的边界')}</summary>
         <div>
+          {phoneFilm && <p>{t(context)}</p>}
+          {phoneFilm && compare && (
+            <p>
+              {t(
+                active === 'temperature'
+                  ? '固定黏度、半径；共用标准化噪声作对照。'
+                  : '同一温度。黏度增大或球变大，长时间 D 都下降。',
+              )}
+            </p>
+          )}
           {centroid && director.watch && compact && (
             <p>{t('只放大质心位移；圆点大小不代表粒子半径。')}</p>
           )}

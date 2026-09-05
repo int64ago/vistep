@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/suspension-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **185.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Causal argument and visual direction
 
 A soft suspension sounds comfortable, but storing energy and dissipating it are different jobs. Follow road displacement through tire compression, unsprung motion and body motion. Isolate stiffness, then damping, with the same initial state, road and inspection time. The final contact chapter stops at the edge of the linear tire model instead of inventing an airborne continuation.

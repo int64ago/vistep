@@ -26,6 +26,7 @@
 - [初版双语播放](qa-bilingual-narration.md)
 - [维护与搜索接入](qa-maintenance.md)
 - [首次正式发布](qa-production.md)
+- [扩展修订审看](qa-expansion-refinements.md)：修复、录音修订及证据边界。
 - [长演示、语言与 SEO](qa-longform.md)
 - [首页一体化开场](qa-home-opening.md)
 - [宣传动图与默认讲解](qa-showcase-audio.md)

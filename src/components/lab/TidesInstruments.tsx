@@ -118,7 +118,7 @@ export function TidesProfile({ state: s, compact }: { state: TidesState; compact
       role="img"
       aria-label={t('沿同一纬圈计算的平衡海面高度，不是沿岸潮汐预报')}
     >
-      <text x="12" y="19" className="tides-svg-label">
+      <text x={left + 10} y="19" className="tides-svg-label">
         h / m
       </text>
       {[0, 0.5, 1].map((value) => (

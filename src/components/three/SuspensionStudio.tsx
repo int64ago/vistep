@@ -12,6 +12,12 @@ import { useShowcase } from '../lab/Showcase';
 import SuspensionDiagram from '../lab/SuspensionDiagram';
 import Studio from './Studio';
 import { box, material, roller } from './parts';
+import {
+  suspensionHardware as H,
+  suspensionBearingGeometry,
+  suspensionMeshCorners,
+  fitSuspensionCamera,
+} from './suspension-geometry';
 
 export type SuspensionVisual = {
   state: SuspensionState;
@@ -161,8 +167,8 @@ function createRig(parent: THREE.Group, alternate: boolean) {
     for (const z of [-0.35, 0.25]) cylinder(root, 0.022, 0.02, [x, -0.215, z], steel);
   const platen = box(
     root,
-    [1.06, 0.065, 0.55],
-    [0, -0.0325, 0.02],
+    [H.platenWidth, H.platenThickness, H.platenDepth],
+    [0, -H.platenThickness / 2, H.platenZ],
     material('#596b70', 0.34, 0.65),
     0.014,
   );
@@ -172,16 +178,27 @@ function createRig(parent: THREE.Group, alternate: boolean) {
   root.add(body);
   box(body, [1.15, 0.17, 0.54], [0, 0.09, -0.12], paint, 0.035);
   box(body, [1.0, 0.025, 0.47], [0, 0.184, -0.12], steel, 0.009);
-  for (const x of [-0.46, 0.46]) {
-    cylinder(body, 0.018, G.guideLength, [x, 0.02 - G.guideLength / 2, -0.25], steel);
-    box(body, [0.08, 0.07, 0.09], [x, -0.006, -0.25], darkSteel, 0.008);
+  for (const x of [-H.guideX, H.guideX]) {
+    cylinder(body, H.guideRadius, G.guideLength, [x, 0.02 - G.guideLength / 2, H.guideZ], steel);
+    box(body, [0.08, 0.07, 0.09], [x, -0.006, H.guideZ], darkSteel, 0.008);
   }
   // This is a vertical test fixture, not an invented wishbone linkage. Guide rods follow the body.
   const wheel = new THREE.Group();
   root.add(wheel);
-  box(wheel, [0.98, 0.065, 0.09], [0, 0, -0.25], darkSteel, 0.014);
-  for (const x of [-0.46, 0.46]) box(wheel, [0.075, 0.1, 0.105], [x, 0, -0.25], damperMetal, 0.009);
-  roller(wheel, 0.045, 0.5, [0, 0, -0.055], steel);
+  // The bored sliders, rear crossmember and axle bridge move as one wheel carrier.
+  box(
+    wheel,
+    [2 * (H.guideX - H.bearingWidth / 2), 0.065, 0.09],
+    [0, 0, H.guideZ],
+    darkSteel,
+    0.014,
+  );
+  box(wheel, [0.45, 0.065, 0.23], [0, 0, -0.28], darkSteel, 0.012);
+  for (const x of [-H.guideX, H.guideX]) {
+    const bearing = mesh(wheel, suspensionBearingGeometry(), damperMetal);
+    bearing.position.set(x, 0, H.guideZ);
+  }
+  roller(wheel, 0.045, 0.62, [0, 0, -0.115], steel);
   const tire = tireGeometry(),
     tireMaterial = rubber.clone();
   tireMaterial.transparent = true;
@@ -285,6 +302,7 @@ function createRig(parent: THREE.Group, alternate: boolean) {
       roadStem.scale.y = stemLength / 0.2;
       roadStem.position.y = -0.22 + stemLength / 2;
       tire.update(pose.roadY - pose.wheelY);
+      tire.geometry.computeBoundingBox();
       tireMaterial.opacity = 1 - reveal * 0.84;
       tireMaterial.depthWrite = reveal < 0.01;
       tireMesh.castShadow = reveal < 0.01;
@@ -292,6 +310,7 @@ function createRig(parent: THREE.Group, alternate: boolean) {
       upperSeat.position.y = pose.upperMountY;
       coilMesh.position.y = pose.lowerSpringY;
       coil.update(pose.springLength);
+      coil.geometry.computeBoundingBox();
       damper.position.y = pose.lowerDamperY;
       rod.position.y = pose.upperMountY - G.damperRodLength / 2;
       piston.position.y = pose.upperMountY - G.damperRodLength;
@@ -345,21 +364,20 @@ export default function SuspensionStudio({
             const reveal = v.chapter === 4 ? 0.8 + 0.2 * Math.sin(Math.PI * v.progress) ** 2 : 0;
             one.update(v.a, reveal);
             if (v.b) two.update(v.b, reveal);
+            const arc = Math.sin(Math.PI * v.progress) ** 2;
             if (v.demo.watch) {
-              const arc = Math.sin(Math.PI * v.progress) ** 2,
-                close = v.chapter === 4 ? arc : 0;
-              target.set(close * 0.45, 3.3 + close * 0.05, -0.1);
-              controls.target.copy(target);
-              const height = Math.max(
-                  (v.b ? 12.7 : 6.3 - close * 0.6) / camera.aspect,
-                  8.0 - close * 0.15,
-                ),
-                distance = height / (2 * Math.tan((camera.fov * Math.PI) / 360));
-              direction
-                .set(2.1 + (v.chapter === 0 ? 1.0 * (1 - v.progress) : 0.3 * arc), 1.25, 11)
-                .normalize();
-              camera.position.copy(target).addScaledVector(direction, distance);
+              direction.set(2.1 + (v.chapter === 0 ? 1 - v.progress : 0.3 * arc), 1.25, 11);
+            } else {
+              direction.copy(camera.position).sub(controls.target).normalize();
             }
+            fitSuspensionCamera(
+              camera,
+              target,
+              direction,
+              suspensionMeshCorners(root),
+              !v.demo.watch,
+            );
+            controls.target.copy(target);
           },
         };
       }}

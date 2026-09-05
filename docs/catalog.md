@@ -32,7 +32,7 @@ This branch contains 62 explorations, each with Chinese and English articles, a 
 | [Rectifier](../src/content/en/rectifier.mdx)                         | 3:19 | Why does the load keep its polarity when AC reverses? |
 | [Convection](../src/content/en/convection.mdx)                       | 3:06 | How does heat set a fluid in motion?                  |
 | [Solar cell](../src/content/en/solar-cell.mdx)                       | 3:19 | How does sunlight complete a circuit?                 |
-| [Lithium-ion battery](../src/content/en/lithium-battery.mdx)         | 3:08 | What does a rechargeable battery store?               |
+| [Lithium-ion battery](../src/content/en/lithium-battery.mdx)         | 3:07 | What does a rechargeable battery store?               |
 | [Clock escapement](../src/content/en/escapement.mdx)                 | 3:29 | How does an escapement give a clock its beat?         |
 | [Diffusion](../src/content/en/diffusion.mdx)                         | 3:05 | Why does color spread without a current?              |
 | [Zipper](../src/content/en/zipper.mdx)                               | 3:21 | How does a zipper close with one pull?                |

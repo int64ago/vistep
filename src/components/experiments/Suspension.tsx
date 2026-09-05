@@ -48,7 +48,8 @@ export default function Suspension() {
     [roadKind, setRoadKind] = useState<SuspensionRoad['kind']>('bump'),
     [frequency, setFrequency] = useState(10.4),
     [time, setTime] = useState(0),
-    [compare, setCompare] = useState(false);
+    [compare, setCompare] = useState(false),
+    [resetKey, setResetKey] = useState(0);
   const directed = suspensionShot(film.chapter, film.chapterProgress);
   const chapter = film.watch
     ? directed.chapter
@@ -107,15 +108,16 @@ export default function Suspension() {
     <div className="susp-specimen" data-alternate={isB}>
       <h3>
         <i />
-        {t(label)}
+        <span>{t(label)}</span>
       </h3>
-      <p>
-        k = {(v.parameters.stiffness / 1000).toFixed(0)} kN/m <span>·</span> c ={' '}
-        {(v.parameters.damping / 1000).toFixed(2)} kN·s/m
+      <p className="susp-parameters">
+        <span className="susp-k">k = {(v.parameters.stiffness / 1000).toFixed(0)} kN/m</span>
+        <span className="susp-c">c = {(v.parameters.damping / 1000).toFixed(1)} kN·s/m</span>
       </p>
       {chapter === 2 && (
-        <p>
-          {t('静态弹簧压缩')}{' '}
+        <p className="susp-sag">
+          <span className="susp-sag-full">{t('静态弹簧压缩')}</span>
+          <span className="susp-sag-short">{t('静压缩')}</span>{' '}
           {(((v.parameters.sprungMass * 9.81) / v.parameters.stiffness) * 1000).toFixed(0)} mm
         </p>
       )}
@@ -139,6 +141,7 @@ export default function Suspension() {
       </div>
       <div className="susp-stage">
         <SuspensionStudio
+          key={resetKey}
           a={va}
           b={vb}
           chapter={chapter}
@@ -173,10 +176,12 @@ export default function Suspension() {
         <div className="susp-energy">
           <div className="susp-energy-line">
             <span>
-              {t('仍在运动与弹性中')} <strong>{energy.mechanical.toFixed(2)} J</strong>
+              {t(film.watch ? '机械能' : '仍在运动与弹性中')}{' '}
+              <strong>{energy.mechanical.toFixed(2)} J</strong>
             </span>
             <span>
-              {t('已由减振器耗散')} <strong>{energy.dissipated.toFixed(2)} J</strong>
+              {t(film.watch ? '累计耗散' : '已由减振器耗散')}{' '}
+              <strong>{energy.dissipated.toFixed(2)} J</strong>
             </span>
           </div>
           <div className="susp-energy-track" aria-label={t('相对平衡位置的能量分配')}>
@@ -336,6 +341,7 @@ export default function Suspension() {
               setFrequency(10.4);
               setTime(0);
               setCompare(false);
+              setResetKey((key) => key + 1);
             }}
           >
             {t('重置悬架实验')}

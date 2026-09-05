@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import { Range } from '../lab/Controls';
 import DiffusionStrip from '../lab/DiffusionStrip';
 import {
@@ -19,6 +20,7 @@ import '../../styles/diffusion.css';
 const num = (v: number, d = 4) => (Math.abs(v) < 0.5 * 10 ** -d ? 0 : v).toFixed(d);
 export default function Diffusion() {
   const film = useShowcase(),
+    phoneFilm = useCompact() && film.watch,
     [D, setD] = useState(0.015),
     [length, setLength] = useState(1),
     [time, setTime] = useState(0),
@@ -135,31 +137,46 @@ export default function Diffusion() {
           {t('移动时间或改变条件，查看同一初态的浓度解。这里没有整体平流。')}
         </p>
       )}
-      <DiffusionStrip field={field} second={second} view={view} section={probe} region={region} />
-      <div className="diffusion-key">
+      <DiffusionStrip
+        film={film.watch}
+        field={field}
+        second={second}
+        view={view}
+        section={probe}
+        region={region}
+      />
+      <div className="diffusion-key" data-phone-key={view === 'mix' || view === 'variance'}>
         <span>
           <i />
-          {t(
-            second
-              ? '基准'
-              : view === 'variance'
-                ? '分布方差'
-                : view === 'mix'
-                  ? '标记 A'
-                  : '浓度曲线',
-          )}
+          {phoneFilm && view === 'mix'
+            ? 'A'
+            : t(
+                second
+                  ? '基准'
+                  : view === 'variance'
+                    ? '分布方差'
+                    : view === 'mix'
+                      ? '标记 A'
+                      : '浓度曲线',
+              )}
         </span>
         {(second || view === 'mix') && (
           <span>
             <i className="diffusion-amber" />
-            {t(view === 'mix' ? '标记 B' : '对照曲线')}
+            {phoneFilm && view === 'mix' ? 'B' : t(view === 'mix' ? '标记 B' : '对照曲线')}
           </span>
         )}
         {view === 'mix' && (
           <span>
             <i className="diffusion-sum" />
-            {t('A+B 总浓度')}
+            {phoneFilm ? 'A+B' : t('A+B 总浓度')}
           </span>
+        )}
+        {phoneFilm && view === 'variance' && (
+          <>
+            <span className="diffusion-limit-key">L²/12</span>
+            <span className="diffusion-early-key">σ₀² + 2Dt</span>
+          </>
         )}
         <span>{t('无量纲模型')}</span>
       </div>

@@ -2,7 +2,7 @@ import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
 import { useCompact } from '../lab/useCompact';
-import PacketRoutingMap from '../lab/PacketRoutingMap';
+import PacketRoutingMap, { PacketRoutingOutput } from '../lab/PacketRoutingMap';
 import {
   ROUTING_ROUTERS,
   routingBudget,
@@ -46,11 +46,22 @@ const reasons: Record<RoutingDrop, string> = {
   route: '没有可用路由',
 };
 const ms = (n: number) => (n * 1000).toFixed(1);
-function RouteTable({ state, selected }: { state: RoutingSnapshot; selected: RoutingRouter }) {
+function RouteTable({
+  state,
+  selected,
+  compact = false,
+  single = false,
+}: {
+  state: RoutingSnapshot;
+  selected: RoutingRouter;
+  compact?: boolean;
+  single?: boolean;
+}) {
   return (
-    <div className="routing-table">
+    <div className="routing-table" data-compact={compact}>
       <div className="routing-instrument-title">
-        {t('各自的路由表')} · {t('目的地 R')}
+        {!compact && <>{t('各自的路由表')} · </>}
+        {t('目的地 R')}
       </div>
       <table>
         <thead>
@@ -62,7 +73,7 @@ function RouteTable({ state, selected }: { state: RoutingSnapshot; selected: Rou
           </tr>
         </thead>
         <tbody>
-          {ROUTING_ROUTERS.map((r) => (
+          {(single ? [selected] : ROUTING_ROUTERS).map((r) => (
             <tr key={r} className={r === selected ? 'is-selected' : ''}>
               <th>{r}</th>
               <td>{state.tables[r].next ?? '—'}</td>
@@ -79,10 +90,12 @@ function PacketBudget({
   run,
   state,
   selected,
+  compact = false,
 }: {
   run: RoutingRun;
   state: RoutingSnapshot;
   selected: number;
+  compact?: boolean;
 }) {
   const packet = state.packets[selected - 1],
     b = routingBudget(packet, state.at),
@@ -106,7 +119,8 @@ function PacketBudget({
   return (
     <div className="routing-budget">
       <div className="routing-instrument-title">
-        P{selected} · {t('时延来自这些过程')}
+        {!compact && <>P{selected} · </>}
+        {t('时延来自这些过程')}
       </div>
       <div className="routing-budget-line">
         {keys.map((k) => (
@@ -144,6 +158,13 @@ function QueueDetail({ run, state }: { run: RoutingRun; state: RoutingSnapshot }
         <span>
           {ms((run.config.bytes * 8) / run.config.brRate)} ms / {t('分组')}
         </span>
+      </div>
+      <div className="routing-serialization" aria-label={t('正在串行发送')}>
+        <i
+          style={{
+            width: `${busy ? Math.max(0, Math.min(1, (state.at - busy.phase.start) / (busy.phase.end - busy.phase.start))) * 100 : 0}%`,
+          }}
+        />
       </div>
       <div className="routing-slots">
         {Array.from({ length: run.config.capacity }, (_, i) => (
@@ -257,6 +278,13 @@ export default function PacketRouting() {
     ...decisions.map((d) => d.node),
     ...(packet.phase.kind === 'received' ? ['R'] : []),
   ].join(' → ');
+  const phoneTrail =
+    decisions.length > 3
+      ? `… → ${decisions
+          .slice(-3)
+          .map((d) => d.node)
+          .join(' → ')}${packet.phase.kind === 'received' ? ' → R' : ''}`
+      : trail;
   const changeMode = (mode: RoutingMode) =>
     setManual((v) => ({
       ...v,
@@ -270,6 +298,8 @@ export default function PacketRouting() {
     <section
       className="routing-scene"
       data-watch={showcase.watch}
+      data-chapter={chapter}
+      data-phone-film={showcase.watch && compact}
       aria-label={t('可追踪的链路状态分组路由网络')}
     >
       <div className="routing-film">
@@ -279,39 +309,68 @@ export default function PacketRouting() {
         </div>
         <div className="routing-packet-strip">
           <b>P{selected}</b>
-          <span>S → R</span>
+          <span className="routing-endpoints">S → R</span>
+          {showcase.watch && compact && <time>{ms(state.at)} ms</time>}
           <span>TTL {packet.phase.ttl}</span>
           <span className={packet.phase.kind === 'dropped' ? 'routing-dropped' : ''}>
             {t(packet.phase.reason ? reasons[packet.phase.reason] : phaseNames[packet.phase.kind])}
           </span>
         </div>
-        <PacketRoutingMap
-          run={run}
-          state={state}
-          selected={selected}
-          router={router}
-          compact={compact}
-          costs={chapter === 1 || !showcase.watch}
-        />
-        <div className="routing-map-key">
-          <span>{t('S 发送端 · R 接收端')}</span>
-          <span>
-            {t(
-              chapter === 1
-                ? '线旁数字是代价'
-                : chapter === 4 || chapter === 5 || chapter === 7
-                  ? '紫色：拓扑更新'
-                  : '亮线：当前本地路由',
-            )}
-          </span>
-        </div>
+        {showcase.watch && compact && (chapter === 2 || chapter === 6) ? (
+          <PacketRoutingOutput run={run} state={state} selected={selected} />
+        ) : showcase.watch && compact && (chapter === 3 || chapter === 7) ? (
+          <div className="routing-phone-journey">
+            <span>
+              P{selected} · {trail}
+            </span>
+            <b>
+              {packet.phase.link ? packet.phase.link.split('').join(' → ') : packet.phase.node}
+              <span>{t('目的地 R')}</span>
+            </b>
+          </div>
+        ) : (
+          <>
+            <PacketRoutingMap
+              run={run}
+              state={state}
+              selected={selected}
+              router={router}
+              compact={compact}
+              costs={chapter === 1 || !showcase.watch}
+            />
+            <div className="routing-map-key">
+              <span>{t('S 发送端 · R 接收端')}</span>
+              <span>
+                {t(
+                  chapter === 1
+                    ? '线旁数字是代价'
+                    : chapter === 4 || chapter === 5 || chapter === 7
+                      ? '紫色：拓扑更新'
+                      : '亮线：当前本地路由',
+                )}
+              </span>
+            </div>
+          </>
+        )}
         <div className="routing-instrument">
-          {chapter === 0 && <PacketBudget run={run} state={state} selected={selected} />}
+          {chapter === 0 && (
+            <PacketBudget
+              run={run}
+              state={state}
+              selected={selected}
+              compact={showcase.watch && compact}
+            />
+          )}
           {(chapter === 1 || chapter === 5) && (
             <>
-              <RouteTable state={state} selected={router} />
-              <div className="routing-trail">
-                P{selected} · {trail}
+              <RouteTable
+                state={state}
+                selected={router}
+                compact={showcase.watch && compact}
+                single={showcase.watch && compact && chapter === 1}
+              />
+              <div className="routing-trail" aria-label={`P${selected} · ${trail}`}>
+                P{selected} · {showcase.watch && compact ? phoneTrail : trail}
               </div>
             </>
           )}

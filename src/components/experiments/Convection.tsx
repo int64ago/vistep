@@ -7,6 +7,7 @@ import {
 } from '../../models/convection';
 import { Range } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import { useConvection } from '../lab/useConvection';
 import ConvectionCell from '../lab/ConvectionCell';
 import '../../styles/convection.css';
@@ -23,6 +24,7 @@ const observations = [
 const number = (v: number, d = 4) => (Math.abs(v) < 0.5 * 10 ** -d ? 0 : v).toFixed(d);
 export default function Convection() {
   const film = useShowcase(),
+    phoneFilm = useCompact() && film.watch,
     [heating, setHeating] = useState<'below' | 'above'>('below'),
     [buoyancy, setBuoyancy] = useState(1),
     [viscosity, setViscosity] = useState(0.02),
@@ -84,6 +86,15 @@ export default function Convection() {
           : dye
             ? observations[3]
             : '改变一个条件，在相同模型时间比较流动与携热。';
+  const convention = grid
+    ? '网格和迎风格式带来数值耗散；读数不是实验测量。'
+    : view === 'seed'
+      ? '人为指定的小温度扰动幅度为 0.02，没有随机种子。'
+      : view === 'cooldown'
+        ? 't* = 24 起，两块恒温板均设为 0.5。'
+        : view === 'conduction'
+          ? '本章无横向扰动；接下来从导热温度层重新开始。'
+          : '四壁不穿透、自由滑移；侧壁绝热，温度与时间均无量纲。';
   const reset = () => {
     setHeating('below');
     setBuoyancy(1);
@@ -99,6 +110,7 @@ export default function Convection() {
       className="convection-study"
       data-view={view}
       data-watch={film.watch}
+      data-phone-film={phoneFilm}
       data-focus={film.watch ? film.chapterProgress >= 0.52 : focus}
       aria-busy={pending}
     >
@@ -144,13 +156,15 @@ export default function Convection() {
           <div>
             <span>
               {t(
-                grid
-                  ? '标准网格携热'
-                  : view === 'transport'
-                    ? '浮力开启的携热'
-                    : a.state.p.heating === 'below'
-                      ? '下方加热的携热'
-                      : '上方加热的携热',
+                phoneFilm
+                  ? titleA
+                  : grid
+                    ? '标准网格携热'
+                    : view === 'transport'
+                      ? '浮力开启的携热'
+                      : a.state.p.heating === 'below'
+                        ? '下方加热的携热'
+                        : '上方加热的携热',
               )}
             </span>
             <b>{number(da.convective)}</b>
@@ -158,18 +172,20 @@ export default function Convection() {
           <div>
             <span>
               {t(
-                grid
-                  ? '较细网格携热'
-                  : view === 'transport'
-                    ? '浮力关闭的携热'
-                    : b.state.p.heating === 'below'
-                      ? '下方加热的携热'
-                      : '上方加热的携热',
+                phoneFilm
+                  ? titleB
+                  : grid
+                    ? '较细网格携热'
+                    : view === 'transport'
+                      ? '浮力关闭的携热'
+                      : b.state.p.heating === 'below'
+                        ? '下方加热的携热'
+                        : '上方加热的携热',
               )}
             </span>
             <b>{number(db.convective)}</b>
           </div>
-          <p>{t('中截面平均的向上携热通量；负号表示向下。')}</p>
+          <p>{t(phoneFilm ? '向上携热' : '中截面平均的向上携热通量；负号表示向下。')}</p>
         </div>
       ) : view === 'conduction' ? (
         <div className="convection-readouts">
@@ -178,7 +194,7 @@ export default function Convection() {
             <b>{number(da.maxSpeed)}</b>
           </div>
           <div>
-            <span>{t('中截面传导通量')}</span>
+            <span>{t(phoneFilm ? '传导通量' : '中截面传导通量')}</span>
             <b>{number(da.conductive)}</b>
           </div>
         </div>
@@ -200,24 +216,12 @@ export default function Convection() {
             <b>{number(da.maxSpeed)}</b>
           </div>
           <div>
-            <span>{t('中截面携热通量')}</span>
+            <span>{t(phoneFilm ? '携热通量' : '中截面携热通量')}</span>
             <b>{number(da.convective)}</b>
           </div>
         </div>
       )}
-      <p className="convection-convention">
-        {t(
-          grid
-            ? '网格和迎风格式带来数值耗散；读数不是实验测量。'
-            : view === 'seed'
-              ? '人为指定的小温度扰动幅度为 0.02，没有随机种子。'
-              : view === 'cooldown'
-                ? 't* = 24 起，两块恒温板均设为 0.5。'
-                : view === 'conduction'
-                  ? '本章无横向扰动；接下来从导热温度层重新开始。'
-                  : '四壁不穿透、自由滑移；侧壁绝热，温度与时间均无量纲。',
-        )}
-      </p>
+      {!phoneFilm && <p className="convection-convention">{t(convention)}</p>}
       {!film.watch && (
         <div className="convection-explore">
           <div className="convection-switches" role="group" aria-label={t('恒温板配置')}>
@@ -284,6 +288,8 @@ export default function Convection() {
       )}
       <details className="convection-method">
         <summary>{t('边界、数值与模型限制')}</summary>
+        {phoneFilm && <p>{t(convention)}</p>}
+        {phoneFilm && <p>{t('中截面平均的向上携热通量；负号表示向下。')}</p>}
         <p>
           {t(
             '这是闭合二维 Boussinesq 教学网格：密度变化只进入浮力项。玻璃外观是示意，速度边界为自由滑移，不是真实玻璃壁的无滑移条件。',

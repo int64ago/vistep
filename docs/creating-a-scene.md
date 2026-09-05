@@ -43,7 +43,7 @@ A complete silent sequence comes before optional controls. Explicitly disclose t
 
 Write English and Chinese for speech, separately. Point out the detail on screen, allow a question to settle, then explain the change. Do not read UI text, force literal translations or stretch a short visual with more prose.
 
-Check each spoken reference against desktop, phone and applicable fallback compositions. A new phone view can remove the timing paper or move a graph below its circuit. Name the instruction ID, signal or instrument instead of retaining a direction that no longer exists. Verify the visible referent before accepting a rewritten cue; regenerate only affected speech and remeasure shared windows.
+Check each spoken reference against desktop, phone and applicable fallback compositions. A new phone view can remove the timing paper or move a graph below its circuit. Name the instruction ID, signal or instrument instead of retaining a direction that no longer exists. Verify the visible referent before accepting a rewritten cue; regenerate only affected speech and remeasure shared windows. Distinguish a moved object from a missing causal view. If the chapter explains cage motion, a receiving screen or an energy input, preserve that visible object in the phone and fallback compositions instead of only deleting the spoken reference.
 
 Narration is requested by default; honor the saved manual choice and the page language. Browser autoplay rejection must leave a clear user-activated retry while the silent film remains usable. The noise experiment’s pure tone still requires a separate explicit action.
 

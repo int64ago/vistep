@@ -165,7 +165,10 @@ export function LithiumBatteryFlat({
   );
 }
 export function LithiumInventory({ shot, width }: { shot: LithiumShot; width: number }) {
-  const n = shot.values.inventory,
+  const compact = width < 400,
+    pitch = compact ? 88 : 65,
+    height = compact ? 206 : 155,
+    n = shot.values.inventory,
     rows = [
       { label: '石墨中的锂', fraction: n.x, symbol: 'x', color: '#758885' },
       { label: 'LFP 中的锂', fraction: n.y, symbol: 'y', color: '#b3aa75' },
@@ -173,23 +176,30 @@ export function LithiumInventory({ shot, width }: { shot: LithiumShot; width: nu
   return (
     <svg
       width={width}
-      height="155"
-      viewBox={`0 0 ${width} 155`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('两个宿主的平均含锂比例，总锂量守恒')}
     >
       {rows.map((r, i) => (
         <g key={r.symbol}>
-          <text x="0" y={22 + i * 65}>
+          <text x="0" y={22 + i * pitch}>
             {t(r.label)}
           </text>
-          <text x={width} y={22 + i * 65} textAnchor="end">
+          <text x={width} y={(compact ? 44 : 22) + i * pitch} textAnchor="end">
             {r.symbol} = {r.fraction.toFixed(3)}
           </text>
-          <rect x="0" y={34 + i * 65} width={width} height="15" rx="7.5" fill="#e2e5d9" />
           <rect
             x="0"
-            y={34 + i * 65}
+            y={(compact ? 54 : 34) + i * pitch}
+            width={width}
+            height="15"
+            rx="7.5"
+            fill="#e2e5d9"
+          />
+          <rect
+            x="0"
+            y={(compact ? 54 : 34) + i * pitch}
             width={width * r.fraction}
             height="15"
             rx="7.5"
@@ -197,17 +207,19 @@ export function LithiumInventory({ shot, width }: { shot: LithiumShot; width: nu
           />
         </g>
       ))}
-      <text x="0" y="150">
+      <text x="0" y={height - 5}>
         x + y = {(n.x + n.y).toFixed(3)}
       </text>
-      <text x={width} y="150" textAnchor="end">
+      <text x={width} y={height - 5} textAnchor="end">
         {t('总量不变')}
       </text>
     </svg>
   );
 }
 export function LithiumPower({ shot, width }: { shot: LithiumShot; width: number }) {
-  const a = shot.values,
+  const compact = width < 400,
+    height = compact ? 202 : 172,
+    a = shot.values,
     max = Math.max(3.7, a.ocv, a.voltage),
     scale = (width - 4) / max,
     drop = Math.abs(a.ocv - a.voltage);
@@ -215,8 +227,8 @@ export function LithiumPower({ shot, width }: { shot: LithiumShot; width: number
     <svg
       className="lb-power"
       width={width}
-      height="172"
-      viewBox={`0 0 ${width} 172`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('开路电压与端电压，差值由内阻和极化决定')}
     >
@@ -244,7 +256,7 @@ export function LithiumPower({ shot, width }: { shot: LithiumShot; width: number
       <text x="0" y="157">
         {t('内阻压降')} {Math.abs(a.ohmicDrop).toFixed(3)} V
       </text>
-      <text x={width} y="157" textAnchor="end">
+      <text x={compact ? 0 : width} y={compact ? 190 : 157} textAnchor={compact ? 'start' : 'end'}>
         p = {a.polarizationDrop.toFixed(3)} V
       </text>
     </svg>
@@ -341,7 +353,10 @@ export function LithiumLedger({
   width: number;
   initialSoc?: number;
 }) {
-  const initial = lithiumChemicalEnergy(initialSoc),
+  const compact = width < 400,
+    pitch = compact ? 78 : 63,
+    height = compact ? 340 : 272,
+    initial = lithiumChemicalEnergy(initialSoc),
     s = shot.state,
     v = shot.values,
     total = initial + s.energyIn,
@@ -355,23 +370,30 @@ export function LithiumLedger({
   return (
     <svg
       width={width}
-      height="272"
-      viewBox={`0 0 ${width} 272`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('输入、输出、储存和内部热量的完整能量账目')}
     >
       {rows.map((r, i) => (
         <g key={r.label}>
-          <text x="0" y={22 + i * 63}>
+          <text x="0" y={22 + i * pitch}>
             {t(r.label)}
           </text>
-          <text x={width} y={22 + i * 63} textAnchor="end">
+          <text x={width} y={(compact ? 44 : 22) + i * pitch} textAnchor="end">
             {(r.value / 3600).toFixed(3)} Wh
           </text>
-          <rect x="0" y={32 + i * 63} width={width} height="11" rx="5" fill="#e0e5d8" />
           <rect
             x="0"
-            y={32 + i * 63}
+            y={(compact ? 54 : 32) + i * pitch}
+            width={width}
+            height="11"
+            rx="5"
+            fill="#e0e5d8"
+          />
+          <rect
+            x="0"
+            y={(compact ? 54 : 32) + i * pitch}
             width={total > 0 ? (width * r.value) / total : 0}
             height="11"
             rx="5"
@@ -379,8 +401,8 @@ export function LithiumLedger({
           />
         </g>
       ))}
-      <text x="0" y="269">
-        {t('输入 = 储存 + 输出 + 热')}
+      <text x="0" y={height - 4}>
+        {compact ? 'Eᵢₙ = Eₛₜₒᵣₑ + Eₒᵤₜ + Q' : t('输入 = 储存 + 输出 + 热')}
       </text>
     </svg>
   );

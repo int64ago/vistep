@@ -326,6 +326,12 @@
   .seasons-study .seasons-apparatus text {
     font-size: 22px;
   }
+  .seasons-study .seasons-orbit {
+    max-width: 250px;
+  }
+  .seasons-study .seasons-orbit text {
+    font-size: 16px;
+  }
   .seasons-instrument-title {
     min-height: 39px;
   }
@@ -360,48 +366,102 @@
     transition: none;
   }
 }
+/* Watch uses a chapter-specific phone instrument, not the desktop stack. */
 @media (max-width: 760px) {
   .seasons-study[data-watch='true'] {
-    min-height: 870px;
+    padding: 14px;
+    min-height: 520px;
     display: flex;
     flex-direction: column;
   }
-  .seasons-study[data-watch='true'] .seasons-method {
-    margin-top: auto;
+  .seasons-study[data-watch='true'] .seasons-heading {
+    gap: 4px 12px;
+    font-size: 16px;
   }
-  .seasons-study[data-watch='true']:is(
-      [data-chapter='1'],
-      [data-chapter='2'],
-      [data-chapter='3'],
-      [data-chapter='6'],
-      [data-chapter='7']
-    )
-    .seasons-globe,
-  .seasons-study[data-watch='true']:is([data-chapter='0'], [data-chapter='4'])
-    .seasons-field-column,
-  .seasons-study[data-watch='true']:is(
-      [data-chapter='0'],
-      [data-chapter='1'],
-      [data-chapter='2'],
-      [data-chapter='4'],
-      [data-chapter='5']
-    )
-    > :is(.seasons-energy, .seasons-ledger),
-  .seasons-study[data-watch='true']:is([data-chapter='1'], [data-chapter='2'])
-    .seasons-planet-column {
+  .seasons-study[data-watch='true'] .seasons-heading > span:first-child {
+    letter-spacing: 0;
+  }
+  .seasons-phone-watch {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding-block: 8px 14px;
+    min-width: 0;
+  }
+  .seasons-phone-watch .seasons-globe > svg {
+    width: min(100%, 250px);
+  }
+  .seasons-phone-watch .seasons-day-pair {
+    margin: 0;
+    gap: 6px;
+  }
+  .seasons-phone-watch .seasons-day-row {
+    grid-template-columns: 42px minmax(0, 1fr) 60px;
+    gap: 8px;
+  }
+  .seasons-phone-reading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 3px 12px;
+    font-size: 16px;
+  }
+  .seasons-phone-reading b {
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .seasons-phone-limit {
+    color: #b6cac4;
+    font-size: 16px;
+  }
+  .seasons-phone-input {
+    height: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #081e2a;
+  }
+  .seasons-phone-input i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #efcd8c;
+  }
+  .seasons-phone-polar {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+  }
+  .seasons-phone-polar > div:last-child {
+    display: grid;
+    gap: 3px;
+  }
+  .seasons-phone-watch .seasons-energy {
+    padding-top: 8px;
+  }
+  .seasons-phone-watch .seasons-energy-heading {
+    flex-wrap: wrap;
+    gap: 2px 12px;
+  }
+  .seasons-phone-watch .seasons-energy-heading > span:first-child {
     display: none;
   }
-  .seasons-study[data-watch='true'] .seasons-observatory {
-    gap: 16px;
+  .seasons-phone-watch .seasons-trace-key {
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    margin-top: 0;
   }
-  .seasons-study[data-watch='true'] .seasons-field-column {
-    padding-top: 0;
-    border-top: 0;
+  .seasons-study .seasons-shadow-dial {
+    width: 250px;
+    max-width: 100%;
+    margin-inline: auto;
   }
-  .seasons-study[data-watch='true'][data-chapter='5'] .seasons-globe > svg {
-    width: min(100%, 220px);
+  .seasons-study .seasons-shadow-dial text {
+    font-size: 16px;
   }
-  .seasons-study[data-watch='true'][data-chapter='5'] .seasons-globe svg text {
-    font-size: 24px;
+  .seasons-study[data-watch='true'] .seasons-method {
+    margin-top: 0;
   }
 }

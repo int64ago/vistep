@@ -908,3 +908,270 @@
     padding: 3px 0;
   }
 }
+
+/* Phone watch uses one access sheet or split pair, rather than the desktop column stack. */
+@media (max-width: 760px) {
+  .database-index-study[data-phone-film='true'] {
+    padding: 12px;
+    min-height: 570px;
+    display: flex;
+    flex-direction: column;
+  }
+  .database-index-study[data-phone-film='true'] > h3,
+  .database-index-study[data-phone-film='true'] > .di-heading {
+    display: none;
+  }
+  .database-index-study[data-phone-film='true'] .di-film-surface {
+    min-height: 0;
+    display: block;
+    flex: 1;
+  }
+  .database-index-study[data-phone-film='true'] .di-film-note {
+    margin-top: 12px;
+    padding-top: 8px;
+    line-height: 1.4;
+  }
+  .di-phone-predicate strong {
+    font:
+      22px/1.3 ui-monospace,
+      monospace;
+    color: var(--di-blue);
+  }
+  .di-phone-path {
+    min-height: 28px;
+    padding: 3px 0;
+    font:
+      16px/22px ui-monospace,
+      monospace;
+    color: var(--di-muted);
+  }
+  .di-phone-access .di-page-tab,
+  .di-phone-split .di-page-tab {
+    padding: 7px 9px;
+    gap: 6px;
+  }
+  .di-phone-access .di-page-tab b,
+  .di-phone-split .di-page-tab b {
+    font-size: 20px;
+  }
+  .di-phone-access .di-pair b,
+  .di-phone-split .di-pair b {
+    font-size: 20px;
+  }
+  .di-phone-access .di-page-tail,
+  .di-phone-split .di-page-tail {
+    padding: 7px 9px;
+    line-height: 22px;
+  }
+  .di-phone-access .di-page-columns,
+  .di-phone-split .di-page-columns,
+  .di-phone-access .di-children,
+  .di-phone-split .di-children {
+    display: none;
+  }
+  .di-phone-access .di-entry,
+  .di-phone-access .di-separator,
+  .di-phone-access .di-heap-row,
+  .di-phone-split .di-entry,
+  .di-phone-split .di-separator {
+    min-height: 36px;
+    padding: 5px 6px;
+    margin: 0 5px;
+  }
+  .di-phone-access .di-operation {
+    min-height: 52px;
+    margin: 6px 0 0;
+    padding: 6px 2px;
+    gap: 6px;
+  }
+  .di-phone-access .di-equation .di-pair {
+    flex-direction: column;
+    gap: 0;
+  }
+  .di-phone-access .di-operation > span {
+    font-size: 16px;
+    line-height: 1.3;
+    max-width: 40%;
+  }
+  .di-phone-access .di-operation > strong,
+  .di-phone-access .di-equation > strong {
+    font-size: 20px;
+  }
+  .di-phone-result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    padding-top: 8px;
+  }
+  .di-phone-result b {
+    font:
+      16px/1.4 ui-monospace,
+      monospace;
+    color: var(--di-green);
+    overflow-wrap: anywhere;
+  }
+  .di-phone-receipt {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 8px;
+    margin: 10px 0 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--di-rule);
+  }
+  .di-phone-receipt > div {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 4px;
+  }
+  .di-phone-receipt dt {
+    overflow-wrap: anywhere;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--di-muted);
+  }
+  .di-phone-receipt dd {
+    margin: 0;
+    font:
+      22px/1.1 ui-monospace,
+      monospace;
+  }
+  .di-phone-plan {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 8px;
+    border-bottom: 1px solid var(--di-rule);
+    padding: 12px 0;
+  }
+  .di-phone-plan h4 {
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 500;
+    align-self: center;
+  }
+  .di-phone-plan-total {
+    display: grid;
+    text-align: right;
+  }
+  .di-phone-plan-total strong {
+    font:
+      40px/1 Georgia,
+      serif;
+    color: var(--di-blue);
+  }
+  .di-phone-plan-total span {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .di-phone-page-bars {
+    grid-column: 1/-1;
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #e0e7e5;
+    margin: 4px 0;
+  }
+  .di-phone-page-bars i {
+    background: #6291a4;
+  }
+  .di-phone-page-bars b {
+    background: #74a388;
+  }
+  .di-phone-plan p {
+    grid-column: 1/-1;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .di-phone-insertion {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    font-size: 16px;
+  }
+  .di-phone-insertion .di-pair {
+    flex: 1;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .di-phone-insertion .di-pair b {
+    font-size: 22px;
+  }
+  .di-phone-change h4 {
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 500;
+    margin: 10px 0;
+  }
+  .di-phone-overflow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    color: #945e30;
+  }
+  .di-phone-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+  .di-phone-split[data-split='true'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .di-phone-split[data-split='true'] .di-page-tab > span,
+  .di-phone-split[data-split='true'] .di-page-tail > span {
+    display: none;
+  }
+  .di-phone-split[data-split='true'] .di-pair {
+    gap: 3px;
+  }
+  .di-phone-split[data-split='true'] .di-separator {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+  }
+  .di-phone-split[data-split='true'] .di-separator > span:last-child {
+    text-align: right;
+  }
+  .di-phone-promote {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    margin-top: 12px;
+    padding: 8px 0;
+    border-top: 1px solid var(--di-rule);
+  }
+  .di-phone-promote .di-pair {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px;
+    color: var(--di-blue);
+  }
+  .di-phone-promote .di-pair b {
+    font-size: 22px;
+  }
+  .di-phone-promote p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .di-phone-tree-status {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.4;
+    padding-top: 8px;
+  }
+  .showcase:has(.database-index-study) .film-caption {
+    gap: 8px;
+    padding: 12px 12px 4px;
+  }
+  .showcase:has(.database-index-study) .film-chapter {
+    display: none;
+  }
+}
