@@ -79,7 +79,7 @@ export default function BuckCircuit({ sample, compact }: { sample: BuckSample; c
         </span>
       </div>
       <svg
-        viewBox={`0 0 ${width} ${compact ? 245 : 274}`}
+        viewBox={compact ? `0 16 ${width} 229` : `0 0 ${width} 274`}
         role="img"
         aria-label={t('降压电路：输入、开关、续流二极管、电感、电容与电阻负载连接成闭合回路')}
       >
@@ -163,7 +163,7 @@ export default function BuckCircuit({ sample, compact }: { sample: BuckSample; c
           <text x={cap + (compact ? -23 : 28)} y="181">
             C
           </text>
-          <text x={load} y="120">
+          <text x={load - 12} y="120" textAnchor="end">
             R
           </text>
           {!compact && (

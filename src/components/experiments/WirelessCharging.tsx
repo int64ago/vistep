@@ -57,6 +57,7 @@ function PhaseProof({ shot }: { shot: WirelessShot }) {
           </div>
           <svg
             viewBox="0 0 300 76"
+            preserveAspectRatio="none"
             role="img"
             aria-label={t(
               induction
@@ -83,13 +84,13 @@ function PhaseProof({ shot }: { shot: WirelessShot }) {
               fill={trace.color}
             />
           </svg>
+          <div className="wireless-axis">
+            <span>0°</span>
+            <span>180°</span>
+            <span>360°</span>
+          </div>
         </div>
       ))}
-      <div className="wireless-axis">
-        <span>0°</span>
-        <span>180°</span>
-        <span>360°</span>
-      </div>
     </div>
   );
 }
@@ -255,6 +256,7 @@ export default function WirelessCharging() {
     host = useRef<HTMLDivElement>(null),
     id = useId();
   const [width, setWidth] = useState(800),
+    [resetCount, setResetCount] = useState(0),
     [gap, setGap] = useState(8),
     [offset, setOffset] = useState(0),
     [frequency, setFrequency] = useState(150),
@@ -310,6 +312,7 @@ export default function WirelessCharging() {
     setConnected(true);
     setFerrite(true);
     setView('induction');
+    setResetCount((n) => n + 1);
   };
   return (
     <div
@@ -325,7 +328,11 @@ export default function WirelessCharging() {
           <span>{t('八匝发送 · 八匝接收')}</span>
         </div>
         <div className="wireless-object">
-          <WirelessChargingStudio key={narrow ? 'phone' : 'wide'} shot={shot} narrow={narrow} />
+          <WirelessChargingStudio
+            key={`${narrow ? 'phone' : 'wide'}-${resetCount}-${film.run}`}
+            shot={shot}
+            narrow={narrow}
+          />
         </div>
         <div className="wireless-circuit-readout">
           <span>

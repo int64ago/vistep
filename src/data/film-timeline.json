@@ -4270,64 +4270,64 @@
         "id": "database-index-scan",
         "title": "先逐页翻完这张表",
         "titleEn": "Read the table page by page",
-        "caption": "同一张表有 24 行；查找键 63，完整扫描仍要检查每一行。",
-        "captionEn": "The same table has 24 rows. Finding key 63 by a full scan still checks every row.",
+        "caption": "查找键 63：完整扫描要检查全部 24 行。",
+        "captionEn": "Finding key 63 requires scanning all 24 rows.",
         "at": 0
       },
       {
         "id": "database-index-separators",
         "title": "分隔键，是通往下一页的路标",
         "titleEn": "Separators point to the next page",
-        "caption": "内部页保存分隔键与子页指针；按键值、行号的字典序选路。",
-        "captionEn": "Internal pages hold separators and child pointers. Route by key, then row ID.",
+        "caption": "分隔键决定下一页；键相同，再比较行号。",
+        "captionEn": "Separators choose the next page; row IDs break ties.",
         "at": 24.0
       },
       {
         "id": "database-index-lookup",
         "title": "沿着页号，找到同一条记录",
         "titleEn": "Follow page IDs to the same record",
-        "caption": "沿真实子页指针下降，再用叶页中的行号回到堆页取记录。",
-        "captionEn": "Descend through actual child pointers, then use the leaf row ID to fetch the heap record.",
+        "caption": "沿子页指针下降，再用行号取回完整记录。",
+        "captionEn": "Follow child pointers, then fetch the record by row ID.",
         "at": 47.0
       },
       {
         "id": "database-index-accounting",
         "title": "少翻了几页，账要算完整",
         "titleEn": "Count every page on both routes",
-        "caption": "同一结果：全扫触及 6 个堆页；索引触及 4 个索引页和 1 个堆页。",
-        "captionEn": "Same result: scan touches 6 heap pages; lookup touches 4 index pages and 1 heap page.",
+        "caption": "同一结果：全扫 6 页，索引 4 页加堆页 1 页。",
+        "captionEn": "Same result: scan 6 pages, or read 4 index pages plus 1 heap page.",
         "at": 73.0
       },
       {
         "id": "database-index-range",
         "title": "范围查询，顺着叶页接着走",
         "titleEn": "Continue a range along the leaves",
-        "caption": "查询 38 到 47：先定位，再沿叶页链接前进；三个 42 都保留各自行号。",
-        "captionEn": "For 38 through 47, locate the start and follow leaf links. All three 42s keep their row IDs.",
+        "caption": "沿叶页查找 38–47；三个 42 各有独立行号。",
+        "captionEn": "Follow leaves for 38–47; all three 42s retain their row IDs.",
         "at": 99.5
       },
       {
         "id": "database-index-leaf-split",
         "title": "叶页满了，把新邻居接进来",
         "titleEn": "A full leaf gains a new neighbor",
-        "caption": "叶页最多 3 项；第 4 项触发分裂，右页最小项复制到父页。",
-        "captionEn": "A leaf holds 3 entries. A fourth splits it; copy the right minimum into the parent.",
+        "caption": "第 4 项撑满叶页：分裂，并把右页最小项复制到父页。",
+        "captionEn": "A fourth entry splits the leaf; copy the right minimum to its parent.",
         "at": 125.0
       },
       {
         "id": "database-index-root-split",
         "title": "分裂向上传，直到长出新根",
         "titleEn": "Splits climb until a new root grows",
-        "caption": "子页指针也会撑满父页；内部页上推分隔键，根分裂后所有叶子统一加深一层。",
-        "captionEn": "Child pointers can overflow a parent. Promote internal separators; a root split adds one level to every leaf.",
+        "caption": "分裂传到根时，所有叶子统一加深一层。",
+        "captionEn": "A root split adds one level to every leaf.",
         "at": 148.5
       },
       {
         "id": "database-index-limits",
         "title": "读得越多，索引越不占便宜",
         "titleEn": "Reading more can erase the advantage",
-        "caption": "读全部 37 行时：索引触及 27 个不同页，全扫只需 10 个堆页；选择取决于工作量。",
-        "captionEn": "For all 37 rows, the index touches 27 distinct pages; the scan needs 10 heap pages. Workload matters.",
+        "caption": "读全部 37 行：索引触及 27 页，全扫只需 10 页。",
+        "captionEn": "Read all 37 rows: the index touches 27 pages; a scan needs 10.",
         "at": 174.5
       }
     ]
@@ -4339,64 +4339,64 @@
         "id": "wander",
         "title": "只盯住这一颗",
         "titleEn": "Follow just this one",
-        "caption": "没有整体水流，热浴中的微球仍留下不规则轨迹。",
-        "captionEn": "A sphere leaves an irregular path even without a mean fluid flow.",
+        "caption": "没有整体水流，微球仍留下不规则轨迹。",
+        "captionEn": "Even without mean flow, the sphere wanders.",
         "at": 0
       },
       {
         "id": "impulses",
         "title": "把时间放到纳秒",
         "titleEn": "A nanosecond observation",
-        "caption": "一个采样窗内，热浴与阻力的冲量共同改变动量。",
-        "captionEn": "Over a sampling window, bath and drag impulses change momentum.",
+        "caption": "热浴与阻力的冲量，共同改变微球动量。",
+        "captionEn": "Bath and drag impulses change the sphere’s momentum.",
         "at": 22.0
       },
       {
         "id": "memory",
         "title": "惯性会被忘记",
         "titleEn": "Inertia loses its memory",
-        "caption": "关闭热噪声后，已有速度按时间常数 τ 衰减。",
-        "captionEn": "With thermal noise off, the initial velocity decays on the timescale τ.",
+        "caption": "关闭热噪声，已有速度按时间常数 τ 衰减。",
+        "captionEn": "With thermal noise off, velocity decays on the timescale τ.",
         "at": 44.0
       },
       {
         "id": "overdamped",
         "title": "拉回秒尺度",
         "titleEn": "Return to seconds",
-        "caption": "远大于 τ 时，惯性轨迹与同一热浴的过阻尼描述几乎重合。",
-        "captionEn": "Far beyond τ, inertial and overdamped paths nearly coincide for the same bath.",
+        "caption": "远大于 τ 时，同一热浴的两种轨迹几乎重合。",
+        "captionEn": "Far beyond τ, both descriptions nearly coincide for the same bath.",
         "at": 67.5
       },
       {
         "id": "temperature",
         "title": "只改变热浴温度",
         "titleEn": "Change temperature alone",
-        "caption": "固定黏度和半径，温度越高，D 越大。",
-        "captionEn": "At fixed viscosity and radius, higher temperature gives a larger D.",
+        "caption": "固定黏度与半径：升温使扩散系数 D 增大。",
+        "captionEn": "At fixed viscosity and radius, higher temperature increases D.",
         "at": 90.0
       },
       {
         "id": "drag",
         "title": "阻力改变游走尺度",
         "titleEn": "Drag changes the wandering scale",
-        "caption": "黏度乘三，D 变成三分之一；半径乘二，D 减半。",
-        "captionEn": "Triple viscosity divides D by three; double radius halves D.",
+        "caption": "黏度乘三，D 除三；半径乘二，D 减半。",
+        "captionEn": "Triple viscosity: D divides by three. Double radius: D halves.",
         "at": 112.5
       },
       {
         "id": "msd",
         "title": "把重复实验叠起来",
         "titleEn": "Repeat the observation",
-        "caption": "单条位移平方会起落；独立重复的平均接近理论均方位移。",
-        "captionEn": "One squared displacement rises and falls; independent-trial averages approach the theoretical MSD.",
+        "caption": "单次位移平方会起落；多次平均接近理论均方位移。",
+        "captionEn": "One squared displacement fluctuates; trial averages approach the MSD.",
         "at": 135.0
       },
       {
         "id": "mean",
         "title": "平均位置不是一条命运",
         "titleEn": "The mean is not a particle",
-        "caption": "平均位置接近起点，粒子的典型离开距离却持续扩大。",
-        "captionEn": "The mean stays near the origin while the typical displacement grows.",
+        "caption": "平均位置接近起点，典型离开距离却持续增大。",
+        "captionEn": "The mean stays near the start while typical displacement grows.",
         "at": 159.0
       }
     ]
@@ -4408,64 +4408,64 @@
         "id": "release",
         "title": "从浓到淡",
         "titleEn": "From a peak to a spread",
-        "caption": "封闭带里的峰变矮、两侧变宽，但曲线下的总量不变。",
-        "captionEn": "The peak falls and spreads in a sealed strip, while the amount under the curve stays constant.",
+        "caption": "峰变矮、两侧变宽；封闭带中的总量不变。",
+        "captionEn": "The peak spreads; the sealed strip’s total stays constant.",
         "at": 0
       },
       {
         "id": "flux",
         "title": "坡度决定净通量",
         "titleEn": "The slope sets net flux",
-        "caption": "同一截面处，浓度坡度变缓，净通量也随之减弱。",
-        "captionEn": "At one fixed section, a gentler concentration slope produces a smaller net flux.",
+        "caption": "同一截面：浓度坡度越缓，净通量越小。",
+        "captionEn": "At a fixed section, a gentler slope means less net flux.",
         "at": 22.0
       },
       {
         "id": "budget",
         "title": "一小段的收支",
         "titleEn": "A local mass budget",
-        "caption": "局部先积累，再向外输送；整条封闭带的总量始终守恒。",
-        "captionEn": "A region first accumulates material, then loses it, while the sealed strip conserves its total.",
+        "caption": "局部先积累、再流出；封闭带的总量始终守恒。",
+        "captionEn": "A region gains, then loses material; the sealed total is conserved.",
         "at": 45.0
       },
       {
         "id": "variance",
         "title": "边界让宽度停下",
         "titleEn": "Boundaries limit the spread",
-        "caption": "方差最初近似线性增加，随后受到封闭边界限制，趋向均匀分布。",
-        "captionEn": "Variance initially grows almost linearly, then levels toward the uniform distribution inside the boundaries.",
+        "caption": "方差起初近似线性增长，随后受封闭边界限制。",
+        "captionEn": "Variance first grows almost linearly, then meets the boundary limit.",
         "at": 67.0
       },
       {
         "id": "diffusivity",
         "title": "改变扩散系数",
         "titleEn": "Change diffusivity",
-        "caption": "同样的初态和时刻，D 加倍相当于基准组走过两倍模型时间。",
-        "captionEn": "With the same initial state, doubling D gives the baseline profile at twice the model time.",
+        "caption": "相同初态：D 加倍，等效于基准组的两倍模型时间。",
+        "captionEn": "Same initial state: double D equals twice the baseline model time.",
         "at": 90.0
       },
       {
         "id": "length",
         "title": "长度的平方",
         "titleEn": "The square of the length",
-        "caption": "长度加倍、初态同比放大时，达到同样相对平滑程度需要四倍时间。",
-        "captionEn": "Doubling length with a geometrically scaled initial shape requires four times the time for equal relative smoothing.",
+        "caption": "初态同比放大：长度加倍，同等相对平滑需四倍时间。",
+        "captionEn": "Scale the initial shape: double length takes four times as long to smooth.",
         "at": 112.5
       },
       {
         "id": "mix",
         "title": "混合而不消失",
         "titleEn": "Mixing without disappearance",
-        "caption": "A、B 的浓度逐渐重叠，各自总量不变，总浓度也保持不变。",
-        "captionEn": "The A and B profiles overlap while each amount, and their total concentration, remain unchanged.",
+        "caption": "A、B 逐渐重叠；各自总量与总浓度都不变。",
+        "captionEn": "A and B overlap; each amount and their total concentration stay fixed.",
         "at": 135.5
       },
       {
         "id": "reservoir",
         "title": "有通量的稳态",
         "titleEn": "A steady state with flux",
-        "caption": "固定浓度储库允许交换物质；最终曲线稳定，净扩散通量仍然存在。",
-        "captionEn": "Fixed-concentration reservoirs exchange material; the final profile becomes steady while diffusive flux continues.",
+        "caption": "储库维持浓度差：曲线已稳定，净通量仍存在。",
+        "captionEn": "Reservoirs maintain the gradient: a steady profile still carries flux.",
         "at": 160.0
       }
     ]
@@ -4477,64 +4477,64 @@
         "id": "next-hop",
         "title": "分组只选择下一跳",
         "titleEn": "Each router chooses a next hop",
-        "caption": "目的地保持 R，每个路由器依据自己的表选择下一跳。",
-        "captionEn": "The destination stays R; each router consults its own table for the next hop.",
+        "caption": "目的地始终是 R；每台路由器只选择下一跳。",
+        "captionEn": "Destination R stays fixed; each router chooses only the next hop.",
         "at": 0
       },
       {
         "id": "cost",
         "title": "最短的是路由代价",
         "titleEn": "Shortest means least routing cost",
-        "caption": "两次已收敛网络只改变 B–R 的代价，最短路径随之改变。",
-        "captionEn": "Two converged networks differ only in B–R cost, changing the least-cost path.",
+        "caption": "仅改变 B–R 代价，收敛后的最短路径随之改变。",
+        "captionEn": "Change only B–R cost: the converged least-cost path changes.",
         "at": 22.5
       },
       {
         "id": "queue",
         "title": "先排队，再逐位发送",
         "titleEn": "Wait, then serialize the packet",
-        "caption": "同一出口一次发送一个分组；后来者先占等待位。",
-        "captionEn": "An output serializes one packet at a time; later packets wait in its queue.",
+        "caption": "一个出口依次发送分组，后来者先排队。",
+        "captionEn": "An output sends one packet at a time; later arrivals queue.",
         "at": 44.5
       },
       {
         "id": "ttl",
         "title": "TTL 限制转发次数",
         "titleEn": "TTL bounds forwarding",
-        "caption": "每次路由器转发先减一；TTL 到零，分组被丢弃。",
-        "captionEn": "A router decrements TTL before forwarding; zero means the packet is discarded.",
+        "caption": "转发前 TTL 减一；减到零，分组就被丢弃。",
+        "captionEn": "TTL drops before forwarding; at zero, the packet is discarded.",
         "at": 68.0
       },
       {
         "id": "failure",
         "title": "故障先被邻居发现",
         "titleEn": "A neighbor notices the failure first",
-        "caption": "B–R 中断时，链路上的 P1 丢失；其他路由器尚未同时获知。",
-        "captionEn": "When B–R fails, P1 on that link is lost; remote routers do not know immediately.",
+        "caption": "B–R 中断，P1 丢失；远处路由器还不知道。",
+        "captionEn": "B–R fails and P1 is lost; remote routers do not know yet.",
         "at": 90.0
       },
       {
         "id": "convergence",
         "title": "更新传播后，路由才收敛",
         "titleEn": "Routes converge after updates spread",
-        "caption": "B 先改道，C 仍用旧表；短暂绕圈直到新拓扑安装完成。",
-        "captionEn": "B changes first while C still uses its old table, creating a temporary loop until the update is installed.",
+        "caption": "B 已改道，C 仍用旧表；更新传完前可能绕圈。",
+        "captionEn": "B updates before C; a temporary loop lasts until convergence.",
         "at": 112.0
       },
       {
         "id": "congestion",
         "title": "队列满了，分组会被丢弃",
         "titleEn": "A full queue drops arriving packets",
-        "caption": "相同十个分组、相同发送时刻：更多等待位减少丢弃，但不会加快出口。",
-        "captionEn": "The same ten packets and release times: more waiting slots reduce drops but do not speed up the output.",
+        "caption": "同样十个分组：加等待位可减少丢弃，出口速率不变。",
+        "captionEn": "Same ten packets: more queue slots reduce drops but do not speed up output.",
         "at": 134.5
       },
       {
         "id": "reorder",
         "title": "先到达，不一定先交付",
         "titleEn": "Arrival order is not delivery order",
-        "caption": "较晚的 P4 走新恢复的快路先到；应用顺序槽等待缺口补齐。",
-        "captionEn": "Later P4 takes the newly restored fast route and arrives first; the application waits for missing sequence positions.",
+        "caption": "后发的 P4 先到；顺序交付仍要等待缺失分组。",
+        "captionEn": "P4 arrives ahead of earlier packets; ordered delivery waits for the gap.",
         "at": 158.0
       }
     ]

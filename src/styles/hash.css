@@ -671,7 +671,7 @@
     border-radius: 12px;
   }
   .hash-study[data-watch='true'] {
-    min-height: 760px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
   }
@@ -685,7 +685,15 @@
   .hash-intro p {
     font-size: 16px;
   }
-  .hash-study[data-watch='true'] .hash-intro h3 {
+  .hash-study[data-watch='true'] .hash-intro {
+    display: none;
+  }
+  .hash-study[data-watch='true']:not([data-chapter='7']) .hash-film-note {
+    display: none;
+  }
+  /* The shared caption already qualifies the comparison; retain the separate
+     encryption/collision limit without repeating the security caveat above it. */
+  .hash-study[data-watch='true'][data-chapter='7'] .hash-comparison-view > p {
     display: none;
   }
   .hash-film-surface {

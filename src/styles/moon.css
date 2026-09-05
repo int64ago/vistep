@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.09em;
   color: #8d9aaf;
 }
@@ -56,11 +56,11 @@
   align-items: center;
   gap: 14px;
   color: #b1bbca;
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 8px;
 }
 .lunar-view-label i {
-  font-size: 12px;
+  font-size: 16px;
   color: #8493a8;
   font-style: normal;
 }
@@ -74,7 +74,7 @@
   border-radius: 22px;
   background: #8396b212;
   color: #b3bdcb;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.25s;
 }
@@ -84,7 +84,7 @@
 .lunar-asset-status {
   position: absolute;
   bottom: 32px;
-  font-size: 12px;
+  font-size: 16px;
   background: #182539;
   padding: 8px 14px;
   border-radius: 12px;
@@ -113,7 +113,7 @@
 }
 .lunar-diagram-heading small {
   display: block;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.7;
   color: #94a3b7;
   font-weight: 400;
@@ -130,7 +130,7 @@
   fill: #a9b5c8;
 }
 .lunar-geometry p {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.65;
   margin: 16px 0 0;
   color: #98a6bc;
@@ -150,7 +150,7 @@
   white-space: nowrap;
 }
 .lunar-observation small {
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.03em;
   color: #9aa8bc;
 }
@@ -213,13 +213,13 @@
   height: 31px;
 }
 .lunar-phase-strip span {
-  font-size: 11px;
+  font-size: 16px;
   color: #b0bbcb;
   white-space: nowrap;
 }
 .lunar-credit {
   align-self: flex-end;
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 0.025em;
   color: #7d8a9f;
   text-decoration: none;
@@ -231,7 +231,7 @@
   gap: 32px;
 }
 .lunar-month-values span {
-  font-size: 12px;
+  font-size: 16px;
   color: #9aa8bd;
   display: flex;
   gap: 14px;
@@ -273,7 +273,7 @@
     min-height: 620px;
   }
   .lunar-topline {
-    font-size: 9px;
+    font-size: 16px;
     letter-spacing: 0.03em;
     gap: 12px;
   }
@@ -291,16 +291,16 @@
   .lunar-render-mode {
     top: -5px;
     right: -4px;
-    font-size: 11px;
+    font-size: 16px;
     padding: 8px 11px;
   }
   .lunar-view-label {
-    font-size: 13px;
+    font-size: 16px;
     gap: 8px;
     margin-top: 2px;
   }
   .lunar-view-label i {
-    font-size: 10px;
+    font-size: 16px;
   }
   .lunar-body {
     margin: 18px 0;
@@ -317,14 +317,14 @@
     max-height: 220px;
   }
   .lunar-diagram-heading {
-    font-size: 14px;
+    font-size: 16px;
     gap: 16px;
   }
   .lunar-diagram-heading b {
     font-size: 23px;
   }
   .lunar-diagram-heading small {
-    font-size: 10px;
+    font-size: 16px;
   }
   .lunar-geometry svg {
     margin: 8px -8px;
@@ -334,7 +334,7 @@
     font-size: 21px;
   }
   .lunar-geometry p {
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 9px;
   }
   .lunar-observation {
@@ -351,7 +351,7 @@
     font-size: 26px;
   }
   .lunar-observation small {
-    font-size: 11px;
+    font-size: 16px;
   }
   .lunar-progress {
     order: 3;
@@ -369,31 +369,207 @@
     padding-top: 24px;
   }
   .lunar-phase-strip span {
-    font-size: 10px;
+    font-size: 16px;
   }
   .lunar-month-values {
     gap: 18px;
   }
   .lunar-month-values span {
-    font-size: 11px;
+    font-size: 16px;
     gap: 8px;
   }
   .lunar-month-values b {
     font-size: 16px;
   }
   .lunar-credit {
-    font-size: 9px;
+    font-size: 16px;
     align-self: center;
     margin-top: 24px;
   }
   .showcase[data-mode='watch'] .lunar-study {
-    height: 900px;
-    min-height: 900px;
+    height: auto;
+    min-height: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .lunar-render-mode,
   .lunar-phase-strip > div {
     transition: none;
+  }
+}
+
+/* Each phone chapter owns one causal diagram. The Earth-view inset uses that diagram's model. */
+.lunar-current-phase {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 16px;
+}
+.lunar-controls .control-top,
+.lunar-controls .btn {
+  font-size: 16px;
+}
+.lunar-observation > span {
+  white-space: normal;
+}
+.lunar-phase-strip span {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+}
+.lunar-credit {
+  line-height: 1.5;
+}
+@media (min-width: 761px) {
+  .lunar-geometry text {
+    font-size: 19px;
+  }
+  .lunar-phase-strip {
+    min-height: 98px;
+  }
+}
+@media (max-width: 760px) {
+  .lunar-study {
+    padding: 16px;
+  }
+  .lunar-topline {
+    letter-spacing: 0;
+  }
+  .lunar-topline > span:first-child {
+    display: none;
+  }
+  .lunar-topline span + span {
+    max-width: none;
+    text-align: left;
+  }
+  .lunar-geometry svg {
+    width: calc(100% + 16px);
+    max-width: none;
+    margin: 8px -8px;
+  }
+  .lunar-geometry text {
+    font-size: 24px;
+  }
+  .lunar-diagram-heading {
+    gap: 10px;
+    align-items: start;
+  }
+  .lunar-diagram-heading > span {
+    flex: 1;
+  }
+  .lunar-diagram-heading > b {
+    flex: 1;
+  }
+  .lunar-diagram-heading small {
+    line-height: 1.4;
+  }
+  .lunar-month-values {
+    gap: 16px;
+  }
+  .lunar-month-values span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .lunar-view-label {
+    flex-direction: column;
+    gap: 0;
+    line-height: 1.5;
+  }
+  .lunar-render-mode {
+    position: static;
+    order: -1;
+    align-self: flex-end;
+    margin-bottom: 8px;
+  }
+  .lunar-portrait {
+    height: auto;
+  }
+  .lunar-study:not([data-view='portrait']) .lunar-portrait {
+    height: auto;
+  }
+  .lunar-credit {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .lunar-study[data-phone-film='true'] {
+    min-height: 560px;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-body {
+    display: block;
+    flex: none;
+    margin: 12px 0;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-globe {
+    width: 190px;
+    max-height: 190px;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-observation {
+    display: block;
+    padding: 12px 0 0;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-observation > span:first-child {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-observation > span:first-child b {
+    white-space: nowrap;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-observation > span:last-child,
+  .lunar-study[data-phone-film='true']:not([data-view='shadow']) .lunar-progress,
+  .lunar-study[data-phone-film='true'][data-view='months'] .lunar-observation {
+    display: none;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-progress > div {
+    display: none;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-progress p {
+    margin-top: 8px;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-phase-strip {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 4px;
+    padding: 14px 0 0;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-phase-strip svg {
+    width: 26px;
+    height: 26px;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-phase-strip span {
+    display: none;
+  }
+  .lunar-study[data-phone-film='true'] .lunar-credit {
+    margin-top: auto;
+    padding-top: 14px;
+  }
+}
+.lunar-study .control output {
+  font-size: 16px;
+}
+
+@media (max-width: 760px) {
+  .lunar-diagram-heading {
+    display: block;
+  }
+  .lunar-diagram-heading > b {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 6px;
+    text-align: left;
+  }
+  .lunar-study[data-phone-film='true'][data-view='shadow'] .lunar-observation {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .showcase[data-mode='watch'] .lunar-study[data-phone-film='true'] {
+    min-height: 560px;
+  }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .lunar-geometry text {
+    font-size: 30px;
   }
 }

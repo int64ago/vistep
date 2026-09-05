@@ -95,8 +95,16 @@
   font-size: 16px;
   font-variant-numeric: tabular-nums;
 }
-.wireless-phase-proof > .wireless-axis {
-  grid-column: 1/-1;
+.wireless-trace > .wireless-axis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 2.6667%;
+}
+.wireless-trace > .wireless-axis span:nth-child(2) {
+  text-align: center;
+}
+.wireless-trace > .wireless-axis span:last-child {
+  text-align: right;
 }
 .wireless-instrument-title {
   display: flex;
@@ -335,7 +343,7 @@
 .wireless-charging[data-narrow='true'] .wireless-trace svg {
   height: 65px;
 }
-.wireless-charging[data-narrow='true'] .wireless-trace > div > span:last-child {
+.wireless-charging[data-narrow='true'] .wireless-trace > div:not(.wireless-axis) > span:last-child {
   display: none;
 }
 .wireless-charging[data-narrow='true'] .wireless-caption {
@@ -357,7 +365,6 @@
   grid-template-columns: minmax(0, 1fr);
 }
 .wireless-charging[data-watch='true'][data-narrow='true'] .wireless-stage {
-  min-height: 770px;
   display: flex;
   flex-direction: column;
 }
@@ -365,20 +372,6 @@
   margin: 0;
   width: 100%;
   box-sizing: border-box;
-  flex: 1;
-}
-.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='offset'] .wireless-object {
-  height: 252px;
-}
-.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='power'] .wireless-object {
-  height: 265px;
-}
-.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='tuning'] .wireless-object,
-.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='ferrite'] .wireless-object {
-  height: 252px;
-}
-.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='gap'] .wireless-object {
-  height: 346px;
 }
 @media (prefers-reduced-motion: reduce) {
   .wireless-buttons button {
@@ -388,4 +381,90 @@
 
 .wireless-charging[data-watch='true'] .wireless-caption {
   display: none;
+}
+
+/* On phones, give each chapter its relevant instrument instead of reserving an
+   empty desktop-sized evidence bay. The shared caption remains the explanation. */
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-object {
+  height: 230px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='gap'] .wireless-object {
+  height: 280px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-trace svg {
+  height: 48px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-circuit-readout {
+  padding-bottom: 10px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-power-resistance {
+  margin-top: 10px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-tune-readout {
+  margin-top: 6px;
+}
+
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-title-line,
+.wireless-charging[data-watch='true'][data-narrow='true'] > .wireless-scope {
+  display: none;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='power']
+  .wireless-circuit-readout {
+  display: none;
+}
+
+.wireless-charging[data-watch='true'][data-narrow='true']:is(
+    [data-focus='gap'],
+    [data-focus='offset'],
+    [data-focus='tuning'],
+    [data-focus='ferrite']
+  )
+  .wireless-circuit-readout {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  box-sizing: border-box;
+}
+.wireless-charging[data-watch='true'][data-narrow='true']:is(
+    [data-focus='gap'],
+    [data-focus='offset'],
+    [data-focus='tuning'],
+    [data-focus='ferrite']
+  )
+  .wireless-circuit-readout
+  > span:first-child {
+  display: none;
+}
+.wireless-charging[data-watch='true'][data-narrow='true']:is(
+    [data-focus='gap'],
+    [data-focus='offset'],
+    [data-focus='tuning'],
+    [data-focus='ferrite']
+  )
+  .wireless-circuit-readout
+  > span:last-child {
+  display: flex;
+  align-items: baseline;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-evidence {
+  padding-block: 9px;
+}
+
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-tuning svg {
+  height: 140px;
+}
+.wireless-instrument-title > span:last-child {
+  white-space: nowrap;
+}
+
+/* Exploration keeps its view switch in a dedicated footer, clear of live wiring. */
+.wireless-charging[data-watch='false'] .wireless-studio .studio-canvas {
+  bottom: 58px;
+}
+.wireless-charging[data-watch='false'] .wireless-studio .studio-fallback {
+  height: calc(100% - 58px);
+}
+.wireless-studio .studio-mode {
+  font-size: 16px;
+  bottom: 7px;
+  min-height: 44px;
 }

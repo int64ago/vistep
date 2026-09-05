@@ -6,6 +6,7 @@ import {
   differentialTraction,
   type DifferentialMode,
 } from '../../models/differential';
+import { useCompact } from '../lab/useCompact';
 import { useShowcase } from '../lab/Showcase';
 import DifferentialStudio from '../three/DifferentialStudio';
 import {
@@ -37,6 +38,7 @@ const captions = [
 ];
 export default function Differential() {
   const film = useShowcase(),
+    compact = useCompact(),
     id = useId();
   const [mode, setMode] = useState<DifferentialMode>('turn'),
     [radius, setRadius] = useState(2),
@@ -131,17 +133,21 @@ export default function Differential() {
     <section className="diff-scene" data-focus={focus} data-mode={film.watch ? 'watch' : 'explore'}>
       <header className="diff-heading">
         <span>{t('汽车差速器')}</span>
-        <h2>{t(headlines[chapter])}</h2>
+        <h2>
+          {t(film.watch && compact && focus === 'spiders' ? '齿轮组特写' : headlines[chapter])}
+        </h2>
         {!film.watch && <p>{t(caption)}</p>}
       </header>
-      <div className="diff-object">
-        <DifferentialStudio
-          motion={m}
-          focus={focus}
-          progress={film.watch ? film.chapterProgress : 0.5}
-        />
-        <span className="diff-close-label">{t('齿轮组特写；半轴继续连接两侧车轮。')}</span>
-      </div>
+      {(!film.watch || ['straight', 'spiders', 'held', 'return'].includes(focus)) && (
+        <div className="diff-object">
+          <DifferentialStudio
+            motion={m}
+            focus={focus}
+            progress={film.watch ? film.chapterProgress : 0.5}
+          />
+          <span className="diff-close-label">{t('齿轮组特写；半轴继续连接两侧车轮。')}</span>
+        </div>
+      )}
       {focus === 'paths' && <DifferentialRoad motion={m} />}
       {focus === 'mean' && <DifferentialMean motion={m} />}
       {(focus === 'torque' || focus === 'traction') && (

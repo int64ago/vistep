@@ -12,6 +12,37 @@ import { useShowcase } from '../lab/Showcase';
 import PlanetaryDiagram from '../lab/PlanetaryDiagram';
 import Studio from './Studio';
 import { box, material, roller, screw } from './parts';
+/** Fit all eight corners in the actual camera basis, including near-side depth.
+ * The 0.88 usable fraction reserves a visible border throughout the camera sweep. */
+export function fitPlanetaryCamera(
+  bounds: THREE.Box3,
+  aspect: number,
+  direction: THREE.Vector3,
+  fov = 34,
+) {
+  const target = bounds.getCenter(new THREE.Vector3()),
+    back = direction.clone().normalize(),
+    right = new THREE.Vector3(0, 1, 0).cross(back).normalize(),
+    up = back.clone().cross(right),
+    tanV = Math.tan((fov * Math.PI) / 360) * 0.88,
+    tanH = tanV * aspect,
+    offset = new THREE.Vector3();
+  let distance = 0;
+  for (const x of [bounds.min.x, bounds.max.x])
+    for (const y of [bounds.min.y, bounds.max.y])
+      for (const z of [bounds.min.z, bounds.max.z]) {
+        offset.set(x, y, z).sub(target);
+        const near = offset.dot(back);
+        distance = Math.max(
+          distance,
+          near + Math.abs(offset.dot(right)) / tanH,
+          near + Math.abs(offset.dot(up)) / tanV,
+          near + 0.2,
+        );
+      }
+  return { target, position: target.clone().addScaledVector(back, distance) };
+}
+
 export default function PlanetaryStudio({
   angle,
   mode,
@@ -190,10 +221,22 @@ export default function PlanetaryStudio({
         );
         fixedMark.position.z = 0.18;
         root.add(fixedMark);
-        const target = new THREE.Vector3(),
+        root.updateWorldMatrix(true, true);
+        const assemblyBounds = new THREE.Box3().setFromObject(root),
           desired = new THREE.Vector3();
+        // Include the full axial assembly travel before playback. No crop while parts return.
+        for (const [object, travel] of [
+          [ringGroup, -0.55],
+          [carrier, -0.9],
+          [sun, 1.1],
+          ...planets.map(({ body }) => [body, 0.4]),
+        ] as [THREE.Object3D, number][]) {
+          assemblyBounds.union(
+            new THREE.Box3().setFromObject(object).translate(new THREE.Vector3(0, 0, travel)),
+          );
+        }
         return {
-          update(dt, _elapsed, settle) {
+          update() {
             const { angle: a, mode: m, assembly: split, demo: d } = current.current,
               state = planetaryState(a, m);
             sun.rotation.z = state.sun;
@@ -216,19 +259,21 @@ export default function PlanetaryStudio({
             fixedMark.visible = m === 'ring-fixed' && split < 0.01;
             ringMark.visible = true;
             if (d.watch) {
+              // Smooth directional changes are followed by an exact perspective fit,
+              // so even the intermediate orbit keeps the near base corners in frame.
               const frontal = [1, 2, 5, 6, 7].includes(d.chapter),
-                blend = settle ? 1 : 1 - Math.exp(-dt * 2);
-              target.set(0, 1.85, 0);
-              controls.target.lerp(target, blend);
-              const viewHeight = Math.max(5.1 / camera.aspect, frontal ? 4.7 : 5.3),
-                distance = viewHeight / (2 * Math.tan((camera.fov * Math.PI) / 360));
-              desired
-                .set(frontal ? 0.7 : 4.8, frontal ? 2.7 : 4.2, 8)
-                .sub(target)
-                .normalize()
-                .multiplyScalar(distance)
-                .add(controls.target);
-              camera.position.lerp(desired, blend);
+                p = d.chapterProgress,
+                q = THREE.MathUtils.smoothstep(p, 0, 0.25),
+                previousFrontal = [1, 2, 5, 6, 7].includes(d.chapter - 1),
+                frontalMix = THREE.MathUtils.lerp(previousFrontal ? 1 : 0, frontal ? 1 : 0, q);
+              desired.set(
+                THREE.MathUtils.lerp(4.8, 0.7, frontalMix),
+                THREE.MathUtils.lerp(2.35, 0.85, frontalMix),
+                8,
+              );
+              const frame = fitPlanetaryCamera(assemblyBounds, camera.aspect, desired, camera.fov);
+              controls.target.copy(frame.target);
+              camera.position.copy(frame.position);
             }
           },
         };

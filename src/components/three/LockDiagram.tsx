@@ -118,24 +118,24 @@ export function LockSection({ pose: m, selected }: { pose: LockPose; selected: n
           <circle cx={x(s.contact[0])} cy={y(s.contact[1])} r="4.5" fill="#99492e" />
         )}
       </g>
-      <text x="170" y="90" fontSize="18" fill="#5c7076">
+      <text x="160" y="90" fontSize="20" fill="#5c7076">
         {t('弹簧')}
       </text>
       <text
-        x="170"
+        x="160"
         y={Math.max(130, Math.min(208, y(s.interfaceY + L.driverLength / 2)))}
-        fontSize="18"
+        fontSize="20"
         fill="#5c7076"
       >
         {t('上弹子')}
       </text>
-      <text x="170" y={y(L.radius) - 9} fontSize="18" fill="#347b69">
+      <text x="160" y={y(L.radius) - 9} fontSize="20" fill="#347b69">
         {t('剪切边界')}
       </text>
-      <text x="170" y={y((s.tip + s.interfaceY) / 2) + 7} fontSize="18" fill="#995b40">
+      <text x="160" y={y((s.tip + s.interfaceY) / 2) + 7} fontSize="20" fill="#995b40">
         {t('下弹子')}
       </text>
-      <text x="18" y="385" fontSize="18" fill="#65777b">
+      <text x="18" y="385" fontSize="20" fill="#65777b">
         {t('纵向剖面示意')}
       </text>
     </svg>

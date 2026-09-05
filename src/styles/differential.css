@@ -438,7 +438,7 @@
     padding: 0 18px 18px;
   }
   .diff-scene[data-mode='watch'] {
-    min-height: 880px;
+    min-height: 550px;
     display: flex;
     flex-direction: column;
   }
@@ -493,5 +493,97 @@
   .diff-scene * {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* One instrument per chapter. The shared caption supplies the current sentence. */
+.diff-scene[data-mode='watch'] .diff-heading > span {
+  display: none;
+}
+.diff-object .studio-mode {
+  font-size: 16px;
+  min-height: 44px;
+}
+.diff-scene[data-mode='watch'][data-focus='spiders'] .diff-close-label {
+  display: block;
+  padding: 0 30px 12px;
+  color: var(--diff-muted);
+  font-size: 16px;
+}
+@media (max-width: 760px) {
+  .diff-scene[data-mode='watch'] .diff-heading {
+    padding: 20px 18px 0;
+  }
+  .diff-scene[data-mode='watch'] .diff-heading h2 {
+    font-size: 23px;
+    line-height: 1.35;
+    margin: 0 0 12px;
+  }
+  .diff-scene[data-mode='watch'] .diff-object > .diff-studio {
+    height: 260px;
+  }
+  .diff-scene[data-mode='watch'] .diff-assumptions {
+    padding-bottom: 12px;
+  }
+  .diff-scene[data-mode='watch'] .diff-road,
+  .diff-scene[data-mode='watch'] .diff-mean,
+  .diff-scene[data-mode='watch'] .diff-torque {
+    padding: 12px 0;
+  }
+  .diff-scene[data-mode='watch'] .diff-road p,
+  .diff-scene[data-mode='watch'] .diff-mean > p:first-child,
+  .diff-scene[data-mode='watch'] .diff-reference p,
+  .diff-scene[data-mode='watch'] .diff-power p {
+    display: none;
+  }
+  .diff-scene[data-mode='watch'] .diff-road svg {
+    height: 240px;
+  }
+  .diff-scene[data-mode='watch'] .diff-readouts {
+    padding: 4px 16px 16px;
+  }
+  .diff-scene[data-mode='watch'][data-focus='spiders'] .diff-readouts {
+    display: none;
+  }
+  .diff-scene[data-mode='watch'][data-focus='spiders'] .diff-close-label {
+    padding: 0 18px 12px;
+  }
+  .diff-scene[data-mode='watch'][data-focus='mean'] .diff-dial {
+    display: none;
+  }
+  .diff-scene[data-mode='watch'] .diff-pinion-rate {
+    padding-bottom: 12px;
+  }
+  .diff-scene[data-mode='watch'] .diff-load-scope {
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .diff-scene[data-mode='watch'] .diff-torque-pair {
+    gap: 14px;
+  }
+  .diff-scene[data-mode='watch'] .diff-torque-pair strong {
+    font-size: 22px;
+  }
+  .diff-scene[data-mode='watch'] .diff-accepted {
+    margin: 16px 0 8px;
+  }
+  .diff-scene[data-mode='watch'] .diff-reference {
+    margin-top: 8px;
+    padding-top: 10px;
+  }
+  .diff-scene[data-mode='watch'] .diff-power {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .diff-scene[data-mode='watch'] .diff-power > span:last-of-type {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 760px) {
+  .diff-scene[data-mode='watch'][data-focus='spiders'] .diff-close-label {
+    display: none;
   }
 }

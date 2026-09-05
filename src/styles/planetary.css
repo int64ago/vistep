@@ -8,7 +8,7 @@
   justify-content: space-between;
   gap: 18px;
   color: #93abae;
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.075em;
 }
 .planetary-main {
@@ -33,12 +33,12 @@
   color: #d6e3d7;
 }
 .planetary-work {
-  position: absolute;
-  left: 18px;
-  top: 65px;
-  display: grid;
-  gap: 10px;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding: 14px 0;
   color: #aec4bf;
 }
 .planetary-work span {
@@ -50,7 +50,7 @@
   color: #d1b684;
 }
 .planetary-work small {
-  font-size: 14px;
+  font-size: 16px;
   max-width: 170px;
   line-height: 1.7;
 }
@@ -58,7 +58,7 @@
   display: flex;
   justify-content: center;
   gap: 30px;
-  font-size: 14px;
+  font-size: 16px;
   color: #9eb5b7;
   padding: 10px 0 25px;
 }
@@ -110,7 +110,7 @@
   color: #d7e2d5;
 }
 .planetary-turns small {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: #93adab;
 }
@@ -163,7 +163,7 @@
     padding: 20px 12px 16px;
   }
   .planetary-topline {
-    font-size: 10px;
+    font-size: 16px;
     gap: 12px;
     letter-spacing: 0.015em;
     min-height: 30px;
@@ -176,43 +176,34 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px 15px;
     padding: 14px 12px 22px;
-    font-size: 13px;
+    font-size: 16px;
   }
   .planetary-turns {
     gap: 12px;
     padding: 19px 0;
   }
   .planetary-turns span {
-    font-size: 12px;
+    font-size: 16px;
   }
   .planetary-turns strong {
     font-size: 26px;
   }
   .planetary-turns small {
-    font-size: 11px;
+    font-size: 16px;
   }
   .planetary-turns .planetary-ratio strong {
-    font-size: 15px;
+    font-size: 16px;
   }
   .planetary-turns .planetary-ratio small {
     max-width: 68px;
     line-height: 1.5;
   }
   .planetary-work {
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: #172b36e8;
-    padding: 10px;
-    border-radius: 12px;
+    padding: 12px 0;
+    gap: 8px 12px;
   }
   .planetary-work span {
-    font-size: 13px;
+    font-size: 16px;
   }
   .planetary-work strong {
     font-size: 25px;
@@ -224,5 +215,120 @@
   .planetary-explore .segmented {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+.planetary-study .studio-mode,
+.planetary-explore .segmented button,
+.planetary-explore .btn,
+.planetary-explore .control-top,
+.planetary-explore .control output {
+  font-size: 16px;
+  min-height: 44px;
+}
+.planetary-explore .control-top {
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .planetary-study {
+    padding: 18px 12px 14px;
+  }
+  .planetary-study[data-mode='watch'] {
+    min-height: 530px;
+    display: flex;
+    flex-direction: column;
+  }
+  .planetary-study[data-mode='watch'] .planetary-topline > span:first-child {
+    display: none;
+  }
+  .planetary-topline {
+    min-height: 28px;
+    flex-wrap: wrap;
+    font-size: 16px;
+  }
+  .planetary-main {
+    height: 270px;
+    flex: 0 0 270px;
+  }
+  .planetary-key {
+    padding: 10px 0 14px;
+    gap: 8px 12px;
+    font-size: 16px;
+  }
+  .planetary-key span {
+    white-space: normal;
+    min-width: 0;
+    gap: 6px;
+  }
+  .planetary-key i {
+    flex: 0 0 6px;
+  }
+  .planetary-turns {
+    grid-template-columns: 1fr 1fr;
+    padding: 12px 0 0;
+    gap: 10px 16px;
+    margin-top: auto;
+  }
+  .planetary-turns > div:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .planetary-turns > div:last-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .planetary-turns > div:not(.planetary-ratio) > span {
+    min-height: 44px;
+    display: grid;
+    align-content: center;
+  }
+  .planetary-turns strong {
+    font-size: 25px;
+  }
+  .planetary-turns .planetary-ratio {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  .planetary-turns .planetary-ratio > span {
+    display: none;
+  }
+  .planetary-turns .planetary-ratio strong {
+    font-size: 20px;
+  }
+  .planetary-turns .planetary-ratio small {
+    max-width: none;
+    font-size: 16px;
+  }
+  .planetary-study[data-work='true'] .planetary-turns {
+    display: none;
+  }
+  .planetary-study[data-work='true'] .planetary-work {
+    order: 4;
+    margin-top: auto;
+  }
+  .planetary-work small {
+    display: block;
+    text-align: center;
+    max-width: none;
+    flex-basis: 100%;
+  }
+  .planetary-explore .segmented button {
+    white-space: normal;
+    padding: 10px 6px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 760px) {
+  .planetary-study[data-mode='watch'][data-chapter='0'] .planetary-turns,
+  .planetary-study[data-mode='watch'][data-chapter='1'] .planetary-turns {
+    display: none;
+  }
+  .planetary-study[data-mode='watch']:not([data-chapter='0']):not([data-chapter='1'])
+    .planetary-key {
+    display: none;
   }
 }

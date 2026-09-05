@@ -504,3 +504,102 @@
     padding-top: 12px;
   }
 }
+
+.bb-object .studio-mode {
+  font-size: 16px;
+  min-height: 44px;
+}
+@media (max-width: 760px) {
+  .bb-experiment[data-mode='watch'] {
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+  }
+  .bb-experiment[data-mode='watch'] .bb-heading {
+    padding-top: 18px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-layout {
+    flex: 1;
+    padding: 12px 16px;
+    gap: 10px;
+    align-content: center;
+  }
+  .bb-experiment[data-mode='watch'] .bb-object > .bb-studio {
+    height: 310px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-object-legend {
+    font-size: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-inspection {
+    border: 0;
+    padding: 0;
+    align-self: stretch;
+  }
+  .bb-experiment[data-mode='watch'] .bb-inspection h3 {
+    font-size: 23px;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-inspection-image {
+    max-width: 320px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-inspection-image > svg {
+    max-height: 275px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-inspection svg text {
+    font-size: 21px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-fine,
+  .bb-experiment[data-mode='watch'] .bb-observation {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .bb-experiment[data-mode='watch'] .bb-losses li:not([data-active='true']) {
+    display: none;
+  }
+  .bb-experiment[data-mode='watch'] .bb-assumptions {
+    margin-top: auto;
+    padding: 0 18px 12px;
+  }
+  .bb-experiment[data-mode='watch'] .bb-speed-pair {
+    margin-top: 12px;
+  }
+  .bb-watch-path {
+    margin: 10px 0 0;
+    justify-content: center;
+  }
+  .bb-contact-compact {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .bb-contact-compact > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .bb-contact-compact > div > p {
+    min-height: 50px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .bb-contact-compact svg {
+    max-height: none;
+    width: 100%;
+  }
+  .bb-contact-compact .bb-contact-surface {
+    grid-column: 1/-1;
+    color: var(--bb-muted);
+    text-align: center;
+  }
+}
+
+.bb-diagram-note {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--bb-muted);
+  margin: 8px 0 12px;
+}

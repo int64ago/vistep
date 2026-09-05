@@ -2,6 +2,10 @@ import { useId } from 'react';
 import { t } from '../../i18n';
 import { type BridgeDiode, type RectifierSample } from '../../models/rectifier';
 
+// A common, bounded visual scale for all three branches; zero current is exactly dark.
+export const rectifierCurrentOpacity = (current: number) =>
+  Math.min(1, Math.sqrt(Math.abs(current) / 0.4));
+
 export default function RectifierBridge({
   sample,
   compact,
@@ -29,11 +33,17 @@ export default function RectifierBridge({
   const ac = s.source >= 0 ? '#ffc08a' : '#8bd6ff',
     dc = '#a1e0c5',
     dim = '#5d7882';
-  const currentOpacity = Math.min(1, Math.sqrt(s.bridgeCurrent / 0.4));
-  const outputOpacity = Math.min(1, Math.sqrt(Math.max(0, s.loadCurrent) / 0.1));
+  const currentOpacity = rectifierCurrentOpacity(s.bridgeCurrent);
+  const outputOpacity = rectifierCurrentOpacity(s.loadCurrent);
+  const capacitorOpacity = p.capacitor ? rectifierCurrentOpacity(s.capacitorCurrent) : 0;
   const capacitorLevel = Math.max(0, Math.min(1, s.output / Math.max(0.1, p.peak)));
-  const upperPath = `M${positive ? a : b} ${middle}V${top}H${load}V94`;
-  const lowerPath = `M${load} 181V${bottom}H${positive ? b : a}V${middle}`;
+  // The shared rails stop at the capacitor nodes, before the load-only segments.
+  // This remains a valid split point when the capacitor is disconnected.
+  const upperPath = `M${positive ? a : b} ${middle}V${top}H${cap}`;
+  const lowerPath = `M${cap} ${bottom}H${positive ? b : a}V${middle}`;
+  const loadPath = `M${cap} ${top}H${load}V94M${load} 181V${bottom}H${cap}`;
+  const capPath = `M${cap} ${top}V117M${cap} 131V${bottom}`;
+  const sourcePath = `M${a} ${middle}H${resistor - 9}M${resistor + 9} ${middle}H${source - 18}M${source + 18} ${middle}H${b}`;
   const diode = (name: BridgeDiode, x: number, y: number) => {
     const lit = s.diodes[name] > 1e-12,
       color = lit ? ac : dim;
@@ -71,7 +81,9 @@ export default function RectifierBridge({
       <svg
         viewBox={`0 0 ${width} 260`}
         role="img"
-        aria-label={t('完整桥式整流电路；两只上桥臂指向正输出，两只下桥臂从负输出指向交流端')}
+        aria-label={t(
+          '完整桥式整流电路；上桥臂指向正输出，下桥臂指向交流端；各支路按自己的电流显示亮度',
+        )}
       >
         <defs>
           <filter id={`${id}-glow`} x="-30%" y="-30%" width="160%" height="160%">
@@ -83,21 +95,18 @@ export default function RectifierBridge({
             d={`M${a} ${top}H${load}V94M${load} 181V${bottom}H${a}M${a} ${top}V${upper - 13}M${a} ${upper + 12}V${lower - 13}M${a} ${lower + 12}V${bottom}M${b} ${top}V${upper - 13}M${b} ${upper + 12}V${lower - 13}M${b} ${lower + 12}V${bottom}`}
           />
           {conducting && (
-            <g stroke={ac} opacity={0.2 + 0.8 * currentOpacity}>
+            <g
+              data-current-branch="bridge"
+              data-current={s.bridgeCurrent}
+              stroke={ac}
+              opacity={currentOpacity}
+            >
               <path d={`${upperPath} ${lowerPath}`} filter={`url(#${id}-glow)`} strokeWidth="8" />
               <path d={`${upperPath} ${lowerPath}`} strokeWidth="3" />
             </g>
           )}
-          <path
-            d={`M${cap} ${top}H${load}V94M${load} 181V${bottom}H${cap}`}
-            stroke={dc}
-            opacity={outputOpacity}
-            strokeWidth="3.5"
-          />
-          <path
-            d={`M${a} ${middle}H${resistor - 9}M${resistor + 9} ${middle}H${source - 18}M${source + 18} ${middle}H${b}`}
-            stroke={conducting ? ac : dim}
-          />
+          <path d={sourcePath} />
+          <path d={sourcePath} stroke={ac} opacity={currentOpacity} />
           <rect
             x={resistor - 9}
             y={middle - 6}
@@ -105,7 +114,16 @@ export default function RectifierBridge({
             height="12"
             rx="2"
             fill="#122c39"
-            stroke={conducting ? ac : dim}
+            stroke={dim}
+          />
+          <rect
+            x={resistor - 9}
+            y={middle - 6}
+            width="18"
+            height="12"
+            rx="2"
+            stroke={ac}
+            opacity={currentOpacity}
           />
           <circle cx={source} cy={middle} r="18" fill="#122c39" stroke={ac} />
           <path
@@ -113,15 +131,38 @@ export default function RectifierBridge({
             stroke={ac}
             strokeWidth="2"
           />
-          <rect x={load - 9} y="94" width="18" height="87" rx="3" fill="#173945" stroke={dc} />
+          <rect x={load - 9} y="94" width="18" height="87" rx="3" fill="#173945" stroke={dim} />
+          <g
+            data-current-branch="load"
+            data-current={s.loadCurrent}
+            stroke={dc}
+            opacity={outputOpacity}
+          >
+            <path d={loadPath} filter={`url(#${id}-glow)`} strokeWidth="7" />
+            <path d={loadPath} strokeWidth="3.5" />
+            <rect x={load - 9} y="94" width="18" height="87" rx="3" />
+          </g>
           {p.capacitor && (
             <>
-              <path d={`M${cap} ${top}V117M${cap} 131V${bottom}`} stroke="#c5b8f1" />
+              <path d={capPath} stroke={dim} />
               <path
                 d={`M${cap - 13} 117H${cap + 13}M${cap - 13} 131H${cap + 13}`}
-                stroke="#c5b8f1"
+                stroke="#867eab"
                 strokeWidth="4"
               />
+              <g
+                data-current-branch="capacitor"
+                data-current={s.capacitorCurrent}
+                stroke="#c5b8f1"
+                opacity={capacitorOpacity}
+              >
+                <path d={capPath} filter={`url(#${id}-glow)`} strokeWidth="7" />
+                <path d={capPath} strokeWidth="3.5" />
+                <path
+                  d={`M${cap - 13} 117H${cap + 13}M${cap - 13} 131H${cap + 13}`}
+                  strokeWidth="4"
+                />
+              </g>
               <path
                 d={
                   s.capacitorCurrent > 0
@@ -130,7 +171,7 @@ export default function RectifierBridge({
                 }
                 stroke="#c5b8f1"
                 strokeWidth="2"
-                opacity={Math.min(1, Math.abs(s.capacitorCurrent) * 20)}
+                opacity={capacitorOpacity}
               />
               <rect
                 x={cap + 12}

@@ -90,7 +90,7 @@ function Wave({ shot, kind }: { shot: BuckShot; kind: 'i' | 'sw' | 'vl' | 'ic' |
   const area = (positive: boolean) =>
     `M10 ${y(0)}${values.map((p) => `L${x(p.time)},${y(positive ? Math.max(0, p.value) : Math.min(0, p.value))}`).join('')}L290 ${y(0)}Z`;
   return (
-    <div className="buck-wave">
+    <div className="buck-wave" data-kind={kind}>
       <div className="buck-wave-heading">
         <span>{t(label)}</span>
         <span style={{ color }}>
@@ -99,6 +99,7 @@ function Wave({ shot, kind }: { shot: BuckShot; kind: 'i' | 'sw' | 'vl' | 'ic' |
       </div>
       <svg
         viewBox="0 0 300 104"
+        preserveAspectRatio="none"
         role="img"
         aria-label={`${t(label)} · ${t('实线为完整计算，竖线为当前时刻')}`}
       >
@@ -211,6 +212,9 @@ function Evidence({ shot }: { shot: BuckShot }) {
       <div className="buck-measure">
         <span>R: 8 → 3 Ω</span>
         <strong>{fmt(shot.sample.state.vo)} V</strong>
+        <span className="buck-current-balance">
+          i<sub>C</sub> ≈ {fmt(shot.sample.state.i)} − {fmt(shot.sample.state.vo / p.resistance)} A
+        </span>
         <span>{t('固定占空比，不含反馈控制')}</span>
       </div>
     );
@@ -252,7 +256,7 @@ export default function BuckConverter() {
   const secondary: 'sw' | 'vl' | 'ic' | 'vo' =
     shot.focus === 'balance' || shot.focus === 'on' || shot.focus === 'diode'
       ? 'vl'
-      : shot.focus === 'capacitor'
+      : shot.focus === 'capacitor' || shot.focus === 'transient'
         ? 'ic'
         : shot.focus === 'switching'
           ? 'sw'
@@ -286,6 +290,7 @@ export default function BuckConverter() {
     <section
       className="buck-scene"
       data-watch={showcase.watch}
+      data-focus={shot.focus}
       aria-label={t('降压变换器的开关、电流与能量')}
     >
       <div className="buck-film">
@@ -307,7 +312,9 @@ export default function BuckConverter() {
         <div className="buck-instruments">
           {!(compact && shot.focus === 'losses') && (
             <div className="buck-traces">
-              {compact && shot.focus === 'balance' ? (
+              {compact && shot.focus === 'transient' ? (
+                <Wave shot={shot} kind="ic" />
+              ) : compact && shot.focus === 'balance' ? (
                 <Wave shot={shot} kind="vl" />
               ) : (
                 <Wave shot={shot} kind={primary} />

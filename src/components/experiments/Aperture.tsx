@@ -14,6 +14,7 @@ import { Range } from '../lab/Controls';
 import AperturePhoto from '../lab/AperturePhoto';
 import { useCompact } from '../lab/useCompact';
 import '../../styles/optics.css';
+import '../../styles/aperture.css';
 export default function Aperture() {
   const demo = useShowcase(),
     [manualN, setN] = useState(2),
@@ -32,28 +33,41 @@ export default function Aperture() {
   const sensorX = 300 + (sensor - sharpImage) * 240;
   const coneY = (x: number, sign: number) =>
     80 + ((sign * diameter) / 2) * (1 - x / sharpImage) * 200;
+  // Coordinates refer to the actual drawn depth layers (900 × 600), not a
+  // nearest-target threshold. Between object planes no attained-focus box is shown.
+  const focusTarget = [
+    { distance: 2000, x: 420, y: 249 },
+    { distance: 3000, x: 680, y: 410 },
+    { distance: 6000, x: 693, y: 150 },
+  ].find((target) => Math.abs(state.focus - target.distance) < 1);
+  const focusX = focusTarget
+    ? (compact ? (focusTarget.x - 150) / 600 : focusTarget.x / 900) * 100
+    : 0;
   return (
-    <div className="aperture-study">
+    <div className="aperture-study" data-chapter={demo.chapter} data-watch={demo.watch}>
       <div className="aperture-viewfinder">
         <AperturePhoto {...state} />
         <div className="viewfinder-top">
           <span>50 mm</span>
           <span>ƒ / {state.fNumber.toFixed(1)}</span>
         </div>
-        <div
-          className="viewfinder-focus"
-          style={{
-            left: state.focus < 3000 ? (compact ? '45%' : '46.7%') : compact ? '90.5%' : '77%',
-            top: state.focus < 3000 ? '41.5%' : '25%',
-            transition: demo.playing ? undefined : 'none',
-          }}
-          aria-hidden="true"
-        >
-          <i />
-          <i />
-          <i />
-          <i />
-        </div>
+        {focusTarget && (
+          <div
+            className="viewfinder-focus"
+            style={{
+              left: `${focusX}%`,
+              top: `${(focusTarget.y / 600) * 100}%`,
+              transition: 'none',
+            }}
+            data-focus-distance={focusTarget.distance}
+            aria-hidden="true"
+          >
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
+        )}
         <div className="viewfinder-bottom">
           <span>
             {t('对焦')} {(state.focus / 1000).toFixed(1)} m
@@ -187,6 +201,16 @@ export default function Aperture() {
             onClick={() => setAutoExposure(!autoExposure)}
           >
             {autoExposure ? t('关闭亮度补偿') : t('开启亮度补偿')}
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              setN(2);
+              setFocus(2000);
+              setAutoExposure(true);
+            }}
+          >
+            {t('重置全部输入')}
           </button>
         </div>
       )}

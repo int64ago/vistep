@@ -151,6 +151,7 @@ export default function Speaker() {
               {t('实际位移')}
               <b>{(state.position * 1000).toFixed(3)} mm</b>
             </span>
+            {view === 'generator' && <span className="speaker-terminal">{t('端电压')} · 0 V</span>}
             <span>{t('剖面行程放大 8 倍')}</span>
           </div>
         )}

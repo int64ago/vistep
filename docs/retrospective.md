@@ -82,3 +82,15 @@ A review checkout briefly shared `node_modules` with the active workspace. Packa
 ### Check the end of synthesized speech
 
 A water-hammer English chapter returned a valid MP3 containing only its first three sentences. Overall ASR similarity was 0.6652, above the old 0.64 threshold, despite the missing ending. A targeted resynthesis restored the clip from 13.06 to 23.32 seconds; both language timelines were remeasured. The audit now requires at least 40% matched coverage of the final fifth of normalized script text (at least 24 characters). The real truncated sample scores zero, while all other 95 batch transcripts pass this additional guard. Re-audit the assembled recordings after repair. This rule flags incomplete endings for review; it does not certify diction or naturalness.
+
+### Review the complete player and the local cause
+
+A compact experiment body still produced an oversized phone presentation when the longest English caption reserved several extra lines above the transport. Measure the complete player in both languages and every chapter. A caption names the current visible change; the full spoken explanation and expandable details carry its context. Caption-only revisions must keep the two caption sources and translation dictionary synchronized without changing recordings.
+
+The rectifier review found a physically valid current feeding an invalid glow: capacitor inrush lit the load wire even when load current was zero. Split the displayed circuit at actual branch nodes and drive each branch from its own current, using a common disclosed visual scale. The same principle applies to labels and focus markers: bind the displayed value to the object or branch it describes.
+
+Two specimens that fit at a nominal stitch pitch clipped at the longer pitch during feed. Bound all compared specimens over their complete motion and keep a common fixed projection; do not auto-zoom each frame or stretch one specimen to stand in for another. Move explanatory labels outside the scaled geometry when their real rendered size falls below the type requirement.
+
+### Parallel production continues through acceptance
+
+Finishing source authoring does not finish the parallel task. Reassign workers from a frozen handoff to a concrete repair or an unreviewed group while the integrator merges, checks and publishes the authorized preview. Track authorship, findings, repair ownership and evidence gaps separately. Normal-speed runs with sampled stills establish less than continuous visual observation; neither establishes native listening or physical-device performance. Keep that distinction in the release record.

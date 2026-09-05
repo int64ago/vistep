@@ -20,6 +20,100 @@ const cpColor = (cp: number) =>
   cp < 0
     ? `hsl(187 30% ${64 - Math.min(2.5, -cp) * 8}%)`
     : `hsl(34 51% ${62 - Math.min(1, cp) * 9}%)`;
+/** The same shaft/head vertices serve drawing and viewport fitting. */
+function arrowPoints(x: number, y: number, dx: number, dy: number) {
+  const length = Math.hypot(dx, dy);
+  if (length < 0.5) return [];
+  const ux = dx / length,
+    uy = dy / length,
+    head = Math.min(5, length * 0.35);
+  const end = { x: x + dx, y: y + dy };
+  return [
+    { x, y },
+    end,
+    {
+      x: end.x - head * ux - head * 0.6 * uy,
+      y: end.y - head * uy + head * 0.6 * ux,
+    },
+    end,
+    {
+      x: end.x - head * ux + head * 0.6 * uy,
+      y: end.y - head * uy - head * 0.6 * ux,
+    },
+  ];
+}
+
+/** Fit the entire closed measuring path, its moving 5px probe and every arrow head. */
+export function fitAirfoilCirculation(
+  samples: ReturnType<typeof airfoilCirculation>['samples'],
+  width: number,
+  height: number,
+  arrowScale: number,
+  top = 40,
+) {
+  const frame = {
+    left: 20,
+    right: width - 20,
+    top: top + 8,
+    bottom: height - 50,
+  };
+  const boundsAt = (scale: number) => {
+    let left = Infinity,
+      right = -Infinity,
+      top = Infinity,
+      bottom = -Infinity;
+    const include = (x: number, y: number, radius: number) => {
+      left = Math.min(left, x - radius);
+      right = Math.max(right, x + radius);
+      top = Math.min(top, y - radius);
+      bottom = Math.max(bottom, y + radius);
+    };
+    samples.forEach((sample, index) => {
+      const x = sample.x * scale,
+        y = -sample.y * scale;
+      include(x, y, 5);
+      if (index % 24 === 0)
+        arrowPoints(x, y, sample.u * arrowScale, -sample.v * arrowScale).forEach((point) =>
+          include(point.x, point.y, 0.65),
+        );
+    });
+    return { left, right, top, bottom };
+  };
+  const world = boundsAt(1),
+    availableWidth = frame.right - frame.left,
+    availableHeight = frame.bottom - frame.top;
+  let low = 0,
+    high =
+      Math.max(1, width, height) /
+      Math.max(1e-9, Math.min(world.right - world.left - 10, world.bottom - world.top - 10));
+  // Bounding width/height are convex in scale; the feasible interval contains zero.
+  while (true) {
+    const b = boundsAt(high);
+    if (b.right - b.left > availableWidth || b.bottom - b.top > availableHeight) break;
+    high *= 2;
+  }
+  for (let i = 0; i < 28; i++) {
+    const mid = (low + high) / 2,
+      b = boundsAt(mid);
+    if (b.right - b.left <= availableWidth && b.bottom - b.top <= availableHeight) low = mid;
+    else high = mid;
+  }
+  const bounds = boundsAt(low),
+    cx = (frame.left + frame.right - bounds.left - bounds.right) / 2,
+    cy = (frame.top + frame.bottom - bounds.top - bounds.bottom) / 2;
+  return {
+    scale: low,
+    cx,
+    cy,
+    frame,
+    bounds: {
+      left: bounds.left + cx,
+      right: bounds.right + cx,
+      top: bounds.top + cy,
+      bottom: bounds.bottom + cy,
+    },
+  };
+}
 function Arrow({
   x,
   y,
@@ -35,16 +129,11 @@ function Arrow({
   color?: string;
   width?: number;
 }) {
-  const length = Math.hypot(dx, dy);
-  if (length < 0.5) return null;
-  const ux = dx / length,
-    uy = dy / length,
-    head = Math.min(5, length * 0.35),
-    ex = x + dx,
-    ey = y + dy;
+  const points = arrowPoints(x, y, dx, dy);
+  if (!points.length) return null;
   return (
     <path
-      d={`M${x},${y}L${ex},${ey}M${ex - head * ux - head * 0.6 * uy},${ey - head * uy + head * 0.6 * ux}L${ex},${ey}L${ex - head * ux + head * 0.6 * uy},${ey - head * uy - head * 0.6 * ux}`}
+      d={points.map((p, i) => `${i === 0 || i === 2 ? 'M' : 'L'}${p.x},${p.y}`).join(' ')}
       fill="none"
       stroke={color}
       strokeWidth={width}
@@ -68,7 +157,9 @@ export default function AirfoilTunnel({
   useEffect(() => {
     const el = host.current;
     if (!el) return;
-    const measure = () => setWidth(Math.max(260, el.clientWidth));
+    const measure = () => {
+      if (el.clientWidth > 0) setWidth(el.clientWidth);
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
@@ -76,7 +167,8 @@ export default function AirfoilTunnel({
   }, []);
   const phone = width < 560,
     W = width,
-    H = phone ? 320 : 440,
+    H = phone ? 244 : 440,
+    windowTop = phone ? 64 : 40,
     m = shot.model,
     p = m.parameters;
   const tail = airfoilGeometry(p, 0),
@@ -84,10 +176,13 @@ export default function AirfoilTunnel({
     pairView = shot.view === 'parcels',
     circ = shot.view === 'circulation',
     forces = shot.view === 'forces';
-  const domain = pairView ? 2.13 : circ ? 1.67 : phone ? 1.25 : 1.9;
-  const s = (W - (phone ? 32 : 90)) / (domain * p.chord),
-    cx = W / 2,
-    cy = phone ? 170 : 240;
+  const contour = circ ? airfoilCirculation(p) : null,
+    arrowScale = phone ? 0.65 : 0.9,
+    fit = contour ? fitAirfoilCirculation(contour.samples, W, H, arrowScale, windowTop) : null;
+  const domain = pairView ? 2.13 : phone ? 1.25 : 1.9;
+  const s = fit?.scale ?? (W - (phone ? 32 : 90)) / (domain * p.chord),
+    cx = fit?.cx ?? W / 2,
+    cy = fit?.cy ?? (phone ? 137 : 240);
   const pos = (v: AirfoilVector): AirfoilVector =>
     kutta
       ? {
@@ -96,8 +191,7 @@ export default function AirfoilTunnel({
         }
       : { x: cx + v.x * s, y: cy - v.y * s };
   const lines = !shot.steadyFamily && !kutta && !circ && !forces ? airfoilStreamlines(p) : [];
-  const pair = pairView ? airfoilPair(p) : null,
-    contour = circ ? airfoilCirculation(p) : null;
+  const pair = pairView ? airfoilPair(p) : null;
   const selected = airfoilSurface(p, 2 * Math.PI * Math.max(0.002, Math.min(0.998, probe)));
   const partial = airfoilForcePrefix(m, forces ? shot.progress : 1),
     gain = 0.11;
@@ -157,7 +251,7 @@ export default function AirfoilTunnel({
             ))}
           </linearGradient>
           <clipPath id={`${id}-window`}>
-            <rect x={12} y={40} width={W - 24} height={H - 82} rx={14} />
+            <rect x={12} y={windowTop} width={W - 24} height={H - windowTop - 42} rx={14} />
           </clipPath>
         </defs>
         <text x={phone ? 16 : 30} y={25}>
@@ -171,7 +265,7 @@ export default function AirfoilTunnel({
                   : '理想二维观察窗',
           )}
         </text>
-        <text x={W - (phone ? 16 : 30)} y={25} textAnchor="end">
+        <text x={W - (phone ? 16 : 30)} y={phone ? 49 : 25} textAnchor="end">
           {kutta
             ? 'Kutta'
             : pairView
@@ -182,7 +276,7 @@ export default function AirfoilTunnel({
           {[0.25, 0.5, 0.75].map((f) => (
             <path
               key={f}
-              d={`M12,${40 + (H - 82) * f}H${W - 12}`}
+              d={`M12,${windowTop + (H - windowTop - 42) * f}H${W - 12}`}
               stroke="#638081"
               opacity=".1"
               strokeDasharray="2 8"
@@ -246,8 +340,8 @@ export default function AirfoilTunnel({
                       key={i}
                       x={v.x}
                       y={v.y}
-                      dx={a.u * (phone ? 0.65 : 0.9)}
-                      dy={-a.v * (phone ? 0.65 : 0.9)}
+                      dx={a.u * arrowScale}
+                      dy={-a.v * arrowScale}
                       color="#b3c9c0"
                       width={1.3}
                     />

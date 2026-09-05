@@ -55,9 +55,13 @@ For homepage work, preserve the full meaning **Visualize Every Step with AI** an
 
 For README/showcase work, create an original motion composition from the project's mechanisms, information processes and spatial ideas. Do not use a page screenshot or screen recording as the hero. Use the actual bundled fonts, inspect an informative first frame, intermediate frames and the loop boundary, control file size, and retain a still alternative and reproducible source. Promotional geometry must be as credible as the scene itself. Keep English-default documentation, the Chinese counterpart, asset provenance and truthful badges current.
 
+## Sustain parallel work
+
+When sustained subagents are requested, keep a bounded queue across creation, review and repair. After each frozen handoff, the integrator owns those files and assigns the worker another independent scene group or concrete repair. Disclose author self-review; do not label it independent review. Keep shared translations, narration and manifests under one writer. A blocked browser check leaves an explicit evidence gap while independent model, source or document work continues. See the [parallel workflow](../../../docs/creating-a-scene.md#register-the-scene).
+
 ## Review and deliver
 
-Run the checks appropriate to the change. Complete topics require `pnpm scene:check`, `pnpm verify` and `pnpm build:preview`. Independently inspect complete playback, key stills and contacts, both spoken tracks, chapter/seek boundaries, extreme inputs, desktop and narrow layouts, keyboard/touch operation, reduced motion and applicable resource failures. Body text is at least 16 px; primary touch targets are at least 44 px. Test deep links and 404s; keep a concept-preserving 2D path for unavailable WebGL.
+Run the checks appropriate to the change. Complete topics require `pnpm scene:check`, `pnpm verify` and `pnpm build:preview`. Independently inspect complete playback, key stills and contacts, both spoken tracks, chapter/seek boundaries, extreme inputs, desktop and narrow layouts, keyboard/touch operation, reduced motion and applicable resource failures. Measure the complete player, including its longest caption and transport, in both languages. Inspect actual rendered text size after SVG scaling, perspective near corners and moving assembly bounds; distinguish intentional close-ups from accidental cropping. Body text is at least 16 px; primary touch targets are at least 44 px. Test deep links and 404s; keep a concept-preserving 2D path for unavailable WebGL.
 
 Record actual conditions, versions, findings and untested limits. A viewport override is not a physical-phone performance measurement; test results are not visual review, ASR is not listening, and a timed-out audit is not a pass. Favor approximately 60 fps on desktop and stable 30 fps on ordinary phones, without claiming measurements that were not taken.
 

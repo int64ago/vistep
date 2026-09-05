@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { ConvectionRequests } from './convection-requests';
 import {
   ConvectionRun,
   convectionTargetStep,
@@ -24,14 +25,13 @@ export function useConvection(options: ConvectionOptions, time: number, enabled 
     }
     let worker: Worker | null = null,
       disposed = false,
-      sequence = 0,
+      mailbox: ConvectionRequests | null = null,
       timer: ReturnType<typeof setTimeout> | null = null,
       run: ConvectionRun | null = null,
       localState: ConvectionState | null = null;
     setError('');
     setFallback(false);
     const localRequest = (targetTime: number) => {
-      sequence++;
       if (!run) run = new ConvectionRun(options);
       const target = convectionTargetStep(initial.p, targetTime);
       if (!localState || localState.step > target) localState = run.nearest(targetTime);
@@ -47,7 +47,10 @@ export function useConvection(options: ConvectionOptions, time: number, enabled 
             run.remember(localState);
           }
           if (localState.step < wanted) timer = setTimeout(pump, 0);
-          else setResult({ key, state: localState });
+          else {
+            setError('');
+            setResult({ key, state: localState });
+          }
         } catch (e) {
           setError(e instanceof Error ? e.message : 'solver');
         }
@@ -55,6 +58,7 @@ export function useConvection(options: ConvectionOptions, time: number, enabled 
       timer = setTimeout(pump, 0);
     };
     const useLocal = () => {
+      mailbox?.dispose();
       worker?.terminate();
       worker = null;
       setFallback(true);
@@ -63,27 +67,37 @@ export function useConvection(options: ConvectionOptions, time: number, enabled 
     };
     try {
       worker = new Worker(new URL('./Convection.worker.ts', import.meta.url), { type: 'module' });
+      mailbox = new ConvectionRequests((id, targetTime) =>
+        worker?.postMessage({ id, options, time: targetTime }),
+      );
       worker.onmessage = ({
         data,
       }: {
         data: { id: number; state?: ConvectionState; error?: string };
       }) => {
-        if (disposed || data.id !== sequence) return;
-        if (data.error) setError(data.error);
-        else if (data.state) setResult({ key, state: data.state });
+        if (disposed) return;
+        mailbox?.complete(data.id, () => {
+          if (data.error) setError(data.error);
+          else if (data.state) {
+            setError('');
+            // A backward seek must not display an already-computed future state.
+            if (data.state.step <= convectionTargetStep(initial.p, latestTime.current))
+              setResult({ key, state: data.state });
+          }
+        });
       };
       worker.onerror = (event) => {
         event.preventDefault();
         if (!disposed) useLocal();
       };
-      request.current = (targetTime) =>
-        worker?.postMessage({ id: ++sequence, options, time: targetTime });
+      request.current = (targetTime) => mailbox?.request(targetTime);
       request.current(latestTime.current);
     } catch {
       useLocal();
     }
     return () => {
       disposed = true;
+      mailbox?.dispose();
       worker?.terminate();
       if (timer !== null) clearTimeout(timer);
       run?.clear();
@@ -93,10 +107,11 @@ export function useConvection(options: ConvectionOptions, time: number, enabled 
   useEffect(() => {
     if (enabled) request.current?.(time);
   }, [time, key, enabled]);
-  const state = result?.key === key ? result.state : initial;
+  const target = convectionTargetStep(initial.p, time);
+  const state = result?.key === key && result.state.step <= target ? result.state : initial;
   return {
     state,
-    pending: enabled && state.step !== convectionTargetStep(initial.p, time),
+    pending: enabled && state.step !== target,
     error,
     fallback,
   };

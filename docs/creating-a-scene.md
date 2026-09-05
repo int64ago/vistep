@@ -90,3 +90,11 @@ A handoff includes the actual explanation, preview and review evidence. Finish s
 Formula markup must match the installed Astro MDX pipeline. Use the existing `formula` blocks and readable inline notation; raw dollar-delimited TeX is not configured and can turn braces into invalid JSX expressions. A standalone MDX compilation does not replace the actual production build.
 
 Check chapter seeking on the delivered asset host, not only the development server: compare the media clock with the film clock after a deep link, a second seek and replay. Some static hosts ignore byte ranges. The shared player falls back to a scoped Blob only when seeking requires it; test abort on navigation and object-URL release. Use a range-capable local preview for normal playback checks and a deliberately non-range server for this fallback. HTTP success and media readiness alone do not prove seeking works.
+
+## Carry reviews into repairs
+
+Keep the same parallel queue active after all requested routes exist. Each handoff identifies its exact source version, owned files, reproducible findings and missing evidence. Assign a concrete repair or another unreviewed group immediately; separate author self-review from cross-review. Once handed off, those files belong to the integrator. Freeze the review source and verify file hashes before copying a repair into a different integration snapshot. A browser or device limitation can defer its specific evidence, while independent model and source review continues.
+
+Measure the whole player, including the longest bilingual caption and transport controls, at every chapter. A short stage can still produce an oversized phone page. Prefer the current causal view over stacked desktop panels. Keep labels in CSS pixels where scaling would make them unreadable. Project the real assembly bounds through the camera, including near corners, thickness and moving parts; a nominal width/height fit is insufficient. Review pause, direct seek and transitions separately.
+
+For caption-only edits, update `narration.json`, its corresponding `film-timeline.json` captions and `en.json` together. Keep spoken scripts, timing, audio manifests and recording hashes unchanged. Do not regenerate speech to shorten screen text. Preserve scientific qualifications in the visible explanation or an accessible detail view.

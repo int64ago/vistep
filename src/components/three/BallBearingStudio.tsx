@@ -60,6 +60,37 @@ function pocketGeometry(side: number) {
   return geometry;
 }
 
+/** Fit all eight corners in the actual camera basis, including near-side depth.
+ * The 0.88 usable fraction reserves a visible border throughout the camera sweep. */
+export function fitBallBearingCamera(
+  bounds: THREE.Box3,
+  aspect: number,
+  direction: THREE.Vector3,
+  fov = 34,
+) {
+  const target = bounds.getCenter(new THREE.Vector3()),
+    back = direction.clone().normalize(),
+    right = new THREE.Vector3(0, 1, 0).cross(back).normalize(),
+    up = back.clone().cross(right),
+    tanV = Math.tan((fov * Math.PI) / 360) * 0.88,
+    tanH = tanV * aspect,
+    offset = new THREE.Vector3();
+  let distance = 0;
+  for (const x of [bounds.min.x, bounds.max.x])
+    for (const y of [bounds.min.y, bounds.max.y])
+      for (const z of [bounds.min.z, bounds.max.z]) {
+        offset.set(x, y, z).sub(target);
+        const near = offset.dot(back);
+        distance = Math.max(
+          distance,
+          near + Math.abs(offset.dot(right)) / tanH,
+          near + Math.abs(offset.dot(up)) / tanV,
+          near + 0.2,
+        );
+      }
+  return { target, position: target.clone().addScaledVector(back, distance) };
+}
+
 export default function BallBearingStudio({
   state,
   shot,
@@ -273,8 +304,10 @@ export default function BallBearingStudio({
           outer.renderOrder = 3;
           return { inner, outer };
         });
-        const desired = new THREE.Vector3(),
-          target = new THREE.Vector3();
+        root.updateWorldMatrix(true, true);
+        // Fixed housing and base enclose every ball/cage/shaft phase and both cutaway states.
+        const assemblyBounds = new THREE.Box3().setFromObject(root),
+          desired = new THREE.Vector3();
         return {
           update() {
             const { state: s, shot: sh, demo: d } = current.current;
@@ -315,12 +348,15 @@ export default function BallBearingStudio({
                 ease = p * p * (3 - 2 * p);
               const opening = sh.chapter === 0 ? 1 - ease : sh.chapter === 7 ? ease : 0;
               const sweep = Math.sin(Math.PI * p) ** 2 * 0.12;
-              target.set(0, 2.82, 0);
-              controls.target.copy(target);
-              const height = Math.max(6.1 / camera.aspect, 6.4),
-                distance = height / (2 * Math.tan((camera.fov * Math.PI) / 360));
-              desired.set(0.65 + opening * 2.85 + sweep, 1 + opening * 0.8, 11).normalize();
-              camera.position.copy(target).addScaledVector(desired, distance);
+              desired.set(0.65 + opening * 2.85 + sweep, 1 + opening * 0.8, 11);
+              const frame = fitBallBearingCamera(
+                assemblyBounds,
+                camera.aspect,
+                desired,
+                camera.fov,
+              );
+              controls.target.copy(frame.target);
+              camera.position.copy(frame.position);
             }
           },
           dispose() {
