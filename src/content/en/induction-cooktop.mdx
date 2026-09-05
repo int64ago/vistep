@@ -1,0 +1,81 @@
+<a id="understand"></a>
+
+## Heat begins in the pan
+
+A flat coil beneath the glass carries high-frequency alternating current. Changing magnetic flux induces closed currents in the conducting pan, where electrical resistance turns energy into heat. Coil current does not flow across the glass into the pan, and the glass does not need to become hot first.
+
+The blue ring represents one equivalent mode of the pan’s distributed eddy currents. Its transparent front is a viewing cutaway; the real current path remains closed. Flux, induced voltage and pan current have different phases: Faraday’s law relates voltage to the rate of change of flux, while loop resistance and inductance determine the current response.
+
+After electrical input stops, stored heat still passes between pan and glass. Turning off power and cooling to room temperature take different amounts of time.
+
+<a id="try"></a>
+
+## Compare one cause at a time
+
+- Keep coil RMS current and frequency fixed, then lift the pan. Follow the change in coupling and pan electrical loss.
+- Increase frequency in the skin-effect view. The depth profile becomes more concentrated near the face closest to the coil.
+- Compare magnetic steel, nonmagnetic stainless steel and aluminum at the same geometry and drive. This is a material comparison, not an appliance compatibility test.
+- Reduce the on-time fraction. Compare on-state heating with average power, then inspect warming and cooling after power-off.
+
+Named native ranges support arrow keys, Home and End. Scrub phase or thermal time in either direction. Reset restores material, current, frequency, lift, duty, phase, time, inspection and camera. A complete 2D view remains available if WebGL fails. This component generates no audio.
+
+<a id="deeper"></a>
+
+## A reciprocal equivalent circuit
+
+An ideal source specifies coil RMS current. Inverter details, resonant compensation, detection and hardware implementation are omitted. Parameters explain the mechanism; they are neither cooking settings nor hardware instructions.
+
+The pan is a shorted secondary mode. `I₁`, `I₂` and `U₁` are RMS phasors:
+
+<div className="formula">
+  I₂ = −jωMI₁ / Z₂
+  <br />
+  U₁ = (R₁ + jωL₁)I₁ + jωMI₂
+</div>
+
+<div className="formula">Pinput = Re(U₁I₁*) = R₁|I₁|² + R₂|I₂|²</div>
+
+The pan impedance includes electrical resistance, external loop inductance and the internal reactance of its surface impedance. Mutual inductance is computed by a Neumann integral over the complete primary conductor, including its lower return and source branch, and the closed pan loop. Lifting the pan changes this same geometry integral.
+
+That integral uses air permeability. Magnetic material properties enter the linear surface impedance; full magnetic concentration and its feedback into mutual inductance are not solved. Applied flux through the equivalent loop is `Φext = Mi₁`, with induced voltage `−M di₁/dt`. The flux arrow denotes a quantity integrated over the loop, not a resolved spatial field.
+
+## Skin depth and finite thickness
+
+For constant conductivity `σ` and real permeability `μ`,
+
+<div className="formula">
+  δ = 1 / √(πfμσ)
+  <br />γ = (1 + j) / δ
+</div>
+
+A conducting slab driven from one side, with zero tangential magnetic field at the back face, has sheet surface impedance
+
+<div className="formula">
+  Zₛ = (γ/σ) coth(γt)
+  <br />
+  Z₂ = (ℓ/w)Zₛ + jωLexternal
+</div>
+
+Here `ℓ = 2πr` is the equivalent loop length, `w` its conducting band width, and `t` the pan-bottom thickness. Resistance approaches `1/(σt)` for a sufficiently thin slab and `1/(σδ)` for a thick one. The depth view uses the same slab solution for cycle-average Joule density, `|J|²/σ`. Integrating it over the equivalent band reproduces the circuit’s pan loss.
+
+The teaching materials use magnetic steel with `σ = 6 × 10⁶ S/m`, `μᵣ = 40`; nonmagnetic stainless steel with `1.4 × 10⁶ S/m`, `μᵣ = 1`; and aluminum with `3.5 × 10⁷ S/m`, `μᵣ = 1`. These constants do not represent all alloys, temperatures, frequencies or magnetization states. **Only resistive metal loss is included. Hysteresis, saturation and temperature-dependent electrical properties are omitted.**
+
+Nonmagnetic metals can carry induced currents and heat. A particular cooktop may reject or poorly match a pan, whereas purpose-designed systems can heat aluminum and copper. The comparison does not retune a commercial inverter or simulate its cookware detection, so it is not a universal compatibility rule.
+
+## Pan, glass and thermal delay
+
+Two uniform-temperature nodes represent the metal pan and glass. There is no food, boiling or spatial temperature field. Pan heat capacity follows the modeled volume, density and specific heat; glass capacity is `500 J/K`. Contact conductance decreases with added lift. Both nodes lose heat to a `20 °C` environment.
+
+<div className="formula">
+  Cp dTp/dt = Ppan − G(Tp − Tg) − Hp(Tp − Ta)
+  <br />
+  Cg dTg/dt = G(Tp − Tg) − Hg(Tg − Ta)
+</div>
+
+<div className="formula">dEthermal/dt = Ppan − Hp(Tp − Ta) − Hg(Tg − Ta)</div>
+
+Contact heat cancels when the two nodes are added. The glass can briefly keep warming after power-off while total stored heat falls. Coil loss is included in electrical power accounting but lies outside this two-node thermal domain.
+
+The four-second teaching envelope uses carrier-cycle-average heating within each on/off segment and omits brief switching transients and their small energy contribution. Each segment advances through a closed-form two-node matrix exponential. Seeking reconstructs the thermal state without frame history. Electrical motion is slowed and thermal time accelerated under the shared chapter director.
+
+Sources: [MIT electromagnetic loss mechanisms](https://www.ocw.mit.edu/courses/6-061-introduction-to-electric-power-systems-spring-2011/c26f6204e05bd4c47875a96452982b6f_MIT6_061S11_ch8.pdf), [COMSOL eddy currents](https://doc.comsol.com/6.3/doc/com.comsol.help.models.acdc.eddy_currents/eddy_currents.html), [Infineon induction-heating principles](https://community.infineon.com/t5/%E5%8D%9A%E5%AE%A2/%E6%84%9F%E5%BA%94%E5%8A%A0%E7%83%AD%E5%8E%9F%E7%90%86%E4%B8%8EIGBT%E5%BA%94%E7%94%A8%E6%8B%93%E6%89%91%E5%88%86%E6%9E%90-%E4%B8%8A/ba-p/668476), [Panasonic all-metal induction](https://news.panasonic.com/global/press/en201118-3), and [SCHOTT CERAN induction and residual heat](https://www.schott-ceran.com/en/service).

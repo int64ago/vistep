@@ -1,0 +1,84 @@
+<h2 id="understand">Track a position first, then measure its influence</h2>
+
+This scene implements **SHA-256**, including its actual intermediate states. The default message, `abc`, becomes UTF-8 bytes `61 62 63` in hexadecimal. Follow the lowest bit of the first byte, `a`: `b0` is one. Big-endian packing places it at bit 24 of the first message word, `W[0] = 61626380`. Bit numbers count upward from the least significant bit, zero.
+
+At first that bit has a recognizable location. After rotations, Boolean operations, and additions with carries, an output square cannot simply be called “the original bit.” To measure influence, make a copy of the same input, **XOR the first byte with `01`**, and compute both hashes from the beginning. Every other input bit, initial state word, algorithm step, and round constant stays identical.
+
+The comparison bytes are `60 62 63`. The final digests differ at **112 of 256 bit positions**. Gold strokes mark unequal results at corresponding positions; they are not particle paths or random colors. The difference count sometimes falls during compression. It need not grow monotonically or end at exactly half the output bits.
+
+A SHA-256 digest has a fixed 256-bit length. Distinct messages must sometimes share an output: that is a collision. The existence of collisions is different from being able to find one. This comparison neither searches for collisions nor proves cryptographic security.
+
+<h2 id="try">Hold the input still, then change one bit</h2>
+
+- Enter text in exploration, then choose one UTF-8 byte and one of its `b0…b7` bits. The comparison flips the byte directly. The altered bytes need not be valid text; no Unicode replacement character is silently substituted.
+- Disable the flip and both computations match throughout. Enable it to compare the same block’s incoming state, any completed round, or its value after feed-forward.
+- The compression slider supports arrow keys, with separate Previous and Next buttons. Step 0 means block input, 1–64 count completed rounds, and 65 means feed-forward. A working state is not mislabeled as the final digest.
+- Load the 56-byte example and inspect block two. Its incoming state must equal block one’s output; it does not restart from the original constants.
+- Try `é`, `é`, Chinese, or emoji. Count UTF-8 bytes rather than visible characters. No Unicode normalization is applied. Empty input has a valid digest but no input bit to flip.
+- Expand the details to inspect both complete digests and the current round’s Σ, Ch, and Maj values. Reset restores `abc`, its first byte, `b0`, flipping enabled, block one, the feed-forward step, and details closed.
+
+The interface accepts up to **1024 UTF-8 bytes** to keep its detailed computation lightweight. This is a teaching limit, not SHA-256’s standard message-length limit. The model supports byte-aligned messages; the standard also defines non-byte-aligned bit strings. Playback time represents teaching steps, not hardware performance.
+
+<h2 id="deeper">Which operations are actually performed?</h2>
+
+<details>
+<summary>Padding is not encryption</summary>
+
+Converting text to UTF-8 is encoding. SHA-256 operates on bits and does not choose a text encoding. For byte-aligned input, append `80`: one set bit followed by seven zeros. Add more zero bytes, then a 64-bit big-endian field containing the original message length in bits. The result occupies complete 512-bit blocks.
+
+<div className="formula">abc: 24 + 1 + 423 + 64 = 512 bits</div>
+
+The length field says 24, not the padded length of 512. A 56-byte message already occupies 448 bits. Adding the set bit and length field requires two blocks. Each block is parsed as sixteen 32-bit big-endian words.
+
+A hash is neither a reversible text encoding nor ciphertext awaiting decryption with a key. Its digest does not contain a directly recoverable copy of the original message.
+
+</details>
+
+<details>
+<summary>Rotations and addition expand the message</summary>
+
+The first sixteen words come directly from the input block. The next forty-eight use this recurrence. Every addition is modulo 2³², retaining only the low thirty-two result bits.
+
+<div className="formula">W[t] = σ₁(W[t−2]) + W[t−7] + σ₀(W[t−15]) + W[t−16]</div>
+
+<div className="formula">σ₀(x) = ROTR⁷(x) ⊕ ROTR¹⁸(x) ⊕ SHR³(x)</div>
+
+<div className="formula">σ₁(x) = ROTR¹⁷(x) ⊕ ROTR¹⁹(x) ⊕ SHR¹⁰(x)</div>
+
+ROTR rotates right, wrapping bits around. SHR is a logical right shift, introducing zeros at the high end. For this particular message, `W[16]` equals `W[0]`, retaining the tracked bit at that step. This is not a general property of messages or later schedule words.
+
+</details>
+
+<details>
+<summary>How does one round update eight working words?</summary>
+
+The working words are called a through h. Ch uses each bit of x to choose the corresponding bit of y or z. Maj takes the majority of each group of three corresponding bits.
+
+<div className="formula">Ch(x,y,z) = (x AND y) ⊕ ((NOT x) AND z)</div>
+
+<div className="formula">Maj(x,y,z) = (x AND y) ⊕ (x AND z) ⊕ (y AND z)</div>
+
+Capital Σ₀ combines right rotations by 2, 13, and 22 using XOR. Capital Σ₁ uses 6, 11, and 25. Neither includes a logical shift. K[t] is the standard’s fixed constant for the current round.
+
+<div className="formula">T1 = h + Σ₁(e) + Ch(e,f,g) + K[t] + W[t]</div>
+
+<div className="formula">T2 = Σ₀(a) + Maj(a,b,c)</div>
+
+The new a is `T1 + T2`; the new e is `d + T1`. The other six receive the old a, b, c, e, f, and g. All new values are computed from the old state together, without accidentally reusing a value updated earlier in the same round.
+
+</details>
+
+<details>
+<summary>Why add the incoming state back?</summary>
+
+After 64 rounds, add each working word to its corresponding incoming chaining word. The first block starts from standard initial constants. Every later block starts from its predecessor’s output. “Compression” here means updating a fixed-length chaining value, not reversible file compression.
+
+<div className="formula">Hᵢ[j] = Hᵢ₋₁[j] + working[j], modulo 2³²</div>
+
+After the last block, concatenate H0 through H7 to form the 256-bit digest. Hexadecimal notation uses four bits per character, hence 64 characters.
+
+The model was checked against NIST’s single-block and two-block digests and published intermediate round states. Independent WebCrypto and Node crypto checks cover empty input, Unicode, padding boundaries, multiple blocks, and one-bit perturbations. Passing these checks is not CAVP certification. The film does not establish collision resistance, preimage resistance, or security for a particular application.
+
+Sources: [NIST FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf), [NIST SHA-256 intermediate examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf), and [NIST secure-hashing validation notes](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/secure-hashing).
+
+</details>

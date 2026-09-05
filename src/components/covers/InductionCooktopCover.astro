@@ -1,0 +1,73 @@
+---
+import { inductionGeometry, inductionShot, INDUCTION } from '../../models/induction-cooktop';
+import type { InductionPoint } from '../../models/induction-cooktop';
+interface Props {
+  color?: string;
+}
+const { color = '#ae7a43' } = Astro.props;
+const shot = inductionShot(1, 0.6),
+  g = inductionGeometry(shot.input.lift);
+const xy = ([x, y, z]: InductionPoint) => [
+  205 + (x - 0.32 * z) * 870,
+  136 - y * 870 + z * 0.58 * 870,
+];
+const path = (points: InductionPoint[], close = false) =>
+  points.map((p, i) => `${i ? 'L' : 'M'}${xy(p)}`).join(' ') + (close ? 'Z' : '');
+const pan = Array.from({ length: 65 }, (_, i): InductionPoint => {
+  const a = (i / 64) * Math.PI * 2;
+  return [INDUCTION.panRadius * Math.cos(a), g.panBottom, INDUCTION.panRadius * Math.sin(a)];
+});
+const rim = Array.from({ length: 33 }, (_, i): InductionPoint => {
+  const a = Math.PI + (i / 32) * Math.PI;
+  return [
+    INDUCTION.panRadius * Math.cos(a),
+    g.panBottom + INDUCTION.panHeight,
+    INDUCTION.panRadius * Math.sin(a),
+  ];
+});
+const lower = Array.from({ length: 33 }, (_, i): InductionPoint => {
+  const a = Math.PI * 2 - (i / 32) * Math.PI;
+  return [INDUCTION.panRadius * Math.cos(a), g.panBottom, INDUCTION.panRadius * Math.sin(a)];
+});
+const arrowA = xy([0, g.panBottom + 0.012, 0]),
+  arrowB = xy([0, g.panBottom + 0.012 - Math.sign(shot.instant.flux) * 0.027, 0]);
+const direction = Math.sign(arrowB[1] - arrowA[1]);
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" width="400" height="230" fill="none">
+  <rect width="400" height="230" fill="#e9edde"></rect>
+  <path d={path(g.supply)} stroke="#9c7951" stroke-width="3"></path>
+  <path d={path(g.returnPath)} stroke="#9c7951" stroke-width="3"></path>
+  <path d={path(g.spiral)} stroke={color} stroke-width="2.5"></path>
+  <path
+    d={path(
+      [
+        [-0.14, INDUCTION.glassTop, -0.125],
+        [0.14, INDUCTION.glassTop, -0.125],
+        [0.14, INDUCTION.glassTop, 0.125],
+        [-0.14, INDUCTION.glassTop, 0.125],
+      ],
+      true,
+    )}
+    fill="#9fbdb2"
+    fill-opacity=".14"
+    stroke="#88a799"></path>
+  <path d={path([...rim, ...lower], true)} fill="#acb7a5" stroke="#778e79"></path>
+  <path d={path(pan, true)} fill="#bfc8b5" fill-opacity=".26" stroke="#859b80"></path>
+  <path d={path(g.loop)} stroke="#428493" stroke-width="3"></path>
+  <path
+    d={path([g.terminalA, g.terminalB])}
+    stroke="#cbbd9c"
+    stroke-width="18"
+    stroke-linecap="round"></path>
+  <path
+    d={`M${arrowA}L${arrowB}m-5,${-7 * direction}l5,${7 * direction} 5,${-7 * direction}`}
+    stroke="#538a97"
+    stroke-width="2.5"
+    stroke-linecap="round"></path>
+  <circle
+    cx={xy([INDUCTION.loopRadius, g.loopY, 0])[0]}
+    cy={xy([INDUCTION.loopRadius, g.loopY, 0])[1]}
+    r="4"
+    fill="#d2a453"></circle>
+</svg>

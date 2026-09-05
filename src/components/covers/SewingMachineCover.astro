@@ -1,0 +1,75 @@
+---
+import { sewingPose, type SewingPoint } from '../../models/sewing-machine';
+interface Props {
+  color?: string;
+}
+const { color = '#b88b68' } = Astro.props;
+const pose = sewingPose(0.73),
+  x = (v: number) => 190 + 67 * v,
+  y = (v: number) => 97 - 49 * v;
+const path = (p: SewingPoint[]) =>
+  p.map((v, i) => `${i ? 'L' : 'M'}${x(v[0]) + v[2] * 15} ${y(v[1])}`).join(' ');
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs
+    ><linearGradient id="sewing-cover-paper" x2="0" y2="1"
+      ><stop stop-color="#f5f0e5"></stop><stop offset="1" stop-color="#dde4dd"
+      ></stop></linearGradient
+    ><linearGradient id="sewing-cover-steel"
+      ><stop stop-color="#6b8187"></stop><stop offset=".5" stop-color="#bdc9c6"></stop><stop
+        offset="1"
+        stop-color="#718a8e"></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#sewing-cover-paper)"></rect>
+  <path d="M105 213H337" stroke="#81969220" stroke-width="8" stroke-linecap="round"></path>
+  <path
+    d="M325 198V29H222"
+    stroke={color}
+    stroke-opacity=".38"
+    stroke-width="24"
+    stroke-linejoin="round"></path>
+  <path d="M48 90H359V102H48Z" fill="#567b83"></path>
+  <path d="M55 96H305" stroke="#8ab1b5" stroke-width="1.5"></path>
+  <ellipse cx="194" cy="179" rx="80" ry="42" fill="url(#sewing-cover-steel)"></ellipse>
+  <ellipse cx="192" cy="175" rx="70" ry="39" fill="#465e65"></ellipse>
+  <ellipse cx="192" cy="172" rx="49" ry="33" fill="#c3ad83"></ellipse>
+  <ellipse cx="192" cy="172" rx="34" ry="26" fill="#49908b"></ellipse>
+  <ellipse cx="192" cy="172" rx="10" ry="8" fill="#a8b5b1"></ellipse>
+  <path d={path(pose.core)} stroke="#bd583e" stroke-width="2.7" stroke-linejoin="round"></path>
+  <path d={path(pose.lower.slice(-6))} stroke="#21877f" stroke-width="2.5"></path>
+  <path
+    d={`M${x(0) + 9.3} 19V${y(pose.needle.eye)}L${x(0) + 9.3} ${y(pose.needle.tip)}`}
+    stroke="url(#sewing-cover-steel)"
+    stroke-width="7"
+    stroke-linecap="round"></path>
+  <ellipse cx={x(0) + 9.3} cy={y(pose.needle.eye)} rx="1.8" ry="3" fill="#eee8db"></ellipse>
+  <path
+    d={path([
+      [0, 1.6, 0.7],
+      pose.eyeFront,
+      pose.eyeBack,
+      ...pose.core,
+      pose.returnLip,
+      pose.clothReturn,
+    ])}
+    stroke="#bd583e"
+    stroke-width="2.2"
+    stroke-linejoin="round"></path>
+  <path
+    d="M237 45V79H219M178 85H209"
+    stroke="url(#sewing-cover-steel)"
+    stroke-width="6"
+    stroke-linejoin="round"></path>
+  <path d="M155 108H180M224 108H249" stroke="#75918f" stroke-width="5"></path>
+  <path d="M74 89H112M123 89H161" stroke="#c06245" stroke-width="2.4"></path>
+  <path d="M112 89Q117 104 123 89" stroke="#c06245" stroke-width="2.4"></path>
+</svg>

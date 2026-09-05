@@ -1,4 +1,10 @@
 ---
+import RectifierCover from './covers/RectifierCover.astro';
+import SewingMachineCover from './covers/SewingMachineCover.astro';
+import InductionCooktopCover from './covers/InductionCooktopCover.astro';
+import HashCover from './covers/HashCover.astro';
+import BuckConverterCover from './covers/BuckConverterCover.astro';
+import MicroscopeCover from './covers/MicroscopeCover.astro';
 import AirfoilCover from './covers/AirfoilCover.astro';
 import QrCodeCover from './covers/QrCodeCover.astro';
 import SpeakerCover from './covers/SpeakerCover.astro';
@@ -893,4 +899,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'speaker' && <SpeakerCover color={color} />}
   {slug === 'qr-code' && <QrCodeCover color={color} />}
   {slug === 'airfoil' && <AirfoilCover color={color} />}
+  {slug === 'microscope' && <MicroscopeCover color={color} />}
+  {slug === 'buck-converter' && <BuckConverterCover color={color} />}
+  {slug === 'hash' && <HashCover color={color} />}
+  {slug === 'induction-cooktop' && <InductionCooktopCover color={color} />}
+  {slug === 'sewing-machine' && <SewingMachineCover color={color} />}
+  {slug === 'rectifier' && <RectifierCover color={color} />}
 </svg>

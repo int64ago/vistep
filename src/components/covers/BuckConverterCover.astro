@@ -1,0 +1,50 @@
+---
+interface Props {
+  color?: string;
+}
+const { color = '#287887' } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <ellipse cx="203" cy="104" rx="176" ry="87" fill={color} opacity="0.05"></ellipse>
+  <g stroke="#bac9c7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path
+      d="M37 84V45H83M112 45H145M231 45H346V89M346 127V164H37V122M142 45V90M142 118V164M278 45V91M278 107V164"
+    ></path>
+    <path d="M83 45L112 28" stroke="#b56334"></path>
+    <circle cx="83" cy="45" r="3" fill="#fffdf7"></circle><circle
+      cx="112"
+      cy="45"
+      r="3"
+      fill="#fffdf7"></circle>
+    <circle cx="37" cy="103" r="19" fill="#fffdf7"></circle>
+    <path d="M31 97H43M37 91V103M31 111H43" stroke="#78938e" stroke-width="2"></path>
+    <path
+      d="M145 45C145 17 166.5 17 166.5 45C166.5 17 188 17 188 45C188 17 209.5 17 209.5 45C209.5 17 231 17 231 45"
+      stroke={color}
+      stroke-width="4"></path>
+    <path d="M131 118H153L142 94ZM130 90H154" fill="#d8e9e6" stroke={color}></path>
+    <path d="M263 91H293M263 107H293" stroke="#78689a" stroke-width="4"></path>
+    <rect x="337" y="89" width="18" height="38" rx="3" fill="#fffdf7" stroke={color}></rect>
+    <path d="M142 164V118M142 90V45H145M231 45H346V89M346 127V164H142" stroke={color}></path>
+    <circle cx="209.5" cy="45" r="6" fill={color} stroke="#fffdf7"></circle>
+    <circle cx="142" cy="45" r="3" fill={color}></circle><circle cx="278" cy="45" r="3" fill={color}
+    ></circle>
+  </g>
+  <path d="M56 210H354" stroke="#c7d2d0"></path>
+  <path
+    d="M56 208L99 184L151 208L194 184L246 208L289 184L341 208"
+    stroke={color}
+    stroke-width="2.5"
+    stroke-linejoin="round"></path>
+  <path
+    d="M56 191C87 195 118 186 151 191S216 187 246 191S307 186 341 191"
+    stroke="#78689a"
+    stroke-width="2"></path>
+  <g font-family="sans-serif" font-size="14" fill="#526e74"
+    ><text x="88" y="74">S</text><text x="184" y="72">L</text><text x="118" y="108">D</text><text
+      x="300"
+      y="106">C</text
+    ><text x="364" y="112">R</text></g
+  >
+</svg>

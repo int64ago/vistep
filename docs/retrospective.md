@@ -63,6 +63,12 @@ The Moon scene's first phone diagram inherited a desktop SVG viewBox: its appare
 
 A pair of phone readouts exceeded the available flex width by less than one pixel and wrapped into separate rows. Use explicit grid tracks for information that must share a baseline, and include the narrowest supported viewport in the visual review. Rounded range displays should correspond to the actual manual state; keep the more precise scientific constants in the automatic model.
 
+Nominal model width and height do not guarantee perspective framing. The motor and lock base corners projected beyond the canvas even when their centered bounds appeared to fit. Inspect projected near corners, displaced parts and supports at the actual camera aspect ratio, leaving visible margin. Distinguish a deliberately announced detail shot from an accidentally cropped assembly. Material highlights also need the final lighting: per-scene exposure can preserve coil and support separation without changing every renderer's defaults.
+
+Create a 3D renderer when its active composition is visible, and release it when the view changes. Lock and sewing scenes could enter a phone detail chapter with a blank canvas after their renderers were created inside CSS-hidden containers. Conditional mounting fixed fresh deep links and avoids idle WebGL contexts. Verify a reload directly into the affected chapter; reaching it from an already rendered scene is a different test.
+
+Color legends are part of the computed explanation. A generic SVG text rule overrode the airfoil's pressure colors. Preserve explicit semantic colors, generate the legend with the same mapping used on the object, and inspect the rendered result. A correct numerical label alone does not validate its visual encoding.
+
 ## Parallel ownership and phone composition
 
 Parallel scene production helps when each worker owns a complete topic and one integrator owns registries, translations and recordings. Handoff packets are temporary: consume them into canonical sources and remove them. Generate a selected batch through one bounded speech pool; simultaneous manifest writers can overwrite each other. A cached two-topic regression confirmed that batch selection leaves existing recordings and manifests byte-identical.
