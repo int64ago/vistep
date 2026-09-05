@@ -1,0 +1,71 @@
+<h2 id="understand">Follow a ray, then stand at the eye</h2>
+
+Sunlight bends toward the normal when it enters a nearly spherical water droplet. Some of the light reflects from the far surface, then refracts back into the air. The primary rainbow follows this sequence: entry, one internal reflection, and exit. That internal reflection is partial. A transmitted branch leaves at the same contact, shown here as a pale ray.
+
+Move the entry point across the droplet. The outgoing direction first moves away from straight backward, then turns back toward it. Near the turning point, many neighboring entries produce almost the same outgoing angle. This concentration explains why a bow appears at a preferred direction, rather than color separation alone explaining its location.
+
+Water's refractive index varies with wavelength. Under this model's fixed conditions, the preferred angle is about 40.6° for violet and 42.4° for red. A returning ray is measured from the backward direction of sunlight. Looking outward from the eye, the equivalent angular radius is measured from the antisolar direction—the direction opposite the Sun.
+
+The observer diagram first holds droplet A in place. A red ray near its stationary direction reaches the eye, while violet entering at the same point misses. Add droplet B at a slightly different position, and its near-stationary violet ray reaches the eye too. The eye receives those rays from different viewing directions. One droplet does not project an entire colored arc into one eye.
+
+<h2 id="try">Change the actual geometry</h2>
+
+- In exploration, focus the impact-parameter slider and use the arrow keys. Entry, reflection and exit contacts are recalculated together.
+- Find the stationary entry, then move slightly to either side. The entry still moves visibly while the outgoing angle changes very little. Move closer to the rim to see the angle turn back.
+- Hold the entry fixed and change wavelength. Compare the water index with the preferred angle. A shared entry is a different comparison from each wavelength's own stationary entry.
+- In the observer view, alternate between one droplet and two. Trace the dashed violet ray that misses the eye.
+- Raise the Sun in the sky view. The cone angle stays tied to refraction; the antisolar direction descends and less of the bow remains above the horizon. With a sufficiently high Sun, the primary lies below the horizon under the ground-level conditions illustrated here.
+
+<h2 id="deeper">How the paths are calculated</h2>
+
+<details>
+<summary>Every contact lies on the sphere</summary>
+
+The control gives impact parameter b divided by droplet radius R. For a unit sphere in cross-section, sunlight travels along positive x and enters at (−√(1−b²), b). The local surface normal is the radial vector at that point.
+
+<div className="formula">n₁ sin i = n₂ sin r</div>
+
+Snell's law determines the internal direction. A line–sphere intersection determines the next contact. Reflection changes the direction there, a second intersection finds the exit, and Snell's law gives the outgoing air ray. The connections are solved geometrically rather than adjusted to fit a drawing.
+
+Fresnel power calculations retain the s and p polarization channels separately. Each channel passes through entry transmission, internal reflection and exit transmission before the two contributions are added. Repeatedly multiplying unpolarized average reflectances would lose this distinction. Entry reflection, direct transmission, the primary branch and the power remaining for higher-order paths sum to the incoming power.
+
+</details>
+
+<details>
+<summary>Why the preferred angle is close to forty-two degrees</summary>
+
+For one internal reflection, i = arcsin(b/R), r = arcsin((b/R)/n), and the angle from straight backward is:
+
+<div className="formula">α = 4r − 2i</div>
+
+Differentiation with respect to the entry parameter gives the stationary condition:
+
+<div className="formula">(b/R)² = (4 − n²) / 3</div>
+
+The angle reaches its maximum here. Neighboring entries map to nearly the same outgoing direction. The desktop curve shows the turning point; the phone composition prioritizes the ray fan and angular histogram instead of stacking a second plot underneath.
+
+The histogram does not count equally spaced ray heights as equal amounts of light. Under uniform illumination, an incident annulus has area proportional to 2b db. We therefore sample b/R = √u at equal intervals of u and weight each sample by its Fresnel primary-branch power. A bin spans 0.25° and reports the power in that angular interval. It is neither radiance per solid angle nor predicted photographic brightness.
+
+Ideal geometrical optics has a singular concentration at the stationary direction. A finite solar disk, wave effects and droplet populations smooth real bows. We show finite bins rather than presenting an infinite intensity as physical. [Harvard's rainbow derivation](https://www.physics.harvard.edu/sites/g/files/omnuum6476/files/physics/files/sol81.pdf) develops the stationary-angle argument.
+
+</details>
+
+<details>
+<summary>A sourced dispersion model</summary>
+
+The water index uses Equation 1 and the coefficients in Table 1 of [IAPWS R9-97](https://iapws.org/documents/release/Rindex.download), attributed to the International Association for the Properties of Water and Steam. Temperature is fixed at 293.15 K (20°C) and density at 998.2 kg/m³. We do not solve an equation of state to convert pressure into density. The interface explores wavelengths from 400 to 700 nm.
+
+IAPWS provides indices relative to vacuum. Here the surrounding air is approximated as n=1, so this is a teaching model rather than a high-precision atmospheric measurement. At the fixed water conditions, the index at 550 nm is about 1.33468. The display palette identifies wavelengths; it is not a complete spectral-to-vision color calculation.
+
+</details>
+
+<details>
+<summary>From many droplets to an arc in the sky</summary>
+
+With the Sun behind the observer, directions at one angular radius around the antisolar axis form a cone whose vertex is the eye. Near-stationary paths for different wavelengths occupy slightly different cones: red lies outside violet.
+
+The sky view is a perspective projection centered on the antisolar axis. Its cone radius is proportional to tan α, and the horizon follows from the Sun's altitude. Only directions above the geometric horizon are colored. The cross is a reference direction, not an object hanging in the distance.
+
+The observer diagram shortens distances and enlarges droplets, but its rays still intersect the eye from their calculated surface exits. A and B follow representative near-stationary paths. Other weaker wavelengths may contribute along a given direction; real droplets are not pure single-color emitters. We omit diffraction, interference, supernumerary bows, nonspherical large drops, cloud occlusion and multiple scattering. This film develops only the primary rainbow. [NOAA's rainbow introduction](https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-causes-rainbow) gives the broader observational context.
+
+</details>

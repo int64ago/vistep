@@ -1,0 +1,58 @@
+<h2 id="understand">Take the bump, then control the bounce</h2>
+
+The tire meets a bump first. The wheel moves, but the body need not follow exactly the same path. Suspension permits relative displacement between them. **A spring stores and returns energy; a damper dissipates energy during relative motion.** A softer spring cannot do the damper’s job.
+
+This is a vertical shaker rig representing one corner of a car. The upper 300 kg is the sprung body mass. The lower 45 kg represents the unsprung wheel assembly and associated parts. The road platen moves vertically; no horizontal driving speed is being simulated. The guides constrain the test motion and are not vehicle wishbones.
+
+Both spring and damper join the body to the wheel assembly. The cylinder follows the lower attachment and the piston rod follows the upper one. Their relative velocity determines damping force. Changing the coefficient does not change hardware dimensions. The fourth chapter keeps the spring identical in both rigs and adds damping to just one, making the decay visible.
+
+The energy chapter holds the road still and releases the body from a 40 mm displacement. Stored mechanical energy falls while accumulated dissipation rises. Real hydraulic dampers dissipate mechanical energy as fluid passes through restrictions. Here a linear coefficient represents that effect; valve flow and oil temperature are not calculated. [Monroe’s explanation of shocks and struts](https://www.monroe.com/technical-resources/shocks-101/shocks-vs-struts.html) connects relative motion, hydraulic resistance and heat.
+
+<h2 id="try">Give each setting the same road</h2>
+
+Open exploration and choose a smooth bump, repeated ripples, or free decay with a stationary road. Adjust stiffness and damping, then move the inspection-time slider. Every response is recomputed from its initial state, so seeking backward and forward returns the same result. Sliders support arrow keys; buttons work from the keyboard.
+
+Enable the default comparison to use exactly the same road, starting displacement and time for both parameter sets. Displacement traces are measured from each rig’s own static equilibrium. A softer spring has more static compression and a lower body on the rig; that static sag is not counted as oscillation in the plot.
+
+First disable damping and compare 12 kN/m with 30 kN/m. The timing changes, but energy does not disappear from either ideal system. Then hold stiffness fixed and compare moderate and higher damping. More damping can constrain relative motion while transmitting rapid input more strongly to the body. The film compares body acceleration for one shared bump; it does not infer a universal optimum. [MathWorks’ suspension-design example](https://www.mathworks.com/company/technical-articles/optimizing-vehicle-suspension-design-through-system-level-simulation.html) likewise evaluates body response, travel and different road cases together.
+
+The bump amplitude ranges from 5 to 45 mm; repeated ripples range from 5 to 25 mm to keep the illustrated hardware within its travel. With ripples selected, watch the tire’s normal load. A tire can push on the road, but it cannot pull on it. At zero calculated load, this simulation stops. Compared runs both stop at the earliest contact boundary, preserving a common time. Flight, impact and renewed contact require a different model.
+
+<h2 id="deeper">Two masses and their force balance</h2>
+
+<details>
+<summary>Equations, units and static sag</summary>
+
+Positive displacement is upward. Body displacement `zₛ` and wheel displacement `zᵤ` are measured from static equilibrium; `r` is road displacement. Mass is in kg, distance in m and time in s. Suspension stiffness `kₛ` and tire stiffness `kₜ` are in N/m; damping coefficient `c` is in N·s/m.
+
+<div className="formula">
+  mₛ z̈ₛ = −kₛ(zₛ − zᵤ) − c(żₛ − żᵤ)
+  <br />
+  mᵤ z̈ᵤ = kₛ(zₛ − zᵤ) + c(żₛ − żᵤ) − kₜ(zᵤ − r)
+  <br />N = (mₛ + mᵤ)g + kₜ(r − zᵤ)
+</div>
+
+Gravity is already balanced by static support forces, so it does not appear again in the first two equations. The third equation restores total tire normal load. Static spring compression is `mₛg/kₛ`; static tire compression is `(mₛ+mᵤ)g/kₜ`.
+
+The default teaching parameters are `mₛ = 300 kg`, `mᵤ = 45 kg`, `kₛ = 18 kN/m`, `c = 1.4 kN·s/m` and `kₜ = 180 kN/m`. They are illustrative choices, not a fitted production vehicle. The equations use the passive form of the [MathWorks quarter-car model](https://www.mathworks.com/help/mpc/ug/admm-based-mpc-control-for-quarter-car-suspension.html), with active control force set to zero.
+
+Spring free length remains 640 mm. Installed length follows static compression and the relative motion of its attachments. The coil identifies a linear elastic element; its illustrated wire diameter does not determine the selected stiffness. Tire compression at the bottom follows `N/kₜ`; the rim and upper tire profile identify the assembly rather than implementing a finite-element tire.
+
+</details>
+
+<details>
+<summary>The energy balance and the contact boundary</summary>
+
+<div className="formula">
+  E = ½mₛżₛ² + ½mᵤżᵤ² + ½kₛ(zₛ − zᵤ)² + ½kₜ(zᵤ − r)²
+  <br />
+  Pdamper = c(żₛ − żᵤ)² ≥ 0
+  <br />
+  Proad = kₜ(r − zᵤ)ṙ
+</div>
+
+`E` is perturbation energy relative to static equilibrium, not a display of all preload and gravitational energy terms. With accumulated damper dissipation `D` and road work `W`, the balance is `E + D = Einitial + W`. In the release test the road is fixed and `W = 0`, letting the energy transfer stand on its own.
+
+The solver uses fixed-step fourth-order Runge–Kutta integration and refines the zero-load boundary before stopping the linear-contact branch. It omits pitch, roll, tire damping, friction, travel stops and nonlinear valve behavior. It predicts no braking distance, grip coefficient or safe driving speed. [MathWorks’ automotive-suspension example](https://www.mathworks.com/help/simulink/slref/automotive-suspension.html) also discusses the need for velocity-dependent nonlinear damper behavior in more detailed models.
+
+</details>

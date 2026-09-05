@@ -1,0 +1,459 @@
+.water-hammer-study {
+  background: radial-gradient(ellipse at 15% 5%, #263b46, #172b37 58%, #13242e);
+  color: #dee4dc;
+  padding: 26px 28px 22px;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+.water-hammer-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: baseline;
+  color: #bdcbc8;
+  font-size: 16px;
+}
+.water-hammer-heading b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #e4d2aa;
+}
+.water-hammer-reading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px 10px 5px;
+  min-height: 125px;
+}
+.water-hammer-reading > div {
+  display: grid;
+  gap: 3px;
+}
+.water-hammer-reading > div:last-child {
+  text-align: right;
+  align-content: center;
+}
+.water-hammer-reading span {
+  font-size: 16px;
+  color: #adbfbd;
+}
+.water-hammer-reading strong {
+  font-size: 43px;
+  line-height: 1.15;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  color: #e6c28e;
+  font-variant-numeric: tabular-nums;
+}
+.water-hammer-reading strong small {
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.water-hammer-reading b {
+  font-size: 25px;
+  font-weight: 450;
+  font-variant-numeric: tabular-nums;
+}
+.water-hammer-bench,
+.water-hammer-elastic,
+.water-hammer-comparison,
+.water-hammer-history {
+  min-width: 0;
+  width: 100%;
+}
+.water-hammer-study svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.water-hammer-study svg text {
+  fill: #d7e0d8;
+  font: 16px inherit;
+  font-family: inherit;
+  font-size: 16px;
+}
+.water-hammer-scale {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #b8c9c5;
+}
+.water-hammer-scale > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.water-hammer-scale i {
+  display: inline-block;
+  width: 16px;
+  height: 5px;
+  border-radius: 5px;
+}
+.water-hammer-observation {
+  font-size: 18px;
+  min-height: 64px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  margin: 14px 0 8px;
+  color: #e1d5b8;
+}
+.water-hammer-history {
+  padding: 10px 0 0;
+}
+.water-hammer-history > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+  color: #b9cac6;
+}
+.water-hammer-pair-labels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  padding: 20px 16px;
+}
+.water-hammer-pair-labels > div {
+  display: grid;
+  gap: 4px;
+}
+.water-hammer-pair-labels > div:last-child {
+  text-align: right;
+}
+.water-hammer-pair-labels b {
+  font-size: 20px;
+  font-weight: 500;
+  color: #dfbe88;
+}
+.water-hammer-pair-labels span {
+  font-size: 16px;
+  color: #bccac4;
+  font-variant-numeric: tabular-nums;
+}
+.water-hammer-pair-key {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+  font-size: 16px;
+}
+.water-hammer-pair-key span:first-child {
+  color: #b8bec5;
+}
+.water-hammer-pair-key span:last-child {
+  color: #e1b176;
+}
+.water-hammer-clock {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 21px 10px 17px;
+  border-top: 1px solid #758d8b44;
+  margin-top: 23px;
+}
+.water-hammer-clock span {
+  display: grid;
+  gap: 3px;
+  color: #aebfba;
+}
+.water-hammer-clock span:last-child {
+  text-align: right;
+}
+.water-hammer-clock b {
+  font-weight: 400;
+  font-size: 18px;
+  color: #d8dece;
+  font-variant-numeric: tabular-nums;
+}
+.water-hammer-local-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #c2cabe;
+  padding: 24px 12px 0;
+}
+.water-hammer-energy {
+  padding: 14px 18px;
+}
+.water-hammer-energy > div {
+  display: flex;
+  height: 12px;
+  background: #233d48;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.water-hammer-energy i {
+  height: 100%;
+  background: #8bb3bb;
+}
+.water-hammer-energy i:nth-child(2) {
+  background: #d4a26a;
+}
+.water-hammer-energy i:nth-child(3) {
+  background: #dccc99;
+}
+.water-hammer-energy p {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 16px;
+  margin: 15px 0;
+}
+.water-hammer-orientation {
+  font-size: 16px;
+  color: #abbfbb;
+  text-align: center;
+  margin: 15px 8px 0;
+}
+.water-hammer-failure {
+  border: 1px solid #cfb67877;
+  border-radius: 15px;
+  background: #b09b5712;
+  padding: 16px 20px;
+  display: grid;
+  gap: 7px;
+  margin: 14px 6px;
+  color: #e0d2ac;
+}
+.water-hammer-failure b {
+  font-weight: 500;
+}
+.water-hammer-failure p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+.water-hammer-explore {
+  border-top: 1px solid #758d8b44;
+  padding: 18px 10px 24px;
+}
+.water-hammer-explore > p {
+  margin: 0 0 26px;
+  font-size: 16px;
+  color: #c0ccc1;
+}
+.water-hammer-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 32px;
+}
+.water-hammer-controls .control {
+  min-width: 0;
+}
+.water-hammer-controls .control-top,
+.water-hammer-controls .control,
+.water-hammer-controls output {
+  font-size: 16px;
+  color: #d1dace;
+}
+.water-hammer-controls input {
+  min-height: 44px;
+}
+.water-hammer-probe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin: 25px 0;
+  font-size: 16px;
+  color: #d9c694;
+}
+.water-hammer-study button {
+  min-width: 44px;
+  min-height: 44px;
+  font: inherit;
+  border: 1px solid #9caaa077;
+  color: #e4ddc1;
+  border-radius: 22px;
+  background: #647e6d33;
+  padding: 9px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.water-hammer-study button:hover {
+  background: #7e96764d;
+}
+.water-hammer-study button:focus-visible,
+.water-hammer-study summary:focus-visible {
+  outline: 3px solid #dab674;
+  outline-offset: 4px;
+}
+.water-hammer-method {
+  margin: 0 10px;
+  color: #bfcbbf;
+  font-size: 16px;
+}
+.water-hammer-method summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.water-hammer-method summary::before {
+  content: '＋';
+}
+.water-hammer-method[open] summary::before {
+  content: '−';
+}
+.water-hammer-method p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.water-hammer-equation {
+  font-family: Georgia, serif;
+  color: #e1cea5;
+  overflow-wrap: anywhere;
+}
+.water-hammer-method a {
+  color: #d5c497;
+  text-underline-offset: 4px;
+}
+@media (max-width: 620px) {
+  .water-hammer-study[data-watch='true'] {
+    min-height: 900px;
+    display: flex;
+    flex-direction: column;
+  }
+  .water-hammer-study[data-watch='true']:not([data-view='limit']) .water-hammer-observation {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'][data-view='closure'] .water-hammer-reading {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'][data-view='elastic']
+    .water-hammer-reading
+    > div:last-child {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'][data-view='elastic']
+    .water-hammer-reading
+    > div:first-child {
+    max-width: none;
+  }
+  .water-hammer-study {
+    padding: 20px 8px 16px;
+  }
+  .water-hammer-heading {
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 8px;
+  }
+  .water-hammer-reading {
+    padding: 24px 8px 5px;
+    gap: 12px;
+  }
+  .water-hammer-reading strong {
+    font-size: 32px;
+  }
+  .water-hammer-reading strong small {
+    font-size: 16px;
+  }
+  .water-hammer-reading b {
+    font-size: 22px;
+  }
+  .water-hammer-reading > div:first-child {
+    max-width: 62%;
+  }
+  .water-hammer-scale {
+    gap: 10px 18px;
+    padding: 0 7px;
+  }
+  .water-hammer-observation {
+    font-size: 17px;
+    min-height: 72px;
+  }
+  .water-hammer-history > div {
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 8px;
+  }
+  .water-hammer-pair-labels {
+    gap: 16px;
+    padding: 17px 10px;
+  }
+  .water-hammer-pair-labels > div,
+  .water-hammer-pair-labels > div:last-child {
+    text-align: center;
+  }
+  .water-hammer-pair-labels b {
+    font-size: 18px;
+  }
+  .water-hammer-controls {
+    grid-template-columns: 1fr;
+  }
+  .water-hammer-clock {
+    padding: 18px 8px;
+    gap: 12px;
+  }
+  .water-hammer-clock b {
+    font-size: 16px;
+  }
+  .water-hammer-energy {
+    padding: 15px 8px;
+  }
+  .water-hammer-energy p {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+  .water-hammer-local-title {
+    padding: 22px 8px 0;
+  }
+  .water-hammer-failure {
+    padding: 15px 12px;
+  }
+  .water-hammer-explore {
+    padding: 17px 8px;
+  }
+  .water-hammer-explore button {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .water-hammer-study button {
+    transition: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .water-hammer-study[data-watch='true'] .water-hammer-heading > span:first-child {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-reading {
+    min-height: 0;
+    padding: 16px 8px 5px;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-reading > div:last-child > span:first-child {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-clock {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true']:not([data-chapter='5']) .water-hammer-history,
+  .water-hammer-study[data-watch='true']:not([data-chapter='5']) .water-hammer-pair-key {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-scale > span:nth-child(2) {
+    display: none;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-pair-labels {
+    padding: 14px 8px 8px;
+    gap: 12px;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-method {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+  .water-hammer-study[data-watch='true'] .water-hammer-local-title {
+    padding-top: 10px;
+  }
+}

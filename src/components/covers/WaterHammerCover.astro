@@ -1,0 +1,37 @@
+---
+interface Props {
+  color?: string;
+}
+const { color = '#ce9e66' } = Astro.props;
+const id = `water-hammer-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <defs
+    ><linearGradient id={`${id}-front`}
+      ><stop stop-color="#76949a"></stop><stop offset=".39" stop-color="#76949a"></stop><stop
+        offset=".57"
+        stop-color={color}></stop><stop offset="1" stop-color={color}></stop></linearGradient
+    ></defs
+  >
+  <path d="M23 57h66v115H23Z" fill="#517481" fill-opacity=".22" stroke="#9aada7" stroke-width="1.6"
+  ></path>
+  <path d="M27 93h58v75H27Z" fill="#658e95" fill-opacity=".48"></path>
+  <path d="M23 57h66m-66 5h66" stroke="#b9c7bd" stroke-width="3"></path>
+  <path d="M89 120h278" stroke="#92a6a3" stroke-width="36"></path>
+  <path d="M89 120h278" stroke={`url(#${id}-front)`} stroke-width="29"></path>
+  <path d="M89 103h107l19-2h115M89 137h107l19 2h115" stroke="#d2dace" stroke-width="1.4"></path>
+  <path d="M329 97h25v46h-25Z" fill="#798e93" stroke="#c2cbc0" stroke-width="1.4"></path>
+  <path d="M337 78h9v61h-9Z" fill="#cbb785"></path>
+  <path d="M341.5 78V57m-16 0h32" stroke="#cbb785" stroke-width="3.5" stroke-linecap="round"></path>
+  <path d="M324 95v50m35-50v50" stroke="#b7c2b6" stroke-width="3"></path>
+  <path d="M111 120h14m-5-4 5 4-5 4m27-4h14m-5-4 5 4-5 4" stroke="#e1e6d2" stroke-width="1.6"
+  ></path>
+  <path
+    d="M91 193h33l5-24h56l6 48h56l6-48h55l5 24h54"
+    stroke={color}
+    stroke-width="2"
+    stroke-linejoin="round"></path>
+  <path d="M91 193h276" stroke="#879c98" opacity=".4" stroke-dasharray="3 5"></path>
+  <path d="M253 78h-46m7-5-7 5 7 5" stroke={color} stroke-width="1.7" stroke-linecap="round"></path>
+</svg>

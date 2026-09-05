@@ -14,6 +14,186 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'rainbow',
+    name: '彩虹',
+    title: '彩虹，为什么偏偏出现在那个方向？',
+    question: '一束光的转弯，汇成天空中的弧。',
+    description:
+      '追踪阳光在水滴中的折射与一次内反射，再从观察者的视线看见色散、方向集中与地平线以上的彩色弧段。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#809eaa',
+    tag: '光学 · 色散与观察方向',
+    related: ['polarization', 'optical-fiber', 'diffraction'],
+    sources: [
+      {
+        title: 'IAPWS · Refractive index of ordinary water, R9-97',
+        url: 'https://iapws.org/documents/release/Rindex.download',
+      },
+      {
+        title: 'Harvard · Rainbows and stationary directions',
+        url: 'https://www.physics.harvard.edu/sites/g/files/omnuum6476/files/physics/files/sol81.pdf',
+      },
+      {
+        title: 'NOAA NESDIS · What causes a rainbow?',
+        url: 'https://www.nesdis.noaa.gov/about/k-12-education/optical-phenomena/what-causes-rainbow',
+      },
+    ],
+    number: '32',
+  },
+  {
+    slug: 'water-hammer',
+    name: '水锤',
+    title: '为什么突然关阀，水管会猛地一震？',
+    question: '阀门停下，压力变化才开始旅行。',
+    description: '追踪弹性管中的压力波，比较快关与慢关，理解反射、焦科夫斯基关系和汽化边界。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#ce9e66',
+    tag: '流体 · 压力波与弹性',
+    related: ['siphon', 'hydraulic-brake'],
+    sources: [
+      {
+        title: 'USACE HEC · Pressurized Pipe Flow',
+        url: 'https://www.hec.usace.army.mil/confluence/rasdocs/ras1dtechref/6.5/overview-of-optional-capabilities/pressurized-pipe-flow',
+      },
+      {
+        title: 'Simpson & Wylie · Large water-hammer pressure for column separation in pipelines',
+        url: 'https://digital.library.adelaide.edu.au/dspace/handle/2440/80903',
+      },
+      {
+        title: 'Bergant, Simpson & Tijsseling · Water column separation: review of research',
+        url: 'https://research.tue.nl/files/2010395/587547.pdf',
+      },
+      {
+        title: 'NIST · Vapor pressure equation for water, 0–100 °C',
+        url: 'https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An3p213_A1b.pdf',
+      },
+    ],
+    number: '31',
+  },
+  {
+    slug: 'suspension',
+    name: '汽车悬架',
+    title: '越软的悬架，坐起来就越舒服吗？',
+    question: '接住一次颠簸，还要收住下一次振荡。',
+    description: '跟随路面凸起穿过轮胎、弹簧和减振器，比较车身运动、能量耗散与轮胎接触的边界。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#a77e60',
+    tag: '机械 · 振动与阻尼',
+    sources: [
+      {
+        title: 'MathWorks · Quarter-car suspension dynamics and equations',
+        url: 'https://www.mathworks.com/help/mpc/ug/admm-based-mpc-control-for-quarter-car-suspension.html',
+      },
+      {
+        title: 'MathWorks · Suspension design through system-level simulation',
+        url: 'https://www.mathworks.com/company/technical-articles/optimizing-vehicle-suspension-design-through-system-level-simulation.html',
+      },
+      {
+        title: 'Monroe · What shocks and struts do',
+        url: 'https://www.monroe.com/technical-resources/shocks-101/shocks-vs-struts.html',
+      },
+      {
+        title: 'MathWorks · Automotive suspension and nonlinear model limits',
+        url: 'https://www.mathworks.com/help/simulink/slref/automotive-suspension.html',
+      },
+    ],
+    related: ['pendulum', 'hydraulic-brake', 'four-stroke-engine'],
+    number: '30',
+  },
+  {
+    slug: 'diffraction',
+    name: '衍射',
+    title: '光穿过窄缝，为什么反而散开？',
+    question: '一道开口，许多场贡献。',
+    description: '从狭缝各段的相位相加，看到暗纹、中央峰和波长与缝宽的尺度关系。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#799173',
+    tag: '光学 · 波场与衍射',
+    related: ['polarization', 'optical-fiber', 'camera-lens'],
+    sources: [
+      {
+        title: 'UT Austin · Single-Slit Diffraction',
+        url: 'https://farside.ph.utexas.edu/teaching/315/Waves/node96.html',
+      },
+      {
+        title: 'The Feynman Lectures · Diffraction',
+        url: 'https://www.feynmanlectures.caltech.edu/I_30.html',
+      },
+      {
+        title: 'MIT · Fresnel and Fraunhofer diffraction',
+        url: 'https://www.mit.edu/~birge/fresnel/',
+      },
+      {
+        title: 'TU Delft · Scalar Diffraction Optics',
+        url: 'https://interactivetextbooks.tudelft.nl/interactive-optics/content/Chap6_Diffraction/DiffractiveOptics_2022_01Clean.html',
+      },
+    ],
+    number: '29',
+  },
+  {
+    slug: 'memory-cache',
+    name: '内存与缓存',
+    title: '明明还有空位，缓存为什么仍然未命中？',
+    question: '数据在什么位置，比看起来有多近更重要。',
+    description:
+      '走进一张带地址的内存地图，追踪缓存行、标签、局部性与替换，公平比较相同容量里的不同安排。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#547a80',
+    tag: '计算机 · 地址与局部性',
+    related: ['cpu-pipeline', 'binary-adder', 'network'],
+    sources: [
+      {
+        title: 'Cornell CS3410 · Caches',
+        url: 'https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/caches.html',
+      },
+      {
+        title: 'Cornell CS3410 · Cache tag/index/offset calculations',
+        url: 'https://www.cs.cornell.edu/courses/cs3410/2019sp/projects/cache/',
+      },
+      {
+        title: 'Intel · Loop optimizations and locality',
+        url: 'https://www.intel.com/content/www/us/en/developer/articles/technical/loop-optimizations-where-blocks-are-required.html',
+      },
+    ],
+    number: '28',
+  },
+  {
+    slug: 'electric-generator',
+    name: '发电机',
+    title: '转动一圈铜线，为什么会发电？',
+    question: '电流出现时，为什么轴更难转？',
+    description: '追踪旋转线圈、滑环与电刷，把磁通变化、交流电压、反向力矩和机械能转换接起来。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#4b8197',
+    tag: '电磁 · 运动与能量',
+    related: ['transformer-electric', 'ball-bearing'],
+    sources: [
+      {
+        title: 'MIT 8.02 · Faraday’s law and generators',
+        url: 'https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/ce1720fd4b21def8c2189ff4779f27f7_cha10faraday_law.pdf',
+      },
+      {
+        title: 'OpenStax · Electric generators and back EMF',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/13-6-electric-generators-and-back-emf',
+      },
+      {
+        title: 'OpenStax · Force and torque on a current loop',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/11-5-force-and-torque-on-a-current-loop',
+      },
+      {
+        title: 'Moog · Slip rings and stationary brushes',
+        url: 'https://www.moog.com/products/slip-rings/slip-ring-faqs.html',
+      },
+    ],
+    number: '27',
+  },
+  {
     slug: 'siphon',
     name: '虹吸',
     title: '水为什么能先爬高，再流向低处？',
