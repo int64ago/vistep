@@ -19,6 +19,8 @@
 
 - GitHub Ubuntu CI [33952470175](https://github.com/int64ago/vistep/actions/runs/33952470175) 通过：从锁文件全新安装，执行完整 verify 与独立预览构建；无需部署、Google 或语音凭据。
 
+- GitHub 已识别 MIT 和社区文件，community profile 返回 100%；这只是文件完整度。实际打开 Issue 选择页确认三份表单可用；安全入口由 SECURITY.md 自动提供，移除了重复的自定义入口。
+
 ## 交付边界
 
 本次使用的 Cloudflare / Google 私密凭据没有写入源码或构建。公开维护邮箱来自维护者公开 GitHub 资料。验证 TXT 是域名证明记录，保留在 DNS 中，不作为运行时密钥使用。
