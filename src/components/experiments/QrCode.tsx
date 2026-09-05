@@ -14,16 +14,6 @@ import { useShowcase } from '../lab/Showcase';
 import QrCodeMatrix from '../lab/QrCodeMatrix';
 import '../../styles/qr-code.css';
 
-const titles = [
-  '从网址，追踪一个 v',
-  '先告诉读者怎样读',
-  '再算七个校验码字',
-  '先留出方向与尺度',
-  '两列一组，把位放进去',
-  '八种掩码，逐一比较',
-  '把解码说明写在两处',
-  '现在，它可以被扫描',
-];
 const fieldNames: Record<string, string> = {
   'eci-mode': 'ECI 模式',
   eci: 'UTF-8 声明',
@@ -34,29 +24,6 @@ const fieldNames: Record<string, string> = {
   align: '校正图形',
   pad: '填充',
 };
-function currentLine(chapter: number, p: number) {
-  if (chapter === 0)
-    return p < 0.4
-      ? t('网址中的 v，变成字节 118，再拆成八个位。')
-      : t('始终跟随 v 的第二个高位：它的原始值是 1。');
-  if (chapter === 1)
-    return p < 0.55
-      ? t('0100 声明字节模式；长度字段写的是 17 个字节。')
-      : t('网址正好填满容量；短消息才需要交替补入 EC、11。');
-  if (chapter === 2) return t('19 个数据码字参与 GF(256) 运算，得到 7 个 RS 校验码字。');
-  if (chapter === 3)
-    return p < 1 / 3
-      ? t('三个定位图形给出方向；外侧白色隔离带不放数据。')
-      : p < 2 / 3
-        ? t('交替的时序格建立网格尺度；第一版没有校正图形。')
-        : t('格式信息提前留位；总共还剩 208 格放数据与校验。');
-  if (chapter === 4) return t('从右下开始上下折返；跳过功能格，每个位置只放一位。');
-  if (chapter === 5) return t('只对数据区做可逆异或；比较连串、方块、仿定位纹与明暗比例。');
-  if (chapter === 6) return t('L 等级与掩码编号加上 BCH 校验，写成两份 15 位格式信息。');
-  return p < 0.38
-    ? t('读出掩码后可还原这一位；白格也可能来自原始的 1。')
-    : t('保留黑白对比和四格静区；扫码读到 https://vistep.ai。');
-}
 function CodewordStrip({
   qr,
   current = -1,
@@ -292,14 +259,12 @@ export default function QrCode() {
             : t('输入待调整')}
         </span>
       </header>
-      <div className="qr-intro">
-        <h3>{t(director.watch ? titles[chapter] : '让你的文字变成二维码')}</h3>
-        <p>
-          {director.watch
-            ? currentLine(chapter, shot.progress)
-            : t('选择文字和掩码，计算完整二维码；展开追踪可查看真实位值。')}
-        </p>
-      </div>
+      {!director.watch && (
+        <div className="qr-intro">
+          <h3>{t('让你的文字变成二维码')}</h3>
+          <p>{t('选择文字和掩码，计算完整二维码；展开追踪可查看真实位值。')}</p>
+        </div>
+      )}
       {qr && shown ? (
         <>
           <div className="qr-film-surface">
@@ -368,7 +333,10 @@ export default function QrCode() {
                     <span>{t('BCH 余数')}</span>
                     <code>{qrBits(qr.candidates[qr.mask].format.remainder, 10).join('')}</code>
                     <span>{t('最终格式字')}</span>
-                    <code>0x{qr.candidates[qr.mask].format.value.toString(16).toUpperCase()}</code>
+                    <code>
+                      0x
+                      {qr.candidates[qr.mask].format.value.toString(16).toUpperCase()}
+                    </code>
                     <p>{t('再与固定的 0x5412 异或；两份格式信息完全相同。')}</p>
                   </div>
                 )}

@@ -25,21 +25,26 @@ export default function Planetary() {
     inputTurns = state[drive.input] / TAU,
     outputTurns = state[drive.output] / TAU;
   return (
-    <div className="planetary-study">
+    <div
+      className="planetary-study"
+      data-mode={demo.watch ? 'watch' : 'explore'}
+      data-chapter={demo.chapter}
+      data-work={demo.watch && shot.showWork}
+    >
       <div className="planetary-topline">
         <span>EPICYCLIC / 24 · 18 · 60</span>
         <span>{assembly > 0.001 ? t('沿轴向装配') : t(constraintNames[mode])}</span>
       </div>
       <div className="planetary-main">
         <PlanetaryStudio angle={angle} mode={mode} assembly={assembly} />
-        {demo.watch && shot.showWork && (
-          <div className="planetary-work">
-            <span>{t('理想输出转矩')}</span>
-            <strong>{Math.abs(drive.outputTorque).toFixed(1)} ×</strong>
-            <small>{t('同样的功，换一种速度')}</small>
-          </div>
-        )}
       </div>
+      {demo.watch && shot.showWork && (
+        <div className="planetary-work">
+          <span>{t('理想输出转矩')}</span>
+          <strong>{Math.abs(drive.outputTorque).toFixed(1)} ×</strong>
+          <small>{t('同样的功，换一种速度')}</small>
+        </div>
+      )}
       <div className="planetary-key">
         <span>
           <i className="sun" />

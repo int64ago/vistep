@@ -1,26 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useId } from 'react';
+import { useCompact } from './useCompact';
 import { t } from '../../i18n';
-import { LUNAR, lunarMonths, phaseDiskPath, type LunarState } from '../../models/moon';
+import {
+  LUNAR,
+  lunarMonths,
+  lunarShadowOnDisk,
+  phaseDiskPath,
+  type LunarState,
+} from '../../models/moon';
 export default function LunarGeometry({
   state,
   view,
+  inset = false,
 }: {
   state: LunarState;
   view: 'orbit' | 'spin' | 'shadow' | 'months';
+  inset?: boolean;
 }) {
-  const [mobile, setMobile] = useState(false);
-  useEffect(() => {
-    const query = matchMedia('(max-width:760px)');
-    const update = () => setMobile(query.matches);
-    update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
+  const mobile = useCompact();
   const width = mobile ? 340 : 620,
     height = mobile ? 284 : 340,
-    cx = mobile ? 136 : 270,
+    cx = mobile ? 120 : 270,
     cy = mobile ? 142 : 170,
-    orbit = mobile ? 96 : 148,
+    orbit = mobile ? 88 : 148,
     earth = mobile ? 21 : 27;
   const s = state,
     angle = (s.earthAngle * 180) / Math.PI;
@@ -108,6 +110,7 @@ export default function LunarGeometry({
           <text x={(ex + moonX) / 2} y={sy + 118} textAnchor="middle">
             384,400 km
           </text>
+          {inset && <ObserverDisk state={s} x={145} y={54} radius={34} />}
         </svg>
         <p>{t('横向距离压缩；纵向保留地球与月球的比例。')}</p>
       </div>
@@ -190,6 +193,7 @@ export default function LunarGeometry({
         role="img"
         aria-label={t('日照方向、月球轨道与地球视线')}
       >
+        {inset && <ObserverDisk state={s} x={285} y={49} radius={33} marker={view === 'spin'} />}
         <path d={orbitalPath} fill="none" stroke="#7e8da3" strokeOpacity=".45" strokeWidth="1" />
         <g
           transform={`rotate(${-angle} ${cx} ${cy})`}
@@ -256,5 +260,56 @@ export default function LunarGeometry({
       </svg>
       <p>{t('日照与位置共用模型；地月距离压缩。')}</p>
     </div>
+  );
+}
+
+/** Same solar projection and geometrical umbra as LunarPortrait, inside the phone diagram. */
+function ObserverDisk({
+  state,
+  x,
+  y,
+  radius,
+  marker = false,
+}: {
+  state: LunarState;
+  x: number;
+  y: number;
+  radius: number;
+  marker?: boolean;
+}) {
+  const id = useId();
+  const shadow = lunarShadowOnDisk(state);
+  return (
+    <g
+      role="img"
+      aria-label={t('地球视角的月面，日照比例 {0}%', (state.illuminated * 100).toFixed(1))}
+    >
+      <g transform={`translate(${x} ${y}) scale(${radius})`}>
+        <defs>
+          <clipPath id={id}>
+            <circle r="1" />
+          </clipPath>
+        </defs>
+        <circle r="1" fill="#080e19" stroke="#74849b" strokeWidth=".025" />
+        <path
+          d={phaseDiskPath(state.phaseCosine)}
+          transform={`rotate(${(-Math.atan2(state.sunOnDisk.y, state.sunOnDisk.x) * 180) / Math.PI})`}
+          fill="#d5d4c9"
+        />
+        {shadow.enabled && (
+          <circle
+            cx={shadow.x}
+            cy={-shadow.y}
+            r={shadow.radius}
+            fill="#080e19"
+            clipPath={`url(#${id})`}
+          />
+        )}
+        {marker && <circle r=".17" stroke="#e5b978" strokeWidth=".035" fill="none" />}
+      </g>
+      <text x={x} y={y + radius + 29} textAnchor="middle">
+        {t('地球视角')}
+      </text>
+    </g>
   );
 }

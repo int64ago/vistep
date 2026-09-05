@@ -50,7 +50,7 @@ export function SpeakerCutaway({
     geometry = speakerGeometry(state.position),
     gap = view === 'gap' || view === 'generator',
     half = compact && view === 'suspension';
-  const height = gap ? (compact ? 294 : 350) : compact ? 276 : 330;
+  const height = compact ? 212 : 330;
   const bounds = gap
     ? { z0: -31, z1: -3, r0: 7, r1: 23 }
     : half
@@ -257,29 +257,67 @@ export function SpeakerSignal({
   const rows =
     kind === 'force'
       ? [
-          { symbol: 'i', value: state.current * 1000, unit: 'mA', max: 70, color: '#b76640' },
-          { symbol: 'F = Bl · i', value: state.force, unit: 'N', max: 0.28, color: '#b76640' },
+          {
+            symbol: 'i',
+            value: state.current * 1000,
+            unit: 'mA',
+            max: 70,
+            color: '#b76640',
+          },
+          {
+            symbol: 'F = Bl · i',
+            value: state.force,
+            unit: 'N',
+            max: 0.28,
+            color: '#b76640',
+          },
         ]
       : kind === 'emf'
         ? [
-            { symbol: 'v', value: state.velocity * 1000, unit: 'mm/s', max: 70, color: '#487e8b' },
-            { symbol: 'e = Bl · v', value: state.backEmf, unit: 'V', max: 0.28, color: '#487e8b' },
+            {
+              symbol: 'v',
+              value: state.velocity * 1000,
+              unit: 'mm/s',
+              max: 70,
+              color: '#487e8b',
+            },
+            {
+              symbol: 'e = Bl · v',
+              value: state.backEmf,
+              unit: 'V',
+              max: 0.28,
+              color: '#487e8b',
+            },
           ]
         : [
-            { symbol: 'x', value: state.position * 1000, unit: 'mm', max: 0.4, color: '#b76640' },
-            { symbol: '−Kx', value: state.springForce, unit: 'N', max: 0.48, color: '#487e8b' },
+            {
+              symbol: 'x',
+              value: state.position * 1000,
+              unit: 'mm',
+              max: 0.4,
+              color: '#b76640',
+            },
+            {
+              symbol: '−Kx',
+              value: state.springForce,
+              unit: 'N',
+              max: 0.48,
+              color: '#487e8b',
+            },
           ];
+  const compact = width < 690,
+    height = compact ? 110 : 138;
   return (
     <svg
       className="speaker-instrument"
       width={width}
-      height="138"
-      viewBox={`0 0 ${width} 138`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       role="img"
       aria-label={t('从同一状态计算的正负读数')}
     >
       {rows.map((r, i) => {
-        const y = 26 + i * 67,
+        const y = (compact ? 22 : 26) + i * (compact ? 52 : 67),
           mid = width / 2,
           half = (width - 28) / 2;
         return (
@@ -445,9 +483,9 @@ export function SpeakerAir({
   compact: boolean;
 }) {
   const air = speakerAir(parameters, frequency, voltage, phase, compact ? 21 : 37),
-    height = compact ? 366 : 248;
+    height = compact ? 312 : 248;
   const along = (s: number) =>
-      compact ? 292 - (s / air.wavelength) * 236 : 42 + (s / air.wavelength) * (width - 84),
+      compact ? 238 - (s / air.wavelength) * 182 : 42 + (s / air.wavelength) * (width - 84),
     cross = (n: number) => (compact ? width / 2 + n * 18 : 98 + n * 18);
   const pos = (s: number, n: number): SpeakerPoint =>
     compact ? [cross(n), along(s)] : [along(s), cross(n)];
@@ -514,10 +552,10 @@ export function SpeakerAir({
       {compact ? (
         <>
           <Vector a={[width - 22, 125]} b={[width - 22, 66]} color="#5a777b" />
-          <text x="0" y="330">
+          <text x="0" y="276">
             {t('质点往复。')}
           </text>
-          <text x="0" y="355">
+          <text x="0" y="301">
             {t('压缩传播。')}
           </text>
         </>

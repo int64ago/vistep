@@ -5,12 +5,15 @@ import { useShowcase } from '../lab/Showcase';
 import { Range } from '../lab/Controls';
 import LensStudio from '../three/LensStudio';
 import LensDiagram from '../lab/LensDiagram';
+import { useCompact } from '../lab/useCompact';
 import '../../styles/optics.css';
 export default function CameraLens() {
   const demo = useShowcase();
   const [object, setObject] = useState(200),
     [focal, setFocal] = useState(50),
-    [sensor, setSensor] = useState(66.7);
+    [sensor, setSensor] = useState(66.7),
+    [reset, setReset] = useState(0);
+  const compact = useCompact();
   const state = demo.watch
     ? cameraShot(demo.chapter, demo.chapterProgress)
     : { object, focal, sensor, height: 18, aperture: 34 };
@@ -19,9 +22,11 @@ export default function CameraLens() {
     lensRay(state.focal, state.object, 18, 17).at(state.sensor) -
       lensRay(state.focal, state.object, 18, -17).at(state.sensor),
   );
-  const diagramOnly = demo.watch
-    ? [1, 3, 7].includes(demo.chapter)
-    : !result.real || result.image === null || blur > 50;
+  const diagramOnly =
+    compact ||
+    (demo.watch
+      ? [1, 3, 7].includes(demo.chapter)
+      : !result.real || result.image === null || blur > 50);
   return (
     <div className="optical-bench">
       <div className="optics-eyebrow">
@@ -29,12 +34,15 @@ export default function CameraLens() {
         <span>{t('追踪同一个物点')}</span>
       </div>
       <div className="lens-views">
-        <div className="lens-object" hidden={diagramOnly}>
-          <LensStudio state={state} />
-        </div>
-        <div className="lens-plan" hidden={!diagramOnly}>
-          <LensDiagram state={state} time={demo.time} />
-        </div>
+        {diagramOnly ? (
+          <div className="lens-plan">
+            <LensDiagram state={state} time={demo.watch ? demo.time : 0} />
+          </div>
+        ) : (
+          <div className="lens-object">
+            <LensStudio key={reset} state={state} />
+          </div>
+        )}
       </div>
       <div className="lens-observations">
         <span>
@@ -48,18 +56,25 @@ export default function CameraLens() {
           {t('像距')}
           <strong>
             {result.image === null ? '∞' : result.image.toFixed(1)}
-            <small> mm</small>
+            {result.image !== null && <small> mm</small>}
           </strong>
         </span>
         <span>
-          {result.real ? t('屏上的弥散直径') : t('正立虚像')}
+          {result.image === null
+            ? t('像在无穷远')
+            : result.real
+              ? t('屏上的弥散直径')
+              : t('正立虚像')}
           <strong>
-            {result.real ? blur.toFixed(1) : result.magnification?.toFixed(1)}
-            <small>{result.real ? ' mm' : ' ×'}</small>
+            {result.image === null
+              ? t('平行出射')
+              : result.real
+                ? blur.toFixed(1)
+                : result.magnification!.toFixed(1)}
+            {result.image !== null && <small>{result.real ? ' mm' : ' ×'}</small>}
           </strong>
         </span>
       </div>
-      {!demo.watch && !diagramOnly && <LensDiagram state={state} time={demo.time} />}
       {!demo.watch && (
         <div className="optics-explore">
           <Range
@@ -92,6 +107,17 @@ export default function CameraLens() {
             }
           >
             {t('把屏移到像面')}
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              setObject(200);
+              setFocal(50);
+              setSensor(66.7);
+              setReset((value) => value + 1);
+            }}
+          >
+            {t('重置全部输入')}
           </button>
         </div>
       )}

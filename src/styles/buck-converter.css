@@ -200,13 +200,32 @@
 }
 @media (max-width: 760px) {
   .buck-scene[data-watch='true'] .buck-film {
-    min-height: 700px;
+    min-height: 574px;
     display: flex;
     flex-direction: column;
   }
   .buck-scene[data-watch='true'] .buck-conditions {
     margin-top: auto;
-    padding-top: 24px;
+    padding-top: 10px;
+  }
+  /* The current is already on the trace, and D/R remain in the conditions.
+     Keep the phone focused on the circuit and one causal instrument. */
+  .buck-scene[data-watch='true']:is(
+      [data-focus='switching'],
+      [data-focus='on'],
+      [data-focus='diode']
+    )
+    .buck-measure {
+    display: none;
+  }
+  .buck-scene[data-watch='true']:not([data-focus='switching']) .buck-circuit-foot {
+    display: none;
+  }
+  .buck-scene[data-watch='true'][data-focus='transient'] .buck-measure > span:last-child {
+    display: none;
+  }
+  .buck-scene[data-watch='true'] .buck-wave svg {
+    height: 72px;
   }
   .buck-film {
     padding: 16px 10px;
@@ -261,6 +280,10 @@
   }
   .buck-measure > span:last-child {
     grid-column: 1 / -1;
+  }
+  .buck-current-balance {
+    grid-column: 1 / -1;
+    font-variant-numeric: tabular-nums;
   }
   .buck-measure strong {
     font-size: 24px;

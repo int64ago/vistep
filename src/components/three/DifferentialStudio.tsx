@@ -61,6 +61,37 @@ function frameQuaternion(id: DifferentialGearId) {
     c = new THREE.Vector3(...differentialFrame([0, 0, 1], id));
   return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(a, b, c));
 }
+/** Fit all eight corners in the actual camera basis, including near-side depth.
+ * The 0.88 usable fraction reserves a visible border throughout the camera sweep. */
+export function fitDifferentialCamera(
+  bounds: THREE.Box3,
+  aspect: number,
+  direction: THREE.Vector3,
+  fov = 34,
+) {
+  const target = bounds.getCenter(new THREE.Vector3()),
+    back = direction.clone().normalize(),
+    right = new THREE.Vector3(0, 1, 0).cross(back).normalize(),
+    up = back.clone().cross(right),
+    tanV = Math.tan((fov * Math.PI) / 360) * 0.88,
+    tanH = tanV * aspect,
+    offset = new THREE.Vector3();
+  let distance = 0;
+  for (const x of [bounds.min.x, bounds.max.x])
+    for (const y of [bounds.min.y, bounds.max.y])
+      for (const z of [bounds.min.z, bounds.max.z]) {
+        offset.set(x, y, z).sub(target);
+        const near = offset.dot(back);
+        distance = Math.max(
+          distance,
+          near + Math.abs(offset.dot(right)) / tanH,
+          near + Math.abs(offset.dot(up)) / tanV,
+          near + 0.2,
+        );
+      }
+  return { target, position: target.clone().addScaledVector(back, distance) };
+}
+
 export default function DifferentialStudio({
   motion,
   focus,
@@ -319,8 +350,22 @@ export default function DifferentialStudio({
           m.position.z = (g.outer * Math.cos(g.pitch)) / 2;
           m.rotation.x = -Math.PI / 2;
         }
-        const direction = new THREE.Vector3(),
-          target = new THREE.Vector3();
+        root.updateWorldMatrix(true, true);
+        const overviewBounds = new THREE.Box3().setFromObject(root),
+          detailBounds = new THREE.Box3().setFromObject(carrier),
+          framingBounds = new THREE.Box3(),
+          direction = new THREE.Vector3();
+        // The outer bridge/pin ends enclose the bevels for every angular phase.
+        // Revolve their axial envelope once; framing never accumulates playback history.
+        const radius = Math.max(
+          detailBounds.max.y - root.position.y,
+          root.position.y - detailBounds.min.y,
+          Math.abs(detailBounds.min.z),
+          Math.abs(detailBounds.max.z),
+        );
+        detailBounds.min.setY(root.position.y - radius).setZ(-radius);
+        detailBounds.max.setY(root.position.y + radius).setZ(radius);
+        overviewBounds.union(detailBounds);
         return {
           update() {
             const v = state.current,
@@ -341,15 +386,24 @@ export default function DifferentialStudio({
             cones.visible = v.focus === 'spiders' && v.progress < 0.32;
             cones.rotation.x = m.carrierAngle;
             if (v.film.watch) {
-              const compact = camera.aspect < 1.35,
-                close = compact || v.focus === 'spiders',
-                arc = Math.sin(Math.PI * v.progress) ** 2;
-              target.set(0, 1.9, 0);
-              controls.target.copy(target);
-              const height = Math.max((close ? 5.6 : 9.7) / camera.aspect, close ? 4.6 : 4.8),
-                distance = height / (2 * Math.tan((camera.fov * Math.PI) / 360));
-              direction.set(v.focus === 'spiders' ? 2.3 + arc : 3.5, 0.95, 11).normalize();
-              camera.position.copy(target).addScaledVector(direction, distance);
+              const p = v.progress,
+                ramp = (q: number) => {
+                  const x = THREE.MathUtils.clamp(q, 0, 1);
+                  return x * x * (3 - 2 * x);
+                },
+                detail = v.focus === 'spiders' ? ramp(p / 0.2) * ramp((1 - p) / 0.2) : 0;
+              // Enter and leave the explicitly labelled detail through a complete assembly view.
+              framingBounds.min.copy(overviewBounds.min).lerp(detailBounds.min, detail);
+              framingBounds.max.copy(overviewBounds.max).lerp(detailBounds.max, detail);
+              direction.set(3.5 - detail * (1.2 - Math.sin(Math.PI * p) ** 2), 0.95, 11);
+              const frame = fitDifferentialCamera(
+                framingBounds,
+                camera.aspect,
+                direction,
+                camera.fov,
+              );
+              controls.target.copy(frame.target);
+              camera.position.copy(frame.position);
             }
           },
         };

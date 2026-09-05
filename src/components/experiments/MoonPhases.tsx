@@ -5,6 +5,7 @@ import { Range } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
 import LunarPortrait from '../three/LunarPortrait';
 import LunarGeometry from '../lab/LunarGeometry';
+import { useCompact } from '../lab/useCompact';
 import '../../styles/moon.css';
 const names = ['新月', '蛾眉月', '上弦月', '盈凸月', '满月', '亏凸月', '下弦月', '残月'];
 const initialDay = Math.round((SYNODIC_DAYS / 4) * 100) / 100;
@@ -16,15 +17,16 @@ export default function MoonPhases() {
     s = demo.watch ? shot.state : lunarState(day, tilt);
   const view = demo.watch ? shot.view : 'orbit',
     geometry = view !== 'portrait';
+  const phoneFilm = useCompact() && demo.watch;
   return (
-    <div className="lunar-study" data-view={view}>
+    <div className="lunar-study" data-view={view} data-phone-film={phoneFilm}>
       <div className="lunar-topline">
         <span>THE MOON / A CHANGE OF VIEW</span>
         <span>{t('圆轨道教学模型')}</span>
       </div>
       <div className="lunar-body">
-        <LunarPortrait state={s} marker={view === 'spin'} />
-        {geometry && <LunarGeometry state={s} view={view} />}
+        {(!phoneFilm || !geometry) && <LunarPortrait state={s} marker={view === 'spin'} />}
+        {geometry && <LunarGeometry state={s} view={view} inset={phoneFilm} />}
       </div>
       <div className="lunar-observation">
         <span>
@@ -74,6 +76,9 @@ export default function MoonPhases() {
             </div>
           ))}
         </div>
+      )}
+      {phoneFilm && view === 'portrait' && (
+        <p className="lunar-current-phase">{t(names[s.phaseIndex])}</p>
       )}
       {!demo.watch && (
         <div className="lunar-controls">

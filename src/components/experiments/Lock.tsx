@@ -32,6 +32,7 @@ export default function Lock() {
     id = useId(),
     [input, setInput] = useState(lockInitial),
     [selected, setSelected] = useState(0),
+    [resetCount, setResetCount] = useState(0),
     [view, setView] = useState<'mechanism' | 'section' | 'compare'>('mechanism');
   const shot = lockShot(film.chapter, film.chapterProgress),
     pose = film.watch ? shot.pose : lockPose(input),
@@ -62,6 +63,7 @@ export default function Lock() {
     setInput(lockInitial());
     setSelected(0);
     setView('mechanism');
+    setResetCount((n) => n + 1);
   };
   const range = (
     key: string,
@@ -105,6 +107,7 @@ export default function Lock() {
           {show3D && (
             <div className="lock-object">
               <LockStudio
+                key={`${resetCount}-${film.run}`}
                 pose={pose}
                 selected={current}
                 focus={focus}

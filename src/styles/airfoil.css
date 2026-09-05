@@ -33,12 +33,18 @@
 .airfoil-study[data-watch='true'] .airfoil-observation {
   display: none;
 }
+.airfoil-study[data-watch='true'] {
+  min-height: 734px;
+  display: flex;
+  flex-direction: column;
+}
 .airfoil-study[data-watch='true'] .airfoil-method {
   margin-top: auto;
 }
 .airfoil-stage {
+  width: 100%;
   max-width: 1020px;
-  margin: auto;
+  margin: 0 auto;
 }
 .airfoil-tunnel {
   width: 100%;
@@ -214,7 +220,7 @@
 }
 @media (max-width: 600px) {
   .airfoil-study[data-watch='true'] {
-    min-height: 720px;
+    min-height: 590px;
     display: flex;
     flex-direction: column;
   }
@@ -235,7 +241,9 @@
     margin: 6px 2px 0;
   }
   .airfoil-measures {
+    width: 100%;
     gap: 8px 17px;
+    margin: 0 auto;
     padding: 12px 4px 2px;
   }
   .airfoil-measures > span {
@@ -245,17 +253,30 @@
   .airfoil-measures b {
     font-size: 20px;
   }
+  .airfoil-study[data-view='circulation'] .airfoil-measures {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+  .airfoil-study[data-view='circulation'] .airfoil-measures > span:first-child b {
+    font-size: 16px;
+    white-space: nowrap;
+  }
   .airfoil-measures p {
     font-size: 16px;
     line-height: 1.5;
   }
   .airfoil-convention {
-    margin: 13px 3px 4px;
+    margin: 10px 3px 8px;
     font-size: 16px;
     line-height: 1.5;
   }
   .airfoil-method {
     margin-top: 14px;
+  }
+  .airfoil-study[data-watch='true'] .airfoil-method summary {
+    padding: 10px 0;
+  }
+  .airfoil-study[data-watch='true'][data-view='scaling'] .airfoil-convention {
+    display: none;
   }
   .airfoil-explore {
     grid-template-columns: 1fr;

@@ -50,7 +50,15 @@ function Section() {
     </svg>
   );
 }
-function Contact({ state, slipping = false }: { state: BearingState; slipping?: boolean }) {
+function Contact({
+  state,
+  slipping = false,
+  compact = false,
+}: {
+  state: BearingState;
+  slipping?: boolean;
+  compact?: boolean;
+}) {
   const id = useId().replace(/:/g, ''),
     v = bearingContactComparison(slipping ? 0 : 1);
   // Local axes: horizontal tangent, vertical outward radial; the two arcs retain their true curvature.
@@ -72,7 +80,7 @@ function Contact({ state, slipping = false }: { state: BearingState; slipping?: 
     );
   return (
     <svg
-      viewBox="0 0 300 275"
+      viewBox={compact ? '75 78 165 145' : '0 0 300 275'}
       role="img"
       aria-label={
         slipping
@@ -113,24 +121,40 @@ function Contact({ state, slipping = false }: { state: BearingState; slipping?: 
           </>
         )}
       </g>
-      <text x="16" y="29">
-        {t('外圈固定')} · 0
-      </text>
-      <text x="16" y="254">
-        {t('内圈表面')} · v
-      </text>
-      <text x="20" y="145" className="bb-svg-muted">
-        v/2
-      </text>
+      {!compact && (
+        <>
+          <text x="16" y="29">
+            {t('外圈固定')} · 0
+          </text>
+          <text x="16" y="254">
+            {t('内圈表面')} · v
+          </text>
+          <text x="20" y="145" className="bb-svg-muted">
+            v/2
+          </text>
+        </>
+      )}
     </svg>
   );
 }
-function Patch({ progress, lossIndex }: { progress: number; lossIndex: number }) {
+function Patch({
+  progress,
+  lossIndex,
+  compact = false,
+}: {
+  progress: number;
+  lossIndex: number;
+  compact?: boolean;
+}) {
   const a = 9 + 45 * progress,
     height = 5 + 16 * progress;
   if (lossIndex === 3)
     return (
-      <svg viewBox="0 0 300 230" role="img" aria-label={t('接触式密封剖面示意，主装配未安装密封')}>
+      <svg
+        viewBox={compact ? '0 0 300 198' : '0 0 300 230'}
+        role="img"
+        aria-label={t('接触式密封剖面示意，主装配未安装密封')}
+      >
         <path d="M20 156H280V187H20Z" fill="#89a4af" />
         <path
           d="M45 25H114V75L163 148Q158 157 147 156L83 96H45Z"
@@ -140,13 +164,19 @@ function Patch({ progress, lossIndex }: { progress: number; lossIndex: number })
         />
         <path d="M147 156h20" stroke="#e8b374" strokeWidth="4" />
         <path d="M185 173h62m-7-5 7 5-7 5" fill="none" stroke="#e9d0a2" strokeWidth="2" />
-        <text x="18" y="216">
-          {t('可选密封 · 主装配未安装')}
-        </text>
+        {!compact && (
+          <text x="18" y="216">
+            {t('可选密封 · 主装配未安装')}
+          </text>
+        )}
       </svg>
     );
   return (
-    <svg viewBox="0 0 300 230" role="img" aria-label={t('接触斑与润滑膜的定性放大图，不按比例')}>
+    <svg
+      viewBox={compact ? '0 0 300 198' : '0 0 300 230'}
+      role="img"
+      aria-label={t('接触斑与润滑膜的定性放大图，不按比例')}
+    >
       <path d="M20 157Q90 142 150 147T280 157V190H20Z" fill="#5f7e8a" />
       <path
         d="M42 20H258Q251 112 196 137Q150 148 104 137Q49 112 42 20Z"
@@ -181,9 +211,11 @@ function Patch({ progress, lossIndex }: { progress: number; lossIndex: number })
             strokeWidth="2"
           />
         ))}
-      <text x="150" y="219" textAnchor="middle">
-        {t('形变与膜厚均夸大')}
-      </text>
+      {!compact && (
+        <text x="150" y="219" textAnchor="middle">
+          {t('形变与膜厚均夸大')}
+        </text>
+      )}
     </svg>
   );
 }
@@ -197,9 +229,11 @@ const lossNotes = [
 export default function BallBearingInspection({
   state,
   shot,
+  compact = false,
 }: {
   state: BearingState;
   shot: BearingShot;
+  compact?: boolean;
 }) {
   const focus = shot.focus,
     ball = state.balls[0];
@@ -213,24 +247,31 @@ export default function BallBearingInspection({
         {(focus === 'assembly' || focus === 'return') && <Section />}
         {focus === 'contact' && <Contact state={state} />}
         {focus === 'sliding' && (
-          <div className="bb-contact-pair">
+          <div className={`bb-contact-pair${compact ? ' bb-contact-compact' : ''}`}>
+            {compact && <p className="bb-contact-surface">{t('外圈固定')} · 0</p>}
             <div>
               <p>{t('理想滚动')}</p>
-              <Contact state={state} />
+              <Contact state={state} compact={compact} />
             </div>
             <div>
               <p>{t('假设球不自转')}</p>
-              <Contact state={state} slipping />
+              <Contact state={state} slipping compact={compact} />
             </div>
+            {compact && <p className="bb-contact-surface">{t('内圈表面')} · v</p>}
           </div>
         )}
         {(focus === 'cage' || focus === 'load') && (
           <BallBearingDiagram state={state} loadVisible={focus === 'load'} />
         )}
         {(focus === 'patch' || focus === 'losses') && (
-          <Patch progress={shot.patchProgress} lossIndex={shot.lossIndex} />
+          <Patch progress={shot.patchProgress} lossIndex={shot.lossIndex} compact={compact} />
         )}
       </div>
+      {compact && (focus === 'patch' || focus === 'losses') && (
+        <p className="bb-diagram-note">
+          {t(shot.lossIndex === 3 ? '可选密封 · 主装配未安装' : '形变与膜厚均夸大')}
+        </p>
+      )}
       {(focus === 'assembly' || focus === 'return') && (
         <ol className="bb-path">
           <li>{t('轴')}</li>

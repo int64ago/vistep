@@ -21,4 +21,6 @@ Use this map when starting a substantial scene revision or reviewing the skill i
 | Preview noindex, authorized main publishing, exact artifact validation and rollback                      | Delivery                      | [Deployment guide](../../../../docs/deployment.md)                                                                                             |
 | Browser-local calculations, no login/payment/comments/CMS or runtime AI service without a new request    | Scope                         | [Project overview](../../../../README.md), [architecture](../../../../docs/architecture.md)                                                    |
 
+For sustained parallel work, use [the review-to-repair queue](../../../../docs/creating-a-scene.md#carry-reviews-into-repairs): ownership passes at frozen handoff, shared metadata has one writer, and workers continue with another review or repair. Full-player composition and caption-only edits are covered there as well.
+
 A requirement belongs in the entrypoint when it changes a production decision. Detailed file contracts, commands and historic evidence belong in the linked guide or record. Update both the policy and current public documentation when a user changes a default; preserve historical reviews as historical evidence.

@@ -1,0 +1,97 @@
+.aperture-study .pupil-view,
+.aperture-study .depth-scale i span,
+.aperture-study .control-top,
+.aperture-study .btn,
+.aperture-study .viewfinder-top,
+.aperture-study .viewfinder-bottom,
+.aperture-study .aperture-main-number span {
+  font-size: 16px;
+}
+.aperture-study .depth-scale {
+  margin-bottom: 66px;
+}
+.aperture-study .depth-scale i:nth-of-type(odd) span {
+  top: 43px;
+}
+.aperture-study .viewfinder-focus {
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  .aperture-study {
+    gap: 12px;
+  }
+  .aperture-study .viewfinder-top,
+  .aperture-study .viewfinder-bottom {
+    left: 12px;
+    right: 12px;
+  }
+  .aperture-study .aperture-strip {
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 12px;
+    padding: 16px 0 4px;
+  }
+  .aperture-study .pupil-view {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .aperture-study .pupil-view svg {
+    width: 74px;
+  }
+  .aperture-study .pupil-view span {
+    display: block;
+    overflow-wrap: normal;
+  }
+  .aperture-study .aperture-observation {
+    display: contents;
+  }
+  .aperture-study .aperture-main-number {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+  .aperture-study .depth-scale {
+    grid-column: 1/-1;
+    margin: 10px 10px 57px;
+  }
+  .aperture-study .aperture-observation p {
+    grid-column: 1/-1;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .aperture-study .aperture-observation p strong {
+    margin: 4px 0 0;
+  }
+  .aperture-study[data-watch='true'] .pupil-view span,
+  .aperture-study[data-watch='true'] .viewfinder-top > span:first-child {
+    display: none;
+  }
+  .aperture-study[data-watch='true'] .viewfinder-top {
+    justify-content: flex-end;
+  }
+  .aperture-study[data-watch='true']:not([data-chapter='2']) .viewfinder-bottom > span:last-child {
+    display: none;
+  }
+  .aperture-study[data-watch='true']:is(
+      [data-chapter='1'],
+      [data-chapter='2'],
+      [data-chapter='3'],
+      [data-chapter='6']
+    )
+    .depth-scale,
+  .aperture-study[data-watch='true']:is(
+      [data-chapter='1'],
+      [data-chapter='2'],
+      [data-chapter='3'],
+      [data-chapter='6']
+    )
+    .aperture-observation
+    p {
+    display: none;
+  }
+  .aperture-study .aperture-explore {
+    padding: 20px 0;
+  }
+}
+.aperture-study .control output {
+  font-size: 16px;
+}

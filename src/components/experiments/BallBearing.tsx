@@ -7,13 +7,15 @@ import {
   bearingFocus,
   type BearingFocus,
 } from '../../models/ball-bearing';
+import { useCompact } from '../lab/useCompact';
 import { useShowcase } from '../lab/Showcase';
 import BallBearingStudio from '../three/BallBearingStudio';
 import BallBearingInspection from '../lab/BallBearingInspection';
 import '../../styles/ball-bearing.css';
 
 export default function BallBearing() {
-  const film = useShowcase();
+  const film = useShowcase(),
+    compact = useCompact();
   const controlId = useId();
   const [turns, setTurns] = useState(0),
     [focus, setFocus] = useState<BearingFocus>('contact'),
@@ -35,7 +37,9 @@ export default function BallBearing() {
         patchProgress: patch,
         lossIndex: loss,
       };
-  const state = bearingState(shot.innerAngle, shot.loadAngle, shot.load);
+  const state = bearingState(shot.innerAngle, shot.loadAngle, shot.load),
+    phoneFilm = compact && film.watch,
+    overview = shot.focus === 'assembly' || shot.focus === 'return';
   return (
     <div
       className="bb-experiment"
@@ -44,21 +48,32 @@ export default function BallBearing() {
     >
       <div className="bb-heading">
         <span>{t('滚珠轴承')}</span>
-        <p>{t('跟住一颗球，看清两处接触。')}</p>
+        {!film.watch && <p>{t('跟住一颗球，看清两处接触。')}</p>}
         <span className="bb-fixed">{t('外圈固定')}</span>
       </div>
       <div className="bb-layout">
-        <div className="bb-object">
-          <BallBearingStudio state={state} shot={shot} />
-          <div className="bb-object-legend">
-            <span>
-              <i />
-              {t('标记球')}
-            </span>
-            <span>{shot.cutaway > 0.5 ? t('观察剖面') : t('完整装配')}</span>
+        {(!phoneFilm || overview) && (
+          <div className="bb-object">
+            <BallBearingStudio state={state} shot={shot} />
+            <div className="bb-object-legend">
+              <span>
+                <i />
+                {t('标记球')}
+              </span>
+              <span>{shot.cutaway > 0.5 ? t('观察剖面') : t('完整装配')}</span>
+            </div>
           </div>
-        </div>
-        <BallBearingInspection state={state} shot={shot} />
+        )}
+        {phoneFilm && overview && (
+          <ol className="bb-path bb-watch-path">
+            {['轴', '内圈', '滚珠', '外圈', '支座'].map((label) => (
+              <li key={label}>{t(label)}</li>
+            ))}
+          </ol>
+        )}
+        {(!phoneFilm || !overview) && (
+          <BallBearingInspection state={state} shot={shot} compact={phoneFilm} />
+        )}
       </div>
       {!film.watch && (
         <div className="bb-explore">
