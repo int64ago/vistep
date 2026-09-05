@@ -1,16 +1,24 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { useShowcase } from '../lab/Showcase';
 import PendulumStudio from '../three/PendulumStudio';
 import { Range, Metric, Segments, clamp } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { stepPendulum, pendulumEnergy, smallAnglePeriod } from '../../models/pendulum';
 export default function Pendulum() {
-  const [length, setLength] = useState(1.4),
-    [gravity, setGravity] = useState(9.81),
-    [mass, setMass] = useState(1),
-    [damping, setDamping] = useState(0.04),
-    [initial, setInitial] = useState(35),
-    [playing, setPlaying] = useState(false),
+  const demo = useShowcase();
+  const [manualLength, setLength] = useState(1.4),
+    [manualGravity, setGravity] = useState(9.81),
+    [manualMass, setMass] = useState(1),
+    [manualDamping, setDamping] = useState(0.04),
+    [manualInitial, setInitial] = useState(35),
+    [manualPlaying, setPlaying] = useState(false),
     [state, setState] = useState({ angle: (35 * Math.PI) / 180, velocity: 0, time: 0 });
+  const length = demo.watch ? (demo.time < 16 ? 1.4 : 2) : manualLength,
+    gravity = demo.watch ? 9.81 : manualGravity,
+    mass = demo.watch ? 1 : manualMass;
+  const damping = demo.watch ? (demo.time < 24 ? 0.006 : 0.28) : manualDamping,
+    initial = demo.watch ? 35 : manualInitial;
+  const playing = demo.watch ? demo.playing && demo.time >= 1 : manualPlaying;
   const sim = useRef(state),
     lastUI = useRef(0),
     trace = useRef<number[]>([]),
@@ -33,6 +41,9 @@ export default function Pendulum() {
     trace.current = [];
     setPoints('');
   };
+  useEffect(() => {
+    if (demo.watch) reset(35);
+  }, [demo.watch, demo.run, demo.time >= 16]);
   const change = (fn: (v: number) => void, v: number) => {
     fn(v);
     setPlaying(false);
@@ -69,17 +80,23 @@ export default function Pendulum() {
       <div className="lab-grid">
         <div className="lab-scene">
           <span className="scene-label">THE PENDULUM / 单摆</span>
-          <div className="pendulum-object">
+          <div
+            className="pendulum-object"
+            style={{ opacity: demo.watch ? Math.min(1, Math.abs(demo.time - 16) / 0.5) : 1 }}
+          >
             <PendulumStudio
               angle={state.angle}
               length={length}
               mass={mass}
               onDrag={(angle) => {
+                if (demo.watch) return;
                 setInitial(Math.round(angle));
                 setPlaying(false);
                 reset(angle);
               }}
-              onRelease={() => setPlaying(true)}
+              onRelease={() => {
+                if (!demo.watch) setPlaying(true);
+              }}
             />
           </div>
           <div className="pendulum-readout">
@@ -88,7 +105,11 @@ export default function Pendulum() {
               {((state.angle * 180) / Math.PI).toFixed(1)}
               <small>°</small>
             </strong>
-            <p>拉起摆球，然后松手。</p>
+            <p>
+              {demo.watch
+                ? `${length.toFixed(1)} m · ${damping < 0.01 ? '轻阻尼' : '增加阻尼'}`
+                : '拉起摆球，然后松手。'}
+            </p>
           </div>
           <svg className="pendulum-trace" viewBox="0 330 640 90" aria-label="实时角度轨迹">
             <path d="M38 374H590" stroke="#cdd3c1" />
@@ -145,7 +166,7 @@ export default function Pendulum() {
               onChange={(v) => change(setGravity, v === 'earth' ? 9.81 : 1.62)}
             />
           </div>
-          <div>
+          <div className="pendulum-energy">
             <div className="energy-label">
               <span>势能</span>
               <span>{energy.potential.toFixed(2)} J</span>

@@ -204,3 +204,28 @@ describe('real miniature Transformer', () => {
     expect(m.params.map((p) => p.data)).toEqual(values);
   }, 30000);
 });
+
+describe('automatic traffic demonstration', () => {
+  it('turns a single short brake into a backward-moving queue without collisions', () => {
+    const cars = newTraffic(36, defaultTraffic),
+      initial = cars[0].speed;
+    const response = Array(36).fill(Infinity);
+    let maximumQueue = 0;
+    for (let step = 0; step < 136 * 60; step++) {
+      if (step === 24 * 60) cars[0].brake = 1.5;
+      stepTraffic(cars, 1 / 60, defaultTraffic);
+      if (step >= 24 * 60)
+        cars.forEach((c, i) => {
+          if (c.speed < initial - 1.5 && response[i] === Infinity) response[i] = step;
+        });
+      maximumQueue = Math.max(maximumQueue, cars.filter((c) => c.speed < 2).length);
+      expect(Math.min(...trafficGaps(cars, 500))).toBeGreaterThanOrEqual(0);
+    }
+    expect(response[0]).toBeLessThan(response[35]);
+    expect(response[35]).toBeLessThan(response[34]);
+    expect(maximumQueue).toBeGreaterThan(5);
+    const paused = structuredClone(cars);
+    stepTraffic(cars, 0, defaultTraffic);
+    expect(cars).toEqual(paused);
+  });
+});

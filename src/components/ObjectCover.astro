@@ -1,14 +1,43 @@
 ---
+import { chainLoop, TAU, sprocketOutline } from '../models/mechanisms';
 interface Props {
   slug: string;
 }
 const { slug } = Astro.props;
-const gearPath = (cx: number, cy: number, r: number, n: number) =>
-  Array.from({ length: n * 4 }, (_, i) => {
-    const a = (i / n / 4) * Math.PI * 2,
-      rr = r * (i % 4 === 1 || i % 4 === 2 ? 1 : 0.93);
-    return `${i ? 'L' : 'M'}${cx + Math.cos(a) * rr} ${cy + Math.sin(a) * rr}`;
-  }).join(' ') + 'Z';
+const chain = chainLoop(34, 24);
+const points = Array.from({ length: chain.count }, (_, i) => chain.sample(i));
+const sprocket = (n: number) =>
+  sprocketOutline(n)
+    .map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`)
+    .join(' ') + 'Z';
+
+const coverWheels = [
+  { n: 34, r: chain.ra, x: -chain.distance / 2, a: chain.alpha, color: '#50605b' },
+  {
+    n: 24,
+    r: chain.rb,
+    x: chain.distance / 2,
+    a: chain.alpha + (chain.lengths[0] * TAU) / 24,
+    color: '#b4a57f',
+  },
+].map((w) => ({
+  ...w,
+  spokes: Array.from(
+    { length: 5 },
+    (_, j) =>
+      `M0 0L${w.r * 0.85 * Math.cos((j * TAU) / 5)} ${w.r * 0.85 * Math.sin((j * TAU) / 5)}`,
+  ).join(' '),
+}));
+const supportPath = [-chain.distance / 2, chain.distance / 2]
+  .map((x) => `M${x} -.14V-1.42`)
+  .join(' ');
+const feetPath = [-chain.distance / 2, chain.distance / 2]
+  .map((x) => `M${x - 0.4} -1.43h.8`)
+  .join(' ');
+const linkPaths = points.map((p, i) => {
+  const q = points[(i + 1) % points.length];
+  return `M${p.x} ${p.y}L${q.x} ${q.y}`;
+});
 ---
 
 <svg viewBox="0 0 480 350" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -35,81 +64,42 @@ const gearPath = (cx: number, cy: number, r: number, n: number) =>
     slug === 'bicycle' && (
       <>
         <ellipse
-          cx="249"
-          cy="271"
-          rx="153"
-          ry="21"
+          cx="245"
+          cy="278"
+          rx="155"
+          ry="13"
           fill="#53625a"
           opacity=".12"
           filter={`url(#shadow-${slug})`}
         />
-        <g transform="matrix(.96,-.15,.16,.78,-16,74)">
-          {[8, 7, 6, 5, 4, 3, 2, 1, 0].map((i) => (
-            <g transform={`translate(${i * 1.1},${-i * 3})`}>
-              <path
-                d={gearPath(342, 174, 30 + i * 4.4, 18 + i * 2)}
-                fill={`url(#metal-${slug})`}
-                stroke="#71827e"
-                stroke-width=".6"
-              />
-              <circle cx="342" cy="174" r="13" fill="#5f7270" />
+        <g transform="translate(240,177) scale(65,-65)">
+          <path d={supportPath} stroke="#b0beb6" stroke-width=".23" />
+          <path d={feetPath} stroke="#42584e" stroke-width=".12" stroke-linecap="round" />
+          {coverWheels.map((w) => (
+            <g transform={`translate(${w.x},0) rotate(${(w.a * 180) / Math.PI})`}>
+              <path d={sprocket(w.n)} fill={w.color} stroke="#9caaa3" stroke-width=".012" />
+              <circle r={w.r * 0.76} fill="#e5ebe1" />
+              <path d={w.spokes} stroke={w.color} stroke-width=".09" />
+              <circle r=".12" fill="#a8b7af" stroke="#53645b" stroke-width=".03" />
             </g>
           ))}
-          <path d={gearPath(148, 174, 93, 44)} fill="#4c5a58" stroke="#bcc7c1" stroke-width="1.1" />
-          <circle cx="148" cy="174" r="77" fill="#e5eae0" />
-          {Array.from({ length: 5 }, (_, i) => {
-            const a = (i * Math.PI * 2) / 5;
-            return (
-              <g>
-                <path
-                  d={`M148 174L${148 + Math.cos(a) * 77} ${174 + Math.sin(a) * 77}`}
-                  stroke="#4a5855"
-                  stroke-width="13"
-                />
-                <circle
-                  cx={148 + Math.cos(a) * 58}
-                  cy={174 + Math.sin(a) * 58}
-                  r="5"
-                  fill={`url(#metal-${slug})`}
-                  stroke="#718079"
-                />
-              </g>
-            );
-          })}
-          <>
-            <circle cx="148" cy="174" r="22" fill="#4d5b57" />
-            <circle cx="148" cy="174" r="10" fill={`url(#metal-${slug})`} />
-          </>
-          <path
-            d="M156 82 344 112a62 62 0 0 1 0 124l-188 30a93 93 0 1 1 0-184Z"
-            stroke="#7c8e86"
-            stroke-width="7"
-          />
-          <path
-            d="M156 82 344 112a62 62 0 0 1 0 124l-188 30a93 93 0 1 1 0-184Z"
-            stroke="#d6dfd5"
-            stroke-width="4"
-            stroke-dasharray="3 5"
-          />
-          <>
-            <path d="m148 174-71 90" stroke="#78827a" stroke-width="16" stroke-linecap="round" />
-            <path d="m148 174-71 90" stroke="#33413a" stroke-width="11" stroke-linecap="round" />
-          </>
-          <path d="m53 259 37 4-8 17-37-4z" fill="#425347" stroke="#99a894" />
-        </g>
-        <>
-          <path d="M322 76h37m-5-5 5 5-5 5" stroke="#7f9478" />
-          <text
-            x="300"
-            y="60"
-            fill="#8da17f"
-            font-size="9"
-            font-family="sans-serif"
-            letter-spacing="1"
+          <g
+            transform={`translate(${-chain.distance / 2},0) rotate(${(chain.alpha * 180) / Math.PI})`}
           >
-            POWER IN MOTION
-          </text>
-        </>
+            <path d="M0 0h-1.13" stroke="#354c42" stroke-width=".12" stroke-linecap="round" />
+            <rect x="-1.33" y="-.075" width=".4" height=".15" rx=".035" fill="#667970" />
+          </g>
+          <path
+            d={linkPaths.join(' ')}
+            stroke="#acbbb1"
+            stroke-width=".055"
+            stroke-linecap="round"
+          />
+          <path d={linkPaths[0]} stroke="#bf9559" stroke-width=".055" stroke-linecap="round" />
+          {points.map((p) => (
+            <circle cx={p.x} cy={p.y} r=".011" fill="#f0f4eb" />
+          ))}
+        </g>
       </>
     )
   }

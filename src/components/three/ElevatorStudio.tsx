@@ -15,9 +15,9 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
       cameraPosition={[8, 5, 12]}
       create={({ root }) => {
         const textures: THREE.Texture[] = [];
-        const concrete = material('#dadcd3', 0.07, 0.73),
-          metal = material('#a6ada6', 0.76, 0.29),
-          wall = material('#ecece5', 0.02, 0.69),
+        const concrete = material('#8d9b85', 0.07, 0.73),
+          metal = material('#839487', 0.76, 0.29),
+          wall = material('#b4c0ad', 0.02, 0.69),
           dark = material('#506356', 0.25, 0.45),
           amber = material('#b38f5c', 0.4, 0.35);
         box(root, [4.6, 0.18, 2.5], [0, 0.04, 0], concrete, 0.04);
@@ -43,14 +43,14 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
           canvas.width = 128;
           canvas.height = 64;
           const ctx = canvas.getContext('2d')!;
-          ctx.fillStyle = '#929d8a';
+          ctx.fillStyle = '#50694f';
           ctx.font = '500 40px sans-serif';
           ctx.textAlign = 'center';
           ctx.fillText(`${floor + 1}F`, 64, 46);
           const texture = new THREE.CanvasTexture(canvas);
           textures.push(texture);
           const label = new THREE.Mesh(
-            new THREE.PlaneGeometry(0.32, 0.16),
+            new THREE.PlaneGeometry(0.55, 0.275),
             new THREE.MeshBasicMaterial({ map: texture, transparent: true, depthWrite: false }),
           );
           label.position.set(-1.96, y + 0.42, 1.04);
@@ -73,7 +73,7 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
           doors: THREE.Mesh[][] = [];
         for (let id = 0; id < 2; id++) {
           const cabin = new THREE.Group();
-          cabin.position.x = 0.65 + id * 0.92;
+          cabin.position.set(0.65 + id * 0.92, 0.25 + current.current.cars[id].position * 0.75, 0);
           root.add(cabin);
           cabins.push(cabin);
           box(cabin, [0.71, 0.06, 1.34], [0, 0, 0], dark, 0.012);
@@ -87,7 +87,7 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
           ]);
         }
         const people = new Map<number, THREE.Group>(),
-          personMaterial = material('#9b815a', 0.04, 0.63);
+          personMaterial = material('#a57542', 0.04, 0.63);
         function person(id: number) {
           const p = new THREE.Group();
           root.add(p);
@@ -111,17 +111,23 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
           }
           return p;
         }
+        let lastTime = current.current.time;
+        const destinations = new Map<number, THREE.Vector3>();
         return {
           update(dt) {
             const s = current.current;
+            const reset = s.time < lastTime;
+            lastTime = s.time;
+            if (reset) destinations.clear();
             s.cars.forEach((car, i) => {
+              if (reset) cabins[i].position.y = 0.25 + car.position * 0.75;
               cabins[i].position.y = THREE.MathUtils.damp(
                 cabins[i].position.y,
                 0.25 + car.position * 0.75,
                 24,
                 dt,
               );
-              const open = car.door > 0 ? 0.95 : 0;
+              const open = car.door > 0 ? Math.min(1, (1.5 - car.door) / 0.3, car.door / 0.35) : 0;
               doors[i][0].position.x = THREE.MathUtils.damp(
                 doors[i][0].position.x,
                 -0.16 - open * 0.22,
@@ -138,10 +144,21 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
             people.forEach((p) => (p.visible = false));
             const counters = new Map<number, number>();
             s.requests.forEach((request) => {
-              if (request.status !== 'waiting' && request.status !== 'riding') return;
+              if (request.status === 'future') return;
+              if (request.status === 'done' && s.time - request.dropoff! > 1) return;
               const p = people.get(request.id) || person(request.id);
               p.visible = true;
-              if (request.status === 'waiting') {
+              if (request.status === 'done') {
+                const elapsed = Math.min(1, s.time - request.dropoff!);
+                const car = s.cars[request.car!];
+                p.position.set(
+                  0.65 + car.id * 0.92 - elapsed * 0.85,
+                  0.25 + request.to * 0.75,
+                  0.2 + elapsed * 0.7,
+                );
+                p.scale.setScalar(1.5 * (1 - elapsed * 0.65));
+              } else if (request.status === 'waiting') {
+                p.scale.setScalar(1.5);
                 const n = counters.get(request.from) || 0;
                 counters.set(request.from, n + 1);
                 p.position.set(
@@ -149,15 +166,25 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
                   0.25 + request.from * 0.75,
                   0.5 - Math.floor(n / 7) * 0.24,
                 );
+                destinations.set(request.id, p.position.clone());
               } else {
+                p.scale.setScalar(1.5);
                 const car = s.cars.find((c) => c.passengers.includes(request.id));
                 if (car) {
                   const n = car.passengers.indexOf(request.id);
                   p.position.set(
                     0.65 + car.id * 0.92 + ((n % 2) - 0.5) * 0.19,
-                    0.07 + cabins[car.id].position.y,
+                    0.03 + cabins[car.id].position.y,
                     0.2 - Math.floor(n / 2) * 0.25,
                   );
+                  const start = destinations.get(request.id),
+                    age = s.time - request.pickup!;
+                  if (start && age < 1) {
+                    const target = p.position.clone(),
+                      u = THREE.MathUtils.smoothstep(age, 0.2, 1);
+                    p.position.lerpVectors(start, target, u);
+                    p.position.z += Math.sin(u * Math.PI) * 0.6;
+                  }
                 }
               }
             });

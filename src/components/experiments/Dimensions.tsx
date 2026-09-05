@@ -1,13 +1,24 @@
 import { useCallback, useRef, useState } from 'react';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
 import { Metric, Range, Segments } from '../lab/Controls';
+import { useShowcase, ramp, ease } from '../lab/Showcase';
 import { hypercube, projectVertex, sphereSlice } from '../../models/dimensions';
 export default function Dimensions() {
-  const [mode, setMode] = useState<'projection' | 'slice' | 'features'>('projection'),
-    [dim, setDim] = useState(4),
-    [angle, setAngle] = useState(25),
+  const demo = useShowcase();
+  const [manualMode, setMode] = useState<'projection' | 'slice' | 'features'>('projection'),
+    [manualDim, setDim] = useState(4),
+    [manualAngle, setAngle] = useState(25),
     [slice, setSlice] = useState(0.3),
     [axis, setAxis] = useState('sugar');
+  const mode = demo.watch ? 'projection' : manualMode,
+    dim = demo.watch ? 4 : manualDim;
+  const angle = demo.watch ? Math.max(0, demo.time - 24) * 8 : manualAngle;
+  const unfold = [
+    1,
+    ease(ramp(demo.time, 1, 6)),
+    ease(ramp(demo.time, 7.5, 13)),
+    ease(ramp(demo.time, 15, 22)),
+  ];
   const line = useRef<THREE.LineSegments | null>(null),
     dots = useRef<THREE.Mesh[]>([]),
     beams = useRef<THREE.Mesh[]>([]),
@@ -116,7 +127,10 @@ export default function Dimensions() {
     }
     if (!line.current) return;
     const verts = graph.vertices.map((v) =>
-      projectVertex(v, dim === 4 ? (angle * Math.PI) / 180 : 0),
+      projectVertex(
+        demo.watch ? v.map((n, i) => n * unfold[i]) : v,
+        dim === 4 ? (angle * Math.PI) / 180 : 0,
+      ),
     );
     const positions = line.current.geometry.getAttribute('position');
     graph.edges.forEach(([a, b], i) => {
@@ -128,7 +142,12 @@ export default function Dimensions() {
       if (beam) {
         const direction = end.clone().sub(start);
         beam.position.copy(start).add(end).multiplyScalar(0.5);
+        beam.visible = direction.length() > 0.001;
         beam.scale.y = direction.length();
+        const axis = Math.round(Math.log2(a ^ b));
+        (beam.material as THREE.MeshStandardMaterial).color.set(
+          demo.watch && unfold[axis] < 1 ? 0xe4b977 : 0xb6c8f4,
+        );
         beam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
       }
     });
@@ -210,6 +229,12 @@ export default function Dimensions() {
             </svg>
           ) : (
             <div className="dimension-stage">
+              {demo.watch && (
+                <div className="dimension-count">
+                  {demo.time < 1 ? '1' : demo.time < 7.5 ? '2' : demo.time < 15 ? '3' : '4'}
+                  <small>维</small>
+                </div>
+              )}
               <SpatialCanvas
                 key={mode}
                 build={build}
@@ -243,11 +268,15 @@ export default function Dimensions() {
                     ) : (
                       graph.edges.map(([a, b], i) => {
                         const va = projectVertex(
-                            graph.vertices[a],
+                            demo.watch
+                              ? graph.vertices[a].map((n, i) => n * unfold[i])
+                              : graph.vertices[a],
                             dim === 4 ? (angle * Math.PI) / 180 : 0,
                           ),
                           vb = projectVertex(
-                            graph.vertices[b],
+                            demo.watch
+                              ? graph.vertices[b].map((n, i) => n * unfold[i])
+                              : graph.vertices[b],
                             dim === 4 ? (angle * Math.PI) / 180 : 0,
                           );
                         const p = (v: number[]) => [

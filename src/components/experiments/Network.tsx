@@ -2,20 +2,35 @@ import { useMemo, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { networkSteps } from '../../models/network';
+import { useShowcase, ramp } from '../lab/Showcase';
 import NetworkJourney from '../lab/NetworkJourney';
 export default function Network() {
-  const [rtt, setRtt] = useState(100),
-    [dns, setDns] = useState(false),
-    [warm, setWarm] = useState(false),
-    [cache, setCache] = useState(false),
-    [loss, setLoss] = useState(false),
+  const demo = useShowcase();
+  const [manualRtt, setRtt] = useState(100),
+    [manualDns, setDns] = useState(false),
+    [manualWarm, setWarm] = useState(false),
+    [manualCache, setCache] = useState(false),
+    [manualLoss, setLoss] = useState(false),
     [playing, setPlaying] = useState(false),
-    [elapsed, setElapsed] = useState(0);
+    [manualElapsed, setElapsed] = useState(0);
+  const rtt = demo.watch ? 100 : manualRtt,
+    loss = demo.watch ? false : manualLoss;
+  const dns = demo.watch ? demo.time >= 16 : manualDns,
+    warm = demo.watch ? demo.time >= 16 : manualWarm,
+    cache = demo.watch ? demo.time >= 23 : manualCache;
   const steps = useMemo(
     () => networkSteps(rtt, dns, warm, cache, loss),
     [rtt, dns, warm, cache, loss],
   );
   const total = steps.reduce((s, v) => s + v.duration, 0);
+  const elapsed = demo.watch
+    ? total *
+      (demo.time < 16
+        ? ramp(demo.time, 0.6, 13)
+        : demo.time < 23
+          ? ramp(demo.time, 16.5, 21)
+          : ramp(demo.time, 23.5, 25))
+    : manualElapsed;
   const host = useSimulation(
     (dt) =>
       setElapsed((t) => {
@@ -23,7 +38,7 @@ export default function Network() {
         if (next === total) setPlaying(false);
         return next;
       }),
-    playing,
+    playing && !demo.watch,
   );
   let cumulative = 0;
   const states = steps.map((s) => {

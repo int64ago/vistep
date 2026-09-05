@@ -1,15 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
+import { useShowcase, ramp, ease } from '../lab/Showcase';
 import { effectivePhase, residualAmplitude } from '../../models/noise';
 export default function Noise() {
-  const [frequency, setFrequency] = useState(160),
-    [amplitude, setAmplitude] = useState(1),
-    [phase, setPhase] = useState(180),
-    [delay, setDelay] = useState(0),
+  const demo = useShowcase();
+  const [manualFrequency, setFrequency] = useState(160),
+    [manualAmplitude, setAmplitude] = useState(1),
+    [manualPhase, setPhase] = useState(180),
+    [manualDelay, setDelay] = useState(0),
     [listening, setListening] = useState(false),
-    [animated, setAnimated] = useState(false),
+    [manualAnimated, setAnimated] = useState(false),
     [error, setError] = useState('');
+  const frequency = demo.watch ? 160 : manualFrequency;
+  const amplitude = demo.watch ? ease(ramp(demo.time, 6, 9)) : manualAmplitude;
+  const phase = demo.watch ? 180 * ease(ramp(demo.time, 13, 19)) : manualPhase;
+  const delay = demo.watch ? 2 * ease(ramp(demo.time, 22, 28)) : manualDelay;
+  const animated = demo.watch ? demo.playing : manualAnimated;
   const canvas = useRef<HTMLCanvasElement>(null),
     audio = useRef<{
       context: AudioContext;
@@ -44,8 +51,10 @@ export default function Noise() {
         fn: (a: number) => Math.sin(a) + amplitude * Math.sin(a + phi),
       },
     ];
+    const rowHeight = h / rows.length;
+    const scale = Math.min(26, rowHeight * 0.18);
     rows.forEach((row, j) => {
-      const y = 55 + j * 95;
+      const y = (j + 0.62) * rowHeight;
       ctx.strokeStyle = '#31414c';
       ctx.lineWidth = 1;
       ctx.beginPath();
@@ -54,11 +63,11 @@ export default function Noise() {
       ctx.stroke();
       ctx.fillStyle = '#819eac';
       ctx.font = '12px sans-serif';
-      ctx.fillText(row.name, 5, y - 32);
+      ctx.fillText(row.name, 5, j * rowHeight + 14);
       ctx.beginPath();
       for (let x = 0; x < w; x++) {
-        const a = (x / w) * 6 * Math.PI + time.current,
-          yy = y - row.fn(a) * 26;
+        const a = (x / w) * frequency * Math.PI * 2 * 0.02 + time.current,
+          yy = y - row.fn(a) * scale;
         x ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy);
       }
       ctx.strokeStyle = row.color;
@@ -70,6 +79,10 @@ export default function Noise() {
     if (animated) time.current += dt * 1.5;
     draw();
   }, true);
+  useEffect(() => {
+    time.current = 0;
+    draw();
+  }, [demo.run, demo.watch]);
   useEffect(draw, [frequency, amplitude, phase, delay]);
   useEffect(() => {
     const a = audio.current;
@@ -186,7 +199,13 @@ export default function Noise() {
           <div className="wave-status">
             <span>同频率 · 单点处的声压叠加</span>
             <span>
-              {residual < 0.001 ? '理想相消' : residual > 1 ? '此时反而更响' : '声压减小了'}
+              {residual < 0.001
+                ? '理想相消'
+                : Math.abs(residual - 1) < 0.001
+                  ? '声压保持不变'
+                  : residual > 1
+                    ? '此时反而更响'
+                    : '声压减小了'}
             </span>
           </div>
           {error && (

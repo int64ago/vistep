@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { softEase } from './motion';
+import { useShowcase } from '../lab/Showcase';
 
 export type StudioContext = {
   scene: THREE.Scene;
@@ -36,14 +37,18 @@ export default function Studio({
   span?: number;
   fitHeight?: number;
 }) {
+  const film = useShowcase(),
+    filmRef = useRef(film);
+  filmRef.current = film;
   const host = useRef<HTMLDivElement>(null);
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = useState(false),
+    [flat, setFlat] = useState(false);
   const createRef = useRef(create);
   createRef.current = create;
   const initial = useRef({ cameraPosition, target, span, fitHeight });
   useEffect(() => {
     const el = host.current;
-    if (!el) return;
+    if (!el || failed || flat) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let renderer: THREE.WebGLRenderer;
     try {
@@ -82,6 +87,8 @@ export default function Studio({
     controls.rotateSpeed = 0.55;
     controls.enablePan = false;
     controls.enableZoom = false;
+    controls.enabled = !filmRef.current.watch;
+    let wasWatching = filmRef.current.watch;
     controls.minPolarAngle = Math.PI * 0.13;
     controls.maxPolarAngle = Math.PI * 0.48;
     controls.update();
@@ -158,11 +165,21 @@ export default function Studio({
         previous = 0;
         return;
       }
-      if (previous && time - previous < frameBudget - 1) return;
+      if (
+        previous &&
+        time - previous <
+          (filmRef.current.watch && !filmRef.current.playing ? 250 : frameBudget - 1)
+      )
+        return;
       const dt = previous ? Math.min((time - previous) / 1000, 0.04) : 0;
       previous = time;
-      elapsed += dt;
-      object.update?.(dt, elapsed);
+      const sceneDt = filmRef.current.watch && !filmRef.current.playing ? 0 : dt;
+      elapsed += sceneDt;
+      if (wasWatching !== filmRef.current.watch) {
+        wasWatching = filmRef.current.watch;
+        controls.enabled = !wasWatching;
+      }
+      object.update?.(sceneDt, elapsed);
       if (keyElapsed < 1) {
         keyElapsed = Math.min(1, keyElapsed + dt / 0.38);
         const amount = reducedMotion.matches ? 1 : softEase(keyElapsed);
@@ -181,6 +198,7 @@ export default function Studio({
     };
     animation = requestAnimationFrame(tick);
     const keys = (event: KeyboardEvent) => {
+      if (filmRef.current.watch) return;
       if (!event.key.startsWith('Arrow')) return;
       event.preventDefault();
       keyFrom.setFromVector3(keyOffset.copy(camera.position).sub(controls.target));
@@ -214,6 +232,7 @@ export default function Studio({
       const materials = new Set<THREE.Material>(),
         geometries = new Set<THREE.BufferGeometry>();
       scene.traverse((object) => {
+        if (object instanceof THREE.InstancedMesh) object.dispose();
         if (
           object instanceof THREE.Mesh ||
           object instanceof THREE.Line ||
@@ -232,21 +251,29 @@ export default function Studio({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [dark]);
+  }, [dark, failed, flat]);
   return (
     <div className={`studio ${className}`}>
       <div
         className="studio-canvas"
         ref={host}
         role="img"
-        aria-label={`${label}。拖动或用方向键旋转。`}
-        tabIndex={failed ? -1 : 0}
-        style={{ display: failed ? 'none' : undefined }}
+        aria-label={film.watch ? label : `${label}。拖动或用方向键旋转。`}
+        tabIndex={failed || flat || film.watch ? -1 : 0}
+        style={{
+          display: failed || flat ? 'none' : undefined,
+          touchAction: film.watch ? 'pan-y' : undefined,
+        }}
       />
-      {failed && (
+      {(failed || flat) && (
         <div className="studio-fallback">
           {fallback || <p>三维视图暂不可用，下方仍可逐步探索原理。</p>}
         </div>
+      )}
+      {!failed && !film.watch && film.duration > 1 && fallback && (
+        <button className="btn studio-mode" aria-pressed={flat} onClick={() => setFlat(!flat)}>
+          {flat ? '返回三维' : '二维剖面'}
+        </button>
       )}
     </div>
   );

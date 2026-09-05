@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Range, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import PrinterStudio from '../three/PrinterStudio';
+import { useShowcase } from '../lab/Showcase';
 const stages = ['充电', '曝光', '显影', '转印', '定影', '清洁'];
 const stageEnglish = ['CHARGE', 'EXPOSE', 'DEVELOP', 'TRANSFER', 'FUSE', 'CLEAN'];
 const headlines = [
@@ -120,13 +121,21 @@ function MicroView({ stage }: { stage: number }) {
   );
 }
 export default function Printer() {
-  const [progress, setProgress] = useState(0),
-    [playing, setPlaying] = useState(false),
-    [pattern, setPattern] = useState('heart'),
-    [selected, setSelected] = useState(11),
-    [exploded, setExploded] = useState(true),
-    [view, setView] = useState<'perspective' | 'top'>('perspective'),
-    [focus, setFocus] = useState(false);
+  const demo = useShowcase();
+  const [manualProgress, setProgress] = useState(0),
+    [manualPlaying, setPlaying] = useState(false),
+    [manualPattern, setPattern] = useState('heart'),
+    [manualSelected, setSelected] = useState(11),
+    [manualExploded, setExploded] = useState(true),
+    [manualView, setView] = useState<'perspective' | 'top'>('perspective'),
+    [manualFocus, setFocus] = useState(false);
+  const pattern = demo.watch ? 'heart' : manualPattern,
+    selected = demo.watch ? 11 : manualSelected;
+  const progress = demo.watch ? Math.max(0, Math.min(5.99, (demo.time - 4) / 5)) : manualProgress;
+  const playing = demo.watch ? demo.playing : manualPlaying;
+  const exploded = demo.watch ? demo.time > 1.8 : manualExploded;
+  const view = demo.watch ? (demo.time >= 9 && demo.time < 14 ? 'top' : 'perspective') : manualView;
+  const focus = demo.watch ? demo.time >= 9 && demo.time < 19 : manualFocus;
   const host = useSimulation(
     (dt) =>
       setProgress((previous) => {
@@ -136,7 +145,7 @@ export default function Printer() {
         }
         return previous + dt * 0.32;
       }),
-    playing,
+    playing && !demo.watch,
   );
   const stage = Math.min(5, Math.floor(progress)),
     bits = patterns[pattern].join('').split('');

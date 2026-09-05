@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
+import RefrigeratorFlat from './RefrigeratorFlat';
 import { box, roller, tube, material, screw } from './parts';
 import { fadingCover, scalarTransition } from './motion';
 export default function RefrigeratorStudio({
@@ -78,18 +79,15 @@ export default function RefrigeratorStudio({
         }
         for (let i = 0; i < 18; i++)
           box(root, [0.018, 3.0, 0.034], [1.02 + i * 0.095, 3.23, -0.2], metal, 0);
-        tube(root, coils, 0.032, hot);
         const evaporator: number[][] = [];
         for (let row = 0; row < 5; row++) {
           const y = 4.64 - row * 0.18;
           evaporator.push([row % 2 ? -2.47 : -0.78, y, -0.78], [row % 2 ? -0.78 : -2.47, y, -0.78]);
         }
-        tube(root, evaporator, 0.032, cold);
         const capillary = Array.from({ length: 120 }, (_, i) => {
           const a = (i / 120) * Math.PI * 2 * 8;
           return [2.45 + Math.cos(a) * 0.17, 1.44 - (i / 120) * 0.65, Math.sin(a) * 0.17];
         });
-        tube(root, capillary, 0.013, hot);
         const segments = [
           [[0.2, 0.92, 0], [0.5, 1.22, -0.18], [0.5, 4.7, -0.18], ...coils.slice(0, 1)],
           coils,
@@ -114,7 +112,7 @@ export default function RefrigeratorStudio({
             false,
             'centripetal',
           );
-          if (i !== 1) tube(root, p, i === 2 ? 0.018 : 0.033, i < 2 ? hot : cold);
+          tube(root, p, i === 2 ? 0.018 : 0.033, i < 2 ? hot : cold);
           return curve;
         });
         const particleMaterial = new THREE.MeshBasicMaterial({ color: '#ffe3b5' }),
@@ -147,10 +145,9 @@ export default function RefrigeratorStudio({
             door.rotation.y = -openness * 1.92;
             doorCover.opacity(1 - THREE.MathUtils.smoothstep(openness, 0.45, 0.98));
             sideCover.opacity(1 - THREE.MathUtils.smoothstep(openness, 0.15, 0.92));
-            const active = Math.min(3, Math.floor(s.phase)),
-              t = s.phase % 1;
             particles.forEach((p, i) => {
-              p.position.copy(curves[active].getPointAt((t + i / particles.length) % 1));
+              const progress = (s.phase + (i * 4) / particles.length) % 4;
+              p.position.copy(curves[Math.floor(progress)].getPointAt(progress % 1));
               p.material = particleMaterial;
             });
           },
@@ -160,30 +157,7 @@ export default function RefrigeratorStudio({
           },
         };
       }}
-      fallback={
-        <svg viewBox="0 0 550 390" aria-label="四阶段制冷循环二维图">
-          <rect x="30" y="40" width="155" height="300" rx="10" fill="#e1eee8" />
-          <path
-            d="M275 295V70H445V300H105V130H155V295H275"
-            stroke="#c49b76"
-            strokeWidth="6"
-            fill="none"
-          />
-          <path d="M445 300H105V130H155V295H275" stroke="#74a8b6" strokeWidth="4" fill="none" />
-          <rect x="244" y="277" width="64" height="39" rx="17" fill="#486663" />
-          <g fill="#71937e" fontSize="13">
-            <text x="60" y="95">
-              箱内吸热
-            </text>
-            <text x="300" y="50">
-              向室内放热
-            </text>
-            <text x="260" y="340">
-              压缩机
-            </text>
-          </g>
-        </svg>
-      }
+      fallback={<RefrigeratorFlat phase={phase} />}
     />
   );
 }

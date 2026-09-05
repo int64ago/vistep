@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PrinterStudio from './three/PrinterStudio';
+import { useSimulation } from './lab/useSimulation';
+import { FilmContext } from './lab/Showcase';
 const heart = [
   '01100110',
   '11111111',
@@ -11,42 +13,60 @@ const heart = [
   '00000000',
 ];
 export default function HomeObject() {
-  const [open, setOpen] = useState(true);
+  const [time, setTime] = useState(0),
+    [playing, setPlaying] = useState(false);
+  const host = useSimulation((dt) => setTime((t) => (t + dt) % 37), playing);
+  useEffect(() => {
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    setPlaying(!media.matches);
+    const change = () => {
+      if (media.matches) setPlaying(false);
+    };
+    media.addEventListener('change', change);
+    return () => media.removeEventListener('change', change);
+  }, []);
+  const open = time > 1.8 && time < 33;
   return (
-    <div className="home-object">
-      <div className="object-overline">
-        <span>
-          <i /> INTERACTIVE OBJECT 003
-        </span>
-        <span>LASER PRINTER</span>
+    <FilmContext.Provider value={{ watch: true, playing, time, chapter: 0, run: 0, duration: 37 }}>
+      <div className="home-object" ref={host}>
+        <div className="object-overline">
+          <span>
+            <i /> INSIDE THE EVERYDAY
+          </span>
+          <span>LASER PRINTER</span>
+        </div>
+        <PrinterStudio
+          progress={Math.max(0, Math.min(5.99, (time - 4) / 5))}
+          exploded={open}
+          pattern={heart}
+          selected={11}
+          charges={false}
+          view="perspective"
+        />
+        <div className="object-caption">
+          <span>
+            熟悉的外表，
+            <br />
+            <b>意想不到的内部。</b>
+          </span>
+          <button
+            className="object-toggle"
+            onClick={() => setPlaying(!playing)}
+            aria-label={playing ? '暂停首页演示' : '播放首页演示'}
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d={playing ? 'M8 6v12M16 6v12' : 'm9 6 9 6-9 6Z'}
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinejoin="round"
+              />
+            </svg>
+            {playing ? '暂停' : '播放'}
+          </button>
+        </div>
+        <span className="object-hint">一束光，一张纸，一步一步看见。</span>
       </div>
-      <PrinterStudio
-        progress={2.4}
-        exploded={open}
-        pattern={heart}
-        selected={11}
-        charges={false}
-        view="perspective"
-      />
-      <div className="object-caption">
-        <span>
-          熟悉的外表，
-          <br />
-          <b>意想不到的内部。</b>
-        </span>
-        <button className="object-toggle" onClick={() => setOpen(!open)} aria-pressed={open}>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinejoin="round"
-            />
-          </svg>
-          {open ? '合上外壳' : '打开外壳'}
-        </button>
-      </div>
-      <span className="object-hint">拖动，换个角度看</span>
-    </div>
+    </FilmContext.Provider>
   );
 }

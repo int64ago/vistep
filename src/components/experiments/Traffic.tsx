@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
+import { useShowcase } from '../lab/Showcase';
 import { newTraffic, stepTraffic, defaultTraffic, type Vehicle } from '../../models/traffic';
 export default function Traffic() {
-  const [count, setCount] = useState(30),
-    [headway, setHeadway] = useState(1.2),
-    [desired, setDesired] = useState(22),
-    [playing, setPlaying] = useState(false),
+  const demo = useShowcase(),
+    braked = useRef(false),
+    fixed = useRef(0);
+  const [manualCount, setCount] = useState(36),
+    [manualHeadway, setHeadway] = useState(1.2),
+    [manualDesired, setDesired] = useState(22),
+    [manualPlaying, setPlaying] = useState(false),
     [selected, setSelected] = useState(0),
     [stats, setStats] = useState({ average: 0, slow: 0, time: 0 });
+  const count = demo.watch ? 36 : manualCount,
+    headway = demo.watch ? 1.2 : manualHeadway,
+    desired = demo.watch ? 22 : manualDesired;
+  const playing = demo.watch ? demo.playing : manualPlaying;
   const params = { ...defaultTraffic, headway, desiredSpeed: desired },
     cars = useRef<Vehicle[]>(newTraffic(count, params)),
     canvas = useRef<HTMLCanvasElement>(null),
@@ -31,14 +39,14 @@ export default function Traffic() {
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
-    const rx = w * 0.36,
-      ry = h * 0.3,
+    const rx = w * 0.4,
+      ry = h * 0.36,
       cx = w * 0.5,
       cy = h * 0.53;
     ctx.beginPath();
     ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
     ctx.strokeStyle = '#33465d';
-    ctx.lineWidth = 33;
+    ctx.lineWidth = w < 500 ? 15 : 25;
     ctx.stroke();
     ctx.setLineDash([7, 10]);
     ctx.strokeStyle = '#63738a';
@@ -52,26 +60,40 @@ export default function Traffic() {
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(Math.atan2(ry * Math.cos(a), -rx * Math.sin(a)));
-      ctx.fillStyle = color(c.speed);
+      const pixelsPerMetre =
+        (Math.hypot(rx * Math.sin(a), ry * Math.cos(a)) * Math.PI * 2) / params.length;
+      const length = 4.5 * pixelsPerMetre,
+        width = Math.max(2.8, length * 0.48);
+      ctx.fillStyle = i === selected ? '#e8bd78' : color(c.speed);
       ctx.beginPath();
-      ctx.roundRect(-9, -4.5, 18, 9, 3);
+      ctx.roundRect(-length / 2, -width / 2, length, width, Math.min(2, width * 0.3));
       ctx.fill();
       if (i === selected) {
         ctx.strokeStyle = '#f7e8bf';
-        ctx.lineWidth = 1.7;
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
       ctx.fillStyle = '#12203380';
-      ctx.fillRect(0, -3, 4, 6);
+      ctx.fillRect(length * 0.1, -width * 0.32, length * 0.22, width * 0.64);
       ctx.restore();
     });
     ctx.textAlign = 'center';
     ctx.fillStyle = '#d8e4f4';
     ctx.font = '500 24px sans-serif';
-    ctx.fillText('一个小扰动', cx, cy - 5);
+    ctx.fillText(
+      demo.watch
+        ? demo.time < 6
+          ? '匀速前进'
+          : demo.time < 12
+            ? '一次轻刹'
+            : '减速波向后'
+        : '一个小扰动',
+      cx,
+      cy - 5,
+    );
     ctx.font = '12px sans-serif';
     ctx.fillStyle = '#8098b8';
-    ctx.fillText('会在哪里停下来？', cx, cy + 20);
+    ctx.fillText(demo.watch ? '车辆向前 →' : '会在哪里停下来？', cx, cy + 20);
     ctx.textAlign = 'left';
     ctx.font = '11px monospace';
     ctx.fillText('RING ROAD / 500 m', 20, 29);
@@ -96,8 +118,16 @@ export default function Traffic() {
   };
   const host = useSimulation((dt) => {
     if (playing) {
-      stepTraffic(cars.current, dt * 4, params);
-      clock.current += dt * 4;
+      if (demo.watch && demo.time >= 6 && !braked.current) {
+        cars.current[0].brake = 1.5;
+        braked.current = true;
+      }
+      fixed.current += dt * 4;
+      while (fixed.current >= 1 / 60) {
+        stepTraffic(cars.current, 1 / 60, params);
+        clock.current += 1 / 60;
+        fixed.current -= 1 / 60;
+      }
       refresh.current += dt;
       if (refresh.current > 0.075) {
         refresh.current = 0;
@@ -115,6 +145,8 @@ export default function Traffic() {
   const reset = (n = count, h = headway, v = desired) => {
     cars.current = newTraffic(n, { ...defaultTraffic, headway: h, desiredSpeed: v });
     clock.current = 0;
+    fixed.current = 0;
+    braked.current = false;
     history.current = [];
     setSelected(0);
     setStats({ average: cars.current[0].speed, slow: 0, time: 0 });
@@ -122,19 +154,20 @@ export default function Traffic() {
   };
   useEffect(() => {
     reset();
-  }, []);
+  }, [demo.run, demo.watch]);
   const brake = () => {
     cars.current[selected].brake = 1.5;
     setPlaying(true);
   };
   const pick = (e: PointerEvent<HTMLCanvasElement>) => {
+    if (demo.watch) return;
     const rect = e.currentTarget.getBoundingClientRect(),
       x =
         (e.clientX - rect.left - e.currentTarget.clientWidth * 0.5) /
-        (e.currentTarget.clientWidth * 0.36),
+        (e.currentTarget.clientWidth * 0.4),
       y =
         (e.clientY - rect.top - e.currentTarget.clientHeight * 0.53) /
-        (e.currentTarget.clientHeight * 0.3);
+        (e.currentTarget.clientHeight * 0.36);
     let a = Math.atan2(y, x);
     if (a < 0) a += Math.PI * 2;
     const pos = (a / (Math.PI * 2)) * 500;

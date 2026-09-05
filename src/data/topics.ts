@@ -25,7 +25,13 @@ export const topics: Topic[] = [
     number: '01',
     tag: '转动 · 传动比',
     related: ['pendulum', 'traffic'],
-    sources: [{ title: 'Bartosz Ciechanowski · Bicycle', url: 'https://ciechanow.ski/bicycle/' }],
+    sources: [
+      { title: 'Bartosz Ciechanowski · Bicycle', url: 'https://ciechanow.ski/bicycle/' },
+      {
+        title: 'Renold · Tooth Chain Drives',
+        url: 'https://www.renoldtoothchain.com/media/677689/Drive_Tooth_Chain_EN_0405.pdf',
+      },
+    ],
   },
   {
     slug: 'refrigerator',
@@ -62,6 +68,10 @@ export const topics: Topic[] = [
       {
         title: 'Canon · Laser Printers and MFPs',
         url: 'https://global.canon/en/technology/canon-tech/tech/laser-printer/',
+      },
+      {
+        title: 'KHK · Calculation of Gear Dimensions',
+        url: 'https://khkgears.net/gear-knowledge/gear-technical-reference/calculation-gear-dimensions/',
       },
     ],
   },

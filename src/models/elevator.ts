@@ -158,7 +158,7 @@ export function compareElevators(requests: Request[]) {
   return (['fcfs', 'nearest', 'collective'] as Strategy[]).map((strategy) => {
     const s = newElevatorState(requests);
     while (s.time < 1800 && s.requests.some((r) => r.status !== 'done'))
-      stepElevators(s, 0.1, strategy);
+      stepElevators(s, 1 / 60, strategy);
     return {
       strategy,
       ...elevatorStats(s),

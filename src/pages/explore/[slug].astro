@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Experiment from '../../components/Experiment';
 import { topics, getTopic } from '../../data/topics';
 import '../../styles/experiments.css';
+import { films } from '../../data/films';
 export async function getStaticPaths() {
   const modules = import.meta.glob<{ Content: any }>('../../content/*.mdx');
   return Promise.all(
@@ -25,8 +26,17 @@ const { topic, Content } = Astro.props;
       <div>
         <div class="lesson-kicker">
           <span class="mono">EXPLORATION {topic.number}</span><span>·</span><span>{topic.tag}</span>
-        </div><h1>{topic.title}</h1><p>{topic.description}</p>
-      </div><span class="lesson-time">◷ {topic.duration} · 可深入探索</span>
+        </div><h1>
+          {
+            topic.title.split('，').map((phrase, i, parts) => (
+              <span class="title-phrase">
+                {phrase}
+                {i === parts.length - 1 ? '' : '，'}
+              </span>
+            ))
+          }
+        </h1><p>{topic.description}</p>
+      </div><span class="lesson-time">{films[topic.slug].duration} 秒演示</span>
     </header>
     <section class="experiment" id="experiment" aria-label={`${topic.name}互动实验`}>
       <Experiment slug={topic.slug as any} client:load /><noscript
@@ -35,25 +45,31 @@ const { topic, Content } = Astro.props;
         </div></noscript
       >
     </section>
-    <div class="lesson-reading">
-      <aside class="reading-nav" aria-label="专题目录">
-        <b>沿着好奇心往下走</b><a href="#experiment">↑ 回到实验</a><a href="#understand"
-          >从现象到原理</a
-        ><a href="#try">再试一个问题</a><a href="#deeper">深入一点</a><a href="#sources"
-          >资料与来源</a
-        >
-      </aside><article class="prose">
-        <Content /><section class="source-box" id="sources">
-          <h3>继续阅读 · 资料与来源</h3>{
-            topic.sources.map((source) => (
-              <a href={source.url} target="_blank" rel="noopener noreferrer">
-                {source.title} ↗
-              </a>
-            ))
-          }
-        </section>
-      </article>
-    </div>
+    <details class="lesson-notes">
+      <summary
+        ><span>深入了解</span><span>模型、公式与资料来源 <i aria-hidden="true">＋</i></span
+        ></summary
+      >
+      <div class="lesson-reading">
+        <aside class="reading-nav" aria-label="专题目录">
+          <b>沿着好奇心往下走</b><a href="#experiment">↑ 回到实验</a><a href="#understand"
+            >从现象到原理</a
+          ><a href="#try">再试一个问题</a><a href="#deeper">深入一点</a><a href="#sources"
+            >资料与来源</a
+          >
+        </aside><article class="prose">
+          <Content /><section class="source-box" id="sources">
+            <h3>继续阅读 · 资料与来源</h3>{
+              topic.sources.map((source) => (
+                <a href={source.url} target="_blank" rel="noopener noreferrer">
+                  {source.title} ↗
+                </a>
+              ))
+            }
+          </section>
+        </article>
+      </div>
+    </details>
     <section class="related-section">
       <h2>这份好奇心，还可以去哪里？</h2><div class="related-grid">
         {
@@ -65,7 +81,7 @@ const { topic, Content } = Astro.props;
                   <div>
                     <>
                       <small>
-                        {related.category} / {related.duration}
+                        {related.category} / {films[slug].duration} 秒演示
                       </small>
                       <strong>{related.question}</strong>
                     </>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import * as THREE from 'three';
+import { useShowcase } from './Showcase';
 export { THREE };
 export type SpatialContext = {
   scene: THREE.Scene;
@@ -24,6 +25,9 @@ export default function SpatialCanvas({
   fitWidth?: number;
   fitHeight?: number;
 }) {
+  const demo = useShowcase(),
+    director = useRef(demo);
+  director.current = demo;
   const host = useRef<HTMLDivElement>(null),
     frameRef = useRef(frame),
     [failed, setFailed] = useState(false),
@@ -94,12 +98,17 @@ export default function SpatialCanvas({
     const tick = (t: number) => {
       if (visible && !document.hidden) {
         const dt = last ? Math.min(0.04, (t - last) / 1000) : 0;
-        group.rotation.x = reducedMotion.matches
-          ? targetX
-          : THREE.MathUtils.damp(group.rotation.x, targetX, 18, dt);
-        group.rotation.y = reducedMotion.matches
-          ? targetY
-          : THREE.MathUtils.damp(group.rotation.y, targetY, 18, dt);
+        if (!director.current.watch) {
+          group.rotation.x = reducedMotion.matches
+            ? targetX
+            : THREE.MathUtils.damp(group.rotation.x, targetX, 18, dt);
+          group.rotation.y = reducedMotion.matches
+            ? targetY
+            : THREE.MathUtils.damp(group.rotation.y, targetY, 18, dt);
+        } else {
+          targetX = group.rotation.x;
+          targetY = group.rotation.y;
+        }
         frameRef.current?.(context, dt);
         renderer!.render(scene, camera);
       }
@@ -108,6 +117,7 @@ export default function SpatialCanvas({
     };
     id = requestAnimationFrame(tick);
     const onDown = (e: PointerEvent) => {
+      if (director.current.watch) return;
       down = true;
       px = e.clientX;
       py = e.clientY;
@@ -124,7 +134,7 @@ export default function SpatialCanvas({
       down = false;
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key.startsWith('Arrow')) {
+      if (!director.current.watch && e.key.startsWith('Arrow')) {
         e.preventDefault();
         targetY += e.key === 'ArrowLeft' ? -0.12 : e.key === 'ArrowRight' ? 0.12 : 0;
         targetX = Math.max(
@@ -170,13 +180,13 @@ export default function SpatialCanvas({
     <div className="canvas-host" style={{ height: '100%', position: 'relative' }}>
       <div
         ref={host}
-        tabIndex={0}
+        tabIndex={demo.watch ? -1 : 0}
         role="img"
-        aria-label={label + '；拖动或使用方向键旋转'}
+        aria-label={demo.watch ? label : label + '；拖动或使用方向键旋转'}
         style={{
           position: 'absolute',
           inset: 0,
-          touchAction: 'none',
+          touchAction: demo.watch ? 'pan-y' : 'none',
           display: failed || flat ? 'none' : undefined,
         }}
       />

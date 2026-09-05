@@ -1,8 +1,205 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
-import { box, roller, gear, material } from './parts';
+import { box, roller, material } from './parts';
+import { useSimulation } from '../lab/useSimulation';
+import { chainLoop, TAU, sprocketOutline } from '../../models/mechanisms';
+
 export default function BicycleStudio({
+  front,
+  rear,
+  cadence,
+  playing,
+  closeup = false,
+}: {
+  front: number;
+  rear: number;
+  cadence: number;
+  playing: boolean;
+  closeup?: boolean;
+}) {
+  const state = useRef({ front, rear, cadence, playing, closeup });
+  state.current = { front, rear, cadence, playing, closeup };
+  return (
+    <Studio
+      key={`${front}-${rear}`}
+      span={6.2}
+      fitHeight={3.3}
+      target={[0, 1.4, 0]}
+      cameraPosition={[1.3, 2.8, 11]}
+      label="闭合滚子链传动：链销、内外链板、齿槽、轴承与曲柄"
+      create={({ root, camera, controls }) => {
+        root.position.y = 1.5;
+        const chain = chainLoop(front, rear),
+          metal = material('#b4bec2', 0.88, 0.29),
+          dark = material('#3b4448', 0.72, 0.38),
+          black = material('#243136', 0.25, 0.6),
+          brass = material('#b5a77e', 0.8, 0.34);
+        function sprocket(teeth: number, r: number, x: number, mat: THREE.Material) {
+          const group = new THREE.Group();
+          group.position.x = x;
+          root.add(group);
+          const shape = new THREE.Shape();
+          sprocketOutline(teeth, chain.pitch).forEach((p, i) =>
+            i ? shape.lineTo(p.x, p.y) : shape.moveTo(p.x, p.y),
+          );
+          shape.closePath();
+          const hole = new THREE.Path();
+          hole.absarc(0, 0, r * 0.77, 0, TAU, true);
+          shape.holes.push(hole);
+          const ring = new THREE.Mesh(
+            new THREE.ExtrudeGeometry(shape, {
+              depth: 0.034,
+              bevelEnabled: true,
+              bevelSize: 0.002,
+              bevelThickness: 0.002,
+              bevelSegments: 2,
+              steps: 1,
+            }),
+            mat,
+          );
+          ring.position.z = -0.017;
+          ring.castShadow = true;
+          ring.receiveShadow = true;
+          group.add(ring);
+          for (let i = 0; i < 5; i++) {
+            const a = (i * TAU) / 5;
+            const arm = box(
+              group,
+              [r * 0.69, 0.085, 0.036],
+              [Math.cos(a) * r * 0.45, Math.sin(a) * r * 0.45, 0],
+              mat,
+              0.016,
+            );
+            arm.rotation.z = a;
+            roller(group, 0.035, 0.055, [Math.cos(a) * r * 0.58, Math.sin(a) * r * 0.58, 0], metal);
+          }
+          roller(group, r * 0.19, 0.16, [0, 0, -0.01], dark);
+          return group;
+        }
+        const frontGroup = sprocket(front, chain.ra, -chain.distance / 2, dark);
+        const rearGroup = sprocket(rear, chain.rb, chain.distance / 2, brass);
+        // The chain sits between the two crank planes, with visible clearance.
+        box(frontGroup, [1.2, 0.16, 0.12], [-0.56, 0, 0.23], black, 0.05);
+        const pedal = new THREE.Group();
+        pedal.position.set(-1.13, 0, 0.28);
+        frontGroup.add(pedal);
+        box(pedal, [0.4, 0.13, 0.48], [0, 0, 0], dark, 0.035);
+        for (let i = 0; i < 5; i++)
+          box(pedal, [0.02, 0.012, 0.38], [-0.15 + i * 0.075, 0.073, 0], metal, 0.004);
+        roller(frontGroup, 0.048, 0.18, [-1.13, 0, 0.18], metal);
+        box(frontGroup, [1.2, 0.14, 0.1], [0.56, 0, -0.38], dark, 0.045);
+        const farPedal = new THREE.Group();
+        farPedal.position.set(1.13, 0, -0.46);
+        frontGroup.add(farPedal);
+        box(farPedal, [0.4, 0.13, 0.48], [0, 0, 0], dark, 0.035);
+        for (const x of [-chain.distance / 2, chain.distance / 2]) {
+          roller(root, 0.09, 0.9, [x, 0, -0.3], metal);
+          roller(root, 0.17, 0.2, [x, 0, -0.45], dark);
+          box(root, [0.3, 1.22, 0.23], [x, -0.78, -0.45], metal, 0.025);
+          box(root, [0.77, 0.12, 0.73], [x, -1.44, -0.43], black, 0.035);
+          for (const dx of [-0.27, 0.27])
+            roller(root, 0.03, 0.027, [x + dx, -1.37, -0.43], metal).rotation.x = Math.PI / 2;
+        }
+        const shape = new THREE.Shape(),
+          half = chain.pitch / 2,
+          radius = 0.027;
+        shape.moveTo(-half, -radius);
+        shape.lineTo(half, -radius);
+        shape.absarc(half, 0, radius, -Math.PI / 2, Math.PI / 2, false);
+        shape.lineTo(-half, radius);
+        shape.absarc(-half, 0, radius, Math.PI / 2, Math.PI * 1.5, false);
+        const plateGeometry = new THREE.ExtrudeGeometry(shape, {
+          depth: 0.014,
+          bevelEnabled: true,
+          bevelSize: 0.002,
+          bevelThickness: 0.002,
+          bevelSegments: 2,
+          steps: 1,
+        });
+        plateGeometry.translate(0, 0, -0.007);
+        const plates = new THREE.InstancedMesh(
+          plateGeometry,
+          material('#ffffff', 0.85, 0.33),
+          chain.count * 2,
+        );
+        const rollerGeometry = new THREE.CylinderGeometry(0.025, 0.025, 0.074, 16);
+        rollerGeometry.rotateX(Math.PI / 2);
+        const rollers = new THREE.InstancedMesh(rollerGeometry, dark, chain.count);
+        const pinGeometry = new THREE.CylinderGeometry(0.0135, 0.0135, 0.166, 12);
+        pinGeometry.rotateX(Math.PI / 2);
+        const pins = new THREE.InstancedMesh(pinGeometry, metal, chain.count);
+        for (const mesh of [plates, rollers, pins]) {
+          mesh.castShadow = true;
+          mesh.receiveShadow = true;
+          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+          root.add(mesh);
+          mesh.frustumCulled = false;
+        }
+        for (let i = 0; i < chain.count * 2; i++)
+          plates.setColorAt(i, new THREE.Color(i < 2 ? '#bd8e51' : '#aebcc2'));
+        const dummy = new THREE.Object3D();
+        let phase = 0;
+        let overview: THREE.Vector3 | null = null;
+        const originalTarget = controls.target.clone(),
+          closeTarget = new THREE.Vector3(chain.distance / 2, 1.5, 0);
+        return {
+          update(dt) {
+            if (!overview) overview = camera.position.clone();
+            const target = state.current.closeup ? closeTarget : originalTarget;
+            const destination = state.current.closeup
+              ? closeTarget
+                  .clone()
+                  .add(
+                    new THREE.Vector3(0.25, 0.4, 1)
+                      .normalize()
+                      .multiplyScalar(Math.max(2.4, 2.4 / camera.aspect)),
+                  )
+              : overview;
+            if (!controls.enabled) {
+              camera.position.lerp(destination, 1 - Math.exp(-dt * 3));
+              controls.target.lerp(target, 1 - Math.exp(-dt * 3));
+            }
+            if (state.current.playing)
+              phase = (phase + (dt * state.current.cadence * front) / 60) % chain.count;
+            frontGroup.rotation.z = chain.alpha - (phase * TAU) / front;
+            rearGroup.rotation.z = chain.alpha + ((chain.lengths[0] - phase) * TAU) / rear;
+            pedal.rotation.z = farPedal.rotation.z = -frontGroup.rotation.z;
+            for (let i = 0; i < chain.count; i++) {
+              const a = chain.sample(i + phase),
+                b = chain.sample(i + 1 + phase),
+                length = Math.hypot(b.x - a.x, b.y - a.y);
+              dummy.rotation.set(0, 0, Math.atan2(b.y - a.y, b.x - a.x));
+              dummy.scale.set(length / chain.pitch, 1, 1);
+              for (let side = 0; side < 2; side++) {
+                dummy.position.set(
+                  (a.x + b.x) / 2,
+                  (a.y + b.y) / 2,
+                  (side ? 1 : -1) * (i % 2 ? 0.047 : 0.064),
+                );
+                dummy.updateMatrix();
+                plates.setMatrixAt(i * 2 + side, dummy.matrix);
+              }
+              dummy.rotation.set(0, 0, 0);
+              dummy.scale.set(1, 1, 1);
+              dummy.position.set(a.x, a.y, 0);
+              dummy.updateMatrix();
+              rollers.setMatrixAt(i, dummy.matrix);
+              pins.setMatrixAt(i, dummy.matrix);
+            }
+            plates.instanceMatrix.needsUpdate =
+              rollers.instanceMatrix.needsUpdate =
+              pins.instanceMatrix.needsUpdate =
+                true;
+          },
+        };
+      }}
+      fallback={<BicycleFlat front={front} rear={rear} cadence={cadence} playing={playing} />}
+    />
+  );
+}
+
+function BicycleFlat({
   front,
   rear,
   cadence,
@@ -13,179 +210,72 @@ export default function BicycleStudio({
   cadence: number;
   playing: boolean;
 }) {
-  const state = useRef({ front, rear, cadence, playing });
-  state.current = { front, rear, cadence, playing };
+  const chain = chainLoop(front, rear),
+    [phase, setPhase] = useState(0);
+  const host = useSimulation(
+    (dt) => setPhase((p) => (p + (dt * cadence * front) / 60) % chain.count),
+    playing,
+  );
+  const points = Array.from({ length: chain.count }, (_, i) => chain.sample(i + phase));
   return (
-    <Studio
-      key={`${front}-${rear}`}
-      span={6.6}
-      fitHeight={3.5}
-      target={[0, 1.5, 0]}
-      cameraPosition={[1.2, 2.1, 10]}
-      label="自行车链传动：切削齿形、双片链节、前链盘、后飞轮组与曲柄踏板"
-      create={({ root }) => {
-        root.position.y = 1.5;
-        const metal = material('#a9b3b7', 0.92, 0.22),
-          dark = material('#343b3d', 0.65, 0.36),
-          black = material('#161f22', 0.3, 0.5),
-          titanium = material('#c2b991', 0.85, 0.3),
-          marker = material('#d8994e', 0.55, 0.35);
-        const frontGroup = new THREE.Group();
-        frontGroup.position.x = -1.55;
-        root.add(frontGroup);
-        const rearGroup = new THREE.Group();
-        rearGroup.position.x = 1.55;
-        root.add(rearGroup);
-        const frontRadius = front * 0.022,
-          rearRadius = rear * 0.022;
-        function chainring(
-          parent: THREE.Group,
-          r: number,
-          teeth: number,
-          z: number,
-          mat: THREE.Material,
-        ) {
-          const ring = gear(parent, r, teeth, [0, 0, z], mat, 0.047);
-          const shape = ring.geometry as THREE.ExtrudeGeometry;
-          shape.dispose();
-          const outline = new THREE.Shape();
-          for (let i = 0; i < teeth * 4; i++) {
-            const a = (i / (teeth * 4)) * Math.PI * 2,
-              rr = r * (i % 4 === 1 || i % 4 === 2 ? 1 : 0.967);
-            i
-              ? outline.lineTo(Math.cos(a) * rr, Math.sin(a) * rr)
-              : outline.moveTo(Math.cos(a) * rr, Math.sin(a) * rr);
-          }
-          outline.closePath();
-          const hole = new THREE.Path();
-          hole.absarc(0, 0, r * 0.81, 0, Math.PI * 2, true);
-          outline.holes.push(hole);
-          ring.geometry = new THREE.ExtrudeGeometry(outline, {
-            depth: 0.047,
-            bevelEnabled: true,
-            bevelSize: 0.008,
-            bevelThickness: 0.005,
-            bevelSegments: 2,
-            steps: 1,
-          });
-          for (let i = 0; i < 5; i++) {
-            const a = (i * Math.PI * 2) / 5;
-            const arm = box(
-              parent,
-              [r * 0.78, 0.09, 0.045],
-              [Math.cos(a) * r * 0.48, Math.sin(a) * r * 0.48, z + 0.02],
-              mat,
-              0.022,
+    <div ref={host} style={{ height: '100%' }}>
+      <svg viewBox="-3 -1.8 6 3.6" role="img" aria-label="闭合链传动，金色链节沿两轮之间循环">
+        <g transform="scale(1,-1)">
+          {[
+            [front, chain.ra, -chain.distance / 2, chain.alpha - (phase * TAU) / front],
+            [
+              rear,
+              chain.rb,
+              chain.distance / 2,
+              chain.alpha + ((chain.lengths[0] - phase) * TAU) / rear,
+            ],
+          ].map(([n, r, x, a], i) => (
+            <g key={i} transform={`translate(${x},0) rotate(${(a * 180) / Math.PI})`}>
+              <circle
+                r={r - 0.025}
+                fill="none"
+                stroke={i ? '#ac9d7a' : '#53605c'}
+                strokeWidth=".06"
+              />
+              <circle r=".1" fill="#53605c" />
+              {Array.from({ length: n }, (_, j) => (
+                <circle
+                  key={j}
+                  cx={r * Math.cos((j * TAU) / n)}
+                  cy={r * Math.sin((j * TAU) / n)}
+                  r=".028"
+                  fill="#eaf0e8"
+                  stroke="#53605c"
+                  strokeWidth=".006"
+                />
+              ))}
+              {Array.from({ length: 5 }, (_, j) => (
+                <path
+                  key={j}
+                  d={`M0 0L${r * 0.9 * Math.cos((j * TAU) / 5)} ${r * 0.9 * Math.sin((j * TAU) / 5)}`}
+                  stroke="#65736b"
+                  strokeWidth=".05"
+                />
+              ))}
+              {!i && <path d="M0 0h-1.13" stroke="#34453b" strokeWidth=".1" />}
+            </g>
+          ))}
+          {points.map((p, i) => {
+            const q = points[(i + 1) % points.length];
+            return (
+              <g key={i}>
+                <path
+                  d={`M${p.x} ${p.y}L${q.x} ${q.y}`}
+                  stroke={i === 0 ? '#bd8e51' : '#83958c'}
+                  strokeWidth=".05"
+                  strokeLinecap="round"
+                />
+                <circle cx={p.x} cy={p.y} r=".012" fill="#eaf1eb" />
+              </g>
             );
-            arm.rotation.z = a;
-            roller(
-              parent,
-              0.042,
-              0.06,
-              [Math.cos(a) * r * 0.59, Math.sin(a) * r * 0.59, z + 0.05],
-              metal,
-            );
-          }
-          roller(parent, r * 0.19, 0.12, [0, 0, z], dark);
-        }
-        chainring(frontGroup, frontRadius, front, 0, dark);
-        chainring(frontGroup, frontRadius * 0.86, Math.round(front * 0.86), -0.12, metal);
-        roller(frontGroup, 0.15, 0.6, [0, 0, -0.19], metal);
-        const arm = box(frontGroup, [1.29, 0.18, 0.14], [-0.59, 0, 0.21], black, 0.08);
-        arm.rotation.z = 0.0;
-        box(frontGroup, [0.43, 0.16, 0.55], [-1.16, 0, 0.26], dark, 0.045);
-        for (let i = 0; i < 5; i++)
-          box(frontGroup, [0.02, 0.02, 0.44], [-1.32 + i * 0.08, 0.087, 0.26], metal, 0.004);
-        roller(frontGroup, 0.048, 0.17, [-1.16, 0, 0.23], metal);
-        box(frontGroup, [1.2, 0.14, 0.1], [0.55, 0, -0.45], dark, 0.045);
-        box(frontGroup, [0.4, 0.13, 0.5], [1.1, 0, -0.5], dark, 0.035);
-        for (let layer = 8; layer >= 0; layer--) {
-          const n = Math.round(11 + layer * 2.6),
-            r = n * 0.022;
-          chainring(rearGroup, r, n, -0.12 - (8 - layer) * 0.12, metal);
-        }
-        chainring(rearGroup, rearRadius, rear, 0.04, titanium);
-        roller(rearGroup, 0.12, 1.5, [0, 0, -0.5], metal);
-        const rotor = new THREE.Mesh(new THREE.TorusGeometry(0.9, 0.012, 5, 96), metal);
-        rotor.position.z = -1.1;
-        rearGroup.add(rotor);
-        for (let i = 0; i < 24; i++) {
-          const a = (i * Math.PI) / 12;
-          const points = [
-            new THREE.Vector3(Math.cos(a) * 0.1, Math.sin(a) * 0.1, -0.7),
-            new THREE.Vector3(Math.cos(a) * 0.9, Math.sin(a) * 0.9, -1.1),
-          ];
-          rearGroup.add(
-            new THREE.Line(
-              new THREE.BufferGeometry().setFromPoints(points),
-              new THREE.LineBasicMaterial({ color: '#9aa8a9' }),
-            ),
-          );
-        }
-        const a = Math.acos((frontRadius - rearRadius) / 3.1),
-          points: THREE.Vector3[] = [];
-        for (let i = 0; i <= 70; i++) {
-          const angle = a + ((2 * Math.PI - 2 * a) * i) / 70;
-          points.push(
-            new THREE.Vector3(
-              -1.55 + Math.cos(angle) * frontRadius,
-              Math.sin(angle) * frontRadius,
-              0.085,
-            ),
-          );
-        }
-        for (let i = 0; i <= 70; i++) {
-          const angle = -a + (2 * a * i) / 70;
-          points.push(
-            new THREE.Vector3(
-              1.55 + Math.cos(angle) * rearRadius,
-              Math.sin(angle) * rearRadius,
-              0.085,
-            ),
-          );
-        }
-        const curve = new THREE.CatmullRomCurve3(points, true, 'centripetal');
-        const count = Math.round(curve.getLength() / 0.14),
-          links: THREE.Group[] = [];
-        for (let i = 0; i < count; i++) {
-          const link = new THREE.Group();
-          root.add(link);
-          links.push(link);
-          for (const z of [-0.045, 0.045])
-            box(link, [0.123, 0.048, 0.018], [0, 0, z], i % 9 === 0 ? marker : metal, 0.022);
-          roller(link, 0.025, 0.12, [-0.055, 0, 0], metal);
-          roller(link, 0.025, 0.12, [0.055, 0, 0], metal);
-        }
-        roller(root, 0.23, 0.2, [-1.55, 0, -0.6], dark);
-        roller(root, 0.17, 0.25, [1.55, 0, -1.25], dark);
-        let rotation = 0;
-        const len = curve.getLength();
-        return {
-          update(dt) {
-            const s = state.current;
-            if (s.playing) rotation -= (dt * s.cadence * Math.PI * 2) / 60;
-            frontGroup.rotation.z = rotation;
-            rearGroup.rotation.z = (rotation * s.front) / s.rear;
-            links.forEach((link, i) => {
-              const t = (((i / count + (rotation * frontRadius) / len) % 1) + 1) % 1;
-              link.position.copy(curve.getPointAt(t));
-              const tangent = curve.getTangentAt(t);
-              link.rotation.z = Math.atan2(tangent.y, tangent.x);
-            });
-          },
-        };
-      }}
-      fallback={
-        <svg viewBox="0 0 600 320" aria-label="链传动二维结构">
-          <circle cx="160" cy="160" r={front * 1.7} fill="none" stroke="#53605c" strokeWidth="9" />
-          <circle cx="450" cy="160" r={rear * 1.7} fill="none" stroke="#9b967e" strokeWidth="8" />
-          <path
-            d={`M160 ${160 - front * 1.7}L450 ${160 - rear * 1.7}M160 ${160 + front * 1.7}L450 ${160 + rear * 1.7}`}
-            stroke="#72807b"
-            strokeWidth="3"
-          />
-        </svg>
-      }
-    />
+          })}
+        </g>
+      </svg>
+    </div>
   );
 }
