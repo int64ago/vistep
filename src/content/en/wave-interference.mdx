@@ -1,0 +1,63 @@
+<a id="understand"></a>
+
+## When the string is straight, where are the waves?
+
+Two finite pulses approach on one string. The blue and coral dashed curves are displacement contributions; the pale solid line is the actual string. Dots identify material positions. The gold point P moves across the string's resting line, not along with a traveling crest.
+
+At overlap, add the two displacements at each position. Equal, opposite pulses can make the entire string momentarily straight. Its material points still have transverse velocity: the energy is kinetic at that instant. Advance time and the pulses pass through, retaining their shapes and directions in this ideal linear model.
+
+The film then compares the phase and amplitude of co-propagating sinusoidal waves. Finally, two wave trains enter from opposite sides. Where equal waves fully overlap, stationary nodes emerge between oscillating antinodes. Those nodes are interference, not clamps.
+
+<a id="try"></a>
+
+## Examine an instant
+
+- Stop the finite pulses at complete overlap. An amplitude ratio of −1 cancels displacement. Change it to +1: displacement doubles and the energy is potential at overlap.
+- Scrub time in either direction. P keeps its horizontal coordinate; the string and its time trace use the same model.
+- Set co-propagating waves to a phase difference of 180°. Halving the second amplitude leaves a 2 mm resultant amplitude.
+- Compare a standing-wave node with an antinode. Unequal opposing amplitudes remove permanently stationary nodes.
+
+Sliders support arrow keys, Home, and End. Reset restores the initial pulse experiment. The page player provides replay, chapters, and seeking.
+
+<a id="deeper"></a>
+
+## Add displacement, then calculate energy
+
+For a uniform string with small slopes,
+
+<div className="formula">
+  μyₜₜ = Tyₓₓ
+  <br />c = √(T/μ)
+  <br />y = f(x − ct) + g(x + ct)
+</div>
+
+Here `T=1` N and `μ = 0.01` kg/m, giving `c=10` m/s. Each compact pulse is `A cos⁴(πz/2w)` inside `|z|<w` and zero outside, with `A=4` mm and `w=0.4` m. Its first three derivatives remain continuous at the edges. Playback expands fractions of a physical second for observation.
+
+Compute energy from derivatives of the **sum**:
+
+<div className="formula">
+  e = (μyₜ² + Tyₓ²) / 2<br />S = −Tyₜyₓ
+  <br />
+  ∂ₜe + ∂ₓS = 0
+</div>
+
+The observation window gains energy through its left boundary and loses it through its right. The finite pulses stay inside the displayed 3.2 m window throughout their encounter. Entering wave trains do not: their changing window energy includes boundary flow. Zero displacement alone says nothing about the energy.
+
+For co-propagating sinusoids, `R = √(A² + B² + 2AB cos φ)`. Changing phase or amplitude compares different inputs, rather than a freely evolving isolated system.
+
+For equal counterpropagating waves,
+
+<div className="formula">
+  A sin(kx − ωt) + A sin(kx + ωt)
+  <br />= 2A sin(kx) cos(ωt)
+</div>
+
+With `λ = 1.6` m, nodes lie at `x = nλ/2`. The arriving trains have quintic smooth envelopes traveling with their carriers; derivatives include the envelope terms. The final standing wave matches that field once both fronts have crossed the whole window. Its average net energy flux is zero, while instantaneous local flux generally is not.
+
+## Reading the drawing
+
+Horizontal distances are meters; millimeter displacements are enlarged. Displayed slopes are not physical angles. Phone chapters select a labeled shorter window or a same-point comparison. Dots mark a continuous string without adding bead masses. Energy curves use linear scales. Velocity and energy-flow arrows represent different quantities.
+
+This model excludes damping, dispersion, varying tension, longitudinal motion, fixed-end reflections, and quantum particles. It applies to a uniform ideal string at small slope.
+
+Sources: [Caltech: modes](https://www.feynmanlectures.caltech.edu/I_49.html), [UT Austin: energy conservation](https://farside.ph.utexas.edu/teaching/315/Waveshtml/node43.html), and [Caltech: the wave equation](https://www.feynmanlectures.caltech.edu/I_47.html).

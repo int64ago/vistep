@@ -1,0 +1,307 @@
+.wi-study {
+  color: #e3ebf3;
+  background: radial-gradient(ellipse at 50% 0%, #263b50 0%, #182b3d 62%, #162737 100%);
+  padding: 28px 32px 18px;
+  border-radius: 22px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+  box-sizing: border-box;
+}
+.wi-study * {
+  box-sizing: border-box;
+}
+.wi-heading {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  color: #bac8d4;
+  font-size: 16px;
+}
+.wi-heading span:last-child {
+  color: #9fadb9;
+}
+.wi-current {
+  color: #fff2d0;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.5;
+  margin: 18px 0 24px;
+  font-weight: 500;
+  min-height: 36px;
+}
+.wi-body {
+  width: 100%;
+  min-width: 0;
+}
+.wi-legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #9fadbb;
+  font-size: 16px;
+}
+.wi-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.wi-legend span:not(:last-child):before {
+  content: '';
+  display: inline-block;
+  width: 17px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.wi-key-a {
+  color: #87cbd6;
+}
+.wi-key-b {
+  color: #e8aa91;
+}
+.wi-key-sum {
+  color: #fff1cd;
+}
+.wi-study svg {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  font-family: inherit;
+  font-size: 16px;
+}
+.wi-svg-muted {
+  fill: #b4c4d3;
+}
+.wi-string-svg {
+  margin-top: 8px;
+}
+.wi-evidence {
+  border-top: 1px solid #b4c4d322;
+  padding-top: 15px;
+}
+.wi-energy-key {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 18px;
+  row-gap: 4px;
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+.wi-energy-key span:first-child {
+  color: #9cbedf;
+}
+.wi-energy-key span:nth-child(2) {
+  color: #d8b18b;
+}
+.wi-energy-key span:last-child {
+  color: #bdcbd8;
+}
+.wi-energy-totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 22px;
+  font-size: 16px;
+  align-items: center;
+}
+.wi-energy-totals > span:first-child {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.wi-energy-totals b {
+  font-weight: 500;
+  color: #fff1d1;
+  white-space: nowrap;
+}
+.wi-energy-totals > span:last-child {
+  text-align: right;
+}
+.wi-energy-bar {
+  height: 8px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #d8b18b;
+  grid-column: 2;
+  grid-row: 1;
+}
+.wi-energy-bar i {
+  display: block;
+  height: 100%;
+  background: #9cbedf;
+}
+.wi-readout {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid #b4c4d322;
+  font-size: 16px;
+  color: #b7c6d3;
+}
+.wi-readout span {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.wi-readout b {
+  font-weight: 500;
+  white-space: nowrap;
+  color: #f4e9ce;
+}
+.wi-fact {
+  font-size: 16px;
+  color: #c1ccd4;
+  margin: 12px 0 0;
+}
+.wi-notes {
+  margin-top: 22px;
+  border-top: 1px solid #b4c4d322;
+  color: #c0ced9;
+  font-size: 16px;
+}
+.wi-notes summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.wi-notes p {
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.wi-explore {
+  margin-top: 22px;
+  border-top: 1px solid #b4c4d322;
+  padding-top: 19px;
+}
+.wi-modes,
+.wi-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wi-study button {
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  border: 1px solid #b9cbd044;
+  border-radius: 13px;
+  padding: 9px 15px;
+  background: #ffffff08;
+  color: #dce6ed;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.wi-study button:hover,
+.wi-study button[aria-pressed='true'] {
+  background: #b4cfe522;
+  border-color: #c2d2de99;
+}
+.wi-study button:focus-visible,
+.wi-study summary:focus-visible,
+.wi-study input:focus-visible {
+  outline: 2px solid #f3cc79;
+  outline-offset: 4px;
+}
+.wi-study .control {
+  display: block;
+  margin: 18px 0;
+  font-size: 16px;
+}
+.wi-study .control-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: baseline;
+}
+.wi-study .control-top output {
+  font-size: 16px;
+  color: #ffe9b4;
+  white-space: nowrap;
+}
+.wi-study input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #e2c483;
+  cursor: ew-resize;
+}
+.wi-study[data-compact='true'] {
+  padding: 21px 18px 14px;
+  border-radius: 18px;
+}
+.wi-study[data-compact='true'] .wi-heading span:last-child {
+  display: none;
+}
+.wi-study[data-compact='true'] .wi-heading {
+  font-size: 16px;
+}
+.wi-study[data-compact='true'] .wi-current {
+  font-size: 18px;
+  min-height: 54px;
+  margin: 14px 0 12px;
+}
+.wi-study[data-compact='true'] .wi-legend {
+  column-gap: 13px;
+  row-gap: 4px;
+}
+.wi-study[data-compact='true'] .wi-legend span:last-child {
+  display: none;
+}
+.wi-study[data-compact='true'] .wi-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.wi-study[data-compact='true'] .wi-readout span {
+  display: grid;
+  gap: 1px;
+}
+.wi-study[data-compact='true'] .wi-energy-key {
+  column-gap: 14px;
+}
+.wi-study[data-compact='true'] .wi-energy-key span:last-child {
+  flex-basis: 100%;
+}
+.wi-study[data-compact='true'] .wi-energy-totals {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.wi-study[data-compact='true'] .wi-energy-totals > span:first-child {
+  justify-content: space-between;
+  gap: 6px;
+}
+.wi-study[data-compact='true'] .wi-energy-bar {
+  grid-column: 1;
+  grid-row: 2;
+}
+.wi-study[data-compact='true'] .wi-energy-totals > span:last-child {
+  text-align: left;
+}
+.wi-study[data-compact='true'][data-watch='true'] {
+  min-height: 860px;
+  display: flex;
+  flex-direction: column;
+}
+.wi-study[data-compact='true'][data-watch='true'] .wi-notes {
+  margin-top: auto;
+}
+.wi-study[data-compact='true'][data-wave-view='nodes'] .wi-fact {
+  margin-bottom: 12px;
+}
+.wi-study[data-compact='true'][data-watch='true']:is(
+    [data-wave-view='energy'],
+    [data-wave-view='nodes']
+  )
+  :is(.wi-legend, .wi-readout, .wi-energy-totals > span:last-child) {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wi-study button {
+    transition: none;
+  }
+}

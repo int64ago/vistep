@@ -1,5 +1,11 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  differential: () => import('../components/experiments/Differential'),
+  'error-correction': () => import('../components/experiments/ErrorCorrection'),
+  bernoulli: () => import('../components/experiments/Bernoulli'),
+  doppler: () => import('../components/experiments/Doppler'),
+  'induction-motor': () => import('../components/experiments/InductionMotor'),
+  'wave-interference': () => import('../components/experiments/WaveInterference'),
   rainbow: () => import('../components/experiments/Rainbow'),
   'water-hammer': () => import('../components/experiments/WaterHammer'),
   suspension: () => import('../components/experiments/Suspension'),

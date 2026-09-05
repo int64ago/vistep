@@ -1,0 +1,309 @@
+.bernoulli-study {
+  background: radial-gradient(ellipse at 45% 0, #fcfbf3, #eeeee3 78%);
+  color: #344d50;
+  padding: 25px 28px 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+.bernoulli-study * {
+  box-sizing: border-box;
+}
+.bernoulli-kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #657874;
+  font-size: 16px;
+}
+.bernoulli-observation {
+  font-size: 21px;
+  line-height: 1.5;
+  font-weight: 450;
+  max-width: 760px;
+  min-height: 64px;
+  margin: 24px auto 2px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #334e50;
+}
+.bernoulli-stage {
+  max-width: 1020px;
+  margin: auto;
+  min-width: 0;
+}
+.bernoulli-tube,
+.bernoulli-heads {
+  width: 100%;
+  min-width: 0;
+}
+.bernoulli-study svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.bernoulli-study svg text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: #375659;
+}
+.bernoulli-reading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  border-top: 1px solid #cdd4c8;
+  padding: 17px 10px 0;
+  max-width: 770px;
+  margin: 0 auto;
+}
+.bernoulli-reading > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #607675;
+}
+.bernoulli-reading > span:last-child {
+  text-align: right;
+}
+.bernoulli-reading b {
+  font-size: 23px;
+  font-weight: 450;
+  color: #35585e;
+}
+.bernoulli-convention {
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 850px;
+  margin: 18px auto 8px;
+  color: #647771;
+  text-align: center;
+}
+.bernoulli-convention > span {
+  display: block;
+  margin-top: 5px;
+}
+.bernoulli-head-key {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 9px 12px;
+}
+.bernoulli-head-key > span {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  gap: 2px 8px;
+  align-items: center;
+  font-size: 16px;
+  color: #58706e;
+}
+.bernoulli-head-key i {
+  width: 6px;
+  height: 19px;
+  border-radius: 5px;
+  grid-row: span 2;
+}
+.bernoulli-head-key b {
+  font-size: 21px;
+  font-weight: 450;
+  color: #38535a;
+}
+.bernoulli-loss-note {
+  font-size: 16px;
+  margin: 10px 12px;
+  color: #856158;
+  text-align: center;
+}
+.bernoulli-boundary {
+  border-left: 3px solid #ac725c;
+  padding: 12px 16px;
+  margin: 8px auto;
+  display: grid;
+  gap: 4px;
+  max-width: 700px;
+  background: #e9ded0;
+  border-radius: 0 14px 14px 0;
+  color: #714d3b;
+}
+.bernoulli-boundary strong {
+  font-size: 19px;
+  font-weight: 550;
+}
+.bernoulli-boundary span,
+.bernoulli-boundary p {
+  font-size: 16px;
+  margin: 0;
+}
+.bernoulli-method {
+  margin-top: 18px;
+  border-top: 1px solid #ccd3c6;
+  color: #526b68;
+}
+.bernoulli-method summary {
+  font-size: 16px;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 2px;
+  line-height: 1.5;
+}
+.bernoulli-method p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 13px 0;
+}
+.bernoulli-explore {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  padding-top: 24px;
+  border-top: 1px solid #cdd4c8;
+  margin-top: 20px;
+}
+.bernoulli-explore .control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  min-width: 0;
+}
+.bernoulli-explore .control-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 10px;
+  font-size: 16px;
+}
+.bernoulli-explore output,
+.bernoulli-explore label span,
+.bernoulli-explore input {
+  font-size: 16px;
+}
+.bernoulli-explore input[type='range'] {
+  min-height: 44px;
+  cursor: pointer;
+  accent-color: #668c89;
+  width: 100%;
+  margin: 0;
+}
+.bernoulli-explore button {
+  min-height: 44px;
+  border: 1px solid #98ada2;
+  border-radius: 24px;
+  background: #e0e7da;
+  color: #345657;
+  font: inherit;
+  cursor: pointer;
+  padding: 9px 20px;
+  transition: background 0.2s ease;
+}
+.bernoulli-explore button:hover {
+  background: #d1dfd0;
+}
+.bernoulli-study :focus-visible {
+  outline: 3px solid #ad7b42;
+  outline-offset: 3px;
+}
+.bernoulli-probe {
+  display: grid;
+  gap: 5px;
+  font-size: 16px;
+  align-content: center;
+}
+.bernoulli-probe span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bernoulli-probe b {
+  font-weight: 500;
+}
+.bernoulli-explore .bernoulli-heads {
+  grid-column: 1/-1;
+}
+@media (max-width: 600px) {
+  .bernoulli-study[data-watch='true'] {
+    min-height: 900px;
+    display: flex;
+    flex-direction: column;
+  }
+  .bernoulli-study[data-watch='true'] > .bernoulli-method {
+    margin-top: auto;
+  }
+  .bernoulli-study {
+    padding: 17px 12px 10px;
+  }
+  .bernoulli-kicker > span:first-child {
+    display: none;
+  }
+  .bernoulli-kicker {
+    justify-content: center;
+    min-height: 25px;
+  }
+  .bernoulli-observation {
+    font-size: 18px;
+    min-height: 84px;
+    margin: 9px 3px 0;
+    line-height: 1.5;
+  }
+  .bernoulli-reading {
+    gap: 15px;
+    padding: 12px 4px 0;
+  }
+  .bernoulli-reading > span {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .bernoulli-reading b {
+    font-size: 18px;
+    white-space: normal;
+  }
+  .bernoulli-head-key {
+    gap: 7px;
+    padding: 6px 0;
+  }
+  .bernoulli-head-key > span {
+    grid-template-columns: 4px 1fr;
+    gap: 2px 5px;
+    line-height: 1.4;
+  }
+  .bernoulli-head-key i {
+    width: 4px;
+  }
+  .bernoulli-head-key b {
+    font-size: 18px;
+  }
+  .bernoulli-convention {
+    margin: 14px 3px 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .bernoulli-method {
+    margin-top: 14px;
+  }
+  .bernoulli-explore {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .bernoulli-boundary {
+    padding: 9px 11px;
+    font-size: 16px;
+    margin: 0 0 4px;
+  }
+  .bernoulli-boundary strong {
+    font-size: 18px;
+  }
+  .bernoulli-loss-note {
+    margin: 8px 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bernoulli-study * {
+    transition: none !important;
+  }
+}

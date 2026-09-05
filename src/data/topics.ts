@@ -14,6 +14,190 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'differential',
+    name: '汽车差速器',
+    title: '为什么转弯时，两只驱动轮能转得不一样快？',
+    question: '外侧多走一点，齿轮怎样把这段差补上？',
+    description: '剖开开放式差速器，追踪共顶点的锥齿轮、两侧平均转速和弱侧牵引力带来的扭矩上限。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#69838a',
+    tag: '机械 · 差速与扭矩',
+    related: ['suspension', 'planetary-gears', 'ball-bearing'],
+    sources: [
+      {
+        title: 'MathWorks · Differential kinematic constraints and power balance',
+        url: 'https://www.mathworks.com/help/sdl/ref/differential.html',
+      },
+      {
+        title: 'MathWorks · Bevel pairs and ideal equal differential torques',
+        url: 'https://www.mathworks.com/help/sdl/ug/custom-gear-library.html',
+      },
+      {
+        title: 'Eaton · Open differential operation and traction limits',
+        url: 'https://www.eaton.com/gb/en-gb/products/differentials-traction-control/open-differential.html',
+      },
+      {
+        title: 'KHK · Bevel gears and intersecting axes',
+        url: 'https://khkgears.net/product-category/bevel-gears/',
+      },
+      {
+        title: 'Lee, Lee & Chung · Spherical-involute bevel-gear kinematics (2010)',
+        url: 'https://journals.sagepub.com/doi/10.1243/09544062JMES1624',
+      },
+      {
+        title: 'US20160047454A1 · Spherical-involute straight bevel geometry',
+        url: 'https://patents.google.com/patent/US20160047454A1/en',
+      },
+    ],
+    number: '38',
+  },
+  {
+    slug: 'error-correction',
+    name: '纠错编码',
+    title: '数据翻错一位，为什么还能找回来？',
+    question: '把校验交织起来，让错误留下位置指纹。',
+    description:
+      '沿着同一组数据，构造 Hamming 码、观察信道翻转与综合征定位，再用真实双错反例理解扩展 SECDED 的纠错边界。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#7b9078',
+    tag: '信息 · 奇偶校验与可靠传输',
+    related: ['memory-cache', 'network', 'binary-adder'],
+    sources: [
+      {
+        title: 'R. W. Hamming · Error Detecting and Error Correcting Codes (1950), §§3–5',
+        url: 'https://ineffectivetheory.com/edu/papers/hamming-codes-1950.pdf',
+      },
+      {
+        title: 'MIT 6.02 · Error Correction Codes, Hamming distance and double-error detection',
+        url: 'https://web.mit.edu/6.02/www/s2010/handouts/lectures/L6.pdf',
+      },
+      {
+        title: 'MIT 6.111 · Information theory tutorial: Hamming checks and overall parity',
+        url: 'https://web.mit.edu/6.111/www/f2004/tutprobs/temp/info.htm',
+      },
+    ],
+    number: '37',
+  },
+  {
+    slug: 'bernoulli',
+    name: '流速与压强',
+    title: '水流越快，压强就一定越小吗？',
+    question: '沿一条水路，跟着同一份水记一笔能量账。',
+    description: '追踪文丘里管中的守恒水体、相连测压口和水头变化，区分速度、压强、高程与沿程损失。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#759798',
+    tag: '流体 · 连续性与能量',
+    related: ['siphon', 'water-hammer', 'hydraulic-brake'],
+    sources: [
+      {
+        title: 'NASA Glenn · Mass Flow Rate',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/mass-flow-rate/',
+      },
+      {
+        title: 'NASA Glenn · Bernoulli’s Equation',
+        url: 'https://www.grc.nasa.gov/www/k-12/airplane/bern.html',
+      },
+      {
+        title: 'US Bureau of Reclamation · Differential Head Flowmeters',
+        url: 'https://www.usbr.gov/tsc/techreferences/mands/wmm/chap14_03.html',
+      },
+      {
+        title: 'US EPA · SWMM Hydraulics Reference Manual, §7.3.2',
+        url: 'https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100S9AS.txt',
+      },
+      {
+        title: 'NIST · Water vapor-pressure equation, 0–100 °C',
+        url: 'https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An3p213_A1b.pdf',
+      },
+    ],
+    number: '36',
+  },
+  {
+    slug: 'doppler',
+    name: '多普勒效应',
+    title: '声源没变调，为什么听起来忽高忽低？',
+    question: '波峰的出发点在移动，到达的节拍就变了。',
+    description:
+      '追踪每个波峰的发射位置与到达时刻，分开理解移动声源、移动接收者和离轴经过时的声学多普勒效应。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#7591a0',
+    tag: '声学 · 波峰与到达时刻',
+    related: ['noise', 'diffraction', 'pendulum'],
+    sources: [
+      {
+        title: 'OpenStax · The Doppler Effect (University Physics, 17.7)',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/17-7-the-doppler-effect',
+      },
+      {
+        title: 'UNSW Physclips · The Doppler Effect',
+        url: 'https://www.animations.physics.unsw.edu.au/jw/doppler.htm',
+      },
+      {
+        title: 'OpenStax · Shock Waves (University Physics, 17.8)',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/17-8-shock-waves',
+      },
+    ],
+    number: '35',
+  },
+  {
+    slug: 'induction-motor',
+    name: '感应电动机',
+    title: '感应电动机：为什么总要慢半步？',
+    question: '不接电的转子，为什么会跟着磁场转？',
+    description: '走进三相定子与闭合鼠笼，看转差怎样产生电流、转矩与热。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#3a897b',
+    tag: '电流与转动',
+    related: ['electric-generator', 'transformer-electric', 'ball-bearing'],
+    sources: [
+      {
+        title: 'MIT 6.061 — Analytic Design Evaluation of Induction Machines (J. L. Kirtley)',
+        url: 'https://ocw.mit.edu/courses/6-061-introduction-to-electric-power-systems-spring-2011/01f878366fe651f1b95e9ed7fc24c644_MIT6_061S11_ch10.pdf',
+      },
+      {
+        title: 'ABB — Softstarter Handbook, About Motors',
+        url: 'https://library.e.abb.com/public/2985284834bcff7fc1256f3a00274038/1SFC132002M0201.pdf',
+      },
+      {
+        title: 'ABB — Changing motor direction by swapping two motor leads',
+        url: 'https://new.abb.com/news/detail/116436/stop-swapping-wires-change-motor-direction-in-8-seconds-with-this-trick',
+      },
+    ],
+    number: '34',
+  },
+  {
+    slug: 'wave-interference',
+    name: '波的干涉',
+    title: '绳子平了，波去哪了？',
+    question: '两列波相遇，物质点怎样运动？',
+    description: '跟随绳上的一个点，看脉冲相消又穿过，再从相位与振幅走到驻波和能量流。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#87cbd6',
+    tag: '波动 · 叠加与能量',
+    related: ['diffraction', 'noise', 'polarization'],
+    sources: [
+      {
+        title: 'Caltech · The Feynman Lectures, I–49: Modes',
+        url: 'https://www.feynmanlectures.caltech.edu/I_49.html',
+      },
+      {
+        title: 'UT Austin · Energy Conservation',
+        url: 'https://farside.ph.utexas.edu/teaching/315/Waveshtml/node43.html',
+      },
+      {
+        title: 'Caltech · The Feynman Lectures, I–47: Sound. The wave equation',
+        url: 'https://www.feynmanlectures.caltech.edu/I_47.html',
+      },
+    ],
+    number: '33',
+  },
+  {
     slug: 'rainbow',
     name: '彩虹',
     title: '彩虹，为什么偏偏出现在那个方向？',

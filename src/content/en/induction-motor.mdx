@@ -1,0 +1,54 @@
+<h2 id="understand">How does an unwired rotor develop torque?</h2>
+
+Look through the stator cutaway. Three stationary windings carry currents displaced by one third of an electrical cycle. Their combined magnetic action creates a rotating main field. The green arrow is calculated from the equivalent magnetizing currents, including the magnetic reaction of the rotor currents.
+
+The rotor has neither supply wires nor permanent magnets. Copper bars sit around a laminated iron core, and every bar joins two complete end rings. Relative motion between this closed cage and the field induces currents. Their interaction with the magnetic field produces torque that accelerates the rotor toward the field speed. Bar colors show relative current strength and direction; dots, crosses, and arrows indicate conventional current, rather than individual moving electrons.
+
+The rotor needs to remain slightly behind. At exactly synchronous speed, the main flux is stationary in the rotor frame. Induced rotor current and electromagnetic torque vanish in this model. A loaded motor therefore needs some slip to keep producing torque.
+
+<h2 id="try">Watch first, then change one condition</h2>
+
+- Choose “Steady load” and raise the load from 1 to 4 N·m. The stable operating point moves to a slightly lower speed, with more slip and torque.
+- Choose “Set slip” and set 100%. The rotor is locked, but torque is not zero. Mechanical power is zero and all air-gap power becomes rotor copper loss.
+- Reduce slip to 0%. The rotor reaches 3000 rpm and rotor current and torque vanish. Stator magnetizing current and its copper loss remain.
+- Hold a supply phase and compare A → B → C with A → C → B. Observe how phase sequence changes field direction and the corresponding rotor direction.
+- Select “Inspect power.” Electrical input equals mechanical power plus both copper losses at every operating point.
+
+Use arrow keys on the sliders and Tab, Enter, or Space on the buttons. Reset restores the initial exploration. The shared player controls pause, replay, and chapter seeking; exploration has no additional animation clock.
+
+<h2 id="deeper">One slip connects circuit, speed, and power</h2>
+
+<details>
+<summary>Electrical frequency versus mechanical speed</summary>
+
+This is a two-pole motor: one pole pair, p = 1. With a 50 Hz supply, synchronous mechanical speed is nₛ = 60f₁/p = 3000 rpm. A four-pole motor would run synchronously at 1500 rpm, but requires a different winding distribution rather than a changed number on this drawing.
+
+Slip is s = (ωₛ − ωᵣ)/ωₛ. The modeled motoring domain is 0 ≤ s ≤ 1, and rotor electrical frequency is f₂ = sf₁. That is different from the rotor's mechanical revolutions per second. Reversing phase sequence reverses the signs of both torque and speed; their product remains positive in motoring operation.
+
+</details>
+
+<details>
+<summary>The per-phase circuit and power balance</summary>
+
+The circuit has stator impedance R₁ + jX₁ in series with a parallel combination of jXₘ and R₂′/s + jX₂′. Circuit currents are RMS and rotor quantities are referred to the stator. The teaching parameters are 120 V per phase, R₁ = 0.65 Ω, X₁ = X₂′ = 0.9 Ω, Xₘ = 30 Ω, and R₂′ = 0.5 Ω. Reactances apply at 50 Hz; these values do not identify a commercial motor.
+
+<div className="formula">Pgap = 3I₂′²R₂′/s; Protor copper = sPgap; Pmechanical = (1−s)Pgap</div>
+
+<div className="formula">τ = Pgap/ωₛ; Pinput = 3I₁²R₁ + Protor copper + Pmechanical</div>
+
+An admittance formulation makes the synchronous limit continuous, with exactly zero rotor current. No artificial small slip is substituted. End-ring currents obey current conservation at every cage junction. The displayed bar-current distribution is normalized; it is not a measurement of amperes in an individual physical bar.
+
+</details>
+
+<details>
+<summary>Startup, stability, and scope</summary>
+
+Startup integrates J dω/dt = τ − τload from rest, using J = 0.025 kg·m² and a 1 N·m load. A quasi-steady circuit supplies the acceleration envelope, omitting fast switching transients. During acceleration, converted mechanical power supplies both the load and increasing rotor kinetic energy. Reverse startup also begins from rest; the scene does not model plugging a running motor.
+
+The load control solves for the stable equilibrium near synchronism over 0–6 N·m. With these parameters, breakdown torque is about 25.90 N·m at 26.47% slip. The model rejects equilibrium requests at or above that maximum. The complete torque curve is shown, with the stable branch marked separately.
+
+Angular motion is slowed equally for inspection; the startup curve retains physical model seconds. Supply phase and rotor angle are deterministic model samples reconstructed from chapter and progress. The field retains only its spatial fundamental. Visible slots and winding bundles explain construction; they are not a finite-element electromagnetic design. Core loss, windage, bearing friction, saturation, skin effect, and temperature-dependent resistance are omitted, so the displayed efficiency is not a hardware prediction.
+
+</details>
+
+The circuit and power relations follow [MIT's 6.061 induction-machine notes](https://ocw.mit.edu/courses/6-061-introduction-to-electric-power-systems-spring-2011/01f878366fe651f1b95e9ed7fc24c644_MIT6_061S11_ch10.pdf). See the [ABB Softstarter Handbook](https://library.e.abb.com/public/2985284834bcff7fc1256f3a00274038/1SFC132002M0201.pdf) for motor-speed and starting context, and [ABB's explanation of changing direction](https://new.abb.com/news/detail/116436/stop-swapping-wires-change-motor-direction-in-8-seconds-with-this-trick) for phase-sequence reversal.
