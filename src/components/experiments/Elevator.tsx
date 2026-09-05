@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { useShowcase } from '../lab/Showcase';
 import ElevatorStudio from '../three/ElevatorStudio';
 import { Metric, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
@@ -12,33 +13,64 @@ import {
 } from '../../models/elevator';
 const names = { fcfs: '先来先服务', nearest: '最近任务优先', collective: '顺路停靠' };
 export default function Elevator() {
+  const demo = useShowcase(),
+    fixed = useRef(0),
+    finishedAt = useRef<number | null>(null);
   const [scenario, setScenario] = useState(() => makeScenario()),
     [mode, setMode] = useState('morning'),
     [strategy, setStrategy] = useState<Strategy>('fcfs'),
-    [playing, setPlaying] = useState(false),
+    [manualPlaying, setPlaying] = useState(false),
     [destination, setDestination] = useState(6),
     [origin, setOrigin] = useState(0),
     [notice, setNotice] = useState('选择起点和目的楼层，加入一位乘客。'),
     [comparison, setComparison] = useState<ReturnType<typeof compareElevators> | null>(null);
+  const playing = demo.watch ? demo.playing && demo.time < 39 : manualPlaying;
   const simulation = useRef(newElevatorState(scenario));
   const [state, setState] = useState(() => structuredClone(simulation.current));
   const acc = useRef(0);
   const host = useSimulation((dt) => {
-    for (let i = 0; i < 4; i++) stepElevators(simulation.current, dt, strategy);
+    if (finishedAt.current !== null && simulation.current.time >= finishedAt.current + 1.5) return;
+    fixed.current += dt * 4;
+    while (fixed.current >= 1 / 60) {
+      stepElevators(simulation.current, 1 / 60, strategy);
+      fixed.current -= 1 / 60;
+    }
     acc.current += dt;
-    if (acc.current > 0.08) {
+    if (
+      finishedAt.current === null &&
+      simulation.current.requests.every((r) => r.status === 'done')
+    )
+      finishedAt.current = simulation.current.time;
+    const settled =
+      finishedAt.current !== null && simulation.current.time >= finishedAt.current + 1.5;
+    if (acc.current > 0.08 || settled) {
       acc.current = 0;
       setState(structuredClone(simulation.current));
-      if (simulation.current.requests.every((r) => r.status === 'done')) setPlaying(false);
+      if (settled) setPlaying(false);
     }
   }, playing);
   const stats = elevatorStats(state);
   const reset = (requests = scenario) => {
+    fixed.current = 0;
+    finishedAt.current = null;
+    acc.current = 0;
     simulation.current = newElevatorState(requests);
     setState(structuredClone(simulation.current));
     setPlaying(false);
     setComparison(null);
   };
+  useEffect(() => {
+    if (!demo.watch) return;
+    const requests = makeScenario('mixed', 42)
+      .slice(0, 10)
+      .map((r, i) => ({ ...r, arrival: i * 0.8 }));
+    if (demo.chapter < 3) {
+      setScenario(requests);
+      setMode('mixed');
+      setStrategy((['fcfs', 'nearest', 'collective'] as Strategy[])[demo.chapter]);
+      reset(requests);
+    } else setComparison(compareElevators(requests));
+  }, [demo.watch, demo.run, demo.chapter]);
   const add = (from: number) => {
     if (from === destination) {
       setNotice('起点与目的地相同，换一个目的楼层试试。');
@@ -52,6 +84,7 @@ export default function Elevator() {
       status: 'waiting' as const,
     };
     simulation.current.requests.push({ ...request });
+    finishedAt.current = null;
     setScenario((old) => [...old, { ...request, status: 'future' }]);
     setState(structuredClone(simulation.current));
     setComparison(null);
@@ -89,7 +122,7 @@ export default function Elevator() {
         <div className="building">
           <ElevatorStudio state={state} />
           <div className="elevator-building-note">
-            <span>8 FLOORS / 2 ELEVATORS</span>
+            <span>{demo.watch ? names[strategy] : '8 FLOORS / 2 ELEVATORS'}</span>
             <span>◦ 候梯　◦ 乘梯　·　4× 速度</span>
           </div>
         </div>

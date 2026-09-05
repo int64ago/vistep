@@ -5,6 +5,7 @@ import HomeObject from '../components/HomeObject';
 import TopicCover from '../components/TopicCover.astro';
 import ObjectCover from '../components/ObjectCover.astro';
 import { topics } from '../data/topics';
+import { films } from '../data/films';
 const picks = ['bicycle', 'pendulum', 'jpeg'];
 const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.slug !== 'printer');
 ---
@@ -33,7 +34,7 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
       <div class="section-rule">
         <div>
           <span class="section-index">01 — 12</span><h2 id="collection-title">值得打开的世界</h2>
-        </div><p>每次 5—8 分钟。跟着看，也亲手改变。</p>
+        </div><p>先跟着看懂，再自由探索。</p>
       </div>
       <div class="feature-studies">
         {
@@ -53,7 +54,7 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
                 <div class="study-title">
                   <>
                     <span>{topic.name}</span>
-                    <span>{topic.duration}</span>
+                    <span>{films[slug].duration} 秒演示</span>
                   </>
                 </div>
                 <h3>
@@ -142,7 +143,7 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
                   <div class="index-copy">
                     <>
                       <span>
-                        {topic.category} / {topic.duration}
+                        {topic.category} / {films[topic.slug].duration} 秒演示
                       </span>
                       <h3>{topic.name}</h3>
                       <p>{topic.title}</p>

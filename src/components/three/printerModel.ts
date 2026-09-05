@@ -1,7 +1,13 @@
 import * as THREE from 'three';
-import { box, roller, screw, tube, gear, material } from './parts';
+import { box, roller, screw, tube, gear, material, driveBelt } from './parts';
 import type { StudioContext, StudioObject } from './Studio';
 import { fadingCover, scalarTransition, softEase } from './motion';
+import {
+  printerDrive as drive,
+  meshedAngle,
+  pulleyLoop,
+  printerMotion,
+} from '../../models/mechanisms';
 export type PrinterVisualState = {
   progress: number;
   exploded: boolean;
@@ -30,7 +36,7 @@ export function createPrinter(
   amber.emissiveIntensity = 0.4;
   const base = new THREE.Group();
   root.add(base);
-  box(base, [7.5, 0.22, 4.15], [0, 0.14, 0], graphite, 0.1);
+  box(base, [7.5, 0.22, 5.0], [0, 0.14, 0], graphite, 0.1);
   box(base, [7.1, 0.045, 3.8], [0, 0.275, 0], silver, 0.025);
   for (const x of [-3.25, 3.25])
     for (const z of [-1.7, 1.7]) {
@@ -46,8 +52,10 @@ export function createPrinter(
   }
   // The paper path is continuous under the drum and through the fusing nip.
   box(base, [7.45, 0.035, 2.85], [0, 0.61, 0], white, 0.012);
+  const feedRollers: THREE.Group[] = [];
   for (const x of [-3, -2.35, 0.8, 3.1]) {
     const assembly = roller(base, 0.105, 3.25, [x, 0.76, 0], rubber);
+    feedRollers.push(assembly);
     for (const z of [-1.72, 1.72]) {
       roller(assembly, 0.055, 0.2, [0, 0, z], silver);
     }
@@ -59,9 +67,9 @@ export function createPrinter(
   }
   // Circumferential hairlines and metal endcaps make the OPC coating legible.
   for (const z of [-1.42, 1.42]) roller(drum, 0.645, 0.015, [0, 0, z], silver);
-  const charge = roller(base, 0.16, 3.15, [-1.16, 1.92, 0], rubber);
-  const developer = roller(base, 0.24, 3.15, [0.16, 1.56, 0], graphite);
-  const transfer = roller(base, 0.2, 3.15, [-0.65, 0.39, 0], rubber);
+  const charge = roller(base, 0.16, 3.15, [drive.charge.x, drive.charge.y, 0], rubber);
+  const developer = roller(base, 0.24, 3.15, [drive.developer.x, drive.developer.y, 0], graphite);
+  const transfer = roller(base, 0.2, 3.15, [-0.65, 0.441, 0], rubber);
   for (const cylinder of [charge, developer, transfer])
     for (const z of [-1.65, 1.65]) roller(cylinder, 0.075, 0.18, [0, 0, z], silver);
   const toner = new THREE.Group();
@@ -72,13 +80,13 @@ export function createPrinter(
     box(toner, [0.72, 0.025, 0.026], [0.72, 2.49, z], rubber, 0.006);
   box(toner, [0.42, 0.22, 0.08], [0.72, 2.05, 1.78], blue);
   box(toner, [0.28, 0.13, 0.008], [0.72, 2.08, 1.827], silver, 0.005);
-  const fuserTop = roller(base, 0.28, 3.05, [2.14, 0.955, 0], copper);
-  const fuserBottom = roller(base, 0.25, 3.05, [2.14, 0.38, 0], rubber);
-  roller(base, 0.1, 3.25, [2.14, 0.955, 0], amber);
+  const fuserTop = roller(base, 0.28, 3.05, [2.14, 0.94, 0], copper);
+  const fuserBottom = roller(base, 0.25, 3.05, [2.14, 0.391, 0], rubber);
+  roller(base, 0.1, 3.25, [2.14, 0.94, 0], amber);
   for (const z of [-1.7, 1.7]) {
     box(base, [0.72, 1.12, 0.16], [2.14, 0.75, z], graphite, 0.05);
-    roller(base, 0.095, 0.21, [2.14, 0.955, z], silver);
-    roller(base, 0.08, 0.21, [2.14, 0.38, z], silver);
+    roller(base, 0.095, 0.21, [2.14, 0.94, z], silver);
+    roller(base, 0.08, 0.21, [2.14, 0.391, z], silver);
   }
   const fuserGuard = new THREE.Group();
   root.add(fuserGuard);
@@ -103,6 +111,7 @@ export function createPrinter(
   lens.position.set(-2.57, 2.86, 0);
   scanner.add(lens);
   box(scanner, [0.4, 0.23, 0.37], [-2.8, 2.86, 0], graphite);
+  box(scanner, [0.065, 0.08, 2.7], [-0.65, 2.88, 0], silver, 0.004).rotation.z = Math.PI / 4;
   const beamMaterial = new THREE.MeshBasicMaterial({
     color: '#ff4b24',
     transparent: true,
@@ -110,61 +119,69 @@ export function createPrinter(
   });
   const beam = new THREE.Group();
   root.add(beam);
-  tube(
-    beam,
-    [
-      [-2.65, 2.88, 0],
-      [-1.85, 2.88, 0],
-      [-0.62, 2.9, 0],
-      [-0.62, 1.935, 0],
-    ],
-    0.013,
-    beamMaterial,
-  );
-  const beamPlane = new THREE.Mesh(
-    new THREE.PlaneGeometry(2.5, 0.95),
-    new THREE.MeshBasicMaterial({
-      color: '#ff5d34',
-      transparent: true,
-      opacity: 0.055,
-      side: THREE.DoubleSide,
-      depthWrite: false,
-    }),
-  );
-  beamPlane.rotation.y = Math.PI / 2;
-  beamPlane.position.set(-0.62, 2.42, 0);
-  beam.add(beamPlane);
+  const laserSegments = Array.from({ length: 3 }, () => {
+    const segment = new THREE.Mesh(new THREE.CylinderGeometry(0.009, 0.009, 1, 8), beamMaterial);
+    beam.add(segment);
+    return segment;
+  });
   box(base, [0.075, 0.45, 3.2], [-1.29, 1.17, 0], silver, 0.01).rotation.z = -0.55;
   box(base, [0.44, 0.24, 3.25], [-1.65, 1.0, 0], graphite, 0.04);
-  // Exposed transmission on the front service side.
-  const gears: THREE.Mesh[] = [];
-  [
-    [-0.65, 1.29, 0.39, 22],
-    [-1.18, 1.89, 0.21, 16],
-    [0.13, 1.54, 0.28, 20],
-    [0.62, 0.86, 0.29, 20],
-    [1.22, 0.96, 0.28, 18],
-    [2.14, 0.95, 0.28, 18],
-    [-2.1, 0.7, 0.19, 14],
-  ].forEach(([x, y, r, n], i) => {
-    gears.push(gear(base, r, n, [x, y, 1.92], i === 0 ? ivory : silver, 0.1));
-    roller(base, 0.055, 0.25, [x, y, 1.97], graphite);
-  });
-  tube(
+  // Common-module gears share exact pitch-circle contacts and fixed bearings.
+  const gearZ = 1.83;
+  const driveGear = gear(
     base,
-    [
-      [0.67, 0.85, 1.8],
-      [1.0, 0.5, 1.8],
-      [2.14, 0.55, 1.8],
-      [2.43, 0.94, 1.8],
-      [2.14, 1.29, 1.8],
-      [1.05, 1.3, 1.8],
-      [0.67, 0.85, 1.8],
-    ],
-    0.045,
-    rubber,
+    (drive.module * drive.drum.teeth) / 2,
+    drive.drum.teeth,
+    [drive.drum.x, drive.drum.y, gearZ],
+    ivory,
+    0.1,
   );
-  const motor = roller(base, 0.38, 0.65, [1.17, 0.7, -1.72], silver);
+  const chargeGear = gear(
+    base,
+    (drive.module * drive.charge.teeth) / 2,
+    drive.charge.teeth,
+    [drive.charge.x, drive.charge.y, gearZ],
+    ivory,
+    0.1,
+  );
+  const developerGear = gear(
+    base,
+    (drive.module * drive.developer.teeth) / 2,
+    drive.developer.teeth,
+    [drive.developer.x, drive.developer.y, gearZ],
+    ivory,
+    0.1,
+  );
+  const chargeBearing = Math.atan2(drive.charge.y - drive.drum.y, drive.charge.x - drive.drum.x);
+  const developerBearing = Math.atan2(
+    drive.developer.y - drive.drum.y,
+    drive.developer.x - drive.drum.x,
+  );
+  for (const wheel of [drive.drum, drive.charge, drive.developer]) {
+    roller(base, 0.058, 0.52, [wheel.x, wheel.y, 1.92], silver);
+    roller(base, 0.088, 0.025, [wheel.x, wheel.y, 2.18], graphite);
+  }
+  // Belt and pulleys occupy a separate plane in front of the gear train.
+  // Their radius ratio matches the drum/fuser surface-speed ratio.
+  const beltZ = 2.075,
+    beltThickness = 0.027;
+  const pulleys = [
+    { x: drive.drum.x, y: drive.drum.y, r: 0.24 },
+    { x: drive.fuser.x, y: drive.fuser.y, r: 0.105 },
+  ];
+  const pulleyGroups = pulleys.map((p) => {
+    const group = roller(base, p.r - beltThickness / 2, 0.12, [p.x, p.y, beltZ], graphite);
+    for (const z of [-0.077, 0.077]) roller(group, p.r + 0.035, 0.025, [0, 0, z], silver);
+    roller(group, 0.055, 0.25, [0, 0, 0], silver);
+    box(group, [p.r * 1.35, 0.018, 0.008], [0, 0, 0.093], graphite, 0.005);
+    return group;
+  });
+  const beltLoop = pulleyLoop(pulleys[0], pulleys[1], pulleys[0].r, pulleys[1].r);
+  driveBelt(base, beltLoop, beltZ, 0.108, beltThickness, rubber);
+  const beltMarks = Array.from({ length: 24 }, (_, i) =>
+    box(base, [0.012, 0.03, 0.09], [0, 0, 0], i === 0 ? copper : graphite, 0.004),
+  );
+  const motor = roller(base, 0.32, 0.65, [drive.drum.x, drive.drum.y, -1.98], silver);
   box(motor, [0.42, 0.4, 0.06], [0, 0, -0.4], graphite);
   // Circuit board, components, fan and cable harness are visible through the opened housing.
   const pcb = new THREE.Group();
@@ -220,14 +237,14 @@ export function createPrinter(
   );
   const back = new THREE.Group();
   root.add(back);
-  box(back, [7.2, 2.4, 0.13], [0, 1.4, -2.05], ivory, 0.06);
+  box(back, [7.2, 2.4, 0.13], [0, 1.4, -2.45], ivory, 0.06);
   for (let x = -3; x <= -1; x += 0.15)
-    box(back, [0.055, 0.85, 0.014], [x, 1.55, -2.124], graphite, 0.01);
-  box(back, [0.34, 0.23, 0.04], [2.9, 0.67, -2.14], black);
-  box(back, [0.19, 0.19, 0.04], [2.38, 0.67, -2.14], silver);
+    box(back, [0.055, 0.85, 0.014], [x, 1.55, -2.524], graphite, 0.01);
+  box(back, [0.34, 0.23, 0.04], [2.9, 0.67, -2.54], black);
+  box(back, [0.19, 0.19, 0.04], [2.38, 0.67, -2.54], silver);
   const shell = new THREE.Group();
   root.add(shell);
-  box(shell, [7.2, 0.25, 4.18], [0, 3.02, 0], ivory, 0.11);
+  box(shell, [7.2, 0.25, 4.95], [0, 3.02, 0], ivory, 0.11);
   box(shell, [4.2, 0.045, 2.72], [0.2, 3.167, 0.12], graphite, 0.09);
   box(shell, [3.8, 0.025, 2.22], [0.2, 3.197, 0.3], material('#394148', 0.1, 0.53), 0.08);
   for (let x = -1.35; x <= 1.7; x += 0.28)
@@ -237,12 +254,12 @@ export function createPrinter(
   box(shell, [0.15, 0.014, 0.15], [-1.78, 3.235, 1.26], material('#39826b'), 0.04);
   const front = new THREE.Group();
   root.add(front);
-  box(front, [7.2, 2.4, 0.18], [0, 1.55, 2.02], ivory, 0.08);
-  box(front, [2.35, 0.15, 0.025], [-1.75, 2.08, 2.124], graphite, 0.035);
-  box(front, [0.62, 0.08, 0.025], [2.53, 2.4, 2.129], blue, 0.015);
+  box(front, [7.2, 2.4, 0.18], [0, 1.55, 2.4], ivory, 0.08);
+  box(front, [2.35, 0.15, 0.025], [-1.75, 2.08, 2.504], graphite, 0.035);
+  box(front, [0.62, 0.08, 0.025], [2.53, 2.4, 2.509], blue, 0.015);
   const side = new THREE.Group();
   root.add(side);
-  for (const x of [-3.6, 3.6]) box(side, [0.16, 2.4, 3.92], [x, 1.5, 0], ivory, 0.05);
+  for (const x of [-3.6, 3.6]) box(side, [0.16, 2.4, 4.8], [x, 1.5, 0], ivory, 0.05);
   const paper = new THREE.Group();
   root.add(paper);
   box(paper, [1.78, 0.018, 2.42], [0, 0, 0], white, 0.008);
@@ -269,9 +286,15 @@ export function createPrinter(
     emissiveIntensity: 0.7,
     roughness: 0.28,
   });
-  const pixel = new THREE.Mesh(new THREE.SphereGeometry(0.065, 24, 16), trackingMaterial);
+  const markerMaterial = trackingMaterial.clone();
+  markerMaterial.depthTest = false;
+  markerMaterial.depthWrite = false;
+  markerMaterial.transparent = true;
+  const pixel = new THREE.Mesh(new THREE.SphereGeometry(0.047, 24, 16), markerMaterial);
+  pixel.renderOrder = 10;
   root.add(pixel);
-  const halo = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.012, 8, 40), trackingMaterial);
+  const halo = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.012, 8, 40), markerMaterial);
+  halo.renderOrder = 11;
   root.add(halo);
   const charges = new THREE.Group();
   root.add(charges);
@@ -297,6 +320,10 @@ export function createPrinter(
   ];
   const open = scalarTransition(read().exploded ? 1 : 0, 1.15);
   const covers = [shell, front, side].map(fadingCover);
+  const tonerCover = fadingCover(toner),
+    guardCover = fadingCover(fuserGuard);
+  const revealToner = scalarTransition(1, 0.65),
+    revealGuard = scalarTransition(1, 0.65);
   let lastView = read().view,
     lastFocus = false,
     lastPhase = -1,
@@ -312,10 +339,9 @@ export function createPrinter(
   };
   controls.addEventListener('start', interrupt);
   return {
-    update(dt, elapsed) {
+    update(dt) {
       const state = read(),
-        phase = Math.min(5, Math.floor(state.progress)),
-        frac = state.progress - phase;
+        phase = Math.min(5, Math.floor(state.progress));
       const openness = open(state.exploded ? 1 : 0, dt, reducedMotion.matches);
       shell.position.y = openness * 1.25;
       shell.rotation.z = openness * -0.045;
@@ -324,67 +350,103 @@ export function createPrinter(
       covers.forEach((cover, i) =>
         cover.opacity(1 - THREE.MathUtils.smoothstep(openness, i === 2 ? 0.12 : 0.3, 0.97)),
       );
+      tonerCover.opacity(
+        revealToner(
+          state.exploded && phase >= 1 && phase <= 3 ? 0.12 : 1,
+          dt,
+          reducedMotion.matches,
+        ),
+      );
+      guardCover.opacity(
+        revealGuard(state.exploded && phase >= 3 ? 0.14 : 1, dt, reducedMotion.matches),
+      );
       back.position.z = -openness * 0.2;
       scanner.position.y = openness * 0.22;
       fuserGuard.position.y = openness * 0.35;
-      drum.rotation.z = state.progress * 0.8;
-      charge.rotation.z = -state.progress * 3;
-      developer.rotation.z = -state.progress * 2;
-      gears.forEach((g, i) => (g.rotation.z = state.progress * (i % 2 ? -2 : 2)));
-      polygon.rotation.y = elapsed * 2;
-      fuserTop.rotation.z = state.progress;
-      fuserBottom.rotation.z = -state.progress;
+      // One shaft angle drives every roller, gear, belt and the paper displacement.
+      const transferAngle = -Math.PI / 2;
+      const { theta, rotation, selectedRow, paperX } = printerMotion(
+        state.progress,
+        state.selected,
+      );
+      drum.rotation.z = driveGear.rotation.z = rotation;
+      chargeGear.rotation.z = meshedAngle(
+        rotation,
+        drive.drum.teeth,
+        drive.charge.teeth,
+        chargeBearing,
+      );
+      developerGear.rotation.z = meshedAngle(
+        rotation,
+        drive.drum.teeth,
+        drive.developer.teeth,
+        developerBearing,
+      );
+      charge.rotation.z = chargeGear.rotation.z;
+      developer.rotation.z = developerGear.rotation.z;
+      transfer.rotation.z = (-rotation * drive.drum.radius) / 0.2;
+      feedRollers.forEach((r) => (r.rotation.z = (rotation * drive.drum.radius) / 0.105));
+      polygon.rotation.y = state.progress * 18;
+      fuserTop.rotation.z = (rotation * drive.drum.radius) / drive.fuser.radius;
+      fuserBottom.rotation.z = (-fuserTop.rotation.z * drive.fuser.radius) / 0.25;
+      pulleyGroups[0].rotation.z = rotation;
+      pulleyGroups[1].rotation.z = fuserTop.rotation.z;
+      beltMarks.forEach((mark, i) => {
+        const p = beltLoop.sample(
+          (i * beltLoop.length) / beltMarks.length - rotation * pulleys[0].r,
+        );
+        mark.position.set(p.x, p.y, beltZ);
+        mark.rotation.z = Math.atan2(p.ty, p.tx);
+      });
       beam.visible = openness > 0.5 && phase === 1;
-      beam.position.z = Math.sin(elapsed * 12) * 1.1;
+      const scanZ = Math.sin(state.progress * 24) * 1.1,
+        laserY = 2.88 + scanner.position.y;
+      const laserPoints = [
+        new THREE.Vector3(-2.65, laserY, 0),
+        new THREE.Vector3(-1.85, laserY, 0),
+        new THREE.Vector3(-0.65, laserY, scanZ),
+        new THREE.Vector3(-0.65, 1.935, scanZ),
+      ];
+      laserSegments.forEach((segment, i) => {
+        const direction = laserPoints[i + 1].clone().sub(laserPoints[i]);
+        segment.position
+          .copy(laserPoints[i])
+          .add(laserPoints[i + 1])
+          .multiplyScalar(0.5);
+        segment.scale.y = direction.length();
+        segment.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+      });
       charges.visible = state.charges && openness > 0.5 && phase < 3;
       charges.children.forEach((m, i) => {
         m.visible = !(phase >= 1 && i % 14 >= 2 && i % 14 <= 5);
       });
-      paper.position.set(
-        phase < 2
-          ? -2.55
-          : phase === 2
-            ? -2.55 + frac
-            : phase === 3
-              ? -1.55 + frac * 1.8
-              : phase === 4
-                ? 0.25 + frac * 2.9
-                : 3.15,
-        0.646,
-        0,
-      );
+      paper.position.set(paperX, 0.646, 0);
       printPixels.forEach((m, i) => {
         m.visible =
           state.pattern[Math.floor(i / 8)]?.[i % 8] === '1' &&
-          phase >= 3 &&
-          m.position.x + paper.position.x >= -0.65;
+          m.position.x + paper.position.x >= drive.drum.x;
         m.material = i === state.selected ? trackingMaterial : black;
       });
       tonerPixels.forEach((m, i) => {
-        const a =
-          -Math.PI / 2 + (Math.floor(i / 8) - 3.5) * 0.06 + Math.max(0, 3 - state.progress) * 1.2;
+        const a = theta - ((Math.floor(i / 8) - selectedRow) * 0.18) / drive.drum.radius;
         m.position.set(
-          -0.65 + Math.cos(a) * 0.652,
-          1.29 + Math.sin(a) * 0.652,
+          drive.drum.x + Math.cos(a) * 0.652,
+          drive.drum.y + Math.sin(a) * 0.652,
           ((i % 8) - 3.5) * 0.22,
         );
         m.visible =
-          phase >= 2 &&
-          phase < 4 &&
+          a <= developerBearing &&
+          a >= transferAngle &&
           !printPixels[i].visible &&
           state.pattern[Math.floor(i / 8)]?.[i % 8] === '1';
         m.material = i === state.selected ? trackingMaterial : black;
       });
-      pixel.position.copy(positions[phase]);
-      if (phase < 3) pixel.position.lerp(positions[phase + 1], frac);
-      if (phase === 2 || phase === 3) pixel.position.copy(tonerPixels[state.selected].position);
-      if (phase >= 3 && printPixels[state.selected].visible)
-        pixel.position.copy(printPixels[state.selected].position).add(paper.position);
-      pixel.position.z = ((state.selected % 8) - 3.5) * 0.22;
+      if (theta > transferAngle) pixel.position.copy(tonerPixels[state.selected].position);
+      else pixel.position.copy(printPixels[state.selected].position).add(paper.position);
       pixel.visible = openness > 0.7;
       halo.position.copy(pixel.position);
       halo.visible = pixel.visible;
-      halo.scale.setScalar(1 + Math.sin(elapsed * 3) * 0.08);
+      halo.scale.setScalar(1.05);
       halo.lookAt(camera.position);
       if (!overview) overview = camera.position.clone();
       if (
@@ -417,6 +479,8 @@ export function createPrinter(
     dispose() {
       controls.removeEventListener('start', interrupt);
       covers.forEach((cover) => cover.dispose());
+      tonerCover.dispose();
+      guardCover.dispose();
     },
   };
 }

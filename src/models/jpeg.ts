@@ -1,3 +1,7 @@
+export const frequencyOrder = Array.from({ length: 64 }, (_, i) => i).sort(
+  (a, b) => (a % 8) + Math.floor(a / 8) - ((b % 8) + Math.floor(b / 8)) || a - b,
+);
+
 export const quantTable = [
   16, 11, 10, 16, 24, 40, 51, 61, 12, 12, 14, 19, 26, 58, 60, 55, 14, 13, 16, 24, 40, 57, 69, 56,
   14, 17, 22, 29, 51, 87, 80, 62, 18, 22, 37, 56, 68, 109, 103, 77, 24, 35, 55, 64, 81, 104, 113,
@@ -38,10 +42,7 @@ export function compressBlock(block: number[], quality: number, keep = 64) {
   const coefficients = dct(block),
     scale = quality < 50 ? 5000 / Math.max(1, quality) : 200 - 2 * quality;
   const table = quantTable.map((n) => Math.max(1, Math.floor((n * scale + 50) / 100)));
-  const ranks = Array.from({ length: 64 }, (_, i) => i).sort(
-    (a, b) => (a % 8) + Math.floor(a / 8) - ((b % 8) + Math.floor(b / 8)) || a - b,
-  );
-  const allowed = new Set(ranks.slice(0, keep));
+  const allowed = new Set(frequencyOrder.slice(0, keep));
   const quantized = coefficients.map((n, i) => (allowed.has(i) ? Math.round(n / table[i]) : 0));
   const reconstructed = idct(quantized.map((n, i) => n * table[i])).map((n) =>
     Math.max(0, Math.min(255, Math.round(n))),

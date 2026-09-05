@@ -1,4 +1,5 @@
 import { Component, lazy, Suspense, type ReactNode } from 'react';
+import Showcase from './lab/Showcase';
 const experiments = {
   pendulum: lazy(() => import('./experiments/Pendulum')),
   printer: lazy(() => import('./experiments/Printer')),
@@ -43,7 +44,9 @@ export default function Experiment({ slug }: { slug: keyof typeof experiments })
           </div>
         }
       >
-        <Scene />
+        <Showcase slug={slug}>
+          <Scene />
+        </Showcase>
       </Suspense>
     </Boundary>
   );

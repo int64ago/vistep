@@ -30,6 +30,7 @@ export function newTraffic(count: number, p: TrafficParams): Vehicle[] {
   }));
 }
 export function stepTraffic(cars: Vehicle[], dt: number, p: TrafficParams) {
+  if (dt <= 0) return cars;
   const n = cars.length,
     steps = Math.max(1, Math.ceil(dt / 0.04)),
     h = dt / steps;

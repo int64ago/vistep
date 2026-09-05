@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useShowcase } from '../lab/Showcase';
 import RefrigeratorStudio from '../three/RefrigeratorStudio';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
@@ -29,14 +30,20 @@ const parts = [
   },
 ];
 export default function Refrigerator() {
+  const demo = useShowcase();
   const [part, setPart] = useState(0),
-    [phase, setPhase] = useState(0),
-    [running, setRunning] = useState(false),
-    [cop, setCop] = useState(2.5),
-    [power, setPower] = useState(80),
-    [cutaway, setCutaway] = useState(true);
-  const host = useSimulation((dt) => setPhase((p) => (p + dt * 0.14) % 4), running);
-  const active = running ? Math.floor(phase) : part;
+    [manualPhase, setPhase] = useState(0),
+    [manualRunning, setRunning] = useState(false),
+    [manualCop, setCop] = useState(2.5),
+    [manualPower, setPower] = useState(80),
+    [manualCutaway, setCutaway] = useState(true);
+  const cop = demo.watch ? 2.5 : manualCop,
+    power = demo.watch ? 80 : manualPower;
+  const phase = demo.watch ? Math.min(3.999, demo.time / 8) : manualPhase;
+  const running = demo.watch ? demo.playing : manualRunning,
+    cutaway = demo.watch ? true : manualCutaway;
+  const host = useSimulation((dt) => setPhase((p) => (p + dt * 0.14) % 4), running && !demo.watch);
+  const active = demo.watch || running ? Math.floor(phase) : part;
   const selected = parts[active];
   return (
     <div ref={host}>
@@ -47,7 +54,7 @@ export default function Refrigerator() {
             className="btn primary"
             onClick={() => {
               if (running) setPart(Math.floor(phase));
-              setRunning(!running);
+              setRunning(!running && !demo.watch);
             }}
           >
             {running ? 'Ⅱ 停住观察' : '▷ 跟随制冷剂'}

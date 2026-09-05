@@ -1,13 +1,23 @@
 import { useState } from 'react';
+import { useShowcase } from '../lab/Showcase';
 import BicycleStudio from '../three/BicycleStudio';
 import { Metric, Range, Segments } from '../lab/Controls';
 import { bicycleModel } from '../../models/bicycle';
 export default function Bicycle() {
-  const [front, setFront] = useState(34),
-    [rear, setRear] = useState(24),
-    [cadence, setCadence] = useState(60),
-    [slope, setSlope] = useState(4),
-    [playing, setPlaying] = useState(false);
+  const demo = useShowcase();
+  const [manualFront, setFront] = useState(34),
+    [manualRear, setRear] = useState(24),
+    [manualCadence, setCadence] = useState(60),
+    [manualSlope, setSlope] = useState(4),
+    [manualPlaying, setPlaying] = useState(false);
+  const front = demo.watch ? 34 : manualFront,
+    rear = demo.watch ? (demo.time < 17 ? 24 : demo.time < 26 ? 12 : 32) : manualRear;
+  const cadence = demo.watch ? 45 : manualCadence,
+    slope = demo.watch ? 4 : manualSlope,
+    playing = demo.watch ? demo.playing : manualPlaying;
+  const cut = demo.watch
+    ? Math.min(...[17, 26].map((t) => Math.min(1, Math.abs(demo.time - t) / 0.55)))
+    : 1;
   const model = bicycleModel(front, rear, cadence, slope);
   return (
     <div>
@@ -34,10 +44,17 @@ export default function Bicycle() {
       <div className="lab-grid">
         <div className="lab-scene">
           <span className="scene-label">CHAIN DRIVE / 链传动</span>
-          <div className="bike-canvas">
-            <BicycleStudio front={front} rear={rear} cadence={cadence} playing={playing} />
+          <div className="bike-canvas" style={{ opacity: cut }}>
+            <BicycleStudio
+              key={demo.watch ? `film-${demo.run}` : 'manual'}
+              front={front}
+              rear={rear}
+              cadence={cadence}
+              playing={playing}
+              closeup={demo.watch && demo.time >= 9 && demo.time < 16}
+            />
           </div>
-          <p className="bike-scene-note">拖动查看结构 · 方向键也可旋转</p>
+          <p className="bike-scene-note">同一踏频 · 金色链节追踪</p>
         </div>
         <div className="lab-controls">
           <div>
@@ -73,7 +90,7 @@ export default function Bicycle() {
       <p className="lab-caption">
         模型计算<strong>维持所选踏频所需的力</strong>
         ，并不假设人能无限输出功率。包含坡度、滚阻与空气阻力；忽略换挡瞬间，采用 96%
-        传动效率。踏板力是等效切向平均值。
+        传动效率。三维展示两轴链传动试验架，换挡前后分别展示已张紧的链条；不模拟拨链器。踏板力是等效切向平均值。
       </p>
     </div>
   );

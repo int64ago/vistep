@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
-import { compressBlock, sampleBlock } from '../../models/jpeg';
+import { useShowcase, ramp } from '../lab/Showcase';
+import { compressBlock, sampleBlock, frequencyOrder } from '../../models/jpeg';
 function PixelBlock({
   values,
   selected,
@@ -12,18 +13,43 @@ function PixelBlock({
   onSelect?: (n: number) => void;
   heat?: boolean;
 }) {
+  const demo = useShowcase();
   const maximum = Math.max(1, ...values.map(Math.abs));
+  if (!heat && (!onSelect || demo.watch))
+    return (
+      <svg
+        className="pixel-block"
+        viewBox="0 0 8 8"
+        shapeRendering="crispEdges"
+        role="img"
+        aria-label="8 乘 8 亮度图块"
+      >
+        <title>8 乘 8 亮度图块</title>
+        {values.map((v, i) => (
+          <rect
+            key={i}
+            x={i % 8}
+            y={Math.floor(i / 8)}
+            width="1"
+            height="1"
+            fill={`rgb(${v},${v},${v})`}
+          />
+        ))}
+      </svg>
+    );
   return (
     <div
       className="pixel-block"
-      role="group"
+      role={demo.watch ? 'img' : 'group'}
       aria-label={heat ? '64 个频率系数' : '8 乘 8 像素图块'}
     >
       {values.map((v, i) => (
         <button
           key={i}
           type="button"
-          disabled={!onSelect}
+          disabled={!onSelect || demo.watch}
+          tabIndex={demo.watch ? -1 : undefined}
+          aria-hidden={demo.watch ? true : undefined}
           aria-label={`${heat ? '频率系数' : '像素'} ${(i % 8) + 1},${Math.floor(i / 8) + 1}：${v.toFixed(1)}`}
           aria-pressed={selected === i}
           onClick={() => onSelect?.(i)}
@@ -42,11 +68,30 @@ function PixelBlock({
   );
 }
 export default function Jpeg() {
-  const [pattern, setPattern] = useState('edge'),
-    [quality, setQuality] = useState(35),
-    [keep, setKeep] = useState(64),
-    [selected, setSelected] = useState(1),
-    [view, setView] = useState<'image' | 'basis'>('image');
+  const demo = useShowcase();
+  const [manualPattern, setPattern] = useState('edge'),
+    [manualQuality, setQuality] = useState(35),
+    [manualKeep, setKeep] = useState(64),
+    [manualSelected, setSelected] = useState(1),
+    [manualView, setView] = useState<'image' | 'basis'>('image');
+  const pattern = demo.watch ? 'edge' : manualPattern;
+  const quality = demo.watch ? Math.round(85 - 77 * ramp(demo.time, 26, 29)) : manualQuality;
+  const keep = demo.watch
+    ? demo.time < 7
+      ? 64
+      : demo.time < 12
+        ? 1
+        : demo.time < 20
+          ? Math.round(1 + 15 * ramp(demo.time, 12, 20))
+          : Math.round(16 + 48 * ramp(demo.time, 20, 25))
+    : manualKeep;
+  const selected = demo.watch
+    ? demo.time < 7
+      ? [1, 8, 9][Math.min(2, Math.floor(demo.time / 2.4))]
+      : frequencyOrder[Math.min(63, keep - 1)]
+    : manualSelected;
+  const view = demo.watch ? 'image' : manualView;
+  const previewBasis = demo.watch && demo.time < 7;
   const block = useMemo(() => sampleBlock(pattern), [pattern]);
   const [result, setResult] = useState(() => compressBlock(block, quality, keep));
   const worker = useRef<Worker | null>(null),
@@ -128,7 +173,7 @@ export default function Jpeg() {
       <div className="jpeg-workbench">
         <div className="jpeg-panel">
           <p className="eyebrow">01 / {view === 'basis' ? 'BASIS PATTERN' : 'ORIGINAL'}</p>
-          <h3>{view === 'basis' ? `频率 (${u}, ${v}) 的基图案` : '原始亮度图块'}</h3>
+          <h3>{view === 'basis' ? `频率 (${u}, ${v}) 的基图案` : '原始图像'}</h3>
           <PixelBlock values={view === 'basis' ? basis : block} />
           <p>
             {view === 'basis'
@@ -141,8 +186,13 @@ export default function Jpeg() {
         </span>
         <div className="jpeg-panel">
           <p className="eyebrow">02 / DCT + QUANTIZATION</p>
-          <h3>量化后的频率系数</h3>
-          <PixelBlock values={result.quantized} selected={selected} onSelect={setSelected} heat />
+          <h3>{previewBasis ? `一种频率 (${u}, ${v})` : '频率系数'}</h3>
+          <PixelBlock
+            values={previewBasis ? basis : result.quantized}
+            selected={previewBasis ? undefined : selected}
+            onSelect={setSelected}
+            heat={!previewBasis}
+          />
           <p>
             高亮：({u}, {v})　值 {result.coefficients[selected].toFixed(1)} →{' '}
             {result.quantized[selected]}
@@ -153,7 +203,7 @@ export default function Jpeg() {
         </span>
         <div className="jpeg-panel">
           <p className="eyebrow">03 / RECONSTRUCTED</p>
-          <h3>重新拼回的图像</h3>
+          <h3>重建图像</h3>
           <PixelBlock values={result.reconstructed} />
           <p>被舍去的细节，不会凭空回来。</p>
         </div>

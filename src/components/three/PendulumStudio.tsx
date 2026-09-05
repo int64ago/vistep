@@ -111,7 +111,8 @@ export default function PendulumStudio({
         const trail = new THREE.Line(trailGeometry, trailMaterial);
         root.add(trail);
         const history: THREE.Vector3[] = [];
-        let lastAngle = 0;
+        let lastAngle = angle,
+          lastLength = length;
         const canvas = controls.domElement!;
         let dragging = false;
         const raycaster = new THREE.Raycaster(),
@@ -132,6 +133,7 @@ export default function PendulumStudio({
           }
         };
         const down = (event: PointerEvent) => {
+          if (!controls.enabled) return;
           move(event);
           if (raycaster.intersectObject(ball).length) {
             dragging = true;
@@ -161,7 +163,12 @@ export default function PendulumStudio({
             wire.position.y = -L / 2;
             ball.position.y = -L;
             ball.scale.setScalar(Math.cbrt(state.mass) * 0.9);
-            collar.position.y = -L + 0.18;
+            collar.position.y = -L + 0.25 * Math.cbrt(state.mass) * 0.9;
+            if (state.length !== lastLength || Math.abs(state.angle - lastAngle) > 0.12) {
+              history.length = 0;
+              trailGeometry.setDrawRange(0, 0);
+              lastLength = state.length;
+            }
             if (Math.abs(state.angle - lastAngle) > 0.0002) {
               lastAngle = state.angle;
               history.push(

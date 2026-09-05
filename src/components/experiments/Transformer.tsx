@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
+import { useShowcase } from '../lab/Showcase';
 import type { Inspection } from '../../models/transformer';
 const vocab = ['猫', '狗', '鸟', '爱', '吃', '鱼', '肉', '虫', '。'];
 export default function Transformer() {
+  const demo = useShowcase();
   const [inspection, setInspection] = useState<Inspection | null>(null),
     [mode, setMode] = useState<'train' | 'generate'>('train'),
     [subject, setSubject] = useState('猫'),
@@ -34,7 +36,7 @@ export default function Transformer() {
         if (data.running !== undefined) setRunning(data.running);
         if (typeof data.loss === 'number') {
           setLoss(data.loss);
-          setHistory((old) => [...old, data.loss]);
+          setHistory((old) => [...old.slice(-299), data.loss]);
         }
         if (data.type === 'sample') setText((old) => old + data.next);
       };
@@ -47,6 +49,38 @@ export default function Transformer() {
       setError('此浏览器暂不支持后台模型计算。');
     }
   }, []);
+  useEffect(() => {
+    if (demo.watch) {
+      reset();
+      setMode('train');
+      setMatrix('attention');
+    }
+  }, [demo.watch, demo.run]);
+  const trainSlot = demo.time >= 6 && demo.time < 27 ? Math.floor((demo.time - 6) / 0.65) : -1;
+  useEffect(() => {
+    if (demo.watch && demo.playing && trainSlot >= 0)
+      worker.current?.postMessage({ type: 'train', steps: 5, context: '猫爱吃', rate: 0.015 });
+  }, [trainSlot, demo.watch, demo.run]);
+  useEffect(() => {
+    if (demo.watch && demo.time >= 28) {
+      worker.current?.postMessage({ type: 'stop' });
+      setMode('generate');
+      setText('猫爱吃');
+      worker.current?.postMessage({ type: 'inspect', context: '猫爱吃' });
+    }
+  }, [demo.watch, demo.time >= 28, demo.run]);
+  const sampleSlot = demo.time >= 29 ? Math.min(2, 1 + Math.floor((demo.time - 29) / 3)) : 0;
+  useEffect(() => {
+    if (demo.watch && demo.playing && sampleSlot > 0)
+      worker.current?.postMessage({
+        type: 'sample',
+        context: textRef.current.slice(-4),
+        temperature: 0,
+      });
+  }, [sampleSlot, demo.watch, demo.run]);
+  useEffect(() => {
+    if (demo.watch && !demo.playing) worker.current?.postMessage({ type: 'stop' });
+  }, [demo.watch, demo.playing]);
   const switchSubject = (s: string) => {
     setSubject(s);
     const input = s + '爱吃';
@@ -65,6 +99,11 @@ export default function Transformer() {
   const probs =
     inspection?.probabilities.map((p, i) => ({ p, token: vocab[i] })).sort((a, b) => b.p - a.p) ||
     [];
+  const visibleProbs = demo.watch
+    ? ['鱼', '。', '肉', '虫']
+        .map((token) => probs.find((p) => p.token === token))
+        .filter((p): p is { p: number; token: string } => !!p)
+    : probs.slice(0, 6);
   const grid = matrix === 'attention' ? inspection?.attention : inspection?.embeddings;
   const tokens = [...(inspection?.context || text.slice(-4))];
   const lossMax = Math.max(2.5, ...history);
@@ -104,7 +143,7 @@ export default function Transformer() {
                 {ch}
               </span>
             ))}
-            {mode === 'generate' && <span className="token">?</span>}
+            {mode === 'generate' && !text.endsWith('。') && <span className="token">?</span>}
           </div>
           <div className="lab-actions" style={{ marginBottom: 23 }}>
             <Segments
@@ -127,7 +166,7 @@ export default function Transformer() {
             ]}
             onChange={setMatrix}
           />
-          <div style={{ marginTop: 20 }}>
+          <div className="attention-block" style={{ marginTop: 20 }}>
             {matrix === 'attention' && (
               <div className="attention-cols">
                 {tokens.map((ch, i) => (
@@ -190,6 +229,7 @@ export default function Transformer() {
           </p>
           <svg
             className="loss-chart"
+            preserveAspectRatio="none"
             viewBox="0 0 420 110"
             role="img"
             aria-label="训练损失曲线，越低表示模型给正确字更高概率"
@@ -223,7 +263,7 @@ export default function Transformer() {
               正在初始化 8 维教学模型…
             </p>
           )}
-          {probs.slice(0, 6).map(({ p, token }) => (
+          {visibleProbs.map(({ p, token }) => (
             <div className="prob-row" key={token}>
               <span>{token}</span>
               <div className="prob-track">
@@ -302,7 +342,17 @@ export default function Transformer() {
               </p>
             </>
           )}
-          <h3 className="lab-subtitle" style={{ marginTop: 24 }}>
+          {demo.watch && (
+            <div className="film-model-stats">
+              <span>
+                权重更新 <b>{inspection?.step || 0}</b> 次
+              </span>
+              <span>
+                预测误差 <b>{loss === null ? '—' : loss.toFixed(3)}</b>
+              </span>
+            </div>
+          )}
+          <h3 className="lab-subtitle weight-title" style={{ marginTop: 24 }}>
             Q 权重的一行 · 实际参数
           </h3>
           <div className="weight-values">

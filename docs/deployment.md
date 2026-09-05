@@ -25,3 +25,7 @@ pnpm exec wrangler rollback d31022c8-a4ad-446c-898e-19a7298503e1 --name vistep
 ```
 
 后续版本用对应的 ID 替换。可用 `pnpm exec wrangler deployments list --name vistep` 查阅部署记录。回滚恢复目标版本的代码和资产，不需要改动域名绑定。
+
+## 本次预览
+
+2026-09-05 自动演示与机械细节改版：`vistep-preview` 版本 `e856b90b-558a-461a-8541-9312d068da06`。预览地址：<https://vistep-preview.int64ago.workers.dev/>。本次未发布正式 Worker。检查范围与结果见 [自动演示检查记录](qa-automatic-demos.md)。
