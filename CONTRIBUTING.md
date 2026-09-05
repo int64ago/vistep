@@ -16,7 +16,7 @@ Thank you for helping make mechanisms easier to see. Contributions may improve e
 
 ## New or revised scenes
 
-Use [the production guide](docs/creating-a-scene.md) and [retrospective](docs/retrospective.md). `pnpm scene:new <slug> --medium <three|svg|canvas|audio|hybrid>` creates an unpublished draft. The guide is maintained in Chinese; draft headings and source identifiers are bilingual.
+Use [the production guide](docs/creating-a-scene.md) and [retrospective](docs/retrospective.md). When using Codex, describe the scene to `$vistep-scene`; it handles the complete production workflow. The draft generator is an optional internal helper, not the user-facing entry point. The guide is maintained in Chinese; draft headings and source identifiers are bilingual.
 
 Scenes must have their own appropriate visual form. A complete, understandable silent demonstration comes before extra controls. Derive geometry and numbers from the same model. Explain simplifications and cite technical sources. Keep Chinese and English content complete, with spoken scripts written for observation rather than reciting UI text.
 

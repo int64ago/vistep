@@ -33,7 +33,6 @@ pnpm dev
 Open [localhost:4321](http://127.0.0.1:4321/). Recorded audio is committed to the repository. Normal builds do not call a speech service.
 
 ```sh
-pnpm scene:new induction-motor --medium three  # Create an unpublished brief
 pnpm scene:check                              # Check scene, language and audio contracts
 pnpm verify                                  # Format, types, tests, build and artifact audit
 pnpm build:preview                           # Separate output with noindex headers
@@ -41,6 +40,12 @@ pnpm preview                                 # Serve the production build locall
 ```
 
 ## Creating an explanation
+
+Use the [vistep-scene skill](.agents/skills/vistep-scene/SKILL.md) with a natural-language request:
+
+> Use $vistep-scene to create an explanation of why an induction motor turns.
+
+The skill handles research, storyboarding, an independent visual design, modeling, implementation, Chinese and English narration, and review. Describe the subject and any preferences; the skill runs its production tools internally.
 
 Start with one question, one object to follow and the initial, turning and final frames. Choose 3D, SVG, Canvas, audio or a combination because it explains the subject. Implement one complete causal sequence before adding optional controls. Keep numerical models independent and make teaching simplifications explicit.
 
