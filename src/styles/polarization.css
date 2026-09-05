@@ -1,0 +1,440 @@
+.polarization-installation {
+  --pol-ink: #d2dfdf;
+  --pol-muted: #a1b6c2;
+  color: var(--pol-ink);
+  background: radial-gradient(ellipse at 28% 24%, #1c3545 0, #122735 49%, #0e202e 100%);
+  padding: 25px 32px 20px;
+  font-size: 16px;
+  line-height: 1.55;
+  overflow: hidden;
+  min-width: 0;
+}
+.polarization-installation * {
+  box-sizing: border-box;
+}
+.polarization-header,
+.polarization-source-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+.polarization-header {
+  color: #c2d3d9;
+  padding-bottom: 24px;
+}
+.polarization-header > span:last-child {
+  color: var(--pol-muted);
+  text-align: right;
+}
+.polarization-source-line {
+  color: var(--pol-muted);
+  font-variant-numeric: tabular-nums;
+}
+.polarization-source-line > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.polarization-source-dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #c6dce3;
+  flex: 0 0 auto;
+}
+.polarization-optics-host {
+  width: 100%;
+  min-width: 0;
+}
+.polarization-optics {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+.polarization-optics text,
+.polarization-curve text {
+  font-family: inherit;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.polarization-curve text {
+  fill: #c6d5dc;
+}
+.polarization-optics .polarization-svg-number {
+  fill: #dce2d8;
+}
+.polarization-optics .polarization-svg-muted {
+  fill: var(--pol-muted);
+}
+.polarization-readout {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 8px 0 20px;
+}
+.polarization-readout > span {
+  flex-shrink: 0;
+  color: var(--pol-muted);
+}
+.polarization-readout output {
+  min-width: 112px;
+  text-align: right;
+  font-size: 34px;
+  line-height: 1.2;
+  color: #f0dfbe;
+  font-variant-numeric: tabular-nums;
+}
+.polarization-readout small {
+  font-size: 18px;
+  padding-left: 4px;
+}
+.polarization-ruler {
+  height: 5px;
+  background: #607b8e36;
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.polarization-ruler i {
+  display: block;
+  height: 100%;
+  background: #e1c185;
+  border-radius: inherit;
+}
+.polarization-detail {
+  border-top: 1px solid #aac0c51f;
+  display: grid;
+  grid-template-columns: 165px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 18px 0;
+  min-height: 199px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.polarization-end-on {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--pol-muted);
+}
+.polarization-face {
+  width: 140px;
+  height: 140px;
+  display: block;
+}
+.polarization-detail-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  min-width: 0;
+}
+.polarization-detail-copy > span {
+  color: var(--pol-muted);
+  font-size: 16px;
+}
+.polarization-detail-copy > b {
+  font-size: 24px;
+  font-weight: 450;
+  color: #e6d8b9;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.polarization-curve {
+  width: 228px;
+  max-width: 100%;
+  display: block;
+  overflow: visible;
+}
+.polarization-energy {
+  border-top: 1px solid #aac0c51f;
+  padding: 25px 0 15px;
+  min-height: 217px;
+}
+.polarization-energy-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17px;
+  color: var(--pol-muted);
+}
+.polarization-energy-heading b {
+  font-weight: 450;
+  color: #e3dfcd;
+}
+.polarization-energy-bar {
+  display: flex;
+  height: 9px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.polarization-energy-bar span {
+  height: 100%;
+}
+.polarization-energy-labels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  padding-top: 16px;
+}
+.polarization-energy-labels > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--pol-muted);
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+.polarization-energy-labels > div[data-active='true'] {
+  background: #a4bec214;
+  color: #eef1df;
+}
+.polarization-energy-labels strong {
+  font-size: 23px;
+  font-weight: 450;
+  font-variant-numeric: tabular-nums;
+}
+.polarization-energy p {
+  color: var(--pol-muted);
+  text-align: center;
+  margin: 14px 0 0;
+}
+.polarization-explore {
+  border-top: 1px solid #aac0c522;
+  padding: 22px 0;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.polarization-installation button,
+.polarization-source-select select {
+  font: inherit;
+  border: 1px solid #aec1c42e;
+  border-radius: 24px;
+  color: #dde4df;
+  background: #6d8b9920;
+  min-height: 44px;
+  padding: 9px 17px;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+.polarization-installation button:hover {
+  background: #94b3bf2c;
+}
+.polarization-installation :is(button, select, summary, [role='slider'], input):focus-visible {
+  outline: 2px solid #ebcc92;
+  outline-offset: 4px;
+}
+.polarization-installation button:disabled {
+  opacity: 0.32;
+  cursor: default;
+}
+.polarization-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.polarization-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 20px 0;
+}
+.polarization-toggles label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.polarization-toggles input {
+  width: 20px;
+  height: 20px;
+  accent-color: #91c6c4;
+}
+.polarization-select {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+.polarization-select button {
+  font-variant-numeric: tabular-nums;
+  padding: 9px 8px;
+}
+.polarization-select button[aria-pressed='true'] {
+  background: #a1bdb629;
+  border-color: #a1bdb670;
+}
+.polarization-dial-wrap {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  align-items: center;
+  gap: 30px;
+  padding: 25px 0;
+}
+.polarization-dial {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 1px solid #96b1be6b;
+  box-shadow:
+    inset 0 0 0 7px #69879513,
+    0 8px 26px #050e181c;
+  background: radial-gradient(circle, #1d3746, #162c3a);
+  touch-action: none;
+  cursor: grab;
+}
+.polarization-dial:active {
+  cursor: grabbing;
+}
+.polarization-dial-axis {
+  position: absolute;
+  width: 2px;
+  top: 13px;
+  bottom: 13px;
+  left: 62px;
+  background: #d9c89f;
+  border-radius: 2px;
+}
+.polarization-dial-axis i {
+  position: absolute;
+  top: -4px;
+  left: -5px;
+  width: 12px;
+  height: 12px;
+  background: #ecdbb4;
+  border: 2px solid #132834;
+  border-radius: 50%;
+}
+.polarization-dial-origin {
+  position: absolute;
+  left: 50%;
+  top: -26px;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: #a7bdc6;
+}
+.polarization-dial-wrap > div:last-child {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 7px;
+}
+.polarization-dial-wrap output {
+  font-size: 35px;
+  line-height: 1.2;
+  color: #eadab8;
+  font-variant-numeric: tabular-nums;
+}
+.polarization-dial-wrap small {
+  font-size: 16px;
+  color: var(--pol-muted);
+}
+.polarization-source-select {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 18px;
+  align-items: center;
+}
+.polarization-source-select select {
+  border-radius: 12px;
+  width: 100%;
+  min-width: 0;
+  background: #1c3443;
+}
+.polarization-note {
+  border-top: 1px solid #adc4ce1c;
+  color: var(--pol-muted);
+  font-size: 16px;
+}
+.polarization-note summary {
+  min-height: 44px;
+  padding: 12px 0 8px;
+  cursor: pointer;
+}
+.polarization-note p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+@media (max-width: 760px) {
+  .polarization-installation {
+    padding: 21px 16px 14px;
+  }
+  .polarization-header {
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 20px;
+  }
+  .polarization-header > span:last-child {
+    text-align: left;
+  }
+  .polarization-source-line {
+    gap: 10px;
+  }
+  .polarization-readout {
+    gap: 14px;
+    padding: 12px 0 20px;
+  }
+  .polarization-readout output {
+    font-size: 30px;
+    min-width: 100px;
+  }
+  .polarization-detail {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 12px;
+    min-height: 210px;
+  }
+  .polarization-face {
+    width: 120px;
+    height: 120px;
+  }
+  .polarization-detail-copy > b {
+    font-size: 18px;
+    white-space: normal;
+  }
+  .polarization-detail-copy .polarization-curve {
+    width: 228px;
+    max-width: none;
+    margin: 0;
+  }
+  .polarization-detail:has(.polarization-curve) {
+    grid-template-columns: 1fr;
+  }
+  .polarization-detail:has(.polarization-curve) .polarization-end-on {
+    display: none;
+  }
+  .polarization-detail:has(.polarization-curve) .polarization-detail-copy {
+    align-items: center;
+  }
+  .polarization-energy-labels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px 10px;
+  }
+  .polarization-energy-labels > div {
+    padding: 5px 8px;
+  }
+  .polarization-dial-wrap {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 22px;
+  }
+  .polarization-dial {
+    width: 108px;
+    height: 108px;
+  }
+  .polarization-dial-axis {
+    left: 52px;
+  }
+  .polarization-source-select {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .polarization-installation button,
+  .polarization-source-select select {
+    transition: none;
+  }
+}

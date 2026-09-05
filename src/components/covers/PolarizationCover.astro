@@ -1,0 +1,116 @@
+---
+import {
+  polarizationAxis,
+  polarizationField,
+  polarizationPath,
+  polarizationSetup,
+} from '../../models/polarization';
+interface Props {
+  color?: string;
+}
+const { color = '#88c9c3' } = Astro.props;
+const state = polarizationSetup(0, 45, 90);
+const colors = [color, '#bcade1', '#e8c588'];
+const project = (x: number, y = 0, z = 0) => ({ x: 24 + x * 344 + z * 0.5, y: 112 - y + z * 0.22 });
+const ring = (x: number, radius: number) =>
+  polarizationPath(
+    Array.from({ length: 65 }, (_, i) => {
+      const a = (i / 64) * Math.PI * 2;
+      return project(x, radius * Math.cos(a), radius * Math.sin(a));
+    }),
+    true,
+  );
+const breaks = [0, ...state.stages.map((s) => s.x), 1];
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="polarization-cover-room" cx=".34" cy=".35" r=".8">
+      <stop stop-color="#244153"></stop><stop offset="1" stop-color="#102532"></stop>
+    </radialGradient>
+    <radialGradient id="polarization-cover-screen">
+      <stop stop-color="#efd09b" stop-opacity=".9"></stop><stop
+        offset="1"
+        stop-color="#efd09b"
+        stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="230" fill="url(#polarization-cover-room)"></rect>
+  <path d="M24 112H376" stroke="#829ca9" stroke-opacity=".25" stroke-dasharray="2 5"></path>
+  {
+    breaks.slice(0, -1).map((from, i) => {
+      const to = breaks[i + 1];
+      const points = Array.from({ length: 85 }, (_, n) => {
+        const x = from + ((to - from) * n) / 84;
+        const f = polarizationField(state, Math.max(from, x - (n === 84 ? 1e-8 : 0)), 3.6);
+        return project(x, f.y * 22, f.z * 22);
+      });
+      return (
+        <path
+          d={polarizationPath(points)}
+          stroke={i ? colors[i - 1] : '#b8cbd2'}
+          stroke-width="1.4"
+          stroke-linejoin="round"
+        />
+      );
+    })
+  }
+  {
+    state.stages.map((stage, i) => {
+      const u = polarizationAxis(stage.angle),
+        c = project(stage.x);
+      const a = project(stage.x, u.y * 49, u.z * 49),
+        b = project(stage.x, -u.y * 49, -u.z * 49);
+      return (
+        <g>
+          <path
+            d={ring(stage.x, 49)}
+            fill="#162d3a"
+            fill-opacity=".64"
+            stroke={colors[i]}
+            stroke-width="1.6"
+            stroke-opacity=".85"
+          />
+          <path d={ring(stage.x, 45)} stroke={colors[i]} stroke-opacity=".24" />
+          <path
+            d={`M${a.x} ${a.y}L${b.x} ${b.y}`}
+            stroke={colors[i]}
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+          <circle cx={a.x} cy={a.y} r="2.7" fill={colors[i]} />
+          <text
+            x={c.x}
+            y="183"
+            text-anchor="middle"
+            font-family="Manrope, sans-serif"
+            font-size="12"
+            fill={colors[i]}
+          >
+            {stage.angle}°
+          </text>
+          <text
+            x={c.x}
+            y="205"
+            text-anchor="middle"
+            font-family="Manrope, sans-serif"
+            font-size="16"
+            fill="#dce4da"
+          >
+            {(stage.after.intensity * 100).toFixed(1).replace('.0', '')}%
+          </text>
+        </g>
+      );
+    })
+  }
+  <path d={ring(1, 20)} fill="#11232e" stroke="#8196a1" stroke-opacity=".5"></path>
+  <path
+    d={ring(1, 20)}
+    fill="url(#polarization-cover-screen)"
+    opacity={Math.sqrt(state.output.intensity)}></path>
+  <path
+    d="M170 28H230M226 24L231 28L226 32"
+    stroke="#a6bbc3"
+    stroke-width="1.1"
+    stroke-linecap="round"></path>
+</svg>

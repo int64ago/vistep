@@ -1,0 +1,108 @@
+---
+import { BEARING as B, bearingState } from '../../models/ball-bearing';
+interface Props {
+  color?: string;
+}
+const { color = '#b59b73' } = Astro.props;
+const state = bearingState(1.9);
+const scale = 37;
+const macroR = (B.pitch / B.ball) * 45;
+const macroY = macroR - 8;
+const contactArc = (radius: number) => {
+  const y = macroY - Math.sqrt(radius ** 2 - 46 ** 2);
+  return `M-46 ${y}A${radius} ${radius} 0 0 1 46 ${y}`;
+};
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <defs>
+    <radialGradient id="bb-cover-bg"
+      ><stop stop-color="#2c4a56"></stop><stop offset="1" stop-color="#112b38"
+      ></stop></radialGradient
+    >
+    <linearGradient id="bb-cover-metal" x1="0" y1="0" x2="1" y2="1"
+      ><stop stop-color="#d8e3e5"></stop><stop offset=".3" stop-color="#617e8b"></stop><stop
+        offset=".6"
+        stop-color="#b5c6cc"></stop><stop offset="1" stop-color="#415b68"></stop></linearGradient
+    >
+    <radialGradient id="bb-cover-ball" cx="30%" cy="25%"
+      ><stop stop-color="#eef2ec"></stop><stop offset=".4" stop-color="#a9bec7"></stop><stop
+        offset="1"
+        stop-color="#284451"></stop></radialGradient
+    >
+    <radialGradient id="bb-cover-gold" cx="32%" cy="25%"
+      ><stop stop-color="#fff0bd"></stop><stop offset=".55" stop-color={color}></stop><stop
+        offset="1"
+        stop-color="#735a3d"></stop></radialGradient
+    >
+  </defs>
+  <rect width="400" height="230" fill="url(#bb-cover-bg)"></rect>
+  <ellipse cx="157" cy="213" rx="116" ry="10" fill="#061a23" opacity=".35"></ellipse>
+  <g transform="translate(150 114)">
+    <path d="M-71 60v36H71V60" stroke="#375864" stroke-width="13" stroke-linejoin="round"></path>
+    <path d="M-100 99H100" stroke="#577780" stroke-width="6" stroke-linecap="round"></path>
+    <circle
+      r={((B.housingOutside + B.outside) / 2) * scale}
+      stroke="#31505e"
+      stroke-width={(B.housingOutside - B.outside) * scale}></circle>
+    <circle
+      r={((B.outside + B.pitch + B.ball) / 2) * scale}
+      stroke="url(#bb-cover-metal)"
+      stroke-width={(B.outside - B.pitch - B.ball) * scale}></circle>
+    <circle
+      r={((B.bore + B.pitch - B.ball) / 2) * scale}
+      stroke="url(#bb-cover-metal)"
+      stroke-width={(B.pitch - B.ball - B.bore) * scale}></circle>
+    <circle r={B.bore * scale} fill="#365461" stroke="#718c98"></circle>
+    <circle r={B.pitch * scale} stroke={color} stroke-width="3" opacity=".45"></circle>
+    {
+      state.balls.map((ball) => (
+        <g>
+          <circle
+            cx={ball.x * scale}
+            cy={-ball.y * scale}
+            r={B.ball * scale}
+            fill={ball.id ? 'url(#bb-cover-ball)' : 'url(#bb-cover-gold)'}
+            stroke={ball.id ? '#c1d0d4' : '#eacf92'}
+            stroke-width=".6"
+          />
+          {ball.id === 0 && (
+            <circle
+              cx={(ball.x + B.ball * 0.7 * Math.cos(ball.spin)) * scale}
+              cy={-(ball.y + B.ball * 0.7 * Math.sin(ball.spin)) * scale}
+              r="2.2"
+              fill="#283b43"
+            />
+          )}
+        </g>
+      ))
+    }
+    <path d="M39-9h8" stroke="#d8bc7f" stroke-width="3"></path>
+    {
+      [0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+        <circle
+          cx={96 * Math.cos((i * Math.PI) / 4)}
+          cy={96 * Math.sin((i * Math.PI) / 4)}
+          r="2.1"
+          fill="#b4c7cb"
+        />
+      ))
+    }
+  </g>
+  <path
+    d="M207 162Q254 170 276 143"
+    stroke="#b8c9cc"
+    stroke-width=".8"
+    stroke-dasharray="3 5"
+    opacity=".6"></path>
+  <g transform="translate(317 113)">
+    <path d={contactArc(macroR + 45 + 6)} stroke="#97afbc" stroke-width="12"></path>
+    <path d={contactArc(macroR - 45 - 6)} stroke="#a1b8c2" stroke-width="12"></path>
+    <circle cy="-8" r="45" fill="url(#bb-cover-gold)" stroke="#e0c894" stroke-width=".7"></circle>
+    <circle cy="-53" r="3" fill="#ffde9e"></circle>
+    <circle cy="37" r="3" fill="#ffde9e"></circle>
+    <circle cx="20" cy="-29" r="4" fill="#2d4149"></circle>
+    <path d="M-18 60h39m-5-4 5 4-5 4" stroke="#d6bd87" stroke-width="1.5"></path>
+    <path d="M-15-74h30" stroke="#7794a3" stroke-width="1.5"></path>
+  </g>
+</svg>

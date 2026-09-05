@@ -1,0 +1,109 @@
+---
+import { CPU_STAGES, cpuIdentity, cpuTraces } from '../../models/cpu-pipeline';
+interface Props {
+  color?: string;
+}
+const { color = '#527b70' } = Astro.props;
+const trace = cpuTraces().pipeline;
+const frame = trace[5];
+const palette = ['#9b543b', '#326c71', '#766195', '#986b25', '#316f5b'];
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f1f2e9"></rect>
+  <path d="M22 90H378" stroke="#c6d1c1"></path>
+  {
+    CPU_STAGES.map((stage, index) => {
+      const token = frame.slots[index]!;
+      return (
+        <g transform={`translate(${24 + index * 73} 20)`}>
+          <text
+            x="30"
+            y="0"
+            text-anchor="middle"
+            font-family="sans-serif"
+            font-size="11"
+            fill="#64786c"
+          >
+            {stage}
+          </text>
+          <rect
+            x="0"
+            y="14"
+            width="60"
+            height="48"
+            rx="10"
+            fill="#fffcf4"
+            stroke={palette[token.pc]}
+            stroke-opacity=".3"
+          />
+          <text x="11" y="35" font-family="sans-serif" font-size="19" fill={palette[token.pc]}>
+            {cpuIdentity(token.pc)}
+          </text>
+          <text x="11" y="51" font-family="monospace" font-size="10" fill={palette[token.pc]}>
+            {token.instruction.op}
+          </text>
+        </g>
+      );
+    })
+  }
+  <path
+    d="M280 82C280 106 207 106 207 82M201 89l6-7 6 7"
+    stroke={color}
+    stroke-width="1.5"
+    stroke-linecap="round"></path>
+  {
+    Array.from({ length: 8 }, (_, k) => (
+      <text
+        x={86 + k * 38}
+        y="126"
+        text-anchor="middle"
+        font-family="sans-serif"
+        font-size="10"
+        fill="#7a8877"
+      >
+        {k + 1}
+      </text>
+    ))
+  }
+  {
+    [0, 1, 2, 3, 4].map((pc, row) => (
+      <g>
+        <text x="26" y={144 + row * 17} font-family="sans-serif" font-size="12" fill={palette[pc]}>
+          {cpuIdentity(pc)}
+        </text>
+        {Array.from({ length: 8 }, (_, k) => {
+          const s = trace[k + 1],
+            stage = s.slots.findIndex((p) => p?.pc === pc),
+            occupied = stage >= 0;
+          const held = occupied && stage < 2 && trace[k].slots[stage]?.uid === s.slots[stage]?.uid;
+          return (
+            <g>
+              <rect
+                x={70 + k * 38}
+                y={133 + row * 17}
+                width="32"
+                height="14"
+                rx="4"
+                fill={held ? '#e6d5ad' : occupied ? palette[pc] : '#dbe2d4'}
+                fill-opacity={occupied ? '.17' : '.4'}
+              />
+              {occupied && (
+                <text
+                  x={86 + k * 38}
+                  y={143 + row * 17}
+                  text-anchor="middle"
+                  font-family="sans-serif"
+                  font-size="9"
+                  fill={palette[pc]}
+                >
+                  {held ? 'Ⅱ' : CPU_STAGES[stage]}
+                </text>
+              )}
+            </g>
+          );
+        })}
+      </g>
+    ))
+  }
+</svg>

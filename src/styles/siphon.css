@@ -1,0 +1,389 @@
+.siphon-study {
+  padding: 24px 28px 20px;
+  background: radial-gradient(ellipse at 40% 8%, #fbfaf0 0%, #edf1e5 53%, #e2eadb 100%);
+  color: #385d53;
+  font-size: 16px;
+  line-height: 1.55;
+  overflow: hidden;
+}
+.siphon-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #637969;
+}
+.siphon-heading > span {
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+.siphon-study button {
+  min-height: 44px;
+  min-width: 44px;
+  font: inherit;
+  color: #3e6659;
+  background: #f7f9efb8;
+  border: 1px solid #becbbb;
+  border-radius: 22px;
+  padding: 8px 17px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.siphon-study button:hover,
+.siphon-study button[aria-pressed='true'] {
+  background: #d9e7d7;
+  border-color: #8ca992;
+}
+.siphon-study button:focus-visible,
+.siphon-study summary:focus-visible {
+  outline: 3px solid #af8d48;
+  outline-offset: 4px;
+}
+.siphon-reading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 14px 2px;
+  min-height: 117px;
+}
+.siphon-reading > div:first-child {
+  display: grid;
+  gap: 3px;
+}
+.siphon-reading span {
+  font-size: 16px;
+  color: #677e6c;
+}
+.siphon-reading strong {
+  font-size: 42px;
+  font-weight: 450;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+.siphon-reading strong small {
+  font-size: 17px;
+  letter-spacing: 0;
+  margin-left: 10px;
+  font-weight: 400;
+}
+.siphon-boundary {
+  display: grid;
+  text-align: right;
+  gap: 3px;
+}
+.siphon-boundary b {
+  font-size: 24px;
+  font-weight: 500;
+  color: #a08448;
+  font-variant-numeric: tabular-nums;
+}
+.siphon-condition {
+  max-width: 210px;
+  text-align: right;
+}
+.siphon-apparatus {
+  width: 100%;
+  min-width: 0;
+}
+.siphon-apparatus-note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 16px;
+  padding: 12px 14px 0;
+  color: #728371;
+  font-size: 16px;
+}
+.siphon-apparatus > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  overflow: visible;
+}
+.siphon-apparatus svg text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: #456754;
+}
+.siphon-apparatus svg .siphon-muted {
+  fill: #728371;
+}
+.siphon-apparatus svg .siphon-amount {
+  fill: #587c68;
+  font-variant-numeric: tabular-nums;
+}
+.siphon-apparatus svg .siphon-delta {
+  fill: #937943;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: #eff2e5;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.siphon-pressure-strip {
+  padding: 0 12px;
+  margin-top: 0;
+}
+.siphon-pressure-strip > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+}
+.siphon-pressure-strip > svg {
+  width: 100%;
+  display: block;
+  overflow: visible;
+}
+.siphon-observation {
+  margin: 8px 0 18px;
+  padding: 0 14px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  color: #466b57;
+}
+.siphon-volume {
+  display: grid;
+  grid-template-columns: auto minmax(36px, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 14px;
+  border-top: 1px solid #b8c6ae88;
+}
+.siphon-volume > div {
+  display: flex;
+  height: 7px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #d3dfc9;
+}
+.siphon-volume i {
+  height: 100%;
+  background: #679c87;
+}
+.siphon-volume i:nth-child(2) {
+  background: #b59352;
+}
+.siphon-volume i:nth-child(3) {
+  background: #adbea0;
+}
+.siphon-volume b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.siphon-limit {
+  max-width: 620px;
+  margin: 0 auto 24px;
+  padding: 0 14px;
+}
+.siphon-limit-track {
+  height: 6px;
+  background: #d5d4b7;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.siphon-limit-track > i {
+  display: block;
+  background: #67957b;
+  height: 100%;
+}
+.siphon-limit p {
+  margin: 9px 0;
+  font-size: 16px;
+}
+.siphon-limit p:first-of-type {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.siphon-limit b {
+  font-weight: 500;
+  color: #987b42;
+}
+.siphon-explore {
+  padding: 16px 14px 24px;
+  border-top: 1px solid #b8c6ae88;
+}
+.siphon-explore > p {
+  margin: 0 0 24px;
+  color: #637b69;
+}
+.siphon-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 32px;
+}
+.siphon-controls .control,
+.siphon-controls .control-top,
+.siphon-controls output {
+  font-size: 16px;
+  min-width: 0;
+}
+.siphon-controls input {
+  min-height: 44px;
+}
+.siphon-controls .control:last-child {
+  grid-column: 1/-1;
+}
+.siphon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.siphon-assumptions {
+  margin: 0 14px;
+  font-size: 16px;
+  color: #5b7260;
+}
+.siphon-assumptions summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.siphon-assumptions summary::before {
+  content: '＋';
+}
+.siphon-assumptions[open] summary::before {
+  content: '−';
+}
+.siphon-assumptions p {
+  font-size: 16px;
+  margin: 16px 0;
+  line-height: 1.75;
+}
+.siphon-assumptions a {
+  color: #467d67;
+  text-underline-offset: 4px;
+}
+.siphon-equation {
+  overflow-wrap: anywhere;
+  font-family: Georgia, serif;
+  color: #3f6a54;
+}
+@media (max-width: 620px) {
+  .siphon-study {
+    padding: 16px 8px;
+  }
+  .siphon-heading {
+    gap: 8px;
+    padding: 0 4px;
+  }
+  .siphon-heading > span {
+    letter-spacing: 0;
+  }
+  .siphon-heading button {
+    padding: 7px 12px;
+  }
+  .siphon-reading {
+    padding: 20px 8px 4px;
+    min-height: 132px;
+    gap: 15px;
+  }
+  .siphon-reading strong {
+    font-size: 34px;
+  }
+  .siphon-reading > div:first-child {
+    max-width: 60%;
+  }
+  .siphon-boundary {
+    max-width: 44%;
+  }
+  .siphon-boundary b {
+    font-size: 22px;
+  }
+  .siphon-condition {
+    max-width: 40%;
+  }
+  .siphon-controls {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .siphon-observation {
+    font-size: 17px;
+    padding: 0 8px;
+  }
+  .siphon-volume {
+    gap: 10px;
+    padding: 18px 8px;
+  }
+  .siphon-explore {
+    padding: 16px 8px 24px;
+  }
+  .siphon-assumptions {
+    margin: 0 8px;
+  }
+  .siphon-pressure-strip {
+    padding: 0;
+  }
+  .siphon-pressure-strip > div {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .siphon-limit {
+    padding: 0 8px;
+  }
+  .siphon-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .siphon-actions button {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .siphon-study button {
+    transition: none;
+  }
+}
+@media (max-width: 620px) {
+  .siphon-reading {
+    display: grid;
+    gap: 10px;
+    min-height: 0;
+    padding-top: 16px;
+  }
+  .siphon-reading > div:first-child,
+  .siphon-boundary {
+    max-width: none;
+  }
+  .siphon-boundary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    text-align: left;
+    gap: 2px 8px;
+  }
+  .siphon-boundary b {
+    font-size: 19px;
+    white-space: nowrap;
+  }
+  .siphon-boundary > span:last-child {
+    grid-column: 1 / -1;
+  }
+  .siphon-study[data-watch='true'] .siphon-condition {
+    display: none;
+  }
+  .siphon-study[data-watch='true']:is([data-view='height'], [data-view='pressure']) .siphon-volume {
+    display: none;
+  }
+  .siphon-study[data-watch='true'] .siphon-limit {
+    margin-bottom: 14px;
+  }
+  .siphon-study[data-watch='true'] .siphon-observation {
+    margin-bottom: 10px;
+    min-height: 40px;
+  }
+}

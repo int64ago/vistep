@@ -1,0 +1,69 @@
+<h2 id="understand">A little uphill, a net journey downhill</h2>
+
+An empty tube draped over a vessel does not automatically carry water over its crest. The source-connected leg fills partway, leaving air above it. The hand primer supplies external work to remove that air. After a continuous liquid column forms, a free outlet below the source surface allows sustained siphoning.
+
+A small parcel gains gravitational potential energy on the rising leg. The complete journey matters: water leaves a higher surface and reaches a lower outlet. That net loss of elevation supplies kinetic energy and energy dissipated at the entrance, bend and wall. With both boundaries exposed to the same atmosphere, atmospheric pressure cancels from the driving-head difference. The absolute pressure distribution still determines whether a continuous column is feasible.
+
+The pale dots and gold tracer follow the same tube. The source falls, the receiving vessel rises, and some water remains inside the tube. Their sum stays at 63 L. The hybrid cutaway uses transparent shallow troughs, an enlarged tube bore and tracers moving at 22% of model speed so the route remains observable.
+
+<h2 id="try">Change one condition</h2>
+
+- **Prime first.** Start with an empty tube, inspect the air at the crest, then prime it and advance trial time.
+- **Raise the outlet.** The short rigid tube rotates about its submerged inlet without changing length. As the outlet approaches the source surface, flow decreases. At or above that level, this free outlet cannot sustain forward discharge.
+- **Admit air at the crest.** In the film, water retreats down both legs while the head difference remains. The manual vent button starts a fresh comparison in the drained equilibrium state.
+- **Use a taller crest.** This prepares a different tube with longer upright legs. The tube is refilled, and the same total water inventory determines the new source level.
+- **Lower ambient pressure.** The short tube keeps essentially the same flow. A tall tube can cross the vapor-pressure boundary. Warmer water also has a higher saturation vapor pressure.
+
+Changing an apparatus setting restarts trial time. Scrubbing time reconstructs the accumulated transfer from the beginning, independently of earlier interactions.
+
+<h2 id="deeper">Head, losses and the column's limits</h2>
+
+<details>
+<summary>Which two heights define the head?</summary>
+
+The outlet discharges into air above the receiving surface. The driving head is therefore source-surface elevation zₛ minus outlet elevation zₒ. It is not the difference between vessel bottoms or the length of the descending leg. A submerged outlet requires a downstream free-surface boundary condition instead. The model rejects that condition rather than applying the free-jet equation to it.
+
+The [US Bureau of Reclamation's siphon measurement guidance](https://www.usbr.gov/tsc/techreferences/mands/wmm/chap14_14.html) distinguishes free and submerged exits and describes air locking at low discharge.
+
+</details>
+
+<details>
+<summary>What produces the displayed numbers?</summary>
+
+Neglecting source-surface velocity, the energy balance from the source surface to the free outlet is:
+
+<div className="formula">Δh = zₛ − zₒ = [1 + Kentrance + Kbend + fL/D] v²/(2g), Q = Av</div>
+
+Authored parameters are bore D = 12 mm, Darcy friction factor f = 0.03, entrance loss coefficient 0.5 and total bend loss coefficient 0.4. The coefficients remain fixed to isolate changes in head; they are not recomputed from Reynolds number or fitted to a particular hose. Density is 998.2 kg/m³ and gravitational acceleration is 9.80665 m/s². Temperature changes vapor pressure only, not viscosity or density.
+
+The upright short tube has a crest at 1.9 m, bend radius 0.8 m and inlet at 0.2 m above the source floor. Source cross-sectional area is 0.06 m²: width 1.25 m and depth 0.048 m. The receiver has area 0.12 m²: width 0.65 m and depth about 0.185 m, with its floor at −0.5 m. Drawing depth is compressed while in-plane connections and clearances are preserved. The receiver moves horizontally with the rotating outlet.
+
+Local pressure uses that same speed, centerline and accumulated losses:
+
+<div className="formula">p(s) = pₐ + ρg[zₛ − z(s) − v²/(2g) − hloss(0→s)]</div>
+
+Entrance loss occurs at entry, wall loss accumulates with tube length, and bend loss is distributed along the semicircular arc. Pressure returns to ambient at the free outlet. The crest neighborhood has low pressure. All pressure values shown here are absolute, not gauge pressure relative to the room.
+
+See [OpenStax on Bernoulli's equation and energy conservation](https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation). These are one-dimensional, quasi-steady calculations rather than CFD.
+
+</details>
+
+<details>
+<summary>Why is crest height limited?</summary>
+
+In ordinary water containing gas, vapor formation, dissolved-gas release or air leakage can interrupt the column when absolute pressure becomes too low. This scene uses crest pressure reaching saturation vapor pressure as a stop boundary for its single-phase model. It predicts neither bubble sizes nor a real failure time. Gold bubbles are failure glyphs: liquid inventory remains accounted for, and their drawn area is not a computed gas volume.
+
+At 20 °C, water's saturation vapor pressure is about 2.34 kPa. Ignoring speed and losses gives roughly 10.1 m of static water-column allowance at standard atmospheric pressure. Flow subtracts velocity head and upstream losses from that allowance. This is an ordinary-water engineering assumption, not an absolute theorem covering specially treated liquids under all conditions.
+
+Vapor pressure uses the [NIST Chemistry WebBook Antoine fit](https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Mask=4&Type=ANTOINE&Plot=on), restricted to its 273–303 K range. The [NIST water-vapor-pressure table](https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An3p213_A1b.pdf) gives approximately 2338 Pa at 20 °C; the finite-range fit differs slightly.
+
+</details>
+
+<details>
+<summary>What is reconstructed, and what is intentionally simplified?</summary>
+
+The first six chapters track one batch of water. Chapter progress maps to eight authored 22-second physics windows; discharge uses a 0.1 s fixed step, and every seek reconstructs the same cached history. The last two chapters are independent prefilled comparisons, not one hose stretching between different lengths.
+
+Priming and air-driven drainage use prescribed teaching progress rather than a startup, air-compression or two-phase solver. Water displaced from each leg is assigned to the appropriate reservoir. Water hammer and transient inertia are omitted. After the vapor boundary is crossed, the display reports the pressure demanded by the continuous-column assumption and stops its flow output. A negative computed margin is not a measurement of negative absolute pressure.
+
+</details>

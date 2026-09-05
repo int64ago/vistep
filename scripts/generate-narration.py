@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RATE = 44100
 VOICES = {'zh': 'zh-CN-XiaoxiaoNeural', 'en': 'en-US-AvaMultilingualNeural'}
 parser = argparse.ArgumentParser()
-parser.add_argument('--only', help='One topic slug; omit to produce the whole collection')
+parser.add_argument('--only', nargs='+', help='One or more topic slugs; omit to produce the whole collection')
 parser.add_argument('--workers', type=int, default=3)
 args = parser.parse_args()
 ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
@@ -19,7 +19,9 @@ cache = ROOT / '.voice-cache'; cache.mkdir(exist_ok=True)
 out = ROOT / 'public/narration'; out.mkdir(exist_ok=True)
 script_path = ROOT/'src/data/narration.json'
 scripts = json.loads(script_path.read_text())
-if args.only and args.only not in scripts: raise SystemExit('Unknown topic: '+args.only)
+selected = set(args.only or scripts)
+unknown = selected - scripts.keys()
+if unknown: raise SystemExit('Unknown topics: '+', '.join(sorted(unknown)))
 manifest_path = ROOT/'src/data/audio-manifest.json'
 manifest = json.loads(manifest_path.read_text())
 
@@ -59,10 +61,10 @@ async def main():
             print(f'{slug}/{locale}/{index+1}: {seconds:.2f}s', flush=True)
             return (slug, locale, index), (trimmed, seconds)
     jobs = [synthesize(slug, locale, i, cue) for slug, film in scripts.items()
-            if not args.only or slug == args.only for locale in VOICES for i, cue in enumerate(film['cues'])]
+            if slug in selected for locale in VOICES for i, cue in enumerate(film['cues'])]
     rendered = dict(await asyncio.gather(*jobs))
     for slug, film in scripts.items():
-        if args.only and args.only != slug: continue
+        if slug not in selected: continue
         at = 0
         for i, cue in enumerate(film['cues']):
             # Both languages receive the same visual timing. Add breathing room, never acceleration.

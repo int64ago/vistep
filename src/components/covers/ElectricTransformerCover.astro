@@ -1,0 +1,127 @@
+---
+import {
+  ELECTRIC_TRANSFORMER as C,
+  electricCircuitGeometry,
+  electricFluxPoint,
+  electricWindingPoint,
+  type ElectricPoint,
+} from '../../models/transformer-electric';
+interface Props {
+  color?: string;
+}
+const { color = '#b17b52' } = Astro.props;
+const project = ([x, y, z]: ElectricPoint) => [200 + 38 * x + 11 * z, 176 - 31 * y - 9 * z];
+const path = (points: ElectricPoint[]) =>
+  points.map((p, i) => `${i ? 'L' : 'M'}${project(p).join(',')}`).join(' ');
+const g = C.geometry;
+const core = (z: number) =>
+  path([
+    [-g.halfWidth, g.bottom, z],
+    [g.halfWidth, g.bottom, z],
+    [g.halfWidth, g.top, z],
+    [-g.halfWidth, g.top, z],
+  ]) +
+  'Z ' +
+  path([
+    [-g.halfWidth + g.limb, g.bottom + g.limb, z],
+    [g.halfWidth - g.limb, g.bottom + g.limb, z],
+    [g.halfWidth - g.limb, g.top - g.limb, z],
+    [-g.halfWidth + g.limb, g.top - g.limb, z],
+  ]) +
+  'Z';
+const coils = (front: boolean) =>
+  (['primary', 'secondary'] as const).map((side) => {
+    const n = side === 'primary' ? 24 : 12;
+    let pen = false;
+    return Array.from({ length: n * 48 + 1 }, (_, i) => {
+      const p = electricWindingPoint(side, n, i / (n * 48));
+      const visible = front ? p[2] >= 0 : p[2] <= 0;
+      const value = visible ? `${pen ? 'L' : 'M'}${project(p).join(',')}` : '';
+      pen = visible;
+      return value;
+    }).join(' ');
+  });
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="204" cy="180" rx="117" ry="8" fill="#63766b" opacity=".1"></ellipse>
+  {
+    coils(false).map((d) => (
+      <path d={d} stroke="#8f6342" stroke-width="2.1" stroke-linecap="round" />
+    ))
+  }
+  {
+    [0, 1, 2, 3, 4, 5, 6].map((i) => (
+      <path
+        d={core(-0.39 + i * 0.13)}
+        fill={i % 2 ? '#6e7b73' : '#849187'}
+        fill-rule="evenodd"
+        stroke="#56695e"
+        stroke-width=".5"
+      />
+    ))
+  }
+  <path
+    d={path(Array.from({ length: 161 }, (_, i) => electricFluxPoint(i / 160, 0.42)))}
+    stroke="#76bb9f"
+    stroke-width="2"></path>
+  {
+    coils(true).map((d) => (
+      <path
+        d={d}
+        stroke={color}
+        stroke-width="2.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    ))
+  }
+  {
+    electricCircuitGeometry(false).map((c) => {
+      const [x, y] = project([c.x, c.y, c.z]);
+      const dot = project(electricWindingPoint(c.side, 24, 1));
+      return (
+        <g>
+          <path d={path(c.upper)} stroke={color} stroke-width="2.2" stroke-linejoin="round" />
+          <path d={path(c.lower)} stroke={color} stroke-width="2.2" stroke-linejoin="round" />
+          <path d={path([c.switchTop, c.switchBottom])} stroke="#aa9874" stroke-width="2" />
+          <circle cx={dot[0]} cy={dot[1]} r="2.5" fill="#324a3f" />
+          {c.side === 'primary' ? (
+            <g>
+              <circle cx={x} cy={y} r="14" fill="#eee6d6" stroke="#9d9179" stroke-width="1.5" />
+              <path d={`M${x - 9} ${y}q4 -12 9 0t9 0`} stroke="#557b65" stroke-width="1.5" />
+            </g>
+          ) : (
+            <rect
+              x={x - 6}
+              y={y - 14}
+              width="12"
+              height="28"
+              rx="3"
+              fill="#d9c6a0"
+              stroke="#9d9179"
+              stroke-width="1.5"
+            />
+          )}
+        </g>
+      );
+    })
+  }
+  {
+    [0, 1].map((row) => (
+      <g>
+        <path d={`M74 ${197 + row * 22}H330`} stroke="#7b8a7c" opacity=".18" />
+        <path
+          d={Array.from(
+            { length: 141 },
+            (_, i) =>
+              `${i ? 'L' : 'M'}${74 + (i / 140) * 256},${197 + row * 22 - 8 * (row ? Math.cos((i / 140) * 4 * Math.PI) : Math.sin((i / 140) * 4 * Math.PI))}`,
+          ).join(' ')}
+          stroke={row ? color : '#548c71'}
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      </g>
+    ))
+  }
+</svg>
