@@ -50,3 +50,9 @@ The historical changes are traceable through [`045f2ce`](https://github.com/int6
 ## Exported artwork needs its own font review
 
 Browser text looked correct while rasterized documentation artwork showed missing arrows and angle symbols. The export pipeline intentionally excludes system fonts, so its bundled font coverage must include every symbol it renders. Retain the font licenses, inspect the exported PNGs themselves and check both letters and mathematical notation. A successful image build does not establish glyph coverage.
+
+The README hero now has its own motion composition built from the site's models. A page capture compresses the interface into a promotional image without explaining what is distinctive. Original artwork should show the product's mechanisms and ideas directly. Review the encoded GIF itself: a lossy optimization introduced visible grain even though the source frames looked clean. Preserve a still alternative and the renderer so the artwork can evolve with the product.
+
+## Defaults are a maintained product decision
+
+Narration is now requested by default, replacing the earlier muted policy. Carry a changed default through the player, persistence, project instructions, both languages of documentation and the skill. A blocked autoplay attempt must not become a saved manual mute. Preserve the reader's explicit choice and keep pure test tones separately opt-in.

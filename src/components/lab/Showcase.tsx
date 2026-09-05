@@ -33,7 +33,7 @@ export const ease = (t: number) => t * t * (3 - 2 * t);
 export default function Showcase({ slug, children }: { slug: string; children: ReactNode }) {
   const film = films[slug];
   const [watch, setWatch] = useState(true),
-    [visible, setVisible] = useState(true),
+    [visible, setVisible] = useState(false),
     [playing, setPlaying] = useState(false),
     [time, setTime] = useState(0),
     [run, setRun] = useState(0),
@@ -60,7 +60,7 @@ export default function Showcase({ slug, children }: { slug: string; children: R
     if (clock.current >= film.duration) setPlaying(false);
   }, advancing);
   useEffect(() => {
-    let intersecting = true;
+    let intersecting = false;
     const update = () => setVisible(intersecting && !document.hidden);
     const observer = new IntersectionObserver(([entry]) => {
       intersecting = entry.isIntersecting;

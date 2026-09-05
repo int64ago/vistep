@@ -22,3 +22,5 @@
 vistep 名字和域名标识原项目。MIT 不构成商标背书，也不允许冒充官方网站。
 
 分享图片的构建字体还包含 Manrope 的希腊字母与 Noto Sans SC 的箭头子集，均从 Fontsource 分发的可变字体实例化为 500 字重。对应 OFL 许可保留在 `scripts/assets/`。
+
+[README 动图](../../scripts/render-showcase.mjs) 为原创 SVG 动画，使用仓库的渐开线齿轮几何、DCT 重建和四维投影，不是网页录屏。字体使用保留的 Manrope，经 FFmpeg 编为 GIF；阅读已提交素材不需要渲染工具。

@@ -1,6 +1,6 @@
 <div align="center">
 
-# vistep.ai
+[![vistep.ai — original motion artwork](docs/media/vistep-showcase.gif)](https://vistep.ai/en/)
 
 **Visualize Every Step with AI**
 
@@ -15,7 +15,7 @@ Visual explanations of the mechanisms behind everyday life.
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-b88953?logo=cloudflare&logoColor=white)](docs/deployment.md)
 [![Languages](https://img.shields.io/badge/languages-English%20%2B%20中文-827393)](docs/localization-and-seo.md)
 
-[![vistep.ai — visual explanations](docs/media/overview.png)](https://vistep.ai/en/)
+[Still artwork](docs/media/vistep-showcase-poster.png)
 
 </div>
 
@@ -33,11 +33,9 @@ Watch a mechanism unfold, follow an object through its hidden stages, then exper
 
 - **Watch first.** Chaptered explanations run for 2–5 minutes, with pause, replay and seeking. Optional controls let you test an idea after seeing it.
 - **Follow real calculations.** Geometry, motion and readouts share a model. JPEG transforms and a small Transformer run in Web Workers; physical and system simulations use explicit teaching assumptions.
-- **Read or listen.** English and Chinese have separate writing and recorded narration on a shared timeline. Sound is opt-in; captions and transcripts remain available.
+- **Read or listen.** English and Chinese have separate writing and recorded narration on a shared timeline. Narration is on by default and remembers your choice. If the browser blocks autoplay, one click enables it; captions and transcripts remain available.
 - **Keep it local.** Experiments run in your browser. No account, API key or live AI service is required. Language preferences stay in local storage.
 - **Adapt to the reader.** Responsive compositions, keyboard controls, reduced-motion support and 2D alternatives for WebGL scenes.
-
-![Mechanisms, image reconstruction and spatial reasoning](docs/media/explorations.png)
 
 ## Development
 

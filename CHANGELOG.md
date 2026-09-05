@@ -6,6 +6,9 @@ Notable changes are recorded here. Commit history remains the source for individ
 
 ## Unreleased
 
+- Replaced README screenshots with original model-driven motion artwork and a still alternative.
+- Enabled narration by default, with a persistent manual preference and graceful autoplay fallback.
+- Expanded the scene skill with a requirement coverage map, homepage and showcase workflows, and the current audio policy.
 - Replaced the oversized brand block with an automatic typographic opening that settles into the navigation wordmark.
 
 - Rebuilt all twelve explanations as chaptered 2–5 minute films, with new close observations and controlled comparisons.

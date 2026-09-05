@@ -1,28 +1,64 @@
 ---
 name: vistep-scene
-description: Turn a natural-language scene request into a complete vistep.ai visual explanation, including research, an independent visual design, a scientific model, automatic demonstration, Chinese and English narration, implementation and review. Use when asked to add a scene or improve an existing vistep explanation.
+description: Create or refine vistep.ai visual explanations from a natural-language request, covering research, independent art direction, scientific models, automatic films, bilingual narration, integration and review. Also use for the site's brand animation and original showcase artwork when part of this production workflow.
 ---
 
 # vistep scene production
 
-Work from the repository root. Read `AGENTS.md` and `docs/creating-a-scene.md`; consult `docs/retrospective.md` when choosing a visual or interaction approach. These are repository files, not global design rules.
+Deliver a finished visual explanation from the user's natural-language brief. Choose the medium, model, composition and implementation; do not return a template for the user to fill or a command for them to run. A plan, scaffolding or passing test suite does not replace the requested result.
 
-Accept a natural-language request such as “新增一个感应电机原理的场景” or “Improve the printer's internal demonstration.” The user supplies the subject and any preferences; choose the slug, representation and implementation details yourself. The entry point is this skill. Do not hand the user a shell command or ask them to create scaffolding, fill a brief or run checks as a prerequisite.
+Work from the vistep repository. Read `AGENTS.md` and [the production guide](../../../docs/creating-a-scene.md), and consult [production lessons](../../../docs/retrospective.md) before choosing an approach. These are project requirements, not rules for unrelated work. The user's current instructions and existing publication authorization take precedence.
 
-Carry a scene request through research, a brief and storyboard, a working model and renderer, bilingual writing and narration, integration, review and the publication scope already authorized. A plan or generated draft is an intermediate artifact, not the completed scene. If a required external dependency is unavailable, complete independent work and report the specific missing dependency rather than implying the scene is finished.
+## Choose the scope
 
-Select a trackable object and sketch the initial, turning and resulting states before implementing. Choose the representation from the phenomenon; never default to another scene's panel layout. You may run `pnpm scene:new <slug> --medium <three|svg|canvas|audio|hybrid>` internally to prepare a draft, or prepare the same files directly. The helper is optional, and the user does not need to see or execute it. Drafts remain unpublished.
+- **New or substantially revised topic:** carry research, direction, implementation, bilingual writing and speech, registration, review and authorized delivery through to completion.
+- **Focused correction:** follow the same scientific and visual standard, but rebuild only affected scenes and assets. Do not regenerate unchanged recordings or retest unrelated films without a concrete reason.
+- **Homepage or promotional artwork:** use the brand and communication requirements below. The 2–5 minute topic duration does not apply to a short opening or README loop.
 
-Plan a 2–5 minute film, preferably 2–3 minutes, with five minutes as the ceiling. Every chapter must add visible explanatory work: a causal step, a close observation or a controlled comparison. Never extend a short loop by adding narration. Record what changes on screen and what that change proves before producing speech.
+Use the [coverage map](references/coverage.md) to locate less frequent requirements and close a substantial revision. It connects current decisions to their source of truth rather than making another parallel specification.
 
-Make one complete causal sequence work first. The reader should understand it while watching silently. Keep manual experiments optional, use model-derived state for geometry and readouts, and expose teaching simplifications. Share the director and lifecycle utilities; retain independent scene composition. Preserve the exact compact brand derivation described in `AGENTS.md` when touching the homepage.
+## Direct the explanation
 
-Integrate the files listed in the scene guide. Author Chinese and English explanations and spoken scripts separately; preserve the shared timeline. Direct shots from chapter-relative time; seeking must reconstruct simulation history and training progress, not only update the caption. Settle presentation transitions to the requested state on a paused seek. Use the existing narration generator only when audio actually changes. Use measured speech windows without time stretching. Independent transcription can detect wrong-language or unintelligible output; it is separate from a listening review. Ordinary builds must not need provider credentials. Do not replace recorded narration with browser text-to-speech.
+The quality bar is “大师级的演示”: convincing objects, deliberate typography and framing, restrained materials and light, precise alignment, and continuous, gentle interaction. Do not substitute topic count, 3D ornament, a dashboard layout or test totals for communication quality. Reuse infrastructure; choose a distinct visual language for each phenomenon.
 
-Run `pnpm scene:check`, then the checks appropriate to the change. Use `pnpm verify` and `pnpm build:preview` before a scene handoff. Inspect the complete film, key still frames, mobile composition and both spoken tracks. Tests establish numerical and publishing contracts; they do not establish visual polish or vocal quality. Record real observations and untested limits in the draft review sheet. Do not mark a placeholder draft finished or publish it to fill a catalog slot.
+Identify the initial intuition, one object to track, the observation that changes the reader's understanding and the model's limits. Research primary technical sources. Sketch the opening, turning point and result, with a separately composed phone view, before implementation. Use physical 3D where internal structure, contact or spatial relations require it; use waves, slices, matrices, images or timelines where they explain more clearly.
 
-Keep generated transcripts, search schema, social covers and bilingual documentation current with the topic registry. Maintain English-default documentation and its Chinese counterpart.
+Plan a **2–5 minute** topic film, preferably **2–3 minutes**, with five minutes as the ceiling. Every chapter must add a visible causal step, close observation or controlled comparison. Record what changes on screen and what it demonstrates before producing speech. Never stretch a short loop with longer narration.
 
-Hand off the actual scene and its preview or changed files, with concise evidence and any remaining limitations. Keep internal scaffolding commands out of the handoff unless the user asks about implementation tooling.
+Default to a directed demonstration when visible. The user should understand it while watching, with one short current explanation and minimal required interaction. Keep pause, replay, chapters, seeking and optional exploration. Longer reasoning, equations and controls belong in progressive disclosure. The silent film must remain understandable even though spoken narration is requested by default.
 
-For publication use `docs/deployment.md` and the authorization already given in the task. This skill grants no additional permission to change production, repository visibility or external account settings.
+## Make the model and image agree
+
+Keep equations, units and invariants in independent models. Derive geometry, movement, readouts and captions from their shared state. Tooth pitch, meshing phase, tangents, closed chains and belts, shaft connections, fluid paths and paper transport must be geometrically credible. Do not repair them with decorative approximations or a final point snapped into place.
+
+Preserve object identities and reproducible inputs in system comparisons. JPEG reconstruction must use actual transforms; coefficient estimates are not file sizes. Training must expose real errors, gradients and updates; generation keeps weights frozen. State teaching simplifications and cite their technical basis.
+
+Use the chapter director and shared clock. Seeking reconstructs simulation history and training progress, not just the caption. On a paused seek, camera and presentation transitions settle to the requested state. Expensive image/model work belongs in Workers. Pause offscreen and in the background; release renderers, audio, observers, timers and Workers on disposal.
+
+## Produce both languages and voices
+
+Author Chinese and English explanation and spoken scripts separately. Speech should be natural, lively and paced around the visible event: point to a detail, leave room to notice it, then explain the change. Do not read UI text or force literal translations. Preserve the shared chapter timeline and measure both recordings; never time-stretch speech.
+
+Use the existing offline narration pipeline and commit its scripts, recordings and generated manifests together. Ordinary builds and readers need no speech credentials or live AI service. Do not substitute browser text-to-speech for the authored recordings.
+
+**Narration defaults on.** Honor a saved manual on/off choice. Follow the page language. Attempt playback only when the film is visible and playing; respect reduced motion and browser autoplay restrictions. If permission or an asset is unavailable, show a clear user-activated retry and keep the silent explanation usable. Never bypass autoplay policy, play hidden lessons, or unmute a user who chose silence. The noise experiment's pure test tone is a separate opt-in control.
+
+Listen to both full tracks for intelligibility, terminology, rhythm, warmth and synchronization. Independent transcription without a language hint or reference transcript can expose wrong-language or unintelligible synthesis; it does not establish a natural vocal performance. Record those evidence types separately.
+
+## Integrate the finished work
+
+Use the production guide's file map for the topic registry, lazy experiment import, models/renderers, bilingual MDX, labels, narration and covers. Routes, transcripts, schema, social images and sitemaps derive from this content. Preserve canonical URLs, reciprocal language alternatives and the existing multi-factor language resolver; manual language choices take precedence and persist locally.
+
+The optional `pnpm scene:new` helper creates an unpublished draft only. It is internal scaffolding, not the skill's interface or proof of completion. Do not publish placeholders to fill the catalog.
+
+For homepage work, preserve the full meaning **Visualize Every Step with AI** and the exact extraction and adjacent-s merge that forms **vistep.ai**. Make it an automatic entrance within the homepage typography, with a natural final position, a readable phone composition, reduced-motion fallback and replay. Do not reintroduce an isolated brand panel, a printed derivation formula or sentimental lettering copy. Review fresh entry as well as replay.
+
+For README/showcase work, create an original motion composition from the project's mechanisms, information processes and spatial ideas. Do not use a page screenshot or screen recording as the hero. Use the actual bundled fonts, inspect an informative first frame, intermediate frames and the loop boundary, control file size, and retain a still alternative and reproducible source. Promotional geometry must be as credible as the scene itself. Keep English-default documentation, the Chinese counterpart, asset provenance and truthful badges current.
+
+## Review and deliver
+
+Run the checks appropriate to the change. Complete topics require `pnpm scene:check`, `pnpm verify` and `pnpm build:preview`. Independently inspect complete playback, key stills and contacts, both spoken tracks, chapter/seek boundaries, extreme inputs, desktop and narrow layouts, keyboard/touch operation, reduced motion and applicable resource failures. Body text is at least 16 px; primary touch targets are at least 44 px. Test deep links and 404s; keep a concept-preserving 2D path for unavailable WebGL.
+
+Record actual conditions, versions, findings and untested limits. A viewport override is not a physical-phone performance measurement; test results are not visual review, ASR is not listening, and a timed-out audit is not a pass. Favor approximately 60 fps on desktop and stable 30 fps on ordinary phones, without claiming measurements that were not taken.
+
+Finish necessary work before asking for missing external authorization. Follow [deployment](../../../docs/deployment.md) and the authorization already present in the conversation: preview and production are separate, preview is noindex, and pushing main publishes through Actions. Review before that push, wait for the resulting deployment and check the actual site. Do not manually redeploy after a successful Actions release, change domain ownership, expose credentials or change repository visibility for ordinary content work. Deliver the actual result with concise evidence and material limitations.

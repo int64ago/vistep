@@ -23,6 +23,7 @@ Records describe particular revisions and conditions. They are not guarantees fo
 - [First production release](qa-production.md)
 - [Long-form direction, language and SEO](qa-longform.md)
 - [Integrated homepage opening](qa-home-opening.md)
+- [Showcase artwork and narration defaults](qa-showcase-audio.md)
 
 ## Community
 

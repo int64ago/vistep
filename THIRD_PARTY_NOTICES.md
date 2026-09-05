@@ -20,3 +20,5 @@ The root [MIT License](LICENSE) applies to original vistep code and documentatio
 The repository distributes recorded narration, not third-party model weights. Retain this provenance when redistributing the recordings. Do not describe the recordings as human performances or endorsements by a real speaker. Adding any external voice, texture, image, model or dataset requires documenting its actual permission and attribution here.
 
 The vistep name and domain identify the original project. The MIT license grants rights in the covered work; it does not grant a trademark endorsement or permission to impersonate its owner.
+
+[README motion artwork](scripts/render-showcase.mjs) is original SVG-based animation using the repository’s involute gear geometry, DCT reconstruction and four-dimensional projection. It is not a webpage recording. It uses the retained Manrope font and is encoded as GIF with FFmpeg; committed media needs no renderer at runtime.
