@@ -1,0 +1,53 @@
+<h2 id="understand">A material boundary gives light a path</h2>
+
+The core is solid glass, not an empty pipe, and its walls are not metallic mirrors. Light meeting a lower-index cladding from a higher-index core can be totally internally reflected when its angle from the boundary normal is sufficiently large.
+
+The entrance angle and side-wall incidence angle are different. Refraction at the entrance first changes the ray direction. In a straight fiber, a direction closer to the axis meets the side wall at a larger angle from its normal. Outside the acceptance range, some light enters the cladding at each encounter.
+
+This is a **meridional-ray model of a step-index multimode fiber**. The core index is uniform and changes abruptly at the cladding. Rays help explain paths; they are not a complete description of electromagnetic modes.
+
+<h2 id="try">Change one condition at a time</h2>
+
+- Choose One boundary and increase incidence from 35° to 55°. The transmitted ray approaches the surface, then disappears above the roughly 41.8° critical angle.
+- Choose Core and cladding and increase the entrance angle in air. Beyond the acceptance half-angle, branches enter the cladding.
+- Hold the entrance direction fixed and raise the cladding index to the core's value, 1.48. The optical boundary disappears; the protective coating cannot replace index contrast.
+- Choose Pulse timing to compare three paths over 1 km. The common first-arrival time has been subtracted; the horizontal axis shows additional delay in nanoseconds.
+
+The phone section is 450 μm long; the desktop section is 1.2 mm. Each uses the same scale along both axes rather than distorting angles to fit extra reflections.
+
+<h2 id="deeper">Angles, power and arrival times</h2>
+
+<details>
+<summary>Critical angle or acceptance angle?</summary>
+
+Snell's law is `n₁ sin θ₁ = n₂ sin θ₂`, measured from the interface normal. For `n₁ > n₂`, the critical angle is `asin(n₂/n₁)`. Above it, no refracted ray propagates into the second medium.
+
+For meridional rays entering a straight step-index fiber:
+
+<div className="formula">n₀ sin αmax = √(ncore² − nclad²)</div>
+
+With `ncore=1.48`, `nclad=1.46` and `n₀=1`, the entrance half-angle is about 14.0°, while the side-wall critical angle is about 80.6°. These angles use different normals at different boundaries.
+
+</details>
+
+<details>
+<summary>How is beam brightness calculated?</summary>
+
+Unpolarized Fresnel reflectance averages two orthogonal polarization reflectances. At a lossless boundary, `R + T = 1`. Each encounter assigns fraction `T` of its incoming power to the escaped branch and retains fraction `R`. All escaped powers plus the final core power equal the power normalized just inside the entrance.
+
+Line opacity uses the square root of power to keep weak branches visible; it is not an irradiance measurement. Entrance reflection losses, end coupling, the outer cladding boundary and absorption are omitted. Moving markers drastically slow propagation to show direction. They are not individual photons splitting apart or a representation of real light speed.
+
+</details>
+
+<details>
+<summary>Why does the pulse spread?</summary>
+
+A meridional ray at axial angle `β` travels distance `L/cos β` through the uniform core:
+
+<div className="formula">t = ncore L / (c cos β)</div>
+
+The time plot assigns one third of the same Gaussian intensity pulse to each of three geometrical paths: 0°, 4° and 8°. Their delayed arrivals add to a signal spread over more time. This illustrates step-index intermodal dispersion without solving a full modal power distribution.
+
+Graded index, wavelength-dependent material dispersion, single-mode waveguides, bend loss, noise and detector bandwidth are outside scope. The final bit sequence uses an ideal undistorted delay and does not inherit the previous chapter's dispersion. Optical dimensions, the 1 km comparison and the bit-playback clock serve separately labeled purposes.
+
+</details>

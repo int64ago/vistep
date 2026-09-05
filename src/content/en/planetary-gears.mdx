@@ -1,0 +1,53 @@
+<h2 id="understand">A gear can turn while its axle travels</h2>
+
+Start with the gold sun gear. Three planet gears surround it, inside a ring whose teeth face inward. Their axles attach to a single carrier. When that carrier turns, all three axles travel around the sun.
+
+Follow the green planet with the gold mark. **The gear spins around its own axle while its axle orbits with the carrier.** Tracking only one tooth makes these two motions easy to confuse. With the ring held stationary and the sun driven forward, the carrier advances slowly while the planets spin backward.
+
+The gearset does not have one inherent reduction ratio. First choose the stationary member, input and output. Holding the ring, sun or carrier selects different speeds—and can reverse the output direction.
+
+<h2 id="try">Change the constraint, keeping the same teeth</h2>
+
+- Hold the ring and turn the sun through 1260°, or 3.5 revolutions. The carrier completes exactly one revolution.
+- Hold the sun and turn the ring through 504°, or 1.4 revolutions. The carrier completes one revolution.
+- Hold the carrier and turn the sun through 900°, or 2.5 revolutions. The ring completes one revolution backward; the planet axles no longer orbit.
+- Lock the set together. All central members turn at the same speed. The marks still travel around the center, but there is no relative rotation between gears.
+
+Choose Explore to select a constraint and move the input-angle slider, including with the keyboard. Each constraint starts from the same assembly phase. The 2D cutaway retains the same tooth profiles, angles and controls.
+
+<h2 id="deeper">Tooth counts and constraints select the speed</h2>
+
+<details>
+<summary>Why do these gears fit?</summary>
+
+The sun has 24 teeth, each planet has 18 and the ring has 60. Equal module makes pitch radii proportional to tooth counts. Concentric assembly requires:
+
+<div className="formula">Nr = Ns + 2Np = 24 + 2 × 18 = 60</div>
+
+For three equally spaced planets, `(Ns + Nr) / 3` must also be an integer: here it is 28. Neighboring planet tip circles must clear each other. The displayed teeth use 20° involute flanks. Internal teeth extend inward; external teeth extend outward. The internal profile is not simply an external gear with its colors reversed.
+
+A small tooth-thickness clearance is included and root transitions are simplified. Motion follows ideal rolling constraints; finite-backlash impacts and reversal lost motion are not simulated. This geometry is not a manufacturing drawing.
+
+</details>
+
+<details>
+<summary>How do spin and orbit enter the same equation?</summary>
+
+Let `ωs`, `ωr` and `ωc` be the angular velocities of the sun, ring and carrier. In the carrier's frame, the planet axles are stationary. The two meshes give:
+
+<div className="formula">Ns(ωs − ωc) + Nr(ωr − ωc) = 0</div>
+
+Holding the ring gives `ωc/ωs = 24/84 = 2/7`. Holding the sun gives `ωc/ωr = 60/84 = 5/7`. Holding the carrier gives `ωr/ωs = −24/60 = −0.4`; the minus sign means reversal. Constrain any two central members to turn together and the third must follow at the same speed.
+
+A planet's absolute spin is `ωp = ωc − (Ns/Np)(ωs − ωc)`. Positions, marks and revolution counts share these constraints, allowing any playback position to be reconstructed directly.
+
+</details>
+
+<details>
+<summary>Why can a slower output deliver more torque?</summary>
+
+For ideal steady transmission with one input, one output and no losses, input and output power are equal: `τin ωin = τout ωout`. With the ring stationary, output speed is 1/3.5 of input speed, so output torque magnitude can be 3.5 times input torque. The output travels through a smaller angle; no energy is created.
+
+The stationary member carries a reaction torque, but does no work because its angular velocity is zero. A real assembly also has friction, inertia, bearing losses, elastic deformation and uneven load sharing. This model omits those effects and does not simulate a gearbox clutch changing state. The opening axial separation identifies the components; transmission begins only after the teeth return to their assembled positions.
+
+</details>

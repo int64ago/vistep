@@ -1,0 +1,228 @@
+.planetary-study {
+  background: radial-gradient(ellipse at 50% 22%, #293f4b, #172b36 72%);
+  color: #d3e1db;
+  padding: 24px 30px 18px;
+}
+.planetary-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  color: #93abae;
+  font-size: 12px;
+  letter-spacing: 0.075em;
+}
+.planetary-main {
+  position: relative;
+  height: 460px;
+}
+.planetary-main > .studio {
+  height: 100%;
+  min-height: 0;
+}
+.planetary-diagram {
+  display: block;
+  height: 100%;
+  width: 100%;
+  max-height: 420px;
+}
+.planetary-main .studio-fallback {
+  padding-bottom: 54px;
+}
+.planetary-main .studio-mode {
+  background: #354e58;
+  color: #d6e3d7;
+}
+.planetary-work {
+  position: absolute;
+  left: 18px;
+  top: 65px;
+  display: grid;
+  gap: 10px;
+  pointer-events: none;
+  color: #aec4bf;
+}
+.planetary-work span {
+  font-size: 16px;
+}
+.planetary-work strong {
+  font-size: 36px;
+  font-weight: 500;
+  color: #d1b684;
+}
+.planetary-work small {
+  font-size: 14px;
+  max-width: 170px;
+  line-height: 1.7;
+}
+.planetary-key {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 14px;
+  color: #9eb5b7;
+  padding: 10px 0 25px;
+}
+.planetary-key span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.planetary-key i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.planetary-key .sun {
+  background: #cbb17d;
+}
+.planetary-key .planet {
+  background: #98c4b9;
+}
+.planetary-key .ring {
+  background: #9db0c0;
+}
+.planetary-key .carrier {
+  background: #548f85;
+}
+.planetary-turns {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 35px;
+  align-items: center;
+  padding: 20px 35px;
+  border-top: 1px solid #9dbbb225;
+}
+.planetary-turns > div {
+  display: grid;
+  gap: 4px;
+  text-align: center;
+}
+.planetary-turns span {
+  font-size: 16px;
+  color: #9eb6b5;
+}
+.planetary-turns strong {
+  font-size: 31px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #d7e2d5;
+}
+.planetary-turns small {
+  font-size: 14px;
+  font-weight: 400;
+  color: #93adab;
+}
+.planetary-turns .planetary-ratio strong {
+  font-size: 20px;
+  color: #c4b486;
+}
+.planetary-turns .planetary-ratio > span {
+  font-size: 26px;
+  line-height: 1;
+  color: #8baba3;
+}
+.planetary-note {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  color: #8aa6a5;
+}
+.planetary-explore {
+  padding: 16px 0 25px;
+  display: grid;
+  gap: 22px;
+}
+.planetary-explore .segmented {
+  background: #203943;
+}
+.planetary-explore .segmented button {
+  color: #b1c8c2;
+}
+.planetary-explore .segment-selection {
+  background: #406356;
+}
+.planetary-explore .segmented button[aria-pressed='true'] {
+  color: #e4ead8;
+}
+.planetary-explore .control-top {
+  color: #b0c4bf;
+}
+.planetary-explore .control output {
+  color: #d0dfd1;
+}
+.planetary-explore .btn {
+  justify-self: center;
+  background: #39584d;
+  color: #d6e4d0;
+  min-height: 44px;
+}
+@media (max-width: 760px) {
+  .planetary-study {
+    padding: 20px 12px 16px;
+  }
+  .planetary-topline {
+    font-size: 10px;
+    gap: 12px;
+    letter-spacing: 0.015em;
+    min-height: 30px;
+  }
+  .planetary-main {
+    height: 300px;
+  }
+  .planetary-key {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 15px;
+    padding: 14px 12px 22px;
+    font-size: 13px;
+  }
+  .planetary-turns {
+    gap: 12px;
+    padding: 19px 0;
+  }
+  .planetary-turns span {
+    font-size: 12px;
+  }
+  .planetary-turns strong {
+    font-size: 26px;
+  }
+  .planetary-turns small {
+    font-size: 11px;
+  }
+  .planetary-turns .planetary-ratio strong {
+    font-size: 15px;
+  }
+  .planetary-turns .planetary-ratio small {
+    max-width: 68px;
+    line-height: 1.5;
+  }
+  .planetary-work {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #172b36e8;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .planetary-work span {
+    font-size: 13px;
+  }
+  .planetary-work strong {
+    font-size: 25px;
+    white-space: nowrap;
+  }
+  .planetary-work small {
+    display: none;
+  }
+  .planetary-explore .segmented {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

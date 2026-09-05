@@ -10,6 +10,64 @@ export function planetarySpeeds(mode: PlanetaryMode) {
   const p = c - (sun / planet) * (s - c);
   return { sun: s, ring: r, carrier: c, planet: p };
 }
+/** One input and one output exchange ideal power; stationary reactions do no work. */
+export function planetaryDrive(mode: PlanetaryMode) {
+  const speeds = planetarySpeeds(mode);
+  const input = mode === 'sun-fixed' ? 'ring' : 'sun';
+  const output = mode === 'carrier-fixed' ? 'ring' : 'carrier';
+  const ratio = speeds[input] / speeds[output];
+  return {
+    input,
+    output,
+    ratio,
+    inputTorque: 1,
+    outputTorque: ratio,
+    inputPower: speeds[input],
+    outputPower: ratio * speeds[output],
+  } as const;
+}
+const ease = (p: number) => {
+  const q = Math.max(0, Math.min(1, p));
+  return q * q * (3 - 2 * q);
+};
+/** Every film state can be addressed directly, without advancing a simulation. */
+export function planetaryShot(chapter: number, progress: number) {
+  const p = Math.max(0, Math.min(1, progress)),
+    move = ease((p - 0.1) / 0.8);
+  let mode: PlanetaryMode = 'ring-fixed',
+    inputAngle = move * TAU * 2,
+    assembly = 0;
+  if (chapter === 0) {
+    assembly = 1 - ease(p / 0.65);
+    inputAngle = Math.max(0, (p - 0.7) / 0.3) * Math.PI * 1.5;
+  }
+  if (chapter === 2) inputAngle = move * TAU * 3.5;
+  if (chapter === 3) inputAngle = move * TAU * 1.5;
+  if (chapter === 4) {
+    mode = 'sun-fixed';
+    inputAngle = move * TAU * 1.4;
+  }
+  if (chapter === 5) {
+    mode = 'carrier-fixed';
+    inputAngle = move * TAU * 2.5;
+  }
+  if (chapter === 6) {
+    mode = 'locked';
+    inputAngle = move * TAU;
+  }
+  if (chapter === 7) {
+    const segment = Math.min(2, Math.floor(p * 3));
+    mode = (['ring-fixed', 'sun-fixed', 'carrier-fixed'] as const)[segment];
+    inputAngle = ease((p * 3 - segment - 0.1) / 0.8) * TAU;
+  }
+  return {
+    mode,
+    inputAngle,
+    assembly,
+    showWork: chapter === 3,
+    showTurns: [2, 4, 5, 7].includes(chapter),
+  };
+}
 export function planetaryState(inputAngle: number, mode: PlanetaryMode) {
   if (!Number.isFinite(inputAngle)) throw new RangeError('Input angle must be finite.');
   const speeds = planetarySpeeds(mode),
