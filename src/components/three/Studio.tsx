@@ -2,12 +2,14 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { softEase } from './motion';
 
 export type StudioContext = {
   scene: THREE.Scene;
   root: THREE.Group;
   camera: THREE.PerspectiveCamera;
   controls: OrbitControls;
+  reducedMotion: MediaQueryList;
 };
 export type StudioObject = {
   update?: (dt: number, elapsed: number) => void;
@@ -42,6 +44,7 @@ export default function Studio({
   useEffect(() => {
     const el = host.current;
     if (!el) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
@@ -58,7 +61,7 @@ export default function Studio({
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = dark ? 1.2 : 1.35;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.VSMShadowMap;
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute('aria-hidden', 'true');
     const scene = new THREE.Scene(),
@@ -75,29 +78,31 @@ export default function Studio({
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.fromArray(initial.current.target);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.08;
+    controls.dampingFactor = 0.07;
+    controls.rotateSpeed = 0.55;
     controls.enablePan = false;
     controls.enableZoom = false;
     controls.minPolarAngle = Math.PI * 0.13;
     controls.maxPolarAngle = Math.PI * 0.48;
     controls.update();
-    scene.add(new THREE.HemisphereLight(0xe8f0ff, 0x807563, 2));
-    const key = new THREE.DirectionalLight(0xffffff, 4.5);
+    scene.add(new THREE.HemisphereLight(0xf1f3f1, 0x918578, 2.6));
+    const key = new THREE.DirectionalLight(0xfffaf3, 3.6);
     key.position.set(-3, 9, 5);
     key.castShadow = true;
-    const shadowSize = window.innerWidth < 760 ? 1024 : 2048;
+    const shadowSize = window.innerWidth < 760 ? 512 : 1024;
     key.shadow.mapSize.set(shadowSize, shadowSize);
     Object.assign(key.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7, near: 1, far: 30 });
     key.shadow.normalBias = 0.025;
     key.shadow.bias = -0.0002;
-    key.shadow.radius = 4;
+    key.shadow.radius = 5;
+    key.shadow.blurSamples = 8;
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xb8d7ff, 2);
+    const rim = new THREE.DirectionalLight(0xd6e4ec, 1.6);
     rim.position.set(4, 5, -6);
     scene.add(rim);
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(200, 200),
-      new THREE.ShadowMaterial({ opacity: dark ? 0.4 : 0.13 }),
+      new THREE.ShadowMaterial({ opacity: dark ? 0.3 : 0.095 }),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -0.06;
@@ -105,7 +110,7 @@ export default function Studio({
     scene.add(floor);
     let object: StudioObject = {};
     try {
-      object = createRef.current({ scene, root, camera, controls });
+      object = createRef.current({ scene, root, camera, controls, reducedMotion });
     } catch (error) {
       console.error('Unable to construct scene', error);
       setFailed(true);
@@ -139,6 +144,14 @@ export default function Studio({
     });
     intersection.observe(el);
     const frameBudget = window.innerWidth < 760 ? 1000 / 30 : 1000 / 60;
+    let keyElapsed = 1;
+    const keyFrom = new THREE.Spherical(),
+      keyTo = new THREE.Spherical();
+    const keyOffset = new THREE.Vector3();
+    const stopKeyMotion = () => {
+      keyElapsed = 1;
+    };
+    controls.addEventListener('start', stopKeyMotion);
     const tick = (time: number) => {
       animation = requestAnimationFrame(tick);
       if (!visible || document.hidden) {
@@ -150,6 +163,19 @@ export default function Studio({
       previous = time;
       elapsed += dt;
       object.update?.(dt, elapsed);
+      if (keyElapsed < 1) {
+        keyElapsed = Math.min(1, keyElapsed + dt / 0.38);
+        const amount = reducedMotion.matches ? 1 : softEase(keyElapsed);
+        keyOffset.setFromSpherical(
+          new THREE.Spherical(
+            keyTo.radius,
+            THREE.MathUtils.lerp(keyFrom.phi, keyTo.phi, amount),
+            THREE.MathUtils.lerp(keyFrom.theta, keyTo.theta, amount),
+          ),
+        );
+        camera.position.copy(controls.target).add(keyOffset);
+      }
+      controls.enableDamping = !reducedMotion.matches;
       controls.update();
       renderer.render(scene, camera);
     };
@@ -157,16 +183,17 @@ export default function Studio({
     const keys = (event: KeyboardEvent) => {
       if (!event.key.startsWith('Arrow')) return;
       event.preventDefault();
-      const offset = camera.position.clone().sub(controls.target),
-        spherical = new THREE.Spherical().setFromVector3(offset);
+      keyFrom.setFromVector3(keyOffset.copy(camera.position).sub(controls.target));
+      const spherical = keyElapsed < 1 ? keyTo.clone() : keyFrom.clone();
       spherical.theta += event.key === 'ArrowLeft' ? -0.12 : event.key === 'ArrowRight' ? 0.12 : 0;
       spherical.phi = THREE.MathUtils.clamp(
         spherical.phi + (event.key === 'ArrowUp' ? -0.08 : event.key === 'ArrowDown' ? 0.08 : 0),
         Math.PI * 0.13,
         Math.PI * 0.48,
       );
-      camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));
-      controls.update();
+      controls.dispatchEvent({ type: 'start' });
+      keyTo.copy(spherical);
+      keyElapsed = 0;
     };
     const lost = (event: Event) => {
       event.preventDefault();
@@ -179,6 +206,7 @@ export default function Studio({
       cancelAnimationFrame(animation);
       resizeObserver.disconnect();
       intersection.disconnect();
+      controls.removeEventListener('start', stopKeyMotion);
       controls.dispose();
       el.removeEventListener('keydown', keys);
       renderer.domElement.removeEventListener('webglcontextlost', lost);
@@ -200,6 +228,7 @@ export default function Studio({
       geometries.forEach((g) => g.dispose());
       materials.forEach((m) => m.dispose());
       environment.dispose();
+      key.shadow.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     };

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/editorial.css';
+import '../styles/interaction.css';
 interface Props {
   title?: string;
   description?: string;
@@ -37,7 +38,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
               d="m3 6 9 17L25 3M9 6l6 11M15 6l3 5"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="square"></path></svg
+              stroke-linecap="round"
+              stroke-linejoin="round"></path></svg
           ></span
         >vistep<span class="wordmark-ai">.ai</span></a
       >

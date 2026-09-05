@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio from './Studio';
 import { box, roller, tube, material, screw } from './parts';
+import { fadingCover, scalarTransition } from './motion';
 export default function RefrigeratorStudio({
   phase,
   cutaway,
@@ -18,7 +19,7 @@ export default function RefrigeratorStudio({
       fitHeight={6.3}
       cameraPosition={[7, 4.2, 10]}
       target={[0, 2.3, 0]}
-      create={({ root }) => {
+      create={({ root, reducedMotion }) => {
         const enamel = material('#dedfd9', 0.15, 0.28),
           liner = material('#e9f0eb', 0.08, 0.43),
           metal = material('#a6b6b5', 0.8, 0.26),
@@ -136,20 +137,26 @@ export default function RefrigeratorStudio({
         box(door, [2.36, 1.17, 0.18], [1.18, 4.35, 0], enamel, 0.07);
         box(door, [0.06, 0.72, 0.08], [2.03, 3.02, 0.15], metal, 0.025);
         box(door, [0.06, 0.48, 0.08], [2.03, 4.35, 0.15], metal, 0.025);
-        let openness = cutaway ? 1 : 0;
+        const open = scalarTransition(cutaway ? 1 : 0, 1.15);
+        const doorCover = fadingCover(door),
+          sideCover = fadingCover(side);
         return {
           update(dt) {
             const s = current.current;
-            openness = THREE.MathUtils.damp(openness, s.cutaway ? 1 : 0, 6, dt);
+            const openness = open(s.cutaway ? 1 : 0, dt, reducedMotion.matches);
             door.rotation.y = -openness * 1.92;
-            door.visible = openness < 0.95;
-            side.visible = openness < 0.9;
+            doorCover.opacity(1 - THREE.MathUtils.smoothstep(openness, 0.45, 0.98));
+            sideCover.opacity(1 - THREE.MathUtils.smoothstep(openness, 0.15, 0.92));
             const active = Math.min(3, Math.floor(s.phase)),
               t = s.phase % 1;
             particles.forEach((p, i) => {
               p.position.copy(curves[active].getPointAt((t + i / particles.length) % 1));
               p.material = particleMaterial;
             });
+          },
+          dispose() {
+            doorCover.dispose();
+            sideCover.dispose();
           },
         };
       }}

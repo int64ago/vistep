@@ -1,0 +1,388 @@
+/* Shared response and motion. Study layouts and scientific marks live in editorial.css. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation-duration: 160ms;
+}
+::view-transition-new(root) {
+  animation-duration: 240ms;
+}
+:where(a, button, input, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid #729282;
+  outline-offset: 4px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #729282;
+  outline-offset: 4px;
+}
+.site-header nav a {
+  border-radius: 10px;
+  transition: color 220ms ease;
+}
+.signature-replay {
+  border-radius: 50%;
+}
+.btn,
+.object-toggle,
+.transport-play,
+.transport-reset,
+.signature-replay,
+.printer-view-controls button,
+.pixel-next,
+.component-picks button {
+  transition:
+    background 240ms ease,
+    border-color 240ms ease,
+    color 240ms ease,
+    box-shadow 320ms ease,
+    transform 320ms var(--ease-settle);
+}
+.btn:active:not(:disabled),
+.editorial-cta:active,
+.object-toggle:active,
+.transport-play:active,
+.transport-reset:active,
+.signature-replay:active,
+.printer-view-controls button:active,
+.pixel-next:active {
+  transform: scale(0.975);
+  transition-duration: 100ms;
+}
+.editorial-cta span,
+.index-arrow,
+.wide-cta > span {
+  transition: transform 450ms var(--ease-settle);
+}
+.study-visual,
+.index-illustration,
+.related-card {
+  transition:
+    box-shadow 450ms ease,
+    background 350ms ease,
+    border-color 350ms ease;
+}
+.studio-canvas,
+.canvas-host > [role='img'] {
+  cursor: grab;
+  border-radius: inherit;
+}
+.studio-canvas:active,
+.canvas-host > [role='img']:active {
+  cursor: grabbing;
+}
+.studio-canvas:focus-visible {
+  outline: 2px solid #72928280;
+  outline-offset: -8px;
+  border-radius: var(--radius-panel);
+}
+
+/* A single, persistent selection surface moves between the actual button bounds. */
+.segmented {
+  position: relative;
+  isolation: isolate;
+}
+.segmented > button {
+  position: relative;
+  z-index: 1;
+  transition: color 220ms ease;
+}
+.segmented[data-measured='true'] > button[aria-pressed='true'] {
+  background: transparent;
+  box-shadow: none;
+}
+.segment-selection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-control);
+  background: var(--segment-surface);
+  box-shadow:
+    0 2px 8px #26372d09,
+    0 1px 2px #26372d05;
+  pointer-events: none;
+  transition:
+    transform 380ms var(--ease-settle),
+    width 380ms var(--ease-settle),
+    height 380ms var(--ease-settle);
+}
+.printer-filmstrip.segmented {
+  display: grid;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  --segment-surface: #e6edde;
+}
+.printer-filmstrip .segment-selection::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: #9cb18b;
+}
+.printer-filmstrip button::before {
+  content: none;
+}
+
+/* Native inputs keep their keyboard, touch and immediate numeric response. */
+.control input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  --range-fill: 0%;
+  --range-rest: color-mix(in srgb, var(--range-color) 19%, transparent);
+}
+.control input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9px;
+  background: linear-gradient(
+    to right,
+    var(--range-color) 0 var(--range-fill),
+    var(--range-rest) var(--range-fill) 100%
+  );
+}
+.control input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 9px;
+  background: var(--range-rest);
+}
+.control input[type='range']::-moz-range-progress {
+  height: 6px;
+  border-radius: 9px;
+  background: var(--range-color);
+}
+.control input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  border: 3px solid #fffefa;
+  border-radius: 50%;
+  background: var(--range-color);
+  box-shadow: 0 1px 5px #20352826;
+  transition:
+    box-shadow 220ms ease,
+    transform 220ms var(--ease-settle);
+}
+.control input[type='range']::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fffefa;
+  border-radius: 50%;
+  background: var(--range-color);
+  box-shadow: 0 1px 5px #20352826;
+  transition:
+    box-shadow 220ms ease,
+    transform 220ms var(--ease-settle);
+}
+.control input[type='range']:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 6px var(--range-rest),
+    0 2px 7px #20352820;
+}
+.control input[type='range']:active::-moz-range-thumb {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 6px var(--range-rest),
+    0 2px 7px #20352820;
+}
+.control select,
+.control input[type='number'],
+.printer-paper select {
+  border-radius: 10px;
+  transition:
+    border-color 240ms ease,
+    background 240ms ease,
+    box-shadow 240ms ease;
+}
+.checkline {
+  min-height: 44px;
+}
+.printer-annotation,
+.printer-stage-story,
+.printer-micro {
+  animation: story-arrive 420ms var(--ease-settle) both;
+}
+@keyframes story-arrive {
+  from {
+    opacity: 0;
+    translate: 0 4px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.prose details {
+  transition:
+    background 350ms ease,
+    border-color 350ms ease;
+}
+.prose summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.prose summary::-webkit-details-marker {
+  display: none;
+}
+.prose summary::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  opacity: 0.6;
+  transition: transform 350ms var(--ease-settle);
+}
+.prose details[open] > summary::after {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
+@supports (interpolate-size: allow-keywords) {
+  .prose details {
+    interpolate-size: allow-keywords;
+  }
+  .prose details::details-content {
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition:
+      block-size 420ms var(--ease-settle),
+      opacity 300ms ease,
+      content-visibility 420ms allow-discrete;
+  }
+  .prose details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .editorial-cta:hover {
+    box-shadow: 0 8px 24px #283f351a;
+  }
+  .editorial-cta:hover span {
+    transform: translate(2px, -2px);
+  }
+  .object-toggle:hover,
+  .btn:hover:not(:disabled) {
+    box-shadow: 0 4px 14px #26372d08;
+  }
+  .signature-replay:hover,
+  .transport-reset:hover {
+    background: #68856810;
+  }
+  .transport-play:hover {
+    background: #607f64;
+    box-shadow: 0 4px 18px #35553a1a;
+  }
+  .printer-view-controls button:hover {
+    background: #edf2e8;
+  }
+  .printer-filmstrip button:hover {
+    background: #e9eee380;
+  }
+  .study-card:hover .study-visual {
+    box-shadow: 0 12px 32px #37492c0c;
+  }
+  .index-entry:hover .index-arrow {
+    transform: translate(2px, -2px);
+  }
+  .wide-study:hover .wide-cta > span {
+    transform: translateX(4px);
+  }
+  .related-card:hover {
+    box-shadow: 0 6px 24px #3b502906;
+    background: #fcfdf9;
+  }
+  .control input[type='range']:hover::-webkit-slider-thumb {
+    box-shadow:
+      0 0 0 5px var(--range-rest),
+      0 1px 5px #20352826;
+  }
+  .control input[type='range']:hover::-moz-range-thumb {
+    box-shadow:
+      0 0 0 5px var(--range-rest),
+      0 1px 5px #20352826;
+  }
+}
+@media (max-width: 760px) {
+  :root {
+    --radius-stage: 22px;
+  }
+  .printer-transport {
+    gap: 7px;
+  }
+  .printer-filmstrip {
+    min-width: 0;
+  }
+  .printer-filmstrip button {
+    padding: 10px 2px;
+    gap: 5px;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .printer-filmstrip small {
+    font-size: 9px;
+  }
+  .transport-reset {
+    width: 44px;
+    min-width: 44px;
+    display: block;
+  }
+  .printer-filmstrip button:before {
+    left: 7px;
+    right: 7px;
+  }
+  .printer-filmstrip {
+    gap: 3px;
+  }
+  .printer-view-controls button {
+    padding: 10px;
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+  *,
+  *::before,
+  *::after,
+  ::details-content {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:active,
+  .object-toggle:active,
+  .transport-play:active,
+  .transport-reset:active,
+  .signature-replay:active,
+  .editorial-cta:active,
+  .printer-view-controls button:active,
+  .pixel-next:active {
+    transform: none;
+  }
+}

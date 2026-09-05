@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { box, roller, screw, tube, gear, material } from './parts';
 import type { StudioContext, StudioObject } from './Studio';
+import { fadingCover, scalarTransition, softEase } from './motion';
 export type PrinterVisualState = {
   progress: number;
   exploded: boolean;
@@ -14,7 +15,7 @@ export function createPrinter(
   context: StudioContext,
   read: () => PrinterVisualState,
 ): StudioObject {
-  const { root, camera, controls } = context;
+  const { root, camera, controls, reducedMotion } = context;
   const ivory = material('#e8e8e1', 0.08, 0.29),
     graphite = material('#252d34', 0.25, 0.4),
     rubber = material('#141b20', 0.05, 0.85);
@@ -294,32 +295,38 @@ export function createPrinter(
     new THREE.Vector3(2.14, 0.665, 1.1),
     new THREE.Vector3(-1.3, 1.3, 1.1),
   ];
-  let openness = read().exploded ? 1 : 0,
-    lastView = read().view,
+  const open = scalarTransition(read().exploded ? 1 : 0, 1.15);
+  const covers = [shell, front, side].map(fadingCover);
+  let lastView = read().view,
     lastFocus = false,
     lastPhase = -1,
-    transition = 0;
+    transition = 1;
   let overview: THREE.Vector3 | null = null;
   const overviewTarget = controls.target.clone();
   const destination = new THREE.Vector3(),
-    destinationTarget = new THREE.Vector3();
+    destinationTarget = new THREE.Vector3(),
+    departure = new THREE.Vector3(),
+    departureTarget = new THREE.Vector3();
+  const interrupt = () => {
+    transition = 1;
+  };
+  controls.addEventListener('start', interrupt);
   return {
     update(dt, elapsed) {
       const state = read(),
         phase = Math.min(5, Math.floor(state.progress)),
         frac = state.progress - phase;
-      openness = THREE.MathUtils.damp(openness, state.exploded ? 1 : 0, 7, dt);
+      const openness = open(state.exploded ? 1 : 0, dt, reducedMotion.matches);
       shell.position.y = openness * 1.25;
       shell.rotation.z = openness * -0.045;
       front.position.z = openness * 1.8;
       front.position.y = -openness * 0.1;
-      front.visible = openness < 0.97;
-      side.visible = openness < 0.8;
+      covers.forEach((cover, i) =>
+        cover.opacity(1 - THREE.MathUtils.smoothstep(openness, i === 2 ? 0.12 : 0.3, 0.97)),
+      );
       back.position.z = -openness * 0.2;
       scanner.position.y = openness * 0.22;
       fuserGuard.position.y = openness * 0.35;
-      // The cover is fully removed in the study view, preserving an uncluttered mechanism.
-      shell.visible = openness < 0.98;
       drum.rotation.z = state.progress * 0.8;
       charge.rotation.z = -state.progress * 3;
       developer.rotation.z = -state.progress * 2;
@@ -388,7 +395,9 @@ export function createPrinter(
         lastView = state.view;
         lastFocus = !!state.focus;
         lastPhase = phase;
-        transition = 1.4;
+        transition = 0;
+        departure.copy(camera.position);
+        departureTarget.copy(controls.target);
         destinationTarget.copy(state.focus ? positions[phase] : overviewTarget);
         const direction = new THREE.Vector3(
           ...((state.view === 'top' ? [0.1, 14, 0.9] : [8, 6.5, 10]) as [number, number, number]),
@@ -398,12 +407,16 @@ export function createPrinter(
           : overview.distanceTo(overviewTarget);
         destination.copy(destinationTarget).addScaledVector(direction, distance);
       }
-      if (transition > 0) {
-        const amount = Math.min(1, dt * 7);
-        controls.target.lerp(destinationTarget, amount);
-        camera.position.lerp(destination, amount);
-        transition -= dt;
+      if (transition < 1) {
+        transition = reducedMotion.matches ? 1 : Math.min(1, transition + dt / 1.05);
+        const amount = softEase(transition);
+        controls.target.lerpVectors(departureTarget, destinationTarget, amount);
+        camera.position.lerpVectors(departure, destination, amount);
       }
+    },
+    dispose() {
+      controls.removeEventListener('start', interrupt);
+      covers.forEach((cover) => cover.dispose());
     },
   };
 }

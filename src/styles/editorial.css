@@ -4,7 +4,7 @@
   font-family: 'Manrope Variable', 'Noto Sans SC Variable', 'PingFang SC', sans-serif;
   --ink: #202321;
   --muted: #747772;
-  --line: #ddded7;
+  --line: #e1e3db;
   --blue: #3458e5;
   --paper: #fcfcf8;
   --mono: 'Manrope Variable', 'Noto Sans SC Variable', sans-serif;
@@ -12,6 +12,12 @@
   background: #f7f7f2;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  --radius-control: 12px;
+  --radius-panel: 20px;
+  --radius-stage: 28px;
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --range-color: #6c8874;
+  --segment-surface: #fffefa;
 }
 body {
   background: #f7f7f2;
@@ -43,8 +49,8 @@ h3 {
 .wordmark {
   font-family: 'Manrope Variable', sans-serif;
   font-size: 28px;
-  font-weight: 750;
-  letter-spacing: -1.7px;
+  font-weight: 680;
+  letter-spacing: -1.4px;
   gap: 0;
 }
 .wordmark-ai {
@@ -140,9 +146,9 @@ h3 {
 }
 .opening h1 {
   font-size: clamp(46px, 5.45vw, 78px);
-  line-height: 1.24;
-  letter-spacing: -0.055em;
-  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  font-weight: 430;
   margin: 0 0 24px;
   color: #242a24;
 }
@@ -161,20 +167,22 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 44px;
-  background: #283f35;
+  background: #3d594b;
   color: #fff;
-  padding: 17px 22px;
+  padding: 17px 24px;
   font-size: 13px;
   font-weight: 500;
   min-height: 54px;
   transition:
-    background 0.2s,
-    transform 0.2s;
-  border-radius: 3px;
+    background 240ms ease,
+    box-shadow 320ms ease,
+    transform 320ms var(--ease-settle);
+  border-radius: 18px;
+  box-shadow: 0 5px 18px #283f3510;
 }
 .editorial-cta:hover {
-  background: #3b5c4c;
-  transform: translateY(-2px);
+  background: #496755;
+  transform: translateY(-1px);
 }
 .editorial-cta span {
   font-size: 22px;
@@ -425,14 +433,15 @@ h3 {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 15px;
+  padding: 13px 17px;
   min-height: 44px;
-  background: #ffffffa0;
+  background: #ffffffb0;
   backdrop-filter: blur(10px);
-  border: 1px solid #d9ddd2;
-  border-radius: 3px;
+  border: 1px solid #ffffffba;
+  border-radius: var(--radius-control);
   color: #53624f;
   font-size: 11px;
+  box-shadow: 0 3px 16px #35463807;
 }
 .object-toggle svg {
   width: 17px;
@@ -495,6 +504,7 @@ h3 {
   background: #e8ece3;
   position: relative;
   overflow: hidden;
+  border-radius: 24px;
 }
 .study-visual > svg {
   width: 100%;
@@ -502,7 +512,7 @@ h3 {
   transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .study-card:hover .study-visual > svg {
-  transform: scale(1.05);
+  transform: scale(1.025);
 }
 .study-number {
   position: absolute;
@@ -516,9 +526,15 @@ h3 {
   position: absolute;
   right: 18px;
   bottom: 15px;
-  font-size: 22px;
+  font-size: 20px;
   color: #52604c;
   transition: transform 0.3s;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffff66;
 }
 .study-card:hover .study-enter {
   transform: translate(3px, -3px);
@@ -559,9 +575,10 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   overflow: hidden;
-  background: #253d35;
+  background: #314b40;
   color: #edf1e9;
   position: relative;
+  border-radius: var(--radius-stage);
 }
 .wide-study-copy {
   padding: 47px 55px;
@@ -605,10 +622,10 @@ h3 {
   height: 100%;
   position: absolute;
   inset: 0;
-  transition: transform 1s;
+  transition: transform 900ms var(--ease-settle);
 }
 .wide-study:hover .hyper-art svg {
-  transform: rotate(-4deg) scale(1.02);
+  transform: scale(1.025);
 }
 .hyper-art > span {
   position: absolute;
@@ -661,15 +678,16 @@ h3 {
   flex-shrink: 0;
   background: #edf0e7;
   overflow: hidden;
+  border-radius: 16px;
 }
 .index-illustration svg {
   width: 100%;
   height: 100%;
   transform: scale(1.16);
-  transition: transform 0.4s;
+  transition: transform 650ms var(--ease-settle);
 }
 .index-entry:hover .index-illustration svg {
-  transform: scale(1.3);
+  transform: scale(1.23);
 }
 .index-copy {
   min-width: 0;
@@ -762,9 +780,10 @@ h3 {
 }
 .experiment {
   border: 1px solid #dce1d4;
-  border-radius: 4px;
+  border-radius: var(--radius-stage);
   background: #fff;
   box-shadow: none;
+  border-color: #e2e6dc;
 }
 .lab-toolbar {
   padding: 24px 28px;
@@ -777,41 +796,41 @@ h3 {
   letter-spacing: -0.02em;
 }
 .btn {
-  border-radius: 3px;
+  border-radius: var(--radius-control);
   box-shadow: none;
   font-size: 12px;
   min-height: 44px;
   color: #536749;
-  border-color: #d5ddce;
+  border-color: #dfe5d8;
   padding: 11px 15px;
 }
 .btn.primary {
-  background: #35533d;
-  border-color: #35533d;
+  background: #4a6953;
+  border-color: #4a6953;
   color: white;
 }
 .btn.primary:hover {
-  background: #466b50;
-  border-color: #466b50;
+  background: #58785e;
+  border-color: #58785e;
 }
 .btn:hover {
-  background: #f0f4ed;
-  border-color: #b4c0aa;
+  background: #f4f7f0;
+  border-color: #cbd7c2;
 }
 .segmented {
-  border-radius: 3px;
-  border-color: #e2e7dc;
-  background: #f1f4ec;
+  border-radius: 16px;
+  border-color: transparent;
+  background: #e9eee6;
+  padding: 4px;
 }
 .segmented button {
   font-size: 11px;
   color: #7f8d72;
-  border-radius: 2px;
+  border-radius: var(--radius-control);
 }
 .segmented button[aria-pressed='true'] {
   color: #3e6337;
-  box-shadow: 0 1px 4px #2336140a;
-  background: #fff;
+  box-shadow: none;
 }
 .lab-controls {
   border-color: #e1e7d8;
@@ -830,8 +849,8 @@ h3 {
   margin-bottom: 3px;
 }
 .control input[type='range'] {
-  accent-color: #52753e;
-  height: 36px;
+  --range-color: #52753e;
+  height: 44px;
 }
 .lab-scene {
   background: #f1f3ec;
@@ -869,14 +888,14 @@ h3 {
   font-weight: 500;
 }
 .lab-callout {
-  border-radius: 3px;
+  border-radius: var(--radius-control);
   background: #f1f5ec;
   color: #667e52;
   font-size: 11px;
   line-height: 1.9;
 }
 .formula {
-  border-radius: 2px;
+  border-radius: var(--radius-control);
   border-color: #d6dfca;
   background: #f4f7ee;
   color: #678248;
@@ -959,9 +978,9 @@ h3 {
   margin: 30px 0;
 }
 .prose details {
-  border-radius: 2px;
-  border: 1px solid #dce5d1;
-  background: #fafcf7;
+  border-radius: 16px;
+  border: 1px solid #e4e8df;
+  background: #fbfcf8;
   padding: 0 22px;
 }
 .prose summary {
@@ -997,9 +1016,9 @@ h3 {
   color: #587839;
 }
 .related-card {
-  border-radius: 3px;
+  border-radius: var(--radius-panel);
   background: transparent;
-  border-color: #d7e2ca;
+  border-color: #e0e6d9;
   box-shadow: none;
   padding: 26px;
 }
@@ -1027,9 +1046,9 @@ h3 {
 .printer-object-stage {
   height: 550px;
   position: relative;
-  background: #eceee6;
+  background: radial-gradient(ellipse at 48% 40%, #f3f5ed 0%, #eaeee3 100%);
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: var(--radius-stage);
 }
 .printer-object-stage > .studio {
   position: absolute;
@@ -1059,19 +1078,19 @@ h3 {
   pointer-events: auto;
 }
 .printer-view-controls button {
-  border: 1px solid #c9d2c0;
-  background: #f8faf2c9;
+  border: 1px solid #ffffff70;
+  background: #ffffff96;
   backdrop-filter: blur(10px);
-  border-radius: 2px;
-  padding: 10px 15px;
+  border-radius: 11px;
+  padding: 11px 14px;
   min-height: 44px;
   color: #738365;
   font-size: 10px;
 }
 .printer-view-controls button[aria-pressed='true'] {
-  background: #37513b;
-  border-color: #37513b;
-  color: #f7f9f2;
+  background: #dce6d5;
+  border-color: #dce6d5;
+  color: #49603d;
 }
 .printer-annotation {
   position: absolute;
@@ -1114,7 +1133,7 @@ h3 {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  background: #35553a;
+  background: #4f7055;
   color: #fff;
   border: 0;
   border-radius: 50%;
@@ -1133,15 +1152,16 @@ h3 {
   width: 44px;
   height: 44px;
   font-size: 22px;
+  border-radius: 50%;
 }
 .printer-filmstrip {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   flex: 1;
-  gap: 14px;
+  gap: 7px;
 }
 .printer-filmstrip button {
-  padding: 9px 0;
+  padding: 12px 14px;
   background: none;
   border: 0;
   text-align: left;
@@ -1152,21 +1172,28 @@ h3 {
   display: flex;
   gap: 10px;
   align-items: center;
+  border-radius: 12px;
+  transition:
+    background 320ms ease,
+    color 240ms ease;
 }
 .printer-filmstrip button:before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: auto;
+  left: 14px;
+  right: 14px;
   height: 2px;
-  background: #d6e1ca;
+  background: transparent;
+  bottom: 3px;
+  border-radius: 2px;
 }
 .printer-filmstrip button[aria-pressed='true'] {
-  color: #426b2b;
+  color: #4b6c3b;
+  background: #e6edde;
 }
 .printer-filmstrip button[aria-pressed='true']:before {
-  background: #5b873e;
+  background: #9cb18b;
 }
 .printer-filmstrip small {
   font-family: 'Manrope Variable', sans-serif;
@@ -1191,13 +1218,14 @@ h3 {
   background: #fff;
   padding: 12px;
   gap: 1px;
-  box-shadow: 0 3px 8px #2b44110a;
+  box-shadow: 0 8px 24px #2b44110a;
   width: 100px;
   aspect-ratio: 0.8;
   grid-template-rows: repeat(8, 1fr);
   max-width: none;
   align-content: center;
   border: 1px solid #e0e9d7;
+  border-radius: 8px;
 }
 .printer-paper .printer-pixels button {
   border: 0;
@@ -1216,13 +1244,14 @@ h3 {
   display: block;
   font-size: 13px;
   margin: 9px 0 12px;
-  background: transparent;
+  background: #edf1e6;
   border: 0;
   border-bottom: 1px solid #c4d6b2;
   color: #587b38;
-  padding: 9px 0;
+  padding: 8px 10px;
   min-height: 44px;
   width: 100%;
+  border-radius: 10px;
 }
 .pixel-next {
   font-size: 10px;
@@ -1422,8 +1451,8 @@ h3 {
   }
   .opening h1 {
     font-size: clamp(45px, 10.5vw, 69px);
-    line-height: 1.22;
-    letter-spacing: -0.055em;
+    line-height: 1.3;
+    letter-spacing: -0.045em;
     margin-bottom: 20px;
   }
   .opening-description {
@@ -1434,7 +1463,7 @@ h3 {
   .editorial-cta {
     font-size: 12px;
     min-height: 48px;
-    padding: 13px 18px;
+    padding: 17px 24px;
     gap: 36px;
   }
   .brand-signature {
@@ -1482,7 +1511,7 @@ h3 {
   }
   .object-toggle {
     font-size: 10px;
-    padding: 10px 12px;
+    padding: 13px 17px;
   }
   .object-hint {
     font-size: 9px;
@@ -1656,7 +1685,7 @@ h3 {
     font-size: 9px;
   }
   .experiment {
-    border-radius: 3px;
+    border-radius: var(--radius-stage);
   }
   .lab-toolbar {
     padding: 18px;
@@ -1760,8 +1789,8 @@ h3 {
   }
   .printer-object-stage {
     height: 390px;
-    margin: 0 -24px;
-    border-radius: 0;
+    margin: 0 -12px;
+    border-radius: var(--radius-stage);
   }
   .printer-stage-top {
     left: 20px;
@@ -1779,7 +1808,7 @@ h3 {
   }
   .printer-view-controls button {
     font-size: 9px;
-    padding: 9px 10px;
+    padding: 11px 14px;
   }
   .printer-annotation {
     left: 24px;
@@ -1812,7 +1841,7 @@ h3 {
     width: 36px;
   }
   .printer-filmstrip {
-    gap: 8px;
+    gap: 7px;
     min-width: 230px;
   }
   .printer-filmstrip button {
@@ -1857,7 +1886,7 @@ h3 {
   }
   .printer-paper select {
     font-size: 11px;
-    padding: 6px 0;
+    padding: 8px 10px;
   }
   .pixel-next {
     font-size: 8px;
@@ -1911,7 +1940,7 @@ h3 {
     height: 330px;
   }
   .printer-object-stage {
-    margin: 0 -20px;
+    margin: 0 -8px;
     height: 355px;
   }
   .printer-transport {
@@ -1919,14 +1948,14 @@ h3 {
   }
   .printer-filmstrip {
     min-width: 210px;
-    gap: 5px;
+    gap: 7px;
   }
   .transport-reset {
     display: none;
   }
   .printer-view-controls button {
     font-size: 8px;
-    padding: 8px;
+    padding: 11px 14px;
   }
   .printer-micro {
     padding-left: 10px;
@@ -2130,7 +2159,7 @@ h3 {
   color: #52636c;
 }
 .lesson-bicycle .control input[type='range'] {
-  accent-color: #6f8791;
+  --range-color: #6f8791;
 }
 .lesson-bicycle .segmented {
   background: #dce4e7;
@@ -2618,7 +2647,7 @@ h3 {
   grid-column: 2/5;
   height: 2px;
   background: #dce5dc;
-  border-radius: 0;
+  border-radius: 4px;
 }
 .lesson-network .waterfall span {
   background: #7c9e80;
@@ -2708,13 +2737,13 @@ h3 {
 .lesson-jpeg .segmented {
   background: transparent;
   border: 0;
+  --segment-surface: #f9f8fc;
 }
 .lesson-jpeg .segmented button {
   color: #94879e;
 }
 .lesson-jpeg .segmented button[aria-pressed='true'] {
   color: #695474;
-  background: #f9f8fc;
 }
 .lesson-jpeg .jpeg-workbench {
   background: transparent;
@@ -2779,7 +2808,7 @@ h3 {
   color: #78618e;
 }
 .lesson-jpeg .control input[type='range'] {
-  accent-color: #9270ac;
+  --range-color: #9270ac;
 }
 .lesson-jpeg .control select {
   color: #816390;
@@ -2866,7 +2895,7 @@ h3 {
   color: #c6e3d3;
 }
 .lesson-noise .control input[type='range'] {
-  accent-color: #91bb9d;
+  --range-color: #91bb9d;
 }
 .lesson-noise .btn {
   border-color: #547166;
@@ -2937,11 +2966,12 @@ h3 {
 .lesson-transformer .token {
   background: #3a3446;
   border: 1px solid #675574;
-  border-radius: 2px;
+  border-radius: 12px;
   min-width: 46px;
   padding: 12px;
   color: #d7c5e5;
   font-size: 21px;
+  border-color: #67557480;
 }
 .lesson-transformer .token.predicted {
   background: #a690b9;
@@ -2951,14 +2981,14 @@ h3 {
 .lesson-transformer .training-core .segmented {
   background: #302b3a;
   border-color: #44394f;
-  padding: 2px;
-  border-radius: 2px;
+  padding: 4px;
+  border-radius: 16px;
+  --segment-surface: #50435c;
 }
 .lesson-transformer .training-core .segmented button {
   color: #a28ab7;
 }
 .lesson-transformer .training-core .segmented button[aria-pressed='true'] {
-  background: #50405f;
   color: #d7c1e6;
 }
 .lesson-transformer .attention-view {
@@ -2989,8 +3019,8 @@ h3 {
 }
 .lesson-transformer .loss-chart {
   background: #282332;
-  border-color: #594363;
-  border-radius: 1px;
+  border-color: #59436380;
+  border-radius: 12px;
   height: 115px;
   margin-top: 26px;
 }
@@ -3012,7 +3042,7 @@ h3 {
 .lesson-transformer .prob-track {
   height: 4px;
   background: #e2d8e9;
-  border-radius: 0;
+  border-radius: 4px;
 }
 .lesson-transformer .prob-track span {
   background: #9c7db0;
@@ -3033,7 +3063,7 @@ h3 {
   color: #87669f;
 }
 .lesson-transformer .control input[type='range'] {
-  accent-color: #9b7db3;
+  --range-color: #9b7db3;
 }
 .lesson-transformer .btn.primary {
   background: #715381;
@@ -3053,7 +3083,7 @@ h3 {
 }
 .lesson-transformer .weight-values span {
   background: #e8e0ef;
-  border-radius: 1px;
+  border-radius: 8px;
   padding: 9px 5px;
 }
 .lesson-transformer .train-stat {
@@ -3173,7 +3203,7 @@ h3 {
   color: #c4d8dc;
 }
 .lesson-traffic .control input[type='range'] {
-  accent-color: #93b5c4;
+  --range-color: #93b5c4;
 }
 .lesson-traffic .btn {
   background: transparent;
@@ -3263,7 +3293,7 @@ h3 {
 }
 .lesson-dimensions .control input[type='range'],
 .lesson-gps .control input[type='range'] {
-  accent-color: #879bbf;
+  --range-color: #879bbf;
 }
 .lesson-dimensions .lab-callout,
 .lesson-gps .lab-callout {

@@ -32,6 +32,7 @@ export default function SpatialCanvas({
   useEffect(() => {
     const el = host.current;
     if (!el || failed || flat) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let renderer: THREE.WebGLRenderer | undefined,
       id = 0,
       cleanup: void | (() => void),
@@ -63,6 +64,8 @@ export default function SpatialCanvas({
       return;
     }
     const context = { scene, group, camera, renderer };
+    let targetX = group.rotation.x,
+      targetY = group.rotation.y;
     const resize = () => {
       const w = el.clientWidth,
         h = el.clientHeight;
@@ -90,7 +93,14 @@ export default function SpatialCanvas({
     io.observe(el);
     const tick = (t: number) => {
       if (visible && !document.hidden) {
-        frameRef.current?.(context, last ? Math.min(0.04, (t - last) / 1000) : 0);
+        const dt = last ? Math.min(0.04, (t - last) / 1000) : 0;
+        group.rotation.x = reducedMotion.matches
+          ? targetX
+          : THREE.MathUtils.damp(group.rotation.x, targetX, 18, dt);
+        group.rotation.y = reducedMotion.matches
+          ? targetY
+          : THREE.MathUtils.damp(group.rotation.y, targetY, 18, dt);
+        frameRef.current?.(context, dt);
         renderer!.render(scene, camera);
       }
       last = visible && !document.hidden ? t : 0;
@@ -105,8 +115,8 @@ export default function SpatialCanvas({
     };
     const onMove = (e: PointerEvent) => {
       if (!down) return;
-      group.rotation.y += (e.clientX - px) * 0.008;
-      group.rotation.x = Math.max(-1, Math.min(1, group.rotation.x + (e.clientY - py) * 0.006));
+      targetY += (e.clientX - px) * 0.005;
+      targetX = Math.max(-1, Math.min(1, targetX + (e.clientY - py) * 0.004));
       px = e.clientX;
       py = e.clientY;
     };
@@ -116,8 +126,11 @@ export default function SpatialCanvas({
     const onKey = (e: KeyboardEvent) => {
       if (e.key.startsWith('Arrow')) {
         e.preventDefault();
-        group.rotation.y += e.key === 'ArrowLeft' ? -0.12 : e.key === 'ArrowRight' ? 0.12 : 0;
-        group.rotation.x += e.key === 'ArrowUp' ? -0.1 : e.key === 'ArrowDown' ? 0.1 : 0;
+        targetY += e.key === 'ArrowLeft' ? -0.12 : e.key === 'ArrowRight' ? 0.12 : 0;
+        targetX = Math.max(
+          -1,
+          Math.min(1, targetX + (e.key === 'ArrowUp' ? -0.1 : e.key === 'ArrowDown' ? 0.1 : 0)),
+        );
       }
     };
     const lost = (e: Event) => {
