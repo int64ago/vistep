@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useCallback, useState, useRef, type PointerEvent } from 'react';
 import { Metric, Range, Segments, clamp } from '../lab/Controls';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
@@ -18,7 +19,12 @@ const demoSatellites = [
 ];
 export default function Gps() {
   const demo = useShowcase();
-  const shells = useRef<{ group: THREE.Group; range: number }[]>([]);
+  const shells = useRef<
+    {
+      group: THREE.Group;
+      range: number;
+    }[]
+  >([]);
   const solutionMarker = useRef<THREE.Mesh | null>(null);
   const [manualMode, setMode] = useState<'2d' | '3d'>('2d'),
     [manualSatellites, setSatellites] = useState(defaults.map((s) => [...s])),
@@ -218,14 +224,14 @@ export default function Gps() {
   return (
     <div>
       <div className="lab-toolbar">
-        <h2>距离相遇的地方，藏着你的位置。</h2>
+        <h2>{t('距离相遇的地方，藏着你的位置。')}</h2>
         <div className="lab-actions">
           <Segments
-            label="定位维度"
+            label={t('定位维度')}
             value={mode}
             options={[
-              { value: '2d', label: '二维：圆' },
-              { value: '3d', label: '三维：球面' },
+              { value: '2d', label: t('二维：圆') },
+              { value: '3d', label: t('三维：球面') },
             ]}
             onChange={setMode}
           />
@@ -239,7 +245,7 @@ export default function Gps() {
               setSelected(0);
             }}
           >
-            ↻ 重置
+            {t('↻ 重置')}
           </button>
         </div>
       </div>
@@ -250,7 +256,7 @@ export default function Gps() {
               className="gps-scene"
               viewBox="0 0 640 410"
               role="img"
-              aria-label="拖动卫星，观察距离圆与估计位置"
+              aria-label={t('拖动卫星，观察距离圆与估计位置')}
               onPointerMove={drag}
               onPointerUp={() => setDragged(-1)}
               onPointerCancel={() => setDragged(-1)}
@@ -292,7 +298,7 @@ export default function Gps() {
                     <circle cx="300" cy="210" r="12" fill="#2b73db22" />
                     <circle cx="300" cy="210" r="5" fill="#347cdc" />
                     <text x="312" y="231" fill="#5b81b3" fontSize="11">
-                      {demo.watch ? '位置确定' : '真实位置'}
+                      {demo.watch ? t('位置确定') : t('真实位置')}
                     </text>
                   </g>
                 )}
@@ -314,7 +320,7 @@ export default function Gps() {
                         fill="#bb8157"
                         fontSize="11"
                       >
-                        {demo.watch ? '' : '计算位置'}
+                        {demo.watch ? '' : t('计算位置')}
                       </text>
                     </g>
                   )}
@@ -340,7 +346,9 @@ export default function Gps() {
                     data-satellite
                     tabIndex={demo.watch ? -1 : 0}
                     role={demo.watch ? 'img' : 'button'}
-                    aria-label={demo.watch ? `信号源 S${i + 1}` : `卫星 ${i + 1}，使用方向键移动`}
+                    aria-label={
+                      demo.watch ? t('信号源 S{0}', i + 1) : t('卫星 {0}，使用方向键移动', i + 1)
+                    }
                     onKeyDown={(e) => {
                       if (!demo.watch && e.key.startsWith('Arrow')) {
                         e.preventDefault();
@@ -380,7 +388,7 @@ export default function Gps() {
                 ))}
               </g>
               <text x="22" y="389" fill="#8da0b8" fontSize="11">
-                {demo.watch ? '' : '拖动信号源 · 教学坐标'}
+                {demo.watch ? '' : t('拖动信号源 · 教学坐标')}
               </text>
             </svg>
           ) : (
@@ -401,7 +409,7 @@ export default function Gps() {
                   if (solutionMarker.current)
                     solutionMarker.current.visible = !demo.watch || demo.time >= 29;
                 }}
-                label="四个卫星的距离球面与定位点"
+                label={t('四个卫星的距离球面与定位点')}
                 dark
                 fallback={
                   <GpsFlat
@@ -415,28 +423,28 @@ export default function Gps() {
                   />
                 }
               />
-              <span className="dimension-overlay">距离球面 / 拖动旋转</span>
+              <span className="dimension-overlay">{t('距离球面 / 拖动旋转')}</span>
             </div>
           )}
         </div>
         <div className="lab-controls">
           <Range
-            label="可用信号源"
+            label={t('可用信号源')}
             value={count}
             min={2}
             max={4}
-            unit="个"
+            unit={t('个')}
             onChange={(value) => {
               setCount(value);
               setSelected((previous) => Math.min(previous, value - 1));
             }}
           />
           <Range
-            label="时钟误差的等效距离"
+            label={t('时钟误差的等效距离')}
             value={bias}
             min={-35}
             max={35}
-            unit="单位"
+            unit={t('单位')}
             onChange={setBias}
           />
           <label className="checkline">
@@ -445,22 +453,23 @@ export default function Gps() {
               checked={correct}
               onChange={(e) => setCorrect(e.target.checked)}
             />
-            同时求解接收机时钟误差
+            {t('同时求解接收机时钟误差')}
           </label>
           {mode === '3d' && (
             <>
               <label className="control">
-                <span className="control-top">选择卫星</span>
+                <span className="control-top">{t('选择卫星')}</span>
                 <select value={selected} onChange={(e) => setSelected(Number(e.target.value))}>
                   {satellites.slice(0, count).map((_, i) => (
                     <option value={i} key={i}>
-                      卫星 S{i + 1}
+                      {t('卫星 S')}
+                      {i + 1}
                     </option>
                   ))}
                 </select>
               </label>
               <Range
-                label="卫星高度"
+                label={t('卫星高度')}
                 value={satellites[selected][2]}
                 min={100}
                 max={450}
@@ -470,31 +479,41 @@ export default function Gps() {
           )}
           <div className="lab-callout">
             {!result
-              ? `当前约束不足或几何位置退化。${dimensions} 个位置未知量${correct ? ' + 1 个时钟未知量' : ''}，至少需要 ${dimensions + (correct ? 1 : 0)} 个独立距离。`
+              ? t(
+                  '当前约束不足或几何位置退化。{0} 个位置未知量{1}，至少需要 {2} 个独立距离。',
+                  dimensions,
+                  correct ? t(' + 1 个时钟未知量') : '',
+                  dimensions + (correct ? 1 : 0),
+                )
               : correct
-                ? '这里的位置与时钟误差是一起求解的。尝试减少信号源，再移动它们。'
-                : '忽略时钟误差时，几个圆可能无法在真实位置相交。计算位置是最小二乘的折中。'}
+                ? t('这里的位置与时钟误差是一起求解的。尝试减少信号源，再移动它们。')
+                : t('忽略时钟误差时，几个圆可能无法在真实位置相交。计算位置是最小二乘的折中。')}
           </div>
         </div>
       </div>
       <div className="metrics">
         <Metric
-          label="位置误差"
-          value={error === null ? '未确定' : error.toFixed(2)}
-          unit={error === null ? undefined : '单位'}
+          label={t('位置误差')}
+          value={error === null ? t('未确定') : error.toFixed(2)}
+          unit={error === null ? undefined : t('单位')}
         />
-        <Metric label="求得时钟偏差" value={result ? result.clock.toFixed(2) : '—'} unit="单位" />
-        <Metric label="待求未知量" value={dimensions + (correct ? 1 : 0)} />
+        <Metric
+          label={t('求得时钟偏差')}
+          value={result ? result.clock.toFixed(2) : '—'}
+          unit={t('单位')}
+        />
+        <Metric label={t('待求未知量')} value={dimensions + (correct ? 1 : 0)} />
       </div>
       <p className="lab-caption">
-        这是<strong>局部几何与伪距教学模型</strong>
-        ：接收机接收广播，并非向卫星报告位置。三维定位通常同时求解 x、y、z
-        与时钟偏差；未模拟地球曲率、轨道、大气误差或实时卫星数据。
+        {t('这是')}
+        <strong>{t('局部几何与伪距教学模型')}</strong>
+        {t(
+          '：接收机接收广播，并非向卫星报告位置。三维定位通常同时求解 x、y、z 与时钟偏差；未模拟地球曲率、轨道、大气误差或实时卫星数据。',
+        )}
       </p>
     </div>
   );
 }
-
 function GpsFlat({
   satellites,
   bias,
@@ -518,7 +537,7 @@ function GpsFlat({
     <svg
       viewBox={`${minX} ${minY} ${maxX - minX} ${maxY - minY}`}
       role="img"
-      aria-label="距离球面正交投影，半径由同一伪距模型计算"
+      aria-label={t('距离球面正交投影，半径由同一伪距模型计算')}
     >
       {circles.map((c, i) => (
         <g key={i}>

@@ -1,0 +1,39 @@
+<h2 id="understand">A quick page can contain many waits</h2>
+
+After you press Enter, the browser needs an address. A domain is convenient for people; communication needs a network address. DNS connects the two. A usable cached answer makes this step faster.
+
+The experiment uses HTTP/2 over TCP with TLS 1.3. TCP establishes reliable transport. TLS negotiates encryption and verifies the server's identity. HTTP then expresses the request through that connection.
+
+The server processes the request and returns content. HTML arriving is not the end: the browser parses structure and style, calculates layout, paints and composites the result. Real pages often process content as it arrives.
+
+The animation separates responsibilities. **Real loading combines relay-like handoffs with parallel work; it is not always a strictly serial queue.**
+
+<h2 id="try">Why is the second visit often faster?</h2>
+
+Try a cold start, then enable DNS caching. Next, reuse an established connection to skip repeated TCP and TLS handshakes.
+
+Finally, choose fresh resource caching. The browser can reuse responses locally without transferring the same content again. A cached file is not always usable without contacting the server: stale responses may need validation. This experiment specifically models still-fresh resources.
+
+Raise RTT to 300 ms and compare again. Even small transfers can take noticeable time when many round trips accumulate. Avoiding round trips and reducing byte count are different optimizations.
+
+> Lose one segment. Reliable transport does not mean nothing ever gets lost; it means loss can be detected and handled.
+
+<h2 id="deeper">Separate three ideas</h2>
+
+<details>
+<summary>Bandwidth, latency and rendering</summary>
+
+Bandwidth is how much data can travel per unit time. Latency is how long a round trip takes. A wide, long road can carry many trucks without making the first truck arrive immediately.
+
+Server processing, resource count, script execution and device performance also matter. Here processing and rendering times are fixed to highlight round trips and caching. Every readout is a model result, not a measurement of this website or your connection.
+
+</details>
+
+<details>
+<summary>HTTP/2 and HTTP/3</summary>
+
+HTTP/2 multiplexes streams over a connection, but TCP's ordered delivery means packet loss can delay later data. HTTP/3 uses QUIC, with different connection establishment and stream behavior. This serial timeline should not be applied directly to it.
+
+DNS can itself be encrypted. Connections can be prepared early and TLS sessions resumed. The sources provide further protocol detail after each responsibility has a clear place in the picture.
+
+</details>

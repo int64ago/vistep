@@ -3,21 +3,34 @@ import '../styles/global.css';
 import '../styles/editorial.css';
 import '../styles/interaction.css';
 import '../styles/showcase.css';
+import '../styles/language.css';
+import { translate, localPath, type Locale } from '../i18n';
 interface Props {
   title?: string;
   description?: string;
+  locale?: Locale;
 }
-const {
-  title = 'vistep.ai — 让每一步原理变得可见',
-  description = '12 个可以亲手探索的原理。从自行车到大模型，用可视化看懂生活和工作背后的每一步。',
-} = Astro.props;
+const { locale = 'zh' } = Astro.props;
+const tr = (s: string) => translate(s, locale);
+const title = Astro.props.title ?? tr('vistep.ai — 让每一步原理变得可见');
+const description =
+  Astro.props.description ??
+  tr('12 个可以亲手探索的原理。从自行车到大模型，用可视化看懂生活和工作背后的每一步。');
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const home = localPath('/', locale);
+const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={locale === 'en' ? 'en' : 'zh-CN'}>
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      try {
+        if (location.pathname === '/' && localStorage.getItem('vistep:language') === 'en')
+          location.replace('/en/' + location.search + location.hash);
+      } catch {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f7f7f2" />
@@ -25,14 +38,30 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_CN'} />
     <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang="zh-CN"
+      href={new URL(localPath(Astro.url.pathname, 'zh'), Astro.site)}
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(localPath(Astro.url.pathname, 'en'), Astro.site)}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localPath(Astro.url.pathname, 'zh'), Astro.site)}
+    />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
   </head>
   <body>
-    <a href="#main" class="skip-link">跳到主要内容</a>
+    <a href="#main" class="skip-link">{tr('跳到主要内容')}</a>
     <header class="site-header">
-      <a class="wordmark" href="/" aria-label="vistep.ai 首页"
+      <a class="wordmark" href={home} aria-label={tr('vistep.ai 首页')}
         ><span class="brand-symbol" aria-hidden="true"
           ><svg viewBox="0 0 28 28" fill="none"
             ><path
@@ -44,20 +73,39 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           ></span
         >vistep<span class="wordmark-ai">.ai</span></a
       >
-      <nav aria-label="主导航">
-        <a href="/#collection">全部探索 <span class="nav-count">12</span></a><a
-          href="/#name"
-          class="name-link">关于 vistep <span aria-hidden="true">↗</span></a
+      <nav aria-label={tr('主导航')}>
+        <a href={`${home}#collection`}>{tr('全部探索')} <span class="nav-count">12</span></a>
+        <a href={`${home}#name`} class="name-link"
+          >{tr('关于 vistep')} <span aria-hidden="true">↗</span></a
+        >
+        <a
+          class="language-switch"
+          href={alternate}
+          lang={locale === 'en' ? 'zh-CN' : 'en'}
+          hreflang={locale === 'en' ? 'zh-CN' : 'en'}
+          data-language={locale === 'en' ? 'zh' : 'en'}
+          aria-label={locale === 'en' ? '切换到中文' : 'Switch to English'}
+          >{locale === 'en' ? '中文' : 'EN'}</a
         >
       </nav>
     </header>
     <slot />
     <footer class="site-footer">
-      <a class="wordmark" href="/">vistep<span class="wordmark-ai">.ai</span></a><p>
-        Visualize Every Step with AI<span>让每一步原理变得可见</span>
+      <a class="wordmark" href={home}>vistep<span class="wordmark-ai">.ai</span></a><p>
+        Visualize Every Step with AI<span>{tr('让每一步原理变得可见')}</span>
       </p><span class="footer-note"
-        >好奇心，是最好的起点。<small>© {new Date().getFullYear()} vistep</small></span
+        >{tr('好奇心，是最好的起点。')}<small>© {new Date().getFullYear()} vistep</small></span
       >
     </footer>
+    <script>
+      document
+        .querySelector<HTMLAnchorElement>('.language-switch')
+        ?.addEventListener('click', function () {
+          try {
+            localStorage.setItem('vistep:language', this.dataset.language!);
+          } catch {}
+          if (location.hash) this.hash = location.hash;
+        });
+    </script>
   </body>
 </html>

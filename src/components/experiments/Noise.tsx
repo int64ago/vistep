@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
@@ -43,10 +44,14 @@ export default function Noise() {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
     const rows = [
-      { name: '环境声', color: '#72b9df', fn: (a: number) => Math.sin(a) },
-      { name: '抵消声', color: '#eab187', fn: (a: number) => amplitude * Math.sin(a + phi) },
+      { name: t('环境声'), color: '#72b9df', fn: (a: number) => Math.sin(a) },
       {
-        name: '耳边的叠加结果',
+        name: t('抵消声'),
+        color: '#eab187',
+        fn: (a: number) => amplitude * Math.sin(a + phi),
+      },
+      {
+        name: t('耳边的叠加结果'),
         color: '#81d8bd',
         fn: (a: number) => Math.sin(a) + amplitude * Math.sin(a + phi),
       },
@@ -95,25 +100,27 @@ export default function Noise() {
     a.b.setPeriodicWave(a.context.createPeriodicWave(real, imag, { disableNormalization: true }));
   }, [frequency, amplitude, phase, delay]);
   useEffect(() => {
-    const hide = () => {
+    let inView = true;
+    const update = () => {
       const a = audio.current;
       if (!a) return;
-      if (document.hidden) a.context.suspend();
-      else if (listening) a.context.resume();
+      a.master.gain.setTargetAtTime(demo.narrating ? 0.008 : 0.035, a.context.currentTime, 0.15);
+      if (listening && inView && !document.hidden && (!demo.watch || demo.playing))
+        void a.context.resume();
+      else void a.context.suspend();
     };
-    document.addEventListener('visibilitychange', hide);
+    document.addEventListener('visibilitychange', update);
     const io = new IntersectionObserver(([e]) => {
-      const a = audio.current;
-      if (!a) return;
-      if (!e.isIntersecting) a.context.suspend();
-      else if (listening && !document.hidden) a.context.resume();
+      inView = e.isIntersecting;
+      update();
     });
     if (host.current) io.observe(host.current);
+    update();
     return () => {
-      document.removeEventListener('visibilitychange', hide);
+      document.removeEventListener('visibilitychange', update);
       io.disconnect();
     };
-  }, [listening]);
+  }, [listening, demo.watch, demo.playing, demo.narrating]);
   useEffect(
     () => () => {
       audio.current?.context.close();
@@ -156,19 +163,19 @@ export default function Noise() {
       setListening(true);
       setError('');
     } catch {
-      setError('当前浏览器无法播放声音，波形实验仍可完整使用。');
+      setError(t('当前浏览器无法播放声音，波形实验仍可完整使用。'));
     }
   };
   return (
     <div ref={host}>
       <div className="lab-toolbar">
-        <h2>用一段声音，抵消另一段声音。</h2>
+        <h2>{t('用一段声音，抵消另一段声音。')}</h2>
         <div className="lab-actions">
           <button className="btn primary" onClick={toggle}>
-            {listening ? '◼ 关闭试听' : '♫ 开启轻声试听'}
+            {listening ? t('◼ 关闭试听') : t('♫ 开启轻声试听')}
           </button>
           <button className="btn" onClick={() => setAnimated(!animated)}>
-            {animated ? 'Ⅱ 停住波形' : '▷ 慢放波形'}
+            {animated ? t('Ⅱ 停住波形') : t('▷ 慢放波形')}
           </button>
           <button
             className="btn"
@@ -182,7 +189,7 @@ export default function Noise() {
               setListening(false);
             }}
           >
-            ↻ 重置
+            {t('↻ 重置')}
           </button>
         </div>
       </div>
@@ -193,19 +200,22 @@ export default function Noise() {
               className="wave-canvas"
               ref={canvas}
               role="img"
-              aria-label={`环境声与抵消声的叠加。残余振幅为原声的${(residual * 100).toFixed(0)}%。`}
+              aria-label={t(
+                '环境声与抵消声的叠加。残余振幅为原声的{0}%。',
+                (residual * 100).toFixed(0),
+              )}
             />
           </div>
           <div className="wave-status">
-            <span>同频率 · 单点处的声压叠加</span>
+            <span>{t('同频率 · 单点处的声压叠加')}</span>
             <span>
               {residual < 0.001
-                ? '理想相消'
+                ? t('理想相消')
                 : Math.abs(residual - 1) < 0.001
-                  ? '声压保持不变'
+                  ? t('声压保持不变')
                   : residual > 1
-                    ? '此时反而更响'
-                    : '声压减小了'}
+                    ? t('此时反而更响')
+                    : t('声压减小了')}
             </span>
           </div>
           {error && (
@@ -216,7 +226,7 @@ export default function Noise() {
         </div>
         <div className="lab-controls">
           <Range
-            label="声音频率"
+            label={t('声音频率')}
             value={frequency}
             min={80}
             max={800}
@@ -225,16 +235,23 @@ export default function Noise() {
             onChange={setFrequency}
           />
           <Range
-            label="抵消声相对幅度"
+            label={t('抵消声相对幅度')}
             value={amplitude}
             min={0}
             max={1.5}
             step={0.05}
             onChange={setAmplitude}
           />
-          <Range label="抵消声相位" value={phase} min={0} max={360} unit="°" onChange={setPhase} />
           <Range
-            label="额外延迟"
+            label={t('抵消声相位')}
+            value={phase}
+            min={0}
+            max={360}
+            unit="°"
+            onChange={setPhase}
+          />
+          <Range
+            label={t('额外延迟')}
             value={delay}
             min={0}
             max={2}
@@ -243,22 +260,23 @@ export default function Noise() {
             onChange={setDelay}
           />
           <div className="lab-callout">
-            先保持 180°，再加入一点延迟。提高频率后，相同的延迟会造成更大的相位偏差。
+            {t('先保持 180°，再加入一点延迟。提高频率后，相同的延迟会造成更大的相位偏差。')}
           </div>
         </div>
       </div>
       <div className="metrics">
-        <Metric label="残余振幅 / 原振幅" value={residual.toFixed(2)} />
+        <Metric label={t('残余振幅 / 原振幅')} value={residual.toFixed(2)} />
         <Metric
-          label="相对声压级变化"
-          value={residual < 0.0001 ? '理想 −∞' : (20 * Math.log10(residual)).toFixed(1)}
+          label={t('相对声压级变化')}
+          value={residual < 0.0001 ? t('理想 −∞') : (20 * Math.log10(residual)).toFixed(1)}
           unit={residual < 0.0001 ? undefined : 'dB'}
         />
-        <Metric label="额外相位偏差" value={(frequency * delay * 0.36).toFixed(1)} unit="°" />
+        <Metric label={t('额外相位偏差')} value={(frequency * delay * 0.36).toFixed(1)} unit="°" />
       </div>
       <p className="lab-caption">
-        试听是低音量的合成纯音，展示同一点的声压叠加，<strong>不会消除你房间里的真实噪声</strong>
-        。真实降噪还受麦克风位置、声学路径、算法与佩戴方式影响。
+        {t('试听是低音量的合成纯音，展示同一点的声压叠加，')}
+        <strong>{t('不会消除你房间里的真实噪声')}</strong>
+        {t('。真实降噪还受麦克风位置、声学路径、算法与佩戴方式影响。')}
       </p>
     </div>
   );

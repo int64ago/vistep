@@ -1,0 +1,39 @@
+<h2 id="understand">One request changes other people's journeys</h2>
+
+One passenger wants a lift immediately. Someone else is waiting upstairs, and riders already inside have different destinations. A lift must consider more than the nearest caller: existing passengers, direction and incoming requests also matter.
+
+The experiment gives two lifts an identical set of arrivals. Follow each passenger through four states: not yet arrived, waiting, riding and delivered. System performance is made from all of these individual experiences.
+
+Three understandable rules are compared. First come, first served prioritizes older requests. Nearest-task control favors shorter next journeys. Collective control keeps a direction and collects compatible riders along the way.
+
+**The shortest-looking next move does not necessarily produce the lowest final average wait.**
+
+<h2 id="try">Give the same passengers to three schedulers</h2>
+
+Try the morning rush, where people arrive at the lobby for different floors. Run one strategy, then compare all three from the same inputs. Look at both waiting and riding time.
+
+Switch to journeys between floors. Changing the demand pattern can change which strategy performs best. Ask what structure in the requests favors a rule, rather than memorizing a winner.
+
+Add a passenger just after a lift has passed. That person may wait a long time, but turning the lift around immediately could inconvenience many riders.
+
+> What if the goal were to minimize the longest individual wait, rather than the average? A different goal may need a different strategy.
+
+<h2 id="deeper">What can an attractive average hide?</h2>
+
+<details>
+<summary>Why do live averages count only boarded passengers?</summary>
+
+People still waiting do not yet have a complete waiting time. An average based only on boarded passengers may look good while difficult requests remain unserved. The manual view also shows waiting and delivered counts.
+
+The full comparison runs until all passengers arrive or an explicit simulation limit is reached. Incomplete delivery is labeled and must not be treated as a complete average. Fair comparison requires the same times, origins and destinations, not merely the same number of people.
+
+</details>
+
+<details>
+<summary>Why are real lifts more complicated?</summary>
+
+Acceleration, door motion, loading, floor heights, access restrictions, failures and traffic prediction matter. Destination dispatch can group journeys before passengers board.
+
+This model fixes capacity at six people, speed at one floor per second and door dwell at 1.5 seconds. The automatic film uses ten seeded requests; manual scenarios offer more. It implements no proprietary control algorithm and is not a building-capacity or safety design tool.
+
+</details>

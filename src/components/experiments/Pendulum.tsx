@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useRef, useState, useEffect } from 'react';
 import { useShowcase } from '../lab/Showcase';
 import PendulumStudio from '../three/PendulumStudio';
@@ -58,13 +59,13 @@ export default function Pendulum() {
   return (
     <div ref={host}>
       <div className="lab-toolbar">
-        <h2>先把摆球拉向一边，再松手。</h2>
+        <h2>{t('先把摆球拉向一边，再松手。')}</h2>
         <div className="lab-actions">
           <button
             className={`btn ${playing ? '' : 'primary'}`}
             onClick={() => setPlaying(!playing)}
           >
-            {playing ? 'Ⅱ 暂停' : '▷ 释放钟摆'}
+            {playing ? t('Ⅱ 暂停') : t('▷ 释放钟摆')}
           </button>
           <button
             className="btn"
@@ -73,13 +74,13 @@ export default function Pendulum() {
               reset();
             }}
           >
-            ↻ 重置
+            {t('↻ 重置')}
           </button>
         </div>
       </div>
       <div className="lab-grid">
         <div className="lab-scene">
-          <span className="scene-label">THE PENDULUM / 单摆</span>
+          <span className="scene-label">{t('THE PENDULUM / 单摆')}</span>
           <div
             className="pendulum-object"
             style={{ opacity: demo.watch ? Math.min(1, Math.abs(demo.time - 16) / 0.5) : 1 }}
@@ -107,11 +108,11 @@ export default function Pendulum() {
             </strong>
             <p>
               {demo.watch
-                ? `${length.toFixed(1)} m · ${damping < 0.01 ? '轻阻尼' : '增加阻尼'}`
-                : '拉起摆球，然后松手。'}
+                ? t('{0} m · {1}', length.toFixed(1), damping < 0.01 ? t('轻阻尼') : t('增加阻尼'))
+                : t('拉起摆球，然后松手。')}
             </p>
           </div>
-          <svg className="pendulum-trace" viewBox="0 330 640 90" aria-label="实时角度轨迹">
+          <svg className="pendulum-trace" viewBox="0 330 640 90" aria-label={t('实时角度轨迹')}>
             <path d="M38 374H590" stroke="#cdd3c1" />
             <polyline points={points} stroke="#ae8748" strokeWidth="1.6" fill="none" />
             <text x="40" y="404" fill="#9b9e8b" fontSize="10">
@@ -124,7 +125,7 @@ export default function Pendulum() {
         </div>
         <div className="lab-controls">
           <Range
-            label="摆长"
+            label={t('摆长')}
             value={length}
             min={0.5}
             max={2.2}
@@ -133,7 +134,7 @@ export default function Pendulum() {
             onChange={(v) => change(setLength, v)}
           />
           <Range
-            label="起始角度"
+            label={t('起始角度')}
             value={initial}
             min={-80}
             max={80}
@@ -145,7 +146,7 @@ export default function Pendulum() {
             }}
           />
           <Range
-            label="摆球质量"
+            label={t('摆球质量')}
             value={mass}
             min={0.5}
             max={3}
@@ -153,22 +154,29 @@ export default function Pendulum() {
             unit="kg"
             onChange={setMass}
           />
-          <Range label="阻尼" value={damping} min={0} max={0.5} step={0.01} onChange={setDamping} />
+          <Range
+            label={t('阻尼')}
+            value={damping}
+            min={0}
+            max={0.5}
+            step={0.01}
+            onChange={setDamping}
+          />
           <div>
-            <span className="lab-subtitle">换一个星球</span>
+            <span className="lab-subtitle">{t('换一个星球')}</span>
             <Segments
-              label="重力环境"
+              label={t('重力环境')}
               value={gravity === 9.81 ? 'earth' : 'moon'}
               options={[
-                { value: 'earth', label: '地球' },
-                { value: 'moon', label: '月球' },
+                { value: 'earth', label: t('地球') },
+                { value: 'moon', label: t('月球') },
               ]}
               onChange={(v) => change(setGravity, v === 'earth' ? 9.81 : 1.62)}
             />
           </div>
           <div className="pendulum-energy">
             <div className="energy-label">
-              <span>势能</span>
+              <span>{t('势能')}</span>
               <span>{energy.potential.toFixed(2)} J</span>
             </div>
             <div className="energy-track">
@@ -180,7 +188,7 @@ export default function Pendulum() {
               />
             </div>
             <div className="energy-label" style={{ marginTop: 12 }}>
-              <span>动能</span>
+              <span>{t('动能')}</span>
               <span>{energy.kinetic.toFixed(2)} J</span>
             </div>
             <div className="energy-track">
@@ -191,16 +199,18 @@ export default function Pendulum() {
       </div>
       <div className="metrics">
         <Metric
-          label="小角度近似周期"
+          label={t('小角度近似周期')}
           value={smallAnglePeriod(length, gravity).toFixed(2)}
           unit="s"
         />
-        <Metric label="机械能" value={total.toFixed(2)} unit="J" />
-        <Metric label="重力加速度" value={gravity.toFixed(2)} unit="m/s²" />
+        <Metric label={t('机械能')} value={total.toFixed(2)} unit="J" />
+        <Metric label={t('重力加速度')} value={gravity.toFixed(2)} unit="m/s²" />
       </div>
       <p className="lab-caption">
-        <strong>试试看：</strong>
-        把质量翻倍，周期会变吗？这里使用非线性单摆方程计算运动；周期读数是小角度近似。参数改变代表重新设置实验，阻尼把机械能转移到环境。
+        <strong>{t('试试看：')}</strong>
+        {t(
+          '把质量翻倍，周期会变吗？这里使用非线性单摆方程计算运动；周期读数是小角度近似。参数改变代表重新设置实验，阻尼把机械能转移到环境。',
+        )}
       </p>
     </div>
   );

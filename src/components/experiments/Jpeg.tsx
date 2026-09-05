@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
 import { useShowcase, ramp } from '../lab/Showcase';
@@ -22,9 +23,9 @@ function PixelBlock({
         viewBox="0 0 8 8"
         shapeRendering="crispEdges"
         role="img"
-        aria-label="8 乘 8 亮度图块"
+        aria-label={t('8 乘 8 亮度图块')}
       >
-        <title>8 乘 8 亮度图块</title>
+        <title>{t('8 乘 8 亮度图块')}</title>
         {values.map((v, i) => (
           <rect
             key={i}
@@ -41,7 +42,7 @@ function PixelBlock({
     <div
       className="pixel-block"
       role={demo.watch ? 'img' : 'group'}
-      aria-label={heat ? '64 个频率系数' : '8 乘 8 像素图块'}
+      aria-label={heat ? t('64 个频率系数') : t('8 乘 8 像素图块')}
     >
       {values.map((v, i) => (
         <button
@@ -50,7 +51,13 @@ function PixelBlock({
           disabled={!onSelect || demo.watch}
           tabIndex={demo.watch ? -1 : undefined}
           aria-hidden={demo.watch ? true : undefined}
-          aria-label={`${heat ? '频率系数' : '像素'} ${(i % 8) + 1},${Math.floor(i / 8) + 1}：${v.toFixed(1)}`}
+          aria-label={t(
+            '{0} {1},{2}：{3}',
+            heat ? t('频率系数') : t('像素'),
+            (i % 8) + 1,
+            Math.floor(i / 8) + 1,
+            v.toFixed(1),
+          )}
           aria-pressed={selected === i}
           onClick={() => onSelect?.(i)}
           style={{
@@ -134,7 +141,7 @@ export default function Jpeg() {
   return (
     <div className="jpeg-lab">
       <div className="lab-toolbar">
-        <h2>把一小块图像，拆成 64 种频率。</h2>
+        <h2>{t('把一小块图像，拆成 64 种频率。')}</h2>
         <button
           className="btn"
           onClick={() => {
@@ -145,40 +152,40 @@ export default function Jpeg() {
             setView('image');
           }}
         >
-          ↻ 重置
+          {t('↻ 重置')}
         </button>
         <Segments
-          label="图像内容"
+          label={t('图像内容')}
           value={pattern}
           options={[
-            { value: 'edge', label: '斜边' },
-            { value: 'gradient', label: '渐变' },
-            { value: 'texture', label: '纹理' },
+            { value: 'edge', label: t('斜边') },
+            { value: 'gradient', label: t('渐变') },
+            { value: 'texture', label: t('纹理') },
           ]}
           onChange={setPattern}
         />
       </div>
       <div className="lab-tabs">
         <Segments
-          label="观察方式"
+          label={t('观察方式')}
           value={view}
           options={[
-            { value: 'image', label: '像素 → 频率 → 重建' },
-            { value: 'basis', label: '看看一种频率' },
+            { value: 'image', label: t('像素 → 频率 → 重建') },
+            { value: 'basis', label: t('看看一种频率') },
           ]}
           onChange={setView}
         />
-        <span className="note">点击中间的格子，查看对应频率。</span>
+        <span className="note">{t('点击中间的格子，查看对应频率。')}</span>
       </div>
       <div className="jpeg-workbench">
         <div className="jpeg-panel">
           <p className="eyebrow">01 / {view === 'basis' ? 'BASIS PATTERN' : 'ORIGINAL'}</p>
-          <h3>{view === 'basis' ? `频率 (${u}, ${v}) 的基图案` : '原始图像'}</h3>
+          <h3>{view === 'basis' ? t('频率 ({0}, {1}) 的基图案', u, v) : t('原始图像')}</h3>
           <PixelBlock values={view === 'basis' ? basis : block} />
           <p>
             {view === 'basis'
-              ? '越靠右、越靠下，变化越密。'
-              : '每个格子是一处亮度，0 黑 / 255 白。'}
+              ? t('越靠右、越靠下，变化越密。')
+              : t('每个格子是一处亮度，0 黑 / 255 白。')}
           </p>
         </div>
         <span className="jpeg-arrow" aria-hidden="true">
@@ -186,7 +193,7 @@ export default function Jpeg() {
         </span>
         <div className="jpeg-panel">
           <p className="eyebrow">02 / DCT + QUANTIZATION</p>
-          <h3>{previewBasis ? `一种频率 (${u}, ${v})` : '频率系数'}</h3>
+          <h3>{previewBasis ? t('一种频率 ({0}, {1})', u, v) : t('频率系数')}</h3>
           <PixelBlock
             values={previewBasis ? basis : result.quantized}
             selected={previewBasis ? undefined : selected}
@@ -194,8 +201,10 @@ export default function Jpeg() {
             heat={!previewBasis}
           />
           <p>
-            高亮：({u}, {v})　值 {result.coefficients[selected].toFixed(1)} →{' '}
-            {result.quantized[selected]}
+            {t('高亮：(')}
+            {u}, {v}
+            {t(') 值')}
+            {result.coefficients[selected].toFixed(1)} → {result.quantized[selected]}
           </p>
         </div>
         <span className="jpeg-arrow" aria-hidden="true">
@@ -203,54 +212,57 @@ export default function Jpeg() {
         </span>
         <div className="jpeg-panel">
           <p className="eyebrow">03 / RECONSTRUCTED</p>
-          <h3>重建图像</h3>
+          <h3>{t('重建图像')}</h3>
           <PixelBlock values={result.reconstructed} />
-          <p>被舍去的细节，不会凭空回来。</p>
+          <p>{t('被舍去的细节，不会凭空回来。')}</p>
         </div>
       </div>
       <div className="jpeg-controls">
         <label className="control">
-          <span className="control-top">选一个频率位置</span>
+          <span className="control-top">{t('选一个频率位置')}</span>
           <select
-            aria-label="选择频率系数"
+            aria-label={t('选择频率系数')}
             value={selected}
             onChange={(e) => setSelected(Number(e.target.value))}
           >
             {Array.from({ length: 64 }, (_, i) => (
               <option key={i} value={i}>
-                ({i % 8}, {Math.floor(i / 8)}) · {i === 0 ? '整体亮度' : '频率系数'}
+                ({i % 8}, {Math.floor(i / 8)}) · {i === 0 ? t('整体亮度') : t('频率系数')}
               </option>
             ))}
           </select>
         </label>
         <Range
-          label="画质参数"
+          label={t('画质参数')}
           value={quality}
           min={1}
           max={100}
           onChange={setQuality}
-          help="数值越低，量化通常越粗。"
+          help={t('数值越低，量化通常越粗。')}
         />
         <Range
-          label="允许保留的低频位置"
+          label={t('允许保留的低频位置')}
           value={keep}
           min={1}
           max={64}
           onChange={setKeep}
-          help="从左上角的整体亮度，逐渐加入细节。"
+          help={t('从左上角的整体亮度，逐渐加入细节。')}
         />
         <div className="lab-callout">
-          把保留位置拖到 1：图像只剩一块平均亮度。再慢慢增加，观察轮廓怎样先于纹理出现。
+          {t('把保留位置拖到 1：图像只剩一块平均亮度。再慢慢增加，观察轮廓怎样先于纹理出现。')}
         </div>
       </div>
       <div className="metrics">
-        <Metric label="非零系数" value={result.nonzero} unit="/ 64" />
-        <Metric label="重建均方误差 MSE" value={result.mse.toFixed(1)} />
-        <Metric label="选中位置量化步长" value={result.table[selected]} />
+        <Metric label={t('非零系数')} value={result.nonzero} unit="/ 64" />
+        <Metric label={t('重建均方误差 MSE')} value={result.mse.toFixed(1)} />
+        <Metric label={t('选中位置量化步长')} value={result.table[selected]} />
       </div>
       <p className="lab-caption">
-        这是 JPEG 的<strong>亮度图块教学实验</strong>，真实计算 DCT、量化和逆变换。未生成 JPEG
-        文件；非零系数数量并不等于文件大小。色度降采样、熵编码和文件结构在下方继续展开。
+        {t('这是 JPEG 的')}
+        <strong>{t('亮度图块教学实验')}</strong>
+        {t(
+          '，真实计算 DCT、量化和逆变换。未生成 JPEG 文件；非零系数数量并不等于文件大小。色度降采样、熵编码和文件结构在下方继续展开。',
+        )}
       </p>
     </div>
   );

@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 const labels = [
   'DNS QUERY / RESPONSE',
   'TCP · SYN → SYN/ACK → ACK',
@@ -23,7 +24,7 @@ function NetworkDiagram({
     from = step === 0 ? 116 : step === 4 ? 632 : 116,
     to = step === 0 ? 374 : step === 4 ? 116 : 632;
   const p = Math.max(0, Math.min(1, progress));
-  const t =
+  const travel =
     step === 1
       ? p < 1 / 3
         ? p * 3
@@ -35,7 +36,7 @@ function NetworkDiagram({
           ? p * 2
           : 2 - p * 2
         : p;
-  const x = from + (to - from) * t;
+  const x = from + (to - from) * travel;
   const painted = complete ? 1 : step === 5 ? p : 0;
   return (
     <svg
@@ -43,7 +44,7 @@ function NetworkDiagram({
       viewBox={mobile ? '0 0 380 335' : '0 0 760 285'}
       role="img"
       aria-label={
-        cached ? '直接从本地读取缓存' : `请求经过浏览器、DNS 与源站，当前 ${labels[step]}`
+        cached ? t('直接从本地读取缓存') : t('请求经过浏览器、DNS 与源站，当前 {0}', labels[step])
       }
     >
       <defs>
@@ -132,8 +133,8 @@ function NetworkDiagram({
                 ? [85, 157]
                 : [190, 199]
             : [to, 172];
-          const packetX = mobile ? start[0] + (end[0] - start[0]) * t : x,
-            packetY = start[1] + (end[1] - start[1]) * t;
+          const packetX = mobile ? start[0] + (end[0] - start[0]) * travel : x,
+            packetY = start[1] + (end[1] - start[1]) * travel;
           return (
             <g>
               <path
@@ -161,32 +162,31 @@ function NetworkDiagram({
       )}
       <g fontFamily="inherit" fontSize={mobile ? 14 : 13} fill="#627d70" textAnchor="middle">
         <text x={mobile ? 85 : 116} y={mobile ? 140 : 229}>
-          你的浏览器
+          {t('你的浏览器')}
         </text>
         <text x={mobile ? 295 : 374} y={mobile ? 140 : 229}>
           DNS
         </text>
         <text x={mobile ? 190 : 636} y={mobile ? 318 : 229}>
-          源站服务器
+          {t('源站服务器')}
         </text>
       </g>
       {!mobile && (
         <g fontFamily="inherit" fontSize="9" fill="#92a69c" textAnchor="middle">
           <text x="116" y="249">
-            读取 · 理解 · 绘制
+            {t('读取 · 理解 · 绘制')}
           </text>
           <text x="374" y="249">
-            找到地址
+            {t('找到地址')}
           </text>
           <text x="636" y="249">
-            响应请求
+            {t('响应请求')}
           </text>
         </g>
       )}
     </svg>
   );
 }
-
 export default function NetworkJourney(props: {
   stage: number;
   progress: number;

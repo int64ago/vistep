@@ -4,7 +4,7 @@
 
 重做版预览：https://vistep-preview.int64ago.workers.dev
 
-12 篇中文专题，默认播放约半分钟的引导演示，保留暂停、重播与「自己试试」。长讲解、公式与来源收在「深入了解」中。
+12 篇中英文专题，默认播放约半分钟的引导演示，保留暂停、重播与「自己试试」。长讲解、公式与来源收在「深入了解」中。
 
 专题包括：自行车、冰箱、激光打印机、主动降噪、GPS、网页加载、JPEG、小型 Transformer、多维空间、钟摆、电梯调度、无事故堵车。
 
@@ -29,7 +29,11 @@ pnpm preview
 
 - `src/pages/index.astro`：首页，品牌文字动画、实时三维打印机和分层专题目录。
 - `src/pages/explore/[slug].astro`：预生成的专题页面，支持直接访问、刷新和分享。
-- `src/content/*.mdx`：中文讲解、实验任务、深入内容。
+- `src/content/*.mdx` 与 `src/content/en/*.mdx`：两种语言各自预生成的讲解、实验任务、深入内容。
+- `src/i18n/`：页面与实验标注的语言映射；`/en/` 与中文路径互相对应。
+- `src/data/narration.json`：按镜头编写的中英文口语讲解，独立于屏幕字幕。
+- `src/data/audio-manifest.json`：24 条音轨与 108 个片段的时间、文稿和生成参数。
+- `public/narration/`：带内容哈希的 MP3 音轨，按需加载并长期缓存。
 - `src/data/films.ts`：各篇自己的镜头时序和短字幕。
 - `src/components/lab/Showcase.tsx`：可见时播放的时钟、暂停、重播和探索模式。
 - `src/data/topics.ts`：专题元数据、来源、相关内容。
@@ -40,7 +44,7 @@ pnpm preview
 - `src/styles/showcase.css`：演示优先的布局、手机构图和播放控件。
 - `src/styles/editorial.css`：字体、版式与不同专题的视觉语言。
 
-没有账号、后台、付费或在线 AI 服务。所有实验在读者的浏览器里运行。首页只加载首页所需的品牌和三维对象，专题计算引擎分别懒加载。
+没有账号、后台、付费或访客端在线 AI 调用。所有实验在读者的浏览器里运行。首页只加载首页所需的品牌和三维对象，专题计算引擎分别懒加载。
 
 新增专题时登记 metadata，添加同 slug 的 MDX、模型与交互组件，在 `Experiment.tsx` 登记动态 import。先确定这篇独有的观看与操作方式，再实现。请遵守 `AGENTS.md` 的制作标准。
 
@@ -81,4 +85,25 @@ pnpm deploy
 
 ## 字体与资产
 
-中文：Noto Sans SC Variable；拉丁字：Manrope Variable。字体本地托管，按 Unicode 区间加载；OFL 许可证与 Three.js MIT 许可证在 `public/licenses/`。所有器物与封面为代码构建，未使用外部图片或模型资产。
+中文：Noto Sans SC Variable；拉丁字：Manrope Variable。字体本地托管，按 Unicode 区间加载；OFL 许可证与 Three.js MIT 许可证在 `public/licenses/`。所有器物与封面为代码构建，未使用外部图片或模型资产。讲解音频由单独编写的中英文稿件生成，使用 Cloudflare 托管的 MeloTTS；不是页面文字的自动朗读。
+
+## 双语与声音
+
+右上角 `EN / 中文` 切换同一专题，并保留阅读锚点。语言存于本地浏览器，之后从首页进入时沿用选择。两种语言都有独立 URL、规范网址、语言替代链接和预生成正文。教学 Transformer 共用同一九字符中文词表与权重；英文界面显示词元含义，模型说明明确这一边界。
+
+默认静音。点「听讲解」从头播放当前语言的配音；本次会话内后续专题沿用声音选择。浏览器若阻止自动播放，会提示再次点一下声音按钮。音频播放时间驱动镜头和字幕；暂停、重播、缓冲等待、离屏、后台与自由探索都同步处理。声音加载失败时静默演示继续，可直接重试。翻页释放旧音频。主动降噪的实验试听与讲解分别控制，讲解开启时降低合成纯音音量。
+
+稿件按观察对象、动作和因果关系编排，句间与镜头之间留出观察空隙。每种语言分别生成，不调用浏览器的 `speechSynthesis` 朗读字幕。
+
+音轨已在仓库内，日常安装、构建、部署不需要语音服务权限。修改稿件后再生成：
+
+```sh
+python3 -m venv .venv-voice
+.venv-voice/bin/pip install -r scripts/requirements-voice.txt
+.venv-voice/bin/python scripts/generate-narration.py --account YOUR_CLOUDFLARE_ACCOUNT_ID
+# 只修改一篇时，追加 --only printer
+pnpm test
+pnpm build
+```
+
+生成时使用 `CLOUDFLARE_API_TOKEN` 或本机 Wrangler OAuth 登录。凭据不会进入音频、页面或仓库。语音服务为 [Cloudflare MeloTTS](https://developers.cloudflare.com/workers-ai/models/melotts/)，仅制作阶段使用；请按账户实际服务额度运行。脚本缓存原始语音、统一响度、保留句内停顿，再按 `films.ts` 的章节拼接。过长片段会让生成检查失败，需要改短稿件，而不是任意加速。重生成后清理未被清单引用的旧音轨。

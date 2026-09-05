@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 const sections = [
   [
     [275, 295],
@@ -38,7 +39,7 @@ function point(phase: number) {
 }
 export default function RefrigeratorFlat({ phase }: { phase: number }) {
   return (
-    <svg viewBox="0 0 550 390" role="img" aria-label="闭合制冷循环，金色标记沿管路返回压缩机">
+    <svg viewBox="0 0 550 390" role="img" aria-label={t('闭合制冷循环，金色标记沿管路返回压缩机')}>
       <rect x="30" y="40" width="155" height="300" rx="12" fill="#e0eee5" />
       {sections.map((p, i) => (
         <path
@@ -60,16 +61,16 @@ export default function RefrigeratorFlat({ phase }: { phase: number }) {
       })}
       <g fill="#6d8171" fontSize="13">
         <text x="57" y="93">
-          箱内 · 吸热
+          {t('箱内 · 吸热')}
         </text>
         <text x="320" y="48">
-          室内 · 放热
+          {t('室内 · 放热')}
         </text>
         <text x="255" y="342">
-          压缩机
+          {t('压缩机')}
         </text>
         <text x="464" y="230">
-          节流
+          {t('节流')}
         </text>
       </g>
     </svg>

@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import Experiment from '../../components/Experiment';
+import { getTopic } from '../../data/topics';
+import '../../styles/experiments.css';
+import { films } from '../../data/films';
+import { translate, localPath, localizedTopic } from '../../i18n';
+const { topic: originalTopic, Content, locale = 'zh' } = Astro.props;
+const topic = localizedTopic(originalTopic, locale);
+const tr = (s: string) => translate(s, locale);
+const href = (p: string) => localPath(p, locale);
+---
+
+<Base
+  locale={locale}
+  title={`${topic.name} — ${topic.title} | vistep.ai`}
+  description={topic.description}
+>
+  <main id="main" class={`lesson-wrap lesson-${topic.slug}`} style={`--topic:${topic.color}`}>
+    <div class="breadcrumbs">
+      <a href={href('/#collection')}>{tr('全部探索')}</a><span>/</span><span>{topic.category}</span
+      ><span>/</span><span>{topic.name}</span>
+    </div>
+    <header class="lesson-heading">
+      <div>
+        <div class="lesson-kicker">
+          <span class="mono">EXPLORATION {topic.number}</span><span>·</span><span>{topic.tag}</span>
+        </div><h1>
+          {
+            topic.title.split(locale === 'zh' ? '，' : '\u0000').map((phrase, i, parts) => (
+              <span class="title-phrase">
+                {phrase}
+                {i === parts.length - 1 ? '' : '，'}
+              </span>
+            ))
+          }
+        </h1><p>{topic.description}</p>
+      </div><span class="lesson-time">{films[topic.slug].duration} {tr('秒演示')}</span>
+    </header>
+    <section class="experiment" id="experiment" aria-label={`${topic.name} ${tr('互动实验')}`}>
+      <Experiment slug={topic.slug as any} client:only="react"
+        ><div slot="fallback" class="lab-loading" role="status">
+          {tr('正在准备实验…')}
+        </div></Experiment
+      ><noscript
+        ><div class="noscript">
+          {tr('互动实验需要 JavaScript。你仍然可以阅读下方的完整讲解，理解关键步骤与模型边界。')}
+        </div></noscript
+      >
+    </section>
+    <details class="lesson-notes">
+      <summary
+        ><span>{tr('深入了解')}</span><span
+          >{tr('模型、公式与资料来源')} <i aria-hidden="true">＋</i></span
+        ></summary
+      >
+      <div class="lesson-reading">
+        <aside class="reading-nav" aria-label={tr('专题目录')}>
+          <b>{tr('沿着好奇心往下走')}</b><a href="#experiment">{tr('↑ 回到实验')}</a><a
+            href="#understand">{tr('从现象到原理')}</a
+          ><a href="#try">{tr('再试一个问题')}</a><a href="#deeper">{tr('深入一点')}</a><a
+            href="#sources">{tr('资料与来源')}</a
+          >
+        </aside><article class="prose">
+          <Content /><section class="source-box" id="sources">
+            <h3>{tr('继续阅读 · 资料与来源')}</h3>{
+              topic.sources.map((source) => (
+                <a href={source.url} target="_blank" rel="noopener noreferrer">
+                  {source.title} ↗
+                </a>
+              ))
+            }
+          </section>
+        </article>
+      </div>
+    </details>
+    <section class="related-section">
+      <h2>{tr('这份好奇心，还可以去哪里？')}</h2><div class="related-grid">
+        {
+          topic.related.map((slug) => {
+            const related = localizedTopic(getTopic(slug), locale);
+            return (
+              <a class="related-card" href={href(`/explore/${slug}/`)}>
+                <>
+                  <div>
+                    <>
+                      <small>
+                        {related.category} / {films[slug].duration} {tr('秒演示')}
+                      </small>
+                      <strong>{related.question}</strong>
+                    </>
+                  </div>
+                  <span aria-hidden="true">↗</span>
+                </>
+              </a>
+            );
+          })
+        }
+      </div>
+    </section>
+  </main>
+</Base>

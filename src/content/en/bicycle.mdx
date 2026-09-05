@@ -1,0 +1,38 @@
+<h2 id="understand">Both ends of the chain travel the same distance</h2>
+
+Turn the pedals. The front chainring pulls the chain, which turns the rear sprocket. If the chain does not slip, the same number of links passes both contact points in the same time. Different tooth counts therefore produce different numbers of revolutions.
+
+With 34 teeth in front and 17 at the rear, one turn at the pedals produces two at the rear axle. **34 ÷ 17 = 2** is the gear ratio. When the freewheel is engaged, the rear wheel turns with the sprocket.
+
+There is a trade-off. Ignoring losses, a transmission cannot create mechanical power. Increasing output speed reduces the available output torque. A larger rear sprocket gives the chain a longer lever arm, so less crank torque is needed for the same wheel torque. Each pedal revolution also covers less ground.
+
+<h2 id="try">Compare at the same cadence</h2>
+
+Keep cadence at 60 rpm and change the rear sprocket from 11 to 34 teeth. Speed falls, and the equivalent pedal force usually falls too. Two things change here: the mechanical ratio and the air resistance at the lower speed.
+
+Increase the road gradient. Holding the same gear and cadence now requires more force. The display answers **how much effort that speed would require**, rather than assuming a real rider can supply unlimited power.
+
+> Find one gear for a slow climb and another for a fast, flat road. Both can be sensible choices because they solve different problems.
+
+A lower gear does not reduce the gravitational energy needed to reach the same height. It spreads the effort across more, lighter pedal strokes. Speed and transmission losses can still change the total energy cost.
+
+<h2 id="deeper">Connect the numbers</h2>
+
+<details>
+<summary>From tooth count to speed and power</summary>
+
+Let `Nf` and `Nr` be front and rear tooth counts, `c` cadence in rpm, and `R` wheel radius.
+
+<div className="formula">
+  ratio = Nf / Nr
+  <br />
+  speed = (c / 60) × (Nf / Nr) × 2πR
+</div>
+
+At steady speed, wheel traction balances the slope component of gravity, rolling resistance and air drag. Wheel torque is traction multiplied by wheel radius. Correcting for transmission efficiency and multiplying by the gear ratio gives the required crank torque.
+
+Power is torque times angular velocity. Dividing crank torque by crank length gives the equivalent tangential pedal force. Real pedal forces vary through a revolution; the readout is an average for comparison.
+
+</details>
+
+The model fixes combined rider and bicycle mass, wheel size and resistance coefficients. The 3D object is a two-shaft chain-drive rig, with a small axle-distance adjustment to close an even number of links. Gear changes show already tensioned configurations, not derailleur motion. It does not predict component strength.

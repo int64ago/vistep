@@ -1,3 +1,4 @@
+import { t } from '../i18n';
 import { Component, lazy, Suspense, type ReactNode } from 'react';
 import Showcase from './lab/Showcase';
 const experiments = {
@@ -14,7 +15,14 @@ const experiments = {
   elevator: lazy(() => import('./experiments/Elevator')),
   traffic: lazy(() => import('./experiments/Traffic')),
 };
-class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+class Boundary extends Component<
+  {
+    children: ReactNode;
+  },
+  {
+    failed: boolean;
+  }
+> {
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
@@ -22,10 +30,10 @@ class Boundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   render() {
     return this.state.failed ? (
       <div className="error-state" role="alert">
-        <h2>实验暂时没能打开</h2>
-        <p>可以重新加载试试，下方的原理讲解仍然可以阅读。</p>
+        <h2>{t('实验暂时没能打开')}</h2>
+        <p>{t('可以重新加载试试，下方的原理讲解仍然可以阅读。')}</p>
         <button className="btn primary" onClick={() => location.reload()}>
-          重新加载
+          {t('重新加载')}
         </button>
       </div>
     ) : (
@@ -40,7 +48,7 @@ export default function Experiment({ slug }: { slug: keyof typeof experiments })
       <Suspense
         fallback={
           <div className="lab-loading" role="status">
-            正在准备实验…
+            {t('正在准备实验…')}
           </div>
         }
       >

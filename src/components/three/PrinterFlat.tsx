@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import {
   printerDrive as drive,
   printerMotion,
@@ -13,7 +14,11 @@ export default function PrinterFlat(props: PrinterVisualState) {
       : paperX + (selectedRow - 3.5) * 0.18;
   const py = theta > -Math.PI / 2 ? drive.drum.y + 0.652 * Math.sin(theta) : 0.66;
   return (
-    <svg viewBox="0 0 700 380" role="img" aria-label="打印机二维剖面，橙色像素沿鼓面转移到纸上">
+    <svg
+      viewBox="0 0 700 380"
+      role="img"
+      aria-label={t('打印机二维剖面，橙色像素沿鼓面转移到纸上')}
+    >
       <g transform="translate(300,305) scale(65,-65)">
         <path d="M-3.7 .61H4.8" stroke="#b6b5af" strokeWidth=".03" />
         <rect
@@ -77,16 +82,16 @@ export default function PrinterFlat(props: PrinterVisualState) {
       </g>
       <g fill="#6f7c70" fontSize="13" textAnchor="middle">
         <text x="170" y="93">
-          激光扫描
+          {t('激光扫描')}
         </text>
         <text x="310" y="147">
-          显影
+          {t('显影')}
         </text>
         <text x="263" y="250">
-          转印
+          {t('转印')}
         </text>
         <text x="439" y="218">
-          定影
+          {t('定影')}
         </text>
       </g>
     </svg>

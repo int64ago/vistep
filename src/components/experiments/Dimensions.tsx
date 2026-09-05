@@ -1,3 +1,4 @@
+import { t } from '../../i18n';
 import { useCallback, useRef, useState } from 'react';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
 import { Metric, Range, Segments } from '../lab/Controls';
@@ -156,15 +157,15 @@ export default function Dimensions() {
     dots.current.forEach((d, i) => d.position.set(...(verts[i] as [number, number, number])));
   };
   const fruits = [
-    { name: '苹果', weight: 180, sugar: 13, water: 86, color: '#da8b72' },
-    { name: '香蕉', weight: 120, sugar: 17, water: 75, color: '#d1b467' },
-    { name: '西瓜', weight: 3000, sugar: 7, water: 92, color: '#78a790' },
-    { name: '草莓', weight: 25, sugar: 5, water: 91, color: '#b97d92' },
+    { name: t('苹果'), weight: 180, sugar: 13, water: 86, color: '#da8b72' },
+    { name: t('香蕉'), weight: 120, sugar: 17, water: 75, color: '#d1b467' },
+    { name: t('西瓜'), weight: 3000, sugar: 7, water: 92, color: '#78a790' },
+    { name: t('草莓'), weight: 25, sugar: 5, water: 91, color: '#b97d92' },
   ];
   return (
     <div>
       <div className="lab-toolbar">
-        <h2>一个维度，就是一条独立的坐标。</h2>
+        <h2>{t('一个维度，就是一条独立的坐标。')}</h2>
         <button
           className="btn"
           onClick={() => {
@@ -175,17 +176,17 @@ export default function Dimensions() {
             setAxis('sugar');
           }}
         >
-          ↻ 重置
+          {t('↻ 重置')}
         </button>
       </div>
       <div className="lab-tabs">
         <Segments
-          label="维度探索方式"
+          label={t('维度探索方式')}
           value={mode}
           options={[
-            { value: 'projection', label: '投影：高维的影子' },
-            { value: 'slice', label: '切片：穿过一个球' },
-            { value: 'features', label: '特征：另一种维度' },
+            { value: 'projection', label: t('投影：高维的影子') },
+            { value: 'slice', label: t('切片：穿过一个球') },
+            { value: 'features', label: t('特征：另一种维度') },
           ]}
           onChange={setMode}
         />
@@ -196,14 +197,14 @@ export default function Dimensions() {
             <svg
               viewBox="0 0 600 390"
               role="img"
-              aria-label="水果的质量与甜度或含水量二维特征散点图"
+              aria-label={t('水果的质量与甜度或含水量二维特征散点图')}
             >
               <path d="M70 55v265h460" stroke="#657999" />
               <text x="418" y="352" fill="#a4b5ce" fontSize="12">
-                质量（对数刻度）
+                {t('质量（对数刻度）')}
               </text>
               <text x="26" y="36" fill="#a4b5ce" fontSize="12">
-                {axis === 'sugar' ? '含糖量' : '含水量'} (%)
+                {axis === 'sugar' ? t('含糖量') : t('含水量')} (%)
               </text>
               {fruits.map((f) => {
                 const x = 90 + Math.log10(f.weight / 20) * 175,
@@ -224,7 +225,7 @@ export default function Dimensions() {
                 );
               })}
               <text x="70" y="377" fill="#7186a4" fontSize="11">
-                示例数据：用于理解特征坐标，不是营养实测。
+                {t('示例数据：用于理解特征坐标，不是营养实测。')}
               </text>
             </svg>
           ) : (
@@ -232,7 +233,7 @@ export default function Dimensions() {
               {demo.watch && (
                 <div className="dimension-count">
                   {demo.time < 1 ? '1' : demo.time < 7.5 ? '2' : demo.time < 15 ? '3' : '4'}
-                  <small>维</small>
+                  <small>{t('维')}</small>
                 </div>
               )}
               <SpatialCanvas
@@ -240,9 +241,11 @@ export default function Dimensions() {
                 build={build}
                 frame={frame}
                 dark
-                label={mode === 'slice' ? '球体与切平面的交线' : `${dim} 维超立方体的空间投影`}
+                label={
+                  mode === 'slice' ? t('球体与切平面的交线') : t('{0} 维超立方体的空间投影', dim)
+                }
                 fallback={
-                  <svg viewBox="0 0 600 380" role="img" aria-label="投影的二维交互视图">
+                  <svg viewBox="0 0 600 380" role="img" aria-label={t('投影的二维交互视图')}>
                     {mode === 'slice' ? (
                       <g>
                         <circle
@@ -305,7 +308,7 @@ export default function Dimensions() {
                   : `${dim}D OBJECT / PROJECTED TO YOUR SCREEN`}
               </span>
               <div className="projection-stats">
-                <span>拖动 / 方向键旋转视角</span>
+                <span>{t('拖动 / 方向键旋转视角')}</span>
               </div>
             </div>
           )}
@@ -313,10 +316,10 @@ export default function Dimensions() {
         <div className="lab-controls">
           {mode === 'projection' ? (
             <>
-              <Range label="几何维度" value={dim} min={1} max={4} unit="D" onChange={setDim} />
+              <Range label={t('几何维度')} value={dim} min={1} max={4} unit="D" onChange={setDim} />
               {dim === 4 && (
                 <Range
-                  label="四维 x–w 平面旋转"
+                  label={t('四维 x–w 平面旋转')}
                   value={angle}
                   min={0}
                   max={360}
@@ -326,14 +329,20 @@ export default function Dimensions() {
               )}
               <div className="lab-callout">
                 {dim === 4
-                  ? '内外两个“盒子”是同一个四维超立方体的投影。旋转滑块改变四维对象；拖动场景只改变三维观察视角。'
-                  : `${dim === 1 ? '线段' : dim === 2 ? '正方形' : '立方体'}的每个点需要 ${dim} 个独立坐标。增加一维，相当于沿新的方向展开一份副本并连接对应顶点。`}
+                  ? t(
+                      '内外两个“盒子”是同一个四维超立方体的投影。旋转滑块改变四维对象；拖动场景只改变三维观察视角。',
+                    )
+                  : t(
+                      '{0}的每个点需要 {1} 个独立坐标。增加一维，相当于沿新的方向展开一份副本并连接对应顶点。',
+                      dim === 1 ? t('线段') : dim === 2 ? t('正方形') : t('立方体'),
+                      dim,
+                    )}
               </div>
             </>
           ) : mode === 'slice' ? (
             <>
               <Range
-                label="切平面高度"
+                label={t('切平面高度')}
                 value={slice}
                 min={-1.3}
                 max={1.3}
@@ -341,7 +350,9 @@ export default function Dimensions() {
                 onChange={setSlice}
               />
               <div className="lab-callout">
-                把平面从球底移到球顶：交线从一点变成大圆，再缩成一点。平面之外的球体部分，没有出现在切片中。
+                {t(
+                  '把平面从球底移到球顶：交线从一点变成大圆，再缩成一点。平面之外的球体部分，没有出现在切片中。',
+                )}
               </div>
               <div className="formula">
                 r² = R² − h²
@@ -351,16 +362,18 @@ export default function Dimensions() {
           ) : (
             <>
               <Segments
-                label="纵轴特征"
+                label={t('纵轴特征')}
                 value={axis}
                 options={[
-                  { value: 'sugar', label: '含糖量' },
-                  { value: 'water', label: '含水量' },
+                  { value: 'sugar', label: t('含糖量') },
+                  { value: 'water', label: t('含水量') },
                 ]}
                 onChange={setAxis}
               />
               <div className="lab-callout">
-                位置坐标描述物体在哪里，特征坐标描述它是什么样。质量、含糖量、含水量是三个维度，即使水果本身没有“第四个空间方向”。
+                {t(
+                  '位置坐标描述物体在哪里，特征坐标描述它是什么样。质量、含糖量、含水量是三个维度，即使水果本身没有“第四个空间方向”。',
+                )}
               </div>
             </>
           )}
@@ -369,27 +382,29 @@ export default function Dimensions() {
       <div className="metrics">
         {mode === 'projection' ? (
           <>
-            <Metric label="顶点" value={2 ** dim} />
-            <Metric label="边" value={dim * 2 ** (dim - 1)} />
-            <Metric label="一个点的坐标数" value={dim} />
+            <Metric label={t('顶点')} value={2 ** dim} />
+            <Metric label={t('边')} value={dim * 2 ** (dim - 1)} />
+            <Metric label={t('一个点的坐标数')} value={dim} />
           </>
         ) : mode === 'slice' ? (
           <>
-            <Metric label="球半径" value="1.00" />
-            <Metric label="切片圆半径" value={r === null ? '无交线' : r.toFixed(2)} />
-            <Metric label="平面高度" value={slice.toFixed(2)} />
+            <Metric label={t('球半径')} value="1.00" />
+            <Metric label={t('切片圆半径')} value={r === null ? t('无交线') : r.toFixed(2)} />
+            <Metric label={t('平面高度')} value={slice.toFixed(2)} />
           </>
         ) : (
           <>
-            <Metric label="样本数量" value="4" />
-            <Metric label="可描述特征" value="3" />
-            <Metric label="本图显示的坐标" value="2" />
+            <Metric label={t('样本数量')} value="4" />
+            <Metric label={t('可描述特征')} value="3" />
+            <Metric label={t('本图显示的坐标')} value="2" />
           </>
         )}
       </div>
       <p className="lab-caption">
-        <strong>切片与投影不同：</strong>
-        切片只留下相交部分；投影把高维信息映射到较低维，可能出现重叠或变形。四维演示是透视投影，屏幕并未变成四维空间。
+        <strong>{t('切片与投影不同：')}</strong>
+        {t(
+          '切片只留下相交部分；投影把高维信息映射到较低维，可能出现重叠或变形。四维演示是透视投影，屏幕并未变成四维空间。',
+        )}
       </p>
     </div>
   );
