@@ -204,7 +204,7 @@
   border-radius: 20px;
 }
 .bm-study[data-compact='true'][data-watch='true'] {
-  min-height: 680px;
+  min-height: 560px;
 }
 .bm-study[data-compact='true'][data-watch='true'] .bm-conditions,
 .bm-study[data-compact='true'][data-watch='true']:not([data-view='impulse']):not(
@@ -254,4 +254,93 @@
   .bm-study button {
     transition: none;
   }
+}
+
+/* Each phone chapter gives space to its instrument, not repeated caption prose. */
+.bm-study[data-phone-film='true'] {
+  padding: 16px 16px 10px;
+}
+.bm-study[data-phone-film='true'] .bm-comparisons > .bm-note {
+  display: none;
+}
+.bm-study[data-phone-film='true'] .bm-eyebrow {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.bm-study[data-phone-film='true'] .bm-eyebrow span {
+  margin-top: 0;
+}
+.bm-study[data-phone-film='true'] .bm-readings {
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin: 12px 0 8px;
+  padding-top: 10px;
+}
+.bm-study[data-phone-film='true'] .bm-readings > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  line-height: 1.5;
+}
+.bm-study[data-phone-film='true'] .bm-readings b {
+  font-size: 20px;
+  margin-top: 0;
+  white-space: nowrap;
+}
+.bm-study[data-phone-film='true'] .bm-instrument {
+  margin-top: 8px;
+}
+.bm-study[data-phone-film='true'] .bm-instrument-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  line-height: 1.5;
+}
+.bm-study[data-phone-film='true'] .bm-instrument-title span {
+  margin-top: 0;
+}
+.bm-study[data-phone-film='true'] .bm-legend {
+  line-height: 1.5;
+  gap: 4px 12px;
+}
+.bm-study[data-phone-film='true'] .bm-comparisons {
+  margin-top: 8px;
+}
+.bm-study[data-phone-film='true'] .bm-comparisons > div {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+.bm-path-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 8px 0;
+  line-height: 1.5;
+  font-size: 16px;
+}
+.bm-path-key span,
+.bm-theory-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bm-path-key i {
+  width: 18px;
+  border-top: 2px solid #bb7936;
+}
+.bm-path-key .bm-dashed-key {
+  border-top: 2px dashed #488f99;
+}
+.bm-theory-key::before {
+  content: '';
+  width: 18px;
+  border-top: 2px dashed #567269;
+}
+.bm-mean-key {
+  margin: 8px 0;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #354e59;
 }

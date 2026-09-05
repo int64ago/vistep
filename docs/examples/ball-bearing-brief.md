@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/ball-bearing-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **179.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Causal argument and visual direction
 
 The initial intuition is that the ball simply goes around with the shaft. Follow one gold ball with a dark surface mark and discover that two simultaneous no-slip conditions determine both its orbit and its backward spin. The cage follows the ball centers. A fixed load zone then separates the motion of the balls from the direction of the external load. The final macro inspection explains why ideal rolling is not a zero-loss claim.

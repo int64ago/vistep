@@ -132,12 +132,12 @@
   overflow-wrap: anywhere;
 }
 .lb-study[data-watch='true'] {
-  min-height: 650px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
 .lb-study[data-watch='true'] .lb-notes {
-  margin-top: auto;
+  margin-top: 8px;
 }
 .lb-study[data-compact='true'] {
   padding: 20px 17px 12px;
@@ -235,23 +235,49 @@
   }
 }
 
-.lb-study[data-watch='true'][data-lb-view='rest'] {
-  min-height: 560px;
-}
-.lb-study[data-watch='true'][data-lb-view='limit'] {
-  min-height: 600px;
-}
-
 .lb-study {
   max-width: 960px;
   margin-inline: auto;
 }
 .lb-layer-labels {
   max-width: 310px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 }
-
 .lb-study[data-watch='true'][data-compact='true'] {
-  min-height: 810px;
+  padding: 12px 17px 6px;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-heading {
+  margin-bottom: 6px;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 390px;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-body > svg {
+  flex-shrink: 0;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-studio {
+  height: 265px;
+  flex-shrink: 0;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-layer-labels {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-readings {
+  padding: 8px 0;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-cutoff {
+  margin: 0 0 10px;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-cutoff b {
+  font-size: 22px;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-cutoff span {
+  margin-top: 0;
+}
+.lb-study[data-watch='true'][data-compact='true'] .lb-notes {
+  margin-top: 6px;
 }

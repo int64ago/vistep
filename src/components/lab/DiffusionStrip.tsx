@@ -1,3 +1,4 @@
+import { diffusionPlotMaximum, diffusionPlotLayout } from './diffusionLayout';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import {
@@ -17,12 +18,14 @@ export default function DiffusionStrip({
   view,
   section = 0.67,
   region = [0.55, 0.85],
+  film = false,
 }: {
   field: DiffusionField;
   second: DiffusionField | null;
   view: DiffusionView;
   section?: number;
   region?: readonly [number, number];
+  film?: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null),
     [width, setWidth] = useState(700),
@@ -50,17 +53,10 @@ export default function DiffusionStrip({
     span = right - left,
     domain = Math.max(field.p.length, second?.p.length ?? 0),
     X = (x: number) => left + (span * x) / domain;
-  const plotY = compare ? 228 : view === 'reservoir' ? 196 : view === 'budget' ? 194 : 170,
-    plotH = small ? 115 : 178,
-    H = plotY + plotH + 46,
-    top = 40,
-    barH = compare ? 46 : 64;
+  const layout = diffusionPlotLayout(width, view, compare, film);
+  const { plotY, plotH, top, barH, height: H } = layout;
   const b = mix ? diffusionField(field.p, field.time, 'B') : null,
-    maximum = mix
-      ? 2.12
-      : field.p.kind === 'reservoir'
-        ? 1.08
-        : Math.max(128 / 35 / field.p.length, second ? 128 / 35 / second.p.length : 0) * 1.04;
+    maximum = diffusionPlotMaximum(field, second);
   const Y = (c: number) => plotY + plotH - (c / maximum) * plotH;
   const points = (f: DiffusionField) =>
     Array.from({ length: 161 }, (_, i) => {
@@ -176,7 +172,7 @@ export default function DiffusionStrip({
       >
         <defs>
           {clipBar(field, top)}
-          {second && clipBar(second, 138)}
+          {second && clipBar(second, layout.secondTop)}
           <linearGradient id={`${id}-shine`} x2="0" y2="1">
             <stop offset="0" stopColor="#fff" stopOpacity=".18" />
             <stop offset=".4" stopColor="#fff" stopOpacity="0" />
@@ -197,28 +193,28 @@ export default function DiffusionStrip({
         {bars(field, cells, top, cellsB)}
         {second && other && (
           <>
-            <text x={left} y="120" style={{ fill: '#efbf76' }}>
+            <text x={left} y={layout.secondTitle} style={{ fill: '#efbf76' }}>
               {titleB}
             </text>
-            {bars(second, other, 138)}
+            {bars(second, other, layout.secondTop)}
           </>
         )}
         {field.basis === 'sin' && (
           <>
-            <text x={left} y="132">
+            <text x={left} y={layout.boundaryLabel}>
               c = 1
             </text>
-            <text x={right} y="132" textAnchor="end">
+            <text x={right} y={layout.boundaryLabel} textAnchor="end">
               c = 0
             </text>
-            <text x={left} y="156">
+            <text x={left} y={layout.boundaryFlux}>
               J = {diffusionFlux(field, 0).toFixed(3)}
             </text>
-            <text x={right} y="156" textAnchor="end">
+            <text x={right} y={layout.boundaryFlux} textAnchor="end">
               J = {diffusionFlux(field, field.p.length).toFixed(3)}
             </text>
-            {arrow(left + 25, 84, diffusionFlux(field, 0))}
-            {arrow(right - 25, 84, diffusionFlux(field, field.p.length))}
+            {arrow(left + 25, layout.reservoirArrow, diffusionFlux(field, 0))}
+            {arrow(right - 25, layout.reservoirArrow, diffusionFlux(field, field.p.length))}
           </>
         )}
         {view === 'flux' && (
@@ -230,7 +226,7 @@ export default function DiffusionStrip({
             />
             {arrow(
               X(section * field.p.length),
-              133,
+              layout.fluxArrow,
               diffusionFlux(field, section * field.p.length),
             )}
           </>
@@ -248,18 +244,18 @@ export default function DiffusionStrip({
             />
             {arrow(
               X(region[0] * field.p.length),
-              124,
+              layout.budgetArrow,
               diffusionFlux(field, region[0] * field.p.length),
             )}
             {arrow(
               X(region[1] * field.p.length),
-              124,
+              layout.budgetArrow,
               diffusionFlux(field, region[1] * field.p.length),
             )}
-            <text x={X(region[0] * field.p.length)} y="149" textAnchor="middle">
+            <text x={X(region[0] * field.p.length)} y={layout.budgetValue} textAnchor="middle">
               {diffusionFlux(field, region[0] * field.p.length).toFixed(3)}
             </text>
-            <text x={X(region[1] * field.p.length)} y="149" textAnchor="middle">
+            <text x={X(region[1] * field.p.length)} y={layout.budgetValue} textAnchor="middle">
               {diffusionFlux(field, region[1] * field.p.length).toFixed(3)}
             </text>
           </>

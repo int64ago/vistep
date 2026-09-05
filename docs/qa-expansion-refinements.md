@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/qa-expansion-refinements.md) · [Expansion record](expansion-50.md)
 
-This records the second integration of review-driven repairs on `codex/expand-50`. The public preview still serves `9b2d00d`; the first repair checkpoint is `ab49772`. This local revision is not a full acceptance or production release. All 50 additions have an initial review report; six workers continue scoped repairs and cross-review.
+This records the second integration of review-driven repairs on `codex/expand-50`. The [public preview](https://vistep-preview.int64ago.workers.dev/) now serves `75b8559`, version `95fe5e76-98c0-479c-a560-cc312a499f13`; the first repair checkpoint was `ab49772`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33985175404) passed. Delivery checks pass for all 127 HTML routes, 135 changed assets/sitemaps, robots and two unknown-path 404s. This preview is not full acceptance or a production release. All 50 additions have an initial review report; six workers continue scoped repairs and cross-review.
 
 ## Source changes
 
@@ -36,3 +36,17 @@ Rewritten cues name visible objects and signals across desktop and phone layouts
 The combined `pnpm verify` and `pnpm build:preview` pass: 646 tests in 69 files, 375 type-checked files with zero diagnostics, 148 Markdown files and 523 local documentation links, and 127 canonical bilingual pages (128 HTML pages including 404). All 192 chapter/language transcription checks for the 12 revised topics pass, including ending coverage. Skill validation also passes. These automated checks do not establish visual finish or natural delivery.
 
 Agent reports distinguish numerical geometry, SSR panels, browser observations and listening. The engine/brake/escapement worker recorded Chrome CUA chapter stops and short normal-speed segments; its API calls overlapped a locked-Mac report from the parent, so they establish neither an unlocked Mac nor continuous viewing. Other repair groups here have source/numerical evidence; new browser checks are pending manual unlock. Physical-phone performance and native bilingual listening remain outstanding. No scene is marked fully accepted from these results.
+
+## Third integration in progress
+
+The next source revision integrates suspension/battery/solar, convection/diffusion/Brownian motion, database/routing phone repairs, and the tides/seasons/zipper presentation fixes. Cross-review continues; further optical, mechanical and branch-drainage fixes remain separate until frozen handoff. The following five revised tracks pass all 80 independent chapter/language transcription checks. They have not had native listening or new browser synchronization review.
+
+| Topic               | Both tracks / s | Chapter starts / s                             |
+| ------------------- | --------------: | ---------------------------------------------- |
+| `suspension`        |           185.5 | 0, 22.0, 44.5, 67.0, 88.5, 111.5, 136.0, 160.5 |
+| `lithium-battery`   |           187.5 | 0, 23.0, 47.5, 70.5, 92.5, 114.5, 138.0, 161.5 |
+| `wave-interference` |           179.5 | 0, 22.5, 44.5, 67.0, 90.0, 112.5, 134.5, 157.0 |
+| `ball-bearing`      |           179.5 | 0, 21.5, 43.0, 64.5, 86.0, 108.5, 130.5, 155.0 |
+| `hydraulic-brake`   |           177.5 | 0, 21.0, 42.0, 63.5, 87.5, 109.0, 132.5, 155.0 |
+
+The third combined source check and preview build pass: 660 tests in 73 files, 384 type-checked files with zero diagnostics, and 128 generated HTML pages. A parent review also inspected 25 generated static panels; these omit the surrounding player and do not count as browser or full-playback review. Later repair groups are not included in this checkpoint.

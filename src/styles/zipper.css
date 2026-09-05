@@ -64,7 +64,8 @@
   overflow: hidden;
 }
 .zipper-diagram text {
-  font: 16px var(--font-body, system-ui, sans-serif);
+  font: inherit;
+  font-family: var(--font-body, system-ui, sans-serif);
   fill: #304c50;
 }
 .zipper-state {
@@ -214,9 +215,6 @@
   .zipper-instrument {
     max-width: 360px;
     padding: 0 12px;
-  }
-  .zipper-diagram text {
-    font-size: 17px;
   }
   .zipper-state {
     padding: 8px 12px;

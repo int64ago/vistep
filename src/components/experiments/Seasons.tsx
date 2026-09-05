@@ -13,7 +13,12 @@ import { Range } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
 import { useCompact } from '../lab/useCompact';
 import SeasonsGlobe from '../lab/SeasonsGlobe';
-import { SeasonsBeam, SeasonsField, SeasonsOrbit } from '../lab/SeasonsObservatory';
+import {
+  SeasonsBeam,
+  SeasonsField,
+  SeasonsOrbit,
+  SeasonsShadowDial,
+} from '../lab/SeasonsObservatory';
 import '../../styles/seasons.css';
 
 const regimes: Record<DayRegime, string> = {
@@ -31,10 +36,12 @@ function DayRibbon({
   latitude,
   day,
   secondary = false,
+  regimeLabel = true,
 }: {
   latitude: number;
   day: SeasonsState['day'];
   secondary?: boolean;
+  regimeLabel?: boolean;
 }) {
   return (
     <div className="seasons-day-row" data-secondary={secondary}>
@@ -50,7 +57,7 @@ function DayRibbon({
         />
       </div>
       <span>
-        <b>{day.daylight.toFixed(1)}</b> h <em>{t(regimes[day.regime])}</em>
+        <b>{day.daylight.toFixed(1)}</b> h {regimeLabel && <em>{t(regimes[day.regime])}</em>}
       </span>
     </div>
   );
@@ -176,6 +183,99 @@ function EnergyTrace({
   );
 }
 
+function SeasonsPhone({ state: s, chapter }: { state: SeasonsState; chapter: number }) {
+  const globe = chapter === 0 || chapter === 4,
+    annual = chapter >= 6,
+    shadow = s.solar.shadow;
+  const daylight = (
+    <div className="seasons-day-pair" aria-label={t('两个纬圈的几何白昼时长')}>
+      <DayRibbon latitude={s.latitude} day={s.day} regimeLabel={false} />
+      <DayRibbon latitude={-s.latitude} day={s.opposite} secondary regimeLabel={false} />
+    </div>
+  );
+  return (
+    <div
+      className="seasons-phone-watch"
+      data-causal-view={
+        globe
+          ? 'daylight'
+          : annual
+            ? 'year'
+            : chapter === 1
+              ? 'orbit'
+              : chapter === 2
+                ? 'beam'
+                : 'field'
+      }
+    >
+      {globe ? (
+        <>
+          <SeasonsGlobe state={s} notes={false} />
+          {daylight}
+        </>
+      ) : chapter === 1 ? (
+        <>
+          <SeasonsOrbit state={s} compact />
+          <div className="seasons-phone-reading">
+            <span>{t('圆轨道半径')}</span>
+            <b>1 AU</b>
+          </div>
+        </>
+      ) : chapter === 2 ? (
+        <>
+          <SeasonsBeam state={s} compact />
+          <div className="seasons-phone-reading">
+            <span>{t('水平面入射')}</span>
+            <b>{(s.solar.incident * 100).toFixed(1)}%</b>
+          </div>
+          <div className="seasons-phone-input" aria-hidden="true">
+            <i style={{ width: `${s.solar.incident * 100}%` }} />
+          </div>
+          <p className="seasons-phone-limit">{t('以垂直光束为 100%')}</p>
+        </>
+      ) : (
+        <>
+          {annual ? <SeasonsShadowDial state={s} /> : <SeasonsField state={s} compact />}
+          <div className="seasons-phone-reading">
+            <span>{t(annual ? (shadow ? '影长' : '太阳在地平线下') : '太阳高度')}</span>
+            {(!annual || shadow) && (
+              <b>
+                {annual
+                  ? shadow
+                    ? `${shadow.length.toFixed(2)} m`
+                    : '—'
+                  : `${s.solar.altitude.toFixed(1)}°`}
+              </b>
+            )}
+            {!annual && <span>{formatHour(s.hour)}</span>}
+          </div>
+          {chapter === 5 ? (
+            <div className="seasons-phone-polar">
+              <SeasonsGlobe state={s} labels={false} notes={false} />
+              <div>
+                <b>{Math.abs(s.latitude).toFixed(0)}° N</b>
+                <span>{t(regimes[s.day.regime])}</span>
+                <b>{s.day.daylight.toFixed(1)} h</b>
+              </div>
+            </div>
+          ) : (
+            <>
+              {chapter === 6 && daylight}
+              <EnergyTrace state={s} annual={annual} compact />
+              {annual && (
+                <div className="seasons-phone-reading">
+                  <span>{t('日积分 / S₀')}</span>
+                  <b>{s.day.equivalentHours.toFixed(2)} h</b>
+                </div>
+              )}
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function Seasons() {
   const demo = useShowcase(),
     compact = useCompact();
@@ -187,7 +287,8 @@ export default function Seasons() {
   const shot = seasonsShot(demo.chapter, demo.chapterProgress);
   const s = demo.watch ? shot.state : seasonsState(longitude, latitude, tilt, hour);
   const view = demo.watch ? shot.view : manualView;
-  const shadow = s.solar.shadow;
+  const shadow = s.solar.shadow,
+    phoneWatch = demo.watch && compact;
   return (
     <div
       className="seasons-study"
@@ -196,98 +297,108 @@ export default function Seasons() {
       data-chapter={demo.chapter}
     >
       <div className="seasons-heading">
-        <span>{t('太阳观测台')}</span>
+        <span>
+          {phoneWatch
+            ? `${Math.abs(s.latitude).toFixed(0)}° ${s.latitude < 0 ? 'S' : 'N'}`
+            : t('太阳观测台')}
+        </span>
         <span>
           {t('地轴倾角')} <b>{s.tilt.toFixed(2)}°</b>
         </span>
       </div>
-      <div className="seasons-observatory">
-        <div className="seasons-planet-column">
-          <SeasonsGlobe state={s} />
-          <div className="seasons-day-pair" aria-label={t('两个纬圈的几何白昼时长')}>
-            <DayRibbon latitude={s.latitude} day={s.day} />
-            <DayRibbon latitude={-s.latitude} day={s.opposite} secondary />
-          </div>
-        </div>
-        <div className="seasons-field-column">
-          <div className="seasons-instrument-title">
-            <span>
-              {t(
-                view === 'orbit'
-                  ? '地轴的方向留在空间里'
-                  : view === 'beam'
-                    ? '同一束光，铺开多大？'
-                    : '纬度观测场',
-              )}
-            </span>
-            <b>{view === 'orbit' ? `${s.longitude.toFixed(0)}°` : formatHour(s.hour)}</b>
-          </div>
-          {view === 'orbit' ? (
-            <SeasonsOrbit state={s} compact={compact} />
-          ) : view === 'beam' ? (
-            <SeasonsBeam state={s} compact={compact} />
-          ) : (
-            <SeasonsField state={s} compact={compact} />
-          )}
-          <div className="seasons-reading-line">
-            {view === 'orbit' ? (
-              <>
-                <span>
-                  {t('圆轨道半径')} <b>1 AU</b>
-                </span>
-                <span>{t('固定地轴，不朝着太阳转')}</span>
-              </>
-            ) : view === 'beam' ? (
-              <>
-                <span>
-                  {t('水平面入射')} <b>{(s.solar.incident * 100).toFixed(1)}%</b>
-                </span>
-                <span>{t('以垂直光束为 100%')}</span>
-              </>
-            ) : (
-              <>
-                <span>
-                  {t('太阳高度')} <b>{s.solar.altitude.toFixed(1)}°</b>
-                </span>
-                <span>
-                  {t('影长')}{' '}
-                  <b>
-                    {shadow
-                      ? `${shadow.length > 10000 ? shadow.length.toExponential(1) : shadow.length.toFixed(2)} m`
-                      : '—'}
-                  </b>
-                </span>
-              </>
-            )}
-          </div>
-          {view === 'orbit' ? (
-            <div className="seasons-orbit-key">
-              {['三月分点', '六月至点', '九月分点', '十二月至点'].map((label, i) => (
-                <span key={label}>
-                  {i * 90}° · {t(label)}
-                </span>
-              ))}
+      {phoneWatch ? (
+        <SeasonsPhone state={s} chapter={demo.chapter} />
+      ) : (
+        <>
+          <div className="seasons-observatory">
+            <div className="seasons-planet-column">
+              <SeasonsGlobe state={s} />
+              <div className="seasons-day-pair" aria-label={t('两个纬圈的几何白昼时长')}>
+                <DayRibbon latitude={s.latitude} day={s.day} />
+                <DayRibbon latitude={-s.latitude} day={s.opposite} secondary />
+              </div>
             </div>
-          ) : (
-            <p className="seasons-instrument-note">
-              {t(
-                view === 'beam'
-                  ? '金线间的垂直宽度相同；地面接收面积随角度改变。'
-                  : shadow && shadow.length > 3.1
-                    ? '影子超出刻度盘；读数保留完整长度。'
-                    : '太阳时 12:00 为当地正午。',
+            <div className="seasons-field-column">
+              <div className="seasons-instrument-title">
+                <span>
+                  {t(
+                    view === 'orbit'
+                      ? '地轴的方向留在空间里'
+                      : view === 'beam'
+                        ? '同一束光，铺开多大？'
+                        : '纬度观测场',
+                  )}
+                </span>
+                <b>{view === 'orbit' ? `${s.longitude.toFixed(0)}°` : formatHour(s.hour)}</b>
+              </div>
+              {view === 'orbit' ? (
+                <SeasonsOrbit state={s} compact={compact} />
+              ) : view === 'beam' ? (
+                <SeasonsBeam state={s} compact={compact} />
+              ) : (
+                <SeasonsField state={s} compact={compact} />
               )}
-            </p>
-          )}
-        </div>
-      </div>
-      <EnergyTrace state={s} annual={view === 'year' || !demo.watch} compact={compact} />
-      <div className="seasons-ledger">
-        <span>
-          {t('日积分 / S₀')} <b>{s.day.equivalentHours.toFixed(2)} h</b>
-        </span>
-        <span>{t('几何入射量，不代表气温或天气。')}</span>
-      </div>
+              <div className="seasons-reading-line">
+                {view === 'orbit' ? (
+                  <>
+                    <span>
+                      {t('圆轨道半径')} <b>1 AU</b>
+                    </span>
+                    <span>{t('固定地轴，不朝着太阳转')}</span>
+                  </>
+                ) : view === 'beam' ? (
+                  <>
+                    <span>
+                      {t('水平面入射')} <b>{(s.solar.incident * 100).toFixed(1)}%</b>
+                    </span>
+                    <span>{t('以垂直光束为 100%')}</span>
+                  </>
+                ) : (
+                  <>
+                    <span>
+                      {t('太阳高度')} <b>{s.solar.altitude.toFixed(1)}°</b>
+                    </span>
+                    <span>
+                      {t('影长')}{' '}
+                      <b>
+                        {shadow
+                          ? `${shadow.length > 10000 ? shadow.length.toExponential(1) : shadow.length.toFixed(2)} m`
+                          : '—'}
+                      </b>
+                    </span>
+                  </>
+                )}
+              </div>
+              {view === 'orbit' ? (
+                <div className="seasons-orbit-key">
+                  {['三月分点', '六月至点', '九月分点', '十二月至点'].map((label, i) => (
+                    <span key={label}>
+                      {i * 90}° · {t(label)}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <p className="seasons-instrument-note">
+                  {t(
+                    view === 'beam'
+                      ? '金线间的垂直宽度相同；地面接收面积随角度改变。'
+                      : shadow && shadow.length > 3.1
+                        ? '影子超出刻度盘；读数保留完整长度。'
+                        : '太阳时 12:00 为当地正午。',
+                  )}
+                </p>
+              )}
+            </div>
+          </div>
+          <EnergyTrace state={s} annual={view === 'year' || !demo.watch} compact={compact} />
+          <div className="seasons-ledger">
+            <span>
+              {t('日积分 / S₀')} <b>{s.day.equivalentHours.toFixed(2)} h</b>
+            </span>
+            <span>{t('几何入射量，不代表气温或天气。')}</span>
+          </div>
+        </>
+      )}
       {!demo.watch && (
         <div className="seasons-explore">
           <div className="seasons-view-switch" role="group" aria-label={t('选择观测仪器')}>
@@ -377,7 +488,7 @@ export default function Seasons() {
         </div>
       )}
       <details className="seasons-method">
-        <summary>{t('模型约定与读图方法')}</summary>
+        <summary>{t(phoneWatch ? '模型边界' : '模型约定与读图方法')}</summary>
         <p>
           {t(
             '圆轨道、平行阳光、几何地平线；忽略大气折射与太阳圆面大小。分点的极点另作地平线边界处理。',

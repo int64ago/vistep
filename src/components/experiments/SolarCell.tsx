@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import {
   solarCellDefaults,
@@ -14,7 +14,6 @@ import {
   type SolarCellFocus,
 } from '../../models/solar-cell';
 import { useShowcase } from '../lab/Showcase';
-import { useCompact } from '../lab/useCompact';
 import { Range } from '../lab/Controls';
 import {
   SolarCellThresholdView,
@@ -45,7 +44,17 @@ const initial = {
 };
 export default function SolarCell() {
   const director = useShowcase(),
-    compact = useCompact();
+    container = useRef<HTMLDivElement>(null),
+    [width, setWidth] = useState(320),
+    compact = width < 980;
+  useLayoutEffect(() => {
+    if (!container.current) return;
+    const measure = () => setWidth(container.current!.getBoundingClientRect().width);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, []);
   const [manual, setManual] = useState(initial);
   const change = (patch: Partial<SolarCellConfig>) =>
     setManual((s) => ({ ...s, config: { ...s.config, ...patch } }));
@@ -101,7 +110,13 @@ export default function SolarCell() {
                 ? t('追踪同一份入射能量')
                 : t('寻找负载工作点');
   return (
-    <div className="solar-cell-scene" data-watch={director.watch} data-focus={focus}>
+    <div
+      ref={container}
+      className="solar-cell-scene"
+      data-watch={director.watch}
+      data-compact={compact}
+      data-focus={focus}
+    >
       <div className="solar-cell-strip">
         <span>{stateLabel}</span>
         <span>

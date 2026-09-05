@@ -36,7 +36,9 @@ export default function LithiumBattery() {
       : lithiumManual(initialSoc / 100, rate, time, mode, view),
     v = shot.values,
     onlyEvidence =
-      shot.view === 'rest' || shot.view === 'limit' || (compact && shot.view === 'separator');
+      shot.view === 'rest' ||
+      shot.view === 'limit' ||
+      (compact && ['separator', 'inventory', 'power'].includes(shot.view));
   const statements: Record<LithiumView, string> = {
     layers: '石墨与 LFP 储存锂；湿润的隔膜把两极分开。',
     paths: '放电时，锂离子走内部，电子绕过隔膜走外部。',
@@ -129,35 +131,39 @@ export default function LithiumBattery() {
             />
           </>
         ) : null}
-        {shot.view !== 'limit' && shot.view !== 'rest' && (
-          <div className="lb-readings">
-            <span>
-              {t(shot.view === 'power' ? '端口功率' : '荷电状态')}
-              <b>
-                {shot.view === 'power'
-                  ? `${v.terminalPower.toFixed(2)} W`
-                  : `${(shot.state.soc * 100).toFixed(1)}%`}
-              </b>
-            </span>
-            <span>
-              {t(shot.view === 'power' ? '内部发热' : '端电压')}
-              <b>
-                {shot.view === 'power'
-                  ? `${v.heatPower.toFixed(3)} W`
-                  : `${v.voltage.toFixed(3)} V`}
-              </b>
-            </span>
-          </div>
-        )}
-        <p className="lb-key">
-          {t(
-            shot.view === 'rest'
-              ? '虚线是同一 SOC 的开路近似。没有凭空补回电量。'
-              : shot.view === 'limit'
-                ? 'Wh 是能量，Ah 是电荷容量。这里都从同一状态积分。'
-                : '金色 Li⁺，蓝色 e⁻；示踪点不表示真实粒子数量或速度。',
+        {shot.view !== 'limit' &&
+          shot.view !== 'rest' &&
+          (!film.watch || !['layers', 'separator'].includes(shot.view)) && (
+            <div className="lb-readings">
+              <span>
+                {t(shot.view === 'power' ? '端口功率' : '荷电状态')}
+                <b>
+                  {shot.view === 'power'
+                    ? `${v.terminalPower.toFixed(2)} W`
+                    : `${(shot.state.soc * 100).toFixed(1)}%`}
+                </b>
+              </span>
+              <span>
+                {t(shot.view === 'power' ? '内部发热' : '端电压')}
+                <b>
+                  {shot.view === 'power'
+                    ? `${v.heatPower.toFixed(3)} W`
+                    : `${v.voltage.toFixed(3)} V`}
+                </b>
+              </span>
+            </div>
           )}
-        </p>
+        {!film.watch && (
+          <p className="lb-key">
+            {t(
+              shot.view === 'rest'
+                ? '虚线是同一 SOC 的开路近似。没有凭空补回电量。'
+                : shot.view === 'limit'
+                  ? 'Wh 是能量，Ah 是电荷容量。这里都从同一状态积分。'
+                  : '金色 Li⁺，蓝色 e⁻；示踪点不表示真实粒子数量或速度。',
+            )}
+          </p>
+        )}
       </div>
       {!film.watch && (
         <div className="lb-explore">

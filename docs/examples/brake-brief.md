@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/brake-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **177.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 Part of the [50-scene expansion](../expansion-50.md). Start with a rotor turning between two stationary pads, then open the hand-operated master cylinder and opposing-piston caliper. A continuous hose and internal galleries connect the pressure chambers. A copper fluid tint indicates pressure; it must not suggest fluid circulating around a loop.
 
 Use a pale ceramic workbench, graphite metal, brushed rotor, muted red caliper and restrained amber fluid. Wide views establish the hardware; the camera approaches the master cylinder and pad contact. A separate, clearly enlarged sectional drawing exposes the tiny gaps and compensation port. On a phone, move the master above the rotor and reconstruct the hose around that arrangement.

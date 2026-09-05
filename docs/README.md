@@ -23,6 +23,7 @@ Records describe particular revisions and conditions. They are not guarantees fo
 - [Initial bilingual playback](qa-bilingual-narration.md)
 - [Maintenance and search setup](qa-maintenance.md)
 - [First production release](qa-production.md)
+- [Expansion refinements](qa-expansion-refinements.md): scoped repairs, recorded revisions and evidence limits.
 - [Long-form direction, language and SEO](qa-longform.md)
 - [Integrated homepage opening](qa-home-opening.md)
 - [Showcase artwork and narration defaults](qa-showcase-audio.md)

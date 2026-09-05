@@ -2,6 +2,8 @@
 
 [English](../../examples/lithium-battery-brief.md)
 
+当前录音修订（2026-09-06）：中英文均为 **187.5 秒**。实际章节窗口和审看边界见[修订记录](../qa-expansion-refinements.md)。下文较早的资产名、时间与审看结果属于此前版本。
+
 ## 集成后的影片
 
 合成后的中英文音轨共享 **188 秒**时间线。下文 176 秒分镜是最初交接稿，实际语音长度决定以下最终窗口。章节标题、字幕与口播文字未改动。下文临时 packet 路径指已消费的交接包；以 `src/data/narration.json`、`film-timeline.json`、`audio-tracks.json` 和 `audio-manifest.json` 为正式来源。

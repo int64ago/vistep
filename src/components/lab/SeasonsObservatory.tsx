@@ -11,12 +11,65 @@ import {
 } from '../../models/seasons';
 
 const pair = (p: { x: number; y: number }) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`;
+
+/** Plan view of the same one-metre post; only the displayed shadow is clipped. */
+export function SeasonsShadowDial({ state: s }: { state: SeasonsState }) {
+  const shadow = s.solar.shadow,
+    ratio = shadow ? Math.min(1, 3.1 / (shadow.length || 1)) : 0,
+    x = 125 + (shadow?.east ?? 0) * ratio * 17,
+    y = 92 - (shadow?.north ?? 0) * ratio * 17,
+    horizontal = Math.hypot(s.solar.east, s.solar.north),
+    sunX = 125 + (horizontal ? s.solar.east / horizontal : 0) * 66,
+    sunY = 92 - (horizontal ? s.solar.north / horizontal : 0) * 66;
+  return (
+    <svg
+      className="seasons-shadow-dial"
+      viewBox="0 0 250 190"
+      role="img"
+      aria-label={t('一米立杆的影子俯视图')}
+    >
+      <circle cx="125" cy="92" r="55" fill="#29464b" stroke="#71958e" />
+      {[17, 34, 51].map((r) => (
+        <circle key={r} cx="125" cy="92" r={r} fill="none" stroke="#afc4b6" strokeOpacity=".2" />
+      ))}
+      <path d="M70 92H180M125 37V147" stroke="#afc4b6" strokeOpacity=".2" />
+      {shadow && (
+        <>
+          <path d={`M${sunX} ${sunY}L125 92`} stroke="#efcd8c" strokeDasharray="3 4" opacity=".6" />
+          <circle cx={sunX} cy={sunY} r="4" fill="#efcd8c" />
+          <path d={`M125 92L${x} ${y}`} stroke="#071b27" strokeWidth="9" strokeLinecap="round" />
+          <circle
+            cx={x}
+            cy={y}
+            r="3"
+            fill="none"
+            stroke="#efcd8c"
+            strokeDasharray={shadow.length > 3.1 ? '2 2' : undefined}
+          />
+        </>
+      )}
+      <circle cx="125" cy="92" r="5" fill="#edcd8d" stroke="#f5e4c1" />
+      <text x="125" y="16" textAnchor="middle">
+        N
+      </text>
+      <text x="125" y="184" textAnchor="middle">
+        S
+      </text>
+      <text x="212" y="98">
+        E
+      </text>
+      <text x="38" y="98" textAnchor="end">
+        W
+      </text>
+    </svg>
+  );
+}
 export function SeasonsOrbit({ state: s, compact }: { state: SeasonsState; compact: boolean }) {
-  const width = compact ? 340 : 460,
+  const width = compact ? 250 : 460,
     cx = width / 2,
-    cy = compact ? 153 : 158,
-    rx = compact ? 100 : 155,
-    rz = compact ? 72 : 90;
+    cy = compact ? 140 : 158,
+    rx = compact ? 82 : 155,
+    rz = compact ? 65 : 90;
   const pos = (longitude: number) => {
     const o = seasonOrbit(longitude, s.tilt);
     return { x: cx + o.earth.x * rx, y: cy + o.earth.z * rz };
@@ -25,8 +78,8 @@ export function SeasonsOrbit({ state: s, compact }: { state: SeasonsState; compa
     axis = { x: s.axis.x, y: s.axis.y * Math.sqrt(1 - (rz / rx) ** 2) };
   return (
     <svg
-      className="seasons-apparatus"
-      viewBox={`0 0 ${width} 310`}
+      className="seasons-apparatus seasons-orbit"
+      viewBox={`0 0 ${width} ${compact ? 280 : 310}`}
       role="img"
       aria-label={t('圆轨道中的固定地轴与四个季节点')}
     >
@@ -72,16 +125,22 @@ export function SeasonsOrbit({ state: s, compact }: { state: SeasonsState; compa
         strokeLinecap="round"
       />
       <circle cx={earth.x + axis.x * 30} cy={earth.y - axis.y * 30} r="3" fill="#fff1c2" />
+      {compact && (
+        <g fill="none" stroke="#829296" strokeOpacity=".45" strokeWidth="1">
+          <path d={`M${pos(90).x - 15} ${pos(90).y}H18V222`} />
+          <path d={`M${pos(270).x + 15} ${pos(270).y}H232V222`} />
+        </g>
+      )}
       <text x={cx} y="28" textAnchor="middle">
         180°
       </text>
-      <text x={compact ? 4 : 15} y={cy + 7}>
+      <text x={compact ? 8 : 15} y={compact ? 245 : cy + 7}>
         90°
       </text>
-      <text x={width - (compact ? 4 : 15)} y={cy + 7} textAnchor="end">
+      <text x={width - (compact ? 8 : 15)} y={compact ? 245 : cy + 7} textAnchor="end">
         270°
       </text>
-      <text x={cx} y="291" textAnchor="middle">
+      <text x={cx} y={compact ? 270 : 291} textAnchor="middle">
         0°
       </text>
     </svg>

@@ -1,7 +1,7 @@
 import { useId, useMemo } from 'react';
 import { t } from '../../i18n';
 import { suspensionForces, type SuspensionTrace as Trace } from '../../models/suspension';
-import { useCompact } from './useCompact';
+import { useSuspensionPlotWidth } from './SuspensionLayout';
 
 export default function SuspensionTrace({
   a,
@@ -14,10 +14,10 @@ export default function SuspensionTrace({
   time: number;
   focus: string;
 }) {
-  const compact = useCompact(),
-    width = compact ? 300 : 920,
-    height = compact ? 186 : 174,
-    left = compact ? 43 : 54,
+  const { ref, width } = useSuspensionPlotWidth(),
+    compact = width < 600,
+    height = compact ? (b ? 250 : focus === 'contact' ? 152 : 220) : 174,
+    left = compact ? 58 : 54,
     right = width - 16,
     top = 20,
     bottom = height - 35;
@@ -84,47 +84,61 @@ export default function SuspensionTrace({
         <span>{label}</span>
         {b && <span>{t('相同路面 · 相同时间')}</span>}
       </div>
-      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={label}>
-        <defs>
-          <clipPath id={id}>
-            <rect x={left} y="0" width={Math.max(0, x(time) - left)} height={height} />
-          </clipPath>
-        </defs>
-        {[min, 0, max]
-          .filter((v, i, array) => array.indexOf(v) === i)
-          .map((v) => (
-            <g key={v}>
+      <div className="susp-trace-plot" ref={ref}>
+        <svg
+          width={width}
+          height={height}
+          viewBox={`0 0 ${width} ${height}`}
+          role="img"
+          aria-label={label}
+        >
+          <defs>
+            <clipPath id={id}>
+              <rect x={left} y="0" width={Math.max(0, x(time) - left)} height={height} />
+            </clipPath>
+          </defs>
+          {[min, 0, max]
+            .filter((v, i, array) => array.indexOf(v) === i)
+            .map((v) => (
+              <g key={v}>
+                <path
+                  d={`M${left} ${y(v)}H${right}`}
+                  stroke={kind === 'normal' && v === 0 ? '#b77861' : '#c7cdc5'}
+                  strokeWidth="1"
+                  strokeDasharray={v ? '3 5' : undefined}
+                />
+                <text x={left - 8} y={y(v) + 5} textAnchor="end">
+                  {v.toFixed(kind === 'normal' || kind === 'acceleration' ? 1 : 0)}
+                </text>
+              </g>
+            ))}
+          {series.map((s, i) => (
+            <g key={i}>
               <path
-                d={`M${left} ${y(v)}H${right}`}
-                stroke={kind === 'normal' && v === 0 ? '#b77861' : '#c7cdc5'}
-                strokeWidth="1"
-                strokeDasharray={v ? '3 5' : undefined}
+                d={path(s.points)}
+                fill="none"
+                stroke={s.color}
+                opacity=".15"
+                strokeWidth="1.5"
               />
-              <text x={left - 8} y={y(v) + 5} textAnchor="end">
-                {v.toFixed(kind === 'normal' || kind === 'acceleration' ? 1 : 0)}
-              </text>
+              <path
+                d={path(s.points)}
+                fill="none"
+                stroke={s.color}
+                strokeWidth="2"
+                clipPath={`url(#${id})`}
+              />
             </g>
           ))}
-        {series.map((s, i) => (
-          <g key={i}>
-            <path d={path(s.points)} fill="none" stroke={s.color} opacity=".15" strokeWidth="1.5" />
-            <path
-              d={path(s.points)}
-              fill="none"
-              stroke={s.color}
-              strokeWidth="2"
-              clipPath={`url(#${id})`}
-            />
-          </g>
-        ))}
-        <path d={`M${x(time)} ${top}V${bottom}`} stroke="#5e767b" strokeWidth="1" />
-        <text x={left} y={height - 9}>
-          0 s
-        </text>
-        <text x={right} y={height - 9} textAnchor="end">
-          {duration.toFixed(1)} s
-        </text>
-      </svg>
+          <path d={`M${x(time)} ${top}V${bottom}`} stroke="#5e767b" strokeWidth="1" />
+          <text x={left} y={height - 9}>
+            0 s
+          </text>
+          <text x={right} y={height - 9} textAnchor="end">
+            {duration.toFixed(1)} s
+          </text>
+        </svg>
+      </div>
       {kind === 'position' && !b && (
         <div className="susp-legend">
           <span>

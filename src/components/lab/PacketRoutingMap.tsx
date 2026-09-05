@@ -26,11 +26,11 @@ export default function PacketRoutingMap({
 }) {
   const pos: Record<RoutingNode, Point> = compact
     ? {
-        S: { x: 155, y: 30 },
-        A: { x: 155, y: 94 },
-        B: { x: 50, y: 175 },
-        C: { x: 260, y: 175 },
-        R: { x: 155, y: 263 },
+        S: { x: 40, y: 32 },
+        A: { x: 140, y: 32 },
+        B: { x: 45, y: 114 },
+        C: { x: 235, y: 114 },
+        R: { x: 140, y: 189 },
       }
     : {
         S: { x: 50, y: 170 },
@@ -42,7 +42,10 @@ export default function PacketRoutingMap({
   const along = (from: RoutingNode, to: RoutingNode, progress: number) => {
     const a = pos[from],
       b = pos[to],
-      inset = Math.min(0.33, 33 / Math.hypot(b.x - a.x, b.y - a.y));
+      inset = Math.min(
+        compact ? 0.45 : 0.33,
+        (compact ? 50 : 33) / Math.hypot(b.x - a.x, b.y - a.y),
+      );
     const u = inset + (1 - 2 * inset) * Math.max(0, Math.min(1, progress));
     return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u };
   };
@@ -52,7 +55,7 @@ export default function PacketRoutingMap({
   return (
     <svg
       className="routing-map"
-      viewBox={`0 0 ${compact ? 310 : 720} ${compact ? 292 : 350}`}
+      viewBox={`0 0 ${compact ? 280 : 720} ${compact ? 218 : 350}`}
       role="img"
       aria-label={t('分组网络：S 经 A、B、C 路由到 R，实线是数据链路，紫色虚线标识拓扑更新')}
     >
@@ -70,6 +73,20 @@ export default function PacketRoutingMap({
             x: (a.x + b.x) / 2 - ((b.y - a.y) / length) * 40 * sign,
             y: (a.y + b.y) / 2 + ((b.x - a.x) / length) * 40 * sign + 7,
           };
+          if (compact)
+            Object.assign(
+              label,
+              (
+                {
+                  SA: { x: 90, y: 18 },
+                  AB: { x: 20, y: 83 },
+                  AC: { x: 259, y: 83 },
+                  BC: { x: 140, y: 103 },
+                  BR: { x: 36, y: 178 },
+                  CR: { x: 244, y: 178 },
+                } as Record<string, Point>
+              )[link.id],
+            );
           return (
             <g key={link.id}>
               <path
@@ -130,6 +147,10 @@ export default function PacketRoutingMap({
         const queued = state.packets.filter(
           (p) => p.phase.node === node && p.phase.kind === 'waiting',
         ).length;
+        const badge = {
+          x: p.x + (compact && node === 'A' ? 34 : 24),
+          y: p.y + (compact && node === 'A' ? -14 : 20),
+        };
         return (
           <g key={node}>
             {pending && (
@@ -170,8 +191,8 @@ export default function PacketRoutingMap({
             </text>
             {queued > 0 && (
               <g>
-                <circle cx={p.x + 24} cy={p.y + 20} r="13" fill="#bea783" />
-                <text x={p.x + 24} y={p.y + 27} textAnchor="middle" fontSize="20" fill="#192634">
+                <circle cx={badge.x} cy={badge.y} r="13" fill="#bea783" />
+                <text x={badge.x} y={badge.y + 7} textAnchor="middle" fontSize="20" fill="#192634">
                   {queued}
                 </text>
               </g>
@@ -208,7 +229,10 @@ export default function PacketRoutingMap({
                   phase.to,
                   phase.kind === 'transmitting' ? 0 : (at - phase.start) / (link?.propagation ?? 1),
                 )
-              : { x: n.x, y: n.y + (phase.node === 'S' ? 39 : -38) };
+              : {
+                  x: n.x,
+                  y: n.y + (phase.node === 'S' || (compact && phase.node === 'A') ? 39 : -38),
+                };
           const color = packet.phase.kind === 'dropped' ? '#e69b91' : '#89d4bf';
           if (packet.id !== selected)
             return <circle key={packet.id} cx={q.x} cy={q.y} r="5" fill={color} opacity=".7" />;
@@ -230,6 +254,71 @@ export default function PacketRoutingMap({
             </g>
           );
         })}
+    </svg>
+  );
+}
+
+/** Isolated B–R output: only packets actually serializing/propagating on this link appear. */
+export function PacketRoutingOutput({
+  run,
+  state,
+  selected,
+}: {
+  run: RoutingRun;
+  state: RoutingSnapshot;
+  selected: number;
+}) {
+  const link = run.links.find((l) => l.id === 'BR')!;
+  return (
+    <svg
+      className="routing-output-map"
+      viewBox="0 0 280 106"
+      role="img"
+      aria-label={t('B–R 出口：发送与传播分开显示')}
+    >
+      <path
+        d="M48 54H232"
+        stroke={state.brUp ? '#526578' : '#b37372'}
+        strokeWidth="2"
+        strokeDasharray={state.brUp ? undefined : '3 7'}
+      />
+      <path d="M229 48l9 6-9 6" fill="none" stroke="#80c5b8" strokeWidth="2" />
+      {[
+        ['B', 28],
+        ['R', 252],
+      ].map(([id, x]) => (
+        <g key={id}>
+          <circle cx={x} cy="54" r="20" fill="#192a3b" stroke="#8db8bc" />
+          <text x={x} y="62" fontSize="24" fill="#e1e9e9" textAnchor="middle">
+            {id}
+          </text>
+        </g>
+      ))}
+      {state.packets
+        .filter(
+          (p) => p.phase.link === 'BR' && ['transmitting', 'propagating'].includes(p.phase.kind),
+        )
+        .map((p) => {
+          const phase = p.phase,
+            u =
+              phase.kind === 'transmitting'
+                ? 0
+                : Math.max(0, Math.min(1, (state.at - phase.start) / link.propagation)),
+            x = 68 + 144 * u;
+          return p.id === selected ? (
+            <g key={p.id}>
+              <rect x={x - 18} y="41" width="36" height="26" rx="8" fill="#89d4bf" />
+              <text x={x} y="61" textAnchor="middle" fontSize="21" fill="#142c32">
+                P{p.id}
+              </text>
+            </g>
+          ) : (
+            <circle key={p.id} cx={x} cy="54" r="5" fill="#89d4bf" />
+          );
+        })}
+      <text x="140" y="96" textAnchor="middle" fontSize="20" fill="#afc1ca">
+        {t('传播')} · {(link.propagation * 1000).toFixed(1)} ms
+      </text>
     </svg>
   );
 }

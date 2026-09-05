@@ -39,7 +39,7 @@ Use the chapter director and shared clock. Seeking reconstructs simulation histo
 
 Author Chinese and English explanation and spoken scripts separately. Speech should be natural, lively and paced around the visible event: point to a detail, leave room to notice it, then explain the change. Do not read UI text or force literal translations. Preserve the shared chapter timeline and measure both recordings; never time-stretch speech.
 
-Check every spoken reference against both desktop and phone shots, including fallback views. Name the tracked object or signal when responsive layouts move it; directions such as “on the right” are valid only when both compositions preserve them. After changing a shot, recheck its spoken cues before synthesis.
+Check every spoken reference against both desktop and phone shots, including fallback views. Name the tracked object or signal when responsive layouts move it; directions such as “on the right” are valid only when both compositions preserve them. After changing a shot, recheck its spoken cues before synthesis. If a removed object carries the chapter’s causal step, restore a suitable view of it; rewriting speech alone does not repair the missing visual.
 
 Use the existing offline narration pipeline and commit its scripts, recordings and generated manifests together. Ordinary builds and readers need no speech credentials or live AI service. Do not substitute browser text-to-speech for the authored recordings.
 

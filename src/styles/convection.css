@@ -399,11 +399,66 @@
 
 @media (max-width: 760px) {
   .convection-study[data-watch='true'] {
-    min-height: 760px;
+    min-height: 550px;
     display: flex;
     flex-direction: column;
   }
   .convection-study[data-watch='true'] .convection-method {
     margin-top: auto;
   }
+}
+
+/* Phone film follows one cell; both computed comparison values remain together. */
+.convection-study[data-phone-film='true'] {
+  padding: 16px 16px 10px;
+}
+.convection-study[data-phone-film='true'] .convection-kicker {
+  margin-bottom: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.convection-study[data-phone-film='true'] .convection-kicker > span:first-child,
+.convection-study[data-phone-film='true'] .convection-temperature-key {
+  display: none;
+}
+.convection-study[data-phone-film='true'] .convection-cells {
+  max-width: 360px;
+  margin: 0 auto;
+}
+.convection-study[data-phone-film='true'] .convection-compare {
+  display: block;
+}
+.convection-study[data-phone-film='true'][data-focus='false']
+  .convection-compare
+  .convection-vessel:nth-child(2),
+.convection-study[data-phone-film='true'][data-focus='true']
+  .convection-compare
+  .convection-vessel:first-child {
+  display: none;
+}
+.convection-study[data-phone-film='true'] .convection-readouts {
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin: 14px auto 8px;
+  padding: 10px 0 0;
+}
+.convection-study[data-phone-film='true'] .convection-readouts > div {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+}
+.convection-study[data-phone-film='true'] .convection-readouts b {
+  font-size: 20px;
+  white-space: nowrap;
+}
+.convection-study[data-phone-film='true'] .convection-readouts p {
+  text-align: left;
+  margin: 0;
+}
+.convection-study[data-phone-film='true'] .convection-method {
+  width: 100%;
 }

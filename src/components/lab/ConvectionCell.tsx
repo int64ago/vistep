@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { t } from '../../i18n';
-import {
-  convectionPlates,
-  convectionScalar,
-  convectionVelocity,
-  type ConvectionState,
-} from '../../models/convection';
+import { convectionPlates, convectionScalar, type ConvectionState } from '../../models/convection';
+import { convectionOverlay, convectionArrowPath } from './convectionOverlay';
 const rgb = (temperature: number) => {
   const q = Math.max(0, Math.min(1, temperature)),
     cold = [98, 132, 147],
@@ -92,56 +88,38 @@ export default function ConvectionCell({
     c.putImageData(pixels, 0, 0);
     ctx.imageSmoothingEnabled = !grid;
     ctx.drawImage(cells, 0, 0, W, H);
-    const scale = W / p.width;
-    if (grid) {
+    const overlay = convectionOverlay(state, view, W),
+      { scale } = overlay;
+    if (overlay.grid.length) {
       ctx.strokeStyle = 'rgba(71,57,42,.18)';
       ctx.lineWidth = 0.5;
       ctx.beginPath();
-      for (let i = 1; i < p.nx; i++) {
-        ctx.moveTo((i * W) / p.nx, 0);
-        ctx.lineTo((i * W) / p.nx, H);
-      }
-      for (let j = 1; j < p.ny; j++) {
-        ctx.moveTo(0, (j * H) / p.ny);
-        ctx.lineTo(W, (j * H) / p.ny);
-      }
+      overlay.grid.forEach(({ start, end }) => {
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+      });
       ctx.stroke();
     }
-    if (view === 'transport' || view === 'grid') {
+    if (overlay.section) {
       ctx.strokeStyle = 'rgba(61,52,44,.52)';
       ctx.setLineDash([5, 5]);
       ctx.beginPath();
-      ctx.moveTo(0, H / 2);
-      ctx.lineTo(W, H / 2);
+      ctx.moveTo(overlay.section.start.x, overlay.section.start.y);
+      ctx.lineTo(overlay.section.end.x, overlay.section.end.y);
       ctx.stroke();
       ctx.setLineDash([]);
     }
-    if (view === 'seed' || view === 'plume') {
-      ctx.strokeStyle = 'rgba(63,55,42,.55)';
-      ctx.lineWidth = 1.2;
-      for (let j = 0; j < 4; j++)
-        for (let i = 0; i < 6; i++) {
-          const x = ((i + 0.5) * p.width) / 6,
-            y = (j + 0.5) / 4,
-            vel = convectionVelocity(p, state.psi, x, y),
-            dx = vel.u * scale * 0.2,
-            dy = -vel.v * scale * 0.2,
-            len = Math.hypot(dx, dy);
-          if (len < 0.6) continue;
-          const px = x * scale,
-            py = (1 - y) * scale,
-            ux = dx / len,
-            uy = dy / len,
-            h = Math.min(4, len * 0.4);
-          ctx.beginPath();
-          ctx.moveTo(px, py);
-          ctx.lineTo(px + dx, py + dy);
-          ctx.lineTo(px + dx - h * ux + h * 0.55 * uy, py + dy - h * uy - h * 0.55 * ux);
-          ctx.moveTo(px + dx, py + dy);
-          ctx.lineTo(px + dx - h * ux - h * 0.55 * uy, py + dy - h * uy + h * 0.55 * ux);
-          ctx.stroke();
-        }
-    }
+    ctx.strokeStyle = 'rgba(63,55,42,.55)';
+    ctx.lineWidth = 1.2;
+    overlay.arrows.forEach(({ start, tip, wings }) => {
+      ctx.beginPath();
+      ctx.moveTo(start.x, start.y);
+      ctx.lineTo(tip.x, tip.y);
+      ctx.lineTo(wings[0].x, wings[0].y);
+      ctx.moveTo(tip.x, tip.y);
+      ctx.lineTo(wings[1].x, wings[1].y);
+      ctx.stroke();
+    });
     state.particles.forEach((a) => {
       const active = a.id === probe;
       ctx.beginPath();
@@ -164,6 +142,7 @@ export default function ConvectionCell({
     cells.width = 0;
     cells.height = 0;
   }, [state, width, view, probe]);
+  const fallbackOverlay = noCanvas ? convectionOverlay(state, view, width) : null;
   const fallbackRects = [];
   if (noCanvas)
     for (let j = 0; j < p.ny; j++)
@@ -182,10 +161,10 @@ export default function ConvectionCell({
         fallbackRects.push(
           <rect
             key={i + p.nx * j}
-            x={(i * 300) / p.nx}
-            y={((p.ny - 1 - j) * 200) / p.ny}
-            width={300 / p.nx + 0.1}
-            height={200 / p.ny + 0.1}
+            x={(i * width) / p.nx}
+            y={((p.ny - 1 - j) * width) / p.width / p.ny}
+            width={width / p.nx + 0.1}
+            height={width / p.width / p.ny + 0.1}
             fill={`rgb(${color.join(',')})`}
           />,
         );
@@ -208,16 +187,51 @@ export default function ConvectionCell({
       </div>
       <div className="convection-glass" ref={host}>
         {noCanvas ? (
-          <svg viewBox="0 0 300 200" role="img" aria-label={t('温度与无穿透边界的二维备用视图')}>
+          <svg
+            viewBox={`0 0 ${width} ${width / p.width}`}
+            role="img"
+            aria-label={t('温度与无穿透边界的二维备用视图')}
+          >
             {fallbackRects}
+            {fallbackOverlay!.grid.map(({ start, end }, i) => (
+              <path
+                key={`grid-${i}`}
+                d={`M${start.x},${start.y}L${end.x},${end.y}`}
+                stroke="#47392a"
+                strokeOpacity=".18"
+                strokeWidth=".5"
+              />
+            ))}
+            {fallbackOverlay!.section && (
+              <path
+                className="convection-section-mark"
+                d={`M0,${fallbackOverlay!.section.start.y}H${width}`}
+                stroke="#3d342c"
+                strokeOpacity=".52"
+                strokeWidth="1"
+                strokeDasharray="5 5"
+              />
+            )}
+            {fallbackOverlay!.arrows.map((arrow, i) => (
+              <path
+                key={i}
+                className="convection-velocity-mark"
+                d={convectionArrowPath(arrow)}
+                fill="none"
+                stroke="#3f372a"
+                strokeOpacity=".55"
+                strokeWidth="1.2"
+              />
+            ))}
             {state.particles.map((a) => (
               <circle
                 key={a.id}
-                cx={a.x * 200}
-                cy={(1 - a.y) * 200}
-                r={a.id === probe ? 4 : 1.8}
+                cx={a.x * fallbackOverlay!.scale}
+                cy={(1 - a.y) * fallbackOverlay!.scale}
+                r={a.id === probe ? 5 : 2.1}
                 fill="#fff6d9"
-                stroke={a.id === probe ? '#534535' : 'none'}
+                stroke={a.id === probe ? '#443c31' : 'none'}
+                strokeWidth="1.6"
               />
             ))}
           </svg>

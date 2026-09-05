@@ -27,11 +27,7 @@ export function SolarCellThresholdView({
       aria-label={t('逐个光子的带隙门槛与热化能量')}
     >
       <text x={compact ? 18 : 24} y="28" className="solar-cell-svg-label">
-        {t('带隙')} E
-        <tspan baselineShift="sub" fontSize="14">
-          g
-        </tspan>{' '}
-        = {shot.p.optical.eg.toFixed(3)} eV
+        {t('带隙')} E<tspan baselineShift="sub">g</tspan> = {shot.p.optical.eg.toFixed(3)} eV
       </text>
       {bands.map((band, i) => {
         const x = compact ? 16 : 24 + i * 250,
@@ -493,48 +489,26 @@ export function SolarCellEquivalent({ shot }: { shot: SolarCellShot }) {
         />
       ) : null}
       <text x="65" y="49" textAnchor="middle" className="solar-cell-svg-label">
-        I
-        <tspan baselineShift="sub" fontSize="12">
-          L
-        </tspan>
+        I<tspan baselineShift="sub">L</tspan>
       </text>
       <text x="165" y="20" textAnchor="middle" className="solar-cell-svg-label">
         {t('复合')}
       </text>
       <text x="165" y="49" textAnchor="middle" className="solar-cell-svg-label">
-        I
-        <tspan baselineShift="sub" fontSize="12">
-          d
-        </tspan>
+        I<tspan baselineShift="sub">d</tspan>
       </text>
       <text x="239" y="49" textAnchor="middle" className="solar-cell-svg-label">
-        R
-        <tspan baselineShift="sub" fontSize="12">
-          sh
-        </tspan>
+        R<tspan baselineShift="sub">sh</tspan>
       </text>
       <text x="290" y="49" textAnchor="middle" className="solar-cell-svg-label">
-        R
-        <tspan baselineShift="sub" fontSize="12">
-          s
-        </tspan>
+        R<tspan baselineShift="sub">s</tspan>
       </text>
       <text x="350" y="245" textAnchor="middle" className="solar-cell-svg-label">
         {mode === 'open' ? t('开路') : mode === 'short' ? t('短路') : t('负载')}
       </text>
       <text x="33" y="245" className="solar-cell-svg-label">
-        I = I
-        <tspan baselineShift="sub" fontSize="12">
-          L
-        </tspan>{' '}
-        − I
-        <tspan baselineShift="sub" fontSize="12">
-          d
-        </tspan>{' '}
-        − I
-        <tspan baselineShift="sub" fontSize="12">
-          sh
-        </tspan>
+        I = I<tspan baselineShift="sub">L</tspan> − I<tspan baselineShift="sub">d</tspan> − I
+        <tspan baselineShift="sub">sh</tspan>
       </text>
     </svg>
   );

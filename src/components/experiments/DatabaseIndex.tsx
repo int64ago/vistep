@@ -1,6 +1,7 @@
 import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import {
   diBuild,
   diDataset,
@@ -11,7 +12,13 @@ import {
   diShot,
   type DiChange,
 } from '../../models/database-index';
-import { DiChangeView, DiComparePlans, DiLeafRibbon, DiQueryView } from '../lab/DatabaseIndexPages';
+import {
+  DiChangeView,
+  DiComparePlans,
+  DiLeafRibbon,
+  DiQueryView,
+  DiPhoneFilm,
+} from '../lab/DatabaseIndexPages';
 import '../../styles/database-index.css';
 const titles = [
   '先逐页翻完这张表',
@@ -25,6 +32,7 @@ const titles = [
 ];
 export default function DatabaseIndex() {
   const director = useShowcase(),
+    compact = useCompact(),
     id = useId();
   const film = useMemo(() => diFilm(), []);
   const [seed, setSeed] = useState(19),
@@ -77,6 +85,7 @@ export default function DatabaseIndex() {
       className="database-index-study"
       data-watch={director.watch}
       data-chapter={chapter}
+      data-phone-film={director.watch && compact}
       aria-label={t('数据库索引页实验')}
     >
       <header className="di-heading">
@@ -85,7 +94,9 @@ export default function DatabaseIndex() {
       </header>
       <h3>{t(director.watch ? titles[chapter] : '亲手查找与插入')}</h3>
       <div className="di-film-surface">
-        {director.watch ? (
+        {director.watch && compact ? (
+          <DiPhoneFilm film={film} shot={shot} />
+        ) : director.watch ? (
           <>
             {(chapter === 0 || chapter === 1 || chapter === 2) && shot.query && (
               <DiQueryView

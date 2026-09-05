@@ -2,6 +2,8 @@
 
 [简体中文](../zh-CN/examples/wave-interference-brief.md)
 
+Current recording revision (2026-09-06): both tracks run **179.5 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.
+
 ## Direction
 
 The tracked object is a gold material marker, P. The initial intuition to challenge is that canceled displacement means vanished waves or energy. A midnight-blue string installation uses pale solid displacement, blue/coral component curves, physical material dots, and restrained velocity arrows. It is deliberately different from the aperture and phasor optics of diffraction. There are no particle paths or decorative wave sources.

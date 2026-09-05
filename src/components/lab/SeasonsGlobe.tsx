@@ -32,7 +32,15 @@ function longitudePath(hour: number) {
   }
   return path;
 }
-export default function SeasonsGlobe({ state: s }: { state: SeasonsState }) {
+export default function SeasonsGlobe({
+  state: s,
+  labels = true,
+  notes = true,
+}: {
+  state: SeasonsState;
+  labels?: boolean;
+  notes?: boolean;
+}) {
   const id = useId().replace(/:/g, '');
   const delta = (s.declination * Math.PI) / 180;
   const sun = seasonPortrait({ x: 0, y: Math.sin(delta), z: Math.cos(delta) });
@@ -125,21 +133,27 @@ export default function SeasonsGlobe({ state: s }: { state: SeasonsState }) {
           strokeWidth="2"
           strokeDasharray={site.z < 0 ? '2 2' : undefined}
         />
-        <text x="150" y="19" textAnchor="middle">
-          N
-        </text>
-        <text x="150" y="295" textAnchor="middle">
-          S
-        </text>
+        {labels && (
+          <text x="150" y="19" textAnchor="middle">
+            N
+          </text>
+        )}
+        {labels && (
+          <text x="150" y="295" textAnchor="middle">
+            S
+          </text>
+        )}
       </svg>
-      <p className="seasons-globe-key">
-        <i />
-        {t('观测纬圈')}{' '}
-        <b>
-          {Math.abs(s.latitude).toFixed(0)}° {s.latitude < 0 ? 'S' : 'N'}
-        </b>
-      </p>
-      <p className="seasons-globe-note">{t('地球近景随日照方向转向')}</p>
+      {notes && (
+        <p className="seasons-globe-key">
+          <i />
+          {t('观测纬圈')}{' '}
+          <b>
+            {Math.abs(s.latitude).toFixed(0)}° {s.latitude < 0 ? 'S' : 'N'}
+          </b>
+        </p>
+      )}
+      {notes && <p className="seasons-globe-note">{t('地球近景随日照方向转向')}</p>}
     </div>
   );
 }

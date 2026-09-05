@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import { t } from '../../i18n';
 import { useCompact } from '../lab/useCompact';
+import { useZipperSvg, zipperMarkedLabel } from './zipper-layout';
 import {
   ZIP,
   ZIP_GUIDE,
@@ -24,15 +25,20 @@ export function ZipperDiagram({ pose, focus }: { pose: ZipperPose; focus: string
     clip = useId(),
     w = compact ? 280 : 560,
     h = 360;
+  const typography = useZipperSvg(w, h, compact);
   const full = focus === 'whole' && !compact,
     anatomy = focus === 'tooth';
   const scale = full ? 19 : anatomy ? (compact ? 100 : 137) : compact ? 48 : 65,
     cx = anatomy ? -0.3 : 0,
     cy = full ? 6 : anatomy ? pose.marked.root[1] : pose.slider + 0.85;
   const to = ([x, y]: ZipPoint): ZipPoint => [w / 2 + (x - cx) * scale, h / 2 - (y - cy) * scale];
+  const marked = to(pose.marked.root),
+    label = zipperMarkedLabel(w, typography.fontSize, marked);
   if (anatomy) return <ZipperSection />;
   return (
     <svg
+      ref={typography.ref}
+      style={{ fontSize: typography.fontSize }}
       className="zipper-diagram"
       viewBox={`0 0 ${w} ${h}`}
       role="img"
@@ -71,11 +77,6 @@ export function ZipperDiagram({ pose, focus }: { pose: ZipperPose; focus: string
               stroke="#6d624c"
               strokeWidth=".7"
             />
-            {(anatomy || focus === 'capture') && tooth.id === 'L7' && (
-              <text x={to(tooth.root)[0] - 12} y={to(tooth.root)[1] - 12} textAnchor="end">
-                L7
-              </text>
-            )}
           </g>
         ))}
         {!anatomy && (
@@ -141,6 +142,17 @@ export function ZipperDiagram({ pose, focus }: { pose: ZipperPose; focus: string
           </>
         )}
       </g>
+      {focus === 'capture' && (
+        <g className="zipper-marked-label">
+          <path d={label.leader} fill="none" stroke="#f3f4eb" strokeWidth="4" />
+          <path d={label.leader} fill="none" stroke="#326b61" strokeWidth="1.5" />
+          <circle cx={marked[0]} cy={marked[1]} r="3" fill="#f3f4eb" stroke="#326b61" />
+          <rect {...label.box} rx="8" fill="#f3f4eb" stroke="#71938b" />
+          <text x={label.text.x} y={label.text.y} textAnchor="middle">
+            L7
+          </text>
+        </g>
+      )}
       <text x="12" y="24">
         {t(full ? '连续织带 · 半齿距交错' : anatomy ? 'L7 · 薄翼进入齿窝' : '拉头局部 · Y 形导道')}
       </text>
@@ -157,11 +169,14 @@ export function ZipperLoad({ force }: { force: number }) {
     scale = compact ? 83 : 116,
     s = zipperLoad(force),
     arrow = useId();
+  const typography = useZipperSvg(w, h, compact);
   const to = ([x, y]: ZipPoint): ZipPoint => [w / 2 + x * scale, h / 2 - y * scale];
   const marked = zipperTooth(6, -1, 8),
     near = [zipperTooth(5, 1, 8), zipperTooth(6, 1, 8)];
   return (
     <svg
+      ref={typography.ref}
+      style={{ fontSize: typography.fontSize }}
       className="zipper-diagram"
       viewBox={`0 0 ${w} ${h}`}
       role="img"
@@ -248,8 +263,11 @@ export function ZipperComparison({ trial }: { trial: number }) {
     h = 360,
     scale = compact ? 58 : 78,
     c = zipperComparison(trial);
+  const typography = useZipperSvg(w, h, compact);
   return (
     <svg
+      ref={typography.ref}
+      style={{ fontSize: typography.fontSize }}
       className="zipper-diagram"
       viewBox={`0 0 ${w} ${h}`}
       role="img"
@@ -298,8 +316,11 @@ export function ZipperSection() {
     s = zipperSection(),
     to = ([x, y]: ZipPoint): ZipPoint => [w / 2 + x * 80, 108 - (y - 6) * 80],
     section = ([x, z]: ZipPoint): ZipPoint => [w / 2 + (x - 0.1) * 470, 270 - z * 470];
+  const typography = useZipperSvg(w, h, compact);
   return (
     <svg
+      ref={typography.ref}
+      style={{ fontSize: typography.fontSize }}
       className="zipper-diagram"
       viewBox={`0 0 ${w} ${h}`}
       role="img"

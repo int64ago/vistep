@@ -1,6 +1,9 @@
 import { t } from '../../i18n';
 import {
   diHeight,
+  diQuery,
+  type diFilm,
+  type diShot,
   diLeaves,
   type DiChange,
   type DiEntry,
@@ -382,6 +385,210 @@ export function DiLeafRibbon({ tree, low, high }: { tree: DiTree; low: number; h
             {i < leaves.length - 1 ? ' →' : ''}
           </span>
         ))}
+      </div>
+    </div>
+  );
+}
+
+/** Phone film: one actual access or local split is the primary reading surface. */
+export function DiPhoneFilm({
+  film,
+  shot,
+}: {
+  film: ReturnType<typeof diFilm>;
+  shot: ReturnType<typeof diShot>;
+}) {
+  const c = shot.chapter;
+  if (c === 3 || c === 7)
+    return (
+      <DiPhoneComparison
+        tree={c === 3 ? film.base : film.grown}
+        low={c === 3 ? film.point : 0}
+        high={c === 3 ? film.point : 99}
+        progress={shot.progress}
+      />
+    );
+  if (shot.change) return <DiPhoneChange change={shot.change} added={shot.added} />;
+  if (!shot.query) return null;
+  const query = shot.query,
+    cursor = Math.min(shot.cursor, query.steps.length - 1),
+    step = query.steps[cursor];
+  const visited = query.steps.slice(0, cursor + 1).filter((s) => s.kind === 'page');
+  const page =
+    c === 1
+      ? shot.tree.pages[shot.tree.root]
+      : step.space === 'index'
+        ? shot.tree.pages[step.page]
+        : null;
+  return (
+    <div className="di-phone-query" data-step-kind={step.kind}>
+      <div className="di-phone-predicate">
+        <strong>{c === 4 ? `${film.low} ≤ key ≤ ${film.high}` : `key = ${film.point}`}</strong>
+      </div>
+      <div className="di-phone-path" aria-label={t('已走过的页路径')}>
+        {visited.length > 3 && <span aria-hidden="true">… → </span>}
+        {visited.slice(-3).map((v, i) => (
+          <span key={i}>
+            {i ? ' → ' : ''}
+            {v.space === 'index' ? 'I' : 'H'}
+            {v.page}
+          </span>
+        ))}
+      </div>
+      <div className="di-phone-access">
+        {page ? (
+          <DiPageSheet
+            page={page}
+            slot={step.slot}
+            highlight={step.found}
+            target={step.target}
+            compact
+          />
+        ) : (
+          <DiHeap tree={shot.tree} page={step.page} step={step} />
+        )}
+        <DiOperation step={step} />
+      </div>
+      {c === 1 ? (
+        <p className="di-phone-result">{t('r0 排在所有真实行号之前。')}</p>
+      ) : (
+        <div className="di-phone-result">
+          <span>{t('已找到的行号')}</span>
+          <b>{step.found.length ? step.found.map((id) => `r${id}`).join(' · ') : '∅'}</b>
+        </div>
+      )}
+      <DiPhoneReceipt step={step} />
+    </div>
+  );
+}
+function DiPhoneReceipt({ step }: { step: DiQueryStep }) {
+  return (
+    <dl className="di-phone-receipt">
+      <div>
+        <dt>{t('索引页')}</dt>
+        <dd>{step.indexPages}</dd>
+      </div>
+      <div>
+        <dt>{t('堆页')}</dt>
+        <dd>{step.heapPages}</dd>
+      </div>
+      <div>
+        <dt>{t('比较')}</dt>
+        <dd>{step.comparisons}</dd>
+      </div>
+    </dl>
+  );
+}
+function DiPhoneComparison({
+  tree,
+  low,
+  high,
+  progress,
+}: {
+  tree: DiTree;
+  low: number;
+  high: number;
+  progress: number;
+}) {
+  const index = diQuery(tree, low, high),
+    scan = diQuery(tree, low, high, 'scan');
+  return (
+    <div className="di-phone-comparison">
+      <div className="di-phone-predicate">
+        <strong>{low === high ? `key = ${low}` : `${low} ≤ key ≤ ${high}`}</strong>
+      </div>
+      {[
+        { name: '全表扫描', query: scan },
+        { name: 'B+ 树查找', query: index },
+      ].map(({ name, query }) => {
+        const step =
+            query.steps[
+              Math.min(query.steps.length - 1, Math.floor(progress * query.steps.length))
+            ],
+          domain = Math.max(index.indexPages + index.heapPages, scan.indexPages + scan.heapPages);
+        return (
+          <section className="di-phone-plan" key={name}>
+            <h4>{t(name)}</h4>
+            <div className="di-phone-plan-total">
+              <strong>{step.indexPages + step.heapPages}</strong>
+              <span>{t('不同页')}</span>
+            </div>
+            <div className="di-phone-page-bars" aria-hidden="true">
+              <i style={{ width: `${(step.indexPages / domain) * 100}%` }} />
+              <b style={{ width: `${(step.heapPages / domain) * 100}%` }} />
+            </div>
+            <p>
+              I {step.indexPages} + H {step.heapPages} · {t('比较')} {step.comparisons}
+            </p>
+            <p>
+              {t('找到行数')} {step.found.length}
+            </p>
+          </section>
+        );
+      })}
+      <div className="di-phone-result">
+        <span>{t('最终结果逐行一致')}</span>
+        <b>
+          {index.rows.length === 1
+            ? `r${index.rows[0].rowId} · ${index.rows[0].payload}`
+            : `${index.rows.length} / ${tree.rows.length}`}
+        </b>
+      </div>
+    </div>
+  );
+}
+function DiPhoneChange({ change, added }: { change: DiChange; added: number }) {
+  const { tree } = change,
+    row = tree.rows.at(-1)!,
+    page = tree.pages[change.page],
+    split = change.kind === 'leaf-split' || change.kind === 'internal-split';
+  return (
+    <div className="di-phone-change" data-change={change.kind}>
+      <div className="di-phone-insertion">
+        <span>{t('当前新项')}</span>
+        <DiPair entry={row} />
+        <span aria-label={`${t('累计新增')} ${added}`} title={t('累计新增')}>
+          +{added}
+        </span>
+      </div>
+      <h4>{t(changeLabels[change.kind])}</h4>
+      {change.before && (
+        <div className="di-phone-overflow">
+          <span>{t('分裂前')}</span>
+          <strong>
+            {change.before.kind === 'leaf'
+              ? `${change.before.entries.length} / 3`
+              : `${change.before.children.length} / 4`}
+          </strong>
+        </div>
+      )}
+      <div className="di-phone-split" data-split={split}>
+        <DiPageSheet page={page} highlight={[row.rowId]} target={change.right} compact />
+        {split && change.right !== undefined && (
+          <DiPageSheet page={tree.pages[change.right]} highlight={[row.rowId]} compact />
+        )}
+      </div>
+      {change.separator && (
+        <div className="di-phone-promote">
+          <DiPair entry={change.separator} />
+          <p>
+            {t(
+              change.kind === 'leaf-split'
+                ? '复制到父页，叶项保留'
+                : change.kind === 'internal-split'
+                  ? '上推到父页，两侧不再保留'
+                  : '父页中的分隔键',
+            )}
+          </p>
+        </div>
+      )}
+      <div className="di-phone-tree-status">
+        <span>
+          {t('总行数')} {tree.rows.length}
+        </span>
+        <span>
+          {t('当前树高')} {diHeight(tree)}
+        </span>
       </div>
     </div>
   );
