@@ -1,0 +1,52 @@
+---
+import { ZIP_GUIDE, zipperPose, zipperTransform, type ZipPoint } from '../../models/zipper';
+interface Props {
+  color?: string;
+}
+const { color = '#54817c' } = Astro.props;
+const pose = zipperPose(0.46),
+  to = ([x, y]: ZipPoint) => [200 + x * 29, 122 - (y - pose.slider) * 29];
+const path = (p: ZipPoint[]) =>
+  p.map((v, i) => `${i ? 'L' : 'M'}${to(v).join(' ')}`).join(' ') + 'Z';
+const rows = ([-1, 1] as const).map((side) => {
+  const inner = Array.from({ length: 100 }, (_, i) =>
+      zipperTransform([0, 0], -1.5 + (16 * i) / 99, pose.slider, side),
+    ),
+    outer = Array.from({ length: 100 }, (_, i) =>
+      zipperTransform([-1.04, 0], -1.5 + (16 * i) / 99, pose.slider, side),
+    );
+  return path([...inner, ...outer.reverse()]);
+});
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <ellipse cx="205" cy="126" rx="118" ry="90" fill={color} opacity=".065"></ellipse>
+  {rows.map((d) => <path d={d} fill="#4d6872" opacity=".85" />)}
+  {
+    pose.teeth.map((tooth) => (
+      <path
+        d={path(tooth.outline)}
+        fill={tooth.id === 'L7' ? color : tooth.side === -1 ? '#decaa5' : '#b69358'}
+        stroke="#7c725b"
+        stroke-width=".6"
+      />
+    ))
+  }
+  <path
+    d={path(ZIP_GUIDE.outline.map(([x, y]) => [x, y + pose.slider]))}
+    stroke="#a6b8b9"
+    stroke-width="8"
+    stroke-linejoin="round"></path>
+  <path
+    d={path(ZIP_GUIDE.diamond.map(([x, y]) => [x, y + pose.slider]))}
+    fill="#899fa2"
+    stroke="#d3dfd9"
+    stroke-width="1.5"></path>
+  <path d="M192 68H209V75H192Z" fill="#9bafb0"></path>
+  <path
+    d="M193 70L205 73L207 108Q201 116 191 111Z"
+    stroke="#cbd7d3"
+    stroke-width="5"
+    stroke-linejoin="round"></path>
+  <path d="M267 89H296M275 97H300" stroke={color} stroke-width="1.5" opacity=".45"></path>
+</svg>

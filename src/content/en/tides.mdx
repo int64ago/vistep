@@ -1,0 +1,51 @@
+---
+title: Tides
+---
+
+<h2 id="understand">Why does the far side rise too?</h2>
+
+The Moon pulls the near side a little more strongly than Earth’s center and the far side a little less strongly. All three lunar accelerations point toward the Moon. Earth’s center is falling too; it is not a fixed support.
+
+In a freely falling frame that follows the center without rotating with Earth, subtract the same central acceleration everywhere. The near-side remainder points toward the Moon, and the far-side remainder points away from it. Both ends stretch away from the center, while the crosswise direction is compressed. No extra centrifugal push acting only on the far side is required.
+
+<div className="formula">Δa(r) = a(r) − a(0)</div>
+
+Here r runs from Earth’s center to the observing point. The acceleration a includes only enabled lunar and solar terms. The vector instrument resolves their Moonward components. Its difference arrow has a separate enlarged scale; all numbers are in µm/s².
+
+Now assume a rigid spherical Earth covered by an ocean that can settle instantly. Its equilibrium height follows the same tidal potential. We use a positive potential W with `∇W = Δa`, so the first-order height is:
+
+<div className="formula">h = W / g</div>
+
+The two raised ends and lower crosswise surface belong to one calculation. Visible deformation is magnified by up to two million times. The gold dashed circle is an undeformed reference, not the seabed. Changing magnification does not simulate water motion, and the metre readings remain unscaled physical model values.
+
+<h2 id="try">Separate three different questions</h2>
+
+- In “Compare gravity,” switch between original and center-subtracted acceleration, then move the observing point. Original pulls can all point Moonward while the near and far remainders point in opposite directions.
+- Change Earth–Moon distance and compare deformation with leading tidal strength. Halving distance would increase the leading term eightfold. The controls offer a 0.8–1.4 range as a thought experiment, not a lunar ephemeris.
+- In “Combine Sun and Moon,” enable the solar term and set its equatorial azimuth to 0°, 90° and 180°. Strengths stay fixed while their geometry changes. At zero declination, straight alignment gives a larger equatorial equilibrium range and a right angle a smaller one: ideal spring and neap cases.
+- In “Observing latitude,” set latitude to 45° and lunar declination to 25°, then move to 75°. The same equilibrium model can produce two unequal peaks or just one.
+
+Use arrow keys on sliders. “Reset experiment” restores distance, source terms, azimuth, latitude, declination, observing angle, deformation magnification, reference frame, view and 3D rendering, and closes extra settings. The 2D option uses the same model and also appears automatically if the 3D renderer fails.
+
+<h2 id="deeper">The potential and inverse distance cubed</h2>
+
+For an external body with mass parameter μ = GM, position vector D and distance D, calculate each contribution separately and sum:
+
+<div className="formula">a(r) = μ(D − r) / |D − r|³</div>
+<div className="formula">W(r) = μ[1/|D − r| − 1/D − (D · r)/D³]</div>
+
+The second term removes an irrelevant constant. The third removes the linear potential associated with the center’s bulk fall. This expression retains finite-distance point-mass geometry. An algebraically equivalent stable implementation avoids losing precision when subtracting large, nearly equal solar terms.
+
+For small `R/D`, the leading term is a quadrupole. If ψ is the angle between the observing direction and the external body:
+
+<div className="formula">W₂ = μR²(3 cos²ψ − 1) / (2D³)</div>
+
+The distance instrument compares the leading `D⁻³` tidal scaling with `D⁻²` bulk attraction. The ocean surface itself uses the full W. At reference distances of 384,400 km for the Moon and 1 au for the Sun, the leading solar tide is about 0.46 of the lunar tide. Stronger bulk attraction does not imply stronger tides.
+
+W has zero spherical mean, so the small physical deformation conserves ocean volume to first order. The greatly exaggerated display mesh does not represent a volume-conserving body of water; do not use it to measure water volume.
+
+This model omits land and basins, Coriolis acceleration, friction, resonant dynamics, ocean self-gravity and solid-Earth elasticity. With the Moon held fixed, rotation is a relative geometric angle, not local clock time. The Sun stays in the equatorial plane. When lunar declination is nonzero, the projected solar azimuth and the displayed spatial Sun–Moon angle are different quantities. Disabling a source removes its mathematical contribution; it does not represent a disappearing celestial body.
+
+Real coastal tides require ocean dynamics and observations. This scene supplies neither port tide heights nor tide times, and it does not establish two daily high tides as a universal rule.
+
+Sources: [NOAA on differential gravity](https://www.nesdis.noaa.gov/about/k-12-education/oceans-coasts/what-causes-tides), [NOAA on spring and neap tides](https://oceanservice.noaa.gov/facts/springtide.html), [NOAA on basins and tide timing](https://oceanservice.noaa.gov/facts/moon-tide.html), [Utrecht University, Ocean Waves, chapter 9](https://webspace.science.uu.nl/~swart104/owaves_docs/owaves15_lnotes.pdf), and [NASA JPL astrodynamic parameters](https://ssd.jpl.nasa.gov/astro_par.html).

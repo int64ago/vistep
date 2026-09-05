@@ -1,0 +1,63 @@
+---
+import {
+  diffusionField,
+  diffusionSamples,
+  diffusionValue,
+  diffusionColor,
+} from '../../models/diffusion';
+interface Props {
+  color?: string;
+}
+const { color = '#79bde1' } = Astro.props;
+const initial = diffusionField(),
+  field = diffusionField({}, 1.4),
+  cells = diffusionSamples(field, 80);
+const path = (f: typeof field) =>
+  Array.from(
+    { length: 121 },
+    (_, i) =>
+      `${i ? 'L' : 'M'}${30 + (340 * i) / 120},${210 - (90 * diffusionValue(f, i / 120)) / (128 / 35)}`,
+  ).join(' ');
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="230"
+  viewBox="0 0 400 230"
+  fill="none"
+  aria-hidden="true"
+>
+  <defs
+    ><clipPath id="diffusion-cover-strip"
+      ><rect x="30" y="42" width="340" height="55" rx="6"></rect></clipPath
+    ><linearGradient id="diffusion-cover-shine" x2="0" y2="1"
+      ><stop stop-color="#fff" stop-opacity=".2"></stop><stop
+        offset="1"
+        stop-color="#fff"
+        stop-opacity="0"></stop></linearGradient
+    ></defs
+  >
+  <rect x="25" y="37" width="350" height="65" rx="11" fill="#233d4f" stroke="#7896a5"></rect>
+  <g clip-path="url(#diffusion-cover-strip)"
+    >{
+      cells.map((cell, i) => (
+        <rect
+          x={30 + (340 * i) / 80}
+          y="42"
+          width={340 / 80 + 0.2}
+          height="55"
+          fill={diffusionColor(cell.concentration)}
+        />
+      ))
+    }</g
+  >
+  <rect x="30" y="42" width="340" height="55" rx="6" fill="url(#diffusion-cover-shine)"></rect>
+  <path d="M30 45V94M370 45V94" stroke="#d2e3e8" stroke-width="5"></path>
+  <path d="M30 114V210H370" stroke="#6f8b99"></path>
+  <path d={path(initial)} stroke="#8b9da3" stroke-dasharray="4 5"></path>
+  <path d={`${path(field)}L370 210H30Z`} fill={color} opacity=".14"></path>
+  <path d={path(field)} stroke={color} stroke-width="2.8"></path>
+  <path d="M258 30V105M258 132V210" stroke="#e8c17c" stroke-dasharray="3 4"></path>
+  <path d="M245 117H279M273 112L279 117L273 122" stroke="#e8c17c" stroke-width="2"></path>
+</svg>

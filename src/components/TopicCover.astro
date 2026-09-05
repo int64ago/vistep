@@ -1,4 +1,10 @@
 ---
+import TidesCover from './covers/TidesCover.astro';
+import ZipperCover from './covers/ZipperCover.astro';
+import PacketRoutingCover from './covers/PacketRoutingCover.astro';
+import DiffusionCover from './covers/DiffusionCover.astro';
+import BrownianMotionCover from './covers/BrownianMotionCover.astro';
+import DatabaseIndexCover from './covers/DatabaseIndexCover.astro';
 import EscapementCover from './covers/EscapementCover.astro';
 import LithiumBatteryCover from './covers/LithiumBatteryCover.astro';
 import LogicGatesCover from './covers/LogicGatesCover.astro';
@@ -917,4 +923,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'logic-gates' && <LogicGatesCover color={color} />}
   {slug === 'lithium-battery' && <LithiumBatteryCover color={color} />}
   {slug === 'escapement' && <EscapementCover color={color} />}
+  {slug === 'database-index' && <DatabaseIndexCover color={color} />}
+  {slug === 'brownian-motion' && <BrownianMotionCover color={color} />}
+  {slug === 'diffusion' && <DiffusionCover color={color} />}
+  {slug === 'packet-routing' && <PacketRoutingCover color={color} />}
+  {slug === 'zipper' && <ZipperCover color={color} />}
+  {slug === 'tides' && <TidesCover color={color} />}
 </svg>

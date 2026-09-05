@@ -1,0 +1,52 @@
+<h2 id="understand">The destination stays fixed; the next hop is local</h2>
+
+Packet one travels from S to R. Routers A and B do not write its entire journey in advance. Each receives the complete packet, looks up a next hop in its own table and selects that output queue. Its destination stays fixed while its path depends on the local state encountered along the way.
+
+Each router in this scene has a link-state database and uses Dijkstra's algorithm to find the least-cost path. Cost is a configured weight, not the length of a drawn line or an automatic measurement of queueing delay. The initial databases are synchronized. Later, only B–R changes, and other routers must receive and install its update before changing their tables. This implements the central link-state idea, not the complete OSPF protocol. [RFC 2328](https://www.rfc-editor.org/rfc/rfc2328.html)
+
+Loss, temporary loops and reordered arrivals all come from the event model. Every packet keeps its identity and release time, with a record of processing, waiting, transmission, propagation and final outcome.
+
+<h2 id="try">Compare the same packet IDs</h2>
+
+- In the stable network, select P3, shorten the release interval and lower the B–R rate. Move time to watch it occupy a waiting slot before being sent.
+- Set initial TTL to 2. A reduces it to 1; B reduces it to 0 and discards it even though R is nearby.
+- Select B–R failure and stop at 50 ms. B has changed its route while A and C retain old information. Their updates install at 93–94 ms.
+- Compare the original buffer with eight waiting slots, keeping the same releases. More packets survive, but the output cannot transmit more bits per second.
+- Select restoration and reordering, then follow P4. It arrives first, but the example application waits for P1, P2 and P3. No retransmission is simulated: a permanently missing earlier packet leaves a permanent gap.
+
+All six sliders and selection buttons support keyboard operation. Reset restores every parameter, scenario, sample time, packet selection, router selection and buffer comparison. Watch and exploration use the same event model. Millisecond events are slowed for viewing.
+
+<h2 id="deeper">Delay, convergence and scope</h2>
+
+<details>
+<summary>What contributes to end-to-end delay?</summary>
+
+<div className="formula">End-to-end delay = Σ(processing + queueing + 8L / R + propagation)</div>
+
+L is bytes and R is bits per second. A 1200 B packet takes 24 ms to serialize at 0.4 Mbit/s. Propagation is measured from the last bit leaving to the last bit arriving. Only then can the next router begin its 1 ms processing step. A packet marker stays at the output during serialization and moves along the link during propagation. It represents packet state, not physical packet dimensions.
+
+Each direction has an independent FIFO output. Waiting slots exclude the packet currently being serialized. With zero waiting slots, an idle output can still immediately transmit a packet. An arriving packet is discarded when the transmitter is busy and all waiting slots are occupied. Packet one in the default network takes 35.2 ms: 2 ms processing, 19.2 ms transmission and 14 ms propagation, with no queueing.
+
+</details>
+
+<details>
+<summary>Why do routers learn about failure at different times?</summary>
+
+B detects its local B–R failure at 40 ms, updates its own database and originates version 1. An 80 B teaching control message uses a separate 64 kbit/s control budget, then incurs link propagation and 40 ms installation processing at each receiving router. C installs at 93 ms and A at 94 ms. Duplicate versions are neither reinstalled nor reflooded. These deliberately chosen rates and processing times are not OSPF timer values or measured router performance.
+
+Before C updates, B's new table points to C while C's old table points back to B. P2 actually follows `S → A → B → C → B → C → B → C → R`, arriving with TTL=1. A router decrements TTL before forwarding and discards an expired packet; the short processing intervals here use a decrement of one. The destination does not perform another forwarding check. [RFC 1812, section 5.3.1](https://www.rfc-editor.org/rfc/rfc1812.html#section-5.3.1)
+
+In this model, a failed link discards packets currently transmitting, propagating or waiting on that link. Old scheduled events cannot resurrect them. Exact fault location, detection delay, repair retransmission and protection schemes are excluded. Unchanged links are already known at the start.
+
+</details>
+
+<details>
+<summary>Is the receive-order display TCP?</summary>
+
+No. P1, P2 and so on are teaching identities and application sequence positions, not IPv4 fragmentation Identification fields. In the restoration scene, the first three packets take C–R with its longer propagation time. Later packets use B–R after routing information changes. The calculated arrival order is `P4, P1, P5, P2, P6, P3`. The lower row marks only a received contiguous prefix as ready for application delivery; later arrivals are held behind gaps.
+
+IP does not promise reliable delivery or provide end-to-end acknowledgment, retransmission or flow control. [RFC 791](https://www.rfc-editor.org/rfc/rfc791.html) This scene also omits TCP windows, acknowledgments, timers and retransmission, fragmentation, ICMP, prefix lookup, ECMP, OSPF adjacency setup, areas and reliable flooding. Green slots illustrate one application ordering policy.
+
+Every planned ID remains in exactly one category: unsent, active, arrived or dropped. Application release is a subset of arrivals and must not be counted again. The simulation never silently replaces losses or removes their IDs from the ledger.
+
+</details>

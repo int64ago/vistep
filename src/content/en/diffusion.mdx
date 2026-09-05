@@ -1,0 +1,77 @@
+<h2 id="understand">A spreading color does not need a current</h2>
+
+Concentrate a small amount of label in a still medium with a uniform cross-section. Its concentration peak falls and material appears farther to either side. The medium has no bulk velocity. This is **diffusion of a concentration distribution**, rather than a moving fluid carrying a patch downstream.
+
+The ribbon shows a one-dimensional concentration that is uniform across each cross-section. The curve underneath comes from the same solution. With sealed ends, nothing crosses the outer boundaries, so the area under the curve keeps the same total amount. A lower peak does not mean less material remains.
+
+Fix the observation section to the right of the peak. Concentration decreases to the right, so the net flux points right. As that slope becomes gentler, net transport across the same section weakens. The arrows show **net transport direction**, not fluid velocity or an individual molecule's route. [MIT's diffusion teaching material](https://web.mit.edu/1.061/www/diffuse/theory.htm) explains this distinction through statistical crossings.
+
+<h2 id="try">Change one condition at a time</h2>
+
+- In the sealed pulse, move the observation section from the left half to the right. The gradient and flux both reverse sign. At the center, net flux is approximately zero.
+- Set D to zero and advance time. The concentration stays fixed in this model. Restoring D reconstructs the selected time from the original initial state.
+- Select the region budget and compare model times 0.3 and 2. Material first accumulates in that segment, then decreases, according to its two boundary fluxes. The total amount in the whole sealed strip remains 1.
+- Compare twice D. Both cases have the same initial concentration, mass, length and elapsed time. Twice the diffusivity gives the baseline result at twice the time.
+- Compare twice the length. The initial shape is geometrically enlarged too, while each strip retains amount 1, so the longer strip starts at lower concentration. Reaching the same relative smoothness takes four times as long. The manual comparison caps length at 2.
+- Choose two-label mixing and follow the A and B curves and their sum. Each nonreacting label keeps its own amount. The mixed color does not erase either species.
+
+The named sliders support arrow keys, Home and End. Reset restores D 0.015, length 1, time zero, the sealed pulse, section 0.67, the flux instrument and comparison off. Shared film controls handle pause, replay and seeking. Film seconds and model time are different clocks.
+
+<h2 id="deeper">One equation connects concentration and transport</h2>
+
+<details>
+<summary>What is solved exactly?</summary>
+
+The medium is motionless, cross-sectional area is 1, and D is constant. There is no advection, reaction or internal source:
+
+<div className="formula">J = −D ∂c/∂x</div>
+<div className="formula">∂c/∂t = −∂J/∂x = D ∂²c/∂x²</div>
+
+The sealed initial pulse is `c(x,0) = (M/L)(128/35) sin⁸(πx/L)`, with total amount M. It consists exactly of a constant and four cosine modes:
+
+<div className="formula">c = M/L + Σ aₙ cos(nπx/L) exp[−D(nπ/L)²t]</div>
+
+The mode numbers are 2, 4, 6 and 8, with initial coefficients `(M/L) × [−1.6, 0.8, −8/35, 1/35]`. This is not a truncated square pulse, and it does not accumulate a numerical time-stepping history. [MIT's finite-body diffusion example](https://ocw.mit.edu/courses/3-21-kinetic-processes-in-materials-spring-2006/633e72338764b7247cf43e481d546e2a_exam1_sol.pdf) describes why zero-flux ends lead to a cosine expansion.
+
+The graph evaluates the solution directly. Each ribbon segment uses its exact mean concentration. Brightness follows an illustrative absorption map, not a measured dye spectrum or calibrated optical instrument. The expandable table exposes concentrations and fluxes behind the picture. D, length, time and concentration use authored dimensionless units.
+
+</details>
+
+<details>
+<summary>A local amount can rise and then fall</summary>
+
+Integrate concentration between two sections, a and b, to obtain the amount in that region. With positive flux pointing right:
+
+<div className="formula">dM[a,b]/dt = J(a) − J(b)</div>
+
+More entering through the left than leaving through the right means accumulation. When outflow becomes larger, the region loses material. A subregion need not keep its amount; the sealed outer boundaries conserve the total. The method foldout reports the complete mass-budget residual.
+
+For mixing, the two initial fields are `(1 ± 0.95 cos(πx/L))/L`. With the same D their cosine coefficients decay at the same rate. Each retains amount 1 and their total concentration stays `2/L`. These are independent, nonreacting dilute labels with equal diffusivities. This does not model cross-diffusion, concentration-dependent properties or volume changes in a real multicomponent liquid.
+
+</details>
+
+<details>
+<summary>Why does the spreading width eventually level off?</summary>
+
+The symmetric sealed pulse stays centered at L/2. Its mass-normalized positional variance grows toward `L²/12`, the variance of a uniform distribution on the strip. Its exact rate is:
+
+<div className="formula">dσ²/dt = 2D − DL[c(0,t) + c(L,t)]/M</div>
+
+Early on, concentrations at the ends are small, so the increase is close to `2Dt`. Once boundaries matter, the correction cannot be dropped. Extending an infinite-domain width formula forever would give the wrong result for a sealed finite strip.
+
+Each nonuniform mode decays according to `Dt/L²`. For the same relative initial shape, twice D halves the characteristic time; twice L multiplies it by four. Finer spatial variations decay faster. This macroscopic smoothing is dissipative. It does not mean molecules slow down or stop, and the scene does not simulate microscopic time reversal.
+
+</details>
+
+<details>
+<summary>Fixed concentrations change the mass balance</summary>
+
+The last chapter deliberately starts a different initial and boundary problem. The left endpoint stays at concentration 1 and the right at 0, with initial profile `1 − x/L − 0.2sin(πx/L)`. Its solution is:
+
+<div className="formula">c = 1 − x/L − 0.2 sin(πx/L) exp[−D(π/L)²t]</div>
+
+The endpoints act as ideal reservoirs that exchange material. Change in the amount inside equals accumulated left input minus right output. For positive D, the eventual profile is linear and the net flux approaches `D/L`: **steady state does not require zero flux**. The medium still has no bulk motion. [MIT's diffusion-boundary notes](https://ocw.mit.edu/courses/3-185-transport-phenomena-in-materials-engineering-fall-2003/d9abff527d0533d61bfc5a2987c531ce_recitation3.pdf) distinguish prescribed concentration from prescribed flux.
+
+The model omits membrane selectivity, electrical forces, reactions, non-Fickian diffusion and molecular paths. These exact solutions apply only to the stated initial conditions, constant coefficients and boundaries.
+
+</details>

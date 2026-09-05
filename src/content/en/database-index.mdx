@@ -1,0 +1,58 @@
+<h2 id="understand">A page of directions is different from a page of records</h2>
+
+A database table is not necessarily stored in the order of the value you search for. In this lesson, **24 complete records occupy six heap pages**, four rows per page, in a fixed shuffled insertion order. The query asks for key `63`. A full scan checks every row, including rows after a match, because duplicate keys are allowed.
+
+The B+ tree stores a separate ordered set of **key and row-ID pairs**. Internal pages contain separators and child-page pointers; leaf pages contain index entries and a link to the next leaf. A leaf entry points back to the complete heap record. This is a small secondary, non-covering index, not a table that has been sorted in place. [PostgreSQL’s documentation](https://www.postgresql.org/docs/18/indexes-index-only-scans.html) explains why ordinary index access can require both index and table visits.
+
+For this exact dataset, key `63` belongs to row `r14`, whose payload is `item-14` on heap page `H4`. Both access plans return that same row.
+
+| Access plan    | Distinct index pages | Distinct heap pages | Comparator calls |
+| -------------- | -------------------- | ------------------- | ---------------- |
+| Full scan      | 0                    | 6                   | 33               |
+| B+ tree lookup | 4                    | 1                   | 11               |
+
+These are **computed access counts, not milliseconds, disk reads or speedup measurements**. Each query starts with an empty, unbounded cache and retains all pages it touches. Reading a page twice counts as one distinct page. Comparisons are calls to a three-way comparator, not individual processor instructions. Displaying the two traces at the same film progress does not imply equal execution time.
+
+<h2 id="try">Follow a query, then make a page split</h2>
+
+- Enter the same lower and upper bound for equality, such as `63`. Use `38` and `47` for an inclusive range. Both inputs accept integers from `0` to `99`; invalid and reversed bounds are rejected.
+- Switch between full scan and B+ tree access. The rows, bounds and payloads stay the same. The step slider, arrow keys and Previous/Next buttons inspect the actual trace.
+- Query `42`. All three duplicate entries must appear, with distinct IDs `r6`, `r7` and `r8` in default order A. A key is not a row identity.
+- Insert a key. A new row ID and heap location are assigned, even if that key exists already. Inspect the most recent insertion’s local steps, then return to querying the committed tree. Add up to 30 rows.
+- Switching heap order starts a fresh table with the same original multiset of keys. Row IDs are assigned anew in insertion order; comparisons between access plans are always within the same chosen table.
+- Reset restores order A, bounds `63…63`, index access, insertion key `79`, no added rows, the first query step, the first split step and closed rule details.
+
+<h2 id="deeper">The invariants behind the page journey</h2>
+
+<details>
+<summary>Separators route pairs, not just displayed numbers</summary>
+
+Our comparison contract is integer key ascending, then unique row ID ascending. No strings, collation, nulls or floating-point keys are supported. The model accepts bounded integer keys from −1,000,000 to 1,000,000; the controls deliberately expose only `0…99`.
+
+Each internal separator is an exact copy of the smallest pair in the child subtree on its right. A probe below a separator remains to its left; a probe equal to or above it moves right. To find every row with a lower-bound key, use the pair `(lower bound, 0)`. Real row IDs start at one. This probe precedes all actual rows sharing that key.
+
+<div className="formula">(63, r0) &lt; (63, r14) → do not skip the first possible duplicate</div>
+
+This can land on the preceding leaf. The lookup then follows the next-leaf pointer and checks entries until it passes the inclusive upper bound. It is an intentionally simple, correct lower-bound strategy. It is not an optimized PostgreSQL implementation. The use of row IDs to distinguish duplicate keys follows the approach described in [CMU’s B+ tree notes](https://15445.courses.cs.cmu.edu/fall2024/notes/08-indexes1.pdf).
+
+</details>
+
+<details>
+<summary>Leaf splitting copies; internal splitting promotes</summary>
+
+Each teaching leaf holds at most three entries. A fourth creates an overflow state. Splitting produces two leaves with two entries each, repairs their neighbor links, and copies the right leaf’s minimum pair into the parent alongside the new child pointer. The pair remains in the right leaf.
+
+An internal page holds at most four child pointers. On a five-child overflow, this implementation places three children on the left and two on the right. The separator between them is promoted into the parent; it remains in neither resulting internal page. If the old root splits, a new root points to the two halves, increasing every leaf’s depth by one. Cascading splits and root growth are also described in [PostgreSQL’s B-tree implementation documentation](https://www.postgresql.org/docs/18/btree.html#BTREE-STRUCTURE).
+
+Film insertion keys are fixed: `40, 53, 66, 79, 92, 5, 18, 31, 44, 57, 70, 83, 96`. Key `79` demonstrates a leaf split; key `96` causes a leaf split, two internal splits and a new root. The committed tree grows from three levels to four. Intermediate split frames are labeled local snapshots: a new page may not yet be linked into its parent. Queries always use a committed tree.
+
+</details>
+
+<details>
+<summary>Why the final broad query favors the full scan</summary>
+
+After the 13 inserts, there are 37 records on ten heap pages. Requesting all keys `0…99` makes the index visit 17 index pages as well as all ten heap pages: 27 distinct pages in total. The full scan visits only the ten heap pages. Comparator calls are 77 and 74 respectively. Both results include exactly the same 37 row IDs and payloads.
+
+A selective lookup can avoid table work, but an index also occupies space and must be updated. Real decisions involve caching, page sizes, locality, query selectivity, concurrency and the query planner. Covering indexes and index-only scans have different requirements. This scene does not simulate those optimizations, deletion, merging, transactions, MVCC, locks, durability, storage devices or production timing.
+
+</details>

@@ -4,6 +4,7 @@
 
 ## Build and maintain
 
+- [Exploration catalog](catalog.md): every registered topic, film duration and article source.
 - [Fifty additional explorations](expansion-50.md): active scope, production ledger and review evidence.
 - [Production guide](creating-a-scene.md): research, direction, models, bilingual narration and review.
 - [Bicycle example](examples/bicycle-brief.md): connect a storyboard to geometry and evidence.

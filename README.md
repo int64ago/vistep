@@ -21,15 +21,15 @@ Visual explanations of the mechanisms behind everyday life.
 
 Watch a mechanism unfold, follow an object through its hidden stages, then experiment with the model yourself. vistep combines directed animation, carefully built 3D mechanisms and browser-based scientific models. Each exploration has its own visual language.
 
-## Explore
+## Featured explorations
 
-| Everyday mechanisms                                         | Information and computation                                                      | Space and systems                                             |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [Bicycle gearing](https://vistep.ai/en/explore/bicycle/)    | [Active noise cancellation](https://vistep.ai/en/explore/noise/)                 | [Dimensions](https://vistep.ai/en/explore/dimensions/)        |
-| [Refrigeration](https://vistep.ai/en/explore/refrigerator/) | [GPS positioning](https://vistep.ai/en/explore/gps/)                             | [Pendulums](https://vistep.ai/en/explore/pendulum/)           |
-| [Laser printing](https://vistep.ai/en/explore/printer/)     | [Web loading](https://vistep.ai/en/explore/network/)                             | [Elevator scheduling](https://vistep.ai/en/explore/elevator/) |
-|                                                             | [JPEG compression](https://vistep.ai/en/explore/jpeg/)                           | [Traffic waves](https://vistep.ai/en/explore/traffic/)        |
-|                                                             | [Transformer training and generation](https://vistep.ai/en/explore/transformer/) |                                                               |
+[Browse the complete source catalog](docs/catalog.md) · [Current preview and review status](docs/expansion-50.md)
+
+| Everyday mechanisms                                         | Information and computation                                      | Space and systems                                             |
+| ----------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Bicycle gearing](https://vistep.ai/en/explore/bicycle/)    | [Active noise cancellation](https://vistep.ai/en/explore/noise/) | [Dimensions](https://vistep.ai/en/explore/dimensions/)        |
+| [Refrigeration](https://vistep.ai/en/explore/refrigerator/) | [GPS positioning](https://vistep.ai/en/explore/gps/)             | [Pendulums](https://vistep.ai/en/explore/pendulum/)           |
+| [Laser printing](https://vistep.ai/en/explore/printer/)     | [Web loading](https://vistep.ai/en/explore/network/)             | [Elevator scheduling](https://vistep.ai/en/explore/elevator/) |
 
 - **Watch first.** Chaptered explanations run for 2–5 minutes, with pause, replay and seeking. Optional controls let you test an idea after seeing it.
 - **Follow real calculations.** Geometry, motion and readouts share a model. JPEG transforms and a small Transformer run in Web Workers; physical and system simulations use explicit teaching assumptions.

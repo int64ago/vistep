@@ -1,0 +1,297 @@
+.diffusion-study {
+  padding: 22px 28px 14px;
+  background: radial-gradient(ellipse at 50% 18%, #243f51, #142d3d 80%);
+  color: #dfe9e8;
+  font-size: 16px;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+.diffusion-study * {
+  box-sizing: border-box;
+}
+.diffusion-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto 8px;
+  color: #c1d2d9;
+  font-size: 16px;
+}
+.diffusion-heading > span:last-child {
+  white-space: nowrap;
+}
+.diffusion-drawing {
+  max-width: 860px;
+  margin: auto;
+  min-width: 0;
+}
+.diffusion-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.diffusion-study .diffusion-svg text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: #dce8e9;
+  font-weight: 400;
+}
+.diffusion-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  font-size: 16px;
+  color: #c7d7dd;
+  margin: 8px auto 15px;
+}
+.diffusion-key span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.diffusion-key i {
+  width: 22px;
+  height: 3px;
+  background: #79caef;
+  border-radius: 3px;
+  display: inline-block;
+}
+.diffusion-key .diffusion-amber {
+  background: #efbf76;
+}
+.diffusion-ledger {
+  max-width: 700px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  border-top: 1px solid #58717e;
+  padding: 14px 0 3px;
+}
+.diffusion-ledger > div {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: #baced6;
+  gap: 4px;
+}
+.diffusion-ledger > div:last-child {
+  text-align: right;
+}
+.diffusion-ledger strong {
+  font-size: 26px;
+  font-weight: 450;
+  color: #eef3e8;
+  letter-spacing: 0.02em;
+}
+.diffusion-note {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 12px auto 5px;
+  text-align: center;
+  color: #c2d1d5;
+}
+.diffusion-current-scope {
+  display: none;
+}
+.diffusion-manual-intro {
+  max-width: 700px;
+  font-size: 18px;
+  margin: 10px auto 18px;
+  text-align: center;
+  color: #e2ecec;
+}
+.diffusion-details {
+  max-width: 860px;
+  margin: 15px auto 0;
+  border-top: 1px solid #496574;
+}
+.diffusion-details summary {
+  font-size: 16px;
+  padding: 11px 0;
+  min-height: 44px;
+  cursor: pointer;
+}
+.diffusion-details p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #ccdadf;
+  margin: 14px 0;
+}
+.diffusion-explore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 26px;
+  max-width: 800px;
+  margin: 22px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #58717e;
+}
+.diffusion-choices {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.diffusion-study button {
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  border: 1px solid #839ca9;
+  border-radius: 22px;
+  background: #234557;
+  color: #edf0e5;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.diffusion-study button:hover {
+  background: #36596a;
+}
+.diffusion-study button[aria-pressed='true'] {
+  background: #bfd9de;
+  color: #163144;
+  border-color: #bfd9de;
+}
+.diffusion-study .control {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+}
+.diffusion-study .control-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.diffusion-study .control-top span,
+.diffusion-study .control output {
+  font-size: 16px;
+  color: #d3e0e5;
+}
+.diffusion-study .control input[type='range'] {
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  accent-color: #a6d6e2;
+  cursor: pointer;
+}
+.diffusion-study :focus-visible {
+  outline: 3px solid #f2ca88;
+  outline-offset: 4px;
+}
+.diffusion-table-wrap {
+  overflow-x: auto;
+}
+.diffusion-details table {
+  width: 100%;
+  font-size: 16px;
+  border-collapse: collapse;
+  text-align: right;
+}
+.diffusion-details caption {
+  text-align: left;
+  color: #d3e0e5;
+  padding: 10px 0;
+}
+.diffusion-details th,
+.diffusion-details td {
+  padding: 8px 5px;
+  border-bottom: 1px solid #496574;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .diffusion-study[data-watch='true'] {
+    min-height: 680px;
+    display: flex;
+    flex-direction: column;
+  }
+  .diffusion-study[data-watch='true'] .diffusion-drawing,
+  .diffusion-study[data-watch='true'] .diffusion-ledger {
+    width: 100%;
+    margin-block: 0;
+  }
+  .diffusion-study[data-watch='true'] .diffusion-key {
+    width: calc(100% - 20px);
+  }
+  .diffusion-study[data-watch='true'] .diffusion-details {
+    margin-top: auto;
+    width: 100%;
+  }
+  .diffusion-study[data-watch='true'] > .diffusion-note {
+    display: none;
+  }
+  .diffusion-study[data-watch='true'] .diffusion-current-scope {
+    display: block;
+  }
+  .diffusion-study {
+    padding: 16px 14px 10px;
+  }
+  .diffusion-heading {
+    margin-bottom: 10px;
+  }
+  .diffusion-heading > span:first-child {
+    max-width: 200px;
+  }
+  .diffusion-heading > span:last-child {
+    margin-left: auto;
+  }
+  .diffusion-desktop-coordinate {
+    display: none;
+  }
+  .diffusion-key {
+    justify-content: space-between;
+    gap: 7px 12px;
+    margin: 2px 10px 14px;
+  }
+  .diffusion-key > span:last-child {
+    display: none;
+  }
+  .diffusion-ledger {
+    gap: 10px 18px;
+    padding-top: 12px;
+  }
+  .diffusion-ledger strong {
+    font-size: 24px;
+  }
+  .diffusion-note {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-top: 10px;
+  }
+  .diffusion-explore {
+    grid-template-columns: 1fr;
+  }
+  .diffusion-choices {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .diffusion-study button {
+    width: 100%;
+    padding: 9px 12px;
+  }
+  .diffusion-details {
+    margin-top: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .diffusion-study * {
+    transition: none !important;
+  }
+}
+
+.diffusion-key .diffusion-sum {
+  height: 0;
+  background: none;
+  border-top: 2px dashed #dde6dc;
+}

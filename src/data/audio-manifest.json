@@ -7094,5 +7094,701 @@
         }
       ]
     }
+  },
+  "database-index": {
+    "zh": {
+      "src": "/narration/database-index-zh-8da8c83fbf48.mp3",
+      "duration": 202.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 23.14615,
+          "text": "先别看索引。这里有二十四条记录，每四行放在一张堆页里。我们要找键值六十三。看，记录按照插入顺序存放，键值没有排好队。即使中途找到目标，也不能就此停下，因为后面可能还有同键的行。把六张页翻完，才知道结果没有遗漏。",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 45.99655,
+          "text": "现在打开索引的根页。它不装完整记录，只放分隔键和下一页的地址。每个分隔键，是右边子树的最小一项。这里先比较键值，相同再比较行号。查询从六十三、行号零开始；零比所有真实行号小，这样就不会越过同键的第一条记录。",
+          "tempo": 1
+        },
+        {
+          "at": 47.45,
+          "end": 72.07048,
+          "text": "让这个查询继续往下走。每一次比较，都决定下一张要翻开的页。到叶页以后，按照顺序检查索引项；需要时，沿链接走到下一张叶页。六十三找到了，旁边的行号是十四。用它回到第四张堆页，取出完整内容。索引没有把原记录搬走，只是给了它一条可查找的路。",
+          "tempo": 1
+        },
+        {
+          "at": 73.45,
+          "end": 98.33587,
+          "text": "两条路都返回第十四行，现在把账放在一起。全扫用了六张堆页，索引用了四张索引页，再加一张堆页，总共五张。比较次数也来自刚才的实际步骤。我们只数一次查询触及的不同页，读过的页保留在缓存里。这不是秒表，更不能把这个差额当成数据库的加速倍数。",
+          "tempo": 1
+        },
+        {
+          "at": 99.95,
+          "end": 123.93517,
+          "text": "把条件展开成三十八到四十七。只需要先定位起点，接下来顺着叶页的链接读下去，不必每找一行就重新回根。留意三个四十二：它们是不同记录，行号六、七、八都要保留。碰到超过上界的键，才停止这段扫描。排序让一个区间变成一条连续可走的路线。",
+          "tempo": 1
+        },
+        {
+          "at": 125.45,
+          "end": 147.20785,
+          "text": "查找之外，还要照顾新记录。先加入几条数据，再看七十九落进已满的叶页。四项放不下，就分成两张各有两项的页，并把邻居链接接好。右页最小的一项复制到父页，配上新页地址。注意是复制：叶子里仍然保留那条记录的索引项。",
+          "tempo": 1
+        },
+        {
+          "at": 148.95,
+          "end": 173.27723,
+          "text": "继续插入，直到九十六进来。这一次，新子页把父页也挤满了。内部页同样分开，不过中间的分隔键是向上推，两侧不再保留它。分裂继续传到旧根，于是建立一个新根，把两边接起来。树从三层长到四层，所有叶子仍然处在同一深度，没有哪一条记录被丢下。",
+          "tempo": 1
+        },
+        {
+          "at": 174.95,
+          "end": 200.78138,
+          "text": "最后，别再只挑一条记录了：把现在的三十七行全部取回来。全扫只要十张堆页，索引还要读自己的十七张页，总共二十七张。答案仍然相同，代价却倒过来了。索引占空间，写入时还要维护；它是否值得用，取决于要读多少、数据怎样存放，以及真实系统的缓存和查询计划。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/database-index-en-092907fe6d85.mp3",
+      "duration": 202.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 20.31753,
+          "text": "Leave the index aside for a moment. These twenty-four records occupy six heap pages, in insertion order. We want key sixty-three. Watch the keys jump around as the scan advances. Finding a match does not finish the job: another row could have the same key. Reading every page makes the result complete.",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 42.82862,
+          "text": "Open the root page now. It holds separators and child addresses, not full records. Each separator is the smallest entry in the subtree to its right. Compare the key first, then the row ID. Our search starts with sixty-three and row zero, which comes before every real row with that key.",
+          "tempo": 1
+        },
+        {
+          "at": 47.45,
+          "end": 66.77224,
+          "text": "Let the search continue downward. Each comparison chooses the next page to open. At a leaf, inspect the entries in order, following its neighbor link when necessary. There is sixty-three, paired with row fourteen. That pointer leads back to heap page four for the payload. The original record has stayed in place.",
+          "tempo": 1
+        },
+        {
+          "at": 73.45,
+          "end": 93.21558,
+          "text": "Both routes return row fourteen. Now count all their pages: six heap pages for the scan; four index pages plus one heap page for the lookup. Comparisons come from the recorded steps too. A query retains pages already read. These are distinct-page counts, not a stopwatch or a prediction of production speed.",
+          "tempo": 1
+        },
+        {
+          "at": 99.95,
+          "end": 119.49045,
+          "text": "Widen the predicate to thirty-eight through forty-seven. Locate the start, then continue along the linked leaves without returning to the root for each row. Notice the three forty-twos: rows six, seven, and eight are separate records. Keep them all. Stop only when a key passes the upper bound of the range.",
+          "tempo": 1
+        },
+        {
+          "at": 125.45,
+          "end": 146.01646,
+          "text": "An index must handle new records too. After a few inserts, seventy-nine reaches a full leaf. Four entries exceed our three-entry capacity, so split them into two pages and repair the neighbor link. Copy the right page’s smallest entry into the parent beside its address. The actual entry remains in the leaf.",
+          "tempo": 1
+        },
+        {
+          "at": 148.95,
+          "end": 168.36975,
+          "text": "Continue until ninety-six arrives. This time the new child pointer overflows its parent. Split that internal page, promoting the middle separator instead of keeping it on either side. The change reaches the old root, so create a new root above both halves. Every leaf moves from depth three to depth four together.",
+          "tempo": 1
+        },
+        {
+          "at": 174.95,
+          "end": 199.56175,
+          "text": "Finally, ask for all thirty-seven records. The table scan touches ten heap pages. The index route touches those ten plus seventeen index pages: twenty-seven altogether. The answer is identical, but the page advantage has reversed. Indexes occupy space and need maintenance. Their value depends on the query, storage layout, caching, and the chosen plan.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "brownian-motion": {
+    "zh": {
+      "src": "/narration/brownian-motion-zh-d59bac9464bb.mp3",
+      "duration": 182.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 18.68957,
+          "text": "先只盯住这颗金色微球。它没有朝某个方向匀速前进，也不是活物在游动。流体的平均速度是零，周围分子的热运动却没有停止。细线记下它经过的观测位置：下一段往哪儿拐，不能靠上一段直线外推。",
+          "tempo": 1
+        },
+        {
+          "at": 22.45,
+          "end": 42.62966,
+          "text": "现在切到一次纳秒尺度的观测，只放大质心的位置。金色条是这段时间里热浴给出的冲量，蓝色条是阻力的冲量。把两条带符号的量相加，就得到动量的变化。这不是逐个分子碰撞的录像，而是很多碰撞合成后的随机模型。",
+          "tempo": 1
+        },
+        {
+          "at": 44.45,
+          "end": 65.42417,
+          "text": "做一个只属于模型的对照：关掉热噪声，保留刚才的初速度。粒子不会立刻停住，阻力让它慢慢失去速度，曲线按指数落下。这里的时间常数只有大约五十八纳秒。零开尔文只是经典极限，不是在说真实液体可以这样冷却。",
+          "tempo": 1
+        },
+        {
+          "at": 67.95,
+          "end": 87.80891,
+          "text": "再回到秒尺度。金线保留惯性，蓝色虚线省去了惯性，却由同一个热浴驱动。现在它们几乎贴在一起；下方仍算出了纳米级的端点差。过阻尼近似适合这种长时间观测，不表示粒子在任意短的时间里都没有惯性。",
+          "tempo": 1
+        },
+        {
+          "at": 90.45,
+          "end": 110.42617,
+          "text": "把黏度和粒子半径固定，比较三百与四百五十开尔文。两次计算使用匹配的随机输入，较热的一条展开得更远。看扩散系数，温度增到一点五倍，D 也增到一点五倍；典型位移按平方根改变，不会直接变成一点五倍。",
+          "tempo": 1
+        },
+        {
+          "at": 112.95,
+          "end": 133.83454,
+          "text": "这次温度不变。蓝色样本的黏度变成三倍，紫色样本的球半径变成两倍。它们受到的黏滞阻力都更大，扩散系数都下降。注意，大球还更重，惯性时间也变了。表里的 D 管长时间的展开，并不能独自说明每一次短时转弯。",
+          "tempo": 1
+        },
+        {
+          "at": 135.45,
+          "end": 157.76472,
+          "text": "现在把六十四次独立实验放回同一个起点。金色仍是最初那条，其他样本各走各的。下面先看金线，它到原点的距离可以变大，也可以变小。再看平均后的蓝线，有限样本仍会波动，却开始显出理论的增长尺度：这里看两个坐标，长时间是四 D t。",
+          "tempo": 1
+        },
+        {
+          "at": 159.45,
+          "end": 181.01206,
+          "text": "最后看深色菱形，它是这些位置的平均，不是一颗新粒子。大家向不同方向走，平均位置仍可能靠近起点；均方根位移却明显更大。这就是随机运动里可靠的部分：我们能预测许多次实验的尺度，不能把平均位置当作这一颗粒子的下一站。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/brownian-motion-en-c4c2039f8276.mp3",
+      "duration": 182.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 16.70553,
+          "text": "Keep your eye on the gold sphere. It is neither swimming nor riding a steady current. The fluid has no mean flow, but its molecules are still moving thermally. The thin line records observed positions. Extending the last little segment does not tell us where the next one will go.",
+          "tempo": 1
+        },
+        {
+          "at": 22.45,
+          "end": 41.3176,
+          "text": "Now switch to a nanosecond observation, magnifying only the centroid. Gold shows the bath’s impulse over one window; blue shows the drag impulse. Add them with their signs to get the momentum change. These are collective random effects, not a movie of individually resolved molecular collisions.",
+          "tempo": 1
+        },
+        {
+          "at": 44.45,
+          "end": 66.21608,
+          "text": "Try a mathematical control: switch off thermal noise but retain the initial velocity. The particle does not stop instantly. Drag gradually erases its motion along this exponential curve. The relaxation time here is about fifty-eight nanoseconds. Zero kelvin is a classical limit, not a claim about cooling a real liquid.",
+          "tempo": 1
+        },
+        {
+          "at": 67.95,
+          "end": 88.7493,
+          "text": "Return to seconds. Gold retains inertia; the blue dashed path uses an overdamped description driven by the same bath. They nearly overlap, although the readout still resolves their nanometer separation. This approximation works at long observation times. It does not mean inertia disappears at every possible time scale.",
+          "tempo": 1
+        },
+        {
+          "at": 90.45,
+          "end": 111.28923,
+          "text": "Hold viscosity and radius fixed, and compare three hundred with four hundred fifty kelvin. Matched random inputs make the scale change visible. The warmer path spreads farther. A fifty-percent temperature increase gives a fifty-percent increase in D. Typical displacement follows a square root, so it does not increase by the same factor.",
+          "tempo": 1
+        },
+        {
+          "at": 112.95,
+          "end": 133.67937,
+          "text": "Keep temperature fixed. The blue trial has three times the viscosity; the purple sphere has twice the radius. Both changes increase viscous drag and reduce D. The larger sphere is also heavier, so its inertial timescale changes. D describes long-time spreading, not every turn in one short stretch of a path.",
+          "tempo": 1
+        },
+        {
+          "at": 135.45,
+          "end": 157.57585,
+          "text": "Repeat the experiment sixty-four times from the same origin. Gold still identifies our original path; the others wander independently. Its squared distance can rise or fall. The blue average still fluctuates with a finite sample, but reveals the theoretical growth scale. For two observed coordinates, the long-time result is four D t.",
+          "tempo": 1
+        },
+        {
+          "at": 159.45,
+          "end": 178.85229,
+          "text": "Watch the dark diamond. It is the average position, not another particle. Wandering in different directions can leave that average near the origin while the root-mean-square displacement grows much larger. This is what the statistical prediction gives us: a scale across repeated trials, not the next destination of this particular sphere.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "diffusion": {
+    "zh": {
+      "src": "/narration/diffusion-zh-bef6a86a4e66.mp3",
+      "duration": 185.5,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 20.531,
+          "text": "先看中间这段深色。它表示标记物比较集中，不是一团正在流动的水。随着时间推进，浓度曲线变矮、变宽，两端仍然封闭。再看总量，数字没有减少。扩散改变的是物质分布，峰值降低并不等于物质消失。",
+          "tempo": 1
+        },
+        {
+          "at": 22.45,
+          "end": 43.86927,
+          "text": "把这条亮线固定在峰的右边。沿着向右的方向，浓度在下降，所以净通量指向右。下面的短线标出局部坡度，它逐渐变平，通量读数也降低。箭头不是水流速度，更不是每个分子的路线；它表示这个截面上统计意义的净输运。",
+          "tempo": 1
+        },
+        {
+          "at": 45.45,
+          "end": 65.74401,
+          "text": "现在只圈住右边这一小段。左边进入的通量减去右边离开的通量，就是它的净增加率。留意符号：开始是正，后来转成负，这一段可以先变多、再变少。守恒不要求每个小格都不变化，而是要求所有进出能够对上账。",
+          "tempo": 1
+        },
+        {
+          "at": 67.45,
+          "end": 89.09751,
+          "text": "换一把尺子，观察分布的方差。最初，它增加得接近两倍扩散系数乘时间；但这条带不是无限长。随着两端的浓度上升，增长逐渐变慢，最后接近均匀分布的极限。曲线变平，不表示分子停下，只表示宏观浓度不再明显起伏。",
+          "tempo": 1
+        },
+        {
+          "at": 90.45,
+          "end": 111.48603,
+          "text": "让两条同样的浓度带一起开始，质量、长度和初态完全相同，只把第二条的扩散系数加倍。对照两条曲线，较大的扩散系数让分布更快变平。下面的无量纲时间也正好加倍。这是方程里的时间尺度改变，不是把动画随意调快。",
+          "tempo": 1
+        },
+        {
+          "at": 112.95,
+          "end": 134.24308,
+          "text": "这次保留相同的扩散系数，把第二条带拉长到两倍。每条的总量仍为一，所以较长带一开始就更浅，不能只比峰高。初态按长度同比放大以后，达到同样的相对平滑程度，需要四倍时间。扩散的特征时间跟长度的平方一起增长。",
+          "tempo": 1
+        },
+        {
+          "at": 135.95,
+          "end": 158.86737,
+          "text": "换成两种不反应的标记，蓝色偏左，暖色偏右。它们有相同的扩散系数，分别沿自己的浓度梯度扩散。两条曲线靠近，颜色渐渐混合，但下面的两个总量都保持为一。这里没有化学反应，也没有谁被擦除；变化的是每个位置上两种标记的比例。",
+          "tempo": 1
+        },
+        {
+          "at": 160.45,
+          "end": 184.21392,
+          "text": "最后换一个边界实验。左端浓度固定为一，右端固定为零，初态也重新指定。两端储库可以交换物质，带内总量的变化必须记入边界账本。看最后的直线和两端通量：分布已经稳定，净输运仍然存在。稳态不是零通量，静止介质也不等于没有扩散。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/diffusion-en-c336a33c8df9.mp3",
+      "duration": 185.5,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 19.8363,
+          "text": "Look at the dark patch in the middle. It marks a high concentration, not a moving lump of water. As time advances, the curve becomes lower and wider, while both ends remain sealed. Now check the total: it has not fallen. Diffusion changes the distribution, without removing the material.",
+          "tempo": 1
+        },
+        {
+          "at": 22.45,
+          "end": 42.64551,
+          "text": "Keep the bright section to the right of the peak. Concentration decreases toward the right, so net flux points right. The short tangent underneath shows the local slope. As it flattens, the flux reading falls too. This arrow is neither fluid velocity nor a molecule’s route; it represents net transport across the section.",
+          "tempo": 1
+        },
+        {
+          "at": 45.45,
+          "end": 64.28578,
+          "text": "Focus on the highlighted region on the right. Subtract the flux leaving its right edge from the flux entering its left edge. That gives its accumulation rate. Watch the sign change from positive to negative. A region can gain and then lose material; conservation requires the full transport budget to balance.",
+          "tempo": 1
+        },
+        {
+          "at": 67.45,
+          "end": 88.90424,
+          "text": "Use a different measure now: the variance of the distribution. Its early increase is close to twice diffusivity times time. But this strip is finite. As concentration builds near the ends, growth slows toward the uniform-distribution limit. A flat profile does not mean molecules stop; it means the macroscopic concentration has become even.",
+          "tempo": 1
+        },
+        {
+          "at": 90.45,
+          "end": 110.36676,
+          "text": "Start two identical concentration strips together. Keep their amount, length and initial profile the same, and double only the second diffusivity. Its curve becomes flatter sooner. The dimensionless time beneath it is also doubled. This is the equation’s time scaling, rather than an arbitrary playback-speed adjustment.",
+          "tempo": 1
+        },
+        {
+          "at": 112.95,
+          "end": 133.64685,
+          "text": "Keep diffusivity fixed and make the second strip twice as long. Each still contains amount one, so the longer strip starts at lower concentration: peak height alone is not a fair comparison. With geometrically scaled initial shapes, equal relative smoothing takes four times as long. The diffusion time scale grows with length squared.",
+          "tempo": 1
+        },
+        {
+          "at": 135.95,
+          "end": 156.18732,
+          "text": "Now use two nonreacting labels, with blue concentrated toward the left and amber toward the right. They share a diffusivity, and each diffuses along its own concentration gradient. Their curves approach and the colors blend, but both amounts remain one. Neither label disappears; their proportions at each position change.",
+          "tempo": 1
+        },
+        {
+          "at": 160.45,
+          "end": 181.89288,
+          "text": "Finish with a different boundary experiment and a new initial profile. Hold the left concentration at one and the right at zero. Reservoirs can exchange material, so changes inside belong in the boundary budget. The final straight profile is steady, yet flux continues through both ends. Steady state does not require zero transport.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "packet-routing": {
+    "zh": {
+      "src": "/narration/packet-routing-zh-f516a094c21e.mp3",
+      "duration": 182.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 19.16635,
+          "text": "跟住这个一号分组。它的目的地一直是右边的接收端，但不会一次决定整段旅程。到达路由器后，先收齐，再查本地路由表，选出下一跳。下方的时间条把处理、发送和传播分开，每一段等待都有来处。",
+          "tempo": 1
+        },
+        {
+          "at": 22.95,
+          "end": 42.67952,
+          "text": "这次看连线旁的数字。最短路径加的是路由代价，不是屏幕上的线段长度。先经过上方，再比较另一套已经收敛的网络：只把那条出口的代价调高，路由就改走下方。代价是配置条件，不会自动跟着眼前的队列变化。",
+          "tempo": 1
+        },
+        {
+          "at": 44.95,
+          "end": 64.1754,
+          "text": "一批分组很快来到同一个出口。出口还在发送前一个，三号只能排队。注意，队列等待和把字节送上链路，是两段不同的时间。这里每个分组一千二百字节，出口每秒四十万比特，光是发送就需要二十四毫秒。",
+          "tempo": 1
+        },
+        {
+          "at": 68.45,
+          "end": 87.4468,
+          "text": "把初始生存时间设得很小，再跟一次这个分组。它在源端带着二，到第一个路由器变成一，第二个再减就到了零。即使目的地只剩一跳，也不能继续转发。这个逐跳限制能阻止分组在错误的路由环里一直兜圈。",
+          "tempo": 1
+        },
+        {
+          "at": 90.45,
+          "end": 110.64156,
+          "text": "看上方通向接收端的链路。一号还在路上传播，链路突然中断，它就在这里丢失了。旁边的路由器先知道故障，随后发出紫色的拓扑更新。远处的节点必须等消息到达并处理完，不能在故障瞬间就拥有同一张新地图。",
+          "tempo": 1
+        },
+        {
+          "at": 112.45,
+          "end": 133.26245,
+          "text": "现在跟二号，并对照三张路由表。上方节点已经改道，下方却还按旧消息送回去，于是出现短暂绕圈。等更新安装完成，下方终于直接发往接收端。表格里的版本号和下一跳并非一起跳变，收敛就是这个逐处完成的过程。",
+          "tempo": 1
+        },
+        {
+          "at": 134.95,
+          "end": 155.36132,
+          "text": "再发送完全相同的十个分组。先给出口两个等待位，位置满了，后来的分组就被丢弃，编号仍留在记录里。接着只增加等待位。五号这次能留下，却要等前面的分组发送完。缓存可以容纳更多等待，不能凭空增加链路速率。",
+          "tempo": 1
+        },
+        {
+          "at": 158.45,
+          "end": 180.8566,
+          "text": "最后看恢复链路的情况。前几个分组已经走上较慢的路径，后来的四号却用新路抢先到达。上排记录实际到达顺序，下排是一个按序交付的应用示例。它先暂存四号，等前面的缺口补齐。本片没有替你假装完成重传或整套 TCP。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/packet-routing-en-91b189c4e854.mp3",
+      "duration": 182.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 21.46932,
+          "text": "Follow packet one. Its destination stays R throughout the journey, but each router makes its own next-hop decision. The router receives the complete packet, checks its local table, then sends it onward. The strip below separates processing, transmission and propagation, so the journey time comes from specific operations rather than an animation speed.",
+          "tempo": 1
+        },
+        {
+          "at": 22.95,
+          "end": 41.37413,
+          "text": "Look at the numbers beside the links. Shortest path means the lowest sum of routing costs, not the shortest line on the screen. Compare two already-converged networks. Raising only the upper exit cost selects the lower route. These configured costs do not automatically change whenever a packet joins a queue.",
+          "tempo": 1
+        },
+        {
+          "at": 44.95,
+          "end": 66.77272,
+          "text": "A burst reaches the same output faster than it can transmit. Packet three has to wait while earlier packets are sent. Queueing and serialization are different delays. Each packet here contains twelve hundred bytes, and this output carries four hundred thousand bits per second. Serialization alone takes twenty-four milliseconds, before propagation is added.",
+          "tempo": 1
+        },
+        {
+          "at": 68.45,
+          "end": 86.78848,
+          "text": "Give this packet a deliberately small TTL. It leaves the source with two. The first router reduces it to one; the second reduces it to zero and discards it, even though the destination is only one link away. This hop-by-hop bound prevents a packet from circulating indefinitely in a routing loop.",
+          "tempo": 1
+        },
+        {
+          "at": 90.45,
+          "end": 109.67673,
+          "text": "Watch the upper link into the receiver. Packet one is still propagating when that link fails, so it is lost there. The adjacent router notices first and sends the violet topology update. Remote routers must receive and process that message. They cannot all acquire the new network map at the instant of failure.",
+          "tempo": 1
+        },
+        {
+          "at": 112.45,
+          "end": 132.24982,
+          "text": "Follow packet two and compare the three local tables. B has changed its route, but C still sends the packet back using old information. That creates a temporary loop. Once C installs the update, it can forward directly to R. The different version numbers expose how convergence happens at different routers at different times.",
+          "tempo": 1
+        },
+        {
+          "at": 134.95,
+          "end": 157.04905,
+          "text": "Send exactly the same ten packets at exactly the same times. With two waiting slots, a full queue discards later arrivals and keeps their IDs in the loss record. Now increase only the buffer. Packet five survives, but waits behind earlier packets. More storage accommodates waiting; it does not create extra link capacity.",
+          "tempo": 1
+        },
+        {
+          "at": 158.45,
+          "end": 180.60748,
+          "text": "Earlier packets are already on the slow route when the faster link returns. Packet four takes that new route and arrives first. The upper row records arrival order. Below it, an example application holds later sequence numbers until gaps are filled. This illustrates ordered delivery; it does not simulate retransmission or a complete TCP connection.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "zipper": {
+    "zh": {
+      "src": "/narration/zipper-zh-c557b6e27baf.mp3",
+      "duration": 201.5,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 21.99002,
+          "text": "看拉头往上走。上面还是两排分开的齿，下面已经连成一条链。它没有留下胶水，也没有把齿挪到另一条带上。我们选的是注塑蘑菇头齿，两边错开半个齿距。接下来盯住绿色的左侧第七齿，看看拉头怎样改变它与邻齿相遇的方向。",
+          "tempo": 1
+        },
+        {
+          "at": 23.45,
+          "end": 46.43567,
+          "text": "先停在这颗绿色齿旁边。宽宽的头后面是一段细颈，齿根包着织带边缘的珠边。现在剖开齿头的上唇：中间不是实心，里面留着齿窝，对侧齿颈的薄翼伸了进来。上、下两层齿唇围住薄翼，同时保留间隙；这不是两块平面图案简单叠在一起。",
+          "tempo": 1
+        },
+        {
+          "at": 47.95,
+          "end": 70.46893,
+          "text": "把目光移到开窗的拉头。两侧导边与中间的楔体，围出一个字母 Y。两条带进入宽口，沿着各自的弯道靠近。注意齿根和珠边一起转，齿头不是横着硬挤过去。上、下翼板限制厚度方向，侧边留下织带出口，拉片则通过横销连接在拉头上。",
+          "tempo": 1
+        },
+        {
+          "at": 71.95,
+          "end": 96.79351,
+          "text": "现在只跟着左侧第七齿走。它从分开的支路进入，逐渐转正，宽齿头来到对侧两颗齿之间。两排预先错开的半个齿距，在这里给出了位置。继续往下看，细颈旁的薄翼进入齿窝，齿肩来到相互挡住的位置。整段过程中，这始终是同一颗齿，根也始终连着原来的带。",
+          "tempo": 1
+        },
+        {
+          "at": 98.45,
+          "end": 123.37256,
+          "text": "把拉头先放在一边，只看已经咬合的三颗齿。向左拉绿色齿，它的宽肩会抵住对侧两颗齿肩。图中假设左右方向受力、上下两处接触完全对称，所以每处反力是总载荷的一半。箭头变长，齿却不假装伸长；这是解释阻挡方向的刚体模型，不是拉链承重的数值预报。",
+          "tempo": 1
+        },
+        {
+          "at": 124.95,
+          "end": 147.7749,
+          "text": "再把拉头沿反方向拉回。绿色齿没有突然松掉，而是沿刚才那条路倒着走。导道让珠边转弯，齿肩的相对方向随之改变；薄翼退出齿窝，两排齿逐渐分开。横着直接拉，被肩面挡住；沿拉头安排的转弯路径走，却有退路。区别就在这里。",
+          "tempo": 1
+        },
+        {
+          "at": 149.45,
+          "end": 174.18313,
+          "text": "拉到最上面，先碰到的是两侧上止，拉头不能继续越过它们。再向下走，闭尾拉链的下止连接着两条带，也接住拉头。这些不是装饰：演示的行程就由实际接触位置限定。留意顶部仍有齿在导道里。另外，我们选的是非锁定拉头，齿的咬合不能代替拉头自锁。",
+          "tempo": 1
+        },
+        {
+          "at": 175.45,
+          "end": 200.4563,
+          "text": "最后做一个只改齿形的对照。第一组保留宽肩，第二组把宽肩削窄，两个画面尝试相同的横向位移。有肩的齿留在原位，没有肩的假想齿能够退出。这个对照不是新产品设计，也不比较强度。它把拉链的两个工作分开了：齿形负责留住，拉头安排进入和退出的路径。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/zipper-en-7e6b0218126a.mp3",
+      "duration": 201.5,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 20.66769,
+          "text": "Watch the slider move upward. Two separate rows enter above it; a joined chain remains below. No glue is left behind, and no tooth changes tapes. This is a moulded mushroom-head design, with the two rows offset by half a pitch. Follow the green tooth, L seven: its route will explain how the join is made.",
+          "tempo": 1
+        },
+        {
+          "at": 23.45,
+          "end": 43.48125,
+          "text": "Pause beside the green tooth. Behind its broad head is a narrow neck, and its root wraps around the tape bead. Cut away the upper lip: the head has a recess through its middle. A thin wing from the opposite neck enters that space. Upper and lower lips surround it with clearance, making this a three-dimensional connection.",
+          "tempo": 1
+        },
+        {
+          "at": 47.95,
+          "end": 69.05544,
+          "text": "Look through the window in the slider. The outer flanges and central diamond form a Y-shaped passage. Each tape follows its own bend from the wide mouth toward the joined channel. Tooth roots turn with their beads; the heads are not forced straight through each other. Upper and lower plates bound the thickness, while side slots let the tapes pass.",
+          "tempo": 1
+        },
+        {
+          "at": 71.95,
+          "end": 95.30313,
+          "text": "Stay with L seven. It enters along the separated branch, turns toward the centre, and places its broad head between two opposite teeth. The half-pitch offset provides the required spacing. As the route straightens, thin wings enter the head recesses and the shoulders reach their retaining positions. Nothing is replaced: this tooth remains attached to the same bead throughout.",
+          "tempo": 1
+        },
+        {
+          "at": 98.45,
+          "end": 122.52658,
+          "text": "Set the slider aside and inspect three engaged teeth. A sideways pull on the green tooth presses its broad shoulders against two opposite shoulders. In this deliberately symmetric, rigid-body example, each contact carries half the applied load. The arrows grow, but the teeth do not stretch. This explains a blocked direction; it does not predict a real zipper’s strength.",
+          "tempo": 1
+        },
+        {
+          "at": 124.95,
+          "end": 145.47948,
+          "text": "Now move the slider back. The green tooth does not suddenly release; it follows the same route in reverse. The guide turns the bead, changing the relative orientation of the shoulders. Wings leave their recesses and the rows separate. A direct sideways pull meets a shoulder, whereas the turning route arranged by the slider provides a way out.",
+          "tempo": 1
+        },
+        {
+          "at": 149.45,
+          "end": 172.40082,
+          "text": "At the upper end, two top stops prevent the slider from leaving the tapes. At the lower end, a bridge joins both tapes and catches the slider. These parts set the model’s actual travel limits. Some upper teeth remain inside the guide. One distinction matters: this is a non-locking slider; engaged teeth do not themselves lock the slider’s position.",
+          "tempo": 1
+        },
+        {
+          "at": 175.45,
+          "end": 198.33517,
+          "text": "For the last comparison, change only the broad shoulders. Keep them in the first specimen and narrow them in the hypothetical second one. Apply the same attempted sideways shift. The shouldered teeth stay put; the narrow heads can withdraw. This is a geometry experiment, not a strength test. Tooth shape retains the join; the slider arranges entry and exit.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "tides": {
+    "zh": {
+      "src": "/narration/tides-zh-84e66cfcc63c.mp3",
+      "duration": 202.5,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 24.40315,
+          "text": "先看三个位置受到的月球引力。近侧比地心强一点，远侧比地心弱一点，但方向都大致朝向月球。金色观测点从近侧走向远侧，当地的加速度也跟着改变。地心不是钉在原地的支点；理解潮汐，要比较这些加速度之间的差，而不是只看一个向月球的箭头。",
+          "tempo": 1
+        },
+        {
+          "at": 25.95,
+          "end": 48.69517,
+          "text": "现在跟地心一起自由下落。在每一个位置，都减去同一份地心加速度。远侧受月球牵引较弱，剩下的相对加速度背向月球；近侧受牵引较强，剩下的相对加速度朝向月球。注意两端都在相对远离地心，不需要再给远侧加上一只神秘的推手。",
+          "tempo": 1
+        },
+        {
+          "at": 49.95,
+          "end": 74.49288,
+          "text": "想象一颗刚性的球形地球，表面全是能够立即达到平衡的海洋。同一个潮汐势，决定这张理想海面的高度。现在慢慢放大微小的形变，近侧和远侧都隆起，横向的海面降低。这是形变比例尺在变化，不是海水流动的录像；旁边的米数仍是模型算出的原始高度。",
+          "tempo": 1
+        },
+        {
+          "at": 75.95,
+          "end": 99.2788,
+          "text": "在受控比较中，让月球靠近一些。整体引力随距离的平方变化，主导潮汐项却随距离的三次方变化，所以实线比虚线上升更快。地球的大小没有改变，改变的是引力跨越这个大小时的差异。这里的距离滑块是思想实验，不是月球真实运行日期的进度条。",
+          "tempo": 1
+        },
+        {
+          "at": 100.95,
+          "end": 123.7842,
+          "text": "先保留月球，再逐渐把太阳的潮汐项加进来。太阳对地球的整体引力很强，却因为距离遥远，跨越地球的引力差没有那么大。在这组参考距离下，太阳的主导潮汐强度约为月球的零点四六倍。两者同向时，平衡海面的形变叠加，潮差也随之增大。",
+          "tempo": 1
+        },
+        {
+          "at": 125.45,
+          "end": 149.44322,
+          "text": "接下来转动太阳方向，保持两项的强度不变。日月形成直角时，赤道上的平衡潮差缩小，对应小潮的理想情形。继续转到另一端，三者重新排成直线，潮差又增大。月球与太阳在同一侧或相对两侧，都能增强大潮；不能只用两根整体引力箭头相加来判断。",
+          "tempo": 1
+        },
+        {
+          "at": 150.95,
+          "end": 174.55846,
+          "text": "把月球方向固定，让赤道上的一个观测位置转过一圈。金色标记会依次经过这张理想海面的两个高处，曲线记录的也是同一个位置的计算高度。这里追踪的是地球上的位置，不是一团绕圈跑的海水。横轴用相对转角表示，不能把它直接读成某个港口的潮汐时刻。",
+          "tempo": 1
+        },
+        {
+          "at": 175.95,
+          "end": 201.6227,
+          "text": "换到四十五度纬圈，再让月球偏离赤道，两次理想高值开始不一样。随后把观测点移向更高纬度，这个例子最后只剩一个峰值。真实海洋还受到海盆形状、自转、摩擦与共振影响。所以，一天两次高潮并不是所有海岸的统一规则，这张平衡图也不能给出当地的潮高预报。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/tides-en-738e35baf3e9.mp3",
+      "duration": 202.5,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 20.23093,
+          "text": "Look at the accelerations across Earth. The near side is pulled a little more strongly than the center; the far side a little less. All still accelerate toward the Moon. As the gold point crosses the globe, its acceleration changes. Earth’s center is not fixed in place. That small difference is what matters.",
+          "tempo": 1
+        },
+        {
+          "at": 25.95,
+          "end": 44.53918,
+          "text": "Now fall with Earth’s center. Subtract the same center acceleration at every location. The far-side remainder points away from the Moon because the lunar pull there is weaker. On the near side, the remainder points toward the Moon. Both ends stretch away from the center. No separate far-side push is needed.",
+          "tempo": 1
+        },
+        {
+          "at": 49.95,
+          "end": 72.84721,
+          "text": "Imagine a rigid spherical Earth covered by an ocean that settles instantly. The same tidal potential sets its equilibrium surface. We gradually magnify the tiny height differences, not water motion. Both ends rise while the crosswise surface falls. The metre values remain the physical model results, even while the picture makes the deformation enormous.",
+          "tempo": 1
+        },
+        {
+          "at": 75.95,
+          "end": 96.35197,
+          "text": "Bring the Moon closer in this controlled comparison. Bulk attraction grows with inverse distance squared, but the leading tidal term grows with inverse distance cubed. The solid curve rises faster than the dashed one. Earth’s size stays fixed; gravity varies more across it. This is a thought experiment, not an orbital calendar.",
+          "tempo": 1
+        },
+        {
+          "at": 100.95,
+          "end": 123.74649,
+          "text": "Keep the Moon’s contribution, then gradually add the Sun’s. The Sun exerts strong bulk attraction, but its enormous distance limits the variation across Earth. At these reference distances, its leading tidal strength is about forty-six percent of the Moon’s. When their directions align, the equilibrium deformations reinforce each other and the range grows.",
+          "tempo": 1
+        },
+        {
+          "at": 125.45,
+          "end": 147.58655,
+          "text": "Turn the Sun’s direction while keeping both strengths fixed. At a right angle, the equatorial equilibrium range shrinks: the ideal neap-tide case. Continue to the opposite alignment and the range grows again. Both same-side and opposite-side alignments reinforce spring tides. Adding two bulk-gravity arrows alone would miss what the tidal field is doing.",
+          "tempo": 1
+        },
+        {
+          "at": 150.95,
+          "end": 170.74912,
+          "text": "Hold the Moon’s direction fixed and turn a marked site around the equator. It crosses two high parts of this equilibrium surface. The plotted height comes from that same site calculation. The marker follows a location on Earth, not a parcel of water. Our horizontal axis is an angle, not a local tide timetable.",
+          "tempo": 1
+        },
+        {
+          "at": 175.95,
+          "end": 198.96161,
+          "text": "Start at forty-five degrees latitude and move the Moon north of the equator. The two ideal peaks become unequal. Now move the observer farther north: this example ends with one peak. Real oceans also involve basin shape, rotation, friction and resonance. Neither these heights nor two daily high tides are universal coastal rules.",
+          "tempo": 1
+        }
+      ]
+    }
   }
 }

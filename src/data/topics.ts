@@ -14,6 +14,193 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'tides',
+    name: '潮汐',
+    title: '远侧的海水，为什么也会鼓起？',
+    question: '月球只在一边，为什么海面会在两边升高？',
+    description: '在地球自由落体的参照系里，逐点相减引力，再从同一潮汐势构造平衡海面。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#83b6b2',
+    tag: '引力 · 平衡海洋',
+    related: ['moon-phases', 'seasons', 'bernoulli'],
+    sources: [
+      {
+        title: 'NOAA NESDIS — What Causes Tides? Differential Gravity',
+        url: 'https://www.nesdis.noaa.gov/about/k-12-education/oceans-coasts/what-causes-tides',
+      },
+      {
+        title: 'NOAA — What Are Spring and Neap Tides?',
+        url: 'https://oceanservice.noaa.gov/facts/springtide.html',
+      },
+      {
+        title: 'NOAA — Are Tides Higher When the Moon Is Directly Overhead?',
+        url: 'https://oceanservice.noaa.gov/facts/moon-tide.html',
+      },
+      {
+        title: 'Utrecht University, H. E. de Swart — Ocean Waves, Chapter 9: Tides',
+        url: 'https://webspace.science.uu.nl/~swart104/owaves_docs/owaves15_lnotes.pdf',
+      },
+      {
+        title: 'NASA JPL — Astrodynamic Parameters, DE440',
+        url: 'https://ssd.jpl.nasa.gov/astro_par.html',
+      },
+    ],
+    number: '62',
+  },
+  {
+    slug: 'zipper',
+    name: '拉链',
+    title: '拉链怎样一拉就合上？',
+    question: '横着拉不开的齿，为什么拉头能轻轻分开？',
+    description:
+      '剖开一副注塑蘑菇头拉链，跟随一颗齿穿过 Y 形导道，看错位、齿窝与宽肩怎样连接两条织带。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#54817c',
+    tag: '齿形与导道',
+    related: ['sewing-machine', 'lock', 'escapement'],
+    sources: [
+      {
+        title: 'YKK — The Craftsmanship of YKK, Vol. 1: zipper structure and Y-shaped tunnel',
+        url: 'https://www.ykk.com/english/ykk/tech/01.html',
+      },
+      {
+        title: 'YKK — Zipper Usage Instruction Manual: closed-end components',
+        url: 'https://ykkamericas.com/wp-content/uploads/2021/10/ykk-zipper-instruction-manual-compressed.pdf',
+      },
+      {
+        title:
+          'US3886634 — Zip-fastener, New Japan Slide Fastener Manufacturing Co. (1975), head grooves and neck wings',
+        url: 'https://www.freepatentsonline.com/3886634.html',
+      },
+      {
+        title: 'YKK — Asia Slider Catalogue: slider body, diamond, flanges and non-lock sliders',
+        url: 'https://ykk.pl/wp-content/uploads/2021/02/asia-slider-catalog.pdf',
+      },
+    ],
+    number: '61',
+  },
+  {
+    slug: 'packet-routing',
+    name: '网络分组路由',
+    title: '分组怎样穿过不断变化的网络？',
+    question: '一份本地路由表，怎样决定分组的下一步？',
+    description: '跟随同一批分组，观察最短路径、排队、TTL、故障收敛与接收重排。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#79b7ad',
+    tag: '网络 · 路由与队列',
+    related: ['network', 'memory-cache', 'cpu-pipeline'],
+    sources: [
+      {
+        title: 'RFC 2328: OSPF Version 2 — flooding and shortest-path calculation',
+        url: 'https://www.rfc-editor.org/rfc/rfc2328.html',
+      },
+      {
+        title: 'RFC 1812: Requirements for IP Version 4 Routers — forwarding and TTL',
+        url: 'https://www.rfc-editor.org/rfc/rfc1812.html',
+      },
+      {
+        title: 'RFC 791: Internet Protocol — service scope',
+        url: 'https://www.rfc-editor.org/rfc/rfc791.html',
+      },
+    ],
+    number: '60',
+  },
+  {
+    slug: 'diffusion',
+    name: '扩散',
+    title: '没有水流，颜色为什么还会散开？',
+    question: '一条静止介质中的浓度带，怎样把物质从集中变成均匀？',
+    description: '从浓度曲线计算净通量、局部收支和扩散宽度，比较扩散系数、长度与边界。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#6eafd0',
+    tag: '浓度与通量',
+    related: ['convection', 'bernoulli'],
+    sources: [
+      {
+        title: 'MIT — Conceptual Model for Diffusion',
+        url: 'https://web.mit.edu/1.061/www/diffuse/theory.htm',
+      },
+      {
+        title: 'MIT 3.21 — Finite-body diffusion, instructor solution (2006)',
+        url: 'https://ocw.mit.edu/courses/3-21-kinetic-processes-in-materials-spring-2006/633e72338764b7247cf43e481d546e2a_exam1_sol.pdf',
+      },
+      {
+        title: 'MIT 3.185 — Fourier-series diffusion and boundary conditions (2003)',
+        url: 'https://ocw.mit.edu/courses/3-185-transport-phenomena-in-materials-engineering-fall-2003/d9abff527d0533d61bfc5a2987c531ce_recitation3.pdf',
+      },
+    ],
+    number: '59',
+  },
+  {
+    slug: 'brownian-motion',
+    name: '布朗运动',
+    title: '没有水流，粒子为什么还在走？',
+    question: '随机的单条轨迹，怎样留下稳定的统计规律？',
+    description:
+      '跟随一颗微球，从热浴冲量与惯性记忆走到 Stokes–Einstein 关系，分清单条轨迹、均方位移与平均位置。',
+    category: '空间与系统',
+    duration: '3 分钟',
+    color: '#b18a50',
+    tag: '热涨落 · 单粒子与统计',
+    related: ['diffusion', 'convection', 'lithium-battery'],
+    sources: [
+      {
+        title: 'NIST — SI defining constants, Boltzmann constant',
+        url: 'https://www.nist.gov/pml/special-publication-330/sp-330-section-2',
+      },
+      {
+        title: 'University of Padova / INFN — Langevin equation lecture notes',
+        url: 'https://userswww.pd.infn.it/~orlandin/fisica_sis_comp/langevin.pdf',
+      },
+      {
+        title:
+          'Li et al., Science (2010) — Measurement of the instantaneous velocity of a Brownian particle',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/20488989/',
+      },
+      {
+        title: 'Li and Raizen — Brownian motion at short time scales',
+        url: 'https://arxiv.org/abs/1211.1458',
+      },
+      {
+        title: 'Florin — Ballistic Brownian motion and hydrodynamic memory in liquids',
+        url: 'https://meetings-archive.aps.org/mar/2012/t48/7/',
+      },
+    ],
+    number: '58',
+  },
+  {
+    slug: 'database-index',
+    name: '数据库索引',
+    title: '不用翻遍整张表，数据库怎样找到一行？',
+    question: '跟着页号与分隔键，找回同一条记录。',
+    description:
+      '走进真实计算的微型 B+ 树：全扫与索引公平对照，范围查询串起叶页，插入分裂一路传播到新根。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#33657a',
+    tag: '数据 · 页与记录',
+    related: ['memory-cache', 'hash', 'cpu-pipeline'],
+    sources: [
+      {
+        title: 'CMU 15-445 · Lecture 08: Indexes & Filters I',
+        url: 'https://15445.courses.cs.cmu.edu/fall2024/notes/08-indexes1.pdf',
+      },
+      {
+        title: 'PostgreSQL 18 · B-Tree Indexes',
+        url: 'https://www.postgresql.org/docs/18/btree.html',
+      },
+      {
+        title: 'PostgreSQL 18 · Index-Only Scans and Covering Indexes',
+        url: 'https://www.postgresql.org/docs/18/indexes-index-only-scans.html',
+      },
+    ],
+    number: '57',
+  },
+  {
     slug: 'escapement',
     name: '机械钟擒纵',
     title: '擒纵怎样让钟走得有节拍？',

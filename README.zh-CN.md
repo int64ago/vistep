@@ -21,15 +21,15 @@
 
 跟随一个对象，看见隐藏的中间过程，再亲手验证。vistep 将自动分镜、精细的三维机构和浏览器内科学模型结合起来，每篇按现象选择自己的表达方式。
 
-## 探索内容
+## 精选专题
 
-| 生活器物                                            | 信息与计算                                                 | 空间与系统                                        |
-| --------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------- |
-| [自行车变速](https://vistep.ai/explore/bicycle/)    | [主动降噪](https://vistep.ai/explore/noise/)               | [多维空间](https://vistep.ai/explore/dimensions/) |
-| [冰箱制冷](https://vistep.ai/explore/refrigerator/) | [GPS 定位](https://vistep.ai/explore/gps/)                 | [钟摆](https://vistep.ai/explore/pendulum/)       |
-| [激光打印机](https://vistep.ai/explore/printer/)    | [网页加载](https://vistep.ai/explore/network/)             | [电梯调度](https://vistep.ai/explore/elevator/)   |
-|                                                     | [JPEG 压缩](https://vistep.ai/explore/jpeg/)               | [无事故堵车](https://vistep.ai/explore/traffic/)  |
-|                                                     | [大模型训练与生成](https://vistep.ai/explore/transformer/) |                                                   |
+[完整源码目录](docs/zh-CN/catalog.md) · [当前预览与审看进度](docs/zh-CN/expansion-50.md)
+
+| 生活器物                                            | 信息与计算                                     | 空间与系统                                        |
+| --------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| [自行车变速](https://vistep.ai/explore/bicycle/)    | [主动降噪](https://vistep.ai/explore/noise/)   | [多维空间](https://vistep.ai/explore/dimensions/) |
+| [冰箱制冷](https://vistep.ai/explore/refrigerator/) | [GPS 定位](https://vistep.ai/explore/gps/)     | [钟摆](https://vistep.ai/explore/pendulum/)       |
+| [激光打印机](https://vistep.ai/explore/printer/)    | [网页加载](https://vistep.ai/explore/network/) | [电梯调度](https://vistep.ai/explore/elevator/)   |
 
 - **先观看，再实验。** 每篇 2–5 分钟，支持章节、暂停、重播与定位；调参按需展开。
 - **计算驱动画面。** 机构几何、运动和读数使用同一模型。JPEG 与小型 Transformer 在 Worker 中实际计算，明确标注教学简化。

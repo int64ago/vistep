@@ -1,0 +1,50 @@
+---
+interface Props {
+  color?: string;
+}
+const { color = '#79b7ad' } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <ellipse cx="215" cy="116" rx="178" ry="103" fill={color} opacity=".09"></ellipse>
+  <g stroke="#9aacb6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M31 115H114L225 43M114 115L225 184L361 115M225 43V184"></path>
+    <path d="M225 43L361 115" stroke="#c18c89" stroke-dasharray="4 8"></path>
+    <path d="M114 115L225 184L361 115" stroke={color} stroke-width="4"></path>
+    <path d="M225 43V184" stroke="#a596c6" stroke-dasharray="3 7"></path>
+    <path d="M285 71l13 13m-13 0l13-13" stroke="#c5837c" stroke-width="3"></path>
+  </g>
+  <g fill="#234552" stroke="#93b8b6" stroke-width="1.8">
+    <rect x="13" y="98" width="37" height="34" rx="10"></rect><circle cx="114" cy="115" r="21"
+    ></circle><circle cx="225" cy="43" r="21"></circle><circle cx="225" cy="184" r="21"
+    ></circle><rect x="342" y="98" width="38" height="34" rx="10"></rect>
+  </g>
+  <g fill="#edf2e9" font-family="sans-serif" font-size="21" text-anchor="middle">
+    <text x="31" y="122">S</text><text x="114" y="122">A</text><text x="225" y="50">B</text><text
+      x="225"
+      y="191">C</text
+    ><text x="361" y="122">R</text>
+  </g>
+  <rect x="155" y="136" width="35" height="25" rx="8" fill={color} stroke="#426e75"></rect>
+  <text
+    x="172.5"
+    y="154"
+    text-anchor="middle"
+    font-size="18"
+    font-family="sans-serif"
+    fill="#16383f">P3</text
+  >
+  <path d="M225 97l8 8-8 8-8-8Z" fill="#ad9ccc" stroke="#81769f"></path>
+  <g stroke="#9bb7b8" fill="#eff5ee">
+    <rect x="278" y="196" width="27" height="23" rx="6"></rect><rect
+      x="310"
+      y="196"
+      width="27"
+      height="23"
+      rx="6"></rect><rect x="342" y="196" width="27" height="23" rx="6"></rect>
+  </g>
+  <g fill="#41666d" font-family="sans-serif" font-size="16" text-anchor="middle"
+    ><text x="291" y="213">P2</text><text x="324" y="213">P1</text><text x="356" y="213">P3</text
+    ></g
+  >
+</svg>
