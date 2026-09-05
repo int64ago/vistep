@@ -17,6 +17,10 @@ The collection began as twelve interactive explanations. Review exposed a gap be
 | Chinese recordings decoded but were unintelligible   | Asset validity confused with language quality | Check actual speech, independently transcribe recorded chapters, then review delivery and synchronization. |
 | Passing tests presented as complete quality evidence | Different evidence categories conflated       | Record numerical checks, browser behavior, visual review and listening separately.                         |
 
+## Branding as an entrance
+
+The subsequent homepage review exposed the same branding problem in a different form: enlarging a wordmark and adding a derivation formula still made the name feel like a separate exhibit. Treat the animation as the transition into the page itself. Review arrival, extraction, merging and the final layout as one sequence, including a fresh load and a repeat visit. An initialization resize event can cancel an otherwise correct animation; a successful replay alone does not establish automatic entry. See the [opening review](qa-home-opening.md).
+
 ## Model-led geometry
 
 A loop cannot be repaired by snapping its final point to its first. The bicycle uses shared pitch, an even link count and a solved center distance. The printer uses a common gear module, involute profiles and a closed belt. Numerical checks cover constraints, while still frames expose framing, contact and occlusion problems.

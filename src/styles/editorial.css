@@ -189,162 +189,6 @@ h3 {
   font-weight: 300;
   line-height: 1;
 }
-.brand-signature {
-  margin-top: 43px;
-  min-height: 81px;
-  max-width: 480px;
-  scroll-margin-top: 150px;
-}
-.signature-line {
-  font-family: 'Manrope Variable', sans-serif;
-  display: flex;
-  gap: 0.3em;
-  align-items: baseline;
-  flex-wrap: wrap;
-  font-size: 18px;
-  min-height: 30px;
-  font-weight: 500;
-  line-height: 1.6;
-  color: #969b93;
-  transition:
-    opacity 0.6s,
-    filter 0.6s,
-    font-size 0.8s,
-    gap 0.8s;
-  letter-spacing: -0.04em;
-}
-.signature-word {
-  display: inline-flex;
-  white-space: nowrap;
-  align-items: baseline;
-  color: #283f35;
-}
-.lost-word {
-  display: inline-block;
-  max-width: 6em;
-  overflow: hidden;
-  white-space: nowrap;
-  opacity: 1;
-  transition:
-    max-width 0.8s,
-    opacity 0.6s;
-}
-.whole-word {
-  max-width: 4em;
-  transition:
-    max-width 0.8s,
-    opacity 0.6s,
-    margin 0.8s;
-}
-.domain-dot {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  display: inline-block;
-  transition:
-    max-width 0.8s,
-    opacity 0.8s;
-}
-.shared-letter {
-  display: inline-block;
-  max-width: 1em;
-  overflow: hidden;
-  transition:
-    max-width 0.8s,
-    transform 0.8s,
-    opacity 0.8s,
-    color 0.8s;
-}
-.kept-s {
-  transition: color 0.8s;
-}
-.signature-0 .signature-line {
-  opacity: 0;
-  filter: blur(4px);
-}
-.signature-2 .lost-word {
-  opacity: 0.15;
-}
-.signature-3 .lost-word,
-.signature-4 .lost-word,
-.signature-5 .lost-word,
-.signature-6 .lost-word,
-.signature-7 .lost-word {
-  max-width: 0;
-  opacity: 0;
-}
-.signature-3 .whole-word,
-.signature-4 .whole-word,
-.signature-5 .whole-word,
-.signature-6 .whole-word,
-.signature-7 .whole-word {
-  margin-left: -0.3em;
-}
-.signature-3 .signature-line,
-.signature-4 .signature-line,
-.signature-5 .signature-line,
-.signature-6 .signature-line,
-.signature-7 .signature-line {
-  font-size: 26px;
-  text-transform: lowercase;
-}
-.signature-4 .shared-letter,
-.signature-4 .kept-s {
-  color: #cf713b;
-}
-.signature-5 .shared-letter,
-.signature-6 .shared-letter,
-.signature-7 .shared-letter {
-  max-width: 0;
-  opacity: 0;
-  transform: translateX(-0.6em);
-}
-.signature-5 .signature-word:nth-child(3),
-.signature-6 .signature-word:nth-child(3),
-.signature-7 .signature-word:nth-child(3) {
-  margin-left: -0.3em;
-}
-.signature-6 .domain-dot,
-.signature-7 .domain-dot {
-  max-width: 0.5em;
-  opacity: 1;
-}
-.signature-6 .signature-word:last-child,
-.signature-7 .signature-word:last-child {
-  margin-left: -0.3em;
-}
-.signature-baseline {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 10px;
-  letter-spacing: 0.02em;
-  color: #92968e;
-  height: 26px;
-}
-.signature-replay {
-  border: 0;
-  background: none;
-  color: #787e74;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 12px;
-  opacity: 0.65;
-}
-.signature-replay svg {
-  width: 15px;
-  height: 15px;
-}
-.signature-replay:hover {
-  opacity: 1;
-  color: #263c31;
-}
-.signature-static {
-  color: #747a72;
-  font-size: 10px;
-}
 .studio {
   position: relative;
   width: 100%;
@@ -1358,9 +1202,6 @@ h3 {
   .object-caption {
     left: 10px;
   }
-  .brand-signature {
-    margin-top: 32px;
-  }
   .feature-studies {
     gap: 20px;
   }
@@ -1465,25 +1306,6 @@ h3 {
     min-height: 48px;
     padding: 17px 24px;
     gap: 36px;
-  }
-  .brand-signature {
-    margin-top: 28px;
-    min-height: 65px;
-    max-width: 100%;
-  }
-  .signature-line {
-    font-size: 16px;
-  }
-  .signature-3 .signature-line,
-  .signature-4 .signature-line,
-  .signature-5 .signature-line,
-  .signature-6 .signature-line,
-  .signature-7 .signature-line {
-    font-size: 24px;
-  }
-  .signature-baseline {
-    font-size: 9px;
-    gap: 6px;
   }
   .home-object {
     height: 360px;
@@ -1933,9 +1755,6 @@ h3 {
   .edition-label {
     font-size: 9px;
   }
-  .signature-line {
-    font-size: 14px;
-  }
   .home-object {
     height: 330px;
   }
@@ -1975,13 +1794,6 @@ h3 {
   .study-card:hover .study-visual > svg,
   .index-entry:hover .index-illustration svg {
     transform: none;
-  }
-  .signature-line,
-  .signature-word,
-  .lost-word,
-  .shared-letter,
-  .domain-dot {
-    transition: none;
   }
   .editorial-cta:hover {
     transform: none;

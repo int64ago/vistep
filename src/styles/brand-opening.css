@@ -1,0 +1,205 @@
+/* The opening occupies the title's own space. Nothing covers the page or its links. */
+.brand-opening {
+  --title-reveal: 0;
+  position: relative;
+  height: 230px;
+  margin: 30px 0 22px;
+  scroll-margin-top: 125px;
+}
+.brand-motion {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: clamp(46px, 4.4vw, 64px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  color: #344e42;
+}
+.brand-source {
+  line-height: 1.12;
+}
+.brand-source > span {
+  display: block;
+}
+.brand-pieces,
+.brand-piece,
+.brand-domain {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.brand-piece {
+  line-height: 1.12;
+}
+.brand-piece,
+.brand-domain {
+  white-space: pre;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+}
+.brand-upper,
+.brand-lower {
+  display: inline-block;
+}
+.brand-upper {
+  opacity: calc(1 - var(--lowercase, 0));
+}
+.brand-lower {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: var(--lowercase, 0);
+}
+.brand-pieces,
+.brand-domain {
+  visibility: hidden;
+}
+.brand-domain {
+  opacity: 0;
+}
+.brand-opening[data-state='playing'] .brand-source {
+  visibility: hidden;
+}
+.brand-opening[data-state='playing'] :is(.brand-pieces, .brand-domain) {
+  visibility: visible;
+}
+.brand-opening[data-state='settled'] .brand-motion {
+  display: none;
+}
+.site-header .wordmark-name {
+  display: inline-block;
+  line-height: 1;
+}
+body:has(.brand-opening:where([data-state='playing'])) .site-header .wordmark-name {
+  opacity: 0;
+}
+.opening-title {
+  opacity: var(--title-reveal);
+  transform: translateY(calc((1 - var(--title-reveal)) * 14px));
+}
+.home-page .opening .opening-title h1 {
+  margin: 0;
+  font-size: clamp(40px, 3.6vw, 53px);
+  line-height: 1.5;
+  font-weight: 440;
+  letter-spacing: -0.055em;
+  color: #31493e;
+}
+.opening-title h1 > span {
+  display: block;
+  white-space: nowrap;
+}
+html[lang='en'] .home-page .opening .opening-title h1 {
+  font-size: clamp(38px, 3.6vw, 53px);
+  line-height: 1.25;
+}
+.brand-meaning {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 0;
+  padding: 0;
+  margin-top: 14px;
+  background: none;
+  color: #747d71;
+  font-size: 16px;
+  letter-spacing: -0.025em;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 5px;
+  transition:
+    color 250ms,
+    text-decoration-color 250ms;
+}
+.brand-meaning:hover {
+  color: #344e42;
+  text-decoration-color: #a8b3a0;
+}
+.brand-opening:where(:not([data-state='settled'])) .brand-meaning {
+  visibility: hidden;
+}
+.brand-skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.brand-skip:focus-visible {
+  clip-path: none;
+  width: auto;
+  height: 44px;
+  bottom: 0;
+  z-index: 11;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 14px;
+  background: #e9eee4;
+  color: #344e42;
+  font-size: 16px;
+}
+.brand-opening[data-state='settled'] .brand-skip {
+  display: none;
+}
+.opening-copy .opening-description {
+  margin-top: 0;
+  font-size: 16px;
+}
+.opening-copy .editorial-cta {
+  margin-top: 12px;
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .brand-opening {
+    height: 218px;
+  }
+  .brand-motion {
+    font-size: 49px;
+  }
+  .home-page .opening .opening-title h1 {
+    font-size: 36px;
+  }
+  html[lang='en'] .home-page .opening .opening-title h1 {
+    font-size: 34px;
+  }
+}
+@media (max-width: 760px) {
+  .brand-opening {
+    height: clamp(190px, 36vw, 240px);
+    margin: 24px 0 14px;
+  }
+  .brand-motion {
+    font-size: clamp(43px, 10.8vw, 62px);
+  }
+  .home-page .opening .opening-title h1 {
+    font-size: clamp(37px, 9.5vw, 53px);
+  }
+  html[lang='en'] .home-page .opening .opening-title h1 {
+    font-size: clamp(33px, 8.7vw, 48px);
+  }
+  .brand-meaning {
+    margin-top: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-opening .brand-motion {
+    display: none;
+  }
+  .brand-opening .brand-skip {
+    display: none;
+  }
+  .brand-opening .opening-title {
+    opacity: 1;
+    transform: none;
+  }
+  .brand-opening .brand-meaning {
+    visibility: visible;
+  }
+  body:has(.brand-opening) .site-header .wordmark-name {
+    opacity: 1;
+  }
+}

@@ -22,6 +22,7 @@
 - [维护与搜索接入](qa-maintenance.md)
 - [首次正式发布](qa-production.md)
 - [长演示、语言与 SEO](qa-longform.md)
+- [首页一体化开场](qa-home-opening.md)
 
 ## 社区
 
