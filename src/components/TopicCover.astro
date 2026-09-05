@@ -8,6 +8,7 @@ import { planetaryOutlines, planetaryState } from '../models/planetary';
 import type { Point2 } from '../models/mechanisms';
 import { traceFiber } from '../models/fiber';
 import { fullAdder } from '../models/adder';
+import { phaseDiskPath } from '../models/moon';
 const { slug, color } = Astro.props;
 const grid = Array.from({ length: 8 }, (_, i) => i);
 const engine = engineCycle(2.4 * Math.PI);
@@ -39,6 +40,66 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
     width="400"
     height="230"
     fill={`url(#dots-${slug})`}></rect>
+  {
+    slug === 'moon-phases' && (
+      <g>
+        <defs>
+          <radialGradient id="lunar-cover-bg">
+            <>
+              <stop stop-color="#2f3b52" />
+              <stop offset="1" stop-color="#101c30" />
+            </>
+          </radialGradient>
+          <clipPath id="lunar-cover-light">
+            <path d={phaseDiskPath(0.52, 84)} transform="translate(246 112)" />
+          </clipPath>
+        </defs>
+        <rect width="400" height="230" fill="url(#lunar-cover-bg)" />
+        <circle cx="246" cy="112" r="84" fill="#101a2b" stroke="#71839c" stroke-width=".5" />
+        <path d={phaseDiskPath(0.52, 84)} transform="translate(246 112)" fill="#d3d3c7" />
+        <g clip-path="url(#lunar-cover-light)" fill="#84969a" fill-opacity=".32">
+          <>
+            <ellipse cx="238" cy="80" rx="27" ry="22" />
+            <ellipse cx="277" cy="87" rx="22" ry="27" />
+          </>
+          <>
+            <ellipse cx="230" cy="122" rx="22" ry="14" />
+            <circle cx="282" cy="56" r="8" />
+          </>
+          {Array.from({ length: 32 }, (_, i) => {
+            const a = i * 2.39996,
+              r = Math.sqrt((i + 0.5) / 32) * 76;
+            return (
+              <circle
+                cx={246 + r * Math.cos(a)}
+                cy={112 + r * Math.sin(a)}
+                r={2 + (i % 4)}
+                fill="none"
+                stroke="#647d85"
+                stroke-width=".9"
+              />
+            );
+          })}
+        </g>
+        <path
+          d="M47 59H116M47 77H116M47 95H116"
+          stroke="#d2b782"
+          stroke-width="1"
+          stroke-opacity=".6"
+        />
+        <text
+          x="28"
+          y="200"
+          font-family="Manrope"
+          font-size="11"
+          letter-spacing="1.4"
+          fill="#a9b7c9"
+        >
+          A CHANGE OF VIEW
+        </text>
+      </g>
+    )
+  }
   {
     slug === 'hydraulic-brake' && (
       <g>

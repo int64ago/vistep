@@ -22,3 +22,9 @@ The repository distributes recorded narration, not third-party model weights. Re
 The vistep name and domain identify the original project. The MIT license grants rights in the covered work; it does not grant a trademark endorsement or permission to impersonate its owner.
 
 [README motion artwork](scripts/render-showcase.mjs) is original SVG-based animation using the repository’s involute gear geometry, DCT reconstruction and four-dimensional projection. It is not a webpage recording. It uses the retained Manrope font and is encoded as GIF with FFmpeg; committed media needs no renderer at runtime.
+
+## Lunar surface textures
+
+The Moon scene uses the unmodified `lroc_color_2k.jpg` (457,942 bytes) and `ldem_3_8bit.jpg` (111,552 bytes) from the [NASA SVS CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/), stored under `public/textures/moon/`. Credit: **NASA’s Scientific Visualization Studio**; visualizer Ernie Wright (USRA), scientist Noah Petro (NASA/GSFC), with LROC WAC and LOLA data. [NASA SVS’s usage policy](https://svs.gsfc.nasa.gov/help/) places its content in the public domain unless otherwise noted; this kit lists no separate restriction. These assets are not relicensed under the project MIT license; no NASA endorsement is implied. The color map is optimized for aesthetics, and the 8-bit height image supplies qualitative bump detail.
+
+SHA-256: color `f7130a1822681fa7512d7dcfd40db8c10b9ba4f06777910348698260ed7a2170`; height `6d93f887e7d8bedfe35ab89ba785e5e3ca12381bd092a5e6abe2c707dda8bb98`.

@@ -1,0 +1,60 @@
+<h2 id="understand">One lit hemisphere, a changing view</h2>
+
+The Moon reflects sunlight. The Sun illuminates its sunward hemisphere, and an observer on Earth sees a changing portion of that hemisphere as the Moon moves. The visible shape of the light changes while the Moon remains round.
+
+The lunar portrait and orbital diagram share one solar direction. Sphere normals determine the terminator; a sliding circular mask does not create the phases. The illumination readout measures the portion of the visible disk that faces the Sun. Earth's eclipse shadow is calculated separately.
+
+Ecliptic north stays at the top of the portrait. A crescent in your actual sky may have a different orientation because of your location, time and local horizon.
+
+<h2 id="try">Separate three different motions</h2>
+
+- Move through a complete cycle and compare the curved terminator with the orbital position.
+- Set inclination to zero and observe Earth's shadow at full phase. The real orbit is tilted by about five degrees, so most full Moons miss that shadow.
+- Follow the gold teaching marker in the rotation chapter. One rotation per orbit keeps the same face toward Earth; the far side still receives daylight.
+- Choose the 2D geometry view to isolate illumination and projection. The day and inclination controls also work with a keyboard.
+
+<h2 id="deeper">Geometry and teaching assumptions</h2>
+
+<details>
+<summary>How is illuminated area calculated?</summary>
+
+Let s point from the Moon toward the Sun and v toward Earth, both unit vectors. Their angle is α. The fraction of an orthographically projected visible disk illuminated by the Sun is:
+
+<div className="formula">f = (1 + s·v) / 2 = (1 + cos α) / 2</div>
+
+The renderer evaluates each visible surface normal against the same sunlight vector used by the model. Eight small portraits mark equally spaced observations; the highlight selects the nearest checkpoint. It does not imply that an exact quarter phase lasts for an entire sector of the orbit.
+
+</details>
+
+<details>
+<summary>Why are there two different month lengths?</summary>
+
+Relative to distant stars, the model's Moon completes an orbit in 27.321661 days. Earth has also advanced around the Sun during that time. The Moon must move farther before it returns to the same Sun-relative configuration.
+
+<div className="formula">1 / Tsynodic = 1 / Tsidereal − 1 / Tyear</div>
+
+A sidereal year of 365.25636 days gives a mean synodic month of approximately 29.53059 days. This comparison explicitly uses coplanar circular motion. Real intervals between phases vary with orbital conditions.
+
+</details>
+
+<details>
+<summary>Why does a full Moon usually miss Earth's shadow?</summary>
+
+The model derives narrowing umbral and widening penumbral cones from the radii and separation of the Sun and Earth. With the default 5.145° orbital inclination, a full Moon usually passes above or below them.
+
+The eclipse chapter holds the Moon near full phase and rotates the orbital plane's node as a controlled comparison. It illustrates a miss and an alignment, not the actual motion of a node within one month or a forecast of a dated eclipse. The shadow diagram compresses distance along the Sun–Earth line; transverse distances and body radii retain one shared scale.
+
+The overlap percentage is the exact intersection area of two projected disks. The portrait represents geometric umbra only; it does not simulate penumbral brightness, atmospheric refraction or the red color of an eclipse.
+
+</details>
+
+<details>
+<summary>Surface assets, dimensions and omitted effects</summary>
+
+NASA's Scientific Visualization Studio supplies the LROC color map and LOLA height preview. The color is optimized for visual rendering, and the 8-bit height preview supplies qualitative surface detail rather than metric terrain. The gold ring is an instructional marker, not a physical lunar feature. The cover is an original schematic.
+
+Reference values are 384,400 km Earth–Moon separation, 6,371 km Earth radius, 1,737.4 km Moon radius, 695,700 km nominal solar radius and 149,597,870.7 km Sun–Earth separation. The orbital diagram compresses separation while preserving the Moon/Earth radius ratio; it must not be used directly to judge eclipses.
+
+The geometry assumes parallel sunlight, circular orbits, a fixed orbital pole and synchronous rotation. It omits eccentricity, libration, observer parallax, Earthshine, date prediction and horizon orientation. Surface coordinates remain attached to the rotating sphere rather than reusing a flat photograph for every phase.
+
+</details>
