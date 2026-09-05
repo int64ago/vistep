@@ -68,3 +68,11 @@ A pair of phone readouts exceeded the available flex width by less than one pixe
 Parallel scene production helps when each worker owns a complete topic and one integrator owns registries, translations and recordings. Handoff packets are temporary: consume them into canonical sources and remove them. Generate a selected batch through one bounded speech pool; simultaneous manifest writers can overwrite each other. A cached two-topic regression confirmed that batch selection leaves existing recordings and manifests byte-identical.
 
 No horizontal overflow does not mean a phone film is composed well. The first parallel batch had 1200–1360 px watch stages made from stacked desktop blocks. Review total visual height, repeated labels and where the current causal action sits relative to its caption. Select the instrument needed for each chapter, keep complete state in exploration, and preserve 16 px text instead of shrinking the whole scene. Explicitly associate range labels with inputs: an output inside an implicit label can take the association away from the slider.
+
+### Give isolated reviews their own dependency tree
+
+A review checkout briefly shared `node_modules` with the active workspace. Package-manager validation then rewrote executable shims for different roots, producing transient missing-file warnings while another process was running. Use an independent offline, frozen-lockfile install in each review checkout. Keep the verified source and deployed assets immutable; never reuse a mutable build directory as an upload source.
+
+### Check the end of synthesized speech
+
+A water-hammer English chapter returned a valid MP3 containing only its first three sentences. Overall ASR similarity was 0.6652, above the old 0.64 threshold, despite the missing ending. A targeted resynthesis restored the clip from 13.06 to 23.32 seconds; both language timelines were remeasured. The audit now requires at least 40% matched coverage of the final fifth of normalized script text (at least 24 characters). The real truncated sample scores zero, while all other 95 batch transcripts pass this additional guard. Re-audit the assembled recordings after repair. This rule flags incomplete endings for review; it does not certify diction or naturalness.

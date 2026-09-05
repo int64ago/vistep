@@ -1,0 +1,65 @@
+<h2 id="understand">If the magnet is not being used up, where does the energy come from?</h2>
+
+First, stop the shaft. A magnetic field still threads the copper loop, but constant flux produces no sustained induced EMF. Turn the shaft and the loop's orientation changes. The directed area facing the field changes, and a voltage appears.
+
+The illustration follows one actual turn of copper. When its normal points along the field, flux is at an extremum and instantaneous EMF is zero. A quarter turn later, flux crosses zero but changes fastest, giving the greatest EMF magnitude. The film freezes those views for observation; a frozen frame does not set the modeled shaft speed to zero.
+
+Two rotating leads connect to two complete slip rings. Each stationary brush keeps touching its own ring, so external wires need not twist with the shaft. These rings do not exchange terminals every half turn: the output remains alternating. They are different from a split-ring commutator that mechanically switches connections.
+
+Connect a load and current flows through the coil. Magnetic forces on that current create a torque opposing the rotation. An external drive must supply mechanical work to maintain speed. The shaft supplies the energy delivered to the load; the magnetic field enables the conversion.
+
+<h2 id="try">Separate orientation, speed and loading</h2>
+
+- Sample the rotor at 0°, 90°, 180° and 270°. Angle selects the observed position; speed specifies how fast the physical rotor is turning at that sample.
+- At the same angle, increase speed from 360 to 720 rpm. Open-circuit voltage amplitude doubles and physical period halves.
+- Disconnect the load while holding speed fixed. Open-circuit voltage can remain, but load current and electromagnetic drag are zero in this model.
+- With the load connected, reduce its resistance. Current and opposing torque increase, requiring more shaft input to maintain the specified speed.
+- Select negative speed. Voltage polarity reverses at the same sample angle, and torque reverses too. It still opposes the actual rotation.
+- Set field or speed to zero. With no changing flux, voltage, current and electromagnetic power vanish.
+
+The controls support keyboard arrow keys. Exploration has no second automatic clock; the shared film player owns pause, chapter seeking and replay.
+
+<h2 id="deeper">From the conductor to an energy balance</h2>
+
+<details>
+<summary>Polarity and Faraday's law</summary>
+
+The shaft is the z axis; positive angle increases about +z. At zero angle, the loop normal and the uniform air-gap field point along +x. Following the conductor from A to B defines the positive area normal. Terminal voltage is brush B minus brush A, and positive load current leaves B, passes through the resistor and returns to A.
+
+<div className="formula">Φ = BA cos θ; e = −dΦ/dt = BAω sin θ</div>
+
+There is one turn, with no hidden turns multiplier. Arrows in the gap indicate a section of the stationary magnetic field, not particles moving through the wire. Flux uses the closed surface bounded by the loop. The small gap for its two leads lies on the transverse front edge, whose omitted segment contributes no motional EMF in this model.
+
+With internal equivalent resistance r and a connected load R, current is e/(R+r), and terminal voltage is iR. With the load open, current is zero and terminal voltage equals EMF. The plotted voltage is the external terminal voltage, in volts. Its horizontal axis is rotor angle, not playback time.
+
+</details>
+
+<details>
+<summary>Why is the electromagnetic torque a braking torque?</summary>
+
+The loop's magnetic moment interacts with the applied field. With the chosen references, torque about the shaft is:
+
+<div className="formula">τₑₘ = −BAi sin θ</div>
+
+For the resistive circuit, substituting the current gives τₑₘ = −(BA)²ω sin²θ/(R+r). Whenever current flows, torque has the opposite sign to angular speed. Reversing the drive reverses voltage, current and opposing torque; it does not make the resistor supply power.
+
+Neglecting rotor inertia and mechanical friction, the external drive supplies torque −τₑₘ. The model satisfies this energy balance at every angle:
+
+<div className="formula">Pshaft = −τₑₘω = ei = i²R + i²r</div>
+
+The final chapter integrates shaft work, energy delivered to the load and internal loss over one complete revolution. The end of each curve gives accumulated energy for that revolution, not power or a calculated resistor temperature.
+
+</details>
+
+<details>
+<summary>Geometry, teaching parameters and limits</summary>
+
+The conductor centerline is a single rounded rectangle: 0.12 m wide, 0.18 m long, with 0.009 m corner radius. Its area is 0.12 × 0.18 − (4−π) × 0.009², approximately 0.02153047 m². Rotating leads connect the endpoints to their separate complete rings. Leads clear both the shaft and the first ring's bore. Both bearings sit beyond the rings to support the cantilever teaching rotor without obstructing those leads.
+
+Defaults are 0.8 T, 360 rpm, an 8 Ω load and 0.4 Ω internal equivalent resistance. Internal resistance combines winding and brush-contact losses; it is a teaching parameter, not a fit to the rendered copper thickness. These parameters do not represent a product's ratings.
+
+The air-gap field is uniform. Fringing, extra EMF in leads and rings, armature reaction, coil inductance and contact arcing are omitted. Transparent magnetic poles reveal the interior; their magnetic material is not solved. An external drive specifies speed, with rotor inertia and bearing/brush mechanical friction neglected. Consequently, no-load electromagnetic torque is zero here; that does not mean a real unloaded generator requires no mechanical power.
+
+</details>
+
+Technical basis: [MIT: Faraday's law and generators](https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/ce1720fd4b21def8c2189ff4779f27f7_cha10faraday_law.pdf), [OpenStax: generators and back EMF](https://openstax.org/books/university-physics-volume-2/pages/13-6-electric-generators-and-back-emf), [OpenStax: force and torque on a current loop](https://openstax.org/books/university-physics-volume-2/pages/11-5-force-and-torque-on-a-current-loop), and [Moog: slip rings and brushes](https://www.moog.com/products/slip-rings/slip-ring-faqs.html). Geometry, calculations and artwork are original to this scene.

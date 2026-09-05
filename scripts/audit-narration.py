@@ -20,6 +20,13 @@ unknown=selected-manifest.keys()
 if unknown: raise SystemExit('Unknown topics: '+', '.join(sorted(unknown)))
 ffmpeg=imageio_ffmpeg.get_ffmpeg_exe()
 def normalized(text): return ''.join(re.findall(r'[a-z0-9\u3400-\u9fff]',text.lower()))
+def ending_coverage(expected, transcript):
+    expected, transcript = normalized(expected), normalized(transcript)
+    if not expected: return 0.0
+    start=max(0,len(expected)-max(24,len(expected)//5))
+    blocks=difflib.SequenceMatcher(None,expected,transcript,autojunk=False).get_matching_blocks()
+    matched=sum(max(0,block.a+block.size-max(block.a,start)) for block in blocks)
+    return matched/(len(expected)-start)
 def inspect(job):
     slug,locale,index,track,cue=job
     audio=subprocess.run([ffmpeg,'-hide_banner','-loglevel','error','-i',str(ROOT/'public'/track['src'].lstrip('/')),'-ss',str(cue['at']),'-t',str(cue['end']-cue['at']),'-ar','16000','-ac','1','-f','mp3','pipe:1'],check=True,capture_output=True).stdout
@@ -39,9 +46,12 @@ def inspect(job):
     transcript=result.get('text',''); info=result.get('transcription_info',{})
     similarity=difflib.SequenceMatcher(None,normalized(cue['text']),normalized(transcript),autojunk=False).ratio()
     language=info.get('language','')
-    passed=language==locale and similarity>=.64
-    entry={'topic':slug,'locale':locale,'chapter':index+1,'audioSha256':digest,'language':language,'similarity':round(similarity,4),'pass':passed,'expected':cue['text'],'transcript':transcript}
-    print(f'{slug}/{locale}/{index+1}: {language} {similarity:.3f} {"PASS" if passed else "REVIEW"}',flush=True)
+    ending=ending_coverage(cue['text'],transcript)
+    # A long missing suffix can still pass the overall similarity threshold.
+    # This is a review guard, not proof of natural speech or perfect transcription.
+    passed=language==locale and similarity>=.64 and ending>=.4
+    entry={'topic':slug,'locale':locale,'chapter':index+1,'audioSha256':digest,'language':language,'similarity':round(similarity,4),'endingCoverage':round(ending,4),'pass':passed,'expected':cue['text'],'transcript':transcript}
+    print(f'{slug}/{locale}/{index+1}: {language} {similarity:.3f} ending {ending:.3f} {"PASS" if passed else "REVIEW"}',flush=True)
     return entry
 jobs=[(slug,locale,i,track,cue) for slug,locales in manifest.items() if slug in selected for locale,track in locales.items() for i,cue in enumerate(track['cues'])]
 with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool: results=list(pool.map(inspect,jobs))

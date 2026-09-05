@@ -55,7 +55,7 @@ python3 -m venv .venv-voice
 
 Production uses Microsoft Edge online speech through pinned `edge-tts`; see [provenance](../THIRD_PARTY_NOTICES.md). It needs network access, but ordinary builds and readers do not call it. Revisit the script if the measured film exceeds five minutes. Regenerate only changed scenes and commit scripts, manifests and recordings together.
 
-Listen to both tracks for intelligibility, technical pronunciation, delivery and synchronization. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, without a reference prompt or language hint. It can catch wrong-language output and gibberish; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
+Listen to both tracks for intelligibility, technical pronunciation, delivery and synchronization. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, without a reference prompt or language hint. It can catch wrong-language output, gibberish and truncated endings; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
 
 For a reviewed batch, both narration tools accept several slugs after `--only`. This shares the bounded worker pool and commits measured metadata after the selected recordings finish. One integration owner runs these tools; parallel scene workers do not write shared audio manifests. Cached unchanged tracks keep their original content hashes.
 

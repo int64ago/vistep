@@ -1,0 +1,76 @@
+<h2 id="understand">Why does one narrow opening make a wide bright band?</h2>
+
+A uniform monochromatic plane wave illuminates the slit with the same initial phase across its opening. To find the field at a distant observation point, add the contributions from **the whole opening**. Diffraction is not determined only by the two edges or by a single central ray.
+
+Looking straight ahead, the contributions have no first-order path difference and add in phase. This makes the central maximum. Looking to one side introduces different phases across the aperture. The field arrows bend into an arc as they are added head to tail, reducing the resultant. At the first minimum, every strip in one half has an opposite contribution from the corresponding strip half a slit-width away.
+
+These arrows represent **complex amplitudes of a classical electric field**. A closed addition path ends where it started, giving zero resultant field. It is not a circular photon trajectory or a simulation of quantum detection events.
+
+<h2 id="try">Keep the same millimeter ruler</h2>
+
+- Select “Central peak,” “First minimum,” and “First side peak.” Compare the field sum with the screen. In the default setup, the first minimum is about **6.88 mm** from the center; the first side peak is about **4.72%** as intense as the central peak.
+- Keep 550 nm light and a 1 m screen distance, then reduce the slit from 80 μm to 40 μm. The first minimum moves to about 13.75 mm, widening the central band.
+- With the slit fixed, change the wavelength from 450 nm to 650 nm. The longer red-end wavelength moves the first minimum farther out. The colors are illustrative, not a calibrated spectral display.
+- Bring the screen closer. When the demonstration's far-field conditions are no longer met, the pattern becomes “Not predicted.” This does not mean a real screen goes dark: it needs a different, near-field calculation.
+
+The sliders support keyboard arrows, and “Restore far-field setup” returns to the starting arrangement. The probe stays within the displayed screen. A shortcut is disabled when its minimum or side peak lies outside that range. The usual range is ±25 mm; it contracts at short distances to retain small viewing angles.
+
+<h2 id="deeper">Add fields before squaring them</h2>
+
+<details>
+<summary>Where does the sinc function come from?</summary>
+
+Let `a` be the full slit width, `λ` the wavelength in the surrounding medium, and `θ` the observation angle from the central axis. The uniform aperture gives the normalized far-field amplitude:
+
+<div className="formula">A(θ) = (1/a) ∫ exp(−i 2πu sinθ / λ) du = sin β / β</div>
+
+The integral runs from `−a/2` to `a/2`, with `β = πa sinθ / λ`. Here `sinc β` means `sin β / β`; it does not use the alternative convention with π inside the function definition. At the center, `β = 0`, and the limiting amplitude is 1.
+
+<div className="formula">I(θ) / I₀ = |A(θ)|² = (sin β / β)²</div>
+
+`I₀` is the central intensity **of the current configuration**, not the incident energy. Normalizing each pattern hides changes in throughput and absolute peak intensity as the opening changes. A wider normalized pattern does not imply that a narrower slit creates energy.
+
+The first side lobe has a negative field coefficient, indicating a phase reversal relative to the central reference. Its intensity remains the nonnegative square. The model uses the first side-peak solution of `tan β = β`, `β ≈ 4.49340946`, giving intensity approximately 0.04719045. It does not treat `1.5π` as the exact peak location.
+
+</details>
+
+<details>
+<summary>From angles to millimeters on the screen</summary>
+
+The noncentral minima satisfy:
+
+<div className="formula">a sin θₘ = m λ, with m = ±1, ±2, …</div>
+
+At the first minimum, two matching strips half a slit-width apart have a path difference of `λ/2` and a phase difference of π. Their fields cancel pair by pair. A plane screen perpendicular to the central axis at distance `L` has coordinate `y = L tan θ`; the model does not substitute the sine for the tangent.
+
+At small angles, the center-to-first-minimum distance is approximately `y₁ ≈ Lλ/a`. The full central-band width between its two minima is approximately `2Lλ/a`. The installation connects this angular rule to actual millimeter readings.
+
+If the zero equation is extended to `λ/a = 1`, it gives 90°, which is infinitely far out on a plane screen. Above one, there is no real angle solving the first-zero equation. This **does not mean diffraction disappears**. When features approach the wavelength, assuming that the aperture simply transmits the undisturbed incident field also breaks down. Material, thickness, polarization, and electromagnetic boundary conditions matter. The final chapter examines only the equation; it does not predict a subwavelength aperture's diffraction pattern.
+
+</details>
+
+<details>
+<summary>How far is the far field?</summary>
+
+Fraunhofer diffraction retains the linear aperture-dependent propagation phase while neglecting its quadratic curvature. Using the **full slit width**, define:
+
+<div className="formula">N = a² / (λL)</div>
+
+The requirement `N ≪ 1` is more useful than merely placing the screen far away compared with `a`. Some Fresnel-number definitions use the half-width and differ by a factor of four. Here the neglected center-to-edge phase is approximately `πN/4`; the model evaluates the exact edge path stably without subtracting nearly equal distances.
+
+This demonstration uses conservative display guards `N ≤ 0.1` and `a ≥ 20λ`, and limits the visible screen to `|y/L| ≤ 0.12`. These are teaching choices, not abrupt boundaries in nature. Outside them, the screen prediction is withheld rather than presenting a far-field sinc pattern as a near-field solution.
+
+</details>
+
+<details>
+<summary>What is calculated and what is simplified?</summary>
+
+Each arrow is the **exact complex integral over a finite strip** of the aperture. Eight strips make the contributions readable; this is not an approximation by eight point sources. Their sum still equals the continuous slit integral. Revealing the sum is a teaching state, not sequential illumination of the slit. The phasor view reframes smoothly as needed and carries a `0.25 E₀` scale bar.
+
+The model is a one-dimensional scalar far-field cross-section for a long straight slit. It omits the other aperture dimension, material structure, polarization coupling, finite thickness, and reflection. Air is approximated by refractive index one. The path drawing magnifies the aperture, compresses propagation distance, and slows the incident wavefronts; its pixels are not an angular ruler. The phone drawing composes a separate downward cross-section. Display units are nm, μm, m, and mm; calculations convert them to SI.
+
+The screen's illustrative brightness uses an `I^0.35` mapping so weak side lobes remain visible. The curve, probe percentage, and minimum positions use the untransformed intensity.
+
+References: [UT Austin: Single-Slit Diffraction](https://farside.ph.utexas.edu/teaching/315/Waves/node96.html), [The Feynman Lectures I.30](https://www.feynmanlectures.caltech.edu/I_30.html), [MIT: Fresnel and Fraunhofer diffraction](https://www.mit.edu/~birge/fresnel/), and [TU Delft: Scalar Diffraction Optics](https://interactivetextbooks.tudelft.nl/interactive-optics/content/Chap6_Diffraction/DiffractiveOptics_2022_01Clean.html).
+
+</details>

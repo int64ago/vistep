@@ -21,7 +21,7 @@ describe('bilingual publishing', () => {
     expect(localeFromPath('/en/explore/jpeg/')).toBe('en');
     expect(translate('维度 {0}', 'en', 4)).toBe('Dimension 4');
   });
-  it('publishes matching articles, metadata and film captions for all twelve topics', () => {
+  it('publishes matching articles, metadata and film captions for every topic', () => {
     for (const topic of topics) {
       const translated = localizedTopic(topic, 'en');
       for (const key of ['title', 'question', 'description', 'category', 'name'] as const)

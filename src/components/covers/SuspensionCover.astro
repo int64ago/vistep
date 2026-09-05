@@ -1,0 +1,100 @@
+---
+import {
+  SUSPENSION,
+  suspensionInitial,
+  suspensionPose,
+  simulateSuspension,
+  SUSPENSION_GEOMETRY as G,
+} from '../../models/suspension';
+interface Props {
+  color?: string;
+}
+const { color = '#a77e60' } = Astro.props;
+const road = { kind: 'flat' as const, amplitude: 0, frequency: 10 };
+const p = suspensionPose(suspensionInitial(0.018), SUSPENSION, road);
+const sc = 150,
+  y = (n: number) => 206 - n * sc;
+const lower = y(p.lowerSpringY),
+  upper = y(p.upperMountY),
+  wheel = y(p.wheelY);
+const tire =
+  Array.from({ length: 97 }, (_, i) => {
+    const a = (i * Math.PI * 2) / 96;
+    return `${i ? 'L' : 'M'}${147 + G.tireRadius * sc * Math.cos(a)} ${Math.min(wheel + G.tireRadius * sc * Math.sin(a), 206)}`;
+  }).join(' ') + 'Z';
+const coil = Array.from(
+  { length: 97 },
+  (_, i) =>
+    `${i ? 'L' : 'M'}${107 + Math.sin((i / 96) * Math.PI * 12) * 12} ${lower + ((upper - lower) * i) / 96}`,
+).join(' ');
+const wave = (damping: number, baseline: number) =>
+  simulateSuspension({ ...SUSPENSION, damping }, road, 4, suspensionInitial(0.018))
+    .states.filter((_, i) => i % 12 === 0)
+    .map((s, i) => `${i ? 'L' : 'M'}${271 + s.time * 27} ${baseline - s.body * 1000}`)
+    .join(' ');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  <defs
+    ><linearGradient id="susp-cover-bg" x1="0" x2="1" y2="1"
+      ><stop stop-color="#f1f1e7"></stop><stop offset="1" stop-color="#dae3dc"
+      ></stop></linearGradient
+    ><linearGradient id="susp-cover-steel" x1="0" x2="1"
+      ><stop stop-color="#879b9f"></stop><stop offset=".4" stop-color="#e7e9df"></stop><stop
+        offset="1"
+        stop-color="#72898f"></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#susp-cover-bg)"></rect>
+  <ellipse cx="148" cy="216" rx="116" ry="9" fill="#7c9293" opacity=".15"></ellipse>
+  <path
+    d={`M70 ${upper - 6}V${wheel + 10}M223 ${upper - 6}V${wheel + 10}`}
+    stroke="#a4b6b7"
+    stroke-width="4"></path>
+  <rect
+    x="57"
+    y={upper - 30}
+    width="178"
+    height="30"
+    rx="7"
+    fill="url(#susp-cover-steel)"
+    stroke="#869d9f"></rect>
+  <path
+    d={`M70 ${wheel}H223M107 ${wheel}V${lower}M195 ${wheel}V${y(p.lowerDamperY)}`}
+    stroke="#526f77"
+    stroke-width="8"
+    stroke-linejoin="round"></path>
+  <path d={coil} stroke={color} stroke-width="3.5" stroke-linecap="round"></path>
+  <path d={`M89 ${lower}H125M89 ${upper}H125`} stroke="#5d777c" stroke-width="4"></path>
+  <rect
+    x="187"
+    y={y(p.lowerDamperY + G.damperTubeLength)}
+    width="16"
+    height={G.damperTubeLength * sc}
+    rx="3"
+    fill="#5e8c92"
+    stroke="#426c73"></rect>
+  <path
+    d={`M195 ${upper}V${y(p.upperMountY - G.damperRodLength)}`}
+    stroke="#bdc4b9"
+    stroke-width="4"></path>
+  <path d={tire} fill="#34484f" stroke="#6f8588"></path>
+  <circle cx="147" cy={wheel} r={G.rimRadius * sc} fill="url(#susp-cover-steel)" stroke="#d7ddd6"
+  ></circle>
+  <circle cx="147" cy={wheel} r="9" fill="#52727a"></circle>
+  {
+    [0, 1, 2, 3, 4].map((i) => (
+      <path
+        d={`M${147 + 12 * Math.cos((i * Math.PI * 2) / 5)} ${wheel + 12 * Math.sin((i * Math.PI * 2) / 5)}L${147 + 26 * Math.cos((i * Math.PI * 2) / 5)} ${wheel + 26 * Math.sin((i * Math.PI * 2) / 5)}`}
+        stroke="#617b81"
+        stroke-width="3"
+      />
+    ))
+  }
+  <path d="M52 210H246" stroke="#607b80" stroke-width="8" stroke-linecap="round"></path>
+  <path d="M271 68H379M271 146H379" stroke="#8ea5a7" stroke-width=".7" opacity=".6"></path>
+  <path d={wave(0, 68)} stroke={color} stroke-width="2"></path>
+  <path d={wave(1400, 146)} stroke="#4b828a" stroke-width="2"></path>
+  <path d="M270 193h52m-5-4 5 4-5 4" stroke="#8e6c51" stroke-width="1.4"></path>
+  <circle cx="296" cy="193" r="4" fill={color}></circle>
+</svg>

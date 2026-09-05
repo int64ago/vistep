@@ -1,0 +1,95 @@
+---
+import { rainbowColor, traceRainbow } from '../../models/rainbow';
+interface Props {
+  color?: string;
+}
+const { color = '#aac7d7' } = Astro.props;
+const centre = { x: 235, y: 88 },
+  radius = 61;
+const project = (p: { x: number; y: number }) => ({
+  x: centre.x + p.x * radius,
+  y: centre.y - p.y * radius,
+});
+const path = (points: { x: number; y: number }[]) =>
+  points.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join('');
+const ray = traceRainbow(0.86, 550);
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="230"
+  viewBox="0 0 400 230"
+  fill="none"
+  aria-hidden="true"
+>
+  <defs>
+    <radialGradient id="rainbow-cover-back" cx="63%" cy="32%" r="86%"
+      ><stop stop-color="#294557"></stop><stop offset="1" stop-color="#101f2e"
+      ></stop></radialGradient
+    >
+    <radialGradient id="rainbow-cover-water" cx="30%" cy="26%" r="76%"
+      ><stop stop-color="#aacfe1" stop-opacity=".22"></stop><stop
+        offset=".7"
+        stop-color="#5d8cac"
+        stop-opacity=".04"></stop><stop offset="1" stop-color="#acdae7" stop-opacity=".28"
+      ></stop></radialGradient
+    >
+    <clipPath id="rainbow-cover-frame"><rect width="400" height="230"></rect></clipPath>
+  </defs>
+  <rect width="400" height="230" fill="url(#rainbow-cover-back)"></rect>
+  <g clip-path="url(#rainbow-cover-frame)">
+    <circle
+      cx={centre.x}
+      cy={centre.y}
+      r={radius}
+      fill="url(#rainbow-cover-water)"
+      stroke={color}
+      stroke-opacity=".65"></circle>
+    <circle cx={centre.x} cy={centre.y} r={radius * 1.085} stroke={color} stroke-opacity=".08"
+    ></circle>
+    <path
+      d={`M22,${centre.y}H${centre.x + radius}`}
+      stroke={color}
+      stroke-opacity=".16"
+      stroke-dasharray="3 5"></path>
+    {
+      [400, 450, 500, 550, 600, 650, 700].map((w) => (
+        <path
+          d={path(traceRainbow(0.86, w).points.map(project))}
+          stroke={rainbowColor(w)}
+          stroke-opacity=".66"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+      ))
+    }
+    <path d={path(ray.points.slice(0, 2).map(project))} stroke="#f0e9d8" stroke-width="2"></path>
+    {
+      ray.branches.map((b) => (
+        <path
+          d={path([b.a, b.b].map(project))}
+          stroke="#bbd2df"
+          stroke-opacity=".22"
+          stroke-dasharray="3 4"
+        />
+      ))
+    }
+    {
+      [ray.entry, ray.reflection, ray.exit].map((p) => {
+        const c = project(p);
+        return <circle cx={c.x} cy={c.y} r="2.6" fill="#f0dbb3" />;
+      })
+    }
+    <path
+      d={path(
+        [
+          { x: ray.entry.x * 0.65, y: ray.entry.y * 0.65 },
+          { x: ray.entry.x * 1.35, y: ray.entry.y * 1.35 },
+        ].map(project),
+      )}
+      stroke="#d0d9d4"
+      stroke-opacity=".4"
+      stroke-dasharray="3 4"></path>
+  </g>
+</svg>

@@ -1,4 +1,10 @@
 ---
+import RainbowCover from './covers/RainbowCover.astro';
+import WaterHammerCover from './covers/WaterHammerCover.astro';
+import SuspensionCover from './covers/SuspensionCover.astro';
+import DiffractionCover from './covers/DiffractionCover.astro';
+import MemoryCacheCover from './covers/MemoryCacheCover.astro';
+import ElectricGeneratorCover from './covers/ElectricGeneratorCover.astro';
 import SiphonCover from './covers/SiphonCover.astro';
 import BallBearingCover from './covers/BallBearingCover.astro';
 import SeasonsCover from './covers/SeasonsCover.astro';
@@ -857,4 +863,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'seasons' && <SeasonsCover color={color} />}
   {slug === 'ball-bearing' && <BallBearingCover color={color} />}
   {slug === 'siphon' && <SiphonCover color={color} />}
+  {slug === 'electric-generator' && <ElectricGeneratorCover color={color} />}
+  {slug === 'memory-cache' && <MemoryCacheCover color={color} />}
+  {slug === 'diffraction' && <DiffractionCover color={color} />}
+  {slug === 'suspension' && <SuspensionCover color={color} />}
+  {slug === 'water-hammer' && <WaterHammerCover color={color} />}
+  {slug === 'rainbow' && <RainbowCover color={color} />}
 </svg>

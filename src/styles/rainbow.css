@@ -1,0 +1,347 @@
+.rainbow-study {
+  color: #dce4e7;
+  background: radial-gradient(ellipse at 64% 24%, #213644 0, #132735 48%, #101f2c 100%);
+  padding: 25px 30px 17px;
+  font-size: 16px;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
+}
+.rainbow-study * {
+  box-sizing: border-box;
+}
+.rainbow-study p {
+  margin: 0;
+}
+.rainbow-study svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.rainbow-study svg text {
+  font-family: inherit;
+  font-size: 24px;
+  fill: #d0dde0;
+}
+.rainbow-study b {
+  font-weight: 500;
+}
+.rainbow-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+  color: #b6c8d3;
+}
+.rainbow-heading > span:first-child {
+  letter-spacing: 0.12em;
+}
+.rainbow-visual {
+  min-height: 530px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 0;
+}
+.rainbow-drop-svg {
+  max-height: 440px;
+}
+.rainbow-study[data-view='concentration'] .rainbow-drop-svg {
+  max-height: 315px;
+}
+.rainbow-study[data-view='concentration'] .rainbow-drop-svg text {
+  font-size: 29px;
+}
+.rainbow-path-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 550px);
+  margin: 0 auto 18px;
+}
+.rainbow-path-steps > span {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  color: #9db2c1;
+}
+.rainbow-path-steps b {
+  font-size: 18px;
+  border: 1px solid #9fb7bc33;
+  border-radius: 50%;
+  height: 28px;
+  min-width: 28px;
+  display: grid;
+  place-content: center;
+}
+.rainbow-path-steps > [data-active='true'] {
+  color: #f2dcad;
+}
+.rainbow-path-steps > [data-active='true'] b {
+  background: #cfb78018;
+  border-color: #dbbf8066;
+}
+.rainbow-concentration {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.rainbow-concentration p,
+.rainbow-spectrum p {
+  color: #c4d3dc;
+}
+.rainbow-concentration svg {
+  max-height: 190px;
+}
+.rainbow-spectrum {
+  padding: 0 18px 8px;
+}
+.rainbow-spectrum svg {
+  max-height: 108px;
+}
+.rainbow-spectrum svg text {
+  font-size: 26px;
+}
+.rainbow-observer-svg {
+  max-height: 450px;
+}
+.rainbow-observer-key,
+.rainbow-sky-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px 28px;
+  flex-wrap: wrap;
+  margin: 13px 0;
+}
+.rainbow-observer-key > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.rainbow-observer-key i {
+  width: 16px;
+  height: 3px;
+}
+.rainbow-view-note {
+  color: #d1dedc;
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto !important;
+}
+.rainbow-sky-svg {
+  max-height: 390px;
+  border-radius: 28px;
+}
+.rainbow-sky-key {
+  color: #c1d0d6;
+}
+.rainbow-readout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 30px;
+  border-top: 1px solid #a4bac91f;
+  padding: 17px 0 19px;
+}
+.rainbow-readout > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+}
+.rainbow-readout small {
+  font-size: 16px;
+  color: #b3c6d3;
+}
+.rainbow-readout b {
+  color: #e7d9b7;
+  font-size: 23px;
+}
+.rainbow-method {
+  border-top: 1px solid #a4bac91f;
+}
+.rainbow-method summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+  color: #c2d1d8;
+}
+.rainbow-method p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #c3d3dc;
+}
+.rainbow-method a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-right: 24px;
+  color: #e8d3a9;
+}
+.rainbow-explore {
+  padding: 17px 0 23px;
+  border-top: 1px solid #a4bac933;
+}
+.rainbow-view-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rainbow-study button {
+  min-height: 44px;
+  font: inherit;
+  padding: 9px 16px;
+  border: 1px solid #a4bfcd3b;
+  border-radius: 24px;
+  color: #d2e0e7;
+  background: #b5c8d20b;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.rainbow-study button:hover {
+  background: #b5c8d220;
+  border-color: #b8cfdb80;
+}
+.rainbow-study button[aria-pressed='true'] {
+  background: #d1c0961b;
+  color: #f0dcb3;
+  border-color: #e2c78c73;
+}
+.rainbow-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 30px;
+  margin-block: 22px;
+}
+.rainbow-controls .control,
+.rainbow-controls .control-top {
+  color: #d5e0e4;
+  font-size: 16px;
+}
+.rainbow-controls .control-top {
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+.rainbow-controls input {
+  min-height: 44px;
+}
+.rainbow-study :is(button, summary, input, a):focus-visible {
+  outline: 2px solid #e9cf9a;
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .rainbow-study[data-watch='true'] {
+    min-height: 770px;
+    display: flex;
+    flex-direction: column;
+  }
+  .rainbow-study[data-watch='true'] .rainbow-method {
+    margin-top: auto;
+  }
+  .rainbow-study {
+    padding: 18px 12px 12px;
+  }
+  .rainbow-heading {
+    font-size: 16px;
+  }
+  .rainbow-heading > span:first-child {
+    letter-spacing: 0.06em;
+  }
+  .rainbow-visual {
+    min-height: 420px;
+    padding: 5px 0 12px;
+  }
+  .rainbow-drop-svg {
+    max-height: 440px;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .rainbow-study[data-view='concentration'] .rainbow-drop-svg {
+    max-height: 300px;
+  }
+  .rainbow-study[data-view='concentration'] .rainbow-drop-svg text {
+    font-size: 24px;
+  }
+  .rainbow-concentration {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .rainbow-concentration svg {
+    max-width: 340px;
+    max-height: 174px;
+    margin: 0 auto;
+  }
+  .rainbow-concentration p {
+    text-align: center;
+  }
+  .rainbow-spectrum {
+    padding: 0 0 6px;
+  }
+  .rainbow-spectrum p {
+    font-size: 16px;
+  }
+  .rainbow-spectrum svg {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .rainbow-spectrum svg text {
+    font-size: 24px;
+  }
+  .rainbow-observer-svg {
+    max-height: 350px;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .rainbow-sky-svg {
+    max-height: 292px;
+    max-width: 340px;
+    margin: 0 auto;
+    border-radius: 19px;
+  }
+  .rainbow-observer-key,
+  .rainbow-sky-key {
+    gap: 8px 18px;
+    margin: 10px 0;
+  }
+  .rainbow-path-steps {
+    gap: 6px;
+    margin: 4px 0 10px;
+  }
+  .rainbow-path-steps > span {
+    gap: 5px;
+  }
+  .rainbow-path-steps b {
+    min-width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+  .rainbow-readout {
+    gap: 12px;
+    padding: 13px 0;
+  }
+  .rainbow-readout > span {
+    display: block;
+  }
+  .rainbow-readout small,
+  .rainbow-readout b {
+    display: block;
+  }
+  .rainbow-readout b {
+    font-size: 22px;
+    margin-top: 3px;
+  }
+  .rainbow-controls {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rainbow-study button {
+    transition: none;
+  }
+}

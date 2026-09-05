@@ -1,0 +1,149 @@
+---
+import {
+  GENERATOR as G,
+  generatorConductorPoint,
+  generatorRotorLeads,
+  generatorContacts,
+  generatorExternalCircuit,
+  rotateGeneratorPoint,
+  type GeneratorPoint,
+} from '../../models/electric-generator';
+interface Props {
+  color?: string;
+}
+const { color = '#4b8197' } = Astro.props;
+const angle = 0.7;
+const project = ([x, y, z]: GeneratorPoint) => [128 + (x + 0.7 * z) * 34, 87 - y * 28 + z * 14];
+const path = (points: GeneratorPoint[], rotating = false) =>
+  points
+    .map(
+      (p, i) =>
+        `${i ? 'L' : 'M'}${project(rotating ? rotateGeneratorPoint(p, angle) : p).join(',')}`,
+    )
+    .join(' ');
+const circuit = generatorExternalCircuit(false);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path
+    d={path([
+      [-2.2, -1.45, -2.1],
+      [2.2, -1.45, -2.1],
+      [2.2, -1.45, 2.1],
+      [-2.2, -1.45, 2.1],
+    ]) + 'Z'}
+    fill="#465f6d"
+    opacity=".18"></path>
+  {
+    [-1, 1].map((sign) => (
+      <path
+        d={
+          path([
+            [sign * 1.87, -1.3, -1.8],
+            [sign * 1.87, 1.3, -1.8],
+            [sign * 1.87, 1.3, 1.9],
+            [sign * 1.87, -1.3, 1.9],
+          ]) + 'Z'
+        }
+        fill={sign < 0 ? '#b58275' : '#77a0b4'}
+        opacity=".55"
+        stroke={sign < 0 ? '#9c6d60' : '#5c879c'}
+        stroke-width="1"
+      />
+    ))
+  }
+  {
+    [-0.6, 0, 0.6].map((y) => (
+      <path
+        d={path([
+          [-1.43, y, 0],
+          [1.43, y, 0],
+        ])}
+        stroke={color}
+        stroke-width="1.4"
+        opacity=".6"
+      />
+    ))
+  }
+  <path
+    d={path([
+      [0, 0, 0],
+      [0, 0, 5.1],
+    ])}
+    stroke="#8b9ea7"
+    stroke-width="4.5"></path>
+  <path
+    d={path(
+      Array.from({ length: 241 }, (_, i) => generatorConductorPoint(i / 240)),
+      true,
+    )}
+    stroke="#c9915c"
+    stroke-width="3.6"
+    stroke-linejoin="round"></path>
+  {
+    generatorRotorLeads().map((points) => (
+      <path d={path(points, true)} stroke="#c9915c" stroke-width="2" />
+    ))
+  }
+  {
+    G.ringZ.map((z, i) => (
+      <g>
+        <path
+          d={path(
+            Array.from(
+              { length: 65 },
+              (_, k) =>
+                [
+                  G.ringRadius * Math.cos((k / 64) * Math.PI * 2),
+                  G.ringRadius * Math.sin((k / 64) * Math.PI * 2),
+                  z,
+                ] as GeneratorPoint,
+            ),
+          )}
+          stroke="#b9a16f"
+          stroke-width="4.5"
+        />
+        <path
+          d={path([generatorContacts()[i].touch, generatorContacts()[i].lead])}
+          stroke="#435d69"
+          stroke-width="6"
+        />
+      </g>
+    ))
+  }
+  <path d={path(circuit.feed)} stroke="#bb874f" stroke-width="2"></path>
+  <path d={path(circuit.return)} stroke="#bb874f" stroke-width="2"></path>
+  <path d={path([circuit.switchBottom, circuit.switchTop])} stroke="#aa9465" stroke-width="2"
+  ></path>
+  <path
+    d={path([
+      [circuit.loadPosition[0], circuit.loadPosition[1] - 0.42, circuit.loadPosition[2]],
+      [circuit.loadPosition[0], circuit.loadPosition[1] + 0.42, circuit.loadPosition[2]],
+    ])}
+    stroke="#c9b996"
+    stroke-width="10"
+    stroke-linecap="round"></path>
+  <path
+    d={path(
+      [
+        [0, 0, 5.1],
+        [0, 1, 5.1],
+        [0, 1, 5.6],
+      ],
+      true,
+    )}
+    stroke="#607f90"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path d="M45 206H355" stroke={color} opacity=".2"></path>
+  <path
+    d={Array.from(
+      { length: 161 },
+      (_, i) =>
+        `${i ? 'L' : 'M'}${45 + (i / 160) * 310},${206 - 10 * Math.sin((i / 160) * 4 * Math.PI)}`,
+    ).join(' ')}
+    stroke={color}
+    stroke-width="2"
+    stroke-linecap="round"></path>
+</svg>

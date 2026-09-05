@@ -1,0 +1,55 @@
+<h2 id="understand">A cache holds copies; addresses constrain their placement</h2>
+
+A program requests data at an address. On a cache hit, a nearby copy can serve the request. On a miss, data must be fetched from the next level. This scene reduces the idea to a **64-byte memory atlas and a 16-byte data cache** so that every identity remains visible. It is not a model of a particular processor.
+
+By default, a cache line holds four consecutive bytes. A miss at address 1 copies the aligned range 0–3 and returns the byte at offset 1. The neighbours remain cached, and the original memory contents stay intact. Range labels are decimal addresses; the two-character values inside cells are hexadecimal data.
+
+A hit requires both **a valid entry and a matching tag**. The set index tells the cache where to look, but several memory blocks may map to that set. The tag identifies which block is actually present. A cold entry with a zero tag is still invalid, even when the request also has tag zero.
+
+<h2 id="try">Keep the addresses fixed and change one condition</h2>
+
+- Choose Eight consecutive addresses and read 0–7. Filling 0–3 makes the next three reads hit. Address 4 needs a second line. The result is six hits, two misses and eight bytes fetched.
+- Choose Revisit one small region. Repeated addresses 0, 2 and 3 use the existing copy. Reading neighbours demonstrates spatial locality; revisiting an address soon demonstrates temporal locality. A program can exhibit both.
+- Choose Two addresses compete with 1 way, 4 sets. Alternating 0 and 16 misses every time while three sets remain empty. Change to 2 ways, 2 sets: the same trace restarts cold, at the same 16-byte capacity, and the last four reads hit.
+- In two-way mode, choose Recency and replacement. Follow `0,16,0,32`: the last-use IDs explain why 32 replaces 16 rather than the older, but recently reused, line at 0.
+- Choose Stride across four distant addresses. Check whether the neighbours brought in with each line are ever requested. Fetching a whole line does not guarantee that the program uses all of it.
+
+Access progress can pause within the teaching phases of checking, copying and returning. Cache state and counters update at the return phase; animation progress is not hardware time. A custom read continues from the currently completed state and replaces the unexecuted suffix, up to 32 manual reads. Changing associativity replays the same trace from an empty cache.
+
+<h2 id="deeper">Capacity, placement and replacement answer different questions</h2>
+
+<details>
+<summary>How does an address determine tag, set and offset?</summary>
+
+Let `C` be data capacity, `B` bytes per line and `W` ways per set. All are powers of two here, and the number of sets is `S = C / (B × W)`. For byte address `a`:
+
+<div className="formula">block = floor(a / B); offset = a mod B</div>
+<div className="formula">set = block mod S; tag = floor(block / S)</div>
+
+The default `C=16, B=4, W=1` gives four sets. Address 18 in six binary bits is `01 | 00 | 10`: tag 1, set 0, offset 2. It selects the third byte of addresses 16–19. Changing associativity changes the set count and the field boundaries. A fully associative configuration has no set-index bits, but still uses a tag and offset.
+
+The [Cornell cache parameter exercise](https://www.cs.cornell.edu/courses/cs3410/2019sp/projects/cache/) derives address fields from capacity, block size and associativity.
+
+</details>
+
+<details>
+<summary>Why can a partly empty cache conflict, and why can two ways still evict?</summary>
+
+With direct mapping, addresses 0 and 16 have block numbers 0 and 4. Both reduce to set zero modulo four. Neither may use an empty neighbouring set. Six alternating reads cause six misses, five evictions and 24 bytes fetched. Regrouping the same four lines into two sets with two ways lets both blocks remain in set zero: two initial misses fetch eight bytes.
+
+This model fills an invalid way first. When a set is full, exact LRU evicts the line whose most recent access is oldest. Hits update recency too, so LRU is not first-in first-out. It observes history, not future requests. In `0,16,0,32,16`, the final two misses evict the lines at 16 and then 0.
+
+The [Cornell cache notes](https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/caches.html) explain valid bits, tags, set placement and replacement policies.
+
+</details>
+
+<details>
+<summary>Are larger lines always better? What do these counts measure?</summary>
+
+For the line-size comparison, both caches retain 16 bytes of data. One-byte lines provide sixteen slots; four-byte lines provide only four. Reading the same addresses 0–7 needs eight fills in the former and two in the latter, but both fetch eight bytes in total. With the strided trace `0,16,32,48,0,16,32,48`, both direct-mapped designs miss eight times. Four-byte lines fetch 32 bytes; one-byte lines fetch eight. Larger lines may bring unused neighbours.
+
+[Intel's locality discussion](https://www.intel.com/content/www/us/en/developer/articles/technical/loop-optimizations-where-blocks-are-required.html) connects consecutive access and repeated use with cache behaviour. The scene uses deliberately tiny capacities and lines to expose those relationships, not an actual processor's parameters.
+
+The simulation is read-only, cold-started and exact LRU. Capacity counts data bytes only, excluding tags, valid bits and replacement records; equal data capacity does not imply equal hardware cost. Writeback, prefetching, multiple cache levels, coherence, virtual addressing and timing are omitted. Hits, misses and byte traffic characterize this request trace, not whole-processor performance.
+
+</details>

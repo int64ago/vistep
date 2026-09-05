@@ -1,0 +1,81 @@
+<h2 id="understand">The valve stops first; the whole pipe does not</h2>
+
+When a valve closes quickly, water near it slows before water farther upstream. The change in pressure has to travel along the pipe before it can change the distant flow. This rapid pressure transient is water hammer. Both pressure rises and pressure drops can occur.
+
+Water is slightly compressible, and a pipe wall is slightly compliant. As water slows, compression of the water and expansion of the wall store elastic energy. The disturbance travels much faster than the water itself. Color shows pressure relative to the initial value; arrows show the modeled flow direction. Both come from one calculation.
+
+The scene uses a horizontal, water-filled pipe between an ideal fixed-pressure reservoir and a terminal valve. On phones, distance along the pipe is drawn vertically to preserve a readable apparatus. Gravity has not been added: the modeled pipe remains horizontal. The reservoir drawing identifies a pressure boundary; its illustrated liquid depth is not used to calculate 1.8 MPa.
+
+<h2 id="try">Change one cause at a time</h2>
+
+- **Closure time.** Compare 0.02 s and 0.90 s with identical length, bore, initial speed, pressure and closure-law shape. Effective valve opening is not the same thing as flow rate.
+- **Wall stiffness.** Reduce Young's modulus from 200 GPa to 20 GPa. The wave and first rapid-closure peak become smaller, while transit time increases. This changes ideal elastic stiffness without claiming to model a real polymer's viscoelasticity.
+- **Initial speed.** A larger initial velocity produces a larger first rapid-stop pressure increment. Closing a valve with zero initial flow creates no water-hammer wave here.
+- **Initial absolute pressure.** Lowering it leaves less margin for the returning pressure drop. The calculation stops at vapor pressure rather than continuing into unsupported negative absolute pressures.
+- **Time and probe position.** Scrub backward or forward and move the probe along the pipe to connect local velocity and pressure to the complete field.
+
+Changing a physical setting starts a reproducible trial from its specified initial state. No unannounced supports, branches, gas vessels or measured valve curves are included.
+
+<h2 id="deeper">Two reflections and a travel time</h2>
+
+<details>
+<summary>Why do the reservoir and valve reflect differently?</summary>
+
+The reservoir fixes pressure at the upstream boundary. An incoming pressure disturbance therefore returns with reversed pressure sign, cancelling the disturbance at that boundary. Flow there may reverse. A closed valve instead fixes velocity at zero, so the reflected pressure disturbance keeps the incoming pressure sign while cancelling its velocity change.
+
+“Same sign” refers to the disturbance arriving at the valve, not to a permanently positive valve pressure. The first compression reflects from the reservoir as a pressure-reducing wave. Its subsequent reflection at the closed valve can bring local pressure below the initial value.
+
+For pipe length L and wave speed a, one-way travel takes L/a and return to the valve takes 2L/a. The default values are approximately 0.089 s and 0.179 s. The film slows these subsecond events and labels the solver's physical time.
+
+</details>
+
+<details>
+<summary>What does the independent model solve?</summary>
+
+Let p′ = p − p₀ be pressure relative to the initial value and u the axial water velocity:
+
+<div className="formula">
+  ∂p′/∂t + ρa² ∂u/∂x = 0<br />
+  ∂u/∂t + (1/ρ) ∂p′/∂x = 0
+</div>
+
+Combined compliance is C = 1/K + cD/(Ee), giving a = 1/√(ρC). Water bulk modulus K describes compression. Young's modulus E, diameter D, wall thickness e and restraint factor c describe wall compliance. This scene authors c = 1 and omits axial wall motion and Poisson coupling. The [USACE HEC technical reference](https://www.hec.usace.army.mil/confluence/rasdocs/ras1dtechref/6.5/overview-of-optional-capabilities/pressurized-pipe-flow) gives the propagation equations and the pipe-elasticity correction.
+
+Specified values are L = 120 m, D = 0.08 m, e = 0.004 m, ρ = 998.2 kg/m³ and K = 2.2 GPa. Defaults are E = 200 GPa, initial speed 1 m/s, upstream absolute pressure 1.8 MPa and downstream absolute pressure 0.101325 MPa. These are teaching conditions rather than a pipeline design or pressure rating.
+
+Pipe friction, convective terms, gas, viscoelasticity, support vibration and nonlinear material behavior are omitted. The characteristic quantities u ± p′/(ρa) propagate along x ± at. The default 96-cell grid satisfies aΔt/Δx = 1. A change cannot affect the whole pipe instantaneously.
+
+</details>
+
+<details>
+<summary>The valve does not impose a prescribed discharge</summary>
+
+Effective flow-coefficient ratio τ decreases smoothly from one to zero: τ = 1 − 3r² + 2r³ during closure, where r = t/T꜀. The rectangular seat depicts that specified ratio, not a universal relation between valve angle, stem lift and discharge. The orifice law also depends on pressure difference:
+
+<div className="formula">u|u| = τ²U₀² (pvalve − pdownstream)/(p₀ − pdownstream)</div>
+
+The boundary solves this law together with the arriving characteristic. It allows reverse flow through a still-open valve when the pressure difference reverses. Once fully closed, u = 0. An opening percentage is never presented as a flow percentage.
+
+</details>
+
+<details>
+<summary>When does the Joukowsky relation apply?</summary>
+
+Before a returning wave modifies a rapid velocity change in this simple pipe, the first pressure change follows Δp = −ρaΔu. Stopping the initial flow gives a rise of ρaU₀. During slow closure, reflections return before the valve finishes moving; the specified smooth orifice law produces a lower peak in this comparison.
+
+Comparing closure time with 2L/a is useful, but it is not a safety formula covering every valve, network, gas pocket or cavitating transient. Pressure following column separation and cavity collapse may exceed the simple first-wave value. [Simpson and Wylie's experiments and analysis](https://digital.library.adelaide.edu.au/dspace/handle/2440/80903) investigate that behavior. This scene stops at vapor pressure and makes no prediction of subsequent collapse pressures.
+
+</details>
+
+<details>
+<summary>How are energy, storage and the vapor boundary checked?</summary>
+
+The linear system has kinetic energy density ρu²/2 and incremental elastic energy density Cp′²/2. Water and wall contributions are respectively (1/K)p′²/2 and [D/(Ee)]p′²/2. With instantaneous closure, zero pipe friction, a fixed-pressure reservoir and a closed valve, discrete total energy is conserved. A valve closing over finite time can exchange incremental boundary energy; a decrease is not automatically pipe-wall heating.
+
+Compression/expansion storage is A∫Cp′ dx. Its change equals accumulated inlet volume minus outlet volume. Tests independently check that balance and compare 32-, 64- and 128-cell solutions with a 1024-cell reference after gradual closure and reflection.
+
+Water vapor pressure is set to approximately 2.338 kPa at 20 °C. The solver detects the first crossing, interpolates to that absolute-pressure boundary and freezes its last valid state. It does not propagate a single-phase solution past it. [Bergant, Simpson and Tijsseling's research review](https://research.tue.nl/files/2010395/587547.pdf) explains the additional physics needed for column separation and rejoining.
+
+Wall displacement is enlarged 500 times in the main drawing and local strains 800 times in the close-up. Numeric strains retain the actual small model values. Temporal interpolation provides continuous presentation; numerical verification is performed on solver grid states.
+
+</details>

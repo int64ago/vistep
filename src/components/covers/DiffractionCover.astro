@@ -1,0 +1,99 @@
+---
+import {
+  diffractionContributions,
+  diffractionPath,
+  diffractionProfile,
+  diffractionState,
+} from '../../models/diffraction';
+interface Props {
+  color?: string;
+}
+const { color = '#699378' } = Astro.props;
+const state = diffractionState(),
+  profile = diffractionProfile(state, 241),
+  parts = diffractionContributions(Math.PI);
+const point = (v: { re: number; im: number }) => ({ x: 271 + v.re * 245, y: 132 - v.im * 245 });
+const x = (yMm: number) => 25 + ((yMm / state.spanMm + 1) / 2) * 350;
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs
+    ><linearGradient id="diffraction-cover-ground" x1="0" x2="1" y1="0" y2="1"
+      ><stop stop-color="#f7f2e4"></stop><stop offset="1" stop-color="#e7ead8"
+      ></stop></linearGradient
+    ><clipPath id="diffraction-cover-strip"
+      ><rect x="25" y="162" width="350" height="26" rx="5"></rect></clipPath
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#diffraction-cover-ground)"></rect>
+  {
+    Array.from({ length: 5 }, (_, i) => (
+      <path d={`M${18 + i * 11} 41V139`} stroke={color} stroke-opacity=".38" stroke-width="1.2" />
+    ))
+  }
+  <rect x="86" y="28" width="8" height="45" rx="3" fill="#495f52"></rect><rect
+    x="86"
+    y="113"
+    width="8"
+    height="36"
+    rx="3"
+    fill="#495f52"></rect>
+  {
+    parts.map((p, i) => (
+      <g>
+        <>
+          <circle cx="90" cy={93 + p.midpoint * 40} r="2.2" fill={i < 4 ? color : '#b57c5d'} />
+          <path
+            d={`M98 ${93 + p.midpoint * 40}L171 ${93 + p.midpoint * 62}`}
+            stroke={i < 4 ? color : '#b57c5d'}
+            stroke-opacity=".3"
+            stroke-width="1"
+          />
+        </>
+      </g>
+    ))
+  }
+  {
+    parts.map((p, i) => {
+      const a = point(p.start),
+        b = point(p.end);
+      return (
+        <path
+          d={`M${a.x} ${a.y}L${b.x} ${b.y}`}
+          stroke={i < 4 ? color : '#b57c5d'}
+          stroke-width="2.1"
+          stroke-linecap="round"
+        />
+      );
+    })
+  }
+  <circle cx="271" cy="132" r="3.5" fill="#ba7751"></circle>
+  <text
+    x="272"
+    y="35"
+    text-anchor="middle"
+    fill="#617760"
+    font-family="Manrope, sans-serif"
+    font-size="16">Σ E = 0</text
+  >
+  <rect x="25" y="162" width="350" height="26" rx="5" fill="#263d34"></rect>
+  <g clip-path="url(#diffraction-cover-strip)"
+    >{
+      profile.map((p) => (
+        <rect
+          x={x(p.yMm) - 0.8}
+          y="162"
+          width="1.8"
+          height="26"
+          fill={color}
+          opacity={p.intensity ** 0.35}
+        />
+      ))
+    }</g
+  >
+  <path d="M25 220H375" stroke="#93a18b" stroke-opacity=".35"></path>
+  <path
+    d={diffractionPath(profile.map((p) => ({ x: x(p.yMm), y: 220 - p.intensity * 25 })))}
+    stroke={color}
+    stroke-width="1.5"></path>
+</svg>
