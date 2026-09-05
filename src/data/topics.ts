@@ -14,6 +14,30 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'moon-phases',
+    name: '月相',
+    title: '月亮为什么一会儿弯，一会儿圆？',
+    question: '同一颗月亮，不同的视角。',
+    description: '跟随月球的轨道与日照，连接盈亏、月食、同步自转和两种月长。',
+    category: '空间与系统',
+    duration: '3 分钟',
+    color: '#aeb9cf',
+    number: '20',
+    tag: '天文 · 光与视角',
+    related: ['dimensions', 'camera-lens'],
+    sources: [
+      { title: 'NASA · Moon phases', url: 'https://science.nasa.gov/moon/moon-phases/' },
+      { title: 'NASA · Moon questions', url: 'https://science.nasa.gov/moon/top-moon-questions/' },
+      { title: 'NASA · Eclipse geometry', url: 'https://science.nasa.gov/eclipses/geometry/' },
+      { title: 'NASA SVS · CGI Moon Kit (LROC / LOLA)', url: 'https://svs.gsfc.nasa.gov/4720/' },
+      { title: 'JPL · Astrodynamic parameters', url: 'https://ssd.jpl.nasa.gov/astro_par.html' },
+      {
+        title: 'JPL · Satellite physical parameters',
+        url: 'https://ssd.jpl.nasa.gov/sats/phys_par/',
+      },
+    ],
+  },
+  {
     slug: 'hydraulic-brake',
     name: '液压刹车',
     title: '轻轻一捏，怎样夹紧远处的碟片？',

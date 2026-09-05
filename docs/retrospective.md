@@ -56,3 +56,9 @@ The README hero now has its own motion composition built from the site's models.
 ## Defaults are a maintained product decision
 
 Narration is now requested by default, replacing the earlier muted policy. Carry a changed default through the player, persistence, project instructions, both languages of documentation and the skill. A blocked autoplay attempt must not become a saved manual mute. Preserve the reader's explicit choice and keep pure test tones separately opt-in.
+
+## Inspect the rendered coordinate system
+
+The Moon scene's first phone diagram inherited a desktop SVG viewBox: its apparent 21 px labels became roughly 9 px on screen. Recompose the coordinate system as well as the controls, and inspect rendered glyph bounds. A fixed film height also needs an upper bound on wide SVGs; otherwise a larger desktop viewport can push credits into the caption even though the phone fits. Compare the full child bounds against the stage at every chapter.
+
+A pair of phone readouts exceeded the available flex width by less than one pixel and wrapped into separate rows. Use explicit grid tracks for information that must share a baseline, and include the narrowest supported viewport in the visual review. Rounded range displays should correspond to the actual manual state; keep the more precise scientific constants in the automatic model.
