@@ -1,0 +1,391 @@
+.wireless-charging {
+  --wc-ink: #314e5c;
+  --wc-blue: #377e94;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--wc-ink);
+  min-width: 0;
+}
+.wireless-stage {
+  background: linear-gradient(155deg, #f5f3eb, #e9eef0);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px #324e5910;
+}
+.wireless-title-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 21px 27px 0;
+  font-size: 16px;
+}
+.wireless-title-line span:last-child {
+  color: #6c7f88;
+}
+.wireless-object {
+  height: 420px;
+  position: relative;
+  min-width: 0;
+}
+.wireless-studio {
+  height: 100%;
+  min-height: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+.wireless-flat {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wireless-circuit-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px 16px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-circuit-readout > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.wireless-circuit-readout b {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.wireless-evidence {
+  border-top: 1px solid #a9bdc535;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 18px 28px;
+  min-width: 0;
+}
+.wireless-phase-proof {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+.wireless-trace {
+  min-width: 0;
+}
+.wireless-trace > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-trace b {
+  font-weight: 600;
+}
+.wireless-trace svg {
+  display: block;
+  width: 100%;
+  height: 76px;
+}
+.wireless-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-phase-proof > .wireless-axis {
+  grid-column: 1/-1;
+}
+.wireless-instrument-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.wireless-instrument-title b {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.wireless-alignment {
+  max-width: 370px;
+  margin: auto;
+}
+.wireless-alignment svg {
+  height: 210px;
+  display: block;
+  width: 100%;
+}
+.wireless-tuning {
+  max-width: 490px;
+  margin: auto;
+}
+.wireless-tuning svg {
+  height: 170px;
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.wireless-tune-readout {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-reference {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #8b7457;
+}
+.wireless-reference i {
+  display: block;
+  width: 23px;
+  border-top: 2px dashed #b8a180;
+}
+.wireless-gap-proof {
+  padding: 10px 0 12px;
+  max-width: 430px;
+  margin: auto;
+}
+.wireless-gap-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.wireless-gap-pair span {
+  display: flex;
+  flex-direction: column;
+}
+.wireless-gap-pair b {
+  font-size: 29px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-gap-pair small {
+  font-size: 16px;
+}
+.wireless-link-meter {
+  height: 9px;
+  background: #d7e2e5;
+  border-radius: 8px;
+  margin: 17px 0 12px;
+  overflow: hidden;
+}
+.wireless-link-meter i {
+  display: block;
+  height: 100%;
+  background: #478398;
+  border-radius: 8px;
+}
+.wireless-power-ribbon {
+  display: flex;
+  height: 16px;
+  overflow: hidden;
+  border-radius: 9px;
+  margin: 12px 0 18px;
+  background: #dbe5e7;
+}
+.wireless-power-ribbon i {
+  display: block;
+  height: 100%;
+}
+.wireless-power-ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 26px;
+}
+.wireless-power-ledger > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+}
+.wireless-power-ledger span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wireless-power-ledger i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wireless-power-ledger b {
+  white-space: nowrap;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-power-resistance {
+  margin-top: 17px;
+  font-size: 16px;
+  color: #667d87;
+  font-variant-numeric: tabular-nums;
+}
+.wireless-caption {
+  margin: 0 !important;
+  padding: 17px 27px 20px;
+  background: #ffffff48;
+  font-size: 18px;
+  line-height: 1.6;
+  border-top: 1px solid #a9bdc52c;
+}
+.wireless-explore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 26px;
+  padding: 24px 0 8px;
+}
+.wireless-explore label {
+  display: block;
+  min-width: 0;
+  font-size: 16px;
+}
+.wireless-explore label > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.wireless-explore output {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.wireless-explore input {
+  width: 100%;
+  height: 44px;
+  accent-color: var(--wc-blue);
+  cursor: pointer;
+}
+.wireless-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  grid-column: 1/-1;
+}
+.wireless-buttons button {
+  font: inherit;
+  color: var(--wc-ink);
+  padding: 9px 16px;
+  border: 1px solid #7895a260;
+  background: #f5f7f5;
+  border-radius: 25px;
+  min-height: 44px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.wireless-buttons button[aria-pressed='true'] {
+  background: #dce9eb;
+  border-color: #648d9a;
+}
+.wireless-explore :focus-visible,
+.wireless-scope summary:focus-visible {
+  outline: 3px solid #337e96;
+  outline-offset: 3px;
+}
+.wireless-scope {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.wireless-scope summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.wireless-scope p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.wireless-charging[data-narrow='true'] .wireless-title-line {
+  padding: 16px 16px 0;
+}
+.wireless-charging[data-narrow='true'] .wireless-title-line span:last-child {
+  display: none;
+}
+.wireless-charging[data-narrow='true'] .wireless-object {
+  height: 304px;
+}
+.wireless-charging[data-narrow='true'] .wireless-circuit-readout {
+  padding: 0 16px 15px;
+  gap: 16px;
+}
+.wireless-charging[data-narrow='true'] .wireless-circuit-readout > span {
+  display: block;
+}
+.wireless-charging[data-narrow='true'] .wireless-circuit-readout b {
+  display: block;
+  font-size: 19px;
+}
+.wireless-charging[data-narrow='true'] .wireless-evidence {
+  padding: 13px 16px;
+}
+.wireless-charging[data-narrow='true'] .wireless-phase-proof {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+.wireless-charging[data-narrow='true'] .wireless-trace svg {
+  height: 65px;
+}
+.wireless-charging[data-narrow='true'] .wireless-trace > div > span:last-child {
+  display: none;
+}
+.wireless-charging[data-narrow='true'] .wireless-caption {
+  padding: 15px 16px;
+  font-size: 16px;
+  min-height: 100px;
+}
+.wireless-charging[data-narrow='true'] .wireless-power-ledger {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+.wireless-charging[data-narrow='true'] .wireless-tuning svg {
+  height: 150px;
+}
+.wireless-charging[data-narrow='true'] .wireless-alignment svg {
+  height: 203px;
+}
+.wireless-charging[data-narrow='true'] .wireless-explore {
+  grid-template-columns: minmax(0, 1fr);
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-stage {
+  min-height: 770px;
+  display: flex;
+  flex-direction: column;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'] .wireless-evidence {
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='offset'] .wireless-object {
+  height: 252px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='power'] .wireless-object {
+  height: 265px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='tuning'] .wireless-object,
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='ferrite'] .wireless-object {
+  height: 252px;
+}
+.wireless-charging[data-watch='true'][data-narrow='true'][data-focus='gap'] .wireless-object {
+  height: 346px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wireless-buttons button {
+    transition: none;
+  }
+}
+
+.wireless-charging[data-watch='true'] .wireless-caption {
+  display: none;
+}

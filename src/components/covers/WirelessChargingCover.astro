@@ -1,0 +1,82 @@
+---
+import {
+  wirelessCoilPoint,
+  wirelessWires,
+  wirelessPorts,
+  wirelessDefaults,
+  wirelessFluxPoint,
+  type WCPoint,
+} from '../../models/wireless-charging';
+interface Props {
+  color?: string;
+}
+const { color = '#427f98' } = Astro.props;
+const project = ([x, y, z]: WCPoint) => [185 + (x + 0.25 * z) * 3900, 147 - y * 3900 + z * 1400];
+const path = (points: WCPoint[], shift: WCPoint = [0, 0, 0]) =>
+  points
+    .map(
+      (p, i) =>
+        `${i ? 'L' : 'M'}${project([p[0] + shift[0], p[1] + shift[1], p[2] + shift[2]]).join(',')}`,
+    )
+    .join(' ');
+const circle = (r: number, y: number) =>
+  Array.from(
+    { length: 97 },
+    (_, i) => [r * Math.cos((i * Math.PI) / 48), y, r * Math.sin((i * Math.PI) / 48)] as WCPoint,
+  );
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <ellipse cx="197" cy="181" rx="117" ry="32" fill={color} opacity=".08"></ellipse>
+  {
+    [false, true].map((receiver) => {
+      const shift: WCPoint = receiver ? [0.01, 0.016, 0] : [0, 0, 0],
+        wire = wirelessWires(receiver),
+        copper = receiver ? '#d0a06d' : '#b27f4f';
+      return (
+        <g>
+          <path
+            d={path(circle(0.0245, receiver ? 0.003 : -0.003), shift) + 'Z'}
+            fill={receiver ? '#5e7581' : '#536b77'}
+            opacity={receiver ? 0.16 : 0.8}
+            stroke={color}
+            stroke-width="1.2"
+          />
+          <path d={path(wire.inner, shift)} stroke="#f4eee1" stroke-width="4" />
+          <path d={path(wire.inner, shift)} stroke={copper} stroke-width="1.8" />
+          <path
+            d={path(
+              Array.from({ length: 1025 }, (_, i) => wirelessCoilPoint(i / 1024)),
+              shift,
+            )}
+            stroke={copper}
+            stroke-width="2.4"
+          />
+          <path d={path(wire.outer, shift)} stroke={copper} stroke-width="1.8" />
+          <path
+            d={path([wirelessPorts.capLeft, wirelessPorts.capRight], shift)}
+            stroke="#79909b"
+            stroke-width="6"
+          />
+          <path d={path(wire.bridge, shift)} stroke={copper} stroke-width="1.8" />
+          <path
+            d={path([wirelessPorts.deviceLeft, wirelessPorts.deviceRight], shift)}
+            stroke={receiver ? '#bea173' : '#35566d'}
+            stroke-width="10"
+          />
+        </g>
+      );
+    })
+  }
+  <path
+    d={path(
+      Array.from({ length: 193 }, (_, i) =>
+        wirelessFluxPoint({ ...wirelessDefaults, gap: 0.016, offset: 0.01 }, 0, i / 192),
+      ),
+    )}
+    stroke={color}
+    stroke-width="1.4"
+    opacity=".6"></path>
+  <path d="M307 61V118M302 61H312M302 118H312" stroke={color} opacity=".55" stroke-width="1.2"
+  ></path>
+</svg>

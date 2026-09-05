@@ -1,0 +1,60 @@
+---
+import { speakerGeometry, speakerSine, SPEAKER_PARAMETERS } from '../../models/speaker';
+import type { SpeakerPoint } from '../../models/speaker';
+interface Props {
+  color?: string;
+}
+const { color = '#b7784c' } = Astro.props;
+const state = speakerSine(SPEAKER_PARAMETERS, 35, 0.35, 0.6),
+  g = speakerGeometry(state.position);
+const point = ([z, r]: SpeakerPoint) => [200 + r * 2.12, 130 - z * 2.12];
+const path = (ps: SpeakerPoint[], close = true) =>
+  ps.map((p, i) => `${i ? 'L' : 'M'}${point(p)}`).join(' ') + (close ? 'Z' : '');
+const curve = (ps: SpeakerPoint[]) => `M${point(ps[0])}C${ps.slice(1).map(point).join(' ')}`;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" width="400" height="230" fill="none">
+  <rect width="400" height="230" fill="#e9eadf"></rect>
+  {
+    g.halves.map((h) => (
+      <g>
+        <path d={path(h.basket)} fill="#a6b2a8" stroke="#85978a" />
+        <path d={path(h.shelf)} fill="#a6b2a8" />
+        <path d={path(h.magnet)} fill="#9a6e5c" stroke="#795547" />
+        <path d={path(h.topPlate)} fill="#bec8bd" stroke="#869588" />
+      </g>
+    ))
+  }
+  <path d={path(g.backPlate)} fill="#abb8aa" stroke="#81927f"></path>
+  <path d={path(g.pole)} fill="#c2ccbf" stroke="#899b87"></path>
+  {
+    g.halves.map((h) => (
+      <g>
+        <path
+          d={path(h.flux, false)}
+          stroke="#558a91"
+          stroke-dasharray="4 4"
+          stroke-opacity=".55"
+        />
+        <path d={path(h.bobbin)} fill="#cdb789" stroke="#a58e63" />
+        {h.coil.map((p) => (
+          <circle
+            cx={point(p)[0]}
+            cy={point(p)[1]}
+            r="1.35"
+            fill={color}
+            stroke="#8c5736"
+            stroke-width=".4"
+          />
+        ))}
+        <path d={path(h.cone)} fill="#465650" stroke="#344c41" />
+        <path d={path(h.spider, false)} stroke="#a57b45" stroke-width="2" />
+        <path d={curve(h.surround)} stroke="#60735f" stroke-width="4" stroke-linecap="round" />
+        <path d={curve(h.lead)} stroke="#a18555" stroke-width="1.5" />
+        <path d={path(h.leadTail, false)} stroke="#a18555" stroke-width="1.5" />
+        <circle cx={point(h.lead[0])[0]} cy={point(h.lead[0])[1]} r="3" fill="#a78950" />
+      </g>
+    ))
+  }
+  <path d={curve(g.dustCap)} fill="#405549" stroke="#667963"></path>
+</svg>

@@ -21,6 +21,7 @@ export default function Studio({
   label,
   fallback,
   dark = false,
+  exposure,
   className = '',
   cameraPosition = [8, 6, 10],
   target = [0, 1, 0],
@@ -31,6 +32,7 @@ export default function Studio({
   label: string;
   fallback?: ReactNode;
   dark?: boolean;
+  exposure?: number;
   className?: string;
   cameraPosition?: number[];
   target?: number[];
@@ -64,7 +66,7 @@ export default function Studio({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 760 ? 1.5 : 2));
     renderer.setClearColor(0x000000, 0);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = dark ? 1.2 : 1.35;
+    renderer.toneMappingExposure = exposure ?? (dark ? 1.2 : 1.35);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.VSMShadowMap;
     el.appendChild(renderer.domElement);
@@ -259,7 +261,7 @@ export default function Studio({
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [dark, failed, flat]);
+  }, [dark, exposure, failed, flat]);
   return (
     <div className={`studio ${className}`}>
       <div

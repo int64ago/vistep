@@ -1,0 +1,89 @@
+---
+import { airfoilStreamlines, solveAirfoil } from '../../models/airfoil';
+interface Props {
+  color?: string;
+}
+const { color = '#88aeb0' } = Astro.props;
+const model = solveAirfoil({ angle: 6 });
+const xy = (p: { x: number; y: number }) => ({ x: 201 + 220 * p.x, y: 125 - 220 * p.y });
+const path = (points: { x: number; y: number }[]) =>
+  points
+    .map((p, i) => {
+      const v = xy(p);
+      return `${i ? 'L' : 'M'}${v.x.toFixed(2)},${v.y.toFixed(2)}`;
+    })
+    .join(' ');
+const streams = airfoilStreamlines(model.parameters);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient
+      id="airfoil-cover-metal"
+      x1="200"
+      y1="101"
+      x2="200"
+      y2="141"
+      gradientUnits="userSpaceOnUse"
+      ><stop stop-color="#d0d9cd"></stop><stop offset=".5" stop-color={color}></stop><stop
+        offset="1"
+        stop-color="#416775"></stop></linearGradient
+    >
+    <clipPath id="airfoil-cover-window"
+      ><rect x="4" y="9" width="392" height="210" rx="12"></rect></clipPath
+    >
+  </defs>
+  <g clip-path="url(#airfoil-cover-window)">
+    {
+      streams.map((line, i) => (
+        <g>
+          <path
+            d={path(line.points)}
+            stroke={color}
+            stroke-opacity={i === 3 || i === 4 ? '.75' : '.32'}
+            stroke-width={i === 3 || i === 4 ? '1.6' : '1'}
+          />
+          {[0.15, 0.48, 0.8].map((f) => {
+            const p = xy(line.points[Math.floor((line.points.length - 1) * f)]);
+            return <circle cx={p.x} cy={p.y} r="2.4" fill={color} opacity=".8" />;
+          })}
+        </g>
+      ))
+    }
+    <path
+      d={path(model.outline) + 'Z'}
+      fill="url(#airfoil-cover-metal)"
+      stroke="#abc4be"
+      stroke-width="1.5"></path>
+    {
+      model.surface
+        .filter((_, i) => i % 32 === 0)
+        .map((s, i) => {
+          const p = xy(s);
+          const cells = model.surface.slice(i * 32, i * 32 + 32);
+          const fx = cells.reduce((sum, a) => sum + a.fx, 0),
+            fy = cells.reduce((sum, a) => sum + a.fy, 0);
+          return (
+            <path
+              d={`M${p.x},${p.y}l${fx * 0.75},${-fy * 0.75}`}
+              stroke={s.cp < 0 ? '#80bec9' : '#c7a777'}
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          );
+        })
+    }
+  </g>
+  <path
+    d="M322 90V45m-6 8 6-8 6 8"
+    stroke="#c5aa7d"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path
+    d="M39 182h46m-6-5 6 5-6 5"
+    stroke={color}
+    stroke-width="1.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>

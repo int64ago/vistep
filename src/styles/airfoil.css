@@ -1,0 +1,276 @@
+.airfoil-study {
+  padding: 25px 28px 18px;
+  background: radial-gradient(ellipse at 52% 35%, #243e49, #182e3a 65%, #142733);
+  color: #d6e0d7;
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+.airfoil-study * {
+  box-sizing: border-box;
+}
+.airfoil-kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  color: #a8bdb8;
+  font-size: 16px;
+}
+.airfoil-observation {
+  min-height: 64px;
+  margin: 22px auto 0;
+  max-width: 780px;
+  font-size: 21px;
+  font-weight: 450;
+  line-height: 1.5;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0e4d9;
+}
+.airfoil-study[data-watch='true'] .airfoil-observation {
+  display: none;
+}
+.airfoil-study[data-watch='true'] .airfoil-method {
+  margin-top: auto;
+}
+.airfoil-stage {
+  max-width: 1020px;
+  margin: auto;
+}
+.airfoil-tunnel {
+  width: 100%;
+  min-width: 0;
+}
+.airfoil-study svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.airfoil-study svg text {
+  font-family: inherit;
+  font-size: 16px;
+}
+.airfoil-study svg text:not([fill]) {
+  fill: #b8cbc1;
+}
+.airfoil-measures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
+  max-width: 790px;
+  margin: auto;
+  padding: 13px 9px 4px;
+  border-top: 1px solid #52707866;
+}
+.airfoil-measures > span {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: #afc5c0;
+  line-height: 1.5;
+}
+.airfoil-measures > span:nth-child(2) {
+  text-align: right;
+}
+.airfoil-measures b {
+  font-size: 25px;
+  font-weight: 450;
+  color: #e0cca1;
+}
+.airfoil-measures p {
+  grid-column: 1/-1;
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 0 0;
+  color: #b5c9c0;
+}
+.airfoil-pair-times > span {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  gap: 3px 8px;
+}
+.airfoil-pair-times i {
+  height: 23px;
+  width: 5px;
+  border-radius: 4px;
+  grid-row: span 2;
+  align-self: center;
+}
+.airfoil-pair-times > span:nth-child(2) {
+  text-align: left;
+}
+.airfoil-convention {
+  max-width: 830px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #abc1bb;
+  margin: 17px auto 9px;
+}
+.airfoil-method {
+  margin-top: 17px;
+  border-top: 1px solid #59767a66;
+  color: #b2c6c0;
+}
+.airfoil-method summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.airfoil-method p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 13px 0;
+}
+.airfoil-explore {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 21px;
+  padding-top: 24px;
+  margin-top: 20px;
+  border-top: 1px solid #59767a66;
+}
+.airfoil-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  grid-column: 1/-1;
+}
+.airfoil-explore button {
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  border: 1px solid #6c8e8d;
+  border-radius: 24px;
+  color: #c9d7ca;
+  background: #263f49;
+  cursor: pointer;
+  padding: 9px 13px;
+  transition: background 0.2s ease;
+}
+.airfoil-explore button[aria-pressed='true'] {
+  background: #bfcab1;
+  color: #253d42;
+  border-color: #bfcab1;
+}
+.airfoil-explore button:hover {
+  background: #3b5660;
+}
+.airfoil-explore button[aria-pressed='true']:hover {
+  background: #cbd4bc;
+}
+.airfoil-explore .control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  min-width: 0;
+  margin: 0;
+}
+.airfoil-explore .control-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 16px;
+}
+.airfoil-study .airfoil-explore .control output,
+.airfoil-study .airfoil-explore .control .control-top span {
+  font-size: 16px;
+  color: #b9cec7;
+}
+.airfoil-study .airfoil-explore .control input[type='range'] {
+  min-height: 44px;
+  accent-color: #b9c7af;
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.airfoil-probe {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  font-size: 16px;
+}
+.airfoil-probe span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.airfoil-probe b {
+  font-weight: 450;
+  color: #dfcaa0;
+}
+.airfoil-study :focus-visible {
+  outline: 3px solid #e2bf78;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .airfoil-study[data-watch='true'] {
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+  }
+  .airfoil-study {
+    padding: 16px 12px 9px;
+  }
+  .airfoil-kicker {
+    justify-content: center;
+    min-height: 25px;
+  }
+  .airfoil-kicker > span:first-child {
+    display: none;
+  }
+  .airfoil-observation {
+    font-size: 18px;
+    min-height: 108px;
+    line-height: 1.5;
+    margin: 6px 2px 0;
+  }
+  .airfoil-measures {
+    gap: 8px 17px;
+    padding: 12px 4px 2px;
+  }
+  .airfoil-measures > span {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .airfoil-measures b {
+    font-size: 20px;
+  }
+  .airfoil-measures p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .airfoil-convention {
+    margin: 13px 3px 4px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .airfoil-method {
+    margin-top: 14px;
+  }
+  .airfoil-explore {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .airfoil-modes {
+    gap: 5px;
+  }
+  .airfoil-modes button {
+    padding: 9px 6px;
+    line-height: 1.4;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .airfoil-study * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,58 @@
+<h2 id="understand">A key clears a boundary</h2>
+
+A pin-tumbler cylinder contains a rotating **plug** inside a fixed shell. Each illustrated stack has a lower **key pin**, an upper **driver pin** and a spring. With the key absent, a driver extends across the plug–shell boundary and prevents normal rotation. The key must position all six interfaces so that no pin bridges that boundary. [ASSA ABLOY’s cylinder introduction](https://www.assaabloy.com/ng/en/solutions/locking-solutions/cylinders) describes this matching-key operation.
+
+The important target is the interface between the two pins, not a level key surface. Each key pin has its own fixed length. A lower cut needs a longer key pin; a higher cut needs a shorter one. At the seated position, a matching key brings their interfaces to the same shear boundary. The [Schlage component glossary](https://www.schlage.com/content/dam/sch-us/documents/pdf/installation-manuals/P513-325.pdf) identifies the keyway, plug, shell, lower and upper pins, springs and rear actuator.
+
+Follow the highlighted stack during insertion. Its rounded nose contacts the actual continuous key profile. On a slope, the contact point can move away from the pin’s vertical centerline. The lower pin lifts the driver, compressing a spring whose two ends remain supported. The six stacks move differently because different parts of the profile pass under their fixed positions.
+
+When all interfaces clear, the key, plug and lower pins turn together. Drivers and springs remain in the fixed shell, supported by the plug surface. The connected rear actuator turns too; a complete door latch is outside this illustration. The familiar flat-key cylinder belongs to the design tradition described in [Yale’s history](https://www.yalehome.com/ke/en/stories/news/discover-the-heritage-of-yale).
+
+<h2 id="try">Inspect a complete key operation</h2>
+
+Exploration offers a 3D mechanism, a selected-stack section and a two-key comparison. Select a stack by its numbered button, then change insertion depth. Keyboard arrow keys operate the explicitly named ranges. The profile and every pin position reconstruct immediately from the selected inputs.
+
+With the matching key fully seated, request a plug angle. The actual angle remains zero whenever the plug is blocked. While turned, the insertion control is disabled: return the angle to zero before withdrawing. Exchange demonstration keys only when fully withdrawn. **Reset restores the entire experiment:** key choice, insertion, requested angle, selected stack and view.
+
+The two alternative keys change only the third cut, once upward and once downward. These are complete illustrative keys, not individual pin controls. In comparison view both cylinders remain at their home angle and share the same insertion depth. A single misaligned stack keeps the plug blocked even when five others align. Return to the mechanism view to test an angle request.
+
+<h2 id="deeper">Contact geometry and the declared model</h2>
+
+<details>
+<summary>How one continuous profile lifts six rounded tips</summary>
+
+Let the key’s upper profile be a continuous piecewise-linear function `h(u)`, translated by insertion offset `d`. A pin center has a fixed longitudinal position `xᵢ` and a rounded nose of radius `r`. Its lowest nonpenetrating center height is the greater of the keyway-floor support and:
+
+<div className="formula">
+  y<sub>center</sub> = max [h(u − d) + √(r² − (u − xᵢ)²)]
+  <br />
+  over |u − xᵢ| ≤ r
+</div>
+
+On a straight segment of slope `a`, the unconstrained contact lies at `u = xᵢ + ra/√(1 + a²)`. The model clamps that point to the segment’s accessible interval and checks every candidate. This includes corners and the leading ramp. It avoids treating a round pin as a point sampled directly above the key axis.
+
+The nose height is `ycenter − r`. Adding the fixed key-pin length gives its centerline interface height. Each matching flat land is wider than the nose diameter, so the seated contact lies on its intended land. The tapered leading end makes the first contact continuous. Without a key, the nose is supported by the keyway floor.
+
+</details>
+
+<details>
+<summary>Why all six interfaces matter during rotation</summary>
+
+The illustrative plug radius is `R = 1.05 u`. The shell bore is `R + 0.018 u`, where `u` means illustration units. A matching key pin has length `R − hᵢ`. Define the interface error as `eᵢ = nose height + pin length − R`.
+
+For the ideal cylindrical shear faces used here, a driver does not enter the plug if `eᵢ ≥ 0`, and a key pin stays within the shell bore if `eᵢ ≤ 0.018 u`. Every stack must satisfy both conditions. Normal turning additionally requires the key shoulder to be fully seated. The three supplied profiles produce either exact nominal alignment or a third-stack mismatch of `±0.18 u` when seated; these values are not commercial bitting codes or production tolerances.
+
+The top of each lower pin and bottom of each driver are idealized to follow the cylindrical plug boundary across the pin width. A lower pin at nominal alignment therefore stays within the same radial envelope as it rotates, while a driver remains supported by the plug surface. This avoids a discontinuous jump or solid corners cutting through the housing in a rigid animation. Actual pin ends are commonly nearly flat with chamfers; their manufacturing fit, elastic contact and friction are not reproduced here.
+
+</details>
+
+<details>
+<summary>Springs, withdrawal and limits of the cutaway</summary>
+
+Driver height determines the lower spring seat. The upper seat belongs to the fixed cap. Coil shape uses those two endpoints and a constant number of turns; it has no separate oscillation or random motion. The springs remain compressed and guided in their bores throughout the supplied insertion paths. No spring constant, operating torque or force-to-open is inferred from the drawing.
+
+The key, lower pins, keyway and rear actuator use one rigid plug rotation. Upper pins, guides and spring seats use the fixed housing frame. Withdrawal is permitted only at the home angle. Returning home restores the same insertion geometry before the key moves back along the channel, so replay and direct chapter seeking reconstruct identical states.
+
+Front material is sectioned away to expose the guides and contacts; rear shell, plug material, a keyway floor, supporting walls and spring cap remain connected. The model omits wards, master-key wafers, security-pin variants, friction, elastic deformation, impact, a complete door mechanism and alternate key-removal positions. It explains intended operation with a matching key. It provides no bypass procedure or manufacturing specification.
+
+</details>

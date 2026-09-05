@@ -1,0 +1,107 @@
+---
+import {
+  ultrasoundDefaults,
+  ultrasoundImage,
+  ultrasoundRegions,
+  ultrasoundColumn,
+  ultrasoundLine,
+  ultrasoundPackets,
+} from '../../models/ultrasound';
+interface Props {
+  color?: string;
+}
+const { color = '#7c9f91' } = Astro.props;
+const image = ultrasoundImage(ultrasoundDefaults, 37, 181);
+const regions = ultrasoundRegions(ultrasoundDefaults);
+const line = ultrasoundLine(ultrasoundColumn(10, ultrasoundDefaults), ultrasoundDefaults);
+const packets = ultrasoundPackets(line, 17);
+const px = (x: number) => 13 + ((x + 20) / 40) * 159;
+const py = (depth: number) => 73 + (depth / 64) * 148;
+const fills = {
+  upper: '#dce3d5',
+  middle: '#ccd8cd',
+  lower: '#b9cac5',
+  base: '#a7bbba',
+  foil: '#b39169',
+  insert: '#aab0aa',
+};
+const pixels = Array.from({ length: image.width * image.height }, (_, index) => ({
+  column: index % image.width,
+  row: Math.floor(index / image.width),
+  value: image.pixels[index * 4],
+})).filter((pixel) => pixel.value > 0);
+const probe = px(10);
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M0 0H189V230H0Z" fill="#eaf0e7"></path>
+  <path d="M189 0H400V230H189Z" fill="#102c30"></path>
+  <path d="M13 23H172" stroke={color} stroke-width="1.5"></path>
+  <path
+    d={`M${probe} 27C${probe - 15} 5 ${probe - 33} 5 ${probe - 46} 9`}
+    stroke="#607e73"
+    stroke-width="2.5"></path>
+  <rect x={probe - 4} y="22" width="8" height="11" rx="2" fill="#607e73"></rect>
+  <rect
+    x={probe - 22}
+    y="31"
+    width="44"
+    height="35"
+    rx="8"
+    fill="#f5f6eb"
+    stroke="#607e73"
+    stroke-width="1.5"></rect>
+  <rect x={probe - 16} y="37" width="32" height="13" rx="2" fill="#647776"></rect>
+  <rect x={probe - 16} y="53" width="32" height="5" fill="#bfaa7a"></rect>
+  <rect x={probe - 16} y="60" width="32" height="6" fill={color}></rect>
+  <rect x={probe - 21} y="68" width="42" height="5" rx="2" fill="#a9d6d0"></rect>
+  {
+    regions.map((region) => (
+      <rect
+        x={px(region.left)}
+        y={py(region.top)}
+        width={px(region.right) - px(region.left) + 0.05}
+        height={py(region.bottom) - py(region.top)}
+        fill={fills[region.kind]}
+      />
+    ))
+  }
+  <path d={`M${probe} 73V221`} stroke="#4d7869" stroke-dasharray="2 4" stroke-opacity=".45"></path>
+  {
+    packets.map((packet) => (
+      <rect
+        x={probe - 13}
+        y={py(packet.top)}
+        width="26"
+        height={py(packet.bottom) - py(packet.top)}
+        fill={packet.direction === 'down' ? '#b98536' : '#4c7d82'}
+      />
+    ))
+  }
+  <path d="M208 20H389" stroke="#6f9690" stroke-opacity=".5"></path>
+  <rect x="208" y="34" width="181" height="187" fill="#000"></rect>
+  <g shape-rendering="crispEdges"
+    >{
+      pixels.map((pixel) => (
+        <rect
+          x={208 + (pixel.column / image.width) * 181}
+          y={34 + (pixel.row / image.height) * 187}
+          width={181 / image.width + 0.01}
+          height={187 / image.height + 0.01}
+          fill={`rgb(${pixel.value},${pixel.value},${pixel.value})`}
+        />
+      ))
+    }</g
+  >
+  <rect
+    x={208 + ((10 - image.left) / (image.right - image.left)) * 181 - 8}
+    y="13"
+    width="16"
+    height="14"
+    rx="3"
+    fill="#cfb57c"></rect>
+  <path
+    d={`M${208 + ((10 - image.left) / (image.right - image.left)) * 181} 34V221`}
+    stroke="#8ad1c5"
+    stroke-opacity=".45"></path>
+</svg>
