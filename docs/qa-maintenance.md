@@ -2,6 +2,8 @@
 
 日期：2026-09-05。范围：文档、场景制作工具、发布登记、索引配置与社区配套；本轮没有修改原理模型、几何、镜头或音轨。
 
+本记录对应正式发布前的维护阶段；后续上线结果见 [首次正式发布检查](qa-production.md)。
+
 ## 已执行
 
 - Search Console：Cloudflare 新增根域验证 TXT；Google 页面显示 Ownership verified，CLI 返回 `sc-domain:vistep.ai` / `siteOwner`。首页索引检查返回 `URL is unknown to Google`，sitemap 列表为空。

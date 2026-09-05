@@ -4,9 +4,9 @@
 
 Carefully made visual explanations of the mechanisms behind everyday life and work. Watch a process unfold, then explore the details that interest you.
 
-[Try the preview](https://vistep-preview.int64ago.workers.dev/en/) · [Contribute](CONTRIBUTING.md) · [Scene production guide](docs/creating-a-scene.md) · [Documentation](docs/README.md)
+[Visit vistep.ai](https://vistep.ai/en/) · [Development preview](https://vistep-preview.int64ago.workers.dev/en/) · [Contribute](CONTRIBUTING.md) · [Scene production guide](docs/creating-a-scene.md) · [Documentation](docs/README.md)
 
-> The complete site currently runs at the preview URL. The production domain, `vistep.ai`, still serves the original brand page. This repository is prepared for open collaboration under MIT; its visibility remains the owner's choice.
+> The complete site is live at `vistep.ai`, with all 12 bilingual explorations and synchronized narration. The separate preview deployment is excluded from search indexing. This repository is prepared for open collaboration under MIT; its visibility remains the owner's choice.
 
 ## Experience
 
