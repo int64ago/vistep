@@ -30,6 +30,6 @@ Original assets must have documented provenance. Include source, author and lice
 
 ## Review and release
 
-Maintainers review scientific accuracy, visual communication and implementation separately. Deployment is a maintainer operation; ordinary PR checks never have deployment credentials. Keep the production domain and preview distinct. See [deployment and rollback](docs/deployment.md).
+Maintainers review scientific accuracy, visual communication and implementation separately. Pushing or merging to `main` automatically deploys production after CI passes. Complete the appropriate scene review before merging; automated checks do not replace it. Branch and PR checks never receive deployment credentials. Keep the production domain and preview distinct. See [deployment and rollback](docs/deployment.md).
 
 Please follow the [Code of Conduct](CODE_OF_CONDUCT.md). Report vulnerabilities privately through [SECURITY.md](SECURITY.md), not in a public issue.
