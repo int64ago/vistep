@@ -22,6 +22,7 @@ Records describe particular revisions and conditions. They are not guarantees fo
 - [Maintenance and search setup](qa-maintenance.md)
 - [First production release](qa-production.md)
 - [Long-form direction, language and SEO](qa-longform.md)
+- [Integrated homepage opening](qa-home-opening.md)
 
 ## Community
 

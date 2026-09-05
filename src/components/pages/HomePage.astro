@@ -24,7 +24,6 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
           {tr('给好奇心，一个看得见的答案。')}
         </p>
         <BrandMorph locale={locale} client:load />
-        <h2 class="opening-mission">{tr('看见每一步，理解为什么。')}</h2>
         <p class="opening-description">
           {tr('一束光怎样变成字？一个齿轮怎样改变力？')}<br class="desktop-br" />{
             tr('拆开熟悉的事物，看见那些正在发生的过程。')
@@ -40,6 +39,26 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
         </div></HomeObject
       >
     </section>
+    <noscript
+      ><style is:inline>
+        .brand-motion {
+          display: none;
+        }
+        .brand-skip {
+          display: none;
+        }
+        body:has(.brand-opening) .site-header .wordmark-name {
+          opacity: 1;
+        }
+        .opening-title {
+          opacity: 1;
+          transform: none;
+        }
+        .brand-opening .brand-meaning {
+          visibility: visible;
+        }
+      </style></noscript
+    >
     <section class="discovery" id="collection" aria-labelledby="collection-title">
       <div class="section-rule">
         <div>

@@ -1,67 +1,3 @@
-/* The name is the opening statement, with its source phrase always in view. */
-.opening-copy .brand-signature {
-  margin: 22px 0 25px;
-  max-width: 100%;
-  min-height: 158px;
-}
-.opening-copy .signature-line {
-  font-size: clamp(25px, 2.25vw, 34px);
-  min-height: 85px;
-  align-content: center;
-  line-height: 1.22;
-  letter-spacing: -0.035em;
-  color: #a1a697;
-  font-weight: 450;
-}
-.opening-copy
-  :is(.signature-3, .signature-4, .signature-5, .signature-6, .signature-7)
-  .signature-line {
-  font-size: clamp(47px, 5.2vw, 76px);
-  font-weight: 520;
-}
-.opening-copy .signature-baseline {
-  height: 44px;
-  font-size: 16px;
-  letter-spacing: -0.015em;
-  gap: 12px;
-  color: #7b8275;
-}
-.signature-baseline b {
-  color: #445847;
-  font-weight: 600;
-}
-.signature-origin {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 12px;
-  font-family: ui-monospace, monospace;
-  color: #909783;
-  line-height: 24px;
-}
-.signature-origin b {
-  color: #ad7950;
-  font-weight: 600;
-}
-.signature-origin i {
-  font-style: normal;
-  color: #b4b9aa;
-}
-.opening-mission {
-  margin: 0 0 15px;
-  font-size: clamp(25px, 2.4vw, 35px);
-  font-weight: 450;
-  letter-spacing: -0.045em;
-  line-height: 1.5;
-  color: #344538;
-}
-.opening-copy .opening-description {
-  margin-top: 0;
-  font-size: 16px;
-}
-.opening-copy .editorial-cta {
-  margin-top: 22px;
-}
 /* Close observations belong to each experiment, not a shared dashboard. */
 .pendulum-energy-live {
   position: absolute;
@@ -191,34 +127,6 @@
   outline-color: var(--film-muted);
 }
 @media (max-width: 760px) {
-  .opening-copy .brand-signature {
-    margin-top: 18px;
-    margin-bottom: 20px;
-    min-height: 158px;
-  }
-  .opening-copy .signature-line {
-    font-size: 25px;
-    min-height: 80px;
-    max-width: 360px;
-  }
-  .opening-copy
-    :is(.signature-3, .signature-4, .signature-5, .signature-6, .signature-7)
-    .signature-line {
-    font-size: clamp(46px, 12vw, 64px);
-  }
-  .opening-copy .signature-baseline {
-    font-size: 14px;
-    gap: 4px;
-  }
-  .opening-copy .signature-replay {
-    flex-shrink: 0;
-  }
-  .opening-mission {
-    font-size: 26px;
-  }
-  .opening-copy .opening-description {
-    font-size: 16px;
-  }
   .pendulum-energy-live {
     bottom: 93px;
     gap: 10px;
@@ -240,9 +148,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .signature-line,
-  .signature-line *,
-  .signature-origin,
   .feature-point * {
     transition: none !important;
   }

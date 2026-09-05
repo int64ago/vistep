@@ -6,6 +6,8 @@ Notable changes are recorded here. Commit history remains the source for individ
 
 ## Unreleased
 
+- Replaced the oversized brand block with an automatic typographic opening that settles into the navigation wordmark.
+
 - Rebuilt all twelve explanations as chaptered 2–5 minute films, with new close observations and controlled comparisons.
 - Replaced unintelligible Chinese recordings and regenerated both languages with measured speech windows and no time stretching.
 - Added seeking, chapter links, deterministic simulation replay and expanded Transformer internals.
