@@ -1,5 +1,6 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  'binary-adder': () => import('../components/experiments/BinaryAdder'),
   'optical-fiber': () => import('../components/experiments/Fiber'),
   'planetary-gears': () => import('../components/experiments/Planetary'),
   'camera-lens': () => import('../components/experiments/CameraLens'),
