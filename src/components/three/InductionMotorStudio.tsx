@@ -41,7 +41,7 @@ export default function InductionMotorStudio({
       cameraPosition={narrow ? [3.2, 4.4, 11] : [6, 4.7, 10]}
       target={[0, 1.7, 0]}
       span={narrow ? 7.1 : 8.2}
-      fitHeight={narrow ? 5.7 : 5.8}
+      fitHeight={narrow ? 5.7 : 7}
       fallback={<InductionMotorFlat shot={shot} narrow={narrow} />}
       create={({ root, controls }) => {
         const assembly = new THREE.Group();

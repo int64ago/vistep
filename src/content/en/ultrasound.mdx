@@ -1,0 +1,44 @@
+<h2 id="understand">Receive an echo, then turn its delay into depth</h2>
+
+The probe sends a short burst of high-frequency vibration and then receives returning sound. At an acoustic-impedance boundary, part of the wave reflects while the rest continues deeper. One transmission can therefore produce several echoes at different times.
+
+This is a manufactured phantom with known horizontal layers, a 0.64 mm foil and a more attenuating insert. The structural view shows those known materials. The black-and-white image is calculated from their echoes. Uniform interiors are not filled with invented texture; this simplified image mainly shows boundaries.
+
+Sound must make a return trip. For a uniform sound speed:
+
+<div className="formula">depth d = sound speed c × round-trip time t / 2</div>
+
+At 1540 m/s, a boundary 40 mm deep returns its echo after about 51.95 µs. If different layers have different speeds, add their one-way travel times before doubling the result. The display sets zero at the center of the transmitted envelope, so half the pulse duration is not mistaken for extra depth.
+
+<h2 id="try">Change imaging conditions, keep the phantom</h2>
+
+Watch the eight chapters, then enter exploration. All five sliders support arrow keys, Home and End. Reset restores probe position, pulse cycles, extra attenuation, assumed speed, observation time and display mode.
+
+- **Phantom and A-line:** move the probe and scrub time. Follow the finite pulse to an interface and back. The A-line places signed RF pressure signals at their actual arrival times.
+- **Separate the foil faces:** shorten the pulse from eight cycles to two. The upper plot keeps the long-pulse reference; the lower envelope changes from one broad peak to two separate peaks.
+- **Inspect the insert shadow:** reduce the insert's extra attenuation. Deeper echoes recover, but reflection at the insert interfaces still causes transmission loss even when extra attenuation is zero.
+- **Assumed reconstruction speed:** change the speed used to display the scan. The original echo times stay fixed while their displayed depths move. The final chapter corrects an intentionally wrong setting using a phantom whose known sound speed is 1480 m/s.
+
+<h2 id="deeper">From an interface to every gray pixel</h2>
+
+Acoustic impedance is `Z = density × sound speed`. At a lossless boundary with normal incidence, the pressure reflection coefficient is signed:
+
+<div className="formula">r = (Z₂ − Z₁) / (Z₂ + Z₁)</div>
+
+A lower impedance gives a negative r and reverses the reflected pressure phase. The pressure transmission coefficient, `2Z₂/(Z₁+Z₂)`, can exceed one without creating energy: intensity also depends on impedance. The energy coefficients are:
+
+<div className="formula">R = r², T = 4Z₁Z₂ / (Z₁ + Z₂)², R + T = 1</div>
+
+A deep echo crosses overlying interfaces on both legs. The model multiplies both pressure transmissions and applies attenuation over the entire journey. A round-trip loss of L dB multiplies pressure amplitude by `10^(−L/20)`, not `10^(−L/10)`.
+
+RF is the coherent sum of delayed, signed finite pulses. The image takes the magnitude of ideal quadrature components and applies a fixed logarithmic display. It does not add separately rectified echoes. Each column comes from the A-line at that probe position. There is no per-column automatic normalization, so lost signal produces darker deep returns.
+
+The axial support scale of the pulse is:
+
+<div className="formula">Δz = cτ / 2, with τ = cycles / frequency</div>
+
+At 3 MHz this gives about 0.51 mm for two cycles and 2.05 mm for eight cycles. The chosen 0.64 mm foil produces separate envelope peaks with the short pulse and a merged peak with the long one. Actual discrimination also depends on envelope shape, relative phase, bandwidth and noise. This comparison holds peak transmitted pressure fixed, not total pulse energy, and does not predict sensitivity or signal-to-noise ratio.
+
+The model uses independent vertical rays and paths with only one reflection, retaining transmission on both legs. It omits propagation between columns, vertical sidewalls, diffraction, refraction, beamforming, reverberation and speckle. Background attenuation is an illustrative 0.35 dB/(cm·MHz), with added attenuation in the insert. Loss is evaluated at the center frequency and treated as constant across the pulse bandwidth. The envelope comes from known quadratures of a finite Hann-windowed carrier. Display range is fixed at 45 dB relative to a pressure of 0.25. Probe backing, matching and coupling layers illustrate ideal contact; their internal electromechanical response is not simulated.
+
+Technical basis: [University of Michigan notes on acoustics, impedance and attenuation](https://socr.umich.edu/BPAD1/BPAD1_notes/BPAD1_Chap03_UltrasoundPhotoacoustic.html), [University of Washington's pulse-echo and resolution course](https://staff.washington.edu/mbruce/pres/pulse_echo.html), and [Evident's explanation of A-scans and cross-sectional B-scans](https://ims.evidentscientific.com/en/learn/ndt-tutorials/instrumententation/phased-array-scans).

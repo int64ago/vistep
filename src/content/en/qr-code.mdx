@@ -1,0 +1,65 @@
+<h2 id="understand">A white module can come from a one</h2>
+
+A QR Code follows a precise encoding process. This scene starts with the real URL `https://vistep.ai` and generates a scannable **QR Code Model 2, Version 1, level L, in byte mode**: a 21 × 21 grid of modules.
+
+Follow the ninth byte, `v`: decimal 118, or `01110110`. Its second bit from the left, `b6`, starts as 1. Placement brings that bit to `(13, 11)`, counting from zero at the top left of the symbol, excluding the quiet zone. The selected mask is number 3, whose value there is also 1. The printed module is white:
+
+<div className="formula">Original bit 1 ⊕ mask bit 1 = printed bit 0</div>
+
+Applying the same exclusive-or operation recovers the original bit. **Masking improves patterns for machine reading; it is not encryption.** All eight masks preserve the same message. The encoder penalizes long runs, solid squares, finder-like patterns, and dark–light imbalance, then chooses the lowest-scoring complete candidate. This URL selects mask 3 with a penalty of 1087.
+
+<h2 id="try">Encode your own text</h2>
+
+- In exploration, enter `vistep.ai` and open the calculation details. Compare it with the film’s full URL: the shorter message needs alternating `EC`, `11` padding codewords.
+- Choose masks 0 through 7 manually. The text stays the same while the module pattern, format information, and penalty are recalculated together.
+- Turn on the bit tracker and select a byte and bit. Inspect its original, mask, and printed values alongside its module coordinates. Teaching outlines can affect scanning; turn tracking off before scanning or download the SVG, which always omits highlights.
+- Try `你好`. The calculation shows UTF-8 bytes and an ECI declaration: character count is not byte count. Invalid input removes the old QR Code so it cannot be mistaken for the new text.
+- Reset restores the URL, automatic masking, byte nine, bit `b6`, and tracking off. Buttons and selects support keyboards. Playback, seeking, and replay use the shared film controls.
+
+The supported scope is **1–17 ASCII bytes**. Text containing non-ASCII characters uses UTF-8 with explicit ECI 26 and fits **up to 16 bytes**. Empty messages, other versions and correction levels, numeric or alphanumeric optimization, and multiple message segments are outside this scene’s scope. This is a real encoder with deliberately bounded coverage.
+
+<h2 id="deeper">From codewords to modules</h2>
+
+<details>
+<summary>Why do 17 bytes become 19 data codewords?</summary>
+
+Byte mode begins with `0100`. In Version 1, the byte-count field occupies 8 bits. The URL contributes 17 × 8 = 136 bits, followed by four terminating zeros, filling the 152-bit capacity exactly.
+
+<div className="formula">4 + 8 + 136 + 4 = 152 bits = 19 data codewords</div>
+
+A codeword is a regrouped eight-bit unit. Because the message follows a 12-bit header, an original byte can cross a codeword boundary; byte and codeword indices are not interchangeable. A shorter message is aligned to an eight-bit boundary, then padded with alternating hexadecimal `EC` and `11`. Non-ASCII input first adds mode `0111` and the eight-bit ECI assignment 26, making its complete header 24 bits.
+
+</details>
+
+<details>
+<summary>How are the seven RS checks calculated?</summary>
+
+This version and level use one error-correction block: 19 data codewords followed by 7 Reed–Solomon check codewords, with no multi-block interleaving. Arithmetic takes place in GF(256). Addition is exclusive-or; multiplication reduces by the irreducible polynomial:
+
+<div className="formula">p(x) = x⁸ + x⁴ + x³ + x² + 1, hexadecimal 0x11D</div>
+
+Set α = 2. The generator polynomial multiplies seven factors `(x + αⁱ)`, with i running from 0 through 6. Its coefficients are `01 7F 7A 9A A4 0B 44 75`. Multiply the data polynomial by x⁷ and divide by the generator: the seven-byte remainder becomes the check codewords. The URL produces `D2 B9 37 2B E9 51 39`. Each animated step shows the actual remainder for the data prefix processed so far.
+
+This differs from the bitwise Hamming checks in the related error-correction scene. RS operates on eight-bit codewords. Given correctly acquired codewords and block structure, seven checks support correction of up to three erroneous codewords at unknown locations. Locating the symbol, sampling it, and reading its format must also succeed. **Covered area does not translate directly into guaranteed recovery.** This scene has no damaged-image decoder and makes no logo-placement or damage-recovery demonstration.
+
+</details>
+
+<details>
+<summary>Which modules are reserved?</summary>
+
+Three finder patterns, their white separators, two timing patterns, two format copies, and one fixed dark module occupy 233 positions. The remaining 208 hold exactly 26 × 8 data and check bits. Version 1 has neither alignment patterns nor a separate version-information area.
+
+Placement starts at the bottom right, moving in alternating upward and downward pairs of columns and skipping function modules. Masks affect only data and RS check modules. The level-L indicator `01` and three-bit mask number form five bits. BCH arithmetic uses generator `0x537`; a final exclusive-or with `0x5412` produces the fifteen-bit format word, written twice in reserved positions. The default format word is `0x789D`.
+
+</details>
+
+<details>
+<summary>Scanning conditions and sources</summary>
+
+Both the finished code and downloaded SVG preserve a four-module white quiet zone around all four edges, with dark modules on white. Colored outlines and incomplete patterns belong to the teaching sequence. The final chapter removes these highlights and presents the real result. Scanning yields the text `https://vistep.ai`; reader software decides which action to offer.
+
+Fixed-mask matrices were compared with Project Nayuki’s independent encoder, and clean outputs were decoded using ZXing. These checks establish evidence for a finite test set, not a guarantee for every camera, reflection, damage pattern, or printing size.
+
+Sources: [DENSO WAVE: versions and capacity](https://www.qrcode.com/en/about/version.html), [DENSO WAVE: the four-module margin](https://www.qrcode.com/en/howto/code.html), [DENSO WAVE: error correction](https://www.qrcode.com/en/about/error_correction.html), [Project Nayuki: QR generator and implementation notes](https://www.nayuki.io/page/qr-code-generator-library), and [ZXing: UTF-8 ECI assignment](https://github.com/zxing/zxing/blob/master/core/src/main/java/com/google/zxing/common/CharacterSetECI.java).
+
+</details>

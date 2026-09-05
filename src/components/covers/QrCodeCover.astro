@@ -1,0 +1,45 @@
+---
+import { QR_MESSAGE, qrEncode } from '../../models/qr-code';
+interface Props {
+  color?: string;
+}
+const { color = '#6a8a87' } = Astro.props;
+const qr = qrEncode(QR_MESSAGE);
+const path = qr.modules
+  .flatMap((row, y) => row.flatMap((bit, x) => (bit ? [`M${x + 4} ${y + 4}h1v1h-1z`] : [])))
+  .join('');
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <text x="22" y="41" fill={color} font-family="monospace" font-size="16" letter-spacing="2"
+    >BYTE 09</text
+  >
+  <text
+    x="22"
+    y="123"
+    fill="#263c3d"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="91">v</text
+  >
+  <text x="88" y="95" fill="#263c3d" font-family="monospace" font-size="24">118</text>
+  <text x="88" y="124" fill={color} font-family="monospace" font-size="16">0x76</text>
+  <path d="M22 148H166M167 145l4 3-4 3" stroke={color} stroke-width="1.5" stroke-linecap="round"
+  ></path>
+  <rect x="36" y="160" width="18" height="29" rx="4" fill="#e4cfaa" fill-opacity=".55"></rect>
+  <text x="22" y="181" fill="#263c3d" font-family="monospace" font-size="20" letter-spacing="4"
+    >01110110</text
+  >
+  <text x="22" y="213" fill={color} font-family="monospace" font-size="16">21 × 21 · L</text>
+  <g transform="translate(196 14) scale(7)" shape-rendering="crispEdges">
+    <rect width="29" height="29" fill="white"></rect>
+    <path d={path} fill="#141b1b"></path>
+  </g>
+</svg>

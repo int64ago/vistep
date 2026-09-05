@@ -1,0 +1,73 @@
+<a id="understand"></a>
+
+## Why does the cone follow an electrical signal?
+
+The permanent magnet stays fixed. The yoke, central pole and top plate guide flux into a narrow gap. Current in the voice coil produces axial force there; reversing current reverses that force.
+
+The coil is wound on a bobbin bonded to the cone and dust cap. They move as one assembly. The surround and spider connect this assembly to the fixed basket, allowing axial travel while providing elastic support. Flexible leads preserve the electrical connection as it moves.
+
+Conversion also works backward. Motion of the coil generates back EMF, so its current depends on motion as well as resistance. The film slows the mechanism to make this interaction visible.
+
+<a id="try"></a>
+
+## Inspect a connection, then change one input
+
+- Examine the magnetic gap and scrub phase. The magnetic field stays fixed while current and force change sign together.
+- Inspect the suspension. Its moving endpoints follow the same displacement; its fixed endpoints remain on the basket.
+- Hold peak voltage constant and compare frequencies. Each response point is a settled sinusoidal result, not a transient frequency sweep.
+- Increase damping to reduce the excursion peak, then inspect the instantaneous power balance.
+
+Ranges have explicit names and support arrow keys, Home and End. Reset restores voltage, frequency, phase, damping and inspection view. There is no component-generated test tone.
+
+<a id="deeper"></a>
+
+## One reciprocal force factor
+
+The declared constant-parameter model is
+
+<div className="formula">
+  u = Ri + L di/dt + Blv
+  <br />M dv/dt = Bli − Kx − Dv
+  <br />
+  dx/dt = v
+</div>
+
+Defaults are `R = 6 Ω`, `L = 0.5 mH`, `Bl = 4 N/A`, `M = 12 g`, `K = 1200 N/m` and `D = 0.8 N·s/m`. These are teaching parameters, not measurements of a commercial driver. Mass and suspension properties represent the combined moving assembly.
+
+The same force factor gives `(Blv)i = (Bli)v`. With
+
+<div className="formula">
+  E = ½Li² + ½Mv² + ½Kx²
+  <br />
+  ui = Ri² + Dv² + dE/dt
+</div>
+
+resistive and mechanical losses are nonnegative, while stored energy can rise or fall. The release shot sets an ideal voltage source to zero and leaves the coil circuit closed through its resistance. It does not disconnect the leads or demonstrate energy recovery into a battery.
+
+For sinusoidal peak phasors,
+
+<div className="formula">
+  Zₑ = R + jωL
+  <br />Q = K − Mω² + jωD
+</div>
+
+<div className="formula">
+  X = BlU / [ZₑQ + jω(Bl)²]
+  <br />I = UQ / [ZₑQ + jω(Bl)²]
+</div>
+
+Displacement, impedance, current and power use that same solution. The undamped mechanical natural frequency is about 50.3 Hz; the full response also depends on coupling, damping and inductance. The displayed excursion curve is not an SPL curve.
+
+## What the air illustration means
+
+The final shot is a **one-way, one-dimensional plane-wave kinematic illustration**. It uses the cone motion as a boundary condition: `ξ(s,t) = x(t − s/cₐ)`, with `cₐ = 343 m/s`. Material points oscillate near their rest positions while compression, `−∂ξ/∂s = v(t − s/cₐ)/cₐ`, travels outward.
+
+Air loading is not fed back into the driver, and a finite cone's three-dimensional radiation is not solved. Air displacement has its own magnification and color is normalized by compression phase. These are not CFD, SPL, radiation efficiency or distance-attenuation predictions. Mechanical dissipation is not identified with total radiated sound power.
+
+## Geometry and limits
+
+The cutaway is a meridional slice of an axisymmetric structure. Phone shots reproject the assembly or focus on the gap and one suspension side. Mechanical travel is enlarged eight times, with all connected endpoints derived from one displacement. Flux lines show circuit topology, not a magnetic finite-element solution; winding sections are grouped schematically.
+
+This small-signal piston model omits magnetic nonlinearities, frequency-dependent lossy inductance, coil heating, cone breakup, the enclosure and coupled spatial acoustics.
+
+Sources: [KLIPPEL modeling](https://klippel.de/manuals/transducer-parameter-identification/fastlsi/fastlsi.html), [COMSOL driver anatomy](https://doc.comsol.com/6.4/doc/com.comsol.help.models.aco.loudspeaker_driver/loudspeaker_driver.html), [COMSOL transient analysis](https://doc.comsol.com/6.3/doc/com.comsol.help.models.aco.loudspeaker_driver_transient/loudspeaker_driver_transient.html), and [Caltech sound waves](https://www.feynmanlectures.caltech.edu/I_47.html).

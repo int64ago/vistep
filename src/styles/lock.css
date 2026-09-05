@@ -1,0 +1,418 @@
+.lock-scene {
+  --lock-ink: #33494f;
+  --lock-muted: #61777b;
+  background: radial-gradient(ellipse at 50% 22%, #faf6ed, #e8e8df 90%);
+  color: var(--lock-ink);
+  border-radius: 25px;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.lock-heading {
+  padding: 28px 32px 0;
+  max-width: 800px;
+}
+.lock-heading > span {
+  font-size: 16px;
+  color: #917147;
+}
+.lock-heading h2 {
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 480;
+  letter-spacing: -0.025em;
+  margin: 9px 0 11px;
+}
+.lock-heading p {
+  font-size: 17px;
+  color: var(--lock-muted);
+  margin: 0;
+}
+.lock-scene[data-watch='true'] .lock-heading p {
+  display: none;
+}
+.lock-object {
+  position: relative;
+}
+.lock-object > .lock-studio {
+  height: 460px;
+  min-height: 0;
+  background: none;
+}
+.lock-object .studio-fallback {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.lock-object .lock-section,
+.lock-object .lock-end {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+.lock-phone-section {
+  display: none;
+}
+.lock-section-title {
+  font-size: 16px;
+  color: #9a6446;
+  padding: 14px 18px 0;
+}
+.lock-section {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.lock-stack-states {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  max-width: 740px;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 12px 32px 18px;
+  text-align: center;
+}
+.lock-stack-states > div,
+.lock-stack-states > button {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  border-radius: 12px;
+  padding: 7px 3px;
+  background: #c7c6b31b;
+  font: inherit;
+  font-size: 16px;
+  border: 1px solid transparent;
+  color: #947457;
+  min-width: 0;
+}
+.lock-stack-states b {
+  font-size: 20px;
+  font-weight: 500;
+}
+.lock-stack-states [data-clear='true'] {
+  color: #3e7b68;
+  background: #9eae9a16;
+}
+.lock-stack-states [data-active='true'],
+.lock-stack-states [aria-pressed='true'] {
+  border-color: #b37854;
+}
+.lock-stack-states button {
+  cursor: pointer;
+  min-height: 60px;
+}
+.lock-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 26px;
+  flex-wrap: wrap;
+  padding: 6px 30px 24px;
+  font-size: 16px;
+  color: var(--lock-muted);
+}
+.lock-status b {
+  font-size: 23px;
+  font-weight: 480;
+  color: var(--lock-ink);
+  font-variant-numeric: tabular-nums;
+  margin-left: 8px;
+}
+.lock-status > strong {
+  font-size: 16px;
+  font-weight: 450;
+  color: #9a6849;
+}
+.lock-status > strong[data-ready='true'] {
+  color: #3e7b68;
+}
+.lock-retained {
+  font-size: 16px;
+  color: #9a6849;
+  margin: 0;
+  padding: 0 30px 20px;
+  text-align: center;
+}
+.lock-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  max-width: 600px;
+  padding: 28px 30px 15px;
+  margin: auto;
+  text-align: center;
+}
+.lock-comparison h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+.lock-comparison svg {
+  height: 320px;
+  width: 100%;
+  display: block;
+}
+.lock-comparison p {
+  font-size: 16px;
+  color: var(--lock-muted);
+  margin: 6px 0;
+}
+.lock-comparison strong {
+  font-size: 20px;
+  font-weight: 450;
+  color: #987446;
+}
+.lock-comparison-note {
+  grid-column: 1/-1;
+}
+.lock-controls {
+  border-top: 1px solid #526e7626;
+  padding: 25px 32px;
+  display: grid;
+  gap: 18px;
+}
+.lock-controls h3 {
+  font-size: 24px;
+  font-weight: 480;
+  margin: 0;
+}
+.lock-controls p {
+  font-size: 16px;
+  color: var(--lock-muted);
+  margin: 0;
+}
+.lock-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.lock-controls button {
+  border: 1px solid #61797e46;
+  border-radius: 12px;
+  padding: 9px 16px;
+  background: #ffffff36;
+  color: var(--lock-ink);
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.lock-controls button[aria-pressed='true'] {
+  background: #b7996121;
+  border-color: #ad8958;
+  color: #805c34;
+}
+.lock-controls button:disabled {
+  opacity: 0.46;
+  cursor: default;
+}
+.lock-range {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 20px;
+}
+.lock-range label,
+.lock-range output {
+  font-size: 16px;
+}
+.lock-range output {
+  font-variant-numeric: tabular-nums;
+  color: #946b42;
+}
+.lock-range input {
+  grid-column: 1/-1;
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  accent-color: #937b54;
+}
+.lock-reset {
+  justify-self: start;
+}
+.lock-controls input:focus-visible,
+.lock-controls button:focus-visible,
+.lock-stack-states button:focus-visible,
+.lock-assumptions summary:focus-visible {
+  outline: 2px solid #4f847a;
+  outline-offset: 3px;
+}
+.lock-assumptions {
+  padding: 0 32px 22px;
+}
+.lock-assumptions summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  color: var(--lock-muted);
+  list-style: none;
+  cursor: pointer;
+}
+.lock-assumptions summary:before {
+  content: '+';
+  margin-right: 10px;
+}
+.lock-assumptions[open] summary:before {
+  content: '−';
+}
+.lock-assumptions p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--lock-muted);
+  max-width: 80ch;
+}
+.lock-scene[data-watch='false'][data-focus='contact'] .lock-object {
+  display: none;
+}
+.lock-scene[data-watch='false'][data-focus='contact'] .lock-phone-section {
+  display: block;
+  max-width: 330px;
+  margin: auto;
+}
+@media (max-width: 760px) {
+  .lock-heading {
+    padding: 22px 18px 0;
+  }
+  .lock-heading h2 {
+    font-size: 25px;
+    line-height: 1.4;
+  }
+  .lock-heading p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .lock-object > .lock-studio {
+    height: 350px;
+  }
+  .lock-scene[data-watch='true'] {
+    min-height: 860px;
+    display: flex;
+    flex-direction: column;
+  }
+  .lock-scene[data-watch='true'][data-focus='compare'] > .lock-status {
+    display: none;
+  }
+  .lock-scene[data-watch='true'] > .lock-assumptions {
+    margin-top: auto;
+  }
+  .lock-scene[data-watch='true'] .lock-object {
+    display: none;
+  }
+  .lock-scene[data-watch='true'] .lock-phone-section {
+    display: block;
+    padding: 0 12px;
+  }
+  .lock-scene[data-watch='true'][data-focus='turn'] .lock-object,
+  .lock-scene[data-watch='true'][data-focus='return'] .lock-object {
+    display: block;
+  }
+  .lock-scene[data-watch='true'][data-focus='turn'] .lock-phone-section,
+  .lock-scene[data-watch='true'][data-focus='return'] .lock-phone-section {
+    display: none;
+  }
+  .lock-phone-section .lock-section {
+    height: 370px;
+    max-width: 100%;
+    margin: auto;
+  }
+  .lock-section-title {
+    padding-left: 6px;
+  }
+  .lock-stack-states {
+    padding: 8px 14px 14px;
+    gap: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .lock-stack-states > div,
+  .lock-stack-states > button {
+    padding: 5px 0;
+  }
+  .lock-stack-states span {
+    font-size: 16px;
+  }
+  .lock-scene[data-watch='true'] .lock-stack-states span {
+    display: none;
+  }
+  .lock-scene[data-watch='true'] .lock-stack-states > div:after {
+    content: '—';
+    font-size: 16px;
+  }
+  .lock-scene[data-watch='true'] .lock-stack-states > [data-clear='true']:after {
+    content: '✓';
+  }
+  .lock-stack-states b {
+    font-size: 18px;
+  }
+  .lock-status {
+    padding: 2px 18px 20px;
+    gap: 5px 20px;
+  }
+  .lock-status > strong {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .lock-status b {
+    font-size: 21px;
+  }
+  .lock-retained {
+    padding: 0 18px 18px;
+  }
+  .lock-comparison {
+    padding: 22px 18px 15px;
+    gap: 14px;
+  }
+  .lock-comparison h3 {
+    font-size: 18px;
+    min-height: 58px;
+  }
+  .lock-comparison svg {
+    height: 265px;
+  }
+  .lock-comparison-note {
+    line-height: 1.65;
+  }
+  .lock-controls {
+    padding: 20px 18px;
+  }
+  .lock-options button {
+    flex: 1 1 125px;
+  }
+  .lock-assumptions {
+    padding: 0 18px 18px;
+  }
+  .lock-object .studio-mode {
+    font-size: 16px;
+    min-height: 44px;
+  }
+}
+@media (max-width: 360px) {
+  .lock-heading h2 {
+    font-size: 23px;
+  }
+  .lock-phone-section .lock-section {
+    height: 350px;
+  }
+  .lock-stack-states span {
+    writing-mode: horizontal-tb;
+  }
+  .lock-object > .lock-studio {
+    height: 320px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lock-scene * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.lock-phone-section .lock-end {
+  display: block;
+  width: 100%;
+  height: 350px;
+}

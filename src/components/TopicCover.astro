@@ -1,4 +1,10 @@
 ---
+import AirfoilCover from './covers/AirfoilCover.astro';
+import QrCodeCover from './covers/QrCodeCover.astro';
+import SpeakerCover from './covers/SpeakerCover.astro';
+import WirelessChargingCover from './covers/WirelessChargingCover.astro';
+import LockCover from './covers/LockCover.astro';
+import UltrasoundCover from './covers/UltrasoundCover.astro';
 import DifferentialCover from './covers/DifferentialCover.astro';
 import ErrorCorrectionCover from './covers/ErrorCorrectionCover.astro';
 import BernoulliCover from './covers/BernoulliCover.astro';
@@ -881,4 +887,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'bernoulli' && <BernoulliCover color={color} />}
   {slug === 'error-correction' && <ErrorCorrectionCover color={color} />}
   {slug === 'differential' && <DifferentialCover color={color} />}
+  {slug === 'ultrasound' && <UltrasoundCover color={color} />}
+  {slug === 'lock' && <LockCover color={color} />}
+  {slug === 'wireless-charging' && <WirelessChargingCover color={color} />}
+  {slug === 'speaker' && <SpeakerCover color={color} />}
+  {slug === 'qr-code' && <QrCodeCover color={color} />}
+  {slug === 'airfoil' && <AirfoilCover color={color} />}
 </svg>

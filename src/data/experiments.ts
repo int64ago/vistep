@@ -1,5 +1,11 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  airfoil: () => import('../components/experiments/Airfoil'),
+  'qr-code': () => import('../components/experiments/QrCode'),
+  speaker: () => import('../components/experiments/Speaker'),
+  'wireless-charging': () => import('../components/experiments/WirelessCharging'),
+  lock: () => import('../components/experiments/Lock'),
+  ultrasound: () => import('../components/experiments/Ultrasound'),
   differential: () => import('../components/experiments/Differential'),
   'error-correction': () => import('../components/experiments/ErrorCorrection'),
   bernoulli: () => import('../components/experiments/Bernoulli'),

@@ -1,0 +1,291 @@
+.ultrasound-scene {
+  width: 100%;
+  max-width: 1080px;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 20px 22px 17px;
+  border-radius: 24px;
+  background: #eaf0e7;
+  color: #2d514b;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.ultrasound-scene *,
+.ultrasound-scene *::before,
+.ultrasound-scene *::after {
+  box-sizing: border-box;
+}
+.ultrasound-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #58766c;
+}
+.ultrasound-strip > span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+.ultrasound-stage {
+  min-height: 380px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: 18px;
+  align-items: center;
+}
+.ultrasound-stage.ultrasound-wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+.ultrasound-known,
+.ultrasound-display {
+  min-width: 0;
+}
+.ultrasound-phantom,
+.ultrasound-scope,
+.ultrasound-polarity,
+.ultrasound-resolution {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: inherit;
+  overflow: visible;
+}
+.ultrasound-resolution {
+  max-height: 380px;
+}
+.ultrasound-image {
+  width: 100%;
+  position: relative;
+  background: #000;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.ultrasound-image canvas {
+  display: block;
+  position: absolute;
+  image-rendering: pixelated;
+}
+.ultrasound-image svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+}
+.ultrasound-measure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 14px;
+  border-top: 1px solid #cad8ce;
+  padding-top: 12px;
+  margin-top: 12px;
+  font-size: 16px;
+}
+.ultrasound-measure strong {
+  font-size: 18px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.ultrasound-explanation {
+  font-size: 17px;
+  margin: 12px 0 0;
+  min-height: 55px;
+  line-height: 1.6;
+}
+.ultrasound-scene[data-watch='true'] .ultrasound-explanation {
+  display: none;
+}
+.ultrasound-calibration {
+  margin: 0;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.ultrasound-energy {
+  color: #c6d9d1;
+  background: #102c30;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+.ultrasound-energy > p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 16px;
+}
+.ultrasound-energy strong {
+  font-weight: 500;
+  color: #d7b46e;
+  font-size: 19px;
+}
+.ultrasound-energy-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 14px;
+  font-size: 16px;
+}
+.ultrasound-energy-row b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.ultrasound-energy-row i {
+  grid-column: 1/-1;
+  height: 5px;
+  background: #36564f;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ultrasound-energy-row em {
+  display: block;
+  height: 100%;
+  background: #d7b46e;
+}
+.ultrasound-energy-row:nth-of-type(2) em {
+  background: #8ad1c5;
+}
+.ultrasound-coefficients {
+  margin-top: 8px;
+  color: #a7c0b3;
+  font-size: 16px;
+}
+.ultrasound-coefficients p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+.ultrasound-explore {
+  border-top: 1px solid #cad8ce;
+  padding-top: 18px;
+  margin-top: 14px;
+}
+.ultrasound-presets,
+.ultrasound-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.ultrasound-explore button {
+  min-height: 44px;
+  border: 1px solid #b3c8bc;
+  border-radius: 13px;
+  background: #f5f7ed;
+  color: #315c50;
+  padding: 9px 13px;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.ultrasound-explore button:hover,
+.ultrasound-explore button[aria-pressed='true'] {
+  background: #d8e8dc;
+  border-color: #6d9481;
+}
+.ultrasound-explore button:focus-visible,
+.ultrasound-explore input:focus-visible,
+.ultrasound-explore summary:focus-visible {
+  outline: 3px solid #538e79;
+  outline-offset: 3px;
+}
+.ultrasound-explore .control {
+  margin-block: 14px;
+}
+.ultrasound-explore .control-top,
+.ultrasound-explore .control small,
+.ultrasound-explore p,
+.ultrasound-explore summary {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.ultrasound-explore input[type='range'] {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #537f67;
+}
+.ultrasound-explore summary {
+  min-height: 44px;
+  padding-block: 12px;
+  cursor: pointer;
+}
+.ultrasound-explore details p {
+  margin-block: 12px;
+}
+@media (max-width: 760px) {
+  .ultrasound-scene[data-watch='true'] {
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+  }
+  .ultrasound-scene[data-watch='true'] .ultrasound-stage {
+    flex: 1;
+  }
+  .ultrasound-scene {
+    padding: 15px 10px 14px;
+    border-radius: 18px;
+  }
+  .ultrasound-strip {
+    margin-bottom: 6px;
+    gap: 2px 10px;
+  }
+  .ultrasound-strip > span {
+    font-size: 16px;
+  }
+  .ultrasound-stage {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 423px;
+    gap: 8px;
+    align-content: center;
+  }
+  .ultrasound-phantom {
+    max-height: 277px;
+  }
+  .ultrasound-scope {
+    max-height: 168px;
+  }
+  .ultrasound-polarity,
+  .ultrasound-resolution {
+    max-height: 400px;
+  }
+  .ultrasound-image {
+    max-width: 340px;
+    margin: auto;
+  }
+  .ultrasound-energy {
+    padding: 12px 15px;
+    gap: 10px;
+  }
+  .ultrasound-measure {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .ultrasound-measure strong {
+    font-size: 17px;
+  }
+  .ultrasound-explanation {
+    font-size: 16px;
+    min-height: 78px;
+    margin-top: 10px;
+  }
+  .ultrasound-explore .control-top {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .ultrasound-explore .control-top output {
+    margin-left: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ultrasound-explore button {
+    transition: none;
+  }
+}

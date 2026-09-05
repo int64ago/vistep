@@ -14,6 +14,186 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'airfoil',
+    name: '机翼升力',
+    title: '空气没有约定在翼尾重逢',
+    question: '机翼两侧的空气，必须在翼尾重逢吗？',
+    description: '跟随同一速度场里的空气示踪点，把整圈表面压力加成升力。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#88aeb0',
+    tag: '势流与升力',
+    related: ['bernoulli', 'siphon', 'water-hammer'],
+    sources: [
+      {
+        title: 'NASA Glenn — Incorrect Lift Theory',
+        url: 'https://www.grc.nasa.gov/WWW/k-12/VirtualAero/BottleRocket/airplane/wrong1.html',
+      },
+      {
+        title: 'NASA Glenn — Bernoulli and Newton',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/bernoulli-and-newton/',
+      },
+      {
+        title: 'University of Sydney / Cambridge — Joukowski Transformations and Aerofoils',
+        url: 'https://www-mdp.eng.cam.ac.uk/web/library/enginfo/aerothermal_dvd_only/aero/jouk/jouk.html',
+      },
+      {
+        title: 'Complex Analysis — The Joukowski Airfoil',
+        url: 'https://complexanalysis.org/web/sec_joukowski-airfoil.html',
+      },
+    ],
+    number: '44',
+  },
+  {
+    slug: 'qr-code',
+    name: '二维码',
+    title: '小小的方阵，怎么装下一整段网址？',
+    question: '跟住网址中的一位，看它成为一个黑白模块。',
+    description:
+      '从字节、RS 校验到功能图形、折返放置、八种掩码与格式信息，生成真正能读出 https://vistep.ai 的二维码。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#6a8a87',
+    tag: '信息 · 编码与机器识别',
+    related: ['error-correction', 'network', 'jpeg'],
+    sources: [
+      {
+        title: 'DENSO WAVE — QR Code versions and capacity',
+        url: 'https://www.qrcode.com/en/about/version.html',
+      },
+      {
+        title: 'DENSO WAVE — Making a QR Code: the four-module margin',
+        url: 'https://www.qrcode.com/en/howto/code.html',
+      },
+      {
+        title: 'DENSO WAVE — Error correction',
+        url: 'https://www.qrcode.com/en/about/error_correction.html',
+      },
+      {
+        title: 'Project Nayuki — QR Code generator library and implementation notes',
+        url: 'https://www.nayuki.io/page/qr-code-generator-library',
+      },
+      {
+        title: 'ZXing — CharacterSetECI (UTF-8 assignment 26)',
+        url: 'https://github.com/zxing/zxing/blob/master/core/src/main/java/com/google/zxing/common/CharacterSetECI.java',
+      },
+    ],
+    number: '43',
+  },
+  {
+    slug: 'speaker',
+    name: '扬声器',
+    title: '电流怎样让空气发声？',
+    question: '从一圈铜线，到一片振动的空气。',
+    description: '走进相连的扬声器剖面，跟随电流、推力与反电动势，再看稳态响应和空气质点。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#b7784c',
+    tag: '声学 · 电机与振动',
+    related: ['wave-interference', 'noise', 'electric-generator'],
+    sources: [
+      {
+        title: 'KLIPPEL · Small-Signal Modeling',
+        url: 'https://klippel.de/manuals/transducer-parameter-identification/fastlsi/fastlsi.html',
+      },
+      {
+        title: 'COMSOL · Loudspeaker Driver — Frequency-Domain Analysis',
+        url: 'https://doc.comsol.com/6.4/doc/com.comsol.help.models.aco.loudspeaker_driver/loudspeaker_driver.html',
+      },
+      {
+        title: 'COMSOL · Loudspeaker Driver — Transient Analysis',
+        url: 'https://doc.comsol.com/6.3/doc/com.comsol.help.models.aco.loudspeaker_driver_transient/loudspeaker_driver_transient.html',
+      },
+      {
+        title: 'Caltech · The Feynman Lectures, I–47: Sound. The wave equation',
+        url: 'https://www.feynmanlectures.caltech.edu/I_47.html',
+      },
+    ],
+    number: '42',
+  },
+  {
+    slug: 'wireless-charging',
+    name: '无线充电',
+    title: '无线充电：电能怎样跨过间隙？',
+    question: '隔着空气，电能怎样到达另一侧？',
+    description: '追踪两只线圈共享的磁链，比较间距、错位、谐振和铜耗如何改变交流负载功率。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#427f98',
+    tag: '近场传能',
+    related: ['transformer-electric', 'electric-generator'],
+    sources: [
+      {
+        title: 'Analog Devices AN-138 — Wireless Power User Guide',
+        url: 'https://www.analog.com/en/resources/app-notes/an-138fc.html',
+      },
+      {
+        title: 'Texas Instruments BQ500210 — Typical Wireless Power Transfer System',
+        url: 'https://www.ti.com/lit/ds/slusal8c/slusal8c.pdf',
+      },
+      {
+        title: 'Wireless Power Consortium — Magnetic Induction',
+        url: 'https://www.wirelesspowerconsortium.com/knowledge-base/magnetic-induction/',
+      },
+    ],
+    number: '41',
+  },
+  {
+    slug: 'lock',
+    name: '弹子锁',
+    title: '为什么一把小钥匙，能让锁芯转起来？',
+    question: '六组弹子怎样同时让开同一条边界？',
+    description: '沿连续齿形追踪圆头接触，看匹配钥匙抬起六组弹子，再让锁芯转动、回正和退出。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#58727c',
+    tag: '机械 · 接触与约束',
+    related: ['ball-bearing', 'planetary-gears'],
+    sources: [
+      {
+        title: 'Schlage · Cylinder components and pin-tumbler glossary',
+        url: 'https://www.schlage.com/content/dam/sch-us/documents/pdf/installation-manuals/P513-325.pdf',
+      },
+      {
+        title: 'ASSA ABLOY · Mechanical cylinder operation',
+        url: 'https://www.assaabloy.com/ng/en/solutions/locking-solutions/cylinders',
+      },
+      {
+        title: 'Yale · Heritage of the flat-key pin-tumbler cylinder',
+        url: 'https://www.yalehome.com/ke/en/stories/news/discover-the-heritage-of-yale',
+      },
+    ],
+    number: '40',
+  },
+  {
+    slug: 'ultrasound',
+    name: '超声成像',
+    title: '一串回声，怎样组成内部的图像？',
+    question: '透过表面，靠的是声音的往返。',
+    description:
+      '从分层体模的真实延迟回波出发，理解反射与透射、RF 和包络、B 模式扫描、轴向分辨率、衰减阴影及声速假设带来的深度误差。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#7c9f91',
+    tag: '声学 · 回波与成像',
+    related: ['doppler', 'noise', 'camera-lens'],
+    sources: [
+      {
+        title: 'University of Michigan · Ultrasound and Photoacoustic Imaging',
+        url: 'https://socr.umich.edu/BPAD1/BPAD1_notes/BPAD1_Chap03_UltrasoundPhotoacoustic.html',
+      },
+      {
+        title: 'University of Washington · BEE 531 Ultrasound Pulse-echo',
+        url: 'https://staff.washington.edu/mbruce/pres/pulse_echo.html',
+      },
+      {
+        title: 'Evident · A-scans and Cross-sectional B-scans',
+        url: 'https://ims.evidentscientific.com/en/learn/ndt-tutorials/instrumententation/phased-array-scans',
+      },
+    ],
+    number: '39',
+  },
+  {
     slug: 'differential',
     name: '汽车差速器',
     title: '为什么转弯时，两只驱动轮能转得不一样快？',

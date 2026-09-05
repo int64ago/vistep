@@ -1,0 +1,63 @@
+<h2 id="understand">Separate circuits, shared magnetic linkage</h2>
+
+Each coil belongs to its own circuit. No wire joins the two. A changing transmitter current produces magnetic flux that partly links the receiver winding. Induced voltage depends on how fast that shared flux linkage changes: voltage is zero at a linkage maximum, and largest a quarter-cycle later when linkage changes fastest.
+
+An open receiver can have induced voltage while delivering no load power. Closing its circuit allows current through the resistor. That load is also reflected through mutual inductance into the transmitter circuit, changing its current. The source supplies the energy; the magnetic field participates in transfer and temporary storage.
+
+The cutaway reveals two continuous eight-turn copper spirals. Each inner terminal crosses to the outside on a separately insulated level so it does not short the other turns. Dark ferrite sheets sit behind the coils and help form the magnetic circuit. The receiver sheet is translucent only to expose the winding in this cutaway.
+
+<h2 id="try">Change one condition at a time</h2>
+
+- Keep the centers aligned and reduce separation from 20 to 3 mm. Mutual inductance and AC load power increase over this scene's operating range.
+- Hold a 4 mm gap and increase lateral offset. Transmitter current can stay substantial while received power falls.
+- Disconnect the receiver load at a fixed placement. “Inspect flux linkage” still shows induced voltage, but output power is zero.
+- In “Inspect tuning,” increase drive frequency from 85 to 150 kHz. Compensation changes current and transferred power. Do not assume the peak of the complete coupled response must equal an isolated coil's self-resonance.
+- Remove ferrite and compare the new steady circuit. Lower assigned inductance raises self-resonance with the same capacitors. Restoring ferrite restores the original parameters.
+- In “Inspect power,” increase winding resistance and check the sum of load power, both copper losses, and source resistance loss.
+
+All six sliders support arrow keys and have explicit accessible names. Buttons support Tab, Enter, and Space. Reset restores separation, offset, frequency, load, resistance multiplier, sampled phase, switch, ferrite, and observation mode. The shared player manages pause, replay, and seeking; exploration has no separate animation clock.
+
+<h2 id="deeper">An exact circuit solution with a declared coupling approximation</h2>
+
+<details>
+<summary>Signs, phasors, and the coupled equations</summary>
+
+The inner ends are the dotted terminals. Positive current travels from the inner to the outer end, with both winding normals along +y. Phasors are RMS, using the time convention Re(√2 I exp(jωt)). Rₛ is source resistance, R₁ and R₂ are equivalent winding resistances, and Rᴸ is the AC load.
+
+<div className="formula">Vₛ = Z₁I₁ + jωMI₂; 0 = jωMI₁ + Z₂I₂</div>
+
+<div className="formula">Z₁ = Rₛ + R₁ + j(ωL₁ − 1/ωC₁); Z₂ = R₂ + Rᴸ + j(ωL₂ − 1/ωC₂)</div>
+
+With the receiver connected, reflected impedance is Zref = (ωM)²/Z₂. Then I₁ = Vₛ/(Z₁+Zref) and I₂ = −jωMI₁/Z₂. Open circuit sets I₂ to zero, while transmitter-linked flux linkage λ₂←₁ = MI₁ can still change and produce e₂ = −dλ₂←₁/dt. Flux linkage is expressed in Wb·turn, not directly in single-turn flux or magnetic flux density.
+
+</details>
+
+<details>
+<summary>How placement enters the model</summary>
+
+Each spiral has 8 turns, an 8.5 mm inner radius, 1.6 mm radial pitch, a 21.3 mm outer-terminal radius, and 0.45 mm wire radius. The insulated crossover center is 1.5 mm away from the winding plane.
+
+Coupling uses this explicitly authored approximation:
+
+<div className="formula">k(d,x) = k₀ [1+(d/15 mm)²]⁻³ᐟ² exp[−(x/22 mm)²]; M = k√(L₁L₂)</div>
+
+An axial decay envelope and lateral Gaussian describe a trend. This is neither a field integration over the drawn spirals nor a fit to Qi product measurements. With ferrite, k₀ = 0.22 and L₁ = L₂ = 6.8 µH. Without it, k₀ = 0.1364 and L₁ = L₂ = 4.2 µH. The ferrite effect is likewise an assigned teaching parameter, not a material-permeability simulation. Magnetic curves illustrate closed return paths; their locations and opacity are not field-strength measurements.
+
+On phones, lateral displacement is shown along the depth direction to preserve the composition. Its Euclidean length and circuit parameters remain unchanged for these rotationally symmetric coils.
+
+</details>
+
+<details>
+<summary>Resonance, passivity, and power</summary>
+
+Defaults are a 2 V RMS source, 0.5 Ω source resistance, 0.25 Ω and 0.28 Ω winding resistances, and a 3 Ω load. Both capacitors are approximately 165.56 nF, giving individual self-resonance at 150 kHz with 6.8 µH backed coils. Without ferrite, unchanged capacitors give about 190.86 kHz. Coupling and load affect the complete power-response curve, so individual self-resonance is not a universal maximum-power setting.
+
+<div className="formula">Pinput = Re(VₛI₁*) = |I₁|²Rₛ + |I₁|²R₁ + |I₂|²R₂ + |I₂|²Rᴸ</div>
+
+The inductance matrix obeys M² ≤ L₁L₂ and all resistances are positive. Resonant capacitors and inductors exchange stored energy; voltage or circulating current can be magnified without active power gain. Average load power stays below source power. Instantaneous source power may reverse when stored energy returns to the source.
+
+This is a linear sinusoidal steady-state model. Switching waveforms, ferrite hysteresis and eddy losses, frequency-dependent skin and proximity effects, temperature, foreign metal, and rapid parameter transients are omitted. Switch and ferrite changes compare the circuits before and after settling. The receiver is an AC resistor; real wireless charging also needs rectification, regulation, battery management, communication, and protection. These numbers are not phone or Qi charging efficiency.
+
+</details>
+
+See [Analog Devices AN-138](https://www.analog.com/en/resources/app-notes/an-138fc.html) for system structure and reflected loading, [TI's BQ500210 documentation](https://www.ti.com/lit/ds/slusal8c/slusal8c.pdf) for coils and ferrite structures, and the [Wireless Power Consortium's magnetic-induction explanation](https://www.wirelesspowerconsortium.com/knowledge-base/magnetic-induction/) for practical charging-system context.

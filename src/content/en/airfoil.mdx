@@ -1,0 +1,75 @@
+<h2 id="understand">Air has no appointment at the trailing edge</h2>
+
+Watch the cyan and ochre tracers leave the same upstream plane together. Each follows the calculated local velocity. They can pass the plane through the wing's trailing edge at **different times**. No condition forces separated parcels to reunite. For this symmetric section at 6° and 25 m/s, the chosen upper tracer arrives at about 49.70 ms and the lower one at 59.86 ms. These times belong to these seeds and this ideal model, not to every wing.
+
+The model first determines a flow that respects the distant wind, the solid surface and the sharp trailing edge. Only then does Bernoulli's relation convert speed into pressure. Surface pressure acts inward, perpendicular to each small part of the wing. Integrating that force around **the entire section** gives the lift. Both sides matter.
+
+The displayed blue and ochre loads subtract uniform ambient pressure. A blue outward increment means less inward pressure than the ambient reference; it does not mean negative absolute pressure is pulling on the wing. The uniform reference contributes zero net force around a closed surface.
+
+<h2 id="try">Change one condition at a time</h2>
+
+- Set incidence to 0°. The symmetric pressure distribution produces zero lift, despite the flow speeding up near both surfaces.
+- Compare +6° and −6°. The pressure pattern mirrors and the lift reverses. This section has identical upper and lower shapes.
+- Keep +6° and compare 15 with 30 m/s. Lift per unit span changes from about 98.74 to 394.96 N/m. The dimensionless pressure pattern stays the same.
+- Select “Air tracers,” then advance physical time. The two markers share a clock and follow the velocity field without wrapping back to the inlet. At zero incidence their travel times agree by symmetry, rather than by an equal-transit rule.
+- Select “Surface loads” and move the surface probe. Its pressure coefficient, pressure difference and speed are calculated at the same point. The separate circulation view measures a closed **mathematical contour**, not an orbit taken by a parcel.
+
+All sliders accept keyboard arrows. “Reset airfoil experiment” restores +6°, 25 m/s, time zero, the initial surface probe and the surface-load view. The film's pause, seek and replay controls use the shared transport. Parameter sweeps compare independent steady solutions; they do not simulate a wing rotating or a wind tunnel accelerating.
+
+<h2 id="deeper">One field, three independent readings</h2>
+
+<details>
+<summary>A circle becomes a closed wing section</summary>
+
+In the auxiliary complex plane, the circle has center `−εa`, radius `R = (1 + ε)a` and passes through `ζ = a`. This demonstration chooses `ε = 0.1` and a physical chord of 1 m. The Joukowski map is:
+
+<div className="formula">z = ζ + a² / ζ</div>
+
+The circle's exterior maps to the fluid outside the wing. The other inverse branch is not used. The wing is then rotated so the laboratory wind remains horizontal. Positive incidence raises the leading edge. The exact cusp has a zero mapping derivative; it is excluded from direct velocity evaluation. The scene shows nearby samples and a separate analytic limit. The solid interior and mapping pole are also excluded.
+
+</details>
+
+<details>
+<summary>What selects the circulation?</summary>
+
+With `w = ζ + εa`, the cylinder's complex potential consists of a uniform flow, a doublet and a circulation term. Its derivative is divided by the Joukowski mapping derivative to obtain the physical velocity. The surface is impermeable, and the far field tends to the specified wind. Requiring finite, compatible flow from both sides of the sharp trailing edge supplies the Kutta condition:
+
+<div className="formula">Γ = −4π R U∞ sin α</div>
+
+Here counterclockwise circulation is positive, so positive lift corresponds to negative Γ. Circulation is the closed-contour integral of tangential velocity. It need not mean that a fluid parcel circles the wing. The circulation term is irrotational in the exterior fluid domain; its singularity lies inside the excluded body.
+
+The model **imposes** the Kutta condition. Viscosity and the starting flow help establish circulation in reality; their time evolution is not calculated here. At the cusp, the common limiting speed for this symmetric section is `U∞ cos α / (1 + ε)`.
+
+</details>
+
+<details>
+<summary>From velocity to pressure to force</summary>
+
+For this steady incompressible potential flow, with uniform far-field conditions and negligible elevation effects:
+
+<div className="formula">Cₚ = (p − p∞) / (½ρU∞²) = 1 − (v / U∞)²</div>
+
+Pressure is integrated on 512 surface elements using periodic midpoint quadrature. The normal is derived from the same analytic geometry, never from fitted arrows:
+
+<div className="formula">F′ = −∮ (p − p∞) n ds</div>
+
+The vertical component is lift per unit span. An independent contour calculation gives circulation; Kutta–Joukowski supplies a check on the pressure integral:
+
+<div className="formula">L′ = −ρU∞Γ</div>
+
+At 6° and 25 m/s, pressure integration gives about 274.28 N/m, with `Cₗ ≈ 0.7165`. Doubling the speed doubles circulation and quadruples dynamic pressure and lift. Ideal two-dimensional pressure drag is zero. This is a mathematical result of the model, not a claim that a real wing has no drag.
+
+</details>
+
+<details>
+<summary>What the film cannot predict</summary>
+
+This is a steady, two-dimensional, inviscid, incompressible model in an unbounded fluid. The styled observation window is not a calculation of wind-tunnel walls. The authored parameters are chord 1 m, density 1.225 kg/m³ and ambient absolute pressure 101325 Pa. Exploration allows −8° to +8° and 10–35 m/s. Those controls delimit this explanation; ±8° is not a predicted stall boundary.
+
+There is no boundary layer, separation, stall, viscous drag, finite-span induced drag or compressibility calculation. Paths use fourth-order Runge–Kutta integration of the same velocity field. Marker motion is slowed substantially; displayed milliseconds retain physical time. Finite path windows stop tracers at their exit rather than recirculating them. Geometry remains isotropic on phones, with a separately framed trailing-edge close-up and only the current chapter's measurements.
+
+Surface colors saturate at `Cₚ ≤ −2.5` and `Cₚ = +1` for legibility; numerical probes keep the full calculated values. Pressure-load arrows and velocity arrows have separate display scales and are not physical distances. The pressure chapter reveals contributions in surface order, a teaching sequence rather than a time-dependent force buildup.
+
+Sources: [NASA: Incorrect Lift Theory](https://www.grc.nasa.gov/WWW/k-12/VirtualAero/BottleRocket/airplane/wrong1.html), [NASA: Bernoulli and Newton](https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/bernoulli-and-newton/), [University of Sydney material hosted by Cambridge: Joukowski Transformations and Aerofoils](https://www-mdp.eng.cam.ac.uk/web/library/enginfo/aerothermal_dvd_only/aero/jouk/jouk.html), and [Complex Analysis: The Joukowski Airfoil](https://complexanalysis.org/web/sec_joukowski-airfoil.html).
+
+</details>

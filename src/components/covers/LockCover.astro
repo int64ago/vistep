@@ -1,0 +1,87 @@
+---
+import { LOCK as L, lockPose, lockSpring } from '../../models/lock';
+interface Props {
+  color?: string;
+}
+const { color = '#58727c' } = Astro.props;
+const m = lockPose({ insertion: 1, requestedAngle: 0, key: 'matching' }),
+  x = (a: number) => 98 + 44 * a,
+  y = (a: number) => 158 - 43 * a;
+const key =
+  `M${x(0)} ${y(L.keyBottom)}L${x(L.keyTip)} ${y(L.keyBottom)} ` +
+  [...m.profile]
+    .reverse()
+    .map(([a, b]) => `L${x(a)} ${y(b)}`)
+    .join(' ') +
+  'Z';
+const spring = (i: number) =>
+  Array.from({ length: 85 }, (_, k) => {
+    const p = lockSpring(m.stacks[i], k / 84);
+    return `${k ? 'L' : 'M'}${x(p[0])} ${y(p[1])}`;
+  }).join(' ');
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs
+    ><linearGradient id="lock-cover-paper" x2="0" y2="1"
+      ><stop stop-color="#f4f0e6"></stop><stop offset="1" stop-color="#e5e5dc"
+      ></stop></linearGradient
+    ><linearGradient id="lock-cover-brass"
+      ><stop stop-color="#a7844f"></stop><stop offset=".5" stop-color="#dfc28f"></stop><stop
+        offset="1"
+        stop-color="#b49668"></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#lock-cover-paper)"></rect>
+  <path d="M77 207H373" stroke="#526b7024" stroke-width="9" stroke-linecap="round"></path>
+  <rect x="102" y="31" width="251" height="130" rx="8" fill={color} opacity=".22"></rect>
+  <path d="M98 29H358M100 29V116M356 29V116" stroke={color} stroke-width="8" stroke-linejoin="round"
+  ></path>
+  <path d="M99 111H355V203H99Z" fill="url(#lock-cover-brass)" opacity=".3"></path>
+  <path d="M100 201H357" stroke={color} stroke-width="6"></path>
+  <ellipse cx="98" cy="158" rx="14" ry="48" fill={color}></ellipse>
+  <ellipse cx="98" cy="158" rx="10" ry="44" fill="url(#lock-cover-brass)"></ellipse>
+  <rect x="94" y="136" width="8" height="50" rx="2" fill="#4a5759"></rect>
+  <path d="M97 111H356M98 201H356" stroke="#a99a7c" stroke-width="2"></path>
+  {
+    m.stacks.map((s, i) => (
+      <g>
+        <path
+          d={`M${x(s.x) - 8} 31V${y(L.keywayTop)}M${x(s.x) + 8} 31V${y(L.keywayTop)}`}
+          stroke={color}
+          stroke-opacity=".22"
+          stroke-width="3"
+        />
+        <path d={spring(i)} stroke="#6b818a" stroke-width="1.5" />
+        <rect
+          x={x(s.x) - 5}
+          y={y(s.driverTop)}
+          width="10"
+          height={L.driverLength * 43}
+          rx="1.5"
+          fill="#82969b"
+        />
+        <path
+          d={`M${x(s.x) - 5} ${y(s.interfaceY)}H${x(s.x) + 5}V${y(s.centerY)}a5 5 0 0 1 -10 0Z`}
+          fill={i === 3 ? '#b26746' : '#bc985e'}
+        />
+        <circle cx={x(s.x)} cy={y(s.interfaceY)} r="2.5" fill="#43846f" />
+      </g>
+    ))
+  }
+  <path d={key} fill="#c8b58c" stroke="#a68b60" stroke-width="1"></path>
+  <path d="M60 147H98V184H60" fill="#c8b58c"></path>
+  <ellipse cx="48" cy="159" rx="28" ry="27" fill="#c8b58c" stroke="#ac926b" stroke-width="2"
+  ></ellipse>
+  <ellipse cx="46" cy="156" rx="15" ry="12" fill="#edeadf"></ellipse>
+  <path d={`M114 ${y(L.radius)}H349`} stroke="#4d8672" stroke-width="1" stroke-dasharray="3 4"
+  ></path>
+  <path d="M357 153H380V163H357" fill="#9aa9a9"></path>
+</svg>

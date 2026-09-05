@@ -2815,7 +2815,7 @@
     ]
   },
   "bernoulli": {
-    "duration": 200.0,
+    "duration": 200,
     "chapters": [
       {
         "id": "bernoulli-01",
@@ -2831,7 +2831,7 @@
         "titleEn": "One volume stretches through the throat",
         "caption": "体积守恒把截面积与流速连在一起。",
         "captionEn": "Conserved volume connects cross-sectional area to velocity.",
-        "at": 23.0
+        "at": 23
       },
       {
         "id": "bernoulli-03",
@@ -2847,7 +2847,7 @@
         "titleEn": "Widen again and recover pressure",
         "caption": "扩张段流速降低，理想无损出口恢复入口压力。",
         "captionEn": "The diffuser slows the flow and recovers inlet pressure in the ideal model.",
-        "at": 71.0
+        "at": 71
       },
       {
         "id": "bernoulli-05",
@@ -2863,7 +2863,7 @@
         "titleEn": "Still water can have a pressure difference",
         "caption": "零流量时，液面等高不代表各处压力相等。",
         "captionEn": "At zero flow, level column surfaces do not mean equal local pressure.",
-        "at": 120.0
+        "at": 120
       },
       {
         "id": "bernoulli-07",
@@ -2871,7 +2871,7 @@
         "titleEn": "Account for distributed loss",
         "caption": "同样的流量与几何，有损总水头沿管下降。",
         "captionEn": "With the same flow and geometry, loss makes total head decrease downstream.",
-        "at": 147.0
+        "at": 147
       },
       {
         "id": "bernoulli-08",
@@ -2953,7 +2953,7 @@
     ]
   },
   "differential": {
-    "duration": 192.0,
+    "duration": 192,
     "chapters": [
       {
         "id": "differential-paths",
@@ -2969,7 +2969,7 @@
         "titleEn": "Straight ahead: the pinions orbit",
         "caption": "两只半轴齿轮同速，行星齿轮相对壳体不自转。",
         "captionEn": "With equal side speeds, the pinions do not spin relative to the carrier.",
-        "at": 24.0
+        "at": 24
       },
       {
         "id": "differential-spiders",
@@ -2985,7 +2985,7 @@
         "titleEn": "The carrier sets the mean speed",
         "caption": "一侧减少的转速，恰好由另一侧增加。",
         "captionEn": "A decrease on one side is matched by an increase on the other.",
-        "at": 71.0
+        "at": 71
       },
       {
         "id": "differential-held",
@@ -2993,7 +2993,7 @@
         "titleEn": "Hold one side, speed up the other",
         "caption": "这是固定一只车轮的试验，不是锁止差速器。",
         "captionEn": "This test holds one wheel; it does not lock the differential.",
-        "at": 95.0
+        "at": 95
       },
       {
         "id": "differential-torque",
@@ -3001,7 +3001,7 @@
         "titleEn": "Separate speed from torque",
         "caption": "理想、无损且忽略齿轮惯性时，两侧扭矩相等。",
         "captionEn": "The ideal, lossless model with negligible gear inertia gives equal side torques.",
-        "at": 119.0
+        "at": 119
       },
       {
         "id": "differential-traction",
@@ -3009,7 +3009,7 @@
         "titleEn": "The weaker limit constrains both sides",
         "caption": "这里只计算可维持的扭矩上限，不预测打滑后的车速。",
         "captionEn": "This calculates sustainable torque limits, not vehicle speed after wheel slip.",
-        "at": 143.0
+        "at": 143
       },
       {
         "id": "differential-return",
@@ -3018,6 +3018,420 @@
         "caption": "道路要求不同转速，齿轮约束它们的平均值。",
         "captionEn": "The road requires different speeds; the gears constrain their average.",
         "at": 168.5
+      }
+    ]
+  },
+  "ultrasound": {
+    "duration": 182.5,
+    "chapters": [
+      {
+        "id": "finite-pulse",
+        "title": "先发出一小段声音",
+        "titleEn": "Send a finite pulse",
+        "caption": "有限脉冲离开探头，随后沿原声线返回。",
+        "captionEn": "A finite pulse leaves the probe and later returns along the same ray.",
+        "at": 0
+      },
+      {
+        "id": "round-trip",
+        "title": "用往返时间定位",
+        "titleEn": "Locate a boundary by its delay",
+        "caption": "先走到界面，再返回探头；往返时间除以二才给出深度。",
+        "captionEn": "Travel to the boundary and back: divide the round-trip time by two to recover depth.",
+        "at": 22.0
+      },
+      {
+        "id": "reflection-transmission",
+        "title": "反射一部分，继续走一部分",
+        "titleEn": "Reflect some, transmit the rest",
+        "caption": "能量在界面分流；深部回波还要通过上方界面两次。",
+        "captionEn": "Energy divides at a boundary; deeper echoes cross overlying interfaces on both legs.",
+        "at": 45.0
+      },
+      {
+        "id": "rf-envelope",
+        "title": "负回波也能成为亮线",
+        "titleEn": "A negative echo can still be bright",
+        "caption": "先保留 RF 的符号与相位，再从相干信号求非负包络。",
+        "captionEn": "Keep RF sign and phase, then obtain a nonnegative envelope from the coherent signal.",
+        "at": 67.0
+      },
+      {
+        "id": "scan-lines",
+        "title": "一条 A 线，成为一列像素",
+        "titleEn": "One A-line becomes one image column",
+        "caption": "每个停驻位置收齐回波，再按时间和亮度组成扫描列。",
+        "captionEn": "At each stationary position, complete an echo record and map its timing and strength into a column.",
+        "at": 90.0
+      },
+      {
+        "id": "pulse-resolution",
+        "title": "缩短脉冲，分开近邻",
+        "titleEn": "Shorten the pulse to separate neighbors",
+        "caption": "同一片 0.64 mm 薄片：长脉冲合并，短脉冲分出两峰。",
+        "captionEn": "The same 0.64 mm foil: a long pulse merges the returns; a short pulse separates two peaks.",
+        "at": 113.5
+      },
+      {
+        "id": "attenuation-shadow",
+        "title": "亮表面，暗后方",
+        "titleEn": "A bright face with a darker region behind",
+        "caption": "增加嵌块衰减，前表面不变，深部回波变弱。",
+        "captionEn": "Increase insert attenuation: its near face stays fixed while deeper echoes weaken.",
+        "at": 137.5
+      },
+      {
+        "id": "speed-calibration",
+        "title": "声速假设会移动图像",
+        "titleEn": "An assumed speed moves the image",
+        "caption": "同一回波记录，用错误声速重建会定位过深；校准后恢复。",
+        "captionEn": "The same record is placed too deep with an excessive assumed speed; calibration restores its position.",
+        "at": 160.0
+      }
+    ]
+  },
+  "lock": {
+    "duration": 196.0,
+    "chapters": [
+      {
+        "id": "lock-bridge",
+        "title": "先看挡住转动的那一组",
+        "titleEn": "Start with a stack that blocks rotation",
+        "caption": "上弹子跨在固定外壳与锁芯之间。",
+        "captionEn": "A driver pin bridges the fixed shell and the plug.",
+        "at": 0
+      },
+      {
+        "id": "lock-insert",
+        "title": "钥匙沿着同一条通道推进",
+        "titleEn": "The key advances through one keyway",
+        "caption": "钥匙先接触圆头，再把整组弹子推高。",
+        "captionEn": "The key contacts the rounded tip and raises the entire stack.",
+        "at": 24.5
+      },
+      {
+        "id": "lock-contact",
+        "title": "圆头沿齿形连续抬升",
+        "titleEn": "Rounded tips follow the continuous profile",
+        "caption": "抬升来自实际接触；弹簧的两端始终有支承。",
+        "captionEn": "Contact determines lift; both spring ends stay seated.",
+        "at": 48.0
+      },
+      {
+        "id": "lock-align",
+        "title": "不同长度，抵达同一边界",
+        "titleEn": "Different lengths reach one boundary",
+        "caption": "匹配的齿高与下弹子长度互相补足。",
+        "captionEn": "Each matching cut complements its key-pin length.",
+        "at": 73.0
+      },
+      {
+        "id": "lock-compare",
+        "title": "只差一处，仍然转不动",
+        "titleEn": "One mismatch still blocks the plug",
+        "caption": "比较同一时刻：一个错误高度仍会阻挡锁芯。",
+        "captionEn": "At the same instant, one incorrect height still blocks rotation.",
+        "at": 97.5
+      },
+      {
+        "id": "lock-turn",
+        "title": "边界清空，锁芯才能转动",
+        "titleEn": "Clear the boundary, then turn the plug",
+        "caption": "钥匙和下弹子随锁芯转，上弹子留在外壳里。",
+        "captionEn": "The key and lower pins turn with the plug; drivers stay in the shell.",
+        "at": 123.0
+      },
+      {
+        "id": "lock-return",
+        "title": "先回正，再退出",
+        "titleEn": "Return home before withdrawing",
+        "caption": "转动时钥匙保持就位；回到入口位置后才能退出。",
+        "captionEn": "The key stays seated while turned; withdrawal requires the home position.",
+        "at": 148.0
+      },
+      {
+        "id": "lock-withdraw",
+        "title": "钥匙退出，弹子重新跨界",
+        "titleEn": "Withdraw the key, restore the barrier",
+        "caption": "齿面离开后，弹簧使上弹子重新进入锁芯。",
+        "captionEn": "As the profile leaves, springs return the drivers into the plug.",
+        "at": 172.5
+      }
+    ]
+  },
+  "wireless-charging": {
+    "duration": 189.0,
+    "chapters": [
+      {
+        "id": "drive",
+        "title": "先让电流交替",
+        "titleEn": "Start with alternating current",
+        "caption": "发送端先建立交流电流；没有电线跨过线圈之间的间隙。",
+        "captionEn": "The transmitter establishes alternating current; no wire crosses the gap between the coils.",
+        "at": 0
+      },
+      {
+        "id": "induction",
+        "title": "变化的磁链，感应的电压",
+        "titleEn": "Changing linkage induces voltage",
+        "caption": "共享磁链的变化感应出电压；磁链最大时，瞬时感应电压恰好为零。",
+        "captionEn": "Changing shared flux linkage induces voltage; at peak linkage the instantaneous induced voltage is zero.",
+        "at": 22.0
+      },
+      {
+        "id": "circuit",
+        "title": "闭合接收回路",
+        "titleEn": "Close the receiver circuit",
+        "caption": "接收回路闭合以后，电流才流过交流负载，发送端也感受到这个负载。",
+        "captionEn": "Closing the receiver circuit lets current reach the AC load and reflects that load back to the transmitter.",
+        "at": 44.0
+      },
+      {
+        "id": "distance",
+        "title": "让两只线圈靠近",
+        "titleEn": "Bring the coils closer",
+        "caption": "线圈靠近，共享耦合增强；在当前运行范围里，负载得到更多功率。",
+        "captionEn": "Closer coils share stronger coupling; in this operating range, the load receives more power.",
+        "at": 66.5
+      },
+      {
+        "id": "alignment",
+        "title": "高度没变，耦合却减弱",
+        "titleEn": "Same gap, weaker alignment",
+        "caption": "侧向错开，即使距离不变，也会减少两个线圈共享的耦合。",
+        "captionEn": "Lateral misalignment reduces shared coupling even when the vertical gap stays fixed.",
+        "at": 91.0
+      },
+      {
+        "id": "resonance",
+        "title": "电容改变电路的节奏",
+        "titleEn": "Tune with capacitors",
+        "caption": "电容抵消线圈的感抗；接近调谐频率，电流与接收功率明显改变。",
+        "captionEn": "Capacitors cancel coil reactance; near the tuning frequency, current and received power change substantially.",
+        "at": 113.5
+      },
+      {
+        "id": "ferrite",
+        "title": "磁通也需要返回路径",
+        "titleEn": "Flux needs a return path",
+        "caption": "移除铁氧体磁片，电感和互感一起改变，原来的调谐条件也随之改变。",
+        "captionEn": "Removing ferrite changes inductance and mutual coupling, so the original tuning condition changes too.",
+        "at": 138.0
+      },
+      {
+        "id": "losses",
+        "title": "每一瓦都要有去处",
+        "titleEn": "Account for every watt",
+        "caption": "线圈电阻增加，铜耗占比上升；负载、线圈和源电阻的功率始终对得上。",
+        "captionEn": "Increasing winding resistance raises the copper-loss share; load and losses always sum to source power.",
+        "at": 163.0
+      }
+    ]
+  },
+  "speaker": {
+    "duration": 187.5,
+    "chapters": [
+      {
+        "id": "speaker-01",
+        "title": "线圈带动整个组件",
+        "titleEn": "The coil moves the assembly",
+        "caption": "磁路固定，音圈与锥盆连成同一个移动组件。",
+        "captionEn": "The magnetic circuit stays fixed; coil and cone form one moving assembly.",
+        "at": 0
+      },
+      {
+        "id": "speaker-02",
+        "title": "磁隙里的换向",
+        "titleEn": "Reversal in the gap",
+        "caption": "同一磁场中，电流的正负决定电磁力方向。",
+        "captionEn": "In a fixed field, reversing current reverses electromagnetic force.",
+        "at": 22.0
+      },
+      {
+        "id": "speaker-03",
+        "title": "柔性的连续连接",
+        "titleEn": "Connections that flex",
+        "caption": "折环与弹波允许轴向运动，并提供弹性回复。",
+        "captionEn": "The surround and spider allow axial travel and provide restoring force.",
+        "at": 45.0
+      },
+      {
+        "id": "speaker-04",
+        "title": "运动也能发电",
+        "titleEn": "Motion also generates voltage",
+        "caption": "回路保持闭合；线圈回弹产生反电动势。",
+        "captionEn": "With the circuit closed, the returning coil generates back EMF.",
+        "at": 68.5
+      },
+      {
+        "id": "speaker-05",
+        "title": "功率的去向",
+        "titleEn": "Where the power goes",
+        "caption": "输入功率等于电阻损耗、机械耗散与储能变化率之和。",
+        "captionEn": "Input power equals copper loss, mechanical loss and the change in stored energy.",
+        "at": 92.0
+      },
+      {
+        "id": "speaker-06",
+        "title": "每个频率都不同",
+        "titleEn": "Each frequency responds differently",
+        "caption": "相同峰值电压下，各频率的稳态最大行程并不相同。",
+        "captionEn": "At the same peak voltage, different frequencies produce different steady excursions.",
+        "at": 117.0
+      },
+      {
+        "id": "speaker-07",
+        "title": "阻尼改变响应",
+        "titleEn": "Damping changes the response",
+        "caption": "增加阻尼会改变行程峰，也会通过反电动势改变电气响应。",
+        "captionEn": "Damping changes excursion and feeds back into the electrical response.",
+        "at": 140.5
+      },
+      {
+        "id": "speaker-08",
+        "title": "空气没有一路飞走",
+        "titleEn": "Air does not travel with the wave",
+        "caption": "空气质点在附近往复，压缩图样向外传播。",
+        "captionEn": "Air points oscillate nearby while the compression pattern travels outward.",
+        "at": 164.0
+      }
+    ]
+  },
+  "qr-code": {
+    "duration": 214.5,
+    "chapters": [
+      {
+        "id": "byte",
+        "title": "从网址，追踪一个 v",
+        "titleEn": "Follow one v from the URL",
+        "caption": "同一个 v：118 → 01110110，始终追踪位 b6。",
+        "captionEn": "The same v: 118 → 01110110. Keep following bit b6.",
+        "at": 0
+      },
+      {
+        "id": "stream",
+        "title": "先告诉读者怎样读",
+        "titleEn": "Tell the reader how to read",
+        "caption": "模式、字节数、消息和终止位组成 19 个数据码字。",
+        "captionEn": "Mode, byte count, message, and terminator form 19 data codewords.",
+        "at": 26.5
+      },
+      {
+        "id": "rs",
+        "title": "再算七个校验码字",
+        "titleEn": "Calculate seven check codewords",
+        "caption": "19 个数据码字 → GF(256) → 7 个 RS 校验码字。",
+        "captionEn": "19 data codewords → GF(256) → 7 RS check codewords.",
+        "at": 53.0
+      },
+      {
+        "id": "structure",
+        "title": "先留出方向与尺度",
+        "titleEn": "Reserve orientation and scale",
+        "caption": "先放功能图形，留下 208 个数据与校验位置。",
+        "captionEn": "Function patterns leave 208 positions for data and checks.",
+        "at": 80.0
+      },
+      {
+        "id": "placement",
+        "title": "两列一组，把位放进去",
+        "titleEn": "Place bits in pairs of columns",
+        "caption": "从右下折返放置；v 的位 b6 到达坐标 (13, 11)。",
+        "captionEn": "Weave from the bottom right; v’s bit b6 reaches (13, 11).",
+        "at": 107.5
+      },
+      {
+        "id": "masks",
+        "title": "八种掩码，逐一比较",
+        "titleEn": "Compare all eight masks",
+        "caption": "比较八种可逆掩码；此网址选择编号 3。",
+        "captionEn": "Compare eight reversible masks; this URL selects mask 3.",
+        "at": 133.5
+      },
+      {
+        "id": "format",
+        "title": "把解码说明写在两处",
+        "titleEn": "Write the reading guide twice",
+        "caption": "L 等级 + 掩码 3 + BCH 校验 → 两份格式信息。",
+        "captionEn": "Level L + mask 3 + BCH checks → two format copies.",
+        "at": 159.5
+      },
+      {
+        "id": "scan",
+        "title": "现在，它可以被扫描",
+        "titleEn": "Now it can be scanned",
+        "caption": "退出教学高亮，保留四格静区，扫码读取真实网址。",
+        "captionEn": "Remove teaching highlights, keep four quiet modules, and scan the real URL.",
+        "at": 187.5
+      }
+    ]
+  },
+  "airfoil": {
+    "duration": 188.0,
+    "chapters": [
+      {
+        "id": "symmetry",
+        "title": "对称的起点",
+        "titleEn": "Begin with symmetry",
+        "caption": "对称翼型、零攻角：上下面压力相抵，升力为零。",
+        "captionEn": "A symmetric section at zero incidence: the pressure loads balance, giving zero lift.",
+        "at": 0
+      },
+      {
+        "id": "incidence",
+        "title": "改变迎风角度",
+        "titleEn": "Change incidence",
+        "caption": "只改变攻角，边界条件选出的速度场与压力一起改变。",
+        "captionEn": "Change incidence: the boundary conditions select a new velocity field and pressure pattern.",
+        "at": 22.0
+      },
+      {
+        "id": "kutta",
+        "title": "尖尾缘的约束",
+        "titleEn": "The trailing-edge condition",
+        "caption": "两侧趋近同一有限尾缘速度；环量必须满足这个条件。",
+        "captionEn": "Both sides approach one finite trailing-edge velocity. Circulation must satisfy this condition.",
+        "at": 45.0
+      },
+      {
+        "id": "forces",
+        "title": "把一圈压力加起来",
+        "titleEn": "Sum the whole surface",
+        "caption": "沿整圈表面积分压力载荷，上下面都参与合力。",
+        "captionEn": "Add pressure loads around the entire surface. Both sides contribute to the resultant.",
+        "at": 67.5
+      },
+      {
+        "id": "parcels",
+        "title": "不必同时抵达",
+        "titleEn": "No appointment downstream",
+        "caption": "同一时刻释放的相邻空气示踪点，不必同时经过翼尾。",
+        "captionEn": "Nearby air tracers released together need not pass the trailing edge together.",
+        "at": 90.0
+      },
+      {
+        "id": "circulation",
+        "title": "用另一条路径核对",
+        "titleEn": "An independent contour check",
+        "caption": "闭合路径上的速度积分给出环量，不是空气在绕圈。",
+        "captionEn": "Integrating velocity around a closed contour gives circulation, not an orbit of air.",
+        "at": 114.5
+      },
+      {
+        "id": "reverse",
+        "title": "让升力反向",
+        "titleEn": "Reverse the lift",
+        "caption": "同一对称翼型，攻角变负，压力分布与升力翻转。",
+        "captionEn": "With the same symmetric section, negative incidence reverses the pressure pattern and lift.",
+        "at": 139.5
+      },
+      {
+        "id": "scaling",
+        "title": "风速与升力的平方",
+        "titleEn": "The square of wind speed",
+        "caption": "攻角不变：风速翻倍，理想压力载荷与升力变成四倍。",
+        "captionEn": "Keep incidence fixed: double the wind speed and the ideal loads and lift become four times larger.",
+        "at": 162.0
       }
     ]
   }
