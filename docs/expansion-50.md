@@ -11,11 +11,14 @@ The active objective is **50 additional complete scenes**, taking the 12 scenes 
 | Camera lenses               | 3D optical bench and adaptive ray view; focus, inversion, refocusing and virtual images share one model | Chinese and English, 160.5 s each | In production; desktop and 320 px key frames inspected                                 |
 | Aperture and depth of field | Original layered garden; pupil, exposure, blur, focus, depth band and diffraction inset                 | Chinese and English, 168.0 s each | In production; desktop and English 390/320 px entries inspected                        |
 | Four-stroke engine          | Connected 3D cutaway, combustion-chamber views and pressure–volume loop                                 | Chinese and English, 169.5 s each | In production; desktop, English 390/320 px, keyboard dead center and 2D mode inspected |
-| Planetary gearing           | Internal involute ring, absolute gear phase and four lock configurations                                | Not produced                      | Scientific model only; [production brief](examples/planetary-brief.md), no route       |
+| Planetary gearing           | Connected 3D involute assembly, four constraints and a shared 2D cutaway                                | Chinese and English, 174.5 s each | In production; desktop assembly, English 320 px, gear ratios and fallback reviewed     |
+| Optical fiber               | Dielectric boundary, true axial ray paths, index comparison, pulse spreading and delayed bits           | Chinese and English, 180.0 s each | In production; desktop and English 320 px key frames and keyboard limits reviewed      |
 
-The three integrated scenes have bilingual articles, sources, unique covers, lazy imports, transcripts, social images and sitemap entries. The other 47 subjects remain unregistered: one has a scientific model and 46 are planned. **No new scene is marked fully accepted.**
+The five integrated scenes have bilingual articles, sources, unique covers, lazy imports, transcripts, social images and sitemap entries. The other 45 subjects remain unregistered and planned. **No new scene is marked fully accepted.**
 
 ## Review evidence — 2026-09-05
+
+The first checkpoint below describes commit `c0deca7`. The subsequent planetary/fiber work extends the local collection to 17 topics. Current `pnpm verify` and `pnpm build:preview` passed: 70 tests in 13 files, 112 type-checked files with no errors/warnings/hints, and 37 canonical bilingual pages audited. The deployed preview version is recorded only after the upload finishes.
 
 - `pnpm scene:check`, `pnpm verify` and `pnpm build:preview` passed. The suite has 63 tests in 12 files; type checking covered 105 files without errors, warnings or hints. Static audits checked 33 canonical bilingual pages, assets, sitemap, 404 and the respective indexing policies. The build contains **15 topics**, not 62.
 - Optics tests cover ray convergence, virtual/infinite images, depth boundaries, aperture/irradiance/blur relationships and direct chapter reconstruction.
@@ -28,10 +31,16 @@ The three integrated scenes have bilingual articles, sources, unique covers, laz
 - Engine review added spring seats, separated material finishes, and corrected graph units and a 2D-button/label overlap. In the English mobile UI, keyboard navigation reached 360°: 50 cm³, 7.70 MPa, 0 N·m. End reached 720°; reset returned to intake. Selecting 2D removed the WebGL canvas, and the document had no horizontal overflow at 320 px.
 - Deployment snapshots under ignored `artifacts/` are now excluded from TypeScript, keeping compiled vendor bundles out of source diagnostics.
 
+- Planetary review replaced intrusive support blocks with saddle tops derived from the stationary race and kept the independent sun shaft clear of the carrier arms. Fixed housing remains visible during assembly, and the opening camera now includes the complete base. A keyboard input of 3.5 turns gives one carrier turn with the ring held; carrier-fixed mode gives −1.4 ring turns. The 320 px fallback removes the WebGL canvas and has no horizontal overflow.
+- Fiber tests verify Snell/Fresnel boundaries, acceptance conditions, exact wall contacts, branch-power conservation, propagation delay, bits and direct chapter state. Keyboard checks reached equal core/cladding indices, 4.0% reflectance at normal incidence and 100% at 75° for glass–air. Primary experimental buttons measured at least 44 px high. The time plot broadens computed arrivals as distance increases; both graph rows use the same intensity scale.
+- All 32 planetary/fiber chapter-language pairs passed independent ASR (minimum similarity 0.8488 and 0.9375 respectively). A planetary attempt first failed with HTTP 401; refreshing the existing login and retrying produced the recorded result. The Chinese fiber asset selected in the browser is `optical-fiber-zh-623aa039e376.mp3`.
+
 The current runtime does not accept audio input. **No complete listening review or claim about vocal naturalness is recorded.** ASR and browser media behavior are separate evidence. Complete continuous visual viewing, all chapter boundaries, broader accessibility/failure cases, listening and physical-phone performance remain outstanding. A viewport override is not a physical-phone test.
 
 ## Preview and next work
 
 The first optics preview used an immutable asset snapshot: version `f39215c2-84aa-4f43-b33e-fd6182b30f79`. An earlier upload was interrupted after detecting that its source directory was being rebuilt; it was not counted as a successful release. Production still has the original 12 scenes.
+
+The latest three-scene preview is version `878fc77f-01ca-47cc-9911-5102a69dc3c3`, matching the runtime content in commit `c0deca7`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33964115154) passed. The engine route returned HTTP 200 with `noindex, nofollow`; the browser rendered the cutaway and selected the updated Chinese track `four-stroke-engine-zh-b6e022d75bc2.mp3`. This confirms delivery and selection, not a listening review.
 
 Continue visual review and the remaining subjects. Before final main publication, accept all 50 additions, verify the full 62-topic collection and recordings, update bilingual catalog documentation, and record preview/production evidence through the existing deployment workflow. Main publication remains outstanding.

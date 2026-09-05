@@ -4,12 +4,22 @@ interface Props {
   color: string;
 }
 import { engineCycle } from '../models/four-stroke';
+import { planetaryOutlines, planetaryState } from '../models/planetary';
+import type { Point2 } from '../models/mechanisms';
+import { traceFiber } from '../models/fiber';
 const { slug, color } = Astro.props;
 const grid = Array.from({ length: 8 }, (_, i) => i);
 const engine = engineCycle(2.4 * Math.PI);
 const enginePin = 184 - engine.pinY * 650;
 const engineCrankX = 200 + engine.crankX * 650;
 const engineCrankY = 184 - engine.crankY * 650;
+const planetary =
+  slug === 'planetary-gears'
+    ? { outlines: planetaryOutlines(), state: planetaryState(0.43, 'ring-fixed') }
+    : null;
+const gearPath = (points: Point2[]) =>
+  points.map((v, i) => `${i ? 'L' : 'M'}${v.x} ${v.y}`).join(' ') + 'Z';
+const fiber = slug === 'optical-fiber' ? traceFiber(12, 1.46, 600) : null;
 ---
 
 <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -27,6 +37,119 @@ const engineCrankY = 184 - engine.crankY * 650;
     width="400"
     height="230"
     fill={`url(#dots-${slug})`}></rect>
+  {
+    fiber && (
+      <g>
+        <rect width="400" height="230" fill="#222d48" />
+        <rect x="32" y="53" width="336" height="124" fill="#56617d" fill-opacity=".23" />
+        <rect
+          x="32"
+          y="78"
+          width="336"
+          height="74"
+          fill="#708ca7"
+          fill-opacity=".25"
+          stroke="#8da8c3"
+          stroke-opacity=".35"
+        />
+        <rect
+          x="32"
+          y="101"
+          width="336"
+          height="28"
+          fill="#a6d1dc"
+          fill-opacity=".2"
+          stroke="#b2d6df"
+          stroke-opacity=".65"
+        />
+        {fiber.segments
+          .filter((s) => !s.escaped)
+          .map((s) => (
+            <path
+              d={`M${32 + s.a.x * 0.56} ${115 - s.a.y * 0.56}L${32 + s.b.x * 0.56} ${115 - s.b.y * 0.56}`}
+              stroke="#efca92"
+              stroke-width="2"
+            />
+          ))}
+        {fiber.hits.map((p) => (
+          <circle cx={32 + p.x * 0.56} cy={115 - p.y * 0.56} r="3" fill="#f8dea9" />
+        ))}
+        <text
+          x="32"
+          y="32"
+          fill="#94aec9"
+          font-family="Manrope"
+          font-size="11"
+          letter-spacing="1.5"
+        >
+          LIGHT, GUIDED.
+        </text>
+        <text x="368" y="205" text-anchor="end" fill="#92a7c4" font-family="Manrope" font-size="11">
+          1.480 / 1.460
+        </text>
+      </g>
+    )
+  }
+  {
+    planetary && (
+      <g>
+        <rect width="400" height="230" fill="#203744" />
+        <g transform="translate(200 116) scale(58 -58)">
+          <circle r="1.68" stroke="#4f6a76" stroke-width=".05" />
+          {planetary.state.planets.map((p) => (
+            <path
+              d={`M${p.x * 0.2} ${p.y * 0.2}L${p.x} ${p.y}`}
+              stroke="#548e85"
+              stroke-width=".14"
+              stroke-linecap="round"
+            />
+          ))}
+          <path
+            d={`M1.55 0A1.55 1.55 0 1 0 -1.55 0A1.55 1.55 0 1 0 1.55 0Z${gearPath(planetary.outlines.ring)}`}
+            fill="#8ba3b1"
+            fill-rule="evenodd"
+          />
+          <path
+            d={gearPath(planetary.outlines.sun)}
+            transform={`rotate(${(planetary.state.sun * 180) / Math.PI})`}
+            fill="#c6aa77"
+          />
+          {planetary.state.planets.map((p, i) => (
+            <g transform={`translate(${p.x} ${p.y}) rotate(${(p.angle * 180) / Math.PI})`}>
+              <path
+                d={gearPath(planetary.outlines.planet)}
+                fill={i === 0 ? '#7db7aa' : '#b1c5c6'}
+              />
+              <circle r=".095" fill="#203744" />
+              <circle cx=".25" r=".036" fill="#f2d69d" />
+            </g>
+          ))}
+          <circle r=".12" fill="#203744" />
+        </g>
+        <text
+          x="24"
+          y="30"
+          fill="#9fbbb9"
+          font-family="Manrope"
+          font-size="11"
+          letter-spacing="1.4"
+        >
+          24 / 18 / 60
+        </text>
+        <text
+          x="376"
+          y="213"
+          text-anchor="end"
+          fill="#97afa9"
+          font-family="Manrope"
+          font-size="10"
+          letter-spacing="1.1"
+        >
+          SPIN + ORBIT
+        </text>
+      </g>
+    )
+  }
   {
     slug === 'four-stroke-engine' && (
       <g>

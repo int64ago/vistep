@@ -3,6 +3,8 @@ import {
   PLANETARY,
   planetaryOutlines,
   planetarySpeeds,
+  planetaryDrive,
+  planetaryShot,
   planetaryState,
   radialBoundary,
   type PlanetaryMode,
@@ -56,5 +58,25 @@ describe('planetary gearing', () => {
     planetaryState(-22, 'sun-fixed');
     expect(planetaryState(8.125, 'ring-fixed')).toEqual(original);
     expect(() => planetaryState(NaN, 'locked')).toThrow();
+  });
+  it('conserves ideal input/output power without assigning power to fixed supports', () => {
+    for (const mode of modes) {
+      const d = planetaryDrive(mode);
+      expect(d.outputPower).toBeCloseTo(d.inputPower, 12);
+    }
+    expect(planetaryDrive('ring-fixed').outputTorque).toBeCloseTo(3.5);
+    expect(planetaryDrive('carrier-fixed').outputTorque).toBeCloseTo(-2.5);
+  });
+  it('does not rotate disassembled gears and counts the measured output turns', () => {
+    for (let i = 0; i < 100; i++) {
+      const shot = planetaryShot(0, i / 100);
+      if (shot.assembly > 0) expect(shot.inputAngle).toBe(0);
+    }
+    for (const chapter of [2, 4, 5]) {
+      const shot = planetaryShot(chapter, 1),
+        state = planetaryState(shot.inputAngle, shot.mode),
+        drive = planetaryDrive(shot.mode);
+      expect(Math.abs(state[drive.output]) / TAU).toBeCloseTo(1, 12);
+    }
   });
 });

@@ -2,7 +2,7 @@
 
 [简体中文](../zh-CN/examples/planetary-brief.md)
 
-Status: scientific model in progress; no published lesson or recording yet. Part of the [50-scene expansion](../expansion-50.md).
+Status: integrated on the expansion branch, with two 174.5-second recordings; review is in progress. Part of the [50-scene expansion](../expansion-50.md).
 
 The initial question is how a compact gearset can change speed and direction without swapping gears. Track one marked planet, its axle and a tooth on the sun. Distinguish the planet's spin from its orbit, then change which member is held stationary.
 
@@ -31,4 +31,4 @@ Plan eight chapters of roughly 20 seconds each. Timing will follow the actual Ch
 
 The main object should be a shallow, open gear housing with real shaft and planet-axle connections. A soft oblique overview changes to a frontal contact view where tooth geometry matters. The carrier can separate axially only in the explicitly labeled assembly shot; rotating gears remain assembled. A narrow-screen composition stacks the object and rotation comparison, keeping teeth large enough to inspect. Optional exploration selects the fixed member and input angle. A 2D cutaway retains those controls.
 
-Do not claim finite backlash, manufacturing accuracy, tooth stress, lubricant behavior, differential load sharing or real efficiency from this kinematic model. Root fillets remain simplified. Four numerical tests are early evidence, not a finished scene or a visual review.
+Do not claim finite backlash, manufacturing accuracy, tooth stress, lubricant behavior, differential load sharing or real efficiency from this kinematic model. Root fillets remain simplified. Six numerical tests are model evidence, not a finished scene or a visual review.

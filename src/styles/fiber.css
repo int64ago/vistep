@@ -1,0 +1,267 @@
+.fiber-study {
+  color: #d4dfeb;
+  background: radial-gradient(ellipse at 52% 12%, #2b3554, #172239 80%);
+  padding: 28px 36px 30px;
+}
+.fiber-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #92a0b7;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+.fiber-materials {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin: 30px 0 0;
+  font-size: 16px;
+  color: #a6b9cb;
+}
+.fiber-materials span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.fiber-materials b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #d8e3ec;
+}
+.fiber-materials i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c2dfe5;
+}
+.fiber-materials span + span i {
+  background: #7c8ba9;
+}
+.fiber-drawing svg,
+.fiber-interface,
+.fiber-pulses svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 370px;
+  overflow: visible;
+}
+.fiber-interface {
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 30px 0 0;
+}
+.fiber-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 18px 20px 0;
+  border-top: 1px solid #9bb0cf24;
+}
+.fiber-result strong {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: #d6decf;
+}
+.fiber-result > span {
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #96aac1;
+  font-variant-numeric: tabular-nums;
+}
+.fiber-bits {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding-bottom: 30px;
+}
+.fiber-bits > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.fiber-bits span {
+  font-size: 16px;
+  color: #a2b5c8;
+}
+.fiber-bits > div > div {
+  display: flex;
+  gap: 8px;
+}
+.fiber-bits b {
+  font-size: 18px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #67809a;
+  transition: color 0.2s;
+}
+.fiber-bits b[data-arrived='true'] {
+  color: #b7cbce;
+}
+.fiber-bits b[data-active='true'] {
+  color: #f4ce92;
+  text-shadow: 0 0 10px #f4ce9255;
+}
+.fiber-pulse-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 35px 20px 30px;
+  gap: 20px;
+}
+.fiber-pulse-heading > span {
+  font-size: 17px;
+  color: #aab9cf;
+}
+.fiber-pulse-heading strong {
+  font-size: 27px;
+  font-weight: 500;
+  color: #d9d7c8;
+}
+.fiber-pulse-heading small {
+  font-size: 14px;
+  font-weight: 400;
+}
+.fiber-pulses p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #96abc1;
+  text-align: center;
+  margin: 18px 0 0;
+}
+.fiber-controls {
+  display: grid;
+  gap: 24px;
+  padding-top: 35px;
+}
+.fiber-controls .segmented {
+  background: #24334b;
+}
+.fiber-controls .segment-selection {
+  background: #415570;
+}
+.fiber-controls .segmented button {
+  color: #b2c4d4;
+}
+.fiber-controls .segmented button[aria-pressed='true'] {
+  color: #e6e8d4;
+}
+.fiber-controls .control-top {
+  color: #b3c2d2;
+}
+.fiber-controls .control output {
+  color: #dae4e5;
+}
+.fiber-controls .btn {
+  justify-self: center;
+  color: #d0dfda;
+  background: #37545f;
+}
+@media (max-width: 760px) {
+  .fiber-study {
+    padding: 22px 14px;
+  }
+  .fiber-heading {
+    font-size: 10px;
+    letter-spacing: 0.02em;
+  }
+  .fiber-materials {
+    gap: 24px;
+    margin-top: 26px;
+    font-size: 14px;
+  }
+  .fiber-materials span {
+    gap: 7px;
+  }
+  .fiber-drawing svg {
+    margin: 0 auto;
+  }
+  .fiber-result {
+    padding: 18px 0 0;
+    gap: 14px;
+  }
+  .fiber-result strong {
+    font-size: 18px;
+    max-width: 140px;
+    line-height: 1.5;
+  }
+  .fiber-result > span {
+    font-size: 12px;
+    min-width: 90px;
+  }
+  .fiber-bits {
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 12px 26px;
+  }
+  .fiber-bits > div {
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .fiber-bits > div > div {
+    gap: 10px;
+  }
+  .fiber-bits b {
+    font-size: 17px;
+  }
+  .fiber-pulse-heading {
+    margin: 28px 0 24px;
+    align-items: flex-start;
+  }
+  .fiber-pulse-heading strong {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+  .fiber-pulse-heading small {
+    display: block;
+    text-align: right;
+    line-height: 1.8;
+  }
+  .fiber-pulse-heading > span {
+    font-size: 16px;
+  }
+  .fiber-controls .segmented {
+    flex-wrap: wrap;
+  }
+  .fiber-controls .segmented button {
+    font-size: 13px;
+    padding: 12px;
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fiber-bits b {
+    transition: none;
+  }
+}
+.fiber-drawing svg {
+  overflow: hidden;
+}
+.fiber-result > span {
+  hyphens: none;
+}
+.showcase[data-mode='watch'] .fiber-study {
+  min-height: 610px;
+  display: flex;
+  flex-direction: column;
+}
+.showcase[data-mode='watch'] .fiber-result {
+  margin-top: auto;
+}
+.showcase[data-mode='watch'] .fiber-drawing {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.showcase[data-mode='watch'] .fiber-pulses {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media (max-width: 760px) {
+  .showcase[data-mode='watch'] .fiber-study {
+    min-height: 500px;
+  }
+}

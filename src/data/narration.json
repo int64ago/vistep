@@ -2113,5 +2113,207 @@
         "en": "Trace the cycle on this diagram: volume runs horizontally and pressure vertically. The compression and expansion paths enclose an area. Expansion work minus compression work gives net output. Real engines lose additional heat and overcome friction. This ideal loop makes the conversion from heat to mechanical work visible."
       }
     ]
+  },
+  "planetary-gears": {
+    "duration": 174.5,
+    "cues": [
+      {
+        "id": "planetary-gears-01",
+        "chapterAt": 0,
+        "at": 0.45,
+        "seconds": 20,
+        "title": "四种部件，一套轮系",
+        "titleEn": "Four parts, one gearset",
+        "caption": "先把齿轮与行星架装到位，再开始转动。",
+        "captionEn": "Assemble the gears and carrier before starting rotation.",
+        "zh": "中间金色的是太阳轮，周围三颗叫行星轮。外面这圈齿朝里，叫内齿圈。后面的三臂支架，托住行星轮的轴心。先沿轴向把部件装好，再慢慢转动输入。每一颗行星轮，都必须同时咬住两边。",
+        "en": "Gold in the middle: the sun gear. Three planets surround it, inside a ring with inward-facing teeth. The carrier holds their axles. Slide the parts together before turning the input. Each planet must mesh with both neighbors at once."
+      },
+      {
+        "id": "planetary-gears-02",
+        "chapterAt": 20.0,
+        "at": 20.45,
+        "seconds": 20,
+        "title": "一颗齿轮，两种转动",
+        "titleEn": "One planet, two motions",
+        "caption": "行星轮在自转，它的轴心也在公转。",
+        "captionEn": "The planet spins while its axle travels around the sun.",
+        "zh": "跟住有金色标记的那颗行星轮。它的轴心绕着太阳轮走，自身也在转。外面的齿圈不动，行星轮沿着它的内侧滚过去。青绿色行星架跟随的是轴心的公转。先把这两种转动分开，就不会把自转速度误当成输出。",
+        "en": "Follow the planet with the gold mark. Its axle travels around the sun, while the gear itself spins. The stationary ring gives it an inner track to roll along. The teal carrier follows the orbiting axle, not the planet’s own spin. Those are two different motions."
+      },
+      {
+        "id": "planetary-gears-03",
+        "chapterAt": 41.0,
+        "at": 41.45,
+        "seconds": 20,
+        "title": "数一圈输出",
+        "titleEn": "Count one output turn",
+        "caption": "内齿圈固定，太阳轮转 3.5 圈，行星架转一圈。",
+        "captionEn": "With the ring fixed, 3.5 sun turns produce one carrier turn.",
+        "zh": "现在从标记开始数。固定内齿圈，太阳轮要转三圈半，行星架才走完一圈。看两边的计数，它们一直按这个比例增加。这里太阳轮二十四齿，内齿圈六十齿，算出的减速比是三点五。转动没有丢掉，而是换成了更慢的输出。",
+        "en": "Start counting from the marks. With the ring fixed, the sun makes three and a half turns while the carrier completes just one. The two counters keep that proportion throughout. Our twenty-four-tooth sun and sixty-tooth ring give a three-point-five reduction, with the output turning in the same direction."
+      },
+      {
+        "id": "planetary-gears-04",
+        "chapterAt": 63.5,
+        "at": 63.95,
+        "seconds": 20,
+        "title": "慢一些，更有力",
+        "titleEn": "Slower, with more turning force",
+        "caption": "理想情况下，降速 3.5 倍对应输出转矩增大 3.5 倍。",
+        "captionEn": "Ideally, a 3.5-fold reduction gives 3.5 times the output torque.",
+        "zh": "慢一点，就可以拧得更有劲。先忽略摩擦，输入一份转矩，行星架能给出三点五份。不过，它转过的角度也只有输入的三点五分之一。转矩乘上转角，仍是同样的功。真实齿轮还会损失一部分能量，所以不能把理想倍数当成实测效率。",
+        "en": "A slower output can push harder. Ignore friction for this ideal comparison: one unit of input torque becomes three and a half at the carrier. But output angle is only one part in three and a half. Torque times angle still gives the same work. Real gears also lose some energy."
+      },
+      {
+        "id": "planetary-gears-05",
+        "chapterAt": 87.5,
+        "at": 87.95,
+        "seconds": 20,
+        "title": "换一个固定部件",
+        "titleEn": "Hold a different member",
+        "caption": "固定太阳轮，从内齿圈输入，行星架以另一比例跟随。",
+        "captionEn": "Hold the sun and drive the ring for a different carrier speed.",
+        "zh": "停下来，换一种固定方式。这次太阳轮不动，让外面的内齿圈转起来。行星轮仍然同时贴着两边，只是约束换了。行星架跟着同向转动，速度却和刚才不同：内齿圈转一点四圈，行星架就能走完一圈。",
+        "en": "Stop and choose another fixed member. This time the sun stays still and the ring supplies the input. Both gear contacts remain engaged, but the constraint has changed. The carrier follows in the same direction at a different reduction: one point four ring turns now give one carrier turn."
+      },
+      {
+        "id": "planetary-gears-06",
+        "chapterAt": 108.0,
+        "at": 108.45,
+        "seconds": 20,
+        "title": "让输出倒过来",
+        "titleEn": "Reverse the output",
+        "caption": "固定行星架，行星轮原地自转，内齿圈反向输出。",
+        "captionEn": "Hold the carrier: the planets spin in place and the ring reverses.",
+        "zh": "再固定行星架。三颗行星轮的轴心不绕圈了，只在原地自转。太阳轮与行星轮从外侧啮合，先反一次方向；行星轮和内齿圈从内侧啮合，保持同向。于是内齿圈相对太阳轮反转。输入两圈半，输出反向一圈。",
+        "en": "Hold the carrier. The axles stay put, and the planets spin in place. The outside mesh reverses rotation once; the inside mesh keeps that direction. The ring therefore turns opposite to the sun. With these teeth, two and a half input turns give one reverse output turn."
+      },
+      {
+        "id": "planetary-gears-07",
+        "chapterAt": 130.5,
+        "at": 130.95,
+        "seconds": 20,
+        "title": "一起转，就不再相对转",
+        "titleEn": "Turn together, without relative motion",
+        "caption": "把太阳轮与内齿圈连接，整个轮系一起转动。",
+        "captionEn": "Couple the sun and ring, and the whole gearset turns together.",
+        "zh": "如果把太阳轮和内齿圈连接在一起呢？现在两者同速，行星架也只能同速。看那颗有标记的行星轮：它还跟着整组移动，但相对于行星架，已经不再自转。输入一圈，输出也是一圈，就像整套齿轮暂时成了一个整体。",
+        "en": "Now couple the sun and ring so that they turn together. The carrier must match their speed. Our marked planet still moves with the assembly, but it no longer spins relative to the carrier. One input turn gives one output turn: the gearset behaves as a single rotating unit."
+      },
+      {
+        "id": "planetary-gears-08",
+        "chapterAt": 152.0,
+        "at": 152.45,
+        "seconds": 20,
+        "title": "约束，决定结果",
+        "titleEn": "The constraint selects the result",
+        "caption": "比较相同的一圈输入，观察不同角色与约束下的输出。",
+        "captionEn": "Compare one input turn across different member roles and constraints.",
+        "zh": "最后都用一圈输入，再看一次。固定齿圈、固定太阳轮、固定行星架，输入和输出的角色随之调整，结果各不相同。关键不只是齿数，还有哪个部件被固定，哪个负责输入，哪个负责输出。现在你可以自己换一种约束，慢慢转一圈。",
+        "en": "Compare one input turn in each arrangement. Fix the ring, the sun or the carrier, and the input and output roles change with it. Tooth counts matter, but so do those roles and constraints. Choose a fixed member yourself, then turn the input slowly and follow the marked planet."
+      }
+    ]
+  },
+  "optical-fiber": {
+    "duration": 180.0,
+    "cues": [
+      {
+        "id": "optical-fiber-01",
+        "chapterAt": 0,
+        "at": 0.45,
+        "seconds": 20,
+        "title": "让光住进玻璃里",
+        "titleEn": "Light inside glass",
+        "caption": "保护层淡出，留下纤芯、包层和一束正在前进的光。",
+        "captionEn": "Fade the protective layer to reveal the core, cladding and moving light.",
+        "zh": "一根细细的玻璃，怎么把信号送到很远的地方？先把外面的保护层淡去。中间是纤芯，旁边是包层。跟住这个光点：它碰到边界，又回到纤芯里。这里没有镀银的镜子，留住光的秘密，藏在两种玻璃的交界处。",
+        "en": "How can a thin strand of glass carry a signal over a long distance? Fade away the protective coating. A core sits inside a surrounding cladding. Follow the light as it meets the boundary and returns to the core. There is no silvered mirror here. The important part is the boundary between two materials."
+      },
+      {
+        "id": "optical-fiber-02",
+        "chapterAt": 20.5,
+        "at": 20.95,
+        "seconds": 20,
+        "title": "先看一次相遇",
+        "titleEn": "One encounter with a boundary",
+        "caption": "光从玻璃射向空气，一部分反射，另一部分折射。",
+        "captionEn": "Light meeting air from glass splits into reflected and refracted parts.",
+        "zh": "先把一个边界放大，用玻璃和空气看得更清楚。光从玻璃里过来，碰到交界，一部分回去了，另一部分穿出去，而且方向变了。注意虚线：角度要从这条法线量起，不是从表面量起。两条出射光的亮度，也会随着角度改变。",
+        "en": "Zoom into one boundary, using glass and air to make the effect easy to see. Some light returns to the glass; some crosses into the air and changes direction. Measure angles from the dashed normal, not from the surface. As we change the angle, the two outgoing beams also change in relative brightness."
+      },
+      {
+        "id": "optical-fiber-03",
+        "chapterAt": 42.5,
+        "at": 42.95,
+        "seconds": 20,
+        "title": "跨过临界角",
+        "titleEn": "Cross the critical angle",
+        "caption": "超过临界角后，空气中不再有传播的折射光线。",
+        "captionEn": "Above the critical angle, no refracted ray propagates into the air.",
+        "zh": "现在让光越来越斜。穿出去的那一束，渐渐贴近表面。到了临界角，再增加一点，它就不再向空气中传播了，光全部反射回玻璃。这叫全反射。这个例子大约是四十一点八度；换一种材料，临界角也会跟着变。",
+        "en": "Tilt the incoming ray farther. The transmitted beam approaches the surface. At the critical angle, then just beyond it, no refracted ray propagates out into the air. The light is totally internally reflected. Here the threshold is about forty-two degrees. Different material pairs have different thresholds."
+      },
+      {
+        "id": "optical-fiber-04",
+        "chapterAt": 64.0,
+        "at": 64.45,
+        "seconds": 20,
+        "title": "回到纤芯与包层",
+        "titleEn": "Back to core and cladding",
+        "caption": "纤芯折射率略高于包层；合适的角度使光连续全反射。",
+        "captionEn": "A slightly higher core index supports repeated total internal reflection.",
+        "zh": "回到光纤，外面不需要是空气。纤芯的折射率稍高，包层稍低，也可以形成全反射。这里两者很接近，光要以更贴近边界的方向前进。看每一次碰壁：入射角满足条件，光就继续留在纤芯里。画面把这个过程大大放慢了。",
+        "en": "Back in the fiber, the surrounding material does not have to be air. A core index slightly above the cladding index can also support total internal reflection. Because these indices are close, guided rays meet the boundary at grazing angles. Every encounter must meet the condition. We have slowed the light dramatically so you can follow it."
+      },
+      {
+        "id": "optical-fiber-05",
+        "chapterAt": 86.5,
+        "at": 86.95,
+        "seconds": 20,
+        "title": "不是任何方向都能进入",
+        "titleEn": "The entrance angle matters",
+        "caption": "入射方向超出接收范围，纤芯里的光量逐次减少。",
+        "captionEn": "Outside the acceptance cone, power remaining in the core decreases at each encounter.",
+        "zh": "从入口改变方向。开始时，光能沿着纤芯走下去。再偏一些，壁面上的入射角反而变小，全反射条件失效。看那些进入包层的分支，纤芯里剩下的光越来越少。所以接入光纤时，对准位置还不够，方向也很重要。",
+        "en": "Change the direction at the entrance. At first the ray remains confined. Tilt it farther and its angle to the wall normal becomes smaller. Total internal reflection fails. Watch the branches entering the cladding, leaving less power in the core after each encounter. Coupling light into a fiber depends on direction as well as position."
+      },
+      {
+        "id": "optical-fiber-06",
+        "chapterAt": 109.5,
+        "at": 109.95,
+        "seconds": 20,
+        "title": "把折射率差拿走",
+        "titleEn": "Remove the index contrast",
+        "caption": "包层折射率接近纤芯，导光边界逐渐消失。",
+        "captionEn": "As the cladding index reaches the core index, the guiding boundary disappears.",
+        "zh": "再做一个对照：保持入口方向不变，把包层的折射率慢慢提高。两者越接近，能被留住的角度范围越窄。等到折射率完全一样，光看不到这条光学边界了，直接穿过去。真正起作用的是材料的差别，保护层主要负责保护，不是镜面。",
+        "en": "Keep the entrance direction fixed and raise the cladding index. As the two indices approach each other, the acceptance range narrows. When they match, the optical boundary disappears and the ray passes through it. The index contrast provides guidance; the outer coating mainly provides mechanical protection."
+      },
+      {
+        "id": "optical-fiber-07",
+        "chapterAt": 132.0,
+        "at": 132.45,
+        "seconds": 20,
+        "title": "同一时刻出发，不一定同时到达",
+        "titleEn": "Together at launch, apart at arrival",
+        "caption": "不同路程带来不同延迟，叠加后的脉冲变宽。",
+        "captionEn": "Different path lengths produce different delays and broaden the combined pulse.",
+        "zh": "光被留住了，信号就一定完美吗？比较同一时刻发出的窄脉冲。走直线的先到，走斜线的绕得更远，晚一点到。把这些到达时间叠起来，原本集中的脉冲就散开了。这是阶跃型多模光纤的一种色散直觉，不是所有光纤都以同样方式展宽。",
+        "en": "Guidance alone does not guarantee an undistorted signal. Launch one narrow pulse along several paths. The axial path arrives first; inclined paths travel farther and arrive later. Add those arrivals and the pulse spreads out. This is a ray picture of modal dispersion in a step-index multimode fiber. Other fiber designs behave differently."
+      },
+      {
+        "id": "optical-fiber-08",
+        "chapterAt": 156.0,
+        "at": 156.45,
+        "seconds": 20,
+        "title": "让明暗携带信息",
+        "titleEn": "Carry information with light",
+        "caption": "按同一序列发出光脉冲，接收端延迟读出对应的比特。",
+        "captionEn": "The receiver reads the same pulse sequence after a propagation delay.",
+        "zh": "最后，把光的明暗排成一个短序列。有光代表一，没有光代表零。看接收端，过了一段时间，同样的顺序出现了。实际通信还要处理噪声、损耗和色散，但基本想法很直接：让光沿着受控的路径前进，再从到达的变化里读出信息。",
+        "en": "Finally, send a short sequence of light and dark intervals. Light represents one; darkness represents zero. After a delay, the receiver sees the same sequence. Real links must also manage noise, loss and dispersion. The basic idea is direct: guide the light, then read information from changes in what arrives."
+      }
+    ]
   }
 }

@@ -14,6 +14,56 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'optical-fiber',
+    name: '光纤',
+    title: '玻璃里，光为什么跑不出去？',
+    question: '一束光，一条信息的路。',
+    description: '跟随光线跨越边界、改变入射方向，再观察脉冲如何携带信息与逐渐展宽。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#849dbe',
+    number: '17',
+    tag: '光通信 · 全反射与脉冲',
+    related: ['camera-lens', 'network'],
+    sources: [
+      {
+        title: 'OpenStax · Total Internal Reflection',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-4-total-internal-reflection',
+      },
+      {
+        title: 'Corning · Optical Fiber Glossary',
+        url: 'https://www.corning.com/optical-communications/worldwide/en/home/products/fiber/optical-fiber-resource-center/glossary-of-terms.html',
+      },
+      {
+        title: 'MIT 2.710 · Fresnel Coefficients',
+        url: 'https://web.mit.edu/2.710/Fall06/2.710-wk7-b-sl.pdf',
+      },
+    ],
+  },
+  {
+    slug: 'planetary-gears',
+    name: '行星齿轮',
+    title: '同一组齿轮，怎样换出不同速度？',
+    question: '固定谁，结果就不同。',
+    description: '沿着同一颗行星轮，区分自转与公转，观察固定部件如何改变速度、方向与理想转矩。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#6d98a4',
+    number: '16',
+    tag: '传动 · 自转与公转',
+    related: ['bicycle', 'four-stroke-engine'],
+    sources: [
+      {
+        title: 'KHK · Gear Systems',
+        url: 'https://khkchilun.com/gearknowledge/gear_technical_reference/gear_systems.html',
+      },
+      {
+        title: 'KHK · Calculation of Gear Dimensions',
+        url: 'https://khkchilun.com/gearknowledge/gear_technical_reference/calculation_gear_dimensions.html',
+      },
+    ],
+  },
+  {
     slug: 'four-stroke-engine',
     name: '四冲程发动机',
     title: '一次燃烧，怎样变成转动？',
