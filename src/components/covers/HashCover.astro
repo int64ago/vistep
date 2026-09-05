@@ -1,0 +1,55 @@
+---
+import { hashBits, hashCompare, hashUtf8 } from '../../models/hash';
+interface Props {
+  color?: string;
+}
+const { color = '#738a9d' } = Astro.props;
+const comparison = hashCompare(hashUtf8('abc'));
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <text x="18" y="26" fill={color} font-family="monospace" font-size="16" letter-spacing="2"
+    >SHA–256</text
+  >
+  <text
+    x="23"
+    y="121"
+    fill="#334953"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="76">a</text
+  >
+  <text x="22" y="153" fill={color} font-family="monospace" font-size="17">61 → 60</text>
+  <path
+    d="M86 113C114 113 115 44 148 44M86 113C117 113 117 88 148 88M86 113C114 113 116 154 148 154M86 113C116 113 117 198 148 198"
+    stroke={color}
+    stroke-width="1.2"
+    opacity=".55"></path>
+  {
+    comparison.original.words.map((word, row) => (
+      <g>
+        {hashBits(word ^ comparison.altered.words[row]).map((bit, col) => (
+          <rect
+            x={153 + col * 7}
+            y={39 + row * 22 + (bit ? 0 : 7)}
+            width="4"
+            height={bit ? 14 : 3}
+            rx="1.7"
+            fill={bit ? '#b68150' : color}
+            opacity={bit ? 0.85 : 0.28}
+          />
+        ))}
+      </g>
+    ))
+  }
+  <text x="20" y="206" fill="#334953" font-family="monospace" font-size="17"
+    >Δ 1 → {comparison.difference}</text
+  >
+</svg>

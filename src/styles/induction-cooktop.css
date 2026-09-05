@@ -1,0 +1,232 @@
+.ic-study {
+  width: 100%;
+  padding: 25px 28px 14px;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at 40% 25%, #f4f0e1, #e7ecdf 85%);
+  color: #3f554b;
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+}
+.ic-study * {
+  box-sizing: border-box;
+}
+.ic-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #5a705d;
+  font-size: 16px;
+}
+.ic-current {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  line-height: 1.5;
+  min-height: 36px;
+  margin: 16px 0 10px;
+}
+.ic-body {
+  min-width: 0;
+  width: 100%;
+}
+.ic-studio {
+  position: relative;
+  width: 100%;
+  height: 390px;
+}
+.ic-studio .studio-canvas {
+  width: 100%;
+  height: 100%;
+  outline-offset: 3px;
+}
+.ic-studio canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ic-studio .studio-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.ic-studio .studio-mode {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+}
+.ic-study svg {
+  display: block;
+  font: inherit;
+  font-size: 16px;
+  max-width: 100%;
+  overflow: visible;
+}
+.ic-study svg text {
+  fill: #476052;
+}
+.ic-readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 12px 0;
+  border-top: 1px solid #74856830;
+}
+.ic-readings span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.ic-readings b,
+.ic-thermal-input b {
+  font-size: 18px;
+  font-weight: 500;
+  color: #956936;
+  white-space: nowrap;
+}
+.ic-key {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #5e715e;
+  margin: 13px 0;
+}
+.ic-material-name {
+  font-size: 18px;
+  color: #9b703d;
+  margin: 3px 0;
+  font-weight: 500;
+}
+.ic-thermal-input {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ic-notes {
+  border-top: 1px solid #74856830;
+  margin-top: 17px;
+  font-size: 16px;
+}
+.ic-notes summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.ic-notes p {
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.ic-study[data-watch='true'] {
+  min-height: 796px;
+  display: flex;
+  flex-direction: column;
+}
+.ic-study[data-watch='true'] .ic-notes {
+  margin-top: auto;
+}
+.ic-study[data-watch='true'] .ic-current {
+  display: none;
+}
+.ic-study[data-compact='true'][data-watch='true'] {
+  min-height: 780px;
+}
+.ic-study[data-compact='true'] {
+  padding: 20px 17px 12px;
+  border-radius: 18px;
+}
+.ic-study[data-compact='true'] .ic-heading span:last-child {
+  display: none;
+}
+.ic-study[data-compact='true'] .ic-current {
+  font-size: 18px;
+  min-height: 54px;
+  margin: 14px 0 10px;
+}
+.ic-study[data-compact='true'] .ic-studio {
+  height: 278px;
+}
+.ic-study[data-compact='true'][data-ic-view='skin'] .ic-studio {
+  height: 215px;
+}
+.ic-study[data-compact='true'] .ic-readings {
+  gap: 10px;
+}
+.ic-study[data-compact='true'] .ic-readings span {
+  display: block;
+}
+.ic-study[data-compact='true'] .ic-readings b {
+  display: block;
+  margin-top: 3px;
+}
+.ic-study[data-compact='true'] .ic-thermal-input {
+  display: block;
+}
+.ic-study[data-compact='true'] .ic-thermal-input span {
+  display: block;
+  margin-top: 4px;
+}
+.ic-explore {
+  margin: 20px 0;
+  padding-top: 18px;
+  border-top: 1px solid #74856830;
+}
+.ic-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+.ic-study button {
+  font: inherit;
+  font-size: 16px;
+  color: #45614c;
+  min-height: 44px;
+  padding: 9px 13px;
+  border-radius: 13px;
+  background: #f5f4e766;
+  border: 1px solid #80946b70;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.ic-study button[aria-pressed='true'],
+.ic-study button:hover {
+  background: #9caa852d;
+  border-color: #7c9267;
+}
+.ic-study button:focus-visible,
+.ic-study input:focus-visible,
+.ic-study summary:focus-visible {
+  outline: 2px solid #9d723a;
+  outline-offset: 4px;
+}
+.ic-study .control {
+  display: block;
+  font-size: 16px;
+  margin: 17px 0;
+}
+.ic-study .control-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.ic-study .control output {
+  font-size: 16px;
+  white-space: nowrap;
+  color: #986b37;
+}
+.ic-study input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #a27b4c;
+}
+.ic-study[data-compact='true'] .ic-skin {
+  margin-top: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ic-study button {
+    transition: none;
+  }
+}

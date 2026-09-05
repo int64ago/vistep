@@ -14,6 +14,198 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'rectifier',
+    name: '整流器',
+    title: '交流换向，负载为什么不换向？',
+    question: '四只二极管怎样选路，电容又何时得到电流？',
+    description:
+      '沿单相桥式整流的两个导通回路，观察电容充放电、纹波、负载与频率，以及源电阻限制的浪涌。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#467f91',
+    tag: '电力电子 · 单向导通与储能',
+    related: ['buck-converter', 'transformer-electric', 'electric-generator'],
+    sources: [
+      {
+        title: 'Analog Devices StudentZone — ADALM2000 Diodes and Diode Circuits',
+        url: 'https://www.analog.com/en/resources/analog-dialogue/studentzone/studentzone-august-2019.html',
+      },
+      {
+        title: 'MIT 6.117 — Lecture 3: Power Supplies and Regulation',
+        url: 'https://web.mit.edu/6.117/www/lec3.pdf',
+      },
+      {
+        title:
+          'Analog Devices — Activity: Active Rectifiers, Capacitor Filter and Source Resistance',
+        url: 'https://wiki.analog.com/university/courses/alm1k/alm-active-rectifiers',
+      },
+    ],
+    number: '50',
+  },
+  {
+    slug: 'sewing-machine',
+    name: '缝纫机',
+    title: '一根针，怎样缝出两根线的交锁？',
+    question: '针只会上下动，布底下的线迹是怎样留下的？',
+    description: '跟随一个上线环，绕过梭心、收紧，再随织物前进。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#b88b68',
+    tag: '线迹与机构时序',
+    related: ['printer', 'ball-bearing', 'differential'],
+    sources: [
+      {
+        title: 'JUKI — Basic Knowledge of Sewing: Lockstitching',
+        url: 'https://www.juki.co.jp/industrial_e/service_e/elearning/detail02.php',
+      },
+      {
+        title: 'SCHMETZ — Sewing Machine Needle Dictionary (loop stroke, eye and scarf)',
+        url: 'https://www.schmetzneedles.com/pages/sewing-machine-needle-dictionary',
+      },
+      {
+        title: 'Groz-Beckert — Loop Position Control and loop formation',
+        url: 'https://www.groz-beckert.com/en/news/newsletter/sewing/2010/m2_sewing_lpc.html',
+      },
+      {
+        title: 'JUKI — DDL-8700 instruction manual: thread route, needle/hook and feed timing',
+        url: 'https://juki.com/pub/media/wysiwyg/products/DDL-8700_manual.pdf',
+      },
+    ],
+    number: '49',
+  },
+  {
+    slug: 'induction-cooktop',
+    name: '电磁炉',
+    title: '热为什么先出现在锅底？',
+    question: '没有火焰，电能怎样跨过玻璃？',
+    description: '沿着完整线圈回路，看交变磁通怎样在锅底建立涡流，再比较集肤、材料、间距和余热。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#ae7a43',
+    tag: '电磁感应 · 热传递',
+    related: ['transformer-electric', 'induction-motor', 'speaker'],
+    sources: [
+      {
+        title: 'MIT · Electromagnetic Forces and Loss Mechanisms',
+        url: 'https://www.ocw.mit.edu/courses/6-061-introduction-to-electric-power-systems-spring-2011/c26f6204e05bd4c47875a96452982b6f_MIT6_061S11_ch8.pdf',
+      },
+      {
+        title: 'COMSOL · Eddy Currents',
+        url: 'https://doc.comsol.com/6.3/doc/com.comsol.help.models.acdc.eddy_currents/eddy_currents.html',
+      },
+      {
+        title: 'Infineon · Induction heating principles and equivalent circuit',
+        url: 'https://community.infineon.com/t5/博客/感应加热原理与IGBT应用拓扑分析-上/ba-p/668476',
+      },
+      {
+        title: 'Panasonic · All-metal induction cooking',
+        url: 'https://news.panasonic.com/global/press/en201118-3',
+      },
+      {
+        title: 'SCHOTT CERAN · Induction and residual heat',
+        url: 'https://www.schott-ceran.com/en/service',
+      },
+    ],
+    number: '48',
+  },
+  {
+    slug: 'hash',
+    name: '哈希',
+    title: '只改一个位，为什么整段摘要都变了？',
+    question: '跟住一个输入位，走完真正的 SHA-256。',
+    description:
+      '从 UTF-8、填充与消息扩展，到 64 轮压缩、链值加回和 256 位摘要，比较只差一位的两次真实计算。',
+    category: '数字世界',
+    duration: '3 分钟',
+    color: '#738a9d',
+    tag: '信息 · 摘要与完整性',
+    related: ['qr-code', 'error-correction', 'network'],
+    sources: [
+      {
+        title: 'NIST — FIPS 180-4, Secure Hash Standard',
+        url: 'https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf',
+      },
+      {
+        title: 'NIST — SHA-256 one-block and two-block intermediate examples',
+        url: 'https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf',
+      },
+      {
+        title: 'NIST — Secure Hashing validation and test vectors',
+        url: 'https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/secure-hashing',
+      },
+    ],
+    number: '47',
+  },
+  {
+    slug: 'buck-converter',
+    name: '降压变换器',
+    title: '脉冲怎样变成平稳的低电压？',
+    question: '开关只会通断，为什么输出不会跟着断？',
+    description: '沿两条真实导通回路，跟随电感电流、电容纹波、负载突变与不连续导通，逐份核对能量。',
+    category: '生活器物',
+    duration: '3 分钟',
+    color: '#287887',
+    tag: '电力电子 · 开关与储能',
+    related: ['transformer-electric', 'induction-motor', 'electric-generator'],
+    sources: [
+      {
+        title:
+          'Analog Devices AN-140 — Basic Concepts of Linear Regulator and Switching Mode Power Supplies',
+        url: 'https://www.analog.com/en/resources/app-notes/an-140.html',
+      },
+      {
+        title: 'MIT 6.200 — Buck Converter Laboratory',
+        url: 'https://circuits.mit.edu/F25/labs/buck',
+      },
+      {
+        title:
+          'Analog Devices — Practical Design Techniques for Power and Thermal Management, Section 3',
+        url: 'https://www.analog.com/media/en/training-seminars/design-handbooks/power-thermal-mgmt-sect3.pdf',
+      },
+    ],
+    number: '46',
+  },
+  {
+    slug: 'microscope',
+    name: '显微镜',
+    title: '看得更大，就一定看得更清楚吗？',
+    question: '物镜先成像，目镜再把它放大。',
+    description:
+      '沿有限共轭显微镜的真实光路，理解倒立中间像、目镜角放大、粗细调焦、景深与数值孔径，并用计算点像辨别分辨率和空放大。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#9baac3',
+    tag: '光学 · 成像与分辨率',
+    related: ['camera-lens', 'diffraction', 'optical-fiber'],
+    sources: [
+      {
+        title: 'MIT · Geometric Optics, C. Warde',
+        url: 'https://web.mit.edu/6.161/www/Geometric-Optics-9-07.pdf',
+      },
+      {
+        title: 'Nikon MicroscopyU · The Microscope Optical Train',
+        url: 'https://www.microscopyu.com/microscopy-basics/components',
+      },
+      {
+        title: 'Nikon MicroscopyU · Resolution',
+        url: 'https://www.microscopyu.com/microscopy-basics/resolution',
+      },
+      {
+        title: 'Nikon MicroscopyU · Depth of Field and Depth of Focus',
+        url: 'https://www.microscopyu.com/microscopy-basics/depth-of-field-and-depth-of-focus',
+      },
+      {
+        title: 'Stanford ISETCam · Calculating Defocused Images',
+        url: 'https://stanford.edu/~wandell/data/isetcam/optics/s_opticsDefocusWVF.html',
+      },
+      {
+        title: 'Leica Microsystems · What is Empty Magnification?',
+        url: 'https://www.leica-microsystems.com/science-lab/microscopy-basics/what-is-empty-magnification/',
+      },
+    ],
+    number: '45',
+  },
+  {
     slug: 'airfoil',
     name: '机翼升力',
     title: '空气没有约定在翼尾重逢',

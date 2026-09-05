@@ -2,6 +2,7 @@ import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { lockInitial, lockPose, lockCommand, lockShot, type LockKey } from '../../models/lock';
 import { useShowcase } from '../lab/Showcase';
+import { useCompact } from '../lab/useCompact';
 import LockStudio from '../three/LockStudio';
 import { LockSection, LockStackStates, LockComparison } from '../three/LockDiagram';
 import '../../styles/lock.css';
@@ -27,6 +28,7 @@ const captions = [
 ];
 export default function Lock() {
   const film = useShowcase(),
+    compact = useCompact(),
     id = useId(),
     [input, setInput] = useState(lockInitial),
     [selected, setSelected] = useState(0),
@@ -44,6 +46,9 @@ export default function Lock() {
           ? 'turn'
           : 'overview';
   const reference = film.watch ? shot.reference : lockPose({ ...input, key: 'matching' });
+  const show3D = film.watch
+    ? !compact || focus === 'turn' || focus === 'return'
+    : view === 'mechanism';
   const manualTitle =
     pose.angle > 0
       ? '钥匙与锁芯一起转动'
@@ -97,14 +102,16 @@ export default function Lock() {
         <LockComparison pose={pose} reference={reference} />
       ) : (
         <>
-          <div className="lock-object">
-            <LockStudio
-              pose={pose}
-              selected={current}
-              focus={focus}
-              progress={film.chapterProgress}
-            />
-          </div>
+          {show3D && (
+            <div className="lock-object">
+              <LockStudio
+                pose={pose}
+                selected={current}
+                focus={focus}
+                progress={film.chapterProgress}
+              />
+            </div>
+          )}
           <div className="lock-phone-section">
             <div className="lock-section-title">{t('追踪第 {0} 组', current + 1)}</div>
             <LockSection pose={pose} selected={current} />

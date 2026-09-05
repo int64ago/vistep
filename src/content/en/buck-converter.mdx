@@ -1,0 +1,80 @@
+<h2 id="understand">The switch opens. Why does current keep flowing?</h2>
+
+A buck converter switches the input on and off, while an inductor and capacitor store and release energy. The demonstration starts with **12 V** and a **20 kHz** switching frequency: a physical cycle lasts just **50 µs**. The film slows that cycle dramatically.
+
+During the on interval, the conducting loop runs from the source through switch S, inductor L, and load R, then back to the source. Positive inductor voltage raises its current. When the switch opens, that current cannot jump. Freewheel diode D completes a different loop through the common return, diode, inductor, and load. Inductor voltage is now negative, so current falls while keeping its original direction.
+
+Capacitor C is connected across the output. It absorbs the difference when inductor current exceeds load demand and supplies the difference when it falls short. Inductor current, capacitor voltage, and load response all come from the same switched circuit calculation.
+
+The single dot is an **energy guide**. Its position follows accumulated energy transfer within the current conducting interval. It is not an electron, a drift-speed measurement, or a quantum of energy. The input supplies no energy during freewheeling; during the zero-current interval, the capacitor supplies the load.
+
+<h2 id="try">Follow the current down to zero</h2>
+
+- Enter exploration and scrub “Circuit sample time.” Switch-node voltage jumps at a switching edge; inductor current stays continuous.
+- Increase load resistance from the default. A lighter load eventually lets inductor current reach zero. The diode blocks reversal, introducing a third, idle interval.
+- Compare 47 µF with 220 µF. The film keeps the same voltage window so smaller ripple actually looks smaller. More extreme exploration settings expand that window; its limits remain visible.
+- Apply the **8 Ω → 3 Ω** load step. The capacitor supplies the initial current shortfall, and output voltage dips before inductor current adjusts. This temporarily overrides the manual load resistance; disabling the step restores that setting.
+- Include conduction losses and inspect energy allocation. At unchanged duty, output voltage decreases. The calculated losses describe this declared model, not a real product's efficiency.
+
+Every slider supports keyboard arrows. Manual time is a sample position, with no independent animation clock. “Reset all experiment settings” restores every component setting, ideal operation, the starting sample, the observation view, and the disabled load step. The shared film player provides pause, chapters, replay, and sound.
+
+<h2 id="deeper">The circuit being solved</h2>
+
+<details>
+<summary>Two state variables and three conducting intervals</summary>
+
+Calculations use SI units. The states are inductor current `i` and the internal ideal-capacitor voltage `vC`. Let `R` be the load, `rC` the capacitor's equivalent series resistance, and `vO` the output terminal voltage. Capacitor current is positive into its upper terminal:
+
+<div className="formula">iC = (R i − vC) / (R + rC); vO = vC + rC iC; C dvC/dt = iC</div>
+
+With the switch on:
+
+<div className="formula">L di/dt = Vin − (rS + rL)i − vO</div>
+
+With the switch off and the diode conducting:
+
+<div className="formula">L di/dt = −VF − (rD + rL)i − vO</div>
+
+When diode current reaches zero, the solver locates that event inside the integration step. The circuit then enters an idle interval with `i = 0` and `di/dt = 0`, while the capacitor discharges through the load. The idealized floating switch node sits at the output voltage, giving zero inductor voltage. Parasitic ringing is omitted.
+
+Nonideal settings are **0.12 Ω** switch resistance, **0.15 Ω** winding resistance, a **0.45 V** diode drop plus **0.05 Ω** differential resistance, and **0.04 Ω** capacitor ESR. These are authored teaching parameters, not a fit to a commercial device. Ideal mode sets all five to zero.
+
+The solver uses piecewise fourth-order Runge–Kutta integration, with a default maximum step of one period divided by 128. Steps end exactly at gate transitions. Bisection locates diode cutoff. A fixed-point solve of the integrated period map finds the repeating state; a numerical Jacobian accelerates weakly damped cases. It does not replace the switched equations with an imposed duty-times-input output. The load-step experiment begins at a solved periodic state, integrates 24 cycles, and changes resistance after the fifth cycle.
+
+</details>
+
+<details>
+<summary>Volt-second balance and capacitor charge balance</summary>
+
+In a repeating cycle, each storage state returns to its initial value:
+
+<div className="formula">∫ vL dt = L Δi = 0; ∫ iC dt = C ΔvC = 0</div>
+
+For **ideal periodic operation in continuous conduction**, this gives:
+
+<div className="formula">Mean output voltage = D Vin</div>
+
+The default ideal circuit computes approximately 5.40 V mean output, a 0.85 A minimum inductor current, and 62 mV peak-to-peak output ripple. Those values come from the differential equations. The boundary between freewheeling and idle operation also comes from the circuit; the same simple conversion ratio does not apply in discontinuous conduction.
+
+The duty, capacitance, light-load, and loss chapters compare separately solved periodic states. Only the load-step chapter follows an actual transition between operating conditions. Internal capacitor voltage remains continuous during that step. With ESR, the output terminal voltage can make a small immediate jump.
+
+</details>
+
+<details>
+<summary>Keeping the energy account closed</summary>
+
+Stored energies are:
+
+<div className="formula">EL = L i² / 2; EC = C vC² / 2</div>
+
+Input power is `Vin i` during the on interval and zero otherwise. Load power is `vO²/R`. Conduction losses are `rS i²` while the switch is on, `VF i + rD i²` while the diode conducts, `rL i²` in the winding, and `rC iC²` in capacitor ESR. The solver integrates these channels using the same intermediate state evaluations:
+
+<div className="formula">Input energy = load energy + heat + ΔEL + ΔEC</div>
+
+Only in periodic operation does the stored-energy change approach zero, allowing the input strip to divide into load energy and heat. Transient checks retain both storage-change terms.
+
+This is an open-loop, fixed-duty, lumped-element model in the forward-power operating range. It omits feedback regulation, startup protection, current limiting, magnetic saturation, core losses, switching-edge losses, diode reverse recovery, gate-drive consumption, and parasitic ringing. It explains the mechanism rather than validating a hardware design.
+
+References: [Analog Devices AN-140](https://www.analog.com/en/resources/app-notes/an-140.html), [MIT 6.200 Buck Converter Laboratory](https://circuits.mit.edu/F25/labs/buck), and [Analog Devices Power and Thermal Management, Section 3](https://www.analog.com/media/en/training-seminars/design-handbooks/power-thermal-mgmt-sect3.pdf).
+
+</details>

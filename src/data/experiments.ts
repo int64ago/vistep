@@ -1,5 +1,11 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  rectifier: () => import('../components/experiments/Rectifier'),
+  'sewing-machine': () => import('../components/experiments/SewingMachine'),
+  'induction-cooktop': () => import('../components/experiments/InductionCooktop'),
+  hash: () => import('../components/experiments/Hash'),
+  'buck-converter': () => import('../components/experiments/BuckConverter'),
+  microscope: () => import('../components/experiments/Microscope'),
   airfoil: () => import('../components/experiments/Airfoil'),
   'qr-code': () => import('../components/experiments/QrCode'),
   speaker: () => import('../components/experiments/Speaker'),

@@ -1,0 +1,64 @@
+# Does a bigger image always reveal more detail?
+
+A compound microscope does two different jobs. Its objective collects light and forms a real intermediate image. Its eyepiece then lets the eye inspect that image at a larger angle. Focusing, resolving detail and increasing magnification are distinct operations.
+
+<h2 id="understand">Form an image, then inspect it</h2>
+
+Follow light leaving one specimen point. In this finite-conjugate model, the objective brings those rays together inside the microscope. A screen placed there could receive the image, so it is **real**. Move the specimen point sideways: its image moves the opposite way. It is inverted.
+
+For a thin objective with focal length f, object distance u and image distance v:
+
+<div className="formula">1/u + 1/v = 1/f　　m = −v/u</div>
+
+Here f = 8 mm and v = 160 mm, giving an in-focus object distance of about 8.421 mm and lateral magnification −19. The sign records inversion. This 160 mm is a distance from the optical principal plane; it is not a claim about the mechanical tube-length marking of a commercial objective.
+
+Place the intermediate image at the eyepiece's front focal plane. Rays from one image point emerge parallel, suitable for a relaxed eye. A shorter eyepiece focal length, with the eyepiece moved to the corresponding position, increases the viewing angle. It does not enlarge the real intermediate image.
+
+<div className="formula">Reference angular magnification M = m × D/fₑ　　D = 250 mm</div>
+
+D is the conventional comparison distance for unaided viewing. The outgoing bundle still represents relaxed-eye viewing at infinity. No unmodeled retina or eye accommodation is drawn.
+
+## A geometric point has a physical width
+
+Intersecting rays describe geometric imaging. A finite aperture also diffracts light, so a fluorescent point produces a central spot with weaker rings. The specimen view computes these patterns from a circular pupil. It uses no photograph, CSS blur or separately painted sharp image.
+
+Moving the stage changes the specimen-to-objective distance. The best geometric image plane moves, while the intermediate plane being inspected remains fixed. When the planes differ, the point image spreads. Coarse and fine focus adjust the same stage position with different step sizes.
+
+The two-layer target makes this visible. Its rows lie 20 µm apart in depth. Moving focus from one layer to the other swaps which row is sharp. The blurred layer continues emitting light; it has not vanished from the specimen.
+
+## Aperture, depth and empty magnification
+
+Keep the point positions fixed and open the objective pupil. Each diffraction pattern narrows, and the sum of their intensities develops a central dip. This scene uses mutually incoherent fluorescent points and a stated two-point Rayleigh criterion:
+
+<div className="formula">d ≈ 0.61λ/NA　　λ = 0.55 µm</div>
+
+This is a criterion, not an absolute boundary for every illumination, contrast or detector. In particular, the illumination aperture and partial coherence of transmitted-light microscopy are outside this fluorescent-point model.
+
+A larger aperture also reduces depth of field. Closing it allows more defocus but makes lateral neighbors harder to separate. The axial curve is calculated from the same pupil integral. The displayed λ/NA² is a declared diffraction depth scale, not a full interval measured at an arbitrary sharpness threshold.
+
+If the objective produces an unresolved patch, a stronger eyepiece enlarges that patch too. The scale bar changes, but the pair remains unresolved: **empty magnification**. Enlarging a view can make existing detail easier to inspect; it cannot restore detail the objective did not transfer.
+
+<h2 id="try">Change one cause at a time</h2>
+
+- Choose “Unfold the optical path” to inspect principal-plane refraction, the intermediate image and the outgoing bundle. The off-axis tracer can cross the axis. It is a geometric marker, not a second zoomed copy of the point-target image.
+- Choose “View the point images” and adjust coarse and fine focus. Their sum is the actual stage displacement. All native ranges support arrow keys, Home and End.
+- Hold focus and point separation fixed while changing the objective aperture. Compare the image with its intensity profile. Add the second layer to investigate depth selection.
+- Use “Inspect empty magnification,” then change eyepiece power with the small objective pupil fixed. The image and its blur share the same angular scaling.
+- Reset restores every parameter, layer setting, tracer position and display mode, including state hidden in the other view.
+
+<h2 id="deeper">One pupil connects rays and diffraction</h2>
+
+A paraxial ray is represented by height y and slope θ. Propagation over L changes its height to y + Lθ. A thin lens changes its slope to θ − y/f. Every rendered ray starts at its specified specimen point, passes through its selected pupil coordinate, and traverses the objective and eyepiece principal planes. No endpoint is manually snapped into a focus.
+
+The wave calculation uses the same u, v, objective focal length f and pupil radius r. Let ρ be normalized pupil radius and R be radial distance in the intermediate image:
+
+<div className="formula">β = πr²(1/u + 1/v − 1/f)/λ</div>
+<div className="formula">I(R) = |2∫₀¹ ρ J₀(2πrRρ/(λv)) exp(iβρ²) dρ|²</div>
+
+At focus, β = 0 and the integral gives an Airy pattern. Defocus introduces a quadratic pupil phase. Separate fluorescent emitters are incoherent, so their **intensities** add. Each image center and magnification also follows its actual object distance. The eyepiece changes angular scale and field of view without creating a sharper specimen.
+
+This is explicitly a low-aperture scalar paraxial model in air, with NA≈r/u. Exact geometric NA is sin(arctan(r/u)); the difference remains below 3% over the supported range of about 0.08–0.24. Do not extrapolate it to immersion objectives, high NA, vector diffraction or real corrected lens groups. The ray diagram magnifies transverse distances relative to axial distances, so on-screen angles are not physical ray angles.
+
+Intensity is referenced to an in-focus single-point peak to compare shape, not throughput. There is no noise, aberration, fluorescence chemistry or sharpening. Numerical integration samples a finite radial pupil grid and truncates distant rings; the display is sampled too. This is a declared fluorescent calibration target, not a simulated photograph of a biological, clinical or materials specimen.
+
+Sources: [MIT geometric optics notes](https://web.mit.edu/6.161/www/Geometric-Optics-9-07.pdf), [Nikon optical train](https://www.microscopyu.com/microscopy-basics/components), [Nikon resolution](https://www.microscopyu.com/microscopy-basics/resolution), [Nikon depth of field](https://www.microscopyu.com/microscopy-basics/depth-of-field-and-depth-of-focus), [Stanford defocused wavefront calculation](https://stanford.edu/~wandell/data/isetcam/optics/s_opticsDefocusWVF.html), and [Leica empty magnification](https://www.leica-microsystems.com/science-lab/microscopy-basics/what-is-empty-magnification/).

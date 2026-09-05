@@ -1,0 +1,84 @@
+---
+import {
+  microscopeDefaults,
+  microscopeField,
+  microscopeImage,
+  microscopeRay,
+  microscopeSystem,
+} from '../../models/microscope';
+interface Props {
+  color?: string;
+}
+const { color = '#9baac3' } = Astro.props;
+const config = { ...microscopeDefaults, na: 0.24, ocular: 20 };
+const system = microscopeSystem(config);
+const rays = [-1, -0.5, 0, 0.5, 1].map((a) => microscopeRay(config, 0.04, a));
+const xy = (z: number, h: number) => `${104 + h * 29},${215 - (z + system.u) * 0.96}`;
+const lensY = (z: number) => 215 - (z + system.u) * 0.96;
+const image = microscopeImage(microscopeField(config), 81);
+const pixels = Array.from({ length: image.size * image.size }, (_, i) => ({
+  x: i % image.size,
+  y: Math.floor(i / image.size),
+  r: image.pixels[4 * i],
+  g: image.pixels[4 * i + 1],
+  b: image.pixels[4 * i + 2],
+}));
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <defs
+    ><clipPath id="microscope-cover-field"><circle cx="298" cy="116" r="85"></circle></clipPath
+    ></defs
+  >
+  <path d="M0 0H400V230H0Z" fill="#182235"></path>
+  <path d="M104 11V222" stroke={color} stroke-opacity=".3" stroke-dasharray="3 5"></path>
+  <path d={`M65 ${lensY(160)}H143`} stroke="#dfaa99" stroke-width="7" stroke-opacity=".2"></path>
+  {
+    rays.map((ray, i) => (
+      <path
+        d={ray.points.map((p, j) => `${j ? 'L' : 'M'}${xy(p.z, p.h)}`).join(' ')}
+        stroke={i % 2 ? '#a7d7c7' : '#e0c185'}
+        stroke-opacity={i === 2 ? 0.85 : 0.5}
+        stroke-width={i === 2 ? 1.5 : 1}
+      />
+    ))
+  }
+  {
+    [
+      { z: 0, r: system.pupil },
+      { z: system.eyeZ, r: 2.5 },
+    ].map((l) => (
+      <g transform={`translate(104 ${lensY(l.z)})`}>
+        <path
+          d={`M${-l.r * 29} 0Q0 -9 ${l.r * 29} 0Q0 9 ${-l.r * 29} 0`}
+          fill={color}
+          fill-opacity=".18"
+          stroke={color}
+        />
+        <path
+          d={`M${-l.r * 29 - 5} -5v10M${l.r * 29 + 5} -5v10`}
+          stroke="#718197"
+          stroke-width="3"
+        />
+      </g>
+    ))
+  }
+  <circle cx={104 + 0.04 * 29} cy="215" r="3" fill="#e0c185"></circle>
+  <circle cx={104 + system.magnification * 0.04 * 29} cy={lensY(160)} r="3" fill="#dfaa99"></circle>
+  <g clip-path="url(#microscope-cover-field)" shape-rendering="crispEdges"
+    >{
+      pixels.map((p) => (
+        <rect
+          x={208 + (p.x / image.size) * 180}
+          y={26 + (p.y / image.size) * 180}
+          width={180 / image.size + 0.02}
+          height={180 / image.size + 0.02}
+          fill={`rgb(${p.r},${p.g},${p.b})`}
+        />
+      ))
+    }</g
+  >
+  <circle cx="298" cy="116" r="88" stroke={color} stroke-opacity=".5"></circle>
+  <path d="M195 116h9M392 116h-9M298 13v10M298 219v-10" stroke={color} stroke-opacity=".45"></path>
+  <path d="M221 207h45" stroke="#e0c185" stroke-width="2"></path>
+</svg>

@@ -1,0 +1,85 @@
+<h2 id="understand">AC reverses. Why does the load current keep its direction?</h2>
+
+Four diodes form this single-phase bridge. D1 points from AC terminal A toward the positive output; D2 points from B toward the same output. D3 points from the negative output toward A, and D4 toward B. The load always spans the positive and negative rails.
+
+When A is sufficiently higher, current follows **A → D1 → load → D4 → B**. After the AC reverses, it follows **B → D2 → load → D3 → A**. A different pair conducts, yet current still enters the top of the load and leaves its bottom. Each illuminated route closes through the AC source.
+
+Without a capacitor, each AC cycle gives two positive output pulses, with voltage still falling to zero near the crossings. A 50 Hz source therefore produces 100 Hz pulsation. **Consistent polarity does not by itself give a smooth voltage.**
+
+A capacitor across the load stores charge. Bridge current flows only when the source magnitude exceeds capacitor voltage plus two diode drops. Some of that current supplies the load; only the excess charges the capacitor. Between charging windows, the capacitor supplies the load and its voltage falls, leaving ripple.
+
+The default teaching source is **12 V peak at 50 Hz**. Twelve volts here is a peak value, not RMS. The calculation keeps physical time while the film slows its display. This scene is not mains wiring, component-selection, or safe construction instructions.
+
+<h2 id="try">Follow a charging window</h2>
+
+- Enter exploration and remove the smoothing capacitor. Scrub time to check D1/D4 during the positive half-cycle and D2/D3 during the negative half-cycle.
+- Connect the capacitor and compare source voltage with the charging threshold. Switch to bridge-current pulses: an already charged capacitor does not receive bridge current throughout the half-cycle.
+- Increase capacitance and compare ripple on the same voltage scale. A smooth output can still require pulsed bridge current.
+- Reduce load resistance, then increase source frequency. The first raises current demand; the second shortens the time between recharges. The film keeps a common 20 ms window for the frequency comparison.
+- Select “Connect at the AC crest” to start with an empty capacitor at the source peak. Increase source series resistance from 0.5 Ω and inspect peak current and charging speed.
+- Lower the AC peak below the total drop of two diodes. In the periodic state, no bridge current flows and output is zero; the model cannot create charge.
+
+All ranges have explicit labels and support keyboard arrows. Manual time stays at the selected sample. Removing C disables empty-capacitor startup and its related controls. Reset restores voltage, frequency, capacitance, load, source resistance, initial phase, startup selection, observation view, and sample time. The shared film player owns playback, pause, chapters, replay, and sound.
+
+<h2 id="deeper">One continuous storage state, three bridge states</h2>
+
+<details>
+<summary>Bridge current and the capacitor equation</summary>
+
+Calculations use SI units. Capacitor voltage `vC` is the storage state. The source is `vs = Vp sin(2πft + φ)`. Each diode has a fixed forward drop `VF` and differential resistance `rD`; source resistance is `Rs`, and the load is `R`.
+
+<div className="formula">iB = max(0, (|vs| − 2VF − vC) / (Rs + 2rD))</div>
+
+<div className="formula">iR = vC / R; iC = iB − iR; C dvC/dt = iC</div>
+
+`iB` is the nonnegative current delivered by the bridge. Source current changes sign with AC voltage, so input power remains positive. Only the appropriate pair of diodes carries `iB`; blocked diode current is exactly zero. Bridge conduction alone does not guarantee net capacitor charging: that also requires `iB > iR`.
+
+When the bridge blocks:
+
+<div className="formula">vC(t + Δt) = vC(t) exp(−Δt / RC)</div>
+
+The conducting interval follows a first-order linear equation driven by the sinusoidal source. The solver uses its analytic solution while conducting, the exponential solution while blocked, and locates transitions at `|vs| = vC + 2VF`. Capacitor voltage remains continuous at each event; it is never forced to the source peak.
+
+Removing the capacitor removes the storage state. The circuit then has the algebraic solution:
+
+<div className="formula">iB = max(0, (|vs| − 2VF) / (Rs + 2rD + R)); vout = R iB</div>
+
+Defaults are 1000 µF, 100 Ω, and 2 Ω source resistance, with `VF = 0.65 V` and `rD = 0.08 Ω` per diode. These are declared teaching values for a piecewise-linear model, not a measured device curve.
+
+</details>
+
+<details>
+<summary>Ripple, inrush, and source resistance</summary>
+
+The default periodic solution gives about **9.54 V** mean output and **0.70 V** peak-to-peak ripple. The bridge conducts for approximately **28%** of the AC cycle. Current does not continuously enter the capacitor from the source.
+
+A larger capacitance loses less voltage for a given amount of charge removed:
+
+<div className="formula">ΔvC = ΔQ / C</div>
+
+The familiar estimate `Δv ≈ Iload / (2fC)` assumes small ripple and short recharging intervals. The scene does not use that estimate to draw its waveforms; it solves the circuit with source resistance and diode drops. The load is resistive, not a constant-current source, so the estimate is especially limited at small capacitance.
+
+Connecting an empty capacitor at the source crest gives the initial bridge current:
+
+<div className="formula">iB(0) = max(0, (Vp − 2VF) / (Rs + 2rD))</div>
+
+The film compares source resistances of 0.5 Ω and 5 Ω, giving initial modeled peaks of approximately **16.21 A** and **2.07 A**. This demonstrates resistance limiting inrush; it is not a current-rating prediction for hardware. More source resistance also increases voltage drop and heat, changing the charging process.
+
+</details>
+
+<details>
+<summary>Closing the charge and energy accounts</summary>
+
+<div className="formula">∫ iB dt − ∫ iR dt = C ΔvC</div>
+
+<div className="formula">Esource = Eload + Ediodes + ERs + Δ(C vC² / 2)</div>
+
+Load power is `vC²/R`; combined diode heating is `2VF iB + 2rD iB²`; source-resistance heating is `Rs iB²`. Charge and stored energy return to their starting values in periodic operation. Startup must retain the increase in stored energy.
+
+The solver splits the source at quarter-cycle boundaries and bisects diode events within each step. Recorded steps are at most one period divided by 512, with further subdivision by the charging time constant while conducting. Charge and power use Simpson integration of the same analytic states. A fixed point of the propagated period map determines steady operation. Seeking reconstructs the state from stored samples and analytic propagation, independently of previous playback.
+
+The model omits capacitor ESR, transformer leakage inductance, reverse recovery, junction capacitance, temperature, protection, and regulation. It does not predict interference or device reliability. The violet fill beside C represents capacitor voltage relative to the current source peak, not a liquid level or an independent animation.
+
+Primary references: [Analog Devices: Diodes and Diode Circuits](https://www.analog.com/en/resources/analog-dialogue/studentzone/studentzone-august-2019.html), [MIT 6.117: Power Supplies and Regulation](https://web.mit.edu/6.117/www/lec3.pdf), and [Analog Devices: Capacitor Filtering and Source Resistance in Active Rectifiers](https://wiki.analog.com/university/courses/alm1k/alm-active-rectifiers).
+
+</details>
