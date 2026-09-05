@@ -13,7 +13,8 @@ export function translate(source: string, locale: Locale, ...values: unknown[]) 
 export const t = (source: string, ...values: unknown[]) =>
   translate(source, browserLocale(), ...values);
 export function localPath(path: string, locale: Locale) {
-  const bare = path.replace(/^\/en(?=\/|$)/, '') || '/';
+  const bare = path.replace(/^\/(en|zh)(?=\/|$)/, '') || '/';
+  if (bare === '/' || bare.startsWith('/#') || bare.startsWith('/?')) return `/${locale}${bare}`;
   return locale === 'en' ? `/en${bare.startsWith('/') ? bare : `/${bare}`}` : bare;
 }
 export function localizedTopic(topic: Topic, locale: Locale): Topic {

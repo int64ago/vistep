@@ -14,12 +14,14 @@ export default function Pendulum() {
     [manualInitial, setInitial] = useState(35),
     [manualPlaying, setPlaying] = useState(false),
     [state, setState] = useState({ angle: (35 * Math.PI) / 180, velocity: 0, time: 0 });
-  const length = demo.watch ? (demo.time < 16 ? 1.4 : 2) : manualLength,
-    gravity = demo.watch ? 9.81 : manualGravity,
-    mass = demo.watch ? 1 : manualMass;
-  const damping = demo.watch ? (demo.time < 24 ? 0.006 : 0.28) : manualDamping,
-    initial = demo.watch ? 35 : manualInitial;
-  const playing = demo.watch ? demo.playing && demo.time >= 1 : manualPlaying;
+  const c = demo.chapter;
+  const episode = c < 5 ? 0 : c === 10 ? 9 : c;
+  const length = demo.watch ? (c >= 5 && c <= 7 ? 2 : 1.4) : manualLength,
+    gravity = demo.watch ? (c === 7 ? 1.62 : 9.81) : manualGravity,
+    mass = demo.watch ? (c === 6 || c === 7 ? 2 : 1) : manualMass;
+  const damping = demo.watch ? (c === 9 || c === 10 ? 0.28 : 0) : manualDamping,
+    initial = demo.watch ? (c === 8 ? 70 : 35) : manualInitial;
+  const playing = demo.watch ? demo.playing : manualPlaying;
   const sim = useRef(state),
     lastUI = useRef(0),
     trace = useRef<number[]>([]),
@@ -35,16 +37,35 @@ export default function Pendulum() {
       if (trace.current.length > 160) trace.current.shift();
       setPoints(trace.current.map((v, i) => `${38 + i * 3.45},${374 - v * 22}`).join(' '));
     }
-  }, playing);
+  }, playing && !demo.watch);
   const reset = (angle = initial) => {
     sim.current = { angle: (angle * Math.PI) / 180, velocity: 0, time: 0 };
     setState(sim.current);
     trace.current = [];
     setPoints('');
   };
+  const directed = useRef({ episode: -1, run: -1 });
   useEffect(() => {
-    if (demo.watch) reset(35);
-  }, [demo.watch, demo.run, demo.time >= 16]);
+    if (!demo.watch) return;
+    const target = Math.max(0, demo.time - demo.chapters[episode].at - (episode === 0 ? 4 : 0));
+    if (
+      directed.current.episode !== episode ||
+      directed.current.run !== demo.run ||
+      target < sim.current.time
+    ) {
+      reset(initial);
+      directed.current = { episode, run: demo.run };
+    }
+    while (sim.current.time + 1 / 120 <= target) {
+      sim.current = stepPendulum(sim.current, 1 / 120, length, gravity, damping);
+      if (Math.round(sim.current.time * 120) % 4 === 0) {
+        trace.current.push(sim.current.angle);
+        if (trace.current.length > 160) trace.current.shift();
+      }
+    }
+    setState({ ...sim.current });
+    setPoints(trace.current.map((v, i) => `${38 + i * 3.45},${374 - v * 22}`).join(' '));
+  }, [demo.watch, demo.run, demo.time, episode, initial, length, gravity, damping]);
   const change = (fn: (v: number) => void, v: number) => {
     fn(v);
     setPlaying(false);
@@ -81,14 +102,12 @@ export default function Pendulum() {
       <div className="lab-grid">
         <div className="lab-scene">
           <span className="scene-label">{t('THE PENDULUM / 单摆')}</span>
-          <div
-            className="pendulum-object"
-            style={{ opacity: demo.watch ? Math.min(1, Math.abs(demo.time - 16) / 0.5) : 1 }}
-          >
+          <div className="pendulum-object" data-observation={demo.watch ? c : undefined}>
             <PendulumStudio
               angle={state.angle}
               length={length}
               mass={mass}
+              showForces={demo.watch && c === 1}
               onDrag={(angle) => {
                 if (demo.watch) return;
                 setInitial(Math.round(angle));
@@ -108,7 +127,11 @@ export default function Pendulum() {
             </strong>
             <p>
               {demo.watch
-                ? t('{0} m · {1}', length.toFixed(1), damping < 0.01 ? t('轻阻尼') : t('增加阻尼'))
+                ? t(
+                    '{0} m · {1}',
+                    length.toFixed(1),
+                    damping < 0.01 ? `${gravity.toFixed(2)} m/s²` : t('增加阻尼'),
+                  )
                 : t('拉起摆球，然后松手。')}
             </p>
           </div>
@@ -122,6 +145,21 @@ export default function Pendulum() {
               {state.time.toFixed(1)}s
             </text>
           </svg>
+          {demo.watch && c >= 2 && (
+            <div className="pendulum-energy-live" aria-label={t('能量交换')}>
+              <span>
+                {t('势能')} <b>{energy.potential.toFixed(2)} J</b>
+              </span>
+              <div>
+                <i style={{ width: `${(100 * energy.potential) / maxEnergy}%` }} />
+                <i style={{ width: `${(100 * energy.kinetic) / maxEnergy}%` }} />
+                <i style={{ flex: 1 }} />
+              </div>
+              <span>
+                {t('动能')} <b>{energy.kinetic.toFixed(2)} J</b>
+              </span>
+            </div>
+          )}
         </div>
         <div className="lab-controls">
           <Range

@@ -2,8 +2,9 @@ import { t } from '../../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
-import { useShowcase, ramp, ease } from '../lab/Showcase';
+import { useShowcase } from '../lab/Showcase';
 import { effectivePhase, residualAmplitude } from '../../models/noise';
+import { noiseShot } from '../../models/direction';
 export default function Noise() {
   const demo = useShowcase();
   const [manualFrequency, setFrequency] = useState(160),
@@ -13,10 +14,11 @@ export default function Noise() {
     [listening, setListening] = useState(false),
     [manualAnimated, setAnimated] = useState(false),
     [error, setError] = useState('');
-  const frequency = demo.watch ? 160 : manualFrequency;
-  const amplitude = demo.watch ? ease(ramp(demo.time, 6, 9)) : manualAmplitude;
-  const phase = demo.watch ? 180 * ease(ramp(demo.time, 13, 19)) : manualPhase;
-  const delay = demo.watch ? 2 * ease(ramp(demo.time, 22, 28)) : manualDelay;
+  const shot = demo.watch ? noiseShot(demo) : null;
+  const frequency = shot?.frequency ?? manualFrequency;
+  const amplitude = shot?.amplitude ?? manualAmplitude;
+  const phase = shot?.phase ?? manualPhase;
+  const delay = shot?.delay ?? manualDelay;
   const animated = demo.watch ? demo.playing : manualAnimated;
   const canvas = useRef<HTMLCanvasElement>(null),
     audio = useRef<{
@@ -81,7 +83,8 @@ export default function Noise() {
     });
   };
   const host = useSimulation((dt) => {
-    if (animated) time.current += dt * 1.5;
+    if (demo.watch) time.current = demo.time * 1.5;
+    else if (animated) time.current += dt * 1.5;
     draw();
   }, true);
   useEffect(() => {

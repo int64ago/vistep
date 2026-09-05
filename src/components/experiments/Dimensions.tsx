@@ -2,24 +2,36 @@ import { t } from '../../i18n';
 import { useCallback, useRef, useState } from 'react';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
 import { Metric, Range, Segments } from '../lab/Controls';
-import { useShowcase, ramp, ease } from '../lab/Showcase';
+import { useShowcase } from '../lab/Showcase';
+import { smooth } from '../../models/direction';
 import { hypercube, projectVertex, sphereSlice } from '../../models/dimensions';
 export default function Dimensions() {
   const demo = useShowcase();
   const [manualMode, setMode] = useState<'projection' | 'slice' | 'features'>('projection'),
     [manualDim, setDim] = useState(4),
     [manualAngle, setAngle] = useState(25),
-    [slice, setSlice] = useState(0.3),
-    [axis, setAxis] = useState('sugar');
-  const mode = demo.watch ? 'projection' : manualMode,
+    [manualSlice, setSlice] = useState(0.3),
+    [manualAxis, setAxis] = useState('sugar');
+  const c = demo.chapter,
+    q = smooth(demo.chapterProgress);
+  const mode = demo.watch
+      ? c === 7 || c === 8
+        ? 'slice'
+        : c === 9 || c === 10
+          ? 'features'
+          : 'projection'
+      : manualMode,
     dim = demo.watch ? 4 : manualDim;
-  const angle = demo.watch ? Math.max(0, demo.time - 24) * 8 : manualAngle;
+  const angle = demo.watch ? (c === 6 ? q * 180 : c === 11 ? 180 + q * 90 : 0) : manualAngle;
+  const slice = demo.watch ? (c === 7 ? -1.25 + 1.25 * q : -1.25 + 2.5 * q) : manualSlice;
+  const axis = demo.watch ? (c === 10 ? 'water' : 'sugar') : manualAxis;
   const unfold = [
     1,
-    ease(ramp(demo.time, 1, 6)),
-    ease(ramp(demo.time, 7.5, 13)),
-    ease(ramp(demo.time, 15, 22)),
+    c < 1 ? 0 : c === 1 ? q : 1,
+    c < 2 ? 0 : c === 2 ? q : 1,
+    c < 4 ? 0 : c === 4 ? q : 1,
   ];
+  const visibleDim = demo.watch ? (c === 0 ? 1 : c === 1 ? 2 : c < 4 ? 3 : 4) : dim;
   const line = useRef<THREE.LineSegments | null>(null),
     dots = useRef<THREE.Mesh[]>([]),
     beams = useRef<THREE.Mesh[]>([]),
@@ -116,7 +128,8 @@ export default function Dimensions() {
     },
     [mode, dim],
   );
-  const frame = () => {
+  const frame = ({ group }: SpatialContext) => {
+    if (demo.watch) group.rotation.y = c === 3 ? q * Math.PI * 2 : 0;
     if (mode === 'slice') {
       if (plane.current) plane.current.position.y = slice;
       if (ring.current) {
@@ -210,9 +223,25 @@ export default function Dimensions() {
                 const x = 90 + Math.log10(f.weight / 20) * 175,
                   y = axis === 'sugar' ? 300 - f.sugar * 12 : 300 - (f.water - 65) * 8;
                 return (
-                  <g key={f.name}>
-                    <circle cx={x} cy={y} r="12" fill={f.color} />
-                    <text x={x + 20} y={y + 5} fill="#b6c3d7" fontSize="13">
+                  <g
+                    key={f.name}
+                    className="feature-point"
+                    style={{ transform: `translate(0px, 0px)` }}
+                  >
+                    <circle
+                      style={{ transition: 'cy 1.2s ease' }}
+                      cx={x}
+                      cy={y}
+                      r="12"
+                      fill={f.color}
+                    />
+                    <text
+                      style={{ transition: 'y 1.2s ease' }}
+                      x={x + 20}
+                      y={y + 5}
+                      fill="#b6c3d7"
+                      fontSize="13"
+                    >
                       {f.name}
                     </text>
                     <path
@@ -232,7 +261,7 @@ export default function Dimensions() {
             <div className="dimension-stage">
               {demo.watch && (
                 <div className="dimension-count">
-                  {demo.time < 1 ? '1' : demo.time < 7.5 ? '2' : demo.time < 15 ? '3' : '4'}
+                  {mode === 'slice' ? '2' : visibleDim}
                   <small>{t('维')}</small>
                 </div>
               )}
@@ -305,7 +334,7 @@ export default function Dimensions() {
               <span className="dimension-overlay">
                 {mode === 'slice'
                   ? '3D OBJECT / 2D SLICE'
-                  : `${dim}D OBJECT / PROJECTED TO YOUR SCREEN`}
+                  : `${visibleDim}D OBJECT / PROJECTED TO YOUR SCREEN`}
               </span>
               <div className="projection-stats">
                 <span>{t('拖动 / 方向键旋转视角')}</span>
@@ -382,9 +411,9 @@ export default function Dimensions() {
       <div className="metrics">
         {mode === 'projection' ? (
           <>
-            <Metric label={t('顶点')} value={2 ** dim} />
-            <Metric label={t('边')} value={dim * 2 ** (dim - 1)} />
-            <Metric label={t('一个点的坐标数')} value={dim} />
+            <Metric label={t('顶点')} value={2 ** visibleDim} />
+            <Metric label={t('边')} value={visibleDim * 2 ** (visibleDim - 1)} />
+            <Metric label={t('一个点的坐标数')} value={visibleDim} />
           </>
         ) : mode === 'slice' ? (
           <>

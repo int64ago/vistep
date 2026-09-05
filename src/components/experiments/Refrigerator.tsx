@@ -1,9 +1,11 @@
 import { t } from '../../i18n';
 import { useState } from 'react';
 import { useShowcase } from '../lab/Showcase';
+import HeatBalance from '../lab/HeatBalance';
 import RefrigeratorStudio from '../three/RefrigeratorStudio';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
+import { refrigeratorShot } from '../../models/direction';
 const parts = [
   {
     name: t('压缩机'),
@@ -42,11 +44,12 @@ export default function Refrigerator() {
     [manualCop, setCop] = useState(2.5),
     [manualPower, setPower] = useState(80),
     [manualCutaway, setCutaway] = useState(true);
-  const cop = demo.watch ? 2.5 : manualCop,
-    power = demo.watch ? 80 : manualPower;
-  const phase = demo.watch ? Math.min(3.999, demo.time / 8) : manualPhase;
+  const shot = demo.watch ? refrigeratorShot(demo) : null;
+  const cop = shot?.cop ?? manualCop,
+    power = shot?.power ?? manualPower;
+  const phase = shot?.phase ?? manualPhase;
   const running = demo.watch ? demo.playing : manualRunning,
-    cutaway = demo.watch ? true : manualCutaway;
+    cutaway = shot?.cutaway ?? manualCutaway;
   const host = useSimulation((dt) => setPhase((p) => (p + dt * 0.14) % 4), running && !demo.watch);
   const active = demo.watch || running ? Math.floor(phase) : part;
   const selected = parts[active];
@@ -96,12 +99,23 @@ export default function Refrigerator() {
       </div>
       <div className="lab-grid">
         <div className="lab-scene">
-          <div className="refrigerator-object">
-            <RefrigeratorStudio phase={phase} cutaway={cutaway} />
-          </div>
-          <span className="refrigerator-cold">{t('箱内 · 吸热')}</span>
-          <span className="refrigerator-hot">{t('室内 · 放热')}</span>
-          <div className="pressure-badge">{selected.state}</div>
+          {demo.watch && demo.chapter >= 7 && demo.chapter <= 9 ? (
+            <HeatBalance
+              power={power}
+              cop={cop}
+              openDoor={demo.chapter === 9}
+              progress={demo.chapterProgress}
+            />
+          ) : (
+            <>
+              <div className="refrigerator-object">
+                <RefrigeratorStudio phase={phase} cutaway={cutaway} />
+              </div>
+              <span className="refrigerator-cold">{t('箱内 · 吸热')}</span>
+              <span className="refrigerator-hot">{t('室内 · 放热')}</span>
+              <div className="pressure-badge">{selected.state}</div>
+            </>
+          )}
         </div>
         <div className="lab-controls">
           <label className="checkline">

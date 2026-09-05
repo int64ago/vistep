@@ -1,73 +1,91 @@
+<div align="center">
+
 # vistep.ai
 
-**把日常，打开来看。** · [English](README.en.md)
+**Visualize Every Step with AI**
 
-用精细的视觉演示，解释生活和工作背后的原理。先看变化如何发生，再按自己的兴趣探索细节。
+Visual explanations of the mechanisms behind everyday life.
 
-[访问 vistep.ai](https://vistep.ai/) · [开发预览](https://vistep-preview.int64ago.workers.dev/) · [制作一个场景](docs/creating-a-scene.md) · [贡献指南](CONTRIBUTING.md) · [文档目录](docs/README.md)
+[Explore the site](https://vistep.ai/en/) · [Documentation](docs/README.md) · [Contributing](CONTRIBUTING.md) · [简体中文](README.zh-CN.md)
 
-> 完整站点已部署至 `vistep.ai`，包含全部 12 个中英文专题与同步讲解。预览站独立部署并禁止搜索收录。仓库按开源协作方式整理，许可证为 MIT；仓库是否公开由所有者决定。
+[![CI](https://github.com/int64ago/vistep/actions/workflows/ci.yml/badge.svg)](https://github.com/int64ago/vistep/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-83956f)](LICENSE)
+[![Astro](https://img.shields.io/badge/Astro-7-5a6354?logo=astro&logoColor=white)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-50758b?logo=typescript&logoColor=white)](tsconfig.json)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-b88953?logo=cloudflare&logoColor=white)](docs/deployment.md)
+[![Languages](https://img.shields.io/badge/languages-English%20%2B%20中文-827393)](docs/localization-and-seo.md)
 
-推送或合并到 `main` 后，[GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml) 自动检查、构建并发布正式站；分支与 PR 只做检查。每次发布保留版本和回滚记录，详见 [部署说明](docs/deployment.md)。
+[![vistep.ai — visual explanations](docs/media/overview.png)](https://vistep.ai/en/)
 
-## 可以看到什么
+</div>
 
-12 个中英文专题，包含 30–42 秒自动引导演示、按需深入阅读和独立实验。讲解声音默认关闭，由用户开启；中英文分别撰写配音稿，与镜头同步。计算在浏览器运行，阅读和实验不需要账号、API 密钥或实时 AI 服务。
+Watch a mechanism unfold, follow an object through its hidden stages, then experiment with the model yourself. vistep combines directed animation, carefully built 3D mechanisms and browser-based scientific models. Each exploration has its own visual language.
 
-| 生活器物   | 信息与计算                  | 空间与系统 |
-| ---------- | --------------------------- | ---------- |
-| 自行车变速 | 主动降噪                    | 多维空间   |
-| 冰箱制冷   | GPS 定位                    | 钟摆       |
-| 激光打印机 | 网页加载                    | 电梯调度   |
-|            | JPEG 压缩、大模型训练与生成 | 无事故堵车 |
+## Explore
 
-实体机制使用程序化 3D 和可追踪部件；信号、像素、网络与交通用适合各自现象的表达形式。页面和基础控件共享品牌，每篇保留自己的构图与交互。WebGL 不可用时提供二维视图，静音也能理解主线。
+| Everyday mechanisms                                         | Information and computation                                                      | Space and systems                                             |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Bicycle gearing](https://vistep.ai/en/explore/bicycle/)    | [Active noise cancellation](https://vistep.ai/en/explore/noise/)                 | [Dimensions](https://vistep.ai/en/explore/dimensions/)        |
+| [Refrigeration](https://vistep.ai/en/explore/refrigerator/) | [GPS positioning](https://vistep.ai/en/explore/gps/)                             | [Pendulums](https://vistep.ai/en/explore/pendulum/)           |
+| [Laser printing](https://vistep.ai/en/explore/printer/)     | [Web loading](https://vistep.ai/en/explore/network/)                             | [Elevator scheduling](https://vistep.ai/en/explore/elevator/) |
+|                                                             | [JPEG compression](https://vistep.ai/en/explore/jpeg/)                           | [Traffic waves](https://vistep.ai/en/explore/traffic/)        |
+|                                                             | [Transformer training and generation](https://vistep.ai/en/explore/transformer/) |                                                               |
 
-名字来自 **Visualize Every Step with AI → vis step ai → 相邻两个 s 合并 → vistep ai → vistep.ai**。首页以紧凑的文字动画保留这一演变，支持重播与减少动态效果。
+- **Watch first.** Chaptered explanations run for 2–5 minutes, with pause, replay and seeking. Optional controls let you test an idea after seeing it.
+- **Follow real calculations.** Geometry, motion and readouts share a model. JPEG transforms and a small Transformer run in Web Workers; physical and system simulations use explicit teaching assumptions.
+- **Read or listen.** English and Chinese have separate writing and recorded narration on a shared timeline. Sound is opt-in; captions and transcripts remain available.
+- **Keep it local.** Experiments run in your browser. No account, API key or live AI service is required. Language preferences stay in local storage.
+- **Adapt to the reader.** Responsive compositions, keyboard controls, reduced-motion support and 2D alternatives for WebGL scenes.
 
-## 新增场景
+![Mechanisms, image reconstruction and spatial reasoning](docs/media/explorations.png)
 
-直接使用 [vistep-scene 技能](.agents/skills/vistep-scene/SKILL.md)，告诉它想解释什么：
+## Development
 
-> 使用 $vistep-scene，新增一个“感应电机为什么会转”的演示。
-
-技能负责资料、分镜、独立视觉设计、模型、实现、中英文讲解与配音，以及完整验收。只需描述选题和偏好，制作工具由技能内部调用。
-
-## 本地运行
-
-需要 Node.js 22.12+（推荐 Node 24，见 `.nvmrc`）与 `pnpm@11.25.0`。无需 Cloudflare 登录。
+Use Node.js 24 (see [.nvmrc](.nvmrc)) and pnpm 11.25.0. Cloudflare access is unnecessary for local development.
 
 ```sh
-npm install --global pnpm@11.25.0
 git clone https://github.com/int64ago/vistep.git
 cd vistep
+corepack enable
 pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-打开 [localhost:4321](http://127.0.0.1:4321/)。音轨已提交，日常安装和构建不生成语音、不调用供应商服务。
+Open [localhost:4321](http://127.0.0.1:4321/). Recorded audio is included; installation and builds do not call a speech provider.
 
-```sh
-pnpm scene:check                              # 专题、双语和配音登记
-pnpm verify                                  # 格式、类型、测试、生产构建与产物审计
-pnpm build:preview                           # 独立预览构建与 noindex 检查
-pnpm preview                                 # 查看 dist/ 中的生产构建
+| Command              | Purpose                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| `pnpm verify`        | Formatting, documentation links, types, tests, production build and artifact audit |
+| `pnpm build:preview` | Separate preview build with noindex headers                                        |
+| `pnpm preview`       | Serve the production build locally                                                 |
+| `pnpm scene:check`   | Scene registry, bilingual content and audio contracts                              |
+
+## Architecture
+
+Astro prerenders articles, transcripts and search metadata. React loads one experiment at a time. Independent TypeScript models drive SVG, Canvas and Three.js renderers. Recorded audio and animations share the chapter clock; simulations reconstruct state when seeking.
+
+```text
+Topic registry + bilingual MDX ──→ Static pages, sitemap, social cards
+Storyboard + recorded speech  ──→ Shared playback clock
+Scientific model              ──→ Scene-specific SVG / Canvas / Three.js
 ```
 
-## 制作与架构
+See [architecture](docs/architecture.md), [localization and SEO](docs/localization-and-seo.md), and [deployment](docs/deployment.md). Changes merged into `main` are checked and automatically deployed through GitHub Actions. Preview and production assets remain separate.
 
-Astro 预生成讲解，React 按专题加载，TypeScript 独立模型驱动 SVG / Canvas / Three.js。JPEG 与教学 Transformer 在 Worker 中计算。配音通过静态音轨和共享时间线同步。
+## Create an exploration
 
-- [场景制作手册](docs/creating-a-scene.md)：从主问题、分镜、模型到双语声音和逐项验收。
-- [全过程复盘](docs/retrospective.md)：用户反馈、根因、实际改进与仍需验证的边界。
-- [架构与模型范围](docs/architecture.md)：文件职责、生命周期和教学简化。
-- [部署与回滚](docs/deployment.md)：独立 Cloudflare 预览、正式域名和版本记录。
-- [Search Console](docs/search-console.md)：域名验证、站点地图、日常查看与上线步骤。
+The [vistep-scene skill](.agents/skills/vistep-scene/SKILL.md) accepts a natural-language brief:
 
-自动化检查能拦住数值、语言和发布漏项；视觉精致程度、镜头可理解性与声音自然程度需要实际审看和试听。性能上限策略不等于普通手机的实测帧率，具体覆盖范围保留在 [检查记录](docs/README.md#检查记录)。
+> Use $vistep-scene to explain why an induction motor turns.
 
-## 贡献与许可
+It covers research, storyboarding, models, rendering, bilingual narration and review. Contributors can also follow the [production guide](docs/creating-a-scene.md) directly. Reuse the production process and infrastructure; choose the composition and interaction for the phenomenon.
 
-欢迎修正原理、改进演示、完善翻译与提出新选题。提交前读 [CONTRIBUTING.md](CONTRIBUTING.md)；问题和建议使用仓库 Issue 模板。参与需遵守 [行为准则](CODE_OF_CONDUCT.md)，安全问题使用 [私下报告渠道](SECURITY.md)。
+## Contribute
 
-原创代码与文档采用 [MIT License](LICENSE)。字体、依赖及音频来源见 [第三方说明](THIRD_PARTY_NOTICES.md)。许可证不代表可以移除第三方许可，也不授予冒充官方网站的权利。
+Scientific corrections, new explanations, accessibility improvements and translations are welcome. Read the [contribution guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md). Report vulnerabilities through the private channel in [SECURITY.md](SECURITY.md).
+
+Validation records distinguish automated checks, browser observations and listening reviews. See the [review index](docs/README.md#review-records) for scope and limitations.
+
+## License
+
+Original code and documentation are [MIT licensed](LICENSE). Fonts, dependencies and generated-audio provenance are documented in [Third-party notices](THIRD_PARTY_NOTICES.md).

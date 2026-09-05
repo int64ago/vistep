@@ -13,7 +13,7 @@ export type StudioContext = {
   reducedMotion: MediaQueryList;
 };
 export type StudioObject = {
-  update?: (dt: number, elapsed: number) => void;
+  update?: (dt: number, elapsed: number, settle: boolean) => void;
   dispose?: () => void;
 };
 export default function Studio({
@@ -159,6 +159,7 @@ export default function Studio({
       keyElapsed = 1;
     };
     controls.addEventListener('start', stopKeyMotion);
+    let lastFilmTime: number | undefined;
     const tick = (time: number) => {
       animation = requestAnimationFrame(tick);
       if (!visible || document.hidden) {
@@ -179,7 +180,14 @@ export default function Studio({
         wasWatching = filmRef.current.watch;
         controls.enabled = !wasWatching;
       }
-      object.update?.(sceneDt, elapsed);
+      const nextFilmTime = filmRef.current.time;
+      const settle =
+        filmRef.current.watch &&
+        (lastFilmTime === undefined ||
+          Math.abs(nextFilmTime - lastFilmTime) > 0.3 ||
+          (!filmRef.current.playing && nextFilmTime !== lastFilmTime));
+      object.update?.(sceneDt, elapsed, settle);
+      lastFilmTime = nextFilmTime;
       if (keyElapsed < 1) {
         keyElapsed = Math.min(1, keyElapsed + dt / 0.38);
         const amount = reducedMotion.matches ? 1 : softEase(keyElapsed);

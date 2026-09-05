@@ -339,10 +339,11 @@ export function createPrinter(
   };
   controls.addEventListener('start', interrupt);
   return {
-    update(dt) {
+    update(dt, _elapsed, settle) {
+      const instant = reducedMotion.matches || settle;
       const state = read(),
         phase = Math.min(5, Math.floor(state.progress));
-      const openness = open(state.exploded ? 1 : 0, dt, reducedMotion.matches);
+      const openness = open(state.exploded ? 1 : 0, dt, instant);
       shell.position.y = openness * 1.25;
       shell.rotation.z = openness * -0.045;
       front.position.z = openness * 1.8;
@@ -351,15 +352,9 @@ export function createPrinter(
         cover.opacity(1 - THREE.MathUtils.smoothstep(openness, i === 2 ? 0.12 : 0.3, 0.97)),
       );
       tonerCover.opacity(
-        revealToner(
-          state.exploded && phase >= 1 && phase <= 3 ? 0.12 : 1,
-          dt,
-          reducedMotion.matches,
-        ),
+        revealToner(state.exploded && phase >= 1 && phase <= 3 ? 0.12 : 1, dt, instant),
       );
-      guardCover.opacity(
-        revealGuard(state.exploded && phase >= 3 ? 0.14 : 1, dt, reducedMotion.matches),
-      );
+      guardCover.opacity(revealGuard(state.exploded && phase >= 3 ? 0.14 : 1, dt, instant));
       back.position.z = -openness * 0.2;
       scanner.position.y = openness * 0.22;
       fuserGuard.position.y = openness * 0.35;
@@ -470,7 +465,7 @@ export function createPrinter(
         destination.copy(destinationTarget).addScaledVector(direction, distance);
       }
       if (transition < 1) {
-        transition = reducedMotion.matches ? 1 : Math.min(1, transition + dt / 1.05);
+        transition = instant ? 1 : Math.min(1, transition + dt / 1.05);
         const amount = softEase(transition);
         controls.target.lerpVectors(departureTarget, destinationTarget, amount);
         camera.position.lerpVectors(departure, destination, amount);

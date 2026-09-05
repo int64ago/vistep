@@ -27,7 +27,7 @@ it('ships one complete, non-overlapping bilingual soundtrack for each film', () 
         expect(cue.at).toBeGreaterThanOrEqual(films[slug].chapters[i].at);
         expect(cue.end).toBeLessThanOrEqual(script.cues[i + 1]?.at ?? script.duration);
         expect(cue.end).toBeGreaterThan(cue.at + 0.5);
-        expect(cue.tempo).toBeLessThanOrEqual(1.18);
+        expect(cue.tempo).toBe(1);
       });
     }
   }

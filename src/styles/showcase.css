@@ -1113,3 +1113,116 @@ body:has(.lesson-wrap) .site-header {
 .lesson-elevator .showcase[data-mode='watch'] .metrics {
   display: none;
 }
+/* A long explanation remains easy to pause, scan and revisit. */
+.film-timeline {
+  position: relative;
+  height: 44px;
+  background: transparent;
+  overflow: visible;
+}
+.film-timeline::before {
+  content: '';
+  position: absolute;
+  inset: 20px 0;
+  background: var(--film-line);
+  border-radius: 8px;
+}
+.film-timeline > span {
+  position: absolute;
+  top: 20px;
+  height: 4px;
+  border-radius: 8px;
+}
+.film-timeline > i {
+  top: 18px;
+  height: 8px;
+}
+.film-timeline input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  opacity: 0.001;
+  cursor: pointer;
+}
+.film-timeline:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+.film-time {
+  min-width: 80px;
+  font-variant-numeric: tabular-nums;
+}
+.film-chapters {
+  border-top: 1px solid var(--film-line);
+  margin: 0 30px;
+}
+.film-chapters summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  color: var(--film-ink);
+}
+.film-chapters summary::-webkit-details-marker {
+  display: none;
+}
+.film-chapters summary span {
+  flex: 1;
+  color: var(--film-muted);
+}
+.film-chapters summary i {
+  font-style: normal;
+  font-size: 20px;
+}
+.film-chapters[open] summary i {
+  transform: rotate(45deg);
+}
+.film-chapters ol {
+  list-style: none;
+  padding: 0 0 18px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+}
+.film-chapters button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: transparent;
+  text-align: left;
+  border-radius: 12px;
+  color: var(--film-ink);
+  font-size: 13px;
+}
+.film-chapters button:hover,
+.film-chapters button[aria-current] {
+  background: #82967116;
+}
+.film-chapters time {
+  color: var(--film-muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .film-chapters {
+    margin: 0 18px;
+  }
+  .film-chapters ol {
+    grid-template-columns: 1fr;
+  }
+  .film-time {
+    display: inline;
+    font-size: 10px;
+    min-width: 64px;
+  }
+}

@@ -1,53 +1,44 @@
-# 制作复盘：把完成度放在完成数量之前
+# Visual storytelling: production lessons
 
-依据：本次项目对话中的需求与反馈，以及截至 2026-09-05 的五次实现提交。这里只把 Git 可核对的内容归入相应提交；早期被否定的页面形态来自用户反馈，不假设它们全部保存在当前历史中。
+[简体中文](zh-CN/retrospective.md) · [Documentation](README.md)
 
-## 目标如何变得明确
+The collection began as twelve interactive explanations. Review exposed a gap between feature completeness and explanatory quality: repeated layouts, implausible mechanical details, abrupt interactions, excess text and insufficient direction. The production workflow now treats visual communication as a requirement throughout development.
 
-最初目标是用可视化解释生活和工作中的机制，首批 12 篇，保留域名的完整命名过程。用户随后明确指出：大块品牌展示、煽情字母文案、统一实验模板、不精细的几何、锋利的界面都不符合期望。之后进一步要求演示自动推进，减少操作和文字，补上双语与自然、同步的声音。
+## Findings that change the process
 
-这不是“再美化一下”的问题。产品需要先让人看懂，再让人探索；对象、镜头与因果关系才是主角。第一轮用专题数量和控件丰富度判断进度，偏离了这一目标。
+| Failure                                              | Cause                                         | Production response                                                                                        |
+| ---------------------------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| A large isolated brand panel                         | Branding treated as a separate feature        | Integrate the name animation into the opening typography; keep its full meaning visible.                   |
+| Repeated experiment dashboards                       | Layout chosen for code reuse                  | Storyboard the phenomenon before choosing its medium; share infrastructure, not composition.               |
+| Plausible-looking but open belts or mismatched teeth | Shapes and motion adjusted independently      | Derive pitch, tangents, center distance, phase and closure from a shared model.                            |
+| A reader must operate controls before understanding  | The page assumes an experimenter              | Direct a complete silent explanation first; move optional experiments into exploration mode.               |
+| Abrupt motion and weak alignment                     | Polish deferred until the end                 | Review baseline, spacing, framing and transitions at each stage, on both wide and narrow layouts.          |
+| A short animation expanded by narration              | Duration treated as an audio setting          | Every added chapter needs a new visible causal step, close observation or controlled comparison.           |
+| Chinese recordings decoded but were unintelligible   | Asset validity confused with language quality | Check actual speech, independently transcribe recorded chapters, then review delivery and synchronization. |
+| Passing tests presented as complete quality evidence | Different evidence categories conflated       | Record numerical checks, browser behavior, visual review and listening separately.                         |
 
-## 反馈 → 根因 → 后续制作约束
+## Model-led geometry
 
-| 观察到的问题                 | 根因                                 | 下一篇的具体做法与证据                                                           |
-| ---------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- |
-| 品牌解释占一个大框，文案刻意 | 把品牌当成独立功能，忽略首页观看顺序 | 保留准确英文与字母变化，融入首页排版；保存窄屏、结束帧、减少动态效果的证据       |
-| 每篇像同一个实验面板         | 从组件复用出发选布局                 | 先画初始、转折、结果三张构图，再选择 SVG、Canvas、3D 或组合；复用播放基础设施    |
-| 缺少可信内部结构             | 有外观，缺少部件关系与观察路径       | 先标出动力、物料、信息或能量路径；追踪同一对象，关键信息必须在画面中可见         |
-| 齿轮、皮带和链条看着不对     | 外形和运动分别“调得像”               | 节距、轴距、切线、齿相位由共同模型推导；检查完整一圈、极值与切换前后停帧         |
-| 对齐粗糙，控件和过渡生硬     | 把视觉细节留到最后一轮               | 每个阶段检查基线、字重、字幕行高、模型边界；手机重新构图；缓动不得掩盖状态突变   |
-| 需要先操作才能理解           | 默认把用户当实验员                   | 首次进入即可看懂一条因果主线；交互只负责检验一个结论，收进“自己试试”             |
-| 文字像说明书                 | 用解释文字补画面缺失                 | 先静音看完整片段；字幕只指出当下应观察的变化，长讲解留在 MDX                     |
-| 语音可能变成字幕朗读         | 把翻译和配音留到最后                 | 分别写中英文口语稿；声音是观察引导，句间留空；音频时钟驱动画面，完整试听两种语言 |
-| “测过了”仍不足以证明好用     | 数值测试、构建与视觉验收混为一谈     | 分别记录模型证据、浏览器行为、关键帧、实播听感和未覆盖项，不用通过率宣称审美质量 |
+A loop cannot be repaired by snapping its final point to its first. The bicycle uses shared pitch, an even link count and a solved center distance. The printer uses a common gear module, involute profiles and a closed belt. Numerical checks cover constraints, while still frames expose framing, contact and occlusion problems.
 
-## Git 中实际发生的改进
+The same distinction applies to a system simulation: passenger identities and reproducible arrivals matter more than convincing motion. A comparison must use the same input, reset consistently and finish without losing objects.
 
-- [`045f2ce`](https://github.com/int64ago/vistep/commit/045f2ce)：程序化 3D 器物、专题构图和独立模型的基础。
-- [`ade846b`](https://github.com/int64ago/vistep/commit/ade846b)：正文尺寸与品牌图标调整。基本可读性属于产品要求。
-- [`8b2cdc1`](https://github.com/int64ago/vistep/commit/8b2cdc1)：柔化界面、控件与镜头运动。圆角本身不能代替连贯的交互反馈。
-- [`d571587`](https://github.com/int64ago/vistep/commit/d571587)：自动演示主线、连续机械路径与几何验证。决定性的改变是从“提供操作”转向“安排观察”。
-- [`edc3f3b`](https://github.com/int64ago/vistep/commit/edc3f3b)：独立双语页面、口语讲解稿、24 条录音、108 个片段与声音主时钟。
+## Direction before dialogue
 
-本轮进一步补上草稿脚手架、发布登记一致性检查、构建产物审计、预览防收录和社区协作规范。
+A film is now planned for 2–5 minutes, preferably 2–3, with a five-minute ceiling. This is not a mandate to slow every old motion. Each chapter states what the viewer sees, what changes and why it matters. The silent sequence must carry the argument; speech guides attention and adds context.
 
-## 可复用的实现经验
+Chapter-relative directors replace absolute timestamps tied to the former short films. Recorded speech determines shared windows. Seeking reconstructs model state, including training progress and simulation history. Generation keeps Transformer weights fixed.
 
-**模型先于渲染。** 闭合链条不能靠把最后一个点吸到第一个点来补。自行车用共同节距、偶数链节与求解后的轴距；打印机用共同模数、渐开线齿形与闭合皮带。渲染参数必须能追溯到模型，尤其是在齿比或速度改变时。
+## Speech needs semantic evidence
 
-**同一条时间线。** `Showcase` 提供时间、章节、播放模式和重播计数；场景决定如何表达这些状态。配音启用时以音频时间为准，等待、离屏和后台都要暂停推进。不能让独立动画计时器与声音各自前进。
+The previous Chinese synthesis produced decodable MP3s but unintelligible speech. Earlier decode and playback records remain valid only as transport evidence. The replacement pipeline uses explicit Chinese and English neural voices, measures actual speech, and never time-stretches recordings.
 
-**提前给双语留空间。** 英文长度和中文断句不同。字幕区域按所有章节预留高度，避免切换时整页跳动。两种语言共享科学模型和镜头节点，使用各自的说明与口语稿；不要只换导航文字。
+Independent ASR without a language hint or supplied transcript can detect wrong-language output and substantial omissions. It cannot establish warmth, pacing or natural emphasis. Do not label a transcript check as a listening review.
 
-**生成接口需要实测。** 语音接口返回的内容不能只根据扩展名或文档猜测编码。制作脚本实际解码、统一响度、保留停顿，并限制加速幅度。网络失败可重试，生成结果和清单要一起提交；正常构建无需供应商凭据。
+## Maintainable delivery
 
-**开发页与构建产物分别验证。** 曾遇到开发缓存导致重复 React 的运行错误；开发服务器恢复并不能证明线上静态产物正确，构建成功也不能证明浏览器能播放。复测应指向确切 URL 和版本，避免旧缓存造成错误结论。
+Use separate `dist/` and `dist-preview/` outputs. Preview permits crawling so search engines can read noindex. Main publishes only the verified production artifact. Metadata, transcripts, language links and social cards derive from registered content, avoiding hand-maintained parallel catalogs.
 
-**不要把构建目录直接混用。** 生产产物在 `dist/`，预览在 `dist-preview/`。预览使用响应头禁止收录，并允许爬虫读取这个头；生产 sitemap 与规范网址必须指向真正可访问的正式页面。
+Documentation should explain the product and its contribution contract. Put historical implementation details in dated review records. Use authentic images and badges with verifiable meaning; do not imply adoption, performance or accessibility certification from decorative labels.
 
-## 仍需要诚实保留的边界
-
-已有 [机械与自动演示记录](qa-automatic-demos.md) 和 [双语配音记录](qa-bilingual-narration.md) 说明了各自的覆盖范围。桌面浏览器模拟手机宽度不等于真机性能；播放解码成功不等于声音有感染力；当前每篇 30–42 秒引导片段加按需阅读，也不等于已经测量过每位读者的 5–8 分钟学习体验。
-
-“大师级”是审稿要求，不能由测试数量自动认证。下一篇应先做出一段完整、可信、值得看的核心过程，再扩展内容。执行方法见 [场景制作手册](creating-a-scene.md)。
+The historical changes are traceable through [`045f2ce`](https://github.com/int64ago/vistep/commit/045f2ce), [`ade846b`](https://github.com/int64ago/vistep/commit/ade846b), [`8b2cdc1`](https://github.com/int64ago/vistep/commit/8b2cdc1), [`d571587`](https://github.com/int64ago/vistep/commit/d571587) and [`edc3f3b`](https://github.com/int64ago/vistep/commit/edc3f3b). Those commits are historical evidence, not certification of current quality. See the [production guide](creating-a-scene.md) for the current workflow.

@@ -1,8 +1,9 @@
 import { t } from '../../i18n';
-import { useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { useShowcase } from '../lab/Showcase';
+import { fixedReplay } from '../../models/replay';
 import { newTraffic, stepTraffic, defaultTraffic, type Vehicle } from '../../models/traffic';
 export default function Traffic() {
   const demo = useShowcase(),
@@ -14,8 +15,9 @@ export default function Traffic() {
     [manualPlaying, setPlaying] = useState(false),
     [selected, setSelected] = useState(0),
     [stats, setStats] = useState({ average: 0, slow: 0, time: 0 });
-  const count = demo.watch ? 36 : manualCount,
-    headway = demo.watch ? 1.2 : manualHeadway,
+  const episode = demo.chapter < 8 ? 0 : demo.chapter === 8 ? 8 : demo.chapter < 11 ? 9 : 11;
+  const count = demo.watch ? (episode === 8 ? 24 : 36) : manualCount,
+    headway = demo.watch ? (episode === 9 ? 1.8 : 1.2) : manualHeadway,
     desired = demo.watch ? 22 : manualDesired;
   const playing = demo.watch ? demo.playing : manualPlaying;
   const params = { ...defaultTraffic, headway, desiredSpeed: desired },
@@ -88,18 +90,26 @@ export default function Traffic() {
     ctx.font = '500 24px sans-serif';
     ctx.fillText(
       demo.watch
-        ? demo.time < 6
+        ? demo.chapter < 2
           ? t('匀速前进')
-          : demo.time < 12
+          : demo.chapter === 2
             ? t('一次轻刹')
-            : t('减速波向后')
+            : demo.chapter >= 8
+              ? t('观察速度变化')
+              : t('减速波向后')
         : t('一个小扰动'),
       cx,
       cy - 5,
     );
     ctx.font = '12px sans-serif';
     ctx.fillStyle = '#8098b8';
-    ctx.fillText(demo.watch ? t('车辆向前 →') : t('会在哪里停下来？'), cx, cy + 20);
+    ctx.fillText(
+      demo.watch
+        ? `${count} · ${headway.toFixed(1)} s · ${t('车辆向前 →')}`
+        : t('会在哪里停下来？'),
+      cx,
+      cy + 20,
+    );
     ctx.textAlign = 'left';
     ctx.font = '11px monospace';
     ctx.fillText('RING ROAD / 500 m', 20, 29);
@@ -123,11 +133,7 @@ export default function Traffic() {
     }
   };
   const host = useSimulation((dt) => {
-    if (playing) {
-      if (demo.watch && demo.time >= 6 && !braked.current) {
-        cars.current[0].brake = 1.5;
-        braked.current = true;
-      }
+    if (playing && !demo.watch) {
       fixed.current += dt * 4;
       while (fixed.current >= 1 / 60) {
         stepTraffic(cars.current, 1 / 60, params);
@@ -158,9 +164,50 @@ export default function Traffic() {
     setStats({ average: cars.current[0].speed, slow: 0, time: 0 });
     setPlaying(false);
   };
+  const brakeAt = demo.watch
+    ? episode === 0
+      ? (demo.chapters[2].at - demo.chapters[0].at) * 2
+      : 6
+    : 0;
+  const replay = useMemo(
+    () =>
+      fixedReplay(
+        () => ({
+          cars: newTraffic(count, { ...defaultTraffic, headway, desiredSpeed: desired }),
+          history: [] as Vehicle[][],
+          time: 0,
+        }),
+        (s, dt, tick) => {
+          if (tick === Math.round(brakeAt * 60)) s.cars[0].brake = 1.5;
+          stepTraffic(s.cars, dt, { ...defaultTraffic, headway, desiredSpeed: desired });
+          s.time += dt;
+          if (tick % 18 === 0) {
+            s.history.push(s.cars.map((c) => ({ ...c })));
+            if (s.history.length > 140) s.history.shift();
+          }
+        },
+      ),
+    [count, headway, desired, episode, demo.run, brakeAt],
+  );
   useEffect(() => {
-    reset();
-  }, [demo.run, demo.watch]);
+    if (!demo.watch) {
+      reset();
+      return;
+    }
+  }, [demo.watch, demo.run]);
+  useEffect(() => {
+    if (!demo.watch) return;
+    const state = replay((demo.time - demo.chapters[episode].at) * 2);
+    cars.current = state.cars;
+    history.current = state.history;
+    clock.current = state.time;
+    setStats({
+      average: state.cars.reduce((s, c) => s + c.speed, 0) / count,
+      slow: state.cars.filter((c) => c.speed < 2).length,
+      time: state.time,
+    });
+    draw();
+  }, [demo.watch, demo.time, demo.run, replay]);
   const brake = () => {
     cars.current[selected].brake = 1.5;
     setPlaying(true);

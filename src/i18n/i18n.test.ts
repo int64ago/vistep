@@ -14,7 +14,7 @@ const files = (dir: string): string[] =>
 describe('bilingual publishing', () => {
   it('switches the same topic and fragment without duplicating locale prefixes', () => {
     for (const path of ['/', '/explore/printer/', '/explore/transformer/#deeper']) {
-      expect(localPath(localPath(path, 'en'), 'zh')).toBe(path);
+      expect(localPath(localPath(path, 'en'), 'zh')).toBe(path === '/' ? '/zh/' : path);
       expect(localPath(localPath(path, 'en'), 'en')).toBe(localPath(path, 'en'));
     }
     expect(localeFromPath('/english/')).toBe('zh');

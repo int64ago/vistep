@@ -1,117 +1,82 @@
-# 新增一个场景
+# Creating an exploration
 
-目标：用一条可追踪的视觉因果链解释一个问题。统一制作步骤、数据契约与验收证据；每篇自行决定构图、材质、镜头和操作形式。
+[简体中文](zh-CN/creating-a-scene.md) · [Documentation](README.md)
 
-## 1. 描述场景，调用 skill
+Build one visible causal argument. Share the production workflow, player and lifecycle infrastructure; choose the representation and composition for the subject.
 
-直接告诉 `vistep-scene` 想解释的事物或原理，例如：
+## Start with a question
 
-> 使用 $vistep-scene，新增一个“感应电机为什么会转”的演示。
+With Codex, invoke the [vistep-scene skill](../.agents/skills/vistep-scene/SKILL.md) using a natural-language request. The skill owns research through implementation and review; the requester does not need to fill a template or execute scaffolding commands. Other contributors can follow this guide directly.
 
-技能会自行确定选题切口、追踪对象、slug 和表达形式，完成资料、分镜、模型、实现、双语内容与声音、接入和验收。用户不需要执行命令或填写草稿；以下制作步骤由技能负责推进。
+Identify the reader's initial intuition, one object to follow, the observation that changes their understanding, and the model's limits. Record primary technical sources. For an induction motor, for example, follow the rotating magnetic field, induced rotor current and torque—not a decorative motor shell.
 
-<details>
-<summary>内部脚手架（维护实现用）</summary>
-
-技能可自行运行此辅助命令，也可直接创建草稿文件：
+An optional internal helper creates an unpublished `drafts/<slug>/` workspace:
 
 ```sh
 pnpm scene:new induction-motor --medium three
 ```
 
-支持 `three`、`svg`、`canvas`、`audio`、`hybrid`。命令生成 `drafts/<slug>/`：选题说明、空分镜表、双语配音数据、两份 MDX、集成清单和验收表。已有目录不会被覆盖；草稿不生成网址、不进入首页、不加载实验引擎。名字用小写短横线，避免后期改动公开 URL。创建草稿只是制作过程中的一步。
+Supported media are `three`, `svg`, `canvas`, `audio` and `hybrid`. Creating a draft does not register a route or complete an explanation.
 
-</details>
+## Storyboard before narration
 
-先完成 `brief.md` 中的主问题、观众的直觉、追踪对象和教学边界。为关键判断记录可定位的一手资料：论文、标准、教材或制造商技术说明。来源是模型的依据，不是页面末尾的装饰。
+Plan a **2–5 minute** demonstration, preferably **2–3 minutes**. Five minutes is the limit. Every chapter must add an observation, a causal step or a controlled comparison. Extending narration over the same short loop is unacceptable.
 
-例如新增感应电机，不从“放一个电机、三个滑块”开始，而从“转子为什么追着磁场走，却不能追上？”开始；追踪磁场方向、转子电流和转矩之间的关系。
+For each chapter specify:
 
-可以先看一份从真实实现提取的 [自行车制作案例](examples/bicycle-brief.md)：它把时间线、模型状态、构图与检查边界逐一对应。
+- The object and detail to look at.
+- What visibly changes, which model state causes it, and what the change demonstrates.
+- Camera or composition, including a separate narrow-screen arrangement.
+- A short silent caption and the spoken observation it supports.
 
-## 2. 选择表达形式，先画三张关键帧
+Draw the opening, turning point and result before coding. Physical contact and internal pathways benefit from 3D; matrices, waves, pixel blocks, timelines and slices often communicate better directly. See the [bicycle example](examples/bicycle-brief.md) and [retrospective](retrospective.md).
 
-至少明确初始状态、认知转折和因果结果，在桌面与手机各画一遍；复杂专题可以有更多帧。每张图写清楚“此时看哪里”和“什么变化证明了结论”。模型被遮住、文字说明比对象更抢眼时，先改构图。
+## Implement a complete silent sequence
 
-| 现象需要观众看到什么           | 可优先考虑                    | 仓库中可借鉴的具体部分                               |
-| ------------------------------ | ----------------------------- | ---------------------------------------------------- |
-| 内部结构、实体遮挡、接触和传动 | 3D 剖面、局部镜头，配二维降级 | `three/PrinterStudio.tsx`、`three/BicycleStudio.tsx` |
-| 像素、频率、矩阵与重建过程     | Canvas / SVG 图块、并排对照   | `experiments/Jpeg.tsx` 与 JPEG Worker                |
-| 波形的相加、相位和时延         | Canvas + 用户开启的 Web Audio | `experiments/Noise.tsx`                              |
-| 请求路径、等待与调度           | SVG 时序、轨迹与状态视图      | `experiments/Network.tsx`、`experiments/Traffic.tsx` |
-| 空间切片和维数关系             | 投影、切片、适合需要的 3D     | `experiments/Dimensions.tsx`                         |
+Keep equations, units and invariants in `src/models/`; expensive work belongs in a Worker. Geometry, numbers and labels must derive from the same state. Verify mechanical pitch, tangency, phase and closure. Simulations preserve object identities and use identical inputs for comparisons.
 
-这些是可借鉴的实现，不是必须复制的页面模板。3D 应让结构更容易看懂；曲线、矩阵或时序通常不需要立体外壳。
+Use `useShowcase()` for `chapter`, `chapterTime`, `chapterProgress`, `chapters`, `time`, `run`, `watch` and `playing`. Choose shots from chapter-relative state. Use deterministic replay for history-dependent models: jumping backward or forward must agree with continuous playback. Avoid independent timers that advance while the player is paused.
 
-## 3. 模型与一个完整演示同步打通
+A complete silent sequence comes before optional controls. Explicitly disclose teaching simplifications. Do not present coefficient counts as JPEG file sizes or update model weights during generation.
 
-先完成一个能从头播到尾的因果过程，再增加参数和深入内容。
+## Write and produce both languages
 
-- 状态、单位、方程和约束放在 `src/models/`；复杂计算放进 Worker。少量纯教学状态可以留在专题组件，但要注明其含义。
-- 画面、数值与文字从同一状态得出。机械场景检查节距、闭环、切向、相位与表面速度；模拟场景检查身份、固定步长、重置和相同输入。
-- 可复现输入固定种子或确定性事件表。暂停不能继续积分，重播要重置历史状态；比较算法必须重用同一份输入。
-- 为能揭示错误的不变量写测试：无阻尼能量、约束残差、链路首尾与间距、数值梯度、像素重建、乘客守恒等。不要只测试函数返回了自己刚写的常数。
-- 教学简化公开说明。JPEG 未执行完整编码就不能标“文件大小”；Transformer 生成时不得更新权重。
+Write English and Chinese for speech, separately. Point out the detail on screen, allow a question to settle, then explain the change. Do not read UI text, force literal translations or stretch a short visual with more prose.
 
-渲染器在 `src/components/experiments/<Name>.tsx`。通过 `useShowcase()` 读取 `watch`、`playing`、`time`、`chapter`、`run`、`duration`；`run` 变化代表重播。使用共享可见性和资源生命周期工具，不另起一套永不停的计时器。Three.js 场景优先使用 `three/Studio.tsx` 的灯光、相机和清理机制，按专题需要扩展。
-
-## 4. 分镜、静音字幕与双语声音
-
-当前引导片段为 30–42 秒，足以解释一条因果链；新内容按原理需要决定长度，不为凑时长加空镜或挤快语速。深入阅读与实验另计。
-
-`storyboard.json` 是创作草稿，可增加 `focus`、`action`、`modelState`、`camera`、`evidence` 字段。完成后把公共时间线接入 `src/data/films.ts`：
-
-```ts
-{
-  duration: 36,
-  chapters: [
-    { at: 0, caption: '一句指出当前变化的字幕。' },
-    // 其余节点按真实镜头与计算安排，at 严格递增。
-  ],
-}
-```
-
-先静音看懂，再写声音。字幕短，口语稿可以引导观察、提出反问、解释变化；不要照读标题和公式。中英文分别写，自然断句，给观众留出观察的空隙。每句话都应对应眼前正在发生的事情。
-
-`src/data/narration.json` 中每篇使用 `{ duration, cues: [{ at, zh, en }] }`，章节一一对应，允许句子晚于镜头起点进入。超过窗口先改稿或调整镜头，不用过快的变速掩盖问题。修改一篇只生成该篇：
+The canonical source is `src/data/narration.json`. Each cue includes `id`, `title`, `titleEn`, `caption`, `captionEn`, `zh`, `en`, `seconds` (minimum planned window), `chapterAt` and `at`. The generator measures both voices and derives a shared window with breathing room. It produces `film-timeline.json`, `audio-tracks.json`, `audio-manifest.json` and content-addressed MP3s together. Speech is **never time-stretched**.
 
 ```sh
 python3 -m venv .venv-voice
 .venv-voice/bin/pip install -r scripts/requirements-voice.txt
-.venv-voice/bin/python scripts/generate-narration.py --account YOUR_ACCOUNT_ID --only induction-motor
+.venv-voice/bin/python scripts/generate-narration.py --only induction-motor
 ```
 
-需要 Python 3.11+ 与制作端 Cloudflare Workers AI 权限。macOS 可以复用 Wrangler 登录；其他环境设置 `CLOUDFLARE_API_TOKEN`。脚本不会自动读取 `.env`。生成只发生在制作阶段，可能使用账户额度，日常构建不调用它。把稿件、清单、内容哈希音轨一起提交；删除清单不再引用的旧文件。
+Production uses Microsoft Edge online speech through pinned `edge-tts`; see [provenance](../THIRD_PARTY_NOTICES.md). It needs network access, but ordinary builds and readers do not call it. Revisit the script if the measured film exceeds five minutes. Regenerate only changed scenes and commit scripts, manifests and recordings together.
 
-声音开启后共享播放器以音频时间驱动画面。完整试听两种语言，特别注意专业词、重音、情绪、句尾、切镜头和静默间隙。解码和时间戳测试不能代替试听。不得宣称已有录音经过真人配音或人工审听，除非确有证据。
+Listen to both tracks for intelligibility, technical pronunciation, delivery and synchronization. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, without a reference prompt or language hint. It can catch wrong-language output and gibberish; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
 
-## 5. 接入发布登记
+## Register the scene
 
-| 文件                                                                  | 必须完成                                                             |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `src/data/topics.ts`                                                  | 唯一 slug / number，标题、描述、分类、阅读时长、颜色、相关专题、来源 |
-| `src/data/experiments.ts`                                             | 同 slug 的显式动态 import；首页不能提前载入新引擎                    |
-| `src/data/films.ts`                                                   | 从 0 开始的有序章节、准确字幕、时长                                  |
-| `src/content/<slug>.mdx`、`src/content/en/<slug>.mdx`                 | 两种语言完整内容，保留 `understand` / `try` / `deeper` 锚点          |
-| `src/i18n/en.json`                                                    | 元数据、字幕与所有控件/标注；变量用占位符，不拼接未翻译字符串        |
-| `src/data/narration.json`、`audio-manifest.json`、`public/narration/` | 稿件、两种语言音轨与对应时间戳                                       |
-| `src/components/TopicCover.astro`                                     | 专题封面；如进入首页精选，再适配 `ObjectCover.astro` 与首页构图      |
+| Integration                          | Required work                                                                          |
+| ------------------------------------ | -------------------------------------------------------------------------------------- |
+| `topics.ts`                          | Unique slug and number, metadata, sources and related links                            |
+| `experiments.ts`                     | Explicit lazy import                                                                   |
+| Bilingual MDX                        | Complete explanation with `understand`, `try` and `deeper` anchors                     |
+| `en.json`                            | All labels, captions and metadata; preserve interpolation placeholders                 |
+| Narration source and generated files | Both recordings, matching cues and measured timing                                     |
+| Cover artwork                        | A distinct `TopicCover.astro` rendering; selected objects also use `ObjectCover.astro` |
 
-路由和 sitemap 随元数据生成，导航数量自动更新。登记一致性检查会拦住缺失的引擎、影片、语言或配音；它不能判断新封面是否精致。
+Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Check that new artwork also fits the social card. The registry tests catch missing files; they cannot judge communication quality.
 
-## 6. 审看与验收
+## Review and release
 
-执行 `pnpm scene:check` 快速查漏，再执行 `pnpm verify` 和 `pnpm build:preview`。针对构建产物检查以下四条路径，在草稿 `review.md` 记录浏览器、尺寸、版本与证据：
+Run `pnpm scene:check`, `pnpm verify` and `pnpm build:preview`. Record the exact version and conditions for these independent reviews:
 
-1. **静音完整观看。** 从首次进入到结束、暂停中间帧、重播、切换自由探索；核心原理不依赖开声音或先动滑块。
-2. **双语声音完整播放。** 检查每章同步、暂停、重播、后台、离屏、切换语言与自动播放受阻后的恢复；声音失败后仍能看懂并重试。
-3. **逐帧看细节。** 初始、转折、终点与极值；齿轮啮合、闭合路径、连接处、遮挡、阴影、裁切、文字基线、换行与字幕高度。机械循环需检查整个相位范围。
-4. **换设备与故障条件。** 桌面、390px 和 320px 窄屏；核心流程用触控和键盘完成。正文至少 16px，主要触控目标至少 44px。检查减少动态效果、WebGL 创建失败/丢失、离页资源清理、深链接、404 和资源错误。性能结论注明真实硬件；浏览器缩窗不是手机性能测试。
+1. Complete silent playback, pause, replay, all chapter jumps and optional exploration.
+2. Both spoken tracks, including buffering, blocked playback, language switching and offscreen pause.
+3. Key still frames, physical contacts, closed paths, model limits, label alignment and camera framing.
+4. Desktop, 390 px and 320 px layouts; keyboard and touch targets; reduced motion, WebGL failure, Worker failure, deep links and 404.
 
-文档改字不需要跑一遍 12 篇的全部视觉流程；共享播放器、布局、模型或语言系统的改动必须覆盖受影响专题。检查未执行就记“未覆盖”，发现的缺陷修复后重测对应路径。
+Body copy is at least 16 px and primary targets at least 44 px. A resized browser is not a real-phone performance test. Keep untested conditions explicit. New findings should improve the workflow, not turn into unrelated checklists.
 
-## 7. 交付
-
-提交应包含独立原理、视觉实现、双语内容、音轨、模型测试和审看证据。PR 说明观众能看见什么变化，并附桌面/手机关键帧及预览地址。按 [部署手册](deployment.md) 发布和记录回滚版本；正式上线后按 [Search Console 手册](search-console.md) 校验与提交 sitemap。
-
-使用 Codex 时，可在仓库中调用 `$vistep-scene`；入口在 [.agents/skills/vistep-scene/SKILL.md](../.agents/skills/vistep-scene/SKILL.md)。后续真实反馈继续补充本手册，避免不断增加与任务无关的检查。
+A handoff includes the actual explanation, preview and review evidence. Finish scientific, visual and narration review before pushing `main`, which automatically publishes production. Follow [deployment](deployment.md) and existing authorization; ordinary contributions do not change domain ownership or repository visibility.

@@ -1,6 +1,8 @@
 import { t } from '../../i18n';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import { useShowcase } from '../lab/Showcase';
+import { fixedReplay } from '../../models/replay';
+import { spanProgress } from '../../models/direction';
 import ElevatorStudio from '../three/ElevatorStudio';
 import { Metric, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
@@ -23,13 +25,37 @@ export default function Elevator() {
     finishedAt = useRef<number | null>(null);
   const [scenario, setScenario] = useState(() => makeScenario()),
     [mode, setMode] = useState('morning'),
-    [strategy, setStrategy] = useState<Strategy>('fcfs'),
+    [manualStrategy, setStrategy] = useState<Strategy>('fcfs'),
     [manualPlaying, setPlaying] = useState(false),
     [destination, setDestination] = useState(6),
     [origin, setOrigin] = useState(0),
     [notice, setNotice] = useState(t('选择起点和目的楼层，加入一位乘客。')),
     [comparison, setComparison] = useState<ReturnType<typeof compareElevators> | null>(null);
-  const playing = demo.watch ? demo.playing && demo.time < 39 : manualPlaying;
+  const c = demo.chapter;
+  const strategy: Strategy = demo.watch
+    ? c < 4
+      ? 'fcfs'
+      : c < 7
+        ? 'nearest'
+        : 'collective'
+    : manualStrategy;
+  const playing = demo.watch ? demo.playing : manualPlaying;
+  const directedRequests = useMemo(
+    () =>
+      makeScenario('mixed', 42)
+        .slice(0, 10)
+        .map((r, i) => ({ ...r, arrival: i * 0.8 })),
+    [],
+  );
+  const directedResults = useMemo(() => compareElevators(directedRequests), [directedRequests]);
+  const directedReplay = useMemo(
+    () =>
+      fixedReplay(
+        () => newElevatorState(directedRequests),
+        (s, dt) => stepElevators(s, dt, strategy),
+      ),
+    [strategy, demo.run, directedRequests],
+  );
   const simulation = useRef(newElevatorState(scenario));
   const [state, setState] = useState(() => structuredClone(simulation.current));
   const acc = useRef(0);
@@ -53,7 +79,7 @@ export default function Elevator() {
       setState(structuredClone(simulation.current));
       if (settled) setPlaying(false);
     }
-  }, playing);
+  }, playing && !demo.watch);
   const stats = elevatorStats(state);
   const reset = (requests = scenario) => {
     fixed.current = 0;
@@ -66,16 +92,26 @@ export default function Elevator() {
   };
   useEffect(() => {
     if (!demo.watch) return;
-    const requests = makeScenario('mixed', 42)
-      .slice(0, 10)
-      .map((r, i) => ({ ...r, arrival: i * 0.8 }));
-    if (demo.chapter < 3) {
-      setScenario(requests);
-      setMode('mixed');
-      setStrategy((['fcfs', 'nearest', 'collective'] as Strategy[])[demo.chapter]);
-      reset(requests);
-    } else setComparison(compareElevators(requests));
-  }, [demo.watch, demo.run, demo.chapter]);
+    const segment = c < 4 ? [1, 4] : c < 7 ? [4, 7] : [7, 9];
+    const completion = directedResults.find((r) => r.strategy === strategy)!;
+    const progress =
+      c === 0
+        ? 0
+        : c === 10
+          ? demo.chapterProgress * 0.6
+          : c >= 9
+            ? 1
+            : spanProgress(demo, segment[0], segment[1]);
+    const next = directedReplay(progress * completion.time);
+    simulation.current = structuredClone(next);
+    setState(structuredClone(next));
+  }, [demo.watch, demo.time, demo.run, strategy, directedReplay, directedResults]);
+  useEffect(() => {
+    if (!demo.watch) return;
+    setScenario(directedRequests);
+    setMode('mixed');
+    setComparison(c === 9 || c === 11 ? directedResults : null);
+  }, [demo.watch, c, directedRequests, directedResults]);
   const add = (from: number) => {
     if (from === destination) {
       setNotice(t('起点与目的地相同，换一个目的楼层试试。'));
@@ -126,9 +162,27 @@ export default function Elevator() {
       <div className="elevator-layout">
         <div className="building">
           <ElevatorStudio state={state} />
+          {demo.watch && (
+            <div className="passenger-sequence" aria-label={t('同一批乘客的行程')}>
+              {state.requests.map((r) => (
+                <span
+                  key={r.id}
+                  data-state={r.status}
+                  title={`${r.id + 1}: ${r.from + 1}F → ${r.to + 1}F`}
+                >
+                  <i>{r.id + 1}</i>
+                  {r.from + 1} → {r.to + 1}
+                </span>
+              ))}
+            </div>
+          )}
           <div className="elevator-building-note">
             <span>{demo.watch ? names[strategy] : '8 FLOORS / 2 ELEVATORS'}</span>
-            <span>{t('◦ 候梯 ◦ 乘梯 · 4× 速度')}</span>
+            <span>
+              {demo.watch
+                ? `${state.time.toFixed(1)} s · ${stats.done} / ${state.requests.length}`
+                : t('◦ 候梯 ◦ 乘梯 · 4× 速度')}
+            </span>
           </div>
         </div>
         <div className="elevator-controls">

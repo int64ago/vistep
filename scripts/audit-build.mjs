@@ -53,7 +53,9 @@ for (const entry of urls) {
   );
   assert((attr(description || '', 'content') || '').length > 15, `Description: ${entry}`);
   assert(
-    html.includes(`<html lang="${url.pathname.startsWith('/en/') ? 'en' : 'zh-CN'}"`),
+    html.includes(
+      `<html lang="${url.pathname === '/' || url.pathname.startsWith('/en/') ? 'en' : 'zh-CN'}"`,
+    ),
     `Language: ${entry}`,
   );
   for (const language of ['zh-CN', 'en', 'x-default']) {
@@ -65,6 +67,34 @@ for (const entry of urls) {
     assert(
       existsSync(join(directory, path)) || existsSync(join(directory, path, 'index.html')),
       `Broken asset/link ${path} in ${entry}`,
+    );
+  }
+  const metas = html.match(/<meta\b[^>]*>/g) || [];
+  const meta = (name) =>
+    attr(
+      metas.find((tag) => attr(tag, 'property') === name || attr(tag, 'name') === name) || '',
+      'content',
+    );
+  assert.equal(meta('twitter:card'), 'summary_large_image');
+  const image = new URL(meta('og:image'));
+  assert.equal(image.origin, origin);
+  const png = readFileSync(join(directory, image.pathname));
+  assert.equal(png.subarray(1, 4).toString(), 'PNG');
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  const json = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  assert(json, `Structured data: ${entry}`);
+  const graph = JSON.parse(json)['@graph'];
+  assert(graph.some((n) => n['@type'] === 'WebSite'));
+  if (url.pathname.includes('/explore/')) {
+    const resource = graph.find((n) => n['@type'] === 'LearningResource');
+    assert(resource, `LearningResource: ${entry}`);
+    assert(resource.audio.transcript.length > 400);
+    assert(existsSync(join(directory, new URL(resource.audio.contentUrl).pathname)));
+    assert.equal(
+      resource.hasPart.length,
+      (html.match(/<li>\s*<a href="#t=/g) || []).length,
+      `Chapter transcript: ${entry}`,
     );
   }
   assert(!/TODO|PLACEHOLDER/.test(html), `Unfinished content in ${entry}`);

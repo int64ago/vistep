@@ -14,7 +14,7 @@ export function scalarTransition(initial: number, duration = 1) {
       target = next;
       elapsed = 0;
     }
-    elapsed = Math.min(duration, elapsed + dt);
+    elapsed = reduced ? duration : Math.min(duration, elapsed + dt);
     value = reduced ? target : THREE.MathUtils.lerp(from, target, softEase(elapsed / duration));
     return value;
   };
