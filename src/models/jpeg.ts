@@ -65,3 +65,23 @@ export function sampleBlock(pattern: string) {
     return Math.round(48 + x * 18 + y * 9 + 13 * Math.cos(y * 0.8));
   });
 }
+
+/** ISO/IEC 10918-1 zig-zag order. Frequency selection above groups equal total frequency. */
+export const jpegZigzag = Array.from({ length: 15 }, (_, sum) => {
+  const diagonal = Array.from({ length: 8 }, (_, y) => [sum - y, y]).filter(
+    ([x]) => x >= 0 && x < 8,
+  );
+  return (sum % 2 ? diagonal : diagonal.reverse()).map(([x, y]) => y * 8 + x);
+}).flat();
+/** Small, explicit 4:2:0 example. Averaging is a teaching filter, not a full encoder. */
+export function chroma420() {
+  const rgb = Array.from({ length: 16 }, (_, i) =>
+    i % 4 > Math.floor(i / 4) ? [220, 95, 62] : [55, 144, 188],
+  );
+  const y = rgb.map(([r, g, b]) => Math.round(0.299 * r + 0.587 * g + 0.114 * b));
+  const cb = rgb.map(([r, g, b]) => 128 - 0.168736 * r - 0.331264 * g + 0.5 * b);
+  const sampled = [0, 2, 8, 10].map(
+    (i) => [i, i + 1, i + 4, i + 5].reduce((s, j) => s + cb[j], 0) / 4,
+  );
+  return { y, cb, sampled };
+}

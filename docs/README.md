@@ -1,27 +1,28 @@
-# Documentation / 文档
+# Documentation
 
-Start with the bilingual [project README](../README.md) / [English README](../README.en.md). Detailed production documents are currently maintained in Chinese, with source identifiers and commands shared across languages.
+[Project](../README.md) · [简体中文](zh-CN/README.md)
 
-## 制作与维护
+## Build and maintain
 
-- [新增场景](creating-a-scene.md)：选题、独立表达形式、模型、分镜、双语声音、接入与审看。
-- [自行车制作案例](examples/bicycle-brief.md)：已实现分镜、状态与几何测试的对应关系。
-- [全过程复盘](retrospective.md)：反馈、根因、提交证据和可复用经验。
-- [架构与模型范围](architecture.md)：文件职责、数据流、生命周期、教学简化。
-- [部署与回滚](deployment.md)：Cloudflare 预览与正式发布。
-- [Search Console](search-console.md)：域名验证、上线后 sitemap 提交、日常索引检查。
-- [贡献指南](../CONTRIBUTING.md)：开发、PR、测试与素材来源要求。
-- [仓库场景技能](../.agents/skills/vistep-scene/SKILL.md)：Codex 可复用入口；普通贡献者不需要 AI 工具。
+- [Production guide](creating-a-scene.md): research, direction, models, bilingual narration and review.
+- [Bicycle example](examples/bicycle-brief.md): connect a storyboard to geometry and evidence.
+- [Architecture](architecture.md): data flow, resource lifecycle and model boundaries.
+- [Localization and SEO](localization-and-seo.md): multi-factor language selection and generated search metadata.
+- [Deployment](deployment.md): GitHub Actions, Cloudflare preview, credentials and rollback.
+- [Search Console](search-console.md): ownership, sitemap and indexing operations.
+- [Production lessons](retrospective.md): failures, root causes and reusable decisions.
+- [Scene skill](../.agents/skills/vistep-scene/SKILL.md): a natural-language production entry point.
 
-## 检查记录
+## Review records
 
-这些是指定版本、指定条件下的观察，不是对未来修改的保证。
+Records describe particular revisions and conditions. They are not guarantees for later changes. Historical speech transport checks did not establish Chinese intelligibility; see the retrospective.
 
-- [自动演示与机械细节](qa-automatic-demos.md)
-- [双语与同步讲解](qa-bilingual-narration.md)
-- [维护配套与搜索接入](qa-maintenance.md)
-- [首次正式发布](qa-production.md)
+- [Mechanical detail and automatic demonstrations](qa-automatic-demos.md)
+- [Initial bilingual playback](qa-bilingual-narration.md)
+- [Maintenance and search setup](qa-maintenance.md)
+- [First production release](qa-production.md)
+- [Long-form direction, language and SEO](qa-longform.md)
 
-## 社区与许可
+## Community
 
-[行为准则](../CODE_OF_CONDUCT.md) · [安全报告](../SECURITY.md) · [MIT](../LICENSE) · [第三方说明](../THIRD_PARTY_NOTICES.md) · [变更记录](../CHANGELOG.md)
+[Contributing](../CONTRIBUTING.md) · [Code of Conduct](../CODE_OF_CONDUCT.md) · [Security](../SECURITY.md) · [License](../LICENSE) · [Third-party notices](../THIRD_PARTY_NOTICES.md) · [Changelog](../CHANGELOG.md)

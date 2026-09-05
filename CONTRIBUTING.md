@@ -1,8 +1,8 @@
-# Contributing / 参与贡献
+# Contributing
+
+[简体中文](docs/zh-CN/contributing.md)
 
 Thank you for helping make mechanisms easier to see. Contributions may improve explanations, models, rendering, accessibility, translation or new topics. Start with an issue when the change needs discussion; small fixes can go directly to a pull request.
-
-欢迎修正原理、视觉、交互与翻译。新专题先把“解释什么、让观众看见什么变化”说清楚，再实现。
 
 ## Development
 
@@ -16,9 +16,9 @@ Thank you for helping make mechanisms easier to see. Contributions may improve e
 
 ## New or revised scenes
 
-Use [the production guide](docs/creating-a-scene.md) and [retrospective](docs/retrospective.md). When using Codex, describe the scene to `$vistep-scene`; it handles the complete production workflow. The draft generator is an optional internal helper, not the user-facing entry point. The guide is maintained in Chinese; draft headings and source identifiers are bilingual.
+Use [the production guide](docs/creating-a-scene.md) and [retrospective](docs/retrospective.md). When using Codex, describe the scene to `$vistep-scene`; it handles the complete production workflow. The draft generator is an optional internal helper, not the user-facing entry point. The guide is available in English and Chinese.
 
-Scenes must have their own appropriate visual form. A complete, understandable silent demonstration comes before extra controls. Derive geometry and numbers from the same model. Explain simplifications and cite technical sources. Keep Chinese and English content complete, with spoken scripts written for observation rather than reciting UI text.
+Scenes must have their own appropriate visual form. A complete, understandable 2–5 minute silent demonstration comes before extra controls. Every chapter needs visible explanatory work; additional narration alone does not extend a scene. Derive geometry and numbers from the same model. Explain simplifications and cite technical sources. Keep Chinese and English content complete, with spoken scripts written for observation rather than reciting UI text.
 
 For scene changes, include desktop and phone key frames, the preview URL if available, full-playback observations in both languages, and relevant model checks. Record untested conditions explicitly. A successful build is not evidence of visual or vocal quality.
 

@@ -1,38 +1,32 @@
-# 已实现案例：自行车链传动
+# Production example: bicycle gearing
 
-这是从现有实现提取的制作说明，用来展示一份草稿如何变成可核对的演示；它不是所有场景应复制的布局。代码见 [Bicycle.tsx](../../src/components/experiments/Bicycle.tsx)、[BicycleStudio.tsx](../../src/components/three/BicycleStudio.tsx) 与 [几何模型](../../src/models/mechanisms.ts)。
+[简体中文](../zh-CN/examples/bicycle-brief.md) · [Production guide](../creating-a-scene.md)
 
-## 主问题与追踪对象
+**Question:** Why does changing gear alter speed and required pedal force at the same cadence?
 
-问题：同样踩一圈，为什么换挡会改变速度和所需的力？
+**Object to follow:** One gold chain link. Its complete return path connects tooth pitch, crank movement and rear-axle rotation. A two-shaft 3D test rig exposes these relationships without unrelated bicycle details.
 
-观众先看金色链节绕完整个传动路径，再比较相同踏频下的后轴转动。实体部件、节距、绕行与啮合都影响理解，因此选择两轴传动台的 3D 表达，省去与当前问题无关的整车细节。
+## Chapter sequence
 
-## 当前时间线
+| Chapters | Visible evidence                                                                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 1–4      | Follow a closed loop, inspect matching pitch, count teeth, connect tooth ratio to rear rotation.                         |
+| 5–6      | Switch to a smaller rear sprocket; compare speed and required pedal force at the same cadence.                           |
+| 7–9      | Select a larger rear sprocket, increase slope, then vary cadence. Each experiment changes the corresponding calculation. |
+| 10–12    | Compare work and power, show the model's limits, and revisit three gearing choices.                                      |
 
-| 时间     | 模型状态                          | 画面负责证明什么                             |
-| -------- | --------------------------------- | -------------------------------------------- |
-| 0–9 秒   | 前 34 齿 / 后 24 齿，45 rpm       | 同一个金色链节沿闭合路径绕行，动力关系连续   |
-| 9–17 秒  | 齿比和踏频保持不变；9–16 秒近看   | 链节与齿的节距对应，轮转与链走来自同一关系   |
-| 17–26 秒 | 后飞轮切换 12 齿，踏频保持 45 rpm | 相同前轴运动带来更快的后轴转动               |
-| 26–34 秒 | 后飞轮切换 32 齿，踏频保持 45 rpm | 后轴较慢；在指定稳态模型里所需平均踏板力降低 |
+Actual timing comes from [the generated chapter timeline](../../src/data/film-timeline.json), not duplicated seconds in this document. The director integrates cadence into pedal turns. Geometry and measured values share the tooth counts, while independent parameter changes are presented as a new steady-state setup.
 
-切换处短暂淡出，展示两种已张紧的配置。模型没有计算真实拨链器的换挡过程，所以不能把淡出称为模拟了链条横移。声音与字幕的章节来自 [films.ts](../../src/data/films.ts)，口语稿在 [narration.json](../../src/data/narration.json)。
+## Composition and constraints
 
-## 关键帧与构图
+The overview retains both shafts, crank, chain and return run. Close views make tooth engagement inspectable. Phone framing must preserve the complete loop. A gear change switches between tensioned configurations; it does not claim to model derailleur movement.
 
-- 全景：两轴、曲柄、链条及闭合回程同时可见，金色链节易于辨认。
-- 近看：观众能判断链节与齿是否接触正确，而不是只看到物体转动。
-- 对比：固定踏频，改变后齿数，保证镜头仍允许比较后轴速度。手机视图保留完整传动路径，不把关键闭合接缝裁掉。
+The [steady-state model](../../src/models/bicycle.ts) includes gradient, rolling resistance, drag and 96% drivetrain efficiency. It computes the power needed to maintain a chosen cadence; it does not assume unlimited rider power. The comparison bars use the same cadence and road gradient for each gearing option.
 
-这是设计意图，仍须对每次实际修改保存停帧证据。换灯光或镜头后，不能仅凭模型测试沿用上一版的视觉结论。
+The [geometry model](../../src/models/mechanisms.ts) uses common pitch and an even link count. Existing tests enumerate front tooth counts 34/50, rear counts 11–34 and eight phases. The adjacent-roller tolerance is 1.5% of pitch: a sampled teaching-geometry check, not an analytical proof of contact at every phase.
 
-## 计算契约与边界
+## Review evidence
 
-[稳态模型](../../src/models/bicycle.ts) 计算给定踏频、齿比与坡度下的速度、功率和等效切向平均踏板力。当前演示坡度为 4%，传动效率 96%；自由探索可以另调参数。它不假设骑车者可以无限输出功率。
+Model or geometry changes require invariant checks and extreme-setting frames. Camera changes require wide and narrow compositions. Narration changes require both language tracks and synchronized playback. A previous review does not automatically cover a new camera, audio track or timeline.
 
-几何使用同节距链轮、偶数链节与求解后的轴距。现有 [机械测试](../../src/models/mechanisms.test.ts) 枚举前齿数 34/50、后齿数 11–34，取 8 个相位检查闭环与节距偏差。相邻滚子距离容差为节距的 1.5%；这是教学几何的采样检查，不是全相位机械接触的解析证明。
-
-## 下一次改动需要什么证据
-
-若只改解说，用两种语言完整试听并核对时间窗口。若改齿形、轴距或运动关系，补几何不变量和极值停帧；若改相机或容器尺寸，复查桌面和手机关键帧。任何情况下都不以“加一个更复杂的面板”代替让对象更容易理解。
+Implementation: [Bicycle.tsx](../../src/components/experiments/Bicycle.tsx), [BicycleStudio.tsx](../../src/components/three/BicycleStudio.tsx).

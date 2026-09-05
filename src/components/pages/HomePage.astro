@@ -5,7 +5,7 @@ import HomeObject from '../../components/HomeObject';
 import TopicCover from '../../components/TopicCover.astro';
 import ObjectCover from '../../components/ObjectCover.astro';
 import { topics as sourceTopics } from '../../data/topics';
-import { films } from '../../data/films';
+import { films, filmDuration } from '../../data/films';
 import { translate, localPath, localizedTopic, type Locale } from '../../i18n';
 const { locale = 'zh' } = Astro.props as { locale?: Locale };
 const tr = (s: string) => translate(s, locale);
@@ -23,7 +23,8 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
           <span class="tiny-cross" aria-hidden="true">+</span>
           {tr('给好奇心，一个看得见的答案。')}
         </p>
-        <h1>{tr('把日常，')}<br /><em>{tr('打开来看。')}</em></h1>
+        <BrandMorph locale={locale} client:load />
+        <h2 class="opening-mission">{tr('看见每一步，理解为什么。')}</h2>
         <p class="opening-description">
           {tr('一束光怎样变成字？一个齿轮怎样改变力？')}<br class="desktop-br" />{
             tr('拆开熟悉的事物，看见那些正在发生的过程。')
@@ -32,11 +33,10 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
         <a href={href('/explore/printer/')} class="editorial-cta"
           >{tr('从一台打印机开始')} <span aria-hidden="true">↗</span></a
         >
-        <BrandMorph locale={locale} client:load />
       </div>
       <HomeObject client:only="react"
         ><div slot="fallback" class="opening-object home-object-placeholder" aria-hidden="true">
-          <ObjectCover slug="printer" />
+          <TopicCover slug="printer" color="#8da486" />
         </div></HomeObject
       >
     </section>
@@ -69,7 +69,7 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
                   <>
                     <span>{topic.name}</span>
                     <span>
-                      {films[slug].duration} {tr('秒演示')}
+                      {filmDuration(films[slug].duration)} {tr('演示')}
                     </span>
                   </>
                 </div>
@@ -161,7 +161,7 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
                   <div class="index-copy">
                     <>
                       <span>
-                        {topic.category} / {films[topic.slug].duration} {tr('秒演示')}
+                        {topic.category} / {filmDuration(films[topic.slug].duration)} {tr('演示')}
                       </span>
                       <h3>{topic.name}</h3>
                       <p>{topic.title}</p>

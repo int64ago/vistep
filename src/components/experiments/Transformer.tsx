@@ -18,8 +18,7 @@ export default function Transformer() {
     [error, setError] = useState(''),
     [matrix, setMatrix] = useState<'attention' | 'embedding'>('attention');
   const worker = useRef<Worker | null>(null);
-  const textRef = useRef(text);
-  textRef.current = text;
+  const directedRequest = useRef(0);
   useEffect(() => {
     try {
       const w = new Worker(new URL('../../workers/transformer.worker.ts', import.meta.url), {
@@ -30,6 +29,15 @@ export default function Transformer() {
         const data = e.data;
         if (data.type === 'error') {
           setError(t(data.message));
+          setRunning(false);
+          return;
+        }
+        if (data.type === 'directed') {
+          if (data.requestId !== directedRequest.current) return;
+          setInspection(data);
+          setText(data.text);
+          setHistory(data.history);
+          setLoss(data.loss);
           setRunning(false);
           return;
         }
@@ -50,38 +58,30 @@ export default function Transformer() {
       setError(t('此浏览器暂不支持后台模型计算。'));
     }
   }, []);
+  const c = demo.chapter,
+    q = demo.chapterProgress;
+  const directedSteps =
+    c < 8 ? 0 : c === 8 ? Math.floor(q * 60) : c === 9 ? 60 + Math.floor(q * 100) : 160;
+  const samples = c < 11 ? 0 : c === 11 ? (q > 0.35 ? 1 : 0) : c === 12 ? (q > 0.35 ? 2 : 1) : 2;
   useEffect(() => {
-    if (demo.watch) {
-      reset();
-      setMode('train');
-      setMatrix('attention');
-    }
-  }, [demo.watch, demo.run]);
-  const trainSlot = demo.time >= 6 && demo.time < 27 ? Math.floor((demo.time - 6) / 0.65) : -1;
-  useEffect(() => {
-    if (demo.watch && demo.playing && trainSlot >= 0)
-      worker.current?.postMessage({ type: 'train', steps: 5, context: '猫爱吃', rate: 0.015 });
-  }, [trainSlot, demo.watch, demo.run]);
-  useEffect(() => {
-    if (demo.watch && demo.time >= 28) {
+    if (!demo.watch) {
       worker.current?.postMessage({ type: 'stop' });
-      setMode('generate');
-      setText('猫爱吃');
-      worker.current?.postMessage({ type: 'inspect', context: '猫爱吃' });
+      return;
     }
-  }, [demo.watch, demo.time >= 28, demo.run]);
-  const sampleSlot = demo.time >= 29 ? Math.min(2, 1 + Math.floor((demo.time - 29) / 3)) : 0;
+    const requestId = ++directedRequest.current;
+    worker.current?.postMessage({
+      type: 'direct',
+      steps: directedSteps,
+      samples,
+      gradient: c === 7,
+      requestId,
+    });
+  }, [demo.watch, demo.run, directedSteps, samples, c === 7]);
   useEffect(() => {
-    if (demo.watch && demo.playing && sampleSlot > 0)
-      worker.current?.postMessage({
-        type: 'sample',
-        context: textRef.current.slice(-4),
-        temperature: 0,
-      });
-  }, [sampleSlot, demo.watch, demo.run]);
-  useEffect(() => {
-    if (demo.watch && !demo.playing) worker.current?.postMessage({ type: 'stop' });
-  }, [demo.watch, demo.playing]);
+    if (!demo.watch) return;
+    setMode(c >= 10 ? 'generate' : 'train');
+    setMatrix(c === 2 || c === 3 ? 'embedding' : 'attention');
+  }, [demo.watch, c]);
   const switchSubject = (s: string) => {
     setSubject(s);
     const input = s + '爱吃';
@@ -112,7 +112,12 @@ export default function Transformer() {
           } => !!p,
         )
     : probs.slice(0, 6);
-  const grid = matrix === 'attention' ? inspection?.attention : inspection?.embeddings;
+  const grid =
+    matrix === 'attention'
+      ? inspection?.attention
+      : demo.watch && c === 2
+        ? inspection?.tokenEmbeddings
+        : inspection?.embeddings;
   const tokens = [...(inspection?.context || text.slice(-4))];
   const lossMax = Math.max(2.5, ...history);
   return (
@@ -223,10 +228,31 @@ export default function Transformer() {
               </div>
             </div>
           </div>
+          {demo.watch && c >= 6 && c <= 9 && inspection && (
+            <div className="gradient-inspector">
+              <p>
+                {c === 6
+                  ? `−log P(${tokenLabel('鱼')}) = ${(-Math.log(Math.max(1e-12, inspection.probabilities[5]))).toFixed(3)}`
+                  : c === 7
+                    ? t('从损失反向计算的梯度')
+                    : t('本次权重变化')}
+              </p>
+              {c !== 6 && (
+                <div>
+                  {(c === 7 ? inspection.gradients : inspection.weightDeltas).map((value, i) => (
+                    <span key={i} style={{ background: value >= 0 ? '#b393c729' : '#75a5b329' }}>
+                      <small>Q₀,{i}</small>
+                      {value.toExponential(1)}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
           <div className="transformer-path" aria-label={t('模型计算路径')}>
             <span>{t('字与位置')}</span>
             <i>→</i>
-            <span className="active">{t('注意力')}</span>
+            <span className={c === 4 || c === 5 ? 'active' : undefined}>{t('注意力')}</span>
             <i>→</i>
             <span>{t('前馈网络')}</span>
             <i>→</i>

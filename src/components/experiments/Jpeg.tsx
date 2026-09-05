@@ -1,7 +1,9 @@
 import { t } from '../../i18n';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
-import { useShowcase, ramp } from '../lab/Showcase';
+import { useShowcase } from '../lab/Showcase';
+import { smooth } from '../../models/direction';
+import JpegDetail from '../lab/JpegDetail';
 import { compressBlock, sampleBlock, frequencyOrder } from '../../models/jpeg';
 function PixelBlock({
   values,
@@ -82,23 +84,33 @@ export default function Jpeg() {
     [manualSelected, setSelected] = useState(1),
     [manualView, setView] = useState<'image' | 'basis'>('image');
   const pattern = demo.watch ? 'edge' : manualPattern;
-  const quality = demo.watch ? Math.round(85 - 77 * ramp(demo.time, 26, 29)) : manualQuality;
+  const c = demo.chapter,
+    q = smooth(demo.chapterProgress);
+  const quality = demo.watch
+    ? c < 7
+      ? 85
+      : c === 7
+        ? Math.round(85 - 77 * q)
+        : c === 11
+          ? Math.round(8 + 77 * q)
+          : 8
+    : manualQuality;
   const keep = demo.watch
-    ? demo.time < 7
-      ? 64
-      : demo.time < 12
-        ? 1
-        : demo.time < 20
-          ? Math.round(1 + 15 * ramp(demo.time, 12, 20))
-          : Math.round(16 + 48 * ramp(demo.time, 20, 25))
+    ? c === 3
+      ? 1
+      : c === 4
+        ? Math.round(1 + 15 * q)
+        : c === 5
+          ? Math.round(16 + 48 * q)
+          : 64
     : manualKeep;
   const selected = demo.watch
-    ? demo.time < 7
-      ? [1, 8, 9][Math.min(2, Math.floor(demo.time / 2.4))]
+    ? c === 1 || c === 2
+      ? [0, 1, 8, 9, 3, 24][Math.min(5, Math.floor(q * 6))]
       : frequencyOrder[Math.min(63, keep - 1)]
     : manualSelected;
   const view = demo.watch ? 'image' : manualView;
-  const previewBasis = demo.watch && demo.time < 7;
+  const previewBasis = demo.watch && (c === 1 || c === 2);
   const block = useMemo(() => sampleBlock(pattern), [pattern]);
   const [result, setResult] = useState(() => compressBlock(block, quality, keep));
   const worker = useRef<Worker | null>(null),
@@ -177,7 +189,10 @@ export default function Jpeg() {
         />
         <span className="note">{t('点击中间的格子，查看对应频率。')}</span>
       </div>
-      <div className="jpeg-workbench">
+      <div
+        className="jpeg-workbench"
+        data-detail={demo.watch && c >= 8 && c <= 10 ? true : undefined}
+      >
         <div className="jpeg-panel">
           <p className="eyebrow">01 / {view === 'basis' ? 'BASIS PATTERN' : 'ORIGINAL'}</p>
           <h3>{view === 'basis' ? t('频率 ({0}, {1}) 的基图案', u, v) : t('原始图像')}</h3>
@@ -217,6 +232,9 @@ export default function Jpeg() {
           <p>{t('被舍去的细节，不会凭空回来。')}</p>
         </div>
       </div>
+      {demo.watch && c >= 8 && c <= 10 && (
+        <JpegDetail chapter={c} progress={demo.chapterProgress} block={block} result={result} />
+      )}
       <div className="jpeg-controls">
         <label className="control">
           <span className="control-top">{t('选一个频率位置')}</span>

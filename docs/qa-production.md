@@ -1,28 +1,15 @@
-# 首次正式发布检查
+# First production release
 
-日期：2026-09-05。发布代码基于 `259d443`，场景实现与已验证预览相同；此次将完整站点接入 `vistep.ai` 和 `www.vistep.ai`。
+[简体中文](zh-CN/qa-production.md) · [Review index](README.md#review-records)
 
-## 发布前
+Historical record: 2026-09-05. Worker version `740c58e2-4c63-488c-b1a5-c7546f89a836`. This record applies only to that revision.
 
-- `pnpm verify` 全部通过：格式、文档链接、类型、36 项测试、静态构建及产物审计。
-- 正式构建为 26 个中英文内容页面和独立 404 页；生产 `_headers` 不含 noindex。
-- 保存旧站版本 `d31022c8-a4ad-446c-898e-19a7298503e1`，保留原 Worker 与两个域名绑定。
-- Search Console 域名属性已验证，具有 `siteOwner` 权限。
+The complete collection, based on `259d443`, was deployed to the existing `vistep` Worker and both `vistep.ai` and `www.vistep.ai`. The original brand version `d31022c8-a4ad-446c-898e-19a7298503e1` remained available for rollback.
 
-此次检查验证发布结果与已验收构建的一致性，不新增对真机性能或配音听感的认证。
+Before publishing, full verification passed: formatting, local documentation links, types, 36 tests, build and artifact audit. The production build had 26 localized content pages and a 404 without noindex headers.
 
-## 发布结果
+The deployment uploaded 191 static assets. All 161 scripts, fonts, icons, licenses and recordings were downloaded and SHA-256 compared with the build. All 26 content pages returned 200 with correct canonical and alternate links. Both sitemap files returned XML, and robots.txt advertised the production sitemap. Unknown paths returned 404; missing slashes redirected with 307; www used the main-domain canonical. Preview remained noindex.
 
-- 正式 Worker：`vistep`；版本 `740c58e2-4c63-488c-b1a5-c7546f89a836`。
-- `vistep.ai` 与 `www.vistep.ai` 均接入新版，原域名绑定保留。
-- 上传 191 个静态资产；其中 161 个脚本、字体、图标、许可证与配音资源逐个下载并以 SHA-256 对照本地生产构建，一致。包含全部 24 条配音。
-- 26 个中英文页面均返回 200，规范网址与语言替代链接正确，无生产 noindex。
-- `sitemap-index.xml` 和 `sitemap-0.xml` 返回 XML，列出全部 26 个页面；robots.txt 为纯文本并声明正式地图。
-- 两种语言的不存在路径返回 404；缺少尾斜杠的专题地址以 307 跳转；www 专题使用主域名规范网址。
-- 预览站仍返回 noindex，未将预览索引策略带入生产。
-- Chrome 实际打开正式首页、打印机三维专题，确认自动演示推进至结束、中文声音进入播放状态，并完成英文路由切换。此次属于部署后的运行抽查。
-- Search Console 提交成功，列表记录 `2026-09-05T08:06:10.481Z`；初始状态 `isPending: true`，0 errors / 0 warnings。未声称已收录。
+Chrome opened the live homepage and printer, observed clock advancement to the end, entered the Chinese audio playing state and switched to English. This was a deployment smoke check, not proof of natural speech or real-phone performance.
 
-## 回滚
-
-如需恢复原品牌页，回滚到 `d31022c8-a4ad-446c-898e-19a7298503e1`。恢复旧站后应同步处理已提交地图的可访问性，避免其 URL 再次返回 HTML；无需删除域名验证 TXT。具体操作见 [部署手册](deployment.md)。
+Search Console accepted the sitemap at `2026-09-05T08:06:10.481Z`; initial state was pending with zero errors/warnings. Indexing was not claimed. Rollback procedure is in [deployment](deployment.md).

@@ -1,0 +1,54 @@
+---
+import ObjectCover from './ObjectCover.astro';
+import TopicCover from './TopicCover.astro';
+import { localizedTopic } from '../i18n';
+import { films, filmDuration } from '../data/films';
+const { topic: source } = Astro.props;
+const topic = source ? localizedTopic(source, 'en') : undefined;
+const title = topic?.name ?? 'See how things work.';
+const lines: string[] = [];
+for (const word of title.split(' ')) {
+  if (!lines.length || lines.at(-1)!.length + word.length > 20) lines.push(word);
+  else lines[lines.length - 1] += ' ' + word;
+}
+const object = !topic || ['bicycle', 'pendulum', 'jpeg'].includes(topic.slug);
+---
+
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#f4f5ec"></rect>
+  <circle cx="975" cy="310" r="340" fill="#e7ebdf"></circle>
+  <path d="M64 102H1136" stroke="#b8c1ad" stroke-width="1"></path>
+  <g font-family="Manrope" fill="#304735">
+    <text x="64" y="72" font-size="32">vistep.ai</text>
+    <text x="1136" y="69" text-anchor="end" font-size="16" fill="#7a8571">VISUAL EXPLANATIONS</text>
+    <text x="64" y="171" font-size="17" fill="#899579"
+      >{topic ? `EXPLORATION ${topic.number}` : 'VISUALIZE EVERY STEP WITH AI'}</text
+    >
+    {
+      lines.map((line, i) => (
+        <text x="60" y={260 + i * 65} font-size="51" letter-spacing="-2">
+          {line}
+        </text>
+      ))
+    }
+    <text x="64" y="491" font-size="18" fill="#77846e"
+      >{
+        topic
+          ? `${filmDuration(films[topic.slug].duration)} / ANIMATED EXPLANATION`
+          : 'Everyday mechanisms. Revealed step by step.'
+      }</text
+    >
+    <text x="64" y="569" font-size="16" fill="#8f997f"
+      >3D · INTERACTIVE MODELS · ENGLISH + CHINESE</text
+    >
+  </g>
+  <svg x="593" y="145" width="565" height="375" viewBox={object ? '0 0 480 350' : '0 0 400 230'}>
+    {
+      object ? (
+        <ObjectCover slug={topic?.slug ?? 'bicycle'} />
+      ) : (
+        <TopicCover slug={topic.slug} color={topic.color} />
+      )
+    }
+  </svg>
+</svg>

@@ -2,8 +2,10 @@ import { t } from '../../i18n';
 import { useState } from 'react';
 import { Range, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
+import PrinterSurface from '../lab/PrinterSurface';
 import PrinterStudio from '../three/PrinterStudio';
 import { useShowcase } from '../lab/Showcase';
+import { printerShot } from '../../models/direction';
 const stages = [t('充电'), t('曝光'), t('显影'), t('转印'), t('定影'), t('清洁')];
 const stageEnglish = ['CHARGE', 'EXPOSE', 'DEVELOP', 'TRANSFER', 'FUSE', 'CLEAN'];
 const headlines = [
@@ -140,11 +142,12 @@ export default function Printer() {
     [manualFocus, setFocus] = useState(false);
   const pattern = demo.watch ? 'heart' : manualPattern,
     selected = demo.watch ? 11 : manualSelected;
-  const progress = demo.watch ? Math.max(0, Math.min(5.99, (demo.time - 4) / 5)) : manualProgress;
+  const shot = demo.watch ? printerShot(demo) : null;
+  const progress = shot?.progress ?? manualProgress;
   const playing = demo.watch ? demo.playing : manualPlaying;
-  const exploded = demo.watch ? demo.time > 1.8 : manualExploded;
-  const view = demo.watch ? (demo.time >= 9 && demo.time < 14 ? 'top' : 'perspective') : manualView;
-  const focus = demo.watch ? demo.time >= 9 && demo.time < 19 : manualFocus;
+  const exploded = shot?.exploded ?? manualExploded;
+  const view = shot?.view ?? manualView;
+  const focus = shot?.focus ?? manualFocus;
   const host = useSimulation(
     (dt) =>
       setProgress((previous) => {
@@ -197,11 +200,14 @@ export default function Printer() {
           <span>
             0{stage + 1} / {stageEnglish[stage]}
           </span>
-          <h2>{stages[stage]}</h2>
+          <h2>{demo.watch ? t(demo.chapters[demo.chapter].title) : stages[stage]}</h2>
           <p>{stage === 5 ? t('选中的像素，已留在纸上。') : t('橙色光点 · 正在追踪的像素')}</p>
         </div>
         <span className="printer-drag-note">{t('拖动旋转 · 方向键同样可用')}</span>
       </div>
+      {demo.watch && demo.chapter >= 2 && demo.chapter <= 8 && (
+        <PrinterSurface progress={progress} />
+      )}
       <div className="printer-transport">
         <button
           className="transport-play"

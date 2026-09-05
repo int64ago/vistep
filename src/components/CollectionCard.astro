@@ -1,0 +1,43 @@
+---
+import ObjectCover from './ObjectCover.astro';
+const names = ['Bicycle gearing', 'The pendulum', 'JPEG compression'];
+---
+
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#f4f5ed"></rect>
+  <g fill="#40503c" font-family="Manrope"
+    ><text x="58" y="76" font-size="26">Follow the mechanism. See the change.</text><text
+      x="1142"
+      y="76"
+      text-anchor="end"
+      font-size="19">vistep.ai</text
+    ></g
+  >
+  {
+    ['bicycle', 'pendulum', 'jpeg'].map((slug, i) => (
+      <g transform={`translate(${42 + i * 388},126)`}>
+        <rect
+          width="364"
+          height="362"
+          rx="22"
+          fill={i === 2 ? '#ece4e7' : i === 1 ? '#e9e9dc' : '#e4eade'}
+        />
+        <svg x="0" y="25" width="364" height="290" viewBox="0 0 480 350">
+          <ObjectCover slug={slug} />
+        </svg>
+        <text x="18" y="408" font-family="Manrope" font-size="22" fill="#526148">
+          {names[i]}
+        </text>
+        <text x="18" y="442" font-family="Manrope" font-size="14" fill="#8f9981">
+          {
+            [
+              'Geometry → motion → power',
+              'Motion → force → energy',
+              'Pixels → frequencies → reconstruction',
+            ][i]
+          }
+        </text>
+      </g>
+    ))
+  }
+</svg>

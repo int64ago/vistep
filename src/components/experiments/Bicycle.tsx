@@ -4,6 +4,7 @@ import { useShowcase } from '../lab/Showcase';
 import BicycleStudio from '../three/BicycleStudio';
 import { Metric, Range, Segments } from '../lab/Controls';
 import { bicycleModel } from '../../models/bicycle';
+import { bicycleShot } from '../../models/direction';
 export default function Bicycle() {
   const demo = useShowcase();
   const [manualFront, setFront] = useState(34),
@@ -11,14 +12,12 @@ export default function Bicycle() {
     [manualCadence, setCadence] = useState(60),
     [manualSlope, setSlope] = useState(4),
     [manualPlaying, setPlaying] = useState(false);
-  const front = demo.watch ? 34 : manualFront,
-    rear = demo.watch ? (demo.time < 17 ? 24 : demo.time < 26 ? 12 : 32) : manualRear;
-  const cadence = demo.watch ? 45 : manualCadence,
-    slope = demo.watch ? 4 : manualSlope,
+  const shot = demo.watch ? bicycleShot(demo) : null;
+  const front = shot?.front ?? manualFront,
+    rear = shot?.rear ?? manualRear;
+  const cadence = shot?.cadence ?? manualCadence,
+    slope = shot?.slope ?? manualSlope,
     playing = demo.watch ? demo.playing : manualPlaying;
-  const cut = demo.watch
-    ? Math.min(...[17, 26].map((t) => Math.min(1, Math.abs(demo.time - t) / 0.55)))
-    : 1;
   const model = bicycleModel(front, rear, cadence, slope);
   return (
     <div>
@@ -45,17 +44,20 @@ export default function Bicycle() {
       <div className="lab-grid">
         <div className="lab-scene">
           <span className="scene-label">{t('CHAIN DRIVE / 链传动')}</span>
-          <div className="bike-canvas" style={{ opacity: cut }}>
+          <div className="bike-canvas">
             <BicycleStudio
               key={demo.watch ? `film-${demo.run}` : 'manual'}
               front={front}
               rear={rear}
               cadence={cadence}
               playing={playing}
-              closeup={demo.watch && demo.time >= 9 && demo.time < 16}
+              closeup={shot?.closeup}
+              pedalTurns={shot?.turns}
             />
           </div>
-          <p className="bike-scene-note">{t('同一踏频 · 金色链节追踪')}</p>
+          <p className="bike-scene-note">
+            {cadence.toFixed(0)} rpm · {front} / {rear} · {t('金色链节追踪')}
+          </p>
         </div>
         <div className="lab-controls">
           <div>
@@ -99,6 +101,27 @@ export default function Bicycle() {
           </div>
         </div>
       </div>
+      {demo.watch && demo.chapter >= 4 && (
+        <div className="bike-comparison" aria-label={t('同踏频、同坡度的传动对照')}>
+          {[12, 24, 32].map((gear) => {
+            const m = bicycleModel(front, gear, cadence, slope);
+            return (
+              <div key={gear} data-selected={rear === gear}>
+                <span>
+                  {gear} {t('齿')}
+                </span>
+                <div>
+                  <i style={{ width: `${Math.min(100, (m.speedKmh / 40) * 100)}%` }} />
+                  <i style={{ width: `${Math.min(100, (m.pedalForce / 300) * 100)}%` }} />
+                </div>
+                <small>
+                  {m.speedKmh.toFixed(1)} km/h · {m.pedalForce.toFixed(0)} N
+                </small>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div className="metrics">
         <Metric label={t('前 / 后传动比')} value={model.ratio.toFixed(2)} />
         <Metric label={t('对应稳态速度')} value={model.speedKmh.toFixed(1)} unit="km/h" />

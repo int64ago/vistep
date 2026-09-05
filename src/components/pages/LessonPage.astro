@@ -3,7 +3,8 @@ import Base from '../../layouts/Base.astro';
 import Experiment from '../../components/Experiment';
 import { getTopic } from '../../data/topics';
 import '../../styles/experiments.css';
-import { films } from '../../data/films';
+import narration from '../../data/narration.json';
+import { films, filmDuration } from '../../data/films';
 import { translate, localPath, localizedTopic } from '../../i18n';
 const { topic: originalTopic, Content, locale = 'zh' } = Astro.props;
 const topic = localizedTopic(originalTopic, locale);
@@ -13,6 +14,7 @@ const href = (p: string) => localPath(p, locale);
 
 <Base
   locale={locale}
+  topic={originalTopic}
   title={`${topic.name} — ${topic.title} | vistep.ai`}
   description={topic.description}
 >
@@ -35,7 +37,7 @@ const href = (p: string) => localPath(p, locale);
             ))
           }
         </h1><p>{topic.description}</p>
-      </div><span class="lesson-time">{films[topic.slug].duration} {tr('秒演示')}</span>
+      </div><span class="lesson-time">{filmDuration(films[topic.slug].duration)} {tr('演示')}</span>
     </header>
     <section class="experiment" id="experiment" aria-label={`${topic.name} ${tr('互动实验')}`}>
       <Experiment slug={topic.slug as any} client:only="react"
@@ -48,6 +50,22 @@ const href = (p: string) => localPath(p, locale);
         </div></noscript
       >
     </section>
+    <details class="lesson-transcript">
+      <summary>{tr('分段讲解')}<span>{tr('阅读讲解，或回到某一步')} ＋</span></summary>
+      <ol>
+        {
+          narration[topic.slug as keyof typeof narration].cues.map((cue) => (
+            <li>
+              <a href={`#t=${cue.chapterAt}`}>
+                <time>{filmDuration(cue.chapterAt)}</time>
+                {locale === 'zh' ? cue.title : cue.titleEn}
+              </a>
+              <p lang={locale === 'zh' ? 'zh-CN' : 'en'}>{cue[locale as 'zh' | 'en']}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </details>
     <details class="lesson-notes">
       <summary
         ><span>{tr('深入了解')}</span><span
@@ -85,7 +103,7 @@ const href = (p: string) => localPath(p, locale);
                   <div>
                     <>
                       <small>
-                        {related.category} / {films[slug].duration} {tr('秒演示')}
+                        {related.category} / {filmDuration(films[slug].duration)} {tr('演示')}
                       </small>
                       <strong>{related.question}</strong>
                     </>

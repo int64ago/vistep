@@ -1,63 +1,65 @@
-# 架构与模型范围
+# Architecture
 
-## 数据如何进入页面
+[简体中文](zh-CN/architecture.md) · [Documentation](README.md)
 
-```text
-src/data/topics.ts ──→ Astro 静态路由 / 与 /en/ ──→ 目录、元数据、相关专题、sitemap
-src/content/         ──→ MDX 预生成正文
-src/i18n/            ──→ 元数据、标注、控件、语言替代链接
-src/data/experiments.ts ──→ 显式动态 import ──→ React 专题组件
-                                                    ↓
-                                  独立模型 / Worker → SVG、Canvas、Three.js
-src/data/films.ts ──→ Showcase 时间线 ────────────────↑
-音轨清单 + 静态 MP3 ──→ useNarration 音频时钟 ────────↑
+vistep is a static website with client-side experiments. There is no visitor account system, application backend or live AI inference service. Articles and transcripts remain readable without JavaScript.
+
+## Data flow
+
+```mermaid
+flowchart LR
+  T[Topic registry + bilingual MDX] --> A[Astro pages]
+  T --> S[Sitemap + structured data + social images]
+  N[Spoken scripts] --> G[Offline narration production]
+  G --> F[Measured chapter timeline + static MP3]
+  F --> P[Shared player]
+  P --> D[Scene director]
+  D --> M[Scientific model / Worker]
+  M --> R[SVG / Canvas / Three.js]
 ```
 
-没有访客端服务器计算、账号或在线 AI 推理。首页只加载品牌与首页器物；实验引擎按需进入专题。新增内容先在 `drafts/` 创作，登记完整后才生成公开页面。
+## Responsibilities
 
-## 关键文件
+| Location                                           | Responsibility                                                      |
+| -------------------------------------------------- | ------------------------------------------------------------------- |
+| `src/data/topics.ts`                               | Topic identity, descriptions, related topics and technical sources  |
+| `src/content/`, `src/content/en/`                  | Prerendered MDX articles                                            |
+| `src/data/experiments.ts`                          | Explicit dynamic imports; keeps experiment engines off the homepage |
+| `src/data/narration.json`                          | Bilingual chapter writing and production timing                     |
+| `src/data/film-timeline.json`, `audio-tracks.json` | Compact client playback metadata, generated with recordings         |
+| `src/data/audio-manifest.json`                     | Full recording provenance and measured cue boundaries               |
+| `src/components/lab/Showcase.tsx`                  | Playback, seeking, chapters, visibility and exploration mode        |
+| `src/components/experiments/`                      | Independent scene compositions and chapter directors                |
+| `src/components/three/`                            | Procedural geometry, cameras, materials and 2D alternatives         |
+| `src/models/`, `src/workers/`                      | Testable calculations and expensive background work                 |
+| `src/i18n/`, `src/data/seo.ts`                     | Language negotiation, translations and search metadata              |
+| `src/pages/social/`                                | Social PNGs generated from the existing cover artwork               |
 
-| 区域                                                         | 职责                                           |
-| ------------------------------------------------------------ | ---------------------------------------------- |
-| `src/components/pages/`、`src/layouts/Base.astro`            | 中英文共用页面结构、规范网址、导航与基础样式   |
-| `src/data/topics.ts`                                         | 专题目录；元数据与来源的统一入口               |
-| `src/data/experiments.ts`                                    | 只登记动态加载器，不执行场景引擎               |
-| `src/components/experiments/`                                | 各篇独立构图、自动演示状态映射与操作           |
-| `src/components/three/`                                      | 程序化部件、灯光、镜头、2D 降级与生命周期      |
-| `src/models/`、`src/workers/`                                | 可测试的数值计算、确定性模拟与重计算任务       |
-| `src/components/lab/Showcase.tsx`                            | 播放状态、章节、重播、探索模式与可见性         |
-| `src/components/lab/useNarration.ts`                         | 声音选择、缓冲、失败恢复、音频时间与资源释放   |
-| `src/data/films.ts`、`narration.json`、`audio-manifest.json` | 镜头、分别编写的口语稿、录音与时序证据         |
-| `src/styles/`                                                | 基础排版、编辑式布局、柔和交互、演示与双语控件 |
-| `scripts/`                                                   | 草稿生成、配音制作、预览构建与静态产物审计     |
+## Time and lifecycle
 
-## 时间与资源
+The silent player advances a shared clock. Enabling narration makes audio time authoritative; buffering pauses visual progress. Playback pauses offscreen and in background tabs. Explicit language routes never silently change language. See [language selection](localization-and-seo.md).
 
-静音演示使用共享时钟；开启讲解后读取音频播放时间。暂停、等待、离屏、后台和进入探索模式同步处理。用户选择开启声音后，会话中的后续专题沿用选择；浏览器阻止播放时需再次主动开启。语言路径互相对应，切换保留锚点。
+Directors use chapter-relative progress, not hard-coded positions in an old short film. Measured narration windows can change without breaking shot selection. Seeking rebuilds history-dependent simulations with fixed time steps. The teaching Transformer reconstructs the requested training step in its Worker and freezes weights during generation.
 
-Three.js 生命周期负责释放几何、材质、纹理、渲染器与控制器；切换二维或离页不得遗留上下文。Worker 与音频随专题销毁。桌面约 60fps、移动端 30fps 是调度上限，实际性能需要注明硬件实测。
+Three.js scenes dispose geometries, materials, textures, controls and renderers. Workers terminate and audio resources release on unmount. Frame scheduling targets are ceilings, not measured performance guarantees; real-device claims require recorded hardware and conditions.
 
-## 教学模型的范围
+## Model boundaries
 
-| 专题        | 当前模型与限制                                                                                                              |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------- |
-| 自行车      | 稳态速度/功率包含滚阻、风阻、坡度、效率；两轴链传动台用共同节距和偶数链节求闭合轴距。换挡切换已张紧配置，不模拟拨链器全过程 |
-| 冰箱        | COP 为教学输入，能量满足 `Q_out = Q_in + W`；循环管路和粒子解释状态，不预测某一机型                                         |
-| 打印机      | 单色电子照相式剖面；共同模数渐开线齿轮、闭合皮带和共用表面速度。比例、扫描和走纸时序经教学简化                              |
-| 主动降噪    | 简谐波叠加解释幅度、相位、频率与时延；不声称模拟完整耳机控制系统或空间声场                                                  |
-| GPS         | 局部坐标伪距最小二乘教学模型，说明时钟误差和卫星几何；非真实接收机定位解算                                                  |
-| 网页加载    | HTTP/2 over TCP + TLS 1.3 的阶段性教学时间线；非浏览器抓包或测速                                                            |
-| JPEG        | 实算 8×8 DCT、量化与 IDCT，报告重建误差和非零系数；未输出完整 JPEG 编码文件                                                 |
-| Transformer | 8 维、单层单头、因果注意力、反向传播与 Adam；中文九字符词表，两种界面共享模型。生成冻结权重，微型语料不代表生产模型能力     |
-| 多维空间    | 切片、旋转与投影是较低维表示；空间维度与特征维度分开讲解                                                                    |
-| 钟摆        | 非线性运动方程与 RK4；解析周期注明小角近似                                                                                  |
-| 电梯        | 同一批有身份的乘客、固定时间步比较策略；不是建筑控制器或最优调度保证                                                        |
-| 无事故堵车  | 确定性 IDM 环路；默认 36 车、500 米、1.5 秒刹车，固定积分步长                                                               |
+| Exploration  | Implemented model and teaching limits                                                                                                                                                                          |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bicycle      | Steady-state force and power with gradient, rolling resistance, drag and efficiency. Shared chain pitch and a solved closed loop; shifting switches tensioned configurations, without simulating a derailleur. |
+| Refrigerator | Energy balance `Q_out = Q_in + W`, with assumed COP. Refrigerant paths illustrate a cycle, not a calibrated appliance.                                                                                         |
+| Printer      | Monochrome electrophotography with shared gear module, closed belt and coordinated surface speed. Layout and timing are explanatory.                                                                           |
+| Noise        | Sinusoidal superposition, amplitude, phase and delay; not a full headset controller or spatial acoustic solver.                                                                                                |
+| GPS          | Local-coordinate range fitting and clock bias, including geometry sensitivity. Not a real receiver implementation.                                                                                             |
+| Network      | Serial teaching stages for HTTP/2 over TCP and TLS 1.3. Delays are inputs, not a measurement of the reader's network.                                                                                          |
+| JPEG         | Actual 8×8 DCT, quantization and IDCT; additional chroma averaging and zigzag illustrations. No complete JPEG file or claimed encoded file size.                                                               |
+| Transformer  | One layer, one head, eight-dimensional vectors, four-character context and nine-character vocabulary. Autodiff and Adam are real; the corpus is deliberately tiny.                                             |
+| Dimensions   | Projections, slices and feature coordinates; the displayed projection is not the higher-dimensional object itself.                                                                                             |
+| Pendulum     | Nonlinear equation integrated with RK4. The displayed analytical period is a small-angle approximation.                                                                                                        |
+| Elevators    | Fixed passengers and arrivals, deterministic policies and identity-preserving states. No optimality claim or manufacturer controller.                                                                          |
+| Traffic      | Deterministic IDM on a 500 m ring; no overtaking, junctions or heterogeneous drivers. Headway is not an explicit reaction delay.                                                                               |
 
-每篇 `topics.ts` 来源与 MDX 深入内容一起维护。修改模型边界时同步改两种语言和声音，避免屏幕、算法与口头讲解说的是不同版本。
+## Publishing
 
-## 构建与发布
-
-`pnpm build` 生成生产 `dist/`；`pnpm build:preview` 生成独立 `dist-preview/`，附加 `X-Robots-Tag: noindex, nofollow`。两者都保留 `vistep.ai` 的规范网址。预览允许爬虫读取 noindex，不在 robots 中宣传 sitemap。CI 检查不生成语音、不需要外部服务凭据。原仓库 `main` 检查通过后，将同一次运行的生产产物交给独立发布任务，使用 GitHub `production` 环境凭据部署 Cloudflare，随后校验线上页面与资源。详见 [自动发布与回滚](deployment.md)。
-
-共享检查包含静态类型、模型不变量、语言覆盖、登记关系、配音文件与片段时序、产物内链、规范网址、sitemap 和索引策略。浏览器视觉与声音验收见 [场景手册](creating-a-scene.md)。
+`pnpm build` writes `dist/`. `pnpm build:preview` writes `dist-preview/` with noindex response headers. Both retain production canonical URLs. CI uses committed narration and needs no speech credentials. The main-branch deployment downloads the verified production artifact without rebuilding it. See [deployment and rollback](deployment.md).

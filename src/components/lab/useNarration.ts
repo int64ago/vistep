@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import manifest from '../../data/audio-manifest.json';
+import manifest from '../../data/audio-tracks.json';
 import { browserLocale, type Locale } from '../../i18n';
 type Soundtrack = { src: string; duration: number };
 const tracks = manifest as Record<string, Record<Locale, Soundtrack>>;
@@ -22,6 +22,7 @@ export function useNarration(
   const [blocked, setBlocked] = useState(false);
   const alive = useRef(true);
   const desired = useRef(false);
+  const targetTime = useRef(0);
   const remember = (on: boolean) => {
     try {
       sessionStorage.setItem('vistep:narration', on ? 'on' : 'off');
@@ -48,6 +49,12 @@ export function useNarration(
     a.oncanplay = () => {
       if (alive.current) setWaiting(false);
     };
+    a.onloadedmetadata = () => {
+      a.currentTime = Math.min(
+        targetTime.current,
+        Number.isFinite(a.duration) ? a.duration : track.duration,
+      );
+    };
     a.onended = () => ended.current();
     a.onerror = () => {
       if (!alive.current) return;
@@ -69,7 +76,11 @@ export function useNarration(
       else setError(true);
     });
   };
-  const enable = () => {
+  const seek = (time: number) => {
+    targetTime.current = Math.max(0, Math.min(track?.duration ?? 0, time));
+    if (audio.current?.readyState) audio.current.currentTime = targetTime.current;
+  };
+  const enable = (time = 0) => {
     if (!track) {
       setError(true);
       return;
@@ -82,7 +93,7 @@ export function useNarration(
     remember(true);
     const a = makeAudio()!;
     if (a.error) a.load();
-    a.currentTime = 0;
+    seek(time);
     // The first play call stays inside the user's activation, including on iOS.
     play(a);
   };
@@ -113,7 +124,7 @@ export function useNarration(
       const a = audio.current;
       if (a) {
         a.pause();
-        a.onplaying = a.onwaiting = a.oncanplay = a.onended = a.onerror = null;
+        a.onplaying = a.onwaiting = a.oncanplay = a.onended = a.onerror = a.onloadedmetadata = null;
         a.removeAttribute('src');
         a.load();
         a.remove();
@@ -122,7 +133,7 @@ export function useNarration(
     };
   }, [slug]);
   useEffect(() => {
-    if (audio.current) audio.current.currentTime = 0;
+    seek(0);
   }, [run]);
   useEffect(() => {
     const a = audio.current;
@@ -137,6 +148,7 @@ export function useNarration(
     blocked,
     enable,
     disable,
+    seek,
     currentTime: () => audio.current?.currentTime ?? 0,
   };
 }

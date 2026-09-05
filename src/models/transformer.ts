@@ -91,6 +91,10 @@ export type Inspection = {
   attention: number[][];
   probabilities: number[];
   embeddings: number[][];
+  tokenEmbeddings: number[][];
+  positions: number[][];
+  gradients: number[];
+  weightDeltas: number[];
   weights: number[];
   step: number;
   parameterCount: number;
@@ -111,6 +115,7 @@ export class TinyTransformer {
   variance: number[];
   step = 0;
   gradientNorm = 0;
+  lastWeights: number[] = [];
   seed: number;
   constructor(seed = 42) {
     this.seed = seed;
@@ -188,6 +193,7 @@ export class TinyTransformer {
     loss.backward();
     this.gradientNorm = Math.sqrt(this.params.reduce((s, p) => s + p.grad * p.grad, 0));
     const clip = Math.max(1, this.gradientNorm);
+    this.lastWeights = this.q[0].map((p) => p.data);
     this.step++;
     const b1 = 0.9,
       b2 = 0.99;
@@ -212,6 +218,12 @@ export class TinyTransformer {
       ),
       probabilities: f.probabilities.at(-1)!.map((v) => v.data),
       embeddings: f.embeddings.map((row) => row.map((v) => v.data)),
+      tokenEmbeddings: ids.map((id) => this.embedding[id].map((v) => v.data)),
+      positions: ids.map((_, i) => this.position[i].map((v) => v.data)),
+      gradients: this.q[0].map((v) => v.grad),
+      weightDeltas: this.q[0].map((v, i) =>
+        this.lastWeights.length ? v.data - this.lastWeights[i] : 0,
+      ),
       weights: this.q[0].map((v) => v.data),
       step: this.step,
       parameterCount: this.params.length,

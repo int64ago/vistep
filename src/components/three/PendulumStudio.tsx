@@ -7,17 +7,19 @@ export default function PendulumStudio({
   angle,
   length,
   mass,
+  showForces = false,
   onDrag,
   onRelease,
 }: {
   angle: number;
   length: number;
   mass: number;
+  showForces?: boolean;
   onDrag: (angle: number) => void;
   onRelease: () => void;
 }) {
-  const current = useRef({ angle, length, mass, onDrag, onRelease });
-  current.current = { angle, length, mass, onDrag, onRelease };
+  const current = useRef({ angle, length, mass, showForces, onDrag, onRelease });
+  current.current = { angle, length, mass, showForces, onDrag, onRelease };
   return (
     <Studio
       label={t('黄铜摆球、悬线与精密支架构成的单摆。拖动摆球后释放')}
@@ -111,6 +113,23 @@ export default function PendulumStudio({
         );
         const trail = new THREE.Line(trailGeometry, trailMaterial);
         root.add(trail);
+        const gravityArrow = new THREE.ArrowHelper(
+          new THREE.Vector3(0, -1, 0),
+          new THREE.Vector3(),
+          0.8,
+          0x557f9d,
+          0.13,
+          0.065,
+        );
+        const restoringArrow = new THREE.ArrowHelper(
+          new THREE.Vector3(1, 0, 0),
+          new THREE.Vector3(),
+          0.5,
+          0xc18d50,
+          0.12,
+          0.06,
+        );
+        root.add(gravityArrow, restoringArrow);
         const history: THREE.Vector3[] = [];
         let lastAngle = angle,
           lastLength = length;
@@ -159,6 +178,26 @@ export default function PendulumStudio({
           update() {
             const state = current.current,
               L = state.length * 1.23;
+            const bob = new THREE.Vector3(
+              Math.sin(state.angle) * L,
+              3.98 - Math.cos(state.angle) * L,
+              0.55,
+            );
+            gravityArrow.visible = restoringArrow.visible = state.showForces;
+            gravityArrow.position.copy(bob);
+            restoringArrow.position.copy(bob);
+            restoringArrow.setDirection(
+              new THREE.Vector3(
+                -Math.cos(state.angle) * Math.sign(state.angle),
+                -Math.sin(state.angle) * Math.sign(state.angle),
+                0,
+              ),
+            );
+            restoringArrow.setLength(
+              Math.max(0.005, 0.8 * Math.abs(Math.sin(state.angle))),
+              0.1,
+              0.05,
+            );
             swinging.rotation.z = state.angle;
             wire.scale.y = L;
             wire.position.y = -L / 2;

@@ -3,6 +3,8 @@ import { useCallback, useState, useRef, type PointerEvent } from 'react';
 import { Metric, Range, Segments, clamp } from '../lab/Controls';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
 import { useShowcase, ramp, ease } from '../lab/Showcase';
+import GpsGeometry from '../lab/GpsGeometry';
+import { gpsStoryTime } from '../../models/direction';
 import { distance, locate } from '../../models/gps';
 const colors = ['#5d8ddd', '#db9270', '#66a391', '#ac7bb3'];
 const defaults = [
@@ -19,6 +21,7 @@ const demoSatellites = [
 ];
 export default function Gps() {
   const demo = useShowcase();
+  const storyTime = demo.watch ? gpsStoryTime(demo) : 0;
   const shells = useRef<
     {
       group: THREE.Group;
@@ -33,19 +36,19 @@ export default function Gps() {
     [manualCorrect, setCorrect] = useState(true),
     [selected, setSelected] = useState(0),
     [dragged, setDragged] = useState(-1);
-  const mode = demo.watch ? (demo.time < 22 ? '2d' : '3d') : manualMode;
+  const mode = demo.watch ? (storyTime < 22 ? '2d' : '3d') : manualMode;
   const satellites = demo.watch ? demoSatellites : manualSatellites;
   const count = demo.watch
-    ? demo.time < 7
+    ? storyTime < 7
       ? 1
-      : demo.time < 14
+      : storyTime < 14
         ? 2
-        : demo.time < 22
+        : storyTime < 22
           ? 3
           : 4
     : manualCount;
-  const bias = demo.watch ? (demo.time >= 22 ? 20 : 0) : manualBias,
-    correct = demo.watch ? demo.time >= 22 : manualCorrect;
+  const bias = demo.watch ? (demo.chapter >= 6 ? 20 : 0) : manualBias,
+    correct = demo.watch ? demo.chapter >= 8 : manualCorrect;
   const dimensions = mode === '2d' ? 2 : 3,
     target = dimensions === 2 ? [300, 210] : [300, 210, 0];
   const active = satellites.slice(0, count).map((s) => s.slice(0, dimensions)),
@@ -251,7 +254,9 @@ export default function Gps() {
       </div>
       <div className="lab-grid">
         <div className={`lab-scene ${mode === '3d' ? 'dark' : ''}`}>
-          {mode === '2d' ? (
+          {demo.watch && demo.chapter === 9 ? (
+            <GpsGeometry progress={demo.chapterProgress} />
+          ) : mode === '2d' ? (
             <svg
               className="gps-scene"
               viewBox="0 0 640 410"
@@ -271,6 +276,22 @@ export default function Gps() {
               </defs>
               <rect width="640" height="410" fill="url(#gps-grid)" />
               <g clipPath="url(#gps-clip)">
+                {demo.watch && demo.chapter === 0 && (
+                  <>
+                    <path
+                      d="M170 160L300 210"
+                      stroke={colors[0]}
+                      strokeOpacity=".25"
+                      strokeDasharray="4 4"
+                    />
+                    <circle
+                      cx={170 + 130 * ((demo.chapterTime / 3) % 1)}
+                      cy={160 + 50 * ((demo.chapterTime / 3) % 1)}
+                      r="5"
+                      fill={colors[0]}
+                    />
+                  </>
+                )}
                 {active.map((s, i) => (
                   <g key={i}>
                     <circle
@@ -278,7 +299,7 @@ export default function Gps() {
                       cy={s[1]}
                       r={
                         (ranges[i] - (correct && result ? result.clock : 0)) *
-                        (demo.watch ? ease(ramp(demo.time, [0, 7, 14][i], [0, 7, 14][i] + 2)) : 1)
+                        (demo.watch ? ease(ramp(storyTime, [0, 7, 14][i], [0, 7, 14][i] + 2)) : 1)
                       }
                       fill={colors[i] + '08'}
                       stroke={colors[i]}
@@ -288,22 +309,22 @@ export default function Gps() {
                     <path
                       d={`M${s[0]} ${s[1]}L300 210`}
                       stroke={colors[i]}
-                      opacity={demo.watch && demo.time < 16 ? 0 : 0.3}
+                      opacity={demo.watch && storyTime < 16 ? 0 : 0.3}
                       strokeDasharray="4 4"
                     />
                   </g>
                 ))}
-                {(!demo.watch || demo.time >= 16) && (
+                {(!demo.watch || demo.chapter === 0 || storyTime >= 16) && (
                   <g>
                     <circle cx="300" cy="210" r="12" fill="#2b73db22" />
                     <circle cx="300" cy="210" r="5" fill="#347cdc" />
                     <text x="312" y="231" fill="#5b81b3" fontSize="11">
-                      {demo.watch ? t('位置确定') : t('真实位置')}
+                      {demo.watch && demo.chapter !== 0 ? t('位置确定') : t('真实位置')}
                     </text>
                   </g>
                 )}
                 {result &&
-                  (!demo.watch || demo.time >= 16) &&
+                  (!demo.watch || storyTime >= 16) &&
                   Number.isFinite(result.position[0]) && (
                     <g>
                       <circle
@@ -325,10 +346,10 @@ export default function Gps() {
                     </g>
                   )}
                 {demo.watch &&
-                  demo.time >= 9 &&
-                  demo.time < 16 &&
+                  storyTime >= 9 &&
+                  storyTime < 16 &&
                   [110, 210].map((y) => (
-                    <g key={y} opacity={y === 110 ? 1 - ramp(demo.time, 14, 16) : 1}>
+                    <g key={y} opacity={y === 110 ? 1 - ramp(storyTime, 14, 16) : 1}>
                       <circle cx="300" cy={y} r="8" fill="#dda977" />
                       <circle
                         cx="300"
@@ -399,15 +420,15 @@ export default function Gps() {
                 fitHeight={8}
                 frame={({ group }) => {
                   if (demo.watch)
-                    group.rotation.y = Math.sin(Math.max(0, demo.time - 22) / 10) * 0.22;
+                    group.rotation.y = Math.sin(Math.max(0, storyTime - 22) / 10) * 0.22;
                   const visualBias = demo.watch
-                    ? bias * (1 - ease(ramp(demo.time, 25, 29)))
+                    ? bias * (1 - ease(ramp(storyTime, 25, 29)))
                     : bias - (correct && result ? result.clock : 0);
                   shells.current.forEach((s) =>
                     s.group.scale.setScalar((s.range + visualBias) / 130),
                   );
                   if (solutionMarker.current)
-                    solutionMarker.current.visible = !demo.watch || demo.time >= 29;
+                    solutionMarker.current.visible = !demo.watch || storyTime >= 29;
                 }}
                 label={t('四个卫星的距离球面与定位点')}
                 dark
@@ -416,7 +437,7 @@ export default function Gps() {
                     satellites={satellites.slice(0, count)}
                     bias={
                       demo.watch
-                        ? bias * (1 - ease(ramp(demo.time, 25, 29)))
+                        ? bias * (1 - ease(ramp(storyTime, 25, 29)))
                         : bias - (correct && result ? result.clock : 0)
                     }
                     result={result?.position}

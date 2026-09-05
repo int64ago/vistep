@@ -28,7 +28,19 @@ export default function HomeObject() {
   }, []);
   const open = time > 1.8 && time < 33;
   return (
-    <FilmContext.Provider value={{ watch: true, playing, time, chapter: 0, run: 0, duration: 37 }}>
+    <FilmContext.Provider
+      value={{
+        watch: true,
+        playing,
+        time,
+        chapter: 0,
+        run: 0,
+        duration: 37,
+        chapters: [],
+        chapterTime: time,
+        chapterProgress: time / 37,
+      }}
+    >
       <div className="home-object" ref={host}>
         <div className="object-overline">
           <span>

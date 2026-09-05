@@ -19,7 +19,7 @@ export default function BrandMorph({ locale = 'zh' }: { locale?: Locale }) {
     setPhase(0);
     timings.forEach((time, i) => timers.current.push(setTimeout(() => setPhase(i + 1), time)));
     try {
-      sessionStorage.setItem('vistep:brand-seen', '1');
+      sessionStorage.setItem('vistep:brand-seen-v2', '1');
     } catch {}
   };
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function BrandMorph({ locale = 'zh' }: { locale?: Locale }) {
     setReduced(media.matches);
     let seen = false;
     try {
-      seen = !!sessionStorage.getItem('vistep:brand-seen');
+      seen = !!sessionStorage.getItem('vistep:brand-seen-v2');
     } catch {}
     if (!seen && !media.matches) run();
     const change = () => {
@@ -45,6 +45,7 @@ export default function BrandMorph({ locale = 'zh' }: { locale?: Locale }) {
   }, []);
   return (
     <div className={`brand-signature signature-${phase}`} id="name">
+      <h1 className="sr-only">vistep.ai</h1>
       <span className="sr-only">
         {tr(
           'vistep.ai，Visualize Every Step with AI。提取 vis、step、ai，共用两个相邻的 s，形成 vistep.ai。',
@@ -65,7 +66,9 @@ export default function BrandMorph({ locale = 'zh' }: { locale?: Locale }) {
         </span>
       </div>
       <div className="signature-baseline">
-        <span>Visualize Every Step with AI</span>
+        <span>
+          <b>Vis</b>ualize Every <b>Step</b> with <b>AI</b>
+        </span>
         <button
           onClick={run}
           className="signature-replay"
@@ -83,9 +86,19 @@ export default function BrandMorph({ locale = 'zh' }: { locale?: Locale }) {
           </svg>
         </button>
       </div>
-      {reduced && (
-        <small className="signature-static">vis + step + ai → vistep ai → vistep.ai</small>
-      )}
+      <div className="signature-origin" aria-hidden="true">
+        <span>
+          vi<b>s</b>
+        </span>
+        <i>+</i>
+        <span>
+          <b>s</b>tep
+        </span>
+        <i>+</i>
+        <span>ai</span>
+        <i>→</i>
+        <span>vistep.ai</span>
+      </div>
     </div>
   );
 }

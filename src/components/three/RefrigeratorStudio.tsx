@@ -140,9 +140,9 @@ export default function RefrigeratorStudio({
         const doorCover = fadingCover(door),
           sideCover = fadingCover(side);
         return {
-          update(dt) {
+          update(dt, _elapsed, settle) {
             const s = current.current;
-            const openness = open(s.cutaway ? 1 : 0, dt, reducedMotion.matches);
+            const openness = open(s.cutaway ? 1 : 0, dt, reducedMotion.matches || settle);
             door.rotation.y = -openness * 1.92;
             doorCover.opacity(1 - THREE.MathUtils.smoothstep(openness, 0.45, 0.98));
             sideCover.opacity(1 - THREE.MathUtils.smoothstep(openness, 0.15, 0.92));

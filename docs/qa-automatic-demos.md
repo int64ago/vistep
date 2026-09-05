@@ -1,61 +1,13 @@
-# 自动演示改版检查记录
+# Mechanical detail and automatic demonstrations
 
-日期：2026-09-05。检查对象为本次静态构建及 Cloudflare `vistep-preview`。
+[简体中文](zh-CN/qa-automatic-demos.md) · [Review index](README.md#review-records)
 
-预览版本：`e856b90b-558a-461a-8541-9312d068da06`。
+Historical record: 2026-09-05. Worker version `e856b90b-558a-461a-8541-9312d068da06`. This record applies only to that revision.
 
-## 计算与几何
+Automated checks covered involute profiles and meshing phase, closed tangent/arc belt paths, paired mesh edges and outward normals, and 48 sprocket configurations at eight phases. Printer rollers shared surface speed and pixel continuity. The traffic model produced a backward-moving slowdown without decorative motion. Type checking reported no errors; 27 tests passed and 14 pages built.
 
-`pnpm check`：56 个文件，0 error、0 warning、0 hint。
-`pnpm test`：2 个测试文件，27 项通过。
-`pnpm build`：14 个静态页面成功生成。
+Chrome review used 1492 × 705, 390 × 844 and 320 × 740 viewports. The twelve scenes were inspected at their then-current short-film stages, including chain closure, four refrigerant paths, print transfer, wave cancellation, range constraints, network caching, JPEG reconstruction, model training/generation, dimension unfolding, pendulum energy, equal-input elevator scheduling and traffic history. Primary playback controls were at least 44 px; no horizontal overflow was recorded at 320 px.
 
-新增机械检查覆盖：
+Pause, replay, manual exploration, returning to the film and 2D/3D switching were exercised. Offscreen progression stopped. Source review covered disposal and Worker cleanup. Actual GPU-failure injection, OS reduced-motion changes and real-phone performance were not tested.
 
-- 齿轮渐开线轮廓、齿槽相位以及整周期内的不相交。
-- 皮带切线与圆弧的连续连接、首尾闭合、网格边配对和朝外法向。
-- 48 组链轮配置、各 8 个运行相位的偶数链节闭合、节距误差和滚子落槽。
-- 打印机充电、显影、转印和定影之间的同轴转速、表面速度及像素位置连续性。
-- 默认车流演示确实产生向后传播的减速队列；没有依赖装饰动画假造拥堵。
-
-既有模型测试覆盖单摆、能量、DCT/IDCT、自动微分、推理权重不变、定位、网络时延、电梯和车流。
-
-## 浏览器与构图
-
-使用 Chrome 检查静态构建，桌面为 1492×705，手机视口为 390×844，并逐页检查 320×740 窄屏。
-
-12 篇均经过自动主线、关键阶段和手机画面的逐轮检查。最终布局测量：12 篇在桌面视口的完整播放控件均处于屏幕内；320px 下均无横向溢出；播放、重播、模式按钮高度均为 44px，宽度至少 44px。
-
-| 专题        | 重点检查与修正                                                                                                  |
-| ----------- | --------------------------------------------------------------------------------------------------------------- |
-| 自行车      | 闭合滚子链、内外链板、链轮齿槽、轴承和踏板；小飞轮近景；换齿数时淡出切换；键盘调节；二维降级与三维资源退出      |
-| 冰箱        | 四段管路首尾相接，粒子不在阶段边界跳跃；能量 200 + 80 = 280 W；二维循环；删除降级画面的重复标注                 |
-| 打印机      | 同模数齿轮、闭合皮带；沿鼓面追踪像素后连续交给纸张；激光使用反射线段；显影和定影外罩淡出；二维剖面              |
-| 主动降噪    | 同相增强、反相抵消、延迟破坏抵消；默认静音；主动开启及关闭声音；回到演示恢复 160 Hz                             |
-| GPS         | 一个圆、两个交点、第三个约束；球面与时钟偏差修正；减轻球面网格；实际接收位置高亮；键盘移动信号源                |
-| 网络        | DNS、TCP、TLS、传输与绘制；连接复用和缓存；手机改为上下编排；桌面控件不被首屏截断                               |
-| JPEG        | 原块、基函数、重建保持对应；低频至高频顺序；实际 Worker 运算；手机第三块等大；SVG 消除网格分数像素缝隙          |
-| Transformer | 实际训练后概率和误差变化；自动流程观察到 165 次更新后生成“猫爱吃鱼。”；生成阶段更新计数保持不变；概率行不乱跳   |
-| 多维空间    | 线段、正方形、立方体、超立方体；自动旋转；二维备用视图；切片极值可以没有交集                                    |
-| 钟摆        | 自动释放、加长、增加阻尼；轨迹随重置清空；摆球与悬线相接；暂停后时间与能量保持不变                              |
-| 电梯        | 相同 10 位乘客、固定积分步长；三种策略都完成 10/10；平均等候 12.2、13.2、7.8 秒；关门及离开动画不被完成判定截断 |
-| 车流        | 36 辆车按实际长度缩放，不叠成一团；单次刹车触发队列；时空图显示逆向传播；暂停、重播和固定输入                   |
-
-首页检查保留完整英文释义与域名演变；品牌没有额外大卡片。手机排版、重播、首页自动三维剖面与暂停入口经过检查。相关专题卡片的时长改为与自动演示一致。
-
-## 生命周期与容错
-
-实际操作了暂停、重播、自由探索、返回演示和二维/三维切换。自由探索后返回演示会从头播放，参数不会污染自动演示预设；通过 UI 把声音频率调到极值再返回，确认恢复为 160 Hz、00 秒和“声压保持不变”。暂停后再次读取时间和能量保持不变；展开讲解并把整个演示滚出视口后，时间保持在 24 秒，未继续推进。
-
-三维切至二维后检查 DOM：旧 Canvas 已移除，SVG 备用图存在。销毁路径释放监听器、观察器、动画循环、材质、几何体、实例缓冲和渲染器；JPEG 与 Transformer Worker 终止路径，以及错误边界进行了源码复核。
-
-本轮没有用真实 GPU 故障注入或操作系统设置实测减少动态效果。减少动态效果的首次进入、运行中变更和主动播放逻辑进行了代码检查；WebGL 降级通过界面的二维切换路径检查。手机结果来自视口模拟，不作为实体手机 30fps 或耗电表现的保证。
-
-## 线上产物
-
-部署后逐一读取首页、12 个深链接、站点地图、robots，以及所有 JavaScript/CSS，共 44 个响应；内容 SHA-256 均与本地构建一致。
-
-- 不存在路径返回 404。
-- `/explore/printer` 返回 307，规范到 `/explore/printer/`。
-- 预览浏览器中再次打开打印机并检查自动剖面和暂停停帧。
-- 正式 Worker、域名绑定与 DNS 配置保持原状态；回滚见 `deployment.md`。
+After deployment, 44 responses matched the build hashes. Unknown paths returned 404 and missing trailing slashes redirected. Production and DNS were unchanged at this historical preview stage.

@@ -11,15 +11,17 @@ export default function BicycleStudio({
   cadence,
   playing,
   closeup = false,
+  pedalTurns,
 }: {
   front: number;
   rear: number;
   cadence: number;
   playing: boolean;
   closeup?: boolean;
+  pedalTurns?: number;
 }) {
-  const state = useRef({ front, rear, cadence, playing, closeup });
-  state.current = { front, rear, cadence, playing, closeup };
+  const state = useRef({ front, rear, cadence, playing, closeup, pedalTurns });
+  state.current = { front, rear, cadence, playing, closeup, pedalTurns };
   return (
     <Studio
       key={`${front}-${rear}`}
@@ -144,7 +146,7 @@ export default function BicycleStudio({
         const originalTarget = controls.target.clone(),
           closeTarget = new THREE.Vector3(chain.distance / 2, 1.5, 0);
         return {
-          update(dt) {
+          update(dt, _elapsed, settle) {
             if (!overview) overview = camera.position.clone();
             const target = state.current.closeup ? closeTarget : originalTarget;
             const destination = state.current.closeup
@@ -157,10 +159,12 @@ export default function BicycleStudio({
                   )
               : overview;
             if (!controls.enabled) {
-              camera.position.lerp(destination, 1 - Math.exp(-dt * 3));
-              controls.target.lerp(target, 1 - Math.exp(-dt * 3));
+              camera.position.lerp(destination, settle ? 1 : 1 - Math.exp(-dt * 3));
+              controls.target.lerp(target, settle ? 1 : 1 - Math.exp(-dt * 3));
             }
-            if (state.current.playing)
+            if (state.current.pedalTurns !== undefined)
+              phase = (state.current.pedalTurns * front) % chain.count;
+            else if (state.current.playing)
               phase = (phase + (dt * state.current.cadence * front) / 60) % chain.count;
             frontGroup.rotation.z = chain.alpha - (phase * TAU) / front;
             rearGroup.rotation.z = chain.alpha + ((chain.lengths[0] - phase) * TAU) / rear;
@@ -194,7 +198,15 @@ export default function BicycleStudio({
           },
         };
       }}
-      fallback={<BicycleFlat front={front} rear={rear} cadence={cadence} playing={playing} />}
+      fallback={
+        <BicycleFlat
+          front={front}
+          rear={rear}
+          cadence={cadence}
+          playing={playing}
+          pedalTurns={pedalTurns}
+        />
+      }
     />
   );
 }
@@ -203,18 +215,21 @@ function BicycleFlat({
   rear,
   cadence,
   playing,
+  pedalTurns,
 }: {
   front: number;
   rear: number;
   cadence: number;
   playing: boolean;
+  pedalTurns?: number;
 }) {
   const chain = chainLoop(front, rear),
-    [phase, setPhase] = useState(0);
+    [manualPhase, setPhase] = useState(0);
   const host = useSimulation(
     (dt) => setPhase((p) => (p + (dt * cadence * front) / 60) % chain.count),
-    playing,
+    playing && pedalTurns === undefined,
   );
+  const phase = pedalTurns === undefined ? manualPhase : (pedalTurns * front) % chain.count;
   const points = Array.from({ length: chain.count }, (_, i) => chain.sample(i + phase));
   return (
     <div ref={host} style={{ height: '100%' }}>

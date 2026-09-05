@@ -118,9 +118,10 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
         let lastTime = current.current.time;
         const destinations = new Map<number, THREE.Vector3>();
         return {
-          update(dt) {
+          update(dt, _elapsed, settle) {
+            const motionDt = settle ? Infinity : dt;
             const s = current.current;
-            const reset = s.time < lastTime;
+            const reset = settle || s.time < lastTime;
             lastTime = s.time;
             if (reset) destinations.clear();
             s.cars.forEach((car, i) => {
@@ -129,20 +130,20 @@ export default function ElevatorStudio({ state }: { state: ElevatorState }) {
                 cabins[i].position.y,
                 0.25 + car.position * 0.75,
                 24,
-                dt,
+                motionDt,
               );
               const open = car.door > 0 ? Math.min(1, (1.5 - car.door) / 0.3, car.door / 0.35) : 0;
               doors[i][0].position.x = THREE.MathUtils.damp(
                 doors[i][0].position.x,
                 -0.16 - open * 0.22,
                 15,
-                dt,
+                motionDt,
               );
               doors[i][1].position.x = THREE.MathUtils.damp(
                 doors[i][1].position.x,
                 0.16 + open * 0.22,
                 15,
-                dt,
+                motionDt,
               );
             });
             people.forEach((p) => (p.visible = false));
