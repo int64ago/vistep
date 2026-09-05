@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Range } from '../lab/Controls';
+import { Range, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import PrinterStudio from '../three/PrinterStudio';
 const stages = ['充电', '曝光', '显影', '转印', '定影', '清洁'];
@@ -175,7 +175,7 @@ export default function Printer() {
             </button>
           </div>
         </div>
-        <div className="printer-annotation">
+        <div className="printer-annotation" key={`annotation-${stage}`}>
           <span>
             0{stage + 1} / {stageEnglish[stage]}
           </span>
@@ -204,22 +204,25 @@ export default function Printer() {
             </svg>
           )}
         </button>
-        <div className="printer-filmstrip" role="group" aria-label="打印阶段">
-          {stages.map((name, i) => (
-            <button
-              key={name}
-              aria-pressed={stage === i}
-              onClick={() => {
-                setProgress(i);
-                setPlaying(false);
-                setExploded(true);
-              }}
-            >
-              <small>0{i + 1}</small>
-              <span>{name}</span>
-            </button>
-          ))}
-        </div>
+        <Segments
+          className="printer-filmstrip"
+          label="打印阶段"
+          value={String(stage)}
+          options={stages.map((name, i) => ({
+            value: String(i),
+            label: (
+              <>
+                <small>0{i + 1}</small>
+                <span>{name}</span>
+              </>
+            ),
+          }))}
+          onChange={(value) => {
+            setProgress(Number(value));
+            setPlaying(false);
+            setExploded(true);
+          }}
+        />
         <button
           className="transport-reset"
           aria-label="重置打印"
@@ -275,12 +278,12 @@ export default function Printer() {
             </button>
           </div>
         </div>
-        <div className="printer-stage-story">
+        <div className="printer-stage-story" key={`story-${stage}`}>
           <span className="section-index">STEP 0{stage + 1} / 06</span>
           <h3>{headlines[stage]}</h3>
           <p>{notes[stage]}</p>
         </div>
-        <div className="printer-micro">
+        <div className="printer-micro" key={`micro-${stage}`}>
           <span className="section-index">SURFACE / 鼓面与纸面</span>
           <MicroView stage={stage} />
           <p>{microNotes[stage]}</p>

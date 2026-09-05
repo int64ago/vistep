@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 export function Range({
   label,
   value,
@@ -33,6 +33,7 @@ export function Range({
         max={max}
         step={step}
         value={value}
+        style={{ '--range-fill': `${((value - min) / (max - min || 1)) * 100}%` } as CSSProperties}
         onChange={(e) => onChange(Number(e.target.value))}
       />
       {help && <small>{help}</small>}
@@ -55,14 +56,43 @@ export function Segments<T extends string>({
   options,
   onChange,
   label,
+  className = '',
 }: {
   value: T;
-  options: { value: T; label: string }[];
+  options: { value: T; label: ReactNode }[];
   onChange: (v: T) => void;
   label: string;
+  className?: string;
 }) {
+  const group = useRef<HTMLDivElement>(null);
+  const [selection, setSelection] = useState<CSSProperties>();
+  useLayoutEffect(() => {
+    const element = group.current;
+    if (!element) return;
+    const measure = () => {
+      const active = element.querySelector<HTMLButtonElement>('button[aria-pressed="true"]');
+      if (!active) return;
+      setSelection({
+        width: active.offsetWidth,
+        height: active.offsetHeight,
+        transform: `translate(${active.offsetLeft}px, ${active.offsetTop}px)`,
+      });
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    element.querySelectorAll('button').forEach((button) => observer.observe(button));
+    return () => observer.disconnect();
+  }, [value]);
   return (
-    <div className="segmented" role="group" aria-label={label}>
+    <div
+      className={`segmented ${className}`}
+      role="group"
+      aria-label={label}
+      ref={group}
+      data-measured={!!selection}
+    >
+      {selection && <span className="segment-selection" aria-hidden="true" style={selection} />}
       {options.map((o) => (
         <button
           key={o.value}
