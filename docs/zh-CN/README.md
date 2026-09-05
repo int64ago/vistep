@@ -4,6 +4,7 @@
 
 ## 制作与维护
 
+- [专题目录](catalog.md)：全部登记专题、影片时长和文章源码。
 - [制作手册](creating-a-scene.md)：研究、分镜、模型、双语讲解和审看。
 - [自行车案例](examples/bicycle-brief.md)：分镜、几何与证据的对应关系。
 - [架构](architecture.md)：数据流、资源生命周期和模型边界。

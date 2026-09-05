@@ -1,0 +1,53 @@
+---
+import { diFilm } from '../../models/database-index';
+interface Props {
+  color?: string;
+}
+const { color = '#33657a' } = Astro.props;
+const { base } = diFilm();
+const root = base.pages[base.root];
+const branch = base.pages[7];
+const previous = base.pages[10];
+const leaf = base.pages[11];
+const record = base.rows.find((row) => row.key === 63)!;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="230"
+  viewBox="0 0 400 230"
+  fill="none"
+  aria-hidden="true"
+>
+  <path d="M152 44H238V66M285 115V128H96V145" stroke={color} stroke-width="1.6" opacity=".6"></path>
+  <g fill="#f6faf9" stroke={color} stroke-opacity=".4">
+    <rect x="23" y="17" width="129" height="58" rx="10"></rect>
+    <rect x="220" y="57" width="135" height="58" rx="10"></rect>
+    <rect x="31" y="145" width="130" height="55" rx="9"></rect>
+    <rect x="208" y="145" width="153" height="55" rx="9"></rect>
+  </g>
+  <path d="M23 43H152M220 83H355M31 170H161M208 170H361" stroke={color} opacity=".22"></path>
+  <path d="M161 177H199M194 172L199 177L194 182" stroke={color} stroke-width="1.7"></path>
+  <rect x="211" y="173" width="146" height="23" rx="4" fill={color} opacity=".1"></rect>
+  <g fill={color} font-family="ui-monospace, monospace" text-anchor="middle" font-size="17">
+    <text x="87" y="37">I{root.id}</text><text x="87" y="65"
+      >{root.kind === 'inner' ? root.keys.map((e) => e.key).join(' · ') : ''}</text
+    >
+    <text x="287" y="77">I{branch.id}</text><text x="287" y="105"
+      >{branch.kind === 'inner' ? branch.keys.map((e) => e.key).join(' · ') : ''}</text
+    >
+    <text x="96" y="165">I{previous.id}</text><text x="96" y="190"
+      >{previous.kind === 'leaf' ? previous.entries.map((e) => e.key).join(' · ') : ''}</text
+    >
+    <text x="284" y="165">I{leaf.id}</text><text x="284" y="190"
+      >{record.key} · r{record.rowId} → H{record.heap}</text
+    >
+  </g>
+  <text x="23" y="222" fill={color} font-size="17" font-family="ui-monospace, monospace"
+    >key = 63</text
+  >
+  <text x="194" y="32" fill={color} font-size="17" font-family="ui-monospace, monospace"
+    >B+ TREE</text
+  >
+</svg>

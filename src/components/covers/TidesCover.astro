@@ -1,0 +1,100 @@
+---
+import {
+  tidesDefaults,
+  tidesBodies,
+  tidesGrid,
+  tidesSurface,
+  tidesDirection,
+  tidesField,
+  tidesScale,
+  tidesConstants,
+} from '../../models/tides';
+interface Props {
+  color?: string;
+}
+const { color = '#83b6b2' } = Astro.props;
+const bodies = tidesBodies(tidesDefaults),
+  gain = tidesConstants.exaggeration;
+const project = (p: { x: number; y: number; z: number }) => ({
+  x: 153 + 71 * p.x,
+  y: 117 - 71 * (0.94 * p.y - 0.34 * p.z),
+});
+const rings = tidesGrid(bodies, gain);
+const points = rings
+  .flatMap((r) => r.points.map((p) => project(p.position)))
+  .sort((a, b) => a.x - b.x || a.y - b.y);
+const cross = (a: (typeof points)[0], b: (typeof points)[0], c: (typeof points)[0]) =>
+  (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+const lower: typeof points = [],
+  upper: typeof points = [];
+for (const p of points) {
+  while (lower.length > 1 && cross(lower.at(-2)!, lower.at(-1)!, p) <= 0) lower.pop();
+  lower.push(p);
+}
+for (const p of [...points].reverse()) {
+  while (upper.length > 1 && cross(upper.at(-2)!, upper.at(-1)!, p) <= 0) upper.pop();
+  upper.push(p);
+}
+const outline = [...lower.slice(0, -1), ...upper.slice(0, -1)];
+const path = (p: typeof points) =>
+  p.map((v, i) => `${i ? 'L' : 'M'}${v.x.toFixed(2)} ${v.y.toFixed(2)}`).join(' ');
+const arrows = [-1, 1].map((sign) => {
+  const point = tidesScale({ x: sign, y: 0, z: 0 }, tidesConstants.radius),
+    f = tidesField(point, bodies),
+    origin = project(tidesSurface({ x: sign, y: 0, z: 0 }, bodies, gain).position);
+  return { origin, end: { x: origin.x + f.differential.x * 24e6, y: origin.y }, sign };
+});
+const wave = Array.from({ length: 91 }, (_, i) => ({
+  x: 267 + i,
+  y: 195 - tidesSurface(tidesDirection(0, i * 4), bodies, 0).height * 34,
+}));
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="230"
+  viewBox="0 0 400 230"
+  fill="none"
+  aria-hidden="true"
+>
+  <rect width="400" height="230" fill="#1c3547"></rect>
+  <circle cx="153" cy="117" r="93" fill={color} opacity=".035"></circle>
+  <path d="M36 117H369" stroke="#8facae" stroke-opacity=".22" stroke-dasharray="3 6"></path>
+  <path d={`${path(outline)}Z`} fill="#315a6a" stroke={color} stroke-width="1.6"></path>
+  {
+    rings.map((r) => (
+      <path
+        d={path(r.points.map((p) => project(p.position)))}
+        stroke="#b4d6d3"
+        stroke-opacity=".2"
+        stroke-width=".7"
+      />
+    ))
+  }
+  <ellipse
+    cx="153"
+    cy="117"
+    rx="71"
+    ry="66.74"
+    stroke="#e6cd99"
+    stroke-opacity=".6"
+    stroke-dasharray="3 5"></ellipse>
+  <circle cx="153" cy="117" r="2.5" fill="#e4cd9f"></circle>
+  <circle cx="334" cy="117" r="17" fill="#b5c0c0"></circle>
+  <path d="M327 105A17 17 0 0 1 347 128A17 17 0 0 0 327 105" fill="#82939b"></path>
+  {
+    arrows.map((a) => (
+      <g stroke="#ebce91" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <>
+          <path d={`M${a.origin.x} ${a.origin.y}L${a.end.x} ${a.end.y}`} />
+          <path
+            d={`M${a.end.x - a.sign * 5} ${a.end.y - 3}L${a.end.x} ${a.end.y}L${a.end.x - a.sign * 5} ${a.end.y + 3}`}
+          />
+        </>
+      </g>
+    ))
+  }
+  <path d="M267 195H357" stroke="#8ca9b5" stroke-opacity=".3"></path>
+  <path d={path(wave)} stroke={color} stroke-width="1.5"></path>
+</svg>

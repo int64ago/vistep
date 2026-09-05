@@ -1,5 +1,11 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  tides: () => import('../components/experiments/Tides'),
+  zipper: () => import('../components/experiments/Zipper'),
+  'packet-routing': () => import('../components/experiments/PacketRouting'),
+  diffusion: () => import('../components/experiments/Diffusion'),
+  'brownian-motion': () => import('../components/experiments/BrownianMotion'),
+  'database-index': () => import('../components/experiments/DatabaseIndex'),
   escapement: () => import('../components/experiments/Escapement'),
   'lithium-battery': () => import('../components/experiments/LithiumBattery'),
   'logic-gates': () => import('../components/experiments/LogicGates'),

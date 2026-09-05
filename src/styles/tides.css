@@ -1,0 +1,323 @@
+.tides-scene {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+  padding: 20px 24px 17px;
+  background: radial-gradient(ellipse at 28% 30%, #274859, #182f43 72%);
+  border-radius: 26px;
+  color: #d3e2df;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.tides-scene * {
+  box-sizing: border-box;
+  min-width: 0;
+}
+.tides-strip {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 16px;
+  color: #b0c7c8;
+  margin-bottom: 6px;
+}
+.tides-strip > span:last-child {
+  color: #839ea9;
+}
+.tides-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 500px;
+}
+.tides-globe {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  min-width: 0;
+}
+.tides-globe-surface {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.tides-globe canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.tides-flat {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.tides-flat-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-height: 44px;
+  border: 1px solid #526f7b;
+  border-radius: 14px;
+  padding: 9px 13px;
+  font: inherit;
+  font-size: 16px;
+  color: #b9d1cf;
+  background: #1c3646;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.tides-flat-toggle:hover {
+  background: #305366;
+}
+.tides-fallback-note {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  font-size: 16px;
+  color: #bed3ce;
+  background: #1c3646e6;
+  border-radius: 10px;
+  padding: 5px 8px;
+}
+.tides-instrument {
+  min-width: 0;
+}
+.tides-instrument svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: inherit;
+  overflow: visible;
+}
+.tides-svg-label {
+  font-size: 20px;
+  fill: #ccded9;
+  font-variant-numeric: tabular-nums;
+}
+.tides-muted {
+  fill: #8daab4;
+}
+.tides-instrument-key {
+  font-size: 16px;
+  color: #9cb6bf;
+  margin: 4px 10px 0;
+  line-height: 1.5;
+}
+.tides-reference-note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  color: #9cb6bf;
+  margin: 20px 10px 0;
+}
+.tides-reference-note span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tides-reference-note b {
+  color: #c3ded9;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.tides-measure {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  border-top: 1px solid #476473;
+  padding-top: 12px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  min-height: 45px;
+}
+.tides-measure strong {
+  font-size: 17px;
+  font-weight: 500;
+  color: #e4d2ab;
+}
+.tides-scope-note {
+  font-size: 16px;
+  color: #93afb7;
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+.tides-explanation {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 15px 0;
+}
+.tides-explore {
+  border-top: 1px solid #476473;
+  padding-top: 16px;
+  margin-top: 16px;
+}
+.tides-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.tides-buttons button {
+  font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 1px solid #5c7985;
+  border-radius: 13px;
+  color: #c5d9d6;
+  background: #254454;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.tides-buttons button:hover,
+.tides-buttons button[aria-pressed='true'] {
+  background: #375c66;
+  border-color: #94b4b3;
+}
+.tides-scene button:focus-visible,
+.tides-explore input:focus-visible,
+.tides-explore summary:focus-visible {
+  outline: 3px solid #dfc58e;
+  outline-offset: 3px;
+}
+.tides-explore .control {
+  display: block;
+  margin: 16px 0;
+  font-size: 16px;
+}
+.tides-explore .control-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 16px;
+}
+.tides-explore .control-top output {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.tides-explore input[type='range'] {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #a6c9b9;
+}
+.tides-explore p,
+.tides-explore summary {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.tides-explore summary {
+  min-height: 44px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .tides-scene {
+    padding: 14px 10px 13px;
+    border-radius: 18px;
+  }
+  .tides-scene[data-watch='true'] {
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+  }
+  .tides-strip {
+    min-height: 50px;
+    margin-bottom: 1px;
+  }
+  .tides-stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    min-height: 438px;
+    flex: 1;
+  }
+  .tides-globe {
+    height: 263px;
+    flex-shrink: 0;
+  }
+  .tides-stage-forces .tides-globe {
+    height: 233px;
+  }
+  .tides-instrument {
+    width: 100%;
+    max-width: 350px;
+    margin-inline: auto;
+  }
+  .tides-svg-label {
+    font-size: 21px;
+  }
+  .tides-instrument-key {
+    margin: 0 2px;
+    font-size: 16px;
+  }
+  .tides-measure {
+    padding-top: 10px;
+    min-height: 54px;
+    margin-top: 5px;
+    align-content: center;
+  }
+  .tides-measure strong {
+    font-size: 16px;
+  }
+  .tides-scope-note {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  .tides-flat-toggle {
+    padding: 8px 10px;
+    background: #203b4ae6;
+  }
+  .tides-fallback-note {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    padding: 4px 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tides-flat-toggle,
+  .tides-buttons button {
+    transition: none;
+  }
+}
+
+.tides-globe-note {
+  position: absolute;
+  left: 4px;
+  bottom: 0;
+  font-size: 16px;
+  color: #adc5c8;
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .tides-strip {
+    flex-shrink: 0;
+  }
+  .tides-strip > span:last-child {
+    display: none;
+  }
+  .tides-scene[data-watch='true'][data-focus='gravity'] .tides-measure > span,
+  .tides-scene[data-watch='true'][data-focus='subtract'] .tides-measure > span {
+    display: none;
+  }
+  .tides-stage,
+  .tides-measure,
+  .tides-scope-note {
+    flex-shrink: 0;
+  }
+}

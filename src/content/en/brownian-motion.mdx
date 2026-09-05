@@ -1,0 +1,69 @@
+<a id="understand"></a>
+
+## Still fluid, restless tracer
+
+A microsphere can leave an irregular trail even when its surrounding fluid has no mean flow. It is not swimming or settling in this model. Thermal molecular motion keeps affecting it through many small interactions. This scene follows a single stochastic tracer; it does not solve a concentration field or simulate convection.
+
+Gold identifies the same sample throughout an observation. Lines join discrete modeled positions, with physical length scales shown below. The view is an observation window, not a container. There are no reflecting walls, periodic wraps or replacement particles.
+
+### Drag and fluctuations come from the same bath
+
+A classical Langevin equation separates the environment into average viscous drag and a fluctuating contribution. In each Cartesian direction:
+
+<div className="formula">
+  m dv = −γv dt + √(2γk<sub>B</sub>T) dW
+</div>
+
+The Wiener increment `dW` has variance equal to its time interval. White noise is not an ordinary force with a finite reading at every instant. The film instead measures impulses over a complete observation window. Bath impulse plus drag impulse equals the change in momentum.
+
+Drag removes motion while fluctuations replenish it statistically. Equilibrium does not mean stillness, or zero energy exchange in every window. Each equilibrium velocity component has variance `kBT/m`. Trials start with velocities drawn from that distribution and position fixed at the origin.
+
+### Two very different clocks
+
+For a dilute, no-slip sphere of radius `a`, Stokes drag gives:
+
+<div className="formula">
+  γ = 6πηa　·　τ = m/γ　·　D = k<sub>B</sub>T/γ
+</div>
+
+The reference radius is 0.5 µm, density 1050 kg/m³, temperature 300 K and dynamic viscosity 1 mPa·s. These give `D ≈ 0.439 µm²/s` and an inertial relaxation time of approximately 58 ns.
+
+Seconds are enormously longer than that relaxation time. An overdamped position model can therefore work well at this observation scale. At sufficiently short times, inertia matters: a particle carries velocity forward rather than choosing an unrelated direction at every instant. The nanosecond chapter starts a separate short observation. It does not pretend that enlarging the earlier coarse polyline reveals a resolved microscopic path.
+
+The zero-temperature control turns off classical thermal noise while retaining the initial velocity. Speed decays as `exp(−t/τ)` and drag dissipates the initial kinetic energy. This is a mathematical limit, not a claim about a real liquid at absolute zero.
+
+<a id="try"></a>
+
+## Change a trial and reconstruct it
+
+Open exploration to adjust temperature, dynamic viscosity, radius and observation time. Every range has an explicit accessible name and supports arrow keys, Home and End.
+
+- At fixed radius and viscosity, D is proportional to absolute temperature. Typical displacement changes with its square root.
+- Doubling viscosity halves D when the other inputs stay fixed.
+- Doubling radius also halves D, but increases mass eightfold and the inertial timescale fourfold.
+- Use the inertia view to compare complete-window impulses. Use the MSD view to compare one trial with repeated observations.
+- Select another bath sample to change the route without changing its physics. Reset restores all parameters, the seed, the view and both observation-time defaults.
+
+Temperature and viscosity are independent controls here. A real liquid’s viscosity also changes with temperature. The zero-kelvin and 450 K inputs do not assert that the reference fluid remains a realizable liquid under those conditions.
+
+<a id="deeper"></a>
+
+## Averaging positions is not averaging squared displacements
+
+The ensemble contains 64 independent repeated trials, each with one particle at the same initial point. It is not a simulation of 64 interacting spheres. The dark diamond marks their mean position. Motion in different directions can cancel in that average even when individual particles have traveled away.
+
+Mean-square displacement squares first, then averages. For the two displayed coordinates, `Δr² = Δx² + Δy²`:
+
+<div className="formula">⟨Δr²⟩ = 4D[t − τ(1 − exp(−t/τ))]</div>
+
+The short-time limit is `2(kBT/m)t²`; the long-time limit is `4Dt`. Counting three coordinates would give a long-time factor of 6 instead. Root-mean-square displacement is the square root of MSD, a length rather than cumulative distance traveled. The dashed ring marks this theoretical scale; it does not confine the particle.
+
+One path’s squared displacement can decrease. A 64-trial average fluctuates too; the smooth theoretical curve describes an expectation over indefinitely many trials. Mathematical overdamped paths are not smooth. The smooth ensemble prediction cannot be used as one particle’s route or next destination.
+
+### Calculation and scope
+
+The simulator samples exact joint Gaussian position–velocity transitions rather than applying explicit Euler kicks. Seed and sample index address each random input. Direct seeking reconstructs the same observation points as replay. Straight segments interpolate the displayed observations; they do not resolve motion at a finer scale. The inertial and overdamped comparison uses the integrated equation to share the same bath.
+
+The bath is classical, uniform, isotropic and unbounded, with no external force, wall or particle interaction. Free-space positions do not have a normalizable stationary equilibrium distribution, although velocities can stay at thermal equilibrium. Fluid added mass, hydrodynamic memory, finite collision times, near-wall corrections and instrument noise are omitted. In particular, the nanosecond view explains an ideal Markov model rather than reproducing an ultrashort-time experiment in a liquid.
+
+References: [NIST’s defining constants](https://www.nist.gov/pml/special-publication-330/sp-330-section-2), [Padova / INFN Langevin notes](https://userswww.pd.infn.it/~orlandin/fisica_sis_comp/langevin.pdf), [Li and colleagues’ instantaneous-velocity experiment](https://pubmed.ncbi.nlm.nih.gov/20488989/), [Brownian motion at short time scales](https://arxiv.org/abs/1211.1458), and [experimental discussion of inertia and hydrodynamic memory in liquids](https://meetings-archive.aps.org/mar/2012/t48/7/). These experiments motivate observing short times; the scene does not adopt their complete experimental models.

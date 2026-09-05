@@ -1,0 +1,50 @@
+<section id="understand">
+
+## The slider arranges the route; the teeth retain the join
+
+A zipper combines teeth, tapes and a slider. This scene chooses moulded mushroom-head teeth, a non-locking slider and a closed end: the tapes remain joined at the bottom. A Y-shaped passage brings separated rows into a straight, engaged chain and separates them on the return journey. [YKK’s structure explanation](https://www.ykk.com/english/ykk/tech/01.html) describes this principle.
+
+Follow green L7. Its root wraps around the tape bead, and a narrow neck connects to a broad head. Thin wings on opposite necks enter a recess through the head. Shoulders oppose sideways withdrawal; upper and lower lips surround the wings. This head–neck–wing–recess arrangement is informed by the manufacturer’s [US3886634 patent](https://www.freepatentsonline.com/3886634.html). All display proportions are independently constructed, not copied product dimensions.
+
+<div className="formula">
+  Pitch p = 1 u<br />
+  Left positions: i × p<br />
+  Right positions: (i + ½) × p
+</div>
+
+The heads enter in sequence rather than meeting head-on. Beads bend through the guide, teeth follow their tangents, and the half-pitch offset provides the meeting positions. Here `u` is a display unit.
+
+</section>
+<section id="try">
+
+## Stop beside the same tooth
+
+In exploration, choose “Slider guide” and move L7 through the guide, then retrace its route. Arrow keys adjust each range. “Head section” also places the slider where engaged L7 can be inspected. Only its upper lip is cut away. Drag the 3D object, or focus its canvas and use arrow keys, to change the inspection angle. The 2D alternative retains the same tooth profiles and paths.
+
+“Sideways load” is a separate three-tooth static example. Changing load updates reactions and arrows without inventing deformation. “Shoulder comparison” applies the same attempted shift to both shapes: broad shoulders retain their position, whereas hypothetical narrowed heads can withdraw. It changes geometry, not material strength.
+
+“Reset all zipper experiments” restores travel, load, attempted shift, view and 3D inspection state. The shared player owns film chapters, pause, replay and captions.
+
+</section>
+<section id="deeper">
+
+## Finite geometry, scoped conclusions
+
+Each row has 13 teeth. Right-hand teeth are offset by half a pitch. A semicircular head is `0.60 u` wide and the neck is `0.24 u` wide. The middle wing is `0.056 u` thick within a `0.080 u` recess, leaving `0.012 u` on each side. In the straight chain, shoulders overlap by `0.10 u` along the chain and meet in the sideways blocking direction. Wings occupy positions that actually enter the rounded recess, rather than merely overlapping rectangular bounding boxes.
+
+The bead coordinate measures arc length. From the joined section, its route uses a circular bend of radius about `1.538 u`, a `1 u` straight segment, then a gentler reverse bend of radius about `3.846 u` that returns the open tapes to parallel. Every rigid tooth, bead and tape follows this route. The slider’s outer rails and central diamond come from the swept finite tooth envelope, with `0.032 u` teaching clearance. Plates and tape exits have thickness; the roof window and removed upper lip are explicitly labelled cutaways.
+
+Motion is prescribed. The model does not solve guide reactions, cloth shear, elasticity, friction or pulling force. Conserving bead arc length does not imply every woven fibre is inextensible. Tooth roots are attached to their beads with space for bending; anchorage stresses between fibres and moulded material are not modelled.
+
+The load instrument separately assumes one rigid tooth with symmetric, frictionless contacts. Equal moment arms give equal reactions:
+
+<div className="formula">
+  R₁ = R₂ = F / 2<br />
+  R₁ + R₂ − F = 0
+</div>
+
+`F` is normalized, not measured in newtons. This example predicts neither chain-wide load distribution nor strength, fatigue or failure thresholds. The counterfactual removes only the broad shoulders along the chain direction, preserving pitch and nose reach. Both shapes receive the same attempted sideways shift.
+
+Top-stop contact determines the upper travel limit; the bottom bridge meeting the slider’s lower edge determines the lower limit. At the upper stop, some teeth remain inside the guide, so the final tooth is not claimed to be fully in the straight chain. See the [YKK usage manual](https://ykkamericas.com/wp-content/uploads/2021/10/ykk-zipper-instruction-manual-compressed.pdf) for component relationships. The [YKK slider catalogue](https://ykk.pl/wp-content/uploads/2021/02/asia-slider-catalog.pdf) distinguishes non-locking and automatic-locking sliders. This scene explains transverse tooth retention, not an automatic lock pin.
+
+</section>

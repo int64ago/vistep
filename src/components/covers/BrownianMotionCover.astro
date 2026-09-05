@@ -1,0 +1,74 @@
+---
+import {
+  brownianDefault,
+  brownianTrack,
+  brownianSample,
+  brownianExtent,
+} from '../../models/brownian-motion';
+interface Props {
+  color?: string;
+}
+const { color = '#b18a50' } = Astro.props;
+const tracks = [137, 811, 413, 215].map((seed) => brownianTrack(brownianDefault, seed, 2, 128));
+const extent = brownianExtent(tracks),
+  scale = 92 / extent;
+const project = (x: number, y: number) => [200 + x * scale, 111 - y * scale];
+const paths = tracks.map((track) =>
+  track.points.map((p, i) => `${i ? 'L' : 'M'}${project(p.x, p.y).join(',')}`).join(' '),
+);
+const positions = tracks.map((track) =>
+  project(brownianSample(track, 2).x, brownianSample(track, 2).y),
+);
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="230" viewBox="0 0 400 230" fill="none">
+  <defs
+    ><radialGradient id="brownian-cover-field"
+      ><stop stop-color="#f8f8ea"></stop><stop offset="1" stop-color="#d6e0d1"
+      ></stop></radialGradient
+    ><radialGradient id="brownian-cover-bead" cx="30%" cy="25%"
+      ><stop stop-color="#fff7cd"></stop><stop offset=".65" stop-color={color}></stop><stop
+        offset="1"
+        stop-color="#796344"></stop></radialGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#brownian-cover-field)"></rect>
+  {
+    [-2, -1, 0, 1, 2].map((i) => (
+      <g stroke="#647c6b" opacity={i === 0 ? 0.19 : 0.08}>
+        <>
+          <path d={`M${200 + i * 55},15V214`} />
+          <path d={`M25,${111 + i * 43}H375`} />
+        </>
+      </g>
+    ))
+  }
+  <path d="M194 111h12m-6-6v12" stroke="#77836c"></path>
+  {
+    paths.map((d, i) => (
+      <path
+        d={d}
+        stroke={i === 0 ? color : '#608d86'}
+        opacity={i === 0 ? 0.9 : 0.32}
+        stroke-width={i === 0 ? 2.2 : 1.2}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    ))
+  }
+  {
+    positions.map(([x, y], i) => (
+      <g>
+        <circle
+          cx={x}
+          cy={y}
+          r={i === 0 ? 10 : 3.5}
+          fill={i === 0 ? 'url(#brownian-cover-bead)' : '#65897d'}
+        />
+        {i === 0 && <circle cx={x} cy={y} r="14" stroke={color} opacity=".55" />}
+      </g>
+    ))
+  }
+  <path d={`M25 204h${1e-6 * scale}m0-3v6m${-1e-6 * scale}-6v6`} stroke="#6c806c" stroke-width="1.5"
+  ></path>
+</svg>
