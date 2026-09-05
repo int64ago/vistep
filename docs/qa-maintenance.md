@@ -17,6 +17,8 @@
 - `pnpm audit --prod` 返回 No known vulnerabilities found；结果是本次注册表审计快照，不是未来安全保证。
 - 预览版本 `06c011e9-7589-49f0-b924-0145b601209b` 已部署；线上检查 30 个地址（26 个页面、robots、sitemap、图标和不存在路径），状态码与 noindex 响应头正确，robots 为纯文本。正式域名仍保留原页面。
 
+- GitHub Ubuntu CI [33952470175](https://github.com/int64ago/vistep/actions/runs/33952470175) 通过：从锁文件全新安装，执行完整 verify 与独立预览构建；无需部署、Google 或语音凭据。
+
 ## 交付边界
 
 本次使用的 Cloudflare / Google 私密凭据没有写入源码或构建。公开维护邮箱来自维护者公开 GitHub 资料。验证 TXT 是域名证明记录，保留在 DNS 中，不作为运行时密钥使用。
