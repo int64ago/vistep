@@ -1226,3 +1226,40 @@ body:has(.lesson-wrap) .site-header {
     min-width: 64px;
   }
 }
+/* Give the time slider its own row before the four touch targets on narrow phones. */
+@media (max-width: 600px) {
+  .film-transport {
+    display: grid;
+    grid-template-columns: repeat(3, 44px) minmax(0, 1fr);
+    gap: 4px 7px;
+  }
+  .film-timeline {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .film-time {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+    min-width: 0;
+  }
+  .film-play {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .film-replay {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .film-voice {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .film-transport .film-mode {
+    grid-column: 4;
+    grid-row: 2;
+    min-width: 0;
+    padding-inline: 8px;
+  }
+}

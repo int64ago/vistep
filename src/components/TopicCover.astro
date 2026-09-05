@@ -40,6 +40,52 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
     height="230"
     fill={`url(#dots-${slug})`}></rect>
   {
+    slug === 'hydraulic-brake' && (
+      <g>
+        <rect width="400" height="230" fill="#e9e9df" />
+        <path
+          d="M69 82C89 26 148 39 163 51S246 49 268 70V83"
+          fill="none"
+          stroke="#424e4c"
+          stroke-width="7"
+          stroke-linecap="round"
+        />
+        <circle cx="264" cy="134" r="71" fill="#b7c0bb" stroke="#7c8d85" stroke-width="1.4" />
+        <circle cx="264" cy="134" r="58" fill="none" stroke="#98a79d" stroke-width="1" />
+        {Array.from({ length: 16 }, (_, i) => {
+          const a = (i * Math.PI) / 8;
+          return (
+            <circle cx={264 + 62 * Math.cos(a)} cy={134 + 62 * Math.sin(a)} r="3" fill="#e9e9df" />
+          );
+        })}
+        <circle cx="264" cy="134" r="24" fill="#52615b" />
+        <circle cx="264" cy="134" r="10" fill="#e9e9df" />
+        <rect x="241" y="65" width="47" height="48" rx="12" fill="#a17158" />
+        <rect x="246" y="80" width="37" height="19" rx="4" fill="#d7b878" />
+        <rect x="42" y="72" width="80" height="25" rx="10" fill="#8b9b91" />
+        <rect x="52" y="51" width="39" height="25" rx="4" fill="#bac4b5" />
+        <path
+          d="M39 84C22 108 26 144 45 161"
+          fill="none"
+          stroke="#414f49"
+          stroke-width="9"
+          stroke-linecap="round"
+        />
+        <path d="M74 77H109M256 88H278" stroke="#d6b469" stroke-width="6" />
+        <text
+          x="30"
+          y="207"
+          fill="#7c8979"
+          font-family="Manrope"
+          font-size="11"
+          letter-spacing="1.4"
+        >
+          PRESSURE / GRIP
+        </text>
+      </g>
+    )
+  }
+  {
     adder && (
       <g>
         <rect width="400" height="230" fill="#e9eddf" />
