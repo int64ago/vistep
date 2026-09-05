@@ -8,6 +8,8 @@ Carefully made visual explanations of the mechanisms behind everyday life and wo
 
 > The complete site is live at `vistep.ai`, with all 12 bilingual explorations and synchronized narration. The separate preview deployment is excluded from search indexing. This repository is prepared for open collaboration under MIT; its visibility remains the owner's choice.
 
+Pushes and merges to `main` run checks, build, and deploy production through [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml). Branches and PRs run checks only. Each deployment records its versions and rollback target; see [deployment](docs/deployment.md).
+
 ## Experience
 
 Twelve bilingual explorations: bicycle gearing, refrigeration, laser printing, active noise cancellation, GPS, web loading, JPEG, language-model training and generation, dimensions, pendulums, elevator scheduling and traffic waves.

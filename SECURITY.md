@@ -12,7 +12,9 @@ Please do not disclose an unpatched vulnerability through a public issue. The ma
 
 ## Project boundaries
 
-The published site is static; experiments run in the reader's browser. There are no user accounts, server-side user data or visitor API keys. Cloudflare credentials are used only for deployment and optional narration production. Search Console credentials are local maintenance tools, not site assets. CI runs checks without deployment or speech-provider secrets and does not execute PR code with a write-capable token.
+The published site is static; experiments run in the reader's browser. There are no user accounts, server-side user data or visitor API keys. Cloudflare credentials are used only for deployment and optional narration production. Search Console credentials are local maintenance tools, not site assets. CI verification runs without deployment or speech-provider secrets and does not execute PR code with a write-capable token.
+
+Only the production job on the original repository's `main` branch receives a scoped Cloudflare token from the `production` environment. The environment allows the `main` branch only. The token can edit Workers in the designated account and Workers routes in the `vistep.ai` zone; it has no DNS-edit, billing, or speech permissions. Workers permissions are account-scoped, not restricted to one Worker. Rotate the token in Cloudflare and replace the encrypted environment secret when needed; never reuse a local Wrangler OAuth token in CI.
 
 For scientific corrections, layout issues or general bugs, use the normal issue templates. Follow the [Code of Conduct](CODE_OF_CONDUCT.md) for community concerns.
 
