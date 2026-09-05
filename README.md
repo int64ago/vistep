@@ -2,6 +2,8 @@
 
 把日常，打开来看。
 
+重做版预览：https://vistep-preview.int64ago.workers.dev
+
 12 篇中文交互专题：自行车、冰箱、激光打印机、主动降噪、GPS、网页加载、JPEG、小型 Transformer、多维空间、钟摆、电梯调度、无事故堵车。
 
 命名动画保留 **Visualize Every Step with AI → vis step ai → vistep ai → vistep.ai**，相邻两个 s 共用。动画融入首页文字，每次会话播放一次，支持重播和减少动态效果。
