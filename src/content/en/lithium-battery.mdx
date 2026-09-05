@@ -1,0 +1,78 @@
+<a id="understand"></a>
+
+## Two routes make one working cell
+
+This scene follows a specific graphite / lithium iron phosphate, or LFP, cell. During discharge, lithium leaves the graphite host and moves through electrolyte toward the positive electrode. Electrons reach that electrode through conducting solids, current collectors and the external load. The wet separator lets ionic transport continue while blocking direct electronic contact between the electrodes.
+
+At the positive electrode, lithium insertion is accompanied by electron transfer. Charging reverses the overall process: an external source supplies work and lithium returns toward graphite. Normal storage in graphite is intercalation into a host, not a metallic-lithium negative electrode. [DOE explains the separate routes](https://www.energy.gov/science/doe-explainsbatteries); [Sandia describes lithium insertion in LFP particles](https://newsreleases.sandia.gov/popcorn_batteries/).
+
+Gold and blue markers retain their identities and retrace their paths. They illustrate selected charge-transfer routes. Their counts, relative speeds and synchronized journeys do **not** represent individual-particle dynamics. Lithium in the electrolyte, salt-anion transport and local electroneutrality are averaged rather than resolved.
+
+<a id="try"></a>
+
+## Change one condition and inspect the result
+
+- Discharge from the same initial state at different currents. Compare the immediate resistive voltage drop, the slower polarization change and internal heat power.
+- Choose **Rest after load**. The model first discharges for 120 seconds, then removes current. Voltage recovers, while SOC and the lithium inventory remain unchanged during rest.
+- Choose **Charging** and follow the reverse paths. Positive charging input must cover both increased storage and internal losses.
+- Use the energy ledger near a capacity endpoint. Current stops at the modeled limit, so additional elapsed time cannot push SOC outside its usable range.
+
+The native ranges have explicit names and support arrow keys, Home and End. Reset restores initial SOC, current, elapsed time, process, view, camera and 2D mode. Changing a setting reconstructs from the chosen initial state; it does not silently retain a previous experiment. A 2D view preserves the separate internal and external routes if WebGL is unavailable.
+
+<a id="deeper"></a>
+
+## Stoichiometry and conserved charge
+
+Let `z` be usable SOC. The two electrode hosts are represented by average compositions LiₓC₆ and LiᵧFePO₄:
+
+<div className="formula">
+  x = 0.05 + 0.9z
+  <br />
+  y = 0.95 − 0.9z
+  <br />x + y = 1
+</div>
+
+Both modeled host capacities are matched. With `Q = 3600 C` and Faraday constant `F`, each host contains `Q/(0.9F)` moles of sites. Consequently, the decrease in graphite-host lithium matches the increase in positive-host lithium, and the transferred amount is the external charge divided by `F`.
+
+The endpoints refer to a **usable window**. At zero SOC, lithium has not vanished: the graphite average is still `x = 0.05` and the positive host has `y = 0.95`. The average stoichiometry does not resolve graphite staging, LFP phase coexistence or particle-to-particle heterogeneity. The insertion relation LiFePO₄ ⇌ FePO₄ + Li⁺ + e⁻ supplies the one-ion/one-electron bookkeeping; this scene does not use the enhanced-capacity mechanisms studied in the cited [primary LFP experiment](https://www.nature.com/articles/ncomms2705).
+
+## A declared voltage approximation
+
+The voltage curve is authored to have an LFP-like plateau, not fitted to a particular product. Write `w = 2z − 1`:
+
+<div className="formula">U(z) = 3.30 + 0.08w + 0.14w⁹ volts</div>
+
+The model includes a series resistance `R₀ = 0.04 Ω` and one passive polarization branch with `Rₚ = 0.03 Ω`, `Cₚ = 1500 F` and time constant `RₚCₚ = 45 s`. This is the structure of a [battery equivalent-circuit model](https://www.mathworks.com/help/simscape-battery/ref/batteryequivalentcircuit.html). The capacitance is an equivalent state, not a physical capacitor hidden inside the cell.
+
+Taking positive current `I` to mean discharge:
+
+<div className="formula">
+  dz/dt = −I/Q
+  <br />
+  dp/dt = (I − p/Rₚ)/Cₚ
+  <br />V = U(z) − IR₀ − p
+</div>
+
+The `IR₀` drop changes instantly with current. Polarization `p` relaxes exponentially, so voltage can recover after current removal while SOC stays constant. No spatial diffusion or concentration field is calculated. The RC behavior should not be interpreted as a resolved microscopic transport mechanism.
+
+## Power, reversible storage and heat
+
+The reversible electrical-work reservoir is the integral of open-circuit voltage over charge. Its zero is the lower modeled usable endpoint:
+
+<div className="formula">
+  Echem(z) = Q ∫₀ᶻ U(s) ds
+  <br />
+  Epol = Cₚp²/2
+  <br />
+  Pheat = I²R₀ + p²/Rₚ
+  <br />
+  Pterminal = VI
+</div>
+
+<div className="formula">d(Echem + Epol)/dt + Pterminal + Pheat = 0</div>
+
+At rest, `I = 0`: the reversible chemical-work reservoir does not increase, and loss of polarization storage becomes heat. During charging, terminal power is negative under the discharge-positive sign convention, indicating energy entering the cell. The ledger separates positive energy supplied, positive energy delivered, energy still stored and accumulated internal heat. Ah measures charge capacity; Wh measures energy.
+
+Every constant-current segment is advanced analytically. The controller stops current at a usable SOC endpoint or the illustrative 2.8/3.6 V boundaries, then relaxes the RC state for the rest of that segment. These thresholds and currents describe the teaching model, not a real charging prescription. A real constant-current/constant-voltage strategy is not simulated.
+
+Temperature is held fixed and irreversible heat is assigned to the surroundings. Entropic heat, aging, side reactions, plating, phase transformations and spatial transport are omitted. The energy identity is therefore for the stated equivalent model, not a complete calorimetric prediction for a real cell. The thickness of layers, pores and particles is exaggerated for inspection; [DOE's component overview](https://www.energy.gov/sites/default/files/2023-07/doe-critical-material-assessment_07312023.pdf) and [current-collector/separator description](https://www.energy.gov/eere/vehicles/articles/propulsion-materials-rd-2010-annual-progress-report) provide the structural basis.

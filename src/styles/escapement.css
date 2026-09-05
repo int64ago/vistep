@@ -1,0 +1,294 @@
+.escapement-scene {
+  --esc-ink: #334c50;
+  --esc-green: #3c857a;
+  color: var(--esc-ink);
+  max-width: 1060px;
+  margin: auto;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.escapement-heading {
+  padding: 18px 22px 6px;
+}
+.escapement-heading > span {
+  font-size: 16px;
+  color: #69807d;
+}
+.escapement-heading h2 {
+  font-size: clamp(22px, 2.5vw, 29px);
+  font-weight: 550;
+  line-height: 1.3;
+  margin: 5px 0 4px;
+  letter-spacing: -0.03em;
+}
+.escapement-visual {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  min-width: 0;
+}
+.escapement-object {
+  position: relative;
+  min-width: 0;
+}
+.escapement-studio {
+  height: 420px !important;
+  min-height: 0 !important;
+}
+.escapement-cut-label {
+  position: absolute;
+  left: 20px;
+  top: 12px;
+  z-index: 2;
+  background: #f4f4ecdb;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 16px;
+  pointer-events: none;
+}
+.escapement-contact {
+  display: none;
+}
+.escapement-scene[data-focus='lock'] .escapement-visual,
+.escapement-scene[data-focus='entry'] .escapement-visual,
+.escapement-scene[data-focus='exit'] .escapement-visual {
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+}
+.escapement-contact {
+  min-width: 0;
+}
+.escapement-scene[data-focus='lock'] .escapement-contact,
+.escapement-scene[data-focus='entry'] .escapement-contact,
+.escapement-scene[data-focus='exit'] .escapement-contact {
+  display: block;
+}
+.escapement-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.escapement-diagram text {
+  font: 16px var(--font-body, system-ui, sans-serif);
+  fill: #334c50;
+}
+.escapement-instrument {
+  box-sizing: border-box;
+  max-width: 600px;
+  margin: 10px auto;
+  width: 100%;
+  min-height: 370px;
+  display: flex;
+  align-items: center;
+}
+.escapement-state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 22px;
+  border-top: 1px solid #526f681c;
+  font-size: 16px;
+}
+.escapement-state b {
+  font-weight: 550;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: #34766c;
+}
+.escapement-limits {
+  padding: 8px 22px 14px;
+  color: #657771;
+}
+.escapement-limits summary {
+  min-height: 44px;
+  display: list-item;
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 16px;
+}
+.escapement-limits p {
+  font-size: 16px;
+  max-width: 75ch;
+}
+.escapement-controls {
+  padding: 12px 22px 20px;
+}
+.escapement-controls p {
+  font-size: 16px;
+}
+.escapement-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.escapement-controls button {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid #647a6e38;
+  border-radius: 14px;
+  background: #f4f5ee;
+  padding: 8px 16px;
+  color: var(--esc-ink);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.escapement-controls button[aria-pressed='true'] {
+  background: #dceae2;
+  color: #285e55;
+}
+.escapement-controls button:focus-visible,
+.escapement-controls input:focus-visible {
+  outline: 3px solid #439486;
+  outline-offset: 3px;
+}
+.escapement-range {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 12px;
+  margin: 8px 0;
+}
+.escapement-range label,
+.escapement-range output {
+  font-size: 16px;
+}
+.escapement-range output {
+  font-variant-numeric: tabular-nums;
+}
+.escapement-range input {
+  grid-column: 1/-1;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  accent-color: var(--esc-green);
+}
+@media (max-width: 760px) {
+  .escapement-heading {
+    padding: 14px 12px 4px;
+  }
+  .escapement-heading h2 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 5px 0 0;
+  }
+  .escapement-heading > span {
+    font-size: 16px;
+  }
+  .escapement-studio {
+    height: 355px !important;
+  }
+  .escapement-scene[data-focus='lock'] .escapement-visual,
+  .escapement-scene[data-focus='entry'] .escapement-visual,
+  .escapement-scene[data-focus='exit'] .escapement-visual {
+    display: block;
+  }
+  .escapement-scene[data-focus='lock'] .escapement-object,
+  .escapement-scene[data-focus='entry'] .escapement-object,
+  .escapement-scene[data-focus='exit'] .escapement-object {
+    display: none;
+  }
+  .escapement-contact {
+    padding: 0 8px;
+  }
+  .escapement-diagram text {
+    font-size: 17px;
+  }
+  .escapement-instrument {
+    box-sizing: border-box;
+    min-height: 0;
+    padding: 0 8px;
+    margin: 8px auto;
+  }
+  .escapement-state {
+    padding: 8px 12px;
+    gap: 8px;
+    min-height: 56px;
+  }
+  .escapement-state span {
+    max-width: 76%;
+  }
+  .escapement-limits {
+    padding: 3px 12px 10px;
+  }
+  .escapement-controls {
+    padding: 8px 12px 16px;
+  }
+  .escapement-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .escapement-options button {
+    padding: 8px;
+  }
+  .escapement-controls > button {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .escapement-controls button {
+    transition: none;
+  }
+}
+/* Keep the fallback and its real button inside this topic's stage. */
+.escapement-studio {
+  position: relative;
+}
+.escapement-studio .studio-fallback {
+  box-sizing: border-box;
+  background: transparent;
+  height: 100%;
+  padding: 0 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.escapement-studio .studio-fallback svg {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+.escapement-studio .studio-mode {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  left: auto;
+  z-index: 3;
+  font-size: 16px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 14px;
+}
+.escapement-scene[data-watch='false'] .escapement-studio:has(.studio-fallback) {
+  height: 420px !important;
+}
+.escapement-scene[data-watch='false'] .escapement-studio .studio-fallback {
+  padding-bottom: 52px;
+}
+.escapement-object:has(.studio-fallback) .escapement-cut-label {
+  display: none;
+}
+@media (min-width: 761px) {
+  .escapement-visual:has(.studio-fallback) {
+    grid-template-columns: 1fr !important;
+  }
+  .escapement-visual:has(.studio-fallback) .escapement-contact {
+    display: none;
+  }
+  .escapement-studio .studio-fallback svg {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 760px) {
+  .escapement-scene[data-watch='true'] {
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+  }
+  .escapement-scene[data-watch='true'] .escapement-limits {
+    margin-top: auto;
+  }
+}

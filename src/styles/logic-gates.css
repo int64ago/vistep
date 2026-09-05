@@ -1,0 +1,296 @@
+.cmos-scene {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #3e5964;
+}
+.cmos-film {
+  background: radial-gradient(ellipse at 34% 20%, #fffdf7, #eef3ef 78%);
+  border-radius: 24px;
+  padding: 22px 30px 16px;
+}
+.cmos-heading,
+.cmos-state,
+.cmos-axis,
+.cmos-note {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cmos-heading h2 {
+  margin: 0 0 16px;
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.25;
+  font-weight: 550;
+}
+.cmos-heading > span,
+.cmos-note,
+.cmos-axis {
+  color: #5e757e;
+  font-size: 16px;
+}
+.cmos-state {
+  min-height: 38px;
+}
+.cmos-state b {
+  display: inline-flex;
+  min-width: 33px;
+  min-height: 32px;
+  justify-content: center;
+  align-items: center;
+  background: #ddeae3;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: 550;
+  margin-left: 7px;
+}
+.cmos-state b.is-unknown {
+  background: #ebdfbf;
+  color: #7c643a;
+}
+.cmos-device-types {
+  display: flex;
+  gap: 18px;
+  font-size: 16px;
+  color: #a96d45;
+}
+.cmos-device-types > span:last-child {
+  color: #3f859b;
+}
+.cmos-circuit {
+  display: block;
+  width: 100%;
+  max-height: 338px;
+}
+.cmos-instruments {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: center;
+  gap: 30px;
+  margin-top: 12px;
+}
+.cmos-proof {
+  min-width: 0;
+}
+.cmos-proof svg {
+  display: block;
+  width: 100%;
+  max-height: 146px;
+}
+.cmos-proof-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  color: #4c8795;
+  font-size: 16px;
+}
+.cmos-unknown {
+  color: #856e43;
+}
+.cmos-second {
+  color: #9273a7;
+}
+.cmos-evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cmos-evidence strong {
+  font-size: 28px;
+  font-weight: 540;
+  color: #4c8795;
+  font-variant-numeric: tabular-nums;
+}
+.cmos-energy-bar {
+  display: flex;
+  height: 18px;
+  border-radius: 8px;
+  background: #dce5df;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.cmos-energy-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 15px;
+}
+.cmos-cascade-values {
+  display: grid;
+  gap: 5px;
+}
+.cmos-cascade-values span:nth-child(2) {
+  color: #846598;
+}
+.cmos-note {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #76979a25;
+  flex-wrap: wrap;
+}
+.cmos-explore {
+  padding: 24px;
+  background: #eff3f0;
+  border-radius: 22px;
+  margin-top: 24px;
+}
+.cmos-explore p {
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+.cmos-explore p:last-child {
+  margin: 18px 0 0;
+}
+.cmos-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.cmos-buttons button {
+  min-height: 44px;
+  padding: 9px 16px;
+  font: inherit;
+  background: #fffefa;
+  color: #3e5964;
+  border: 1px solid #b4c9c7;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.cmos-buttons button[aria-pressed='true'] {
+  background: #dbe9e4;
+  border-color: #6c9a8f;
+}
+.cmos-buttons button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.cmos-input-pairs,
+.cmos-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 26px;
+  margin: 20px 0;
+}
+.cmos-input-pairs .cmos-buttons {
+  margin-top: 7px;
+}
+.cmos-controls > div > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cmos-controls output {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cmos-controls input[type='range'] {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  accent-color: #568490;
+  cursor: pointer;
+}
+.cmos-controls input:focus-visible,
+.cmos-buttons button:focus-visible {
+  outline: 3px solid #578fa6;
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .cmos-film {
+    padding: 17px 8px 14px;
+    border-radius: 20px;
+  }
+  .cmos-desktop-only {
+    display: none;
+  }
+  .cmos-heading h2 {
+    font-size: 23px;
+    margin-bottom: 12px;
+    min-height: 58px;
+  }
+  .cmos-state {
+    font-size: 16px;
+    gap: 6px;
+    min-height: 40px;
+    flex-wrap: wrap;
+  }
+  .cmos-state b {
+    font-size: 20px;
+    min-width: 29px;
+    margin-left: 4px;
+  }
+  .cmos-circuit {
+    max-height: none;
+  }
+  .cmos-instruments {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .cmos-proof svg {
+    max-height: 106px;
+  }
+  .cmos-proof-legend {
+    gap: 0 9px;
+  }
+  .cmos-evidence {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0 6px;
+  }
+  .cmos-evidence > span:last-child {
+    grid-column: 1 / -1;
+  }
+  .cmos-evidence strong {
+    font-size: 25px;
+  }
+  .cmos-note {
+    margin-top: 12px;
+    padding-top: 10px;
+    gap: 2px;
+  }
+  .cmos-note > span:last-child {
+    display: none;
+  }
+  .cmos-energy-key {
+    gap: 0 10px;
+  }
+  .cmos-cascade-values {
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 8px;
+  }
+  .cmos-cascade-values > span:last-child {
+    grid-column: 1 / -1;
+  }
+  .cmos-explore {
+    padding: 18px 12px;
+  }
+  .cmos-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cmos-input-pairs {
+    gap: 12px;
+  }
+  .cmos-input-pairs button {
+    flex: 1 1 44px;
+    padding-inline: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmos-buttons button {
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .cmos-scene[data-watch='true'] .cmos-film {
+    min-height: 840px;
+    display: flex;
+    flex-direction: column;
+  }
+  .cmos-scene[data-watch='true'] .cmos-note {
+    margin-top: auto;
+  }
+}

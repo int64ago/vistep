@@ -1,5 +1,11 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  escapement: () => import('../components/experiments/Escapement'),
+  'lithium-battery': () => import('../components/experiments/LithiumBattery'),
+  'logic-gates': () => import('../components/experiments/LogicGates'),
+  'public-key': () => import('../components/experiments/PublicKey'),
+  'solar-cell': () => import('../components/experiments/SolarCell'),
+  convection: () => import('../components/experiments/Convection'),
   rectifier: () => import('../components/experiments/Rectifier'),
   'sewing-machine': () => import('../components/experiments/SewingMachine'),
   'induction-cooktop': () => import('../components/experiments/InductionCooktop'),

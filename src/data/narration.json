@@ -5584,7 +5584,7 @@
         "zh": "把两个半周放回一张波形图。橙色交流电压一上一下，绿色输出却始终留在零线以上。交流每完成一个周期，输出就出现两个脉冲，所以五十赫兹输入对应一百赫兹脉动。不过，绿色曲线仍然反复下落。方向统一了，并不意味着输出电压已经足够平稳。",
         "en": "Put both halves on one time axis. The orange source voltage swings above and below zero, while the green output stays nonnegative. One AC cycle produces two output pulses: fifty hertz in, one hundred hertz of pulsation. But the green trace still falls between peaks. Rectifying the direction has not yet smoothed the voltage.",
         "seconds": 22,
-        "chapterAt": 47.0,
+        "chapterAt": 47,
         "at": 47.45
       },
       {
@@ -5596,7 +5596,7 @@
         "zh": "现在在负载两端接入一只空电容，从零电荷开始。源电压升高到足够推动二极管电流时，桥才给电容充电。请看紫色支路和电压曲线，储存的电荷一点点增加，没有瞬间跳到峰值。接下来，即使交流源开始回落，电容也已经有能量可以继续供给负载。",
         "en": "Connect an initially empty capacitor across the load. Once the source is high enough to drive the diodes, current charges it. Watch the violet branch and the voltage trace: stored charge builds continuously, rather than jumping straight to the peak. When the source falls again, the capacitor already has energy to supply the load.",
         "seconds": 22,
-        "chapterAt": 73.0,
+        "chapterAt": 73,
         "at": 73.45
       },
       {
@@ -5608,7 +5608,7 @@
         "zh": "留意虚线表示的门槛：电容电压，再加上两只二极管的压降。源电压的幅值超过它，桥电流才出现。离开这段窗口，四只二极管都截止，电容通过负载缓慢放电，直到下一次补充。整流桥不是整个半周都在给电容送电，电容也没有把电流倒灌回交流源。",
         "en": "The dashed line marks the capacitor voltage plus two diode drops. Bridge current appears only when the source magnitude exceeds it. Outside that window, all four diodes block and the capacitor discharges through the load until the next recharge. It neither receives current throughout the whole half-cycle nor sends stored charge backward into the source.",
         "seconds": 22,
-        "chapterAt": 98.0,
+        "chapterAt": 98,
         "at": 98.45
       },
       {
@@ -5620,7 +5620,7 @@
         "zh": "保持电源和负载不变，把电容从二百二十微法换成两千二百微法。两张曲线使用相同的电压刻度，所以现在看到的起伏缩小，是真正的纹波下降。较大的电容每失去同样一小份电荷，电压下降得更少；而补充电荷的工作，仍要通过桥里的导通窗口完成。",
         "en": "Keep the source and load settings, and increase capacitance from two hundred twenty to twenty-two hundred microfarads. Both traces use the same voltage scale, so the smaller variation is a real reduction in ripple. A larger capacitor loses less voltage for a given amount of charge removed. Recharging still happens through the bridge conduction windows.",
         "seconds": 22,
-        "chapterAt": 123.0,
+        "chapterAt": 123,
         "at": 123.45
       },
       {
@@ -5632,7 +5632,7 @@
         "zh": "先把负载电阻从二百欧降到五十欧。负载索取更多电流，两次补充之间，电容电压下落得更明显。然后保持这个较重的负载，把交流频率从五十赫兹改成一百赫兹。同一个二十毫秒窗口里，充电机会变多了，电容来不及下降那么多，纹波因此又变小。",
         "en": "First reduce the load from two hundred ohms to fifty. It draws more current, so capacitor voltage falls farther between recharges. Keep that heavier load and double AC frequency from fifty to one hundred hertz. In the same twenty-millisecond window, recharge opportunities arrive more often. The capacitor has less time to discharge, and ripple decreases.",
         "seconds": 22,
-        "chapterAt": 148.0,
+        "chapterAt": 148,
         "at": 148.45
       },
       {
@@ -5644,8 +5644,614 @@
         "zh": "最后，把空电容接入的时刻移到交流峰值。电容起初没有电压，源和它之间的差值很大，于是出现很高的充电电流。现在增大图中的源电阻，峰值明显受限，电容充电也更慢。这里展示的是低压桥式整流模型；实际电源还需要考虑器件额定值、保护和更多寄生效应。",
         "en": "Finally connect the empty capacitor at the AC crest. Its initial voltage is zero, leaving a large voltage difference that drives an inrush pulse. Increase the modeled source resistance: the peak falls, and charging becomes slower. This is a low-voltage teaching model; real supplies also require device ratings, protection, and parasitic effects beyond this calculation.",
         "seconds": 22,
-        "chapterAt": 173.0,
+        "chapterAt": 173,
         "at": 173.45
+      }
+    ]
+  },
+  "convection": {
+    "duration": 186.0,
+    "cues": [
+      {
+        "id": "diffusion",
+        "title": "先有传导",
+        "titleEn": "Conduction comes first",
+        "caption": "没有流动，热也会扩散；完全对称的初态不会凭空长出涡旋。",
+        "captionEn": "Heat diffuses without flow. An exactly symmetric initial state does not invent a vortex.",
+        "zh": "先看一格完全静止、温度均匀的流体。下板保持暖，上板保持冷，颜色开始从两端向里面展开。亮点还没有移动，但热已经在传递，这叫传导。现在没有任何横向扰动，计算不会偷偷加一条循环路线。",
+        "en": "Begin with motionless fluid at one uniform temperature. Hold the lower plate warm and the upper plate cool. Color spreads inward from both ends. The tracers have not moved, yet heat is already traveling by conduction. There is no sideways disturbance in this setup, and no circulation path hidden in the animation.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "seed",
+        "title": "给温度一点扰动",
+        "titleEn": "Disturb the temperature layer",
+        "caption": "重置为导热温度层，加入相同的小扰动，看它能否长大。",
+        "captionEn": "Start from a conductive temperature layer with a small prescribed disturbance. Can it grow?",
+        "zh": "重新开始，这次先放好一个导热温度层，再加入很小的横向温度差。它是明确写入初态的扰动，不是随机晃动。留意中间和两侧，细小的速度箭头逐渐出现。温度影响浮力，流动又改变温度，两个计算从这里相互接上。",
+        "en": "Restart from a conductive temperature layer, this time with a small sideways temperature disturbance. It is prescribed in the initial state, not random movement. Watch the center and the sides as small velocity arrows appear. Temperature changes buoyancy, and the resulting flow carries temperature. The two parts of the calculation are now coupled.",
+        "seconds": 22,
+        "chapterAt": 22.0,
+        "at": 22.45
+      },
+      {
+        "id": "plumes",
+        "title": "暖流开始上升",
+        "titleEn": "A rising warm current",
+        "caption": "下热上冷时，温度扰动与浮力耦合，逐渐形成上升暖流。",
+        "captionEn": "With warmth below, temperature disturbances couple to buoyancy and grow into rising currents.",
+        "zh": "让同一组计算继续。下方的暖色伸向上方，冷色流体也找到了向下的通道。并不是所有暖色点都只能往上走，局部速度由整个不可压缩流场决定。这里看到的暖流，是温度输运和浮力持续相互作用的结果。",
+        "en": "Continue the same calculation. Warm colors extend upward while cooler fluid finds a downward route. A warm-colored point is not required to move upward at every instant: its local velocity belongs to the whole incompressible flow. The developing current comes from temperature transport and buoyancy continually affecting one another.",
+        "seconds": 22,
+        "chapterAt": 44.5,
+        "at": 44.95
+      },
+      {
+        "id": "return",
+        "title": "追踪一团流体",
+        "titleEn": "Follow the return flow",
+        "caption": "上升必须有回流；亮点和染料由同一个封闭速度场搬运。",
+        "captionEn": "Rising flow needs a return path. Tracers and dye follow the same closed-cell velocity field.",
+        "zh": "跟住这个亮点，再看紫色染料怎样被拉开。格子没有出口，哪里向上，就必须有别处回流。亮点的身份一直保留，但它经过的局部温度会改变。圆圈不是预先画好的；位置和染料都从实际算出的速度场一步步推进。",
+        "en": "Follow the bright tracer and watch the purple dye stretch through the cell. There is no outlet, so rising fluid needs a return path elsewhere. The tracer keeps its identity, but the temperature at its position can change. Neither its route nor the dye pattern is drawn in advance; both follow the computed velocity.",
+        "seconds": 22,
+        "chapterAt": 67.0,
+        "at": 67.45
+      },
+      {
+        "id": "transport",
+        "title": "拿掉浮力再比较",
+        "titleEn": "Remove buoyancy, keep the heat",
+        "caption": "保留相同温差，去掉浮力耦合：传导仍在，携热流动消失。",
+        "captionEn": "Keep the temperature difference and remove buoyancy: conduction remains, but circulating heat transport disappears.",
+        "zh": "用相同初态和温差再做一次，只把浮力耦合关掉。没有驱动循环，热仍然能够传导。对照中间截面的携热读数：有流动时，流体搬走了热；没有流动时，这一项为零。温度颜色变化，并不自动意味着发生了对流。",
+        "en": "Repeat with the same initial temperature and plate difference, but disable buoyancy coupling. Nothing drives circulation, yet conduction still transfers heat. Compare the advective heat readings across the middle of the cell. Moving fluid carries heat; the motionless case has zero advective transport. A changing temperature image alone does not prove that convection is happening.",
+        "seconds": 22,
+        "chapterAt": 89.0,
+        "at": 89.45
+      },
+      {
+        "id": "above",
+        "title": "把暖板放在上面",
+        "titleEn": "Put warmth above",
+        "caption": "只交换冷热板，扰动不再长大；热从上方主要靠传导向下走。",
+        "captionEn": "Swap the warm and cool plates. The disturbance decays, and heat travels mainly downward by conduction.",
+        "zh": "现在保留浮力，只交换冷热板的位置。同一个小扰动，从下面加热时能长大，从上面加热时却逐渐衰减。上方暖、下方冷的分层比较稳定。热没有被封住，仍主要靠传导向下走，只是不再发展出刚才那样的循环。",
+        "en": "Keep buoyancy active and exchange the warm and cool plates. The same small disturbance grows when heated from below but decays when heated from above. Warm fluid above cool fluid makes a stable arrangement here. Heat is not trapped: it still travels mainly downward by conduction, without developing the earlier circulation.",
+        "seconds": 22,
+        "chapterAt": 113.5,
+        "at": 113.95
+      },
+      {
+        "id": "cooldown",
+        "title": "撤去温差以后",
+        "titleEn": "After the contrast is removed",
+        "caption": "把两板调到同温，余热与惯性不会瞬间消失，流动逐步衰减。",
+        "captionEn": "Set both plates to one temperature. Stored heat and motion remain briefly, then the flow decays.",
+        "zh": "回到已经建立循环的格子，把两块板都调到中间温度。注意，亮点没有立刻停住，原来的温度差也没有瞬间消失。随着热扩散和动量耗散继续，颜色逐渐均匀，动能读数降低。撤去外加温差，与抹掉已有流动，是两件不同的事。",
+        "en": "Return to an established circulation and set both plates to the middle temperature. The tracers do not stop immediately, and stored temperature differences remain for a while. As diffusion and momentum dissipation continue, the colors even out and kinetic energy falls. Removing the imposed temperature contrast does not instantly erase the existing flow.",
+        "seconds": 22,
+        "chapterAt": 136.5,
+        "at": 136.95
+      },
+      {
+        "id": "resolution",
+        "title": "看清计算的边界",
+        "titleEn": "What the grid can tell us",
+        "caption": "加密网格仍得到对流，但数值会变化；本演示不测量临界阈值。",
+        "captionEn": "A finer grid still gives convection, with different numbers. We do not measure an onset threshold.",
+        "zh": "最后把计算单元显露出来，再用更细的网格比较同一时刻。两组都出现对流，携热数值却不完全相同。迎风格式还带有额外的数值耗散，所以这里不报一个所谓精确的临界阈值。画面解释这组理想边界里的温度与流动，不替代真实三维实验。",
+        "en": "Reveal the computational cells and compare a finer grid at the same elapsed time. Both produce convection, but their heat-transport readings differ. The upwind scheme also adds numerical dissipation, so we do not report a supposedly precise onset threshold. This window explains coupled heat and flow under idealized boundaries; it does not replace a real three-dimensional experiment.",
+        "seconds": 22,
+        "chapterAt": 160.0,
+        "at": 160.45
+      }
+    ]
+  },
+  "solar-cell": {
+    "duration": 199.0,
+    "cues": [
+      {
+        "id": "threshold",
+        "title": "先过能量门槛",
+        "titleEn": "Cross the energy threshold",
+        "caption": "越过带隙才可能激发电荷对；多出来的光子能量先变成热。",
+        "captionEn": "A photon must cross the bandgap to excite a pair; excess photon energy becomes heat.",
+        "zh": "先别急着数电流，先看每个光子的能量。这颗低能光子跨不过硅的带隙，继续穿过去。能量足够的光子，吸收后可以激发一对电子和空穴。注意能量更高的那一颗：多出来的能量变成热，并没有在这里变出第二对电荷。",
+        "en": "Start with one photon, before counting any current. The low-energy photon cannot cross silicon's bandgap, so it passes through. An energetic enough photon can be absorbed and excite an electron and a hole. Watch the higher-energy photon: its extra energy becomes heat. Our model does not turn it into a second pair.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "pair",
+        "title": "一对电荷分开走",
+        "titleEn": "Separate a charge pair",
+        "caption": "一对等量异号电荷同时出现；结区电场让电子与空穴向相反方向移动。",
+        "captionEn": "Equal opposite charges appear together. The junction field separates electrons and holes.",
+        "zh": "现在切开电池，跟住一个确定被吸收的光子。电子和空穴在同一处出现，电荷没有凭空增加。电子先扩散到结区，再被那里的电场推向上方；空穴向下方的接点移动。注意，电场只标在薄薄的结区里，不是整块硅都在被同样地推动。",
+        "en": "Now open the cell and follow one photon that is absorbed. An electron and a hole appear together, with no net charge created. The electron diffuses toward the junction, then the field drives it upward. The hole moves toward the rear contact. That field is drawn only inside the thin junction region.",
+        "seconds": 22,
+        "chapterAt": 22.0,
+        "at": 22.45
+      },
+      {
+        "id": "circuit",
+        "title": "外面的路也要闭合",
+        "titleEn": "Close the outside path",
+        "caption": "电子沿接点、导线与负载返回；空穴留在电池内，闭合路径才持续输出。",
+        "captionEn": "Electrons return through contacts, wire and load. Holes stay in the cell; sustained output needs a closed path.",
+        "zh": "电子到了前接点，路还没有结束。沿导线往右，它经过负载，最后回到背面的接点。空穴没有钻进金属导线，而是在电池这一侧等待复合。这里慢放的是一对电荷的完整路径；持续照明时，许多这样的过程共同维持电流，标记的数量并不代表安培数。",
+        "en": "Reaching the front contact is only part of the journey. Follow the electron along the wire, through the load and back to the rear contact. The hole stays on the cell side, where recombination completes the path. We slow down one pair; continuous illumination sustains many such processes, not just these two markers.",
+        "seconds": 22,
+        "chapterAt": 45.5,
+        "at": 45.95
+      },
+      {
+        "id": "load",
+        "title": "负载选择工作点",
+        "titleEn": "The load chooses the point",
+        "caption": "负载直线与 I–V 曲线的交点，决定真实电流、电压与输出功率。",
+        "captionEn": "The load line meets the I–V curve at the actual current, voltage and power.",
+        "zh": "把负载电阻慢慢增大，看棕色直线转动。它和蓝色电池曲线的交点，才是电路实际采用的电压和电流。浅色矩形的面积表示两者相乘，也就是输出功率。交点经过空心标记附近时，面积最大；继续增大电阻，电压还在升，功率却已经下降。",
+        "en": "Increase the load resistance and watch the brown line rotate. Where it meets the blue cell curve gives the actual voltage and current. The shaded rectangle multiplies them: that is output power. Near the hollow marker, its area is largest. Keep increasing resistance and voltage still rises, but useful power falls again.",
+        "seconds": 22,
+        "chapterAt": 70.5,
+        "at": 70.95
+      },
+      {
+        "id": "limits",
+        "title": "两种零输出",
+        "titleEn": "Two ways to get zero power",
+        "caption": "开路有电压却没有外电流；短路有电流却没有负载电压。两者输出都为零。",
+        "captionEn": "An open circuit has no external current; a short has no load voltage. Both deliver zero power.",
+        "zh": "先断开外面的路。电池两端有电压，但没有外电流，所以不能向负载持续送出功率。现在换成理想短路，交点移到另一端：电流很大，负载上的电压却为零。两种状态看起来相反，电压乘电流都等于零；发电需要在这两个端点之间工作。",
+        "en": "First, disconnect the outside path. Voltage remains across the cell, but no external current flows, so the load receives no steady power. Now replace it with an ideal short. Current is large, yet load voltage is zero. These opposite endpoints both give zero power. Useful operation lies between them, with both factors nonzero.",
+        "seconds": 22,
+        "chapterAt": 95.0,
+        "at": 95.45
+      },
+      {
+        "id": "light",
+        "title": "光照把曲线抬起来",
+        "titleEn": "Light raises the curve",
+        "caption": "增加照度提高光生电流；暗态的被动负载没有可用输出。",
+        "captionEn": "More irradiance raises photocurrent. In darkness, a passive load receives no power.",
+        "zh": "把温度和负载固定，先从完全黑暗开始。没有光生电流，这个被动电路也没有输出。随着光照恢复，蓝色曲线逐渐抬高，负载交点跟着移动。灰色虚线保留满光照时的曲线，方便比较。这里增加的是入射光通量，并没有偷偷改变电阻或电池面积。",
+        "en": "Hold temperature and load fixed, and begin in complete darkness. With no photocurrent, this passive circuit supplies no power. As illumination returns, the blue curve rises and the operating point moves along the load line. The dashed curve keeps the full-light reference visible. Only irradiance changes; resistance and the equivalent cell area stay fixed.",
+        "seconds": 22,
+        "chapterAt": 119.0,
+        "at": 119.45
+      },
+      {
+        "id": "temperature",
+        "title": "更热不等于更强",
+        "titleEn": "Hotter is not more powerful",
+        "caption": "这组硅电池参数中，升温略增短路电流，却降低开路电压与最大功率。",
+        "captionEn": "For this silicon model, warming slightly raises short-circuit current but lowers open-circuit voltage and maximum power.",
+        "zh": "阳光不变，只把电池从二十五度加热到六十五度。短路电流会略微增加，曲线的右边却明显往回缩。与灰色的低温参考相比，最大功率也降低了。原因不能只看光生电流：温度还改变二极管的饱和电流和结电压。这组硅电池参数并不支持越热发电越多的说法。",
+        "en": "Keep the sunlight fixed and warm the cell from twenty-five to sixty-five degrees Celsius. Short-circuit current rises slightly, but the curve retreats to the left. Maximum power falls below the cool reference. Temperature also changes the diode's saturation current and junction voltage. For these silicon parameters, a hotter cell does not mean more electricity.",
+        "seconds": 22,
+        "chapterAt": 144.5,
+        "at": 144.95
+      },
+      {
+        "id": "losses",
+        "title": "每一份能量有去处",
+        "titleEn": "Account for every watt",
+        "caption": "先减少被收集的电荷，再增大串联电阻：复合与发热是不同损失。",
+        "captionEn": "First reduce collection, then increase series resistance: recombination and heating are different losses.",
+        "zh": "最后给同一份阳光记一本账。先降低收集倍率，更多电荷复合，输出减少。再增大串联电阻，导电路径消耗更多能量，发热条跟着变化。反射、透过、光子热化也各有去处。结电压能量差是模型里的剩余能量项，不是实测热图；所有条目相加，始终回到入射光功率。",
+        "en": "Finish by accounting for the same incoming sunlight. First reduce collection: more charge recombines and output falls. Then raise series resistance, increasing dissipation along the conducting path. Reflection, transmission and photon thermalization have separate entries. The junction energy gap is a model residual, not a measured heat map. Every entry sums back to incident power.",
+        "seconds": 22,
+        "chapterAt": 171.5,
+        "at": 171.95
+      }
+    ]
+  },
+  "public-key": {
+    "duration": 196.5,
+    "cues": [
+      {
+        "id": "public-key-1",
+        "title": "把一把钥匙放到公开处",
+        "titleEn": "Put one key in public view",
+        "caption": "公开 n 和 e；发件人可算出密文，d 由收件人保管。",
+        "captionEn": "Publish n and e so anyone can compute ciphertext. The recipient keeps d private.",
+        "zh": "先看上面那张公开告示。收件人把两个数交给所有人，发件人就能把消息变成密文，却不用先交换私人钥匙。跟住信封里的四十二，它会变成十五。这里故意使用极小的数，让每一步都看得清；这些参数没有真实的保密能力。",
+        "en": "Look at the notice above the envelope. The recipient publishes two numbers, so a sender can compute ciphertext without first receiving a secret key. Follow forty-two as it becomes fifteen. We have deliberately chosen tiny numbers so every operation stays visible. This example teaches the mechanism; these particular keys cannot keep a real secret.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "public-key-2",
+        "title": "两种指数，从哪里来",
+        "titleEn": "Where the two exponents come from",
+        "caption": "由不同素数构造 n，再求 e 在模 λ 下的逆元 d。",
+        "captionEn": "Build n from distinct primes, then find d as the inverse of e modulo λ.",
+        "zh": "把纸翻过来，看看钥匙的来历。十一乘十七得到一百八十七。再取十与十六的最小公倍数，得到八十。公开指数选七，欧几里得算法找到二十三：七乘二十三，除以八十余一。这种倒过来的关系，是模逆元，不是普通分数。",
+        "en": "Turn the notice over and inspect its construction. Eleven times seventeen gives the public modulus. The least common multiple of ten and sixteen is eighty. Choose seven as the public exponent. Euclid’s algorithm gives twenty-three for the return trip: their product leaves remainder one modulo eighty. That is a modular inverse, not an ordinary fraction.",
+        "seconds": 22,
+        "chapterAt": 24.0,
+        "at": 24.45
+      },
+      {
+        "id": "public-key-3",
+        "title": "只留下整除后的余数",
+        "titleEn": "Keep the remainder",
+        "caption": "消息只能取 0 到 n−1；mod 表示余数，不是普通除法。",
+        "captionEn": "Messages range from 0 to n−1. The mod operation returns a remainder.",
+        "zh": "消息先限定为一个整数，最小是零，最大是一百八十六。现在只做一次平方：四十二乘自己，得到一千七百六十四。去掉九份一百八十七，剩下八十一。这个剩余就是模运算的结果；以后每次相乘，都可以这样留下小的余数。",
+        "en": "Our message is an integer between zero and one hundred eighty-six. Try just one square. Forty-two squared is one thousand seven hundred and sixty-four. Remove nine whole copies of the modulus, and eighty-one remains. That remainder is what mod means. We can reduce after every multiplication, keeping the arithmetic small without changing its eventual answer.",
+        "seconds": 22,
+        "chapterAt": 48.5,
+        "at": 48.95
+      },
+      {
+        "id": "public-key-4",
+        "title": "把幂拆开，算出密文",
+        "titleEn": "Split the power to compute the ciphertext",
+        "caption": "指数 7 = 1 + 2 + 4；平方得余数，选中后逐项乘入。",
+        "captionEn": "The exponent 7 is 1 + 2 + 4. Square, reduce, and multiply the selected terms.",
+        "zh": "七次幂，不必真的连乘出一个巨数。看上排，一次幂、二次幂、四次幂，靠平方逐个得到。七正好拆成一加二加四，所以三项都取用。下面的累积值从一出发，每乘一项就取余，经过四十二、三十六，最后停在十五。",
+        "en": "We do not need to build the enormous seventh power first. Along the top, successive squares give powers one, two and four. Those exponents add to seven, so all three terms are selected. Watch the accumulator below: start at one, multiply, then reduce. It passes through forty-two and thirty-six before reaching ciphertext fifteen.",
+        "seconds": 22,
+        "chapterAt": 73.5,
+        "at": 73.95
+      },
+      {
+        "id": "public-key-5",
+        "title": "私人指数把消息带回来",
+        "titleEn": "The private exponent brings the message back",
+        "caption": "同一密文改用指数 23；跳过 8，最后恢复消息 42。",
+        "captionEn": "Apply exponent 23 to the ciphertext. Skip power 8 and recover message 42.",
+        "zh": "收件人拿到十五，底数变了，运算方法没变。现在使用私人指数二十三，它拆成一、二、四和十六。注意八次幂这一格：算出来了，却不需要乘进去，累积值仍是九十三。最后取用十六次幂，四十二就回来了。",
+        "en": "The recipient starts with fifteen and uses the private exponent, twenty-three. The same arithmetic now selects powers one, two, four and sixteen. Watch the eighth-power column carefully. Its remainder is computed but never multiplied into the accumulator, which stays at ninety-three. The final selected term brings back forty-two, the original message.",
+        "seconds": 22,
+        "chapterAt": 98.0,
+        "at": 98.45
+      },
+      {
+        "id": "public-key-6",
+        "title": "零和不互素的数，也要回来",
+        "titleEn": "Zero and shared factors must work too",
+        "caption": "逐个检查边界与不互素消息；两边素数的余数都必须恢复。",
+        "captionEn": "Check boundaries and shared factors. Both prime remainders must return correctly.",
+        "zh": "不能只挑好看的消息。让零、十一、十七和最大值轮流走一遍。十一与模数有公因子，其中一边的余数为零，但零的正整数次幂仍是零。两边素数的余数都恢复，范围内就只有原来那个数。这里还完整核对了全部一百八十七个输入。",
+        "en": "Now test the awkward inputs: zero, eleven, seventeen and the largest allowed value. Eleven shares a factor with the modulus, so one prime remainder is zero. A positive power keeps that zero intact. Both prime remainders return correctly, identifying the original integer. We also check all one hundred eighty-seven possible inputs for this key.",
+        "seconds": 22,
+        "chapterAt": 122.5,
+        "at": 122.95
+      },
+      {
+        "id": "public-key-7",
+        "title": "算得回来，不代表守得住",
+        "titleEn": "A round-trip is not a security guarantee",
+        "caption": "不填充的 RSA 是确定性的；小消息可以逐个公开猜测。",
+        "captionEn": "Unpadded RSA is deterministic. Small messages can be guessed using the public key.",
+        "zh": "不过，能解回来，不等于别人猜不到。连续发送两个四十二，两次密文都是十五。旁观者也有公钥，可以从零开始，把猜测逐个加密。看到四十二这一行了吗？密文吻合了。小范围加上没有随机填充，让这封信根本守不住秘密。",
+        "en": "A successful return trip does not guarantee secrecy. Send forty-two twice and both ciphertexts are fifteen. An observer has the public key too, and can encrypt candidate messages starting at zero. There: the forty-two row matches. This small message space, with no randomized padding, lets a public calculation reveal what the envelope contained.",
+        "seconds": 22,
+        "chapterAt": 147.0,
+        "at": 147.45
+      },
+      {
+        "id": "public-key-8",
+        "title": "真实系统，多做了什么",
+        "titleEn": "What real systems add",
+        "caption": "现代 RSA 加密需要安全填充；混合方案用随机密钥保护内容。",
+        "captionEn": "Modern RSA encryption needs secure padding. Hybrid schemes protect content with a random key.",
+        "zh": "最后把教具与真实用法分开。现代 RSA 加密采用随机填充的规范方案，例如 OAEP。混合加密中，公钥保护随机对称密钥，再用它保护内容。图上只画分工，没有执行这些算法。还要确认公钥属于谁；会加密，并不证明发件人身份。",
+        "en": "Here is the extra structure real encryption needs. Modern RSA uses randomized padding in a scheme such as OAEP. In a hybrid design it protects a random symmetric key, while authenticated symmetric encryption protects the content. This is only an architecture diagram. Verify whose public key you have; encryption alone does not establish the sender’s identity.",
+        "seconds": 22,
+        "chapterAt": 171.5,
+        "at": 171.95
+      }
+    ]
+  },
+  "logic-gates": {
+    "duration": 177.0,
+    "cues": [
+      {
+        "id": "pull-up",
+        "title": "低输入接通上拉路径",
+        "titleEn": "A low input opens the pull-up path",
+        "caption": "A 为 0，上拉给电容充电；输出电压逐渐升高。",
+        "captionEn": "With A at 0, the pull-up charges the capacitor and the output rises.",
+        "zh": "先看这只反相器。输入为零，上方的开关接通，下方断开。沿着棕色通路，电源给输出电容充电。注意右边的电压：它没有立刻跳到一，而是逐渐升高。栅极负责控制开关，并没有把电流直接送进沟道。",
+        "en": "Follow the brown path above the output. With the input low, the upper switch connects the supply to the capacitor. The lower path is open. Watch the voltage rise along a curve, rather than jump to one. The insulated gate controls the channel; it does not feed current straight through it.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "pull-down",
+        "title": "高输入接通下拉路径",
+        "titleEn": "A high input opens the pull-down path",
+        "caption": "A 为 1，上拉断开，下拉让电容连续放电。",
+        "captionEn": "With A at 1, the pull-up opens and the capacitor discharges through the pull-down.",
+        "zh": "现在把输入变成一。上方通路断开，蓝色的下拉通路接通。电容里原有的电荷经过沟道流向地，输出电压连续下降。输入已经变了，输出却还需要一点时间。这就是同一只反相器完成的另一个方向。",
+        "en": "Now raise the input. The upper path disconnects and the blue pull-down turns on. Charge leaves the output capacitor through that channel toward ground. The input has already changed, but the output is still moving. This is the other half of inversion: a high input eventually produces a low output.",
+        "seconds": 22,
+        "chapterAt": 22.0,
+        "at": 22.45
+      },
+      {
+        "id": "nand-paths",
+        "title": "与非门：下拉必须串通",
+        "titleEn": "NAND needs both pull-down switches",
+        "caption": "两个下拉串联；任一个没有接通，输出就不能沿它们放电。",
+        "captionEn": "The pull-down devices are in series; either open switch breaks the discharge path.",
+        "zh": "把下方换成两只串联开关。只有一个输入变高时，蓝色通路仍然断着，输出保持高电平。等两个输入都高，放电路径才完整。再把其中一个输入变低，上方的并联支路就能充电。这种接法，实现的就是与非。",
+        "en": "Look at the two lower switches in series. Changing just one input leaves a gap, so the output stays high. When both inputs become high, the discharge path is complete. Lower either input again and a parallel upper branch can recharge the capacitor. Those connections are what make this a NAND gate.",
+        "seconds": 22,
+        "chapterAt": 44.0,
+        "at": 44.45
+      },
+      {
+        "id": "nor-paths",
+        "title": "或非门：一条下拉就够",
+        "titleEn": "NOR needs only one pull-down path",
+        "caption": "下拉改成并联，任一高输入都能拉低输出。",
+        "captionEn": "Parallel pull-down paths let either high input pull the output low.",
+        "zh": "再交换串联和并联的位置。下方现在有两条独立通路，任何一个输入变高，就能让电容放电。上方却需要两个开关都接通，输出才能重新升高。留意最后的上升：电流要经过两只电阻，充电也因此更慢。",
+        "en": "Exchange the series and parallel arrangements. Now either lower branch can discharge the output when its input goes high. Recharging requires both upper switches to be on. Notice the slower final rise: charging current must pass through two resistances in series. The circuit topology changes both the logic and the timing.",
+        "seconds": 22,
+        "chapterAt": 66.0,
+        "at": 66.45
+      },
+      {
+        "id": "threshold",
+        "title": "电压要穿过中间区域",
+        "titleEn": "Voltage crosses an uncertain region",
+        "caption": "X 表示不能保证的逻辑读数；电容电压仍有确定数值。",
+        "captionEn": "X marks an unguaranteed logic reading; the capacitor voltage remains definite.",
+        "zh": "把刚才的下降过程放慢。蓝线进入浅色带，读数变成了叉号。电容并没有失去电压，只是此时不能保证把它读成零或一。圆点标出半电源电压，用来比较延迟。本片的这些界线是教学约定，不是所有芯片的规格。",
+        "en": "Watch the falling voltage enter the shaded band. Its logic label becomes X, although the capacitor still has a definite voltage. In this band we do not promise a reliable zero or one. The dot marks half supply for comparing delay. These boundaries are teaching choices, not universal chip specifications.",
+        "seconds": 22,
+        "chapterAt": 88.0,
+        "at": 88.45
+      },
+      {
+        "id": "capacitive-load",
+        "title": "更大的负载需要更久",
+        "titleEn": "More capacitance takes longer",
+        "caption": "10 fF 换成 40 fF，电阻不变，半电压时间增加到四倍。",
+        "captionEn": "Changing 10 fF to 40 fF quadruples half-voltage time at the same resistance.",
+        "zh": "先看较小的输出电容，电压很快就升起来了。接着只把电容放大四倍，电源和开关电阻都不变。右边仍用同一个时间范围，这次曲线明显变缓。更大的电容需要搬运更多电荷，才能改变同样多的电压。",
+        "en": "First watch the smaller output capacitor charge. Now replace it with four times the capacitance, keeping the supply and channel resistance unchanged. The plot uses the same time scale. Reaching half supply takes four times as long because changing the voltage requires moving four times as much charge through the same resistance.",
+        "seconds": 22,
+        "chapterAt": 110.0,
+        "at": 110.45
+      },
+      {
+        "id": "cascade",
+        "title": "变化沿两级电路传播",
+        "titleEn": "A transition travels through two stages",
+        "caption": "Y₁ 穿过模型界线后，第二级才开始改变 Y₂。",
+        "captionEn": "Only after Y₁ crosses the model boundary does the second stage begin changing Y₂.",
+        "zh": "顺着这条连线，第一级输出接到第二级的两个栅极。先看第一条电压曲线下降。只有穿过模型的切换界线，第二级才换通路，另一只电容开始充电。两条曲线之间的错开，来自两段真实计算的充放电过程。",
+        "en": "Follow the wire from the first output to both gates of the second inverter. The first voltage falls before the second stage changes paths. It switches only when that voltage crosses our model boundary. Then its own capacitor starts charging. The separation between the curves comes from two calculated charging and discharging processes.",
+        "seconds": 22,
+        "chapterAt": 132.0,
+        "at": 132.45
+      },
+      {
+        "id": "energy",
+        "title": "一次翻转，能量去了哪里",
+        "titleEn": "Where does switching energy go?",
+        "caption": "充电把能量分给电容与热，随后放电把储能也变成热。",
+        "captionEn": "Charging divides energy between storage and heat; discharging turns the stored part into heat.",
+        "zh": "最后追踪一轮充放电。充电时，电源给出的能量一部分存进电容，另一部分已经变成热。放电时，存下来的能量也经过下拉电阻变成热。稳定电平在这个理想模型里不持续耗电，但翻转有代价；真实芯片还会有漏电等损耗。",
+        "en": "Now follow the energy through a complete charge and discharge. During charging, some supply energy is stored and some is already lost as heat. Discharging turns the stored part into heat too. A settled level draws no permanent current in this ideal model, but switching costs energy. Real chips also have leakage and other losses.",
+        "seconds": 22,
+        "chapterAt": 154.0,
+        "at": 154.45
+      }
+    ]
+  },
+  "lithium-battery": {
+    "duration": 188.0,
+    "cues": [
+      {
+        "id": "hosts",
+        "title": "两种宿主，一层隔膜",
+        "titleEn": "Two hosts and a separator",
+        "caption": "锂储存在宿主里，隔膜保持两极分开。",
+        "captionEn": "Lithium sits in hosts; the separator keeps the electrodes apart.",
+        "zh": "先把电芯的截面打开。左边的石墨和右边的磷酸铁锂，都是容纳锂的宿主，并不是两块金属锂。铜与铝薄片负责集流。中间这层湿润的隔膜，让离子能够穿行，同时避免两极直接接触。接下来，跟住金色标记和蓝色标记。",
+        "en": "Look inside this graphite and lithium iron phosphate cell. The materials on either side host lithium; neither is a slab of lithium metal. Copper and aluminum collect electronic current. Between them, a wet separator keeps the electrodes apart. Now follow the gold and blue markers.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "routes",
+        "title": "两条路，同一次放电",
+        "titleEn": "Two paths, one discharge",
+        "caption": "锂离子向内穿行，电子经过外部负载。",
+        "captionEn": "Ions travel internally; electrons pass through the external load.",
+        "zh": "接上负载，放电开始。金色标记从石墨一侧离开，经电解液向另一极移动。蓝色电子标记先经过集流体，再绕到外部负载。它们的路径不同，却属于同一次电荷转移。标记是选出的示踪对象，不代表真实粒子的数量，也没有模拟它们的实际速度。",
+        "en": "Connect the load and watch discharge begin. Gold moves out of the graphite through electrolyte. Blue first reaches a collector, then takes the wire through the external load. These separate routes belong to the same charge transfer. The markers are selected tracers, not particle counts or actual transit speeds.",
+        "seconds": 22,
+        "chapterAt": 23.0,
+        "at": 23.45
+      },
+      {
+        "id": "membrane",
+        "title": "让离子过，不让电子过",
+        "titleEn": "Ions pass; electrons do not",
+        "caption": "同一组身份保持不变，路径不会跨错材料。",
+        "captionEn": "Tracer identities stay fixed, and their paths respect the materials.",
+        "zh": "现在靠近隔膜，看金色标记经过的孔道。孔里含有电解液，所以离子能通过。电子仍在上方的外部导线上，不能把隔膜当成捷径。正极接收锂的同时，也接收来自外部的电子；两边的反应配合起来，才构成完整的电流回路。",
+        "en": "Move closer to the separator. Its pores contain electrolyte, so lithium ions can pass. The electron marker stays on the external conductor above it; the separator is not an electronic shortcut. At the positive electrode, lithium insertion accompanies electron transfer. The reactions connect the internal and external parts of the circuit.",
+        "seconds": 22,
+        "chapterAt": 47.5,
+        "at": 47.95
+      },
+      {
+        "id": "inventory",
+        "title": "电量对应锂的搬移",
+        "titleEn": "Charge counts lithium transfer",
+        "caption": "两极含锂比例一减一增，总量保持不变。",
+        "captionEn": "One host loses lithium as the other gains it; total inventory stays fixed.",
+        "zh": "继续放电，留意下面两条库存条。石墨里的平均含锂比例降低，磷酸铁锂一侧升高，总锂量没有减少。外部每通过相应的电荷，就对应一份锂的转移。SOC 记录可用电荷还剩多少；它不是电压的另一个名字，更不能直接当成瓦时。",
+        "en": "Keep discharging and compare the two inventory bars. Average lithium content falls in graphite and rises in the positive host, while the total stays fixed. External charge counts the matching lithium transfer. State of charge tracks the usable charge remaining. It is neither another name for voltage nor a measurement in watt-hours.",
+        "seconds": 22,
+        "chapterAt": 70.5,
+        "at": 70.95
+      },
+      {
+        "id": "rate",
+        "title": "电流变大，压降出现",
+        "titleEn": "More current reveals the drop",
+        "caption": "内阻立刻降压，极化随后变化，内部持续发热。",
+        "captionEn": "Resistance acts immediately; polarization follows, with internal heat loss.",
+        "zh": "把放电电流提高，端电压马上向下跳了一步。这一步来自内阻，之后缓慢增加的压降来自等效极化。负载拿到的功率，已经扣除了内部损耗。注意热功率读数：更快取出电荷，并不意味着所有化学能都变成了有用的外部功。",
+        "en": "Increase the discharge current. Terminal voltage immediately steps down through the series resistance, then polarization adds a slower change. The load receives power after internal losses. Watch the heat reading rise. Extracting charge faster does not mean that all the released chemical energy becomes useful work in the external circuit.",
+        "seconds": 22,
+        "chapterAt": 93.0,
+        "at": 93.45
+      },
+      {
+        "id": "rest",
+        "title": "电压回升，不是电量回生",
+        "titleEn": "Voltage recovers, charge does not",
+        "caption": "断流后 SOC 不变，极化储能释放为热。",
+        "captionEn": "At zero current, SOC stays fixed while polarization energy becomes heat.",
+        "zh": "现在把外部电流降到零。电阻压降立刻消失，端电压随后慢慢靠近虚线。看清下面的 SOC：前后完全一样。这段回升来自极化状态的松弛；等效暂存的能量正释放为热。电池并没有趁着休息，凭空把已经输出的电量补回来。",
+        "en": "Now remove the external current. The resistive drop vanishes immediately, and voltage gradually approaches the dashed line. Read the state of charge below: it has not changed. The recovery comes from polarization relaxing, with its equivalent stored energy becoming heat. Rest has not replaced charge already delivered to the load.",
+        "seconds": 22,
+        "chapterAt": 115.0,
+        "at": 115.45
+      },
+      {
+        "id": "reverse",
+        "title": "提供能量，沿原路返回",
+        "titleEn": "Supply energy and reverse the paths",
+        "caption": "充电源做功，锂回到石墨，电子方向也反转。",
+        "captionEn": "The charger does work as lithium returns to graphite and electrons reverse.",
+        "zh": "让外部装置改为提供能量，方向就反过来了。还是这些示踪点，没有换一批，也没有跳到另一端。锂向石墨返回，电子也沿外部回路反向传输。充电源必须提供足够的端电压：一部分输入增加可逆储能，另一部分仍消耗在内部。",
+        "en": "The external device now supplies energy, and the directions reverse. These are the same tracers, retracing their paths without jumping to a new starting point. Lithium returns to graphite, and external electrons reverse too. The source increases reversible storage while also paying for internal losses; charging does not eliminate resistance.",
+        "seconds": 22,
+        "chapterAt": 138.5,
+        "at": 138.95
+      },
+      {
+        "id": "limit",
+        "title": "到边界，停止继续充入",
+        "titleEn": "At the limit, stop charging",
+        "caption": "容量端点触发断流，能量账目始终闭合。",
+        "captionEn": "The usable capacity limit stops current, while energy accounting stays balanced.",
+        "zh": "最后观察电量接近可用上限。到达端点，模型控制器断开电流，不允许 SOC 继续超过百分之百。下面这笔账始终相等：初始储能加上充入能量，等于仍然储存的、已经输出的和内部放出的热。真实电池需要自己的控制策略，这里只是明确边界的教学电芯。",
+        "en": "Watch the cell approach its usable upper limit. The model controller stops current instead of allowing state of charge to exceed one hundred percent. The ledger still balances: initial energy plus charging input equals energy retained, energy delivered and internal heat. This bounded teaching cell does not prescribe a real charging protocol.",
+        "seconds": 22,
+        "chapterAt": 162.0,
+        "at": 162.45
+      }
+    ]
+  },
+  "escapement": {
+    "duration": 209.5,
+    "cues": [
+      {
+        "id": "gate",
+        "title": "轮子想转，摆在把关",
+        "titleEn": "The wheel wants to turn; the pendulum gates it",
+        "caption": "重锤拉动卷筒；擒纵轮被两块擒纵瓦交替拦住。",
+        "captionEn": "The weight pulls the drum; two pallets alternately hold the escape wheel.",
+        "zh": "先看下方的重锤，再看轮缘。重锤始终往下拉，可这只轮子没有一路转过去。它被上方的两块擒纵瓦轮流拦住。钟摆与锚架连在同一根轴上，每次摆过来，只打开一小段通路。我们把外壳剖开，沿着那枚绿色标记的齿，看看持续的拉力怎样变成一步一步的运动。",
+        "en": "Start with the hanging weight, then look at the rim. The weight keeps pulling, yet the wheel cannot simply run away. Two pallets take turns holding it. The pendulum shares an arbor with the anchor and opens a short passage on each swing. Follow the green-marked tooth as that steady drive becomes a sequence of steps.",
+        "seconds": 21.5,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "lock",
+        "title": "锁住轮子，摆仍在走",
+        "titleEn": "The wheel rests while the pendulum moves",
+        "caption": "锁面是以锚轴为圆心的圆弧：摆动时，齿尖停在原处。",
+        "captionEn": "The locking arc is centred on the anchor arbor, so the tooth stays put as the anchor swings.",
+        "zh": "现在靠近入口瓦，只盯住接触点。摆还在动，齿尖却停在同一个位置。绿色锁面不是随手画的斜坡，它是一段以锚轴为圆心的圆弧。锚架转动时，这段圆弧沿着自己原来的圆移动，所以轮子不用倒退让路。这就是静止式擒纵里，锁定阶段的关键几何。",
+        "en": "Move in to the entry pallet and watch the contact point. The anchor moves, but the tooth remains in one place. That green surface is an arc centred on the anchor arbor. Turning the anchor slides the arc along its own circle. The wheel does not need to recoil. This geometry explains the dead, or resting, part of deadbeat.",
+        "seconds": 21.5,
+        "chapterAt": 26.0,
+        "at": 26.45
+      },
+      {
+        "id": "impulse",
+        "title": "齿尖滑过冲量面",
+        "titleEn": "The tooth crosses the impulse face",
+        "caption": "齿尖越过锁角，沿平面冲量面推进；随后进入短暂跌落。",
+        "captionEn": "The tooth passes the locking corner, drives along the impulse plane, then briefly drops free.",
+        "zh": "等到摆返回，齿尖终于来到圆弧尽头。这里接上一块平面，接触的作用变了：轮子开始前进，同时通过冲量面推动锚架。看那一点从锁角走到出口，它不是跳到下一块瓦上。离开端点后，还有很短的自由转动，直到另一枚齿被对侧接住。这个间隙叫作跌落。",
+        "en": "As the pendulum returns, the tooth reaches the end of the circular face. A flat impulse face begins there. Now the wheel advances and pushes the anchor through contact. Watch the point travel from the corner to the discharge edge. It then leaves the pallet and moves briefly without contact. This small free movement is called drop.",
+        "seconds": 21.5,
+        "chapterAt": 51.0,
+        "at": 51.45
+      },
+      {
+        "id": "exit",
+        "title": "出口瓦接住下一步",
+        "titleEn": "The exit pallet catches the next step",
+        "caption": "出口瓦先锁住轮子，待摆返回，再从另一方向传递冲量。",
+        "captionEn": "The exit pallet locks first, then delivers an impulse on the returning swing.",
+        "zh": "把视线移到出口瓦。另一枚齿已经落在它的锁面上，轮子再次停下。摆还会继续走到另一端，再折回来。直到这边的锁角让开，第二次冲量才开始。两边的表面朝向不同，但职责相同：先可靠地拦住，再在合适的摆动方向上放行，顺带把能量交给钟摆。",
+        "en": "Look across to the exit pallet. Another tooth has landed on its locking face, stopping the wheel again. The pendulum continues to the far side and returns. Only then does this locking corner clear and the next impulse begin. The two pallets face different ways, but share the same job: hold, release, and pass energy in the returning direction.",
+        "seconds": 21.5,
+        "chapterAt": 77.0,
+        "at": 77.45
+      },
+      {
+        "id": "count",
+        "title": "一次往返，恰好一个齿距",
+        "titleEn": "One full swing, one tooth pitch",
+        "caption": "每半次往返放行一次；完整往返后，30 齿轮前进 12°。",
+        "captionEn": "There is one release per half-swing; a full swing advances this 30-tooth wheel by 12°.",
+        "zh": "现在退远一点，把两次声音想成一对滴答。一次完整往返包含两次放行，轮子合起来前进一个齿距。这只轮有三十枚齿，所以一齿对应十二度。注意摆的连续运动和轮子的停走并不一样。摆提供周期，轮子把这些周期变成可以累计的步数，再交给钟里的后续计数机构。",
+        "en": "Pull back and group two releases into one complete swing. Together they advance the wheel by one tooth pitch. There are thirty teeth here, so that pitch is twelve degrees. Compare the smooth pendulum motion with the wheel’s stops and starts. The pendulum provides a repeating period; the wheel turns those periods into steps a clock can count.",
+        "seconds": 21.5,
+        "chapterAt": 102.5,
+        "at": 102.95
+      },
+      {
+        "id": "energy",
+        "title": "补回损失，摆幅才留得住",
+        "titleEn": "Replacing losses sustains the swing",
+        "caption": "同一起点与阻尼：自由摆衰减；理想中点补能维持能量范围。",
+        "captionEn": "Same start and damping: the free swing decays; ideal centre impulses sustain its energy range.",
+        "zh": "如果只会放行，钟摆迟早还是会停。看这组能量对照：两只摆从相同状态出发，也有相同阻尼。左边没有补能，能量逐渐减少；右边每次过中点都得到一小份能量。这是单独的理想小角摆模型，把冲量压成瞬间，方便看清损失与补偿，并不是在测量这副擒纵的真实效率。",
+        "en": "Releasing the wheel is only half the story. These two pendulums start alike and have identical damping. Without added work, the left one loses energy. The right receives a small, fixed amount at each centre crossing. This separate small-angle model compresses an impulse into an instant. It isolates loss and replacement; it does not measure the escapement’s actual efficiency.",
+        "seconds": 21.5,
+        "chapterAt": 129.0,
+        "at": 129.45
+      },
+      {
+        "id": "period",
+        "title": "摆变长，放行的节拍变慢",
+        "titleEn": "A longer pendulum releases more slowly",
+        "caption": "相同计时窗口里，较长的摆周期更长，累计放行更少。",
+        "captionEn": "Over the same time window, a longer pendulum has a longer period and fewer releases.",
+        "zh": "供能足够以后，怎样改变节拍？先保持左边的短摆不动，再加长右边的有效摆长。两边经过的时间完全相同，可右边一次往返需要更久，累计放行也更少。这里使用小角摆的周期关系。改变的是重心到转轴的有效长度，不是把齿轮随便调慢，也不是改齿数来假装调准钟摆。",
+        "en": "Once losses are replaced, what sets the pace? Keep the short pendulum on the left and lengthen the one on the right. Both comparisons use exactly the same elapsed time. The longer pendulum takes more time per swing and produces fewer releases. We use the small-angle period relation: the effective pivot-to-bob length changes the beat, not a wheel-speed animation setting.",
+        "seconds": 21.5,
+        "chapterAt": 155.5,
+        "at": 155.95
+      },
+      {
+        "id": "roles",
+        "title": "重锤供能，钟摆定拍",
+        "titleEn": "The weight supplies energy; the pendulum sets the beat",
+        "caption": "锁定限制轮的推进；冲量补偿损失；摆长决定近似周期。",
+        "captionEn": "Lock limits the wheel, impulse replaces losses, and length sets the approximate period.",
+        "zh": "回到完整机构，把三件事分开看。重锤下降，提供能量；齿尖和擒纵瓦接触，把能量分批送出，也拦住轮子；钟摆的往返决定下一次什么时候放行。这里省略了真实钟里的多级轮系，让重锤直接驱动示范卷筒。记住这条关系，就能看懂一只机械钟怎样既走得动，又走得有节拍。",
+        "en": "Return to the whole movement and separate its three jobs. The descending weight supplies energy. Teeth and pallets gate that energy and prevent the wheel from running freely. The pendulum determines when the next release can happen. Our drum is driven directly to expose those connections; a real clock adds a gear train. Energy keeps it moving, and the regulator gives it a beat.",
+        "seconds": 21.5,
+        "chapterAt": 182.5,
+        "at": 182.95
       }
     ]
   }

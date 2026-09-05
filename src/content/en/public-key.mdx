@@ -1,0 +1,71 @@
+<h2 id="understand">Publish the outward operation, keep the return operation private</h2>
+
+This scene uses **textbook RSA with deliberately tiny, insecure numbers**. It teaches the arithmetic, not a usable encryption product. The recipient publishes `(n, e)`. Anyone can apply that public operation to an integer message. The recipient normally protects the corresponding private exponent `d`, which recovers the original message. Our teaching view exposes all the secrets so the calculation can be inspected.
+
+Here the two primes are `p = 11` and `q = 17`. Their product is `n = 187`. The public exponent is `e = 7`; the private exponent is `d = 23`. Follow one integer, **42**, into an envelope. Its ciphertext is **15**, and the private operation brings it back to **42**.
+
+<div className="formula">42⁷ mod 187 = 15 → 15²³ mod 187 = 42</div>
+
+The envelope is a diagram of an integer representative. It is not a file format, a text encoding or a claim that an eavesdropper could not recover this toy message. The small-message guessing chapter demonstrates exactly why that claim would be false. Public and private key roles follow [RSA’s original paper](https://people.csail.mit.edu/rivest/Rsapaper.pdf); the mathematical primitive and domains follow [RFC 8017](https://www.rfc-editor.org/rfc/rfc8017.html).
+
+<h2 id="try">Choose a message and inspect every multiplication</h2>
+
+- Select one of three fixed teaching key pairs. Enter a decimal integer from zero through `n−1`. Out-of-range values are rejected instead of silently wrapped. This is not a text encryption form.
+- Try `0`, `p`, `q` and `n−1`. The middle two share a prime factor with `n`; they still round-trip correctly.
+- Choose public-key encryption or private-key decryption. The slider counts processed powers of two, starting from an accumulator of one. Use arrow keys or the Previous/Next buttons.
+- In the default decryption, the power eight is shown but skipped: `23 = 1 + 2 + 4 + 16`. The accumulator stays 93 during that step. Skipping is different from discarding a nonzero result accidentally.
+- Reset restores the first key pair, message 42, encryption direction, zero completed steps and closed details.
+
+The displayed values are exact integer computations. The pace of the film is instructional and says nothing about computer speed or attack cost. No key file, ciphertext download, random source, secure padding or signature function is provided.
+
+<h2 id="deeper">Why does the return operation work?</h2>
+
+<details>
+<summary>The private exponent is a modular inverse</summary>
+
+For distinct odd primes, define `λ = lcm(p−1, q−1)`. Choose `e` with `3 ≤ e < n` and `gcd(e, λ) = 1`. A private exponent satisfies `e × d ≡ 1 (mod λ)` and `0 < d < n`. Our example uses `λ = lcm(10,16) = 80`.
+
+<div className="formula">
+  80 = 11 × 7 + 3<br />7 = 2 × 3 + 1<br />1 = 23 × 7 − 2 × 80
+</div>
+
+So `d = 23`. This is not the ordinary fraction `1/7`. The product `7 × 23 = 161` leaves remainder one upon division by 80. Using the least common multiple is the key relation specified in RFC 8017. The related Euler totient is `(p−1)(q−1) = 160`; it must not be confused with λ, even though this particular exponent pair also satisfies the inverse relation modulo 160.
+
+</details>
+
+<details>
+<summary>Repeated squaring avoids building an enormous power</summary>
+
+A remainder can be reduced after every multiplication without changing the final modular result. Squaring 42 gives 1764, which is `9 × 187 + 81`; squaring that remainder gives `81² mod 187 = 16`.
+
+| Selected power | Residue | Accumulator after multiplying and reducing |
+| -------------- | ------- | ------------------------------------------ |
+| 1              | 42      | 42                                         |
+| 2              | 81      | 36                                         |
+| 4              | 16      | 15                                         |
+
+These powers add to seven. Decryption starts with 15 and uses residues `15, 38, 135, 86, 103` for powers `1, 2, 4, 8, 16`. It multiplies all except the fourth. The resulting accumulators are `15, 9, 93, 93, 42`. The film shows those exact operations, not an interpolated animation between the first and last values.
+
+</details>
+
+<details>
+<summary>Do not forget zero or messages that share a factor</summary>
+
+After both operations, the result is congruent to `m^(ed)` modulo `n`. Since `ed = 161`, its exponent is one more than a multiple of both 10 and 16.
+
+Work modulo each prime separately. A nonzero residue modulo 11 satisfies Fermat’s relation with exponent 10; a zero residue remains zero under a positive power. The same argument works modulo 17 with exponent 16. Therefore the recovered value and original message agree modulo both primes, including messages divisible by either prime. The Chinese remainder theorem makes the representative in `0…186` unique.
+
+This handles `0 → 0 → 0`, `11 → 88 → 11`, `17 → 85 → 17`, and `186 → 186 → 186`. Checking the 187-element domain verifies this particular key. The argument above explains why valid keys with distinct primes work generally. It does not establish security.
+
+</details>
+
+<details>
+<summary>Why modern RSA needs more than these powers</summary>
+
+The toy encryption is deterministic. Repeating 42 gives 15 again. An observer can encrypt guesses using only the public key; enumerating from zero finds 42 on the 43rd attempt. Here even factoring 187 is trivial. Neither a padlock drawing nor a successful round-trip supplies confidentiality.
+
+Modern RSA encryption uses a complete standardized scheme with randomized padding, such as RSA-OAEP, appropriate keys and a vetted implementation. In a hybrid design, public-key protection carries a random symmetric key; authenticated symmetric encryption protects the content. [NIST SP 800-56B](https://csrc.nist.gov/pubs/sp/800/56/b/r2/final) specifies RSA-based key-establishment schemes. The last chapter is a labeled architecture diagram, **not a simulated OAEP or symmetric encryption run**.
+
+The public key must also be bound to the intended recipient’s identity. Encrypting under a substituted key protects the message for the wrong holder. Knowing or using the recipient’s public key does not authenticate the sender. Signatures serve a separate purpose and use their own schemes; this scene does not demonstrate signing or describe it as “encrypting with the private key.”
+
+</details>

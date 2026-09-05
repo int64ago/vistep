@@ -1,0 +1,95 @@
+---
+import { solarCellGeometry as g, solarCellShot } from '../../models/solar-cell';
+interface Props {
+  color?: string;
+}
+const { color = '#8c9b72' } = Astro.props;
+const shot = solarCellShot(2, 0.45);
+const xy = (p: { x: number; y: number }) => `${22 + p.x * 150},${84 + p.y * 112}`;
+const path = (points: { x: number; y: number }[]) =>
+  points.map((p, i) => `${i ? 'L' : 'M'}${xy(p)}`).join(' ');
+const x = (v: number) => 260 + (v / 0.8) * 124,
+  y = (i: number) => 190 - (i / 6) * 134;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <defs
+    ><linearGradient id="solar-cell-cover-bulk" x2="0" y2="1"
+      ><stop stop-color="#cbac89"></stop><stop offset="1" stop-color="#966244"
+      ></stop></linearGradient
+    ></defs
+  >
+  <path d="M0 0H400V230H0Z" fill="#222f35"></path>
+  <path d="M22 84h150v112H22Z" fill="url(#solar-cell-cover-bulk)"></path>
+  <path d="M22 84h150v22.4H22Z" fill="#567b94"></path>
+  <path d="M22 106.4h150v13.44H22Z" fill="#e0d5ac"></path>
+  <path d="M22 80h150" stroke={color} stroke-width="5"></path>
+  <path d="M143 84h28M22 196h150" stroke="#b1b4ab" stroke-width="5"></path>
+  <path d={path(g.external)} stroke="#b1b4ab" stroke-width="2.5" stroke-linejoin="round"></path>
+  <path
+    d={path(shot.episode.photonPath)}
+    stroke="#eac478"
+    stroke-width="1.5"
+    stroke-dasharray="3 5"
+    opacity=".6"></path>
+  <path
+    d={path(shot.episode.electronPath)}
+    stroke="#9dcfe2"
+    stroke-width="1.5"
+    stroke-dasharray="3 4"></path>
+  <path d={path(shot.episode.holePath)} stroke="#ffde99" stroke-width="1.5" stroke-dasharray="3 4"
+  ></path>
+  {
+    [0.16, 0.32, 0.62, 0.78].map((q) => (
+      <path
+        d={`M${22 + q * 150 - 2} 110h4M${22 + q * 150} 108v4M${22 + q * 150 - 2} 117h4`}
+        stroke="#806e45"
+        stroke-width=".8"
+      />
+    ))
+  }
+  {
+    shot.episode.carriers.map((c) => (
+      <g>
+        <>
+          <circle
+            cx={22 + c.position.x * 150}
+            cy={84 + c.position.y * 112}
+            r="5"
+            fill={c.charge < 0 ? '#96d4ee' : '#ffde99'}
+          />
+          <path
+            d={`M${22 + c.position.x * 150 - 2} ${84 + c.position.y * 112}h4${c.charge > 0 ? `M${22 + c.position.x * 150} ${82 + c.position.y * 112}v4` : ''}`}
+            stroke="#293b43"
+            stroke-width="1"
+          />
+        </>
+      </g>
+    ))
+  }
+  <path d="M260 52v138h126M260 123h124M322 190V56" stroke="#62756c" stroke-width=".7" opacity=".5"
+  ></path>
+  <rect
+    x="260"
+    y={y(shot.point.current)}
+    width={x(shot.point.voltage) - 260}
+    height={190 - y(shot.point.current)}
+    fill={color}
+    fill-opacity=".25"></rect>
+  <path
+    d={shot.curve.map((p, i) => `${i ? 'L' : 'M'}${x(p.voltage)} ${y(p.current)}`).join(' ')}
+    stroke="#a2d2df"
+    stroke-width="2"></path>
+  <path
+    d={`M260 190L${x(Math.min(0.8, 6 * shot.config.resistance))} ${y(Math.min(6, 0.8 / shot.config.resistance))}`}
+    stroke="#d6ae6b"
+    stroke-width="1.3"></path>
+  <circle
+    cx={x(shot.point.voltage)}
+    cy={y(shot.point.current)}
+    r="5"
+    fill="#e1b979"
+    stroke="#26363d"
+    stroke-width="2"></circle>
+  <path d="M22 215h150M260 215h124" stroke={color} opacity=".28"></path>
+</svg>

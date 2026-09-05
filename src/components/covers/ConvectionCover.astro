@@ -1,0 +1,74 @@
+---
+import { ConvectionRun } from '../../models/convection';
+interface Props {
+  color?: string;
+}
+const { color = '#ad8455' } = Astro.props;
+const state = new ConvectionRun().at(18);
+const p = state.p;
+const shade = (q: number) => {
+  const cold = [98, 132, 147],
+    middle = [227, 219, 189],
+    warm = [193, 92, 49];
+  const a = q < 0.5 ? cold : middle,
+    b = q < 0.5 ? middle : warm,
+    f = q < 0.5 ? 2 * q : 2 * q - 1;
+  return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`;
+};
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs
+    ><linearGradient
+      id="convection-cover-glass"
+      x1="65"
+      y1="20"
+      x2="330"
+      y2="200"
+      gradientUnits="userSpaceOnUse"
+      ><stop stop-color="#fffbe7" stop-opacity=".28"></stop><stop
+        offset=".45"
+        stop-color="#fffbe7"
+        stop-opacity="0"></stop><stop offset="1" stop-color={color} stop-opacity=".08"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect
+    x="73"
+    y="28"
+    width="254"
+    height="174"
+    rx="7"
+    fill={color}
+    fill-opacity=".13"
+    stroke={color}
+    stroke-opacity=".28"></rect>
+  {
+    Array.from(state.temperature, (temperature, k) => (
+      <rect
+        x={80 + ((k % p.nx) * 240) / p.nx}
+        y={35 + ((p.ny - 1 - Math.floor(k / p.nx)) * 160) / p.ny}
+        width={240 / p.nx + 0.1}
+        height={160 / p.ny + 0.1}
+        fill={shade(temperature)}
+      />
+    ))
+  }
+  {
+    state.particles.map((a) => (
+      <circle
+        cx={80 + 160 * a.x}
+        cy={35 + 160 * (1 - a.y)}
+        r={a.id === 8 ? 4 : 1.8}
+        fill="#fff8da"
+        stroke={a.id === 8 ? '#68503a' : 'none'}
+        stroke-width="1"
+      />
+    ))
+  }
+  <rect x="80" y="35" width="240" height="160" fill="url(#convection-cover-glass)"></rect>
+  <rect x="73" y="23" width="254" height="12" rx="4" fill="#79949e"></rect>
+  <rect x="73" y="195" width="254" height="12" rx="4" fill="#b4744c"></rect>
+  <path d="M81 26H314M81 198H314" stroke="#fff5d5" stroke-opacity=".3" stroke-linecap="round"
+  ></path>
+</svg>

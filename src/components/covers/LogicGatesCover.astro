@@ -1,0 +1,33 @@
+---
+interface Props {
+  color?: string;
+}
+const { color = '#4c8795' } = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <ellipse cx="209" cy="113" rx="176" ry="102" fill={color} opacity=".06"></ellipse>
+  <g stroke="#99adae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path
+      d="M130 31V58M130 88V152M130 182V201H222M130 115H222V144M222 158V201M113 31H147M113 201H147M119 208H141M125 215H135"
+    ></path>
+    <path d="M130 31V58M130 88V115H222V144" stroke="#b28058" stroke-width="3"></path>
+    <path d="M130 58V88" stroke="#b28058" stroke-width="4"></path>
+    <path d="M130 152V182" stroke={color} stroke-dasharray="4 6"></path>
+    <path d="M115 60V86M115 154V180" stroke={color}></path>
+    <circle cx="105" cy="73" r="4" fill="#fffdf7" stroke="#b28058"></circle>
+    <path d="M109 73H115M53 73H101M53 73V167H115"></path>
+    <path d="M208 144H236M208 158H236" stroke="#9681ad" stroke-width="3"></path>
+    <circle cx="130" cy="115" r="3.5" fill="#b28058" stroke="none"></circle>
+  </g>
+  <rect x="253" y="79" width="123" height="35" rx="7" fill="#e9dcbd" opacity=".65"></rect>
+  <path d="M253 45V151H376" stroke="#abbcb9" stroke-width="1.4"></path>
+  <path d="M253 149C263 95 274 64 293 54S340 47 376 47" stroke={color} stroke-width="3"></path>
+  <circle cx="272" cy="83" r="4" fill={color}></circle>
+  <rect x="197" y="175" width="7" height="22" rx="3" fill="#9681ad" opacity=".7"></rect>
+  <g font-family="sans-serif" font-size="18" fill="#4f6972">
+    <text x="111" y="23">VDD</text><text x="26" y="78">A</text><text x="231" y="113">Y</text>
+    <text x="239" y="179">C</text><text x="350" y="99">X</text>
+    <text x="42" y="105">0</text><text x="254" y="187">R · C → delay</text>
+  </g>
+</svg>

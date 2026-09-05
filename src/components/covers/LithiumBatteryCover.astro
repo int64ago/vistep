@@ -1,0 +1,138 @@
+---
+import {
+  lithiumGeometry,
+  lithiumShot,
+  lithiumTracer,
+  type LithiumPoint,
+} from '../../models/lithium-battery';
+interface Props {
+  color?: string;
+}
+const { color = '#789a88' } = Astro.props;
+const g = lithiumGeometry(),
+  shot = lithiumShot(2, 0.42),
+  xy = ([x, y, z]: LithiumPoint) => [200 + (x + 0.32 * z) * 83, 126 - y * 44 + z * 22],
+  path = (ps: LithiumPoint[], close = false) =>
+    ps.map((p, i) => `${i ? 'L' : 'M'}${xy(p)}`).join(' ') + (close ? 'Z' : ''),
+  plate = (x: number) =>
+    path(
+      [
+        [x, -1.25, -0.5],
+        [x, 1.25, -0.5],
+        [x, 1.25, 0.5],
+        [x, -1.25, 0.5],
+      ],
+      true,
+    );
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  aria-hidden="true"
+>
+  <rect width="400" height="230" fill="#eaf0e4"></rect>
+  <path d={plate(-1.25)} fill="#ba8762" stroke="#a87554"></path><path
+    d={plate(1.25)}
+    fill="#acbec3"
+    stroke="#8ca4af"></path>
+  <path
+    d={path(
+      [
+        [-1.25, -1.25, 0.5],
+        [1.25, -1.25, 0.5],
+        [1.25, -1.25, -0.5],
+        [-1.25, -1.25, -0.5],
+      ],
+      true,
+    )}
+    fill="#d7ded1"></path>
+  <path d={plate(0)} fill="#e1d8b9" stroke="#c3bda2"></path>
+  {
+    g.pores.map((pore) => (
+      <path
+        d={path(
+          Array.from(
+            { length: 33 },
+            (_, i) =>
+              [
+                0,
+                pore.center[1] + pore.radius * Math.cos((i / 32) * 2 * Math.PI),
+                pore.center[2] + pore.radius * Math.sin((i / 32) * 2 * Math.PI),
+              ] as LithiumPoint,
+          ),
+          true,
+        )}
+        fill="#eaf0e4"
+        stroke="#c3bda2"
+        stroke-width=".4"
+      />
+    ))
+  }
+  {
+    g.negative.map((p) =>
+      [-0.07, 0, 0.07].map((q) => (
+        <path
+          d={path(
+            [
+              [p[0] - 0.12, p[1] + q, -0.27],
+              [p[0] + 0.12, p[1] + q, -0.27],
+              [p[0] + 0.12, p[1] + q, 0.04],
+              [p[0] - 0.12, p[1] + q, 0.04],
+            ],
+            true,
+          )}
+          fill="#617274"
+          stroke="#3c555d"
+          stroke-width=".6"
+        />
+      )),
+    )
+  }
+  {
+    g.positive.map((p) => (
+      <circle cx={xy(p)[0]} cy={xy(p)[1]} r="9" fill={color} stroke="#62847b" />
+    ))
+  }
+  <path d={path(g.external)} stroke="#65898f" stroke-width="3.2" stroke-linejoin="round"></path>
+  <path
+    d={path([
+      [-1.25, 1.25, 0],
+      [-1.25, 1.5, 0],
+    ])}
+    stroke="#ba8762"
+    stroke-width="5"></path><path
+    d={path([
+      [1.25, 1.25, 0],
+      [1.25, 1.5, 0],
+    ])}
+    stroke="#96afb7"
+    stroke-width="5"></path>
+  <rect x="175" y="27" width="50" height="18" rx="6" fill="#91aaa0"></rect>
+  {
+    Array.from({ length: 18 }, (_, i) => {
+      const m = lithiumTracer(i, shot.state.soc);
+      return (
+        <g>
+          <circle cx={xy(m.ion)[0]} cy={xy(m.ion)[1]} r={i === 0 ? 4 : 2.6} fill="#c29a47" />
+          {m.moving && (
+            <circle
+              cx={xy(m.electron)[0]}
+              cy={xy(m.electron)[1]}
+              r={i === 0 ? 4 : 2.6}
+              fill="#347f9b"
+            />
+          )}
+        </g>
+      );
+    })
+  }
+  <path
+    d={path(lithiumTracer(0, shot.state.soc).ionPath)}
+    stroke="#c29a47"
+    stroke-opacity=".6"
+    stroke-width="1.2"></path>
+</svg>

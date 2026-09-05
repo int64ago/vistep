@@ -1,0 +1,284 @@
+.solar-cell-scene {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1080px;
+  margin: auto;
+  padding: 20px 24px 18px;
+  background: #f1eddf;
+  color: #344e5b;
+  border-radius: 24px;
+  font-size: 16px;
+  line-height: 1.55;
+  font-family: inherit;
+}
+.solar-cell-scene * {
+  box-sizing: border-box;
+  min-width: 0;
+}
+.solar-cell-strip {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #6c766c;
+  margin-bottom: 10px;
+}
+.solar-cell-strip > span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+.solar-cell-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  min-height: 422px;
+}
+.solar-cell-stage-single {
+  grid-template-columns: 1fr;
+}
+.solar-cell-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: inherit;
+}
+.solar-cell-stage .solar-cell-threshold {
+  max-height: 410px;
+}
+.solar-cell-svg-label {
+  font-size: 20px;
+  fill: currentColor;
+}
+.solar-cell-svg-number {
+  font-size: 23px;
+  fill: #344e5b;
+  font-variant-numeric: tabular-nums;
+}
+.solar-cell-heat {
+  fill: #a05d40;
+}
+.solar-cell-carrier-note > span {
+  display: block;
+  color: #7f8070;
+  font-size: 16px;
+}
+.solar-cell-carrier-note > strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 12px 0;
+}
+.solar-cell-carrier-note p,
+.solar-cell-circuit-panel p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.solar-cell-circuit-panel {
+  padding: 24px 10px;
+  border-radius: 24px;
+  background: #eae6d8;
+}
+.solar-cell-circuit-panel p {
+  margin: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.solar-cell-circuit-panel strong {
+  font-size: 23px;
+  font-weight: 500;
+}
+.solar-cell-ledger {
+  width: 100%;
+  padding: 8px 16px;
+}
+.solar-cell-ledger-total,
+.solar-cell-ledger-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 12px;
+}
+.solar-cell-ledger-total {
+  padding-bottom: 12px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #d4d2c2;
+}
+.solar-cell-ledger-total strong {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.solar-cell-ledger-row {
+  font-size: 16px;
+  margin: 9px 0;
+  row-gap: 4px;
+}
+.solar-cell-ledger-row output {
+  font-variant-numeric: tabular-nums;
+}
+.solar-cell-ledger-row i {
+  grid-column: 1/-1;
+  display: block;
+  height: 5px;
+  background: #e1ddcf;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.solar-cell-ledger-row b {
+  height: 100%;
+  display: block;
+  border-radius: 9px;
+}
+.solar-cell-ledger p {
+  font-size: 16px;
+  color: #70796a;
+  margin: 14px 0 0;
+}
+.solar-cell-measure {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  border-top: 1px solid #d1d2c1;
+  margin-top: 10px;
+  padding-top: 13px;
+  font-size: 16px;
+  min-height: 45px;
+  font-variant-numeric: tabular-nums;
+}
+.solar-cell-measure strong {
+  font-size: 17px;
+  font-weight: 500;
+}
+.solar-cell-explanation {
+  font-size: 16px;
+  margin: 16px 0;
+}
+.solar-cell-explore {
+  border-top: 1px solid #d1d2c1;
+  padding-top: 20px;
+  margin-top: 16px;
+}
+.solar-cell-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.solar-cell-buttons button {
+  min-height: 44px;
+  border: 1px solid #c2c5b2;
+  border-radius: 13px;
+  background: #faf7ed;
+  color: #405760;
+  font: inherit;
+  font-size: 16px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.solar-cell-buttons button:hover,
+.solar-cell-buttons button[aria-pressed='true'] {
+  background: #e0e8db;
+  border-color: #8b9d8a;
+}
+.solar-cell-explore button:focus-visible,
+.solar-cell-explore input:focus-visible,
+.solar-cell-explore summary:focus-visible {
+  outline: 3px solid #a67c3a;
+  outline-offset: 3px;
+}
+.solar-cell-explore .control {
+  display: block;
+  margin: 16px 0;
+  font-size: 16px;
+}
+.solar-cell-explore .control-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 16px;
+}
+.solar-cell-explore .control-top output {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.solar-cell-explore input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #817b45;
+}
+.solar-cell-explore p,
+.solar-cell-explore summary {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.solar-cell-explore summary {
+  min-height: 44px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .solar-cell-scene {
+    padding: 15px 10px 14px;
+    border-radius: 18px;
+  }
+  .solar-cell-scene[data-watch='true'] {
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+  .solar-cell-strip {
+    margin-bottom: 4px;
+    gap: 2px 10px;
+    min-height: 51px;
+  }
+  .solar-cell-strip > span {
+    font-size: 16px;
+  }
+  .solar-cell-stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    min-height: 405px;
+    flex: 1;
+  }
+  .solar-cell-stage svg {
+    max-width: 350px;
+    flex-shrink: 0;
+  }
+  .solar-cell-stage .solar-cell-threshold {
+    max-height: 405px;
+  }
+  .solar-cell-svg-label {
+    font-size: 21px;
+  }
+  .solar-cell-ledger {
+    padding: 6px 4px;
+  }
+  .solar-cell-ledger-row {
+    margin: 9px 0;
+  }
+  .solar-cell-ledger p {
+    margin-top: 9px;
+  }
+  .solar-cell-measure {
+    min-height: 56px;
+    margin-top: 6px;
+    padding-top: 10px;
+    align-content: center;
+  }
+  .solar-cell-measure strong {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .solar-cell-buttons button {
+    transition: none;
+  }
+}

@@ -1,0 +1,54 @@
+---
+import { PK_KEYS, pkExchange } from '../../models/public-key';
+interface Props {
+  color?: string;
+}
+const { color = '#944e50' } = Astro.props;
+const k = PK_KEYS[0],
+  r = pkExchange(42, k);
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <path d="M28 53H372M28 53V18H372V53" stroke={color} opacity=".5"></path>
+  <text x="200" y="41" text-anchor="middle" fill={color} font-size="17" font-family="monospace"
+    >n = {k.n} · e = {k.e}</text
+  >
+  <path d="M35 130H365" stroke={color} stroke-dasharray="3 8" opacity=".35"></path>
+  <rect x="24" y="88" width="112" height="83" rx="10" fill="#fbf7ef" stroke="#bea18a"></rect>
+  <path d="M28 94L80 128L132 94M28 166L60 143M132 166L100 143" stroke="#bea18a"></path>
+  <rect x="52" y="119" width="56" height="44" rx="7" fill="#fbf7ef"></rect>
+  <text
+    x="80"
+    y="151"
+    text-anchor="middle"
+    fill="#4b4141"
+    font-size="40"
+    font-family="Georgia,serif">{r.message}</text
+  >
+  <circle cx="200" cy="131" r="33" fill="#fbf7ef" stroke={color}></circle>
+  <text x="200" y="144" text-anchor="middle" fill={color} font-size="37" font-family="Georgia,serif"
+    >{r.cipher}</text
+  >
+  <rect x="264" y="88" width="112" height="83" rx="10" fill="#fbf7ef" stroke="#bea18a"></rect>
+  <path d="M268 94L320 128L372 94M268 166L300 143M372 166L340 143" stroke="#bea18a"></path>
+  <rect x="292" y="119" width="56" height="44" rx="7" fill="#fbf7ef"></rect>
+  <text
+    x="320"
+    y="151"
+    text-anchor="middle"
+    fill="#4b4141"
+    font-size="40"
+    font-family="Georgia,serif">{r.recovered}</text
+  >
+  <path d="M155 178C180 197 295 197 320 178" stroke={color} opacity=".55"></path>
+  <text x="200" y="216" text-anchor="middle" fill={color} font-size="16" font-family="monospace"
+    >d = {k.d} · tiny RSA</text
+  >
+</svg>
