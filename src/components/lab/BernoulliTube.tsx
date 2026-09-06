@@ -67,7 +67,7 @@ export default function BernoulliTube({
     return curve(
       [
         ...points.map((v) => ({ x: v.x, y: v.y - v.r })),
-        ...points.toReversed().map((v) => ({ x: v.x, y: v.y + v.r })),
+        ...[...points].reverse().map((v) => ({ x: v.x, y: v.y + v.r })),
       ],
       true,
     );

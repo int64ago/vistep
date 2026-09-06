@@ -8,7 +8,6 @@
   line-height: 1.55;
   font-variant-numeric: tabular-nums;
   overflow: hidden;
-  container-type: inline-size;
 }
 .cpu-watch-phone {
   display: none;
@@ -114,14 +113,14 @@
   min-height: 96px;
   padding: 13px 10px 11px;
   color: var(--cpu-ink);
-  border: 1px solid color-mix(in srgb, var(--cpu-ink) 22%, transparent);
+  border: 1px solid var(--cpu-ink-border);
   border-radius: 13px;
   background: #fffcf4;
   box-shadow: 0 4px 13px #45635c09;
 }
 .cpu-ticket[data-focus='true'] {
   box-shadow: 0 5px 18px #45565112;
-  border-color: color-mix(in srgb, var(--cpu-ink) 45%, transparent);
+  border-color: var(--cpu-ink-border-focus);
 }
 .cpu-ticket-heading {
   display: flex;
@@ -248,7 +247,7 @@
 }
 .cpu-timing-row [data-occupied='true'] {
   color: var(--cpu-ink);
-  background: color-mix(in srgb, var(--cpu-ink) 12%, #fffcf4);
+  background: var(--cpu-ink-fill);
 }
 .cpu-timing-row [data-held='true'] {
   background: #ecdfbb;
@@ -426,7 +425,7 @@
   gap: 9px;
   padding: 5px 9px;
   color: var(--cpu-ink);
-  border: 1px solid color-mix(in srgb, var(--cpu-ink) 25%, transparent);
+  border: 1px solid var(--cpu-ink-outline);
   border-radius: 8px;
   font-size: 19px;
 }
@@ -569,7 +568,9 @@
 .cpu-manual-result > span {
   display: block;
 }
-@container (max-width: 700px) {
+/* The study is 50px (phone) or 74px (desktop) narrower than the viewport, so this is the
+   700px container breakpoint expressed as a media query. */
+@media (max-width: 774px) {
   .cpu-station header {
     flex-direction: column;
     gap: 0;

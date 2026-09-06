@@ -26,5 +26,11 @@ export default defineConfig({
       },
     }),
   ],
-  vite: { build: { chunkSizeWarningLimit: 650 } },
+  vite: {
+    build: {
+      // Matches the support baseline probed in src/lib/browser-support.ts.
+      target: ['chrome108', 'edge108', 'firefox121', 'safari15.4'],
+      chunkSizeWarningLimit: 650,
+    },
+  },
 });

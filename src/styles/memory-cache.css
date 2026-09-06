@@ -6,7 +6,6 @@
   padding: 27px 32px 23px;
   font-size: 16px;
   line-height: 1.5;
-  container-type: inline-size;
   overflow: hidden;
 }
 .memory-cache-study *,
@@ -135,8 +134,8 @@
   padding: 6px 6px 7px;
   color: var(--cache-ink);
   border-radius: 10px;
-  background: color-mix(in srgb, var(--cache-ink) 7%, #fbfaf3);
-  border: 1px solid color-mix(in srgb, var(--cache-ink) 16%, transparent);
+  background: var(--cache-ink-fill);
+  border: 1px solid var(--cache-ink-border);
 }
 .cache-memory-tile[data-requested='true'] {
   border-color: var(--cache-ink);
@@ -218,7 +217,7 @@
 }
 .cache-line[data-valid='true'] {
   color: #f0f3eb;
-  background: color-mix(in srgb, var(--cache-ink) 60%, #223b4b);
+  background: var(--cache-ink-deep);
 }
 .cache-line[data-target='true'] {
   outline: 1px solid #d8d5ba65;
@@ -557,7 +556,9 @@
     border-color 0.3s,
     box-shadow 0.3s;
 }
-@container (max-width: 850px) {
+/* The study is 50px (phone) or 74px (desktop) narrower than the viewport, so this is the
+   850px container breakpoint expressed as a media query. */
+@media (max-width: 924px) {
   .cache-spatial-board {
     grid-template-columns: 1fr 1fr;
     gap: 18px;

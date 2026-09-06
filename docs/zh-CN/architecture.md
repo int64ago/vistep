@@ -47,7 +47,7 @@ Three.js 生命周期负责释放几何、材质、纹理、渲染器与控制�
 
 ## 浏览器支持
 
-基线是 Chrome 111、Edge 111、Firefox 121、Safari 16.4，由页面真实用到的能力决定：Three.js 需要 WebGL 2，版式用到 `:has()`、`color-mix()`、容器查询与 `svh` 单位，模型用到 `Array.prototype.toReversed` 与 `structuredClone`，Transformer 用 Worker，声音实验用 Web Audio。`src/lib/browser-support.ts` 在首屏绘制前用内联脚本逐项探测。任何一项不满足，页面只显示一条提示，列出缺少的能力和基线版本，不加载实验与首页器物；不为不支持的浏览器做降级。受支持浏览器内的运行时故障（WebGL 上下文丢失、音频被拦截、Worker 崩溃）仍各自给出提示。
+基线是 Chrome 108、Edge 108、Firefox 121、Safari 15.4，由页面真实用到的能力决定：Three.js 需要 WebGL 2，版式用到 `:has()` 与 `svh` 单位，模型用到 `structuredClone` 与 `Array.prototype.findLast`，Transformer 用 Worker，声音实验用 Web Audio。样式刻意不用 `color-mix()` 和容器查询，模型不用 ES2023 数组方法，以保住 Safari 15.4（iPhone 6s/7 这一代的最后版本）；Vite 构建目标锁定为同一组版本。`src/lib/browser-support.ts` 在首屏绘制前用内联脚本逐项探测。任何一项不满足，页面只显示一条提示，列出缺少的能力和基线版本，不加载实验与首页器物；不为不支持的浏览器做降级。受支持浏览器内的运行时故障（WebGL 上下文丢失、音频被拦截、Worker 崩溃）仍各自给出提示。
 
 ## 教学模型的范围
 

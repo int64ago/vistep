@@ -1,15 +1,15 @@
 /**
  * Everything a page needs before it is worth hydrating. The list mirrors what the experiments
- * and stylesheets actually use (WebGL 2 for Three.js, `:has()` and container queries in the
- * layouts, `toReversed`/`structuredClone` in the models, Workers for the Transformer, Web Audio
- * for the sound experiments). A browser missing any of them gets one clear notice instead of a
+ * and stylesheets actually use (WebGL 2 for Three.js, `:has()` and `svh` in the layouts,
+ * `structuredClone`/`findLast` in the models, Workers for the Transformer, Web Audio for the
+ * sound experiments). A browser missing any of them gets one clear notice instead of a
  * half-working page; there is deliberately no degraded mode.
  *
  * Both functions are inlined into the document with `Function.prototype.toString`, so they must
  * stay self-contained and use only syntax every browser back to ES2015 can parse — the notice has
  * to render precisely in the browsers that cannot run the rest of the site.
  */
-export const BROWSER_BASELINE = 'Chrome 111 · Edge 111 · Firefox 121 · Safari 16.4';
+export const BROWSER_BASELINE = 'Chrome 108 · Edge 108 · Firefox 121 · Safari 15.4';
 
 export function browserSupportGaps(w: any): string[] {
   var gaps: string[] = [];
@@ -18,10 +18,7 @@ export function browserSupportGaps(w: any): string[] {
     if (!ok) gaps.push(label);
   }
   need(!!doc && 'noModule' in doc.createElement('script'), 'ES modules');
-  need(
-    !!w.Array && typeof w.Array.prototype.toReversed === 'function',
-    'Array.prototype.toReversed',
-  );
+  need(!!w.Array && typeof w.Array.prototype.findLast === 'function', 'Array.prototype.findLast');
   need(typeof w.structuredClone === 'function', 'structuredClone');
   need(typeof w.ResizeObserver === 'function', 'ResizeObserver');
   need(typeof w.IntersectionObserver === 'function', 'IntersectionObserver');
@@ -34,8 +31,6 @@ export function browserSupportGaps(w: any): string[] {
   if (!css || typeof css.supports !== 'function') gaps.push('CSS.supports');
   else {
     need(css.supports('selector(:has(a))'), 'CSS :has()');
-    need(css.supports('color', 'color-mix(in srgb, red, blue)'), 'CSS color-mix()');
-    need(css.supports('container-type', 'inline-size'), 'CSS container queries');
     need(css.supports('height', '100svh'), 'CSS svh units');
     need(css.supports('aspect-ratio', '1'), 'CSS aspect-ratio');
   }

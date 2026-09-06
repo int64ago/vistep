@@ -1,4 +1,5 @@
 import { Fragment, useId, useMemo, useState, type CSSProperties } from 'react';
+import { mixHex, withAlpha } from '../../lib/color';
 import { t } from '../../i18n';
 import {
   CPU_PROGRAM,
@@ -29,8 +30,17 @@ const inks = [
   '#37667e',
   '#736638',
 ];
-const tokenStyle = (pc: number, slot = 0) =>
-  ({ '--cpu-ink': inks[pc % inks.length], '--cpu-slot': slot }) as CSSProperties;
+const tokenStyle = (pc: number, slot = 0) => {
+  const ink = inks[pc % inks.length];
+  return {
+    '--cpu-ink': ink,
+    '--cpu-ink-border': withAlpha(ink, 0.22),
+    '--cpu-ink-border-focus': withAlpha(ink, 0.45),
+    '--cpu-ink-outline': withAlpha(ink, 0.25),
+    '--cpu-ink-fill': mixHex(ink, '#fffcf4', 0.12),
+    '--cpu-slot': slot,
+  } as CSSProperties;
+};
 
 function tokenDetail(token: CpuToken, stage: number) {
   const i = token.instruction;

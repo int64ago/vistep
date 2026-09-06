@@ -1,4 +1,5 @@
 import { useId, useMemo, useState, type CSSProperties } from 'react';
+import { mixHex, withAlpha } from '../../lib/color';
 import { t } from '../../i18n';
 import {
   CACHE_DEFAULT,
@@ -27,8 +28,15 @@ const colors = [
   '#936879',
   '#5f7d9c',
 ];
-const ink = (base: number) =>
-  ({ '--cache-ink': colors[Math.floor(base / 4) % colors.length] }) as CSSProperties;
+const ink = (base: number) => {
+  const color = colors[Math.floor(base / 4) % colors.length];
+  return {
+    '--cache-ink': color,
+    '--cache-ink-fill': mixHex(color, '#fbfaf3', 0.07),
+    '--cache-ink-border': withAlpha(color, 0.16),
+    '--cache-ink-deep': mixHex(color, '#223b4b', 0.6),
+  } as CSSProperties;
+};
 const addressText = (a: number) => String(a).padStart(2, '0');
 const hex = (b: number) => b.toString(16).toUpperCase().padStart(2, '0');
 const range = (base: number, length: number) =>

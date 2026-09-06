@@ -42,7 +42,7 @@ vistep.ai explains everyday mechanisms, science and computation through short vi
 
 ## Run locally
 
-Use [Node.js 24](.nvmrc) and pnpm 11.25.0. The site supports Chrome 111, Edge 111, Firefox 121 and Safari 16.4 or newer; older browsers see a notice instead of the experiments. Narration recordings are stored in [Git LFS](https://git-lfs.com/), so install it before cloning.
+Use [Node.js 24](.nvmrc) and pnpm 11.25.0. The site supports Chrome 108, Edge 108, Firefox 121 and Safari 15.4 or newer; older browsers see a notice instead of the experiments. Narration recordings are stored in [Git LFS](https://git-lfs.com/), so install it before cloning.
 
 ```sh
 git lfs install

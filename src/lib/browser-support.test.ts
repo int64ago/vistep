@@ -7,7 +7,7 @@ function modernWindow(overrides: Record<string, unknown> = {}) {
       createElement: (tag: string) =>
         tag === 'script' ? { noModule: false } : { getContext: () => gl },
     },
-    Array: { prototype: { toReversed() {} } },
+    Array: { prototype: { findLast() {} } },
     structuredClone() {},
     ResizeObserver: class {},
     IntersectionObserver: class {},
@@ -26,7 +26,7 @@ describe('browser support gate', () => {
       modernWindow({
         Worker: undefined,
         AudioContext: undefined,
-        CSS: { supports: (a: string) => !/has|color/.test(a) },
+        CSS: { supports: (a: string, b = '') => !/has|svh/.test(a + b) },
         document: {
           createElement: (tag: string) => (tag === 'script' ? {} : { getContext: () => null }),
         },
@@ -37,7 +37,7 @@ describe('browser support gate', () => {
       'Web Workers',
       'Web Audio',
       'CSS :has()',
-      'CSS color-mix()',
+      'CSS svh units',
       'WebGL 2',
     ]);
     expect(browserSupportGaps(modernWindow({ CSS: undefined }))).toEqual(['CSS.supports']);
