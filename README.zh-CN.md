@@ -42,9 +42,10 @@ vistep.ai 用短篇视觉故事讲解生活器物、科学与计算。跟随一�
 
 ## 本地运行
 
-使用 [Node.js 24](.nvmrc) 与 pnpm 11.25.0。
+使用 [Node.js 24](.nvmrc) 与 pnpm 11.25.0。配音录音存放在 [Git LFS](https://git-lfs.com/)，克隆前先安装。
 
 ```sh
+git lfs install
 git clone https://github.com/int64ago/vistep.git
 cd vistep
 corepack enable

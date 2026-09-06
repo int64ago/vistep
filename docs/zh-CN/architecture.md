@@ -66,6 +66,6 @@ Three.js 生命周期负责释放几何、材质、纹理、渲染器与控制�
 
 ## 构建与发布
 
-`pnpm build` 生成生产 `dist/`；`pnpm build:preview` 生成独立 `dist-preview/`，附加 `X-Robots-Tag: noindex, nofollow`。两者都保留 `vistep.ai` 的规范网址。预览允许爬虫读取 noindex，不在 robots 中宣传 sitemap。CI 检查不生成语音、不需要外部服务凭据。原仓库 `main` 检查通过后，将同一次运行的生产产物交给独立发布任务，使用 GitHub `production` 环境凭据部署 Cloudflare，随后校验线上页面与资源。详见 [自动发布与回滚](deployment.md)。
+`pnpm build` 生成生产 `dist/`；`pnpm build:preview` 生成独立 `dist-preview/`，附加 `X-Robots-Tag: noindex, nofollow`。两者都保留 `vistep.ai` 的规范网址。预览允许爬虫读取 noindex，不在 robots 中宣传 sitemap。CI 检查不生成语音、不需要外部服务凭据；配音 MP3 是 Git LFS 对象，Actions 按对象清单缓存，只有录音变化时才消耗 LFS 带宽。原仓库 `main` 检查通过后，将同一次运行的生产产物交给独立发布任务，使用 GitHub `production` 环境凭据部署 Cloudflare，随后校验线上页面与资源。详见 [自动发布与回滚](deployment.md)。
 
 共享检查包含静态类型、模型不变量、语言覆盖、登记关系、配音文件与片段时序、产物内链、规范网址、sitemap 和索引策略。浏览器视觉与声音验收见 [场景手册](creating-a-scene.md)。

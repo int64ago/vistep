@@ -6,7 +6,7 @@ Thank you for helping make mechanisms easier to see. Contributions may improve e
 
 ## Development
 
-1. Fork and clone the repository. Use Node 24 and `pnpm@11.25.0`.
+1. Install [Git LFS](https://git-lfs.com/), then fork and clone the repository. Use Node 24 and `pnpm@11.25.0`. Narration MP3s under `public/narration/` are LFS objects; a clone without LFS gets pointer files and the build audit fails.
 2. Run `pnpm install --frozen-lockfile`, then `pnpm dev`.
 3. Make a focused branch. Keep unrelated formatting or generated artifacts out of the change.
 4. Run `pnpm verify` and `pnpm build:preview` for a complete scene or shared runtime change. For prose-only changes, formatting and link checks are sufficient; CI still validates the repository.

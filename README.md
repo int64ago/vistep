@@ -42,9 +42,10 @@ vistep.ai explains everyday mechanisms, science and computation through short vi
 
 ## Run locally
 
-Use [Node.js 24](.nvmrc) and pnpm 11.25.0.
+Use [Node.js 24](.nvmrc) and pnpm 11.25.0. Narration recordings are stored in [Git LFS](https://git-lfs.com/), so install it before cloning.
 
 ```sh
+git lfs install
 git clone https://github.com/int64ago/vistep.git
 cd vistep
 corepack enable

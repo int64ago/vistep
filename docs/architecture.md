@@ -66,4 +66,4 @@ Three.js scenes dispose geometries, materials, textures, controls and renderers.
 
 ## Publishing
 
-`pnpm build` writes `dist/`. `pnpm build:preview` writes `dist-preview/` with noindex response headers. Both retain production canonical URLs. CI uses committed narration and needs no speech credentials. The main-branch deployment downloads the verified production artifact without rebuilding it. See [deployment and rollback](deployment.md).
+`pnpm build` writes `dist/`. `pnpm build:preview` writes `dist-preview/` with noindex response headers. Both retain production canonical URLs. CI uses committed narration and needs no speech credentials; the MP3s are Git LFS objects, cached in Actions by their id list so bandwidth is only spent when a recording changes. The main-branch deployment downloads the verified production artifact without rebuilding it. See [deployment and rollback](deployment.md).

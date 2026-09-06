@@ -6,7 +6,7 @@
 
 ## 开发
 
-Fork 并克隆仓库，使用 Node 24 与 pnpm 11.25.0，运行 `pnpm install --frozen-lockfile`、`pnpm dev`。使用聚焦的分支，避免混入无关格式或生成文件。完整场景与共享运行时改动执行 `pnpm verify` 和 `pnpm build:preview`；纯文字可先检查格式与链接，CI 仍验证全仓库。
+先安装 [Git LFS](https://git-lfs.com/)，再 Fork 并克隆仓库（`public/narration/` 的配音 MP3 是 LFS 对象，没装 LFS 只会得到指针文件，构建审计会失败），使用 Node 24 与 pnpm 11.25.0，运行 `pnpm install --frozen-lockfile`、`pnpm dev`。使用聚焦的分支，避免混入无关格式或生成文件。完整场景与共享运行时改动执行 `pnpm verify` 和 `pnpm build:preview`；纯文字可先检查格式与链接，CI 仍验证全仓库。
 
 `package.json` 的 private 防止误发布 npm，不限制 MIT 许可。普通构建无需凭据，不提交环境文件、token、Cloudflare 状态、语音缓存或本地配置。
 
