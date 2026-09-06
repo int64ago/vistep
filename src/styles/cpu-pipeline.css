@@ -568,9 +568,9 @@
 .cpu-manual-result > span {
   display: block;
 }
-/* The study is 50px (phone) or 74px (desktop) narrower than the viewport, so this is the
-   700px container breakpoint expressed as a media query. */
-@media (max-width: 774px) {
+/* The study is 50px narrower than the viewport up to 760px and 74px narrower above, so this is
+   the 700px container breakpoint expressed as a media query. */
+@media (max-width: 750px), (min-width: 761px) and (max-width: 774px) {
   .cpu-station header {
     flex-direction: column;
     gap: 0;

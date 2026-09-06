@@ -78,6 +78,17 @@ button {
   touch-action: manipulation;
 }
 .sr-only,
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 /* Unsupported browsers get one notice; nothing else on the page tries to adapt. */
 .browser-support {
   padding: 18px 24px;
@@ -112,17 +123,6 @@ html[data-unsupported] .experiment astro-island,
 html[data-unsupported] .experiment .lab-loading,
 html[data-unsupported] .home-object-placeholder {
   display: none;
-}
-.skip-link:not(:focus) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 .skip-link:focus {
   position: fixed;
