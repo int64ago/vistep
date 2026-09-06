@@ -1,4 +1,6 @@
 ---
+import PrinterCover from './covers/PrinterCover.astro';
+import BicycleCover from './covers/BicycleCover.astro';
 import TidesCover from './covers/TidesCover.astro';
 import ZipperCover from './covers/ZipperCover.astro';
 import PacketRoutingCover from './covers/PacketRoutingCover.astro';
@@ -517,24 +519,7 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
       </g>
     )
   }
-  {
-    slug === 'bicycle' && (
-      <g>
-        <path d="m230 160 20 17h13" stroke="#3f5572" stroke-width="4" />
-        {Array.from({ length: 8 }, (_, i) => (
-          <path
-            d={`M271 160l${Math.cos((i * Math.PI) / 4) * 48} ${Math.sin((i * Math.PI) / 4) * 48}`}
-            stroke="#8da0b8"
-            opacity=".3"
-          />
-        ))}
-        <path d="M310 67h39m-8-6 8 6-8 6" stroke={color} stroke-width="2" />
-        <text x="291" y="50" fill="#708198" font-size="9" font-family="monospace">
-          FORCE → MOTION
-        </text>
-      </g>
-    )
-  }
+  {slug === 'bicycle' && <BicycleCover compact />}
   {
     slug === 'refrigerator' && (
       <g>
@@ -578,34 +563,7 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
       </g>
     )
   }
-  {
-    slug === 'printer' && (
-      <g>
-        <>
-          <path
-            d="M72 166v-54l38-53h176l31 53v54H72Z"
-            fill="#dfe4ef"
-            stroke="#8898af"
-            stroke-width="1.5"
-          />
-          <path d="M144 52h99v69h-99z" fill="white" stroke="#b1bed0" />
-          <path d="M155 68h76m-76 10h55m-55 10h69" stroke="#c1cddd" stroke-width="3" />
-          <circle cx="192" cy="146" r="30" fill="#745bc7" stroke="#4b3d92" stroke-width="2" />
-          <circle cx="192" cy="146" r="9" fill="#e1d8fa" />
-          <path d="m116 87 79 27" stroke="#e47970" stroke-width="2" />
-          <path d="m194 115-5 6" stroke="#f2c65b" stroke-width="4" />
-          <rect x="253" y="135" width="16" height="45" rx="8" fill="#dda66a" />
-          <rect x="272" y="135" width="16" height="45" rx="8" fill="#dc8a69" />
-          <path d="M82 172h108l17 20h116" stroke="white" stroke-width="6" />
-          <path d="M208 191h90" stroke={color} stroke-width="2" />
-          <circle cx="192" cy="177" r="4" fill="#e67275" />
-          <text x="251" y="119" fill="#8c799b" font-size="9" font-family="monospace">
-            LIGHT → INK
-          </text>
-        </>
-      </g>
-    )
-  }
+  {slug === 'printer' && <PrinterCover />}
   {
     slug === 'noise' && (
       <g>

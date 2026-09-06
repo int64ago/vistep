@@ -1,0 +1,83 @@
+---
+import { chainLoop, TAU, sprocketOutline } from '../../models/mechanisms';
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+const shadow = `bicycle-shadow-${compact ? 'card' : 'object'}`;
+// Both cover formats share the scene's closed chain, tooth pitch and meshing phase.
+const chain = chainLoop(34, 24);
+const points = Array.from({ length: chain.count }, (_, i) => chain.sample(i));
+const sprocket = (n: number) =>
+  sprocketOutline(n, chain.pitch)
+    .map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`)
+    .join(' ') + 'Z';
+
+const coverWheels = [
+  { n: 34, r: chain.ra, x: -chain.distance / 2, a: chain.alpha, color: '#50605b' },
+  {
+    n: 24,
+    r: chain.rb,
+    x: chain.distance / 2,
+    a: chain.alpha + (chain.lengths[0] * TAU) / 24,
+    color: '#b4a57f',
+  },
+].map((w) => ({
+  ...w,
+  spokes: Array.from(
+    { length: 5 },
+    (_, j) =>
+      `M0 0L${w.r * 0.85 * Math.cos((j * TAU) / 5)} ${w.r * 0.85 * Math.sin((j * TAU) / 5)}`,
+  ).join(' '),
+}));
+const supportPath = [-chain.distance / 2, chain.distance / 2]
+  .map((x) => `M${x} -.14V-1.42`)
+  .join(' ');
+const feetPath = [-chain.distance / 2, chain.distance / 2]
+  .map((x) => `M${x - 0.4} -1.43h.8`)
+  .join(' ');
+const linkPaths = points.map((p, i) => {
+  const q = points[(i + 1) % points.length];
+  return `M${p.x} ${p.y}L${q.x} ${q.y}`;
+});
+---
+
+<g>
+  <defs>
+    <filter id={shadow} x="-50%" y="-100%" width="200%" height="300%">
+      <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+    </filter>
+  </defs>
+  <ellipse
+    cx={compact ? 198 : 245}
+    cy={compact ? 204 : 278}
+    rx={compact ? 156 : 155}
+    ry={compact ? 10 : 13}
+    fill="#53625a"
+    opacity=".12"
+    filter={`url(#${shadow})`}></ellipse>
+  <g transform={compact ? 'translate(198,94) scale(72,-72)' : 'translate(240,177) scale(65,-65)'}>
+    <path d={supportPath} stroke="#b0beb6" stroke-width=".23"></path>
+    <path d={feetPath} stroke="#42584e" stroke-width=".12" stroke-linecap="round"></path>
+    {
+      coverWheels.map((w) => (
+        <g transform={`translate(${w.x},0) rotate(${(w.a * 180) / Math.PI})`}>
+          <path d={sprocket(w.n)} fill={w.color} stroke="#9caaa3" stroke-width=".012" />
+          <circle r={w.r * 0.76} fill="#e5ebe1" />
+          <path d={w.spokes} stroke={w.color} stroke-width=".09" />
+          <circle r=".12" fill="#a8b7af" stroke="#53645b" stroke-width=".03" />
+        </g>
+      ))
+    }
+    <g transform={`translate(${-chain.distance / 2},0) rotate(${(chain.alpha * 180) / Math.PI})`}>
+      <path d="M0 0h-1.13" stroke="#354c42" stroke-width=".12" stroke-linecap="round"></path>
+      <g transform={`translate(-1.13,0) rotate(${(-chain.alpha * 180) / Math.PI})`}>
+        <rect x="-.2" y="-.075" width=".4" height=".15" rx=".035" fill="#667970"></rect>
+      </g>
+    </g>
+    <path d={linkPaths.join(' ')} stroke="#acbbb1" stroke-width=".055" stroke-linecap="round"
+    ></path>
+    <path d={linkPaths[0]} stroke="#bf9559" stroke-width=".055" stroke-linecap="round"></path>
+    {points.map((p) => <circle cx={p.x} cy={p.y} r=".011" fill="#f0f4eb" />)}
+  </g>
+</g>

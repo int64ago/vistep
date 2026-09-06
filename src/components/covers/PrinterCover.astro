@@ -1,0 +1,284 @@
+---
+import { printerDrive as drive } from '../../models/mechanisms';
+import { svgPolyline } from '../../lib/svg-cover';
+
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+type Point = [number, number, number];
+type Face = { points: Point[]; fill: string; depth: number; layer: number };
+// A cutaway of the lesson's straight-through teaching rig. All rollers retain the
+// lesson's centers and radii; the paper lies between the two fuser surfaces.
+const paperY = drive.drum.y - drive.drum.radius - 0.004;
+const project = ([x, y, z]: Point) => [200 + 39 * x + 14 * z, 198 - 43 * y - 9 * z];
+const depth = ([x, y, z]: Point) => (14 / 39) * x + (9 / 43) * y - z;
+const outline = (points: Point[]) => svgPolyline(points.map(project)) + 'Z';
+const faces: Face[] = [];
+let drawingPaper = false;
+// Clip the few housing faces that cross the sheet plane. Along a camera ray,
+// world y increases toward the viewer, so below → sheet → above is exact.
+const clipAtPaper = (points: Point[], above: boolean) => {
+  const clipped: Point[] = [];
+  const inside = (p: Point) => (above ? p[1] >= paperY : p[1] <= paperY);
+  points.forEach((p, i) => {
+    const q = points[(i + 1) % points.length];
+    if (inside(p)) clipped.push(p);
+    if (inside(p) !== inside(q)) {
+      const t = (paperY - p[1]) / (q[1] - p[1]);
+      clipped.push([p[0] + (q[0] - p[0]) * t, paperY, p[2] + (q[2] - p[2]) * t]);
+    }
+  });
+  return clipped;
+};
+const face = (points: Point[], fill: string) => {
+  const sections = drawingPaper
+    ? [{ points, layer: 1 }]
+    : [
+        { points: clipAtPaper(points, false), layer: 0 },
+        { points: clipAtPaper(points, true), layer: 2 },
+      ];
+  for (const section of sections) {
+    if (section.points.length < 3) continue;
+    faces.push({
+      ...section,
+      fill,
+      depth: section.points.reduce((sum, p) => sum + depth(p), 0) / section.points.length,
+    });
+  }
+};
+function block(x: number, y: number, z: number, w: number, h: number, d: number, colors: string[]) {
+  const [a, b, c, e, f, g] = [x - w / 2, x + w / 2, y - h / 2, y + h / 2, z - d / 2, z + d / 2];
+  face(
+    [
+      [a, e, f],
+      [b, e, f],
+      [b, e, g],
+      [a, e, g],
+    ],
+    colors[0],
+  );
+  face(
+    [
+      [a, c, f],
+      [b, c, f],
+      [b, e, f],
+      [a, e, f],
+    ],
+    colors[1],
+  );
+  face(
+    [
+      [b, c, f],
+      [b, c, g],
+      [b, e, g],
+      [b, e, f],
+    ],
+    colors[2],
+  );
+}
+function cylinder(
+  x: number,
+  y: number,
+  r: number,
+  z0: number,
+  z1: number,
+  rgb: number[],
+  cap: string,
+) {
+  const at = (a: number, z: number): Point => [x + r * Math.cos(a), y + r * Math.sin(a), z];
+  const samples = 64;
+  for (let i = 0; i < samples; i++) {
+    const a = (i * Math.PI * 2) / samples,
+      b = ((i + 1) * Math.PI * 2) / samples,
+      m = (a + b) / 2;
+    if ((14 / 39) * Math.cos(m) + (9 / 43) * Math.sin(m) <= 0) continue;
+    const light = Math.max(0, -0.34 * Math.cos(m) + 0.9 * Math.sin(m));
+    const shine = 0.2 * light ** 14;
+    const color = rgb.map((v) => Math.round(v * (0.66 + 0.42 * light) + (255 - v) * shine));
+    face([at(a, z0), at(b, z0), at(b, z1), at(a, z1)], `rgb(${color.join(',')})`);
+  }
+  face(
+    Array.from({ length: samples }, (_, i) => at((i * Math.PI * 2) / samples, z0)),
+    cap,
+  );
+}
+const ivory = ['#eef0e5', '#bdc9c2', '#a0b3ae'];
+const dark = ['#536766', '#263c3d', '#334a4a'];
+const metal = ['#e3ebe4', '#899f9d', '#6d8582'];
+
+// The near wall is removed. The back, tray and short corner pillars make the
+// apparatus read as a printer without masking the transfer and fusing nips.
+block(-0.05, 0.2, 0, 7.1, 0.23, 3.8, dark);
+block(-0.05, 0.35, 0, 6.9, 0.08, 3.6, metal);
+block(-0.05, 1.7, 1.82, 7.05, 2.65, 0.13, ivory);
+// The inlet slot clears the sheet; its side bridges sit outside the paper width.
+block(-3.46, 1.88, 0, 0.16, 2.23, 3.7, ivory);
+block(-3.46, 0.43, 0, 0.16, 0.35, 3.7, ivory);
+for (const z of [-1.68, 1.68]) block(-3.46, 0.68, z, 0.16, 0.5, 0.34, ivory);
+block(-0.05, 3.06, 1.5, 7.05, 0.16, 0.78, ivory);
+for (let i = 0; i < 9; i++) block(2.05 + i * 0.105, 2.57, 1.738, 0.035, 0.3, 0.01, dark);
+block(2.7, 1.7, 1.734, 0.34, 0.1, 0.016, ['#81bba5', '#508971', '#508971']);
+
+// Lower rollers are below the paper; their top surfaces approach its underside.
+cylinder(drive.drum.x, 0.441, 0.2, -1.55, 1.55, [67, 87, 83], '#344b48');
+cylinder(drive.fuser.x, 0.391, 0.25, -1.52, 1.52, [68, 83, 81], '#354945');
+// The sheet separates lower rollers from upper rollers. Ordering these layers
+// explicitly keeps the lower fuser behind the paper even where their projected
+// silhouettes overlap; an average depth for the whole sheet cannot do that.
+drawingPaper = true;
+face(
+  [
+    [-3.95, paperY, -1.38],
+    [4.03, paperY, -1.38],
+    [4.03, paperY, 1.38],
+    [-3.95, paperY, 1.38],
+  ],
+  '#fffef3',
+);
+// A shallow edge gives the sheet thickness without breaking its straight path.
+face(
+  [
+    [-3.95, paperY, -1.38],
+    [4.03, paperY, -1.38],
+    [4.03, paperY - 0.004, -1.38],
+    [-3.95, paperY - 0.004, -1.38],
+  ],
+  '#b2c4b9',
+);
+
+// Marks are downstream of transfer, both before and after heat fixing.
+const rows = ['01111110', '00011000', '00011000', '00011000', '00011000', '00011000', '01111110'];
+for (const start of [0.28, 2.65]) {
+  rows.forEach((row, i) =>
+    [...row].forEach((bit, j) => {
+      if (bit !== '1') return;
+      const x = start + i * 0.16,
+        z = (j - 3.5) * 0.24,
+        y = paperY + 0.006;
+      face(
+        [
+          [x, y, z - 0.085],
+          [x + 0.12, y, z - 0.085],
+          [x + 0.12, y, z + 0.085],
+          [x, y, z + 0.085],
+        ],
+        '#30423c',
+      );
+    }),
+  );
+}
+
+drawingPaper = false;
+const rollers = [
+  { ...drive.drum, rgb: [52, 147, 129], cap: '#2c7065' },
+  { ...drive.charge, rgb: [66, 84, 81], cap: '#3b514c' },
+  { ...drive.developer, rgb: [72, 92, 84], cap: '#354a42' },
+  { ...drive.fuser, rgb: [211, 142, 78], cap: '#a66b43' },
+];
+for (const r of rollers) {
+  cylinder(r.x, r.y, Math.min(0.09, r.radius * 0.4), 1.58, 1.83, [169, 191, 180], '#8da59a');
+  cylinder(r.x, r.y, r.radius, -1.58, 1.58, r.rgb, r.cap);
+  cylinder(r.x, r.y, r.radius * 0.88, -1.598, -1.59, r.rgb, r.cap);
+  cylinder(r.x, r.y, Math.min(0.105, r.radius * 0.38), -1.72, -1.6, [169, 191, 180], '#d8e2d7');
+  cylinder(r.x, r.y, 0.037, -1.73, -1.72, [66, 84, 81], '#3b504a');
+}
+
+// A partial hopper reveals the developer contact instead of hiding the drum.
+block(0.72, 2.05, 0.8, 1.05, 0.65, 1.65, dark);
+block(0.72, 2.41, 0.8, 1.09, 0.08, 1.72, ['#6c7d74', '#465c53', '#344a43']);
+block(0.72, 2.12, -0.03, 0.45, 0.12, 0.025, ['#abbaa5', '#abbaa5', '#abbaa5']);
+
+// Toner follows only the developed arc, ending at the drum's bottom transfer line.
+const developmentAngle = Math.atan2(
+  drive.developer.y - drive.drum.y,
+  drive.developer.x - drive.drum.x,
+);
+for (let i = 0; i < 10; i++) {
+  const a = developmentAngle - 0.06 - i * 0.17;
+  if (a < -Math.PI / 2) continue;
+  for (let j = 0; j < 8; j++) {
+    if ((i + j) % 4 === 0) continue;
+    const point = (angle: number, z: number): Point => [
+      drive.drum.x + (drive.drum.radius + 0.005) * Math.cos(angle),
+      drive.drum.y + (drive.drum.radius + 0.005) * Math.sin(angle),
+      z,
+    ];
+    const z = (j - 3.5) * 0.26;
+    face(
+      [
+        point(a, z - 0.03),
+        point(a - 0.045, z - 0.03),
+        point(a - 0.045, z + 0.03),
+        point(a, z + 0.03),
+      ],
+      '#233c35',
+    );
+  }
+}
+
+// Scanner module with exposed optics. A right-angle fold mirror routes the
+// beam down to the drum; the mirror face bisects the incident/reflected rays.
+block(-1.94, 2.66, 0.1, 2.02, 0.18, 2.92, dark);
+block(-2.72, 2.88, 0, 0.46, 0.26, 0.43, metal);
+block(-2.47, 2.88, 0, 0.09, 0.14, 0.22, ['#a6d5c4', '#5b9d91', '#d8ecdd']);
+const mirror: Point[] = [
+  [-0.85, 3.08, -0.68],
+  [-0.45, 2.68, -0.68],
+  [-0.45, 2.68, 0.68],
+  [-0.85, 3.08, 0.68],
+];
+face(mirror, '#dfebe2');
+// The paper and its marks share one plane: retain paper → edge → print order.
+faces.sort((a, b) => a.layer - b.layer || (a.layer === 1 ? 0 : a.depth - b.depth));
+const beam: Point[] = [
+  [-2.42, 2.88, 0],
+  [drive.drum.x, 2.88, 0],
+  [drive.drum.x, drive.drum.y + drive.drum.radius + 0.005, 0],
+];
+const beamPath = svgPolyline(beam.map(project));
+const spot = project(beam.at(-1)!);
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs>
+    <radialGradient id="printer-cover-ground" cx="42%" cy="35%" r="80%">
+      <stop stop-color="#f2f1e5"></stop><stop offset="1" stop-color="#dbe3d8"></stop>
+    </radialGradient>
+    <filter id="printer-cover-shadow" x="-30%" y="-100%" width="160%" height="300%"
+      ><feGaussianBlur stdDeviation="6"></feGaussianBlur></filter
+    >
+    <filter id="printer-cover-beam" x="-20%" y="-40%" width="140%" height="180%"
+      ><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter
+    >
+  </defs>
+  {!transparent && <rect width="400" height="230" fill="url(#printer-cover-ground)" />}
+  <ellipse
+    cx="197"
+    cy="208"
+    rx="149"
+    ry="9"
+    fill="#526a5c"
+    opacity=".16"
+    filter="url(#printer-cover-shadow)"></ellipse>
+  <g stroke-linejoin="round" stroke-width=".25">
+    {faces.map((f) => <path d={outline(f.points)} fill={f.fill} stroke={f.fill} />)}
+  </g>
+  <path
+    d={beamPath}
+    stroke="#f29758"
+    stroke-width="4"
+    opacity=".4"
+    filter="url(#printer-cover-beam)"></path>
+  <path d={beamPath} stroke="#e97140" stroke-width="1.6" stroke-linejoin="round"></path>
+  <path d={beamPath} stroke="#ffd6a1" stroke-width=".5" stroke-linejoin="round"></path>
+  <ellipse cx={spot[0]} cy={spot[1]} rx="4" ry="2.4" fill="#ffbe72" opacity=".24"></ellipse>
+  <circle cx={spot[0]} cy={spot[1]} r="1.8" fill="#ffc17b"></circle>
+</svg>

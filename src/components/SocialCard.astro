@@ -1,6 +1,7 @@
 ---
 import ObjectCover from './ObjectCover.astro';
 import TopicCover from './TopicCover.astro';
+import PrinterCover from './covers/PrinterCover.astro';
 import '../i18n/english';
 import { localizedTopic } from '../i18n';
 import { films, filmDuration } from '../data/films';
@@ -47,6 +48,8 @@ const object = !topic || ['bicycle', 'pendulum', 'jpeg'].includes(topic.slug);
     {
       object ? (
         <ObjectCover slug={topic?.slug ?? 'bicycle'} />
+      ) : topic.slug === 'printer' ? (
+        <PrinterCover transparent />
       ) : (
         <TopicCover slug={topic.slug} color={topic.color} />
       )
