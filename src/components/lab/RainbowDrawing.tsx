@@ -447,6 +447,13 @@ export function RainbowObserver({
     rainbowScale(red.outgoing, -1),
     compact ? 13 : 12,
   ).map(project);
+  // Keep the phone label inside the actual angular sector, beyond its small arc.
+  // Only the annotation moves: the eye, viewing rays and antisolar axis stay exact.
+  const bisector = rainbowAdd(red.direction, rainbowScale(red.outgoing, -1));
+  const labelRadius = 100 / Math.hypot(bisector.x, bisector.y);
+  const angleLabel = compact
+    ? { x: eye.x + bisector.x * labelRadius, y: eye.y - bisector.y * labelRadius + 8 }
+    : { x: eye.x + 82, y: eye.y - 23 };
   const drops = twoDrops ? [red, violet] : [red];
   return (
     <svg
@@ -462,7 +469,7 @@ export function RainbowObserver({
       />
       <path d={path([eye, antisolar])} stroke="#bac9c1" strokeOpacity=".6" strokeDasharray="4 6" />
       <path d={path(alphaArc)} fill="none" stroke="#b9c7bb" strokeOpacity=".55" />
-      <text x={eye.x + (compact ? 37 : 82)} y={eye.y - (compact ? 18 : 23)}>
+      <text x={angleLabel.x} y={angleLabel.y} textAnchor={compact ? 'middle' : undefined}>
         {red.ray.angle.toFixed(1)}°
       </text>
       <circle cx={sun.x} cy={sun.y} r={compact ? 8 : 12} fill="#e5d2ad" />

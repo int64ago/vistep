@@ -23,7 +23,7 @@ vistep 名字和域名标识原项目。MIT 不构成商标背书，也不允许
 
 分享图片的构建字体还包含 Manrope 的希腊字母与 Noto Sans SC 的箭头子集，均从 Fontsource 分发的可变字体实例化为 500 字重。对应 OFL 许可保留在 `scripts/assets/`。
 
-[README 动图](../../scripts/render-showcase.mjs) 为原创 SVG 动画，使用仓库的渐开线齿轮几何、DCT 重建和四维投影，不是网页录屏。字体使用保留的 Manrope，经 FFmpeg 编为 GIF；阅读已提交素材不需要渲染工具。
+[README 动图](../../scripts/render-showcase.mjs) 是七种机制同时运行的原创 SVG 动画：渐开线齿轮、电磁感应、曲柄滑块、薄透镜光路、四维投影、DCT 重建和波的叠加。几何与运动来自仓库模型，不是网页录屏。它使用保留的 Manrope 与箭头补充字形，经 FFmpeg 编为 GIF；阅读已提交素材不需要渲染工具。尺寸、独立模型时钟、教学简化及证据范围见[素材说明](../media/vistep-showcase-provenance.md)。
 
 ## 月面纹理
 

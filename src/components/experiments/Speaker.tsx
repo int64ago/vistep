@@ -117,13 +117,17 @@ export default function Speaker() {
               amplitude={response.amplitude}
             />
             <div className="speaker-response-readout">
-              <span>
-                f<b>{frequency.toFixed(1)} Hz</b>
-              </span>
-              <span>
-                |Z|<b>{response.impedance.toFixed(2)} Ω</b>
-              </span>
-              <span>
+              {(!film.watch || !compact || view !== 'damping') && (
+                <span data-speaker-reading="frequency">
+                  f<b>{frequency.toFixed(1)} Hz</b>
+                </span>
+              )}
+              {(!film.watch || !compact || view === 'damping') && (
+                <span data-speaker-reading="impedance">
+                  |Z|<b>{response.impedance.toFixed(2)} Ω</b>
+                </span>
+              )}
+              <span data-speaker-reading="damping">
                 D<b>{parameters.damping.toFixed(2)} N·s/m</b>
               </span>
             </div>

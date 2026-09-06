@@ -3,10 +3,35 @@ import { describe, expect, it } from 'vitest';
 import english from '../i18n/en.json';
 import { topics } from './topics';
 import { discoveryCategories, discoveryMetadata } from './discovery-metadata';
+import filmTimeline from './film-timeline.json';
 
 const normalize = (value: string) => value.normalize('NFKC').trim().toLowerCase();
 
 describe('homepage discovery metadata', () => {
+  it('keeps both source catalogs complete, correctly categorized and timed', () => {
+    for (const locale of ['zh', 'en'] as const) {
+      const file = locale === 'zh' ? '../../docs/zh-CN/catalog.md' : '../../docs/catalog.md';
+      const text = readFileSync(new URL(file, import.meta.url), 'utf8');
+      const seen: string[] = [];
+      for (const section of text.split(/^## /m).slice(1)) {
+        const heading = section.split('\n')[0].trim();
+        const category = discoveryCategories.find((item) => item.label[locale] === heading);
+        expect(category, heading).toBeDefined();
+        for (const row of section.matchAll(
+          /\]\([^\s)]*\/([^/]+)\.mdx\)\s*\|\s*(\d+):(\d{2})\s*\|/g,
+        )) {
+          const slug = row[1];
+          seen.push(slug);
+          expect(discoveryMetadata[slug]?.category, slug).toBe(category!.id);
+          const film = filmTimeline[slug as keyof typeof filmTimeline];
+          expect(film, slug).toBeDefined();
+          expect(Number(row[2]) * 60 + Number(row[3]), slug).toBe(Math.floor(film.duration));
+        }
+      }
+      expect(seen.sort(), locale).toEqual(topics.map((topic) => topic.slug).sort());
+    }
+  });
+
   it('covers the published registry exactly once without invented slugs', () => {
     const published = topics.map((topic) => topic.slug);
     expect(new Set(published).size).toBe(published.length);

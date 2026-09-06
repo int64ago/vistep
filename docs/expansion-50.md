@@ -59,7 +59,7 @@ The active objective is **50 additional complete scenes**, taking the 12 scenes 
 | Zipper                      | Continuous tapes and beads, staggered moulded heads and slider guide                                        | Chinese and English, 201.5 s each | Model, transcription and integrated checks recorded; full acceptance pending                      |
 | Tides                       | Differential gravity, shared potential, equilibrium ocean and latitude                                      | Chinese and English, 202.0 s each | Model, transcription and integrated checks recorded; full acceptance pending                      |
 
-All 50 additions are integrated locally, taking the collection to **62 topics**. The public preview contains **62 topics** from `9b2d00d`, version `ca04be74-6ab1-4cce-9735-d2af948c20c5`; [branch CI](https://github.com/int64ago/vistep/actions/runs/33981267914) passed. The last six have measured bilingual recordings, independent transcription and integrated checks. Six workers continue grouped reviews and move to another group or a concrete fix after each handoff. **No addition is marked fully accepted.**
+All 50 additions are integrated, taking the collection to **62 topics**. At the quality-5 checkpoint, the public preview was deployed from `de8e4a7`, version `a00b3845-b881-4018-bd94-5f88b98de2cd`; [branch CI](https://github.com/int64ago/vistep/actions/runs/34001206759) passed. Production remains on the original 12 scenes. See the [fifth integration record](qa-expansion-refinements.md#fifth-integration-in-review) for its changes and evidence limits. **No addition is marked fully accepted.**
 
 ## Review evidence — 2026-09-05
 
