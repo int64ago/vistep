@@ -8,7 +8,7 @@ The collection contains 63 explorations, each with Chinese and English articles,
 
 | Exploration                                                    | Film | Question                                        |
 | -------------------------------------------------------------- | ---- | ----------------------------------------------- |
-| [Excavator](../src/content/en/excavator.mdx)                   | 3:36 | How does oil lift a bucket of earth?            |
+| [Excavator](../src/content/en/excavator.mdx)                   | 4:05 | How does oil lift a bucket of earth?            |
 | [Bicycle gears](../src/content/en/bicycle.mdx)                 | 2:59 | Why does changing gear make pedaling easier?    |
 | [Laser printing](../src/content/en/printer.mdx)                | 3:01 | How does a beam of light become a printed word? |
 | [Four-stroke engine](../src/content/en/four-stroke-engine.mdx) | 2:49 | How does combustion become rotation?            |

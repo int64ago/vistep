@@ -1,16 +1,18 @@
 import { useRef, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
-import { Range, Segments } from '../lab/Controls';
+import { Range } from '../lab/Controls';
 import {
   EXCAVATOR,
   excavatorHydraulics,
   excavatorPose,
   excavatorShot,
-  type Valve,
+  joystickCommand,
 } from '../../models/excavator';
 import ExcavatorStudio, { type ExcavatorVisual } from '../three/ExcavatorStudio';
 import ExcavatorInstruments from '../lab/ExcavatorInstruments';
+import ExcavatorCircuit from '../lab/ExcavatorCircuit';
+import { useCompact } from '../lab/useCompact';
 import '../../styles/excavator.css';
 
 /** Callout text and its pixel offset from the projected anchor. */
@@ -29,7 +31,7 @@ const LABELS: Record<string, [string, number, number]> = {
   bucketPin: ['铲斗销', -70, 40],
   relief: ['溢流阀', -30, 54],
 };
-const EMPHASIS = ['none', 'none', 'pressure', 'speed', 'arm', 'none', 'relief'] as const;
+const EMPHASIS = ['none', 'none', 'none', 'pressure', 'speed', 'arm', 'none', 'relief'] as const;
 const deg = (r: number) => (r * 180) / Math.PI,
   rad = (d: number) => (d * Math.PI) / 180;
 
@@ -39,12 +41,13 @@ export default function Excavator() {
     [stick, setStick] = useState(-92),
     [curl, setCurl] = useState(80),
     [payload, setPayload] = useState(1200),
-    [flow, setFlow] = useState(60),
-    [valve, setValve] = useState<Valve>('hold'),
+    [joystick, setJoystick] = useState(0),
+    [circuitOn, setCircuitOn] = useState(true),
     [cutaway, setCutaway] = useState(true),
     [showLabels, setShowLabels] = useState(true),
     [anchored, setAnchored] = useState(false);
   const labelHost = useRef<HTMLDivElement>(null);
+  const compact = useCompact();
   const chapterSeconds =
     (film.chapters[film.chapter + 1]?.at ?? film.duration) - (film.chapters[film.chapter]?.at ?? 0);
   const shot = film.watch
@@ -55,15 +58,19 @@ export default function Excavator() {
         chapterSeconds,
       })
     : null;
+  const command = joystickCommand(joystick / 100);
   const state = shot ?? {
     pose: { boom: rad(boom), stick: rad(stick), curl: rad(curl) },
     payload,
-    flow,
-    valve,
+    joystick: command.joystick,
+    flow: command.flow,
+    valve: command.valve,
     anchored,
     demand: 1,
     view: 'wide' as const,
     cutaway: cutaway ? 1 : 0,
+    circuit: circuitOn,
+    pascal: false,
     lever: showLabels,
     forceArrow: false,
     rock: anchored,
@@ -95,14 +102,29 @@ export default function Excavator() {
     lever: state.lever,
     forceArrow: state.forceArrow,
     rock: state.rock,
+    panel: state.circuit && !compact && film.watch ? 0.44 : 0,
     labels: state.labels,
   };
   const emphasis = film.watch ? EMPHASIS[film.chapter] : 'none';
-  const showInstruments = !film.watch || (film.chapter !== 0 && film.chapter !== 5);
+  const showInstruments = !film.watch || (film.chapter !== 0 && film.chapter !== 6);
+  const circuit = state.circuit && (
+    <ExcavatorCircuit
+      h={h}
+      joystick={state.joystick}
+      valve={state.valve}
+      flow={state.flow}
+      stroke={pose.cylinders.boom.stroke}
+      pascal={state.pascal}
+      running={film.watch ? film.playing : true}
+      variant={compact || !film.watch ? 'stacked' : 'overlay'}
+    />
+  );
   return (
-    <div className="excavator-study" data-view={state.view}>
+    <div className="excavator-study" data-view={state.view} data-circuit={state.circuit}>
+      {(compact || !film.watch) && circuit}
       <div className="excavator-stage">
         <ExcavatorStudio visual={visual} labelHost={labelHost} />
+        {!compact && film.watch && circuit}
         <div className="excavator-labels" ref={labelHost} aria-hidden="true">
           <svg>
             {state.labels.map((key) => (
@@ -178,27 +200,25 @@ export default function Excavator() {
               unit="kg"
             />
             <Range
-              label={t('动臂供油流量')}
-              value={flow}
-              onChange={setFlow}
-              min={0}
-              max={EXCAVATOR.limits.flow[1]}
-              step={10}
-              unit="L/min"
-            />
-            <Segments
-              value={valve}
-              onChange={setValve}
-              label={t('动臂阀')}
-              options={[
-                { value: 'lift', label: t('举升') },
-                { value: 'hold', label: t('保持') },
-              ]}
+              label={t('右操作杆（后拉举升，前推下降）')}
+              value={joystick}
+              onChange={setJoystick}
+              min={-100}
+              max={100}
+              step={5}
+              unit="%"
             />
           </div>
           <div className="excavator-toggles">
             <button className="btn" aria-pressed={cutaway} onClick={() => setCutaway(!cutaway)}>
               {t('剖开动臂缸')}
+            </button>
+            <button
+              className="btn"
+              aria-pressed={circuitOn}
+              onClick={() => setCircuitOn(!circuitOn)}
+            >
+              {t('油路面板')}
             </button>
             <button
               className="btn"

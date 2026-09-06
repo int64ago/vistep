@@ -21,7 +21,7 @@ export const topics: Topic[] = [
     description:
       '跟随液压油进入油缸，再沿动臂、斗杆和铲斗连杆，看压力、流量与力矩怎样共同决定动作。',
     category: '器物与机械',
-    duration: '3 分钟',
+    duration: '4 分钟',
     color: '#c39a4c',
     number: '63',
     tag: '力与运动',

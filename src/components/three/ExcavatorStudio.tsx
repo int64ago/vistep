@@ -35,6 +35,8 @@ export type ExcavatorVisual = {
   lever: boolean;
   forceArrow: boolean;
   rock: boolean;
+  /** Fraction of the stage width covered by the circuit panel on the left. */
+  panel: number;
   labels: string[];
 };
 type Props = { visual: ExcavatorVisual; labelHost: React.RefObject<HTMLDivElement | null> };
@@ -923,6 +925,16 @@ export default function ExcavatorStudio({ visual, labelHost }: Props) {
               const distance = watch
                 ? frameFor(visual.view, p, camera.aspect, dt, settle || reduced)
                 : frameFor('wide', p, camera.aspect, dt, reduced);
+              if (watch && visual.panel > 0) {
+                // Leave the panel's share of the frame free: slide the aim so the
+                // subject sits centred in the remaining width.
+                const halfW = distance * Math.tan((camera.fov * Math.PI) / 360) * camera.aspect;
+                fitCamera.position.copy(aim).addScaledVector(dir.normalize(), distance);
+                fitCamera.lookAt(aim);
+                fitCamera.updateMatrixWorld();
+                fitRight.setFromMatrixColumn(fitCamera.matrixWorld, 0);
+                aim.addScaledVector(fitRight, -visual.panel * halfW);
+              }
               wanted.copy(aim).addScaledVector(dir.normalize(), distance);
               if (watch) {
                 returnProgress = 1;

@@ -6862,7 +6862,7 @@
     ]
   },
   "excavator": {
-    "duration": 216.0,
+    "duration": 245.5,
     "cues": [
       {
         "id": "dig",
@@ -6889,28 +6889,40 @@
         "at": 24.45
       },
       {
-        "id": "pressure",
-        "title": "压力由载荷决定",
-        "titleEn": "Pressure follows the load",
-        "caption": "泵只送油，压力由斗里的重量决定。",
-        "captionEn": "The pump only delivers oil; the load sets the pressure.",
-        "zh": "现在动臂停住，阀口关闭，油被封在缸里。看压力表：斗里三百公斤时，无杆腔压力六点五兆帕；往斗里加土，加到一千八百公斤，压力升到九点五兆帕。压力不是泵定的，是载荷定的。活塞面积固定，一百一十三平方厘米；压力乘面积，就是活塞的推力。九点五兆帕，一支缸就顶着一百零八千牛。",
-        "en": "Now the boom is held: the valve is closed and the oil is trapped. Watch the gauge. With three hundred kilograms in the bucket, the cap end reads six and a half megapascals. Add earth up to eighteen hundred kilograms, and it climbs to nine and a half. The pump doesn't set the pressure; the load does. The piston face is fixed at a hundred and thirteen square centimetres, and pressure times area is the force: at nine and a half megapascals, one cylinder is holding a hundred and eight kilonewtons.",
+        "id": "circuit",
+        "title": "一条闭合的油路",
+        "titleEn": "One closed circuit",
+        "caption": "发动机带动泵送出流量，阀芯决定油去哪个腔。",
+        "captionEn": "The engine drives the pump; the spool decides where the oil goes.",
+        "zh": "油从哪里来？发动机带动泵，把油箱里的油源源不断送出来；泵只负责流量。油经过主控制阀，阀芯决定它去哪一支缸的哪个腔。进无杆腔的油顶出活塞，有杆腔挤出的油再经阀回到油箱。油没有被消耗，只是在这条闭合油路里循环。",
+        "en": "Where does the oil come from? The engine drives a pump that draws oil from the tank and keeps sending it out; the pump only provides flow. The oil passes through the main control valve, where a spool decides which cylinder and which chamber it goes to. Oil entering the cap end pushes the piston out, and oil squeezed from the rod end returns through the valve to the tank. Nothing is used up; the oil circulates in one closed loop.",
         "seconds": 24,
         "chapterAt": 50.5,
         "at": 50.95
       },
       {
-        "id": "flow",
-        "title": "流量决定速度",
-        "titleEn": "Flow sets the speed",
-        "caption": "面积不变，油来得越快，活塞走得越快。",
-        "captionEn": "Same area: the faster oil arrives, the faster the piston moves.",
-        "zh": "压力回答推得多大，流量回答走得多快。先给两支动臂缸每分钟四十升油，活塞以每秒三厘米往外走，动臂慢慢抬起。现在把流量加到一百升，活塞速度到了七厘米多，动臂明显快了。面积没变，压力也几乎没变，变的只是每秒钟进来多少油。操作手推动手柄，其实就是在调这个流量。",
-        "en": "Pressure answers how hard; flow answers how fast. First the two boom cylinders receive forty litres a minute: the piston creeps out at about three centimetres a second, and the boom rises slowly. Now raise the flow to a hundred litres a minute. The piston reaches over seven centimetres a second, and the boom is clearly quicker. The area hasn't changed and the pressure has barely moved. All that changed is how much oil arrives each second. Pushing the control lever really means metering this flow.",
+        "id": "pressure",
+        "title": "压力由载荷决定",
+        "titleEn": "Pressure follows the load",
+        "caption": "连通的油液压力处处相等；面积大三十六倍，推力大三十六倍。",
+        "captionEn": "One pressure everywhere; 36 times the area, 36 times the force.",
+        "zh": "轻轻拉杆，油缸和泵连通了。看压力表：斗里三百公斤时六点五兆帕，加到一千八百公斤，升到九点五。压力不是泵定的，是载荷定的。帕斯卡原理说，连通的油液里压力处处相等：泵里直径两厘米的小活塞和动臂缸直径十二厘米的大活塞，顶着同样的压力，面积大三十六倍，推力也大三十六倍。这就是液压以小博大的道理。",
+        "en": "Pull the lever a little and the cylinder is connected to the pump. Watch the gauge: three hundred kilograms in the bucket reads six and a half megapascals; add earth up to eighteen hundred and it climbs to nine and a half. The pump doesn't set the pressure; the load does. Pascal's principle says the connected oil carries one pressure everywhere. A pump piston two centimetres across and the boom piston twelve centimetres across feel the same pressure, and thirty-six times the area means thirty-six times the force. That is how hydraulics turns a small push into a large one.",
         "seconds": 24,
-        "chapterAt": 83.0,
-        "at": 83.45
+        "chapterAt": 77.0,
+        "at": 77.45
+      },
+      {
+        "id": "joystick",
+        "title": "推杆多少，走多快",
+        "titleEn": "Lever travel sets speed",
+        "caption": "手柄推阀芯，阀口开多少，进多少油。",
+        "captionEn": "The lever moves the spool; the opening meters the flow.",
+        "zh": "手柄并不直接连着油缸，它推的是阀芯。杆拉得少，阀口开得小，进油少：每分钟四十升，活塞每秒走三厘米，动臂慢慢抬。杆拉到底，阀口全开，一百升，七厘米多，动臂明显快了。面积和压力都几乎没变，变的只是每秒进来多少油。右手杆管动臂和铲斗，左手杆管斗杆和回转。",
+        "en": "The lever isn't linked to the cylinder; it moves the spool. Pull a little and the port opens a little, so little oil gets through: forty litres a minute, the piston creeps at three centimetres a second, the boom rises slowly. Pull all the way and the port is wide open: a hundred litres, over seven centimetres a second, and the boom is clearly quicker. Area and pressure barely change; what changes is how much oil arrives each second. The right lever runs the boom and bucket, the left lever the stick and swing.",
+        "seconds": 24,
+        "chapterAt": 114.0,
+        "at": 114.45
       },
       {
         "id": "lever",
@@ -6921,8 +6933,8 @@
         "zh": "换到侧面看。油缸的推力沿着它自己的轴线，而动臂绕着支点转。从支点到这条作用线的垂直距离，就是力臂 d。动臂抬升时，斗里的土离支点的水平距离变短，重力矩变小；同时这条橙色的力臂也在变短。两者一起决定所需压力：动臂低时八点六兆帕，抬到最高七点八。设计师要做的，就是在整个动作范围里，把力臂安排得够用。",
         "en": "Switch to the side. A cylinder pushes along its own axis, while the boom turns about its foot pin. The perpendicular distance from that pin to the line of action is the lever arm, d. As the boom rises, the earth moves closer to the pivot, so the gravity moment shrinks, and the orange lever arm shortens too. Together they set the required pressure: eight point six megapascals with the boom low, seven point eight at the top. A designer's job is to keep that lever arm generous through the whole range.",
         "seconds": 24,
-        "chapterAt": 117.0,
-        "at": 117.45
+        "chapterAt": 146.5,
+        "at": 146.95
       },
       {
         "id": "linkage",
@@ -6933,8 +6945,8 @@
         "zh": "最后一段传动最巧。铲斗缸装在斗杆背上，它的活塞杆并不直接推铲斗，而是推在一个接点上：接点一头连着摇臂，摇臂铰在斗杆上；另一头连着连杆，连杆铰在铲斗的耳板上。四个铰点组成一个四连杆。看，活塞杆伸出，接点被推向斗尖，连杆把铲斗耳板往前顶，铲斗就绕着铲斗销卷了进来。杆走直线，斗齿走的是一段圆弧。",
         "en": "The last link in the chain is the cleverest. The bucket cylinder sits on the back of the stick, and its rod doesn't push the bucket directly. It pushes a joint: on one side the rocker, pinned to the stick; on the other the link, pinned to the bucket's ears. Four pins make a four-bar linkage. Watch: as the rod extends, the joint is pushed toward the tip, the link drives the bucket ear forward, and the bucket curls in about its pin. The rod moves in a straight line; the teeth sweep an arc.",
         "seconds": 24,
-        "chapterAt": 150.5,
-        "at": 150.95
+        "chapterAt": 180.0,
+        "at": 180.45
       },
       {
         "id": "relief",
@@ -6945,8 +6957,8 @@
         "zh": "如果斗齿卡在一块搬不动的石头下面呢？操作手继续推举升，泵继续送油，可是活塞走不动，压力一路上升。到三十七点三兆帕，主溢流阀打开，多余的油从溢流阀直接回油箱：泵还在转，动臂却不会再往上。这是液压系统保护自己的方式。松开手柄，阀口关闭，油被封在缸里，压力回落到只承担自重，动臂就停在原地。",
         "en": "What if the teeth are caught under a boulder that won't move? The operator keeps calling for lift, the pump keeps delivering, but the piston can't advance, so pressure climbs. At thirty-seven point three megapascals the main relief valve opens and the surplus oil goes straight back to the tank. The pump is still turning, but the boom will not rise. That is how a hydraulic system protects itself. Release the lever, the valve closes, the oil is trapped, pressure falls back to the weight alone, and the boom simply stays where it is.",
         "seconds": 24,
-        "chapterAt": 183.0,
-        "at": 183.45
+        "chapterAt": 212.5,
+        "at": 212.95
       }
     ]
   }

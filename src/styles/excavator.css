@@ -346,3 +346,80 @@
     padding: 4px 16px 18px;
   }
 }
+
+/* ---------------------------------------------------------------- circuit panel */
+.excavator-circuit {
+  position: relative;
+  --circuit-ink: #3b4a42;
+}
+.excavator-circuit[data-variant='overlay'] {
+  position: absolute;
+  left: 22px;
+  top: 46px;
+  width: 44%;
+  max-width: 600px;
+  padding: 14px 14px 10px;
+  border-radius: 18px;
+  background: rgba(255, 253, 247, 0.93);
+  box-shadow: 0 2px 18px rgba(50, 60, 40, 0.08);
+  animation: excavator-label-in 0.6s var(--ease-settle);
+}
+.excavator-circuit[data-variant='stacked'] {
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 18px 12px 6px;
+}
+.circuit-figure {
+  position: relative;
+}
+.excavator-circuit svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.excavator-circuit text {
+  font: 500 13px var(--sans);
+}
+.circuit-label {
+  position: absolute;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--circuit-ink);
+  background: rgba(255, 253, 247, 0.8);
+  padding: 2px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.circuit-label[data-live='true'] {
+  color: var(--excavator-accent);
+}
+.circuit-pascal {
+  color: var(--excavator-accent);
+}
+.circuit-legend {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--excavator-muted);
+}
+.excavator-study[data-circuit='true'] .excavator-labels span[data-label='pistonFace'] {
+  display: none;
+}
+@media (max-width: 760px) {
+  .excavator-circuit[data-variant='stacked'] {
+    margin: 0 10px;
+    padding: 12px 4px 4px;
+  }
+  .circuit-label {
+    font-size: 16px;
+    padding: 1px 5px;
+  }
+  .circuit-label[data-phone='hide'] {
+    display: none;
+  }
+  .excavator-study[data-circuit='true'] .excavator-stage {
+    height: 300px;
+  }
+}

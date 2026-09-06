@@ -4,18 +4,26 @@ Start with the whole machine. The bucket curls, the stick draws in and the boom 
 
 Cut one boom cylinder open along its axis and you find a rod with a piston at its end. The piston divides the barrel into two chambers: the **cap end** at the base, and the **rod end** around the rod. The pump sends oil into the cap end; as oil accumulates the piston has nowhere to go but outward, and the rod lifts the boom. Oil in the other chamber is squeezed out and returns to the tank.
 
-### Pressure answers “how hard”; flow answers “how fast”
+### Where the oil comes from: one closed circuit
 
-With the boom held, the valve is closed and the oil is trapped. The gauge now depends entirely on the weight in the bucket: about 6.5 MPa with 300 kg, rising to 9.5 MPa at 1,800 kg. The pump does not “set” the pressure; it only delivers oil, and pressure rises just far enough to support the load. The piston face is fixed at 113 cm², so pressure times area is the force per cylinder: about 108 kN at 9.5 MPa.
+The engine drives the main pump, which draws oil from the tank and keeps sending it out. A pump provides **flow**; it does not decide the pressure. The oil first reaches the main control valve. Each cylinder has its own valve section, and the **spool** inside slides left or right to decide which chamber the oil enters. With the spool centred, both cylinder ports A and B are blocked, the oil is trapped and the boom stays put. Move the spool and the pump port P connects to the cap end A while the rod end B connects to the return port T: supply pushes the piston out and the displaced oil returns to the tank. Nothing is consumed; the oil circulates in a closed loop.
 
-The same piston moves faster when oil arrives faster. Feed the two boom cylinders 40 litres a minute and the piston extends at about 3 cm/s; raise it to 100 litres a minute and the speed passes 7 cm/s. The area is unchanged and the pressure barely moves; only the volume arriving each second has changed. Pushing the control lever really means metering this flow.
+### Pressure answers “how hard”
+
+Pull the lever a little and the cylinder is connected to the pump. The gauge now depends on the weight in the bucket: about 6.5 MPa with 300 kg, rising to 9.5 MPa at 1,800 kg. The pump does not “set” the pressure; it only delivers oil, and pressure rises just far enough to support the load.
+
+**Pascal’s principle** says the connected oil carries one pressure everywhere. A 20 mm pump piston and the 120 mm boom piston feel the same pressure; 36 times the area means 36 times the force. At 9.5 MPa that is about 3 kN on the pump piston and about 108 kN on the boom piston. The engine only has to keep pushing the small pistons with a modest force, and the large piston delivers enough to lift a bucket of earth. That is how hydraulics turns a small push into a large one. Pressure times area is the force per cylinder; the piston face is fixed at 113 cm².
+
+### The lever answers “how fast”
+
+The lever is not linked to the cylinder; it moves the spool (through pilot pressure on modern machines). Pull a little and the port opens a crack, so little oil gets through: 40 litres a minute, about 3 cm/s at the piston. Pull all the way and the port is wide open: 100 litres a minute, over 7 cm/s. Area and pressure barely change; only the volume arriving each second does. In the ISO control pattern the right lever runs the boom fore-and-aft (back lifts, forward lowers) and the bucket side-to-side; the left lever runs the stick fore-and-aft and the swing side-to-side.
 
 <h2 id="try">Change one condition at a time</h2>
 
 1. Keep the pose and drag **Bucket load**. Watch cap-end pressure and piston force follow the load.
-2. Switch the boom valve to **Lift** and vary **Boom supply flow**. Pressure stays put while piston speed scales with the flow.
+2. Drag the **Right joystick**. The further it leaves neutral, the further the spool in the circuit panel travels and the wider the port opens; flow and piston speed scale together while pressure stays put. Push forward and P connects to the rod end, so the boom lowers.
 3. Drag the **Boom** angle and read the lever arm d and the required pressure: the same load, but a different gravity moment and a different lever arm.
-4. Turn on **Teeth under a boulder** and lift. Pressure climbs to the 37.3 MPa relief setting, oil returns to tank through the relief valve, and the boom stops rising. Switch back to **Hold** and the pressure falls to the weight alone.
+4. Turn on **Teeth under a boulder** and pull the joystick back. Pressure climbs to the 37.3 MPa relief setting, oil returns to tank through the relief valve, and the boom stops rising. Return to neutral and the pressure falls to the weight alone.
 5. Drag **Bucket curl** and follow the bucket cylinder rod: the joint is pushed toward the tip, the link drives the bucket ear, and the bucket curls about its pin.
 
 The pose sliders compare static conditions; they do not send commands to the hydraulic system. Reaching a pose does not mean the machine could lift an arbitrary load there.
@@ -41,5 +49,7 @@ where x is each centre of mass’s horizontal distance from the boom pivot. As t
 ### Relief and holding
 
 The main relief valve limits the system’s maximum working pressure. With the teeth caught under something immovable, the pump keeps delivering while the piston cannot advance; once pressure reaches the relief setting the surplus oil returns to tank and the boom stops rising. That is how the system protects itself. Releasing the lever closes the valve, traps the oil and lets the pressure fall to the weight alone. Real boom cylinders also carry dedicated load-holding and hose-burst protection valves that meet the lowering requirements of ISO 8643; the ideal trapped oil here simplifies those devices.
+
+The circuit panel is a teaching view of the boom section of the main control valve: full lever travel corresponds to a teaching flow of 130 L/min, metered linearly with travel. Real machines shift the spool with pilot pressure, share the 439 L/min maximum pump flow among all actuators, and add load sensing, flow combining and regeneration circuits, all omitted here. The 20 mm pump piston is a teaching size for Pascal’s principle, not a specific pump’s dimension.
 
 This is a planar rigid linkage with a quasi-static hydraulic model. It omits inertia, friction, digging resistance, oil compressibility, leakage, valve dynamics, swing, travel, structural stress and whole-machine stability. Cylinder bores and the main relief setting follow the Komatsu PC200-8 product brochure (boom 120/85 mm, arm 135/95 mm, bucket 115/80 mm, implement relief 37.3 MPa, maximum pump flow 439 L/min). Member lengths, barrel lengths, component masses and body dimensions are teaching values for this scene, not a reconstruction of that machine and not a lifting chart.

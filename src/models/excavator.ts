@@ -273,6 +273,16 @@ export function leverArm(pose: ExcavatorPose) {
 }
 export type Valve = 'lift' | 'hold' | 'lower';
 export type Hydraulics = ReturnType<typeof excavatorHydraulics>;
+/** Metered flow at full joystick travel for the boom section (teaching value). */
+export const JOYSTICK_FLOW = 130;
+/** A teaching pump piston: nine such pistons in a swash-plate pump, Ø20 mm each. */
+export const PUMP_PISTON = { bore: 0.02, rod: 0, barrel: 0, rodLength: 0 } satisfies CylinderSpec;
+/** Joystick travel (−1 forward … +1 back) into a valve state and a metered flow. */
+export function joystickCommand(joystick: number) {
+  const x = clamp(joystick, -1, 1);
+  const valve: Valve = Math.abs(x) < 0.02 ? 'hold' : x > 0 ? 'lift' : 'lower';
+  return { joystick: x, valve, flow: valve === 'hold' ? 0 : Math.abs(x) * JOYSTICK_FLOW };
+}
 /**
  * Quasi-static lifting of the front attachment about the boom foot by the two
  * boom cylinders. Losses, inertia, return-line pressure and soil forces are
@@ -315,8 +325,11 @@ export function excavatorHydraulics(
     ? EXCAVATOR.relief * clamp(demand, 0, 1)
     : Math.min(EXCAVATOR.relief, gravityPressure);
   const q = flow / 60000;
-  const moving = valve === 'lift' && !relief && !blocked && flow > 0;
-  const velocity = moving ? q / (2 * area) : 0;
+  const moving = valve !== 'hold' && !relief && !blocked && flow > 0;
+  const speed = moving ? q / (2 * area) : 0;
+  const velocity = valve === 'lower' ? -speed : speed;
+  // Pascal: the connected oil carries one pressure, so force scales with area.
+  const pumpArea = pistonArea(PUMP_PISTON);
   return {
     moment,
     arm,
@@ -328,6 +341,9 @@ export function excavatorHydraulics(
     stalled: !moving && valve === 'lift',
     gravityPressure,
     force: pressure * area,
+    pumpArea,
+    pumpForce: pressure * pumpArea,
+    areaRatio: area / pumpArea,
     velocity,
     boomRate: velocity / arm,
     hydraulicPower: valve === 'lift' ? pressure * q : 0,
@@ -335,11 +351,11 @@ export function excavatorHydraulics(
   };
 }
 
-/** Deterministic boom rise driven by supply flow, so seeking agrees with playback. */
+/** Deterministic boom motion driven by the joystick, so seeking agrees with playback. */
 export function integrateBoom(
   from: Pose,
   payload: number,
-  flowAt: (seconds: number) => number,
+  joystickAt: (seconds: number) => number,
   seconds: number,
   step = 1 / 20,
 ) {
@@ -348,7 +364,8 @@ export function integrateBoom(
   while (t < seconds - 1e-9) {
     const dt = Math.min(step, seconds - t);
     const pose = excavatorPose({ ...from, boom });
-    const h = excavatorHydraulics(pose, payload, flowAt(t), 'lift');
+    const { valve, flow } = joystickCommand(joystickAt(t));
+    const h = excavatorHydraulics(pose, payload, flow, valve);
     boom = clamp(boom + h.boomRate * dt, ...EXCAVATOR.limits.boom);
     t += dt;
   }
@@ -359,6 +376,8 @@ export type View = 'wide' | 'cylinder' | 'side' | 'bucket';
 export type Shot = {
   pose: Pose;
   payload: number;
+  /** Right joystick travel: +1 pulled back (lift), −1 pushed forward (lower). */
+  joystick: number;
   flow: number;
   valve: Valve;
   anchored: boolean;
@@ -366,6 +385,10 @@ export type Shot = {
   demand: number;
   view: View;
   cutaway: number;
+  /** Show the live circuit panel beside the machine. */
+  circuit: boolean;
+  /** Compare the pump piston and the boom piston at one pressure. */
+  pascal: boolean;
   lever: boolean;
   forceArrow: boolean;
   rock: boolean;
@@ -377,35 +400,52 @@ export type Clock = {
   chapterTime: number;
   chapterSeconds: number;
 };
+export const EXCAVATOR_CHAPTERS = 8;
 const REST: Pose = { boom: 0.62, stick: -1.55, curl: 0.9 };
 /** The directed film. Chapter-relative, so measured speech can retime it. */
 export function excavatorShot(clock: Clock): Shot {
   const c = clock.chapter,
     p = clamp(clock.chapterProgress, 0, 1),
+    T = clock.chapterSeconds,
     s = smooth;
-  if (!Number.isInteger(c) || c < 0 || c > 6 || !Number.isFinite(p))
+  if (
+    !Number.isInteger(c) ||
+    c < 0 ||
+    c >= EXCAVATOR_CHAPTERS ||
+    !Number.isFinite(p) ||
+    !Number.isFinite(T) ||
+    T <= 0
+  )
     throw new RangeError('Invalid excavator chapter');
   const base: Shot = {
     pose: REST,
     payload: 1200,
+    joystick: 0,
     flow: 0,
     valve: 'hold',
     anchored: false,
     demand: 1,
     view: 'wide',
     cutaway: 0,
+    circuit: false,
+    pascal: false,
     lever: false,
     forceArrow: false,
     rock: false,
     labels: [],
   };
+  const drive = (shot: Omit<Shot, 'flow' | 'valve'> & { joystick: number }): Shot => ({
+    ...shot,
+    ...joystickCommand(shot.joystick),
+    joystick: clamp(shot.joystick, -1, 1),
+  });
   switch (c) {
     case 0: {
-      // Dig: curl the bucket into the heap, crowd the stick, then lift the boom.
+      // Dig: curl the bucket, crowd the stick, then lift the boom.
       const curlP = s(p / 0.34),
         crowd = s((p - 0.12) / 0.34),
         lift = s((p - 0.46) / 0.4);
-      return {
+      return drive({
         ...base,
         pose: {
           boom: 0.46 + 0.28 * lift,
@@ -413,107 +453,133 @@ export function excavatorShot(clock: Clock): Shot {
           curl: -0.1 + 1.6 * curlP,
         },
         payload: 1200 * s((p - 0.08) / 0.3),
-        valve: lift > 0 && lift < 1 ? 'lift' : 'hold',
+        joystick: lift > 0 && lift < 1 ? 0.5 : 0,
         labels: p > 0.5 ? ['boomCylinder', 'stickCylinder', 'bucketCylinder'] : [],
-      };
+      });
     }
     case 1: {
       // Open the boom cylinder and let oil push the piston while the boom rises.
       const open = s((p - 0.08) / 0.3),
-        T = clock.chapterSeconds,
-        flowAt = (t: number) => (t > 0.42 * T && t < 0.92 * T ? 30 : 0);
+        stickAt = (t: number) => (t > 0.42 * T && t < 0.92 * T ? 0.23 : 0);
       const boom = integrateBoom(
         { boom: 0.5, stick: -1.6, curl: 1.4 },
         1200,
-        flowAt,
+        stickAt,
         clock.chapterTime,
       );
-      return {
+      return drive({
         ...base,
         pose: { boom, stick: -1.6, curl: 1.4 },
         view: 'cylinder',
         cutaway: open,
-        flow: flowAt(clock.chapterTime),
-        valve: flowAt(clock.chapterTime) > 0 ? 'lift' : 'hold',
+        joystick: stickAt(clock.chapterTime),
         labels: open > 0.9 ? ['piston', 'capEnd', 'rodEnd'] : [],
-      };
+      });
     }
     case 2: {
-      // Same pose, more load: pressure follows the load, the pump only supplies oil.
-      const heavier = s((p - 0.4) / 0.4);
-      return {
-        ...base,
-        pose: { boom: 0.6, stick: -1.6, curl: 1.4 },
-        view: 'cylinder',
-        cutaway: 1,
-        payload: 300 + 1500 * heavier,
-        valve: 'hold',
-        forceArrow: p > 0.15,
-        labels: ['pistonFace'],
-      };
-    }
-    case 3: {
-      // Flow sets speed: the same load, twice the flow, the boom rises faster.
-      const T = clock.chapterSeconds,
-        flowAt = (t: number) => (t < 0.06 * T ? 0 : t < 0.55 * T ? 40 : 100);
+      // The closed circuit: tank, pump, spool valve, cylinder and return.
+      const stickAt = (t: number) => (t > 0.3 * T && t < 0.9 * T ? 0.25 : 0);
       const boom = integrateBoom(
-        { boom: 0.44, stick: -1.6, curl: 1.4 },
+        { boom: 0.5, stick: -1.6, curl: 1.4 },
         1200,
-        flowAt,
+        stickAt,
         clock.chapterTime,
       );
-      return {
+      return drive({
         ...base,
         pose: { boom, stick: -1.6, curl: 1.4 },
         view: 'cylinder',
         cutaway: 1,
-        flow: flowAt(clock.chapterTime),
-        valve: boom < EXCAVATOR.limits.boom[1] && flowAt(clock.chapterTime) > 0 ? 'lift' : 'hold',
-        labels: ['capEnd'],
-      };
+        circuit: true,
+        joystick: stickAt(clock.chapterTime),
+        labels: [],
+      });
+    }
+    case 3: {
+      // Pressure follows the load; the connected oil carries one pressure (Pascal).
+      const heavier = s((p - 0.18) / 0.3),
+        stickAt = () => 0.16;
+      const boom = integrateBoom(
+        { boom: 0.52, stick: -1.6, curl: 1.4 },
+        1200,
+        stickAt,
+        clock.chapterTime,
+      );
+      return drive({
+        ...base,
+        pose: { boom, stick: -1.6, curl: 1.4 },
+        view: 'cylinder',
+        cutaway: 1,
+        circuit: true,
+        pascal: p > 0.5,
+        payload: 300 + 1500 * heavier,
+        joystick: stickAt(),
+        forceArrow: p > 0.1,
+        labels: ['pistonFace'],
+      });
     }
     case 4: {
+      // Joystick travel opens the spool: little travel, little flow; full travel, full flow.
+      const stickAt = (t: number) =>
+        t < 0.06 * T ? 0 : t < 0.5 * T ? 40 / JOYSTICK_FLOW : 100 / JOYSTICK_FLOW;
+      const boom = integrateBoom(
+        { boom: 0.44, stick: -1.6, curl: 1.4 },
+        1200,
+        stickAt,
+        clock.chapterTime,
+      );
+      return drive({
+        ...base,
+        pose: { boom, stick: -1.6, curl: 1.4 },
+        view: 'cylinder',
+        cutaway: 1,
+        circuit: true,
+        joystick: boom < EXCAVATOR.limits.boom[1] ? stickAt(clock.chapterTime) : 0,
+        labels: ['capEnd'],
+      });
+    }
+    case 5: {
       // Side elevation: the same load, changing leverage.
       const sweep = s((p - 0.15) / 0.7);
       const boom = 0.45 + 0.57 * (sweep < 0.5 ? s(sweep * 2) : s(2 - sweep * 2));
-      return {
+      return drive({
         ...base,
         pose: { boom, stick: -1.5, curl: 1.4 },
         view: 'side',
         lever: p > 0.08,
-        valve: sweep <= 0 || sweep >= 1 ? 'hold' : sweep < 0.5 ? 'lift' : 'lower',
+        joystick: sweep <= 0 || sweep >= 1 ? 0 : sweep < 0.5 ? 0.3 : -0.3,
         labels: ['pivot', 'leverArm'],
-      };
+      });
     }
-    case 5: {
+    case 6: {
       // The bucket four-bar: cylinder extension becomes curl.
       const curl = -0.3 + 2.55 * s((p - 0.1) / 0.75);
-      return {
+      return drive({
         ...base,
         pose: { boom: 0.62, stick: -1.35, curl },
         view: 'bucket',
-        valve: 'hold',
         payload: 0,
+        joystick: 0,
         labels: ['bucketCylinder', 'rocker', 'link', 'bucketPin'],
-      };
+      });
     }
     default: {
       // Teeth under a boulder: pressure climbs to relief and the boom cannot rise.
       const push = s((p - 0.08) / 0.3),
         release = p > 0.66;
-      return {
+      return drive({
         ...base,
         pose: { boom: 0.34, stick: -1.05, curl: 0.35 },
         view: p < 0.62 ? 'cylinder' : 'wide',
         cutaway: p < 0.62 ? 1 : 1 - s((p - 0.62) / 0.12),
+        circuit: p < 0.62,
         payload: 0,
         anchored: true,
         demand: 0.2 + 0.8 * push,
-        flow: 120 * s((p - 0.04) / 0.12),
-        valve: release ? 'hold' : 'lift',
+        joystick: release ? 0 : 0.9 * s((p - 0.04) / 0.12),
         rock: true,
         labels: release ? [] : push > 0.98 ? ['relief'] : ['capEnd'],
-      };
+      });
     }
   }
 }
