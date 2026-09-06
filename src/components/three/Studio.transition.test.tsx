@@ -28,6 +28,8 @@ vi.mock('three', async () => ({
     frames: any[] = [];
     disposed = false;
     constructor() {
+      live.env.rendererAttempts++;
+      if (live.env.failRenderer) throw new Error('Runtime WebGL context creation failed');
       live.env.renderers.push(this);
     }
     setPixelRatio() {}
@@ -139,6 +141,8 @@ beforeEach(() => {
     seq: 0,
     now: 1000,
     renderers: [],
+    rendererAttempts: 0,
+    failRenderer: false,
     resize: [],
     intersection: [],
     media: { matches: false },
@@ -432,6 +436,96 @@ it('keeps real control listeners/RAF lifecycle balanced across fallback recreati
   tree = undefined;
   expect(env.raf.size).toBe(0);
   expect(newRenderer.disposed).toBe(true);
+});
+
+it('shows the runtime fallback if renderer construction fails after the caller has admitted Studio', async () => {
+  // Studio is actually mounted, as it is after a successful capability gate.
+  // Fail its renderer constructor, rather than bypassing Studio at the gate or
+  // selecting the reader's optional 2D mode.
+  env.failRenderer = true;
+  const createScene = vi.fn(director([]));
+  await mount(<Studio label="runtime failure" fallback={<p>section</p>} create={createScene} />);
+  expect(env.rendererAttempts).toBe(1);
+  expect(createScene).not.toHaveBeenCalled();
+  expect(live.contexts).toHaveLength(0);
+  expect(env.renderers).toHaveLength(0);
+  expect(env.raf.size).toBe(0);
+  expect(env.resize).toHaveLength(0);
+  expect(env.intersection).toHaveLength(0);
+  expect(tree!.root.findByProps({ className: 'studio-fallback' }).findByType('p').children).toEqual(
+    ['section'],
+  );
+  const canvasHost = tree!.root.findByProps({ className: 'studio-canvas' });
+  expect(canvasHost.props.style.display).toBe('none');
+  expect(canvasHost.props.tabIndex).toBe(-1);
+  expect(tree!.root.findAllByProps({ className: 'btn studio-mode' })).toHaveLength(0);
+  frame(1000);
+  expect(env.rendererAttempts).toBe(1);
+  expect(env.raf.size).toBe(0);
+});
+
+it('handles a real canvas context-lost event by showing fallback and disposing the active scene', async () => {
+  const geometry = new THREE.BoxGeometry(1, 1, 1),
+    material = new THREE.MeshBasicMaterial(),
+    geometryDispose = vi.spyOn(geometry, 'dispose'),
+    materialDispose = vi.spyOn(material, 'dispose'),
+    sceneDispose = vi.fn(),
+    sceneUpdate = vi.fn();
+  const v = await mount(
+    <Studio
+      label="context loss"
+      fallback={<p>section</p>}
+      create={({ root }) => {
+        root.add(new THREE.Mesh(geometry, material));
+        return { update: sceneUpdate, dispose: sceneDispose };
+      }}
+    />,
+  );
+  key();
+  drag(false, true);
+  const controlsDispose = vi.spyOn(v.ctx.controls, 'dispose'),
+    rendererDispose = vi.spyOn(v.renderer, 'dispose'),
+    removeCanvas = vi.spyOn(v.renderer.domElement, 'remove'),
+    rendered = v.renderer.frames.length,
+    updates = sceneUpdate.mock.calls.length;
+  expect(env.raf.size).toBe(1);
+  expect(v.renderer.domElement.listeners.get('webglcontextlost')?.size).toBe(1);
+  const lost = new Event('webglcontextlost', { cancelable: true });
+  await act(() => v.renderer.domElement.dispatchEvent(lost));
+  expect(lost.defaultPrevented).toBe(true);
+  expect(tree!.root.findByProps({ className: 'studio-fallback' }).findByType('p').children).toEqual(
+    ['section'],
+  );
+  expect(tree!.root.findByProps({ className: 'studio-canvas' }).props.style.display).toBe('none');
+  expect(tree!.root.findAllByProps({ className: 'btn studio-mode' })).toHaveLength(0);
+  expect(controlsDispose).toHaveBeenCalledOnce();
+  expect(rendererDispose).toHaveBeenCalledOnce();
+  expect(sceneDispose).toHaveBeenCalledOnce();
+  expect(geometryDispose).toHaveBeenCalledOnce();
+  expect(materialDispose).toHaveBeenCalledOnce();
+  expect(removeCanvas).toHaveBeenCalledOnce();
+  expect(env.raf.size).toBe(0);
+  expect(env.resize.every((observer: any) => !observer.active)).toBe(true);
+  expect(env.intersection.every((observer: any) => !observer.active)).toBe(true);
+  expect(env.host.listeners.get('keydown')?.size).toBe(0);
+  for (const type of [
+    'pointerdown',
+    'pointermove',
+    'pointerup',
+    'pointercancel',
+    'wheel',
+    'webglcontextlost',
+  ])
+    expect(v.renderer.domElement.listeners.get(type)?.size ?? 0).toBe(0);
+  frame(1000);
+  resize(278, 260);
+  expect(sceneUpdate).toHaveBeenCalledTimes(updates);
+  expect(v.renderer.frames).toHaveLength(rendered);
+  expect(env.rendererAttempts).toBe(1);
+  await act(() => tree!.unmount());
+  tree = undefined;
+  expect(controlsDispose).toHaveBeenCalledOnce();
+  expect(rendererDispose).toHaveBeenCalledOnce();
 });
 
 it('uses drain → director → lookAt/render order, never a controller update after a watch director', async () => {

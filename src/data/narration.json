@@ -6860,5 +6860,94 @@
         "at": 175.45
       }
     ]
+  },
+  "excavator": {
+    "duration": 176.0,
+    "cues": [
+      {
+        "id": "follow",
+        "title": "沿着动作找动力",
+        "titleEn": "Follow the motion",
+        "caption": "油缸改变长度，关节才开始转动。",
+        "captionEn": "A cylinder changes length; the joint turns.",
+        "zh": "先看铲斗收回来，再看动臂抬起。每一段钢臂都没有变长，变化的是连接在两端的油缸。油缸伸缩，推动关节转动；斗杆和铲斗再把动作传到斗齿。我们先沿着这条连接关系，找到力从哪里进入。",
+        "en": "Watch the bucket curl and the boom rise. The steel links keep their lengths. What changes is the distance between each cylinder’s pins. A straight push becomes rotation at a joint, and the connected links carry that motion to the bucket. Follow those connections before looking inside the hydraulics.",
+        "seconds": 25,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "oil",
+        "title": "打开油缸",
+        "titleEn": "Inside the cylinder",
+        "caption": "油流进入一腔，另一腔的油返回油箱。",
+        "captionEn": "Oil enters one chamber while the other drains.",
+        "zh": "现在切开油缸。活塞把内部隔成两个腔，活塞杆从一侧伸出。泵送来的油经过换向阀，进入无杆腔，推动活塞。另一腔的油必须有回到油箱的通路。并不是把油塞进一个密闭盒子，盒子就会不断变长。",
+        "en": "Inside the cylinder, a piston separates two chambers. Pump flow passes through a directional valve into the full-bore chamber. The piston moves, and oil on the rod side returns to the tank. Both paths matter: incoming oil needs somewhere to go, and the shrinking chamber needs an outlet.",
+        "seconds": 25,
+        "chapterAt": 25.0,
+        "at": 25.45
+      },
+      {
+        "id": "lever",
+        "title": "直线推力，转成力矩",
+        "titleEn": "From push to torque",
+        "caption": "油缸的作用线与支点共同决定力矩。",
+        "captionEn": "The cylinder’s line of action sets its leverage.",
+        "zh": "回到动臂。注意油缸并不直接沿着斗齿方向推。它在离支点一段距离的位置施力，所以产生转动力矩。动臂转动时，油缸的作用线也改变。同一份载荷，在不同姿态下，可能需要不同的压力。这里的连接点和读数来自同一个几何模型。",
+        "en": "The cylinder does not push directly along the bucket’s path. Its force acts away from the boom pivot, producing torque. As the boom rises, that line of action changes. The same load can therefore require different pressure in a different pose. The visible pins and the pressure calculation use the same geometry.",
+        "seconds": 25,
+        "chapterAt": 50.0,
+        "at": 50.45
+      },
+      {
+        "id": "pressure",
+        "title": "压力回应载荷",
+        "titleEn": "Pressure follows the load",
+        "caption": "载荷增加，所需压力上升。",
+        "captionEn": "A heavier load requires more pressure.",
+        "zh": "先把姿态固定，只增加铲斗的等效载荷。你会看到所需压力上升。压力乘以活塞面积给出推力，两支动臂油缸共同承担这份力矩。泵并不是无条件给出一个固定压力；阻力、控制阀和限压装置共同约束系统的工作状态。",
+        "en": "Hold the pose and add load. The required pressure rises. Pressure acting over piston area produces force, and the two boom cylinders share the required torque. A pump is not an unlimited source of fixed pressure. The load and the hydraulic controls determine the working condition, within the system’s limits.",
+        "seconds": 25,
+        "chapterAt": 75.0,
+        "at": 75.45
+      },
+      {
+        "id": "flow",
+        "title": "流量决定多快",
+        "titleEn": "Flow sets the speed",
+        "caption": "同样面积下，流量越大，活塞越快。",
+        "captionEn": "For the same area, more flow means more speed.",
+        "zh": "换一个问题：抬得动以后，怎样抬得更快？保持活塞面积不变，把供油流量调大。相同时间进入的油更多，活塞就必须走得更远。流量除以总有效面积，给出这里两支油缸的理想伸出速度。压力决定能对抗多大阻力，流量决定动作快慢。",
+        "en": "Once the load can move, what makes it move faster? Increase flow without changing piston area. More oil arriving each second means more piston travel each second. Dividing total flow by the combined area of the two cylinders gives their ideal extension speed. Distinguish that speed from the force provided by pressure.",
+        "seconds": 25,
+        "chapterAt": 100.0,
+        "at": 100.45
+      },
+      {
+        "id": "limits",
+        "title": "停住与限压",
+        "titleEn": "Holding and limiting",
+        "caption": "先保持，再尝试超载举升：油从溢流支路返回。",
+        "captionEn": "Hold, then try lifting an overload: oil takes the relief path.",
+        "zh": "先关闭工作口，让油液封在缸内，活塞停住。实机还有专门的负载保持装置。接着重新发出举升指令，但换上超限重载。此时油路接通，推力却不足，供油经溢流返回。真实变量泵还会调节排量；这里的二十四兆帕是教学限压，不是机器的起重能力。",
+        "en": "First close the work ports: trapped oil holds the piston. Real machines also use load-holding valves. Next, command a lift with an excessive load. The work ports reopen, but force is insufficient, so supplied flow returns through the relief path. Real variable pumps also adjust delivery. Our twenty-four-megapascal limit is a teaching choice, not a lifting rating.",
+        "seconds": 25,
+        "chapterAt": 125.0,
+        "at": 125.45
+      },
+      {
+        "id": "bucket",
+        "title": "最后一段连杆",
+        "titleEn": "The final linkage",
+        "caption": "铲斗连杆闭合，把油缸动作传到斗齿。",
+        "captionEn": "A closed linkage carries motion to the bucket.",
+        "zh": "最后停在铲斗连接处。短连杆、摇臂和铲斗形成闭合连接。铲斗油缸伸出，推动共用的接点，铲斗绕销轴收拢。每根连杆的长度始终不变。切到自由探索，改变姿态或载荷，比较所需压力；再改变流量，看理想举升速度怎样变化。",
+        "en": "Finish at the bucket linkage. The rocker, connecting link and bucket form a closed mechanism. The bucket cylinder extends, moving their shared joint and curling the bucket around its pin. Every link keeps its length. Switch to exploration to compare pressure at different poses and loads, or change flow and compare the ideal lifting speed.",
+        "seconds": 25,
+        "chapterAt": 151.0,
+        "at": 151.45
+      }
+    ]
   }
 }

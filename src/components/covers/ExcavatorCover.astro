@@ -1,0 +1,62 @@
+---
+import {
+  EXCAVATOR_BUCKET,
+  EXCAVATOR_CYLINDERS,
+  bucketPath,
+  excavatorPose,
+  mix,
+  distance,
+} from '../../models/excavator';
+const p = excavatorPose(0.8, -1.55, 0.3);
+---
+
+<g transform="translate(115 203) scale(44 -44)" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="-1.8" y=".1" width="2.5" height=".6" rx=".25" fill="#55686a"></rect><rect
+    x="-1.6"
+    y=".9"
+    width="1.8"
+    height=".6"
+    rx=".15"
+    fill="#c39a4c"></rect><rect x="-1.2" y="1.4" width=".8" height="1.1" rx=".12" fill="#8daeb3"
+  ></rect>
+  <rect x=".1" y="1.06" width=".66" height=".3" rx=".07" fill="#c39a4c"></rect>
+  <path
+    d={`M${p.origin.x} ${p.origin.y}L${p.elbow.x} ${p.elbow.y}L${p.wrist.x} ${p.wrist.y}`}
+    stroke="#c39a4c"
+    stroke-width=".25"
+    fill="none"></path>
+  {
+    p.cylinderMounts.map(({ a, b }) => (
+      <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke="#c39a4c" stroke-width=".18" />
+    ))
+  }
+  <path
+    d={`M${p.rockerPin.x} ${p.rockerPin.y}L${p.joint.x} ${p.joint.y}L${p.bucketPin.x} ${p.bucketPin.y}`}
+    stroke="#60797f"
+    stroke-width=".08"
+    fill="none"></path>
+  {
+    p.cylinders.map(({ a, b }, i) => {
+      const split = mix(a, b, EXCAVATOR_CYLINDERS[i].housing / distance(a, b));
+      return (
+        <g>
+          <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke="#9aabb0" stroke-width=".065" />
+          <path d={`M${a.x} ${a.y}L${split.x} ${split.y}`} stroke="#536d74" stroke-width=".14" />
+        </g>
+      );
+    })
+  }
+  <g
+    transform={`translate(${p.wrist.x} ${p.wrist.y}) rotate(${(p.bucketAngle * 180) / Math.PI})`}
+    fill="#b4863d"
+  >
+    <path d={bucketPath(EXCAVATOR_BUCKET.ear)}></path>
+    <path d={bucketPath(EXCAVATOR_BUCKET.side)}></path>
+    <path d={bucketPath(EXCAVATOR_BUCKET.tooth)} fill="#667d83"></path>
+  </g>
+  {
+    [p.origin, p.elbow, p.wrist, p.rockerPin, p.joint, p.bucketPin].map((q) => (
+      <circle cx={q.x} cy={q.y} r=".08" fill="#eceddf" />
+    ))
+  }
+</g>

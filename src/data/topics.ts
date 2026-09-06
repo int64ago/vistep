@@ -14,6 +14,38 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'excavator',
+    name: '挖掘机',
+    title: '一股油，怎样举起一斗土？',
+    question: '一股油，怎样举起一斗土？',
+    description:
+      '跟随液压油进入油缸，再沿动臂、斗杆和铲斗连杆，看压力、流量与力矩怎样共同决定动作。',
+    category: '器物与机械',
+    duration: '3 分钟',
+    color: '#c39a4c',
+    number: '63',
+    tag: '力与运动',
+    related: ['hydraulic-brake', 'suspension', 'bicycle'],
+    sources: [
+      {
+        title: 'Parker — Mobile Cylinder Products, HY18-1000, cylinder force, speed and moment',
+        url: 'https://www.parker.com/content/dam/Parker-com/Literature/Industrial-Cylinder/cylinder/cat/english/Parker_Mobile_Cylinder_Products_Catalog_HY18-1000.pdf',
+      },
+      {
+        title: 'Komatsu — Development of Oil Passage Integrated Cylinder, 2021, §2.6',
+        url: 'https://www.komatsu.jp/en/-/media/home/aboutus/innovation/technology/techreport/2021/en/174e04.pdf',
+      },
+      {
+        title: 'Parker — L90LS load-sensing directional valve, HY17-8504',
+        url: 'https://www.parker.com/content/dam/Parker-com/Literature/Mobile-Controls---Europe/Literature-Files-MCDE/HY17-8504-UK_L90.pdf',
+      },
+      {
+        title: 'Caterpillar Trimble — US20180171580A1, excavator four-bar linkage, Fig. 4–5',
+        url: 'https://patents.google.com/patent/US20180171580A1/en',
+      },
+    ],
+  },
+  {
     slug: 'tides',
     name: '潮汐',
     title: '远侧的海水，为什么也会鼓起？',

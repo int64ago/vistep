@@ -770,6 +770,15 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
       ],
     },
   },
+  excavator: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['挖掘机', '液压', '动臂', '斗杆', '铲斗', '液压缸'],
+      en: ['Excavator', 'hydraulics', 'boom', 'stick', 'bucket', 'hydraulic cylinder'],
+    },
+  },
+
   'hydraulic-brake': {
     category: 'mechanisms',
     minAge: 10,

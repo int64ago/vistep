@@ -1,4 +1,5 @@
 ---
+import ExcavatorCover from './covers/ExcavatorCover.astro';
 import PrinterCover from './covers/PrinterCover.astro';
 import BicycleCover from './covers/BicycleCover.astro';
 import TidesCover from './covers/TidesCover.astro';
@@ -890,5 +891,6 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'diffusion' && <DiffusionCover color={color} />}
   {slug === 'packet-routing' && <PacketRoutingCover color={color} />}
   {slug === 'zipper' && <ZipperCover color={color} />}
+  {slug === 'excavator' && <ExcavatorCover />}
   {slug === 'tides' && <TidesCover color={color} />}
 </svg>

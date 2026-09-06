@@ -43,6 +43,7 @@ export const experimentLoaders = {
   'cpu-pipeline': () => import('../components/experiments/CpuPipeline'),
   'transformer-electric': () => import('../components/experiments/ElectricTransformer'),
   'moon-phases': () => import('../components/experiments/MoonPhases'),
+  excavator: () => import('../components/experiments/Excavator'),
   'hydraulic-brake': () => import('../components/experiments/HydraulicBrake'),
   'binary-adder': () => import('../components/experiments/BinaryAdder'),
   'optical-fiber': () => import('../components/experiments/Fiber'),

@@ -2,12 +2,13 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 62 explorations, each with Chinese and English articles, a directed film and synchronized recordings. All 62 are published on the production site. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [production record](expansion-50.md) for deployment and review coverage.
+The collection contains 63 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow; the excavator is included in this release. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [collection expansion record](expansion-50.md) for its deployment history and the [excavator review](qa-excavator.md) for this scene’s evidence and remaining gaps.
 
 ## Objects & mechanisms
 
 | Exploration                                                    | Film | Question                                        |
 | -------------------------------------------------------------- | ---- | ----------------------------------------------- |
+| [Excavator](../src/content/en/excavator.mdx)                   | 2:56 | How does oil lift a bucket of earth?            |
 | [Bicycle gears](../src/content/en/bicycle.mdx)                 | 2:59 | Why does changing gear make pedaling easier?    |
 | [Laser printing](../src/content/en/printer.mdx)                | 3:01 | How does a beam of light become a printed word? |
 | [Four-stroke engine](../src/content/en/four-stroke-engine.mdx) | 2:49 | How does combustion become rotation?            |

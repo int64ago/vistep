@@ -1,0 +1,50 @@
+<h2 id="understand">Why does a straight cylinder move the bucket along an arc?</h2>
+
+Follow the exposed bucket-cylinder rod, then the bucket pivot. As the rod extends, a rocker and short connecting link curl the bucket about its pin. The steel arms keep their lengths; cylinder length changes the angles between connected rigid parts. [Komatsu's cylinder technical paper, section 2.6](https://www.komatsu.jp/en/-/media/home/aboutus/innovation/technology/techreport/2021/en/174e04.pdf?hash=C3ED84F6F844EB21E05470C1C93A2BD1&rev=-1), illustrates extension for digging and retraction for dumping.
+
+A hydraulic system transfers engine power through a pump into the oil and back into mechanical motion at the cylinders. This teaching assembly opens that path for inspection: two boom cylinders support the boom, a stick cylinder changes the stick angle, and a bucket cylinder drives the closed linkage.
+
+### Pressure determines force; flow determines speed
+
+Inside a cylinder, a piston separates two chambers. Oil enters the expanding chamber while oil from the shrinking chamber returns through the circuit. The cap end uses the full piston area. The rod end has a smaller effective area because the rod occupies part of it.
+
+With zero return backpressure and no losses, the same supply pressure produces more force in extension than in retraction. The same inlet flow produces faster retraction. This refers to flow entering the selected chamber; inlet and outlet flow need not be equal.
+
+In this model, **two identical boom cylinders divide the total supply flow equally**. With load and pose fixed, increasing flow changes ideal speed. Increasing the load raises the pressure required for static balance. [Parker's cylinder application guide](https://www.parker.com/content/dam/Parker-com/Literature/Industrial-Cylinder/cylinder/cat/english/Parker_Mobile_Cylinder_Products_Catalog_HY18-1000.pdf) provides the underlying area, force and flow relationships.
+
+<h2 id="try">Change one condition at a time</h2>
+
+1. Fix both boom and bucket angles, then increase equivalent bucket load. Watch the required pressure.
+2. Keep that load and pose, then increase total supply flow. Watch the ideal extension speed of the paired boom cylinders.
+3. Change boom angle. Both gravity torque and cylinder leverage change with the geometry.
+4. Increase bucket curl. Follow the extending rod and check that both short links remain connected at every pin.
+
+The angle controls compare static poses; they do not command hydraulic movement. Manually selecting an overloaded pose does not show that the machine can lift that load. The readout shows **required pressure**. Above the model's chosen 24 MPa limit, the model permits no further lifting. This setting is not the rated lifting capacity of a real machine.
+
+<h2 id="deeper">Connect the pressure, force line and pivot</h2>
+
+For a single-rod, double-acting cylinder, take extension as positive. With friction omitted, both chamber pressures contribute to net force:
+
+<div className="formula">F = pcap · A − prod · (A − Arod)</div>
+
+A is piston area and Arod is rod cross-sectional area. pcap and prod are gauge pressures relative to the surroundings. Because the chamber areas differ, net force cannot generally be written as one pressure difference times one area.
+
+The lifting calculation uses two identical boom cylinders with zero return backpressure. Qtotal is their combined inlet flow, and both pistons move at speed v:
+
+<div className="formula">Ftotal = 2 · p · A　　v = Qtotal / (2 · A)</div>
+
+During ideal lifting without losses or pressure limiting, hydraulic input power p · Qtotal equals mechanical output Ftotal · v. During relief, lifting stops while the pump can still supply power. That power is dissipated through throttling and other losses rather than becoming lifting work.
+
+Cylinder force creates torque through the perpendicular lever arm d. The same pin coordinates used to draw the mechanism determine the force line. Gravity moments from the boom, stick, bucket and equivalent payload determine the required pressure:
+
+<div className="formula">2 · prequired · A · d = Σ(m · g · x)</div>
+
+Each x is the horizontal distance from the boom pivot to an equivalent gravity load. The bucket linkage joint is solved from two intersecting circles, preserving both short-link lengths. The mechanism changes force and motion ratios without creating energy.
+
+### What do holding and pressure limiting leave out?
+
+The holding stage closes the actuator paths and assumes an ideal variable-displacement pump destrokes. A renewed lift command then exposes the overloaded supply circuit to pump-side relief. Pump-side relief cannot limit pressure inside an already isolated cylinder chamber. Real booms need dedicated load-holding and lowering controls; ideal trapped oil does not explain all their safety functions. [Bosch Rexroth's boom-valve data sheet](https://apps.boschrexroth.com/products/compact-hydraulics/ch-catalog/pdf/084796XYZ_RE18309-04.pdf) describes check, metering and overload-protection functions.
+
+This planar rigid-link and quasi-static model omits inertia, friction, soil resistance, fluid compression, leakage, valve dynamics, slewing, travel, structural stress and tipping. The single-cylinder section in the flow chapter represents one of the paired boom cylinders and integrates its share of total flow. It is not a dynamic simulation of the whole machine.
+
+Pump type, cylinder arrangement and operating parameters vary by machine. For example, [Caterpillar's 303.5 product information](https://h-cpc.cat.com/cmms/v2?cid=406&f=product&gid=154&it=product&lid=en&nc=1&pid=752011&sc=P420) lists pump flows and equipment pressure separately. This assembly is not a reconstruction of that model, and its illustrative circuit is neither a service schematic nor a lifting chart.
