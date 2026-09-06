@@ -124,6 +124,7 @@ export default function Studio({
       console.error('Unable to construct scene', error);
       setFailed(true);
     }
+    let resized = false;
     const resize = () => {
       const w = el.clientWidth,
         h = el.clientHeight;
@@ -138,7 +139,9 @@ export default function Studio({
       const direction = camera.position.clone().sub(controls.target).normalize();
       camera.position.copy(controls.target).addScaledVector(direction, distance);
       camera.updateProjectionMatrix();
-      controls.update();
+      resized = true;
+      if (filmRef.current.watch) camera.lookAt(controls.target);
+      else controls.update();
     };
     resize();
     const resizeObserver = new ResizeObserver(resize);
@@ -168,7 +171,14 @@ export default function Studio({
         previous = 0;
         return;
       }
+      const watching = filmRef.current.watch;
+      const modeChanged = wasWatching !== watching;
+      const nextFilmTime = filmRef.current.time;
+      const pausedSeek = watching && !filmRef.current.playing && nextFilmTime !== lastFilmTime;
       if (
+        !modeChanged &&
+        !resized &&
+        !pausedSeek &&
         previous &&
         time - previous <
           (filmRef.current.watch && !filmRef.current.playing ? 250 : frameBudget - 1)
@@ -178,19 +188,33 @@ export default function Studio({
       previous = time;
       const sceneDt = filmRef.current.watch && !filmRef.current.playing ? 0 : dt;
       elapsed += sceneDt;
-      if (wasWatching !== filmRef.current.watch) {
-        wasWatching = filmRef.current.watch;
-        controls.enabled = !wasWatching;
+      if (modeChanged) {
+        wasWatching = watching;
+        controls.enabled = !watching;
+        if (watching) {
+          stopKeyMotion();
+          // Public update without damping consumes its pending deltas. Preserve the
+          // visible pose: this drain must not become a rendered exploration jump.
+          const position = camera.position.clone();
+          const target = controls.target.clone();
+          controls.enableDamping = false;
+          controls.update();
+          camera.position.copy(position);
+          controls.target.copy(target);
+          camera.lookAt(controls.target);
+        }
       }
-      const nextFilmTime = filmRef.current.time;
       const settle =
         filmRef.current.watch &&
-        (lastFilmTime === undefined ||
+        (modeChanged ||
+          resized ||
+          lastFilmTime === undefined ||
           Math.abs(nextFilmTime - lastFilmTime) > 0.3 ||
           (!filmRef.current.playing && nextFilmTime !== lastFilmTime));
       object.update?.(sceneDt, elapsed, settle);
       lastFilmTime = nextFilmTime;
-      if (keyElapsed < 1) {
+      resized = false;
+      if (!watching && keyElapsed < 1) {
         keyElapsed = Math.min(1, keyElapsed + dt / 0.38);
         const amount = reducedMotion.matches ? 1 : softEase(keyElapsed);
         keyOffset.setFromSpherical(
@@ -202,8 +226,14 @@ export default function Studio({
         );
         camera.position.copy(controls.target).add(keyOffset);
       }
-      controls.enableDamping = !reducedMotion.matches;
-      controls.update();
+      if (watching) {
+        // The director owns the final watch camera, including views outside the
+        // exploration controller's angle limits. Do not advance controls here.
+        camera.lookAt(controls.target);
+      } else {
+        controls.enableDamping = !reducedMotion.matches;
+        controls.update();
+      }
       renderer.render(scene, camera);
     };
     animation = requestAnimationFrame(tick);

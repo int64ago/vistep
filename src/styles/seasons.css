@@ -416,6 +416,24 @@
     color: #b6cac4;
     font-size: 16px;
   }
+  .seasons-phone-shadow-reading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    font-size: 16px;
+    min-height: 25px;
+  }
+  .seasons-phone-shadow-reading > span {
+    white-space: nowrap;
+  }
+  .seasons-phone-shadow-clip {
+    color: #b6cac4;
+  }
+  .seasons-phone-shadow-reading[data-clipped='false'] .seasons-phone-shadow-clip {
+    visibility: hidden;
+  }
   .seasons-phone-input {
     height: 12px;
     border-radius: 8px;

@@ -121,13 +121,20 @@ export default function ElectricGeneratorStudio({
         // never have to pass through a stationary bearing or a conducting shaft.
         put(cylinderZ(G.shaftRadius, 5.1), steel, [0, 0, 2.55], rotor);
         put(
-          new THREE.TubeGeometry(new GeneratorLoopCurve(), 480, G.wireRadius, 10, false),
+          new THREE.TubeGeometry(new GeneratorLoopCurve(), 480, G.wireRadius, 12, false),
           copper,
           [0, 0, 0],
           rotor,
         );
         for (const side of [-1, 1]) {
-          put(new THREE.BoxGeometry(0.1, 1.09, 0.18), ceramic, [0, side * 0.57, 0], rotor);
+          const hub = 0.1,
+            contact = G.halfWidth - G.wireRadius;
+          put(
+            new THREE.BoxGeometry(0.1, contact - hub, 0.18),
+            ceramic,
+            [0, (side * (contact + hub)) / 2, 0],
+            rotor,
+          );
         }
         put(cylinderZ(0.16, 0.4), ceramic, [0, 0, 0.15], rotor);
         for (const points of generatorRotorLeads()) tube(points, copper, 0.027, rotor);

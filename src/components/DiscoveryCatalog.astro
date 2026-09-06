@@ -1,0 +1,506 @@
+---
+import TopicCover from './TopicCover.astro';
+import { topics } from '../data/topics';
+import { films, filmDuration } from '../data/films';
+import { discoveryCategories, discoveryMetadata } from '../data/discovery-metadata';
+import { localPath, localizedTopic, type Locale } from '../i18n';
+import '../styles/discovery.css';
+const { locale } = Astro.props as { locale: Locale };
+const copy =
+  locale === 'zh'
+    ? {
+        eyebrow: '跟着好奇心走',
+        title: '今天，想看懂什么？',
+        intro: '从熟悉的现象，走进意想不到的原理。',
+        search: '搜索专题、事物或原理',
+        placeholder: '试试「齿轮」「彩虹」或「AI」',
+        clear: '清除搜索',
+        categories: '按兴趣浏览',
+        all: '全部',
+        age: '观看年龄',
+        anyAge: '不限年龄',
+        ages: ['8–9 岁', '10–11 岁', '12–13 岁', '14 岁及以上'],
+        length: '观看时长',
+        anyLength: '不限时长',
+        short: '3 分钟以内',
+        long: '3–5 分钟',
+        reset: '重置筛选',
+        filters: '年龄与时长',
+        ageNote: '年龄建议怎么看？',
+        guidance:
+          '卡片标注建议起看年龄，按主线讲解的理解门槛估计，并非能力评级。可以提前在陪同下观看；公式与技术细节按需展开。',
+        from: '建议 {age} 岁起',
+        count: '{count} 个专题',
+        single: '1 个专题',
+        showing: '已展示 {shown} / {count} 个专题',
+        more: '再看一些',
+        empty: '换个方向，继续好奇。',
+        emptyHint: '试试更短的词，或放宽年龄和时长。中英文都可以搜索。',
+        submit: '搜索',
+        noScript: '所有专题已列在下方；开启 JavaScript 后可以搜索和筛选。',
+      }
+    : {
+        eyebrow: 'FOLLOW YOUR CURIOSITY',
+        title: 'What will you see differently?',
+        intro: 'Familiar things. Unexpected explanations.',
+        search: 'Search topics, objects or ideas',
+        placeholder: 'Try “gears”, “rainbow” or “AI”',
+        clear: 'Clear search',
+        categories: 'Browse by interest',
+        all: 'All topics',
+        age: 'Viewer age',
+        anyAge: 'Any age',
+        ages: ['Ages 8–9', 'Ages 10–11', 'Ages 12–13', 'Ages 14+'],
+        length: 'Running time',
+        anyLength: 'Any length',
+        short: 'Up to 3 minutes',
+        long: '3–5 minutes',
+        reset: 'Reset filters',
+        filters: 'Age & length',
+        ageNote: 'About the age guide',
+        guidance:
+          'Cards suggest a starting age for following the main explanation, not a measure of ability. Younger viewers can watch with someone; equations and technical detail are optional.',
+        from: 'Suggested {age}+',
+        count: '{count} topics',
+        single: '1 topic',
+        showing: 'Showing {shown} of {count} topics',
+        more: 'Discover more',
+        empty: 'A different path to something new.',
+        emptyHint:
+          'Try a shorter phrase, or widen the age and running time. Search in either English or Chinese.',
+        submit: 'Search',
+        noScript: 'Every topic is listed below. Enable JavaScript to search and filter.',
+      };
+// A few approachable entry points lead the collection; every other scene remains discoverable.
+const entryPoints = [
+  'bicycle',
+  'rainbow',
+  'zipper',
+  'moon-phases',
+  'printer',
+  'noise',
+  'pendulum',
+  'jpeg',
+  'four-stroke-engine',
+  'dimensions',
+  'lithium-battery',
+  'transformer',
+];
+const ordered = [...topics].sort((a, b) => {
+  const rank = (slug: string) =>
+    entryPoints.includes(slug) ? entryPoints.indexOf(slug) : entryPoints.length;
+  return rank(a.slug) - rank(b.slug);
+});
+---
+
+<section class="discovery-library" id="collection" aria-labelledby="collection-title">
+  <header class="discovery-heading">
+    <p>{copy.eyebrow}</p>
+    <h2 id="collection-title">{copy.title}</h2>
+    <p>{copy.intro}</p>
+  </header>
+  <vistep-discovery
+    data-count-label={copy.count}
+    data-single-label={copy.single}
+    data-showing-label={copy.showing}
+  >
+    <div class="discovery-tools" hidden>
+      <form class="discovery-search" role="search">
+        <label class="sr-only" for="scene-search">{copy.search}</label>
+        <svg viewBox="0 0 24 24" aria-hidden="true"
+          ><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 4.5 4.5"></path></svg
+        >
+        <input
+          type="search"
+          id="scene-search"
+          name="q"
+          maxlength="160"
+          placeholder={copy.placeholder}
+          autocomplete="off"
+        />
+        <button type="button" class="discovery-clear" aria-label={copy.clear} hidden
+          ><span aria-hidden="true">×</span></button
+        >
+        <button type="submit" class="discovery-submit"
+          >{copy.submit}<span aria-hidden="true">↗</span></button
+        >
+      </form>
+      <div class="discovery-categories" role="group" aria-label={copy.categories}>
+        <button type="button" data-category="all" aria-pressed="true"
+          >{copy.all}<span data-category-count>{topics.length}</span></button
+        >
+        {
+          discoveryCategories.map((category) => (
+            <button type="button" data-category={category.id} aria-pressed="false">
+              {category.label[locale]}
+              <span data-category-count>
+                {
+                  topics.filter((topic) => discoveryMetadata[topic.slug].category === category.id)
+                    .length
+                }
+              </span>
+            </button>
+          ))
+        }
+      </div>
+      <div class="discovery-refinements">
+        <button
+          class="discovery-filter-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="discovery-selects"
+          data-default-label={copy.filters}
+          ><span>{copy.filters}</span><span aria-hidden="true">＋</span></button
+        >
+        <div class="discovery-selects" id="discovery-selects">
+          <label
+            ><span>{copy.age}</span><select name="age" aria-label={copy.age}
+              ><option value="">{copy.anyAge}</option>{
+                [8, 10, 12, 14].map((age, i) => <option value={age}>{copy.ages[i]}</option>)
+              }</select
+            ></label
+          >
+          <label
+            ><span>{copy.length}</span><select name="length" aria-label={copy.length}
+              ><option value="any">{copy.anyLength}</option><option value="short"
+                >{copy.short}</option
+              ><option value="long">{copy.long}</option></select
+            ></label
+          >
+        </div>
+        <button type="button" class="discovery-reset" hidden
+          >{copy.reset}<span aria-hidden="true">↺</span></button
+        >
+      </div>
+    </div>
+    <noscript><p class="discovery-noscript">{copy.noScript}</p></noscript>
+    <div class="discovery-context">
+      <p class="discovery-result-count" role="status" aria-live="polite" aria-atomic="true">
+        {copy.count.replace('{count}', String(topics.length))}
+      </p>
+      <details class="discovery-age-note">
+        <summary>{copy.ageNote}<span aria-hidden="true">＋</span></summary><p>{copy.guidance}</p>
+      </details>
+    </div>
+    <div class="discovery-grid" id="discovery-results">
+      {
+        ordered.map((source, order) => {
+          const topic = localizedTopic(source, locale);
+          const english = localizedTopic(source, 'en');
+          const meta = discoveryMetadata[source.slug];
+          const category = discoveryCategories.find((c) => c.id === meta.category)!;
+          return (
+            <a
+              class="discovery-card"
+              href={localPath(`/explore/${topic.slug}/`, locale)}
+              data-order={order}
+              data-slug={topic.slug}
+              data-category={meta.category}
+              data-age={meta.minAge}
+              data-duration={films[topic.slug].duration}
+              data-name={`${source.name} ${english.name}`}
+              data-keywords={[...meta.keywords.zh, ...meta.keywords.en].join(' ')}
+              data-search={[
+                source.title,
+                source.question,
+                source.description,
+                english.title,
+                english.question,
+                english.description,
+              ].join(' ')}
+            >
+              <div class="discovery-art">
+                <>
+                  <TopicCover slug={topic.slug} color={topic.color} />
+                  <span class="discovery-play" aria-hidden="true">
+                    <svg viewBox="0 0 16 16">
+                      <path d="m6 3 7 5-7 5Z" />
+                    </svg>
+                  </span>
+                </>
+              </div>
+              <div class="discovery-card-copy">
+                <>
+                  <p class="discovery-card-category">{category.label[locale]}</p>
+                  <h3>{topic.name}</h3>
+                  <p class="discovery-question">{topic.title}</p>
+                  <div class="discovery-card-meta">
+                    <>
+                      <span>{filmDuration(films[topic.slug].duration)}</span>
+                      <span>{copy.from.replace('{age}', String(meta.minAge))}</span>
+                    </>
+                  </div>
+                </>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+    <div class="discovery-empty" hidden>
+      <span aria-hidden="true">↗</span><h3>{copy.empty}</h3><p>{copy.emptyHint}</p><button
+        type="button"
+        data-empty-reset>{copy.reset}</button
+      >
+    </div>
+    <div class="discovery-pagination" hidden>
+      <button type="button" aria-controls="discovery-results"
+        >{copy.more}<span aria-hidden="true">↓</span></button
+      >
+    </div>
+  </vistep-discovery>
+</section>
+
+<script>
+  import {
+    emptyFilters,
+    matchingScenes,
+    readFilters,
+    writeFilters,
+    type DiscoveryFilters,
+    type SearchableScene,
+  } from '../lib/discovery';
+  type Card = SearchableScene & { element: HTMLAnchorElement };
+  class VistepDiscovery extends HTMLElement {
+    private cleanup?: () => void;
+    connectedCallback() {
+      if (this.cleanup) return;
+      const controller = new AbortController();
+      const { signal } = controller;
+      const search = this.querySelector<HTMLInputElement>('input[type="search"]')!;
+      const age = this.querySelector<HTMLSelectElement>('select[name="age"]')!;
+      const length = this.querySelector<HTMLSelectElement>('select[name="length"]')!;
+      const categoryButtons = [
+        ...this.querySelectorAll<HTMLButtonElement>('button[data-category]'),
+      ];
+      const categories = categoryButtons.map((button) => button.dataset.category!);
+      const grid = this.querySelector<HTMLElement>('.discovery-grid')!;
+      const clear = this.querySelector<HTMLButtonElement>('.discovery-clear')!;
+      const reset = this.querySelector<HTMLButtonElement>('.discovery-reset')!;
+      const filterToggle = this.querySelector<HTMLButtonElement>('.discovery-filter-toggle')!;
+      const pagination = this.querySelector<HTMLElement>('.discovery-pagination')!;
+      const status = this.querySelector<HTMLElement>('.discovery-result-count')!;
+      const empty = this.querySelector<HTMLElement>('.discovery-empty')!;
+      const cards: Card[] = [...this.querySelectorAll<HTMLAnchorElement>('.discovery-card')].map(
+        (element) => ({
+          element,
+          slug: element.dataset.slug!,
+          category: element.dataset.category!,
+          minAge: Number(element.dataset.age),
+          duration: Number(element.dataset.duration),
+          name: element.dataset.name!,
+          keywords: element.dataset.keywords!,
+          text: element.dataset.search!,
+        }),
+      );
+      cards.sort((a, b) => Number(a.element.dataset.order) - Number(b.element.dataset.order));
+      let filters = readFilters(location.search, categories);
+      const restoredCount = () => {
+        const saved = history.state?.vistepDiscovery;
+        return saved?.search === location.search && Number.isInteger(saved?.shown)
+          ? Math.max(12, Math.min(cards.length, saved.shown))
+          : 12;
+      };
+      let shown = restoredCount();
+      let inputTimer: ReturnType<typeof setTimeout> | undefined;
+      let composing = false;
+      const updateURL = (mode: 'push' | 'replace') => {
+        const next = writeFilters(new URL(location.href), filters);
+        const state = { ...history.state, vistepDiscovery: { shown, search: next.search } };
+        history[mode === 'push' && next.href !== location.href ? 'pushState' : 'replaceState'](
+          state,
+          '',
+          next,
+        );
+        const language = document.querySelector<HTMLAnchorElement>('.language-switch');
+        if (language) {
+          const alternate = writeFilters(new URL(language.href), filters);
+          language.href = alternate.href;
+        }
+      };
+      const render = (restoreControls = false) => {
+        if (restoreControls) {
+          search.value = filters.query;
+          age.value = filters.age === null ? '' : String(filters.age);
+          length.value = filters.length;
+        }
+        const matches = matchingScenes(cards, filters);
+        const visible = new Set(matches.slice(0, shown));
+        cards.forEach((card) => {
+          card.element.hidden = !visible.has(card);
+        });
+        // Existing nodes retain their links and illustration IDs; no user HTML is inserted.
+        matches.forEach((card) => grid.append(card.element));
+        const counts = new Map<string, number>();
+        const broad = matchingScenes(cards, { ...filters, category: 'all' });
+        broad.forEach((card) => counts.set(card.category, (counts.get(card.category) ?? 0) + 1));
+        categoryButtons.forEach((button) => {
+          const key = button.dataset.category!;
+          button.setAttribute('aria-pressed', String(key === filters.category));
+          button.querySelector('[data-category-count]')!.textContent = String(
+            key === 'all' ? broad.length : (counts.get(key) ?? 0),
+          );
+        });
+        clear.hidden = !search.value;
+        filterToggle.querySelector('span')!.textContent =
+          [
+            filters.age !== null ? age.selectedOptions[0].textContent : '',
+            filters.length !== 'any' ? length.selectedOptions[0].textContent : '',
+          ]
+            .filter(Boolean)
+            .join(' · ') || filterToggle.dataset.defaultLabel!;
+        reset.hidden = !(
+          filters.query ||
+          filters.category !== 'all' ||
+          filters.age !== null ||
+          filters.length !== 'any'
+        );
+        empty.hidden = matches.length !== 0;
+        pagination.hidden = matches.length <= shown;
+        const label =
+          matches.length === 1
+            ? this.dataset.singleLabel!
+            : matches.length > shown
+              ? this.dataset.showingLabel!
+              : this.dataset.countLabel!;
+        status.textContent = label
+          .replace('{shown}', String(Math.min(shown, matches.length)))
+          .replace('{count}', String(matches.length));
+      };
+      const apply = (mode: 'push' | 'replace' = 'push') => {
+        clearTimeout(inputTimer);
+        filters.query = search.value.trim().slice(0, 160);
+        filters.age = age.value ? Number(age.value) : null;
+        filters.length = length.value as DiscoveryFilters['length'];
+        shown = 12;
+        render();
+        updateURL(mode);
+      };
+      search.addEventListener(
+        'compositionstart',
+        () => {
+          composing = true;
+          clearTimeout(inputTimer);
+        },
+        { signal },
+      );
+      search.addEventListener(
+        'compositionend',
+        () => {
+          composing = false;
+          apply('replace');
+        },
+        { signal },
+      );
+      search.addEventListener(
+        'input',
+        () => {
+          clear.hidden = !search.value;
+          clearTimeout(inputTimer);
+          if (!composing) inputTimer = setTimeout(() => apply('replace'), 180);
+        },
+        { signal },
+      );
+      search.addEventListener(
+        'keydown',
+        (event) => {
+          if (event.key === 'Escape' && !event.isComposing) {
+            search.value = '';
+            apply();
+          }
+        },
+        { signal },
+      );
+      this.querySelector('form')!.addEventListener(
+        'submit',
+        (event) => {
+          event.preventDefault();
+          if (!composing) apply();
+        },
+        { signal },
+      );
+      clear.addEventListener(
+        'click',
+        () => {
+          search.value = '';
+          apply();
+          search.focus();
+        },
+        { signal },
+      );
+      categoryButtons.forEach((button) =>
+        button.addEventListener(
+          'click',
+          () => {
+            filters.category = button.dataset.category!;
+            apply();
+          },
+          { signal },
+        ),
+      );
+      document.querySelector<HTMLAnchorElement>('.language-switch')?.addEventListener(
+        'click',
+        () => {
+          if (!composing && search.value.trim().slice(0, 160) !== filters.query) apply('replace');
+        },
+        { capture: true, signal },
+      );
+      age.addEventListener('change', () => apply(), { signal });
+      length.addEventListener('change', () => apply(), { signal });
+      filterToggle.addEventListener(
+        'click',
+        () => {
+          const expanded = filterToggle.getAttribute('aria-expanded') !== 'true';
+          filterToggle.setAttribute('aria-expanded', String(expanded));
+          filterToggle.parentElement!.toggleAttribute('data-expanded', expanded);
+        },
+        { signal },
+      );
+      const resetAll = () => {
+        clearTimeout(inputTimer);
+        filters = emptyFilters();
+        shown = 12;
+        render(true);
+        updateURL('push');
+        search.focus();
+      };
+      reset.addEventListener('click', resetAll, { signal });
+      this.querySelector('[data-empty-reset]')!.addEventListener('click', resetAll, { signal });
+      pagination.querySelector('button')!.addEventListener(
+        'click',
+        () => {
+          const next = matchingScenes(cards, filters)[shown];
+          shown += 12;
+          render();
+          updateURL('replace');
+          next?.element.focus({ preventScroll: true });
+        },
+        { signal },
+      );
+      window.addEventListener(
+        'popstate',
+        () => {
+          clearTimeout(inputTimer);
+          filters = readFilters(location.search, categories);
+          shown = restoredCount();
+          render(true);
+          updateURL('replace');
+        },
+        { signal },
+      );
+      this.querySelector<HTMLElement>('.discovery-tools')!.hidden = false;
+      render(true);
+      updateURL('replace');
+      this.cleanup = () => {
+        controller.abort();
+        clearTimeout(inputTimer);
+        this.cleanup = undefined;
+      };
+    }
+    disconnectedCallback() {
+      this.cleanup?.();
+    }
+  }
+  if (!customElements.get('vistep-discovery'))
+    customElements.define('vistep-discovery', VistepDiscovery);
+</script>

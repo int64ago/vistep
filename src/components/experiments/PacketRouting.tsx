@@ -3,13 +3,13 @@ import { t } from '../../i18n';
 import { useShowcase } from '../lab/Showcase';
 import { useCompact } from '../lab/useCompact';
 import PacketRoutingMap, { PacketRoutingOutput } from '../lab/PacketRoutingMap';
+import { routingBufferComparison } from '../lab/packetRoutingPresentation';
 import {
   ROUTING_ROUTERS,
   routingBudget,
   routingReset,
   routingScenario,
   routingShot,
-  routingSimulate,
   routingSnapshot,
   type RoutingPhaseKind,
   type RoutingDrop,
@@ -245,17 +245,14 @@ export default function PacketRouting() {
     compact = useCompact(),
     id = useId();
   const [manual, setManual] = useState(routingReset);
-  const manualRun = useMemo(
-    () =>
-      routingSimulate({ ...manual.config, capacity: manual.compare ? 8 : manual.config.capacity }),
-    [manual.config, manual.compare],
-  );
+  const comparison = useMemo(() => routingBufferComparison(manual.config), [manual.config]);
+  const manualRun = manual.compare ? comparison.expanded : comparison.baseline;
   const directed = useMemo(
     () => routingShot(showcase.chapter, showcase.chapterProgress),
     [showcase.chapter, showcase.chapterProgress],
   );
   const run = showcase.watch ? directed.run : manualRun,
-    duration = showcase.watch ? directed.duration : Math.max(0.3, run.end),
+    duration = showcase.watch ? directed.duration : comparison.duration,
     state = showcase.watch ? directed.state : routingSnapshot(run, manual.time * duration);
   const selected = showcase.watch ? directed.selected : Math.min(manual.selected, run.config.count),
     packet = state.packets[selected - 1];

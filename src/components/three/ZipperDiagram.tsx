@@ -173,6 +173,7 @@ export function ZipperLoad({ force }: { force: number }) {
   const to = ([x, y]: ZipPoint): ZipPoint => [w / 2 + x * scale, h / 2 - y * scale];
   const marked = zipperTooth(6, -1, 8),
     near = [zipperTooth(5, 1, 8), zipperTooth(6, 1, 8)];
+  const markedBottom = Math.max(...marked.outline.map(([x, y]) => to([x, y - 6])[1]));
   return (
     <svg
       ref={typography.ref}
@@ -206,9 +207,6 @@ export function ZipperLoad({ force }: { force: number }) {
           stroke="#877b60"
         />
       ))}
-      <text x={w / 2 - 66} y={h / 2 + 6}>
-        L7
-      </text>
       {[-0.25, 0.25].map((y) => {
         const q = to([0, y]);
         return (
@@ -239,6 +237,13 @@ export function ZipperLoad({ force }: { force: number }) {
           markerEnd={`url(#${arrow})`}
         />
       )}
+      <text
+        x={to([marked.root[0], 0])[0]}
+        y={markedBottom + typography.fontSize * 1.6}
+        textAnchor="middle"
+      >
+        L7
+      </text>
       <text x="14" y="102">
         F = {s.force.toFixed(2)}
       </text>
@@ -281,24 +286,30 @@ export function ZipperComparison({ trial }: { trial: number }) {
           cy = compact ? (i ? 260 : 120) : 192,
           shift = shoulder ? c.normal : c.withoutShoulder;
         const to = ([x, y]: ZipPoint): ZipPoint => [cx + x * scale, cy - (y - 6) * scale];
+        const teeth = ([-1, 1] as const).flatMap((side) =>
+          (side === -1 ? [6] : [5, 6]).map((index) => {
+            const tooth = zipperTooth(index, side, 8, shoulder);
+            return {
+              id: tooth.id,
+              side,
+              points: tooth.outline.map(([x, y]) => to([x + side * shift, y])),
+            };
+          }),
+        );
+        const top = Math.min(...teeth.flatMap((tooth) => tooth.points.map((p) => p[1])));
         return (
           <g key={String(shoulder)}>
-            <text x={cx} y={cy - 59} textAnchor="middle">
+            <text x={cx} y={top - typography.fontSize} textAnchor="middle">
               {t(shoulder ? '宽肩：不许横移' : '削去宽肩：可横移')}
             </text>
-            {([-1, 1] as const).flatMap((side) =>
-              (side === -1 ? [6] : [5, 6]).map((index) => {
-                const tooth = zipperTooth(index, side, 8, shoulder);
-                return (
-                  <path
-                    key={tooth.id}
-                    d={path(tooth.outline.map(([x, y]) => to([x + side * shift, y])))}
-                    fill={side === -1 ? '#73a69a' : '#d3b783'}
-                    stroke="#877b60"
-                  />
-                );
-              }),
-            )}
+            {teeth.map((tooth) => (
+              <path
+                key={tooth.id}
+                d={path(tooth.points)}
+                fill={tooth.side === -1 ? '#73a69a' : '#d3b783'}
+                stroke="#877b60"
+              />
+            ))}
           </g>
         );
       })}

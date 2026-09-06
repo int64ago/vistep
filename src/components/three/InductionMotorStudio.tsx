@@ -4,11 +4,13 @@ import Studio from './Studio';
 import { createElectricalFraming } from './electrical-framing';
 import InductionMotorFlat from './InductionMotorFlat';
 import { t } from '../../i18n';
+import { motorRoundedConductor, motorWindingCurve } from './motor-conductor-geometry';
 import {
   MOTOR as M,
+  MOTOR_GEOMETRY as D,
+  motorSupplyLead,
   motorAxes,
   motorBarPoint,
-  motorWindingPoint,
   motorWindingLead,
   motorTerminal,
   motorStatorBore,
@@ -17,14 +19,6 @@ import {
 } from '../../models/induction-motor';
 
 const colors = ['#d68a64', '#6fb0a7', '#9a97d3'];
-class Winding extends THREE.Curve<THREE.Vector3> {
-  constructor(private phase: number) {
-    super();
-  }
-  getPoint(t: number, target = new THREE.Vector3()) {
-    return target.fromArray(motorWindingPoint(this.phase, t));
-  }
-}
 export default function InductionMotorStudio({
   shot,
   narrow,
@@ -46,7 +40,7 @@ export default function InductionMotorStudio({
       fallback={<InductionMotorFlat shot={shot} narrow={narrow} />}
       create={({ root, controls, camera }) => {
         const assembly = new THREE.Group();
-        assembly.position.y = M.axisY;
+        assembly.position.y = M.axisY + D.axisLift;
         root.add(assembly);
         const rotor = new THREE.Group();
         assembly.add(rotor);
@@ -98,12 +92,8 @@ export default function InductionMotorStudio({
         ) =>
           put(
             new THREE.TubeGeometry(
-              new THREE.CatmullRomCurve3(
-                points.map((p) => new THREE.Vector3(...p)),
-                false,
-                'centripetal',
-              ),
-              Math.max(20, points.length * 10),
+              motorRoundedConductor(points),
+              Math.max(100, points.length * 8),
               r,
               8,
               false,
@@ -178,19 +168,25 @@ export default function InductionMotorStudio({
         put(new THREE.BoxGeometry(0.075, 0.1, 0.75), copper, [0, M.shaftRadius, 2.15], rotor);
         for (const z of [-2.05, 2.05]) {
           put(new THREE.TorusGeometry(0.29, 0.1, 12, 36), steel, [0, 0, z]);
-          put(new THREE.BoxGeometry(0.64, 1.4, 0.3), base, [0, -0.96, z]);
+          const top = -0.26,
+            bottom = D.baseTop - assembly.position.y;
+          put(new THREE.BoxGeometry(0.64, top - bottom, 0.3), base, [0, (top + bottom) / 2, z]);
         }
-        put(new THREE.BoxGeometry(4.55, 0.22, 4.6), base, [-0.22, -1.71, 0]);
+        put(new THREE.BoxGeometry(4.55, 0.22, 4.6), base, [
+          -0.22,
+          D.baseTop - assembly.position.y - 0.11,
+          0,
+        ]);
         const windingMaterials = colors.map(
           (color) => new THREE.MeshStandardMaterial({ color, metalness: 0.4, roughness: 0.35 }),
         );
         for (let phase = 0; phase < 3; phase++) {
           put(
-            new THREE.TubeGeometry(new Winding(phase), 720, 0.023, 7, false),
+            new THREE.TubeGeometry(motorWindingCurve(phase), 1440, D.windingRadius, 10, false),
             windingMaterials[phase],
           );
           for (const end of [0, 1]) {
-            line(motorWindingLead(phase, end), windingMaterials[phase], 0.025);
+            line(motorWindingLead(phase, end), windingMaterials[phase], D.leadRadius);
             put(new THREE.SphereGeometry(0.049, 10, 8), copper, motorTerminal(phase, end));
           }
         }
@@ -198,8 +194,7 @@ export default function InductionMotorStudio({
         // Star point joins all three return terminals; supply leads remain separate.
         line([motorTerminal(0, 1), motorTerminal(1, 1), motorTerminal(2, 1)], copper, 0.036);
         for (let phase = 0; phase < 3; phase++) {
-          const p = motorTerminal(phase, 0);
-          line([p, [p[0], -1.35, -2.15], [p[0], -1.59, -2.28]], windingMaterials[phase], 0.027);
+          line(motorSupplyLead(phase), windingMaterials[phase], 0.027);
         }
         const field = new THREE.ArrowHelper(
           new THREE.Vector3(1, 0, 0),

@@ -5,11 +5,16 @@ import { getTopic } from '../../data/topics';
 import '../../styles/experiments.css';
 import narration from '../../data/narration.json';
 import { films, filmDuration } from '../../data/films';
+import { discoveryCategories, discoveryMetadata } from '../../data/discovery-metadata';
 import { translate, localPath, localizedTopic } from '../../i18n';
 const { topic: originalTopic, Content, locale = 'zh' } = Astro.props;
 const topic = localizedTopic(originalTopic, locale);
 const tr = (s: string) => translate(s, locale);
 const href = (p: string) => localPath(p, locale);
+const discovery = discoveryMetadata[topic.slug];
+const category = discoveryCategories.find((item) => item.id === discovery.category)!;
+const ageLabel =
+  locale === 'en' ? `Suggested ages ${discovery.minAge}+` : `建议 ${discovery.minAge} 岁起`;
 ---
 
 <Base
@@ -20,7 +25,9 @@ const href = (p: string) => localPath(p, locale);
 >
   <main id="main" class={`lesson-wrap lesson-${topic.slug}`} style={`--topic:${topic.color}`}>
     <div class="breadcrumbs">
-      <a href={href('/#collection')}>{tr('全部探索')}</a><span>/</span><span>{topic.category}</span
+      <a href={href('/#collection')}>{tr('全部探索')}</a><span>/</span><a
+        href={href(`/?category=${category.id}#collection`)}
+        >{category.label[locale as 'zh' | 'en']}</a
       ><span>/</span><span>{topic.name}</span>
     </div>
     <header class="lesson-heading">
@@ -37,7 +44,12 @@ const href = (p: string) => localPath(p, locale);
             ))
           }
         </h1><p>{topic.description}</p>
-      </div><span class="lesson-time">{filmDuration(films[topic.slug].duration)} {tr('演示')}</span>
+      </div><div class="lesson-viewing">
+        <span class="lesson-time">{filmDuration(films[topic.slug].duration)} {tr('演示')}</span><a
+          class="lesson-age"
+          href={href(`/?age=${discovery.minAge}#collection`)}>{ageLabel}</a
+        >
+      </div>
     </header>
     <section class="experiment" id="experiment" aria-label={`${topic.name} ${tr('互动实验')}`}>
       <Experiment slug={topic.slug as any} client:only="react"
@@ -97,13 +109,17 @@ const href = (p: string) => localPath(p, locale);
         {
           topic.related.map((slug) => {
             const related = localizedTopic(getTopic(slug), locale);
+            const relatedCategory = discoveryCategories.find(
+              (item) => item.id === discoveryMetadata[slug].category,
+            )!;
             return (
               <a class="related-card" href={href(`/explore/${slug}/`)}>
                 <>
                   <div>
                     <>
                       <small>
-                        {related.category} / {filmDuration(films[slug].duration)} {tr('演示')}
+                        {relatedCategory.label[locale as 'zh' | 'en']} /{' '}
+                        {filmDuration(films[slug].duration)} {tr('演示')}
                       </small>
                       <strong>{related.question}</strong>
                     </>
@@ -118,3 +134,35 @@ const href = (p: string) => localPath(p, locale);
     </section>
   </main>
 </Base>
+
+<style>
+  .lesson-viewing {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 4px;
+    flex-shrink: 0;
+  }
+  .lesson-viewing .lesson-time {
+    margin: 0;
+  }
+  .lesson-age {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 16px;
+    color: #62735b;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: #bcc7b3;
+  }
+  @media (max-width: 760px) {
+    .lesson-viewing {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+  }
+</style>

@@ -13,6 +13,7 @@ import { Range } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
 import { useCompact } from '../lab/useCompact';
 import SeasonsGlobe from '../lab/SeasonsGlobe';
+import SeasonsShadowReadout from '../lab/SeasonsShadowReadout';
 import {
   SeasonsBeam,
   SeasonsField,
@@ -236,19 +237,15 @@ function SeasonsPhone({ state: s, chapter }: { state: SeasonsState; chapter: num
       ) : (
         <>
           {annual ? <SeasonsShadowDial state={s} /> : <SeasonsField state={s} compact />}
-          <div className="seasons-phone-reading">
-            <span>{t(annual ? (shadow ? '影长' : '太阳在地平线下') : '太阳高度')}</span>
-            {(!annual || shadow) && (
-              <b>
-                {annual
-                  ? shadow
-                    ? `${shadow.length.toFixed(2)} m`
-                    : '—'
-                  : `${s.solar.altitude.toFixed(1)}°`}
-              </b>
-            )}
-            {!annual && <span>{formatHour(s.hour)}</span>}
-          </div>
+          {!annual && (
+            <div className="seasons-phone-reading">
+              <span>{t('太阳高度')}</span>
+              <b>{s.solar.altitude.toFixed(1)}°</b>
+              <span>{formatHour(s.hour)}</span>
+            </div>
+          )}
+          {annual && !shadow && <p className="seasons-phone-limit">{t('太阳在地平线下')}</p>}
+          <SeasonsShadowReadout shadow={shadow} />
           {chapter === 5 ? (
             <div className="seasons-phone-polar">
               <SeasonsGlobe state={s} labels={false} notes={false} />

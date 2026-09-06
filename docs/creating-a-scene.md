@@ -63,14 +63,15 @@ For a reviewed batch, both narration tools accept several slugs after `--only`. 
 
 ## Register the scene
 
-| Integration                          | Required work                                                                          |
-| ------------------------------------ | -------------------------------------------------------------------------------------- |
-| `topics.ts`                          | Unique slug and number, metadata, sources and related links                            |
-| `experiments.ts`                     | Explicit lazy import                                                                   |
-| Bilingual MDX                        | Complete explanation with `understand`, `try` and `deeper` anchors                     |
-| `en.json`                            | All labels, captions and metadata; preserve interpolation placeholders                 |
-| Narration source and generated files | Both recordings, matching cues and measured timing                                     |
-| Cover artwork                        | A distinct `TopicCover.astro` rendering; selected objects also use `ObjectCover.astro` |
+| Integration                          | Required work                                                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `topics.ts`                          | Unique slug and number, metadata, sources and related links                                      |
+| `discovery-metadata.ts`              | One of the six interest categories, an editorial starting age and Chinese/English search aliases |
+| `experiments.ts`                     | Explicit lazy import                                                                             |
+| Bilingual MDX                        | Complete explanation with `understand`, `try` and `deeper` anchors                               |
+| `en.json`                            | All labels, captions and metadata; preserve interpolation placeholders                           |
+| Narration source and generated files | Both recordings, matching cues and measured timing                                               |
+| Cover artwork                        | A distinct `TopicCover.astro` rendering; selected objects also use `ObjectCover.astro`           |
 
 Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Check that new artwork also fits the social card. The registry tests catch missing files; they cannot judge communication quality.
 

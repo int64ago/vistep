@@ -261,7 +261,12 @@ export default function ElectricTransformerStudio({
         }
         // Feet support the core without an unexplained floating assembly.
         for (const x of [-1.65, 1.65]) {
-          put(new THREE.BoxGeometry(1.1, 0.18, 1.35), dark, [x, 0.15, 0]);
+          const bottom = 0.06;
+          put(new THREE.BoxGeometry(1.1, g.bottom - bottom, 1.35), dark, [
+            x,
+            (g.bottom + bottom) / 2,
+            0,
+          ]);
         }
         const framing = createElectricalFraming(root, camera, controls, [], [-0.12, 0.08]);
         return {

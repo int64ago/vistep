@@ -34,7 +34,7 @@
 | [太阳能电池](../../src/content/solar-cell.mdx)           | 3:19 | 阳光怎样走完一条电路？                   |
 | [锂离子电池](../../src/content/lithium-battery.mdx)      | 3:06 | 电池充电时，究竟存进了什么？             |
 | [机械钟擒纵](../../src/content/escapement.mdx)           | 3:29 | 擒纵怎样让钟走得有节拍？                 |
-| [扩散](../../src/content/diffusion.mdx)                  | 3:05 | 没有水流，颜色为什么还会散开？           |
+| [扩散](../../src/content/diffusion.mdx)                  | 3:06 | 没有水流，颜色为什么还会散开？           |
 | [拉链](../../src/content/zipper.mdx)                     | 3:21 | 拉链怎样一拉就合上？                     |
 
 ## 数字世界

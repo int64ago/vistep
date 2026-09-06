@@ -151,6 +151,8 @@ function CacheCabinet({ view, recency = false }: { view: CacheView; recency?: bo
                 <div
                   className="cache-line"
                   key={way}
+                  data-way={way}
+                  aria-label={`${t('组 {0}', set)} · W ${way}`}
                   data-target={event?.set === set && event?.way === way}
                   data-valid={line.valid}
                   style={ink((line.block ?? 0) * lineBytes)}
@@ -209,7 +211,15 @@ function ReadReceipt({ view }: { view: CacheView }) {
         {!resolved ? '?' : e.hit ? '✓' : '↓'}
       </span>
       <div>
-        <strong>{t(title)}</strong>
+        <strong>
+          <span className="cache-receipt-title-long">{t(title)}</span>
+          <span
+            className="cache-receipt-title-short"
+            aria-label={!resolved ? t('核对身份') : undefined}
+          >
+            {!resolved ? '?' : e.hit ? 'H' : 'M'}
+          </span>
+        </strong>
         <p>
           {!resolved
             ? `${t('组 {0}', e.set)} · ${candidates} · ${t('寻找标签 {0}', e.tag)}`
@@ -321,6 +331,61 @@ function CacheComparison({
   return (
     <div className="cache-comparison">
       <p className="cache-fairness">{t('相同地址序列 · 都从空缓存开始 · 都是 16 B 数据容量')}</p>
+      <div className="cache-phone-comparison">
+        <div className="cache-phone-current">
+          <b>{t('地址 {0}', first.event?.address ?? '—')}</b>
+          <span>{t('访问 #{0}', first.event?.id ?? 0)}</span>
+        </div>
+        {/* One input sequence, two independently calculated outcomes. No timing scale. */}
+        <div className="cache-phone-sequence" aria-label={t('相同身份的访问序列')}>
+          {firstFrames.slice(1).map((frame) => (
+            <span
+              key={frame.event!.id}
+              data-current={frame.event!.id === first.event?.id}
+              data-done={frame.event!.id <= first.state.accesses}
+            >
+              {addressText(frame.event!.address)}
+            </span>
+          ))}
+        </div>
+        <div className="cache-phone-pair" data-kind={kind}>
+          {[second, first].map((view, i) => (
+            <section key={i}>
+              <h3>
+                {kind === 'associativity'
+                  ? t(i === 0 ? '直接映射' : '二路相联')
+                  : t('{0} B / 行', view.state.config.lineBytes)}
+              </h3>
+              <div className="cache-phone-mapping">
+                <span>{t('组 {0}', view.event?.set ?? '—')}</span>
+                <span>T {view.event?.tag ?? '—'}</span>
+                <span>
+                  {t('行内偏移')} {view.event?.offset ?? '—'}
+                </span>
+                <b data-result={view.phase}>
+                  {view.phase === 'lookup' ? '?' : view.event?.hit ? 'H' : 'M'}
+                </b>
+              </div>
+              {kind === 'associativity' ? (
+                <CacheCabinet view={view} />
+              ) : (
+                <div className="cache-line-example">
+                  <b>{view.event ? range(view.event.base, view.state.config.lineBytes) : '—'}</b>
+                  <div className="cache-byte-row">
+                    {view.event &&
+                      CACHE_MEMORY.slice(view.event.base, view.event.end + 1).map((v, j) => (
+                        <span key={j} data-byte-active={j === view.event?.offset}>
+                          {hex(v)}
+                        </span>
+                      ))}
+                  </div>
+                </div>
+              )}
+              <ReadLedger state={view.state} />
+            </section>
+          ))}
+        </div>
+      </div>
       <div className="cache-comparison-pair">
         {[second, first].map((view, i) => {
           const frames = i === 0 ? secondFrames : firstFrames,

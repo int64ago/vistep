@@ -3,16 +3,11 @@ import Base from '../../layouts/Base.astro';
 import BrandMorph from '../../components/BrandMorph';
 import HomeObject from '../../components/HomeObject';
 import TopicCover from '../../components/TopicCover.astro';
-import ObjectCover from '../../components/ObjectCover.astro';
-import { topics as sourceTopics } from '../../data/topics';
-import { films, filmDuration } from '../../data/films';
-import { translate, localPath, localizedTopic, type Locale } from '../../i18n';
+import DiscoveryCatalog from '../DiscoveryCatalog.astro';
+import { translate, localPath, type Locale } from '../../i18n';
 const { locale = 'zh' } = Astro.props as { locale?: Locale };
 const tr = (s: string) => translate(s, locale);
 const href = (p: string) => localPath(p, locale);
-const topics = sourceTopics.map((topic) => localizedTopic(topic, locale));
-const picks = ['bicycle', 'pendulum', 'jpeg'];
-const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.slug !== 'printer');
 ---
 
 <Base locale={locale}>
@@ -59,142 +54,7 @@ const remainder = topics.filter((topic) => !picks.includes(topic.slug) && topic.
         }
       </style></noscript
     >
-    <section class="discovery" id="collection" aria-labelledby="collection-title">
-      <div class="section-rule">
-        <div>
-          <span class="section-index">01 — {String(topics.length).padStart(2, '0')}</span><h2
-            id="collection-title"
-          >
-            {tr('值得打开的世界')}
-          </h2>
-        </div><p>{tr('先跟着看懂，再自由探索。')}</p>
-      </div>
-      <div class="feature-studies">
-        {
-          picks.map((slug, i) => {
-            const topic = topics.find((t) => t.slug === slug)!;
-            return (
-              <a class={`study-card study-${slug}`} href={href(`/explore/${slug}/`)}>
-                <div class="study-visual">
-                  <>
-                    <ObjectCover slug={slug} />
-                    <span class="study-number">{topic.number}</span>
-                    <span class="study-enter" aria-hidden="true">
-                      ↗
-                    </span>
-                  </>
-                </div>
-                <div class="study-title">
-                  <>
-                    <span>{topic.name}</span>
-                    <span>
-                      {filmDuration(films[slug].duration)} {tr('演示')}
-                    </span>
-                  </>
-                </div>
-                <h3>
-                  {i === 0
-                    ? tr('省下的力，去了哪里？')
-                    : i === 1
-                      ? tr('一次摆动，两种能量。')
-                      : tr('一幅图像，64 种拆法。')}
-                </h3>
-                <p>{topic.description}</p>
-              </a>
-            );
-          })
-        }
-      </div>
-      <a class="wide-study" href={href('/explore/dimensions/')}>
-        <div class="wide-study-copy">
-          <span class="section-index">09 / DIMENSIONS</span><h2>
-            {tr('眼睛看不到，')}<br />{tr('不代表无法理解。')}
-          </h2><p>
-            {tr('旋转一个四维立方体。')}<br />{tr('从它在三维世界的影子，建立新的直觉。')}
-          </p><span class="wide-cta">{tr('进入多维空间')} <span aria-hidden="true">↗</span></span>
-        </div>
-        <div class="hyper-art" aria-hidden="true">
-          <div class="hyper-plane plane-one"></div><div class="hyper-plane plane-two"></div><svg
-            viewBox="0 0 580 450"
-            fill="none"
-            ><defs
-              ><linearGradient
-                id="hyper-line"
-                x1="100"
-                y1="60"
-                x2="480"
-                y2="380"
-                gradientUnits="userSpaceOnUse"
-                ><stop stop-color="#dbf3da"></stop><stop offset="1" stop-color="#68887f"
-                ></stop></linearGradient
-              ></defs
-            ><g stroke="url(#hyper-line)" stroke-width="1.5"
-              ><path
-                d="m121 119 183-66 158 99-184 83-157-116v182l157 105 184-83V152M278 235v171M304 53v182l-183 66m183-66 158 88"
-              ></path><path
-                d="m190 168 103-38 92 56-105 44-90-62v102l90 62 105-46V186M280 230v102M293 130v99l-103 41m103-41 92 57"
-              ></path><path
-                d="m121 119 69 49m114-115-11 77m169 22-77 34m-107 49 2-5M121 301l69-31m88 136 2-74m182-9-77-37m-81-51-11-6"
-                opacity=".55"></path></g
-            ><g fill="#d9f7dc"
-              >{
-                [
-                  [121, 119],
-                  [304, 53],
-                  [462, 152],
-                  [278, 235],
-                  [121, 301],
-                  [278, 406],
-                  [462, 323],
-                  [190, 168],
-                  [293, 130],
-                  [385, 186],
-                  [280, 230],
-                  [190, 270],
-                  [280, 332],
-                  [385, 286],
-                ].map(([x, y]) => <circle cx={x} cy={y} r="3" />)
-              }</g
-            ></svg
-          ><span>{tr('4D → 3D → 你的屏幕')}</span>
-        </div>
-      </a>
-      <div class="section-rule compact-rule">
-        <div>
-          <span class="section-index">KEEP EXPLORING</span><h2>{tr('还有这些，也很好奇。')}</h2>
-        </div><p>
-          {tr('器物、信息、空间，以及我们身处的系统。')}
-        </p>
-      </div>
-      <div class="exploration-index">
-        {
-          remainder
-            .filter((t) => t.slug !== 'dimensions')
-            .map((topic) => (
-              <a class={`index-entry index-${topic.slug}`} href={href(`/explore/${topic.slug}/`)}>
-                <>
-                  <span class="index-number">{topic.number}</span>
-                  <div class="index-illustration">
-                    <TopicCover slug={topic.slug} color={topic.color} />
-                  </div>
-                  <div class="index-copy">
-                    <>
-                      <span>
-                        {topic.category} / {filmDuration(films[topic.slug].duration)} {tr('演示')}
-                      </span>
-                      <h3>{topic.name}</h3>
-                      <p>{topic.title}</p>
-                    </>
-                  </div>
-                  <span class="index-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </>
-              </a>
-            ))
-        }
-      </div>
-    </section>
+    <DiscoveryCatalog locale={locale} />
     <section class="closing-note">
       <span class="tiny-cross" aria-hidden="true">+</span><p>
         {tr('理解世界，从看清一步开始。')}
