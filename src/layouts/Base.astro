@@ -137,14 +137,11 @@ const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
       >
     </footer>
     <script>
+      import { manualLanguageClick } from '../lib/film-language';
+
       document
         .querySelector<HTMLAnchorElement>('.language-switch')
-        ?.addEventListener('click', function () {
-          try {
-            localStorage.setItem('vistep:language', this.dataset.language!);
-          } catch {}
-          if (location.hash) this.hash = location.hash;
-        });
+        ?.addEventListener('click', manualLanguageClick);
     </script>
   </body>
 </html>
