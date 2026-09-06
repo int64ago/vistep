@@ -69,6 +69,8 @@ export default function Studio({
     renderer.toneMappingExposure = exposure ?? (dark ? 1.2 : 1.35);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.VSMShadowMap;
+    // Cutaway materials declare their own planes; scenes without them are unaffected.
+    renderer.localClippingEnabled = true;
     el.appendChild(renderer.domElement);
     renderer.domElement.setAttribute('aria-hidden', 'true');
     const scene = new THREE.Scene(),

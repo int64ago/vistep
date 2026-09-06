@@ -28,20 +28,28 @@ export const topics: Topic[] = [
     related: ['hydraulic-brake', 'suspension', 'bicycle'],
     sources: [
       {
-        title: 'Parker — Mobile Cylinder Products, HY18-1000, cylinder force, speed and moment',
+        title:
+          'Komatsu — PC200/PC200LC-8 hydraulic excavator brochure AESS688-01: cylinder bores, relief setting, pump flow',
+        url: 'https://panafricangroup.com/pdf/PC200_200LC-8_.pdf',
+      },
+      {
+        title:
+          'Bosch Rexroth — Hydraulics Basic Principles: load-dependent pressure and pressure relief',
+        url: 'https://dc-mkt-prod.cloud.bosch.tech/xrm/media/global/training_1/digital_media/reference_books/knowledge-in-detail-hydraulics-basic-principles.pdf',
+      },
+      {
+        title:
+          'Parker — Mobile Cylinder Products, HY18-1000: cylinder force, speed and effective areas',
         url: 'https://www.parker.com/content/dam/Parker-com/Literature/Industrial-Cylinder/cylinder/cat/english/Parker_Mobile_Cylinder_Products_Catalog_HY18-1000.pdf',
       },
       {
-        title: 'Komatsu — Development of Oil Passage Integrated Cylinder, 2021, §2.6',
-        url: 'https://www.komatsu.jp/en/-/media/home/aboutus/innovation/technology/techreport/2021/en/174e04.pdf',
+        title: 'Caterpillar — CA2175409C, Excavator bucket linkage (H-link four-bar)',
+        url: 'https://patents.google.com/patent/CA2175409C/en',
       },
       {
-        title: 'Parker — L90LS load-sensing directional valve, HY17-8504',
-        url: 'https://www.parker.com/content/dam/Parker-com/Literature/Mobile-Controls---Europe/Literature-Files-MCDE/HY17-8504-UK_L90.pdf',
-      },
-      {
-        title: 'Caterpillar Trimble — US20180171580A1, excavator four-bar linkage, Fig. 4–5',
-        url: 'https://patents.google.com/patent/US20180171580A1/en',
+        title:
+          'Bosch Rexroth — Check and metering valves for boom holding and hose-burst protection (ISO 8643)',
+        url: 'https://apps.boschrexroth.com/products/compact-hydraulics/CH-Catalog/pdf/Check_and_metering.pdf',
       },
     ],
   },

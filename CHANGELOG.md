@@ -8,7 +8,7 @@ Notable changes are recorded here. Commit history remains the source for individ
 
 These changes are published through the `main` deployment workflow without a tagged package release. Historical measurements below apply to their individual revisions.
 
-- Added the excavator as scene 63: a hydraulic cross-section, a closed bucket linkage, a 2:56 bilingual film and controls for static load and ideal-flow comparisons.
+- Rebuilt the excavator (scene 63) from scratch: a 20-tonne-class machine with a gooseneck boom and H-link bucket, the near boom cylinder sectioned in place with visible oil, projected callouts, a pressure gauge with the 37.3 MPa relief band, a 3:36 bilingual film and static-load, flow, lever-arm and blocked-lift exploration.
 - Expanded the collection from 12 to 62 bilingual explanations; [the expansion record](docs/expansion-50.md) separates publication from the remaining visual, listening and physical-device review.
 - Rebuilt the bicycle and laser-printer covers from their mechanism geometry for both the catalog and social cards.
 

@@ -1,215 +1,213 @@
 import { describe, expect, it } from 'vitest';
 import {
-  EXCAVATOR_BUCKET,
-  EXCAVATOR_CYLINDERS,
+  EXCAVATOR,
   circleJoint,
   distance,
   excavatorHydraulics,
   excavatorPose,
   excavatorShot,
-  rotate,
-  type XY,
+  integrateBoom,
+  leverArm,
+  pistonArea,
 } from './excavator';
+import { excavatorDrawing } from './excavator-drawing';
 
-const delta = (a: XY, b: XY): XY => ({ x: a.x - b.x, y: a.y - b.y });
-const sine = (a: XY, b: XY) =>
-  (a.x * b.y - a.y * b.x) / (Math.hypot(a.x, a.y) * Math.hypot(b.x, b.y));
-const samples = (a: number, b: number, n: number) =>
-  Array.from({ length: n + 1 }, (_, i) => a + ((b - a) * i) / n);
+const poses = function* () {
+  const L = EXCAVATOR.limits;
+  for (let boom = L.boom[0]; boom <= L.boom[1] + 1e-9; boom += 0.08)
+    for (let stick = L.stick[0]; stick <= L.stick[1] + 1e-9; stick += 0.1)
+      for (let curl = L.curl[0]; curl <= L.curl[1] + 1e-9; curl += 0.1) yield { boom, stick, curl };
+};
 
-describe('excavator rigid mechanism', () => {
-  it('closes every rigid link and stays away from all three transmission dead centers', () => {
-    for (const boom of samples(0.6, 1.05, 6))
-      for (const stick of samples(-1.65, -1.5, 3))
-        for (const curl of samples(0.05, 0.6, 22)) {
-          const p = excavatorPose(boom, stick, curl);
-          for (const [a, b, length] of [
-            [p.origin, p.elbow, 3.2],
-            [p.elbow, p.wrist, 2.4],
-            [p.wrist, p.rockerPin, 0.62],
-            [p.rockerPin, p.joint, 0.65],
-            [p.joint, p.bucketPin, 0.6],
-            [p.bucketPin, p.wrist, 0.55],
-          ] as const)
-            expect(distance(a, b)).toBeCloseTo(length, 12);
-          // Four-bar transmission, output arm, and input cylinder each retain
-          // a useful perpendicular lever; a closed but straight linkage fails.
-          expect(
-            Math.abs(sine(delta(p.joint, p.rockerPin), delta(p.bucketPin, p.joint))),
-          ).toBeGreaterThan(0.9);
-          expect(
-            Math.abs(sine(delta(p.joint, p.bucketPin), delta(p.wrist, p.bucketPin))),
-          ).toBeGreaterThan(0.9);
-          expect(
-            Math.abs(sine(delta(p.joint, p.rockerPin), delta(p.joint, p.cylinders[2].a))),
-          ).toBeGreaterThan(0.7);
-          // Keep the selected assembly branch on the same side of its two pivots.
-          expect(
-            sine(delta(p.bucketPin, p.rockerPin), delta(p.joint, p.rockerPin)),
-          ).toBeGreaterThan(0);
-          p.cylinders.forEach(({ a, b }, i) => {
-            const length = distance(a, b),
-              dimensions = EXCAVATOR_CYLINDERS[i];
-            expect(length - dimensions.housing).toBeGreaterThan(0.1);
-            expect(length - dimensions.rod).toBeGreaterThan(0.08);
-            expect(dimensions.housing + dimensions.rod - length).toBeGreaterThan(0.06);
-          });
-        }
-  });
-
-  it('extends the bucket cylinder while the actual cutting edge scoops inward and upward', () => {
-    for (const boom of samples(0.6, 1.05, 6))
-      for (const stick of samples(-1.65, -1.5, 3)) {
-        let previous = excavatorPose(boom, stick, 0.05);
-        for (const curl of samples(0.05, 0.6, 30).slice(1)) {
-          const p = excavatorPose(boom, stick, curl);
-          expect(distance(p.cylinders[2].a, p.joint)).toBeGreaterThan(
-            distance(previous.cylinders[2].a, previous.joint),
-          );
-          expect(p.tip.x).toBeLessThan(previous.tip.x);
-          expect(p.tip.y).toBeGreaterThan(previous.tip.y);
-          expect(p.bucketAngle).toBeLessThan(previous.bucketAngle);
-          previous = p;
-        }
+describe('excavator linkage geometry', () => {
+  it('keeps every piston inside its barrel with rod overlap over the whole pose range', () => {
+    for (const pose of poses()) {
+      const p = excavatorPose(pose);
+      for (const cyl of Object.values(p.cylinders)) {
+        expect(cyl.stroke).toBeGreaterThan(0.05);
+        expect(cyl.stroke).toBeLessThan(1);
+        expect(cyl.length - cyl.spec.barrel).toBeGreaterThan(0.05);
       }
-    const cuttingEdge = {
-      x: (EXCAVATOR_BUCKET.tooth[2].x + EXCAVATOR_BUCKET.tooth[3].x) / 2,
-      y: (EXCAVATOR_BUCKET.tooth[2].y + EXCAVATOR_BUCKET.tooth[3].y) / 2,
-    };
-    expect(distance(cuttingEdge, EXCAVATOR_BUCKET.tip)).toBeLessThan(1e-12);
-    const p = excavatorPose(),
-      renderedTip = rotate(cuttingEdge, p.bucketAngle);
-    expect(
-      distance(p.tip, { x: p.wrist.x + renderedTip.x, y: p.wrist.y + renderedTip.y }),
-    ).toBeLessThan(1e-12);
-  });
-});
-
-describe('excavator paired boom-cylinder hydraulics', () => {
-  it('balances gravitational virtual work against cylinder extension, independent of force formulas', () => {
-    const epsilon = 1e-6,
-      payload = 1200;
-    const potential = (boom: number, stick: number, curl: number) => {
-      const p = excavatorPose(boom, stick, curl);
-      return (
-        9.81 *
-        (800 * p.boomCenter.y + 400 * p.stickCenter.y + 180 * p.bucketCenter.y + payload * p.tip.y)
-      );
-    };
-    for (const boom of [0.61, 0.75, 1.04])
-      for (const stick of [-1.65, -1.55, -1.5])
-        for (const curl of [0.05, 0.3, 0.6]) {
-          const h = excavatorHydraulics(boom, payload, 40, 100, stick, curl);
-          const derivative =
-            (potential(boom + epsilon, stick, curl) - potential(boom - epsilon, stick, curl)) /
-            (2 * epsilon);
-          const cylinderLength = (angle: number) => {
-            const { a, b } = excavatorPose(angle, stick, curl).cylinders[0];
-            return distance(a, b);
-          };
-          const extensionLever =
-            (cylinderLength(boom + epsilon) - cylinderLength(boom - epsilon)) / (2 * epsilon);
-          expect(h.moment).toBeCloseTo(derivative, 3);
-          expect(h.lever).toBeCloseTo(extensionLever, 8);
-          expect(h.lever).toBeGreaterThan(0.67);
-          expect(h.force * extensionLever).toBeCloseTo(derivative, 3);
-        }
-  });
-
-  it('shares total flow between two cylinders and conserves ideal input power', () => {
-    for (const bore of [70, 100, 140]) {
-      const h = excavatorHydraulics(0.75, 800, 40, bore);
-      expect(h.area).toBeCloseTo(Math.PI * (bore / 2000) ** 2, 12);
-      expect(h.force).toBeCloseTo(2 * h.pressure * h.area, 8);
-      expect(h.velocity * 2 * h.area * 60000).toBeCloseTo(40, 10);
-      expect(h.power).toBeCloseTo(h.force * h.velocity, 8);
-      expect(h.mechanicalPower).toBeCloseTo(h.power, 8);
-      expect(h.reliefPower).toBe(0);
     }
-    const wide = excavatorHydraulics(0.75, 800, 40, 140);
-    const narrow = excavatorHydraulics(0.75, 800, 40, 70);
-    expect(narrow.requiredPressure / wide.requiredPressure).toBeCloseTo(4, 10);
-    expect(narrow.velocity / wide.velocity).toBeCloseTo(4, 10);
-    const stopped = excavatorHydraulics(0.75, 800, 0);
-    expect(stopped.force).toBeGreaterThan(0);
-    expect(stopped.velocity).toBe(0);
-    expect(stopped.power).toBe(0);
   });
-
-  it('caps pressure and diverts input power when the equivalent load cannot be raised', () => {
-    const h = excavatorHydraulics(0.75, 9000, 40);
-    expect(h.requiredPressure).toBeGreaterThan(24e6);
-    expect(h.pressure).toBe(24e6);
-    expect(h.stalled).toBe(true);
-    expect(h.force * h.lever).toBeLessThan(h.moment);
-    expect(h.velocity).toBe(0);
-    expect(h.mechanicalPower).toBe(0);
-    expect(h.reliefPower).toBe(h.power);
-    expect(h.power).toBe(16000);
+  it('closes the bucket four-bar with fixed rocker and link lengths', () => {
+    for (const pose of poses()) {
+      const p = excavatorPose(pose);
+      expect(distance(p.rockerPin, p.joint)).toBeCloseTo(EXCAVATOR.rockerLength, 9);
+      expect(distance(p.joint, p.lug)).toBeCloseTo(EXCAVATOR.linkLength, 9);
+    }
+  });
+  it('extends the bucket cylinder to curl the cutting edge toward the cab', () => {
+    let previous = excavatorPose({ boom: 0.62, stick: -1.6, curl: -0.3 });
+    for (let curl = -0.2; curl <= 2.35; curl += 0.1) {
+      const next = excavatorPose({ boom: 0.62, stick: -1.6, curl });
+      expect(next.cylinders.bucket.length).toBeGreaterThan(previous.cylinders.bucket.length);
+      previous = next;
+    }
+    const open = excavatorPose({ boom: 0.62, stick: -1.6, curl: 0 }),
+      curled = excavatorPose({ boom: 0.62, stick: -1.6, curl: 2.2 });
+    expect(curled.tooth.x).toBeLessThan(open.tooth.x - 2);
+  });
+  it('extends the stick cylinder to crowd the stick inward', () => {
+    const out = excavatorPose({ boom: 0.6, stick: -0.9, curl: 1 }),
+      crowded = excavatorPose({ boom: 0.6, stick: -2.2, curl: 1 });
+    expect(crowded.cylinders.stick.length).toBeGreaterThan(out.cylinders.stick.length + 0.5);
+  });
+  it('rejects unreachable and non-finite linkage inputs', () => {
+    expect(() => circleJoint({ x: 0, y: 0 }, { x: 5, y: 0 }, 1, 1)).toThrow(RangeError);
+    expect(() => excavatorPose({ boom: NaN, stick: -1.5, curl: 1 })).toThrow(RangeError);
+  });
+  it('clamps poses to the teaching range instead of extrapolating', () => {
+    const p = excavatorPose({ boom: 9, stick: -9, curl: 9 });
+    expect(p.boom).toBe(EXCAVATOR.limits.boom[1]);
+    expect(p.stick).toBe(EXCAVATOR.limits.stick[0]);
+    expect(p.curl).toBe(EXCAVATOR.limits.curl[1]);
   });
 });
 
-describe('excavator offered states and numeric boundaries', () => {
-  it('keeps all seven film chapters valid, including exact endpoints and the 26-second relief chapter', () => {
-    for (let chapter = 0; chapter < 7; chapter++)
-      for (const progress of samples(0, 1, 500)) {
-        const shot = excavatorShot(chapter, progress, chapter === 5 ? 26 : 25);
+describe('excavator hydraulics', () => {
+  const pose = excavatorPose({ boom: 0.6, stick: -1.6, curl: 1.4 });
+  it('uses the reference bore for the piston area and lets the load set the pressure', () => {
+    expect(pistonArea(EXCAVATOR.cylinders.boom) * 1e4).toBeCloseTo(113.1, 0);
+    const light = excavatorHydraulics(pose, 300, 0, 'hold'),
+      heavy = excavatorHydraulics(pose, 1800, 0, 'hold');
+    expect(light.pressure / 1e6).toBeCloseTo(6.5, 1);
+    expect(heavy.pressure / 1e6).toBeCloseTo(9.5, 1);
+    expect(heavy.force / 1e3).toBeCloseTo(108, 0);
+    expect(heavy.force).toBeCloseTo(heavy.pressure * heavy.area, 6);
+  });
+  it('balances the gravity moment with two cylinders on the pin-derived lever arm', () => {
+    const h = excavatorHydraulics(pose, 1200, 0, 'hold');
+    expect(2 * h.pressure * h.area * h.arm).toBeCloseTo(h.moment, 6);
+    expect(h.arm).toBeCloseTo(leverArm(pose).arm, 12);
+  });
+  it('scales piston speed with flow at unchanged pressure', () => {
+    const slow = excavatorHydraulics(pose, 1200, 40, 'lift'),
+      fast = excavatorHydraulics(pose, 1200, 100, 'lift');
+    expect(slow.velocity * 100).toBeCloseTo(2.95, 1);
+    expect(fast.velocity / slow.velocity).toBeCloseTo(2.5, 9);
+    expect(fast.pressure).toBe(slow.pressure);
+    expect(fast.boomRate).toBeCloseTo(fast.velocity / fast.arm, 12);
+  });
+  it('holds with zero speed and lifts against an obstacle only up to the relief setting', () => {
+    expect(excavatorHydraulics(pose, 1200, 100, 'hold').velocity).toBe(0);
+    const blocked = excavatorHydraulics(pose, 0, 120, 'lift', true);
+    expect(blocked.relief).toBe(true);
+    expect(blocked.pressure).toBe(EXCAVATOR.relief);
+    expect(blocked.velocity).toBe(0);
+    expect(blocked.reliefPower).toBeGreaterThan(0);
+    const building = excavatorHydraulics(pose, 0, 120, 'lift', true, 0.5);
+    expect(building.relief).toBe(false);
+    expect(building.pressure).toBeCloseTo(EXCAVATOR.relief / 2, 6);
+    const released = excavatorHydraulics(pose, 0, 0, 'hold', true);
+    expect(released.pressure).toBeCloseTo(released.gravityPressure, 6);
+    expect(released.pressure).toBeLessThan(EXCAVATOR.relief / 3);
+  });
+  it('changes required pressure with pose at the same load', () => {
+    const low = excavatorHydraulics(
+        excavatorPose({ boom: 0.45, stick: -1.5, curl: 1.4 }),
+        1200,
+        0,
+        'hold',
+      ),
+      high = excavatorHydraulics(
+        excavatorPose({ boom: 1.02, stick: -1.5, curl: 1.4 }),
+        1200,
+        0,
+        'hold',
+      );
+    expect(low.pressure / 1e6).toBeCloseTo(8.6, 1);
+    expect(high.pressure / 1e6).toBeCloseTo(7.8, 1);
+    expect(high.arm).toBeLessThan(low.arm);
+  });
+  it('integrates the boom deterministically so seeking agrees with playback', () => {
+    const from = { boom: 0.44, stick: -1.6, curl: 1.4 };
+    const whole = integrateBoom(from, 1200, () => 40, 10);
+    const halves = integrateBoom(
+      { ...from, boom: integrateBoom(from, 1200, () => 40, 5) },
+      1200,
+      () => 40,
+      5,
+    );
+    expect(whole).toBeCloseTo(halves, 6);
+    expect(whole).toBeGreaterThan(from.boom + 0.2);
+    expect(integrateBoom(from, 1200, () => 0, 10)).toBe(from.boom);
+  });
+  it('rejects invalid hydraulic input', () => {
+    expect(() => excavatorHydraulics(pose, -1, 10)).toThrow(RangeError);
+    expect(() => excavatorHydraulics(pose, 10, NaN)).toThrow(RangeError);
+  });
+});
+
+describe('excavator film director', () => {
+  const clock = (chapter: number, chapterProgress: number, chapterSeconds = 26) => ({
+    chapter,
+    chapterProgress,
+    chapterTime: chapterProgress * chapterSeconds,
+    chapterSeconds,
+  });
+  it('produces valid poses and finite readouts for every chapter and progress', () => {
+    for (let c = 0; c < 7; c++)
+      for (let q = 0; q <= 1.0001; q += 0.02) {
+        const shot = excavatorShot(clock(c, q));
+        const p = excavatorPose(shot.pose);
         const h = excavatorHydraulics(
-          shot.boom,
+          p,
           shot.payload,
           shot.flow,
-          100,
-          shot.stick,
-          shot.curl,
+          shot.valve,
+          shot.anchored,
+          shot.demand,
         );
-        expect(
-          Object.values(h).every((value) => typeof value === 'boolean' || Number.isFinite(value)),
-        ).toBe(true);
-        expect(shot.piston).toBeGreaterThanOrEqual(0);
-        expect(shot.piston).toBeLessThanOrEqual(1);
-        if (chapter === 6) expect(shot.valve).toBe('extend');
+        expect(Number.isFinite(h.pressure)).toBe(true);
+        expect(p.tooth.y).toBeGreaterThan(-0.05);
       }
-    for (const boom of [35, 60])
-      for (const curl of [3, 34])
-        expect(() =>
-          excavatorHydraulics((boom * Math.PI) / 180, 9000, 80, 100, -1.55, (curl * Math.PI) / 180),
-        ).not.toThrow();
-    expect(excavatorShot(0, -1)).toEqual(excavatorShot(0, 0));
-    expect(excavatorShot(0, 2)).toEqual(excavatorShot(0, 1));
   });
+  it('shows the sectioned cylinder for the hydraulic chapters and the side elevation for leverage', () => {
+    expect(excavatorShot(clock(1, 0.6)).cutaway).toBe(1);
+    expect(excavatorShot(clock(2, 0.5)).view).toBe('cylinder');
+    expect(excavatorShot(clock(4, 0.5)).view).toBe('side');
+    expect(excavatorShot(clock(4, 0.5)).lever).toBe(true);
+    expect(excavatorShot(clock(5, 0.5)).view).toBe('bucket');
+  });
+  it('raises the boom faster after the flow rises, then holds at the top', () => {
+    const rate = (q: number) =>
+      excavatorShot(clock(3, q + 0.02, 33.6)).pose.boom -
+      excavatorShot(clock(3, q - 0.02, 33.6)).pose.boom;
+    expect(rate(0.4)).toBeGreaterThan(0.01);
+    expect(rate(0.62) / rate(0.4)).toBeCloseTo(2.5, 0);
+    expect(excavatorShot(clock(3, 1, 33.6)).pose.boom).toBe(EXCAVATOR.limits.boom[1]);
+    expect(excavatorShot(clock(3, 1, 33.6)).valve).toBe('hold');
+  });
+  it('builds pressure to relief against the boulder, then releases to the weight alone', () => {
+    const building = excavatorShot(clock(6, 0.15)),
+      blocked = excavatorShot(clock(6, 0.5)),
+      released = excavatorShot(clock(6, 0.9));
+    expect(building.demand).toBeLessThan(1);
+    expect(blocked.demand).toBe(1);
+    expect(blocked.valve).toBe('lift');
+    expect(released.valve).toBe('hold');
+    expect(released.view).toBe('wide');
+  });
+  it('rejects chapters outside the film', () => {
+    expect(() => excavatorShot(clock(7, 0.5))).toThrow(RangeError);
+    expect(() => excavatorShot(clock(0, NaN))).toThrow(RangeError);
+  });
+});
 
-  it('rejects non-finite, impossible, and overflow inputs instead of producing invalid graphics', () => {
-    for (const bad of [NaN, Infinity, -Infinity]) {
-      for (let i = 0; i < 6; i++) {
-        const args: [number, number, number, number, number, number] = [
-          0.75, 800, 40, 100, -1.55, 0.3,
-        ];
-        args[i] = bad;
-        expect(() => excavatorHydraulics(...args)).toThrow(RangeError);
-      }
-      expect(() => excavatorShot(0, bad)).toThrow(RangeError);
-      expect(() => excavatorShot(0, 0.5, bad)).toThrow(RangeError);
-      expect(() => circleJoint({ x: bad, y: 0 }, { x: 1, y: 0 }, 1, 1)).toThrow(RangeError);
+describe('excavator side drawing', () => {
+  it('places the sectioned cylinder, linkage and bucket from the same pose', () => {
+    const { primitives, pose } = excavatorDrawing(
+      { boom: 0.66, stick: -1.62, curl: 1.45 },
+      { section: true, payload: 1200 },
+    );
+    expect(primitives.length).toBeGreaterThan(30);
+    for (const s of primitives) {
+      if (s.kind === 'path') expect(s.d).not.toMatch(/NaN/);
+      else expect(Number.isFinite(s.c.x) && Number.isFinite(s.c.y)).toBe(true);
     }
-    for (const args of [
-      [0.59, -1.55, 0.3],
-      [1.06, -1.55, 0.3],
-      [0.75, -1.7, 0.3],
-      [0.75, -1.55, 0.61],
-    ] as const)
-      expect(() => excavatorPose(...args)).toThrow(RangeError);
-    expect(() => excavatorHydraulics(0.75, -1, 40)).toThrow(RangeError);
-    expect(() => excavatorHydraulics(0.75, 800, -1)).toThrow(RangeError);
-    for (const bore of [69, 141])
-      expect(() => excavatorHydraulics(0.75, 800, 40, bore)).toThrow(RangeError);
-    expect(() => excavatorHydraulics(0.75, Number.MAX_VALUE, 40)).toThrow(RangeError);
-    for (const chapter of [-1, 7, 0.5])
-      expect(() => excavatorShot(chapter, 0.5)).toThrow(RangeError);
-    for (const duration of [0, -1])
-      expect(() => excavatorShot(0, 0.5, duration)).toThrow(RangeError);
-    expect(() => excavatorShot(4, 0.5, 34)).toThrow(RangeError);
-    for (const separation of [0, 2, 3])
-      expect(() => circleJoint({ x: 0, y: 0 }, { x: separation, y: 0 }, 1, 1)).toThrow(RangeError);
-    expect(() => circleJoint({ x: 0, y: 0 }, { x: 1e200, y: 0 }, 1e200, 1e200)).toThrow(RangeError);
+    const pins = primitives.filter((s) => s.kind === 'circle' && s.stroke);
+    expect(pins).toHaveLength(6);
+    expect(pose.cylinders.boom.stroke).toBeGreaterThan(0);
   });
 });

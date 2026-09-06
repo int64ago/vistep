@@ -1,77 +1,65 @@
-import {
-  EXCAVATOR_BUCKET,
-  EXCAVATOR_CYLINDERS,
-  bucketPath,
-  excavatorPose,
-} from '../../models/excavator';
 import { t } from '../../i18n';
-export default function ExcavatorDrawing({
-  boom,
-  stick,
-  curl,
-  closeup = false,
-}: {
-  boom: number;
-  stick: number;
-  curl: number;
-  closeup?: boolean;
-}) {
-  const p = excavatorPose(boom, stick, curl);
+import { DRAWING_BOUNDS, excavatorDrawing, type Primitive } from '../../models/excavator-drawing';
+import type { ExcavatorVisual } from '../three/ExcavatorStudio';
+
+/** Side elevation used when WebGL fails at runtime and as the optional flat view. */
+export default function ExcavatorDrawing({ visual }: { visual: ExcavatorVisual }) {
+  const { primitives, pose } = excavatorDrawing(visual.pose, {
+    section: true,
+    payload: visual.payload,
+  });
+  const b = DRAWING_BOUNDS;
+  const lever = visual.lever ? leverLines(pose) : null;
   return (
     <svg
-      viewBox={closeup ? `${p.wrist.x - 1.35} ${-p.wrist.y - 1.4} 2.8 2.8` : '-2 -5 8 5.8'}
+      className="excavator-drawing"
+      viewBox={`${b.x} ${-(b.y + b.height)} ${b.width} ${b.height}`}
       role="img"
-      aria-label={t('挖掘机的动臂、斗杆和铲斗连杆')}
+      aria-label={t('液压挖掘机侧视图，动臂缸剖开显示活塞与两个油腔')}
     >
       <g transform="scale(1,-1)" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="-1.8" y=".1" width="2.5" height=".6" rx=".25" fill="#46575b" />
-        <rect x="-1.6" y=".9" width="1.8" height=".6" rx=".15" fill="#d8a445" />
-        <rect x=".1" y="1.06" width=".66" height=".3" rx=".07" fill="#d8a445" />
-        <rect x="-1.2" y="1.4" width=".8" height="1.1" rx=".12" fill="#8daeb3" />
-        <path
-          d={`M${p.origin.x} ${p.origin.y}L${p.elbow.x} ${p.elbow.y}L${p.wrist.x} ${p.wrist.y}`}
-          stroke="#d8a445"
-          strokeWidth=".25"
-          fill="none"
-        />
-        {p.cylinderMounts.map(({ a, b }, i) => (
-          <path key={i} d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke="#d8a445" strokeWidth=".18" />
+        <path d={`M${b.x} 0H${b.x + b.width}`} stroke="#d5d8cf" strokeWidth="0.03" />
+        {visual.rock && (
+          <path d="M9.3 0L9.55 0.95L10.2 1.62L10.9 1.35L11.15 0.6L10.85 0Z" fill="#8f8b83" />
+        )}
+        {primitives.map((s, i) => (
+          <Shape key={i} s={s} />
         ))}
-        <path
-          d={`M${p.rockerPin.x} ${p.rockerPin.y}L${p.joint.x} ${p.joint.y}L${p.bucketPin.x} ${p.bucketPin.y}`}
-          stroke="#60797f"
-          strokeWidth=".08"
-          fill="none"
-        />
-        {p.cylinders.map(({ a, b }, i) => (
-          <g key={i}>
-            <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke="#9aabb0" strokeWidth=".07" />
-            <path
-              d={`M${a.x} ${a.y}L${a.x + (b.x - a.x) * (EXCAVATOR_CYLINDERS[i].housing / Math.hypot(b.x - a.x, b.y - a.y))} ${a.y + (b.y - a.y) * (EXCAVATOR_CYLINDERS[i].housing / Math.hypot(b.x - a.x, b.y - a.y))}`}
-              stroke="#4e6065"
-              strokeWidth=".14"
-            />
-          </g>
-        ))}
-        <g
-          transform={`translate(${p.wrist.x} ${p.wrist.y}) rotate(${(p.bucketAngle * 180) / Math.PI})`}
-        >
-          <path d={bucketPath(EXCAVATOR_BUCKET.ear)} fill="#bf8b39" />
-          <path d={bucketPath(EXCAVATOR_BUCKET.side)} fill="#bf8b39" />
-          <path d={bucketPath(EXCAVATOR_BUCKET.tooth)} fill="#667d83" />
-        </g>
-        {[p.origin, p.elbow, p.wrist, p.rockerPin, p.joint, p.bucketPin].map((q, i) => (
-          <circle
-            key={i}
-            cx={q.x}
-            cy={q.y}
-            r=".075"
-            fill="#e7ebe3"
-            stroke="#52696e"
-            strokeWidth=".03"
-          />
-        ))}
+        {lever && (
+          <>
+            <path d={lever.line} stroke="#5a6a70" strokeWidth="0.025" strokeDasharray="0.12 0.08" />
+            <path d={lever.arm} stroke="#d8742f" strokeWidth="0.06" />
+          </>
+        )}
       </g>
     </svg>
   );
+}
+function Shape({ s }: { s: Primitive }) {
+  if (s.kind === 'circle')
+    return (
+      <circle cx={s.c.x} cy={s.c.y} r={s.r} fill={s.fill} stroke={s.stroke} strokeWidth={s.width} />
+    );
+  return (
+    <path
+      d={s.d}
+      fill={s.fill ?? 'none'}
+      stroke={s.stroke}
+      strokeWidth={s.width}
+      opacity={s.opacity}
+    />
+  );
+}
+function leverLines(pose: ReturnType<typeof excavatorDrawing>['pose']) {
+  const { a, b } = pose.cylinders.boom;
+  const len = Math.hypot(b.x - a.x, b.y - a.y),
+    ux = (b.x - a.x) / len,
+    uy = (b.y - a.y) / len;
+  const along = (pose.foot.x - a.x) * ux + (pose.foot.y - a.y) * uy;
+  const px = a.x + ux * along,
+    py = a.y + uy * along;
+  return {
+    line: `M${a.x - ux * 1.2} ${a.y - uy * 1.2}L${b.x + ux * 2.2} ${b.y + uy * 2.2}`,
+    arm: `M${pose.foot.x} ${pose.foot.y}L${px} ${py}`,
+  };
 }
