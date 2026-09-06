@@ -28,7 +28,7 @@ vistep.ai explains everyday mechanisms, science and computation through short vi
 - **Find your next question.** Search in either language; narrow by interest, running time and suggested starting age.
 - **English and Chinese.** Authored narration, captions and transcripts. Experiments run in your browser without an account, API key or live AI service.
 
-**Release status:** the [current preview](https://vistep-preview.int64ago.workers.dev/en/) contains 62 scenes under review. Production, deployed from `main`, still contains the original 12. See [preview and review status](docs/expansion-50.md).
+**Release:** the collection now contains **62 scenes**. Production publishes from `main` through [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain). The [release and review record](docs/expansion-50.md) distinguishes delivery from the remaining coverage of complete viewing, native listening and physical-phone testing.
 
 ## Start exploring
 

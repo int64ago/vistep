@@ -2,9 +2,15 @@
 
 [简体中文](zh-CN/expansion-50.md) · [Production guide](creating-a-scene.md)
 
-The active objective is **50 additional complete scenes**, taking the 12 scenes in `5b1dca1` to 62. [The ledger](expansion-50.json) reserves exactly 50 distinct subjects. Production continues on `codex/expand-50`; the main site has not received this expansion. A route or passing test is not a completed scene.
+This release adds **50 scenes** to the 12 in `5b1dca1`, bringing the collection to **62 bilingual visual explanations**. [The ledger](expansion-50.json) records the 50 distinct additions.
 
-## Current implementation
+**Production release — 2026-09-06:** the 62-scene collection is published from `main` through [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) to [vistep.ai](https://vistep.ai/en/). The workflow's deployment job and attached record identify the released commit, deployment result and live-site checks.
+
+**Review coverage:** publication does not certify every scene as fully reviewed. Complete continuous viewing, native listening to both languages, physical-phone performance and broader accessibility/failure coverage remain incomplete across the collection. Automated checks, transcription and sampled browser observations retain their stated limits; see the [refinement records](qa-expansion-refinements.md).
+
+## Recorded scene checkpoints
+
+The table preserves scoped review notes from integration checkpoints. Its deployment labels describe those checkpoints, not the current production inventory.
 
 | Scene                       | Direction                                                                                                   | Recorded narration                | Status                                                                                            |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -59,9 +65,13 @@ The active objective is **50 additional complete scenes**, taking the 12 scenes 
 | Zipper                      | Continuous tapes and beads, staggered moulded heads and slider guide                                        | Chinese and English, 201.5 s each | Model, transcription and integrated checks recorded; full acceptance pending                      |
 | Tides                       | Differential gravity, shared potential, equilibrium ocean and latitude                                      | Chinese and English, 202.0 s each | Model, transcription and integrated checks recorded; full acceptance pending                      |
 
-All 50 additions are integrated, taking the collection to **62 topics**. At the quality-5 checkpoint, the public preview was deployed from `de8e4a7`, version `a00b3845-b881-4018-bd94-5f88b98de2cd`; [branch CI](https://github.com/int64ago/vistep/actions/runs/34001206759) passed. Production remains on the original 12 scenes. See the [fifth integration record](qa-expansion-refinements.md#fifth-integration-in-review) for its changes and evidence limits. **No addition is marked fully accepted.**
+## Historical quality-5 checkpoint
+
+All 50 additions had been integrated, taking the collection to **62 topics**. At the quality-5 checkpoint, the public preview was deployed from `de8e4a7`, version `a00b3845-b881-4018-bd94-5f88b98de2cd`; [branch CI](https://github.com/int64ago/vistep/actions/runs/34001206759) passed. Production still contained the original 12 scenes at that checkpoint. See the [fifth integration record](qa-expansion-refinements.md#fifth-integration-in-review) for its changes and evidence limits. **No addition was marked fully accepted at that checkpoint.**
 
 ## Review evidence — 2026-09-05
+
+The records below retain the status and next steps of each historical checkpoint. References to a 12-scene production site or pending main publication describe that earlier state; they do not override the release and review coverage above.
 
 The first checkpoint below describes commit `c0deca7`. The subsequent planetary/fiber checkpoint contains 17 topics. Its `pnpm verify` and `pnpm build:preview` passed: 70 tests in 13 files, 112 type-checked files with no errors/warnings/hints, and 37 canonical bilingual pages audited. Preview version `fef8d207-1128-40d9-a97d-9a352216737e` was deployed from the immutable `669e670` asset snapshot. The fiber route returned HTTP 200 with noindex; the browser selected the correct Chinese track and displayed the same computed state.
 
@@ -94,7 +104,7 @@ Actual 320 px keyboard interaction reached transformer 48 turns, 100 Hz and 4 Ω
 
 The current runtime does not accept audio input. **No complete listening review or claim about vocal naturalness is recorded.** ASR and browser media behavior are separate evidence. Complete continuous visual viewing, all chapter boundaries, broader accessibility/failure cases, listening and physical-phone performance remain outstanding. A viewport override is not a physical-phone test.
 
-## Preview and next work
+## Historical preview milestones and next steps
 
 The first optics preview used an immutable asset snapshot: version `f39215c2-84aa-4f43-b33e-fd6182b30f79`. An earlier upload was interrupted after detecting that its source directory was being rebuilt; it was not counted as a successful release. Production still has the original 12 scenes.
 
