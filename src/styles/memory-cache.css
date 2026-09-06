@@ -1259,3 +1259,118 @@
     transition: none;
   }
 }
+
+/* Wide watch layout pairs each read's evidence without changing the phone film
+   or the full exploration. The atlas, all sets and every cost remain present. */
+@media (min-width: 1100px) {
+  .memory-cache-study[data-watch='true'] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 14px 24px;
+    padding: 20px 28px 16px;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-masthead,
+  .memory-cache-study[data-watch='true'] > .cache-spatial-board,
+  .memory-cache-study[data-watch='true'] > .cache-comparison {
+    grid-column: 1 / -1;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-title-row {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: center;
+    gap: 6px;
+    margin: 0;
+  }
+  .memory-cache-study[data-watch='true']:is([data-chapter='5'], [data-chapter='7'])
+    > .cache-title-row {
+    grid-column: 1 / -1;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-address-ribbon {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    max-width: none;
+    margin: 0;
+    gap: 16px;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-transfer-strip {
+    grid-column: 1;
+    align-self: stretch;
+    margin: 0;
+  }
+  .memory-cache-study[data-watch='true'] .cache-parcel {
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-read-receipt {
+    grid-column: 2;
+    align-self: stretch;
+    min-height: 0;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-trace {
+    grid-column: 1;
+    margin: 0;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-read-ledger {
+    grid-column: 2;
+    align-self: center;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-read-ledger > span {
+    white-space: nowrap;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-notation {
+    grid-column: 1;
+    align-self: center;
+    padding-top: 0;
+  }
+  .memory-cache-study[data-watch='true'] > .cache-assumptions {
+    grid-column: 2;
+    margin: 0;
+    border-top: 0;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line-meta,
+  .memory-cache-study[data-watch='true'] .cache-recency {
+    flex-basis: 100%;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line > .cache-byte-row {
+    flex: 1 0 84px;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line-range {
+    flex: 0 0 auto;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line-range,
+  .memory-cache-study[data-watch='true'] .cache-recency {
+    margin: 0;
+  }
+  .memory-cache-study[data-watch='true'] .cache-fairness {
+    margin: 0 0 12px !important;
+  }
+  .memory-cache-study[data-watch='true'] .cache-comparison-side > h3 {
+    min-height: 0;
+    margin-bottom: 8px;
+  }
+  .memory-cache-study[data-watch='true'] .cache-comparison-side .cache-trace {
+    margin: 12px 0 8px;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line-example {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 0;
+    padding: 12px 18px;
+    gap: 8px 18px;
+  }
+  .memory-cache-study[data-watch='true'] .cache-line-example > span {
+    grid-column: 1 / -1;
+  }
+  .memory-cache-study[data-watch='true'] .cache-comparison-result {
+    margin: 12px 0 0 !important;
+  }
+}

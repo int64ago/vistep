@@ -325,7 +325,18 @@
   height: 210px;
 }
 .induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-power-row {
-  margin: 9px 0;
+  margin: 6px 0;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='power']
+  .indmotor-instrument-title {
+  display: none;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-power-input {
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+.induction-motor[data-watch='true'][data-narrow='true'][data-focus='power'] .indmotor-power p {
+  margin-top: 8px;
 }
 @media (prefers-reduced-motion: reduce) {
   .indmotor-explore button {

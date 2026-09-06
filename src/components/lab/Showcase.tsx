@@ -3,6 +3,11 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { useSimulation } from './useSimulation';
 import { useNarration } from './useNarration';
 import { films, filmDuration, type Chapter } from '../../data/films';
+import {
+  consumeFilmLanguageState,
+  registerFilmLanguageState,
+  type FilmLanguageState,
+} from '../../lib/film-language';
 type Director = {
   watch: boolean;
   playing: boolean;
@@ -41,6 +46,17 @@ export default function Showcase({ slug, children }: { slug: string; children: R
   const clock = useRef(0),
     refresh = useRef(0),
     switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const languagePlaying = useRef(false),
+    languageRestore = useRef<FilmLanguageState | null | undefined>(undefined);
+  languagePlaying.current = watch && playing;
+  useEffect(
+    () =>
+      registerFilmLanguageState(slug, () => ({
+        time: clock.current,
+        playing: languagePlaying.current,
+      })),
+    [slug],
+  );
   const voice = useNarration(slug, watch && playing, visible, run, () => {
     clock.current = film.duration;
     setTime(film.duration);
@@ -114,7 +130,17 @@ export default function Showcase({ slug, children }: { slug: string; children: R
       const requested = new URLSearchParams(location.hash.slice(1)).get('t');
       if (requested !== null && Number.isFinite(Number(requested))) seek(Number(requested));
     };
-    followChapterLink();
+    // Resolve once per mount, including StrictMode's effect replay. Audio's initial seek(0)
+    // effects run first; this seek then restores both media target and the director together.
+    if (languageRestore.current === undefined)
+      languageRestore.current = consumeFilmLanguageState(slug, film.duration);
+    const restored = languageRestore.current;
+    if (restored)
+      seek(
+        restored.time,
+        restored.playing && !matchMedia('(prefers-reduced-motion: reduce)').matches,
+      );
+    else followChapterLink();
     window.addEventListener('hashchange', followChapterLink);
     return () => window.removeEventListener('hashchange', followChapterLink);
   }, []);

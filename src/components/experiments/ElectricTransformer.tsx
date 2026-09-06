@@ -158,9 +158,6 @@ function ElectricPower({ shot }: { shot: ElectricShot }) {
           {t('铁芯损耗')} {number(a.coreWatts, 3)} W
         </span>
       </div>
-      {shot.showLosses && (
-        <p>{t('叠片抑制涡流；磁滞与铜损仍然存在。颜色表示损耗位置，不是温度。')}</p>
-      )}
     </div>
   );
 }
@@ -414,6 +411,9 @@ export default function ElectricTransformer() {
       )}
       <details className="electric-notes">
         <summary>{t('极性、时间与模型边界')}</summary>
+        {shot.showLosses && (
+          <p>{t('叠片抑制涡流；磁滞与铜损仍然存在。颜色表示损耗位置，不是温度。')}</p>
+        )}
         <p>
           {t(
             '黑点是同名端。端电压从黑点量向另一端；初级电流流入黑点，次级负载电流流出黑点。沿绕线方向的感应电动势 e = −N dΦ/dt。',

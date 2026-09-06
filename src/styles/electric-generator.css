@@ -436,3 +436,19 @@
 .electric-generator[data-watch='true'][data-narrow='true'] .generator-notes {
   padding: 0 17px 6px;
 }
+
+/* The energy ledger already gives the mechanical-input total with its meaning. */
+.electric-generator[data-watch='true'][data-narrow='true'][data-shot='7']
+  .generator-instrument-heading
+  strong {
+  display: none;
+}
+.electric-generator[data-watch='true'][data-narrow='true'][data-shot='7'] .generator-proof {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.electric-generator[data-watch='true'][data-narrow='true'][data-shot='7']
+  .generator-energy-account {
+  padding-top: 8px;
+  gap: 4px;
+}
