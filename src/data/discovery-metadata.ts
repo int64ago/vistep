@@ -1,0 +1,1090 @@
+/** Homepage discovery facets. Age is an editorial starting point for watching the
+ * authored film, not an age certification, access restriction or equation prerequisite.
+ * Keep names/aliases searchable in both languages regardless of the current UI locale.
+ */
+export type DiscoveryCategory =
+  'mechanisms' | 'light-sound' | 'electricity' | 'computing' | 'nature' | 'math-systems';
+
+export const discoveryCategories: {
+  id: DiscoveryCategory;
+  label: { zh: string; en: string };
+}[] = [
+  {
+    id: 'mechanisms',
+    label: {
+      zh: '器物与机械',
+      en: 'Objects & mechanisms',
+    },
+  },
+  {
+    id: 'light-sound',
+    label: {
+      zh: '光与声音',
+      en: 'Light & sound',
+    },
+  },
+  {
+    id: 'electricity',
+    label: {
+      zh: '电与能量',
+      en: 'Electricity & energy',
+    },
+  },
+  {
+    id: 'computing',
+    label: {
+      zh: '数字与计算',
+      en: 'Digital & computing',
+    },
+  },
+  {
+    id: 'nature',
+    label: {
+      zh: '自然与宇宙',
+      en: 'Nature & space',
+    },
+  },
+  {
+    id: 'math-systems',
+    label: {
+      zh: '数学与系统',
+      en: 'Math & systems',
+    },
+  },
+];
+
+export type DiscoveryMetadata = {
+  category: DiscoveryCategory;
+  minAge: 8 | 10 | 12 | 14;
+  keywords: { zh: string[]; en: string[] };
+};
+
+export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  tides: {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['潮汐', '涨潮', '退潮', '大潮', '小潮', '月球引力', '潮汐力', '近侧远侧'],
+      en: [
+        'Tides',
+        'high tide',
+        'low tide',
+        'spring tide',
+        'neap tide',
+        'lunar gravity',
+        'tidal force',
+      ],
+    },
+  },
+  zipper: {
+    category: 'mechanisms',
+    minAge: 8,
+    keywords: {
+      zh: ['拉链', '拉锁', '拉头', '拉链齿', '衣服拉链', '齿窝', '咬合'],
+      en: [
+        'Zipper',
+        'zip fastener',
+        'slider',
+        'zipper teeth',
+        'clothes fastener',
+        'interlocking teeth',
+      ],
+    },
+  },
+  'packet-routing': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['网络分组路由', '数据包', '路由器', '网络拥塞', '丢包', '下一跳', '最短路径', 'TTL'],
+      en: [
+        'Packet routing',
+        'data packets',
+        'router',
+        'next hop',
+        'shortest path',
+        'packet loss',
+        'network congestion',
+        'TTL',
+      ],
+    },
+  },
+  diffusion: {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['扩散', '颜色散开', '浓度', '染料扩散', '扩散系数', '净通量', '混合'],
+      en: [
+        'Diffusion',
+        'dye spreading',
+        'concentration',
+        'diffusion coefficient',
+        'flux',
+        'mixing',
+        'mass conservation',
+      ],
+    },
+  },
+  'brownian-motion': {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['布朗运动', '微粒乱动', '热运动', '随机游走', '朗之万', '热噪声', '均方位移'],
+      en: [
+        'Brownian motion',
+        'random walk',
+        'thermal motion',
+        'Langevin',
+        'thermal noise',
+        'mean squared displacement',
+        'Stokes Einstein',
+      ],
+    },
+  },
+  'database-index': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['数据库索引', '查找记录', '数据库查询', 'B+树', '索引页', '范围查询', '页分裂'],
+      en: [
+        'Database index',
+        'B+ tree',
+        'B plus tree',
+        'database lookup',
+        'range query',
+        'page split',
+        'table scan',
+      ],
+    },
+  },
+  escapement: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['机械钟擒纵', '摆钟', '机械钟', '擒纵轮', '重锤', '擒纵瓦', '钟表走时'],
+      en: [
+        'Clock escapement',
+        'mechanical clock',
+        'pendulum clock',
+        'escape wheel',
+        'pallet',
+        'clock timing',
+        'clock weight',
+      ],
+    },
+  },
+  'lithium-battery': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: [
+        '锂离子电池',
+        '电池',
+        '锂电池',
+        '充电电池',
+        '电量',
+        '锂离子',
+        '石墨负极',
+        '磷酸铁锂',
+        '隔膜',
+      ],
+      en: [
+        'Lithium-ion battery',
+        'rechargeable battery',
+        'Li ion',
+        'LFP',
+        'lithium iron phosphate',
+        'graphite anode',
+        'state of charge',
+        'separator',
+      ],
+    },
+  },
+  'logic-gates': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['逻辑门', '逻辑电路', '与非门', '或非门', '反相器', '晶体管', 'CMOS', '零和一'],
+      en: [
+        'Logic gates',
+        'Boolean logic',
+        'NAND',
+        'NOR',
+        'inverter',
+        'transistor',
+        'CMOS',
+        'digital voltage',
+      ],
+    },
+  },
+  'public-key': {
+    category: 'computing',
+    minAge: 14,
+    keywords: {
+      zh: ['公钥密码', '公钥', '私钥', 'RSA', '非对称加密', '余数', '模幂', '消息加密'],
+      en: [
+        'Public-key cryptography',
+        'public key',
+        'private key',
+        'RSA',
+        'asymmetric encryption',
+        'modular exponentiation',
+        'remainder',
+      ],
+    },
+  },
+  'solar-cell': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: [
+        '太阳能电池',
+        '太阳能发电',
+        '光伏',
+        '光伏电池',
+        '硅电池',
+        '光电转换',
+        '带隙',
+        '最大功率点',
+      ],
+      en: [
+        'Solar cell',
+        'photovoltaic',
+        'PV',
+        'silicon cell',
+        'band gap',
+        'electron hole pair',
+        'maximum power point',
+      ],
+    },
+  },
+  convection: {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['热对流', '热空气上升', '暖流', '热水流动', '浮力', '传导', '热循环'],
+      en: [
+        'Convection',
+        'warm air rising',
+        'buoyancy',
+        'heat circulation',
+        'conduction',
+        'Rayleigh Benard',
+        'fluid parcel',
+      ],
+    },
+  },
+  rectifier: {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['整流器', '整流桥', '二极管桥', '交流变直流', '全波整流', '滤波电容', '纹波', '浪涌'],
+      en: [
+        'Rectifier',
+        'bridge rectifier',
+        'diode bridge',
+        'AC to DC',
+        'full wave rectification',
+        'smoothing capacitor',
+        'ripple',
+        'inrush current',
+      ],
+    },
+  },
+  'sewing-machine': {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['缝纫机', '缝纫', '缝衣服', '针眼', '梭心', '旋梭', '挑线杆', '锁式线迹'],
+      en: [
+        'Sewing machine',
+        'stitching',
+        'lockstitch',
+        'needle eye',
+        'bobbin',
+        'rotary hook',
+        'take up lever',
+        'feed dogs',
+      ],
+    },
+  },
+  'induction-cooktop': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['电磁炉', '电磁灶', '电磁加热', '锅底发热', '涡流', '感应加热', '集肤效应'],
+      en: [
+        'Induction cooktop',
+        'induction hob',
+        'induction heating',
+        'eddy current',
+        'pan heating',
+        'skin effect',
+        'thermal lag',
+      ],
+    },
+  },
+  hash: {
+    category: 'computing',
+    minAge: 14,
+    keywords: {
+      zh: ['哈希', '散列', '哈希值', '消息摘要', 'SHA-256', '雪崩效应', '位运算'],
+      en: [
+        'Hash',
+        'hash function',
+        'SHA 256',
+        'message digest',
+        'avalanche effect',
+        'bit rotation',
+        'cryptographic hash',
+      ],
+    },
+  },
+  'buck-converter': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['降压变换器', '降压电路', '开关电源', 'DC-DC', '电感续流', '占空比', '降压斩波'],
+      en: [
+        'Buck converter',
+        'step down converter',
+        'DC DC',
+        'switching regulator',
+        'duty cycle',
+        'freewheeling',
+        'volt second balance',
+      ],
+    },
+  },
+  microscope: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['显微镜', '复合显微镜', '物镜', '目镜', '标本', '放大与分辨率', '数值孔径'],
+      en: [
+        'Compound microscope',
+        'objective lens',
+        'eyepiece',
+        'specimen',
+        'optical resolution',
+        'numerical aperture',
+        'empty magnification',
+      ],
+    },
+  },
+  airfoil: {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['机翼升力', '飞机机翼', '升力', '攻角', '迎角', '气流', '环量', '压力分布'],
+      en: [
+        'Airfoil lift',
+        'airplane wing',
+        'angle of attack',
+        'airflow',
+        'circulation',
+        'Kutta condition',
+        'pressure distribution',
+      ],
+    },
+  },
+  'qr-code': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['二维码', '二维码扫描', '扫码', '网址编码', '定位图案', '掩码', '纠错码'],
+      en: [
+        'QR Code',
+        'QR',
+        'quick response code',
+        'scan a code',
+        'finder pattern',
+        'data masking',
+        'Reed Solomon',
+      ],
+    },
+  },
+  speaker: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['扬声器', '喇叭', '音箱', '音圈', '纸盆', '扬声器振膜', '反电动势'],
+      en: [
+        'Speaker',
+        'loudspeaker',
+        'voice coil',
+        'speaker cone',
+        'diaphragm',
+        'back EMF',
+        'frequency response',
+      ],
+    },
+  },
+  'wireless-charging': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['无线充电', '无线充电器', '感应充电', '充电线圈', '互感', '磁耦合', '线圈对齐'],
+      en: [
+        'Wireless charging',
+        'inductive charging',
+        'charging pad',
+        'mutual inductance',
+        'magnetic coupling',
+        'coil alignment',
+        'resonance',
+      ],
+    },
+  },
+  lock: {
+    category: 'mechanisms',
+    minAge: 8,
+    keywords: {
+      zh: ['弹子锁', '钥匙', '锁芯', '门锁', '弹子', '剪切线', '钥匙齿形'],
+      en: [
+        'Pin-tumbler lock',
+        'door lock',
+        'key',
+        'lock cylinder',
+        'pins',
+        'shear line',
+        'key bitting',
+      ],
+    },
+  },
+  ultrasound: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['超声成像', 'B超', '超声波', '医学成像', '回声', '超声探头', '往返时间'],
+      en: [
+        'Ultrasound imaging',
+        'sonography',
+        'ultrasound scan',
+        'echo',
+        'transducer',
+        'time of flight',
+        'acoustic impedance',
+      ],
+    },
+  },
+  differential: {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['汽车差速器', '差速齿轮', '汽车转弯', '左右车轮', '开放式差速器', '半轴齿轮', '扭矩'],
+      en: [
+        'Car differential',
+        'differential gears',
+        'turning wheels',
+        'open differential',
+        'side gear',
+        'axle',
+        'torque',
+      ],
+    },
+  },
+  'error-correction': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['纠错编码', '数据纠错', '汉明码', '奇偶校验', '校验位', '比特翻转', '单错双错'],
+      en: [
+        'Error correction',
+        'Hamming code',
+        'parity bit',
+        'bit flip',
+        'syndrome',
+        'SECDED',
+        'single error correction',
+      ],
+    },
+  },
+  bernoulli: {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['流速与压强', '伯努利', '水流', '管道压强', '文丘里', '测压管', '水头'],
+      en: [
+        'Flow speed and pressure',
+        'Bernoulli',
+        'Venturi',
+        'pipe pressure',
+        'flow velocity',
+        'piezometer',
+        'hydraulic head',
+      ],
+    },
+  },
+  doppler: {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['多普勒效应', '救护车声音', '警笛变调', '声源移动', '频率变化', '波长', '多普勒频移'],
+      en: [
+        'Doppler effect',
+        'moving siren',
+        'Doppler shift',
+        'moving source',
+        'wavelength',
+        'received frequency',
+        'wavefront',
+      ],
+    },
+  },
+  'induction-motor': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['感应电动机', '异步电动机', '三相电机', '鼠笼转子', '旋转磁场', '转差', '电动机'],
+      en: [
+        'Induction motor',
+        'asynchronous motor',
+        'three phase motor',
+        'squirrel cage',
+        'rotating magnetic field',
+        'slip',
+        'electric motor',
+      ],
+    },
+  },
+  'wave-interference': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['波的干涉', '波叠加', '绳波', '相长干涉', '相消干涉', '驻波', '波节'],
+      en: [
+        'Wave interference',
+        'superposition',
+        'string pulses',
+        'constructive interference',
+        'destructive interference',
+        'standing wave',
+        'nodes',
+      ],
+    },
+  },
+  rainbow: {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['彩虹', '雨后彩虹', '水滴折射', '色散', '主虹', '太阳光', '彩虹角度'],
+      en: [
+        'Rainbows',
+        'raindrop',
+        'dispersion',
+        'refraction',
+        'primary rainbow',
+        'sunlight',
+        'rainbow angle',
+      ],
+    },
+  },
+  'water-hammer': {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['水锤', '水管响', '突然关阀', '水击', '压力波', '管道震动', '阀门'],
+      en: [
+        'Water hammer',
+        'pipe bang',
+        'hydraulic shock',
+        'pressure wave',
+        'valve closure',
+        'pipe vibration',
+        'water surge',
+      ],
+    },
+  },
+  suspension: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['汽车悬架', '汽车减震', '减振器', '避震', '悬挂', '弹簧', '路面颠簸'],
+      en: ['Car suspension', 'shock absorber', 'damper', 'spring', 'road bump', 'ride comfort'],
+    },
+  },
+  diffraction: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['衍射', '单缝衍射', '光穿狭缝', '暗纹', '波长', '远场', '夫琅禾费'],
+      en: [
+        'Diffraction',
+        'single slit',
+        'light through a slit',
+        'Fraunhofer diffraction',
+        'diffraction minima',
+        'far field',
+        'wavelength',
+      ],
+    },
+  },
+  'memory-cache': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['内存与缓存', 'CPU缓存', '高速缓存', '缓存行', '命中', '未命中', '局部性', 'LRU'],
+      en: [
+        'Memory and cache',
+        'CPU cache',
+        'cache line',
+        'cache hit',
+        'cache miss',
+        'locality',
+        'LRU',
+        'tag and set',
+      ],
+    },
+  },
+  'electric-generator': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['发电机', '发电', '线圈转动', '交流发电机', '磁通量', '滑环', '电磁感应'],
+      en: [
+        'Electric generator',
+        'generator',
+        'alternator',
+        'rotating coil',
+        'magnetic flux',
+        'slip ring',
+        'electromagnetic induction',
+      ],
+    },
+  },
+  siphon: {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['虹吸', '吸水管', '虹吸管', '水往高处流', '排空气', '水位差', '连通水柱'],
+      en: [
+        'Siphon',
+        'siphon tube',
+        'priming',
+        'water level difference',
+        'continuous water column',
+        'pressure head',
+      ],
+    },
+  },
+  'ball-bearing': {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['滚珠轴承', '轴承', '滚珠', '钢珠', '内圈外圈', '保持架', '滚动摩擦'],
+      en: [
+        'Ball bearing',
+        'bearing',
+        'steel balls',
+        'inner race',
+        'outer race',
+        'cage',
+        'rolling contact',
+      ],
+    },
+  },
+  seasons: {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['季节', '四季', '地轴倾斜', '夏至冬至', '春分秋分', '白昼长短', '极昼'],
+      en: [
+        'Seasons',
+        'axial tilt',
+        'solstice',
+        'equinox',
+        'day length',
+        'midnight sun',
+        'hemispheres',
+      ],
+    },
+  },
+  polarization: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['偏振', '偏振片', '偏光镜', '偏光太阳镜', '电场方向', '马吕斯定律', '交叉偏振'],
+      en: [
+        'Polarization',
+        'polarizer',
+        'polarized sunglasses',
+        'electric field orientation',
+        'Malus law',
+        'crossed polarizers',
+      ],
+    },
+  },
+  'cpu-pipeline': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: [
+        'CPU 指令流水线',
+        '处理器',
+        '指令流水线',
+        '五级流水线',
+        '数据前递',
+        '流水线停顿',
+        '分支预测',
+      ],
+      en: [
+        'CPU instruction pipeline',
+        'processor',
+        'instruction pipeline',
+        'forwarding',
+        'pipeline stall',
+        'data hazard',
+        'branch flush',
+      ],
+    },
+  },
+  'transformer-electric': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['变压器', '电力变压器', '升压', '降压', '匝数', '绕组', '铁芯', '电磁感应'],
+      en: [
+        'Electrical transformer',
+        'power transformer',
+        'step up',
+        'step down',
+        'turns ratio',
+        'winding',
+        'magnetic core',
+      ],
+    },
+  },
+  'moon-phases': {
+    category: 'nature',
+    minAge: 8,
+    keywords: {
+      zh: ['月相', '月亮形状', '月牙', '满月', '新月', '盈亏', '月食', '月球'],
+      en: [
+        'Moon phases',
+        'crescent moon',
+        'full moon',
+        'new moon',
+        'lunar phases',
+        'lunar eclipse',
+        'Moon',
+      ],
+    },
+  },
+  'hydraulic-brake': {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['液压刹车', '液压制动', '碟刹', '刹车手柄', '刹车油', '主缸', '活塞面积'],
+      en: [
+        'Hydraulic brakes',
+        'disc brake',
+        'brake lever',
+        'brake fluid',
+        'master cylinder',
+        'piston area',
+        'brake pads',
+      ],
+    },
+  },
+  'binary-adder': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['二进制加法', '二进制', '一加一', '半加器', '全加器', '进位', '溢出'],
+      en: [
+        'Binary addition',
+        'binary',
+        'half adder',
+        'full adder',
+        'carry',
+        'ripple carry',
+        'overflow',
+      ],
+    },
+  },
+  'optical-fiber': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['光纤', '光缆', '玻璃导光', '全反射', '纤芯', '包层', '临界角', '光通信'],
+      en: [
+        'Optical fiber',
+        'fiber optic cable',
+        'total internal reflection',
+        'core',
+        'cladding',
+        'critical angle',
+        'optical communication',
+      ],
+    },
+  },
+  'planetary-gears': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['行星齿轮', '齿轮箱', '太阳轮', '行星轮', '内齿圈', '行星架', '减速器'],
+      en: [
+        'Planetary gearing',
+        'epicyclic gearing',
+        'sun gear',
+        'planet gear',
+        'ring gear',
+        'planet carrier',
+        'gearbox',
+      ],
+    },
+  },
+  'four-stroke-engine': {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['四冲程发动机', '汽油发动机', '内燃机', '四冲程', '活塞', '曲轴', '进气压缩做功排气'],
+      en: [
+        'Four-stroke engine',
+        'four stroke',
+        'combustion engine',
+        'piston',
+        'crankshaft',
+        'intake compression power exhaust',
+        'connecting rod',
+      ],
+    },
+  },
+  'camera-lens': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['镜头成像', '相机镜头', '凸透镜', '对焦', '倒像', '实像', '焦距'],
+      en: [
+        'Camera lenses',
+        'camera lens',
+        'convex lens',
+        'focus',
+        'inverted image',
+        'real image',
+        'focal length',
+      ],
+    },
+  },
+  aperture: {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['光圈与景深', '光圈', '背景虚化', '景深', '散景', '焦外模糊', 'f值'],
+      en: [
+        'Aperture and depth of field',
+        'aperture',
+        'bokeh',
+        'depth of field',
+        'defocus',
+        'f number',
+        'exposure',
+      ],
+    },
+  },
+  bicycle: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['自行车变速', '变速自行车', '脚踏车', '链条', '链盘', '飞轮', '上坡省力', '传动比'],
+      en: [
+        'Bicycle gears',
+        'bicycle',
+        'cycling gears',
+        'chain',
+        'chainring',
+        'rear sprocket',
+        'gear ratio',
+        'cycling uphill',
+      ],
+    },
+  },
+  refrigerator: {
+    category: 'electricity',
+    minAge: 10,
+    keywords: {
+      zh: ['冰箱制冷', '冰箱', '热泵', '制冷剂', '压缩机', '蒸发冷凝', '冰箱背面发热'],
+      en: [
+        'Refrigeration',
+        'fridge',
+        'heat pump',
+        'refrigerant',
+        'compressor',
+        'evaporation',
+        'condensation',
+        'heat transfer',
+      ],
+    },
+  },
+  printer: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['激光打印机', '打印机', '复印机', '激光打印', '感光鼓', '碳粉', '静电成像', '定影'],
+      en: [
+        'Laser printing',
+        'laser printer',
+        'photocopier',
+        'photoconductor',
+        'toner',
+        'electrostatic printing',
+        'fuser',
+      ],
+    },
+  },
+  noise: {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['主动降噪', '降噪耳机', '主动降噪耳机', '反相声波', '噪声抵消', '相位', '延迟'],
+      en: [
+        'Active noise control',
+        'noise cancelling headphones',
+        'ANC',
+        'anti noise',
+        'phase cancellation',
+        'amplitude matching',
+        'delay',
+      ],
+    },
+  },
+  gps: {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['GPS 定位', '卫星导航', '手机定位', '测距', '三边定位', '时钟误差', '伪距'],
+      en: [
+        'GPS positioning',
+        'GPS',
+        'satellite navigation',
+        'trilateration',
+        'ranging',
+        'clock bias',
+        'pseudorange',
+      ],
+    },
+  },
+  network: {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['网页加载', '打开网页', '上网', '浏览器', 'DNS', 'TCP', 'TLS', 'HTTP', '网络缓存'],
+      en: [
+        'Loading a webpage',
+        'web browsing',
+        'DNS',
+        'TCP',
+        'TLS',
+        'HTTP',
+        'browser cache',
+        'web request',
+      ],
+    },
+  },
+  jpeg: {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['JPEG 压缩', '图片压缩', '照片压缩', 'JPG', 'DCT', '量化', '像素块', '有损压缩'],
+      en: [
+        'JPEG compression',
+        'JPEG',
+        'JPG',
+        'image compression',
+        'DCT',
+        'quantization',
+        'pixel block',
+        'lossy compression',
+      ],
+    },
+  },
+  transformer: {
+    category: 'computing',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '大模型训练与生成',
+        '大语言模型',
+        '人工智能',
+        'LLM',
+        'Transformer',
+        '注意力',
+        '训练推理',
+        '词元',
+        '梯度',
+      ],
+      en: [
+        'Training & generation',
+        'AI',
+        'artificial intelligence',
+        'GPT',
+        'neural network',
+        'large language model',
+        'LLM',
+        'Transformer',
+        'attention',
+        'token',
+        'gradient',
+        'training',
+        'inference',
+      ],
+    },
+  },
+  dimensions: {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['多维空间', '四维空间', '高维', '超立方体', '投影', '切片', '特征维度'],
+      en: [
+        'Higher dimensions',
+        '4D',
+        'higher dimensional space',
+        'hypercube',
+        'tesseract',
+        'projection',
+        'cross section',
+        'feature dimension',
+      ],
+    },
+  },
+  pendulum: {
+    category: 'mechanisms',
+    minAge: 8,
+    keywords: {
+      zh: ['钟摆', '单摆', '摆钟', '秋千', '来回摆动', '周期', '阻尼'],
+      en: ['The pendulum', 'pendulum', 'swing', 'oscillation', 'period', 'gravity', 'damping'],
+    },
+  },
+  elevator: {
+    category: 'math-systems',
+    minAge: 10,
+    keywords: {
+      zh: ['电梯调度', '升降梯', '等电梯', '电梯排队', '最近优先', '顺路停靠', '调度算法'],
+      en: [
+        'Lift scheduling',
+        'elevator',
+        'waiting time',
+        'queue',
+        'nearest first',
+        'collective control',
+        'dispatch strategy',
+      ],
+    },
+  },
+  traffic: {
+    category: 'math-systems',
+    minAge: 10,
+    keywords: {
+      zh: ['无事故堵车', '堵车', '幽灵堵车', '拥堵波', '刹车反应', '车距', '跟车模型'],
+      en: [
+        'Phantom traffic jams',
+        'traffic jam',
+        'phantom jam',
+        'stop and go wave',
+        'car following',
+        'reaction time',
+        'headway',
+      ],
+    },
+  },
+};

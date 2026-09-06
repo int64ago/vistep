@@ -521,3 +521,25 @@
     padding-bottom: 12px;
   }
 }
+
+/* The load chapter keeps its cause visible in native 2D as well as WebGL. */
+.electric-load-current {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: baseline;
+  padding: 8px 16px 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.electric-load-current span {
+  white-space: nowrap;
+}
+.electric-load-current b {
+  font-weight: 600;
+}
+.electric-load-current + .electric-terminals strong,
+.electric-transformer:has(.electric-load-current) .electric-trace-1 {
+  display: none;
+}

@@ -82,7 +82,7 @@ export default function PacketRoutingMap({
                   AB: { x: 20, y: 83 },
                   AC: { x: 259, y: 83 },
                   BC: { x: 140, y: 103 },
-                  BR: { x: 36, y: 178 },
+                  BR: { x: 24, y: 198 },
                   CR: { x: 244, y: 178 },
                 } as Record<string, Point>
               )[link.id],
@@ -147,9 +147,11 @@ export default function PacketRoutingMap({
         const queued = state.packets.filter(
           (p) => p.phase.node === node && p.phase.kind === 'waiting',
         ).length;
+        // Separate annotation lanes for B in each layout; packets stay on their links.
+        const detachedBadge = node === 'B';
         const badge = {
-          x: p.x + (compact && node === 'A' ? 34 : 24),
-          y: p.y + (compact && node === 'A' ? -14 : 20),
+          x: p.x + (detachedBadge ? (compact ? -1 : 52) : compact && node === 'A' ? 34 : 24),
+          y: p.y + (detachedBadge ? (compact ? 48 : -33) : compact && node === 'A' ? -14 : 20),
         };
         return (
           <g key={node}>
@@ -190,7 +192,20 @@ export default function PacketRoutingMap({
               {node}
             </text>
             {queued > 0 && (
-              <g>
+              <g data-routing-queue={node}>
+                {detachedBadge && (
+                  <path
+                    d={
+                      compact
+                        ? `M${p.x} ${p.y + 23}L${badge.x} ${badge.y - 13}`
+                        : `M${p.x + 21} ${p.y - 13}L${badge.x - 12} ${badge.y + 8}`
+                    }
+                    fill="none"
+                    stroke="#bea783"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                )}
                 <circle cx={badge.x} cy={badge.y} r="13" fill="#bea783" />
                 <text x={badge.x} y={badge.y + 7} textAnchor="middle" fontSize="20" fill="#192634">
                   {queued}
@@ -237,7 +252,7 @@ export default function PacketRoutingMap({
           if (packet.id !== selected)
             return <circle key={packet.id} cx={q.x} cy={q.y} r="5" fill={color} opacity=".7" />;
           return (
-            <g key={packet.id}>
+            <g key={packet.id} data-routing-packet={packet.id}>
               <rect
                 x={q.x - 18}
                 y={q.y - 13}

@@ -163,41 +163,83 @@ export function motorRingPoint(turn: number, z: number): MotorPoint {
     z,
   ];
 }
-/** Three continuous saddle turns, with two genuinely separate winding ends. */
+/** Display-only mounting and winding dimensions; no equivalent-circuit parameter uses them. */
+export const MOTOR_GEOMETRY = {
+  axisLift: 0.3,
+  baseTop: 0.24,
+  windingRadius: 0.023,
+  leadRadius: 0.025,
+  slotRadius: 1.2,
+  turnPitch: 0.065,
+  endRadius: 1.56,
+  endHalfLength: 1.3,
+  phaseEndPitch: 0.17,
+  leadRear: 2.48,
+  leadPlanePitch: 0.16,
+  leadFanRadius: 2.45,
+} as const;
+/** Continuous three-turn saddle. End arcs flare outside every axial slot bundle;
+ * successive phases occupy separate axial planes. A larger end radius alone is
+ * insufficient: the radial shoulders remain within 30° of their own slot. */
 export function motorWindingPoint(phaseIndex: number, u: number): MotorPoint {
   const total = clamp(u) * 3,
     turn = Math.min(2, Math.floor(total)),
     f = total - turn;
   const base = motorAxes[phaseIndex] + Math.PI / 2,
-    r = 1.245 + 0.043 * total,
-    l = 1.28 + 0.14 * phaseIndex;
+    axialRadius = MOTOR_GEOMETRY.slotRadius + MOTOR_GEOMETRY.turnPitch * total,
+    outerRadius = MOTOR_GEOMETRY.endRadius + MOTOR_GEOMETRY.turnPitch * total,
+    l = MOTOR_GEOMETRY.endHalfLength + MOTOR_GEOMETRY.phaseEndPitch * phaseIndex;
   let a = base,
-    z = -l;
+    z = -l,
+    r = axialRadius;
   if (f < 0.25) z = -l + 8 * l * f;
-  else if (f < 0.5) {
-    a = base + (f - 0.25) * 4 * Math.PI;
-    z = l;
-  } else if (f < 0.75) {
+  else if (f < 0.5 || f >= 0.75) {
+    const front = f < 0.5,
+      q = (f - (front ? 0.25 : 0.75)) * 4,
+      shoulder = clamp(Math.min(q, 1 - q) * 6),
+      flare = shoulder * shoulder * (3 - 2 * shoulder);
+    a = base + (front ? 0 : Math.PI) + q * Math.PI;
+    z = front ? l : -l;
+    r += (outerRadius - axialRadius) * flare;
+  } else {
     a = base + Math.PI;
     z = l - 8 * l * (f - 0.5);
-  } else {
-    a = base + Math.PI + (f - 0.75) * 4 * Math.PI;
-    z = -l;
   }
   return [r * Math.cos(a), r * Math.sin(a), z];
 }
 export function motorTerminal(phase: number, end: number): MotorPoint {
   return [-2.0 + phase * 0.25, -0.78 - end * 0.3, -1.9];
 }
+/** Six separated rear channels. Fan arcs stay outside all terminal feedthroughs;
+ * the C-phase route passes above the shaft instead of underneath the bed. */
 export function motorWindingLead(phase: number, end: number): MotorPoint[] {
   const p = motorWindingPoint(phase, end),
-    terminal = motorTerminal(phase, end);
-  return [
-    p,
-    [p[0], p[1], -1.96 - phase * 0.16],
-    [terminal[0], terminal[1], -1.96 - phase * 0.16],
-    terminal,
-  ];
+    terminal = motorTerminal(phase, end),
+    z = -MOTOR_GEOMETRY.leadRear - (phase * 2 + end) * MOTOR_GEOMETRY.leadPlanePitch,
+    r = Math.hypot(p[0], p[1]),
+    a = motorAxes[phase] + Math.PI / 2,
+    exit = a + (end ? 0.3 : -0.3),
+    destination = Math.atan2(terminal[1], terminal[0]) + 2 * Math.PI,
+    targetAngle = phase === 2 ? destination + 2 * Math.PI : destination;
+  const points: MotorPoint[] = [p, [p[0], p[1], z]];
+  for (let j = 1; j <= 3; j++) {
+    const angle = a + ((exit - a) * j) / 3;
+    points.push([r * Math.cos(angle), r * Math.sin(angle), z]);
+  }
+  const fan = MOTOR_GEOMETRY.leadFanRadius;
+  points.push([fan * Math.cos(exit), fan * Math.sin(exit), z]);
+  const steps = Math.ceil(Math.abs(targetAngle - exit) / (Math.PI / 24));
+  for (let j = 1; j <= steps; j++) {
+    const angle = exit + ((targetAngle - exit) * j) / steps;
+    points.push([fan * Math.cos(angle), fan * Math.sin(angle), z]);
+  }
+  points.push([terminal[0], terminal[1], z], terminal);
+  return points;
+}
+/** Supply leaves the front of the board; returns arrive from the rear. */
+export function motorSupplyLead(phase: number): MotorPoint[] {
+  const p = motorTerminal(phase, 0);
+  return [p, [p[0], p[1], -1.8], [p[0], -1.4, -1.8], [p[0], -1.59, -2.28]];
 }
 /** Slot cavities clear the axial winding bundles, including their radial turns. */
 export function motorStatorBore(angle: number) {

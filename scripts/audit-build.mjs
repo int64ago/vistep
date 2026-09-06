@@ -91,9 +91,18 @@ for (const entry of urls) {
     assert(resource, `LearningResource: ${entry}`);
     assert(resource.audio.transcript.length > 400);
     assert(existsSync(join(directory, new URL(resource.audio.contentUrl).pathname)));
-    assert.equal(
-      resource.hasPart.length,
-      (html.match(/<li>\s*<a href="#t=/g) || []).length,
+    const transcript = html.match(
+      /<details\b(?=[^>]*\bclass="[^"]*\blesson-transcript\b[^"]*")[^>]*>([\s\S]*?)<\/details>/,
+    )?.[1];
+    assert(transcript, `Missing chapter transcript: ${entry}`);
+    // Astro may add scoped-style attributes to both li and a. Compare the
+    // actual chapter targets inside the transcript, independent of attribute order.
+    const chapterTargets = [
+      ...transcript.matchAll(/<li\b[^>]*>\s*<a\b[^>]*\bhref="(#t=[^"]+)"/g),
+    ].map((match) => match[1]);
+    assert.deepEqual(
+      chapterTargets,
+      resource.hasPart.map((part) => new URL(part.url).hash),
       `Chapter transcript: ${entry}`,
     );
   }

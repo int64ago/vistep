@@ -224,6 +224,7 @@ export default function ElectricTransformer() {
       data-side={width >= 760}
       data-watch={film.watch}
       data-power={shot.showPower}
+      data-load-focus={film.watch && shot.chapter === 3}
     >
       <div className="electric-kicker">
         <span>{t('一个磁路 · 两个电路')}</span>
@@ -241,6 +242,17 @@ export default function ElectricTransformer() {
             narrow={narrow}
           />
         </div>
+        {narrow && film.watch && shot.chapter === 3 && (
+          <div className="electric-load-current" aria-label={t('输入电流')}>
+            <span>
+              I₁ <b>{number(a.primaryRms * 1000, 1)}</b>
+            </span>
+            <span>
+              I₂ <b>{number(a.secondaryRms * 1000, 1)}</b>
+            </span>
+            <span>mA RMS</span>
+          </div>
+        )}
         <div className="electric-terminals">
           <div>
             <span>

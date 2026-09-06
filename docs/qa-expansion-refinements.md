@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/qa-expansion-refinements.md) · [Expansion record](expansion-50.md)
 
-This records review-driven repairs on `codex/expand-50`. The [public preview](https://vistep-preview.int64ago.workers.dev/) serves `2ef960f`, version `34dfae6c-0467-44f4-aeca-53b6311a6791`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33986159062) passed. Delivery checks pass for all 127 HTML routes, 89 changed assets/sitemaps, robots and two unknown-path 404s: 219 checks. Production remains on the original 12-scene collection. All 50 additions have an initial review report; six workers continue scoped repairs and cross-review. This preview is not full acceptance.
+This records review-driven repairs on `codex/expand-50`. The fourth [public preview](https://vistep-preview.int64ago.workers.dev/) checkpoint served `da1ff00`, version `88877c76-07a5-4af0-8102-f24f140d0579`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33986574143) passed. Delivery checks pass for all 127 HTML routes, 77 changed assets/sitemaps, robots and two unknown-path 404s: 207 checks. Production remains on the original 12-scene collection. All 50 additions have an initial review report; six workers continue scoped repairs and cross-review. This preview is not full acceptance.
 
 ## Source changes
 
@@ -37,7 +37,7 @@ The combined `pnpm verify` and `pnpm build:preview` pass: 646 tests in 69 files,
 
 Agent reports distinguish numerical geometry, SSR panels, browser observations and listening. The engine/brake/escapement worker recorded Chrome CUA chapter stops and short normal-speed segments; its API calls overlapped a locked-Mac report from the parent, so they establish neither an unlocked Mac nor continuous viewing. Other repair groups here have source/numerical evidence; new browser checks are pending manual unlock. Physical-phone performance and native bilingual listening remain outstanding. No scene is marked fully accepted from these results.
 
-## Third integration — current preview
+## Third integration
 
 This source revision integrates suspension/battery/solar, convection/diffusion/Brownian motion, database/routing phone repairs, and the tides/seasons/zipper presentation fixes. Cross-review continues; further optical, mechanical and branch-drainage fixes remain separate until frozen handoff. The following five revised tracks pass all 80 independent chapter/language transcription checks. They have not had native listening or new browser synchronization review.
 
@@ -51,10 +51,20 @@ This source revision integrates suspension/battery/solar, convection/diffusion/B
 
 The third combined source check and preview build pass: 660 tests in 73 files, 384 type-checked files with zero diagnostics, and 128 generated HTML pages. A parent review also inspected 25 generated static panels; these omit the surrounding player and do not count as browser or full-playback review. Later repair groups are not included in this checkpoint.
 
-## Fourth integration in review
+## Fourth integration checkpoint
 
 Thirty-one scoped source files now restore the missing causal details: the bearing cage and independent ball spin; the escapement weight, drum, closed hanger and bored support; the engine spark; the finite receiving stream after a siphon is vented; and the polarization receiver on phones. Mechanical exploration retains the reader’s viewing direction while fitting the full assembly. Hydraulic bore, piston and seal dimensions follow the same diameter. Fiber framing includes escaped branches at a fixed physical scale. Water-hammer instruments have a measured static glyph gap of about 8 px.
 
 The battery separator cue now describes the external electron route without promising an unchanged marker position or desktop camera move. Both revised tracks run **186.5 seconds**; chapter starts are **0, 23, 47.5, 69.5, 91.5, 113.5, 137, 160.5 seconds**. All 16 independent transcription checks pass. This wording change removes no visual object. Native listening remains pending.
 
-The isolated combined verification passes 696 tests in 81 files and builds 128 HTML pages with indexing checks. Its sole initial type-check hint was an unused test import, removed for a targeted recheck without changing production source or assertions. The next preview and independent follow-up results are recorded when complete. The parent inspected three additional offline mechanism SVGs; these omit the surrounding HTML and do not establish browser layout or continuous playback quality.
+The isolated combined verification passes 696 tests in 81 files and builds 128 HTML pages with indexing checks. Its sole initial type-check hint was an unused test import, removed for a targeted recheck without changing production source or assertions. The preview build and all 395 type-checked files pass with zero diagnostics. Independent follow-up continues. The parent inspected three additional offline mechanism SVGs; these omit the surrounding HTML and do not establish browser layout or continuous playback quality.
+
+## Fifth integration in review
+
+Independent source/numerical reviews of suspension/battery/solar and convection/diffusion/Brownian motion found no new P1/P2 within their stated scope. Battery included author self-review; the CDB group was cross-author. Browser, listening and physical-phone evidence remain separate.
+
+One finite-time diffusion wording correction is integrated: the profile approaches steady state instead of being described as exactly steady. Captions and both spoken tracks follow that distinction; the computed transient remains intact. Both tracks run **186 seconds**, with chapter starts **0, 22, 45, 67, 90, 112.5, 135.5, 160 seconds**. All 16 chapter/language transcription checks pass; natural vocal performance has not been assessed by listening.
+
+The fifth integration also repairs shared Three.js camera transitions, the cache phone sequence, fair routing comparisons, motor conductor clearance and component contacts, transformer load readouts, seasonal shadow length and zipper annotations. A six-category catalog covers all 62 scenes with bilingual search, measured running times and editorial starting ages. Filters travel in URLs and expanded results survive a return from a lesson. The bilingual README uses original simultaneous motion artwork; see its [production notes and model limits](media/vistep-showcase-provenance.md).
+
+The parent checked the catalog in a real browser at desktop width, 390px English and 320px Chinese: combined filters, empty-state recovery, precise AI matching, language switching and returning from a lesson. Browser samples and offline encoded frames of the GIF were also inspected. These observations do not replace complete viewing, native bilingual listening or physical-device performance review for all 62 films.

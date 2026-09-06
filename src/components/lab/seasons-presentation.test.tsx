@@ -49,3 +49,30 @@ it('reconstructs the phone picture after out-of-order chapter requests', () => {
     expect(frame(chapter, 0.63)).toBe(originals[chapter]);
   for (const chapter of [0, 2, 3, 5, 7]) expect(frame(chapter, 0.9)).not.toBe(frame(chapter, 0.2));
 });
+
+it('keeps the full metre reading when a winter shadow extends past the phone plate', () => {
+  const morning = frame(3, 0.2);
+  expect(morning).toContain('25.43 m');
+  expect(morning).toContain('data-clipped="true"');
+  expect(morning).toContain('图示截短');
+  expect(morning).toContain('影子超出刻度盘；读数保留完整长度。');
+  expect(morning).toContain('1 m');
+  expect(morning).toContain('2.3°');
+  expect(morning).toContain('08:23');
+  expect(morning).toContain('class="seasons-energy"');
+  expect(frame(3, 0.26)).toContain('3.36 m');
+  expect(frame(3, 0.32)).toContain('25.43 m');
+  expect(frame(3, 0.63)).toContain('data-clipped="false"');
+  expect(frame(3, 0.63)).toContain('2.72 m');
+});
+
+it('retains polar night and the upright-axis shadow instead of inventing a clipped length', () => {
+  const night = frame(5, 0.95);
+  expect(night).toContain('太阳在地平线下');
+  expect(night).toContain('data-clipped="false"');
+  expect(night).toContain('<b>—</b>');
+  expect(night).toContain('1 m');
+  const upright = frame(6, 0.63);
+  expect(upright).toContain('1.19 m');
+  expect(upright).toContain('class="seasons-shadow-dial"');
+});

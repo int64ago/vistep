@@ -51,6 +51,8 @@ Listen to both full tracks for intelligibility, terminology, rhythm, warmth and 
 
 Use the production guide's file map for the topic registry, lazy experiment import, models/renderers, bilingual MDX, labels, narration and covers. Routes, transcripts, schema, social images and sitemaps derive from this content. Preserve canonical URLs, reciprocal language alternatives and the existing multi-factor language resolver; manual language choices take precedence and persist locally.
 
+Register discovery metadata alongside every topic: one of the existing interest categories, bilingual everyday and technical search aliases, and a suggested starting age (8, 10, 12 or 14). Base the age on the main film's conceptual prerequisites, not its optional equations. This is editorial guidance, not a certified rating or access restriction. Check the catalog in both languages with combined search/category/age/duration filters; its no-JavaScript links must still expose every scene. Keep measured durations derived from the film, and keep the catalog lightweight as it grows.
+
 The optional `pnpm scene:new` helper creates an unpublished draft only. It is internal scaffolding, not the skill's interface or proof of completion. Do not publish placeholders to fill the catalog.
 
 For homepage work, preserve the full meaning **Visualize Every Step with AI** and the exact extraction and adjacent-s merge that forms **vistep.ai**. Make it an automatic entrance within the homepage typography, with a natural final position, a readable phone composition, reduced-motion fallback and replay. Do not reintroduce an isolated brand panel, a printed derivation formula or sentimental lettering copy. Review fresh entry as well as replay.

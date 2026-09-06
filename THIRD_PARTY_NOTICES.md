@@ -21,7 +21,7 @@ The repository distributes recorded narration, not third-party model weights. Re
 
 The vistep name and domain identify the original project. The MIT license grants rights in the covered work; it does not grant a trademark endorsement or permission to impersonate its owner.
 
-[README motion artwork](scripts/render-showcase.mjs) is original SVG-based animation using the repository’s involute gear geometry, DCT reconstruction and four-dimensional projection. It is not a webpage recording. It uses the retained Manrope font and is encoded as GIF with FFmpeg; committed media needs no renderer at runtime.
+[README motion artwork](scripts/render-showcase.mjs) is original SVG-based animation combining seven simultaneous mechanisms: involute gears, electromagnetic induction, a slider-crank, thin-lens rays, four-dimensional projection, DCT reconstruction and wave superposition. Their geometry and motion derive from repository models. It is not a webpage recording. It uses the retained Manrope font and is encoded as GIF with FFmpeg; committed media needs no renderer at runtime.
 
 ## Lunar surface textures
 
