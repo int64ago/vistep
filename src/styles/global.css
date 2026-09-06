@@ -78,6 +78,41 @@ button {
   touch-action: manipulation;
 }
 .sr-only,
+/* Unsupported browsers get one notice; nothing else on the page tries to adapt. */
+.browser-support {
+  padding: 18px 24px;
+  background: #fbf1e1;
+  border-bottom: 1px solid #e8cfa4;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.browser-support strong {
+  font-weight: 650;
+}
+.browser-support p {
+  margin: 4px 0 0;
+}
+.browser-support-gaps {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.browser-support-inline {
+  display: none;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+}
+html[data-unsupported] .browser-support-inline {
+  display: block;
+}
+html[data-unsupported] .experiment astro-island,
+html[data-unsupported] .experiment .lab-loading,
+html[data-unsupported] .home-object-placeholder {
+  display: none;
+}
 .skip-link:not(:focus) {
   position: absolute;
   width: 1px;

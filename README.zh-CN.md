@@ -42,7 +42,7 @@ vistep.ai 用短篇视觉故事讲解生活器物、科学与计算。跟随一�
 
 ## 本地运行
 
-使用 [Node.js 24](.nvmrc) 与 pnpm 11.25.0。配音录音存放在 [Git LFS](https://git-lfs.com/)，克隆前先安装。
+使用 [Node.js 24](.nvmrc) 与 pnpm 11.25.0。站点支持 Chrome 111、Edge 111、Firefox 121、Safari 16.4 及以上，更旧的浏览器只会看到提示而非实验。配音录音存放在 [Git LFS](https://git-lfs.com/)，克隆前先安装。
 
 ```sh
 git lfs install

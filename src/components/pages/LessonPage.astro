@@ -53,6 +53,7 @@ const ageLabel =
       </div>
     </header>
     <section class="experiment" id="experiment" aria-label={`${topic.name} ${tr('互动实验')}`}>
+      <div class="browser-support-inline">{tr('互动实验需要受支持的浏览器。')}</div>
       {
         locale === 'en' ? (
           <EnglishExperiment slug={topic.slug as any} client:only="react">

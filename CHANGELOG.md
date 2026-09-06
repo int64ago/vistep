@@ -9,6 +9,7 @@ Notable changes are recorded here. Commit history remains the source for individ
 - Cut the homepage from 3.2 MB to under 0.8 MB by encoding raster covers as PNG, thinning oversampled cover geometry and rounding served coordinates.
 - Stopped shipping the English dictionary to Chinese pages; the experiment chunk shrank from 572 KB to 165 KB.
 - Added a GitHub link to the site header.
+- Added a browser support gate: unsupported browsers get one notice naming the missing features instead of a degraded page.
 - Moved narration recordings to Git LFS across the whole history, shrinking the repository from 429 MB to about 40 MB; CI caches the LFS objects.
 - Replaced README screenshots with original model-driven motion artwork and a still alternative.
 - Enabled narration by default, with a persistent manual preference and graceful autoplay fallback.

@@ -45,6 +45,10 @@ src/data/films.ts ──→ Showcase 时间线 ───────────
 
 Three.js 生命周期负责释放几何、材质、纹理、渲染器与控制器；切换二维或离页不得遗留上下文。Worker 与音频随专题销毁。桌面约 60fps、移动端 30fps 是调度上限，实际性能需要注明硬件实测。
 
+## 浏览器支持
+
+基线是 Chrome 111、Edge 111、Firefox 121、Safari 16.4，由页面真实用到的能力决定：Three.js 需要 WebGL 2，版式用到 `:has()`、`color-mix()`、容器查询与 `svh` 单位，模型用到 `Array.prototype.toReversed` 与 `structuredClone`，Transformer 用 Worker，声音实验用 Web Audio。`src/lib/browser-support.ts` 在首屏绘制前用内联脚本逐项探测。任何一项不满足，页面只显示一条提示，列出缺少的能力和基线版本，不加载实验与首页器物；不为不支持的浏览器做降级。受支持浏览器内的运行时故障（WebGL 上下文丢失、音频被拦截、Worker 崩溃）仍各自给出提示。
+
 ## 教学模型的范围
 
 | 专题        | 当前模型与限制                                                                                                              |

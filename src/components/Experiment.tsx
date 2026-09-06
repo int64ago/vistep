@@ -32,6 +32,8 @@ class Boundary extends Component<
   }
 }
 export default function Experiment({ slug }: { slug: ExperimentSlug }) {
+  // The inline gate in Base.astro marked this browser; do not load an engine that cannot run.
+  if (document.documentElement.hasAttribute('data-unsupported')) return null;
   const Scene = experiments[slug];
   return (
     <Boundary>

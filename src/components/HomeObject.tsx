@@ -14,6 +14,12 @@ const heart = [
   '00000000',
 ];
 export default function HomeObject() {
+  if (document.documentElement.hasAttribute('data-unsupported'))
+    return (
+      <div className="opening-object browser-support-inline">
+        {t('首页演示需要受支持的浏览器。')}
+      </div>
+    );
   const [time, setTime] = useState(0),
     [playing, setPlaying] = useState(false);
   const host = useSimulation((dt) => setTime((t) => (t + dt) % 37), playing);

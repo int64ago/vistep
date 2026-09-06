@@ -10,6 +10,7 @@ import { translate, localPath, type Locale } from '../i18n';
 import { pageSchema, structuredJSON } from '../data/seo';
 import { topics, type Topic } from '../data/topics';
 import { bootLanguage, resolveLanguage } from '../i18n/resolve-language';
+import { BROWSER_BASELINE, bootBrowserSupport, browserSupportGaps } from '../lib/browser-support';
 interface Props {
   title?: string;
   description?: string;
@@ -97,6 +98,15 @@ const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
     <title>{title}</title>
   </head>
   <body>
+    <div id="browser-support" class="browser-support" role="alert" hidden>
+      <strong>{tr('这个浏览器不支持 vistep.ai 的互动实验。')}</strong>
+      <p>{translate('请使用 {0} 或更新的版本。', locale, BROWSER_BASELINE)}</p>
+      <p class="browser-support-gaps">{tr('缺少：')}<span data-gaps></span></p>
+    </div>
+    <script
+      is:inline
+      set:html={`(${bootBrowserSupport.toString()})(${browserSupportGaps.toString()},window);`}
+    />
     <a href="#main" class="skip-link">{tr('跳到主要内容')}</a>
     <header class="site-header">
       <a class="wordmark" href={home} aria-label={tr('vistep.ai 首页')}

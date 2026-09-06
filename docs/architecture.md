@@ -47,6 +47,10 @@ Directors use chapter-relative progress, not hard-coded positions in an old shor
 
 Three.js scenes dispose geometries, materials, textures, controls and renderers. Workers terminate and audio resources release on unmount. Frame scheduling targets are ceilings, not measured performance guarantees; real-device claims require recorded hardware and conditions.
 
+## Browser support
+
+The baseline is Chrome 111, Edge 111, Firefox 121 and Safari 16.4, set by what the pages use: WebGL 2 for Three.js, `:has()`, `color-mix()`, container queries and `svh` units in the layouts, `Array.prototype.toReversed` and `structuredClone` in the models, Workers for the Transformer and Web Audio for the sound experiments. `src/lib/browser-support.ts` probes exactly those features in an inline script before the first paint. A browser that fails any probe gets one notice naming the missing features and the baseline; experiments and the homepage object are not loaded. There is no degraded mode for unsupported browsers. Runtime failures inside a supported browser (a lost WebGL context, blocked audio, a Worker crash) still surface their own messages.
+
 ## Model boundaries
 
 | Exploration  | Implemented model and teaching limits                                                                                                                                                                          |
