@@ -42,7 +42,8 @@ export default function Showcase({ slug, children }: { slug: string; children: R
     [playing, setPlaying] = useState(false),
     [time, setTime] = useState(0),
     [run, setRun] = useState(0),
-    [switching, setSwitching] = useState(false);
+    [switching, setSwitching] = useState(false),
+    [promptDismissed, setPromptDismissed] = useState(false);
   const clock = useRef(0),
     refresh = useRef(0),
     switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -116,6 +117,13 @@ export default function Showcase({ slug, children }: { slug: string; children: R
     setWatch(true);
     setPlaying(true);
   };
+  // Starting sound must happen inside the user's tap; the film keeps its place unless it ended.
+  const startVoice = () => {
+    const restart = !watch || time >= film.duration;
+    if (restart) replay();
+    else setPlaying(true);
+    voice.enable(restart ? 0 : time);
+  };
   const seek = (value: number, play = false) => {
     const next = Math.max(0, Math.min(film.duration, value));
     clock.current = next;
@@ -173,7 +181,33 @@ export default function Showcase({ slug, children }: { slug: string; children: R
         data-narration={voice.enabled ? (voice.waiting ? 'loading' : 'on') : 'off'}
         ref={host}
       >
-        <div className="showcase-film">{children}</div>
+        <div className="showcase-film">
+          {children}
+          {voice.blocked && !promptDismissed && (
+            <div className="voice-prompt" role="alert">
+              <div className="voice-prompt-card">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M11 5 6 9H3v6h3l5 4Z" />
+                  <path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" />
+                </svg>
+                <b>{t('浏览器拦下了自动播放的语音讲解。')}</b>
+                <p>{t('演示会静音继续；点一下，边看边听。')}</p>
+                <div className="voice-prompt-actions">
+                  <button type="button" className="voice-prompt-start" onClick={startVoice}>
+                    {t('开启语音讲解')}
+                  </button>
+                  <button
+                    type="button"
+                    className="voice-prompt-skip"
+                    onClick={() => setPromptDismissed(true)}
+                  >
+                    {t('先静音看')}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="film-caption">
           <span className="film-chapter">
             {String(chapter + 1).padStart(2, '0')}
@@ -248,14 +282,7 @@ export default function Showcase({ slug, children }: { slug: string; children: R
             aria-pressed={voice.enabled}
             aria-label={voice.enabled ? t('关闭语音讲解') : t('开启语音讲解')}
             title={t('AI 语音讲解 · 跟随演示播放')}
-            onClick={() => {
-              if (voice.enabled) voice.disable();
-              else {
-                if (!watch || time >= film.duration) replay();
-                else setPlaying(true);
-                voice.enable(!watch || time >= film.duration ? 0 : time);
-              }
-            }}
+            onClick={() => (voice.enabled ? voice.disable() : startVoice())}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M11 5 6 9H3v6h3l5 4Z" />
@@ -318,7 +345,7 @@ export default function Showcase({ slug, children }: { slug: string; children: R
             ))}
           </ol>
         </details>
-        {(voice.error || voice.blocked) && (
+        {(voice.error || (voice.blocked && promptDismissed)) && (
           <p className="voice-status" role="status">
             {voice.blocked
               ? t('点一下声音按钮，继续听讲解。')

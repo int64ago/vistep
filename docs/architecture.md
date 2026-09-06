@@ -41,7 +41,7 @@ flowchart LR
 
 ## Time and lifecycle
 
-Narration defaults on and makes audio time authoritative; buffering pauses visual progress. A manual sound choice persists in local storage, with compatibility for the earlier session preference. If storage is unavailable, the initial preference remains on. Browser autoplay restrictions and recording failures leave the silent film running with a clear retry control. Its shared clock advances without sound. Playback pauses offscreen and in background tabs. Explicit language routes never silently change language. See [language selection](localization-and-seo.md).
+Narration defaults on and makes audio time authoritative; buffering pauses visual progress. A manual sound choice persists in local storage, with compatibility for the earlier session preference. If storage is unavailable, the initial preference remains on. When the browser refuses autoplay (in-app browsers such as WeChat always do), a prominent offer appears on the stage to start the voice from the current moment; the silent film keeps running, and dismissing the offer leaves a quiet status line. Recording failures leave the silent film running with a retry control. Its shared clock advances without sound. Playback pauses offscreen and in background tabs. Explicit language routes never silently change language. See [language selection](localization-and-seo.md).
 
 Directors use chapter-relative progress, not hard-coded positions in an old short film. Measured narration windows can change without breaking shot selection. Seeking rebuilds history-dependent simulations with fixed time steps. The teaching Transformer reconstructs the requested training step in its Worker and freezes weights during generation.
 

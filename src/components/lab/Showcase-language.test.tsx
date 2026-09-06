@@ -327,10 +327,22 @@ describe('actual Showcase + useNarration + narrationSource language lifecycle (c
     tree = await mount();
     expect(env.audios.at(-1)!.playTimes).toEqual([75]);
     expect(button(tree, 'voice').props['aria-pressed']).toBe(false);
+    // The refusal shows one prominent offer on the stage rather than a quiet status line.
+    const prompt = tree.root.findByProps({ className: 'voice-prompt' });
+    expect(prompt.findByType('b').children.join('')).toBe(t('浏览器拦下了自动播放的语音讲解。'));
+    expect(tree.root.findAllByProps({ className: 'voice-status' })).toHaveLength(0);
+    expect(env.local.getItem('vistep:narration')).toBeNull();
+    await act(() => tree.root.findByProps({ className: 'voice-prompt-start' }).props.onClick());
+    // enable() plays inside the tap and again when the enabled effect settles; both at 75.
+    const times = env.audios.at(-1)!.playTimes;
+    expect(times.length).toBeGreaterThan(1);
+    expect(new Set(times)).toEqual(new Set([75]));
+    expect(env.local.getItem('vistep:narration')).toBe('on');
+    await act(() => tree.root.findByProps({ className: 'voice-prompt-skip' }).props.onClick());
+    expect(tree.root.findAllByProps({ className: 'voice-prompt' })).toHaveLength(0);
     expect(tree.root.findByProps({ className: 'voice-status' }).children.join('')).toBe(
       t('点一下声音按钮，继续听讲解。'),
     );
-    expect(env.local.getItem('vistep:narration')).toBeNull();
     await unmount(tree);
   });
   it('keeps playing intent through an offscreen language navigation, and waits for visibility', async () => {

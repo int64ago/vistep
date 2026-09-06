@@ -151,6 +151,92 @@ html[lang='en'] .reading-nav a {
   font-size: 16px;
   color: var(--muted);
 }
+/* Autoplay was refused: one unmistakable offer on the stage, while the silent film keeps going. */
+.voice-prompt {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #f7f8fa4d;
+  pointer-events: none;
+  animation: story-arrive 420ms var(--ease-settle);
+}
+.voice-prompt-card {
+  pointer-events: auto;
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  max-width: 360px;
+  padding: 22px 24px 20px;
+  border-radius: 20px;
+  background: #fffefa;
+  border: 1px solid #dfe5da;
+  box-shadow: 0 18px 48px #2e3f3826;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.voice-prompt-card > svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: #356d60;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.voice-prompt-card b {
+  font-weight: 650;
+}
+.voice-prompt-card p {
+  margin: 0;
+  color: var(--muted);
+}
+.voice-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.voice-prompt-actions button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 22px;
+  border: 1px solid transparent;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease;
+}
+.voice-prompt-start {
+  background: #356d60;
+  color: #fff;
+}
+.voice-prompt-start:hover {
+  background: #2c5c51;
+}
+.voice-prompt-skip {
+  background: transparent;
+  border-color: #cfd8cc;
+  color: #405844;
+}
+.voice-prompt-skip:hover {
+  background: #eef2ec;
+}
+@media (max-width: 600px) {
+  .voice-prompt {
+    align-items: end;
+    padding: 12px;
+  }
+  .voice-prompt-card {
+    max-width: none;
+    width: 100%;
+    padding: 18px 18px 16px;
+  }
+}
 @media (max-width: 600px) {
   .film-transport .film-voice {
     width: 44px;
