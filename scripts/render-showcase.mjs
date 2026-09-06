@@ -5,7 +5,7 @@
  * node scripts/render-showcase.mjs --frame 0 --output /tmp/showcase-first.png
  * node scripts/render-showcase.mjs --poster
  * node scripts/render-showcase.mjs --keep-frames
- * node --test scripts/render-showcase.test.mjs
+ * pnpm exec vitest run scripts/render-showcase.test.mjs
  *
  * Artistic scales / deliberately slowed clocks are documented in the companion
  * docs/media/vistep-showcase-provenance.md. Geometry always comes from the models.

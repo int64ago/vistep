@@ -265,7 +265,7 @@ export default function AirfoilTunnel({
                   : '理想二维观察窗',
           )}
         </text>
-        <text x={W - (phone ? 16 : 30)} y={phone ? 49 : 25} textAnchor="end">
+        <text x={W - (phone ? 16 : 30)} y={phone ? 42 : 25} textAnchor="end">
           {kutta
             ? 'Kutta'
             : pairView
@@ -491,22 +491,23 @@ export default function AirfoilTunnel({
             {t('翼尾测量线')}
           </text>
         ) : (
-          <g>
+          <g data-airfoil-pressure-legend="true">
+            {/* Keep the full physical resultant clear of the compact legend, including −8°/35 m/s. */}
             <rect
               x={16}
-              y={H - 42}
+              y={H - (phone ? 28 : 42)}
               width={W - 32}
               height={4}
               rx={2}
               fill={`url(#${id}-pressure)`}
             />
-            <text x={16} y={H - 17} fill="#86bac4">
+            <text x={16} y={H - (phone ? 7 : 17)} fill="#86bac4">
               ≤ −2.5
             </text>
-            <text x={W / 2} y={H - 17} textAnchor="middle">
+            <text x={W / 2} y={H - (phone ? 7 : 17)} textAnchor="middle">
               {t('压力系数 Cp')}
             </text>
-            <text x={W - 16} y={H - 17} textAnchor="end" fill="#d6b77e">
+            <text x={W - 16} y={H - (phone ? 7 : 17)} textAnchor="end" fill="#d6b77e">
               +1
             </text>
           </g>

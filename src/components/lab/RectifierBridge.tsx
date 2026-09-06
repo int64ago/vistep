@@ -246,7 +246,7 @@ export default function RectifierBridge({
               <text x={cap} y="27" textAnchor="middle" fill="#c5b8f1">
                 {p.capacitor ? `${Math.round(p.capacitance * 1e6)} µF` : 'C = ∅'}
               </text>
-              <text x={load + 21} y="152">
+              <text x={load - 38} y="152" textAnchor="end">
                 {p.load} Ω
               </text>
             </>

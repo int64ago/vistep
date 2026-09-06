@@ -35,6 +35,11 @@ export function UltrasoundPhantom({ shot, compact }: { shot: UltrasoundShot; com
   const y = (mm: number) => top + (mm / 64) * (bottom - top);
   const probe = x(shot.x),
     regions = ultrasoundRegions(shot.config);
+  // Keep the arrowhead (4) and half-stroke (0.8) six units inside the
+  // phantom. Only the annotation changes sides; pulse depth/width stay physical.
+  const arrowInset = 4 + 0.8 + 6;
+  const arrowX =
+    probe + 24 <= right - arrowInset ? probe + 24 : Math.max(left + arrowInset, probe - 24);
   return (
     <svg
       className="ultrasound-phantom"
@@ -112,8 +117,8 @@ export function UltrasoundPhantom({ shot, compact }: { shot: UltrasoundShot; com
               <path
                 d={
                   packet.direction === 'down'
-                    ? `M ${probe + 24} ${y(packet.center) - 6} v 12 m -4 -4 4 4 4 -4`
-                    : `M ${probe + 24} ${y(packet.center) + 6} v -12 m -4 4 4 -4 4 4`
+                    ? `M ${arrowX} ${y(packet.center) - 6} v 12 m -4 -4 4 4 4 -4`
+                    : `M ${arrowX} ${y(packet.center) + 6} v -12 m -4 4 4 -4 4 4`
                 }
                 stroke={color}
                 strokeWidth="1.6"

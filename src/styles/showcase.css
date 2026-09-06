@@ -37,13 +37,17 @@ body:has(.lesson-wrap) .site-header {
 }
 .film-chapter {
   flex: 0 0 58px;
-  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 16px;
+  line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 .film-chapter i {
   font-style: normal;
   color: var(--film-muted);
-  font-size: 10px;
+  font-size: inherit;
 }
 .film-caption p {
   margin: 0;
@@ -505,11 +509,7 @@ body:has(.lesson-wrap) .site-header {
     min-height: 86px;
   }
   .film-chapter {
-    font-size: 11px;
     flex-basis: 42px;
-  }
-  .film-chapter i {
-    font-size: 8px;
   }
   .film-caption p {
     font-size: 16px;
