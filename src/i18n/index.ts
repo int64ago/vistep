@@ -1,7 +1,13 @@
-import english from './en.json';
 import type { Topic } from '../data/topics';
 export type Locale = 'zh' | 'en';
-const dictionary = english as Record<string, string>;
+/**
+ * English copy is registered rather than imported so the 430 KB dictionary only ships to
+ * English pages: the server and the English islands import `./english`, Chinese pages never do.
+ */
+const dictionary: Record<string, string> = {};
+export function registerDictionary(entries: Record<string, string>) {
+  Object.assign(dictionary, entries);
+}
 export const browserLocale = (): Locale =>
   typeof document !== 'undefined' && document.documentElement.lang.startsWith('en') ? 'en' : 'zh';
 export const localeFromPath = (path: string): Locale => (/^\/en(?:\/|$)/.test(path) ? 'en' : 'zh');

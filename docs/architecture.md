@@ -20,22 +20,24 @@ flowchart LR
 
 ## Responsibilities
 
-| Location                                                        | Responsibility                                                                                |
-| --------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `src/data/topics.ts`                                            | Topic identity, descriptions, related topics and technical sources                            |
-| `src/content/`, `src/content/en/`                               | Prerendered MDX articles                                                                      |
-| `src/data/discovery-metadata.ts`                                | Six interest categories, editorial starting ages and bilingual search aliases                 |
-| `src/components/DiscoveryCatalog.astro`, `src/lib/discovery.ts` | Static complete catalog, progressive search/filtering, URL state and return-position recovery |
-| `src/data/experiments.ts`                                       | Explicit dynamic imports; keeps experiment engines off the homepage                           |
-| `src/data/narration.json`                                       | Bilingual chapter writing and production timing                                               |
-| `src/data/film-timeline.json`, `audio-tracks.json`              | Compact client playback metadata, generated with recordings                                   |
-| `src/data/audio-manifest.json`                                  | Full recording provenance and measured cue boundaries                                         |
-| `src/components/lab/Showcase.tsx`                               | Playback, seeking, chapters, visibility and exploration mode                                  |
-| `src/components/experiments/`                                   | Independent scene compositions and chapter directors                                          |
-| `src/components/three/`                                         | Procedural geometry, cameras, materials and 2D alternatives                                   |
-| `src/models/`, `src/workers/`                                   | Testable calculations and expensive background work                                           |
-| `src/i18n/`, `src/data/seo.ts`                                  | Language negotiation, translations and search metadata                                        |
-| `src/pages/social/`                                             | Social PNGs generated from the existing cover artwork                                         |
+| Location                                                        | Responsibility                                                                                                      |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `src/data/topics.ts`                                            | Topic identity, descriptions, related topics and technical sources                                                  |
+| `src/content/`, `src/content/en/`                               | Prerendered MDX articles                                                                                            |
+| `src/data/discovery-metadata.ts`                                | Six interest categories, editorial starting ages and bilingual search aliases                                       |
+| `src/components/DiscoveryCatalog.astro`, `src/lib/discovery.ts` | Static complete catalog, progressive search/filtering, URL state and return-position recovery                       |
+| `src/data/experiments.ts`                                       | Explicit dynamic imports; keeps experiment engines off the homepage                                                 |
+| `src/i18n/english.ts`, `src/components/english/`                | Registers the English dictionary; only English islands and the server import it, so Chinese pages never download it |
+| `src/components/CoverArt.astro`, `src/lib/svg-cover.ts`         | Rounds served cover geometry to sub-pixel precision; raster covers are encoded with `src/lib/png.ts`                |
+| `src/data/narration.json`                                       | Bilingual chapter writing and production timing                                                                     |
+| `src/data/film-timeline.json`, `audio-tracks.json`              | Compact client playback metadata, generated with recordings                                                         |
+| `src/data/audio-manifest.json`                                  | Full recording provenance and measured cue boundaries                                                               |
+| `src/components/lab/Showcase.tsx`                               | Playback, seeking, chapters, visibility and exploration mode                                                        |
+| `src/components/experiments/`                                   | Independent scene compositions and chapter directors                                                                |
+| `src/components/three/`                                         | Procedural geometry, cameras, materials and 2D alternatives                                                         |
+| `src/models/`, `src/workers/`                                   | Testable calculations and expensive background work                                                                 |
+| `src/i18n/`, `src/data/seo.ts`                                  | Language negotiation, translations and search metadata                                                              |
+| `src/pages/social/`                                             | Social PNGs generated from the existing cover artwork                                                               |
 
 ## Time and lifecycle
 

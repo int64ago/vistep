@@ -7,28 +7,29 @@ import {
   motorStatorBore,
   type MotorPoint,
 } from '../../models/induction-motor';
+import { svgPolyline } from '../../lib/svg-cover';
 interface Props {
   color?: string;
 }
 const { color = '#3a897b' } = Astro.props;
 const project = ([x, y, z]: MotorPoint) => [201 + (x + 0.48 * z) * 47, 113 - y * 47 + z * 13];
-const path = (points: MotorPoint[]) =>
-  points.map((p, i) => `${i ? 'L' : 'M'}${project(p).join(',')}`).join(' ');
+const path = (points: MotorPoint[]) => svgPolyline(points.map(project));
 const arc = (r: number, z: number, a: number, b: number) =>
-  Array.from({ length: 241 }, (_, i) => {
-    const angle = a + ((b - a) * i) / 240;
+  Array.from({ length: 61 }, (_, i) => {
+    const angle = a + ((b - a) * i) / 60;
     return [r * Math.cos(angle), r * Math.sin(angle), z] as MotorPoint;
   });
-const section = (z: number) =>
+// Only the front laminations show their slot edges; the rest are seen as a smooth bore wall.
+const section = (z: number, samples = 180) =>
   path([
     ...arc(M.statorOuter, z, 0.62 * Math.PI, 2.08 * Math.PI),
-    ...Array.from({ length: 361 }, (_, i) => {
-      const a = 2.08 * Math.PI - (1.46 * Math.PI * i) / 360,
-        r = motorStatorBore(a);
+    ...Array.from({ length: samples + 1 }, (_, i) => {
+      const a = 2.08 * Math.PI - (1.46 * Math.PI * i) / samples,
+        r = samples < 100 ? M.statorInner : motorStatorBore(a);
       return [r * Math.cos(a), r * Math.sin(a), z] as MotorPoint;
     }),
   ]) + 'Z';
-const rings = (z: number) => path(Array.from({ length: 97 }, (_, i) => motorRingPoint(i / 96, z)));
+const rings = (z: number) => path(Array.from({ length: 49 }, (_, i) => motorRingPoint(i / 48, z)));
 ---
 
 <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -43,7 +44,7 @@ const rings = (z: number) => path(Array.from({ length: 97 }, (_, i) => motorRing
   {
     Array.from({ length: 21 }, (_, i) => (
       <path
-        d={section(-0.98 + i * 0.098)}
+        d={section(-0.98 + i * 0.098, i >= 18 ? 180 : 36)}
         fill={i % 3 ? '#758a8c' : '#526970'}
         stroke="#536d73"
         stroke-width=".6"
@@ -64,7 +65,7 @@ const rings = (z: number) => path(Array.from({ length: 97 }, (_, i) => motorRing
   {
     [0, 1, 2].map((phase) => (
       <path
-        d={path(Array.from({ length: 721 }, (_, i) => motorWindingPoint(phase, i / 720)))}
+        d={path(Array.from({ length: 241 }, (_, i) => motorWindingPoint(phase, i / 240)))}
         stroke={['#cb895f', '#69a397', '#9e95ba'][phase]}
         stroke-width="1.65"
       />

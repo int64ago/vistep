@@ -19,21 +19,23 @@ src/data/films.ts ──→ Showcase 时间线 ───────────
 
 ## 关键文件
 
-| 区域                                                                      | 职责                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `src/components/pages/`、`src/layouts/Base.astro`                         | 中英文共用页面结构、规范网址、导航与基础样式           |
-| `src/data/topics.ts`                                                      | 专题目录；元数据与来源的统一入口                       |
-| `src/data/discovery-metadata.ts`                                          | 六类兴趣分类、编辑建议起看年龄及双语关键词             |
-| `src/components/DiscoveryCatalog.astro`、`src/lib/discovery.ts`           | 静态完整目录、渐进增强搜索筛选、URL 条件与返回位置恢复 |
-| `src/data/experiments.ts`                                                 | 只登记动态加载器，不执行场景引擎                       |
-| `src/components/experiments/`                                             | 各篇独立构图、自动演示状态映射与操作                   |
-| `src/components/three/`                                                   | 程序化部件、灯光、镜头、2D 降级与生命周期              |
-| `src/models/`、`src/workers/`                                             | 可测试的数值计算、确定性模拟与重计算任务               |
-| `src/components/lab/Showcase.tsx`                                         | 播放状态、章节、重播、探索模式与可见性                 |
-| `src/components/lab/useNarration.ts`                                      | 声音选择、缓冲、失败恢复、音频时间与资源释放           |
-| `films.ts`、`film-timeline.json`、`narration.json`、`audio-manifest.json` | 镜头、分别编写的口语稿、录音与时序证据                 |
-| `src/styles/`                                                             | 基础排版、编辑式布局、柔和交互、演示与双语控件         |
-| `scripts/`                                                                | 草稿生成、配音制作、预览构建与静态产物审计             |
+| 区域                                                                      | 职责                                                             |
+| ------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `src/components/pages/`、`src/layouts/Base.astro`                         | 中英文共用页面结构、规范网址、导航与基础样式                     |
+| `src/data/topics.ts`                                                      | 专题目录；元数据与来源的统一入口                                 |
+| `src/data/discovery-metadata.ts`                                          | 六类兴趣分类、编辑建议起看年龄及双语关键词                       |
+| `src/components/DiscoveryCatalog.astro`、`src/lib/discovery.ts`           | 静态完整目录、渐进增强搜索筛选、URL 条件与返回位置恢复           |
+| `src/data/experiments.ts`                                                 | 只登记动态加载器，不执行场景引擎                                 |
+| `src/i18n/english.ts`、`src/components/english/`                          | 登记英文词典；只有英文页面的岛屿与服务端引入，中文页面不下载     |
+| `src/components/CoverArt.astro`、`src/lib/svg-cover.ts`                   | 封面几何输出前按亚像素精度取整；栅格封面由 `src/lib/png.ts` 编码 |
+| `src/components/experiments/`                                             | 各篇独立构图、自动演示状态映射与操作                             |
+| `src/components/three/`                                                   | 程序化部件、灯光、镜头、2D 降级与生命周期                        |
+| `src/models/`、`src/workers/`                                             | 可测试的数值计算、确定性模拟与重计算任务                         |
+| `src/components/lab/Showcase.tsx`                                         | 播放状态、章节、重播、探索模式与可见性                           |
+| `src/components/lab/useNarration.ts`                                      | 声音选择、缓冲、失败恢复、音频时间与资源释放                     |
+| `films.ts`、`film-timeline.json`、`narration.json`、`audio-manifest.json` | 镜头、分别编写的口语稿、录音与时序证据                           |
+| `src/styles/`                                                             | 基础排版、编辑式布局、柔和交互、演示与双语控件                   |
+| `scripts/`                                                                | 草稿生成、配音制作、预览构建与静态产物审计                       |
 
 ## 时间与资源
 

@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Experiment from '../../components/Experiment';
+import EnglishExperiment from '../../components/english/Experiment';
 import { getTopic } from '../../data/topics';
 import '../../styles/experiments.css';
 import narration from '../../data/narration.json';
@@ -52,11 +53,21 @@ const ageLabel =
       </div>
     </header>
     <section class="experiment" id="experiment" aria-label={`${topic.name} ${tr('互动实验')}`}>
-      <Experiment slug={topic.slug as any} client:only="react"
-        ><div slot="fallback" class="lab-loading" role="status">
-          {tr('正在准备实验…')}
-        </div></Experiment
-      ><noscript
+      {
+        locale === 'en' ? (
+          <EnglishExperiment slug={topic.slug as any} client:only="react">
+            <div slot="fallback" class="lab-loading" role="status">
+              {tr('正在准备实验…')}
+            </div>
+          </EnglishExperiment>
+        ) : (
+          <Experiment slug={topic.slug as any} client:only="react">
+            <div slot="fallback" class="lab-loading" role="status">
+              {tr('正在准备实验…')}
+            </div>
+          </Experiment>
+        )
+      }<noscript
         ><div class="noscript">
           {tr('互动实验需要 JavaScript。你仍然可以阅读下方的完整讲解，理解关键步骤与模型边界。')}
         </div></noscript

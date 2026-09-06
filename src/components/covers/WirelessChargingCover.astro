@@ -7,22 +7,18 @@ import {
   wirelessFluxPoint,
   type WCPoint,
 } from '../../models/wireless-charging';
+import { svgPolyline } from '../../lib/svg-cover';
 interface Props {
   color?: string;
 }
 const { color = '#427f98' } = Astro.props;
 const project = ([x, y, z]: WCPoint) => [185 + (x + 0.25 * z) * 3900, 147 - y * 3900 + z * 1400];
 const path = (points: WCPoint[], shift: WCPoint = [0, 0, 0]) =>
-  points
-    .map(
-      (p, i) =>
-        `${i ? 'L' : 'M'}${project([p[0] + shift[0], p[1] + shift[1], p[2] + shift[2]]).join(',')}`,
-    )
-    .join(' ');
+  svgPolyline(points.map((p) => project([p[0] + shift[0], p[1] + shift[1], p[2] + shift[2]])));
 const circle = (r: number, y: number) =>
   Array.from(
-    { length: 97 },
-    (_, i) => [r * Math.cos((i * Math.PI) / 48), y, r * Math.sin((i * Math.PI) / 48)] as WCPoint,
+    { length: 49 },
+    (_, i) => [r * Math.cos((i * Math.PI) / 24), y, r * Math.sin((i * Math.PI) / 24)] as WCPoint,
   );
 ---
 
@@ -46,7 +42,7 @@ const circle = (r: number, y: number) =>
           <path d={path(wire.inner, shift)} stroke={copper} stroke-width="1.8" />
           <path
             d={path(
-              Array.from({ length: 1025 }, (_, i) => wirelessCoilPoint(i / 1024)),
+              Array.from({ length: 257 }, (_, i) => wirelessCoilPoint(i / 256)),
               shift,
             )}
             stroke={copper}
@@ -70,8 +66,8 @@ const circle = (r: number, y: number) =>
   }
   <path
     d={path(
-      Array.from({ length: 193 }, (_, i) =>
-        wirelessFluxPoint({ ...wirelessDefaults, gap: 0.016, offset: 0.01 }, 0, i / 192),
+      Array.from({ length: 97 }, (_, i) =>
+        wirelessFluxPoint({ ...wirelessDefaults, gap: 0.016, offset: 0.01 }, 0, i / 96),
       ),
     )}
     stroke={color}

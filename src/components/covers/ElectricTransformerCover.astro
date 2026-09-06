@@ -6,13 +6,13 @@ import {
   electricWindingPoint,
   type ElectricPoint,
 } from '../../models/transformer-electric';
+import { svgPoint, svgPolyline } from '../../lib/svg-cover';
 interface Props {
   color?: string;
 }
 const { color = '#b17b52' } = Astro.props;
 const project = ([x, y, z]: ElectricPoint) => [200 + 38 * x + 11 * z, 176 - 31 * y - 9 * z];
-const path = (points: ElectricPoint[]) =>
-  points.map((p, i) => `${i ? 'L' : 'M'}${project(p).join(',')}`).join(' ');
+const path = (points: ElectricPoint[]) => svgPolyline(points.map(project));
 const g = C.geometry;
 const core = (z: number) =>
   path([
@@ -33,10 +33,10 @@ const coils = (front: boolean) =>
   (['primary', 'secondary'] as const).map((side) => {
     const n = side === 'primary' ? 24 : 12;
     let pen = false;
-    return Array.from({ length: n * 48 + 1 }, (_, i) => {
-      const p = electricWindingPoint(side, n, i / (n * 48));
+    return Array.from({ length: n * 16 + 1 }, (_, i) => {
+      const p = electricWindingPoint(side, n, i / (n * 16));
       const visible = front ? p[2] >= 0 : p[2] <= 0;
-      const value = visible ? `${pen ? 'L' : 'M'}${project(p).join(',')}` : '';
+      const value = visible ? `${pen ? 'L' : 'M'}${svgPoint(project(p))}` : '';
       pen = visible;
       return value;
     }).join(' ');
@@ -62,7 +62,7 @@ const coils = (front: boolean) =>
     ))
   }
   <path
-    d={path(Array.from({ length: 161 }, (_, i) => electricFluxPoint(i / 160, 0.42)))}
+    d={path(Array.from({ length: 81 }, (_, i) => electricFluxPoint(i / 80, 0.42)))}
     stroke="#76bb9f"
     stroke-width="2"></path>
   {
@@ -112,11 +112,14 @@ const coils = (front: boolean) =>
       <g>
         <path d={`M74 ${197 + row * 22}H330`} stroke="#7b8a7c" opacity=".18" />
         <path
-          d={Array.from(
-            { length: 141 },
-            (_, i) =>
-              `${i ? 'L' : 'M'}${74 + (i / 140) * 256},${197 + row * 22 - 8 * (row ? Math.cos((i / 140) * 4 * Math.PI) : Math.sin((i / 140) * 4 * Math.PI))}`,
-          ).join(' ')}
+          d={svgPolyline(
+            Array.from({ length: 71 }, (_, i) => [
+              74 + (i / 70) * 256,
+              197 +
+                row * 22 -
+                8 * (row ? Math.cos((i / 70) * 4 * Math.PI) : Math.sin((i / 70) * 4 * Math.PI)),
+            ]),
+          )}
           stroke={row ? color : '#548c71'}
           stroke-width="1.6"
           stroke-linecap="round"

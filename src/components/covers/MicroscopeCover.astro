@@ -6,6 +6,7 @@ import {
   microscopeRay,
   microscopeSystem,
 } from '../../models/microscope';
+import { pngDataUri } from '../../lib/png';
 interface Props {
   color?: string;
 }
@@ -16,13 +17,7 @@ const rays = [-1, -0.5, 0, 0.5, 1].map((a) => microscopeRay(config, 0.04, a));
 const xy = (z: number, h: number) => `${104 + h * 29},${215 - (z + system.u) * 0.96}`;
 const lensY = (z: number) => 215 - (z + system.u) * 0.96;
 const image = microscopeImage(microscopeField(config), 81);
-const pixels = Array.from({ length: image.size * image.size }, (_, i) => ({
-  x: i % image.size,
-  y: Math.floor(i / image.size),
-  r: image.pixels[4 * i],
-  g: image.pixels[4 * i + 1],
-  b: image.pixels[4 * i + 2],
-}));
+const raster = pngDataUri(image.size, image.size, image.pixels);
 ---
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
@@ -65,18 +60,17 @@ const pixels = Array.from({ length: image.size * image.size }, (_, i) => ({
   }
   <circle cx={104 + 0.04 * 29} cy="215" r="3" fill="#e0c185"></circle>
   <circle cx={104 + system.magnification * 0.04 * 29} cy={lensY(160)} r="3" fill="#dfaa99"></circle>
-  <g clip-path="url(#microscope-cover-field)" shape-rendering="crispEdges"
-    >{
-      pixels.map((p) => (
-        <rect
-          x={208 + (p.x / image.size) * 180}
-          y={26 + (p.y / image.size) * 180}
-          width={180 / image.size + 0.02}
-          height={180 / image.size + 0.02}
-          fill={`rgb(${p.r},${p.g},${p.b})`}
-        />
-      ))
-    }</g
+  <g clip-path="url(#microscope-cover-field)"
+    ><image
+      href={raster}
+      x="208"
+      y="26"
+      width="180"
+      height="180"
+      preserveAspectRatio="none"
+      class="cover-raster"
+      image-rendering="optimizeSpeed"
+    /></g
   >
   <circle cx="298" cy="116" r="88" stroke={color} stroke-opacity=".5"></circle>
   <path d="M195 116h9M392 116h-9M298 13v10M298 219v-10" stroke={color} stroke-opacity=".45"></path>

@@ -9,24 +9,37 @@ import {
   type DifferentialVector,
   type DifferentialGearId,
 } from '../../models/differential';
+import { svgPoint } from '../../lib/svg-cover';
 interface Props {
   color?: string;
 }
 const { color = '#69838a' } = Astro.props;
 const m = differentialMotion('turn', 0.9, 1.7, 2);
-const project = (p: DifferentialVector) => [
-  200 + 43 * (0.952 * p[0] - 0.305 * p[2]),
-  116 - 43 * (-0.065 * p[0] + 0.978 * p[1] - 0.202 * p[2]),
+const rows: DifferentialVector[] = [
+  [0.952, 0, -0.305],
+  [-0.065, 0.978, -0.202],
 ];
-const point = (p: DifferentialVector) =>
-  project(p)
-    .map((n) => n.toFixed(2))
-    .join(',');
+const dot = (a: DifferentialVector, b: DifferentialVector) =>
+  a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const sub = (a: DifferentialVector, b: DifferentialVector): DifferentialVector => [
+  a[0] - b[0],
+  a[1] - b[1],
+  a[2] - b[2],
+];
+const cross = (a: DifferentialVector, b: DifferentialVector): DifferentialVector => [
+  a[1] * b[2] - a[2] * b[1],
+  a[2] * b[0] - a[0] * b[2],
+  a[0] * b[1] - a[1] * b[0],
+];
+const project = (p: DifferentialVector) => [200 + 43 * dot(rows[0], p), 116 - 43 * dot(rows[1], p)];
+const point = (p: DifferentialVector) => svgPoint(project(p));
+// Orthographic view direction toward the camera (null space of the projection; depth grows with z).
+const toward = cross(rows[0], rows[1]);
 const faces: { points: string; depth: number; fill: string }[] = [];
 for (const id of ['left', 'right', 'upper', 'lower'] as DifferentialGearId[]) {
   const side = id === 'left' || id === 'right',
     g = differentialBevel(side ? 'side' : 'pinion'),
-    o = differentialBevelOutline(g).filter((_, i) => i % 2 === 0),
+    o = differentialBevelOutline(g).filter((_, i) => i % 4 === 0),
     phase = differentialGearPhase(id, m);
   const toWorld = (p: (typeof o)[number], r: number) => {
     const a = p.azimuth + phase;
@@ -40,26 +53,60 @@ for (const id of ['left', 'right', 'upper', 'lower'] as DifferentialGearId[]) {
       m.carrierAngle,
     );
   };
-  for (let i = 0; i < o.length; i++) {
+  const origin = differentialFrame([0, 0, 0], id, m.carrierAngle),
+    axis = sub(differentialFrame([0, 0, 1], id, m.carrierAngle), origin);
+  const radial = (p: DifferentialVector) => {
+    const r = sub(p, origin),
+      along = dot(r, axis);
+    return sub(r, [axis[0] * along, axis[1] * along, axis[2] * along]);
+  };
+  // The outline is monotonic in azimuth, so every strip face is wound the same way. Orient the
+  // strip from a pure cone segment (both ends at one polar angle), where outward is radial for the
+  // tooth band and axial for the end face; then keep only faces turned toward the camera. The far
+  // half of each gear hides behind its own body, and the inner openings are edge-on in this view.
+  const strip = o.map((p, i) => {
     const next = o[(i + 1) % o.length],
-      a = toWorld(o[i], g.inner),
+      a = toWorld(p, g.inner),
       b = toWorld(next, g.inner),
       c = toWorld(next, g.outer),
-      d = toWorld(o[i], g.outer),
+      d = toWorld(p, g.outer),
       hub = differentialFrame([0, 0, g.outer], id, m.carrierAngle);
-    faces.push({
-      points: [a, b, c, d].map(point).join(' '),
-      depth: (a[2] + b[2] + c[2] + d[2]) / 4,
-      fill: side ? (id === 'left' ? '#bc9677' : '#8aafb8') : '#c89b66',
-    });
-    faces.push({
-      points: [d, c, hub].map(point).join(' '),
-      depth: (d[2] + c[2] + hub[2]) / 3,
-      fill: side ? '#6e8992' : '#9e784f',
-    });
+    return {
+      band: [a, b, c, d],
+      end: [d, c, hub],
+      bandNormal: cross(sub(b, a), sub(d, a)),
+      endNormal: cross(sub(c, d), sub(hub, d)),
+      cone: p.polar === next.polar,
+    };
+  });
+  const reference = strip.find((f) => f.cone)!;
+  const bandSign = Math.sign(dot(reference.bandNormal, radial(reference.band[0]))),
+    endSign = Math.sign(dot(reference.endNormal, axis));
+  const depth = (corners: DifferentialVector[]) =>
+    corners.reduce((sum, p) => sum + p[2], 0) / corners.length;
+  for (const f of strip) {
+    if (Math.sign(dot(f.bandNormal, toward)) === bandSign)
+      faces.push({
+        points: f.band.map(point).join(' '),
+        depth: depth(f.band),
+        fill: side ? (id === 'left' ? '#bc9677' : '#8aafb8') : '#c89b66',
+      });
+    if (Math.sign(dot(f.endNormal, toward)) === endSign)
+      faces.push({
+        points: f.end.map(point).join(' '),
+        depth: depth(f.end),
+        fill: side ? '#6e8992' : '#9e784f',
+      });
   }
 }
 faces.sort((a, b) => a.depth - b.depth);
+// Painter's order is preserved; consecutive faces of one material share a group.
+const runs: { fill: string; points: string[] }[] = [];
+for (const face of faces) {
+  const last = runs.at(-1);
+  if (last?.fill === face.fill) last.points.push(face.points);
+  else runs.push({ fill: face.fill, points: [face.points] });
+}
 const ring = (x: number, r: number) =>
   Array.from({ length: 65 }, (_, i) =>
     point([x, r * Math.cos((i * Math.PI) / 32), r * Math.sin((i * Math.PI) / 32)]),
@@ -110,7 +157,17 @@ const ring = (x: number, r: number) =>
     d={`M${point(differentialFrame([0, 0, -1.65], 'upper', m.carrierAngle))}L${point(differentialFrame([0, 0, 1.65], 'upper', m.carrierAngle))}`}
     stroke="#aabec0"
     stroke-width="5"></path>
-  {faces.map((f) => <polygon points={f.points} fill={f.fill} stroke={f.fill} stroke-width=".15" />)}
+  <g stroke-width=".15">
+    {
+      runs.map((run) => (
+        <g fill={run.fill} stroke={run.fill}>
+          {run.points.map((points) => (
+            <polygon points={points} />
+          ))}
+        </g>
+      ))
+    }
+  </g>
   {
     [Math.PI / 4, (5 * Math.PI) / 4].map((a) => (
       <path

@@ -1,0 +1,10 @@
+---
+/**
+ * Wraps a cover so the served markup is rounded to sub-pixel precision. The art itself stays
+ * derived from the scene models; only the digits the browser could never draw are dropped.
+ */
+import { compactSvg } from '../lib/svg-cover';
+const html = compactSvg(await Astro.slots.render('default'));
+---
+
+<Fragment set:html={html} />

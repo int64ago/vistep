@@ -1,5 +1,6 @@
 ---
 import { ConvectionRun } from '../../models/convection';
+import { pngDataUri } from '../../lib/png';
 interface Props {
   color?: string;
 }
@@ -13,8 +14,17 @@ const shade = (q: number) => {
   const a = q < 0.5 ? cold : middle,
     b = q < 0.5 ? middle : warm,
     f = q < 0.5 ? 2 * q : 2 * q - 1;
-  return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(',')})`;
+  return a.map((v, i) => Math.round(v + (b[i] - v) * f));
 };
+// Row 0 of the simulation is the bottom of the tank; PNG rows start at the top.
+const rgba = new Uint8ClampedArray(p.nx * p.ny * 4);
+state.temperature.forEach((temperature: number, k: number) => {
+  rgba.set(
+    [...shade(temperature), 255],
+    4 * ((p.ny - 1 - Math.floor(k / p.nx)) * p.nx + (k % p.nx)),
+  );
+});
+const raster = pngDataUri(p.nx, p.ny, rgba);
 ---
 
 <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -43,17 +53,16 @@ const shade = (q: number) => {
     fill-opacity=".13"
     stroke={color}
     stroke-opacity=".28"></rect>
-  {
-    Array.from(state.temperature, (temperature, k) => (
-      <rect
-        x={80 + ((k % p.nx) * 240) / p.nx}
-        y={35 + ((p.ny - 1 - Math.floor(k / p.nx)) * 160) / p.ny}
-        width={240 / p.nx + 0.1}
-        height={160 / p.ny + 0.1}
-        fill={shade(temperature)}
-      />
-    ))
-  }
+  <image
+    href={raster}
+    x="80"
+    y="35"
+    width="240"
+    height="160"
+    preserveAspectRatio="none"
+    class="cover-raster"
+    image-rendering="optimizeSpeed"
+  />
   {
     state.particles.map((a) => (
       <circle

@@ -48,6 +48,7 @@ interface Props {
 import { engineCycle } from '../models/four-stroke';
 import { planetaryOutlines, planetaryState } from '../models/planetary';
 import type { Point2 } from '../models/mechanisms';
+import { svgPolyline, thin } from '../lib/svg-cover';
 import { traceFiber } from '../models/fiber';
 import { fullAdder } from '../models/adder';
 import { phaseDiskPath } from '../models/moon';
@@ -62,7 +63,10 @@ const planetary =
     ? { outlines: planetaryOutlines(), state: planetaryState(0.43, 'ring-fixed') }
     : null;
 const gearPath = (points: Point2[]) =>
-  points.map((v, i) => `${i ? 'L' : 'M'}${v.x} ${v.y}`).join(' ') + 'Z';
+  svgPolyline(
+    thin(points, 2).map((v) => [v.x, v.y]),
+    3,
+  ) + 'Z';
 const fiber = slug === 'optical-fiber' ? traceFiber(12, 1.46, 600) : null;
 const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
 ---

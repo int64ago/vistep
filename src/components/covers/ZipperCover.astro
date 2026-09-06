@@ -1,19 +1,19 @@
 ---
 import { ZIP_GUIDE, zipperPose, zipperTransform, type ZipPoint } from '../../models/zipper';
+import { svgPolyline } from '../../lib/svg-cover';
 interface Props {
   color?: string;
 }
 const { color = '#54817c' } = Astro.props;
 const pose = zipperPose(0.46),
   to = ([x, y]: ZipPoint) => [200 + x * 29, 122 - (y - pose.slider) * 29];
-const path = (p: ZipPoint[]) =>
-  p.map((v, i) => `${i ? 'L' : 'M'}${to(v).join(' ')}`).join(' ') + 'Z';
+const path = (p: ZipPoint[]) => svgPolyline(p.map(to)) + 'Z';
 const rows = ([-1, 1] as const).map((side) => {
-  const inner = Array.from({ length: 100 }, (_, i) =>
-      zipperTransform([0, 0], -1.5 + (16 * i) / 99, pose.slider, side),
+  const inner = Array.from({ length: 50 }, (_, i) =>
+      zipperTransform([0, 0], -1.5 + (16 * i) / 49, pose.slider, side),
     ),
-    outer = Array.from({ length: 100 }, (_, i) =>
-      zipperTransform([-1.04, 0], -1.5 + (16 * i) / 99, pose.slider, side),
+    outer = Array.from({ length: 50 }, (_, i) =>
+      zipperTransform([-1.04, 0], -1.5 + (16 * i) / 49, pose.slider, side),
     );
   return path([...inner, ...outer.reverse()]);
 });

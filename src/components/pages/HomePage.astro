@@ -2,6 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import BrandMorph from '../../components/BrandMorph';
 import HomeObject from '../../components/HomeObject';
+import EnglishHomeObject from '../../components/english/HomeObject';
+import CoverArt from '../../components/CoverArt.astro';
 import TopicCover from '../../components/TopicCover.astro';
 import DiscoveryCatalog from '../DiscoveryCatalog.astro';
 import { translate, localPath, type Locale } from '../../i18n';
@@ -28,11 +30,25 @@ const href = (p: string) => localPath(p, locale);
           >{tr('从一台打印机开始')} <span aria-hidden="true">↗</span></a
         >
       </div>
-      <HomeObject client:only="react"
-        ><div slot="fallback" class="opening-object home-object-placeholder" aria-hidden="true">
-          <TopicCover slug="printer" color="#8da486" />
-        </div></HomeObject
-      >
+      {
+        locale === 'en' ? (
+          <EnglishHomeObject client:only="react">
+            <div slot="fallback" class="opening-object home-object-placeholder" aria-hidden="true">
+              <CoverArt>
+                <TopicCover slug="printer" color="#8da486" />
+              </CoverArt>
+            </div>
+          </EnglishHomeObject>
+        ) : (
+          <HomeObject client:only="react">
+            <div slot="fallback" class="opening-object home-object-placeholder" aria-hidden="true">
+              <CoverArt>
+                <TopicCover slug="printer" color="#8da486" />
+              </CoverArt>
+            </div>
+          </HomeObject>
+        )
+      }
     </section>
     <noscript
       ><style is:inline>

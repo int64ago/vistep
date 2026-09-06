@@ -1,5 +1,6 @@
 ---
 import { airfoilStreamlines, solveAirfoil } from '../../models/airfoil';
+import { svgPolyline, thin } from '../../lib/svg-cover';
 interface Props {
   color?: string;
 }
@@ -7,12 +8,12 @@ const { color = '#88aeb0' } = Astro.props;
 const model = solveAirfoil({ angle: 6 });
 const xy = (p: { x: number; y: number }) => ({ x: 201 + 220 * p.x, y: 125 - 220 * p.y });
 const path = (points: { x: number; y: number }[]) =>
-  points
-    .map((p, i) => {
+  svgPolyline(
+    points.map((p) => {
       const v = xy(p);
-      return `${i ? 'L' : 'M'}${v.x.toFixed(2)},${v.y.toFixed(2)}`;
-    })
-    .join(' ');
+      return [v.x, v.y];
+    }),
+  );
 const streams = airfoilStreamlines(model.parameters);
 ---
 
@@ -38,7 +39,7 @@ const streams = airfoilStreamlines(model.parameters);
       streams.map((line, i) => (
         <g>
           <path
-            d={path(line.points)}
+            d={path(thin(line.points, 2))}
             stroke={color}
             stroke-opacity={i === 3 || i === 4 ? '.75' : '.32'}
             stroke-width={i === 3 || i === 4 ? '1.6' : '1'}
