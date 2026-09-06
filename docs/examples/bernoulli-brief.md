@@ -1,5 +1,7 @@
 # Bernoulli · one water path
 
+[简体中文](../zh-CN/examples/bernoulli-brief.md)
+
 ## Direction
 
 The opening asks why a narrow throat carries faster water but a lower pressure column. Follow one material volume, then follow the energy account; do not teach a universal “fast means low pressure” rule. A continuous glass-like Venturi, three connected pressure taps, restrained ochre material bands and pale laboratory paper establish a distinct composition. Original SVG section geometry is more useful here than ornamental 3D: it exposes the complete finite water path, cross-sectional area and pressure connection at once. Both the apparatus and cover derive their sections and material bands from the independent model.

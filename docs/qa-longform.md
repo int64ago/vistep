@@ -2,11 +2,11 @@
 
 [简体中文](zh-CN/qa-longform.md) · [Documentation](README.md)
 
-This review covers the September 2026 revision to directed chapters, narration, language selection and search metadata. Historical review files describe their own releases; they do not certify this revision.
+Historical record: this review covers the original twelve scenes' September 2026 revision to directed chapters, narration, language selection and search metadata. Its counts, timings and checks describe that source snapshot, not the later 62-scene collection. See the [expansion record](expansion-50.md) for the later release and its review limits.
 
 ## What changed
 
-All twelve demonstrations now have 12 chapters, except the Transformer explanation, which has 14. Each chapter pairs a visual observation with bilingual captions and a recorded cue. Generated timings are measured from both audio tracks and constrained to 120–300 seconds. Current durations range from roughly three to four minutes.
+In the reviewed snapshot, the original twelve demonstrations have 12 chapters, except the Transformer explanation, which has 14. Each chapter pairs a visual observation with bilingual captions and a recorded cue. Generated timings are measured from both audio tracks and constrained to 120–300 seconds. The reviewed durations range from roughly three to four minutes.
 
 The visual revision includes printer surface magnification; gearing and pedal-force comparisons; pendulum force and energy views; refrigeration heat balance; cancellation phase, amplitude and delay experiments; satellite geometry comparisons; request-stage playback; JPEG reconstruction errors, chroma samples and coefficient scanning; spatial projections and slices; actual model gradients and weight updates; repeatable elevator journeys; and traffic-density and headway comparisons.
 

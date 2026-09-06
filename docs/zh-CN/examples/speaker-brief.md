@@ -1,5 +1,7 @@
 # 扬声器：电流、运动与空气
 
+[English](../../examples/speaker-brief.md)
+
 完整影片为 187.5 秒，并提供按需展开的自由探索。正式讲解在 `src/data/narration.json`，元数据在 `src/data/topics.ts` 登记。交接时冻结双语口播、字幕、八章划分和导演时间。
 
 ## 核心观察

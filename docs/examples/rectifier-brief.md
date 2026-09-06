@@ -1,5 +1,7 @@
 # Rectifier — production brief
 
+[简体中文](../zh-CN/examples/rectifier-brief.md)
+
 ## Integrated film
 
 The assembled Chinese and English tracks share **199.5 seconds**. The original 176-second storyboard below is the initial handoff; measured speech determines the final windows here. Authored chapter titles, captions and spoken wording are unchanged. Temporary packet paths below refer to the consumed handoff, not a second registry. `src/data/narration.json`, `film-timeline.json`, `audio-tracks.json` and `audio-manifest.json` are canonical.

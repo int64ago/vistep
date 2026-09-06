@@ -27,4 +27,4 @@ vistep 名字和域名标识原项目。MIT 不构成商标背书，也不允许
 
 ## 月面纹理
 
-月相专题使用 [NASA SVS CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/) 的原始 `lroc_color_2k.jpg`（457,942 字节）及 `ldem_3_8bit.jpg`（111,552 字节），存于 `public/textures/moon/`，没有修改或重新压缩。署名：**NASA’s Scientific Visualization Studio**；可视化 Ernie Wright（USRA），科学顾问 Noah Petro（NASA/GSFC），数据来自 LROC WAC 与 LOLA。[NASA SVS 使用政策](https://svs.gsfc.nasa.gov/help/) 说明其内容除另有标注外属于公有领域，此素材包未列单独限制。素材不归入项目 MIT 许可，也不表示 NASA 背书。色彩图面向视觉效果优化，8 位高度图仅提供定性的凹凸细节。文件 SHA-256 见[英文记录](../../THIRD_PARTY_NOTICES.md)。
+月相专题使用 [NASA SVS CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/) 的原始 `lroc_color_2k.jpg`（457,942 字节）及 `ldem_3_8bit.jpg`（111,552 字节），在仓库中分别保存为 [`lroc-color-2k.jpg`](../../public/textures/moon/lroc-color-2k.jpg) 和 [`lola-height-1k.jpg`](../../public/textures/moon/lola-height-1k.jpg)，文件内容没有修改或重新压缩。署名：**NASA’s Scientific Visualization Studio**；可视化 Ernie Wright（USRA），科学顾问 Noah Petro（NASA/GSFC），数据来自 LROC WAC 与 LOLA。[NASA SVS 使用政策](https://svs.gsfc.nasa.gov/help/) 说明其内容除另有标注外属于公有领域，此素材包未列单独限制。素材不归入项目 MIT 许可，也不表示 NASA 背书。色彩图面向视觉效果优化，8 位高度图仅提供定性的凹凸细节。文件 SHA-256 见[英文记录](../../THIRD_PARTY_NOTICES.md)。

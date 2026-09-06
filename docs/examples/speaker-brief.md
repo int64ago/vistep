@@ -1,5 +1,7 @@
 # Speaker — current, motion and air
 
+[简体中文](../zh-CN/examples/speaker-brief.md)
+
 A 187.5-second film and optional experiment. Canonical narration is in `src/data/narration.json`; scene metadata is in `src/data/topics.ts`. Narration, captions, eight chapters and director timing are frozen for handoff.
 
 ## The observation

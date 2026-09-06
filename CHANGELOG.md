@@ -4,7 +4,12 @@
 
 Notable changes are recorded here. Commit history remains the source for individual fixes. The package version is not a promise of a published release; no tagged stable release is documented yet.
 
-## Unreleased
+## Continuous production updates — September 2026
+
+These changes are published through the `main` deployment workflow without a tagged package release. Historical measurements below apply to their individual revisions.
+
+- Expanded the collection from 12 to 62 bilingual explanations; [the expansion record](docs/expansion-50.md) separates publication from the remaining visual, listening and physical-device review.
+- Rebuilt the bicycle and laser-printer covers from their mechanism geometry for both the catalog and social cards.
 
 - Cut the homepage from 3.2 MB to under 0.8 MB by encoding raster covers as PNG, thinning oversampled cover geometry and rounding served coordinates.
 - Stopped shipping the English dictionary to Chinese pages; the experiment chunk shrank from 572 KB to 165 KB.
@@ -17,7 +22,7 @@ Notable changes are recorded here. Commit history remains the source for individ
 - Expanded the scene skill with a requirement coverage map, homepage and showcase workflows, and the current audio policy.
 - Replaced the oversized brand block with an automatic typographic opening that settles into the navigation wordmark.
 
-- Rebuilt all twelve explanations as chaptered 2–5 minute films, with new close observations and controlled comparisons.
+- Rebuilt the original twelve explanations as chaptered 2–5 minute films, with new close observations and controlled comparisons.
 - Replaced unintelligible Chinese recordings and regenerated both languages with measured speech windows and no time stretching.
 - Added seeking, chapter links, deterministic simulation replay and expanded Transformer internals.
 - Added multi-factor default-language negotiation with explicit manual preference storage.

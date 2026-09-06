@@ -2,7 +2,7 @@
 
 [English](../qa-expansion-refinements.md) · [扩展记录](expansion-50.md)
 
-这是 `codex/expand-50` 审看修复的集成记录。第四轮[公开预览](https://vistep-preview.int64ago.workers.dev/)检查点为 `da1ff00`，版本 `88877c76-07a5-4af0-8102-f24f140d0579`。[分支 CI](https://github.com/int64ago/vistep/actions/runs/33986574143) 通过，127 条 HTML 路由、77 项变化资产与站点地图、robots 及两个不存在路径的 404 共 207 项交付检查通过。正式站仍为原有 12 篇。50 个新增专题都有首轮审看报告，6 位子任务继续按独占范围修复和交叉复查。此预览不代表完整验收。
+本文保留 `codex/expand-50` 审看修复的历史集成检查点。第四轮[公开预览](https://vistep-preview.int64ago.workers.dev/)检查点为 `da1ff00`，版本 `88877c76-07a5-4af0-8102-f24f140d0579`。[分支 CI](https://github.com/int64ago/vistep/actions/runs/33986574143) 通过，127 条 HTML 路由、77 项变化资产与站点地图、robots 及两个不存在路径的 404 共 207 项交付检查通过。在该检查点，正式站仍为原有 12 篇，50 个新增专题都有首轮审看报告，6 位子任务继续按独占范围修复和交叉复查。此预览不代表完整验收。后续正式发布与仍缺少的审看证据见[扩展记录](expansion-50.md)。
 
 ## 源码修改
 

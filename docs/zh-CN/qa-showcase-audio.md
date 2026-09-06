@@ -4,6 +4,8 @@
 
 检查日期：2026-09-05，范围为 `57da38e` 之后的本次改动。预览 Worker：`6ba3209d-86fa-479f-9d14-3161da1b4af6`。本记录覆盖 README 动图、共享讲解策略和技能审看，不代表重新检查全部十二篇影片。
 
+本文审看的是早期三种机制的动图。当前已提交的 README 动图包含七种同时运行的机制，尺寸、制作命令及证据边界见[素材说明](../media/vistep-showcase-provenance.md)。下文的尺寸与 Gifsicle 流程只保留为早期导出的历史证据。
+
 ## 原创动图
 
 中英文 README 使用独立 SVG 动画，呈现啮合齿轮、DCT 图像重建和四维立方体投影，直接导入网站的实际模型。旧截图已删除。
@@ -12,7 +14,7 @@
 
 检查了源帧及编码后约 1、7.5、12.5、14.93 秒的文字、构图与对象边界，并在浏览器查看动画播放状态。齿形和螺孔对称性使片尾机械姿态回到片头。完整 GIF 解码无报错。
 
-[render-showcase.mjs](../../scripts/render-showcase.mjs) 保留制作源文件，使用项目 Node 依赖、FFmpeg 7.1 和 Gifsicle 1.93。`VISTEP_FFMPEG` 与 `VISTEP_GIFSICLE` 可指定本机程序；现有配音环境也是 FFmpeg 的备用来源。`--frame <秒数>` 导出单帧，`--keep-frames` 保留中间帧。普通构建不会运行这些素材制作工具。
+当时的 [render-showcase.mjs](../../scripts/render-showcase.mjs) 使用项目 Node 依赖、FFmpeg 7.1 和 Gifsicle 1.93。`VISTEP_FFMPEG` 与 `VISTEP_GIFSICLE` 用于指定本机程序，现有配音环境也是当时 FFmpeg 的备用来源。`--frame <秒数>` 导出单帧，`--keep-frames` 保留中间帧。普通构建不运行这些素材制作工具。
 
 ## 讲解行为
 

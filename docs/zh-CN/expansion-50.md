@@ -4,6 +4,8 @@
 
 本次在 `5b1dca1` 的 12 篇基础上**新增 50 篇**，合集扩展至 **62 篇双语视觉讲解**。[制作清单](../expansion-50.json)保留这 50 个不同选题的登记。
 
+下文历史提交号标识各检查点当时使用的源码。Git 历史后来因 Git LFS 和 agent 署名重写，这些提交号不保证能在新克隆中解析。原提交号、对应 Actions 运行和 Worker 版本作为历史发布证据一并保留，不表示当前分支顶端。
+
 **正式发布 — 2026-09-06：** 62 篇合集通过 `main` 的 [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) 发布至 [vistep.ai](https://vistep.ai/zh/)。发布提交、部署结果及上线检查见该工作流的部署任务与附带记录。
 
 **审看覆盖：** 发布不代表每篇均已完整验收。全合集的连续完整观看、双语原生试听、真机性能，以及更广泛的可访问性与失败场景检查仍未全部覆盖。自动检查、转写和浏览器抽样观察保留各自的证据边界，具体见[修订审看记录](qa-expansion-refinements.md)。

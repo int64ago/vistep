@@ -16,7 +16,7 @@ An optional internal helper creates an unpublished `drafts/<slug>/` workspace:
 pnpm scene:new induction-motor --medium three
 ```
 
-Supported media are `three`, `svg`, `canvas`, `audio` and `hybrid`. Creating a draft does not register a route or complete an explanation.
+Supported media are `three`, `svg`, `canvas`, `audio` and `hybrid`. The helper writes `brief.md`, `storyboard.json`, `narration.json`, `zh.mdx`, `en.mdx`, `review.md` and `integration.md`; it refuses to overwrite an existing draft directory. It creates no model, renderer, recording or public registration. Complete the integration requirements below even when starting from a generated draft.
 
 ## Storyboard before narration
 
@@ -59,38 +59,48 @@ Production uses Microsoft Edge online speech through pinned `edge-tts`; see [pro
 
 Listen to both tracks for intelligibility, technical pronunciation, delivery and synchronization. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, or locally on Apple silicon with `--backend mlx` and the optional `mlx-whisper` package, without a reference prompt or language hint. It can catch wrong-language output, gibberish and truncated endings; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
 
-For a reviewed batch, both narration tools accept several slugs after `--only`. This shares the bounded worker pool and commits measured metadata after the selected recordings finish. One integration owner runs these tools; parallel scene workers do not write shared audio manifests. Cached unchanged tracks keep their original content hashes.
+For a reviewed batch, both narration tools accept several slugs after `--only` and use a bounded worker pool. The generator updates the selected tracks and measured metadata after assembly; the transcription audit writes its report to ignored `artifacts/narration-transcription.json` and does not update the film or audio manifests. One integration owner coordinates these tools; parallel scene workers do not write shared audio manifests or the same audit report. Cached unchanged speech retains its content hashes. Stop cloud transcription when the daily allocation is exhausted; do not upgrade an account to complete an audit.
 
 ## Register the scene
 
-| Integration                          | Required work                                                                                    |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `topics.ts`                          | Unique slug and number, metadata, sources and related links                                      |
-| `discovery-metadata.ts`              | One of the six interest categories, an editorial starting age and Chinese/English search aliases |
-| `experiments.ts`                     | Explicit lazy import                                                                             |
-| Bilingual MDX                        | Complete explanation with `understand`, `try` and `deeper` anchors                               |
-| `en.json`                            | All labels, captions and metadata; preserve interpolation placeholders                           |
-| Narration source and generated files | Both recordings, matching cues and measured timing                                               |
-| Cover artwork                        | A distinct `TopicCover.astro` rendering; selected objects also use `ObjectCover.astro`           |
+| Integration                                                                         | Required work                                                                                                       |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `src/data/topics.ts`                                                                | Unique slug and number, metadata, sources and related links                                                         |
+| `src/data/discovery-metadata.ts`                                                    | One of the six interest categories, a suggested starting age of 8, 10, 12 or 14, and Chinese/English search aliases |
+| `src/data/experiments.ts`                                                           | Explicit lazy import of the experiment component                                                                    |
+| `src/content/<slug>.mdx` and `src/content/en/<slug>.mdx`                            | Complete explanation with `understand`, `try` and `deeper` anchors                                                  |
+| `src/i18n/en.json`                                                                  | All labels, captions and metadata; preserve interpolation placeholders                                              |
+| `src/data/narration.json`, its generated timeline/manifests and `public/narration/` | Both recordings, matching cues and measured timing                                                                  |
+| `src/components/covers/` and `src/components/TopicCover.astro`                      | Original model-derived artwork wired into the catalog; reuse the geometry in other cover formats where needed       |
+
+Load the dictionary through `src/i18n/english.ts` in server-rendered and English client entry points; keep `en.json` out of the shared Chinese client dependency graph. Shared modules must not translate labels at module initialization; translate them when the component renders.
 
 Keep the English and Chinese source catalogs in `docs/catalog.md` and `docs/zh-CN/catalog.md` complete. Use the same discovery categories and measured film durations; the metadata regression checks both catalogs against the registry.
 
-Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Check that new artwork also fits the social card. The registry tests catch missing files; they cannot judge communication quality.
+Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Inspect the actual cover in the 400×230 catalog, applicable homepage fallback and `SocialCard.astro` output; selected object artwork also appears through `ObjectCover.astro` and `CollectionCard.astro`. Check each composition, contact and paper/chain path, including transparency and repeated SVG IDs. The registry tests catch missing files; they cannot judge communication quality.
 
-When parallel production is authorized, assign each worker a distinct scene and file set: its model, renderer, style, bilingual article, brief and cover. Handoffs under `src/data/scene-packets/` contain proposed metadata, translations and narration; they do not register a public route. The integration owner reviews each handoff, resolves shared wording, assigns a number and produces the recordings. The internal packet helper validates without writing by default and refuses conflicting translations or existing recorded topics. Remove consumed handoff packets after integration so the published registries remain the source of truth. Workers must not run global formatting, builds, narration generation or deployments against shared outputs. When sustained parallel production is requested, keep a bounded set of workers active: after a frozen handoff, the integration owner takes over those files and immediately assigns that worker a different reserved subject. Do not leave workers idle while the parent generates recordings or reviews a previous batch. Freeze scripts before synthesis and allow only one narration writer at a time. Build review snapshots with their own installed dependencies; never share node_modules through a symlink.
+When a request adds multiple scenes, agents must proactively use subagents and the available concurrency. Prefer one owner per independent scene, and include its objective, applicable skill, owned files and acceptance requirements in the assignment. Research, model review and visual/interaction review can also run as bounded independent tasks. The main agent coordinates shared files, integrates the work and reviews each scene; a worker's completion report does not replace that review.
+
+Each scene owner works on its model, renderer, style, bilingual article, brief and cover. Handoffs under `src/data/scene-packets/` contain proposed metadata, translations and narration; they do not register a public route. The integration owner reviews each handoff, resolves shared wording, assigns a number and produces the recordings. `node scripts/integrate-scene-packets.mjs <slug> [<slug> ...]` validates without writing; adding `--apply` updates `topics.ts`, `experiments.ts`, `TopicCover.astro`, `en.json` and `narration.json`. It refuses translation conflicts or already registered scenes. It does not add discovery metadata or source catalog entries, generate recordings, run the review or publish. Complete those steps and remove consumed packets so the published registries remain the source of truth.
+
+Workers must not run global formatting, builds, narration generation or deployments against shared outputs. Keep a bounded queue through creation, review and repair: after a frozen handoff, the integration owner takes over those files and assigns the worker another ready, independent task. Freeze scripts before synthesis and allow only one narration writer at a time. Build review snapshots with their own installed dependencies; never share node_modules through a symlink.
 
 ## Review and release
 
-Run `pnpm scene:check`, `pnpm verify` and `pnpm build:preview`. Record the exact version and conditions for these independent reviews:
+For a complete scene, run `pnpm scene:check`, `pnpm verify` and `pnpm build:preview`. The first checks registration, bilingual content and narration contracts; `verify` includes formatting, local documentation links, Astro checks, tests, a production build and its audit. The preview command builds and audits a separate noindex `dist-preview/`. Focused corrections only need the affected checks and assets; do not regenerate unchanged speech. Record the exact version and conditions for these independent reviews:
 
 1. Complete silent playback, pause, replay, all chapter jumps and optional exploration.
 2. Both spoken tracks, including buffering, blocked playback, language switching and offscreen pause.
 3. Key still frames, physical contacts, closed paths, model limits, label alignment and camera framing.
 4. Desktop, 390 px and 320 px layouts; keyboard and touch targets; reduced motion, WebGL failure, Worker failure, deep links and 404.
 
+Test the startup capability gate separately from runtime failures. Missing WebGL 2 or another required capability prevents experiment engines and the homepage object from loading; check the support notice and readable static articles/catalog. After the gate passes, renderer creation or context loss must use the scene's appropriate fallback. A runtime 2D fallback does not establish support for a browser rejected at startup; see [browser support](architecture.md#browser-support).
+
 Body copy is at least 16 px and primary targets at least 44 px. A resized browser is not a real-phone performance test. Keep untested conditions explicit. New findings should improve the workflow, not turn into unrelated checklists.
 
 A handoff includes the actual explanation, preview and review evidence. Finish scientific, visual and narration review before pushing `main`, which automatically publishes production. Follow [deployment](deployment.md) and existing authorization; ordinary contributions do not change domain ownership or repository visibility.
+
+Agent-created or rewritten commits must follow the accurate `Co-Authored-By` trailer requirements in [AGENTS.md](../AGENTS.md), including amend, squash and merge commits. Preserve the original author and valid existing trailers, and inspect the final commit message. See [contributing](../CONTRIBUTING.md#agent-commit-authorship).
 
 Formula markup must match the installed Astro MDX pipeline. Use the existing `formula` blocks and readable inline notation; raw dollar-delimited TeX is not configured and can turn braces into invalid JSX expressions. A standalone MDX compilation does not replace the actual production build.
 

@@ -1,5 +1,7 @@
 # 水锤 · 制作说明
 
+[English](../../examples/water-hammer-brief.md)
+
 ## 画面与叙事
 
 当前录音修订（2026-09-06）：中英文均为 **189.0 秒**。实际章节窗口和审看边界见[修订记录](../qa-expansion-refinements.md)。下文较早的资产名、时间与审看结果属于此前版本。

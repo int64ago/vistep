@@ -10,17 +10,17 @@
 - [架构](architecture.md)：数据流、资源生命周期和模型边界。
 - [语言与 SEO](localization-and-seo.md)：多因子默认语言与自动生成的搜索元数据。
 - [部署](deployment.md)：GitHub Actions、Cloudflare 预览、凭据与回滚。
-- [Search Console](search-console.md)：所有权、sitemap 与索引维护。
+- [Search Console 与访问统计](search-console.md)：所有权、sitemap、索引维护与 Cloudflare 访问报表。
 - [制作复盘](retrospective.md)：问题、根因和后续制作要求。
 - [场景技能](../../.agents/skills/vistep-scene/SKILL.md)：通过自然语言制作专题。
 
-## 当前扩展
+## 扩展发布与审看
 
-- [新增五十个完整专题](expansion-50.md)：目标范围、制作清单及检查证据。
+- [新增五十个完整专题](expansion-50.md)：已发布范围、制作清单及尚未覆盖的审看。
 
 ## 检查记录
 
-记录只对应具体版本与条件，不是对未来改动的保证。旧语音的解码和播放检查未证明中文可理解性，后续发现的问题见复盘。
+记录只对应具体版本与条件，不是对未来改动的保证。旧语音的解码和播放检查未证明中文可理解性，后续发现的问题见复盘。部分历史提交编号早于 Git 历史改写，可能无法在新克隆中解析；原始 Actions 与部署引用的阅读方式见[制作记录](expansion-50.md)。
 
 - [机械细节与自动演示](qa-automatic-demos.md)
 - [初版双语播放](qa-bilingual-narration.md)

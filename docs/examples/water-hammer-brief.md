@@ -1,5 +1,7 @@
 # Water hammer · production brief
 
+[简体中文](../zh-CN/examples/water-hammer-brief.md)
+
 ## Concept and film
 
 Current recording revision (2026-09-06): both tracks run **189.0 seconds**. See [the refinement record](../qa-expansion-refinements.md) for the updated windows and review limits. Earlier recording names, timings and review results below describe the preceding version.

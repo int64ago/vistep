@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/qa-expansion-refinements.md) · [Expansion record](expansion-50.md)
 
-This records review-driven repairs on `codex/expand-50`. The fourth [public preview](https://vistep-preview.int64ago.workers.dev/) checkpoint served `da1ff00`, version `88877c76-07a5-4af0-8102-f24f140d0579`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33986574143) passed. Delivery checks pass for all 127 HTML routes, 77 changed assets/sitemaps, robots and two unknown-path 404s: 207 checks. Production remains on the original 12-scene collection. All 50 additions have an initial review report; six workers continue scoped repairs and cross-review. This preview is not full acceptance.
+This preserves the review-driven repair checkpoints on `codex/expand-50`. The fourth [public preview](https://vistep-preview.int64ago.workers.dev/) checkpoint served `da1ff00`, version `88877c76-07a5-4af0-8102-f24f140d0579`. [Branch CI](https://github.com/int64ago/vistep/actions/runs/33986574143) passed. Delivery checks passed for all 127 HTML routes, 77 changed assets/sitemaps, robots and two unknown-path 404s: 207 checks. At that checkpoint, production contained the original 12 scenes, all 50 additions had an initial review report, and six workers continued scoped repairs and cross-review. This preview was not full acceptance. The later production release and remaining review gaps are recorded in the [expansion record](expansion-50.md).
 
 ## Source changes
 

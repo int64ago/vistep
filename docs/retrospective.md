@@ -4,6 +4,8 @@
 
 The collection began as twelve interactive explanations. Review exposed a gap between feature completeness and explanatory quality: repeated layouts, implausible mechanical details, abrupt interactions, excess text and insufficient direction. The production workflow now treats visual communication as a requirement throughout development.
 
+Historical commit IDs retain the source references recorded at the time. Git LFS and attribution rewrites changed the commit history, so these IDs may not resolve in a fresh clone. Linked Actions runs and Worker versions in the review records remain the historical release references; old review results do not certify the current source.
+
 ## Findings that change the process
 
 | Failure                                              | Cause                                         | Production response                                                                                        |

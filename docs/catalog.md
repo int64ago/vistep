@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-This branch contains 62 explorations, each with Chinese and English articles, a directed film and synchronized recordings. The 50 additions remain under review; inclusion here records source availability, not full acceptance or production release. See the [production record](expansion-50.md) for deployment and review status.
+The collection contains 62 explorations, each with Chinese and English articles, a directed film and synchronized recordings. All 62 are published on the production site. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [production record](expansion-50.md) for deployment and review coverage.
 
 ## Objects & mechanisms
 

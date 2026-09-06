@@ -1,5 +1,7 @@
 # 整流器——制作说明
 
+[English](../../examples/rectifier-brief.md)
+
 ## 集成后的影片
 
 中英文最终录音共用 **199.5 秒**。下文的 176 秒为最初交接的分镜草案；最终窗口由实测录音决定，见下表。章节标题、字幕及讲稿措辞保持不变。下文临时 packet 路径是已消费交接包的历史记录，正式数据以 `src/data/narration.json`、`film-timeline.json`、`audio-tracks.json` 与 `audio-manifest.json` 为准。

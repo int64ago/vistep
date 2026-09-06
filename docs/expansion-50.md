@@ -4,6 +4,8 @@
 
 This release adds **50 scenes** to the 12 in `5b1dca1`, bringing the collection to **62 bilingual visual explanations**. [The ledger](expansion-50.json) records the 50 distinct additions.
 
+Historical commit IDs below identify the source used at each checkpoint. Git history was later rewritten for Git LFS and agent attribution, so those IDs may not resolve in a fresh clone. Keep the original IDs with their linked Actions runs and Worker versions; they are historical release evidence, not references to the current branch tips.
+
 **Production release — 2026-09-06:** the 62-scene collection is published from `main` through [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) to [vistep.ai](https://vistep.ai/en/). The workflow's deployment job and attached record identify the released commit, deployment result and live-site checks.
 
 **Review coverage:** publication does not certify every scene as fully reviewed. Complete continuous viewing, native listening to both languages, physical-phone performance and broader accessibility/failure coverage remain incomplete across the collection. Automated checks, transcription and sampled browser observations retain their stated limits; see the [refinement records](qa-expansion-refinements.md).

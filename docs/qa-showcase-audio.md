@@ -4,6 +4,8 @@
 
 Reviewed 2026-09-05, following `57da38e`. Preview Worker: `6ba3209d-86fa-479f-9d14-3161da1b4af6`. This covers the README artwork, shared narration policy and skill review, not all twelve films again.
 
+This is the review of the earlier three-mechanism artwork. The committed README artwork now contains seven simultaneous mechanisms; its current dimensions, rendering commands and evidence limits are in the [showcase provenance](media/vistep-showcase-provenance.md). The measurements and Gifsicle workflow below remain evidence for the earlier export only.
+
 ## Original artwork
 
 Both READMEs use a new SVG-rendered composition of meshing gears, DCT image reconstruction and a projected four-dimensional cube, importing the site's actual models. The old screenshots were removed.
@@ -12,7 +14,7 @@ The final GIF is 900 × 500, 225 frames, 15 seconds and 4,251,743 bytes, looping
 
 Source and encoded samples near 1, 7.5, 12.5 and 14.93 seconds were inspected for text, framing and object boundaries. Browser snapshots confirmed animated playback. Teeth and bolt symmetry return the closing mechanical pose to the opening. Full GIF decoding completed without errors.
 
-[render-showcase.mjs](../scripts/render-showcase.mjs) retains the reproducible source. It uses project Node dependencies, FFmpeg 7.1 and Gifsicle 1.93. `VISTEP_FFMPEG` and `VISTEP_GIFSICLE` select local executables; the existing voice environment provides an FFmpeg fallback. `--frame <seconds>` exports a still; `--keep-frames` retains intermediate frames. Ordinary builds do not run these production tools.
+The reviewed revision of [render-showcase.mjs](../scripts/render-showcase.mjs) used project Node dependencies, FFmpeg 7.1 and Gifsicle 1.93. `VISTEP_FFMPEG` and `VISTEP_GIFSICLE` selected local executables; the existing voice environment provided an FFmpeg fallback. `--frame <seconds>` exported a still; `--keep-frames` retained intermediate frames. Ordinary builds did not run these production tools.
 
 ## Narration behavior
 

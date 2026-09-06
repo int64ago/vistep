@@ -2,7 +2,7 @@
 
 [简体中文](../zh-CN/examples/planetary-brief.md)
 
-Status: integrated on the expansion branch, with two 174.5-second recordings; review is in progress. Part of the [50-scene expansion](../expansion-50.md).
+Published as part of the [50-scene expansion](../expansion-50.md), with two 174.5-second recordings. The review notes below describe production checkpoints; publication does not certify complete viewing, listening or physical-device acceptance.
 
 The initial question is how a compact gearset can change speed and direction without swapping gears. Track one marked planet, its axle and a tooth on the sun. Distinguish the planet's spin from its orbit, then change which member is held stationary.
 

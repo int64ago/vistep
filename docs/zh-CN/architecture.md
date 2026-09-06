@@ -15,7 +15,7 @@ src/data/films.ts ──→ Showcase 时间线 ───────────
 音轨清单 + 静态 MP3 ──→ useNarration 音频时钟 ────────↑
 ```
 
-没有访客端服务器计算、账号或在线 AI 推理。首页只加载品牌与首页器物；实验引擎按需进入专题。新增内容先在 `drafts/` 创作，登记完整后才生成公开页面。
+没有访客端服务器计算、账号或在线 AI 推理。首页只加载品牌与首页器物；实验引擎按需进入专题。`drafts/` 是 `pnpm scene:new` 创建的可选工作目录，不是制作场景的前置要求，也不会自动生成公开页面；仍需完成登记与内容集成。
 
 ## 关键文件
 
@@ -27,6 +27,7 @@ src/data/films.ts ──→ Showcase 时间线 ───────────
 | `src/components/DiscoveryCatalog.astro`、`src/lib/discovery.ts`           | 静态完整目录、渐进增强搜索筛选、URL 条件与返回位置恢复           |
 | `src/data/experiments.ts`                                                 | 只登记动态加载器，不执行场景引擎                                 |
 | `src/i18n/english.ts`、`src/components/english/`                          | 登记英文词典；只有英文页面的岛屿与服务端引入，中文页面不下载     |
+| `src/components/covers/`、`TopicCover.astro`、`ObjectCover.astro`         | 目录、首页后备视图和分享图复用的场景封面；各入口选择适合的构图   |
 | `src/components/CoverArt.astro`、`src/lib/svg-cover.ts`                   | 封面几何输出前按亚像素精度取整；栅格封面由 `src/lib/png.ts` 编码 |
 | `src/components/experiments/`                                             | 各篇独立构图、自动演示状态映射与操作                             |
 | `src/components/three/`                                                   | 程序化部件、灯光、镜头、2D 降级与生命周期                        |
@@ -41,15 +42,19 @@ src/data/films.ts ──→ Showcase 时间线 ───────────
 
 主线时长为 2–5 分钟，按章节相对时间安排观察、局部镜头和对照实验。跳转时以固定步长重建有历史的模拟；Transformer Worker 重建指定训练进度，生成阶段冻结权重。完整录音清单留在制作侧，客户端只加载精简时间线与音轨信息。语言选择与搜索元数据见[语言与 SEO](localization-and-seo.md)。
 
-讲解默认开启，有声播放时读取音频时间。用户手动开关保存在 localStorage，并兼容旧会话的明确选择；存储不可用时仍默认请求讲解。暂停、缓冲、离屏、后台和探索模式同步处理。浏览器拒绝自动播放时（微信等内置浏览器一定会），舞台上会出现一条醒目的提示，点一下即从当前位置开始讲解；静音演示继续推进，关掉提示后保留一行状态说明。声音加载失败时静音演示继续并提供重试入口。语言路径互相对应，切换保留锚点。
+讲解默认开启，有声播放时读取音频时间。用户手动开关保存在 localStorage，并兼容旧会话的明确选择；存储不可用时仍默认请求讲解。暂停、缓冲、离屏、后台和探索模式同步处理。浏览器拒绝自动播放时，舞台上会出现一条醒目的提示，点一下即从当前位置开始讲解；静音演示继续推进，关掉提示后保留一行状态说明。声音加载失败时静音演示继续并提供重试入口。语言路径互相对应，切换保留锚点。
 
 Three.js 生命周期负责释放几何、材质、纹理、渲染器与控制器；切换二维或离页不得遗留上下文。Worker 与音频随专题销毁。桌面约 60fps、移动端 30fps 是调度上限，实际性能需要注明硬件实测。
 
 ## 浏览器支持
 
-基线是 Chrome 108、Edge 108、Firefox 121、Safari 15.4，由页面真实用到的能力决定：Three.js 需要 WebGL 2，版式用到 `:has()` 与 `svh` 单位，模型用到 `structuredClone` 与 `Array.prototype.findLast`，Transformer 用 Worker，声音实验用 Web Audio。样式刻意不用 `color-mix()` 和容器查询，模型不用 ES2023 数组方法，以保住 Safari 15.4（iPhone 6s/7 这一代的最后版本）；Vite 构建目标锁定为同一组版本。`src/lib/browser-support.ts` 在首屏绘制前用内联脚本逐项探测。任何一项不满足，页面只显示一条提示，列出缺少的能力和基线版本，不加载实验与首页器物；不为不支持的浏览器做降级。受支持浏览器内的运行时故障（WebGL 上下文丢失、音频被拦截、Worker 崩溃）仍各自给出提示。
+配置的基线是 Chrome 108、Edge 108、Firefox 121、Safari 15.4。Vite 构建目标与 `src/lib/browser-support.ts` 的 `BROWSER_BASELINE` 使用同一组版本。启动时的内联检查探测 ES modules、`findLast`、`structuredClone`、尺寸与可见性观察器、Worker、Web Audio、CSS `:has()`、`svh`、`aspect-ratio` 和 WebGL 2。任一项不满足时显示缺失能力提示，停止加载实验引擎与首页器物；静态文章和目录仍然可读。
+
+能力门禁不能代替完整的浏览器兼容性或真机性能检查。模型使用 `findLast`，播放器使用 `findLastIndex`，品牌动画的颜色插值使用 `color-mix()`，不能据此声称项目完全避开较新的 JavaScript 或 CSS 功能。新增 API 时重新核对最低版本。通过门禁后发生的 WebGL 不可用、音频被拦截或 Worker 错误，按相应场景提供降级视图或重试入口。
 
 ## 教学模型的范围
+
+下表概括最初十二篇的模型边界。[完整目录](catalog.md)链接全部登记专题，每篇文章分别维护其模型范围与来源。
 
 | 专题        | 当前模型与限制                                                                                                              |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -70,6 +75,6 @@ Three.js 生命周期负责释放几何、材质、纹理、渲染器与控制�
 
 ## 构建与发布
 
-`pnpm build` 生成生产 `dist/`；`pnpm build:preview` 生成独立 `dist-preview/`，附加 `X-Robots-Tag: noindex, nofollow`。两者都保留 `vistep.ai` 的规范网址。预览允许爬虫读取 noindex，不在 robots 中宣传 sitemap。CI 检查不生成语音、不需要外部服务凭据；配音 MP3 是 Git LFS 对象，Actions 按对象清单缓存，只有录音变化时才消耗 LFS 带宽。原仓库 `main` 检查通过后，将同一次运行的生产产物交给独立发布任务，使用 GitHub `production` 环境凭据部署 Cloudflare，随后校验线上页面与资源。详见 [自动发布与回滚](deployment.md)。
+`pnpm build` 生成生产 `dist/`；`pnpm build:preview` 生成独立 `dist-preview/`，附加 `X-Robots-Tag: noindex, nofollow`。两者都保留 `vistep.ai` 的规范网址。预览允许爬虫读取 noindex，不在 robots 中宣传 sitemap。CI 检查不生成语音、不需要外部服务凭据；配音 MP3 是 Git LFS 对象，Actions 按对象清单缓存。即使录音未改，缓存未命中时也需要下载缺失对象。原仓库 `main` 检查通过后，将同一次运行的生产产物交给独立发布任务，使用 GitHub `production` 环境凭据部署 Cloudflare，随后校验线上页面与资源。详见 [自动发布与回滚](deployment.md)。
 
 共享检查包含静态类型、模型不变量、语言覆盖、登记关系、配音文件与片段时序、产物内链、规范网址、sitemap 和索引策略。浏览器视觉与声音验收见 [场景手册](creating-a-scene.md)。

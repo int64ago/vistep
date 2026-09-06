@@ -19,6 +19,8 @@
 
 新增或大幅修改专题时，使用仓库技能 `.agents/skills/vistep-scene/SKILL.md`，制作步骤见 `docs/creating-a-scene.md`，历史反馈与根因见 `docs/retrospective.md`。用户用自然语言描述选题即可；技能负责完整制作，不把填草稿、选技术或执行命令交回用户。`pnpm scene:new <slug> --medium <three|svg|canvas|audio|hybrid>` 是技能内部可选的草稿辅助工具；`pnpm scene:check` 检查登记、双语和声音契约。复用流程和基础设施，每篇保留独立表达形式。
 
+多场景协作：一次新增多个场景时，必须主动使用 subagent，优先按场景分配独立负责人，充分利用可用并发能力，让能够独立推进的场景并行制作。派发时明确场景目标、适用技能、负责文件与验收要求；资料核查、科学模型审查和视觉／交互复核也可拆成独立子任务并行推进。主 agent 负责整体规划、共享文件的改动协调、集成与逐篇验收，避免多个 agent 同时覆盖同一文件；不能将 subagent 的完成声明代替实际审看与验证。
+
 交付前执行与改动对应的检查；完整场景执行 `pnpm verify` 和 `pnpm build:preview`。视觉停帧、完整观看、配音试听、真机性能与自动测试分别记录，不得把一类证据当成另一类。生产和预览资产分别在 `dist/`、`dist-preview/`，后者带 noindex；不要改变正式域名或仓库可见性来完成普通内容贡献。
 
 提交署名：每次由 agent 创建或修改（包括 amend、squash、合并生成）的 Git 提交，提交说明末尾必须带标准 `Co-Authored-By: 名称 <邮箱>` trailer，与正文之间空一行。署名使用实际参与工作的 agent／模型的准确名称和对应邮箱，不得猜测型号、只写含糊的 `GPT`，或照抄其他 agent 的历史署名。GPT-6 Astra 使用 `Co-Authored-By: GPT-6 Astra <noreply@openai.com>`；Claude 使用实际 Claude 型号及 `<noreply@anthropic.com>`。有多个实际贡献者时分别列出，并保留已有的正确署名及原作者信息。提交后检查最终 commit message，确认署名完整、准确且没有重复。

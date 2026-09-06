@@ -2,54 +2,43 @@
 
 [English](../search-console.md) · [中文文档](README.md)
 
-## 接入状态（2026-09-05）
+## 属性与所有权
 
-- 属性：`sc-domain:vistep.ai`，覆盖该域名及其协议、子域名。
-- 已通过 Cloudflare 根域 TXT 完成域名所有权验证；Google 页面显示 **Ownership verified**，CLI 返回 **siteOwner**。
-- 只新增 `google-site-verification=…` TXT，保留现有 `vistep.ai` 和 `www.vistep.ai` Worker 绑定。不要删除此 TXT；Google 会持续检查所有权。
-- 管理入口：[vistep.ai Search Console](https://search.google.com/search-console?resource_id=sc-domain%3Avistep.ai)。
-- 新版正式站已上线，索引地图与子地图均返回正确 XML，页面数量随专题与语言入口自动更新。
-- 已于 `2026-09-05T08:06:10.481Z` 提交 `https://vistep.ai/sitemap-index.xml`。提交后列表可查，初始状态为 `isPending: true`、0 errors、0 warnings，等待 Google 处理。
+`sc-domain:vistep.ai` 覆盖该域名的协议和子域名。2026-09-05 通过 Cloudflare 根域 TXT 完成所有权验证，2026-09-06 本机 CLI 复核权限为 **siteOwner**。保留验证 TXT，Google 会重新检查。现有 Worker 和域名绑定不变。
 
-正式发布前的首页 URL 检查返回 `URL is unknown to Google`。现在地图已提交，但提交成功不代表页面已收录，也不保证排名。新属性没有数据属于可能的正常状态，后续以 Google 的抓取和索引报告为准。
+管理入口：[vistep.ai Search Console](https://search.google.com/search-console?resource_id=sc-domain%3Avistep.ai)。`https://vistep.ai/sitemap-index.xml` 于 `2026-09-05T08:06:10.481Z` 提交。2026-09-06 检查返回 `isPending: false`、0 errors、0 warnings，`lastDownloaded: 2026-09-06T05:21:37.344Z`。地图已读取，初始 pending 属于历史状态。地图接受成功和发现的 URL 数量不代表页面已收录或获得排名；收录情况要看 URL 检查和页面索引报告。
 
-## 本机命令
+## 搜索数据与全站访问
 
-维护使用 [google-search-console-cli](https://github.com/Bin-Huang/google-search-console-cli)。凭据保存在本机工具配置或 `GOOGLE_APPLICATION_CREDENTIALS` 指向的位置，不进入此仓库、构建或 CI。
+Search Console 记录 Google 搜索曝光、点击、查询词与索引情况，不统计所有到站访客；通过 DNS 验证的属性无需浏览器跟踪脚本。访问次数、页面浏览、来源和国家请查看已接入的 [Cloudflare Web Analytics](deployment.md#访问统计与搜索)。统计脚本由 Cloudflare 注入正式响应，不能用仓库源码没有 beacon 判断统计未启用。
+
+搜索报告不是实时访问日志。Google 说明，新站或新添加属性最多可能需要一周显示数据，已采集数据通常延后两至三天可见。所选时间范围过短或尚未完整、没有搜索活动、确有索引问题是不同情况；先检查报告日期和页面状态，再判断原因。标记为不完整的查询结果可能继续变化。不能仅凭 sitemap 的 `indexed` 计数断言全站都未收录。
+
+## 本机维护
+
+使用 [google-search-console-cli](https://github.com/Bin-Huang/google-search-console-cli)。凭据保存在本机工具配置或 `GOOGLE_APPLICATION_CREDENTIALS` 指向的位置，不进入仓库、构建产物或 CI。
 
 ```sh
 google-search-console-cli site sc-domain:vistep.ai
 google-search-console-cli sitemaps sc-domain:vistep.ai
-google-search-console-cli inspect sc-domain:vistep.ai https://vistep.ai/
+google-search-console-cli inspect sc-domain:vistep.ai https://vistep.ai/en/
+google-search-console-cli inspect sc-domain:vistep.ai https://vistep.ai/zh/
 ```
 
-添加属性不等于验证所有权。本次现有 OAuth 凭据可访问 Search Console，但没有 Site Verification API 的授权范围，因此通过已经登录的 Google 页面取得 TXT，并在 Cloudflare 页面新增记录后完成验证。无需把验证接口权限扩大到日常工具，也无需在网站上增加访客跟踪脚本。
+添加属性和验证所有权是两个动作。原有 OAuth 可访问 Search Console，但没有 Site Verification API 的授权范围；所有权验证通过已登录 Google 页面和 Cloudflare DNS 完成。无需访客跟踪脚本，也无需扩大日常 CLI 的权限。
 
-## 后续发布与地图维护
+## 发布后的检查
 
-1. 按 [部署手册](deployment.md) 发布确认过的版本，并记录回滚 ID。
-2. 检查 `https://vistep.ai/sitemap-index.xml` 与它引用的子地图都返回 200、XML 内容；检查 `robots.txt` 为纯文本规则，没有误混入 HTML。
-3. 验证地图中的中文、英文页面均可直接访问，规范网址指向自身，语言替代链接成对存在。生产响应不得带 `noindex`；未知地址应为真实 404。
-4. 稳定地图已经提交后无需每次推送重复提交；地址改变或需要修复登记时：
+检查线上 sitemap index 与引用的 XML、纯文本 robots.txt、中英文路由、canonical / alternate 链接、索引响应头和真实 404。构建审计不能代替线上 HTTP 检查；Cloudflare 可能在 robots.txt 前附加托管规则。
+
+稳定 sitemap 已提交后无需每次推送重复提交，Astro 会随专题变化重新生成。地址改变或需要修复登记时执行：
 
 ```sh
 google-search-console-cli sitemap-submit sc-domain:vistep.ai https://vistep.ai/sitemap-index.xml
-google-search-console-cli sitemaps sc-domain:vistep.ai
 ```
 
-5. 在 URL 检查中抽查首页和至少一对中英文专题，查看抓取与规范网址结果。Google 的索引数据可能延后，不将一次提交成功写成“已全部收录”。
+抽查首页和至少一对中英文专题，先查看索引排除、抓取失败和规范网址冲突，再解释曝光与点击率。URL 检查的存储结果描述 Google 索引记录，并非即时抓取。`URL is unknown to Google` 表示 Google 尚未见过该 URL；其他未收录状态需要看具体原因。即使实时可用性测试通过，也不保证收录。一次 API 成功不能证明所有页面已收录。
 
-构建时的 `pnpm audit:build` 会检查页面与地图、内链、规范网址和语言替代链接；不能替代上线后的 HTTP 响应检查。Cloudflare 可能在 robots.txt 前附加托管规则，因此还要检查最终线上响应。
+预览设置 noindex，不向 Google 提交。参见[语言与搜索](localization-and-seo.md)和[部署手册](deployment.md)。
 
-## 预览与日常维护
-
-`pnpm build:preview` 输出到 `dist-preview/`，所有路径附 `X-Robots-Tag: noindex, nofollow`，保留生产规范网址，不在 robots 中宣传地图。允许爬虫访问，以便读到 noindex 响应头。预览 URL 只用于审看，不提交到此域名属性。
-
-新增场景上线后，Astro 自动重建 sitemap，无需为每个 URL 再创建属性。日常查看页面索引错误、抓取异常、规范网址冲突和移动端 Core Web Vitals；有数据后再分析查询词和点击率。不要因短期无流量随意改动 URL 或删除内容。
-
-## 官方依据
-
-- [Google：域名所有权验证](https://support.google.com/webmasters/answer/9008080)
-- [Search Console API：添加属性](https://developers.google.com/webmaster-tools/v1/sites/add)
-- [Search Console API：提交 sitemap](https://developers.google.com/webmaster-tools/v1/sitemaps/submit)
-- [Google：使用 noindex 阻止索引](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
+依据：[所有权验证](https://support.google.com/webmasters/answer/9008080)、[Search Console 数据与延迟](https://support.google.com/webmasters/answer/96568)、[sitemap 报告含义](https://support.google.com/webmasters/answer/7451001)、[URL 检查](https://support.google.com/webmasters/answer/9012289)、[提交 sitemap](https://developers.google.com/webmaster-tools/v1/sitemaps/submit)、[noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing)。
