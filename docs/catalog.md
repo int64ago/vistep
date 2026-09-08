@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 63 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow; the excavator is included in this release. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [collection expansion record](expansion-50.md) for its deployment history and the [excavator review](qa-excavator.md) for this scene’s evidence and remaining gaps.
+The collection contains 64 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow; double-slit interference is included in this release. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [collection expansion record](expansion-50.md) for its deployment history and the [double-slit review](qa-double-slit.md) for this scene’s evidence and remaining gaps.
 
 ## Objects & mechanisms
 
@@ -27,6 +27,7 @@ The collection contains 63 explorations, each with Chinese and English articles,
 
 | Exploration                                                   | Film | Question                                                  |
 | ------------------------------------------------------------- | ---- | --------------------------------------------------------- |
+| [Double-slit interference](../src/content/en/double-slit.mdx) | 2:48 | Why does a second slit make some places darker?           |
 | [Speaker](../src/content/en/speaker.mdx)                      | 3:07 | How does a speaker turn current into sound?               |
 | [Active noise control](../src/content/en/noise.mdx)           | 3:11 | Can adding sound make things quieter?                     |
 | [Camera lenses](../src/content/en/camera-lens.mdx)            | 2:40 | How does light become an image?                           |

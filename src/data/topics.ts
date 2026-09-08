@@ -14,6 +14,33 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'double-slit',
+    name: '双缝干涉',
+    title: '多开一道缝，为什么反而更暗？',
+    question: '多开一道缝，为什么反而更暗？',
+    description: '跟住屏幕上的一个点，从两路光程差走到亮暗条纹，再看单次探测如何积累成图。',
+    category: '空间与波动',
+    duration: '3 分钟',
+    color: '#85d8cd',
+    number: '64',
+    tag: '光 · 相位',
+    related: ['diffraction', 'wave-interference', 'polarization'],
+    sources: [
+      {
+        title: 'OpenStax University Physics, Volume 3, 4.3 — Double-Slit Diffraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/4-3-double-slit-diffraction',
+      },
+      {
+        title: 'Feynman Lectures, Volume III, Chapter 1 — Quantum Behavior',
+        url: 'https://www.feynmanlectures.caltech.edu/III_01.html',
+      },
+      {
+        title: 'Richard Fitzpatrick, UT Austin — Two-Slit Interference',
+        url: 'https://farside.ph.utexas.edu/teaching/315/Waves/node91.html',
+      },
+    ],
+  },
+  {
     slug: 'excavator',
     name: '挖掘机',
     title: '一股油，怎样举起一斗土？',

@@ -1,0 +1,72 @@
+<h2 id="understand">Why can another slit make parts of the screen darker?</h2>
+
+One open slit produces a broad band of light. Open an identical second slit and the centre brightens, but dark fringes now divide the band. Both openings contribute an electric field. At certain places, those contributions add to zero.
+
+Follow a point P on the screen. At the centre, the two paths have equal lengths and the fields rise and fall together. Move P away and a **path difference** develops. Half a wavelength of extra path puts equal fields in opposition: they cancel at every instant. At a full wavelength of difference, they agree in phase again and P becomes bright.
+
+The arrows represent **complex field amplitudes**. Length records amplitude; direction records phase. Add them end to end, then square the magnitude of the result to find relative intensity. The screen measures the time average of the total electric field squared, so adding the two separately measured intensities would miss the interference. [UT Austin’s derivation](https://farside.ph.utexas.edu/teaching/315/Waves/node91.html) connects path difference, phase and intensity.
+
+The pattern has two scales. **Slit separation d**, measured between the centres, mainly sets the fine fringe spacing. **Slit width a** sets the broad diffraction envelope around those fringes. The envelope appears because contributions from different positions within each opening must also add.
+
+<h2 id="try">Hold one condition steady while changing another</h2>
+
+- Start with wavelength 550 nm, separation 180 μm, width 35 μm and screen distance 1 m. Move P along the screen. At about **1.53 mm** from the centre, half a wavelength of path difference gives a dark fringe. At about **3.06 mm**, the fields agree again, though the envelope makes this position dimmer than the centre.
+- Increase only the separation from 120 μm to 300 μm. The small-angle fringe spacing decreases from about **4.58 mm to 1.83 mm**. Pulling the slit centres apart brings the fringes together.
+- Restore 180 μm separation and increase the wavelength from 450 nm to 650 nm. The spacing grows from about **2.50 mm to 3.61 mm**: a longer wavelength needs more path difference for the same phase change.
+- Restore 550 nm and widen each slit from 20 μm to 70 μm. The fine spacing stays almost unchanged while the envelope narrows. Its first zero moves from about **27.51 mm to 7.86 mm** from the centre, entering the displayed screen.
+- Watch individual detections accumulate in the final chapter. Small samples fluctuate; larger samples approach the specified distribution. Each dot marks an arrival, without identifying a slit or drawing a route through it.
+
+<h2 id="deeper">Putting both fields into one calculation</h2>
+
+<details>
+<summary>Why add before squaring?</summary>
+
+For two fields with the same frequency and polarization, the instantaneous total is `E₁(t) + E₂(t)`. Intensity is proportional to its time-averaged square:
+
+<div className="formula">I ∝ ⟨[E₁(t) + E₂(t)]²⟩</div>
+
+Expanding this square introduces a cross term, `2⟨E₁E₂⟩`, alongside the two individual contributions. Its sign depends on phase, making the result larger or smaller than the sum of the separate intensities. With complex amplitudes `e₁` and `e₂` measured in units of the single-slit central field amplitude:
+
+<div className="formula">I / I₀ = |e₁ + e₂|²</div>
+
+`I₀` is the **central intensity of one open slit at the current width**. Illumination and scale stay fixed when the second identical slit opens: the central amplitude doubles and relative intensity rises from 1 to 4. Different line colours identify the contributions; the actual light has the same wavelength and polarization. The arrows are neither photon coordinates nor forces. Optical oscillations and propagation cues are slowed enormously for inspection.
+
+Reference: [OpenStax on single-slit field and intensity](https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction).
+
+</details>
+
+<details>
+<summary>How does the diffraction envelope enter the formula?</summary>
+
+Let `y = 0` be the screen centre, `L` the screen distance and `θ = atan(y/L)` the observation angle. In the far-field approximation, the path difference between the slit centres is `δ ≈ d sin θ`. Define:
+
+<div className="formula">β = πa sin θ / λ　　φ = 2πd sin θ / λ</div>
+
+Each uniformly illuminated rectangular slit contributes a normalized amplitude `sinc β = sin β / β`, with limiting value 1 at `β = 0`. For two identical slits illuminated in phase:
+
+<div className="formula">I / I₀ = 4 · sinc² β · cos²(φ/2)</div>
+
+The upper envelope is `4 sinc² β`; the fine interference factor is `cos²(φ/2)`. Fields agree in phase where `d sin θ = mλ` and cancel where `d sin θ = (m + 1/2)λ`, for integer `m`. Envelope zeros satisfy `a sin θ = nλ`, with nonzero integer `n`. An order disappears when an in-phase position coincides with an envelope zero. The envelope’s slope also shifts local intensity peaks slightly away from the in-phase positions.
+
+At small angles, successive in-phase positions are separated by approximately `Δy ≈ λL/d`, while the first envelope zero lies at `|y₁| ≈ λL/a`. Millimetre positions use `y = L tan θ`. The drawn paths have adjusted proportions and cannot be measured in pixels to obtain a path difference.
+
+Changing slit width changes the reference `I₀` too: this comparison shows **normalized pattern shapes**. Neither a relative-intensity curve nor a fixed number of dots within a limited screen measures total transmitted light.
+
+References: [OpenStax on finite-width double slits and missing orders](https://openstax.org/books/university-physics-volume-3/pages/4-3-double-slit-diffraction), [William & Mary’s double-slit and single-photon laboratory guide](https://saaubi.people.wm.edu/TeachingWebPages/Physics251_Fall2024/Week10/single-photon-interference.pdf).
+
+</details>
+
+<details>
+<summary>What do the individual dots establish?</summary>
+
+This scene first calculates a classical optical field. In an ideal single-photon experiment with coherent alternatives through the slits, no distinguishable path information and uniform detection efficiency, the normalized intensity of the same spatial mode gives the probability density of arrival positions. Quantum mechanics adds probability amplitudes and takes their absolute square. A classical field drawing and sampled dots do not establish a definite trajectory for any photon. [Feynman’s quantum-behaviour lecture](https://www.feynmanlectures.caltech.edu/III_01.html) explains the probability rule.
+
+The sampling here normalizes intensity over the **displayed screen only**. For a region B within that screen:
+
+<div className="formula">P(B | arrival within screen) = ∫ᴮ I(y) dy / ∫screen I(y) dy</div>
+
+Dots are drawn from this distribution. They visualize a theoretical probability, rather than experimental data, and do not predict missed light outside the screen, emission rate or detector noise. Finite-sample fluctuations do not mean the underlying fringes have moved.
+
+The model is one-dimensional scalar Fraunhofer diffraction: an approximately monochromatic plane wave in air, normally incident on identical, uniformly illuminated long rectangular slits with matching polarization and coherence. Finite slit height, thickness, material boundaries, near-field propagation and imperfect coherence are omitted. The final chapter does not add path-measuring equipment or solve a measurement process. Display colours indicate wavelength; they are not a spectral measurement.
+
+</details>

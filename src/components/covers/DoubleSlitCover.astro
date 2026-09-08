@@ -1,0 +1,72 @@
+---
+import { doubleSlitCover, doubleSlitCoverPath as path } from '../../models/double-slit-cover';
+const cover = doubleSlitCover();
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#0b1c2b"></rect>
+  <path d="M0 186L400 157V230H0Z" fill="#102535"></path>
+  <path d="M28 207L373 179" stroke="#2d4855" stroke-opacity=".5"></path>
+  <ellipse cx="108" cy="195" rx="28" ry="7" fill="#06121c" fill-opacity=".7"></ellipse>
+  <path d="M312 192L357 177L371 184L326 201Z" fill="#06121c" fill-opacity=".7"></path>
+  {
+    [44, 59, 74, 89].map((x, i) => (
+      <path
+        d={`M${x} 64V166`}
+        stroke="#9bcdbb"
+        stroke-width="1.3"
+        stroke-opacity={0.16 + i * 0.065}
+      />
+    ))
+  }
+  {
+    cover.fronts.map((front) => (
+      <path d={path(front.points)} stroke="#a0d4b5" stroke-width="1.05" stroke-opacity=".26" />
+    ))
+  }
+  {
+    cover.openings.map((opening) => (
+      <path
+        d={`M${opening.x} ${opening.y}L${cover.target.x} ${cover.target.y}`}
+        stroke="#d3edba"
+        stroke-width="1.05"
+        stroke-opacity=".58"
+      />
+    ))
+  }
+  {
+    cover.segments.map(({ top, bottom }) => (
+      <g>
+        <path d={`M98 ${top - 5}L105 ${top}V${bottom}L98 ${bottom - 5}Z`} fill="#182e40" />
+        <path d={`M98 ${top - 5}H112L119 ${top}H105Z`} fill="#48626a" />
+        <path d={`M105 ${top}H119V${bottom}H105Z`} fill="#2c4655" />
+        <path d={`M119 ${top}V${bottom}`} stroke="#647f83" stroke-width=".75" stroke-opacity=".6" />
+      </g>
+    ))
+  }
+  {
+    cover.openings.map((opening) => (
+      <g>
+        <path
+          d={`M105 ${opening.y}H${opening.x}`}
+          stroke="#c9edb5"
+          stroke-width="1.7"
+          stroke-opacity=".85"
+        />
+        <path
+          d={`M116 ${opening.y - opening.height / 2}H119M116 ${opening.y + opening.height / 2}H119`}
+          stroke="#b2d8b3"
+          stroke-width=".8"
+        />
+      </g>
+    ))
+  }
+  <path d="M102 187H122L130 193H96Z" fill="#263d4c"></path>
+  <path d="M314 42L356 28L360 31V176L317 191L314 188Z" fill="#263d4b"></path>
+  <path d={path(cover.screen, true)} fill="#06121b"></path>
+  <g shape-rendering="crispEdges">
+    {cover.rows.map((row) => <path d={path(row.polygon, true)} fill={row.fill} />)}
+  </g>
+  <path d="M357 31V176L318 189" stroke="#68818b" stroke-opacity=".55" stroke-width="1.15"></path>
+  <path d="M323 187V195L353 185V177" stroke="#334d5b" stroke-width="3"></path>
+</svg>

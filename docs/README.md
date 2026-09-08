@@ -20,6 +20,7 @@
 
 Records describe particular revisions and conditions. They are not guarantees for later changes. Historical speech transport checks did not establish Chinese intelligibility; see the retrospective. Some recorded commit IDs predate history rewrites and may not resolve in a fresh clone; the [production record](expansion-50.md) explains how to read the original Actions and deployment references.
 
+- [Double-slit review](qa-double-slit.md): optical fields, diffraction, deterministic detections and browser evidence.
 - [Excavator review](qa-excavator.md): hydraulic and linkage checks, browser review, and evidence limits.
 - [Mechanical detail and automatic demonstrations](qa-automatic-demos.md)
 - [Initial bilingual playback](qa-bilingual-narration.md)

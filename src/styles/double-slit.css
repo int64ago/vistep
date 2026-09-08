@@ -1,0 +1,190 @@
+.ds-study {
+  --ds-ink: #d9e7ec;
+  --ds-muted: #a0b7c3;
+  background: radial-gradient(ellipse at 30% 8%, #203d4d 0, #102b3a 45%, #0b1c29 100%);
+  color: var(--ds-ink);
+  border-radius: 24px;
+  padding: 24px 28px 20px;
+  overflow: hidden;
+}
+.ds-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.ds-heading > span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--ds-muted);
+}
+.ds-heading > b {
+  font-size: 16px;
+  font-weight: 500;
+}
+.ds-optics {
+  min-width: 0;
+  width: 100%;
+  margin-top: 14px;
+}
+.ds-instrument {
+  display: block;
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+}
+.ds-instrument text {
+  fill: var(--ds-ink);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+.ds-instrument text[fill='#8de4d2'] {
+  fill: #8de4d2;
+}
+.ds-instrument text[fill='#c7b5f2'] {
+  fill: #c7b5f2;
+}
+.ds-instrument text[fill='#f3d18c'] {
+  fill: #f3d18c;
+}
+.ds-instrument .ds-muted {
+  fill: var(--ds-muted);
+}
+.ds-reading {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid #b7d1dc22;
+  font-size: 16px;
+}
+.ds-reading > span {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.ds-reading b {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #f1dfba;
+}
+.ds-scale {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ds-muted);
+  text-align: center;
+  margin: 10px 0 0;
+}
+.ds-controls {
+  border-top: 1px solid #b7d1dc22;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+.ds-controls .segmented {
+  width: 100%;
+  grid-column: 1/-1;
+  background: #102b39;
+  border-color: #b7d1dc22;
+}
+.ds-controls .segmented button {
+  color: #d9e7ec;
+  min-height: 44px;
+  font-size: 16px;
+}
+.ds-controls .segment-selection {
+  background: #365b69;
+}
+.ds-controls .control {
+  color: #d9e7ec;
+}
+.ds-controls .control-top {
+  font-size: 16px;
+}
+.ds-controls .control output {
+  color: #f1dfba;
+  font-size: 16px;
+}
+.ds-controls input[type='range'] {
+  --range-color: #8fc4ca;
+  --range-rest: #42606e;
+  min-height: 44px;
+}
+.ds-reset {
+  justify-self: start;
+  color: #e4eff1;
+  border: 1px solid #77939f;
+  border-radius: 12px;
+  padding: 10px 18px;
+  background: #183846;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.ds-reset:hover {
+  background: #2b5060;
+}
+.ds-notes {
+  grid-column: 1/-1;
+  color: #b8cbd4;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.ds-notes summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.ds-notes p {
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .ds-study {
+    padding: 18px 12px 16px;
+    border-radius: 20px;
+  }
+  .ds-heading {
+    align-items: flex-start;
+  }
+  .ds-heading > span {
+    font-size: 10px;
+    max-width: 86px;
+    line-height: 1.5;
+  }
+  .ds-heading > b {
+    text-align: end;
+    font-size: 16px;
+  }
+  .ds-optics {
+    margin-top: 18px;
+  }
+  .ds-reading {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .ds-reading > span {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 16px;
+  }
+  .ds-reading b {
+    font-size: 18px;
+  }
+  .ds-scale {
+    text-align: start;
+    font-size: 16px;
+  }
+  .ds-controls {
+    grid-template-columns: 1fr;
+  }
+  .ds-controls .segmented button {
+    padding: 9px 10px;
+  }
+}

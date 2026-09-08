@@ -1,5 +1,6 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  'double-slit': () => import('../components/experiments/DoubleSlit'),
   tides: () => import('../components/experiments/Tides'),
   zipper: () => import('../components/experiments/Zipper'),
   'packet-routing': () => import('../components/experiments/PacketRouting'),

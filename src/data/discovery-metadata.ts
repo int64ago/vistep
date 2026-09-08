@@ -60,6 +60,24 @@ export type DiscoveryMetadata = {
 };
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  'double-slit': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['双缝干涉', '杨氏双缝', '光程差', '相位', '亮暗条纹', '光子', '单光子', '衍射包络'],
+      en: [
+        'Double-slit interference',
+        'double slit',
+        'Young experiment',
+        'interference fringes',
+        'path difference',
+        'phase',
+        'photon',
+        'single photon',
+        'diffraction envelope',
+      ],
+    },
+  },
   tides: {
     category: 'nature',
     minAge: 12,
