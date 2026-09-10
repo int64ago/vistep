@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 64 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow; double-slit interference is included in this release. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [collection expansion record](expansion-50.md) for its deployment history and the [double-slit review](qa-double-slit.md) for this scene’s evidence and remaining gaps.
+The collection contains 65 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow; NFC is included in this release. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. See the [collection expansion record](expansion-50.md) for its deployment history and the [NFC review](qa-nfc.md) for this scene’s evidence and remaining gaps.
 
 ## Objects & mechanisms
 
@@ -45,6 +45,7 @@ The collection contains 64 explorations, each with Chinese and English articles,
 
 | Exploration                                                          | Film | Question                                              |
 | -------------------------------------------------------------------- | ---- | ----------------------------------------------------- |
+| [NFC](../src/content/en/nfc.mdx)                                     | 2:48 | How does a tag answer without a battery?              |
 | [Refrigeration](../src/content/en/refrigerator.mdx)                  | 3:10 | Where does the heat in a fridge go?                   |
 | [Electrical transformer](../src/content/en/transformer-electric.mdx) | 3:34 | The wires never meet. How does voltage cross?         |
 | [Electric generator](../src/content/en/electric-generator.mdx)       | 3:27 | Why does a turning loop generate electricity?         |

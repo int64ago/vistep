@@ -1,0 +1,56 @@
+<h2 id="understand">How does a tag answer without a battery?</h2>
+
+A thin NFC tag can be little more than a coil and a chip. Bring a reader close, and the tag receives the energy it needs to operate. Follow a **passive tag in reader/writer mode** to separate two questions: how does power reach the tag, and how does its reply return? NFC also supports other arrangements, including phones emulating contactless cards. Not every NFC device is a battery-free tag. The [NFC Forum technology overview](https://nfc-forum.org/learn/nfc-technology/) distinguishes these modes.
+
+Alternating current in the reader coil produces a changing magnetic field. Changing magnetic flux through the tag coil induces a voltage. Inside the tag, rectification and regulation produce a usable supply, while stored energy helps bridge brief interruptions. The carrier frequency is **13.56 MHz**, or 13.56 million complete cycles each second; the film slows it dramatically. The [NXP NTAG21x data sheet](https://www.nxp.com/docs/en/data-sheet/NTAG213_215_216.pdf) lists the rectifier, demodulator and power-on reset found in a real tag.
+
+To ask a question, the reader changes the carrier envelope according to an encoding rule. To answer, the tag switches its electrical load while the reader continues to provide the carrier. Mutual coupling makes that load change affect the reader's current, where it can be detected. This is **load modulation**. Energy mainly travels from reader to passive tag, while data can travel in either direction in turn. [TI's NFC/RFID explanation](https://www.ti.com/document-viewer/lit/html/SSZTCT7/GUID-956584C2-772D-4CBA-B5F0-8D661F90763F) describes this sequence.
+
+<h2 id="try">Keep the tag, change one condition</h2>
+
+- Watch the supply chapter. Induced voltage changes sign; rectified voltage keeps one polarity. The capacitor buffers the supply. The chip needs power before it can process the message.
+- Pause at a load transition and compare the switch, tag current and reader current. The tag controls a load; it does not create energy from nothing.
+- Follow `10110010` from the chip's switching pattern to the reader's detected signal. The sequence runs in time order. It is an illustrative sequence, not a payment command or a key.
+- Keep the coils parallel and increase their gap. Watch coupling, power and the reply. Restore the gap, then change the tag's tilt. During a tilt, the model lifts the tag's centre to preserve clearance beneath its lowest point and keep the objects apart.
+- Distinguish a powered chip from a detectable reply. Both conditions must hold before the teaching model reports a readable tag; a glowing chip alone cannot establish successful communication.
+
+<h2 id="deeper">How can the same coils carry energy and information?</h2>
+
+<details>
+<summary>How does mutual inductance connect the circuits?</summary>
+
+Let `M` be the coils' mutual inductance. For fixed geometry, reader current `i₁` produces the following induced electromotive force at the tag:
+
+<div className="formula">e₂ = −M · di₁/dt</div>
+
+The magnetic flux must change. A static magnetic field cannot sustain this induced voltage. Geometry, position, orientation and surrounding materials affect `M`. The magnitude of the coupling coefficient is `|k| = |M|/√(L₁L₂)`. The flux-linkage and induced-voltage curves come from the same phasor solution; no electron path across the air gap is assigned. [NXP's antenna design explanation](https://community.nxp.com/t5/NXP-Designs-Knowledge-Base/Design-your-NFC-Antenna-with-NXP-s-OM29263ADK-development-kit/ta-p/1122234) connects coil geometry to coupling and induced voltage.
+
+For sinusoidal steady state, let `ω = 2πf` and let `Z₂` include the full impedance of the tag's closed secondary loop. The impedance reflected into the reader is:
+
+<div className="formula">Zreflected = (ωM)² / Z₂</div>
+
+Switching the load changes `Z₂`, which changes the reader's input impedance and current. The scene solves the same coupled circuit for both load states. Its reply is derived from that change. Matching and resonance also matter: moving closer does not guarantee that delivered power rises monotonically over every possible setting.
+
+</details>
+
+<details>
+<summary>Which parts of real NFC-A coding are shown?</summary>
+
+The example uses a short NFC-A signal at about **106 kbit/s**. Reader transmission uses 100% amplitude-shift keying: short carrier pauses are positioned by Modified Miller coding. The tag's response uses Manchester coding to place a subcarrier burst in one half of each bit. In this example, a 1 has the burst in its first half; a 0 has it in its second half.
+
+The subcarrier runs at `13.56 MHz / 16 = 847.5 kHz`. One bit lasts `128 / 13.56 MHz ≈ 9.44 μs`, spanning eight subcarrier cycles. Rapid load switching creates that subcarrier; it is not a separate powerful transmission from the tag. [ST TN1216's NFC-A section](https://www.st.com/resource/en/technical_note/dm00190233-st25-nfc-guide-stmicroelectronics.pdf) describes the signaling in both directions.
+
+The film preserves these coding relationships while expanding time and using ideal edges. It omits complete frames, parity, CRC, anticollision, selection and application protocols. The illustrated sequence is not a complete real-world tag read.
+
+</details>
+
+<details>
+<summary>Can the readable/unreadable indicator predict my phone?</summary>
+
+No. The model calculates mutual inductance using equivalent circular loops in air and solves a linear sinusoidal circuit. An effective resistance and a fixed conversion efficiency represent chip power harvesting. A separate ideal full-wave and capacitor illustration explains the supply function; it is not a transient simulation of an actual chip's rectifier, limiter and regulator.
+
+Power and reply-detection thresholds are teaching settings, not NFC certification limits or a universal maximum phone range. Metals, ferrites, parasitics, matching, temperature and receiver noise affect hardware and are not all simulated here. The [TI antenna design guide](https://www.ti.com/lit/an/sloa241b/sloa241b.pdf) calls for measurement and tuning with the final enclosure and nearby materials.
+
+Short range alone does not guarantee security. Reading data does not by itself authenticate an identity or complete a payment; those require the relevant credentials, protocols and application processing. This scene explains the passive tag's physical power and signal link.
+
+</details>

@@ -14,6 +14,39 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'nfc',
+    name: 'NFC',
+    title: '没有电池，标签怎么回话？',
+    question: '没有电池，标签怎么回话？',
+    description: '跟着标签线圈取得能量，再看芯片怎样切换负载，让读卡器听见同一个场里的回答。',
+    category: '电与磁',
+    duration: '3 分钟',
+    color: '#76c8bb',
+    number: '65',
+    tag: '互感 · 通信',
+    related: ['wireless-charging', 'transformer-electric', 'rectifier'],
+    sources: [
+      {
+        title: 'NFC Forum — NFC Technology: operating modes and energy transfer',
+        url: 'https://nfc-forum.org/learn/nfc-technology/',
+      },
+      {
+        title:
+          'STMicroelectronics — TN1216, ST25 NFC guide: inductive coupling, load modulation and NFC-A signaling',
+        url: 'https://www.st.com/resource/en/technical_note/dm00190233-st25-nfc-guide-stmicroelectronics.pdf',
+      },
+      {
+        title: 'NXP — NTAG213/215/216 data sheet: passive tag RF interface and contactless power',
+        url: 'https://www.nxp.com/docs/en/data-sheet/NTAG213_215_216.pdf',
+      },
+      {
+        title:
+          'Texas Instruments — TRF79xxA Antenna Design Guide: antenna placement, tuning and material limits',
+        url: 'https://www.ti.com/lit/an/sloa241b/sloa241b.pdf',
+      },
+    ],
+  },
+  {
     slug: 'double-slit',
     name: '双缝干涉',
     title: '多开一道缝，为什么反而更暗？',

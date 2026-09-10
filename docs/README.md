@@ -7,6 +7,7 @@
 - [Exploration catalog](catalog.md): every registered topic, film duration and article source.
 - [Fifty additional explorations](expansion-50.md): published scope, production ledger and remaining review coverage.
 - [Production guide](creating-a-scene.md): research, direction, models, bilingual narration and review.
+- [NFC example](examples/nfc-brief.md): passive power, coupled circuits and load-modulated replies.
 - [Excavator example](examples/excavator-brief.md): hydraulic flow, rigid linkage geometry and teaching limits.
 - [Bicycle example](examples/bicycle-brief.md): connect a storyboard to geometry and evidence.
 - [Architecture](architecture.md): data flow, resource lifecycle and model boundaries.
@@ -20,6 +21,7 @@
 
 Records describe particular revisions and conditions. They are not guarantees for later changes. Historical speech transport checks did not establish Chinese intelligibility; see the retrospective. Some recorded commit IDs predate history rewrites and may not resolve in a fresh clone; the [production record](expansion-50.md) explains how to read the original Actions and deployment references.
 
+- [NFC review](qa-nfc.md): coupled circuits, signal decoding, physical geometry and separate review evidence.
 - [Double-slit review](qa-double-slit.md): optical fields, diffraction, deterministic detections and browser evidence.
 - [Excavator review](qa-excavator.md): hydraulic and linkage checks, browser review, and evidence limits.
 - [Mechanical detail and automatic demonstrations](qa-automatic-demos.md)

@@ -60,6 +60,36 @@ export type DiscoveryMetadata = {
 };
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  nfc: {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: [
+        'NFC',
+        '近场通信',
+        '碰一碰',
+        '刷卡',
+        '无源标签',
+        '被动标签',
+        '负载调制',
+        '互感',
+        '读卡器',
+        '感应供电',
+      ],
+      en: [
+        'NFC',
+        'near-field communication',
+        'tap',
+        'contactless card',
+        'passive tag',
+        'battery-free tag',
+        'load modulation',
+        'mutual inductance',
+        'NFC reader',
+        'inductive power',
+      ],
+    },
+  },
   'double-slit': {
     category: 'light-sound',
     minAge: 12,

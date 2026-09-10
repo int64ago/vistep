@@ -1,0 +1,21 @@
+---
+import { nfcCover } from '../../models/nfc-cover';
+const cover = nfcCover();
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f3ede2"></rect>
+  {
+    cover.paths.map(({ d, fill, stroke, width, opacity }) => (
+      <path
+        d={d}
+        fill={fill}
+        stroke={stroke}
+        stroke-width={width}
+        opacity={opacity}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    ))
+  }
+</svg>

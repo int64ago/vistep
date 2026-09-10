@@ -7050,5 +7050,94 @@
         "en": "Now record individual arrivals. A few dots look scattered; many gradually reveal the fringes. For an ideal single-photon experiment with coherent alternatives through the slits, this intensity pattern gives the detection probability after normalization. These dots sample that probability. They record arrival positions without assigning a photon a definite route."
       }
     ]
+  },
+  "nfc": {
+    "duration": 168.0,
+    "cues": [
+      {
+        "id": "nfc-01",
+        "title": "没有电池，也能回应",
+        "titleEn": "An answer without a battery",
+        "caption": "先从场里取得能量，再借同一个场回答。",
+        "captionEn": "The reader's field carries both power and a reply.",
+        "zh": "这张标签没有电池。读卡器靠近，芯片却醒了过来。它先从读卡器的场里取得能量，再借同一个场回答。我们跟着标签上的这一圈导线，拆开这次看似瞬间完成的对话。",
+        "en": "This tag has no battery. Yet bring a reader close, and its chip wakes up. First it takes energy from the reader's field. Then it uses that same field to answer. Follow the tag's coil as we open up this brief exchange.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "nfc-02",
+        "title": "变化的磁通，感应出电压",
+        "titleEn": "Changing flux induces a voltage",
+        "caption": "穿过标签线圈的磁通在变，交流电压随之产生。",
+        "captionEn": "Changing flux through the tag coil induces an alternating voltage.",
+        "zh": "读卡线圈里的电流不断换向，周围的磁场也跟着变化。真实电流每秒完成一千三百五十六万次完整振荡，画面已大幅放慢。变化的磁通穿过标签线圈，在线圈两端感应出交流电压。",
+        "en": "The reader's coil carries an alternating current, creating a changing magnetic field. In reality, it completes thirteen point five six million cycles each second. We have slowed it down. Changing magnetic flux through the tag's coil induces an alternating voltage.",
+        "seconds": 24,
+        "chapterAt": 24.0,
+        "at": 24.45
+      },
+      {
+        "id": "nfc-03",
+        "title": "把交流变成芯片的电源",
+        "titleEn": "Turn the induced voltage into a supply",
+        "caption": "整流统一极性，储能电容缓冲供电波动。",
+        "captionEn": "Rectification and stored energy provide the chip's supply.",
+        "zh": "芯片需要更稳定的电源。看这幅整流示意：它把两种方向的输入变成同一极性的输出，再由储能电容缓冲波动。只有供电足够，标签才能处理指令。这里展示功能，真实芯片的电路会更复杂。",
+        "en": "The chip needs a steadier supply. In this rectifier illustration, both input polarities become one output polarity. A storage capacitor smooths the supply. With enough power, the tag can process a command. This shows the function; the circuit inside a real chip is more complex.",
+        "seconds": 24,
+        "chapterAt": 48.0,
+        "at": 48.45
+      },
+      {
+        "id": "nfc-04",
+        "title": "读卡器把问题放进包络",
+        "titleEn": "The reader asks through the envelope",
+        "caption": "读卡器短暂改变载波幅度，标签识别编码。",
+        "captionEn": "Brief carrier-amplitude changes encode the reader's question.",
+        "zh": "读卡器开始发问了。快速振荡的载波里，出现一串短暂停顿。暂停的位置按照编码规则安排，标签从包络中识别这些变化。这里放大一小段信号，看信息怎样搭上供能的通道，并没有重演完整的通信协议。",
+        "en": "Now the reader asks a question. The rapidly oscillating carrier contains a pattern of brief pauses. Their positions follow an encoding rule. The tag detects those changes in the envelope. We have enlarged a short signal segment to show information riding on the power link, rather than a complete protocol exchange.",
+        "seconds": 24,
+        "chapterAt": 72.0,
+        "at": 72.45
+      },
+      {
+        "id": "nfc-05",
+        "title": "切换负载，就是回答",
+        "titleEn": "Answer by switching a load",
+        "caption": "标签改变负载，读卡线圈也能察觉变化。",
+        "captionEn": "A load change at the tag also changes the reader's current.",
+        "zh": "轮到标签回答。看这个开关：它接入、断开一份负载，改变标签线圈的电流。互感也把这点变化带回读卡线圈。读卡器检测它，就能接收回答。这叫负载调制，标签不用另造一个强载波。",
+        "en": "To answer, the tag switches an extra load in and out. That changes the current in its coil. Through mutual coupling, the change also appears at the reader's coil. The reader detects it as a reply. This is load modulation; the tag needs no separate strong carrier.",
+        "seconds": 24,
+        "chapterAt": 96.0,
+        "at": 96.45
+      },
+      {
+        "id": "nfc-06",
+        "title": "跟住同一串比特",
+        "titleEn": "Follow the same bits",
+        "caption": "开关节奏变成电流变化，再还原成同一串比特。",
+        "captionEn": "Switching becomes current changes, then the same bits again.",
+        "zh": "跟住这串比特。每一位决定哪半段出现快速的负载切换，读卡器的电流也留下对应的细纹。接收端识别这些节奏，再还原出原来的序列。读卡器一直提供载波，而回答的信息来自标签对负载的控制。",
+        "en": "Follow this sequence of bits. Each bit selects which half contains a burst of rapid load switching. Matching ripples appear in the reader's current. The receiver recognizes the pattern and recovers the original sequence. The reader still supplies the carrier; the tag supplies the information by controlling its load.",
+        "seconds": 24,
+        "chapterAt": 120.0,
+        "at": 120.45
+      },
+      {
+        "id": "nfc-07",
+        "title": "为什么要靠近、对准",
+        "titleEn": "Why closeness and alignment matter",
+        "caption": "供电和回传都依赖耦合；靠近后，还要对准。",
+        "captionEn": "Both power and the reply depend on useful coil coupling.",
+        "zh": "先把间隙拉大。耦合减弱，拉得足够远，供电和回应都不足以维持通信。移回来，再把标签转一转：朝向也会影响耦合。重新靠近、对准，对话恢复。读取成功本身不代表身份已验证，也不代表支付完成。",
+        "en": "First increase the gap. Coupling weakens, and far enough away, power and the reply become insufficient. Bring the tag back, then turn it: orientation matters too. Closeness and alignment restore the exchange. A successful read alone does not prove identity or complete a payment.",
+        "seconds": 24,
+        "chapterAt": 144.0,
+        "at": 144.45
+      }
+    ]
   }
 }
