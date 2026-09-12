@@ -1,0 +1,221 @@
+.ab-study {
+  --ab-ink: #f1e6d6;
+  --ab-muted: #b9a693;
+  --ab-line: #5a4636;
+  background: radial-gradient(ellipse at 30% 10%, #3a2318 0, #24140e 45%, #150c09 100%);
+  color: var(--ab-ink);
+  border-radius: 24px;
+  padding: 24px 28px 20px;
+  overflow: hidden;
+}
+.ab-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.ab-heading > span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--ab-muted);
+}
+.ab-heading > b {
+  font-size: 16px;
+  font-weight: 500;
+}
+.ab-stage {
+  min-width: 0;
+  width: 100%;
+  margin-top: 14px;
+}
+.ab-instrument {
+  display: block;
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+}
+.ab-instrument text {
+  fill: var(--ab-ink);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+.ab-instrument text[fill='#fff4de'] {
+  fill: #fff4de;
+}
+.ab-instrument text[fill='#f5b054'] {
+  fill: #f5b054;
+}
+.ab-instrument text[fill='#e8734a'] {
+  fill: #e8734a;
+}
+.ab-instrument text[fill='#8fc4e8'] {
+  fill: #8fc4e8;
+}
+.ab-instrument text[fill='#b9a693'] {
+  fill: #b9a693;
+}
+.ab-instrument .ab-muted {
+  fill: var(--ab-muted);
+}
+.ab-sphere {
+  position: relative;
+  width: 100%;
+}
+.ab-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+.ab-gauge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ab-reading {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid #d9c3a822;
+  font-size: 16px;
+}
+.ab-reading > span {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.ab-reading b {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #ffe1b0;
+}
+.ab-context {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ab-muted);
+  text-align: center;
+  margin: 10px 0 0;
+}
+.ab-controls {
+  border-top: 1px solid #d9c3a822;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+.ab-controls .segmented {
+  width: 100%;
+  grid-column: 1/-1;
+  background: #2a1810;
+  border-color: #d9c3a822;
+}
+.ab-controls .segmented button {
+  color: var(--ab-ink);
+  min-height: 44px;
+  font-size: 16px;
+}
+.ab-controls .segment-selection {
+  background: #6a4127;
+}
+.ab-controls .control {
+  color: var(--ab-ink);
+}
+.ab-controls .control-top {
+  font-size: 16px;
+}
+.ab-controls .control output {
+  color: #ffe1b0;
+  font-size: 16px;
+}
+.ab-controls .control small {
+  color: var(--ab-muted);
+  font-size: 16px;
+}
+.ab-controls input[type='range'] {
+  --range-color: #f5b054;
+  --range-rest: #5a4636;
+  min-height: 44px;
+}
+.ab-button {
+  justify-self: start;
+  color: var(--ab-ink);
+  border: 1px solid #9a7b63;
+  border-radius: 12px;
+  padding: 10px 18px;
+  background: #3a2318;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.ab-button:hover {
+  background: #55321f;
+}
+.ab-notes {
+  grid-column: 1/-1;
+  color: #d9c9b6;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.ab-notes summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.ab-notes p {
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .ab-study {
+    padding: 18px 12px 16px;
+    border-radius: 20px;
+  }
+  .ab-heading {
+    align-items: flex-start;
+  }
+  .ab-heading > span {
+    font-size: 10px;
+    max-width: 86px;
+    line-height: 1.5;
+  }
+  .ab-heading > b {
+    text-align: end;
+    font-size: 16px;
+  }
+  .ab-stage {
+    margin-top: 16px;
+  }
+  .ab-reading {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .ab-reading > span {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 10px;
+    font-size: 16px;
+  }
+  .ab-reading b {
+    font-size: 18px;
+    white-space: normal;
+  }
+  .ab-context {
+    text-align: start;
+    font-size: 16px;
+  }
+  .ab-controls {
+    grid-template-columns: 1fr;
+  }
+  .ab-controls .segmented button {
+    padding: 9px 8px;
+  }
+}

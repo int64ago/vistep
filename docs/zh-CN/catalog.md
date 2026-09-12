@@ -2,7 +2,7 @@
 
 [English](../catalog.md) · [文档首页](README.md)
 
-当前合集登记 65 个专题，每篇均有中英文文章、自动影片和同步录音；正式站通过 `main` 部署流程发布，NFC 包含在本次发布中。逐篇完整观看、双语试听和真机审看仍未全部覆盖；发布不代表已全部验收。合集部署历史见[扩展记录](expansion-50.md)，本篇证据与剩余缺口见[NFC 审看记录](qa-nfc.md)。
+当前合集登记 67 个专题，每篇均有中英文文章、自动影片和同步录音；正式站通过 `main` 部署流程发布，原子弹与氢弹两篇包含在本次发布中。逐篇完整观看、双语试听和真机审看仍未全部覆盖；发布不代表已全部验收。合集部署历史见[扩展记录](expansion-50.md)，本篇证据与剩余缺口见[NFC 审看记录](qa-nfc.md)。
 
 ## 器物与机械
 
@@ -43,19 +43,21 @@
 
 ## 电与能量
 
-| 专题                                                 | 影片 | 核心问题                       |
-| ---------------------------------------------------- | ---- | ------------------------------ |
-| [NFC](../../src/content/nfc.mdx)                     | 2:48 | 没有电池，标签怎么回话？       |
-| [冰箱制冷](../../src/content/refrigerator.mdx)       | 3:10 | 冰箱里的热，都去了哪里？       |
-| [变压器](../../src/content/transformer-electric.mdx) | 3:34 | 铜线没有相连，电压怎样传过去？ |
-| [发电机](../../src/content/electric-generator.mdx)   | 3:27 | 转动一圈铜线，为什么会发电？   |
-| [感应电动机](../../src/content/induction-motor.mdx)  | 3:04 | 感应电动机：为什么总要慢半步？ |
-| [无线充电](../../src/content/wireless-charging.mdx)  | 3:09 | 无线充电：电能怎样跨过间隙？   |
-| [降压变换器](../../src/content/buck-converter.mdx)   | 3:16 | 脉冲怎样变成平稳的低电压？     |
-| [电磁炉](../../src/content/induction-cooktop.mdx)    | 3:13 | 热为什么先出现在锅底？         |
-| [整流器](../../src/content/rectifier.mdx)            | 3:19 | 交流换向，负载为什么不换向？   |
-| [太阳能电池](../../src/content/solar-cell.mdx)       | 3:19 | 阳光怎样走完一条电路？         |
-| [锂离子电池](../../src/content/lithium-battery.mdx)  | 3:06 | 电池充电时，究竟存进了什么？   |
+| 专题                                                 | 影片 | 核心问题                                 |
+| ---------------------------------------------------- | ---- | ---------------------------------------- |
+| [原子弹](../../src/content/atomic-bomb.mdx)          | 4:03 | 一块铀，为什么超过某个大小就会自己炸开？ |
+| [氢弹](../../src/content/hydrogen-bomb.mdx)          | 3:30 | 为什么点燃聚变，需要先引爆一颗原子弹？   |
+| [NFC](../../src/content/nfc.mdx)                     | 2:48 | 没有电池，标签怎么回话？                 |
+| [冰箱制冷](../../src/content/refrigerator.mdx)       | 3:10 | 冰箱里的热，都去了哪里？                 |
+| [变压器](../../src/content/transformer-electric.mdx) | 3:34 | 铜线没有相连，电压怎样传过去？           |
+| [发电机](../../src/content/electric-generator.mdx)   | 3:27 | 转动一圈铜线，为什么会发电？             |
+| [感应电动机](../../src/content/induction-motor.mdx)  | 3:04 | 感应电动机：为什么总要慢半步？           |
+| [无线充电](../../src/content/wireless-charging.mdx)  | 3:09 | 无线充电：电能怎样跨过间隙？             |
+| [降压变换器](../../src/content/buck-converter.mdx)   | 3:16 | 脉冲怎样变成平稳的低电压？               |
+| [电磁炉](../../src/content/induction-cooktop.mdx)    | 3:13 | 热为什么先出现在锅底？                   |
+| [整流器](../../src/content/rectifier.mdx)            | 3:19 | 交流换向，负载为什么不换向？             |
+| [太阳能电池](../../src/content/solar-cell.mdx)       | 3:19 | 阳光怎样走完一条电路？                   |
+| [锂离子电池](../../src/content/lithium-battery.mdx)  | 3:06 | 电池充电时，究竟存进了什么？             |
 
 ## 数字与计算
 

@@ -1,0 +1,244 @@
+.hb-study {
+  --hb-ink: #ecebff;
+  --hb-muted: #a9a6d6;
+  --hb-hot: #fff1d6;
+  --hb-line: #b7b3ff22;
+  background:
+    radial-gradient(ellipse at 22% 6%, #3a2f7a 0, transparent 50%),
+    radial-gradient(ellipse at 84% 92%, #4a1f5c 0, transparent 46%),
+    linear-gradient(180deg, #171538 0, #100e2c 100%);
+  color: var(--hb-ink);
+  border-radius: 24px;
+  padding: 24px 28px 20px;
+  overflow: hidden;
+}
+.hb-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.hb-heading > span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--hb-muted);
+}
+.hb-heading > b {
+  font-size: 16px;
+  font-weight: 500;
+}
+.hb-stage {
+  min-width: 0;
+  width: 100%;
+  margin-top: 14px;
+}
+.hb-instrument {
+  display: block;
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+}
+.hb-instrument text {
+  fill: var(--hb-ink);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+}
+.hb-instrument text[fill='#8fd3ff'] {
+  fill: #8fd3ff;
+}
+.hb-instrument text[fill='#f7a1dc'] {
+  fill: #f7a1dc;
+}
+.hb-instrument text[fill='#ffd27a'] {
+  fill: #ffd27a;
+}
+.hb-instrument text[fill='#fff1d6'] {
+  fill: #fff1d6;
+}
+.hb-instrument text[fill='#f2f4ff'] {
+  fill: #f2f4ff;
+}
+.hb-instrument text[fill='#c7b5ff'] {
+  fill: #c7b5ff;
+}
+.hb-instrument text[fill='#c9a8ff'] {
+  fill: #c9a8ff;
+}
+.hb-instrument text[fill='#d6d0ff'] {
+  fill: #d6d0ff;
+}
+.hb-instrument text[fill='#b9b3ff'] {
+  fill: #b9b3ff;
+}
+.hb-instrument .hb-muted {
+  fill: var(--hb-muted);
+}
+.hb-instrument circle,
+.hb-instrument path,
+.hb-instrument rect {
+  transition:
+    opacity 0.45s ease,
+    fill 0.45s ease;
+}
+.hb-reading {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid var(--hb-line);
+  font-size: 16px;
+}
+.hb-reading > span {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.hb-reading b {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--hb-hot);
+}
+.hb-context {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--hb-muted);
+  text-align: center;
+  margin: 10px 0 0;
+}
+.hb-controls {
+  border-top: 1px solid var(--hb-line);
+  margin-top: 20px;
+  padding-top: 20px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+.hb-controls .segmented {
+  width: 100%;
+  grid-column: 1/-1;
+  background: #1b1840;
+  border-color: var(--hb-line);
+}
+.hb-controls .segmented button {
+  color: var(--hb-ink);
+  min-height: 44px;
+  font-size: 16px;
+}
+.hb-controls .segment-selection {
+  background: #4a3f8f;
+}
+.hb-controls .control {
+  color: var(--hb-ink);
+}
+.hb-controls .control-top {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hb-controls .control output {
+  color: var(--hb-hot);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+.hb-controls input[type='range'] {
+  --range-color: #f7a1dc;
+  --range-rest: #3b3775;
+  min-height: 44px;
+}
+.hb-reset {
+  justify-self: start;
+  color: var(--hb-ink);
+  border: 1px solid #6f68b8;
+  border-radius: 12px;
+  padding: 10px 18px;
+  background: #241f55;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.hb-reset:hover {
+  background: #352d78;
+}
+.hb-notes {
+  grid-column: 1/-1;
+  color: #c4c0ea;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.hb-notes summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.hb-notes p {
+  font-size: 16px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hb-instrument circle,
+  .hb-instrument path,
+  .hb-instrument rect {
+    transition: none;
+  }
+}
+@media (max-width: 600px) {
+  .hb-study {
+    padding: 18px 12px 16px;
+    border-radius: 20px;
+  }
+  .hb-heading {
+    align-items: flex-start;
+  }
+  .hb-heading > span {
+    font-size: 10px;
+    max-width: 110px;
+    line-height: 1.5;
+  }
+  .hb-heading > b {
+    text-align: end;
+    font-size: 16px;
+  }
+  .hb-stage {
+    margin-top: 16px;
+  }
+  .hb-reading {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .hb-reading > span {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 16px;
+  }
+  .hb-reading b {
+    font-size: 18px;
+  }
+  .hb-context {
+    text-align: start;
+  }
+  .hb-controls {
+    grid-template-columns: 1fr;
+  }
+  .hb-controls .segmented button {
+    padding: 9px 8px;
+  }
+}
+.hb-footnote {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--hb-muted);
+  margin: 6px 0 4px;
+}
+.hb-instrument text.hb-halo {
+  paint-order: stroke;
+  stroke: #15132f;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}

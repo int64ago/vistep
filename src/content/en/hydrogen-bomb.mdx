@@ -1,0 +1,71 @@
+<h2 id="understand">Joining two light nuclei releases energy, so why do they refuse to meet?</h2>
+
+A deuterium nucleus and a tritium nucleus each carry one positive charge. As they approach, the Coulomb force pushes them apart. Only at a contact distance of about 3 fm does the short-range nuclear force take over and pull both into a much deeper energy well. The hill in the instrument is that road: a gentle slope on the right, steeper as the nuclei get closer, a summit near **0.44 MeV**, and the nuclear well behind it.
+
+Follow the tritium nucleus. A 3000 K flame gives it about 0.4 eV of kinetic energy, and it is turned back millions of femtometres away. The Sun's core, near 15 million K, lets it climb to a little over seven hundred femtometres. At more than a hundred million kelvin, about 10 keV, it still stops at roughly a hundred femtometres, two orders of magnitude short of contact. Classically, no attempt reaches the summit.
+
+What makes the reaction possible is **tunnelling**. Even without the energy to cross the barrier, a nucleus has a small probability of passing straight through it. That probability rises steeply with energy, roughly as `exp(−√(E_G/E))`, with a Gamow energy `E_G ≈ 1.18 MeV` for D–T. It is about 1.4×10⁻⁴ at 15 keV and about 2×10⁻³ at 30 keV.
+
+Why does energy appear once they join? Look at the left side of the binding-energy curve. Helium-4 holds about 7.07 MeV per nucleon, far more than deuterium's 1.11 MeV or tritium's 2.83 MeV. D + T → ⁴He + n releases **17.59 MeV**: the neutron carries 14.05 MeV and the helium nucleus 3.54 MeV. Per nucleon that is about 3.5 MeV, more than four times the roughly 0.85 MeV per nucleon of uranium fission.
+
+<h2 id="try">Change one condition and watch the rate</h2>
+
+- In the distribution view, raise the temperature from 3000 K to 1.2×10⁸ K. At low temperature every pair sits below 0.01 keV and the distribution is a single needle at the left. At a hundred million kelvin the tail reaches tens of keV; multiplied by the steeply rising tunnelling probability it forms a peak, the **Gamow peak**. At 10 keV it sits near 31 keV, and only about 10% of pairs have more energy than that.
+- Switch to the rate view. From the Sun's core at 1.3 keV to 10 keV, ⟨σv⟩ climbs from about 3×10⁻²⁰ to about 1.1×10⁻¹⁶ cm³/s: eight times the temperature, nearly four thousand times the rate. Choose D + D and the curve drops by two orders of magnitude at the same temperature.
+- In the compression view, hold 10 keV and compress the same fuel 10, 100 and 1000 times. Density rises by C, the reaction rate per volume by C², while the ρR the fuel holds before flying apart grows only as C^(2/3). The fraction burned before disassembly climbs from below a tenth of a percent to about 8%.
+- Return the temperature to 3000 K and compress again. However hard the fuel is squeezed, the rate readout stays at an extrapolated value far outside the fit range, effectively zero. No chemical explosive can light fusion.
+
+<h2 id="deeper">From the barrier to staging: three numbers together</h2>
+
+<details>
+<summary>Why only fission can light it</summary>
+
+Chemical burning tops out at a few thousand kelvin, a kinetic energy below 1 eV. The tunnelling exponent `√(E_G/E)` then exceeds a thousand, and the rate is zero in any practical sense. To bring the Gamow peak to tens of keV, the fuel must be heated to tens of millions up to a hundred million kelvin. A fission fireball reaches that order of magnitude (Glasstone & Dolan, _The Effects of Nuclear Weapons_, §1.23). On Earth, only a fission explosion supplies that temperature and radiation to a large mass of fuel in an instant; laser facilities also reach ignition conditions, but only in milligram-scale targets.
+
+The public physical description is that the fission "primary" releases intense radiation, and this radiation heats and compresses a separately placed fusion fuel. This explanation draws only the temperature ladder and the burn fraction after compression; it does not describe the structure, dimensions or materials of any device.
+
+</details>
+
+<details>
+<summary>How the burn fraction is computed</summary>
+
+Treat the fuel as a uniform-temperature D–T plasma with deuterium and tritium densities of `n/2` each. The starting point is an arbitrary solid D–T sphere of 1 mm radius (density 0.225 g/cm³, about 1 mg), giving `ρR ≈ 0.02 g/cm²` before compression; this is a teaching scale, not any device. The reactions per volume per second are:
+
+<div className="formula">R = (n/2)² ⟨σv⟩</div>
+
+Without confinement the fuel disassembles at the ion sound speed `c_s = √(2kT/m_i)`; take a confinement time `τ ≈ R/(4c_s)`. Solving for the fraction burned in that time gives:
+
+<div className="formula">f = ρR / (ρR + H_B)　　H_B = 8 m_i c_s / ⟨σv⟩</div>
+
+`H_B` is about 26 g/cm² at 10 keV and about 9.6 g/cm² at 20 keV. Compressing the same fuel mass by C shrinks its radius by `C^(−1/3)` and multiplies its density by C, so `ρR ∝ C^(2/3)`. That is the source of "the tighter it is squeezed, the more burns before it flies apart". The formula ignores alpha-particle self-heating, radiation losses and the ignition process; it shows the roles of density and confinement time only. Reference: Atzeni & Meyer-ter-Vehn, _The Physics of Inertial Fusion_, chapter 2.
+
+</details>
+
+<details>
+<summary>Why the fuel carries its own tritium</summary>
+
+Tritium is radioactive, with a half-life of about 12.3 years, so it cannot be stored for long. Public sources describe thermonuclear fuel as solid **lithium deuteride**: when a 14 MeV fusion neutron strikes lithium-6,
+
+<div className="formula">n + ⁶Li → T + ⁴He + 4.78 MeV</div>
+
+the next tritium nucleus is made in place. That energy, too, follows from the binding-energy difference. Fast neutrons can also fission surrounding uranium nuclei and release further energy, which is the origin of the phrase "fission–fusion–fission".
+
+</details>
+
+<details>
+<summary>Three ways to confine, on one chart</summary>
+
+For fusion to sustain itself, the product of plasma density n, temperature T and energy confinement time τ must exceed a line: for D–T near 10–20 keV, roughly `nTτ ≳ 3×10²¹ keV·s/m³`. A tokamak uses magnetic fields to hold a thin plasma of about 10²⁰ m⁻³ for around a second. Inertial confinement compresses the fuel above 10³¹ m⁻³ and holds it for only about 10⁻¹⁰ s. In December 2022 the National Ignition Facility first achieved laboratory ignition, with fusion output exceeding the laser energy delivered.
+
+The Sun takes a different road. Its core is only about 1.3 keV, but gravity keeps the material permanently confined and it burns the extremely slow proton–proton chain, more than twenty orders of magnitude slower than D–T. The Sun relies on enormous volume and billions of years.
+
+</details>
+
+<details>
+<summary>Model boundaries</summary>
+
+The reactivity ⟨σv⟩ uses the Bosch–Hale (1992) parametrisation, valid from 0.2 to 100 keV; below 0.2 keV it is extrapolated with the non-resonant form `T^(−2/3) exp(−3E₀/kT)` to indicate order of magnitude only. The barrier drawing uses a bare Coulomb potential with a schematic nuclear well, and the tunnelling probability is the WKB Gamow factor without nuclear structure or resonances. Binding energies come from AME2020. The three points on the Lawson chart are order-of-magnitude references, not measured parameters of any specific machine. This explanation does not describe the construction of a weapon.
+
+References: [Glasstone & Dolan, The Effects of Nuclear Weapons, 1977 (OSTI)](https://www.osti.gov/biblio/6852629), [NRL Plasma Formulary](https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_19.pdf), [Bosch & Hale, Nuclear Fusion 32 (1992)](https://doi.org/10.1088/0029-5515/32/4/I07), [OpenStax University Physics 3, 10.6 Nuclear Fusion](https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion), [LLNL — National Ignition Facility ignition](https://www.llnl.gov/news/national-ignition-facility-achieves-fusion-ignition).
+
+</details>

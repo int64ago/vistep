@@ -1,0 +1,83 @@
+---
+import { hydrogenBombCover, hydrogenBombCoverPath as path } from '../../models/hydrogen-bomb-cover';
+const cover = hydrogenBombCover();
+const { hill, well, nucleus, twin, energyLine, inset, insetCurves, deuterium, base } = cover;
+const hillFill = path(
+  [{ x: hill[0].x, y: base + 22 }, ...hill, { x: hill.at(-1)!.x, y: base + 22 }],
+  true,
+);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="hb-cover-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff1d6" stop-opacity=".9"></stop>
+      <stop offset=".5" stop-color="#f7a1dc" stop-opacity=".5"></stop>
+      <stop offset="1" stop-color="#f7a1dc" stop-opacity="0"></stop>
+    </radialGradient>
+    <clipPath id="hb-cover-clip">
+      <rect width="400" height="230"></rect>
+    </clipPath>
+    <linearGradient id="hb-cover-sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#241f58"></stop>
+      <stop offset="1" stop-color="#110f2c"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="230" fill="url(#hb-cover-sky)"></rect>
+  <!-- Ambient glows stay inside the 400×230 frame so no host clips them differently -->
+  <g clip-path="url(#hb-cover-clip)">
+    <ellipse cx="86" cy="42" rx="150" ry="70" fill="#4a3a92" fill-opacity=".25"></ellipse>
+    <ellipse cx="340" cy="206" rx="120" ry="52" fill="#5a2c66" fill-opacity=".28"></ellipse>
+  </g>
+  <!-- Nuclear well and the Coulomb hill sampled from the model -->
+  <path
+    d={`M${well.left.toFixed(2)} ${well.top.toFixed(2)}V${well.bottom.toFixed(2)}H${well.right.toFixed(2)}V${well.top.toFixed(2)}Z`}
+    fill="#2b2760"
+    fill-opacity=".7"></path>
+  <path d={hillFill} fill="#c7b5ff" fill-opacity=".08"></path>
+  <path d={`M${well.left.toFixed(2)} ${base}H372`} stroke="#5b5892" stroke-opacity=".5"></path>
+  <path
+    d={`M${well.left.toFixed(2)} ${well.top.toFixed(2)}H${well.right.toFixed(2)}V${well.bottom.toFixed(2)}`}
+    stroke="#c7b5ff"
+    stroke-width="1.8"></path>
+  <path d={path(hill)} stroke="#c7b5ff" stroke-width="2" stroke-linejoin="round"></path>
+  <!-- Energy line and the tritium nucleus at its classical turning point -->
+  <path
+    d={`M${energyLine.x1.toFixed(2)} ${energyLine.y.toFixed(2)}H${energyLine.x2}`}
+    stroke="#fff1d6"
+    stroke-opacity=".6"
+    stroke-dasharray="3 5"></path>
+  <circle cx={nucleus.x} cy={nucleus.y} r="26" fill="url(#hb-cover-glow)"></circle>
+  <circle cx={nucleus.x} cy={nucleus.y} r="8" fill="#f7a1dc"></circle>
+  <circle cx={nucleus.x - 2.6} cy={nucleus.y - 2.8} r="2.6" fill="#fff" fill-opacity=".6"></circle>
+  <!-- Faint tunnelled twin inside the well; deuterium waits at the bottom -->
+  <circle cx={twin.x} cy={twin.y} r="7" fill="#f7a1dc" fill-opacity={twin.opacity}></circle>
+  <circle cx={deuterium.x} cy={deuterium.y} r="7" fill="#8fd3ff"></circle>
+  <circle cx={deuterium.x - 2.2} cy={deuterium.y - 2.4} r="2.2" fill="#fff" fill-opacity=".6"
+  ></circle>
+  <path
+    d={`M${(nucleus.x - 6).toFixed(2)} ${nucleus.y.toFixed(2)}H${(well.right + 4).toFixed(2)}`}
+    stroke="#fff1d6"
+    stroke-opacity=".45"
+    stroke-dasharray="2 5"></path>
+  <!-- Gamow inset: Maxwell tail, tunnelling and their product from the same model -->
+  <rect
+    x={inset.left - 8}
+    y={inset.top - 8}
+    width={inset.right - inset.left + 16}
+    height={inset.bottom - inset.top + 16}
+    rx="10"
+    fill="#0f0d27"
+    fill-opacity=".55"></rect>
+  <path d={`M${inset.left} ${inset.bottom}H${inset.right}`} stroke="#5b5892" stroke-opacity=".7"
+  ></path>
+  <path d={path(insetCurves.maxwell)} stroke="#f7a1dc" stroke-width="1.5" stroke-opacity=".9"
+  ></path>
+  <path
+    d={path(insetCurves.tunnelling)}
+    stroke="#c7b5ff"
+    stroke-width="1.3"
+    stroke-dasharray="4 3"
+    stroke-opacity=".8"></path>
+  <path d={path(insetCurves.product)} stroke="#fff1d6" stroke-width="2"></path>
+</svg>

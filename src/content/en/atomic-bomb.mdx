@@ -1,0 +1,51 @@
+<h2 id="understand">Why does a lump of uranium explode once it is big enough?</h2>
+
+A slow neutron drifts toward a uranium-235 nucleus and is absorbed. The nucleus becomes excited uranium-236. Nuclear physics often pictures it as a charged drop of liquid: it wobbles, stretches, forms a narrow neck and snaps. Two fragments fly apart, and two or three fresh neutrons are thrown out. For the channel drawn here, n + U-235 → Ba-141 + Kr-92 + 3n, one event releases about **173 MeV**, mostly as the fragments’ kinetic energy.
+
+The energy comes from **binding energy**. Binding energy per nucleon peaks near iron, and uranium lies lower at the far right of the curve. After the split, barium and krypton both land higher on the curve, each nucleon in the fragments bound about 0.8 MeV more tightly. Add that up over more than two hundred nucleons, subtract the roughly 15 MeV it costs to release the two extra neutrons, and the result is the 173 MeV, about 0.73 MeV for each of the 236 nucleons that entered. A chemical reaction releases a few electron-volts per atom, tens of millions of times less.
+
+The new neutrons can cause further fissions. If, on average, k of the neutrons from each fission go on to cause another, generation g holds k^g neutrons. A generation takes roughly 10 ns, so a few dozen generations reach astronomical numbers.
+
+Two things set k: **production** and **leakage**. The number of nuclei that produce neutrons grows with volume; the chance of escaping grows with surface area. As a sphere grows, volume wins and k rises. At the **critical radius**, k = 1 and the chain just sustains itself; beyond it, every generation outnumbers the last. Shrink the same material instead, and neutrons fly out before meeting many nuclei, so the chain dies within a few steps.
+
+<h2 id="try">Watch it die, then watch it sustain</h2>
+
+- In free exploration, set the sphere radius to **1.6 λ** (λ is the neutron mean free path). k ≈ 0.67. Most neutrons released at the centre leak out; the blue dots mark where they leave, and within a few generations none survive.
+- Set the radius to **4.5 λ**, so k ≈ 1.50. Try several random draws: the tracks differ every time. Most draws keep growing until the display limit, but about a quarter still die out early, because the single starting neutron can leak or be captured first. k describes the average, not every individual chain. In this teaching model the critical radius is about **2.5 λ**.
+- Keep 4.5 λ and push “uniform expansion” past **1.34×**. The mass is unchanged but the density drops, neutrons fly farther between collisions, the radius measured in λ shrinks, k falls below 1, and a fresh walk dies out again.
+- In “reactor vs bomb”, compare three curves. With k = 1.001 and prompt neutrons only, the count runs away within a second; with delayed neutrons included, it takes a minute to double. That interval is what a reactor relies on.
+
+<h2 id="deeper">Put the neutron walk and k into one calculation</h2>
+
+<details>
+<summary>Binding energy and the energy of this channel</summary>
+
+The curve uses the Bethe–Weizsäcker semi-empirical mass formula, with the pairing term omitted so the trend does not alternate with parity; the marked nuclides use AME2020 measured atomic masses. The fission energy comes from the mass difference:
+
+<div className="formula">Q = [m(U-235) + m(n) − m(Ba-141) − m(Kr-92) − 3 m(n)] c² ≈ 173 MeV</div>
+
+This is the prompt release; the fragments’ later β decays add more, which is why textbooks quote roughly 200 MeV per fission in total. References: [OpenStax, Nuclear Binding Energy](https://openstax.org/books/university-physics-volume-3/pages/10-2-nuclear-binding-energy) and [OpenStax, Fission](https://openstax.org/books/university-physics-volume-3/pages/10-5-fission).
+
+</details>
+
+<details>
+<summary>The multiplication factor and the critical radius</summary>
+
+The scene uses a one-group diffusion approximation. In an infinite medium each absorption yields k∞ = ν·p_f / (p_f + p_c) neutrons on average, where p_f and p_c are the fission and capture shares of a collision, in the same units as the 25% and 3% below; a finite bare sphere multiplies this by the probability of not leaking:
+
+<div className="formula">k = k∞ / (1 + L²B²)　　B = π / (R + d)</div>
+
+L² is the diffusion area and d the extrapolation distance, all lengths in mean free paths λ. The illustrative constants are 72% scattering, 25% fission and 3% capture per collision, with ν = 2.4 neutrons per fission, giving k∞ ≈ 2.14 and R꜀ ≈ 2.5 λ. These ratios are teaching values, not data for any material or device, and the diffusion approximation is itself rough for spheres only a few λ wide. Reference: [MIT OCW 22.05, Neutron Science and Reactor Physics lecture notes](https://ocw.mit.edu/courses/22-05-neutron-science-and-reactor-physics-fall-2009/pages/lecture-notes/).
+
+The neutron tracks are the projection of a three-dimensional random walk: flight lengths are drawn from an exponential distribution, scattering is isotropic, each collision’s outcome follows the ratios above, and new neutrons start where their parent fissioned. Random numbers are addressed by seed, neutron and step, so the history is identical no matter how you seek. A batched walk estimate agrees with the diffusion formula to within about 1–3% at 4.5 λ, depending on the sample, and drifts further apart for smaller spheres.
+
+</details>
+
+<details>
+<summary>Delayed neutrons, generation time and stopping</summary>
+
+In a thermal reactor a prompt generation lasts about 10⁻⁴ s. About 0.65% of neutrons are released only after fission fragments decay, on average some 12.5 s late. With a single delayed group, the mean generation time becomes (1 − β)·ℓ + β·τd ≈ 0.08 s, so at k = 1.001 the population takes a minute to double and the control system can respond. Reference: [Delayed neutrons](https://www.nuclear-power.com/nuclear-power/fission/delayed-neutrons/).
+
+Once energy heats the material and it expands, mass stays fixed while density falls. Scaling linear size by s makes the density 1/s³, the mean free path s³ times longer and the radius measured in λ equal to R/s². The scene draws only this geometric relation; it does not compute temperature, pressure or expansion speed, and the time scale of stopping and the fraction of nuclei that fission are described only qualitatively.
+
+</details>

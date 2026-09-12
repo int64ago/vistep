@@ -6,6 +6,8 @@
 
 - [专题目录](catalog.md)：全部登记专题、影片时长和文章源码。
 - [制作手册](creating-a-scene.md)：研究、分镜、模型、双语讲解和审看。
+- [原子弹案例](examples/atomic-bomb-brief.md)：裂变能量、中子增殖与临界几何。
+- [氢弹案例](examples/hydrogen-bomb-brief.md)：库仑势垒、隧穿、反应率与约束。
 - [NFC 案例](examples/nfc-brief.md)：被动供能、耦合电路与负载调制回传。
 - [挖掘机案例](examples/excavator-brief.md)：液压油路、刚性连杆几何与教学边界。
 - [自行车案例](examples/bicycle-brief.md)：分镜、几何与证据的对应关系。
@@ -24,6 +26,8 @@
 
 记录只对应具体版本与条件，不是对未来改动的保证。旧语音的解码和播放检查未证明中文可理解性，后续发现的问题见复盘。部分历史提交编号早于 Git 历史改写，可能无法在新克隆中解析；原始 Actions 与部署引用的阅读方式见[制作记录](expansion-50.md)。
 
+- [原子弹审看](qa-atomic-bomb.md)：裂变模型、中子行走可重放性、浏览器停帧与完整播放、剩余缺口。
+- [氢弹审看](qa-hydrogen-bomb.md)：反应率与燃烧模型校验、浏览器停帧与完整播放、剩余缺口。
 - [NFC 审看](qa-nfc.md)：耦合电路、信号解码、实体几何与分项审看证据。
 - [双缝干涉审看](qa-double-slit.md)：光场、衍射、可重现探测与浏览器证据。
 - [挖掘机审看](qa-excavator.md)：液压与连杆核查、浏览器审看及证据边界。

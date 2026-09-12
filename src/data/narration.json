@@ -2357,7 +2357,7 @@
       },
       {
         "id": "binary-adder-04",
-        "chapterAt": 65.0,
+        "chapterAt": 65,
         "at": 65.45,
         "seconds": 20,
         "title": "让相同的小电路排成一行",
@@ -2434,7 +2434,7 @@
       },
       {
         "id": "hydraulic-brake-02",
-        "chapterAt": 21.0,
+        "chapterAt": 21,
         "at": 21.45,
         "seconds": 21,
         "title": "先关上通往储液腔的门",
@@ -2446,7 +2446,7 @@
       },
       {
         "id": "hydraulic-brake-03",
-        "chapterAt": 42.0,
+        "chapterAt": 42,
         "at": 42.45,
         "seconds": 21,
         "title": "先走完间隙，再建立压力",
@@ -2482,7 +2482,7 @@
       },
       {
         "id": "hydraulic-brake-06",
-        "chapterAt": 109.0,
+        "chapterAt": 109,
         "at": 109.45,
         "seconds": 21,
         "title": "同样捏动，气泡分走了行程",
@@ -2506,7 +2506,7 @@
       },
       {
         "id": "hydraulic-brake-08",
-        "chapterAt": 155.0,
+        "chapterAt": 155,
         "at": 155.45,
         "seconds": 21,
         "title": "释放，让油路回到起点",
@@ -2756,7 +2756,7 @@
         "zh": "让同一份程序同时跑两次：上面允许重叠，下面做完一条才开始下一条。留意完成的编号，上面出现得更密。可第一条从开始到结束，两边都用了五拍。流水线提高的是吞吐量。完整程序里的空位从哪里来？接下来把它们放慢看。",
         "en": "Run the same program both ways. The upper schedule overlaps instructions; the lower finishes one before starting another. Completed IDs arrive closer together above. Yet instruction one still takes five cycles in both schedules. The improvement is throughput. Those gaps in the overlapping schedule have causes too. Let us slow down and inspect them.",
         "seconds": 22,
-        "chapterAt": 47.0,
+        "chapterAt": 47,
         "at": 47.45
       },
       {
@@ -2768,7 +2768,7 @@
         "zh": "先关掉数据前递。编号三要把前两条得到的四和七相加，可寄存器里的值还没更新。它不能拿旧值凑答案，只能留在译码级等待。后面的取指也停住，前面的指令继续写回。这个空位是为了保证正确，不是丢失了一条指令。",
         "en": "Turn forwarding off. Instruction three needs the four and seven produced by the first two instructions, but the register values are not ready. It must wait in decode instead of using stale inputs. Fetch waits too, while older instructions continue toward writeback. The empty slot protects correctness; no instruction has been lost.",
         "seconds": 22,
-        "chapterAt": 71.0,
+        "chapterAt": 71,
         "at": 71.45
       },
       {
@@ -2816,7 +2816,7 @@
         "zh": "最后重新跑完整份程序，把结果核对上。两边完成的都是八条有效指令，寄存器和内存也完全一致。流水线用了十五拍：八条指令，加上四拍填充排空、一拍数据等待和两个分支空位。逐条执行用了四十拍。得到同一个答案，安排工作的方式改变了完成时间。",
         "en": "Run the whole program again and check the results. Both schedules finish the same eight useful instructions, with identical registers and memory. The pipeline takes fifteen cycles: eight instructions, four for filling and draining, one data stall, and two branch bubbles. Sequential execution takes forty. Scheduling changes the finish time while preserving the answer.",
         "seconds": 22,
-        "chapterAt": 163.0,
+        "chapterAt": 163,
         "at": 163.45
       }
     ]
@@ -3059,7 +3059,7 @@
         "zh": "现在把保持架看清楚。它的凹槽分开每颗球，并跟着球心绕轴走。再看金色球上的小黑点：球身还在反向自转。这两个角速度都由刚才的接触条件确定，不是随手设的动画速度。这里的读数，以不动的支座为参考。",
         "en": "Now inspect the cage. Its concave fingers separate the balls and travel around with their centers. The dark mark on the gold ball reveals another motion: backward spin. Both speeds follow from the contact constraints. These readouts use the stationary housing as their reference frame.",
         "seconds": 21.5,
-        "chapterAt": 43.0,
+        "chapterAt": 43,
         "at": 43.45
       },
       {
@@ -3083,7 +3083,7 @@
         "zh": "让载荷朝下。注意，亮区留在下面，并没有跟着保持架走。金色球转进这个区域，承载权重上升；再转出去，权重下降。其他球接着经过。亮度只是一个教学假设，帮助看清轮流承载的过程，不是算出的真实接触力。",
         "en": "Apply an illustrative downward load. The bright zone stays underneath the shaft as the cage turns. Our gold ball enters, its load weight rises, and then it leaves. Other balls take their turn. The glow is an assumed teaching distribution, not a computed force in newtons.",
         "seconds": 21.5,
-        "chapterAt": 86.0,
+        "chapterAt": 86,
         "at": 86.45
       },
       {
@@ -3119,7 +3119,7 @@
         "zh": "最后回到整只轴承。外圈固定，内圈随轴转动，球心和保持架缓慢公转，球身同时反转。载荷通过球与两条滚道传出去。它不是没有摩擦的魔法，而是一组配合得很好的接触。现在你可以自己转动内圈，把金色球停在任何想细看的位置。",
         "en": "Return to the complete bearing. The outer ring stays fixed, the inner ring follows the shaft, and the cage carries the ball centers around while each ball spins backward. Loads pass through the races and balls. Explore by turning the inner ring and stopping our marked ball wherever you want to look closer.",
         "seconds": 21.5,
-        "chapterAt": 155.0,
+        "chapterAt": 155,
         "at": 155.45
       }
     ]
@@ -3148,7 +3148,7 @@
         "zh": "现在接上手动预充器。绿色水段向前推进，原先占着管子的空气被排出去。这一步需要外部做功。等水路完全连通，再拿走预充器，流动仍然继续。虹吸能够维持已经连通的水柱，却没有在这里凭空完成最初的爬升。",
         "en": "Now connect the hand primer. The green water front advances and displaces the air that occupied the tube. This preparation requires external work. Once the entire path is filled, remove the primer. Flow continues. The siphon sustains a connected column; this apparatus did not create that initial climb without help.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -3184,7 +3184,7 @@
         "zh": "保持同一根刚性弯管，围绕浸没的入口慢慢转动。出口被抬高，金色的高度差越来越短，水流也慢下来。当出口来到水源液面附近，持续流动停止。决定这个自由出口水头的，是液面与管口的高度差，不是管子顶部有多高。",
         "en": "Rotate the same rigid tube around its submerged inlet. The outlet rises without changing tube length. The gold head marker shortens, and flow slows. At the source-surface height, sustained flow stops. For this free outlet, the relevant head is the drop from the source surface to the mouth, not the height of the crest.",
         "seconds": 22,
-        "chapterAt": 90.0,
+        "chapterAt": 90,
         "at": 90.45
       },
       {
@@ -3196,7 +3196,7 @@
         "zh": "先把出口放低，水重新流动。现在只打开顶部的小进气口。看两侧水段退开：一部分回到水源，另一部分落入接水容器。出口仍然很低，却没有持续虹吸。空气破坏了连续液柱；只把进气口重新关上，并不会自动排掉已经进入的空气。",
         "en": "Lower the outlet and flow returns. Now open only the small vent at the crest. Water retreats down both sides: some returns to the source, and some enters the receiver. The outlet remains low, yet sustained siphoning has stopped. Closing the vent alone would not remove the air already inside; the tube needs priming again.",
         "seconds": 22,
-        "chapterAt": 112.0,
+        "chapterAt": 112,
         "at": 112.45
       },
       {
@@ -3208,7 +3208,7 @@
         "zh": "换成一组更高、分别预充好的管子。这里不是把同一根软管拉长。随着顶部升高，注意沿管最低压这一栏。它触及水的饱和蒸气压时，金色标记出现，连续水柱的计算停止。弯顶压力仍单独显示；实际水中的溶解气体和漏气，还可能更早切断水柱。",
         "en": "Compare taller tubes, each prepared and primed separately. We are not stretching one hose. As the crest rises, watch the minimum-pressure reading. When it reaches vapor pressure, gold markers flag the failure of our continuous-column model. Crest pressure remains a separate reading. In real water, dissolved gas and leaks can interrupt the column earlier.",
         "seconds": 22,
-        "chapterAt": 136.0,
+        "chapterAt": 136,
         "at": 136.45
       },
       {
@@ -3220,13 +3220,13 @@
         "zh": "最后固定这根高管，只降低周围的气压。先看流量：只要水柱还能连通，高度差没变，流量就基本不变。再看最低压与汽化边界的间隔，它持续缩小，直到模型失效。大气压没有额外增加驱动水头，却与水的状态一起，限定这条连续水路能否存在。",
         "en": "Keep this tall tube fixed and lower the surrounding air pressure. While the column remains feasible, its height difference stays unchanged, so the flow rate stays the same. Now watch the gap between minimum pressure and the vapor boundary shrink until the model fails. Atmospheric pressure adds no extra driving head, but helps determine whether the continuous column can exist.",
         "seconds": 22,
-        "chapterAt": 161.0,
+        "chapterAt": 161,
         "at": 161.45
       }
     ]
   },
   "electric-generator": {
-    "duration": 207.0,
+    "duration": 207,
     "cues": [
       {
         "id": "start-turning",
@@ -3249,7 +3249,7 @@
         "zh": "把线圈围住的面积暂时显出来。它的法线正对磁场时，磁通最大，但这一刻变化率是零，所以没有瞬时感应电压。接着转过四分之一圈，磁通降到零，电压却达到峰值。影片在这里停一下，是让我们观察同一个瞬间，并没有把计算中的转速改成零。",
         "en": "Let the enclosed area become visible. When its normal points along the field, flux is greatest, but its instantaneous rate of change is zero. So is the induced voltage. A quarter turn later, flux is zero and voltage reaches its peak. The film holds that instant for inspection; it has not changed the modeled shaft speed to zero.",
         "seconds": 22,
-        "chapterAt": 27.0,
+        "chapterAt": 27,
         "at": 27.45
       },
       {
@@ -3273,7 +3273,7 @@
         "zh": "跟着光标看完一整圈。前半圈电压向上，经过零点以后，后半圈转到下方。线圈并没有换一根铜线，改变的是磁通的变化方向，所以电压极性反过来了。完整滑环只是保持接通，不会把负的半圈翻到上面。这里得到的是交流；机械换向还需要另一种分裂环结构。",
         "en": "Follow the cursor through a full revolution. Voltage rises during one half, returns through zero, then becomes negative during the other. It is still the same conductor. The direction of flux change has reversed, so the polarity reverses. Continuous slip rings only preserve contact; they do not flip the negative half upward. This machine produces AC, without a split-ring commutator.",
         "seconds": 22,
-        "chapterAt": 77.0,
+        "chapterAt": 77,
         "at": 77.45
       },
       {
@@ -3309,7 +3309,7 @@
         "zh": "接着让轴慢下来，停过零点，再朝反方向转。转速为零的一刻，没有感应电压；倒转以后，同一个转角对应的电压和电流都反号了。再看力矩，它也换了方向，仍然阻碍现在的转动。电阻并没有因为电流反向而开始供电，能量依旧从驱动轴流向电路。",
         "en": "Let the shaft slow through zero and then turn the other way. At zero speed, induced voltage vanishes. Reversing speed reverses voltage and current at a given angle. The torque reverses as well, continuing to oppose the actual motion. The resistor has not become an energy source just because current changed direction. Energy still comes from the driving shaft.",
         "seconds": 22,
-        "chapterAt": 155.0,
+        "chapterAt": 155,
         "at": 155.45
       },
       {
@@ -3350,7 +3350,7 @@
         "zh": "换成地址十八，把它写成六位二进制。右边两位选行内的字节，中间两位选组，左边两位是标签，用来辨认这一行来自哪里。先到零号组，再查有效位和标签。空位置虽然也写着零，却不能当成有效数据；填入之后才可以读取。",
         "en": "Write address eighteen in six binary bits. The right pair selects a byte within its line. The middle pair selects the set. The left pair is the tag, identifying which line belongs there. Check both valid and tag. An empty entry with a zero tag is not usable data; it must first be filled.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -3386,7 +3386,7 @@
         "zh": "在零和十六之间来回读，会发生什么？它们的标签不同，组号却都是零。直接映射只允许这一行使用零号组唯一的位置，所以两份副本轮流把对方换出去。再看一、二、三号组，它们明明还是空的。问题不在总共放不下，而在允许放置的位置发生了冲突。",
         "en": "Alternate between zero and sixteen. Their tags differ, but both map to set zero. Direct mapping gives each of them only that one place, so they repeatedly evict each other. Check sets one, two and three: they remain empty. These two lines would fit in the total capacity. Their allowed placement is what causes the conflict.",
         "seconds": 22,
-        "chapterAt": 91.0,
+        "chapterAt": 91,
         "at": 91.45
       },
       {
@@ -3422,7 +3422,7 @@
         "zh": "最后改变行大小，但把数据容量都固定在十六字节。再次读取同样八个连续地址：每行一个字节，要填充八次；每行四个字节，只需两次。两边实际都搬了八字节。大行利用了这次的邻近访问，跳着读取却可能带回用不上的邻居；命中次数也不能直接等同于整台处理器的速度。",
         "en": "Change line size while keeping both data capacities at sixteen bytes. Read the same eight consecutive addresses. One-byte lines need eight fills; four-byte lines need two. Both fetch eight bytes overall. Larger lines exploit these nearby accesses, but a strided pattern may fetch unused neighbours. Hit counts alone do not determine whole-processor performance.",
         "seconds": 22,
-        "chapterAt": 165.0,
+        "chapterAt": 165,
         "at": 165.45
       }
     ]
@@ -3552,7 +3552,7 @@
         "zh": "现在把阻尼设为零，保留弹簧和轮胎。凸起已经过去了，车身却还在上下运动。弹簧压缩时储存能量，回弹时又把能量交回来。它允许车身和车轮有不同的位移，但仅靠理想弹簧，并没有一个把振荡能量持续带走的过程。",
         "en": "Set the damper coefficient to zero, keeping the spring and tire. The bump has passed, yet the body keeps moving. A spring stores energy as it deflects and gives that energy back. It permits relative motion, but an ideal spring alone provides no continuing route for the oscillation energy to leave.",
         "seconds": 21.5,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -3576,7 +3576,7 @@
         "zh": "这次两边用相同的弹簧，只给蓝色这组加入阻尼。路面输入和观察时间仍然完全一致。没有阻尼的一组继续来回运动，另一组逐渐安定下来。减振器抵抗的是两个端点之间的相对速度，不是把车身硬钉在一个固定高度。",
         "en": "Now keep the spring identical and add damping only to the second rig. The road input and inspection time still match. One body continues to bounce; the other settles. The damper opposes relative velocity between its attachments. It does not pin the body to a fixed height.",
         "seconds": 21.5,
-        "chapterAt": 67.0,
+        "chapterAt": 67,
         "at": 67.45
       },
       {
@@ -3612,7 +3612,7 @@
         "zh": "换成连续的小起伏。轮组有自己的惯性，不会完美贴着路面走。看法向载荷曲线，它现在接近零。轮胎可以压住地面，却不能拉住地面。到了这个边界，演示就停下来。若继续计算离地和重新落地，需要另一套接触模型，不能沿用这条线性弹簧。",
         "en": "Switch to repeated small ripples. The wheel assembly has inertia; it cannot follow the road perfectly. Watch the normal-load trace approach zero. A tire can push against the road, but it cannot pull on it. We stop at that boundary. Flight and renewed contact would require a different contact model.",
         "seconds": 21.5,
-        "chapterAt": 136.0,
+        "chapterAt": 136,
         "at": 136.45
       },
       {
@@ -3630,7 +3630,7 @@
     ]
   },
   "water-hammer": {
-    "duration": 189.0,
+    "duration": 189,
     "cues": [
       {
         "id": "water-hammer-01",
@@ -3653,7 +3653,7 @@
         "zh": "跟住暖色与冷色之间的过渡。压力变化正在向水库传播，经过测点时，那里的流速才明显改变。沿管的距离尺是同一根一百二十米管道。波速远大于水本身的流速，所以传播的是扰动，不是一团水从阀门高速跑回水库。",
         "en": "Follow the transition between the warm and cool regions. The pressure change moves toward the reservoir, changing the flow as it passes each location. This is the same one-hundred-and-twenty-meter pipe. The wave travels far faster than the water. A disturbance is moving upstream, not a lump of water racing back from the valve.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -3665,7 +3665,7 @@
         "zh": "在测点重放一次，把形变放大八百倍。看这同一份水，压力到来后体积微微缩小；同一测点的管截面却变大。两种变化共同提供顺应性，也储存弹性能。真实变化远小于画面，数字保留原来的应变，没有把水当成完全刚硬的活塞。",
         "en": "Replay the event at the probe with strains enlarged eight hundred times. The same water sample occupies slightly less volume as pressure arrives. The bore at this probe becomes slightly larger. Both changes provide compliance and store elastic energy. Real deformations are much smaller than these pictures; the numbers retain the actual modeled strains.",
         "seconds": 22,
-        "chapterAt": 44.0,
+        "chapterAt": 44,
         "at": 44.45
       },
       {
@@ -3689,7 +3689,7 @@
         "zh": "返回的降压波终于抵达关闭的阀门，一次往返已经过去。这里要守住的是零流速，于是压力扰动再次反射。阀前压力可以低于最初的压力，不是永远只会上升。这个理想模型没有管摩阻，所以往返的振荡不会自己慢慢消失。",
         "en": "The returning pressure drop now reaches the closed valve, completing a round trip. This boundary must keep velocity at zero, so the disturbance reflects again. Valve pressure can fall below its initial value; it does not only rise. Our ideal pipe has no wall friction, so these reflections do not gradually fade away.",
         "seconds": 22,
-        "chapterAt": 91.0,
+        "chapterAt": 91,
         "at": 91.45
       },
       {
@@ -3701,7 +3701,7 @@
         "zh": "把两次试验放在同一时钟上。灰线快速关闭，金线缓慢关闭；管道、初速和初始压力都相同。看关闭时间与往返时间的比较：慢关时，反射已经回来，阀门却还没关完。这套规定的平滑开度规律给出更低的压力峰值，不是所有阀门都能套用的一条保证。",
         "en": "Put both trials on the same clock. Gray closes quickly; gold closes slowly. Pipe dimensions, initial speed and initial pressure are identical. During slow closure, reflections return while the valve is still moving, modifying the pressure buildup. This specified smooth opening law gives a lower peak. It is a controlled comparison, not a guarantee for every valve.",
         "seconds": 22,
-        "chapterAt": 113.0,
+        "chapterAt": 113,
         "at": 113.45
       },
       {
@@ -3713,7 +3713,7 @@
         "zh": "再做另一组对照，这次只改变管壁的弹性模量。较软的管壁更容易扩张，压力变化传播得更慢，往返时间更长。相同初速被快速停止时，首波幅度随波速降低。这里比较的是线弹性参数，并没有把塑料的黏弹性、管接头或支架运动一并解决。",
         "en": "Now change only the wall’s Young’s modulus. A more compliant wall expands more easily, giving a slower pressure wave and a longer travel time. Stopping the same initial flow quickly also produces a smaller first-wave rise. This compares linear elastic parameters; it does not solve polymer viscoelasticity, joints or moving supports.",
         "seconds": 22,
-        "chapterAt": 139.0,
+        "chapterAt": 139,
         "at": 139.45
       },
       {
@@ -3725,7 +3725,7 @@
         "zh": "最后降低初始绝对压力，再做同样的快速关闭。升压波之后，回来的降压波不断消耗压力余量。触及水的蒸气压时，画面停在第一次到达边界的位置。接下来可能出现汽腔、液柱分离与重新撞合；这个单相模型不能预测那些过程，所以我们在这里停下。",
         "en": "Lower the initial absolute pressure and repeat the same rapid closure. After the first pressure rise, the returning drop uses up the available margin. The display stops at the first point to reach water’s vapor pressure. Cavities, column separation and rejoining require additional physics. This single-phase model stops here instead of inventing the subsequent motion.",
         "seconds": 22,
-        "chapterAt": 164.0,
+        "chapterAt": 164,
         "at": 164.45
       }
     ]
@@ -3879,7 +3879,7 @@
         "zh": "让时间继续。向右的脉冲出现在右边，向左的脉冲出现在左边，形状没有互相交换。金点完成了自己的运动，又回到平衡位置。整段过程来自同一个叠加公式。这种互不改变的穿越，依赖这里的小幅度、无阻尼和无色散假设。",
         "en": "Now let the pulses separate. The rightward pulse emerges on the right, and the leftward pulse on the left, each keeping its original shape. P completes its own motion and returns to equilibrium. This passage follows the same sum throughout, under the small-slope, lossless, nondispersive assumptions of our ideal string.",
         "seconds": 22,
-        "chapterAt": 67.0,
+        "chapterAt": 67,
         "at": 67.45
       },
       {
@@ -3891,7 +3891,7 @@
         "zh": "接下来换成同频、同向的简谐波，专看同一点。先让两列波同相，合振幅是单列的两倍。保持振幅不动，逐渐把相位差转到半个周期，合振幅就降到零。这里比较的是不同输入，不是说调相位的过程没有外界作用。",
         "en": "Switch to sinusoidal waves traveling together and compare one point. Equal waves in phase give twice the individual amplitude. Keep their amplitudes fixed and move their phase difference toward half a cycle: the resultant falls to zero. These are comparisons between different inputs, not an isolated system changing phase by itself.",
         "seconds": 22,
-        "chapterAt": 90.0,
+        "chapterAt": 90,
         "at": 90.45
       },
       {
@@ -3927,13 +3927,13 @@
         "zh": "看圆环标出的波节，旁边的波腹正在起伏，波节却始终不动。相邻波节相隔半个波长。再看下面：动能和形变能交替增减，窗口内的总量保持不变。驻波的平均净能流为零，并不等于每一瞬间都没有局部能量流动。",
         "en": "The rings mark nodes. Neighboring antinodes move, but those positions remain still, half a wavelength apart. Below, kinetic and potential energy trade places while the total in this window stays constant. A standing wave has zero average net energy flow; that does not rule out local flow at individual instants.",
         "seconds": 22,
-        "chapterAt": 157.0,
+        "chapterAt": 157,
         "at": 157.45
       }
     ]
   },
   "induction-motor": {
-    "duration": 184.0,
+    "duration": 184,
     "cues": [
       {
         "id": "three-phases",
@@ -3956,7 +3956,7 @@
         "zh": "现在沿轴看进去。绿色磁场不断转过一圈，铜色的转子标记却留在原地，因为这一幕把轴固定住了。这台模型只有一对磁极，电源每完成一个周期，磁场就转一圈。五十赫兹对应每分钟三千转，不是每分钟五十转。",
         "en": "Look straight down the shaft. The green field keeps making complete turns, while the copper rotor mark stays put: we are holding the shaft in this shot. With one pole pair, each electrical cycle makes one field revolution. Fifty cycles per second therefore means three thousand revolutions per minute.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -3968,7 +3968,7 @@
         "zh": "靠近前面的铜环。转子没有接到电源的电线，但每根铜条都和前后两只端环连在一起，形成闭合通路。圆点表示电流朝向你，叉号表示流向背面。端环里的电流把这些方向连接起来。颜色表示电流方向和强弱，不是在追踪电子。",
         "en": "Come closer to the front copper ring. There are no supply wires on the rotor, but every bar joins both end rings. Those connections close the current paths. A dot means current toward you; a cross means current away. The ring currents join those paths. Their colors show direction and relative strength.",
         "seconds": 22,
-        "chapterAt": 44.0,
+        "chapterAt": 44,
         "at": 44.45
       },
       {
@@ -3992,7 +3992,7 @@
         "zh": "这一幕用外力设定转速，让转子慢慢追上磁场。留意转差、转子电流和转矩：这三个数一起趋向零。完全同步时，转子不再看到变化的主磁通，所以没有持续的感应电流。定子仍然需要磁化电流，但那不等于转子还有驱动转矩。",
         "en": "Here an external drive sets the rotor speed, bringing it up to the field speed. Watch slip, rotor current, and torque all approach zero. At synchronism, the main flux no longer changes in the rotor frame. Stator magnetizing current remains, but the model produces no rotor current or driving torque.",
         "seconds": 22,
-        "chapterAt": 90.0,
+        "chapterAt": 90,
         "at": 90.45
       },
       {
@@ -4004,7 +4004,7 @@
         "zh": "把负载从一牛米增加到四牛米，比较曲线上的稳定运行点。交点向低一点的转速移动，转差却增加了。转子因此感应出更大的电流，提供更大的转矩。这里选的是接近同步速度的稳定支，不能把负载无限加大，还期待电机总能追上。",
         "en": "Increase the load from one to four newton-meters and compare the settled operating points. The intersection shifts to a slightly lower speed. More slip induces more current and produces more torque. These points lie on the stable branch near synchronism. A motor cannot support an arbitrarily large load.",
         "seconds": 22,
-        "chapterAt": 113.0,
+        "chapterAt": 113,
         "at": 113.45
       },
       {
@@ -4028,7 +4028,7 @@
         "zh": "最后跟着功率走。电气输入先扣掉定子铜耗，剩下的功率穿过气隙。它再分成机械功和转子铜耗。转差越大，气隙功率里变成转子热量的比例越大。这里没有计算铁耗、风阻和轴承摩擦，所以这组数是教学模型的收支，不是实物效率承诺。",
         "en": "Follow the power at the end. Subtract stator copper loss from the electrical input to find air-gap power. That splits into mechanical power and rotor copper loss. Slip is exactly the fraction lost as rotor heat in this model. Core loss, windage, and bearing friction would add further losses in a real machine.",
         "seconds": 22,
-        "chapterAt": 159.0,
+        "chapterAt": 159,
         "at": 159.45
       }
     ]
@@ -4236,7 +4236,7 @@
     ]
   },
   "error-correction": {
-    "duration": 211.0,
+    "duration": 211,
     "cues": [
       {
         "id": "weave",
@@ -4259,7 +4259,7 @@
         "zh": "为什么让彩线重叠？现在沿着三条线再看一遍。一个位置可能被一条、两条，或者三条线检查。注意第六位，它在第二组和第四组里，却不在第一组里。七个位的参与组合都不同。以后如果只有一位翻转，哪些组变成奇数，就能反过来认出它的位置。",
         "en": "Why do the loops overlap? Follow them again. A position can belong to one, two or all three checks. Look at position six: it belongs to C two and C four, but stays outside C one. Every position has a different membership pattern. One flipped bit will disturb exactly the checks that include it.",
         "seconds": 22,
-        "chapterAt": 26.0,
+        "chapterAt": 26,
         "at": 26.45
       },
       {
@@ -4271,7 +4271,7 @@
         "zh": "把完整码字送出去。先比较发送和接收，它们逐位相同。现在让信道只翻转第六位，一变成了零。数字上方的编号没有变，所以我们始终跟着同一个位置。校验位也和数据一起经过信道，并不是放在接收端的一份秘密答案。接收端必须只凭收到的七个位来判断。",
         "en": "Send the complete word. At first, sent and received bits match position by position. Now the channel flips position six from one to zero. Its number stays fixed, so we can follow its identity. The check bits travel through the channel too. The receiver has no secret copy of the original message to compare against.",
         "seconds": 22,
-        "chapterAt": 51.0,
+        "chapterAt": 51,
         "at": 51.45
       },
       {
@@ -4283,7 +4283,7 @@
         "zh": "接收端重新数每条线里的那些位。偶数个一，校验结果是零；奇数个一，结果是一。第一组通过，第二组和第四组失败。按第四、第二、第一组的顺序排起来，得到一一零。这个二进制数就是六。我们称它为综合征；在只有单错的前提下，它给出了错误位置。",
         "en": "Recheck the received word. An even number of ones gives zero; an odd number gives one. C one passes, while C two and C four fail. Read the results in the order C four, C two, C one: one, one, zero. That binary number is six. Under the single-error assumption, this syndrome locates the flipped bit.",
         "seconds": 22,
-        "chapterAt": 77.0,
+        "chapterAt": 77,
         "at": 77.45
       },
       {
@@ -4295,7 +4295,7 @@
         "zh": "先停在还没有修正的码字上。综合征指向六，所以解码器只翻回第六位。再看三项校验，结果又全部为零。现在从第三、第五、第六、第七位取出数据，一零一一回来了。这里不需要猜原始消息。只要整字最多错一位，即使翻错的是校验位，也能用同样的规则恢复。",
         "en": "Pause on the received word before repair. The syndrome points to six, so the decoder flips just that position back. All three checks now return zero. Extract positions three, five, six and seven: one, zero, one, one is restored. This works for any single flipped position, including a check bit, provided there is at most one error.",
         "seconds": 22,
-        "chapterAt": 103.0,
+        "chapterAt": 103,
         "at": 103.45
       },
       {
@@ -4319,7 +4319,7 @@
         "zh": "再加第八位，让整个八位码字里，一的总数也成为偶数。这是扩展汉明码。现在仍然翻转第三位和第五位。两次翻转不会改变全字的奇偶性，但原来的综合征仍然非零。两条线索合起来，接收端认出双错，停止纠正，也不交付数据。多这一位，换来了识别这种歧义的能力。",
         "en": "Add an eighth bit so the entire eight-bit word has even parity. This is extended Hamming. Repeat the same flips at three and five. Two flips leave overall parity even, yet the original syndrome remains nonzero. Together, those clues identify a double error. The receiver stops instead of guessing a repair, and withholds the data.",
         "seconds": 22,
-        "chapterAt": 155.0,
+        "chapterAt": 155,
         "at": 155.45
       },
       {
@@ -5953,7 +5953,7 @@
     ]
   },
   "logic-gates": {
-    "duration": 177.0,
+    "duration": 177,
     "cues": [
       {
         "id": "pull-up",
@@ -5976,7 +5976,7 @@
         "zh": "现在把输入变成一。上方通路断开，蓝色的下拉通路接通。电容里原有的电荷经过沟道流向地，输出电压连续下降。输入已经变了，输出却还需要一点时间。这就是同一只反相器完成的另一个方向。",
         "en": "Now raise the input. The upper path disconnects and the blue pull-down turns on. Charge leaves the output capacitor through that channel toward ground. The input has already changed, but the output is still moving. This is the other half of inversion: a high input eventually produces a low output.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -5988,7 +5988,7 @@
         "zh": "把下方换成两只串联开关。只有一个输入变高时，蓝色通路仍然断着，输出保持高电平。等两个输入都高，放电路径才完整。再把其中一个输入变低，上方的并联支路就能充电。这种接法，实现的就是与非。",
         "en": "Look at the two lower switches in series. Changing just one input leaves a gap, so the output stays high. When both inputs become high, the discharge path is complete. Lower either input again and a parallel upper branch can recharge the capacitor. Those connections are what make this a NAND gate.",
         "seconds": 22,
-        "chapterAt": 44.0,
+        "chapterAt": 44,
         "at": 44.45
       },
       {
@@ -6000,7 +6000,7 @@
         "zh": "再交换串联和并联的位置。下方现在有两条独立通路，任何一个输入变高，就能让电容放电。上方却需要两个开关都接通，输出才能重新升高。留意最后的上升：电流要经过两只电阻，充电也因此更慢。",
         "en": "Exchange the series and parallel arrangements. Now either lower branch can discharge the output when its input goes high. Recharging requires both upper switches to be on. Notice the slower final rise: charging current must pass through two resistances in series. The circuit topology changes both the logic and the timing.",
         "seconds": 22,
-        "chapterAt": 66.0,
+        "chapterAt": 66,
         "at": 66.45
       },
       {
@@ -6012,7 +6012,7 @@
         "zh": "把刚才的下降过程放慢。蓝线进入浅色带，读数变成了叉号。电容并没有失去电压，只是此时不能保证把它读成零或一。圆点标出半电源电压，用来比较延迟。本片的这些界线是教学约定，不是所有芯片的规格。",
         "en": "Watch the falling voltage enter the shaded band. Its logic label becomes X, although the capacitor still has a definite voltage. In this band we do not promise a reliable zero or one. The dot marks half supply for comparing delay. These boundaries are teaching choices, not universal chip specifications.",
         "seconds": 22,
-        "chapterAt": 88.0,
+        "chapterAt": 88,
         "at": 88.45
       },
       {
@@ -6024,7 +6024,7 @@
         "zh": "先看较小的输出电容，电压很快就升起来了。接着只把电容放大四倍，电源和开关电阻都不变。两次曲线用同一个时间范围，这次明显变缓。更大的电容需要搬运更多电荷，才能改变同样多的电压。",
         "en": "First watch the smaller output capacitor charge. Now replace it with four times the capacitance, keeping the supply and channel resistance unchanged. The plot uses the same time scale. Reaching half supply takes four times as long because changing the voltage requires moving four times as much charge through the same resistance.",
         "seconds": 22,
-        "chapterAt": 110.0,
+        "chapterAt": 110,
         "at": 110.45
       },
       {
@@ -6036,7 +6036,7 @@
         "zh": "顺着这条连线，第一级输出接到第二级的两个栅极。先看第一条电压曲线下降。只有穿过模型的切换界线，第二级才换通路，另一只电容开始充电。两条曲线之间的错开，来自两段真实计算的充放电过程。",
         "en": "Follow the wire from the first output to both gates of the second inverter. The first voltage falls before the second stage changes paths. It switches only when that voltage crosses our model boundary. Then its own capacitor starts charging. The separation between the curves comes from two calculated charging and discharging processes.",
         "seconds": 22,
-        "chapterAt": 132.0,
+        "chapterAt": 132,
         "at": 132.45
       },
       {
@@ -6048,7 +6048,7 @@
         "zh": "最后追踪一轮充放电。充电时，电源给出的能量一部分存进电容，另一部分已经变成热。放电时，存下来的能量也经过下拉电阻变成热。稳定电平在这个理想模型里不持续耗电，但翻转有代价；真实芯片还会有漏电等损耗。",
         "en": "Now follow the energy through a complete charge and discharge. During charging, some supply energy is stored and some is already lost as heat. Discharging turns the stored part into heat too. A settled level draws no permanent current in this ideal model, but switching costs energy. Real chips also have leakage and other losses.",
         "seconds": 22,
-        "chapterAt": 154.0,
+        "chapterAt": 154,
         "at": 154.45
       }
     ]
@@ -6077,7 +6077,7 @@
         "zh": "接上负载，放电开始。金色标记从石墨一侧离开，经电解液向另一极移动。蓝色电子标记先经过集流体，再绕到外部负载。它们的路径不同，却属于同一次电荷转移。标记是选出的示踪对象，不代表真实粒子的数量，也没有模拟它们的实际速度。",
         "en": "Connect the load and watch discharge begin. Gold moves out of the graphite through electrolyte. Blue first reaches a collector, then takes the wire through the external load. These separate routes belong to the same charge transfer. The markers are selected tracers, not particle counts or actual transit speeds.",
         "seconds": 22,
-        "chapterAt": 23.0,
+        "chapterAt": 23,
         "at": 23.45
       },
       {
@@ -6137,7 +6137,7 @@
         "zh": "让外部装置改为提供能量，方向就反过来了。还是这些示踪点，没有换一批，也没有跳到另一端。锂向石墨返回，电子也沿外部回路反向传输。充电源必须提供足够的端电压：一部分输入增加可逆储能，另一部分仍消耗在内部。",
         "en": "The external device now supplies energy, and the directions reverse. These are the same tracers, retracing their paths without jumping to a new starting point. Lithium returns to graphite, and external electrons reverse too. The source increases reversible storage while also paying for internal losses; charging does not eliminate resistance.",
         "seconds": 22,
-        "chapterAt": 137.0,
+        "chapterAt": 137,
         "at": 137.45
       },
       {
@@ -6256,7 +6256,7 @@
     ]
   },
   "database-index": {
-    "duration": 202.0,
+    "duration": 202,
     "cues": [
       {
         "id": "database-index-scan",
@@ -6279,7 +6279,7 @@
         "zh": "现在打开索引的根页。它不装完整记录，只放分隔键和下一页的地址。每个分隔键，是右边子树的最小一项。这里先比较键值，相同再比较行号。查询从六十三、行号零开始；零比所有真实行号小，这样就不会越过同键的第一条记录。",
         "en": "Open the root page now. It holds separators and child addresses, not full records. Each separator is the smallest entry in the subtree to its right. Compare the key first, then the row ID. Our search starts with sixty-three and row zero, which comes before every real row with that key.",
         "seconds": 22,
-        "chapterAt": 24.0,
+        "chapterAt": 24,
         "at": 24.45
       },
       {
@@ -6291,7 +6291,7 @@
         "zh": "让这个查询继续往下走。每一次比较，都决定下一张要翻开的页。到叶页以后，按照顺序检查索引项；需要时，沿链接走到下一张叶页。六十三找到了，旁边的行号是十四。用它回到第四张堆页，取出完整内容。索引没有把原记录搬走，只是给了它一条可查找的路。",
         "en": "Let the search continue downward. Each comparison chooses the next page to open. At a leaf, inspect the entries in order, following its neighbor link when necessary. There is sixty-three, paired with row fourteen. That pointer leads back to heap page four for the payload. The original record has stayed in place.",
         "seconds": 22,
-        "chapterAt": 47.0,
+        "chapterAt": 47,
         "at": 47.45
       },
       {
@@ -6303,7 +6303,7 @@
         "zh": "两条路都返回第十四行，现在把账放在一起。全扫用了六张堆页，索引用了四张索引页，再加一张堆页，总共五张。比较次数也来自刚才的实际步骤。我们只数一次查询触及的不同页，读过的页保留在缓存里。这不是秒表，更不能把这个差额当成数据库的加速倍数。",
         "en": "Both routes return row fourteen. Now count all their pages: six heap pages for the scan; four index pages plus one heap page for the lookup. Comparisons come from the recorded steps too. A query retains pages already read. These are distinct-page counts, not a stopwatch or a prediction of production speed.",
         "seconds": 22,
-        "chapterAt": 73.0,
+        "chapterAt": 73,
         "at": 73.45
       },
       {
@@ -6327,7 +6327,7 @@
         "zh": "查找之外，还要照顾新记录。先加入几条数据，再看七十九落进已满的叶页。四项放不下，就分成两张各有两项的页，并把邻居链接接好。右页最小的一项复制到父页，配上新页地址。注意是复制：叶子里仍然保留那条记录的索引项。",
         "en": "An index must handle new records too. After a few inserts, seventy-nine reaches a full leaf. Four entries exceed our three-entry capacity, so split them into two pages and repair the neighbor link. Copy the right page’s smallest entry into the parent beside its address. The actual entry remains in the leaf.",
         "seconds": 22,
-        "chapterAt": 125.0,
+        "chapterAt": 125,
         "at": 125.45
       },
       {
@@ -6357,7 +6357,7 @@
     ]
   },
   "brownian-motion": {
-    "duration": 182.0,
+    "duration": 182,
     "cues": [
       {
         "id": "wander",
@@ -6380,7 +6380,7 @@
         "zh": "现在切到一次纳秒尺度的观测，只放大质心的位置。金色条是这段时间里热浴给出的冲量，蓝色条是阻力的冲量。把两条带符号的量相加，就得到动量的变化。这不是逐个分子碰撞的录像，而是很多碰撞合成后的随机模型。",
         "en": "Now switch to a nanosecond observation, magnifying only the centroid. Gold shows the bath’s impulse over one window; blue shows the drag impulse. Add them with their signs to get the momentum change. These are collective random effects, not a movie of individually resolved molecular collisions.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -6392,7 +6392,7 @@
         "zh": "做一个只属于模型的对照：关掉热噪声，保留刚才的初速度。粒子不会立刻停住，阻力让它慢慢失去速度，曲线按指数落下。这里的时间常数只有大约五十八纳秒。零开尔文只是经典极限，不是在说真实液体可以这样冷却。",
         "en": "Try a mathematical control: switch off thermal noise but retain the initial velocity. The particle does not stop instantly. Drag gradually erases its motion along this exponential curve. The relaxation time here is about fifty-eight nanoseconds. Zero kelvin is a classical limit, not a claim about cooling a real liquid.",
         "seconds": 22,
-        "chapterAt": 44.0,
+        "chapterAt": 44,
         "at": 44.45
       },
       {
@@ -6416,7 +6416,7 @@
         "zh": "把黏度和粒子半径固定，比较三百与四百五十开尔文。两次计算使用匹配的随机输入，较热的一条展开得更远。看扩散系数，温度增到一点五倍，D 也增到一点五倍；典型位移按平方根改变，不会直接变成一点五倍。",
         "en": "Hold viscosity and radius fixed, and compare three hundred with four hundred fifty kelvin. Matched random inputs make the scale change visible. The warmer path spreads farther. A fifty-percent temperature increase gives a fifty-percent increase in D. Typical displacement follows a square root, so it does not increase by the same factor.",
         "seconds": 22,
-        "chapterAt": 90.0,
+        "chapterAt": 90,
         "at": 90.45
       },
       {
@@ -6440,7 +6440,7 @@
         "zh": "现在把六十四次独立实验放回同一个起点。金色仍是最初那条，其他样本各走各的。下面先看金线，它到原点的距离可以变大，也可以变小。再看平均后的蓝线，有限样本仍会波动，却开始显出理论的增长尺度：这里看两个坐标，长时间是四 D t。",
         "en": "Repeat the experiment sixty-four times from the same origin. Gold still identifies our original path; the others wander independently. Its squared distance can rise or fall. The blue average still fluctuates with a finite sample, but reveals the theoretical growth scale. For two observed coordinates, the long-time result is four D t.",
         "seconds": 22,
-        "chapterAt": 135.0,
+        "chapterAt": 135,
         "at": 135.45
       },
       {
@@ -6452,13 +6452,13 @@
         "zh": "最后看深色菱形，它是这些位置的平均，不是一颗新粒子。大家向不同方向走，平均位置仍可能靠近起点；均方根位移却明显更大。这就是随机运动里可靠的部分：我们能预测许多次实验的尺度，不能把平均位置当作这一颗粒子的下一站。",
         "en": "Watch the dark diamond. It is the average position, not another particle. Wandering in different directions can leave that average near the origin while the root-mean-square displacement grows much larger. This is what the statistical prediction gives us: a scale across repeated trials, not the next destination of this particular sphere.",
         "seconds": 22,
-        "chapterAt": 159.0,
+        "chapterAt": 159,
         "at": 159.45
       }
     ]
   },
   "diffusion": {
-    "duration": 186.0,
+    "duration": 186,
     "cues": [
       {
         "id": "release",
@@ -6481,7 +6481,7 @@
         "zh": "把这条亮线固定在峰的右边。沿着向右的方向，浓度在下降，所以净通量指向右。下面的短线标出局部坡度，它逐渐变平，通量读数也降低。箭头不是水流速度，更不是每个分子的路线；它表示这个截面上统计意义的净输运。",
         "en": "Keep the bright section to the right of the peak. Concentration decreases toward the right, so net flux points right. The short tangent underneath shows the local slope. As it flattens, the flux reading falls too. This arrow is neither fluid velocity nor a molecule’s route; it represents net transport across the section.",
         "seconds": 22,
-        "chapterAt": 22.0,
+        "chapterAt": 22,
         "at": 22.45
       },
       {
@@ -6493,7 +6493,7 @@
         "zh": "现在只圈住右边这一小段。左边进入的通量减去右边离开的通量，就是它的净增加率。留意符号：开始是正，后来转成负，这一段可以先变多、再变少。守恒不要求每个小格都不变化，而是要求所有进出能够对上账。",
         "en": "Focus on the highlighted region on the right. Subtract the flux leaving its right edge from the flux entering its left edge. That gives its accumulation rate. Watch the sign change from positive to negative. A region can gain and then lose material; conservation requires the full transport budget to balance.",
         "seconds": 22,
-        "chapterAt": 45.0,
+        "chapterAt": 45,
         "at": 45.45
       },
       {
@@ -6505,7 +6505,7 @@
         "zh": "换一把尺子，观察分布的方差。最初，它增加得接近两倍扩散系数乘时间；但这条带不是无限长。随着两端的浓度上升，增长逐渐变慢，最后接近均匀分布的极限。曲线变平，不表示分子停下，只表示宏观浓度不再明显起伏。",
         "en": "Use a different measure now: the variance of the distribution. Its early increase is close to twice diffusivity times time. But this strip is finite. As concentration builds near the ends, growth slows toward the uniform-distribution limit. A flat profile does not mean molecules stop; it means the macroscopic concentration has become even.",
         "seconds": 22,
-        "chapterAt": 67.0,
+        "chapterAt": 67,
         "at": 67.45
       },
       {
@@ -6517,7 +6517,7 @@
         "zh": "让两条同样的浓度带一起开始，质量、长度和初态完全相同，只把第二条的扩散系数加倍。对照两条曲线，较大的扩散系数让分布更快变平。下面的无量纲时间也正好加倍。这是方程里的时间尺度改变，不是把动画随意调快。",
         "en": "Start two identical concentration strips together. Keep their amount, length and initial profile the same, and double only the second diffusivity. Its curve becomes flatter sooner. The dimensionless time beneath it is also doubled. This is the equation’s time scaling, rather than an arbitrary playback-speed adjustment.",
         "seconds": 22,
-        "chapterAt": 90.0,
+        "chapterAt": 90,
         "at": 90.45
       },
       {
@@ -6553,7 +6553,7 @@
         "zh": "最后换一个边界实验。左端浓度固定为一，右端固定为零，初态也重新指定。两端储库可以交换物质，带内总量的变化必须记入边界账本。看最后逐渐接近直线的浓度曲线：分布趋于稳定，净输运仍然存在。稳态不是零通量，静止介质也不等于没有扩散。",
         "en": "Finish with a different boundary experiment and a new initial profile. Hold the left concentration at one and the right at zero. Reservoirs can exchange material, so changes inside belong in the boundary budget. The profile approaches a steady straight line, yet flux continues through both ends. Steady state does not require zero transport.",
         "seconds": 22,
-        "chapterAt": 160.0,
+        "chapterAt": 160,
         "at": 160.45
       }
     ]
@@ -6606,7 +6606,7 @@
         "zh": "把初始生存时间设得很小，再跟一次这个分组。它在源端带着二，到第一个路由器变成一，第二个再减就到了零。即使目的地只剩一跳，也不能继续转发。这个逐跳限制能阻止分组在错误的路由环里一直兜圈。",
         "en": "Give this packet a deliberately small TTL. It leaves the source with two. The first router reduces it to one; the second reduces it to zero and discards it, even though the destination is only one link away. This hop-by-hop bound prevents a packet from circulating indefinitely in a routing loop.",
         "seconds": 22,
-        "chapterAt": 68.0,
+        "chapterAt": 68,
         "at": 68.45
       },
       {
@@ -6618,7 +6618,7 @@
         "zh": "看 B 通向接收端的链路。一号还在路上传播，链路突然中断，它就在这里丢失了。B 先知道故障，随后发出紫色的拓扑更新。其他节点必须等消息到达并处理完，不能在故障瞬间就拥有同一张新地图。",
         "en": "Watch the link from B to the receiver. Packet one is still propagating when that link fails, so it is lost there. B notices first and sends the violet topology update. The other routers must receive and process that message. They cannot all acquire the new network map at the instant of failure.",
         "seconds": 22,
-        "chapterAt": 90.0,
+        "chapterAt": 90,
         "at": 90.45
       },
       {
@@ -6630,7 +6630,7 @@
         "zh": "现在跟二号，并对照三张路由表。B 已经改道，C 却还按旧消息送回去，于是出现短暂绕圈。等更新安装完成，C 终于直接发往接收端。表格里的版本号和下一跳并非一起跳变，收敛就是这个逐处完成的过程。",
         "en": "Follow packet two and compare the three local tables. B has changed its route, but C still sends the packet back using old information. That creates a temporary loop. Once C installs the update, it can forward directly to R. The different version numbers expose how convergence happens at different routers at different times.",
         "seconds": 22,
-        "chapterAt": 112.0,
+        "chapterAt": 112,
         "at": 112.45
       },
       {
@@ -6642,7 +6642,7 @@
         "zh": "再发送完全相同的十个分组。先给出口两个等待位，位置满了，后来的分组就被丢弃，编号仍留在记录里。接着只增加等待位。五号这次能留下，却要等前面的分组发送完。缓存可以容纳更多等待，不能凭空增加链路速率。",
         "en": "Send exactly the same ten packets at exactly the same times. With two waiting slots, a full queue discards later arrivals and keeps their IDs in the loss record. Now increase only the buffer. Packet five survives, but waits behind earlier packets. More storage accommodates waiting; it does not create extra link capacity.",
         "seconds": 22,
-        "chapterAt": 134.0,
+        "chapterAt": 134,
         "at": 134.45
       },
       {
@@ -6683,7 +6683,7 @@
         "zh": "先停在这颗绿色齿旁边。宽宽的头后面是一段细颈，齿根包着织带边缘的珠边。现在剖开齿头的上唇：中间不是实心，里面留着齿窝，对侧齿颈的薄翼伸了进来。上、下两层齿唇围住薄翼，同时保留间隙；这不是两块平面图案简单叠在一起。",
         "en": "Pause beside the green tooth. Behind its broad head is a narrow neck, and its root wraps around the tape bead. Cut away the upper lip: the head has a recess through its middle. A thin wing from the opposite neck enters that space. Upper and lower lips surround it with clearance, making this a three-dimensional connection.",
         "seconds": 21.5,
-        "chapterAt": 23.0,
+        "chapterAt": 23,
         "at": 23.45
       },
       {
@@ -6719,7 +6719,7 @@
         "zh": "把拉头先放在一边，只看已经咬合的三颗齿。向左拉绿色齿，它的宽肩会抵住对侧两颗齿肩。图中假设左右方向受力、上下两处接触完全对称，所以每处反力是总载荷的一半。箭头变长，齿却不假装伸长；这是解释阻挡方向的刚体模型，不是拉链承重的数值预报。",
         "en": "Set the slider aside and inspect three engaged teeth. A sideways pull on the green tooth presses its broad shoulders against two opposite shoulders. In this deliberately symmetric, rigid-body example, each contact carries half the applied load. The arrows grow, but the teeth do not stretch. This explains a blocked direction; it does not predict a real zipper’s strength.",
         "seconds": 21.5,
-        "chapterAt": 98.0,
+        "chapterAt": 98,
         "at": 98.45
       },
       {
@@ -6743,7 +6743,7 @@
         "zh": "拉到最上面，先碰到的是两侧上止，拉头不能继续越过它们。再向下走，闭尾拉链的下止连接着两条带，也接住拉头。这些不是装饰：演示的行程就由实际接触位置限定。留意顶部仍有齿在导道里。另外，我们选的是非锁定拉头，齿的咬合不能代替拉头自锁。",
         "en": "At the upper end, two top stops prevent the slider from leaving the tapes. At the lower end, a bridge joins both tapes and catches the slider. These parts set the model’s actual travel limits. Some upper teeth remain inside the guide. One distinction matters: this is a non-locking slider; engaged teeth do not themselves lock the slider’s position.",
         "seconds": 21.5,
-        "chapterAt": 149.0,
+        "chapterAt": 149,
         "at": 149.45
       },
       {
@@ -6755,13 +6755,13 @@
         "zh": "最后做一个只改齿形的对照。第一组保留宽肩，第二组把宽肩削窄，两个画面尝试相同的横向位移。有肩的齿留在原位，没有肩的假想齿能够退出。这个对照不是新产品设计，也不比较强度。它把拉链的两个工作分开了：齿形负责留住，拉头安排进入和退出的路径。",
         "en": "For the last comparison, change only the broad shoulders. Keep them in the first specimen and narrow them in the hypothetical second one. Apply the same attempted sideways shift. The shouldered teeth stay put; the narrow heads can withdraw. This is a geometry experiment, not a strength test. Tooth shape retains the join; the slider arranges entry and exit.",
         "seconds": 21.5,
-        "chapterAt": 175.0,
+        "chapterAt": 175,
         "at": 175.45
       }
     ]
   },
   "tides": {
-    "duration": 202.0,
+    "duration": 202,
     "cues": [
       {
         "id": "gravity",
@@ -6808,7 +6808,7 @@
         "zh": "在受控比较中，让月球靠近一些。整体引力随距离的平方变化，主导潮汐项却随距离的三次方变化，所以实线比虚线上升更快。地球的大小没有改变，改变的是引力跨越这个大小时的差异。这里的距离滑块是思想实验，不是月球真实运行日期的进度条。",
         "en": "Bring the Moon closer in this controlled comparison. Bulk attraction grows with inverse distance squared, but the leading tidal term grows with inverse distance cubed. The solid curve rises faster than the dashed one. Earth’s size stays fixed; gravity varies more across it. This is a thought experiment, not an orbital calendar.",
         "seconds": 22,
-        "chapterAt": 75.0,
+        "chapterAt": 75,
         "at": 75.45
       },
       {
@@ -6820,7 +6820,7 @@
         "zh": "先保留月球，再逐渐把太阳的潮汐项加进来。太阳对地球的整体引力很强，却因为距离遥远，跨越地球的引力差没有那么大。在这组参考距离下，太阳的主导潮汐强度约为月球的零点四六倍。两者同向时，平衡海面的形变叠加，潮差也随之增大。",
         "en": "Keep the Moon’s contribution, then gradually add the Sun’s. The Sun exerts strong bulk attraction, but its enormous distance limits the variation across Earth. At these reference distances, its leading tidal strength is about forty-six percent of the Moon’s. When their directions align, the equilibrium deformations reinforce each other and the range grows.",
         "seconds": 22,
-        "chapterAt": 100.0,
+        "chapterAt": 100,
         "at": 100.45
       },
       {
@@ -6844,7 +6844,7 @@
         "zh": "把月球方向固定，让赤道上的一个观测位置转过一圈。金色标记会依次经过这张理想海面的两个高处，曲线记录的也是同一个位置的计算高度。这里追踪的是地球上的位置，不是一团绕圈跑的海水。横轴用相对转角表示，不能把它直接读成某个港口的潮汐时刻。",
         "en": "Hold the Moon’s direction fixed and turn a marked site around the equator. It crosses two high parts of this equilibrium surface. The plotted height comes from that same site calculation. The marker follows a location on Earth, not a parcel of water. Our horizontal axis is an angle, not a local tide timetable.",
         "seconds": 22,
-        "chapterAt": 150.0,
+        "chapterAt": 150,
         "at": 150.45
       },
       {
@@ -6856,7 +6856,7 @@
         "zh": "换到四十五度纬圈，再让月球偏离赤道，两次理想高值开始不一样。随后把观测点移向更高纬度，这个例子最后只剩一个峰值。真实海洋还受到海盆形状、自转、摩擦与共振影响。所以，一天两次高潮并不是所有海岸的统一规则，这张平衡图也不能给出当地的潮高预报。",
         "en": "Start at forty-five degrees latitude and move the Moon north of the equator. The two ideal peaks become unequal. Now move the observer farther north: this example ends with one peak. Real oceans also involve basin shape, rotation, friction and resonance. Neither these heights nor two daily high tides are universal coastal rules.",
         "seconds": 22,
-        "chapterAt": 175.0,
+        "chapterAt": 175,
         "at": 175.45
       }
     ]
@@ -6885,7 +6885,7 @@
         "zh": "我们把一支动臂缸沿轴线剖开。里面是一根活塞杆，杆的末端是活塞，活塞把缸筒隔成两个腔：靠底部的无杆腔，和套着杆的有杆腔。泵把油送进无杆腔，油越积越多，活塞只能往外走，活塞杆就把动臂顶了起来。另一腔里的油同时被挤出去，沿回油管流回油箱。",
         "en": "Let's cut one boom cylinder open along its axis. Inside is a rod, and at the end of the rod a piston that divides the barrel into two chambers: the cap end at the base, and the rod end around the rod. The pump sends oil into the cap end. As oil accumulates, the piston has nowhere to go but outward, and the rod lifts the boom. Oil in the other chamber is squeezed out and returns to the tank.",
         "seconds": 24,
-        "chapterAt": 24.0,
+        "chapterAt": 24,
         "at": 24.45
       },
       {
@@ -6909,7 +6909,7 @@
         "zh": "轻轻拉杆，油缸和泵连通了。看压力表：斗里三百公斤时六点五兆帕，加到一千八百公斤，升到九点五。压力不是泵定的，是载荷定的。帕斯卡原理说，连通的油液里压力处处相等：泵里直径两厘米的小活塞和动臂缸直径十二厘米的大活塞，顶着同样的压力，面积大三十六倍，推力也大三十六倍。这就是液压以小博大的道理。",
         "en": "Pull the lever a little and the cylinder is connected to the pump. Watch the gauge: three hundred kilograms in the bucket reads six and a half megapascals; add earth up to eighteen hundred and it climbs to nine and a half. The pump doesn't set the pressure; the load does. Pascal's principle says the connected oil carries one pressure everywhere. A pump piston two centimetres across and the boom piston twelve centimetres across feel the same pressure, and thirty-six times the area means thirty-six times the force. That is how hydraulics turns a small push into a large one.",
         "seconds": 24,
-        "chapterAt": 77.0,
+        "chapterAt": 77,
         "at": 77.45
       },
       {
@@ -6921,7 +6921,7 @@
         "zh": "手柄并不直接连着油缸，它推的是阀芯。杆拉得少，阀口开得小，进油少：每分钟四十升，活塞每秒走三厘米，动臂慢慢抬。杆拉到底，阀口全开，一百升，七厘米多，动臂明显快了。面积和压力都几乎没变，变的只是每秒进来多少油。右手杆管动臂和铲斗，左手杆管斗杆和回转。",
         "en": "The lever isn't linked to the cylinder; it moves the spool. Pull a little and the port opens a little, so little oil gets through: forty litres a minute, the piston creeps at three centimetres a second, the boom rises slowly. Pull all the way and the port is wide open: a hundred litres, over seven centimetres a second, and the boom is clearly quicker. Area and pressure barely change; what changes is how much oil arrives each second. The right lever runs the boom and bucket, the left lever the stick and swing.",
         "seconds": 24,
-        "chapterAt": 114.0,
+        "chapterAt": 114,
         "at": 114.45
       },
       {
@@ -6945,7 +6945,7 @@
         "zh": "最后一段传动最巧。铲斗缸装在斗杆背上，它的活塞杆并不直接推铲斗，而是推在一个接点上：接点一头连着摇臂，摇臂铰在斗杆上；另一头连着连杆，连杆铰在铲斗的耳板上。四个铰点组成一个四连杆。看，活塞杆伸出，接点被推向斗尖，连杆把铲斗耳板往前顶，铲斗就绕着铲斗销卷了进来。杆走直线，斗齿走的是一段圆弧。",
         "en": "The last link in the chain is the cleverest. The bucket cylinder sits on the back of the stick, and its rod doesn't push the bucket directly. It pushes a joint: on one side the rocker, pinned to the stick; on the other the link, pinned to the bucket's ears. Four pins make a four-bar linkage. Watch: as the rod extends, the joint is pushed toward the tip, the link drives the bucket ear forward, and the bucket curls in about its pin. The rod moves in a straight line; the teeth sweep an arc.",
         "seconds": 24,
-        "chapterAt": 180.0,
+        "chapterAt": 180,
         "at": 180.45
       },
       {
@@ -6963,7 +6963,7 @@
     ]
   },
   "double-slit": {
-    "duration": 168.0,
+    "duration": 168,
     "cues": [
       {
         "id": "double-slit-01",
@@ -6979,7 +6979,7 @@
       },
       {
         "id": "double-slit-02",
-        "chapterAt": 24.0,
+        "chapterAt": 24,
         "at": 24.45,
         "seconds": 24,
         "title": "跟住屏幕上的一点",
@@ -6991,7 +6991,7 @@
       },
       {
         "id": "double-slit-03",
-        "chapterAt": 48.0,
+        "chapterAt": 48,
         "at": 48.45,
         "seconds": 24,
         "title": "先加电场，再算亮度",
@@ -7003,7 +7003,7 @@
       },
       {
         "id": "double-slit-04",
-        "chapterAt": 72.0,
+        "chapterAt": 72,
         "at": 72.45,
         "seconds": 24,
         "title": "两缝拉开，条纹变密",
@@ -7015,7 +7015,7 @@
       },
       {
         "id": "double-slit-05",
-        "chapterAt": 96.0,
+        "chapterAt": 96,
         "at": 96.45,
         "seconds": 24,
         "title": "波长变长，条纹变疏",
@@ -7027,7 +7027,7 @@
       },
       {
         "id": "double-slit-06",
-        "chapterAt": 120.0,
+        "chapterAt": 120,
         "at": 120.45,
         "seconds": 24,
         "title": "缝变宽，包络变窄",
@@ -7039,7 +7039,7 @@
       },
       {
         "id": "double-slit-07",
-        "chapterAt": 144.0,
+        "chapterAt": 144,
         "at": 144.45,
         "seconds": 24,
         "title": "一个点，一个点地积累",
@@ -7052,7 +7052,7 @@
     ]
   },
   "nfc": {
-    "duration": 168.0,
+    "duration": 168,
     "cues": [
       {
         "id": "nfc-01",
@@ -7075,7 +7075,7 @@
         "zh": "读卡线圈里的电流不断换向，周围的磁场也跟着变化。真实电流每秒完成一千三百五十六万次完整振荡，画面已大幅放慢。变化的磁通穿过标签线圈，在线圈两端感应出交流电压。",
         "en": "The reader's coil carries an alternating current, creating a changing magnetic field. In reality, it completes thirteen point five six million cycles each second. We have slowed it down. Changing magnetic flux through the tag's coil induces an alternating voltage.",
         "seconds": 24,
-        "chapterAt": 24.0,
+        "chapterAt": 24,
         "at": 24.45
       },
       {
@@ -7087,7 +7087,7 @@
         "zh": "芯片需要更稳定的电源。看这幅整流示意：它把两种方向的输入变成同一极性的输出，再由储能电容缓冲波动。只有供电足够，标签才能处理指令。这里展示功能，真实芯片的电路会更复杂。",
         "en": "The chip needs a steadier supply. In this rectifier illustration, both input polarities become one output polarity. A storage capacitor smooths the supply. With enough power, the tag can process a command. This shows the function; the circuit inside a real chip is more complex.",
         "seconds": 24,
-        "chapterAt": 48.0,
+        "chapterAt": 48,
         "at": 48.45
       },
       {
@@ -7099,7 +7099,7 @@
         "zh": "读卡器开始发问了。快速振荡的载波里，出现一串短暂停顿。暂停的位置按照编码规则安排，标签从包络中识别这些变化。这里放大一小段信号，看信息怎样搭上供能的通道，并没有重演完整的通信协议。",
         "en": "Now the reader asks a question. The rapidly oscillating carrier contains a pattern of brief pauses. Their positions follow an encoding rule. The tag detects those changes in the envelope. We have enlarged a short signal segment to show information riding on the power link, rather than a complete protocol exchange.",
         "seconds": 24,
-        "chapterAt": 72.0,
+        "chapterAt": 72,
         "at": 72.45
       },
       {
@@ -7111,7 +7111,7 @@
         "zh": "轮到标签回答。看这个开关：它接入、断开一份负载，改变标签线圈的电流。互感也把这点变化带回读卡线圈。读卡器检测它，就能接收回答。这叫负载调制，标签不用另造一个强载波。",
         "en": "To answer, the tag switches an extra load in and out. That changes the current in its coil. Through mutual coupling, the change also appears at the reader's coil. The reader detects it as a reply. This is load modulation; the tag needs no separate strong carrier.",
         "seconds": 24,
-        "chapterAt": 96.0,
+        "chapterAt": 96,
         "at": 96.45
       },
       {
@@ -7123,7 +7123,7 @@
         "zh": "跟住这串比特。每一位决定哪半段出现快速的负载切换，读卡器的电流也留下对应的细纹。接收端识别这些节奏，再还原出原来的序列。读卡器一直提供载波，而回答的信息来自标签对负载的控制。",
         "en": "Follow this sequence of bits. Each bit selects which half contains a burst of rapid load switching. Matching ripples appear in the reader's current. The receiver recognizes the pattern and recovers the original sequence. The reader still supplies the carrier; the tag supplies the information by controlling its load.",
         "seconds": 24,
-        "chapterAt": 120.0,
+        "chapterAt": 120,
         "at": 120.45
       },
       {
@@ -7135,8 +7135,186 @@
         "zh": "先把间隙拉大。耦合减弱，拉得足够远，供电和回应都不足以维持通信。移回来，再把标签转一转：朝向也会影响耦合。重新靠近、对准，对话恢复。读取成功本身不代表身份已验证，也不代表支付完成。",
         "en": "First increase the gap. Coupling weakens, and far enough away, power and the reply become insufficient. Bring the tag back, then turn it: orientation matters too. Closeness and alignment restore the exchange. A successful read alone does not prove identity or complete a payment.",
         "seconds": 24,
-        "chapterAt": 144.0,
+        "chapterAt": 144,
         "at": 144.45
+      }
+    ]
+  },
+  "atomic-bomb": {
+    "duration": 243.5,
+    "cues": [
+      {
+        "id": "atomic-bomb-01",
+        "chapterAt": 0,
+        "at": 0.45,
+        "seconds": 24,
+        "title": "一个中子，一滴核",
+        "titleEn": "One neutron, one drop",
+        "caption": "吸收一个中子后，核像液滴一样裂开。",
+        "captionEn": "After absorbing a neutron, the nucleus splits like a drop.",
+        "zh": "看这颗铀-235 的核。一个慢中子靠近，被它吸收，核变成受激的铀-236，开始像一滴液体那样晃动。拉长，出现细颈，然后断开：两块碎片朝相反方向飞走，同时甩出三个新的中子。一次裂变，就放出大约一百七十三兆电子伏的能量。",
+        "en": "Watch this uranium-235 nucleus. A slow neutron drifts in and is absorbed. The nucleus becomes excited uranium-236 and begins to wobble like a drop of liquid. It stretches, a narrow neck forms, and it snaps. Two fragments fly apart, and three fresh neutrons are thrown out. One fission releases about 173 million electron-volts."
+      },
+      {
+        "id": "atomic-bomb-02",
+        "chapterAt": 27.5,
+        "at": 27.95,
+        "seconds": 24,
+        "title": "能量从结合能来",
+        "titleEn": "Energy from binding energy",
+        "caption": "碎片结合得更紧，多出的结合能变成动能。",
+        "captionEn": "Fragments are bound more tightly; the surplus becomes motion.",
+        "zh": "能量从哪里来？这条曲线是每个核子的结合能。铁附近最高，铀在右端偏低。裂开后，钡和氪这两块碎片都落到曲线更高的位置：碎片里每个核子多绑紧了大约零点八兆电子伏。两百多个核子加起来，再扣掉放出两个多余中子的花费，就是那一百七十三兆电子伏。作为对比，一次化学反应每个原子只有几个电子伏，在这张图上连一个像素都画不出来。",
+        "en": "Where does the energy come from? This curve is the binding energy per nucleon. Iron sits near the top; uranium lies lower at the far right. After the split, barium and krypton both land higher on the curve: each nucleon in the fragments is bound about 0.8 million electron-volts more tightly. Add that up over more than two hundred nucleons, subtract the cost of freeing two extra neutrons, and you get those 173 million electron-volts. A chemical reaction gives a few electron-volts per atom. On this chart it would not fill a single pixel."
+      },
+      {
+        "id": "atomic-bomb-03",
+        "chapterAt": 64.5,
+        "at": 64.95,
+        "seconds": 24,
+        "title": "一代接一代",
+        "titleEn": "Generation after generation",
+        "caption": "每一代都比上一代多，几十代后就是天文数字。",
+        "captionEn": "Each generation outnumbers the last; eighty generations later, astronomical.",
+        "zh": "每次裂变放出两到三个中子。如果它们都留在材料里，每个又能引发新的裂变，就长出这样一棵家族树：一，二，二，五，十二，二十五。少数中子被俘获，掉了队，但整体每一代大约是上一代的两倍多。一代只需要大约十纳秒。看右边的对数刻度：八十代之后，中子数已经超过十的二十四次方，而这总共不到一微秒。",
+        "en": "Every fission releases two or three neutrons. If they all stay inside the material and each one causes another fission, a family tree grows: one, two, two, five, twelve, twenty-five. A few neutrons are captured and drop out, but on average each generation is still more than twice the last. One generation takes only about ten nanoseconds. Look at the logarithmic scale on the right: after eighty generations the count passes ten to the twenty-fourth, and less than a microsecond has gone by."
+      },
+      {
+        "id": "atomic-bomb-04",
+        "chapterAt": 98.5,
+        "at": 98.95,
+        "seconds": 24,
+        "title": "小球：中子漏掉了",
+        "titleEn": "Small sphere: neutrons leak",
+        "caption": "球太小，中子还没碰上核就飞出去了。",
+        "captionEn": "Too small a sphere: neutrons escape before they collide.",
+        "zh": "现在把同样的材料做成一个小球，半径只有一点六个平均自由程。从中心放出一个中子，跟着它走：每一段直线是一次飞行，拐点是一次碰撞。看蓝点，那是中子离开球面的位置。球太小，大多数中子还没碰到几个核就漏出去了。增殖因子 k 只有零点六七，每一代都比上一代少，链式反应几步就熄灭。",
+        "en": "Now shape the same material into a small sphere, with a radius of only 1.6 mean free paths. Release one neutron at the centre and follow it: each straight run is a flight, each bend a collision. The blue dots mark where neutrons leave the surface. The sphere is too small, so most neutrons escape after only a few collisions. The multiplication factor k is just 0.67. Every generation is smaller than the last, and the chain dies out within a few steps."
+      },
+      {
+        "id": "atomic-bomb-05",
+        "chapterAt": 131.5,
+        "at": 131.95,
+        "seconds": 24,
+        "title": "大球：过了临界",
+        "titleEn": "Large sphere: past critical",
+        "caption": "体积长得比表面快；过了临界半径，链自己延续。",
+        "captionEn": "Volume outgrows surface; past the critical radius the chain sustains itself.",
+        "zh": "把球慢慢做大。产生中子的核数随体积增长，漏出的机会随表面增长，体积长得更快，所以 k 一路上升。标记越过虚线的那一刻，k 等于一，这就是临界半径。继续到四点五个自由程，k 约为一点五。再从中心放出一个中子：这一次，漏出的仍然不少，但每一代留下的中子比上一代更多，链式反应自己延续下去。",
+        "en": "Let the sphere grow. The number of nuclei that produce neutrons rises with volume, while the chance of leaking rises with surface area. Volume wins, so k climbs. The moment the marker crosses the dashed line, k equals one: that is the critical radius. Keep going to 4.5 mean free paths and k is about 1.5. Release one neutron at the centre again. Plenty still leak out, but every generation now leaves more neutrons than the last, and the chain sustains itself."
+      },
+      {
+        "id": "atomic-bomb-06",
+        "chapterAt": 164.5,
+        "at": 164.95,
+        "seconds": 24,
+        "title": "反应堆与炸弹",
+        "titleEn": "Reactor and bomb",
+        "caption": "同样的 k，反应堆靠缓发中子留出调节的时间。",
+        "captionEn": "Same k, but delayed neutrons give a reactor time to respond.",
+        "zh": "反应堆和炸弹用的是同一套物理，差别在 k 和代时间。反应堆把 k 控制在一附近。只靠瞬发中子，哪怕 k 只有一点零零一，灰线也会在一秒内失控。但有一小部分中子要等碎片衰变后才放出，平均晚十几秒，把代时间拉长到近零点一秒。蓝线一分钟才翻一倍，控制棒来得及调节。橙线是 k 等于一点五、每代十纳秒的链，约一微秒就冲到顶。",
+        "en": "A reactor and a bomb share the same physics; the difference is k and the generation time. A reactor holds k near one. With prompt neutrons alone, even k = 1.001 runs away within a second, as the grey line shows. But a small fraction of neutrons appear only after the fragments decay, more than ten seconds late, stretching the generation time to nearly a tenth of a second. The blue line takes a minute to double, and control rods can keep up. The orange line is k = 1.5 with ten nanoseconds per generation: it reaches the top in about a microsecond."
+      },
+      {
+        "id": "atomic-bomb-07",
+        "chapterAt": 204.5,
+        "at": 204.95,
+        "seconds": 24,
+        "title": "它为什么会停",
+        "titleEn": "Why it stops",
+        "caption": "一膨胀，密度下降，k 跌回一以下，反应自己停下。",
+        "captionEn": "Expansion lowers density, k drops below one, and the reaction stops itself.",
+        "zh": "增长如此之快，它是怎么停下来的？能量让材料急剧升温、膨胀。质量没有变，但密度下降，中子在两次碰撞之间要飞得更远，同样的球按平均自由程来量反而变小了。看标记沿曲线往回滑：膨胀到一点三四倍时 k 回到一，再大一点就跌回次临界。新放出的中子又开始漏掉，链式反应自己熄灭。这一切发生在不到一微秒里，只有一小部分原子核来得及裂变。",
+        "en": "If it grows this fast, how does it ever stop? The energy heats the material violently and it expands. The mass is unchanged, but the density falls, so a neutron travels farther between collisions. Measured in mean free paths, the same sphere is now smaller. Watch the marker slide back along the curve: at 1.34 times the original size k returns to one, and a little further it drops below. Newly released neutrons leak away again and the chain dies out. All of this happens in under a microsecond, and only a small fraction of the nuclei ever fission."
+      }
+    ]
+  },
+  "hydrogen-bomb": {
+    "duration": 210.0,
+    "cues": [
+      {
+        "id": "hydrogen-bomb-01",
+        "title": "靠近，然后被推开",
+        "titleEn": "Approach, then pushed back",
+        "caption": "两个核带正电，靠近就互相推开。",
+        "captionEn": "Both nuclei are positive; closeness pushes them apart.",
+        "zh": "跟住这颗粉色的氚核。它朝着氘核冲过去，可两个核都带正电，越近，推力越大。火焰的温度只让它走到几百万飞米就折返；太阳核心能让它爬到七百多飞米；一亿多度，也只到一百飞米左右，离三飞米的接触点还差得远。让它们真正相遇的，是最后那一点隧穿的概率。",
+        "en": "Follow the pink tritium nucleus. It rushes toward the deuterium, but both are positive, and the closer they get, the harder they push apart. A flame turns it back millions of femtometres out. The Sun's core lets it climb to about seven hundred. Even above a hundred million kelvin it stops near one hundred, far from the three-femtometre contact point. What finally lets them meet is a tiny chance of tunnelling through.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "hydrogen-bomb-02",
+        "title": "合上以后，能量从哪里来",
+        "titleEn": "Where the energy comes from",
+        "caption": "氦-4 绑得更紧，多出的能量被释放。",
+        "captionEn": "Helium-4 is bound tighter; the surplus is released.",
+        "zh": "看这条结合能曲线的左端。氘和氚每个核子只绑住一到三兆电子伏，而氦四高得多，每个核子超过七兆电子伏。把氘和氚合成氦四，再放出一个中子，多出来的十七点六兆电子伏就变成了动能，大部分由中子带走。按每个核子算，这比铀裂变还多四倍以上。",
+        "en": "Look at the left end of the binding-energy curve. Deuterium and tritium hold each nucleon with only one to three MeV, while helium-4 sits far higher, above seven MeV per nucleon. Fuse deuterium and tritium into helium-4, release a neutron, and the surplus 17.6 MeV becomes motion, most of it carried by the neutron. Per nucleon, that is more than four times what uranium fission gives.",
+        "seconds": 24,
+        "chapterAt": 27.0,
+        "at": 27.45
+      },
+      {
+        "id": "hydrogen-bomb-03",
+        "title": "温度决定分布的尾巴",
+        "titleEn": "Temperature sets the tail",
+        "caption": "只有分布尾巴上的少数核对能穿过势垒。",
+        "captionEn": "Only the few pairs in the tail can tunnel through.",
+        "zh": "现在把温度升上去。三千开时，所有核对的能量都挤在最左边那根针里。到了太阳核心的温度，分布才开始摊开；一亿多度时，尾巴伸到了几十千电子伏。紫色虚线是隧穿概率，随能量陡升。把分布和它相乘，中间出现这个亮色的峰，叫伽莫夫峰，聚变几乎全在这里发生。",
+        "en": "Now raise the temperature. At three thousand kelvin, every pair's energy is squeezed into that needle at the far left. At the Sun's core temperature the distribution begins to spread; above a hundred million kelvin its tail reaches tens of keV. The violet dashed line is the tunnelling probability, climbing steeply with energy. Multiply the two and the bright peak in the middle appears: the Gamow peak, where almost all fusion happens.",
+        "seconds": 24,
+        "chapterAt": 56.5,
+        "at": 56.95
+      },
+      {
+        "id": "hydrogen-bomb-04",
+        "title": "反应率随温度陡升",
+        "titleEn": "Rate climbs steeply with temperature",
+        "caption": "温度提高几倍，反应率提高几千倍。",
+        "captionEn": "A few times hotter, thousands of times faster.",
+        "zh": "把每一对核的平均反应率画在对数图上。亮点从一千电子伏走到三万电子伏，曲线几乎直着往上冲。从太阳核心到一亿度，温度只高了八倍，反应率却高了近四千倍。下面那条淡紫色曲线是氘氘反应，同样温度下慢一百倍。三千开的火焰远在图的左边之外，那里的反应率实际上是零。",
+        "en": "Here is the average reaction rate per pair on a logarithmic chart. As the bright dot moves from one to thirty keV, the curve shoots almost straight up. From the Sun's core to a hundred million kelvin the temperature rises eight times, yet the rate rises nearly four thousand times. The paler violet curve below is deuterium with deuterium, a hundred times slower. A flame lies far off the left edge, where the rate is effectively zero.",
+        "seconds": 24,
+        "chapterAt": 84.5,
+        "at": 84.95
+      },
+      {
+        "id": "hydrogen-bomb-05",
+        "title": "只有裂变能点燃它",
+        "titleEn": "Only fission can light it",
+        "caption": "裂变火球的辐射把聚变燃料压紧、加热。",
+        "captionEn": "A fission fireball's radiation squeezes and heats the fuel.",
+        "zh": "看这架温度阶梯。化学火焰停在三千开，亮点纹丝不动，燃料毫无反应。只有一次裂变爆炸能在瞬间到达一亿度，它放出的辐射加热并压缩分开放置的聚变燃料。这团燃料被压得越小，密度越高，单位体积的反应率按密度的平方增长。压缩一千倍后，燃料飞散前烧掉的份额从不到千分之一升到大约百分之八。",
+        "en": "Watch the temperature ladder. A chemical flame stops at three thousand kelvin; the marker does not move and the fuel does nothing. Only a fission explosion reaches a hundred million kelvin in an instant, and its radiation heats and compresses the separately placed fusion fuel. As the fuel sphere shrinks, density rises and the rate per volume grows with density squared. Compressed a thousand times, the share burned before the fuel flies apart rises from under a tenth of a percent to about eight percent.",
+        "seconds": 24,
+        "chapterAt": 113.0,
+        "at": 113.45
+      },
+      {
+        "id": "hydrogen-bomb-06",
+        "title": "燃料自带下一份氚",
+        "titleEn": "Fuel that makes its own tritium",
+        "caption": "中子把锂变成氚，燃料在燃烧中补给自己。",
+        "captionEn": "Neutrons turn lithium into tritium; the fuel restocks itself.",
+        "zh": "氚有放射性，存不住，所以燃料用固体氘化锂。跟住这颗刚生成的中子：它带着十四兆电子伏飞出去，撞上一个锂六核，锂六裂成一个氚核和一个氦核，还多放出四点八兆电子伏。新的氚回到起点，继续和氘反应。飞出去的快中子也能让周围的铀核裂变，再放出一份能量。",
+        "en": "Tritium is radioactive and cannot be stored, so the fuel is solid lithium deuteride. Follow the newly made neutron: it flies off with fourteen MeV, strikes a lithium-6 nucleus, and lithium-6 splits into tritium and helium, releasing another 4.8 MeV. The new tritium returns to the start and reacts with deuterium again. Fast neutrons escaping the fuel can also fission surrounding uranium, releasing more energy.",
+        "seconds": 24,
+        "chapterAt": 145.0,
+        "at": 145.45
+      },
+      {
+        "id": "hydrogen-bomb-07",
+        "title": "三种留住高温的办法",
+        "titleEn": "Three ways to hold the heat",
+        "caption": "同一反应，三种约束。",
+        "captionEn": "One reaction, three kinds of confinement.",
+        "zh": "同样的氘氚反应，要自持燃烧，密度、温度和约束时间的乘积得超过这条虚线。托卡马克用磁场，把稀薄的等离子体留住大约一秒。惯性约束走另一头：密度高出十一个多数量级，只留住一百亿分之一秒，二零二二年国家点火装置就这样首次实现点火。太阳则靠引力永久约束，烧的是慢得多的质子链，它有的是体积和时间。",
+        "en": "For the same D–T reaction to sustain itself, density times temperature times confinement time must cross this dashed line. A tokamak uses magnetic fields to hold a thin plasma for about a second. Inertial confinement takes the other end: density eleven orders of magnitude higher, held for a ten-billionth of a second. That is how the National Ignition Facility first reached ignition in 2022. The Sun confines by gravity and burns the far slower proton chain; it has volume and time to spare.",
+        "seconds": 24,
+        "chapterAt": 175.5,
+        "at": 175.95
       }
     ]
   }

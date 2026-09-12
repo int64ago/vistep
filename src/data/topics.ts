@@ -14,6 +14,77 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'hydrogen-bomb',
+    name: '氢弹',
+    title: '为什么点燃聚变，需要先引爆一颗原子弹？',
+    question: '为什么点燃聚变，需要先引爆一颗原子弹？',
+    description:
+      '跟住一颗氚核，从库仑势垒、隧穿与伽莫夫峰走到反应率，再看为什么只有裂变火球能把燃料压到点火。',
+    category: '能量与核',
+    duration: '3 分钟',
+    color: '#c7a6ff',
+    tag: '核物理 · 势垒与温度',
+    related: ['atomic-bomb', 'brownian-motion', 'diffusion'],
+    sources: [
+      {
+        title:
+          'NRL Plasma Formulary (2019) — fusion reactivity, Gamow energies and ion sound speed',
+        url: 'https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_19.pdf',
+      },
+      {
+        title:
+          'Bosch & Hale, Nuclear Fusion 32 (1992) 611 — improved formulas for fusion cross-sections and thermal reactivities',
+        url: 'https://doi.org/10.1088/0029-5515/32/4/I07',
+      },
+      {
+        title: 'OpenStax University Physics Volume 3, 10.6 — Nuclear Fusion',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion',
+      },
+      {
+        title: 'IAEA Atomic Mass Data Center — AME2020 binding energies',
+        url: 'https://www-nds.iaea.org/amdc/',
+      },
+      {
+        title: 'LLNL — National Ignition Facility achieves fusion ignition (December 2022)',
+        url: 'https://www.llnl.gov/news/national-ignition-facility-achieves-fusion-ignition',
+      },
+    ],
+    number: '67',
+  },
+  {
+    slug: 'atomic-bomb',
+    name: '原子弹',
+    title: '一块铀，为什么超过某个大小就会自己炸开？',
+    question: '一块铀，为什么超过某个大小就会自己炸开？',
+    description:
+      '跟住一个中子：看核像液滴一样裂开，看中子一代代增殖，再看球的大小怎样决定链式反应是熄灭还是延续。',
+    category: '能量与核',
+    duration: '4 分钟',
+    color: '#e2a15a',
+    tag: '核能 · 链式反应',
+    related: ['hydrogen-bomb', 'diffusion', 'brownian-motion'],
+    sources: [
+      {
+        title: 'OpenStax University Physics, Volume 3, 10.2 — Nuclear Binding Energy',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/10-2-nuclear-binding-energy',
+      },
+      {
+        title: 'OpenStax University Physics, Volume 3, 10.5 — Fission',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/10-5-fission',
+      },
+      {
+        title:
+          'MIT OpenCourseWare 22.05 — Neutron Science and Reactor Physics: diffusion, criticality and delayed neutrons',
+        url: 'https://ocw.mit.edu/courses/22-05-neutron-science-and-reactor-physics-fall-2009/pages/lecture-notes/',
+      },
+      {
+        title: 'IAEA AMDC — AME2020 atomic mass evaluation',
+        url: 'https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt',
+      },
+    ],
+    number: '66',
+  },
+  {
     slug: 'nfc',
     name: 'NFC',
     title: '没有电池，标签怎么回话？',

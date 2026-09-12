@@ -1,0 +1,69 @@
+---
+import { atomicBombCover, coverPath as path } from '../../models/atomic-bomb-cover';
+const cover = atomicBombCover();
+const { cx, cy, r } = cover.sphere;
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="ab-cover-core" cx="42%" cy="36%" r="70%">
+      <stop offset="0" stop-color="#6b3a22"></stop>
+      <stop offset=".7" stop-color="#2d1a12"></stop>
+      <stop offset="1" stop-color="#1a100c"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="230" fill="#170d0a"></rect>
+  <circle cx={cx} cy={cy} r={r + 10} fill="#f5b054" fill-opacity=".05"></circle>
+  <circle cx={cx} cy={cy} r={r} fill="url(#ab-cover-core)" stroke="#f5b054" stroke-opacity=".8"
+  ></circle>
+  {
+    cover.tracks.map((track) => (
+      <path
+        d={path(track.points)}
+        stroke="#f5b054"
+        stroke-width=".9"
+        stroke-opacity={track.opacity}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    ))
+  }
+  {
+    cover.bursts.map((b) => (
+      <g>
+        <circle cx={b.x} cy={b.y} r={b.r + 2.5} fill="#e8734a" fill-opacity={b.opacity * 0.35} />
+        <circle cx={b.x} cy={b.y} r={b.r} fill="#fff4de" fill-opacity={b.opacity} />
+      </g>
+    ))
+  }
+  {cover.heads.map((p) => <circle cx={p.x} cy={p.y} r="1.6" fill="#fff4de" />)}
+  {cover.leaks.map((p) => <circle cx={p.x} cy={p.y} r="1.8" fill="#8fc4e8" fill-opacity=".85" />)}
+  <path
+    d={`M${cover.unity.x1} ${cover.unity.y}H${cover.unity.x2}`}
+    stroke="#f5b054"
+    stroke-opacity=".7"
+    stroke-dasharray="3 3"></path>
+  <path
+    d={`M${cover.graph.left} ${cover.graph.top - 6}V${cover.graph.base}H${cover.graph.right}`}
+    stroke="#5a4636"
+    stroke-width="1"></path>
+  <path d={path(cover.curve)} stroke="#fff4de" stroke-width="1.6"></path>
+  <path
+    d={`M${cover.critical.x} ${cover.graph.base}V${cover.critical.y}`}
+    stroke="#f5b054"
+    stroke-opacity=".6"
+    stroke-dasharray="2 3"></path>
+  <circle
+    cx={cover.marker.x}
+    cy={cover.marker.y}
+    r="4"
+    fill="#f5b054"
+    stroke="#170d0a"
+    stroke-width="1.5"></circle>
+  <path d={path(cover.bindingLine)} stroke="#b9a693" stroke-opacity=".7" stroke-width="1"></path>
+  {
+    cover.bindingMarks.map((m, i) => (
+      <circle cx={m.x} cy={m.y} r="2.2" fill={i ? '#e8734a' : '#f5b054'} />
+    ))
+  }
+</svg>
