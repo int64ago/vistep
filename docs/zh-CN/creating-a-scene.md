@@ -55,7 +55,7 @@ python3 -m venv .venv-voice
 | 文件                                                                    | 要求                                                               |
 | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | `src/data/topics.ts`                                                    | 唯一 slug 和编号、元数据、资料、相关专题                           |
-| `src/data/discovery-metadata.ts`                                        | 六类兴趣分类之一、8／10／12／14 岁中的建议起看年龄、中英文搜索别称 |
+| `src/data/discovery-metadata.ts`                                        | 当前兴趣分类之一、8／10／12／14 岁中的建议起看年龄、中英文搜索别称 |
 | `src/data/experiments.ts`                                               | 实验组件的显式按需导入                                             |
 | `src/content/<slug>.mdx` 与 `src/content/en/<slug>.mdx`                 | 完整正文及 `understand`、`try`、`deeper` 锚点                      |
 | `src/i18n/en.json`                                                      | 标注、字幕和元数据，保留插值占位符                                 |
@@ -64,9 +64,11 @@ python3 -m venv .venv-voice
 
 服务端渲染与英文客户端入口通过 `src/i18n/english.ts` 加载词典，保持 `en.json` 不进入中文客户端的共享依赖。共享模块不在模块初始化时翻译标注，应在组件渲染时翻译。
 
+分类只在 `src/data/discovery-metadata.ts` 定义，不再向 `topics.ts` 写一份平行的 `category` 标签。按主线讲解选择归属，武器题材使用独立的武器分类；热学／流体与地球／天文分别归类。既有分类 ID 保持稳定，以保留分享过的筛选链接。
+
 同步维护 `docs/catalog.md` 和 `docs/zh-CN/catalog.md` 的完整源码目录，使用相同的发现分类与实测影片时长。元数据回归会逐篇核对两个目录与正式登记，防止新增分类或专题后遗漏。
 
-路由、分段讲解、结构化数据、语言替代链接、PNG 分享图和 sitemap 随构建生成。检查实际封面在 400×230 目录、适用的首页后备视图及 `SocialCard.astro` 分享图中的表现；部分器物还会通过 `ObjectCover.astro` 和 `CollectionCard.astro` 展示。各画幅分别检查构图、接触与纸路／链路，并核对透明背景和重复 SVG ID。登记测试只能查缺项，不能判断表达是否精致。
+路由、分段讲解、结构化数据、语言替代链接、PNG 分享图和 sitemap 随构建生成。检查实际封面在 400×230 目录、适用的首页后备视图及 `SocialCard.astro` 分享图中的表现；部分器物还会通过 `ObjectCover.astro` 和 `CollectionCard.astro` 展示。各画幅分别检查构图、接触与纸路／链路，并核对透明背景和重复 SVG ID。几何面片密集的封面可将 slug 加入 `src/data/raster-covers.ts`，构建时由同一画面生成 `/covers/` 下的 800×460 PNG，供目录按需加载；分享图仍使用原始几何。登记测试只能查缺项，不能判断表达是否精致。
 
 一次新增多个场景时，agent 必须主动使用 subagent，充分利用可用并发能力，优先为能独立推进的场景分配负责人。派发时写明目标、适用技能、负责文件和验收要求；资料核查、模型审查和视觉／交互复核也可拆成独立子任务。主 agent 协调共享文件、集成并逐篇审看，不能用子任务完成声明代替实际验收。
 

@@ -27,7 +27,7 @@ export function localizedTopic(topic: Topic, locale: Locale): Topic {
   return {
     ...topic,
     ...Object.fromEntries(
-      ['name', 'title', 'question', 'description', 'category', 'duration', 'tag'].map((key) => [
+      ['name', 'title', 'question', 'description', 'duration', 'tag'].map((key) => [
         key,
         translate(topic[key as keyof Topic] as string, locale),
       ]),

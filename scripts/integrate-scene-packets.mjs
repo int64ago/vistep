@@ -63,16 +63,7 @@ for (const slug of slugs) {
     throw new Error(`${slug}: invalid topic identity or preassigned number.`);
   if (narration[slug] || new RegExp(`['"]?slug['"]?:\\s*['"]${slug}['"]`).test(source.topics))
     throw new Error(`${slug} is already registered; do not overwrite measured recordings.`);
-  for (const key of [
-    'name',
-    'title',
-    'question',
-    'description',
-    'category',
-    'duration',
-    'color',
-    'tag',
-  ])
+  for (const key of ['name', 'title', 'question', 'description', 'duration', 'color', 'tag'])
     if (typeof topic[key] !== 'string' || !topic[key].trim())
       throw new Error(`${slug}: missing ${key}.`);
   if (!Array.isArray(topic.related) || !Array.isArray(topic.sources) || !topic.sources.length)
@@ -135,6 +126,8 @@ for (const slug of slugs) {
       );
     else translations[key] = value;
   }
+  // Classification lives only in discovery-metadata.ts; ignore older packet copies.
+  delete topic.category;
   topic.number = String(nextNumber++);
   source.topics = prepend(
     source.topics,

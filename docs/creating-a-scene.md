@@ -63,21 +63,23 @@ For a reviewed batch, both narration tools accept several slugs after `--only` a
 
 ## Register the scene
 
-| Integration                                                                         | Required work                                                                                                       |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `src/data/topics.ts`                                                                | Unique slug and number, metadata, sources and related links                                                         |
-| `src/data/discovery-metadata.ts`                                                    | One of the six interest categories, a suggested starting age of 8, 10, 12 or 14, and Chinese/English search aliases |
-| `src/data/experiments.ts`                                                           | Explicit lazy import of the experiment component                                                                    |
-| `src/content/<slug>.mdx` and `src/content/en/<slug>.mdx`                            | Complete explanation with `understand`, `try` and `deeper` anchors                                                  |
-| `src/i18n/en.json`                                                                  | All labels, captions and metadata; preserve interpolation placeholders                                              |
-| `src/data/narration.json`, its generated timeline/manifests and `public/narration/` | Both recordings, matching cues and measured timing                                                                  |
-| `src/components/covers/` and `src/components/TopicCover.astro`                      | Original model-derived artwork wired into the catalog; reuse the geometry in other cover formats where needed       |
+| Integration                                                                         | Required work                                                                                                  |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `src/data/topics.ts`                                                                | Unique slug and number, metadata, sources and related links                                                    |
+| `src/data/discovery-metadata.ts`                                                    | One current interest category, a suggested starting age of 8, 10, 12 or 14, and Chinese/English search aliases |
+| `src/data/experiments.ts`                                                           | Explicit lazy import of the experiment component                                                               |
+| `src/content/<slug>.mdx` and `src/content/en/<slug>.mdx`                            | Complete explanation with `understand`, `try` and `deeper` anchors                                             |
+| `src/i18n/en.json`                                                                  | All labels, captions and metadata; preserve interpolation placeholders                                         |
+| `src/data/narration.json`, its generated timeline/manifests and `public/narration/` | Both recordings, matching cues and measured timing                                                             |
+| `src/components/covers/` and `src/components/TopicCover.astro`                      | Original model-derived artwork wired into the catalog; reuse the geometry in other cover formats where needed  |
 
 Load the dictionary through `src/i18n/english.ts` in server-rendered and English client entry points; keep `en.json` out of the shared Chinese client dependency graph. Shared modules must not translate labels at module initialization; translate them when the component renders.
 
+Classification is defined only in `src/data/discovery-metadata.ts`; do not add a parallel `category` label to `topics.ts`. Choose the main explanatory theme, using the dedicated weapon context for weapon subjects. Heat/fluid topics and Earth/astronomy have separate categories. Existing category IDs remain stable for shared filter links.
+
 Keep the English and Chinese source catalogs in `docs/catalog.md` and `docs/zh-CN/catalog.md` complete. Use the same discovery categories and measured film durations; the metadata regression checks both catalogs against the registry.
 
-Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Inspect the actual cover in the 400×230 catalog, applicable homepage fallback and `SocialCard.astro` output; selected object artwork also appears through `ObjectCover.astro` and `CollectionCard.astro`. Check each composition, contact and paper/chain path, including transparency and repeated SVG IDs. The registry tests catch missing files; they cannot judge communication quality.
+Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Inspect the actual cover in the 400×230 catalog, applicable homepage fallback and `SocialCard.astro` output; selected object artwork also appears through `ObjectCover.astro` and `CollectionCard.astro`. Check each composition, contact and paper/chain path, including transparency and repeated SVG IDs. For dense mesh-derived covers, add the slug to `src/data/raster-covers.ts`: the build produces the same artwork as an 800×460 PNG under `/covers/` for lazy collection loading; social cards still render the original geometry. The registry tests catch missing files; they cannot judge communication quality.
 
 When a request adds multiple scenes, agents must proactively use subagents and the available concurrency. Prefer one owner per independent scene, and include its objective, applicable skill, owned files and acceptance requirements in the assignment. Research, model review and visual/interaction review can also run as bounded independent tasks. The main agent coordinates shared files, integrates the work and reviews each scene; a worker's completion report does not replace that review.
 

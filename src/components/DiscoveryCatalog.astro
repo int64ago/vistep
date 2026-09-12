@@ -1,6 +1,7 @@
 ---
 import CoverArt from './CoverArt.astro';
 import TopicCover from './TopicCover.astro';
+import { rasterCoverSlugs } from '../data/raster-covers';
 import { topics } from '../data/topics';
 import { films, filmDuration } from '../data/films';
 import { discoveryCategories, discoveryMetadata } from '../data/discovery-metadata';
@@ -212,9 +213,20 @@ const ordered = [...topics].sort((a, b) => {
             >
               <div class="discovery-art">
                 <>
-                  <CoverArt>
-                    <TopicCover slug={topic.slug} color={topic.color} />
-                  </CoverArt>
+                  {rasterCoverSlugs.some((slug) => slug === topic.slug) ? (
+                    <img
+                      src={`/covers/${topic.slug}.png`}
+                      width="400"
+                      height="230"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <CoverArt>
+                      <TopicCover slug={topic.slug} color={topic.color} />
+                    </CoverArt>
+                  )}
                   <span class="discovery-play" aria-hidden="true">
                     <svg viewBox="0 0 16 16">
                       <path d="m6 3 7 5-7 5Z" />
@@ -277,6 +289,8 @@ const ordered = [...topics].sort((a, b) => {
         ...this.querySelectorAll<HTMLButtonElement>('button[data-category]'),
       ];
       const categories = categoryButtons.map((button) => button.dataset.category!);
+      const categoryStrip = this.querySelector<HTMLElement>('.discovery-categories')!;
+      let displayedCategory: string | undefined;
       const grid = this.querySelector<HTMLElement>('.discovery-grid')!;
       const clear = this.querySelector<HTMLButtonElement>('.discovery-clear')!;
       const reset = this.querySelector<HTMLButtonElement>('.discovery-reset')!;
@@ -321,6 +335,21 @@ const ordered = [...topics].sort((a, b) => {
           language.href = alternate.href;
         }
       };
+      const revealCategory = () => {
+        if (signal.aborted) return;
+        // Keep deep links visible inside the phone strip without scrolling the page.
+        const selected = categoryButtons.find(
+          (button) => button.dataset.category === filters.category,
+        )!;
+        const stripBounds = categoryStrip.getBoundingClientRect();
+        const selectedBounds = selected.getBoundingClientRect();
+        if (selectedBounds.left < stripBounds.left || selectedBounds.right > stripBounds.right) {
+          categoryStrip.scrollLeft +=
+            selectedBounds.left -
+            stripBounds.left -
+            (categoryStrip.clientWidth - selectedBounds.width) / 2;
+        }
+      };
       const render = (restoreControls = false) => {
         if (restoreControls) {
           search.value = filters.query;
@@ -344,6 +373,10 @@ const ordered = [...topics].sort((a, b) => {
             key === 'all' ? broad.length : (counts.get(key) ?? 0),
           );
         });
+        if (displayedCategory !== filters.category) {
+          revealCategory();
+          displayedCategory = filters.category;
+        }
         clear.hidden = !search.value;
         filterToggle.querySelector('span')!.textContent =
           [
@@ -494,6 +527,10 @@ const ordered = [...topics].sort((a, b) => {
       this.querySelector<HTMLElement>('.discovery-tools')!.hidden = false;
       render(true);
       updateURL('replace');
+      // Font loading and browser scroll restoration can change the initial strip position.
+      document.fonts.ready.then(revealCategory);
+      window.addEventListener('pageshow', () => requestAnimationFrame(revealCategory), { signal });
+      window.addEventListener('resize', () => requestAnimationFrame(revealCategory), { signal });
       this.cleanup = () => {
         controller.abort();
         clearTimeout(inputTimer);

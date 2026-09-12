@@ -1,4 +1,7 @@
 ---
+import LandmineCover from './covers/LandmineCover.astro';
+import Ak47Cover from './covers/Ak47Cover.astro';
+import HelicopterCover from './covers/HelicopterCover.astro';
 import HydrogenBombCover from './covers/HydrogenBombCover.astro';
 import AtomicBombCover from './covers/AtomicBombCover.astro';
 import NfcCover from './covers/NfcCover.astro';
@@ -901,4 +904,7 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'tides' && <TidesCover color={color} />}
   {slug === 'atomic-bomb' && <AtomicBombCover color={color} />}
   {slug === 'hydrogen-bomb' && <HydrogenBombCover color={color} />}
+  {slug === 'helicopter' && <HelicopterCover color={color} />}
+  {slug === 'ak47' && <Ak47Cover color={color} />}
+  {slug === 'landmine' && <LandmineCover color={color} />}
 </svg>

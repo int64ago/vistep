@@ -24,12 +24,13 @@ flowchart LR
 | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `src/data/topics.ts`                                              | Topic identity, descriptions, related topics and technical sources                                                      |
 | `src/content/`, `src/content/en/`                                 | Prerendered MDX articles                                                                                                |
-| `src/data/discovery-metadata.ts`                                  | Six interest categories, editorial starting ages and bilingual search aliases                                           |
+| `src/data/discovery-metadata.ts`                                  | Single bilingual category taxonomy, editorial starting ages and bilingual search aliases                                |
 | `src/components/DiscoveryCatalog.astro`, `src/lib/discovery.ts`   | Static complete catalog, progressive search/filtering, URL state and return-position recovery                           |
 | `src/data/experiments.ts`                                         | Explicit dynamic imports; keeps experiment engines off the homepage                                                     |
 | `src/i18n/english.ts`, `src/components/english/`                  | Registers the English dictionary; only English islands and the server import it, so Chinese pages never download it     |
 | `src/components/covers/`, `TopicCover.astro`, `ObjectCover.astro` | Scene artwork shared by catalog, homepage fallback and social compositions; entry points choose the appropriate framing |
 | `src/components/CoverArt.astro`, `src/lib/svg-cover.ts`           | Rounds served cover geometry to sub-pixel precision; raster covers are encoded with `src/lib/png.ts`                    |
+| `src/data/raster-covers.ts`, `src/pages/covers/[slug].png.ts`     | Renders selected detailed covers from the same SVG geometry as 800×460 PNG assets for lazy catalog loading              |
 | `src/data/narration.json`                                         | Bilingual chapter writing and production timing                                                                         |
 | `src/data/film-timeline.json`, `audio-tracks.json`                | Compact client playback metadata, generated with recordings                                                             |
 | `src/data/audio-manifest.json`                                    | Full recording provenance and measured cue boundaries                                                                   |

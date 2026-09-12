@@ -1,0 +1,65 @@
+<h2 id="understand">The cabin stays still; the wing keeps moving</h2>
+
+A fixed-wing aircraft normally moves forward to carry its wings through the air. A helicopter puts its wings on a rotating mast: **the cabin can stay in one place while the blades move relative to the air.** Follow the copper blade through its section, the whole rotor’s thrust, its changing pitch around a revolution, and the tail rotor’s job. The aircraft is an original, generic civil form rather than a replica of a particular model.
+
+The rotor gives air downward momentum, and the air exerts an upward force on the rotor. In steady hover, thrust balances weight. Downward airflow and wing lift describe the same physical process at different scales. [Chapter 2 of the FAA Helicopter Flying Handbook](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook/hfh_ch02.pdf) explains rotor thrust, relative wind and hover.
+
+**Blade pitch** is the geometric angle between the chord and the rotation plane. **Angle of attack** is measured against the local relative airflow. The induced downward velocity makes those two angles different. Within this film’s limited linear range, a higher angle of attack produces more section lift.
+
+<h2 id="try">Keep the same blade; change one condition</h2>
+
+- Watch collective pitch increase on both blades while rotor speed stays fixed. Thrust above weight produces an upward acceleration; it does not instantly establish a climb speed.
+- Pause the cyclic chapter and match the copper blade’s position to its pitch curve. The curve follows one blade. Its opposite blade is half a turn away.
+- In the force view, hold collective fixed and increase disk tilt. Total thrust stays the same, but its vertical component falls and a horizontal component appears.
+- At the tail, compare the sideways force arrow with the moment bars. Less compensation leaves an unbalanced reaction torque. More than the balance setting reverses the net yaw moment.
+- Reset the scene and compare induced speed and ideal induced power. Exploration changes the calculation; replay restores the authored film’s independent state.
+
+<h2 id="deeper">Managing magnitude, direction and moment</h2>
+
+<details>
+<summary>How do collective and cyclic pitch differ?</summary>
+
+Collective changes every blade’s pitch by the same amount at the same instant. Cyclic changes each blade’s pitch with azimuth. The illustrated waveform is:
+
+<div className="formula">θ(ψ) = θ₀ + θ₁ sin ψ</div>
+
+Here θ₀ is collective, θ₁ is cyclic amplitude, and ψ is blade azimuth. Opposite blades have equal and opposite cyclic departures. Actual rotors also involve flapping, mechanical phasing, hinges and elastic response. The azimuth of maximum pitch is not a universal prediction of disk-tilt direction.
+
+The pitch chapter therefore shows the waveform, while the tilt chapters prescribe the disk orientation and examine its forces. The connected, rigid two-blade assembly teeters through that prescribed tip-path plane. It does not solve flapping dynamics or reproduce a particular aircraft’s control linkage. [FAA Chapter 3](https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook/hfh_ch03.pdf) describes the roles of collective, cyclic and antitorque controls.
+
+</details>
+
+<details>
+<summary>How are lift and downwash connected numerically?</summary>
+
+The teaching rotor has two untwisted, constant-chord blades, a 4.5 m radius, fixed angular speed of 42 rad/s and air density of 1.225 kg/m³. Slowing the displayed rotation does not change the speed used in the calculation.
+
+At radius r, tangential speed is Ωr. With uniform induced velocity vᵢ, the inflow angle is atan(vᵢ/Ωr), and angle of attack is blade pitch minus that angle. A linear section coefficient Cₗ = aα supplies blade-element lift. The model integrates the component normal to the rotor disk along the blade and solves for the same vᵢ that satisfies hover momentum theory:
+
+<div className="formula">T = 2ρA vᵢ², A = πR²</div>
+
+The ideal far-wake speed is 2vᵢ, while speed at the disk is vᵢ. Ideal induced power is Pᵢ = Tvᵢ. [NASA’s NDARC theory appendix, §11-4.1](https://rotorcraft.arc.nasa.gov/Publications/files/NASA%20TP-2009-215402-app3.pdf), describes the uniform-inflow approximation. Profile power, nonuniform inflow, stall, compressibility, ground effect and detailed wakes are omitted. These numbers are not a performance prediction for a specific helicopter.
+
+</details>
+
+<details>
+<summary>Why coordinate the controls after tilting?</summary>
+
+For prescribed disk tilt β, resolve the same main-rotor thrust into:
+
+<div className="formula">Tvertical = T cos β, Thorizontal = T sin β</div>
+
+Vertical acceleration is (T cos β − mg)/m. Restoring instantaneous vertical force balance at a tilt requires T = mg/cos β, slightly more total thrust than the level hover condition. A horizontal component remains. This is a comparison of instantaneous near-hover forces, not an integrated flight trajectory or a prediction of high-speed forward flight.
+
+</details>
+
+<details>
+<summary>Why put the tail rotor on a long boom?</summary>
+
+The engine supplies torque to the main rotor, and the airframe receives an opposite reaction. Here Q = Pᵢ/Ω uses ideal induced power. Tail thrust Ftail acting through arm l produces a balancing moment:
+
+<div className="formula">Ftail · l = Q</div>
+
+The tail rotor’s actual longitudinal distance from the mast and the calculation’s moment arm are both 4.7 m. Both moment bars use one fixed scale. This model isolates yaw moments: an actual hovering aircraft must also balance the tail rotor’s sideways force, and actual shaft power exceeds ideal induced power. Unmodeled side-slip, roll and yaw trajectories are not assigned decorative motion.
+
+</details>

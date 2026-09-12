@@ -1,0 +1,20 @@
+---
+import { ak47ProjectedArt } from '../../models/ak47-cover';
+const art = ak47ProjectedArt(400, 230);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eaece0"></rect>
+  <ellipse cx="199" cy="174" rx="153" ry="15" fill="#475b4c" opacity=".10"></ellipse>
+  {
+    art.paths.map((p) => (
+      <path
+        d={p.d}
+        fill={p.fill}
+        stroke={p.part === 'spring' ? p.stroke : p.fill}
+        stroke-width={p.part === 'spring' ? 1.2 : 0.6}
+        opacity={p.opacity}
+      />
+    ))
+  }
+</svg>

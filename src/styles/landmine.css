@@ -1,0 +1,138 @@
+.landmine-study {
+  padding: 22px 28px 16px;
+  background: radial-gradient(ellipse at 48% 25%, #f7f3e7, #e9e5d6 85%);
+  color: #404d43;
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.landmine-study * {
+  box-sizing: border-box;
+}
+.landmine-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  color: #6e775f;
+}
+.landmine-main {
+  width: 100%;
+  max-width: 950px;
+  margin: 10px auto 0;
+}
+.landmine-object-stage {
+  height: 380px;
+  width: 100%;
+  position: relative;
+}
+.landmine-object-stage .studio {
+  height: 100%;
+}
+.landmine-observation {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+}
+.landmine-observation b {
+  font-weight: 450;
+  color: #945a3b;
+  text-align: right;
+}
+.landmine-note,
+.landmine-care-line {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #72785f;
+}
+.landmine-care-line {
+  color: #925738;
+}
+.landmine-epochs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  font-size: 16px;
+  text-align: center;
+  margin: 6px 0 -5px;
+}
+.landmine-epochs span {
+  border-top: 2px solid #d3d4c2;
+  padding-top: 9px;
+  color: #777d67;
+}
+.landmine-epochs span[data-active='true'] {
+  border-color: #a36143;
+  color: #5b654f;
+}
+.landmine-explore {
+  max-width: 760px;
+  margin: 22px auto 12px;
+  display: grid;
+  gap: 17px;
+}
+.landmine-explore .segmented {
+  flex-wrap: wrap;
+}
+.landmine-explore button {
+  min-height: 44px;
+  font-size: 16px;
+}
+.landmine-reset {
+  justify-self: start;
+  border: 1px solid #bac1a8;
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: #f5f3e7;
+  color: #46533f;
+  cursor: pointer;
+}
+.landmine-reset:focus-visible {
+  outline: 3px solid #b98762;
+  outline-offset: 3px;
+}
+.landmine-method {
+  max-width: 950px;
+  margin: 16px auto 0;
+  border-top: 1px solid #c9cbb665;
+  font-size: 16px;
+}
+.landmine-method summary {
+  min-height: 44px;
+  padding: 12px 0 5px;
+  cursor: pointer;
+  color: #636f54;
+}
+.landmine-method p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .landmine-study {
+    padding: 16px 12px 10px;
+  }
+  .landmine-heading {
+    gap: 10px;
+    flex-wrap: wrap;
+    line-height: 1.45;
+  }
+  .landmine-main {
+    margin-top: 4px;
+  }
+  .landmine-object-stage {
+    height: 320px;
+  }
+  .landmine-epochs {
+    gap: 4px;
+  }
+  .landmine-method {
+    margin-top: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .landmine-object-stage {
+    height: 250px;
+  }
+}

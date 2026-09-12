@@ -1,0 +1,311 @@
+.helicopter-study {
+  --heli-ink: #354e53;
+  --heli-teal: #2e7881;
+  --heli-copper: #a96e39;
+  color: var(--heli-ink);
+  padding: 22px 28px 18px;
+  background: radial-gradient(ellipse at 54% 26%, #f4f4e8 0%, #e9efea 56%, #e1e9e4 100%);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.helicopter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.helicopter-heading > span {
+  letter-spacing: 0.12em;
+  color: #6b8486;
+  font-size: 16px;
+}
+.helicopter-heading b {
+  font-weight: 500;
+}
+.helicopter-main {
+  max-width: 900px;
+  margin: 12px auto 0;
+}
+.helicopter-apparatus {
+  height: 390px;
+  position: relative;
+}
+.helicopter-apparatus-short {
+  height: 260px;
+}
+.helicopter-studio,
+.helicopter-flat,
+.helicopter-flat svg {
+  width: 100%;
+  height: 100%;
+}
+.helicopter-object-key {
+  position: absolute;
+  left: 12px;
+  bottom: 5px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.helicopter-object-key i {
+  width: 20px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--heli-teal);
+}
+.helicopter-instrument {
+  margin: 0 auto;
+  width: 100%;
+}
+.helicopter-instrument svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.helicopter-instrument svg text {
+  font-size: 16px;
+  font-family: inherit;
+}
+.helicopter-instrument svg text[fill='#2e7881'] {
+  fill: #2e7881;
+}
+.helicopter-instrument svg text[fill='#a96e39'] {
+  fill: #a96e39;
+}
+.helicopter-instrument svg text[fill='#40545a'] {
+  fill: #40545a;
+}
+.helicopter-note-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 9px;
+}
+.helicopter-note-row b {
+  font-weight: 500;
+}
+.helicopter-note-row span {
+  color: #6b8383;
+  white-space: nowrap;
+}
+.helicopter-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+.helicopter-pair > span {
+  min-width: 0;
+}
+.helicopter-pair b {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-top: 2px;
+}
+.helicopter-main-readings {
+  max-width: 470px;
+  margin: 8px auto 0;
+}
+.helicopter-copper {
+  color: var(--heli-copper);
+}
+.helicopter-result {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--heli-teal);
+  margin-top: 11px;
+}
+.helicopter-context {
+  margin: 15px auto 0;
+  text-align: center;
+  max-width: 650px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #687e7d;
+}
+.helicopter-controls {
+  max-width: 640px;
+  margin: 26px auto 0;
+  display: grid;
+  gap: 22px;
+}
+.helicopter-controls .segmented {
+  flex-wrap: wrap;
+}
+.helicopter-controls button {
+  font-size: 16px;
+  min-height: 44px;
+}
+.helicopter-controls .control-top,
+.helicopter-controls summary,
+.helicopter-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.helicopter-reset {
+  border: 1px solid #b3c8bf;
+  border-radius: 13px;
+  padding: 10px 18px;
+  background: #f0f2e9;
+  color: var(--heli-ink);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.helicopter-reset:hover {
+  background: #fffdf2;
+}
+.helicopter-controls summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .helicopter-study {
+    padding: 18px 12px 16px;
+    border-radius: 18px;
+  }
+  .helicopter-heading {
+    align-items: baseline;
+  }
+  .helicopter-heading > span {
+    letter-spacing: 0.055em;
+  }
+  .helicopter-main {
+    margin-top: 8px;
+  }
+  .helicopter-apparatus {
+    height: 290px;
+  }
+  .helicopter-apparatus-short {
+    height: 210px;
+  }
+  .helicopter-pair {
+    gap: 8px;
+  }
+  .helicopter-pair b {
+    font-size: 20px;
+  }
+  .helicopter-note-row {
+    gap: 5px;
+  }
+  .helicopter-context {
+    margin-top: 12px;
+  }
+  .helicopter-study[data-view='collective'] .helicopter-main-readings {
+    margin-top: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .helicopter-reset {
+    transition: none;
+  }
+}
+
+.helicopter-torque-row {
+  margin-top: 10px;
+}
+.helicopter-torque-row > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.45;
+  padding: 0 14px;
+}
+.helicopter-torque-row b {
+  font-weight: 500;
+  white-space: nowrap;
+}
+.helicopter-inline-values {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.helicopter-weight-key {
+  background: #677075 !important;
+}
+.helicopter-pitch-value {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.helicopter-local-section {
+  background: #eef2e9;
+  border-radius: 16px;
+  padding: 4px 0 8px;
+}
+.helicopter-study[data-view='section'] .helicopter-apparatus-short {
+  height: 245px;
+}
+.helicopter-study[data-view='cyclic'] .helicopter-apparatus-short {
+  height: 300px;
+}
+@media (max-width: 760px) {
+  .helicopter-study[data-view='section'] .helicopter-apparatus-short {
+    height: 205px;
+  }
+  .helicopter-study[data-view='cyclic'] .helicopter-apparatus-short {
+    height: 270px;
+  }
+}
+.helicopter-locator {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 150px;
+  pointer-events: none;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.helicopter-locator > span {
+  display: block;
+}
+.helicopter-locator svg {
+  width: 130px;
+  height: auto;
+  display: block;
+  opacity: 0.76;
+}
+.helicopter-locator small {
+  display: block;
+  font-size: 16px;
+  color: #687e7d;
+  margin-top: -13px;
+}
+.helicopter-study[data-view='section'] .helicopter-apparatus-short {
+  height: 340px;
+}
+.helicopter-study[data-view='cyclic'] .helicopter-apparatus-short {
+  height: 310px;
+}
+@media (max-width: 760px) {
+  .helicopter-locator {
+    width: 118px;
+  }
+  .helicopter-locator svg {
+    width: 105px;
+  }
+  .helicopter-locator small {
+    margin-top: -8px;
+  }
+  .helicopter-study[data-view='section'] .helicopter-apparatus-short {
+    height: 310px;
+  }
+  .helicopter-study[data-view='cyclic'] .helicopter-apparatus-short {
+    height: 285px;
+  }
+}

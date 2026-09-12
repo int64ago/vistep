@@ -1,0 +1,14 @@
+---
+import { helicopterArtwork, HELICOPTER_COVER_VISUAL } from '../../models/helicopter-cover';
+const art = helicopterArtwork(400, 230, HELICOPTER_COVER_VISUAL, true);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#e9eeeb"></rect>
+  <ellipse cx="204" cy="190" rx="106" ry="12" fill="#294e51" opacity=".07"></ellipse>
+  {
+    art.paths.map(({ d, fill }) => (
+      <path d={d} fill={fill} stroke={fill} stroke-width=".6" stroke-linejoin="round" />
+    ))
+  }
+</svg>

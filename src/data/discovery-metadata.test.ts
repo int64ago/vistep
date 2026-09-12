@@ -50,28 +50,47 @@ describe('homepage discovery metadata', () => {
     expect([...declared].sort()).toEqual([...published].sort());
   });
 
-  it('uses only the six bilingual discovery categories', () => {
-    const labels = {
-      mechanisms: '器物与机械',
-      'light-sound': '光与声音',
-      electricity: '电与能量',
-      computing: '数字与计算',
-      nature: '自然与宇宙',
-      'math-systems': '数学与系统',
-    };
+  it('uses one nonempty bilingual taxonomy and no legacy topic categories', () => {
     const ids = discoveryCategories.map((category) => category.id);
-    expect(new Set(ids).size).toBe(6);
-    expect(ids).toHaveLength(6);
-    expect([...ids].sort()).toEqual(Object.keys(labels).sort());
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const locale of ['zh', 'en'] as const) {
+      const labels = discoveryCategories.map((category) => category.label[locale]);
+      expect(new Set(labels).size).toBe(labels.length);
+      for (const label of labels) expect(label.trim()).toBe(label);
+    }
     for (const category of discoveryCategories) {
-      expect(category.label.zh).toBe(labels[category.id]);
+      expect(category.label.zh).toMatch(/\p{Script=Han}/u);
       expect(category.label.en).toMatch(/[A-Za-z]/);
-      expect(category.label.en.trim()).toBe(category.label.en);
       expect(Object.values(discoveryMetadata).some((item) => item.category === category.id)).toBe(
         true,
       );
     }
     for (const item of Object.values(discoveryMetadata)) expect(ids).toContain(item.category);
+    for (const topic of topics) expect(topic).not.toHaveProperty('category');
+  });
+
+  it('separates fluid and thermal explanations from astronomy, and weapon topics from electrical topics', () => {
+    for (const slug of [
+      'refrigerator',
+      'convection',
+      'diffusion',
+      'brownian-motion',
+      'airfoil',
+      'bernoulli',
+      'water-hammer',
+      'siphon',
+    ])
+      expect(discoveryMetadata[slug].category, slug).toBe('thermal-fluids');
+    for (const slug of ['tides', 'seasons', 'moon-phases'])
+      expect(discoveryMetadata[slug].category, slug).toBe('nature');
+    for (const slug of ['atomic-bomb', 'hydrogen-bomb', 'ak47', 'landmine'])
+      expect(discoveryMetadata[slug].category, slug).toBe('weapons-safety');
+    for (const slug of ['nfc', 'lithium-battery', 'solar-cell', 'printer'])
+      expect(discoveryMetadata[slug].category, slug).toBe('electricity');
+  });
+
+  it('keeps rotorcraft with mechanisms and motion', () => {
+    expect(discoveryMetadata.helicopter.category).toBe('mechanisms');
   });
 
   it('supplies an allowed editorial age and usable, deduplicated keywords in both languages', () => {

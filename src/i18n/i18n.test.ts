@@ -24,7 +24,7 @@ describe('bilingual publishing', () => {
   it('publishes matching articles, metadata and film captions for every topic', () => {
     for (const topic of topics) {
       const translated = localizedTopic(topic, 'en');
-      for (const key of ['title', 'question', 'description', 'category', 'name'] as const)
+      for (const key of ['title', 'question', 'description', 'name'] as const)
         expect(translated[key]).not.toMatch(/[\u3400-\u9fff]/);
       const text = readFileSync(`src/content/en/${topic.slug}.mdx`, 'utf8');
       for (const id of ['understand', 'try', 'deeper']) expect(text).toContain(`id="${id}"`);

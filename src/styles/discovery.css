@@ -249,7 +249,9 @@ vistep-discovery [hidden] {
   background: #e8ebe1;
   isolation: isolate;
 }
-.discovery-art > svg {
+.discovery-art > svg,
+.discovery-art > img {
+  display: block;
   width: 100%;
   height: 100%;
   transition: transform 0.6s var(--ease-settle);
@@ -358,7 +360,8 @@ vistep-discovery [hidden] {
   font-size: 16px;
 }
 @media (hover: hover) {
-  .discovery-card:hover .discovery-art > svg {
+  .discovery-card:hover .discovery-art > svg,
+  .discovery-card:hover .discovery-art > img {
     transform: scale(1.025);
   }
   .discovery-card:hover .discovery-play {
@@ -509,7 +512,8 @@ vistep-discovery [hidden] {
     transition: none !important;
     animation: none !important;
   }
-  .discovery-card:hover .discovery-art > svg {
+  .discovery-card:hover .discovery-art > svg,
+  .discovery-card:hover .discovery-art > img {
     transform: none;
   }
 }

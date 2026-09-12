@@ -1,47 +1,58 @@
-/** Homepage discovery facets. Age is an editorial starting point for watching the
- * authored film, not an age certification, access restriction or equation prerequisite.
- * Keep names/aliases searchable in both languages regardless of the current UI locale.
+/** One source of truth for every catalog card, filter, breadcrumb and source catalog.
+ * Classify by the main explanation; weapons have a dedicated context group.
+ * Age is an editorial starting point, not certification or an access restriction.
+ * Keep category IDs stable so existing shared filter links continue to work.
  */
 export type DiscoveryCategory =
-  'mechanisms' | 'light-sound' | 'electricity' | 'computing' | 'nature' | 'math-systems';
-
-export const discoveryCategories: {
-  id: DiscoveryCategory;
-  label: { zh: string; en: string };
-}[] = [
+  | 'mechanisms'
+  | 'electricity'
+  | 'light-sound'
+  | 'thermal-fluids'
+  | 'computing'
+  | 'nature'
+  | 'math-systems'
+  | 'weapons-safety';
+export const discoveryCategories: { id: DiscoveryCategory; label: { zh: string; en: string } }[] = [
   {
     id: 'mechanisms',
     label: {
-      zh: '器物与机械',
-      en: 'Objects & mechanisms',
-    },
-  },
-  {
-    id: 'light-sound',
-    label: {
-      zh: '光与声音',
-      en: 'Light & sound',
+      zh: '机械与运动',
+      en: 'Mechanisms & motion',
     },
   },
   {
     id: 'electricity',
     label: {
-      zh: '电与能量',
-      en: 'Electricity & energy',
+      zh: '电与磁',
+      en: 'Electricity & magnetism',
+    },
+  },
+  {
+    id: 'light-sound',
+    label: {
+      zh: '光与波动',
+      en: 'Light & waves',
+    },
+  },
+  {
+    id: 'thermal-fluids',
+    label: {
+      zh: '热学与流体',
+      en: 'Heat & fluids',
     },
   },
   {
     id: 'computing',
     label: {
-      zh: '数字与计算',
-      en: 'Digital & computing',
+      zh: '计算与通信',
+      en: 'Computing & communication',
     },
   },
   {
     id: 'nature',
     label: {
-      zh: '自然与宇宙',
-      en: 'Nature & space',
+      zh: '地球与天文',
+      en: 'Earth & astronomy',
     },
   },
   {
@@ -49,6 +60,13 @@ export const discoveryCategories: {
     label: {
       zh: '数学与系统',
       en: 'Math & systems',
+    },
+  },
+  {
+    id: 'weapons-safety',
+    label: {
+      zh: '武器与安全',
+      en: 'Weapons & safety',
     },
   },
 ];
@@ -60,8 +78,69 @@ export type DiscoveryMetadata = {
 };
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  helicopter: {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['直升机', '旋翼', '悬停', '总距', '周期变距', '尾桨', '反扭矩', '下洗', '直升飞机'],
+      en: [
+        'helicopter',
+        'rotorcraft',
+        'rotary wing',
+        'hover',
+        'collective pitch',
+        'cyclic pitch',
+        'tail rotor',
+        'anti torque',
+        'downwash',
+      ],
+    },
+  },
+  ak47: {
+    category: 'weapons-safety',
+    minAge: 12,
+    keywords: {
+      zh: ['AK-47', 'AK47', '卡拉什尼科夫', '长行程导气', '活塞', '回位簧', '机械史', '能量转移'],
+      en: [
+        'AK-47',
+        'Kalashnikov',
+        'long stroke gas operation',
+        'piston',
+        'return spring',
+        'mechanical history',
+        'energy transfer',
+      ],
+    },
+  },
+  landmine: {
+    category: 'weapons-safety',
+    minAge: 12,
+    keywords: {
+      zh: [
+        '地雷',
+        '遗留爆炸物',
+        '爆炸物风险教育',
+        '外部触发',
+        '能量释放',
+        '地层剖面',
+        '战后风险',
+        '安全观察',
+      ],
+      en: [
+        'Landmines',
+        'landmine',
+        'mine',
+        'explosive remnants of war',
+        'risk education',
+        'triggering',
+        'stored energy',
+        'soil section',
+        'post-conflict danger',
+      ],
+    },
+  },
   'atomic-bomb': {
-    category: 'electricity',
+    category: 'weapons-safety',
     minAge: 12,
     keywords: {
       zh: [
@@ -94,7 +173,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   'hydrogen-bomb': {
-    category: 'electricity',
+    category: 'weapons-safety',
     minAge: 14,
     keywords: {
       zh: [
@@ -224,7 +303,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   diffusion: {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 10,
     keywords: {
       zh: ['扩散', '颜色散开', '浓度', '染料扩散', '扩散系数', '净通量', '混合'],
@@ -240,7 +319,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   'brownian-motion': {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 12,
     keywords: {
       zh: ['布朗运动', '微粒乱动', '热运动', '随机游走', '朗之万', '热噪声', '均方位移'],
@@ -373,7 +452,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   convection: {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 10,
     keywords: {
       zh: ['热对流', '热空气上升', '暖流', '热水流动', '浮力', '传导', '热循环'],
@@ -487,7 +566,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   airfoil: {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 12,
     keywords: {
       zh: ['机翼升力', '飞机机翼', '升力', '攻角', '迎角', '气流', '环量', '压力分布'],
@@ -615,7 +694,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   bernoulli: {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 12,
     keywords: {
       zh: ['流速与压强', '伯努利', '水流', '管道压强', '文丘里', '测压管', '水头'],
@@ -695,7 +774,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   'water-hammer': {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 12,
     keywords: {
       zh: ['水锤', '水管响', '突然关阀', '水击', '压力波', '管道震动', '阀门'],
@@ -768,7 +847,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   siphon: {
-    category: 'nature',
+    category: 'thermal-fluids',
     minAge: 10,
     keywords: {
       zh: ['虹吸', '吸水管', '虹吸管', '水往高处流', '排空气', '水位差', '连通水柱'],
@@ -904,7 +983,6 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
       ],
     },
   },
-
   'hydraulic-brake': {
     category: 'mechanisms',
     minAge: 10,
@@ -1035,7 +1113,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   refrigerator: {
-    category: 'electricity',
+    category: 'thermal-fluids',
     minAge: 10,
     keywords: {
       zh: ['冰箱制冷', '冰箱', '热泵', '制冷剂', '压缩机', '蒸发冷凝', '冰箱背面发热'],
@@ -1052,7 +1130,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     },
   },
   printer: {
-    category: 'mechanisms',
+    category: 'electricity',
     minAge: 10,
     keywords: {
       zh: ['激光打印机', '打印机', '复印机', '激光打印', '感光鼓', '碳粉', '静电成像', '定影'],
