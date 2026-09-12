@@ -6,6 +6,7 @@
 
 - [专题目录](catalog.md)：全部登记专题、影片时长和文章源码。
 - [制作手册](creating-a-scene.md)：研究、分镜、模型、双语讲解和审看。
+- [机械键盘轴体案例](examples/keyboard-switch-brief.md)：段落轮廓、发声套件、接点检测、霍尔检测与光闸。
 - [直升机案例](examples/helicopter-brief.md)：旋转机翼、总距与周期变距、倾斜推力和反扭矩。
 - [AK-47 案例](examples/ak47-brief.md)：相连实物部件、运动与弹性能量。
 - [地雷案例](examples/landmine-brief.md)：完整外壳、遮挡与长期风险。
@@ -29,6 +30,7 @@
 
 记录只对应具体版本与条件，不是对未来改动的保证。旧语音的解码和播放检查未证明中文可理解性，后续发现的问题见复盘。部分历史提交编号早于 Git 历史改写，可能无法在新克隆中解析；原始 Actions 与部署引用的阅读方式见[制作记录](expansion-50.md)。
 
+- [机械键盘轴体审看](qa-keyboard-switch.md)：实体连接、确定性检测与分项交付证据。
 - [直升机、AK-47 与地雷审看](qa-helicopter-ak47-landmine.md)：独立制作、模型交叉复核与分项交付证据。
 - [原子弹审看](qa-atomic-bomb.md)：裂变模型、中子行走可重放性、浏览器停帧与完整播放、剩余缺口。
 - [氢弹审看](qa-hydrogen-bomb.md)：反应率与燃烧模型校验、浏览器停帧与完整播放、剩余缺口。

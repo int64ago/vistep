@@ -7,6 +7,7 @@
 - [Exploration catalog](catalog.md): every registered topic, film duration and article source.
 - [Fifty additional explorations](expansion-50.md): published scope, production ledger and remaining review coverage.
 - [Production guide](creating-a-scene.md): research, direction, models, bilingual narration and review.
+- [Keyboard switches example](examples/keyboard-switch-brief.md): tactile profiles, click jackets, contact detection, Hall sensing and optical gates.
 - [Helicopter example](examples/helicopter-brief.md): rotating wings, collective and cyclic pitch, tilted thrust and anti-torque.
 - [AK-47 example](examples/ak47-brief.md): connected physical parts, motion and elastic energy.
 - [Landmine example](examples/landmine-brief.md): a sealed exterior, obscuration and persistent risk.
@@ -26,6 +27,7 @@
 
 Records describe particular revisions and conditions. They are not guarantees for later changes. Historical speech transport checks did not establish Chinese intelligibility; see the retrospective. Some recorded commit IDs predate history rewrites and may not resolve in a fresh clone; the [production record](expansion-50.md) explains how to read the original Actions and deployment references.
 
+- [Keyboard switches review](qa-keyboard-switch.md): connected physical mechanisms, deterministic detection and separate delivery evidence.
 - [Helicopter, AK-47 and landmine review](qa-helicopter-ak47-landmine.md): three independent authors, model cross-review and separate delivery evidence.
 - [Atomic bomb review](qa-atomic-bomb.md): fission model, chain-walk determinism, browser stills and playback, remaining gaps.
 - [Hydrogen bomb review](qa-hydrogen-bomb.md): reactivity and burn model checks, browser stills and playback, remaining gaps.

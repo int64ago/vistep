@@ -1,5 +1,6 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  'keyboard-switch': () => import('../components/experiments/KeyboardSwitch'),
   landmine: () => import('../components/experiments/Landmine'),
   ak47: () => import('../components/experiments/Ak47'),
   helicopter: () => import('../components/experiments/Helicopter'),

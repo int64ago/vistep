@@ -1,0 +1,66 @@
+<h2 id="understand">One press. What changes inside a switch?</h2>
+
+Follow the stem beneath one keycap. It slides in the housing, compresses a spring and changes the sensing state. Releasing it lets the spring lift it again. In the contact switches shown here, the stem profile and a flexible leaf cooperate to join or separate metal contacts. [CHERRY's explanation of mechanical switches](https://www.cherry.de/en-gb/company/cherry-technologies/mechanical-technology) describes that path from movement to an electrical signal.
+
+Three questions distinguish the switches: **What force does your finger feel? What makes sound? How does the keyboard detect movement?** These dimensions interact, but a list of colors cannot replace them. This scene uses representative CHERRY mechanisms, then adds magnetic position sensing and a through-light optical example. Color names are not a universal standard across brands or product families.
+
+**Linear and tactile describe force feedback.** Both Red and Black move without a distinct bump; Black provides greater resistance. Linear does not mean constant force throughout the stroke, or silence. Brown adds a raised stem profile: passing the leaf makes resistance rise and fall. Blue has a separate white jacket whose abrupt relative motion produces a click event. Feel, sound and electrical actuation should be observed separately. The original reconstructions reference [Red](https://www.cherry.de/en-gb/product/mx2a-red), [Black](https://www.cherry.de/en-gb/product/mx2a-black), [Brown](https://www.cherry.de/en-gb/product/mx2a-brown) and [Blue's two-piece stem](https://www.cherry.de/en-gb/product/mx2a-blue).
+
+**Short travel and damping change other properties.** Speed Silver remains a linear contact switch, with shorter pre-travel and total travel. Silent Red cushions impacts at the bottom and top of its stroke. Noise reduction does not make a keyboard soundless; keycaps, the plate, the case and the supporting surface also affect what you hear. See the [Silver specifications](https://www.cherry.de/en-gb/product/mx2a-speed-silver), [Silent Red specifications](https://www.cherry.de/en-gb/product/mx2a-silent-red) and [CHERRY's description of top-out and bottom-out damping](https://www.cherry.de/it-it/lazienda/notizie/cherry-blog/article/cherry-mx-switches-at-a-glance).
+
+**Magnetic and optical describe sensing.** A magnet carried by the stem changes the reading of a Hall sensor on the circuit board. Firmware uses position information to decide when to report a press or release. In the optical example, stem movement opens a path for light to reach a receiver. Springs, friction and impacts remain mechanical. The sensing method alone does not specify weight, a tactile bump or loudness. These examples follow [Wooting's Hall-effect explanation](https://wooting.io/post/what-are-hall-effect-keyboard-switches) and [Razer's through-light optical switch](https://www.razer.com/razer-optical-switch).
+
+<h2 id="try">Pause at the event that matters</h2>
+
+- Compare Red and Black at the same depth. Different positions are not a controlled comparison of resistance.
+- Pause Brown before and after the drop in resistance. Follow the same contact between the stem profile and leaf.
+- Track Blue's stem, white jacket and electrical signal separately. The jacket moves relative to the stem; the whole switch does not jump.
+- Pass slowly through actuation, bottom-out and return. The signal can turn on before travel ends, and reset can happen before the stem reaches the top.
+- Compare travel marks in the Silver sequence, then damping contact in the Silent sequence. Earlier actuation and softer impact are separate changes.
+- Follow the same movement through fixed-threshold and Rapid Trigger logic. Watch when the output changes, not just whether the stem is moving.
+
+Pause, seeking and exploration reconstruct a teaching state. Displacement, force and signal refer to the same point in the movement. Slow motion is for observation, not a prediction of input latency.
+
+<h2 id="deeper">Published values and the teaching model</h2>
+
+<details>
+<summary>What do force and travel specifications mean?</summary>
+
+Pre-travel ends at electrical actuation; total travel ends at the bottom of the stroke. Actuation force belongs to the actuation position. A tactile peak and bottom-out force describe different points and must not be substituted for it. A centinewton is a force unit: `1 cN = 0.01 N`.
+
+These nominal values apply to the selected CHERRY examples, with manufacturing tolerances. They do not describe every switch using the same color.
+
+| Example           | Actuation force | Tactile peak     | Pre-travel | Total travel |
+| ----------------- | --------------- | ---------------- | ---------- | ------------ |
+| MX2A Red          | 45 cN           | No separate bump | 2.0 mm     | 4.0 mm       |
+| MX2A Black        | 60 cN           | No separate bump | 2.0 mm     | 4.0 mm       |
+| MX2A Brown        | 45 cN           | 55 cN            | 2.0 mm     | 4.0 mm       |
+| MX2A Blue         | 50 cN           | 60 cN            | 2.2 mm     | 4.0 mm       |
+| MX2A Speed Silver | 45 cN           | No separate bump | 1.2 mm     | 3.4 mm       |
+| MX2A Silent Red   | 45 cN           | No separate bump | 1.9 mm     | 3.7 mm       |
+
+Some English product highlights use ambiguous force labels for Brown and Blue. The distinction here follows [CHERRY's Brown product properties](https://www.cherry.de/en-gb/product/mx2a-brown) and the [Blue technical data sheet](https://www.cherry.de/fileadmin/media/Industrial/Switch/MX_BLUE/Data_sheet_MX2A_Blue.pdf).
+
+Continuous force curves, leaf deformation, return differences and impact motion are teaching fits, not measurements of an individual switch or complete manufacturer-certified curves. Referenced nominal actuation positions do not give every modeled detail the same precision.
+
+</details>
+
+<details>
+<summary>Why does Rapid Trigger need movement history?</summary>
+
+A fixed threshold tests a specified position. After initial activation, Rapid Trigger also tracks movement: rising a set distance from a recent deepest point can release the key; pressing again by a set distance from the raised position can reactivate it. Absolute depth in a single frame is therefore insufficient; direction and recent motion matter.
+
+The scene uses an ordinary Rapid Trigger teaching rule: first cross the initial threshold, then switch by relative movement; releasing above the initial threshold ends that operating region. This is not a reproduction of proprietary firmware. Real implementations include separate movement distances, dead zones and filtering. [Wooting's setup guide](https://help.wooting.io/article/102-how-to-set-up-rapid-trigger) distinguishes ordinary and continuous Rapid Trigger and also documents analog optical implementations. The feature is not exclusive to Hall sensing. Measuring continuous position does not itself create tactile feedback.
+
+The sensor reading is a normalized illustration that changes monotonically with magnet distance and maps back to position. It is not a sensor voltage, a measured magnetic field or a manufacturer's calibration curve. Magnet placement, replayed movement and the resulting output use the same model.
+
+</details>
+
+<details>
+<summary>Why does contactless sensing not mean zero latency?</summary>
+
+Metal contacts can briefly make and break repeatedly during a transition. Firmware must avoid interpreting that bounce as multiple keypresses. Magnetic and optical sensing avoid that particular contact mechanism, but sensor sampling, processing, firmware and communication with the computer still take time. This scene does not model the complete chain or benchmark a keyboard.
+
+The film also explains sound-producing structures rather than presenting switch recordings. It includes no synthetic audio passed off as a measured typing sample, brand ranking or timbre comparison. The optical section shows one design in which pressing permits light to pass; other designs can interrupt light or measure a changing amount of it. One cutaway does not represent every optical switch.
+
+</details>

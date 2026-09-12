@@ -1,4 +1,5 @@
 ---
+import KeyboardSwitchCover from './covers/KeyboardSwitchCover.astro';
 import LandmineCover from './covers/LandmineCover.astro';
 import Ak47Cover from './covers/Ak47Cover.astro';
 import HelicopterCover from './covers/HelicopterCover.astro';
@@ -907,4 +908,5 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'helicopter' && <HelicopterCover color={color} />}
   {slug === 'ak47' && <Ak47Cover color={color} />}
   {slug === 'landmine' && <LandmineCover color={color} />}
+  {slug === 'keyboard-switch' && <KeyboardSwitchCover color={color} />}
 </svg>

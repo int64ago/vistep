@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 70 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow. The latest additions are helicopter, AK-47 and landmine; see their [review record](qa-helicopter-ak47-landmine.md) for the actual evidence and remaining gaps. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Earlier deployment history is recorded in the [collection expansion record](expansion-50.md).
+The collection contains 71 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow. The latest addition is keyboard switches; see its [review record](qa-keyboard-switch.md) for the actual evidence and remaining gaps. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Earlier deployment history is recorded in the [collection expansion record](expansion-50.md).
 
 Topics follow their main explanation. Heat and fluids have their own group; Earth and astronomy covers planetary and celestial phenomena. Weapon subjects share a dedicated context group. Related links and bilingual search aliases retain connections across fields.
 
@@ -10,6 +10,7 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 | Exploration                                                    | Film | Question                                        |
 | -------------------------------------------------------------- | ---- | ----------------------------------------------- |
+| [Keyboard switches](../src/content/en/keyboard-switch.mdx)     | 3:33 | One press. What changes inside a switch?        |
 | [Helicopter](../src/content/en/helicopter.mdx)                 | 2:55 | How does a wing take off without a runway?      |
 | [Excavator](../src/content/en/excavator.mdx)                   | 4:05 | How does oil lift a bucket of earth?            |
 | [Zipper](../src/content/en/zipper.mdx)                         | 3:21 | How does a zipper close with one pull?          |

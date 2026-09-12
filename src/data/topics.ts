@@ -13,6 +13,64 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'keyboard-switch',
+    name: '机械键盘轴体',
+    title: '同样按一下，轴体到底差在哪？',
+    question: '同样按一下，轴体到底差在哪？',
+    description: '从轴心、弹簧和触点出发，分清线性与段落、点击与缓冲，再看磁轴和光轴怎样检测按压。',
+    duration: '3 分钟',
+    color: '#cf8970',
+    tag: '手感 · 声音 · 检测',
+    related: ['suspension', 'logic-gates', 'nfc'],
+    sources: [
+      {
+        title: 'CHERRY MX2A Red — structure, actuation force and travel',
+        url: 'https://www.cherry.de/en-gb/product/mx2a-red',
+      },
+      {
+        title: 'CHERRY MX2A Black — stronger linear spring and travel',
+        url: 'https://www.cherry.de/en-gb/product/mx2a-black',
+      },
+      {
+        title: 'CHERRY MX2A Brown — tactile stem profile; actuation versus pressure-point force',
+        url: 'https://www.cherry.de/en-gb/product/mx2a-brown',
+      },
+      {
+        title: 'CHERRY MX2A Blue — two-piece stem and click mechanism',
+        url: 'https://www.cherry.de/en-gb/product/mx2a-blue',
+      },
+      {
+        title: 'CHERRY MX2A Blue technical data — 50 cN actuation, 60 cN pressure point',
+        url: 'https://www.cherry.de/fileadmin/media/Industrial/Switch/MX_BLUE/Data_sheet_MX2A_Blue.pdf',
+      },
+      {
+        title: 'CHERRY MX2A Speed Silver — shorter pre-travel and total travel',
+        url: 'https://www.cherry.de/en-gb/product/mx2a-speed-silver',
+      },
+      {
+        title: 'CHERRY MX2A Silent Red — integrated damping and travel',
+        url: 'https://www.cherry.de/en-gb/product/mx2a-silent-red',
+      },
+      {
+        title: 'CHERRY MX switches at a glance — bottom-out and top-out damping',
+        url: 'https://www.cherry.de/it-it/lazienda/notizie/cherry-blog/article/cherry-mx-switches-at-a-glance',
+      },
+      {
+        title: 'Wooting — Hall effect keyboard switches',
+        url: 'https://wooting.io/post/what-are-hall-effect-keyboard-switches',
+      },
+      {
+        title: 'Wooting — Rapid Trigger setup and operating rules',
+        url: 'https://help.wooting.io/article/102-how-to-set-up-rapid-trigger',
+      },
+      {
+        title: 'Razer — optical switch operation via transmitted light',
+        url: 'https://www.razer.com/razer-optical-switch',
+      },
+    ],
+    number: '71',
+  },
+  {
     slug: 'landmine',
     name: '地雷',
     title: '战争结束了，危险为何还在？',

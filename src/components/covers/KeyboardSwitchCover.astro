@@ -1,0 +1,21 @@
+---
+import { keyboardSwitchArtwork } from '../../models/keyboard-switch-cover';
+const art = keyboardSwitchArtwork(400, 230, undefined, true);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#e8ece6"></rect>
+  <ellipse cx="201" cy="196" rx="98" ry="14" fill="#334a47" opacity=".08"></ellipse>
+  {
+    art.paths.map((p) => (
+      <path
+        d={p.d}
+        fill={p.fill}
+        stroke={p.fill}
+        stroke-width=".55"
+        stroke-linejoin="round"
+        opacity={p.opacity}
+      />
+    ))
+  }
+</svg>
