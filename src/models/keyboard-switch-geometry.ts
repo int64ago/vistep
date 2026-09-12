@@ -23,7 +23,10 @@ export type SwitchSolid = {
   vertices: SwitchPoint[];
   faces: number[][];
   opacity?: number;
+  /** Average normals only along genuine curved surfaces; planar cut faces stay hard. */
+  smooth?: boolean;
 };
+export type SwitchDetail = 'high' | 'reduced';
 export type KeyboardSwitchVisual = {
   state: KeyboardSwitchState;
   chapter: number;
@@ -186,7 +189,7 @@ function tube(
       ),
     );
   });
-  return loft(id, material, rings, color);
+  return { ...loft(id, material, rings, color), smooth: true };
 }
 function cylinder(
   id: string,
@@ -198,20 +201,23 @@ function cylinder(
   z = 0,
   color?: string,
 ) {
-  return loft(
-    id,
-    material,
-    [y0, y1].map((y) =>
-      Array.from({ length: 24 }, (_, i) =>
-        point(
-          x + r * Math.cos((i / 24) * Math.PI * 2),
-          y,
-          z - r * Math.sin((i / 24) * Math.PI * 2),
+  return {
+    ...loft(
+      id,
+      material,
+      [y0, y1].map((y) =>
+        Array.from({ length: 24 }, (_, i) =>
+          point(
+            x + r * Math.cos((i / 24) * Math.PI * 2),
+            y,
+            z - r * Math.sin((i / 24) * Math.PI * 2),
+          ),
         ),
       ),
+      color,
     ),
-    color,
-  );
+    smooth: true,
+  };
 }
 function ring(
   id: string,
@@ -244,7 +250,16 @@ function ring(
         ((j + 1) % 4) * 32 + ((i + 1) % 32),
         ((j + 1) % 4) * 32 + i,
       ]);
-  return solid(id, material, vertices, faces, color);
+  return {
+    ...solid(
+      id,
+      material,
+      vertices,
+      faces.map((face) => [...face].reverse()),
+      color,
+    ),
+    smooth: true,
+  };
 }
 function halfSleeve(
   id: string,
@@ -272,7 +287,16 @@ function halfSleeve(
     for (let i = 0; i < n - 1; i++)
       faces.push([j * n + i, j * n + i + 1, ((j + 1) % 4) * n + i + 1, ((j + 1) % 4) * n + i]);
   faces.push([0, n, n * 2, n * 3], [n - 1, n * 4 - 1, n * 3 - 1, n * 2 - 1]);
-  return solid(id, material, vertices, faces, color);
+  return {
+    ...solid(
+      id,
+      material,
+      vertices,
+      faces.map((face) => [...face].reverse()),
+      color,
+    ),
+    smooth: true,
+  };
 }
 function ribbon(
   id: string,
@@ -295,45 +319,387 @@ function ribbon(
   return loft(id, material, rings);
 }
 
-/** Fixed housing section has actual closed cut edges. The missing front wall is
- * a teaching section, never a transparent box through several opaque surfaces. */
-function fixedParts(): SwitchSolid[] {
+/** A continuous U wall, with a real rear corner radius and closed front cut faces.
+ * Cross-sections are offset polygons, so draft and shoulder transitions belong
+ * to the same molding instead of overlapping rectangular pillars. */
+function uWall(
+  id: string,
+  material: SwitchMaterial,
+  levels: {
+    y: number;
+    outer: number;
+    inner: number;
+    rear: number;
+    insideRear: number;
+    front: number;
+  }[],
+  detail: SwitchDetail,
+) {
+  const steps = detail === 'high' ? 6 : 3;
+  const arc = (width: number, rear: number, front: number, r: number) => {
+    const out: [number, number][] = [[-width / 2, front]];
+    for (let i = 0; i <= steps; i++) {
+      const angle = Math.PI + ((i / steps) * Math.PI) / 2;
+      out.push([-width / 2 + r + r * Math.cos(angle), rear + r + r * Math.sin(angle)]);
+    }
+    for (let i = 0; i <= steps; i++) {
+      const angle = -Math.PI / 2 + ((i / steps) * Math.PI) / 2;
+      out.push([width / 2 - r + r * Math.cos(angle), rear + r + r * Math.sin(angle)]);
+    }
+    out.push([width / 2, front]);
+    return out;
+  };
+  const rings = levels.map((l) => {
+    const outer = arc(l.outer, l.rear, l.front, 0.62);
+    const inner = arc(l.inner, l.insideRear, l.front, 0.38).reverse();
+    return [...outer, ...inner].reverse().map(([x, z]) => point(x, l.y, z));
+  });
+  return { ...loft(id, material, rings), smooth: true };
+}
+/** Extruded frame with a genuine rectangular opening; the latch is not a bar
+ * painted to look hollow. Its inside edges and hook thickness remain visible. */
+function latchFrame(side: number) {
+  const vertices: SwitchPoint[] = [],
+    faces: number[][] = [];
+  const outer = [
+      [5.35, -4.95],
+      [9.45, -4.95],
+      [9.45, -2.65],
+      [5.35, -2.65],
+    ],
+    inner = [
+      [6.0, -4.52],
+      [8.7, -4.52],
+      [8.7, -3.08],
+      [6.0, -3.08],
+    ];
+  for (const x of [7.02, 7.4])
+    for (const ring of [outer, inner]) for (const [y, z] of ring) vertices.push([side * x, y, z]);
+  for (let i = 0; i < 4; i++) {
+    const j = (i + 1) % 4;
+    faces.push(
+      [i, j, 4 + j, 4 + i],
+      [8 + i, 12 + i, 12 + j, 8 + j],
+      [i, 8 + i, 8 + j, j],
+      [4 + i, 4 + j, 12 + j, 12 + i],
+    );
+  }
+  if (side > 0) faces.forEach((face) => face.reverse());
+  return solid(`upper-latch-${side}`, 'housing', vertices, faces);
+}
+/** A keycap's curved touch surface, skirt, cavity and cut thickness form one
+ * closed shell. The front half is removed with the housing's teaching section. */
+function keycapShell(detail: SwitchDetail) {
+  const nx = detail === 'high' ? 24 : 10,
+    nz = detail === 'high' ? 10 : 4;
+  const vertices: SwitchPoint[] = [],
+    faces: number[][] = [];
+  const roof = (u: number, v: number, inside = false): SwitchPoint => {
+    const z = -8.05 + v * 7.63,
+      corner = Math.max(0, 0.7 - (z + 8.05));
+    const xmax = 7.85 - 0.7 + Math.sqrt(Math.max(0, 0.7 * 0.7 - corner * corner));
+    const x = (u * 2 - 1) * xmax;
+    return [
+      x,
+      18.32 + 0.62 * (x / 7.85) ** 2 + 0.05 * ((z + 4.2) / 4) ** 2 - (inside ? 0.67 : 0),
+      z,
+    ];
+  };
+  for (const inside of [false, true])
+    for (let j = 0; j <= nz; j++)
+      for (let i = 0; i <= nx; i++) vertices.push(roof(i / nx, j / nz, inside));
+  const offset = (nx + 1) * (nz + 1),
+    at = (i: number, j: number) => j * (nx + 1) + i;
+  for (let j = 0; j < nz; j++)
+    for (let i = 0; i < nx; i++) {
+      const f = [at(i, j), at(i, j + 1), at(i + 1, j + 1), at(i + 1, j)];
+      faces.push(f, f.map((k) => k + offset).reverse());
+    }
+  // The front cut joins outer and inner surfaces, showing an honest .67 mm roof.
+  for (let i = 0; i < nx; i++)
+    faces.push([at(i, nz), offset + at(i, nz), offset + at(i + 1, nz), at(i + 1, nz)]);
+  const edge: number[] = [];
+  for (let j = nz; j >= 0; j--) edge.push(at(0, j));
+  for (let i = 1; i <= nx; i++) edge.push(at(i, 0));
+  for (let j = 1; j <= nz; j++) edge.push(at(nx, j));
+  const bottomOuter: number[] = [],
+    bottomInner: number[] = [];
+  for (const index of edge) {
+    const q = vertices[index],
+      x = (q[0] * 8.35) / 7.85,
+      z = -0.42 + ((q[2] + 0.42) * 8.15) / 7.63;
+    bottomOuter.push(vertices.length);
+    vertices.push([x, 14.7, z]);
+    bottomInner.push(vertices.length);
+    vertices.push([x - Math.sign(x) * 0.73, 14.82, z + (q[2] < -7.3 ? 0.65 : 0)]);
+  }
+  for (let j = 0; j < edge.length - 1; j++) {
+    const k = j + 1,
+      a = edge[j],
+      b = edge[k],
+      ao = bottomOuter[j],
+      bo = bottomOuter[k],
+      ai = bottomInner[j],
+      bi = bottomInner[k];
+    faces.push([a, b, bo, ao], [a + offset, ai, bi, b + offset], [ao, bo, bi, ai]);
+  }
+  for (const j of [0, edge.length - 1]) {
+    const f = [edge[j], edge[j] + offset, bottomInner[j], bottomOuter[j]];
+    faces.push(j === 0 ? f.reverse() : f);
+  }
+  return { ...solid('keycap-crown', 'cap', vertices, faces), smooth: true };
+}
+
+function moldedCrown(color: string, detail: SwitchDetail) {
+  const steps = detail === 'high' ? 6 : 3;
+  const profile = (y: number, w: number, d: number, r: number): SwitchPoint[] => {
+    const p: SwitchPoint[] = [];
+    for (const [cx, cz, angle] of [
+      [w / 2 - r, -d / 2 + r, -Math.PI / 2],
+      [w / 2 - r, d / 2 - r, 0],
+      [-w / 2 + r, d / 2 - r, Math.PI / 2],
+      [-w / 2 + r, -d / 2 + r, Math.PI],
+    ])
+      for (let i = 0; i <= steps; i++)
+        p.push([
+          cx + r * Math.cos(angle + ((i / steps) * Math.PI) / 2),
+          y,
+          cz + r * Math.sin(angle + ((i / steps) * Math.PI) / 2) - 0.1,
+        ]);
+    return p.reverse();
+  };
+  return {
+    ...loft(
+      'stem-central',
+      'stem',
+      [
+        profile(11.15, 4.6, 4.15, 0.3),
+        profile(11.27, 4.8, 4.35, 0.34),
+        profile(12.17, 4.8, 4.35, 0.34),
+        profile(12.35, 4.58, 4.13, 0.33),
+      ],
+      color,
+    ),
+    smooth: true,
+  };
+}
+const curvedProfile = (pairs: [number, number][], y: number) => {
+  let i = 0;
+  while (i < pairs.length - 2 && y > pairs[i + 1][0]) i++;
+  const a = pairs[i],
+    b = pairs[i + 1],
+    previous = pairs[Math.max(0, i - 1)],
+    next = pairs[Math.min(pairs.length - 1, i + 2)];
+  const t = Math.max(0, Math.min(1, (y - a[0]) / (b[0] - a[0]))),
+    length = b[0] - a[0];
+  const m0 = (b[1] - previous[1]) / (b[0] - previous[0]),
+    m1 = (next[1] - a[1]) / (next[0] - a[0]);
+  return (
+    (2 * t ** 3 - 3 * t * t + 1) * a[1] +
+    (t ** 3 - 2 * t * t + t) * length * m0 +
+    (-2 * t ** 3 + 3 * t * t) * b[1] +
+    (t ** 3 - t * t) * length * m1
+  );
+};
+function contactRivet(id: string, x0: number, x1: number, y: number, z: number) {
+  const piece = cylinder(id, 'gold', 0.16, x0, x1);
+  return {
+    ...piece,
+    vertices: piece.vertices.map((p) => [p[1], y + p[0], z - p[2]] as SwitchPoint),
+  };
+}
+/** One molded MX cross rather than two intersecting cuboids. Small lead-in
+ * chamfers guide the female socket while retaining the specified clearance. */
+function crossPost(color: string) {
+  const crossShape = (outer: number, arm: number, y: number): SwitchPoint[] =>
+    [
+      [-arm, -outer],
+      [arm, -outer],
+      [arm, -arm],
+      [outer, -arm],
+      [outer, arm],
+      [arm, arm],
+      [arm, outer],
+      [-arm, outer],
+      [-arm, arm],
+      [-outer, arm],
+      [-outer, -arm],
+      [-arm, -arm],
+    ]
+      .reverse()
+      .map(([x, z]) => [x, y, z]);
+  return loft(
+    'mx-cross-x',
+    'stem',
+    [crossShape(2.125, 0.64, 12.3), crossShape(2.125, 0.64, 15.08), crossShape(2.045, 0.56, 15.3)],
+    color,
+  );
+}
+/** Stamped sheet with two broad shoulders and an actual punched central slot.
+ * The same centerline ends at the modeled contact; changing a curve never
+ * reconstructs electrical state. Rounded bending is sampled at a common LOD. */
+function stampedLeaf(
+  id: string,
+  center: (y: number) => number,
+  width: (y: number) => number,
+  top: number,
+  thickness: number,
+  slot: [number, number],
+  detail: SwitchDetail,
+) {
+  const yValues = [1.45, 1.7, 2.05, slot[0], slot[1], 5.2, 5.65, 6.15, top];
+  if (detail === 'high') for (let y = 1.7; y < top; y += 0.24) yValues.push(y);
+  const ys = [...new Set(yValues)].sort((a, b) => a - b);
+  const vertices: SwitchPoint[] = [],
+    faces: number[][] = [];
+  const grid: number[][][] = [],
+    halfHole = 0.32;
+  for (const y of ys) {
+    const row: number[][] = [],
+      w = width(y) / 2;
+    for (const z of [-w, -halfHole, halfHole, w]) {
+      const pair: number[] = [];
+      for (const side of [-1, 1]) {
+        pair.push(vertices.length);
+        vertices.push([center(y) + (side * thickness) / 2, y, 2.1 + z]);
+      }
+      row.push(pair);
+    }
+    grid.push(row);
+  }
+  const cells: boolean[][] = ys
+    .slice(0, -1)
+    .map((y, j) => [true, !(y >= slot[0] - 1e-8 && ys[j + 1] <= slot[1] + 1e-8), true]);
+  for (let j = 0; j < ys.length - 1; j++)
+    for (let k = 0; k < 3; k++)
+      if (cells[j][k]) {
+        const a = grid[j][k],
+          b = grid[j + 1][k],
+          c = grid[j + 1][k + 1],
+          d = grid[j][k + 1];
+        faces.push([a[0], b[0], c[0], d[0]], [a[1], d[1], c[1], b[1]]);
+        if (j === 0 || !cells[j - 1][k]) faces.push([a[0], d[0], d[1], a[1]]);
+        if (j === ys.length - 2 || !cells[j + 1][k]) faces.push([b[0], b[1], c[1], c[0]]);
+        if (k === 0 || !cells[j][k - 1]) faces.push([a[0], a[1], b[1], b[0]]);
+        if (k === 2 || !cells[j][k + 1]) faces.push([d[0], c[0], c[1], d[1]]);
+      }
+  return {
+    ...solid(
+      id,
+      'gold',
+      vertices,
+      faces.map((face) => [...face].reverse()),
+    ),
+    smooth: true,
+  };
+}
+const interpolateProfile = (pairs: [number, number][], y: number) => {
+  let i = 0;
+  while (i < pairs.length - 2 && y > pairs[i + 1][0]) i++;
+  const [a, b] = [pairs[i], pairs[i + 1]],
+    t = Math.max(0, Math.min(1, (y - a[0]) / (b[0] - a[0])));
+  return a[1] + (b[1] - a[1]) * t;
+};
+/** Fixed, shared molded geometry: one lower well and one drafted upper shell. */
+function fixedParts(detail: SwitchDetail): SwitchSolid[] {
   const a: SwitchSolid[] = [];
   a.push(box('pcb', 'pcb', [21.5, 1.1, 18.6], [0, -0.55, 0], 0.18));
+  a.push(
+    uWall(
+      'housing-shell',
+      'base',
+      [
+        { y: 1.45, outer: 13.5, inner: 11.8, rear: -6.7, insideRear: -5.85, front: 1.6 },
+        { y: 1.8, outer: 13.8, inner: 11.9, rear: -6.9, insideRear: -5.95, front: 1.6 },
+        { y: 4.9, outer: 14, inner: 12.15, rear: -7, insideRear: -6.05, front: 1.6 },
+        { y: 5.08, outer: 14.55, inner: 12.15, rear: -7, insideRear: -6.05, front: 1.6 },
+        { y: 5.45, outer: 14.55, inner: 12.15, rear: -7, insideRear: -6.05, front: 1.6 },
+        { y: 5.62, outer: 13.7, inner: 12.1, rear: -6.85, insideRear: -6.05, front: 1.6 },
+        { y: 6.32, outer: 13.7, inner: 12.1, rear: -6.85, insideRear: -6.05, front: 1.6 },
+      ],
+      detail,
+    ),
+  );
+  a.push(
+    uWall(
+      'upper-shell',
+      'housing',
+      [
+        { y: 6.28, outer: 13.5, inner: 11.85, rear: -6.75, insideRear: -5.92, front: 1.6 },
+        { y: 9.38, outer: 13.5, inner: 11.85, rear: -6.75, insideRear: -5.92, front: 1.6 },
+        { y: 9.62, outer: 13.15, inner: 11.5, rear: -6.62, insideRear: -5.78, front: 1.6 },
+        { y: 11.7, outer: 10.7, inner: 9.1, rear: -5.4, insideRear: -4.52, front: 1.6 },
+        { y: 11.88, outer: 10.48, inner: 9.02, rear: -5.28, insideRear: -4.48, front: 1.6 },
+        { y: 12.14, outer: 10.15, inner: 5.3, rear: -5.1, insideRear: -2.65, front: 1.6 },
+        { y: 12.48, outer: 9.95, inner: 5.3, rear: -5, insideRear: -2.65, front: 1.6 },
+      ],
+      detail,
+    ),
+  );
   for (const side of [-1, 1]) {
     a.push(box(`pcb-pad-${side}`, 'gold', [1.6, 0.055, 2.0], [side * 5.2, 0.025, 4.9], 0.03));
-    a.push(box(`pcb-trace-${side}`, 'copper', [0.36, 0.045, 4.8], [side * 5.2, 0.04, 7.15], 0.015));
+    a.push(box(`pcb-trace-${side}`, 'copper', [0.36, 0.045, 4.3], [side * 5.2, 0.04, 6.9], 0.015));
     a.push(
       box(`pcb-trace-turn-${side}`, 'copper', [4.7, 0.045, 0.36], [side * 7.3, 0.04, 8.2], 0.015),
     );
-    a.push(box(`housing-side-${side}`, 'base', [1.15, 5.7, 8.6], [side * 6.4, 4.35, -2.7], 0.18));
-    a.push(box(`upper-side-${side}`, 'housing', [0.82, 5.1, 7.2], [side * 6.45, 9.45, -3.1], 0.14));
+    a.push(latchFrame(side));
     a.push(
-      box(`upper-shoulder-${side}`, 'housing', [4.5, 0.86, 7.4], [side * 4.55, 12.1, -3.05], 0.2),
+      prism(
+        `latch-hook-${side}`,
+        'housing',
+        [
+          [side * 7.4, 5.8],
+          [side * 6.94, 5.65],
+          [side * 6.89, 5.4],
+          [side * 7.4, 5.35],
+        ],
+        -3.8,
+        2.3,
+      ),
     );
     a.push(
-      box(`upper-latch-${side}`, 'housing', [0.84, 3.35, 1.8], [side * 7.08, 7.4, -3.8], 0.09),
+      box(`latch-bridge-${side}`, 'housing', [0.8, 0.34, 2.3], [side * 6.98, 9.35, -3.8], 0.06),
     );
-    a.push(box(`latch-hook-${side}`, 'housing', [0.92, 0.6, 2.0], [side * 6.85, 5.7, -3.8], 0.07));
-    a.push(box(`mould-seam-${side}`, 'base', [0.1, 0.11, 8.8], [side * 6.99, 5.0, -2.7], 0.02));
     a.push(box(`stem-guide-${side}`, 'base', [0.65, 8.3, 1.25], [side * 3.4, 6.2, -0.9], 0.08));
     a.push(
       box(`spring-guide-rib-${side}`, 'base', [0.55, 1.7, 3.5], [side * 2.8, 2.4, -0.9], 0.08),
     );
+    // Molded braces merge with the lower well; no decorative fasteners.
+    for (const z of [-5.1, -1.8])
+      a.push(
+        prism(
+          `base-rib-${side}-${z}`,
+          'base',
+          [
+            [side * 6.08, 1.5],
+            [side * 5.55, 1.5],
+            [side * 6.08, 4.85],
+          ],
+          z,
+          0.45,
+        ),
+      );
+    a.push(
+      box(
+        `lower-guide-buttress-${side}`,
+        'base',
+        [0.65, 0.75, 1.25],
+        [side * 3.4, 1.75, -0.9],
+        0.065,
+      ),
+    );
   }
   a.push(box('housing-bottom', 'base', [14, 1.45, 14], [0, 0.775, 0], 0.18));
-  a.push(box('housing-back', 'base', [12, 5.7, 1.1], [0, 4.35, -6.45], 0.13));
-  a.push(box('upper-back', 'housing', [12.8, 5.1, 0.85], [0, 9.45, -6.28], 0.15));
-  a.push(box('upper-roof-back', 'housing', [5.3, 0.86, 4.05], [0, 12.1, -4.72], 0.12));
   a.push(box('section-base-lip', 'base', [14, 0.48, 1.0], [0, 1.55, 6.5], 0.1));
   a.push(cylinder('lower-spring-seat', 'base', 2.55, 1.45, 2));
   a.push(cylinder('central-guide-post', 'base', 0.66, 1.55, 5.45));
-  // The outer front skin is intentionally absent; these cap-cut faces remain solid.
   a.push(box('contact-terminal-a', 'gold', [0.48, 3.4, 0.68], [5.5, 1.05, 2.1], 0.04));
   a.push(box('contact-terminal-b', 'gold', [0.48, 3.4, 0.68], [3.65, 1.05, 2.1], 0.04));
   return a;
 }
-const housing = fixedParts();
+const housing = { high: fixedParts('high'), reduced: fixedParts('reduced') };
+const keycaps = { high: keycapShell('high'), reduced: keycapShell('reduced') };
+
 const translate = (s: SwitchSolid, dy: number): SwitchSolid => ({
   ...s,
   vertices: s.vertices.map((p) => [p[0], p[1] + dy, p[2]]),
@@ -351,11 +717,14 @@ export function keyboardSwitchCamProfile(state: KeyboardSwitchState): [number, n
     ? [
         [2.2, 11.8],
         [3.05, 11.8],
-        [3.05, 9.7],
-        [3.5, 9.45],
-        [4.03, 9.05],
-        [3.72, 8.75],
-        [3.15, 8.1],
+        ...Array.from({ length: 9 }, (_, i): [number, number] => {
+          const y = 9.7 - (i / 8) * 0.65;
+          return [4.03 - 0.98 * ((y - 9.05) / 0.65) ** 2, y];
+        }),
+        ...Array.from({ length: 8 }, (_, i): [number, number] => {
+          const y = 9.05 - ((i + 1) / 8) * 0.95;
+          return [4.03 - 0.88 * ((y - 9.05) / 0.95) ** 2, y];
+        }),
         [3.05, 6.8],
         [2.2, 6.8],
       ]
@@ -398,50 +767,46 @@ export function keyboardSwitchCamContact(state: KeyboardSwitchState) {
   return { x, y, slope, engaged: true, normal: unit([1, -slope, 0]) };
 }
 
-export function keyboardSwitchSolids(state: KeyboardSwitchState): SwitchSolid[] {
+export function keyboardSwitchSolids(
+  state: KeyboardSwitchState,
+  detail: SwitchDetail = 'high',
+): SwitchSolid[] {
   const variant = state.variant,
     color = switchStemColor(variant),
     dy = state.stemOffsetMm,
-    a = housing.map((s) => ({ ...s }));
+    a = housing[detail].map((s) => ({ ...s }));
   const moving: SwitchSolid[] = [];
-  // Sliding stem has side runners and a hollow lower spring-centering cylinder.
-  moving.push(box('stem-central', 'stem', [4.8, 1.2, 4.35], [0, 11.75, -0.1], 0.16, color));
-  // The spring enters a real hollow skirt below the solid cross-stem crown.
-  // Its final coils do not disappear into a solid rectangular block.
-  for (const side of [-1, 1])
-    moving.push(
-      box(
-        `stem-cavity-wall-${side}`,
-        'stem',
-        [0.35, 2.1, 4.35],
-        [side * 2.225, 10.1, -0.1],
-        0.06,
-        color,
-      ),
-    );
-  moving.push(box('stem-cavity-back', 'stem', [4.1, 2.1, 0.25], [0, 10.1, -2.15], 0.055, color));
+
+  // The crown and hollow U skirt are drafted moldings, not a filled central box.
+  // Their cut face exposes the spring-centering cavity without inventing a gap.
+  moving.push(moldedCrown(color, detail));
+  moving.push({
+    ...uWall(
+      'stem-cavity-shell',
+      'stem',
+      [
+        { y: 9.05, outer: 4.72, inner: 4.1, rear: -2.25, insideRear: -1.98, front: 2.075 },
+        { y: 9.2, outer: 4.8, inner: 4.1, rear: -2.275, insideRear: -1.98, front: 2.075 },
+        { y: 11.27, outer: 4.8, inner: 4.1, rear: -2.275, insideRear: -1.98, front: 2.075 },
+      ],
+      detail,
+    ),
+    color,
+  });
   for (const side of [-1, 1])
     moving.push(
       box(
         `stem-runner-${side}`,
         'stem',
-        [0.75, 4.05, 1.05],
-        [side * 2.65, 10.65, -0.85],
+        [0.75, 3.225, 1.05],
+        [side * 2.65, 10.2375, -0.85],
         0.08,
         color,
       ),
     );
-  moving.push(ring('upper-spring-seat', 'stem', 2.45, 0.96, 10.75, 11.15, color));
-  moving.push(box('mx-cross-x', 'stem', [4.25, 3.0, 1.28], [0, 13.8, 0], 0.09, color));
-  moving.push(box('mx-cross-z', 'stem', [1.28, 3.0, 4.25], [0, 13.8, 0], 0.09, color));
-  // A thick-walled keycap section connected around the rear half of the cross.
-  moving.push(
-    loft('keycap-crown', 'cap', [
-      corners(16.9, 7.95, 17.75, 0.65, [0, 0, -4.48]),
-      corners(16.45, 7.8, 18.65, 0.72, [0, 0, -4.48]),
-      corners(15.2, 7.2, 19.0, 0.8, [0, 0, -4.48]),
-    ]),
-  );
+  moving.push(ring('upper-spring-seat', 'stem', 2.45, 0.96, 11, 11.15, color));
+  moving.push(crossPost(color));
+  moving.push(keycaps[detail]);
   // The female MX socket has a cross-shaped void with clearance around the male
   // stem. Its front half is sectioned together with the keycap, not filled solid.
   moving.push(box('keycap-socket-back', 'cap', [5, 3, 0.3], [0, 16.25, -2.35], 0.04));
@@ -453,22 +818,19 @@ export function keyboardSwitchSolids(state: KeyboardSwitchState): SwitchSolid[] 
       box(`keycap-socket-corner-${side}`, 'cap', [1.5, 3, 1.5], [side * 1.45, 16.25, -1.45], 0.04),
     );
   }
-  for (const side of [-1, 1])
-    moving.push(
-      prism(
-        `keycap-skirt-${side}`,
-        'cap',
-        [
-          [side * 8.3, 17.9],
-          [side * 8.35, 14.7],
-          [side * 7.25, 14.8],
-          [side * 7.25, 18.2],
-        ],
-        -4.55,
-        7.7,
-      ),
-    );
-  moving.push(box('keycap-rear-skirt', 'cap', [16.2, 3.1, 1.0], [0, 16.35, -8.08], 0.2));
+
+  // Thin ribs are physically connected to the socket, rear wall and underside
+  // of the cap. Their low leading edges keep the removed front section open.
+  for (const side of [-1, 1]) {
+    const count = detail === 'high' ? 13 : 6;
+    const top = Array.from({ length: count }, (_, i): [number, number] => {
+      const x = 2.35 + (i / (count - 1)) * 5.44;
+      return [side * x, 17.68 + 0.62 * (x / 7.85) ** 2 + 0.05 * (2.7 / 4) ** 2];
+    });
+    const profile = [...top, ...top.map(([x, y]): [number, number] => [x, y - 1.0]).reverse()];
+    moving.push(prism(`keycap-inner-rib-${side}`, 'cap', profile, -1.5, 0.36));
+  }
+  moving.push(box('keycap-socket-rear-rib', 'cap', [0.36, 1.4, 5.3], [0, 17.05, -5.0], 0.035));
 
   // A shaped TLS leg remains attached to the slider. Brown's rounded bump is a
   // visible local feature, not a color-only version of the straight linear leg.
@@ -478,50 +840,77 @@ export function keyboardSwitchSolids(state: KeyboardSwitchState): SwitchSolid[] 
   a.push(...moving.map((s) => translate(s, dy)));
   const springTop = state.springTop[1],
     springBottom = state.springBottom[1];
-  const springPath = Array.from({ length: 151 }, (_, i) => {
-    const p = i / 150,
-      angle = p * Math.PI * 2 * 6.25;
-    return point(
-      Math.cos(angle) * 1.78,
-      springBottom + p * (springTop - springBottom),
-      Math.sin(angle) * 1.78,
-    );
+
+  // The MX2A barrel spring also appears in Speed Silver and Silent Red.
+  // Blue is the documented exception; generic Hall/optical keep equal radii.
+  // Silent retains its separate damped stem molding rather than standard ribs.
+  const barrel = ['red', 'black', 'brown', 'silver', 'silent-red'].includes(variant),
+    turns = 6.25,
+    samples = detail === 'high' ? 250 : 112;
+  const springPath = Array.from({ length: samples + 1 }, (_, i) => {
+    const t = (i / samples) * turns,
+      angle = t * Math.PI * 2;
+    const length = springTop - springBottom - 0.36;
+    const rise =
+      t < 1
+        ? 0.37 * t
+        : t > turns - 1
+          ? length - 0.37 * (turns - t)
+          : 0.37 + ((t - 1) * (length - 0.74)) / (turns - 2);
+    const middle = Math.max(0, Math.min(1, (t - 0.65) / (turns - 1.3)));
+    const radius = barrel ? 1.55 + 0.23 * Math.sin(middle * Math.PI) ** 2 : 1.72;
+    return point(Math.cos(angle) * radius, springBottom + 0.18 + rise, Math.sin(angle) * radius);
   });
-  a.push(tube('return-spring', 'steel', springPath, 0.18, 8));
+  a.push(tube('return-spring', 'steel', springPath, 0.18, detail === 'high' ? 12 : 8));
 
   if (state.contact.present) {
     const x = SWITCH_GEOMETRY.contactX - state.contact.gapMm;
     // Two gold crosspoint tips meet geometrically at the modeled gap. Neither
     // contact position nor electrical state is inferred again in this renderer.
-    a.push(
-      ribbon(
-        'fixed-contact-leaf',
+
+    const fixedX = (y: number) =>
+      curvedProfile(
         [
-          [5.5, 1.45, 2.1],
-          [5.5, 3.5, 2.1],
-          [5.48, 5.75, 2.1],
-          [5.35 + 0.13, 6.7, 2.1],
+          [1.45, 5.5],
+          [4.85, 5.5],
+          [5.5, 5.48],
+          [6.7, 5.48],
         ],
-        1.05,
-        0.18,
-      ),
+        y,
+      );
+    const movingX = (y: number) =>
+      curvedProfile(
+        [
+          [1.45, 3.65],
+          [3, 3.72],
+          [4.7, 4.18],
+          [6.1, x - 0.25],
+          [6.7, x - 0.13],
+        ],
+        y,
+      );
+    const stampingWidth = (y: number) =>
+      interpolateProfile(
+        [
+          [1.45, 0.68],
+          [2.05, 1.85],
+          [4.5, 2.15],
+          [5.2, 1.85],
+          [5.65, 1.0],
+          [6.7, 0.86],
+        ],
+        y,
+      );
+    a.push(
+      stampedLeaf('fixed-contact-leaf', fixedX, stampingWidth, 6.7, 0.18, [2.65, 4.45], detail),
     );
     a.push(
-      ribbon(
-        'moving-contact-leaf',
-        [
-          [3.65, 1.45, 2.1],
-          [3.72, 3.0, 2.1],
-          [4.18, 4.7, 2.1],
-          [x - 0.25, 6.1, 2.1],
-          [x - 0.13, 6.7, 2.1],
-        ],
-        0.9,
-        0.16,
-      ),
+      stampedLeaf('moving-contact-leaf', movingX, stampingWidth, 6.7, 0.16, [2.75, 4.4], detail),
     );
     a.push(box('fixed-crosspoint', 'gold', [0.26, 0.48, 0.24], [5.48, 6.7, 2.1], 0.06));
     a.push(box('moving-crosspoint', 'gold', [0.26, 0.24, 0.56], [x - 0.13, 6.7, 2.1], 0.04));
+    a.push(contactRivet('fixed-contact-rivet', 5.47, 5.68, 6.7, 2.1));
+    a.push(contactRivet('moving-contact-rivet', x - 0.39, x - 0.12, 6.7, 2.1));
     const cam = keyboardSwitchCamContact(state),
       bend = state.contact.leafDeflectionMm;
     const nose = add([cam.x, cam.y, 2.1], scale(cam.normal, 0.15));
@@ -548,8 +937,10 @@ export function keyboardSwitchSolids(state: KeyboardSwitchState): SwitchSolid[] 
   }
   if (state.click.present) {
     for (const side of [-1, 1]) {
-      const guide = a.find((p) => p.id === `stem-guide-${side}`)!;
-      guide.vertices = guide.vertices.map((p) => [p[0] + side * 1.15, p[1], p[2]]);
+      for (const id of [`stem-guide-${side}`, `lower-guide-buttress-${side}`]) {
+        const guide = a.find((p) => p.id === id)!;
+        guide.vertices = guide.vertices.map((p) => [p[0] + side * 1.15, p[1], p[2]]);
+      }
     }
     const jy = state.click.sleeveOffsetMm;
     // The white click jacket is a separate U-shaped molded component, constrained
@@ -571,12 +962,21 @@ export function keyboardSwitchSolids(state: KeyboardSwitchState): SwitchSolid[] 
         ),
       );
       jacket.push(
-        box(
+        prism(
           `click-jacket-side-${side}`,
           'cap',
-          [0.72, 2.45, 4.7],
-          [side * 3.45, 9.1, 0.1],
-          0.12,
+          [
+            [side * 3.09, 7.875],
+            [side * 3.55, 7.875],
+            [side * 3.78, 8.3],
+            [side * 3.81, 9.9],
+            [side * 3.66, 10.325],
+            [side * 3.13, 10.325],
+            [side * 3.09, 9.95],
+            [side * 3.18, 8.55],
+          ],
+          0.1,
+          4.7,
           '#d9ddd7',
         ),
       );
@@ -624,8 +1024,10 @@ export function keyboardSwitchSolids(state: KeyboardSwitchState): SwitchSolid[] 
   }
   if (variant === 'silent-red') {
     for (const side of [-1, 1]) {
-      const guide = a.find((p) => p.id === `stem-guide-${side}`)!;
-      guide.vertices = guide.vertices.map((p) => [p[0] + side, p[1], p[2]]);
+      for (const id of [`stem-guide-${side}`, `lower-guide-buttress-${side}`]) {
+        const guide = a.find((p) => p.id === id)!;
+        guide.vertices = guide.vertices.map((p) => [p[0] + side, p[1], p[2]]);
+      }
       const x = side * 3.15;
       const bottom = 0.5 - state.silent.bottomCompressionMm,
         top = 0.5 - state.silent.topCompressionMm;
@@ -864,7 +1266,13 @@ export function keyboardSwitchView(
     span,
     height: detail ? (chapter === 4 ? 8.2 : chapter === 3 ? 10.0 : 9.3) : 25.5,
     direction: unit(
-      (chapter === 7 ? [10, 3.5, 7] : detail ? [2.7, 1.6, 11] : [6.2, 4.7, 12]) as SwitchPoint,
+      (chapter === 7
+        ? [10, 3.5, 7]
+        : chapter === 2 || chapter === 4
+          ? [8, 2.7, 10]
+          : detail
+            ? [2.7, 1.6, 11]
+            : [6.2, 4.7, 12]) as SwitchPoint,
     ),
     detail,
     narrow,

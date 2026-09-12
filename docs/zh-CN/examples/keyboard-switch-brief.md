@@ -22,6 +22,12 @@
 
 最终界面在桌面和手机都把紧凑的力曲线或状态仪器放在实物下方，保持沿同一观察顺序阅读。320/390 px 手机重新安排实物近镜，只保留当前章必需的辅助图；正文标签用至少 16 px 的 HTML，主要操作至少 44 px。配音不用屏幕左右定位。开场保留完整外观，局部镜头配定位提示；封面共用真实场景几何，让十字轴心、弹簧和触点可辨认，不堆标签。
 
+## 2026-09-12 精细化修订方向
+
+用户随后指出建模不够精细，修订应重建制造特征，而非增加装饰。把矩形墙体堆出的外壳改成连续的成型薄壳：收口斜肩、安装台阶、卡扣窗口与弹性钩，并在观察切面保留可信壁厚。代表性键帽采用轻凹曲面、渐缩薄壁和相连的轴座支撑；仅含开关的官方参考并不能证明某款厂商键帽的精确曲面或加强筋数量。
+
+细化十字轴心和侧导槽，同时保持同一位移与装配间隙。接片应呈现宽而薄的冲压轮廓、切口、肩部与折弯，并保留局部交叉触点；细化后仍须维持两条独立电路径和模型中的实际间隙。改善弹簧线材的连续曲面、密绕端圈与全行程落座。[CHERRY 的 MX2A 官方介绍](https://www.cherry.de/en-gb/company/news/press/article/cherry-mx2a-exceeding-expectations)说明适用型号采用桶形弹簧，并明确排除青轴。青轴保留圆柱形弹簧，静音轴的不同滑块也不能无区别套用标准轴心细节。这些是修订要求，不表示新版已经通过验收。
+
 ## 一级来源与边界
 
 资料核对日期：2026-09-12。CHERRY 的 [Red](https://www.cherry.de/en-gb/product/mx2a-red)、[Black](https://www.cherry.de/en-gb/product/mx2a-black)、[Brown](https://www.cherry.de/en-gb/product/mx2a-brown)、[Blue](https://www.cherry.de/en-gb/product/mx2a-blue)、[Speed Silver](https://www.cherry.de/en-gb/product/mx2a-speed-silver)、[Silent Red](https://www.cherry.de/en-gb/product/mx2a-silent-red)产品页提供代表结构与标称锚点。
@@ -37,7 +43,9 @@
 
 茶轴和青轴的英文摘要容易混淆两种力。茶轴 Properties 明确列 45 cN 触发力，[官方法语页面](https://www.cherry.de/fr-fr/produit/mx2a-brown)同时明确区分 45 cN 触发与 55 cN 段落峰值。[青轴技术数据表](https://www.cherry.de/fileadmin/media/Industrial/Switch/MX_BLUE/Data_sheet_MX2A_Blue.pdf)分别列出 50 和 60 cN。该 PDF 的官方搜索索引可核读，直接打开返回错误；不能把摘要里的峰值当作触发力，也不能把教学拟合的触底力标成官方数据。
 
-青轴正文说明了两件式轴心。官网 HTML 中的爆炸动画参考为 [青轴](https://www.cherry.de/fileadmin/media/Industrial_Security/Switch/MX_BLUE/MX1A-E1NA_ExplodeANIM.mp4)、[茶轴](https://www.cherry.de/fileadmin/media/Industrial_Security/Switch/MX_BROWN/MX1A-G1NA_ExplodeANIM.mp4)、[静音红轴](https://www.cherry.de/fileadmin/media/Industrial_Security/Switch/MX_SILENT_RED/MX3A-L1NA_ExplodeANIM.mp4)。内容作者仅提取真实资源 URL 并交给几何作者，不以此声称已观看动画；产品不直接复制厂商图像。[CHERRY 总览](https://www.cherry.de/it-it/lazienda/notizie/cherry-blog/article/cherry-mx-switches-at-a-glance)解释上下端缓冲。
+青轴正文说明了两件式轴心。官网 HTML 中的爆炸动画参考为 [青轴](https://www.cherry.de/fileadmin/media/Industrial_Security/Switch/MX_BLUE/MX1A-E1NA_ExplodeANIM.mp4)、[茶轴](https://www.cherry.de/fileadmin/media/Industrial_Security/Switch/MX_BROWN/MX1A-G1NA_ExplodeANIM.mp4)、[静音红轴](https://www.cherry.de/fileadmin/media/Industrial_Security/Switch/MX_SILENT_RED/MX3A-L1NA_ExplodeANIM.mp4)。2026-09-12 的最初制作记录中，内容作者仅从官网 HTML 提取真实资源 URL 并交给几何作者，当时不声称已观看动画。产品不直接复制厂商图像。[CHERRY 总览](https://www.cherry.de/it-it/lazienda/notizie/cherry-blog/article/cherry-mx-switches-at-a-glance)解释上下端缓冲。
+
+2026-09-12 随后的精细化复核中，同一作者下载了三段 5.04 秒、2000 × 2000 的官方动画，实际查看各自 2.015 秒的爆炸帧，以及青轴 4.032 秒的组装视图和茶轴开场视图；还查看了官方静音红轴爆炸静图与青轴产品图。URL、提帧代码、时间和仅供参考的图片保存在本地忽略目录 `artifacts/keyboard-switch-refinement-2026-09-12/`。这次补充的是实际停帧观察，不是连续播放、实物测量或 CAD 验证。官网沿用的 `MX1A`／`MX3A` 资源名对应较早的示意组件，最新 MX2A 的弹簧与导向细节仍需结合官方介绍，不能假设旧帧都代表最新修订。
 
 [Wooting 霍尔轴说明](https://wooting.io/post/what-are-hall-effect-keyboard-switches)支持轴心磁体与电路板传感器的关系；[Rapid Trigger 设置说明](https://help.wooting.io/article/102-how-to-set-up-rapid-trigger)支持初始触发、依运动距离复位与再触发，以及普通/持续模式的区别。该来源也记载模拟光轴的实现，不能称 RT 为磁轴独占。[Razer 光轴说明](https://www.razer.com/razer-optical-switch)明确按下后光通过轴心，本片不代表其他遮光或连续光量检测方案。
 

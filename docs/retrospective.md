@@ -29,6 +29,14 @@ A loop cannot be repaired by snapping its final point to its first. The bicycle 
 
 The same distinction applies to a system simulation: passenger identities and reproducible arrivals matter more than convincing motion. A comparison must use the same input, reset consistently and finish without losing objects.
 
+### Manufactured detail and mesh correctness — 2026-09-12
+
+The keyboard-switch review showed that connected parts and correct travel do not make an object sufficiently detailed. Rectangular walls, a flat keycap and constant-width metal ribbons preserved the mechanism but lost its manufactured identity. Inspect real reference frames and reconstruct molded shoulders, thin walls, latch openings, guide channels and stamped bends. Arbitrary screws, lettering or surface noise cannot replace those features. The [revised brief](examples/keyboard-switch-brief.md) records the references and variant boundaries.
+
+Rendering defects compounded the coarse geometry. A fan from the first corner is not a general triangulation method for a concave polygon: the Brown stem profile produced overlapping triangles with about 28% excess area in one cap. Triangulate within the polygon, preserve winding and openings, and compare triangle area and coverage with the source boundary. Do not average normals across a hard edge merely because faces share positions; planar faces need planar normals, while intentional curved surfaces need controlled smoothing.
+
+Shadow bounds must match the object's coordinate scale and complete motion. The shared light's default frustum missed sampled keyboard parts even though their visible camera framing was correct. Fit and inspect shadow coverage independently of the viewing camera. These findings establish repair requirements; they do not certify the revised visuals, performance or release.
+
 ## Direction before dialogue
 
 A film is now planned for 2–5 minutes, preferably 2–3, with a five-minute ceiling. This is not a mandate to slow every old motion. Each chapter states what the viewer sees, what changes and why it matters. The silent sequence must carry the argument; speech guides attention and adds context.

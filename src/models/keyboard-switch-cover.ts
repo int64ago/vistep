@@ -53,13 +53,21 @@ export function keyboardSwitchArtwork(
       return [width / 2 + dot(d, right) * scale, height / 2 - dot(d, up) * scale, dot(d, eye)];
     };
   const paths: { d: string; fill: string; part: string; opacity: number; depth: number }[] = [];
-  for (const s of keyboardSwitchSolids(visual.state))
+  for (const s of keyboardSwitchSolids(visual.state, 'reduced'))
     for (const face of s.faces) {
       const world = face.map((i) => s.vertices[i]);
       if (world.length < 3) continue;
-      const ab = world[1].map((x, i) => x - world[0][i]) as SwitchPoint,
-        ac = world[2].map((x, i) => x - world[0][i]) as SwitchPoint,
-        n = unit(cross(ab, ac));
+      // Newell's normal remains valid for a concave molding outline and for
+      // rounded cut edges whose first three vertices may be nearly collinear.
+      const sum: SwitchPoint = [0, 0, 0];
+      for (let i = 0; i < world.length; i++) {
+        const a = world[i],
+          b = world[(i + 1) % world.length];
+        sum[0] += (a[1] - b[1]) * (a[2] + b[2]);
+        sum[1] += (a[2] - b[2]) * (a[0] + b[0]);
+        sum[2] += (a[0] - b[0]) * (a[1] + b[1]);
+      }
+      const n = unit(sum);
       if (dot(n, eye) < -0.01) continue;
       const p = world.map(project),
         light = 0.72 + 0.25 * Math.max(0, dot(n, unit([-3, 8, 7])));
