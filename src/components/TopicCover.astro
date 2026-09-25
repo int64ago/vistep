@@ -1,4 +1,7 @@
 ---
+import CellHandoverCover from './covers/CellHandoverCover.astro';
+import Mobile5gCover from './covers/Mobile5gCover.astro';
+import MobileRoamingCover from './covers/MobileRoamingCover.astro';
 import KeyboardSwitchCover from './covers/KeyboardSwitchCover.astro';
 import LandmineCover from './covers/LandmineCover.astro';
 import Ak47Cover from './covers/Ak47Cover.astro';
@@ -899,6 +902,9 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'diffusion' && <DiffusionCover color={color} />}
   {slug === 'packet-routing' && <PacketRoutingCover color={color} />}
   {slug === 'zipper' && <ZipperCover color={color} />}
+  {slug === 'cell-handover' && <CellHandoverCover />}
+  {slug === 'mobile-5g' && <Mobile5gCover />}
+  {slug === 'mobile-roaming' && <MobileRoamingCover />}
   {slug === 'nfc' && <NfcCover />}
   {slug === 'double-slit' && <DoubleSlitCover />}
   {slug === 'excavator' && <ExcavatorCover />}

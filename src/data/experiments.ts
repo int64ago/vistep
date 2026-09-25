@@ -1,5 +1,8 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  'cell-handover': () => import('../components/experiments/CellHandover'),
+  'mobile-5g': () => import('../components/experiments/Mobile5g'),
+  'mobile-roaming': () => import('../components/experiments/MobileRoaming'),
   'keyboard-switch': () => import('../components/experiments/KeyboardSwitch'),
   landmine: () => import('../components/experiments/Landmine'),
   ak47: () => import('../components/experiments/Ak47'),

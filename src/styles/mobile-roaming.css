@@ -1,0 +1,301 @@
+.mr-study {
+  padding: 22px 26px 18px;
+  background: radial-gradient(ellipse at 18% 0, #fbf6ec, #f2f0e7 62%, #ecebe2);
+  color: #33403d;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.mr-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 32px;
+}
+.mr-identity {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+.mr-identity small {
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: #7b847e;
+}
+.mr-identity b {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #4b5854;
+}
+.mr-identity b span + span {
+  margin-left: 0.35em;
+}
+.mr-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.mr-status i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+  background: #b7a585;
+  transition:
+    background 400ms ease,
+    box-shadow 400ms ease;
+}
+.mr-status[data-state='wait'] i {
+  animation: mr-breathe 1.6s ease-in-out infinite;
+}
+.mr-status[data-state='ok'] i {
+  background: #3b7f5c;
+  box-shadow: 0 0 0 4px #3b7f5c1c;
+}
+.mr-status[data-state='bad'] i {
+  background: #b2503f;
+  box-shadow: 0 0 0 4px #b2503f1c;
+}
+.mr-status[data-state='warn'] i {
+  background: #c0843f;
+}
+@keyframes mr-breathe {
+  50% {
+    opacity: 0.35;
+  }
+}
+.mr-main {
+  margin: 14px auto 0;
+  max-width: 1000px;
+  min-width: 0;
+}
+.mr-main svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.mr-main svg text {
+  font-family: inherit;
+  font-size: 16px;
+}
+/* Presentation fills carry semantic colour; only uncoloured text takes the ink colour. */
+.mr-main svg text:not([fill]) {
+  fill: #33403d;
+}
+.mr-main svg text.mr-sub {
+  fill: #6d7771;
+}
+.mr-main svg text.mr-map-title {
+  font-weight: 500;
+  fill: #4d5a55;
+}
+.mr-main svg text.mr-map-node:not([fill]) {
+  fill: #66706a;
+}
+.mr-main svg text.mr-halo {
+  paint-order: stroke;
+  stroke: #e3e9dc;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.mr-main svg text.mr-map-label {
+  font-weight: 500;
+}
+.mr-main svg text.mr-head {
+  font-weight: 500;
+}
+.mr-main svg text.mr-chip {
+  fill: #fff;
+  font-weight: 600;
+}
+.mr-main svg text.mr-code,
+.mr-main svg text.mr-num,
+.mr-main svg text.mr-num-big,
+.mr-main svg text.mr-hex,
+.mr-main svg text.mr-digit,
+.mr-main svg text.mr-realm,
+.mr-main svg tspan.mr-code {
+  font-variant-numeric: tabular-nums;
+}
+.mr-main svg text.mr-num-big {
+  font-size: 20px;
+  font-weight: 500;
+}
+.mr-main svg text.mr-digit {
+  font-size: 22px;
+  font-weight: 500;
+}
+.mr-main svg text.mr-hex {
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+.mr-main svg text.mr-verdict {
+  font-weight: 600;
+}
+.mr-map {
+  border-radius: 18px;
+}
+.mr-lanes {
+  height: 30px;
+}
+.mr-lanes text {
+  font-weight: 500;
+}
+.mr-panel-box {
+  position: relative;
+  margin-top: 4px;
+  transition: height 420ms var(--ease-settle, ease);
+}
+.mr-panel-box > svg {
+  height: 100%;
+}
+.mr-panel text,
+.mr-panel rect,
+.mr-panel path,
+.mr-panel circle {
+  transition: none;
+}
+.mr-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: #6c7670;
+  margin: 12px 0 0;
+}
+.mr-controls {
+  border-top: 1px solid #33403d18;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 18px;
+  align-items: start;
+}
+.mr-controls .segmented {
+  grid-column: 1/-1;
+  width: 100%;
+  background: #e7e5da;
+}
+.mr-controls .segmented button {
+  min-height: 44px;
+  font-size: 16px;
+  color: #5b665f;
+}
+.mr-controls .segmented button[aria-pressed='true'] {
+  color: #2f3d38;
+}
+.mr-controls .segment-selection {
+  background: #fdfbf5;
+}
+.mr-controls .mr-steps {
+  background: #e2e4d8;
+}
+.mr-controls .control,
+.mr-controls .control-top,
+.mr-controls .control output {
+  font-size: 16px;
+  color: #56625b;
+}
+.mr-controls .control {
+  grid-column: 1/-1;
+}
+.mr-controls input[type='range'] {
+  min-height: 44px;
+  --range-color: #a27a4c;
+  --range-rest: #e1d6c3;
+}
+.mr-toggle,
+.mr-reset {
+  min-height: 44px;
+  background: #f7f5ee;
+  border: 1px solid #cfc6b3;
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: #56503f;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: start;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease;
+}
+.mr-toggle:hover,
+.mr-reset:hover {
+  background: #efe9dc;
+}
+.mr-toggle[aria-pressed='false'] {
+  border-color: #c9978a;
+  color: #8e4a3c;
+  background: #f8eee9;
+}
+.mr-reset {
+  justify-self: start;
+}
+.mr-notes {
+  grid-column: 1/-1;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #626d66;
+}
+.mr-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.mr-notes p {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+@media (max-width: 600px) {
+  .mr-study {
+    padding: 16px 12px 14px;
+    border-radius: 20px;
+  }
+  .mr-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .mr-identity {
+    gap: 8px;
+  }
+  .mr-identity b {
+    font-size: 16px;
+    letter-spacing: 0.02em;
+  }
+  .mr-identity b span + span {
+    margin-left: 0.25em;
+  }
+  .mr-status {
+    white-space: nowrap;
+  }
+  .mr-main {
+    margin-top: 10px;
+  }
+  .mr-note {
+    text-align: start;
+    /* Notes differ in length per chapter; reserve three lines so the transport stays put. */
+    min-height: 4.8em;
+  }
+  .mr-controls {
+    grid-template-columns: 1fr;
+  }
+  .mr-controls .segmented button {
+    padding: 9px 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mr-status[data-state='wait'] i {
+    animation: none;
+  }
+  .mr-panel-box {
+    transition: none;
+  }
+}

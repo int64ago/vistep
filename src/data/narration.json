@@ -7697,5 +7697,284 @@
         "at": 189.45
       }
     ]
+  },
+  "cell-handover": {
+    "duration": 171.5,
+    "cues": [
+      {
+        "id": "cell-handover-01",
+        "title": "一路走，一路换",
+        "titleEn": "Changing cells on the move",
+        "caption": "同一部手机，一路上被交给了好几个小区。",
+        "captionEn": "One phone on the move, handed from cell to cell.",
+        "zh": "公交车上，一部手机正在通话。看路上的彩色记录：每换一种颜色，就换了一个服务它的小区。整条街走下来，它被交接了八次，通话却一直没断。地图上的虚线六边形，是课本里常见的蜂窝图。可仔细看，交接的位置并不总在六边形的边上。",
+        "en": "A phone on a bus, in the middle of a call. Watch the coloured trail: each new colour means a new cell is serving it. Over the whole street it is handed over eight times, and the call never drops. The dashed hexagons are the familiar textbook picture. But look closely: the handovers don't always happen on their edges.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "cell-handover-02",
+        "title": "频谱有限，所以复用",
+        "titleEn": "Limited spectrum, reused everywhere",
+        "caption": "每个小区都用同一段频率；基站越密，每人分得越多。",
+        "captionEn": "Every cell reuses one carrier; denser sites mean bigger shares.",
+        "zh": "无线电频率是有限的。这座城里，每个小区用的都是同一段 10 兆赫的载波。手机所在的 F1 小区里有 14 个人，五十个资源块分下来，每人不到四块。把基站间距缩小一半，还是这些人、还是这段频率，手机所在的小区只剩 7 个人，每人分到的多了一倍。",
+        "en": "Radio spectrum is limited. Every cell in this city uses the same ten-megahertz carrier. The phone's cell, F1, is shared by fourteen people, so its fifty resource blocks give each of them fewer than four. Halve the distance between sites: same people, same spectrum, and now only seven share the phone's cell. Each share roughly doubles.",
+        "seconds": 24,
+        "chapterAt": 24.5,
+        "at": 24.95
+      },
+      {
+        "id": "cell-handover-03",
+        "title": "边界来自信号强弱",
+        "titleEn": "Boundaries come from signal strength",
+        "caption": "哪个小区最强，哪里就归它；边界是比较出来的。",
+        "captionEn": "Each spot belongs to its strongest cell; borders come from comparing.",
+        "zh": "现在把每个地点的信号都算出来：越亮，最强小区的信号越强。只考虑距离和天线朝向，各个小区的地盘正好拼成六边形。再加上楼房和地形的遮挡，边界立刻变得弯弯曲曲。看手机这里：最近的是 G 站，最强的却是远一点的 F1。",
+        "en": "Now compute the signal everywhere: the brighter the map, the stronger the best cell. With only distance and antenna direction, the territories line up as neat hexagons. Add shadowing from buildings and terrain, and the borders twist. Look at the phone: the nearest site is G, yet the strongest cell is F1, further away.",
+        "seconds": 24,
+        "chapterAt": 49.5,
+        "at": 49.95
+      },
+      {
+        "id": "cell-handover-04",
+        "title": "手机一直在听邻居",
+        "titleEn": "The phone keeps listening",
+        "caption": "手机一直在测量服务小区和邻区的信号。",
+        "captionEn": "The phone keeps measuring its serving cell and the neighbours.",
+        "zh": "打着电话的手机，一直在给身边几个小区打分。下面的曲线就是它测到的信号强度。粗线是正在服务它的小区，细线是邻区。服务小区慢慢变弱，某个邻区慢慢变强，两条线越靠越近；交叉之后不久，手机就被交给了新的小区。",
+        "en": "While the call goes on, the phone keeps scoring the cells around it. The curves are the signal strengths it measures, in dBm. The thick line is the cell serving it; the thin ones are neighbours. As the serving cell fades and a neighbour grows, the lines close in and cross, and soon the phone is handed to the new cell.",
+        "seconds": 24,
+        "chapterAt": 73.5,
+        "at": 73.95
+      },
+      {
+        "id": "cell-handover-05",
+        "title": "迟滞与触发时间",
+        "titleEn": "Hysteresis and time to trigger",
+        "caption": "邻区强出 3 dB 并保持 320 毫秒才切换。",
+        "captionEn": "A neighbour must lead by 3 dB for 320 ms before a handover.",
+        "zh": "放大这段路。两个小区的信号几乎一样，还在上下晃动。如果谁强一点就马上切换，手机会来回切换九次。现在加两条规矩：邻区要比服务小区强出三分贝，还要保持三百二十毫秒。同一段路、同一组测量，这一次只切换了一次。",
+        "en": "Zoom into this stretch. Two cells are almost equal, and the measurements wobble. Switch whenever one is slightly ahead, and the phone flips back and forth nine times. Now add two rules: the neighbour must lead by three decibels, and keep leading for three hundred and twenty milliseconds. Same street, same measurements: just one handover.",
+        "seconds": 24,
+        "chapterAt": 97.5,
+        "at": 97.95
+      },
+      {
+        "id": "cell-handover-06",
+        "title": "切换的那几十毫秒",
+        "titleEn": "The handover itself",
+        "caption": "报告、准备、命令、接入；空档里数据先转发。",
+        "captionEn": "Report, prepare, command, access: data is forwarded in the gap.",
+        "zh": "把这次切换放慢近两百倍。手机先报告测量结果，源基站问目标基站能不能接收，得到确认才下达切换命令。手机离开旧小区、接入新小区的这三十多毫秒里，源基站把还没送出的数据包转给目标基站。包的编号一个不少，最后核心网把路径改到新基站。",
+        "en": "Slow the handover down about two hundred times. The phone reports its measurements; the source asks the target whether it can take the phone, and only after a yes sends the handover command. In the thirty-odd milliseconds the phone spends switching cells, the source forwards the packets it still holds. None go missing, and the core network moves the path to the new site.",
+        "seconds": 26,
+        "chapterAt": 121.5,
+        "at": 121.95
+      },
+      {
+        "id": "cell-handover-07",
+        "title": "待机时，网络怎么找到你",
+        "titleEn": "Finding an idle phone",
+        "caption": "待机时悄悄换小区，跨区才报到；来电分区寻呼。",
+        "captionEn": "Idle phones reselect quietly, report new areas, and are paged by area.",
+        "zh": "手机不打电话时，网络并不跟踪它在哪个小区。它自己换驻留的小区，不告诉任何人。只有跨进新的位置区，才发一次位置更新。来电时，核心网在整个位置区的二十一个小区里同时呼叫，手机听到后应答，通话才建立起来。",
+        "en": "When the phone isn't in a call, the network doesn't track its cell. It reselects cells on its own, without telling anyone. Only when it enters a new tracking area does it send an update. For an incoming call, the core pages all twenty-one cells of that area at once; the phone hears it, answers, and the call is set up.",
+        "seconds": 24,
+        "chapterAt": 147.5,
+        "at": 147.95
+      }
+    ]
+  },
+  "mobile-5g": {
+    "duration": 227.0,
+    "cues": [
+      {
+        "id": "mobile-5g-01",
+        "title": "同一部手机，两种速度",
+        "titleEn": "One phone, two speeds",
+        "caption": "速率盒：带宽 × 每格比特 × 层数",
+        "captionEn": "The rate box: bandwidth × bits per element × layers.",
+        "zh": "同一部手机，4G 峰值大约一百五十兆比特每秒，5G 却能到两点三吉比特。差距从哪来？把速率画成一个盒子：宽度是频带，深度是每个资源单元装几个比特，高度是并行几层。先把盒子拉宽，再加深，最后叠高。三个乘数连起来，才是十五倍。",
+        "en": "One phone peaks near a hundred and fifty megabits on 4G, and about 2.3 gigabits on 5G. Why? Draw the rate as a box: width is the channel, depth is the bits in each resource element, height is the layers running side by side. Stretch it, deepen it, stack it. Three multipliers, not one magic signal.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "mobile-5g-02",
+        "title": "把频带切成子载波",
+        "titleEn": "Cutting the band into subcarriers",
+        "caption": "子载波彼此重叠，却在对方中心为零",
+        "captionEn": "Subcarriers overlap, yet each is zero at the others’ centres.",
+        "zh": "宽度里装的是 OFDM 子载波。4G 每隔十五千赫一个；5G 还能选三十、六十，毫米波甚至一百二十千赫。它们的频谱互相重叠，可在任何一个子载波的正中央，其他曲线都恰好穿过零点。4G 的一个资源块是十二个子载波乘七个符号；一毫秒里有两个，拼成这张十二乘十四的网格。",
+        "en": "The width is filled with OFDM subcarriers: fifteen kilohertz apart in 4G, while 5G can also use thirty, sixty, or a hundred and twenty at millimetre wave. Their spectra overlap, yet at the centre of any one subcarrier every other curve passes exactly through zero. A 4G resource block is twelve subcarriers by seven symbols; two of them fill one millisecond, this twelve-by-fourteen grid.",
+        "seconds": 24,
+        "chapterAt": 25.0,
+        "at": 25.45
+      },
+      {
+        "id": "mobile-5g-03",
+        "title": "信号越干净，装得越多",
+        "titleEn": "A cleaner signal carries more bits",
+        "caption": "噪声越小，越能分清更密的星座点",
+        "captionEn": "Less noise lets the receiver separate denser points.",
+        "zh": "每个资源单元装几个比特，要看星座图。QPSK 只有四个点，每格两比特；256QAM 有两百五十六个点，每格八比特，可点和点挤得很近。现在让信噪比从三十二分贝降到十六分贝：同一串噪声把接收点推过判决线，红点就是认错的符号。只好退回 16QAM，每格少装一半。",
+        "en": "How many bits fit in each element? Watch the constellation. QPSK has four points, two bits each; 256QAM packs two hundred and fifty-six, eight bits each, much closer together. Now drop the SNR from thirty-two to sixteen decibels. The same noise pushes points across the decision lines, and the red ones are misread. The link falls back to 16QAM, carrying half as much.",
+        "seconds": 24,
+        "chapterAt": 53.5,
+        "at": 53.95
+      },
+      {
+        "id": "mobile-5g-04",
+        "title": "更宽的频带",
+        "titleEn": "A wider channel",
+        "caption": "4G 载波 20 MHz，5G 可到 100 MHz",
+        "captionEn": "A 4G carrier is 20 MHz; one 5G mid-band carrier reaches 100 MHz.",
+        "zh": "5G 最大的一步，是把盒子拉宽。4G 常见的一个载波二十兆赫，一百个资源块；5G 在三点五吉赫附近，一个载波就能有一百兆赫。子载波间隔三十千赫，两百七十三个资源块铺满整条带子。同样四层、同样 256QAM，速率约是五点八倍。公平地说，4G 也能把几个载波拼起来，只是少有这么宽的连续频谱。",
+        "en": "5G's biggest step is making the box wider. A typical 4G carrier is twenty megahertz, a hundred resource blocks. Around 3.5 gigahertz, one 5G carrier can span a hundred megahertz, with thirty-kilohertz subcarriers and two hundred and seventy-three blocks. Same four layers, same 256QAM, about 5.8 times the rate. To be fair, 4G can aggregate carriers too; it just rarely had this much contiguous spectrum.",
+        "seconds": 24,
+        "chapterAt": 82.0,
+        "at": 82.45
+      },
+      {
+        "id": "mobile-5g-05",
+        "title": "频率越高，越难穿透",
+        "titleEn": "Higher frequency, harder to reach",
+        "caption": "阵列补回毫米波损耗，却穿不过墙",
+        "captionEn": "An array wins back millimetre-wave loss, but walls still block it.",
+        "zh": "更宽的频带多在更高的频率上。跟着两条电平线看：两端都是单天线时，二十八吉赫比三点五吉赫多损失十八分贝。基站换成同样大小的天线面板，高频能塞进六十四倍的单元，增益正好补回这十八分贝。可一堵墙就不一样了：普通玻璃只差几分贝，混凝土墙对二十八吉赫却要吃掉一百多分贝。",
+        "en": "Wide channels mostly sit at higher frequencies. Follow the two level lines. With single antennas, 28 gigahertz loses eighteen decibels more than 3.5. Give the base station the same-size panel in both bands: the higher band fits sixty-four times the elements, and that gain wins the loss back. A wall is different. Glass costs a few decibels; concrete swallows over a hundred at 28 gigahertz.",
+        "seconds": 24,
+        "chapterAt": 114.0,
+        "at": 114.45
+      },
+      {
+        "id": "mobile-5g-06",
+        "title": "天线阵列对准你",
+        "titleEn": "An antenna array aims at you",
+        "caption": "逐个错开相位，能量汇成波束",
+        "captionEn": "Staggering each element’s phase gathers energy into a beam.",
+        "zh": "阵列怎样补回损耗？一个天线向四面八方均匀地发。四个天线同相位，波在正前方叠加，旁边互相抵消。手机走到三十度方向，每个单元依次多转一点相位，波束就跟过去。单元加到十六个，波束更窄，增益到十二分贝；八乘八的平面阵有六十四个单元，正好十八分贝。",
+        "en": "How does an array win that loss back? One antenna radiates evenly everywhere. Four elements in phase add up straight ahead and cancel to the sides. As the phone moves to thirty degrees, each element shifts its phase a little more than its neighbour, and the beam follows. Sixteen elements narrow it to twelve decibels of gain; an eight-by-eight panel gives eighteen.",
+        "seconds": 24,
+        "chapterAt": 143.0,
+        "at": 143.45
+      },
+      {
+        "id": "mobile-5g-07",
+        "title": "多路并行与更短时隙",
+        "titleEn": "Parallel layers and shorter slots",
+        "caption": "空间上并行几层，时间上切短时隙",
+        "captionEn": "Parallel layers in space; shorter slots in time.",
+        "zh": "盒子的高度来自空间复用。基站和手机各有四根天线，如果信号沿几条足够不同的路径到达，同一块时频资源上就能并行四层数据，速率翻两番。再看时间：子载波间隔加倍，符号和时隙都减半。数据在零点三毫秒到达，十五千赫要等零点七毫秒，一百二十千赫只等零点零七五毫秒。",
+        "en": "The box's height comes from spatial multiplexing. With four antennas at each end and paths that differ enough, four layers of data share the same time–frequency grid, quadrupling the rate. Now look at time. Doubling the subcarrier spacing halves every symbol and every slot. Data arriving at 0.3 milliseconds waits 0.7 at fifteen kilohertz, but only 0.075 at a hundred and twenty.",
+        "seconds": 24,
+        "chapterAt": 170.0,
+        "at": 170.45
+      },
+      {
+        "id": "mobile-5g-08",
+        "title": "速度不只取决于 5G",
+        "titleEn": "What else limits speed",
+        "caption": "分享、位置与回传一起决定速度",
+        "captionEn": "Sharing, your position and backhaul decide what you get.",
+        "zh": "两点三吉比特，是一个人独占整个小区时的峰值。现在十个人分享同一个载波，你只分到十分之一的格子。基站后面的回传只有一吉比特，也要十个人分。再走远一些，信噪比降到十二分贝；按本篇的门槛规则，每格只能装两个比特。最后你拿到约五十八兆，同样条件下的 4G 估算只有十兆左右。",
+        "en": "2.3 gigabits assumes you own the whole cell. Now ten people share the carrier, and you get a tenth of the cells. The one-gigabit backhaul is split ten ways too. Walk farther away and the SNR falls to twelve decibels; by this page's threshold rule, each cell carries only two bits. You end up near fifty-eight megabits. The 4G estimate, under the same conditions, is about ten.",
+        "seconds": 24,
+        "chapterAt": 198.5,
+        "at": 198.95
+      }
+    ]
+  },
+  "mobile-roaming": {
+    "duration": 183.5,
+    "cues": [
+      {
+        "id": "mobile-roaming-01",
+        "title": "落地，开机",
+        "titleEn": "Landing and switching on",
+        "caption": "手机不选最强信号，先看 SIM 里的伙伴名单。",
+        "captionEn": "The phone follows the SIM's partner list, not the strongest signal.",
+        "zh": "飞机落地，你打开手机。家乡的网络在这里一格信号也没有，手机只好扫描当地的网络：A、B、C 三家。C 的信号最强，手机却没有选它。它先翻出 SIM 卡里的优选名单，排第一的是 A，于是信号最弱的 A 被选中。这份名单列的，正是家乡运营商签过漫游协议的伙伴。",
+        "en": "The plane lands and you switch on. Your home network has no signal here, so the phone scans the local ones: A, B and C. C is the strongest, yet the phone passes it over. It checks a preference list on the SIM, where A comes first. So the weakest signal wins. That list names partners your home operator has roaming agreements with.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "mobile-roaming-02",
+        "title": "SIM 卡里写着你是谁",
+        "titleEn": "The SIM says who you are",
+        "caption": "IMSI 前五位指明国家和运营商，K 不出卡。",
+        "captionEn": "The first five IMSI digits name country and operator; K stays put.",
+        "zh": "当地网络怎么知道你是谁？SIM 卡里存着一串身份号码，叫 IMSI。前三位 001 是国家码，接着两位 01 是运营商码，剩下的是你在家乡运营商那里的编号。当地网络读出前五位，就拼出了你家网络的地址。再看那把钥匙：密钥 K 也在卡里，但它从来不会被读出来。",
+        "en": "How does a foreign network know who you are? Your SIM holds an identity number, the IMSI. Three digits give the country, two the operator, and the rest identify you. From those first five digits, the local network builds your home network's address. Now look at the key. K lives on the SIM too, but it is never read out.",
+        "seconds": 24,
+        "chapterAt": 27.5,
+        "at": 27.95
+      },
+      {
+        "id": "mobile-roaming-03",
+        "title": "当地网络去问你家",
+        "titleEn": "The visited network asks home",
+        "caption": "当地网络经 IPX 向你家要认证数据。",
+        "captionEn": "Over IPX, the local network asks your home for authentication data.",
+        "zh": "手机发出附着请求，报上 IMSI。当地网络自己核对不了，就把请求交给漫游专网 IPX，跨过大海送到你的归属网络。只有签过协议的伙伴，请求才会被转发。家里用只有它和 SIM 知道的密钥 K，算出一组认证向量，再原路送回。K 本身始终留在家里。",
+        "en": "The phone sends an attach request with its IMSI. The local network can't check it alone, so it asks your home network over a private roaming exchange called IPX. Only partners with an agreement get through. At home, the key K, shared only with your SIM, computes a set of authentication data, which is sent back. K itself stays home.",
+        "seconds": 24,
+        "chapterAt": 53.0,
+        "at": 53.45
+      },
+      {
+        "id": "mobile-roaming-04",
+        "title": "不交出密钥也能证明",
+        "titleEn": "Proof without revealing the key",
+        "caption": "SIM 算出的 RES 与家里的 XRES 一致。",
+        "captionEn": "The SIM derives RES from K and RAND; it matches XRES.",
+        "zh": "当地网络留下期望答案 XRES，只把随机挑战 RAND 和校验码 AUTN 发给手机。SIM 先用 K 检查 AUTN，确认请求真的来自你家；再用 K 和 RAND 算出应答 RES。RES 和 XRES 一模一样，认证通过。要是 K 错了一位呢？应答里大约一半的位都变了，根本冒充不了。",
+        "en": "The local network keeps the expected answer, XRES, and sends the phone a random challenge, RAND, with a check code, AUTN. The SIM uses K to verify AUTN, proving the request came from home. Then it combines K and RAND into a response, RES. It matches XRES. You're in. And if K were one bit off? About half the answer changes.",
+        "seconds": 24,
+        "chapterAt": 79.0,
+        "at": 79.45
+      },
+      {
+        "id": "mobile-roaming-05",
+        "title": "家里记下你在哪",
+        "titleEn": "Home records where you are",
+        "caption": "家里记下你在 002-01，并下发签约数据。",
+        "captionEn": "Home records you on 002-01 and sends your subscription.",
+        "zh": "认证通过后，当地网络再发一次位置更新。你的归属网络在用户记录里写下：这个用户现在在 002-01。原来在家乡为你服务的那台设备，被通知注销。家里还把签约数据发过去：能不能漫游上网，能不能打电话。手机收到附着接受，正式注册成功。",
+        "en": "Once you're authenticated, the local network sends a location update. Your home network writes it into your record: this subscriber is now on 002-01. The old serving node back home is told to let go. Home also sends your subscription profile: whether you may use data abroad, and make calls. The phone receives its attach accept. You're registered.",
+        "seconds": 24,
+        "chapterAt": 105.5,
+        "at": 105.95
+      },
+      {
+        "id": "mobile-roaming-06",
+        "title": "上网：绕回家，或就地出去",
+        "titleEn": "Data: home-routed or local breakout",
+        "caption": "绕回家出口更慢，就地出口更快但地址不同。",
+        "captionEn": "Home routing adds distance; local breakout is faster but looks local.",
+        "zh": "打开一个当地的网站。常见的做法是绕回家：数据先钻进隧道，经 IPX 回到家乡的网关，再出去上网，所以网站看到的是家乡的地址。按模型估算，往返大约 250 毫秒。另一种是就地出口，直接从当地网关出去，只要 30 毫秒左右，但网站看到的就是当地地址了。",
+        "en": "Now open a local website. Data roaming is often home-routed: your traffic tunnels back through IPX to a gateway at home before reaching the internet, so websites see a home-country address. Our model puts that round trip near two hundred and fifty milliseconds. With local breakout, traffic leaves through a local gateway: about thirty milliseconds, but with a local address.",
+        "seconds": 24,
+        "chapterAt": 130.5,
+        "at": 130.95
+      },
+      {
+        "id": "mobile-roaming-07",
+        "title": "有人给你打电话",
+        "titleEn": "Someone calls you",
+        "caption": "来电先到家，再转到你所在的网络。",
+        "captionEn": "A call reaches home first, then is forwarded to where you are.",
+        "zh": "家人给你打电话。你的号码属于家乡，所以呼叫先到归属网络。家里查记录，得知你在 002-01，就向那边要一个临时漫游号码，再按这个号码把电话接过去。当地网络寻呼你的手机，铃声响起。要是身边的当地朋友打给你，电话也得先回家再回来，跨国两次。",
+        "en": "Your family calls. Your number belongs to your home network, so the call lands there first. Home checks its record, sees you're on 002-01, and asks that network for a temporary roaming number. The call is connected to it, and the local network pages your phone. Even a friend standing next to you gets routed home and back: two border crossings.",
+        "seconds": 24,
+        "chapterAt": 157.5,
+        "at": 157.95
+      }
+    ]
   }
 }

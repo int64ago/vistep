@@ -1,0 +1,62 @@
+<h2 id="understand">5G is not just a “stronger signal”</h2>
+
+A common intuition is that 5G is simply a stronger signal, or that a higher “G” is a kind of magic. In fact the 4G and 5G downlinks share the same basic method: they cut a band into many orthogonal subcarriers (OFDM) and put a few bits into each _resource element_ by choosing a point in a constellation. The rate is roughly three things multiplied together: **how many resource elements you get per second** (set by bandwidth), **how many bits each one carries** (limited by signal-to-noise ratio) and **how many layers run in parallel** (set by antennas and the channel), minus overhead for control and reference signals.
+
+3GPP defines an approximate peak rate for 5G devices in [TS 38.306 §4.1.2](https://www.3gpp.org/DynaReport/38306.htm): layers × modulation order × scaling factor × 948/1024 × resource elements per second × (1 − overhead). With 100 MHz at 30 kHz subcarrier spacing (273 resource blocks), 4 layers and 256QAM, the downlink comes to about **2.34 Gbit/s**. A typical single 4G carrier is 20 MHz with 100 resource blocks; its 2-layer 64QAM transport-block peak is 150.752 Mbit/s (transport-block tables in [TS 36.213](https://www.3gpp.org/DynaReport/36213.htm)). Of that fifteen-fold difference, the wider carrier contributes most, about 5.8×: resource elements per second grow 5.46×, and about 1.06× more comes from the 5G formula's overhead (0.14) being lower than the overhead this page assumes for the 4G estimate. 256QAM adds a third over 64QAM; four layers double two.
+
+Wide channels are mostly found at higher frequencies. There, between single antennas, free-space loss grows (28 GHz loses about 18 dB more than 3.5 GHz) and walls are harder to penetrate. The remedy is a large antenna array: a panel of the same size holds many more elements at a higher frequency and focuses energy into a beam aimed at the phone.
+
+<h2 id="try">Follow one resource element as it is multiplied</h2>
+
+- In the rate box, first only widen, then only deepen, then only stack. Each step changes exactly one factor of the formula, and the three multipliers multiply to the total.
+- On the subcarrier plot, move the sampling point between two centres. Neighbouring subcarriers are no longer zero there: orthogonality only holds at the correct sampling position, which is why frequency offsets cause inter-carrier interference.
+- On the constellation, hold 256QAM and lower the SNR slowly. The noise sequence is fixed and only its size changes, so every new red point comes from the SNR alone.
+- On the propagation plot, switch to the same-size panel, then try different walls. The array wins back the free-space difference between bands but not the huge penetration loss of concrete at millimetre wave.
+- On the sharing view, add people, lower the SNR where you stand and shrink the backhaul. Your speed is the smaller of your radio share and your backhaul share.
+
+<h2 id="deeper">Formulas, thresholds and model limits</h2>
+
+<details>
+<summary>What is each term of the peak formula?</summary>
+
+<div className="formula">rate ≈ v_layers · Qm · f · Rmax · (N_PRB · 12) / Ts · (1 − OH)</div>
+
+`v_layers` is the number of spatial layers, `Qm` the bits per modulation symbol (2 for QPSK, 8 for 256QAM), `f` a capability scaling factor (1 here) and `Rmax = 948/1024` the highest code rate. `N_PRB` is the number of resource blocks in the channel, each with 12 subcarriers, from the maximum transmission bandwidth tables of [TS 38.101-1](https://www.3gpp.org/DynaReport/38101-1.htm): 273 at 100 MHz and 30 kHz. `Ts = 10⁻³ / (14 · 2^μ)` is the average OFDM symbol duration, where the numerology `μ` sets the spacing `15 · 2^μ kHz` ([TS 38.211](https://www.3gpp.org/DynaReport/38211.htm)). `OH` is overhead: 0.14 for FR1 downlink and 0.18 for FR2 downlink.
+
+LTE has no formula of this form. This page estimates 4G with the same form, using 15 kHz, 14 symbols per millisecond and 100 resource blocks, and calibrates the overhead to about 0.19 so that 20 MHz, 2 layers and 64QAM equals the 150.752 Mbit/s transport-block peak. The same estimate gives about 402 Mbit/s for 4 layers and 256QAM, under 3% above the 391.656 Mbit/s of the transport-block table. It is a comparable estimate, not an LTE specification formula.
+
+</details>
+
+<details>
+<summary>Why don't overlapping subcarriers interfere?</summary>
+
+4G uses a fixed 15 kHz spacing. 5G lets the network choose: data channels in FR1 use 15, 30 or 60 kHz, and FR2 (millimetre wave) uses 60 or 120 kHz, so the 120 kHz row in the diagram belongs to millimetre-wave bands. Within one useful symbol of length `T = 1/Δf`, each subcarrier is a sinusoid with a whole number of cycles. Its spectrum is a sinc: 1 at its own centre and 0 at every position an integer multiple of `Δf` away. A receiver sampling at each centre sees exactly zero from all the others. Real systems add a cyclic prefix before each symbol to absorb multipath delay; frequency offset, phase noise and Doppler break this orthogonality.
+
+An LTE resource block is 12 subcarriers × 7 symbols, one 0.5 ms slot; a 1 ms subframe holds two, which is why a 12 × 14 grid is often drawn as one pair. An NR slot always has 14 symbols, so doubling the subcarrier spacing halves the useful symbol and the slot: 1 ms at 15 kHz, 0.5 ms at 30 kHz, 0.125 ms at 120 kHz. NR can also schedule “mini-slots” of 2, 4 or 7 symbols without waiting for a slot boundary. Shorter slots let scheduling begin sooner, but total latency also includes processing, retransmission and the core network; the diagram counts only the wait for the next slot boundary.
+
+</details>
+
+<details>
+<summary>Where do the constellation thresholds come from?</summary>
+
+The constellation is uncoded, Gray-mapped square QAM with unit average energy and Gaussian noise from a fixed seed. The threshold is the SNR at which the analytic symbol error rate falls to 1%: about 8.2 dB for QPSK, 15.7 dB for 16QAM, 22.1 dB for 64QAM and 28.2 dB for 256QAM. Each step is roughly 6 dB, so two extra bits need about four times the SNR.
+
+This is a teaching rule. Real systems use error-correcting codes such as LDPC and pick modulation and code rate from CQI and MCS tables, using the same modulation at lower SNR. The dashed line is the Shannon limit `log₂(1 + SNR)`, which no code can exceed.
+
+</details>
+
+<details>
+<summary>Is a higher frequency always worse?</summary>
+
+Between isotropic antennas, free-space loss `20·log₁₀(4πdf/c)` grows 6 dB per doubling of frequency, so 28 GHz loses `20·log₁₀ 8 ≈ 18 dB` more than 3.5 GHz. But antenna gain is tied to effective aperture: `G = 4πA/λ²`. Keep the base-station panel the same size and multiply frequency by eight, and a half-wavelength array holds 64 times as many elements, adding exactly 18 dB; the free-space difference cancels. With fixed apertures at both ends, the higher band even wins, provided both beams are aimed.
+
+Penetration is different. [TR 38.901](https://www.3gpp.org/DynaReport/38901.htm) Table 7.4.3-1 models material loss as a function of frequency: standard glass `2 + 0.2f`, infrared-reflective glass `23 + 0.3f`, concrete `5 + 4f` and wood `4.85 + 0.12f` (dB, f in GHz). Concrete costs about 19 dB at 3.5 GHz and about 117 dB at 28 GHz. Bodies, foliage and a hand on the phone also block noticeably; they are not modelled here.
+
+</details>
+
+<details>
+<summary>Why is measured speed so far below the peak?</summary>
+
+The peak assumes one user owns the whole carrier, the channel is excellent and the device supports every layer. In practice users share the grid; far from the base station or behind obstacles the SNR falls, and both modulation and layer count drop; uplink, TDD frame patterns, backhaul and internet servers limit speed as well. The sharing model here does three comparable things only: it hands out grid cells in turn (rotating the first user every slot, so in the long run each user gets exactly one share), chooses modulation from the SNR threshold and splits a fixed backhaul among the same users. The “QPSK only at 12 dB” of chapter 8 follows this page's uncoded threshold rule; real links use error correction and MCS tables and often keep a higher-order modulation at the same SNR with a lower code rate, so these speeds are only for comparing 4G and 5G under one rule. It does not predict any SIM card's speed at any place. [ITU-R M.2410](https://www.itu.int/pub/R-REP-M.2410) lists a 20 Gbit/s peak and a 100 Mbit/s user-experienced rate as separate IMT-2020 requirements, which makes the same distinction.
+
+</details>

@@ -1,0 +1,219 @@
+.m5g-study {
+  --m5g-ink: #ebe9f5;
+  --m5g-muted: #a9aac2;
+  --m5g-nr: #b4a8f6;
+  --m5g-lte: #8ccabf;
+  --m5g-you: #f4bd6c;
+  --m5g-err: #f39191;
+  --m5g-f28: #92d5ec;
+  padding: 22px 28px 18px;
+  border-radius: 24px;
+  color: var(--m5g-ink);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 18%, #262a44 0, transparent 70%),
+    linear-gradient(180deg, #1a1c2d, #141523);
+  box-shadow: inset 0 0 0 1px #ffffff0d;
+  overflow: hidden;
+}
+.m5g-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 18px;
+  min-height: 28px;
+  font-size: 16px;
+}
+.m5g-heading > span {
+  color: var(--m5g-muted);
+  letter-spacing: 0.02em;
+}
+.m5g-heading b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--m5g-ink);
+}
+.m5g-main {
+  min-width: 0;
+  max-width: 980px;
+  margin: 12px auto 0;
+}
+.m5g-stage {
+  display: flex;
+  justify-content: center;
+  animation: m5g-in 420ms ease both;
+}
+.m5g-pair {
+  display: grid;
+  gap: 8px;
+}
+@keyframes m5g-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.m5g-main svg {
+  display: block;
+  overflow: visible;
+}
+.m5g-main svg text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: var(--m5g-ink);
+  font-variant-numeric: tabular-nums;
+}
+.m5g-main svg text.m5g-m {
+  fill: var(--m5g-muted);
+}
+.m5g-main svg text.m5g-y {
+  fill: var(--m5g-you);
+}
+.m5g-main svg text.m5g-n {
+  fill: var(--m5g-nr);
+}
+.m5g-main svg text.m5g-l {
+  fill: var(--m5g-lte);
+}
+.m5g-main svg text.m5g-e {
+  fill: var(--m5g-err);
+}
+.m5g-main svg text.m5g-f {
+  fill: var(--m5g-f28);
+}
+.m5g-main svg text.m5g-big {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.m5g-main svg text.m5g-chip {
+  fill: var(--m5g-nr);
+  font-weight: 600;
+}
+.m5g-beam {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.m5g-beam canvas,
+.m5g-beam svg {
+  position: absolute;
+  inset: 0;
+}
+.m5g-context {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--m5g-muted);
+  margin: 10px 0 0;
+}
+.m5g-controls {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff14;
+  display: grid;
+  gap: 16px;
+  --film-ink: var(--m5g-ink);
+}
+.m5g-control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px 28px;
+  align-items: end;
+}
+.m5g-controls .control,
+.m5g-controls .control-top,
+.m5g-controls output {
+  color: var(--m5g-ink);
+  font-size: 16px;
+}
+.m5g-controls .segmented {
+  background: #ffffff0f;
+}
+.m5g-controls .segmented button {
+  min-height: 44px;
+  color: var(--m5g-ink);
+  font-size: 16px;
+}
+.m5g-controls .segment-selection {
+  background: #ffffff24;
+}
+.m5g-views {
+  flex-wrap: wrap;
+}
+.m5g-reset {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 22px;
+  border: 1px solid #ffffff2a;
+  background: transparent;
+  color: var(--m5g-ink);
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease;
+}
+.m5g-reset:hover {
+  background: #ffffff12;
+  border-color: #ffffff44;
+}
+.m5g-notes {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--m5g-muted);
+}
+.m5g-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--m5g-ink);
+}
+@media (max-width: 640px) {
+  .m5g-study {
+    padding: 16px 12px 14px;
+    border-radius: 18px;
+  }
+  .m5g-context {
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .m5g-stage {
+    animation: none;
+  }
+  .m5g-reset {
+    transition: none;
+  }
+}
+.m5g-beam canvas {
+  -webkit-mask-image: radial-gradient(ellipse 72% 92% at 50% 100%, #000 62%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 92% at 50% 100%, #000 62%, transparent 100%);
+}
+/* Film mode keeps one player size for every chapter: stage height is fixed per breakpoint in JS,
+   and the heading and context lines reserve their longest wrapped height. */
+.m5g-study[data-watch='true'] .m5g-stage {
+  align-items: center;
+  overflow: hidden;
+}
+.m5g-study[data-watch='true'] .m5g-heading {
+  min-height: 28px;
+}
+.m5g-study[data-watch='true'] .m5g-context {
+  min-height: calc(1.6em * 1);
+}
+@media (max-width: 640px) {
+  .m5g-study[data-watch='true'] .m5g-heading {
+    min-height: 54px;
+    align-content: flex-start;
+  }
+  .m5g-study[data-watch='true'] .m5g-context {
+    min-height: calc(1.6em * 3);
+  }
+}
+.m5g-controls .segmented button {
+  min-width: 44px;
+}

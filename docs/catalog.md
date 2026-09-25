@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 71 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow. The latest addition is keyboard switches; see its [review record](qa-keyboard-switch.md) for the actual evidence and remaining gaps. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Earlier deployment history is recorded in the [collection expansion record](expansion-50.md).
+The collection contains 74 explorations, each with Chinese and English articles, a directed film and synchronized recordings. Production publishes from the `main` deployment workflow. The latest additions are three mobile-network scenes: cells and handover, 4G and 5G, and mobile roaming; see their [review record](qa-mobile-networks.md) for the actual evidence and remaining gaps. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Earlier deployment history is recorded in the [collection expansion record](expansion-50.md).
 
 Topics follow their main explanation. Heat and fluids have their own group; Earth and astronomy covers planetary and celestial phenomena. Weapon subjects share a dedicated context group. Related links and bilingual search aliases retain connections across fields.
 
@@ -77,6 +77,9 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 | Exploration                                                    | Film | Question                                                        |
 | -------------------------------------------------------------- | ---- | --------------------------------------------------------------- |
+| [Cells and handover](../src/content/en/cell-handover.mdx)      | 2:51 | Why doesn't a call drop while you move?                         |
+| [4G and 5G](../src/content/en/mobile-5g.mdx)                   | 3:47 | Where does 5G speed come from?                                  |
+| [Mobile roaming](../src/content/en/mobile-roaming.mdx)         | 3:03 | Abroad, how does your phone still know who you are?             |
 | [Packet routing](../src/content/en/packet-routing.mdx)         | 3:01 | How do packets cross a changing network?                        |
 | [Database index](../src/content/en/database-index.mdx)         | 3:22 | How does a database find a row without reading the whole table? |
 | [Logic gates](../src/content/en/logic-gates.mdx)               | 2:57 | Logic gates: how voltage becomes zero and one                   |

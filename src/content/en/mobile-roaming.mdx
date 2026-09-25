@@ -1,0 +1,58 @@
+<h2 id="understand">Abroad, how does your phone still know who you are?</h2>
+
+It is tempting to picture roaming as your home operator's signal stretching across the border, or the foreign network simply trusting your SIM. Neither is what happens. Abroad, every radio mast and core-network node that serves you belongs to a local operator, and that operator never learns your secret key. What it can do is work out which operator you belong to and **ask your home network**.
+
+The clue is the **IMSI** stored on your SIM. Under [ITU-T E.212](https://www.itu.int/rec/T-REC-E.212) it has at most 15 digits: a three-digit mobile country code (MCC), a two- or three-digit mobile network code (MNC), and your subscriber number inside that operator. From the MCC and MNC, the visited network builds the address of your home core network (the domain format is set by [3GPP TS 23.003](https://www.3gpp.org/DynaReport/23003.htm)) and sends its request over **IPX**, the private exchange that operators use to reach one another ([GSMA IR.34](https://www.gsma.com/newsroom/wp-content/uploads//IR.34-v20.0.pdf)). Only partners with a roaming agreement get through. Even the choice of network follows your home operator: the phone consults the partner list on the SIM before it considers signal strength ([TS 23.122](https://www.3gpp.org/DynaReport/23122.htm)).
+
+Authentication itself is a **challenge and response**. Your SIM and your home network share a 128-bit key, K. It is never transmitted, and the visited network never receives it. Home picks a random number, RAND, uses K to compute the expected response XRES and a network check code AUTN, and hands this "authentication vector" to the visited network. Only RAND and AUTN go to the phone. The SIM first uses K to verify AUTN, which shows that the request truly comes from home and is not an old message replayed, then computes its response, RES. If RES equals XRES, the visited network lets you in ([TS 33.102](https://www.3gpp.org/DynaReport/33102.htm), [TS 33.401](https://www.3gpp.org/DynaReport/33401.htm)). This is **symmetric**: both ends hold the same secret. There is no public key and no signature here, unlike public-key cryptography.
+
+Once you're authenticated, the visited network sends a location update. Your home network writes into your subscriber record which network now serves you, and returns your subscription profile ([TS 29.272](https://www.3gpp.org/DynaReport/29272.htm)). From then on, calls to your number reach home first and are forwarded using that record, and your data either tunnels back to a gateway at home or leaves through a local gateway ([TS 23.401](https://www.3gpp.org/DynaReport/23401.htm), [GSMA IR.88](https://www.gsma.com/newsroom/wp-content/uploads//IR.88-v27.0.pdf)).
+
+<h2 id="try">Follow one identity and change one thing at a time</h2>
+
+- **Select**: choose "Manual C". C has the strongest signal but no agreement with your home operator, so registration is rejected and only emergency calls remain. Then switch the plan to "Roaming not enabled": this time the local network is willing, but your home network refuses.
+- **Verify**: choose "K off by 1 bit" and drag which bit to flip. The SIM's check of AUTN fails at once, and even a forced response differs in about half of its 64 bits. "RAND altered" fails the same way. "Old vector replayed" carries a genuine AUTN with a used sequence number, so the SIM refuses to answer and sends a resynchronisation token, AUTS, instead.
+- **Data**: keep the same request and compare the round trip and the address a website sees under home routing and local breakout. Switch to a website at home and the difference almost disappears. Drag the distance between the countries to see which leg grows.
+- **Call**: switch from family at home to a local friend standing next to you. The call still goes home and back.
+
+The numbers are examples: 001-01 is the code 3GPP uses for test networks, while 002 and the three local operators are invented.
+
+<h2 id="deeper">One layer deeper</h2>
+
+<details>
+<summary>What exactly does the SIM compute?</summary>
+
+This page runs **MILENAGE**, the 3GPP example algorithm set ([TS 35.206](https://www.3gpp.org/DynaReport/35206.htm)). Built around AES-128, it combines K, an operator constant OPc, RAND, a sequence number SQN and a management field AMF into five functions:
+
+<div className="formula">MAC = f1(K, RAND, SQN, AMF)　RES = f2(K, RAND)　AK = f5(K, RAND)</div>
+
+f3 and f4 produce the cipher and integrity keys CK and IK. Home sends `AUTN = (SQN ⊕ AK) ‖ AMF ‖ MAC`; masking the sequence number with AK stops onlookers from tracking you by it. The SIM recovers SQN with f5 and recomputes MAC. Only a party holding the same K can produce a valid MAC, so this step proves that **the network is genuine**. The SIM then checks that SQN is newer than the last one it accepted, which rules out replays.
+
+K, OP, RAND, SQN and AMF on screen are conformance test set 1 from [TS 35.208](https://www.3gpp.org/DynaReport/35208.htm). The site's unit tests reproduce every output of test sets 1 and 2. Operators may use other algorithms, such as TUAK, and real subscriber keys are never published.
+
+In 4G, CK and IK are also fed with the visited network's identity into HMAC-SHA-256 to derive K_ASME (TS 33.401, Annex A). The keys that follow are therefore bound to that one network; a different operator would get a different key.
+
+</details>
+
+<details>
+<summary>What changes in 5G?</summary>
+
+A 5G phone does not send its IMSI (called the SUPI in 5G) in clear. It encrypts it with the home network's public key into a **SUCI**, leaving only the country and network codes visible so the visited network knows whom to ask ([TS 33.501](https://www.3gpp.org/DynaReport/33501.htm)). 5G AKA keeps the same challenge and response, but the home network's AUSF also confirms the result, giving home more direct evidence that you are really present. Subscriber data sits in the UDM, the 5G counterpart of the 4G HSS.
+
+</details>
+
+<details>
+<summary>How are the round-trip times estimated?</summary>
+
+The model counts propagation only: light in fibre covers about 204 km per millisecond (refractive index about 1.47), cable routes are taken as 1.4 times the straight-line distance, radio access plus the visited core adds 25 ms, and each gateway or exchange adds 2 ms. With the countries 8000 km apart, home routing crosses the sea twice to reach a local website, about 250 ms; local breakout takes about 30 ms. These are **model estimates**. They exclude congestion, queuing and server time, and they do not describe any real operator's network.
+
+In practice, 4G data roaming has mostly been home-routed: it lets the home operator charge and apply your plan, and services restricted to home addresses keep working. Local breakout needs an extra arrangement between the operators.
+
+</details>
+
+<details>
+<summary>Why does a call go home first?</summary>
+
+Your number belongs to your home operator's numbering range, so whoever dials it, the call is delivered to your home network's gateway exchange. Home looks up your location record, asks the serving network for a **temporary roaming number (MSRN)**, and connects the call to it; the visited network then pages your phone ([TS 23.018](https://www.3gpp.org/DynaReport/23018.htm)). That is why a local friend's call can leave the country and come back, unless both networks support optimal routing. The film shows a classic circuit-switched call, which needs the phone on 2G/3G, or on 4G with a combined EPS/IMSI attach so it can fall back to 2G/3G for the call (CSFB). VoLTE handles calls through IMS and differs in detail, but it also passes through your home network. Afterwards the visited operator reports what you used to your home operator for settlement; you only deal with your home operator.
+
+</details>

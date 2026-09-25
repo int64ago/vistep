@@ -1,0 +1,175 @@
+---
+import { MR_HOME, MR_IMSI, MR_VISITED, mrSelectNetwork } from '../../models/mobile-roaming';
+// Model-derived: the chosen partner comes from the same selection model as the film,
+// and the digit groups come from the IMSI parse (MCC 3, MNC 2, MSIN 10).
+const chosen = mrSelectNetwork({}).registered!;
+const op = { A: '#3b8069', B: '#6d78b3', C: '#c0843f' } as Record<string, string>;
+const towers = [
+  { id: 'B', x: 34, y: 50 },
+  { id: 'A', x: 66, y: 40 },
+  { id: 'C', x: 98, y: 50 },
+];
+const phone = { x: 58, y: 118 },
+  core = { x: 142, y: 98 },
+  ipx = { x: 200, y: 98 },
+  hss = { x: 288, y: 98 };
+const coastV = (o: number) =>
+  `M${168 - o} 0C${186 - o} 44 ${158 - o} 92 ${176 - o} 132S${170 - o} 200 ${160 - o} 230`;
+const coastH = (o: number) =>
+  `M${234 + o} 0C${216 + o} 40 ${244 + o} 88 ${226 + o} 136S${236 + o} 198 ${244 + o} 230`;
+const digits = [...MR_IMSI];
+const group = (i: number) =>
+  i < MR_HOME.mcc.length ? 0 : i < MR_HOME.mcc.length + MR_HOME.mnc.length ? 1 : 2;
+const colors = ['#b0583a', '#2b6b8c', '#4b5854'];
+const cell = 17.5,
+  gap = 6;
+const x0 = 26;
+const cx = (i: number) => x0 + i * cell + gap * group(i);
+const link = towers.find((t) => t.id === chosen.id)!;
+const strength = (id: string) => MR_VISITED.find((o) => o.id === id)!.rsrpDbm;
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#dfe9ec"></rect>
+  <path
+    d="M170 90q8 -4 16 0t16 0t16 0M166 150q8 -4 16 0t16 0t16 0"
+    stroke="#b9ced3"
+    stroke-width="1.2"></path>
+  <path d={`${coastV(0)}H0V0Z`} fill="#e3e9dc"></path>
+  <path d={`${coastH(0)}H400V0Z`} fill="#f0e5d2"></path>
+  {
+    [0, 12, 24].map((o, k) => (
+      <path
+        d={coastV(o)}
+        stroke="#b3c2a8"
+        stroke-width={k ? 1 : 1.5}
+        opacity={k ? 0.45 - k * 0.12 : 0.9}
+      />
+    ))
+  }
+  {
+    [0, 12, 24].map((o, k) => (
+      <path
+        d={coastH(o)}
+        stroke="#d2bb94"
+        stroke-width={k ? 1 : 1.5}
+        opacity={k ? 0.5 - k * 0.12 : 0.9}
+      />
+    ))
+  }
+  {
+    towers.map((t) => (
+      <g opacity={t.id === chosen.id ? 1 : 0.55}>
+        <circle
+          cx={t.x}
+          cy={t.y - 2}
+          r={10 + (strength(t.id) + 100) * 0.9}
+          stroke={op[t.id]}
+          stroke-width="1.2"
+          opacity=".35"
+        />
+        <path
+          d={`M${t.x - 7} ${t.y + 24}L${t.x} ${t.y}L${t.x + 7} ${t.y + 24}M${t.x - 4.2} ${t.y + 15}H${t.x + 4.2}`}
+          stroke="#5d6a65"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+        <circle cx={t.x} cy={t.y - 2} r="4" fill={op[t.id]} />
+      </g>
+    ))
+  }
+  <path
+    d={`M${phone.x} ${phone.y - 18}L${link.x} ${link.y + 24}`}
+    stroke={op[chosen.id]}
+    stroke-width="2"
+    stroke-dasharray="3 4"></path>
+  <path
+    d={`M${core.x} ${core.y}H${hss.x}`}
+    stroke="#2f7474"
+    stroke-width="2.4"
+    stroke-linecap="round"></path>
+  <circle cx={ipx.x} cy={ipx.y} r="11" fill="#f4f8f7" stroke="#2f7474" stroke-width="1.5"></circle>
+  <circle cx={ipx.x} cy={ipx.y} r="4" fill="#2f7474"></circle>
+  <circle cx="246" cy={ipx.y} r="8" fill="#a2761a" opacity=".2"></circle>
+  <circle cx="246" cy={ipx.y} r="4.2" fill="#a2761a"></circle>
+  {
+    [core, hss].map((s, i) => (
+      <g>
+        <ellipse cx={s.x} cy={s.y + 17} rx="20" ry="3.2" fill="#33403d" opacity=".08" />
+        <rect
+          x={s.x - 18}
+          y={s.y - 14}
+          width="36"
+          height="28"
+          rx="7"
+          fill={i ? '#fff6e6' : '#fffaf1'}
+          stroke={i ? '#a48454' : '#8a948d'}
+          stroke-width="1.4"
+        />
+        {[-6, 0, 6].map((d) => (
+          <path
+            d={`M${s.x - 11} ${s.y + d}H${s.x + 5}`}
+            stroke={i ? '#a48454' : '#8a948d'}
+            stroke-width="1.2"
+            opacity=".6"
+          />
+        ))}
+      </g>
+    ))
+  }
+  {
+    [
+      { x: phone.x + 22, y: phone.y - 12 },
+      { x: hss.x + 30, y: hss.y },
+    ].map((k) => (
+      <g>
+        <circle cx={k.x - 3.5} cy={k.y} r="3.6" stroke="#a2761a" stroke-width="1.8" />
+        <path
+          d={`M${k.x} ${k.y}H${k.x + 7}M${k.x + 5} ${k.y}V${k.y + 3}M${k.x + 7} ${k.y}V${k.y + 2.4}`}
+          stroke="#a2761a"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </g>
+    ))
+  }
+  <ellipse cx={phone.x} cy={phone.y + 21} rx="12" ry="3" fill="#33403d" opacity=".1"></ellipse>
+  <rect x={phone.x - 10} y={phone.y - 17} width="20" height="34" rx="5" fill="#2e3a38"></rect>
+  <rect x={phone.x - 7.5} y={phone.y - 13.5} width="15" height="25" rx="2.4" fill="#e6efe9"></rect>
+  <rect x={phone.x - 4} y={phone.y + 2} width="8" height="6" rx="1.2" fill="#a2761a" opacity=".85"
+  ></rect>
+  <rect
+    x="14"
+    y="166"
+    width={digits.length * cell + 2 * gap + 24}
+    height="48"
+    rx="16"
+    fill="#fbf8f1"
+    opacity=".92"></rect>
+  {
+    digits.map((d, i) => (
+      <g>
+        <rect
+          x={cx(i) + 1}
+          y="176"
+          width={cell - 2}
+          height="28"
+          rx="6"
+          fill="#ffffff"
+          stroke={colors[group(i)]}
+          stroke-opacity=".45"
+        />
+        <text
+          x={cx(i) + cell / 2}
+          y="196"
+          text-anchor="middle"
+          font-size="16"
+          font-family="sans-serif"
+          fill={colors[group(i)]}
+        >
+          {d}
+        </text>
+      </g>
+    ))
+  }
+</svg>

@@ -13,6 +13,174 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'cell-handover',
+    name: '蜂窝网络与切换',
+    title: '边走边打电话，为什么不断线？',
+    question: '边走边打电话，为什么不断线？',
+    description:
+      '跟着一部行进中的手机，看信号强弱怎样画出小区边界，网络又怎样在合适的时刻把它交给下一座基站。',
+    duration: '3 分钟',
+    color: '#6fa7c9',
+    number: '72',
+    tag: '蜂窝 · 测量 · 切换',
+    related: ['mobile-5g', 'mobile-roaming', 'packet-routing'],
+    sources: [
+      {
+        title:
+          '3GPP TS 36.331 — E-UTRA RRC: layer-3 filtering, event A3, hysteresis and time-to-trigger',
+        url: 'https://www.3gpp.org/DynaReport/36331.htm',
+      },
+      {
+        title: '3GPP TS 36.300 — E-UTRA overall description: X2 handover and data forwarding',
+        url: 'https://www.3gpp.org/DynaReport/36300.htm',
+      },
+      {
+        title: '3GPP TS 38.300 — NR overall description: Xn handover',
+        url: 'https://www.3gpp.org/DynaReport/38300.htm',
+      },
+      {
+        title: '3GPP TS 36.133 — E-UTRA radio resource management: handover interruption time',
+        url: 'https://www.3gpp.org/DynaReport/36133.htm',
+      },
+      {
+        title: '3GPP TS 36.304 — UE procedures in idle mode: cell reselection ranking',
+        url: 'https://www.3gpp.org/DynaReport/36304.htm',
+      },
+      {
+        title: '3GPP TS 23.401 — EPS architecture: tracking areas and paging',
+        url: 'https://www.3gpp.org/DynaReport/23401.htm',
+      },
+      {
+        title: '3GPP TR 36.814 — E-UTRA further advancements: evaluation antenna pattern',
+        url: 'https://www.3gpp.org/DynaReport/36814.htm',
+      },
+      {
+        title: '3GPP TR 25.814 — physical layer aspects: macro path loss and shadowing assumptions',
+        url: 'https://www.3gpp.org/DynaReport/25814.htm',
+      },
+      {
+        title: '3GPP TR 36.839 — mobility enhancements: ping-pong definition',
+        url: 'https://www.3gpp.org/DynaReport/36839.htm',
+      },
+    ],
+  },
+  {
+    slug: 'mobile-5g',
+    name: '4G 与 5G',
+    title: '5G 的速度从哪里来？',
+    question: '5G 的速度从哪里来？',
+    description:
+      '把速率拆成频带宽度、每个资源单元的比特和并行层数，再看子载波、星座图、天线阵列和多人分享各自改变了什么。',
+    duration: '4 分钟',
+    color: '#8f86c9',
+    number: '73',
+    tag: '频谱 · 调制 · 波束',
+    related: ['cell-handover', 'wave-interference', 'error-correction'],
+    sources: [
+      {
+        title:
+          '3GPP TS 38.306 — NR UE radio access capabilities, §4.1.2 approximate peak data rate',
+        url: 'https://www.3gpp.org/DynaReport/38306.htm',
+      },
+      {
+        title:
+          '3GPP TS 38.211 — NR physical channels and modulation: numerology, resource grid and QAM mapping',
+        url: 'https://www.3gpp.org/DynaReport/38211.htm',
+      },
+      {
+        title:
+          '3GPP TS 38.101-1 — NR UE radio transmission and reception, FR1: maximum transmission bandwidth configuration N_RB',
+        url: 'https://www.3gpp.org/DynaReport/38101-1.htm',
+      },
+      {
+        title: '3GPP TS 36.213 — E-UTRA physical layer procedures: transport block size tables',
+        url: 'https://www.3gpp.org/DynaReport/36213.htm',
+      },
+      {
+        title: '3GPP TR 38.901 — Channel model for 0.5–100 GHz: material penetration loss',
+        url: 'https://www.3gpp.org/DynaReport/38901.htm',
+      },
+      {
+        title: 'ITU-R M.2410 — Minimum requirements for IMT-2020 radio interface performance',
+        url: 'https://www.itu.int/pub/R-REP-M.2410',
+      },
+      {
+        title: 'Ericsson — Advanced antenna systems for 5G networks (white paper)',
+        url: 'https://www.ericsson.com/en/reports-and-papers/white-papers/advanced-antenna-systems-for-5g-networks',
+      },
+    ],
+  },
+  {
+    slug: 'mobile-roaming',
+    name: '手机漫游',
+    title: '出了国，手机怎么还认得你？',
+    question: '出了国，手机怎么还认得你？',
+    description:
+      '跟着 SIM 卡里的一串号码出国：当地网络怎样找到你家、用挑战与应答确认你，又让电话和数据走哪条路。',
+    duration: '3 分钟',
+    color: '#c99a6f',
+    number: '74',
+    tag: '身份 · 认证 · 路由',
+    related: ['cell-handover', 'hash', 'packet-routing'],
+    sources: [
+      {
+        title: '3GPP TS 33.102 — 3G security architecture: authentication and key agreement (AKA)',
+        url: 'https://www.3gpp.org/DynaReport/33102.htm',
+      },
+      {
+        title: '3GPP TS 33.401 — EPS security architecture: EPS AKA and K_ASME derivation',
+        url: 'https://www.3gpp.org/DynaReport/33401.htm',
+      },
+      {
+        title: '3GPP TS 35.206 — MILENAGE algorithm set: algorithm specification',
+        url: 'https://www.3gpp.org/DynaReport/35206.htm',
+      },
+      {
+        title: '3GPP TS 35.208 — MILENAGE algorithm set: design conformance test data',
+        url: 'https://www.3gpp.org/DynaReport/35208.htm',
+      },
+      {
+        title:
+          '3GPP TS 23.122 — NAS functions related to Mobile Station in idle mode: PLMN selection',
+        url: 'https://www.3gpp.org/DynaReport/23122.htm',
+      },
+      {
+        title:
+          '3GPP TS 23.003 — Numbering, addressing and identification: IMSI and home network realm',
+        url: 'https://www.3gpp.org/DynaReport/23003.htm',
+      },
+      {
+        title: '3GPP TS 29.272 — MME and SGSN related interfaces based on Diameter (S6a)',
+        url: 'https://www.3gpp.org/DynaReport/29272.htm',
+      },
+      {
+        title: '3GPP TS 23.401 — GPRS enhancements for E-UTRAN access: roaming architectures',
+        url: 'https://www.3gpp.org/DynaReport/23401.htm',
+      },
+      {
+        title: '3GPP TS 23.018 — Basic call handling: mobile-terminated calls and roaming numbers',
+        url: 'https://www.3gpp.org/DynaReport/23018.htm',
+      },
+      {
+        title: '3GPP TS 33.501 — Security architecture for 5G: 5G AKA and SUCI',
+        url: 'https://www.3gpp.org/DynaReport/33501.htm',
+      },
+      {
+        title:
+          'ITU-T E.212 — international identification plan for public networks and subscriptions',
+        url: 'https://www.itu.int/rec/T-REC-E.212',
+      },
+      {
+        title: 'GSMA IR.88 — EPS roaming guidelines',
+        url: 'https://www.gsma.com/newsroom/wp-content/uploads//IR.88-v27.0.pdf',
+      },
+      {
+        title: 'GSMA IR.34 — guidelines for IPX provider networks',
+        url: 'https://www.gsma.com/newsroom/wp-content/uploads//IR.34-v20.0.pdf',
+      },
+    ],
+  },
+  {
     slug: 'keyboard-switch',
     name: '机械键盘轴体',
     title: '同样按一下，轴体到底差在哪？',

@@ -1,0 +1,68 @@
+---
+import { cellHandoverCover } from '../../models/cell-handover-cover';
+const cover = cellHandoverCover();
+const petal = (x: number, y: number, k: number) => {
+  const a = (k * 120 * Math.PI) / 180,
+    w = (32 * Math.PI) / 180,
+    r = 7.5;
+  return `M${x},${y}L${x + r * Math.cos(a - w)},${y + r * Math.sin(a - w)}A${r},${r} 0 0 1 ${x + r * Math.cos(a + w)},${y + r * Math.sin(a + w)}Z`;
+};
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="ch-cover-glow">
+      <stop offset="0" stop-color="#f0d098" stop-opacity=".55"></stop>
+      <stop offset="1" stop-color="#f0d098" stop-opacity="0"></stop>
+    </radialGradient>
+    <clipPath id="ch-cover-clip"><rect width="400" height="230"></rect></clipPath>
+  </defs>
+  <g clip-path="url(#ch-cover-clip)">
+    <rect width="400" height="230" fill="#232a3b"></rect>
+    {
+      cover.sites.map(({ at: [x, y] }) => (
+        <circle cx={x} cy={y} r="46" fill="url(#ch-cover-glow)" />
+      ))
+    }
+    <path
+      d={cover.boundaries}
+      stroke="#efe6d6"
+      stroke-opacity=".42"
+      stroke-width=".9"
+      stroke-linejoin="round"></path>
+    <path
+      d={cover.trail.map((s) => s.d).join('')}
+      stroke="#3a4459"
+      stroke-width="8"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+    {
+      cover.trail.map((s) => (
+        <path
+          d={s.d}
+          stroke={s.color}
+          stroke-width="3.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      ))
+    }
+    {
+      cover.sites.map(({ at: [x, y], petals }) => (
+        <g>
+          {petals.map((color, k) => (
+            <path d={petal(x, y, k)} fill={color} opacity=".85" />
+          ))}
+          <circle cx={x} cy={y} r="2.2" fill="#f4efe6" />
+        </g>
+      ))
+    }
+    <g
+      transform={`translate(${cover.phone.at[0]} ${cover.phone.at[1]}) rotate(${cover.phone.heading + 90})`}
+    >
+      <circle r="11" fill="#f6e7c8" opacity=".18"></circle>
+      <rect x="-4.5" y="-7.5" width="9" height="15" rx="2.5" fill="#f7f2e8"></rect>
+      <rect x="-3" y="-5.5" width="6" height="10" rx="1" fill="#3e6f8f"></rect>
+    </g>
+  </g>
+</svg>

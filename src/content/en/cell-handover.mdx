@@ -1,0 +1,65 @@
+<h2 id="understand">Why doesn't a call drop while you move?</h2>
+
+A phone on a bus is in the middle of a call as it crosses a city. It does not stay attached to one mast: along the way, the **cell** serving it changes several times, and the call carries on. This scene follows that one phone through three questions. Where do cell boundaries come from? How does the network decide it is time to switch? And during the few tens of milliseconds of the switch itself, where does the data go?
+
+A typical site carries three sector antennas, each pointing in its own direction and covering one cell. Spectrum is scarce, so modern 4G and 5G networks usually let **every cell use the same carrier** and gain capacity by dividing the city into many cells. The denser the sites, the more often the same spectrum is reused over the same streets, and the bigger each person's share. The price is interference between neighbours, so a phone near an edge must move to the stronger cell in time.
+
+Textbooks draw cells as tidy hexagons. That is the ideal case. Signals weaken with distance, antenna direction shapes their strength, and buildings and terrain add patchy **shadowing**. Each spot is really served by whichever cell is strongest there, so boundaries emerge from comparison and bend; the nearest site is not always the strongest.
+
+During a call the phone keeps measuring the reference signal received power, **RSRP**, of its serving cell and its neighbours, in dBm, and smooths it. The 3GPP **event A3** asks that a neighbour beat the serving cell by an offset plus **hysteresis**, continuously for a **time to trigger** (TTT), before the phone reports it; the network then decides to hand over. This prevents ping-pong at a wobbling boundary. Section 5.5 of [3GPP TS 36.331](https://www.3gpp.org/DynaReport/36331.htm) specifies these measurements, filters and events.
+
+The handover itself follows [TS 36.300](https://www.3gpp.org/DynaReport/36300.htm) (for 5G, [TS 38.300](https://www.3gpp.org/DynaReport/38300.htm)): measurement report, a request from the source site to the target, the target's acknowledgement, the handover command, random access to the new cell, and finally a path switch in the core network. In the short gap while the phone changes cells, the source forwards the packets it has not yet delivered to the target, so nothing is lost.
+
+<h2 id="try">Follow the same phone, change one condition</h2>
+
+- In the first chapter, follow the coloured record along the street: each new colour is a handover. Colour only tells cells apart; it does not mean a different frequency.
+- In the spectrum chapter, compare the two rows of resource blocks. Same people, same carrier: when the sites are twice as dense, fewer people share the phone's cell, and each gets more.
+- In the boundary chapter, pause while the hexagons and the bent boundaries overlap. With only distance and antenna direction, the model produces the hexagons itself; shadowing is what bends them.
+- In the hysteresis chapter, compare the two records. Both use the same street and the same measurements; only hysteresis and time to trigger change, and nine handovers become one.
+- Open "Try it yourself". Set hysteresis and TTT to zero and the phone ping-pongs. Push hysteresis high, TTT to 5120 ms and choose "Car", and the handover comes too late: the call drops. Good settings live in between.
+
+<h2 id="deeper">Going deeper</h2>
+
+<details>
+<summary>How exactly is event A3 evaluated?</summary>
+
+With `Mn` for the neighbour measurement and `Mp` for the serving cell, the entering condition in [TS 36.331](https://www.3gpp.org/DynaReport/36331.htm) §5.5.4.4 is:
+
+<div className="formula">Mn + Ofn + Ocn − Hys &gt; Mp + Ofp + Ocp + Off</div>
+
+`Off` is the A3 offset, `Hys` the hysteresis, and `Ofn`, `Ocn` and their serving-cell counterparts are frequency- and cell-specific offsets. The condition must hold for every filtered measurement during `timeToTrigger`, which takes one of 0, 40, 64, 80, 100, 128, 160, 256, 320, 480, 512, 640, 1024, 1280, 2560 or 5120 ms. This scene sets all offsets to zero and changes only hysteresis and TTT.
+
+Measurements first pass through a layer-3 filter, `Fn = (1 − a)·Fn−1 + a·Mn` with `a = 1/2^(k/4)`. The default is `k = 4`, specified for a 200 ms sample interval; the model converts it to its 40 ms step while keeping the same time behaviour.
+
+Ping-pong counting follows the evaluation definition in [TR 36.839](https://www.3gpp.org/DynaReport/36839.htm): a return to the previous cell after less than one second in the new one.
+
+</details>
+
+<details>
+<summary>How is the signal on the map computed?</summary>
+
+Layout, antennas and propagation come from 3GPP system-evaluation assumptions: hexagonal three-sector sites 500 m apart, the horizontal pattern `A(θ) = −min(12(θ/70°)², 25 dB)` ([TR 36.814](https://www.3gpp.org/DynaReport/36814.htm), Annex A), and the 2 GHz macro path loss `128.1 + 37.6·log10(R/km)` with 8 dB shadowing, 50 m decorrelation distance and 0.5 correlation between sites ([TR 25.814](https://www.3gpp.org/DynaReport/25814.htm), Table A.2.1.1-3).
+
+For readability the scene uses 6 dB of shadowing. It includes the height difference between a 32 m mast and a 1.5 m handset, and about 9 dB of vehicle penetration loss (the car mean in [TR 38.901](https://www.3gpp.org/DynaReport/38901.htm) §7.4.3). RSRP is the average power on reference-signal resource elements, defined in [TS 36.214](https://www.3gpp.org/DynaReport/36214.htm). The shadowing is a fixed-seed random terrain, so every replay and every comparison travels the same street.
+
+Fast fading itself is not simulated; the measurements only carry a small fluctuation. There is no vertical antenna pattern, no second frequency, no load balancing and no operator-specific optimisation. Interference assumes every cell is fully loaded, and link failure uses a simplified out-of-sync threshold with a one-second timer. The numbers are for comparison, not a prediction for any real network.
+
+</details>
+
+<details>
+<summary>How long is the interruption?</summary>
+
+For a handover to a known cell, [TS 36.133](https://www.3gpp.org/DynaReport/36133.htm) §5.1.2.1 bounds the interruption by `Tsearch + TIU + 20 ms`: `Tsearch` is zero for a known cell and `TIU`, the wait for the next random-access opportunity, is at most 30 ms. The ladder uses illustrative delays (1 ms over the air, 5 ms between sites), so the formula gives 24 ms here. The downlink gap the phone notices is about 33 ms, because it also includes the access response, the completion message and delivery of the forwarded data.
+
+5G timing is specified in TS 38.133 with different terms. [ITU-R M.2410](https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-M.2410-2017-PDF-E.pdf) sets a 0 ms minimum mobility interruption for IMT-2020, which needs enhancements such as dual connectivity. The packet numbers on screen only track order; they are not a real sequence-number format.
+
+</details>
+
+<details>
+<summary>How does the network find an idle phone?</summary>
+
+Without a call the phone is idle and chooses its own cell by the ranking criterion in [TS 36.304](https://www.3gpp.org/DynaReport/36304.htm) §5.2.4.6: a new cell must outrank the current one plus a hysteresis `Qhyst` for `Treselection`, after at least one second on the current cell. The network is not told.
+
+The network only remembers the **tracking area** the phone registered in. Under [TS 23.401](https://www.3gpp.org/DynaReport/23401.htm), apart from periodic updates, the phone sends an update only when it enters a tracking area outside its registered list. For an incoming call, the core pages every base station in that area and the phone answers. In this scene the paged area, TA 2, has 7 sites and 21 cells (TA 1 has 6 sites and 18 cells); real operators draw their own areas. The film draws the update as a single line from the phone to the core; in reality it travels through the serving base station.
+
+</details>
