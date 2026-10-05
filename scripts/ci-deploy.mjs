@@ -68,7 +68,10 @@ try {
     const auditEnv = { ...process.env };
     delete auditEnv.CLOUDFLARE_API_TOKEN;
     delete auditEnv.GH_TOKEN;
-    execFileSync(process.execPath, ['scripts/audit-live.mjs'], { stdio: 'inherit', env: auditEnv });
+    execFileSync(process.execPath, ['scripts/audit-live.mjs', '--after-deploy'], {
+      stdio: 'inherit',
+      env: auditEnv,
+    });
     record.status = 'success';
   }
 } catch (error) {

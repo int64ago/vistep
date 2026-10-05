@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
-import { setTimeout } from 'node:timers/promises';
+import { auditOptions, createLiveCheck } from './live-audit-request.mjs';
 
-const directory = resolve(process.argv[2] || 'dist');
+const options = auditOptions(process.argv.slice(2));
+const directory = resolve(options.directory);
 const origin = 'https://vistep.ai';
 const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
@@ -13,22 +14,7 @@ const walk = (dir) =>
 const files = walk(directory);
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
-async function check(path, validate) {
-  for (let attempt = 0; ; attempt++) {
-    try {
-      const response = await fetch(`${origin}${path}`, {
-        redirect: 'manual',
-        signal: AbortSignal.timeout(30_000),
-      });
-      const bytes = Buffer.from(await response.arrayBuffer());
-      validate(response, bytes);
-      return;
-    } catch (error) {
-      if (attempt === 2) throw new Error(`${path}: ${error.message}`, { cause: error });
-      await setTimeout(2000 * (attempt + 1));
-    }
-  }
-}
+const check = createLiveCheck({ afterDeploy: options.afterDeploy, origin });
 
 const jobs = files
   .filter(

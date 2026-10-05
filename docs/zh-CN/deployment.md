@@ -12,9 +12,11 @@
 2. 保存检查通过的生产 `dist/`，发布任务下载同一次运行的这份产物，不重新构建，也不使用 `dist-preview/`。
 3. `deploy` 进入 GitHub `production` 环境。工作流和发布脚本都将发布限制在原仓库的 `main`；环境分支规则也应配置为相同范围。发布前再次查询 main，过时的运行直接跳过。
 4. 保存旧版本后部署既有 Worker `vistep`，版本标记带提交 SHA，发布消息链接到 Actions 运行记录。
-5. `scripts/audit-live.mjs` 检查线上 HTML 的标题、canonical / alternate 链接和构建资源引用；对非 HTML 资产逐文件比较 SHA-256；检查生产索引响应头、robots.txt 的 sitemap 声明和未知路径 404。Cloudflare 可能注入交付或统计脚本，因此 HTML 不逐字节比较。短暂 HTTP 失败重试两次。
+5. `scripts/audit-live.mjs --after-deploy` 检查线上 HTML 的标题、canonical / alternate 链接和构建资源引用；对非 HTML 资产逐文件比较 SHA-256；检查生产索引响应头、robots.txt 的 sitemap 声明和未知路径 404。Cloudflare 可能注入交付或统计脚本，因此 HTML 不逐字节比较。失败请求和旧内容可在六个并发任务共享的三分钟就绪窗口内重试。在窗口内开始的请求和响应体读取使用窗口剩余时间，单次最多 30 秒；窗口结束后首次检查的 URL 仍做一次常规检查，不另开重试窗口。401 / 403 等授权失败立即报错。全部内容校验仍须通过。
 
 运行摘要展示前后版本和回滚命令。生产构建 artifact 保留 7 天，发布记录保留 90 天；Cloudflare 另有部署历史。上线审计失败不会自动回滚，先区分“上传失败”和“已经发布但线上检查失败”。
+
+确认已发布时，下载该次运行的 `production-COMMIT_SHA` artifact，再执行 `node scripts/audit-live.mjs /path/to/artifact`。这个只读检查仍使用三次尝试、间隔 2 秒和 4 秒，不再次发布，也不修改 Actions 的失败记录。2026-10-06，一份已经发布的 JavaScript 资产在短暂重试期间返回 404，之后与原检查产物逐字节一致。最初 404 的原因未能确定；发布后的就绪窗口补足等待时间，持续缺失或内容不符仍会失败。
 
 main 正在进行的发布不会被新推送中断，待运行队列只保留最近一次推送；快速连续 push 可能合并为最新一次发布。视觉、配音与完整演示应在合并前审看；CI 不能判断这些质量。
 
