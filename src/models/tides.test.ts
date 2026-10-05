@@ -227,36 +227,46 @@ describe('tides: deterministic display and actual perspective bounds', () => {
     expect(defaults).toEqual(original);
     expect(new Set(first.map((r) => r.id)).size).toBe(first.length);
   });
-  it('projects actual deformed vertices, Moon box corners and force tips through the rendering camera with margin', () => {
-    for (const compact of [false, true])
-      for (let chapter = 0; chapter < 8; chapter++)
-        for (const phase of [0, 0.5, 1]) {
-          const s = shot(chapter, phase),
-            w = compact ? 268 : 591.43,
-            h = compact ? (chapter < 2 ? 233 : 263) : 420,
-            c = camera(s, w, h, compact),
-            real = new THREE.PerspectiveCamera(c.fov, c.aspect, c.near, c.far);
-          real.position.set(c.position.x, c.position.y, c.position.z);
-          real.lookAt(c.target.x, c.target.y, c.target.z);
-          real.updateMatrixWorld();
-          real.updateProjectionMatrix();
-          const points = [
-            ...bounds(s, compact),
-            ...grid(s.bodies, s.gain).flatMap((r) => r.points.map((p) => p.position)),
-            glyphs(s, compact).marker,
-          ];
-          for (const p of points) {
-            const ndc = new THREE.Vector3(p.x, p.y, p.z).project(real),
-              ours = project(p, c);
-            expect(Math.abs(ndc.x)).toBeLessThan(0.93);
-            expect(Math.abs(ndc.y)).toBeLessThan(0.93);
-            expect(ndc.z).toBeGreaterThan(-1);
-            expect(ndc.z).toBeLessThan(1);
-            expect(ndc.x).toBeCloseTo(ours.x, 12);
-            expect(ndc.y).toBeCloseTo(ours.y, 12);
-          }
+  // Keep every state and vertex check, while bounding each CI case to one camera composition.
+  it.each(
+    [false, true].flatMap((compact) =>
+      Array.from({ length: 8 }, (_, chapter) => ({
+        compact,
+        chapter,
+        viewport: compact ? 'compact' : 'desktop',
+      })),
+    ),
+  )(
+    'projects actual deformed vertices, Moon box corners and force tips through the rendering camera with margin ($viewport, chapter $chapter)',
+    ({ compact, chapter }) => {
+      for (const phase of [0, 0.5, 1]) {
+        const s = shot(chapter, phase),
+          w = compact ? 268 : 591.43,
+          h = compact ? (chapter < 2 ? 233 : 263) : 420,
+          c = camera(s, w, h, compact),
+          real = new THREE.PerspectiveCamera(c.fov, c.aspect, c.near, c.far);
+        real.position.set(c.position.x, c.position.y, c.position.z);
+        real.lookAt(c.target.x, c.target.y, c.target.z);
+        real.updateMatrixWorld();
+        real.updateProjectionMatrix();
+        const points = [
+          ...bounds(s, compact),
+          ...grid(s.bodies, s.gain).flatMap((r) => r.points.map((p) => p.position)),
+          glyphs(s, compact).marker,
+        ];
+        for (const p of points) {
+          const ndc = new THREE.Vector3(p.x, p.y, p.z).project(real),
+            ours = project(p, c);
+          expect(Math.abs(ndc.x)).toBeLessThan(0.93);
+          expect(Math.abs(ndc.y)).toBeLessThan(0.93);
+          expect(ndc.z).toBeGreaterThan(-1);
+          expect(ndc.z).toBeLessThan(1);
+          expect(ndc.x).toBeCloseTo(ours.x, 12);
+          expect(ndc.y).toBeCloseTo(ours.y, 12);
         }
-  });
+      }
+    },
+  );
   it('keeps manual solar-force and maximum deformation cases inside the supported camera bounds', () => {
     for (const compact of [false, true])
       for (const focus of ['gravity', 'subtract', 'equilibrium'] as const) {

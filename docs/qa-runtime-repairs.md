@@ -39,3 +39,9 @@ No captured error-level console entries appeared in the inspected printer, noise
 ## Evidence still outstanding
 
 This repair pass did not continuously watch all films, listen to complete Chinese and English tracks, measure physical-phone performance, execute physical touch gestures, or inject corrupt audio/network failures in a real browser. Reduced motion, navigation races, hidden-tab scheduling, Worker fallback and media failures have controlled regression evidence; they do not acquire real-device evidence from those tests. The cellular film's synchronous initialization was outside this repair scope. No scene is marked fully accepted from this record.
+
+## CI follow-up after the authorized push
+
+The push of `82c714d` triggered [Actions run 37312292413](https://github.com/int64ago/vistep/actions/runs/37312292413). Verification passed 1193 tests but the existing tidal projection test took 5509 ms, exceeding the default 5000 ms timeout. Production deployment was skipped.
+
+That test originally combined two viewport layouts, eight chapters and three phases into one case. It now uses 16 independent viewport/chapter cases, preserving all 48 states, every vertex and all six projection assertions. The default timeout, numerical tolerances, production model and rendered content are unchanged. This is test granularity, not evidence of improved product performance. The suite now contains 1209 tests; follow-up integrated verification and preview build passed locally before the next push.
