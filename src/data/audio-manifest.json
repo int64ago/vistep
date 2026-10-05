@@ -9086,5 +9086,617 @@
         }
       ]
     }
+  },
+  "cpu-gpu-npu": {
+    "zh": {
+      "src": "/narration/cpu-gpu-npu-zh-2f0ad81b41a3.mp3",
+      "duration": 174.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 18.08744,
+          "text": "先给三种处理器同一道题。跟住 Y 一一：一行输入和一列权重，四次相乘，再把积相加，得到二。最后把负数变成零。输入与权重始终不换，三种安排必须算出相同的十六个结果。",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 43.94141,
+          "text": "看 CPU 怎样算 Y 一一。一次乘加更新一次部分和，四个积凑齐后，程序判断要保留原值还是写零，然后处理下一项。这突出的是灵活控制。真实 CPU 也有多核和向量单元，并不只能串行算一个数。",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 68.72961,
+          "text": "换成 GPU，题目没换。一行里的四个输出分给四条通道，同一条乘加指令作用于各自的数据。你能看见四个部分和一起更新。画面只留四条教学通道；真实 GPU 的组织更大，还能有矩阵专用硬件，并不只是负责画图。",
+          "tempo": 1
+        },
+        {
+          "at": 74.45,
+          "end": 95.53134,
+          "text": "停住第一行的结果。Y 一三的部分和是负二，其余结果不为负。执行保留路径时，Y 一三被掩蔽；轮到写零路径，其余通道等待。编号和部分和都没丢。这是解释分支掩码的慢镜头，真实的 ReLU 也可能编译成无分支指令。",
+          "tempo": 1
+        },
+        {
+          "at": 98.45,
+          "end": 121.87249,
+          "text": "这次把乘加排成阵列。蓝色输入向右，暖色权重向下。同一个 k 的两个数在交点相遇。乘积加入留在这里的部分和，输入和权重继续传给相邻单元。错开进入的时刻，计算就像斜着推进的波。这是一种 NPU 数据流示例，内部结构并非都相同。",
+          "tempo": 1
+        },
+        {
+          "at": 124.95,
+          "end": 147.48014,
+          "text": "乘法器不能凭空得到数据。内存、搬运、启动和结果接回都属于任务。CPU 可以组织程序，把适合的并行工作交给 GPU，把受支持的张量算子交给 NPU。这只是协作示例。芯片再专用，也要看形状、精度和算子是否合适。",
+          "tempo": 1
+        },
+        {
+          "at": 148.95,
+          "end": 171.43605,
+          "text": "最后逐项核对十六个结果：完全相同，权重也从未更新。CPU 强调通用控制，GPU 组织大规模并行，NPU 针对受支持的神经网络运算。画面的步数只是教学事件，不能拿来比较真实速度或功耗。选择处理器，先看任务，再看测量。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/cpu-gpu-npu-en-e7ff5d36dd67.mp3",
+      "duration": 174.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 19.5156,
+          "text": "Give all three processors the same task. Follow Y one one: one row of inputs meets one column of weights. Multiply four pairs and add the products to get two. Then replace negative results with zero. Keep the inputs and weights fixed: all sixteen answers must agree.",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 45.65649,
+          "text": "Watch the CPU build Y one one. Each multiply-accumulate updates a partial sum. After four products, the program chooses whether to keep the value or write zero, then moves on. This view highlights flexible control. Real CPUs also have multiple cores and vector units; they are not limited to one-at-a-time arithmetic.",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 72.76014,
+          "text": "Now use the GPU without changing the task. Four outputs are assigned to four lanes. A common multiply-accumulate instruction acts on each lane’s own data, so four partial sums update together. We show only four teaching lanes. Real GPUs have larger organizations and may also contain specialized matrix hardware. Their work extends well beyond drawing graphics.",
+          "tempo": 1
+        },
+        {
+          "at": 74.45,
+          "end": 96.4019,
+          "text": "Pause on the first row. Y one three has a sum of minus two; the other values are nonnegative. On the keep path, Y one three is masked. On the zero path, the other lanes wait. Their identities and sums remain intact. This slow view explains branch masks; actual ReLU code may use a branchless instruction.",
+          "tempo": 1
+        },
+        {
+          "at": 98.45,
+          "end": 123.59694,
+          "text": "Arrange the multiply-accumulates into an array. Blue inputs travel horizontally; warm-colored weights travel vertically. Matching k values meet at a crossing. Their product joins the partial sum held in that cell, while the two input values continue to neighboring cells. Staggered arrivals create a diagonal wave. This is one NPU dataflow example, not a universal internal design.",
+          "tempo": 1
+        },
+        {
+          "at": 124.95,
+          "end": 147.58129,
+          "text": "Multipliers need data. Memory access, transfers, launches and consuming results are part of the task. A CPU can organize a program, dispatch parallel work to a GPU and supported tensor operations to an NPU. This is one collaboration example. Specialized hardware still needs suitable shapes, numerical precision and supported operators.",
+          "tempo": 1
+        },
+        {
+          "at": 148.95,
+          "end": 173.14442,
+          "text": "Compare every one of the sixteen outputs: they match, and the weights never changed. CPUs emphasize general control, GPUs organize large parallel workloads, and NPUs specialize supported neural-network operations. These steps are teaching events, not measurements of speed or power. Choose hardware by the task, then by measurements made under stated conditions.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "esim": {
+    "zh": {
+      "src": "/narration/esim-zh-f9ceb7e46ca9.mp3",
+      "duration": 144.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 20.24732,
+          "text": "手机没有卡槽，SIM 就完全消失了吗？看这张手机切面。主板上的小芯片，就是这里的 eUICC。它能保存运营商的身份数据，还能安全地安装新的 profile。接下来，我们跟着一份旅行订阅，看它怎样来到这个芯片里。",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 44.35406,
+          "text": "先看激活码。它告诉手机的本地助手 LPA：去哪个服务器，领取哪一份订阅。这里用的是不能扫描的示意，里面没有你的网络密钥。手机还要有互联网连接。扫码给出的是下载线索，并不是凭空造出一张能用的 SIM。",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 69.362,
+          "text": "找到服务器，还不能立刻把身份数据交出去。芯片先检查服务器的证书和新鲜的签名，确认对方可信。随后服务器也验证芯片的证明。看两次检查依次通过。证书解决的是这次安全下载的信任，还不是后面的移动网络认证。",
+          "tempo": 1
+        },
+        {
+          "at": 72.45,
+          "end": 95.13635,
+          "text": "身份确认以后，服务器准备加密的绑定封包。跟住这份封包：它经过 LPA，由助手分段搬进芯片 A。助手负责搬运，并不能解出里面的网络密钥。现在把同一份绑定封包复制给 B。对象不对，安装被拒绝；它不是一份随处可用的电子复印件。",
+          "tempo": 1
+        },
+        {
+          "at": 96.45,
+          "end": 119.15308,
+          "text": "进入芯片以后，封包还要完整验证，才能安装。注意旅行线路：已经存进来了，却仍然是停用状态。然后用户确认启用，选中的线路才发生变化。日常线路没有被抹掉。本图用一个启用端口说明过程，能存几份和能同时用几份，是两个问题。",
+          "tempo": 1
+        },
+        {
+          "at": 120.45,
+          "end": 142.84937,
+          "text": "最后，下载完成，手机仍要向移动网络证明自己。网络发来随机挑战，芯片用启用 profile 的密钥计算应答。认证时，这把密钥留在芯片里。再切回日常线路，选用的身份改变，网络重新认证。负责收发无线信号的，仍是原来的基带和天线。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/esim-en-f0ca7a90c847.mp3",
+      "duration": 144.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 15.72234,
+          "text": "A phone has no SIM tray. Did the SIM disappear? Follow the cutaway to its small eUICC chip. It stores protected operator profiles and can install new ones. We will follow one travel subscription all the way into that hardware.",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 39.59084,
+          "text": "The activation code tells the phone’s local assistant, the LPA, where to go and which subscription to request. This illustration cannot be scanned. There is no network key in it. An existing internet connection is needed before the profile can be downloaded.",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 64.63986,
+          "text": "Finding a server is only the beginning. The chip checks the server’s certificate and a fresh signed message. The server then verifies the chip’s proof. Watch both checks succeed in order. This establishes trust for provisioning; mobile-network authentication comes later.",
+          "tempo": 1
+        },
+        {
+          "at": 72.45,
+          "end": 89.46533,
+          "text": "The server prepares an encrypted package bound to chip A. Follow that same package through the LPA into the chip. The assistant forwards it without reading the network key. Now copy the bound package to B. Installation is rejected: this is not a reusable digital photocopy.",
+          "tempo": 1
+        },
+        {
+          "at": 96.45,
+          "end": 117.62247,
+          "text": "Inside the chip, the complete package must pass verification before installation. Notice the travel profile: installed, but still disabled. A separate enable step selects it, while the daily profile remains stored. This diagram has one enabled port. Stored capacity and simultaneous active lines are different limits.",
+          "tempo": 1
+        },
+        {
+          "at": 120.45,
+          "end": 139.30234,
+          "text": "After provisioning, the phone must still authenticate to the mobile network. The network sends a random challenge; the enabled profile computes a response using its key inside the chip. Switch back to the daily profile and authenticate again. The baseband and antenna continue handling the same radio link.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "myopia-lens": {
+    "zh": {
+      "src": "/narration/myopia-lens-zh-4226e130bead.mp3",
+      "duration": 167.5,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 21.39363,
+          "text": "先跟住远处的同一个光点。蓝色光线在眼内会聚，但焦点落在视网膜前。接收平面逐渐后移，焦点之后的光又散开，因此眼睛收到的不是一个清晰小点。这是等效眼的光学示意；真实近视还涉及眼睛的形状与屈光力量。",
+          "tempo": 1
+        },
+        {
+          "at": 23.45,
+          "end": 44.51272,
+          "text": "现在加入普通单光镜片。注意光线经过镜片后先稍微发散，眼睛再把它们会聚到视网膜面。我们确实把这个光点看清了。但是，当前清晰并不能告诉我们以后眼轴会长多少。屈光矫正与减慢近视进展，接下来要分开看。",
+          "tempo": 1
+        },
+        {
+          "at": 46.45,
+          "end": 68.52671,
+          "text": "靠近镜片表面。这是 DIMS 设计的一种教学示意：中央矫正区周围，排列着小小的附加微透镜。单枚直径约一点零三毫米，附加光焦度为正三点五屈光度。基底仍提供远用矫正，微透镜在它上面加入另一种成分；位置采用抽样图案。",
+          "tempo": 1
+        },
+        {
+          "at": 69.95,
+          "end": 90.99478,
+          "text": "回到同一个远处光点，增加一点入射角。看金色光束：刚才它被瞳孔挡住，现在进入了眼内。蓝色矫正成分仍然会聚在视网膜；来自选中微透镜的成分，则会聚在前面。两束光来自同一光点，并不是两幅互不相关的装饰光路。",
+          "tempo": 1
+        },
+        {
+          "at": 92.95,
+          "end": 116.03422,
+          "text": "暂停在两束光会聚的位置。蓝色小点贴着视网膜面，金色小点在它前方。它们的距离和交会来自同一个光学计算。自由探索时，减少附加光焦度会让金色焦点靠近蓝色焦点。但这个距离不是防控效果的刻度，不能换算成孩子将来的眼轴增长。",
+          "tempo": 1
+        },
+        {
+          "at": 117.45,
+          "end": 141.38358,
+          "text": "接下来单独看临床证据。这项香港研究比较八到十三岁的儿童，图中是完成两年随访者的平均结果。普通单光组眼轴增长零点五三毫米，DIMS 组零点二一毫米。两组都仍在增长，小误差线表示均值的标准误。这些数字属于特定研究，不能预测某个孩子。",
+          "tempo": 1
+        },
+        {
+          "at": 142.95,
+          "end": 166.30977,
+          "text": "最后回看镜片与眼睛。远用矫正负责清晰焦点，附加微透镜安排另一种光学成分。我们的模型解释这两束光怎样走，没有模拟眼睛的生长。不同镜片设计也不能直接共用一项研究的结果。实际选用、验配和复查，需要结合专业检查与持续的证据。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/myopia-lens-en-d0f75cc6c08d.mp3",
+      "duration": 167.5,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 18.56041,
+          "text": "Follow one distant point. Its blue rays converge inside the eye, before reaching the retinal plane. As that plane moves farther back, the rays have already spread again. This equivalent-eye illustration explains blur; a real eye has additional surfaces, shapes and aberrations.",
+          "tempo": 1
+        },
+        {
+          "at": 23.45,
+          "end": 38.11816,
+          "text": "Add a single-vision lens. Notice the rays diverge slightly after the spectacle lens, before the eye converges them onto the retina. The point is now optically corrected. That clear focus alone does not tell us how much the eye will grow in the future.",
+          "tempo": 1
+        },
+        {
+          "at": 46.45,
+          "end": 63.61218,
+          "text": "Look closely at the lens surface. This DIMS illustration surrounds a central clear zone with small added lenslets. Each is about one point zero three millimetres across, with plus three point five dioptres added to the distance correction. The arrangement shown is a sampled pattern.",
+          "tempo": 1
+        },
+        {
+          "at": 69.95,
+          "end": 85.10737,
+          "text": "Return to the same distant point and change its incident angle. The amber bundle from our selected lenslet was blocked by the pupil; now it enters the eye. The blue correcting component still focuses on the retina, while the added component focuses in front of it.",
+          "tempo": 1
+        },
+        {
+          "at": 92.95,
+          "end": 110.05961,
+          "text": "Inspect the focal positions. The blue point lies on the retinal plane; the amber point is in front. Their positions come from the same ray calculation. Reducing added power brings them together. Their separation is an optical quantity, not a scale for predicting a child’s future growth.",
+          "tempo": 1
+        },
+        {
+          "at": 117.45,
+          "end": 137.72717,
+          "text": "Now examine clinical evidence separately. This Hong Kong trial studied children aged eight to thirteen. Among two-year completers, mean axial growth was zero point five three millimetres with single vision, and zero point two one with DIMS. Both groups grew. Small bars indicate standard errors, not individual outcomes.",
+          "tempo": 1
+        },
+        {
+          "at": 142.95,
+          "end": 163.82891,
+          "text": "Return to the lens and eye. The distance correction forms the clear focus; added lenslets arrange another optical component. Our model traces both bundles without simulating eye growth. Different designs need their own evidence. Selection, fitting and follow-up depend on professional assessment of the individual child.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "slr-mirrorless": {
+    "zh": {
+      "src": "/narration/slr-mirrorless-zh-0d27c0993290.mp3",
+      "duration": 190.5,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 22.65363,
+          "text": "先把注意力放在黄色光点上。它穿过镜头，进入机身。单反和无反都需要镜头与传感器；区别是拍摄前怎样看见。传统单反把光折向眼睛，无反先让传感器读出图像，再送到显示屏。接下来，我们打开机身，跟踪这两条路线。",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 46.09696,
+          "text": "找到机身里斜放的银色反光镜。镜头来的光在这里向上转，抵达对焦屏。再沿黄色折线穿过五棱镜，最后到达目镜。眼睛看到的是这条光学路线提供的图像。主传感器还被快门遮住，所以光学取景不必等它读出一帧图像。",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 71.66707,
+          "text": "现在慢放一次拍摄。反光镜绕固定铰点抬起，连杆始终连着它。取景窗已经黑了，但快门还没有打开。镜子让出通道后，第一帘向下经过传感器，曝光开始。第二帘随后跟上，结束每一行的曝光。黑屏是取景光路中断，不是相机突然没有了光。",
+          "tempo": 1
+        },
+        {
+          "at": 76.45,
+          "end": 100.00959,
+          "text": "反光镜落下，光学取景先恢复。现在切换到单反的实时取景。镜子再次抬起，快门开放，传感器持续读取镜头来的光。蓝色线路把信号经处理器送到后屏；光学目镜仍然是黑的。同一台单反也能走电子显示路线，只是那块反光镜必须让开。",
+          "tempo": 1
+        },
+        {
+          "at": 101.45,
+          "end": 126.79429,
+          "text": "无反从一开始就没有反光镜。黄色光路抵达传感器，到这里变成电信号。跟着蓝色线路经过处理器，再来到电子取景器的小显示屏。现在提高预览补偿，取景图像变亮，因为显示内容可以被计算改变。眼睛接收的是显示屏新发出的光，并不是原来那束光一路穿过了机身。",
+          "tempo": 1
+        },
+        {
+          "at": 129.95,
+          "end": 160.07676,
+          "text": "留意无反传感器前的两片帘。取景时它们让光通过；在这一种机械拍摄时序里，快门先关闭，再由第一帘开始新的曝光，第二帘结束它。这一次没有任何镜子抬起。电子取景在这里也会中断，拍完后恢复；其他机型和快门方式可能冻结画面或持续取景。因此，无反不等于没有机械快门，也不保证拍摄时绝不黑屏。",
+          "tempo": 1
+        },
+        {
+          "at": 161.45,
+          "end": 189.59132,
+          "text": "最后只改变预览补偿。光学单反的取景亮度保持原样；电子取景的图像随补偿变化。把两个问题分开，就容易理解了：有没有反光镜，决定这里比较的取景结构；怎样开始和结束曝光，是快门方式的选择。镜头、传感器和图像处理，两种相机都需要。它们走的路线不同，不代表某一类天生拍得更好。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/slr-mirrorless-en-0f05cdb0d77f.mp3",
+      "duration": 190.5,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 21.88583,
+          "text": "Follow the yellow point through the lens and into the body. Both cameras need a lens and a sensor. Their difference starts with how you see before taking the photograph. A conventional DSLR redirects light toward your eye. A mirrorless camera reads an image from the sensor and sends it to a display. Let us follow those routes inside the body.",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 43.61946,
+          "text": "Find the tilted silver mirror. It turns the incoming lens light upward to the focusing screen. Follow the yellow line through the prism and toward the eyepiece. This optical route supplies the view to your eye. The main sensor is still covered by the shutter, so optical viewing does not have to wait for that sensor to read a frame.",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 72.44902,
+          "text": "Slow down one capture. The mirror lifts about its fixed hinge, with the linkage still connected. The finder is already dark, but the shutter has not opened. Once the mirror clears the path, the first curtain crosses the sensor and starts exposure. The second follows and ends exposure for each row. The blackout comes from interrupting the viewing route, not from light disappearing.",
+          "tempo": 1
+        },
+        {
+          "at": 76.45,
+          "end": 99.68011,
+          "text": "When the mirror returns, optical viewing resumes. Now switch this DSLR to live view. The mirror stays up and the shutter opens so the main sensor can keep reading lens light. The blue signal path passes through processing and ends at the rear screen. The optical eyepiece remains dark. A DSLR can use an electronic viewing route too, with its mirror out of the way.",
+          "tempo": 1
+        },
+        {
+          "at": 101.45,
+          "end": 128.44512,
+          "text": "The mirrorless body has no reflex mirror to begin with. Lens light reaches the sensor and becomes an electrical signal. Follow the blue connection through processing to the small display in the electronic finder. Raise preview compensation and the displayed image brightens. Its appearance can be changed by computation. Your eye receives new light emitted by that display, rather than the original beam traveling directly through the body.",
+          "tempo": 1
+        },
+        {
+          "at": 129.95,
+          "end": 158.07902,
+          "text": "Notice the curtains in front of the mirrorless sensor. They admit light during live viewing. In this mechanical capture sequence, the shutter first closes, then the first curtain starts a fresh exposure and the second ends it. No mirror lifts. This example interrupts the electronic view and restores it afterward. Other sensors and shutter modes may freeze the view or keep it running. Mirrorless means neither mechanical-shutter-free nor automatically blackout-free.",
+          "tempo": 1
+        },
+        {
+          "at": 161.45,
+          "end": 188.78034,
+          "text": "Change only preview compensation. The optical view keeps its original brightness, while the electronic image responds. Separate two questions: is there a reflex mirror providing an optical viewing route, and how does exposure start and stop? The latter is a shutter choice. Both camera types still use lenses, sensors, and image processing. Different viewing routes do not establish that one type inherently makes better photographs.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "instant-camera": {
+    "zh": {
+      "src": "/narration/instant-camera-zh-ab0a7a9af023.mp3",
+      "duration": 169.5,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 21.04537,
+          "text": "拍立得是在相机里把照片打印出来的吗？先看这张相纸。快门打开，光经镜头和反射路径，穿过透明覆盖片，落到感光层。快门关闭以后，纸上留下了潜像，肉眼还看不到。相机先记录光，接着才让这张纸完成显影。",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 44.65771,
+          "text": "接下来，跟住同一张纸的边缘。小拨片先顶住纸的后沿，把它推向出口。前沿进入两根滚轮以后，转动的滚轮接手牵引，纸连续向外走。厚白边里还藏着一个封闭药囊。到这里，照片没有换成另一张，也没有凭空出现。",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 67.78544,
+          "text": "近看这个鼓起的药囊。两根滚轮从两面压紧，药囊被挤破。释放出来的试剂没有漏到外面，而是进入相纸内部。看纸一直前进，滚轮也转过对应的角度。这处接触，正把机械走纸变成下一步的化学处理。",
+          "tempo": 1
+        },
+        {
+          "at": 72.45,
+          "end": 94.39209,
+          "text": "现在从相纸的平面看。试剂从药囊所在的边缘开始，随着纸经过滚轮，逐步铺向另一端。蓝色区域表示已经处理的部分。这里的试剂含显影所需的成分，也含白色颜料和遮光成分。滚轮要把它铺匀；已经处理，不等于已经完成成像。",
+          "tempo": 1
+        },
+        {
+          "at": 96.45,
+          "end": 120.54145,
+          "text": "把层厚放大看。透明覆盖片下面，有接收图像的层、处理试剂，以及感光负片的多层结构。曝光影响负片里哪些染料留住，哪些还能迁移。能够迁移的染料进入接收层，组合成正像。图中的青、品红和黄，是三组染料的教学示意；相纸始终合在一起。",
+          "tempo": 1
+        },
+        {
+          "at": 121.95,
+          "end": 143.65776,
+          "text": "杯子的图像渐渐清楚了。注意这个分钟时钟：我们压缩了等待，没有让化学反应真的变快。现行彩色 i-Type 通常需要十到十五分钟，具体依相纸包装。遮光成分会变化，染料迁移和其他反应继续进行。排出只是开始，完整照片还要等。",
+          "tempo": 1
+        },
+        {
+          "at": 145.95,
+          "end": 167.31977,
+          "text": "最后比较同样曝光的两种处理。清洁滚轮能均匀铺开试剂；一处污点转一圈又压回来，就可能留下重复缺口。已经损坏的照片不会因为清洁而恢复，清洁是为下一张做准备。刚排出的相纸也要避强光，保持平整，不要甩动或挤压。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/instant-camera-en-033188814a56.mp3",
+      "duration": 169.5,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 18.42163,
+          "text": "Is an instant camera printing your photo? Watch the sheet inside. The shutter opens, and light travels through the lens, mirror and transparent cover to the sensitive layer. Closing the shutter leaves an invisible latent image. The scene has been recorded, but the picture still needs processing.",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 42.16531,
+          "text": "Follow that same sheet’s edge. A small picker pushes its trailing edge toward the exit. When the leading edge enters the nip, the rotating rollers take over. The sheet travels continuously. Its wide white border carries a sealed reagent pod: nothing is being swapped for a finished print.",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 66.00426,
+          "text": "Look closely at the raised pod. Both rollers compress it until it ruptures. The reagent stays inside the sheet rather than spilling outside. Paper travel and roller rotation remain linked. This contact converts the camera’s mechanical transport into the start of chemical processing.",
+          "tempo": 1
+        },
+        {
+          "at": 72.45,
+          "end": 91.89054,
+          "text": "View the sheet as a plane. Reagent spreads from the pod border toward the far end as the sheet passes through the rollers. Blue marks the processed region. The paste contains developing ingredients, white pigment and light-blocking components. Even coverage starts the chemistry; it does not instantly finish the image.",
+          "tempo": 1
+        },
+        {
+          "at": 96.45,
+          "end": 118.24454,
+          "text": "Enlarge the layers. Beneath the transparent cover are the image receiver, processing reagent and multilayer negative. Exposure controls which dyes become immobilized and which can migrate. Mobile dyes reach the receiver and form a positive. Cyan, magenta and yellow illustrate three dye systems; the physical sheet stays intact.",
+          "tempo": 1
+        },
+        {
+          "at": 121.95,
+          "end": 143.22095,
+          "text": "The cup gradually becomes clearer. Read the minute clock: we compressed the waiting, not the actual reaction. Current color i-Type film typically needs ten to fifteen minutes; follow its packaging. The opacifying veil changes while dye transfer and other reactions continue. Ejection begins processing, and the finished photograph takes time.",
+          "tempo": 1
+        },
+        {
+          "at": 145.95,
+          "end": 166.26283,
+          "text": "Compare identical exposures processed with clean and dirty rollers. A spot returns after each turn and can leave repeated gaps in reagent coverage. Cleaning will not repair this damaged photograph; it prepares the next exposure. Protect fresh film from strong light, keep it flat, and do not shake or squeeze it.",
+          "tempo": 1
+        }
+      ]
+    }
+  },
+  "jellyfish": {
+    "zh": {
+      "src": "/narration/jellyfish-zh-b3fad58cb894.mp3",
+      "duration": 174.0,
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 20.48023,
+          "text": "跟住这只月水母的一把伞。四个马蹄形生殖腺透过伞壁可见，口腕垂在中央，伞缘只有短细触手。推动它的不是触手划桨，而是伞收缩、展开，与周围的水交换动量。我们把一次脉动放慢，看清真正起作用的地方。",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 45.27751,
+          "text": "看伞缘向内收。伞下的空间变小，水被挤出去。画面中的体积和通量来自同一个半椭球形状，收得越快，体积变化也越快。它只是几何教学模型。真实月水母的宽伞推动还涉及周围压力和卷吸，不能当作狭窄喷嘴。",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 68.66014,
+          "text": "注意蓝色的起始涡。伞缘运动让附近的水卷起来，三维里是一整圈，剖面里看到的是两侧。这一圈随后离开身体，成为尾流的一部分。图中涡的位置和转向只是机制示意，没有求解真实流体。先记住它，再找第二圈。",
+          "tempo": 1
+        },
+        {
+          "at": 70.45,
+          "end": 90.94619,
+          "text": "肌肉收缩结束，弹性的伞组织回弹，水重新填入。暖色停止涡的旋转方向与起始涡相反。展开中的伞缘把它增强，并移到伞下。放松并不是单纯重置形状，它也在安排周围的水。这个停止涡，接下来还能继续起作用。",
+          "tempo": 1
+        },
+        {
+          "at": 96.45,
+          "end": 116.59982,
+          "text": "现在伞已经完全舒张，体积变化率为零。停止涡诱导的水流仍抵向伞内表面，可以形成正压，带来第二次推力。研究看到过这时再次加速，不能全部归为惯性。回收的能量来自此前的做功与流动；没有免费能量突然出现。",
+          "tempo": 1
+        },
+        {
+          "at": 122.45,
+          "end": 143.54567,
+          "text": "给两条轨迹完全相同的伞动作和阻力，只在一条里保留迟后的回收项。暖色阴影是完全舒张的阶段。这时保留回收项的速度仍可能上升。曲线来自未标定的低阶模型，只用来拆开因果，不能把距离当作真实水母的实验成绩。",
+          "tempo": 1
+        },
+        {
+          "at": 147.95,
+          "end": 170.62261,
+          "text": "再连起来看一次：收缩排水，弹性回弹回填，完全舒张后继续利用水的运动。月水母把伞和周围流体组成了一个连续过程。主片解释这个机制，不模拟完整海洋，也不把所有水母都当成一样。你可以停住、重播，再看暖色停止涡怎样来到伞下。",
+          "tempo": 1
+        }
+      ]
+    },
+    "en": {
+      "src": "/narration/jellyfish-en-26df8f00f9df.mp3",
+      "duration": 174.0,
+      "voice": "en-US-AvaMultilingualNeural",
+      "provider": "Microsoft Edge online speech via edge-tts",
+      "sampleRate": 44100,
+      "cues": [
+        {
+          "at": 0.45,
+          "end": 22.06415,
+          "text": "Follow the flexible bell of this moon jelly. Four horseshoe-shaped gonads show through the tissue; oral arms hang beneath the center and short tentacles fringe the margin. Those tentacles are not rowing oars. Swimming comes from the bell contracting and reopening, exchanging momentum with water. Slow down one pulse to see that interaction.",
+          "tempo": 1
+        },
+        {
+          "at": 24.45,
+          "end": 47.06875,
+          "text": "Watch the margin contract. Space beneath the bell shrinks and water is displaced. The displayed volume and flux come from the same half-ellipsoid shape: faster deformation changes volume faster. This is a geometric teaching model. A real moon jelly’s broad bell also uses distributed pressure and entrainment; it is not simply a narrow nozzle.",
+          "tempo": 1
+        },
+        {
+          "at": 48.45,
+          "end": 69.18943,
+          "text": "Track the blue starting vortex. Margin motion rolls nearby water into a ring. It is a full circle in three dimensions, seen on two sides in a section. The ring moves away into the wake. Its location and rotation here are schematic, not a solved fluid field. Keep its identity in mind while looking for a second ring.",
+          "tempo": 1
+        },
+        {
+          "at": 70.45,
+          "end": 93.19832,
+          "text": "Muscle contraction ends and elastic tissue reopens the bell. Water refills the cavity. The warm-colored stopping vortex rotates opposite to the starting ring. Margin motion strengthens it and positions it beneath the bell. Relaxation does more than reset the shape: it organizes the surrounding water. That stopping vortex can keep acting in the next phase.",
+          "tempo": 1
+        },
+        {
+          "at": 96.45,
+          "end": 119.7466,
+          "text": "The bell is fully relaxed now, and volume change is zero. Flow induced by the stopping vortex can still press against the inner bell surface, creating positive pressure and secondary thrust. Researchers observed renewed acceleration in this phase; inertia alone cannot explain it. The recovered energy comes from earlier work and fluid motion. Nothing appears for free.",
+          "tempo": 1
+        },
+        {
+          "at": 122.45,
+          "end": 146.57113,
+          "text": "Give both paths exactly the same bell motion and drag, retaining the delayed recovery term in only one. Warm shading marks fully relaxed intervals. The modeled speed with recovery can still rise during those intervals. These curves come from an uncalibrated low-order model. They separate causes, not measured performance; the distances are not experimental results for a real jelly.",
+          "tempo": 1
+        },
+        {
+          "at": 147.95,
+          "end": 172.86415,
+          "text": "Connect the phases again: contraction displaces water, elastic recoil refills the bell, and fluid motion can continue helping after full relaxation. The bell and surrounding water form one continuous process. This film explains that mechanism, not a whole ocean or every kind of jellyfish. Pause or replay to follow the warm stopping vortex into position beneath the bell.",
+          "tempo": 1
+        }
+      ]
+    }
   }
 }

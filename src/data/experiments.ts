@@ -1,5 +1,11 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  jellyfish: () => import('../components/experiments/Jellyfish'),
+  'instant-camera': () => import('../components/experiments/InstantCamera'),
+  'slr-mirrorless': () => import('../components/experiments/SlrMirrorless'),
+  'myopia-lens': () => import('../components/experiments/MyopiaLens'),
+  esim: () => import('../components/experiments/Esim'),
+  'cpu-gpu-npu': () => import('../components/experiments/CpuGpuNpu'),
   'cell-handover': () => import('../components/experiments/CellHandover'),
   'mobile-5g': () => import('../components/experiments/Mobile5g'),
   'mobile-roaming': () => import('../components/experiments/MobileRoaming'),

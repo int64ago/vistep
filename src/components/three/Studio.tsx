@@ -76,12 +76,31 @@ export default function Studio({
     const scene = new THREE.Scene(),
       root = new THREE.Group();
     scene.add(root);
-    const pmrem = new THREE.PMREMGenerator(renderer),
-      room = new RoomEnvironment();
-    const environment = pmrem.fromScene(room, 0.04);
-    scene.environment = environment.texture;
-    room.dispose();
-    pmrem.dispose();
+    let environment: THREE.WebGLRenderTarget | undefined;
+    try {
+      let pmrem: THREE.PMREMGenerator | undefined, room: RoomEnvironment | undefined;
+      try {
+        pmrem = new THREE.PMREMGenerator(renderer);
+        room = new RoomEnvironment();
+        environment = pmrem.fromScene(room, 0.04);
+        scene.environment = environment.texture;
+      } finally {
+        // Release temporary allocations even if environment construction fails.
+        // Separate finally blocks also prevent repeating a failed disposal.
+        try {
+          room?.dispose();
+        } finally {
+          pmrem?.dispose();
+        }
+      }
+    } catch {
+      // No observers or normal effect cleanup exist yet at this point.
+      environment?.dispose();
+      renderer.dispose();
+      renderer.domElement.remove();
+      setFailed(true);
+      return;
+    }
     const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
     camera.position.fromArray(initial.current.cameraPosition);
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -307,7 +326,7 @@ export default function Studio({
       });
       geometries.forEach((g) => g.dispose());
       materials.forEach((m) => m.dispose());
-      environment.dispose();
+      environment?.dispose();
       key.shadow.dispose();
       renderer.dispose();
       renderer.domElement.remove();

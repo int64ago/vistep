@@ -1,0 +1,57 @@
+<h2 id="understand">One multiply-and-add task, three ways to arrange the work</h2>
+
+CPUs, GPUs and NPUs can all take part in AI computation. Their differences concern how they organize work, hold data and control execution. The names do not divide all programs into three exclusive categories.
+
+This film gives each teaching machine the same task. Four input vectors form X; fixed weights form W. Multiply each row of X by each column of W, then add the four products. Apply ReLU at the end: replace negative values with zero and keep the others.
+
+<div className="formula">Y[i,j] = max(0, Σ X[i,k] × W[k,j]), for k = 0, 1, 2, 3</div>
+
+Follow `Y11`. Its input `[1, 2, 0, 1]` meets the weight vector `[1, 0, −1, 1]`, producing 2. The data identities stay fixed, and the final comparison checks all sixteen outputs individually. The weights never change. This is a small **inference operation**, not training.
+
+**The CPU view** follows a program: handle one output, perform four multiply-accumulates, then decide whether to write zero. One scalar lane makes control easy to see. Real CPUs also use multiple cores, pipelines, vector instructions and sometimes matrix acceleration.
+
+**The GPU view** assigns four outputs to four teaching lanes. A common instruction operates on different data. For a conditional path, matching lanes run while other lanes are temporarily masked. GPUs support general parallel workloads, scientific computing and neural networks; many also contain specialized matrix units.
+
+**The NPU view** uses one example of an output-stationary systolic array. Inputs travel horizontally and weights vertically. Matching k values meet for a multiply-accumulate, while the partial sum stays inside its output cell. Neighboring cells reuse passing data, creating a diagonal wave of work. NPUs specialize common neural-network operations, storage and scheduling, but their internal designs differ.
+
+<h2 id="try">Change the route while keeping the task</h2>
+
+- Enter exploration and select CPU, GPU or NPU. Each selection restarts at step zero with the same inputs and weights. Advance one event at a time to follow a partial sum.
+- At GPU step 5, nonnegative values are kept while `Y13` waits. At step 6, only `Y13` writes zero. Hatching marks masked lanes; their identities and accumulated values remain present.
+- NPU step 5 reveals a diagonal wavefront. Select a cell to check the identities of its input and weight, then verify “previous sum + current product.” Step 11 applies the output activation.
+- Select all-zero input. All three schedules produce sixteen zeros; the GPU no longer needs a negative-value path. Negate the input to change which values survive ReLU.
+
+The exploration slider counts **teaching scheduling events**. Event definitions differ between the three machines. Numbers such as 80, 24 and 11 cannot establish real speedups. Pausing, scrubbing and chapter seeking read deterministic traces without depending on previous playback.
+
+<h2 id="deeper">Why are more multipliers only part of the story?</h2>
+
+<details>
+<summary>Why do inputs enter the array at different times?</summary>
+
+At cell `(i,j)`, `X[i,k]` has crossed j neighboring cells and `W[k,j]` has crossed i. Delay input row i by i teaching ticks and weight column j by j ticks, and both values reach the cell at `i + j + k`. The skew aligns matching k values, rather than multiplying unrelated numbers.
+
+Each output receives four multiply-accumulates. Sixteen outputs therefore require 64 MACs in every scheduler. Filling and draining the array prevent all cells from starting and ending together. Here, one activation event follows the completed tile; real devices can pipeline activation and output differently.
+
+Google's [first-generation TPU paper](https://research.google/pubs/in-datacenter-performance-analysis-of-a-tensor-processing-unit/) describes a real matrix multiply unit and on-chip storage. This model borrows the dataflow principle; it neither reproduces that TPU nor implies that every NPU uses a systolic array.
+
+</details>
+
+<details>
+<summary>Does a divergent GPU branch always cost two clock cycles?</summary>
+
+No. The film separates “keep nonnegative values” and “write zero” to expose active-lane masks when both paths exist. An actual compiler may express ReLU without a branch. Real GPUs also involve independent thread scheduling, caches, occupancy and execution units with different numerical formats.
+
+[NVIDIA's CUDA SIMT documentation](https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html) specifies 32 threads in an NVIDIA warp. Four teaching lanes keep this film's arithmetic readable; they are neither a real warp width nor a universal rule for all vendors.
+
+</details>
+
+<details>
+<summary>Why does the film avoid declaring an NPU the winner?</summary>
+
+Specialized hardware needs suitable operators, shapes and precision. Transfers, memory bandwidth, launch overhead, batch size and compilation also affect performance. A CPU can prepare data and control a program, send suitable work to a GPU or NPU, then consume the result. The collaboration example does not require every task to visit all three devices in order.
+
+[Intel's NPU technical documentation](https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/intel-neural-processing-unit-intel-npu/) describes specialized MAC engines, nearby storage and scheduling. [CUDA's heterogeneous system and memory model](https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html) explains host/device launches and data placement.
+
+This film uses exact arithmetic on small integers. It does not model cache misses, bandwidth, instruction latency, real chip scale, quantization, power or temperature. Scheduling events illustrate causality; meaningful performance and energy comparisons require specified devices, software, tasks and precision. GPUs can train and run inference. NPU programmability and training support vary by product and cannot be inferred from the acronym alone.
+
+</details>

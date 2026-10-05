@@ -1,0 +1,19 @@
+---
+import { instantCameraCover } from '../../models/instant-camera-cover';
+const paths = instantCameraCover();
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#eceede"></rect>{
+    paths.map((p) => (
+      <path
+        d={p.d}
+        fill={p.fill}
+        stroke={p.stroke}
+        stroke-width={p.strokeWidth}
+        opacity={p.opacity}
+        stroke-linejoin="round"
+      />
+    ))
+  }</svg
+>

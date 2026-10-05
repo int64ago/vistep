@@ -5190,7 +5190,7 @@
         "titleEn": "Red and Black: both linear",
         "caption": "没有段落，不代表按起来一样重。",
         "captionEn": "A smooth stroke can still require different forces.",
-        "at": 22.0
+        "at": 22
       },
       {
         "id": "tactile",
@@ -5198,7 +5198,7 @@
         "titleEn": "Where the tactile bump comes from",
         "caption": "轮廓越过弹片，阻力先升后降。",
         "captionEn": "The profile bends the leaf. Resistance rises, then falls.",
-        "at": 44.0
+        "at": 44
       },
       {
         "id": "clicky",
@@ -5206,7 +5206,7 @@
         "titleEn": "Blue adds a moving jacket",
         "caption": "白色套件快速跳移，形成发声事件。",
         "captionEn": "The white jacket jumps, creating a click event.",
-        "at": 66.0
+        "at": 66
       },
       {
         "id": "actuation",
@@ -5214,7 +5214,7 @@
         "titleEn": "Actuation comes before the bottom",
         "caption": "触发、触底和复位，是三个观察点。",
         "captionEn": "Actuation, bottom-out and reset are separate events.",
-        "at": 91.0
+        "at": 91
       },
       {
         "id": "speed-silent",
@@ -5246,7 +5246,7 @@
         "titleEn": "Separate feel, sound and sensing",
         "caption": "手感、声音、检测方式，分别比较。",
         "captionEn": "Compare feel, sound and sensing separately.",
-        "at": 189.0
+        "at": 189
       }
     ]
   },
@@ -5312,7 +5312,7 @@
     ]
   },
   "mobile-5g": {
-    "duration": 227.0,
+    "duration": 227,
     "chapters": [
       {
         "id": "mobile-5g-01",
@@ -5328,7 +5328,7 @@
         "titleEn": "Cutting the band into subcarriers",
         "caption": "子载波彼此重叠，却在对方中心为零",
         "captionEn": "Subcarriers overlap, yet each is zero at the others’ centres.",
-        "at": 25.0
+        "at": 25
       },
       {
         "id": "mobile-5g-03",
@@ -5344,7 +5344,7 @@
         "titleEn": "A wider channel",
         "caption": "4G 载波 20 MHz，5G 可到 100 MHz",
         "captionEn": "A 4G carrier is 20 MHz; one 5G mid-band carrier reaches 100 MHz.",
-        "at": 82.0
+        "at": 82
       },
       {
         "id": "mobile-5g-05",
@@ -5352,7 +5352,7 @@
         "titleEn": "Higher frequency, harder to reach",
         "caption": "阵列补回毫米波损耗，却穿不过墙",
         "captionEn": "An array wins back millimetre-wave loss, but walls still block it.",
-        "at": 114.0
+        "at": 114
       },
       {
         "id": "mobile-5g-06",
@@ -5360,7 +5360,7 @@
         "titleEn": "An antenna array aims at you",
         "caption": "逐个错开相位，能量汇成波束",
         "captionEn": "Staggering each element’s phase gathers energy into a beam.",
-        "at": 143.0
+        "at": 143
       },
       {
         "id": "mobile-5g-07",
@@ -5368,7 +5368,7 @@
         "titleEn": "Parallel layers and shorter slots",
         "caption": "空间上并行几层，时间上切短时隙",
         "captionEn": "Parallel layers in space; shorter slots in time.",
-        "at": 170.0
+        "at": 170
       },
       {
         "id": "mobile-5g-08",
@@ -5405,7 +5405,7 @@
         "titleEn": "The visited network asks home",
         "caption": "当地网络经 IPX 向你家要认证数据。",
         "captionEn": "Over IPX, the local network asks your home for authentication data.",
-        "at": 53.0
+        "at": 53
       },
       {
         "id": "mobile-roaming-04",
@@ -5413,7 +5413,7 @@
         "titleEn": "Proof without revealing the key",
         "caption": "SIM 算出的 RES 与家里的 XRES 一致。",
         "captionEn": "The SIM derives RES from K and RAND; it matches XRES.",
-        "at": 79.0
+        "at": 79
       },
       {
         "id": "mobile-roaming-05",
@@ -5438,6 +5438,364 @@
         "caption": "来电先到家，再转到你所在的网络。",
         "captionEn": "A call reaches home first, then is forwarded to where you are.",
         "at": 157.5
+      }
+    ]
+  },
+  "cpu-gpu-npu": {
+    "duration": 174,
+    "chapters": [
+      {
+        "id": "one-task",
+        "title": "同一道题",
+        "titleEn": "One task",
+        "caption": "三种安排，输入和权重保持相同。",
+        "captionEn": "Three schedules keep the same inputs and weights.",
+        "at": 0
+      },
+      {
+        "id": "cpu-control",
+        "title": "CPU：跟着程序走",
+        "titleEn": "CPU: follow the program",
+        "caption": "CPU 按程序乘加，再决定写入哪个值。",
+        "captionEn": "The CPU chooses what to execute and what to write.",
+        "at": 24
+      },
+      {
+        "id": "gpu-lanes",
+        "title": "GPU：同指令，多数据",
+        "titleEn": "GPU: shared instruction, many values",
+        "caption": "GPU 的通道执行同一指令，各自保留数据身份。",
+        "captionEn": "One instruction updates four lanes with their own data.",
+        "at": 48
+      },
+      {
+        "id": "gpu-mask",
+        "title": "分支，让部分通道等待",
+        "titleEn": "A branch masks some lanes",
+        "caption": "Y13 为负：先等待，再单独写零。",
+        "captionEn": "Y13 is negative: it waits, then writes zero.",
+        "at": 74
+      },
+      {
+        "id": "npu-array",
+        "title": "NPU：让数据流过阵列",
+        "titleEn": "NPU: stream data through an array",
+        "caption": "输入向右、权重向下；每个交点保留部分和。",
+        "captionEn": "Inputs move right; weights move down; each cell holds its sum.",
+        "at": 98
+      },
+      {
+        "id": "whole-system",
+        "title": "还要把数据送到",
+        "titleEn": "Deliver the data too",
+        "caption": "实际任务还取决于搬运、精度和算子支持。",
+        "captionEn": "Transfers and supported operators are part of the task.",
+        "at": 124.5
+      },
+      {
+        "id": "same-answer",
+        "title": "结果一样，分工不同",
+        "titleEn": "Same answers, different strengths",
+        "caption": "十六个结果逐项相同；教学步数不是跑分。",
+        "captionEn": "All sixteen results match. Teaching steps are not benchmarks.",
+        "at": 148.5
+      }
+    ]
+  },
+  "esim": {
+    "duration": 144,
+    "chapters": [
+      {
+        "id": "hardware",
+        "title": "省掉卡槽，芯片还在",
+        "titleEn": "No tray, still a chip",
+        "caption": "eSIM 省掉拔插，安全硬件仍在。",
+        "captionEn": "eSIM removes card swapping; secure hardware remains.",
+        "at": 0
+      },
+      {
+        "id": "address",
+        "title": "扫码只拿到线索",
+        "titleEn": "A code gives directions",
+        "caption": "激活码定位订阅，没有网络密钥。",
+        "captionEn": "An activation code locates a subscription, not its network key.",
+        "at": 24
+      },
+      {
+        "id": "trust",
+        "title": "先确认双方身份",
+        "titleEn": "Authenticate both endpoints",
+        "caption": "服务器与芯片互相证明身份。",
+        "captionEn": "The server and chip prove their identities.",
+        "at": 48
+      },
+      {
+        "id": "delivery",
+        "title": "封包绑定这一颗芯片",
+        "titleEn": "A package bound to this chip",
+        "caption": "同一份封包给 B，不能安装。",
+        "captionEn": "Copying the same bound package to B does not allow installation.",
+        "at": 72
+      },
+      {
+        "id": "storage",
+        "title": "安装不等于启用",
+        "titleEn": "Installed is not enabled",
+        "caption": "完整安装以后，仍要单独启用。",
+        "captionEn": "Complete installation still needs a separate enable step.",
+        "at": 96
+      },
+      {
+        "id": "network",
+        "title": "同样的无线网络认证",
+        "titleEn": "The familiar network authentication",
+        "caption": "换 profile 改变身份，天线没有变。",
+        "captionEn": "Changing profiles changes identity; the antenna stays.",
+        "at": 120
+      }
+    ]
+  },
+  "myopia-lens": {
+    "duration": 167.5,
+    "chapters": [
+      {
+        "id": "blur",
+        "title": "焦点落在前面",
+        "titleEn": "Focus falls in front",
+        "caption": "焦点在视网膜前，接收时已散开。",
+        "captionEn": "The rays focus before the retina, then spread.",
+        "at": 0
+      },
+      {
+        "id": "correction",
+        "title": "先把图像看清",
+        "titleEn": "Correct the present blur",
+        "caption": "负光焦度把清晰焦点送回视网膜。",
+        "captionEn": "Negative power returns the clear focus to the retina.",
+        "at": 23
+      },
+      {
+        "id": "surface",
+        "title": "镜片表面的另一层结构",
+        "titleEn": "Another structure on the lens",
+        "caption": "中央矫正区周围，微透镜叠加正光焦度。",
+        "captionEn": "Surrounding lenslets add positive power to the correction.",
+        "at": 46
+      },
+      {
+        "id": "bundles",
+        "title": "同一光点，两种成分",
+        "titleEn": "One point, two components",
+        "caption": "入射角改变，选中的微透镜光才进入瞳孔。",
+        "captionEn": "Changing incidence admits the selected lenslet bundle.",
+        "at": 69.5
+      },
+      {
+        "id": "focus",
+        "title": "近看两处真实会聚",
+        "titleEn": "Inspect the calculated foci",
+        "caption": "矫正焦点留在视网膜，额外焦点在前方。",
+        "captionEn": "The clear focus stays on the retina; the extra focus is forward.",
+        "at": 92.5
+      },
+      {
+        "id": "evidence",
+        "title": "效果来自独立临床比较",
+        "titleEn": "Evidence from a separate trial",
+        "caption": "两组仍在增长；图中是组平均，不是个人预测。",
+        "captionEn": "Both groups grew; averages are not individual forecasts.",
+        "at": 117
+      },
+      {
+        "id": "limits",
+        "title": "清晰焦点与长期证据",
+        "titleEn": "Clear focus and longer-term evidence",
+        "caption": "计算解释光路；长期变化仍须研究与个体评估。",
+        "captionEn": "Optics explains the rays; longer-term change needs evidence and assessment.",
+        "at": 142.5
+      }
+    ]
+  },
+  "slr-mirrorless": {
+    "duration": 190.5,
+    "chapters": [
+      {
+        "id": "two-routes",
+        "title": "同一镜头，两条路径",
+        "titleEn": "One lens, two routes",
+        "caption": "差别从镜头后开始：一条送光，一条送图像。",
+        "captionEn": "One path carries light; the other carries an image.",
+        "at": 0
+      },
+      {
+        "id": "optical-route",
+        "title": "跟着光到眼睛",
+        "titleEn": "Follow light to the eye",
+        "caption": "反光镜把光送向对焦屏，棱镜再折向目镜。",
+        "captionEn": "The mirror sends light to the screen, prism and eye.",
+        "at": 24
+      },
+      {
+        "id": "mirror-clears",
+        "title": "镜子先让路",
+        "titleEn": "The mirror clears the path",
+        "caption": "先抬镜、再开帘；取景中断发生在曝光之前。",
+        "captionEn": "Mirror up first, then curtains open: optical viewing stops.",
+        "at": 48
+      },
+      {
+        "id": "dslr-live-view",
+        "title": "单反也能实时取景",
+        "titleEn": "A DSLR can use live view too",
+        "caption": "实时取景让镜子保持抬起，传感器信号送到后屏。",
+        "captionEn": "A DSLR can raise its mirror and read the sensor live.",
+        "at": 76
+      },
+      {
+        "id": "electronic-view",
+        "title": "显示屏发出新的光",
+        "titleEn": "A display emits new light",
+        "caption": "无反先读传感器，再用显示屏重新发出取景图像。",
+        "captionEn": "The sensor is read; a display emits a new viewing image.",
+        "at": 101
+      },
+      {
+        "id": "mirrorless-curtains",
+        "title": "无反也可以有快门帘",
+        "titleEn": "Mirrorless can have shutter curtains",
+        "caption": "没有反光镜，也可以用两片机械帘控制曝光。",
+        "captionEn": "A mirrorless camera can use two mechanical curtains.",
+        "at": 129.5
+      },
+      {
+        "id": "definitions",
+        "title": "把反光镜与快门分开",
+        "titleEn": "Separate the mirror from the shutter",
+        "caption": "反光镜决定取景路线；快门方式是另一项选择。",
+        "captionEn": "The mirror defines the camera type; shutters are separate.",
+        "at": 161
+      }
+    ]
+  },
+  "instant-camera": {
+    "duration": 169.5,
+    "chapters": [
+      {
+        "id": "exposure",
+        "title": "先记录光，还没成像",
+        "titleEn": "Record light first",
+        "caption": "快门留下潜像；相纸尚未显出照片。",
+        "captionEn": "Exposure leaves a latent image; development comes later.",
+        "at": 0
+      },
+      {
+        "id": "transport",
+        "title": "跟住同一张相纸",
+        "titleEn": "Follow the same sheet",
+        "caption": "拨片启动走纸；滚轮接住同一张纸。",
+        "captionEn": "A picker starts transport; rollers take the same sheet.",
+        "at": 24.0
+      },
+      {
+        "id": "pod",
+        "title": "药囊来到滚轮之间",
+        "titleEn": "The pod reaches the nip",
+        "caption": "两面挤压药囊，释放内部试剂。",
+        "captionEn": "Two rollers compress the pod and release its reagent.",
+        "at": 48.0
+      },
+      {
+        "id": "spread",
+        "title": "铺出均匀的一层",
+        "titleEn": "Spread a processing layer",
+        "caption": "前沿跟着走纸，试剂铺进层间。",
+        "captionEn": "The front follows transport; reagent spreads between layers.",
+        "at": 72.0
+      },
+      {
+        "id": "layers",
+        "title": "暗房就在层间",
+        "titleEn": "A darkroom between layers",
+        "caption": "曝光控制染料，接收层形成正像。",
+        "captionEn": "Exposure controls dyes; the receiver forms a positive.",
+        "at": 96.0
+      },
+      {
+        "id": "develop",
+        "title": "成像还需要等待",
+        "titleEn": "Development takes time",
+        "caption": "成像时间被压缩；真实等待通常十到十五分钟。",
+        "captionEn": "Time is compressed; real development typically takes ten to fifteen minutes.",
+        "at": 121.5
+      },
+      {
+        "id": "care",
+        "title": "同一曝光，两种处理",
+        "titleEn": "Same exposure, two processes",
+        "caption": "污点周期留下缺口；清洁用于下一张。",
+        "captionEn": "A repeating roller spot leaves defects; cleaning helps the next shot.",
+        "at": 145.5
+      }
+    ]
+  },
+  "jellyfish": {
+    "duration": 174.0,
+    "chapters": [
+      {
+        "id": "one-pulse",
+        "title": "跟住一把柔软的伞",
+        "titleEn": "Follow a flexible bell",
+        "caption": "推动月水母的是伞与水，不是触手划桨。",
+        "captionEn": "The bell interacts with water; the tentacles are not oars.",
+        "at": 0
+      },
+      {
+        "id": "displace-water",
+        "title": "收缩，挤出水",
+        "titleEn": "Contract and displace water",
+        "caption": "伞下体积减少，出通量从同一形状算出。",
+        "captionEn": "The cavity shrinks; outward flux comes from the same shape.",
+        "at": 24.0
+      },
+      {
+        "id": "starting-ring",
+        "title": "水的运动卷成一圈",
+        "titleEn": "Water rolls into a ring",
+        "caption": "收缩附近形成起始涡，随后进入尾流。",
+        "captionEn": "A starting vortex forms near contraction and enters the wake.",
+        "at": 48.0
+      },
+      {
+        "id": "refill-and-position",
+        "title": "回弹，把第二个涡带到伞下",
+        "titleEn": "Recoil positions the second ring",
+        "caption": "伞展开时，反向旋转的停止涡来到伞下。",
+        "captionEn": "Reopening brings the counter-rotating stopping vortex beneath the bell.",
+        "at": 70.0
+      },
+      {
+        "id": "after-relaxation",
+        "title": "伞静止后，还有推力",
+        "titleEn": "Thrust after the bell becomes still",
+        "caption": "体积变化已为零，停止涡仍可诱导二次推力。",
+        "captionEn": "Volume change is zero, yet the stopping vortex can provide secondary thrust.",
+        "at": 96.0
+      },
+      {
+        "id": "virtual-comparison",
+        "title": "同动作，移除回收项",
+        "titleEn": "Same motion, remove recovery",
+        "caption": "虚拟移除回收项；形变、初始状态和阻力相同。",
+        "captionEn": "Virtual comparison: same motion and drag; recovery changes.",
+        "at": 122.0
+      },
+      {
+        "id": "whole-cycle",
+        "title": "一次脉动，三段因果",
+        "titleEn": "One pulse, three causal phases",
+        "caption": "收缩、回弹和舒张后的流动，连成一个周期。",
+        "captionEn": "Contraction, recoil and post-relaxation flow form one cycle.",
+        "at": 147.5
       }
     ]
   }

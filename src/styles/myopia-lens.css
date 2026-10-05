@@ -1,0 +1,434 @@
+.myopia-installation {
+  background: #f4f3e9;
+  color: #3c514f;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid #dcded1;
+  padding: 24px 30px;
+  box-shadow: 0 18px 56px #60624d0a;
+  font-size: 16px;
+}
+.myopia-heading,
+.myopia-prescription-line,
+.myopia-bench-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+.myopia-heading {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+.myopia-heading span:last-child {
+  color: #6c7c74;
+}
+.myopia-bench {
+  position: relative;
+  max-width: 850px;
+  margin: auto;
+}
+.myopia-bench svg {
+  display: block;
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden;
+}
+.myopia-plane-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #68645c;
+  font-size: 16px;
+  padding: 0 12px 8px;
+}
+.myopia-plane-labels span:nth-child(2) {
+  margin-right: 16%;
+}
+.myopia-close .myopia-plane-labels {
+  padding: 0 32px 8px;
+}
+.myopia-close .myopia-plane-labels span:nth-child(2) {
+  margin-right: 0;
+}
+.myopia-bench-footer {
+  font-size: 16px;
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+.myopia-bench-footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.myopia-bench-footer i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.myopia-blue {
+  background: #368a9a;
+}
+.myopia-amber {
+  background: #b5773f;
+}
+.myopia-prescription-line {
+  border-top: 1px solid #d7dace;
+  padding-top: 12px;
+  font-size: 16px;
+  justify-content: center;
+  gap: 36px;
+}
+.myopia-prescription-line b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #6a5944;
+  margin-left: 8px;
+}
+.myopia-surface {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 240px;
+  gap: 24px;
+  max-width: 750px;
+  margin: auto;
+  align-items: center;
+}
+.myopia-lens-map {
+  position: relative;
+  max-width: 380px;
+  width: 100%;
+  margin: auto;
+}
+.myopia-lens-map svg {
+  display: block;
+  width: 100%;
+}
+.myopia-clear-label {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  font-size: 16px;
+}
+.myopia-clear-label b {
+  font-weight: 500;
+  font-size: 22px;
+}
+.myopia-clear-label span {
+  margin-top: 36px;
+  color: #356e7a;
+}
+.myopia-lens-detail {
+  padding: 18px 22px;
+  background: #eaece0;
+  border-radius: 22px;
+  text-align: center;
+}
+.myopia-lens-detail > span {
+  font-size: 16px;
+}
+.myopia-lens-detail svg {
+  display: block;
+  width: 100%;
+  margin: 12px auto;
+}
+.myopia-lens-detail > b {
+  font-size: 28px;
+  font-weight: 500;
+  color: #9a6b39;
+}
+.myopia-lens-detail p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 12px 0 0;
+}
+.myopia-map-note {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #718075;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 4px 0;
+}
+.myopia-evidence {
+  max-width: 610px;
+  margin: auto;
+  padding: 10px 0;
+}
+.myopia-kicker {
+  font-size: 16px;
+  color: #728477;
+}
+.myopia-evidence h3 {
+  font-size: clamp(23px, 3vw, 32px);
+  font-weight: 500;
+  margin: 16px 0 8px;
+  color: #3c514f;
+}
+.myopia-evidence > p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #6d7d73;
+  margin: 12px 0 24px;
+}
+.myopia-trial-row {
+  margin: 24px 0 28px;
+}
+.myopia-trial-row > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.myopia-trial-row b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.myopia-trial-track {
+  height: 28px;
+  position: relative;
+  margin: 12px 0;
+  background: #e1e4d9;
+  border-radius: 8px;
+}
+.myopia-trial-track > i {
+  display: block;
+  background: #b7b8a2;
+  height: 100%;
+  border-radius: 8px;
+}
+.myopia-trial-dims .myopia-trial-track > i {
+  background: #65969c;
+}
+.myopia-trial-track > span {
+  position: absolute;
+  top: 50%;
+  height: 10px;
+  border: 1.5px solid #495d57;
+  border-top: 0;
+  border-bottom: 0;
+  transform: translateY(-50%);
+}
+.myopia-trial-track > span:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  top: 50%;
+  background: #495d57;
+}
+.myopia-trial-row > small {
+  font-size: 16px;
+  color: #6d7d73;
+  line-height: 1.7;
+}
+.myopia-evidence .myopia-evidence-limit {
+  color: #536a5d;
+  background: #e6eadb;
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-size: 16px;
+}
+.myopia-evidence > a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: #477b88;
+  font-size: 16px;
+}
+.myopia-explore {
+  border-top: 1px solid #d7dace;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+.myopia-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 24px 0;
+}
+.myopia-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.myopia-actions button {
+  min-height: 44px;
+  border: 1px solid #a7beb2;
+  background: #edf1e5;
+  border-radius: 22px;
+  padding: 10px 20px;
+  font: inherit;
+  color: #3f695b;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.myopia-actions button:hover {
+  background: #dce8d9;
+}
+.myopia-actions button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.myopia-actions button:focus-visible {
+  outline: 2px solid #468c94;
+  outline-offset: 3px;
+}
+.myopia-explore > p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #6d7d73;
+}
+.myopia-explore details {
+  margin-top: 18px;
+  font-size: 16px;
+}
+.myopia-explore summary {
+  min-height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 620px) {
+  .myopia-installation {
+    padding: 24px 18px;
+    border-radius: 24px;
+  }
+  .myopia-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .myopia-heading span:last-child {
+    font-size: 16px;
+  }
+  .myopia-plane-labels {
+    font-size: 16px;
+    padding: 0 0 8px;
+    gap: 12px;
+  }
+  .myopia-plane-labels span:nth-child(2) {
+    margin-right: 0;
+  }
+  .myopia-bench svg {
+    margin: 14px 0;
+  }
+  .myopia-bench-footer {
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0 18px;
+  }
+  .myopia-prescription-line {
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .myopia-close .myopia-plane-labels {
+    padding: 0;
+    font-size: 16px;
+  }
+  .myopia-close svg {
+    min-height: 180px;
+  }
+  .myopia-surface {
+    display: block;
+  }
+  .myopia-lens-map {
+    max-width: 218px;
+  }
+  .myopia-clear-label {
+    top: 41%;
+  }
+  .myopia-clear-label b {
+    font-size: 20px;
+  }
+  .myopia-clear-label span {
+    margin-top: 28px;
+  }
+  .myopia-lens-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 14px;
+    margin: 14px 0;
+  }
+  .myopia-lens-detail > span {
+    grid-column: 1/-1;
+    text-align: left;
+  }
+  .myopia-lens-detail svg {
+    grid-row: 2/4;
+    margin: 6px auto;
+    max-height: 70px;
+  }
+  .myopia-lens-detail > b {
+    font-size: 23px;
+    text-align: left;
+  }
+  .myopia-lens-detail p {
+    text-align: left;
+    margin: 0;
+  }
+  .myopia-map-note {
+    font-size: 16px;
+  }
+  .myopia-controls {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .myopia-trial-row {
+    margin: 22px 0;
+  }
+  .myopia-evidence > p {
+    margin-bottom: 20px;
+  }
+  .myopia-trial-row > div:first-child {
+    align-items: flex-start;
+  }
+  .myopia-evidence h3 {
+    font-size: 25px;
+  }
+  .myopia-evidence .myopia-evidence-limit {
+    padding: 8px;
+  }
+  .myopia-trial-track {
+    height: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .myopia-actions button {
+    transition: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .myopia-installation {
+    padding: 20px 18px;
+  }
+  .myopia-heading {
+    margin-bottom: 16px;
+  }
+  .myopia-evidence {
+    padding: 0;
+  }
+  .myopia-evidence h3 {
+    margin-top: 10px;
+    font-size: 23px;
+  }
+  .myopia-evidence > p {
+    margin: 8px 0 14px;
+  }
+  .myopia-trial-row {
+    margin: 16px 0;
+  }
+  .myopia-trial-track {
+    margin: 8px 0;
+  }
+}

@@ -40,7 +40,7 @@ const scenes: SearchableScene[] = [
   },
 ];
 describe('catalog discovery', () => {
-  it('finds the promised AI topic in the real bilingual catalog without matching the brand URL', () => {
+  it('finds AI computation topics in the real bilingual catalog without matching the brand URL', () => {
     const catalog = topics.map((topic) => {
       const en = localizedTopic(topic, 'en');
       const meta = discoveryMetadata[topic.slug];
@@ -56,7 +56,7 @@ describe('catalog discovery', () => {
     });
     expect(
       matchingScenes(catalog, { ...emptyFilters(), query: 'AI' }).map((scene) => scene.slug),
-    ).toEqual(['transformer']);
+    ).toEqual(['cpu-gpu-npu', 'transformer']);
     expect(
       matchingScenes(catalog, { ...emptyFilters(), query: '人工智能' }).map((scene) => scene.slug),
     ).toContain('transformer');

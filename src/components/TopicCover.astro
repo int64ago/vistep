@@ -1,4 +1,10 @@
 ---
+import JellyfishCover from './covers/JellyfishCover.astro';
+import InstantCameraCover from './covers/InstantCameraCover.astro';
+import SlrMirrorlessCover from './covers/SlrMirrorlessCover.astro';
+import MyopiaLensCover from './covers/MyopiaLensCover.astro';
+import EsimCover from './covers/EsimCover.astro';
+import CpuGpuNpuCover from './covers/CpuGpuNpuCover.astro';
 import CellHandoverCover from './covers/CellHandoverCover.astro';
 import Mobile5gCover from './covers/Mobile5gCover.astro';
 import MobileRoamingCover from './covers/MobileRoamingCover.astro';
@@ -915,4 +921,10 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'ak47' && <Ak47Cover color={color} />}
   {slug === 'landmine' && <LandmineCover color={color} />}
   {slug === 'keyboard-switch' && <KeyboardSwitchCover color={color} />}
+  {slug === 'cpu-gpu-npu' && <CpuGpuNpuCover color={color} />}
+  {slug === 'esim' && <EsimCover color={color} />}
+  {slug === 'myopia-lens' && <MyopiaLensCover color={color} />}
+  {slug === 'slr-mirrorless' && <SlrMirrorlessCover color={color} />}
+  {slug === 'instant-camera' && <InstantCameraCover color={color} />}
+  {slug === 'jellyfish' && <JellyfishCover color={color} />}
 </svg>

@@ -1,0 +1,112 @@
+---
+import { esimCover } from '../../models/esim-cover';
+const { phone, chip, packet, bits } = esimCover();
+const p = (x: number, y: number) => [phone.x + x * phone.scale, phone.y + y * phone.scale];
+const source = p(phone.chip.x + phone.chip.w / 2, phone.chip.y + phone.chip.h / 2);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eef1e6"></rect>
+  <ellipse cx="121" cy="212" rx="74" ry="7" fill="#7f9570" opacity=".1"></ellipse>
+  <g transform={`translate(${phone.x} ${phone.y}) scale(${phone.scale})`}>
+    <rect
+      width={phone.phoneWidth}
+      height={phone.phoneHeight}
+      rx="23"
+      fill="#c6cec6"
+      stroke="#6c7d73"
+      stroke-width="2"></rect>
+    <rect x="6" y="7" width="138" height="264" rx="18" fill="#263e36"></rect>
+    <rect
+      x={phone.board.x}
+      y={phone.board.y}
+      width={phone.board.w}
+      height={phone.board.h}
+      rx="9"
+      fill="#486b53"></rect>
+    <path
+      d="M20 30H55V38H96V30H130M27 51V102H75V164M115 85H93V145H96M48 62V125H112V182M28 176H66V190H111"
+      stroke="#98ae7c"
+      stroke-width="2"></path>
+    <rect x="26" y="54" width="34" height="36" rx="6" fill="#b2b7a5"></rect>
+    <circle cx="41" cy="67" r="10" fill="#263f40" stroke="#8caaa2" stroke-width="2"></circle><circle
+      cx="41"
+      cy="97"
+      r="10"
+      fill="#263f40"
+      stroke="#8caaa2"
+      stroke-width="2"></circle>
+    <rect x="68" y="62" width="53" height="53" rx="6" fill="#a9b4a4"></rect><rect
+      x="79"
+      y="71"
+      width="31"
+      height="29"
+      rx="3"
+      fill="#63796c"></rect>
+    <rect x="23" y="209" width="104" height="43" rx="6" fill="#536155" stroke="#778679"></rect>
+    <rect
+      x={phone.chip.x}
+      y={phone.chip.y}
+      width={phone.chip.w}
+      height={phone.chip.h}
+      rx="4"
+      fill="#b68335"></rect>
+  </g>
+  <path
+    d={`M${source[0]} ${source[1]}H182Q193 130 ${packet.x - 20} ${packet.y}`}
+    stroke="#b68335"
+    stroke-width="1.5"
+    stroke-dasharray="4 5"></path>
+  <path d={`M${packet.x + 20} ${packet.y}H${chip.x}`} stroke="#b68335" stroke-width="1.5"></path>
+  <g transform={`translate(${packet.x} ${packet.y})`}
+    ><rect x="-20" y="-28" width="40" height="56" rx="10" fill="#f6e3b8" stroke="#b68335"></rect>
+    {
+      bits.map(
+        (bit, i) =>
+          bit && (
+            <rect
+              x={-12 + (i % 4) * 7}
+              y={-14 + Math.floor(i / 4) * 7}
+              width="4"
+              height="4"
+              rx="1"
+              fill="#a47c34"
+            />
+          ),
+      )
+    }
+  </g>
+  {
+    Array.from({ length: 6 }, (_, i) => (
+      <g>
+        <path
+          d={`M${chip.x - 7} ${chip.y + 8 + i * 10}h7M${chip.x + chip.size} ${chip.y + 8 + i * 10}h7`}
+          stroke="#b68335"
+          stroke-width="4"
+        />
+      </g>
+    ))
+  }
+  <rect
+    x={chip.x}
+    y={chip.y}
+    width={chip.size}
+    height={chip.size}
+    rx="9"
+    fill="#345548"
+    stroke="#779879"></rect>
+  <rect x={chip.x + 10} y={chip.y + 12} width={chip.size - 20} height="16" rx="5" fill="#b4ceae"
+  ></rect><rect
+    x={chip.x + 10}
+    y={chip.y + 37}
+    width={chip.size - 20}
+    height="16"
+    rx="5"
+    fill="#dbd4b4"></rect>
+  <path d={`M${chip.x + 27} ${chip.y - 24}v-6a7 7 0 0 1 14 0v6`} stroke="#237b75" stroke-width="2"
+  ></path><rect x={chip.x + 23} y={chip.y - 25} width="22" height="17" rx="4" fill="#237b75"></rect>
+  <path d="M230 44h91q10 0 10 10v20" stroke="#829875" stroke-width="2"></path><path
+    d="M325 68l6 6 6-6"
+    stroke="#829875"
+    stroke-width="2"></path>
+</svg>

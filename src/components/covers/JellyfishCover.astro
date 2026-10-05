@@ -1,0 +1,65 @@
+---
+import { jellyCover } from '../../models/jellyfish-cover';
+interface Props {
+  color?: string;
+}
+const { color = '#8ab2c2' } = Astro.props;
+const art = jellyCover();
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#1b3441"></rect>
+  {
+    art.vortices.map((v) => (
+      <ellipse
+        cx={v.cx}
+        cy={v.cy}
+        rx={v.rx}
+        ry={v.ry}
+        stroke={v.type === 'starting' ? '#669db6' : '#ceae7a'}
+        stroke-opacity={v.strength * 0.45}
+        stroke-width="2"
+      />
+    ))
+  }
+  {
+    art.tentacles.map((d) => (
+      <path d={d} stroke="#a9d0d8" stroke-opacity=".35" stroke-width=".65" />
+    ))
+  }
+  {
+    art.arms.map((d) => (
+      <path d={d} stroke="#a4ccd4" stroke-opacity=".46" stroke-width="6" stroke-linecap="round" />
+    ))
+  }
+  {
+    art.gonads.map((d) => (
+      <path d={d} stroke="#c0a0c4" stroke-opacity=".66" stroke-width="4" stroke-linecap="round" />
+    ))
+  }
+  <path
+    d={art.bell}
+    fill={color}
+    fill-opacity=".15"
+    stroke="#b3d9df"
+    stroke-opacity=".51"
+    stroke-width="1.5"></path>
+  <ellipse
+    cx="200"
+    cy={art.baseline}
+    rx={art.rimRadius}
+    ry={art.rimRadius * 0.15}
+    stroke="#b3d9df"
+    stroke-opacity=".48"
+    stroke-width="1.7"></ellipse>
+  {
+    art.recovery && (
+      <path
+        d={`M200 ${art.baseline + 35}V${art.baseline + 9}m-5 7 5-7 5 7`}
+        stroke="#d4b783"
+        stroke-opacity=".45"
+        stroke-width="1.4"
+      />
+    )
+  }
+</svg>

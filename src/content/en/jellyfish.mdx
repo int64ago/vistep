@@ -1,0 +1,56 @@
+<h2 id="understand">The bell has stopped moving. Why can the jelly accelerate again?</h2>
+
+Follow the **moon jelly Aurelia aurita** studied in the swimming research. Four oral arms hang beneath its bell, four horseshoe-shaped gonads are visible through the tissue, and fine, short tentacles fringe the margin. The main swimming mechanism is the flexible bell interacting with water; the tentacles are not oars.
+
+Contraction reduces the space under the bell and pushes water out, exchanging momentum with the animal. Water rolls into a **starting vortex ring** near the margin and enters the wake. For a moon jelly's flattened bell, actual propulsion involves distributed pressure and entrainment; it is not just a narrow-nozzle jet.
+
+Elastic tissue then reopens the bell and water refills the cavity. A counter-rotating **stopping vortex ring** is strengthened and repositioned beneath the bell. Its induced flow can push against the inner bell surface and create positive pressure.
+
+Watch the easily missed final phase. The bell is fully relaxed and no longer changing shape, but the stopping vortex still moves water. Researchers observed secondary thrust and renewed acceleration during this phase: **passive energy recapture**. “Contract once, then coast only on inertia” leaves out that mechanism.
+
+This is not free energy. Earlier muscle work, elastic storage and fluid motion create the state that can be used later. Recapture does not eliminate an animal's energy needs, and different jellyfish do not all produce identical vortex structures.
+
+<h2 id="try">Pause one pulse in three places</h2>
+
+- Enter exploration and inspect water displacement. During the first 0.5 seconds of the default two-second pulse, the modeled cavity shrinks and outward flux is positive. It then refills. The expelled and refilled volumes over one complete cycle are equal.
+- Inspect vortices at 0.4 and 1.1 seconds. Compare the schematic starting and stopping ring positions. Blue and warm colors identify the rings; they are not a numerical pressure scale.
+- Inspect secondary thrust near 1.7 seconds. Modeled volume change is zero, yet the recovery term can still provide forward force. Switch that term off while keeping bell motion and drag unchanged.
+- In the same-motion comparison, both paths start with the same motion, state and drag. Only the recovery term changes. This is a virtual model comparison; its displayed distances are not measured swimming performance or efficiency.
+- Set radius contraction amplitude to zero. Without displacement or initial work, the model cannot obtain free recovery thrust. Changing the pulse period changes real geometric rates and volume fluxes.
+
+The observation slider reconstructs a frame; exploration does not advance by itself. Rotating the 3D view and selecting a fixed 2D section reveal the same pose and model state. The directed film offers automatic playback, pause, replay and deterministic chapter seeking.
+
+<h2 id="deeper">What can this illustration explain, and where does inference stop?</h2>
+
+<details>
+<summary>How are volume and flux calculated?</summary>
+
+Approximate the cavity as an open-bottom half ellipsoid with radius R and height H. Its resting dimensions are a four-centimeter diameter and a 0.9-centimeter height, chosen for this teaching specimen. Real bell margins and cavities deform more intricately.
+
+<div className="formula">V = 2πR²H / 3; Qout = max(0, −dV/dt); Qin = max(0, dV/dt)</div>
+
+A cycle contains contraction, relaxation/refilling and a fully relaxed interval. Cosine curves give zero boundary velocities. Both R and H follow the same compression variable, and the 3D bell and 2D outline read those dimensions. Zero amplitude freezes both dimensions. The resting volume is about 7.54 mL in this half-ellipsoid model, not an anatomical measurement.
+
+</details>
+
+<details>
+<summary>Why are the vortex rings and speed curves not a fluid simulation?</summary>
+
+This scene does not solve the Navier–Stokes equations. Ring locations, colors and rotation directions illustrate the causal sequence reported in the research: opposite rotation and repositioning below the bell. Only the current cycle's rings are shown; previous wakes, interactions and 3D vorticity are not reconstructed.
+
+The motion model uses the same open area A = πR² and a bulk flux approximation, ρQout²/A, for active thrust. Quadratic drag and a bounded delayed recovery term follow. Spatial pressure, entrainment and flexible fluid–structure coupling are omitted, and the parameters are not fitted to measurements. Effective mass is 1.8 times the resting displaced-water mass; the drag coefficient is 0.8. These are disclosed teaching assumptions.
+
+Approximate outgoing kinetic-energy flux as ρQout³/(2A²). The model assigns 35% to a recoverable budget and releases it smoothly during the fully relaxed phase. Recovery work cannot exceed released energy, and released plus remaining energy cannot exceed the accumulated budget. That 35% is a teaching parameter, not a paper's measured result or an efficiency claim.
+
+The curves therefore illustrate what a delayed force from earlier work can change while shape motion remains fixed. They cannot predict a particular animal's swimming distance or compare species' metabolic costs.
+
+</details>
+
+<details>
+<summary>What experimental evidence supports passive energy recapture?</summary>
+
+[Gemmell and colleagues' 2013 PNAS study](https://doi.org/10.1073/pnas.1306983110) combined swimming video, flow fields and pressure analysis to distinguish ordinary inertial deceleration from renewed acceleration after full relaxation. A [2014 follow-up](https://pmc.ncbi.nlm.nih.gov/articles/PMC4203578/) used high-speed imaging and particle image velocimetry to examine how margin motion strengthens and repositions the stopping vortex.
+
+The film cites the mechanism rather than copying specimen-specific percentages onto its model. Size, pulse rhythm, viscosity and flow conditions all affect the outcome. [The aquarium's moon-jelly page](https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/moon-jelly) shows the translucent bell, short fringe and oral arms; it names Aurelia labiata, a different species in the same genus, and is not a substitute for the research specimen A. aurita.
+
+</details>

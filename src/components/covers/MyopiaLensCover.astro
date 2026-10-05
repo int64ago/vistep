@@ -1,0 +1,57 @@
+---
+import { myopiaLensCover } from '../../models/myopia-lens-cover';
+const art = myopiaLensCover();
+const path = (points: { x: number; y: number }[]) =>
+  points.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join(' ');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f1f1e7"></rect>
+  <ellipse cx="100" cy="211" rx="66" ry="6" fill="#596f6c" opacity=".08"></ellipse>
+  <g transform="translate(97 112) scale(4.7)">
+    <circle r="17.3" fill="#e1eceb" stroke="#97b3b4" stroke-width=".2"></circle>
+    {
+      art.lenslets.map((p) => (
+        <circle
+          cx={p.x}
+          cy={p.y}
+          r={art.lensletRadius}
+          fill="#b68c48"
+          fill-opacity=".28"
+          stroke="#a28450"
+          stroke-width=".05"
+        />
+      ))
+    }
+    <circle r="4.5" fill="#f7faf5" stroke="#6192a0" stroke-width=".17"></circle>
+  </g>
+  <path
+    d="M248 79C281 35 378 36 380 106C378 177 280 175 248 134Q232 107 248 79Z"
+    fill="#e6d5cb"
+    fill-opacity=".48"
+    stroke="#b9a196"></path>
+  <path d="M251 81Q239 107 251 133Q261 107 251 81Z" fill="#d1e6e7" stroke="#87abb2"></path>
+  <path d={`M${art.retina} 63V151`} stroke="#a6796e" stroke-width="2"></path>
+  <path d="M195 69Q202 104 195 142L201 142Q195 104 201 69Z" fill="#d1e1df" stroke="#789da1"></path>
+  {
+    art.rays.map((ray) => (
+      <path
+        d={path(ray.points)}
+        fill="none"
+        stroke={ray.kind === 'clear' ? '#368a9a' : '#b5773f'}
+        stroke-width="1.25"
+        opacity={ray.admitted ? '.72' : '.22'}
+      />
+    ))
+  }
+  {
+    art.foci.map((f) => (
+      <circle
+        cx={f.point.x}
+        cy={f.point.y}
+        r="2.3"
+        fill={f.kind === 'clear' ? '#368a9a' : '#b5773f'}
+      />
+    ))
+  }
+</svg>

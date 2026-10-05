@@ -1,0 +1,221 @@
+.esim-scene {
+  --esim-ink: #344c47;
+  color: var(--esim-ink);
+  width: 100%;
+  min-width: 0;
+}
+.esim-specimen {
+  overflow: hidden;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at 70% 25%, #fff9e9 0, #f4f4e9 60%, #eaf0e5 100%);
+  box-shadow: inset 0 0 0 1px #aab99e26;
+}
+.esim-specimen-heading {
+  height: 46px;
+  padding: 12px 22px 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.esim-specimen-heading > span:first-child {
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  color: #237b75;
+}
+.esim-art {
+  height: 342px;
+}
+.esim-art > svg {
+  display: block;
+  width: 100%;
+  height: 342px;
+  max-height: none;
+}
+.esim-art svg text {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #344c47;
+}
+.esim-art svg text[fill='white'] {
+  fill: white;
+}
+.esim-art svg text[fill='#237b75'] {
+  fill: #237b75;
+}
+.esim-art svg text[fill='#b68335'] {
+  fill: #b68335;
+}
+.esim-art svg text[fill='#a45649'] {
+  fill: #a45649;
+}
+.esim-art svg text[fill='#9aa79e'] {
+  fill: #9aa79e;
+}
+.esim-address {
+  box-sizing: border-box;
+  min-height: 342px;
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 12px 32px;
+  padding: 33px 36px 24px;
+  align-items: center;
+}
+.esim-code {
+  text-align: center;
+  font-size: 16px;
+}
+.esim-code svg {
+  width: 112px;
+  height: 112px;
+  display: block;
+  margin: 0 auto 12px;
+}
+.esim-code span {
+  display: block;
+  color: #6d7f71;
+  line-height: 1.4;
+}
+.esim-address-fields > div {
+  display: grid;
+  gap: 5px;
+  padding: 0 0 15px;
+}
+.esim-address-fields span {
+  font-size: 16px;
+  color: #637969;
+}
+.esim-address-fields code {
+  font-size: 16px;
+  font-weight: 650;
+}
+.esim-address-fields strong {
+  font-size: 16px;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+.esim-address-fields p {
+  margin: 0;
+  font-size: 16px;
+  color: #8a976b;
+  line-height: 1.45;
+}
+.esim-address-fields p[data-ready='true'] {
+  color: #237b75;
+}
+.esim-separation {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 0;
+  color: #927344;
+}
+.esim-explore {
+  padding: 18px 0 8px;
+  display: grid;
+  gap: 16px;
+}
+.esim-chapter-picker {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.esim-chapter-picker button {
+  min-height: 44px;
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 8px 12px;
+  background: #f2f1e6;
+  color: var(--esim-ink);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.esim-chapter-picker button[aria-pressed='true'] {
+  color: #237b75;
+  background: #e1ebe0;
+  border-color: #94b2a0;
+}
+.esim-fault {
+  display: grid;
+  gap: 7px;
+  font-size: 16px;
+}
+.esim-fault select {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #afbfaa;
+  background: #fffdf6;
+  color: var(--esim-ink);
+  font-size: 16px;
+  border-radius: 12px;
+  max-width: 100%;
+}
+.esim-result {
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  background: #eaf0e4;
+  line-height: 1.5;
+}
+.esim-result-error {
+  color: #984f40;
+  background: #f5e9dd;
+}
+.esim-notes {
+  margin: 12px 0 0;
+  font-size: 16px;
+}
+.esim-notes summary {
+  min-height: 44px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.esim-notes p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 8px 0 16px;
+}
+.esim-scene button:focus-visible,
+.esim-scene select:focus-visible,
+.esim-scene summary:focus-visible {
+  outline: 2px solid #237b75;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .esim-specimen-heading {
+    padding: 12px 16px 0;
+    gap: 8px;
+  }
+  .esim-specimen-heading > span:last-child {
+    font-size: 16px;
+  }
+  .esim-address {
+    grid-template-columns: 76px minmax(0, 1fr);
+    padding: 25px 16px 20px;
+    column-gap: 14px;
+  }
+  .esim-code svg {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 10px;
+  }
+  .esim-code span {
+    max-width: 76px;
+  }
+  .esim-address-fields > div {
+    padding-bottom: 16px;
+  }
+  .esim-separation {
+    align-self: end;
+  }
+  .esim-chapter-picker {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

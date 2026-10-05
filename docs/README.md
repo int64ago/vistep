@@ -7,6 +7,12 @@
 - [Exploration catalog](catalog.md): every registered topic, film duration and article source.
 - [Fifty additional explorations](expansion-50.md): published scope, production ledger and remaining review coverage.
 - [Production guide](creating-a-scene.md): research, direction, models, bilingual narration and review.
+- [CPU, GPU and NPU example](examples/cpu-gpu-npu-brief.md): one matrix task, CPU control, GPU lanes and masks, and a systolic NPU schedule.
+- [eSIM example](examples/esim-brief.md): a protected operator profile, consumer provisioning, chip binding and separate network authentication.
+- [Myopia-control lenses example](examples/myopia-lens-brief.md): correcting and lenslet bundles, pupil admission, calculated foci and separate clinical evidence.
+- [SLR and mirrorless example](examples/slr-mirrorless-brief.md): mirror, focusing screen and prism, electronic viewing, and independent shutter curtains.
+- [Instant camera example](examples/instant-camera-brief.md): one integral Polaroid sheet, continuous roller transport, reagent spreading and dye transfer.
+- [Jellyfish example](examples/jellyfish-brief.md): bell volume, water flux, counter-rotating vortex rings and bounded energy recovery.
 - [Cells and handover example](examples/cell-handover-brief.md): measured cell boundaries, A3 hysteresis, X2 handover and paging.
 - [4G and 5G example](examples/mobile-5g-brief.md): bandwidth, modulation, layers, path loss and beamforming.
 - [Mobile roaming example](examples/mobile-roaming-brief.md): IMSI routing, MILENAGE AKA and roaming data and call paths.
@@ -30,6 +36,7 @@
 
 Records describe particular revisions and conditions. They are not guarantees for later changes. Historical speech transport checks did not establish Chinese intelligibility; see the retrospective. Some recorded commit IDs predate history rewrites and may not resolve in a fresh clone; the [production record](expansion-50.md) explains how to read the original Actions and deployment references.
 
+- [Six explorations review](qa-six-explorations.md): scenes 75–80, independent model review, measured narration, browser observations and remaining viewing, listening and device gaps.
 - [Runtime repairs](qa-runtime-repairs.md): narration retry, activity lifecycle, cellular scheduling, 404 and separate evidence limits.
 - [Mobile networks review](qa-mobile-networks.md): three parallel scenes, model tests, stills, recordings and separate evidence gaps.
 - [Keyboard switches review](qa-keyboard-switch.md): connected physical mechanisms, deterministic detection and separate delivery evidence.

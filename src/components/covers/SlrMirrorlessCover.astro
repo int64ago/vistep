@@ -1,0 +1,134 @@
+---
+import { cameraPose, cameraPrism } from '../../models/slr-mirrorless';
+import {
+  cameraElectronics as e,
+  cameraSignalRoutes,
+} from '../../models/slr-mirrorless-render-geometry';
+interface Props {
+  color?: string;
+}
+const { color = '#72929a' } = Astro.props;
+const views = [
+  { pose: cameraPose('dslr'), x: 12 },
+  { pose: cameraPose('mirrorless'), x: 212 },
+];
+const x = (v: number) => (v + 3.9) * 31;
+const y = (v: number) => 187 - v * 31;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+  {
+    views.map(({ pose, x: offset }) => (
+      <g transform={`translate(${offset} 0)`}>
+        <path
+          d={`M${x(-1.1)} ${y(0.15)}H${x(1.55)}V${y(1.8)}H${x(-1.1)}Z`}
+          fill="#7f999e"
+          opacity=".18"
+          stroke="#789095"
+          stroke-width="1.2"
+        />
+        <path
+          d={`M${x(-3.45)} ${y(0.35)}H${x(-1.15)}M${x(-3.45)} ${y(1.65)}H${x(-1.15)}`}
+          stroke="#4e6973"
+          stroke-width="5"
+        />
+        {[-3.24, -2.32, -1.44].map((v) => (
+          <ellipse
+            cx={x(v)}
+            cy={y(1)}
+            rx="3"
+            ry="19"
+            fill="#b7d2d3"
+            fill-opacity=".5"
+            stroke="#85a9b2"
+            stroke-width="1"
+          />
+        ))}
+        <path d={`M${x(1.17)} ${y(0.35)}V${y(1.65)}`} stroke="#b69c72" stroke-width="5" />
+        {pose.mode === 'dslr' && (
+          <>
+            <path
+              d={cameraPrism.map((p, i) => `${i ? 'L' : 'M'}${x(p.x)} ${y(p.y)}`).join(' ') + 'Z'}
+              fill="#99b8c2"
+              fill-opacity=".35"
+              stroke="#688692"
+              stroke-width="1"
+            />
+            <path
+              d={`M${x(-0.6)} ${y(0.4)}L${x(0.6)} ${y(1.6)}`}
+              stroke="#8fadb5"
+              stroke-width="4"
+            />
+            <path d={`M${x(-0.65)} ${y(1.85)}H${x(0.65)}`} stroke="#b5bfb1" stroke-width="3" />
+          </>
+        )}
+        <rect
+          x={x(1.22)}
+          y={y(2.58)}
+          width="18"
+          height="14"
+          rx="4"
+          fill="#edf0ea"
+          stroke="#4d6771"
+          stroke-width="2"
+        />
+        <rect
+          x={x(1.26)}
+          y={y(2.46)}
+          width="8"
+          height="7"
+          rx="1.2"
+          fill={pose.live || pose.optical ? '#9ac4c7' : '#3e5962'}
+        />
+        <rect
+          x={x(1.64)}
+          y={y(1.35)}
+          width="3"
+          height="22"
+          rx="1"
+          fill={pose.live ? '#75afb8' : '#4d6771'}
+        />
+        <rect
+          x={x(e.board.x - e.board.width / 2)}
+          y={y(e.board.y + e.board.height / 2)}
+          width={31 * e.board.width}
+          height={31 * e.board.height}
+          rx="1"
+          fill="#678b79"
+        />
+        <rect
+          x={x(e.processor.x - e.processor.width / 2)}
+          y={y(e.processor.y + e.processor.height / 2)}
+          width={31 * e.processor.width}
+          height={31 * e.processor.height}
+          rx="1"
+          fill="#30484a"
+        />
+        <path
+          d={pose.path.map((p, i) => `${i ? 'L' : 'M'}${x(p.x)} ${y(p.y)}`).join(' ')}
+          stroke="#c1a465"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        {pose.live &&
+          cameraSignalRoutes(pose.mode !== 'mirrorless').map((route) => (
+            <path
+              d={route.map((p, i) => `${i ? 'L' : 'M'}${x(p.x)} ${y(p.y)}`).join(' ')}
+              stroke={color}
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          ))}
+        <circle
+          cx={x(pose.mode === 'dslr' ? 0 : 1.17)}
+          cy={y(pose.mode === 'dslr' ? 3 : 1)}
+          r="3"
+          fill="#ece3b3"
+          stroke="#c4aa6b"
+        />
+      </g>
+    ))
+  }
+  <path d="M23 203h151m49 0h151" stroke="#aabbb4" stroke-width="1"></path>
+  <path d="M191 81v108" stroke="#b5c3b8" stroke-dasharray="2 7"></path>
+</svg>

@@ -13,6 +13,200 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'jellyfish',
+    name: '水母',
+    title: '伞已经不动，为什么还能再游一段？',
+    question: '伞已经不动，为什么还能再游一段？',
+    description: '跟随月水母的一次脉动，看排水、涡环与弹性回弹怎样带来完全舒张后的二次推力。',
+    duration: '3 分钟',
+    color: '#82a6bc',
+    tag: '伞缘 · 涡环 · 能量回收',
+    related: ['airfoil', 'convection', 'water-hammer'],
+    sources: [
+      {
+        title:
+          'Gemmell et al. (2013) — Passive energy recapture in jellyfish contributes to propulsive advantage over other metazoans',
+        url: 'https://doi.org/10.1073/pnas.1306983110',
+      },
+      {
+        title:
+          'Gemmell, Costello and Colin (2014) — Vortex enhancement and manipulation in Aurelia aurita',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4203578/',
+      },
+      {
+        title: 'Monterey Bay Aquarium — Moon jelly anatomy (Aurelia labiata, a related species)',
+        url: 'https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/moon-jelly',
+      },
+      {
+        title: 'University of Michigan Animal Diversity Web — Aurelia aurita morphology',
+        url: 'https://animaldiversity.org/accounts/Aurelia_aurita/',
+      },
+    ],
+    number: '80',
+  },
+  {
+    slug: 'instant-camera',
+    name: '拍立得',
+    title: '相纸里，藏着一间暗房',
+    question: '照片是相机打印的，还是相纸显出来的？',
+    description:
+      '跟着同一张 Polaroid 积分式相纸，从曝光、走纸与药囊破开，到试剂铺展、染料迁移和慢慢成像。',
+    duration: '约 3 分钟',
+    color: '#397d79',
+    tag: '摄影与化学',
+    related: ['camera-lens', 'printer', 'jpeg'],
+    sources: [
+      {
+        title: 'Polaroid — What happens after loading an integral film pack?',
+        url: 'https://support.polaroid.com/hc/en-us/articles/115012396647-What-happens-when-I-insert-a-Polaroid-film-pack-into-my-camera',
+      },
+      {
+        title: 'Polaroid — Inside integral film',
+        url: 'https://support.polaroid.com/hc/en-us/articles/115012554908-What-s-inside-a-Polaroid-film-box',
+      },
+      {
+        title: 'Polaroid — Color i-Type film specification',
+        url: 'https://shop-us.polaroid.com/products/color-itype-instant-film',
+      },
+      {
+        title: 'Polaroid — Precise photo dimensions',
+        url: 'https://support.polaroid.com/hc/en-us/articles/115012363647-What-are-Polaroid-photo-dimensions',
+      },
+      {
+        title: 'Polaroid — The Reclaimed Blue story and CMY layers',
+        url: 'https://www.polaroid.com/en_gb/blog/journal/the-reclaimed-blue-story',
+      },
+      {
+        title: 'Polaroid Corporation — US 5,449,586, integral diffusion transfer',
+        url: 'https://patents.justia.com/patent/5449586',
+      },
+      {
+        title: 'Polaroid — Cleaning camera rollers',
+        url: 'https://support.polaroid.com/hc/en-us/articles/115012564148-How-do-I-clean-my-camera-rollers',
+      },
+      {
+        title: 'Polaroid — Shielding and handling film',
+        url: 'https://support.polaroid.com/hc/en-us/articles/115012519828-How-to-get-the-most-out-of-Polaroid-film',
+      },
+      {
+        title: 'Polaroid — Shaking and pressure damage',
+        url: 'https://support.polaroid.com/hc/en-us/articles/4507821657106-Why-do-my-photos-have-distortions-and-blobs-on-them',
+      },
+    ],
+    number: '79',
+  },
+  {
+    slug: 'slr-mirrorless',
+    name: '单反、无反',
+    title: '捕捉之前，先怎样看见？',
+    question: '为什么单反按快门时会黑一下？',
+    description: '打开两种相机，追踪反光镜、快门与电子取景的不同路线。',
+    duration: '3 分钟',
+    color: '#72929a',
+    tag: '光路与取景',
+    related: ['camera-lens', 'polarization', 'jpeg'],
+    sources: [
+      {
+        title: 'Canon — Digital SLR Cameras',
+        url: 'https://global.canon/en/technology/canon-tech/tech/dslr/',
+      },
+      {
+        title: 'Canon — Mirrorless Cameras',
+        url: 'https://global.canon/en/technology/canon-tech/tech/mcamera/',
+      },
+      {
+        title: 'Nikon — Mirrorless versus DSLR: key differences',
+        url: 'https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/mirrorless-versus-dslr-exploring-key-differences',
+      },
+      {
+        title: 'Sony — Electronic front curtain and mechanical shutter',
+        url: 'https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/articles/00018997',
+      },
+    ],
+    number: '78',
+  },
+  {
+    slug: 'myopia-lens',
+    name: '儿童近视防控镜片',
+    title: '看清楚以后，为什么还要另一种光学信号？',
+    question: '同一光点的两种成分，怎样到达视网膜？',
+    description: '追踪真实计算的矫正与微透镜光路，再单独阅读原始随机试验的组平均结果。',
+    duration: '约 2.5 分钟',
+    color: '#368a9a',
+    tag: '眼睛与光学',
+    related: ['microscope', 'double-slit', 'solar-cell'],
+    sources: [
+      {
+        title: 'Lam et al. — DIMS two-year randomized trial',
+        url: 'https://ira.lib.polyu.edu.hk/bitstream/10397/82284/1/Lam_DIMS_Spectacle_Lenses.pdf',
+      },
+      {
+        title: 'National Eye Institute — Nearsightedness',
+        url: 'https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/nearsightedness-myopia',
+      },
+      {
+        title: 'OpenStax — The Eye',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/2-5-the-eye',
+      },
+    ],
+    number: '77',
+  },
+  {
+    slug: 'esim',
+    name: 'eSIM',
+    title: '没有卡槽，SIM 到哪儿去了？',
+    question: '扫码怎样把一份订阅送进安全芯片？',
+    description:
+      '追踪同一份运营商 profile，从激活码、双向认证和绑定封包，到芯片中的安装、启用与网络认证。',
+    duration: '约 2.5 分钟',
+    color: '#237b75',
+    tag: '通信与身份',
+    related: ['mobile-roaming', 'cell-handover', 'nfc'],
+    sources: [
+      {
+        title: 'GSMA SGP.21 v2.6 — Consumer RSP Architecture',
+        url: 'https://www.gsma.com/solutions-and-impact/technologies/esim/wp-content/uploads/2024/09/SGP.21-v2.6.pdf',
+      },
+      {
+        title: 'GSMA SGP.22 v2.2.2 — Consumer RSP Technical Specification',
+        url: 'https://www.gsma.com/solutions-and-impact/technologies/esim/wp-content/uploads/2020/06/SGP.22-v2.2.2.pdf',
+      },
+      {
+        title: 'Apple — Use Dual SIM on iPhone',
+        url: 'https://support.apple.com/en-euro/guide/iphone/iph9c5776d3c/ios',
+      },
+    ],
+    number: '76',
+  },
+  {
+    slug: 'cpu-gpu-npu',
+    name: 'CPU、GPU、NPU',
+    title: '同一道计算题，为什么需要三种芯片？',
+    question: '同一道计算题，为什么需要三种芯片？',
+    description: '跟住同一组数字，走过程序控制、成组并行和矩阵数据流，逐项核对三种安排的结果。',
+    duration: '3 分钟',
+    color: '#6b999b',
+    tag: '乘加 · 并行 · 专用计算',
+    related: ['cpu-pipeline', 'transformer', 'jpeg'],
+    sources: [
+      {
+        title:
+          'NVIDIA — CUDA Programming Model: heterogeneous systems, SIMT, tile programming and memory',
+        url: 'https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html',
+      },
+      {
+        title:
+          'Google Research — In-Datacenter Performance Analysis of a Tensor Processing Unit (ISCA 2017)',
+        url: 'https://research.google/pubs/in-datacenter-performance-analysis-of-a-tensor-processing-unit/',
+      },
+      {
+        title: 'Intel — Neural Processing Unit: MAC engines, near-compute memory and scheduler',
+        url: 'https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/intel-neural-processing-unit-intel-npu/',
+      },
+    ],
+    number: '75',
+  },
+  {
     slug: 'cell-handover',
     name: '蜂窝网络与切换',
     title: '边走边打电话，为什么不断线？',

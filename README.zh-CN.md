@@ -28,7 +28,7 @@ vistep.ai 用短篇视觉故事讲解生活器物、科学与计算。跟随一�
 - **找到感兴趣的内容。** 中英文关键词搜索，结合兴趣分类、时长与建议起看年龄筛选。
 - **中英双语。** 分别撰写的讲解、字幕与文字稿。实验在浏览器内运行，无需账号、API 密钥或实时 AI 服务。
 
-**本次发布：** 合集扩展至 **74 篇**，正式站通过 `main` 的 [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) 发布。[合集扩展记录](docs/zh-CN/expansion-50.md)和[各篇审看记录](docs/zh-CN/README.md#检查记录)分别说明交付状态，以及尚未覆盖全部专题的完整观看、原生试听和真机检查。
+**专题合集：** 当前登记 **80 篇**。最新六篇（75–80）为 [CPU、GPU、NPU](https://vistep.ai/explore/cpu-gpu-npu/)、[eSIM](https://vistep.ai/explore/esim/)、[儿童近视防控镜片](https://vistep.ai/explore/myopia-lens/)、[单反与无反](https://vistep.ai/explore/slr-mirrorless/)、[拍立得](https://vistep.ai/explore/instant-camera/)和[水母](https://vistep.ai/explore/jellyfish/)；[审看记录](docs/zh-CN/qa-six-explorations.md)分别说明自动检查、浏览器观察、原生试听与真机证据。完整观看、双语试听和真机检查仍未全部覆盖，发布不代表已经验收。正式站通过 `main` 的 [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) 发布。较早的交付状态见[合集扩展记录](docs/zh-CN/expansion-50.md)和[各篇审看记录](docs/zh-CN/README.md#检查记录)。
 
 ## 开始探索
 

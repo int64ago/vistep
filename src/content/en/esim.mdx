@@ -1,0 +1,44 @@
+<h2 id="understand">Without a SIM tray, where did the SIM go?</h2>
+
+An eSIM removes the card-swapping step while retaining secure hardware. Follow an **eUICC** in a consumer phone: a hardware-and-software component that can securely store, install and manage operator profiles. This film depicts a discrete chip soldered to a circuit board; removable and integrated implementations also exist. A **profile** is the operator's data and applications, including a network access application such as USIM, a subscriber identity and authentication credentials. Hardware and profile are different objects. [GSMA SGP.21 v2.6](https://www.gsma.com/solutions-and-impact/technologies/esim/wp-content/uploads/2024/09/SGP.21-v2.6.pdf) defines their roles.
+
+An activation code gives the phone's **Local Profile Assistant, or LPA**, download information: which SM-DP+ server to contact and which subscription to request. The QR code does not contain the long-term mobile-network key K. The phone also needs an existing internet connection, such as Wi-Fi, for this download path. A code cannot create radio coverage.
+
+The SM-DP+ and eUICC authenticate through certificates and fresh protocol messages. The server prepares a protected **Bound Profile Package, or BPP**, cryptographically tied to the intended eUICC. The LPA downloads and forwards the package in segments. Protected processing and installation take place at the chip. Copying the same bound package to a different chip does not create another usable SIM. [SGP.22 v2.2.2](https://www.gsma.com/solutions-and-impact/technologies/esim/wp-content/uploads/2020/06/SGP.22-v2.2.2.pdf) specifies the protocol and package handling.
+
+**Installed does not mean enabled.** A downloaded profile is initially installed in a disabled state. After the user enables it, the baseband uses the selected profile for mobile-network registration and authentication. The network sends a random challenge; the chip computes a response using its credentials. During authentication, the key is not transmitted as a radio message. eSIM changes how a subscription reaches the device; the baseband, antenna and mobile network still carry the communication.
+
+<h2 id="try">Change one condition and find the stopping point</h2>
+
+- Select “Install and enable” and move the step progress. A fully installed travel profile remains disabled until the separate enable step. The daily profile stays stored when travel becomes active.
+- Choose an untrusted server certificate. Authentication stops the transaction before binding or installation.
+- Send the bound package to a different chip, or modify the package. The existing daily line stays available; a partial travel profile is not enabled.
+- Disconnect the internet before download. A download reference does not supply connectivity. This input models a missing initial connection, not mid-transfer recovery policies.
+- In a normal “Network authentication” sequence, select the daily or travel profile. The selected identity changes; the antenna does not.
+
+<h2 id="deeper">Provisioning and network authentication are separate</h2>
+
+<details>
+<summary>What do EID, ICCID and IMSI identify?</summary>
+
+EID identifies the eUICC, ICCID identifies a profile, and IMSI identifies a subscription in an operator network. They serve different purposes; a phone number cannot stand in for all of them. The film uses symbols such as “A”, “daily” and “travel”, with no real activation tokens, subscriber numbers or keys. A padlock marks a protection boundary rather than displaying secret material.
+
+Consumer provisioning uses certificates, public-key cryptography and protected packages. Later mobile-network authentication uses the profile's network credentials and the relevant 3GPP procedure. A download-server certificate is not the network key K. The [international roaming explanation](/en/explore/mobile-roaming/) develops challenge-response authentication and the home network's role.
+
+</details>
+
+<details>
+<summary>Can only one profile be enabled?</summary>
+
+This diagram uses a traditional single enabled port: multiple stored profiles, one selected at a time. It is not a universal limit for modern phones. Dual-eSIM and multiple-enabled-profile devices can combine additional ports with baseband and operating-system capabilities. [Apple's Dual SIM guide](https://support.apple.com/en-euro/guide/iphone/iph9c5776d3c/ios), for example, identifies devices supporting two eSIMs. Real limits and availability depend on the device, region and operator. Storage capacity and simultaneous enabled lines are separate questions.
+
+</details>
+
+<details>
+<summary>What does this teaching model leave out?</summary>
+
+It follows the activation-code path in consumer GSMA RSP. It does not expand SM-DS discovery, device transfer, commercial subscription activation, confirmation codes, recovery or other optional paths, and it does not depict the unattended IoT procedure in SGP.32. Eight visual segments are not a real APDU count, file size or download-speed estimate.
+
+The independent state machine enforces authentication, binding, complete reception, installation and enable dependencies. Certificate and integrity checks are represented as protocol outcomes. No production signing, key agreement, decryption or operator service runs here. The original engineering cutaway is not a reconstruction of a particular phone, and its enlarged chip is not drawn to physical scale.
+
+</details>
