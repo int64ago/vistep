@@ -1,0 +1,68 @@
+<h2 id="understand">Two signals, followed by an estimate</h2>
+
+A four-electrode body fat scale contains two measurement chains. The glass transfers gravity to four corner load cells. Bonded strain gauges change resistance slightly under load; a bridge converts that change into voltage for weighing. This chain does not require current through the body.
+
+The composition chain uses a different signal. In this teaching configuration, one electrode pair injects a small alternating current between the feet. The other pair senses a voltage difference. A high-impedance input draws very little current, reducing the voltage contacts' contribution without eliminating every contact error. [TI’s AFE4300 documentation](https://www.ti.com/lit/ds/symlink/afe4300.pdf) separates weighing from body-composition measurement, and [its four-electrode application note](https://www.ti.com/document-viewer/lit/html/SBAA562) distinguishes injection from sensing.
+
+The warm loop passes through the legs and lower trunk, returning to the source in the scale. Blue leads belong to the separate voltage input. Actual current is distributed through tissues. The drawn line is an **equivalent measurement route**, not a current-density simulation or a scan of every fat deposit. A foot-to-foot configuration does not directly sample each arm or upper-body region.
+
+Known current and sampled voltage yield impedance. Amplitude ratio gives its magnitude; phase adds information about resistance and reactance. Ionic fluids conduct, while cell membranes can be represented by capacitance. Frequency therefore changes the response gradually. [Analog Devices’ circuit and sensing explanation](https://www.analog.com/en/resources/analog-dialogue/articles/adopting-a-better-bioimpedance-afe.html) supplies the electrical basis.
+
+That response is still not fat mass. BIA requires prediction equations validated for relevant populations and measurement conditions. This film exposes a simplified chain: height squared over resistance → water → fat-free mass → a difference from weight. It does not measure the reader.
+
+<h2 id="try">Keep the subject; change one condition</h2>
+
+Exploration uses a chosen observation phase, with no private advancing clock.
+
+- **Four electrodes:** change the slowed phase. Markers oscillate along the closed route rather than circulating as direct current. Disable contact: one foot lifts, the loop opens, and impedance and fat estimates become unavailable. Weight can still be supported and measured.
+- **Signals:** both traces share time but use separate amplitude scales. Two cycles at the reference 50 kHz occupy 40 μs. The animation is slowed; it does not imply a low-frequency stimulus.
+- **Tissue circuit:** vary frequency from 2 to 200 kHz. The capacitive branch responds more strongly as capacitive opposition falls. Widths indicate relative branch magnitudes; differently phased currents cannot be summed as scalar magnitudes.
+- **Prediction:** return to 50 kHz and inspect every conversion. The film does not apply its reference-frequency coefficient at other frequencies.
+- **Water only:** actual fat mass stays at 15 kg and dry fat-free tissue at 14.85 kg. Tissue water changes total weight. Estimated fat mass also moves. The true percentage changes with its weight denominator, even though actual fat mass is fixed.
+
+This control changes water already distributed in the model tissue. It does not simulate immediately drinking a glass of water. [Tanita’s explanation](https://support.tanita.eu/support/solutions/articles/60000690203-how-will-drinking-water-affect-my-body-composition-readings-) notes that water newly in the stomach may increase weight before impedance changes as it would for tissue water. The film cannot predict a universal direction or size of a post-drink reading.
+
+<h2 id="deeper">What is measured, and what is assumed?</h2>
+
+<details>
+<summary>How are magnitude and phase calculated?</summary>
+
+The model places extracellular resistance Rₑ in parallel with intracellular resistance Rᵢ in series with membrane capacitance Cₘ. The reference values—750 Ω, 1000 Ω and 8 nF—are invented equivalent parameters. Changing water scales both resistances by reference water / current water, while capacitance remains fixed. Electrolyte changes, temperature, geometry and heterogeneous tissues are omitted.
+
+<div className="formula">Z = Rₑ ∥ (Rᵢ + 1 / jωCₘ); R = Re(Z); X = Im(Z)</div>
+
+Reactance and impedance phase are negative here, so voltage lags current. The displayed voltage lag is the phase magnitude. The teaching stimulus is 250 μA RMS; voltage follows from |Z|. This is not a guide to designing a safe human-connected circuit. Sensing is idealized as high impedance; electrode polarization, source compliance, noise, drift and hardware calibration are omitted.
+
+</details>
+
+<details>
+<summary>Why is water not the same thing as fat-free mass?</summary>
+
+[Lukaski and colleagues’ original study](https://pubmed.ncbi.nlm.nih.gov/3984933/) compared height squared over resistance with reference body-composition methods in a specific adult male sample at 50 kHz. We use the relationship’s form, not its regression coefficients or population claims. Validation of one arrangement is not transferred to every foot scale.
+
+Our invented reference subject is 1.70 m tall and weighs 70 kg. Water is converted to mass at approximately 1 kg/L. The coefficient k is chosen solely to reproduce its reference 40.15 L water. **No population data calibrate it.** Prediction appears only at 50 kHz:
+
+<div className="formula">
+  Estimated water = k × height² / R; estimated fat-free mass = estimated water / 0.73; estimated fat
+  = weight − estimated fat-free mass
+</div>
+
+[Wang and colleagues’ cellular model](https://pubmed.ncbi.nlm.nih.gov/10865761/) discusses fat-free-mass hydration near 0.73 and variation around that value. Here it is a fixed, explicit assumption, not a constant for every person and condition. Fat-free mass includes water, proteins and minerals; it is not simply muscle mass.
+
+</details>
+
+<details>
+<summary>What is simplified in weighing?</summary>
+
+Four corner reactions balance total force and its first moments. Lifting a foot shifts the pressure centre without changing the subject’s mass. The weighing chapter separately ramps an applied load from zero to the subject’s full gravitational load; it does not secretly change body water or mass.
+
+A linear teaching relation uses 3 microstrain per newton, gauge factor 2 and 1.7 V excitation to obtain gauge resistances and bridge voltage. The close view exaggerates strain length changes 1000 times. This is not actual scale deformation. Beams, standoffs and glass stay connected; manufactured scales may use other load-cell structures and wiring. [TI’s resistive-bridge note](https://www.ti.com/document-viewer/lit/html/SBAA290) explains the underlying conversion from resistance change to voltage.
+
+</details>
+
+<details>
+<summary>Can this tell me my body fat?</summary>
+
+No. It reads no body, electrode or voltage data and has no personally validated equation. The controlled comparison shows why an estimate passing through several assumptions can change without an equivalent change in actual fat mass. It cannot diagnose personal fat or guide health treatment.
+
+</details>

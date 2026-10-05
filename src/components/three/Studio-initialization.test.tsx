@@ -67,6 +67,8 @@ vi.mock('three/examples/jsm/controls/OrbitControls.js', async () => {
   };
 });
 import Studio from './Studio';
+import BodyFatScaleStudio from './BodyFatScaleStudio';
+import { BFS_DEFAULT, bfsShot, bfsState } from '../../models/body-fat-scale';
 
 class Surface extends EventTarget {
   clientWidth = 640;
@@ -86,7 +88,7 @@ beforeEach(() => {
   Object.assign(runtime.film, { watch: true, playing: false, time: 0, duration: 144 });
   env = runtime.env = {
     host: new Surface(),
-    doc: Object.assign(new Surface(), { hidden: false }),
+    doc: Object.assign(new Surface(), { hidden: false, documentElement: { lang: 'zh-CN' } }),
     failure: '',
     rendererAttempts: 0,
     pmremAttempts: 0,
@@ -175,6 +177,42 @@ function expectFailedSetup(createScene: any) {
   ).toBe(0);
 }
 describe('Studio environment initialization failure', () => {
+  it.each(['renderer', 'fromScene'])(
+    'keeps the actual scale section responsive to chapter seeking after %s failure',
+    async (failure) => {
+      env.failure = failure;
+      await act(() => {
+        tree = create(<BodyFatScaleStudio shot={bfsShot(0, 0.4)} width={640} />, {
+          createNodeMock: (node) =>
+            (node.props as { className?: string }).className === 'studio-canvas' ? env.host : null,
+        });
+      });
+      const flat = () => tree!.root.findByProps({ className: 'bfs-flat' });
+      expect(flat().props.role).toBe('img');
+      expect(flat().findAllByProps({ 'data-bfs-current': 'closed' })).toHaveLength(0);
+      expect(env.rendererAttempts).toBe(1);
+      expect(env.host.attached.size).toBe(0);
+      await act(() => tree!.update(<BodyFatScaleStudio shot={bfsShot(2, 0.7)} width={320} />));
+      expect(flat().findAllByProps({ 'data-bfs-current': 'closed' })).toHaveLength(1);
+      expect(
+        flat()
+          .findAllByType('path')
+          .filter((node) => 'data-bfs-sense' in node.props),
+      ).toHaveLength(2);
+      const opened = { ...bfsShot(2, 0.7), ...bfsState({ ...BFS_DEFAULT, contact: false }) };
+      await act(() => tree!.update(<BodyFatScaleStudio shot={opened} width={320} />));
+      expect(flat().findAllByProps({ 'data-bfs-current': 'closed' })).toHaveLength(0);
+      expect(
+        flat()
+          .findAllByType('path')
+          .filter((node) => 'data-bfs-sense' in node.props),
+      ).toHaveLength(0);
+      expect(env.rendererAttempts).toBe(1);
+      expect(env.raf.size).toBe(0);
+      await unmount();
+      for (const renderer of env.renderers) expect(renderer.dispose).toHaveBeenCalledOnce();
+    },
+  );
   it.each(['pmrem', 'room', 'fromScene'])(
     'falls back after %s allocation failure and releases each acquired resource exactly once',
     async (failure) => {

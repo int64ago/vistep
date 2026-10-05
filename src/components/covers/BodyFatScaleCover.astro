@@ -1,0 +1,24 @@
+---
+import { bodyFatScaleCover } from '../../models/body-fat-scale-cover';
+interface Props {
+  color?: string;
+}
+const art = bodyFatScaleCover();
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#edf1e6"></rect>
+  {
+    art.map((p) => (
+      <path
+        d={p.d}
+        fill={p.fill}
+        opacity={p.opacity}
+        stroke={p.stroke}
+        stroke-width={p.strokeWidth}
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      />
+    ))
+  }
+</svg>

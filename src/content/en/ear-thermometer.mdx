@@ -1,0 +1,57 @@
+<h2 id="understand">Does an ear thermometer send a beam into the ear?</h2>
+
+It receives radiation. The eardrum and canal walls already emit thermal infrared radiation. A probe collects part of it and directs it to a detector; it needs neither a visible laser nor a sound echo. [Braun's description](https://www.braunhealthcare.com/us_en/thermometer/thermoscan-5/) identifies the eardrum and surrounding tissue as the emitting surfaces.
+
+The film follows one probe and one set of tissue temperatures. The drawn section preserves the outer ear, a slightly curved canal and an inclined eardrum, with the probe near the entrance. Warm moving markers always travel from tissue toward the probe. They make invisible radiation visible; their speed does not model the speed of light. Their source, entrance stop and absorber share one geometric model.
+
+The narrow entrance limits the detector's direct view. In this section, accepted paths pass through an infrared window and a hollow optical channel before reaching the thermopile absorber. Real designs may use reflective waveguides or aperture-limited detectors closer to the tip. This drawing follows direct paths through a narrow opening rather than copying a specific product or silently adding uncalibrated reflections. An [ear-thermometer probe patent](https://patents.google.com/patent/US6435711B1/en) describes apertures, a thermopile, its cold-junction reference and an infrared-transmitting window.
+
+Absorbed radiation warms the membrane. Thermocouples connected in series produce a small voltage related to their hot–cold junction temperature difference. An amplifier and analog-to-digital converter pass that signal to the processing circuit. A nearby temperature sensor measures the **package reference temperature**, rather than taking another reading of the eardrum. [Analog Devices](https://www.analog.com/en/resources/technical-articles/important-design-considerations-for-digital-thermometers.html) explains these two inputs.
+
+The net infrared signal alone is therefore insufficient. In the film, the reference changes from 22°C to 30°C while the tissue stays unchanged. The thermopile's net signal falls, the reference channel rises, and the compensated example reading stays steady. This comparison assumes a uniform package at equilibrium. Real thermal gradients, tissue cooling by a probe and window condition introduce further effects. [Melexis](https://www.melexis.com/en/news/tech-talks/eliminating-thermal-disturbances-in-non-contact-temperature-measurement) distinguishes the absorber and package temperatures.
+
+The turning point comes when **the probe turns while the tissue temperatures stay fixed**. Its view includes more canal-wall radiation, changing the result. The model mixes radiances before inverting one equivalent temperature. It does not identify the eardrum alone or recover every tissue temperature from a single signal. Original research observed that temperature around the eardrum is not uniform and that sampling location matters. [Yeoh and colleagues](https://doi.org/10.1371/journal.pone.0174120) support that observation. Our 37°C eardrum and spatially varying wall temperatures are illustrative inputs, not reported average body temperatures.
+
+<h2 id="try">Keep the temperature; change the view</h2>
+
+- Change “Probe angle.” Follow each accepted path to the eardrum or canal wall, then compare their signal shares and the reading.
+- Enable “Give all visible tissue one temperature.” Orientation still changes the hit locations, but the ideal reading remains unchanged.
+- Select “Reference compensation” and change only the package temperature. The net infrared and reference channels jointly determine the result.
+- Select “Blackbody calibration.” A cavity at a known temperature provides a reference for the same probe. The curve shows this teaching detector's finite-band response; the displayed points are not an entire commercial calibration procedure.
+
+<h2 id="deeper">Why does infrared power not directly equal body temperature?</h2>
+
+<details>
+<summary>Which radiation is calculated?</summary>
+
+We integrate Planck spectral radiance through an ideal rectangular **8–14 μm** response. This band is a teaching choice, not a specification for every ear thermometer or a particular Melexis part. Windows, filters and detectors change the actual response. [NIST's radiation-temperature reference](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication250-43.pdf) defines spectral radiance and Planck's law.
+
+<div className="formula">Lband(T) = ∫₈μm¹⁴μm Bλ(T) dλ</div>
+
+The unit is W·m⁻²·sr⁻¹: band-integrated radiance, not total power in watts. The full-spectrum Stefan–Boltzmann expression `σT⁴` is not a finite-band response. Normalized angular weights mix the radiances along the two-dimensional accepted paths, and the same monotone function inverts the result. Celsius temperatures are not arithmetically averaged.
+
+</details>
+
+<details>
+<summary>How does the reference enter the inversion?</summary>
+
+For black surfaces, ideal transmission and a package at equilibrium, the model uses an illustrative linear gain:
+
+<div className="formula">
+  V = G[Lview − Lband(Treference)]
+  <br />
+  Texample = Lband⁻¹[V/G + Lband(Treference)]
+</div>
+
+`G=0.075 mV/(W·m⁻²·sr⁻¹)` makes the small signal easy to observe. It includes geometric and electrical factors not modeled separately and does not specify a real instrument's sensitivity or accuracy. Calibration shows the relationship between known temperature and signal. The model already knows its gain and band; it does not claim that three points recover a commercial algorithm.
+
+</details>
+
+<details>
+<summary>What limits the conclusions?</summary>
+
+Coordinates are in millimetres, but the canal shape, probe aperture, wall temperatures and materials are illustrative. The accepted angle follows from a 0.65 mm entrance radius and 5 mm channel length. Sixty-one directions use normalized two-dimensional angular weights. Real sensor fields of view often describe declining sensitivity rather than this hard boundary. Three-dimensional angular response, multiple specular reflections, emissivity, cover transmission, thermal shock, wax obstruction and individual anatomy are omitted. The membrane and thermocouples are enlarged; their temperature-difference mechanism is shown without solving the membrane's transient temperature.
+
+This film explains reception, compensation and spatial sampling. Its example reading does not establish human core temperature or provide diagnosis, treatment decisions or operating instructions.
+
+</details>

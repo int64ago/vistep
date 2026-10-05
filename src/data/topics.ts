@@ -13,6 +13,94 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'ear-thermometer',
+    name: '耳温枪',
+    title: '不用发射光，也能读到温度',
+    question: '探头接收到的，到底是谁的温度？',
+    description:
+      '沿耳道组织发出的热红外，进入窄口探头、吸收膜与参考电路；保持温度不变，转动视场，观察混合信号如何改变读数。',
+    duration: '3 分钟',
+    color: '#b89262',
+    tag: '热辐射',
+    related: ['camera-lens', 'ultrasound', 'optical-fiber'],
+    sources: [
+      {
+        title: 'Braun — ThermoScan infrared reception from eardrum and surrounding tissue',
+        url: 'https://www.braunhealthcare.com/us_en/thermometer/thermoscan-5/',
+      },
+      {
+        title: 'Analog Devices — Important Design Considerations for Digital Thermometers',
+        url: 'https://www.analog.com/en/resources/technical-articles/important-design-considerations-for-digital-thermometers.html',
+      },
+      {
+        title: 'Hamamatsu — Thermopile detectors technical note',
+        url: 'https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/thermopile_kird9005e.pdf',
+      },
+      {
+        title: 'Melexis — Eliminating Thermal Disturbances in Non-Contact Temperature Measurement',
+        url: 'https://www.melexis.com/en/news/tech-talks/eliminating-thermal-disturbances-in-non-contact-temperature-measurement',
+      },
+      {
+        title: 'NIST — Radiance Temperature Calibrations, SP 250-43',
+        url: 'https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication250-43.pdf',
+      },
+      {
+        title: 'Yeoh et al. 2017 — Tympanic membrane vicinity and temperature nonuniformity',
+        url: 'https://doi.org/10.1371/journal.pone.0174120',
+      },
+      {
+        title: 'US6435711B1 — Infrared ear thermometer probe and reference sensor',
+        url: 'https://patents.google.com/patent/US6435711B1/en',
+      },
+    ],
+    number: '82',
+  },
+  {
+    slug: 'body-fat-scale',
+    name: '体脂秤',
+    title: '脚下的四片金属，怎样变成体脂率？',
+    question: '体脂秤真的“看见”脂肪了吗？',
+    description:
+      '从四角称重与四电极交流测量，追踪阻抗、相位、水分和去脂体重的估算，看看脂肪质量固定时水分怎样改变读数。',
+    duration: '约 3 分钟',
+    color: '#679b8c',
+    tag: '四电极 · 阻抗 · 身体组成估算',
+    related: ['rectifier', 'buck-converter'],
+    sources: [
+      {
+        title:
+          'Texas Instruments — AFE4300 weight-scale and body-composition measurement signal chains',
+        url: 'https://www.ti.com/lit/ds/symlink/afe4300.pdf',
+      },
+      {
+        title: 'Texas Instruments — SBAA562, How to Measure Body Composition',
+        url: 'https://www.ti.com/document-viewer/lit/html/SBAA562',
+      },
+      {
+        title: 'Analog Devices — Bioimpedance RC equivalent model and quadrature demodulation',
+        url: 'https://www.analog.com/en/resources/analog-dialogue/articles/adopting-a-better-bioimpedance-afe.html',
+      },
+      {
+        title: 'Texas Instruments — Resistive bridge in a load cell, SBAA290',
+        url: 'https://www.ti.com/document-viewer/lit/html/SBAA290',
+      },
+      {
+        title:
+          'Lukaski et al. (1985) — Assessment of fat-free mass using bioelectrical impedance measurements',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/3984933/',
+      },
+      {
+        title: 'Wang, Deurenberg and Heymsfield (2000) — Fat-free mass hydration model',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/10865761/',
+      },
+      {
+        title: 'Tanita — How drinking water affects body-composition readings',
+        url: 'https://support.tanita.eu/support/solutions/articles/60000690203-how-will-drinking-water-affect-my-body-composition-readings-',
+      },
+    ],
+    number: '81',
+  },
+  {
     slug: 'jellyfish',
     name: '水母',
     title: '伞已经不动，为什么还能再游一段？',

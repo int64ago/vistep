@@ -1,0 +1,58 @@
+# Ear thermometer — receive heat, then interpret the view
+
+[简体中文](../zh-CN/examples/ear-thermometer-brief.md) · [Production guide](../creating-a-scene.md)
+
+The opening intuition is that a thermometer fires something into the ear. The tracked object is thermal infrared radiation emitted by tissue. The turning point keeps every tissue temperature fixed and rotates the same probe: first intersections move from eardrum to canal wall, changing the mixed radiance and the resulting temperature. There is no diagnostic or treatment guidance.
+
+The art is an original anatomical and manufactured-object section rather than a dashboard. A warm ear pinna, folds, thick canal walls, inclined drum and a small ossicle reference establish the ear. A soft pale probe casing has a narrow infrared window, a metal optical channel, absorber, sensor package, connected series thermocouple legs, two signal leads and an independent two-lead package-temperature sensor. The electronics terminate at an amplifier/ADC block. Neither arbitrary arrows nor an emitted laser substitutes for the accepted paths.
+
+## Primary evidence and chosen boundaries
+
+- [Braun ThermoScan product description](https://www.braunhealthcare.com/us_en/thermometer/thermoscan-5/): received radiation originates in the eardrum and surrounding tissue. Product accuracy, clinical offsets and prewarming are not copied into the model.
+- [Analog Devices' thermometer engineering note](https://www.analog.com/en/resources/technical-articles/important-design-considerations-for-digital-thermometers.html) and [Hamamatsu's thermopile technical note](https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/thermopile_kird9005e.pdf): thermopile absorption/series thermocouples, small electrical signal and a separate package reference.
+- [Melexis' thermal-disturbance note](https://www.melexis.com/en/news/tech-talks/eliminating-thermal-disturbances-in-non-contact-temperature-measurement): absorber versus package temperatures and equilibrium limits. No particular MLX part's spectral band or field-of-view specification is claimed.
+- [US6435711B1](https://patents.google.com/patent/US6435711B1/en): aperture-limited ear probes, infrared-transmitting windows, cold-junction thermistors and signal/reference lookup. The drawing follows direct paths through a narrow hollow channel. It is not a reconstruction of the patent or a reflective-waveguide simulation.
+- [NIST radiance-temperature calibration reference](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication250-43.pdf): Planck spectral radiance and its units. The rectangular 8–14 μm response is an expressly chosen teaching band.
+- [Yeoh et al., 2017](https://doi.org/10.1371/journal.pone.0174120): nonuniform temperatures and sampling-location effects near the tympanic membrane. We do not reproduce their clinical temperature values or equate a modeled reading with core temperature.
+
+## Shared physical model
+
+The independent millimetre geometry has upper/lower piecewise-linear canal walls, an inclined drum and a probe pivot at (4,0). The sensor's modeled centre lies 5 mm behind a 0.65 mm-radius entrance stop. The direct-path half-angle is `atan(0.65/5)`, approximately 7.41°. Sixty-one two-dimensional directions use normalized cosine/trapezoidal angular weights. Each begins computationally at the entrance to find its first real tissue hit; its displayed order is reversed, tissue → window → absorber. All paths remain collinear, fit the actual channel and share physical endpoints. The casing, channel, detector, ADC, leads and numbered annotation anchors are shared by section/detail/cover where relevant.
+
+Band-integrated Planck radiance uses exact SI constants and 96-interval Simpson integration. Mixtures use radiance, not the arithmetic mean of Celsius temperatures. The example net voltage is `G[Lview − Lband(Tpackage)]`, with teaching gain 0.075 mV/(W·m⁻²·sr⁻¹). Adding the same reference radiance and monotonically inverting the band response gives the equivalent reading. Signal-share labels use each region's actual weighted radiance contribution; geometric sampling weights remain separately available in the model. Thirty-four, 37 and 40°C blackbody reference points show the known model response, not a fitted commercial calibration.
+
+Defaults: drum 37°C; wall 32°C at the entrance rising linearly to 36.3°C at 26 mm; package 22°C. At 0° the drum receives 99.17% of angular weight and the equivalent reading rounds to 37.0°C. At 20° the drum weight is zero and the reading is about 34.6°C. Those values are deliberately assigned demonstration inputs. Equalizing all visible surfaces makes orientation changes leave the reading invariant.
+
+This is not a calibrated medical thermometer. The model omits three-dimensional angular response, multiple reflections, emissivity variations, cover transmission changes, thermal gradients/shock, tissue cooling, wax, membrane transient heating, anatomy differences and manufacturer clinical conversion. Real sensor FOV frequently denotes a sensitivity falloff rather than a hard cutoff. Microscopic thermocouple structure is enlarged. The drawn infrared markers are slowed identifiers, not a measured propagation speed.
+
+## Seven visible chapters, 168 planned seconds
+
+| Start | Visible cause                                                                                                                | Desktop and phone referent                                                                                        |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| 0 s   | Tissue-origin pulses and inward-moving markers; probe gradually becomes explicit.                                            | Full anatomical/object section, no field-of-view fill yet; the same radiation starts at the tissue.               |
+| 24 s  | A bounded view opens through the entrance stop; sources and region shares become visible.                                    | Full ear and probe, band contribution legend and one equivalent reading.                                          |
+| 48 s  | Close-up follows accepted paths through window/channel to absorber; connected thermocouple chain and ADC become inspectable. | Retain a compact full-ear section, then an enlarged section with 16 px HTML numbered anchors and matching labels. |
+| 72 s  | Package reference rises 22→30°C; net signal shrinks while the reference channel rises; compensated reading holds.            | Keep full-ear thumbnail, detector and both channels together on phone, without dropping a causal input.           |
+| 96 s  | Same probe observes a blackbody cavity whose known temperature moves 34→40°C; its point advances on the response curve.      | Cavity and curve side by side on desktop, vertically recomposed on phone. State ideal response and reference.     |
+| 120 s | Probe rotates 0→20° without changing tissue temperatures; first hits shift onto the cooler wall.                             | Complete section, retained source colours, recalculated shares and reading.                                       |
+| 144 s | Probe returns to its first orientation; connect geometry, passive signal, reference and one equivalent temperature.          | Full section and stable final 37.0°C example, with both tissue regions still present.                             |
+
+Narration names stable objects and signal channels, with no desktop-only directional references. Chinese and English scripts are separately authored in the handoff packet. Recorded durations are not yet measured; 168 seconds is the planned window. Root integrates and produces recordings after silent visual acceptance.
+
+## Presentation and evidence
+
+This scene's primary medium is SVG, so a failed or unavailable WebGL context is irrelevant to its rendering. It requires no external bitmap, fetch, Worker, GPU allocation or private animation clock. `useShowcase` supplies progress/replay/paused seeks; rendered marker phase depends only on chapter progress. Shared Showcase owns visibility, background, reduced-motion and narration behavior. Native SVG is the direct render path, not a claim that a capability-rejected browser runs the experiments.
+
+Desktop and phone have different composition: anatomy/detail height, two-column versus vertical calibration and regrouped labels. All body labels sit in HTML at 16 px; diagram numbering also uses CSS pixels. Major controls are at least 44 px. Label leaders terminate at shared part coordinates. The close-up intentionally crops the rear casing; the complete ear/probe remains in the thumbnail. Root must verify actual 320/390 px output and the longest English caption/player, rather than infer acceptance from these CSS declarations.
+
+The phone close-up keeps a 102 px complete-ear thumbnail. In the reference chapter, only absorber/reference anchors 3/2 are annotated, and their channel headings carry the matching numbers; the duplicate four-label row is omitted. The detector chapter retains all numbered parts named by speech. Extra explanation paragraphs appear in exploration only. These reductions preserve 16 px type and both causal channels; actual full-player height is still a browser check.
+
+Author tests cover independent 4000-step midpoint quadrature, finite-band versus full-spectrum behavior, inverse monotonicity, real surface intersections, guide admission/collinearity, changes of orientation, reference-channel invariance, radiance-mixture inversion, extreme inputs and exact backwards seeks. Presentation tests exercise the actual controls, equal-temperature boundary, two-channel view and calculation memoization. These are author checks, not browser or listening evidence.
+
+Peer `esim_scene` independently checked 588 equal-temperature combinations and 35,868 paths: equal-temperature recovery error at most 1.05×10⁻¹¹°C; weights error at most 6.67×10⁻¹⁶; compensated readings invariant to package temperature. Independent 384-interval Simpson differed from 96 intervals by at most 1.03×10⁻⁷ W·m⁻²·sr⁻¹. No scientific P1/P2 found; its finite director-input suggestion was implemented. This is separate from author checks.
+
+Its later geometry pass found a P2 in the blackbody illustration: an incorrect 6/11 entrance coefficient bent an otherwise direct ray. `earCalibrationPath` now derives the entry from the actual 5 mm guide length, shared source and absorber coordinates. A collinearity/aperture regression closes that issue. The peer rechecked the fix and all seven bilingual scripts at 23:21 on 2026-10-05; no remaining P1/P2. The author's final two suites contain 13 passing tests; the peer's additional eight tests are separate evidence.
+
+An isolated Node v24.19.0 warm benchmark of 200 varying angle/reference measurements averaged 0.293 ms per call on the current development machine. This is model timing, not phone or browser performance. The React presentation memoizes all five physical scalar inputs; marker/reveal-only frames do not repeat thermal calculation. Repeated same-temperature rays share a local integral.
+
+Still unverified at worker handoff: actual rendered material/phone/contact quality, entire natural-speed film, generated tracks and native listening, autoplay behavior in a real browser, physical-device performance, cover catalogue/social composition and full integration/builds. Root owns those checks; no shared registries, voices, commits or deployment were written by the scene worker.

@@ -1,5 +1,7 @@
 // Keep explicit dynamic imports: importing this registry must not load scene engines.
 export const experimentLoaders = {
+  'ear-thermometer': () => import('../components/experiments/EarThermometer'),
+  'body-fat-scale': () => import('../components/experiments/BodyFatScale'),
   jellyfish: () => import('../components/experiments/Jellyfish'),
   'instant-camera': () => import('../components/experiments/InstantCamera'),
   'slr-mirrorless': () => import('../components/experiments/SlrMirrorless'),

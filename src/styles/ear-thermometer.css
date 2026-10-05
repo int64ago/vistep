@@ -1,0 +1,525 @@
+.ear-study {
+  color: #4c5545;
+  width: 100%;
+  padding: 20px 22px 18px;
+  background: radial-gradient(ellipse at 55% 38%, #f3ecdf 0, #eff0e7 63%, #e9eee5 100%);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.ear-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 4px 8px;
+}
+.ear-heading > span {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #86937c;
+}
+.ear-heading > b {
+  font-size: 16px;
+  font-weight: 500;
+}
+.ear-section {
+  position: relative;
+  height: 330px;
+  max-width: 700px;
+  margin: auto;
+}
+.ear-section > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.ear-anatomy-labels {
+  position: absolute;
+  left: 44%;
+  right: 5%;
+  bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+.ear-anatomy-labels b {
+  font-weight: 500;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+.ear-section-compact {
+  height: 174px;
+  max-width: 410px;
+  opacity: 0.88;
+}
+.ear-source-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin: 0 auto 14px;
+  font-size: 16px;
+}
+.ear-source-strip > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.ear-source-strip i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cf764b;
+}
+.ear-source-wall i {
+  background: #a99871;
+}
+.ear-source-strip b {
+  min-width: 36px;
+  font-weight: 500;
+  text-align: right;
+}
+.ear-readout {
+  border-top: 1px solid #d6d9c9;
+  max-width: 590px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 auto;
+  padding: 14px 2px 1px;
+}
+.ear-readout > span {
+  font-size: 16px;
+}
+.ear-readout > span:last-child {
+  color: #58674f;
+}
+.ear-readout output {
+  font-family: 'Manrope Variable', sans-serif;
+  color: #4b5e49;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ear-readout small {
+  font-size: 16px;
+  margin-left: 7px;
+}
+.ear-mix-note,
+.ear-detail-note,
+.ear-scope {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #58674f;
+  max-width: 590px;
+  text-align: center;
+  margin: 11px auto 0;
+}
+.ear-probe-detail {
+  max-width: 630px;
+  margin: 0 auto 14px;
+}
+.ear-detail-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #58674f;
+}
+.ear-detail-title span:last-child {
+  color: #795b34;
+}
+.ear-probe-figure {
+  position: relative;
+  margin: 12px 0;
+}
+.ear-probe-figure > svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 11.2/4.4;
+}
+.ear-part-anchor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: #f1f1e6;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  box-shadow: 0 1px 5px #3e4c3110;
+  border: 1px solid transparent;
+}
+.ear-probe-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 7px;
+  margin: 0 0 8px;
+  font-size: 16px;
+  text-align: center;
+}
+.ear-probe-labels > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ear-probe-labels i {
+  font-style: normal;
+  background: #e7ebdd;
+  width: 23px;
+  height: 23px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+.ear-reference-channels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 22px;
+  row-gap: 10px;
+}
+.ear-channel {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 8px 0 13px;
+  border-bottom: 3px solid #dce0d2;
+  font-size: 16px;
+}
+.ear-channel b {
+  font-size: 22px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.ear-channel-number {
+  font-style: normal;
+  display: inline-grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  margin-right: 5px;
+  background: #e7ebdd;
+  border-radius: 50%;
+  color: #58674f;
+}
+.ear-channel-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+.ear-channel-title .ear-channel-number {
+  margin-right: 0;
+  flex: none;
+}
+.ear-channel-ref .ear-channel-number {
+  color: #58674f;
+}
+.ear-channel small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.ear-channel > i {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: #c48a54;
+}
+.ear-channel-ref > i {
+  background: #6b9da8;
+}
+.ear-reference-channels p {
+  grid-column: 1/-1;
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 16px;
+  color: #58674f;
+}
+.ear-calibration {
+  max-width: 600px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  align-items: center;
+}
+.ear-calibration-object svg {
+  width: 100%;
+  height: 180px;
+  display: block;
+}
+.ear-calibration-object > span {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.ear-calibration-object b {
+  font-weight: 500;
+  display: block;
+  font-size: 25px;
+}
+.ear-chart-axes {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  color: #58674f;
+}
+.ear-calibration-curve > svg {
+  width: 100%;
+  height: 178px;
+  display: block;
+}
+.ear-chart-ticks {
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+}
+.ear-calibration > .ear-scope {
+  grid-column: 1/-1;
+  margin-top: 20px;
+}
+.ear-explore {
+  max-width: 620px;
+  margin: 20px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid #d4dacb;
+}
+.ear-view-choice {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 17px;
+}
+.ear-view-choice button {
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  background: #e2e8dc;
+  color: #58674f;
+  font-size: 16px;
+  transition:
+    background 0.18s,
+    color 0.18s;
+  cursor: pointer;
+}
+.ear-view-choice button[aria-pressed='true'] {
+  background: #d2ddc9;
+  color: #43583d;
+}
+.ear-explore label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  gap: 10px;
+}
+.ear-explore output {
+  white-space: nowrap;
+  color: #58674f;
+}
+.ear-explore input[type='range'] {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 0 0 7px;
+  accent-color: #809a72;
+}
+.ear-input-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.ear-uniform {
+  justify-content: flex-start !important;
+  min-height: 44px;
+  margin-top: 4px;
+}
+.ear-uniform input {
+  width: 20px;
+  height: 20px;
+  accent-color: #809a72;
+}
+.ear-study :focus-visible {
+  outline: 2px solid #7b946a;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .ear-study {
+    padding: 16px 13px 17px;
+    border-radius: 19px;
+  }
+  .ear-heading {
+    align-items: center;
+    gap: 8px;
+    padding: 0 0 2px;
+  }
+  .ear-heading > span {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    max-width: 84px;
+  }
+  .ear-heading > b {
+    font-size: 16px;
+  }
+  .ear-section {
+    height: 249px;
+    margin: 0 -5px;
+  }
+  .ear-section-compact {
+    height: 102px;
+    margin: 0 auto;
+    max-width: 230px;
+  }
+  .ear-anatomy-labels {
+    left: 32%;
+    right: 0;
+    bottom: 0;
+    gap: 10px;
+  }
+  .ear-anatomy-labels b {
+    display: block;
+    margin: 0;
+  }
+  .ear-source-strip {
+    column-gap: 12px;
+    row-gap: 7px;
+    margin: 12px 0;
+  }
+  .ear-source-strip > span {
+    gap: 5px;
+  }
+  .ear-source-strip b {
+    min-width: 32px;
+  }
+  .ear-readout {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 8px;
+    padding-top: 11px;
+    line-height: 1.4;
+  }
+  .ear-readout output {
+    grid-column: 2;
+    grid-row: 1/3;
+    font-size: 33px;
+  }
+  .ear-readout > span:last-child {
+    font-size: 16px;
+    margin-top: 3px;
+  }
+  .ear-detail-title {
+    gap: 8px;
+    line-height: 1.35;
+  }
+  .ear-detail-title span:first-child {
+    max-width: 176px;
+  }
+  .ear-probe-figure {
+    margin: 4px 0;
+  }
+  .ear-probe-detail {
+    margin-bottom: 8px;
+  }
+  .ear-probe-labels {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .ear-probe-labels > span {
+    min-width: 0;
+  }
+  .ear-probe-labels > span:nth-child(1) {
+    order: 3;
+  }
+  .ear-probe-labels > span:nth-child(2) {
+    order: 2;
+  }
+  .ear-probe-labels > span:nth-child(3) {
+    order: 1;
+  }
+  .ear-probe-labels > span:nth-child(4) {
+    order: 0;
+  }
+  .ear-reference-channels {
+    grid-template-columns: 1fr;
+    row-gap: 5px;
+    margin-top: 6px;
+  }
+  .ear-channel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px;
+    padding: 5px 0 8px;
+    align-items: center;
+  }
+  .ear-channel > span {
+    width: auto;
+    line-height: 1.4;
+  }
+  .ear-channel b {
+    line-height: 1.3;
+  }
+  .ear-channel b {
+    font-size: 22px;
+  }
+  .ear-reference-channels p {
+    line-height: 1.6;
+  }
+  .ear-calibration {
+    grid-template-columns: 1fr;
+  }
+  .ear-calibration-object svg {
+    height: 112px;
+  }
+  .ear-calibration-object > span {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px 12px;
+  }
+  .ear-calibration-object b {
+    font-size: 24px;
+  }
+  .ear-calibration-curve {
+    margin-top: 18px;
+  }
+  .ear-calibration-curve > svg {
+    height: 139px;
+  }
+  .ear-calibration > .ear-scope {
+    margin-top: 12px;
+  }
+  .ear-input-pair {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .ear-explore label {
+    line-height: 1.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ear-view-choice button {
+    transition: none;
+  }
+}

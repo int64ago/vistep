@@ -6,6 +6,8 @@
 
 - [专题目录](catalog.md)：全部登记专题、影片时长和文章源码。
 - [制作手册](creating-a-scene.md)：研究、分镜、模型、双语讲解和审看。
+- [体脂秤案例](examples/body-fat-scale-brief.md)：四电极、独立称重与阻抗信号，以及受水分影响的估算。
+- [耳温枪案例](examples/ear-thermometer-brief.md)：被动红外辐射、几何视场、热电堆参考温度与标定。
 - [CPU、GPU、NPU 案例](examples/cpu-gpu-npu-brief.md)：同一矩阵任务、CPU 控制、GPU 通道与掩码、脉动 NPU 调度。
 - [eSIM 案例](examples/esim-brief.md)：受保护的运营商 profile、消费类远程配置、芯片绑定与独立网络认证。
 - [儿童近视防控镜片案例](examples/myopia-lens-brief.md)：矫正与微透镜光束、瞳孔接收、计算焦点及独立临床证据。
@@ -40,6 +42,7 @@
 记录只对应具体版本与条件，不是对未来改动的保证。旧语音的解码和播放检查未证明中文可理解性，后续发现的问题见复盘。部分历史提交编号早于 Git 历史改写，可能无法在新克隆中解析；原始 Actions 与部署引用的阅读方式见[制作记录](expansion-50.md)。
 
 - [六篇新专题审看](qa-six-explorations.md)：第 75–80 篇的独立模型复核、实测录音、浏览器观察及完整观看、试听和真机缺口。
+- [身体测量专题审看](qa-body-measurement.md)：第 81–82 篇的模型边界、双语录音及分别记录的视觉、播放和设备证据。
 - [运行时修补](qa-runtime-repairs.md)：语音重试、活动生命周期、蜂窝计算、404 与分项证据边界。
 - [移动通信审看](qa-mobile-networks.md)：三篇并行专题的模型测试、停帧、录音与分项证据缺口。
 - [机械键盘轴体审看](qa-keyboard-switch.md)：实体连接、确定性检测与分项交付证据。

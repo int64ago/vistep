@@ -78,6 +78,64 @@ export type DiscoveryMetadata = {
 };
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  'body-fat-scale': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: [
+        '体脂秤',
+        '体重秤',
+        '生物电阻抗',
+        'BIA',
+        '四电极',
+        '体脂率',
+        '身体成分',
+        '水分',
+        '应变片',
+        '称重传感器',
+      ],
+      en: [
+        'Body fat scale',
+        'bathroom scale',
+        'bioelectrical impedance',
+        'BIA',
+        'four electrodes',
+        'body fat percentage',
+        'body composition',
+        'hydration',
+        'strain gauge',
+        'load cell',
+      ],
+    },
+  },
+  'ear-thermometer': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: [
+        '耳温枪',
+        '耳温计',
+        '红外测温',
+        '热电堆',
+        '鼓膜',
+        '耳道',
+        '视场',
+        '环境补偿',
+        '温度传感器',
+      ],
+      en: [
+        'Ear thermometer',
+        'tympanic thermometer',
+        'infrared thermometry',
+        'thermopile',
+        'eardrum',
+        'ear canal',
+        'field of view',
+        'ambient compensation',
+        'temperature sensor',
+      ],
+    },
+  },
   jellyfish: {
     category: 'thermal-fluids',
     minAge: 10,

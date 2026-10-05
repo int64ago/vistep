@@ -10,6 +10,8 @@ import MyopiaLens from '../experiments/MyopiaLens';
 import SlrMirrorless from '../experiments/SlrMirrorless';
 import InstantCamera from '../experiments/InstantCamera';
 import Jellyfish from '../experiments/Jellyfish';
+import BodyFatScale from '../experiments/BodyFatScale';
+import EarThermometer from '../experiments/EarThermometer';
 
 // Actual Showcase, topic components, models, Studio effects and OrbitControls run.
 // Only GPU allocation and narration are doubled. Existing Showcase-language and
@@ -185,6 +187,8 @@ const scenes = [
   { slug: 'slr-mirrorless', Scene: SlrMirrorless },
   { slug: 'instant-camera', Scene: InstantCamera },
   { slug: 'jellyfish', Scene: Jellyfish },
+  { slug: 'body-fat-scale', Scene: BodyFatScale },
+  { slug: 'ear-thermometer', Scene: EarThermometer },
 ];
 async function mount(slug: string, Scene: React.ComponentType) {
   await act(() => {
@@ -257,17 +261,17 @@ function renderedObservation(renderer: any) {
   return JSON.stringify({ objects, camera: renderer.camera.matrixWorld.elements.map(round) });
 }
 const threeScenes = scenes.filter(({ slug }) =>
-  ['slr-mirrorless', 'instant-camera', 'jellyfish'].includes(slug),
+  ['slr-mirrorless', 'instant-camera', 'jellyfish', 'body-fat-scale'].includes(slug),
 );
 
-describe('six actual scenes use the shared film transport, including runtime fallbacks', () => {
+describe('actual scenes use the shared film transport, including runtime fallbacks', () => {
   it.each(scenes)(
     '$slug pauses, reconstructs every chapter, stops at the end and replays',
     async ({ slug, Scene }) => {
       await mount(slug, Scene);
       await tick(20);
       await tick(40);
-      if (['slr-mirrorless', 'instant-camera', 'jellyfish'].includes(slug))
+      if (threeScenes.some((scene) => scene.slug === slug))
         expect(
           tree!.root.findByProps({ className: 'studio-fallback' }).findAllByType('svg').length,
         ).toBeGreaterThan(0);
@@ -381,7 +385,12 @@ describe('six actual scenes use the shared film transport, including runtime fal
       await mount(slug, Scene);
       await tick(300);
       const film = films[slug],
-        chapter = slug === 'slr-mirrorless' ? 2 : slug === 'instant-camera' ? 1 : 4,
+        chapter =
+          slug === 'slr-mirrorless'
+            ? 2
+            : ['instant-camera', 'body-fat-scale'].includes(slug)
+              ? 1
+              : 4,
         target =
           (film.chapters[chapter].at + (film.chapters[chapter + 1]?.at ?? film.duration)) / 2;
       await seek(target);
@@ -454,7 +463,8 @@ describe('six actual scenes use the shared film transport, including runtime fal
             }),
         ).replace(/_r_[a-z0-9]+_/g, 'stable-id');
       const initial = fallbackObservation();
-      const chapter = slug === 'slr-mirrorless' ? 6 : slug === 'instant-camera' ? 1 : 4;
+      const chapter =
+        slug === 'slr-mirrorless' ? 6 : ['instant-camera', 'body-fat-scale'].includes(slug) ? 1 : 4;
       const film = films[slug];
       const target =
         (film.chapters[chapter].at + (film.chapters[chapter + 1]?.at ?? film.duration)) / 2;

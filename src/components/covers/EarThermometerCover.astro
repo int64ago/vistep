@@ -1,0 +1,85 @@
+---
+import {
+  EAR_CANAL_PATH,
+  EAR_GEOMETRY,
+  EAR_GUIDE_PATH,
+  EAR_SENSOR_PACKAGE,
+  EAR_ADC,
+  earPolyline,
+} from '../../models/ear-thermometer-geometry';
+import { earMeasure } from '../../models/ear-thermometer';
+const frame = earMeasure({ angleDeg: 9 });
+const rays = frame.rays.filter((_, i) => i % 10 === 0);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="ear-cover-tissue"
+      ><stop stop-color="#dcc3ab"></stop><stop offset=".65" stop-color="#ce987f"></stop><stop
+        offset="1"
+        stop-color="#dfb59a"></stop></linearGradient
+    >
+    <linearGradient id="ear-cover-probe" x1="0" y1="0" x2="0" y2="1"
+      ><stop stop-color="#f4f8f1"></stop><stop offset="1" stop-color="#adbdb1"
+      ></stop></linearGradient
+    >
+  </defs>
+  <rect width="400" height="230" fill="#eff0e7"></rect>
+  <ellipse cx="208" cy="214" rx="164" ry="6" fill="#555c41" opacity=".07"></ellipse>
+  <g transform="translate(135 115) scale(7 -7)">
+    <path
+      d={EAR_GEOMETRY.tissueOutline}
+      fill="url(#ear-cover-tissue)"
+      stroke="#bc9981"
+      stroke-width=".12"></path>
+    <path
+      d={EAR_GEOMETRY.pinnaFold}
+      fill="none"
+      stroke="#9b7561"
+      stroke-width=".5"
+      stroke-linecap="round"></path>
+    <path
+      d="M-2 -8Q1 -7 0 -3Q-1 -1 0 1Q3 4 1 7"
+      fill="none"
+      stroke="#edcfb4"
+      stroke-width=".5"
+      stroke-linecap="round"></path>
+    <path d={EAR_CANAL_PATH} fill="#8b6852" stroke="#efc2a3" stroke-width=".32"></path>
+    <path d="M25 3.5L26 -3.5" stroke="#e6b77e" stroke-width=".35"></path>
+    <path d="M25.4 2.7L25.8 .4" stroke="#a67550" stroke-width=".2"></path>
+    <path d="M26.5 -7Q28 -3 27.4 1Q27 6 25 7" fill="none" stroke="#b48873" stroke-width=".2"></path>
+    <path
+      d={earPolyline([rays[0].points[2], ...rays.map((ray) => ray.points[0])], true)}
+      fill="#ddb382"
+      fill-opacity=".2"></path>
+    <g transform={`translate(${EAR_GEOMETRY.tip.x} 0) rotate(${frame.angleDeg})`}>
+      <path
+        d={EAR_GEOMETRY.probeOutline}
+        fill="url(#ear-cover-probe)"
+        stroke="#90a79a"
+        stroke-width=".12"></path>
+      <rect x="-12.5" y="-1.8" width="3.7" height="3.6" rx=".6" fill="#60786b"></rect>
+      <path
+        d="M-12 -.8H-9.3M-12 0H-10.5M-12 .8H-9.9"
+        stroke="#c4ddc8"
+        stroke-width=".25"
+        stroke-linecap="round"></path>
+      <path d={EAR_GUIDE_PATH} fill="#465046" stroke="#c1b591" stroke-width=".12"></path>
+      <path d="M.04 -.82L.04 .82" stroke="#a7cbcb" stroke-width=".13"></path>
+      <rect {...EAR_SENSOR_PACKAGE} rx=".18" fill="#aeaf94"></rect>
+      <rect {...EAR_ADC} rx=".1" fill="#4a5c4e"></rect>
+      <path d="M-5.05 -.24L-5.05 .24" stroke="#413d2d" stroke-width=".12"></path>
+    </g>
+    {
+      rays.map((ray) => (
+        <path
+          d={earPolyline(ray.points)}
+          fill="none"
+          stroke={ray.region === 'drum' ? '#cf764b' : '#a99871'}
+          stroke-width=".085"
+          stroke-opacity=".8"
+        />
+      ))
+    }
+  </g>
+</svg>

@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 80 registered explorations, each with Chinese and English articles, a directed film and synchronized recordings. The latest six (75–80) cover CPU/GPU/NPU, eSIM, children’s myopia-control lenses, SLR and mirrorless cameras, integral instant film, and jellyfish propulsion. Their [review record](qa-six-explorations.md) separates model checks, browser observations and remaining evidence gaps. Production publishes from the `main` deployment workflow. Complete viewing, bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Earlier mobile-network additions have their own [review record](qa-mobile-networks.md), and deployment history is recorded in the [collection expansion record](expansion-50.md).
+The collection contains 82 registered explorations, each with Chinese and English articles, a directed film and synchronized recordings. The latest two (81–82) explain a body fat scale’s impedance-based estimate and an ear thermometer’s infrared measurement chain. Their [review record](qa-body-measurement.md) separates scientific checks, browser observations, recordings and remaining evidence gaps. Production publishes from the `main` deployment workflow. Bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Previous additions have their [six-scene review](qa-six-explorations.md), and earlier delivery is recorded in the [collection expansion record](expansion-50.md).
 
 Topics follow their main explanation. Heat and fluids have their own group; Earth and astronomy covers planetary and celestial phenomena. Jellyfish belongs to Heat & fluids because its film tracks water displacement, vortices and thrust. Weapon subjects share a dedicated context group. Related links and bilingual search aliases retain connections across fields.
 
@@ -30,6 +30,7 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 | Exploration                                                          | Film | Question                                                                        |
 | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
+| [Body fat scale](../src/content/en/body-fat-scale.mdx)               | 2:50 | How do four metal pads become a body-fat reading?                               |
 | [NFC](../src/content/en/nfc.mdx)                                     | 2:48 | How does a tag answer without a battery?                                        |
 | [Lithium-ion battery](../src/content/en/lithium-battery.mdx)         | 3:06 | Why do lithium ions and electrons take different paths?                         |
 | [Solar cell](../src/content/en/solar-cell.mdx)                       | 3:19 | How can light on silicon drive current through an outside circuit?              |
@@ -46,6 +47,7 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 | Exploration                                                   | Film | Question                                                       |
 | ------------------------------------------------------------- | ---- | -------------------------------------------------------------- |
+| [Ear thermometer](../src/content/en/ear-thermometer.mdx)      | 3:05 | Reading heat without sending a beam.                           |
 | [Instant camera](../src/content/en/instant-camera.mdx)        | 2:49 | Does the camera print the photo, or does the sheet develop it? |
 | [SLR & mirrorless](../src/content/en/slr-mirrorless.mdx)      | 3:10 | Why does a DSLR finder briefly go dark?                        |
 | [Myopia-control lenses](../src/content/en/myopia-lens.mdx)    | 2:47 | How do two components from one point reach the retina?         |
