@@ -2,6 +2,7 @@ import { t } from '../../i18n';
 import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
+import { useReducedMotion } from '../lab/useVisibility';
 import { useShowcase } from '../lab/Showcase';
 import { fixedReplay } from '../../models/replay';
 import { newTraffic, stepTraffic, defaultTraffic, type Vehicle } from '../../models/traffic';
@@ -20,6 +21,10 @@ export default function Traffic() {
     headway = demo.watch ? (episode === 9 ? 1.8 : 1.2) : manualHeadway,
     desired = demo.watch ? 22 : manualDesired;
   const playing = demo.watch ? demo.playing : manualPlaying;
+  const reducedMotion = useReducedMotion();
+  useEffect(() => {
+    if (reducedMotion) setPlaying(false);
+  }, [reducedMotion]);
   const params = { ...defaultTraffic, headway, desiredSpeed: desired },
     cars = useRef<Vehicle[]>(newTraffic(count, params)),
     canvas = useRef<HTMLCanvasElement>(null),
@@ -133,27 +138,32 @@ export default function Traffic() {
     }
   };
   const host = useSimulation((dt) => {
-    if (playing && !demo.watch) {
-      fixed.current += dt * 4;
-      while (fixed.current >= 1 / 60) {
-        stepTraffic(cars.current, 1 / 60, params);
-        clock.current += 1 / 60;
-        fixed.current -= 1 / 60;
-      }
-      refresh.current += dt;
-      if (refresh.current > 0.075) {
-        refresh.current = 0;
-        history.current.push(cars.current.map((c) => ({ ...c })));
-        if (history.current.length > 140) history.current.shift();
-        setStats({
-          average: cars.current.reduce((s, c) => s + c.speed, 0) / count,
-          slow: cars.current.filter((c) => c.speed < 2).length,
-          time: clock.current,
-        });
-      }
+    fixed.current += dt * 4;
+    while (fixed.current >= 1 / 60) {
+      stepTraffic(cars.current, 1 / 60, params);
+      clock.current += 1 / 60;
+      fixed.current -= 1 / 60;
+    }
+    refresh.current += dt;
+    if (refresh.current > 0.075) {
+      refresh.current = 0;
+      history.current.push(cars.current.map((c) => ({ ...c })));
+      if (history.current.length > 140) history.current.shift();
+      setStats({
+        average: cars.current.reduce((s, c) => s + c.speed, 0) / count,
+        slow: cars.current.filter((c) => c.speed < 2).length,
+        time: clock.current,
+      });
     }
     draw();
-  });
+  }, !demo.watch && manualPlaying);
+  const drawRef = useRef(draw);
+  drawRef.current = draw;
+  useEffect(() => {
+    const observer = new ResizeObserver(() => drawRef.current());
+    for (const element of [canvas.current, chart.current]) if (element) observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   const reset = (n = count, h = headway, v = desired) => {
     cars.current = newTraffic(n, { ...defaultTraffic, headway: h, desiredSpeed: v });
     clock.current = 0;
@@ -163,6 +173,7 @@ export default function Traffic() {
     setSelected(0);
     setStats({ average: cars.current[0].speed, slow: 0, time: 0 });
     setPlaying(false);
+    draw();
   };
   const brakeAt = demo.watch
     ? episode === 0
@@ -208,6 +219,7 @@ export default function Traffic() {
     });
     draw();
   }, [demo.watch, demo.time, demo.run, replay]);
+  useEffect(draw, [count, headway, desired, selected, demo.watch, demo.run]);
   const brake = () => {
     cars.current[selected].brake = 1.5;
     setPlaying(true);

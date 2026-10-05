@@ -2,6 +2,7 @@ import { t } from '../../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
+import { useReducedMotion } from '../lab/useVisibility';
 import { useShowcase } from '../lab/Showcase';
 import { effectivePhase, residualAmplitude } from '../../models/noise';
 import { noiseShot } from '../../models/direction';
@@ -20,6 +21,10 @@ export default function Noise() {
   const phase = shot?.phase ?? manualPhase;
   const delay = shot?.delay ?? manualDelay;
   const animated = demo.watch ? demo.playing : manualAnimated;
+  const reducedMotion = useReducedMotion();
+  useEffect(() => {
+    if (reducedMotion) setAnimated(false);
+  }, [reducedMotion]);
   const canvas = useRef<HTMLCanvasElement>(null),
     audio = useRef<{
       context: AudioContext;
@@ -83,15 +88,24 @@ export default function Noise() {
     });
   };
   const host = useSimulation((dt) => {
-    if (demo.watch) time.current = demo.time * 1.5;
-    else if (animated) time.current += dt * 1.5;
+    time.current += dt * 1.5;
     draw();
-  }, true);
+  }, !demo.watch && manualAnimated);
+  const drawRef = useRef(draw);
+  drawRef.current = draw;
+  useEffect(() => {
+    const observer = new ResizeObserver(() => drawRef.current());
+    if (canvas.current) observer.observe(canvas.current);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     time.current = 0;
     draw();
   }, [demo.run, demo.watch]);
-  useEffect(draw, [frequency, amplitude, phase, delay]);
+  useEffect(() => {
+    if (demo.watch) time.current = demo.time * 1.5;
+    draw();
+  }, [demo.watch, demo.time, frequency, amplitude, phase, delay]);
   useEffect(() => {
     const a = audio.current;
     if (!a) return;
@@ -188,6 +202,8 @@ export default function Noise() {
               setPhase(180);
               setDelay(0);
               setAnimated(false);
+              time.current = 0;
+              draw();
               audio.current?.context.suspend();
               setListening(false);
             }}

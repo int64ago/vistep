@@ -8,27 +8,47 @@ export function useSimulation(frame: (dt: number, time: number) => void, running
   useEffect(() => {
     if (!running) return;
     let id = 0,
-      last = 0,
       elapsed = 0,
-      visible = true;
+      visible = !host.current,
+      disposed = false;
+    let last: number | null = null;
+    const schedule = () => {
+      if (!disposed && !id && visible && !document.hidden) id = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      cancelAnimationFrame(id);
+      id = 0;
+      last = null;
+    };
     const tick = (now: number) => {
-      if (visible && !document.hidden) {
-        const dt = last ? Math.min((now - last) / 1000, 0.04) : 0;
-        elapsed += dt;
-        frameRef.current(dt, elapsed);
+      id = 0;
+      if (disposed || !visible || document.hidden) {
+        last = null;
+        return;
       }
-      last = visible && !document.hidden ? now : 0;
-      id = requestAnimationFrame(tick);
+      const dt = last === null ? 0 : Math.min((now - last) / 1000, 0.04);
+      elapsed += dt;
+      last = now;
+      frameRef.current(dt, elapsed);
+      schedule();
+    };
+    const update = () => {
+      if (visible && !document.hidden) schedule();
+      else stop();
     };
     const obs = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      last = 0;
+      last = null;
+      update();
     });
+    document.addEventListener('visibilitychange', update);
     if (host.current) obs.observe(host.current);
-    id = requestAnimationFrame(tick);
+    update();
     return () => {
-      cancelAnimationFrame(id);
+      disposed = true;
+      stop();
       obs.disconnect();
+      document.removeEventListener('visibilitychange', update);
     };
   }, [running]);
   return host;

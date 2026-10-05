@@ -58,10 +58,10 @@ function environment() {
     onplaying: (() => void) | null = null;
     onwaiting = null;
     oncanplay = null;
-    onloadedmetadata = null;
+    onloadedmetadata: (() => void) | null = null;
     onended: (() => void) | null = null;
-    onerror = null;
-    error = null;
+    onerror: (() => void) | null = null;
+    error: { code: number } | null = null;
     play = vi.fn(() => {
       this.playTimes.push(this.currentTime);
       if (blocked) return Promise.reject(new DOMException('No activation', 'NotAllowedError'));
@@ -380,5 +380,113 @@ describe('actual Showcase + useNarration + narrationSource language lifecycle (c
     for (const audio of env.audios.slice(count))
       expect(audio.playTimes.every((time) => time === 149.5)).toBe(true);
     await unmount(tree);
+  });
+  it('retries a failed Blob decode at the latest silent-film position and waits for visibility', async () => {
+    const env = environment();
+    const fetcher = vi.fn<typeof fetch>(async () => new Response(new Blob(['recording'])));
+    vi.stubGlobal('fetch', fetcher);
+    const urls = vi
+      .spyOn(URL, 'createObjectURL')
+      .mockReturnValueOnce('blob:broken')
+      .mockReturnValueOnce('blob:recovered');
+    const revoke = vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => {});
+    const tree = await mount();
+    try {
+      const audio = env.audios.at(-1)!;
+      audio.seekable = { length: 1, start: () => 0, end: () => 0 };
+      audio.load.mockImplementation(() => {
+        audio.readyState = 0;
+        audio.currentTime = 0;
+        audio.error = null;
+      });
+      await setTime(tree, 58);
+      await vi.waitFor(() => expect(audio.src).toBe('blob:broken'));
+      await act(() => {
+        audio.error = { code: 3 };
+        audio.onerror?.();
+      });
+      expect(button(tree, 'voice').props['aria-pressed']).toBe(false);
+      expect(tree.root.findByProps({ className: 'voice-status' }).children.join('')).toBe(
+        t('声音暂时没能加载，点声音按钮重试。'),
+      );
+      expect(env.local.getItem('vistep:narration')).toBeNull();
+      await setTime(tree, 75);
+      expect(fetcher).toHaveBeenCalledOnce();
+      await act(() => button(tree, 'voice').props.onClick());
+      await vi.waitFor(() => expect(fetcher).toHaveBeenCalledTimes(2));
+      expect(fetcher.mock.calls[1][0]).toBe(tracks.rainbow.zh.src);
+      expect(fetcher.mock.calls[1][1]?.cache).toBe('reload');
+      expect(revoke).toHaveBeenCalledWith('blob:broken');
+      await vi.waitFor(() => expect(audio.src).toBe('blob:recovered'));
+      await act(() => env.visibility(false));
+      const playsWhileWaiting = audio.play.mock.calls.length;
+      await act(() => {
+        audio.readyState = 4;
+        audio.onloadedmetadata?.();
+      });
+      expect(audio.currentTime).toBe(75);
+      expect(audio.play).toHaveBeenCalledTimes(playsWhileWaiting);
+      expect(audio.paused).toBe(true);
+      await act(() => env.visibility(true));
+      expect(audio.playTimes.at(-1)).toBe(75);
+      expect(audio.paused).toBe(false);
+      expect(button(tree, 'voice').props['aria-pressed']).toBe(true);
+      expect(tree.root.findAllByProps({ className: 'voice-status' })).toHaveLength(0);
+      expect(urls).toHaveBeenCalledTimes(2);
+    } finally {
+      await unmount(tree);
+    }
+    expect(revoke.mock.calls).toEqual([['blob:broken'], ['blob:recovered']]);
+  });
+  it('cannot revive a disposed narration when its retry response and media events arrive late', async () => {
+    const env = environment();
+    let complete!: (value: Response) => void;
+    const fetcher = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(new Response(new Blob(['broken recording'])))
+      .mockReturnValueOnce(new Promise<Response>((done) => (complete = done)));
+    vi.stubGlobal('fetch', fetcher);
+    const urls = vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:broken');
+    const revoke = vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => {});
+    let tree = await mount();
+    const audio = env.audios.at(-1)!;
+    audio.seekable = { length: 1, start: () => 0, end: () => 0 };
+    await setTime(tree, 58);
+    await vi.waitFor(() => expect(audio.src).toBe('blob:broken'));
+    await act(() => {
+      audio.readyState = 0;
+      audio.error = { code: 3 };
+      audio.onerror?.();
+    });
+    await act(() => button(tree, 'voice').props.onClick());
+    expect(fetcher).toHaveBeenCalledTimes(2);
+    const lateMetadata = audio.onloadedmetadata,
+      lateError = audio.onerror,
+      lateEnded = audio.onended;
+    const playedBeforeLeaving = audio.play.mock.calls.length;
+    await unmount(tree);
+    expect(fetcher.mock.calls[1][1]?.signal?.aborted).toBe(true);
+    env.navigate('https://vistep.ai/en/explore/rainbow/#t=90');
+    tree = await mount();
+    try {
+      await act(async () => {
+        complete(new Response(new Blob(['late recovered recording'])));
+        await new Promise((done) => setTimeout(done, 0));
+        lateMetadata?.();
+        lateError?.();
+        lateEnded?.();
+      });
+      expect(urls).toHaveBeenCalledOnce();
+      expect(revoke).toHaveBeenCalledOnce();
+      expect(audio.play).toHaveBeenCalledTimes(playedBeforeLeaving);
+      expect(audio.paused).toBe(true);
+      expect(audio.onloadedmetadata).toBeNull();
+      expect(probe(tree)['data-time']).toBe(90);
+      pause(tree);
+      expect(env.audios.at(-1)!.play).not.toHaveBeenCalled();
+      expect(tree.root.findAllByProps({ className: 'voice-status' })).toHaveLength(0);
+    } finally {
+      await unmount(tree);
+    }
   });
 });

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useVisibility } from './useVisibility';
 import { t } from '../../i18n';
 import { EXCAVATOR, type Hydraulics, type Valve } from '../../models/excavator';
 
@@ -17,6 +18,7 @@ export default function ExcavatorCircuit({
   stroke,
   pascal,
   running,
+  respectReducedMotion = true,
   variant,
 }: {
   h: Hydraulics;
@@ -27,21 +29,24 @@ export default function ExcavatorCircuit({
   stroke: number;
   pascal: boolean;
   running: boolean;
+  respectReducedMotion?: boolean;
   variant: 'overlay' | 'stacked';
 }) {
   // Dash offset integrates the flow so the oil never jumps when the valve changes.
   const [offset, setOffset] = useState(0);
+  const { host, visible, reducedMotion } = useVisibility();
   const offsetRef = useRef(0),
     lastRef = useRef(0);
   useEffect(() => {
-    if (!running) return;
+    if (!running || !visible || (respectReducedMotion && reducedMotion) || (flow <= 0 && !h.relief))
+      return;
     let id = 0;
     const tick = (now: number) => {
-      id = requestAnimationFrame(tick);
       if (document.hidden) {
         lastRef.current = 0;
         return;
       }
+      id = requestAnimationFrame(tick);
       const dt = lastRef.current ? Math.min((now - lastRef.current) / 1000, 0.05) : 0;
       lastRef.current = now;
       if (flow > 0 || h.relief) {
@@ -54,7 +59,7 @@ export default function ExcavatorCircuit({
       cancelAnimationFrame(id);
       lastRef.current = 0;
     };
-  }, [running, flow, h.relief]);
+  }, [running, visible, reducedMotion, respectReducedMotion, flow, h.relief]);
 
   const x = Math.max(-1, Math.min(1, joystick));
   // Spool travel: 8 px of land overlap, then up to 14 px of port opening.
@@ -78,7 +83,7 @@ export default function ExcavatorCircuit({
     `M${x0} ${y}H${x0 + length}M${x0 + length - 7} ${y - 6}L${x0 + length} ${y}L${x0 + length - 7} ${y + 6}`;
   const mpa = (h.pressure / 1e6).toFixed(1);
   return (
-    <div className="excavator-circuit" data-variant={variant} data-pascal={pascal}>
+    <div ref={host} className="excavator-circuit" data-variant={variant} data-pascal={pascal}>
       <div className="circuit-figure">
         <svg
           viewBox="0 0 560 330"

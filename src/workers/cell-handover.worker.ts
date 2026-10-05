@@ -1,8 +1,8 @@
 import { chFieldSet, chSimulate, type ChParams, type ChRect } from '../models/cell-handover';
 
 type Request =
-  | { kind: 'field'; id: string; isdM: number; sigmaDb: number; step: number; rect?: ChRect }
-  | { kind: 'run'; id: string; params: ChParams };
+  | { kind: 'field'; id: number; isdM: number; sigmaDb: number; step: number; rect?: ChRect }
+  | { kind: 'run'; id: number; params: ChParams };
 
 /** Fields and route simulations are the scene's heavy work; keep them off the main thread. */
 self.onmessage = (e: MessageEvent<Request>) => {

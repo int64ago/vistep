@@ -1,3 +1,5 @@
+import { ByteCache } from './byte-cache';
+
 /**
  * Cellular coverage and connected-mode handover — an independent teaching model.
  *
@@ -291,18 +293,18 @@ export type ChField = {
   cols: number;
   rows: number;
   step: number;
-  best: Uint8Array;
+  best: Uint16Array;
   bestDbm: Float32Array;
   /** Best minus second-best RSRP (dB): 0 on a boundary. */
   marginDb: Float32Array;
 };
 /** Best-server map on a regular grid over `rect` (sample centres at rect + (i+0.5)·step). */
-export function chField(
+export function* chFieldSteps(
   layout: ChLayout,
   sigmaDb: number,
   step = 5,
   rect: ChRect = { x: 0, y: 0, w: CH.widthM, h: CH.heightM },
-): ChField {
+): Generator<void, ChField, void> {
   if (!(step >= 0.5) || !Number.isFinite(step)) throw new RangeError('Invalid field step');
   if (!(sigmaDb >= 0) || !Number.isFinite(sigmaDb)) throw new RangeError('Invalid shadowing');
   if (![rect.x, rect.y, rect.w, rect.h].every(Number.isFinite) || rect.w <= 0 || rect.h <= 0)
@@ -310,7 +312,7 @@ export function chField(
   const cols = Math.ceil(rect.w / step),
     rows = Math.ceil(rect.h / step);
   if (cols * rows > 2_000_000) throw new RangeError('Field too large');
-  const best = new Uint8Array(cols * rows),
+  const best = new Uint16Array(cols * rows),
     bestDbm = new Float32Array(cols * rows),
     marginDb = new Float32Array(cols * rows);
   const shadow = chShadow(layout.sites.length);
@@ -346,9 +348,20 @@ export function chField(
       best[idx] = b;
       bestDbm[idx] = first;
       marginDb[idx] = first - second;
+      if ((idx + 1) % 1024 === 0) yield;
     }
   }
   return { cols, rows, step, rect, best, bestDbm, marginDb };
+}
+
+/** Consume the same ordered calculation synchronously in Workers and static artwork. */
+function chComplete<T>(steps: Generator<void, T, void>): T {
+  let part = steps.next();
+  while (!part.done) part = steps.next();
+  return part.value;
+}
+export function chField(layout: ChLayout, sigmaDb: number, step = 5, rect?: ChRect): ChField {
+  return chComplete(chFieldSteps(layout, sigmaDb, step, rect));
 }
 
 // ——— the route ———
@@ -480,8 +493,25 @@ export function chValidParams(p: ChParams) {
   );
 }
 
-const runCache = new Map<string, ChRun>();
-export function chSimulate(p: ChParams = CH_DEFAULT): ChRun {
+/** Bulk arrays dominate route storage; include an allowance for events and geometry. */
+export function chRunBytes(run: ChRun) {
+  return (
+    run.truth.byteLength +
+    run.filtered.byteLength +
+    run.serving.byteLength +
+    run.sinr.byteLength +
+    run.trigger.byteLength +
+    run.candidate.byteLength +
+    run.events.length * 64 +
+    run.route.points.length * 24 +
+    (run.layout.cells.length + run.layout.sites.length) * 64 +
+    1024
+  );
+}
+export const CH_RUN_CACHE_BYTES = 24 * 1024 * 1024;
+const runCache = new ByteCache<string, ChRun>(CH_RUN_CACHE_BYTES, chRunBytes);
+/** Cooperative batches preserve the synchronous model's arithmetic and random sequence. */
+export function* chSimulateSteps(p: ChParams = CH_DEFAULT): Generator<void, ChRun, void> {
   if (!chValidParams(p)) throw new RangeError('Invalid handover parameters');
   const key = JSON.stringify([p.hysDb, p.offsetDb, p.tttMs, p.speedKmh, p.sigmaDb]);
   const hit = runCache.get(key);
@@ -586,6 +616,7 @@ export function chSimulate(p: ChParams = CH_DEFAULT): ChRun {
       candidate[i] = pending;
       trigger[i] = 1;
     }
+    if ((i + 1) % 128 === 0) yield;
   }
   const run: ChRun = {
     params: { ...p },
@@ -606,9 +637,11 @@ export function chSimulate(p: ChParams = CH_DEFAULT): ChRun {
     pingPongs: events.filter((e) => e.pingPong).length,
     failures: events.filter((e) => e.kind === 'failure').length,
   };
-  if (runCache.size > 24) runCache.delete(runCache.keys().next().value!);
   runCache.set(key, run);
   return run;
+}
+export function chSimulate(p: ChParams = CH_DEFAULT): ChRun {
+  return chComplete(chSimulateSteps(p));
 }
 
 /** Sample index nearest to a fraction of the route. */
@@ -851,7 +884,10 @@ export function chCellColors(layout: ChLayout, palette = 6, reach = 3.1) {
  * three or four crossings (junctions) join them at their centroid. `groupOf` merges cells into
  * regions, e.g. tracking areas.
  */
-export function chContours(field: ChField, groupOf?: ArrayLike<number>) {
+export function* chContourSteps(
+  field: ChField,
+  groupOf?: ArrayLike<number>,
+): Generator<void, Float32Array, void> {
   const { cols, rows, step, rect, best, marginDb } = field;
   const label = (k: number) => (groupOf ? groupOf[best[k]] : best[k]);
   const out: number[] = [];
@@ -867,6 +903,7 @@ export function chContours(field: ChField, groupOf?: ArrayLike<number>) {
   };
   for (let j = 0; j + 1 < rows; j++)
     for (let i = 0; i + 1 < cols; i++) {
+      if ((j || i) && (j * (cols - 1) + i) % 2048 === 0) yield;
       const k0 = j * cols + i,
         k1 = k0 + 1,
         k2 = k0 + cols + 1,
@@ -894,12 +931,35 @@ export function chContours(field: ChField, groupOf?: ArrayLike<number>) {
     }
   return new Float32Array(out);
 }
+export function chContours(field: ChField, groupOf?: ArrayLike<number>) {
+  return chComplete(chContourSteps(field, groupOf));
+}
 
 export type ChFieldSet = { field: ChField; cellEdges: Float32Array; taEdges: Float32Array };
 /** A best-server field with its cell and tracking-area boundaries. */
-export function chFieldSet(isdM: number, sigmaDb: number, step: number, rect?: ChRect): ChFieldSet {
+export function* chFieldSetSteps(
+  isdM: number,
+  sigmaDb: number,
+  step: number,
+  rect?: ChRect,
+): Generator<void, ChFieldSet, void> {
   const layout = chLayout(isdM);
-  const field = chField(layout, sigmaDb, step, rect);
+  const field = yield* chFieldSteps(layout, sigmaDb, step, rect);
   const ta = layout.cells.map((c) => layout.sites[c.site].ta);
-  return { field, cellEdges: chContours(field), taEdges: chContours(field, ta) };
+  const cellEdges = yield* chContourSteps(field);
+  const taEdges = yield* chContourSteps(field, ta);
+  return { field, cellEdges, taEdges };
+}
+export function chFieldSet(isdM: number, sigmaDb: number, step: number, rect?: ChRect): ChFieldSet {
+  return chComplete(chFieldSetSteps(isdM, sigmaDb, step, rect));
+}
+export function chFieldSetBytes(set: ChFieldSet) {
+  return (
+    set.field.best.byteLength +
+    set.field.bestDbm.byteLength +
+    set.field.marginDb.byteLength +
+    set.cellEdges.byteLength +
+    set.taEdges.byteLength +
+    128
+  );
 }

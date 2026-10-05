@@ -2,10 +2,12 @@ import { t, tokenLabel } from '../../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
 import { useShowcase } from '../lab/Showcase';
+import { useVisibility } from '../lab/useVisibility';
 import type { Inspection } from '../../models/transformer';
 const vocab = ['猫', '狗', '鸟', '爱', '吃', '鱼', '肉', '虫', '。'];
 export default function Transformer() {
   const demo = useShowcase();
+  const { host, visible } = useVisibility();
   const [inspection, setInspection] = useState<Inspection | null>(null),
     [mode, setMode] = useState<'train' | 'generate'>('train'),
     [subject, setSubject] = useState('猫'),
@@ -65,6 +67,7 @@ export default function Transformer() {
   const samples = c < 11 ? 0 : c === 11 ? (q > 0.35 ? 1 : 0) : c === 12 ? (q > 0.35 ? 2 : 1) : 2;
   useEffect(() => {
     if (!demo.watch) {
+      directedRequest.current++;
       worker.current?.postMessage({ type: 'stop' });
       return;
     }
@@ -77,6 +80,9 @@ export default function Transformer() {
       requestId,
     });
   }, [demo.watch, demo.run, directedSteps, samples, c === 7]);
+  useEffect(() => {
+    if (!demo.watch) worker.current?.postMessage({ type: visible ? 'resume' : 'suspend' });
+  }, [demo.watch, visible]);
   useEffect(() => {
     if (!demo.watch) return;
     setMode(c >= 10 ? 'generate' : 'train');
@@ -121,7 +127,7 @@ export default function Transformer() {
   const tokens = [...(inspection?.context || text.slice(-4))];
   const lossMax = Math.max(2.5, ...history);
   return (
-    <div>
+    <div ref={host}>
       <div className="lab-toolbar">
         <h2>{t('让一个很小的模型，真实地学一件事。')}</h2>
         <div className="lab-actions">

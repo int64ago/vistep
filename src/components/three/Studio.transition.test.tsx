@@ -181,7 +181,9 @@ beforeEach(() => {
       constructor(public cb: any) {
         env.intersection.push(this);
       }
-      observe() {}
+      observe() {
+        this.cb([{ isIntersecting: true }]);
+      }
       disconnect() {
         this.active = false;
       }
@@ -396,16 +398,20 @@ it('waits offscreen/background without consuming mode entry, then cancels pendin
   key();
   frame(20);
   env.doc.hidden = true;
+  env.doc.dispatchEvent(new Event('visibilitychange'));
+  expect(env.raf.size).toBe(0);
   live.film.watch = true;
   const n = v.renderer.frames.length;
   frame(500);
   expect(v.renderer.frames).toHaveLength(n);
   env.doc.hidden = false;
+  env.doc.dispatchEvent(new Event('visibilitychange'));
   frame(17);
   expect(settles.at(-1)).toBe(true);
   const first = v.renderer.frames.at(-1);
   expect(first.position.distanceTo(new THREE.Vector3(4.35, 3, 11))).toBeLessThan(1e-12);
   env.intersection[0].cb([{ isIntersecting: false }]);
+  expect(env.raf.size).toBe(0);
   live.film.time = 82;
   frame(500);
   expect(v.renderer.frames).toHaveLength(n + 1);

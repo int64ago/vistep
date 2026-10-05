@@ -35,54 +35,68 @@ export function useNarration(
     a.dataset.narration = slug;
     a.dataset.narrationSrc = track.src;
     document.body.append(a);
+    audio.current = a;
     a.volume = 0.9;
+    const current = () => alive.current && audio.current === a;
     a.onplaying = () => {
-      if (alive.current && !source.current?.loading) {
+      if (current() && !source.current?.loading) {
         setWaiting(false);
         setBlocked(false);
         setError(false);
       }
     };
     a.onwaiting = () => {
-      if (alive.current && desired.current) setWaiting(true);
+      if (current() && desired.current) setWaiting(true);
     };
     a.oncanplay = () => {
-      if (alive.current && !source.current?.loading) setWaiting(false);
+      if (current() && !source.current?.loading) setWaiting(false);
     };
-    a.onloadedmetadata = () => source.current?.loadedMetadata();
-    a.onended = () => ended.current();
+    a.onloadedmetadata = () => {
+      if (current()) source.current?.loadedMetadata();
+    };
+    a.onended = () => {
+      if (current()) ended.current();
+    };
     const failed = () => {
-      if (!alive.current) return;
+      if (!current()) return;
       desired.current = false;
       setEnabled(false);
       setWaiting(false);
       setError(true);
     };
-    a.onerror = failed;
+    a.onerror = () => {
+      if (current()) source.current?.mediaError();
+    };
     source.current = narrationSource(a, track.src, {
       waiting: () => {
-        if (alive.current) setWaiting(true);
+        if (current()) setWaiting(true);
       },
       ready: () => {
-        if (!alive.current) return;
+        if (!current()) return;
         setWaiting(false);
         setSourceReady((value) => value + 1);
       },
       error: failed,
     });
     source.current.seek(targetTime.current);
-    audio.current = a;
     return a;
   };
   const play = (a: HTMLAudioElement) => {
-    if (source.current?.loading) return;
+    if (!alive.current || audio.current !== a || !desired.current || source.current?.loading)
+      return;
     void a.play().catch((reason) => {
-      if (!alive.current || reason?.name === 'AbortError' || !desired.current) return;
+      if (
+        !alive.current ||
+        audio.current !== a ||
+        reason?.name === 'AbortError' ||
+        !desired.current
+      )
+        return;
       desired.current = false;
       setEnabled(false);
       setWaiting(false);
       if (reason?.name === 'NotAllowedError') setBlocked(true);
-      else setError(true);
+      else source.current?.mediaError();
     });
   };
   const seek = (time: number) => {
@@ -101,8 +115,8 @@ export function useNarration(
     desired.current = true;
     rememberNarration(true);
     const a = makeAudio()!;
-    if (a.error) a.load();
     seek(time);
+    source.current?.retry();
     // The first play call stays inside the user's activation, including on iOS.
     play(a);
   };

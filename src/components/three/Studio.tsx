@@ -148,15 +148,16 @@ export default function Studio({
     resize();
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(el);
-    let visible = true,
+    let visible = false,
+      disposed = false,
       previous = 0,
       elapsed = 0,
       animation = 0;
     const intersection = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       previous = 0;
+      updateVisibility();
     });
-    intersection.observe(el);
     const frameBudget = window.innerWidth < 760 ? 1000 / 30 : 1000 / 60;
     let keyElapsed = 1;
     const keyFrom = new THREE.Spherical(),
@@ -168,11 +169,12 @@ export default function Studio({
     controls.addEventListener('start', stopKeyMotion);
     let lastFilmTime: number | undefined;
     const tick = (time: number) => {
-      animation = requestAnimationFrame(tick);
-      if (!visible || document.hidden) {
+      animation = 0;
+      if (disposed || !visible || document.hidden) {
         previous = 0;
         return;
       }
+      schedule();
       const watching = filmRef.current.watch;
       const modeChanged = wasWatching !== watching;
       const nextFilmTime = filmRef.current.time;
@@ -238,7 +240,21 @@ export default function Studio({
       }
       renderer.render(scene, camera);
     };
-    animation = requestAnimationFrame(tick);
+    const schedule = () => {
+      if (!disposed && !animation && visible && !document.hidden)
+        animation = requestAnimationFrame(tick);
+    };
+    const updateVisibility = () => {
+      previous = 0;
+      if (visible && !document.hidden) schedule();
+      else {
+        cancelAnimationFrame(animation);
+        animation = 0;
+      }
+    };
+    document.addEventListener('visibilitychange', updateVisibility);
+    intersection.observe(el);
+    updateVisibility();
     const keys = (event: KeyboardEvent) => {
       if (filmRef.current.watch) return;
       if (!event.key.startsWith('Arrow')) return;
@@ -257,13 +273,16 @@ export default function Studio({
     };
     const lost = (event: Event) => {
       event.preventDefault();
+      disposed = true;
       cancelAnimationFrame(animation);
       setFailed(true);
     };
     el.addEventListener('keydown', keys);
     renderer.domElement.addEventListener('webglcontextlost', lost);
     return () => {
+      disposed = true;
       cancelAnimationFrame(animation);
+      document.removeEventListener('visibilitychange', updateVisibility);
       resizeObserver.disconnect();
       intersection.disconnect();
       controls.removeEventListener('start', stopKeyMotion);
@@ -304,7 +323,7 @@ export default function Studio({
         tabIndex={failed || flat || film.watch ? -1 : 0}
         style={{
           display: failed || flat ? 'none' : undefined,
-          touchAction: film.watch ? 'pan-y' : undefined,
+          touchAction: film.watch ? 'pan-y' : 'none',
         }}
       />
       {(failed || flat) && (

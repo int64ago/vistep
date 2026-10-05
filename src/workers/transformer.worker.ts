@@ -4,12 +4,50 @@ let model = new TinyTransformer(),
   context = '猫爱吃';
 let directedSteps = -1,
   directedLosses: number[] = [];
+let suspended = false;
+let training: { remaining: number; rate: number } | null = null;
+let timer: ReturnType<typeof setTimeout> | undefined;
 const send = (extra: Record<string, unknown> = {}) =>
   self.postMessage({ ...model.inspect(context), ...extra });
+const clearTimer = () => {
+  if (timer !== undefined) clearTimeout(timer);
+  timer = undefined;
+};
+const cancelTraining = () => {
+  clearTimer();
+  training = null;
+};
+// A bounded batch gives visibility/stop messages a chance to run between weight updates.
+function scheduleTraining() {
+  if (suspended || !training || timer !== undefined) return;
+  timer = setTimeout(() => {
+    timer = undefined;
+    if (suspended || !training) return;
+    try {
+      let loss = 0;
+      for (let i = 0; i < 5 && training.remaining > 0; i++) {
+        loss = model.trainStep(training.rate);
+        training.remaining--;
+      }
+      const remaining = training.remaining;
+      if (!remaining) training = null;
+      send({ type: 'progress', loss, running: remaining > 0, remaining });
+      scheduleTraining();
+    } catch (error) {
+      cancelTraining();
+      self.postMessage({
+        type: 'error',
+        message: error instanceof Error ? error.message : '模型未能运行。',
+        running: false,
+      });
+    }
+  }, 0);
+}
 self.onmessage = async (e: MessageEvent) => {
   const m = e.data;
   try {
     if (m.type === 'direct') {
+      cancelTraining();
       const current = ++job;
       const steps = Math.max(0, Math.min(160, Math.floor(m.steps)));
       if (directedSteps < 0 || steps < directedSteps) {
@@ -43,6 +81,7 @@ self.onmessage = async (e: MessageEvent) => {
       return;
     }
     if (m.type === 'reset') {
+      cancelTraining();
       directedSteps = -1;
       job++;
       model = new TinyTransformer();
@@ -55,22 +94,28 @@ self.onmessage = async (e: MessageEvent) => {
       send({ type: 'inspection' });
     }
     if (m.type === 'stop') {
+      cancelTraining();
       job++;
       send({ type: 'stopped', running: false });
     }
+    if (m.type === 'suspend') {
+      suspended = true;
+      clearTimer();
+    }
+    if (m.type === 'resume') {
+      suspended = false;
+      scheduleTraining();
+    }
     if (m.type === 'train') {
+      cancelTraining();
       directedSteps = -1;
-      const current = ++job;
+      job++;
       context = m.context;
-      const steps = Math.min(200, Math.max(1, m.steps || 50));
-      for (let i = 0; i < steps; i++) {
-        if (current !== job) return;
-        const loss = model.trainStep(m.rate || 0.015);
-        if (i % 5 === 4 || i === steps - 1) {
-          send({ type: 'progress', loss, running: i !== steps - 1 });
-          await new Promise((resolve) => setTimeout(resolve, 0));
-        }
-      }
+      training = {
+        remaining: Math.min(200, Math.max(1, Math.floor(m.steps || 50))),
+        rate: m.rate || 0.015,
+      };
+      scheduleTraining();
     }
     if (m.type === 'sample') {
       context = m.context;

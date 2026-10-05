@@ -17,6 +17,7 @@ interface Props {
   locale?: Locale;
   topic?: Topic;
   noindex?: boolean;
+  languageSwitchPath?: string;
 }
 const { locale = 'zh' } = Astro.props;
 const tr = (s: string) => translate(s, locale);
@@ -27,7 +28,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(`/social/${Astro.props.topic?.slug ?? 'home'}.png`, Astro.site);
 const schema = pageSchema(Astro.url.pathname, locale, Astro.props.topic);
 const home = localPath('/', locale);
-const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
+const alternate = localPath(
+  Astro.props.languageSwitchPath ?? Astro.url.pathname,
+  locale === 'en' ? 'zh' : 'en',
+);
 ---
 
 <!doctype html>
@@ -74,26 +78,34 @@ const alternate = localPath(Astro.url.pathname, locale === 'en' ? 'zh' : 'en');
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_CN'} />
     <link rel="canonical" href={canonical} />
-    <link
-      rel="alternate"
-      hreflang="zh-CN"
-      href={new URL(localPath(Astro.url.pathname, 'zh'), Astro.site)}
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href={new URL(localPath(Astro.url.pathname, 'en'), Astro.site)}
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={new URL(
-        ['/', '/zh/', '/en/'].includes(Astro.url.pathname)
-          ? '/'
-          : localPath(Astro.url.pathname, 'en'),
-        Astro.site,
-      )}
-    />
+    {
+      !Astro.props.noindex && (
+        <>
+          <link
+            rel="alternate"
+            hreflang="zh-CN"
+            href={new URL(localPath(Astro.url.pathname, 'zh'), Astro.site)}
+          />
+          <link
+            rel="alternate"
+            hreflang="en"
+            href={new URL(localPath(Astro.url.pathname, 'en'), Astro.site)}
+          />
+          <link
+            rel="alternate"
+            hreflang="x-default"
+            href={
+              new URL(
+                ['/', '/zh/', '/en/'].includes(Astro.url.pathname)
+                  ? '/'
+                  : localPath(Astro.url.pathname, 'en'),
+                Astro.site,
+              )
+            }
+          />
+        </>
+      )
+    }
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
   </head>

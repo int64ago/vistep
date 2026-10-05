@@ -36,6 +36,15 @@ assert.equal(pages.length, urls.length, 'Sitemap omits or invents pages');
 function attr(tag, name) {
   return tag.match(new RegExp(`\\b${name}="([^"]*)"`))?.[1];
 }
+function checkInternalLinks(html, entry) {
+  for (const match of html.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)) {
+    const path = decodeURI(match[1]);
+    assert(
+      existsSync(join(directory, path)) || existsSync(join(directory, path, 'index.html')),
+      `Broken asset/link ${path} in ${entry}`,
+    );
+  }
+}
 for (const entry of urls) {
   const url = new URL(entry);
   assert.equal(url.origin, origin);
@@ -62,13 +71,7 @@ for (const entry of urls) {
     const alternate = attr(links.find((tag) => attr(tag, 'hreflang') === language) || '', 'href');
     assert(urls.includes(alternate), `Broken ${language} alternate: ${entry}`);
   }
-  for (const match of html.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)) {
-    const path = decodeURI(match[1]);
-    assert(
-      existsSync(join(directory, path)) || existsSync(join(directory, path, 'index.html')),
-      `Broken asset/link ${path} in ${entry}`,
-    );
-  }
+  checkInternalLinks(html, entry);
   const metas = html.match(/<meta\b[^>]*>/g) || [];
   const meta = (name) =>
     attr(
@@ -109,6 +112,7 @@ for (const entry of urls) {
   assert(!/TODO|PLACEHOLDER/.test(html), `Unfinished content in ${entry}`);
 }
 assert(existsSync(join(directory, '404.html')), 'Missing static 404');
+checkInternalLinks(readFileSync(join(directory, '404.html'), 'utf8'), '404.html');
 console.log(
   `Build audit passed: ${urls.length} canonical bilingual pages, internal links/assets, sitemap, 404 and ${preview ? 'preview noindex' : 'production indexing'} policy.`,
 );

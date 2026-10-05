@@ -116,6 +116,7 @@ export default function Excavator() {
       stroke={pose.cylinders.boom.stroke}
       pascal={state.pascal}
       running={film.watch ? film.playing : true}
+      respectReducedMotion={!film.watch}
       variant={compact || !film.watch ? 'stacked' : 'overlay'}
     />
   );
