@@ -48,7 +48,12 @@ describe('external Geneva pin, slot and locking geometry', () => {
             const a = (j * 2 * Math.PI) / 90,
               x = r * Math.cos(a),
               y = r * Math.sin(a);
-            expect(genevaDriverContains(x, y, s) && genevaWheelContains(x, y, s)).toBe(false);
+            // Keep the full geometry sweep without allocating an assertion for every point.
+            if (genevaDriverContains(x, y, s) && genevaWheelContains(x, y, s)) {
+              throw new Error(
+                `Locking-disc collision: slots=${n}, input=${s.input}, x=${x}, y=${y}`,
+              );
+            }
           }
       }
   });
