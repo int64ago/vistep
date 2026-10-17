@@ -1,0 +1,43 @@
+---
+import { dft, fourierSamples, inverseReal, FOURIER_DEFAULT } from '../../models/fourier-transform';
+const bins = dft(fourierSamples(FOURIER_DEFAULT));
+const line = (k: number, y: number) =>
+  Array.from(
+    { length: 240 },
+    (_, i) =>
+      `${i ? 'L' : 'M'}${30 + (i / 239) * 340},${
+        y -
+        inverseReal(
+          bins.filter((b) => b.k <= k),
+          64,
+          i / 239,
+        ) *
+          24
+      }`,
+  ).join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#202a3d"></rect>{
+    [1, 3, 5].map((k, i) => (
+      <path
+        d={line(k, 45 + i * 58)}
+        stroke={['#9bd5e4', '#eda891', '#f2d89c'][i]}
+        stroke-width="2.5"
+      />
+    ))
+  }{
+    bins
+      .slice(0, 8)
+      .map((b) => (
+        <rect
+          x={30 + b.k * 45}
+          y={220 - b.amplitude * 33}
+          width="18"
+          height={Math.max(0.5, b.amplitude * 33)}
+          rx="3"
+          fill="#9bd5e4"
+        />
+      ))
+  }</svg
+>

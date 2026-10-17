@@ -1,0 +1,56 @@
+---
+import { lzEncode, LZ_TEXT } from '../../models/lz77';
+const { color = '#7fa69a' } = Astro.props;
+const run = lzEncode(LZ_TEXT);
+const token = run.tokens.find((t) => t.kind === 'match')!;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M20 70H380M20 144H380" stroke={color} opacity=".25"></path>
+  {
+    run.chars.slice(0, 11).map((c, i) => (
+      <g>
+        <>
+          <rect
+            x={23 + i * 33}
+            y="90"
+            width="29"
+            height="42"
+            rx="7"
+            fill={i >= token.at ? '#ecd1aa' : '#e1ece5'}
+            stroke={color}
+            opacity=".8"
+          />
+          <text
+            x={37 + i * 33}
+            y="118"
+            text-anchor="middle"
+            font-size="23"
+            font-family="monospace"
+            fill="#405956"
+          >
+            {c}
+          </text>
+          <text
+            x={37 + i * 33}
+            y="65"
+            text-anchor="middle"
+            font-size="14"
+            font-family="monospace"
+            fill={color}
+          >
+            {i}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  <path d="M263 154Q263 201 104 201Q38 201 38 151" stroke={color} stroke-width="2"></path><path
+    d="m32 158 6-9 6 9"
+    stroke={color}
+    stroke-width="2"></path>
+  <text x="132" y="181" font-size="18" font-family="monospace" fill="#9a784a"
+    >{token.kind === 'match' ? `(${token.distance}, ${token.length})` : ''}</text
+  >
+  <text x="23" y="31" font-size="16" font-family="monospace" fill={color}>LZ77 · COPY BACK</text>
+</svg>

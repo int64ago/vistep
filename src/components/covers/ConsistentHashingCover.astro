@@ -1,0 +1,89 @@
+---
+import {
+  ringBuild,
+  ringCompare,
+  ringPoint,
+  ringInterval,
+  ringArc,
+} from '../../models/consistent-hashing';
+const { color = '#9a94b5' } = Astro.props;
+const before = ringBuild(),
+  run = ringBuild(['A', 'B', 'C', 'D']),
+  changed = new Set(
+    ringCompare(before, run)
+      .filter((a) => a.changed)
+      .map((a) => a.key),
+  );
+const colors: Record<string, string> = { A: '#7b9f9b', B: '#9b9f70', C: color, D: '#c09359' };
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <g transform="translate(85 0) scale(.72)">
+    {
+      run.tokens.map((token) => {
+        const a = ringInterval(token, run.tokens);
+        return (
+          <path
+            d={ringArc(a.from, a.to)}
+            stroke={colors[token.node]}
+            stroke-width={token.node === 'D' ? 7 : 4}
+            opacity={token.node === 'D' ? 1 : 0.4}
+          />
+        );
+      })
+    }
+    {
+      run.assignments.map((a) => {
+        const p = ringPoint(a.position, 84);
+        return (
+          <circle
+            cx={p.x}
+            cy={p.y}
+            r={changed.has(a.key) ? 4 : 2.8}
+            fill={changed.has(a.key) ? '#c09359' : colors[a.owner]}
+          />
+        );
+      })
+    }
+    {
+      run.tokens.map((token) => {
+        const p = ringPoint(token.position, 110),
+          q = ringPoint(token.position, 137);
+        return (
+          <g>
+            <>
+              <circle cx={p.x} cy={p.y} r="7" fill={colors[token.node]} />
+              <text
+                x={q.x}
+                y={q.y + 7}
+                text-anchor="middle"
+                font-size="24"
+                font-family="monospace"
+                fill={colors[token.node]}
+              >
+                {token.node}
+              </text>
+            </>
+          </g>
+        );
+      })
+    }
+    <text x="160" y="157" text-anchor="middle" font-size="21" font-family="monospace" fill={color}
+      >+ D</text
+    ><text
+      x="160"
+      y="185"
+      text-anchor="middle"
+      font-size="20"
+      font-family="monospace"
+      fill="#ae874f">{changed.size}/32</text
+    >
+  </g>
+  <text x="19" y="26" fill={color} font-family="monospace" font-size="14">FIXED</text><text
+    x="19"
+    y="47"
+    fill={color}
+    font-family="monospace"
+    font-size="14">HASHES</text
+  >
+</svg>

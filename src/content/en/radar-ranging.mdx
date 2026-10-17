@@ -1,0 +1,31 @@
+<a id="understand"></a>
+
+## The returning pulse traveled twice
+
+Radar transmits an electromagnetic pulse and waits for the echo. Light speed times the measured delay gives outward plus return travel, so divide by two to obtain target range. Separate drawn tracks help follow the same line of sight. Motion is slowed for viewing while numerical timing retains the physical speed of light.
+
+A second target makes long normalized echo envelopes overlap. Shorter pulses separate nearby returns. The film then examines near-target receiver blanking and a late echo that belongs to an earlier transmission.
+
+<a id="try"></a>
+
+## Change range and pulse duration separately
+
+Move the target to shift its echo leading edge. Add another target ninety meters farther, then shorten the pulse to compare envelope separation. Change pulse interval to inspect unambiguous range. Exploration sliders support the keyboard; the player provides pause, replay and chapter seeking.
+
+<a id="deeper"></a>
+
+## Three different range scales
+
+<div className="formula">
+  R = cΔt / 2<br />
+  ΔR ≈ cτ / 2<br />
+  Runambiguous = cTrepetition / 2
+</div>
+
+Here c=299792458 m/s and τ is an unmodulated rectangular pulse duration. Roughly cτ/2 is a resolution scale for this waveform, not single-target measurement accuracy. Reception is blanked during transmission. A nearby echo can lose its leading edge; a surviving tail does not guarantee reliable timing.
+
+When echo delay exceeds the pulse interval, incorrectly timing it from the latest pulse gives a modulo apparent range. The film shows the true delay and subsequent transmission; it does not implement multiple-PRF ambiguity resolution.
+
+The one-dimensional stationary-target model calculates delay and positive normalized envelopes. It omits antenna patterns, radar cross section, coherent carrier phase, path loss, noise, threshold detection and matched filtering, and does not represent FMCW or pulse compression. Envelope heights therefore do not compare detection performance.
+
+Sources: [MathWorks: radar receiver simulation](https://www.mathworks.com/help/phased/ug/designing-a-basic-monostatic-pulse-radar.html), [MathWorks: pulse waveform analysis](https://www.mathworks.com/help/phased/ref/pulsewaveformanalyzer-app.html).

@@ -1,0 +1,24 @@
+<h2 id="understand">Replace repeated runs with backward references</h2>
+
+This LZ77 teaching stream contains literals and **〈backward distance, length〉** references. Distance is measured from the current output position. The decoder already has the earlier output and does not require a separately transmitted complete dictionary.
+
+The model exhaustively searches permitted distances and greedily chooses the longest match, preferring the nearest source on ties. Defaults are twelve history characters and match lengths three to eighteen. It operates on Unicode characters for teaching. Actual DEFLATE operates on bytes, with distances up to 32768 and lengths up to 258.
+
+<h2 id="try">Shrink the remembered history</h2>
+
+In exploration, edit the input, adjust the history window, and inspect a token. Character indices, source highlights, distances, lengths and the exact reconstructed result update together. Try `ABABABABABAB`: two literals followed by a distance-two, length-ten reference.
+
+Overlapping references copy sequentially. Each appended character immediately becomes available as a source. A fixed snapshot of the original source is insufficient. Empty input is valid. The UI permits sixty UTF-16 code units; the model accepts ninety-six Unicode characters.
+
+<h2 id="deeper">A token stream is not a file size</h2>
+
+<details>
+<summary>Greedy parsing, window bounds and overhead</summary>
+
+The longest-match rule is a reproducible local strategy, not a guarantee of minimum encoded size. Actual costs depend on the bit encoding of each length and distance, headers, boundaries and block selection. Character and token counts are shown; **a token count is not a byte count**.
+
+The window limits starting positions, while overlap allows copy length to exceed distance. A smaller window forgets distant repeats. DEFLATE further Huffman-codes literals, lengths and distances. This scene does not implement the complete format or claim optimal parsing.
+
+</details>
+
+Source: [RFC 1951 §3.2.3](https://www.rfc-editor.org/rfc/rfc1951#section-3.2.3).

@@ -2,7 +2,7 @@
 
 [简体中文](zh-CN/catalog.md) · [Documentation](README.md)
 
-The collection contains 82 registered explorations, each with Chinese and English articles, a directed film and synchronized recordings. The latest two (81–82) explain a body fat scale’s impedance-based estimate and an ear thermometer’s infrared measurement chain. Their [review record](qa-body-measurement.md) separates scientific checks, browser observations, recordings and remaining evidence gaps. Production publishes from the `main` deployment workflow. Bilingual listening and physical-phone review remain incomplete across the collection; publication does not imply full acceptance. Previous additions have their [six-scene review](qa-six-explorations.md), and earlier delivery is recorded in the [collection expansion record](expansion-50.md).
+The collection contains 102 registered explorations with bilingual articles, directed films and static recordings. The latest twenty (83–102) cover waves and matter, signals and imaging, information systems, rotating frames and solar eclipses. Their [review record](qa-twenty-explorations.md) distinguishes numerical checks, browser observations, transcription and remaining acceptance gaps. This batch is prepared locally; the review is not a production deployment record. Earlier additions have their [body-measurement review](qa-body-measurement.md) and [collection expansion record](expansion-50.md).
 
 Topics follow their main explanation. Heat and fluids have their own group; Earth and astronomy covers planetary and celestial phenomena. Jellyfish belongs to Heat & fluids because its film tracks water displacement, vortices and thrust. Weapon subjects share a dedicated context group. Related links and bilingual search aliases retain connections across fields.
 
@@ -30,7 +30,7 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 | Exploration                                                          | Film | Question                                                                        |
 | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
-| [Body fat scale](../src/content/en/body-fat-scale.mdx)               | 2:50 | How do four metal pads become a body-fat reading?                               |
+| [Body fat scale](../src/content/en/body-fat-scale.mdx)               | 2:50 | Does a body fat scale really see fat?                                           |
 | [NFC](../src/content/en/nfc.mdx)                                     | 2:48 | How does a tag answer without a battery?                                        |
 | [Lithium-ion battery](../src/content/en/lithium-battery.mdx)         | 3:06 | Why do lithium ions and electrons take different paths?                         |
 | [Solar cell](../src/content/en/solar-cell.mdx)                       | 3:19 | How can light on silicon drive current through an outside circuit?              |
@@ -45,30 +45,40 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 ## Light & waves
 
-| Exploration                                                   | Film | Question                                                       |
-| ------------------------------------------------------------- | ---- | -------------------------------------------------------------- |
-| [Ear thermometer](../src/content/en/ear-thermometer.mdx)      | 3:05 | Reading heat without sending a beam.                           |
-| [Instant camera](../src/content/en/instant-camera.mdx)        | 2:49 | Does the camera print the photo, or does the sheet develop it? |
-| [SLR & mirrorless](../src/content/en/slr-mirrorless.mdx)      | 3:10 | Why does a DSLR finder briefly go dark?                        |
-| [Myopia-control lenses](../src/content/en/myopia-lens.mdx)    | 2:47 | How do two components from one point reach the retina?         |
-| [Double-slit interference](../src/content/en/double-slit.mdx) | 2:48 | Why does a second slit make some places darker?                |
-| [Compound microscope](../src/content/en/microscope.mdx)       | 3:02 | The objective forms an image; the eyepiece magnifies it.       |
-| [Speaker](../src/content/en/speaker.mdx)                      | 3:07 | From a coil of copper to vibrating air.                        |
-| [Ultrasound imaging](../src/content/en/ultrasound.mdx)        | 3:02 | Sound travels in and back to reveal what lies beneath.         |
-| [Doppler effect](../src/content/en/doppler.mdx)               | 2:57 | Moving emission points change the rhythm of arrivals.          |
-| [Wave interference](../src/content/en/wave-interference.mdx)  | 2:59 | How does a material point move when two waves meet?            |
-| [Rainbows](../src/content/en/rainbow.mdx)                     | 2:59 | A ray turns. A bow appears.                                    |
-| [Diffraction](../src/content/en/diffraction.mdx)              | 3:00 | One opening, many field contributions.                         |
-| [Polarization](../src/content/en/polarization.mdx)            | 2:57 | Two filters go dark. Three let light through.                  |
-| [Optical fiber](../src/content/en/optical-fiber.mdx)          | 3:00 | A path for light. A path for information.                      |
-| [Camera lenses](../src/content/en/camera-lens.mdx)            | 2:40 | Sharpness is a meeting of light.                               |
-| [Aperture and depth of field](../src/content/en/aperture.mdx) | 2:48 | One flower. Two ways to see it.                                |
-| [Active noise control](../src/content/en/noise.mdx)           | 3:11 | Sound can cancel sound.                                        |
+| Exploration                                                    | Film | Question                                                       |
+| -------------------------------------------------------------- | ---- | -------------------------------------------------------------- |
+| [Lidar ranging](../src/content/en/lidar-ranging.mdx)           | 3:04 | How do range and direction become a point cloud?               |
+| [Pulsed radar](../src/content/en/radar-ranging.mdx)            | 3:07 | What can a few microseconds of round-trip time tell us?        |
+| [Bayer sensor](../src/content/en/bayer-sensor.mdx)             | 3:07 | How can one measured channel become three?                     |
+| [Rolling shutter](../src/content/en/rolling-shutter.mdx)       | 3:05 | Does one photograph capture one instant?                       |
+| [Sampling & aliasing](../src/content/en/sampling-aliasing.mdx) | 2:53 | How can a fast signal masquerade as a slow change?             |
+| [Standing wave](../src/content/en/standing-wave.mdx)           | 2:43 | How do traveling waves make a stationary pattern?              |
+| [Beats](../src/content/en/beats.mdx)                           | 2:43 | Why do two steady tones swell and fade?                        |
+| [Resonance](../src/content/en/resonance.mdx)                   | 2:43 | How does a small push build a large motion?                    |
+| [Ear thermometer](../src/content/en/ear-thermometer.mdx)       | 3:05 | Whose temperature does the probe receive?                      |
+| [Instant camera](../src/content/en/instant-camera.mdx)         | 2:49 | Does the camera print the photo, or does the sheet develop it? |
+| [SLR & mirrorless](../src/content/en/slr-mirrorless.mdx)       | 3:10 | Why does a DSLR finder briefly go dark?                        |
+| [Myopia-control lenses](../src/content/en/myopia-lens.mdx)     | 2:47 | How do two components from one point reach the retina?         |
+| [Double-slit interference](../src/content/en/double-slit.mdx)  | 2:48 | Why does a second slit make some places darker?                |
+| [Compound microscope](../src/content/en/microscope.mdx)        | 3:02 | The objective forms an image; the eyepiece magnifies it.       |
+| [Speaker](../src/content/en/speaker.mdx)                       | 3:07 | From a coil of copper to vibrating air.                        |
+| [Ultrasound imaging](../src/content/en/ultrasound.mdx)         | 3:02 | Sound travels in and back to reveal what lies beneath.         |
+| [Doppler effect](../src/content/en/doppler.mdx)                | 2:57 | Moving emission points change the rhythm of arrivals.          |
+| [Wave interference](../src/content/en/wave-interference.mdx)   | 2:59 | How does a material point move when two waves meet?            |
+| [Rainbows](../src/content/en/rainbow.mdx)                      | 2:59 | A ray turns. A bow appears.                                    |
+| [Diffraction](../src/content/en/diffraction.mdx)               | 3:00 | One opening, many field contributions.                         |
+| [Polarization](../src/content/en/polarization.mdx)             | 2:57 | Two filters go dark. Three let light through.                  |
+| [Optical fiber](../src/content/en/optical-fiber.mdx)           | 3:00 | A path for light. A path for information.                      |
+| [Camera lenses](../src/content/en/camera-lens.mdx)             | 2:40 | Sharpness is a meeting of light.                               |
+| [Aperture and depth of field](../src/content/en/aperture.mdx)  | 2:48 | One flower. Two ways to see it.                                |
+| [Active noise control](../src/content/en/noise.mdx)            | 3:11 | Sound can cancel sound.                                        |
 
 ## Heat & fluids
 
 | Exploration                                                | Film | Question                                                                                      |
 | ---------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------- |
+| [Capillary action](../src/content/en/capillary.mdx)        | 2:47 | How does liquid climb without a pump?                                                         |
+| [Osmosis](../src/content/en/osmosis.mdx)                   | 2:45 | Why does water rise behind a solute-blocking membrane?                                        |
 | [Jellyfish](../src/content/en/jellyfish.mdx)               | 2:54 | Why can a jelly keep gaining speed after its bell stops?                                      |
 | [Diffusion](../src/content/en/diffusion.mdx)               | 3:06 | How does a concentration patch become uniform in a motionless medium?                         |
 | [Brownian motion](../src/content/en/brownian-motion.mdx)   | 3:02 | How can one random path reveal a reliable statistical law?                                    |
@@ -83,6 +93,12 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 | Exploration                                                    | Film | Question                                                              |
 | -------------------------------------------------------------- | ---- | --------------------------------------------------------------------- |
+| [Consistent hashing](../src/content/en/consistent-hashing.mdx) | 3:15 | Which keys move when one machine is added?                            |
+| [Congestion control](../src/content/en/congestion-control.mdx) | 3:18 | How does a sender detect congestion and back off?                     |
+| [TCP reliability](../src/content/en/tcp-reliability.mdx)       | 3:19 | How does TCP build a reliable stream over an unreliable network?      |
+| [Bloom filter](../src/content/en/bloom-filter.mdx)             | 3:07 | Why is absence certain, while presence is only possible?              |
+| [Sliding-window compression](../src/content/en/lz77.mdx)       | 3:18 | Why write the same run twice?                                         |
+| [Huffman coding](../src/content/en/huffman.mdx)                | 3:00 | How can fewer bits preserve every symbol?                             |
 | [eSIM](../src/content/en/esim.mdx)                             | 2:24 | How does a scan deliver a subscription into a secure chip?            |
 | [CPU, GPU and NPU](../src/content/en/cpu-gpu-npu.mdx)          | 2:54 | Why do we need three kinds of processor for one task?                 |
 | [Cells and handover](../src/content/en/cell-handover.mdx)      | 2:51 | Why doesn't a call drop while you move?                               |
@@ -104,20 +120,24 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 
 ## Earth & astronomy
 
-| Exploration                                      | Film | Question                                                       |
-| ------------------------------------------------ | ---- | -------------------------------------------------------------- |
-| [Tides](../src/content/en/tides.mdx)             | 3:22 | With the Moon on one side, why can the sea rise on both sides? |
-| [Seasons](../src/content/en/seasons.mdx)         | 3:01 | Follow one shadow through the seasons of two hemispheres.      |
-| [Moon phases](../src/content/en/moon-phases.mdx) | 2:57 | One Moon. A changing view.                                     |
+| Exploration                                               | Film | Question                                                       |
+| --------------------------------------------------------- | ---- | -------------------------------------------------------------- |
+| [Seismic body waves](../src/content/en/seismic-waves.mdx) | 2:46 | Does rock travel with a seismic wave?                          |
+| [Solar eclipse](../src/content/en/solar-eclipse.mdx)      | 3:07 | What can a top-view alignment still hide?                      |
+| [Coriolis effect](../src/content/en/coriolis.mdx)         | 3:10 | Does the motion change, or do the observing coordinates?       |
+| [Tides](../src/content/en/tides.mdx)                      | 3:22 | With the Moon on one side, why can the sea rise on both sides? |
+| [Seasons](../src/content/en/seasons.mdx)                  | 3:01 | Follow one shadow through the seasons of two hemispheres.      |
+| [Moon phases](../src/content/en/moon-phases.mdx)          | 2:57 | One Moon. A changing view.                                     |
 
 ## Math & systems
 
-| Exploration                                           | Film | Question                           |
-| ----------------------------------------------------- | ---- | ---------------------------------- |
-| [GPS positioning](../src/content/en/gps.mdx)          | 3:14 | That blue dot is calculated.       |
-| [Higher dimensions](../src/content/en/dimensions.mdx) | 3:19 | A new angle reveals more.          |
-| [Lift scheduling](../src/content/en/elevator.mdx)     | 3:20 | Everyone has a different way home. |
-| [Phantom traffic jams](../src/content/en/traffic.mdx) | 3:19 | One small brake. A growing queue.  |
+| Exploration                                                      | Film | Question                                    |
+| ---------------------------------------------------------------- | ---- | ------------------------------------------- |
+| [Fourier decomposition](../src/content/en/fourier-transform.mdx) | 3:00 | Which frequencies are hidden in a waveform? |
+| [GPS positioning](../src/content/en/gps.mdx)                     | 3:14 | That blue dot is calculated.                |
+| [Higher dimensions](../src/content/en/dimensions.mdx)            | 3:19 | A new angle reveals more.                   |
+| [Lift scheduling](../src/content/en/elevator.mdx)                | 3:20 | Everyone has a different way home.          |
+| [Phantom traffic jams](../src/content/en/traffic.mdx)            | 3:19 | One small brake. A growing queue.           |
 
 ## Weapons & safety
 
@@ -127,5 +147,3 @@ Topics follow their main explanation. Heat and fluids have their own group; Eart
 | [AK-47](../src/content/en/ak47.mdx)                  | 2:50 | How does a pulse of gas become a return journey?                                  |
 | [Hydrogen bomb](../src/content/en/hydrogen-bomb.mdx) | 3:30 | Why does lighting fusion take a fission explosion first?                          |
 | [Atomic bomb](../src/content/en/atomic-bomb.mdx)     | 4:03 | Why does a lump of uranium explode once it is big enough?                         |
-
-Durations use the measured shared film timeline, rounded down to the displayed whole second. Links open the article source in the corresponding language, including model scope, teaching simplifications and references.

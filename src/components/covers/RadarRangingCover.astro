@@ -1,0 +1,57 @@
+---
+import {
+  radarDelay,
+  radarEcho,
+  radarPulseSegments,
+  RADAR_DEFAULT,
+} from '../../models/radar-ranging';
+const s = { ...RADAR_DEFAULT, second: 690, pulse: 0.00000025 };
+const time = 3.3e-6,
+  rangeX = (range: number) => 40 + (range / 800) * 300;
+const pulses = [s.range, s.second].flatMap((range) => radarPulseSegments(range, time, s.pulse));
+const line = Array.from(
+  { length: 801 },
+  (_, i) => `${i ? 'L' : 'M'}${30 + (i / 800) * 340},${202 - radarEcho((i / 800) * s.pri, s) * 43}`,
+).join(' ');
+---
+
+<svg
+  viewBox="0 0 400 230"
+  width="400"
+  height="230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <rect width="400" height="230" fill="#182f3e"></rect>
+  <path
+    d={`M40 83V68H${rangeX(s.second)}V128H40V113`}
+    stroke="#8da6b6"
+    stroke-width="2"
+    opacity=".4"></path>
+  {
+    pulses.map((p) => (
+      <path
+        d={`M${rangeX(p.a)} ${p.returning ? 128 : 68}H${rangeX(p.b)}`}
+        stroke={p.returning ? '#eda891' : '#9bd5e4'}
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+    ))
+  }
+  <circle cx="40" cy="98" r="15" fill="#305466" stroke="#9bd5e4"></circle>
+  {
+    [s.range, s.second].map((range) => (
+      <path
+        d={`M${rangeX(range)} 47V145`}
+        stroke="#d9e8e7"
+        stroke-width="4"
+        stroke-linecap="round"
+      />
+    ))
+  }
+  <path d={line} stroke="#f2d89c" stroke-width="2.5"></path>
+  <text x="40" y="33" fill="#cbdbe4" font-size="18">R = c * dt / 2</text>
+  <path d={`M${30 + (radarDelay(s.range) / s.pri) * 340} 153V210`} stroke="#9bd5e4" opacity=".25"
+  ></path>
+</svg>

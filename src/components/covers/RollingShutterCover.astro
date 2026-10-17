@@ -1,0 +1,43 @@
+---
+import { rollingPixel, ROLLING_DEFAULT } from '../../models/rolling-shutter';
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#1c303d"></rect><rect
+    x="34"
+    y="24"
+    width="238"
+    height="184"
+    rx="12"
+    fill="#284a5b"></rect>{
+    Array.from({ length: 36 }, (_, j) =>
+      Array.from({ length: 64 }, (_, i) => {
+        const v = rollingPixel((i + 0.5) / 64, j / 35, ROLLING_DEFAULT);
+        return (
+          v.occupancy > 0.001 && (
+            <rect
+              x={34 + (i * 238) / 64}
+              y={24 + (j * 184) / 36}
+              width={238 / 64 + 0.1}
+              height={184 / 36 + 0.1}
+              fill="#dce9e5"
+              opacity={v.occupancy}
+            />
+          )
+        );
+      }),
+    )
+  }<path d="M153 30V202" stroke="#f2d89c" stroke-dasharray="3 5" opacity=".35"></path>{
+    [0, 1, 2, 3, 4, 5].map((i) => (
+      <rect
+        x={294 + i * 7}
+        y={36 + i * 27}
+        width="30"
+        height="8"
+        rx="4"
+        fill="#9bd5e4"
+        opacity={0.35 + i * 0.1}
+      />
+    ))
+  }<path d="M294 207H370" stroke="#9bd5e4" opacity=".4"></path></svg
+>

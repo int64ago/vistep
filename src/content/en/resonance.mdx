@@ -1,0 +1,21 @@
+<h2 id="understand">How can a small push build a large motion?</h2>
+
+Give a spring-mounted mass a displacement and release it. Its free motion reveals a natural rhythm. With a repeating applied force, the eventual motion follows the driving frequency, while its amplitude depends on frequency and damping.
+
+The gold segment is the applied force. The power strip is calculated from force times velocity. A force along the motion adds energy; a force against it removes energy. Near the natural frequency, successive cycles can supply energy efficiently. Damping removes energy until the input and loss balance over a cycle.
+
+<h2 id="try">Keep the push and change its rhythm</h2>
+
+After the film, use exploration to vary frequency and damping. The time control reconstructs the exact motion from rest, including the growing transient.
+
+- Compare frequency ratios of 0.5 and 1 with the same applied force.
+- Keep the ratio at 1 and increase damping. The steady response falls.
+- Raise the ratio to 1.7. The displacement increasingly opposes the applied force.
+
+<h2 id="deeper">The displacement peak is slightly shifted</h2>
+
+The model solves m x″ + b x′ + k x = F₀ cos(ωt), with m = 1 kg and f₀ = 1 Hz. The damping ratio is ζ = b/(2√(mk)). The fixed force satisfies F₀/k = 0.2 m. All shots use the same displacement scale.
+
+The steady amplitude is A = (F₀/k) / √[(1−r²)²+(2ζr)²], where r = f/f₀. For light damping, its maximum occurs at r = √(1−2ζ²), slightly below 1. The demonstration therefore distinguishes a peak near the natural frequency from an exact universal equality.
+
+Instantaneous input power is Fv and dissipated power is b v². The frequency scan compares independent steady solutions rather than pretending to simulate a fast sweep. Large-deformation nonlinearities, dry friction and structural failure are outside this linear, single-mode teaching model.

@@ -1,0 +1,352 @@
+.cc-study {
+  padding: 24px 30px;
+  min-height: 470px;
+  background: linear-gradient(145deg, #fbfaf4, #f2f0e7);
+  border-radius: 24px;
+  color: #545b4e;
+  font-size: 16px;
+}
+.cc-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  letter-spacing: 0.035em;
+  color: #939980;
+}
+.cc-round {
+  display: flex;
+  justify-content: space-between;
+  margin: 26px 0 22px;
+  gap: 12px;
+}
+.cc-round b {
+  color: #ad8a52;
+  font-size: 18px;
+}
+.cc-channel {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.cc-sender,
+.cc-bottleneck {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.cc-sender b,
+.cc-bottleneck b {
+  font: 39px monospace;
+  color: #869a74;
+}
+.cc-sender small,
+.cc-bottleneck small {
+  font-size: 16px;
+  color: #9aa38a;
+}
+.cc-bottleneck {
+  border-left: 3px solid #c0aa7c;
+  border-radius: 2px;
+  padding-left: 15px;
+}
+.cc-bottleneck b {
+  color: #b39159;
+}
+.cc-reservoir {
+  display: grid;
+  gap: 12px;
+  text-align: center;
+}
+.cc-reservoir > span {
+  color: #89957b;
+}
+.cc-reservoir small {
+  font-size: 16px;
+  color: #939b82;
+}
+.cc-slots {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid #d3d8c5;
+  border-radius: 13px;
+  background: #f9f9ed;
+}
+.cc-slots i {
+  height: 34px;
+  border-radius: 5px;
+  border: 1px dashed #d5d9c9;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  min-width: 0;
+}
+.cc-slots b {
+  font: 16px monospace;
+  color: #b6bcaa;
+}
+.cc-slots [data-filled='true'] {
+  background: #c8d2b5;
+  border: 1px solid #a8b98c;
+}
+.cc-slots [data-filled='true'] b {
+  color: #64764c;
+}
+.cc-queue-cause {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  gap: 18px;
+  margin: 48px 0 25px;
+}
+.cc-queue-cause strong {
+  font: 55px monospace;
+  color: #b58b53;
+}
+.cc-study p {
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+  margin: 22px auto 0;
+  max-width: 45em;
+}
+.cc-queue-cause p {
+  margin: 0;
+}
+.cc-queue-cause > span {
+  color: #969c85;
+  line-height: 1.6;
+}
+.cc-chart {
+  margin-top: 30px;
+}
+.cc-chart-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cc-chart-label b {
+  font: 18px monospace;
+  color: #a6804b;
+}
+.cc-chart svg {
+  width: 100%;
+  height: 145px;
+  margin-top: 8px;
+  overflow: visible;
+}
+.cc-axis {
+  stroke: #bfc7b6;
+  stroke-width: 1;
+  fill: none;
+}
+.cc-grid {
+  stroke: #dfe4d4;
+  stroke-width: 0.6;
+}
+.cc-threshold {
+  stroke: #baa371;
+  stroke-width: 0.8;
+  stroke-dasharray: 4 5;
+}
+.cc-window-line {
+  fill: none;
+  stroke: #869c69;
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.cc-cursor {
+  fill: #819a64;
+}
+.cc-loss-dot {
+  fill: #bb8c57;
+}
+.cc-axis-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #98a08a;
+  font-size: 16px;
+}
+.cc-axis-labels span:nth-child(2) {
+  color: #ba915f;
+}
+.cc-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 24px;
+}
+.cc-compare > div {
+  display: grid;
+  gap: 9px;
+  text-align: center;
+}
+.cc-compare b {
+  font: 32px monospace;
+  color: #b18c53;
+}
+.cc-compare small {
+  font-size: 16px;
+  margin-left: 8px;
+}
+.cc-compare i {
+  font-size: 16px;
+  font-style: normal;
+  color: #929c83;
+}
+.cc-study footer {
+  font-size: 16px;
+  color: #969e88;
+  line-height: 1.55;
+  margin-top: 22px;
+  text-align: center;
+}
+.cc-controls {
+  display: grid;
+  gap: 12px;
+  margin-top: 25px;
+  padding-top: 24px;
+  border-top: 1px solid #d2d9c4;
+}
+.cc-controls button,
+.cc-controls input {
+  min-height: 44px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #c6cfb5;
+  border-radius: 9px;
+  background: #f8f9ec;
+  color: inherit;
+}
+.cc-controls button {
+  padding: 10px 15px;
+}
+.cc-controls input[type='range'] {
+  padding: 0;
+}
+@media (max-width: 600px) {
+  .cc-study {
+    padding: 20px 12px;
+    min-height: 440px;
+  }
+  .cc-study header {
+    letter-spacing: 0;
+  }
+  .cc-study header span:first-child {
+    max-width: 51%;
+  }
+  .cc-study header span:last-child {
+    text-align: right;
+    max-width: 47%;
+  }
+  .cc-round {
+    margin: 22px 0 20px;
+    align-items: center;
+  }
+  .cc-round b {
+    font-size: 16px;
+    text-align: right;
+  }
+  .cc-channel {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .cc-reservoir {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+  .cc-sender,
+  .cc-bottleneck {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .cc-sender b,
+  .cc-bottleneck b {
+    font-size: 30px;
+  }
+  .cc-bottleneck {
+    border-left-width: 2px;
+    padding-left: 6px;
+  }
+  .cc-slots {
+    padding: 9px;
+    gap: 5px;
+  }
+  .cc-slots i {
+    height: 33px;
+  }
+  .cc-chart {
+    margin-top: 24px;
+  }
+  .cc-chart-label {
+    font-size: 16px;
+  }
+  .cc-chart-label b {
+    font-size: 16px;
+  }
+  .cc-chart svg {
+    height: 125px;
+  }
+  .cc-queue-cause {
+    margin: 32px 0 20px;
+    gap: 15px;
+  }
+  .cc-queue-cause strong {
+    font-size: 45px;
+  }
+  .cc-compare {
+    gap: 15px;
+  }
+  .cc-compare b {
+    font-size: 28px;
+  }
+  .cc-compare small {
+    display: block;
+    margin: 6px 0 0;
+  }
+  .cc-study footer {
+    margin-top: 20px;
+  }
+}
+
+.cc-study footer details {
+  border-top: 1px solid #d2d9c4;
+  text-align: left;
+}
+.cc-study footer summary {
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 44px;
+  color: #777f67;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.cc-study footer summary:hover {
+  background-color: #ffffff55;
+}
+.cc-study footer summary:focus-visible {
+  outline: 2px solid #777f67;
+  outline-offset: 2px;
+}
+.cc-study footer p {
+  margin: 8px 8px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cc-study footer summary {
+    transition: none;
+  }
+}

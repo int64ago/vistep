@@ -1,0 +1,161 @@
+.beats-scene {
+  max-width: 960px;
+  padding: 22px 24px 16px;
+  margin: auto;
+  border-radius: 24px;
+  background: linear-gradient(140deg, #f8f1e7, #f5f5ed 50%, #ecefe6);
+  color: #63584a;
+}
+.beats-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+}
+.beats-top b {
+  font-size: 25px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.beats-top small {
+  font-size: 16px;
+  font-weight: 500;
+}
+.beats-scene svg {
+  display: block;
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+}
+.beats-scene svg text {
+  font-family: inherit;
+  font-size: 18px;
+  fill: #665f50;
+}
+.beats-scene svg path {
+  fill: none;
+}
+.beats-scene .beats-a {
+  stroke: #427f89;
+  fill: #427f89;
+}
+.beats-scene .beats-b {
+  stroke: #be785c;
+  fill: #be785c;
+}
+.beats-scene path.beats-a,
+.beats-scene path.beats-b {
+  fill: none;
+  stroke-width: 2;
+}
+.beats-axis {
+  stroke: #c7c7ba;
+  stroke-width: 1;
+}
+.beats-sum {
+  stroke: #6f6950;
+  stroke-width: 2;
+}
+.beats-envelope {
+  stroke: #ab875b;
+  stroke-width: 2;
+}
+.beats-phase {
+  display: grid;
+  grid-template-columns: auto 1fr 48px;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+}
+.beats-phase b {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.beats-phase-track {
+  height: 6px;
+  border-radius: 99px;
+  background: #dfd9c9;
+  overflow: hidden;
+}
+.beats-phase-track i {
+  display: block;
+  height: 100%;
+  background: #ad8658;
+  border-radius: 99px;
+}
+.beats-note {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 14px 0 0;
+  color: #7b735e;
+}
+.beats-controls {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+}
+.beats-controls input {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .beats-scene {
+    padding: 18px 12px 14px;
+    border-radius: 18px;
+  }
+  .beats-top {
+    display: grid;
+    gap: 6px;
+  }
+  .beats-top b {
+    font-size: 23px;
+  }
+  .beats-scene svg {
+    max-height: none;
+  }
+  .beats-scene svg text {
+    font-size: 16px;
+  }
+  .beats-phase {
+    gap: 8px;
+    grid-template-columns: auto 1fr 42px;
+  }
+}
+
+.beats-scene .control,
+.beats-scene .control output,
+.beats-scene .control small {
+  font-size: 16px;
+}
+
+.beats-scene .beats-model-note {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.beats-scene .beats-model-note summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 10px 4px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.beats-scene .beats-model-note summary:hover {
+  background-color: #ffffff50;
+}
+.beats-scene .beats-model-note summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.beats-scene .beats-model-note p {
+  margin: 4px 0 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .beats-scene .beats-model-note summary {
+    transition: none;
+  }
+}

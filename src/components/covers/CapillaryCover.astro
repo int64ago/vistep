@@ -1,0 +1,37 @@
+---
+import { capillaryDefault, capillaryEquilibrium, capillaryMeniscus } from '../../models/capillary';
+const tubes = [
+  { x: 128, r: 0.00035 },
+  { x: 278, r: 0.0007 },
+].map((t) => {
+  const h = capillaryEquilibrium({ ...capillaryDefault, radius: t.r }).height,
+    half = 14 + t.r * 16000,
+    y = 167 - h * 2100,
+    line = capillaryMeniscus(half, 20)
+      .map((p, i) => `${i ? 'L' : 'M'}${t.x + p.x} ${y - p.z}`)
+      .join(' ');
+  return { ...t, h, half, y, line };
+});
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" aria-hidden="true"
+  ><path d="M0 0H400V230H0Z" fill="#eef5e9"></path><path
+    d="M20 167H380V206Q380 218 368 218H32Q20 218 20 206Z"
+    fill="#d2e8dd"></path><path d="M20 167H380" stroke="#8db5a1" stroke-width="2"></path>{
+    tubes.map((t) => (
+      <g>
+        <>
+          <path
+            d={`M${t.x - t.half - 3} 24V207M${t.x + t.half + 3} 24V207`}
+            stroke="#bbd2ca"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <path d={`${t.line}L${t.x + t.half} 207H${t.x - t.half}Z`} fill="#b6dace" />
+          <path d={t.line} fill="none" stroke="#5c9b8a" stroke-width="2" />
+          <path d={`M${t.x + t.half + 16} 167V${t.y}`} stroke="#bc995c" stroke-dasharray="3 4" />
+        </>
+      </g>
+    ))
+  }</svg
+>

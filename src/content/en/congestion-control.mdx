@@ -1,0 +1,26 @@
+<h2 id="understand">Service capacity is different from a send window</h2>
+
+The bottleneck serves at most four packets per round, with eight queue slots. Extra sending grows the queue or overflows it without increasing service capacity. Packet identities persist under FIFO service. New sends account for unacknowledged packets still in the queue.
+
+The scene aggregates feedback into RTT-sized rounds to explain slow start and AIMD. Slow start adds one MSS per new ACK. At the threshold, an ACK adds about `1/W` MSS. On overflow the threshold becomes `max(FlightSize/2, 2)`, and the displayed window is the post-recovery value. Fractional windows affect later updates; the integer part bounds actual sends.
+
+<h2 id="try">Change service and storage separately</h2>
+
+Exploration toggles feedback, changes packets served per round and queue capacity, and reconstructs any round. A nonresponsive sender holds a window of twelve; the responsive sender starts at the teaching value of one. The final comparison uses identical bottleneck settings and accumulates counts through the displayed round.
+
+The buffer chapter holds service and the observation round fixed while varying buffer capacity. Inspect the different overflow events, queue and window without confusing queue slots with bandwidth.
+
+<h2 id="deeper">Round aggregation and real TCP</h2>
+
+<details>
+<summary>Keep the causal rules and disclose the timing simplifications</summary>
+
+Each round enqueues new packets in order, records overflow, serves at most C packets, then resolves ACK and loss feedback together. Estimated queue wait is `queue/C` round trips. Sent packets are exactly accounted for as served, queued or dropped. This is not a packet-level RTT simulation.
+
+The model is inspired by RFC 5681’s ACK clock and AIMD. It omits three-duplicate-ACK detection, temporary Reno fast-recovery inflation, timeout collapse, RTT estimation, receiver windows, reliable retransmission, multiple-flow fairness, ECN and modern CUBIC/BBR. Dropped packets represent wasted work and are not retransmitted here. The curve is not a measured complete Reno trace.
+
+An initial window of one exposes the 1, 2, 4 sequence; it is not claimed to be a universal current default. RFC 6928 describes a larger experimental initial window. Real losses may also have causes other than queue overflow, which is the only loss cause modeled here.
+
+</details>
+
+Sources: [RFC 5681](https://www.rfc-editor.org/rfc/rfc5681), [RFC 6928](https://www.rfc-editor.org/rfc/rfc6928).

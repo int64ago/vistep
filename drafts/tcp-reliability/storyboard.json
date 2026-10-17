@@ -1,0 +1,62 @@
+{
+  "medium": "svg + HTML",
+  "duration": 160,
+  "chapters": [
+    {
+      "id": "bytes",
+      "visible": "Six byte ranges have fixed start/end sequence labels and 100-byte widths.",
+      "caption": "A 到 F 各占 100 字节，序号不随路径改变。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "ack",
+      "visible": "Unimpaired timeline with cumulative ACK and sender base advancing from actual events.",
+      "caption": "ACK 1100：下一期待字节是 1100。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "reorder",
+      "visible": "B arrival delayed; actual out-of-order buffer contains C/D before contiguous delivery drains it.",
+      "caption": "C、D 先到，等待 B 补齐缺口。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "loss",
+      "visible": "Actual first B transmission is lost; receive buffer and repeated next-expected value show the gap.",
+      "caption": "B 丢了；后续数据停在缺口后。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "retry",
+      "visible": "Same-sequence retry appears in amber; next pointer and delivered prefix advance from recovery events.",
+      "caption": "缺口补齐，累计确认向前跳。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "ack-loss",
+      "visible": "Single-segment trace loses its first ACK, then duplicates data; delivery remains exactly one A.",
+      "caption": "重复数据可以重到，应用只读一次。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "window",
+      "visible": "A two-segment limit changes actual scheduling; ACK arrivals trigger the next permitted sends.",
+      "caption": "确认前，最多保留两个未确认段。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "complete",
+      "visible": "Complete exact same loss trace reaches all six delivered ranges with no duplicate application delivery.",
+      "caption": "完整字节流，按原序且不重复。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+---
+import { eclipseFrame, ECLIPSE } from '../../models/solar-eclipse';
+const s = eclipseFrame({
+  distance: 360000,
+  longitude: 0.25,
+  nodeAngle: 0,
+  inclination: ECLIPSE.inclination,
+  observerOffset: 0,
+});
+const scale = 70 / s.sunAngular,
+  x = 200 + s.sky.x * scale,
+  y = 115 - s.sky.y * scale,
+  r = s.moonAngular * scale;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M0 0H400V230H0Z" fill="#152736"></path>
+  <circle cx="200" cy="115" r="90" fill="#dec294" opacity=".04"></circle>
+  <circle cx="200" cy="115" r="78" fill="#dec294" opacity=".06"></circle>
+  <circle cx="200" cy="115" r="70" fill="#edcc95"></circle>
+  <circle cx={x} cy={y} r={r} fill="#112330" stroke="#8a9fab" stroke-opacity=".25"></circle>
+  <path d="M130 207H270M130 203V211M270 203V211" stroke="#c2ad88" opacity=".55"></path>
+</svg>

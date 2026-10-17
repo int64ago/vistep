@@ -1,0 +1,45 @@
+<h2 id="understand">One puck, two valid trajectories</h2>
+
+After release, no horizontal force pushes the gold puck. A fixed camera records a straight path. A camera riding with a rotating table records a curved one. Both observations describe the same puck at the same times. The dots mark equal time intervals.
+
+The table camera changes orientation continuously. Rotate each table coordinate back by the angle through which the table has turned, and the straight trajectory returns. Coriolis acceleration is one term required when describing this motion in rotating coordinates. Together with centrifugal acceleration, it makes the rotating description agree with free motion in fixed coordinates.
+
+This is a plan-view coordinate instrument. We assume a frictionless support holds the puck in a horizontal plane; the drawing does not model frictional contact with the turning surface.
+
+<h2 id="try">Change one condition at a time</h2>
+
+- Enter exploration and set rotation to zero. Both camera choices should show the same trajectory.
+- Release from the centre, hold speed and elapsed time fixed, and reverse rotation. The relative trail mirrors itself.
+- Move the release away from the centre. Fixed-frame velocity now includes the inherited tangential velocity of that table location.
+- Pause and jump between chapters, then move elapsed time backwards. The exact coordinate transform reconstructs position without a hidden simulation history.
+
+<h2 id="deeper">A changing coordinate system</h2>
+
+<details>
+<summary>Transforming the same worldline</summary>
+
+Let Ω be constant angular velocity and R(θ) a planar rotation matrix. The initial position is r₀. A push u₀ relative to the table combines with the table's tangential velocity, giving fixed-frame initial velocity v₀ = u₀ + Ω × r₀.
+
+<div className="formula">r(t) = r₀ + v₀t　;　r′(t) = R(−Ωt) r(t)</div>
+
+Every position, dot and numerical reading comes from those equations. Neither trajectory is an independently drawn curve. Compare the change of viewpoint with [MIT's rotating-frame demonstration](https://ocw.mit.edu/courses/res-tll-004-stem-concept-videos-fall-2013/resources/rotating-frames-of-reference/).
+
+</details>
+
+<details>
+<summary>Two terms, one observed acceleration</summary>
+
+For a fixed rotation axis at constant speed, differentiating the rotating coordinates twice gives two apparent acceleration terms, even though the actual horizontal acceleration in the fixed frame is zero:
+
+<div className="formula">a′ = −2Ω × v′ − Ω × (Ω × r′)</div>
+
+The first, Coriolis acceleration, is perpendicular to relative velocity. The second, centrifugal acceleration, equals Ω²r′ in this plane. Their sum matches the second derivative of the displayed rotating trajectory. Both arrows share one drawing scale. They describe a coordinate transformation rather than two new contact forces. See [MIT's relative-motion lecture](https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/resources/mit16_07f09_lec08/).
+
+</details>
+
+<details>
+<summary>Where the analogy stops</summary>
+
+This model isolates rotating-coordinate geometry. Real winds also involve latitude, a spherical surface, pressure gradients, friction and timescales. Drain vortices can be dominated by container shape and initial disturbances. Neither system is simulated here. Changing the rotation control selects another constant-speed experiment; it does not model the Euler acceleration during a motor's speed change.
+
+</details>

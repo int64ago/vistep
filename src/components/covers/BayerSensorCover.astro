@@ -1,0 +1,43 @@
+---
+import {
+  bayerChannel,
+  bayerCss,
+  bayerRaw,
+  demosaicPixel,
+  BAYER_DEFAULT,
+} from '../../models/bayer-sensor';
+const n = 24,
+  raw = bayerRaw(BAYER_DEFAULT);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#1e3040"></rect>{
+    Array.from({ length: n * n }, (_, i) => {
+      const x = i % n,
+        y = Math.floor(i / n),
+        ch = bayerChannel(x, y),
+        v: [number, number, number] = [0, 0, 0];
+      v[ch] = raw[i];
+      return (
+        <rect
+          x={30 + x * 7.6}
+          y={24 + y * 7.6}
+          width="7.7"
+          height="7.7"
+          fill={bayerCss(x < 12 ? v : demosaicPixel(raw, x, y))}
+        />
+      );
+    })
+  }<path d="M121 16V214" stroke="#f2d89c" stroke-width="1.5"></path>{
+    [0, 1, 2, 3].map((i) => (
+      <rect
+        x={252 + (i % 2) * 43}
+        y={57 + Math.floor(i / 2) * 43}
+        width="36"
+        height="36"
+        rx="7"
+        fill={['#d78a80', '#91bb92', '#91bb92', '#88aace'][i]}
+      />
+    ))
+  }<text x="295" y="177" text-anchor="middle" fill="#cbdbe4" font-size="16">RGGB</text></svg
+>

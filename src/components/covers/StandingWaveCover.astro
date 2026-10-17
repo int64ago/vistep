@@ -1,0 +1,30 @@
+---
+import { standingDefault, standingWave, standingNodes } from '../../models/standing-wave';
+const c = { ...standingDefault, mode: 3 };
+const curve = (time: number) =>
+  Array.from(
+    { length: 241 },
+    (_, i) =>
+      `${i ? 'L' : 'M'}${30 + (i * 340) / 240},${123 - standingWave(c, i / 240, time).displacement * 1000}`,
+  ).join(' ');
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M0 0H400V230H0Z" fill="#f1f1e4"></path><path
+    d="M30 123H370"
+    stroke="#c7c5b2"
+    stroke-dasharray="3 5"></path><rect x="21" y="74" width="9" height="98" rx="4" fill="#b9b69f"
+  ></rect><rect x="370" y="74" width="9" height="98" rx="4" fill="#b9b69f"></rect><path
+    d={curve(0)}
+    stroke="#54847b"
+    stroke-width="3"></path><path
+    d={curve(1 / 60)}
+    stroke="#81a8a0"
+    stroke-width="2"
+    stroke-dasharray="4 4"></path>{
+    standingNodes(c).map((n) => (
+      <circle cx={30 + n * 340} cy="123" r="6" fill="#faf9ed" stroke="#777e67" stroke-width="2" />
+    ))
+  }<path d="M70 203h64m-8-5 8 5-8 5M330 203h-64m8-5-8 5 8 5" stroke="#ad8b57" stroke-width="2"
+  ></path></svg
+>

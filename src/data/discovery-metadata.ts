@@ -78,6 +78,246 @@ export type DiscoveryMetadata = {
 };
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  'seismic-waves': {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['地震纵横波', '地震', '纵波', '横波', 'P波', 'S波', '到时差'],
+      en: [
+        'Seismic body waves',
+        'earthquake',
+        'P wave',
+        'S wave',
+        'compression',
+        'shear',
+        'arrival time',
+      ],
+    },
+  },
+  osmosis: {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['渗透', '反渗透', '净水器', '半透膜', '渗透压', '水势'],
+      en: [
+        'Osmosis',
+        'reverse osmosis',
+        'water filter',
+        'semipermeable membrane',
+        'osmotic pressure',
+        'water potential',
+      ],
+    },
+  },
+  capillary: {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['毛细现象', '毛细管', '纸巾吸水', '表面张力', '接触角', 'Jurin定律'],
+      en: [
+        'Capillary action',
+        'capillary tube',
+        'paper towel',
+        'surface tension',
+        'contact angle',
+        'Jurin law',
+      ],
+    },
+  },
+  'bayer-sensor': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['拜耳传感器', '拜耳', '滤色阵列', 'RGGB', '去马赛克', '相机', '假色'],
+      en: ['Bayer sensor', 'color filter array', 'RGGB', 'demosaicing', 'false color', 'camera'],
+    },
+  },
+  'radar-ranging': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['雷达', '脉冲雷达', '回波', '飞行时间', '距离分辨率', '距离歧义'],
+      en: [
+        'Pulsed radar',
+        'radar',
+        'pulse radar',
+        'echo',
+        'time of flight',
+        'range resolution',
+        'range ambiguity',
+      ],
+    },
+  },
+  'lidar-ranging': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['激光雷达', '点云', '飞行时间', '扫描', '机器人', '遮挡'],
+      en: [
+        'Lidar ranging',
+        'lidar',
+        'point cloud',
+        'time of flight',
+        'laser scanner',
+        'robotics',
+        'occlusion',
+      ],
+    },
+  },
+  'bloom-filter': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['布隆过滤器', '为什么确定没有，却只能说可能有？', '集合查询', '误报', '位阵列'],
+      en: ['bloom filter', 'BloomFilter', 'membership query', 'false positive', 'bit array'],
+    },
+  },
+  'tcp-reliability': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['TCP 可靠传输', '网络不可靠，字节流怎样可靠？', '丢包重传', '累计确认', '字节流'],
+      en: ['tcp reliability', 'TcpReliability', 'retransmission', 'cumulative ACK', 'byte stream'],
+    },
+  },
+  'congestion-control': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: [
+        '拥塞控制',
+        '网络堵了，发送者怎样感知并退让？',
+        '网络堵塞',
+        '慢启动',
+        '拥塞窗口',
+        'AIMD',
+      ],
+      en: ['congestion control', 'CongestionControl', 'slow start', 'congestion window', 'AIMD'],
+    },
+  },
+  'consistent-hashing': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: [
+        '一致性哈希',
+        '扩容一台机器，哪些数据需要换家？',
+        '分布式缓存',
+        '数据迁移',
+        '虚拟节点',
+        '哈希环',
+      ],
+      en: [
+        'consistent hashing',
+        'ConsistentHashing',
+        'distributed cache',
+        'virtual nodes',
+        'hash ring',
+      ],
+    },
+  },
+  coriolis: {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['科里奥利效应', '旋转参照系', '转盘', '惯性', '偏转'],
+      en: ['Coriolis effect', 'rotating reference frame', 'turntable', 'inertia', 'deflection'],
+    },
+  },
+  'solar-eclipse': {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['日食', '日全食', '日环食', '本影', '半影', '轨道交点'],
+      en: [
+        'Solar eclipse',
+        'total eclipse',
+        'annular eclipse',
+        'umbra',
+        'penumbra',
+        'orbital node',
+      ],
+    },
+  },
+  resonance: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['秋千', '共振', '受迫振动', '阻尼', '固有频率'],
+      en: ['swing', 'resonance', 'forced oscillation', 'damping', 'natural frequency'],
+    },
+  },
+  beats: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['调音', '拍频', '干涉', '包络', '相位差'],
+      en: ['tuning', 'beats', 'interference', 'envelope', 'phase difference'],
+    },
+  },
+  'standing-wave': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['琴弦', '驻波', '谐波', '节点', '波腹'],
+      en: ['guitar string', 'standing wave', 'harmonic', 'node', 'antinode'],
+    },
+  },
+  'sampling-aliasing': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['采样混叠', '采样', '混叠', '奈奎斯特', '车轮倒转', '低通滤波'],
+      en: [
+        'Sampling & aliasing',
+        'sampling',
+        'aliasing',
+        'Nyquist',
+        'wagon wheel',
+        'anti alias filter',
+      ],
+    },
+  },
+  'fourier-transform': {
+    category: 'math-systems',
+    minAge: 14,
+    keywords: {
+      zh: ['傅里叶分解', '傅里叶', '频谱', '谐波', 'DFT', '相位', '频谱泄漏'],
+      en: [
+        'Fourier decomposition',
+        'Fourier transform',
+        'spectrum',
+        'harmonics',
+        'DFT',
+        'phase',
+        'spectral leakage',
+      ],
+    },
+  },
+  huffman: {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['哈夫曼编码', '不丢一个字，怎样少写一些位？', '无损压缩', '前缀码', '码树'],
+      en: ['Huffman coding', 'huffman', 'lossless compression', 'prefix code', 'frequency tree'],
+    },
+  },
+  lz77: {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['滑动窗口压缩', '重复出现，为什么不用再写一遍？', 'LZ77', '向后引用', '重叠复制'],
+      en: ['Sliding-window compression', 'lz77', 'back reference', 'overlapping copy'],
+    },
+  },
+  'rolling-shutter': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['卷帘快门', '果冻效应', '电子快门', '全局快门', '扫描', '运动模糊'],
+      en: ['rolling shutter', 'jello effect', 'global shutter', 'readout time', 'motion blur'],
+    },
+  },
   'body-fat-scale': {
     category: 'electricity',
     minAge: 12,

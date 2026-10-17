@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## Different times inside one image
+
+A rolling sensor begins and ends exposure row by row. A pole moving uniformly sideways remains straight at every instant, yet later rows record later positions. Their combined photograph leans. The gold dashed line is a stationary center guide rather than a corrected image.
+
+The film compares rolling and global exposure of the same motion. It independently changes row exposure, full-frame scan time and motion direction, then shows why a brief flash illuminates only overlapping rows.
+
+<a id="try"></a>
+
+## Change the two times separately
+
+Shorter row exposure sharpens edges without removing skew. A faster full-frame scan reduces skew. Negative speed reverses the lean. Zero scan time exposes all rows together. The flash button compares steady illumination with a 1.5 ms flash.
+
+<a id="deeper"></a>
+
+## Integrate each row's own window
+
+<div className="formula">
+  tstart(y) = yTscan
+  <br />
+  I(x,y) = ∫ L(x,y,t) dt / Texposure
+</div>
+
+y is a normalized sensor row from zero to one. For a finite-width pole translating at constant speed, the model exactly calculates the fraction of each exposure during which a pixel center lies inside the pole. Global comparison assigns every row the middle row's starting time while preserving exposure duration. This grid does not model optical blur, noise, clipping or lens distortion.
+
+The flash chapter calculates overlap with a uniform illumination pulse. The pole stays stationary to isolate the bright band. Real global-reset, readout and synchronization modes differ between sensors; the demonstration does not specify timings for a particular camera.
+
+Sources: [Basler: electronic shutter types](https://docs.baslerweb.com/electronic-shutter-types), [Basler: CMOS rolling shutter](https://www.baslerweb.com/en/learning/cmos-rolling-shutter-cameras/).

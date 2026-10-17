@@ -1,0 +1,139 @@
+.seismic-scene {
+  max-width: 960px;
+  margin: auto;
+  padding: 22px 24px 18px;
+  border-radius: 24px;
+  background: linear-gradient(165deg, #f3f3eb, #e8ede6);
+  color: #56685d;
+}
+.seismic-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 16px;
+}
+.seismic-head b {
+  font-size: 25px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.seismic-scene svg {
+  display: block;
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+}
+.seismic-scene svg text {
+  font-family: inherit;
+  font-size: 18px;
+  fill: #5e7164;
+}
+.seismic-p {
+  stroke: #558982;
+  stroke-width: 2;
+  fill: none;
+}
+.seismic-s {
+  stroke: #a48676;
+  stroke-width: 2;
+  fill: none;
+}
+.seismic-arrivals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+.seismic-arrivals span {
+  display: grid;
+  gap: 4px;
+}
+.seismic-arrivals b {
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.seismic-scene p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #768272;
+  margin: 14px 0 0;
+}
+.seismic-controls {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+.seismic-controls input {
+  min-height: 44px;
+}
+.seismic-controls button {
+  justify-self: start;
+  border: 1px solid #bdc9bb;
+  border-radius: 14px;
+  background: #f7f7ec;
+  min-height: 44px;
+  padding: 10px 16px;
+  color: inherit;
+  font: inherit;
+}
+@media (max-width: 600px) {
+  .seismic-scene {
+    padding: 18px 12px 14px;
+    border-radius: 18px;
+  }
+  .seismic-head {
+    display: grid;
+    gap: 6px;
+  }
+  .seismic-head b {
+    font-size: 24px;
+  }
+  .seismic-scene svg {
+    max-height: none;
+  }
+  .seismic-scene svg text {
+    font-size: 16px;
+  }
+  .seismic-arrivals {
+    gap: 6px;
+  }
+}
+
+.seismic-scene .control,
+.seismic-scene .control output,
+.seismic-scene .control small {
+  font-size: 16px;
+}
+
+.seismic-scene .seismic-model-note {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.seismic-scene .seismic-model-note summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 10px 4px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.seismic-scene .seismic-model-note summary:hover {
+  background-color: #ffffff50;
+}
+.seismic-scene .seismic-model-note summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.seismic-scene .seismic-model-note p {
+  margin: 4px 0 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .seismic-scene .seismic-model-note summary {
+    transition: none;
+  }
+}

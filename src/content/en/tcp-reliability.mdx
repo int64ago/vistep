@@ -1,0 +1,26 @@
+<h2 id="understand">Byte positions define order</h2>
+
+TCP offers an application a reliable ordered byte stream. Six ranges A–F each contain one hundred bytes, beginning at sequence 1000, 1100 and so on. The letters are teaching identities, not TCP message boundaries. Applications still define their own message format.
+
+A cumulative ACK names the **next expected byte**. ACK 1100 confirms the earlier contiguous prefix. Out-of-order data waits in a receive buffer; the model advances and delivers only the longest continuous prefix.
+
+After B’s first transmission is lost, later ranges can arrive but cannot pass the gap. A retransmission keeps the same sequence range. A separate single-range case loses the first ACK: A arrives again but its bytes are not delivered to the application twice.
+
+<h2 id="try">Reconstruct an arbitrary moment</h2>
+
+In exploration, select a first-transmission loss, a fixed one-to-six-range send window, and a network time. Configuration changes reset the time. Identical inputs reproduce identical events. Seeking backward reconstructs actual buffers, cumulative ACKs and delivered prefixes rather than changing only a caption.
+
+<h2 id="deeper">What the model keeps and omits</h2>
+
+<details>
+<summary>Reliability, flow control and congestion control</summary>
+
+The model keeps fixed byte identities, cumulative ACKs, out-of-order buffering, one timer for the earliest unacknowledged range, and duplicate suppression. Sends are spaced 0.08 seconds apart, propagation is 0.5 seconds each way, and RTO is two seconds. The reorder case adds 0.65 seconds to B. These observation timings are not network performance predictions.
+
+The fixed window isolates the bound on unacknowledged data. Receiver-window advertisements, window scaling and congestion algorithms are not implemented. Real TCP is constrained by receiver space and congestion control in addition to reliability rules.
+
+Handshake, closing, checksums, SACK, fast retransmit, RTT estimation, exponential backoff and 32-bit sequence wraparound are omitted. Real TCP calculates its retransmission timeout from measured RTT according to the timer specification.
+
+</details>
+
+Sources: [RFC 9293](https://www.rfc-editor.org/rfc/rfc9293), [RFC 6298](https://www.rfc-editor.org/rfc/rfc6298).

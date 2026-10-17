@@ -1,0 +1,34 @@
+---
+import { samplingPoints, samplingValue, SAMPLING_DEFAULT } from '../../models/sampling-aliasing';
+const s = SAMPLING_DEFAULT,
+  x = (t: number) => 30 + t * 340,
+  y = (v: number) => 116 - v * 55;
+const path = (fold: boolean) =>
+  Array.from(
+    { length: 301 },
+    (_, i) => `${i ? 'L' : 'M'}${x(i / 300)},${y(samplingValue(s, i / 300, fold))}`,
+  ).join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#152b3a"></rect><path
+    d="M30 116H370"
+    stroke="#758c9e"
+    opacity=".3"></path><path d={path(false)} stroke="#9bd5e4" stroke-width="2" opacity=".6"
+  ></path><path d={path(true)} stroke="#eda891" stroke-width="3" stroke-dasharray="7 5"></path>{
+    samplingPoints(s, 1).map((p) => (
+      <g>
+        <>
+          <path d={`M${x(p.time)} 190V${y(p.value)}`} stroke="#f2d89c" opacity=".3" />
+          <circle cx={x(p.time)} cy={y(p.value)} r="4.5" fill="#f2d89c" />
+        </>
+      </g>
+    ))
+  }<text x="30" y="37" fill="#cfe0e8" font-size="18">6 Hz → 2 Hz</text><text
+    x="370"
+    y="215"
+    text-anchor="end"
+    fill="#a4bac8"
+    font-size="16">fs = 8 Hz</text
+  ></svg
+>

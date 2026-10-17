@@ -1,0 +1,30 @@
+<a id="understand"></a>
+
+## One beam measures one direction
+
+Pulsed lidar measures emission-to-reception delay. Range is half light speed times that round-trip time. Combining range with the known emission angle locates a point. This film presents a horizontal room slice; walls, a partition and a cylinder all use the same analytic ray intersections.
+
+A scan builds a point cloud, with each point on the first visible surface. Occluded walls receive no invented points. Angular spacing, nanosecond timing error and a detection threshold separately expose sparse sampling, uncertain position and missing returns.
+
+<a id="try"></a>
+
+## Select a ray and find its first hit
+
+Change beam angle to inspect the nearest cylinder, partition or wall intersection. Smaller angle steps produce more points. Timing deviation spreads points along their original rays; a higher normalized threshold removes weak returns. A fixed seed retains measurement identities across seeking and comparisons.
+
+<a id="deeper"></a>
+
+## Time, direction and coordinates
+
+<div className="formula">
+  r = cΔt / 2<br />x = r cos θ<br />y = r sin θ<br />
+  σr = cσt / 2
+</div>
+
+Here c=299792458 m/s. A 1 ns round-trip timing standard deviation corresponds to roughly 0.15 m range deviation. Analytic line-segment and circle intersections select the nearest positive hit. The phone composition rotates the world projection without altering physical coordinates.
+
+For a clear missing-return comparison, normalized teaching strength is reflectivity × incidence cosine / range² and is compared against a threshold. This is not a complete lidar equation, calibrated reflectivity or probabilistic detector. Seeded independent radial noise excludes systematic bias.
+
+The model is a two-dimensional first return from opaque surfaces. It omits beam footprint, mechanical origin offsets, 3D channels, glass, multiple reflection, fog, motion distortion and mapping. An empty part of a point cloud does not prove empty space.
+
+Sources: [Ouster: lidar fundamentals](https://ouster.com/insights/what-is-lidar), [Ouster: coordinates and range conversion](https://docs.ouster.com/sensor-docs/firmware/3.2/coordinate-system).

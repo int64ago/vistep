@@ -1,0 +1,41 @@
+---
+import { bloomBuild, bloomFind, bloomQuery, BLOOM_WORDS } from '../../models/bloom-filter';
+const { color = '#86a277' } = Astro.props;
+const f = bloomBuild(BLOOM_WORDS),
+  q = bloomQuery(f, bloomFind(f, true));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <text x="22" y="28" font-family="monospace" font-size="16" fill={color}>BLOOM · MAYBE</text>
+  {
+    f.bits.map((bit, i) => (
+      <g>
+        <>
+          <rect
+            x={35 + (i % 8) * 42}
+            y={52 + Math.floor(i / 8) * 38}
+            width="32"
+            height="30"
+            rx="7"
+            fill={bit ? '#bdd1a9' : '#e6eddf'}
+            stroke={q.positions.includes(i) ? '#ba945a' : color}
+            stroke-width={q.positions.includes(i) ? 2.5 : 0.6}
+          />
+          <text
+            x={51 + (i % 8) * 42}
+            y={73 + Math.floor(i / 8) * 38}
+            text-anchor="middle"
+            fill={bit ? '#4d7141' : '#a0b092'}
+            font-size="19"
+            font-family="monospace"
+          >
+            {bit}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  <text x="200" y="223" text-anchor="middle" fill="#a5834c" font-family="monospace" font-size="17"
+    >{q.positions.join(' · ')} → ?</text
+  >
+</svg>

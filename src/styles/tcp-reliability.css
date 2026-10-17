@@ -1,0 +1,311 @@
+.tcp-study {
+  font-size: 16px;
+  color: #3e5262;
+  padding: 24px 34px;
+  min-height: 480px;
+  background: linear-gradient(145deg, #f9fbfa, #edf2f5);
+  border-radius: 24px;
+}
+.tcp-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #8496a1;
+}
+.tcp-study p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 20px auto 0;
+  max-width: 46em;
+}
+.tcp-endpoints {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 25px 12px 8px;
+}
+.tcp-endpoints > span {
+  display: grid;
+  gap: 7px;
+}
+.tcp-endpoints > span:last-child {
+  text-align: right;
+}
+.tcp-endpoints b {
+  font: 24px monospace;
+  color: #678a9a;
+}
+.tcp-sequence {
+  position: relative;
+  height: 270px;
+  margin: 0 10px;
+}
+.tcp-sequence svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.tcp-lifeline {
+  stroke: #b5c6cd;
+  stroke-width: 1;
+}
+.tcp-data,
+.tcp-retry,
+.tcp-lost,
+.tcp-ack {
+  fill: none;
+  stroke-width: 1.8;
+}
+.tcp-data {
+  stroke: #789f98;
+}
+.tcp-retry {
+  stroke: #bf8e55;
+  stroke-width: 2.5;
+}
+.tcp-lost {
+  stroke: #b9826f;
+  stroke-dasharray: 5 3;
+}
+.tcp-ack {
+  stroke: #8c9eb9;
+  stroke-width: 1.1;
+  stroke-dasharray: 3 3;
+}
+.tcp-now {
+  stroke: #d0b47d;
+  stroke-width: 0.8;
+  stroke-dasharray: 3 5;
+}
+.tcp-segment-labels,
+.tcp-ack-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.tcp-segment-labels span,
+.tcp-ack-labels span {
+  position: absolute;
+  font: 16px monospace;
+  background: #f5f8f6c9;
+  padding: 1px 5px;
+  border-radius: 4px;
+  transform: translateY(-110%);
+}
+.tcp-segment-labels span {
+  left: 9%;
+  color: #537b71;
+}
+.tcp-segment-labels [data-retry='true'] {
+  color: #aa7a42;
+}
+.tcp-ack-labels span {
+  right: 9%;
+  color: #7189a2;
+  transform: translateY(5%);
+}
+.tcp-receiver {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #d6e0e2;
+}
+.tcp-receiver > div > span {
+  color: #7b929b;
+}
+.tcp-receiver > div > div {
+  display: flex;
+  gap: 5px;
+  min-height: 38px;
+  align-items: center;
+  margin-top: 8px;
+}
+.tcp-receiver b {
+  font: 19px monospace;
+  border: 1px solid #d8e0e1;
+  color: #bdc9ca;
+  border-radius: 6px;
+  min-width: 26px;
+  min-height: 32px;
+  display: grid;
+  place-items: center;
+}
+.tcp-receiver [data-delivered='true'] {
+  background: #d3e3da;
+  border-color: #a7c4b6;
+  color: #557b68;
+}
+.tcp-receiver [data-buffered='true'] {
+  background: #eedbc1;
+  border-color: #d5b585;
+  color: #a57b46;
+}
+.tcp-receiver i {
+  font: 23px monospace;
+  color: #a9b8b8;
+}
+.tcp-study footer {
+  font-size: 16px;
+  color: #8b9ca2;
+  line-height: 1.55;
+  text-align: center;
+  margin-top: 20px;
+}
+.tcp-bytes {
+  padding: 55px 0;
+}
+.tcp-bytes > span {
+  display: block;
+  text-align: center;
+  color: #8b9c9f;
+}
+.tcp-bytes > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.tcp-bytes > div > div {
+  display: grid;
+  gap: 12px;
+  place-items: center;
+  border: 1px solid #bed0cc;
+  border-radius: 12px;
+  padding: 15px 10px;
+  background: #e8f0e9;
+}
+.tcp-bytes b {
+  font: 40px monospace;
+  color: #6a9286;
+}
+.tcp-bytes small {
+  font: 16px monospace;
+}
+.tcp-bytes i {
+  font-style: normal;
+  font-size: 16px;
+  color: #91a9a1;
+}
+.tcp-controls {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid #cbdade;
+  margin-top: 25px;
+  padding-top: 24px;
+}
+.tcp-controls input,
+.tcp-controls select {
+  min-height: 44px;
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #c4d3d8;
+  border-radius: 9px;
+  background: #f7faf8;
+  padding: 8px;
+}
+.tcp-controls input[type='range'] {
+  padding: 0;
+}
+@media (max-width: 600px) {
+  .tcp-study {
+    padding: 20px 12px;
+    min-height: 450px;
+  }
+  .tcp-study header {
+    letter-spacing: 0;
+  }
+  .tcp-study header span:first-child {
+    max-width: 55%;
+  }
+  .tcp-study header span:last-child {
+    text-align: right;
+  }
+  .tcp-endpoints {
+    margin: 22px 5px 8px;
+  }
+  .tcp-endpoints b {
+    font-size: 22px;
+  }
+  .tcp-sequence {
+    height: 250px;
+    margin: 0;
+  }
+  .tcp-receiver {
+    gap: 10px;
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .tcp-receiver > div > div {
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+  .tcp-receiver b {
+    font-size: 18px;
+    min-width: 22px;
+    min-height: 29px;
+  }
+  .tcp-segment-labels span {
+    left: 4%;
+    font-size: 16px;
+  }
+  .tcp-ack-labels span {
+    right: 3%;
+    font-size: 16px;
+  }
+  .tcp-bytes {
+    padding: 35px 0;
+  }
+  .tcp-bytes > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .tcp-bytes > div > div {
+    padding: 10px 5px;
+    gap: 7px;
+  }
+  .tcp-bytes b {
+    font-size: 30px;
+  }
+  .tcp-study footer {
+    margin-top: 18px;
+  }
+}
+
+.tcp-study footer details {
+  border-top: 1px solid #d6e0e2;
+  text-align: left;
+}
+.tcp-study footer summary {
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 44px;
+  color: #6f858f;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.tcp-study footer summary:hover {
+  background-color: #ffffff55;
+}
+.tcp-study footer summary:focus-visible {
+  outline: 2px solid #6f858f;
+  outline-offset: 2px;
+}
+.tcp-study footer p {
+  margin: 8px 8px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tcp-study footer summary {
+    transition: none;
+  }
+}

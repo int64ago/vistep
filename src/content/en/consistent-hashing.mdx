@@ -1,0 +1,26 @@
+<h2 id="understand">Membership changes without rehashing every position</h2>
+
+The rule `hash(key) mod N` changes many assignments when N changes. Consistent hashing wraps positions into a ring, hashes keys and node tokens to stable positions, and assigns each key to the **first token clockwise**, wrapping through zero as needed.
+
+Adding D leaves every old token and key position unchanged. D takes its predecessor interval, so any key that moves moves to D. Removing C changes only keys previously owned by C. Every highlight is calculated by comparing the same fixed keys before and after the membership change.
+
+<h2 id="try">Change membership and inspect each key</h2>
+
+Exploration offers two to four physical nodes, one to sixteen virtual positions per node, and a tracked key. The thirty-two teaching keys retain their positions. Load bars aggregate actual key counts by physical owner.
+
+Virtual positions hash both the machine identity and a token number. A token number is not a claim that data has been replicated that many times. Adding or removing a machine never rehashes the preexisting tokens of other machines.
+
+<h2 id="deeper">Smooth mapping, load and consistency</h2>
+
+<details>
+<summary>Stable assignments do not solve every distributed-systems problem</summary>
+
+A token owns the interval after its predecessor through its own position, excluding the former and including the latter. A key exactly on a token belongs to that token. Hash collisions use a stable node-name and token-number order. Fixed FNV-based mixed hashes make the lesson reproducible without a cryptographic security claim.
+
+Several virtual tokens give a machine multiple random intervals, often reducing dependence on one uneven gap. Finite key samples, popularity and machine capacities still determine actual work. More tokens do not guarantee better balance for every individual finite sample.
+
+Consistency here means smooth assignment under membership changes. The model does not implement membership discovery, failure detection, replication, actual migration, concurrent versions or database consistency protocols. Choosing an owner is different from safely transferring the owner’s data.
+
+</details>
+
+Sources: [Karger et al., original paper (1997)](https://people.csail.mit.edu/karger/Papers/web.pdf), [author’s slides](https://people.csail.mit.edu/karger/Talks/Hash/index.htm).

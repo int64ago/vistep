@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## A new coordinate system for the same record
+
+The gold waveform combines a 1 Hz sine, a half-amplitude 3 Hz sine and a quarter-amplitude 5 Hz cosine. The film reconstructs it term by term, then multiplies samples by a test wave to explain where a frequency coefficient comes from. Spectral height reports amplitude; the phase pointer reports the component's starting position in its cycle.
+
+Identical amplitude spectra can accompany different time waveforms because phases can differ. The final fractional-cycle example shows why the observation window also matters.
+
+<a id="try"></a>
+
+## Change one component
+
+Explore the third component's amplitude, phase and frequency. Phase changes preserve its amplitude. A noninteger frequency spreads across nearby bins in this one second rectangular window. The player provides pause, replay and chapter seeking; sliders support the keyboard.
+
+<a id="deeper"></a>
+
+## Calculate the discrete transform
+
+<div className="formula">
+  X[k] = Σ x[n] exp(−i2πkn/N)
+  <br />
+  x[n] = Σ X[k] exp(i2πkn/N) / N
+</div>
+
+There are N=64 samples at 64 Hz over one second, so bin spacing is 1 Hz. The implementation directly sums sine and cosine products rather than invoking an FFT or estimating a spectrum from a drawing. For a real record, positive-frequency amplitudes are 2|X[k]|/N except at DC and Nyquist, which use |X[k]|/N. Reconstruction preserves those exceptions.
+
+The projection chapter gradually exposes the sine accumulation; the full DFT includes both sine and cosine directions. A rectangular observation window causes spectral leakage when a component does not complete an integer number of cycles. Leakage does not imply many new physical oscillators in the original signal. The model is noiseless and does not cover window design, aliasing or the continuous Fourier integral.
+
+Source: [NI: FFTs and power spectra](https://www.ni.com/en/shop/labview/using-fast-fourier-transforms-and-power-spectra-in-labview.html).

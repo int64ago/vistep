@@ -28,7 +28,7 @@ vistep.ai 用短篇视觉故事讲解生活器物、科学与计算。跟随一�
 - **找到感兴趣的内容。** 中英文关键词搜索，结合兴趣分类、时长与建议起看年龄筛选。
 - **中英双语。** 分别撰写的讲解、字幕与文字稿。实验在浏览器内运行，无需账号、API 密钥或实时 AI 服务。
 
-**专题合集：** 当前登记 **82 篇**。最新两篇（81–82）为[体脂秤](https://vistep.ai/explore/body-fat-scale/)和[耳温枪](https://vistep.ai/explore/ear-thermometer/)；[审看记录](docs/zh-CN/qa-body-measurement.md)分别说明科学模型检查、浏览器观察、录音、原生试听与真机证据。这两篇的原生试听与真实手机性能仍未验证，合集整体审看也尚未全部覆盖。正式站通过 `main` 的 [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) 发布。较早交付见[六篇专题审看](docs/zh-CN/qa-six-explorations.md)、[合集扩展记录](docs/zh-CN/expansion-50.md)和[各篇审看记录](docs/zh-CN/README.md#检查记录)。
+**专题合集：** 当前登记 **102 篇**。最新二十篇（83–102）覆盖波动、成像、信息系统、旋转参照系和日食；[审看记录](docs/zh-CN/qa-twenty-explorations.md)分别说明科学检查、浏览器观察、录音与尚缺的原生试听、真机证据。正式站由 [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain) 发布经过检查的 `main` 构建。历史交付见[各篇审看记录](docs/zh-CN/README.md#检查记录)。
 
 ## 开始探索
 

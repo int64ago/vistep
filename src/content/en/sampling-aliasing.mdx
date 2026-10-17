@@ -1,0 +1,31 @@
+<a id="understand"></a>
+
+## The same dots, different waves
+
+A sampler records values at fixed instants. Every gold dot is calculated from the input. Blue shows that input; coral is another continuous explanation. A 6 Hz cosine sampled at 8 Hz produces the same record as a signed −2 Hz cosine with the same phase. Interpolation after acquisition cannot recover information that never distinguished them.
+
+The film builds a record, crosses half the sampling rate, compares two matching explanations, raises the sample clock, examines phase at exact Nyquist equality, and removes a fast component before sampling.
+
+<a id="try"></a>
+
+## Make both curves pass through the dots
+
+In exploration, change input frequency, sampling rate and phase. Start with 6 Hz at 8 samples per second. Then try 6 Hz at 12 samples per second with a 90° phase: every sample is zero although the input still oscillates. Sliders support arrows, Home and End; the player offers pause, replay and chapter seeking.
+
+<a id="deeper"></a>
+
+## Why does frequency fold?
+
+<div className="formula">
+  x(t) = A cos(2πft + φ)
+  <br />
+  x[n] = x(n/fₛ)
+  <br />
+  fₐ = f − round(f/fₛ) fₛ
+</div>
+
+Subtracting an integer multiple of the sampling rate changes phase at each measured instant by an integer number of turns. The samples therefore agree. The calculation retains signed fₐ and the original phase, while the readout reports its magnitude. For arbitrary baseband signals, sample faster than twice the highest input frequency and allow for a real filter transition band.
+
+This model assumes instantaneous, noiseless samples without quantization or jitter. The filter chapter directly attenuates a 7 Hz component while leaving a 1 Hz component unchanged; it illustrates an ideal low pass rather than implementing a physical filter. Phones shorten the visible time window while preserving text size.
+
+Source: [Analog Devices: anti-aliasing filter basics](https://www.analog.com/en/resources/technical-articles/guide-to-antialiasing-filter-basics.html).

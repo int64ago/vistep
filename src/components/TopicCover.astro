@@ -1,4 +1,24 @@
 ---
+import ConsistentHashingCover from './covers/ConsistentHashingCover.astro';
+import CongestionControlCover from './covers/CongestionControlCover.astro';
+import TcpReliabilityCover from './covers/TcpReliabilityCover.astro';
+import BloomFilterCover from './covers/BloomFilterCover.astro';
+import LidarRangingCover from './covers/LidarRangingCover.astro';
+import RadarRangingCover from './covers/RadarRangingCover.astro';
+import BayerSensorCover from './covers/BayerSensorCover.astro';
+import CapillaryCover from './covers/CapillaryCover.astro';
+import OsmosisCover from './covers/OsmosisCover.astro';
+import SeismicWavesCover from './covers/SeismicWavesCover.astro';
+import RollingShutterCover from './covers/RollingShutterCover.astro';
+import Lz77Cover from './covers/Lz77Cover.astro';
+import HuffmanCover from './covers/HuffmanCover.astro';
+import FourierTransformCover from './covers/FourierTransformCover.astro';
+import SamplingAliasingCover from './covers/SamplingAliasingCover.astro';
+import StandingWaveCover from './covers/StandingWaveCover.astro';
+import BeatsCover from './covers/BeatsCover.astro';
+import ResonanceCover from './covers/ResonanceCover.astro';
+import SolarEclipseCover from './covers/SolarEclipseCover.astro';
+import CoriolisCover from './covers/CoriolisCover.astro';
 import EarThermometerCover from './covers/EarThermometerCover.astro';
 import BodyFatScaleCover from './covers/BodyFatScaleCover.astro';
 import JellyfishCover from './covers/JellyfishCover.astro';
@@ -931,4 +951,24 @@ const adder = slug === 'binary-adder' ? fullAdder(1, 1) : null;
   {slug === 'jellyfish' && <JellyfishCover color={color} />}
   {slug === 'body-fat-scale' && <BodyFatScaleCover color={color} />}
   {slug === 'ear-thermometer' && <EarThermometerCover color={color} />}
+  {slug === 'coriolis' && <CoriolisCover color={color} />}
+  {slug === 'solar-eclipse' && <SolarEclipseCover color={color} />}
+  {slug === 'resonance' && <ResonanceCover color={color} />}
+  {slug === 'beats' && <BeatsCover color={color} />}
+  {slug === 'standing-wave' && <StandingWaveCover color={color} />}
+  {slug === 'sampling-aliasing' && <SamplingAliasingCover color={color} />}
+  {slug === 'fourier-transform' && <FourierTransformCover color={color} />}
+  {slug === 'huffman' && <HuffmanCover color={color} />}
+  {slug === 'lz77' && <Lz77Cover color={color} />}
+  {slug === 'rolling-shutter' && <RollingShutterCover color={color} />}
+  {slug === 'seismic-waves' && <SeismicWavesCover color={color} />}
+  {slug === 'osmosis' && <OsmosisCover color={color} />}
+  {slug === 'capillary' && <CapillaryCover color={color} />}
+  {slug === 'bayer-sensor' && <BayerSensorCover color={color} />}
+  {slug === 'radar-ranging' && <RadarRangingCover color={color} />}
+  {slug === 'lidar-ranging' && <LidarRangingCover color={color} />}
+  {slug === 'bloom-filter' && <BloomFilterCover color={color} />}
+  {slug === 'tcp-reliability' && <TcpReliabilityCover color={color} />}
+  {slug === 'congestion-control' && <CongestionControlCover color={color} />}
+  {slug === 'consistent-hashing' && <ConsistentHashingCover color={color} />}
 </svg>

@@ -8547,7 +8547,7 @@
         "zh": "电流已知，响应电压被采样。两条波形各用自己的量程，但时间轴相同。电压与电流的幅比给出阻抗大小；电压滞后的一小段给出相位。合在一起，才能分出电阻和电抗。此时还没有得到脂肪质量，只得到了这条采样路径的电学响应。",
         "en": "Current is known, and voltage is sampled. Each trace has its own amplitude scale, but both share time. Their amplitude ratio gives impedance magnitude. The voltage lag gives phase. Together they separate resistance from reactance. We still have no fat measurement: only the electrical response of the sampled path.",
         "seconds": 24,
-        "chapterAt": 71.0,
+        "chapterAt": 71,
         "at": 71.45
       },
       {
@@ -8559,7 +8559,7 @@
         "zh": "用一个等效电路放大组织。含离子的液体形成导电路径，细胞膜用电容表示。提高频率时，膜电容的阻抗变小，经过细胞内液的支路响应增强。它不是低频只走外液、高频突然全走内液的开关，更不能凭一条线读出每块组织。",
         "en": "Zoom into an equivalent tissue circuit. Ionic fluids conduct; the membrane is represented by capacitance. As frequency rises, capacitive opposition falls, increasing the intracellular branch response. This is a gradual change, not a switch that suddenly sends all current inside cells. The diagram does not resolve individual tissues.",
         "seconds": 22,
-        "chapterAt": 95.0,
+        "chapterAt": 95,
         "at": 95.45
       },
       {
@@ -8612,7 +8612,7 @@
         "zh": "现在看探头前端的窄口。它限制了哪些方向的红外能直达吸收膜。展开的区域是本图的接受视场，不是照明。沿路径反向寻找，会先遇到鼓膜或者耳道壁；那块组织就是这条路径的信号来源。此刻大部分信号来自鼓膜，但一个读数可以包含多个区域。",
         "en": "Look at the probe's narrow entrance. It limits the directions with a direct path to the absorber. The shaded region is our accepted view, not illumination. Trace a path backward and its first tissue intersection is the source it samples. Most of the signal now comes from the eardrum, but one reading can include several regions.",
         "seconds": 24,
-        "chapterAt": 24.0,
+        "chapterAt": 24,
         "at": 24.45
       },
       {
@@ -8624,7 +8624,7 @@
         "zh": "近看同一探头。红外穿过窗口，沿中空通道到达编号三的吸收膜，膜吸收能量后受热。膜附近的热端与封装上的冷端形成温差，交替材料的热电偶串联成一条线路，把很小的电压送到编号一的放大与转换电路。编号二还有独立温度参考，下一步它会参与计算。",
         "en": "Look inside the same probe. Infrared passes through the window and hollow channel to absorber number three. Absorption warms the membrane. A temperature difference forms between hot junctions near the membrane and cold junctions on the package. Thermocouples in series send a small voltage to amplifier and converter number one. Number two supplies a separate temperature reference for the next step.",
         "seconds": 24,
-        "chapterAt": 49.0,
+        "chapterAt": 49,
         "at": 49.45
       },
       {
@@ -8636,7 +8636,7 @@
         "zh": "保持组织温度不变，只让封装参考从二十二度升到三十度。看两条通道：热电堆的净红外信号变小，参考温度却上升。计算需要把两路合在一起，才能还原相同的示例读数。这里假定封装已经达到均匀稳态；真实探头的热梯度和冷却影响，不能靠这幅理想图自动消除。",
         "en": "Keep the tissue unchanged and raise the package reference from twenty-two to thirty degrees. Watch both channels: the thermopile's net infrared signal shrinks while the reference temperature rises. Combining the two recovers the same example reading. We assume a uniform package at equilibrium. This ideal demonstration cannot automatically remove real thermal gradients or cooling caused by the probe.",
         "seconds": 24,
-        "chapterAt": 75.0,
+        "chapterAt": 75,
         "at": 75.45
       },
       {
@@ -8674,6 +8674,2026 @@
         "seconds": 24,
         "chapterAt": 156.5,
         "at": 156.95
+      }
+    ]
+  },
+  "coriolis": {
+    "duration": 190,
+    "cues": [
+      {
+        "id": "coriolis-01",
+        "title": "先认出直线",
+        "titleEn": "Begin with a straight line",
+        "caption": "固定相机中，自由滑块匀速直行。",
+        "captionEn": "The free puck moves straight at constant speed in the fixed view.",
+        "zh": "先盯住金色滑块。转盘暂时不转，滑块释放后，等时间留下的金点排成一条直线。我们假设没有摩擦和空气阻力，转盘也不再推它。因此滑块保留释放时的速度。先记住这条轨迹，接下来换的是观察坐标。",
+        "en": "Follow the gold puck and the equally spaced dots it leaves behind. The table is still, and the puck travels in a straight line. We assume negligible friction and air resistance, so nothing pushes it horizontally after release. Keep this simple trajectory in mind. We are about to change the coordinates used to observe it.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "coriolis-02",
+        "title": "相机跟着转盘",
+        "titleEn": "Ride with the table",
+        "caption": "坐标轴转动，同一轨迹显出弯曲。",
+        "captionEn": "Rotating coordinates make the same trajectory appear curved.",
+        "zh": "现在让转盘逆时针转动，再从中心释放同样的滑块。固定相机仍然记录直线。随盘相机却一直转着身，因此金点落在不断改变方向的坐标轴上。滑块相对盘面的轨迹向一侧弯曲，但没有新的水平接触力出现。",
+        "en": "Now the table turns counterclockwise, and we release the puck from its centre again. The fixed camera still records a straight line. The camera riding with the table keeps turning, however. Each new gold dot is measured against differently oriented axes. Its curved trail describes motion relative to the table.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22.45
+      },
+      {
+        "id": "coriolis-03",
+        "title": "把时刻配成一对",
+        "titleEn": "Match the same instant",
+        "caption": "两台相机记录的是同一个时刻。",
+        "captionEn": "Both cameras describe the puck at the same instant.",
+        "zh": "看看金点之间的间隔，以及两幅观察中的时间。它们对应同一个滑块和同一个时刻，不是两次不同实验。把随盘位置按转盘已经转过的角度转回去，就会重合到固定坐标的位置。曲线与直线可以同时正确，因为它们回答的位置问题不同。",
+        "en": "Match the gold dots by time. These are two descriptions of one puck, rather than two independent trials. Rotate a table coordinate back through the angle the table has turned, and it lands on the fixed coordinate. A straight trajectory and a curved trajectory can both be correct when their reference frames differ.",
+        "seconds": 22,
+        "chapterAt": 44,
+        "at": 44.45
+      },
+      {
+        "id": "coriolis-04",
+        "title": "只改变转速",
+        "titleEn": "Change only the rotation rate",
+        "caption": "同一释放条件，转速改变相对轨迹。",
+        "captionEn": "Rotation rate changes the relative trail for the same release.",
+        "zh": "这次固定释放速度和观察时长，只慢慢增加转盘角速度。固定坐标中的终点不变，随盘终点却绕着中心改变方向。注意不是把滑块的运动强行掰弯，而是每个时刻用不同角度的尺子重新量位置。转得越快，同样时间内坐标旋转得越多。",
+        "en": "Hold the launch speed and elapsed time fixed while the rotation rate rises. The endpoint in the fixed frame stays put. Its table coordinate turns around the centre. We have not bent the free motion by hand. We have measured it with a ruler that changes its orientation more quickly during the same interval.",
+        "seconds": 22,
+        "chapterAt": 67,
+        "at": 67.45
+      },
+      {
+        "id": "coriolis-05",
+        "title": "反转转盘",
+        "titleEn": "Reverse the table",
+        "caption": "反转角速度，中央释放的偏转镜像翻转。",
+        "captionEn": "Reversing rotation mirrors the central release trail.",
+        "zh": "把转盘改成顺时针，释放速度仍相同。中央释放的轨迹成为刚才的镜像。这个对照帮助我们确认偏转方向来自旋转方向，不是图形预先画死的装饰。角速度回到零时，随盘坐标不再旋转，两幅轨迹也就重新重合。",
+        "en": "Reverse the table while keeping the central launch unchanged. The relative trail becomes a mirror image of the previous one. That controlled comparison ties its deflection to rotation, rather than to a decorative curve. If rotation is set to zero, the table axes stop turning and the two descriptions coincide again.",
+        "seconds": 22,
+        "chapterAt": 91,
+        "at": 91.45
+      },
+      {
+        "id": "coriolis-06",
+        "title": "离开中心释放",
+        "titleEn": "Release away from the centre",
+        "caption": "偏心释放继承转盘的切向速度。",
+        "captionEn": "An off-centre release inherits tangential velocity.",
+        "zh": "把释放点移离转盘中心。释放前，滑块已经跟着这处盘面运动，所以固定相机看到的初速度，包含转盘赋予的切向分量和我们的相对推送。金色轨迹仍是直线，但它的速度变了。比较时要保留这份初速度，不能把偏心实验冒充中央释放。",
+        "en": "Move the release point away from the centre. Before release, that location already moves with the table. The fixed-frame launch velocity therefore includes both our push relative to the table and the inherited tangential motion. The free trajectory remains straight, but its velocity changes. Initial conditions matter when comparing reference frames.",
+        "seconds": 22,
+        "chapterAt": 113,
+        "at": 113.45
+      },
+      {
+        "id": "coriolis-07",
+        "title": "曲率需要两项",
+        "titleEn": "Account for both apparent terms",
+        "caption": "科里奥利项与离心项共同给出相对加速度。",
+        "captionEn": "Coriolis and centrifugal terms together give relative acceleration.",
+        "zh": "回到随盘观察。红箭头表示科里奥利加速度，蓝箭头表示离心加速度，两者采用同一绘图比例。红箭头与相对速度垂直；蓝箭头从转轴向外。把两项相加，才得到这枚自由滑块的随盘加速度。只画一个红箭头，会漏掉坐标旋转带来的另一部分。",
+        "en": "The red arrow shows Coriolis acceleration; the blue arrow shows centrifugal acceleration, at the same drawing scale. The red term is perpendicular to relative velocity. The blue term points away from the axis. Their sum gives this free puck its table-frame acceleration. A Coriolis arrow alone would leave part of the rotating-coordinate description unexplained.",
+        "seconds": 22,
+        "chapterAt": 137,
+        "at": 137.45
+      },
+      {
+        "id": "coriolis-08",
+        "title": "把旋转慢慢停下",
+        "titleEn": "Let the rotation fade",
+        "caption": "旋转归零，两种观察连续重合。",
+        "captionEn": "As rotation reaches zero, the two observations converge.",
+        "zh": "最后让转速平滑降到零。弯曲的轨迹逐渐展成直线，两个坐标系统重新一致。自由探索可以分别改变转速、释放点、速度和时间。这个实验隔离的是旋转坐标的几何效应；地球上的风还涉及压强、摩擦和球面，不能只凭这张转盘图预测天气。",
+        "en": "Let the rotation gradually fade to zero. The relative trail opens into a straight line, and the two coordinate descriptions meet. In exploration, change rotation, launch position, speed and elapsed time independently. This flat experiment isolates rotating-frame geometry. Predicting winds on Earth also requires pressure, friction and spherical geometry; the turntable alone is not a weather model.",
+        "seconds": 22,
+        "chapterAt": 162,
+        "at": 162.45
+      }
+    ]
+  },
+  "solar-eclipse": {
+    "duration": 187.5,
+    "cues": [
+      {
+        "id": "solar-eclipse-01",
+        "title": "新月为何错过太阳",
+        "titleEn": "A new moon can miss",
+        "caption": "新月附近，月球仍可能高于或低于太阳。",
+        "captionEn": "At new moon, the Moon can still pass above or below the Sun.",
+        "zh": "每个月都有新月，为什么不是每个月都有日食？先看月球离黄道面的高度。月球轨道倾斜大约五度；即使从俯视图看起来排成一线，月球仍可能从太阳圆面的上方或下方经过。这个高度图把俯视图容易藏住的那一维单独展开。",
+        "en": "A new moon happens every month, but a solar eclipse does not. Follow the Moon in the orbital-height diagram. Its orbit is tilted by about five degrees relative to the ecliptic. An alignment that looks convincing from above can still miss vertically. The diagram exposes the dimension that a top view can hide.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "solar-eclipse-02",
+        "title": "靠近轨道交点",
+        "titleEn": "Approach an orbital node",
+        "caption": "月球靠近轨道交点时，高度差减小。",
+        "captionEn": "Near an orbital node, the height difference becomes smaller.",
+        "zh": "沿着蓝色轨道靠近金色交点。这里是月球轨道穿过黄道面的位置，月球的高度逐渐降到零。日食既需要新月附近的前后对齐，也需要接近轨道交点。只有其中一个条件还不够。图里的角度是离交点多远，不是地球上的经纬度。",
+        "en": "Follow the blue orbital curve toward the gold node. At this crossing the lunar orbit passes through the ecliptic, and the height falls to zero. A solar eclipse needs both conjunction near new moon and a suitable alignment near a node. Either condition alone is insufficient. The horizontal coordinate measures orbital angle from the node.",
+        "seconds": 22,
+        "chapterAt": 22.5,
+        "at": 22.95
+      },
+      {
+        "id": "solar-eclipse-03",
+        "title": "用两个视圆面判断",
+        "titleEn": "Compare two apparent disks",
+        "caption": "视半径与角距离共同决定遮挡。",
+        "captionEn": "Apparent radii and angular separation determine overlap.",
+        "zh": "换到同一个观测点的天空。明亮圆面是太阳，暗圆面是月球，它们的大小由实际半径和距离计算。月球慢慢移入太阳圆面，遮挡面积随之增加。不要只比较中心是否重合：两个视圆面的半径，也决定能不能完全遮住。",
+        "en": "Now look at the sky from one observing point. The bright disk is the Sun; the dark disk is the Moon. Their apparent sizes come from physical radii and distances. As their separation decreases, overlap grows. Matching centres is only part of the story. The apparent radii determine whether complete coverage is possible.",
+        "seconds": 22,
+        "chapterAt": 45,
+        "at": 45.45
+      },
+      {
+        "id": "solar-eclipse-04",
+        "title": "追到影锥里面",
+        "titleEn": "Follow the shadow cone",
+        "caption": "本影内的观测点看见太阳完全被遮住。",
+        "captionEn": "An observer within the umbra sees the Sun fully covered.",
+        "zh": "把天空里的遮挡展开成沿影轴的剖面。太阳有大小，因此从太阳边缘擦过月球的光线围出本影和半影。金点是刚才的观测位置。它落在本影里时，整个太阳圆面被月球挡住。纵横比例经过分开处理，锥尖位置和半径仍来自同一组几何尺寸。",
+        "en": "The shadow section unfolds that sky view along the shadow axis. Because the Sun has finite size, rays grazing the Moon form an umbra and a penumbra. The gold point marks our observer. Inside the umbra, the entire solar disk is covered. The section uses different horizontal and vertical scales while retaining calculated shadow boundaries.",
+        "seconds": 22,
+        "chapterAt": 67,
+        "at": 67.45
+      },
+      {
+        "id": "solar-eclipse-05",
+        "title": "同一天空，不同位置",
+        "titleEn": "Move the observing point",
+        "caption": "移出本影，仍可能留在半影中。",
+        "captionEn": "An observer can leave the umbra while remaining in the penumbra.",
+        "zh": "保持太阳和月球不动，让金色观测点横向移动。离开狭窄本影后，太阳不再完全消失，但观测点还在较宽半影里，因此看到日偏食。这里改变的是观察位置，遮挡比例也跟着视差重新计算。同一次日食，在不同地方可以看到不同程度的缺口。",
+        "en": "Keep the Sun and Moon fixed and move the gold observing point sideways. It soon leaves the narrow umbra while remaining within the wider penumbra. Complete coverage becomes a partial eclipse. We recompute the apparent overlap with parallax at each position. One celestial alignment can therefore produce different views from different locations.",
+        "seconds": 22,
+        "chapterAt": 91.5,
+        "at": 91.95
+      },
+      {
+        "id": "solar-eclipse-06",
+        "title": "月球稍远一些",
+        "titleEn": "Move the Moon farther away",
+        "caption": "月球视圆面变小，中心对齐也可能留下光环。",
+        "captionEn": "A smaller apparent Moon can leave a ring even at alignment.",
+        "zh": "把观测点移回影轴，再让月球离地球远一些。太阳大小几乎不变，月球视圆面却缩小了。本影锥尖会落在观测平面之前，地球这一侧进入伪本影。即使两个中心重合，月球也遮不满太阳，周围留下明亮的一圈，这就是日环食。",
+        "en": "Return the observer to the shadow axis and increase the Moon’s distance. Its apparent disk shrinks while the Sun’s stays almost unchanged. The umbral tip ends before the observing plane, which now lies in the antumbra. Even with aligned centres, the Moon cannot cover the Sun completely. A bright ring remains: an annular eclipse.",
+        "seconds": 22,
+        "chapterAt": 115.5,
+        "at": 115.95
+      },
+      {
+        "id": "solar-eclipse-07",
+        "title": "看完一次穿越",
+        "titleEn": "Watch a complete crossing",
+        "caption": "同一尺寸下，偏食、全食、偏食依次出现。",
+        "captionEn": "One crossing progresses from partial to total and back to partial.",
+        "zh": "恢复较近的月球距离，看一次连续穿越。月球先接触太阳边缘，逐渐遮住更多面积；当整个太阳圆面落进月球圆面，进入全食。继续移动，又回到偏食，最后分开。这不是四幅互不相关的图，而是同一角距离连续改变的结果。",
+        "en": "Restore the nearer lunar distance and watch a continuous crossing. The Moon touches the solar edge, then covers more of it. Totality begins when the entire solar disk fits within the apparent lunar disk. Continuing motion brings partial coverage and finally separation. Every stage follows from the same changing angular separation.",
+        "seconds": 22,
+        "chapterAt": 139,
+        "at": 139.45
+      },
+      {
+        "id": "solar-eclipse-08",
+        "title": "把条件重新拆开",
+        "titleEn": "Separate the conditions again",
+        "caption": "相位、交点、视大小与观测位置缺一不可。",
+        "captionEn": "Phase, node alignment, apparent size and observing position all matter.",
+        "zh": "最后让月球再次离开轨道交点。即使接近新月，遮挡仍会消失。现在把四个条件分开：前后相位、轨道高度、两个视圆面的大小，以及观测点的位置。自由探索能单独改变它们。这里演示几何关系，不计算某年某日的日食，也不预测城市中的可见路径。",
+        "en": "Finally move the Moon away from the node again. Near-new-moon alignment can remain while the eclipse disappears. Separate the four conditions: conjunction, orbital height, apparent disk sizes and observer position. Exploration lets you change each independently. This geometric instrument explains eclipses; it does not calculate calendar dates or a path across real cities.",
+        "seconds": 22,
+        "chapterAt": 162,
+        "at": 162.45
+      }
+    ]
+  },
+  "resonance": {
+    "duration": 163,
+    "cues": [
+      {
+        "id": "resonance-1",
+        "title": "自己的节拍",
+        "titleEn": "A rhythm of its own",
+        "caption": "松手后，物体按固有节拍振动。",
+        "captionEn": "Release reveals the natural rhythm.",
+        "zh": "先看没有持续推力的弹簧。质量块从偏离中心的位置松开，来回运动，幅度慢慢减小。这个节拍由质量和弹簧刚度决定。它不是我们给定的驱动节拍，而是物体自己的自由响应。",
+        "en": "Start with the spring alone. The mass is released away from its center and swings back and forth, gradually losing amplitude. Its mass and spring stiffness set this natural rhythm. There is no repeating external push in this first experiment.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "resonance-2",
+        "title": "慢慢推",
+        "titleEn": "A slow drive",
+        "caption": "推得太慢，振幅保持较小。",
+        "captionEn": "A slow push gives a modest response.",
+        "zh": "现在加入金色的周期推力。它改变方向很慢，质量块大致跟着走，弹簧没有积累很大的摆幅。留意所有比较都保留相同的推力大小；我们只改变它的节拍，不靠更用力来获得更大的运动。",
+        "en": "Now the gold force reverses slowly. The mass mostly follows it, with a modest excursion. Keep the size of that applied force in mind. The comparisons retain the same force amplitude, so a larger motion must come from the timing rather than a stronger push.",
+        "seconds": 20,
+        "chapterAt": 20,
+        "at": 20.45
+      },
+      {
+        "id": "resonance-3",
+        "title": "节拍接近",
+        "titleEn": "Matching the rhythm",
+        "caption": "节拍接近，运动逐圈建立。",
+        "captionEn": "Near the natural rhythm, motion builds.",
+        "zh": "把驱动节拍调到接近固有节拍。运动不是瞬间跳到最大，而是从静止逐步建立。每一圈都能得到新的能量，于是同样的小推力产生了明显更大的往复运动。请跟住质量块中心的那个圆点。",
+        "en": "Bring the drive close to the natural rhythm. The response does not jump to its final size. It builds from rest over several cycles. Repeated energy input produces a much larger motion from the same small force. Follow the dot at the center of the mass.",
+        "seconds": 20,
+        "chapterAt": 40,
+        "at": 40.45
+      },
+      {
+        "id": "resonance-4",
+        "title": "追踪能量",
+        "titleEn": "Follow the energy",
+        "caption": "力与速度同向时，能量流入。",
+        "captionEn": "Force along velocity supplies energy.",
+        "zh": "金线表示力，质量块的移动方向表示速度。功率条向正方向伸展时，外力在输入能量；反向时，它在取走能量。在这个接近共振的状态里，周期平均的输入持续补偿阻尼损失，最后维持稳定的振幅。",
+        "en": "The gold segment shows force while the moving mass reveals velocity. Positive power means the drive adds energy; negative power means it takes energy back. Near resonance, the average input replaces the energy lost to damping, allowing a large but finite steady oscillation.",
+        "seconds": 20,
+        "chapterAt": 60,
+        "at": 60.45
+      },
+      {
+        "id": "resonance-5",
+        "title": "加入阻尼",
+        "titleEn": "With damping",
+        "caption": "损失增多，稳定振幅下降。",
+        "captionEn": "Greater losses reduce the steady motion.",
+        "zh": "保持推力和驱动频率，再增加阻尼。质量块的稳定摆幅变小，响应曲线的尖峰也变低、变宽。阻尼并没有把驱动器关掉，它让每圈耗散更多能量，因此输入与损失在较小的运动幅度上就能平衡。",
+        "en": "Keep the force and driving frequency, then increase damping. The final excursion becomes smaller, and the response peak becomes lower and broader. The drive is still working. Greater energy loss allows the input and dissipation to balance at a smaller amplitude.",
+        "seconds": 20,
+        "chapterAt": 80.5,
+        "at": 80.95
+      },
+      {
+        "id": "resonance-6",
+        "title": "扫过频率",
+        "titleEn": "Survey the frequencies",
+        "caption": "最大位移出现在固有频率附近。",
+        "captionEn": "The largest response lies near the natural frequency.",
+        "zh": "沿着响应曲线看一遍。金点比较的是每个驱动频率各自稳定后的振幅，不是一次快速扫频留下的历史。峰值在固有频率附近；有阻尼时，最大位移的位置会略向低频偏移，而不是永远精确落在一。",
+        "en": "Travel along the response curve. The gold dot compares the settled amplitude of a separate experiment at each frequency. It is not the history of one rapid sweep. The displacement peak sits near the natural frequency and shifts slightly lower when damping is present.",
+        "seconds": 20,
+        "chapterAt": 100.5,
+        "at": 100.95
+      },
+      {
+        "id": "resonance-7",
+        "title": "推得太快",
+        "titleEn": "Drive too quickly",
+        "caption": "推得太快，质量块难以跟随。",
+        "captionEn": "A very fast push produces little displacement.",
+        "zh": "继续把节拍加快。金色推力仍在规律反向，质量块却只做较小的运动。它需要加速度才能快速换向，惯性限制了位移。此时推力与位移逐渐接近反相。高频并不自动意味着大振幅。",
+        "en": "Increase the driving frequency further. The force still reverses regularly, but the mass moves through a smaller distance. Reversing quickly requires acceleration, and inertia limits the displacement. Force and displacement approach opposite phase. A faster drive does not guarantee a larger response.",
+        "seconds": 20,
+        "chapterAt": 120.5,
+        "at": 120.95
+      },
+      {
+        "id": "resonance-8",
+        "title": "回到共振",
+        "titleEn": "Return to resonance",
+        "caption": "共振靠节拍积累，也受损失限制。",
+        "captionEn": "Resonance accumulates energy and remains limited by loss.",
+        "zh": "回到接近共振的状态。现在可以把三件事连起来：物体有自己的固有节拍，外力可以逐圈送入能量，阻尼同时取走能量。大的响应来自这三者的配合。真实结构还有非线性和强度限制，这里只保留一个线性振动模式。",
+        "en": "Return to the large response and connect the three ingredients: a natural rhythm, a repeating energy input, and continuous dissipation. Their balance determines the motion. Real structures also have nonlinear behavior and strength limits. This teaching model deliberately isolates one linear vibration mode.",
+        "seconds": 20,
+        "chapterAt": 141.5,
+        "at": 141.95
+      }
+    ]
+  },
+  "beats": {
+    "duration": 163,
+    "cues": [
+      {
+        "id": "beats-1",
+        "title": "先留一个音",
+        "titleEn": "Start with one tone",
+        "caption": "一个稳定频率，振幅保持不变。",
+        "captionEn": "One steady frequency keeps a constant amplitude.",
+        "zh": "先只看蓝色的声压。每个周期一样长，每次起伏一样大。横轴只有五十毫秒，因此能分辨单个波峰。这里画的是同一个接收点随时间变化的声压，不是一条在空间中摆动的绳子。",
+        "en": "Begin with the blue pressure trace. Its cycles are evenly spaced and equally tall. This window spans only fifty milliseconds, making individual oscillations visible. It is pressure changing with time at one receiver, rather than the shape of a string in space.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "beats-2",
+        "title": "加入同频",
+        "titleEn": "Add the same frequency",
+        "caption": "同频且同相，两波始终相加。",
+        "captionEn": "Equal frequencies in phase keep reinforcing.",
+        "zh": "加入橙色声压，先让它与蓝色完全同频、同相。两条输入都很稳定，波峰和波谷持续对齐。这个对齐关系不会自行改变。两个声源的存在本身，并不保证声音会忽强忽弱；相位关系必须随时间改变。",
+        "en": "Add the orange pressure trace with exactly the same frequency and phase. Peaks remain aligned with peaks, and troughs with troughs. That alignment does not drift. Having two sources alone does not produce a beat. Their relative phase must change with time.",
+        "seconds": 20,
+        "chapterAt": 20,
+        "at": 20.45
+      },
+      {
+        "id": "beats-3",
+        "title": "只差一点",
+        "titleEn": "Make a tiny difference",
+        "caption": "微小频差，让相位缓慢滑开。",
+        "captionEn": "A small frequency difference creates a slow phase drift.",
+        "zh": "现在把橙色改为二百二十二赫兹，蓝色仍是二百二十。橙色每秒多完成两个周期，波峰便一点点越过蓝色。看合成声压：单个周期仍然很快，但整个起伏的高度开始缓慢变化。",
+        "en": "Set orange to two hundred twenty-two hertz while blue stays at two hundred twenty. Orange completes two extra cycles every second, so the traces slowly slip past each other. The sum still oscillates rapidly, but the height of those oscillations now changes much more slowly.",
+        "seconds": 20,
+        "chapterAt": 40.5,
+        "at": 40.95
+      },
+      {
+        "id": "beats-4",
+        "title": "走到同相",
+        "titleEn": "Arrive in phase",
+        "caption": "同向声压叠加，包络达到峰值。",
+        "captionEn": "Aligned pressures produce a large envelope.",
+        "zh": "把观察时刻停在两波接近同相的位置。蓝色向上时，橙色也向上；向下时，两者也一起向下。相加后的偏离更大，慢包络来到高处。下面的曲线不增加第三个声源，只围住合成波形能达到的幅度。",
+        "en": "Look closely near an in-phase moment. When blue rises, orange rises too, and both fall together. Their pressures reinforce, and the slow envelope reaches a maximum. That envelope does not introduce a third source. It bounds the amplitude of the rapidly oscillating sum.",
+        "seconds": 20,
+        "chapterAt": 60.5,
+        "at": 60.95
+      },
+      {
+        "id": "beats-5",
+        "title": "走到反相",
+        "titleEn": "Arrive in opposition",
+        "caption": "反向声压相抵，合成振幅变小。",
+        "captionEn": "Opposing pressures reduce the combined amplitude.",
+        "zh": "再看半个拍周期之后。蓝色上升时，橙色几乎同样向下，两个输入各自仍然很大，合成声压却变小了。弱下来的不是两个声源本身，而是它们在这个接收点的和。等幅时，谷底可以达到零。",
+        "en": "Half a beat later, blue rises while orange falls by almost the same amount. Each input remains strong, yet their sum becomes small. The sources have not faded. Their pressures cancel at this receiver. With equal amplitudes, the envelope can reach zero.",
+        "seconds": 20,
+        "chapterAt": 81,
+        "at": 81.45
+      },
+      {
+        "id": "beats-6",
+        "title": "数慢节拍",
+        "titleEn": "Count the slow rhythm",
+        "caption": "每秒两次变强，对应 2 Hz 频差。",
+        "captionEn": "Two swells per second match a 2 Hz difference.",
+        "zh": "把注意力移到两点五秒的包络。游标每经过一个高处，合成声音就完成一次由强到弱再变强的节奏。二百二十和二百二十二的差是二，所以每秒出现两次强弱起伏。它与音调本身的快速振动是两个时间尺度。",
+        "en": "Watch the two-and-a-half-second envelope. Each successive maximum marks another swell after a fade. The difference between two hundred twenty and two hundred twenty-two is two, so there are two swells per second. This slow rhythm is distinct from the rapid pressure oscillations associated with pitch.",
+        "seconds": 20,
+        "chapterAt": 101,
+        "at": 101.45
+      },
+      {
+        "id": "beats-7",
+        "title": "拉开频差",
+        "titleEn": "Widen the gap",
+        "caption": "频差加倍，强弱起伏也加倍。",
+        "captionEn": "Doubling the difference doubles the swelling rate.",
+        "zh": "把橙色提高到二百二十四赫兹，蓝色保持原样。相位滑开的速度加倍，包络也更快地反复抬起。这里四赫兹是强弱变化的频率，不表示出现了一列四赫兹的独立声压波。模型始终只把两个输入相加。",
+        "en": "Raise orange to two hundred twenty-four hertz. Its phase now slips twice as quickly, and the envelope swells twice as often. Four hertz describes the amplitude variation. It does not mean this linear model has created an independent four-hertz pressure wave. It still adds only two inputs.",
+        "seconds": 20,
+        "chapterAt": 121.5,
+        "at": 121.95
+      },
+      {
+        "id": "beats-8",
+        "title": "调回一致",
+        "titleEn": "Tune to agreement",
+        "caption": "越接近同频，拍越慢，最终消失。",
+        "captionEn": "As frequencies agree, beats slow and disappear.",
+        "zh": "最后慢慢把橙色调回蓝色。起伏越来越宽，拍变慢；当两个频率完全一致，相位差不再继续滑动，周期性的强弱变化消失。这就是听拍调音的依据。自由探索里还能改变振幅，检查不等幅时为什么不能完全抵消。",
+        "en": "Finally tune orange toward blue. The envelope widens as beats slow. At equal frequency the relative phase stops drifting, so periodic swelling disappears. This is why beats help with tuning. In exploration, also change amplitude and test why unequal inputs cannot cancel completely.",
+        "seconds": 20,
+        "chapterAt": 141.5,
+        "at": 141.95
+      }
+    ]
+  },
+  "standing-wave": {
+    "duration": 163,
+    "cues": [
+      {
+        "id": "standing-wave-1",
+        "title": "拆开一列波",
+        "titleEn": "Separate one wave",
+        "caption": "先跟住行波向前移动的波峰。",
+        "captionEn": "First follow a crest traveling forward.",
+        "zh": "先把向前的一列波单独拆出来。波峰沿弦的方向移动，弦上各点却只上下振动。这是一个传播分量的示意，还不是满足两端固定条件的完整运动。先保留这个区别，再看返回的那一列波。",
+        "en": "Isolate one traveling component. Its crests move along the string while individual string positions oscillate across it. This is a component of the motion, not yet a complete solution for a string fixed at both ends. Keep that distinction as we introduce the returning wave.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "standing-wave-2",
+        "title": "加入返回波",
+        "titleEn": "Add the returning wave",
+        "caption": "相反方向的两波，共用频率与振幅。",
+        "captionEn": "The opposite waves share frequency and amplitude.",
+        "zh": "现在加入方向相反的返回波。两条细线分开摆放，便于看清它们的传播方向。它们有相同频率和振幅，所有相位来自同一个模型。下面的粗线才是两列波在同一根弦上相加的真实位移。",
+        "en": "Now add a wave traveling in the opposite direction. The thin component traces are separated so their movement is easier to inspect. They share frequency and amplitude. The thicker string shows their sum at the same positions, using exactly those component phases.",
+        "seconds": 20,
+        "chapterAt": 20,
+        "at": 20.45
+      },
+      {
+        "id": "standing-wave-3",
+        "title": "看见驻波",
+        "titleEn": "See the standing pattern",
+        "caption": "两波相加，形状只在原地起伏。",
+        "captionEn": "Their sum oscillates without traveling crests.",
+        "zh": "把注意力留在合成弦。它一会儿向上弯，一会儿穿过直线，再向下弯，却没有一个合成波峰持续向前走。我们看到的是驻波：传播分量没有消失，只是它们的叠加让某些位置一直抵消，另一些位置反复振动。",
+        "en": "Watch the combined string curve upward, pass through straight and bend downward. No combined crest keeps traveling along it. This is a standing wave. Its traveling components remain present, but their addition creates positions that always cancel and others that repeatedly oscillate.",
+        "seconds": 20,
+        "chapterAt": 40,
+        "at": 40.45
+      },
+      {
+        "id": "standing-wave-4",
+        "title": "节点不走",
+        "titleEn": "Locate the nodes",
+        "caption": "节点在所有时刻都保持零位移。",
+        "captionEn": "Nodes remain at zero displacement at every time.",
+        "zh": "深色圆点标记节点。停在任意时刻，甚至来回拖动进度，它们仍在平衡线上。节点不是碰巧经过零的普通点，而是每一时刻两波都在那里相抵。两端固定，也就要求端点属于这组永远不动的位置。",
+        "en": "The dark circles mark nodes. Pause or seek through the cycle: they remain on the equilibrium line. An ordinary point crosses zero only at certain times. At a node the two waves cancel at every time, which is also what the fixed endpoints require.",
+        "seconds": 20,
+        "chapterAt": 60,
+        "at": 60.45
+      },
+      {
+        "id": "standing-wave-5",
+        "title": "波腹与能量",
+        "titleEn": "Antinodes and energy",
+        "caption": "波腹位移最大，能量在两种形式间交换。",
+        "captionEn": "Antinodes move most as energy changes form.",
+        "zh": "金色点落在波腹，那里摆幅最大。看它到达最高或最低处时，弦的形变大，速度却暂时为零；穿过平衡形状时，速度最大。能量条显示动能与弹性势能此消彼长，理想弦的总能量保持不变。",
+        "en": "Gold dots mark antinodes, the positions with the largest excursion. At maximum deformation, the string is momentarily still. As it crosses its straight shape, velocity is greatest. The energy strip shows kinetic and elastic energy exchanging while the ideal string keeps the same total energy.",
+        "seconds": 20,
+        "chapterAt": 80,
+        "at": 80.45
+      },
+      {
+        "id": "standing-wave-6",
+        "title": "第二个模式",
+        "titleEn": "Fit the second mode",
+        "caption": "放进两个半波，增加一个内部节点。",
+        "captionEn": "Two half-wavelengths add one internal node.",
+        "zh": "保持同样的弦长，改成第二阶模式。现在整根弦能容下两个半波，中间多出一个固定节点，相邻的两段反向起伏。允许的波长受端点约束，不是任何长度的波都能这样稳定地贴合两个固定端。",
+        "en": "Keep the same string length and select the second mode. Two half-wavelengths now fit, adding a node at the center. Neighboring sections move oppositely. The endpoint conditions select allowed wavelengths; an arbitrary wavelength cannot form this exact fixed-end pattern.",
+        "seconds": 20,
+        "chapterAt": 101.5,
+        "at": 101.95
+      },
+      {
+        "id": "standing-wave-7",
+        "title": "第三个模式",
+        "titleEn": "Fit the third mode",
+        "caption": "三个半波对应第三谐波。",
+        "captionEn": "Three half-wavelengths form the third harmonic.",
+        "zh": "再换到第三阶。节点把弦分成三段，波长进一步缩短。张力、密度和长度不变，所以波速不变；更短的波长意味着更高频率。这里第三阶的频率是基频的三倍，节点的位置同样由边界和阶数计算。",
+        "en": "Select the third mode. Three sections now fit between the ends and the wavelength is shorter. Tension, density and length remain unchanged, so wave speed stays the same. A shorter wavelength gives a higher frequency: the third harmonic has three times the fundamental frequency.",
+        "seconds": 20,
+        "chapterAt": 121.5,
+        "at": 121.95
+      },
+      {
+        "id": "standing-wave-8",
+        "title": "拉紧弦",
+        "titleEn": "Increase the tension",
+        "caption": "张力增大，频率升高，节点位置不变。",
+        "captionEn": "Higher tension raises frequency without moving the nodes.",
+        "zh": "最后保留第二阶模式，把弦拉得更紧。频率读数上升，但两端和中间节点的位置没有改变。波速由张力与线密度决定，允许的波长由长度和模式决定。自由探索可以分别改变这两件事，观察它们怎样共同决定频率。",
+        "en": "Keep the second mode and increase tension. The frequency readout rises, but both endpoints and the central node stay in place. Tension and linear density determine speed; string length and mode determine wavelength. Exploration lets you change them separately and connect both to the resulting frequency.",
+        "seconds": 20,
+        "chapterAt": 141.5,
+        "at": 141.95
+      }
+    ]
+  },
+  "sampling-aliasing": {
+    "duration": 173,
+    "cues": [
+      {
+        "id": "sampling-aliasing-1",
+        "title": "连续不等于记录",
+        "titleEn": "Continuous is not recorded",
+        "caption": "连续波只留下离散的点。",
+        "captionEn": "A continuous wave leaves discrete samples.",
+        "zh": "先看淡蓝色曲线。它每秒完成两次起伏，金色点却只在固定时刻出现。相邻点之间的曲线是真实输入，记录里并没有这一整段。现在逐个留下点，问题就变成了：只凭这些数，还能认出原来的波吗？",
+        "en": "Follow the pale blue trace through two cycles each second. Gold dots appear only at fixed instants. The curve between dots belongs to the input; the recorder never measured that entire stretch. As the dots arrive, ask what they actually tell us about the wave that made them.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "sampling-aliasing-2",
+        "title": "只看采样点",
+        "titleEn": "Keep only the samples",
+        "caption": "每秒八点，先记录两次起伏。",
+        "captionEn": "Eight samples record two cycles per second.",
+        "zh": "把采样频率固定在每秒八次。现在每个完整起伏里有四个取样时刻。金点的高度就是设备记住的值，竖线只用来标出时刻。注意我们没有把相邻点随便接成答案，接下来要检查是否还有另一条波也能穿过它们。",
+        "en": "Hold the recorder at eight samples per second. Our two hertz signal gets four sampling instants per cycle. Each gold dot is one stored value, and each stem marks its time. Joining neighboring dots would be a guess. We will test that guess against another wave.",
+        "seconds": 20,
+        "chapterAt": 20,
+        "at": 20.45
+      },
+      {
+        "id": "sampling-aliasing-3",
+        "title": "频率折回来",
+        "titleEn": "Frequency folds back",
+        "caption": "输入越过半采样率，频率折返。",
+        "captionEn": "Frequency folds after half the sampling rate.",
+        "zh": "输入加快了，取样的钟却没有加快。超过每秒四次起伏之后，陶红色低频波出现。它不只是大致靠近金点，而是在每一个采样时刻都给出同样的值。高速输入因此能伪装成较慢的变化，这就是混叠。",
+        "en": "The input speeds up while the sample clock stays fixed. Above four hertz, a coral low frequency trace appears. It does more than resemble the dots: it gives the same value at every sampling instant. A fast signal can therefore masquerade as a slower one. That ambiguity is aliasing.",
+        "seconds": 20,
+        "chapterAt": 41,
+        "at": 41.45
+      },
+      {
+        "id": "sampling-aliasing-4",
+        "title": "两种解释",
+        "titleEn": "Two valid explanations",
+        "caption": "六赫兹与二赫兹留下相同记录。",
+        "captionEn": "Six and two hertz leave the same record.",
+        "zh": "停在六赫兹输入。每秒八次的记录，也完全符合一条二赫兹曲线。淡蓝曲线和陶红曲线在取样之间走了不同的路，但金点没有提供区分它们的信息。记录完成以后，再画更平滑的线，也不能凭空找回被混淆的频率。",
+        "en": "Stop at a six hertz input and eight samples per second. A two hertz wave explains exactly the same record. Blue and coral take different paths between the measured instants. Those missing paths are the lost information. A smoother drawing made afterward cannot tell us which input was really present.",
+        "seconds": 20,
+        "chapterAt": 61.5,
+        "at": 61.95
+      },
+      {
+        "id": "sampling-aliasing-5",
+        "title": "加快采样钟",
+        "titleEn": "Speed up the sample clock",
+        "caption": "采样点变密，低频伪装消失。",
+        "captionEn": "Denser sampling removes the false low frequency.",
+        "zh": "现在保持输入六赫兹，只让取样变快。金点逐渐密起来，陶红曲线也随新的采样规则改变。采样频率超过输入频率的两倍之后，折叠后的频率与原输入重合。这里比较的是有带宽上限的信号，真实设备还需要给滤波器留出余量。",
+        "en": "Keep the input at six hertz and increase only the sampling rate. More gold dots fill each cycle, and the alternative trace changes with the clock. Once the rate exceeds twice the input frequency, the folded trace agrees with the original. Practical systems also reserve room for a real filter transition band.",
+        "seconds": 20,
+        "chapterAt": 82.5,
+        "at": 82.95
+      },
+      {
+        "id": "sampling-aliasing-6",
+        "title": "恰好两倍的陷阱",
+        "titleEn": "The exact boundary",
+        "caption": "恰好两倍，某些相位会全变零。",
+        "captionEn": "At exactly twice, one phase can vanish.",
+        "zh": "采样频率恰好等于输入的两倍，看起来似乎够了。现在只转动输入相位，金点的高度却逐渐缩到零。波依然在两个采样时刻之间起伏。这个边界提醒我们，不能把两倍这个数字理解成对任意相位都安全的实用设置。",
+        "en": "At exactly twice the input frequency, two samples per cycle can seem sufficient. Now change only the phase. Every measured value shrinks toward zero, although the wave still rises and falls between samples. This boundary case is why an equality should not be treated as a safe practical sampling setting.",
+        "seconds": 20,
+        "chapterAt": 105.5,
+        "at": 105.95
+      },
+      {
+        "id": "sampling-aliasing-7",
+        "title": "先过滤再记录",
+        "titleEn": "Filter before recording",
+        "caption": "先移除高频，避免折成假低频。",
+        "captionEn": "Remove high frequencies before they can fold.",
+        "zh": "输入换成一慢一快两个分量。灰线保留原样，淡蓝线显示经过滤波的输入。让七赫兹分量在采样之前消失，金点最后只留下真正的一赫兹。这里的滤波是理想分量选择；真实低通需要过渡带，也不能在采样以后倒过来解除混叠。",
+        "en": "Combine a slow one hertz component with a faster seven hertz component. Gray preserves the original, while blue shows the filtered input. Removing the fast component before sampling leaves only the real slow signal in the gold dots. This is an ideal low pass demonstration; a physical filter has a transition band.",
+        "seconds": 20,
+        "chapterAt": 126.5,
+        "at": 126.95
+      },
+      {
+        "id": "sampling-aliasing-8",
+        "title": "同样输入再比较",
+        "titleEn": "Compare the same input",
+        "caption": "提高采样率，让两个分量都可辨。",
+        "captionEn": "Raise the rate to retain both components.",
+        "zh": "最后保留两个分量，重新提高采样频率。较密的采样不必先丢掉这个七赫兹成分，合成曲线的细节也能被保留。记住两个不同的办法：需要保留高频，就提高采样率；高频不在任务范围内，就在取样前过滤。决定必须发生在记录信息的时候。",
+        "en": "Retain both components and raise the sampling rate again. The denser record can now preserve the faster detail rather than discarding it first. There are two useful choices: sample fast enough for the bandwidth you need, or filter unwanted high frequencies before recording. Make that choice before the information becomes ambiguous.",
+        "seconds": 20,
+        "chapterAt": 149.5,
+        "at": 149.95
+      }
+    ]
+  },
+  "fourier-transform": {
+    "duration": 180.5,
+    "cues": [
+      {
+        "id": "fourier-transform-1",
+        "title": "一条复杂的线",
+        "titleEn": "One complicated trace",
+        "caption": "复杂波形来自几个简单分量。",
+        "captionEn": "A complex trace can contain simple components.",
+        "zh": "看这一秒里的金色波形。它的峰不对称，也不像单独的正弦波。我们使用同一组六十四个样本，既观察它随时间的形状，也准备问另一个问题：这段记录里，分别有多少种重复的节奏？每一个频点都要从这份记录计算出来。",
+        "en": "Follow the gold waveform over one second. Its uneven crests do not look like a single sine wave. We keep the same sixty four samples throughout this comparison. One view shows their shape in time. Another question asks how strongly each repeating rhythm is present, and every answer must come from this same record.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "fourier-transform-2",
+        "title": "先取基础节奏",
+        "titleEn": "Find the fundamental",
+        "caption": "一赫兹分量只还原大轮廓。",
+        "captionEn": "The one hertz term restores the broad shape.",
+        "zh": "先只保留一赫兹分量。淡蓝线一秒走完一圈，金线用它重建原来的记录。灰色原波形仍在，方便比较。大轮廓找到了，小的拐弯却还不在。这不是把灰线磨平的绘画操作，而是保留计算得到的第一个频率分量。",
+        "en": "Keep only the one hertz component. The blue trace completes one cycle, and gold reconstructs the record using that term alone. Gray preserves the original for comparison. The broad shape is there, but the smaller bends are missing. We have selected a calculated frequency component, rather than simply smoothing the drawing.",
+        "seconds": 20,
+        "chapterAt": 21,
+        "at": 21.45
+      },
+      {
+        "id": "fourier-transform-3",
+        "title": "再加第三次",
+        "titleEn": "Add the third harmonic",
+        "caption": "加入三赫兹，局部形状改变。",
+        "captionEn": "Adding three hertz changes the smaller bends.",
+        "zh": "现在让三赫兹分量参与。陶红线的三个起伏，与基础节奏逐点相加。金色重建线出现新的弯折，向灰色原波形靠近。请看同一时刻的高度如何相加，而不是把三条线当作三段先后发生的声音；这些分量同时存在于记录里。",
+        "en": "Add the three hertz component. Its three coral cycles combine point by point with the fundamental. The gold reconstruction gains new bends and approaches the gray record. Follow the heights at the same instant. These are simultaneous contributions, rather than three sounds or events occurring one after another.",
+        "seconds": 20,
+        "chapterAt": 42,
+        "at": 42.45
+      },
+      {
+        "id": "fourier-transform-4",
+        "title": "完整重建",
+        "titleEn": "Complete the reconstruction",
+        "caption": "五赫兹补上剩下的细节。",
+        "captionEn": "Five hertz supplies the remaining detail.",
+        "zh": "最后加入较弱的五赫兹分量。它的振幅只有基础分量的四分之一，仍能改变细部。金线现在覆盖原来的灰线。把信号拆成分量，再用相同的幅度和相位相加，就能回到原来的样本。这种可逆关系，是频谱分析有用的原因。",
+        "en": "Now include the weaker five hertz component. Its amplitude is only a quarter of the fundamental, yet it changes the detail. Gold now covers the original gray waveform. Decompose the record, then add the components with their measured amplitudes and phases, and the original samples return. That reversible relationship makes the spectrum useful.",
+        "seconds": 20,
+        "chapterAt": 64,
+        "at": 64.45
+      },
+      {
+        "id": "fourier-transform-5",
+        "title": "用试探波提问",
+        "titleEn": "Probe with another wave",
+        "caption": "匹配的节奏累加，不匹配的抵消。",
+        "captionEn": "Matching rhythms accumulate; others cancel.",
+        "zh": "频率分量不是靠目测猜的。把样本与一个试探正弦逐点相乘，再累计结果。试探每秒两次时，正负贡献互相抵消。换成每秒三次，累计量留下稳定的非零结果。完整变换还同时计算余弦方向，才能分清幅度与相位。",
+        "en": "We do not guess components by eye. Multiply each sample by a test sine and accumulate the products. A two hertz probe leaves positive and negative contributions that cancel. A three hertz probe leaves a steady nonzero result. The complete transform also tests the cosine direction, which is needed to recover both amplitude and phase.",
+        "seconds": 20,
+        "chapterAt": 87,
+        "at": 87.45
+      },
+      {
+        "id": "fourier-transform-6",
+        "title": "相位不是幅度",
+        "titleEn": "Phase is not amplitude",
+        "caption": "转动相位，幅度保持不变。",
+        "captionEn": "Phase rotates while amplitude stays constant.",
+        "zh": "只转动三赫兹分量的相位，其他输入保持不变。相位指针沿圆周走，长度没有改变，幅度读数也保持零点五。波形中的起伏会移动，但这一频率的强弱并没有变化。因此只看幅度频谱，不能知道各分量在什么时刻对齐。",
+        "en": "Change only the phase of the three hertz component. The pointer moves around its circle without changing length, and its amplitude stays at zero point five. Its crests move in time while its strength remains fixed. An amplitude spectrum alone therefore cannot tell us when the components line up.",
+        "seconds": 20,
+        "chapterAt": 110,
+        "at": 110.45
+      },
+      {
+        "id": "fourier-transform-7",
+        "title": "移除一个分量",
+        "titleEn": "Remove one component",
+        "caption": "减弱三赫兹，波形随之改变。",
+        "captionEn": "Reducing three hertz changes the waveform.",
+        "zh": "现在逐渐减弱三赫兹分量。它的频谱柱下降，时间波形也失去相应的弯折。两幅图不是独立动画，它们来自同一组重新计算的样本。频域选择改变时域结果；真实滤波器还需要考虑过渡、延迟和其他限制，这里只做可解释的分量选择。",
+        "en": "Gradually reduce the three hertz component. Its spectral bar falls, and the time trace loses the corresponding bends. These are two views of newly calculated samples, rather than unrelated animations. Selecting frequencies changes the time signal. Real filters add transition bands and delay; here we isolate component selection itself.",
+        "seconds": 20,
+        "chapterAt": 132,
+        "at": 132.45
+      },
+      {
+        "id": "fourier-transform-8",
+        "title": "窗口也会留下痕迹",
+        "titleEn": "The observation window matters",
+        "caption": "非整数周期，让频谱向邻点扩散。",
+        "captionEn": "A fractional cycle spreads across neighboring bins.",
+        "zh": "最后把三赫兹慢慢改成三点四赫兹。一秒的窗口不再装下整数个周期，频谱向邻近频点散开。这不意味着输入突然多了许多独立振荡器，而是有限记录与矩形窗口的结果。傅里叶分析既告诉我们信号里有什么，也要求我们记住究竟观察了多久。",
+        "en": "Shift the component from three to three point four hertz. A one second record no longer contains an integer number of its cycles, and neighboring frequency bins acquire energy. The input did not suddenly grow many independent oscillators. This spreading reflects a finite rectangular observation window, so interpretation must include how long we watched.",
+        "seconds": 20,
+        "chapterAt": 156,
+        "at": 156.45
+      }
+    ]
+  },
+  "huffman": {
+    "duration": 180.5,
+    "cues": [
+      {
+        "id": "equal",
+        "title": "每个字母一样长？",
+        "titleEn": "Equal length for every letter?",
+        "caption": "同一消息，先给每个字母三位。",
+        "captionEn": "Start with three bits for every symbol.",
+        "zh": "先看这条消息，BANANA，空格，再接 BANDANA。这里用下划线表示空格。总共有五种字符，等长编码至少需要三位。可是 A 出现了六次，D 只出现一次。给它们同样长的码字，真是最省的安排吗？",
+        "en": "Follow this one message: BANANA, a space, and BANDANA. The underscore stands for that space. Five different symbols need three bits each in a fixed-length code. But A appears six times and D only once. Should those two symbols really pay the same cost each time they occur?",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "weights",
+        "title": "先数，再分配",
+        "titleEn": "Count before assigning codes",
+        "caption": "A 出现六次，D 只出现一次。",
+        "captionEn": "A occurs six times; D occurs once.",
+        "zh": "柱子的高度来自真正的计数，不是字母的顺序。A 的柱子最高。如果把 A 的码字缩短一位，整条消息就少六位；把 D 缩短一位，只能省一位。我们要最小化的是所有字符的频数乘上各自码长，再把这些代价加起来。",
+        "en": "The bars are actual counts, not alphabetic ranks. A is the tallest. Shortening its code by one bit saves six bits in the message. Shortening D by one bit saves only one. The quantity to minimize is the sum of each frequency multiplied by its code length, across the whole alphabet.",
+        "seconds": 20,
+        "chapterAt": 20.5,
+        "at": 20.95
+      },
+      {
+        "id": "merge",
+        "title": "让最轻的两个先成为邻居",
+        "titleEn": "Join the two lightest first",
+        "caption": "每次合并最小的两个权重。",
+        "captionEn": "Repeatedly merge the two smallest weights.",
+        "zh": "观察高亮的两个小权重。把它们接到同一个父节点，父节点的重量就是两者之和。新节点重新放回队列，再选当前最小的两个。这样一直合并，直到只剩一个根。相同权重可能有不同的接法；码字会不同，但总代价仍然一样好。",
+        "en": "Watch the two highlighted weights. They become children of one parent, whose weight is their sum. Put that new parent back into the queue and choose the two smallest current weights again. Continue until only the root remains. Ties can produce different codewords while preserving the same optimal total cost.",
+        "seconds": 20,
+        "chapterAt": 41.5,
+        "at": 41.95
+      },
+      {
+        "id": "paths",
+        "title": "把路径写成零和一",
+        "titleEn": "Write the path as zeros and ones",
+        "caption": "左走写 0，右走写 1。",
+        "captionEn": "Write 0 for left and 1 for right.",
+        "zh": "现在把合并结果展开成树。每次走向左孩子写零，走向右孩子写一。跟住 A，它的权重很大，留在靠近根的位置，只需要一步。较少见的字符藏在更深的分支。码字就是从根到那个字符的完整路径，不需要另外发明一套编号。",
+        "en": "Open the merged structure into a tree. A left edge contributes zero, and a right edge contributes one. Follow A: its large weight keeps it near the root, only one edge away. Less frequent symbols lie deeper. A codeword is simply the complete path from the root to its symbol.",
+        "seconds": 20,
+        "chapterAt": 64,
+        "at": 64.45
+      },
+      {
+        "id": "encode",
+        "title": "把整条消息穿过码树",
+        "titleEn": "Encode the complete message",
+        "caption": "同一字符，每次使用同一个码字。",
+        "captionEn": "Every occurrence uses the same codeword.",
+        "zh": "沿着原消息逐个看字符。每遇到 A，就使用 A 的短路径；每遇到其他字符，就取它自己的路径。把这些码字直接连在一起，中间没有逗号。看上去边界消失了，不过树的结构已经把边界规则放进了编码。下一步我们用同一棵树找回来。",
+        "en": "Move through the original message symbol by symbol. Every A uses the same short path; every other symbol uses its own path. Concatenate those codewords without commas or spaces. The boundaries appear to disappear, but the tree has already built the boundary rule into the code. We will recover them with that same tree.",
+        "seconds": 20,
+        "chapterAt": 86.5,
+        "at": 86.95
+      },
+      {
+        "id": "decode",
+        "title": "到叶子，就输出一个字",
+        "titleEn": "At a leaf, emit one symbol",
+        "caption": "读到叶子后，回到根继续。",
+        "captionEn": "Reach a leaf, emit, and restart at the root.",
+        "zh": "从第一位开始读。零走左边，一走右边。只要还在内部节点，就继续读；一到叶子，就确定一个字符，输出它，然后回到根。没有任何叶子的路径是另一条叶子路径的开头，这叫前缀无歧义。看，字符按原来的次序完整回来了。",
+        "en": "Read from the first bit. Zero takes a left edge and one takes a right edge. At an internal node, keep reading. At a leaf, emit that symbol and return to the root. No leaf path begins another leaf path: this is the prefix-free property. The original character sequence returns without a separator between codewords.",
+        "seconds": 20,
+        "chapterAt": 110,
+        "at": 110.45
+      },
+      {
+        "id": "cost",
+        "title": "省的是消息位数",
+        "titleEn": "Count the message bits",
+        "caption": "42 位变成 28 位；码表另算。",
+        "captionEn": "42 message bits become 28; the codebook is extra.",
+        "zh": "现在比较同一条消息。等长编码用了四十二位，这棵哈夫曼树用了二十八位。这里算的是消息本体，还没算传输树或码长表需要的空间，也没算文件头和对齐。很短的消息可能省不回这些开销，所以二十八位绝不是压缩文件的最终大小。",
+        "en": "Compare the same message. Fixed-length coding needs forty-two bits, while this Huffman tree needs twenty-eight. Those are payload bits only. A decoder also needs the tree or a code-length description, and a file may need headers and padding. On a short message that overhead can outweigh the saving.",
+        "seconds": 20,
+        "chapterAt": 133,
+        "at": 133.45
+      },
+      {
+        "id": "adapt",
+        "title": "频数改变，树也改变",
+        "titleEn": "Change the frequencies, change the tree",
+        "caption": "更短的码字，留给更常见的字符。",
+        "captionEn": "Reserve shorter codewords for more frequent symbols.",
+        "zh": "最后再看频数和码长的关系。哈夫曼编码擅长利用字符出现次数的不均匀，并不理解单词的含义。如果所有字符几乎一样常见，能省下的空间就有限。进入自由探索，改一改消息，观察真实计数怎样重建码树，再追踪任意一个字符的路径。",
+        "en": "Return to the relationship between counts and code lengths. Huffman coding exploits uneven frequencies; it does not understand the meaning of a word. If symbols are equally common, there is less to gain. In exploration, edit the message, rebuild the actual tree, and follow any chosen character through its new code path.",
+        "seconds": 20,
+        "chapterAt": 156.5,
+        "at": 156.95
+      }
+    ]
+  },
+  "lz77": {
+    "duration": 198.5,
+    "cues": [
+      {
+        "id": "repeat",
+        "title": "同一段文字，又出现了",
+        "titleEn": "The same text appears again",
+        "caption": "ABRA 再次出现，要再写一次吗？",
+        "captionEn": "ABRA appears again. Must we write it again?",
+        "zh": "先读这条消息，ABRACADABRA，空格，再来一次 ABRACADABRA。下划线表示空格。许多字符已经见过了。逐字编码仍然会反复写同样的内容。滑动窗口换个思路：如果解码器手里已经有那段文字，就告诉它回到哪里，再抄多少个字符。",
+        "en": "Read ABRACADABRA, a space, and ABRACADABRA again. The underscore marks the space. Much of this text has already appeared. A literal representation writes it all again. A sliding-window code asks a different question: if the decoder already has those characters, can we tell it where to copy from and how many to copy?",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "window",
+        "title": "记忆是有限的",
+        "titleEn": "Memory has a boundary",
+        "caption": "只在当前指针后方的窗口里找。",
+        "captionEn": "Search only the history behind the cursor.",
+        "zh": "指针把文字分成两部分。已经经过的字符是历史，还没经过的是待编码内容。这里最多记住十二个历史字符。寻找引用时只能向后看，不能把未来还没生成的内容当作已有字典。窗口跟着指针前进，太老的字符会离开记忆范围。",
+        "en": "The cursor separates history from text still waiting to be encoded. This example remembers at most twelve previous characters. A reference must point backward into the existing output. The window follows the cursor, so older characters eventually fall outside the permitted starting positions. The decoder can keep the same bounded history as the encoder.",
+        "seconds": 20,
+        "chapterAt": 23.5,
+        "at": 23.95
+      },
+      {
+        "id": "match",
+        "title": "找出一段完全相同的字符",
+        "titleEn": "Find a genuine repeated run",
+        "caption": "逐字相同，才能延长匹配。",
+        "captionEn": "A match grows only while characters agree.",
+        "zh": "跟住第一次出现的匹配。模型从窗口里的每个合法起点比较字符，直到不同或达到长度上限。画出的历史片段和待编码片段逐字相同。我们使用贪心选择：当前取最长匹配；同样长时选最近的起点。这是明确的选择策略，不是保证最终文件最小的全局搜索。",
+        "en": "Follow the first repeated run. The model checks every legal starting position and extends a match while characters agree, stopping at a mismatch or the length limit. The highlighted runs really match. This encoder greedily chooses the longest current match, preferring the nearest start on a tie. It does not search globally for the smallest file.",
+        "seconds": 20,
+        "chapterAt": 46.5,
+        "at": 46.95
+      },
+      {
+        "id": "pair",
+        "title": "一段重复，换成两个数",
+        "titleEn": "Replace a repeated run with two numbers",
+        "caption": "引用写成：向后距离、复制长度。",
+        "captionEn": "A reference contains backward distance and length.",
+        "zh": "现在把重复片段换成一个二元组。第一个数是从当前输出位置向后数多少格，第二个数是复制几个字符。距离按当前位置计算，不是原文的绝对地址。接收者按这两个数，在自己已经写下的输出中找到来源，就能还原这段重复。",
+        "en": "Replace the run with a pair of numbers. The first is the backward distance from the current output position; the second is the number of characters to copy. Distance is relative to the current cursor, not an absolute address in the original message. A decoder locates the source in its own output and reconstructs the repeated run.",
+        "seconds": 20,
+        "chapterAt": 72.5,
+        "at": 72.95
+      },
+      {
+        "id": "decode",
+        "title": "接收者只看自己的输出",
+        "titleEn": "The decoder copies its own output",
+        "caption": "解码器不用提前知道后面的原文。",
+        "captionEn": "The decoder needs no future original text.",
+        "zh": "看解码器已经写出的字符。遇到字面字符就直接写下；遇到引用，就按距离找到来源，再逐字追加。输出的长度会真实增长。编码器和解码器共享的是规则和已经产生的历史，不是偷偷传送一份完整原文。最终还原的字符与输入完全相同。",
+        "en": "Watch the decoder’s actual output grow. A literal appends one character. A reference locates an earlier character by distance and copies into the output one character at a time. Encoder and decoder share rules and previously produced history, not a hidden copy of the full original. Completing the tokens reconstructs exactly the input sequence.",
+        "seconds": 20,
+        "chapterAt": 95,
+        "at": 95.45
+      },
+      {
+        "id": "overlap",
+        "title": "刚写下的，也能接着抄",
+        "titleEn": "New output can immediately become a source",
+        "caption": "距离 2、长度 10，也能合法回抄。",
+        "captionEn": "Distance 2, length 10 is a legal overlapping copy.",
+        "zh": "换成 AB 连续重复的短消息。先写 A 和 B，再发出距离二、长度十的引用。来源一开始只有两个字符，却能抄十个，因为每写出一个字符，它马上加入可读取的历史。这里必须逐字回抄；先截取一个固定长度的旧字符串，再一次性复制，会得到错误结果。",
+        "en": "Try a repeating AB pattern. After literal A and B, one reference has distance two and length ten. Only two source characters existed at first. Each newly appended character immediately becomes available as a later source, so the run can extend to ten. The decoder must copy sequentially; taking one fixed snapshot of the old source would be wrong.",
+        "seconds": 20,
+        "chapterAt": 120,
+        "at": 120.45
+      },
+      {
+        "id": "slide",
+        "title": "窗口变小，重复也会错过",
+        "titleEn": "A smaller window forgets repeats",
+        "caption": "太远的旧片段，不能再被引用。",
+        "captionEn": "A run outside the window cannot be referenced.",
+        "zh": "现在仍然编码同一条原消息，但把历史窗口缩到四个字符。注意新的令牌流：远处的重复已经不在合法窗口里，必须重新写成字面字符。窗口大小影响能找到哪些重复，也影响解码所需的记忆。更大的窗口有代价，但不保证每个短输入都会获得额外节省。",
+        "en": "Return to the original message and shrink the history window to four characters. The token stream changes: distant repeats no longer have legal starting positions and must be written as literals. Window size changes which repetitions are available and how much history decoding needs. A larger window has a cost and does not improve every short input.",
+        "seconds": 20,
+        "chapterAt": 145.5,
+        "at": 145.95
+      },
+      {
+        "id": "format",
+        "title": "更少的令牌，还要编码成位",
+        "titleEn": "Tokens still need a bit representation",
+        "caption": "令牌减少，不等于文件按比例变小。",
+        "captionEn": "Fewer tokens do not imply proportionally fewer bytes.",
+        "zh": "最后把原字符和令牌流放在一起。引用可以代表许多字符，所以令牌数量会减少。但一个引用要编码距离和长度，未必和一个字面字符占同样多的位。真实格式还要文件头、结束标志等信息。DEFLATE 会再用哈夫曼编码处理这些值；这篇只展示可逆的窗口引用过程。",
+        "en": "Compare the original characters with the resulting tokens. One reference can represent many characters, reducing the token count. But a reference must encode both a distance and a length; it need not cost the same number of bits as a literal. Real formats also need headers and boundaries. DEFLATE adds Huffman coding; this scene isolates reversible window references.",
+        "seconds": 20,
+        "chapterAt": 171,
+        "at": 171.45
+      }
+    ]
+  },
+  "rolling-shutter": {
+    "duration": 185.5,
+    "cues": [
+      {
+        "id": "rolling-shutter-1",
+        "title": "静止的直杆",
+        "titleEn": "A stationary straight pole",
+        "caption": "静止时，逐行记录仍然竖直。",
+        "captionEn": "A stationary pole stays straight during a scan.",
+        "zh": "先让竖杆完全不动。画面从最早的行逐渐记录到最后一行，每一行得到的横向位置都一样。金色虚线标出静止中心。逐行成像本身不会把静止物体变歪，真正需要跟踪的是：不同行开始曝光时，物体有没有移动。",
+        "en": "Begin with a pole that does not move. The image is recorded from the earliest row to the last, and every row finds the pole at the same horizontal position. The gold guide marks its resting center. Reading rows in sequence is not enough to bend a stationary object. Motion during those different exposure windows is the key.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "rolling-shutter-2",
+        "title": "每行有自己的时刻",
+        "titleEn": "Each row has its own time",
+        "caption": "曝光窗口逐行错开。",
+        "captionEn": "Each row has a later exposure window.",
+        "zh": "让竖杆横向移动，先看曝光时间条。每一条代表一行开始到结束的曝光，长度相同，但开始时刻依次向后推。再看逐渐写出的照片：靠后的行记住了更晚的位置。金点追踪当前记录行，整张照片并不属于同一个瞬间。",
+        "en": "Start the pole moving and follow the exposure bars. Each bar covers one row from exposure start to finish. They have equal lengths but progressively later starting times. The photograph records later pole positions in later rows. The gold dot follows the current row, showing why a complete frame does not represent one instant.",
+        "seconds": 20,
+        "chapterAt": 21,
+        "at": 21.45
+      },
+      {
+        "id": "rolling-shutter-3",
+        "title": "直杆为什么倾斜",
+        "titleEn": "Why the pole leans",
+        "caption": "不同位置被拼进同一张照片。",
+        "captionEn": "Different positions become one photograph.",
+        "zh": "现在看完整的卷帘照片。竖杆本身始终竖直，照片里却倾斜了。上面的行保存较早位置，下面的行保存较晚位置。我们把一段时间里的不同切片拼成一张图，几何形状就改变了。这不是镜头突然把光线弯曲，而是时间进入了图像的空间坐标。",
+        "en": "Look at the completed rolling shutter photograph. The pole itself remained straight, but its image leans. Earlier rows preserve an earlier position, while later rows preserve a later one. Combining slices from different times changes the apparent geometry. The lens did not suddenly bend the pole; time became part of the image coordinates.",
+        "seconds": 20,
+        "chapterAt": 43,
+        "at": 43.45
+      },
+      {
+        "id": "rolling-shutter-4",
+        "title": "同一运动，两种曝光",
+        "titleEn": "One motion, two shutter modes",
+        "caption": "全局曝光让所有行共享时刻。",
+        "captionEn": "Global exposure gives every row the same window.",
+        "zh": "比较卷帘与全局两种记录。输入竖杆和运动速度相同，全局对照只改变一件事：所有行同时开始并结束曝光。因此同一瞬间的竖杆位置能够对齐。全局曝光仍可能有运动模糊，它只是消除了这个例子里由行间时间差造成的倾斜。",
+        "en": "Compare rolling and global exposure using the same moving pole and the same speed. The global version changes one condition: every row shares the same start and end times. Their recorded positions therefore line up. Global exposure can still produce motion blur; it removes the row timing skew in this comparison.",
+        "seconds": 20,
+        "chapterAt": 67,
+        "at": 67.45
+      },
+      {
+        "id": "rolling-shutter-5",
+        "title": "快门更快为何仍歪",
+        "titleEn": "Why a shorter exposure still leans",
+        "caption": "曝光变短，模糊减少，倾斜仍在。",
+        "captionEn": "Shorter exposure reduces blur but preserves skew.",
+        "zh": "把每一行的曝光缩短。时间条变短，杆的边缘更清楚，倾斜却没有消失。单行曝光时间控制这一行里移动了多远；从首行到末行的扫描时间控制不同行相隔多久。两个时间不是同一个旋钮，所以更短的曝光不能自动修好卷帘几何。",
+        "en": "Shorten the exposure of every row. The time bars shrink and the pole edges sharpen, yet the lean remains. Exposure duration controls how far the pole moves within one row. Full-frame scan time controls how far apart different rows are in time. Those are different variables, so a faster exposure alone does not fix rolling shutter geometry.",
+        "seconds": 20,
+        "chapterAt": 91,
+        "at": 91.45
+      },
+      {
+        "id": "rolling-shutter-6",
+        "title": "真正缩短行间差",
+        "titleEn": "Reduce the row timing difference",
+        "caption": "加快整帧扫描，倾斜减小。",
+        "captionEn": "A faster full-frame scan reduces the lean.",
+        "zh": "这次保留单行曝光，只加快从第一行到最后一行的扫描。竖杆图像逐渐扶正，因为整帧跨过的运动距离减少了。我们没有在事后把斜杆拉直，而是重新计算更接近同时发生的曝光。它说明为什么传感器的读出速度与快门数字同样值得区分。",
+        "en": "Keep row exposure fixed and speed up the scan from first row to last. The recorded pole gradually straightens because the frame spans less movement. We are recalculating exposure windows that occur closer together, rather than stretching a skewed photo afterward. Sensor readout speed and the displayed exposure setting describe different aspects of capture.",
+        "seconds": 20,
+        "chapterAt": 114,
+        "at": 114.45
+      },
+      {
+        "id": "rolling-shutter-7",
+        "title": "方向决定倾斜",
+        "titleEn": "Motion direction controls the lean",
+        "caption": "运动反向，照片倾斜也反向。",
+        "captionEn": "Reverse motion and the lean reverses.",
+        "zh": "保持扫描方向不变，让竖杆从向右改成向左运动。速度经过零时，记录重新竖直；继续反向，照片就向另一边倾斜。倾斜符号由运动方向和行扫描方向共同决定。这里采用匀速平移，不把倾斜误当成真实物体的弯曲或转动。",
+        "en": "Keep the row order fixed and reverse the motion of the pole. At zero speed, its image is straight. As motion continues in the opposite direction, the lean reverses. Both object motion and scanning direction determine the sign of the distortion. This model uses uniform translation, without pretending that the pole physically bends or rotates.",
+        "seconds": 20,
+        "chapterAt": 137.5,
+        "at": 137.95
+      },
+      {
+        "id": "rolling-shutter-8",
+        "title": "一瞬闪光，一条亮带",
+        "titleEn": "One brief flash, one bright band",
+        "caption": "只有曝光重叠的行接到闪光。",
+        "captionEn": "Only overlapping exposures receive the flash.",
+        "zh": "最后把杆停住，照明改成一次很短的闪光。照片只出现一条亮带，因为闪光到来时，并不是所有行都处于曝光窗口内。亮带来自时间重叠，与杆是否移动无关。真实闪光同步需要结合传感器模式与所有行的共同窗口，不能只凭一张照片的帧率判断。",
+        "en": "Stop the pole and replace steady illumination with one brief flash. Only a band of the photograph becomes bright because only those rows were exposing during the flash. This time overlap matters even without motion. Real flash synchronization depends on the sensor mode and the common exposure window, rather than frame rate alone.",
+        "seconds": 20,
+        "chapterAt": 161,
+        "at": 161.45
+      }
+    ]
+  },
+  "seismic-waves": {
+    "duration": 166.0,
+    "cues": [
+      {
+        "id": "seismic-waves-1",
+        "title": "扰动出发",
+        "titleEn": "Launch a disturbance",
+        "caption": "传播的是扰动，物质点留在附近。",
+        "captionEn": "The disturbance travels while matter stays nearby.",
+        "zh": "先看一段均匀岩石中的点阵。扰动从同一端出发，经过不同位置；那些点并没有一路跟着前沿走。我们把微小位移放大，才能看清局部运动。金色点有固定身份，虚线圈保留它没有受扰动时的位置。",
+        "en": "Watch a disturbance cross a uniform material grid. The dots do not travel with its front. Their small motions are greatly magnified for inspection. The gold marker keeps the same identity, and its dashed ring preserves its original position as the disturbance passes.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "seismic-waves-2",
+        "title": "沿传播方向",
+        "titleEn": "Move along propagation",
+        "caption": "P 波沿传播方向压缩与疏松。",
+        "captionEn": "P waves compress and dilate along their path.",
+        "zh": "看标记为 P 的点阵。相邻点一会儿挤近，一会儿分开，运动方向与波前前进方向一致。这是压缩波，也叫纵波。波经过之后，点回到原来附近的位置，向前传走的是局部压缩与疏松的状态。",
+        "en": "Look at the P field. Neighboring points move closer together and farther apart along the direction of propagation. This is a compressional, longitudinal wave. After the packet passes, the points return near their starting positions. Compression and dilation move onward through the material.",
+        "seconds": 20,
+        "chapterAt": 20.0,
+        "at": 20.45
+      },
+      {
+        "id": "seismic-waves-3",
+        "title": "跟住金点",
+        "titleEn": "Track one material point",
+        "caption": "金点来回运动，不随波前远行。",
+        "captionEn": "The gold point oscillates rather than riding the front.",
+        "zh": "现在只跟住 P 点阵的金点。扰动靠近时它开始往复，扰动离开后又安静下来。其他点依次重复相似的运动。这种物质点与波的分离，是理解声音和地震波都很关键的一步；波速并不是这些点前进的速度。",
+        "en": "Follow only the gold point in the P field. It begins oscillating as the packet arrives and settles after the packet leaves. Other points repeat similar motion in sequence. This separates particle motion from wave propagation. Wave speed is not the forward speed of a material particle.",
+        "seconds": 20,
+        "chapterAt": 40.0,
+        "at": 40.45
+      },
+      {
+        "id": "seismic-waves-4",
+        "title": "换成剪切",
+        "titleEn": "Inspect shear",
+        "caption": "S 波垂直于传播方向摆动。",
+        "captionEn": "S waves move across the propagation direction.",
+        "zh": "再看 S 点阵。波仍沿同一路径前进，金点却向横向摆动，相邻材料层发生剪切。与 P 波相比，恢复力来自不同的材料性质。上面两种速度都由同一组密度和弹性模量计算，而不是单独给动画指定快慢。",
+        "en": "Now inspect the S field. The packet follows the same path, but the gold point moves across it, shearing neighboring material layers. P and S waves involve different restoring responses. Their speeds are calculated from the same density and elastic moduli, rather than assigned independently for appearance.",
+        "seconds": 20,
+        "chapterAt": 60.0,
+        "at": 60.45
+      },
+      {
+        "id": "seismic-waves-5",
+        "title": "先到与后到",
+        "titleEn": "Compare the arrivals",
+        "caption": "P 先到，S 后到，共用一个发震时刻。",
+        "captionEn": "P arrives first and S later from the same event.",
+        "zh": "把视线移到台站记录。两条线使用同一个发震时刻，P 的扰动先出现，S 的扰动随后出现。这里没有用不同的开始按钮制造延迟，时间差完全来自相同距离除以各自波速。刻线标出理论上的首个到达时刻。",
+        "en": "Inspect the station traces. Both share the same source time. The P packet appears first and S follows. No separate start time manufactures the delay. Each arrival is distance divided by its calculated speed, and the markers identify the theoretical onset times.",
+        "seconds": 20,
+        "chapterAt": 81.0,
+        "at": 81.45
+      },
+      {
+        "id": "seismic-waves-6",
+        "title": "台站移远",
+        "titleEn": "Move the station",
+        "caption": "距离增加，P 与 S 的到时差扩大。",
+        "captionEn": "A longer path widens the P–S interval.",
+        "zh": "让台站逐渐远离。同样材料中，两种波都要多走一段路，较慢的 S 波会多花更多时间。因此两条到时刻线之间的间隔拉大。多个台站的这些信息可以约束震源位置；一个台站的时差还不能确定地图上的唯一地点。",
+        "en": "Move the station farther away. Both waves take longer, and the slower S wave accumulates more extra travel time. Their arrival markers spread apart. Intervals from multiple stations help constrain the source. A single station interval does not determine a unique location on a map.",
+        "seconds": 20,
+        "chapterAt": 101.5,
+        "at": 101.95
+      },
+      {
+        "id": "seismic-waves-7",
+        "title": "理想液体",
+        "titleEn": "Try an ideal fluid",
+        "caption": "没有剪切刚度，S 体波无法传播。",
+        "captionEn": "Without shear rigidity, an S body wave cannot propagate.",
+        "zh": "把材料换成理想液体，剪切模量变为零。P 点阵仍能传播压缩扰动，S 点阵却没有传播的剪切波，S 到时也不再给出数值。这只针对弹性体波，不表示液体不能流动，也不表示液体没有表面波。",
+        "en": "Replace the solid with an ideal fluid by setting shear modulus to zero. Compressional P motion remains, while the S field has no propagating shear packet and no S arrival time. This statement concerns elastic body waves. It does not mean a liquid cannot flow or support surface waves.",
+        "seconds": 20,
+        "chapterAt": 123.0,
+        "at": 123.45
+      },
+      {
+        "id": "seismic-waves-8",
+        "title": "从运动读材料",
+        "titleEn": "Read the material through motion",
+        "caption": "运动方向与到时，共同揭示介质。",
+        "captionEn": "Motion directions and arrival times reveal the medium.",
+        "zh": "回到固体，把两个图连起来：点怎样摆动区分纵波与横波，何时抵达反映传播速度与路径。真实地球比这更复杂，还会有折射、反射和表面波。这幅图保留了最基本的因果关系，不能用它的振幅推断震级或损害。",
+        "en": "Return to the solid and connect motion with timing. Particle direction distinguishes compressional and shear waves, while arrival times reflect speeds and paths. The real Earth adds reflection, refraction and surface waves. This example isolates the basic cause and does not infer magnitude or damage from its synthetic amplitudes.",
+        "seconds": 20,
+        "chapterAt": 143.0,
+        "at": 143.45
+      }
+    ]
+  },
+  "osmosis": {
+    "duration": 165.5,
+    "cues": [
+      {
+        "id": "osmosis-1",
+        "title": "先看纯水",
+        "titleEn": "Start with pure water",
+        "caption": "两侧相同，双向交换没有净流动。",
+        "captionEn": "Identical sides exchange water without net flow.",
+        "zh": "先让膜两边都是纯水，液面也一样高。蓝色点只是水的示踪示意；真实水分子始终可以双向穿过适合的膜。两侧状态相同，两个方向的交换在整体上平衡，所以没有哪边持续得到更多水。",
+        "en": "Begin with pure water at equal levels on both sides. Blue dots are only tracers. Real water molecules can still cross a suitable membrane in both directions. With identical conditions, the exchanges balance overall, so neither chamber continuously gains water.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "osmosis-2",
+        "title": "溶质留在一侧",
+        "titleEn": "Retain a solute",
+        "caption": "溶质不能穿膜，水仍可以通过。",
+        "captionEn": "Solute stays behind while water can cross.",
+        "zh": "现在把棕色溶质放进溶液侧。膜保留这些溶质，水仍能通过。注意液面最初保持相同，不是先人为制造一个高低差。改变溶液组成已经足以改变水的化学势，从而给接下来的净转移一个方向。",
+        "en": "Add the brown solute to the solution chamber. The membrane retains it but remains permeable to water. The surfaces begin at the same height; no initial head difference is imposed. Changing composition changes water chemical potential and establishes a direction for net transfer.",
+        "seconds": 20,
+        "chapterAt": 20.0,
+        "at": 20.45
+      },
+      {
+        "id": "osmosis-3",
+        "title": "追踪穿膜的水",
+        "titleEn": "Track water through the membrane",
+        "caption": "进入溶液的是水，溶质始终被保留。",
+        "captionEn": "Water enters the solution while solute remains retained.",
+        "zh": "看靠近膜的一批蓝点，它们的身份会保留，随着净转移从纯水侧来到溶液侧。棕色六边形没有穿膜。这里用有限示踪点标记总体积变化，不把这些点的大小、数量或路径当成真实分子的微观模拟。",
+        "en": "Follow the blue tracers approaching the membrane. Their identities persist as net transfer carries some into the solution chamber. Brown solute stays behind. This finite tracer set illustrates changing bulk volumes; its sizes, counts and paths do not claim to simulate individual water molecules.",
+        "seconds": 20,
+        "chapterAt": 40.0,
+        "at": 40.45
+      },
+      {
+        "id": "osmosis-4",
+        "title": "液面开始分开",
+        "titleEn": "Separate the surfaces",
+        "caption": "水进入溶液，液面升高且溶质被稀释。",
+        "captionEn": "Incoming water raises and dilutes the solution.",
+        "zh": "随着水进入，溶液侧液面升高，纯水侧同时降低。总水量没有增加，棕色溶质的量也没有改变，只是分散在更多水里。渗透压差因此逐渐变化。所有液面和压差都从同一个转移体积计算，不是各自播放动画。",
+        "en": "As water enters, the solution rises while the pure-water side falls. Total volume is conserved, and the retained solute amount stays fixed while becoming diluted. The osmotic pressure difference therefore changes. Both surface heights and pressure readouts come from the same transferred volume.",
+        "seconds": 20,
+        "chapterAt": 60.5,
+        "at": 60.95
+      },
+      {
+        "id": "osmosis-5",
+        "title": "液柱推回去",
+        "titleEn": "Build an opposing head",
+        "caption": "液柱压差逐渐抵消渗透驱动。",
+        "captionEn": "Hydrostatic head increasingly opposes osmosis.",
+        "zh": "比较渗透压差和液柱压差。更高的液柱向膜施加更大的压力，反过来推动水离开溶液侧。随着两个作用接近，净流量减小。液面继续升高的速度因此越来越慢，不会在这个封闭容器里无限向上。",
+        "en": "Compare osmotic pressure difference with hydrostatic pressure. A taller solution column pushes back across the membrane. As that opposition approaches the osmotic drive, net flux becomes smaller. The surface rises more slowly and cannot climb indefinitely in these closed, fixed-area chambers.",
+        "seconds": 20,
+        "chapterAt": 82.0,
+        "at": 82.45
+      },
+      {
+        "id": "osmosis-6",
+        "title": "平衡仍在交换",
+        "titleEn": "Balance with ongoing exchange",
+        "caption": "净流动停止，两侧浓度仍可不同。",
+        "captionEn": "Net flow stops even with unequal concentrations.",
+        "zh": "到达平衡后，液面差稳定，净转移几乎停止。但这不表示水分子突然不能穿膜了，而是两方向的交换重新平衡。两边浓度可以不同，因为液柱压力也参与了水化学势的平衡。只比较浓度，会漏掉关键的一半。",
+        "en": "At equilibrium the head stabilizes and net transfer nearly stops. Water has not become unable to cross the membrane; opposing exchanges balance again. Concentrations can remain unequal because pressure also contributes to water chemical potential. Concentration alone does not describe this equilibrium.",
+        "seconds": 20,
+        "chapterAt": 102.0,
+        "at": 102.45
+      },
+      {
+        "id": "osmosis-7",
+        "title": "增加溶质",
+        "titleEn": "Increase the solute amount",
+        "caption": "更多溶质，需要更大的反向压力。",
+        "captionEn": "More retained solute requires a larger opposing pressure.",
+        "zh": "重新从等高液面开始，增加溶质的量。初始渗透压差更大，水向溶液侧的净转移也更强，最后需要更大的液柱压差来平衡。为了清楚展示这个过程，模型选择了非常稀的理想溶液，不把它当成海水设备的工程数值。",
+        "en": "Restart at equal levels with more retained solute. The initial osmotic drive is stronger, and a greater hydrostatic head is needed to balance it. These deliberately dilute ideal solutions make the column change observable. Their pressures are not engineering values for a seawater desalination plant.",
+        "seconds": 20,
+        "chapterAt": 123.5,
+        "at": 123.95
+      },
+      {
+        "id": "osmosis-8",
+        "title": "用压力反转",
+        "titleEn": "Reverse with pressure",
+        "caption": "外压超过渗透驱动，净水流向反转。",
+        "captionEn": "Sufficient external pressure reverses the net water flow.",
+        "zh": "最后向溶液侧施加压力。外压足够大时，净水流反过来，离开溶液侧而溶质仍被保留。这是反渗透的核心。自由探索可以逐步增加外压，找到净流动接近零的位置，再看超过它之后液面怎样改变。",
+        "en": "Finally apply pressure to the solution side. With enough pressure, net water flow reverses while the membrane retains the solute. That is the central idea of reverse osmosis. In exploration, increase pressure gradually, find near-zero net flow, then cross that point and inspect the changed direction.",
+        "seconds": 20,
+        "chapterAt": 144.0,
+        "at": 144.45
+      }
+    ]
+  },
+  "capillary": {
+    "duration": 167.5,
+    "cues": [
+      {
+        "id": "capillary-1",
+        "title": "没有水泵的上升",
+        "titleEn": "Rise without a pump",
+        "caption": "相同液体，细管中的液柱更高。",
+        "captionEn": "The narrower tube supports a taller liquid column.",
+        "zh": "先看同一种液体中的两根透明细管。没有水泵，液面却能高于外部水面，而且较细的那根更高。我们要追踪的不是整管液体突然被吸走，而是管壁接触线如何对液柱提供向上的合力。",
+        "en": "Two transparent tubes stand in the same liquid. With no pump, their surfaces rise above the reservoir, farther in the narrower tube. Rather than invoking a mysterious suction, follow how the contact line around the wall supplies a vertical force to the liquid column.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "capillary-2",
+        "title": "走近接触线",
+        "titleEn": "Approach the contact line",
+        "caption": "润湿形成凹液面，接触角从液体内测量。",
+        "captionEn": "Wetting forms a concave meniscus with an internal contact angle.",
+        "zh": "走近液体与管壁相遇的地方。这个特写横向和竖向使用同一比例，弯月面的曲率不再受主图放大的管宽影响。接触角从液体内部测量。当前液体润湿管壁，所以接触处的液面沿壁向上弯起。",
+        "en": "Move close to where liquid meets the wall. This detail uses equal scales in both directions, unlike the widened main diagram. The contact angle is measured through the liquid. Here the wall is wetted, and the meniscus bends upward at the contact line.",
+        "seconds": 20,
+        "chapterAt": 20.0,
+        "at": 20.45
+      },
+      {
+        "id": "capillary-3",
+        "title": "分解表面张力",
+        "titleEn": "Resolve surface tension",
+        "caption": "沿接触线的张力，具有向上的分量。",
+        "captionEn": "Surface tension has an upward component at the contact line.",
+        "zh": "看金色方向线，它沿着接触线处的界面切向。虚线只保留竖直分量。绕整个圆周把这些竖直分量相加，就得到支撑液柱的合力；水平方向互相抵消。这个方向由接触角计算，不是一根随意画上的向上箭头。",
+        "en": "The gold direction follows the interface tangent at the wall. The dashed line keeps only its vertical component. Around the full circumference, horizontal components cancel while vertical components add to support the column. The direction is calculated from contact angle, not drawn as an arbitrary upward arrow.",
+        "seconds": 20,
+        "chapterAt": 40.0,
+        "at": 40.45
+      },
+      {
+        "id": "capillary-4",
+        "title": "把管变细",
+        "titleEn": "Narrow the tube",
+        "caption": "半径减小，周长与面积的比例增大。",
+        "captionEn": "A smaller radius increases circumference relative to area.",
+        "zh": "回到两根细管，逐渐缩小其中一根的半径。接触线周长按半径减少，液柱面积却按半径的平方减少。单位截面积分到的竖直张力更大，所以平衡高度上升。图中高度按真实关系计算，管宽只为观察而横向放大。",
+        "en": "Return to the tubes and narrow one of them. Contact-line length decreases with radius, but column area decreases with radius squared. More vertical tension is available per unit area, supporting a taller column. Height follows the physical relation while tube width is magnified for visibility.",
+        "seconds": 20,
+        "chapterAt": 61.0,
+        "at": 61.45
+      },
+      {
+        "id": "capillary-5",
+        "title": "重量建立平衡",
+        "titleEn": "Let weight balance tension",
+        "caption": "液柱升高，重量逐渐平衡表面张力。",
+        "captionEn": "The rising column gains weight until forces balance.",
+        "zh": "重新从外部液面开始看上升。最初液柱很短，随着它抬高，增加的相对重量越来越大。下面两个力的读数逐渐接近，液面也慢下来。达到平衡后，表面张力没有消失，它持续支撑着那段高出的液体。",
+        "en": "Restart at the reservoir level. As the column rises, its additional weight increases. The force readouts approach one another and the surface slows. At equilibrium, surface tension has not disappeared. It continues to support the liquid above the reservoir.",
+        "seconds": 20,
+        "chapterAt": 83.0,
+        "at": 83.45
+      },
+      {
+        "id": "capillary-6",
+        "title": "改变界面性质",
+        "titleEn": "Change surface tension",
+        "caption": "更大表面张力，能支撑更高液柱。",
+        "captionEn": "Greater surface tension can support a taller column.",
+        "zh": "保持管半径和接触角，逐渐提高表面张力。每一段接触线能提供更大的力，平衡液柱随之增高。半径、表面张力与接触角在公式里各有作用，改变液体时不能假定只有其中一个参数会变化。",
+        "en": "Keep radius and contact angle fixed while increasing surface tension. Each length of contact line supplies more force, so the equilibrium column becomes taller. Radius, tension and contact angle have separate roles. Changing a real liquid can change several of these properties together.",
+        "seconds": 20,
+        "chapterAt": 103.0,
+        "at": 103.45
+      },
+      {
+        "id": "capillary-7",
+        "title": "跨过九十度",
+        "titleEn": "Pass through ninety degrees",
+        "caption": "接触角超过 90°，竖直分量反向。",
+        "captionEn": "Above 90 degrees, the vertical component reverses.",
+        "zh": "再回到接触线，慢慢增大接触角。到九十度时，金线的竖直分量变为零；继续增加，它向下了，弯月面也转为凸形。这对应毛细下降，而不是上升。决定方向的是从液体内测量的接触角，不是管子有没有变细。",
+        "en": "Return to the contact line and increase the angle. At ninety degrees the vertical component vanishes. Beyond that it points downward and the meniscus becomes convex. This produces capillary depression rather than rise. Its sign comes from the angle measured through the liquid, not simply from having a narrow tube.",
+        "seconds": 20,
+        "chapterAt": 123.0,
+        "at": 123.45
+      },
+      {
+        "id": "capillary-8",
+        "title": "回到高度",
+        "titleEn": "Connect force to height",
+        "caption": "周长上的力，平衡截面积内的重量。",
+        "captionEn": "Force around the rim balances weight across the area.",
+        "zh": "最后回到两根液柱，把局部与整体接起来。接触线周长上的张力，平衡管内截面积对应的液体重量，于是高度与半径成反比。时间过程采用忽略惯性的黏性近似；真实很快的起始上升、接触角滞后和蒸发，需要更完整的流体模型。",
+        "en": "Connect the close-up to the columns. Tension acting around a circumference balances weight acting through an area, producing height inversely proportional to radius. The time course uses a viscous approximation without inertia. Rapid initial rise, contact-angle hysteresis and evaporation need a more complete fluid model.",
+        "seconds": 20,
+        "chapterAt": 144.5,
+        "at": 144.95
+      }
+    ]
+  },
+  "bayer-sensor": {
+    "duration": 187.0,
+    "cues": [
+      {
+        "id": "bayer-sensor-1",
+        "title": "先看完整颜色",
+        "titleEn": "Begin with full color",
+        "caption": "测试图每个位置都有三种通道。",
+        "captionEn": "The reference image has three channels at each site.",
+        "zh": "先看这张由模型生成的彩色测试图。每个位置都有红、绿、蓝三个线性数值。它是我们保留的参考答案，后面的采样与重建都使用同一张图。不要把画面上的显示像素，先入为主地当成传感器已经测到了三个颜色。",
+        "en": "Begin with this generated color reference. Every location has three linear values: red, green and blue. We retain the same reference throughout sampling and reconstruction. The pixels on your display can show all three channels, but that does not mean each site on a camera sensor measured all three in the first place.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "bayer-sensor-2",
+        "title": "一格一种滤片",
+        "titleEn": "One filter per site",
+        "caption": "RGGB：一红、两绿、一蓝。",
+        "captionEn": "RGGB repeats one red, two green and one blue.",
+        "zh": "放大滤色阵列的分工。每四个感光位置组成一组，一格红、两格绿、一格蓝，按这个模式重复。图里的颜色表示滤片种类，不是原图突然变成棋盘。两格绿色让绿色空间采样更密，但每一个位置仍然只输出一个测量值。",
+        "en": "Look at the repeating filter assignment. Each group of four sites has one red, two green and one blue filter. The colored mosaic identifies the filters, rather than a checkerboard painted into the scene. Green is sampled more densely, but an individual site still supplies only one measurement.",
+        "seconds": 20,
+        "chapterAt": 21.5,
+        "at": 21.95
+      },
+      {
+        "id": "bayer-sensor-3",
+        "title": "传感器真正留下什么",
+        "titleEn": "What the sensor actually records",
+        "caption": "原始记录每格只有一个通道。",
+        "captionEn": "Each raw site contains one measured channel.",
+        "zh": "现在把滤片与原图相乘。红格只留下参考图的红通道，绿格只留下绿通道，蓝格只留下蓝通道。这个彩色马赛克只是帮助我们辨认通道；实际原始记录是一格一个数。其余两种颜色没有被这一格直接测量，需要根据空间关系推断。",
+        "en": "Apply those filters to the reference. A red site keeps its red value, a green site its green value, and a blue site its blue value. The colored mosaic helps us identify channels. The raw record itself is one number per site. Two missing color values must be inferred from spatial information.",
+        "seconds": 20,
+        "chapterAt": 43.5,
+        "at": 43.95
+      },
+      {
+        "id": "bayer-sensor-4",
+        "title": "先补绿色",
+        "titleEn": "Estimate the missing green",
+        "caption": "红格的绿色来自四个邻居。",
+        "captionEn": "Estimate green at a red site from four neighbors.",
+        "zh": "跟住金边标出的同一个红格。它自己的红值保留不动，缺少的绿色从十字方向的四个绿格取平均。虚线连接真正参与计算的样本，中心颜色随估计值加入而改变。这里没有查阅参考图里被隐藏的绿色，只使用原始记录里确实留下来的邻居。",
+        "en": "Follow the red site with the gold border. Its measured red value remains untouched. Missing green is estimated by averaging the four green neighbors in a cross. Dashed connections identify the actual samples used, and the center changes as that estimate is added. We never look up the reference green value that was hidden at this site.",
+        "seconds": 20,
+        "chapterAt": 66.5,
+        "at": 66.95
+      },
+      {
+        "id": "bayer-sensor-5",
+        "title": "再补蓝色",
+        "titleEn": "Estimate the missing blue",
+        "caption": "蓝色来自四个对角邻居。",
+        "captionEn": "Estimate blue from the four diagonal neighbors.",
+        "zh": "仍然看同一个红格。这次要补蓝色，而最近的蓝格在四个对角方向，所以平均的邻居换了。红值是实测的，绿值和蓝值是两次插值的结果。完整颜色由这三项组成；颜色看起来连贯，并不等于三个通道都来自这个位置的独立测量。",
+        "en": "Stay with that same red site. Its nearest blue samples now lie on four diagonals, so a different neighborhood supplies their average. Red was measured here; green and blue were interpolated. Together they form a full color pixel. A convincing color does not imply three independent measurements were made at that location.",
+        "seconds": 20,
+        "chapterAt": 90.0,
+        "at": 90.45
+      },
+      {
+        "id": "bayer-sensor-6",
+        "title": "把推断铺满整张图",
+        "titleEn": "Reconstruct the whole image",
+        "caption": "保留实测值，补齐每格缺失通道。",
+        "captionEn": "Keep measurements and fill each missing channel.",
+        "zh": "让这个规则铺满测试图。重建区域逐渐替换原始马赛克，轮廓和颜色连起来了。绿色位置的红蓝邻居方向不同，模型会按真实的阵列位置选择。双线性插值便于看清每个贡献，但在边缘和细纹处会出错，现代相机通常使用更复杂的算法。",
+        "en": "Extend the rules across the reference. Reconstruction replaces the raw mosaic and joins shapes into a color image. At green sites, red and blue use different neighbor directions, selected from the actual array layout. Bilinear interpolation makes every contribution easy to inspect, but edges and fine patterns reveal its limitations.",
+        "seconds": 20,
+        "chapterAt": 113.0,
+        "at": 113.45
+      },
+      {
+        "id": "bayer-sensor-7",
+        "title": "细条纹会长出假色",
+        "titleEn": "Fine stripes can create false color",
+        "caption": "原图无彩色，重建却可能偏色。",
+        "captionEn": "An achromatic reference can reconstruct false color.",
+        "zh": "把输入换成没有彩色的明暗条纹。原图每个位置的红绿蓝都相等，但随着条纹变密，重建的一半画面可能出现颜色。不同通道在不同位置取样，插值又无法知道没被测到的细节，因此错误不只表现为模糊，还会表现为原本不存在的色彩。",
+        "en": "Replace the input with achromatic bright and dark stripes. Red, green and blue are equal at every reference location. As stripes become finer, the reconstructed half can acquire color. Different channels sampled different positions, and interpolation cannot know the missing fine detail. The error can therefore appear as false color rather than blur alone.",
+        "seconds": 20,
+        "chapterAt": 137.5,
+        "at": 137.95
+      },
+      {
+        "id": "bayer-sensor-8",
+        "title": "移动一点，结果不同",
+        "titleEn": "A tiny shift changes the result",
+        "caption": "亚像素平移，改变取样与假色。",
+        "captionEn": "A subpixel shift changes samples and false color.",
+        "zh": "保持条纹频率不变，只移动不到一个像素。图案内容没有变，条纹相对滤片的落点却变了，重建误差也跟着变化。去马赛克是在有限采样上做合理推断，不是无条件找回原图。理解这一点，也就能看懂为什么细密布料有时会出现随位置变化的彩色纹。",
+        "en": "Keep stripe frequency fixed and translate by less than one pixel. The pattern itself is unchanged, but it falls differently on the filter sites, changing the reconstructed error. Demosaicing is an inference from limited samples, not an unconditional recovery of the original. That helps explain position-dependent colored patterns in finely textured subjects.",
+        "seconds": 20,
+        "chapterAt": 162.5,
+        "at": 162.95
+      }
+    ]
+  },
+  "radar-ranging": {
+    "duration": 187.0,
+    "cues": [
+      {
+        "id": "radar-ranging-1",
+        "title": "发射一个有长度的脉冲",
+        "titleEn": "Launch a finite pulse",
+        "caption": "脉冲前进，宽度对应一段空间。",
+        "captionEn": "A finite pulse occupies a length in space.",
+        "zh": "从雷达站发出一个短脉冲。淡蓝色亮段不是一个瞬时点，它的前后边缘相隔一个脉冲宽度对应的传播距离。现在跟踪同一个亮段向目标前进。画面把微秒里的运动慢放，实际电磁波仍以光速传播，距离和时间的读数没有改用动画速度。",
+        "en": "Launch one short pulse from the radar station. The blue segment has a front and a back, separated by the distance light travels during the pulse duration. Follow that same segment toward the target. The animation slows microseconds for observation; every physical distance and time still uses the speed of light.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "radar-ranging-2",
+        "title": "同一脉冲返回",
+        "titleEn": "The same pulse returns",
+        "caption": "回波还要走完回程。",
+        "captionEn": "The echo must also travel back.",
+        "zh": "脉冲到达目标，返回的包络改成陶红色。它没有在接触目标时立刻出现在接收器里，还必须走完同样长的回程。两条路径为了辨认稍微分开绘制，代表的却是同一条视线上的去与回。接收时刻因此对应两倍目标距离。",
+        "en": "When the pulse reaches the target, its returning envelope becomes coral. It does not instantly appear at the receiver on contact; it must travel the entire return leg. The two tracks are separated in the drawing so you can follow them. They represent outward and inward travel on the same line of sight.",
+        "seconds": 20,
+        "chapterAt": 23.0,
+        "at": 23.45
+      },
+      {
+        "id": "radar-ranging-3",
+        "title": "为什么要除以二",
+        "titleEn": "Why divide by two?",
+        "caption": "往返计时除以二，才是目标距离。",
+        "captionEn": "Halve the round-trip distance to get target range.",
+        "zh": "停在回波前缘到达时。时间轴从发射开始计时，读到的是去程加回程的总延迟。用光速乘这个时间，再除以二，才得到雷达到目标的单程距离。这里目标六百米，往返只需约四微秒；并不是光走得慢，而是我们把过程展开来观察。",
+        "en": "Stop as the leading echo reaches the station. The clock measured outward and return travel together. Multiply that delay by the speed of light, then divide by two to obtain one-way target range. A target six hundred meters away gives a delay of about four microseconds. The display expands that very short event for inspection.",
+        "seconds": 20,
+        "chapterAt": 44.5,
+        "at": 44.95
+      },
+      {
+        "id": "radar-ranging-4",
+        "title": "目标移远",
+        "titleEn": "Move the target farther away",
+        "caption": "距离增加，回波在时间轴后移。",
+        "captionEn": "A farther target shifts its echo later in time.",
+        "zh": "只把同一个目标移远，脉冲宽度保持不变。回波的前缘在时间轴上向后移动，读数也随往返传播时间增长。我们没有用回波画得多大来猜距离；这个简化模型用的是发射与到达之间的时间差。真实系统的信号强弱还受距离、目标和天线等因素影响。",
+        "en": "Move the same target farther away while retaining pulse width. Its leading edge shifts later on the time axis, and range follows the increasing round-trip delay. We are measuring timing rather than guessing distance from the size of the echo. Real echo strength also depends on range, the target, the antenna and other factors.",
+        "seconds": 20,
+        "chapterAt": 67.5,
+        "at": 67.95
+      },
+      {
+        "id": "radar-ranging-5",
+        "title": "两个目标挤在一起",
+        "titleEn": "Two nearby targets",
+        "caption": "长脉冲的两个回波相互覆盖。",
+        "captionEn": "Long-pulse echoes from nearby targets overlap.",
+        "zh": "现在加入第二个目标，两者相距九十米。较远目标的回波稍晚到达，但长脉冲还没有结束，两个包络就叠在一起。目标位置明确分开，并不意味着接收器总能容易分开它们。对于这里未调制的矩形脉冲，脉冲宽度决定了重要的距离分辨尺度。",
+        "en": "Add a second target ninety meters beyond the first. Its echo arrives later, but the long first echo has not ended, so their envelopes overlap. Separate target positions do not guarantee easily separated received returns. For these unmodulated rectangular pulses, duration establishes an important scale for range resolution.",
+        "seconds": 20,
+        "chapterAt": 92.0,
+        "at": 92.45
+      },
+      {
+        "id": "radar-ranging-6",
+        "title": "缩短脉冲",
+        "titleEn": "Shorten the pulse",
+        "caption": "脉冲变短，相邻回波分开。",
+        "captionEn": "Shorter pulses separate the nearby echoes.",
+        "zh": "保持两个目标不动，缩短发射脉冲。两个到达前缘的间隔没有变，回波各自的持续时间却缩短了，中间终于出现空隙。画面上的距离分辨尺度随之下降。分辨率描述能否区分相邻目标，不能直接当成单个目标测距误差；我们也没有模拟脉冲压缩。",
+        "en": "Leave both targets fixed and shorten the transmitted pulse. The separation between leading edges stays the same, while each return becomes shorter. A gap emerges between the echoes and the displayed resolution scale falls. Resolution describes separating targets, rather than the error of one range estimate. This example does not use pulse compression.",
+        "seconds": 20,
+        "chapterAt": 115.5,
+        "at": 115.95
+      },
+      {
+        "id": "radar-ranging-7",
+        "title": "近处也可能看不全",
+        "titleEn": "A nearby echo can be obscured",
+        "caption": "近回波前缘落入发射遮挡期。",
+        "captionEn": "A near echo begins while the receiver is blanked.",
+        "zh": "把目标移到近处，同时使用较长脉冲。粉色阴影标出雷达还在发射、接收器关闭的时段。虚线表示本来会到达的回波，其中的前缘被遮住，实际接收只留下后面的部分。近目标并不自动更容易测量；收发切换时间和脉冲长度也限制可用范围。",
+        "en": "Move a target close to the station and use a longer pulse. Pink shading marks the transmission interval, when this monostatic receiver is switched off. The dashed echo shows what would arrive. Its beginning is hidden and only its later portion is received. Nearby targets are not automatically easy to measure; transmission and receiver timing impose limits.",
+        "seconds": 20,
+        "chapterAt": 139.5,
+        "at": 139.95
+      },
+      {
+        "id": "radar-ranging-8",
+        "title": "回波属于哪次发射",
+        "titleEn": "Which transmission made the echo?",
+        "caption": "晚回波可能被下一次发射误计时。",
+        "captionEn": "A late echo may be timed from the next pulse.",
+        "zh": "最后把目标移到一千五百米，发射间隔仍是八微秒。它的回波要十微秒左右才到，下一次脉冲已经发出。如果把这个晚回波误认成新脉冲的回波，就会读出短得多的表观距离。计时给出距离之前，还必须知道这一回波属于哪一次发射。",
+        "en": "Move the target to fifteen hundred meters and retain an eight microsecond pulse interval. Its echo arrives after roughly ten microseconds, when the next pulse has already been sent. Assign that late return to the newer transmission and it appears much nearer. Timing yields a range only after we identify which pulse produced the echo.",
+        "seconds": 20,
+        "chapterAt": 164.5,
+        "at": 164.95
+      }
+    ]
+  },
+  "lidar-ranging": {
+    "duration": 184.5,
+    "cues": [
+      {
+        "id": "lidar-ranging-1",
+        "title": "一束光只测一个方向",
+        "titleEn": "One beam measures one direction",
+        "caption": "射线先碰到的表面给出距离。",
+        "captionEn": "The first surface sets the measured range.",
+        "zh": "先跟住一束金色射线。这里把房间切成一个水平截面，传感器位于中心。光先碰到圆柱表面，后面的墙暂时不参与这次测量。蓝色脉冲沿射线前进，几米的路实际只需几个纳秒；为了能看清，我们把传播过程大幅慢放。",
+        "en": "Follow one gold ray through a horizontal room slice. The sensor is at the center, and the ray first meets the cylinder. The wall behind it does not supply this measurement. The blue pulse travels along that direction. A few meters take only nanoseconds in reality, so propagation is greatly slowed for inspection.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "lidar-ranging-2",
+        "title": "计时得到半程距离",
+        "titleEn": "Time the round trip",
+        "caption": "收到回波，往返时间换成距离。",
+        "captionEn": "Convert the returning pulse time into range.",
+        "zh": "让同一个脉冲反射回来。接收器计量的是发出到返回的总时间，因此距离等于光速乘延迟，再除以二。圆柱上的金点标记真实交点。这个点的位置不是靠相机颜色猜出来的，而是由发射方向与这个往返计时共同决定。",
+        "en": "Let the same pulse return. The receiver times emission to reception, so range is light speed times delay, divided by two. A gold point marks the true cylinder intersection. Its position is not inferred from a camera color: it comes from the known emission direction together with the measured round-trip time.",
+        "seconds": 20,
+        "chapterAt": 22.0,
+        "at": 22.45
+      },
+      {
+        "id": "lidar-ranging-3",
+        "title": "方向与距离变成点",
+        "titleEn": "Convert direction and range to a point",
+        "caption": "距离与角度，确定平面坐标。",
+        "captionEn": "Range and angle determine a planar point.",
+        "zh": "保持同一个返回点，补出它的两个坐标分量。距离是从传感器到表面的斜边，角度决定这段距离怎样分到两个坐标方向。用余弦和正弦计算，就得到点云中的一个点。手机把房间图转了方向，但坐标和几何关系完全相同。",
+        "en": "Keep the same return and expose its coordinate components. Range is the diagonal from sensor to surface. The beam angle determines how that length divides along two axes. Cosine and sine turn a polar measurement into one cloud point. The phone drawing rotates the room for a clearer composition while preserving the same geometry.",
+        "seconds": 20,
+        "chapterAt": 43.5,
+        "at": 43.95
+      },
+      {
+        "id": "lidar-ranging-4",
+        "title": "把许多方向拼起来",
+        "titleEn": "Build a scan from many directions",
+        "caption": "逐个方向测量，积成一圈点云。",
+        "captionEn": "Measurements across directions form a point cloud.",
+        "zh": "现在逐个改变发射方向。每一束射线都只留下第一处表面交点，返回点逐渐描出墙、隔板和圆柱的可见轮廓。点云不是一次拍出的完整照片，而是一系列有方向的测量。在这个静止房间里，把它们累积起来就能看见空间结构。",
+        "en": "Sweep through successive directions. Each ray leaves only its first surface intersection. The points gradually trace visible portions of walls, a partition and the cylinder. This cloud is a series of directional measurements rather than one complete photograph. In our stationary room, accumulating those measurements reveals the surrounding structure.",
+        "seconds": 20,
+        "chapterAt": 65.5,
+        "at": 65.95
+      },
+      {
+        "id": "lidar-ranging-5",
+        "title": "角度间隔决定稀密",
+        "titleEn": "Angular spacing sets density",
+        "caption": "角度采得更密，轮廓点也更密。",
+        "captionEn": "Smaller angular steps produce denser contours.",
+        "zh": "用同一个房间比较扫描密度。角度间距变小，墙和圆柱上的点逐渐增多。相同角度间隔在远处对应更大的横向空隙，所以远处的小物体可能落在两束光之间。增加点数改善覆盖，却不会自动减少每个点自己的计时误差。",
+        "en": "Compare angular density in the same room. Smaller angular steps produce more points on walls and the cylinder. The same angle spans a wider lateral gap farther away, so a small distant object can fall between beams. More points improve coverage, but do not automatically reduce the timing error of each individual point.",
+        "seconds": 20,
+        "chapterAt": 88.5,
+        "at": 88.95
+      },
+      {
+        "id": "lidar-ranging-6",
+        "title": "看不见遮挡背后",
+        "titleEn": "Occlusion hides the background",
+        "caption": "光被挡住，后墙不产生返回点。",
+        "captionEn": "An occluded wall produces no first-return point.",
+        "zh": "让选中的射线掠过圆柱。它先遇到圆柱时，返回点就停在圆柱表面。后面的虚线只是被遮住方向的参照，不代表穿透圆柱的真实光线。墙在那里，点云却没有测到它。空白既可能是空间开口，也可能是遮挡，单次扫描不能混为一谈。",
+        "en": "Move the selected ray across the cylinder. When the cylinder is first, the return point stays on its surface. A dashed continuation only identifies the hidden direction; it is not light passing through an opaque object. The wall exists without a measured point there. An empty cloud region can reflect occlusion rather than an opening.",
+        "seconds": 20,
+        "chapterAt": 110.5,
+        "at": 110.95
+      },
+      {
+        "id": "lidar-ranging-7",
+        "title": "纳秒误差变成散点",
+        "titleEn": "Nanoseconds become range scatter",
+        "caption": "计时抖动，让点沿射线散开。",
+        "captionEn": "Timing jitter spreads points along their rays.",
+        "zh": "保持所有发射角不变，只增加往返计时的随机误差。点沿各自射线前后散开，真实墙线仍作为淡色参考保留。一纳秒听起来很小，乘上光速再除以二，就对应大约十五厘米的距离尺度。重复跳转使用相同随机种子，比较不会换一套样本。",
+        "en": "Keep every beam angle fixed and add round-trip timing jitter. Points spread inward and outward along their own rays while faint true outlines remain. One nanosecond sounds tiny, yet light speed turns it into about fifteen centimeters of range uncertainty. A fixed seed preserves the same sample identities when seeking or comparing states.",
+        "seconds": 20,
+        "chapterAt": 134.5,
+        "at": 134.95
+      },
+      {
+        "id": "lidar-ranging-8",
+        "title": "没有点不等于没有物体",
+        "titleEn": "No return is not no object",
+        "caption": "弱回波低于阈值，物体仍然存在。",
+        "captionEn": "A weak return can disappear while the object remains.",
+        "zh": "最后提高检测阈值。这个教学模型把圆柱设成较弱反射体，一些返回点先消失，较远或掠射的墙点也可能消失。几何交点依旧存在，只是回波没有达到阈值。真实传感器的探测还受光斑、材料和环境影响；点云的缺口不能直接证明那里没有物体。",
+        "en": "Raise the detection threshold. Our teaching model gives the cylinder lower reflectivity, so some of its returns disappear. Distant or grazing wall returns can also drop out. Geometric intersections still exist; the modeled signal simply falls below threshold. Real detection also depends on beam footprint, materials and environment, so a missing point does not prove empty space.",
+        "seconds": 20,
+        "chapterAt": 158.5,
+        "at": 158.95
+      }
+    ]
+  },
+  "bloom-filter": {
+    "duration": 187.0,
+    "cues": [
+      {
+        "id": "empty",
+        "title": "一块记不住名字的记忆",
+        "titleEn": "Memory without the names",
+        "caption": "32 个位，起初全是 0。",
+        "captionEn": "Thirty-two bits begin at zero.",
+        "zh": "这里有三十二个小格，每格只存一个零或一。它们没有空间记下 apple 这样的完整名字。这是布隆过滤器的起点：放弃保存原文，用很小的一块记忆回答集合查询。代价是答案不能总是确定，但它的不确定性有一个非常特别的方向。",
+        "en": "These thirty-two cells hold only zeros or ones. They have no room to store a complete name such as apple. A Bloom filter starts by giving up the original keys and keeping a small bit array instead. It can still answer membership questions, but one direction of its answer will remain deliberately uncertain.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "insert",
+        "title": "一个键，点亮几个位置",
+        "titleEn": "One key sets several positions",
+        "caption": "apple 的三个哈希地址置为 1。",
+        "captionEn": "Set the three hash positions for apple.",
+        "zh": "把 apple 交给三个固定的哈希函数。每个函数给出阵列里的一个地址，我们把这些地址写成一。注意重复命中同一个地址不会加出二，它仍然只是一位。下次查询 apple，必须使用完全相同的哈希规则，重新找到这些位置。",
+        "en": "Feed apple into three fixed hash functions. Each produces an address in the array, and those positions are set to one. Two hashes may land on the same cell; it still stores one, never a count of two. A later query must use exactly the same hash rules to find those positions again.",
+        "seconds": 20,
+        "chapterAt": 22.0,
+        "at": 22.45
+      },
+      {
+        "id": "share",
+        "title": "不同名字，可以共用记号",
+        "titleEn": "Different keys can share a mark",
+        "caption": "插入新键，不清除任何旧的 1。",
+        "captionEn": "Insertion sets bits without clearing old ones.",
+        "zh": "再插入 pear。新的地址也被置为一，旧的标记保留下来。不同键可能共享某个位置，阵列本身不会记录这个一究竟是谁写的。记住这个细节：一位可以有多个贡献者。这既是节省空间的来源，也是后面误报和删除问题的原因。",
+        "en": "Now insert pear. Its positions become one while all earlier ones remain. Different keys may share a cell, and the bit array does not remember who contributed each one. Keep that detail in mind: a single mark can have several contributors. Sharing saves space, but it also creates the coming false positives and deletion problem.",
+        "seconds": 20,
+        "chapterAt": 43.0,
+        "at": 43.45
+      },
+      {
+        "id": "present",
+        "title": "把同一个键再问一遍",
+        "titleEn": "Ask for an inserted key",
+        "caption": "三个位置都是 1，只能说可能有。",
+        "captionEn": "All queried positions are one: possibly present.",
+        "zh": "现在查询 apple。它需要的每个位置都是一，所以过滤器回答可能存在。我们在演示外保留了一份真实集合，用来核对，apple 确实插入过。但仅看这三个位，无法排除它们是别的键共同点亮的。因此肯定的查询结果，还要交给真正的数据存储继续确认。",
+        "en": "Query apple. All required positions are one, so the filter says possibly present. This demonstration keeps an exact set outside the filter as an oracle, and apple really was inserted. The bits alone cannot prove that: other keys could have set the same positions. A positive result should normally be checked against the authoritative data store.",
+        "seconds": 20,
+        "chapterAt": 66.5,
+        "at": 66.95
+      },
+      {
+        "id": "absent",
+        "title": "一个零，就足够否定",
+        "titleEn": "One zero is enough to reject",
+        "caption": "至少一个位置是 0：确定没有。",
+        "captionEn": "At least one position is zero: definitely absent.",
+        "zh": "换一个没有插入的键。这次至少有一个所需位置仍然是零。只要这个键曾被正确插入，这个位就一定会被置一；现在它是零，所以可以确定键不在集合中。这个结论依赖插入规则没有被破坏，也依赖查询使用同样的阵列和哈希函数。",
+        "en": "Try an absent key. At least one required cell is still zero. If that key had been correctly inserted, every one of its positions would have been set. The zero therefore proves absence. This guarantee assumes the insertion-only rules remain intact and that queries use the same array and hash functions as insertion.",
+        "seconds": 20,
+        "chapterAt": 91.5,
+        "at": 91.95
+      },
+      {
+        "id": "false-positive",
+        "title": "每个记号都在，名字却没来过",
+        "titleEn": "Every mark is present, but the key is new",
+        "caption": "真实集合没有它，检查位置却全是 1。",
+        "captionEn": "The key is absent, yet all its positions are one.",
+        "zh": "现在模型实际搜索一个误报样例。这个名字从未插入，但它的三个地址恰好都被别的键置为一。过滤器仍然必须说可能存在；它并没有保存足够的信息来分辨。误报不是查询随机出错，而是这些确定的共享位在当前输入下产生的真实结果。",
+        "en": "The model now searches for an actual false positive. This key was never inserted, yet all three positions happen to have been set by other keys. The filter must still say possibly present. It retained too little information to distinguish this case. Nothing random happens during the query: these deterministic shared marks produce the exact result shown.",
+        "seconds": 20,
+        "chapterAt": 114.5,
+        "at": 114.95
+      },
+      {
+        "id": "delete",
+        "title": "把一个键的位清零，会误伤谁？",
+        "titleEn": "What breaks if we clear a key’s bits?",
+        "caption": "共享位被清零，另一个已插入键被误判。",
+        "captionEn": "Clearing shared bits creates a false negative.",
+        "zh": "试着直接删除一个键，把它的几个位置清零。看被追踪的另一个键：它仍在真实集合里，却丢了一个共享标记，查询现在说确定没有。我们刚刚破坏了无漏报的前提。基础布隆过滤器不能这样删除；需要额外计数或另一种明确支持删除的数据结构。",
+        "en": "Suppose deletion simply clears the removed key’s positions. Watch the other tracked key: it is still in the exact set, but a shared mark disappears, and the query now incorrectly rejects it. We have broken the no-false-negatives guarantee. A basic Bloom filter cannot delete this way; deletion needs extra counts or a suitable alternative structure.",
+        "seconds": 20,
+        "chapterAt": 138.0,
+        "at": 138.45
+      },
+      {
+        "id": "fill",
+        "title": "一越来越多，区分能力越来越少",
+        "titleEn": "More ones mean less discrimination",
+        "caption": "阵列逐渐填满，误报更容易发生。",
+        "captionEn": "As the array fills, false positives become easier.",
+        "zh": "继续向同一个阵列插入更多键。位数没有增加，越来越多的格子变成一，新的查询更容易全部命中。显示的误报率是独立均匀哈希假设下的经典近似，不是对这几个固定哈希函数的实测保证。自由探索可以改变阵列大小和哈希数量，重新计算每一个位置。",
+        "en": "Insert more keys into the same fixed array. More cells become one, so an absent query is more likely to find every required mark already set. The displayed probability is the classical approximation under independent uniform hashing, not a measured guarantee for these fixed teaching hashes. Exploration changes the array size and hash count and rebuilds every position.",
+        "seconds": 20,
+        "chapterAt": 162.0,
+        "at": 162.45
+      }
+    ]
+  },
+  "tcp-reliability": {
+    "duration": 199.0,
+    "cues": [
+      {
+        "id": "bytes",
+        "title": "先给字节一个位置",
+        "titleEn": "Give the bytes stream positions",
+        "caption": "A 到 F 各占 100 字节，序号不随路径改变。",
+        "captionEn": "A–F each span 100 bytes; sequence ranges stay fixed.",
+        "zh": "应用交给 TCP 的是一条字节流。为了看清位置，这里把它分成 A 到 F 六段，每段一百字节。第一段从序号一千开始，第二段从一千一百开始。字母只是方便跟踪的标签，真正决定顺序的是字节位置，后面无论走多慢、重发几次都不会改变。",
+        "en": "An application gives TCP a byte stream. We label six one-hundred-byte ranges A through F so we can follow them. A begins at sequence one thousand, B at eleven hundred. The letters are teaching labels; byte positions define the order. Delay, reordering and retransmission do not assign a range a new position in the stream.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "ack",
+        "title": "确认的是连续前缀",
+        "titleEn": "An ACK confirms a continuous prefix",
+        "caption": "ACK 1100：下一期待字节是 1100。",
+        "captionEn": "ACK 1100 means byte 1100 is expected next.",
+        "zh": "先看顺畅的一次传输。绿色实线表示数据，虚线表示返回的确认。接收端写 ACK 一千一百，意思是下一期待字节在一千一百；更早的字节已经连续收齐。它不是在给某个动画箭头点赞。累计确认一次可以覆盖此前收到的整段连续数据。",
+        "en": "First watch an undisturbed transfer. Solid paths carry data and dashed paths return acknowledgments. ACK eleven hundred means the next expected byte is eleven hundred: the earlier continuous prefix has arrived. It does not merely acknowledge one arrow. A cumulative acknowledgment can cover all bytes in that earlier contiguous range.",
+        "seconds": 20,
+        "chapterAt": 24.5,
+        "at": 24.95
+      },
+      {
+        "id": "reorder",
+        "title": "先到，不代表先交付",
+        "titleEn": "Arrival order is not delivery order",
+        "caption": "C、D 先到，等待 B 补齐缺口。",
+        "captionEn": "C and D arrive early and wait for B.",
+        "zh": "现在只让 B 绕远一点，其他数据保持相同。C 和 D 先到了，却不能越过 B 直接交给应用。看缓存里暂时留住的字母，下一期待位置仍然停在 B 的开头。等 B 抵达，缺口补齐，之前等待的连续数据才一起进入应用可读的字节流。",
+        "en": "Delay B while leaving the other data unchanged. C and D arrive first, but they cannot jump over B into the application’s stream. They wait in the receive buffer, and the next expected sequence remains at B. When B arrives, the gap closes and the now-contiguous waiting ranges can be delivered in their original order.",
+        "seconds": 20,
+        "chapterAt": 48.0,
+        "at": 48.45
+      },
+      {
+        "id": "loss",
+        "title": "这次，B 真的没有到",
+        "titleEn": "This time B never arrives",
+        "caption": "B 丢了；后续数据停在缺口后。",
+        "captionEn": "B is lost; later data waits behind the gap.",
+        "zh": "换成 B 首次传输丢失。它的路径在途中断开，而 C、D 仍可以抵达。接收端不能凭想象补上那一百个字节，所以累计确认停在同一个位置。发送端手里保留尚未确认的数据，并等待确认或重传计时器。没有确认到达，不等于可以直接断定数据一定丢了。",
+        "en": "Now drop B’s first transmission. Its path stops partway, while C and D can still arrive. The receiver cannot invent the missing hundred bytes, so its cumulative ACK remains at the gap. The sender retains unacknowledged data and waits for acknowledgment or a timer. A missing ACK alone does not prove that the data itself was lost.",
+        "seconds": 20,
+        "chapterAt": 71.0,
+        "at": 71.45
+      },
+      {
+        "id": "retry",
+        "title": "用原来的序号再发一次",
+        "titleEn": "Retransmit the same sequence range",
+        "caption": "缺口补齐，累计确认向前跳。",
+        "captionEn": "Fill the gap and the cumulative ACK advances.",
+        "zh": "计时器到期后，发送端重发最早未确认的范围。注意 B 仍然使用一千一百这个序号，并没有变成新的内容。它到达后补齐缺口，缓存里已经连续的数据被一并交付。新的累计确认越过这些范围，发送窗口因此得到释放，后面的数据才能继续向前。",
+        "en": "When the timer expires, the sender retransmits the earliest unacknowledged range. B still begins at eleven hundred; it has not become new content. Its arrival fills the gap and releases the contiguous buffered ranges. The cumulative ACK jumps over those bytes, freeing space in the sender’s window for later data.",
+        "seconds": 20,
+        "chapterAt": 96.5,
+        "at": 96.95
+      },
+      {
+        "id": "ack-loss",
+        "title": "数据到了，确认却丢了",
+        "titleEn": "The data arrives but its ACK is lost",
+        "caption": "重复数据可以重到，应用只读一次。",
+        "captionEn": "Data may arrive twice; the application reads it once.",
+        "zh": "这次只发送 A，让数据顺利到达，却丢掉第一次确认。发送端等不到确认，超时后又发送同样的序号。接收端一看位置，就知道这是已经交付过的数据，只需要再次确认，不会再给应用追加一个 A。可靠字节流靠的是序号与状态，不是让网络永远不重复。",
+        "en": "Send only A, let it arrive, and lose its first ACK. The sender eventually times out and sends the same sequence range again. The receiver recognizes bytes already delivered and acknowledges them again without appending another A to the application stream. Reliability uses sequence numbers and state; it does not require the network never to duplicate data.",
+        "seconds": 20,
+        "chapterAt": 121.0,
+        "at": 121.45
+      },
+      {
+        "id": "window",
+        "title": "别把未确认的数据无限发出去",
+        "titleEn": "Bound the unacknowledged data",
+        "caption": "确认前，最多保留两个未确认段。",
+        "captionEn": "At most two segments remain unacknowledged here.",
+        "zh": "再回到完整消息，把教学发送窗口设成两个段。发送端先发这两段，然后等累计确认释放空间，才发送后面的段。窗口让网络中尚未确认的数据有明确上限。实际 TCP 还要同时考虑接收端通告的可用空间和拥塞窗口；这里先隔离这个数量限制，暂不模拟它们的协商。",
+        "en": "Return to the full message and limit the teaching send window to two segments. The sender transmits two, then waits for cumulative ACKs to free space before sending more. This bounds unacknowledged data. Real TCP also considers advertised receiver space and a congestion window. Here we isolate a fixed send limit without simulating those negotiations.",
+        "seconds": 20,
+        "chapterAt": 146.0,
+        "at": 146.45
+      },
+      {
+        "id": "complete",
+        "title": "把不可靠的抵达，变成有序的读取",
+        "titleEn": "Turn imperfect arrivals into ordered reads",
+        "caption": "完整字节流，按原序且不重复。",
+        "captionEn": "The complete byte stream is ordered and duplicate-free.",
+        "zh": "最后完整重放一次丢包与恢复。把抵达路径、等待缓存和已交付字节对起来看：每一段都有身份，缺口不能跳过，重传不能重复交付。这个演示省略了握手、选择确认与序号回绕，也使用固定延迟和计时器，但保留了可靠有序字节流最核心的因果关系。",
+        "en": "Replay loss and recovery as one complete trace. Compare the arriving paths, waiting buffer and delivered prefix. Every range keeps its identity, gaps block delivery, and retransmission does not duplicate application data. Handshake, selective acknowledgments and sequence wraparound are omitted, and timing is fixed, while the central causal rules of a reliable ordered byte stream remain explicit.",
+        "seconds": 20,
+        "chapterAt": 172.5,
+        "at": 172.95
+      }
+    ]
+  },
+  "congestion-control": {
+    "duration": 198.5,
+    "cues": [
+      {
+        "id": "bottleneck",
+        "title": "多发，不会让出口变宽",
+        "titleEn": "Sending more does not widen the exit",
+        "caption": "出口每轮只服务四个包。",
+        "captionEn": "The bottleneck serves four packets per round.",
+        "zh": "先看同一个瓶颈出口。每个往返轮次，最多有四个包能通过。发送端把窗口固定在十二个包，并不会让出口突然变宽。多出来的数据只能等待，或者在缓存装满之后丢失。这里把时间分成教学轮次，让发送、排队、服务和反馈的账能够逐轮对上。",
+        "en": "Watch one fixed bottleneck. It can serve four packets per round trip. A sender holding a twelve-packet window does not make that exit any wider. Extra traffic waits or is dropped once the finite queue fills. Time is divided into teaching rounds so we can account for sending, queueing, service and feedback at each boundary.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "queue",
+        "title": "拥挤先藏在等待里",
+        "titleEn": "Congestion first appears as waiting",
+        "caption": "缓存增长，等待增加；满了才溢出。",
+        "captionEn": "A growing queue adds delay, then overflows.",
+        "zh": "注意反馈后的队列。缓存可以暂时吸收突发，却没有增加出口的服务能力。队列里每个编号都是真实的包，下一轮仍从队头先服务。等待量按队列包数除以每轮服务数估计。更多缓存能够减少某些丢失，却也可能让包等得更久。",
+        "en": "Look at the queue after feedback. Buffering absorbs a burst without increasing the exit’s service rate. Every number identifies an actual packet, and later service takes the oldest first. The waiting estimate divides queued packets by packets served per round. More buffering can prevent some drops while allowing longer waits to build up.",
+        "seconds": 20,
+        "chapterAt": 24.5,
+        "at": 24.95
+      },
+      {
+        "id": "slow-start",
+        "title": "先用确认探路",
+        "titleEn": "Probe the path using acknowledgments",
+        "caption": "窗口从 1、2、4 向上试探。",
+        "captionEn": "The window probes upward: 1, 2, 4.",
+        "zh": "现在让发送端响应反馈，并从一个最大段开始。这是为观察采用的教学初值。每收到一个新的数据确认，慢启动就增加一个最大段；当一整个窗口都及时确认，下一个往返的发送量可以接近翻倍。增长来自真正服务并确认的包，而不是计时器凭空把曲线往上推。",
+        "en": "Now enable feedback and start with one maximum-sized segment, a deliberately small teaching initial window. During slow start, each new acknowledgment adds one segment. If a whole window is acknowledged, the next round’s window can nearly double. Growth comes from actually served and acknowledged packets, not a timer moving the curve upward by itself.",
+        "seconds": 20,
+        "chapterAt": 47.0,
+        "at": 47.45
+      },
+      {
+        "id": "loss",
+        "title": "溢出后，必须改变发送决定",
+        "titleEn": "A loss must change the sending decision",
+        "caption": "检测到溢出，回退到在途量的一半。",
+        "captionEn": "Detected overflow reduces the window to half the flight.",
+        "zh": "继续增长会遇到有限缓存。看第一次真实溢出的轮次：发送加上尚在队列里的包超过了空间，部分新包被丢弃。这个按轮聚合的模型在轮末得知丢包，把阈值设为在途量的一半，并显示恢复后的窗口。真实 Reno 的临时快恢复膨胀在这里没有展开。",
+        "en": "Growth eventually reaches the finite buffer. At the first overflow, queued packets plus new sends exceed the available space, so some new packets are dropped. This round-aggregated model learns that feedback at the boundary, sets the threshold to half the flight, and displays the post-recovery window. Reno’s temporary fast-recovery inflation is deliberately omitted.",
+        "seconds": 20,
+        "chapterAt": 72.5,
+        "at": 72.95
+      },
+      {
+        "id": "avoidance",
+        "title": "靠近容量后，小步增加",
+        "titleEn": "Near capacity, grow in smaller steps",
+        "caption": "每个新确认，窗口只增加约 1/W。",
+        "captionEn": "Each new ACK adds approximately 1/W.",
+        "zh": "回退后的窗口已经到达新的阈值。现在每个确认只增加大约窗口倒数这么多，而不是再加一整个段。如果一轮确认的包数接近窗口大小，整个往返的增量就接近一个最大段。看实际算出的数值，它们可以带小数；真正允许发送的包数则取窗口的整数部分。",
+        "en": "After recovery, the window is at its new threshold. Each acknowledgment now adds about one divided by the window, rather than a whole segment. If roughly one window of packets is acknowledged, growth is about one segment per round trip. Window values can be fractional; the permitted packet count uses the integer part and accounts for packets still queued.",
+        "seconds": 20,
+        "chapterAt": 97.0,
+        "at": 97.45
+      },
+      {
+        "id": "sawtooth",
+        "title": "小增，大退",
+        "titleEn": "Increase gently and decrease proportionally",
+        "caption": "加性增加，乘性回退，形成锯齿。",
+        "captionEn": "Additive increase and multiplicative decrease form a sawtooth.",
+        "zh": "把观察拉长。发送端不断试探可用空间，反馈正常时小步增大，检测到丢包后按比例退让。于是出现熟悉的锯齿。它不是一条预先画好的漂亮曲线；每个点都由同一个有限队列、实际确认数量和窗口更新计算出来。不同算法会使用不同信号和增长规则。",
+        "en": "Extend the observation. The sender keeps probing available space, growing in small steps under normal feedback and backing off proportionally after loss. A sawtooth emerges. It is not a decorative curve: every point follows the same finite queue, actual acknowledgment count and window update rules. Other congestion algorithms can use different signals and growth laws.",
+        "seconds": 20,
+        "chapterAt": 121.5,
+        "at": 121.95
+      },
+      {
+        "id": "buffer",
+        "title": "把缓存变大，会怎样？",
+        "titleEn": "What changes when the buffer grows?",
+        "caption": "出口仍是四个包，缓存从 4 增到 12。",
+        "captionEn": "Service stays at four while buffer size grows from 4 to 12.",
+        "zh": "做一次受控改变：出口仍然每轮服务四个包，只把缓存从四格逐步加到十二格。比较同一轮的真实队列和窗口。更多空间改变了何时溢出，却不能把服务率变成十二。它可能容纳更多等待的数据，所以评估网络时，吞吐量、丢包与延迟必须分别看。",
+        "en": "Make a controlled change: keep service at four packets per round and increase only the buffer from four slots to twelve. Compare the same round’s computed queue and window. More space changes when overflow occurs without turning the service rate into twelve. It may hold more waiting traffic, so throughput, loss and latency must be evaluated separately.",
+        "seconds": 20,
+        "chapterAt": 147.0,
+        "at": 147.45
+      },
+      {
+        "id": "compare",
+        "title": "反馈的价值，是少做无效工作",
+        "titleEn": "Feedback avoids wasted work",
+        "caption": "同一出口下，对比响应反馈与固定窗口。",
+        "captionEn": "Compare feedback with a fixed window at the same exit.",
+        "zh": "最后对照两个发送者。它们面对同样的四包出口和八格缓存，一个响应反馈，另一个始终维持十二的窗口。逐轮累计实际服务和丢失的包数。窗口更大并不自动换来更多有效服务，却可能持续制造丢失。这是拥塞控制要解决的资源共享问题，而不是可靠重传本身。",
+        "en": "Compare two senders facing the same four-packet service rate and eight-slot buffer. One responds to feedback; the other holds its window at twelve. The counters accumulate actual service and drops through the displayed rounds. A larger window does not automatically produce more useful service, but can continually waste packets. Congestion control manages shared capacity; retransmission alone does not.",
+        "seconds": 20,
+        "chapterAt": 171.5,
+        "at": 171.95
+      }
+    ]
+  },
+  "consistent-hashing": {
+    "duration": 195.0,
+    "cues": [
+      {
+        "id": "modulo",
+        "title": "机器数一变，取模结果大变",
+        "titleEn": "Changing the modulus changes many owners",
+        "caption": "3 台变 4 台，许多取模归属改变。",
+        "captionEn": "Three nodes become four, remapping many modulo owners.",
+        "zh": "先用最直接的分配办法：把同一个键的哈希值对机器数取模。三台机器时除以三，加入 D 后改成除以四。看这些真实计算的归属，许多键虽然原机器还在，却已经分给了另一台。扩容时如果都要搬，数据迁移就会成为很重的额外工作。",
+        "en": "Start with a straightforward rule: hash a key and take the remainder modulo the number of machines. Adding D changes the modulus from three to four. Many actual owners change even though their previous machine is still available. If expansion requires moving all those keys, migration itself becomes a substantial extra workload.",
+        "seconds": 20,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "ring",
+        "title": "把哈希空间绕成一个环",
+        "titleEn": "Wrap the hash space into a ring",
+        "caption": "从键的位置顺时针找第一个节点。",
+        "captionEn": "Find the first node clockwise from the key.",
+        "zh": "把零到一之间的哈希位置绕成一个环。键和节点各自得到固定位置。跟住选中的键，从它的位置顺时针走，遇到的第一个节点就是归属。颜色表示当前归属，环上的弧段表示这个节点接管的范围。分配来自同一条后继规则，不是按图上谁离得近。",
+        "en": "Wrap hash positions from zero to one into a ring. Keys and nodes each receive fixed positions. Follow the selected key clockwise: the first node encountered owns it. Color records ownership, and an arc shows the interval assigned to that token. The rule uses the clockwise successor, not whichever node happens to look closest on the page.",
+        "seconds": 20,
+        "chapterAt": 23.0,
+        "at": 23.45
+      },
+      {
+        "id": "wrap",
+        "title": "经过终点，仍然接得上",
+        "titleEn": "Wraparound is still continuous",
+        "caption": "经过 100%，继续从 0% 顺时针找。",
+        "captionEn": "After 100%, continue clockwise from zero.",
+        "zh": "注意这个接近环末尾的键。它到达百分之百之前没有遇到节点，就回到零继续寻找，最终归给第一个节点。环没有隐藏的断口。模型用同一个规则处理普通区间与跨过零点的区间，所以键的位置不需要因为越界而重新哈希。",
+        "en": "Watch a key near the end of the ring. It reaches one hundred percent without meeting a node, wraps to zero, and continues to the first token. The ring has no hidden break. The same successor rule handles both ordinary intervals and the interval across zero, so the key keeps its hash position throughout.",
+        "seconds": 20,
+        "chapterAt": 47.5,
+        "at": 47.95
+      },
+      {
+        "id": "add",
+        "title": "加入 D，只接管它前面的弧段",
+        "titleEn": "D takes only its predecessor interval",
+        "caption": "已有位置不动；部分键改归 D。",
+        "captionEn": "Existing positions stay fixed; some keys move to D.",
+        "zh": "现在加入节点 D。先看其他节点和每个键，它们的位置完全没有改变。D 只截走前一个节点到自己之间的弧段；这个弧段里的键，从原来的后继改归 D。其他键遇到的第一个节点仍然一样，因此归属不变。高亮的是实际改变的键，不是示意性随机闪烁。",
+        "en": "Add node D. Existing nodes and every key stay at exactly the same positions. D takes the interval from its predecessor to its own position. Keys in that interval change from the former successor to D; other keys still meet the same first token. The highlighted keys are the actual changed assignments, not decorative random flashes.",
+        "seconds": 20,
+        "chapterAt": 69.5,
+        "at": 69.95
+      },
+      {
+        "id": "remove",
+        "title": "拿走 C，只有它的键找新家",
+        "titleEn": "Remove C and reassign only its keys",
+        "caption": "原来归 C 的键，交给新的顺时针后继。",
+        "captionEn": "Only C’s former keys need a new successor.",
+        "zh": "反过来拿走 C。原来先遇到 C 的键，现在继续顺时针走，交给下一个仍存在的节点。原来属于 A、B 的键不需要跟着搬。这种局部变化是这里的一致性含义：成员变动时，尽量保留未受影响的映射。它不等于数据库事务的一致性，也不是复制协议。",
+        "en": "Now remove C. Keys that previously met C first continue clockwise to the next surviving token. Keys already owned by A or B do not need to move. This is the consistency meant here: membership changes preserve unaffected mappings. It is different from database transaction consistency and does not by itself provide a replication protocol.",
+        "seconds": 20,
+        "chapterAt": 94.0,
+        "at": 94.45
+      },
+      {
+        "id": "imbalance",
+        "title": "环很稳定，份额却未必平均",
+        "titleEn": "A stable ring can still be uneven",
+        "caption": "随机弧段不等长，键的负载也不保证相等。",
+        "captionEn": "Random arcs need not be equal, and key loads can differ.",
+        "zh": "先停在每台机器只有一个位置的环。三个节点并不自动把圆分成三个相等部分。看实际分给每台机器的键数，可能差得很多。即使弧长接近，热门键和冷门键的访问代价也可能不同。稳定映射解决了迁移范围问题，却没有单独保证真实业务负载均匀。",
+        "en": "Pause with one position per physical node. Three hashed tokens do not automatically divide the circle into equal thirds. The actual key counts can be uneven. Even equal arc lengths would not equalize a hot key and a cold one. Stable mapping limits migration, but does not independently guarantee balanced real-world work.",
+        "seconds": 20,
+        "chapterAt": 118.0,
+        "at": 118.45
+      },
+      {
+        "id": "virtual",
+        "title": "让每个节点拥有多段份额",
+        "titleEn": "Give each node several separate intervals",
+        "caption": "每台机器映射成 8 个虚拟位置。",
+        "captionEn": "Each machine receives eight virtual positions.",
+        "zh": "把每台物理机器映射成八个虚拟位置。环上位置变多，但实际存储机器仍然只有 A、B、C 三台。每个位置接管自己的前驱弧段，再汇总到对应机器。负载不再只依赖一个随机弧段，通常更容易分散；但有限样本仍有波动，图里只报告这批真实键的结果。",
+        "en": "Give each physical machine eight virtual positions. There are more tokens on the ring but still only three storage machines. Every token takes its predecessor interval, and those shares are combined by physical owner. Distributing several intervals usually reduces dependence on one unlucky gap. Finite samples still vary; the bars report only this actual set of keys.",
+        "seconds": 20,
+        "chapterAt": 143.0,
+        "at": 143.45
+      },
+      {
+        "id": "combine",
+        "title": "多段接管，仍然保持局部迁移",
+        "titleEn": "Several tokens still preserve local migration",
+        "caption": "D 的多个位置，只接走各自前驱区间。",
+        "captionEn": "D’s tokens take only their own predecessor intervals.",
+        "zh": "最后在虚拟位置的环里加入 D。它在多个位置接管多个小区间，而原有键和旧节点的位置仍然固定。只有真正落入这些区间的键改归 D。进入探索，可以改变物理节点数和虚拟位置数量，逐键检查归属。这里演示的是映射决定，不会假装已经搬完数据或解决副本同步。",
+        "en": "Finally add D to the ring with virtual positions. Its tokens take several smaller predecessor intervals while all existing token and key positions remain fixed. Only keys in those intervals change to D. Exploration changes physical membership and virtual-token count so you can inspect every assignment. This demonstrates mapping decisions, not completed data transfer or replica synchronization.",
+        "seconds": 20,
+        "chapterAt": 168.5,
+        "at": 168.95
       }
     ]
   }

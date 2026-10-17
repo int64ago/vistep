@@ -1,0 +1,43 @@
+<h2 id="understand">An alignment from above can miss vertically</h2>
+
+At new moon, the Moon is near the Sun's direction. Its orbit, however, is tilted about 5.145° relative to the ecliptic. Most months it passes above or below the apparent solar disk. An eclipse requires conjunction and a suitable position near an orbital node. Follow the same Moon through the orbital-height view before changing to the observer's sky.
+
+The Sun is much larger than the Moon and much farther away. An observer compares apparent sizes. A sufficiently large, well-aligned Moon can cover the entire solar disk. Observers within the umbra see totality; those in the penumbra see partial coverage. A more distant Moon can leave a ring even at central alignment. [NASA's eclipse-geometry explanation](https://science.nasa.gov/eclipses/geometry/) connects these conditions.
+
+<h2 id="try">Separate four conditions</h2>
+
+- Keep distance fixed and change longitude from conjunction. Watch contact, increasing overlap and separation.
+- Align the centres and increase Earth–Moon distance from 360000 km to 405000 km. Compare total and annular coverage.
+- Move the observing point sideways. Its sky and the gold point in the shadow section use the same observer position.
+- Increase orbital angle from the node. Near-new-moon longitude can remain while the Moon misses the apparent Sun vertically.
+
+<h2 id="deeper">Three views of one geometry</h2>
+
+<details>
+<summary>Apparent disks and overlap</summary>
+
+Radius R and observer distance d determine angular radius α = asin(R/d). The dot product of the Sun and Moon direction vectors determines angular separation. The sky instrument computes the intersection of two angular-radius disks to obtain the covered fraction of a uniformly bright Sun. This small-angle circular approximation neglects tiny off-axis projection distortions. Coverage measures geometric area, not sky brightness or irradiance at an eye.
+
+<div className="formula">α = asin(R/d)　;　cos δ = ŝ · m̂</div>
+
+The model uses a solar radius of 695700 km, a lunar radius of 1737.4 km and an Earth–Sun distance of about 149.6 million km. Changing lunar distance selects a controlled comparison rather than a calendar date. See [NASA's eclipse types](https://science.nasa.gov/eclipses/types/).
+
+</details>
+
+<details>
+<summary>Deriving the shadow tip</summary>
+
+Common external tangent planes to the solar and lunar spheres define the umbra. Internal tangents define the penumbra. Let D be the Sun–Moon distance and q = (solar radius − lunar radius)/D. At axial distance x downstream of the Moon, the signed umbral radius is (lunar radius − xq)/√(1−q²). Its zero is the cone tip. A negative value indicates the observing plane lies beyond that tip in the antumbra. Penumbra geometry uses the sum of radii and the corresponding positive slope.
+
+The section spans hundreds of thousands of kilometres horizontally and thousands vertically, so its axes use different scales. The Sun lies outside the drawing. Boundary slopes derive from physical dimensions; the visible drawing angle is not a true angular scale.
+
+</details>
+
+<details>
+<summary>Orbital height and observer limitations</summary>
+
+The height instrument plots orbital angle u from a node against d sin(i) sin(u), with inclination i. Its horizontal axis is an angle rather than a distance. [NASA's Moon eclipse explanation](https://science.nasa.gov/moon/eclipses/) describes the tilted orbit and its nodes.
+
+The observer moves in a transverse plane near the geocentre. Direction vectors preserve parallax, but the model omits a spherical horizon, Earth rotation, lunar relief, atmosphere, solar limb darkening and ephemerides. It does not predict ground tracks, city visibility or duration. This demonstration does not replace equipment for safe real-world solar observation.
+
+</details>

@@ -1,0 +1,28 @@
+---
+import { coriolisTrail } from '../../models/coriolis';
+const config = { omega: 0.42, speed: 0.105, offset: 0 };
+const trail = coriolisTrail(config, 7, 'table');
+const path = trail.map((p, i) => `${i ? 'L' : 'M'}${200 + p.x * 101},${114 - p.y * 101}`).join('');
+const end = trail.at(-1)!;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M0 0H400V230H0Z" fill="#17373b"></path>
+  <circle cx="200" cy="114" r="100" fill="#224b4b" stroke="#6f9a8d"></circle>
+  {[33, 66].map((r) => <circle cx="200" cy="114" r={r} stroke="#83aa9b" opacity=".2" />)}
+  {
+    Array.from({ length: 8 }, (_, i) => (
+      <path
+        d="M200 14V214"
+        stroke="#83aa9b"
+        opacity=".15"
+        transform={`rotate(${i * 22.5} 200 114)`}
+      />
+    ))
+  }
+  <path d="M200 114H274" stroke="#b4d7c7" stroke-dasharray="3 5"></path>
+  <path d={path} stroke="#edc58a" stroke-width="3.5" stroke-linecap="round"></path>
+  <circle cx={200 + end.x * 101} cy={114 - end.y * 101} r="9" fill="#edc58a" stroke="#fff1d6"
+  ></circle>
+  <circle cx="200" cy="19" r="4" fill="#a3d9c7"></circle>
+</svg>

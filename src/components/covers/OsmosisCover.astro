@@ -1,0 +1,45 @@
+---
+import { osmosisShot } from '../../models/osmosis';
+const f = osmosisShot(4, 0.75),
+  bottom = 196,
+  scale = 2600,
+  left = bottom - f.heightLeft * scale,
+  right = bottom - f.heightRight * scale;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" aria-hidden="true"
+  ><path d="M0 0H400V230H0Z" fill="#edf6ef"></path><rect
+    x="44"
+    y="28"
+    width="312"
+    height="172"
+    rx="16"
+    fill="#f9fcf7"
+    stroke="#b9cfca"
+    stroke-width="2"></rect><path d={`M48 ${left}H194V196H60Q48 196 48 184Z`} fill="#cce5e4"
+  ></path><path d={`M206 ${right}H352V184Q352 196 340 196H206Z`} fill="#d3e4d6"></path><path
+    d={`M48 ${left}H194M206 ${right}H352`}
+    stroke="#70aba4"
+    stroke-width="2"></path>{
+    Array.from({ length: 18 }, (_, i) => (
+      <circle
+        cx={65 + ((i * 43) % 112)}
+        cy={left + 10 + ((i * 29) % Math.max(12, 183 - left))}
+        r="2.8"
+        fill="#74a4ac"
+      />
+    ))
+  }{
+    Array.from({ length: 18 }, (_, i) => (
+      <path
+        d="M0-5 5-2 5 3 0 5-5 2-5-3Z"
+        transform={`translate(${225 + ((i * 41) % 112)} ${right + 12 + ((i * 31) % Math.max(12, 181 - right))})`}
+        fill="#ad936c"
+      />
+    ))
+  }<rect x="194" y="29" width="12" height="167" rx="4" fill="#dfd3b6"></rect>{
+    Array.from({ length: 8 }, (_, i) => (
+      <path d={`M194 ${45 + i * 20}h12`} stroke="#f8fbf4" stroke-width="4" />
+    ))
+  }<path d="M174 176h52m-8-5 8 5-8 5" fill="none" stroke="#548e83" stroke-width="2"></path></svg
+>

@@ -1,0 +1,362 @@
+.lz-study {
+  padding: 24px 30px;
+  color: #374f5c;
+  min-height: 450px;
+  font-size: 16px;
+  background: linear-gradient(130deg, #f9faf7, #eff4f4);
+  border-radius: 24px;
+}
+.lz-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #728b94;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+}
+.lz-study p {
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+  margin: 24px auto 0;
+  max-width: 44em;
+}
+.lz-window-key {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 36px 0 22px;
+}
+.lz-window-key span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #849591;
+}
+.lz-window-key span:last-child {
+  color: #a17849;
+}
+.lz-window-key b {
+  font: 16px monospace;
+}
+.lz-tape {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+  gap: 4px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.lz-tape > div {
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 8px 1px;
+  border-radius: 8px;
+  background: #f6f3eb;
+  border: 1px solid #ded7c9;
+  position: relative;
+}
+.lz-tape [data-history='true'] {
+  background: #e1ece9;
+  border-color: #b9d0ca;
+}
+.lz-tape [data-source='true'] {
+  box-shadow: inset 0 -4px #7da99c;
+}
+.lz-tape [data-target='true'] {
+  background: #f3e6cd;
+  border-color: #d7b67b;
+}
+.lz-tape [data-current='true'] {
+  outline: 2px solid #b68547;
+  outline-offset: 2px;
+}
+.lz-tape small {
+  font: 16px monospace;
+  color: #82918a;
+}
+.lz-tape b {
+  font: 25px monospace;
+  margin-top: 9px;
+}
+.lz-reference {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  margin: 32px 0 12px;
+}
+.lz-reference > div {
+  display: grid;
+  gap: 8px;
+  text-align: center;
+}
+.lz-reference b {
+  font: 42px monospace;
+  color: #b0814c;
+}
+.lz-reference i {
+  font-size: 40px;
+  font-style: normal;
+  color: #91b2aa;
+}
+.lz-window-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 48px 0;
+}
+.lz-window-rule strong {
+  font: 60px monospace;
+  color: #7a9c92;
+}
+.lz-window-rule span {
+  max-width: 250px;
+  line-height: 1.6;
+}
+.lz-issued {
+  text-align: center;
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+.lz-issued code {
+  font-size: 36px;
+  letter-spacing: 0.1em;
+  color: #b0814c;
+}
+.lz-issued p {
+  margin: 0;
+}
+.lz-copy {
+  margin-top: 35px;
+  border-top: 1px solid #d2dfd9;
+  padding-top: 20px;
+}
+.lz-copy-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px;
+}
+.lz-output {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3px;
+  flex-wrap: wrap;
+  min-height: 50px;
+  margin-top: 18px;
+}
+.lz-output span {
+  font: 23px monospace;
+  background: #e3ece6;
+  border-radius: 5px;
+  padding: 7px;
+}
+.lz-output [data-new='true'] {
+  background: #efd7b2;
+}
+.lz-output [data-source='true'] {
+  outline: 2px solid #7ba494;
+}
+.lz-study footer {
+  font-size: 16px;
+  color: #83948e;
+  line-height: 1.5;
+  margin: 26px auto 0;
+  text-align: center;
+}
+.lz-summary {
+  padding-top: 30px;
+}
+.lz-summary-message {
+  font: 26px monospace;
+  overflow-wrap: anywhere;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+.lz-summary-tokens,
+.lz-expired > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.lz-summary-tokens code,
+.lz-expired code {
+  border-radius: 9px;
+  background: #e4ebe5;
+  padding: 12px;
+  font-size: 20px;
+}
+.lz-summary-tokens [data-match='true'],
+.lz-expired [data-match='true'] {
+  background: #edd5b4;
+  color: #a5753f;
+}
+.lz-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 32px 0;
+}
+.lz-count b {
+  font: 44px monospace;
+  display: grid;
+  gap: 10px;
+}
+.lz-count small {
+  font: 16px sans-serif;
+}
+.lz-count i {
+  font-size: 28px;
+  font-style: normal;
+}
+.lz-expired {
+  margin-top: 35px;
+  text-align: center;
+}
+.lz-controls {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+  border-top: 1px solid #cddbd5;
+  padding-top: 24px;
+}
+.lz-controls input {
+  font-size: 18px;
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #c7d7cd;
+  border-radius: 9px;
+  padding: 8px;
+  background: #fafbf5;
+}
+.lz-controls input[type='range'] {
+  padding: 0;
+}
+.lz-manual-tokens {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.lz-manual-tokens button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  border: 1px solid #c9d4cc;
+  color: inherit;
+  background: #f6f8f1;
+  font: 18px monospace;
+}
+.lz-manual-tokens [aria-pressed='true'] {
+  background: #eed8b7;
+  border-color: #bb965e;
+}
+@media (max-width: 600px) {
+  .lz-study {
+    padding: 20px 12px;
+    min-height: 420px;
+  }
+  .lz-study header {
+    letter-spacing: 0;
+  }
+  .lz-study header span:last-child {
+    max-width: 65%;
+    text-align: right;
+  }
+  .lz-window-key {
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .lz-window-key span {
+    flex-direction: column;
+  }
+  .lz-tape {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .lz-tape b {
+    font-size: 23px;
+  }
+  .lz-tape small {
+    font-size: 16px;
+  }
+  .lz-reference {
+    gap: 30px;
+    margin-top: 27px;
+  }
+  .lz-reference b {
+    font-size: 36px;
+  }
+  .lz-output span {
+    font-size: 19px;
+    padding: 6px;
+  }
+  .lz-window-rule {
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .lz-window-rule strong {
+    font-size: 50px;
+  }
+  .lz-count {
+    gap: 25px;
+  }
+  .lz-count b {
+    font-size: 36px;
+  }
+  .lz-summary-message {
+    font-size: 22px;
+  }
+  .lz-summary-tokens {
+    gap: 6px;
+  }
+  .lz-summary-tokens code,
+  .lz-expired code {
+    padding: 8px;
+    font-size: 18px;
+  }
+  .lz-study footer {
+    margin-top: 20px;
+  }
+}
+
+.lz-study footer details {
+  border-top: 1px solid #d2dfd9;
+  text-align: left;
+}
+.lz-study footer summary {
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 44px;
+  color: #6f8880;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.lz-study footer summary:hover {
+  background-color: #ffffff55;
+}
+.lz-study footer summary:focus-visible {
+  outline: 2px solid #6f8880;
+  outline-offset: 2px;
+}
+.lz-study footer p {
+  margin: 8px 8px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lz-study footer summary {
+    transition: none;
+  }
+}

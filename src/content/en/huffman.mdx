@@ -1,0 +1,26 @@
+<h2 id="understand">Reserve shorter paths for frequent symbols</h2>
+
+`BANANA_BANDANA` has fourteen characters and five symbols; the underscore represents a space. The counts are A:6, N:4, B:2, D:1 and space:1. A three-bit fixed-length code needs **42 payload bits**. The actual Huffman tree here needs **28**.
+
+Repeatedly merge the two current minimum weights and return their sum to the queue. Symbols are leaves; left and right edges contribute 0 and 1. The objective is the total of frequency times code length. It cannot make every individual symbol shortest at once.
+
+No leaf path is a prefix of another. Start at the root and consume bits until reaching a leaf, emit the symbol, then restart. No character separators are required.
+
+<h2 id="try">Change actual frequencies</h2>
+
+In exploration, edit the message and select a character with the slider. Counts, merges, codewords and tree rebuild together. Try one repeated letter, an equally frequent alphabet, Chinese, emoji and an empty message.
+
+The UI permits forty UTF-16 code units; the model accepts eighty Unicode characters. A singleton alphabet uses codeword 0 and an empty message produces no tree. Equal weights use a stable node order; another valid tie rule can produce different codewords at the same optimal cost.
+
+<h2 id="deeper">What is optimal, and what is counted?</h2>
+
+<details>
+<summary>Payload bits are not a compressed file size</summary>
+
+The displayed cost is the sum of each count multiplied by its code length. A real format also communicates a codebook or code lengths, effective bit count, headers and padding. Overhead can outweigh savings on short inputs. This scene does not create a ZIP file.
+
+Binary Huffman coding minimizes weighted code length among symbol-by-symbol prefix codes for fixed frequencies. It does not replace repeated phrases. DEFLATE combines LZ77 references and Huffman codes with additional constraints such as maximum code lengths. This general binary tree is not a complete DEFLATE implementation.
+
+</details>
+
+Sources: [Huffman’s original paper](https://www.cse.iitd.ac.in/~pkalra/siv864/huffman_1952.pdf), [RFC 1951 §3.2.1](https://www.rfc-editor.org/rfc/rfc1951#section-3.2.1).

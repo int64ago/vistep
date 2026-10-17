@@ -1,0 +1,35 @@
+---
+import { lidarScan, LIDAR_DEFAULT, LIDAR_CYLINDER } from '../../models/lidar-ranging';
+const pts = lidarScan({ ...LIDAR_DEFAULT, step: 3 }),
+  x = (v: number) => 200 + v * 25,
+  y = (v: number) => 115 - v * 23;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#18303d"></rect><path
+    d="M50 207V23H350V207Z"
+    stroke="#9bd5e4"
+    opacity=".15"></path>{
+    pts.map((p) => (
+      <g>
+        {p.i % 7 === 0 && (
+          <path d={`M200 115L${x(p.point.x)} ${y(p.point.y)}`} stroke="#9bd5e4" opacity=".1" />
+        )}
+        <circle
+          cx={x(p.point.x)}
+          cy={y(p.point.y)}
+          r="2.1"
+          fill={
+            p.hit.id === 'cylinder' ? '#eda891' : p.hit.id === 'partition' ? '#f2d89c' : '#9bd5e4'
+          }
+        />
+      </g>
+    ))
+  }<circle
+    cx={x(LIDAR_CYLINDER.x)}
+    cy={y(LIDAR_CYLINDER.y)}
+    r={LIDAR_CYLINDER.radius * 24}
+    fill="#eda891"
+    opacity=".06"></circle><path d="M200 115L239 96" stroke="#f2d89c" stroke-width="2"
+  ></path><circle cx="200" cy="115" r="8" fill="#284f61" stroke="#e1edf2"></circle></svg
+>

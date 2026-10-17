@@ -1,0 +1,30 @@
+---
+import { seismicRock, seismicParticle } from '../../models/seismic-waves';
+const points = (kind: 'p' | 's', y: number) =>
+  Array.from({ length: 84 }, (_, i) => {
+    const col = i % 21,
+      row = Math.floor(i / 21),
+      s = seismicParticle(seismicRock, kind, col * 4000, 12);
+    return {
+      x: 25 + col * 17.5 + s.x * 8,
+      y: y + row * 15 + s.y * 10,
+      gold: col === 10 && row === 2,
+    };
+  });
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" aria-hidden="true"
+  ><path d="M0 0H400V230H0Z" fill="#edf0e7"></path>{
+    points('p', 43).map((p) => (
+      <circle cx={p.x} cy={p.y} r={p.gold ? 4.5 : 2.8} fill={p.gold ? '#bb9356' : '#678e87'} />
+    ))
+  }{
+    points('s', 145).map((p) => (
+      <circle cx={p.x} cy={p.y} r={p.gold ? 4.5 : 2.8} fill={p.gold ? '#bb9356' : '#a18779'} />
+    ))
+  }<path
+    d="M26 22h65m-8-5 8 5-8 5M26 124h65m-8-5 8 5-8 5"
+    fill="none"
+    stroke="#83978c"
+    stroke-width="2"></path></svg
+>

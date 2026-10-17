@@ -1,0 +1,108 @@
+.resonance-scene {
+  max-width: 920px;
+  margin: auto;
+  padding: 24px 24px 18px;
+  background: radial-gradient(ellipse at 50% 15%, #f6f9f0, #e9f0e9);
+  border-radius: 24px;
+  color: #32574d;
+}
+.resonance-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 16px;
+}
+.resonance-heading strong {
+  font-size: 26px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.resonance-heading small {
+  font-size: 16px;
+  font-weight: 500;
+}
+.resonance-scene svg {
+  display: block;
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+}
+.resonance-scene svg text {
+  font-family: inherit;
+  font-size: 19px;
+  fill: #486b60;
+}
+.resonance-note {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5a756b;
+  margin: 12px 0 0;
+}
+.resonance-controls {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+.resonance-controls input {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .resonance-scene {
+    padding: 18px 12px 14px;
+    border-radius: 18px;
+  }
+  .resonance-heading {
+    display: grid;
+    gap: 5px;
+  }
+  .resonance-heading strong {
+    font-size: 24px;
+  }
+  .resonance-scene svg {
+    max-height: none;
+  }
+  .resonance-scene svg text {
+    font-size: 16px;
+  }
+  .resonance-note {
+    margin-top: 6px;
+  }
+}
+
+.resonance-scene .control,
+.resonance-scene .control output,
+.resonance-scene .control small {
+  font-size: 16px;
+}
+
+.resonance-scene .resonance-model-note {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.resonance-scene .resonance-model-note summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 10px 4px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.resonance-scene .resonance-model-note summary:hover {
+  background-color: #ffffff50;
+}
+.resonance-scene .resonance-model-note summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.resonance-scene .resonance-model-note p {
+  margin: 4px 0 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .resonance-scene .resonance-model-note summary {
+    transition: none;
+  }
+}

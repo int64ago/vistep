@@ -1,0 +1,28 @@
+<a id="understand"></a>
+
+## One measurement at each sensor site
+
+An RGGB block contains one red, two green and one blue site. In this ideal model each site retains only the corresponding linear RGB channel from the same reference image. The colored mosaic visualizes channel identity; raw data still contain one number per site.
+
+Track one red site. Its red value is measured, green comes from four cardinal neighbors, and blue comes from four diagonal neighbors. Applying the rules everywhere reconstructs full color. Fine achromatic stripes expose a limitation: channels sampled at different positions can create false color that never existed in the reference.
+
+<a id="try"></a>
+
+## Move a pattern relative to its filters
+
+Explore a color reference or achromatic stripes. Raise spatial frequency or translate by less than one pixel, comparing reference and reconstruction across a split frame. Sliders support the keyboard. Chapters and pause expose the local green and blue calculations.
+
+<a id="deeper"></a>
+
+## Bilinear interpolation preserves measurements
+
+<div className="formula">
+  Gred = (Gup + Gdown + Gleft + Gright) / 4<br />
+  Bred = (Bnorthwest + Bnortheast + Bsouthwest + Bsoutheast) / 4
+</div>
+
+At green sites, red and blue use horizontal or vertical neighbors according to RGGB parity. Blue sites use symmetric rules. Boundaries average only valid neighbors. Every measured value is preserved; missing channels never consult hidden reference values. The teaching grid contains 24×24 samples, encoded for display with standard piecewise sRGB transfer.
+
+Real filter responses overlap spectrally. Camera pipelines also involve black level, white balance, color matrices, noise treatment and more sophisticated edge decisions. Those processes and optical low pass filtering are omitted to expose sampling limits. This demonstration uses ordinary bilinear interpolation, rather than the improved Malvar filter.
+
+Sources: [Bayer patent](https://patents.google.com/patent/US3971065A/en), [Microsoft Research: demosaicing interpolation](https://www.microsoft.com/en-us/research/publication/high-quality-linear-interpolation-for-demosaicing-of-bayer-patterned-color-images/).

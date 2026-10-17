@@ -1,0 +1,62 @@
+{
+  "medium": "svg + HTML",
+  "duration": 160,
+  "chapters": [
+    {
+      "id": "bottleneck",
+      "visible": "Unresponsive fixed window feeds actual bounded FIFO; service never exceeds four.",
+      "caption": "出口每轮只服务四个包。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "queue",
+      "visible": "FIFO identities persist between rounds; queue delay and actual overflow count derive from occupancy.",
+      "caption": "缓存增长，等待增加；满了才溢出。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "slow-start",
+      "visible": "ACK-count growth produces true initial window sequence 1,2,4,8 under the same bottleneck.",
+      "caption": "窗口从 1、2、4 向上试探。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "loss",
+      "visible": "Actual first overflow round retains dropped IDs and reduces window using flight/2.",
+      "caption": "检测到溢出，回退到在途量的一半。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "avoidance",
+      "visible": "Post-loss trajectory uses actual per-ACK reciprocal updates; integer send limit respects pending queue.",
+      "caption": "每个新确认，窗口只增加约 1/W。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "sawtooth",
+      "visible": "Full history grows across all rounds; loss markers and window line share computed state.",
+      "caption": "加性增加，乘性回退，形成锯齿。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "buffer",
+      "visible": "Same round is recomputed while only buffer capacity changes 4→12; service remains exactly four.",
+      "caption": "出口仍是四个包，缓存从 4 增到 12。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    },
+    {
+      "id": "compare",
+      "visible": "Two algorithms share capacity/buffer/round count; cumulative delivered/drop counts align to the displayed round.",
+      "caption": "同一出口下，对比响应反馈与固定窗口。",
+      "desktop": "Wide causal composition; CSS-pixel labels outside scaled geometry.",
+      "phone": "One current causal instrument. Reflow text and preserve all referenced objects; no shrinking of desktop typography."
+    }
+  ]
+}

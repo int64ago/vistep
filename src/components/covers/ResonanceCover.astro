@@ -1,0 +1,38 @@
+---
+import { resonanceShot, springPoints, resonanceAmplitude } from '../../models/resonance';
+const f = resonanceShot(3, 0.44),
+  x = 210 + f.x * 30;
+const curve = Array.from(
+  { length: 121 },
+  (_, i) =>
+    `${i ? 'L' : 'M'}${40 + i * 2.65} ${208 - Math.min(3.5, resonanceAmplitude(0.2 + i * 0.015, 0.08)) * 35}`,
+).join(' ');
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M0 0H400V230H0Z" fill="#edf3e9"></path><path
+    d="M26 113H374M32 38V114"
+    stroke="#abc0b2"
+    stroke-width="3"></path><path
+    d={springPoints(33, x - 26, 77)
+      .map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`)
+      .join(' ')}
+    stroke="#3d806d"
+    stroke-width="3"
+    stroke-linejoin="round"></path><rect
+    x={x - 26}
+    y="51"
+    width="52"
+    height="56"
+    rx="10"
+    fill="#d7e5d9"
+    stroke="#719a83"></rect><circle cx={x} cy="77" r="4" fill="#31674f"></circle><path
+    d={`M${x} 33h${f.applied * 3}`}
+    stroke="#b8873c"
+    stroke-width="4"
+    stroke-linecap="round"></path><path d="M40 208H360" stroke="#b7c7b9"></path><path
+    d={curve}
+    stroke="#397b62"
+    stroke-width="3"></path><path d="M181 143V212" stroke="#c29b55" stroke-dasharray="3 4"
+  ></path></svg
+>

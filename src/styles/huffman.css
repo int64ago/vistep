@@ -1,0 +1,311 @@
+.huff-study {
+  color: #314b54;
+  min-height: 450px;
+  padding: 24px 30px;
+  font-size: 16px;
+  background: radial-gradient(ellipse at 30% 10%, #fffdfa, #f4f5ef);
+  border-radius: 24px;
+}
+.huff-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: #73868a;
+}
+.huff-study p {
+  text-align: center;
+  margin: 22px auto 0;
+  max-width: 44em;
+  line-height: 1.6;
+}
+.huff-message {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 30px 0 20px;
+}
+.huff-message span {
+  font: 24px monospace;
+  color: #8b9b9c;
+  padding: 4px;
+}
+.huff-message [data-active='true'] {
+  color: #b57a46;
+  background: #f4e8d5;
+  border-radius: 6px;
+}
+.huff-bars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 28px;
+  height: 230px;
+}
+.huff-bars > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 35px;
+}
+.huff-bars i {
+  display: block;
+  width: 34px;
+  background: linear-gradient(#d6ac75, #ba875a);
+  border-radius: 9px 9px 3px 3px;
+}
+.huff-bars code {
+  min-height: 20px;
+}
+.huff-merge {
+  padding-top: 30px;
+  text-align: center;
+}
+.huff-forest {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+}
+.huff-forest > div {
+  border: 1px solid #d7ded7;
+  border-radius: 35px;
+  min-width: 70px;
+  padding: 15px;
+  display: grid;
+  gap: 10px;
+}
+.huff-forest [data-active='true'] {
+  border-color: #b6854d;
+  background: #f4e6ce;
+}
+.huff-add {
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  font-size: 30px;
+}
+.huff-add i {
+  font-style: normal;
+  color: #a7b4aa;
+}
+.huff-add strong {
+  font-size: 38px;
+  color: #b57a46;
+}
+.huff-merge-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.huff-merge-dots i {
+  width: 8px;
+  height: 8px;
+  background: #dce2d9;
+  border-radius: 50%;
+}
+.huff-merge-dots [data-active='true'] {
+  background: #b57a46;
+}
+.huff-tree {
+  position: relative;
+  height: 285px;
+  margin: 28px 15px 40px;
+}
+.huff-tree svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.huff-tree path {
+  stroke: #c7d3cc;
+  stroke-width: 0.35;
+  fill: none;
+}
+.huff-tree path[data-active='true'] {
+  stroke: #b57a46;
+  stroke-width: 0.6;
+}
+.huff-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: #eef2ea;
+  border: 1px solid #ccd8cc;
+  border-radius: 50%;
+  font: 17px monospace;
+}
+.huff-node[data-active='true'] {
+  background: #f4e5ca;
+  border-color: #b57a46;
+}
+.huff-node[data-leaf='true'] {
+  border-radius: 9px;
+  background: #fffdf7;
+}
+.huff-node code {
+  position: absolute;
+  top: 36px;
+  font-size: 16px;
+  color: #936d45;
+}
+.huff-node em {
+  position: absolute;
+  top: -20px;
+  left: -5px;
+  font-size: 16px;
+  font-style: normal;
+  background: #f7f7f0;
+  color: #788b83;
+}
+.huff-code-tape {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font: 30px monospace;
+  flex-wrap: wrap;
+}
+.huff-code-tape code {
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
+  font-size: 22px;
+}
+.huff-code-tape mark {
+  background: #e7cf9e;
+}
+.huff-code-tape strong {
+  font-size: 26px;
+}
+.huff-account {
+  padding: 15px 40px 30px;
+}
+.huff-account > div {
+  position: relative;
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+.huff-account i {
+  grid-column: 1/-1;
+  height: 32px;
+  background: #c2cfbf;
+  border-radius: 8px;
+  grid-row: 2;
+}
+.huff-account > div:nth-of-type(2) i {
+  background: #c89b68;
+}
+.huff-account b {
+  grid-column: 2;
+  grid-row: 1;
+}
+.huff-controls {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid #dce2d9;
+  padding-top: 24px;
+  margin-top: 28px;
+}
+.huff-controls input {
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: 1px solid #c9d5cb;
+  border-radius: 10px;
+  padding: 8px;
+  background: #fffdf6;
+}
+.huff-controls input[type='range'] {
+  padding: 0;
+}
+.huff-controls p {
+  margin: 0;
+  text-align: left;
+}
+@media (max-width: 600px) {
+  .huff-study {
+    padding: 20px 12px;
+    min-height: 420px;
+  }
+  .huff-study header {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+  .huff-study header span:last-child {
+    max-width: 45%;
+    text-align: right;
+  }
+  .huff-bars {
+    gap: 16px;
+    height: 235px;
+  }
+  .huff-bars i {
+    width: 28px;
+  }
+  .huff-message {
+    gap: 0;
+    margin-top: 25px;
+  }
+  .huff-message span {
+    font-size: 20px;
+    padding: 3px;
+  }
+  .huff-tree {
+    height: 270px;
+    margin: 26px 7px 42px;
+  }
+  .huff-node {
+    font-size: 16px;
+    min-width: 30px;
+    height: 30px;
+  }
+  .huff-node code {
+    font-size: 16px;
+    top: 33px;
+  }
+  .huff-forest {
+    gap: 8px;
+  }
+  .huff-forest > div {
+    min-width: 43px;
+    padding: 12px 8px;
+  }
+  .huff-account {
+    padding: 15px 4px 25px;
+  }
+  .huff-code-tape code {
+    font-size: 18px;
+  }
+  .huff-study p {
+    margin-top: 18px;
+  }
+  .huff-node em {
+    font-size: 16px;
+  }
+}
+
+.huff-tree-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #b9c7bb #edf1e9;
+  border-radius: 12px;
+}
+.huff-tree-scroll:focus-visible {
+  outline: 2px solid #b58a54;
+  outline-offset: 3px;
+}

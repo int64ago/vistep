@@ -1,0 +1,28 @@
+---
+import { beatsDefault, beatsCurve } from '../../models/beats';
+const samples = beatsCurve({ ...beatsDefault, f1: 12, f2: 13 }, 0, 2.5, 700);
+const curve = (key: 'a' | 'b' | 'sum', y: number, k: number) =>
+  samples.map((s, i) => `${i ? 'L' : 'M'}${20 + (i * 360) / 699},${y - s[key] * k}`).join(' ');
+const env = (sign: number) =>
+  samples
+    .map((s, i) => `${i ? 'L' : 'M'}${20 + (i * 360) / 699},${160 - sign * s.envelope * 25}`)
+    .join(' ');
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M0 0H400V230H0Z" fill="#f4f1e7"></path><path
+    d="M20 44H380M20 87H380M20 160H380"
+    stroke="#ccc8b9"></path><path d={curve('a', 44, 13)} stroke="#4d8990" stroke-width="1.5"
+  ></path><path d={curve('b', 87, 13)} stroke="#c18165" stroke-width="1.5"></path><path
+    d={curve('sum', 160, 24)}
+    stroke="#726b52"
+    stroke-width="1.5"></path><path
+    d={env(1)}
+    stroke="#b28955"
+    stroke-width="1.5"
+    stroke-dasharray="3 3"></path><path
+    d={env(-1)}
+    stroke="#b28955"
+    stroke-width="1.5"
+    stroke-dasharray="3 3"></path></svg
+>

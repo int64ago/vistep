@@ -1,0 +1,26 @@
+<h2 id="understand">A zero proves absence; a one only records a mark</h2>
+
+A basic Bloom filter has m bits and k hash addresses per key. Insertion sets all corresponding bits. A query checks those same positions. **One zero proves the key was not inserted; all ones mean only possibly present.** This relies on unchanged configuration, correct insertions and no erroneous clearing.
+
+Every address here is actually computed. The false-positive chapter searches for a key absent from the exact set whose positions are all one. The demonstration keeps that exact set only as an external oracle; it is not part of the filter’s memory.
+
+<h2 id="try">Change the actual bit array</h2>
+
+Exploration accepts comma-separated keys, a query, sixteen to sixty-four bits and one to five hash functions. Changing configuration rebuilds the filter from all keys. Repeated insertion does not create a count. An empty list creates an empty set; at most thirty-two nonempty keys are retained.
+
+The witness buttons query a reproducible sequence of candidate keys. A saturated array may have no negative witness in the search range. This bounded search is not exhaustive over all possible keys.
+
+<h2 id="deeper">The space and uncertainty trade-off</h2>
+
+<details>
+<summary>Probability, hash assumptions and deletion</summary>
+
+The classical approximation is `p ≈ (1 − exp(−kn/m))ᵏ`, assuming independent uniform hashes and n distinct inserted keys. It is not the exact measured probability for the fixed hashes used here. Too many hashes can overfill a fixed array, so increasing k is not always beneficial.
+
+Seeded FNV-1a with avalanche mixing produces reproducible UTF-8 addresses for teaching. It is not a cryptographic construction or an adversarial-input security claim.
+
+Several keys can contribute the same bit. Directly clearing one key’s positions may erase another member’s evidence and introduce false negatives. A basic filter does not support that deletion. Counting variants require additional state and separate correctness conditions.
+
+</details>
+
+Source: [Bloom’s original paper, 1970](https://pages.cs.wisc.edu/~markhill/restricted/cacm70_bloom.pdf).
