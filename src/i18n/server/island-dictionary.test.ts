@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { islandDictionary } from './island-dictionary';
+import { mkdtempSync, rmSync, utimesSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { islandDictionary, readIslandSource } from './island-dictionary';
 import english from '../en.json';
 import { topics } from '../../data/topics';
 import timeline from '../../data/film-timeline.json';
@@ -44,6 +47,48 @@ describe('scene-scoped English dictionaries', () => {
         expectCopy(subset, key);
       // A type-only Film import must not drag the collection timeline back in.
       expect(Object.keys(subset).length, topic.slug).toBeLessThan(Object.keys(full).length / 5);
+    }
+  }, 20_000);
+
+  it('reuses unchanged extraction and invalidates same-size edits for development reloads', () => {
+    const directory = mkdtempSync(join(tmpdir(), 'vistep-island-source-'));
+    const file = join(directory, 'Scene.tsx');
+    const source = (label: string, dependency: string) =>
+      [
+        `import { value } from '${dependency}';`,
+        "import type { Hidden } from './types';",
+        `export const label = ready ? '${label}' : '备用';`,
+        'export const caption = `第${step}步' + label + '`;',
+      ].join('\n');
+    const original = source('甲', './first');
+    const edited = source('乙', './other');
+    expect(Buffer.byteLength(edited)).toBe(Buffer.byteLength(original));
+    try {
+      writeFileSync(file, original);
+      const first = readIslandSource(file);
+      expect(readIslandSource(file)).toBe(first);
+      expect(first.filter((item) => item.kind === 'dependency')).toEqual([
+        { kind: 'dependency', value: './first' },
+      ]);
+      expect(first).toContainEqual({ kind: 'literal', value: '甲' });
+      expect(first.find((item) => item.kind === 'template')?.value.test('第3步甲')).toBe(true);
+
+      writeFileSync(file, edited);
+      const modified = new Date(Date.now() + 2_000);
+      utimesSync(file, modified, modified);
+      const next = readIslandSource(file);
+      expect(next).not.toBe(first);
+      expect(readIslandSource(file)).toBe(next);
+      expect(next.filter((item) => item.kind === 'dependency')).toEqual([
+        { kind: 'dependency', value: './other' },
+      ]);
+      expect(next).toContainEqual({ kind: 'literal', value: '乙' });
+      expect(next).not.toContainEqual({ kind: 'literal', value: '甲' });
+      const pattern = next.find((item) => item.kind === 'template')?.value;
+      expect(pattern?.test('第3步乙')).toBe(true);
+      expect(pattern?.test('第3步甲')).toBe(false);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
     }
   });
 
