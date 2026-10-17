@@ -1,0 +1,41 @@
+---
+import { surfaceElevation, surfaceParcel } from '../../models/surface-waves';
+const o = { wavelength: 6, depth: 3, amplitude: 0.06 };
+const line = Array.from(
+  { length: 161 },
+  (_, i) => `${20 + (i * 440) / 160},${63 - surfaceElevation((i * 18) / 160, 0.5, o) * 350}`,
+).join(' ');
+const parcels = [-0.05, -1.5, -3].map((z, i) => ({
+  q: surfaceParcel(2, z, 0.5, o),
+  x: 100 + 140 * i,
+}));
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#253d4e"></rect><path
+    d="M20 63H460"
+    stroke="#9dbfc4"
+    stroke-opacity=".25"
+    stroke-dasharray="3 5"></path><polyline
+    points={line}
+    fill="none"
+    stroke="#b0d5d4"
+    stroke-width="3"></polyline>{
+    parcels.map(({ q, x }) => (
+      <g>
+        <>
+          <ellipse
+            cx={x}
+            cy="205"
+            rx={q.a * 700}
+            ry={q.b * 700}
+            fill="none"
+            stroke="#9fc7c7"
+            stroke-width="1.5"
+          />
+          <circle cx={x + q.dx * 700} cy={205 - q.dz * 700} r="5" fill="#e1c18b" />
+        </>
+      </g>
+    ))
+  }</svg
+>

@@ -1,0 +1,15 @@
+# Angular momentum — smaller inertia needs internal work
+
+Owner: `/root/hundred_mechanisms`. An overhead symmetric radial-slider turntable, with guide rails and connected actuators, rather than an abstract spinning person. The rotor and two equal masses remain a single visible system. A narrow energy ledger shows why constant angular momentum does not imply constant kinetic energy.
+
+Misconceptions: inward movement creates energy; angular momentum and angular speed are interchangeable; conservation holds despite an external brake. Distinction from flywheel: the distribution changes within one moving system at fixed angular momentum, instead of comparing separately prepared driven rotors. Distinction from gyroscope: this changes the magnitude of axial speed with no axial external torque, rather than turning the angular-momentum direction with a gravitational torque.
+
+Primary source: OpenStax University Physics 11.3 https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum, checked for angular-momentum conservation, inertia changes and internal work in a skater. All component geometry and finite-time radial motion are original.
+
+Model: two point sliders, each1 kg; base inertia.3 kg·m²; radii.65→.25 m in3 s with quintic smoothstep (zero endpoint radial speed and acceleration). I=I0+2mr²; axial L=Linitial+τext t; ω=L/I. Integrate ω for the visible rotor angle. Radial kinetic energy m rdot² is retained. Force per slider m(rddot−rω²); internal actuator power2Fr rdot. External work=τext θ. Internal work=ΔK−external work, independently checked by numerical force-power integration. The rails and platform contribute the stated fixed base inertia; slider dimensions are illustrative point-mass housings, not a density-derived mass model.
+
+Six chapters: fixed outer masses; draw inward and accelerate at constant L; move outward and slow with the same L; observe internal work and increased kinetic energy; stop inward travel halfway and obtain an intermediate speed; apply an external opposing torque at fixed radius and watch L fall. Conditions stated: ideal frictionless axial bearing; prescribed internal actuators; axis vertical, external force torques about that axis vanish except the explicitly applied torque. No human metabolic model or radial-control design prediction.
+
+Phone uses a dedicated top view, compact two-column speed/momentum labels with units in headers, and one energy ledger only when needed. Technical text≥16px, controls≥44px, no watch-mode assumptions summary. Target complete player≤740px.
+
+Author validation: 6 model tests passed, including endpoint benchmarks, L conservation through arbitrary radial paths, smooth endpoints, independent radial force-work integration with/without external torque, external angular impulse and angle derivative. Strict component TypeScript passed. Independent browser, complete playback, narration listening and physical device: not-run. Incoming links: flywheel, gyroscope, center-of-mass.

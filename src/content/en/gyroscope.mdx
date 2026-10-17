@@ -1,0 +1,39 @@
+<h2 id="understand">A downward force can turn an axis</h2>
+
+Gravity still acts on a gyroscope. The pivot reaction carries its weight vertically and provides an inward horizontal component as the center of mass travels around the pivot. Spin does not remove weight.
+
+Gravity also produces a torque about that pivot. Its direction comes from the cross product of the pivot-to-center position and gravity; it differs from the downward force direction. With a horizontal shaft, this torque changes the horizontal angular-momentum direction tangentially, producing precession around the vertical.
+
+This scene shows **prepared horizontal steady precession**. Each comparison begins with the matching steady angular velocity, keeping the shaft horizontal. Simply releasing a spinning wheel from a supporting hand can also produce up-and-down nutation. That release transient is not being simulated.
+
+Keep mass, dimensions and gravitational torque fixed. Raising axial spin from 120 to 240 rad/s doubles horizontal angular momentum and halves precession speed. Reversing spin reverses both horizontal angular momentum and precession. With gravity removed and zero initial precession, the disk keeps spinning while its axis remains fixed.
+
+<h2 id="try">Follow direction, then compare rates</h2>
+
+- Select “Forces and torque.” Distinguish downward weight at the center, the pivot reaction, and the horizontal gravitational torque.
+- Select “Momentum direction” and increase inspection time. The horizontal momentum arrow follows a circle, with torque tangent to it.
+- At equal inspection times compare 120 and 240 rad/s. Check precession speed and momentum-arrow length.
+- Reverse spin while keeping its magnitude. Both spin and precession change sign.
+- Remove gravity and scrub time. The disk spins without changing its shaft direction.
+
+<h2 id="deeper">The horizontal steady solution</h2>
+
+<details>
+<summary>Angular momentum has horizontal and vertical parts</summary>
+
+For a thin uniform disk of mass m, radius R and pivot distance l, axial inertia is `I₃ = mR²/2` and transverse inertia about the pivot is `I₁ = m(R²/4 + l²)`. With shaft direction n, vertical unit vector eᵧ, axial spin ω and precession Ω:
+
+<div className="formula">L = I₃ω n + I₁Ω eᵧ; Ω = mgl / (I₃ω)</div>
+
+The horizontal shaft keeps the vertical momentum component constant. The derivative of the horizontal component equals the gravitational torque exactly, making this a steady solution for the ideal rigid body. The displayed Lₕ represents only `I₃ω n`, not the full angular momentum.
+
+</details>
+
+<details>
+<summary>Initial conditions and limitations</summary>
+
+The disk has mass 1 kg and radius 180 mm, with its center 220 mm from the pivot. Shaft mass is neglected. An ideal fixed, frictionless spherical pivot supports it, and the required precession rate is present from the initial instant. Ordinary release at the same spin rate may include nutation because its initial conditions differ.
+
+The model omits bearing friction, spin decay, elasticity, imbalance and instability. Zero spin is excluded because the steady formula would become singular. Force, torque and momentum arrows use independent drawing scales; lengths of different vector types cannot be compared numerically.
+
+</details>

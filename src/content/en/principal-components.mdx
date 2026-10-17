@@ -1,0 +1,26 @@
+<h2 id="understand">Separate variation from location</h2>
+
+The eight points have mean `(4,3)`. Subtracting each coordinate mean centers the cloud without changing internal differences. PCA seeks a unit direction of maximum centered variation; a large offset from the origin is not itself important variation.
+
+Orthogonal projection onto a line through the mean replaces two coordinates with one. Rotating that line trades retained score variance against mean squared orthogonal reconstruction error. Their sum is total variance. Both covariance and error here divide by point count n.
+
+<h2 id="try">The direction changes what is lost</h2>
+
+A horizontal axis retains variance3.8125 with error1.4375. At the first principal direction30°, retained variance is5, error0.25 and retained fraction about95.24%. This is the unit eigenvector corresponding to the covariance matrix's largest eigenvalue.
+
+One dimension still loses information: the eight scores are `−3,−3,−1,−1,1,1,3,3`. Distinct points can share a coordinate. Reconstruction along the axis cannot recover which side displacement was discarded.
+
+<h2 id="deeper">Units, signs and nonuniqueness</h2>
+
+<details>
+<summary>A principal component is not guaranteed hidden truth</summary>
+
+Exploration rotates the axis or multiplies x units by ten before refitting. This changes the covariance metric and moves the principal direction closer to horizontal. A larger retained fraction under a new metric does not mean discovering more true information. Standardization depends on the problem and meaningful units.
+
+The isotropic four-point case retains0.5 and loses0.5 in every direction, so no first direction is unique. Reversing a principal axis also gives an equivalent solution: scores change sign while reconstruction stays the same. Zero total variance has no defined retained percentage.
+
+This is linear two-dimensional projection, not regression minimizing only vertical prediction error. It does not automatically discover causes, classes or predictive features. Plots preserve equal coordinate units; flattening after a unit change is part of the metric change rather than hidden by stretching y.
+
+</details>
+
+Sources: [Stanford CS229, PCA and reconstruction error](https://cs229.stanford.edu/notes2022fall/pca-annotated.pdf), and [CMU, Principal Components Analysis](https://www.stat.cmu.edu/~cshalizi/dst/26/lectures/03/lecture-03.html).

@@ -1,0 +1,133 @@
+.refraction-study {
+  background: #f2efe3;
+  border-radius: 24px;
+  padding: 24px 28px;
+  color: #3f6665;
+}
+.refraction-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  font-size: 18px;
+}
+.refraction-study header b {
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.refraction-study svg {
+  width: 100%;
+  height: 340px;
+  display: block;
+  border-radius: 18px;
+  margin-top: 20px;
+}
+.refraction-angles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 18px;
+}
+.refraction-angles span {
+  display: grid;
+  gap: 5px;
+  font-size: 16px;
+}
+.refraction-angles b {
+  font-weight: 400;
+  font-size: 29px;
+  color: #a47548;
+}
+.refraction-rhythm {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 18px;
+}
+.refraction-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.refraction-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.refraction-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+.refraction-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+@media (max-width: 760px) {
+  .refraction-study {
+    padding: 20px 16px;
+  }
+  .refraction-study header {
+    font-size: 16px;
+    flex-wrap: wrap;
+  }
+  .refraction-study svg {
+    height: 300px;
+  }
+  .refraction-angles {
+    gap: 15px;
+  }
+  .refraction-angles b {
+    font-size: 25px;
+  }
+  .refraction-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .refraction-study {
+    padding: 16px;
+  }
+  .refraction-study svg {
+    height: 230px;
+    margin-top: 12px;
+  }
+  .refraction-angles {
+    margin-top: 12px;
+  }
+  .refraction-angles span {
+    gap: 3px;
+  }
+  .refraction-angles b {
+    font-size: 24px;
+  }
+  .refraction-rhythm {
+    margin-top: 12px;
+    gap: 4px 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .refraction-study header {
+    gap: 6px 14px;
+  }
+  .refraction-rhythm > span:first-child {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .refraction-study[data-watch='true'] details {
+    display: none;
+  }
+  .refraction-study {
+    padding-block: 12px;
+  }
+}

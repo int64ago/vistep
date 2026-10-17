@@ -1,0 +1,38 @@
+---
+import { QUICK_VALUES, quickItems, quickPartition } from '../../models/quicksort';
+const { color = '#aa97bb' } = Astro.props;
+const q = quickPartition(quickItems(QUICK_VALUES), 3);
+const cells = q.result.map((item, index) => ({
+  ...item,
+  index,
+  x: 24 + index * 44,
+  fill: index < q.lt ? '#c4d7e0' : index <= q.gt ? '#d5bd8c' : '#cec0dd',
+}));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <text x="28" y="34" fill={color} font-size="16" font-family="monospace">PIVOT = 3</text>
+  {
+    cells.map((cell) => (
+      <g>
+        <>
+          <rect x={cell.x} y="66" width="37" height="90" rx="17" fill={cell.fill} />
+          <text x={cell.x + 18} y="106" text-anchor="middle" fill="#806a91" font-size="27">
+            {cell.value}
+          </text>
+          <text x={cell.x + 18} y="137" text-anchor="middle" fill="#9687a0" font-size="14">
+            #{cell.origin + 1}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  <path d="M24 177H61M68 177H193M200 177H369" stroke={color} stroke-width="2"></path>
+  <text x="42" y="203" text-anchor="middle" fill="#8ca6b6" font-size="17">&lt;3</text><text
+    x="130"
+    y="203"
+    text-anchor="middle"
+    fill="#b09563"
+    font-size="17">=3</text
+  ><text x="285" y="203" text-anchor="middle" fill="#9d8bb0" font-size="17">&gt;3</text>
+</svg>

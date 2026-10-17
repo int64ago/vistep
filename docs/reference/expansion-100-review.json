@@ -1,0 +1,3202 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-17T22:00:51.098549+00:00",
+  "baselineCommit": "4779a13b2ecb9843a236d6a38ecc5e8604c0fd23",
+  "sourceBeforeAcceptanceRecord": {
+    "commit": "4779a13b2ecb9843a236d6a38ecc5e8604c0fd23",
+    "treeHash": "5dea1456308ca37c1690280c14501579b46225d60d6225ce7e008820d8a1edff",
+    "gitDiffHash": "5b166ab5978187fae2a293d48331723c37e52a4061a96a4a8bfdb3cf79460e78",
+    "fileCount": 2573,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "sourceNote": "Fingerprint taken before writing this acceptance record. Final committed source is identified by the containing Git commit. Evidence spans the listed development/static snapshots.",
+  "owner": "Codex integrator; three scene production/review workers",
+  "counts": {
+    "baselineSceneCount": 102,
+    "currentSceneCount": 202,
+    "newRegisteredScenes": 100,
+    "requestedScenes": 100,
+    "missingRequestedRegistration": [],
+    "unexpectedNewScenes": [],
+    "currentNewTimelineCount": 100,
+    "currentNewNarrationCount": 100,
+    "currentNewBilingualTrackScenes": 100,
+    "currentNewBilingualManifestScenes": 100,
+    "missingNewTracks": [],
+    "articleAndModelFiles": {
+      "model": 100,
+      "modelTests": 100,
+      "zhArticle": 100,
+      "enArticle": 100,
+      "brief": 100
+    }
+  },
+  "categoryCounts": {
+    "mechanisms": 14,
+    "electricity": 18,
+    "light-sound": 18,
+    "thermal-fluids": 16,
+    "computing": 16,
+    "math-systems": 11,
+    "nature": 7
+  },
+  "evidenceRoot": "artifacts/expansion-100-2026-10-18",
+  "phone": {
+    "width": 320,
+    "height": 844,
+    "records": 1256,
+    "scenes": 100,
+    "locales": [
+      "en",
+      "zh"
+    ],
+    "expectedBilingualChapterCases": 1256,
+    "completeBilingualChapterScenes": 100,
+    "missingChapterCases": [],
+    "bottomOverflowCases": [],
+    "missingSceneKeyframes": []
+  },
+  "desktop": {
+    "width": 1440,
+    "height": 900,
+    "records": 124,
+    "scenes": 100,
+    "locales": [
+      "en",
+      "zh"
+    ],
+    "bottomOverflowCases": [],
+    "missingSceneKeyframes": []
+  },
+  "playback": {
+    "files": 100,
+    "scenes": 100,
+    "statusCounts": {
+      "completed-with-observation-gaps": 87,
+      "completed-with-sampling-gaps": 6,
+      "completed-with-visual-findings": 6,
+      "completed-with-chapter-samples": 1
+    },
+    "completedWithEndStateObserved": 100,
+    "openingAndEndSamplesObserved": 98,
+    "missingOpeningSample": [
+      "dns-resolution",
+      "lever"
+    ],
+    "missingOrNotCompletedScenes": [],
+    "sampleCount": 440,
+    "scenesMissingSomeChapterSamples": 99,
+    "completedScenesMissingSomeChapterSamples": 99,
+    "scenesWithEveryChapterSampled": 1,
+    "actualSampleViewportCounts": {
+      "1280x720": 187,
+      "390x844": 128,
+      "1440x900": 92,
+      "320x844": 15,
+      "NonexNone": 18
+    },
+    "strictOverflowSampleCount": 181,
+    "scenesWithAnyStrictOverflow": 52,
+    "interpretation": "End-to-end clock progress with periodic observation and explicit sampling gaps, predominantly silent and often eight concurrent films. Not frame-by-frame human review, full listening, or stable physical-phone performance."
+  },
+  "transcription": {
+    "method": "Independent mlx Whisper large-v3-turbo, no language hint or reference prompt; textual checks only.",
+    "currentScriptMatchedUniqueChapterRows": 1256,
+    "bilingualCompleteScenes": 100,
+    "automaticGuardPassedRows": 1252,
+    "unadjudicatedFlagRows": [],
+    "limitation": "Current script text is matched. This aggregation does not re-encode slices to recompute audioSha256 and is not a fresh transcription or human listening test."
+  },
+  "preSynthesisFreezeRecords": {
+    "recorded": 98,
+    "separateRecordMissing": [
+      "heap-priority-queue",
+      "universal-joint"
+    ],
+    "finalScriptsAndRecordings": "complete for all 100"
+  },
+  "notRun": [
+    "Full listening in both languages: actual audio input unsupported",
+    "Frame-by-frame human watching of all 100 films",
+    "Physical-phone touch and performance measurement",
+    "Complete browser-engine matrix for all new scenes",
+    "New per-scene reduced-motion browser audit"
+  ],
+  "faultChecks": {
+    "sceneChunk404": "explicit unavailable state; article remained readable",
+    "audio404": "retry prompt and silent progression; successful recovery not established; notice can exceed short viewport",
+    "fonts404": "fallback rendering inspected"
+  },
+  "keyboardOffscreen": "Lever sample passed; keyboard-offscreen.json",
+  "automatedChecks": {
+    "commands": [
+      "pnpm scene:check",
+      "pnpm verify",
+      "pnpm build:preview"
+    ],
+    "suiteFiles": 296,
+    "suiteTests": 2075,
+    "buildCanonicalPages": 407,
+    "releaseGate": "Actions must pass on the publishing commit"
+  },
+  "publication": "Use the Actions run and live audit for the containing commit; this record is local review evidence.",
+  "scenes": [
+    {
+      "slug": "lever",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 132,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/lever-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/lever-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-visual-findings",
+        "finalTime": 132,
+        "missingChapterSamples": [
+          3
+        ],
+        "evidence": "playback/lever-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "pulley",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 135,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/pulley-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/pulley-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-visual-findings",
+        "finalTime": 135,
+        "missingChapterSamples": [
+          4
+        ],
+        "evidence": "playback/pulley-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "wheatstone-bridge",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 134.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/wheatstone-bridge-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/wheatstone-bridge-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-sampling-gaps",
+        "finalTime": 134.5,
+        "missingChapterSamples": [
+          2
+        ],
+        "evidence": "playback/wheatstone-bridge-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "rc-circuit",
+      "ownerLane": "mechanisms",
+      "chapters": 7,
+      "duration": 158,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/rc-circuit-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/rc-circuit-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-sampling-gaps",
+        "finalTime": 158,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/rc-circuit-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "inclined-plane",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 128.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/inclined-plane-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/inclined-plane-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 128.5,
+        "missingChapterSamples": [
+          1
+        ],
+        "evidence": "playback/inclined-plane-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "screw-jack",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 137,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/screw-jack-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/screw-jack-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 137,
+        "missingChapterSamples": [
+          3,
+          4
+        ],
+        "evidence": "playback/screw-jack-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "cam-follower",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 136.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/cam-follower-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/cam-follower-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 136.5,
+        "missingChapterSamples": [
+          3,
+          4
+        ],
+        "evidence": "playback/cam-follower-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "universal-joint",
+      "ownerLane": "mechanisms",
+      "chapters": 7,
+      "duration": 159,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/universal-joint-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/universal-joint-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-visual-findings",
+        "finalTime": 159,
+        "missingChapterSamples": [
+          3,
+          4
+        ],
+        "evidence": "playback/universal-joint-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "geneva-drive",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 143.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/geneva-drive-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/geneva-drive-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 143.5,
+        "missingChapterSamples": [
+          4
+        ],
+        "evidence": "playback/geneva-drive-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "ratchet",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 137.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/ratchet-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/ratchet-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 137.5,
+        "missingChapterSamples": [
+          4
+        ],
+        "evidence": "playback/ratchet-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "centrifugal-governor",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 139.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/centrifugal-governor-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/centrifugal-governor-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-visual-findings",
+        "finalTime": 139.5,
+        "missingChapterSamples": [
+          1,
+          4
+        ],
+        "evidence": "playback/centrifugal-governor-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "flywheel",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 135.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/flywheel-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/flywheel-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-visual-findings",
+        "finalTime": 135.5,
+        "missingChapterSamples": [
+          1,
+          4
+        ],
+        "evidence": "playback/flywheel-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "gyroscope",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 139,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/gyroscope-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/gyroscope-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 139,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/gyroscope-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "angular-momentum",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 138,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/angular-momentum-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/angular-momentum-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 138,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/angular-momentum-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "elastic-collision",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 137.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/elastic-collision-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/elastic-collision-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 137.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/elastic-collision-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "center-of-mass",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 140.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/center-of-mass-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/center-of-mass-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 140.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/center-of-mass-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "capacitor-fields",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 138.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/capacitor-fields-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/capacitor-fields-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 138.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/capacitor-fields-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "inductor-transient",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 145.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/inductor-transient-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/inductor-transient-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 145.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/inductor-transient-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "diode-junction",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 142,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/diode-junction-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/diode-junction-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 142,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/diode-junction-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "bjt-amplifier",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 145.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/bjt-amplifier-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/bjt-amplifier-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 145.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/bjt-amplifier-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "op-amp-feedback",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/op-amp-feedback-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/op-amp-feedback-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/op-amp-feedback-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "hall-effect",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 149,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/hall-effect-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/hall-effect-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/hall-effect-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "eddy-current-brake",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/eddy-current-brake-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/eddy-current-brake-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/eddy-current-brake-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "thermocouple",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 154.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/thermocouple-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/thermocouple-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 154.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/thermocouple-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "piezoelectricity",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 161,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/piezoelectricity-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/piezoelectricity-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 161,
+        "missingChapterSamples": [
+          1,
+          3,
+          4
+        ],
+        "evidence": "playback/piezoelectricity-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "electrolysis",
+      "ownerLane": "mechanisms",
+      "chapters": 7,
+      "duration": 158.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/electrolysis-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/electrolysis-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 158.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "evidence": "playback/electrolysis-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "fuel-cell",
+      "ownerLane": "mechanisms",
+      "chapters": 7,
+      "duration": 159.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/fuel-cell-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/fuel-cell-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 159.5,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/fuel-cell-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "three-phase-power",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 162,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/three-phase-power-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/three-phase-power-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 162,
+        "missingChapterSamples": [
+          1,
+          3,
+          4
+        ],
+        "evidence": "playback/three-phase-power-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "current-transformer",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 163.0,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/current-transformer-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/current-transformer-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 163,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/current-transformer-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "electric-fuse",
+      "ownerLane": "mechanisms",
+      "chapters": 6,
+      "duration": 163.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/electric-fuse-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/electric-fuse-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 163.5,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/electric-fuse-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "ground-fault-breaker",
+      "ownerLane": "mechanisms",
+      "chapters": 7,
+      "duration": 157.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/ground-fault-breaker-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/ground-fault-breaker-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 157.5,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/ground-fault-breaker-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "relay",
+      "ownerLane": "mechanisms",
+      "chapters": 7,
+      "duration": 161.0,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/relay-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/relay-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 161,
+        "missingChapterSamples": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "evidence": "playback/relay-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "thin-film-interference",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 145,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/thin-film-interference-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/thin-film-interference-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-visual-findings",
+        "finalTime": 145,
+        "missingChapterSamples": [
+          3
+        ],
+        "evidence": "playback/thin-film-interference-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "pinhole-camera",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/pinhole-camera-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/pinhole-camera-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-sampling-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          4
+        ],
+        "evidence": "playback/pinhole-camera-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "heat-conduction",
+      "ownerLane": "optics_thermal",
+      "chapters": 7,
+      "duration": 170,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/heat-conduction-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/heat-conduction-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 170,
+        "missingChapterSamples": [
+          1,
+          3,
+          4
+        ],
+        "evidence": "playback/heat-conduction-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "latent-heat",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 149,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/latent-heat-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/latent-heat-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/latent-heat-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "refraction",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 144,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/refraction-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/refraction-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 144,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/refraction-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "total-internal-reflection",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/total-internal-reflection-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/total-internal-reflection-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/total-internal-reflection-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "prism-dispersion",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/prism-dispersion-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/prism-dispersion-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          1,
+          4
+        ],
+        "evidence": "playback/prism-dispersion-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "diffraction-grating",
+      "ownerLane": "optics_thermal",
+      "chapters": 7,
+      "duration": 164.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/diffraction-grating-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/diffraction-grating-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 164.5,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/diffraction-grating-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "rayleigh-scattering",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 161.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/rayleigh-scattering-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/rayleigh-scattering-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 161.5,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/rayleigh-scattering-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "telescope",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 149.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/telescope-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/telescope-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149.5,
+        "missingChapterSamples": [
+          1,
+          4
+        ],
+        "evidence": "playback/telescope-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "fresnel-lens",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 153.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/fresnel-lens-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/fresnel-lens-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 153.5,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/fresnel-lens-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "retroreflector",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 151,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/retroreflector-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/retroreflector-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 151,
+        "missingChapterSamples": [
+          1,
+          4
+        ],
+        "evidence": "playback/retroreflector-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "color-mixing",
+      "ownerLane": "optics_thermal",
+      "chapters": 7,
+      "duration": 175.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/color-mixing-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/color-mixing-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 175.5,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/color-mixing-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "stereoscopic-vision",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 152.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/stereoscopic-vision-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/stereoscopic-vision-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 152.5,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/stereoscopic-vision-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "moire",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 155.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/moire-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/moire-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 155.5,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/moire-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "spherical-aberration",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 152,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/spherical-aberration-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/spherical-aberration-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 152,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/spherical-aberration-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "mirage",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 157,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/mirage-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/mirage-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 157,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/mirage-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "acoustic-reflection",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 154,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/acoustic-reflection-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/acoustic-reflection-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 154,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/acoustic-reflection-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "organ-pipe",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 151,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/organ-pipe-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/organ-pipe-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 151,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/organ-pipe-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "helmholtz-resonator",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 149.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/helmholtz-resonator-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/helmholtz-resonator-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149.5,
+        "missingChapterSamples": [
+          2,
+          3
+        ],
+        "evidence": "playback/helmholtz-resonator-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "heat-radiation",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 150,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/heat-radiation-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/heat-radiation-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/heat-radiation-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "thermal-expansion",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 148,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/thermal-expansion-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/thermal-expansion-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 148,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/thermal-expansion-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "ideal-gas",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 150.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/ideal-gas-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/ideal-gas-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150.5,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/ideal-gas-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "adiabatic-compression",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 154.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/adiabatic-compression-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/adiabatic-compression-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 154.5,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/adiabatic-compression-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "buoyancy",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 149,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/buoyancy-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/buoyancy-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/buoyancy-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "hydrostatic-pressure",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/hydrostatic-pressure-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/hydrostatic-pressure-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          2,
+          4
+        ],
+        "evidence": "playback/hydrostatic-pressure-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "venturi-meter",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 149,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/venturi-meter-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/venturi-meter-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/venturi-meter-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "stokes-drag",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 152,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/stokes-drag-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/stokes-drag-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 152,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/stokes-drag-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "viscosity-layers",
+      "ownerLane": "optics_thermal",
+      "chapters": 7,
+      "duration": 167,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/viscosity-layers-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/viscosity-layers-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 167,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/viscosity-layers-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "vortex-ring",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 146.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/vortex-ring-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/vortex-ring-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 146.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/vortex-ring-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "surface-waves",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 145.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/surface-waves-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/surface-waves-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 145.5,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/surface-waves-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "evaporative-cooling",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 151,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/evaporative-cooling-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/evaporative-cooling-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 151,
+        "missingChapterSamples": [
+          1,
+          3,
+          4
+        ],
+        "evidence": "playback/evaporative-cooling-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "dew-point",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 157.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/dew-point-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/dew-point-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 157.5,
+        "missingChapterSamples": [
+          1,
+          3,
+          4
+        ],
+        "evidence": "playback/dew-point-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "pressure-cooker",
+      "ownerLane": "optics_thermal",
+      "chapters": 6,
+      "duration": 148,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/pressure-cooker-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/pressure-cooker-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 148,
+        "missingChapterSamples": [
+          1,
+          3,
+          4
+        ],
+        "evidence": "playback/pressure-cooker-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "dns-resolution",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 133.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/dns-resolution-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/dns-resolution-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-sampling-gaps",
+        "finalTime": 133.5,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/dns-resolution-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "dijkstra",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 148.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/dijkstra-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/dijkstra-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-sampling-gaps",
+        "finalTime": 148.5,
+        "missingChapterSamples": [
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/dijkstra-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "kepler-orbits",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 140,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/kepler-orbits-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/kepler-orbits-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-chapter-samples",
+        "finalTime": 140,
+        "missingChapterSamples": [],
+        "evidence": "playback/kepler-orbits-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "bayes-updating",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 136.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/bayes-updating-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/bayes-updating-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-sampling-gaps",
+        "finalTime": 136.5,
+        "missingChapterSamples": [
+          1
+        ],
+        "evidence": "playback/bayes-updating-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "binary-search",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 128.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/binary-search-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/binary-search-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 128.5,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/binary-search-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "merge-sort",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 137,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/merge-sort-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/merge-sort-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 137,
+        "missingChapterSamples": [
+          1,
+          2
+        ],
+        "evidence": "playback/merge-sort-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "quicksort",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 154.5,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/quicksort-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/quicksort-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 154.3,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/quicksort-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "heap-priority-queue",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 129,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/heap-priority-queue-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/heap-priority-queue-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 129,
+        "missingChapterSamples": [
+          1,
+          2
+        ],
+        "evidence": "playback/heap-priority-queue-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "union-find",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 128,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/union-find-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/union-find-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 128,
+        "missingChapterSamples": [
+          1,
+          2
+        ],
+        "evidence": "playback/union-find-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "topological-sort",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 132,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/topological-sort-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/topological-sort-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 132,
+        "missingChapterSamples": [
+          1,
+          2
+        ],
+        "evidence": "playback/topological-sort-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "astar-search",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 147,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/astar-search-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/astar-search-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 147,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/astar-search-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "max-flow",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 138,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/max-flow-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/max-flow-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 138,
+        "missingChapterSamples": [
+          1,
+          2
+        ],
+        "evidence": "playback/max-flow-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "database-transactions",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 132,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/database-transactions-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/database-transactions-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 132,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/database-transactions-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "write-ahead-log",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 132,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/write-ahead-log-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/write-ahead-log-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 132,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/write-ahead-log-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "raft-consensus",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 159,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/raft-consensus-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/raft-consensus-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 159,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/raft-consensus-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "merkle-tree",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 150,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/merkle-tree-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/merkle-tree-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150,
+        "missingChapterSamples": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "evidence": "playback/merkle-tree-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "digital-signature",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 150,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/digital-signature-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/digital-signature-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/digital-signature-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "diffie-hellman",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 147,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/diffie-hellman-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/diffie-hellman-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 147,
+        "missingChapterSamples": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "evidence": "playback/diffie-hellman-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "run-length-encoding",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 132,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/run-length-encoding-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/run-length-encoding-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 132,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/run-length-encoding-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "convolution",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 150,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/convolution-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/convolution-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/convolution-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "gradient-descent",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 132,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/gradient-descent-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/gradient-descent-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 132,
+        "missingChapterSamples": [
+          1,
+          3
+        ],
+        "evidence": "playback/gradient-descent-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "principal-components",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 149,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/principal-components-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/principal-components-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/principal-components-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "markov-chain",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 150,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/markov-chain-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/markov-chain-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/markov-chain-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "monte-carlo",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 153,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/monte-carlo-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/monte-carlo-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 153,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/monte-carlo-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "central-limit-theorem",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 149,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/central-limit-theorem-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/central-limit-theorem-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 149,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/central-limit-theorem-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "random-walk",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 151,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/random-walk-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/random-walk-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 151,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/random-walk-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "growth-logistic",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 150,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/growth-logistic-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/growth-logistic-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 150,
+        "missingChapterSamples": [
+          1,
+          3,
+          5
+        ],
+        "evidence": "playback/growth-logistic-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "voronoi",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 154,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/voronoi-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/voronoi-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 154,
+        "missingChapterSamples": [
+          2,
+          3,
+          5
+        ],
+        "evidence": "playback/voronoi-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "earth-day",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 139,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/earth-day-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/earth-day-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 139,
+        "missingChapterSamples": [
+          1,
+          2,
+          4
+        ],
+        "evidence": "playback/earth-day-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "orbital-transfer",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 158,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/orbital-transfer-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/orbital-transfer-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 158,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/orbital-transfer-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "lunar-eclipse",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 156,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/lunar-eclipse-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/lunar-eclipse-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 156,
+        "missingChapterSamples": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "evidence": "playback/lunar-eclipse-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "stellar-parallax",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 141,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/stellar-parallax-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/stellar-parallax-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 141,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/stellar-parallax-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "plate-boundaries",
+      "ownerLane": "information_nature_math",
+      "chapters": 6,
+      "duration": 141,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/plate-boundaries-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/plate-boundaries-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 141,
+        "missingChapterSamples": [
+          2,
+          3,
+          4
+        ],
+        "evidence": "playback/plate-boundaries-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    },
+    {
+      "slug": "greenhouse-effect",
+      "ownerLane": "information_nature_math",
+      "chapters": 7,
+      "duration": 157,
+      "modelReview": "root source/model inspection and regression suite",
+      "phoneLayout": {
+        "status": "passed",
+        "condition": "320x844, zh/en chapter midpoints",
+        "evidencePattern": "layout-sweep/greenhouse-effect-{locale}-320-chapter-{number}.json",
+        "laterCorrections": "final-keyframes and previs may supersede older same-condition records"
+      },
+      "desktopKeyframe": {
+        "status": "passed",
+        "condition": "1440x900 selected chapter(s), not every desktop chapter",
+        "evidencePattern": "final-keyframes/greenhouse-effect-{locale}-1440-chapter-{number}.json or previs equivalent"
+      },
+      "playback": {
+        "status": "completed-with-observation-gaps",
+        "finalTime": 157,
+        "missingChapterSamples": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "evidence": "playback/greenhouse-effect-zh.json"
+      },
+      "speech": "zh/en recorded and independently transcribed",
+      "listening": "not-run",
+      "physicalPhonePerformance": "not-run"
+    }
+  ]
+}

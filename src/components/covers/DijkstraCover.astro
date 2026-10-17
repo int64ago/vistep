@@ -1,0 +1,53 @@
+---
+import { DIJKSTRA_NODES, dijkstraEdges, dijkstraPath, dijkstraTrace } from '../../models/dijkstra';
+const { color = '#8da383' } = Astro.props;
+const edges = dijkstraEdges(),
+  final = dijkstraTrace(
+    DIJKSTRA_NODES.map((n) => n.id),
+    edges,
+    'S',
+  ).at(-1)!;
+const route = dijkstraPath(final, 'T');
+const node = (key: string) => DIJKSTRA_NODES.find((n) => n.id === key)!;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <g transform="translate(38 7) scale(1 .76)">
+    {
+      edges.map((e) => {
+        const a = node(e.from),
+          b = node(e.to),
+          active = route.some((n, i) => n === e.from && route[i + 1] === e.to);
+        return (
+          <path
+            d={`M${a.x} ${a.y}L${b.x} ${b.y}`}
+            stroke={active ? '#b89557' : color}
+            stroke-width={active ? 5 : 2}
+            opacity={active ? 1 : 0.45}
+          />
+        );
+      })
+    }
+    {
+      DIJKSTRA_NODES.map((n) => (
+        <g>
+          <>
+            <circle
+              cx={n.x}
+              cy={n.y}
+              r="20"
+              fill={route.includes(n.id) ? '#c2cfb3' : '#e3e9d9'}
+              stroke={color}
+            />
+            <text x={n.x} y={n.y + 7} text-anchor="middle" fill="#55714f" font-size="20">
+              {n.id}
+            </text>
+          </>
+        </g>
+      ))
+    }
+  </g>
+  <text x="200" y="223" text-anchor="middle" fill="#8a764d" font-size="16" font-family="monospace"
+    >{route.join(' → ')} = {final.distance.T}</text
+  >
+</svg>

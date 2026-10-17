@@ -1,0 +1,27 @@
+<a id="understand"></a>
+
+## Peak direction and peak width differ
+
+Neighbouring slits have path difference d sinθ. Whole-wavelength differences align their centre contributions into principal maxima. Adding slits without changing centre spacing leaves those directions fixed, but brings adjacent zeros closer and narrows the peaks.
+
+The film compares two and many slits, then sums the field at one selected direction as a head-to-tail phasor chain. At a maximum the vectors align; slightly off it they turn and can close. Reinforcement comes from superposition, rather than a grating passing only a few geometric rays.
+
+<a id="try"></a>
+
+## Vary count, spacing and width separately
+
+Change countN, centre spacingd, slit widtha and observation sine. The grating drawing uses a fixed scale so more slits occupy more total width. Each curve is normalized to its own central peak of1. Equal plotted height does not mean equal fixed-exposure intensity: with unchanged illumination per slit, the raw central intensity scales asN².
+
+<a id="deeper"></a>
+
+## The single-slit envelope multiplies the multi-slit factor
+
+<div className="formula">
+  Principal orders: d sinθ = mλ
+  <br />I / Icentral = [sinβ / β]² · |Σ exp(ijφ) / N|²
+  <br />β = πa sinθ/λ; φ = 2πd sinθ/λ
+</div>
+
+The model uses coherent equal-amplitude, uniformly illuminated rectangular slits in scalar Fraunhofer diffraction. Internal lengths are nanometres; larger spacing and widths are displayed in micrometres. The horizontal axis is sine of angle, not equal spacing on a flat screen. Colours identify sampled wavelengths rather than calibrated perception.
+
+Only orders with|mλ/d| no greater than1 have propagating directions. Even these need not be bright. Witha=d/2, the second principal order coincides with a single-slit envelope zero and is missing. Oblique incidence, blaze profiles, polarization efficiency and near-field propagation are omitted; this is not a complete industrial-grating efficiency prediction.

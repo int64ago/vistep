@@ -1,0 +1,63 @@
+---
+import { genevaState } from '../../models/geneva-drive';
+const s = genevaState(-0.25),
+  id = 'geneva-cover';
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <defs
+    ><mask id={`${id}-wheel`} maskUnits="userSpaceOnUse" x="-1.2" y="-1.2" width="2.4" height="2.4"
+      ><circle r={s.outer} fill="white"></circle>{
+        Array.from({ length: s.slots }, (_, i) => {
+          const a = Math.PI + i * s.step,
+            b = a - s.halfStep;
+          return (
+            <g>
+              <>
+                <rect
+                  x={s.slotInner}
+                  y={-s.slotHalfWidth}
+                  width="1.2"
+                  height={s.slotHalfWidth * 2}
+                  fill="black"
+                  transform={`rotate(${(a * 180) / Math.PI})`}
+                />
+                <circle cx={Math.cos(b)} cy={Math.sin(b)} r={s.lockRadius} fill="black" />
+              </>
+            </g>
+          );
+        })
+      }</mask
+    ><mask id={`${id}-driver`} maskUnits="userSpaceOnUse" x="-1" y="-1" width="2" height="2"
+      ><circle r={s.lockRadius} fill="white"></circle><circle cx="1" r={s.reliefRadius} fill="black"
+      ></circle></mask
+    ></defs
+  >
+  <g transform="translate(140 110) scale(108 -108)"
+    ><circle r={s.crank} stroke="#cad4c3" stroke-width=".012" stroke-dasharray=".04 .05"
+    ></circle><path
+      d={`M0 0L${s.pin.x} ${s.pin.y}`}
+      stroke="#9fa9a2"
+      stroke-width=".14"
+      stroke-linecap="round"></path><g transform={`rotate(${(s.input * 180) / Math.PI})`}
+      ><circle r={s.lockRadius} fill="#c3a372" mask={`url(#${id}-driver)`}></circle></g
+    ><g transform={`translate(1 0) rotate(${(s.output * 180) / Math.PI})`}
+      ><circle r={s.outer} fill="#83a99b" mask={`url(#${id}-wheel)`}></circle><circle
+        r=".15"
+        fill="#dfe6d8"></circle><path d="M0 0H.13" stroke="#b58c51" stroke-width=".035"></path></g
+    ><circle r=".1" fill="#e7eadf"></circle><circle r=".04" fill="#9a835f"></circle><circle
+      cx="1"
+      r=".04"
+      fill="#648276"></circle><circle
+      cx={s.pin.x}
+      cy={s.pin.y}
+      r={s.pinRadius}
+      fill="#fff1af"
+      stroke="#ad8e58"
+      stroke-width=".012"></circle></g
+  ><path d="M80 208H320" stroke="#e1e6d7" stroke-width="8" stroke-linecap="round"></path><path
+    d="M170 208H230"
+    stroke="#c6a26c"
+    stroke-width="8"
+    stroke-linecap="round"></path>
+</svg>

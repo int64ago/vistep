@@ -1,0 +1,122 @@
+.hall-film {
+  max-width: 740px;
+  margin: auto;
+  color: #7b866a;
+}
+.hall-state {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 8px 4px;
+  color: #888666;
+}
+.hall-sample {
+  display: block;
+  width: 100%;
+  max-width: 470px;
+  margin: auto;
+}
+.hall-sample text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7d8a6e;
+}
+.hall-meter {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 18px;
+  font-size: 16px;
+  margin: 3px 8px 8px;
+}
+.hall-meter > b {
+  font-size: 30px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.hall-meter small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.hall-readings {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  font-size: 16px;
+  margin: 6px 10px;
+}
+.hall-readings span {
+  display: grid;
+  gap: 2px;
+}
+.hall-readings b {
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.hall-balance {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+  margin: 8px 10px;
+}
+.hall-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.hall-controls > .segmented {
+  grid-column: 1/-1;
+}
+.hall-notes {
+  max-width: 600px;
+  font-size: 16px;
+  margin: auto;
+  padding: 0 12px;
+}
+.hall-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.hall-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.hall-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .hall-sample {
+    max-width: 340px;
+  }
+  .hall-sample text {
+    font-size: 21px;
+  }
+  .hall-state,
+  .hall-balance {
+    text-align: left;
+  }
+  .hall-meter {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .hall-meter > b {
+    font-size: 28px;
+  }
+  .hall-readings {
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .hall-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .hall-film[data-watch='true'] .hall-notes {
+    display: none;
+  }
+}

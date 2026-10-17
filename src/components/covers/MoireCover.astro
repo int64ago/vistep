@@ -1,0 +1,15 @@
+---
+import { moireSetup, moireAt } from '../../models/moire';
+const s = moireSetup(),
+  strips = Array.from({ length: 300 }, (_, i) => {
+    const v = moireAt(((i + 0.5) / 300 - 0.5) * 90, 0, s).product,
+      gray = Math.round(45 + 195 * v);
+    return { x: (i * 400) / 300, fill: `rgb(${gray},${gray},${gray})` };
+  });
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#e9eded"></rect>{
+    strips.map((p) => <rect x={p.x} y="28" width={400 / 300 + 0.05} height="174" fill={p.fill} />)
+  }</svg
+>

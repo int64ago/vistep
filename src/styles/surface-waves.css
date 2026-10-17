@@ -1,0 +1,126 @@
+.surface-study {
+  max-width: 980px;
+  margin: auto;
+  color: #e4ece8;
+  background: linear-gradient(150deg, #253d4e, #1c303d);
+  padding: 18px 22px;
+  border-radius: 28px;
+  font-variant-numeric: tabular-nums;
+}
+.surface-study header {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.4;
+  min-height: 26px;
+}
+.surface-section {
+  display: block;
+  width: 100%;
+  height: 290px;
+  overflow: visible;
+}
+.surface-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  color: #bfd2d2;
+  line-height: 1.4;
+}
+.surface-velocities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+  text-align: center;
+  gap: 12px;
+}
+.surface-velocities > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.surface-velocities b {
+  font-size: 25px;
+  color: #e0c38d;
+  font-weight: 500;
+}
+.surface-velocities span,
+.surface-scale {
+  font-size: 16px;
+}
+.surface-scale {
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #bdd0cf;
+}
+.surface-study details {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.surface-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.surface-study p {
+  margin: 0;
+}
+.surface-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+.surface-controls .control,
+.surface-controls output {
+  color: #e4ece8;
+  font-size: 16px;
+}
+.surface-controls button {
+  min-height: 44px;
+  border: 1px solid #8eaeb566;
+  background: #365367;
+  color: #edf2ed;
+  border-radius: 16px;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+@media (max-width: 600px) {
+  .surface-study {
+    padding: 12px 10px;
+    border-radius: 22px;
+  }
+  .surface-study header {
+    font-size: 16px;
+    min-height: 45px;
+  }
+  .surface-section {
+    height: 222px;
+  }
+  .surface-legend {
+    flex-direction: column;
+    font-size: 16px;
+    gap: 2px;
+    line-height: 1.3;
+  }
+  .surface-velocities {
+    margin-top: 8px;
+    gap: 6px;
+  }
+  .surface-velocities b {
+    font-size: 22px;
+  }
+  .surface-velocities span {
+    font-size: 16px;
+  }
+  .surface-scale {
+    margin-top: 6px;
+    font-size: 16px;
+  }
+  .surface-controls {
+    grid-template-columns: 1fr;
+  }
+}

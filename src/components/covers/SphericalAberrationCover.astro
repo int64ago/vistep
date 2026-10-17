@@ -1,0 +1,31 @@
+---
+import { aberrationRay, aberrationSurface } from '../../models/spherical-aberration';
+const scale = 2.25,
+  x = (z: number) => 300 + z * scale,
+  y = (r: number) => 115 - r * scale,
+  profile = Array.from({ length: 81 }, (_, i) => {
+    const p = aberrationSurface(-40 + i);
+    return `${x(p.z)},${y(p.r)}`;
+  }).join(' ');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#2c474a"></rect><polyline
+    points={profile}
+    fill="none"
+    stroke="#b3c5bb"
+    stroke-width="6"></polyline>{
+    [-40, -30, -20, -10, 10, 20, 30, 40].map((r) => {
+      const ray = aberrationRay(Math.abs(r), r < 0 ? Math.PI : 0),
+        end = ray.at(-68);
+      return (
+        <polyline
+          points={`${x(-68)},${y(r)} ${x(ray.hit.z)},${y(ray.hit.x)} ${x(-68)},${y(end.x)}`}
+          fill="none"
+          stroke={Math.abs(r) === 40 ? '#e5b274' : '#b9d2c0'}
+          stroke-width="1.4"
+        />
+      );
+    })
+  }</svg
+>

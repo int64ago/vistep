@@ -1,0 +1,26 @@
+<h2 id="understand">Merge adjacent equal bytes in traversal order</h2>
+
+The8×8 pixels are traversed row by row, initially storing one byte per color index. Four horizontal bands become `16×0,16×1,16×2,16×3`. Adjacency means neighbors in the byte stream, not merely nearby regions in the picture.
+
+The complete teaching format R1 has header bytes `52 31`, then runs containing a positive unsigned LEB128 count and one value byte. Counts use shortest encodings. Four two-byte runs plus the header occupy10 bytes, versus64 for the basic byte-per-pixel representation.
+
+<h2 id="try">Decoding must reproduce the exact bytes</h2>
+
+Decode by repeating each value its stated count. Exploration changes bands, thin vertical stripes, checkerboard or flat color. A single-coordinate perturbation can split a long run. Coordinates use full-size controls rather than undersized pixel touch targets.
+
+Thin vertical stripes form64 one-byte runs in this row order, expanding R1 to130 bytes. Checkerboard row boundaries can join equal values: the actual result is57 runs and116 bytes. Counting visible cells alone is not a reliable size calculation.
+
+<h2 id="deeper">Format and baseline determine size</h2>
+
+<details>
+<summary>The127/128 boundary and scope</summary>
+
+A run of127 zeros uses count `7f` and four R1 bytes total. At128, the count becomes `80 01`, requiring five bytes. Seven low bits carry value and the high bit signals another count byte. One more input byte can therefore increase format overhead too.
+
+R1 is a custom teaching format, not BMP's escape rules, PNG, JPEG or a general compressor. The baseline is one byte per pixel, without two-bit packing; palette and dimensions are agreed separately. Another baseline changes the comparison, so no optimality claim follows.
+
+Runs operate on bytes, not Unicode characters. Repeated 哈 consists of a three-byte UTF-8 pattern and need not contain adjacent equal bytes. The decoder limits expansion to4096 bytes and rejects truncation, zero/nonshortest counts and overflow. A valid stream includes no integrity checksum.
+
+</details>
+
+Sources: [Microsoft, Bitmap Compression run modes](https://learn.microsoft.com/en-us/windows/win32/gdi/bitmap-compression), and [WebAssembly unsigned LEB128 encoding](https://webassembly.github.io/spec/core/binary/values.html#integers). R1 borrows methods, not full-format compatibility.

@@ -1,0 +1,39 @@
+---
+import { cornerTrace, cornerProjection, type CornerVector } from '../../models/retroreflector';
+const s = cornerTrace(),
+  O: CornerVector = [0, 0, 0],
+  X: CornerVector = [1, 0, 0],
+  Y: CornerVector = [0, 1, 0],
+  Z: CornerVector = [0, 0, 1];
+const xy = (p: CornerVector) => {
+  const q = cornerProjection(p);
+  return `${260 + q.x * 120},${122 - q.y * 120}`;
+};
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#284b4d"></rect>{
+    [
+      [O, Y, Z],
+      [O, Z, X],
+      [O, X, Y],
+    ].map((face, i) => (
+      <polygon
+        points={face.map(xy).join(' ')}
+        fill={['#456e70', '#557d76', '#6a8a79'][i]}
+        stroke="#d6dfcd"
+        stroke-width="1"
+      />
+    ))
+  }<polygon points={[X, Y, Z].map(xy).join(' ')} stroke="#e0d9b6" stroke-dasharray="3 4"></polygon>{
+    s.points
+      .slice(0, -1)
+      .map((p, i) => (
+        <path
+          d={`M${xy(p)}L${xy(s.points[i + 1])}`}
+          stroke={i === 0 ? '#ffbe6d' : i === s.points.length - 2 ? '#77e0ef' : '#fff2c4'}
+          stroke-width="2.5"
+        />
+      ))
+  }</svg
+>

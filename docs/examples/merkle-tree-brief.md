@@ -1,0 +1,15 @@
+# Merkle tree — author brief
+
+Misconceptions: a digest decrypts data; an inclusion proof requires every payload; a self-consistent replacement root authenticates itself; shortened labels are the actual hash; inclusion proves append-only history. Prerequisite: ordered pairs and deterministic hashing. Different from hash scene: compose real digest bytes into a tree and transmit only sibling witnesses, rather than inspect compression rounds.
+
+Art direction: pale plum digest seals on a restrained branching letterpress. Geometry uses ranges for horizontal placement, but all labels are HTML at16–20px, not SVG text that shrinks. Selected path stays plum, required siblings turn parchment, altered ancestors blush. Phone uses205px height and54px leaf seals with clipped exploratory long payloads; the actual input remains fully visible. Desktop tree fixed260px/max620px. Proof/rebuild/comparison strips replace one another by chapter, keeping stage roughly350px and complete-player740px budget pending browser acceptance.
+
+| Claim                                                         | Primary source / condition                                                                                         |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 00 leaf domain,01 ordered raw-child hash domain; uneven split | [RFC9162§2.1](https://www.rfc-editor.org/rfc/rfc9162.html#section-2.1), SHA-256 chosen                             |
+| Sibling inclusion path reconstructs a known root              | Same RFC§2.1.3; index, tree size and path shape checked                                                            |
+| Root needs external authentication; inclusion≠consistency     | RFC trust structure and separate proof types; collision-resistance assumption, no absolute collision impossibility |
+
+Seven shots, planned150s: leaf hashing from four words; pair hashes with ordered domains; root commitment; C proof D+AB only; two ordered recombination steps; gamma→Gamma changes only three ancestors and fails original root; replacing root restores self-consistency but not trust. Exploration changes selected leaf/payload/root target, so verdict is actual full-hash comparison. No encryption, consensus or authenticity theorem claimed.
+
+Independent benchmark: Node crypto recursive oracle for sizes0–32 including Unicode and uneven trees; every leaf proof for1–32; exact changed-ancestor set; wrong index/path, missing hashes and byte limits; raw-child bytes and reversed-order checks; untrusted replacement-root counterexample. Four tests pass. Reuses existing pure SHA-256 digest, cached trees; no async crypto resource or independent clock. Author checks are not independent review. Browser, full watch, bilingual recordings/listening and device measurements pending. Computing age12; related hash,bloom-filter,network; suggested reverse link from hash from one digest to membership witness. Speech pending shot acceptance.

@@ -1,0 +1,26 @@
+<h2 id="understand">Public exchanges, matching local secrets</h2>
+
+Alice keeps a private and sends `A=g^a mod p`; Bob keeps b private and sends `B=g^b mod p`. Alice computes `B^a`, Bob computes `A^b`, both equal to `g^(ab) mod p`. The tiny prime-order subgroup uses p23,q11,g2. Default exponents6,7 give public values18,13 and shared value6.
+
+These parameters are **entirely insecure**. Not directly transmitting an exponent does not establish computational hardness: only ten candidates recover the private exponent in this example.
+
+<h2 id="try">Change an exponent, keep agreement</h2>
+
+Exploration independently changes both private exponents. Changing Alice alters A, what Bob receives and his calculation. With no substitution, both results still agree. Received values are checked for range and nontrivial subgroup membership.
+
+The shared number is not yet an application key or encrypted message. Real protocols need standard secure groups, key derivation, session-context binding and peer authentication. This scene simulates neither a KDF, encryption nor network latency.
+
+<h2 id="deeper">An active intermediary can establish two secrets</h2>
+
+<details>
+<summary>Agreement alone does not authenticate identity</summary>
+
+An intermediary sends its own public values8 and16 to Alice and Bob. Alice derives13, Bob18. Without learning a or b, the intermediary computes both results from the intercepted public values. Each endpoint thinks it negotiated with the other but actually shares with the intermediary.
+
+Some teaching inputs can make endpoint results coincide. That does not repair authentication: the intermediary's ability to compute each endpoint secret already defeats end-to-end confidentiality. Different endpoint values are not a necessary definition of the attack.
+
+Secure groups aim to resist passive exponent recovery, but exponent exchange alone does not prevent active substitution. Certificates, signatures or another reviewed authentication protocol must bind identity to this exchange. RFC2631 is cited for historical algebra and public-value validation, not as a recommendation to copy its old KDF or algorithm choices.
+
+</details>
+
+Source: [RFC2631 sections2.1.1 and2.1.5](https://www.rfc-editor.org/rfc/rfc2631.html), shared-secret generation and public-key validation.

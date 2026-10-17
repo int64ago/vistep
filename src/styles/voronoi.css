@@ -1,0 +1,242 @@
+.voronoi-study {
+  max-width: 980px;
+  margin: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: #e9e6de;
+  color: #5d5e43;
+  font-size: 16px;
+}
+.voronoi-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  max-width: 620px;
+  margin: auto;
+}
+.voronoi-study header > span {
+  font: 12px monospace;
+  letter-spacing: 0.04em;
+  color: #9c9b86;
+}
+.voronoi-study header > b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.voronoi-map {
+  position: relative;
+  aspect-ratio: 360/260;
+  max-width: 440px;
+  margin: 22px auto 0;
+  background: #edece3;
+  border-radius: 17px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.voronoi-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.voronoi-map polygon {
+  stroke: #fbfaf4;
+  stroke-width: 1.5;
+}
+.voronoi-distance {
+  fill: none;
+  stroke: #c0bdab;
+  stroke-width: 1.3;
+  stroke-dasharray: 5 5;
+}
+.voronoi-distance[data-nearest='true'] {
+  stroke: #71825c;
+  stroke-width: 2;
+}
+.voronoi-equal {
+  fill: none;
+  stroke: #b19771;
+  stroke-width: 1.3;
+  stroke-dasharray: 4 4;
+}
+.voronoi-site {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border: 1px solid #9c9a7d;
+  border-radius: 50%;
+  font: 400 17px monospace;
+  color: #4d543a;
+  cursor: pointer;
+  box-shadow: 0 2px 7px #66654212;
+  padding: 0;
+}
+.voronoi-site:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.voronoi-site[aria-pressed='true'] {
+  outline: 2px solid #6a7954;
+  outline-offset: 2px;
+}
+.voronoi-query {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font: 400 16px monospace;
+  background: #665b45;
+  color: #fff8e8;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  pointer-events: none;
+}
+.voronoi-measures {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 12px;
+  max-width: 480px;
+  margin: 17px auto 0;
+}
+.voronoi-measures > span {
+  text-align: center;
+  line-height: 1.4;
+  color: #73715c;
+}
+.voronoi-measures b {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.voronoi-measures [data-nearest='true'] {
+  color: #465b36;
+}
+.voronoi-owner {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.4;
+  margin: 13px 0 0;
+  color: #4e5d3f;
+}
+.voronoi-note {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+  margin: 8px 0 0;
+}
+.voronoi-wall {
+  stroke: #817057;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.voronoi-route {
+  fill: none;
+  stroke: #b28a73;
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+.voronoi-route[data-best='true'] {
+  stroke: #5f8050;
+  stroke-width: 3;
+  stroke-dasharray: none;
+}
+.voronoi-routes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 6px 12px;
+  max-width: 440px;
+  margin: 15px auto 0;
+  text-align: center;
+  font-size: 16px;
+}
+.voronoi-routes > div {
+  display: contents;
+}
+.voronoi-routes b {
+  font-weight: 400;
+}
+.voronoi-routes [data-best='true'] > span:last-child {
+  color: #3e6335;
+  font-weight: 600;
+}
+.voronoi-controls {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+.voronoi-controls label {
+  font-size: 16px;
+}
+.voronoi-controls input {
+  width: 100%;
+  display: block;
+  min-height: 44px;
+}
+.voronoi-controls button {
+  min-height: 44px;
+  border: 1px solid #b7b59a;
+  border-radius: 12px;
+  background: #f4f1e6;
+  color: inherit;
+  font: inherit;
+  padding: 8px 12px;
+}
+.voronoi-controls button[aria-pressed='true'] {
+  background: #d8dfc6;
+}
+.voronoi-choose {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.voronoi-study summary {
+  min-height: 44px;
+  padding-top: 16px;
+  cursor: pointer;
+}
+.voronoi-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .voronoi-study {
+    padding: 14px 12px;
+  }
+  .voronoi-study header {
+    display: block;
+  }
+  .voronoi-study header > span {
+    font-size: 11px;
+  }
+  .voronoi-study header > b {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .voronoi-map {
+    margin-top: 14px;
+    border-radius: 13px;
+  }
+  .voronoi-measures {
+    gap: 7px;
+    margin-top: 12px;
+  }
+  .voronoi-measures b {
+    font-size: 19px;
+  }
+  .voronoi-owner {
+    font-size: 16px;
+    margin-top: 9px;
+  }
+  .voronoi-routes {
+    margin-top: 11px;
+    gap: 5px 8px;
+  }
+  .voronoi-study[data-watch='true'] details {
+    display: none;
+  }
+}

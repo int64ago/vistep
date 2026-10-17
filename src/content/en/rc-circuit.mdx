@@ -1,0 +1,42 @@
+<h2 id="understand">Why voltage rises while current falls</h2>
+
+Connect an empty capacitor to a 5 V supply through a resistor. Initially the capacitor voltage is zero, leaving the entire supply voltage across the resistor. With the default 1 kΩ resistor, the initial current is 5 mA, not infinity.
+
+That current builds equal and opposite charges on the plates. As capacitor voltage rises, less voltage remains across the resistor and current decreases. **Current describes how quickly charge is changing; voltage describes the state already established.** They need not rise together.
+
+The time constant is τ = RC. With the default 1 mF capacitor, it is 1 s. After one time constant, voltage has reached about 63.2% of its final value. After five, it reaches about 99.3%; the ideal exponential never snaps exactly to its limit.
+
+For discharge, the supply is removed and the capacitor closes a loop through the resistor. Capacitor voltage stays continuous, while current reverses. Energy stored in the electric field becomes resistor heat.
+
+<h2 id="try">Hold the observation time fixed</h2>
+
+- Choose charging from empty and hold the sample time at 1 s. Increasing resistance lowers the voltage reached by that time and also lowers the initial current.
+- Restore resistance and increase capacitance. The rise becomes slower, but the initial current still depends only on the supply and resistor.
+- Move the time slider to zero and compare charging with discharging. Each choice defines a fresh initial condition, rather than continuing the previous experiment.
+- Compare source energy, field energy and heat in the final chapter. In discharge exploration, the left-hand energy source becomes the capacitor's initial stored energy.
+
+The plot uses physical seconds. The film slows a few seconds of circuit behavior for observation; the player's elapsed minutes are not the circuit time constant.
+
+<h2 id="deeper">An exact solution with one continuous state</h2>
+
+<details>
+<summary>Voltage, current and charge</summary>
+
+Let the initial capacitor voltage be V0 and the constant source voltage be Vs. Charging uses V0 = 0 and Vs = 5 V; discharging uses V0 = 5 V and Vs = 0.
+
+<div className="formula">VC(t) = Vs + (V0 − Vs) exp(−t / RC)</div>
+
+<div className="formula">I(t) = (Vs − VC(t)) / R; Q(t) = C VC(t)</div>
+
+Positive current is the charging direction. A negative reading indicates reversal, not a negative resistance. Samples are evaluated from the exact solution, so seeking and continuous playback agree. Plate symbols encode stored charge; they do not depict particles crossing the insulating gap.
+
+</details>
+
+<details>
+<summary>Why not all source energy remains stored</summary>
+
+Capacitor energy is C VC²/2, while the resistor dissipates power I²R. Charging an empty ideal capacitor through a positive resistor from a constant voltage source transfers CVs² from the source in the long-time limit. Half remains stored and half becomes heat. Resistance changes the timescale, but not that final ideal energy division.
+
+The model omits leakage, equivalent series resistance, inductance, dielectric absorption, current limiting and breakdown. It rejects the singular R = 0 connection. This is a linear lumped-circuit explanation, not a component-rating guide.
+
+</details>

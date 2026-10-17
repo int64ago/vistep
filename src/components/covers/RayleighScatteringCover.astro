@@ -1,0 +1,36 @@
+---
+import { rayleighSpectrum, rayleighColor } from '../../models/rayleigh-scattering';
+const s = rayleighSpectrum({ column: 3 }),
+  x = (w: number) => 28 + (w - 380) * 0.85,
+  y = (v: number) => 175 - v * 110;
+const trace = (key: 'source' | 'direct') =>
+  s.map((p) => `${x(p.wavelength)},${y(p[key])}`).join(' ');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#263748"></rect><polygon
+    points={`28,175 ${trace('direct')} 368,175`}
+    fill="#cda17c99"></polygon><polygon
+    points={`${trace('source')} ${s
+      .slice()
+      .reverse()
+      .map((p) => `${x(p.wavelength)},${y(p.direct)}`)
+      .join(' ')}`}
+    fill="#82acd199"></polygon><polyline
+    points={trace('source')}
+    stroke="#ecdfc4"
+    stroke-width="2"
+    fill="none"></polyline><rect
+    x="120"
+    y="190"
+    width="70"
+    height="14"
+    rx="7"
+    fill={rayleighColor(s, 'direct')}></rect><rect
+    x="210"
+    y="190"
+    width="70"
+    height="14"
+    rx="7"
+    fill={rayleighColor(s, 'toward')}></rect></svg
+>

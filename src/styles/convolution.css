@@ -1,0 +1,239 @@
+.conv-study {
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: #e9e8ee;
+  color: #574f6f;
+  font-size: 16px;
+}
+.conv-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  max-width: 650px;
+  margin: auto;
+}
+.conv-study header > span {
+  font: 12px monospace;
+  color: #9185a8;
+  letter-spacing: 0.05em;
+}
+.conv-study header b {
+  font: 18px monospace;
+  font-weight: 400;
+}
+.conv-input,
+.conv-output,
+.conv-contrast {
+  max-width: 650px;
+  margin: 20px auto 0;
+}
+.conv-input > span {
+  font-size: 16px;
+}
+.conv-samples {
+  display: grid;
+  gap: 5px;
+  margin-top: 6px;
+}
+.conv-samples > div {
+  min-width: 0;
+  text-align: center;
+}
+.conv-samples > div > div {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 1px solid #b9b1c8;
+}
+.conv-samples i {
+  width: 70%;
+  max-width: 34px;
+  display: block;
+  background: #b7a4ce;
+  border-radius: 7px 7px 2px 2px;
+  min-height: 2px;
+}
+.conv-samples [data-active='true'] i {
+  background: #9178ad;
+}
+.conv-samples [data-cropped='true'] {
+  opacity: 0.4;
+  background: #d5cddd;
+  border-radius: 6px;
+}
+.conv-samples i[data-hidden='true'] {
+  opacity: 0;
+}
+.conv-samples span {
+  font-size: 16px;
+  display: block;
+  margin-top: 4px;
+}
+.conv-kernel {
+  height: 55px;
+  position: relative;
+  margin-top: 8px;
+}
+.conv-kernel > div {
+  position: absolute;
+  transform: translateX(-50%);
+  min-width: 28px;
+  padding: 4px 1px;
+  text-align: center;
+  background: #e1d3b7;
+  border-radius: 7px;
+  color: #6e593b;
+}
+.conv-kernel b {
+  font: 18px monospace;
+  font-weight: 400;
+  display: block;
+}
+.conv-kernel span {
+  font-size: 16px;
+  display: block;
+  margin-top: 3px;
+}
+.conv-study[data-playing='true'] .conv-kernel > div {
+  transition: left 0.65s ease;
+}
+.conv-products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 500px;
+  margin: 12px auto 0;
+}
+.conv-products > div {
+  text-align: center;
+  padding: 9px;
+  background: #ded9e8;
+  border-radius: 12px;
+  min-width: 0;
+}
+.conv-products span {
+  font-size: 16px;
+  display: block;
+}
+.conv-products b {
+  font: 18px monospace;
+  font-weight: 400;
+  display: block;
+  margin-top: 7px;
+  white-space: nowrap;
+}
+.conv-products strong {
+  font-size: 25px;
+  font-weight: 400;
+  display: block;
+  margin-top: 5px;
+}
+.conv-sum {
+  text-align: center;
+  font-size: 22px;
+  margin: 14px 0 0;
+}
+.conv-sum b {
+  font-size: 30px;
+  font-weight: 400;
+}
+.conv-output > p,
+.conv-contrast > p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 12px 0 0;
+}
+.conv-output > p:last-child:not(:first-child) {
+  font-size: 16px;
+}
+.conv-alignment {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 18px 0 0;
+}
+.conv-controls {
+  display: grid;
+  gap: 9px;
+  padding-top: 18px;
+}
+.conv-controls select,
+.conv-controls input {
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+}
+.conv-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.conv-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .conv-study {
+    padding: 14px 12px;
+  }
+  .conv-study header {
+    display: block;
+  }
+  .conv-study header > span {
+    display: none;
+  }
+  .conv-study header b {
+    font-size: 16px;
+    display: block;
+    margin-top: 6px;
+  }
+  .conv-input,
+  .conv-output,
+  .conv-contrast {
+    margin-top: 14px;
+  }
+  .conv-samples {
+    gap: 3px;
+  }
+  .conv-kernel b {
+    font-size: 16px;
+  }
+  .conv-kernel span {
+    font-size: 16px;
+  }
+  .conv-products {
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .conv-products > div {
+    padding: 8px 3px;
+  }
+  .conv-products b {
+    font-size: 16px;
+  }
+  .conv-products strong {
+    font-size: 22px;
+  }
+  .conv-sum {
+    margin-top: 10px;
+  }
+  .conv-output > p,
+  .conv-contrast > p {
+    font-size: 16px;
+  }
+  .conv-contrast .conv-samples > div > div {
+    height: 64px;
+  }
+  .conv-study[data-watch='true'] details {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .conv-study .conv-kernel > div {
+    transition: none !important;
+  }
+}

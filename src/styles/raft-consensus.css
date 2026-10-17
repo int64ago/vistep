@@ -1,0 +1,213 @@
+.raft-study {
+  padding: 24px;
+  background: #e6e8ee;
+  color: #4f5d73;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.raft-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  max-width: 660px;
+  margin: auto;
+}
+.raft-study header > span {
+  font: 12px monospace;
+  color: #647087;
+  letter-spacing: 0.07em;
+}
+.raft-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.raft-journals {
+  max-width: 660px;
+  margin: 18px auto 0;
+  display: grid;
+  gap: 8px;
+}
+.raft-journals article {
+  display: grid;
+  grid-template-columns: 125px 1fr 40px;
+  gap: 12px;
+  align-items: center;
+  min-height: 62px;
+  padding: 9px 14px;
+  border-radius: 13px;
+  background: #dce0e8;
+}
+.raft-journals article[data-leader='true'] {
+  background: #d5dceb;
+  box-shadow: inset 3px 0 #98a7c6;
+}
+.raft-journals article[data-minority='true'] {
+  background: #e4dce3;
+}
+.raft-journals article[data-voted='true'] {
+  box-shadow: inset 0 0 0 1px #9daecc;
+}
+.raft-server strong {
+  font-size: 22px;
+  font-weight: 400;
+  display: block;
+}
+.raft-server strong span {
+  font-size: 16px;
+  color: #59667d;
+  margin-left: 7px;
+}
+.raft-server > span {
+  font-size: 16px;
+  display: block;
+  margin-top: 3px;
+}
+.raft-entries {
+  display: flex;
+  gap: 7px;
+  min-width: 0;
+  align-items: center;
+}
+.raft-entries > div {
+  min-width: 52px;
+  height: 39px;
+  border-radius: 9px;
+  background: #ebe8df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: inset 0 0 0 1px #cec4aa;
+}
+.raft-entries > div[data-committed='true'] {
+  background: #ccdaca;
+  box-shadow: inset 0 0 0 1px #a8bda3;
+}
+.raft-entries b {
+  font-size: 23px;
+  font-weight: 400;
+}
+.raft-entries sup {
+  font-size: 16px;
+  align-self: flex-start;
+  margin-top: 4px;
+  color: #6e6350;
+}
+.raft-commit {
+  font-size: 16px;
+  color: #52694a;
+  text-align: right;
+}
+.raft-empty {
+  font-size: 23px;
+  color: #b6bcc7;
+}
+.raft-quorum {
+  display: flex;
+  justify-content: space-between;
+  max-width: 660px;
+  gap: 15px;
+  margin: 16px auto 0;
+  font-size: 16px;
+}
+.raft-quorum b {
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.raft-partition {
+  text-align: center;
+  font-size: 16px;
+  color: #805b72;
+  margin: 12px 0 0;
+}
+.raft-controls {
+  display: grid;
+  gap: 10px;
+  padding-top: 18px;
+}
+.raft-controls label {
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+  min-height: 44px;
+  align-items: center;
+}
+.raft-controls input[type='range'] {
+  width: 100%;
+  min-height: 44px;
+}
+.raft-controls input[type='checkbox'] {
+  width: 23px;
+  height: 23px;
+}
+.raft-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.raft-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .raft-study {
+    padding: 14px 12px;
+  }
+  .raft-study header > span {
+    font-size: 11px;
+  }
+  .raft-journals {
+    gap: 5px;
+    margin-top: 12px;
+  }
+  .raft-journals article {
+    grid-template-columns: 80px 1fr 26px;
+    gap: 7px;
+    min-height: 50px;
+    padding: 5px 7px;
+  }
+  .raft-server strong {
+    font-size: 20px;
+  }
+  .raft-server strong span {
+    font-size: 16px;
+    margin-left: 3px;
+  }
+  .raft-server > span {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+  .raft-entries {
+    gap: 5px;
+  }
+  .raft-entries > div {
+    min-width: 46px;
+    height: 36px;
+    gap: 4px;
+  }
+  .raft-entries b {
+    font-size: 21px;
+  }
+  .raft-entries sup {
+    font-size: 16px;
+  }
+  .raft-quorum {
+    margin-top: 10px;
+    gap: 8px;
+  }
+  .raft-quorum > span {
+    font-size: 16px;
+  }
+  .raft-quorum b {
+    font-size: 22px;
+    margin-left: 5px;
+  }
+  .raft-partition {
+    margin-top: 9px;
+  }
+  .raft-study[data-watch='true'] details {
+    display: none;
+  }
+}

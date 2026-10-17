@@ -1,0 +1,168 @@
+.organ-study {
+  background: #203b3b;
+  color: #dce5cf;
+  border-radius: 26px;
+  padding: 24px 28px;
+  max-width: 980px;
+  margin-inline: auto;
+}
+.organ-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+}
+.organ-study header b {
+  font-size: 16px;
+  font-weight: 400;
+  color: #c8cba7;
+}
+.organ-column {
+  display: block;
+  width: 100%;
+  height: 340px;
+  margin-top: 8px;
+}
+.organ-legend {
+  display: flex;
+  gap: 12px 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.organ-legend span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.organ-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.organ-frequency {
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.organ-frequency > b {
+  font-size: 30px;
+  font-weight: 400;
+  color: #dfc58f;
+}
+.organ-frequency span {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.organ-harmonics {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  justify-content: space-between;
+}
+.organ-harmonics span {
+  display: grid;
+  gap: 5px;
+  font-size: 16px;
+  min-width: 24px;
+  text-align: center;
+  color: #c6d5bb;
+}
+.organ-harmonics i {
+  width: 4px;
+  height: 20px;
+  background: #a8baa1;
+  border-radius: 3px;
+  justify-self: center;
+}
+.organ-harmonics .is-absent {
+  opacity: 0.45;
+}
+.organ-harmonics .is-absent i {
+  height: 1px;
+  margin-top: 19px;
+}
+.organ-harmonics .is-current i {
+  background: #e3c38b;
+  width: 7px;
+}
+.organ-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.organ-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.organ-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #bdcdb6;
+  margin: 0 0 12px;
+}
+.organ-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.organ-controls button {
+  min-height: 44px;
+  background: #ffffff08;
+  border: 1px solid #aebf9e66;
+  border-radius: 24px;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.organ-study .control,
+.organ-study .control output {
+  color: #dce5cf;
+}
+.organ-study .control input[type='range'] {
+  --range-color: #dfc58f;
+  --range-rest: #708a75;
+}
+@media (max-width: 760px) {
+  .organ-study {
+    padding: 16px;
+  }
+  .organ-study header {
+    font-size: 16px;
+  }
+  .organ-study header b {
+    display: none;
+  }
+  .organ-study[data-watch='true'] header {
+    display: none;
+  }
+  .organ-column {
+    height: 220px;
+    margin-top: 4px;
+  }
+  .organ-legend {
+    gap: 8px 14px;
+    justify-content: space-between;
+  }
+  .organ-frequency {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .organ-frequency > b {
+    font-size: 25px;
+    white-space: nowrap;
+  }
+  .organ-harmonics {
+    gap: 7px;
+    margin-top: 12px;
+  }
+  .organ-controls {
+    grid-template-columns: 1fr;
+  }
+}

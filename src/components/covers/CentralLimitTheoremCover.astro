@@ -1,0 +1,30 @@
+---
+import { cltDistribution, cltNormalDensity } from '../../models/central-limit-theorem';
+const { color = '#ac9cbd' } = Astro.props,
+  q = cltDistribution(32),
+  x = (z: number) => 200 + z * 37;
+const curve = Array.from({ length: 81 }, (_, i) => {
+  const z = -4 + i / 10;
+  return `${i ? 'L' : 'M'}${x(z)} ${202 - cltNormalDensity(z) * 390}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  {
+    q.items
+      .filter((v) => v.probability > 0.0001)
+      .map((v) => (
+        <rect
+          x={x(v.z!) - 5}
+          y={202 - v.probability * q.sigma * 390}
+          width="10"
+          height={v.probability * q.sigma * 390}
+          rx="2"
+          fill={color}
+          opacity=".7"
+        />
+      ))
+  }
+  <path d={curve} stroke="#9c7860" stroke-width="2.5"></path>
+  <path d="M34 203H366" stroke={color} opacity=".5"></path>
+</svg>

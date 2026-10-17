@@ -1,0 +1,50 @@
+---
+import { electrolysis } from '../../models/electrolysis';
+const { color = '#a5bca9' } = Astro.props;
+const q = electrolysis({ current: 2, seconds: 60, voltage: 1.8, waterMMol: 2 });
+const columns = [
+  { x: 62, amount: q.oxygen * 1000, fill: '#b5c6a4' },
+  { x: 338, amount: q.hydrogen * 1000, fill: '#a5c4cf' },
+];
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <rect x="125" y="82" width="150" height="127" rx="22" fill={color} opacity=".35"></rect>
+  <rect x="193" y="91" width="14" height="106" rx="6" fill="#b7c3a1"></rect>
+  <path d="M150 185V32H250V185" stroke="#91a48d" stroke-width="3" stroke-linejoin="round"></path>
+  <rect x="180" y="17" width="40" height="30" rx="9" fill="#dce2ca"></rect>
+  <path
+    d="M150 132H62V100M250 132H338V100"
+    stroke="#b1c6bc"
+    stroke-width="8"
+    stroke-linejoin="round"></path>
+  {
+    columns.map((c) => (
+      <g>
+        <>
+          <rect
+            x={c.x - 24}
+            y="98"
+            width="48"
+            height="109"
+            rx="17"
+            fill="#e1eae2"
+            stroke="#a7bbb0"
+          />
+          <rect
+            x={c.x - 16}
+            y={198 - c.amount * 95}
+            width="32"
+            height={c.amount * 95}
+            rx="8"
+            fill={c.fill}
+          />
+        </>
+      </g>
+    ))
+  }
+  <path d="M160 165H239" stroke="#739392" stroke-width="2"></path><path
+    d="M233 160L240 165L233 170"
+    stroke="#739392"
+    stroke-width="2"></path>
+</svg>

@@ -1,0 +1,34 @@
+---
+import { stereoPoint } from '../../models/stereoscopic-vision';
+const s = stereoPoint(500),
+  x = (v: number) => 200 + v * 3,
+  y = (z: number) => 190 - z * 0.17;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#edf0e5"></rect>{
+    [-1, 1].map((sign) => (
+      <g>
+        <>
+          <path
+            d={`M${x((sign * s.B) / 2)} ${y(0)}L${x(0)} ${y(s.Z0)}`}
+            stroke="#a1af95"
+            stroke-dasharray="4 4"
+            fill="none"
+          />
+          <path
+            d={`M${x((sign * s.B) / 2)} ${y(0)}L${x(0)} ${y(s.depth)}`}
+            stroke="#bd7953"
+            stroke-width="2"
+            fill="none"
+          />
+          <ellipse cx={x((sign * s.B) / 2)} cy={y(0)} rx="13" ry="8" fill="#a6b69b" />
+        </>
+      </g>
+    ))
+  }<circle cx={x(0)} cy={y(s.Z0)} r="5" fill="#b3c0a3"></circle><circle
+    cx={x(0)}
+    cy={y(s.depth)}
+    r="6"
+    fill="#bd7953"></circle></svg
+>

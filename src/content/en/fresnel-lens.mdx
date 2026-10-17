@@ -1,0 +1,31 @@
+<a id="understand"></a>
+
+## Focusing comes from surface orientation
+
+Light travels straight through a uniform medium and changes direction at a refracting interface. A refracting Fresnel lens distributes a focusing surface among concentric annuli, reducing the thick central material. Its working features are the locally oriented optical surfaces.
+
+This model uses ideal curved annuli. Each is designed for its actual exit position. The derivative gives the surface normal, and vector Snell refraction gives the outgoing ray. Simply translating an old surface along the axis would not automatically preserve an exact common focus. Both complete and close-up sections use equal longitudinal and transverse scales.
+
+<a id="try"></a>
+
+## Keep the surfaces and change the medium
+
+Design focal distance and zone pitch rebuild the actual surfaces. The close-up follows the normal at a selected radius. Match the surrounding index to the lens material: all annuli remain, but the rays no longer bend. Restoring air restores focusing.
+
+Volume is integrated by revolving the radial cross-section at the same aperture. A two-dimensional area is not treated as a volume. Riser blockage, transmission, mass and imaging resolution are not calculated.
+
+<a id="deeper"></a>
+
+## One geometric focus, different optical paths
+
+<div className="formula">
+  n t(r) + √[r² + (F − t(r))²] = Kzone
+  <br />
+  t′(r) = −r / [n√(r² + (F − t)²) − (F − t)]
+  <br />
+  Volume V = 2π ∫ r t(r) dr
+</div>
+
+The plane entrance is at axial coordinate zero. Local thickness is t, the design focus is at F, and material index is n. Each annulus has a different optical-path constant Kzone so axial geometric rays meet at the same focus. Optical paths across annuli are generally unequal. The phase bars reduce the difference from the central zone modulo a 550-nanometre wavelength; they show why geometric convergence does not settle wave imaging.
+
+The material index is fixed at1.49. Dispersion, riser losses, absorption, diffraction and fabrication errors are omitted. This is an ideal refracting annular design, not a diffractive zone plate or a prediction of a commercial lens’s point-spread function or efficiency. It does not establish the imaging quality of a precision continuous lens.

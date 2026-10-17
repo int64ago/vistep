@@ -1,0 +1,34 @@
+---
+import { totalReflection } from '../../models/total-internal-reflection';
+const s = totalReflection(55),
+  i = (s.angle * Math.PI) / 180;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#e5ede8"></rect><rect
+    y="80"
+    width="400"
+    height="150"
+    fill="#376e7b"></rect><path d="M200 14V218" stroke="#a7c4c3" stroke-dasharray="4 6"></path>{
+    [-1, 1].map((sign) => (
+      <path
+        d={`M200 80L${200 + sign * 140 * Math.sin((s.critical! * Math.PI) / 180)} ${80 + 140 * Math.cos((s.critical! * Math.PI) / 180)}`}
+        stroke="#e3cca3"
+        opacity=".4"
+        stroke-dasharray="3 5"
+      />
+    ))
+  }<path
+    d={`M${200 - 145 * Math.sin(i)} ${80 + 145 * Math.cos(i)}L200 80L${200 + 145 * Math.sin(i)} ${80 + 145 * Math.cos(i)}`}
+    stroke="#efbf78"
+    stroke-width="4"></path>{
+    Array.from({ length: 25 }, (_, j) => (
+      <path
+        d={`M150 ${80 - j}H250`}
+        stroke="#c08c47"
+        opacity={0.7 * Math.exp((-j * 12) / s.penetration!)}
+      />
+    ))
+  }<circle cx={200 - 145 * Math.sin(i)} cy={80 + 145 * Math.cos(i)} r="7" fill="#efbf78"
+  ></circle></svg
+>

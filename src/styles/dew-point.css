@@ -1,0 +1,133 @@
+.dew-study {
+  max-width: 980px;
+  margin: auto;
+  color: #e0e8e2;
+  background: radial-gradient(ellipse at 40% 20%, #294656, #233947);
+  border-radius: 30px;
+  padding: 18px 22px;
+  font-variant-numeric: tabular-nums;
+}
+.dew-study header {
+  font-size: 18px;
+  line-height: 1.4;
+  min-height: 26px;
+  text-align: center;
+}
+.dew-diagram {
+  display: block;
+  width: 100%;
+  height: 290px;
+}
+.dew-legend {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #bdcfd0;
+}
+.dew-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.dew-legend i {
+  width: 17px;
+  height: 3px;
+  border-radius: 2px;
+  background: #9bbfc7;
+}
+.dew-legend span + span i {
+  background: #e0b97c;
+}
+.dew-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  margin: 10px 0;
+}
+.dew-numbers > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.dew-numbers b {
+  font-size: 27px;
+  font-weight: 500;
+  color: #e1bf86;
+}
+.dew-numbers span,
+.dew-waterline {
+  font-size: 16px;
+}
+.dew-waterline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+  line-height: 1.4;
+  color: #cbd8d2;
+}
+.dew-study details {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.dew-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.dew-study p {
+  margin: 0;
+}
+.dew-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+.dew-controls .control,
+.dew-controls output {
+  font-size: 16px;
+  color: #e0e8e2;
+}
+.dew-controls button {
+  border: 1px solid #a7bec45c;
+  background: #385667;
+  color: #eef0e6;
+  min-height: 44px;
+  border-radius: 16px;
+  font-size: 16px;
+  padding: 8px 14px;
+}
+@media (max-width: 600px) {
+  .dew-study {
+    padding: 10px 10px;
+    border-radius: 22px;
+  }
+  .dew-study header {
+    font-size: 16px;
+    min-height: 44px;
+  }
+  .dew-diagram {
+    height: 195px;
+  }
+  .dew-legend {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 16px;
+  }
+  .dew-numbers {
+    margin: 8px 0;
+    gap: 6px;
+  }
+  .dew-numbers b {
+    font-size: 24px;
+  }
+  .dew-controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,33 @@
+<a id="understand"></a>
+
+## No large wake does not mean no drag
+
+At low Reynolds number, viscosity dominates relative to inertia. No slip requires fluid at a rigid sphere’s surface to be stationary relative to it. Fore-and-aft streamlines are symmetric, but pressure and viscous shear still produce nonzero drag.
+
+The image is a meridional section of the three-dimensional axisymmetric sphere solution. Contours are solved from its streamfunction. Marker time coordinates integrate local velocity; markers neither penetrate the sphere nor slide uniformly along decorative curves.
+
+<a id="try"></a>
+
+## Prescribed speed and settling are different problems
+
+At prescribed relative speed, drag is proportional separately to speed, dynamic viscosity and radius. Changing viscosity does not automatically alter a prescribed velocity boundary. Normalized streamline geometry stays fixed while required stress changes.
+
+For terminal settling, weight minus buoyancy determines required drag, and speed becomes an output. The view follows the sphere, keeping it stationary while fluid moves relatively. Density changes can give sinking, neutral or rising states. Zero relative speed stops flow markers.
+
+<a id="deeper"></a>
+
+## Check the result against its assumption
+
+<div className="formula">
+  F_drag = 6πμaU
+  <br />
+  U_terminal = 2(ρ_s − ρ_f)ga² / (9μ)
+  <br />
+  Re = ρ_f |U| (2a) / μ
+</div>
+
+Fluid density is 1000 kg/m³. Default radius is 0.3 mm and dynamic viscosity 0.1 Pa·s. Doubling radius doubles drag at prescribed speed but quadruples terminal speed at fixed density contrast and viscosity. These are different comparisons.
+
+The solution assumes an isolated rigid sphere far from boundaries, incompressible Newtonian liquid, no slip and steady low-Re flow. Terminal mode omits start-up inertia, added mass and history forces. Bubbles can have different surface conditions; close walls and concentrated particles also change drag.
+
+At lower viscosity, a Stokes terminal-speed trial can produce a Reynolds number too large for its own premise. The scene uses Re≤0.1 as a conservative teaching display region. Outside it, the creeping field is withheld and speed is labelled as a trial rather than an actual terminal prediction. The marker is not a sudden turbulence threshold. Automatic marker motion is slowed five times while readouts keep physical units.

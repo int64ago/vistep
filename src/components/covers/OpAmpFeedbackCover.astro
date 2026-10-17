@@ -1,0 +1,29 @@
+---
+import { opAmpDefaults, opAmpStep } from '../../models/op-amp-feedback';
+const p = opAmpDefaults();
+const points = Array.from(
+  { length: 81 },
+  (_, j) => `${208 + j * 1.65},${201 - (opAmpStep(p, 0.8, (j / 80) * 25e-6).output / 10) * 72}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><path
+    d="M22 58H90M185 83H288M225 83V161H185l-5 -6 -8 12 -8 -12 -8 12 -8 -12 -8 12 -5 -6H53V103H90M53 161V174l-5 4 10 6 -10 6 5 4V211"
+    fill="none"
+    stroke="#9eaf93"
+    stroke-width="2.2"></path><path
+    d="M90 34L185 83L90 132Z"
+    fill="#e5ebd7"
+    stroke="#a1b396"
+    stroke-width="2"
+    stroke-linejoin="round"></path><path
+    d="M99 58h12m-6 -6v12M99 103h12M43 211H63M47 216H59"
+    stroke="#91a17d"
+    stroke-width="1.8"></path><path d="M208 124V201H340" stroke="#bfc9ae" fill="none"
+  ></path><polyline points={points} fill="none" stroke="#aa9468" stroke-width="3"></polyline><circle
+    cx="225"
+    cy="83"
+    r="3"
+    fill="#8ba58e"></circle><circle cx="53" cy="161" r="3" fill="#8ba58e"></circle></svg
+>

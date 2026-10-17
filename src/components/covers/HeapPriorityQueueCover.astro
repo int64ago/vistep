@@ -1,0 +1,36 @@
+---
+import { HEAP_PRIORITIES, heapItems, heapPosition } from '../../models/heap-priority-queue';
+const { color = '#94a9bb' } = Astro.props;
+const nodes = heapItems(HEAP_PRIORITIES).map((item, i) => ({ ...item, ...heapPosition(i), i }));
+const links = nodes.slice(1).map((node) => ({ node, parent: nodes[Math.floor((node.i - 1) / 2)] }));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <g transform="translate(20 10)">
+    {
+      links.map(({ node, parent }) => (
+        <path
+          d={`M${parent.x} ${parent.y}L${node.x} ${node.y}`}
+          stroke={color}
+          stroke-width="2"
+          opacity=".5"
+        />
+      ))
+    }
+    {
+      nodes.map((node) => (
+        <g>
+          <>
+            <circle cx={node.x} cy={node.y} r="23" fill={node.i === 0 ? '#aabcce' : '#dde5ec'} />
+            <text x={node.x} y={node.y + 9} text-anchor="middle" fill="#52667f" font-size="27">
+              {node.priority}
+            </text>
+          </>
+        </g>
+      ))
+    }
+  </g>
+  <text x="200" y="220" text-anchor="middle" fill={color} font-size="16" font-family="monospace"
+    >PARENT &gt;= CHILDREN</text
+  >
+</svg>

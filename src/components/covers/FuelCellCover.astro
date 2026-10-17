@@ -1,0 +1,48 @@
+---
+import { fuelCell } from '../../models/fuel-cell';
+const { color = '#b8c7b9' } = Astro.props;
+const q = fuelCell({
+  resistance: 0.5,
+  internalResistance: 0.2,
+  seconds: 60,
+  hydrogenMMol: 2,
+  oxygenMMol: 1,
+});
+const electrical = q.electricalPower / q.enthalpyRate;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M125 140V35H265V140" stroke="#ac987b" stroke-width="3" stroke-linejoin="round"></path>
+  <circle cx="195" cy="35" r="21" fill="#decda7" stroke="#b4a07e"></circle>
+  <path d="M185 38L192 28L199 42L206 32" stroke="#937955" stroke-width="2" stroke-linejoin="round"
+  ></path>
+  <path d="M100 86H147L159 98V198H112L100 186Z" fill="#cfb8aa"></path>
+  <path d="M159 98L147 86H191L203 98V198H159Z" fill="#c8cbb1"></path>
+  <path d="M203 98L191 86H239L251 98V198H203Z" fill={color}></path>
+  <path
+    d="M115 108V180M126 108V180M137 108V180"
+    stroke="#b29486"
+    stroke-width="3"
+    stroke-linecap="round"></path>
+  <path
+    d="M216 108V181M227 108V181M238 108V181"
+    stroke="#93aca2"
+    stroke-width="3"
+    stroke-linecap="round"></path>
+  <path
+    d="M35 144H100M345 125H253M252 176H329V207"
+    stroke="#aa9484"
+    stroke-width="2"
+    stroke-linejoin="round"></path>
+  <path d="M143 154H215" stroke="#718c7f" stroke-width="2"></path><path
+    d="M209 149L216 154L209 159"
+    stroke="#718c7f"
+    stroke-width="2"></path>
+  <rect x="100" y="215" width={200 * electrical} height="5" rx="2" fill="#b7a16d"></rect><rect
+    x={100 + 200 * electrical}
+    y="215"
+    width={200 * (1 - electrical)}
+    height="5"
+    rx="2"
+    fill="#b78e79"></rect>
+</svg>

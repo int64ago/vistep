@@ -1,0 +1,22 @@
+---
+import { keplerAt, keplerSector } from '../../models/kepler-orbits';
+const { color = '#7da6b3' } = Astro.props;
+const q = keplerAt(0.65),
+  near = keplerSector(0.65, 1, -0.06, 0.12),
+  far = keplerSector(0.65, 1, 0.44, 0.12);
+const path = (points: { x: number; y: number }[]) =>
+  `M0 0L${points.map((p) => `${p.x},${p.y}`).join('L')}Z`;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <g transform="translate(255 115) scale(100 -100)">
+    <ellipse cx="-.65" cy="0" rx="1" ry={q.b} stroke={color} stroke-width=".015"></ellipse>
+    <path d={path(near.points)} fill="#d0ad5f66" stroke="#bca263" stroke-width=".012"></path>
+    <path d={path(far.points)} fill="#87bcb766" stroke="#7ca6a6" stroke-width=".012"></path>
+    <circle r=".12" fill="#d5b76922"></circle><circle r=".055" fill="#c5a45e"></circle>
+  </g>
+  <text x="30" y="28" fill={color} font-family="monospace" font-size="15">EQUAL TIME</text>
+  <text x="200" y="221" text-anchor="middle" fill="#8ba3a7" font-size="16" font-family="monospace"
+    >{(near.fraction * 100).toFixed(0)}% = {(far.fraction * 100).toFixed(0)}% · e = 0.65</text
+  >
+</svg>

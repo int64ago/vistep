@@ -1,0 +1,26 @@
+---
+import { dhExchange } from '../../models/diffie-hellman';
+const { color = '#8fafad' } = Astro.props,
+  q = dhExchange();
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  ><rect x="30" y="25" width="135" height="165" rx="24" fill="#d5e5df"></rect><rect
+    x="235"
+    y="25"
+    width="135"
+    height="165"
+    rx="24"
+    fill="#d9e4ed"></rect><text x="98" y="69" text-anchor="middle" font-size="26" fill={color}
+    >A={q.A}</text
+  ><text x="302" y="69" text-anchor="middle" font-size="26" fill="#96aebb">B={q.B}</text><path
+    d="M170 81L230 113M230 81L170 113"
+    stroke={color}
+    stroke-width="3"></path><text x="98" y="155" text-anchor="middle" font-size="42" fill="#6b9791"
+    >{q.alice}</text
+  ><text x="302" y="155" text-anchor="middle" font-size="42" fill="#799aac">{q.bob}</text><path
+    d="M165 159H235"
+    stroke={color}
+    stroke-width="2"
+    stroke-dasharray="5 6"></path></svg
+>

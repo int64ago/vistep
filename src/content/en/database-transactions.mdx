@@ -1,0 +1,26 @@
+<h2 id="understand">Publishing together solves one problem</h2>
+
+Reserving a ticket both decreases stock and creates an order. A transaction first stages these changes privately, then publishes both at commit. Other readers should not see stock reduced while the order is missing. Rollback discards that transaction's uncommitted changes.
+
+That illustrates atomicity, not automatic protection from every concurrency error. If T1 and T2 both read stock1, privately compute0, and each atomically publishes `stock=0` plus its own order, two orders succeed while stock decreases only once.
+
+<h2 id="try">Change the interleaving and commit policy</h2>
+
+Compare overlapping reads with starting the second transaction after the first finishes. A stale absolute write can violate `remaining stock + successful orders = initial capacity`. Larger starting stock may also violate this invariant without immediately producing more orders than capacity.
+
+Validation records the stock version read and checks it again at commit. If another transaction changed stock, the entire stale update aborts and its order is not published. A fresh retry reads0 and refuses the reservation. Aborting does not automatically fulfill the user's request.
+
+<h2 id="deeper">Isolation, durability and application invariants</h2>
+
+<details>
+<summary>The teaching model and real databases</summary>
+
+This implements optimistic checking of one stock version. It is not PostgreSQL MVCC, row locking or serializable snapshot isolation code. Databases, isolation levels and SQL update forms differ in waiting, retries and errors; this film does not imply a specific database permits the unsafe outcome shown.
+
+A real reservation often needs to protect the positive-stock condition with the update and include the order in the same transaction, alongside suitable constraints, isolation and retry handling. Atomicity publishes a whole transaction; isolation constrains concurrent interactions; durability concerns recovery after acknowledged success. The write-ahead-log scene addresses crashes.
+
+The model checks all70 valid interleavings of two four-event transactions. Version validation preserves the stock invariant in this simplified state machine; it is not certification of a general database engine.
+
+</details>
+
+Sources: [PostgreSQL, Transactions](https://www.postgresql.org/docs/current/tutorial-transactions.html) and [Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html).

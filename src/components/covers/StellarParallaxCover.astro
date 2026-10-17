@@ -1,0 +1,16 @@
+---
+import { parallaxModel, parallaxState } from '../../models/stellar-parallax';
+const { color = '#a4b4c8' } = Astro.props,
+  model = parallaxModel(1, 1, 45, 0.18),
+  path = Array.from({ length: 121 }, (_, i) => parallaxState(i / 60, model))
+    .map((p, i) => `${i ? 'L' : 'M'}${190 + p.x * 75} ${116 - p.y * 75}`)
+    .join(' '),
+  point = parallaxState(0.75, model);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M45 116H355M190 25V205" stroke={color} opacity=".4" stroke-dasharray="3 5"></path>
+  <path d={path} stroke={color} stroke-width="2.5"></path>
+  <circle cx={190 + point.x * 75} cy={116 - point.y * 75} r="6" fill="#ad915d"></circle>
+  <path d="M72 58H84M78 52V64M313 182H325M319 176V188" stroke={color} stroke-width="2"></path>
+</svg>

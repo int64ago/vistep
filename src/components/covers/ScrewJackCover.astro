@@ -1,0 +1,30 @@
+---
+import { screwDefaults, screwHelixPoint } from '../../models/screw-jack';
+const p = screwDefaults();
+const curves = Array.from({ length: 13 }, (_, i) =>
+  Array.from({ length: 33 }, (_, j) => {
+    const v = screwHelixPoint(i * 2 * Math.PI + (j / 32) * 2 * Math.PI, 0.022, p.lead);
+    return `${200 + v.x * 1600},${190 - v.y * 2400}`;
+  }).join(' '),
+);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path
+    d="M95 207H305M130 207V130M270 207V130"
+    stroke="#526f72"
+    stroke-width="16"
+    stroke-linejoin="round"></path><rect
+    x="168"
+    y="50"
+    width="64"
+    height="145"
+    rx="5"
+    fill="#c1cccb"></rect>{
+    curves.map((points) => <polyline points={points} stroke="#839696" stroke-width="3" />)
+  }<path d="M136 121V158H166M264 121V158H234" stroke="#b88d56" stroke-width="18"></path><path
+    d={`M${200 - p.handle * 1600} 47H${200 + p.handle * 1600}M200 31V53`}
+    stroke="#ae8754"
+    stroke-width="6"></path><rect x="155" y="12" width="90" height="25" rx="5" fill="#6b806e"
+  ></rect></svg
+>

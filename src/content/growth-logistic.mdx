@@ -1,0 +1,26 @@
+<h2 id="understand">增速会随当前数量改变</h2>
+
+连续逻辑斯谛方程为 `dN/dt=rN(1−N/K)`。这里 N 是连续的归一化种群量，K 是承载量，r 是内禀增长率，时间使用一致的任意单位。N 远小于 K 时，括号接近一，因此早期近似指数增长，而非所有时刻都是指数增长。
+
+数量增加后，限制因子 `1−N/K` 下降。总增速同时取决于已有数量 N 与人均增速 `r(1−N/K)`；所以人均增速持续下降时，总增速仍可能先增加。
+
+<h2 id="try">最快增长在一半承载量</h2>
+
+r=0.6、K=100 时，N=25 与 N=75 的总增速都是 11.25，而 N=50 时达到最大值 15。这个峰值出现在 `N=K/2`，并不是接近 K 时最快。增速图上的点与数量时间曲线上的点来自同一当前状态。
+
+正的初值低于 K 时，从下方趋近 K；高于 K 时，增速为负，从上方趋近。无额外时滞与随机性时，这个一阶连续模型不会自己越过平衡点来回振荡。
+
+<h2 id="deeper">承载量不是永远固定的现实常数</h2>
+
+<details>
+<summary>中途改变 K 与零值边界</summary>
+
+演示在 t=6 把 K 从 100 改为 60。当时 N 约为 80.26，旧方程下仍在增加，新方程下变为减少。数量在切换时保持连续，斜率可以改变；不把过去六个时间单位的历史按新 K 重算。探索可改变初值、r、初始 K、观察时刻、新 K 与切换时刻，浅色整段轨迹也会即时更新。
+
+没有迁入或外部来源时，N₀=0 始终保持零；r=0 时任意初值都保持。图不除以 N 来处理零初值，使用闭式解的单独边界分支。
+
+这是解释密度限制的理想化连续模型，不是离散 logistic map，也不含时滞、捕食、年龄结构、噪声、迁入或生态参数拟合。不据此作资源管理或真实种群预测。现实承载量会随条件变化，“达到 K”也不是每个真实种群的保证。
+
+</details>
+
+资料：[OpenStax Calculus，The Logistic Equation](https://openstax.org/books/calculus-volume-2/pages/4-4-the-logistic-equation)、[OpenStax Biology，Environmental Limits to Population Growth](https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth)。

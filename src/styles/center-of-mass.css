@@ -1,0 +1,135 @@
+.com-film {
+  max-width: 800px;
+  margin: auto;
+  color: #70836a;
+}
+.com-masses {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 0 8px 4px;
+}
+.com-masses > span {
+  white-space: nowrap;
+}
+.com-masses > span:last-child {
+  color: #a18b59;
+}
+.com-platform {
+  width: 100%;
+  max-width: 530px;
+  display: block;
+  margin: auto;
+}
+.com-platform text,
+.com-plot text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #8b906c;
+}
+.com-center {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  font-size: 16px;
+  margin: 4px 8px;
+}
+.com-center > span {
+  display: grid;
+  gap: 3px;
+}
+.com-center b {
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.com-distance {
+  max-width: 440px;
+  margin: 9px auto;
+  padding: 0 12px;
+}
+.com-distance p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 4px 0;
+}
+.com-distance b {
+  font-size: 18px;
+  font-weight: 500;
+}
+.com-distance small {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.com-plot {
+  max-width: 450px;
+  margin: 6px auto 0;
+}
+.com-plot svg {
+  width: 100%;
+  max-height: 140px;
+  display: block;
+}
+.com-plot p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+  margin: 2px 8px 5px;
+}
+.com-controls {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+.com-notes {
+  max-width: 600px;
+  padding: 0 12px;
+  margin: auto;
+  font-size: 16px;
+}
+.com-notes summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.com-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.com-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .com-platform {
+    max-width: 340px;
+  }
+  .com-platform text,
+  .com-plot text {
+    font-size: 21px;
+  }
+  .com-masses {
+    gap: 16px;
+  }
+  .com-center {
+    gap: 22px;
+    margin: 3px 8px;
+  }
+  .com-center > span {
+    font-size: 16px;
+  }
+  .com-plot svg {
+    max-height: none;
+  }
+  .com-controls {
+    padding: 12px;
+  }
+  .com-film[data-watch='true'] .com-notes {
+    display: none;
+  }
+}

@@ -12,6 +12,2192 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'electric-fuse',
+    name: '保险丝',
+    title: '相同峰值电流，为什么有时熔化、有时不熔化？',
+    question: '保险丝响应的是瞬时电流，还是一段热历史？',
+    description: '从细丝温度分布、端帽散热和短脉冲，理解开始熔化与真正开断的区别。',
+    color: '#b9c5a6',
+    tag: '热历史',
+    related: ['heat-conduction', 'latent-heat', 'rc-circuit'],
+    sources: [
+      {
+        title: 'Eaton · High-speed fuses application guide',
+        url: 'https://www.eaton.com/content/dam/eaton/products/electrical-circuit-protection/bussmann-iec-high-speed-semi-conductors-fuses/eaton-bussmann-series-high-speed-fuses-application-guide-br132015en-en-us.pdf',
+      },
+      {
+        title: 'Eaton · Fuse terminology, specifications and selection',
+        url: 'https://www.eaton.com/content/dam/eaton/products/electronic-components/resources/technical/eaton-fuse-technology-terminology-specifications-device-selection.pdf',
+      },
+      {
+        title: 'Littelfuse · Fuse thermal behavior and selection',
+        url: 'https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses',
+      },
+      {
+        title: 'NIST · Silver physical properties',
+        url: 'https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1363.pdf',
+      },
+    ],
+    number: '202',
+  },
+  {
+    slug: 'current-transformer',
+    name: '电流互感器',
+    title: '一百安培怎样变成一安培，还会在哪失真？',
+    question: '二次侧电流为零，为什么端电压反而可能升高？',
+    description: '从穿心导体、二次安匝与非线性磁芯，观察匝数比、负担和开路边界。',
+    color: '#b8c5a7',
+    tag: '安匝平衡',
+    related: ['transformer-electric', 'hall-effect', 'three-phase-power'],
+    sources: [
+      {
+        title: 'SEL · Selecting CTs to optimize relay performance',
+        url: 'https://cdn.selinc.com/assets/Literature/Publications/Technical%20Papers/6027_SelectingCTsOptimize_JR-SZ_20110627_Web.pdf',
+      },
+      {
+        title: 'SEL · Determine current transformer suitability',
+        url: 'https://cdn.selinc.com/assets/Literature/Publications/Technical%20Papers/6096_DetermineCurrent_991007_Web.pdf',
+      },
+      {
+        title: 'Schneider Electric · CT open-secondary hazards',
+        url: 'https://www.se.com/us/en/faqs/FA125574/',
+      },
+    ],
+    number: '201',
+  },
+  {
+    slug: 'relay',
+    name: '继电器',
+    title: '线圈只施力，负载能量从另一条回路来',
+    question: '同样 2 V，为什么吸不动，却能在吸合后保持？',
+    description:
+      '跟随常开直流柱塞继电器的电流、变气隙磁力与真实接触，区分吸合、保持、释放和独立负载供能。',
+    color: '#a9bec5',
+    tag: '电磁开关',
+    related: ['inductor-transient', 'ground-fault-breaker', 'transformer-electric'],
+    sources: [
+      {
+        title: 'OMRON: Technical Explanation for General-purpose Relays',
+        url: 'https://www.ia.omron.com/data_pdf/guide/36/generalrelay_tg_e_10_6.pdf',
+      },
+      {
+        title: 'OMRON: Relay Technology',
+        url: 'https://components.omron.com/us-en/products/basic-knowledge/relays/technology',
+      },
+      {
+        title: 'OMRON: FAQ02804 — Coil Surge Absorption',
+        url: 'https://www.ia.omron.com/support/faq/answer/36/faq02804/index.html',
+      },
+    ],
+    number: '200',
+  },
+  {
+    slug: 'ground-fault-breaker',
+    name: '漏电保护器',
+    title: '不是只看电流多大，而是谁没有一起回来',
+    question: '去、回电流几乎一样，为什么几十毫安的差也会跳开？',
+    description:
+      '让 L/N 在同一检测环内相抵，再追踪环外返回、内部测试旁路与跳闸锁扣，分清差流与过流。',
+    color: '#c4b397',
+    tag: '差流检测',
+    related: ['transformer-electric', 'rc-circuit'],
+    sources: [
+      {
+        title: 'ABB: RCD Application Manual — Mechanical Operation',
+        url: 'https://library.e.abb.com/public/54c9c24f0bf34927ad336702fd3ce4a0/1SXU000023C0202_15.pdf',
+      },
+      {
+        title: 'ABB: Protection Against Earth Faults with RCDs',
+        url: 'https://library.e.abb.com/public/9f0e99de3bc740288bc41ab95667f72f/RCD%20Technical%20Guide%20EN.pdf',
+      },
+    ],
+    number: '199',
+  },
+  {
+    slug: 'pressure-cooker',
+    name: '高压锅',
+    title: '高压锅为什么能让水超过一百度？',
+    question: '配重阀、绝对压力和排汽，怎样共同决定沸腾温度？',
+    description:
+      '剖开理想配重阀，跟踪液面到阀口的连续通道，核对压差受力、饱和温压和刚性容器的质量能量账。',
+    tag: '压力与相变',
+    color: '#82927b',
+    related: ['latent-heat', 'hydrostatic-pressure', 'ideal-gas'],
+    sources: [
+      {
+        title: 'IAPWS-IF97 R7-97(2012), §8, Eqs.29–31 and Tables34–36',
+        url: 'https://iapws.org/technical-guidance/release/IF97-Rev.download',
+      },
+      {
+        title: 'NIST Steam Tables: saturation properties',
+        url: 'https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=906704',
+      },
+      {
+        title: 'Presto: Pressure regulator, vent pipe, seal and cover-lock functions',
+        url: 'https://www.gopresto.com/content/pressure-cooking/pressure-cooking-how-to-use',
+      },
+      {
+        title: 'NASA Glenn: Mass Flow Choking, ideal-gas nozzle derivation',
+        url: 'https://www.grc.nasa.gov/www/k-12/airplane/mflchk.html',
+      },
+    ],
+    number: '198',
+  },
+  {
+    slug: 'three-phase-power',
+    name: '三相电力',
+    title: '三条起伏的功率，怎样加成一条水平线？',
+    question: '各相都在交变，总功率为什么可以不变？',
+    description: '比较相电压与线电压、单相功率起伏、三相平衡与中性线返回电流。',
+    color: '#b9c4aa',
+    tag: '三相平衡',
+    related: [
+      'current-transformer',
+      'induction-motor',
+      'transformer-electric',
+      'inductor-transient',
+    ],
+    sources: [
+      {
+        title: 'MIT6.061 · Polyphase networks',
+        url: 'https://www.ocw.mit.edu/courses/6-061-introduction-to-electric-power-systems-spring-2011/c6393a58319200a5344752de0cf47ec4_MIT6_061S11_ch3.pdf',
+      },
+      {
+        title: 'Oregon State ENGR202 · Three-phase fundamentals',
+        url: 'https://web.engr.oregonstate.edu/~webbky/ENGR202_files/SECTION%207%20Three%20Phase%20Circuit%20Fundamentals.pdf',
+      },
+      {
+        title: 'Schneider Electric · Neutral conductor and harmonics',
+        url: 'https://www.electrical-installation.org/enwiki/Sizing_the_neutral_conductor',
+      },
+    ],
+    number: '197',
+  },
+  {
+    slug: 'fuel-cell',
+    name: '燃料电池',
+    title: '电子绕路做功，为什么电流更大不一定输出更多？',
+    question: '膜挡住电子，反而怎样让氢与氧的反应输出电能？',
+    description:
+      '沿 PEM 膜与负载分追质子和电子，核对供料、产水、功率和放热，再用近短路反例分清功率与效率。',
+    color: '#b8c7b9',
+    tag: '电化学供能',
+    related: ['electrolysis', 'rc-circuit', 'diode-junction'],
+    sources: [
+      {
+        title: 'DOE: Fuel Cells',
+        url: 'https://www.energy.gov/cmei/fuels/fuel-cells',
+      },
+      {
+        title: 'DOE: Parts of a Fuel Cell',
+        url: 'https://www.energy.gov/cmei/fuels/parts-fuel-cell',
+      },
+      {
+        title: 'NETL: Fuel Cell Handbook, Section 2',
+        url: 'https://www.netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf',
+      },
+      {
+        title: 'NIST: 2022 CODATA constants',
+        url: 'https://physics.nist.gov/constants',
+      },
+    ],
+    number: '196',
+  },
+  {
+    slug: 'piezoelectricity',
+    name: '压电效应',
+    title: '一直压着，电压为什么反而消失？',
+    question: '持续受压的压电片，为什么不适合直接静态称重？',
+    description: '观察纳米形变、电荷泄漏、卸载反向脉冲与逆压电伸缩。',
+    color: '#b5c4a5',
+    tag: '力与电荷',
+    related: ['rc-circuit', 'capacitor-fields', 'op-amp-feedback'],
+    sources: [
+      {
+        title: 'PI Ceramic · Fundamental equations and piezoelectric coefficients',
+        url: 'https://www.piceramic.com/fileadmin/user_upload/pi_ceramic/files/catalog_CAT/PI_CAT125E_R3_Piezoelectric_Ceramic_Products.pdf',
+      },
+      {
+        title: 'PIEZO.com · Piezoelectric generators',
+        url: 'https://piezo.com/pages/piezoelectric-generators',
+      },
+      {
+        title: 'PIEZO.com · Electronics overview',
+        url: 'https://support.piezo.com/article/130-electronics-overview',
+      },
+      {
+        title: 'PCB Piezotronics · Introduction to force sensors',
+        url: 'https://www.pcb.com/resources/technical-information/introduction-to-force-sensors',
+      },
+    ],
+    number: '195',
+  },
+  {
+    slug: 'dew-point',
+    name: '露点',
+    title: '冷玻璃为什么到某个温度才结露？',
+    question: '露点、相对湿度和水汽多少，是同一件事吗？',
+    description: '让冷镜面穿过饱和蒸气压交点，再核对定压空气冷却与复热过程中的水汽和液水总账。',
+    tag: '湿度与相平衡',
+    color: '#6f98a5',
+    related: ['evaporative-cooling', 'latent-heat', 'adiabatic-compression'],
+    sources: [
+      {
+        title: 'NIST Engineering Metrology Toolbox, humidity definitions, Appendix A-I and Table 2',
+        url: 'https://emtoolbox.nist.gov/wavelength/documentation.asp',
+      },
+      {
+        title: 'National Weather Service: Dry bulb, wet bulb and dew point temperatures',
+        url: 'https://www.weather.gov/source/zhu/ZHU_Training_Page/definitions/dry_wet_bulb_definition/dry_wet_bulb.html',
+      },
+    ],
+    number: '194',
+  },
+  {
+    slug: 'electrolysis',
+    name: '水电解',
+    title: '同一份电荷，为什么产氢是产氧的两倍？',
+    question: '膜里的质子和导线里的电子，怎样一起拆开水？',
+    description: '沿 PEM 电解槽分追质子与外部电子，把电荷、产气比例、输入电能和有限水量逐项对齐。',
+    color: '#a5bca9',
+    tag: '电化学',
+    related: ['fuel-cell', 'rc-circuit', 'diode-junction'],
+    sources: [
+      {
+        title: 'DOE: Hydrogen Production — Electrolysis',
+        url: 'https://www.energy.gov/cmei/fuels/hydrogen-production-electrolysis',
+      },
+      {
+        title: 'NETL: Fuel Cell Handbook, Section 2',
+        url: 'https://www.netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf',
+      },
+      {
+        title: 'NIST: 2022 CODATA constants',
+        url: 'https://physics.nist.gov/constants',
+      },
+    ],
+    number: '193',
+  },
+  {
+    slug: 'thermocouple',
+    name: '热电偶',
+    title: '只知道毫伏读数，为什么还测不出温度？',
+    question: '热端不变，接线端变暖为什么会影响读数？',
+    description: '沿完整测量回路理解温差、K型参考函数、冷端补偿与等温连接。',
+    color: '#bdc6aa',
+    tag: '冷端补偿',
+    related: ['hall-effect', 'op-amp-feedback', 'heat-conduction'],
+    sources: [
+      {
+        title: 'NIST · Monograph175, type K reference functions',
+        url: 'https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nistmonograph175.pdf',
+      },
+      {
+        title: 'Analog Devices · Thermocouple measurement design essentials',
+        url: 'https://www.analog.com/en/resources/technical-articles/thermocouple-temperature-measurement-system-design-essentials.html',
+      },
+      {
+        title: 'Analog Devices · The basics of thermocouples',
+        url: 'https://www.analog.com/en/resources/design-notes/the-basics-of-thermocouples.html',
+      },
+      {
+        title: 'Keysight · Practical temperature measurements',
+        url: 'https://www.keysight.com/us/en/assets/7018-06789/application-notes/5965-7822.pdf',
+      },
+    ],
+    number: '192',
+  },
+  {
+    slug: 'evaporative-cooling',
+    name: '蒸发冷却',
+    title: '水没有沸腾，为什么也能带走热？',
+    question: '蒸发、空气补热和湿度，怎样共同决定水温？',
+    description: '核对薄水膜的质量与能量账，比较湿度和换气速率，并用冷表面凝结检验相变热流的反向。',
+    tag: '相变与传质',
+    color: '#73958b',
+    related: ['dew-point', 'latent-heat', 'convection', 'heat-conduction'],
+    sources: [
+      {
+        title:
+          'NIST Engineering Metrology Toolbox, §V, Appendix A-I and Table 2: IAPWS saturation pressure',
+        url: 'https://emtoolbox.nist.gov/wavelength/documentation.asp',
+      },
+      {
+        title: 'National Weather Service: Dry bulb, wet bulb and dew point temperatures',
+        url: 'https://www.weather.gov/source/zhu/ZHU_Training_Page/definitions/dry_wet_bulb_definition/dry_wet_bulb.html',
+      },
+    ],
+    number: '191',
+  },
+  {
+    slug: 'greenhouse-effect',
+    name: '温室效应',
+    title: '表面更暖，为什么太空逸出仍能保持平衡？',
+    question: '大气向下辐射，是不是额外创造了能量？',
+    description: '逐项核对单层灰体的吸收、双向发射与顶层预算，再跟随正热容瞬态恢复平衡。',
+    color: '#9db8a9',
+    tag: '辐射平衡',
+    related: ['heat-radiation', 'heat-conduction'],
+    sources: [
+      {
+        title: 'NASA: Climate and Earth Energy Budget',
+        url: 'https://science.nasa.gov/earth/earth-observatory/climate-and-earths-energy-budget/',
+      },
+      {
+        title: 'Penn State: One-Layer Energy Balance Model',
+        url: 'https://courses.ems.psu.edu/meteo469/book/export/html/198',
+      },
+    ],
+    number: '190',
+  },
+  {
+    slug: 'eddy-current-brake',
+    name: '涡流制动',
+    title: '没有接触，金属为什么会被刹慢？',
+    question: '切几条缝，为什么能让磁制动力变小？',
+    description: '从闭合电流、磁力与焦耳热，观察局部磁场和绝缘切缝如何改变制动。',
+    color: '#b6c2a7',
+    tag: '闭合涡流',
+    related: ['hall-effect', 'induction-motor', 'inductor-transient'],
+    sources: [
+      {
+        title: 'OpenStax · Eddy currents',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents',
+      },
+      {
+        title: 'OpenStax · Eddy currents and magnetic damping',
+        url: 'https://openstax.org/books/college-physics-2e/pages/23-4-eddy-currents-and-magnetic-damping',
+      },
+      {
+        title: 'MIT · Moving magnet and conducting sheet',
+        url: 'https://web.mit.edu/8.02t/www/802TEAL3D/visualizations/faraday/movingDipole/movingDipole.htm',
+      },
+    ],
+    number: '189',
+  },
+  {
+    slug: 'surface-waves',
+    name: '水面波',
+    title: '波浪向前，水也一直向前吗？',
+    question: '水质点的轨道、波峰与波组，为什么有不同速度？',
+    description: '跟住有限水深重力波中的水质点，比较深水圆轨道、浅水扁椭圆与两波叠加的包络速度。',
+    tag: '波动与水深',
+    color: '#59818d',
+    related: ['wave-interference', 'vortex-ring', 'hydrostatic-pressure'],
+    sources: [
+      {
+        title:
+          'MIT Marine Hydrodynamics Lecture 20, §§6.2–6.3: Airy waves, dispersion and particle orbits',
+        url: 'https://ocw.mit.edu/courses/2-20-marine-hydrodynamics-13-021-spring-2005/5d48a5937971d973fd8ca90c051a83f8_lecture20.pdf',
+      },
+      {
+        title: 'MIT Marine Hydrodynamics Lecture 21, §§6.4–6.6: wave groups and energy propagation',
+        url: 'https://ocw.mit.edu/courses/2-20-marine-hydrodynamics-13-021-spring-2005/b9fe0992f1502e0c704359a2f7ecc56c_lecture21.pdf',
+      },
+    ],
+    number: '188',
+  },
+  {
+    slug: 'vortex-ring',
+    name: '涡环',
+    title: '烟圈为什么能一边翻滚、一边向前？',
+    question: '切面里两个反向涡核，怎样组成同一个前进的环？',
+    description:
+      '从闭合涡丝转入经线切面，跟踪流体标记，比较环量、半径、核宽与观察参考系对传播和局部运动的影响。',
+    tag: '流体与涡量',
+    color: '#426674',
+    related: ['viscosity-layers', 'stokes-drag', 'bernoulli'],
+    sources: [
+      {
+        title: 'MIT Unified Engineering F6 — Vortex filaments and Biot–Savart law',
+        url: 'https://ocw.mit.edu/courses/16-01-unified-engineering-i-ii-iii-iv-fall-2005-spring-2006/c1bfd53262231a2e5e77b660b7085c16_f06_0304.pdf',
+      },
+      {
+        title: 'H. K. Moffatt, Vortex dynamics: the legacy of Helmholtz and Kelvin (2011), §§2–3',
+        url: 'https://www.damtp.cam.ac.uk/user/hkm2/PDFs/Moffatt_2011_WorldScientific_Abitvdat_1.pdf',
+      },
+    ],
+    number: '187',
+  },
+  {
+    slug: 'plate-boundaries',
+    name: '板块边界',
+    title: '板块都在移动，边界怎样分出张开、汇聚与错动？',
+    question: '同样的汇聚速度，能不能直接决定谁会俯冲？',
+    description:
+      '分解真实相对速度，追踪新生宽度与连续物质路径，并检查斜向边界和大陆接触的模型边界。',
+    color: '#9fb29d',
+    tag: '板块运动',
+    related: ['seismic-waves', 'coriolis'],
+    sources: [
+      {
+        title: 'USGS: Understanding Plate Motions',
+        url: 'https://pubs.usgs.gov/gip/dynamic/understanding.html',
+      },
+      {
+        title: 'USGS: Main Types of Plate Boundaries',
+        url: 'https://pubs.usgs.gov/gip/dynamic/Vigil.html',
+      },
+    ],
+    number: '186',
+  },
+  {
+    slug: 'stellar-parallax',
+    name: '恒星视差',
+    title: '地球换一个位置，怎样量出恒星距离？',
+    question: '半年角位移为什么是 2p，而不是定义的视差 p？',
+    description: '用真实视线投影分开视差半幅、观察基线、距离、黄纬投影与线性自行。',
+    color: '#a4b4c8',
+    tag: '天文测量',
+    related: ['stereoscopic-vision', 'telescope', 'earth-day'],
+    sources: [
+      {
+        title: 'NASA: Stellar Parallax',
+        url: 'https://science.nasa.gov/asset/hubble/stellar-parallax/',
+      },
+      {
+        title: 'ESA: Parallax and Proper Motion',
+        url: 'https://www.esa.int/ESA_Multimedia/Videos/2018/04/Parallax_and_proper_motion/%28lang%29',
+      },
+      {
+        title:
+          'IAU 2015 Resolution B2 on Recommended Zero Points for the Absolute and Apparent Bolometric Magnitude Scales',
+        url: 'https://arxiv.org/abs/1510.06262',
+      },
+    ],
+    number: '185',
+  },
+  {
+    slug: 'viscosity-layers',
+    name: '黏性分层',
+    title: '上下层速度不同，界面能突然滑开吗？',
+    question: '连续速度、不同斜率与共同剪应力，怎样同时成立？',
+    description:
+      '从启动动量扩散到两液稳态剪切，追踪连续材料线，比较黏度、间隙、层序、耗散与整体平移反例。',
+    tag: '剪切与连续',
+    color: '#a0af87',
+    related: ['stokes-drag', 'heat-conduction', 'diffusion'],
+    sources: [
+      {
+        title: 'Cambridge DAMTP, John Hinch: Fluid Dynamics II, §3.1–3.3',
+        url: 'https://www.damtp.cam.ac.uk/user/examples/D23Le.pdf',
+      },
+    ],
+    number: '184',
+  },
+  {
+    slug: 'hall-effect',
+    name: '霍尔效应',
+    title: '横向电压怎样揭示载流子的符号？',
+    question: '电流方向相同，霍尔电压为什么会反号？',
+    description: '固定电流、磁场与表笔方向，观察漂移、横向力平衡和载流子密度。',
+    color: '#b6c1a2',
+    tag: '横向电压',
+    related: ['eddy-current-brake', 'diode-junction', 'capacitor-fields', 'induction-motor'],
+    sources: [
+      {
+        title: 'OpenStax · The Hall effect',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/11-6-the-hall-effect',
+      },
+      {
+        title: 'NIST · Resistivity and Hall measurements',
+        url: 'https://www.nist.gov/pml/nanoscale-device-characterization-division/popular-links/hall-effect/resistivity-and-hall',
+      },
+      {
+        title: 'NIST · Hall-effect principles',
+        url: 'https://www.nist.gov/pml/nanoscale-device-characterization-division/popular-links/hall-effect/hall-effect',
+      },
+    ],
+    number: '183',
+  },
+  {
+    slug: 'lunar-eclipse',
+    name: '月食',
+    title: '为什么满月不总是月食？',
+    question: '从半影到全食，要看月心还是整个月面投影？',
+    description: '改变交点角、轨道倾角和月地距离，用真实影区相交区分无食、半影、偏食与全食。',
+    color: '#aa9bb9',
+    tag: '影与轨道',
+    related: ['solar-eclipse', 'seasons', 'earth-day'],
+    sources: [
+      {
+        title: 'NASA: Eclipses and the Moon',
+        url: 'https://science.nasa.gov/Moon/eclipses/',
+      },
+      {
+        title: 'NASA: Enlargement of Earth Shadows',
+        url: 'https://eclipse.gsfc.nasa.gov/LEcat5/shadow.html',
+      },
+      {
+        title: 'NASA: Moon Fact Sheet',
+        url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html',
+      },
+    ],
+    number: '182',
+  },
+  {
+    slug: 'stokes-drag',
+    name: '斯托克斯阻力',
+    title: '没有大尾涡，球为什么仍受阻力？',
+    question: '低Re的线性阻力，怎样决定终端沉降并检验自己的边界？',
+    description:
+      '从真实三维球体解析流线追踪速度、黏度与半径，再用终端力平衡和雷诺数检查阻止公式外推。',
+    tag: '黏性与沉降',
+    color: '#95aa8b',
+    related: ['buoyancy', 'bernoulli', 'brownian-motion'],
+    sources: [
+      {
+        title: 'MIT OCW 1.63J, Chiang C. Mei: Stokes flow past a sphere',
+        url: 'https://ocw.mit.edu/courses/1-63-advanced-fluid-dynamics-of-the-environment-fall-2002/359411f0a9d2cd5b7368dab9cc34cdd7_25Stokes.pdf',
+      },
+    ],
+    number: '181',
+  },
+  {
+    slug: 'op-amp-feedback',
+    name: '运放负反馈',
+    title: '运放的两个输入总是相等吗？',
+    question: '虚短在哪些条件下成立，什么时候失效？',
+    description: '用反馈分压、有限增益、输出饱和和转换速率，解释虚短的条件。',
+    color: '#b9c2a4',
+    tag: '误差与负反馈',
+    related: ['bjt-amplifier', 'wheatstone-bridge', 'rc-circuit'],
+    sources: [
+      {
+        title: 'Analog Devices MT-033 · Voltage feedback gain and bandwidth',
+        url: 'https://www.analog.com/media/en/training-seminars/tutorials/MT-033.pdf',
+      },
+      {
+        title: 'Analog Devices · Operational amplifiers',
+        url: 'https://wiki.analog.com/university/courses/electronics/text/chapter-2',
+      },
+      {
+        title: 'Analog Devices · Feedback amplifier configurations',
+        url: 'https://wiki.analog.com/university/courses/electronics/text/chapter-3',
+      },
+      {
+        title: 'Texas Instruments · Predicting slew-rate-limited response',
+        url: 'https://www.ti.com/lit/pdf/snoa726',
+      },
+    ],
+    number: '180',
+  },
+  {
+    slug: 'orbital-transfer',
+    name: '霍曼轨道转移',
+    title: '到了目标高度，为什么还要再点火？',
+    question: '升轨两次加速，中间的速度为什么反而下降？',
+    description:
+      '沿真实开普勒时间比较瞬时脉冲、无推力滑行、远端圆轨道速度与省略第二次点火后的返回。',
+    color: '#baa27c',
+    tag: '轨道机动',
+    related: ['kepler-orbits', 'earth-day'],
+    sources: [
+      {
+        title: 'NASA: Space Mathematics',
+        url: 'https://science.nasa.gov/wp-content/uploads/2023/10/Space_Mathematics.pdf',
+      },
+      {
+        title: 'a.i. solutions: Hohmann Transfer',
+        url: 'https://ai-solutions.com/_freeflyeruniversityguide/hohmann_transfer.htm',
+      },
+    ],
+    number: '179',
+  },
+  {
+    slug: 'venturi-meter',
+    name: '文丘里流量计',
+    title: '不数水滴，怎样用压差测流量？',
+    question: '两处静压口能告诉我们流量的大小和方向吗？',
+    description:
+      '从连续的双液差压管反推流量，用真实体积坐标追踪喉部加速、理想压力恢复、零流量与反向歧义。',
+    tag: '差压测量',
+    color: '#8ea69a',
+    related: ['bernoulli', 'hydrostatic-pressure', 'water-hammer'],
+    sources: [
+      {
+        title: 'USBR Water Measurement Manual, Chapter 2 §14 Tube-type flowmeters',
+        url: 'https://www.usbr.gov/tsc/techreferences/mands/wmm/chap02_14.html',
+      },
+      {
+        title: 'USBR Water Measurement Manual, Chapter 2 §15 Equation coefficients',
+        url: 'https://www.usbr.gov/tsc/techreferences/mands/wmm/chap02_15.html',
+      },
+      {
+        title: 'OpenStax University Physics 1, §14.6 Bernoulli equation',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation',
+      },
+    ],
+    number: '178',
+  },
+  {
+    slug: 'bjt-amplifier',
+    name: '晶体管放大器',
+    title: '小信号怎样控制更大的电压变化？',
+    question: '反相、削顶与负反馈从哪里产生？',
+    description: '沿共射极电路的偏置、电阻压降和功率流，比较小信号、饱和与发射极反馈。',
+    color: '#b5bea0',
+    tag: '偏置与放大',
+    related: ['diode-junction', 'rc-circuit', 'rectifier'],
+    sources: [
+      {
+        title: 'MIT · Bipolar transistors and the Ebers–Moll model',
+        url: 'https://ocw.mit.edu/courses/2-141-modeling-and-simulation-of-dynamic-systems-fall-2006/37f99f992795609a21a878e612dca0bc_bipolar_transist.pdf',
+      },
+      {
+        title: 'Analog Devices · Common emitter amplifier',
+        url: 'https://ez.analog.com/adiacademy/university-program/a/studentzone-articles/SA964/adalm2000-activity-common-emitter-amplifier',
+      },
+    ],
+    number: '177',
+  },
+  {
+    slug: 'earth-day',
+    name: '恒星日与太阳日',
+    title: '转完一整圈，为什么还没回到正午？',
+    question: '一天相对恒星和相对太阳，为什么长度不同？',
+    description: '让自转与公转共享角速度模型，对照恒星重现、太阳正午、停止公转和反向自转。',
+    color: '#99aec6',
+    tag: '天文时间',
+    related: ['seasons', 'kepler-orbits'],
+    sources: [
+      {
+        title: 'NASA: Telling Time by the Stars',
+        url: 'https://www.grc.nasa.gov/www/K-12/Numbers/Math/Mathematical_Thinking/telling_time_by_the_stars.htm',
+      },
+      {
+        title: 'US Naval Observatory: Sidereal Time',
+        url: 'https://aa.usno.navy.mil/data/siderealtime',
+      },
+    ],
+    number: '176',
+  },
+  {
+    slug: 'hydrostatic-pressure',
+    name: '静水压',
+    title: '容器装水更多，底压就一定更大吗？',
+    question: '同深压强、容器形状与壁面承重，如何同时成立？',
+    description: '用真实连通剖面比较同深读数，区分密度、液面气压和总液重，再放大膜片面积与作用力。',
+    tag: '压力与边界',
+    color: '#8da89b',
+    related: ['buoyancy', 'hydraulic-brake', 'water-hammer'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 1, §14.1 Fluids, density and pressure',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-1-fluids-density-and-pressure',
+      },
+      {
+        title: 'OpenStax University Physics 1, §14.2 Measuring pressure',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-2-measuring-pressure',
+      },
+    ],
+    number: '175',
+  },
+  {
+    slug: 'diode-junction',
+    name: 'PN结二极管',
+    title: '二极管真的到0.7伏才导通吗？',
+    question: '耗尽区里有什么，偏置改变了什么？',
+    description: '从固定离子、电势剖面和耗尽宽度，追踪偏置到端电流的联系。',
+    color: '#bec4a0',
+    tag: '势垒与载流子',
+    related: ['rectifier', 'solar-cell', 'capacitor-fields', 'bjt-amplifier'],
+    sources: [
+      {
+        title: 'MIT 6.012 · p–n junction electrostatics',
+        url: 'https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/resources/mit6_012f09_lec04/',
+      },
+      {
+        title: 'MIT 6.012 · p–n junction I–V relationship',
+        url: 'https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/resources/mit6_012f09_lec06/',
+      },
+    ],
+    number: '174',
+  },
+  {
+    slug: 'voronoi',
+    name: 'Voronoi 图',
+    title: '怎样把每个位置分给最近的站点？',
+    question: '距离相等、站点重合或途中有墙时，“最近”还唯一吗？',
+    description: '用实际半平面求交生成区域，移动站点、检查等距边界，再对照直线最近与绕墙最短。',
+    color: '#abb897',
+    tag: '计算几何',
+    related: ['astar-search', 'dijkstra'],
+    sources: [
+      {
+        title: 'David Mount: Computational Geometry, Voronoi Diagrams',
+        url: 'https://www.cs.cmu.edu/afs/cs/academic/class/15456-s14/Handouts/cmsc754-lects.pdf',
+      },
+      {
+        title: 'MIT: Planar Voronoi Diagrams',
+        url: 'https://groups.csail.mit.edu/graphics/classes/6.838/F01/lectures/Voronoi/Voronoi2D.pdf',
+      },
+    ],
+    number: '173',
+  },
+  {
+    slug: 'buoyancy',
+    name: '浮力',
+    title: '沉下去的物体，还有浮力吗？',
+    question: '排液体积、压力差与浮沉，怎样用同一组力解释？',
+    description:
+      '追踪真实浸没高度与上下压力差，从定位下放、放手上浮到加重下沉，再比较不同液体中的平衡吃水。',
+    tag: '排液与平衡',
+    color: '#85a59a',
+    related: ['convection', 'hydraulic-brake', 'water-hammer'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 1, §14.4 Archimedes principle and buoyancy',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy',
+      },
+    ],
+    number: '172',
+  },
+  {
+    slug: 'growth-logistic',
+    name: '逻辑斯谛增长',
+    title: '接近承载量之前，为什么增长先快后慢？',
+    question: '人均增速在下降，总增速为什么仍能上升？',
+    description: '把连续数量曲线与即时增速对照，检查半承载量峰值、超载下降、承载量切换和零值边界。',
+    color: '#98ad83',
+    tag: '种群模型',
+    related: ['diffusion', 'markov-chain'],
+    sources: [
+      {
+        title: 'OpenStax Calculus: The Logistic Equation',
+        url: 'https://openstax.org/books/calculus-volume-2/pages/4-4-the-logistic-equation',
+      },
+      {
+        title: 'OpenStax Biology: Environmental Limits',
+        url: 'https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth',
+      },
+    ],
+    number: '171',
+  },
+  {
+    slug: 'adiabatic-compression',
+    name: '绝热压缩',
+    title: '没有传入热量，气体为什么会变热？',
+    question: '活塞功、热边界与内能怎样一起决定温度？',
+    description:
+      '追踪隔热活塞、真实pV功面积与能量账本，比较等温边界、热容比、反向膨胀和真空自由膨胀反例。',
+    tag: '做功与内能',
+    color: '#ae9870',
+    related: ['ideal-gas', 'heat-conduction', 'refrigerator'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 2, §3.6 Adiabatic processes for an ideal gas',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/3-6-adiabatic-processes-for-an-ideal-gas',
+      },
+      {
+        title: 'OpenStax University Physics 2, §3.3 First law of thermodynamics',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/3-3-first-law-of-thermodynamics',
+      },
+    ],
+    number: '170',
+  },
+  {
+    slug: 'inductor-transient',
+    name: '电感瞬态',
+    title: '断开开关，电流真的停了吗？',
+    question: '电流走哪条路，为什么线圈电压反转？',
+    description: '沿真实续流回路观察电流连续、钳位电压与磁能释放。',
+    color: '#b6b69a',
+    tag: '电流与磁能',
+    related: ['relay', 'rc-circuit', 'capacitor-fields', 'transformer-electric'],
+    sources: [
+      {
+        title: 'OpenStax · RL circuits',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits',
+      },
+      {
+        title: 'Texas Instruments · Inductive load discharge and clamping',
+        url: 'https://www.ti.com/document-viewer/lit/html/snvaa45',
+      },
+    ],
+    number: '169',
+  },
+  {
+    slug: 'random-walk',
+    name: '随机游走',
+    title: '平均位置不动，为什么足迹还在散开？',
+    question: '平方根扩散与单条路径、整体漂移有什么不同？',
+    description: '沿单位步长的真实轨迹比较总体分布、RMS、偏置、奇偶可达性和吸收边界。',
+    color: '#8eb0b2',
+    tag: '随机过程',
+    related: ['markov-chain', 'central-limit-theorem', 'diffusion'],
+    sources: [
+      {
+        title: 'MIT: Random Walks and Diffusion',
+        url: 'https://math.mit.edu/classes/18.366/lec06/',
+      },
+      {
+        title: 'Doyle and Snell: Random Walks and Electric Networks',
+        url: 'https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf',
+      },
+    ],
+    number: '168',
+  },
+  {
+    slug: 'ideal-gas',
+    name: '理想气体',
+    title: '无数次撞壁，怎样形成压强？',
+    question: '温度、数量和容积，分别改变了撞击的什么？',
+    description: '用三维弹性反射轨迹累计壁面冲量，逐项比较温度、容积、粒子数量、表压与原子质量。',
+    tag: '粒子与压强',
+    color: '#8da69a',
+    related: ['thermal-expansion', 'brownian-motion', 'heat-conduction', 'adiabatic-compression'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 2, §2.1 Molecular model of an ideal gas',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/2-1-molecular-model-of-an-ideal-gas',
+      },
+      {
+        title: 'OpenStax University Physics 2, §2.2 Pressure, temperature and rms speed',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/2-2-pressure-temperature-and-rms-speed',
+      },
+    ],
+    number: '167',
+  },
+  {
+    slug: 'central-limit-theorem',
+    name: '中央极限定理',
+    title: '什么在趋近正态：原始数据，还是标准化的和？',
+    question: '增加次数，为什么有时仍看不见钟形？',
+    description: '从精确二项分布观察求和与标准化，再检查稀少事件和完全相关复制怎样限制正态近似。',
+    color: '#ac9cbd',
+    tag: '概率极限',
+    related: ['monte-carlo', 'markov-chain'],
+    sources: [
+      {
+        title: 'MIT: Central Limit Theorem Conditions',
+        url: 'https://live.ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/7f4bafaeaf3fc2b5e4f88afb273f7d3d_IrKUM3nNXJE.pdf',
+      },
+      {
+        title: 'UC Berkeley: Normal Approximation and CLT',
+        url: 'https://www.stat.berkeley.edu/~stark/SticiGui/Text/clt.htm',
+      },
+    ],
+    number: '166',
+  },
+  {
+    slug: 'capacitor-fields',
+    name: '电容器电场',
+    title: '放入介质，电场一定变弱吗？',
+    question: '电荷固定与电压固定，会得到同一个结果吗？',
+    description: '沿极板电荷、介质极化与电势剖面，比较固定电荷、固定电压和分层间隙。',
+    color: '#b7bc95',
+    tag: '电场边界条件',
+    related: ['rc-circuit', 'wheatstone-bridge', 'transformer-electric'],
+    sources: [
+      {
+        title: 'OpenStax · Capacitor with a dielectric',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric',
+      },
+      {
+        title: 'OpenStax · Molecular model of a dielectric',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/8-5-molecular-model-of-a-dielectric',
+      },
+    ],
+    number: '165',
+  },
+  {
+    slug: 'thermal-expansion',
+    name: '热膨胀',
+    title: '金属板受热，孔会变小吗？',
+    question: '孔、塞子与固定杆，如何共享同一个热应变？',
+    description: '追踪带孔板的材料标记，放大冷热零件的配合间隙，再比较自由伸长与固定两端的热应力。',
+    tag: '尺寸与约束',
+    color: '#b59c75',
+    related: ['heat-conduction', 'convection', 'latent-heat'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 2, §1.3 Thermal expansion',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-3-thermal-expansion',
+      },
+    ],
+    number: '164',
+  },
+  {
+    slug: 'monte-carlo',
+    name: '蒙特卡洛方法',
+    title: '点越多，为什么不保证每一步都更准？',
+    question: '增加样本能减小随机波动，却能修复错误抽样吗？',
+    description: '用实际随机前缀估计圆面积，分开单次误差、标准误差、区间与非均匀抽样造成的偏差。',
+    color: '#93a680',
+    tag: '随机计算',
+    related: ['bayes-updating', 'markov-chain'],
+    sources: [
+      {
+        title: 'MIT: Sampling and Monte Carlo Simulation',
+        url: 'https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/resources/mit6_00scs11_lec14/',
+      },
+      {
+        title: 'NIST: Wilson Confidence Intervals',
+        url: 'https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm',
+      },
+    ],
+    number: '163',
+  },
+  {
+    slug: 'heat-radiation',
+    name: '热辐射',
+    title: '同温时，物体还在辐射吗？',
+    question: '发射、吸收与净热流，为什么要分开？',
+    description:
+      '在理想真空黑腔里核对双向辐射，比较同温平衡、四次方温标与灰体发射率，再追踪红外谱峰。',
+    tag: '辐射与收支',
+    color: '#a89370',
+    related: ['greenhouse-effect', 'heat-conduction', 'convection', 'ear-thermometer'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 2, §1.6 Radiation',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-6-mechanisms-of-heat-transfer',
+      },
+      {
+        title: 'OpenStax University Physics 3, §6.1 Blackbody radiation',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation',
+      },
+    ],
+    number: '162',
+  },
+  {
+    slug: 'markov-chain',
+    name: '马尔可夫链',
+    title: '分布稳定，为什么个体还在切换？',
+    question: '有稳态，是否一定会从任意起点走向它？',
+    description: '沿概率质量的流动理解转移矩阵与稳态，再用周期翻转和完全不转移检查收敛与唯一性。',
+    color: '#8ea9bf',
+    tag: '概率过程',
+    related: ['bayes-updating', 'diffusion'],
+    sources: [
+      {
+        title: 'MIT 18.445: Stationary Distributions',
+        url: 'https://ocw.mit.edu/courses/18-445-introduction-to-stochastic-processes-spring-2015/2edaa8542469ce692226813a8bd1ec88_MIT18_445S15_lecture2.pdf',
+      },
+      {
+        title: 'MIT RES.6-012: Markov Chains',
+        url: 'https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/resources/lecture-videos/',
+      },
+    ],
+    number: '161',
+  },
+  {
+    slug: 'center-of-mass',
+    name: '质心',
+    title: '配重向右走，平台为什么向左退？',
+    question: '内部运动能把整个系统带走吗？',
+    description: '在固定地面刻线前移动平台内的配重，追踪质量加权的位置、相反位移、匀速与外力加速。',
+    color: '#a6b799',
+    tag: '整体与内部运动',
+    related: ['elastic-collision', 'angular-momentum', 'lever'],
+    sources: [
+      {
+        title: 'OpenStax · Center of mass',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass',
+      },
+      {
+        title: 'MIT OCW · Center of mass and motion of the center of mass',
+        url: 'https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-5-momentum-and-impulse/',
+      },
+    ],
+    number: '160',
+  },
+  {
+    slug: 'helmholtz-resonator',
+    name: '亥姆霍兹共鸣器',
+    title: '往瓶子里装水，为什么音调会升高？',
+    question: '颈部的一小段空气，怎样与整腔空气一起共鸣？',
+    description:
+      '从空气柱惯性与腔体压缩出发，逐项改变体积、颈长和截面积，再追踪端修正带来的有效质量。',
+    tag: '空气弹簧',
+    color: '#809c94',
+    related: ['organ-pipe', 'resonance', 'acoustic-reflection'],
+    sources: [
+      {
+        title: 'UNSW Music Acoustics: Helmholtz resonance',
+        url: 'https://newt.phys.unsw.edu.au/jw/Helmholtz.html',
+      },
+    ],
+    number: '159',
+  },
+  {
+    slug: 'organ-pipe',
+    name: '风琴管',
+    title: '塞住顶端，为什么能低一个八度？',
+    question: '开放端与封闭端，分别让空气怎样振动？',
+    description:
+      '将纵向粒子运动与压力剖面相连，比较开放、塞闭与奇数模态，再改变长度并放大管口的端修正。',
+    tag: '声柱与边界',
+    color: '#789784',
+    related: ['standing-wave', 'acoustic-reflection', 'resonance', 'helmholtz-resonator'],
+    sources: [
+      {
+        title: 'UNSW Music Acoustics: Pipes and harmonics, cylindrical and conical bores',
+        url: 'https://newt.phys.unsw.edu.au/jw/pipes.html',
+      },
+      {
+        title: 'UNSW Physclips: Acoustic impedance, intensity and power',
+        url: 'https://www.animations.physics.unsw.edu.au/jw/sound-impedance-intensity.htm',
+      },
+    ],
+    number: '158',
+  },
+  {
+    slug: 'elastic-collision',
+    name: '弹性碰撞',
+    title: '弹性碰撞：能量在接触里去了哪里？',
+    question: '碰撞时变慢的能量，会回来吗？',
+    description: '近看两车弹簧压缩与回弹，追踪动量、暂存能量、质量差异和质心参考系。',
+    color: '#afba92',
+    tag: '碰撞与储能',
+    related: ['angular-momentum', 'flywheel', 'lever', 'center-of-mass'],
+    sources: [
+      {
+        title: 'OpenStax · Types of collisions',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions',
+      },
+      {
+        title: 'OpenStax · Center of mass',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass',
+      },
+    ],
+    number: '157',
+  },
+  {
+    slug: 'principal-components',
+    name: '主成分分析',
+    title: '投影到哪条轴，才能保留最多变化？',
+    question: '保留最大方差，为什么也会最小化正交重建误差？',
+    description: '中心化、旋转与重建真实点云，再用单位变换和等方差数据检查主轴的适用边界。',
+    color: '#ba9c78',
+    tag: '数据分析',
+    related: ['dimensions', 'jpeg', 'gradient-descent'],
+    sources: [
+      {
+        title: 'Stanford CS229: PCA and Reconstruction Error',
+        url: 'https://cs229.stanford.edu/notes2022fall/pca-annotated.pdf',
+      },
+      {
+        title: 'CMU: Principal Components Analysis',
+        url: 'https://www.stat.cmu.edu/~cshalizi/dst/26/lectures/03/lecture-03.html',
+      },
+    ],
+    number: '156',
+  },
+  {
+    slug: 'gradient-descent',
+    name: '梯度下降',
+    title: '方向朝下，步子太大仍会越走越高',
+    question: '为什么有的之字形逐渐收敛，有的反而放大？',
+    description: '在可解析的二次损失上核对真实梯度、迭代、收敛之字形、发散与临界步长。',
+    color: '#91ab84',
+    tag: '优化',
+    related: ['transformer', 'dimensions', 'noise', 'growth-logistic'],
+    sources: [
+      {
+        title: 'Cornell: Gradient-based Optimization',
+        url: 'https://www.cs.cornell.edu/courses/cs3780/2025sp/notes/lec10-gd-newton.pdf',
+      },
+      {
+        title: 'Boyd and Vandenberghe: Convex Optimization, §9.3',
+        url: 'https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf',
+      },
+    ],
+    number: '155',
+  },
+  {
+    slug: 'acoustic-reflection',
+    name: '声反射',
+    title: '声音返回时，什么翻转，什么守恒？',
+    question: '透射压力更大，为什么不代表能量更多？',
+    description: '用同一脉冲比较高低阻抗、压力与粒子速度，再核对能量和声速不同但阻抗匹配的反例。',
+    tag: '阻抗与能流',
+    color: '#7c9ca8',
+    related: ['ultrasound', 'standing-wave', 'resonance'],
+    sources: [
+      {
+        title: 'UNSW Physclips: Acoustic impedance, intensity and power',
+        url: 'https://www.animations.physics.unsw.edu.au/jw/sound-impedance-intensity.htm',
+      },
+      {
+        title: 'Daniel A. Russell, Penn State: Phase Between Pressure and Particle Velocity',
+        url: 'https://www.acs.psu.edu/drussell/Demos/phase-p-u/phase-p-u.html',
+      },
+    ],
+    number: '154',
+  },
+  {
+    slug: 'angular-momentum',
+    name: '角动量',
+    title: '收拢就加速，能量从哪里来？',
+    question: '角动量没增加，为什么转得更快？',
+    description: '在同一转台上移动两个滑块，追踪转动惯量、角速度、内部做功与外力矩。',
+    color: '#a1b593',
+    tag: '守恒与做功',
+    related: ['flywheel', 'gyroscope', 'lever'],
+    sources: [
+      {
+        title: 'OpenStax · Conservation of angular momentum',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum',
+      },
+    ],
+    number: '153',
+  },
+  {
+    slug: 'convolution',
+    name: '离散卷积',
+    title: '翻转、滑动，相乘再相加',
+    question: '为什么非对称核能看出卷积与相关的不同？',
+    description: '从单位脉冲到逐项贡献，核对真实卷积、相关差异，以及裁剪和循环边界的结果。',
+    color: '#aa97bd',
+    tag: '信号处理',
+    related: ['fourier-transform', 'wave-interference', 'noise'],
+    sources: [
+      {
+        title: 'MIT Signals and Systems: Lecture 4 Convolution',
+        url: 'https://ocw.mit.edu/courses/res-6-007-signals-and-systems-spring-2011/resources/lecture-4-convolution/',
+      },
+      {
+        title: 'MIT Signals, Systems and Inference, Chapter 2',
+        url: 'https://ocw.mit.edu/courses/6-011-introduction-to-communication-control-and-signal-processing-spring-2010/4599f6cff8a3890477f4c4986db032a2_MIT6_011S10_chap02.pdf',
+      },
+    ],
+    number: '152',
+  },
+  {
+    slug: 'mirage',
+    name: '海市蜃楼',
+    title: '热路面为什么看起来像有水？',
+    question: '天空的光，怎样从接近路面的方向进入眼睛？',
+    description:
+      '追踪厘米级热空气薄层中的连续弯曲，比较真实光路与入眼切线，并测试角度和眼高的边界。',
+    tag: '梯度折射与视线',
+    color: '#9bb3ab',
+    related: ['refraction', 'total-internal-reflection', 'heat-conduction'],
+    sources: [
+      {
+        title: 'Michael J. Ruiz (2019), Road mirage angle, Physics Education 54, 065009',
+        url: 'https://www.mjtruiz.com/publications/2019-11-mirage.pdf',
+      },
+      {
+        title: 'Atmospheric Optics: Air Temperatures, Mirages & Green Flashes',
+        url: 'https://www.atoptics.org.uk/atoptics/mirtemp.htm',
+      },
+    ],
+    number: '151',
+  },
+  {
+    slug: 'gyroscope',
+    name: '陀螺仪',
+    title: '陀螺：重力为什么让轴转向？',
+    question: '重力向下，陀螺轴为什么绕着转？',
+    description: '从支点、重力矩与角动量方向理解水平进动，比较自转快慢、反向和零重力矩。',
+    color: '#93aaa2',
+    tag: '空间转动',
+    related: ['flywheel', 'centrifugal-governor', 'lever'],
+    sources: [
+      {
+        title: 'OpenStax · Precession of a gyroscope',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/11-4-precession-of-a-gyroscope',
+      },
+      {
+        title: 'MIT 8.01SC · Nutation and the full angular momentum of a gyroscope',
+        url: 'https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/bf05a2580eca7a3a92d0a770e608af76_5oLLnCGStUc.pdf',
+      },
+    ],
+    number: '150',
+  },
+  {
+    slug: 'run-length-encoding',
+    name: '游程编码',
+    title: '一串相同字节，怎样变成次数和值？',
+    question: '为什么长色带能缩小，细竖纹反而变大？',
+    description: '扫描真实字节、序列化计数与值、完整解码，并比较长段、短段和变长计数边界。',
+    color: '#aa9a68',
+    tag: '无损编码',
+    related: ['lz77', 'huffman', 'jpeg'],
+    sources: [
+      {
+        title: 'Microsoft: Bitmap Compression RLE modes',
+        url: 'https://learn.microsoft.com/en-us/windows/win32/gdi/bitmap-compression',
+      },
+      {
+        title: 'WebAssembly: unsigned LEB128',
+        url: 'https://webassembly.github.io/spec/core/binary/values.html#integers',
+      },
+    ],
+    number: '149',
+  },
+  {
+    slug: 'spherical-aberration',
+    name: '球差',
+    title: '为什么调焦之后，光仍聚不成一点？',
+    question: '不同高度的光，为什么没有同一个最佳焦点？',
+    description:
+      '用真实三维反射追踪球面的焦区与光斑，分别测试接收面、有效口径和抛物面校正，再检查离轴边界。',
+    tag: '面形与几何像差',
+    color: '#708d83',
+    related: ['camera-lens', 'telescope', 'fresnel-lens'],
+    sources: [
+      {
+        title:
+          'OpenStax University Physics 3, §2.2 Spherical Mirrors: spherical aberration and coma',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/2-2-spherical-mirrors',
+      },
+      {
+        title: 'Nikon Sport Optics Guide: Aberrations',
+        url: 'https://imaging.nikon.com/sport-optics/guide/binoculars/technologies/technologies_08/',
+      },
+    ],
+    number: '148',
+  },
+  {
+    slug: 'diffie-hellman',
+    name: 'Diffie–Hellman 协商',
+    title: '只交换公开值，怎样各自算出同一个秘密？',
+    question: '算出相同共享值，为什么还不能确定对端是谁？',
+    description: '逐项核对小群指数交换、共享值一致、穷举边界与主动替换公钥的中间人反例。',
+    color: '#8fafad',
+    tag: '密码学',
+    related: ['digital-signature', 'hash', 'network'],
+    sources: [
+      {
+        title: 'RFC 2631: Diffie–Hellman Key Agreement, §§2.1.1/2.1.5',
+        url: 'https://www.rfc-editor.org/rfc/rfc2631.html',
+      },
+    ],
+    number: '147',
+  },
+  {
+    slug: 'digital-signature',
+    name: '数字签名',
+    title: '公开消息与公钥，怎样核对私钥签出的证明？',
+    question: '签名没有隐藏消息，为何仍能检出被改动的内容？',
+    description:
+      '用明确不安全的小群 Schnorr 算术检查公开验签、消息与公钥绑定，以及 nonce 复用泄密。',
+    color: '#b99b91',
+    tag: '密码学',
+    related: ['hash', 'merkle-tree', 'network', 'diffie-hellman'],
+    sources: [
+      {
+        title: 'RFC 9591: Single-Party Schnorr Signatures, Appendix D',
+        url: 'https://www.rfc-editor.org/rfc/rfc9591.html#appendix-D',
+      },
+      {
+        title: 'RFC 8235: Schnorr Finite-Field Groups and Fiat–Shamir',
+        url: 'https://www.rfc-editor.org/rfc/rfc8235.html',
+      },
+    ],
+    number: '146',
+  },
+  {
+    slug: 'flywheel',
+    name: '飞轮',
+    title: '飞轮：把多余能量留到下一刻',
+    question: '输入忽强忽弱，飞轮怎样减小转速波动？',
+    description: '沿转矩差与动能变化观察飞轮储能、同质量分布、有限续转和启动代价。',
+    color: '#9caf94',
+    tag: '转动储能',
+    related: ['centrifugal-governor', 'four-stroke-engine', 'sewing-machine', 'angular-momentum'],
+    sources: [
+      {
+        title: 'OpenStax · Moment of inertia and rotational kinetic energy',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/10-4-moment-of-inertia-and-rotational-kinetic-energy',
+      },
+      {
+        title: 'NPTEL · Power smoothing by flywheels',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112101096/Mod%206/Lec1/6.1_5.html',
+      },
+    ],
+    number: '145',
+  },
+  {
+    slug: 'moire',
+    name: '摩尔纹',
+    title: '两层细纹，为什么长出更大的条纹？',
+    question: '细纹轻轻一动，大条纹为什么移动那么多？',
+    description:
+      '在同一物理坐标中叠乘两层透射光栅，追踪周期、转角与平移如何产生差频及放大的重合运动。',
+    tag: '空间差频与重合',
+    color: '#889ba5',
+    related: ['sampling-aliasing', 'wave-interference', 'diffraction-grating'],
+    sources: [
+      {
+        title: 'University of Iowa Physics: Moiré Transparencies3B50.40',
+        url: 'https://instructional-resources.physics.uiowa.edu/3b5040-moire-transparencies',
+      },
+    ],
+    number: '144',
+  },
+  {
+    slug: 'merkle-tree',
+    name: 'Merkle 树',
+    title: '不用传全部内容，怎样验证其中一项？',
+    question: '两个兄弟哈希，怎样重建四项内容的可信根？',
+    description: '用真实 SHA-256 构造有序哈希树，逐层核对包含证明，再区分内容篡改与根的来源信任。',
+    color: '#b197a7',
+    tag: '数据完整性',
+    related: ['hash', 'bloom-filter', 'network'],
+    sources: [
+      {
+        title: 'RFC 9162: Merkle Tree Hash and Inclusion Proofs',
+        url: 'https://www.rfc-editor.org/rfc/rfc9162.html#section-2.1',
+      },
+    ],
+    number: '143',
+  },
+  {
+    slug: 'stereoscopic-vision',
+    name: '双目立体视觉',
+    title: '两幅稍有不同的图，怎样透露深度？',
+    question: '视差的正负、大小和配对，分别告诉我们什么？',
+    description:
+      '把两眼视线与登记后的左右图连接，分别改变物距、基线和注视距离，再用错误配对检验深度推算。',
+    tag: '投影与对应',
+    color: '#9eae93',
+    related: ['stellar-parallax', 'myopia-lens', 'camera-lens', 'lidar-ranging'],
+    sources: [
+      {
+        title: 'OpenStax Psychology2e, §5.3 Vision: depth perception',
+        url: 'https://openstax.org/books/psychology-2e/pages/5-3-vision',
+      },
+      {
+        title: 'OpenCV: Depth Map from Stereo Images',
+        url: 'https://docs.opencv.org/4.x/dd/d53/tutorial_py_depthmap.html',
+      },
+    ],
+    number: '142',
+  },
+  {
+    slug: 'raft-consensus',
+    name: 'Raft 共识',
+    title: '网络分成两半，谁还能确认下一条命令？',
+    question: '复制到多数之后，为什么旧任期日志仍不能直接提交？',
+    description: '追踪五节点选举、少数分区、日志修复，以及当前任期提交旧前缀的安全条件。',
+    color: '#9ba8c3',
+    tag: '分布式系统',
+    related: ['network', 'write-ahead-log', 'database-transactions'],
+    sources: [
+      {
+        title: 'Ongaro & Ousterhout: In Search of an Understandable Consensus Algorithm',
+        url: 'https://raft.github.io/raft.pdf',
+      },
+    ],
+    number: '141',
+  },
+  {
+    slug: 'color-mixing',
+    name: '色光混合',
+    title: '加在一起变白，叠在一起却变暗？',
+    question: '光束相加与滤片串联，究竟做了什么不同的运算？',
+    description:
+      '从真实线性光强叠加切到CMY串联过滤，跟踪三个通道的能量，再改变照明检验颜色的条件。',
+    tag: '光强与透射',
+    color: '#8cac94',
+    related: ['printer', 'rayleigh-scattering', 'prism-dispersion'],
+    sources: [
+      {
+        title: 'Stanford CS178: Additive versus subtractive color mixing',
+        url: 'https://graphics.stanford.edu/courses/cs178/applets/colormixing.html',
+      },
+      {
+        title: 'Exploratorium ColorFest: What Is Color?',
+        url: 'https://annex.exploratorium.edu/colorfest/whatiscolor.html',
+      },
+      {
+        title: 'W3C CSS Color4: Color conversion sample code',
+        url: 'https://www.w3.org/TR/css-color-4/#color-conversion-code',
+      },
+    ],
+    number: '140',
+  },
+  {
+    slug: 'centrifugal-governor',
+    name: '离心调速器',
+    title: '离心调速器：稳定了，为何还没回到原速？',
+    question: '飞球怎样通过阀门稳住转速？',
+    description: '沿飞球、套筒和阀门追踪负反馈，比较断开连接、稳态偏差与响应滞后。',
+    color: '#b19b6e',
+    tag: '机械反馈',
+    related: ['four-stroke-engine', 'cam-follower', 'escapement'],
+    sources: [
+      {
+        title: 'J. C. Maxwell · On Governors (1868)',
+        url: 'https://webhomes.maths.ed.ac.uk/~v1ranick/papers/maxwell1.pdf',
+      },
+      {
+        title: 'IGNOU · Governors',
+        url: 'https://egyankosh.ac.in/bitstream/123456789/31876/1/Unit-12.pdf',
+      },
+    ],
+    number: '139',
+  },
+  {
+    slug: 'write-ahead-log',
+    name: '预写日志',
+    title: '数据页还是旧值，为何已经可以确认成功？',
+    question: '掉电后，日志怎样恢复尚未写入数据页的修改？',
+    description: '沿内存、顺序日志与持久数据页检查五个故障边界，区分修改记录、提交与客户端确认。',
+    color: '#b3a477',
+    tag: '数据库',
+    related: ['raft-consensus', 'database-transactions', 'database-index', 'lz77'],
+    sources: [
+      {
+        title: 'PostgreSQL 18: Write-Ahead Logging',
+        url: 'https://www.postgresql.org/docs/18/wal-intro.html',
+      },
+      {
+        title: 'PostgreSQL 18: Asynchronous Commit',
+        url: 'https://www.postgresql.org/docs/18/wal-async-commit.html',
+      },
+    ],
+    number: '138',
+  },
+  {
+    slug: 'fresnel-lens',
+    name: '菲涅耳透镜',
+    title: '透镜变薄，为什么仍能聚光？',
+    question: '同心环带的哪一部分真正改变光的方向？',
+    description:
+      '从真实环带曲面求法线和折射路径，对比连续透镜的体积，再用折射率匹配与环间相位检验聚光的边界。',
+    tag: '环带曲面与折射',
+    color: '#8d9f85',
+    related: ['refraction', 'camera-lens', 'diffraction'],
+    sources: [
+      {
+        title: 'Edmund Optics: Advantages of Fresnel Lenses',
+        url: 'https://www.edmundoptics.eu/knowledge-center/application-notes/optics/advantages-of-fresnel-lenses/',
+      },
+      {
+        title: 'OpenStax University Physics 3, §1.3 Refraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction',
+      },
+    ],
+    number: '137',
+  },
+  {
+    slug: 'rayleigh-scattering',
+    name: '瑞利散射',
+    title: '蓝天与暖色直达光，怎样来自同一束光？',
+    question: '散射为什么偏爱短波长，却不会把红光变蓝？',
+    description:
+      '逐波长核对直达与散射收支，比较四次方选择、角分布与长路径，再把整段光谱和视觉响应连接。',
+    tag: '光谱与散射',
+    color: '#6d8fa7',
+    related: ['rainbow', 'polarization', 'prism-dispersion'],
+    sources: [
+      {
+        title: 'NASA GSFC: Rayleigh Scattering',
+        url: 'https://acd-ext.gsfc.nasa.gov/anonftp/acd/daac_ozone/Lecture4/Text/Lecture_4/rayleigh.html',
+      },
+      {
+        title: 'NASA Science: Wave Behaviors',
+        url: 'https://science.nasa.gov/ems/03_behaviors/',
+      },
+      {
+        title: 'American Meteorological Society: Rayleigh phase function',
+        url: 'https://glossary.ametsoc.org/wiki/rayleigh-phase-function/',
+      },
+      {
+        title:
+          'Wyman, Sloan & Shirley (2013): Simple Analytic Approximations to the CIE XYZ Color Matching Functions',
+        url: 'https://jcgt.org/published/0002/02/01/paper.pdf',
+      },
+      {
+        title: 'OpenStax University Physics 3, §6.1 Blackbody Radiation',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation',
+      },
+    ],
+    number: '136',
+  },
+  {
+    slug: 'database-transactions',
+    name: '数据库事务',
+    title: '一起提交，为何仍会把一张票卖两次？',
+    question: '原子性保护整笔修改，谁来保护并发读到的旧值？',
+    description: '用公共库存和两笔私有草稿区分原子提交、回滚、旧读数覆盖与版本校验重试。',
+    color: '#ad8fa1',
+    tag: '数据库',
+    related: ['write-ahead-log', 'database-index', 'bloom-filter', 'lz77'],
+    sources: [
+      {
+        title: 'PostgreSQL: Transactions',
+        url: 'https://www.postgresql.org/docs/current/tutorial-transactions.html',
+      },
+      {
+        title: 'PostgreSQL: Transaction Isolation',
+        url: 'https://www.postgresql.org/docs/current/transaction-iso.html',
+      },
+    ],
+    number: '135',
+  },
+  {
+    slug: 'ratchet',
+    name: '棘轮',
+    title: '棘轮：单向不等于没有空回',
+    question: '能挡住反转，为什么还会退一点？',
+    description: '沿斜面、陡面和滑动棘爪观察单向约束、空回角与抬起解锁。',
+    color: '#a6b798',
+    tag: '单向约束',
+    related: ['bicycle', 'escapement', 'geneva-drive'],
+    sources: [
+      {
+        title: 'NPTEL · Ratchet and pawl indexing',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112103174/module4/lec5/1.html',
+      },
+      {
+        title: 'US7131353B2 · Sliding-pawl ratcheting tools',
+        url: 'https://patents.google.com/patent/US7131353B2/en',
+      },
+    ],
+    number: '134',
+  },
+  {
+    slug: 'max-flow',
+    name: '最大流',
+    title: '撤回一次旧分配，总流量反而增加',
+    question: '为什么正向看似堵死，反向残余还能把总量从 3 提到 4？',
+    description: '逐步分配容量、撤回中间边的旧流量，再用等容量割证明网络已经达到上界。',
+    color: '#8daab7',
+    tag: '图算法',
+    related: ['network', 'dijkstra', 'congestion-control'],
+    sources: [
+      {
+        title: 'Princeton: Maxflow and Mincut Study Guide',
+        url: 'https://www.cs.princeton.edu/courses/archive/fall15/cos226/lectures/study/64MaxFlow.html',
+      },
+      {
+        title: 'MIT: Maximum Flow',
+        url: 'https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/8346e77d563c80b0ae714a21bc9a4541_max_flow_dff.pdf',
+      },
+    ],
+    number: '133',
+  },
+  {
+    slug: 'retroreflector',
+    name: '回归反射器',
+    title: '三面镜子怎样把光送回来的方向？',
+    question: '为什么返回的光不一定重走原路？',
+    description:
+      '逐次追踪有限直角镜中的真实碰撞，比较一面、两面、三面反射，并观察横向偏移和入口边界。',
+    tag: '三维反射与追迹',
+    color: '#5f8581',
+    related: ['total-internal-reflection', 'lidar-ranging', 'polarization'],
+    sources: [
+      {
+        title: 'Ansys Optics: How to model corner-cube retroreflectors',
+        url: 'https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors',
+      },
+      {
+        title: 'Edmund Optics: N-BK7 Corner Cube Retroreflectors',
+        url: 'https://www.edmundoptics.com/f/n-bk7-corner-cube-retroreflectors/12447/',
+      },
+    ],
+    number: '132',
+  },
+  {
+    slug: 'telescope',
+    name: '望远镜',
+    title: '望远镜把什么放大，又把什么变小？',
+    question: '看清远处，为什么眼睛还要站对位置？',
+    description:
+      '沿物镜、中间实像和目镜追踪成像，再把出瞳放大看，连接角放大率、光束直径与眼睛位置。',
+    tag: '成像与出瞳',
+    color: '#466d79',
+    related: ['camera-lens', 'myopia-lens', 'refraction'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 3, §2.8 Microscopes and Telescopes',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/2-8-microscopes-and-telescopes',
+      },
+      {
+        title: 'Edmund Optics: Telescope Optics for Hobbyists',
+        url: 'https://www.edmundoptics.com/knowledge-center/application-notes/optics/telescope-optics-for-hobbyists/',
+      },
+    ],
+    number: '131',
+  },
+  {
+    slug: 'astar-search',
+    name: 'A* 搜索',
+    title: '朝向目标，还要算上已经付出的成本',
+    question: '为什么把剩余距离估计放大，会找到更贵的路线？',
+    description: '在有墙与不同进入成本的地图上追踪 g+h、合法下界、过高估计和不可达边界。',
+    color: '#95a47c',
+    tag: '图算法',
+    related: ['dijkstra', 'network', 'database-index'],
+    sources: [
+      {
+        title: 'Russell & Norvig: Informed Search',
+        url: 'https://aima.cs.berkeley.edu/slides-pdf/chapter04a.pdf',
+      },
+    ],
+    number: '130',
+  },
+  {
+    slug: 'topological-sort',
+    name: '拓扑排序',
+    title: '前提全部解除，下一步才可执行',
+    question: '为什么完成 A，还不能立即执行 D？',
+    description: '跟随剩余入度逐项释放依赖，比较不同有效顺序，并用真实环解释阻塞。',
+    color: '#b49b7b',
+    tag: '图算法',
+    related: ['cpu-pipeline', 'dijkstra', 'database-index'],
+    sources: [
+      {
+        title: 'Princeton: Directed Graphs',
+        url: 'https://algs4.cs.princeton.edu/42digraph/',
+      },
+      {
+        title: 'Sedgewick & Wayne: Directed Graphs',
+        url: 'https://algs4.cs.princeton.edu/lectures/keynote/42DirectedGraphs.pdf',
+      },
+    ],
+    number: '129',
+  },
+  {
+    slug: 'union-find',
+    name: '并查集',
+    title: '压短一条父链，为什么不会改变同组关系？',
+    question: '查找经过的路径，怎样让下一次查找更短？',
+    description: '从八个独立集合到按大小合并，再追踪路径压缩与重复合并的真实变化。',
+    color: '#8da68f',
+    tag: '数据结构',
+    related: ['dijkstra', 'network', 'hash'],
+    sources: [
+      {
+        title: 'Princeton: Union-Find',
+        url: 'https://algs4.cs.princeton.edu/15uf/',
+      },
+      {
+        title: 'Sedgewick & Wayne: Union-Find lecture',
+        url: 'https://algs4.cs.princeton.edu/lectures/keynote/15UnionFind.pdf',
+      },
+    ],
+    number: '128',
+  },
+  {
+    slug: 'geneva-drive',
+    name: '日内瓦机构',
+    title: '日内瓦机构：输入不停，输出为何停歇？',
+    question: '电机一直转，槽轮为什么一走一停？',
+    description: '跟住驱动销进入径向槽，再看锁止圆弧接手，比较槽数与分度时间。',
+    color: '#83a99b',
+    tag: '分度与停歇',
+    related: ['cam-follower', 'escapement', 'sewing-machine'],
+    sources: [
+      {
+        title: 'NPTEL · Geneva indexing mechanism',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112103174/module4/lec5/2.html',
+      },
+      {
+        title: 'NPTEL · Indexing applications',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112103174/module4/lec5/3.html',
+      },
+    ],
+    number: '127',
+  },
+  {
+    slug: 'heap-priority-queue',
+    name: '堆优先队列',
+    title: '最高优先级，怎样一直留在根上？',
+    question: '为什么弹出根之后，必须与较大的孩子交换？',
+    description: '沿同一个二叉堆追踪插入、上浮、弹出与下沉，区分局部堆序和全局排序。',
+    color: '#94a9bb',
+    tag: '数据结构',
+    related: ['dijkstra', 'quicksort', 'cpu-pipeline'],
+    sources: [
+      {
+        title: 'Princeton: Priority Queues',
+        url: 'https://algs4.cs.princeton.edu/24pq/',
+      },
+    ],
+    number: '126',
+  },
+  {
+    slug: 'universal-joint',
+    name: '万向节',
+    title: '万向节：一圈相同，每一瞬间也相同吗？',
+    question: '输入匀速转，拐弯后的轴还匀速吗？',
+    description: '沿真实叉头和十字轴连接，观察单节变速、双节抵消及夹角不等的反例。',
+    color: '#719693',
+    tag: '空间传动',
+    related: ['differential', 'bicycle', 'planetary-gears'],
+    sources: [
+      {
+        title: 'SDP/SI · Universal joints: kinematics and phasing',
+        url: 'https://sdp-si.com/Catalogs/D757-Couplings-Universal-Joints3.php',
+      },
+    ],
+    number: '125',
+  },
+  {
+    slug: 'diffraction-grating',
+    name: '衍射光栅',
+    title: '更多条缝，为什么亮线反而更窄？',
+    question: '许多束波怎样只在少数方向增强？',
+    description:
+      '从有限宽度多缝的真实相量和强度出发，比较缝数、间距、波长与缺级，区分干涉主峰和单缝包络。',
+    color: '#a5ad88',
+    tag: '光学与相干',
+    related: ['thin-film-interference', 'double-slit', 'diffraction', 'prism-dispersion'],
+    sources: [
+      {
+        title: 'OpenStax University Physics3, §4.4 Diffraction Gratings',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/4-4-diffraction-gratings',
+      },
+      {
+        title: 'OpenStax University Physics3, §4.3 Double-Slit Diffraction: finite-width envelope',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/4-3-double-slit-diffraction',
+      },
+    ],
+    number: '124',
+  },
+  {
+    slug: 'prism-dispersion',
+    name: '棱镜色散',
+    title: '棱镜把颜色造出来了吗？',
+    question: '同一束白光为什么会走向不同方向？',
+    description:
+      '在真实三角几何中追踪N-BK7玻璃的两次折射，用厂商色散数据与无色散对照区分材料、形状和输入光谱。',
+    color: '#a2b7ae',
+    tag: '光学与光谱',
+    related: ['refraction', 'rainbow', 'diffraction-grating'],
+    sources: [
+      {
+        title:
+          'SCHOTT N-BK7 optical-glass datasheet: refractive indices and Sellmeier coefficients',
+        url: 'https://media.schott.com/api/public/content/41e799d0bf874807a0bb8e702fbb75b5?v=54856406',
+      },
+      {
+        title: 'MIT2.71 Optics lecture2: prisms and dispersion',
+        url: 'https://ocw.mit.edu/courses/2-71-optics-spring-2009/cf9bdaeff470532f4eee57629c4ca781_MIT2_71S09_lec02.pdf',
+      },
+    ],
+    number: '123',
+  },
+  {
+    slug: 'total-internal-reflection',
+    name: '全反射',
+    title: '透明界面什么时候会像镜子？',
+    question: '光为什么有时无法传播到界面外侧？',
+    description: '固定同一界面追踪临界角、反射功率和外侧消逝场，分别改变入射角、折射率与传播方向。',
+    color: '#6a99a2',
+    tag: '光学与边界',
+    related: ['refraction', 'optical-fiber', 'polarization'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 3, §1.4 Total Internal Reflection',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-4-total-internal-reflection',
+      },
+      {
+        title: 'MIT2.71 Optics: dielectric interfaces and evanescent waves',
+        url: 'https://web.mit.edu/2.710/Fall06/2.710-wk7-b-sl.pdf',
+      },
+    ],
+    number: '122',
+  },
+  {
+    slug: 'refraction',
+    name: '折射',
+    title: '换了介质，光一定会转弯吗？',
+    question: '光线与波前怎样一起通过界面？',
+    description: '由同一斯涅尔状态连接波前、介质内波长和折射角，比较正入射、折射率变化与反向传播。',
+    color: '#8dafad',
+    tag: '光学与传播',
+    related: [
+      'camera-lens',
+      'optical-fiber',
+      'total-internal-reflection',
+      'fresnel-lens',
+      'mirage',
+    ],
+    sources: [
+      {
+        title: 'OpenStax University Physics 3, §1.3 Refraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction',
+      },
+      {
+        title: 'MIT OCW 2.71 Optics, lecture2: refraction and dispersion',
+        url: 'https://ocw.mit.edu/courses/2-71-optics-spring-2009/cf9bdaeff470532f4eee57629c4ca781_MIT2_71S09_lec02.pdf',
+      },
+    ],
+    number: '121',
+  },
+  {
+    slug: 'quicksort',
+    name: '快速排序',
+    title: '分好三段，为什么还没有完全排好？',
+    question: '交换之后，扫描指针该不该继续走？',
+    description:
+      '追踪带身份的三向分区，观察右交换为何不前进扫描指针、重复键怎样留在中间，再比较极端与均衡分区的工作量。',
+    color: '#aa97bb',
+    tag: '主元 · 三向分区 · 递归',
+    related: ['merge-sort', 'binary-search', 'heap-priority-queue'],
+    sources: [
+      {
+        title: 'Princeton — Quicksort and three-way partitioning',
+        url: 'https://algs4.cs.princeton.edu/23quicksort/',
+      },
+      {
+        title: 'Robert Sedgewick — Research overview',
+        url: 'https://sedgewick.io/research/',
+      },
+    ],
+    number: '120',
+  },
+  {
+    slug: 'merge-sort',
+    name: '归并排序',
+    title: '只看两个头部，为什么不会漏掉更小的数？',
+    question: '把两段排好的队伍，怎样合成一队？',
+    description:
+      '从单项有序段开始，追踪同一批带编号的对象如何稳定合并；再用藏在头部之后的 2 检验有序前提。',
+    color: '#8aaca6',
+    tag: '有序段 · 头部比较 · 稳定性',
+    related: ['binary-search', 'quicksort', 'heap-priority-queue'],
+    sources: [
+      {
+        title: 'Princeton — Mergesort',
+        url: 'https://algs4.cs.princeton.edu/22mergesort/',
+      },
+      {
+        title: 'Princeton — Merge API',
+        url: 'https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/Merge.html',
+      },
+    ],
+    number: '119',
+  },
+  {
+    slug: 'binary-search',
+    name: '二分查找',
+    title: '一次比较，为什么能丢掉半边？',
+    question: '没有逐个看过的数，凭什么可以跳过？',
+    description:
+      '保留同一个有序数组，跟踪闭区间怎样缩小、怎样确认不存在，再用乱序反例拆掉“丢半边”的前提。',
+    color: '#bca16e',
+    tag: '有序 · 区间 · 不变量',
+    related: ['merge-sort', 'database-index', 'bloom-filter'],
+    sources: [
+      {
+        title: 'Princeton — Sorting and Searching',
+        url: 'https://introcs.cs.princeton.edu/java/42sort/',
+      },
+    ],
+    number: '118',
+  },
+  {
+    slug: 'cam-follower',
+    name: '凸轮从动件',
+    title: '凸轮从动件：接触能跟上转速吗？',
+    question: '轮子匀速转，滚子就会匀速升降吗？',
+    description: '从偏心圆的真实相切关系出发，观察非匀速升降、失去接触与弹簧预压。',
+    color: '#b29869',
+    tag: '接触与运动',
+    related: ['four-stroke-engine', 'sewing-machine', 'escapement'],
+    sources: [
+      {
+        title: 'NPTEL · Drives and Mechanisms: Cams',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112103174/module4/lec3/1.html',
+      },
+      {
+        title: 'NPTEL · Force-closed cam followers',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112103174/module4/lec3/3.html',
+      },
+    ],
+    number: '117',
+  },
+  {
+    slug: 'screw-jack',
+    name: '螺旋千斤顶',
+    title: '螺旋千斤顶：一圈变成一点升高',
+    question: '小小的转动力矩，为什么能抬起重物？',
+    description: '剖开方牙螺纹，跟踪每圈导程、输入功、摩擦与有条件的自锁。',
+    color: '#ad8a59',
+    tag: '螺旋与自锁',
+    related: ['inclined-plane', 'lever', 'excavator'],
+    sources: [
+      {
+        title: 'NPTEL · Mechanics: Friction in Screws',
+        url: 'https://archive.nptel.ac.in/content/storage2/courses/112105164/lec17.pdf',
+      },
+    ],
+    number: '116',
+  },
+  {
+    slug: 'inclined-plane',
+    name: '斜面',
+    title: '斜面：更省力，未必更省功',
+    question: '坡道越缓，搬运就越省能量吗？',
+    description: '把同一负载送到同一高度，分清拉力、路径长度、重力势能与摩擦耗能。',
+    color: '#9ea78c',
+    tag: '力与能量',
+    related: ['lever', 'pulley', 'hydraulic-brake', 'screw-jack'],
+    sources: [
+      {
+        title: 'OpenStax · Friction',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/6-2-friction',
+      },
+      {
+        title: 'OpenStax · Simple Machines',
+        url: 'https://openstax.org/books/physics/pages/9-3-simple-machines',
+      },
+    ],
+    number: '115',
+  },
+  {
+    slug: 'bayes-updating',
+    name: '贝叶斯更新',
+    title: '同样一枚星标，为什么会得到不同答案？',
+    question: '看到证据以后，应该换哪一个分母？',
+    description:
+      '用一万张纸签的自然频数和面积筛选，看基准率怎样改变同一证据的后验，再分清新证据与重复观察。',
+    color: '#8d91b2',
+    tag: '基准率 · 自然频数 · 后验',
+    related: ['bloom-filter', 'sampling-aliasing', 'hash', 'markov-chain'],
+    sources: [
+      {
+        title: 'NIST Engineering Statistics Handbook — Bayes Formula',
+        url: 'https://www.itl.nist.gov/div898/handbook/apr/section2/apr1a.htm',
+      },
+    ],
+    number: '114',
+  },
+  {
+    slug: 'kepler-orbits',
+    name: '开普勒轨道',
+    title: '走得有快有慢，怎样仍然保持等时？',
+    question: '行星为什么靠近太阳时走得更快？',
+    description:
+      '从圆到椭圆，固定焦点并同步生长两块等时面积；改变偏心率与半长轴，看速度和周期分别受谁控制。',
+    color: '#7da6b3',
+    tag: '焦点 · 等时面积 · 轨道周期',
+    related: ['seasons', 'moon-phases', 'gps', 'orbital-transfer'],
+    sources: [
+      {
+        title: 'NASA — Orbits and Kepler’s Laws',
+        url: 'https://science.nasa.gov/solar-system/orbits-and-keplers-laws/',
+      },
+    ],
+    number: '113',
+  },
+  {
+    slug: 'latent-heat',
+    name: '潜热',
+    title: '温度没升，热量去哪了？',
+    question: '冰在融化时，为什么还能继续吸收能量？',
+    description:
+      '用纯水的定压焓账本追踪冰升温、固液共存、融化结束和逆向凝固，区分温度、相态比例与加热功率。',
+    color: '#8eaeb2',
+    tag: '热学与相变',
+    related: ['pressure-cooker', 'refrigerator', 'heat-conduction', 'convection'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 2, §1.5 Phase Changes',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-5-phase-changes',
+      },
+      {
+        title: 'NIST: Properties of Ice and Supercooled Water',
+        url: 'https://www.nist.gov/publications/properties-ice-and-supercooled-water',
+      },
+    ],
+    number: '112',
+  },
+  {
+    slug: 'heat-conduction',
+    name: '热传导',
+    title: '物质没流走，热怎样传过去？',
+    question: '一根固体杆为什么能把能量传到另一端？',
+    description:
+      '用固定晶格、温度剖面和边界能量账本区分传导、稳态与平衡，比较导热率、长度和反向温度梯度。',
+    color: '#a68d62',
+    tag: '热学与能量',
+    related: ['electric-fuse', 'thermocouple', 'convection', 'diffusion'],
+    sources: [
+      {
+        title: 'OpenStax College Physics 2e, §14.5 Conduction',
+        url: 'https://openstax.org/books/college-physics-2e/pages/14-5-conduction',
+      },
+      {
+        title: 'MIT OCW 18.03 Heat Equation interactive notes',
+        url: 'https://ocw.mit.edu/ans7870/18/18.03/s06/tools/HeatEquationHelp.html',
+      },
+    ],
+    number: '111',
+  },
+  {
+    slug: 'rc-circuit',
+    name: 'RC 充放电',
+    title: 'RC 充放电：电流慢下来，电压升上去',
+    question: '电流越来越小，电容为什么还在充电？',
+    description: '跟踪电容的连续电压，比较电阻、电容、充放电方向与能量去向。',
+    color: '#9d87b2',
+    tag: '瞬态与储能',
+    related: ['piezoelectricity', 'rectifier', 'buck-converter', 'lithium-battery'],
+    sources: [
+      {
+        title: 'OpenStax · RC Circuits',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits',
+      },
+    ],
+    number: '110',
+  },
+  {
+    slug: 'wheatstone-bridge',
+    name: '惠斯通电桥',
+    title: '惠斯通电桥：零读数不是零电流',
+    question: '仪表指针回到零，电流都消失了吗？',
+    description: '比较两个节点的电势，区分桥路平衡、支路电流与仪表带来的测量负载。',
+    color: '#839b87',
+    tag: '差分与平衡',
+    related: ['rectifier', 'body-fat-scale', 'buck-converter'],
+    sources: [
+      {
+        title: 'Analog Devices · Resistive Bridge Basics: Part One',
+        url: 'https://www.analog.com/en/resources/technical-articles/resistive-bridge-basics-part-one--maxim-integrated.html',
+      },
+    ],
+    number: '109',
+  },
+  {
+    slug: 'pinhole-camera',
+    name: '小孔成像',
+    title: '孔越小，像一定越清楚吗？',
+    question: '没有透镜，光怎样排成一幅倒像？',
+    description:
+      '从直线光路推出倒像与有限孔径的几何斑，再比较通光量、衍射尺度和屏距，说明无限缩孔的边界。',
+    color: '#86a8ae',
+    tag: '光学与成像',
+    related: ['camera-lens', 'aperture', 'diffraction'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 3, §4.5 Circular Apertures and Resolution',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/4-5-circular-apertures-and-resolution',
+      },
+      {
+        title: 'OpenStax University Physics 3, §1.2 The Law of Reflection (ray model)',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-2-the-law-of-reflection',
+      },
+    ],
+    number: '108',
+  },
+  {
+    slug: 'dijkstra',
+    name: 'Dijkstra 最短路',
+    title: '哪一个距离，现在终于可以定案？',
+    question: '眼前最短的一条边，会通向最短的路吗？',
+    description:
+      '让暂定距离从 22 改为 13 再到 7，追踪全局最小点怎样定案，并用一条负边拆开证明的前提。',
+    color: '#8da383',
+    tag: '最短路 · 暂定距离 · 非负边',
+    related: [
+      'packet-routing',
+      'congestion-control',
+      'network',
+      'heap-priority-queue',
+      'astar-search',
+      'union-find',
+      'voronoi',
+    ],
+    sources: [
+      {
+        title: 'Dijkstra — A note on two problems in connexion with graphs (1959)',
+        url: 'https://doi.org/10.1007/BF01386390',
+      },
+      {
+        title: 'MIT 6.006 — Lecture 16: Dijkstra',
+        url: 'https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/6277a1f06100c26a7ff21031af6757b5_MIT6_006F11_lec16.pdf',
+      },
+    ],
+    number: '107',
+  },
+  {
+    slug: 'pulley',
+    name: '滑轮组',
+    title: '滑轮组：省下的力去哪了？',
+    question: '多一个轮子，就能再省一半力吗？',
+    description: '沿一根连续绳索数承重绳段，同时核对拉力、位移与移动滑轮组的自重。',
+    color: '#718c8a',
+    tag: '绳长与功',
+    related: ['bicycle', 'excavator', 'hydraulic-brake'],
+    sources: [
+      {
+        title: 'OpenStax · Simple Machines',
+        url: 'https://openstax.org/books/college-physics-2e/pages/9-5-simple-machines',
+      },
+    ],
+    number: '106',
+  },
+  {
+    slug: 'thin-film-interference',
+    name: '薄膜干涉',
+    title: '薄膜为什么会忽亮忽暗？',
+    question: '膜越厚，反射就越亮吗？',
+    description:
+      '追踪表面与底面的反射，把往返光程与反射相位分开，再比较空气背面和玻璃背面的亮暗条件。',
+    tag: '光学与相位',
+    color: '#739eab',
+    related: ['wave-interference', 'double-slit', 'polarization'],
+    sources: [
+      {
+        title: 'OpenStax University Physics 3, §3.4 Interference in Thin Films',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films',
+      },
+      {
+        title: 'University of Toronto PHY326: Thin Film Interference',
+        url: 'https://www.physics.utoronto.ca/~phy326/film/film.htm',
+      },
+    ],
+    number: '105',
+  },
+  {
+    slug: 'dns-resolution',
+    name: 'DNS 分层查找',
+    title: '一个名字，怎样找到负责回答的人？',
+    question: 'DNS 是层层转发，还是不断问路？',
+    description: '跟踪递归解析器如何追踪根、顶级域和权威的转介，再让地址 TTL 与委派缓存各自到期。',
+    color: '#95799c',
+    tag: '转介 · 缓存 · TTL',
+    related: ['network', 'packet-routing', 'public-key'],
+    sources: [
+      {
+        title: 'RFC 1034 — Domain names, concepts and facilities',
+        url: 'https://www.rfc-editor.org/rfc/rfc1034.html',
+      },
+      {
+        title: 'RFC 2181 — Time to Live',
+        url: 'https://www.rfc-editor.org/rfc/rfc2181.html',
+      },
+      {
+        title: 'RFC 2606 — Reserved Top Level DNS Names',
+        url: 'https://www.rfc-editor.org/rfc/rfc2606.html',
+      },
+    ],
+    number: '104',
+  },
+  {
+    slug: 'lever',
+    name: '杠杆',
+    title: '杠杆：力臂不是杆长',
+    question: '长杆一定省力吗？',
+    description: '沿着同一个负载，辨认力的作用线、垂直力臂与输入输出的功。',
+    color: '#ad8555',
+    tag: '力矩与功',
+    related: ['planetary-gears', 'bicycle', 'excavator', 'inclined-plane'],
+    sources: [
+      {
+        title: 'OpenStax · Torque',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/10-6-torque',
+      },
+      {
+        title: 'OpenStax · Simple Machines',
+        url: 'https://openstax.org/books/college-physics-2e/pages/9-5-simple-machines',
+      },
+    ],
+    number: '103',
+  },
+  {
     slug: 'consistent-hashing',
     name: '一致性哈希',
     title: '节点换了，为什么不用搬走所有键？',
@@ -86,7 +2272,7 @@ export const topics: Topic[] = [
       '看真实哈希地址如何共享位阵列，寻找一个确实不存在的误报键，并观察直接删除为什么会误伤。',
     color: '#86a277',
     tag: '信息与系统',
-    related: ['hash', 'huffman'],
+    related: ['hash', 'huffman', 'bayes-updating'],
     sources: [
       {
         title: 'Bloom, Space/time trade-offs in hash coding with allowable errors (1970)',
@@ -103,7 +2289,7 @@ export const topics: Topic[] = [
     description: '从纳秒往返到逐束扫描，看点云的密度、遮挡与缺口。',
     color: '#9bd5e4',
     tag: '信号与成像',
-    related: ['radar-ranging', 'gps', 'ultrasound'],
+    related: ['radar-ranging', 'gps', 'ultrasound', 'retroreflector'],
     sources: [
       {
         title: 'Ouster · What is lidar?',
@@ -200,7 +2386,7 @@ export const topics: Topic[] = [
     description: '追踪同一物质点的纵向压缩与横向剪切，再用 P、S 到时差读懂传播。',
     color: '#738a78',
     tag: '粒子与传播',
-    related: ['standing-wave', 'ultrasound'],
+    related: ['plate-boundaries', 'standing-wave', 'ultrasound'],
     sources: [
       {
         title: 'USGS · Body waves inside the earth',
@@ -246,7 +2432,7 @@ export const topics: Topic[] = [
     description: '在真实字符流中寻找向后引用，滑动有限历史窗口，并逐字演示允许重叠的解码回抄。',
     color: '#7fa69a',
     tag: '信息与系统',
-    related: ['huffman', 'jpeg'],
+    related: ['huffman', 'jpeg', 'run-length-encoding'],
     sources: [
       {
         title: 'RFC 1951 §3.2.3: length and backward distance',
@@ -284,7 +2470,7 @@ export const topics: Topic[] = [
     description: '从逐项相加到相关累加，看同一份记录的时间与频率。',
     color: '#c6b5ed',
     tag: '信号与成像',
-    related: ['sampling-aliasing', 'jpeg', 'beats'],
+    related: ['sampling-aliasing', 'jpeg', 'beats', 'convolution'],
     sources: [
       {
         title: 'NI · Using FFTs and power spectra',
@@ -301,7 +2487,7 @@ export const topics: Topic[] = [
     description: '固定时刻留下的点，如何让不同频率变成同一份记录。',
     color: '#9bd5e4',
     tag: '信号与成像',
-    related: ['fourier-transform', 'rolling-shutter', 'doppler'],
+    related: ['fourier-transform', 'rolling-shutter', 'doppler', 'moire'],
     sources: [
       {
         title: 'Analog Devices · Anti-aliasing filter basics',
@@ -370,7 +2556,7 @@ export const topics: Topic[] = [
       '把轨道高度、视圆面和影锥接在同一组几何上，追踪同一观测点怎样看见偏食、全食与环食。',
     color: '#ae8a58',
     tag: '天体与影子',
-    related: ['moon-phases', 'seasons', 'camera-lens'],
+    related: ['lunar-eclipse', 'moon-phases', 'seasons', 'camera-lens'],
     sources: [
       {
         title: 'NASA Science — Why Do Eclipses Happen?',
@@ -418,7 +2604,7 @@ export const topics: Topic[] = [
       '沿耳道组织发出的热红外，进入窄口探头、吸收膜与参考电路；保持温度不变，转动视场，观察混合信号如何改变读数。',
     color: '#b89262',
     tag: '热辐射',
-    related: ['body-fat-scale', 'ultrasound', 'camera-lens'],
+    related: ['body-fat-scale', 'ultrasound', 'camera-lens', 'heat-radiation'],
     sources: [
       {
         title: 'Braun — ThermoScan infrared reception from eardrum and surrounding tissue',
@@ -460,7 +2646,7 @@ export const topics: Topic[] = [
       '从四角称重与四电极交流测量，追踪阻抗、相位、水分和去脂体重的估算，看看脂肪质量固定时水分怎样改变读数。',
     color: '#679b8c',
     tag: '四电极 · 阻抗 · 身体组成估算',
-    related: ['ear-thermometer', 'rectifier'],
+    related: ['ear-thermometer', 'rectifier', 'wheatstone-bridge'],
     sources: [
       {
         title:
@@ -1095,7 +3281,7 @@ export const topics: Topic[] = [
     color: '#85d8cd',
     number: '64',
     tag: '光 · 相位',
-    related: ['diffraction', 'wave-interference', 'polarization'],
+    related: ['diffraction', 'wave-interference', 'polarization', 'diffraction-grating'],
     sources: [
       {
         title: 'OpenStax University Physics, Volume 3, 4.3 — Double-Slit Diffraction',
@@ -1121,7 +3307,7 @@ export const topics: Topic[] = [
     color: '#c39a4c',
     number: '63',
     tag: '力与运动',
-    related: ['hydraulic-brake', 'suspension', 'bicycle'],
+    related: ['hydraulic-brake', 'suspension', 'bicycle', 'pulley'],
     sources: [
       {
         title:
@@ -1221,7 +3407,7 @@ export const topics: Topic[] = [
     description: '跟随同一批分组，观察最短路径、排队、TTL、故障收敛与接收重排。',
     color: '#79b7ad',
     tag: '网络 · 路由与队列',
-    related: ['tcp-reliability', 'network', 'mobile-roaming'],
+    related: ['tcp-reliability', 'network', 'mobile-roaming', 'dijkstra'],
     sources: [
       {
         title: 'RFC 2328: OSPF Version 2 — flooding and shortest-path calculation',
@@ -1246,7 +3432,7 @@ export const topics: Topic[] = [
     description: '从浓度曲线计算净通量、局部收支和扩散宽度，比较扩散系数、长度与边界。',
     color: '#6eafd0',
     tag: '浓度与通量',
-    related: ['brownian-motion', 'osmosis', 'capillary'],
+    related: ['brownian-motion', 'osmosis', 'capillary', 'random-walk'],
     sources: [
       {
         title: 'MIT — Conceptual Model for Diffusion',
@@ -1307,7 +3493,7 @@ export const topics: Topic[] = [
       '走进真实计算的微型 B+ 树：全扫与索引公平对照，范围查询串起叶页，插入分裂一路传播到新根。',
     color: '#33657a',
     tag: '数据 · 页与记录',
-    related: ['memory-cache', 'hash', 'cpu-pipeline'],
+    related: ['memory-cache', 'hash', 'cpu-pipeline', 'binary-search'],
     sources: [
       {
         title: 'CMU 15-445 · Lecture 08: Indexes & Filters I',
@@ -1481,7 +3667,7 @@ export const topics: Topic[] = [
     description: '在封闭格子里计算温度、浮力与流动，追踪热量怎样被携带。',
     color: '#ad8455',
     tag: '温度与浮力',
-    related: ['bernoulli', 'jellyfish', 'refrigerator'],
+    related: ['bernoulli', 'jellyfish', 'refrigerator', 'heat-conduction'],
     sources: [
       {
         title: 'University College Dublin — Rayleigh–Bénard convection lecture notes',
@@ -1507,7 +3693,7 @@ export const topics: Topic[] = [
       '沿单相桥式整流的两个导通回路，观察电容充放电、纹波、负载与频率，以及源电阻限制的浪涌。',
     color: '#467f91',
     tag: '电力电子 · 单向导通与储能',
-    related: ['buck-converter', 'transformer-electric', 'electric-generator'],
+    related: ['buck-converter', 'transformer-electric', 'electric-generator', 'rc-circuit'],
     sources: [
       {
         title: 'Analog Devices StudentZone — ADALM2000 Diodes and Diode Circuits',
@@ -1596,7 +3782,7 @@ export const topics: Topic[] = [
       '从 UTF-8、填充与消息扩展，到 64 轮压缩、链值加回和 256 位摘要，比较只差一位的两次真实计算。',
     color: '#738a9d',
     tag: '信息 · 摘要与完整性',
-    related: ['bloom-filter', 'consistent-hashing', 'public-key'],
+    related: ['bloom-filter', 'consistent-hashing', 'public-key', 'merkle-tree'],
     sources: [
       {
         title: 'NIST — FIPS 180-4, Secure Hash Standard',
@@ -1829,7 +4015,7 @@ export const topics: Topic[] = [
       '从分层体模的真实延迟回波出发，理解反射与透射、RF 和包络、B 模式扫描、轴向分辨率、衰减阴影及声速假设带来的深度误差。',
     color: '#7c9f91',
     tag: '声学 · 回波与成像',
-    related: ['radar-ranging', 'seismic-waves', 'doppler'],
+    related: ['radar-ranging', 'seismic-waves', 'doppler', 'acoustic-reflection'],
     sources: [
       {
         title: 'University of Michigan · Ultrasound and Photoacoustic Imaging',
@@ -1854,7 +4040,7 @@ export const topics: Topic[] = [
     description: '剖开开放式差速器，追踪共顶点的锥齿轮、两侧平均转速和弱侧牵引力带来的扭矩上限。',
     color: '#69838a',
     tag: '机械 · 差速与扭矩',
-    related: ['suspension', 'planetary-gears', 'ball-bearing'],
+    related: ['suspension', 'planetary-gears', 'ball-bearing', 'universal-joint'],
     sources: [
       {
         title: 'MathWorks · Differential kinematic constraints and power balance',
@@ -1917,7 +4103,7 @@ export const topics: Topic[] = [
     description: '追踪文丘里管中的守恒水体、相连测压口和水头变化，区分速度、压强、高程与沿程损失。',
     color: '#759798',
     tag: '流体 · 连续性与能量',
-    related: ['siphon', 'water-hammer', 'hydraulic-brake'],
+    related: ['siphon', 'water-hammer', 'hydraulic-brake', 'venturi-meter'],
     sources: [
       {
         title: 'NASA Glenn · Mass Flow Rate',
@@ -1976,7 +4162,7 @@ export const topics: Topic[] = [
     description: '走进三相定子与闭合鼠笼，看转差怎样产生电流、转矩与热。',
     color: '#3a897b',
     tag: '电流与转动',
-    related: ['electric-generator', 'transformer-electric', 'ball-bearing'],
+    related: ['three-phase-power', 'electric-generator', 'transformer-electric', 'ball-bearing'],
     sources: [
       {
         title: 'MIT 6.061 — Analytic Design Evaluation of Induction Machines (J. L. Kirtley)',
@@ -2001,7 +4187,7 @@ export const topics: Topic[] = [
     description: '跟随绳上的一个点，看脉冲相消又穿过，再从相位与振幅走到驻波和能量流。',
     color: '#87cbd6',
     tag: '波动 · 叠加与能量',
-    related: ['beats', 'standing-wave', 'double-slit'],
+    related: ['surface-waves', 'beats', 'standing-wave', 'double-slit'],
     sources: [
       {
         title: 'Caltech · The Feynman Lectures, I–49: Modes',
@@ -2027,7 +4213,7 @@ export const topics: Topic[] = [
       '追踪阳光在水滴中的折射与一次内反射，再从观察者的视线看见色散、方向集中与地平线以上的彩色弧段。',
     color: '#809eaa',
     tag: '光学 · 色散与观察方向',
-    related: ['polarization', 'optical-fiber', 'diffraction'],
+    related: ['polarization', 'optical-fiber', 'diffraction', 'prism-dispersion'],
     sources: [
       {
         title: 'IAPWS · Refractive index of ordinary water, R9-97',
@@ -2256,7 +4442,7 @@ export const topics: Topic[] = [
     description: '从太阳高度、白昼长短与日影出发，连接地轴倾斜、分至点、极昼极夜和零倾角对照。',
     color: '#b8bd91',
     tag: '天文 · 倾角与日照',
-    related: ['solar-eclipse', 'coriolis', 'tides'],
+    related: ['solar-eclipse', 'coriolis', 'tides', 'kepler-orbits'],
     sources: [
       {
         title: 'NASA Space Place · What Causes the Seasons?',
@@ -2303,7 +4489,7 @@ export const topics: Topic[] = [
       '追踪同一份程序里的指令身份，逐拍看清重叠、数据前递、加载停顿和分支清除，再核对最终结果。',
     color: '#527b70',
     tag: '计算机 · 时序与依赖',
-    related: ['logic-gates', 'cpu-gpu-npu', 'memory-cache'],
+    related: ['logic-gates', 'cpu-gpu-npu', 'memory-cache', 'topological-sort'],
     sources: [
       {
         title: 'Harris & Harris · RISC-V Microarchitecture, five-stage pipeline',
@@ -2328,7 +4514,7 @@ export const topics: Topic[] = [
     description: '跟随闭合铁芯里的变化磁通，理解感应电压、匝数比、负载电流和损耗。',
     color: '#b17b52',
     tag: '电磁 · 变化与传递',
-    related: ['rectifier', 'wireless-charging', 'nfc'],
+    related: ['ground-fault-breaker', 'rectifier', 'wireless-charging', 'nfc'],
     sources: [
       {
         title: 'MIT 8.02 · Mutual inductance and transformers',
@@ -2435,7 +4621,7 @@ export const topics: Topic[] = [
     color: '#849dbe',
     number: '17',
     tag: '光通信 · 全反射与脉冲',
-    related: ['camera-lens', 'network'],
+    related: ['camera-lens', 'network', 'total-internal-reflection'],
     sources: [
       {
         title: 'OpenStax · Total Internal Reflection',
@@ -2460,7 +4646,7 @@ export const topics: Topic[] = [
     color: '#6d98a4',
     number: '16',
     tag: '传动 · 自转与公转',
-    related: ['bicycle', 'four-stroke-engine'],
+    related: ['bicycle', 'four-stroke-engine', 'lever'],
     sources: [
       {
         title: 'KHK · Gear Systems',
@@ -2481,7 +4667,7 @@ export const topics: Topic[] = [
     color: '#9a956e',
     number: '15',
     tag: '机械 · 热与功',
-    related: ['bicycle', 'refrigerator'],
+    related: ['bicycle', 'refrigerator', 'cam-follower', 'centrifugal-governor'],
     sources: [
       {
         title: 'NASA Glenn · Internal Combustion Engine Stages',
@@ -2502,7 +4688,17 @@ export const topics: Topic[] = [
     color: '#8d9d79',
     number: '13',
     tag: '光路 · 对焦与成像',
-    related: ['aperture', 'slr-mirrorless', 'instant-camera', 'myopia-lens'],
+    related: [
+      'aperture',
+      'slr-mirrorless',
+      'instant-camera',
+      'myopia-lens',
+      'pinhole-camera',
+      'refraction',
+      'stereoscopic-vision',
+      'telescope',
+      'spherical-aberration',
+    ],
     sources: [
       {
         title: 'OpenStax · University Physics 3: Thin Lenses',
@@ -2548,7 +4744,7 @@ export const topics: Topic[] = [
     color: '#e47c37',
     number: '01',
     tag: '转动 · 传动比',
-    related: ['pendulum', 'traffic'],
+    related: ['pendulum', 'traffic', 'ratchet'],
     sources: [
       { title: 'Bartosz Ciechanowski · Bicycle', url: 'https://ciechanow.ski/bicycle/' },
       {
@@ -2566,7 +4762,7 @@ export const topics: Topic[] = [
     color: '#1c9bb0',
     number: '02',
     tag: '剖开 · 热力循环',
-    related: ['printer', 'pendulum'],
+    related: ['printer', 'pendulum', 'latent-heat'],
     sources: [
       {
         title: 'Danfoss · How does a refrigerator work?',
@@ -2583,7 +4779,7 @@ export const topics: Topic[] = [
     color: '#7559dc',
     number: '03',
     tag: '追踪 · 静电成像',
-    related: ['jpeg', 'refrigerator'],
+    related: ['jpeg', 'refrigerator', 'color-mixing'],
     sources: [
       {
         title: 'Canon · Laser Printers and MFPs',
@@ -2640,7 +4836,7 @@ export const topics: Topic[] = [
     color: '#2a69ce',
     number: '06',
     tag: '慢放 · 请求的旅程',
-    related: ['packet-routing', 'esim', 'cell-handover'],
+    related: ['packet-routing', 'esim', 'cell-handover', 'dns-resolution', 'max-flow'],
     sources: [
       {
         title: 'MDN · How browsers work',
@@ -2693,7 +4889,7 @@ export const topics: Topic[] = [
     color: '#8963d1',
     number: '09',
     tag: '旋转 · 切片与投影',
-    related: ['gps', 'transformer'],
+    related: ['gps', 'transformer', 'principal-components'],
     sources: [
       { title: 'MathWorld · Tesseract', url: 'https://mathworld.wolfram.com/Tesseract.html' },
     ],

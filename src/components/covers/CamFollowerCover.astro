@@ -1,0 +1,46 @@
+---
+import { camDefaults, camConstraint } from '../../models/cam-follower';
+const p = camDefaults(),
+  q = camConstraint(p, 0.75),
+  x = 200,
+  y = 164,
+  k = 1500,
+  ry = y - q.height * k,
+  top = 35,
+  collar = ry - 27;
+const spring = Array.from(
+  { length: 15 },
+  (_, i) =>
+    `${x + (i === 0 || i === 14 ? 0 : i % 2 ? 12 : -12)},${top + ((collar - top) * i) / 14}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M115 217H285M140 217V35H260V217" stroke="#d6ddcf" stroke-width="8"></path><path
+    d={`M170 35H230M200 25V${ry}`}
+    stroke="#8da5a0"
+    stroke-width="7"></path><polyline points={spring} stroke="#a58c63" stroke-width="3"
+  ></polyline><path d={`M177 ${collar}H223`} stroke="#7f9692" stroke-width="5"></path><circle
+    cx={x + q.cam.x * k}
+    cy={y - q.cam.y * k}
+    r={p.radius * k}
+    fill="#bd9a63"
+    stroke="#8f744c"
+    stroke-width="3"></circle><circle
+    cx={x}
+    cy={y}
+    r="9"
+    fill="#7c9695"
+    stroke="#f2f4e9"
+    stroke-width="3"></circle><circle
+    cx={x}
+    cy={ry}
+    r={p.roller * k}
+    fill="#b7c9c8"
+    stroke="#6e898d"
+    stroke-width="3"></circle><circle cx={x} cy={ry} r="4" fill="#edf1e7"></circle><circle
+    cx={x + q.contact.x * k}
+    cy={y - q.contact.y * k}
+    r="3"
+    fill="#566d61"></circle></svg
+>

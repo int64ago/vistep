@@ -1,0 +1,19 @@
+# Prism dispersion — author brief
+
+Status: key shots and model authored; integration-owner browser review and speech freeze pending. Numerical tests are author self-review. Continuous playback, phone hardware and listening are not-run.
+
+Misconception: a prism creates colours, or a triangle alone guarantees spectral separation. Prior knowledge: refraction and wavelength. Adds a real material relation and two connected surface intersections, unlike the droplet-specific `rainbow`. It prepares a comparison with same-batch `diffraction-grating`, where periodic phase replaces material dispersion.
+
+| Claim                                                    | Source / section                                                                                                                                               | Conditions                                                              |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| N-BK7 refractive index varies across visible wavelengths | [SCHOTT manufacturer datasheet](https://media.schott.com/api/public/content/41e799d0bf874807a0bb8e702fbb75b5?v=54856406), index table and dispersion constants | 400–750 nm, reference material relation, temperature dependence omitted |
+| Entry and exit each obey refraction                      | [MIT2.71 lecture2, prisms and dispersion](https://ocw.mit.edu/courses/2-71-optics-spring-2009/cf9bdaeff470532f4eee57629c4ca781_MIT2_71S09_lec02.pdf)           | Two plane faces, linear isotropic glass, air outside                    |
+| Minimum deviation δ=2asin(n sin(A/2))−A                  | Same optics prism geometry                                                                                                                                     | Symmetric internal path, fixed apexA                                    |
+
+Independent benchmarks: manufacturer's d/F/C lines give n587.6=1.51680, n486.1=1.52238 and n656.3=1.51432; tests compare these to Sellmeier output. A60° prism at symmetric incidence must match the independent minimum-deviation formula. Tests also verify unit directions, Snell tangential components and exact path contacts across three rotations and wavelengths. Counterexample: replacing wavelength-dependent index by one constant leaves deflection but removes splitting; a single input wavelength does not create a rainbow.
+
+Art direction: a dark spectrometer bench with restrained transparent prism, narrow actual spectral fan and a separate angular receiving strip. It does not exaggerate the physical fan into decorative rainbow ribbons. The local strip enlarges the real angular difference and is explicitly labelled as angle, not distance. Six chapters add: two-face path; multiwavelength split; tracked manufacturer n(λ); no-dispersion control; actual prism rotation; monochromatic-input boundary.
+
+Desktop: prism and connected rays above the angular strip. Phone: a340-unit optical composition with its own scale fitted to all source/exit bounds, and16 px CSS readouts for wavelength, index and deviation. Controls are optional. Waveband colours are samples, not colorimetry. Opening/turning/result are connected ray, nondispersive counterexample and monochromatic input.
+
+The two future related dependencies `refraction` and `diffraction-grating` are in this author batch and require batch dry-run if not registered. Reverse links from rainbow and camera-lens are editorial recommendations. Actual face contact, screen-marker alignment, narrow labels and speech cues remain for integrator review. No recording or shared registry changes here.

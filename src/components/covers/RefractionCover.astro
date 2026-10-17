@@ -1,0 +1,32 @@
+---
+import { refraction } from '../../models/refraction';
+const s = refraction(48),
+  i = (48 * Math.PI) / 180,
+  r = (s.transmitted! * Math.PI) / 180;
+const fronts = (angle: number, index: number) =>
+  Array.from({ length: 15 }, (_, j) => {
+    const distance = ((j - 7) * 34) / index,
+      x = 200 + Math.sin(angle) * distance,
+      y = 115 + Math.cos(angle) * distance;
+    return `M${x - 180 * Math.cos(angle)} ${y + 180 * Math.sin(angle)}L${x + 180 * Math.cos(angle)} ${y - 180 * Math.sin(angle)}`;
+  });
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><defs
+    ><clipPath id="refraction-cover-upper"><rect width="400" height="115"></rect></clipPath
+    ><clipPath id="refraction-cover-lower"><rect y="115" width="400" height="115"></rect></clipPath
+    ></defs
+  ><rect width="400" height="230" fill="#f2efe3"></rect><rect
+    y="115"
+    width="400"
+    height="115"
+    fill="#a3c8c6"></rect><g clip-path="url(#refraction-cover-upper)"
+    >{fronts(i, 1).map((d) => <path d={d} stroke="#42635f" opacity=".65" />)}</g
+  ><g clip-path="url(#refraction-cover-lower)"
+    >{fronts(r, 1.5).map((d) => <path d={d} stroke="#42635f" opacity=".65" />)}</g
+  ><path d="M200 8V222" stroke="#587e7d" stroke-dasharray="4 5"></path><path
+    d={`M${200 - 135 * Math.sin(i)} ${115 - 135 * Math.cos(i)}L200 115L${200 + 115 * Math.sin(r)} ${115 + 115 * Math.cos(r)}`}
+    stroke="#ba804a"
+    stroke-width="4"></path></svg
+>

@@ -1,0 +1,26 @@
+<h2 id="understand">A root is not a concatenation of short display codes</h2>
+
+Each of four contents becomes a leaf hash using SHA-256 on `0x00 ∥ UTF-8 content`. An internal node hashes `0x01 ∥ raw left digest bytes ∥ raw right digest bytes`. The prefix separates leaf and internal domains; left/right order is part of the commitment.
+
+Shortened hashes are display labels only. Computation and comparison use all256 bits. Combining AB and CD, then their root, binds these four ordered contents. Hashing is not encryption, cannot recover the original contents and does not prove that a statement in them is true.
+
+<h2 id="try">Verify C without receiving the other full contents</h2>
+
+To verify C, obtain its content, D's leaf digest, the AB subtree digest, position/tree size and an already trusted root. Combine C with right sibling D to reconstruct CD, then combine left sibling AB with CD to reconstruct the root. This uses two sibling hashes rather than all three other payloads.
+
+Exploration selects A–D, edits the received content and verifies again. The selected position changes the left/right combination order. The model also supports uneven trees by splitting at the largest power of two below n, without duplicating the last leaf. Proof verification checks index, size and expected path shape.
+
+<h2 id="deeper">Self-consistency is not trusted origin</h2>
+
+<details>
+<summary>Edits, replacement roots and proof scope</summary>
+
+Changing gamma to Gamma alters its leaf, CD and the root, leaving unrelated subtree hashes unchanged. Rebuilding with the original proof fails against the original trusted root. This relies on SHA-256 collision resistance; it is not an unconditional mathematical claim that no two different contents could collide.
+
+If the peer replaces the root too, the altered content and proof can become self-consistent. The unresolved question is where that root came from. Signatures, trusted channels or another authentication process must establish trust. An inclusion proof does not authenticate its publisher or prove the log has always been append-only; the latter needs a separate consistency proof.
+
+This uses the RFC hash domains and recursive split, with pedagogical side/range annotations. It is not the full Certificate Transparency protocol or its wire encoding. A four-leaf proof has two siblings; general inclusion paths scale as O(log n). Building the entire tree still reads all leaves, unlike verifying a short proof.
+
+</details>
+
+Source: [RFC9162 section2.1, Merkle Tree Hash and Inclusion Proofs](https://www.rfc-editor.org/rfc/rfc9162.html#section-2.1). SHA-256 reuses the repository's independent implementation and is checked against Node's standard cryptographic implementation.

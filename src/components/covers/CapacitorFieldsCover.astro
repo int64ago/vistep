@@ -1,0 +1,45 @@
+---
+import { capacitorFieldDefaults, capacitorFields } from '../../models/capacitor-fields';
+const state = capacitorFields({ ...capacitorFieldDefaults(), fraction: 0.5 });
+const left = 90;
+const right = 270;
+const project = (value: number) => left + (value / state.gap) * (right - left);
+const points = [0, state.airHalf, state.airHalf + state.thickness, state.gap]
+  .map((value) => `${project(value)},${198 - (state.potential(value) / 18) * 55}`)
+  .join(' ');
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><rect x="135" y="25" width="90" height="123" rx="5" fill="#e2e1bf" stroke="#c7cead"></rect><rect
+    x="81"
+    y="25"
+    width="9"
+    height="123"
+    rx="3"
+    fill="#bba174"></rect><rect x="270" y="25" width="9" height="123" rx="3" fill="#85a69e"></rect>{
+    [0, 1, 2, 3, 4].map((i) => (
+      <g>
+        <>
+          <path
+            d={`M96 ${39 + i * 23}h6M99 ${36 + i * 23}v6M258 ${39 + i * 23}h6`}
+            stroke="#91936b"
+            stroke-width="2"
+          />
+          <circle cx="146" cy={39 + i * 23} r="4" fill="#8ea99f" />
+          <circle cx="214" cy={39 + i * 23} r="4" fill="#c2a66f" />
+        </>
+      </g>
+    ))
+  }<path
+    d="M113 86H246M240 81L246 86L240 91"
+    stroke="#a3996d"
+    stroke-width="2"
+    fill="none"
+    stroke-linecap="round"></path><path d="M90 160V198H270" stroke="#bac6ab" fill="none"
+  ></path><polyline
+    points={points}
+    fill="none"
+    stroke="#a28f58"
+    stroke-width="3"
+    stroke-linecap="round"></polyline></svg
+>

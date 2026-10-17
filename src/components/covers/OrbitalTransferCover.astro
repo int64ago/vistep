@@ -1,0 +1,23 @@
+---
+import { hohmannPlan, hohmannState } from '../../models/orbital-transfer';
+const { color = '#baa27c' } = Astro.props,
+  plan = hohmannPlan(),
+  path = Array.from({ length: 81 }, (_, i) => hohmannState(i / 80, plan))
+    .map((p, i) => `${i ? 'L' : 'M'}${200 + p.x * 56} ${115 - p.y * 56}`)
+    .join(' '),
+  ship = hohmannState(0.55, plan);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <circle cx="200" cy="115" r="56" stroke="#96aaa8" stroke-width="1.5"></circle>
+  <circle
+    cx="200"
+    cy="115"
+    r={plan.to * 56}
+    stroke={color}
+    stroke-width="1.5"
+    stroke-dasharray="5 5"></circle>
+  <path d={path} stroke={color} stroke-width="3"></path>
+  <circle cx="200" cy="115" r="13" fill="#9eafac"></circle>
+  <circle cx={200 + ship.x * 56} cy={115 - ship.y * 56} r="5" fill="#917247"></circle>
+</svg>

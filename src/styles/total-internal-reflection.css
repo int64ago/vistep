@@ -1,0 +1,158 @@
+.tir-study {
+  background: #234d5b;
+  border-radius: 24px;
+  padding: 24px 28px;
+  color: #e7eee5;
+}
+.tir-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 18px;
+  align-items: center;
+}
+.tir-study header b {
+  font-size: 17px;
+  font-weight: 500;
+  color: #efbf78;
+}
+.tir-study svg {
+  display: block;
+  width: 100%;
+  height: 310px;
+  margin-top: 20px;
+  border-radius: 18px;
+}
+.tir-indices {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+  margin-top: 12px;
+  color: #b4c8ca;
+}
+.tir-reading {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.tir-reading span {
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+}
+.tir-reading b {
+  font-size: 27px;
+  font-weight: 400;
+  color: #efbf78;
+}
+.tir-field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 15px;
+  font-size: 16px;
+  margin-top: 18px;
+}
+.tir-field > span:last-child {
+  grid-column: 1/-1;
+  color: #b4c8ca;
+}
+.tir-field b {
+  font-weight: 500;
+}
+.tir-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.tir-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.tir-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.tir-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+@media (max-width: 760px) {
+  .tir-study {
+    padding: 20px 16px;
+  }
+  .tir-study header {
+    font-size: 16px;
+    flex-wrap: wrap;
+  }
+  .tir-study svg {
+    height: 290px;
+  }
+  .tir-reading {
+    gap: 12px;
+  }
+  .tir-reading b {
+    font-size: 23px;
+  }
+  .tir-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tir-reading[hidden] {
+  display: none;
+}
+@media (max-width: 760px) {
+  .tir-study {
+    padding: 16px;
+  }
+  .tir-study svg {
+    height: 220px;
+    margin-top: 12px;
+  }
+  .tir-study[data-field='true'] svg {
+    height: 190px;
+  }
+  .tir-reading {
+    margin-top: 14px;
+  }
+  .tir-reading b {
+    font-size: 23px;
+  }
+  .tir-field {
+    margin-top: 12px;
+  }
+  .tir-indices {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 760px) {
+  .tir-study header {
+    gap: 6px 14px;
+  }
+  .tir-study[data-field='true'] .tir-field > span:last-child {
+    display: none;
+  }
+}
+
+.tir-study .control,
+.tir-study .control output {
+  color: #e2eae2;
+}
+.tir-study .control input[type='range'] {
+  --range-color: #efbf78;
+  --range-rest: #71949c;
+}
+
+@media (max-width: 600px) {
+  .tir-study {
+    padding-block: 10px;
+  }
+}

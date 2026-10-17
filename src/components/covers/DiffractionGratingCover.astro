@@ -1,0 +1,23 @@
+---
+import { grating } from '../../models/diffraction-grating';
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#202f35"></rect><rect
+    x="35"
+    y="24"
+    width="330"
+    height="44"
+    rx="5"
+    fill="#121f25"></rect>{
+    Array.from({ length: 12 }, (_, i) => (
+      <path d={`M${45 + i * 28} 24V68`} stroke="#d4c28a" stroke-width={(28 * 500) / 3000} />
+    ))
+  }<polyline
+    points={Array.from(
+      { length: 801 },
+      (_, j) => `${25 + (j / 800) * 350},${200 - grating(j / 400 - 1).normalized * 105}`,
+    ).join(' ')}
+    stroke="#d4c28a"
+    stroke-width="2"></polyline><path d="M25 200H375" stroke="#8ba7ab" opacity=".4"></path></svg
+>

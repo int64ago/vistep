@@ -1,0 +1,307 @@
+.thinfilm-study {
+  background: #172933;
+  color: #e9eee6;
+  border-radius: 24px;
+  padding: 26px 30px;
+  overflow: hidden;
+}
+.thinfilm-heading,
+.thinfilm-phase {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+}
+.thinfilm-heading b {
+  font-size: 24px;
+  white-space: nowrap;
+  font-weight: 500;
+  color: #e3ba77;
+}
+.thinfilm-section {
+  position: relative;
+  max-width: 480px;
+  margin: 25px auto 10px;
+  text-align: center;
+}
+.thinfilm-air,
+.thinfilm-base {
+  padding: 17px;
+  color: #b7c7c9;
+  font-size: 16px;
+}
+.thinfilm-base {
+  background: #bbccd210;
+  border-radius: 0 0 15px 15px;
+}
+.thinfilm-layer {
+  min-height: 58px;
+  max-height: 145px;
+  border-block: 1px solid #dbe8d4aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: height 0.2s;
+}
+.thinfilm-layer span {
+  opacity: 0.8;
+}
+.thinfilm-tracks {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+.thinfilm-tracks > div {
+  width: 35%;
+  position: relative;
+}
+.thinfilm-tracks i,
+.thinfilm-tracks strong {
+  font-size: 38px;
+  position: absolute;
+  left: 0;
+  top: 8px;
+  font-style: normal;
+  color: #e3ba77;
+}
+.thinfilm-tracks strong {
+  left: 28px;
+  color: #d4e8dc;
+}
+.thinfilm-tracks > div:nth-child(2) strong {
+  top: 55px;
+}
+.thinfilm-tracks span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 16px;
+  display: flex;
+  gap: 8px;
+}
+.thinfilm-phase {
+  max-width: 560px;
+  margin: 22px auto 0;
+}
+.thinfilm-phase > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.thinfilm-phase b {
+  font-size: 19px;
+  font-weight: 500;
+}
+.thinfilm-study svg {
+  width: 100%;
+  max-height: 178px;
+  display: block;
+  margin-top: 10px;
+}
+.thinfilm-note {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #c1ccca;
+  margin: 10px 0 0;
+}
+.thinfilm-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.thinfilm-controls button {
+  min-height: 44px;
+  color: inherit;
+  border: 1px solid #d6e0cd55;
+  border-radius: 24px;
+  background: #ffffff0c;
+  padding: 10px 20px;
+  grid-column: 1/-1;
+}
+.thinfilm-wedge {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 15px auto;
+}
+.thinfilm-wedge i {
+  flex: 1;
+  min-width: 0;
+}
+.thinfilm-wedge span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 16px;
+}
+@media (max-width: 760px) {
+  .thinfilm-study {
+    padding: 16px 12px;
+    border-radius: 20px;
+  }
+  .thinfilm-heading {
+    align-items: center;
+  }
+  .thinfilm-heading b {
+    font-size: 21px;
+  }
+  .thinfilm-phase {
+    font-size: 16px;
+  }
+  .thinfilm-phase b {
+    font-size: 17px;
+  }
+  .thinfilm-controls {
+    grid-template-columns: 1fr;
+  }
+  .thinfilm-study svg {
+    max-height: 178px;
+  }
+  .thinfilm-tracks span {
+    font-size: 16px;
+  }
+  .thinfilm-wedge {
+    height: 145px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .thinfilm-layer {
+    transition: none;
+  }
+}
+
+.thinfilm-section {
+  width: 100%;
+  max-width: 480px;
+}
+.thinfilm-air {
+  position: absolute;
+  inset: 0 0 auto;
+  text-align: right;
+  padding: 16px 12px;
+}
+.thinfilm-layer {
+  position: absolute;
+  inset-inline: 0;
+  min-height: 0;
+  max-height: none;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+.thinfilm-base {
+  position: absolute;
+  inset-inline: 0;
+  text-align: right;
+  padding: 16px 12px;
+}
+.thinfilm-study .thinfilm-rays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+}
+.thinfilm-waves {
+  margin-top: 18px;
+}
+.thinfilm-waves > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.thinfilm-waves span {
+  font-size: 16px;
+}
+.thinfilm-study .thinfilm-waves svg {
+  height: 46px;
+  max-height: 46px;
+  margin: 0;
+}
+.thinfilm-note summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.thinfilm-note summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.thinfilm-note p {
+  margin: 0 0 10px;
+}
+.thinfilm-layer b {
+  font-size: 16px;
+}
+.thinfilm-layer span {
+  font-size: 16px;
+}
+@media (max-width: 760px) {
+  .thinfilm-section {
+    max-width: 340px;
+  }
+  .thinfilm-waves > div {
+    grid-template-columns: 76px 1fr;
+    gap: 4px;
+  }
+  .thinfilm-layer {
+    padding: 0 12px;
+  }
+  .thinfilm-study .thinfilm-waves svg {
+    height: 48px;
+    max-height: 48px;
+  }
+}
+
+.thinfilm-layer span {
+  position: absolute;
+  left: 35%;
+}
+.thinfilm-layer b {
+  margin-left: auto;
+}
+
+.thinfilm-waves > div {
+  grid-template-columns: 90px minmax(0, 1fr);
+}
+.thinfilm-probe {
+  position: absolute;
+  top: 18px;
+  bottom: 24px;
+  width: 2px;
+  background: #f3ead4;
+  box-shadow: 0 0 0 3px #17293388;
+}
+.thinfilm-waves svg {
+  min-width: 0;
+}
+@media (max-width: 760px) {
+  .thinfilm-waves > div {
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+}
+
+.thinfilm-layer {
+  transition: none;
+}
+
+@media (max-width: 760px) {
+  .thinfilm-phase {
+    margin-top: 12px;
+  }
+  .thinfilm-waves {
+    margin-top: 10px;
+  }
+  .thinfilm-note {
+    margin-top: 2px;
+  }
+  .showcase[data-mode='watch'] .thinfilm-note {
+    display: none;
+  }
+}

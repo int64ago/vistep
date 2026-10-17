@@ -1,0 +1,34 @@
+---
+import { stokesStreamline, stokesMarker } from '../../models/stokes-drag';
+const lines = [-0.0009, -0.0005, -0.00015, -0.00005, 0.00005, 0.00015, 0.0005, 0.0009].map((b) =>
+  stokesStreamline(b),
+);
+const point = (x: number, y: number) => `${240 + x * 95000},${150 - y * 95000}`;
+const shapes = lines.map((line) => ({
+  d: line.points.map((p) => point(p.x, p.y)).join(' '),
+  marks: [0.1, 0.4, 0.7].map((seed) => stokesMarker(line, 0.0005, 1, seed)),
+}));
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><radialGradient id="stokesCover" cx=".3" cy=".25"
+      ><stop stop-color="#d2d6bc"></stop><stop offset=".6" stop-color="#8fa497"></stop><stop
+        offset="1"
+        stop-color="#526f6f"></stop></radialGradient
+    ></defs
+  ><rect width="480" height="300" fill="#eef0e3"></rect>{
+    shapes.map((s) => (
+      <g>
+        <polyline points={s.d} fill="none" stroke="#8ca9a0" stroke-width="1.5" />
+        {s.marks.map((p) => (
+          <circle cx={240 + p.x * 95000} cy={150 - p.y * 95000} r="2.5" fill="#6c9692" />
+        ))}
+      </g>
+    ))
+  }<circle cx="240" cy="150" r="28.5" fill="url(#stokesCover)" stroke="#688882"></circle><path
+    d="M310 167v-38m-5 7l5-7l5 7"
+    stroke="#ae8349"
+    stroke-width="3"
+    fill="none"></path></svg
+>

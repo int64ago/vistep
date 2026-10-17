@@ -1,0 +1,47 @@
+<h2 id="understand">The switch opens; current finds another loop</h2>
+
+Connect a series resistor and inductor to a voltage source. Current builds from zero. Initially the entire supply voltage appears across the inductor. As current rises, the resistor drop increases and the inductor voltage falls. An inductor limits **how quickly current changes**, rather than permanently preventing current.
+
+With a 6 V source and 20 Ω resistance, the steady current is 0.30 A. Increasing inductance from 100 to 200 mH slows the rise without changing that final value.
+
+Before each release experiment, prepare the circuit at steady current. Immediately after opening the low-side switch, inductor current remains 0.30 A. It flows through the coil in its original direction, then returns through the clamp to the upstream end of the resistor. The source branch carries no current during this release.
+
+Coil voltage, referenced positive at its upper terminal, becomes negative as stored magnetic energy is released. Voltage reverses while current retains its direction.
+
+<h2 id="try">Trade release time for voltage</h2>
+
+- During current buildup, vary elapsed time. Resistor and inductor voltages always sum to 6 V.
+- Increase inductance and compare current at the same elapsed time. Both circuits eventually approach 0.30 A.
+- Choose release from steady state and start at zero elapsed time. Current stays continuous through switching.
+- Compare 0.7 V and 30 V clamps. The latter extinguishes current faster but raises the switch voltage to 36 V during conduction.
+- In the final film chapter, remaining magnetic energy, resistor heat and clamp heat always total 4.5 mJ.
+
+<h2 id="deeper">The loop sets the voltage and rate of change</h2>
+
+<details>
+<summary>Exponential current buildup</summary>
+
+Using the passive sign convention, current enters the inductor's positive voltage-reference terminal:
+
+<div className="formula">V_L = L di/dt; V_s = Ri + V_L</div>
+<div className="formula">i(t) = (V_s/R)[1 − exp(−t/τ)]; τ = L/R</div>
+
+At 100 mH, the time constant is 5 ms. After one time constant, current reaches about 63.2% of its final value. An ideal inductor has zero voltage drop in DC steady state; real winding resistance still produces voltage drop and heat.
+
+</details>
+
+<details>
+<summary>Clamp loop, voltage reference and energy balance</summary>
+
+The clamp spans the entire R–L branch, conducting from the lower coil terminal to the source-positive bus. With a constant clamp drop V_c and an initial current I₀ = V_s/R:
+
+<div className="formula">L di/dt = −Ri − V_c</div>
+<div className="formula">i(t) = (I₀ + V_c/R) exp(−Rt/L) − V_c/R</div>
+
+This solution applies only until current first reaches zero. The clamp then stops conducting and current remains zero. During conduction, switch-node voltage relative to the lower return rail is `Vsw = V_s + V_c`. This differs from the ideal inductor voltage `V_L = −Ri − V_c`.
+
+Magnetic energy is `Li²/2`. Integrating `Ri²` and `V_c i` gives resistor and clamp heat. With no source-branch current, the supply adds no energy during this release.
+
+The lumped model omits parasitic capacitance, magnetic saturation and arcing. The 0.7 V and 30 V values represent generic constant-voltage clamps, rather than a particular diode's complete characteristic. Switch breakdown without a recirculation path is outside the model. Each release starts from a separately prepared steady state.
+
+</details>

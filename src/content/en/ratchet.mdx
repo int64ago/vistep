@@ -1,0 +1,41 @@
+<h2 id="understand">A ramp lets the pawl pass; a steep face stops reversal</h2>
+
+A ratchet constrains direction through asymmetric teeth and a pawl. This scene uses an ideal **radially sliding pawl**: a fixed guide restricts its motion to a vertical line and a spring presses it toward the wheel. Forward motion lifts it along the sloping tooth face. It drops after the tip passes.
+
+On reversal, the wheel first returns to the most recently passed stop. A steep radial tooth face then meets the pawl's side, transferring the sideways reaction to its guide. This blocks further reversal without relying on friction. The holding pawl does not supply the wheel's forward drive energy.
+
+**A one-way mechanism can still have lost motion.** Twelve teeth have a 30° pitch. After 49.5° of forward advance, the previous stop is at 30°, so the wheel can roll back 19.5° before it is held. The amount depends on where the wheel stopped within that tooth interval.
+
+Lifting the pawl above the tooth tips removes the contact constraint and permits reversal. More teeth reduce the pitch and the maximum ideal rollback interval. Real designs must also consider size, contact stress, stiffness and manufacturing tolerances.
+
+<h2 id="try">Advance first, then request a rollback</h2>
+
+- Use twelve teeth and 49.5° of previous forward advance. Increase requested rollback until actual rollback stops at 19.5°.
+- Increase the request further. The dashed target moves while the solid wheel stays against the pawl's working face.
+- Keep the same request and lift the pawl. Compare the actual output position.
+- Advance 22°, then request 30° of rollback, comparing twelve and twenty-four teeth. The previous stop and actual lost angle differ.
+
+The two angle controls describe a definite history: advance first, then attempt reversal. Scrubbing or chapter seeking reconstructs that history without carrying hidden state from an earlier interaction.
+
+<h2 id="deeper">Tooth pitch and the geometric stop</h2>
+
+<details>
+<summary>Ideal rollback angle</summary>
+
+With N teeth, angular pitch is p = 360°/N. Let A be previous forward advance and B requested rollback. With the pawl seated:
+
+<div className="formula">previous stop = floor(A / p) × p</div>
+<div className="formula">actual output = max(A − B, previous stop)</div>
+
+The available lost angle is `A − floor(A/p) × p`, less than one tooth pitch in this ideal geometry. Twelve and twenty-four teeth give pitches of 30° and 15°. That does not mean every reversal travels the full pitch.
+
+</details>
+
+<details>
+<summary>Why this example uses a guided sliding pawl</summary>
+
+Pawls can pivot or slide. The flat-ended sliding version exposes the contact constraints: its bottom rests on the current tooth profile, the radial working face meets its vertical side at the stop, and the fixed guide carries the lateral reaction. Pawl height comes from the exact highest tooth-profile point beneath its finite width.
+
+This is rigid, frictionless, quasistatic contact. Pawl and spring inertia are omitted, with immediate return once a tooth tip clears. The model does not predict impact sound, rebound, elastic deformation, fatigue or allowable torque. It is not a design for a particular wrench or lifting-safety device.
+
+</details>

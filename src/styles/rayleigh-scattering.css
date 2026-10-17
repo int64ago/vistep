@@ -1,0 +1,159 @@
+.rayleigh-study {
+  background: #263748;
+  color: #d6e0dc;
+  border-radius: 24px;
+  padding: 24px 28px;
+}
+.rayleigh-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: 18px;
+}
+.rayleigh-study header b {
+  font-size: 16px;
+  font-weight: 400;
+  color: #e2c89c;
+}
+.rayleigh-study > svg {
+  display: block;
+  width: 100%;
+  height: 270px;
+  margin: 10px 0;
+}
+.rayleigh-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  flex-wrap: wrap;
+  min-height: 24px;
+}
+.rayleigh-legend > span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.rayleigh-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.rayleigh-legend b {
+  font-size: 24px;
+  font-weight: 400;
+  color: #e2c89c;
+}
+.rayleigh-swatches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+  font-size: 16px;
+}
+.rayleigh-swatches span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rayleigh-swatches i {
+  display: block;
+  width: 48px;
+  height: 32px;
+  border-radius: 12px;
+}
+.rayleigh-note {
+  font-size: 16px;
+  color: #b9c7c9;
+  margin: 12px 0 4px;
+}
+.rayleigh-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.rayleigh-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.rayleigh-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #c7d1d1;
+  margin: 0 0 14px;
+}
+.rayleigh-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.rayleigh-controls button {
+  min-height: 44px;
+  background: #ffffff08;
+  color: inherit;
+  border: 1px solid #b7c6cd66;
+  border-radius: 24px;
+  padding: 9px 14px;
+  font-size: 16px;
+}
+.rayleigh-controls button[aria-pressed='true'] {
+  background: #b9d2d52b;
+  border-color: #b9d2d5;
+}
+.rayleigh-views {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.rayleigh-study .control,
+.rayleigh-study .control output {
+  color: #d6e0dc;
+}
+.rayleigh-study .control input[type='range'] {
+  --range-color: #e2c89c;
+  --range-rest: #718596;
+}
+@media (max-width: 760px) {
+  .rayleigh-study {
+    padding: 16px;
+  }
+  .rayleigh-study header {
+    font-size: 16px;
+  }
+  .rayleigh-study header b {
+    display: none;
+  }
+  .rayleigh-study > svg {
+    height: 195px;
+    margin: 6px 0;
+  }
+  .rayleigh-legend {
+    gap: 7px 12px;
+    justify-content: space-between;
+  }
+  .rayleigh-swatches {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .rayleigh-swatches i {
+    width: 32px;
+    height: 28px;
+  }
+  .rayleigh-note {
+    margin-top: 10px;
+  }
+  .rayleigh-controls {
+    grid-template-columns: 1fr;
+  }
+  .showcase[data-mode='watch'] .rayleigh-study details {
+    display: none;
+  }
+  .rayleigh-swatches i {
+    flex: 0 0 28px;
+  }
+}

@@ -1,0 +1,11 @@
+# Principal components — author brief
+
+Misconceptions: far from origin means high variance; PCA is vertical regression;95% retained means no information loss; axis sign/unique direction always meaningful; units do not matter. Prerequisite: coordinates and perpendicular projection. Different from dimensions: a measured linear compression criterion, not abstract dimension count.
+
+Art direction: blue observations cast pale gold orthogonal shadows onto a rotating ochre axis. Centering physically translates the cloud/mean before a close shot. Paired observations collapse to four one-dimensional positions; eight score tags preserve count. Unit-change shot keeps equal units, visibly flattening data rather than cosmetically preserving old geometry. SVG24-unit ticks plus16px HTML metrics, deep #654c40. Plot max400px; phone198px, score tags4×2 and compact variance trio. Complete-player740px budget pending real review.
+
+Sources: [Stanford CS229 PCA](https://cs229.stanford.edu/notes2022fall/pca-annotated.pdf), [CMU primary lecture](https://www.stat.cmu.edu/~cshalizi/dst/26/lectures/03/lecture-03.html). Centered population/n covariance; maximize projected variance=minimize orthogonal mean-square residual; no causality/predictive guarantee. Rotated Cartesian construction has eigenvalues5,.25,mean4/3 and angle30°.
+
+Seven shots, planned149s: offset cloud/mean; subtract mean; horizontal nonoptimal projection; rotate0→30° minimizing error1.4375→.25; one-dimensional scores still lose side displacement; x units×10 change optimum; isotropic data rotates any axis while retained/error each.5. Explorer angle, unit scale and base cloud change the actual model; degenerate data disable the unique-align button.
+
+Four tests: known designed eigenstructure;1800-angle independent perpendicular-distance sweep; variance/error decomposition; translation versus unit sensitivity/eigen residual; repeated eigenvalues, zero total variance and invalid input. No runtime resources or independent clock. Author checks separate from browser/full watch/recordings/listening/devices/independent review, pending. Computing age12; related dimensions,jpeg,gradient-descent (same/new batch). Speech pending keyframes.

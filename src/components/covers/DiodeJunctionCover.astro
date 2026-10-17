@@ -1,0 +1,82 @@
+---
+import { diodeJunction, junctionDefaults } from '../../models/diode-junction';
+const s = diodeJunction(junctionDefaults());
+const scale = 4e8;
+const left = 220 - s.pWidth * scale;
+const right = 220 + s.nWidth * scale;
+const points = Array.from(
+  { length: 161 },
+  (_, j) => `${20 + j * 2},${198 - (s.potential((20 + j * 2 - 220) / scale) / 0.8) * 62}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><rect x="20" y="28" width="200" height="97" rx="8" fill="#dfe8d1"></rect><rect
+    x="220"
+    y="28"
+    width="120"
+    height="97"
+    rx="8"
+    fill="#eae4cc"></rect><rect
+    x={left}
+    y="28"
+    width={right - left}
+    height="97"
+    fill="#f5f1df"
+    stroke="#c3c8ae"></rect>{
+    [0, 1, 2].flatMap((row) =>
+      [0, 1].map((col) => (
+        <g>
+          <>
+            <rect
+              x={left + ((220 - left) * (col + 0.5)) / 2 - 4}
+              y={45 + row * 28}
+              width="8"
+              height="8"
+              rx="1"
+              fill="#89aa9a"
+            />
+            <path
+              d={`M${left + ((220 - left) * (col + 0.5)) / 2 - 2.5} ${49 + row * 28}h5`}
+              stroke="#fffdeb"
+            />
+            <rect
+              x={220 + ((right - 220) * (col + 0.5)) / 2 - 4}
+              y={45 + row * 28}
+              width="8"
+              height="8"
+              rx="1"
+              fill="#c6ad76"
+            />
+            <path
+              d={`M${220 + ((right - 220) * (col + 0.5)) / 2 - 2.5} ${49 + row * 28}h5M${220 + ((right - 220) * (col + 0.5)) / 2} ${46.5 + row * 28}v5`}
+              stroke="#fffdeb"
+            />
+          </>
+        </g>
+      )),
+    )
+  }{
+    [45, 75, 300, 325].flatMap((x) =>
+      [50, 88].map((y) => (
+        <circle
+          cx={x}
+          cy={y}
+          r="5"
+          fill={x > 220 ? '#8eac9c' : '#f6f4e4'}
+          stroke={x > 220 ? '#8eac9c' : '#b9a773'}
+          stroke-width="1.5"
+        />
+      )),
+    )
+  }<path
+    d={`M${right - 8} 140H${left + 8}l7 -4m-7 4 7 4M20 198H340`}
+    fill="none"
+    stroke="#a1b18d"
+    stroke-width="1.5"></path><polyline
+    points={points}
+    fill="none"
+    stroke="#ab9262"
+    stroke-width="3"></polyline><path d="M220 22V205" stroke="#bfc7ad" stroke-dasharray="2 4"
+  ></path></svg
+>

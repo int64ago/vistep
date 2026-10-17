@@ -95,6 +95,1233 @@ export function discoverySearchKeywords(slug: string): string {
 }
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  'electric-fuse': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['保险丝', '熔断器', '焦耳热', '热历史', '短脉冲'],
+      en: ['Electric fuse', 'fuse link', 'Joule heating', 'thermal history', 'current pulse'],
+    },
+  },
+  'current-transformer': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电流互感器', '安匝平衡', '二次负担', '磁芯饱和'],
+      en: ['Current transformer', 'ampere-turn balance', 'CT burden', 'core saturation'],
+    },
+  },
+  relay: {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['继电器', '电磁开关', '常开触点', '线圈', '吸合', '释放', '电气隔离'],
+      en: [
+        'Relay',
+        'electromagnetic switch',
+        'normally open contacts',
+        'coil',
+        'pickup',
+        'release',
+        'galvanic isolation',
+      ],
+    },
+  },
+  'ground-fault-breaker': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['漏电保护器', '漏电保护', '剩余电流', '差流', '零序互感器', 'RCD', 'RCCB', 'GFCI'],
+      en: [
+        'Residual-current breaker',
+        'ground fault breaker',
+        'residual current',
+        'differential current',
+        'RCD',
+        'RCCB',
+        'GFCI',
+        'test button',
+      ],
+    },
+  },
+  'pressure-cooker': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['高压锅', '压力锅', '沸点', '表压', '饱和压力', '配重阀'],
+      en: [
+        'Pressure cooker',
+        'boiling point',
+        'gauge pressure',
+        'saturation pressure',
+        'weighted valve',
+        'steam',
+      ],
+    },
+  },
+  'three-phase-power': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['三相电力', '相电压', '线电压', '中性线', '有功功率'],
+      en: ['Three-phase power', 'phase voltage', 'line voltage', 'neutral current', 'active power'],
+    },
+  },
+  'fuel-cell': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['燃料电池', '质子交换膜', '电化学', '最大功率', '氢能', '法拉第定律'],
+      en: [
+        'Fuel cell',
+        'PEM',
+        'electrochemistry',
+        'maximum power',
+        'hydrogen energy',
+        'Faraday law',
+      ],
+    },
+  },
+  piezoelectricity: {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['压电效应', '压电陶瓷', '力传感器', '逆压电效应'],
+      en: ['Piezoelectricity', 'piezo ceramic', 'force sensor', 'inverse piezoelectric effect'],
+    },
+  },
+  'dew-point': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['露点', '结露', '凝结', '湿度', '水汽', '饱和蒸气压'],
+      en: [
+        'Dew point',
+        'condensation',
+        'humidity',
+        'water vapour',
+        'saturation pressure',
+        'cold mirror',
+      ],
+    },
+  },
+  electrolysis: {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['水电解', '质子交换膜', '法拉第定律', '阳极', '阴极', '制氢'],
+      en: ['Water electrolysis', 'PEM', 'Faraday law', 'anode', 'cathode', 'hydrogen production'],
+    },
+  },
+  thermocouple: {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['热电偶', '冷端补偿', '塞贝克效应', '温度测量'],
+      en: ['Thermocouple', 'cold-junction compensation', 'Seebeck effect', 'temperature sensing'],
+    },
+  },
+  'evaporative-cooling': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['蒸发冷却', '蒸发', '湿球', '湿度', '潜热', '凝结'],
+      en: [
+        'Evaporative cooling',
+        'evaporation',
+        'wet bulb',
+        'humidity',
+        'latent heat',
+        'condensation',
+      ],
+    },
+  },
+  'greenhouse-effect': {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['温室效应', '温室气体', '辐射平衡', '灰体大气', '向下长波', '能量守恒', '热容'],
+      en: [
+        'Greenhouse effect',
+        'greenhouse gases',
+        'radiative balance',
+        'gray atmosphere',
+        'downward infrared',
+        'energy conservation',
+        'heat capacity',
+      ],
+    },
+  },
+  'eddy-current-brake': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['涡流制动', '电磁阻尼', '焦耳热', '楞次定律'],
+      en: ['Eddy-current braking', 'magnetic damping', 'Joule heat', 'Lenz law'],
+    },
+  },
+  'surface-waves': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['水面波', '海浪', '水波', '重力波', '群速度', '相速度'],
+      en: [
+        'Surface waves',
+        'water waves',
+        'ocean waves',
+        'gravity wave',
+        'group velocity',
+        'phase velocity',
+      ],
+    },
+  },
+  'vortex-ring': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['涡环', '烟圈', '涡量', '毕奥萨伐尔', '环量', '涡旋'],
+      en: ['Vortex ring', 'smoke ring', 'vorticity', 'Biot–Savart', 'circulation'],
+    },
+  },
+  'plate-boundaries': {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['板块边界', '板块构造', '俯冲', '张裂边界', '转换断层', '相对运动', '大陆碰撞'],
+      en: [
+        'Plate boundaries',
+        'plate tectonics',
+        'subduction',
+        'divergent boundary',
+        'transform boundary',
+        'relative motion',
+        'continental collision',
+      ],
+    },
+  },
+  'stellar-parallax': {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['恒星视差', '周年视差', '天文测距', '秒差距', '自行', '黄纬', '基线'],
+      en: [
+        'Stellar parallax',
+        'annual parallax',
+        'astrometry',
+        'parsec',
+        'proper motion',
+        'ecliptic latitude',
+        'baseline',
+      ],
+    },
+  },
+  'viscosity-layers': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['黏性分层', '黏度', '库埃特流', '剪应力', '速度梯度', '动量扩散'],
+      en: [
+        'Viscous layers',
+        'viscosity',
+        'Couette flow',
+        'shear stress',
+        'velocity gradient',
+        'momentum diffusion',
+      ],
+    },
+  },
+  'hall-effect': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['霍尔效应', '载流子', '霍尔电压', '磁场测量', '电子漂移'],
+      en: ['Hall effect', 'charge carriers', 'Hall voltage', 'magnetic sensing', 'electron drift'],
+    },
+  },
+  'lunar-eclipse': {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['月食', '月全食', '月偏食', '半影月食', '轨道交点', '本影', '满月'],
+      en: [
+        'Lunar eclipse',
+        'lunar eclipses',
+        'totality',
+        'penumbral eclipse',
+        'orbital node',
+        'umbra',
+        'full moon',
+      ],
+    },
+  },
+  'stokes-drag': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['斯托克斯阻力', '低雷诺数', '终端沉降', '黏度', '微粒沉降', '爬流'],
+      en: [
+        'Stokes drag',
+        'low Reynolds number',
+        'terminal settling',
+        'viscosity',
+        'particle sedimentation',
+        'creeping flow',
+      ],
+    },
+  },
+  'op-amp-feedback': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['运放负反馈', '虚短', '运算放大器', '转换速率', '闭环增益'],
+      en: [
+        'Op-amp feedback',
+        'virtual short',
+        'operational amplifier',
+        'slew rate',
+        'closed-loop gain',
+      ],
+    },
+  },
+  'orbital-transfer': {
+    category: 'nature',
+    minAge: 12,
+    keywords: {
+      zh: ['霍曼轨道转移', '霍曼转移', 'Hohmann', '双脉冲', '轨道机动', '升轨', '圆化'],
+      en: [
+        'Hohmann orbital transfer',
+        'Hohmann transfer',
+        'two impulses',
+        'orbit raising',
+        'circularization',
+        'vis-viva',
+        'orbital maneuver',
+      ],
+    },
+  },
+  'venturi-meter': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['文丘里流量计', '差压', '流量测量', '喉部', '压差计', '伯努利'],
+      en: [
+        'Venturi meter',
+        'differential pressure',
+        'flow measurement',
+        'throat',
+        'manometer',
+        'Bernoulli',
+      ],
+    },
+  },
+  'bjt-amplifier': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['晶体管放大器', '共射极', '偏置', '饱和', '发射极负反馈'],
+      en: ['Transistor amplifier', 'common emitter', 'bias', 'saturation', 'emitter degeneration'],
+    },
+  },
+  'earth-day': {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['恒星日与太阳日', '恒星日', '太阳日', '地球自转', '公转', '正午', '相对角速度'],
+      en: [
+        'Sidereal and solar day',
+        'sidereal day',
+        'solar day',
+        'Earth rotation',
+        'orbital motion',
+        'noon',
+        'relative angular velocity',
+      ],
+    },
+  },
+  'hydrostatic-pressure': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['静水压', '液体压强', '连通器', '静水悖论', '表压', '液压'],
+      en: [
+        'Hydrostatic pressure',
+        'liquid pressure',
+        'communicating vessels',
+        'hydrostatic paradox',
+        'gauge pressure',
+        'pressure force',
+      ],
+    },
+  },
+  'diode-junction': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['PN结二极管', '耗尽区', '半导体', '势垒', '正向偏置'],
+      en: [
+        'PN junction diode',
+        'depletion region',
+        'semiconductor',
+        'built-in potential',
+        'forward bias',
+      ],
+    },
+  },
+  voronoi: {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['Voronoi 图', 'Voronoi', '泰森多边形', '最近邻', '垂直平分线', '半平面', '距离度量'],
+      en: [
+        'Voronoi diagram',
+        'Voronoi',
+        'nearest neighbor',
+        'perpendicular bisector',
+        'halfplane intersection',
+        'distance metric',
+      ],
+    },
+  },
+  buoyancy: {
+    category: 'thermal-fluids',
+    minAge: 8,
+    keywords: {
+      zh: ['浮力', '阿基米德', '排水', '浮沉', '吃水', '液体密度'],
+      en: ['Buoyancy', 'Archimedes principle', 'displaced liquid', 'floating', 'sinking', 'draft'],
+    },
+  },
+  'growth-logistic': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['逻辑斯谛增长', 'Logistic增长', '承载量', '种群增长', '密度限制', '微分方程'],
+      en: [
+        'Logistic growth',
+        'logistic equation',
+        'carrying capacity',
+        'population growth',
+        'density dependence',
+        'differential equation',
+      ],
+    },
+  },
+  'adiabatic-compression': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['绝热压缩', '活塞', '绝热膨胀', '等温压缩', '内能', '自由膨胀'],
+      en: [
+        'Adiabatic compression',
+        'piston work',
+        'adiabatic expansion',
+        'isothermal compression',
+        'internal energy',
+        'free expansion',
+      ],
+    },
+  },
+  'inductor-transient': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电感瞬态', '续流', '钳位', '磁能', '电流连续'],
+      en: ['Inductor transients', 'flyback', 'clamping', 'magnetic energy', 'current continuity'],
+    },
+  },
+  'random-walk': {
+    category: 'math-systems',
+    minAge: 10,
+    keywords: {
+      zh: ['随机游走', '随机漫步', '扩散', '均方根位移', '吸收边界', '奇偶性'],
+      en: [
+        'Random walk',
+        'random walking',
+        'diffusion',
+        'root mean square displacement',
+        'absorbing boundary',
+        'lattice parity',
+      ],
+    },
+  },
+  'ideal-gas': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['理想气体', '气体压强', '玻意耳定律', '绝对温度', '表压', '分子碰撞'],
+      en: [
+        'Ideal gas',
+        'gas pressure',
+        'Boyle law',
+        'absolute temperature',
+        'gauge pressure',
+        'molecular collisions',
+      ],
+    },
+  },
+  'central-limit-theorem': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['中央极限定理', '中心极限定理', 'CLT', '二项分布', '标准化', '独立同分布', '正态近似'],
+      en: [
+        'Central limit theorem',
+        'CLT',
+        'binomial distribution',
+        'standardized sum',
+        'normal approximation',
+        'independence',
+      ],
+    },
+  },
+  'capacitor-fields': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电容器电场', '介质极化', '固定电荷', '固定电压', '电势'],
+      en: [
+        'Capacitor fields',
+        'dielectric polarization',
+        'fixed charge',
+        'fixed voltage',
+        'electric potential',
+      ],
+    },
+  },
+  'thermal-expansion': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['热膨胀', '热胀冷缩', '孔径', '热应力', '膨胀缝', '过盈配合'],
+      en: [
+        'Thermal expansion',
+        'heated hole',
+        'thermal stress',
+        'expansion joint',
+        'clearance fit',
+        'thermal contraction',
+      ],
+    },
+  },
+  'monte-carlo': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['蒙特卡洛方法', '蒙特卡洛', '随机抽样', '标准误差', '采样偏差', '圆面积'],
+      en: [
+        'Monte Carlo',
+        'Monte Carlo method',
+        'random sampling',
+        'standard error',
+        'sampling bias',
+        'area estimation',
+      ],
+    },
+  },
+  'heat-radiation': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['热辐射', '红外', '发射率', '热平衡', '黑体', '斯特藩玻尔兹曼'],
+      en: [
+        'Thermal radiation',
+        'Heat radiation',
+        'infrared',
+        'emissivity',
+        'thermal equilibrium',
+        'blackbody',
+        'Stefan Boltzmann',
+      ],
+    },
+  },
+  'markov-chain': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['马尔可夫链', '马尔可夫', '转移矩阵', '稳态分布', '周期性', '概率质量'],
+      en: [
+        'Markov chain',
+        'Markov',
+        'transition matrix',
+        'stationary distribution',
+        'periodicity',
+        'probability mass',
+      ],
+    },
+  },
+  'center-of-mass': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['质心', '质量加权', '内部运动', '平台反冲', '动量守恒'],
+      en: [
+        'Center of mass',
+        'mass-weighted position',
+        'internal motion',
+        'platform recoil',
+        'momentum conservation',
+      ],
+    },
+  },
+  'helmholtz-resonator': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['亥姆霍兹共鸣器', '瓶子吹气', '空气弹簧', '腔体共鸣', '端修正', '瓶子装水'],
+      en: [
+        'Helmholtz resonator',
+        'bottle tone',
+        'air spring',
+        'cavity resonance',
+        'end correction',
+        'bottle filling',
+      ],
+    },
+  },
+  'organ-pipe': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['风琴管', '塞闭管', '开放管', '声柱', '奇数谐波', '端修正'],
+      en: [
+        'Organ pipe',
+        'stopped pipe',
+        'open pipe',
+        'air column',
+        'odd harmonics',
+        'end correction',
+      ],
+    },
+  },
+  'elastic-collision': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['弹性碰撞', '碰撞动量', '弹簧储能', '质量比', '质心参考系'],
+      en: [
+        'Elastic collision',
+        'collision momentum',
+        'spring energy',
+        'mass ratio',
+        'center-of-mass frame',
+      ],
+    },
+  },
+  'principal-components': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['主成分分析', 'PCA', '降维', '投影方差', '重建误差'],
+      en: [
+        'Principal components',
+        'PCA',
+        'principal component analysis',
+        'dimension reduction',
+        'projection variance',
+        'reconstruction error',
+      ],
+    },
+  },
+  'gradient-descent': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['梯度下降', '学习率', '步长', '优化', '损失函数'],
+      en: ['Gradient descent', 'learning rate', 'step size', 'optimization', 'loss contours'],
+    },
+  },
+  'acoustic-reflection': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['声反射', '回声', '声阻抗', '透射', '压力波', '粒子速度'],
+      en: [
+        'Acoustic reflection',
+        'echo',
+        'specific acoustic impedance',
+        'transmission',
+        'pressure wave',
+        'particle velocity',
+      ],
+    },
+  },
+  'angular-momentum': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['角动量', '转动惯量', '收拢加速', '内部做功', '外力矩'],
+      en: [
+        'Angular momentum',
+        'moment of inertia',
+        'inward motion',
+        'internal work',
+        'external torque',
+      ],
+    },
+  },
+  convolution: {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['离散卷积', '卷积', '冲激响应', '信号滤波', '相关运算'],
+      en: [
+        'Discrete convolution',
+        'convolution',
+        'impulse response',
+        'FIR',
+        'correlation',
+        'circular convolution',
+      ],
+    },
+  },
+  mirage: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['海市蜃楼', '下蜃景', '热路面', '折射率梯度', '路面像水'],
+      en: ['Mirage', 'inferior mirage', 'hot road', 'index gradient', 'wet-road appearance'],
+    },
+  },
+  gyroscope: {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['陀螺仪', '陀螺进动', '角动量方向', '重力矩', '章动'],
+      en: ['Gyroscope', 'precession', 'angular momentum direction', 'gravity torque', 'nutation'],
+    },
+  },
+  'run-length-encoding': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['游程编码', '行程编码', 'RLE', '无损压缩', '连续重复'],
+      en: [
+        'Run-length encoding',
+        'RLE',
+        'run length compression',
+        'lossless coding',
+        'byte runs',
+        'run length encoding',
+      ],
+    },
+  },
+  'spherical-aberration': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['球差', '球面像差', '抛物面镜', '焦散', '口径', '彗差'],
+      en: [
+        'Spherical aberration',
+        'spherical mirror',
+        'parabolic mirror',
+        'caustic',
+        'aperture',
+        'coma',
+      ],
+    },
+  },
+  'diffie-hellman': {
+    category: 'computing',
+    minAge: 14,
+    keywords: {
+      zh: ['Diffie–Hellman 协商', 'DH协商', '迪菲赫尔曼', '密钥交换', '共享秘密', '中间人攻击'],
+      en: [
+        'Diffie–Hellman exchange',
+        'Diffie Hellman',
+        'DH key agreement',
+        'shared secret',
+        'key exchange',
+        'man in the middle',
+      ],
+    },
+  },
+  'digital-signature': {
+    category: 'computing',
+    minAge: 14,
+    keywords: {
+      zh: ['数字签名', '公钥验签', 'Schnorr', '签名验证', 'nonce复用'],
+      en: [
+        'Digital signature',
+        'digital signatures',
+        'public verification',
+        'Schnorr',
+        'nonce reuse',
+        'private key',
+      ],
+    },
+  },
+  flywheel: {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['飞轮', '转动惯量', '动能储存', '转速波动', '轮缘'],
+      en: ['Flywheel', 'rotational inertia', 'kinetic energy', 'speed ripple', 'rim'],
+    },
+  },
+  moire: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['摩尔纹', '莫尔条纹', '叠纹', '光栅', '空间频率', '差频'],
+      en: [
+        'Moiré patterns',
+        'moire',
+        'grating overlay',
+        'spatial frequency',
+        'beat pattern',
+        'translation magnification',
+      ],
+    },
+  },
+  'merkle-tree': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['Merkle 树', '默克尔树', '哈希树', '包含证明', '数据完整性', '可信根'],
+      en: ['Merkle tree', 'hash tree', 'inclusion proof', 'data integrity', 'trusted root'],
+    },
+  },
+  'stereoscopic-vision': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['双目立体视觉', '视差', '双眼', '立体测量', '深度', '对应关系'],
+      en: [
+        'Stereoscopic vision',
+        'binocular disparity',
+        'stereo vision',
+        'triangulation',
+        'depth',
+        'correspondence',
+      ],
+    },
+  },
+  'raft-consensus': {
+    category: 'computing',
+    minAge: 14,
+    keywords: {
+      zh: ['Raft 共识', 'Raft共识', '领导者选举', '任期', '多数派', '日志复制'],
+      en: ['Raft consensus', 'Raft', 'consensus', 'leader election', 'term', 'log replication'],
+    },
+  },
+  'color-mixing': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['色光混合', '加色', '减色', 'RGB', 'CMY', '滤片'],
+      en: ['Color mixing', 'additive colour', 'subtractive colour', 'RGB', 'CMY', 'filters'],
+    },
+  },
+  'centrifugal-governor': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['离心调速器', '瓦特调速器', '飞球', '负反馈', '稳态偏差'],
+      en: [
+        'Centrifugal governor',
+        'Watt governor',
+        'flyball governor',
+        'negative feedback',
+        'speed droop',
+      ],
+    },
+  },
+  'write-ahead-log': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['预写日志', 'WAL', '崩溃恢复', '持久性', '重做日志'],
+      en: [
+        'Write-ahead log',
+        'write ahead log',
+        'WAL',
+        'crash recovery',
+        'durability',
+        'redo logging',
+      ],
+    },
+  },
+  'fresnel-lens': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['菲涅耳透镜', '环带透镜', '聚光', '折射面', '灯塔'],
+      en: ['Fresnel lens', 'annular lens', 'concentrator', 'refracting surface', 'lighthouse'],
+    },
+  },
+  'rayleigh-scattering': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['瑞利散射', '蓝天', '日落', '分子散射', '波长', '光谱'],
+      en: [
+        'Rayleigh scattering',
+        'blue sky',
+        'sunset',
+        'molecular scattering',
+        'wavelength',
+        'spectrum',
+      ],
+    },
+  },
+  'database-transactions': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['数据库事务', '原子性', '隔离性', '回滚', '丢失更新'],
+      en: ['Database transactions', 'atomicity', 'isolation', 'rollback', 'lost update'],
+    },
+  },
+  ratchet: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['棘轮', '棘爪', '单向机构', '空回角', '止逆'],
+      en: ['Ratchet', 'pawl', 'one-way mechanism', 'lost motion', 'backstop'],
+    },
+  },
+  'max-flow': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['最大流', '最小割', '残余网络', '增广路', '容量网络'],
+      en: ['Maximum flow', 'max flow', 'minimum cut', 'residual network', 'augmenting path'],
+    },
+  },
+  retroreflector: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['回归反射器', '角锥', '角反射器', '反光标记', '激光测距', '反射'],
+      en: [
+        'Retroreflector',
+        'corner cube',
+        'corner reflector',
+        'retroreflection',
+        'laser ranging',
+        'reflection',
+      ],
+    },
+  },
+  telescope: {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['望远镜', '开普勒望远镜', '物镜', '目镜', '出瞳', '放大率'],
+      en: [
+        'Telescope',
+        'Keplerian telescope',
+        'objective',
+        'eyepiece',
+        'exit pupil',
+        'magnification',
+      ],
+    },
+  },
+  'astar-search': {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['A* 搜索', 'A星', '启发式搜索', '寻路', '曼哈顿距离', '最短路'],
+      en: ['A* search', 'astar', 'A-star', 'heuristic search', 'pathfinding', 'Manhattan distance'],
+    },
+  },
+  'topological-sort': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['拓扑排序', '有向无环图', '依赖', '入度', '循环依赖'],
+      en: [
+        'Topological sort',
+        'topological sorting',
+        'directed acyclic graph',
+        'dependencies',
+        'indegree',
+        'cycle',
+      ],
+    },
+  },
+  'union-find': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['并查集', '不相交集合', '路径压缩', '按大小合并'],
+      en: ['Union–find', 'union find', 'disjoint sets', 'path compression', 'weighted union'],
+    },
+  },
+  'geneva-drive': {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['日内瓦机构', '槽轮机构', '间歇运动', '马耳他十字', '机械分度'],
+      en: ['Geneva drive', 'Maltese cross', 'intermittent motion', 'indexing mechanism', 'dwell'],
+    },
+  },
+  'heap-priority-queue': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['堆优先队列', '优先队列', '最大堆', '二叉堆', '上浮', '下沉'],
+      en: ['Heap priority queue', 'priority queue', 'max heap', 'binary heap', 'swim', 'sink'],
+    },
+  },
+  'universal-joint': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['万向节', '十字轴', '传动轴', '叉头相位', '角速度波动'],
+      en: [
+        'Universal joint',
+        'Cardan joint',
+        'drive shaft',
+        'yoke phasing',
+        'angular speed variation',
+      ],
+    },
+  },
+  'diffraction-grating': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['衍射光栅', '多缝', '光谱', '干涉级次', '缺级', '夫琅禾费'],
+      en: [
+        'Diffraction grating',
+        'multiple slits',
+        'spectrum',
+        'diffraction order',
+        'missing orders',
+        'Fraunhofer',
+      ],
+    },
+  },
+  'prism-dispersion': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['棱镜色散', '三棱镜', '白光', '光谱', 'Sellmeier', 'N-BK7'],
+      en: ['Prism dispersion', 'prism', 'white light', 'spectrum', 'Sellmeier', 'N-BK7'],
+    },
+  },
+  'total-internal-reflection': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['全反射', '临界角', '消逝场', '光纤', '菲涅耳反射'],
+      en: [
+        'Total internal reflection',
+        'critical angle',
+        'evanescent field',
+        'optical fiber',
+        'Fresnel reflection',
+      ],
+    },
+  },
+  refraction: {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['折射', '斯涅尔定律', '法线', '介质波长', '光速'],
+      en: ['Refraction', 'Snell law', 'normal', 'in-medium wavelength', 'phase speed'],
+    },
+  },
+  quicksort: {
+    category: 'computing',
+    minAge: 12,
+    keywords: {
+      zh: ['快速排序', '三向切分', '主元', '分区', '重复键', '递归'],
+      en: ['Quicksort', 'three-way partition', 'pivot', 'duplicate keys', 'recursion'],
+    },
+  },
+  'merge-sort': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['归并排序', '稳定排序', '分治', '有序段', '合并'],
+      en: ['Merge sort', 'stable sort', 'divide and conquer', 'sorted runs', 'merging'],
+    },
+  },
+  'binary-search': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['二分查找', '折半查找', '有序数组', '搜索区间', '对数'],
+      en: ['Binary search', 'sorted array', 'search interval', 'halving', 'logarithmic search'],
+    },
+  },
+  'cam-follower': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['凸轮从动件', '偏心轮', '滚子', '弹簧预压', '气门机构'],
+      en: ['Cam follower', 'eccentric cam', 'roller follower', 'spring preload', 'valvetrain'],
+    },
+  },
+  'screw-jack': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['螺旋千斤顶', '丝杆', '导程', '方牙螺纹', '自锁'],
+      en: ['Screw jack', 'power screw', 'lead screw', 'square thread', 'self-locking'],
+    },
+  },
+  'inclined-plane': {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['斜面', '坡道', '省力', '滑动摩擦', '机械功'],
+      en: ['Inclined plane', 'ramp', 'kinetic friction', 'mechanical advantage', 'work'],
+    },
+  },
+  'bayes-updating': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['贝叶斯更新', '基准率', '自然频数', '后验概率', '条件概率', '条件独立'],
+      en: [
+        'Bayesian updating',
+        'base rate',
+        'natural frequencies',
+        'posterior probability',
+        'conditional probability',
+        'conditional independence',
+      ],
+    },
+  },
+  'kepler-orbits': {
+    category: 'nature',
+    minAge: 10,
+    keywords: {
+      zh: ['开普勒轨道', '椭圆', '等面积定律', '偏心率', '公转周期', '行星运动'],
+      en: [
+        'Kepler orbits',
+        'ellipse',
+        'equal area law',
+        'eccentricity',
+        'orbital period',
+        'planetary motion',
+      ],
+    },
+  },
+  'latent-heat': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['潜热', '熔化', '凝固', '相变平台', '冰水', '焓'],
+      en: ['Latent heat', 'melting', 'freezing', 'phase plateau', 'ice water', 'enthalpy'],
+    },
+  },
+  'heat-conduction': {
+    category: 'thermal-fluids',
+    minAge: 10,
+    keywords: {
+      zh: ['热传导', '导热', '傅里叶定律', '温度梯度', '保温', '稳态'],
+      en: [
+        'Heat conduction',
+        'thermal conductivity',
+        'Fourier law',
+        'temperature gradient',
+        'insulation',
+        'steady state',
+      ],
+    },
+  },
+  'rc-circuit': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['RC 充放电', '电容充电', '电容放电', '时间常数', '指数衰减'],
+      en: [
+        'RC charging and discharging',
+        'capacitor',
+        'time constant',
+        'exponential decay',
+        'resistor capacitor',
+      ],
+    },
+  },
+  'wheatstone-bridge': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['惠斯通电桥', '电阻桥', '检流计', '电势差', '应变片'],
+      en: [
+        'Wheatstone bridge',
+        'resistive bridge',
+        'null detector',
+        'strain gauge',
+        'voltage divider',
+      ],
+    },
+  },
+  'pinhole-camera': {
+    category: 'light-sound',
+    minAge: 10,
+    keywords: {
+      zh: ['小孔成像', '针孔相机', '倒像', '几何模糊', '衍射'],
+      en: ['Pinhole camera', 'camera obscura', 'inverted image', 'geometric blur', 'diffraction'],
+    },
+  },
+  dijkstra: {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['Dijkstra 最短路', '最短路径', '迪杰斯特拉', '暂定距离', '贪心算法', '负权边'],
+      en: [
+        'Dijkstra’s shortest path',
+        'shortest path',
+        'Dijkstra algorithm',
+        'tentative distance',
+        'greedy',
+        'negative edge',
+      ],
+    },
+  },
+  pulley: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['滑轮组', '定滑轮', '动滑轮', '承重绳段', '绳长'],
+      en: ['Pulley systems', 'block and tackle', 'moving pulley', 'fixed pulley', 'rope length'],
+    },
+  },
+  'thin-film-interference': {
+    category: 'light-sound',
+    minAge: 12,
+    keywords: {
+      zh: ['薄膜干涉', '肥皂膜', '油膜', '增透膜', '光程', '反射相位'],
+      en: [
+        'Thin-film interference',
+        'soap film',
+        'oil slick',
+        'antireflection coating',
+        'optical path',
+        'reflection phase',
+      ],
+    },
+  },
+  'dns-resolution': {
+    category: 'computing',
+    minAge: 10,
+    keywords: {
+      zh: ['DNS 分层查找', '域名', '递归解析器', '迭代查询', 'DNS', 'TTL', '缓存过期'],
+      en: [
+        'DNS resolution',
+        'domain name',
+        'recursive resolver',
+        'iterative query',
+        'DNS',
+        'TTL',
+        'cache expiry',
+      ],
+    },
+  },
+  lever: {
+    category: 'mechanisms',
+    minAge: 10,
+    keywords: {
+      zh: ['杠杆', '力臂', '支点', '省力', '撬棍', '力矩'],
+      en: ['moment arm', 'fulcrum', 'torque', 'crowbar', 'mechanical advantage', 'Lever'],
+    },
+  },
   'seismic-waves': {
     category: 'nature',
     minAge: 10,

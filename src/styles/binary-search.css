@@ -1,0 +1,216 @@
+.binary-study {
+  padding: 24px;
+  color: #795b40;
+  background: #f5f0e4;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.binary-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+.binary-study header > span {
+  font: 13px monospace;
+  letter-spacing: 0.06em;
+  color: #b39670;
+}
+.binary-study header b {
+  font-weight: 400;
+}
+.binary-study header strong {
+  font-size: 35px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.binary-ruler {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 20px 0 12px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #a68b66;
+}
+.binary-shelf {
+  display: grid;
+  gap: 4px;
+  margin: 24px 0 18px;
+}
+.binary-slot {
+  border-top: 2px solid #cdb78f;
+  background: #e9dfc9;
+  border-radius: 4px 4px 13px 13px;
+  text-align: center;
+  padding: 26px 2px 14px;
+  position: relative;
+  color: #866b47;
+}
+.binary-slot span {
+  display: block;
+  font-size: 24px;
+}
+.binary-slot small {
+  display: block;
+  margin-top: 17px;
+  font-size: 16px;
+  color: #ac977a;
+}
+.binary-slot[data-excluded='true'] {
+  opacity: 0.25;
+}
+.binary-slot[data-probe='true'] {
+  background: #d9bd82;
+  border-color: #9a743c;
+  opacity: 1;
+}
+.binary-slot[data-found='true'] {
+  background: #bdd0ad;
+  border-color: #839c72;
+}
+.binary-slot[data-witness='true'] {
+  background: #d7a491;
+  border-color: #ae6952;
+  opacity: 1;
+  outline: 2px dashed #ae6952;
+  outline-offset: 3px;
+}
+.binary-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid #dfd1b9;
+  padding-top: 15px;
+  line-height: 1.4;
+}
+.binary-comparison b {
+  font-size: 31px;
+  font-weight: 400;
+  color: #9b7740;
+  white-space: nowrap;
+}
+.binary-window {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.binary-window strong {
+  font-size: 26px;
+  font-weight: 400;
+}
+.binary-window > span:last-child {
+  margin-left: auto;
+  color: #ab9473;
+}
+.binary-counterexample {
+  color: #a76852;
+  line-height: 1.5;
+}
+.binary-study summary {
+  min-height: 44px;
+  padding-top: 13px;
+  cursor: pointer;
+}
+.binary-study details p {
+  line-height: 1.7;
+  font-size: 16px;
+}
+.binary-controls {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.binary-controls input,
+.binary-controls button {
+  min-height: 44px;
+  width: 100%;
+}
+.binary-controls button {
+  border: 0;
+  border-radius: 12px;
+  background: #e6d8bc;
+  color: inherit;
+  font: inherit;
+  padding: 10px;
+}
+@media (max-width: 600px) {
+  .binary-study {
+    padding: 18px 12px;
+  }
+  .binary-ruler {
+    margin-top: 14px;
+    gap: 6px;
+  }
+  .binary-shelf {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 7px;
+    margin: 16px 0;
+  }
+  .binary-slot {
+    padding: 9px 2px 7px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    border-radius: 6px 6px 12px 12px;
+  }
+  .binary-slot span {
+    font-size: 24px;
+  }
+  .binary-slot small {
+    margin: 0;
+    font-size: 16px;
+  }
+  .binary-comparison {
+    display: block;
+  }
+  .binary-comparison span {
+    display: block;
+  }
+  .binary-comparison b {
+    display: block;
+    margin-top: 4px;
+    font-size: 30px;
+  }
+  .binary-window {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .binary-window > span:last-child {
+    font-size: 16px;
+  }
+  .binary-study header strong {
+    font-size: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .binary-study[data-watch='true'] .binary-shelf {
+    grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+    gap: 4px 3px;
+  }
+  .binary-study[data-watch='true'] .binary-slot {
+    display: block;
+    padding: 6px 1px;
+  }
+  .binary-study[data-watch='true'] .binary-slot span {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .binary-study[data-watch='true'] .binary-slot small {
+    font-size: 16px;
+    margin-top: 5px;
+    line-height: 1.1;
+  }
+  .binary-study[data-watch='true'] .binary-comparison {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .binary-study[data-watch='true']:not([data-chapter='0']):not([data-chapter='5'])
+    .binary-ruler
+    > span:first-child {
+    display: none;
+  }
+}

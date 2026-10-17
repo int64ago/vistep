@@ -1,0 +1,21 @@
+---
+import { prismRay, prismColor } from '../../models/prism-dispersion';
+const rays = [430, 470, 510, 550, 590, 630, 680].map((w) => prismRay(w));
+const xy = (p: { x: number; y: number }) => `${180 + p.x * 48},${70 - p.y * 48}`;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#243038"></rect><polygon
+    points={rays[0].vertices.map(xy).join(' ')}
+    fill="#a5bfb94d"
+    stroke="#bdc9bd"></polygon>{
+    rays.map((ray) => (
+      <polyline
+        points={ray.points.map(xy).join(' ')}
+        stroke={prismColor(ray.wavelength)}
+        stroke-width="1.8"
+      />
+    ))
+  }<path d={`M${xy({ x: -3, y: 0 })}L${xy(rays[0].entry.point)}`} stroke="#f1ebd6" stroke-width="3"
+  ></path></svg
+>

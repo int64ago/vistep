@@ -1,0 +1,33 @@
+<a id="understand"></a>
+
+## Pressure changes the liquid–vapour equilibrium temperature
+
+Once water boils in an open vessel, further heat mainly converts liquid to vapour. Restricting the outlet permits higher pressure and a higher saturation temperature. In an ideal weighted valve, pressure difference acts over the effective seat area. When the upward force balances the weight, the valve opens and steam can leave.
+
+The film starts after air removal, with liquid and steam coexisting at ambient pressure. It excludes cold startup. Neither the lid nor pressure creates energy: heat input changes internal energy and phase state, while the valve limits the sustained pressure difference.
+
+<a id="try"></a>
+
+## Follow the heat before and after regulation
+
+At fixed weight and ambient pressure, advance time from a seated valve and rising temperature to an open, venting state. Once regulated, increase heat input and compare the unchanged temperature with increased mass flow. Zero heat input preserves the original equilibrium in this insulated model.
+
+A larger model weight requires a greater pressure difference. Lower ambient pressure leaves that gauge pressure unchanged, but reduces absolute pressure and boiling temperature. Weight is an ideal-model parameter; no real regulator adjustment or operating procedure is provided.
+
+<a id="deeper"></a>
+
+## Force, saturation and an open energy balance
+
+<div className="formula">
+  (P-inside − P-ambient) A-seat = mg
+  <br />
+  P-inside = P-saturation(T)
+  <br />
+  Rigid vessel: liquid volume + vapour volume = fixed V
+</div>
+
+Initially, 1 kg of water occupies a 2 L vessel. Saturation pressure uses IAPWS-IF97 region four. Liquid specific volume is approximated as 0.001 m³/kg and specific heat as 4180 J/(kg·K). Vapour specific volume is approximately R T / P. Latent heat is linearly fitted to saturated-water data at 100–120 °C. The closed stage solves mixture internal energy at fixed total mass and volume, then inverts heat input for temperature.
+
+During regulation, shrinking liquid volume gives vapour more room. Evaporated mass and vented mass therefore differ slightly. Total initial mass equals remaining liquid plus remaining vapour plus outflow, and input heat equals internal-energy change plus discharged enthalpy. Vapour inventory cannot stay fixed while liquid volume shrinks.
+
+The ideal flat valve has a 1 mm seat radius, no friction, inertia or hysteresis. A quasi-steady ideal-gas nozzle calculation infers the annular gap, including subcritical and choked branches, with γ = 1.3 and discharge coefficient 0.7. The gap is enlarged vertically to explain the mechanism. Real passages, rocking, heat losses, nonideal steam, food kinetics and cooling/depressurization are excluded.

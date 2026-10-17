@@ -1,0 +1,38 @@
+<h2 id="understand">Piezo sensors are well suited to changing force</h2>
+
+Compressing a piezoelectric ceramic changes electrode charge and builds voltage across its capacitance. With ideal insulation, constant force can retain voltage. Real ceramics, cables and instruments provide leakage paths, so voltage gradually decays even while the force is held.
+
+Removing force after a long hold produces a charge change in the opposite direction and can create a negative pulse. **Negative voltage does not necessarily mean tensile force.** Interpreting the signal requires the loading history and the measurement circuit time constant.
+
+<h2 id="try">Reach the same peak force in different ways</h2>
+
+- Hold 100 N and advance time. Compression remains while voltage decays.
+- Unload after the holding interval. Force returns to zero, but voltage can turn negative before relaxing.
+- Reduce equivalent leakage resistance from 1 GΩ to 0.1 GΩ. The time constant falls from two seconds to 0.2 seconds.
+- Reach the same force in 0.1 seconds and four seconds. During a slow ramp, charge leaks away while it is generated, lowering peak voltage.
+- Switch to electrical actuation with no applied force and reverse the voltage to see the inverse effect.
+
+<h2 id="deeper">Voltage and deformation share one coupling relation</h2>
+
+<details>
+<summary>A one-dimensional small-signal model</summary>
+
+Compression x and compressive force F are positive. V is upper-electrode voltage relative to the lower electrode. For the chosen polarization and wiring convention:
+
+<div className="formula">qterminal = CV − dF; x = F/k − dV</div>
+<div className="formula">C dV/dt + V/R = d dF/dt</div>
+
+The coefficient d is 300 pC/N, also 300 pm/V. C is 2 nF, k is 5 GN/m and default R is 1 GΩ. The same d couples direct sensing and inverse actuation. Coupling strength d²k/C=0.225 satisfies the stable small-signal condition.
+
+During constant force, dF/dt is zero and voltage decays with time constant RC. Elastic compression remains. With a voltage source and F=0, x=−dV: positive voltage extends the ceramic under this convention. Reversing polarization or probes changes the signs.
+
+</details>
+
+<details>
+<summary>Magnified deformation and measurement limits</summary>
+
+The plate is 1 mm thick with area 1 cm² and a modeled Young modulus of 50 GPa. Actual deformation is on the nanometer scale. The picture magnifies relative deformation 15,000 times and marks the unloaded outline with a dashed line; grain marks are material texture.
+
+This is a quasistatic model below mechanical resonance, omitting inertia, hysteresis, creep, thermal drift, depoling and dielectric losses. Resistance combines material and instrument leakage. Practical measurement often uses a charge amplifier and calibration. These voltage curves are not a general model for static weighing.
+
+</details>

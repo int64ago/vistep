@@ -1,0 +1,28 @@
+---
+import { fresnelDesign, fresnelProfile, fresnelRay } from '../../models/fresnel-lens';
+const s = fresnelDesign(),
+  scale = 2.6,
+  x = (z: number) => 35 + z * scale,
+  y = (r: number) => 115 - r * scale;
+const point = (p: { z: number; r: number }) => `${x(p.z)},${y(p.r)}`;
+const profile = `M${x(0)} ${y(-s.R)}L${fresnelProfile(s).map(point).join('L')}L${x(0)} ${y(s.R)}Z`;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#f1eee4"></rect><path
+    d={profile}
+    fill="#b8c8bd99"
+    stroke="#647d72"></path>{
+    [-27, -19.5, -10.5, 10.5, 19.5, 27].map((r) => {
+      const ray = fresnelRay(r, s);
+      return (
+        <polyline
+          points={[{ z: -8, r }, ray.surface, { z: s.F, r: 0 }].map(point).join(' ')}
+          fill="none"
+          stroke="#ba7143"
+          stroke-width="1.5"
+        />
+      );
+    })
+  }<circle cx={x(s.F)} cy={y(0)} r="3" fill="#ba7143"></circle></svg
+>

@@ -1,0 +1,122 @@
+.junction-film {
+  max-width: 720px;
+  margin: auto;
+  color: #7d866a;
+}
+.junction-bias {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 8px 5px;
+  color: #898668;
+}
+.junction-slice,
+.junction-graph {
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  margin: auto;
+}
+.junction-slice text,
+.junction-graph text,
+.junction-load text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #818c6d;
+}
+.junction-key {
+  font-size: 16px;
+  text-align: center;
+  margin: 2px 8px 4px;
+  line-height: 1.4;
+}
+.junction-readings {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 5px 12px;
+  font-size: 16px;
+}
+.junction-readings b {
+  display: block;
+  font-size: 22px;
+  font-weight: 550;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.junction-load {
+  max-width: 430px;
+  margin: auto;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.junction-load svg {
+  width: 100%;
+  display: block;
+}
+.junction-voltage-bar {
+  display: flex;
+  height: 14px;
+  background: #edf0e1;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 5px 0;
+}
+.junction-voltage-bar i {
+  display: block;
+  height: 100%;
+}
+.junction-load p {
+  font-size: 16px;
+  text-align: center;
+  margin: 5px 0 8px;
+}
+.junction-controls {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+.junction-notes {
+  font-size: 16px;
+  max-width: 600px;
+  margin: auto;
+  padding: 0 12px;
+}
+.junction-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.junction-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.junction-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .junction-slice,
+  .junction-graph,
+  .junction-load {
+    max-width: 340px;
+  }
+  .junction-slice text,
+  .junction-graph text,
+  .junction-load text {
+    font-size: 21px;
+  }
+  .junction-bias,
+  .junction-key {
+    text-align: left;
+  }
+  .junction-readings {
+    gap: 40px;
+  }
+  .junction-controls {
+    padding: 12px;
+  }
+  .junction-film[data-watch='true'] .junction-notes {
+    display: none;
+  }
+}

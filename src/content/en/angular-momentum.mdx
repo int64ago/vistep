@@ -1,0 +1,42 @@
+<h2 id="understand">Faster spin without extra angular momentum</h2>
+
+Two equal masses slide symmetrically along radial guides on a turntable. Treat the platform, sliders and internal actuators as one system. An ideal bearing supplies no resisting torque about the vertical axis. With no other external torque about that axis, axial angular momentum remains constant.
+
+Moving the sliders inward reduces rotational inertia and increases angular speed, keeping `L = Iω` unchanged. Moving them outward does the reverse. Pulling the masses inward neither changes their mass nor creates angular momentum.
+
+**Constant angular momentum does not mean constant kinetic energy.** The internal actuators do work while pulling inward. At the initial and final instants there is no radial motion, and rotational kinetic energy rises from about 2.29 J to 6.17 J. The additional 3.88 J comes from the internal power source. During travel, the model also includes radial kinetic energy.
+
+Finally hold the radius fixed and apply an opposing external torque. Angular momentum and speed both fall. Conservation requires zero net external torque about the relevant axis; rotation alone does not guarantee it.
+
+<h2 id="try">Compare speed and angular momentum together</h2>
+
+- With no external torque and a final radius of 250 mm, increase inspection time. Speed rises while angular momentum stays at 2.29 kg·m²/s.
+- Set the final radius to 450 mm. Partial inward travel gives an intermediate final speed from the same initial condition.
+- Compare kinetic energy with internal work. At both endpoints radial speed is zero, and actuator work supplies the energy increase.
+- Keep the final radius at 650 mm and apply opposing torque. The sliders stay fixed, but angular momentum falls.
+- Combine inward travel with external torque. Inspect both internal and external work; neither alone accounts for the total energy change.
+
+<h2 id="deeper">A finite-time inward motion</h2>
+
+<details>
+<summary>Mass distribution and axial angular momentum</summary>
+
+Each slider has mass m = 1 kg. The fixed inertia of platform and guides is I₀ = 0.3 kg·m². Sliders are treated as point masses whose centers have radius r:
+
+<div className="formula">I = I₀ + 2mr²; L(t) = L(0) + τexternal t; ω = L/I</div>
+
+Initial radius is 650 mm and angular speed is 2 rad/s. At 250 mm, inertia has fallen from 1.145 to 0.425 kg·m². With no external torque, speed rises to about 5.39 rad/s. The external-torque comparison applies −0.35 N·m for four seconds, without crossing the stopping point.
+
+</details>
+
+<details>
+<summary>Internal work still matters</summary>
+
+Radius follows a smooth three-second trajectory with zero radial speed and acceleration at both ends. Each slider requires radial actuator force `Fᵣ = m(r̈ − rω²)`, giving total actuator power `2Fᵣṙ`.
+
+<div className="formula">Total kinetic energy K = ½Iω² + mṙ²</div>
+<div className="formula">Internal work + external torque work = K − Kinitial</div>
+
+Visible housings help identify the parts; each slider's mass is concentrated at its center in the model. Ideal internal actuators prescribe the path without predicting motor efficiency, structural flexibility or friction. The rotor angle is integrated from the same instantaneous angular speed.
+
+</details>

@@ -1,0 +1,49 @@
+<h2 id="understand">A bent transmission does not guarantee equal instantaneous speed</h2>
+
+A Cardan universal joint joins intersecting shafts with two yokes and a cross. The cross has two perpendicular pairs of journals, each rotating in its yoke bearings. This geometry transmits rotation while allowing a bend between the shaft axes.
+
+At zero bend, input and output speeds agree. At a nonzero bend, a single joint produces **two cycles of speed variation per revolution**, even with constant input speed. One full input turn still produces one full output turn. Equal total turns do not imply equal speed at every instant.
+
+The scene calculates speed for a constant 120 rpm input and slows the animation so the cross and yokes remain readable. At a 30° bend, the output varies from approximately 104 to 139 rpm. A larger bend increases the variation. This effect follows from geometry and does not require bearing friction.
+
+Two correctly arranged joints can cancel the final speed variation. Here the intermediate-shaft yokes are **correctly phased**, both joint angles are equal, and the input and final output axes are parallel. The intermediate shaft still speeds up and slows down. The second joint compensates for that variation, making the final output uniform. Changing only its bend to 15° breaks the complete cancellation.
+
+<h2 id="try">Separate the average over a turn from an instant within it</h2>
+
+- Set a single joint to 0° and scrub the input angle. Its speed ratio remains 1.
+- Set it to 30° and scrub a full turn. Find two speed maxima and two minima.
+- Hold the same input angle while changing the bend. Compare the entire speed curve.
+- Choose two joints, both at 30°. The dashed line is intermediate-shaft speed; the solid line is final output speed.
+- Change only the second bend to 15° and watch final speed variation return.
+
+Exploration keeps the intermediate yokes correctly phased; it does not offer a phasing-error control. Complete cancellation requires both the angle and phase conditions. Two arbitrary universal joints do not automatically provide constant velocity.
+
+<h2 id="deeper">Derive speed from the cross's perpendicular constraints</h2>
+
+<details>
+<summary>Angular position and angular velocity</summary>
+
+Let θ be input angle and β the shaft bend. This scene starts the input journal along +Y and the other journal along +Z, giving output angle ψ:
+
+<div className="formula">ψ = atan2(sin θ, cos β cos θ)</div>
+
+Angles are continuously unwrapped through successive turns. Crossing 180° or 360° does not reset them. Differentiating with respect to θ gives:
+
+<div className="formula">ωout / ωin = cos β / (sin² θ + cos² β cos² θ)</div>
+
+The minimum is cos β and the maximum is 1 / cos β. Textbooks may choose an angular origin a quarter-turn away from this convention. The maxima then occur at different angles, but the range and twice-per-turn variation stay the same.
+
+</details>
+
+<details>
+<summary>How the second joint cancels the variation</summary>
+
+With correctly phased intermediate yokes, the second joint inverts the first mapping. For second bend γ, final angle χ is:
+
+<div className="formula">χ = atan2(cos γ sin ψ, cos ψ)</div>
+
+When γ = β, the continuously unwrapped χ equals θ and final speed ratio is always 1. Unequal bends generally leave residual variation. The cross directions, bearing positions, angles and speed readings all come from these same spatial constraints.
+
+This is rigid, backlash-free kinematics. It omits torque, shaft bending, friction, inertia, vibration and interference between real components. The 35° interactive limit is a teaching range, not a product's operating-angle or speed rating.
+
+</details>

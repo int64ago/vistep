@@ -120,9 +120,14 @@ export function readBrowserState() {
     });
   const htmlFontSamples = [
     ...document.querySelectorAll(
-      '.printer-surface-title,.printer-surface-key,.printer-annotation p,.network-map-label,.network-map-label small,.network-cache-label,.network-node .node-title,.network-node time,.pendulum-trace-axis span,.pendulum-parameters,.circuit-port,.circuit-label',
+      '.showcase-film :is(span,b,strong,small,p,summary,label,button,code,h2,h3),.printer-surface-title,.printer-surface-key,.printer-annotation p,.network-map-label,.network-map-label small,.network-cache-label,.network-node .node-title,.network-node time,.pendulum-trace-axis span,.pendulum-parameters,.circuit-port,.circuit-label',
     ),
   ]
+    .filter(
+      (element) =>
+        element.namespaceURI === 'http://www.w3.org/1999/xhtml' &&
+        [...element.childNodes].some((node) => node.nodeType === 3 && node.textContent?.trim()),
+    )
     .filter(visible)
     .map((element) => {
       const fontPx = Number(getComputedStyle(element).fontSize.replace('px', ''));
@@ -153,14 +158,33 @@ export function readBrowserState() {
   const audio = document.querySelector('audio[data-narration]');
   const homeButton = document.querySelector('.object-toggle');
   const unsupported = document.documentElement.getAttribute('data-unsupported');
+  const layoutViewport = {
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+  };
+  let viewport = layoutViewport,
+    viewportMeasurement = 'root-client-fallback';
+  try {
+    // A classic scrollbar consumes client space without changing the requested viewport.
+    // CUA may not expose the DOM's view; its adapter can supply an exact viewport instead.
+    const view = document.defaultView;
+    if (
+      Number.isFinite(view?.innerWidth) &&
+      Number.isFinite(view?.innerHeight) &&
+      view.innerWidth > 0 &&
+      view.innerHeight > 0
+    ) {
+      viewport = { width: view.innerWidth, height: view.innerHeight };
+      viewportMeasurement = 'document-view';
+    }
+  } catch {}
   return {
     href: document.URL || null,
     locale: document.documentElement.lang,
     title: document.title,
-    viewport: {
-      width: document.documentElement.clientWidth,
-      height: document.documentElement.clientHeight,
-    },
+    viewport,
+    viewportMeasurement,
+    layoutViewport,
     documentWidth: document.documentElement.scrollWidth,
     horizontalOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
     unsupported,
@@ -210,7 +234,16 @@ export function readBrowserState() {
 
 export function layoutFindings(state, expected) {
   const failures = [],
-    observations = [];
+    observations = [],
+    availableViewport = state.layoutViewport ?? state.viewport;
+  if (
+    expected.viewport &&
+    (state.viewport.width !== expected.viewport.width ||
+      state.viewport.height !== expected.viewport.height)
+  )
+    failures.push(
+      `Viewport mismatch: expected ${expected.viewport.width}×${expected.viewport.height}, received ${state.viewport.width}×${state.viewport.height}`,
+    );
   if (state.horizontalOverflow > 1)
     failures.push(`Horizontal overflow: ${state.horizontalOverflow}px`);
   if (state.unsupported)
@@ -239,9 +272,15 @@ export function layoutFindings(state, expected) {
     observations.push(
       `${smallControls.length} transport targets below 44px; inspect recorded bounds`,
     );
-  if (state.bounds.player?.height > state.viewport.height)
+  if (state.bounds.player?.height > availableViewport.height)
     observations.push(
       'Complete player is taller than this viewport; inspect current cause, caption and transport together',
+    );
+  if (state.bounds.player?.bottom > availableViewport.height + 1)
+    observations.push('Complete player extends below the available viewport at the lesson anchor');
+  if (state.bounds.transport?.bottom > availableViewport.height)
+    observations.push(
+      'Transport extends below the current viewport; inspect the complete player at the lesson anchor',
     );
   return { failures, observations, smallFonts, smallControls };
 }
@@ -260,13 +299,28 @@ export function sampleIsReady(state, sample) {
 export async function waitForBrowserState(
   tab,
   predicate,
-  { timeoutMs = 20_000, pollMs = 150, observe = async () => {}, pause = delay } = {},
+  { timeoutMs = 20_000, pollMs = 150, observe = async () => {}, pause = delay, getViewport } = {},
 ) {
   const started = Date.now();
   let state;
   while (Date.now() - started < timeoutMs) {
     await observe();
     state = await tab.playwright.evaluate(readBrowserState);
+    if (getViewport) {
+      const measured = await getViewport();
+      if (
+        !Number.isFinite(measured?.width) ||
+        !Number.isFinite(measured?.height) ||
+        measured.width <= 0 ||
+        measured.height <= 0
+      )
+        throw new Error('Browser adapter returned an invalid viewport measurement');
+      state = {
+        ...state,
+        viewport: { width: measured.width, height: measured.height },
+        viewportMeasurement: 'adapter',
+      };
+    }
     if (predicate(state)) return state;
     await pause(pollMs);
   }
@@ -283,6 +337,7 @@ export async function inspectBrowserCase({
   setViewport,
   saveScreenshot = async () => null,
   getLogs = async () => [],
+  getViewport,
   observe = async () => {},
   pause = delay,
   browserInfo = null,
@@ -298,11 +353,20 @@ export async function inspectBrowserCase({
     screenshot = null,
     findings = { failures: [], observations: [] };
   try {
-    await setViewport(sample.viewport);
     await tab.goto(url + (sample.time === null ? '' : '#experiment'));
+    // Select/observe the requested surface before applying a browser-scoped viewport.
+    await observe();
+    await setViewport(sample.viewport);
     await observe();
     if (sample.time !== null) await tab.goto(url + `#t=${sample.time}`);
-    state = await waitForBrowserState(tab, (s) => sampleIsReady(s, sample), { observe, pause });
+    state = await waitForBrowserState(
+      tab,
+      (s) =>
+        sampleIsReady(s, sample) &&
+        s.viewport.width === sample.viewport.width &&
+        s.viewport.height === sample.viewport.height,
+      { observe, pause, getViewport },
+    );
     if (sample.slug === 'home') {
       if (state.brandState !== 'settled') await tab.playwright.locator('.brand-skip').click();
       if (state.homePlaying) await tab.playwright.locator('.object-toggle').click();
@@ -313,7 +377,14 @@ export async function inspectBrowserCase({
     await observe();
     // Let ResizeObserver and one requested GPU frame settle; this is not simulated film playback.
     await pause(180);
-    state = await tab.playwright.evaluate(readBrowserState);
+    state = await waitForBrowserState(
+      tab,
+      (s) =>
+        sampleIsReady(s, sample) &&
+        s.viewport.width === sample.viewport.width &&
+        s.viewport.height === sample.viewport.height,
+      { observe, pause, getViewport },
+    );
     state.href ||= url;
     findings = layoutFindings(state, sample);
     screenshot = await saveScreenshot(name, await tab.getScreenshot({ emit: false }));

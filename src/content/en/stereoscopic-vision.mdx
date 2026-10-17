@@ -1,0 +1,32 @@
+<a id="understand"></a>
+
+## Compare two observations of the same point
+
+Two eyes separated by a baseline view one spatial point from different directions. After rectification and registration to a common fixation reference, nearer and farther targets have opposite relative-disparity signs. Here left-image position minus right-image position is positive for nearer targets and negative for farther ones. Negative relative disparity is not negative spatial depth.
+
+The plan view exaggerates width to separate the sight lines; screen angles are not measurements. The lower views are ideal rectified virtual pinhole image planes, not anatomical eyes or actual inverted retinal images. They explain the geometry of a binocular cue without predicting perceptual fusion.
+
+<a id="try"></a>
+
+## Change one geometric condition at a time
+
+Move target depth with fixation held still, watching relative disparity pass through zero. Then shrink baseline at fixed depth. At zero baseline, identical views no longer determine depth alone. Keep a200mm separation and move both points farther away: their disparity difference shrinks.
+
+In two-point matching, swap right-view correspondences. The same image locations then reconstruct different depths. The observations must belong to the same point before triangulation is valid. This demonstrates a computational condition, not a claim that a human necessarily accepts a false match.
+
+<a id="deeper"></a>
+
+## Raw and relative disparity
+
+<div className="formula">
+  uLeft = f(X+B/2)/Z; uRight = f(X−B/2)/Z
+  <br />
+  Raw disparity d = fB/Z
+  <br />
+  Relative disparity = fB(1/Z − 1/Z0)
+  <br />Z = fB / (relative disparity + fB/Z0)
+</div>
+
+B is baseline, f virtual focal length and Z0 fixation depth. The virtual views use f=17mm with enlarged image coordinates in millimetres, not a claim about any individual eye. Recovering depth requires known focal length and baseline as well as correct correspondence. Zero baseline or nonpositive reconstruction disparity yields no positive depth estimate.
+
+This ideal rectified pinhole geometry omits accommodation, retinal curvature, perceptual thresholds, fusion range, occlusion, camera distortion and individual visual differences. Colour identifies points; the false-match example gives them the same appearance to suggest ambiguity. Actual depth perception also combines monocular and motion cues.

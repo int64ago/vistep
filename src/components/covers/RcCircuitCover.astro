@@ -1,0 +1,24 @@
+---
+import { rcCurve, rcDefaults, rcState } from '../../models/rc-circuit';
+const curve = rcCurve(rcDefaults(), 5),
+  s = rcState(rcDefaults(), 1);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M45 74V35H138M190 35H295V69M295 97V135H45V102" stroke="#9caf9f" stroke-width="3"
+  ></path><path d="M31 76H59M37 100H53" stroke="#b18c59" stroke-width="3"></path><rect
+    x="138"
+    y="27"
+    width="52"
+    height="16"
+    rx="4"
+    fill="#e9dfc8"
+    stroke="#a7906b"
+    stroke-width="2"></rect><path d="M269 69H321M269 97H321" stroke="#8e77a3" stroke-width="4"
+  ></path><rect x="272" y="73" width="46" height="20" rx="3" fill="#b59fc7" opacity={s.voltage / 5}
+  ></rect><path d="M45 151V215H350" stroke="#b3c0af"></path><polyline
+    points={curve.map((v) => `${45 + v.time * 61},${215 - v.voltage * 12}`).join(' ')}
+    stroke="#8e77a3"
+    stroke-width="3"></polyline><circle cx="106" cy={215 - s.voltage * 12} r="5" fill="#8e77a3"
+  ></circle><path d={`M106 151V215`} stroke="#b9a4c8" stroke-dasharray="3 4"></path></svg
+>

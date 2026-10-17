@@ -1,0 +1,26 @@
+<h2 id="understand">Compare currents, rather than only asking how large they are</h2>
+
+This scene illustrates single-phase AC residual-current protection. L and N pass through one sensing core. In a normal load, outgoing and returning currents have equal magnitude and opposite direction, cancelling their ampere-turns. Increasing the balanced load from 2 A to 12 A leaves the residual at zero.
+
+If part of the current returns outside the sensing window, cancellation fails. In the example, L carries 5.040 A and N carries 5.000 A, leaving 40 mA residual. An AC residual creates a sensing response that releases the trip mechanism. Current has not vanished: its circuit closes through a different route, outside the jointly monitored return.
+
+<h2 id="try">Detection, opening and latching are distinct states</h2>
+
+To expose the sequence, the scene uses an ideal RMS detector, a 30 mA illustrative threshold and a 20 ms persistence delay. The fault begins at 40 ms and, if it persists, both poles open at 60 ms. Actual current and present residual then become zero, while the recorded trip remains.
+
+Removing the fault at 100 ms does not automatically reclose the contacts. The final chapter recloses only after removal and restores balanced supply. In Explore, reclosing into a continuing fault causes another trip after the same illustrative delay. These threshold and timing values describe teaching logic, not a certified product curve or a safe human current.
+
+<h2 id="deeper">Test bypass and protection limits</h2>
+
+<details>
+<summary>The internal test need not return through PE</summary>
+
+The illustrated internal test connects L before the sensing core to N after it. Its current bypasses the monitored L path but returns through the monitored N, creating an imbalance without using PE. The signed core effect is opposite to the earth-return example, while the residual magnitude is the same. This test does not establish that the entire earthing system, wiring and every protective condition are sound.
+
+The model is limited to in-phase sinusoidal single-phase RMS currents; instantaneous ampere-turns sum the signed conductor currents. Real transformer loading, magnetic nonlinearity, startup transients, breaking arcs and different RCD types' frequency/DC capabilities are omitted. The drawing is a functional cutaway rather than a product wiring diagram.
+
+A pure RCCB residual-current function does not assess overload; an RCBO combines residual and overcurrent protection. Balanced L-to-N faults and excessive balanced load cannot be detected by the residual function alone. A device that has not tripped does not prove equipment or personal safety. Actual installation, live testing and repair require qualified professionals; this scene provides no such instructions.
+
+</details>
+
+References: [ABB, RCD Application Manual, Mechanical Operation](https://library.e.abb.com/public/54c9c24f0bf34927ad336702fd3ce4a0/1SXU000023C0202_15.pdf), [ABB, Protection Against Earth Faults with RCDs](https://library.e.abb.com/public/9f0e99de3bc740288bc41ab95667f72f/RCD%20Technical%20Guide%20EN.pdf).

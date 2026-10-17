@@ -1,0 +1,196 @@
+.transfer-study {
+  max-width: 980px;
+  margin: auto;
+  padding: 24px;
+  background: #e8e4dd;
+  color: #625640;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.transfer-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  max-width: 620px;
+  margin: auto;
+}
+.transfer-study header > span {
+  font: 12px monospace;
+  color: #a19581;
+  letter-spacing: 0.04em;
+}
+.transfer-study header > b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.transfer-map {
+  max-width: 440px;
+  aspect-ratio: 360/260;
+  margin: 5px auto 0;
+}
+.transfer-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.transfer-inner {
+  fill: none;
+  stroke: #a6b3b2;
+  stroke-width: 1.4;
+}
+.transfer-target {
+  fill: none;
+  stroke: #b5aa8d;
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+}
+.transfer-ellipse {
+  fill: none;
+  stroke: #c5aa8c;
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
+}
+.transfer-traveled {
+  fill: none;
+  stroke: #927146;
+  stroke-width: 2.6;
+}
+.transfer-body {
+  fill: #9faeac;
+  stroke: #8b9c99;
+  stroke-width: 1;
+}
+.transfer-ship {
+  fill: #796142;
+  stroke: #f0dfbd;
+  stroke-width: 1.5;
+}
+.transfer-velocity {
+  fill: none;
+  stroke: #8a6d48;
+  stroke-width: 2;
+}
+.transfer-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.transfer-legend > span:before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: #8da2a0;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.transfer-legend > span:nth-child(2):before {
+  background: #b89570;
+}
+.transfer-legend > span:last-child:before {
+  background: #a99b75;
+}
+.transfer-state {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 15px;
+}
+.transfer-state > span {
+  font-size: 16px;
+  text-align: center;
+  min-width: 68px;
+}
+.transfer-state b {
+  display: block;
+  font-size: 26px;
+  font-weight: 300;
+  margin-top: 4px;
+}
+.transfer-burns {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 15px 0 0;
+  font-size: 16px;
+}
+.transfer-burns b {
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.transfer-controls {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+.transfer-controls input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+.transfer-controls select {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  font: inherit;
+  color: inherit;
+  border: 1px solid #c5b89f;
+  border-radius: 12px;
+  background: #f4efe7;
+}
+.transfer-study summary {
+  min-height: 44px;
+  padding-top: 16px;
+  cursor: pointer;
+}
+.transfer-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .transfer-study {
+    padding: 14px 12px;
+  }
+  .transfer-study header {
+    display: block;
+  }
+  .transfer-study header > span {
+    font-size: 11px;
+  }
+  .transfer-study header > b {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .transfer-map {
+    max-width: 300px;
+    margin-top: 2px;
+  }
+  .transfer-legend {
+    gap: 7px 14px;
+    font-size: 16px;
+  }
+  .transfer-state {
+    gap: 10px;
+    margin-top: 11px;
+  }
+  .transfer-state b {
+    font-size: 22px;
+  }
+  .transfer-burns {
+    gap: 20px;
+    margin-top: 11px;
+  }
+  .transfer-burns b {
+    font-size: 18px;
+    margin-left: 5px;
+  }
+  .transfer-study[data-watch='true'] details {
+    display: none;
+  }
+}

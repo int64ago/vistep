@@ -1,0 +1,55 @@
+---
+import { collisionDefaults, elasticCollision } from '../../models/elastic-collision';
+const p = collisionDefaults(),
+  a = elasticCollision(p, 0),
+  s = elasticCollision(p, a.contactAt + a.contactDuration * 0.35),
+  X = (x: number) => 180 + (x - s.center) * 190,
+  l = s.bumperLength - s.compression / 2;
+const coil = (a: number, b: number) =>
+  Array.from(
+    { length: 11 },
+    (_, i) => `${a + ((b - a) * i) / 10},${103 + (i === 0 || i === 10 ? 0 : i % 2 ? -5 : 5)}`,
+  ).join(' ');
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><path d="M23 147H337" stroke="#c2cfb6" stroke-width="4" stroke-linecap="round"></path>{
+    [1, 2].map((side) => {
+      const x = side === 1 ? s.x1 : s.x2,
+        cx = X(x),
+        edge = X(x + (side === 1 ? 1 : -1) * s.bodyHalf),
+        tip = X(x + (side === 1 ? 1 : -1) * (s.bodyHalf + l));
+      return (
+        <g>
+          <rect
+            x={cx - 28}
+            y="69"
+            width="56"
+            height="12"
+            rx="3"
+            fill={side === 1 ? '#a8beab' : '#d5c096'}
+          />
+          {[-1, 1].map((sign) => (
+            <circle
+              cx={cx + sign * 25}
+              cy="138"
+              r="9"
+              fill="#d4dfc7"
+              stroke="#94a88b"
+              stroke-width="3"
+            />
+          ))}
+          <polyline points={coil(edge, tip)} fill="none" stroke="#869b7e" stroke-width="2.5" />
+          <path d={`M${tip} 90V117`} stroke="#869b7e" stroke-width="3" />
+        </g>
+      );
+    })
+  }<rect x="61" y="181" width={(238 * s.kinetic) / s.totalEnergy} height="11" rx="5" fill="#91ac91"
+  ></rect><rect
+    x={61 + (238 * s.kinetic) / s.totalEnergy}
+    y="181"
+    width={(238 * s.springEnergy) / s.totalEnergy}
+    height="11"
+    rx="5"
+    fill="#c9ae72"></rect></svg
+>

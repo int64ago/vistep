@@ -1,0 +1,59 @@
+---
+import { mixingCss, type LinearRgb } from '../../models/color-mixing';
+const centers = [
+    [160, 94],
+    [240, 94],
+    [200, 150],
+  ],
+  r = 70;
+const regions = Array.from({ length: 7 }, (_, i) => {
+  const bits = i + 1,
+    included = [0, 1, 2].filter((k) => bits & (2 ** k)),
+    excluded = [0, 1, 2].filter((k) => !(bits & (2 ** k)));
+  return {
+    bits,
+    included,
+    excluded,
+    color: mixingCss([0, 1, 2].map((k) => (bits & (2 ** k) ? 1 : 0)) as LinearRgb),
+  };
+});
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><defs
+    >{
+      centers.map(([x, y], i) => (
+        <clipPath id={`mix-cover-${i}`}>
+          <circle cx={x} cy={y} r={r} />
+        </clipPath>
+      ))
+    }{
+      regions.map((region) => (
+        <mask id={`mix-mask-${region.bits}`}>
+          <rect width="400" height="230" fill="white" />
+          {region.excluded.map((i) => (
+            <circle cx={centers[i][0]} cy={centers[i][1]} r={r} fill="black" />
+          ))}
+        </mask>
+      ))
+    }</defs
+  ><rect width="400" height="230" fill="#17292c"></rect>{
+    regions.map((region) => (
+      <g mask={`url(#mix-mask-${region.bits})`} clip-path={`url(#mix-cover-${region.included[0]})`}>
+        <g
+          clip-path={
+            region.included.length > 1 ? `url(#mix-cover-${region.included[1]})` : undefined
+          }
+        >
+          <g
+            clip-path={
+              region.included.length > 2 ? `url(#mix-cover-${region.included[2]})` : undefined
+            }
+          >
+            <rect width="400" height="230" fill={region.color} />
+          </g>
+        </g>
+      </g>
+    ))
+  }</svg
+>

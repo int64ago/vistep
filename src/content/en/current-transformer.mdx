@@ -1,0 +1,38 @@
+<h2 id="understand">Secondary current follows magnetic balance, not a fixed ratio command</h2>
+
+A primary conductor passes once through a toroidal core. A secondary winding links the core and closes through a meter or other burden. Secondary ampere-turns oppose most of the primary ampere-turns; the remaining excitation establishes the magnetic field in the core.
+
+The ideal turns ratio is therefore an approximation when excitation requirements are small. More secondary resistance requires more voltage to maintain current. The time integral of that voltage determines flux change. As the core becomes nonlinear, actual secondary current departs from the ideal waveform.
+
+<h2 id="try">Compare turns, burden and flux together</h2>
+
+- At low burden, compare the dashed ideal Np·Ip/Ns with actual secondary current. They nearly agree, with finite excitation error.
+- Change secondary turns from 100 to 200. Secondary current for the same primary current approximately halves.
+- Increase burden from 1Ω to 8Ω. Inspect increasing flux density and distorted secondary current.
+- In the open-circuit model, secondary current vanishes while changing flux produces voltage peaks. **An energized current-transformer secondary must not be opened; this is a model comparison only.**
+- Select settled DC operation. The core has flux, but flux is no longer changing, so there is no sustained induced voltage or secondary current.
+
+<h2 id="deeper">Ampere-turn difference, induced voltage and burden current</h2>
+
+<details>
+<summary>A nonlinear magnetic-circuit model</summary>
+
+<div className="formula">Np·Ip − Ns·Is = ℓH(B)</div>
+<div className="formula">Vs = Ns A dB/dt = Rb Is</div>
+
+The primary current is externally prescribed. Defaults are Np=1, Ns=100, core area 2 cm², magnetic path length 16 cm and a resistive secondary burden of 1Ω. A single-valued nonlinear constitutive relation is used:
+
+<div className="formula">H(B) = B/(μ₀μr) · [1 + (B/Bk)⁸]</div>
+
+Here μr=10000 and Bk=0.8 T is a teaching-model nonlinear scale, not a product rating or standardized knee indicator. Positive primary current points out of the screen, with counterclockwise flux. Positive Is enters the upper winding terminal and opposes primary ampere-turns. Vs means lower-terminal voltage relative to the upper terminal.
+
+</details>
+
+<details>
+<summary>Energy and steady-state limits</summary>
+
+Input power equals burden heating plus the rate of magnetic energy storage. Ratio transformation does not create energy.
+
+The model compares periodic steady states. Open and closed circuits are separate operating cases, without the transient of suddenly disconnecting a winding. DC is also shown after settling. Hysteresis, core losses, leakage inductance, winding resistance, parasitic capacitance and insulation breakdown are omitted. Open-circuit values cannot establish the safe rating of a real device. Metering and protection CTs must be chosen using their actual excitation curves, burdens and accuracy specifications.
+
+</details>

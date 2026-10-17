@@ -1,0 +1,206 @@
+.latent-study {
+  background: #edf1eb;
+  color: #425653;
+  border-radius: 25px;
+  padding: 27px 30px;
+  max-width: 900px;
+  margin: auto;
+}
+.latent-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  font-size: 18px;
+}
+.latent-study header b {
+  font-size: 26px;
+  font-weight: 500;
+  color: #ba8149;
+  white-space: nowrap;
+}
+.latent-sample {
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(140px, 1fr);
+  gap: 35px;
+  align-items: center;
+  margin: 25px 0;
+}
+.latent-mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5px;
+  padding: 15px;
+  background: #d0dedb66;
+  border-radius: 18px;
+}
+.latent-mosaic i {
+  aspect-ratio: 1;
+  background: linear-gradient(130deg, #f9fbf6, #b6cfd5);
+  border: 1px solid #a7bec4;
+  border-radius: 3px;
+  transition:
+    background 0.3s,
+    border-radius 0.3s;
+}
+.latent-mosaic i.is-liquid {
+  background: #739eab;
+  border-color: #739eab;
+  border-radius: 50% 40% 48% 45%;
+}
+.latent-mass {
+  display: grid;
+  gap: 5px;
+  font-size: 16px;
+}
+.latent-mass b {
+  font-size: 31px;
+  font-weight: 400;
+}
+.latent-mass strong {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ba8149;
+}
+.latent-energy > div {
+  height: 9px;
+  display: flex;
+  background: #d7ded5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.latent-energy > div span:nth-child(1) {
+  background: #8eafb8;
+}
+.latent-energy > div span:nth-child(2) {
+  background: #c88f55;
+}
+.latent-energy > div span:nth-child(3) {
+  background: #6d9d94;
+}
+.latent-energy p {
+  display: flex;
+  gap: 17px;
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+.latent-energy p b {
+  margin-left: auto;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.latent-study svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+.latent-axes {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #6c7d75;
+}
+.latent-note {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #6c7d75;
+  margin: 17px 0 0;
+}
+.latent-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+@media (max-width: 760px) {
+  .latent-study {
+    padding: 16px 12px;
+  }
+  .latent-study header {
+    font-size: 16px;
+  }
+  .latent-study header b {
+    font-size: 23px;
+  }
+  .latent-sample {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 10px 0;
+  }
+  .latent-mosaic {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+    padding: 9px;
+  }
+  .latent-mass {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .latent-mass b {
+    font-size: 24px;
+  }
+  .latent-axes {
+    gap: 12px;
+  }
+  .latent-note {
+    margin-top: 6px;
+  }
+  .latent-energy p {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .latent-study svg {
+    height: 110px;
+  }
+  .latent-controls {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .latent-mosaic i {
+    transition: none;
+  }
+}
+
+.latent-note summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.latent-note summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.latent-note p {
+  margin: 0 0 12px;
+}
+
+.latent-power {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin: 8px 0 12px;
+}
+.latent-power b {
+  font-weight: 500;
+  white-space: nowrap;
+}
+@media (min-width: 761px) {
+  .latent-study {
+    padding-block: 19px;
+  }
+  .latent-sample {
+    margin-block: 16px;
+  }
+  .latent-study svg {
+    height: 164px;
+  }
+}
+@media (max-width: 760px) {
+  .showcase[data-mode='watch'] .latent-note {
+    display: none;
+  }
+}

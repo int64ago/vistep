@@ -1,0 +1,44 @@
+---
+import { bjtDefaults, bjtPoint, bjtBias } from '../../models/bjt-amplifier';
+const p = bjtDefaults();
+const bias = bjtBias(p);
+const output = Array.from(
+  { length: 101 },
+  (_, j) =>
+    `${190 + j * 1.5},${190 - (bjtPoint(p, bias + 0.008 * Math.sin((j / 100) * 4 * Math.PI)).collectorVoltage / 5) * 75}`,
+).join(' ');
+const input = Array.from(
+  { length: 101 },
+  (_, j) => `${190 + j * 1.5},${70 - 18 * Math.sin((j / 100) * 4 * Math.PI)}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><path
+    d="M137 24V36l-6 5 12 7 -12 7 12 7 -6 5V86M137 86H170M53 112H99M137 146V193H34V130"
+    fill="none"
+    stroke="#a5b596"
+    stroke-width="2.2"></path><circle cx="116" cy="116" r="35" fill="#e9edd9" stroke="#b5c3a1"
+  ></circle><path
+    d="M75 112H99M99 96V138M99 105L137 86M99 127L137 151"
+    fill="none"
+    stroke="#9e9d75"
+    stroke-width="3"></path><path d="M126 146l11 5 -5 -10" fill="#a58c60"></path><circle
+    cx="34"
+    cy="112"
+    r="18"
+    fill="#edf0e0"
+    stroke="#a3b797"
+    stroke-width="2"></circle><path
+    d="M22 112q6 -12 12 0t12 0M190 70H340M190 190H340"
+    fill="none"
+    stroke="#bdc9ab"></path><circle cx="137" cy="24" r="4" fill="#b49d6b"></circle><polyline
+    points={input}
+    fill="none"
+    stroke="#87aa94"
+    stroke-width="2.5"></polyline><polyline
+    points={output}
+    fill="none"
+    stroke="#ab9060"
+    stroke-width="3"></polyline></svg
+>

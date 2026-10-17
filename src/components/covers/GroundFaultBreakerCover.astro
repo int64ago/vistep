@@ -1,0 +1,41 @@
+---
+import { groundFaultBreaker } from '../../models/ground-fault-breaker';
+const { color = '#c4b397' } = Astro.props;
+const q = groundFaultBreaker({ loadA: 5, earthMA: 40, testMA: 0, seconds: 0.05 });
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <ellipse cx="165" cy="106" rx="35" ry="66" fill={color}></ellipse><ellipse
+    cx="165"
+    cy="106"
+    rx="25"
+    ry="53"
+    fill="#f0eee5"></ellipse>
+  <path
+    d="M30 62H73M104 62H330V151H104M73 151H30"
+    stroke="#a48e6c"
+    stroke-width="3"
+    stroke-linejoin="round"></path>
+  <path d="M73 62H104M73 151H104" stroke="#85735b" stroke-width="4" stroke-linecap="round"></path>
+  <rect x="316" y="88" width="28" height="38" rx="8" fill="#d9d3bc" stroke="#b7ad91"></rect>
+  <path
+    d="M278 62V212H30V151"
+    stroke="#b0966d"
+    stroke-width="2.5"
+    stroke-dasharray="6 4"
+    stroke-linejoin="round"></path>
+  <path
+    d="M190 70C210 70 210 83 190 83M195 94C215 94 215 107 195 107M193 120C213 120 213 133 193 133"
+    stroke="#aa8962"
+    stroke-width="2"></path>
+  <path d="M145 76C133 98 133 124 146 143" stroke="#96714e" stroke-width={q.residualMA / 15}></path>
+  <path d="M206 106H246" stroke="#b8a38b" stroke-width="2"></path><rect
+    x="239"
+    y="90"
+    width="32"
+    height="32"
+    rx="9"
+    fill="#dedac6"></rect>
+  <path d="M239 115H221V180H89V163" stroke="#b9ad95" stroke-width="1.5" stroke-dasharray="3 4"
+  ></path>
+</svg>

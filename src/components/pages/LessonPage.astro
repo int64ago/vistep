@@ -61,7 +61,7 @@ const ageLabel =
             dictionary={islandDictionary('experiment', topic.slug)}
             slug={topic.slug as any}
             film={films[topic.slug]}
-            track={tracks[topic.slug as keyof typeof tracks][locale as 'zh' | 'en']}
+            track={tracks[topic.slug as keyof typeof tracks]?.[locale as 'zh' | 'en']}
             client:only="react"
           >
             <div slot="fallback" class="lab-loading" role="status">
@@ -72,7 +72,7 @@ const ageLabel =
           <Experiment
             slug={topic.slug as any}
             film={films[topic.slug]}
-            track={tracks[topic.slug as keyof typeof tracks][locale as 'zh' | 'en']}
+            track={tracks[topic.slug as keyof typeof tracks]?.[locale as 'zh' | 'en']}
             client:only="react"
           >
             <div slot="fallback" class="lab-loading" role="status">

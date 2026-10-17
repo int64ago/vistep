@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## Add light, multiply transmission
+
+When beams reach the same place, their spectral energies add. Red and green can look yellow without turning into a single yellow wavelength. A suitable balance of display RGB primaries matches reference white; other spectra can match that appearance too.
+
+A beam passing through filters keeps the product of their transmission fractions. Ideal cyan rejects red, yellow rejects blue, and their shared pass channel is green. Adding magenta rejects green too. Filtering cannot create energy absent from the illumination.
+
+<a id="try"></a>
+
+## Separate lights, filters and illumination
+
+Switch between light addition and serial filtering. Channel readouts describe the shared flat region of the beams; their smooth edges have lower intensity. In filter view, each path width shows energy remaining after the preceding filter. Very faint hairlines indicate path locations only.
+
+Keep cyan and yellow and replace white input with red. The green these filters could pass is now missing, so the output darkens. Material appearance depends on illumination.
+
+<a id="deeper"></a>
+
+## Light intensity differs from display encoding
+
+<div className="formula">
+  Added intensity Iout = I1 + I2 + …<br />
+  Serial transmission Iout = Iin T1 T2 …<br />
+  Ideal CMY output = inputRGB × (1−C, 1−M, 1−Y)
+</div>
+
+The model performs energy arithmetic in linear sRGB channels and encodes only for display. A neutral linear value0.5 has half the reference luminance but an eight-bit sRGB code near188, not128. Relative luminance uses linear weights0.2126,0.7152 and0.0722.
+
+This is a three-channel teaching model, not a continuous-spectrum filter or paint prediction. Real pigments scatter, and real filters have wavelength-dependent overlap and leakage. Two filters with a similar appearance may transmit different spectra. Paint recipes, ink formulation, visual adaptation and individual colour vision are outside the model. Values and drawings use the same linear channels.

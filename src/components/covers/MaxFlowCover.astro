@@ -1,0 +1,41 @@
+---
+import { FLOW_LABELS, FLOW_POINTS, flowLessonNetwork, maxFlowTrace } from '../../models/max-flow';
+const { color = '#8daab7' } = Astro.props;
+const q = maxFlowTrace(flowLessonNetwork(), true),
+  nodes = FLOW_POINTS.map((p, i) => ({ x: p.x, y: p.y * 0.73 + 10, label: FLOW_LABELS[i] }));
+const links = q.state.network.edges.map((e, i) => ({
+  a: nodes[e.from],
+  b: nodes[e.to],
+  capacity: e.capacity,
+  flow: q.state.flows[i],
+}));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  ><g transform="translate(20 0)">
+    {
+      links.map((e) => (
+        <path
+          d={`M${e.a.x} ${e.a.y}L${e.b.x} ${e.b.y}`}
+          stroke={e.flow ? color : '#c6d6db'}
+          stroke-width={e.flow ? 7 : 3}
+          stroke-linecap="round"
+        />
+      ))
+    }
+    {
+      nodes.map((n) => (
+        <g>
+          <>
+            <circle cx={n.x} cy={n.y} r="24" fill="#dde8ec" />
+            <text x={n.x} y={n.y + 9} text-anchor="middle" fill="#7f9daa" font-size="27">
+              {n.label}
+            </text>
+          </>
+        </g>
+      ))
+    }
+    <path d="M180 186Q260 113 198 51" stroke="#b6a071" stroke-width="3" stroke-dasharray="7 6"
+    ></path>
+  </g></svg
+>

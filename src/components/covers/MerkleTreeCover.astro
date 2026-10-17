@@ -1,0 +1,52 @@
+---
+import { MERKLE_DATA, merkleNodes, merkleTree } from '../../models/merkle-tree';
+const { color = '#b197a7' } = Astro.props,
+  tree = merkleTree(MERKLE_DATA);
+const point = (start: number, end: number) => ({
+  x: 20 + ((start + end) / 2 / 4) * 360,
+  y: end - start === 4 ? 32 : end - start === 2 ? 106 : 188,
+});
+const nodes = merkleNodes(tree.root).map((n) => ({ ...n, ...point(n.start, n.end) }));
+const links = merkleNodes(tree.root).flatMap((n) =>
+  n.left && n.right
+    ? [n.left, n.right].map((child) => ({
+        a: point(n.start, n.end),
+        b: point(child.start, child.end),
+      }))
+    : [],
+);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  {
+    links.map(({ a, b }) => (
+      <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke={color} stroke-width="2" />
+    ))
+  }
+  {
+    nodes.map((n) => (
+      <g>
+        <>
+          <rect
+            x={n.x - 39}
+            y={n.y - 21}
+            width="78"
+            height="42"
+            rx="13"
+            fill={n.start === 2 ? '#e5d8bc' : '#e8dce3'}
+          />
+          <text
+            x={n.x}
+            y={n.y + 7}
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="20"
+            fill={color}
+          >
+            {n.hash.slice(0, 4)}
+          </text>
+        </>
+      </g>
+    ))
+  }
+</svg>

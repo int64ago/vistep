@@ -1,0 +1,158 @@
+.pinhole-study {
+  background: #233b48;
+  border-radius: 24px;
+  padding: 26px 30px;
+  color: #e2e8dc;
+}
+.pinhole-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 18px;
+}
+.pinhole-title b {
+  font-size: 21px;
+  color: #edb369;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pinhole-study svg {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+}
+.pinhole-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #b9cbd0;
+  padding: 0 4%;
+}
+.pinhole-scales {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 23px;
+}
+.pinhole-scales > div {
+  position: relative;
+  padding-bottom: 14px;
+  display: grid;
+  gap: 7px;
+  font-size: 16px;
+}
+.pinhole-scales b {
+  font-size: 23px;
+  font-weight: 500;
+}
+.pinhole-scales i {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background: #edb369;
+  border-radius: 5px;
+  transition: width 0.2s;
+}
+.pinhole-scales > div + div i {
+  background: #86baca;
+}
+.pinhole-study p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #bbcbd0;
+  margin: 20px 0 0;
+}
+.pinhole-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+@media (max-width: 760px) {
+  .pinhole-study {
+    padding: 12px;
+  }
+  .showcase[data-mode='watch'] .pinhole-study details {
+    display: none;
+  }
+  .pinhole-title {
+    font-size: 16px;
+  }
+  .pinhole-title b {
+    font-size: 18px;
+  }
+  .pinhole-study svg {
+    height: 240px;
+  }
+  .pinhole-scales {
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .pinhole-scales b {
+    font-size: 20px;
+  }
+  .pinhole-controls {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pinhole-scales i {
+    transition: none;
+  }
+}
+
+.pinhole-detail {
+  position: relative;
+}
+.pinhole-detail > span {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  font-size: 16px;
+}
+.pinhole-photometry {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.pinhole-photometry b {
+  font-weight: 500;
+}
+.pinhole-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.pinhole-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.pinhole-study details p {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  .pinhole-photometry {
+    margin-top: 12px;
+  }
+  .pinhole-photometry > span {
+    flex: 1;
+  }
+  .pinhole-photometry b {
+    display: block;
+  }
+}
+
+.pinhole-study .control,
+.pinhole-study .control output {
+  color: #e2e8dc;
+}
+.pinhole-study .control input[type='range'] {
+  --range-color: #edb369;
+  --range-rest: #718d93;
+}

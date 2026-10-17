@@ -1,0 +1,43 @@
+<h2 id="understand">A fuse responds to thermal history, not only present current</h2>
+
+Current produces Joule heat inside a thin metal wire while heat conducts toward the end caps. At modest current, heating and heat loss can approach equilibrium. At greater current, the hottest location reaches the melting point. With cool end contacts, the middle is generally hotter than the ends.
+
+A fuse is therefore not an instantaneous switch at one current threshold. A short pulse and a sustained overload with the same peak can create different temperature histories. Ambient temperature, wire diameter, material and packaging matter too.
+
+<h2 id="try">Compare six conditions on the same link</h2>
+
+- At 1 A, compare heating power with heat escaping through the end caps as temperature approaches equilibrium.
+- Select 2.2 A and follow the spatial profile. The middle reaches the melting point first, where this calculation stops.
+- Compare continuous 4 A with an eight-millisecond 4 A pulse. Once the pulse ends, the stored heat dissipates.
+- Keep current fixed and warm the surroundings and contacts from 20°C to 80°C. Melting onset arrives earlier.
+- Increase diameter from 50 µm to 70 µm. Area nearly doubles, slowing heating at the same current.
+- Compare 4 A and 8 A. During a short, nearly adiabatic heating interval, doubling current approximately quarters the time needed to reach the melting point.
+
+<h2 id="deeper">Electrical input is stored or carried away as heat</h2>
+
+<details>
+<summary>The spatial heat model and I²t</summary>
+
+For wire cross-sectional area A and coordinate x, the one-dimensional thermal equation is:
+
+<div className="formula">ρm c A ∂T/∂t = kA ∂²T/∂x² + I²ρe(T)/A</div>
+<div className="formula">ρe(T) = ρe,20[1 + α(T − 20°C)]</div>
+
+The model divides a 10 mm wire into forty cells with end contacts fixed at ambient temperature. Electrical input, conduction between cells, heat escaping to contacts and stored thermal energy are tracked together. Rising resistance also changes Joule heating.
+
+<div className="formula">Electrical heat input = stored heat + heat lost through contacts</div>
+
+I²t has units of A²s, not joules. Actual heat input is `∫ I²R(T) dt`. For brief, high-current heating with negligible heat loss, the same wire can require approximately the same I²t to reach the same thermal state. Slower overloads lose more heat and do not generally obey that approximation.
+
+</details>
+
+<details>
+<summary>Melting onset is not complete circuit interruption</summary>
+
+This model stops when the hottest cell first reaches 961.9°C. Latent heat, complete liquefaction, mechanical rupture and any subsequent arc are not calculated. Its stopping time is neither total clearing time nor a direct substitute for a product datasheet pre-arcing time.
+
+A real fuse must also extinguish an arc at its specified voltage and prospective fault current. Voltage rating and breaking capacity have separate meanings. Seeing the metal begin to melt does not establish that a fault has been safely cleared.
+
+Simplified material values are density 10490 kg/m³, heat capacity 235 J/(kg·K), thermal conductivity 429 W/(m·K), and a linear temperature dependence of resistivity. Radiation, lateral convection, contact thermal resistance and changes in other material properties are omitted. The image uses temperature false color; numerical results do not describe a commercial fuse specification.
+
+</details>

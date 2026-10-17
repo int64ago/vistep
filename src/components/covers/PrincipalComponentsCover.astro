@@ -1,0 +1,33 @@
+---
+import { pcaData, pcaFit, pcaProject } from '../../models/principal-components';
+const { color = '#ba9c78' } = Astro.props,
+  fit = pcaFit(pcaData()),
+  q = pcaProject(fit, fit.angle),
+  point = (x: number, y: number) => ({ x: 200 + x * 43, y: 115 - y * 43 }),
+  a = point(-3.5 * q.direction.x, -3.5 * q.direction.y),
+  b = point(3.5 * q.direction.x, 3.5 * q.direction.y);
+const items = q.items.map((item) => ({
+  ...item,
+  from: point(item.point.x, item.point.y),
+  to: point(item.reconstruction.x, item.reconstruction.y),
+}));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  ><path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke={color} stroke-width="3"></path>{
+    items.map((item) => (
+      <g>
+        <>
+          <path
+            d={`M${item.from.x} ${item.from.y}L${item.to.x} ${item.to.y}`}
+            stroke={color}
+            stroke-width="1.5"
+            stroke-dasharray="4 4"
+          />
+          <circle cx={item.to.x} cy={item.to.y} r="5" fill="#d7c196" />
+          <circle cx={item.from.x} cy={item.from.y} r="6" fill="#92adb0" />
+        </>
+      </g>
+    ))
+  }</svg
+>

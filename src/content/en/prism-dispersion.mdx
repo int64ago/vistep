@@ -1,0 +1,27 @@
+<a id="understand"></a>
+
+## Material and geometry set the output direction
+
+A prism refracts a ray at entry and again at exit. Every intersection and normal must come from its physical geometry. Because the glass index also depends on wavelength, wavelengths entering from one direction leave at slightly different angles.
+
+The scene uses visible-range SCHOTT N-BK7 dispersion data. Shorter wavelengths have higher index and, within this geometry, greater deviation. This ordering has a material and wavelength-range qualification; it cannot replace actual dispersion data for arbitrary media.
+
+<a id="try"></a>
+
+## Separate the causes
+
+Change the tracked wavelength or prism rotation, and compare monochromatic input with white-light samples. “Assume no material dispersion” assigns every wavelength the550 nm index. Deflection remains, but spectral separation disappears. A monochromatic input produces no extra wavelengths in this linear model.
+
+<a id="deeper"></a>
+
+## Trace the material relation through both surfaces
+
+<div className="formula">
+  n²(λ) − 1 = Σ Bⱼ λ²/(λ² − Cⱼ)
+  <br />
+  Apply Snell’s relation at each surface
+</div>
+
+The Sellmeier equation uses micrometre wavelengths and manufacturer N-BK7 coefficients, restricted here to400–750 nm. The prism apex is60°. Ray–segment intersections determine entry and exit, and vector refraction uses each physical surface normal. Rotation reconstructs the entire connected path.
+
+Fresnel reflection, absorption, scattering and temperature dependence are omitted. Colours represent discrete wavelength samples rather than a continuous spectrum or calibrated human colour. The enlarged strip is labelled in output deviation angle, not equal positions on a flat screen. Preservation of a monochromatic input is limited to linear transparent propagation, without nonlinear frequency conversion.

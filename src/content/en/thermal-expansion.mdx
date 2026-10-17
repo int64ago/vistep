@@ -1,0 +1,32 @@
+<a id="understand"></a>
+
+## A hole is not squeezed empty space
+
+For free, uniform heating of an isotropic plate, every length changes by the same fraction. Both outer and inner rims move outward. Imagine replacing the removed disk: it would expand with the plate, so the hole must accommodate the larger disk.
+
+Local heating, temperature gradients and restraints can produce different deformations. Hole growth here depends on the stated uniform, free conditions. Material markers track positions; they do not depict individual atoms growing in radius.
+
+<a id="try"></a>
+
+## Calculate both parts separately
+
+Heating the plate while keeping the plug cold increases radial clearance. Subsequently warming a plug of the same material removes most of that extra clearance. Initial radii are 20 mm for the hole and 19.98 mm for the plug. With the aluminium parameters and a 100 K rise, plate-only heating gives 70 μm clearance; equal heating gives 20.05 μm.
+
+Exploration switches among plate, clearance detail and rod, with temperature, material and rod-length inputs. Plate and rod dimensional changes are enlarged 100 times. The clearance detail has a fixed micrometre scale. Readouts retain physical dimensions.
+
+<a id="deeper"></a>
+
+## Strain meets a boundary condition
+
+<div className="formula">
+  ε_thermal = αΔT, ΔL_free = L₀αΔT
+  <br />
+  ε_total = ε_elastic + ε_thermal
+  <br />σ = E(ε_total − αΔT)
+</div>
+
+A free rod has total strain αΔT and zero axial stress. Ideal rigid restraints impose zero total strain and stress −EαΔT. Heating produces compression; cooling produces tension. A temperature difference has the same numerical value in kelvins and Celsius degrees; this is not a law in absolute temperature.
+
+Representative aluminium values are α=25×10⁻⁶/K and E=70 GPa; steel uses α=12×10⁻⁶/K and E=200 GPa. Real alloys depend on composition and temperature. Three-dimensional uniform scaling gives volume ratio (1+αΔT)³ and reciprocal density ratio. The familiar 3αΔT is only its first-order expansion.
+
+Atomic potentials, transient heat conduction, contact interference, yielding, buckling and flexible supports are omitted. The rod is a one-dimensional linear thermoelastic example, not a structural safety calculation.

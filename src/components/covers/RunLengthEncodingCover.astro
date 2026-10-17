@@ -1,0 +1,38 @@
+---
+import { rleEncode, rlePattern } from '../../models/run-length-encoding';
+const { color = '#aa9a68' } = Astro.props,
+  pixels = rlePattern('bands'),
+  q = rleEncode(pixels),
+  palette = ['#e8dfbd', '#577879', '#bd8a5c', '#85966d'];
+const cells = Array.from(pixels, (value, i) => ({
+  value,
+  x: 28 + (i % 8) * 20,
+  y: 31 + Math.floor(i / 8) * 20,
+}));
+const runs = q.runs.map((r, i) => ({ ...r, y: 38 + i * 45 }));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  >{
+    cells.map((c) => <rect x={c.x} y={c.y} width="18" height="18" rx="3" fill={palette[c.value]} />)
+  }<path d="M202 112H222" stroke={color} stroke-width="2"></path>{
+    runs.map((r) => (
+      <g>
+        <>
+          <rect x="240" y={r.y} width="130" height="34" rx="11" fill="#e5dfca" />
+          <rect x="250" y={r.y + 7} width="12" height="20" rx="4" fill={palette[r.value]} />
+          <text
+            x="313"
+            y={r.y + 25}
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="21"
+            fill={color}
+          >
+            {r.count} × {r.value}
+          </text>
+        </>
+      </g>
+    ))
+  }</svg
+>

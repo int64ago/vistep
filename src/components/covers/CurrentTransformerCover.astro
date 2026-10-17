@@ -1,0 +1,48 @@
+---
+import { ctWinding } from '../../models/current-transformer';
+const turns = ctWinding(100);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><g transform="translate(34 0) scale(1.8)"
+    ><circle cx="103" cy="104" r="66" fill="#b9c9a9"></circle><circle
+      cx="103"
+      cy="104"
+      r="35"
+      fill="#edf0e3"></circle>{
+      turns.map((p) => (
+        <path
+          d={p.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ')}
+          fill="none"
+          stroke="#a88e67"
+          stroke-width=".6"
+        />
+      ))
+    }<circle cx="103" cy="104" r="13" fill="#ccb38b"></circle><circle
+      cx="103"
+      cy="104"
+      r="3"
+      fill="#90764d"></circle><path
+      d="M152 58H275V86m-123 64H275V123"
+      fill="none"
+      stroke="#ab956f"
+      stroke-width="2"></path><rect
+      x="267"
+      y="86"
+      width="16"
+      height="37"
+      rx="3"
+      fill="#d8e1c9"
+      stroke="#a6b491"></rect><path
+      d="M73 65l-7 5 7 5M53 101l-2 7 7 2M69 145l7 2 2 -7"
+      fill="none"
+      stroke="#7c987b"
+      stroke-width="2"></path><text
+      x="270"
+      y="181"
+      text-anchor="middle"
+      font-size="19"
+      fill="#82956e">100 : 1</text
+    ></g
+  ></svg
+>

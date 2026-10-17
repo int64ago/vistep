@@ -1,0 +1,26 @@
+<h2 id="understand">The next step conditions on the present</h2>
+
+This is a two-state, time-homogeneous Markov chain with a fixed transition matrix. A and B are abstract states, without assuming that real weather follows this model. Given the current state, the next conditional distribution no longer depends on earlier history. Each matrix row sums to one.
+
+With `α=P(A→B)=0.2` and `β=P(B→A)=0.3`, a row distribution updates by `p_next=pP`. Starting entirely in A produces `(0.8,0.2)` next. Ribbon width represents probability mass `pᵢPᵢⱼ`, rather than the conditional transition probability alone.
+
+<h2 id="try">A stationary distribution can contain moving individuals</h2>
+
+Repeated updates approach `(0.6,0.4)`. Starting with that distribution leaves it unchanged because `πP=π`. Cross-state flows both equal `0.12`: balanced exchanges preserve the distribution while individuals can still switch.
+
+The film also shows one reproducible trajectory starting in A. This individual with a specified starting state does not represent exact population proportions. A finite trajectory's state frequencies need not equal the population distribution. Explore changes both transition probabilities, the update count and the trajectory seed.
+
+<h2 id="deeper">Existence does not guarantee convergence</h2>
+
+<details>
+<summary>Periodicity, uniqueness and the model's limits</summary>
+
+Changing α to 0.5 and β to 0.1 changes the unique stationary distribution to `(1/6,5/6)`. Whenever α+β is positive, this particular model gives `π=(β/(α+β),α/(α+β))`.
+
+Set both probabilities to one. Every step flips the state. The unique stationary distribution `(0.5,0.5)` still exists, but a population starting entirely in A alternates forever and never converges to it. Set both probabilities to zero instead: every initial distribution remains fixed, so stationary distributions are nonunique, rather than absent.
+
+A finite irreducible, aperiodic chain has a unique stationary distribution and converges to it from any initial distribution. This film demonstrates a fixed, two-state, discrete-time model. It does not infer real transition rates or establish that a real process is Markovian. The fixed pseudorandom sequence supports reproducible seeking; a short individual trajectory is not statistical evidence for a population claim.
+
+</details>
+
+Sources: [MIT 18.445: stationary distributions and periods](https://ocw.mit.edu/courses/18-445-introduction-to-stochastic-processes-spring-2015/2edaa8542469ce692226813a8bd1ec88_MIT18_445S15_lecture2.pdf), [MIT RES.6-012: Markov chains and convergence](https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/resources/lecture-videos/).

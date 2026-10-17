@@ -1,0 +1,185 @@
+.parallax-study {
+  max-width: 980px;
+  margin: auto;
+  padding: 24px;
+  background: #e1e7ed;
+  color: #43566e;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.parallax-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  max-width: 620px;
+  margin: auto;
+}
+.parallax-study header > span {
+  font: 12px monospace;
+  color: #8d9fb5;
+  letter-spacing: 0.04em;
+}
+.parallax-study header > b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.parallax-plate {
+  position: relative;
+  max-width: 440px;
+  aspect-ratio: 360/260;
+  margin: 12px auto 0;
+  background: #e8edf1;
+  border-radius: 18px;
+}
+.parallax-plate svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.parallax-crosshair {
+  stroke: #c3ced9;
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+.parallax-reference {
+  stroke: #a6b2c3;
+  stroke-width: 1.4;
+}
+.parallax-track {
+  fill: none;
+  stroke: #b09972;
+  stroke-width: 1.8;
+  stroke-dasharray: 3 4;
+}
+.parallax-target {
+  fill: #ac8a52;
+}
+.parallax-baseline {
+  fill: none;
+  stroke: #957d5b;
+  stroke-width: 1.4;
+}
+.parallax-ghost {
+  fill: #e7edf1;
+  stroke: #a28c6e;
+  stroke-width: 1.5;
+}
+.parallax-orbit {
+  fill: none;
+  stroke: #b6c6d2;
+  stroke-width: 1;
+}
+.parallax-sun {
+  fill: #c7ad78;
+}
+.parallax-observer {
+  fill: #7a9aa6;
+}
+.parallax-top,
+.parallax-bottom {
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+}
+.parallax-top {
+  top: 8.462%;
+  transform: translateY(-50%);
+}
+.parallax-bottom {
+  top: 93.077%;
+  transform: translateY(-50%);
+}
+.parallax-current {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 19px;
+  font-weight: 400;
+  color: #9b783f;
+  pointer-events: none;
+}
+.parallax-epoch {
+  text-align: center;
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+.parallax-values {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 14px;
+}
+.parallax-values > span {
+  text-align: center;
+  font-size: 16px;
+  max-width: 34%;
+  line-height: 1.4;
+}
+.parallax-values b {
+  display: block;
+  font-size: 24px;
+  font-weight: 300;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+.parallax-note {
+  text-align: center;
+  line-height: 1.4;
+  font-size: 16px;
+  margin: 12px 0 0;
+}
+.parallax-controls {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+.parallax-controls input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+.parallax-study summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-top: 16px;
+}
+.parallax-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .parallax-study {
+    padding: 10px 12px;
+  }
+  .parallax-study header {
+    display: block;
+  }
+  .parallax-study header > span {
+    display: none;
+  }
+  .parallax-study header > b {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .parallax-plate {
+    margin-top: 13px;
+    border-radius: 13px;
+  }
+  .parallax-values {
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .parallax-values b {
+    font-size: 21px;
+  }
+  .parallax-epoch {
+    margin-top: 9px;
+  }
+  .parallax-note {
+    margin-top: 9px;
+  }
+  .parallax-study[data-watch='true'] details {
+    display: none;
+  }
+}

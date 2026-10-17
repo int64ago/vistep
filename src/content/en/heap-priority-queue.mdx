@@ -1,0 +1,26 @@
+<h2 id="understand">Guard the maximum at the root</h2>
+
+A binary max heap is a complete binary tree. Every parent has at least its children's priority. Following parent chains makes the root no smaller than any item. The entire array is not sorted: the initial level-order array places 7 before 8 without violating heap order.
+
+Shape and order are separate constraints. An insertion first occupies the next leaf position, preserving completeness, and then swims along its parent chain. In this example the same inserted 10 visits indices 7, 3, 1 and 0. Other branches do not move.
+
+<h2 id="try">Which child repairs a removed root?</h2>
+
+After removing the highest-priority 10, the last item, 3, fills the root so that the tree has no structural gap. Repair compares both children and selects the larger one. The first choice must be 9 rather than 8: making 8 the parent would still leave a larger child, 9. The 3 then sinks along that same path until heap order holds.
+
+Exploration allows priorities 1–12, insertion, removal and step-by-step rearrangement. Finish the current steps before starting another operation. The picture holds at most eight items, and the recent-removals tray keeps at most sixteen. These are display limits, not the theoretical capacity of a heap.
+
+<h2 id="deeper">Order, ties and cost</h2>
+
+<details>
+<summary>How array positions become a tree</summary>
+
+This model uses zero-based indices. The children of i are `2i+1` and `2i+2`; a non-root item's parent is `floor((i−1)/2)`. Both the edges and node positions come from these indices. The tree and array are two views of the same state.
+
+Standard insertion and removal follow one O(log n)-height path; inspecting the maximum is O(1). This teaching interface additionally validates inputs in O(n), copies snapshots and records the trace. Its complete runtime and storage do not represent a minimal implementation.
+
+Equal priorities use an extra arrival-order key, favoring earlier arrivals. Binary heaps are not inherently stable. Repeated removal produces nonincreasing priority, while each intermediate level-order array guarantees only parent–child order.
+
+</details>
+
+Source: [Princeton, Priority Queues](https://algs4.cs.princeton.edu/24pq/). Shortest-path algorithms often reverse the comparison to use a min heap. That structure does not replace the algorithm's conditions for updating and finalizing distances.

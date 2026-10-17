@@ -1,0 +1,137 @@
+.governor-film {
+  max-width: 900px;
+  margin: auto;
+  color: #647b6c;
+}
+.governor-mode {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.45;
+  margin: 0 10px 6px;
+  color: #9a845e;
+}
+.governor-object {
+  height: 270px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 50%, #e8efdf, #f9fbf4);
+}
+.governor-object .studio {
+  height: 100%;
+}
+.governor-object svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.governor-values {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  padding: 10px 12px 0;
+  font-size: 16px;
+}
+.governor-values span {
+  display: grid;
+  gap: 4px;
+}
+.governor-values b {
+  font-size: 21px;
+  font-weight: 550;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.governor-values small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.governor-relation {
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 12px;
+}
+.governor-plot {
+  max-width: 520px;
+  margin: 5px auto 0;
+}
+.governor-plot svg {
+  width: 100%;
+  display: block;
+  max-height: 115px;
+}
+.governor-plot text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7b8d75;
+}
+.governor-plot p {
+  font-size: 16px;
+  text-align: center;
+  margin: 0 12px 5px;
+}
+.governor-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.governor-controls > .segmented {
+  grid-column: 1/-1;
+}
+.governor-notes {
+  max-width: 600px;
+  margin: 3px auto 0;
+  padding: 0 15px;
+  font-size: 16px;
+}
+.governor-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.governor-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.governor-notes[open] summary:before {
+  content: '−';
+}
+.governor-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+@media (max-width: 600px) {
+  .governor-object {
+    height: 210px;
+  }
+  .governor-values {
+    gap: 12px;
+    padding: 6px 4px 0;
+  }
+  .governor-values b {
+    font-size: 18px;
+  }
+  .governor-values small {
+    display: inline;
+  }
+  .governor-film[data-watch='true'] .governor-notes {
+    display: none;
+  }
+  .governor-plot svg {
+    max-height: none;
+  }
+  .governor-plot text {
+    font-size: 21px;
+  }
+  .governor-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .governor-mode {
+    text-align: left;
+  }
+  .governor-plot p {
+    text-align: left;
+  }
+}

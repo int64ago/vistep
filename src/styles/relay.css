@@ -1,0 +1,181 @@
+.relay-study {
+  max-width: 980px;
+  margin: auto;
+  padding: 20px;
+  background: #e9eef0;
+  color: #455d68;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.relay-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  max-width: 620px;
+  margin: auto;
+}
+.relay-study header > span {
+  font: 12px monospace;
+  letter-spacing: 0.04em;
+  color: #8a9ca4;
+}
+.relay-study header > b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.relay-cutaway {
+  position: relative;
+  aspect-ratio: 360/250;
+  max-width: 440px;
+  margin: 8px auto 0;
+}
+.relay-cutaway svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.relay-cutaway > span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  white-space: nowrap;
+}
+.relay-insulator {
+  left: 52%;
+  top: 17%;
+  background: #e9eef0cc;
+  border-radius: 4px;
+  padding: 1px 3px;
+}
+.relay-coil {
+  left: 27%;
+  top: 97%;
+}
+.relay-load {
+  left: 75%;
+  top: 97%;
+}
+.relay-diode {
+  left: 16%;
+  top: 89%;
+  background: #e9eef0dd;
+  border-radius: 4px;
+  padding: 1px 2px;
+}
+.relay-blocked {
+  left: 50%;
+  top: 62%;
+  color: #895e4e;
+  background: #e9eef0dd;
+  border-radius: 4px;
+  padding: 1px 2px;
+}
+.relay-readings {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  max-width: 500px;
+  margin: 10px auto 0;
+}
+.relay-readings span {
+  font-size: 16px;
+}
+.relay-readings b {
+  display: block;
+  font-size: 24px;
+  font-weight: 300;
+  white-space: nowrap;
+  margin-top: 5px;
+}
+.relay-contact {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 17px;
+}
+.relay-contact[data-closed='true'] {
+  color: #507b68;
+}
+.relay-force {
+  font-size: 16px;
+  margin: 8px 0 0;
+  text-align: center;
+  line-height: 1.4;
+}
+.relay-controls {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.relay-controls input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+.relay-modes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.relay-controls button {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #b4c5c9;
+  border-radius: 12px;
+  background: #f0f5f4;
+}
+.relay-controls button[aria-pressed='true'] {
+  background: #d2e1df;
+}
+.relay-study summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding-top: 16px;
+}
+.relay-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 980px) {
+  .relay-cutaway {
+    max-width: 430px;
+  }
+}
+@media (max-width: 600px) {
+  .relay-study {
+    padding: 12px;
+  }
+  .relay-study header {
+    display: block;
+  }
+  .relay-study header > span {
+    display: none;
+  }
+  .relay-study header > b {
+    display: block;
+    font-size: 16px;
+  }
+  .relay-cutaway {
+    margin-top: 3px;
+  }
+  .relay-readings {
+    gap: 7px;
+    margin-top: 10px;
+  }
+  .relay-readings b {
+    font-size: 21px;
+  }
+  .relay-contact {
+    font-size: 16px;
+    margin-top: 9px;
+  }
+  .relay-force {
+    margin-top: 6px;
+  }
+  .relay-study[data-watch='true'] details {
+    display: none;
+  }
+}

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { mkdtempSync, rmSync, utimesSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { islandDictionary, readIslandSource } from './island-dictionary';
+import { islandDictionary, readIslandSource, readExperimentLoaders } from './island-dictionary';
 import english from '../en.json';
 import { topics } from '../../data/topics';
 import timeline from '../../data/film-timeline.json';
@@ -24,6 +24,23 @@ const expectCopy = (subset: Record<string, string>, key: string) => {
 };
 
 describe('scene-scoped English dictionaries', () => {
+  it('reads unformatted handoffs and formatted loaders with either quote style', () => {
+    expect([
+      ...readExperimentLoaders(`
+      const unrelated = { hidden: () => import('./Hidden') };
+      export const experimentLoaders = {
+        "new-scene": () => import("../components/experiments/NewScene"),
+        existing: () => import('../components/experiments/Existing'),
+        'other-scene': () =>
+          import("../components/experiments/OtherScene"),
+      };
+    `),
+    ]).toEqual([
+      ['new-scene', '../components/experiments/NewScene'],
+      ['existing', '../components/experiments/Existing'],
+      ['other-scene', '../components/experiments/OtherScene'],
+    ]);
+  });
   it('includes the selected film and shared player/error UI for every real lazy loader', () => {
     for (const topic of topics) {
       const subset = sceneDictionary(topic.slug);

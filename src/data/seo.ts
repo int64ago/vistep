@@ -50,7 +50,11 @@ export function pageSchema(path: string, locale: Locale, source?: Topic) {
   const topic = localizedTopic(source, locale),
     film = films[topic.slug];
   const script = narration[topic.slug as keyof typeof narration],
-    audio = tracks[topic.slug as keyof typeof tracks][locale];
+    audio = tracks[topic.slug as keyof typeof tracks]?.[locale];
+  // The local director reviews the silent causal shot before recording speech.
+  // A production build must still reject any topic without its authored track.
+  if (!audio && !import.meta.env.DEV)
+    throw new Error(`${topic.slug}/${locale}: recorded narration is required before publishing`);
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -72,15 +76,17 @@ export function pageSchema(path: string, locale: Locale, source?: Topic) {
         publisher: { '@id': url('/#publisher') },
         isPartOf: { '@id': url('/#website') },
         citation: topic.sources.map((s) => s.url),
-        audio: {
-          '@type': 'AudioObject',
-          name: topic.name,
-          contentUrl: url(audio.src),
-          encodingFormat: 'audio/mpeg',
-          duration: `PT${film.duration}S`,
-          inLanguage: language,
-          transcript: script.cues.map((c) => c[locale]).join('\n\n'),
-        },
+        audio: audio
+          ? {
+              '@type': 'AudioObject',
+              name: topic.name,
+              contentUrl: url(audio.src),
+              encodingFormat: 'audio/mpeg',
+              duration: `PT${film.duration}S`,
+              inLanguage: language,
+              transcript: script.cues.map((c) => c[locale]).join('\n\n'),
+            }
+          : undefined,
         hasPart: film.chapters.map((c) => ({
           '@type': 'CreativeWork',
           name: locale === 'zh' ? c.title : c.titleEn,

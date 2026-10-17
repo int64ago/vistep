@@ -1,0 +1,29 @@
+---
+import { thinFilm, filmSwatch } from '../../models/thin-film-interference';
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#172933"></rect>{
+    Array.from({ length: 100 }, (_, i) => (
+      <rect
+        x={40 + i * 3.2}
+        y={60 - i * 0.14}
+        width="3.4"
+        height={70 + i * 0.28}
+        fill={filmSwatch(i * 6)}
+      />
+    ))
+  }<path d="M80 27V175M200 27V175M320 27V175" stroke="#e9eee6" opacity=".25"></path>{
+    [80, 200, 320].map((x, i) => (
+      <polyline
+        points={Array.from(
+          { length: 40 },
+          (_, j) =>
+            `${x - 35 + j * 1.8},${188 - Math.cos(thinFilm(i * 140).phase / 2) * 16 * Math.sin(j * 0.4)}`,
+        ).join(' ')}
+        stroke="#e3ba77"
+        stroke-width="2"
+      />
+    ))
+  }</svg
+>

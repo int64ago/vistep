@@ -1,0 +1,26 @@
+<h2 id="understand">Ready means every prerequisite has cleared</h2>
+
+An edge `A → D` requires A before D. Because D depends on both A and B, finishing A alone is insufficient. The zero-indegree method counts each task's unfinished prerequisites and chooses only tasks whose count is zero.
+
+Outputting a task removes its outgoing dependency edges and decrements its successors' counts. D still has one prerequisite after A, becoming ready only after B. E waits for both B and C. The ready tray and node states follow those remaining counts.
+
+<h2 id="try">Different choices can still be correct</h2>
+
+A, B and C initially are all ready. Exploration can reverse the choice among ready tasks, then step through releases. The resulting complete order may differ. It is valid whenever every arrow's start precedes its end.
+
+Adding `E → B` makes B wait for E while E already waits for B. The algorithm can still output A and C, but then no zero-indegree task remains. Another choice order cannot remove a circular prerequisite.
+
+<h2 id="deeper">Are all remaining tasks on the cycle?</h2>
+
+<details>
+<summary>Cycles, blocked tasks and scheduling</summary>
+
+The actual cycle here is `B → E → B`. D and F are blocked downstream but are not cycle members. Failing to output every vertex proves that the remaining graph contains a cycle; it does not put every remaining vertex on one. The model separately follows directed edges to identify a real cycle witness.
+
+A finite digraph admits a complete topological order exactly when it has no directed cycle. A standard queue implementation takes O(V+E) time. This demonstration additionally sorts ready sets for reproducible tie choices, validates inputs and copies snapshots, so the whole interface does not carry that runtime guarantee.
+
+No task durations, processor counts or resource conflicts are modeled. A topological order respects prerequisites; it does not compute minimum completion time, optimal parallelism or a real-time schedule.
+
+</details>
+
+Sources: [Princeton, Directed Graphs and queue-based topological sort](https://algs4.cs.princeton.edu/42digraph/) and [the authors' directed-graphs lecture](https://algs4.cs.princeton.edu/lectures/keynote/42DirectedGraphs.pdf).

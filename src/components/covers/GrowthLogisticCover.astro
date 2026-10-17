@@ -1,0 +1,14 @@
+---
+import { logisticTrace } from '../../models/growth-logistic';
+const { color = '#98ad83' } = Astro.props,
+  line = logisticTrace()
+    .map((p, i) => `${i ? 'L' : 'M'}${35 + (p.time / 14) * 330} ${203 - p.value * 1.65}`)
+    .join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M35 38H365" stroke="#aa8f6c" stroke-dasharray="5 5" stroke-width="1.5"></path>
+  <path d={`${line}L365 205H35Z`} fill={color} opacity=".18"></path>
+  <path d={line} stroke={color} stroke-width="3.5" stroke-linecap="round"></path>
+  <path d="M35 205H365" stroke={color} opacity=".4"></path>
+</svg>

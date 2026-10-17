@@ -1,0 +1,30 @@
+---
+import { ufLayout, ufLesson } from '../../models/union-find';
+const { color = '#8da68f' } = Astro.props;
+const state = ufLesson().states[7];
+const points = ufLayout(state);
+const nodes = state.parent.map((p, i) => ({ i, p, x: points[i].x, y: points[i].y * 0.77 + 8 }));
+const links = nodes.filter((n) => n.p !== n.i).map((n) => ({ n, p: nodes[n.p] }));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <g transform="translate(20 0)">
+    {
+      links.map(({ n, p }) => (
+        <path d={`M${n.x} ${n.y}L${p.x} ${p.y}`} stroke={color} stroke-width="2" />
+      ))
+    }
+    {
+      nodes.map((n) => (
+        <g>
+          <>
+            <circle cx={n.x} cy={n.y} r="19" fill={n.i === 0 ? '#a3b9a4' : '#e1e8de'} />
+            <text x={n.x} y={n.y + 8} text-anchor="middle" font-size="24" fill="#6a826f">
+              {n.i}
+            </text>
+          </>
+        </g>
+      ))
+    }
+  </g>
+</svg>

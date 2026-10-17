@@ -1,0 +1,22 @@
+---
+import { voronoiCells, voronoiSites } from '../../models/voronoi';
+const { color = '#abb897' } = Astro.props,
+  colors = [color, '#dbc0b3', '#becade', '#ded4a5'];
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <g transform="translate(55 10) scale(.8)">
+    {
+      voronoiCells(voronoiSites).map((c, i) => (
+        <polygon
+          points={c.polygon.map((p) => `${p.x},${p.y}`).join(' ')}
+          fill={colors[i]}
+          stroke="#f4f0e8"
+          stroke-width="2"
+          opacity=".7"
+        />
+      ))
+    }
+    {voronoiSites.map((s) => <circle cx={s.x} cy={s.y} r="6" fill="#737a5c" />)}
+  </g>
+</svg>

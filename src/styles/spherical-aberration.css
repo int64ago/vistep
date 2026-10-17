@@ -1,0 +1,172 @@
+.aberration-study {
+  background: #2c474a;
+  color: #dce5d6;
+  border-radius: 26px;
+  padding: 24px 28px;
+  max-width: 980px;
+  margin-inline: auto;
+}
+.aberration-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+}
+.aberration-study header b {
+  font-size: 16px;
+  font-weight: 400;
+  color: #e0c995;
+}
+.aberration-rays {
+  display: block;
+  width: 100%;
+  height: 280px;
+  margin-top: 8px;
+}
+.aberration-screen-position {
+  font-size: 16px;
+  color: #c0d0c5;
+  line-height: 1.4;
+}
+.aberration-observation {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin-top: 12px;
+}
+.aberration-observation figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+.aberration-observation figure svg {
+  width: 120px;
+  height: 120px;
+  flex: none;
+}
+.aberration-observation figcaption {
+  max-width: 140px;
+  line-height: 1.4;
+}
+.aberration-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  flex: 1;
+  font-size: 16px;
+}
+.aberration-values span {
+  display: grid;
+  gap: 6px;
+}
+.aberration-values b {
+  font-size: 24px;
+  font-weight: 400;
+  color: #e0c995;
+}
+.aberration-profile-change {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+.aberration-profile-change svg {
+  width: 100%;
+  height: 44px;
+  display: block;
+}
+.aberration-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.aberration-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.aberration-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #c0d0c5;
+  margin: 0 0 12px;
+}
+.aberration-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.aberration-controls button {
+  min-height: 44px;
+  background: #ffffff08;
+  border: 1px solid #b3c7b466;
+  border-radius: 24px;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.aberration-study .control,
+.aberration-study .control output {
+  color: #dce5d6;
+}
+.aberration-study .control input[type='range'] {
+  --range-color: #e0c995;
+  --range-rest: #6d8c84;
+}
+@media (max-width: 760px) {
+  .aberration-study {
+    padding: 16px;
+  }
+  .aberration-study header {
+    font-size: 16px;
+  }
+  .aberration-study header b {
+    display: none;
+  }
+  .aberration-study[data-watch='true'] header {
+    display: none;
+  }
+  .aberration-study[data-watch='true'][data-chapter='4'] .aberration-rays {
+    height: 150px;
+  }
+  .aberration-rays {
+    height: 175px;
+    margin-top: 4px;
+  }
+  .aberration-observation {
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .aberration-observation figure {
+    display: grid;
+    gap: 2px;
+    width: 96px;
+    flex: none;
+  }
+  .aberration-observation figure svg {
+    width: 96px;
+    height: 96px;
+  }
+  .aberration-observation figcaption {
+    font-size: 16px;
+    max-width: 100%;
+    text-align: center;
+  }
+  .aberration-values {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .aberration-values b {
+    font-size: 21px;
+  }
+  .aberration-profile-change svg {
+    height: 36px;
+  }
+  .aberration-controls {
+    grid-template-columns: 1fr;
+  }
+}

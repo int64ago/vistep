@@ -1,0 +1,43 @@
+<h2 id="understand">Fix the current, field and probe directions first</h2>
+
+Conventional current to the right does not imply electrons moving right. In an electron-conducting sample, average drift is leftward. Magnetic dots point out of the screen; crosses point into it.
+
+Magnetic force is `q(v × B)`. For negative electrons drifting left in an outward magnetic field, it points toward the lower edge. Negative charge accumulates there, leaving the upper edge relatively positive and creating a transverse electric field. In steady state, electric force FE balances magnetic force FB, so carriers do not continue accelerating sideways.
+
+**The red probe stays at the lower edge and the black probe at the upper edge.** The reading is `Vlower − Vupper`. It is negative for electron carriers with rightward current and outward field. Swapping the probes would also reverse the measured sign.
+
+<h2 id="try">Change one sign while holding the others fixed</h2>
+
+- Set magnetic field to zero. Longitudinal current remains while transverse voltage vanishes.
+- Reverse only the field and voltage reverses. Reverse current as well and the original voltage sign returns.
+- Keep conventional current and field fixed, but use positive carriers. Drift turns rightward and magnetic force still points downward. Positive charge now accumulates at the lower edge, reversing voltage polarity.
+- Reduce carrier density at fixed current and field. The same current requires faster drift, increasing Hall-voltage magnitude.
+- Inspect the transverse forces. Direction arrows are normalized; FE and FB have equal magnitudes and opposite directions.
+
+<h2 id="deeper">One relation determines both sign and scale</h2>
+
+<details>
+<summary>From force balance to transverse voltage</summary>
+
+Take x rightward, y upward and B along z out of the screen. With sample width w, thickness d and signed carrier charge q:
+
+<div className="formula">vₓ = I/(nqwd)</div>
+<div className="formula">Fmagnetic,y = −qvₓB; E_y = vₓB</div>
+<div className="formula">Vlower − Vupper = E_y w = IB/(nqd)</div>
+
+Width cancels from the voltage formula. Thickness, density, current, field and carrier sign still matter. At 10 mA, 0.2 T, n = 10²² m⁻³ and d = 0.5 mm, electron conduction gives approximately −2.50 mV.
+
+Magnetic force is perpendicular to velocity and does no direct work. The longitudinal source maintains current, with Joule heating in a real conductor. Transverse voltage does not mean the magnetic field continuously supplies energy to electrons.
+
+</details>
+
+<details>
+<summary>Limits of the single-carrier model</summary>
+
+The uniform sample is 20 mm long, 8 mm wide and 0.5 mm thick, with one dominant carrier type. Mobility is 0.1 m²/(V·s), providing a consistent longitudinal Ohmic response. Default drift speed is about 1.56 m/s. Each film chapter expands only 20 ms of drift, making motion much slower on screen.
+
+Dots represent selected tracers, not every carrier; density is given numerically. Changes of field, density and carrier sign compare steady configurations. Edge-charge buildup and thermal motion are not simulated.
+
+Multiple bands, simultaneous electron and hole transport, Hall scattering factors, contact errors, anomalous Hall and quantum Hall effects are omitted. Inferring density from a measurement therefore requires checking the single-carrier approximation and sample thickness, among other conditions.
+
+</details>

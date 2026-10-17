@@ -1,0 +1,33 @@
+---
+import { TOPO_EDGES, TOPO_LABELS, TOPO_POINTS } from '../../models/topological-sort';
+const { color = '#b49b7b' } = Astro.props;
+const nodes = TOPO_POINTS.map((p, i) => ({
+  x: p.x,
+  y: p.y * 0.73 + 9,
+  label: TOPO_LABELS[i],
+  ready: i < 3,
+}));
+const links = TOPO_EDGES.map(([a, b]) => ({ a: nodes[a], b: nodes[b] }));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  ><g transform="translate(20 8)">
+    {
+      links.map(({ a, b }) => (
+        <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke={color} stroke-width="2" />
+      ))
+    }
+    {
+      nodes.map((n) => (
+        <g>
+          <>
+            <circle cx={n.x} cy={n.y} r="22" fill={n.ready ? '#d4dfc9' : '#e9decd'} />
+            <text x={n.x} y={n.y + 9} font-size="26" text-anchor="middle" fill="#9d896d">
+              {n.label}
+            </text>
+          </>
+        </g>
+      ))
+    }
+  </g></svg
+>

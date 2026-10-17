@@ -1,0 +1,112 @@
+.cam-film {
+  max-width: 880px;
+  margin: auto;
+  color: #667461;
+}
+.cam-stage {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) 1fr;
+  align-items: center;
+  gap: 30px;
+  padding: 15px 35px;
+  background: radial-gradient(ellipse at 40% 65%, #e9e9d8, #f8f9ef);
+  border-radius: 28px;
+}
+.cam-stage svg {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+}
+.cam-stage text {
+  font: 20px var(--font-sans, sans-serif);
+}
+.cam-instrument {
+  display: grid;
+  gap: 30px;
+}
+.cam-instrument span {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.cam-instrument b {
+  font-size: 26px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.cam-velocity {
+  max-width: 500px;
+  margin: 10px auto;
+}
+.cam-velocity svg {
+  width: 100%;
+  display: block;
+  max-height: 110px;
+}
+.cam-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.cam-notes {
+  font-size: 16px;
+  margin: 4px 12px;
+}
+.cam-notes summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.cam-notes summary::before {
+  content: '+';
+  margin-right: 8px;
+}
+.cam-notes[open] summary::before {
+  content: '−';
+}
+.cam-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+@media (max-width: 600px) {
+  .cam-stage {
+    display: block;
+    padding: 0 0 14px;
+  }
+  .cam-stage svg {
+    max-width: 340px;
+    margin: auto;
+    max-height: none;
+  }
+  .cam-stage text {
+    font-size: 21px;
+  }
+  .cam-instrument {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 18px;
+  }
+  .cam-instrument span {
+    font-size: 16px;
+    gap: 4px;
+  }
+  .cam-instrument b {
+    font-size: 18px;
+  }
+  .cam-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .cam-velocity {
+    margin: 3px 5px;
+  }
+}
+
+.cam-velocity text {
+  font: 21px var(--font-sans, sans-serif);
+  fill: #849077;
+}

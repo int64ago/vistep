@@ -1,0 +1,22 @@
+---
+import { greenhouseEquilibrium } from '../../models/greenhouse-effect';
+const { color = '#9db8a9' } = Astro.props,
+  q = greenhouseEquilibrium(0.8),
+  arrows = [
+    { d: 'M50 20V188', flux: q.incoming, color: '#b89c6f' },
+    { d: 'M245 188V115', flux: q.absorbed, color: '#ad886e' },
+    { d: 'M350 188V20', flux: q.direct, color: '#ad886e' },
+    { d: 'M280 80V20', flux: q.up, color },
+    { d: 'M160 115V188', flux: q.down, color },
+  ];
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <rect x="85" y="80" width="235" height="35" rx="15" fill={color} opacity=".45"></rect>
+  <rect x="28" y="188" width="344" height="25" rx="11" fill="#d2c2a3"></rect>
+  {
+    arrows.map((a) => (
+      <path d={a.d} stroke={a.color} stroke-width={a.flux / 60} stroke-linecap="round" />
+    ))
+  }
+</svg>

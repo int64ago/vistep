@@ -1,0 +1,26 @@
+<h2 id="understand">Each input impulse contributes a shifted response</h2>
+
+For a discrete linear time-invariant system, the output to a unit impulse is impulse response h. This scene uses causal `h=[1,0.5,0.25]`. A unit impulse at index2 produces1,0.5,0.25 at indices2,3,4.
+
+Decompose the input into scaled shifted impulses and add their responses: `y[n]=Σ h[k]x[n−k]`. Aligning this with increasing input indices reverses the weights before sliding. The asymmetric kernel makes direction observable.
+
+<h2 id="try">Multiply the aligned samples, then add</h2>
+
+At n3 the combined pulse contributes `2×1,1×0.5,0×0.25`, totaling2.5. Exploration changes input shape, response decay and output index. Every contribution comes from its actual aligned sample. Kernel `[1,d,d²]` is not normalized as a mean; DC gain is the sum of weights.
+
+The real forward-looking correlation shown is `r[n]=Σ h[k]x[n+k]`. In the same n0…6 window, convolution at n2 is1 and correlation is2.25. Symmetric kernels or special inputs can hide the distinction; that does not make the definitions identical.
+
+<h2 id="deeper">Boundary conditions change the operation</h2>
+
+<details>
+<summary>Full output, causal cropping and circular wrapping</summary>
+
+With finite zero-extended input, full convolution has N+M−1 samples. An impulse at the last input position creates a real tail0.5,0.25. Keeping only the first N samples drops it. That explicitly named causal crop is not automatically every library's centered same mode.
+
+Circular convolution assumes an N-periodic input, folding tail contributions into the beginning:0.5 then0.25. This changes the boundary assumption rather than merely cropping a full result. An independent check folds polynomial-product coefficients modulo N.
+
+The film plots nonnegative input and kernel, while model tests also cover signed samples. It is an LTI fixed three-tap FIR calculation, without nonlinear behavior, sampling error, quantization or hardware modeling. Out-of-range zero terms are labeled; invisible samples are not arbitrary invented values.
+
+</details>
+
+Sources: [MIT Signals and Systems, Lecture4: Convolution](https://ocw.mit.edu/courses/res-6-007-signals-and-systems-spring-2011/resources/lecture-4-convolution/) and [MIT Signals, Systems and Inference, Chapter2](https://ocw.mit.edu/courses/6-011-introduction-to-communication-control-and-signal-processing-spring-2010/4599f6cff8a3890477f4c4986db032a2_MIT6_011S10_chap02.pdf).

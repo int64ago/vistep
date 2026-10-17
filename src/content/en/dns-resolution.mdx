@@ -1,0 +1,24 @@
+<h2 id="understand">The resolver follows the directions for you</h2>
+
+An application asks a recursive resolver for an A record. When recursion is requested and available, the application gets an answer or an error rather than a referral chain. The resolver can perform iterative queries: the root identifies a top-level domain's servers, those servers identify the appropriate authority, and that authority supplies the host address in this example.
+
+Every referral in the picture returns to **the same resolver**. The root does not forward the query to the next server. The naming hierarchy is also not a physical packet route. This expands the DNS step in [the network overview](/en/explore/network/).
+
+<h2 id="try">Change the authority, then inspect a cached answer</h2>
+
+Exploration creates an initial cache at t = 0. Change the next lookup's time, the address TTL, or the authoritative address. The message slider reveals the messages this particular lookup actually needs.
+
+With the default 60-second address TTL, a lookup at 20 seconds still returns the old address with 40 seconds remaining. At exactly 60 seconds it has expired. Both NS referrals remain valid for 3600 seconds, so an expired address can be refreshed directly from the known authority. A zero-TTL address can answer the current question but is not retained for another lookup.
+
+<h2 id="deeper">A TTL is a record lifetime, not a global update switch</h2>
+
+Cached records expire independently. A cache hit does not restart the original TTL, and a resolver may discard a record earlier. Updating authoritative data does not rewrite every still-valid cached copy.
+
+<details>
+<summary>Limits of this explanation</summary>
+
+`orchid.test` is a fictional teaching domain under the reserved `.test` name; `203.0.113.0/24` is documentation space. No real DNS queries are sent. This successful A-record example assumes known server addresses and omits glue lookup, CNAME, negative caching, DNSSEC, retries, and modern query-name minimization. Arrow timing is observational, not a latency measurement. A resolver may also forward recursive work elsewhere; a lookup need not traverse all three levels.
+
+</details>
+
+Sources: [RFC 1034 §4.3.1 and §5.3.3](https://www.rfc-editor.org/rfc/rfc1034.html), [RFC 2181 §8](https://www.rfc-editor.org/rfc/rfc2181.html), [RFC 2606](https://www.rfc-editor.org/rfc/rfc2606.html).

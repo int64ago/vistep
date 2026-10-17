@@ -1,0 +1,41 @@
+<h2 id="understand">Compress first, then return energy to motion</h2>
+
+Two carts meet on a horizontal track. Their bumper springs compress, slowing the left cart and accelerating the right. At maximum compression the carts momentarily share a velocity. The springs then extend, returning stored energy and pushing the carts apart.
+
+The contact forces are equal and opposite, so total momentum stays constant. **The carts' translational kinetic energy can decrease during contact.** The missing part is stored as spring energy. Their sum remains constant. Once the springs regain their free length and separate, total translational kinetic energy has also returned to its initial value.
+
+With equal masses and the right cart initially at rest, the left cart stops and the right cart gains its original speed. Exchanging velocities is a special result for equal masses in one-dimensional elastic contact. A 1 kg cart rebounds from a stationary 3 kg cart; a 3 kg cart continues forward after striking 1 kg, sending the light cart away faster.
+
+Finally switch to the center-of-mass frame. The two momenta are equal and opposite and the center line stays fixed. The reference-frame change alters the description, while leaving contact forces and the collision itself unchanged.
+
+<h2 id="try">Pause inside the contact</h2>
+
+- Choose two 1 kg carts and scrub through contact. At maximum compression, both move at 0.5 m/s, but spring forces still push them apart.
+- Follow the green kinetic and gold spring-energy segments. Their proportions change while the total length stays fixed.
+- With 1 kg on the left and 3 kg on the right, check outgoing speeds of −0.5 and 0.5 m/s.
+- With 3 kg on the left and 1 kg on the right, check outgoing speeds of 0.5 and 1.5 m/s.
+- Switch between laboratory and center-of-mass frames. Velocity readings change, while relative velocity and spring compression remain identical.
+
+<h2 id="deeper">An analytic spring contact</h2>
+
+<details>
+<summary>Contact does not instantly swap velocities</summary>
+
+Two massless 300 N/m bumper springs act in series, giving effective stiffness k = 150 N/m. With reduced mass `μ = m₁m₂/(m₁+m₂)` and approach speed u, compression after contact is:
+
+<div className="formula">δ(t) = (u/ω) sin(ωt); ω = √(k/μ)</div>
+
+Contact lasts `π/ω`. The equal springs each compress by δ/2, keeping their endplates at the same position. Contact force is `F = kδ`, and its time integral gives equal, opposite impulses. Outside contact, springs retain their free length without exerting a mutual force.
+
+</details>
+
+<details>
+<summary>When can kinetic energy be compared by itself?</summary>
+
+After separation spring energy is zero. Momentum conservation and restored translational kinetic energy give the classical one-dimensional elastic-collision results. During contact, spring energy must be included; a temporary kinetic-energy reduction is not dissipation.
+
+The carts move in one dimension without track friction. Wheel rotational inertia is neglected. Springs are linear and massless, excluding sound, heat, plastic deformation and sideways rotation. Real impacts can retain energy in those degrees of freedom, preventing complete recovery of translational kinetic energy.
+
+Center-of-mass velocities are `vᵢ − Vcenter`, where `Vcenter = total momentum/(m₁+m₂)`. Total momentum in that frame is zero. Energy values can differ between frames, but the complete energy balance remains consistent within either frame.
+
+</details>

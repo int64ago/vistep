@@ -1,0 +1,217 @@
+.wal-study {
+  padding: 24px;
+  border-radius: 24px;
+  background: #eee9de;
+  color: #85775f;
+  font-size: 16px;
+}
+.wal-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.wal-study header > span {
+  font: 12px monospace;
+  color: #b1a081;
+  letter-spacing: 0.08em;
+}
+.wal-study header strong {
+  font-size: 18px;
+  font-weight: 400;
+  color: #99a180;
+}
+.wal-tracks {
+  display: grid;
+  gap: 16px;
+  max-width: 640px;
+  margin: 20px auto 0;
+}
+.wal-tracks > div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 15px;
+  align-items: center;
+}
+.wal-tracks h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+}
+.wal-memory > div,
+.wal-page > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  background: #e1dfd3;
+}
+.wal-memory > div {
+  background: #e8ddc3;
+}
+.wal-memory b,
+.wal-page b {
+  font-size: 36px;
+  font-weight: 300;
+  color: #8c9879;
+}
+.wal-memory span,
+.wal-page span {
+  font-size: 16px;
+}
+.wal-tape > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.wal-tape article {
+  background: #e4dcc8;
+  padding: 12px;
+  border-radius: 14px;
+  display: grid;
+  gap: 7px;
+  opacity: 0.65;
+  border-bottom: 4px solid transparent;
+}
+.wal-tape article[data-durable='true'] {
+  opacity: 1;
+  border-color: #a8ad88;
+  background: #e0e3d1;
+}
+.wal-tape span,
+.wal-tape code,
+.wal-tape b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.wal-tape b {
+  color: #8e9a79;
+}
+.wal-order {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 18px 0 0;
+  text-align: center;
+}
+.wal-boundaries {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 20px;
+}
+.wal-boundaries article {
+  background: #e1e4d2;
+  border-radius: 17px;
+  padding: 18px;
+  text-align: center;
+}
+.wal-boundaries article:first-child {
+  background: #e6ddc6;
+}
+.wal-boundaries h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 18px;
+  line-height: 1.4;
+}
+.wal-boundaries article > div {
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wal-boundaries code,
+.wal-boundaries span {
+  font-size: 16px;
+}
+.wal-boundaries strong {
+  font-size: 52px;
+  font-weight: 300;
+  display: block;
+  color: #949d76;
+  margin-top: 4px;
+}
+.wal-controls {
+  display: grid;
+  gap: 8px;
+  padding-top: 18px;
+}
+.wal-controls input,
+.wal-controls select {
+  min-height: 44px;
+  width: 100%;
+  font: inherit;
+}
+.wal-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.wal-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .wal-study {
+    padding: 14px 12px;
+  }
+  .wal-study header > span {
+    font-size: 11px;
+  }
+  .wal-study header strong {
+    font-size: 16px;
+  }
+  .wal-tracks {
+    gap: 12px;
+    margin-top: 15px;
+  }
+  .wal-tracks > div {
+    grid-template-columns: 73px 1fr;
+    gap: 8px;
+  }
+  .wal-memory > div,
+  .wal-page > div {
+    padding: 10px 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .wal-memory b,
+  .wal-page b {
+    font-size: 30px;
+  }
+  .wal-tape > div {
+    gap: 6px;
+  }
+  .wal-tape article {
+    padding: 10px 6px;
+    gap: 6px;
+    min-width: 0;
+  }
+  .wal-tape code {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .wal-study[data-watch='true'] details {
+    display: none;
+  }
+  .wal-order {
+    margin-top: 12px;
+  }
+  .wal-boundaries {
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .wal-boundaries article {
+    padding: 12px 7px;
+  }
+  .wal-boundaries h3 {
+    font-size: 16px;
+    min-height: 68px;
+    margin-bottom: 8px;
+  }
+  .wal-boundaries strong {
+    font-size: 42px;
+  }
+}

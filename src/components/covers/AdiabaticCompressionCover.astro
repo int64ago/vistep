@@ -1,0 +1,40 @@
+---
+import { gasProcess } from '../../models/adiabatic-compression';
+const s = gasProcess(),
+  top = 260 - (s.volume / 0.01) * 1500;
+const curve = Array.from({ length: 80 }, (_, i) => {
+  const v = 0.0005 + (0.0005 * i) / 79,
+    p = gasProcess({ ratio: v / 0.001 }).pressure;
+  return `${300 + ((v - 0.0005) / 0.0005) * 135},${247 - (p / 300000) * 170}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><pattern id="adiabaticCover" width="9" height="9" patternUnits="userSpaceOnUse"
+      ><path d="M0 9L9 0" stroke="#a2977e"></path></pattern
+    ></defs
+  ><rect width="480" height="300" fill="#eee9da"></rect><path
+    d="M65 45V270H235V45"
+    fill="none"
+    stroke="url(#adiabaticCover)"
+    stroke-width="14"></path><rect x="73" y={top} width="154" height={260 - top} fill="#c5ac83"
+  ></rect><path d={`M150 30V${top - 10}`} stroke="#a4afa0" stroke-width="13"></path><rect
+    x="110"
+    y="15"
+    width="80"
+    height="20"
+    rx="7"
+    fill="#a4afa0"></rect><rect
+    x="70"
+    y={top - 14}
+    width="160"
+    height="14"
+    rx="4"
+    fill="#bdc4b0"
+    stroke="#7e8f83"></rect><path d="M288 65V247H448" fill="none" stroke="#9caa93"></path><polyline
+    points={curve}
+    stroke="#b48b54"
+    stroke-width="3"
+    fill="none"></polyline></svg
+>

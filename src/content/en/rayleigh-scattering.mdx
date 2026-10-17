@@ -1,0 +1,31 @@
+<a id="understand"></a>
+
+## Blue redirected light and warm direct light share one budget
+
+The Rayleigh limit applies to structures much smaller than the wavelength. Away from resonances and neglecting weak material dispersion, scattering cross-section varies approximately as the inverse fourth power of wavelength. Short wavelengths leave the direct beam more readily, giving redirected light a short-wave preference and warming the direct spectrum after a long path.
+
+The main plot accounts for each wavelength separately. Warm direct energy and blue redirected energy add to the input outline. The blue area does not all enter one eye: it is shared over solid angle. The angular view assumes unpolarized input. Ninety-degree scattering is nonzero; forward and backward densities are equal and larger.
+
+<a id="try"></a>
+
+## Separate spectral selection from direction
+
+Relative path length changes spectral attenuation. Observation angle changes the first-scattered angular share. Supply only650-nanometre light: the scattered light remains red. Elastic scattering changes direction without converting wavelength. The450/650-nanometre cross-section comparison assumes equal input energy, rather than predicting the brightness ratio of two actual sky colours.
+
+<a id="deeper"></a>
+
+## From spectra to displayed hue
+
+<div className="formula">
+  τ(λ) = 0.12 m (550nm / λ)⁴
+  <br />
+  Direct spectrum = input spectrum exp(−τ)
+  <br />
+  Removed spectrum = input spectrum − direct spectrum
+  <br />
+  Angular density P(θ) = 3(1 + cos²θ) / (16π)
+</div>
+
+P integrates to one over solid angle. The first-event angular spectrum is the removed spectrum times P, without subsequent attenuation, absorption or further scattering. The direct exponential attenuation and energy budget can illustrate long paths, but the first-scattered swatch does not predict radiance finally reaching an observer through a complex atmosphere.
+
+Input is a5778K blackbody approximation normalized at550nanometres. Wyman, Sloan and Shirley’s analytic CIE1931 colour-matching fits integrate the spectrum into XYZ and then display RGB. These are not three individual cone-sensitivity curves. Each swatch is separately normalized and gamut-clipped to compare hue, not brightness. Actual sky colour also depends on the solar spectrum, molecular depolarization, aerosols, clouds, ozone, multiple scattering, surfaces and viewing geometry.

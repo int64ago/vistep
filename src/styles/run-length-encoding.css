@@ -1,0 +1,272 @@
+.rle-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #eeebdf;
+  color: #615940;
+  padding: 24px;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.rle-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+.rle-study header > span {
+  font: 12px monospace;
+  color: #948867;
+  letter-spacing: 0.06em;
+}
+.rle-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.rle-work {
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  max-width: 680px;
+  gap: 32px;
+  align-items: center;
+  margin: 20px auto 0;
+}
+.rle-bitmap {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 2px;
+  max-width: 240px;
+  margin: auto;
+}
+.rle-bitmap i {
+  border-radius: 4px;
+  position: relative;
+}
+.rle-bitmap i[data-active='true'] {
+  outline: 3px solid #624e35;
+  outline-offset: -3px;
+}
+.rle-bitmap i[data-read='true'] {
+  box-shadow: inset 0 0 0 1px #665b3c66;
+}
+.rle-scan {
+  display: grid;
+  gap: 16px;
+  font-size: 16px;
+}
+.rle-scan b {
+  font-size: 23px;
+  font-weight: 400;
+}
+.rle-scan strong {
+  font-size: 28px;
+  font-weight: 400;
+  color: #496665;
+}
+.rle-packets > span {
+  font-size: 16px;
+}
+.rle-packets > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+.rle-packets b {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font: 21px monospace;
+  padding: 10px;
+  border-radius: 12px;
+  background: #e2dcc8;
+  white-space: nowrap;
+}
+.rle-packets b i {
+  width: 13px;
+  height: 23px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.rle-packets [data-decoded='true'] {
+  background: #d6e1cb;
+}
+.rle-packets p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 12px 0 0;
+}
+.rle-first {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.rle-size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  margin-top: 18px;
+  font-size: 16px;
+}
+.rle-size b {
+  font-size: 29px;
+  font-weight: 400;
+  color: #476766;
+  margin-left: 8px;
+}
+.rle-size [data-expanded='true'] b {
+  color: #8f564c;
+}
+.rle-header-note {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 10px 0 0;
+  text-align: center;
+}
+.rle-boundary {
+  max-width: 550px;
+  margin: 20px auto 0;
+  display: grid;
+  gap: 14px;
+}
+.rle-boundary article {
+  background: #e1dfcd;
+  border-radius: 17px;
+  padding: 16px;
+  text-align: center;
+}
+.rle-boundary h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+.rle-boundary code {
+  font-size: 21px;
+}
+.rle-boundary article p {
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+.rle-boundary strong {
+  font-size: 28px;
+  font-weight: 400;
+  color: #476766;
+}
+.rle-boundary > p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+.rle-controls {
+  display: grid;
+  gap: 9px;
+  padding-top: 18px;
+}
+.rle-controls input,
+.rle-controls select,
+.rle-controls button {
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+}
+.rle-controls button {
+  background: #dbd5be;
+  color: inherit;
+  border: 0;
+  border-radius: 12px;
+}
+.rle-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.rle-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.rle-full {
+  display: block;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .rle-study {
+    padding: 10px 12px;
+  }
+  .rle-study header {
+    display: block;
+  }
+  .rle-study header > span {
+    display: none;
+  }
+  .rle-study header b {
+    display: block;
+    font-size: 16px;
+    margin-top: 6px;
+  }
+  .rle-work {
+    display: block;
+    margin-top: 14px;
+  }
+  .rle-bitmap {
+    max-width: 192px;
+  }
+  .rle-bitmap i {
+    border-radius: 3px;
+  }
+  .rle-scan {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  .rle-scan > span {
+    width: 100%;
+    text-align: center;
+  }
+  .rle-scan b,
+  .rle-scan strong {
+    font-size: 20px;
+  }
+  .rle-packets {
+    margin-top: 12px;
+    text-align: center;
+  }
+  .rle-packets > div {
+    gap: 6px;
+    margin-top: 7px;
+  }
+  .rle-packets b {
+    font-size: 18px;
+    padding: 7px 8px;
+    justify-content: center;
+  }
+  .rle-packets p {
+    margin-top: 7px;
+  }
+  .rle-size {
+    gap: 18px;
+    margin-top: 12px;
+  }
+  .rle-size b {
+    font-size: 25px;
+    margin-left: 4px;
+  }
+  .rle-first {
+    font-size: 16px;
+    text-align: center;
+    margin: 12px 0 0;
+  }
+  .rle-header-note {
+    font-size: 16px;
+  }
+  .rle-boundary code {
+    font-size: 18px;
+  }
+  .rle-study[data-watch='true'] details {
+    display: none;
+  }
+}

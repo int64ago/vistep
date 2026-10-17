@@ -1,0 +1,154 @@
+.collision-film {
+  max-width: 800px;
+  margin: auto;
+  color: #70816a;
+}
+.collision-frame {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 0 8px 8px;
+}
+.collision-track {
+  width: 100%;
+  display: block;
+  max-width: 650px;
+  margin: auto;
+}
+.collision-track text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #74886a;
+}
+.collision-contact {
+  max-width: 500px;
+  margin: auto;
+}
+.collision-contact p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin: 0 18px 4px;
+  line-height: 1.45;
+}
+.collision-contact svg {
+  width: 100%;
+  display: block;
+}
+.collision-values {
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+  margin: 7px 8px;
+  font-size: 16px;
+}
+.collision-values > span {
+  display: grid;
+  gap: 3px;
+}
+.collision-values b {
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.collision-values > span:first-child {
+  color: #6e8f79;
+}
+.collision-values > span:last-child {
+  color: #a08959;
+}
+.collision-energy {
+  max-width: 540px;
+  margin: 8px auto;
+  padding: 0 12px;
+}
+.collision-energy-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.collision-energy-label > span {
+  white-space: nowrap;
+}
+.collision-energy-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #edf0e5;
+  margin: 6px 0;
+}
+.collision-energy-bar i {
+  background: #94ad95;
+}
+.collision-energy-bar b {
+  background: #c6ac74;
+}
+.collision-energy p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 5px 0;
+}
+.collision-energy p span {
+  white-space: nowrap;
+}
+.collision-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.collision-controls > .segmented:last-child {
+  grid-column: 1/-1;
+}
+.collision-notes {
+  max-width: 600px;
+  padding: 0 12px;
+  margin: auto;
+  font-size: 16px;
+}
+.collision-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.collision-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.collision-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .collision-frame {
+    text-align: left;
+  }
+  .collision-track text {
+    font-size: 21px;
+  }
+  .collision-values {
+    gap: 25px;
+    margin: 5px 8px;
+  }
+  .collision-energy-label {
+    flex-wrap: wrap;
+    gap: 0 12px;
+  }
+  .collision-energy p {
+    display: grid;
+    gap: 3px;
+  }
+  .collision-energy p span {
+    white-space: normal;
+  }
+  .collision-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .collision-film[data-watch='true'] .collision-notes {
+    display: none;
+  }
+}

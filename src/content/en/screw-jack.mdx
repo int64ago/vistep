@@ -1,0 +1,44 @@
+<h2 id="understand">A full turn produces a small lift</h2>
+
+A fixed nut constrains the screw through its mating thread surfaces. In this single-start square-thread model, one revolution advances the screw by one **lead**. The default lead is 4 mm, so a full turn raises the 1000 N load by only 4 mm.
+
+Unwrap one helical turn and it becomes a shallow ramp. A long circumferential motion produces a short axial displacement. Without friction, rotational input work equals the load's potential-energy gain; the small torque is exchanged for a large turning distance.
+
+Sliding-thread friction increases the lifting torque. It can also prevent the load from driving the screw backward. **Self-locking depends on the lead angle and friction angle**, rather than being guaranteed by the presence of a screw.
+
+<h2 id="try">Check geometry and work together</h2>
+
+- With a 4 mm lead, scrub from zero to one turn and then two. The lifts should be 4 mm and 8 mm.
+- Remove friction and compare 4 mm with 8 mm lead. The same number of turns gives more lift but requires more raising torque.
+- Keep the lead fixed and increase friction. Compare the extra input work with the load's lifting work.
+- Reduce friction and watch the lowering-torque sign. A negative value means the load can tend to back-drive this ideal screw; controlled slow lowering would require a braking torque.
+
+The 3D view has an optional side view. The nut is deliberately cut away to expose real square-thread surfaces rather than replacing the mating region with overlapping smooth cylinders.
+
+<h2 id="deeper">Lead, pitch and friction are different quantities</h2>
+
+<details>
+<summary>Lead is not always pitch</summary>
+
+Pitch is the axial spacing of neighboring threads; lead is axial advance per revolution. An n-start thread has lead equal to n times its pitch. This scene uses one start, so the two coincide. For mean radius r and lead L:
+
+<div className="formula">tan α = L / (2πr); lift = L × turns</div>
+
+The geometry uses the same helix for rotation and translation, preserving the mating phase in the fixed nut.
+
+</details>
+
+<details>
+<summary>Square-thread torque and the self-locking boundary</summary>
+
+For axial load W, thread friction coefficient μ and friction angle φ = arctan μ, a quasi-static model with an ideal thrust bearing gives:
+
+<div className="formula">raising torque = Wr tan(α + φ)</div>
+
+<div className="formula">lowering torque = Wr tan(φ − α)</div>
+
+When φ exceeds α, a positive lowering-direction torque is needed and the model is self-locking. Equality is the boundary; below it, back-driving is possible. Other thread profiles change the contact forces and friction relationship.
+
+The scene does not model strength, buckling, impact, wear, lubrication changes, real bearings or support failure. Its self-locking criterion is not a safety guarantee for lifting equipment.
+
+</details>

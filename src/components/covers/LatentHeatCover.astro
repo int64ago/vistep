@@ -1,0 +1,30 @@
+---
+import { latentHeat } from '../../models/latent-heat';
+const s = latentHeat(21000);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#edf1eb"></rect>{
+    Array.from({ length: 48 }, (_, i) => (
+      <rect
+        x={35 + (i % 12) * 27}
+        y={30 + Math.floor(i / 12) * 21}
+        width="20"
+        height="15"
+        rx={i < 48 * s.fraction ? 7 : 2}
+        fill={i < 48 * s.fraction ? '#739eab' : '#c0d5d9'}
+        stroke="#a7bec4"
+      />
+    ))
+  }<path d="M35 192L75 149H315L365 126" stroke="#8c9f9b" stroke-width="2.5"></path><path
+    d="M75 149H315"
+    stroke="#c88f55"
+    stroke-width="4"
+    stroke-linecap="round"></path><circle
+    cx="190"
+    cy="149"
+    r="7"
+    fill="#c88f55"
+    stroke="#fff9ef"
+    stroke-width="2"></circle></svg
+>

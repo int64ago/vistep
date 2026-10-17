@@ -1084,3 +1084,14 @@ body:has(.lesson-wrap) .site-header {
     padding-inline: 8px;
   }
 }
+
+/* Exploration controls remain readable regardless of an older lab skin. */
+.showcase .control,
+.showcase .control output,
+.showcase .control small {
+  font-size: 16px;
+}
+
+.showcase[data-playing='false'] .film-caption p {
+  animation: none;
+}

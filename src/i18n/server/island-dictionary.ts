@@ -6,13 +6,60 @@ import timeline from '../../data/film-timeline.json';
 
 const root = process.cwd();
 const dictionary = english as Record<string, string>;
-const registry = readFileSync(resolve(root, 'src/data/experiments.ts'), 'utf8');
-const loaders = new Map(
-  [...registry.matchAll(/(?:'([^']+)'|(\w+)):\s*\(\)\s*=>\s*import\('([^']+)'\)/g)].map((m) => [
-    m[1] || m[2],
-    resolve(root, 'src/data', m[3]),
-  ]),
-);
+let loaderVersion = '';
+let loaders = new Map<string, string>();
+
+/** Read syntax rather than a formatting-dependent regular expression. */
+export function readExperimentLoaders(source: string): Map<string, string> {
+  const ast = ts.createSourceFile('experiments.ts', source, ts.ScriptTarget.Latest, true);
+  const result = new Map<string, string>();
+  for (const statement of ast.statements) {
+    if (!ts.isVariableStatement(statement)) continue;
+    for (const declaration of statement.declarationList.declarations) {
+      if (
+        !ts.isIdentifier(declaration.name) ||
+        declaration.name.text !== 'experimentLoaders' ||
+        !declaration.initializer ||
+        !ts.isObjectLiteralExpression(declaration.initializer)
+      )
+        continue;
+      for (const property of declaration.initializer.properties) {
+        if (
+          !ts.isPropertyAssignment(property) ||
+          !(ts.isIdentifier(property.name) || ts.isStringLiteralLike(property.name)) ||
+          !ts.isArrowFunction(property.initializer)
+        )
+          continue;
+        const body = property.initializer.body;
+        if (
+          !ts.isCallExpression(body) ||
+          body.expression.kind !== ts.SyntaxKind.ImportKeyword ||
+          !body.arguments[0] ||
+          !ts.isStringLiteralLike(body.arguments[0])
+        )
+          continue;
+        result.set(property.name.text, body.arguments[0].text);
+      }
+    }
+  }
+  return result;
+}
+
+function currentLoaders() {
+  const path = resolve(root, 'src/data/experiments.ts');
+  const { mtimeNs, size } = statSync(path, { bigint: true });
+  const version = `${mtimeNs}:${size}`;
+  if (version !== loaderVersion) {
+    loaders = new Map(
+      [...readExperimentLoaders(readFileSync(path, 'utf8'))].map(([slug, file]) => [
+        slug,
+        resolve(dirname(path), file),
+      ]),
+    );
+    loaderVersion = version;
+  }
+  return loaders;
+}
 
 type SourceItem =
   | { kind: 'literal'; value: string }
@@ -124,7 +171,7 @@ export function islandDictionary(kind: 'home' | 'experiment', slug?: string) {
   }
   if (kind === 'home') visit(resolve(root, 'src/components/HomeObject'));
   else {
-    const scene = slug && loaders.get(slug);
+    const scene = slug && currentLoaders().get(slug);
     if (!scene) throw new Error(`No experiment dictionary entry for ${slug}`);
     visit(resolve(root, 'src/components/Experiment'));
     visit(scene);

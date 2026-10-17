@@ -1,0 +1,101 @@
+.threepower-film {
+  max-width: 740px;
+  margin: auto;
+  color: #7e896d;
+}
+.threepower-context {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 10px 6px;
+}
+.threepower-main,
+.threepower-plot {
+  display: block;
+  width: 100%;
+  max-width: 410px;
+  margin: auto;
+}
+.threepower-main text,
+.threepower-plot text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7f896e;
+}
+.threepower-readings {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 16px;
+  margin: 5px 10px;
+}
+.threepower-readings b {
+  display: block;
+  font-size: 23px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.threepower-equation {
+  font-size: 17px;
+  text-align: center;
+  margin: 8px;
+}
+.threepower-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 17px;
+}
+.threepower-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.threepower-notes {
+  font-size: 16px;
+  padding: 0 12px;
+  max-width: 600px;
+  margin: auto;
+}
+.threepower-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.threepower-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.threepower-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .threepower-main,
+  .threepower-plot {
+    max-width: 340px;
+  }
+  .threepower-main text,
+  .threepower-plot text {
+    font-size: 21px;
+  }
+  .threepower-context {
+    text-align: left;
+  }
+  .threepower-readings {
+    gap: 15px;
+    justify-content: space-around;
+  }
+  .threepower-readings b {
+    font-size: 21px;
+  }
+  .threepower-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .threepower-film[data-watch='true'] .threepower-notes {
+    display: none;
+  }
+}

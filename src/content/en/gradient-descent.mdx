@@ -1,0 +1,24 @@
+<h2 id="understand">Choose both direction and distance</h2>
+
+The objective is `f=(x²+8y²)/2`, with gradient `(x,8y)`. The negative gradient gives a local descent direction in Euclidean distance. Gradient descent updates `position ← position−η×gradient`. Contours are actual level sets of this function, not decorative hills.
+
+From `(2.5,1.5)`, rate0.08 moves first to `(2.3,0.54)`, reducing loss12.125 to3.8114. Repetition shrinks both components toward zero. The film ends after finitely many steps and does not call an approximation exact arrival.
+
+<h2 id="try">A zigzag need not mean failure</h2>
+
+At0.22 the steep y component changes sign each step. The path crosses the valley repeatedly while amplitude and loss shrink. At0.3 the y error grows. A correct local direction does not guarantee that an excessively large finite step decreases loss.
+
+Exploration changes rate and iteration. Each complete trajectory determines its plot range, with equal horizontal/vertical units and no points clamped to the border. Compare actual tick values and loss across cases.
+
+<h2 id="deeper">Why is the boundary exactly0.25?</h2>
+
+<details>
+<summary>Each direction has its own contraction factor</summary>
+
+Curvatures are1 and8. Each update multiplies x by `1−η` and y by `1−8η`. Convergence from every starting point requires both magnitudes below1, giving `0<η<2/8`. At exactly0.25, y flips sign without shrinking. x still decreases, but loss approaches9 rather than zero.
+
+This is a strictly convex deterministic quadratic with unique minimizer `(0,0)`. It does not establish global optimization for nonconvex training or compare stochastic gradients, momentum, adaptive methods or real neural networks. The opening arrow normalizes length to show direction; the actual update shot uses the true step displacement.
+
+</details>
+
+Sources: [Cornell, Gradient-based Optimization, quadratic convergence](https://www.cs.cornell.edu/courses/cs3780/2025sp/notes/lec10-gd-newton.pdf), and [Boyd and Vandenberghe, Convex Optimization section9.3](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf). The book's exact-line-search example differs from this fixed-rate model.

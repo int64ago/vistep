@@ -1,0 +1,31 @@
+---
+import { pinholeRay } from '../../models/pinhole-camera';
+const cy = 115;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#233b48"></rect><path
+    d="M190 30H366V200H190Z"
+    fill="#101f2a"
+    stroke="#5a7784"></path><path d="M190 30V110M190 120V200" stroke="#d6c09d" stroke-width="5"
+  ></path><path d="M350 42V188" stroke="#d4dfd8" stroke-width="4"></path>{
+    [60, 0, -60].map((h, i) => (
+      <g>
+        <>
+          <circle cx="40" cy={cy - h} r="6" fill={['#edb369', '#d8dfbe', '#86baca'][i]} />
+          <path
+            d={`M40 ${cy - h}L190 115L350 ${cy - pinholeRay(h, 0) * 6.4}`}
+            stroke={['#edb369', '#d8dfbe', '#86baca'][i]}
+            stroke-width="1.5"
+          />
+          <circle
+            cx="350"
+            cy={cy - pinholeRay(h, 0) * 6.4}
+            r="6"
+            fill={['#edb369', '#d8dfbe', '#86baca'][i]}
+          />
+        </>
+      </g>
+    ))
+  }</svg
+>

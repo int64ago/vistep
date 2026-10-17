@@ -1,0 +1,30 @@
+<h2 id="understand">
+  80% of blue tickets have a star does not mean 80% of starred tickets are blue
+</h2>
+
+Imagine ten thousand tickets: one thousand in a blue group and nine thousand in another group. Give 80% of blue tickets a star, and also give 10% of non-blue tickets a star. Among tickets observed to have a star, what fraction are blue?
+
+Count them: **800** blue tickets and **900** non-blue tickets have stars. Blue therefore accounts for `800 / 1700 ≈ 47.1%` of the starred group. The original 80% used only blue tickets as its denominator. The posterior uses all starred tickets. These are different conditional probabilities.
+
+<h2 id="try">Change the base rate, keep the evidence rule</h2>
+
+Reduce the blue base rate from 10% to 1%, preserving the 80% and 10% marking rules. There are now 80 blue starred tickets and 990 non-blue starred tickets. The posterior falls to `80 / 1070 ≈ 7.5%`. Evidence with the same likelihood ratio does not imply the same posterior.
+
+Exploration changes all three proportions. Width represents a group's base rate; height represents the frequency of evidence within that group. Their product is a joint proportion. The lower strip renormalizes the selected counts. Counts and areas come from the same model. The background grid is an area reference, not one ticket per cell.
+
+<h2 id="deeper">Update again only when the evidence really is new</h2>
+
+<details>
+<summary>Likelihood ratios and conditional independence</summary>
+
+The default prior odds are `1:9`; the star's likelihood ratio is `0.8 / 0.1 = 8`. Posterior odds become `8:9`. If a second mark is conditionally independent of the first given the group, another factor of 8 gives `64:9`, or about 87.7%. Looking at the same mark again adds no evidence, leaving about 47.1%.
+
+For two marks, the control explicitly distinguishes conditional independence from counting the same evidence twice. Independence is an assumption here; observing something twice does not establish it. Two marks also need not be independent in the mixed population.
+
+The formula is `P(blue|star) = P(blue)P(star|blue) / [P(blue)P(star|blue) + P(non-blue)P(star|non-blue)]`. An impossible observation has no defined posterior; the model returns no value rather than dividing by zero. These ticket counts are constructed examples, not medical tests, real classifier performance or decision advice.
+
+Selecting objects consistent with evidence and then changing the denominator can also help interpret [Bloom-filter false positives](/en/explore/bloom-filter/), though their mechanism is different.
+
+</details>
+
+Source: [NIST Engineering Statistics Handbook: Bayes Formula](https://www.itl.nist.gov/div898/handbook/apr/section2/apr1a.htm).

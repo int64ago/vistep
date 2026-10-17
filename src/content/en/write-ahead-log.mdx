@@ -1,0 +1,26 @@
+<h2 id="understand">Acknowledgement need not wait for every data page</h2>
+
+Memory can change from7 to11 while the durable data page still holds7. Write-ahead logging records recovery information in order and requires the corresponding log to become durable before writing the data page. Normal durable commit also waits for a durable commit record before acknowledging success.
+
+An LSN is a log sequence position, not a timestamp. Buffering an update and commit record in memory does not fulfill the storage durability requirement. Faded records remain buffered; an emphasized base marks durable records.
+
+<h2 id="try">Crash at different boundaries</h2>
+
+The default sequence makes the update and commit records durable, then acknowledges while the old page is still7. A crash loses memory but retains the log and old page. Recovery replays the committed logical update to restore11. The page LSN prevents applying the same update again during a later recovery.
+
+Exploration changes the new value and crash boundary: buffered only, update record durable, commit durable before acknowledgement, after acknowledgement, or after the page write. Each choice recomputes the surviving log and recovered state.
+
+<h2 id="deeper">No acknowledgement does not settle the outcome</h2>
+
+<details>
+<summary>Explicit simplifications and storage conditions</summary>
+
+This one-page, one-transaction model uses logical SET records and a no-steal policy: uncommitted pages cannot reach durable storage. An update without a durable commit record is not published by recovery. A durable commit with its acknowledgement not yet delivered does recover11. A client missing success therefore cannot infer that nothing committed; retry also needs request identity and duplicate-handling semantics.
+
+This is not PostgreSQL recovery code. Real physical WAL replay, transaction visibility, checkpoints, full-page images and torn-page repair operate at different layers. Replaying only committed logical updates here is not a universal WAL-engine rule.
+
+Durability assumes normal synchronous-commit behavior and storage that honors flush requests. Asynchronous commit, disabled synchronization or unreliable storage changes failure semantics. The scene gives no tuning advice and simulates no disk latency. Writing the log first does not eliminate later data-page writes or log-retention work.
+
+</details>
+
+Sources: [PostgreSQL 18, Write-Ahead Logging](https://www.postgresql.org/docs/18/wal-intro.html) and [Asynchronous Commit](https://www.postgresql.org/docs/18/wal-async-commit.html).

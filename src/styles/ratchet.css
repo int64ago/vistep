@@ -1,0 +1,106 @@
+.ratchet-film {
+  max-width: 850px;
+  margin: auto;
+  padding-top: 14px;
+  color: #667b6c;
+  background: radial-gradient(ellipse at 44% 54%, #eaf0df, #fafbf5 70%);
+  border-radius: 30px;
+}
+.ratchet-heading {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 16px;
+  padding: 0 14px;
+}
+.ratchet-heading strong {
+  font-weight: 550;
+  color: #a58152;
+}
+.ratchet-mechanism {
+  display: block;
+  width: 100%;
+  height: 365px;
+}
+.ratchet-mechanism text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #6d806b;
+}
+.ratchet-travel {
+  display: flex;
+  justify-content: center;
+  gap: 62px;
+  margin: 6px 10px 0;
+  font-size: 16px;
+}
+.ratchet-travel span {
+  display: grid;
+  gap: 5px;
+}
+.ratchet-travel b {
+  font-size: 23px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.ratchet-legend {
+  font-size: 16px;
+  text-align: center;
+  margin: 9px 12px 0;
+  color: #9b8057;
+}
+.ratchet-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.ratchet-notes {
+  max-width: 600px;
+  padding: 0 18px;
+  margin: 7px auto 0;
+  font-size: 16px;
+}
+.ratchet-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.ratchet-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.ratchet-notes[open] summary:before {
+  content: '−';
+}
+.ratchet-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding-bottom: 12px;
+}
+@media (max-width: 600px) {
+  .ratchet-heading {
+    gap: 15px;
+    justify-content: space-between;
+  }
+  .ratchet-mechanism {
+    height: auto;
+  }
+  .ratchet-mechanism text {
+    font-size: 21px;
+  }
+  .ratchet-travel {
+    gap: 35px;
+  }
+  .ratchet-travel b {
+    font-size: 20px;
+  }
+  .ratchet-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .ratchet-legend {
+    text-align: left;
+  }
+}

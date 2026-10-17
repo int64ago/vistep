@@ -1,0 +1,48 @@
+<h2 id="understand">Depleted of mobile carriers, not of all charge</h2>
+
+A PN junction joins regions with different doping. Holes are the majority carriers in the p region, electrons in the n region. Far from the junction, mobile carriers approximately balance the fixed dopant ions, making each bulk region electrically neutral.
+
+Near the junction, mobile-carrier concentrations are greatly reduced. Negative acceptor ions remain on the p side and positive donor ions on the n side. They create a built-in field pointing from n to p. At thermal equilibrium, drift and diffusion balance: **terminal current is zero**, even though the internal field is not.
+
+Making the p terminal positive relative to n lowers the junction barrier, narrows the depletion layer and increases carrier injection. Ideal forward current grows continuously and exponentially. There is no universal gate that suddenly opens at 0.7 V.
+
+Reverse bias increases the barrier and depletion width. Here the ideal reverse current approaches −1 pA. Real leakage and breakdown require a more complete device model.
+
+<h2 id="try">Connect the spatial profile to the terminal readings</h2>
+
+- At zero applied voltage, observe a nonzero built-in potential difference alongside zero terminal current.
+- Select space charge. The negative region is wider with lower density; the positive region is narrower with higher density. Their signed areas cancel.
+- Increase forward voltage. Watch the depletion boundaries approach, the barrier fall and current rise.
+- Inspect the logarithmic I–V plot. At 300 K, roughly 60 mV multiplies ideal forward diffusion current by ten.
+- Add a 100 Ω series resistor. As applied voltage rises, an increasing share appears across the resistor rather than the junction.
+
+<h2 id="deeper">Separate approximations for space and current</h2>
+
+<details>
+<summary>Abrupt-junction depletion approximation</summary>
+
+The depletion region contains fixed ionized dopant charge; the bulk regions outside are approximately neutral. Charge balance requires `Nₐxₚ = Nᴅxₙ`. With three times as much doping on the n side, the p-side depletion width is three times larger.
+
+<div className="formula">V_bi = V_T ln(NₐNᴅ/nᵢ²); V_T = kT/q</div>
+<div className="formula">W² = (2ε/q)(1/Nₐ + 1/Nᴅ)(V_bi − Vj)</div>
+
+At 300 K, this example uses silicon permittivity 11.7ε₀, `Nₐ = 10²² m⁻³`, `Nᴅ = 3×10²² m⁻³` and `nᵢ = 10¹⁶ m⁻³`. These give a built-in potential near 0.743 V and a zero-bias depletion width near 358 nm.
+
+Potential follows Poisson's equation. Both it and its slope are continuous; electric field is its negative gradient. The internal potential difference is not an accessible battery voltage at the external terminals. Contact potentials and thermal equilibrium must be considered together.
+
+</details>
+
+<details>
+<summary>Exponential current with a series resistor</summary>
+
+The ideal diffusion-current relation is:
+
+<div className="formula">I = I_s [exp(Vj/V_T) − 1]</div>
+
+A device saturation current of 1 pA is specified independently. It also depends on junction area and minority-carrier transport, so doping values alone do not determine it. Temperature remains fixed at 300 K.
+
+With a series resistor, `Vapplied = Vj + IR` must also hold. The model solves for junction voltage before computing current and depletion width. Substituting the entire applied voltage into the exponential would ignore the resistor drop.
+
+These are steady configurations, not individual carrier trajectories or a junction-formation transient. The model omits high injection, recombination leakage, breakdown, distributed fields in series material, self-heating and stored-charge switching. Bare-junction forward voltage is limited to 0.60 V. With 100 Ω in series, applied voltage can reach 1 V.
+
+</details>

@@ -1,0 +1,125 @@
+.stokes-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #eef0e3;
+  color: #506b5d;
+  border-radius: 28px;
+  padding: 24px 32px;
+}
+.stokes-study header {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.stokes-fluid {
+  display: block;
+  width: 100%;
+  height: 320px;
+}
+.stokes-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.stokes-legend span:last-child {
+  white-space: nowrap;
+  color: #987b4d;
+}
+.stokes-force {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 14px;
+}
+.stokes-force b {
+  font-size: 31px;
+  font-weight: 400;
+  color: #987b4d;
+  white-space: nowrap;
+}
+.stokes-force span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.stokes-condition {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 16px;
+}
+.stokes-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.stokes-study summary:before {
+  content: '＋';
+  margin-right: 8px;
+}
+.stokes-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #6d7c68;
+  margin: 0 0 12px;
+}
+.stokes-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 12px;
+}
+.stokes-controls button {
+  font-size: 16px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: inherit;
+  background: #fff4;
+  border: 1px solid #aab79b66;
+  border-radius: 24px;
+}
+.stokes-study .control,
+.stokes-study .control output {
+  color: #506b5d;
+}
+.stokes-study .control input[type='range'] {
+  --range-color: #8a9e7c;
+  --range-rest: #b8c4ad;
+}
+@media (max-width: 760px) {
+  .stokes-study {
+    padding: 10px;
+  }
+  .stokes-study header {
+    font-size: 16px;
+  }
+  .stokes-fluid {
+    height: 170px;
+  }
+  .stokes-legend {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .stokes-force {
+    display: block;
+    margin-top: 8px;
+  }
+  .stokes-force span {
+    display: block;
+    margin-top: 4px;
+  }
+  .stokes-force b {
+    font-size: 25px;
+  }
+  .stokes-condition {
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .stokes-controls {
+    grid-template-columns: 1fr;
+  }
+}

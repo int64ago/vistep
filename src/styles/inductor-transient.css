@@ -1,0 +1,126 @@
+.inductor-film {
+  max-width: 720px;
+  margin: auto;
+  color: #7d866d;
+}
+.inductor-state {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 8px 4px;
+  color: #8c886c;
+}
+.inductor-circuit {
+  display: block;
+  width: 100%;
+  max-width: 410px;
+  margin: auto;
+}
+.inductor-circuit text,
+.inductor-curve text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #818b71;
+}
+.inductor-curve {
+  display: block;
+  width: 100%;
+  max-width: 410px;
+  margin: auto;
+}
+.inductor-readings {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 6px 10px;
+  font-size: 16px;
+}
+.inductor-readings span {
+  display: block;
+  white-space: nowrap;
+}
+.inductor-readings b {
+  display: block;
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.inductor-energy {
+  max-width: 390px;
+  margin: 14px auto 8px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.inductor-energy-bar {
+  height: 18px;
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eef0e4;
+}
+.inductor-energy-bar i {
+  display: block;
+  height: 100%;
+}
+.inductor-energy > div:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 8px;
+}
+.inductor-energy p {
+  text-align: center;
+  margin: 8px 0;
+}
+.inductor-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.inductor-controls > .segmented {
+  grid-column: 1/-1;
+}
+.inductor-notes {
+  max-width: 600px;
+  margin: auto;
+  padding: 0 12px;
+  font-size: 16px;
+}
+.inductor-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.inductor-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.inductor-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .inductor-circuit,
+  .inductor-curve {
+    max-width: 340px;
+  }
+  .inductor-circuit text,
+  .inductor-curve text {
+    font-size: 21px;
+  }
+  .inductor-state {
+    text-align: left;
+  }
+  .inductor-readings {
+    gap: 24px;
+  }
+  .inductor-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .inductor-film[data-watch='true'] .inductor-notes {
+    display: none;
+  }
+}

@@ -1,0 +1,146 @@
+.fresnel-study {
+  background: #f1eee4;
+  color: #4b584e;
+  border-radius: 24px;
+  padding: 24px 28px;
+}
+.fresnel-study header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 18px;
+}
+.fresnel-study header b {
+  font-size: 16px;
+  font-weight: 500;
+  color: #897258;
+}
+.fresnel-study > svg {
+  display: block;
+  width: 100%;
+  height: 280px;
+  margin-top: 10px;
+}
+.fresnel-comparison {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 16px;
+}
+.fresnel-comparison b {
+  font-weight: 400;
+  color: #9a673e;
+  margin-left: 8px;
+  font-size: 23px;
+}
+.fresnel-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.fresnel-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.fresnel-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.fresnel-volumes {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 16px;
+}
+.fresnel-volumes span {
+  display: grid;
+  gap: 5px;
+}
+.fresnel-volumes i {
+  height: 6px;
+  border-radius: 6px;
+}
+.fresnel-phase {
+  font-size: 16px;
+  margin-top: 14px;
+}
+.fresnel-phase > div {
+  height: 38px;
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  margin-top: 8px;
+}
+.fresnel-phase i {
+  flex: 1;
+  background: #a48257;
+  border-radius: 3px 3px 0 0;
+}
+.fresnel-phase p {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #746b5a;
+}
+.fresnel-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.fresnel-controls button {
+  min-height: 44px;
+  background: #ffffff44;
+  border: 1px solid #8a998b66;
+  border-radius: 24px;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.fresnel-study .control,
+.fresnel-study .control output {
+  color: #4b584e;
+}
+.fresnel-study .control input[type='range'] {
+  --range-color: #9a673e;
+  --range-rest: #bbc6b9;
+}
+@media (max-width: 760px) {
+  .fresnel-study {
+    padding: 16px;
+  }
+  .fresnel-study header {
+    font-size: 16px;
+  }
+  .fresnel-study header b {
+    display: none;
+  }
+  .fresnel-study > svg {
+    height: 205px;
+    margin-top: 4px;
+  }
+  .fresnel-comparison {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .fresnel-comparison b {
+    font-size: 21px;
+  }
+  .fresnel-volumes {
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .fresnel-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .fresnel-study[data-watch='true'] details,
+  .fresnel-study[data-watch='true'] header {
+    display: none;
+  }
+}

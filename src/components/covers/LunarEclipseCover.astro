@@ -1,0 +1,31 @@
+---
+import { lunarEclipse } from '../../models/lunar-eclipse';
+const { color = '#aa9bb9' } = Astro.props,
+  q = lunarEclipse(8),
+  scale = 58 / q.penumbra,
+  clip = 'lunar-cover-' + Math.random().toString(36).slice(2);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <defs><clipPath id={clip}><circle cx="285" cy="115" r="50"></circle></clipPath></defs>
+  <circle cx="130" cy="125" r={q.penumbra * scale} fill="#d5cadd"></circle>
+  <circle cx="130" cy="125" r={q.umbra * scale} fill={color}></circle>
+  <circle
+    cx="130"
+    cy={125 - q.offset * scale}
+    r={q.moonRadius * scale}
+    fill="#e9e1d0"
+    stroke="#9b8b9e"></circle>
+  <path
+    d={`M${130 + q.moonRadius * scale} ${125 - q.offset * scale}L235 115`}
+    stroke="#c0b1c7"
+    stroke-dasharray="3 4"></path>
+  <circle cx="285" cy="115" r="50" fill="#d9d1c5"></circle>
+  <g clip-path={`url(#${clip})`}
+    ><circle
+      cx="285"
+      cy={115 + (q.offset / q.moonRadius) * 50}
+      r={(q.umbra / q.moonRadius) * 50}
+      fill="#7e6b76"></circle></g
+  >
+</svg>

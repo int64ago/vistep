@@ -1,0 +1,33 @@
+---
+import { CONV_KERNEL, CONV_PULSE, discreteConvolution } from '../../models/convolution';
+const { color = '#aa97bd' } = Astro.props,
+  output = discreteConvolution(CONV_PULSE, CONV_KERNEL);
+const bars = output.map((value, i) => ({ value, x: 28 + i * 40, height: (value / 3) * 90 }));
+const weights = [...CONV_KERNEL].reverse().map((value, i) => ({ value, x: 120 + i * 58 }));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  ><path d="M25 195H375" stroke={color} stroke-width="1"></path>{
+    bars.map((b) => (
+      <rect
+        x={b.x}
+        y={195 - b.height}
+        width="25"
+        height={Math.max(2, b.height)}
+        rx="5"
+        fill={color}
+      />
+    ))
+  }{
+    weights.map((w) => (
+      <g>
+        <>
+          <rect x={w.x} y="30" width="51" height="47" rx="12" fill="#e6d7b9" />
+          <text x={w.x + 25} y="61" text-anchor="middle" font-size="21" fill="#b19b73">
+            {w.value}
+          </text>
+        </>
+      </g>
+    ))
+  }<path d="M134 90H276" stroke={color} stroke-width="2" stroke-dasharray="5 6"></path></svg
+>

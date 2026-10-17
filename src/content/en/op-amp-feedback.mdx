@@ -1,0 +1,44 @@
+<h2 id="understand">Equal inputs are a consequence of feedback</h2>
+
+Open the feedback loop and ground the inverting input. Just 1 mV at the non-inverting input, multiplied by a large open-loop gain, drives the output toward the positive rail. The input voltages are not equal.
+
+Now return a divided fraction of output to the inverting input. Rising output raises that feedback voltage and reduces the differential error. As error shrinks, output changes more slowly. Once settled within the output rails, a large loop gain makes the input voltages very nearly equal.
+
+The virtual-short approximation therefore requires **the correct negative-feedback connection, an unsaturated output and sufficient settling time**. It is neither a physical short between the inputs nor a rule valid at every instant.
+
+<h2 id="try">Test the approximation with error and time</h2>
+
+- In open-loop mode, input is measured in millivolts. Notice how easily output reaches a rail.
+- Change the feedback resistor in closed-loop steady state. Output changes while divided feedback V− remains close to V+.
+- Set open-loop gain to 20. The two voltage bars differ visibly; increasing gain shrinks that error.
+- Raise input to 1.5 V. An ideal closed-loop gain near ten would require 15 V, but output stops at 10 V, leaving about 0.5 V of differential error.
+- Inspect different times during a step. Large excursions take longer; output slope cannot exceed 0.5 V/µs.
+
+<h2 id="deeper">Derive the result from finite gain</h2>
+
+<details>
+<summary>Feedback fraction and residual error</summary>
+
+With zero input current, the divider fraction is `β = Rg/(Rg + Rf)`. In unsaturated steady operation:
+
+<div className="formula">Vout = A(Vin − βVout)</div>
+<div className="formula">Vout/Vin = A/(1 + Aβ)</div>
+
+Only when `Aβ` is large does closed-loop gain approach `1/β = 1 + Rf/Rg`. Here Rg = 10 kΩ and Rf = 90 kΩ. With A = 20 and Vin = 0.5 V, output is about 3.33 V and error about 0.167 V. At A = 100000, output is about 4.9995 V, with a residual error near 50 µV.
+
+</details>
+
+<details>
+<summary>Voltage limits and rate limits are different</summary>
+
+Output is limited to ±10 V. If the feedback circuit demands more, the amplifier can no longer correct the error and the input voltages separate. The virtual-short relation does not apply in this saturated state.
+
+The dynamic model has one dominant pole at angular frequency ωp:
+
+<div className="formula">dVout/dt = ωp[A(Vin − βVout) − Vout]</div>
+
+Output rate is also limited to ±SR. A sufficiently large initial error produces a constant-slope ramp; near the target, the response enters an exponential tail. The final chapter compares 0.2 V and 0.8 V input steps. Both initially share the 0.5 V/µs limit, but the larger output excursion remains in that ramp longer.
+
+Default values are A = 100000, a 10 Hz dominant pole and SR = 0.5 V/µs. These specify a teaching model rather than a complete commercial device. Additional poles, stability margins, offset, bias currents, output loading and overload recovery are omitted; real circuit design must consider them.
+
+</details>

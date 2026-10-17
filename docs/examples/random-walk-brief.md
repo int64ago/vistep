@@ -1,0 +1,11 @@
+# Random walk — author brief
+
+Misconceptions: zero mean freezes every path; RMS equals mean absolute distance; RMS and standard deviation always agree; zero probability at odd times forbids earlier returns; absorbing walkers disappear. Different from Markov chain: an expanding spatial lattice and drift/spread, not a two-state stationary balance. Different from CLT: actual path history, endpoint parity and changed boundaries.
+
+Art direction: muted teal thread on a quiet coordinate loom, preceded by six native +1/−1 steps and cumulative positions. Distribution shot replaces history with exact endpoint bars; three gold dots are explicitly sample endpoints, not an empirical distribution. Pale origin and darker moving-mean guide distinguish drift. Semantic labels are native16px, desktop plot max610px/230px and phone180px. Six step tiles retain20px moves/16px positions at320 width. Full-player740px target remains unverified in browser.
+
+Primary references: [MIT random-walk course](https://math.mit.edu/classes/18.366/lec06/), independent increments, moments and square-root scaling; [Doyle/Snell](https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf), absorbing walk principles. Assumptions are fixed independent unit steps on one-dimensional lattice, except continued positions stay fixed at absorbing edges. No claim of finite-time guaranteed return, physical diffusion calibration or all random-walk universality.
+
+Seven shots, planned151s: six concrete cumulative steps; one32-step history; exact32-step population versus three seeded endpoints; N16→64 doubles RMS; p=.7 separates mean12.8 from SD5.185 and RMS;31/32 endpoint parity;±4 absorbing edges accumulate mass. Independent transition recurrence and seeded path share rules, not samples. No extra clock/resources.
+
+Four tests:25 N/p regimes against independent binomial coefficient endpoints/moments/parity; full enumeration of256 eight-step absorbing paths; seeded prefix replay and pinning; zero/invalid input. Computing age10. Reverse links Markov, CLT and diffusion suggested. Author checks are not independent review, actual browser composition, full watching, audio listening or device performance. English digits checked in speech, captions and UI labels before handoff; speech pending keyframes.

@@ -1,0 +1,26 @@
+<h2 id="understand">Public verification without public signing power</h2>
+
+A digital signature binds a message to control of a private key. A verifier checks a relation using the public key; it does not need the private key or decrypt a hidden message. This scene uses a tiny Schnorr-style group, `p=1019, q=509, g=4`, so the arithmetic is inspectable: private x gives public `y=g^x mod p`.
+
+These parameters are **insecure**: discrete logarithms are easy to enumerate. This is neither a standard ciphersuite nor production cryptography. It isolates the signing equation, message binding and nonce failure.
+
+<h2 id="try">Keep the signature, change the message or key</h2>
+
+Signing chooses nonce k and computes `R=g^k`. Challenge e comes from a domain-separated SHA-256 encoding of R, the public key and message, reduced modulo q. Set `s=k+e·x mod q`. Verification compares `g^s` with `R·y^e`, using group arithmetic modulo p.
+
+Exploration edits the received message or verification key while holding the original signature fixed. Changing HELLO changes the challenge and breaks the equality. Another key fails too. Even a key that verifies a signature does not by itself identify the real person who owns it.
+
+<h2 id="deeper">Why must a nonce not be reused?</h2>
+
+<details>
+<summary>What two signatures can reveal</summary>
+
+Reusing private key and k for different messages repeats R. Subtracting the equations gives `s₁−s₂=(e₁−e₂)x mod q`. Distinct challenges permit modular inversion and recovery of x. HELLO and WORLD actually recover private scalar137 here.
+
+Real signatures require reviewed standard implementations, secure parameters and correct nonce generation. Some standards use secure deterministic derivation, so “always random” is too broad. The displayed H(R∥y∥m) abbreviates explicit domain-tagged encoding. This is not RFC9591 ciphersuite encoding and implements no threshold-signing protocol.
+
+A signature does not conceal a message, verify its factual truth or automatically bind a public key to a person. Tiny groups also admit challenge collisions; several failed edits do not prove unforgeability.
+
+</details>
+
+Sources: [RFC9591 AppendixD, single-party Schnorr relations and nonce concerns](https://www.rfc-editor.org/rfc/rfc9591.html#appendix-D), and [RFC8235, finite prime-order groups and Fiat–Shamir challenges](https://www.rfc-editor.org/rfc/rfc8235.html).

@@ -1,0 +1,30 @@
+---
+import { dewSaturation, dewState } from '../../models/dew-point';
+const s = dewState({ temperature: 12 }),
+  x = (t: number) => 40 + (t / 40) * 400,
+  y = (p: number) => 230 - (p / 8000) * 200;
+const line = Array.from({ length: 161 }, (_, i) => `${x(i / 4)},${y(dewSaturation(i / 4))}`).join(
+  ' ',
+);
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#294454"></rect><path
+    d="M40 25V230H440"
+    fill="none"
+    stroke="#a1b7b8"
+    stroke-opacity=".5"></path><polyline points={line} fill="none" stroke="#9bbfc7" stroke-width="3"
+  ></polyline><path
+    d={`M40 ${y(s.vapor)}H440`}
+    stroke="#e0b97c"
+    stroke-width="2"
+    stroke-dasharray="5 5"></path><path
+    d={`M${x(s.point)} ${y(s.vapor)}V230`}
+    stroke="#e0b97c"
+    stroke-dasharray="3 5"></path><circle cx={x(s.point)} cy={y(s.vapor)} r="6" fill="#e0b97c"
+  ></circle><rect x="70" y="262" width="340" height="14" rx="6" fill="#a8c0c2"></rect>{
+    Array.from({ length: 12 }, (_, i) => (
+      <ellipse cx={85 + i * 28} cy="267" rx="5" ry="3" fill="#e1efeb" />
+    ))
+  }</svg
+>

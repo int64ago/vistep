@@ -1,0 +1,26 @@
+<h2 id="understand">Choose the unsettled node nearest to the start</h2>
+
+Dijkstra is greedy about **the accumulated tentative distance from the source**, not the cheapest next edge under your feet. Repeatedly choosing the cheapest outgoing edge in this graph gives `S → A → C → D → T`, costing 13. The shortest path `S → B → D → T` costs only 7.
+
+A tentative distance is the length of an actual discovered path, so it bounds the true minimum from above. T first receives 22, then 13 through C, then 7 through D. **Discovering the destination is not a stopping rule.** Its distance becomes final when it is the least tentative value among all unsettled nodes.
+
+<h2 id="try">Change an edge, then rebuild the search</h2>
+
+Change the cost of `S → B` and move through settlement rounds. The map, labels, predecessor path and frontier are reconstructed from the same calculation. The frontier contains discovered but unsettled nodes. A check mark certifies a distance; it does not merely mean that the node was visited.
+
+The fixed negative-edge example resets the branch cost to 5 and adds `B → A = −10`. The route costing `5 − 10 = −5` defeats A's earlier value of 2. The illustration shows the broken premise rather than running Dijkstra on an unsupported graph. Changing the branch weight removes that example.
+
+<h2 id="deeper">Why nonnegative edges make settlement safe</h2>
+
+Any supposedly better route must cross from settled territory into an unsettled node. That node cannot have a smaller tentative distance than the current minimum. Continuing along nonnegative edges cannot reduce the cost, so a later route cannot overtake the distance being settled now.
+
+<details>
+<summary>Direction, zero weights and unreachable nodes</summary>
+
+Arrows define permitted directions. Screen positions and drawn line lengths do not encode weights. Zero-cost edges are allowed. Unreachable vertices stay infinite and are never settled. This small example sorts an array to choose a minimum; it does not claim a heap implementation or model traffic, negative cycles or a complete routing protocol.
+
+Unlike [packet routing](/en/explore/packet-routing/), which follows forwarding tables and hops, this scene asks why a static weighted graph distance can be certified optimal. Graphs with negative edges require an applicable method, such as Bellman–Ford under its own conditions, rather than silently retaining this proof.
+
+</details>
+
+Sources: [Dijkstra's 1959 paper](https://doi.org/10.1007/BF01386390), [MIT 6.006 Lecture 16: Dijkstra](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/6277a1f06100c26a7ff21031af6757b5_MIT6_006F11_lec16.pdf).

@@ -1,0 +1,28 @@
+<h2 id="understand">Define “nearest” first</h2>
+
+A planar Euclidean Voronoi diagram assigns positions to their nearest site by straight-line distance. Query point Q uses distances calculated from actual coordinates. Cell colors extend this comparison across the plane, rather than naming sites after drawing arbitrary puzzle pieces.
+
+For two sites, equidistant positions form their perpendicular bisector. Opposite sides favor opposite sites. With more sites, a cell intersects all halfplanes that favor its site over every other site. The rectangle only clips this infinite-plane construction for display; its edges are not natural boundaries.
+
+<h2 id="try">Move a site and recompute its region</h2>
+
+The film moves D to `(200,125)`. Query point `(240,75)` switches from B to D, and surrounding cells change through actual distance inequalities. Explore selects any site, moves its coordinates or moves Q; boundaries and measurements immediately recompute.
+
+On a shared edge, Q can be equally nearest to A and B. At a cell vertex, it can be equally nearest to A, B and C. An equal-distance circle and actual measurements check these ties instead of declaring a false unique winner.
+
+<h2 id="deeper">Ties and barriers change the interpretation</h2>
+
+<details>
+<summary>Coincident sites, a wall and route distance</summary>
+
+Coincident A and B tie across their whole corresponding region, rather than only an edge. For deterministic coloring, the first coincident input draws the cell and later duplicates draw none. This convention does not establish unique geometric ownership. The shared marker reads A/B, while both distances remain visible.
+
+The wall example keeps A and B only. Q is closer to A in a straight line, but its shortest route must pass a wall endpoint. B is directly reachable and has the shorter route. Actual shortest polylines are computed around one finite zero-thickness vertical segment with passable endpoints; width, roads, traffic and other costs are outside scope.
+
+Background colors still show Euclidean cells and explicitly do not become a barrier-distance Voronoi diagram. Changing the distance definition requires recomputing the corresponding partition. Adding this wall in Explore computes routes to every current site, without pretending to model real service coverage or navigation.
+
+The model uses simple halfplane clipping, without claiming Fortune's algorithm or optimal complexity. Duplicate positions, collinear triples and floating-point ties have explicit handling. A collinear triple has no finite unique circumcenter.
+
+</details>
+
+Sources: [David Mount: Computational Geometry, Voronoi Diagrams](https://www.cs.cmu.edu/afs/cs/academic/class/15456-s14/Handouts/cmsc754-lects.pdf), [MIT: planar Voronoi lecture](https://groups.csail.mit.edu/graphics/classes/6.838/F01/lectures/Voronoi/Voronoi2D.pdf).

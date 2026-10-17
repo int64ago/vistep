@@ -1,0 +1,31 @@
+<a id="understand"></a>
+
+## The instrument samples static pressure
+
+Flush side-wall taps at the wide section and throat connect to a two-liquid manometer. They do not face into the flow. Static-pressure difference creates unequal dense-liquid interface heights. Known areas and densities then give ideal volumetric flow magnitude.
+
+This scene adds measurement, inversion and limits. The existing Bernoulli scene starts from prescribed flow and explains energy allocation; this one asks which observations determine flow and which information remains missing.
+
+<a id="try"></a>
+
+## Check zero, then change direction
+
+At fixed geometry, differential pressure is proportional to flow squared. Zero flow stops all markers, aligns interfaces and yields zero inferred flow. Opposite steady flows of equal magnitude retain the same squared speeds and static differential. These two static taps alone do not identify direction.
+
+Narrowing the throat changes circular area with diameter squared. Markers advance through integrated volume coordinates, giving local axial speed Q/A(x), rather than sliding at a fixed speed through every section.
+
+<a id="deeper"></a>
+
+## From the manometer to inverse flow
+
+<div className="formula">
+  Δp = (ρ_m − ρ)gΔh = ρQ²(1/A₂² − 1/A₁²)/2
+  <br />
+  |Q| = A₂√[2Δp / (ρ(1 − (A₂/A₁)²))]
+</div>
+
+Wide diameter is 50 mm and throat diameter ranges from 20 to 40 mm. Water density is 1000 kg/m³ and the illustrative dense manometer liquid is 13600 kg/m³. Equal leg areas give equal opposite interface shifts. Wide-section gauge pressure is fixed at 6000 Pa; throat gauge pressure stays positive across the exposed range.
+
+The model is horizontal, full-pipe, quasisteady, lossless and one-dimensional in mean flow, with discharge coefficient one. Pipe diameter and manometer difference use separately enlarged vertical scales. Drawn instrument tubing thickness does not enter liquid volume or main flow calculations. Flush static taps share centreline elevation on the near wall; they are not forward-facing probes inside the stream. Markers run ten times slower. Transverse tracks follow radius changes, while a full radial velocity field and viscous boundary layers are not solved.
+
+The ideal diffuser slows flow and recovers static pressure. The wide-to-throat measurement differential is not permanent pressure loss. Real meters require calibration for geometry, Reynolds number and tap locations, within a coefficient’s valid range. Inputs compare prescribed steady states, not valve motion, reversal transients, separation, cavitation or sensor response.

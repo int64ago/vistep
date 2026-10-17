@@ -1,0 +1,43 @@
+---
+import { eddySheet, eddyContours } from '../../models/eddy-current-brake';
+const s = eddySheet();
+const max = Math.max(...s.stream.flat().map(Math.abs));
+const paths = eddyContours(
+  s,
+  [-0.7, -0.4, -0.15, 0.15, 0.4, 0.7].map((x) => x * max),
+);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true">
+  <rect x="38" y="70" width="564" height="260" rx="18" fill="#dce4d3"></rect>
+  <ellipse cx="320" cy="200" rx="91" ry="111" fill="#b9b485" opacity=".22"></ellipse>
+  {
+    paths.map((p) => (
+      <path
+        d={
+          p.map(([x, y], i) => `${i ? 'L' : 'M'}${320 + x * 1700} ${200 - y * 1500}`).join(' ') +
+          'Z'
+        }
+        stroke="#719784"
+        stroke-width="3"
+        fill="none"
+      />
+    ))
+  }
+  {
+    [-1, 0, 1].map((j) => (
+      <g>
+        <>
+          <circle cx="320" cy={200 + j * 66} r="8" stroke="#a79a69" fill="none" stroke-width="2" />
+          <circle cx="320" cy={200 + j * 66} r="2.5" fill="#a79a69" />
+        </>
+      </g>
+    ))
+  }
+  <path
+    d="M82 43h105l-13 -8m13 8-13 8M542 359H430l13 -8m-13 8 13 8"
+    fill="none"
+    stroke="#929e73"
+    stroke-width="4"
+    stroke-linecap="round"></path>
+</svg>

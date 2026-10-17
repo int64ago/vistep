@@ -1,0 +1,33 @@
+<a id="understand"></a>
+
+## Measure depth from the free surface
+
+In a uniform static liquid, greater depth adds pressure through liquid weight. The same connected liquid under equal surface gas pressure has equal pressure at equal depth. A flared or tapered shape does not directly change that reading.
+
+Changes in level compare new static states and change total liquid amount; flow and equilibration are not simulated. Actual lower side passages connect the three sections, while outside walls remain closed.
+
+<a id="try"></a>
+
+## Keep the boundary condition
+
+Liquid density changes the pressure gradient. Common surface gas pressure shifts all absolute readings together. Here gauge pressure specifically uses the current common surface pressure as reference, which need not be a fixed 101325 Pa.
+
+The diaphragm detail shows face and edge views. Diameter follows the square root of physical area. At unchanged depth, greater area raises net force relative to reference pressure, not local pressure. The diaphragm is a loaded area, not a simulated flexible membrane or sensor circuit.
+
+<a id="deeper"></a>
+
+## Walls also support the liquid
+
+<div className="formula">
+  p_abs = p_surface + ρgh
+  <br />
+  F_patch = (p_abs − p_surface)A
+  <br />
+  F_bottom + F_wall,up = W_liquid
+</div>
+
+Sections are extruded 0.08 m thick and share 0.08 m bottom width. Straight walls keep constant width; the other widths vary linearly to 0.18 m or 0.04 m at elevation 0.36 m. Integrating width over liquid height gives volume. Equal bottom pressure times equal bottom area gives equal bottom force.
+
+Flared walls exert upward pressure components on the liquid. Tapered walls exert downward components. Bottom force therefore need not equal the entire liquid weight. Blue arrows represent only vertical wall components; gold shows bottom support. Forces use pressure relative to the common surface gas pressure.
+
+Capillarity, compressibility, thermal layering and pipe flow are omitted. Connecting pipes are excluded from each vessel’s liquid-weight ledger; their side interfaces exert no vertical force. Their own weight and support are outside this comparison. Common gas pressure is a specified boundary, not a simulation of a pressurization apparatus.

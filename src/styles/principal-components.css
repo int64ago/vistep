@@ -1,0 +1,199 @@
+.pca-study {
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: #eee5df;
+  color: #654c40;
+  font-size: 16px;
+}
+.pca-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  max-width: 460px;
+  margin: auto;
+}
+.pca-study header > span {
+  font: 12px monospace;
+  color: #9f8470;
+  letter-spacing: 0.06em;
+}
+.pca-study header b {
+  font-size: 20px;
+  font-weight: 400;
+}
+.pca-study svg {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 14px auto 0;
+}
+.pca-axes {
+  fill: none;
+  stroke: #c3b2a4;
+  stroke-width: 1;
+}
+.pca-direction {
+  fill: none;
+  stroke: #b28d5d;
+  stroke-width: 2.5;
+}
+.pca-residual {
+  fill: none;
+  stroke: #af9a84;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.pca-projected {
+  fill: #e4cc9e;
+  stroke: #997345;
+  stroke-width: 1;
+}
+.pca-observation {
+  fill: #7e999b;
+  stroke: #f5efe6;
+  stroke-width: 1.2;
+}
+.pca-centroid {
+  stroke: #8c5948;
+  stroke-width: 2;
+}
+.pca-study svg text {
+  font-size: 24px;
+  fill: #80614b;
+}
+.pca-mean {
+  text-align: center;
+  font-size: 23px;
+  margin: 12px 0 0;
+}
+.pca-variance {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 520px;
+  margin: 12px auto 0;
+  text-align: center;
+}
+.pca-variance span {
+  display: block;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.pca-variance b {
+  font-size: 25px;
+  font-weight: 400;
+  display: block;
+  margin-top: 7px;
+}
+.pca-scores {
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 7px;
+  margin: 18px auto 0;
+}
+.pca-scores > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 4px;
+  background: #e3d7c9;
+  border-radius: 10px;
+  min-width: 0;
+}
+.pca-scores span {
+  font-size: 16px;
+}
+.pca-scores b {
+  font-size: 20px;
+  font-weight: 400;
+}
+.pca-caution {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 14px 0 0;
+}
+.pca-controls {
+  display: grid;
+  gap: 10px;
+  padding-top: 18px;
+}
+.pca-controls input[type='range'],
+.pca-controls button {
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+}
+.pca-controls button {
+  background: #dfcfbc;
+  color: inherit;
+  border: 0;
+  border-radius: 12px;
+}
+.pca-controls button:disabled {
+  opacity: 0.5;
+}
+.pca-controls label:last-child {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+}
+.pca-controls input[type='checkbox'] {
+  width: 23px;
+  height: 23px;
+}
+.pca-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.pca-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .pca-study {
+    padding: 14px 12px;
+  }
+  .pca-study header > span {
+    font-size: 11px;
+  }
+  .pca-study header b {
+    font-size: 18px;
+  }
+  .pca-study svg {
+    margin-top: 9px;
+  }
+  .pca-variance {
+    gap: 7px;
+    margin-top: 8px;
+  }
+  .pca-variance span {
+    font-size: 16px;
+    min-height: 42px;
+  }
+  .pca-variance b {
+    font-size: 21px;
+    margin-top: 5px;
+  }
+  .pca-scores {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .pca-scores b {
+    font-size: 19px;
+  }
+  .pca-caution {
+    margin-top: 10px;
+  }
+  .pca-study[data-watch='true'] details {
+    display: none;
+  }
+}

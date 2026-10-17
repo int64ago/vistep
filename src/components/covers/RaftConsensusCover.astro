@@ -1,0 +1,35 @@
+---
+import { raftLesson } from '../../models/raft-consensus';
+const { color = '#9ba8c3' } = Astro.props;
+const state = raftLesson()[9];
+const rows = state.nodes.map((n, i) => ({ i, node: n, y: 18 + i * 40 }));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  {
+    rows.map(({ i, node, y }) => (
+      <g>
+        <>
+          <rect x="35" y={y} width="330" height="33" rx="10" fill={i < 2 ? '#e8dfe5' : '#e0e5ef'} />
+          <text x="58" y={y + 24} font-size="22" fill={color}>
+            {String.fromCharCode(65 + i)}
+          </text>
+          <text x="110" y={y + 23} font-size="17" fill="#a6adc0">
+            t{node.term}
+          </text>
+          <rect
+            x="175"
+            y={y + 3}
+            width="100"
+            height="27"
+            rx="8"
+            fill={node.commit ? '#cbdacb' : '#ece7da'}
+          />
+          <text x="225" y={y + 24} text-anchor="middle" font-size="22" fill={color}>
+            {node.log[0]?.command} · {node.log[0]?.term}
+          </text>
+        </>
+      </g>
+    ))
+  }
+</svg>

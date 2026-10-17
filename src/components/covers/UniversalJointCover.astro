@@ -1,0 +1,64 @@
+---
+import { universalJointState } from '../../models/universal-joint';
+const s = universalJointState(0.6, 30),
+  ox = 190,
+  oy = 120,
+  k = 50;
+const base = (axis: typeof s.inputAxis, pin: typeof s.inputPin, side: number, sign: number) => ({
+  x: axis.x * side * 1.1 + pin.x * sign * 0.65,
+  y: axis.y * side * 1.1 + pin.y * sign * 0.65,
+  z: axis.z * side * 1.1 + pin.z * sign * 0.65,
+});
+const point = (v: { x: number; y: number; z: number }, scale = 1) =>
+  `${ox + (v.x + 0.35 * v.z) * k * scale},${oy + (-v.y + 0.25 * v.z) * k * scale}`;
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path
+    d={`M${point(s.inputAxis, -3)}L${point(s.inputAxis, -1.1)}`}
+    stroke="#b68154"
+    stroke-width="21"
+    stroke-linecap="round"></path><path
+    d={`M${point(s.middleAxis, 1.1)}L${point(s.middleAxis, 3)}`}
+    stroke="#5f9597"
+    stroke-width="21"
+    stroke-linecap="round"></path><path
+    d={`M${point(base(s.inputAxis, s.inputPin, -1, -1))}L${point(base(s.inputAxis, s.inputPin, -1, 1))}`}
+    stroke="#b68154"
+    stroke-width="13"
+    stroke-linecap="round"></path><path
+    d={`M${point(base(s.middleAxis, s.middlePin, 1, -1))}L${point(base(s.middleAxis, s.middlePin, 1, 1))}`}
+    stroke="#5f9597"
+    stroke-width="13"
+    stroke-linecap="round"></path>{
+    [-1, 1].map((sign) => (
+      <>
+        <>
+          <path
+            d={`M${point({ x: -1.1, y: s.inputPin.y * sign * 0.65, z: s.inputPin.z * sign * 0.65 })}L${point(s.inputPin, sign * 0.65)}`}
+            stroke="#b68154"
+            stroke-width="13"
+            stroke-linecap="round"
+          />
+          <path
+            d={`M${point({ x: s.middleAxis.x * 1.1 + s.middlePin.x * sign * 0.65, y: s.middleAxis.y * 1.1 + s.middlePin.y * sign * 0.65, z: s.middlePin.z * sign * 0.65 })}L${point(s.middlePin, sign * 0.65)}`}
+            stroke="#5f9597"
+            stroke-width="13"
+            stroke-linecap="round"
+          />
+        </>
+      </>
+    ))
+  }<path
+    d={`M${point(s.inputPin, -0.76)}L${point(s.inputPin, 0.76)}M${point(s.middlePin, -0.76)}L${point(s.middlePin, 0.76)}`}
+    stroke="#bac7c8"
+    stroke-width="12"
+    stroke-linecap="round"></path><circle cx={ox} cy={oy} r="10" fill="#a0b4b8"></circle><path
+    d={Array.from(
+      { length: 81 },
+      (_, i) =>
+        `${i ? 'L' : 'M'}${70 + i * 3.2} ${200 - (universalJointState((i / 80) * Math.PI * 2, 30).ratio - 1) * 70}`,
+    ).join('')}
+    stroke="#629599"
+    stroke-width="3"></path></svg
+>

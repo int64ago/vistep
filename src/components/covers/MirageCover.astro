@@ -1,0 +1,22 @@
+---
+import { mirageRay } from '../../models/mirage';
+const s = mirageRay(),
+  x = (v: number) => 25 + (v / 600) * 350,
+  y = (v: number) => 195 - (v / 2.6) * 160;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#d5dfdb"></rect><path
+    d="M15 195H385"
+    stroke="#94785e"
+    stroke-width="6"></path><polyline
+    points={s.points.map((p) => `${x(p.x)},${y(p.y)}`).join(' ')}
+    fill="none"
+    stroke="#417f96"
+    stroke-width="3"></polyline><path
+    d={`M${x(0)} ${y(s.h)}L${x(s.apparentGround)} ${y(0)}`}
+    stroke="#9b775a"
+    stroke-dasharray="4 4"
+    fill="none"></path><ellipse cx={x(0)} cy={y(s.h)} rx="8" ry="6" fill="#f1eee0" stroke="#607a73"
+  ></ellipse></svg
+>

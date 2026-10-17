@@ -1,0 +1,26 @@
+<h2 id="understand">Current abundance changes the growth rate</h2>
+
+The continuous logistic equation is `dN/dt=rN(1−N/K)`. N is a continuous normalized population amount, K is carrying capacity, r is the intrinsic rate, and time uses any consistent units. When N is much smaller than K, the limiting factor is near one and growth is approximately exponential. This approximation does not hold at all times.
+
+As N increases, `1−N/K` decreases. Total growth combines current abundance with the per-capita rate `r(1−N/K)`. Thus the per-capita rate can decline while total growth initially increases.
+
+<h2 id="try">Maximum total growth occurs at half capacity</h2>
+
+For r = 0.6 and K = 100, N = 25 and N = 75 both have total growth 11.25, while N = 50 gives the maximum 15. The peak is at `N=K/2`, rather than near capacity. The rate-plot marker and time-curve marker represent the same actual state.
+
+A positive initial amount below K approaches from below. Above K, negative growth approaches from above. Without additional delays or randomness, this first-order continuous model does not spontaneously cross equilibrium and oscillate.
+
+<h2 id="deeper">Carrying capacity need not remain fixed in reality</h2>
+
+<details>
+<summary>Changing K and handling zero boundaries</summary>
+
+The film changes K from 100 to 60 at t = 6, when N is about 80.26. The old rule still produces growth, but the new rule produces decline. Abundance stays continuous through the change while the slope can jump. Earlier history is not recalculated using the new K. Explore changes the initial amount, r, initial K, observation time, new K and switching time; the pale full prediction responds immediately too.
+
+With no immigration or external source, N₀ = 0 stays zero. At r = 0, every initial amount remains fixed. Zero initial values use a separate closed-form branch instead of division by N.
+
+This idealized density-limited continuous model is not the discrete logistic map. It excludes delays, predation, age structure, noise, immigration and parameter fitting. It is not a resource-management recommendation or real-population forecast. Real carrying capacity can change, and reaching K is not guaranteed for every real population.
+
+</details>
+
+Sources: [OpenStax Calculus: The Logistic Equation](https://openstax.org/books/calculus-volume-2/pages/4-4-the-logistic-equation), [OpenStax Biology: Environmental Limits to Population Growth](https://openstax.org/books/biology-2e/pages/45-3-environmental-limits-to-population-growth).

@@ -18,6 +18,7 @@ const paths = {
   cover: 'src/components/TopicCover.astro',
   translations: 'src/i18n/en.json',
   narration: 'src/data/narration.json',
+  discovery: 'src/data/discovery-metadata.ts',
 };
 const source = Object.fromEntries(
   await Promise.all(
@@ -28,6 +29,9 @@ const source = Object.fromEntries(
   ),
 );
 const original = { ...source };
+const categoryIds = new Set(
+  [...source.discovery.matchAll(/\bid:\s*['"]([a-z-]+)['"]/g)].map((match) => match[1]),
+);
 const translations = JSON.parse(source.translations),
   narration = JSON.parse(source.narration);
 const available = new Set([...Object.keys(narration), ...slugs]);
@@ -66,6 +70,32 @@ for (const slug of slugs) {
   for (const key of ['name', 'title', 'question', 'description', 'color', 'tag'])
     if (typeof topic[key] !== 'string' || !topic[key].trim())
       throw new Error(`${slug}: missing ${key}.`);
+  const discovery = packet.discovery;
+  if (
+    !discovery ||
+    !categoryIds.has(discovery.category) ||
+    ![8, 10, 12, 14].includes(discovery.minAge)
+  )
+    throw new Error(
+      `${slug}: a current discovery category and editorial starting age are required.`,
+    );
+  for (const locale of ['zh', 'en']) {
+    const words = discovery.keywords?.[locale];
+    if (
+      !Array.isArray(words) ||
+      words.length < 3 ||
+      words.some((word) => typeof word !== 'string' || !word.trim() || word !== word.trim()) ||
+      new Set(words.map((word) => word.normalize('NFKC').toLowerCase())).size !== words.length
+    )
+      throw new Error(`${slug}: discovery needs at least three distinct ${locale} search aliases.`);
+  }
+  if (
+    !discovery.keywords.zh.includes(topic.name) ||
+    !discovery.keywords.en.includes(packet.translations?.[topic.name])
+  )
+    throw new Error(
+      `${slug}: discovery aliases must include the exact Chinese and English topic names.`,
+    );
   if (!Array.isArray(topic.related) || !Array.isArray(topic.sources) || !topic.sources.length)
     throw new Error(`${slug}: related topics and sources are required.`);
   if (
@@ -154,6 +184,11 @@ for (const slug of slugs) {
   if (end < 0) throw new Error('Could not find the cover viewport.');
   source.cover = source.cover.slice(0, end) + newCover + '\n' + source.cover.slice(end);
   narration[slug] = film;
+  source.discovery = prepend(
+    source.discovery,
+    'export const discoveryMetadata: Record<string, DiscoveryMetadata> = {\n',
+    `${JSON.stringify(slug)}: ${JSON.stringify(discovery, null, 2)},\n`,
+  );
   additions.push(`${topic.number}: ${slug} (${film.cues.length} planned chapters)`);
 }
 if (checks.length)
@@ -171,5 +206,5 @@ for (const [key, path] of Object.entries(paths))
     throw new Error(`${path} changed during validation; retry after review.`);
 for (const [key, path] of Object.entries(paths)) await writeFile(resolve(root, path), source[key]);
 console.log(
-  'Integrated shared sources. Recorded speech, formatting, review and builds are still required.',
+  'Integrated shared sources and discovery metadata. Measured catalogs, incoming relations, recorded speech, review and builds are still required.',
 );

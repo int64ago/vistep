@@ -1,0 +1,36 @@
+---
+import { expandPoint } from '../../models/thermal-expansion';
+const points = Array.from({ length: 12 }, (_, i) => {
+  const a = (i * Math.PI) / 6,
+    p = expandPoint(0.036 * Math.cos(a), 0.036 * Math.sin(a), 100, 25e-6, 100);
+  return { x: 240 + p.x * 2000, y: 150 + p.y * 2000 };
+});
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><linearGradient id="expansionCover" x2=".7" y2="1"
+      ><stop stop-color="#e2ceb0"></stop><stop offset=".45" stop-color="#b9a17c"></stop><stop
+        offset="1"
+        stop-color="#e5d2ac"></stop></linearGradient
+    ></defs
+  ><rect width="480" height="300" fill="#f1ecdf"></rect><path
+    d="M115 150a125 125 0 1 0 250 0a125 125 0 1 0-250 0M190 150a50 50 0 1 0 100 0a50 50 0 1 0-100 0"
+    fill="url(#expansionCover)"
+    fill-rule="evenodd"
+    stroke="#a08b69"></path><circle
+    cx="240"
+    cy="150"
+    r="100"
+    fill="none"
+    stroke="#837f75"
+    stroke-dasharray="5 5"></circle><circle
+    cx="240"
+    cy="150"
+    r="40"
+    fill="none"
+    stroke="#837f75"
+    stroke-dasharray="5 5"></circle>{
+    points.map((p) => <circle cx={p.x} cy={p.y} r="3" fill="#776b55" />)
+  }<path d="M191 150H289M190 144V156M290 144V156" stroke="#a18357" stroke-width="2"></path></svg
+>

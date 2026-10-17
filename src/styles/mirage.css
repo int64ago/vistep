@@ -1,0 +1,131 @@
+.mirage-study {
+  background: #e9eee7;
+  color: #50676a;
+  border-radius: 26px;
+  padding: 24px 28px;
+  max-width: 980px;
+  margin-inline: auto;
+}
+.mirage-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: 18px;
+}
+.mirage-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.mirage-study > svg {
+  display: block;
+  width: 100%;
+  height: 285px;
+  margin-top: 8px;
+}
+.mirage-legend {
+  display: flex;
+  gap: 10px 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  align-items: center;
+}
+.mirage-legend span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.mirage-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.mirage-readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+  font-size: 16px;
+}
+.mirage-readings span {
+  display: grid;
+  gap: 6px;
+}
+.mirage-readings b {
+  font-size: 24px;
+  font-weight: 400;
+  color: #8e6543;
+}
+.mirage-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.mirage-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.mirage-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.mirage-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.mirage-controls button {
+  min-height: 44px;
+  background: #ffffff66;
+  border: 1px solid #99aaa066;
+  border-radius: 24px;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.mirage-study .control,
+.mirage-study .control output {
+  color: #50676a;
+}
+.mirage-study .control input[type='range'] {
+  --range-color: #8e6543;
+  --range-rest: #acbdb7;
+}
+@media (max-width: 760px) {
+  .mirage-study {
+    padding: 10px 16px;
+  }
+  .mirage-study header {
+    font-size: 16px;
+  }
+  .mirage-study header b {
+    display: none;
+  }
+  .mirage-study[data-watch='true'] header {
+    display: none;
+  }
+  .mirage-study > svg {
+    height: 190px;
+  }
+  .mirage-readings {
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .mirage-readings b {
+    font-size: 22px;
+  }
+  .mirage-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mirage-parameters {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 10px 0 0;
+  color: #657a76;
+}

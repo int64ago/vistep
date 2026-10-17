@@ -1,0 +1,126 @@
+.retro-study {
+  background: #284b4d;
+  color: #e1e8d8;
+  border-radius: 24px;
+  padding: 24px 28px;
+}
+.retro-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+}
+.retro-study header b {
+  font-size: 20px;
+  color: #dfb775;
+  font-weight: 500;
+}
+.retro-study svg {
+  width: 100%;
+  height: 310px;
+  display: block;
+}
+.retro-sequence {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  font-size: 16px;
+  margin-top: 8px;
+  min-height: 24px;
+}
+.retro-sequence span {
+  border-bottom: 1px solid #b9c6b35a;
+  padding: 0 8px 5px;
+}
+.retro-readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 18px;
+}
+.retro-readings span {
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+}
+.retro-readings b {
+  font-size: 26px;
+  font-weight: 400;
+  color: #b4d4d6;
+}
+.retro-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.retro-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.retro-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #c1cdbf;
+  margin: 0 0 12px;
+}
+.retro-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+  color: #e1e8d8;
+}
+.retro-controls .control,
+.retro-controls output {
+  color: inherit;
+}
+@media (max-width: 760px) {
+  .retro-study {
+    padding: 16px;
+  }
+  .retro-study header {
+    font-size: 16px;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+  .retro-study header b {
+    font-size: 18px;
+  }
+  .retro-study svg {
+    height: 185px;
+  }
+  .retro-readings {
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .retro-readings b {
+    font-size: 23px;
+  }
+  .retro-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .retro-study.is-watching details {
+    display: none;
+  }
+  .retro-study.is-watching header b {
+    display: none;
+  }
+  .retro-study header {
+    min-height: 24px;
+  }
+  .retro-study.is-watching .retro-sequence {
+    margin-top: 2px;
+  }
+  .retro-readings span {
+    gap: 3px;
+  }
+  .retro-readings b {
+    font-size: 22px;
+  }
+}

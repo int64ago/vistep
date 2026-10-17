@@ -72,7 +72,7 @@ python3 -m venv .venv-voice
 
 一次新增多个场景时，agent 必须主动使用 subagent，充分利用可用并发能力，优先为能独立推进的场景分配负责人。派发时写明目标、适用技能、负责文件和验收要求；资料核查、模型审查和视觉／交互复核也可拆成独立子任务。主 agent 协调共享文件、集成并逐篇审看，不能用子任务完成声明代替实际验收。
 
-每个场景负责人负责模型、渲染器、样式、双语正文、分镜和封面。`src/data/scene-packets/` 中的交付文件包含待审的元数据、译文和配音稿，不会自动登记公开路由。接入负责人审看交付、处理公共措辞、分配编号并生成录音。`node scripts/integrate-scene-packets.mjs <slug> [<slug> ...]` 默认只检查，加 `--apply` 才更新 `topics.ts`、`experiments.ts`、`TopicCover.astro`、`en.json` 和 `narration.json`，遇到翻译冲突或已登记专题会停止。它不补发现元数据或源码目录、不生成录音、不执行审看或发布；须完成这些步骤，再移除已消费的交付文件，让正式登记保持唯一内容来源。
+每个场景负责人负责模型、渲染器、样式、双语正文、分镜和封面。`src/data/scene-packets/` 中的交付文件包含待审的元数据、译文和配音稿，不会自动登记公开路由。接入负责人审看交付、处理公共措辞、分配编号并生成录音。`node scripts/integrate-scene-packets.mjs <slug> [<slug> ...]` 默认只检查，加 `--apply` 才更新 `topics.ts`、`experiments.ts`、`TopicCover.astro`、`en.json` 和 `narration.json`，遇到翻译冲突或已登记专题会停止。交付文件必须包含发现元数据，搜索别称须包含精确的中英文专题名称；工具在同一轮校验并写入 `discovery-metadata.ts`。它不补源码目录、不生成录音、不执行审看或发布。实测录音时间后，`node scripts/sync-catalog.mjs --write` 按正式登记、译文、分类与实测时间线更新两份目录表格；须完成这些步骤，再移除已消费的交付文件，让正式登记保持唯一内容来源。
 
 worker 不对共享输出运行全局格式化、构建、配音生成或部署。制作、审看和修复保持有界队列：专题冻结交付后，接入负责人接管文件，并给 worker 分配另一个已就绪的独立任务。合成前冻结文稿，声音清单始终只有一个写入者。独立审查目录安装自己的依赖，禁止用符号链接共用 node_modules。
 

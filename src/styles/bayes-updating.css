@@ -1,0 +1,337 @@
+.bayes-study {
+  padding: 24px;
+  color: #575362;
+  background: #f3efef;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.bayes-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: #928796;
+  font: 13px monospace;
+  letter-spacing: 0.06em;
+}
+.bayes-question {
+  font-size: 25px;
+  line-height: 1.4;
+  margin: 18px 0;
+  color: #65566f;
+}
+.bayes-population,
+.bayes-frequencies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+.bayes-population > div {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  align-items: center;
+  gap: 6px 8px;
+}
+.bayes-population i {
+  height: 21px;
+  width: 7px;
+  border-radius: 4px;
+  background: #769bb6;
+}
+.bayes-population > div:nth-child(2) i {
+  background: #c4a071;
+}
+.bayes-population strong {
+  display: block;
+  grid-column: 2;
+  font-size: 24px;
+  font-weight: 400;
+}
+.bayes-cloth {
+  height: 190px;
+  display: flex;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #e7dfdd;
+}
+.bayes-cloth > .bayes-blue {
+  width: var(--blue-base);
+  background: #769bb6;
+  position: relative;
+  transition: width 0.35s;
+}
+.bayes-cloth > .bayes-other {
+  flex: 1;
+  background: #c4a071;
+  position: relative;
+}
+.bayes-selected {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0;
+  transition: height 0.35s;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff00 0px,
+    #ffffff00 7px,
+    #ffffff45 7px,
+    #ffffff45 9px
+  );
+}
+.bayes-blue .bayes-selected {
+  height: var(--blue-mark);
+}
+.bayes-other .bayes-selected {
+  height: var(--other-mark);
+}
+.bayes-unselected {
+  position: absolute;
+  inset: auto 0 0;
+  height: 0;
+  transition:
+    height 0.35s,
+    background 0.35s;
+}
+.bayes-blue .bayes-unselected {
+  height: calc(100% - var(--blue-mark));
+}
+.bayes-other .bayes-unselected {
+  height: calc(100% - var(--other-mark));
+}
+.bayes-study[data-reveal='false'] .bayes-selected,
+.bayes-study[data-reveal='false'] .bayes-unselected {
+  display: none;
+}
+.bayes-study[data-filtered='true'] .bayes-unselected {
+  background: #eee9e8e8;
+}
+.bayes-cloth-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#f3efef55 1px, transparent 1px),
+    linear-gradient(90deg, #f3efef55 1px, transparent 1px);
+  background-size: 10% 10%;
+  pointer-events: none;
+}
+.bayes-frequencies {
+  margin-top: 13px;
+  margin-bottom: 0;
+}
+.bayes-frequencies > div {
+  display: grid;
+  gap: 4px;
+}
+.bayes-frequencies strong {
+  font-size: 27px;
+  font-weight: 400;
+  color: #698a9c;
+}
+.bayes-frequencies > div:nth-child(2) strong {
+  color: #a88456;
+}
+.bayes-frequencies small {
+  font-size: 16px;
+  color: #91838e;
+}
+.bayes-normalized {
+  border-top: 1px solid #ddd1d8;
+  margin-top: 15px;
+  padding-top: 13px;
+}
+.bayes-keep {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  line-height: 1.5;
+}
+.bayes-keep b {
+  font-weight: 500;
+  flex: none;
+}
+.bayes-posterior-bar {
+  display: flex;
+  height: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.bayes-posterior-bar span {
+  background: #769bb6;
+  width: var(--posterior);
+  transition: width 0.35s;
+}
+.bayes-posterior-bar i {
+  background: #c4a071;
+  flex: 1;
+}
+.bayes-result {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.bayes-result > strong {
+  font-size: 38px;
+  font-weight: 400;
+  color: #698a9c;
+  letter-spacing: -0.05em;
+}
+.bayes-result > span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bayes-result b {
+  display: block;
+  font-weight: 500;
+}
+.bayes-dependence {
+  line-height: 1.5;
+  min-height: 48px;
+}
+.bayes-study summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-top: 12px;
+  color: #8b7d92;
+}
+.bayes-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.bayes-controls {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+}
+.bayes-controls input,
+.bayes-controls button {
+  width: 100%;
+  min-height: 44px;
+}
+.bayes-controls button {
+  background: #e4dce6;
+  border: 0;
+  border-radius: 12px;
+  padding: 10px;
+  color: inherit;
+  font: inherit;
+}
+@media (max-width: 600px) {
+  .bayes-study {
+    padding: 18px 12px;
+  }
+  .bayes-study header {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .bayes-question {
+    font-size: 20px;
+    margin: 8px 0;
+  }
+  .bayes-cloth {
+    height: 90px;
+  }
+  .bayes-population,
+  .bayes-frequencies {
+    gap: 12px;
+  }
+  .bayes-population strong {
+    font-size: 23px;
+  }
+  .bayes-frequencies strong {
+    font-size: 25px;
+  }
+  .bayes-frequencies span {
+    font-size: 16px;
+  }
+  .bayes-result {
+    gap: 14px;
+  }
+  .bayes-result > strong {
+    font-size: 34px;
+  }
+  .bayes-keep {
+    font-size: 16px;
+  }
+  .bayes-dependence {
+    min-height: 72px;
+  }
+}
+.bayes-study[data-playing='false'] .bayes-blue,
+.bayes-study[data-playing='false'] .bayes-selected,
+.bayes-study[data-playing='false'] .bayes-unselected,
+.bayes-study[data-playing='false'] .bayes-posterior-bar span {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bayes-study * {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .bayes-study[data-watch='true'][data-normalized='true'] .bayes-population strong {
+    display: none;
+  }
+  .bayes-study[data-watch='true'][data-normalized='true'] .bayes-question,
+  .bayes-study[data-watch='true'][data-normalized='true'] header {
+    display: none;
+  }
+  .bayes-normalized {
+    margin-top: 10px;
+    padding-top: 8px;
+  }
+  .bayes-keep {
+    display: none;
+  }
+  .bayes-posterior-bar {
+    margin: 8px 0;
+  }
+  .bayes-result > span {
+    max-width: 190px;
+  }
+  .bayes-dependence {
+    min-height: 0;
+    margin: 8px 0;
+  }
+  .bayes-study[data-watch='true'] details {
+    display: none;
+  }
+}
+
+.bayes-study header > span:last-child {
+  font: 16px var(--font-sans, sans-serif);
+  letter-spacing: 0;
+  color: #706276;
+}
+
+@media (min-width: 601px) {
+  .bayes-study[data-watch='true'] {
+    padding: 18px 24px;
+  }
+  .bayes-study[data-watch='true'] .bayes-question {
+    margin: 12px 0;
+  }
+  .bayes-study[data-watch='true'] .bayes-population > div {
+    grid-template-columns: 8px 1fr auto;
+  }
+  .bayes-study[data-watch='true'] .bayes-population strong {
+    grid-column: 3;
+  }
+  .bayes-study[data-watch='true'] .bayes-cloth {
+    height: 128px;
+  }
+  .bayes-study[data-watch='true'] .bayes-frequencies > div {
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    column-gap: 16px;
+  }
+  .bayes-study[data-watch='true'] .bayes-frequencies small {
+    grid-column: 1 / -1;
+  }
+  .bayes-study[data-watch='true'] .bayes-dependence {
+    min-height: 0;
+    margin: 8px 0 0;
+  }
+}

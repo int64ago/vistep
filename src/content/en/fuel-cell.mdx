@@ -1,0 +1,26 @@
+<h2 id="understand">Name electrodes by oxidation and reduction</h2>
+
+The negative anode of a PEM fuel cell oxidizes hydrogen: `2 H₂ → 4 H⁺ + 4 e⁻`. Protons cross the membrane; electrons take the external load route. At the positive cathode, oxygen accepts electrons and combines with protons to form water: `O₂ + 4 H⁺ + 4 e⁻ → 2 H₂O`. Anode means oxidation and cathode means reduction. Their signs therefore differ from those of an electrolyzer without changing their definitions.
+
+Electrons move externally from anode to cathode, opposite to conventional current. Both electronic and ionic routes must be continuous. An open load can retain an open-circuit voltage while delivering no sustained current or power in this model. Moving dots identify routes rather than actual particle counts or speeds.
+
+<h2 id="try">More current does not guarantee more load power</h2>
+
+To isolate the load's effect, the scene uses `I=E/(R+r)`, with external resistance R and lumped internal resistance r. A liquid-water standard-state Gibbs reference gives E near 1.229 V. Load power is `I²R`, while internal ohmic heat is `I²r`. This is a teaching circuit, not a measured PEM polarization curve.
+
+At r=0.20 Ω, lowering R from 2.00 Ω to 0.20 Ω increases electrical output. Lowering it further to 0.05 Ω increases current but reduces external power and dissipates more internally. In this particular linear model, `R=r` maximizes load power at `E²/(4r)`. Maximum power is not maximum efficiency, nor is resistance matching a universal rule for real fuel cells.
+
+<h2 id="deeper">Finite feed and the whole energy ledger</h2>
+
+<details>
+<summary>What is consumed, and where does the heat come from?</summary>
+
+Ideal Faraday accounting gives `n(H₂)=Q/(2F)` and `n(O₂)=Q/(4F)`. Water production equals hydrogen consumption in moles. Feed maintains reference activities until a specified allowance is exhausted; this is not a sealed tank with gradually declining pressure. With 0.100 mmol oxygen and 2.000 mmol hydrogen available, at most 0.200 mmol water can form, leaving 1.800 mmol hydrogen. Depletion of either feed stops sustained current.
+
+At 298.15 K in standard states with liquid water produced, reaction enthalpy is about 285.8 kJ/mol and Gibbs free energy about 237.1 kJ/mol. Total heat includes ohmic dissipation plus reversible entropy heat under that reference. Electrical output plus heat equals the consumed hydrogen's reaction enthalpy rate. Efficiency uses the liquid-water higher-heating-value basis, excluding auxiliaries, hydrogen production and life-cycle losses. It is not a real system efficiency or a zero-emissions claim.
+
+Explore changes R, r, time and both feed allowances, or opens the external circuit and blocks proton conduction. Startup capacitance, activation and mass-transfer losses, temperature, pressure, leakage and crossover are omitted. Depleted feed or a nonconducting membrane is not assigned a fabricated reference terminal voltage. This teaching model provides no hydrogen storage, transport, wiring or gas-mixture instructions; hydrogen–oxygen mixtures and ignition are hazardous.
+
+</details>
+
+References: [DOE, Fuel Cells](https://www.energy.gov/cmei/fuels/fuel-cells), [DOE, Parts of a Fuel Cell](https://www.energy.gov/cmei/fuels/parts-fuel-cell), [NETL, Fuel Cell Handbook, §2](https://www.netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf), [NIST, 2022 CODATA constants](https://physics.nist.gov/constants).

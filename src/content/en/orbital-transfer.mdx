@@ -1,0 +1,26 @@
+<h2 id="understand">Two impulses with an unpowered coast between</h2>
+
+A Hohmann transfer joins two circular orbits with an ellipse tangent to both. Assumptions are one central gravity source, coplanar prograde circles and two instantaneous tangential velocity changes. Between impulses, the spacecraft coasts under two-body gravity. Radius, speed and time are normalized, with `μ=1`.
+
+The first raising impulse changes velocity without teleporting position, placing the spacecraft on an ellipse with a higher far end. Coast energy and angular momentum remain constant. Speed falls as radius rises, without continuous engine braking or uniform motion along a decorative curve.
+
+<h2 id="try">Reaching the altitude does not provide circular speed</h2>
+
+The ellipse has `a=(r₁+r₂)/2`, speed obeys `v²=μ(2/r−1/a)`, and half-orbit time is `π√(a³/μ)`. Kepler's equation converts elapsed time into position rather than increasing the geometric angle uniformly.
+
+With `r₁=1` and `r₂=1.8`, the first tangential increment is about `+0.134`. Transfer arrival speed is about `0.630`, below circular speed `0.745` at that radius. A second increment of about `+0.115` is needed. The velocity arrow and readout share the actual speed; the arrow uses a fixed visual scale.
+
+<h2 id="deeper">Skip impulse two and the ellipse continues</h2>
+
+<details>
+<summary>Missing impulses, lowering and model limits</summary>
+
+Without the second impulse, the spacecraft does not remain at target altitude. It follows the same ellipse back toward the original radius. Entering the target circle requires changed energy and angular momentum. The Δv₁ and Δv₂ readouts are required planned increments, and the missing-impulse branch explicitly marks the second as unapplied.
+
+Lowering from a larger circular orbit uses two impulses opposite the current velocity, hence negative tangential increments. Speed nevertheless increases during the falling coast. “Brake to lower an orbit” does not mean decreasing speed throughout the maneuver. Signs refer to the local direction of motion, rather than screen up or down.
+
+Explore changes both radii, the stage and its elapsed-time fraction. Fixed pre-impulse instants hide the inapplicable progress slider. Equal radii require zero impulses. Finite burns, mass loss, perturbations, inclination, target rendezvous phase and collision constraints are excluded. This is not an operational flight plan or a universal claim of global optimality over arbitrary radius ratios and numbers of impulses.
+
+</details>
+
+Sources: [NASA: Space Mathematics](https://science.nasa.gov/wp-content/uploads/2023/10/Space_Mathematics.pdf), [a.i. solutions: Hohmann Transfer and vis-viva](https://ai-solutions.com/_freeflyeruniversityguide/hohmann_transfer.htm).

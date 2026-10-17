@@ -1,0 +1,76 @@
+---
+import { MERGE_VALUES, mergeSortTrace } from '../../models/merge-sort';
+const { color = '#8aaca6' } = Astro.props;
+const run = mergeSortTrace(MERGE_VALUES).passes[2].merges[0],
+  frame = run.frames[4];
+const left = new Set(run.left.map((x) => x.id));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <text x="65" y="28" fill={color} font-size="15" font-family="monospace">LEFT</text><text
+    x="267"
+    y="28"
+    fill="#a19c78"
+    font-size="15"
+    font-family="monospace">RIGHT</text
+  >
+  {
+    frame.left.map((item, i) => (
+      <g>
+        <>
+          <rect x="47" y={43 + i * 40} width="100" height="32" rx="9" fill="#d5e5e6" />
+          <text x="68" y={65 + i * 40} font-size="21" fill="#6c9498">
+            {item.value}
+          </text>
+          <text x="119" y={64 + i * 40} text-anchor="middle" font-size="14" fill="#8ca6a4">
+            #{item.origin + 1}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  {
+    frame.right.map((item, i) => (
+      <g>
+        <>
+          <rect x="253" y={43 + i * 40} width="100" height="32" rx="9" fill="#e0e5d5" />
+          <text x="274" y={65 + i * 40} font-size="21" fill="#909b7d">
+            {item.value}
+          </text>
+          <text x="325" y={64 + i * 40} text-anchor="middle" font-size="14" fill="#9ca58a">
+            #{item.origin + 1}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  <path
+    d="M97 123Q97 151 170 158M303 123Q303 151 230 158"
+    stroke={color}
+    stroke-width="1.5"
+    opacity=".6"></path>
+  {
+    frame.output.map((item, i) => (
+      <g>
+        <>
+          <rect
+            x={76 + i * 63}
+            y="164"
+            width="53"
+            height="52"
+            rx="11"
+            fill={left.has(item.id) ? '#d5e5e6' : '#e0e5d5'}
+            stroke={i === 3 ? '#b3a473' : color}
+            stroke-opacity=".5"
+          />
+          <text x={102 + i * 63} y="189" text-anchor="middle" font-size="23" fill="#708e86">
+            {item.value}
+          </text>
+          <text x={102 + i * 63} y="207" text-anchor="middle" font-size="14" fill="#8ca298">
+            #{item.origin + 1}
+          </text>
+        </>
+      </g>
+    ))
+  }
+</svg>

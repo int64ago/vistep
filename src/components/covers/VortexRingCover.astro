@@ -1,0 +1,32 @@
+---
+import { vortexTrail, vortexMarker } from '../../models/vortex-ring';
+const scale = 65;
+const paths = [0.2, 0.65, 1.2, -0.2, -0.65, -1.2].map((y) => {
+  const p = vortexTrail({ x: 0, y });
+  return {
+    line: p.map((q) => `${240 + q.x * scale},${150 - q.y * scale}`).join(' '),
+    mark: vortexMarker(p, 6),
+  };
+});
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#263f4b"></rect>{
+    paths.map((p) => (
+      <g>
+        <polyline points={p.line} fill="none" stroke="#8eafb0" stroke-opacity=".5" />
+        {<circle cx={240 + p.mark.x * scale} cy={150 - p.mark.y * scale} r="3.5" fill="#b4d0c6" />}
+      </g>
+    ))
+  }<circle cx="240" cy="85" r={0.12 * scale} fill="#d3b98a" fill-opacity=".3" stroke="#d3b98a"
+  ></circle><circle
+    cx="240"
+    cy="215"
+    r={0.12 * scale}
+    fill="#d3b98a"
+    fill-opacity=".3"
+    stroke="#d3b98a"></circle><circle cx="240" cy="85" r="3" fill="#dfc591"></circle><path
+    d="M237 212L243 218M237 218L243 212"
+    stroke="#dfc591"
+    stroke-width="2"></path></svg
+>

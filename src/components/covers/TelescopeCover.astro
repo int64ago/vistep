@@ -1,0 +1,40 @@
+---
+import { telescope, telescopeRay } from '../../models/telescope';
+const s = telescope(),
+  x = (v: number) => 28 + (v / 540) * 345,
+  y = (v: number) => 112 - v * 3;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#203b43"></rect><path
+    d="M22 112H378"
+    stroke="#849a8b"
+    opacity=".4"></path>{
+    [-0.6, 0, 0.6].map((a, j) =>
+      [-20, 0, 20].map((height) => {
+        const ray = telescopeRay(height, a);
+        return (
+          <polyline
+            points={[-15, 0, s.fo, s.separation, s.separation + s.pupilDistance, 530]
+              .map((v) => `${x(v)},${y(ray.at(v))}`)
+              .join(' ')}
+            stroke={['#83afc5', '#c2cf9d', '#d8a36f'][j]}
+            opacity=".7"
+          />
+        );
+      }),
+    )
+  }{
+    [0, s.separation].map((p) => (
+      <path
+        d={`M${x(p)} 52Q${x(p) + 10} 112 ${x(p)} 172Q${x(p) - 10} 112 ${x(p)} 52`}
+        fill="#91b6b73a"
+        stroke="#c7d6c4"
+        stroke-width="2"
+      />
+    ))
+  }<path
+    d={`M${x(s.fo)} 60V170M${x(s.separation + s.pupilDistance)} 90V134`}
+    stroke="#efdfb7"
+    stroke-dasharray="3 4"></path></svg
+>

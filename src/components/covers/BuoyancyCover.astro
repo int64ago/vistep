@@ -1,0 +1,36 @@
+---
+import { buoyancy } from '../../models/buoyancy';
+const s = buoyancy(0.084),
+  top = 110 + (s.depth - s.height) * 800,
+  bottom = 110 + s.depth * 800;
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><linearGradient id="buoyWater" x2="0" y2="1"
+      ><stop stop-color="#adc9c4" stop-opacity=".5"></stop><stop
+        offset="1"
+        stop-color="#729e9e"
+        stop-opacity=".7"></stop></linearGradient
+    ><linearGradient id="buoyWood"
+      ><stop stop-color="#d8b88c"></stop><stop offset=".5" stop-color="#c09b6d"></stop><stop
+        offset="1"
+        stop-color="#e0bf8f"></stop></linearGradient
+    ></defs
+  ><rect width="480" height="300" fill="#eef0e2"></rect><rect
+    x="25"
+    y="110"
+    width="430"
+    height="190"
+    fill="url(#buoyWater)"></rect><path d="M25 110H455" stroke="#7da4a1" stroke-width="2"
+  ></path><rect x="185" y={top} width="80" height="96" rx="5" fill="url(#buoyWood)" stroke="#9e855e"
+  ></rect><path
+    d={`M155 110h-7V${bottom}h7M298 165v-48m-5 7l5-7l5 7`}
+    fill="none"
+    stroke="#457a7c"
+    stroke-width="3"></path><path
+    d="M330 165v48m-5-7l5 7l5-7"
+    fill="none"
+    stroke="#a27746"
+    stroke-width="3"></path></svg
+>

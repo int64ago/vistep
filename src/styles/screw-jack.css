@@ -1,0 +1,125 @@
+.screw-film {
+  max-width: 900px;
+  margin: auto;
+  color: #617063;
+}
+.screw-object {
+  height: 360px;
+  background: radial-gradient(ellipse at 50% 65%, #e7ece1, #f9faf2);
+  border-radius: 28px;
+  overflow: hidden;
+}
+.screw-object .studio {
+  height: 100%;
+}
+.screw-object svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+}
+.screw-unrolled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 16px;
+}
+.screw-unrolled p {
+  font-size: 16px;
+  text-align: center;
+  margin: 8px 0;
+}
+.screw-unrolled svg {
+  height: 220px;
+  max-width: 560px;
+}
+.screw-unrolled text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #716f59;
+}
+.screw-readout {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  padding: 18px 10px;
+}
+.screw-readout span {
+  display: grid;
+  gap: 4px;
+  font-size: 16px;
+}
+.screw-readout b {
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.screw-consequence {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  padding: 0 12px;
+  margin: 0 0 12px;
+}
+.screw-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.screw-controls .btn {
+  min-height: 44px;
+}
+.screw-notes {
+  font-size: 16px;
+  margin: 4px 12px;
+}
+.screw-notes summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.screw-notes summary::before {
+  content: '+';
+  margin-right: 8px;
+}
+.screw-notes[open] summary::before {
+  content: '−';
+}
+.screw-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+@media (max-width: 600px) {
+  .screw-object {
+    height: 280px;
+  }
+  .screw-readout {
+    gap: 15px;
+    padding: 12px 10px;
+  }
+  .screw-readout span {
+    font-size: 16px;
+    min-width: 0;
+  }
+  .screw-readout b {
+    font-size: 18px;
+  }
+  .screw-unrolled svg {
+    height: auto;
+    max-height: 180px;
+  }
+  .screw-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .screw-consequence {
+    text-align: left;
+  }
+  .screw-unrolled text {
+    font-size: 26px;
+  }
+}

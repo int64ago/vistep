@@ -1,0 +1,45 @@
+<h2 id="understand">The balls sense speed; the valve changes driving torque</h2>
+
+A centrifugal governor turns speed changes into position changes, then uses position to control power input. This example uses equal-length Watt-type links. Rotating flyballs connect the upper pivot to a sliding sleeve, and a nonrotating collector collar carries the sleeve's movement to a valve.
+
+At a higher steady speed, the balls spread, the sleeve rises and the valve closes farther. A speed decrease reverses this chain. The balls do not directly rub the shaft to brake it; the valve changes driving torque.
+
+Adding shaft load first lowers speed. Ball and sleeve positions then change, opening the valve and increasing driving torque to limit that decrease. Under the same added load, disconnecting the feedback linkage and holding the valve fixed eventually stalls this model. The feedback connection matters, not merely the presence of spinning balls.
+
+**Settling does not guarantee the original speed returns.** This direct position-feedback model settles slightly below its original speed after load increases. A lower sleeve and larger valve opening are needed to supply the extra sustained torque. Removing that steady error requires an additional control mechanism.
+
+<h2 id="try">Follow every step in the cause-and-effect chain</h2>
+
+- In “Speed relation”, an external drive holds the selected speed. Explore 64–82 rpm and inspect ball position and valve opening. This mode does not simulate an engine accelerating itself.
+- In “Load change”, load increases at two seconds. Scrub forward and follow speed, sleeve and valve in sequence.
+- Disconnect feedback. The bridge linkage is visibly removed and the valve remains fixed; the same sustained load can stall the shaft.
+- Reconnect it and raise response time from 0.4 to 3 seconds. Compare the speed dip and recovery.
+
+The final chapter's pale curve is the faster-response reference. The horizontal dashed line always marks the original 72 rpm. Rotation is slowed for visibility; readings and response times use physical model time.
+
+<h2 id="deeper">Separate static geometry from a transient approximation</h2>
+
+<details>
+<summary>Ideal Watt equilibrium</summary>
+
+Both links are L = 0.25 m long. Sleeve mass and valve actuation load are negligible. Let h be the vertical distance from upper pivot to ball and r the rotation radius. Vertical force balance and horizontal centripetal acceleration give:
+
+<div className="formula">h = g / ω², r² + h² = L²</div>
+
+Equal links give sleeve rise `z = 2(L − h)` from the lowest geometric position. Mechanical stops at 12° and 65° prevent low-speed ball/spindle interference and excessive travel. At a stop, the unconstrained equilibrium equation is no longer extrapolated.
+
+</details>
+
+<details>
+<summary>The feedback approximation and residual error</summary>
+
+Valve fraction q is bounded between zero and one. Initial speed is 72 rpm at a 5 N·m load. Bias q₀ establishes the initial torque balance. The default load rises to 7 N·m at two seconds.
+
+<div className="formula">q = clamp(q₀ − 4(z − z₀), 0, 1)</div>
+<div className="formula">Jω′ = 12q − Tload − 0.2ω</div>
+
+Shaft inertia J is 3 kg·m² and full-open torque is 12 N·m. More load needs more opening, which requires a different sleeve position and speed under this position-feedback law. This produces steady error. A shaft that reaches zero with insufficient drive remains stalled rather than rotating backward through zero.
+
+Sleeve response uses the first-order approximation `τz′ = zeq(ω) − z`, with default τ = 0.4 s. It illustrates feedback and response lag, rather than reproducing complete flyball, sleeve, steam-flow and engine dynamics. Valve actuation force, mechanical friction, fluid delay and actual cylinder cycles are omitted. It is not a real-engine performance predictor.
+
+</details>

@@ -1,0 +1,28 @@
+<h2 id="understand">Estimate an area with a hit fraction</h2>
+
+Inside a unit square, the quarter circle satisfies `x²+y²≤1`. For independent, uniform points in the square, its hit probability equals the area fraction `π/4`. Thus `4×hits/N` is a Monte Carlo estimator of π. Including the circular boundary does not change its probability under continuous uniform sampling.
+
+Here π is known so the estimator can be checked; a general numerical integral need not have a known answer. Colors separate hits from misses, while text reports actual integer counts instead of asking the viewer to infer a ratio from density.
+
+<h2 id="try">More samples reduce typical fluctuation, not every error</h2>
+
+Prefixes of one sequence produce estimates that move both up and down. A temporary move away from π is not an algorithmic failure. Different seeds also give different estimates at the same N. Under independent uniform sampling, the theoretical standard error is `4√((π/4)(1−π/4)/N)`. Four times as many samples halves that standard error; a single realized absolute error need not halve.
+
+Explore changes the sample count, fixed pseudorandom seed and sampling distribution. Seeking reproduces the same prefix rather than drawing fresh points to improve the picture. The selected seeds do not represent every possible experiment.
+
+<h2 id="deeper">An interval cannot repair incorrect sampling</h2>
+
+<details>
+<summary>95% intervals, no samples and a biased counterexample</summary>
+
+The displayed interval is a two-sided nominal 95% Wilson interval for the hit proportion, without continuity correction, multiplied by four. It assumes independent identically distributed Bernoulli trials. Coverage describes repeated use of the method, rather than a 95% probability that fixed π lies in this realized interval. Wilson coverage is approximate and is not guaranteed to be exact for every small sample.
+
+At N = 0, both the estimate and interval are undefined. At N = 1, a hit produces a point estimate of four but still leaves a wide interval: one success is not certainty. The SE comparison uses known π as a theoretical teaching benchmark.
+
+The counterexample keeps the same underlying sequence but replaces uniform `x=u` with `x=u²`, leaving y uniform. Points concentrate toward the left. The hit fraction no longer equals the area fraction, so the unweighted `4×hits/N` stabilizes around a different value. More samples only reduce variation around that incorrect target. The film does not label an interval for this biased estimator as an interval for π. Importance weights, dependent sampling and quasi-Monte Carlo are outside scope.
+
+The fixed pseudorandom sequence serves numerical teaching, without certifying independence or security. If the canvas is unavailable, counts, formula and result text remain; color is not the only information channel.
+
+</details>
+
+Sources: [MIT: Sampling and Monte Carlo Simulation](https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/resources/mit6_00scs11_lec14/), [NIST: Wilson proportion intervals](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm).

@@ -1,0 +1,47 @@
+---
+import { venturi, venturiProfile, venturiMarker } from '../../models/venturi-meter';
+const s = venturi(),
+  p = venturiProfile(),
+  x = (a: number) => 35 + a * 630,
+  axis = 100;
+const outline =
+  p.samples.map((a) => `${x(a.x)},${axis - a.radius * 1200}`).join(' ') +
+  ' ' +
+  p.samples
+    .toReversed()
+    .map((a) => `${x(a.x)},${axis + a.radius * 1200}`)
+    .join(' ');
+const dots = Array.from({ length: 32 }, (_, i) => {
+  const m = venturiMarker(p, s.flow, 0.4, i / 32, ((i % 3) - 1) * 0.55);
+  return { x: x(m.x), y: axis - m.y * 1200 };
+});
+const x1 = x(0.07),
+  x2 = x(0.3),
+  left = 191 + s.height * 2000,
+  right = 191 - s.height * 2000;
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#243f4a"></rect><polygon
+    points={outline}
+    fill="#3f656e"
+    stroke="#9ab5ad"
+    stroke-width="2.5"></polygon>{
+    dots.map((a) => <circle cx={a.x} cy={a.y} r="2" fill="#b8d2c6" />)
+  }<path
+    d={`M${x1} ${axis}V255Q${x1} 265 ${x1 + 10} 265H${x2 - 10}Q${x2} 265 ${x2} 255V${axis}`}
+    stroke="#8fa9a0"
+    stroke-width="10"
+    fill="none"></path><path
+    d={`M${x1} ${axis}V${left}M${x2} ${axis}V${right}`}
+    stroke="#a3c9c6"
+    stroke-width="5"
+    fill="none"></path><path
+    d={`M${x1} ${left}V255Q${x1} 265 ${x1 + 10} 265H${x2 - 10}Q${x2} 265 ${x2} 255V${right}`}
+    stroke="#d4ac68"
+    stroke-width="5"
+    fill="none"></path><path
+    d={`M${x1 - 8} ${left}H${x2 + 25}M${x2 - 8} ${right}H${x2 + 25}`}
+    stroke="#d4ac68"
+    stroke-dasharray="3 4"></path></svg
+>

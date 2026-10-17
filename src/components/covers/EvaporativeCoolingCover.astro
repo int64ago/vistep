@@ -1,0 +1,33 @@
+---
+import { evaporationHistory } from '../../models/evaporative-cooling';
+const dry = evaporationHistory({ humidity: 0.2 }),
+  wet = evaporationHistory({ humidity: 0.8 });
+const curve = (h: typeof dry) =>
+  h.map((p) => `${215 + (p.time / 900) * 235},${35 + ((40 - p.temperature) / 40) * 210}`).join(' ');
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#2b433f"></rect><path
+    d="M38 155V228Q38 240 50 240H158Q170 240 170 228V155"
+    fill="none"
+    stroke="#b2c0b4"
+    stroke-width="8"></path><path
+    d="M43 166H165V228Q165 235 158 235H50Q43 235 43 228Z"
+    fill="#92b9ae"></path><path
+    d="M81 70V203"
+    stroke="#dbe0cc"
+    stroke-width="13"
+    stroke-linecap="round"></path><path d="M81 202V117" stroke="#b9b78c" stroke-width="6"
+  ></path><circle cx="81" cy="208" r="12" fill="#b9b78c" stroke="#dbe0cc" stroke-width="4"
+  ></circle><path d="M138 165V76m-7 9l7-10 7 10" fill="none" stroke="#a5c9c3" stroke-width="3"
+  ></path><polyline
+    points={curve(wet)}
+    fill="none"
+    stroke="#a6b9a8"
+    stroke-width="2"
+    stroke-dasharray="5 4"></polyline><polyline
+    points={curve(dry)}
+    fill="none"
+    stroke="#dfb273"
+    stroke-width="3"></polyline></svg
+>

@@ -1,0 +1,26 @@
+<h2 id="understand">Add first, then examine the distribution</h2>
+
+Each trial is zero or one, with fixed success probability p. The sum S of N independent trials has an exact binomial distribution. Among four equally likely outcomes of two fair trials, both `01` and `10` give S = 1. The middle probability is one-half, rather than all three bars being equal.
+
+The central limit theorem concerns a centered and scaled sum. Under independent, identically distributed trials with finite nonzero variance, the distribution of `(S−Np)/√(Np(1−p))` approaches standard normal as N increases. Original zero-one observations do not become normal, and finite sums remain discrete.
+
+<h2 id="try">The sum spreads while the mean concentrates</h2>
+
+Switch among the success count, standardized sum and sample mean S/N. From 8 to 32 fair trials, sum variance increases from 2 to 8, while sample-mean variance decreases from 0.03125 to 0.0078125 and its standard deviation halves. These are different horizontal coordinates.
+
+Bars come from exact probability convolutions. Their heights change with horizontal bin width so bar area represents probability. The brown line is a normal density with matching mean and variance, rather than the probability at any individual point.
+
+<h2 id="deeper">More is not automatically enough</h2>
+
+<details>
+<summary>Rare events, dependent copies and zero variance</summary>
+
+With p = 0.05 and N = 8, zero successes has probability about 66.3%, leaving visible skew. Standardization changes location and scale, without instantly removing skew. Approximation quality depends on the original distribution, sample size and event of interest; one universal sample count does not guarantee accuracy.
+
+Instead, draw one zero-one result and copy it N times. The sum can only be zero or N. Perfect dependence violates the independence condition; the sample mean remains that single result, with variance p(1−p) instead of p(1−p)/N. Additional copies do not provide independent information.
+
+Explore changes N, p, horizontal coordinates and the dependence mode. At p = 0 or 1, variance is zero. Standardization is undefined, so the display explicitly falls back to the original sum coordinate. This is not a theorem about every dependent or heavy-tailed distribution, and no normal random draw substitutes for the actual sum distribution.
+
+</details>
+
+Sources: [MIT: independence and finite-variance CLT conditions](https://live.ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/7f4bafaeaf3fc2b5e4f88afb273f7d3d_IrKUM3nNXJE.pdf), [UC Berkeley: normal approximation to binomial distributions](https://www.stat.berkeley.edu/~stark/SticiGui/Text/clt.htm).

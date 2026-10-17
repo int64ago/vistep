@@ -1,0 +1,26 @@
+<h2 id="understand">A full local channel need not mean maximum total flow</h2>
+
+Each edge capacity limits its assigned flow. Source S supplies, sink T receives, and every intermediate vertex conserves inflow and outflow. Labels show `flow/capacity`. This is a capacity-allocation network, not a simulation of pressure, moving fluid or transmission delay.
+
+First deliberately choose the valid detour `S → A → B → T` and send one unit, then add flow on direct routes. At total3, B to T is full and original forward directions appear stuck. Yet S can still send one unit into B, and A to T still has one unit free.
+
+<h2 id="try">Reverse residual capacity can cancel an old allocation</h2>
+
+Because A to B carries one unit, the residual network permits canceling it from B to A. Augmenting `S → B → A → T` adds one to S–B and A–T while subtracting one from A–B. Intermediate vertices still conserve flow, and net source-to-sink flow rises from3 to4.
+
+A reverse arc is not a new physical channel or a decrease in total output. It is permission to revise the original allocation. Forward residual capacity is capacity minus assigned flow; backward residual capacity is the assigned flow. The smallest residual capacity along the whole path limits the augmentation.
+
+<h2 id="deeper">How can we prove no improvement remains?</h2>
+
+<details>
+<summary>Residual reachability and cut capacity</summary>
+
+At the end, T is unreachable from S using positive residual capacity. Put all still-reachable vertices on the source side and the rest on the sink side. The original capacities crossing forward between these sides bound every feasible flow. Here the two edges leaving S total `2+2=4`. Achieving flow4 reaches that upper bound, proving maximality.
+
+Exploration changes the actual A–T capacity and recomputes the flow. At capacity1, the limiting cut moves to the sink: `1+2=3`. At capacity3, S still supplies at most4, so the result cannot reach5. Widening one edge need not improve the whole network.
+
+The first path is explicitly chosen to reveal cancellation; later paths use breadth-first residual search. The general model entry defaults to zero-flow operation. It accepts finite graphs and nonnegative integer capacities and records teaching snapshots. It makes no claim about arbitrary floating-point capacities, minimum-cost flow or physical fluid behavior.
+
+</details>
+
+Sources: [Princeton, Maxflow and Mincut Study Guide](https://www.cs.princeton.edu/courses/archive/fall15/cos226/lectures/study/64MaxFlow.html) and [MIT, Maximum Flow lecture notes](https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/8346e77d563c80b0ae714a21bc9a4541_max_flow_dff.pdf).

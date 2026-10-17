@@ -1,0 +1,97 @@
+.lever-film {
+  max-width: 960px;
+  margin: auto;
+  color: #4d5b55;
+}
+.lever-apparatus {
+  border-radius: 30px;
+  background: radial-gradient(ellipse at 50% 65%, #ede6d4 0, transparent 65%), #fbf9f3;
+  overflow: hidden;
+}
+.lever-apparatus svg {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+}
+.lever-apparatus text {
+  font-size: 19px;
+  fill: currentColor;
+  font-family: inherit;
+  font-weight: 500;
+}
+.lever-apparatus .lever-phone {
+  display: none;
+}
+.lever-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 22px 8px;
+}
+.lever-equation span {
+  display: grid;
+  gap: 5px;
+  font-size: 16px;
+}
+.lever-equation b {
+  font-size: 24px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.lever-equation i {
+  font-size: 28px;
+  color: #a19076;
+  font-style: normal;
+}
+.lever-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.lever-controls p,
+.lever-limit {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.lever-limit {
+  text-align: center;
+  color: #7f8479;
+  margin: 0 0 12px;
+}
+.lever-controls p {
+  grid-column: 1/-1;
+}
+.lever-controls .btn {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .lever-apparatus .lever-wide {
+    display: none;
+  }
+  .lever-apparatus .lever-phone {
+    display: block;
+    max-height: none;
+  }
+  .lever-apparatus text {
+    font-size: 19px;
+  }
+  .lever-equation {
+    gap: 13px;
+    padding: 16px 3px;
+  }
+  .lever-equation span {
+    font-size: 16px;
+  }
+  .lever-equation b {
+    font-size: 20px;
+  }
+  .lever-limit {
+    padding: 0 12px;
+  }
+  .lever-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}

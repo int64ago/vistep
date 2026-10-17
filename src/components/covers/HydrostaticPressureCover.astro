@@ -1,0 +1,60 @@
+---
+import { vesselWidth } from '../../models/hydrostatic-pressure';
+const centres = [100, 245, 385],
+  scale = 530,
+  bottom = 266,
+  H = 0.3;
+const half = (j: number, e: number) => (vesselWidth(j, e) * scale) / 2,
+  y = (e: number) => bottom - e * scale;
+const vessels = centres.map((cx, j) => {
+  const b = half(j, 0),
+    f = half(j, H);
+  const walls = [-1, 1].map((sign) => {
+    const side = (e: number) => cx + sign * half(j, e),
+      connected = !((j === 0 && sign < 0) || (j === 2 && sign > 0));
+    return connected
+      ? `M${side(0.36)} ${y(0.36)}L${side(0.03)} ${y(0.03)}M${side(0.02)} ${y(0.02)}L${side(0)} ${bottom}`
+      : `M${side(0.36)} ${y(0.36)}L${side(0)} ${bottom}`;
+  });
+  return {
+    walls,
+    bottom: `M${cx - b} ${bottom}H${cx + b}`,
+    fluid: `M${cx - b} ${bottom}H${cx + b}L${cx + f} ${y(H)}H${cx - f}Z`,
+    cx,
+  };
+});
+const pipes = [0, 1].map((j) => {
+  const xa = centres[j] + half(j, 0.03),
+    xb = centres[j + 1] - half(j + 1, 0.03),
+    xc = centres[j + 1] - half(j + 1, 0.02),
+    xd = centres[j] + half(j, 0.02);
+  return {
+    fluid: `M${xa} ${y(0.03)}H${xb}L${xc} ${y(0.02)}H${xd}Z`,
+    walls: `M${xa} ${y(0.03)}H${xb}M${xd} ${y(0.02)}H${xc}`,
+  };
+});
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#eef0e2"></rect>{
+    pipes.map((p) => (
+      <g>
+        <>
+          <path d={p.fluid} fill="#86aaa7" />
+          <path d={p.walls} fill="none" stroke="#819996" stroke-width="2" />
+        </>
+      </g>
+    ))
+  }{
+    vessels.map((v) => (
+      <g>
+        <path d={v.fluid} fill="#85aaa5" fill-opacity=".55" />
+        {v.walls.map((d) => (
+          <path d={d} fill="none" stroke="#7c9290" stroke-width="2.5" />
+        ))}
+        <path d={v.bottom} fill="none" stroke="#7c9290" stroke-width="2.5" />
+        <circle cx={v.cx} cy="213" r="5" fill="#e7d4a6" stroke="#997b4f" />
+      </g>
+    ))
+  }<path d="M55 213H425" stroke="#aa8d5d" stroke-dasharray="4 5"></path></svg
+>

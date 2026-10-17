@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## Energy transfers without bulk material flow
+
+Lattice sites do not travel down a solid rod with the heat. Microscopic interactions exchange energy between neighbouring regions, producing a net average flux down a temperature gradient. Electrons also contribute in metals. The vibrating beads illustrate fixed material positions, not a complete microscopic theory of every solid.
+
+The film connects an initially 20°C rod to 90°C and 20°C baths. It follows the temperature profile, inter-segment flux and boundary powers. Their difference is stored in the rod. Eventually the profile approaches a line and the boundary powers become equal but nonzero: steady temperature does not mean stopped transfer.
+
+<a id="try"></a>
+
+## Isolate one parameter
+
+Change conductivity, rod length, time and endpoint temperature difference. A negative difference reverses flux. With the interior initially at 20°C, both endpoints must also be 20°C for the exploration's uniform equilibrium. The length-comparison chapter and exploration use a common drawing scale; the metre-valued parameter gives the physical length. Conductivity comparisons hold cross-section and volumetric heat capacity fixed rather than ranking real materials comprehensively.
+
+<a id="deeper"></a>
+
+## A local gradient drives local flux
+
+<div className="formula">
+  q = −k ∂T/∂x
+  <br />
+  ρc ∂T/∂t = k ∂²T/∂x²
+  <br />
+  Steady power = kA(Thot − Tcold)/L
+</div>
+
+The model has 25 one-dimensional nodes, insulated sides, fixed-temperature ends and no internal source. Conductivity and volumetric heat capacity are constant. Eigenmodes of the discrete Laplacian give an exact-in-time solution of this spatial discretization, so seeking reconstructs the selected state directly. Volumetric heat capacity is 2 million J/(m³·K), and cross-section is 0.0004 m².
+
+Every interfacial flux uses the same node temperatures. The rate of stored energy equals inflow minus outflow; the endpoint baths themselves are excluded from interior storage. Default length 0.1 m, conductivity 20 W/(m·K) and a 70 K difference give a steady 5.6 W. Contact resistance, radiation, fluid convection and temperature-dependent material properties are omitted.

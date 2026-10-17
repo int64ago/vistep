@@ -1,0 +1,26 @@
+<h2 id="understand">Separate reaction, route and polarity</h2>
+
+This scene represents proton exchange membrane, or PEM, water electrolysis. Alkaline and solid oxide cells use different charge carriers and are outside this model. A DC source supplies energy. The positive anode oxidizes water: `2 H₂O → O₂ + 4 H⁺ + 4 e⁻`. Protons cross the membrane while electrons take the external route through the source. Both reach the negative cathode, where reduction occurs: `4 H⁺ + 4 e⁻ → 2 H₂`.
+
+Adding the half-reactions gives `2 H₂O → 2 H₂ + O₂`. The hydrogen-to-oxygen amount ratio is therefore 2:1, regardless of illustrative bubble size. The collection strips use a fixed mmol scale. They are not predictions of gas volume, pressure or density.
+
+<h2 id="try">Current sets the rate; charge sets the accumulated amount</h2>
+
+With ideal 100% Faradaic yield, `Q=It`, `n(H₂)=Q/(2F)` and `n(O₂)=Q/(4F)`. The Faraday constant is the product of Avogadro's constant and elementary charge, approximately 96485.33 C/mol. A current of 2 A for 60 s transfers 120 C and produces about 0.622 mmol hydrogen and 0.311 mmol oxygen. Double the current for the same duration and both amounts double, retaining the ratio.
+
+Voltage does not appear in these ideal yield formulas, but it enters electrical energy, `E=VQ`. At prescribed current and equal charge, higher voltage costs more electrical energy for the same ideal yield. Real current and voltage are coupled by electrode kinetics and transport. The final chapter provides only 0.300 mmol water: it is exhausted near 28.9 s, after which both accumulation and sustained current stop.
+
+<h2 id="deeper">The energy ledger and the limits</h2>
+
+<details>
+<summary>Why can heat leaving the cell be negative?</summary>
+
+At a 298.15 K standard-state reference with liquid water, reaction enthalpy is about 285.8 kJ per mole of hydrogen and Gibbs free energy about 237.1 kJ/mol. They correspond to approximately 1.481 V thermoneutral and 1.229 V reversible voltages. The model's voltage range exceeds the reversible value. Net outward heat is `VI−hydrogen rate×ΔH`. Below the thermoneutral value, the reference process requires heat input. The difference between electricity and Gibbs energy alone is not all rejected heat.
+
+Explore current, elapsed time, voltage and initial water. Independently open the external circuit or make the membrane fully nonconducting to protons. The latter is an ideal complete failure, not a model of gradually increasing membrane resistance. Sustained reaction then stops; startup capacitance, leakage and crossover are omitted. Dots identify carrier routes, not actual particle counts, thermal motion or drift speeds.
+
+This is not a stack, flow-field, polarization, temperature/pressure or gas-handling design. Hydrogen–oxygen mixtures and ignition are hazardous. The scene provides no wiring, gas generation, collection or mixing instructions.
+
+</details>
+
+References: [DOE, Hydrogen Production: Electrolysis](https://www.energy.gov/cmei/fuels/hydrogen-production-electrolysis), [NETL, Fuel Cell Handbook, §2](https://netl.doe.gov/sites/default/files/netl-file/FCHandbook7.pdf), [NIST, 2022 CODATA constants](https://physics.nist.gov/constants).

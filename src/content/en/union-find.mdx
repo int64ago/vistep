@@ -1,0 +1,26 @@
+<h2 id="understand">Same group, not shortest path</h2>
+
+Union–find maintains disjoint sets. Each member has a parent pointer; a root points to itself. Members that reach the same root belong to the same group. These are internal data-structure pointers, **not edges in the original network**. Compressing them does not create a new road.
+
+A union first finds both roots. If they differ, the smaller set's root attaches to the larger set's root, its size is added at the surviving root, and the component count decreases by one. Reuniting members already in one set changes none of those memberships.
+
+<h2 id="try">A lookup improves future lookups</h2>
+
+Seven successful unions join the eight members. Member 7 then follows `7 → 6 → 4 → 0`. A lookup has already traversed that route. Path compression can redirect visited non-root members straight to root 0, so the next lookup from 7 crosses just one parent link.
+
+Exploration selects two members, joins sets or steps through a lookup and its compression. Reset to eight independent members to try another union order, or restore the deep-path example to inspect exactly which pointers change.
+
+<h2 id="deeper">What changes, and what stays invariant?</h2>
+
+<details>
+<summary>Sizes, costs and unsupported operations</summary>
+
+Only roots hold valid component sizes. Old non-root size entries need not equal their current subtree sizes after compression; future weighted unions never use them.
+
+Union by size limits tree height. Combined with path compression, a sequence of operations has a very low amortized cost. An individual lookup may still traverse several links; this is not a strict O(1) guarantee per operation. This teaching interface also validates the whole forest, copies states and computes layouts, so it does not benchmark a minimal implementation.
+
+Compression preserves the same-set answer for every pair. This implementation supports incremental unions, not directly deleting an original edge, splitting sets or undoing history. Deletion may require checking alternative connections, which is a different problem.
+
+</details>
+
+Sources: [Princeton, Union-Find](https://algs4.cs.princeton.edu/15uf/) and [the authors' Union-Find lecture](https://algs4.cs.princeton.edu/lectures/keynote/15UnionFind.pdf).

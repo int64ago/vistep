@@ -2,12 +2,13 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
-import { afterEach, test } from 'vitest';
+import { afterEach, test, vi } from 'vitest';
 import {
   createReviewPlan,
   layoutFindings,
   readBrowserState,
   sampleIsReady,
+  waitForBrowserState,
 } from './browser-review.mjs';
 import { parseByteRange, reviewOptions, startStaticPreview } from './browser-review-node.mjs';
 import { browserLaunchOptions } from './browser-review-cli.mjs';
@@ -79,6 +80,13 @@ test('layout findings distinguish broken runtime from observations needing visua
   assert.equal(result.failures.length, 0);
   assert.equal(result.smallFonts.length, 1);
   assert.equal(result.observations.length, 2);
+  const staleViewport = layoutFindings(state, {
+    slug: 'printer',
+    chapter: 1,
+    time: 15,
+    viewport: { width: 1440, height: 900 },
+  });
+  assert.match(staleViewport.failures[0], /Viewport mismatch/);
   const broken = layoutFindings(
     { ...state, horizontalOverflow: 12, errors: ['engine failed'], invalidPaths: 1, time: NaN },
     { slug: 'printer', chapter: 1, time: 15 },
@@ -107,13 +115,96 @@ test('a matching director behind an asynchronous scene loading message is not re
   assert.equal(sampleIsReady({ ...state, sceneLoading: false, time: NaN }, sample), false);
 });
 test('the shared browser callback only inspects DOM-backed state', () => {
-  assert.doesNotMatch(
-    readBrowserState.toString(),
-    /\b(?:Element|parseFloat|location|innerWidth|innerHeight|navigator)\b/,
-  );
+  assert.doesNotMatch(readBrowserState.toString(), /\b(?:Element|parseFloat|location|navigator)\b/);
+  assert.doesNotMatch(readBrowserState.toString(), /(?<![.\w])(?:innerWidth|innerHeight)\b/);
   assert.doesNotMatch(
     readBrowserState.toString(),
     /localStorage|dispatchEvent|scrollIntoView|\.click\(|requestAnimationFrame/,
+  );
+});
+const emptyDocument = (view) => ({
+  defaultView: view,
+  documentElement: {
+    clientWidth: 1425,
+    clientHeight: 985,
+    scrollWidth: 1425,
+    lang: 'en',
+    getAttribute: () => null,
+  },
+  querySelector: () => null,
+  querySelectorAll: () => [],
+  body: { innerText: '' },
+  URL: 'https://example.com/en/explore/printer/',
+  title: 'Printer',
+});
+const readyScene = (state) => ({
+  ...state,
+  chapter: 0,
+  time: 0,
+  fontsReady: true,
+  bounds: {
+    player: { height: 650, bottom: 980 },
+    stage: { height: 400 },
+    transport: { bottom: 980 },
+  },
+});
+test('classic scrollbars reduce layout space without falsifying the requested viewport', () => {
+  vi.stubGlobal('document', emptyDocument({ innerWidth: 1440, innerHeight: 1000 }));
+  const state = readyScene(readBrowserState());
+  assert.deepEqual(state.viewport, { width: 1440, height: 1000 });
+  assert.deepEqual(state.layoutViewport, { width: 1425, height: 985 });
+  assert.equal(state.viewportMeasurement, 'document-view');
+  const sample = {
+    slug: 'printer',
+    chapter: 0,
+    time: 0,
+    viewport: { width: 1440, height: 1000 },
+  };
+  assert.equal(layoutFindings(state, sample).failures.length, 0);
+  const clipped = layoutFindings(
+    { ...state, bounds: { ...state.bounds, transport: { bottom: 990 } } },
+    sample,
+  );
+  assert(clipped.observations.some((message) => /Transport extends below/.test(message)));
+  assert(
+    layoutFindings(state, { ...sample, viewport: { width: 390, height: 844 } }).failures.some(
+      (message) => /Viewport mismatch/.test(message),
+    ),
+  );
+});
+test('a restricted DOM view falls back safely and accepts exact adapter dimensions', async () => {
+  const document = emptyDocument(undefined);
+  Object.defineProperty(document, 'defaultView', {
+    get() {
+      throw new Error('Window view is not exposed by this DOM adapter');
+    },
+  });
+  vi.stubGlobal('document', document);
+  const fallback = readyScene(readBrowserState());
+  assert.equal(fallback.viewportMeasurement, 'root-client-fallback');
+  assert.deepEqual(fallback.viewport, { width: 1425, height: 985 });
+  const tab = { playwright: { evaluate: async () => fallback } };
+  const measured = await waitForBrowserState(
+    tab,
+    (state) => state.viewport.width === 1440 && state.viewport.height === 1000,
+    { getViewport: async () => ({ width: 1440, height: 1000 }) },
+  );
+  assert.equal(measured.viewportMeasurement, 'adapter');
+  assert.deepEqual(measured.layoutViewport, { width: 1425, height: 985 });
+  await assert.rejects(
+    waitForBrowserState(tab, () => true, {
+      getViewport: async () => ({ width: NaN, height: 1000 }),
+    }),
+    /invalid viewport measurement/,
+  );
+  await assert.rejects(
+    waitForBrowserState(tab, (state) => state.viewport.width === 1440, {
+      getViewport: async () => ({ width: 390, height: 844 }),
+      timeoutMs: 5,
+      pollMs: 0,
+      pause: async () => {},
+    }),
+    /Timed out waiting for browser state/,
   );
 });
 test('software WebGL is scoped to the trusted local Chromium preview', () => {
@@ -146,6 +237,7 @@ test('single audio byte ranges include open and suffix ranges and reject invalid
 });
 let server, directory;
 afterEach(async () => {
+  vi.unstubAllGlobals();
   await server?.close();
   server = null;
   if (directory) rmSync(directory, { recursive: true, force: true });

@@ -1,0 +1,26 @@
+---
+import { organPipe, organField } from '../../models/organ-pipe';
+const options = { stopped: true },
+  s = organPipe(options),
+  y = (x: number) => 205 - (x / 0.6) * 170;
+const dots = Array.from({ length: 20 }, (_, j) => {
+  const x = (s.L * j) / 19,
+    p = organField(x, 0, options);
+  return [-0.5, 0, 0.5].map((q) => ({ cx: 143 + q * 26, cy: y(x + p.displacement * 20000) }));
+}).flat();
+const curve = Array.from({ length: 101 }, (_, i) => {
+  const x = (s.L * i) / 100;
+  return `${260 + organField(x, 0, options).pressure * 46},${y(x)}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#203b3b"></rect><rect
+    x="110"
+    y="35"
+    width="66"
+    height="170"
+    fill="#152c32"></rect><path d="M110 205V35H176V205" stroke="#a6bba2" stroke-width="5"></path>{
+    dots.map((p) => <circle cx={p.cx} cy={p.cy} r="2.3" fill="#e3e6cd" />)
+  }<polyline points={curve} fill="none" stroke="#a3cbd4" stroke-width="2.5"></polyline></svg
+>

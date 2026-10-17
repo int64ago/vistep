@@ -1,0 +1,158 @@
+.stereo-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #edf0e5;
+  color: #536a5c;
+  border-radius: 26px;
+  padding: 24px 28px;
+}
+.stereo-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+}
+.stereo-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.stereo-plan {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+.stereo-view-label {
+  font-size: 16px;
+  margin: 4px 0 0;
+  color: #6d7f6c;
+}
+.stereo-views {
+  display: block;
+  width: 100%;
+  height: 140px;
+}
+.stereo-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.stereo-values span {
+  display: grid;
+  gap: 5px;
+}
+.stereo-values b,
+.stereo-result b {
+  font-weight: 400;
+  font-size: 23px;
+  color: #a66a45;
+}
+.stereo-result {
+  font-size: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.stereo-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.stereo-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.stereo-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.stereo-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.stereo-controls button {
+  min-height: 44px;
+  border: 1px solid #9cad9266;
+  border-radius: 24px;
+  background: #ffffff44;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.stereo-study .control,
+.stereo-study .control output {
+  color: #536a5c;
+}
+.stereo-study .control input[type='range'] {
+  --range-color: #a66a45;
+  --range-rest: #b4c2aa;
+}
+@media (max-width: 760px) {
+  .stereo-study {
+    padding: 16px;
+  }
+  .stereo-study header {
+    font-size: 16px;
+  }
+  .stereo-study header b {
+    display: none;
+  }
+  .stereo-plan {
+    height: 125px;
+  }
+  .stereo-view-label {
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 0;
+  }
+  .stereo-views {
+    height: 110px;
+  }
+  .stereo-values {
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .stereo-values b,
+  .stereo-result b {
+    font-size: 21px;
+  }
+  .stereo-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stereo-plan-note {
+  display: flex;
+  gap: 10px 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin: 0 0 5px;
+}
+.stereo-plan-note span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.stereo-plan-note i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@media (max-width: 760px) {
+  .stereo-study[data-watch='true'] header {
+    display: none;
+  }
+}

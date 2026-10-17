@@ -1,0 +1,31 @@
+<a id="understand"></a>
+
+## Refocusing cannot remove every spherical ray error
+
+Axial parallel rays reflected at different spherical-mirror heights have different crossings along the optical axis. Half the curvature radius approximates focal length in the paraxial region. A wider pupil reveals the limitation. Moving the receiving plane can reduce blur without bringing all ray heights to one point.
+
+A mirror isolates the problem from refractive material dispersion. The complete section, focal close-up and three-dimensional spot share the same surface and vector reflection. Both diagram axes use equal scales. The focal view is an explicit close-up, and the diagnostic receiving plane does not block incident light.
+
+<a id="try"></a>
+
+## Separate screen, pupil and surface
+
+Scan the receiving plane and follow the fixed-scale spot as it shrinks and grows. Retain a smaller central pupil and refocus: geometric spherical blur decreases, while accepted area falls with radius squared. The grey outer mirror support remains; the pale curve indicates the effective part.
+
+Keep the vertex and paraxial focal length while changing the surface toward a parabola. Axial parallel rays then share one ideal geometric focus. Tilting the input makes the spot asymmetric again. Correcting on-axis spherical aberration does not eliminate off-axis aberrations such as coma. The minimum-RMS button computes the on-axis plane, not an off-axis optimization.
+
+<a id="deeper"></a>
+
+## Normals, reflection and geometric spots
+
+<div className="formula">
+  Sphere: z(r) = −R + √(R² − r²)
+  <br />
+  Equal-paraxial-focus parabola: z(r) = −r²/(2R)
+  <br />
+  Vector reflection dOut = dIn − 2(dIn·n)n
+</div>
+
+The vertex is zero and reflected rays travel toward negative axial coordinates. For an axial ray at radius r, the spherical intercept is R²/[2√(R²−r²)]−R, approaching −R/2 near the axis. This independent expression checks the normal-based trace. With R = 100 mm and pupil radius 40 mm, the marginal crossing is about 45.45 mm from the vertex, versus 50 mm paraxially.
+
+Equal-area radial and azimuthal samples represent a circular pupil. Each three-dimensional reflected ray intersects the same receiving plane. RMS radius is measured about the spot centroid. The displayed window follows the chief ray with a fixed 10 mm radius. Ray hits are not a wave-optical point-spread function. Diffraction, roughness, coatings, obstruction, detector response and material dispersion are omitted. Zero geometric blur does not mean infinite resolution, nor can stopping down improve real sharpness without limit.

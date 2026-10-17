@@ -1,0 +1,156 @@
+.uf-study {
+  background: #e9eee8;
+  color: #4f6558;
+  border-radius: 24px;
+  padding: 24px;
+  font-size: 16px;
+}
+.uf-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+.uf-study header > span {
+  font: 13px monospace;
+  letter-spacing: 0.06em;
+  color: #8b9e90;
+}
+.uf-study header strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.uf-study svg {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 12px auto 0;
+}
+.uf-study marker path {
+  fill: #93a394;
+}
+.uf-link {
+  fill: none;
+  stroke: #b0bdb0;
+  stroke-width: 2;
+}
+.uf-link[data-path='true'] {
+  stroke: #8e9b55;
+  stroke-width: 4;
+}
+.uf-node circle {
+  fill: #f4f5ed;
+  stroke: #aabcaa;
+  stroke-width: 1.5;
+}
+.uf-node[data-root='true'] circle {
+  fill: #a3b9a4;
+  stroke: #809f86;
+}
+.uf-node[data-path='true'] circle {
+  fill: #d2d6a2;
+}
+.uf-node[data-changed='true'] circle {
+  stroke: #858c42;
+  stroke-width: 4;
+}
+.uf-node text {
+  font-size: 24px;
+  fill: #4c6355;
+}
+.uf-root-strip {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.uf-root-strip > span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+}
+.uf-root-strip b {
+  font-size: 16px;
+  font-weight: 400;
+  color: #8c9e89;
+}
+.uf-trace {
+  font-size: 16px;
+  min-height: 48px;
+  line-height: 1.5;
+  margin: 16px 0 0;
+  text-align: center;
+}
+.uf-controls {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+}
+.uf-controls > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.uf-controls label {
+  display: block;
+}
+.uf-controls select {
+  display: block;
+  width: 100%;
+}
+.uf-controls input,
+.uf-controls select,
+.uf-controls button {
+  min-height: 44px;
+  font: inherit;
+}
+.uf-controls button {
+  border: 0;
+  border-radius: 12px;
+  background: #d0ddce;
+  color: #506852;
+  padding: 10px;
+}
+.uf-study summary {
+  padding-top: 14px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.uf-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .uf-study {
+    padding: 16px 12px;
+  }
+  .uf-study header {
+    align-items: baseline;
+  }
+  .uf-study header > span {
+    font-size: 11px;
+  }
+  .uf-study header strong {
+    font-size: 16px;
+  }
+  .uf-study svg {
+    margin-top: 5px;
+  }
+  .uf-root-strip {
+    gap: 8px;
+  }
+  .uf-root-strip > span {
+    gap: 5px;
+  }
+  .uf-study[data-watch='true'] details {
+    display: none;
+  }
+  .uf-trace {
+    margin-top: 10px;
+    min-height: 0;
+  }
+  .uf-controls > div {
+    grid-template-columns: 1fr;
+  }
+}

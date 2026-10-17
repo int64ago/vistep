@@ -1,0 +1,45 @@
+---
+import { pulleyGeometry } from '../../models/pulley';
+const g = pulleyGeometry(4, 0.22);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><g transform="translate(90 0) scale(.69)"
+    ><rect x="19" y="20" width="292" height="18" rx="6" fill="#8b9c96"></rect>{
+      g.fixed.map((w) => (
+        <g>
+          <>
+            <path d={`M${w.x} 38V${w.y}`} stroke="#6a7c76" stroke-width="8" />
+            <circle cx={w.x} cy={w.y} r={g.radius - 3} fill="#94aaa9" />
+            <circle cx={w.x} cy={w.y} r="7" fill="#f6f3e9" />
+          </>
+        </g>
+      ))
+    }{
+      g.moving.map((w) => (
+        <g>
+          <>
+            <circle cx={w.x} cy={w.y} r={g.radius - 3} fill="#94aaa9" />
+            <circle cx={w.x} cy={w.y} r="7" fill="#f6f3e9" />
+            <path d={`M${w.x} ${w.y}V${g.lower + 39}`} stroke="#718783" stroke-width="7" />
+          </>
+        </g>
+      ))
+    }<path
+      d={`M${g.moving[0].x} ${g.lower + 39}H${g.moving.at(-1)!.x}M${g.loadX} ${g.lower + 39}V${g.lower + 52}`}
+      stroke="#718783"
+      stroke-width="7"></path><path d={g.path} stroke="#b48950" stroke-width="5"></path><rect
+      x={g.loadX - 30}
+      y={g.lower + 52}
+      width="60"
+      height="40"
+      rx="10"
+      fill="#426574"></rect><rect
+      x={g.freeX - 13}
+      y={g.freeY}
+      width="26"
+      height="12"
+      rx="5"
+      fill="#c78b55"></rect></g
+  ></svg
+>

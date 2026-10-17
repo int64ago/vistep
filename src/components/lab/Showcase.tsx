@@ -223,6 +223,7 @@ export default function Showcase({
         data-mode={watch ? 'watch' : 'explore'}
         data-chapter={chapter}
         data-switching={switching}
+        data-playing={watch ? advancing : playing}
         data-slug={slug}
         data-narration={voice.enabled ? (voice.waiting ? 'loading' : 'on') : 'off'}
         ref={host}

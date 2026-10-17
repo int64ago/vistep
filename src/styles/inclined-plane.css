@@ -1,0 +1,123 @@
+.incline-film {
+  max-width: 880px;
+  margin: auto;
+  color: #65715d;
+}
+.incline-stage {
+  background: linear-gradient(160deg, #faf9ef, #edf1e5);
+  border-radius: 28px;
+  overflow: hidden;
+}
+.incline-stage svg {
+  width: 100%;
+  display: block;
+  max-height: 360px;
+}
+.incline-stage text {
+  font: 20px var(--font-sans, sans-serif);
+}
+.incline-stage .incline-phone {
+  display: none;
+}
+.incline-ledger {
+  max-width: 650px;
+  margin: 16px auto;
+  padding: 0 20px;
+  font-size: 16px;
+}
+.incline-ledger > div {
+  display: grid;
+  grid-template-columns: 150px 1fr 85px;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0;
+}
+.incline-ledger i {
+  height: 7px;
+  background: #8e97af;
+  border-radius: 7px;
+  min-width: 1px;
+}
+.incline-ledger > div + div i {
+  background: #b68b5f;
+}
+.incline-ledger b {
+  font-weight: 500;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.incline-ledger p {
+  text-align: center;
+}
+.incline-ledger strong {
+  font-weight: 550;
+  font-size: 24px;
+  margin-left: 12px;
+}
+.incline-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.incline-limit {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  color: #859077;
+  padding: 0 12px;
+}
+@media (max-width: 600px) {
+  .incline-stage .incline-wide {
+    display: none;
+  }
+  .incline-stage .incline-phone {
+    display: block;
+    max-height: none;
+  }
+  .incline-stage text {
+    font-size: 21px;
+  }
+  .incline-ledger {
+    padding: 0 14px;
+  }
+  .incline-ledger > div {
+    grid-template-columns: 1fr 75px;
+    gap: 5px;
+  }
+  .incline-ledger i {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .incline-ledger b {
+    grid-column: 2;
+    grid-row: span 2;
+  }
+  .incline-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}
+
+.incline-limit {
+  text-align: left;
+  margin: 4px 12px;
+  padding: 0;
+}
+.incline-limit summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.incline-limit summary::before {
+  content: '+';
+  margin-right: 8px;
+}
+.incline-limit[open] summary::before {
+  content: '−';
+}
+.incline-limit p {
+  font-size: 16px;
+  margin: 0 0 12px;
+}

@@ -1,0 +1,41 @@
+---
+import { reservationLesson } from '../../models/database-transactions';
+const { color = '#ad8fa1' } = Astro.props;
+const q = reservationLesson(),
+  s = q.state;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <rect x="110" y="15" width="180" height="73" rx="20" fill="#e6ede6"></rect><text
+    x="200"
+    y="60"
+    text-anchor="middle"
+    font-size="30"
+    fill="#91a592">{s.remaining} + {s.orders.length} = 1</text
+  >
+  <path d="M110 145L170 90M290 145L230 90" stroke={color} stroke-width="2"></path>
+  <rect x="35" y="123" width="140" height="84" rx="19" fill="#eadfe7"></rect><rect
+    x="225"
+    y="123"
+    width="140"
+    height="84"
+    rx="19"
+    fill="#dde7ec"></rect>
+  <text x="105" y="162" text-anchor="middle" font-size="27" fill={color}>T1</text><text
+    x="295"
+    y="162"
+    text-anchor="middle"
+    font-size="27"
+    fill="#8ea8b5">T2</text
+  >
+  <path
+    d="M89 181L101 193L123 172"
+    stroke="#91a592"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path><path
+    d="M285 178L305 196M305 178L285 196"
+    stroke="#bb939a"
+    stroke-width="3"
+    stroke-linecap="round"></path>
+</svg>

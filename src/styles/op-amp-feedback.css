@@ -1,0 +1,133 @@
+.opamp-film {
+  max-width: 740px;
+  margin: auto;
+  color: #7e876c;
+}
+.opamp-state {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 8px 4px;
+  color: #8c8868;
+}
+.opamp-circuit,
+.opamp-curve {
+  display: block;
+  width: 100%;
+  max-width: 410px;
+  margin: auto;
+}
+.opamp-circuit text,
+.opamp-curve text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7e8b70;
+}
+.opamp-comparison {
+  max-width: 410px;
+  margin: 9px auto;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.opamp-comparison > div {
+  display: grid;
+  grid-template-columns: 30px 1fr 53px;
+  gap: 10px;
+  align-items: center;
+  margin: 7px 0;
+}
+.opamp-comparison i {
+  height: 14px;
+  background: #edf0e3;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.opamp-comparison b {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+}
+.opamp-comparison strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.opamp-comparison p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 8px 0 3px;
+}
+.opamp-reference {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 3px 10px;
+}
+.opamp-readings {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  font-size: 16px;
+  margin: 4px 10px 8px;
+}
+.opamp-readings span {
+  white-space: nowrap;
+}
+.opamp-readings b {
+  display: block;
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.opamp-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.opamp-controls > .segmented {
+  grid-column: 1/-1;
+}
+.opamp-notes {
+  max-width: 600px;
+  font-size: 16px;
+  margin: auto;
+  padding: 0 12px;
+}
+.opamp-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.opamp-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.opamp-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .opamp-circuit,
+  .opamp-curve {
+    max-width: 340px;
+  }
+  .opamp-circuit text,
+  .opamp-curve text {
+    font-size: 21px;
+  }
+  .opamp-readings {
+    gap: 20px;
+  }
+  .opamp-state,
+  .opamp-reference {
+    text-align: left;
+  }
+  .opamp-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .opamp-film[data-watch='true'] .opamp-notes {
+    display: none;
+  }
+}

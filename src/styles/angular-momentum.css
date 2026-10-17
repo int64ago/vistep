@@ -1,0 +1,142 @@
+.angular-film {
+  max-width: 740px;
+  margin: auto;
+  color: #6e806b;
+}
+.angular-condition {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.45;
+  margin: 0 8px 4px;
+}
+.angular-machine {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  margin: auto;
+}
+.angular-machine text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #788a6f;
+}
+.angular-values {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  font-size: 16px;
+  margin: 6px 10px;
+}
+.angular-values > span {
+  display: grid;
+  gap: 2px;
+}
+.angular-values b {
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.angular-product {
+  font-size: 16px;
+  text-align: center;
+  margin: 2px 10px 7px;
+  line-height: 1.4;
+}
+.angular-energy {
+  max-width: 450px;
+  margin: 8px auto;
+  padding: 0 12px;
+}
+.angular-energy > div:first-child {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.angular-energy b {
+  font-size: 17px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.angular-energy-track {
+  height: 9px;
+  background: #e7eddd;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 7px;
+}
+.angular-energy-track i {
+  height: 100%;
+  display: block;
+  background: #8ca58a;
+  border-radius: 5px;
+}
+.angular-energy-track em {
+  position: absolute;
+  top: -3px;
+  height: 15px;
+  border-left: 2px solid #b4915f;
+}
+.angular-energy p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 4px 0;
+}
+.angular-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.angular-controls > .segmented {
+  grid-column: 1/-1;
+}
+.angular-notes {
+  max-width: 600px;
+  padding: 0 12px;
+  margin: auto;
+  font-size: 16px;
+}
+.angular-notes summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.angular-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.angular-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .angular-machine {
+    max-width: 340px;
+  }
+  .angular-machine text {
+    font-size: 21px;
+  }
+  .angular-condition {
+    font-size: 16px;
+    text-align: left;
+  }
+  .angular-condition span {
+    white-space: nowrap;
+  }
+  .angular-values {
+    gap: 35px;
+    margin: 5px 8px;
+  }
+  .angular-product span {
+    white-space: nowrap;
+  }
+  .angular-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .angular-film[data-watch='true'] .angular-notes {
+    display: none;
+  }
+}

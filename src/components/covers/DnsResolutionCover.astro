@@ -1,0 +1,53 @@
+---
+import { dnsResolve } from '../../models/dns-resolution';
+const { color = '#95799c' } = Astro.props;
+const run = dnsResolve();
+const nodes = [
+  { x: 302, y: 47, label: '.' },
+  { x: 302, y: 114, label: 'test' },
+  { x: 302, y: 181, label: 'orchid' },
+];
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path
+    d="M103 115 302 47M103 115H302M103 115 302 181"
+    stroke={color}
+    stroke-width="2"
+    opacity=".45"></path>
+  <ellipse cx="103" cy="115" rx="63" ry="44" fill="#ddd0e2"></ellipse><text
+    x="103"
+    y="121"
+    fill="#6e587b"
+    font-size="18"
+    text-anchor="middle">RESOLVER</text
+  >
+  {
+    nodes.map((n) => (
+      <g>
+        <>
+          <rect
+            x={n.x - 49}
+            y={n.y - 23}
+            width="98"
+            height="46"
+            rx="13"
+            fill="#e9e3e9"
+            stroke={color}
+            stroke-opacity=".4"
+          />
+          <text x={n.x} y={n.y + 6} fill="#7f678b" font-size="19" text-anchor="middle">
+            {n.label}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  <circle cx="205" cy="115" r="6" fill="#c69a63"></circle><text
+    x="34"
+    y="32"
+    fill="#826b8d"
+    font-size="15"
+    font-family="monospace">A? · {run.upstreamQueries} REFERRALS / ANSWER</text
+  >
+</svg>

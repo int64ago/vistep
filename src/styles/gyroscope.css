@@ -1,0 +1,134 @@
+.gyro-film {
+  max-width: 850px;
+  margin: auto;
+  color: #657d74;
+}
+.gyro-condition {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 0 8px 5px;
+  color: #8c896a;
+}
+.gyro-object {
+  height: 310px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #edf0e8, #fafbf6);
+}
+.gyro-object .studio {
+  height: 100%;
+}
+.gyro-object svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.gyro-direction {
+  max-width: 500px;
+  margin: auto;
+}
+.gyro-direction svg {
+  display: block;
+  width: 100%;
+  max-height: 180px;
+}
+.gyro-direction text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #73867b;
+}
+.gyro-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 17px;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 3px 8px;
+}
+.gyro-weight {
+  color: #a27447;
+}
+.gyro-support {
+  color: #668675;
+}
+.gyro-momentum {
+  color: #608391;
+}
+.gyro-torque {
+  color: #a26b53;
+}
+.gyro-values {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  font-size: 16px;
+  margin: 8px;
+}
+.gyro-values > span {
+  display: grid;
+  gap: 3px;
+}
+.gyro-values b {
+  font-size: 18px;
+  font-weight: 550;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.gyro-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.gyro-controls > .segmented {
+  grid-column: 1/-1;
+}
+.gyro-notes {
+  margin: auto;
+  max-width: 600px;
+  padding: 0 12px;
+  font-size: 16px;
+}
+.gyro-notes summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.gyro-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.gyro-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .gyro-object {
+    height: 210px;
+  }
+  .gyro-condition {
+    text-align: left;
+  }
+  .gyro-direction svg {
+    max-height: none;
+  }
+  .gyro-direction text {
+    font-size: 21px;
+  }
+  .gyro-legend {
+    gap: 7px 14px;
+  }
+  .gyro-values {
+    gap: 28px;
+    margin: 5px 8px;
+  }
+  .gyro-film[data-watch='true'] .gyro-notes {
+    display: none;
+  }
+  .gyro-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}

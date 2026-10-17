@@ -1,0 +1,25 @@
+---
+import { walkPath } from '../../models/random-walk';
+const { color = '#8eb0b2' } = Astro.props;
+const paths = [2, 7, 9].map((seed) =>
+  walkPath(64, 0.5, seed)
+    .positions.map((v, i) => `${i ? 'L' : 'M'}${30 + i * 5.3} ${115 - v * 5}`)
+    .join(' '),
+);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M30 115H370" stroke={color} opacity=".4"></path>
+  {
+    paths.map((path, i) => (
+      <path
+        d={path}
+        stroke={i === 1 ? '#9e7950' : color}
+        stroke-width={i === 1 ? '2.8' : '1.7'}
+        opacity={i === 1 ? '1' : '.65'}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    ))
+  }
+</svg>

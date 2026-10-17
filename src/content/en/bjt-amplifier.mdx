@@ -1,0 +1,50 @@
+<h2 id="understand">Why does raising the base voltage lower the output?</h2>
+
+The collector connects to a 5 V supply through a 2.2 kΩ resistor. Output is the collector voltage relative to the common return. A small increase in base drive increases collector current. That increases the resistor drop, leaving a lower output voltage. This is the source of inversion in a common-emitter voltage amplifier.
+
+First set the static output near 2.5 V, leaving room for excursions in both directions. A small sinusoidal input then produces a larger, inverted output variation. The two traces use different vertical units: millivolts for the input and volts for the output.
+
+Large inputs cannot produce unlimited output excursions. During the positive half-cycle, the base–collector junction becomes forward biased and the transistor saturates. During the negative half-cycle, current approaches zero and the output approaches the supply rail. The result is no longer a scaled copy of the input.
+
+<h2 id="try">Bias, amplitude and local feedback</h2>
+
+- Start with a small input amplitude. Follow the same time marker from the input peak to the output trough.
+- Raise the amplitude to 80 mV and observe saturation and near cutoff.
+- Adjust the bias to shift the output operating point and change which side distorts first.
+- Add 100 Ω of emitter resistance. The midpoint bias is re-established; the same input amplitude now produces less output gain.
+- Watch emitter voltage Ve. As current increases, Ve rises, cancelling part of the base-voltage increase and reducing the change in Vbe.
+
+<h2 id="deeper">The supply provides the energy</h2>
+
+<details>
+<summary>The input controls a circuit that draws power</summary>
+
+The base driver supplies base current, so its power is not exactly zero. At this operating point, however, most power comes from the 5 V collector supply. The final chapter accounts for both sources and both types of dissipation:
+
+<div className="formula">Pinput = Vcc Ic + Vb Ib</div>
+<div className="formula">Presistors = Rc Ic² + Re Ie²</div>
+<div className="formula">Ptransistor = Vce Ic + Vbe Ib</div>
+
+Terminal current conservation, `Ie = Ic + Ib`, together with the circuit voltage relations, makes total input power equal total dissipation. Output is measured at high impedance, with no separate speaker or load. Resistor heat is not all useful signal output power.
+
+</details>
+
+<details>
+<summary>Small-signal gain and emitter degeneration</summary>
+
+In forward-active operation, transconductance is approximately `gm = Ic/V_T`. With a grounded emitter, small-signal voltage gain is approximately `−gm Rc`. An unbypassed emitter resistor changes this to:
+
+<div className="formula">Aᵥ ≈ −gm Rc / [1 + gm Re(1 + 1/β)]</div>
+
+This local negative feedback reduces gain while improving linearity over a larger input range. The comparison re-adjusts the base DC bias so both circuits have a 2.5 V static output. It does not simply swap the resistor while keeping the same base DC voltage.
+
+</details>
+
+<details>
+<summary>Saturation comes from junction equations</summary>
+
+An ideal Ebers–Moll model includes both base–emitter and base–collector junctions. Forward beta is 100, reverse beta is 1, transport saturation current is 10⁻¹⁴ A and thermal voltage is 25.85 mV. The circuit solves `Vc + Rc Ic = 5 V` and `Ve = Re Ie` together. Forward bias of the base–collector junction reduces the collector-to-base current ratio.
+
+The forward-active approximation `Ic ≈ β Ib` does not remain valid through saturation. Early effect, parasitic capacitance, stored charge, self-heating and breakdown are omitted. These are low-frequency quasistatic waveforms, not a claim about audio bandwidth or a particular transistor's performance.
+
+</details>

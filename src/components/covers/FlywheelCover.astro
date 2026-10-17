@@ -1,0 +1,56 @@
+---
+import { flywheelDefaults, flywheelGeometry } from '../../models/flywheel';
+const p = { ...flywheelDefaults(), inner: 0.19 },
+  g = flywheelGeometry(p),
+  r = p.inner * 310,
+  b = g.thickness * 310;
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><defs
+    ><linearGradient
+      id="flywheel-cover-metal"
+      x1="-80"
+      x2="80"
+      y1="-80"
+      y2="80"
+      gradientUnits="userSpaceOnUse"
+      ><stop stop-color="#c6d0bc"></stop><stop offset="1" stop-color="#789b83"
+      ></stop></linearGradient
+    ></defs
+  ><g transform="translate(124 108)"
+    ><path
+      d={`M77.5 0A77.5 77.5 0 1 0 -77.5 0A77.5 77.5 0 1 0 77.5 0M${r} 0A${r} ${r} 0 1 1 ${-r} 0A${r} ${r} 0 1 1 ${r} 0`}
+      fill="url(#flywheel-cover-metal)"
+      fill-rule="evenodd"
+      stroke="#8aa38b"
+      stroke-width="1.2"></path>{
+      [20, 140, 260].map((a) => (
+        <path
+          d={`M0 0L${r * Math.cos((a * Math.PI) / 180)} ${r * Math.sin((a * Math.PI) / 180)}`}
+          stroke="#b5c6ad"
+          stroke-width="8"
+          stroke-linecap="round"
+        />
+      ))
+    }<circle r="13" fill="#bcc9ad" stroke="#819c81" stroke-width="2"></circle><circle
+      r="5"
+      fill="#8aa485"></circle><path d="M63 0H74" stroke="#c7a365" stroke-width="4"></path></g
+  ><path d="M273 22V194M236 108H309" stroke="#bac7b1" stroke-dasharray="4 5"></path>{
+    [-1, 1].map((sign) => (
+      <rect
+        x={273 - b / 2}
+        y={sign < 0 ? 108 - 77.5 : 108 + r}
+        width={b}
+        height={77.5 - r}
+        fill="#91ac92"
+        rx="1"
+      />
+    ))
+  }<path d="M260 108H286" stroke="#b0c3a6" stroke-width="8" stroke-linecap="round"></path><path
+    d="M60 202C100 172 126 234 169 202S238 177 304 202"
+    fill="none"
+    stroke="#8fa88b"
+    stroke-width="3"
+    stroke-linecap="round"></path></svg
+>

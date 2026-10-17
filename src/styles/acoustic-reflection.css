@@ -1,0 +1,152 @@
+.acoustic-study {
+  background: #263c45;
+  color: #dce4d5;
+  border-radius: 26px;
+  padding: 24px 28px;
+  max-width: 980px;
+  margin-inline: auto;
+}
+.acoustic-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+}
+.acoustic-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.acoustic-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  font-size: 16px;
+  margin-top: 16px;
+}
+.acoustic-media span:last-child {
+  text-align: right;
+}
+.acoustic-study > svg {
+  display: block;
+  width: 100%;
+  height: 280px;
+}
+.acoustic-legend {
+  display: flex;
+  justify-content: center;
+  gap: 10px 18px;
+  font-size: 16px;
+  flex-wrap: wrap;
+}
+.acoustic-legend span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.acoustic-legend i {
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 50%;
+}
+.acoustic-energy {
+  margin-top: 18px;
+}
+.acoustic-energy > div {
+  height: 8px;
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff08;
+}
+.acoustic-energy i {
+  display: block;
+  height: 100%;
+}
+.acoustic-energy p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  margin: 8px 0 0;
+}
+.acoustic-parameters {
+  font-size: 16px;
+  color: #c2d0c8;
+  margin: 12px 0 0;
+}
+.acoustic-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.acoustic-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.acoustic-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #c2d0c8;
+  margin: 0 0 12px;
+}
+.acoustic-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.acoustic-controls button {
+  min-height: 44px;
+  background: #ffffff08;
+  border: 1px solid #b7c5b266;
+  border-radius: 24px;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.acoustic-study .control,
+.acoustic-study .control output {
+  color: #dce4d5;
+}
+.acoustic-study .control input[type='range'] {
+  --range-color: #d8c59a;
+  --range-rest: #6a8585;
+}
+@media (max-width: 760px) {
+  .acoustic-study {
+    padding: 16px;
+  }
+  .acoustic-study header {
+    font-size: 16px;
+  }
+  .acoustic-study header b {
+    display: none;
+  }
+  .acoustic-study[data-watch='true'] header {
+    display: none;
+  }
+  .acoustic-media {
+    margin-top: 10px;
+    gap: 10px;
+  }
+  .acoustic-study > svg {
+    height: 175px;
+  }
+  .acoustic-legend {
+    justify-content: space-between;
+    gap: 8px 12px;
+  }
+  .acoustic-energy {
+    margin-top: 12px;
+  }
+  .acoustic-energy p {
+    flex-wrap: wrap;
+  }
+  .acoustic-controls {
+    grid-template-columns: 1fr;
+  }
+}

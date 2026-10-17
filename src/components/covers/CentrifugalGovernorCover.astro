@@ -1,0 +1,46 @@
+---
+import {
+  governorDefaults,
+  governorEquilibrium,
+  governorReading,
+} from '../../models/centrifugal-governor';
+const p = governorDefaults(),
+  e = governorEquilibrium((72 * Math.PI) / 30),
+  s = governorReading((72 * Math.PI) / 30, e.rise, 0, 0, p),
+  r = e.radius * 420,
+  h = e.height * 420,
+  top = 30,
+  sy = top + 2 * h,
+  gateTop = 72 + 72 * s.valve;
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M137 20V213" stroke="#9cafa0" stroke-width="7"></path><path
+    d={`M137 ${top}L${137 - r} ${top + h}L137 ${sy}L${137 + r} ${top + h}Z`}
+    stroke="#9cae9f"
+    stroke-width="5"
+    stroke-linejoin="round"></path><circle cx={137 - r} cy={top + h} r="13" fill="#b99c67"
+  ></circle><circle cx={137 + r} cy={top + h} r="13" fill="#b99c67"></circle><circle
+    cx="137"
+    cy={top}
+    r="8"
+    fill="#b99c67"></circle><rect x="125" y={sy - 6} width="24" height="12" rx="4" fill="#719783"
+  ></rect><rect
+    x="287"
+    y="72"
+    width="52"
+    height="72"
+    rx="5"
+    fill="#bed6c3"
+    stroke="#a9bba3"
+    stroke-width="3"></rect><rect x="295" y={gateTop} width="36" height="72" rx="3" fill="#b99c67"
+  ></rect><path
+    d={`M137 ${sy}H313V${gateTop}`}
+    stroke="#719783"
+    stroke-width="4"
+    stroke-linecap="round"></path><path
+    d="M106 216H168M281 216H345"
+    stroke="#91ad94"
+    stroke-width="10"
+    stroke-linecap="round"></path></svg
+>

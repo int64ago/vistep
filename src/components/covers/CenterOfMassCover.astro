@@ -1,0 +1,45 @@
+---
+import { centerMassDefaults, centerMassState } from '../../models/center-of-mass';
+const s = centerMassState(centerMassDefaults(), 2.2),
+  X = (v: number) => 180 + 80 * v,
+  p = X(s.platform),
+  c = X(s.cargo),
+  x = X(s.center);
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><path d="M24 177H336" stroke="#b5c6a8" stroke-width="3"></path><rect
+    x={p - 96}
+    y="143"
+    width="192"
+    height="20"
+    rx="8"
+    fill="#a4bca2"
+    stroke="#8aa587"></rect>{
+    [-1, 1].map((sign) => (
+      <g>
+        <>
+          <path d={`M${p + sign * 67} 160V171`} stroke="#95ad90" stroke-width="7" />
+          <ellipse cx={p + sign * 67} cy="172" rx="15" ry="4" fill="#a5bb9b" />
+          <path d={`M${p + sign * 76} 133V144`} stroke="#9caf94" stroke-width="5" />
+        </>
+      </g>
+    ))
+  }<path d={`M${p - 88} 133H${p + 88}`} stroke="#91a88b" stroke-width="5" stroke-linecap="round"
+  ></path><rect x={c - 18} y="125" width="36" height="8" rx="3" fill="#a0b293"></rect>{
+    [0, 1].map((i) => (
+      <rect
+        x={c - 15}
+        y={113 - i * 12}
+        width="30"
+        height="12"
+        rx="3"
+        fill="#c5ad74"
+        stroke="#e1d1a8"
+      />
+    ))
+  }<path d={`M${x} 40V194`} stroke="#ab8c52" stroke-width="2" stroke-dasharray="4 5"></path><path
+    d={`M${x - 5} 199L${x} 191L${x + 5} 199Z`}
+    fill="#ab8c52"></path><path d="M180 65V190M260 65V190" stroke="#cbd5bd" stroke-dasharray="2 6"
+  ></path><circle cx={p} cy="153" r="4" fill="#70916f"></circle></svg
+>

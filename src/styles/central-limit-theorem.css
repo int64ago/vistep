@@ -1,0 +1,197 @@
+.clt-study {
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 24px;
+  background: #e9e4ee;
+  color: #5d4b70;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.clt-study header {
+  max-width: 620px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+.clt-study header > span {
+  font: 12px monospace;
+  letter-spacing: 0.06em;
+  color: #9c8ca9;
+}
+.clt-study header > b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.clt-plot {
+  max-width: 600px;
+  margin: 24px auto 0;
+}
+.clt-plot svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+  overflow: visible;
+}
+.clt-plot rect {
+  fill: #ac9cbd;
+}
+.clt-baseline {
+  stroke: #c1b5cd;
+  stroke-width: 1;
+}
+.clt-normal {
+  fill: none;
+  stroke: #8e6750;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+.clt-ticks {
+  position: relative;
+  height: 24px;
+  font-size: 16px;
+  margin: 0 2.222%;
+}
+.clt-ticks > span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.clt-ticks > span:first-child {
+  left: 0;
+}
+.clt-ticks > span:nth-child(2) {
+  transform: translateX(-50%);
+}
+.clt-ticks > span:last-child {
+  right: 0;
+}
+.clt-axis {
+  text-align: center;
+  margin: 10px 0 0;
+  font-size: 16px;
+}
+.clt-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 12px;
+  font-size: 16px;
+}
+.clt-legend > span:before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 8px;
+  border-radius: 3px;
+  background: #ac9cbd;
+  margin-right: 7px;
+}
+.clt-legend > span:last-child:not(:first-child):before {
+  background: #8e6750;
+  height: 3px;
+}
+.clt-moments {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 19px 0 0;
+}
+.clt-moments > span {
+  text-align: center;
+}
+.clt-moments b {
+  display: block;
+  font-size: 27px;
+  font-weight: 300;
+  margin-top: 3px;
+}
+.clt-pairs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.clt-pairs b {
+  font-weight: 400;
+  color: #624568;
+}
+.clt-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 12px 0 0;
+}
+.clt-controls {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.clt-controls input,
+.clt-controls select,
+.clt-controls button {
+  width: 100%;
+  min-height: 44px;
+}
+.clt-controls select,
+.clt-controls button {
+  font: inherit;
+  color: inherit;
+  border: 1px solid #c4b4ce;
+  background: #f2edf5;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.clt-controls button[aria-pressed='true'] {
+  background: #d8c8df;
+}
+.clt-study summary {
+  min-height: 44px;
+  padding-top: 16px;
+  cursor: pointer;
+}
+.clt-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .clt-study {
+    padding: 14px 12px;
+  }
+  .clt-study header > span {
+    font-size: 11px;
+  }
+  .clt-study header > b {
+    font-size: 16px;
+  }
+  .clt-plot {
+    margin-top: 16px;
+  }
+  .clt-plot svg {
+    height: 180px;
+  }
+  .clt-axis {
+    font-size: 16px;
+  }
+  .clt-legend {
+    gap: 15px;
+    margin-top: 9px;
+  }
+  .clt-moments {
+    gap: 30px;
+    margin-top: 12px;
+  }
+  .clt-moments b {
+    font-size: 24px;
+  }
+  .clt-pairs {
+    font-size: 16px;
+    gap: 9px;
+    margin-top: 12px;
+  }
+  .clt-study[data-watch='true'] details {
+    display: none;
+  }
+}

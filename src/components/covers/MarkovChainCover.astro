@@ -1,0 +1,35 @@
+---
+import { markovStep } from '../../models/markov-chain';
+const { color = '#8ea9bf' } = Astro.props;
+const p = [0.6, 0.4] as const,
+  next = markovStep(p);
+const flows = [
+  { a: 0, b: 0, mass: 0.48 },
+  { a: 0, b: 1, mass: 0.12 },
+  { a: 1, b: 0, mass: 0.12 },
+  { a: 1, b: 1, mass: 0.28 },
+];
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  {
+    flows.map((f) => (
+      <path
+        d={`M74 ${f.a ? 164 : 65} C170 ${f.a ? 164 : 65} 230 ${f.b ? 164 : 65} 326 ${f.b ? 164 : 65}`}
+        stroke={f.a ? '#c4b086' : color}
+        stroke-width={f.mass * 65}
+        opacity=".7"
+      />
+    ))
+  }
+  {
+    p.map((v, i) => (
+      <rect x="41" y={i ? 143 : 44} width="44" height="44" rx="15" fill={i ? '#dfceac' : color} />
+    ))
+  }
+  {
+    next.map((v, i) => (
+      <rect x="315" y={i ? 143 : 44} width="44" height="44" rx="15" fill={i ? '#dfceac' : color} />
+    ))
+  }
+</svg>

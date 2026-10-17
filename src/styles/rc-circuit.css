@@ -1,0 +1,217 @@
+.rc-film {
+  max-width: 880px;
+  margin: auto;
+  color: #56685d;
+}
+.rc-apparatus {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  background: radial-gradient(ellipse at 30% 50%, #f4f0e5, #f0f5ed);
+  padding: 15px 25px;
+  border-radius: 28px;
+}
+.rc-circuit {
+  width: 100%;
+  display: block;
+  max-height: 285px;
+}
+.rc-circuit text {
+  font: 20px var(--font-sans, sans-serif);
+}
+.rc-voltage-budget {
+  font-size: 16px;
+}
+.rc-voltage-stack {
+  display: flex;
+  height: 13px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 18px;
+  background: #e3e7dc;
+}
+.rc-voltage-stack i {
+  background: #b99b69;
+}
+.rc-voltage-stack b {
+  background: #a58cb9;
+}
+.rc-voltage-budget p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.rc-chart {
+  margin: 14px 20px 0;
+}
+.rc-chart svg {
+  display: block;
+  width: 100%;
+  max-height: 210px;
+}
+.rc-chart text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7c8b7d;
+}
+.rc-chart .rc-phone-chart {
+  display: none;
+}
+.rc-energy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 12px 0 20px;
+}
+.rc-energy span {
+  display: grid;
+  gap: 5px;
+  font-size: 16px;
+}
+.rc-energy b {
+  font-size: 20px;
+  font-weight: 500;
+}
+.rc-energy i {
+  font-style: normal;
+  color: #9aa58e;
+}
+.rc-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.rc-controls > .segmented {
+  grid-column: 1/-1;
+}
+.rc-limit {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  color: #84907f;
+  padding: 0 12px;
+}
+@media (max-width: 600px) {
+  .rc-apparatus {
+    display: block;
+    padding: 6px 0 12px;
+  }
+  .rc-circuit {
+    max-width: 350px;
+    max-height: none;
+    margin: auto;
+  }
+  .rc-circuit text {
+    font-size: 21px;
+  }
+  .rc-voltage-budget {
+    padding: 0 18px;
+  }
+  .rc-voltage-budget > span {
+    display: none;
+  }
+  .rc-voltage-stack {
+    margin-top: 0;
+  }
+  .rc-voltage-budget p {
+    margin: 7px 0 0;
+  }
+  .rc-chart {
+    margin: 8px 0 0;
+  }
+  .rc-chart .rc-wide-chart {
+    display: none;
+  }
+  .rc-chart .rc-phone-chart {
+    display: block;
+    max-height: none;
+  }
+  .rc-chart text {
+    font-size: 20px;
+  }
+  .rc-energy {
+    gap: 9px;
+    margin: 6px 8px 12px;
+  }
+  .rc-energy span {
+    font-size: 16px;
+  }
+  .rc-energy b {
+    font-size: 17px;
+  }
+  .rc-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .rc-limit {
+    margin: 10px 0;
+  }
+}
+
+.rc-discharge-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  height: 13px;
+  margin-top: 18px;
+}
+.rc-discharge-bars i {
+  justify-self: end;
+  background: #b99b69;
+  border-radius: 6px 0 0 6px;
+}
+.rc-discharge-bars b {
+  background: #a58cb9;
+  border-radius: 0 6px 6px 0;
+}
+
+.rc-limit {
+  text-align: left;
+  margin: 4px 12px 8px;
+  padding: 0;
+}
+.rc-limit summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+.rc-limit summary::before {
+  content: '+';
+  margin-right: 8px;
+}
+.rc-limit[open] summary::before {
+  content: '−';
+}
+.rc-limit p {
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+@media (max-width: 600px) {
+  .rc-discharge-bars {
+    margin-top: 0;
+  }
+  .rc-voltage-budget {
+    padding: 0 14px;
+  }
+  .rc-voltage-budget p {
+    gap: 8px;
+  }
+  .rc-energy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 8px minmax(0, 1fr) 8px minmax(0, 1fr);
+    gap: 4px;
+    align-items: center;
+  }
+  .rc-energy b {
+    white-space: nowrap;
+  }
+  .showcase[data-mode='watch'] .rc-limit {
+    display: none;
+  }
+}

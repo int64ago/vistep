@@ -1,0 +1,32 @@
+<a id="understand"></a>
+
+## Pressure does not require a pile against the wall
+
+An elastic reflection reverses the normal momentum component and transfers impulse to the wall. Summing many impulses and dividing by time and area gives mean pressure. Particles need not accumulate at the boundary.
+
+The gold point keeps its identity. Right-wall rings use actual trajectory impact times and positions. The wall-impulse average independently counts a 10 ms window rather than copying the state equation. Its finite representative sample can fluctuate near the ideal value.
+
+<a id="try"></a>
+
+## Hold two quantities fixed
+
+At fixed amount and volume, heating increases the speed scale: impacts are more frequent and each transfers more momentum. At fixed temperature and amount, shortening the box reduces wall round-trip times. At fixed temperature and volume, more dots mean more gas; each dot represents 1/1200 mol.
+
+Helium and neon at equal temperature, amount and volume have equal ideal pressures. Heavier atoms have lower rms speeds. Equal amount is not equal mass, and rms molecular speed is neither mean speed nor sound speed.
+
+<a id="deeper"></a>
+
+## State equation and representative paths
+
+<div className="formula">
+  pV = nRT = Nk_BT
+  <br />p = Nm⟨v_x²⟩ / V = Nm⟨v²⟩ / (3V)
+  <br />
+  v_rms = √(3RT/M)
+</div>
+
+Pressure is absolute and temperature uses kelvins. Gauge pressure subtracts 101325 Pa and cannot replace absolute pressure in the equation. The box section is fixed at 0.1 m by 0.1 m; length sets volume. Each wall impact contributes 2m|v_x| times the representative atom weight. Counted impacts determine mean force.
+
+Equal-speed groups of 24 directions reproduce isotropic second moments and zero bulk drift. They represent the moments needed for pressure, not a full Maxwell speed distribution or collisional relaxation. Points pass through one another and reflect elastically only at walls. Drawn dot size does not occupy gas volume.
+
+Motion is slowed 50,000 times. Depth is projected; trails and impact rings aid tracking. Changing temperature, volume or amount reconstructs a representative pattern for the specified macroscopic state. Moving-piston work, heat exchange, filling and adiabatic compression are not simulated. The state equation is most appropriate at low density away from condensation; interactions, finite molecular volume and phase changes require a fuller model.

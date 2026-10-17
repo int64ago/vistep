@@ -1,0 +1,26 @@
+<h2 id="understand">Equal area, not equal angle or arc length</h2>
+
+In an ideal gravitational two-body problem, a bound orbit is an ellipse with the central body at a focus. Eccentricity e = 0 gives a circle; increasing e separates the nearest and farthest distances. The central body is generally not at the ellipse's geometric center.
+
+Kepler's second law compares **the area swept out by the line from the focus to the moving body**. Equal time intervals produce equal areas. Near the focus, a shorter radius requires more rapid angular motion and a longer arc; farther away, motion is slower. Both colored regions follow the actual curved orbit rather than replacing it with a straight chord.
+
+<h2 id="try">Change the shape while preserving the clock</h2>
+
+Change eccentricity, semi-major axis and elapsed time from periapsis. Each position is reconstructed by solving Kepler's equation, so seeking does not depend on a numerical integration history. The two equal-duration sectors refer to intervals separated by half a period; their areas remain equal at any location.
+
+Hide the sectors to inspect the focus distance and speed. Speed is normalized by the circular speed for the same semi-major axis. At fixed a, changing e changes the speed contrast but not the period. Increasing a changes the period according to `T² = a³`. The final chapter compares two orbital sizes around the same center over the same elapsed time.
+
+<h2 id="deeper">A diagram of orbital laws, not an ephemeris</h2>
+
+<details>
+<summary>Equations, units and conditions</summary>
+
+AU and normalized solar years give `μ = 4π²`. Mean anomaly is `M = 2πt/T`; eccentric anomaly satisfies `M = E − e sin E`. Coordinates relative to the focus are `x = a(cos E − e)` and `y = a√(1−e²) sin E`.
+
+The swept area from E₁ to E₂ is `ab × [E₂ − E₁ − e(sin E₂ − sin E₁)] / 2`, not the triangle formed by the endpoints over a finite interval. Equal changes in M give equal areas.
+
+The center is fixed and bodies are points. Central recoil, other bodies, relativity and collisions are omitted. Only elliptic orbits with e below 1 are supported; the interface stops at 0.85. These are not predictions of real planetary positions on a date. Unlike [Moon phases](/en/explore/moon-phases/) and [seasons](/en/explore/seasons/), the subject here is the link between a focus, changing speed and equal-time area.
+
+</details>
+
+Source: [NASA: Orbits and Kepler's Laws](https://science.nasa.gov/solar-system/orbits-and-keplers-laws/).

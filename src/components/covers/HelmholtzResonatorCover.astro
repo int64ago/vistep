@@ -1,0 +1,44 @@
+---
+import { helmholtzState } from '../../models/helmholtz-resonator';
+const s = helmholtzState(0.5),
+  neck = s.effectiveLength * 1100;
+const dots = Array.from({ length: 6 }, (_, i) => 92 + (i * neck) / 6);
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><linearGradient id="helmCover"
+      ><stop stop-color="#9fb8a2" stop-opacity=".4"></stop><stop
+        offset=".5"
+        stop-color="#dbe5c5"
+        stop-opacity=".06"></stop><stop offset="1" stop-color="#9fb8a2" stop-opacity=".4"
+      ></stop></linearGradient
+    ></defs
+  ><rect width="480" height="300" fill="#203742"></rect><rect
+    x="151"
+    y="130"
+    width="144"
+    height="130"
+    rx="16"
+    fill="url(#helmCover)"
+    stroke="#a3b7a8"
+    stroke-width="2"></rect><path
+    d="M153 228H293V247Q293 258 280 258H166Q153 258 153 247Z"
+    fill="#7fa6a5"
+    opacity=".65"></path><path
+    d="M151 131H208V79M295 131H238V79"
+    fill="none"
+    stroke="#c5d0b6"
+    stroke-width="5"></path><rect
+    x="211"
+    y="85"
+    width="24"
+    height={neck}
+    rx="6"
+    fill="#e0c591"
+    opacity=".45"></rect>{dots.map((y) => <circle cx="223" cy={y} r="3" fill="#e9d4a9" />)}<path
+    d="M330 134V219M319 176H341"
+    stroke="#a2b9b2"
+    stroke-width="2"></path><rect x="321" y="176" width="18" height="35" rx="4" fill="#8fbfc9"
+  ></rect></svg
+>

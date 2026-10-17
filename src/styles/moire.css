@@ -1,0 +1,154 @@
+.moire-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #e9eded;
+  color: #52636a;
+  border-radius: 26px;
+  padding: 24px 28px;
+}
+.moire-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+}
+.moire-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.moire-field {
+  position: relative;
+  height: auto;
+  aspect-ratio: 760/280;
+  margin-top: 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #77828a;
+}
+.moire-field canvas,
+.moire-field > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.moire-field > svg {
+  pointer-events: none;
+}
+.moire-field p {
+  font-size: 16px;
+  padding: 24px;
+}
+.moire-slice-label {
+  font-size: 16px;
+  margin-top: 14px;
+}
+.moire-slice {
+  width: 100%;
+  height: 46px;
+  display: block;
+}
+.moire-values {
+  display: flex;
+  gap: 12px 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 8px;
+}
+.moire-values b {
+  font-size: 20px;
+  font-weight: 400;
+  color: #80633c;
+}
+.moire-markers {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 12px;
+}
+.moire-markers span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.moire-markers i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+}
+.moire-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.moire-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.moire-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.moire-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+.moire-controls button {
+  min-height: 44px;
+  background: #ffffff55;
+  border: 1px solid #9eafb566;
+  border-radius: 24px;
+  color: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.moire-study .control,
+.moire-study .control output {
+  color: #52636a;
+}
+.moire-study .control input[type='range'] {
+  --range-color: #80633c;
+  --range-rest: #b2bfc3;
+}
+@media (max-width: 760px) {
+  .moire-study {
+    padding: 16px;
+  }
+  .moire-study header {
+    font-size: 16px;
+  }
+  .moire-study header b {
+    display: none;
+  }
+  .moire-field {
+    height: auto;
+    aspect-ratio: 340/210;
+    margin-top: 10px;
+  }
+  .moire-slice-label {
+    margin-top: 10px;
+  }
+  .moire-slice {
+    height: 32px;
+  }
+  .moire-values {
+    gap: 7px 12px;
+  }
+  .moire-values b {
+    font-size: 18px;
+  }
+  .moire-controls {
+    grid-template-columns: 1fr;
+  }
+}

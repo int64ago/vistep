@@ -1,0 +1,26 @@
+<h2 id="understand">Accumulate actual one-step moves</h2>
+
+A one-dimensional lattice walker starts at zero and independently chooses `+1` or `−1` each step. A trajectory accumulates these moves. Its position is not the population mean. Fixed pseudorandom seeds replay examples; the exact endpoint distribution comes from probability transitions rather than estimates from three paths.
+
+For a fair unbounded walk after N steps, mean position is zero and variance is N. Root-mean-square displacement is `RMS=√E[x²]=√N`. Zero mean balances left and right outcomes in expectation; it does not require each walker to return to zero or remain there.
+
+<h2 id="try">Separate random spread from average drift</h2>
+
+Increasing from 16 to 64 steps doubles fair-walk RMS from 4 to 8. This square-root scale is neither mean absolute displacement nor a bound on every individual path.
+
+With right-step probability p = 0.7 and N = 32, mean position is 12.8 and standard deviation around that mean is about 5.185. For an unbounded walk, `E[x]=N(2p−1)` and `Var(x)=4Np(1−p)`. RMS also includes drift and therefore differs from standard deviation when mean position is nonzero.
+
+<h2 id="deeper">Lattice parity and boundaries change reachable outcomes</h2>
+
+<details>
+<summary>Parity, absorption and scope</summary>
+
+Each step changes parity. Starting at zero, a walker cannot be at zero after 31 steps but can after 32. Alternating empty bins are a reachability constraint rather than missing graphics. This does not say the path never returned earlier: the displayed return probability only concerns its position at the current step.
+
+At absorbing boundaries ±4, a walker remains where it first reaches a boundary. The endpoint mass stays in the distribution and contributes to the absorbed fraction. Walkers are not deleted, and surviving mass is not renormalized. Unbounded-walk variance and square-root formulas do not automatically apply after adding these boundaries.
+
+Explore changes step count, directional bias, example seed and absorption. Exact transitions update probabilities and moments immediately. This is a discrete one-dimensional teaching model, not continuous Brownian motion, a forecast of people or a model of every diffusion process. At zero steps, position, variance, RMS and absorbed fraction are exactly zero.
+
+</details>
+
+Sources: [MIT: Random Walks and Diffusion](https://math.mit.edu/classes/18.366/lec06/), [Doyle and Snell: Random Walks and Electric Networks](https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf).

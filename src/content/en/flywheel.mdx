@@ -1,0 +1,42 @@
+<h2 id="understand">Store a surplus, then return it</h2>
+
+When driving torque exceeds load torque, the flywheel speeds up and gains rotational kinetic energy. When input falls short, it slows down and returns stored energy to the load. This reduces speed variation within a cycle, while allowing some variation to remain.
+
+The example uses a time-programmed torque source: input varies smoothly between 2 and 38 N·m against a constant 20 N·m load. The period is two seconds and mean angular speed is 20 rad/s. This is an analytically checkable teaching drive, not a measured engine waveform.
+
+Equal mass does not imply equal rotational inertia. Move the same 20 kg of steel toward the rim while keeping a 250 mm outer radius. The central opening grows, and the rim must also become thicker to preserve volume. The axial section at the right shows that change at the same scale as the front view.
+
+Greater inertia reduces the speed ripple caused by the same periodic torque. It also slows acceleration during starting. Cut the drive and the load continues taking energy until the flywheel stops. Stored energy cannot sustain a permanent shortfall in input.
+
+<h2 id="try">Keep a comparison condition fixed</h2>
+
+- In periodic drive, compare inner radii of 55 and 210 mm. Mass, outer radius, input waveform and mean speed stay fixed. Compare the peak-to-trough speed range.
+- Reduce torque amplitude to zero. Input and load match, leaving constant speed.
+- Select “Cut drive” and increase inspection time. Speed and energy reach zero, without subsequent reversal.
+- Select “Start from rest” and compare the two rotors at the same time. This experiment applies a constant 20 N·m input with zero resisting load.
+
+<h2 id="deeper">Geometry, torque and energy</h2>
+
+<details>
+<summary>Inertia at equal annular mass</summary>
+
+For outer radius R, inner radius r, mass m, density ρ and axial thickness b:
+
+<div className="formula">I = ½m(R² + r²); b = m / [ρπ(R² − r²)]</div>
+
+Density is 7800 kg/m³. Increasing the opening raises both inertia and thickness. Lightweight hub and spokes provide the physical connection, with their mass and inertia neglected in this teaching model.
+
+</details>
+
+<details>
+<summary>Torque difference, speed and stored energy</summary>
+
+The rotational equation is `I dω/dt = input torque − load torque`, with stored energy `K = ½Iω²`. The periodic torque difference is `18 sin(πt)`, giving:
+
+<div className="formula">ω(t) = 20 − [18/(Iπ)] cos(πt)</div>
+
+Rotors are compared at equal mean angular speed, so initial speed and stored energy vary with inertia. This compares separate periodic operating states; it does not reshape a spinning object instantaneously. Input work minus load work equals the kinetic-energy change exactly.
+
+Drive removal starts at the maximum-energy point of the periodic cycle. Thereafter `I dω/dt = −20` until rest. The starting experiment begins at rest under a constant 20 N·m net torque. The ideal model omits material stresses, critical speeds and additional bearing losses; it does not supply a real flywheel design rating.
+
+</details>

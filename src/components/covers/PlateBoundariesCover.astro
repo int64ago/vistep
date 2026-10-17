@@ -1,0 +1,25 @@
+---
+import { plateSlab } from '../../models/plate-boundaries';
+const { color = '#9fb29d' } = Astro.props,
+  slab = Array.from({ length: 91 }, (_, i) => plateSlab(-100 + i * 2)),
+  outline = [
+    ...slab.map((s) => s.upper),
+    ...slab
+      .slice()
+      .reverse()
+      .map((s) => s.lower),
+  ],
+  path = outline.map((p, i) => `${i ? 'L' : 'M'}${165 + p.x * 1.45} ${60 + p.z * 1.45}`).join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M20 65H380V205H20Z" fill="#dec6ae" opacity=".6"></path>
+  <path d="M188 56H368V79H201Z" fill="#c7b193"></path>
+  <path d={`${path}Z`} fill={color} stroke="#839a88" stroke-width="1.5"></path>
+  {
+    [-45, -20, 5, 30, 55].map((s) => {
+      const p = plateSlab(s);
+      return <circle cx={165 + p.x * 1.45} cy={60 + p.z * 1.45} r="4" fill="#b79865" />;
+    })
+  }
+</svg>

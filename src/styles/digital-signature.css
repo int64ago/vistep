@@ -1,0 +1,288 @@
+.sig-study {
+  padding: 24px;
+  background: #ede6e3;
+  color: #654b44;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.sig-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+.sig-study header > span {
+  font: 12px monospace;
+  color: #b79d91;
+  letter-spacing: 0.05em;
+}
+.sig-study header b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.sig-letter {
+  max-width: 540px;
+  margin: 20px auto 0;
+  border-radius: 16px;
+  background: #f5efdf;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 18px #90766a08;
+}
+.sig-letter > span {
+  font-size: 16px;
+}
+.sig-letter > strong {
+  font: 32px monospace;
+  display: block;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+.sig-letter small {
+  font-size: 16px;
+  line-height: 1.4;
+  display: block;
+}
+.sig-seal {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 30px;
+  background: #dfc4bc;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sig-seal > span {
+  font-size: 16px;
+}
+.sig-seal b {
+  font: 22px monospace;
+  font-weight: 400;
+}
+.sig-balance {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+  align-items: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto 0;
+  text-align: center;
+}
+.sig-balance > div {
+  background: #dce3d3;
+  border-radius: 16px;
+  padding: 14px 8px;
+}
+.sig-balance > div span {
+  font-size: 16px;
+}
+.sig-balance strong {
+  font-size: 40px;
+  font-weight: 300;
+  display: block;
+  margin-top: 5px;
+}
+.sig-balance > b {
+  font-size: 28px;
+  font-weight: 400;
+}
+.sig-balance p {
+  grid-column: 1/-1;
+  font-size: 16px;
+  margin: 0;
+  color: #556746;
+}
+.sig-balance[data-valid='false'] > div {
+  background: #e5cdd0;
+}
+.sig-balance[data-valid='false'] p {
+  color: #854b58;
+}
+.sig-formula {
+  text-align: center;
+  font: 18px monospace;
+  line-height: 1.5;
+  margin: 20px 0 0;
+}
+.sig-keypair {
+  display: grid;
+  grid-template-columns: 1fr 35px 1fr;
+  gap: 12px;
+  align-items: center;
+  max-width: 540px;
+  margin: 35px auto 0;
+  text-align: center;
+}
+.sig-keypair > div {
+  background: #e1d6d2;
+  border-radius: 19px;
+  padding: 24px 10px;
+}
+.sig-keypair > div:last-of-type {
+  background: #dce4dd;
+}
+.sig-keypair span {
+  font-size: 16px;
+}
+.sig-keypair strong {
+  font-size: 44px;
+  font-weight: 300;
+  display: block;
+  margin-top: 10px;
+}
+.sig-keypair p {
+  grid-column: 1/-1;
+  font: 18px monospace;
+}
+.sig-reuse {
+  max-width: 550px;
+  margin: 24px auto 0;
+  text-align: center;
+}
+.sig-reuse h3 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.sig-reuse > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 12px;
+  background: #e3d7d0;
+  border-radius: 12px;
+  font-size: 16px;
+}
+.sig-reuse code {
+  font-size: 16px;
+}
+.sig-reuse p {
+  font-size: 16px;
+  margin: 24px 0 3px;
+}
+.sig-reuse strong {
+  display: block;
+  font-size: 48px;
+  font-weight: 300;
+  color: #834f59;
+  margin-bottom: 10px;
+}
+.sig-controls {
+  display: grid;
+  gap: 10px;
+  padding-top: 18px;
+}
+.sig-controls > input,
+.sig-controls button {
+  min-height: 44px;
+  width: 100%;
+  font: inherit;
+}
+.sig-controls label:last-of-type {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+}
+.sig-controls input[type='checkbox'] {
+  width: 23px;
+  height: 23px;
+}
+.sig-controls button {
+  border: 0;
+  border-radius: 12px;
+  background: #dfd2ca;
+  color: inherit;
+}
+.sig-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.sig-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .sig-study {
+    padding: 14px 12px;
+  }
+  .sig-study header {
+    display: block;
+  }
+  .sig-study header > span {
+    display: none;
+  }
+  .sig-study header b {
+    display: block;
+    margin-top: 6px;
+  }
+  .sig-letter {
+    padding: 13px 10px;
+    margin-top: 14px;
+  }
+  .sig-letter > strong {
+    font-size: 27px;
+    margin: 8px 0;
+  }
+  .sig-letter small {
+    font-size: 16px;
+  }
+  .sig-seal {
+    gap: 13px;
+    margin-top: 12px;
+    padding: 10px;
+  }
+  .sig-seal b {
+    font-size: 20px;
+  }
+  .sig-balance {
+    margin-top: 13px;
+    gap: 5px;
+    grid-template-columns: 1fr 24px 1fr;
+  }
+  .sig-balance > div {
+    padding: 10px 4px;
+  }
+  .sig-balance strong {
+    font-size: 33px;
+  }
+  .sig-balance > div span {
+    font-size: 16px;
+  }
+  .sig-keypair {
+    gap: 8px;
+    grid-template-columns: 1fr 24px 1fr;
+    margin-top: 20px;
+  }
+  .sig-keypair > div {
+    padding: 18px 6px;
+  }
+  .sig-keypair strong {
+    font-size: 36px;
+  }
+  .sig-keypair p {
+    font-size: 16px;
+  }
+  .sig-reuse > div {
+    display: block;
+    text-align: left;
+    padding: 8px 12px;
+  }
+  .sig-reuse > div code {
+    display: block;
+    margin-top: 7px;
+  }
+  .sig-reuse > code {
+    display: block;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+  .sig-study[data-watch='true'] details {
+    display: none;
+  }
+}

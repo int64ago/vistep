@@ -1,0 +1,135 @@
+.joint-film {
+  max-width: 900px;
+  margin: auto;
+  color: #5b7169;
+}
+.joint-object {
+  height: 280px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 60%, #e4ede5, #f9faf3);
+}
+.joint-object .studio {
+  height: 100%;
+}
+.joint-object svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.joint-object text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #60756b;
+}
+.joint-unit {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 6px 0 0;
+}
+.joint-readout {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  padding: 5px 12px 0;
+}
+.joint-readout span {
+  display: grid;
+  gap: 4px;
+  font-size: 16px;
+}
+.joint-readout b {
+  font-size: 23px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.joint-trace {
+  max-width: 580px;
+  margin: 10px auto 0;
+}
+.joint-trace svg {
+  display: block;
+  width: 100%;
+  max-height: 120px;
+}
+.joint-trace text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #81917d;
+}
+.joint-observation {
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 12px 10px;
+  line-height: 1.6;
+}
+.joint-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.joint-controls > .segmented {
+  grid-column: 1/-1;
+}
+.joint-notes {
+  font-size: 16px;
+  margin: 4px 12px;
+}
+.joint-notes summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.joint-notes summary::before {
+  content: '+';
+  margin-right: 8px;
+}
+.joint-notes[open] summary::before {
+  content: '−';
+}
+.joint-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+@media (max-width: 600px) {
+  .joint-object {
+    height: 210px;
+  }
+  .joint-readout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    text-align: center;
+    gap: 6px;
+    padding: 3px 8px 0;
+  }
+  .joint-readout:has(> span:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .joint-readout span {
+    white-space: nowrap;
+  }
+  .joint-readout b {
+    font-size: 18px;
+  }
+  .joint-trace {
+    margin: 6px 0 0;
+  }
+  .joint-trace svg {
+    max-height: none;
+  }
+  .joint-trace text {
+    font-size: 21px;
+  }
+  .joint-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .joint-observation {
+    text-align: left;
+  }
+  .showcase[data-mode='watch'] .joint-notes {
+    display: none;
+  }
+}

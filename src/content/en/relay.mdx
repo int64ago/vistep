@@ -1,0 +1,28 @@
+<h2 id="understand">The coil does not supply the load current</h2>
+
+This scene chooses a normally-open, monostable DC plunger relay. Its coil builds a magnetic field; the plunger overcomes a return spring and moves an insulating linkage. A copper bridge then joins two fixed load contacts. After de-energization and release, the spring returns the mechanism and opens the contacts. Normally-closed, changeover and latching types are different configurations.
+
+The control coil and switched load have no conductive connection. An independent source supplies the load. Changing that source from 5 V to 12 V alters load power without changing coil current or motion in this model. The relay controls another circuit rather than creating load energy from a small coil current.
+
+<h2 id="try">Why can the same 2 V fail to pull in yet maintain closure?</h2>
+
+Starting from rest at 2 V produces coil current, but magnetic force across the open gap is below spring preload. The plunger stays put and the load stays disconnected. Apply 5 V first, then reduce it to 2 V: the gap is already smaller, so the same holding current produces stronger attraction and maintains closure. Pickup and holding start from different geometries.
+
+The model gap shrinks from 1.00 mm to 0.40 mm across a 0.60 mm stroke. The same computed displacement moves the plunger, insulation and copper bridge. Both moving contact circles meet their fixed partners tangentially at closure. Winding texture is illustrative rather than a turn-by-turn manufacturing drawing; geometry is enlarged to expose gaps and contacts.
+
+<h2 id="deeper">Coupled dynamics and a failure counterexample</h2>
+
+<details>
+<summary>Why not turn coil current directly into a contact boolean?</summary>
+
+The reduced inductance is `L(x)=Lleak+μ₀N²A/(g−x)`, with `Fm=I²(dL/dx)/2` and `L dI/dt=V−RI−I(dL/dx) dx/dt`. The last term retains motion-induced electromagnetic coupling. The mechanical calculation integrates mass, spring preload/stiffness, damping and end stops. Seeking samples a reproducible precomputed history.
+
+Defaults are 800 turns, 125 Ω coil resistance, 30 mm² pole area, 1 g moving mass, 6 mN preload, 15 N/m stiffness and 0.04 N·s/m damping. They construct a teaching example rather than fit a product. High-permeability iron is assumed; saturation, eddy currents, remanence, contact bounce, elastic overtravel, wear and arcs are omitted.
+
+De-energization includes an ideal 0.7 V flyback diode. Coil current first recirculates locally and decays; the spring returns as attraction weakens. Unclamped voltage spikes, arcs and driver ratings are outside the model. The last chapter mechanically blocks the plunger: coil current and attraction remain, yet the contacts do not close. An energized coil alone does not prove load continuity.
+
+Explore changes initial coil voltage, turn count, independent load voltage, observation time, holding/release history and obstruction. Isolation does not mean arbitrary safe voltage or unlimited contact capacity. This is not wiring, live-repair or component-selection guidance.
+
+</details>
+
+References: [OMRON, Technical Explanation for General-purpose Relays](https://www.ia.omron.com/data_pdf/guide/36/generalrelay_tg_e_10_6.pdf), [OMRON, Relay Technology](https://components.omron.com/us-en/products/basic-knowledge/relays/technology), [OMRON, FAQ02804, coil surge absorption and release](https://www.ia.omron.com/support/faq/answer/36/faq02804/index.html).

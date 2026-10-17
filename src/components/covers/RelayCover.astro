@@ -1,0 +1,73 @@
+---
+import { relayAt, relayConstants, relayTrace } from '../../models/relay';
+const { color = '#a9bec5' } = Astro.props;
+const q = relayAt(
+  relayTrace({
+    voltage: 5,
+    afterVoltage: 5,
+    switchAt: 0.04,
+    turns: 800,
+    loadVoltage: 5,
+    loadResistance: 100,
+  }),
+  0.02,
+);
+const stroke = (q.closure / relayConstants.travel) * 30,
+  top = 65 + stroke,
+  bridge = 86 + stroke;
+const winding = Array.from({ length: 113 }, (_, n) => {
+  const u = n / 112,
+    angle = Math.PI + u * 14 * Math.PI;
+  return `${n ? 'L' : 'M'}${110 + 40 * Math.cos(angle)} ${120 + 70 * u + 5 * Math.sin(angle)}`;
+}).join(' ');
+const spring = Array.from({ length: 9 }, (_, n) => [
+  110 + (n === 0 || n === 8 ? 0 : n % 2 ? 6 : -6),
+  40 + ((top - 40) * n) / 8,
+]);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M37 160V120H70M70 190V218H37V190" stroke={color} stroke-width="2"></path><circle
+    cx="37"
+    cy="175"
+    r="15"
+    fill="#dae5e7"
+    stroke={color}></circle>
+  <rect x="75" y="109" width="70" height="86" fill="#d7e2e3" stroke="#b5c5c8"></rect><rect
+    x="90"
+    y="165"
+    width="40"
+    height="24"
+    rx="4"
+    fill="#a8b8c0"></rect><rect x="100" y={top} width="20" height="50" rx="4" fill="#b5c5cd"></rect>
+  <path d={winding} stroke="#b48c6e" stroke-width="4" stroke-linecap="round"></path><path
+    d={`M${spring.map((p) => p.join(' ')).join('L')}`}
+    stroke="#8c9fa7"
+    stroke-width="2"
+    stroke-linejoin="round"></path>
+  <path d={`M110 ${top}H285V${bridge}`} stroke="#c4c8b0" stroke-width="9" stroke-linejoin="round"
+  ></path><path d={`M240 ${bridge}H330`} stroke="#ac8163" stroke-width="5" stroke-linecap="round"
+  ></path>
+  {
+    [240, 330].map((x) => (
+      <g>
+        <>
+          <circle cx={x} cy={bridge} r="4" fill="#997357" />
+          <path d={`M${x} 124V200`} stroke="#aa9476" stroke-width="2" />
+          <circle cx={x} cy="124" r="4" fill="#ab9473" />
+        </>
+      </g>
+    ))
+  }
+  <path d="M240 200H330" stroke="#aa9476" stroke-width="2"></path><circle
+    cx="263"
+    cy="200"
+    r="12"
+    fill="#e8dfcc"
+    stroke="#b2a080"></circle><circle
+    cx="307"
+    cy="200"
+    r="12"
+    fill={q.loadPower > 0 ? '#dfc99b' : '#e2e0d4'}
+    stroke="#b2a080"></circle>
+</svg>

@@ -1,0 +1,44 @@
+<h2 id="understand">Parts move inside. What happens to the whole center?</h2>
+
+The ballast travels right along the guide while the platform shifts left. Treat platform, guide, ballast and internal drive as one system. With zero horizontal external force and zero initial overall velocity, the horizontal center of mass remains fixed.
+
+The center is a mass-weighted position, not necessarily the midpoint between two objects. With a 120 kg platform and 60 kg cargo, it lies closer to the platform's own center. The gold dashed line marks the system center's horizontal projection.
+
+The ballast moves 1.6 m relative to the platform. **That is not a 1.6 m ground-relative displacement.** The platform moves about 0.53 m left while the cargo moves about 1.07 m right relative to the ground. Multiplying their signed displacements by their masses gives equal, opposite contributions.
+
+With 120 kg cargo, the two masses are equal and their ground-relative travel is equal and opposite. Give the system an initial speed of 0.35 m/s and its center continues moving uniformly. Add a horizontal external force and the center accelerates. Internal motion changes part positions but cannot, by itself, change the velocity of the complete system's center.
+
+<h2 id="try">Identify the displacement reference first</h2>
+
+- Use 60 kg cargo and an initially stationary system. At three seconds compare platform travel of −0.53 m, cargo travel of +1.07 m and zero center displacement.
+- Switch to 120 kg cargo. Both parts travel about 0.80 m in opposite directions.
+- Switch to 30 kg cargo. The heavier platform moves less and the lighter cargo moves farther relative to the ground.
+- Select “Initial drift.” Ground marks stay fixed while the center crosses them at constant speed.
+- Select “External force.” A 36 N force acts on the platform, accelerating the system center according to the total mass.
+
+<h2 id="deeper">Separate internal and whole-system motion</h2>
+
+<details>
+<summary>Mass-weighted position</summary>
+
+Let M be platform mass, m cargo mass, s the cargo position relative to platform center, and X the system center:
+
+<div className="formula">X = (M xplatform + m xcargo)/(M+m)</div>
+<div className="formula">xplatform = X − ms/(M+m); xcargo = xplatform + s</div>
+
+Initially the platform center is at the ground coordinate origin and cargo is at −0.8 m. Over three seconds the cargo moves smoothly to +0.8 m, with zero relative speed and acceleration at both endpoints. Platform mass includes guides and the internal drive, with its horizontal center fixed at the platform midpoint.
+
+</details>
+
+<details>
+<summary>Zero force does not necessarily mean rest</summary>
+
+For constant horizontal external resultant F and initial center velocity V₀:
+
+<div className="formula">X(t) = X(0) + V₀t + ½[F/(M+m)]t²</div>
+
+With F = 0, V₀ stays unchanged. The center remains fixed only if V₀ is also zero. A 120 kg platform, 60 kg cargo and 36 N external force give acceleration 0.2 m/s² and 0.9 m of center displacement in three seconds.
+
+The example assumes a horizontal air-bearing platform with negligible resistance. Internal actuators prescribe cargo motion; their forces cancel in the system total. The external force acts only on the platform and is included in the whole-system balance. This horizontal model does not predict air flow, tipping, deformation or drive energy use. Visible cargo plates represent 30 kg units at their common horizontal center.
+
+</details>

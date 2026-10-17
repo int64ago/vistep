@@ -29,6 +29,10 @@ function fixture(duration: number | null = 90) {
     "export const topics: Topic[] = [\n{slug:'existing', number:'1'}\n];\n",
   );
   write('src/data/experiments.ts', 'export const experimentLoaders = {\n};\n');
+  write(
+    'src/data/discovery-metadata.ts',
+    "export const discoveryCategories = [{id: 'mechanisms'}];\nexport const discoveryMetadata: Record<string, DiscoveryMetadata> = {\n};\n",
+  );
   write('src/components/TopicCover.astro', '---\n---\n<svg></svg>\n');
   write('src/i18n/en.json', '{}\n');
   write('src/data/narration.json', JSON.stringify({ existing: { duration: 180, cues: [] } }));
@@ -58,7 +62,15 @@ function fixture(duration: number | null = 90) {
     },
     component: 'src/components/experiments/ShortExplanation.tsx',
     cover: 'src/components/covers/ShortExplanationCover.astro',
-    translations: {},
+    translations: { 短片: 'Short explanation' },
+    discovery: {
+      category: 'mechanisms',
+      minAge: 10,
+      keywords: {
+        zh: ['短片', '实验', '观察'],
+        en: ['Short explanation', 'experiment', 'observation'],
+      },
+    },
     narration: {
       duration,
       cues: [0, 45].map((at, i) => ({
@@ -94,6 +106,7 @@ describe('short explanation integration', () => {
       'src/components/TopicCover.astro',
       'src/i18n/en.json',
       'src/data/narration.json',
+      'src/data/discovery-metadata.ts',
     ];
     const before = registryPaths.map((path) => readFileSync(join(root, path), 'utf8'));
     const dry = run();
@@ -111,6 +124,9 @@ describe('short explanation integration', () => {
     expect(topics).toContain('"slug": "short-explanation"');
     expect(topics).not.toContain('"duration"');
     expect(topics).not.toContain('"category"');
+    expect(readFileSync(join(root, 'src/data/discovery-metadata.ts'), 'utf8')).toContain(
+      '"short-explanation"',
+    );
   });
 
   it.each([0, -1, 300.01, null])(
@@ -129,5 +145,29 @@ describe('short explanation integration', () => {
     const { run } = fixture(300);
     const result = run();
     expect(result.status, result.stderr).toBe(0);
+  });
+
+  it('rejects missing discovery metadata before changing any registry', () => {
+    const { root, run } = fixture();
+    const packetPath = join(root, 'src/data/scene-packets/short-explanation.json');
+    const packet = JSON.parse(readFileSync(packetPath, 'utf8'));
+    delete packet.discovery;
+    writeFileSync(packetPath, JSON.stringify(packet));
+    const before = readFileSync(join(root, 'src/data/topics.ts'), 'utf8');
+    const result = run('--apply');
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain('discovery category');
+    expect(readFileSync(join(root, 'src/data/topics.ts'), 'utf8')).toBe(before);
+  });
+
+  it('rejects an English search index that omits the translated scene name', () => {
+    const { root, run } = fixture();
+    const packetPath = join(root, 'src/data/scene-packets/short-explanation.json');
+    const packet = JSON.parse(readFileSync(packetPath, 'utf8'));
+    packet.discovery.keywords.en[0] = 'A different name';
+    writeFileSync(packetPath, JSON.stringify(packet));
+    const result = run('--apply');
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain('exact Chinese and English topic names');
   });
 });

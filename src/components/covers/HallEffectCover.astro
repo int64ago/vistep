@@ -1,0 +1,57 @@
+---
+import { hallDefaults, hallEffect } from '../../models/hall-effect';
+const s = hallEffect(hallDefaults());
+const positiveBelow = s.hallVoltage > 0;
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><rect x="20" y="52" width="264" height="110" rx="8" fill="#e4ead6" stroke="#b1c1a2"></rect><rect
+    x="16"
+    y="68"
+    width="8"
+    height="77"
+    rx="3"
+    fill="#aeb99f"></rect><rect x="280" y="68" width="8" height="77" rx="3" fill="#aeb99f"></rect>{
+    [44, 79, 114, 149, 184, 219, 254].map((x) => (
+      <g>
+        <>
+          <path
+            d={`M${x - 4} 58h8${!positiveBelow ? `M${x} 54v8` : ''}`}
+            stroke="#ae9769"
+            stroke-width="1.6"
+          />
+          <path
+            d={`M${x - 4} 156h8${positiveBelow ? `M${x} 152v8` : ''}`}
+            stroke="#7c9f95"
+            stroke-width="1.6"
+          />
+        </>
+      </g>
+    ))
+  }{
+    [55, 105, 205, 255].flatMap((x) =>
+      [82, 132].map((y) => (
+        <g>
+          <>
+            <circle cx={x} cy={y} r="5" stroke="#a2b59a" fill="none" />
+            <circle cx={x} cy={y} r="1.5" fill="#a2b59a" />
+          </>
+        </g>
+      )),
+    )
+  }<path d="M173 52V36H320V87M173 162V180H320V129" stroke="#98aa91" fill="none" stroke-width="2"
+  ></path><path d="M173 162V180H320V129" stroke="#b39978" fill="none" stroke-width="2"
+  ></path><circle cx="320" cy="108" r="21" fill="#f3f3e5" stroke="#b4c2a5"></circle><path
+    d="M313 100l7 16 7 -16M58 24H241l-7 -4m7 4 -7 4M142 108H99l7 -4m-7 4 7 4"
+    fill="none"
+    stroke="#9c9d75"
+    stroke-width="2"></path><circle cx="154" cy="108" r="7" fill="#86a498"></circle><path
+    d="M154 119v26l-4 -6m4 6 4 -6"
+    stroke="#b49a68"
+    stroke-width="2.5"
+    fill="none"></path><path
+    d="M154 97V71l-4 6m4 -6 4 6"
+    stroke="#7da094"
+    stroke-width="2.5"
+    fill="none"></path></svg
+>

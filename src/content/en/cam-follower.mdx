@@ -1,0 +1,44 @@
+<h2 id="understand">Rotation alone does not create a lift</h2>
+
+A circular disc rotating about its own centre keeps the same top height, so it cannot raise and lower the touching roller. Move the shaft away from the disc centre and it becomes an **eccentric circular cam**. The roller now follows a vertical guide as the disc turns.
+
+The roller has a finite radius, and the contact point is generally offset from the shaft's vertical line. Its centre and contact point are solved from two-circle tangency, rather than sampling a vertical cam radius and adding a roller radius afterward.
+
+Constant cam speed does not imply constant follower speed. The follower slows to zero when reversing at each end of its stroke and moves faster between those ends.
+
+A cam can push through contact, but cannot pull a follower across a gap. At high speed, insufficient gravity and spring force allow separation. The final comparison holds speed fixed and shows how a preloaded spring maintains contact within this particular model's parameter range.
+
+<h2 id="try">Inspect the gap as well as the displacement</h2>
+
+- Set eccentricity to zero and scrub the angle. The disc rotates but the stroke is zero.
+- Increase eccentricity and check that the stroke is twice that offset.
+- Use 600 rpm and zero spring stiffness, then scrub two turns. During separation, actual contact force is zero and the follower follows its free-flight motion.
+- Keep the speed and set stiffness to 400 N/m. Compare gap and force at the same angles.
+
+Seeking reconstructs motion from the same initial condition. A backward seek never reuses a future state. Exploration uses the full unilateral-contact model; shaft torque, wear and roller spin inertia are outside its scope.
+
+<h2 id="deeper">A geometric constraint needs a physically possible force</h2>
+
+<details>
+<summary>An eccentric circle and a finite roller</summary>
+
+Let R be cam radius, r roller radius and e eccentricity. The shaft is at the origin; the roller centre stays on x = 0. The cam centre is `(e cos θ, e sin θ)`.
+
+<div className="formula">y(θ) = e sin θ + √((R + r)² − e² cos² θ)</div>
+
+The contact point lies on the line joining both circle centres. Stroke is 2e, but the complete displacement is not an arbitrary sine wave attached to the roller. Velocity and acceleration are derivatives of this same geometric expression.
+
+</details>
+
+<details>
+<summary>Unilateral contact, preload and re-contact</summary>
+
+The roller and follower mass is 0.2 kg, with positive displacement upward. Spring preload at the lowest geometric position is 6 mm. The vertical contact component required to follow the cam is:
+
+<div className="formula">Nᵧ = m y″ + mg + k(y − ymin + preload)</div>
+
+The actual normal direction comes from the two circle centres. A negative required normal would mean the cam must pull the follower, which unilateral contact cannot do. The solver releases that constraint and propagates gravity-plus-spring free motion analytically. Re-contact is modeled as a completely inelastic velocity match.
+
+Contact transitions use 1440 angular steps per revolution and are checked against twice that resolution. The model omits spring mass, damping, roller spin inertia, contact deformation, noise and stress. It does not predict a machine's allowable operating speed.
+
+</details>

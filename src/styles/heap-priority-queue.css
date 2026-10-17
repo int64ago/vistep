@@ -1,0 +1,252 @@
+.heap-study {
+  padding: 24px;
+  color: #c4d0d9;
+  background: #202d43;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.heap-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+.heap-study header > span:first-child {
+  font: 13px monospace;
+  color: #8d9cb4;
+  letter-spacing: 0.06em;
+}
+.heap-tree {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  max-height: 300px;
+  margin: 16px auto 6px;
+  overflow: visible;
+}
+.heap-link {
+  fill: none;
+  stroke: #55657c;
+  stroke-width: 2;
+}
+.heap-node circle {
+  fill: #34455d;
+  stroke: #7b90a6;
+  stroke-width: 1.5;
+}
+.heap-node text {
+  font-size: 24px;
+  fill: #c9d9e0;
+}
+.heap-node[data-root='true'] circle {
+  fill: #52627a;
+  stroke: #9caec1;
+}
+.heap-node[data-moving='true'] circle {
+  fill: #a58b5d;
+  stroke: #dbbf80;
+}
+.heap-node[data-moving='true'] text {
+  fill: #fcf2d4;
+}
+.heap-node[data-child='true'] circle {
+  stroke: #8fabb8;
+  stroke-width: 3;
+}
+.heap-node[data-chosen='true'] circle {
+  stroke: #d2b77d;
+  stroke-width: 3;
+}
+.heap-array {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
+  margin: 12px 0;
+}
+.heap-array > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 3px;
+  background: #2c3b52;
+  border-radius: 9px;
+  min-width: 0;
+}
+.heap-array strong {
+  font-size: 23px;
+  font-weight: 400;
+}
+.heap-array span {
+  font-size: 16px;
+  color: #8195ae;
+}
+.heap-array > div[data-moving='true'] {
+  background: #706149;
+}
+.heap-served {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+.heap-served > span {
+  font-size: 16px;
+  color: #8eabc0;
+}
+.heap-served > div {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.heap-served b {
+  font-size: 23px;
+  font-weight: 400;
+  color: #d2bb86;
+}
+.heap-action,
+.heap-choice {
+  line-height: 1.5;
+  margin: 15px 0 0;
+  min-height: 48px;
+}
+.heap-choice {
+  color: #d2bd8d;
+}
+.heap-empty {
+  height: 138px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 50px;
+  color: #9aaec5;
+  gap: 8px;
+}
+.heap-empty span {
+  font-size: 16px;
+}
+.heap-study summary {
+  min-height: 44px;
+  padding-top: 13px;
+  cursor: pointer;
+  color: #8ea4bd;
+}
+.heap-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.heap-controls {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+}
+.heap-controls input,
+.heap-controls button {
+  width: 100%;
+  min-height: 44px;
+}
+.heap-controls > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.heap-controls button {
+  border: 0;
+  border-radius: 12px;
+  background: #394b63;
+  color: #cfdae1;
+  font: inherit;
+  padding: 9px;
+}
+.heap-controls button:disabled {
+  opacity: 0.4;
+}
+.heap-controls p {
+  line-height: 1.5;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .heap-study[data-watch='true'] {
+    padding: 14px 12px;
+  }
+  .heap-study[data-watch='true'] header > span:last-child,
+  .heap-study[data-watch='true'] .heap-action,
+  .heap-study[data-watch='true'] details {
+    display: none;
+  }
+  .heap-study[data-watch='true'] .heap-tree {
+    margin: 8px auto 0;
+    max-height: 200px;
+  }
+  .heap-study[data-watch='true'] .heap-array {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 3px;
+    margin: 8px 0;
+  }
+  .heap-study[data-watch='true'] .heap-array > div {
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 1px;
+  }
+  .heap-study[data-watch='true'] .heap-served {
+    margin-top: 8px;
+    gap: 8px;
+  }
+  .heap-study[data-watch='true'] .heap-served > div {
+    gap: 6px;
+  }
+  .heap-study[data-watch='true'] .heap-served b {
+    font-size: 21px;
+  }
+  .heap-study[data-watch='true'] .heap-choice {
+    margin-top: 8px;
+    min-height: 0;
+  }
+  .heap-study {
+    padding: 18px 12px;
+  }
+  .heap-study header {
+    display: block;
+  }
+  .heap-study header > span:first-child {
+    font-size: 12px;
+  }
+  .heap-study header > span:last-child {
+    display: block;
+    font-size: 16px;
+    margin-top: 7px;
+  }
+  .heap-tree {
+    margin-top: 12px;
+  }
+  .heap-array {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .heap-array > div {
+    flex-direction: row;
+    justify-content: center;
+    padding: 7px 2px;
+    gap: 7px;
+  }
+  .heap-array strong {
+    font-size: 21px;
+  }
+  .heap-array span {
+    font-size: 16px;
+  }
+  .heap-served {
+    gap: 12px;
+  }
+  .heap-served > div {
+    gap: 10px;
+  }
+  .heap-action,
+  .heap-choice {
+    min-height: 48px;
+  }
+  .heap-controls > div {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,31 @@
+---
+import { SIGN_MESSAGE, signatureSign, signatureVerify } from '../../models/digital-signature';
+const { color = '#b99b91' } = Astro.props,
+  s = signatureSign(SIGN_MESSAGE),
+  v = signatureVerify(SIGN_MESSAGE, s.signature, s.publicKey);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  ><rect x="60" y="20" width="280" height="82" rx="18" fill="#f1e8d5"></rect><text
+    x="200"
+    y="70"
+    text-anchor="middle"
+    font-family="monospace"
+    font-size="30"
+    fill={color}>HELLO</text
+  ><path d="M115 108L95 140M285 108L305 140" stroke={color} stroke-width="2"></path><rect
+    x="40"
+    y="140"
+    width="125"
+    height="65"
+    rx="18"
+    fill="#dce5d3"></rect><rect x="235" y="140" width="125" height="65" rx="18" fill="#dce5d3"
+  ></rect><text x="102" y="183" text-anchor="middle" font-size="31" fill="#9ba785">{v.left}</text
+  ><text x="298" y="183" text-anchor="middle" font-size="31" fill="#9ba785">{v.right}</text><text
+    x="200"
+    y="184"
+    text-anchor="middle"
+    font-size="31"
+    fill={color}>=</text
+  ></svg
+>

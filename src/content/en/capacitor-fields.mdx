@@ -1,0 +1,44 @@
+<h2 id="understand">First ask what is fixed: charge or voltage?</h2>
+
+Two parallel conductors carry equal, opposite free charges, producing an electric field from the positive plate toward the negative plate. Potential decreases in that direction. A steeper potential drop per distance means a stronger field.
+
+Isolate the capacitor to fix its plate charge. Increasing the air gap leaves the central field approximately unchanged, but voltage rises because the field extends across a greater distance. Gap, field and voltage describe different quantities.
+
+Compare materials that completely fill the gap. **At fixed free charge**, polarization creates opposing bound surface charges, reducing the net field and voltage. Raising relative permittivity from one to four lowers the voltage from 12 V to 3 V.
+
+**At fixed voltage**, the source supplies more free charge. With complete filling and unchanged gap, the net field remains `V/d`, while free charge becomes four times larger. A claim that dielectric reduces field therefore needs a stated comparison condition.
+
+<h2 id="try">Read the potential profile</h2>
+
+- With air and fixed voltage, raise source voltage. Field, potential difference and free charge increase together.
+- With air and fixed charge, widen the gap. Field stays constant while voltage rises.
+- Fill the gap with relative permittivity four. Compare fixed charge and fixed voltage using the V and Q readings.
+- Make only the central half of the gap dielectric. The profile changes slope at both interfaces, with steeper air sections.
+- Vary permittivity. The same normal electric displacement corresponds to different local fields, while potential stays continuous.
+
+<h2 id="deeper">Layered gaps add potential drops in series</h2>
+
+<details>
+<summary>Free charge, polarization and field</summary>
+
+For area A, free charge Q and relative permittivity κ, normal electric displacement D is continuous across interfaces without additional free surface charge:
+
+<div className="formula">D = Q/A; Eair = D/ε₀; Edielectric = D/(κε₀)</div>
+
+Polarization is `P = D(1 − 1/κ)`. The dielectric surface near the positive plate carries negative bound charge, with positive bound charge on the opposite surface. The dielectric remains neutral overall. Bound charges differ from free charges supplied to the conductors by the source.
+
+</details>
+
+<details>
+<summary>Air on both sides of a central dielectric</summary>
+
+For plate separation d and central dielectric thickness t:
+
+<div className="formula">C = ε₀A / [d − t + t/κ]</div>
+<div className="formula">V = Eair(d − t) + Edielectric t</div>
+
+Area is 100 cm² and default gap is 5 mm; air is approximated by vacuum permittivity. The enlarged image shows a central 4 mm-high strip, with plates extending beyond the break marks. Fringing is neglected. The potential curve shares the gap's horizontal coordinates.
+
+The linear insulating model excludes leakage, dielectric losses and breakdown. Changes of material, thickness or electrical boundary compare separate electrostatic equilibria, not a mechanical insertion process or its work. Charge symbols illustrate polarity; readings quantify charge. The direction arrow does not encode field-line density.
+
+</details>

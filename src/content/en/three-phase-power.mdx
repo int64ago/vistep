@@ -1,0 +1,37 @@
+<h2 id="understand">A 120-degree offset lets the fluctuations cancel</h2>
+
+Balanced three-phase source voltages have equal frequency and amplitude, spaced 120 electrical degrees apart. In a star connection, phase voltage is measured from a phase conductor to neutral. Line voltage is measured between two phase conductors and is their difference, not the sum of two RMS magnitudes.
+
+A single resistive phase has instantaneous power equal to voltage times current, pulsating twice per electrical cycle. Each phase of a balanced three-phase load also pulsates, but the three fluctuations cancel in their sum, leaving constant total instantaneous power.
+
+<h2 id="try">Add phases, then break the balance</h2>
+
+- Connect only phase A. Instantaneous power passes through zero and reaches twice its average.
+- Connect three identical loads. The bold sum becomes horizontal and neutral current becomes zero, while individual phase currents remain nonzero.
+- Set a 45-degree current lag. Individual phase power can become negative as stored energy returns, while balanced total power remains constant.
+- Halve phase A impedance. Its current increases, neutral return current appears, and total power pulsates again.
+- Stop at any cycle position and check that the three signed phase currents add to the neutral return current.
+
+<h2 id="deeper">Keep RMS, phasors and instantaneous values distinct</h2>
+
+<details>
+<summary>Line voltage and total active power</summary>
+
+For phase-voltage RMS magnitude V and 120-degree separation, the difference between two phase vectors has magnitude √3 V. At the default 230 V, line voltage is about 398.4 V.
+
+<div className="formula">vₖ = √2 V sin(ωt − 2πk/3)</div>
+<div className="formula">iₖ = √2 I sin(ωt − 2πk/3 − φ)</div>
+<div className="formula">Σvₖiₖ = 3VI cosφ</div>
+
+The last result requires balanced sinusoidal phases with the same lag angle. Default impedance magnitude is 100Ω per phase, giving 2.3 A RMS and 1.587 kW total for resistive loads. Reactive power describes energy exchanged with storage in each phase, rather than an additional continuous energy loss.
+
+</details>
+
+<details>
+<summary>The neutral connection and model boundaries</summary>
+
+The ideal neutral remains connected, keeping each load phase voltage fixed by the ideal source. Its return current equals the algebraic sum of the three phase currents. An unbalanced load with an open neutral has a floating star point, which is not modeled here.
+
+Changing the lag angle holds impedance magnitude fixed by adjusting both R=|Z|cosφ and L=|Z|sinφ/ω; this is not simply adding inductance to a fixed resistor. Each chapter expands 40 ms, and plots show one 20 ms cycle. Wire impedance, switching transients and harmonics are omitted. Nonlinear loads do not generally obey the zero-neutral-current conclusion of balanced sinusoidal operation.
+
+</details>

@@ -1,0 +1,42 @@
+---
+import { BINARY_VALUES, binarySearchTrace } from '../../models/binary-search';
+const { color = '#bca16e' } = Astro.props;
+const frame = binarySearchTrace(BINARY_VALUES, 37).frames[1];
+const cells = BINARY_VALUES.map((value, index) => ({
+  value,
+  index,
+  x: 25 + (index % 8) * 44,
+  y: 51 + Math.floor(index / 8) * 75,
+  active: index >= frame.nextLow && index <= frame.nextHigh,
+}));
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <text x="28" y="31" fill={color} font-size="16" font-family="monospace"
+    >37 ? · {frame.value} &gt; 37</text
+  >
+  {
+    cells.map((cell) => (
+      <g opacity={cell.active || cell.index === frame.mid ? 1 : 0.28}>
+        <>
+          <rect
+            x={cell.x}
+            y={cell.y}
+            width="36"
+            height="57"
+            rx="8"
+            fill={cell.index === frame.mid ? '#d5b87b' : '#e6dac0'}
+            stroke={color}
+            stroke-opacity=".4"
+          />
+          <text x={cell.x + 18} y={cell.y + 29} fill="#927347" font-size="19" text-anchor="middle">
+            {cell.value}
+          </text>
+          <text x={cell.x + 18} y={cell.y + 48} fill="#a68e68" font-size="12" text-anchor="middle">
+            {cell.index}
+          </text>
+        </>
+      </g>
+    ))
+  }
+</svg>

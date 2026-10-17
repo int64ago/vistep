@@ -1,0 +1,46 @@
+---
+import { inductorDefaults, inductorOff } from '../../models/inductor-transient';
+const p = inductorDefaults();
+const points = Array.from(
+  { length: 71 },
+  (_, j) => `${170 + j * 2.3},${190 - (inductorOff(p, (j * 0.012) / 70).current / 0.3) * 90}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><path
+    d="M45 52H83l7 -8 10 16 10 -16 10 16 7 -8H155V70c-19 0 -19 15 0 15c-19 0 -19 15 0 15c-19 0 -19 15 0 15V144"
+    fill="none"
+    stroke="#ad956d"
+    stroke-width="3"></path><path
+    d="M155 144H206V93M206 59V25H45V52"
+    fill="none"
+    stroke="#83a69b"
+    stroke-width="2.5"></path><rect
+    x="196"
+    y="59"
+    width="20"
+    height="34"
+    rx="5"
+    fill="#e1e9d9"
+    stroke="#83a69b"
+    stroke-width="2"></rect><path
+    d="M45 52V75M45 117V180H155V175M155 144L138 167"
+    fill="none"
+    stroke="#bbc5b2"
+    stroke-width="2"></path><circle
+    cx="45"
+    cy="96"
+    r="21"
+    fill="#eef0e2"
+    stroke="#bbc5b2"
+    stroke-width="2"></circle><path
+    d="M39 88h12M45 82v12M39 105h12M206 132v-20l-5 6m5 -6 5 6M155 121v15l-5 -6m5 6 5 -6"
+    fill="none"
+    stroke="#8eaa96"
+    stroke-width="2"></path><path d="M170 100V190H340" fill="none" stroke="#c2ccb5"></path><polyline
+    points={points}
+    fill="none"
+    stroke="#a28a62"
+    stroke-width="3"></polyline></svg
+>

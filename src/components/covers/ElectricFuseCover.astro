@@ -1,0 +1,54 @@
+---
+import { fuseRun, fuseDefaults } from '../../models/electric-fuse';
+const run = fuseRun(fuseDefaults());
+const temperatures = run.frames.at(-1)!.temperature;
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect
+    x="54"
+    y="97"
+    width="532"
+    height="128"
+    rx="40"
+    fill="#e0e7d3"
+    fill-opacity=".5"
+    stroke="#bcc9ac"
+    stroke-width="2"></rect><path d="M106 115H535" stroke="#edf1e3" stroke-width="5"></path>{
+    temperatures.map((v, i) => (
+      <g>
+        <>
+          <path
+            d={`M${89 + (i / 40) * 462} 162h13`}
+            stroke={`hsl(${96 - (v / 1000) * 64} 40% 55%)`}
+            stroke-width="27"
+            opacity={(v / 1000) * 0.25}
+          />
+          <path
+            d={`M${89 + (i / 40) * 462} 162h13`}
+            stroke={`hsl(${96 - (v / 1000) * 64} 35% 50%)`}
+            stroke-width="2.3"
+          />
+        </>
+      </g>
+    ))
+  }<rect x="31" y="91" width="74" height="140" rx="17" fill="#bac8aa"></rect><rect
+    x="535"
+    y="91"
+    width="74"
+    height="140"
+    rx="17"
+    fill="#bac8aa"></rect><path d="M90 345H552" stroke="#d0d8c1" stroke-width="2"></path><path
+    d={temperatures
+      .map((v, i) => `${i ? 'L' : 'M'}${95 + ((i + 0.5) / 40) * 450} ${345 - (v / 1000) * 75}`)
+      .join(' ')}
+    fill="none"
+    stroke="#8c9e76"
+    stroke-width="4"></path><circle
+    cx="320"
+    cy="162"
+    r="14"
+    fill="none"
+    stroke="#bd9c66"
+    stroke-width="2"></circle></svg
+>

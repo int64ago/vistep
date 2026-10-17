@@ -1,0 +1,225 @@
+.walk-study {
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: #e1e9e9;
+  color: #36595d;
+  font-size: 16px;
+}
+.walk-study header {
+  max-width: 620px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin: auto;
+}
+.walk-study header > span {
+  font: 12px monospace;
+  letter-spacing: 0.04em;
+  color: #8ca2a3;
+}
+.walk-study header > b {
+  font-weight: 400;
+  font-size: 18px;
+}
+.walk-time,
+.walk-density {
+  max-width: 610px;
+  margin: 23px auto 0;
+}
+.walk-time svg,
+.walk-density svg {
+  display: block;
+  width: 100%;
+  height: 230px;
+}
+.walk-zero {
+  stroke: #bdcccc;
+  stroke-width: 1.4;
+}
+.walk-thread {
+  fill: none;
+  stroke: #537f84;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+.walk-time circle {
+  fill: #9e7950;
+}
+.walk-time > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.walk-time b {
+  font-weight: 400;
+}
+.walk-density rect {
+  fill: #8eb0b2;
+}
+.walk-density circle {
+  fill: #9b784d;
+}
+.walk-origin {
+  stroke: #c0cbca;
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+.walk-center {
+  stroke: #688b8b;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+.walk-density > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 4.444%;
+  font-size: 16px;
+}
+.walk-density > p {
+  text-align: center;
+  margin: 6px 0 0;
+  font-size: 16px;
+}
+.walk-moments {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 16px;
+}
+.walk-moments > span {
+  text-align: center;
+  min-width: 65px;
+}
+.walk-moments b {
+  display: block;
+  font-size: 27px;
+  font-weight: 300;
+  margin-top: 5px;
+}
+.walk-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 14px 0 0;
+}
+.walk-steps {
+  max-width: 550px;
+  margin: 25px auto 0;
+}
+.walk-steps p {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+.walk-steps > div {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 20px;
+}
+.walk-steps span {
+  background: #d0e0e0;
+  border-radius: 13px;
+  padding: 15px 3px;
+  text-align: center;
+}
+.walk-steps b {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+}
+.walk-steps i {
+  display: block;
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 12px;
+}
+.walk-controls {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.walk-controls input,
+.walk-controls button {
+  width: 100%;
+  min-height: 44px;
+}
+.walk-controls button {
+  font: inherit;
+  color: inherit;
+  background: #edf3f1;
+  border: 1px solid #b0c4c4;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.walk-controls button[aria-pressed='true'] {
+  background: #ccdeda;
+}
+.walk-study summary {
+  min-height: 44px;
+  padding-top: 16px;
+  cursor: pointer;
+}
+.walk-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .walk-study {
+    padding: 10px 12px;
+  }
+  .walk-study header {
+    display: block;
+  }
+  .walk-study header > span {
+    display: none;
+    font-size: 11px;
+  }
+  .walk-study header > b {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .walk-time,
+  .walk-density {
+    margin-top: 16px;
+  }
+  .walk-time svg,
+  .walk-density svg {
+    height: 150px;
+  }
+  .walk-moments {
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .walk-moments > span {
+    min-width: 62px;
+  }
+  .walk-moments b {
+    font-size: 23px;
+  }
+  .walk-note {
+    margin-top: 10px;
+  }
+  .walk-steps {
+    margin-top: 15px;
+  }
+  .walk-steps p {
+    font-size: 16px;
+  }
+  .walk-steps > div {
+    gap: 5px;
+  }
+  .walk-steps b {
+    font-size: 20px;
+  }
+  .walk-steps span {
+    padding: 14px 2px;
+  }
+  .walk-study[data-watch='true'] details {
+    display: none;
+  }
+}

@@ -1,0 +1,41 @@
+---
+import { gyroscopeDefaults, gyroscopeState } from '../../models/gyroscope';
+const s = gyroscopeState(gyroscopeDefaults(), 0.3),
+  angle = (-s.azimuth * 180) / Math.PI;
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><defs
+    ><linearGradient id="gyro-cover-metal" x1="0" x2="1" y1="0" y2="1"
+      ><stop stop-color="#c8d3cc"></stop><stop offset="1" stop-color="#7e9f9d"
+      ></stop></linearGradient
+    ></defs
+  ><ellipse cx="153" cy="188" rx="62" ry="14" fill="#dce4d5"></ellipse><path
+    d="M153 185V89"
+    stroke="#99ada1"
+    stroke-width="9"
+    stroke-linecap="round"></path><ellipse cx="153" cy="186" rx="33" ry="9" fill="#9bb49d"
+  ></ellipse><g transform={`translate(153 89) rotate(${angle})`}
+    ><path d="M0 0H115" stroke="#a4b6b1" stroke-width="7" stroke-linecap="round"></path><ellipse
+      cx="82"
+      cy="0"
+      rx="25"
+      ry="66"
+      fill="url(#gyro-cover-metal)"
+      stroke="#94adaa"
+      stroke-width="3"></ellipse><ellipse cx="83" cy="0" rx="7" ry="17" fill="#bda66c"
+    ></ellipse><path d="M0 0H42" stroke="#a4b6b1" stroke-width="7"></path><circle
+      r="8"
+      fill="#c7b17a"></circle></g
+  ><path
+    d="M59 124C81 146 114 148 143 138"
+    fill="none"
+    stroke="#b98967"
+    stroke-width="3"
+    stroke-linecap="round"></path><path
+    d="M140 131L151 134L145 145"
+    fill="none"
+    stroke="#b98967"
+    stroke-width="3"
+    stroke-linecap="round"></path></svg
+>

@@ -1,0 +1,26 @@
+---
+import { acousticField } from '../../models/acoustic-reflection';
+const xs = Array.from({ length: 301 }, (_, i) => -1 + i / 150),
+  point = (x: number, p: number) => `${25 + (x + 1) * 175},${115 - p * 50}`;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg"
+  ><rect width="400" height="230" fill="#263c45"></rect><path
+    d="M200 25V205M25 115H375"
+    stroke="#b7c8b16b"
+    stroke-dasharray="3 4"></path><polyline
+    points={xs
+      .filter((x) => x <= 0)
+      .map((x) => point(x, acousticField(x, 0.0028).pressure))
+      .join(' ')}
+    stroke="#e3a477"
+    stroke-width="2.5"
+    fill="none"></polyline><polyline
+    points={xs
+      .filter((x) => x >= 0)
+      .map((x) => point(x, acousticField(x, 0.0028).pressure))
+      .join(' ')}
+    stroke="#d0d5a6"
+    stroke-width="2.5"
+    fill="none"></polyline></svg
+>

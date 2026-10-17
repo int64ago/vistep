@@ -1,0 +1,137 @@
+.telescope-study {
+  background: #203b43;
+  color: #dce5d5;
+  border-radius: 24px;
+  padding: 24px 28px;
+}
+.telescope-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: 18px;
+}
+.telescope-study header b {
+  font-size: 16px;
+  font-weight: 500;
+  color: #bdcbb6;
+}
+.telescope-study svg {
+  display: block;
+  width: 100%;
+  height: 280px;
+  margin-top: 14px;
+}
+.telescope-study svg text {
+  fill: #dce5d5;
+}
+.telescope-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 16px;
+}
+.telescope-values span {
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+}
+.telescope-values b {
+  font-size: 25px;
+  font-weight: 400;
+  color: #dfc493;
+}
+.telescope-parameters {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #b3c4b7;
+  margin: 14px 0 0;
+}
+.telescope-field-power {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 16px;
+}
+.telescope-field-power span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.telescope-field-power i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.telescope-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.telescope-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.telescope-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+  color: #bdcbb6;
+}
+.telescope-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+  color: #dce5d5;
+}
+.telescope-controls .control,
+.telescope-controls output {
+  color: inherit;
+}
+.telescope-controls button {
+  grid-column: 1/-1;
+  min-height: 44px;
+  color: inherit;
+  border: 1px solid #aab9a755;
+  border-radius: 25px;
+  background: #ffffff08;
+  font-size: 16px;
+  padding: 10px 18px;
+}
+@media (max-width: 760px) {
+  .telescope-study {
+    padding: 16px;
+  }
+  .telescope-study header {
+    font-size: 16px;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+  .telescope-study svg {
+    height: 185px;
+    margin-top: 12px;
+  }
+  .showcase[data-mode='watch'] .telescope-study header b,
+  .showcase[data-mode='watch'] .telescope-study details {
+    display: none;
+  }
+  .telescope-values {
+    margin-top: 12px;
+    gap: 16px;
+  }
+  .telescope-values b {
+    font-size: 23px;
+  }
+  .telescope-parameters {
+    margin-top: 10px;
+  }
+  .telescope-field-power {
+    gap: 16px;
+  }
+  .telescope-controls {
+    grid-template-columns: 1fr;
+  }
+}

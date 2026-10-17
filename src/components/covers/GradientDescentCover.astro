@@ -1,0 +1,37 @@
+---
+import { descentPlot, descentTrace } from '../../models/gradient-descent';
+const { color = '#91ab84' } = Astro.props,
+  q = descentTrace(0.22, 10),
+  plot = descentPlot(q.points);
+const path = q.points
+  .map((p, i) => {
+    const pt = plot.point(p.x, p.y);
+    return `${i ? 'L' : 'M'}${pt.x + 20} ${pt.y * 0.75 + 10}`;
+  })
+  .join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true"
+  >{
+    [1, 2, 4, 8, 16].map((f) => (
+      <ellipse
+        cx="200"
+        cy="115"
+        rx={Math.sqrt(2 * f) * plot.scale}
+        ry={Math.sqrt(f / 4) * plot.scale * 0.75}
+        stroke="#c4d4bb"
+        stroke-width="1.5"
+      />
+    ))
+  }<path d={path} stroke={color} stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+  ></path>{
+    q.points.map((p) => (
+      <circle
+        cx={plot.point(p.x, p.y).x + 20}
+        cy={plot.point(p.x, p.y).y * 0.75 + 10}
+        r="4"
+        fill={color}
+      />
+    ))
+  }</svg
+>

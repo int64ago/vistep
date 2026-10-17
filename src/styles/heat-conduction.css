@@ -1,0 +1,114 @@
+.conduction-study {
+  background: #f0ecdf;
+  color: #49473d;
+  border-radius: 25px;
+  padding: 28px 30px;
+}
+.conduction-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  font-size: 18px;
+}
+.conduction-study header b {
+  font-size: 23px;
+  color: #927248;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.conduction-study svg {
+  width: 100%;
+  max-height: 310px;
+  display: block;
+}
+.conduction-baths {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  gap: 8px;
+}
+.conduction-ledger {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 15px;
+  padding: 24px 0 10px;
+}
+.conduction-ledger span {
+  display: grid;
+  gap: 7px;
+  font-size: 16px;
+}
+.conduction-ledger b {
+  font-size: 23px;
+  font-weight: 500;
+}
+.conduction-study p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #706e62;
+  margin: 16px 0 0;
+}
+.conduction-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+@media (max-width: 760px) {
+  .conduction-study {
+    padding: 16px 12px;
+  }
+  .conduction-study header {
+    font-size: 16px;
+  }
+  .conduction-study header b {
+    font-size: 20px;
+  }
+  .conduction-study svg {
+    height: 234px;
+    max-height: 234px;
+  }
+  .conduction-baths {
+    justify-content: flex-end;
+  }
+  .conduction-baths > span:first-child,
+  .conduction-baths > span:last-child {
+    display: none;
+  }
+  .conduction-study .conduction-parameters {
+    margin-top: 4px;
+  }
+  .conduction-ledger {
+    padding: 12px 0 4px;
+    gap: 10px;
+    grid-template-columns: 1fr 1.4fr 1fr;
+  }
+  .conduction-ledger b {
+    font-size: 19px;
+  }
+  .conduction-ledger span {
+    font-size: 16px;
+  }
+  .conduction-controls {
+    grid-template-columns: 1fr;
+  }
+  .showcase[data-mode='watch'] .conduction-study details {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .conduction-study {
+    padding-block: 12px;
+  }
+}
+
+.conduction-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+.conduction-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}

@@ -1,0 +1,26 @@
+<h2 id="understand">Partitioning is not the same as sorting everything</h2>
+
+Three-way quicksort groups items below, equal to and above a pivot. During scanning, a fourth region is still unknown. Colors encode these computed states; small numbers retain original item identities.
+
+An item above the pivot is exchanged with the unknown region's last item, and the upper boundary shrinks. **The scan index must stay put** because the incoming item has not been classified. A smaller item moves to the lower boundary while both that boundary and the scan advance. An equal item advances only the scan.
+
+<h2 id="try">Change the pivot and inspect real swaps</h2>
+
+Choose a pivot from the input and move through partition steps. Persistent item numbers actually exchange positions. Replacing the input with eight equal 3s puts everything in the equal region after one linear scan, with no further recursion on those equal keys.
+
+Partitioning guarantees relations between groups, not order inside each group. The default greater-than region is `5, 7, 8, 6`, still unsorted. Recursion handles only the below and above groups. The equal group needs no further partitioning.
+
+<h2 id="deeper">Balance, duplicate keys and stability</h2>
+
+<details>
+<summary>What the work counter measures</summary>
+
+The final chapter uses the same eight ordered values and deliberately contrasts two pivot rules. Choosing the current minimum peels off one item per level and classifies 35 item instances in total. Choosing the known exact median gives 17. These counts measure visits to the classification loop, not language-level relational comparisons. **The work of locating a minimum or median is excluded.** This isolates partition balance; it is not an end-to-end runtime ranking.
+
+With suitable randomization or input assumptions, quicksort has expected O(n log n) cost. Extremely unbalanced partitions can give O(n²). Random choice does not guarantee a balanced split every time. An exact median here is a teaching comparison supplied with knowledge of the values.
+
+This partition is unstable: the equal 3s can finish in original-number order 2, 8, 4 rather than 2, 4, 8. The explanatory model copies arrays and retains snapshots and recursive history. Its storage must not be presented as the space cost of a minimal in-place implementation. Comparisons with stable merging need to preserve both algorithms' distinct contracts.
+
+</details>
+
+Sources: [Princeton: Quicksort and three-way partitioning](https://algs4.cs.princeton.edu/23quicksort/), [Sedgewick's research overview](https://sedgewick.io/research/).

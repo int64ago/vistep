@@ -1,0 +1,29 @@
+---
+import { gasParticle } from '../../models/ideal-gas';
+const dots = Array.from({ length: 48 }, (_, i) => {
+  const p = gasParticle(i, 0.0301).position;
+  return {
+    x: 130 + 1800 * (p[0] + 0.25 * p[2]),
+    y: 235 - 1800 * (p[1] + 0.17 * p[2]),
+    gold: i === 0,
+  };
+});
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#edf0e5"></rect><path
+    d="M130 235V55L175 24H355V204L310 235Z"
+    fill="#e0e8da"
+    stroke="#91aaa5"
+    stroke-width="2"></path><path
+    d="M310 235V55L355 24V204Z"
+    fill="#b5cec7"
+    fill-opacity=".5"
+    stroke="#789a97"
+    stroke-width="2"></path>{
+    dots.map((p) => (
+      <circle cx={p.x} cy={p.y} r={p.gold ? 5 : 3} fill={p.gold ? '#ac7638' : '#5b8a8d'} />
+    ))
+  }<path d="M130 55H310V235H130ZM310 55L355 24" fill="none" stroke="#789a97" stroke-width="2"
+  ></path></svg
+>

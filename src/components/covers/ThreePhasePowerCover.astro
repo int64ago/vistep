@@ -1,0 +1,35 @@
+---
+import { threePhase, threePhaseDefaults } from '../../models/three-phase-power';
+const s = Array.from({ length: 121 }, (_, i) =>
+  threePhase(threePhaseDefaults(), (i / 120) * 2 * Math.PI),
+);
+const colors = ['#b19e70', '#829c84', '#9b9fb7'];
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><path d="M60 47V331H585" fill="none" stroke="#c9d1bc" stroke-width="2"></path>{
+    [0, 1, 2].map((k) => (
+      <path
+        d={s
+          .map(
+            (v, i) =>
+              `${i ? 'L' : 'M'}${60 + (i / 120) * 525} ${331 - (v.phase[k].power / 1600) * 260}`,
+          )
+          .join(' ')}
+        fill="none"
+        stroke={colors[k]}
+        stroke-width="4"
+      />
+    ))
+  }<path d="M60 73H585" stroke="#779476" stroke-width="7" stroke-linecap="round"></path><text
+    x="577"
+    y="54"
+    font-size="24"
+    text-anchor="end"
+    fill="#779476">SUM</text
+  ><circle cx="165" cy="73" r="7" fill="#779476"></circle><path
+    d="M165 90V331"
+    stroke="#b2bfa0"
+    stroke-dasharray="6 6"
+    stroke-width="2"></path></svg
+>

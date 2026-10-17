@@ -1,0 +1,43 @@
+---
+const rays = Array.from({ length: 8 }, (_, i) => {
+  const a = (i * Math.PI) / 4,
+    b = a + Math.PI / 8;
+  return {
+    out: `M${240 + 49 * Math.cos(a)} ${150 + 49 * Math.sin(a)}L${240 + 109 * Math.cos(a)} ${150 + 109 * Math.sin(a)}`,
+    in: `M${240 + 107 * Math.cos(b)} ${150 + 107 * Math.sin(b)}L${240 + 54 * Math.cos(b)} ${150 + 54 * Math.sin(b)}`,
+  };
+});
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><radialGradient id="radiationCover"
+      ><stop stop-color="#b8b4a5"></stop><stop offset="1" stop-color="#465459"
+      ></stop></radialGradient
+    ><marker id="radiationCoverOut" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"
+      ><path d="M0 0L5 3L0 6" fill="none" stroke="#e4bb7e"></path></marker
+    ><marker id="radiationCoverIn" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"
+      ><path d="M0 0L5 3L0 6" fill="none" stroke="#94b7c7"></path></marker
+    ></defs
+  ><rect width="480" height="300" fill="#202d39"></rect><circle
+    cx="240"
+    cy="150"
+    r="122"
+    fill="#111e29"
+    stroke="#778b8d"
+    stroke-width="4"></circle>{
+    rays.map((r) => (
+      <g>
+        <>
+          <path
+            d={r.out}
+            stroke="#e4bb7e"
+            stroke-width="1.7"
+            marker-end="url(#radiationCoverOut)"
+          />
+          <path d={r.in} stroke="#94b7c7" stroke-width="1.7" marker-end="url(#radiationCoverIn)" />
+        </>
+      </g>
+    ))
+  }<circle cx="240" cy="150" r="45" fill="url(#radiationCover)" stroke="#b5b8a5"></circle></svg
+>

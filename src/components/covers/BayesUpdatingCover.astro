@@ -1,0 +1,44 @@
+---
+import { bayesUpdate } from '../../models/bayes-updating';
+const { color = '#8d91b2' } = Astro.props;
+const q = bayesUpdate({ prior: 0.1, hit: 0.8, otherHit: 0.1 }),
+  width = 340,
+  height = 116,
+  blueWidth = width * q.prior,
+  posterior = q.posterior ?? 0;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <text x="30" y="28" fill={color} font-family="monospace" font-size="16">{q.population} →</text>
+  <path d="M111 12 114 18 121 19 116 24 117 31 111 27 105 31 106 24 101 19 108 18Z" fill={color}
+  ></path>
+  <text x="130" y="28" fill={color} font-family="monospace" font-size="16">{q.selected}</text>
+  <rect x="30" y="43" width={blueWidth} height={height} fill="#94afc2" opacity=".3"></rect><rect
+    x={30 + blueWidth}
+    y="43"
+    width={width - blueWidth}
+    height={height}
+    fill="#ccb28d"
+    opacity=".3"></rect>
+  <rect x="30" y="43" width={blueWidth} height={height * q.blueLikelihood} fill="#7d9eb5"
+  ></rect><rect
+    x={30 + blueWidth}
+    y="43"
+    width={width - blueWidth}
+    height={height * q.otherLikelihood}
+    fill="#bea171"></rect>
+  <text x="74" y="183" fill="#7c98af" text-anchor="middle" font-size="16">{q.blueMarked}</text><text
+    x="272"
+    y="183"
+    fill="#ab8b5e"
+    text-anchor="middle"
+    font-size="16">{q.otherMarked}</text
+  >
+  <rect x="30" y="198" width={width * posterior} height="15" rx="3" fill="#7d9eb5"></rect><rect
+    x={30 + width * posterior}
+    y="198"
+    width={width * (1 - posterior)}
+    height="15"
+    rx="3"
+    fill="#bea171"></rect>
+</svg>

@@ -1,0 +1,23 @@
+---
+import { conduction, conductionColor } from '../../models/heat-conduction';
+const state = conduction({ seconds: 400 });
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" fill="none"
+  ><rect width="400" height="230" fill="#f0ecdf"></rect>{
+    state.temperature.map((T, i) =>
+      [0, 1, 2].map((j) => (
+        <circle cx={32 + i * 14} cy={65 + j * 19} r="5" fill={conductionColor(T)} />
+      )),
+    )
+  }<polyline
+    points={state.temperature
+      .map((T, i) => `${32 + i * 14},${200 - ((T - 20) / 70) * 65}`)
+      .join(' ')}
+    stroke="#7a6a53"
+    stroke-width="2.5"></polyline>{
+    [70, 130, 190, 250, 310].map((x) => (
+      <path d={`M${x} 128h20l-5 -4m5 4l-5 4`} stroke="#bf925b" stroke-width="2" />
+    ))
+  }</svg
+>

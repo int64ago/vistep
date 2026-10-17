@@ -1,0 +1,218 @@
+.markov-study {
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: #e4eaee;
+  color: #355167;
+  font-size: 16px;
+}
+.markov-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  max-width: 620px;
+  margin: auto;
+}
+.markov-study header > span {
+  font: 12px monospace;
+  color: #8ba0b0;
+  letter-spacing: 0.06em;
+}
+.markov-study header b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.markov-start {
+  max-width: 450px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25px auto 0;
+  gap: 20px;
+}
+.markov-start b {
+  font-size: 42px;
+  font-weight: 300;
+  background: #cddce5;
+  border-radius: 22px;
+  padding: 22px 35px;
+}
+.markov-start b:last-child {
+  background: #e5d8bf;
+  color: #755e37;
+}
+.markov-start span {
+  font-size: 22px;
+}
+.markov-loom {
+  display: grid;
+  grid-template-columns: 85px minmax(0, 1fr) 85px;
+  gap: 10px;
+  height: 180px;
+  max-width: 620px;
+  margin: 16px auto 0;
+}
+.markov-marginal {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.markov-marginal > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+.markov-marginal b {
+  font-size: 20px;
+  font-weight: 400;
+}
+.markov-marginal strong {
+  font-size: 27px;
+  font-weight: 300;
+}
+.markov-marginal [data-state='1'] {
+  color: #765a32;
+}
+.markov-loom svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.markov-loom path {
+  fill: none;
+  stroke: #a3bdcf;
+  opacity: 0.75;
+}
+.markov-loom [data-from='1'] {
+  stroke: #c4b086;
+}
+.markov-matrix {
+  font-size: 16px;
+  border-collapse: separate;
+  border-spacing: 16px 6px;
+  max-width: 400px;
+  margin: 10px auto 0;
+  text-align: center;
+}
+.markov-matrix th {
+  font-weight: 400;
+}
+.markov-matrix td {
+  min-width: 70px;
+  padding: 3px 10px;
+  border-radius: 9px;
+  background: #d7e1e7;
+}
+.markov-matrix tbody tr:last-child td {
+  background: #e4d9c4;
+  color: #70542d;
+}
+.markov-stationary {
+  text-align: center;
+  font-size: 18px;
+  margin: 12px 0 0;
+  line-height: 1.4;
+}
+.markov-path {
+  max-width: 520px;
+  margin: 16px auto 0;
+  text-align: center;
+}
+.markov-path > span {
+  font-size: 16px;
+}
+.markov-path > div {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: 9px;
+}
+.markov-path b {
+  font-size: 16px;
+  font-weight: 400;
+  background: #c6d8e4;
+  padding: 7px 2px;
+  border-radius: 8px;
+}
+.markov-path b[data-state='1'] {
+  background: #e0cfab;
+  color: #6f542e;
+}
+.markov-controls {
+  display: grid;
+  gap: 10px;
+  padding-top: 18px;
+}
+.markov-controls input {
+  width: 100%;
+  min-height: 44px;
+}
+.markov-study summary {
+  min-height: 44px;
+  padding-top: 14px;
+  cursor: pointer;
+}
+.markov-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .markov-study {
+    padding: 14px 12px;
+  }
+  .markov-study header {
+    display: block;
+  }
+  .markov-study header > span {
+    font-size: 11px;
+  }
+  .markov-study header b {
+    display: block;
+    font-size: 16px;
+    margin-top: 6px;
+  }
+  .markov-loom {
+    height: 150px;
+    grid-template-columns: 55px minmax(0, 1fr) 55px;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .markov-marginal b {
+    font-size: 18px;
+  }
+  .markov-marginal strong {
+    font-size: 22px;
+  }
+  .markov-matrix {
+    border-spacing: 8px 4px;
+    margin-top: 8px;
+  }
+  .markov-matrix td {
+    min-width: 60px;
+    padding: 3px 6px;
+  }
+  .markov-stationary {
+    font-size: 16px;
+    margin-top: 9px;
+  }
+  .markov-path {
+    margin-top: 12px;
+  }
+  .markov-path > div {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .markov-start {
+    gap: 12px;
+  }
+  .markov-start b {
+    padding: 18px 25px;
+    font-size: 36px;
+  }
+  .markov-study[data-watch='true'] details {
+    display: none;
+  }
+}

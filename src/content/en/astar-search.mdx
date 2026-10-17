@@ -1,0 +1,26 @@
+<h2 id="understand">Count both cost paid and a lower bound still ahead</h2>
+
+A\* selects the smallest `f = g + h` from its frontier. g is the best route cost found so far to that state; h estimates the remaining cost to the goal. Greedy search using only h can head toward the goal while overlooking the cost already paid.
+
+Movement here is cardinal only. Entering an ordinary cell costs1, entering the ochre cell costs6, and the start is not charged. Ignoring walls and extra terrain cost gives Manhattan distance, `|Δx|+|Δy|`. It never exceeds the actual remaining cost and is consistent. It guides the search without pretending to know the route behind a wall.
+
+<h2 id="try">Seeing the goal is not the stopping rule</h2>
+
+A wall forces a detour and g grows with actual entered cells. The readout identifies the just-selected cell; the frontier lists the next three candidates by f. Stop when the goal is selected as the best frontier item, not merely when it is first discovered.
+
+Setting h to0 gives uniform-cost search, equivalent to Dijkstra on this nonnegative map. The optimum remains12, but more items are selected. The displayed count includes the final goal selection and compares this map with a fixed tie rule; it is not a strict improvement claim for every map.
+
+<h2 id="deeper">Stronger estimates are not automatically safer</h2>
+
+<details>
+<summary>Sixfold estimates, reopening and failure</summary>
+
+Multiplying Manhattan distance by six can overestimate remaining cost. On this same map, the goal is selected with cost15 before the cost12 route is completed. Selecting fewer nodes cannot replace the conditions for optimality. This is explicitly a counterexample mode using a weighted estimate.
+
+The implementation reopens processed states when a lower g is discovered; it does not apply a never-reopen rule to arbitrary inconsistent estimates. Standard mode uses a consistent lower bound. The finite map and movement costs of at least1 satisfy the stated optimality conditions; no claim extends to negative edges, arbitrary heuristics or infinite spaces.
+
+Sealing the entire wall column eventually empties the frontier on the start side. The goal is unreachable. No path is returned, and the last visited cell's parent chain is not presented as success. Independent checks validate adjacency and every entered-cell cost.
+
+</details>
+
+Source: [Russell and Norvig, AIMA: Informed Search](https://aima.cs.berkeley.edu/slides-pdf/chapter04a.pdf), covering g+h, admissibility, consistency and selecting the goal.

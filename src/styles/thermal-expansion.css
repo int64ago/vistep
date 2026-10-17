@@ -1,0 +1,120 @@
+.expansion-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #f1ecdf;
+  color: #4d554e;
+  border-radius: 28px;
+  padding: 24px 32px;
+}
+.expansion-study header {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.expansion-object {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+.expansion-legend,
+.expansion-gap-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.expansion-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px;
+}
+.expansion-value b {
+  font-size: 32px;
+  font-weight: 400;
+  color: #8d6741;
+  white-space: nowrap;
+}
+.expansion-value span {
+  font-size: 16px;
+}
+.expansion-gap-labels {
+  margin-top: 10px;
+}
+.expansion-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.expansion-study summary:before {
+  content: '＋';
+  margin-right: 8px;
+}
+.expansion-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #697166;
+  margin: 0 0 12px;
+}
+.expansion-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 12px;
+}
+.expansion-controls button {
+  font-size: 16px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #a6aa9855;
+  background: #fff5;
+  border-radius: 24px;
+  color: inherit;
+}
+.expansion-controls button[aria-pressed='true'] {
+  background: #d9dfcf;
+}
+.expansion-modes {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.expansion-study .control,
+.expansion-study .control output {
+  color: #4d554e;
+}
+.expansion-study .control input[type='range'] {
+  --range-color: #9b7b50;
+  --range-rest: #b8bfae;
+}
+@media (max-width: 760px) {
+  .expansion-study {
+    padding: 16px;
+  }
+  .expansion-study header {
+    font-size: 16px;
+  }
+  .expansion-object {
+    height: 190px;
+  }
+  .expansion-value {
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .expansion-value b {
+    font-size: 27px;
+  }
+  .expansion-controls {
+    grid-template-columns: 1fr;
+  }
+  .expansion-modes {
+    gap: 6px;
+  }
+  .expansion-modes button {
+    padding-inline: 10px;
+  }
+}

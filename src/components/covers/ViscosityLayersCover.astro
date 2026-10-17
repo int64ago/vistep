@@ -1,0 +1,32 @@
+---
+import { layerVelocity } from '../../models/viscosity-layers';
+const curve = Array.from({ length: 100 }, (_, i) => {
+  const y = (0.01 * i) / 99;
+  return `${350 + layerVelocity(y) * 7000},${245 - y * 18000}`;
+}).join(' ');
+const dye = Array.from({ length: 100 }, (_, i) => {
+  const y = (0.01 * i) / 99;
+  return `${175 + layerVelocity(y) * 2 * 3500},${245 - y * 18000}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><rect width="480" height="300" fill="#edf0e1"></rect><rect
+    x="45"
+    y="155"
+    width="260"
+    height="90"
+    fill="#b1c5a9"></rect><rect x="45" y="65" width="260" height="90" fill="#9db8ba"></rect><path
+    d="M45 155H305"
+    stroke="#73928b"></path><path d="M175 65V245M350 65V245" stroke="#859d8e" stroke-dasharray="4 5"
+  ></path><polyline points={dye} stroke="#997a42" stroke-width="3" fill="none"></polyline><polyline
+    points={curve}
+    stroke="#4e7e7c"
+    stroke-width="3"
+    fill="none"></polyline><rect x="45" y="52" width="260" height="13" fill="#adb9a3"></rect><rect
+    x="45"
+    y="245"
+    width="260"
+    height="13"
+    fill="#adb9a3"></rect></svg
+>

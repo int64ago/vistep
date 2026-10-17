@@ -1,0 +1,15 @@
+# Common-emitter amplifier: the supply provides the energy
+
+Owner `/root/hundred_mechanisms`. Misconceptions: transistor amplification creates energy; collector output follows the base upward; beta remains a universal current ratio through saturation; emitter resistance only wastes voltage. Prerequisites: resistor voltage drop and PN-junction bias. Distinct from diode-junction: three-terminal circuit, operating point, inversion, large-signal clipping and local negative feedback.
+
+Primary sources checked 2026-10-18: MIT Modeling and Simulation of Dynamic Systems, bipolar transistor lecture (Ebers–Moll model); Analog Devices Common Emitter Amplifier activity and chapter 9 (inversion, bias, emitter degeneration). Packet has exact URLs. Model is ideal low-frequency Ebers–Moll, not a datasheet-specific transistor or audio frequency-response claim.
+
+Independent model: 5 V collector supply, 2.2 kΩ collector resistor, grounded emitter or 100 Ω emitter resistor, ideal base voltage drive. Is=10⁻¹⁴ A, VT=25.85 mV, βF=100, βR=1, αF=β/(β+1), αR=.5, reciprocity αF IES=αR ICS=Is. IF=IES[exp(VBE/VT)−1], IR=ICS[exp(VBC/VT)−1], IC=αF IF−IR, IE=IF−αR IR, IB=IE−IC. Monotone nodal solves enforce Vc+RcIc=5 and Ve=ReIe. Saturation emerges from forward-biased BC junction, not a manually clipped sine or fixed 0.2 V floor.
+
+Tracked object: collector-node voltage, fed through an actual collector resistor. Small base increases cause a larger collector resistor drop and a lower output. Six chapters: bias from near cutoff to midpoint; controlled DC perturbation and transfer curve; 8 mV sine and inverted voltage; 80 mV overdrive and saturation/near cutoff; 100 Ω emitter feedback at the same re-established 2.5 V operating point, compared against no-feedback 40 mV drive; source-power partition accounting for both collector and base supplies.
+
+No external output load (high-impedance measurement), no coupling/bypass capacitors, Early effect, breakdown, thermal drift, parasitic charge or frequency rolloff. Emitter-resistance comparison re-biases the source instead of pretending DC bias is preserved. Source input has finite base current and power; the energy ledger includes it. No claim that all resistor heat is useful signal output.
+
+Hero circuit is a single readable common-emitter schematic with a clearly attached supply, collector resistor, emitter path, base source and common return. Desktop spacious circuit and synchronized input/output strips. Phone coordinates340×235 with alternative transfer / waveform / power view around340×170; text≥16 px and whole player budget740 px. Optional controls only outside watch. Mathematical tests cover independent gm slope, both KCL/load lines, saturation current-ratio loss, feedback gain and instantaneous power balance. Independent browser/playback/voice/physical-device review: not-run.
+
+Source validation: 6 meaningful model tests, strict component TypeScript and packet dry run passed. Six chapters / 144 s planned. Fixed samples and midpoint biases are memoized outside the phase update; only the present operating point is solved during playback. No physical-device performance measurement claimed.

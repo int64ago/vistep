@@ -1,0 +1,38 @@
+<h2 id="understand">Braking needs circulating current, not just a magnetic field</h2>
+
+A metal sheet translating steadily through a uniform field can separate charge until an electrostatic field cancels the motional electromotive force. There is then no steady eddy current or eddy-current drag. In a localized field, one electrostatic potential cannot cancel the motional field everywhere, and currents close inside the sheet.
+
+The visible loops come from a charge-conserving current calculation. Magnetic forces on those currents produce a net force opposing relative motion. Reversing velocity reverses both current and force. Reversing only the magnetic field reverses current, while drag still opposes motion.
+
+<h2 id="try">Check loops, speed and power together</h2>
+
+- Compare uniform and localized fields. The presence of a field alone does not guarantee steady circulating current.
+- Move prescribed speed through zero and reverse it. Inspect current arrows, force and heat together.
+- Divide the sheet into eight insulated longitudinal strips. Large loops are interrupted while smaller loops remain.
+- Double the field at fixed speed. Both drag and heating grow fourfold in this low-speed model.
+- Stop the motion. Eddy-current braking supplies no static holding force.
+
+<h2 id="deeper">Local forces and the complete energy balance</h2>
+
+<details>
+<summary>Connecting potential, current and force</summary>
+
+Take x rightward, y upward and B along z out of the screen. Sheet velocity is vₓ, thickness t and conductivity σ.
+
+<div className="formula">J = σ(−∇φ + v × B), ∇·J = 0</div>
+<div className="formula">Fₓ = ∫ JᵧB t dA; Pheat = ∫ J²/σ · t dA = −Fₓvₓ</div>
+
+A finite-volume grid conserves current in each cell. Insulated boundaries and slits prohibit normal current. Contours of the current stream function form the closed loops. Joule heating and net Lorentz force are summed independently and agree on the mechanical power lost.
+
+An external drive prescribes velocity. When the final chapter increases field strength, that drive must supply the increasing braking power. No freely decelerating mass is modeled; prescribed speed is not the solution of a body's motion equation.
+
+</details>
+
+<details>
+<summary>Limits of the thin-sheet, low-speed model</summary>
+
+The aluminum sheet is 1 mm thick with conductivity 3.5×10⁷ S/m. The observation window is 320 mm long and 160 mm wide. The sheet continues along its direction of travel. Its computational ends are insulated truncations in the far tail of the localized field, whose smooth super-Gaussian profile has a peak no greater than 0.3 T.
+
+Slits have zero modeled width, preserving metal area and conductivity for comparison. Their displayed width is exaggerated for visibility. Default speed is 30 mm/s; each chapter expands eight seconds of material travel. Self-inductance, induced-field feedback, skin effect, magnetic materials and temperature-dependent resistance are omitted. High-speed brakes need a more complete model.
+
+</details>

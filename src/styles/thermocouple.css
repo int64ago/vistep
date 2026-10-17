@@ -1,0 +1,106 @@
+.thermocouple-film {
+  max-width: 720px;
+  margin: auto;
+  color: #7e896c;
+}
+.thermocouple-context {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 10px 6px;
+}
+.thermocouple-body {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  margin: auto;
+}
+.thermocouple-body text,
+.thermocouple-gradient text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7f896e;
+}
+.thermocouple-body .thermocouple-voltage {
+  font-size: 25px;
+  font-variant-numeric: tabular-nums;
+}
+.thermocouple-compute {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  font-size: 16px;
+  margin: 8px 10px;
+}
+.thermocouple-compute b {
+  display: block;
+  font-size: 24px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.thermocouple-equation,
+.thermocouple-gradient p {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 7px 10px;
+}
+.thermocouple-gradient {
+  max-width: 420px;
+  margin: auto;
+}
+.thermocouple-gradient svg {
+  width: 100%;
+  display: block;
+}
+.thermocouple-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.thermocouple-notes {
+  font-size: 16px;
+  padding: 0 12px;
+  max-width: 600px;
+  margin: auto;
+}
+.thermocouple-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.thermocouple-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.thermocouple-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .thermocouple-body {
+    max-width: 340px;
+  }
+  .thermocouple-body text,
+  .thermocouple-gradient text {
+    font-size: 21px;
+  }
+  .thermocouple-body .thermocouple-voltage {
+    font-size: 26px;
+  }
+  .thermocouple-context {
+    text-align: left;
+  }
+  .thermocouple-compute {
+    gap: 20px;
+    justify-content: space-around;
+  }
+  .thermocouple-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .thermocouple-film[data-watch='true'] .thermocouple-notes {
+    display: none;
+  }
+}

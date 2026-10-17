@@ -1,0 +1,109 @@
+.capacitor-field-film {
+  max-width: 740px;
+  margin: auto;
+  color: #7c8266;
+}
+.capacitor-boundary {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 0 8px 6px;
+  color: #94845a;
+}
+.capacitor-gap,
+.capacitor-potential {
+  width: 100%;
+  max-width: 460px;
+  display: block;
+  margin: auto;
+}
+.capacitor-gap text,
+.capacitor-potential text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #89906d;
+}
+.capacitor-gap > text:nth-of-type(-n + 2) {
+  font-size: 25px;
+}
+.capacitor-potential svg {
+  display: block;
+  width: 100%;
+  max-height: 145px;
+}
+.capacitor-readings {
+  display: flex;
+  justify-content: center;
+  gap: 65px;
+  font-size: 16px;
+  margin: 6px 8px;
+}
+.capacitor-readings > span {
+  display: grid;
+  gap: 2px;
+}
+.capacitor-readings b {
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.capacitor-fields-readout {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.45;
+  margin: 4px 8px 8px;
+}
+.capacitor-field-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.capacitor-field-controls > .segmented {
+  grid-column: 1/-1;
+}
+.capacitor-field-notes {
+  max-width: 600px;
+  padding: 0 12px;
+  margin: auto;
+  font-size: 16px;
+}
+.capacitor-field-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.capacitor-field-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.capacitor-field-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .capacitor-gap,
+  .capacitor-potential {
+    max-width: 340px;
+  }
+  .capacitor-gap text,
+  .capacitor-potential text {
+    font-size: 21px;
+  }
+  .capacitor-boundary {
+    text-align: left;
+  }
+  .capacitor-fields-readout {
+    text-align: left;
+  }
+  .capacitor-potential svg {
+    max-height: none;
+  }
+  .capacitor-field-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .capacitor-field-film[data-watch='true'] .capacitor-field-notes {
+    display: none;
+  }
+}

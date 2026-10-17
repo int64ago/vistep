@@ -1,0 +1,25 @@
+---
+import { earthDayModel, earthDayState } from '../../models/earth-day';
+const { color = '#99aec6' } = Astro.props;
+const state = earthDayState(earthDayModel().siderealHours),
+  sun = {
+    x: 232 + 175 * Math.cos(state.sunDirection),
+    y: 118 - 175 * Math.sin(state.sunDirection),
+  },
+  marker = { x: 232 + 65 * Math.cos(state.marker), y: 118 - 65 * Math.sin(state.marker) },
+  arc = { x: 232 + 84 * Math.cos(state.sunDirection), y: 118 - 84 * Math.sin(state.sunDirection) };
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <path d="M37 118H232" stroke={color} stroke-width="1.5" stroke-dasharray="5 5"></path>
+  <path d={`M${sun.x} ${sun.y}L232 118`} stroke="#b79969" stroke-width="1.5" stroke-dasharray="5 5"
+  ></path>
+  <circle cx={sun.x} cy={sun.y} r="18" fill="#dcc08c"></circle>
+  <circle cx="232" cy="118" r="65" fill="#70889c"></circle>
+  <g transform={`translate(232 118) rotate(${(-state.sunDirection * 180) / Math.PI})`}
+    ><path d="M0 -65A65 65 0 0 1 0 65Z" fill={color}></path></g
+  >
+  <path d={`M232 118L${marker.x} ${marker.y}`} stroke="#506d80" stroke-width="3"></path>
+  <circle cx={marker.x} cy={marker.y} r="6" fill="#b3956c"></circle>
+  <path d={`M148 118A84 84 0 0 0 ${arc.x} ${arc.y}`} stroke="#b79969" stroke-width="2"></path>
+</svg>

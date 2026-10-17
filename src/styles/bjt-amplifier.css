@@ -1,0 +1,127 @@
+.bjt-film {
+  max-width: 740px;
+  margin: auto;
+  color: #7f866b;
+}
+.bjt-region {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 8px 4px;
+  color: #8b8665;
+}
+.bjt-circuit,
+.bjt-scope {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+}
+.bjt-circuit text,
+.bjt-scope text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7f8c6e;
+}
+.bjt-readings {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 4px 10px 8px;
+  font-size: 16px;
+}
+.bjt-readings span {
+  white-space: nowrap;
+}
+.bjt-readings b {
+  display: block;
+  font-size: 22px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.bjt-comparison {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 3px 10px;
+}
+.bjt-power {
+  font-size: 16px;
+  max-width: 410px;
+  margin: 8px auto;
+  padding: 0 12px;
+}
+.bjt-power p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 5px 0;
+}
+.bjt-power-bar {
+  height: 16px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 7px;
+  margin: 5px 0;
+}
+.bjt-power-bar i {
+  display: block;
+  height: 100%;
+}
+.bjt-power > div:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bjt-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.bjt-controls > .segmented {
+  grid-column: 1/-1;
+}
+.bjt-notes {
+  font-size: 16px;
+  max-width: 600px;
+  margin: auto;
+  padding: 0 12px;
+}
+.bjt-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bjt-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.bjt-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .bjt-circuit,
+  .bjt-scope {
+    max-width: 340px;
+  }
+  .bjt-circuit text,
+  .bjt-scope text {
+    font-size: 21px;
+  }
+  .bjt-readings {
+    gap: 20px;
+  }
+  .bjt-region,
+  .bjt-comparison {
+    text-align: left;
+  }
+  .bjt-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .bjt-film[data-watch='true'] .bjt-notes {
+    display: none;
+  }
+}

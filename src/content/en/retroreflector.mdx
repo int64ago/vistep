@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## One face reverses one component
+
+A flat mirror reverses the component of direction normal to its surface. Two perpendicular mirrors reverse two components, leaving the third unchanged for a general three-dimensional ray. After actual encounters with all three perpendicular faces, all components change sign and the outgoing ray is antiparallel to the incoming ray.
+
+Antiparallel does not mean the same line. Moving the entry can leave a lateral separation between input and return. The gold incident ray, pale internal segments, blue outgoing ray and moving point all follow one three-dimensional trace. Numbered encounters correspond to the mirror sequence below.
+
+<a id="try"></a>
+
+## Change direction and entry separately
+
+Turn the incident direction about z and follow the encounter points. Then keep the direction fixed and change entry x; another coordinate changes to preserve the triangular entrance plane. Three actual encounters produce zero ideal return error. The final automatic chapter supplies a counterexample: a finite edge ray leaves after only two reflections.
+
+<a id="deeper"></a>
+
+## Direction is conditional on the encounters
+
+<div className="formula">
+  Reflection at x=0: (dx, dy, dz) → (−dx, dy, dz)
+  <br />
+  After all three faces: dOut = −dIn
+  <br />
+  Lateral line separation = |(pOut − pIn) × dIn|
+</div>
+
+Direction vectors are normalized and separation is expressed in entrance units L. The ideal mirrors occupy the coordinate planes x=0, y=0 and z=0, truncated by x+y+z=L. Each step compares the next mirror intersection with the next entrance intersection and takes the earliest event. It never inserts a third bounce merely to force a return.
+
+The view is a fixed orthographic projection. Screen angles are not three-dimensional angles. This is a hollow ideal-mirror model; it omits entrance refraction, total-internal-reflection limits, coating losses, dihedral errors, polarization and diffraction. Solid glass corner cubes can use total internal reflection, but their acceptance and phase response also depend on material and interfaces.

@@ -1,0 +1,133 @@
+.evaporation-study {
+  max-width: 980px;
+  margin: auto;
+  background: radial-gradient(ellipse at 10% 50%, #344e49, #263c3b);
+  color: #e5e7d9;
+  padding: 18px 22px;
+  border-radius: 30px;
+  font-variant-numeric: tabular-nums;
+}
+.evaporation-study header {
+  font-size: 18px;
+  line-height: 1.4;
+  min-height: 26px;
+  text-align: center;
+}
+.evaporation-apparatus {
+  display: block;
+  width: 100%;
+  height: 285px;
+}
+.evaporation-chart-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #c6cebd;
+}
+.evaporation-temperatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  margin: 12px 0;
+}
+.evaporation-temperatures > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.evaporation-temperatures b {
+  font-size: 27px;
+  font-weight: 500;
+  color: #e6be82;
+}
+.evaporation-temperatures span {
+  font-size: 16px;
+}
+.evaporation-energy {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.5;
+  border-top: 1px solid #bac4aa26;
+  padding-top: 9px;
+}
+.evaporation-energy b {
+  font-weight: 500;
+  color: #e2c497;
+}
+.evaporation-study details {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.evaporation-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.evaporation-study p {
+  margin: 0;
+}
+.evaporation-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+.evaporation-controls .control,
+.evaporation-controls output {
+  color: #e5e7d9;
+  font-size: 16px;
+}
+.evaporation-controls button {
+  min-height: 44px;
+  background: #3c5750;
+  color: #f0ecdc;
+  border: 1px solid #bdc7ac55;
+  border-radius: 16px;
+  padding: 8px 14px;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .evaporation-study {
+    padding: 12px 10px;
+    border-radius: 22px;
+  }
+  .evaporation-study header {
+    font-size: 16px;
+    min-height: 44px;
+  }
+  .evaporation-apparatus {
+    height: 188px;
+  }
+  .evaporation-chart-note {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .evaporation-temperatures {
+    margin: 8px 0;
+    gap: 6px;
+  }
+  .evaporation-temperatures b {
+    font-size: 24px;
+  }
+  .evaporation-temperatures span {
+    font-size: 16px;
+  }
+  .evaporation-energy {
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 7px;
+  }
+  .evaporation-controls {
+    grid-template-columns: 1fr;
+  }
+}

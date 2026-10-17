@@ -1,0 +1,202 @@
+.electrolysis-study {
+  max-width: 980px;
+  margin: auto;
+  padding: 18px;
+  background: #edf1e9;
+  color: #405e58;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.electrolysis-study header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: auto;
+}
+.electrolysis-study header > span {
+  font: 12px monospace;
+  color: #899b8c;
+  letter-spacing: 0.04em;
+}
+.electrolysis-study header > b {
+  font-weight: 400;
+  font-size: 18px;
+}
+.electrolysis-vessel {
+  position: relative;
+  aspect-ratio: 360/255;
+  max-width: 420px;
+  margin: 8px auto 0;
+}
+.electrolysis-vessel svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.electrolysis-case {
+  fill: #d9e6dc;
+  stroke: #b5c9bb;
+  stroke-width: 1.5;
+}
+.electrolysis-vessel > b,
+.electrolysis-vessel > span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.electrolysis-dc {
+  left: 48.6%;
+  top: 15.7%;
+  color: #59663f;
+}
+.electrolysis-plus {
+  left: 37.8%;
+  top: 40%;
+}
+.electrolysis-minus {
+  left: 59.4%;
+  top: 40%;
+}
+.electrolysis-oxygen {
+  left: 15.3%;
+  top: 94%;
+}
+.electrolysis-hydrogen {
+  left: 84.7%;
+  top: 94%;
+}
+.electrolysis-proton {
+  left: 50%;
+  top: 64%;
+  background: #e0e9d9bb;
+  border-radius: 5px;
+}
+.electrolysis-electron {
+  left: 68%;
+  top: 18%;
+  color: #74654c;
+}
+.electrolysis-electrodes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 16px;
+  margin-top: 2px;
+}
+.electrolysis-equation {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin: 12px 0;
+  letter-spacing: 0.01em;
+}
+.electrolysis-amounts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 12px;
+  max-width: 440px;
+  margin: auto;
+  text-align: center;
+}
+.electrolysis-amounts span {
+  font-size: 16px;
+}
+.electrolysis-amounts b {
+  display: block;
+  font-size: 25px;
+  font-weight: 300;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+.electrolysis-status {
+  margin: 11px 0 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.electrolysis-status > span {
+  display: block;
+  color: #607168;
+}
+.electrolysis-energy {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.electrolysis-controls {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.electrolysis-controls input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+}
+.electrolysis-controls button {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #b5c6b4;
+  border-radius: 12px;
+  background: #f4f6ef;
+}
+.electrolysis-controls button[aria-pressed='true'] {
+  background: #d2e2ce;
+}
+.electrolysis-study summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-top: 16px;
+}
+.electrolysis-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .electrolysis-study {
+    padding: 10px 12px;
+  }
+  .electrolysis-study header {
+    display: block;
+  }
+  .electrolysis-study header > span {
+    display: none;
+  }
+  .electrolysis-study header > b {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .electrolysis-vessel {
+    max-width: 212px;
+    margin-top: 3px;
+  }
+  .electrolysis-equation {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  .electrolysis-electrodes {
+    gap: 24px;
+  }
+  .electrolysis-amounts {
+    gap: 8px;
+  }
+  .electrolysis-amounts b {
+    font-size: 22px;
+  }
+  .electrolysis-status {
+    margin-top: 8px;
+  }
+  .electrolysis-study[data-watch='true'] details {
+    display: none;
+  }
+}

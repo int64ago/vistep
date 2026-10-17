@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## Escaping water carries energy
+
+Evaporation occurs at a liquid surface without boiling bubbles inside the liquid. A film initially at air temperature can lose latent heat through net evaporation and cool. Warmer air then supplies sensible heat until it nearly balances the latent heat loss. Evaporation and mass loss can continue at this temperature balance.
+
+More humid air has vapour partial pressure closer to the surface saturation value, reducing net evaporation. If a cold surface has lower saturation pressure than ambient vapour pressure, the flux reverses: condensation adds liquid mass and releases latent heat.
+
+<a id="try"></a>
+
+## Rate and equilibrium are different
+
+Humidity changes equilibrium temperature. The exchange multiplier changes how quickly the film approaches it. Here it scales heat and mass-transfer coefficients equally, leaving equilibrium unchanged. A real wind-speed relationship requires calibration.
+
+At full relative humidity, a film initially at air temperature has zero net flux. Disable evaporation to isolate the cooling mechanism. Start below the dew point and verify that both mass flux and latent heat reverse.
+
+<a id="deeper"></a>
+
+## Energy in an open liquid control volume
+
+<div className="formula">
+  ṁ = K A [p-saturation(T-water) − p-vapour,air]
+  <br />m cp dT-water/dt = h A (T-air − T-water) − L ṁ<br />
+  dm/dt = −ṁ
+</div>
+
+Positive ṁ means evaporation; negative means condensation. The calculation also integrates the sensible enthalpy carried by outgoing vapour to check the complete open-system energy balance. Liquid mass and heat capacity change together.
+
+Saturation pressure uses the IAPWS formulation reproduced by NIST. The uniform film has area 0.02 m², initial mass 20 g, approximate latent heat 2.43 MJ/kg and specific heat 4180 J/(kg·K). The air reservoir stays at 30 °C and fixed humidity. Coefficients h = 8 W/(m²·K) and K = 4×10⁻⁸ kg/(m²·s·Pa) are selected teaching parameters, not a standard wet-bulb algorithm or wind calibration. Radiation, vessel heat capacity and drying out are excluded. Arrows represent net flux rather than visible water-vapour clouds.

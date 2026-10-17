@@ -1,0 +1,108 @@
+.ct-film {
+  max-width: 740px;
+  margin: auto;
+  color: #7d896b;
+}
+.ct-context {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 10px 6px;
+}
+.ct-body,
+.ct-wave svg {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+}
+.ct-body text,
+.ct-wave text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #7f896c;
+}
+.ct-readings {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 16px;
+  margin: 7px 10px;
+}
+.ct-readings b {
+  display: block;
+  font-size: 21px;
+  font-weight: 550;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ct-wave p,
+.ct-balance p {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 4px 10px;
+}
+.ct-balance {
+  text-align: center;
+  margin: 18px 10px;
+}
+.ct-balance b {
+  font-size: 22px;
+  font-weight: 550;
+}
+.ct-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.ct-controls > .segmented {
+  grid-column: 1/-1;
+}
+.ct-notes {
+  font-size: 16px;
+  padding: 0 12px;
+  max-width: 600px;
+  margin: auto;
+}
+.ct-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.ct-notes summary:before {
+  content: '+';
+  margin-right: 8px;
+}
+.ct-notes p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .ct-body,
+  .ct-wave svg {
+    max-width: 340px;
+  }
+  .ct-body text,
+  .ct-wave text {
+    font-size: 21px;
+  }
+  .ct-context {
+    text-align: left;
+  }
+  .ct-readings {
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .ct-readings b {
+    font-size: 20px;
+  }
+  .ct-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .ct-film[data-watch='true'] .ct-notes {
+    display: none;
+  }
+}

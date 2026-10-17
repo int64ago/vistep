@@ -1,0 +1,160 @@
+.flywheel-film {
+  max-width: 760px;
+  margin: auto;
+  color: #657f6d;
+}
+.flywheel-view-labels {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.flywheel-rotor {
+  width: 100%;
+  max-height: 260px;
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+.flywheel-rotor text,
+.flywheel-curve text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #748973;
+}
+.flywheel-torque {
+  display: grid;
+  grid-template-columns: auto minmax(40px, 1fr) 82px;
+  gap: 7px 12px;
+  max-width: 500px;
+  margin: 12px auto;
+  padding: 0 12px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.flywheel-torque > div {
+  height: 10px;
+  background: #edf0e4;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.flywheel-torque i {
+  display: block;
+  height: 100%;
+  background: #7eaa91;
+  border-radius: 5px;
+}
+.flywheel-torque i.flywheel-load {
+  background: #b7a279;
+}
+.flywheel-torque b {
+  font-size: 16px;
+  font-weight: 450;
+  white-space: nowrap;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.flywheel-reading {
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  font-size: 18px;
+  margin: 8px 12px;
+}
+.flywheel-reading > span {
+  display: grid;
+  gap: 2px;
+}
+.flywheel-reading small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.flywheel-reading b {
+  font-size: 18px;
+  font-weight: 550;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.flywheel-curve {
+  max-width: 500px;
+  margin: 6px auto 0;
+}
+.flywheel-curve svg {
+  display: block;
+  width: 100%;
+  max-height: 115px;
+}
+.flywheel-curve p,
+.flywheel-inertia {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 10px 4px;
+}
+.flywheel-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.flywheel-controls > .segmented {
+  grid-column: 1/-1;
+}
+.flywheel-notes {
+  max-width: 600px;
+  margin: auto;
+  padding: 0 12px;
+  font-size: 16px;
+}
+.flywheel-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.flywheel-notes summary:before {
+  content: '+';
+  margin-right: 10px;
+}
+.flywheel-notes[open] summary:before {
+  content: '−';
+}
+.flywheel-notes p {
+  line-height: 1.6;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .flywheel-rotor {
+    max-width: 340px;
+    max-height: none;
+  }
+  .flywheel-rotor text,
+  .flywheel-curve text {
+    font-size: 21px;
+  }
+  .flywheel-torque {
+    margin: 8px 0;
+    gap: 6px 8px;
+    padding: 0 8px;
+  }
+  .flywheel-reading {
+    gap: 28px;
+    margin: 6px 8px;
+  }
+  .flywheel-curve p {
+    text-align: left;
+  }
+  .flywheel-film[data-watch='true'] .flywheel-notes {
+    display: none;
+  }
+  .flywheel-controls {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .flywheel-curve svg {
+    max-height: none;
+  }
+}

@@ -1,0 +1,38 @@
+---
+import { bridgeDefaults, bridgeState } from '../../models/wheatstone-bridge';
+const s = bridgeState({ ...bridgeDefaults(), r4: 2000 });
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M200 17V32H95V202H305V32H200M200 202V220M95 116H305" stroke="#9caf9f" stroke-width="3"
+  ></path>{
+    [95, 305].map((x) =>
+      [68, 160].map((y) => (
+        <rect
+          x={x - 10}
+          y={y - 20}
+          width="20"
+          height="40"
+          rx="4"
+          fill="#e9e3d1"
+          stroke="#a99f83"
+          stroke-width="2"
+        />
+      )),
+    )
+  }<circle cx="200" cy="116" r="30" fill="#faf8f0" stroke="#9f84ae" stroke-width="2"></circle><path
+    d="M178 119Q200 90 222 119"
+    stroke="#cdc0d1"></path><path
+    d={`M200 126L${200 + s.im * 40000} 98`}
+    stroke="#8c68a1"
+    stroke-width="3"
+    stroke-linecap="round"></path><circle cx="95" cy="116" r="5" fill="#438b7c"></circle><circle
+    cx="305"
+    cy="116"
+    r="5"
+    fill="#b78654"></circle><path
+    d={`M128 212H${128 + s.va * 18}M228 212H${228 + s.vb * 18}`}
+    stroke="#779a86"
+    stroke-width="5"
+    stroke-linecap="round"></path></svg
+>

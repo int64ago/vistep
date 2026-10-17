@@ -1,0 +1,26 @@
+<h2 id="understand">Election and command commitment are separate</h2>
+
+The cluster has five fixed servers; a majority is three. A candidate increments its term, votes for itself and requests votes. Each server votes for at most one candidate per term and checks log freshness. A majority elects the leader. Superscripts are entry terms; t beside each server is its current known term.
+
+Leader A appends x and copies it only to B. Two copies do not reach the majority. Green marks the prefix that a server **knows** is committed; the checkmark is its local commit index. A follower may hold a copied entry before a later notification tells it the entry committed.
+
+<h2 id="try">An isolated old leader may still believe it leads</h2>
+
+Separate A,B from C,D,E. C obtains the latter three votes in a higher term. A has not learned that term and still believes it is leader. Its minority cannot obtain three acknowledgements and cannot safely acknowledge new commands.
+
+C replicates current-term y to a majority and advances commitment. After healing, A sees the higher term and becomes a follower. Its uncommitted x conflicts by term at that index, so the suffix is replaced with y. Committed prefixes are not freely rolled back. Replication acknowledgements assume durable log storage; disk and message latency are not simulated.
+
+<h2 id="deeper">Why require a current-term entry?</h2>
+
+<details>
+<summary>Inherited entries, majorities and no-op</summary>
+
+The final two shots use a separate valid transition sequence. New leader B inherits an uncommitted x from an older term. Even three replication acknowledgements cannot directly commit that old entry merely by counting copies. Raft requires an entry used to advance commitment by majority counting to belong to the leader's current term.
+
+B appends a current-term no-op and replicates it to a majority. Advancing to that index indirectly commits the earlier x. The no-op occupies a log position but adds no command to the displayed application sequence. Exploration changes replica acknowledgements, inherited-term mode and the current-term no-op.
+
+This is a bounded, explicitly driven subset: terms, voting freshness, conflicts, acknowledgements, the current-term commit rule and local application prefixes. It excludes randomized timeouts, complete RPC retries, membership changes, snapshots, linearizable reads and malicious servers. Crash tolerance is not Byzantine tolerance; safety does not promise progress without a majority.
+
+</details>
+
+Primary source: [Ongaro and Ousterhout, In Search of an Understandable Consensus Algorithm, Figure2 and sections5.2–5.4](https://raft.github.io/raft.pdf).

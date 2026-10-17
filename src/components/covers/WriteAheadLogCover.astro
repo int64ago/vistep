@@ -1,0 +1,32 @@
+---
+import { walScenario } from '../../models/write-ahead-log';
+const { color = '#b3a477' } = Astro.props;
+const q = walScenario(),
+  before = q.frames[4].state;
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  <rect x="25" y="25" width="150" height="70" rx="18" fill="#e5dfca"></rect><text
+    x="100"
+    y="68"
+    text-anchor="middle"
+    font-size="31"
+    fill={color}>{before.memory?.value}</text
+  >
+  <rect x="225" y="25" width="150" height="70" rx="18" fill="#e0e6d5"></rect><text
+    x="300"
+    y="68"
+    text-anchor="middle"
+    font-size="31"
+    fill="#a0ab86">{before.page.value}</text
+  >
+  <path d="M100 98V140H300V98" stroke={color} stroke-width="2" stroke-dasharray="5 6"></path>
+  <rect x="70" y="135" width="260" height="70" rx="18" fill="#dfe4ce"></rect><text
+    x="200"
+    y="176"
+    text-anchor="middle"
+    font-family="monospace"
+    font-size="22"
+    fill="#9ca67c">SET 11 → COMMIT</text
+  >
+</svg>

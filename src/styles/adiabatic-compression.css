@@ -1,0 +1,143 @@
+.compression-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #eee9da;
+  color: #51634f;
+  border-radius: 28px;
+  padding: 24px 32px;
+}
+.compression-study header {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.compression-machine {
+  display: block;
+  width: 100%;
+  height: 320px;
+}
+.compression-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.compression-state {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+.compression-state b {
+  font-size: 32px;
+  font-weight: 400;
+  color: #987343;
+  white-space: nowrap;
+}
+.compression-state span {
+  font-size: 16px;
+}
+.compression-ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+}
+.compression-ledger > div {
+  display: grid;
+  gap: 4px;
+  border-top: 1px solid #a8b19b66;
+  padding-top: 8px;
+}
+.compression-ledger span {
+  font-size: 16px;
+}
+.compression-ledger b {
+  font-size: 24px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.compression-study summary {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.compression-study summary:before {
+  content: '＋';
+  margin-right: 8px;
+}
+.compression-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #69785f;
+  margin: 0 0 12px;
+}
+.compression-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 12px;
+}
+.compression-controls button {
+  font-size: 16px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: inherit;
+  background: #ffffff33;
+  border: 1px solid #a0af9666;
+  border-radius: 24px;
+}
+.compression-controls button[aria-pressed='true'] {
+  background: #d5decb;
+}
+.compression-modes {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.compression-study .control,
+.compression-study .control output {
+  color: #51634f;
+}
+.compression-study .control input[type='range'] {
+  --range-color: #a78754;
+  --range-rest: #b8c0a6;
+}
+@media (max-width: 760px) {
+  .compression-study {
+    padding: 16px;
+  }
+  .compression-study header {
+    font-size: 16px;
+  }
+  .compression-machine {
+    height: 200px;
+  }
+  .compression-state {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .compression-state b {
+    font-size: 27px;
+  }
+  .compression-ledger {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .compression-ledger b {
+    font-size: 20px;
+  }
+  .compression-controls {
+    grid-template-columns: 1fr;
+  }
+  .compression-modes {
+    gap: 6px;
+  }
+  .compression-modes button {
+    padding-inline: 10px;
+  }
+}

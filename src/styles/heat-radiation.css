@@ -1,0 +1,155 @@
+.radiation-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #202d39;
+  color: #d9e0d2;
+  border-radius: 28px;
+  padding: 24px 32px;
+}
+.radiation-study header {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.radiation-chamber {
+  display: block;
+  width: 100%;
+  height: 300px;
+  margin-block: 8px;
+}
+.radiation-temperatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+}
+.radiation-exchange {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 14px;
+}
+.radiation-exchange > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 16px;
+}
+.radiation-exchange b {
+  font-size: 24px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.radiation-exchange i {
+  grid-column: 1/-1;
+  height: 7px;
+  display: block;
+  border-radius: 8px;
+  background: #15232e;
+  overflow: hidden;
+}
+.radiation-exchange em {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+}
+.radiation-net {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 16px;
+}
+.radiation-net b {
+  font-size: 27px;
+  font-weight: 400;
+  color: #e1c58f;
+}
+.radiation-result {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 16px;
+}
+.radiation-result b {
+  font-size: 27px;
+  font-weight: 400;
+  color: #e4bb7e;
+  white-space: nowrap;
+}
+.radiation-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.radiation-study summary:before {
+  content: '＋';
+  margin-right: 8px;
+}
+.radiation-study details p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #bdccc4;
+}
+.radiation-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 12px;
+}
+.radiation-controls button {
+  border: 1px solid #9babaa66;
+  background: #ffffff08;
+  border-radius: 24px;
+  min-height: 44px;
+  font-size: 16px;
+  color: inherit;
+  padding: 10px 14px;
+}
+.radiation-study .control,
+.radiation-study .control output {
+  color: #d9e0d2;
+}
+.radiation-study .control input[type='range'] {
+  --range-color: #e4bb7e;
+  --range-rest: #81969a;
+}
+@media (max-width: 760px) {
+  .radiation-study {
+    padding: 16px;
+  }
+  .radiation-study header {
+    font-size: 16px;
+  }
+  .radiation-chamber {
+    height: 190px;
+    margin-block: 4px;
+  }
+  .radiation-exchange {
+    gap: 12px;
+  }
+  .radiation-exchange > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .radiation-exchange b {
+    font-size: 22px;
+  }
+  .radiation-net,
+  .radiation-result {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .radiation-net b {
+    font-size: 25px;
+  }
+  .radiation-controls {
+    grid-template-columns: 1fr;
+  }
+}

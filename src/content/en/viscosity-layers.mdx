@@ -1,0 +1,33 @@
+<a id="understand"></a>
+
+## Start up before discussing steady flow
+
+After the upper plate starts, nearby fluid moves first and momentum diffuses inward. That chapter uses uniform-fluid startup. Green is instantaneous velocity; gold is displacement accumulated from an initially vertical material line.
+
+In steady flow, plate velocities set the boundary conditions. Equal viscosity with a fixed lower plate gives a linear profile. Different viscosities allow a slope change while velocity stays continuous. Interface slip and additional tangential interfacial stresses are excluded.
+
+<a id="try"></a>
+
+## Specify what stays fixed
+
+At prescribed plate-speed difference, viscosity changes alter stress and internal velocity allocation. A wider fixed gap reduces stress. Swapping equal-thickness layers preserves total stress while changing interface speed.
+
+Steady material lines compare displacement over the same observation time from the same initial vertical line. Gap changes compare separate fixed geometries rather than simulating squeezing or startup histories. Reversing plate speed reverses stress while dissipation remains nonnegative.
+
+<a id="deeper"></a>
+
+## Continuous velocity need not have a continuous slope
+
+<div className="formula">
+  τ = (U_top − U_bottom) / (h₁/μ₁ + h₂/μ₂)
+  <br />
+  u_interface = U_bottom + τh₁/μ₁
+  <br />
+  P/A = τ(U_top − U_bottom) = ∫ μ(du/dy)²dy
+</div>
+
+Each layer is piecewise linear, with velocity and tangential stress continuous across the interface. Plate tractions on the fluid are equal and opposite. Their net force is zero, but they act at different velocities and can supply positive power. This becomes viscous dissipation; temperature evolution is not calculated.
+
+When both plates have equal speeds, the fluid translates with zero gradient, shear stress and dissipation. Viscosity does not simply oppose every bulk translation.
+
+Assumptions are a local section of infinite no-slip parallel plates, Newtonian fluid and zero pressure gradient. Mixing, interface deformation and turbulence are omitted. Startup separately solves ∂u/∂t = (μ/ρ)∂²u/∂y² using 100 Fourier terms for velocity and integrated displacement, with density 1000 kg/m³. Ideal impulsive startup has a wall-stress singularity at zero time; the film begins at 0.01 s and the model marks that instantaneous stress undefined. Horizontal and vertical scales differ; numerical readouts are physical.

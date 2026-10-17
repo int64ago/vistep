@@ -1,0 +1,30 @@
+<a id="understand"></a>
+
+## Compare partial pressures before judging a surface
+
+For a given ambient vapour pressure, the dew point is the temperature at which liquid-water saturation pressure equals it. A mirror above that temperature has no net condensation onto its surface. Below it, ambient vapour pressure exceeds the surface saturation value and condensation can occur. Merely being cooler than the air is insufficient.
+
+Relative humidity is actual vapour pressure divided by saturation pressure at the current temperature. At fixed total pressure and water-to-dry-air ratio, warming lowers relative humidity without removing water or changing the dew point. Treating air as a water container hides these equilibrium conditions.
+
+<a id="try"></a>
+
+## A cold surface and a cooling parcel
+
+Cold-mirror mode treats ambient air as a large reservoir and changes surface temperature. Change ambient humidity to move the pressure line and its dew-point intersection. Droplets indicate the condition only, not their number, mass or growth rate.
+
+Parcel mode instead balances water per kilogram of dry air during slow, constant-pressure cooling. Above the dew point the vapour ratio is unchanged; below it, some water condenses. Retain that liquid and reheat to check that it evaporates while total water remains fixed. External heat transfer is required; this is not adiabatic cooling.
+
+<a id="deeper"></a>
+
+## A mass basis and a phase constraint
+
+<div className="formula">
+  RH = e / e-saturation(T)
+  <br />
+  Dew point Td satisfies e-saturation(Td) = e<br />
+  Vapour mixing ratio w = 0.62198 e / (P − e)
+</div>
+
+Liquid-water saturation pressure uses IAPWS. At fixed P = 101.325 kPa, the original vapour ratio w₀ is the total water budget. After cooling, gas-phase water is min[w₀,w-saturation(T)] and liquid is the remainder. The phase bar shows mass fractions, not liquid-to-air volume fractions. Retained condensate can evaporate on reheating.
+
+Initial air spans 20–35 °C and 30–100% relative humidity; target temperature spans 0–40 °C. Ice frost points, salts, nucleation supersaturation, temperature gradients and nonideal enhancement factors are excluded. Water vapour is invisible; visible mirror deposits are liquid droplets. Condensation releases latent heat, but this externally temperature-controlled model predicts neither cooling power nor droplet growth time.

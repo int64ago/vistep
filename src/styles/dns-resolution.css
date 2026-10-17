@@ -1,0 +1,308 @@
+.dns-study {
+  padding: 24px;
+  color: #4c435d;
+  background: #f4f0ed;
+  border-radius: 24px;
+  font-size: 16px;
+}
+.dns-study header,
+.dns-client,
+.dns-cache > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dns-study header {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #897b91;
+}
+.dns-name {
+  font-size: clamp(26px, 4vw, 46px);
+  letter-spacing: -0.06em;
+  margin: 20px 0;
+}
+.dns-name b {
+  color: #876282;
+}
+.dns-client {
+  padding: 12px 0;
+  border-top: 1px solid #ddd4de;
+  border-bottom: 1px solid #ddd4de;
+  flex-wrap: wrap;
+}
+.dns-client i {
+  font-style: normal;
+  color: #a088a3;
+}
+.dns-client b {
+  font: 16px monospace;
+  color: #8a778e;
+}
+.dns-atlas {
+  height: 265px;
+  position: relative;
+  margin: 12px 0;
+}
+.dns-atlas svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.dns-roads {
+  fill: none;
+  stroke: #d8cddc;
+  stroke-width: 0.5;
+}
+.dns-active-road {
+  fill: none;
+  stroke: #a17b9f;
+  stroke-width: 1;
+}
+.dns-atlas circle {
+  fill: #c99758;
+}
+.dns-resolver {
+  position: absolute;
+  left: 0;
+  top: 35%;
+  width: 43%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: #e5dde7;
+  border-radius: 50% 44% 45% 50%;
+  padding: 12px;
+}
+.dns-resolver b {
+  font-size: 20px;
+}
+.dns-resolver small {
+  font-size: 16px;
+  color: #817087;
+}
+.dns-levels {
+  position: absolute;
+  right: 0;
+  inset-block: 0;
+  width: 41%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.dns-level {
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: #ece7e9;
+  transition: background 0.25s;
+}
+.dns-level[data-active='true'] {
+  background: #dbcbdf;
+}
+.dns-level span,
+.dns-level b {
+  display: block;
+}
+.dns-level span {
+  color: #82718b;
+}
+.dns-level b {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.dns-message {
+  border-left: 3px solid #b295b5;
+  padding: 7px 0 7px 14px;
+  min-height: 76px;
+}
+.dns-message span,
+.dns-message strong {
+  display: block;
+}
+.dns-message span {
+  color: #85728e;
+}
+.dns-message strong {
+  font: 16px/1.6 monospace;
+  overflow-wrap: anywhere;
+}
+.dns-message[data-kind='answer'] {
+  border-color: #a5b19b;
+}
+.dns-cache {
+  margin: 16px 0 10px;
+  padding: 14px 16px;
+  background: #fbfaf6;
+  border-radius: 16px;
+}
+.dns-cache > div {
+  margin-bottom: 8px;
+}
+.dns-cache p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 0;
+  font-size: 16px;
+}
+.dns-cache code {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.dns-cache p[data-expired='true'] {
+  color: #ad8b81;
+  text-decoration: line-through;
+}
+.dns-study details {
+  margin-top: 10px;
+}
+.dns-study summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-top: 10px;
+}
+.dns-study details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.dns-controls {
+  display: grid;
+  gap: 8px;
+  padding: 16px 0;
+}
+.dns-controls input {
+  width: 100%;
+  min-height: 44px;
+}
+.dns-controls button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: #ded1e0;
+  color: inherit;
+  font: inherit;
+  padding: 8px 14px;
+}
+.dns-controls p {
+  line-height: 1.6;
+  margin: 4px 0;
+}
+@media (max-width: 600px) {
+  .dns-study {
+    padding: 16px 12px;
+  }
+  .dns-study header {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .dns-study[data-watch='true'] header,
+  .dns-study[data-watch='true'] details {
+    display: none;
+  }
+  .dns-study[data-watch='true'] .dns-name {
+    margin: 2px 0;
+  }
+  .dns-name {
+    font-size: 30px;
+    margin: 8px 0;
+  }
+  .dns-atlas {
+    height: 230px;
+  }
+  .dns-study[data-watch='true'] .dns-atlas {
+    margin-block: 8px;
+  }
+  .dns-resolver {
+    padding: 9px;
+    left: 0;
+    width: 44%;
+  }
+  .dns-resolver b {
+    font-size: 18px;
+  }
+  .dns-resolver small {
+    display: none;
+  }
+  .dns-levels {
+    width: 43%;
+  }
+  .dns-level {
+    padding: 8px;
+  }
+  .dns-level span {
+    font-size: 16px;
+  }
+  .dns-message {
+    min-height: 60px;
+  }
+  .dns-cache {
+    padding: 12px 10px;
+    margin-top: 8px;
+  }
+  .dns-cache code {
+    font-size: 16px;
+  }
+  .dns-study[data-watch='true']:is([data-chapter='0'], [data-chapter='1'], [data-chapter='2'])
+    .dns-cache {
+    display: none;
+  }
+  .dns-study[data-watch='true']:is([data-chapter='3'], [data-chapter='4'], [data-chapter='5'])
+    .dns-atlas {
+    display: none;
+  }
+}
+
+.dns-cache-source {
+  display: none;
+}
+@media (min-width: 761px) {
+  .dns-study {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 14px 28px;
+    max-width: 1100px;
+    margin: auto;
+  }
+  .dns-study header,
+  .dns-name,
+  .dns-client,
+  .dns-study details,
+  .dns-controls {
+    grid-column: 1 / -1;
+  }
+  .dns-name {
+    margin: 4px 0;
+  }
+  .dns-atlas {
+    grid-column: 1;
+    grid-row: 4 / span 2;
+    margin: 0;
+  }
+  .dns-message {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  .dns-cache {
+    grid-column: 2;
+    grid-row: 5;
+    margin: 0;
+  }
+}
+@media (max-width: 600px) {
+  .dns-cache-source {
+    display: block;
+    margin: 14px 0 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dns-study {
+    padding-block: 12px;
+  }
+}

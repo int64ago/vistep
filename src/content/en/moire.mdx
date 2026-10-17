@@ -1,0 +1,33 @@
+<a id="understand"></a>
+
+## Coarse fringes record relative phase
+
+Two overlaid transmission gratings multiply at each location. Slightly different pitches or orientations cause their relative alignment to change slowly: transmitting regions agree in some places and disagree elsewhere, producing broad variations.
+
+The model defines both layers in a fixed90mm physical field rather than relying on screen-pixel aliasing. The lower curve isolates and normalizes the difference-frequency term, not the full product transmission. Main-view grey levels use a monotonic illustrative display mapping.
+
+<a id="try"></a>
+
+## Separate pitch, rotation and translation
+
+Closer fine pitches produce a longer coarse period. Equal pitches at different orientations also create a difference because spatial frequency has direction. Translation changes phase and moves fringes. Gold tracks one difference-phase peak, while blue tracks one stripe of the second grating, both derived from current coordinates and phase.
+
+Identical aligned layers retain fine structure but have a constant difference term. No separate finite period does not mean zero period. In first-layer mode, second-layer controls disappear and the slice returns to first-layer transmission.
+
+<a id="deeper"></a>
+
+## Subtract frequencies rather than pitches
+
+<div className="formula">
+  T1 = [1 + cos(2π q1·r)] / 2<br />
+  T2 = [1 + cos(2π q2·r − 2πs/p2)] / 2<br />
+  qDifference = q1 − q2; coarse period = 1 / |qDifference|
+  <br />
+  For aligned gratings D = p1 p2 / |p2 − p1|
+</div>
+
+Expanding T1T2 gives a constant, the original frequencies, a sum term and a difference cosine of amplitude one eighth. The lower curve shifts and scales that term to zero–one to emphasize phase and period.
+
+Pitches4mm and4.4mm give a44mm difference period. A translation s along the second-layer normal shifts a chosen peak by qDifference·Δr = −s/p2. Here a1mm fine-stripe translation gives a10mm opposite peak displacement, without implying material motion at that speed.
+
+The model is an ideal coplanar sinusoidal transmission product. Wave diffraction, layer spacing, coherence and digital sensors are omitted. Screens and printing can also involve sampling, harmonics and other lattices, requiring their own models.

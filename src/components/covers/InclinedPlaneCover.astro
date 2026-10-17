@@ -1,0 +1,22 @@
+---
+import { inclineDefaults, inclineState } from '../../models/inclined-plane';
+const p = { ...inclineDefaults(), angle: 22, progress: 0.68 },
+  s = inclineState(p),
+  k = 105,
+  x = 55 + s.position.x * k,
+  y = 183 - s.position.y * k;
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d={`M55 183L${55 + s.run * k} 78V183Z`} fill="#e1e5d5"></path><path
+    d={`M55 183L${55 + s.run * k} 78`}
+    stroke="#9eaa95"
+    stroke-width="5"></path><path d="M20 187H380" stroke="#cdd4c1"></path><g
+    transform={`translate(${x} ${y}) rotate(-22)`}
+    ><rect x="-22" y="-44" width="44" height="44" rx="4" fill="#a77a4e"></rect><path
+      d="M-17-39L17-5M17-39L-17-5"
+      stroke="#d8b58a"
+      stroke-width="2"></path><path d="M0-22H85m-9-6 9 6-9 6" stroke="#598d83" stroke-width="3"
+    ></path></g
+  ><path d={`M${55 + s.run * k + 14} 78h7V183h-7`} stroke="#8e90a5" stroke-width="2"></path></svg
+>

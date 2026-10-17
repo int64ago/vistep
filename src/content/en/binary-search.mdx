@@ -1,0 +1,26 @@
+<h2 id="understand">Order is the evidence that lets half the array go</h2>
+
+To find 37 in these 16 ascending values, first compare the middle value, 29. Because it is too small and every earlier value is no larger, every position through that midpoint can be excluded. Halving is not a guess about where the answer lives. One comparison, combined with order, proves where it cannot live.
+
+The new middle value is 46, which is too large. Exclude it and every later position. The next midpoint is 37: three comparisons find index 9. Indices begin at zero.
+
+<h2 id="try">Try an absent value or repeated matches</h2>
+
+Change the target and inspect each candidate interval. Searching for 38 does not return a nearby value: the inclusive interval becomes empty, with low greater than high. Exploration can add two more copies of 37. This version returns some matching index, not necessarily the leftmost match.
+
+On a phone the long array folds into a shelf read in row order. Indices remain the same. Sorting follows index order, not two-dimensional screen distance.
+
+<h2 id="deeper">Sorted input is part of the search contract</h2>
+
+<details>
+<summary>Invariant, cost and a counterexample</summary>
+
+The invariant is: **if the target exists, it remains in the inclusive interval [low, high].** A failed comparison excludes the midpoint itself, so the interval strictly shrinks. The midpoint is `low + floor((high − low) / 2)`. The implementation also checks finite, sorted input. This linear teaching guard is excluded from the displayed search-comparison count; the protected interface as a whole is not claimed to run in logarithmic time.
+
+The last chapter moves 37 to index 1, breaking order but keeping the middle value 29. Reusing the same exclusion would discard the real target. This is an illustration of invalid reasoning: the actual search function rejects the unsorted input.
+
+The link to [database indexes](/en/explore/database-index/) is useful, but a sorted array is not a B-tree page structure. Insertion and maintenance costs are outside this explanation.
+
+</details>
+
+Source: [Princeton: Sorting and Searching](https://introcs.cs.princeton.edu/java/42sort/).

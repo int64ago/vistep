@@ -1,0 +1,36 @@
+---
+import { leverDefaults, leverState } from '../../models/lever';
+const s = leverState({ ...leverDefaults(), direction: 60 });
+const x = (v: number) => 245 + v * 78,
+  y = (v: number) => 110 - v * 78;
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><ellipse cx="222" cy="177" rx="150" ry="18" fill="#bda980" opacity=".13"></ellipse><path
+    d="M222 170L245 115L268 170Z"
+    fill="#7b8c86"></path><path
+    d={`M${x(s.point.x) - 10} ${y(s.point.y)}H333`}
+    stroke="#ad8555"
+    stroke-width="15"
+    stroke-linecap="round"></path><circle
+    cx="245"
+    cy="110"
+    r="8"
+    fill="#fff8e9"
+    stroke="#566b62"
+    stroke-width="3"></circle><path d="M323 118V142" stroke="#897154" stroke-width="3"></path><rect
+    x="303"
+    y="142"
+    width="40"
+    height="38"
+    rx="9"
+    fill="#496771"></rect><path
+    d={`M245 110L${x(s.foot.x)} ${y(s.foot.y)}`}
+    stroke="#9275a5"
+    stroke-width="4"></path><path
+    d="M88 110L39 138M39 138L43 123M39 138L54 141"
+    stroke="#bf774d"
+    stroke-width="4"
+    stroke-linecap="round"></path><path d="M88 110L175 60" stroke="#bf774d" stroke-dasharray="4 5"
+  ></path><circle cx={x(s.foot.x)} cy={y(s.foot.y)} r="4" fill="#9275a5"></circle></svg
+>

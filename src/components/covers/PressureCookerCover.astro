@@ -1,0 +1,48 @@
+---
+import { cookerState, cookerParameters } from '../../models/pressure-cooker';
+const p = cookerParameters(),
+  s = cookerState({ time: p.heatToSet / p.power + 120 }),
+  gap = s.lift * 80000,
+  water = 245 - ((s.liquid * s.vl) / s.volume) * 115;
+---
+
+<svg viewBox="0 0 480 300" aria-hidden="true"
+  ><defs
+    ><linearGradient id="cooker-cover-steel"
+      ><stop stop-color="#7f9391"></stop><stop offset=".45" stop-color="#d9dfcf"></stop><stop
+        offset="1"
+        stop-color="#6c8480"></stop></linearGradient
+    ></defs
+  ><rect width="480" height="300" fill="#3b4c41"></rect><path
+    d="M100 130V233Q100 245 112 245H368Q380 245 380 233V130"
+    fill="#bfd4c2"
+    fill-opacity=".04"
+    stroke="url(#cooker-cover-steel)"
+    stroke-width="9"></path><path
+    d={`M105 ${water}H375V233Q375 240 368 240H112Q105 240 105 233Z`}
+    fill="#82aaa5"></path><path
+    d="M97 130Q127 111 231 114V130M249 130V114Q353 111 383 130"
+    fill="none"
+    stroke="url(#cooker-cover-steel)"
+    stroke-width="9"></path><path
+    d="M235 140V100H226M245 140V100H254"
+    fill="none"
+    stroke="url(#cooker-cover-steel)"
+    stroke-width="5"></path><rect
+    x="220"
+    y={100 - gap - 26.4}
+    width="40"
+    height="26.4"
+    rx="5"
+    fill="#bcaa77"></rect>{
+    [-1, 1].map((sign) => (
+      <path
+        d={`M240 ${water}V${100 - gap / 2}H${240 + sign * 43}Q${240 + sign * 50} ${100 - gap / 2} ${240 + sign * 50} ${88 - gap / 2}V44`}
+        fill="none"
+        stroke="#b1d9ce"
+        stroke-width="2.5"
+        stroke-dasharray="7 8"
+      />
+    ))
+  }<path d="M135 267H345" stroke="#c28b5d" stroke-width="7" stroke-linecap="round"></path></svg
+>

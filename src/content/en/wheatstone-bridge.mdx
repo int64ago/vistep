@@ -1,0 +1,40 @@
+<h2 id="understand">A zero reading does not mean zero supply current</h2>
+
+Two resistor branches share a DC supply. The detector connects their midpoints, A and B. It measures **current between those nodes**, not the total current delivered by the supply.
+
+With four 1 kΩ resistors and a 5 V excitation, both midpoints sit at 2.5 V. No voltage difference drives the detector, so its current is zero. Each supply branch still carries 2.5 mA, and the supply delivers 5 mA altogether.
+
+Increasing only R4, the lower resistor in the right branch, changes B's potential and produces a detector reading. Increasing R2 by the same proportion brings A to the same potential and restores the null. Balance depends on **resistance ratios**, not on all four resistances being identical.
+
+The last comparison changes the detector resistance. Away from balance, that instrument forms another conducting branch and alters the node voltages it is measuring. Its loading is included in every calculation shown.
+
+<h2 id="try">Separate balance from a disconnected supply</h2>
+
+- Keep R2 at 1 kΩ and increase R4 to 2 kΩ. Compare both node potentials and the sign of the detector reading.
+- Set R2 to 2 kΩ as well. Once the null returns, vary the excitation and watch the supply current.
+- Unbalance the bridge and change the detector resistance. An unloaded divider calculation is no longer the exact measured voltage.
+- Set the supply to zero. Every current vanishes, but that null alone cannot establish that the resistance ratios match.
+
+<h2 id="deeper">The detector belongs in the circuit equations</h2>
+
+<details>
+<summary>Two nodes and a balance ratio</summary>
+
+R1 and R2 are the upper and lower left resistors; R3 and R4 are their right-branch counterparts. The lower supply rail is 0 V and the excitation is Vs. A positive detector current runs from A to B through resistance Rg.
+
+<div className="formula">Ig = (VA − VB) / Rg</div>
+
+<div className="formula">(Vs − VA)/R1 = VA/R2 + Ig</div>
+
+<div className="formula">(Vs − VB)/R3 + Ig = VB/R4</div>
+
+For nonzero excitation, balance requires R1/R2 = R3/R4. A negative reading means current flows from B to A. The model solves this linear network with positive resistances and an ideal supply; it does not force the midpoints to their unloaded divider voltages.
+
+</details>
+
+<details>
+<summary>From a resistor network to a sensor</summary>
+
+A resistance that changes with strain, temperature or another quantity can turn a relative resistance change into a differential output. Real instruments must also manage excitation stability, common-mode range, noise, offset, lead resistance and self-heating. This scene explains the DC network rather than predicting a particular sensor's accuracy or compensation.
+
+</details>

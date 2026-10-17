@@ -1,0 +1,39 @@
+---
+import { angularMomentumDefaults, angularMomentumState } from '../../models/angular-momentum';
+const s = angularMomentumState(angularMomentumDefaults(), 1.7),
+  r = s.radius * 125;
+---
+
+<svg viewBox="0 0 360 220" aria-hidden="true"
+  ><circle cx="180" cy="108" r="88" fill="#e6ecd9"></circle><circle
+    cx="180"
+    cy="108"
+    r="81.25"
+    stroke="#bac9ad"
+    stroke-dasharray="4 5"
+    fill="none"></circle><circle cx="180" cy="108" r={r} stroke="#90aa89" fill="none"></circle><g
+    transform="translate(180 108) rotate(-28)"
+    ><rect x="-100" y="-10" width="200" height="20" rx="8" fill="#c8d7bd"></rect><path
+      d="M-96 -5H96M-96 5H96"
+      stroke="#95ac90"
+      stroke-width="2"></path>{
+      [-1, 1].map((a) => (
+        <rect
+          x={a * r - 11}
+          y="-16"
+          width="22"
+          height="32"
+          rx="4"
+          fill="#bea573"
+          stroke="#a18c5f"
+        />
+      ))
+    }<circle r="25" fill="#8ea98a"></circle><path d="M0 -20V-11" stroke="#d3b87c" stroke-width="3"
+    ></path></g
+  ><circle cx="180" cy="108" r="7" fill="#c8d6ba"></circle><path
+    d="M74 175Q90 192 111 192M286 41Q271 25 250 25"
+    stroke="#aab69a"
+    fill="none"
+    stroke-width="3"
+    stroke-linecap="round"></path></svg
+>

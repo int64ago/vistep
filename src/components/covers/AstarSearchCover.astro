@@ -1,0 +1,39 @@
+---
+import { astarLessonGrid, astarPoint, astarTrace } from '../../models/astar-search';
+const { color = '#95a47c' } = Astro.props;
+const grid = astarLessonGrid(),
+  q = astarTrace(grid);
+const cells = grid.cost.map((cost, i) => ({
+  i,
+  cost,
+  x: (i % 9) * 38 + 31,
+  y: Math.floor(i / 9) * 35 + 25,
+  wall: grid.blocked.includes(i),
+}));
+const path = q.path
+  .map((id, i) => {
+    const p = astarPoint(grid, id);
+    return `${i ? 'L' : 'M'}${p.x * 38 + 47} ${p.y * 35 + 40}`;
+  })
+  .join(' ');
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" fill="none" aria-hidden="true">
+  {
+    cells.map((cell) => (
+      <rect
+        x={cell.x}
+        y={cell.y}
+        width="33"
+        height="30"
+        rx="6"
+        fill={cell.wall ? '#9ba78c' : cell.cost > 1 ? '#d3bc8a' : '#e1e8d6'}
+      />
+    ))
+  }
+  <path d={path} stroke={color} stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+  ></path>
+  <text x="200" y="222" text-anchor="middle" font-size="18" fill={color} font-family="monospace"
+    >f = g + h</text
+  >
+</svg>

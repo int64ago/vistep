@@ -1,0 +1,37 @@
+<h2 id="understand">Voltage depends on both temperature endpoints</h2>
+
+Two homogeneous alloys meet at the measuring junction; their other ends connect to a high-impedance voltmeter. K+ and K− label the type K wires. Copper leads are marked Cu. Both copper contacts sit in an isothermal block at Tc, while the measuring junction is at Th.
+
+An isothermal circuit gives zero thermoelectric voltage even when its temperature is above zero Celsius. Heating the measuring junction changes voltage, but so does heating only the reference block. **One voltage reading cannot determine the measuring junction’s absolute temperature.**
+
+<h2 id="try">Change the reference end and check compensation</h2>
+
+- Hold the measuring junction at 400°C and warm the reference block from 25°C to 100°C. Raw voltage falls; correctly compensated temperature stays unchanged.
+- Compare the assumed-zero reference reading with the compensated result. Compensation operates on voltage before the nonlinear conversion back to temperature.
+- Add a reference-sensor error. The compensated answer shifts too, so the reference measurement matters.
+- Insert metal M at the hot junction. Its net contribution is zero when both new contacts have the same temperature.
+- Concentrate the thermal gradient near the hot end. For homogeneous wires, unchanged endpoint temperatures give unchanged integrated voltage.
+
+<h2 id="deeper">Returning to the zero-Celsius reference</h2>
+
+<details>
+<summary>The type K reference and order of compensation</summary>
+
+NIST's E_K(T) gives type K thermoelectric EMF relative to a 0°C reference. It is nonlinear; the positive-temperature reference uses a polynomial plus an exponential term.
+
+<div className="formula">Vmeasured = E_K(Th) − E_K(Tc)</div>
+<div className="formula">E_K(Th) = Vmeasured + E_K(Tc measured)</div>
+<div className="formula">Th indicated = E_K⁻¹[Vmeasured + E_K(Tc measured)]</div>
+
+The historical term “cold junction” means the reference end; it need not be below room temperature. Voltage does not originate exclusively at the weld. The difference between the two materials' contributions along temperature gradients determines the open-circuit reading. For homogeneous wires, its integral depends only on endpoint temperatures.
+
+</details>
+
+<details>
+<summary>Connectors, temperature profiles and model boundaries</summary>
+
+A third metal inserted at the hot junction contributes zero net EMF if both new contacts are at Th: its thermoelectric integral runs from Th back to Th. This requires equal contact temperatures and does not justify arbitrary extension wires across a temperature gradient.
+
+The model uses the NIST ITS-90 reference and a high-impedance voltmeter with negligible current. Copper contact temperatures are equal. Temperature profiles are prescribed steady states, without heat-flow transients, contact thermal resistance, thermal inertia, aging or material inhomogeneity. Real readings also depend on reference-sensor errors, terminal gradients, interference and calibration.
+
+</details>

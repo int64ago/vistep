@@ -1,0 +1,149 @@
+.prism-study {
+  background: #243038;
+  color: #e7e8db;
+  border-radius: 24px;
+  padding: 25px 28px;
+}
+.prism-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  font-size: 18px;
+}
+.prism-study header b {
+  font-size: 16px;
+  font-weight: 500;
+  color: #b6c6be;
+}
+.prism-study svg {
+  width: 100%;
+  height: 320px;
+  display: block;
+}
+.prism-spectrum > span {
+  font-size: 16px;
+}
+.prism-spectrum > div {
+  height: 45px;
+  background: #152027;
+  border-radius: 12px;
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.prism-spectrum i {
+  height: 28px;
+  top: 8px;
+  width: 3px;
+  position: absolute;
+  border-radius: 3px;
+}
+.prism-spectrum b {
+  height: 45px;
+  top: 0;
+  width: 1px;
+  background: #f7ead0;
+  position: absolute;
+}
+.prism-spectrum p {
+  display: flex;
+  justify-content: space-between;
+  color: #aabdba;
+  font-size: 16px;
+  margin: 8px 0;
+}
+.prism-values {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px;
+  margin-top: 18px;
+}
+.prism-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.prism-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.prism-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 14px;
+  color: #bac9bf;
+}
+.prism-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+.prism-controls button {
+  min-height: 44px;
+  border: 1px solid #afc0b944;
+  background: #ffffff08;
+  color: inherit;
+  border-radius: 24px;
+  font-size: 16px;
+  padding: 10px 16px;
+}
+@media (max-width: 760px) {
+  .prism-study {
+    padding: 20px 16px;
+  }
+  .prism-study header {
+    font-size: 16px;
+    flex-wrap: wrap;
+  }
+  .prism-study svg {
+    height: 270px;
+  }
+  .prism-values {
+    flex-wrap: wrap;
+  }
+  .prism-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .prism-study {
+    padding: 16px;
+  }
+  .prism-study svg {
+    height: 235px;
+  }
+  .prism-spectrum > div {
+    height: 36px;
+  }
+  .prism-spectrum i {
+    top: 5px;
+    height: 26px;
+  }
+  .prism-values {
+    margin-top: 12px;
+  }
+}
+
+.prism-study .control,
+.prism-study .control output {
+  color: #e1e7df;
+}
+.prism-study .control input[type='range'] {
+  --range-color: #d4c28a;
+  --range-rest: #657f80;
+}
+
+@media (max-width: 760px) {
+  .prism-study header b {
+    display: none;
+  }
+  .prism-study svg {
+    height: 205px;
+  }
+}

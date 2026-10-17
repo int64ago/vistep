@@ -1,0 +1,144 @@
+.hydro-study {
+  max-width: 980px;
+  margin-inline: auto;
+  background: #eef0e2;
+  color: #4c665c;
+  border-radius: 28px;
+  padding: 24px 32px;
+}
+.hydro-study header {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.hydro-vessels {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+.hydro-names {
+  display: flex;
+  justify-content: space-around;
+  gap: 14px;
+  font-size: 16px;
+}
+.hydro-names span {
+  display: grid;
+  text-align: center;
+  gap: 4px;
+}
+.hydro-names b {
+  font-size: 20px;
+  font-weight: 400;
+  color: #98794f;
+}
+.hydro-names small {
+  font-size: 16px;
+}
+.hydro-pressure {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 14px;
+}
+.hydro-pressure b {
+  font-size: 32px;
+  font-weight: 400;
+  color: #527f7c;
+  white-space: nowrap;
+}
+.hydro-pressure span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.hydro-patch {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  margin-top: 12px;
+}
+.hydro-force-note {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px 0 0;
+  color: #6a7b69;
+}
+.hydro-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.hydro-study summary:before {
+  content: '＋';
+  margin-right: 8px;
+}
+.hydro-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #6a7b69;
+  margin: 0 0 12px;
+}
+.hydro-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 12px;
+}
+.hydro-controls button {
+  font-size: 16px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: inherit;
+  border: 1px solid #a2b59e66;
+  background: #fff4;
+  border-radius: 24px;
+}
+.hydro-study .control,
+.hydro-study .control output {
+  color: #4c665c;
+}
+.hydro-study .control input[type='range'] {
+  --range-color: #709c94;
+  --range-rest: #b4c3ac;
+}
+@media (max-width: 760px) {
+  .hydro-study {
+    padding: 10px;
+  }
+  .hydro-study header {
+    font-size: 16px;
+  }
+  .hydro-vessels {
+    height: 170px;
+  }
+  .hydro-names {
+    gap: 8px;
+  }
+  .hydro-names b {
+    font-size: 18px;
+  }
+  .hydro-pressure {
+    display: block;
+    margin-top: 8px;
+  }
+  .hydro-pressure span {
+    display: block;
+    margin-top: 4px;
+  }
+  .hydro-study[data-forces='true'] .hydro-pressure span {
+    display: none;
+  }
+  .hydro-pressure b {
+    font-size: 26px;
+  }
+  .hydro-patch {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .hydro-controls {
+    grid-template-columns: 1fr;
+  }
+}

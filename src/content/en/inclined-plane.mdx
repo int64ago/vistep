@@ -1,0 +1,39 @@
+<h2 id="understand">The same load, raised to the same height</h2>
+
+The crate weighs 120 N and its destination is always one metre higher. A direct slow lift takes about 120 N. Along a frictionless 30° ramp, a parallel pull of 60 N is enough, but it acts through two metres.
+
+Gravity still points downward. The pull balances its component along the ramp, while the surface supports its perpendicular component. The ramp trades force for travel without changing the weight or final gravitational potential energy.
+
+Make the surface rough and the pull must also oppose sliding friction. Some input work raises the load; the rest becomes internal energy at the contact.
+
+A revealing consequence is that **a shallower rough ramp can need less force but more work** for the same lift. The longer route can increase the total work against friction. A single force reading is not an energy account.
+
+<h2 id="try">Test force advantage and work separately</h2>
+
+- Set friction to zero and change the angle. At the destination, both input work and potential-energy gain remain 120 J.
+- Set the friction coefficient to 0.30 and compare 30° with 12°. The pull decreases while the orange friction-energy bar grows.
+- Scrub the position along the ramp. Displacement, potential energy and dissipated heat all use that same progress.
+
+This is an object **already sliding upward at constant speed**. It does not calculate the static-friction threshold for starting motion, or predict a freely released object's movement.
+
+<h2 id="deeper">A force balance with an energy consequence</h2>
+
+<details>
+<summary>Fixed height, changing route</summary>
+
+For weight W, destination height h, slope angle θ and kinetic-friction coefficient μ, a pull parallel to the ramp leaves normal force W cos θ.
+
+<div className="formula">L = h / sin θ; F = W sin θ + μ W cos θ</div>
+
+<div className="formula">input work = FL = Wh + μ Wh cot θ</div>
+
+With μ = 0, ideal input work is Wh at every angle. With friction, the extra term grows for a shallower route. Zero angle with nonzero height would require an infinitely long path, so that singular input is rejected.
+
+</details>
+
+<details>
+<summary>What this comparison leaves out</summary>
+
+The model uses constant Coulomb kinetic friction and omits wheels, bearings, air resistance, deformation and acceleration. Pulling at an angle to the surface would change the normal force and require a different calculation. The vertical-lift comparison has no supporting surface force, so its modeled friction vanishes.
+
+</details>

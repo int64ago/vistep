@@ -1,0 +1,151 @@
+.cooker-study {
+  max-width: 980px;
+  margin: auto;
+  color: #e5e8d7;
+  background: radial-gradient(ellipse at 40% 50%, #47554b, #2d4039);
+  border-radius: 30px;
+  padding: 18px 22px;
+  font-variant-numeric: tabular-nums;
+}
+.cooker-study header {
+  min-height: 26px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.cooker-cutaway {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+.cooker-view-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #c7d1bd;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.cooker-readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  margin: 10px 0 7px;
+}
+.cooker-readouts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cooker-readouts b {
+  font-size: 27px;
+  font-weight: 500;
+  color: #e4c085;
+}
+.cooker-readouts span {
+  font-size: 16px;
+}
+.cooker-pressure,
+.cooker-forces,
+.cooker-energy {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.cooker-pressure {
+  color: #c0cfbb;
+}
+.cooker-forces {
+  margin-top: 7px;
+}
+.cooker-forces span:first-child {
+  color: #bbd6c9;
+}
+.cooker-forces span + span {
+  color: #e5bd83;
+}
+.cooker-energy {
+  border-top: 1px solid #bfccb12e;
+  margin-top: 8px;
+  padding-top: 8px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.cooker-study details {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+.cooker-study summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.cooker-study p {
+  margin: 0;
+}
+.cooker-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+.cooker-controls .control,
+.cooker-controls output {
+  font-size: 16px;
+  color: #e5e8d7;
+}
+.cooker-controls button {
+  min-height: 44px;
+  border: 1px solid #bfcaad55;
+  border-radius: 16px;
+  background: #4a6051;
+  color: #f0eedc;
+  padding: 8px 14px;
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .cooker-study {
+    padding: 10px 10px;
+    border-radius: 22px;
+  }
+  .cooker-study header {
+    font-size: 16px;
+    min-height: 44px;
+  }
+  .cooker-cutaway {
+    height: 175px;
+  }
+  .cooker-view-note {
+    font-size: 16px;
+  }
+  .cooker-readouts {
+    margin: 7px 0 5px;
+    gap: 6px;
+  }
+  .cooker-readouts b {
+    font-size: 23px;
+  }
+  .cooker-pressure {
+    gap: 16px;
+  }
+  .cooker-forces {
+    gap: 8px;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .cooker-energy {
+    gap: 2px 12px;
+    padding-top: 6px;
+    font-size: 16px;
+    margin-top: 6px;
+  }
+  .cooker-controls {
+    grid-template-columns: 1fr;
+  }
+}

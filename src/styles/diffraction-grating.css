@@ -1,0 +1,210 @@
+.grating-study {
+  background: #202f35;
+  color: #dfe8dd;
+  border-radius: 24px;
+  padding: 25px 28px;
+}
+.grating-study header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  font-size: 18px;
+}
+.grating-study header b {
+  font-size: 23px;
+  font-weight: 400;
+  color: #d4c28a;
+}
+.grating-object {
+  position: relative;
+  height: 65px;
+  background: #121f25;
+  border-block: 1px solid #657f80;
+  margin: 24px auto 18px;
+  max-width: 500px;
+  border-radius: 6px;
+}
+.grating-object i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #d4c28a;
+  transform: translateX(-50%);
+  opacity: 0.8;
+}
+.grating-study svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+.grating-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+  color: #a7bcb9;
+}
+.grating-exposure {
+  display: flex;
+  height: 34px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111d24;
+  margin-top: 14px;
+}
+.grating-exposure i {
+  flex: 1;
+  min-width: 0;
+  background: #c6c88f;
+}
+.grating-readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.grating-readings span {
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+}
+.grating-readings b {
+  font-size: 27px;
+  font-weight: 400;
+  color: #d4c28a;
+}
+.grating-dimensions {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #a7bcb9;
+  margin: 18px 0 0;
+}
+.grating-phase > span {
+  font-size: 16px;
+}
+.grating-study summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.grating-study summary::before {
+  content: '＋';
+  margin-right: 8px;
+}
+.grating-study details p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+.grating-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+@media (max-width: 760px) {
+  .grating-study {
+    padding: 20px 16px;
+  }
+  .grating-study header {
+    font-size: 16px;
+  }
+  .grating-study svg {
+    height: 190px;
+  }
+  .grating-object {
+    height: 55px;
+  }
+  .grating-readings b {
+    font-size: 24px;
+  }
+  .grating-controls {
+    grid-template-columns: 1fr;
+  }
+}
+.grating-object {
+  max-width: 100%;
+}
+.grating-exposure {
+  position: relative;
+}
+.grating-exposure > b {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #f7ead5;
+  box-shadow: 0 0 0 2px #15202788;
+}
+
+@media (max-width: 760px) {
+  .grating-study {
+    padding: 16px;
+  }
+  .grating-study svg {
+    height: 165px;
+  }
+  .grating-object {
+    height: 44px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+  }
+  .grating-readings {
+    margin-top: 14px;
+  }
+  .grating-readings b {
+    font-size: 23px;
+  }
+  .grating-dimensions {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .grating-study header {
+    gap: 6px 14px;
+  }
+  .grating-study svg {
+    height: 155px;
+  }
+  .grating-study[data-watch='true'] .grating-exposure {
+    display: none;
+  }
+}
+
+.grating-study header b {
+  white-space: nowrap;
+}
+.grating-study .control,
+.grating-study .control output {
+  color: #dfe8dd;
+}
+.grating-study .control input[type='range'] {
+  --range-color: #d4c28a;
+  --range-rest: #657f80;
+}
+
+@media (min-width: 761px) {
+  .grating-study {
+    padding-block: 16px;
+  }
+  .grating-object {
+    height: 52px;
+    margin-block: 12px 10px;
+  }
+  .grating-readings {
+    margin-top: 15px;
+  }
+  .grating-dimensions {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .grating-study {
+    padding-block: 10px;
+  }
+}

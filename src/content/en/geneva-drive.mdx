@@ -1,0 +1,46 @@
+<h2 id="understand">Continuous input can produce a stationary output interval</h2>
+
+A Geneva drive alternates output motion with dwell. A drive pin travels in a circle. When it enters a radial slot, it pushes the slot walls and advances the output wheel by one step. The input keeps rotating after the pin leaves.
+
+**Dwell is not secured merely by removing the pin.** A separate locking disc with a relief cut engages matching concave arcs between the output slots. During dwell these circular faces prevent free output rotation. During indexing the relief makes room for the moving wheel. The lower crank passes beneath the plate, with only its pin raised into the slot.
+
+A four-slot wheel advances 90° per step. The input uses 90° of its revolution to make that move and the remaining 270° for dwell. Output speed starts at zero, increases within the move and returns to zero as the pin exits.
+
+A six-slot version, with a correspondingly changed crank radius, advances 60° per step. Indexing occupies one third of the input cycle and dwell two thirds. Slot count changes both the step angle and the timing fractions; the geometry must change with it.
+
+<h2 id="try">Follow the pin, then the locking faces</h2>
+
+- Choose four slots and scrub the input from −60° to +60°. Follow pin entry, advance and exit.
+- Continue through dwell. Input speed remains positive while output speed is zero.
+- Choose six slots and compare the step angle with the timing-band fractions.
+- Keep slot count fixed and increase input speed. Fractions stay the same, but each interval takes less time and peak output speed increases.
+
+Animation is deliberately slowed. Speed readings use the chosen reference input speed. Scrubbing reconstructs geometry from the current angle across multiple input revolutions.
+
+<h2 id="deeper">Tangent entry determines the standard geometry</h2>
+
+<details>
+<summary>Centre distance, crank radius and index angle</summary>
+
+Let n be slot count, c shaft centre distance and r the drive-pin radius from the input shaft. Tangent entry in a standard external Geneva gives:
+
+<div className="formula">r / c = sin(π / n)</div>
+
+The active input range is `−α ≤ θ ≤ α`, with `α = π/2 − π/n`. The line from output centre to drive pin determines the slot direction. Relative to the direction toward the input shaft, the slot angle is:
+
+<div className="formula">q = atan2(−r sin θ, c − r cos θ)</div>
+
+Output advance is `2π/n`. Indexing occupies `1/2 − 1/n` of the input period and dwell `1/2 + 1/n`. Accumulated revolutions remain continuous when input angle crosses 180°.
+
+</details>
+
+<details>
+<summary>Ideal kinematics and real hardware</summary>
+
+The model calculates actual pin, slot, concave-lock and relief contours. The pin has finite radius and the slot a matching width. Geometric checks sample clearance between the locking disc and output plate throughout a revolution. Contact is an ideal rigid constraint, so dwell does not rely on friction.
+
+Clearance impacts, inertia, elastic deformation, stress, lubrication and bearing loads are omitted. Raising reference speed illustrates timing and velocity, not a safe hardware rating. Continuous velocity at entry and exit does not guarantee equally smooth acceleration or contact loading.
+
+A Geneva drive is also not a one-way ratchet: reversing input reverses indexing where the actual structure and load permit it.
+
+</details>

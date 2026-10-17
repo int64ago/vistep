@@ -1,0 +1,15 @@
+# Elastic collision — watch the energy inside the contact
+
+Owner: `/root/hundred_mechanisms`. Two guided carts with finite, physically connected series-spring bumpers. A contact close-up and kinetic/spring-energy ribbon show the compression-and-return mechanism. Mass changes alter cart ballast and outgoing velocities. Center-of-mass frame is explicitly selected only in the final chapter; no hidden camera-following that contradicts laboratory velocity readings.
+
+Misconceptions: elastic contact is an instantaneous velocity swap; each cart conserves its own momentum; kinetic energy stays constant even during deformation; all masses exchange velocities. Distinction from center-of-mass: here the contact force, temporary spring energy and mass-dependent outgoing speeds are the primary subjects.
+
+Primary sources: OpenStax University Physics 9.4 https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions (elastic definition, momentum and kinetic-energy conditions); 9.6 https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass (center motion). The linear contact oscillator is independently derived and tested against classical scattering formulas and force integrals.
+
+Model: centers initially−.8m and+.5m, cart half-length.21m, each bumper free length.1m, effective series spring stiffness150N/m (each spring300N/m), masses1/1 or1/3 or3/1kg. Relative approach speed sets contact time. Relative compression δ=vrel/ω sin(ωt), ω=√(k/μ), contact durationπ/ω. Center of mass moves uniformly. Force kδ acts equally/oppositely. During compression translational kinetic energy is temporarily spring energy; Ktrans+U is invariant. Outgoing relative velocity reverses. Each physical bumper compressesδ/2 and their endplates meet at the same model-derived point. No overlap, invisible teleport or manually swapped velocity animation.
+
+Six chapters: equal-mass encounter; slow compression contact close-up; release and energy return; light cart rebounds from heavy cart; heavy cart drives light cart faster while continuing forward; explicitly switch to center-of-mass coordinates and show equal/opposite momenta. Explore mass, time and reference frame. Ideal one-dimensional frictionless carts, massless linear springs, no sound/heat/rotation/real material restitution prediction.
+
+Phone uses a fixed laboratory lane with large readable labels plus a dedicated contact enlargement in chapters2/3, never shrinking a desktop-wide diagram. Technical fonts≥16px and model conditions in article/explore. Target complete player≤740px.
+
+Author validation: 6 model tests passed: independent scattering formulas, conservation throughout finite contact, maximum compression, position/force derivatives, numerical impulse integral and finite bumper contact geometry across mass bounds. Strict component TypeScript passed. Independent browser, playback, voice listening and physical device: not-run. Incoming links: angular-momentum, newtons-cradle, center-of-mass (confirm registered slugs on integration).

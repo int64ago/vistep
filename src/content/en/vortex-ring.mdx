@@ -1,0 +1,29 @@
+<a id="understand"></a>
+
+## One closed filament, two opposite section cores
+
+Viewed along its axis, the vortex filament is a circle. A meridional section cuts that same loop at its top and bottom. Dot and cross indicate opposite vorticity directions; they do not mark two separate rings. Follow a fluid parcel around a core, then return to the laboratory frame: ring propagation and local fluid velocity are distinct quantities.
+
+The model starts with an existing circular filament. It does not predict formation at a nozzle. Smoke is a tracer, and the drawn trajectories predict neither its boundary nor its concentration.
+
+<a id="try"></a>
+
+## Separate geometry from strength
+
+At fixed radius and relative core width, increasing circulation scales all velocities. Negative circulation reverses both propagation and local flow. At fixed circulation and core ratio, a larger ring moves more slowly. Then hold radius and circulation fixed and change smoothing width to see why core structure matters too.
+
+The time control follows a numerically integrated parcel history without snapping its end back to the start. Laboratory and ring-following views differ only by a translation.
+
+<a id="deeper"></a>
+
+## A core model belongs with its formula
+
+<div className="formula">
+  u(x) = Γ/(4π) ∮ dℓ × (x − X) / (|x − X|² + a²)³ᐟ²
+  <br />
+  Moving-frame trajectory: dx/dt = u − U-ring e-axis
+</div>
+
+The ring radius is R and smoothing length is a. One regularized Biot–Savart integral determines the filament's own speed and the surrounding fluid field. On the axis, the independent expression is ΓR² / [2(R² + x² + a²)³ᐟ²]. At fixed a/R, ring speed scales with Γ/R.
+
+A smoothed denominator is not a uniform-vorticity solid core. Different core structures give different constants in self-induction formulas, so a formula for another core cannot be substituted unchanged. The circular shape and smoothing width remain fixed. Viscous spreading, compressibility, walls, turbulence and breakup are excluded. Far-field laboratory velocity tends to zero; in the moving frame it tends to the negative ring speed. Motion is slowed while readouts retain physical units.

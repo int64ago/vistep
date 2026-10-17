@@ -1,0 +1,41 @@
+---
+import { ratchetState } from '../../models/ratchet';
+const s = ratchetState(0.72, 1),
+  p = s.vertices.map((v) => `${v.x},${v.y}`).join(' '),
+  spring = Array.from(
+    { length: 13 },
+    (_, i) =>
+      `${s.pawlWidth / 2 + (i === 0 || i === 12 ? 0 : i % 2 ? 0.055 : -0.055)},${s.pawlBottom + s.pawlLength + ((s.springAnchor - s.pawlBottom - s.pawlLength) * i) / 12}`,
+  ).join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><g transform="translate(192 147) scale(75 -75)"
+    ><polygon points={p} fill="#96b09b" stroke="#6c8876" stroke-width=".018"></polygon><circle
+      r=".62"
+      fill="#dfe7d5"></circle>{
+      [0, 1, 2].map((i) => (
+        <path
+          d={`M0 0L${0.68 * Math.cos(s.angle + (i * 2 * Math.PI) / 3)} ${0.68 * Math.sin(s.angle + (i * 2 * Math.PI) / 3)}`}
+          stroke="#9eb29f"
+          stroke-width=".1"
+          stroke-linecap="round"
+        />
+      ))
+    }<circle r=".17" fill="#b9cab6"></circle><circle r=".07" fill="#778f7c"></circle><path
+      d={`M0 0L${0.72 * Math.cos(s.output)} ${0.72 * Math.sin(s.output)}`}
+      stroke="#bc9257"
+      stroke-width=".045"></path><path
+      d="M-.16 1.13V1.82H.24V1.13"
+      stroke="#b4c1ac"
+      stroke-width=".12"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path><path
+      d={`M${s.pawlWidth / 2} 1.75V1.82`}
+      stroke="#939b85"
+      stroke-width=".02"></path><polyline points={spring} stroke="#939b85" stroke-width=".02"
+    ></polyline><path d={`M-.06 ${s.pawlBottom + 0.3}H.14`} stroke="#b7935b" stroke-width=".045"
+    ></path><rect x="0" y={s.pawlBottom} width={s.pawlWidth} height=".3" fill="#bb955d"
+    ></rect><circle cx="0" cy=".94" r=".14" stroke="#bb805d" stroke-width=".015"></circle></g
+  ></svg
+>
