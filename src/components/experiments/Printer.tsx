@@ -1,10 +1,11 @@
+import '../../styles/printer.css';
 import { t } from '../../i18n';
 import { useState } from 'react';
 import { Range, Segments } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import PrinterSurface from '../lab/PrinterSurface';
 import PrinterStudio from '../three/PrinterStudio';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { printerShot } from '../../models/direction';
 const stages = [t('充电'), t('曝光'), t('显影'), t('转印'), t('定影'), t('清洁')];
 const stageEnglish = ['CHARGE', 'EXPOSE', 'DEVELOP', 'TRANSFER', 'FUSE', 'CLEAN'];

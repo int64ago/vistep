@@ -7,7 +7,7 @@ const runtime = vi.hoisted(() => ({
   env: null as any,
   film: { watch: true, playing: false, time: 0, duration: 144 },
 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => runtime.film }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => runtime.film }));
 vi.mock('three', async () => {
   const actual = await vi.importActual<any>('three');
   return {

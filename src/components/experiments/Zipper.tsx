@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { useCompact } from '../lab/useCompact';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { zipperInitial, zipperPose, zipperShot } from '../../models/zipper';
 import ZipperStudio from '../three/ZipperStudio';
 import { ZipperLoad, ZipperComparison, ZipperSection } from '../three/ZipperDiagram';

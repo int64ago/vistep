@@ -10,7 +10,7 @@ import {
   qrTracked,
   type QrEncoding,
 } from '../../models/qr-code';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import QrCodeMatrix from '../lab/QrCodeMatrix';
 import '../../styles/qr-code.css';
 

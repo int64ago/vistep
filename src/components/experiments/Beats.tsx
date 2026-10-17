@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { t } from '../../i18n';
 import { beatsDefault, beatsSample, beatsShot, beatsCurve } from '../../models/beats';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import { Range } from '../lab/Controls';
 import '../../styles/beats.css';

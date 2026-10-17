@@ -9,7 +9,7 @@ import {
   airyDiameter,
   thinLens,
 } from '../../models/optics';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import AperturePhoto from '../lab/AperturePhoto';
 import { useCompact } from '../lab/useCompact';

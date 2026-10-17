@@ -13,14 +13,14 @@
 - 在“分布”视图里把温度从 3000 K 一直拉到 1.2×10⁸ K。低温时所有核对都挤在 0.01 keV 以下，分布曲线看起来只是左边的一根针；一亿度时，分布的尾巴伸到几十 keV，与陡升的隧穿概率相乘后出现一个峰，这就是**伽莫夫峰**。10 keV 时它约在 31 keV，只有约 10% 的核对能量高于它。
 - 切到“反应率”视图。从太阳核心的 1.3 keV 升到 10 keV，⟨σv⟩ 从约 3×10⁻²⁰ 升到约 1.1×10⁻¹⁶ cm³/s，温度提高八倍，反应率提高近四千倍。把反应切成 D + D，同一温度下曲线低两个数量级。
 - 在“压缩”视图里保持 10 keV，把同一团燃料压缩 10、100、1000 倍。密度提高 C 倍，单位体积的反应率提高 C² 倍，而燃料飞散前的 ρR 只按 C^(2/3) 增长，所以飞散前烧掉的比例从不到千分之一升到约 8%。
-- 把温度拉回 3000 K，再看压缩：无论压多紧，反应率读数都停在拟合范围以外的外推值，实际为零。化学炸药再猛也点不燃聚变。
+- 把温度拉回 3000 K，再看本模型范围内的压缩：反应率极小，数值可能下溢为零，而且已经远在拟合有效范围之外。不能把低温外推读数当作真实点火预测。
 
 <h2 id="deeper">从势垒到分级：把三个数字放在一起</h2>
 
 <details>
-<summary>为什么只有裂变能点火？</summary>
+<summary>热核武器为什么使用裂变初级？</summary>
 
-化学燃烧的温度上限只有几千 K，对应的动能不到 1 eV，隧穿概率的指数项 `√(E_G/E)` 超过一千，反应率在任何实际意义上都是零。要让伽莫夫峰落到几十 keV，燃料必须被加热到几千万到一亿度。裂变火球的温度就在这个量级（Glasstone & Dolan，_The Effects of Nuclear Weapons_，§1.23）。在地球上，能在瞬间为一大团燃料提供这种温度和辐射的，只有一次裂变爆炸；激光装置也能达到点火条件，但只能点燃毫克级的靶丸。
+在这里选取的几千 K 化学火焰条件下，平均动能不到 1 eV，裸库仑势垒模型给出的聚变反应率极小。提高温度能显著提高 D–T 反应率，但点火还取决于密度、约束和能量损失，不能只看一个温度阈值。公开资料中的裂变火球可达到上亿 K 的量级（Glasstone & Dolan，_The Effects of Nuclear Weapons_，§1.23）。这解释了热核武器使用裂变初级的物理背景，不表示聚变只能由裂变点火。[国家点火装置的激光实验](https://www.energy.gov/articles/doe-national-laboratory-makes-history-achieving-fusion-ignition)已经实现聚变点火。
 
 公开的物理描述是：裂变“初级”爆炸时放出大量辐射，这些辐射加热并压缩分开放置的聚变燃料。本篇只画温度阶梯和压缩后的燃烧比例，不描述任何装置的结构、尺寸或材料。
 
@@ -44,7 +44,7 @@
 <details>
 <summary>燃料为什么能自带氚？</summary>
 
-氚有放射性，半衰期约 12.3 年，不能长期储存。公开资料说明热核燃料使用固体**氘化锂**：聚变放出的 14 MeV 中子撞上锂-6 时，
+氚有放射性，半衰期约 12.3 年；[DOE 的聚变燃料介绍](https://www.energy.gov/science/doe-explainsdeuterium-tritium-fusion-fuel)说明了这种持续衰变。长期储存须考虑损失，并非完全无法储存。公开资料中的一种热核燃料路径使用固体**氘化锂**：聚变放出的 14 MeV 中子撞上锂-6 时，
 
 <div className="formula">n + ⁶Li → T + ⁴He + 4.78 MeV</div>
 
@@ -66,6 +66,6 @@
 
 反应率 ⟨σv⟩ 使用 Bosch–Hale（1992）拟合，有效范围 0.2–100 keV；低于 0.2 keV 按非共振形式 `T^(−2/3) exp(−3E₀/kT)` 外推，只用于表示数量级。势垒画面采用裸库仑势加一个示意深度的核力阱，隧穿概率使用 WKB 近似的伽莫夫因子，不含核结构与共振。结合能取自 AME2020。Lawson 图上的三个点是量级参考，不是任何具体装置的实测参数。本篇不描述武器的构造。
 
-参考：[Glasstone & Dolan, The Effects of Nuclear Weapons, 1977（OSTI）](https://www.osti.gov/biblio/6852629)、[NRL Plasma Formulary](https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_19.pdf)、[Bosch & Hale, Nuclear Fusion 32 (1992)](https://doi.org/10.1088/0029-5515/32/4/I07)、[OpenStax University Physics 3, 10.6 Nuclear Fusion](https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion)、[LLNL — National Ignition Facility 点火](https://www.llnl.gov/news/national-ignition-facility-achieves-fusion-ignition)。
+参考：[Glasstone & Dolan, The Effects of Nuclear Weapons, 1977（OSTI）](https://www.osti.gov/biblio/6852629)、[NRL Plasma Formulary](https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_19.pdf)、[Bosch & Hale, Nuclear Fusion 32 (1992)](https://doi.org/10.1088/0029-5515/32/4/I07)、[OpenStax University Physics 3, 10.6 Nuclear Fusion](https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion)、[DOE — National Ignition Facility 点火](https://www.energy.gov/articles/doe-national-laboratory-makes-history-achieving-fusion-ignition)。
 
 </details>

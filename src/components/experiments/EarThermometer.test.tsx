@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import EarThermometer from './EarThermometer';
 import * as model from '../../models/ear-thermometer';
 const film = vi.hoisted(() => ({ watch: true, playing: false, chapter: 0, chapterProgress: 0 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => film }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
 const trees: ReactTestRenderer[] = [];
 afterEach(async () => {
   for (const tree of trees.splice(0)) await act(() => tree.unmount());

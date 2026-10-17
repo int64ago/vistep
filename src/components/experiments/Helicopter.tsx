@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
   HELICOPTER_HOVER_PITCH,
@@ -11,7 +11,11 @@ import {
 import { helicopterElement, HELICOPTER } from '../../models/helicopter';
 import HelicopterLocator from '../three/HelicopterLocator';
 import HelicopterStudio from '../three/HelicopterStudio';
-import { HelicopterTorque, HelicopterTrace } from '../lab/HelicopterInstruments';
+import {
+  HelicopterTorque,
+  HelicopterTrace,
+  HelicopterTrackMark,
+} from '../lab/HelicopterInstruments';
 import '../../styles/helicopter.css';
 const views = [
   { value: 'aircraft', label: '整机' },
@@ -106,6 +110,16 @@ export default function Helicopter() {
                 {t('剖面升力')}
                 <span>·</span>
                 {t('相对气流')}
+              </div>
+            )}
+            {(view === 'cyclic' || view === 'collective') && (
+              <div className="helicopter-object-key helicopter-tracking-key">
+                <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+                  <HelicopterTrackMark x={10} y={10} radius={6} />
+                </svg>
+                {t('铜色桨叶')}
+                <span>·</span>
+                {t('桨距轴')}
               </div>
             )}
             {view !== 'torque' &&

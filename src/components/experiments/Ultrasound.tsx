@@ -12,7 +12,7 @@ import {
   type UltrasoundFocus,
   type UltrasoundShot,
 } from '../../models/ultrasound';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import { Range } from '../lab/Controls';
 import {

@@ -1,8 +1,8 @@
 import { t } from '../i18n';
-import { useState, useEffect } from 'react';
-import PrinterStudio from './three/PrinterStudio';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { useSimulation } from './lab/useSimulation';
-import { FilmContext } from './lab/Showcase';
+import { FilmContext } from './lab/FilmContext';
+const PrinterStudio = lazy(() => import('./three/PrinterStudio'));
 const heart = [
   '01100110',
   '11111111',
@@ -54,14 +54,16 @@ export default function HomeObject() {
           </span>
           <span>LASER PRINTER</span>
         </div>
-        <PrinterStudio
-          progress={Math.max(0, Math.min(5.99, (time - 4) / 5))}
-          exploded={open}
-          pattern={heart}
-          selected={11}
-          charges={false}
-          view="perspective"
-        />
+        <Suspense fallback={null}>
+          <PrinterStudio
+            progress={Math.max(0, Math.min(5.99, (time - 4) / 5))}
+            exploded={open}
+            pattern={heart}
+            selected={11}
+            charges={false}
+            view="perspective"
+          />
+        </Suspense>
         <div className="object-caption">
           <span>
             {t('熟悉的外表，')}

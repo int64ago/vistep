@@ -1,9 +1,8 @@
 /**
- * Everything a page needs before it is worth hydrating. The list mirrors what the experiments
- * and stylesheets actually use (WebGL 2 for Three.js, `:has()` and `svh` in the layouts,
- * `structuredClone`/`findLast` in the models, Workers for the Transformer, Web Audio for the
- * sound experiments). A browser missing any of them gets one clear notice instead of a
- * half-working page; there is deliberately no degraded mode.
+ * Shared layout and language/runtime prerequisites. Optional engines are checked where used:
+ * lack of WebGL must not reject SVG lessons, nor lack of Web Audio reject a silent film.
+ * Three.js views use their 2D alternatives; Workers/audio expose their existing local retry
+ * or fallback. This is a core baseline, not a device-performance certification.
  *
  * Both functions are inlined into the document with `Function.prototype.toString`, so they must
  * stay self-contained and use only syntax every browser back to ES2015 can parse — the notice has
@@ -22,27 +21,12 @@ export function browserSupportGaps(w: any): string[] {
   need(typeof w.structuredClone === 'function', 'structuredClone');
   need(typeof w.ResizeObserver === 'function', 'ResizeObserver');
   need(typeof w.IntersectionObserver === 'function', 'IntersectionObserver');
-  need(typeof w.Worker === 'function', 'Web Workers');
-  need(
-    typeof w.AudioContext === 'function' || typeof w.webkitAudioContext === 'function',
-    'Web Audio',
-  );
   var css = w.CSS;
   if (!css || typeof css.supports !== 'function') gaps.push('CSS.supports');
   else {
     need(css.supports('selector(:has(a))'), 'CSS :has()');
     need(css.supports('height', '100svh'), 'CSS svh units');
     need(css.supports('aspect-ratio', '1'), 'CSS aspect-ratio');
-  }
-  var gl: any = null;
-  try {
-    gl = doc.createElement('canvas').getContext('webgl2');
-  } catch (error) {}
-  need(!!gl, 'WebGL 2');
-  if (gl) {
-    // Browsers cap live contexts; release the probe so the experiments get theirs.
-    var lose = gl.getExtension('WEBGL_lose_context');
-    if (lose) lose.loseContext();
   }
   return gaps;
 }

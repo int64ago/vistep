@@ -2,6 +2,7 @@ import { t } from '../i18n';
 import { Component, lazy, Suspense, type ReactNode } from 'react';
 import Showcase from './lab/Showcase';
 import { experimentLoaders, type ExperimentSlug } from '../data/experiments';
+import type { Film, Soundtrack } from '../lib/film';
 const experiments = Object.fromEntries(
   Object.entries(experimentLoaders).map(([slug, load]) => [slug, lazy(load)]),
 );
@@ -31,7 +32,15 @@ class Boundary extends Component<
     );
   }
 }
-export default function Experiment({ slug }: { slug: ExperimentSlug }) {
+export default function Experiment({
+  slug,
+  film,
+  track,
+}: {
+  slug: ExperimentSlug;
+  film: Film;
+  track?: Soundtrack;
+}) {
   // The inline gate in Base.astro marked this browser; do not load an engine that cannot run.
   if (document.documentElement.hasAttribute('data-unsupported')) return null;
   const Scene = experiments[slug];
@@ -44,7 +53,7 @@ export default function Experiment({ slug }: { slug: ExperimentSlug }) {
           </div>
         }
       >
-        <Showcase slug={slug}>
+        <Showcase slug={slug} film={film} track={track}>
           <Scene />
         </Showcase>
       </Suspense>

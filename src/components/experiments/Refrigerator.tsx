@@ -1,6 +1,6 @@
 import { t } from '../../i18n';
 import { useState } from 'react';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import HeatBalance from '../lab/HeatBalance';
 import RefrigeratorStudio from '../three/RefrigeratorStudio';
 import { Metric, Range } from '../lab/Controls';

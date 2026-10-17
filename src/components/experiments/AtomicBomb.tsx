@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import {
   CHEMICAL_EV_PER_ATOM,
   FISSION,
@@ -926,7 +926,7 @@ export default function AtomicBomb() {
             {t('缓发中子份额')} <b>β ≈ {(FISSION.delayedFraction * 100).toFixed(2)}%</b>
           </span>
           <span>
-            {t('平均代时间')} <b>10 ns → {fmt(GROWTH_REGIMES[1].generationS, 2)} s</b>
+            {t('热堆平均代时间示意')} <b>100 μs → {fmt(GROWTH_REGIMES[1].generationS, 2)} s</b>
           </span>
         </>
       );
@@ -950,7 +950,7 @@ export default function AtomicBomb() {
         : shot.view === 'chain'
           ? '理想无限介质：没有中子漏出，只有少数被俘获。'
           : shot.view === 'compare'
-            ? '同一个 k，代时间不同；纵轴是相对中子数。'
+            ? '平均代时间的数量级示意，不是反应堆瞬态预测。'
             : width < 600
               ? '径迹是三维行走的投影，蓝点是漏出位置。'
               : '截面里的径迹是三维行走的投影；蓝点是中子离开球面的位置。长度单位是平均自由程 λ。';

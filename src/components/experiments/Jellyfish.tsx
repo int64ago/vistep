@@ -9,7 +9,7 @@ import {
   type JellyFrame,
   type JellyView,
 } from '../../models/jellyfish';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import JellyfishStudio from '../three/JellyfishStudio';
 import JellyfishFlat from '../three/JellyfishFlat';
 import { jellyOralPoint, jellyOutline } from '../../models/jellyfish-geometry';

@@ -4,7 +4,6 @@ export type Topic = {
   title: string;
   question: string;
   description: string;
-  duration: string;
   color: string;
   number: string;
   tag: string;
@@ -19,7 +18,6 @@ export const topics: Topic[] = [
     question: '扩容一台机器，哪些数据需要换家？',
     description:
       '保持键与节点的哈希位置固定，沿环找后继，实际比较取模、节点增删与虚拟节点的归属变化。',
-    duration: '约 3 分钟',
     color: '#9a94b5',
     tag: '信息与系统',
     related: ['hash', 'bloom-filter'],
@@ -42,7 +40,6 @@ export const topics: Topic[] = [
     question: '网络堵了，发送者怎样感知并退让？',
     description:
       '在同一出口容量与有限 FIFO 队列中跟踪逐确认增窗、溢出、乘性回退和加性增长，区分吞吐与排队。',
-    duration: '约 3 分钟',
     color: '#99a57a',
     tag: '信息与系统',
     related: ['tcp-reliability', 'packet-routing'],
@@ -65,7 +62,6 @@ export const topics: Topic[] = [
     question: '网络不可靠，字节流怎样可靠？',
     description:
       '沿着同一组字节序号观察乱序缓存、累计确认、超时重传与重复抑制，重建一条完整有序的应用字节流。',
-    duration: '约 3 分钟',
     color: '#7a9fa6',
     tag: '信息与系统',
     related: ['packet-routing', 'congestion-control'],
@@ -88,7 +84,6 @@ export const topics: Topic[] = [
     question: '为什么确定没有，却只能说可能有？',
     description:
       '看真实哈希地址如何共享位阵列，寻找一个确实不存在的误报键，并观察直接删除为什么会误伤。',
-    duration: '约 3 分钟',
     color: '#86a277',
     tag: '信息与系统',
     related: ['hash', 'huffman'],
@@ -106,10 +101,9 @@ export const topics: Topic[] = [
     title: '一束光怎样扫出房间？',
     question: '距离与方向怎样变成点云？',
     description: '从纳秒往返到逐束扫描，看点云的密度、遮挡与缺口。',
-    duration: '约 3 分钟',
     color: '#9bd5e4',
     tag: '信号与成像',
-    related: ['doppler', 'jpeg'],
+    related: ['radar-ranging', 'gps', 'ultrasound'],
     sources: [
       {
         title: 'Ouster · What is lidar?',
@@ -128,10 +122,9 @@ export const topics: Topic[] = [
     title: '雷达怎样把回波变成距离？',
     question: '发出到返回的几微秒，能告诉我们什么？',
     description: '跟踪同一脉冲的往返，分清距离、分辨率与距离歧义。',
-    duration: '约 3 分钟',
     color: '#f2d89c',
     tag: '信号与成像',
-    related: ['doppler', 'jpeg'],
+    related: ['lidar-ranging', 'ultrasound', 'doppler'],
     sources: [
       {
         title: 'MathWorks · Simulating radar receiver test signals',
@@ -150,10 +143,9 @@ export const topics: Topic[] = [
     title: '一个像素怎样得到完整颜色？',
     question: '只测一种颜色，怎样补出另外两种？',
     description: '跟住同一个红格，看RGGB采样、邻域插值与细纹假色。',
-    duration: '约 3 分钟',
     color: '#a8d3a4',
     tag: '信号与成像',
-    related: ['doppler', 'jpeg'],
+    related: ['rolling-shutter', 'camera-lens', 'jpeg'],
     sources: [
       {
         title: 'Bryce Bayer · Color imaging array, US3971065A',
@@ -172,7 +164,6 @@ export const topics: Topic[] = [
     title: '细管没有水泵，水为什么往上爬？',
     question: '细管没有水泵，水为什么往上爬？',
     description: '从接触线的表面张力出发，解释细管液柱、接触角与毛细下降。',
-    duration: '约 3 分钟',
     color: '#7b9e82',
     tag: '接触线与液柱',
     related: ['osmosis', 'siphon'],
@@ -190,7 +181,6 @@ export const topics: Topic[] = [
     title: '膜挡住溶质，为什么水面会变高？',
     question: '膜挡住溶质，为什么水面会变高？',
     description: '跟住穿过半透膜的水，看浓度、液柱压力与外加压力怎样共同决定净流动。',
-    duration: '约 3 分钟',
     color: '#6f9c94',
     tag: '膜与压差',
     related: ['diffusion', 'capillary'],
@@ -208,7 +198,6 @@ export const topics: Topic[] = [
     title: '波传过去，岩石也跟着跑吗？',
     question: '波传过去，岩石也跟着跑吗？',
     description: '追踪同一物质点的纵向压缩与横向剪切，再用 P、S 到时差读懂传播。',
-    duration: '约 3 分钟',
     color: '#738a78',
     tag: '粒子与传播',
     related: ['standing-wave', 'ultrasound'],
@@ -234,10 +223,9 @@ export const topics: Topic[] = [
     title: '为什么照片里的直杆会倾斜？',
     question: '一张照片真的是同一个瞬间吗？',
     description: '逐行曝光，把移动物体的不同时刻拼进同一张照片。',
-    duration: '约 3 分钟',
     color: '#9bd5e4',
     tag: '信号与成像',
-    related: ['doppler', 'jpeg'],
+    related: ['jpeg', 'bayer-sensor', 'sampling-aliasing'],
     sources: [
       {
         title: 'Basler · Electronic shutter types',
@@ -256,7 +244,6 @@ export const topics: Topic[] = [
     title: '看过的文字，能不能只指一次？',
     question: '重复出现，为什么不用再写一遍？',
     description: '在真实字符流中寻找向后引用，滑动有限历史窗口，并逐字演示允许重叠的解码回抄。',
-    duration: '约 3 分钟',
     color: '#7fa69a',
     tag: '信息与系统',
     related: ['huffman', 'jpeg'],
@@ -274,10 +261,9 @@ export const topics: Topic[] = [
     title: '常见字母，为什么值得走更短的路？',
     question: '不丢一个字，怎样少写一些位？',
     description: '从同一条消息的频数出发，合并最小权重，构造前缀树，再逐位无歧义还原。',
-    duration: '约 3 分钟',
     color: '#b88d5f',
     tag: '信息与系统',
-    related: ['jpeg', 'hash'],
+    related: ['lz77', 'qr-code', 'jpeg'],
     sources: [
       {
         title: 'Huffman, A Method for the Construction of Minimum-Redundancy Codes (1952)',
@@ -296,10 +282,9 @@ export const topics: Topic[] = [
     title: '复杂波形怎样拆成简单节奏？',
     question: '一条波形里藏着哪些频率？',
     description: '从逐项相加到相关累加，看同一份记录的时间与频率。',
-    duration: '约 3 分钟',
     color: '#c6b5ed',
     tag: '信号与成像',
-    related: ['doppler', 'jpeg'],
+    related: ['sampling-aliasing', 'jpeg', 'beats'],
     sources: [
       {
         title: 'NI · Using FFTs and power spectra',
@@ -314,10 +299,9 @@ export const topics: Topic[] = [
     title: '为什么车轮会倒着转？',
     question: '高速信号怎样伪装成慢变化？',
     description: '固定时刻留下的点，如何让不同频率变成同一份记录。',
-    duration: '约 3 分钟',
     color: '#9bd5e4',
     tag: '信号与成像',
-    related: ['doppler', 'jpeg'],
+    related: ['fourier-transform', 'rolling-shutter', 'doppler'],
     sources: [
       {
         title: 'Analog Devices · Anti-aliasing filter basics',
@@ -332,10 +316,9 @@ export const topics: Topic[] = [
     title: '波在前进，为什么图形不走？',
     question: '波在前进，为什么图形不走？',
     description: '把反向行波分开再相加，跟住固定节点，理解琴弦为何只选择一些频率。',
-    duration: '约 3 分钟',
     color: '#697f68',
     tag: '边界与谐波',
-    related: ['resonance', 'beats'],
+    related: ['sampling-aliasing', 'resonance', 'seismic-waves'],
     sources: [
       {
         title: 'OpenStax · Standing Waves and Resonance',
@@ -350,7 +333,6 @@ export const topics: Topic[] = [
     title: '两个稳定的音，为什么忽强忽弱？',
     question: '两个稳定的音，为什么忽强忽弱？',
     description: '把两个相近频率叠在一起，看相位滑动怎样形成缓慢的强弱起伏。',
-    duration: '约 3 分钟',
     color: '#ac8257',
     tag: '频差与相位',
     related: ['resonance', 'standing-wave'],
@@ -368,7 +350,6 @@ export const topics: Topic[] = [
     title: '小小推力，为何越推越大？',
     question: '小小推力，为何越推越大？',
     description: '跟住弹簧上的质量块，观察节拍、相位与能量怎样建立共振。',
-    duration: '约 3 分钟',
     color: '#4b826b',
     tag: '节拍与能量',
     related: ['standing-wave', 'beats'],
@@ -387,7 +368,6 @@ export const topics: Topic[] = [
     question: '前后排齐以后，还差哪个方向？',
     description:
       '把轨道高度、视圆面和影锥接在同一组几何上，追踪同一观测点怎样看见偏食、全食与环食。',
-    duration: '约 3 分钟',
     color: '#ae8a58',
     tag: '天体与影子',
     related: ['moon-phases', 'seasons', 'camera-lens'],
@@ -414,7 +394,6 @@ export const topics: Topic[] = [
     question: '改变的是运动，还是观察坐标？',
     description:
       '跟随同一枚自由滑块，对照固定与随盘相机，逐步分清旋转坐标、初始切向速度与两项表观加速度。',
-    duration: '约 3 分钟',
     color: '#598e80',
     tag: '旋转与参照系',
     related: ['seasons', 'tides', 'pendulum'],
@@ -437,10 +416,9 @@ export const topics: Topic[] = [
     question: '探头接收到的，到底是谁的温度？',
     description:
       '沿耳道组织发出的热红外，进入窄口探头、吸收膜与参考电路；保持温度不变，转动视场，观察混合信号如何改变读数。',
-    duration: '3 分钟',
     color: '#b89262',
     tag: '热辐射',
-    related: ['camera-lens', 'ultrasound', 'optical-fiber'],
+    related: ['body-fat-scale', 'ultrasound', 'camera-lens'],
     sources: [
       {
         title: 'Braun — ThermoScan infrared reception from eardrum and surrounding tissue',
@@ -480,10 +458,9 @@ export const topics: Topic[] = [
     question: '体脂秤真的“看见”脂肪了吗？',
     description:
       '从四角称重与四电极交流测量，追踪阻抗、相位、水分和去脂体重的估算，看看脂肪质量固定时水分怎样改变读数。',
-    duration: '约 3 分钟',
     color: '#679b8c',
     tag: '四电极 · 阻抗 · 身体组成估算',
-    related: ['rectifier', 'buck-converter'],
+    related: ['ear-thermometer', 'rectifier'],
     sources: [
       {
         title:
@@ -524,7 +501,6 @@ export const topics: Topic[] = [
     title: '伞已经不动，为什么还能再游一段？',
     question: '伞已经不动，为什么还能再游一段？',
     description: '跟随月水母的一次脉动，看排水、涡环与弹性回弹怎样带来完全舒张后的二次推力。',
-    duration: '3 分钟',
     color: '#82a6bc',
     tag: '伞缘 · 涡环 · 能量回收',
     related: ['airfoil', 'convection', 'water-hammer'],
@@ -557,7 +533,6 @@ export const topics: Topic[] = [
     question: '照片是相机打印的，还是相纸显出来的？',
     description:
       '跟着同一张 Polaroid 积分式相纸，从曝光、走纸与药囊破开，到试剂铺展、染料迁移和慢慢成像。',
-    duration: '约 3 分钟',
     color: '#397d79',
     tag: '摄影与化学',
     related: ['camera-lens', 'printer', 'jpeg'],
@@ -607,7 +582,6 @@ export const topics: Topic[] = [
     title: '捕捉之前，先怎样看见？',
     question: '为什么单反按快门时会黑一下？',
     description: '打开两种相机，追踪反光镜、快门与电子取景的不同路线。',
-    duration: '3 分钟',
     color: '#72929a',
     tag: '光路与取景',
     related: ['camera-lens', 'polarization', 'jpeg'],
@@ -637,7 +611,6 @@ export const topics: Topic[] = [
     title: '看清楚以后，为什么还要另一种光学信号？',
     question: '同一光点的两种成分，怎样到达视网膜？',
     description: '追踪真实计算的矫正与微透镜光路，再单独阅读原始随机试验的组平均结果。',
-    duration: '约 2.5 分钟',
     color: '#368a9a',
     tag: '眼睛与光学',
     related: ['microscope', 'double-slit', 'solar-cell'],
@@ -664,7 +637,6 @@ export const topics: Topic[] = [
     question: '扫码怎样把一份订阅送进安全芯片？',
     description:
       '追踪同一份运营商 profile，从激活码、双向认证和绑定封包，到芯片中的安装、启用与网络认证。',
-    duration: '约 2.5 分钟',
     color: '#237b75',
     tag: '通信与身份',
     related: ['mobile-roaming', 'cell-handover', 'nfc'],
@@ -690,7 +662,6 @@ export const topics: Topic[] = [
     title: '同一道计算题，为什么需要三种芯片？',
     question: '同一道计算题，为什么需要三种芯片？',
     description: '跟住同一组数字，走过程序控制、成组并行和矩阵数据流，逐项核对三种安排的结果。',
-    duration: '3 分钟',
     color: '#6b999b',
     tag: '乘加 · 并行 · 专用计算',
     related: ['cpu-pipeline', 'transformer', 'jpeg'],
@@ -719,7 +690,6 @@ export const topics: Topic[] = [
     question: '边走边打电话，为什么不断线？',
     description:
       '跟着一部行进中的手机，看信号强弱怎样画出小区边界，网络又怎样在合适的时刻把它交给下一座基站。',
-    duration: '3 分钟',
     color: '#6fa7c9',
     number: '72',
     tag: '蜂窝 · 测量 · 切换',
@@ -771,7 +741,6 @@ export const topics: Topic[] = [
     question: '5G 的速度从哪里来？',
     description:
       '把速率拆成频带宽度、每个资源单元的比特和并行层数，再看子载波、星座图、天线阵列和多人分享各自改变了什么。',
-    duration: '4 分钟',
     color: '#8f86c9',
     number: '73',
     tag: '频谱 · 调制 · 波束',
@@ -817,7 +786,6 @@ export const topics: Topic[] = [
     question: '出了国，手机怎么还认得你？',
     description:
       '跟着 SIM 卡里的一串号码出国：当地网络怎样找到你家、用挑战与应答确认你，又让电话和数据走哪条路。',
-    duration: '3 分钟',
     color: '#c99a6f',
     number: '74',
     tag: '身份 · 认证 · 路由',
@@ -886,7 +854,6 @@ export const topics: Topic[] = [
     title: '同样按一下，轴体到底差在哪？',
     question: '同样按一下，轴体到底差在哪？',
     description: '从轴心、弹簧和触点出发，分清线性与段落、点击与缓冲，再看磁轴和光轴怎样检测按压。',
-    duration: '3 分钟',
     color: '#cf8970',
     tag: '手感 · 声音 · 检测',
     related: ['suspension', 'logic-gates', 'nfc'],
@@ -944,7 +911,6 @@ export const topics: Topic[] = [
     title: '战争结束了，危险为何还在？',
     question: '地雷怎样把一次外部事件与能量释放联系起来，为什么危险还能长期遗留？',
     description: '观察完整地雷外壳、土层接触与植被变化，分清外部触发、储能释放和长期遗留风险。',
-    duration: '2:48',
     color: '#8a7858',
     tag: '储能 · 遗留风险',
     related: ['ak47', 'pendulum', 'lithium-battery'],
@@ -974,10 +940,9 @@ export const topics: Topic[] = [
     title: '一股燃气，怎样变成一次往返？',
     question: '一股燃气，怎样变成一次往返？',
     description: '跟住同一组部件，看燃气如何做功、弹簧如何储能，再把能量交还给回程。',
-    duration: '3 分钟',
     color: '#c7d2b5',
     tag: '导气 · 能量转移',
-    related: ['suspension', 'pendulum', 'four-stroke-engine'],
+    related: ['landmine', 'suspension', 'four-stroke-engine'],
     sources: [
       {
         title: 'Smithsonian National Museum of American History — AK-47 Automatic Rifle',
@@ -1005,7 +970,6 @@ export const topics: Topic[] = [
     title: '不用跑道，机翼怎样起飞？',
     question: '机身停在原地，旋翼为什么还能把它托起来？',
     description: '跟随一片桨叶，拆开总距、周期变距、倾斜推力与尾桨反扭矩。',
-    duration: '3 分钟',
     color: '#82a5a1',
     tag: '旋翼 · 升力',
     related: ['airfoil', 'bernoulli', 'excavator'],
@@ -1028,11 +992,9 @@ export const topics: Topic[] = [
   {
     slug: 'hydrogen-bomb',
     name: '氢弹',
-    title: '为什么点燃聚变，需要先引爆一颗原子弹？',
-    question: '为什么点燃聚变，需要先引爆一颗原子弹？',
-    description:
-      '跟住一颗氚核，从库仑势垒、隧穿与伽莫夫峰走到反应率，再看为什么只有裂变火球能把燃料压到点火。',
-    duration: '3 分钟',
+    title: '热核武器为什么使用裂变初级？',
+    question: '热核武器为什么使用裂变初级？',
+    description: '从库仑势垒、隧穿与反应率出发，区分聚变点火的一般条件与热核武器中的裂变初级。',
     color: '#c7a6ff',
     tag: '核物理 · 势垒与温度',
     related: ['atomic-bomb', 'brownian-motion', 'diffusion'],
@@ -1065,11 +1027,10 @@ export const topics: Topic[] = [
   {
     slug: 'atomic-bomb',
     name: '原子弹',
-    title: '一块铀，为什么超过某个大小就会自己炸开？',
-    question: '一块铀，为什么超过某个大小就会自己炸开？',
+    title: '链式反应为什么能持续并加快？',
+    question: '中子怎样让裂变一代接着一代？',
     description:
-      '跟住一个中子：看核像液滴一样裂开，看中子一代代增殖，再看球的大小怎样决定链式反应是熄灭还是延续。',
-    duration: '4 分钟',
+      '跟踪中子的产生、俘获与漏出，区分自持、功率增长和爆炸性释放，并说明模型的适用边界。',
     color: '#e2a15a',
     tag: '核能 · 链式反应',
     related: ['hydrogen-bomb', 'diffusion', 'brownian-motion'],
@@ -1100,7 +1061,6 @@ export const topics: Topic[] = [
     title: '没有电池，标签怎么回话？',
     question: '没有电池，标签怎么回话？',
     description: '跟着标签线圈取得能量，再看芯片怎样切换负载，让读卡器听见同一个场里的回答。',
-    duration: '3 分钟',
     color: '#76c8bb',
     number: '65',
     tag: '互感 · 通信',
@@ -1132,7 +1092,6 @@ export const topics: Topic[] = [
     title: '多开一道缝，为什么反而更暗？',
     question: '多开一道缝，为什么反而更暗？',
     description: '跟住屏幕上的一个点，从两路光程差走到亮暗条纹，再看单次探测如何积累成图。',
-    duration: '3 分钟',
     color: '#85d8cd',
     number: '64',
     tag: '光 · 相位',
@@ -1159,7 +1118,6 @@ export const topics: Topic[] = [
     question: '一股油，怎样举起一斗土？',
     description:
       '跟随液压油进入油缸，再沿动臂、斗杆和铲斗连杆，看压力、流量与力矩怎样共同决定动作。',
-    duration: '4 分钟',
     color: '#c39a4c',
     number: '63',
     tag: '力与运动',
@@ -1197,7 +1155,6 @@ export const topics: Topic[] = [
     title: '远侧的海水，为什么也会鼓起？',
     question: '月球只在一边，为什么海面会在两边升高？',
     description: '在地球自由落体的参照系里，逐点相减引力，再从同一潮汐势构造平衡海面。',
-    duration: '3 分钟',
     color: '#83b6b2',
     tag: '引力 · 平衡海洋',
     related: ['moon-phases', 'seasons', 'bernoulli'],
@@ -1232,7 +1189,6 @@ export const topics: Topic[] = [
     question: '横着拉不开的齿，为什么拉头能轻轻分开？',
     description:
       '剖开一副注塑蘑菇头拉链，跟随一颗齿穿过 Y 形导道，看错位、齿窝与宽肩怎样连接两条织带。',
-    duration: '3 分钟',
     color: '#54817c',
     tag: '齿形与导道',
     related: ['sewing-machine', 'lock', 'escapement'],
@@ -1263,10 +1219,9 @@ export const topics: Topic[] = [
     title: '分组怎样穿过不断变化的网络？',
     question: '一份本地路由表，怎样决定分组的下一步？',
     description: '跟随同一批分组，观察最短路径、排队、TTL、故障收敛与接收重排。',
-    duration: '3 分钟',
     color: '#79b7ad',
     tag: '网络 · 路由与队列',
-    related: ['network', 'memory-cache', 'cpu-pipeline'],
+    related: ['tcp-reliability', 'network', 'mobile-roaming'],
     sources: [
       {
         title: 'RFC 2328: OSPF Version 2 — flooding and shortest-path calculation',
@@ -1289,10 +1244,9 @@ export const topics: Topic[] = [
     title: '没有水流，颜色为什么还会散开？',
     question: '一条静止介质中的浓度带，怎样把物质从集中变成均匀？',
     description: '从浓度曲线计算净通量、局部收支和扩散宽度，比较扩散系数、长度与边界。',
-    duration: '3 分钟',
     color: '#6eafd0',
     tag: '浓度与通量',
-    related: ['convection', 'bernoulli'],
+    related: ['brownian-motion', 'osmosis', 'capillary'],
     sources: [
       {
         title: 'MIT — Conceptual Model for Diffusion',
@@ -1316,7 +1270,6 @@ export const topics: Topic[] = [
     question: '随机的单条轨迹，怎样留下稳定的统计规律？',
     description:
       '跟随一颗微球，从热浴冲量与惯性记忆走到 Stokes–Einstein 关系，分清单条轨迹、均方位移与平均位置。',
-    duration: '3 分钟',
     color: '#b18a50',
     tag: '热涨落 · 单粒子与统计',
     related: ['diffusion', 'convection', 'lithium-battery'],
@@ -1352,7 +1305,6 @@ export const topics: Topic[] = [
     question: '跟着页号与分隔键，找回同一条记录。',
     description:
       '走进真实计算的微型 B+ 树：全扫与索引公平对照，范围查询串起叶页，插入分裂一路传播到新根。',
-    duration: '3 分钟',
     color: '#33657a',
     tag: '数据 · 页与记录',
     related: ['memory-cache', 'hash', 'cpu-pipeline'],
@@ -1378,7 +1330,6 @@ export const topics: Topic[] = [
     title: '擒纵怎样让钟走得有节拍？',
     question: '钟摆一直在摆，为什么齿轮只走一小步？',
     description: '跟随格雷厄姆静止式擒纵的一枚齿尖，看锁定、冲量与放行怎样把持续供能分成节拍。',
-    duration: '3 分钟',
     color: '#9a7950',
     tag: '锁定与放行',
     related: ['pendulum', 'sewing-machine', 'differential'],
@@ -1409,7 +1360,6 @@ export const topics: Topic[] = [
     title: '电池充电时，究竟存进了什么？',
     question: '锂离子和电子为什么要分开走？',
     description: '跟随石墨与磷酸铁锂之间的锂和外部电荷，看清充放电、压降、发热与休息回升。',
-    duration: '3 分钟',
     color: '#789a88',
     tag: '可逆储能 · 电化学',
     related: ['induction-cooktop', 'speaker', 'transformer-electric'],
@@ -1447,7 +1397,6 @@ export const topics: Topic[] = [
     title: '逻辑门：电压如何变成零和一',
     question: '晶体管怎样把输入变成逻辑，为什么还需要时间？',
     description: '沿 CMOS 的上拉与下拉通路，观察电容电压、传播延迟和翻转能量。',
-    duration: '3 分钟',
     color: '#4c8795',
     tag: '晶体管与电荷',
     related: ['binary-adder', 'cpu-pipeline', 'buck-converter'],
@@ -1470,7 +1419,6 @@ export const topics: Topic[] = [
     question: '把 42 送出去，再用另一种指数带回来。',
     description:
       '用刻意不安全的小整数走完 RSA：造钥匙、求逆元、平方乘法、加密与解密，并亲眼看见教具的安全边界。',
-    duration: '3 分钟',
     color: '#944e50',
     tag: '信息 · 公钥与私钥',
     related: ['hash', 'network', 'error-correction'],
@@ -1498,7 +1446,6 @@ export const topics: Topic[] = [
     question: '一束光照上硅片，为什么能让外面的电流流动？',
     description:
       '跟住一个被吸收的光子，穿过结区与闭合回路，再用实际求解的 I–V 曲线核算输出与损失。',
-    duration: '3 分钟',
     color: '#8c9b72',
     tag: '光伏 · 电荷与能量',
     related: ['electric-generator', 'seasons', 'rainbow'],
@@ -1532,10 +1479,9 @@ export const topics: Topic[] = [
     title: '热，怎样开始自己流动？',
     question: '为什么从下面加热会形成循环，从上面加热却不一样？',
     description: '在封闭格子里计算温度、浮力与流动，追踪热量怎样被携带。',
-    duration: '3 分钟',
     color: '#ad8455',
     tag: '温度与浮力',
-    related: ['bernoulli', 'siphon', 'water-hammer'],
+    related: ['bernoulli', 'jellyfish', 'refrigerator'],
     sources: [
       {
         title: 'University College Dublin — Rayleigh–Bénard convection lecture notes',
@@ -1559,7 +1505,6 @@ export const topics: Topic[] = [
     question: '四只二极管怎样选路，电容又何时得到电流？',
     description:
       '沿单相桥式整流的两个导通回路，观察电容充放电、纹波、负载与频率，以及源电阻限制的浪涌。',
-    duration: '3 分钟',
     color: '#467f91',
     tag: '电力电子 · 单向导通与储能',
     related: ['buck-converter', 'transformer-electric', 'electric-generator'],
@@ -1586,10 +1531,9 @@ export const topics: Topic[] = [
     title: '一根针，怎样缝出两根线的交锁？',
     question: '针只会上下动，布底下的线迹是怎样留下的？',
     description: '跟随一个上线环，绕过梭心、收紧，再随织物前进。',
-    duration: '3 分钟',
     color: '#b88b68',
     tag: '线迹与机构时序',
-    related: ['printer', 'ball-bearing', 'differential'],
+    related: ['zipper', 'escapement', 'printer'],
     sources: [
       {
         title: 'JUKI — Basic Knowledge of Sewing: Lockstitching',
@@ -1616,7 +1560,6 @@ export const topics: Topic[] = [
     title: '热为什么先出现在锅底？',
     question: '没有火焰，电能怎样跨过玻璃？',
     description: '沿着完整线圈回路，看交变磁通怎样在锅底建立涡流，再比较集肤、材料、间距和余热。',
-    duration: '3 分钟',
     color: '#ae7a43',
     tag: '电磁感应 · 热传递',
     related: ['transformer-electric', 'induction-motor', 'speaker'],
@@ -1651,10 +1594,9 @@ export const topics: Topic[] = [
     question: '跟住一个输入位，走完真正的 SHA-256。',
     description:
       '从 UTF-8、填充与消息扩展，到 64 轮压缩、链值加回和 256 位摘要，比较只差一位的两次真实计算。',
-    duration: '3 分钟',
     color: '#738a9d',
     tag: '信息 · 摘要与完整性',
-    related: ['qr-code', 'error-correction', 'network'],
+    related: ['bloom-filter', 'consistent-hashing', 'public-key'],
     sources: [
       {
         title: 'NIST — FIPS 180-4, Secure Hash Standard',
@@ -1677,7 +1619,6 @@ export const topics: Topic[] = [
     title: '脉冲怎样变成平稳的低电压？',
     question: '开关只会通断，为什么输出不会跟着断？',
     description: '沿两条真实导通回路，跟随电感电流、电容纹波、负载突变与不连续导通，逐份核对能量。',
-    duration: '3 分钟',
     color: '#287887',
     tag: '电力电子 · 开关与储能',
     related: ['transformer-electric', 'induction-motor', 'electric-generator'],
@@ -1706,10 +1647,9 @@ export const topics: Topic[] = [
     question: '物镜先成像，目镜再把它放大。',
     description:
       '沿有限共轭显微镜的真实光路，理解倒立中间像、目镜角放大、粗细调焦、景深与数值孔径，并用计算点像辨别分辨率和空放大。',
-    duration: '3 分钟',
     color: '#9baac3',
     tag: '光学 · 成像与分辨率',
-    related: ['camera-lens', 'diffraction', 'optical-fiber'],
+    related: ['camera-lens', 'myopia-lens', 'diffraction'],
     sources: [
       {
         title: 'MIT · Geometric Optics, C. Warde',
@@ -1744,10 +1684,9 @@ export const topics: Topic[] = [
     title: '空气没有约定在翼尾重逢',
     question: '机翼两侧的空气，必须在翼尾重逢吗？',
     description: '跟随同一速度场里的空气示踪点，把整圈表面压力加成升力。',
-    duration: '3 分钟',
     color: '#88aeb0',
     tag: '势流与升力',
-    related: ['bernoulli', 'siphon', 'water-hammer'],
+    related: ['helicopter', 'jellyfish', 'bernoulli'],
     sources: [
       {
         title: 'NASA Glenn — Incorrect Lift Theory',
@@ -1775,7 +1714,6 @@ export const topics: Topic[] = [
     question: '跟住网址中的一位，看它成为一个黑白模块。',
     description:
       '从字节、RS 校验到功能图形、折返放置、八种掩码与格式信息，生成真正能读出 https://vistep.ai 的二维码。',
-    duration: '3 分钟',
     color: '#6a8a87',
     tag: '信息 · 编码与机器识别',
     related: ['error-correction', 'network', 'jpeg'],
@@ -1809,7 +1747,6 @@ export const topics: Topic[] = [
     title: '电流怎样让空气发声？',
     question: '从一圈铜线，到一片振动的空气。',
     description: '走进相连的扬声器剖面，跟随电流、推力与反电动势，再看稳态响应和空气质点。',
-    duration: '3 分钟',
     color: '#b7784c',
     tag: '声学 · 电机与振动',
     related: ['wave-interference', 'noise', 'electric-generator'],
@@ -1839,7 +1776,6 @@ export const topics: Topic[] = [
     title: '无线充电：电能怎样跨过间隙？',
     question: '隔着空气，电能怎样到达另一侧？',
     description: '追踪两只线圈共享的磁链，比较间距、错位、谐振和铜耗如何改变交流负载功率。',
-    duration: '3 分钟',
     color: '#427f98',
     tag: '近场传能',
     related: ['transformer-electric', 'electric-generator'],
@@ -1865,7 +1801,6 @@ export const topics: Topic[] = [
     title: '为什么一把小钥匙，能让锁芯转起来？',
     question: '六组弹子怎样同时让开同一条边界？',
     description: '沿连续齿形追踪圆头接触，看匹配钥匙抬起六组弹子，再让锁芯转动、回正和退出。',
-    duration: '3 分钟',
     color: '#58727c',
     tag: '机械 · 接触与约束',
     related: ['ball-bearing', 'planetary-gears'],
@@ -1892,10 +1827,9 @@ export const topics: Topic[] = [
     question: '透过表面，靠的是声音的往返。',
     description:
       '从分层体模的真实延迟回波出发，理解反射与透射、RF 和包络、B 模式扫描、轴向分辨率、衰减阴影及声速假设带来的深度误差。',
-    duration: '3 分钟',
     color: '#7c9f91',
     tag: '声学 · 回波与成像',
-    related: ['doppler', 'noise', 'camera-lens'],
+    related: ['radar-ranging', 'seismic-waves', 'doppler'],
     sources: [
       {
         title: 'University of Michigan · Ultrasound and Photoacoustic Imaging',
@@ -1918,7 +1852,6 @@ export const topics: Topic[] = [
     title: '为什么转弯时，两只驱动轮能转得不一样快？',
     question: '外侧多走一点，齿轮怎样把这段差补上？',
     description: '剖开开放式差速器，追踪共顶点的锥齿轮、两侧平均转速和弱侧牵引力带来的扭矩上限。',
-    duration: '3 分钟',
     color: '#69838a',
     tag: '机械 · 差速与扭矩',
     related: ['suspension', 'planetary-gears', 'ball-bearing'],
@@ -1957,10 +1890,9 @@ export const topics: Topic[] = [
     question: '把校验交织起来，让错误留下位置指纹。',
     description:
       '沿着同一组数据，构造 Hamming 码、观察信道翻转与综合征定位，再用真实双错反例理解扩展 SECDED 的纠错边界。',
-    duration: '3 分钟',
     color: '#7b9078',
     tag: '信息 · 奇偶校验与可靠传输',
-    related: ['memory-cache', 'network', 'binary-adder'],
+    related: ['qr-code', 'public-key', 'memory-cache'],
     sources: [
       {
         title: 'R. W. Hamming · Error Detecting and Error Correcting Codes (1950), §§3–5',
@@ -1983,7 +1915,6 @@ export const topics: Topic[] = [
     title: '水流越快，压强就一定越小吗？',
     question: '沿一条水路，跟着同一份水记一笔能量账。',
     description: '追踪文丘里管中的守恒水体、相连测压口和水头变化，区分速度、压强、高程与沿程损失。',
-    duration: '3 分钟',
     color: '#759798',
     tag: '流体 · 连续性与能量',
     related: ['siphon', 'water-hammer', 'hydraulic-brake'],
@@ -2018,10 +1949,9 @@ export const topics: Topic[] = [
     question: '波峰的出发点在移动，到达的节拍就变了。',
     description:
       '追踪每个波峰的发射位置与到达时刻，分开理解移动声源、移动接收者和离轴经过时的声学多普勒效应。',
-    duration: '3 分钟',
     color: '#7591a0',
     tag: '声学 · 波峰与到达时刻',
-    related: ['noise', 'diffraction', 'pendulum'],
+    related: ['radar-ranging', 'lidar-ranging', 'ultrasound'],
     sources: [
       {
         title: 'OpenStax · The Doppler Effect (University Physics, 17.7)',
@@ -2044,7 +1974,6 @@ export const topics: Topic[] = [
     title: '感应电动机：为什么总要慢半步？',
     question: '不接电的转子，为什么会跟着磁场转？',
     description: '走进三相定子与闭合鼠笼，看转差怎样产生电流、转矩与热。',
-    duration: '3 分钟',
     color: '#3a897b',
     tag: '电流与转动',
     related: ['electric-generator', 'transformer-electric', 'ball-bearing'],
@@ -2070,10 +1999,9 @@ export const topics: Topic[] = [
     title: '绳子平了，波去哪了？',
     question: '两列波相遇，物质点怎样运动？',
     description: '跟随绳上的一个点，看脉冲相消又穿过，再从相位与振幅走到驻波和能量流。',
-    duration: '3 分钟',
     color: '#87cbd6',
     tag: '波动 · 叠加与能量',
-    related: ['diffraction', 'noise', 'polarization'],
+    related: ['beats', 'standing-wave', 'double-slit'],
     sources: [
       {
         title: 'Caltech · The Feynman Lectures, I–49: Modes',
@@ -2097,7 +2025,6 @@ export const topics: Topic[] = [
     question: '一束光的转弯，汇成天空中的弧。',
     description:
       '追踪阳光在水滴中的折射与一次内反射，再从观察者的视线看见色散、方向集中与地平线以上的彩色弧段。',
-    duration: '3 分钟',
     color: '#809eaa',
     tag: '光学 · 色散与观察方向',
     related: ['polarization', 'optical-fiber', 'diffraction'],
@@ -2123,7 +2050,6 @@ export const topics: Topic[] = [
     title: '为什么突然关阀，水管会猛地一震？',
     question: '阀门停下，压力变化才开始旅行。',
     description: '追踪弹性管中的压力波，比较快关与慢关，理解反射、焦科夫斯基关系和汽化边界。',
-    duration: '3 分钟',
     color: '#ce9e66',
     tag: '流体 · 压力波与弹性',
     related: ['siphon', 'hydraulic-brake'],
@@ -2153,7 +2079,6 @@ export const topics: Topic[] = [
     title: '越软的悬架，坐起来就越舒服吗？',
     question: '接住一次颠簸，还要收住下一次振荡。',
     description: '跟随路面凸起穿过轮胎、弹簧和减振器，比较车身运动、能量耗散与轮胎接触的边界。',
-    duration: '3 分钟',
     color: '#a77e60',
     tag: '机械 · 振动与阻尼',
     sources: [
@@ -2174,7 +2099,7 @@ export const topics: Topic[] = [
         url: 'https://www.mathworks.com/help/simulink/slref/automotive-suspension.html',
       },
     ],
-    related: ['pendulum', 'hydraulic-brake', 'four-stroke-engine'],
+    related: ['resonance', 'keyboard-switch', 'hydraulic-brake'],
     number: '30',
   },
   {
@@ -2183,7 +2108,6 @@ export const topics: Topic[] = [
     title: '光穿过窄缝，为什么反而散开？',
     question: '一道开口，许多场贡献。',
     description: '从狭缝各段的相位相加，看到暗纹、中央峰和波长与缝宽的尺度关系。',
-    duration: '3 分钟',
     color: '#799173',
     tag: '光学 · 波场与衍射',
     related: ['polarization', 'optical-fiber', 'camera-lens'],
@@ -2214,10 +2138,9 @@ export const topics: Topic[] = [
     question: '数据在什么位置，比看起来有多近更重要。',
     description:
       '走进一张带地址的内存地图，追踪缓存行、标签、局部性与替换，公平比较相同容量里的不同安排。',
-    duration: '3 分钟',
     color: '#547a80',
     tag: '计算机 · 地址与局部性',
-    related: ['cpu-pipeline', 'binary-adder', 'network'],
+    related: ['database-index', 'cpu-pipeline', 'consistent-hashing'],
     sources: [
       {
         title: 'Cornell CS3410 · Caches',
@@ -2240,7 +2163,6 @@ export const topics: Topic[] = [
     title: '转动一圈铜线，为什么会发电？',
     question: '电流出现时，为什么轴更难转？',
     description: '追踪旋转线圈、滑环与电刷，把磁通变化、交流电压、反向力矩和机械能转换接起来。',
-    duration: '3 分钟',
     color: '#4b8197',
     tag: '电磁 · 运动与能量',
     related: ['transformer-electric', 'ball-bearing'],
@@ -2270,7 +2192,6 @@ export const topics: Topic[] = [
     title: '水为什么能先爬高，再流向低处？',
     question: '水柱连通，落差才有路可走。',
     description: '跟随透明弯管里的水，连接预充、水头、压力分布、进气断流与顶部高度的边界。',
-    duration: '3 分钟',
     color: '#70a38b',
     tag: '流体 · 水头与连续液柱',
     related: ['hydraulic-brake', 'refrigerator'],
@@ -2300,7 +2221,6 @@ export const topics: Topic[] = [
     title: '一颗滚珠，怎样让转轴轻快地转动？',
     question: '两处接触，一起滚动。',
     description: '跟随一颗球穿过承载区，从无滑动几何推导保持架与自转，再放大真实接触中的损耗。',
-    duration: '3 分钟',
     color: '#b59b73',
     tag: '机械 · 接触与滚动',
     related: ['bicycle', 'planetary-gears', 'four-stroke-engine'],
@@ -2334,10 +2254,9 @@ export const topics: Topic[] = [
     title: '地轴一倾斜，为什么就有了四季？',
     question: '跟随一根影子，读懂两半球的季节。',
     description: '从太阳高度、白昼长短与日影出发，连接地轴倾斜、分至点、极昼极夜和零倾角对照。',
-    duration: '3 分钟',
     color: '#b8bd91',
     tag: '天文 · 倾角与日照',
-    related: ['moon-phases', 'camera-lens'],
+    related: ['solar-eclipse', 'coriolis', 'tides'],
     sources: [
       {
         title: 'NASA Space Place · What Causes the Seasons?',
@@ -2360,7 +2279,6 @@ export const topics: Topic[] = [
     title: '多放一片偏振片，为什么反而透光？',
     question: '两片变暗，三片透光。',
     description: '跟随电场穿过三片滤光片，连接偏振方向、马吕斯定律与每一步的能量去向。',
-    duration: '3 分钟',
     color: '#88aaa9',
     tag: '光学 · 电场与投影',
     related: ['optical-fiber', 'camera-lens', 'noise'],
@@ -2383,10 +2301,9 @@ export const topics: Topic[] = [
     question: '让不同指令，占据不同工位。',
     description:
       '追踪同一份程序里的指令身份，逐拍看清重叠、数据前递、加载停顿和分支清除，再核对最终结果。',
-    duration: '3 分钟',
     color: '#527b70',
     tag: '计算机 · 时序与依赖',
-    related: ['binary-adder', 'transformer', 'network'],
+    related: ['logic-gates', 'cpu-gpu-npu', 'memory-cache'],
     sources: [
       {
         title: 'Harris & Harris · RISC-V Microarchitecture, five-stage pipeline',
@@ -2409,10 +2326,9 @@ export const topics: Topic[] = [
     title: '铜线没有相连，电压怎样传过去？',
     question: '一个磁路，连接两个电路。',
     description: '跟随闭合铁芯里的变化磁通，理解感应电压、匝数比、负载电流和损耗。',
-    duration: '3 分钟',
     color: '#b17b52',
     tag: '电磁 · 变化与传递',
-    related: ['noise', 'optical-fiber'],
+    related: ['rectifier', 'wireless-charging', 'nfc'],
     sources: [
       {
         title: 'MIT 8.02 · Mutual inductance and transformers',
@@ -2443,11 +2359,10 @@ export const topics: Topic[] = [
     title: '月亮为什么一会儿弯，一会儿圆？',
     question: '同一颗月亮，不同的视角。',
     description: '跟随月球的轨道与日照，连接盈亏、月食、同步自转和两种月长。',
-    duration: '3 分钟',
     color: '#aeb9cf',
     number: '20',
     tag: '天文 · 光与视角',
-    related: ['dimensions', 'camera-lens'],
+    related: ['solar-eclipse', 'seasons', 'dimensions'],
     sources: [
       { title: 'NASA · Moon phases', url: 'https://science.nasa.gov/moon/moon-phases/' },
       { title: 'NASA · Moon questions', url: 'https://science.nasa.gov/moon/top-moon-questions/' },
@@ -2466,7 +2381,6 @@ export const topics: Topic[] = [
     title: '轻轻一捏，怎样夹紧远处的碟片？',
     question: '一条油路，传递压力。',
     description: '打开主缸与对置活塞卡钳，跟随排液、接触、加压和释放，理解力、行程与制动能量。',
-    duration: '3 分钟',
     color: '#a1765b',
     number: '19',
     tag: '液压 · 力与位移',
@@ -2496,7 +2410,6 @@ export const topics: Topic[] = [
     title: '只靠零和一，计算机怎样做加法？',
     question: '一位相加，一路进位。',
     description: '拆开一位加法的逻辑，再追踪进位穿过整串数字，区分位宽、进位与溢出。',
-    duration: '3 分钟',
     color: '#a98662',
     number: '18',
     tag: '计算 · 逻辑门与进位',
@@ -2519,7 +2432,6 @@ export const topics: Topic[] = [
     title: '玻璃里，光为什么跑不出去？',
     question: '一束光，一条信息的路。',
     description: '跟随光线跨越边界、改变入射方向，再观察脉冲如何携带信息与逐渐展宽。',
-    duration: '3 分钟',
     color: '#849dbe',
     number: '17',
     tag: '光通信 · 全反射与脉冲',
@@ -2545,7 +2457,6 @@ export const topics: Topic[] = [
     title: '同一组齿轮，怎样换出不同速度？',
     question: '固定谁，结果就不同。',
     description: '沿着同一颗行星轮，区分自转与公转，观察固定部件如何改变速度、方向与理想转矩。',
-    duration: '3 分钟',
     color: '#6d98a4',
     number: '16',
     tag: '传动 · 自转与公转',
@@ -2567,7 +2478,6 @@ export const topics: Topic[] = [
     title: '一次燃烧，怎样变成转动？',
     question: '四个行程，一次做功。',
     description: '剖开一个气缸，跟住气门、活塞、连杆和曲轴，把压力变化与转动接起来。',
-    duration: '3 分钟',
     color: '#9a956e',
     number: '15',
     tag: '机械 · 热与功',
@@ -2589,11 +2499,10 @@ export const topics: Topic[] = [
     title: '一束光，怎样成为一幅像？',
     question: '清楚，发生在光线相遇的地方。',
     description: '移动光学台上的物体与成像屏，追踪合焦、倒像和虚像的形成。',
-    duration: '3 分钟',
     color: '#8d9d79',
     number: '13',
     tag: '光路 · 对焦与成像',
-    related: ['aperture', 'printer'],
+    related: ['aperture', 'slr-mirrorless', 'instant-camera', 'myopia-lens'],
     sources: [
       {
         title: 'OpenStax · University Physics 3: Thin Lenses',
@@ -2611,11 +2520,10 @@ export const topics: Topic[] = [
     title: '背景虚化，究竟发生在哪里？',
     question: '同一朵花，两种清晰的选择。',
     description: '从一张花与灯光的画面出发，看见光圈、景深、曝光与衍射之间的关系。',
-    duration: '3 分钟',
     color: '#9a9863',
     number: '14',
     tag: '摄影 · 清晰范围',
-    related: ['camera-lens', 'jpeg'],
+    related: ['bayer-sensor', 'camera-lens', 'jpeg'],
     sources: [
       {
         title: 'Edmund Optics · System Throughput, f/#, and Numerical Aperture',
@@ -2637,7 +2545,6 @@ export const topics: Topic[] = [
     title: '换一个齿轮，为什么就省力了？',
     question: '小齿轮，大不同。',
     description: '沿着踏板、链条和后轮，看看力如何换一种方式传递。',
-    duration: '6 分钟',
     color: '#e47c37',
     number: '01',
     tag: '转动 · 传动比',
@@ -2656,7 +2563,6 @@ export const topics: Topic[] = [
     title: '冰箱里的热，都去了哪里？',
     question: '冷，是热的搬家。',
     description: '打开冰箱背后的管路，跟随制冷剂完成一次循环。',
-    duration: '6 分钟',
     color: '#1c9bb0',
     number: '02',
     tag: '剖开 · 热力循环',
@@ -2674,7 +2580,6 @@ export const topics: Topic[] = [
     title: '一束光，怎样变成纸上的字？',
     question: '跟着一个像素去旅行。',
     description: '从看不见的电荷，到摸得到的碳粉，拆开每一步。',
-    duration: '7 分钟',
     color: '#7559dc',
     number: '03',
     tag: '追踪 · 静电成像',
@@ -2696,11 +2601,10 @@ export const topics: Topic[] = [
     title: '加上一段声音，反而更安静？',
     question: '声音，还能抵消声音。',
     description: '亲手对齐两道声波，听见「加法」如何带来安静。',
-    duration: '5 分钟',
     color: '#138a77',
     number: '04',
     tag: '试听 · 波的叠加',
-    related: ['jpeg', 'gps'],
+    related: ['beats', 'sampling-aliasing', 'resonance'],
     sources: [
       {
         title: 'Sony · What is noise canceling?',
@@ -2718,7 +2622,6 @@ export const topics: Topic[] = [
     title: '天上的卫星，怎么找到你？',
     question: '蓝点的位置，是算出来的。',
     description: '让几段距离相遇，再看看时间出一点错会怎样。',
-    duration: '7 分钟',
     color: '#387bdd',
     number: '05',
     tag: '定位 · 距离与时间',
@@ -2734,11 +2637,10 @@ export const topics: Topic[] = [
     title: '按下回车之后，发生了什么？',
     question: '一次点击，一场接力。',
     description: '从寻找地址到画出页面，把毫秒间的旅程慢放。',
-    duration: '6 分钟',
     color: '#2a69ce',
     number: '06',
     tag: '慢放 · 请求的旅程',
-    related: ['jpeg', 'transformer'],
+    related: ['packet-routing', 'esim', 'cell-handover'],
     sources: [
       {
         title: 'MDN · How browsers work',
@@ -2753,11 +2655,10 @@ export const topics: Topic[] = [
     title: '照片变小了，什么被留下？',
     question: '看看像素背后的频率。',
     description: '放大一小块图像，在细节和压缩之间亲手做取舍。',
-    duration: '8 分钟',
     color: '#cd667b',
     number: '07',
     tag: '拆解 · 图像与频率',
-    related: ['noise', 'printer'],
+    related: ['bayer-sensor', 'rolling-shutter', 'lz77', 'huffman'],
     sources: [
       {
         title: 'ITU T.81 · Digital compression and coding of continuous-tone still images',
@@ -2771,7 +2672,6 @@ export const topics: Topic[] = [
     title: '下一个字，是怎样学会的？',
     question: '走进一次预测的内部。',
     description: '从词元到注意力，从一次错误到一次权重更新。',
-    duration: '8 分钟',
     color: '#8563dc',
     number: '08',
     tag: '训练 · 注意力机制',
@@ -2790,7 +2690,6 @@ export const topics: Topic[] = [
     title: '多一个维度，多了什么？',
     question: '换个角度，看见更多。',
     description: '从一条线到一个超立方体，在切片与投影间建立直觉。',
-    duration: '7 分钟',
     color: '#8963d1',
     number: '09',
     tag: '旋转 · 切片与投影',
@@ -2805,7 +2704,6 @@ export const topics: Topic[] = [
     title: '一来一回，时间藏在哪里？',
     question: '拉起，松手，看能量流动。',
     description: '改变摆长和重力，找出让钟摆快一点、慢一点的秘密。',
-    duration: '5 分钟',
     color: '#d89837',
     number: '10',
     tag: '释放 · 能量与周期',
@@ -2823,7 +2721,6 @@ export const topics: Topic[] = [
     title: '明明有电梯，为什么还要等？',
     question: '每个人的顺路，不太一样。',
     description: '当一次楼宇调度员，让相同的乘客试试不同策略。',
-    duration: '7 分钟',
     color: '#438975',
     number: '11',
     tag: '调度 · 等待与效率',
@@ -2841,7 +2738,6 @@ export const topics: Topic[] = [
     title: '没出事故，为什么也堵车？',
     question: '一脚刹车，堵住整条路。',
     description: '在一条环形公路上，看看小小扰动如何变成拥堵。',
-    duration: '6 分钟',
     color: '#dc754a',
     number: '12',
     tag: '扰动 · 系统涌现',
@@ -2854,5 +2750,4 @@ export const topics: Topic[] = [
     ],
   },
 ];
-export const categories = ['生活器物', '数字世界', '空间与波动', '运动与系统'];
 export const getTopic = (slug: string) => topics.find((t) => t.slug === slug)!;

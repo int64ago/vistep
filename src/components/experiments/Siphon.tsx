@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { SIPHON, siphonShot, siphonTrial, type SiphonStatus } from '../../models/siphon';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import SiphonApparatus from '../lab/SiphonApparatus';
 import { siphonOutletFlow } from '../lab/siphonBranchFlow';
 import '../../styles/siphon.css';

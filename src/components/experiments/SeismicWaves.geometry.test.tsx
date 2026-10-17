@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FilmContext } from '../lab/Showcase';
+import { FilmContext } from '../lab/FilmContext';
 import SeismicWaves from './SeismicWaves';
 describe('seismic particle field projection', () => {
   it('keeps all material circles inside the drawing at every directed chapter', () => {

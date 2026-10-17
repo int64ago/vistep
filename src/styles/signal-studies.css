@@ -112,6 +112,39 @@
   padding: 16px 0;
   font-variant-numeric: tabular-nums;
 }
+.radar-study .radar-timing {
+  border-top: 1px solid #9bd5e42b;
+  padding-top: 14px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #b9cedb;
+}
+.radar-study .radar-timing-limits,
+.radar-study .radar-target-timing > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.radar-study .radar-timing b {
+  display: block;
+  font-size: 19px;
+  color: #f2d89c;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.radar-study .radar-target-timing {
+  margin-top: 16px;
+}
+.radar-study .radar-target-timing > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #dce7ed;
+}
+.radar-study .radar-timing p {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
 @media (max-width: 560px) {
   .signal-study .signal-explore {
     grid-template-columns: 1fr;

@@ -1,9 +1,10 @@
+import '../../styles/network.css';
 import { t } from '../../i18n';
 import { useMemo, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { networkSteps } from '../../models/network';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import NetworkJourney from '../lab/NetworkJourney';
 export default function Network() {
   const demo = useShowcase();

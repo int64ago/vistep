@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { t } from '../../i18n';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth, signalPath } from '../lab/SignalFigure';
 import {
   radarApparentRange,
@@ -9,6 +9,8 @@ import {
   radarEcho,
   radarLimits,
   radarPulseSegments,
+  radarObservation,
+  radarTransmitWindows,
   radarShot,
   RADAR_DEFAULT,
 } from '../../models/radar-ranging';
@@ -27,6 +29,9 @@ export default function RadarRanging() {
       12e-6,
       Math.ceil((radarDelay(Math.max(...targets)) + s.pulse) / 2e-6) * 2e-6,
     ),
+    inspectTiming = !d.watch || c === 6 || c === 7,
+    observations = targets.map((range) => radarObservation(range, s.pulse, s.pri)),
+    transmissions = radarTransmitWindows(s.pulse, s.pri, timeEnd),
     x = (r: number) => 26 + (r / 1800) * (w - 52),
     tx = (sec: number) => 26 + (sec / timeEnd) * (w - 52);
   return (
@@ -87,19 +92,23 @@ export default function RadarRanging() {
         aria-label={t(c === 7 ? '前一次发射的回波' : '接收包络')}
       >
         <g transform="translate(0 -220)">
-          {c === 6 && (
-            <rect
-              x={tx(0)}
-              y="246"
-              width={tx(s.pulse) - tx(0)}
-              height="70"
-              rx="5"
-              fill="#eda891"
-              opacity=".15"
-            />
-          )}
+          {inspectTiming &&
+            transmissions.map((window) => (
+              <g key={window.index}>
+                <rect
+                  x={tx(window.start)}
+                  y="246"
+                  width={tx(window.end) - tx(window.start)}
+                  height="70"
+                  rx="3"
+                  fill="#eda891"
+                  opacity=".18"
+                />
+                <path d={`M${tx(window.start)} 244V320`} stroke="#eda891" strokeDasharray="4 4" />
+              </g>
+            ))}
           <path d={`M26 313H${w - 26}`} stroke="#7a95a5" opacity=".5" />
-          {c === 6 && (
+          {inspectTiming && (
             <path
               d={signalPath(
                 (v) => radarEcho(v, s, false),
@@ -143,7 +152,6 @@ export default function RadarRanging() {
           })}
           {c === 7 && (
             <>
-              <path d={`M${tx(s.pri)} 244V320`} stroke="#eda891" strokeDasharray="4 4" />
               <path
                 d={`M${tx(s.pri)} 251H${tx(radarDelay(s.range))}`}
                 stroke="#eda891"
@@ -160,6 +168,47 @@ export default function RadarRanging() {
             ? `ΔR ≈ cτ / 2 = ${limits.resolution.toFixed(0)} m`
             : 'R = cΔt / 2'}
       </div>
+      {inspectTiming && (
+        <div className="radar-timing" data-ambiguous={observations.some((o) => o.ambiguous)}>
+          <div className="radar-timing-limits">
+            <span>
+              {t('无歧义距离')} <b>{limits.unambiguous.toFixed(1)} m</b>
+            </span>
+            <span>
+              {t('重复间隔')} <b>{(s.pri * 1e6).toFixed(1)} μs</b>
+            </span>
+          </div>
+          {!d.watch &&
+            observations.map((observation, index) => (
+              <div className="radar-target-timing" key={index}>
+                <span>
+                  {t('目标距离')} {index + 1}
+                </span>
+                <div>
+                  <span>
+                    {t('真实距离')} <b>{observation.range.toFixed(1)} m</b>
+                  </span>
+                  <span>
+                    {t('最近一次发射后折算')} <b>{observation.apparent.toFixed(1)} m</b>
+                  </span>
+                </div>
+                <p>
+                  {t(
+                    observation.ambiguous
+                      ? '回波跨过发射周期，存在距离歧义。'
+                      : '回波在下一次发射前返回。',
+                  )}{' '}
+                  {t(
+                    observation.frontBlanked
+                      ? '回波前缘被发射遮挡，不能把折算值当作测量结果。'
+                      : '回波前缘位于接收窗口。',
+                  )}
+                </p>
+              </div>
+            ))}
+          <p>{t('浅橙区：发射期间接收器关闭；虚线：未遮挡时的回波。')}</p>
+        </div>
+      )}
       {!d.watch && (
         <>
           <div className="signal-explore">

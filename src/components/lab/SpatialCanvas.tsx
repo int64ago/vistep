@@ -1,7 +1,7 @@
 import { t } from '../../i18n';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import * as THREE from 'three';
-import { useShowcase } from './Showcase';
+import { useShowcase } from './FilmContext';
 export { THREE };
 export type SpatialContext = {
   scene: THREE.Scene;
@@ -31,9 +31,13 @@ export default function SpatialCanvas({
   director.current = demo;
   const host = useRef<HTMLDivElement>(null),
     frameRef = useRef(frame),
+    refresh = useRef<() => void>(() => {}),
     [failed, setFailed] = useState(false),
     [flat, setFlat] = useState(false);
   frameRef.current = frame;
+  // Film time and parameter changes invalidate a frame. A paused scene has no
+  // independent clock; exploration schedules only the short camera settling motion.
+  useEffect(() => refresh.current());
   useEffect(() => {
     const el = host.current;
     if (!el || failed || flat) return;
@@ -42,7 +46,8 @@ export default function SpatialCanvas({
       id = 0,
       cleanup: void | (() => void),
       last = 0,
-      visible = true;
+      visible = false,
+      disposed = false;
     let down = false,
       px = 0,
       py = 0;
@@ -71,6 +76,15 @@ export default function SpatialCanvas({
     const context = { scene, group, camera, renderer };
     let targetX = group.rotation.x,
       targetY = group.rotation.y;
+    const schedule = () => {
+      if (!disposed && !id && visible && !document.hidden) id = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      cancelAnimationFrame(id);
+      id = 0;
+      last = 0;
+    };
+    refresh.current = schedule;
     const resize = () => {
       const w = el.clientWidth,
         h = el.clientHeight;
@@ -86,6 +100,7 @@ export default function SpatialCanvas({
           camera.position.normalize().multiplyScalar(distance);
         }
         camera.updateProjectionMatrix();
+        schedule();
       }
     };
     resize();
@@ -94,9 +109,12 @@ export default function SpatialCanvas({
     const io = new IntersectionObserver(([e]) => {
       visible = e.isIntersecting;
       last = 0;
+      if (visible) schedule();
+      else stop();
     });
-    io.observe(el);
     const tick = (t: number) => {
+      id = 0;
+      if (disposed) return;
       if (visible && !document.hidden) {
         const dt = last ? Math.min(0.04, (t - last) / 1000) : 0;
         if (!director.current.watch) {
@@ -112,11 +130,23 @@ export default function SpatialCanvas({
         }
         frameRef.current?.(context, dt);
         renderer!.render(scene, camera);
+        const settling =
+          !director.current.watch &&
+          (Math.abs(group.rotation.x - targetX) > 0.0001 ||
+            Math.abs(group.rotation.y - targetY) > 0.0001);
+        if (settling) schedule();
       }
       last = visible && !document.hidden ? t : 0;
-      id = requestAnimationFrame(tick);
     };
-    id = requestAnimationFrame(tick);
+    const visibility = () => {
+      if (document.hidden) stop();
+      else schedule();
+    };
+    const motion = () => schedule();
+    document.addEventListener('visibilitychange', visibility);
+    reducedMotion.addEventListener('change', motion);
+    io.observe(el);
+    schedule();
     const onDown = (e: PointerEvent) => {
       if (director.current.watch) return;
       down = true;
@@ -130,6 +160,7 @@ export default function SpatialCanvas({
       targetX = Math.max(-1, Math.min(1, targetX + (e.clientY - py) * 0.004));
       px = e.clientX;
       py = e.clientY;
+      schedule();
     };
     const onUp = () => {
       down = false;
@@ -142,6 +173,7 @@ export default function SpatialCanvas({
           -1,
           Math.min(1, targetX + (e.key === 'ArrowUp' ? -0.1 : e.key === 'ArrowDown' ? 0.1 : 0)),
         );
+        schedule();
       }
     };
     const lost = (e: Event) => {
@@ -156,7 +188,11 @@ export default function SpatialCanvas({
     el.addEventListener('keydown', onKey);
     renderer.domElement.addEventListener('webglcontextlost', lost);
     return () => {
-      cancelAnimationFrame(id);
+      disposed = true;
+      stop();
+      refresh.current = () => {};
+      document.removeEventListener('visibilitychange', visibility);
+      reducedMotion.removeEventListener('change', motion);
       ro.disconnect();
       io.disconnect();
       el.removeEventListener('pointerdown', onDown);

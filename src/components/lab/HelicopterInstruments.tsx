@@ -4,6 +4,23 @@ const copper = '#a96e39',
   teal = '#2e7881',
   ink = '#40545a',
   muted = '#92a09e';
+/** Same ring-and-dot annotation used on blade A's actual pitch axis. */
+export function HelicopterTrackMark({
+  x,
+  y,
+  radius = 7,
+}: {
+  x: number;
+  y: number;
+  radius?: number;
+}) {
+  return (
+    <g data-helicopter-track="blade-a">
+      <circle cx={x} cy={y} r={radius} fill="#eff2e8" stroke={copper} strokeWidth="2" />
+      <circle cx={x} cy={y} r={radius * 0.3} fill={copper} />
+    </g>
+  );
+}
 export function HeliArrow({
   a,
   b,
@@ -118,7 +135,7 @@ export function HelicopterTrace({
           fill="none"
         />
         <path d={`M${x},8V62`} stroke={ink} strokeDasharray="3 5" />
-        <circle cx={x} cy={py(value)} r="4" fill={copper} />
+        <HelicopterTrackMark x={x} y={py(value)} />
         <text x={pad} y="82" fill={ink}>
           0°
         </text>

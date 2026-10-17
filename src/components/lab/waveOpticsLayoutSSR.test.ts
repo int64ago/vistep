@@ -19,7 +19,7 @@ vi.mock('../../i18n', async (original) => {
     t: (source: string, ...values: unknown[]) => i18n.translate(source, fixture.locale, ...values),
   };
 });
-import { FilmContext } from './Showcase';
+import { FilmContext } from './FilmContext';
 import Rainbow from '../experiments/Rainbow';
 import Doppler from '../experiments/Doppler';
 import WaveInterference from '../experiments/WaveInterference';

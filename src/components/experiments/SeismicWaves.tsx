@@ -7,7 +7,7 @@ import {
   seismicArrival,
   seismicShot,
 } from '../../models/seismic-waves';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import { Range } from '../lab/Controls';
 import '../../styles/seismic-waves.css';

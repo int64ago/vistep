@@ -1,0 +1,621 @@
+/* Printer composition, exploration controls and directed-film overrides. */
+/* Legacy editorial rules; original cascade order retained. */
+.lesson-printer .experiment {
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.printer-study {
+  position: relative;
+}
+.printer-object-stage {
+  height: 550px;
+  position: relative;
+  background: radial-gradient(ellipse at 48% 40%, #f3f5ed 0%, #eaeee3 100%);
+  overflow: hidden;
+  border-radius: var(--radius-stage);
+}
+.printer-object-stage > .studio {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+.printer-stage-top {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  gap: 15px;
+  pointer-events: none;
+}
+.printer-stage-top > span {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #748465;
+}
+.printer-view-controls {
+  display: flex;
+  gap: 6px;
+  pointer-events: auto;
+}
+.printer-view-controls button {
+  border: 1px solid #ffffff70;
+  background: #ffffff96;
+  backdrop-filter: blur(10px);
+  border-radius: 11px;
+  padding: 11px 14px;
+  min-height: 44px;
+  color: #738365;
+  font-size: 10px;
+}
+.printer-view-controls button[aria-pressed='true'] {
+  background: #dce6d5;
+  border-color: #dce6d5;
+  color: #49603d;
+}
+.printer-annotation {
+  position: absolute;
+  left: 30px;
+  bottom: 25px;
+  pointer-events: none;
+}
+.printer-annotation > span {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #859970;
+}
+.printer-annotation h2 {
+  font-weight: 450;
+  font-size: 26px;
+  margin: 7px 0 4px;
+  color: #3d592f;
+  letter-spacing: -0.04em;
+}
+.printer-annotation p {
+  font-size: 11px;
+  color: #7a9165;
+  margin: 0;
+}
+.printer-drag-note {
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  font-size: 10px;
+  color: #8a9e74;
+}
+.printer-transport {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 0 24px;
+  border-bottom: 1px solid #cfdcc1;
+}
+.printer-filmstrip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  flex: 1;
+  gap: 7px;
+}
+.printer-filmstrip button {
+  padding: 12px 14px;
+  background: none;
+  border: 0;
+  text-align: left;
+  color: #8c9f78;
+  min-height: 44px;
+  position: relative;
+  font-size: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 12px;
+  transition:
+    background 320ms ease,
+    color 240ms ease;
+}
+.printer-filmstrip button:before {
+  content: '';
+  position: absolute;
+  top: auto;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: transparent;
+  bottom: 3px;
+  border-radius: 2px;
+}
+.printer-filmstrip button[aria-pressed='true'] {
+  color: #4b6c3b;
+  background: #e6edde;
+}
+.printer-filmstrip button[aria-pressed='true']:before {
+  background: #9cb18b;
+}
+.printer-filmstrip small {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 9px;
+  color: #9cad8a;
+}
+.printer-explanation {
+  display: grid;
+  grid-template-columns: 0.85fr 1.35fr 1fr;
+  gap: 36px;
+  padding: 35px 0 0;
+}
+.printer-paper {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 0 28px 0 0;
+  border-right: 1px solid #d6e3c9;
+}
+.printer-paper .printer-pixels {
+  background: #fff;
+  padding: 12px;
+  gap: 1px;
+  box-shadow: 0 8px 24px #2b44110a;
+  width: 100px;
+  aspect-ratio: 0.8;
+  grid-template-rows: repeat(8, 1fr);
+  max-width: none;
+  align-content: center;
+  border: 1px solid #e0e9d7;
+  border-radius: 8px;
+}
+.printer-paper .printer-pixels button {
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+}
+.printer-paper .printer-pixels button[aria-pressed='true'] {
+  outline: 1px solid #d5783c;
+  outline-offset: 1px;
+}
+.printer-paper label {
+  font-size: 11px;
+  color: #708d51;
+}
+.printer-paper select {
+  display: block;
+  font-size: 13px;
+  margin: 9px 0 12px;
+  background: #edf1e6;
+  border: 0;
+  border-bottom: 1px solid #c4d6b2;
+  color: #587b38;
+  padding: 8px 10px;
+  min-height: 44px;
+  width: 100%;
+  border-radius: 10px;
+}
+.printer-stage-story > .section-index {
+  color: #7d9663;
+}
+.printer-stage-story h3 {
+  margin: 10px 0 13px;
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  color: #466d29;
+}
+.printer-stage-story > p {
+  line-height: 2;
+  color: #79955e;
+  margin: 0;
+}
+.printer-micro {
+  border-left: 1px solid #d6e3c9;
+  padding-left: 30px;
+}
+.printer-micro svg {
+  width: 100%;
+  height: 76px;
+  margin: 8px 0 5px;
+}
+.printer-micro > p {
+  font-size: 11px;
+  color: #8ca373;
+  line-height: 1.8;
+  margin: 0;
+}
+.printer-scrub {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+  padding: 16px 0 4px;
+  border-top: 1px solid #e1e9d9;
+}
+.printer-scrub .control {
+  flex: 1;
+}
+.printer-scrub .control-top {
+  display: none;
+}
+.printer-scrub > span {
+  font-size: 10px;
+  color: #819b65;
+  white-space: nowrap;
+}
+.printer-study > .lab-caption {
+  border: 0;
+  padding: 15px 0 0;
+  color: #8c9e78;
+  background: transparent;
+  font-size: 10px;
+  max-width: 800px;
+}
+@media (max-width: 1100px) {
+  .printer-explanation {
+    gap: 25px;
+  }
+  .printer-paper {
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+    padding-right: 18px;
+  }
+  .printer-paper .printer-pixels {
+    width: 80px;
+    padding: 8px;
+  }
+  .printer-micro {
+    padding-left: 22px;
+  }
+  .printer-stage-story h3 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .printer-object-stage {
+    height: 390px;
+    margin: 0 -12px;
+    border-radius: var(--radius-stage);
+  }
+  .printer-stage-top {
+    left: 20px;
+    right: 20px;
+    top: 15px;
+    align-items: start;
+  }
+  .printer-stage-top > span {
+    font-size: 8px;
+    max-width: 75px;
+    line-height: 1.9;
+  }
+  .printer-view-controls {
+    gap: 4px;
+  }
+  .printer-view-controls button {
+    font-size: 9px;
+    padding: 11px 14px;
+  }
+  .printer-annotation {
+    left: 24px;
+    bottom: 17px;
+  }
+  .printer-annotation > span {
+    font-size: 8px;
+  }
+  .printer-annotation h2 {
+    font-size: 23px;
+  }
+  .printer-annotation p {
+    font-size: 10px;
+  }
+  .printer-drag-note {
+    right: 24px;
+    bottom: 20px;
+    font-size: 8px;
+  }
+  .printer-transport {
+    gap: 14px;
+    padding: 18px 0;
+    flex-wrap: wrap;
+  }
+  .printer-filmstrip {
+    gap: 7px;
+    min-width: 230px;
+  }
+  .printer-filmstrip button {
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    font-size: 10px;
+    padding-top: 10px;
+  }
+  .printer-filmstrip small {
+    font-size: 8px;
+  }
+  .printer-explanation {
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 20px;
+    padding-top: 26px;
+  }
+  .printer-stage-story {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  .printer-stage-story h3 {
+    font-size: 23px;
+    margin: 9px 0 12px;
+  }
+  .printer-stage-story > p {
+    line-height: 2;
+  }
+  .printer-paper {
+    border-right: 0;
+    padding: 0;
+    grid-template-columns: 65px 1fr;
+    gap: 10px;
+  }
+  .printer-paper .printer-pixels {
+    width: 65px;
+    padding: 7px;
+  }
+  .printer-paper label {
+    font-size: 9px;
+  }
+  .printer-paper select {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+  .printer-micro {
+    padding-left: 16px;
+  }
+  .printer-micro > .section-index {
+    font-size: 8px;
+  }
+  .printer-micro > p {
+    font-size: 9px;
+  }
+  .printer-micro svg {
+    height: 63px;
+  }
+  .printer-scrub {
+    gap: 12px;
+    padding-top: 10px;
+  }
+  .printer-scrub > span {
+    font-size: 9px;
+  }
+  .printer-study > .lab-caption {
+    font-size: 9px;
+    padding-top: 8px;
+  }
+}
+@media (max-width: 380px) {
+  .printer-object-stage {
+    margin: 0 -8px;
+    height: 355px;
+  }
+  .printer-transport {
+    gap: 9px;
+  }
+  .printer-filmstrip {
+    min-width: 210px;
+    gap: 7px;
+  }
+  .printer-view-controls button {
+    font-size: 8px;
+    padding: 11px 14px;
+  }
+  .printer-micro {
+    padding-left: 10px;
+  }
+  .printer-paper {
+    grid-template-columns: 55px 1fr;
+  }
+  .printer-paper .printer-pixels {
+    width: 55px;
+  }
+}
+.printer-stage-story > p {
+  line-height: 1.9;
+  color: #67785b;
+}
+.printer-stage-story h3 {
+  color: #39512c;
+}
+.printer-micro > p {
+  color: #7c8d6b;
+  font-size: 12px;
+}
+.printer-paper .printer-pixels {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+}
+.printer-paper .printer-pixels button {
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+}
+.printer-paper label {
+  font-size: 12px;
+}
+.printer-paper select {
+  font-size: 14px;
+}
+.printer-filmstrip button {
+  font-size: 13px;
+}
+.printer-filmstrip small {
+  font-size: 10px;
+}
+@media (max-width: 760px) {
+  .printer-micro > p {
+    font-size: 10px;
+  }
+  .printer-filmstrip button {
+    font-size: 10px;
+  }
+  .printer-filmstrip small {
+    font-size: 8px;
+  }
+  .printer-paper label {
+    font-size: 9px;
+  }
+  .printer-paper select {
+    font-size: 11px;
+  }
+  .printer-paper .printer-pixels button {
+    min-height: 0;
+  }
+}
+
+/* Legacy interaction rules; original cascade order retained. */
+.printer-filmstrip.segmented {
+  display: grid;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  --segment-surface: #e6edde;
+}
+.printer-filmstrip .segment-selection::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: #9cb18b;
+}
+.printer-filmstrip button::before {
+  content: none;
+}
+.printer-annotation,
+.printer-stage-story,
+.printer-micro {
+  animation: story-arrive 420ms var(--ease-settle) both;
+}
+@media (hover: hover) and (pointer: fine) {
+  .printer-view-controls button:hover {
+    background: #edf2e8;
+  }
+  .printer-filmstrip button:hover {
+    background: #e9eee380;
+  }
+}
+@media (max-width: 760px) {
+  .printer-transport {
+    gap: 7px;
+  }
+  .printer-filmstrip {
+    min-width: 0;
+  }
+  .printer-filmstrip button {
+    padding: 10px 2px;
+    gap: 5px;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .printer-filmstrip small {
+    font-size: 9px;
+  }
+  .printer-filmstrip button:before {
+    left: 7px;
+    right: 7px;
+  }
+  .printer-filmstrip {
+    gap: 3px;
+  }
+  .printer-view-controls button {
+    padding: 10px;
+    font-size: 10px;
+  }
+}
+
+/* Legacy showcase rules; original cascade order retained. */
+.showcase[data-mode='watch'] .printer-object-stage {
+  height: 470px;
+  border-radius: var(--radius-stage);
+}
+.showcase[data-mode='watch'] .printer-annotation {
+  left: 30px;
+  bottom: 26px;
+}
+.showcase[data-mode='watch'] .printer-annotation > span {
+  display: none;
+}
+.showcase[data-mode='watch'] .printer-annotation h2 {
+  font-size: 24px;
+}
+.showcase[data-mode='watch'] .printer-annotation p {
+  font-size: 12px;
+}
+.showcase[data-mode='watch'] .printer-study > .lab-caption {
+  display: none;
+}
+.lesson-printer .film-caption {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.lesson-printer .film-transport {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+@media (max-width: 760px) {
+  .showcase[data-mode='watch'] .printer-object-stage {
+    height: 350px;
+    margin: 0 -12px;
+  }
+  .showcase[data-mode='watch'] .printer-annotation {
+    left: 22px;
+    bottom: 16px;
+  }
+  .showcase[data-mode='watch'] .printer-annotation h2 {
+    font-size: 20px;
+  }
+  .showcase[data-mode='watch'] .printer-annotation p {
+    font-size: 10px;
+  }
+}
+@media (min-width: 761px) {
+  .showcase[data-mode='watch'] .printer-object-stage {
+    height: clamp(320px, calc(100svh - 350px), 470px);
+  }
+}
+.showcase[data-mode='watch'] .printer-annotation {
+  padding: 7px 12px;
+  background: #edf1e7e8;
+  border-radius: 11px;
+  backdrop-filter: blur(12px);
+}
+.showcase[data-mode='watch'] .printer-annotation h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.showcase[data-mode='watch'] .printer-annotation p {
+  display: none;
+}
+
+/* Legacy longform rules; original cascade order retained. */
+.printer-surface {
+  max-width: 660px;
+  margin: 12px auto 8px;
+  padding: 0 20px;
+}
+.printer-surface svg {
+  width: 100%;
+  display: block;
+}
+.lesson-printer .showcase:has(.printer-surface) .printer-object-stage {
+  height: clamp(300px, 40vh, 470px);
+}
+@media (max-width: 760px) {
+  .printer-surface {
+    padding: 0 8px;
+  }
+  .lesson-printer .showcase:has(.printer-surface) .printer-object-stage {
+    height: 310px;
+  }
+}

@@ -56,7 +56,17 @@ export default function QrCodeMatrix({
             opacity = 1;
           if (chapter === 3) {
             value = base;
-            if (role === 'data') return null;
+            if (role === 'data')
+              return (
+                <rect
+                  key={`${x}-${y}`}
+                  x={x + 4.08}
+                  y={y + 4.08}
+                  width=".84"
+                  height=".84"
+                  fill="#e5ebea"
+                />
+              );
             if (role === 'timing' && structure < 1) return null;
             if (['format', 'dark'].includes(role) && structure < 2) return null;
             if (role === 'format') {

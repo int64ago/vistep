@@ -8,7 +8,7 @@ import {
   type BearingFocus,
 } from '../../models/ball-bearing';
 import { useCompact } from '../lab/useCompact';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import BallBearingStudio from '../three/BallBearingStudio';
 import BallBearingInspection from '../lab/BallBearingInspection';
 import '../../styles/ball-bearing.css';

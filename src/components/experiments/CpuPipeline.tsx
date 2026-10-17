@@ -14,7 +14,7 @@ import {
   type CpuState,
   type CpuToken,
 } from '../../models/cpu-pipeline';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import '../../styles/cpu-pipeline.css';
 
 const stageNames = ['取指', '译码', '执行', '访存', '写回'];

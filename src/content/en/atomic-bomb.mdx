@@ -1,19 +1,21 @@
-<h2 id="understand">Why does a lump of uranium explode once it is big enough?</h2>
+<h2 id="understand">How can a fission chain reaction sustain itself and grow?</h2>
 
 A slow neutron drifts toward a uranium-235 nucleus and is absorbed. The nucleus becomes excited uranium-236. Nuclear physics often pictures it as a charged drop of liquid: it wobbles, stretches, forms a narrow neck and snaps. Two fragments fly apart, and two or three fresh neutrons are thrown out. For the channel drawn here, n + U-235 → Ba-141 + Kr-92 + 3n, one event releases about **173 MeV**, mostly as the fragments’ kinetic energy.
 
 The energy comes from **binding energy**. Binding energy per nucleon peaks near iron, and uranium lies lower at the far right of the curve. After the split, barium and krypton both land higher on the curve, each nucleon in the fragments bound about 0.8 MeV more tightly. Add that up over more than two hundred nucleons, subtract the roughly 15 MeV it costs to release the two extra neutrons, and the result is the 173 MeV, about 0.73 MeV for each of the 236 nucleons that entered. A chemical reaction releases a few electron-volts per atom, tens of millions of times less.
 
-The new neutrons can cause further fissions. If, on average, k of the neutrons from each fission go on to cause another, generation g holds k^g neutrons. A generation takes roughly 10 ns, so a few dozen generations reach astronomical numbers.
+The new neutrons can cause further fissions. The multiplication factor k is the average ratio of neutron populations in successive generations. If it stays fixed, a chain starting with one neutron has an expected population of k^g in generation g; an individual random walk can still die out early. The selected fast-chain example uses 10 ns per generation, a time that does not apply to every fission system.
 
 Two things set k: **production** and **leakage**. The number of nuclei that produce neutrons grows with volume; the chance of escaping grows with surface area. As a sphere grows, volume wins and k rises. At the **critical radius**, k = 1 and the chain just sustains itself; beyond it, every generation outnumbers the last. Shrink the same material instead, and neutrons fly out before meeting many nuclei, so the chain dies within a few steps.
+
+**Critical means the chain sustains itself; supercritical means the neutron population tends to grow. Neither means that a sufficiently large piece must explode.** A reactor can briefly become supercritical during a normal increase in power. Explosive energy release also involves time scales and feedback between energy and material motion. This scene does not solve those processes or predict an explosion from a sphere's size. References: [NRC, Criticality](https://www.nrc.gov/education-regulatory-research/glossary/criticality) and [NRC, Supercriticality](https://www.nrc.gov/reading-rm/basic-ref/glossary/supercriticality).
 
 <h2 id="try">Watch it die, then watch it sustain</h2>
 
 - In free exploration, set the sphere radius to **1.6 λ** (λ is the neutron mean free path). k ≈ 0.67. Most neutrons released at the centre leak out; the blue dots mark where they leave, and within a few generations none survive.
 - Set the radius to **4.5 λ**, so k ≈ 1.50. Try several random draws: the tracks differ every time. Most draws keep growing until the display limit, but about a quarter still die out early, because the single starting neutron can leak or be captured first. k describes the average, not every individual chain. In this teaching model the critical radius is about **2.5 λ**.
 - Keep 4.5 λ and push “uniform expansion” past **1.34×**. The mass is unchanged but the density drops, neutrons fly farther between collisions, the radius measured in λ shrinks, k falls below 1, and a fresh walk dies out again.
-- In “reactor vs bomb”, compare three curves. With k = 1.001 and prompt neutrons only, the count runs away within a second; with delayed neutrons included, it takes a minute to double. That interval is what a reactor relies on.
+- In “reactor vs bomb”, compare three curves. The first two keep k = 1.001 and use a mean-generation-time approximation. Prompt-only growth is fast; including delayed neutrons gives roughly a minute to double. This is an order-of-magnitude comparison, not a prediction of an actual reactor transient.
 
 <h2 id="deeper">Put the neutron walk and k into one calculation</h2>
 
@@ -44,7 +46,9 @@ The neutron tracks are the projection of a three-dimensional random walk: flight
 <details>
 <summary>Delayed neutrons, generation time and stopping</summary>
 
-In a thermal reactor a prompt generation lasts about 10⁻⁴ s. About 0.65% of neutrons are released only after fission fragments decay, on average some 12.5 s late. With a single delayed group, the mean generation time becomes (1 − β)·ℓ + β·τd ≈ 0.08 s, so at k = 1.001 the population takes a minute to double and the control system can respond. Reference: [Delayed neutrons](https://www.nuclear-power.com/nuclear-power/fission/delayed-neutrons/).
+For the thermal-reactor example, the chart selects a prompt generation time ℓ = 10⁻⁴ s, delayed fraction β = 0.0065 and mean precursor lifetime τd = 12.5 s. Their weighted mean is (1 − β)·ℓ + β·τd ≈ 0.081 s. The blue curve then uses k^(t/ℓmean), giving about 56 s to double at k = 1.001. This low-reactivity, mean-generation-time approximation illustrates the order of magnitude.
+
+A genuine one-group point-kinetics model also tracks the precursor population independently and includes fast and slow responses; one mean generation time cannot replace it. With the same parameters, that model's long-term doubling time is about 48 s, with an initial fast response when a step is applied to a critical equilibrium. This chart does not simulate those transients, temperature feedback or control-rod action, and should not predict reactor operation. Reference: [MIT 22.05, Reactor Kinetics, slides 10–15 and 25](https://ocw.mit.edu/courses/22-05-neutron-science-and-reactor-physics-fall-2009/ace8499f800e5d5d7d901a8ecc229c35_MIT22_05F09_lec05.pdf).
 
 Once energy heats the material and it expands, mass stays fixed while density falls. Scaling linear size by s makes the density 1/s³, the mean free path s³ times longer and the radius measured in λ equal to R/s². The scene draws only this geometric relation; it does not compute temperature, pressure or expansion speed, and the time scale of stopping and the fraction of nuclei that fission are described only qualitatively.
 

@@ -8,7 +8,7 @@ import {
   type SuspensionParameters,
   type SuspensionRoad,
 } from '../../models/suspension';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import SuspensionDiagram from '../lab/SuspensionDiagram';
 import Studio from './Studio';
 import { box, material, roller } from './parts';

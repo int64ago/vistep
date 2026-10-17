@@ -17,7 +17,7 @@ import {
 } from '../../models/excavator';
 import ExcavatorDrawing from '../lab/ExcavatorDrawing';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 
 /** Everything the renderer needs, derived by the experiment from one model state. */
 export type ExcavatorVisual = {

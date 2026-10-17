@@ -6,7 +6,7 @@ import {
   osmosisShot,
   osmosisWaterTracers,
 } from '../../models/osmosis';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import { Range } from '../lab/Controls';
 import '../../styles/osmosis.css';

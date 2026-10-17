@@ -8,7 +8,7 @@ import {
   type HammerShot,
 } from '../../models/water-hammer';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import WaterHammerBench, {
   WaterHammerElastic,
   WaterHammerComparison,

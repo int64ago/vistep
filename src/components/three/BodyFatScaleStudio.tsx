@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import * as THREE from 'three';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import type { BfsShot } from '../../models/body-fat-scale';
 import {
   BFS_GEOMETRY as G,

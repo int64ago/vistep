@@ -8,7 +8,7 @@ Build one visible causal argument. Share the production workflow, player and lif
 
 With Codex, invoke the [vistep-scene skill](../.agents/skills/vistep-scene/SKILL.md) using a natural-language request. The skill owns research through implementation and review; the requester does not need to fill a template or execute scaffolding commands. Other contributors can follow this guide directly.
 
-Identify the reader's initial intuition, one object to follow, the observation that changes their understanding, and the model's limits. Record primary technical sources. For an induction motor, for example, follow the rotating magnetic field, induced rotor current and torque—not a decorative motor shell.
+Identify the reader's initial intuition, one object to follow, the observation that changes their understanding, and the model's limits. Record the misconception, prerequisite, distinct contribution and scientific qualifications in the title. Keep a small claim → source section → assumptions → valid range table, with an independent benchmark and a boundary counterexample. For an induction motor, for example, follow the rotating magnetic field, induced rotor current and torque—not a decorative motor shell.
 
 An optional internal helper creates an unpublished `drafts/<slug>/` workspace:
 
@@ -20,7 +20,7 @@ Supported media are `three`, `svg`, `canvas`, `audio` and `hybrid`. The helper w
 
 ## Storyboard before narration
 
-Plan a **2–5 minute** demonstration, preferably **2–3 minutes**. Five minutes is the limit. Every chapter must add an observation, a causal step or a controlled comparison. Extending narration over the same short loop is unacceptable.
+Aim for **2–3 minutes** with five minutes as the limit. A complete shorter explanation is welcome; do not pad it to a minimum duration. Every chapter must add an observation, a causal step or a controlled comparison. Extending narration over the same short loop is unacceptable.
 
 For each chapter specify:
 
@@ -29,7 +29,7 @@ For each chapter specify:
 - Camera or composition, including a separate narrow-screen arrangement.
 - A short silent caption and the spoken observation it supports.
 
-Draw the opening, turning point and result before coding. Physical contact and internal pathways benefit from 3D; matrices, waves, pixel blocks, timelines and slices often communicate better directly. See the [bicycle example](examples/bicycle-brief.md) and [retrospective](retrospective.md).
+Draw the opening, turning point and result before coding. Implement and inspect the decisive causal shot on desktop and phone before freezing the spoken script. Physical contact and internal pathways benefit from 3D; matrices, waves, pixel blocks, timelines and slices often communicate better directly. See the [bicycle example](examples/bicycle-brief.md) and [retrospective](retrospective.md).
 
 ## Implement a complete silent sequence
 
@@ -57,7 +57,7 @@ python3 -m venv .venv-voice
 
 Production uses Microsoft Edge online speech through pinned `edge-tts`; see [provenance](../THIRD_PARTY_NOTICES.md). It needs network access, but ordinary builds and readers do not call it. Revisit the script if the measured film exceeds five minutes. Regenerate only changed scenes and commit scripts, manifests and recordings together.
 
-Listen to both tracks for intelligibility, technical pronunciation, delivery and synchronization. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, or locally on Apple silicon with `--backend mlx` and the optional `mlx-whisper` package, without a reference prompt or language hint. It can catch wrong-language output, gibberish and truncated endings; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
+For new or replaced recordings, listen to both complete tracks for intelligibility, technical pronunciation, delivery and synchronization. A focused visual correction with unchanged speech needs synchronization review of the affected cues. Optional `scripts/audit-narration.py` independently transcribes every recorded chapter with Workers AI, or locally on Apple silicon with `--backend mlx` and the optional `mlx-whisper` package, without a reference prompt or language hint. It can catch wrong-language output, gibberish and truncated endings; it does not certify a natural vocal performance. Its credentials never enter CI or site assets.
 
 For a reviewed batch, both narration tools accept several slugs after `--only` and use a bounded worker pool. The generator updates the selected tracks and measured metadata after assembly; the transcription audit writes its report to ignored `artifacts/narration-transcription.json` and does not update the film or audio manifests. One integration owner coordinates these tools; parallel scene workers do not write shared audio manifests or the same audit report. Cached unchanged speech retains its content hashes. Stop cloud transcription when the daily allocation is exhausted; do not upgrade an account to complete an audit.
 
@@ -73,13 +73,13 @@ For a reviewed batch, both narration tools accept several slugs after `--only` a
 | `src/data/narration.json`, its generated timeline/manifests and `public/narration/` | Both recordings, matching cues and measured timing                                                             |
 | `src/components/covers/` and `src/components/TopicCover.astro`                      | Original model-derived artwork wired into the catalog; reuse the geometry in other cover formats where needed  |
 
-Load the dictionary through `src/i18n/english.ts` in server-rendered and English client entry points; keep `en.json` out of the shared Chinese client dependency graph. Shared modules must not translate labels at module initialization; translate them when the component renders.
+Server-rendered copy loads `src/i18n/english.ts`. English islands receive only the dictionary extracted from their scene dependency graph by `src/i18n/server/island-dictionary.ts`; neither client locale imports the full collection dictionary. Include new computed labels in the per-scene dictionary check. Shared modules must not translate labels at module initialization; translate them when the component renders.
 
 Classification is defined only in `src/data/discovery-metadata.ts`; do not add a parallel `category` label to `topics.ts`. Choose the main explanatory theme, using the dedicated weapon context for weapon subjects. Heat/fluid topics and Earth/astronomy have separate categories. Existing category IDs remain stable for shared filter links.
 
 Keep the English and Chinese source catalogs in `docs/catalog.md` and `docs/zh-CN/catalog.md` complete. Use the same discovery categories and measured film durations; the metadata regression checks both catalogs against the registry.
 
-Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Inspect the actual cover in the 400×230 catalog, applicable homepage fallback and `SocialCard.astro` output; selected object artwork also appears through `ObjectCover.astro` and `CollectionCard.astro`. Check each composition, contact and paper/chain path, including transparency and repeated SVG IDs. For dense mesh-derived covers, add the slug to `src/data/raster-covers.ts`: the build produces the same artwork as an 800×460 PNG under `/covers/` for lazy collection loading; social cards still render the original geometry. The registry tests catch missing files; they cannot judge communication quality.
+Routes, transcripts, schema, reciprocal language links, social PNGs and the sitemap are derived during the build. Inspect the actual cover in the 400×230 catalog, applicable homepage fallback and `SocialCard.astro` output; selected object artwork also appears through `ObjectCover.astro` and `CollectionCard.astro`. Check each composition, contact and paper/chain path, including transparency and repeated SVG IDs. All registered covers use `src/data/raster-covers.ts`: the build produces the same artwork as an 800×460 PNG under `/covers/` for lazy collection loading; social cards still render the original geometry. The registry tests catch missing files; they cannot judge communication quality.
 
 When a request adds multiple scenes, agents must proactively use subagents and the available concurrency. Prefer one owner per independent scene, and include its objective, applicable skill, owned files and acceptance requirements in the assignment. Research, model review and visual/interaction review can also run as bounded independent tasks. The main agent coordinates shared files, integrates the work and reviews each scene; a worker's completion report does not replace that review.
 
@@ -96,7 +96,7 @@ For a complete scene, run `pnpm scene:check`, `pnpm verify` and `pnpm build:prev
 3. Key still frames, physical contacts, closed paths, model limits, label alignment and camera framing.
 4. Desktop, 390 px and 320 px layouts; keyboard and touch targets; reduced motion, WebGL failure, Worker failure, deep links and 404.
 
-Test the startup capability gate separately from runtime failures. Missing WebGL 2 or another required capability prevents experiment engines and the homepage object from loading; check the support notice and readable static articles/catalog. After the gate passes, renderer creation or context loss must use the scene's appropriate fallback. A runtime 2D fallback does not establish support for a browser rejected at startup; see [browser support](architecture.md#browser-support).
+Test essential browser capabilities separately from scene-specific failures. Missing WebGL, Web Audio or Workers does not reject unrelated 2D lessons. Inspect the applicable renderer fallback, cooperative calculation fallback or explicit unavailable state, as well as readable static content; see [browser support](architecture.md#browser-support).
 
 Body copy is at least 16 px and primary targets at least 44 px. A resized browser is not a real-phone performance test. Keep untested conditions explicit. New findings should improve the workflow, not turn into unrelated checklists.
 
@@ -114,4 +114,6 @@ Keep the same parallel queue active after all requested routes exist. Each hando
 
 Measure the whole player, including the longest bilingual caption and transport controls, at every chapter. A short stage can still produce an oversized phone page. Prefer the current causal view over stacked desktop panels. Keep labels in CSS pixels where scaling would make them unreadable. Project the real assembly bounds through the camera, including near corners, thickness and moving parts; a nominal width/height fit is insufficient. Review pause, direct seek and transitions separately.
 
-For caption-only edits, update `narration.json`, its corresponding `film-timeline.json` captions and `en.json` together. Keep spoken scripts, timing, audio manifests and recording hashes unchanged. Do not regenerate speech to shorten screen text. Preserve scientific qualifications in the visible explanation or an accessible detail view.
+For caption-only edits, change `narration.json`, then run `pnpm scene:captions --write <slug>` to synchronize screen titles/captions and translations without synthesis. `pnpm scene:captions --check` and the narration regression detect drift and reject a timing mismatch. Keep spoken scripts, timing, audio manifests and recording hashes unchanged. Do not regenerate speech to shorten screen text. Preserve scientific qualifications in the visible explanation or an accessible detail view.
+
+Use the [browser review workflow](browser-review.md) for reproducible chapter keyframes and interaction checks. A scene’s `review.json` records its source commit/tree hash, owner, check type, conditions, evidence paths and `passed`, `failed` or `not-run` status. Keep implementation, numerical checks, visual acceptance, full listening and publication separate; automated geometry measurements do not mark the manual reviews passed.

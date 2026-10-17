@@ -36,12 +36,14 @@ type Options = {
   compute?: (job: ChJob) => Generator<void, ChResult, void>;
   budgetBytes?: number;
   measure?: (value: ChResult) => number;
+  workerTimeoutMs?: number;
 };
 const compute = (job: ChJob): Generator<void, ChResult, void> =>
   job.kind === 'field'
     ? chFieldSetSteps(job.request.isdM, job.request.sigmaDb, job.request.step, job.request.rect)
     : chSimulateSteps(job.params);
 export const CH_RESULT_CACHE_BYTES = 24 * 1024 * 1024;
+export const CH_WORKER_TIMEOUT_MS = 12_000;
 
 /** One calculation in flight, with one replaceable request per hook. Independent map layers and
  * route runs keep separate subscriptions; only identical inputs share a computation. */
@@ -50,12 +52,14 @@ export class CellHandoverRequests {
   private active: Active | null = null;
   private worker: Worker | null = null;
   private localTimer: ReturnType<typeof setTimeout> | null = null;
+  private workerDeadline: ReturnType<typeof setTimeout> | null = null;
   private broken = false;
   private owners = 0;
   private serial = 0;
   private readonly cache: ByteCache<string, ChResult>;
   private readonly createWorker: () => Worker;
   private readonly compute: (job: ChJob) => Generator<void, ChResult, void>;
+  private readonly workerTimeoutMs: number;
 
   constructor(options: Options = {}) {
     this.cache = new ByteCache(
@@ -64,6 +68,7 @@ export class CellHandoverRequests {
         ((value) => ('field' in value ? chFieldSetBytes(value) : chRunBytes(value))),
     );
     this.compute = options.compute ?? compute;
+    this.workerTimeoutMs = options.workerTimeoutMs ?? CH_WORKER_TIMEOUT_MS;
     this.createWorker =
       options.createWorker ??
       (() =>
@@ -169,7 +174,16 @@ export class CellHandoverRequests {
           this.useLocal();
         };
       }
-      const { job, id } = this.active;
+      const task = this.active;
+      const instance = this.worker;
+      // An alive Worker can still stop responding. Keep the deadline scoped to
+      // this instance and task, then recompute only the inputs still subscribed.
+      this.workerDeadline = setTimeout(() => {
+        if (this.worker !== instance || this.active !== task) return;
+        this.workerDeadline = null;
+        this.useLocal();
+      }, this.workerTimeoutMs);
+      const { job, id } = task;
       this.worker.postMessage(
         job.kind === 'field'
           ? { kind: 'field', id, ...job.request }
@@ -181,11 +195,17 @@ export class CellHandoverRequests {
   }
 
   private closeWorker() {
+    this.clearWorkerDeadline();
     if (!this.worker) return;
     this.worker.onmessage = null;
     this.worker.onerror = null;
     this.worker.terminate();
     this.worker = null;
+  }
+
+  private clearWorkerDeadline() {
+    if (this.workerDeadline !== null) clearTimeout(this.workerDeadline);
+    this.workerDeadline = null;
   }
 
   private useLocal() {
@@ -229,6 +249,7 @@ export class CellHandoverRequests {
   private finish(id: number, value?: ChResult, error?: string) {
     const task = this.active;
     if (!task || task.id !== id) return;
+    this.clearWorkerDeadline();
     this.active = null;
     if (value && this.needed(task.key)) this.cache.set(task.key, value);
     for (const subscription of [...this.subscriptions.values()]) {

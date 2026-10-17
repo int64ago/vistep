@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FilmContext } from '../components/lab/Showcase';
-import InstantCamera from '../components/experiments/InstantCamera';
+import { FilmContext } from '../components/lab/FilmContext';
+import InstantCamera, { Spread } from '../components/experiments/InstantCamera';
 import InstantCameraDiagram from '../components/three/InstantCameraDiagram';
 import { IC, icShot } from './instant-camera';
 
@@ -75,5 +75,25 @@ describe('instant film reconstructs the observed causal state on a paused seek',
       .map(({ x: worldX, height }) => `L${x(worldX)} ${y(IC.plane + IC.thickness / 2 + height)}`)
       .join('');
     expect(markup).toContain(profile);
+  });
+  it('keeps the layer slice at the same physical wet front as the plan during forward and backwards seeks', () => {
+    for (const width of [240, 288, 390, 700])
+      for (const feedMm of [0, 22, 58, 95, 130, 58]) {
+        const shot = icShot(3, 0.5, { feedMm, seconds: 0, dirty: false }),
+          markup = renderToStaticMarkup(<Spread shot={shot} width={width} />),
+          rect = (part: string) =>
+            markup.match(new RegExp(`<rect[^>]*data-part="${part}"[^>]*>`))![0],
+          attribute = (tag: string, name: string) =>
+            Number(tag.match(new RegExp(`${name}="([^"]+)"`))![1]),
+          plan = rect('plan-reagent'),
+          slice = rect('slice-reagent');
+        expect(attribute(slice, 'y')).toBe(attribute(plan, 'y'));
+        expect(attribute(slice, 'height')).toBe(attribute(plan, 'height'));
+        expect(attribute(slice, 'x') + attribute(slice, 'width')).toBeLessThan(width);
+        expect(attribute(slice, 'y') + attribute(slice, 'height')).toBeLessThan(318);
+        expect(markup).toContain(`data-instant-slice-front="${shot.transport.front.toFixed(3)}"`);
+        expect(markup).toContain('纵向同尺度；层厚放大');
+        expect(markup).not.toMatch(/NaN|Infinity/);
+      }
   });
 });

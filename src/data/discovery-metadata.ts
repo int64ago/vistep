@@ -1,3 +1,5 @@
+import { learningKeywords } from './learning-paths';
+
 /** One source of truth for every catalog card, filter, breadcrumb and source catalog.
  * Classify by the main explanation; weapons have a dedicated context group.
  * Age is an editorial starting point, not certification or an access restriction.
@@ -76,6 +78,21 @@ export type DiscoveryMetadata = {
   minAge: 8 | 10 | 12 | 14;
   keywords: { zh: string[]; en: string[] };
 };
+
+/** Shared by the rendered catalog and query tests: categories and cross-subject
+ * learning concepts are searchable in either language, alongside the aliases.
+ */
+export function discoverySearchKeywords(slug: string): string {
+  const item = discoveryMetadata[slug];
+  const category = discoveryCategories.find((entry) => entry.id === item.category)!;
+  return [
+    category.label.zh,
+    category.label.en,
+    ...item.keywords.zh,
+    ...item.keywords.en,
+    ...learningKeywords(slug),
+  ].join(' ');
+}
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
   'seismic-waves': {

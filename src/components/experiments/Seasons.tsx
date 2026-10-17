@@ -10,7 +10,7 @@ import {
   type SeasonsState,
 } from '../../models/seasons';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import SeasonsGlobe from '../lab/SeasonsGlobe';
 import SeasonsShadowReadout from '../lab/SeasonsShadowReadout';

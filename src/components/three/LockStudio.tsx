@@ -8,7 +8,7 @@ import {
   type LockPose,
   type LockKey,
 } from '../../models/lock';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import Studio from './Studio';
 import { box, material } from './parts';
 import { LockSection } from './LockDiagram';

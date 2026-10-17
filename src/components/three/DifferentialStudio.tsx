@@ -12,7 +12,7 @@ import {
   type DifferentialMotion,
   type DifferentialGearId,
 } from '../../models/differential';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import Studio from './Studio';
 import { box, material } from './parts';
 import { DifferentialMechanism } from './DifferentialDiagram';

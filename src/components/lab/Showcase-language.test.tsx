@@ -6,6 +6,7 @@ import { manualLanguageClick } from '../../lib/film-language';
 import { films } from '../../data/films';
 import tracks from '../../data/audio-tracks.json';
 import { t } from '../../i18n';
+import { NARRATION_WAIT_TIMEOUT_MS } from './narration-source';
 
 function store() {
   const values = new Map<string, string>();
@@ -142,7 +143,15 @@ async function mount(slug = 'rainbow', strict = false) {
   let tree!: ReactTestRenderer;
   await act(async () => {
     const child = (
-      <Showcase slug={slug}>
+      <Showcase
+        slug={slug}
+        film={films[slug]}
+        track={
+          tracks[slug as keyof typeof tracks][
+            document.documentElement.lang.startsWith('en') ? 'en' : 'zh'
+          ]
+        }
+      >
         <Probe />
       </Showcase>
     );
@@ -190,6 +199,49 @@ afterEach(() => {
 });
 
 describe('actual Showcase + useNarration + narrationSource language lifecycle (controlled media/events)', () => {
+  it('returns a transcript selection to the film, including the already selected hash', async () => {
+    environment();
+    const tree = await mount();
+    const scroll = vi.fn();
+    (document as any).getElementById = vi.fn(() => ({ scrollIntoView: scroll }));
+    const select = async () => {
+      const event = new Event('click');
+      Object.defineProperty(event, 'target', {
+        value: { closest: () => ({ hash: '#t=165.5' }) },
+      });
+      Object.assign(event, { button: 0 });
+      await act(() => document.dispatchEvent(event));
+    };
+    await select();
+    expect(probe(tree)['data-time']).toBe(165.5);
+    expect(probe(tree)['data-playing']).toBe(false);
+    await select();
+    expect(scroll).toHaveBeenCalledTimes(2);
+    expect(scroll).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+    await unmount(tree);
+  });
+  it('continues silently after native audio stalls without changing the saved sound choice', async () => {
+    vi.useFakeTimers();
+    const env = environment();
+    const tree = await mount();
+    try {
+      const audio = env.audios.at(-1)!;
+      await act(() => button(tree, 'play').props.onClick());
+      await act(() => (audio.onwaiting as (() => void) | null)?.());
+      expect(probe(tree)['data-playing']).toBe(false);
+      await act(() => vi.advanceTimersByTimeAsync(NARRATION_WAIT_TIMEOUT_MS));
+      expect(button(tree, 'voice').props['aria-pressed']).toBe(false);
+      expect(tree.root.findAllByProps({ className: 'voice-status' })).toHaveLength(1);
+      expect(env.local.getItem('vistep:narration')).toBeNull();
+      const before = probe(tree)['data-time'];
+      await act(() => env.tick(100));
+      await act(() => env.tick(140));
+      expect(probe(tree)['data-time']).toBeGreaterThan(before);
+    } finally {
+      await unmount(tree);
+      vi.useRealTimers();
+    }
+  });
   it('reproduces stale-hash rainbow seek and restores director149.5 and media149.5 paused', async () => {
     const env = environment();
     let tree = await mount();

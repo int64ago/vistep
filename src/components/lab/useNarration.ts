@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import manifest from '../../data/audio-tracks.json';
-import { browserLocale, type Locale } from '../../i18n';
+import type { Soundtrack } from '../../lib/film';
 import { narrationPreference, rememberNarration } from './narration-preference';
-import { narrationSource } from './narration-source';
-type Soundtrack = { src: string; duration: number };
-const tracks = manifest as Record<string, Record<Locale, Soundtrack>>;
+import { narrationSource, NARRATION_WAIT_TIMEOUT_MS } from './narration-source';
 
 /** One authored soundtrack per film. The audio media clock drives the visual timeline. */
 export function useNarration(
@@ -13,8 +10,8 @@ export function useNarration(
   visible: boolean,
   run: number,
   onEnded: () => void,
+  track?: Soundtrack,
 ) {
-  const track = tracks[slug]?.[browserLocale()];
   const audio = useRef<HTMLAudioElement | null>(null);
   const source = useRef<ReturnType<typeof narrationSource> | null>(null);
   const [sourceReady, setSourceReady] = useState(0);
@@ -163,6 +160,13 @@ export function useNarration(
     if (enabled && playing && visible) play(a);
     else a.pause();
   }, [enabled, playing, visible, run, sourceReady]);
+  useEffect(() => {
+    if (!waiting || !enabled || !playing || !visible) return;
+    // A connection can stall without producing a media error. Resume the silent clock;
+    // a retry uses its latest time and never changes the reader's saved preference.
+    const timer = setTimeout(() => source.current?.mediaError(), NARRATION_WAIT_TIMEOUT_MS);
+    return () => clearTimeout(timer);
+  }, [waiting, enabled, playing, visible]);
   return {
     enabled,
     waiting,

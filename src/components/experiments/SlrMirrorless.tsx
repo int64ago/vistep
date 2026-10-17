@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { cameraPose, cameraShot, type CameraMode } from '../../models/slr-mirrorless';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import SlrMirrorlessStudio from '../three/SlrMirrorlessStudio';
 import '../../styles/slr-mirrorless.css';

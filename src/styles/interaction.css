@@ -1,4 +1,4 @@
-/* Shared response and motion. Study layouts and scientific marks live in editorial.css. */
+/* Shared response and motion. Scene composition moves into local CSS; legacy layouts remain in editorial.css. */
 @view-transition {
   navigation: none;
 }
@@ -105,26 +105,6 @@ summary:focus-visible {
     width 380ms var(--ease-settle),
     height 380ms var(--ease-settle);
 }
-.printer-filmstrip.segmented {
-  display: grid;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  --segment-surface: #e6edde;
-}
-.printer-filmstrip .segment-selection::after {
-  content: '';
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 3px;
-  height: 2px;
-  border-radius: 2px;
-  background: #9cb18b;
-}
-.printer-filmstrip button::before {
-  content: none;
-}
 
 /* Native inputs keep their keyboard, touch and immediate numeric response. */
 .control input[type='range'] {
@@ -210,11 +190,6 @@ summary:focus-visible {
 .checkline {
   min-height: 44px;
 }
-.printer-annotation,
-.printer-stage-story,
-.printer-micro {
-  animation: story-arrive 420ms var(--ease-settle) both;
-}
 @keyframes story-arrive {
   from {
     opacity: 0;
@@ -290,12 +265,6 @@ summary:focus-visible {
     background: #607f64;
     box-shadow: 0 4px 18px #35553a1a;
   }
-  .printer-view-controls button:hover {
-    background: #edf2e8;
-  }
-  .printer-filmstrip button:hover {
-    background: #e9eee380;
-  }
   .study-card:hover .study-visual {
     box-shadow: 0 12px 32px #37492c0c;
   }
@@ -324,36 +293,10 @@ summary:focus-visible {
   :root {
     --radius-stage: 22px;
   }
-  .printer-transport {
-    gap: 7px;
-  }
-  .printer-filmstrip {
-    min-width: 0;
-  }
-  .printer-filmstrip button {
-    padding: 10px 2px;
-    gap: 5px;
-    justify-content: center;
-    font-size: 11px;
-  }
-  .printer-filmstrip small {
-    font-size: 9px;
-  }
   .transport-reset {
     width: 44px;
     min-width: 44px;
     display: block;
-  }
-  .printer-filmstrip button:before {
-    left: 7px;
-    right: 7px;
-  }
-  .printer-filmstrip {
-    gap: 3px;
-  }
-  .printer-view-controls button {
-    padding: 10px;
-    font-size: 10px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

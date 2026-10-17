@@ -12,7 +12,7 @@ const context = vi.hoisted(() => ({
   chapterProgress: 0.5,
   manual: null as ReturnType<typeof routingReset> | null,
 }));
-vi.mock('./Showcase', () => ({ useShowcase: () => context }));
+vi.mock('./FilmContext', () => ({ useShowcase: () => context }));
 vi.mock('./useCompact', () => ({ useCompact: () => context.compact }));
 vi.mock('../../i18n', () => ({ t: (s: string) => s }));
 vi.mock('react', async (original) => {

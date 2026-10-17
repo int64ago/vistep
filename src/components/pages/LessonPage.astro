@@ -1,11 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { islandDictionary } from '../../i18n/server/island-dictionary';
 import Experiment from '../../components/Experiment';
 import EnglishExperiment from '../../components/english/Experiment';
 import { getTopic } from '../../data/topics';
 import '../../styles/experiments.css';
 import narration from '../../data/narration.json';
-import { films, filmDuration } from '../../data/films';
+import tracks from '../../data/audio-tracks.json';
+import { films, filmDuration, filmRunningTime } from '../../data/films';
+import { nextLearningStep } from '../../data/learning-paths';
 import { discoveryCategories, discoveryMetadata } from '../../data/discovery-metadata';
 import { translate, localPath, localizedTopic } from '../../i18n';
 const { topic: originalTopic, Content, locale = 'zh' } = Astro.props;
@@ -46,23 +49,32 @@ const ageLabel =
           }
         </h1><p>{topic.description}</p>
       </div><div class="lesson-viewing">
-        <span class="lesson-time">{filmDuration(films[topic.slug].duration)} {tr('演示')}</span><a
-          class="lesson-age"
-          href={href(`/?age=${discovery.minAge}#collection`)}>{ageLabel}</a
-        >
+        <span class="lesson-time">{filmRunningTime(films[topic.slug].duration)} {tr('演示')}</span
+        ><a class="lesson-age" href={href(`/?age=${discovery.minAge}#collection`)}>{ageLabel}</a>
       </div>
     </header>
     <section class="experiment" id="experiment" aria-label={`${topic.name} ${tr('互动实验')}`}>
       <div class="browser-support-inline">{tr('互动实验需要受支持的浏览器。')}</div>
       {
         locale === 'en' ? (
-          <EnglishExperiment slug={topic.slug as any} client:only="react">
+          <EnglishExperiment
+            dictionary={islandDictionary('experiment', topic.slug)}
+            slug={topic.slug as any}
+            film={films[topic.slug]}
+            track={tracks[topic.slug as keyof typeof tracks][locale as 'zh' | 'en']}
+            client:only="react"
+          >
             <div slot="fallback" class="lab-loading" role="status">
               {tr('正在准备实验…')}
             </div>
           </EnglishExperiment>
         ) : (
-          <Experiment slug={topic.slug as any} client:only="react">
+          <Experiment
+            slug={topic.slug as any}
+            film={films[topic.slug]}
+            track={tracks[topic.slug as keyof typeof tracks][locale as 'zh' | 'en']}
+            client:only="react"
+          >
             <div slot="fallback" class="lab-loading" role="status">
               {tr('正在准备实验…')}
             </div>
@@ -80,7 +92,7 @@ const ageLabel =
         {
           narration[topic.slug as keyof typeof narration].cues.map((cue) => (
             <li>
-              <a href={`#t=${cue.chapterAt}`}>
+              <a href={`#t=${cue.chapterAt}`} data-film-seek>
                 <time>{filmDuration(cue.chapterAt)}</time>
                 {locale === 'zh' ? cue.title : cue.titleEn}
               </a>
@@ -124,6 +136,7 @@ const ageLabel =
             const relatedCategory = discoveryCategories.find(
               (item) => item.id === discoveryMetadata[slug].category,
             )!;
+            const connection = nextLearningStep(topic.slug, slug);
             return (
               <a class="related-card" href={href(`/explore/${slug}/`)}>
                 <>
@@ -131,9 +144,15 @@ const ageLabel =
                     <>
                       <small>
                         {relatedCategory.label[locale as 'zh' | 'en']} /{' '}
-                        {filmDuration(films[slug].duration)} {tr('演示')}
+                        {filmRunningTime(films[slug].duration)} ·{' '}
+                        {locale === 'en'
+                          ? `Suggested ${discoveryMetadata[slug].minAge}+`
+                          : `建议 ${discoveryMetadata[slug].minAge} 岁起`}
                       </small>
                       <strong>{related.question}</strong>
+                      {connection && (
+                        <p class="related-reason">{connection.why[locale as 'zh' | 'en']}</p>
+                      )}
                     </>
                   </div>
                   <span aria-hidden="true">↗</span>
@@ -148,6 +167,12 @@ const ageLabel =
 </Base>
 
 <style>
+  .related-reason {
+    margin: 12px 0 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #5c7055;
+  }
   .lesson-viewing {
     display: flex;
     align-items: flex-end;

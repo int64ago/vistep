@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import {
   DIFFRACTION_DEFAULT,
   DIFFRACTION_SIDE_PEAK_BETA,

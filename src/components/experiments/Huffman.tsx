@@ -1,7 +1,7 @@
 import { useMemo, useState, useId, useRef, useEffect } from 'react';
 import { t } from '../../i18n';
 import { huffman, huffmanLayout, HUFFMAN_TEXT, type HuffmanNode } from '../../models/huffman';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import '../../styles/huffman.css';
 export default function Huffman() {
   const d = useShowcase(),

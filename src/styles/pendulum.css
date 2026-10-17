@@ -1,0 +1,254 @@
+/* Pendulum composition, exploration controls and directed-film overrides. */
+/* Legacy editorial rules; original cascade order retained. */
+.lesson-pendulum .experiment {
+  background: #eeeee5;
+  border: 0;
+}
+.lesson-pendulum .lab-toolbar {
+  background: transparent;
+  border: 0;
+  padding: 26px 32px 0;
+}
+.lesson-pendulum .lab-grid {
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+.lesson-pendulum .lab-scene {
+  background: transparent;
+  min-height: 565px;
+}
+.pendulum-object {
+  height: 490px;
+}
+.pendulum-readout {
+  position: absolute;
+  left: 30px;
+  top: 66px;
+  pointer-events: none;
+  color: #8b8d73;
+}
+.pendulum-readout > span {
+  font-size: 16px;
+  font-style: italic;
+}
+.pendulum-readout strong {
+  display: block;
+  font-size: 36px;
+  letter-spacing: -0.05em;
+  color: #7b7657;
+  font-weight: 400;
+  margin-top: 3px;
+}
+.pendulum-readout small {
+  font-size: 19px;
+}
+.pendulum-readout p {
+  font-size: 10px;
+  line-height: 1.8;
+  margin-top: 10px;
+}
+.pendulum-trace {
+  height: 75px;
+  width: 100%;
+}
+.lesson-pendulum .lab-controls {
+  border: 0;
+  padding: 45px 30px 25px 10px;
+  gap: 19px;
+}
+.lesson-pendulum .metrics {
+  background: transparent;
+  border-top: 1px solid #d9dacd;
+  border-bottom: 0;
+}
+.lesson-pendulum .metric {
+  border-color: #d9dacd;
+}
+.lesson-pendulum .lab-caption {
+  background: transparent;
+  border: 0;
+}
+.lesson-pendulum .scene-label {
+  top: 25px;
+  left: 32px;
+  color: #a4a793;
+  font-size: 9px;
+}
+.lesson-pendulum .energy-track {
+  background: #d7dacd;
+}
+.lesson-pendulum .energy-label {
+  font-size: 10px;
+  color: #9ba58c;
+}
+@media (max-width: 760px) {
+  .lesson-pendulum .lab-grid {
+    grid-template-columns: 1fr;
+  }
+  .lesson-pendulum .lab-toolbar {
+    padding: 20px 18px 0;
+  }
+  .pendulum-object {
+    height: 365px;
+  }
+  .lesson-pendulum .lab-scene {
+    min-height: 435px;
+  }
+  .pendulum-readout {
+    left: 18px;
+    top: 55px;
+  }
+  .pendulum-readout strong {
+    font-size: 28px;
+  }
+  .pendulum-readout p {
+    font-size: 9px;
+  }
+  .pendulum-trace {
+    height: 65px;
+  }
+  .lesson-pendulum .scene-label {
+    left: 18px;
+    top: 20px;
+  }
+  .lesson-pendulum .lab-controls {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .lesson-pendulum .lab-controls .formula {
+    grid-column: 1/-1;
+  }
+  .lesson-pendulum .metric {
+    padding: 15px;
+  }
+  .lesson-pendulum .lab-caption {
+    padding: 16px 20px;
+  }
+}
+
+/* Legacy showcase rules; original cascade order retained. */
+.lesson-pendulum .showcase[data-mode='watch'] .lab-grid {
+  grid-template-columns: minmax(0, 1fr) 210px;
+  align-items: center;
+}
+.lesson-pendulum .showcase[data-mode='watch'] .lab-controls {
+  display: flex;
+  padding: 30px 30px 30px 0;
+}
+.lesson-pendulum .showcase[data-mode='watch'] .lab-controls > :not(.pendulum-energy) {
+  display: none;
+}
+.pendulum-energy {
+  width: 100%;
+}
+.showcase[data-mode='watch'] .pendulum-object {
+  height: 425px;
+}
+.showcase[data-mode='watch'] .pendulum-readout {
+  top: 50px;
+}
+.showcase[data-mode='watch'] .pendulum-trace {
+  height: 55px;
+}
+.lesson-pendulum .showcase[data-mode='watch'] .scene-label {
+  display: none;
+}
+@media (max-width: 760px) {
+  .lesson-pendulum .showcase[data-mode='watch'] .lab-grid {
+    grid-template-columns: 1fr;
+  }
+  .showcase[data-mode='watch'] .pendulum-object {
+    height: 345px;
+  }
+  .showcase[data-mode='watch'] .pendulum-readout {
+    top: 30px;
+    left: 22px;
+  }
+  .showcase[data-mode='watch'] .pendulum-readout strong {
+    font-size: 27px;
+  }
+  .showcase[data-mode='watch'] .pendulum-readout p {
+    font-size: 9px;
+  }
+  .lesson-pendulum .showcase[data-mode='watch'] .lab-controls {
+    padding: 5px 25px 12px;
+  }
+  .pendulum-energy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 25px;
+  }
+  .pendulum-energy .energy-label {
+    margin-top: 0 !important;
+    grid-row: 1;
+    font-size: 11px;
+  }
+  .pendulum-energy .energy-track {
+    grid-row: 2;
+    margin-top: 8px;
+    height: 5px;
+  }
+}
+@media (min-width: 761px) {
+  .showcase[data-mode='watch'] .pendulum-object {
+    height: clamp(280px, calc(100svh - 410px), 425px);
+  }
+}
+
+/* Legacy longform rules; original cascade order retained. */
+.pendulum-energy-live {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 104px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: #707b63;
+  pointer-events: none;
+}
+.pendulum-energy-live span {
+  display: grid;
+  gap: 4px;
+}
+.pendulum-energy-live b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.pendulum-energy-live > div {
+  display: flex;
+  height: 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #a9ad9c33;
+}
+.pendulum-energy-live i {
+  height: 100%;
+  background: #b29258;
+}
+.pendulum-energy-live i:nth-child(2) {
+  background: #708d80;
+}
+.pendulum-energy-live i:nth-child(3) {
+  background: transparent;
+}
+@media (max-width: 760px) {
+  .pendulum-energy-live {
+    bottom: 93px;
+    gap: 10px;
+  }
+}
+
+.lesson-pendulum .showcase[data-mode='watch'] .lab-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+.lesson-pendulum .showcase[data-mode='watch'] .lab-controls {
+  display: none;
+}
+.pendulum-energy-live {
+  position: static;
+  margin: 16px 7% 12px;
+}

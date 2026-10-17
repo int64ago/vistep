@@ -1,7 +1,7 @@
 import { t, tokenLabel } from '../../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useVisibility } from '../lab/useVisibility';
 import type { Inspection } from '../../models/transformer';
 const vocab = ['猫', '狗', '鸟', '爱', '吃', '鱼', '肉', '虫', '。'];

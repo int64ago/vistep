@@ -7,6 +7,7 @@ import HelicopterFlat from './HelicopterFlat';
 import {
   helicopterSolids,
   helicopterWorldPoint,
+  helicopterTracking,
   type HelicopterVisual,
   HELI_ART,
 } from '../../models/helicopter-geometry';
@@ -138,6 +139,51 @@ export function createHelicopter(
       0.02,
     );
   root.add(sectionFlow, sectionLift);
+  const tracking = new THREE.Group();
+  tracking.name = 'tracked-blade-marker';
+  const trackingHalo = new THREE.Mesh(
+      new THREE.CircleGeometry(0.075, 36),
+      new THREE.MeshBasicMaterial({
+        color: '#eff2e8',
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      }),
+    ),
+    trackingRing = new THREE.Mesh(
+      new THREE.RingGeometry(0.052, 0.075, 36),
+      new THREE.MeshBasicMaterial({
+        color: '#a96e39',
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      }),
+    ),
+    trackingDot = new THREE.Mesh(
+      new THREE.CircleGeometry(0.021, 24),
+      new THREE.MeshBasicMaterial({
+        color: '#a96e39',
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      }),
+    ),
+    pitchAxis = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]),
+      new THREE.LineDashedMaterial({
+        color: '#a96e39',
+        dashSize: 0.045,
+        gapSize: 0.025,
+        depthTest: false,
+        depthWrite: false,
+      }),
+    );
+  pitchAxis.name = 'tracked-blade-pitch-axis';
+  tracking.add(trackingHalo, trackingRing, trackingDot);
+  pitchAxis.renderOrder = 8;
+  trackingHalo.renderOrder = 9;
+  for (const object of [trackingRing, trackingDot]) object.renderOrder = 10;
+  root.add(tracking, pitchAxis);
   const thrustArrow = new THREE.ArrowHelper(
       new THREE.Vector3(0, 1, 0),
       new THREE.Vector3(...HELI_ART.mast),
@@ -223,6 +269,19 @@ export function createHelicopter(
   return {
     update() {
       const v = live.current;
+      tracking.visible = pitchAxis.visible = ['section', 'cyclic', 'collective'].includes(
+        v.view ?? 'aircraft',
+      );
+      if (tracking.visible) {
+        const annotation = helicopterTracking(v),
+          attribute = pitchAxis.geometry.getAttribute('position') as THREE.BufferAttribute;
+        tracking.position.fromArray(annotation.point);
+        tracking.scale.setScalar(v.view === 'section' ? 0.4 : 1);
+        annotation.axis.forEach((point, index) => attribute.setXYZ(index, ...point));
+        attribute.needsUpdate = true;
+        pitchAxis.computeLineDistances();
+        pitchAxis.geometry.computeBoundingSphere();
+      }
       if (
         lastView !== v.view &&
         !['section', 'cyclic', 'collective'].includes(v.view ?? 'aircraft')
@@ -280,6 +339,7 @@ export function createHelicopter(
       lastCyclic = v.cyclicDeg;
       lastTilt = v.diskTiltDeg ?? 0;
       fit();
+      tracking.quaternion.copy(camera.quaternion);
     },
     dispose() {
       controls.removeEventListener('change', fit);

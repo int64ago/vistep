@@ -882,101 +882,6 @@ h3 {
 .related-card > span {
   color: #82a459;
 }
-/* Mechanical study: full width object, a film-strip timeline, then the microscopic explanation. */
-.lesson-printer .experiment {
-  border: 0;
-  background: transparent;
-  overflow: visible;
-}
-.printer-study {
-  position: relative;
-}
-.printer-object-stage {
-  height: 550px;
-  position: relative;
-  background: radial-gradient(ellipse at 48% 40%, #f3f5ed 0%, #eaeee3 100%);
-  overflow: hidden;
-  border-radius: var(--radius-stage);
-}
-.printer-object-stage > .studio {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-}
-.printer-stage-top {
-  position: absolute;
-  top: 25px;
-  left: 30px;
-  right: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1;
-  gap: 15px;
-  pointer-events: none;
-}
-.printer-stage-top > span {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: #748465;
-}
-.printer-view-controls {
-  display: flex;
-  gap: 6px;
-  pointer-events: auto;
-}
-.printer-view-controls button {
-  border: 1px solid #ffffff70;
-  background: #ffffff96;
-  backdrop-filter: blur(10px);
-  border-radius: 11px;
-  padding: 11px 14px;
-  min-height: 44px;
-  color: #738365;
-  font-size: 10px;
-}
-.printer-view-controls button[aria-pressed='true'] {
-  background: #dce6d5;
-  border-color: #dce6d5;
-  color: #49603d;
-}
-.printer-annotation {
-  position: absolute;
-  left: 30px;
-  bottom: 25px;
-  pointer-events: none;
-}
-.printer-annotation > span {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: #859970;
-}
-.printer-annotation h2 {
-  font-weight: 450;
-  font-size: 26px;
-  margin: 7px 0 4px;
-  color: #3d592f;
-  letter-spacing: -0.04em;
-}
-.printer-annotation p {
-  font-size: 11px;
-  color: #7a9165;
-  margin: 0;
-}
-.printer-drag-note {
-  position: absolute;
-  right: 30px;
-  bottom: 28px;
-  font-size: 10px;
-  color: #8a9e74;
-}
-.printer-transport {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  padding: 20px 0 24px;
-  border-bottom: 1px solid #cfdcc1;
-}
 .transport-play {
   width: 48px;
   height: 48px;
@@ -1002,105 +907,6 @@ h3 {
   font-size: 22px;
   border-radius: 50%;
 }
-.printer-filmstrip {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  flex: 1;
-  gap: 7px;
-}
-.printer-filmstrip button {
-  padding: 12px 14px;
-  background: none;
-  border: 0;
-  text-align: left;
-  color: #8c9f78;
-  min-height: 44px;
-  position: relative;
-  font-size: 12px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  border-radius: 12px;
-  transition:
-    background 320ms ease,
-    color 240ms ease;
-}
-.printer-filmstrip button:before {
-  content: '';
-  position: absolute;
-  top: auto;
-  left: 14px;
-  right: 14px;
-  height: 2px;
-  background: transparent;
-  bottom: 3px;
-  border-radius: 2px;
-}
-.printer-filmstrip button[aria-pressed='true'] {
-  color: #4b6c3b;
-  background: #e6edde;
-}
-.printer-filmstrip button[aria-pressed='true']:before {
-  background: #9cb18b;
-}
-.printer-filmstrip small {
-  font-family: 'Manrope Variable', sans-serif;
-  font-size: 9px;
-  color: #9cad8a;
-}
-.printer-explanation {
-  display: grid;
-  grid-template-columns: 0.85fr 1.35fr 1fr;
-  gap: 36px;
-  padding: 35px 0 0;
-}
-.printer-paper {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 20px;
-  align-items: center;
-  padding: 0 28px 0 0;
-  border-right: 1px solid #d6e3c9;
-}
-.printer-paper .printer-pixels {
-  background: #fff;
-  padding: 12px;
-  gap: 1px;
-  box-shadow: 0 8px 24px #2b44110a;
-  width: 100px;
-  aspect-ratio: 0.8;
-  grid-template-rows: repeat(8, 1fr);
-  max-width: none;
-  align-content: center;
-  border: 1px solid #e0e9d7;
-  border-radius: 8px;
-}
-.printer-paper .printer-pixels button {
-  border: 0;
-  border-radius: 0;
-  aspect-ratio: auto;
-}
-.printer-paper .printer-pixels button[aria-pressed='true'] {
-  outline: 1px solid #d5783c;
-  outline-offset: 1px;
-}
-.printer-paper label {
-  font-size: 11px;
-  color: #708d51;
-}
-.printer-paper select {
-  display: block;
-  font-size: 13px;
-  margin: 9px 0 12px;
-  background: #edf1e6;
-  border: 0;
-  border-bottom: 1px solid #c4d6b2;
-  color: #587b38;
-  padding: 8px 10px;
-  min-height: 44px;
-  width: 100%;
-  border-radius: 10px;
-}
 .pixel-next {
   font-size: 10px;
   background: none;
@@ -1109,65 +915,6 @@ h3 {
   padding: 8px 0;
   min-height: 44px;
   text-align: left;
-}
-.printer-stage-story > .section-index {
-  color: #7d9663;
-}
-.printer-stage-story h3 {
-  margin: 10px 0 13px;
-  font-size: 22px;
-  line-height: 1.4;
-  font-weight: 450;
-  letter-spacing: -0.03em;
-  color: #466d29;
-}
-.printer-stage-story > p {
-  font-size: 12px;
-  line-height: 2;
-  color: #79955e;
-  margin: 0;
-}
-.printer-micro {
-  border-left: 1px solid #d6e3c9;
-  padding-left: 30px;
-}
-.printer-micro svg {
-  width: 100%;
-  height: 76px;
-  margin: 8px 0 5px;
-}
-.printer-micro > p {
-  font-size: 11px;
-  color: #8ca373;
-  line-height: 1.8;
-  margin: 0;
-}
-.printer-scrub {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 25px;
-  padding: 16px 0 4px;
-  border-top: 1px solid #e1e9d9;
-}
-.printer-scrub .control {
-  flex: 1;
-}
-.printer-scrub .control-top {
-  display: none;
-}
-.printer-scrub > span {
-  font-size: 10px;
-  color: #819b65;
-  white-space: nowrap;
-}
-.printer-study > .lab-caption {
-  border: 0;
-  padding: 15px 0 0;
-  color: #8c9e78;
-  background: transparent;
-  font-size: 10px;
-  max-width: 800px;
 }
 @media (min-width: 1600px) {
   .opening {
@@ -1237,24 +984,6 @@ h3 {
   }
   .lesson-reading {
     gap: 40px;
-  }
-  .printer-explanation {
-    gap: 25px;
-  }
-  .printer-paper {
-    grid-template-columns: 80px 1fr;
-    gap: 12px;
-    padding-right: 18px;
-  }
-  .printer-paper .printer-pixels {
-    width: 80px;
-    padding: 8px;
-  }
-  .printer-micro {
-    padding-left: 22px;
-  }
-  .printer-stage-story h3 {
-    font-size: 20px;
   }
 }
 @media (max-width: 760px) {
@@ -1613,52 +1342,6 @@ h3 {
   .related-card strong {
     font-size: 16px;
   }
-  .printer-object-stage {
-    height: 390px;
-    margin: 0 -12px;
-    border-radius: var(--radius-stage);
-  }
-  .printer-stage-top {
-    left: 20px;
-    right: 20px;
-    top: 15px;
-    align-items: start;
-  }
-  .printer-stage-top > span {
-    font-size: 8px;
-    max-width: 75px;
-    line-height: 1.9;
-  }
-  .printer-view-controls {
-    gap: 4px;
-  }
-  .printer-view-controls button {
-    font-size: 9px;
-    padding: 11px 14px;
-  }
-  .printer-annotation {
-    left: 24px;
-    bottom: 17px;
-  }
-  .printer-annotation > span {
-    font-size: 8px;
-  }
-  .printer-annotation h2 {
-    font-size: 23px;
-  }
-  .printer-annotation p {
-    font-size: 10px;
-  }
-  .printer-drag-note {
-    right: 24px;
-    bottom: 20px;
-    font-size: 8px;
-  }
-  .printer-transport {
-    gap: 14px;
-    padding: 18px 0;
-    flex-wrap: wrap;
-  }
   .transport-play {
     width: 44px;
     height: 44px;
@@ -1666,83 +1349,9 @@ h3 {
   .transport-reset {
     width: 36px;
   }
-  .printer-filmstrip {
-    gap: 7px;
-    min-width: 230px;
-  }
-  .printer-filmstrip button {
-    flex-direction: column;
-    align-items: start;
-    gap: 5px;
-    font-size: 10px;
-    padding-top: 10px;
-  }
-  .printer-filmstrip small {
-    font-size: 8px;
-  }
-  .printer-explanation {
-    grid-template-columns: 1fr 1fr;
-    gap: 26px 20px;
-    padding-top: 26px;
-  }
-  .printer-stage-story {
-    grid-column: 1/-1;
-    grid-row: 1;
-  }
-  .printer-stage-story h3 {
-    font-size: 23px;
-    margin: 9px 0 12px;
-  }
-  .printer-stage-story > p {
-    font-size: 13px;
-    line-height: 2;
-  }
-  .printer-paper {
-    border-right: 0;
-    padding: 0;
-    grid-template-columns: 65px 1fr;
-    gap: 10px;
-  }
-  .printer-paper .printer-pixels {
-    width: 65px;
-    padding: 7px;
-  }
-  .printer-paper label {
-    font-size: 9px;
-  }
-  .printer-paper select {
-    font-size: 11px;
-    padding: 8px 10px;
-  }
   .pixel-next {
     font-size: 8px;
     padding: 5px 0;
-  }
-  .printer-micro {
-    padding-left: 16px;
-  }
-  .printer-micro > .section-index {
-    font-size: 8px;
-  }
-  .printer-micro > p {
-    font-size: 9px;
-  }
-  .printer-micro svg {
-    height: 63px;
-  }
-  .printer-scrub {
-    gap: 12px;
-    padding-top: 10px;
-  }
-  .printer-scrub > span {
-    font-size: 9px;
-  }
-  .printer-study > .lab-caption {
-    font-size: 9px;
-    padding-top: 8px;
-  }
-  .lesson-printer .lesson-heading {
-    padding-bottom: 28px;
   }
 }
 @media (max-width: 380px) {
@@ -1762,32 +1371,8 @@ h3 {
   .home-object {
     height: 330px;
   }
-  .printer-object-stage {
-    margin: 0 -8px;
-    height: 355px;
-  }
-  .printer-transport {
-    gap: 9px;
-  }
-  .printer-filmstrip {
-    min-width: 210px;
-    gap: 7px;
-  }
   .transport-reset {
     display: none;
-  }
-  .printer-view-controls button {
-    font-size: 8px;
-    padding: 11px 14px;
-  }
-  .printer-micro {
-    padding-left: 10px;
-  }
-  .printer-paper {
-    grid-template-columns: 55px 1fr;
-  }
-  .printer-paper .printer-pixels {
-    width: 55px;
   }
   .lab-controls {
     grid-template-columns: 1fr;
@@ -1801,133 +1386,6 @@ h3 {
   }
   .editorial-cta:hover {
     transform: none;
-  }
-}
-/* The pendulum is a physical bench: the instrument occupies the left, measurements sit quietly beside it. */
-.lesson-pendulum .experiment {
-  background: #eeeee5;
-  border: 0;
-}
-.lesson-pendulum .lab-toolbar {
-  background: transparent;
-  border: 0;
-  padding: 26px 32px 0;
-}
-.lesson-pendulum .lab-grid {
-  grid-template-columns: minmax(0, 1fr) 280px;
-}
-.lesson-pendulum .lab-scene {
-  background: transparent;
-  min-height: 565px;
-}
-.pendulum-object {
-  height: 490px;
-}
-.pendulum-readout {
-  position: absolute;
-  left: 30px;
-  top: 66px;
-  pointer-events: none;
-  color: #8b8d73;
-}
-.pendulum-readout > span {
-  font-size: 16px;
-  font-style: italic;
-}
-.pendulum-readout strong {
-  display: block;
-  font-size: 36px;
-  letter-spacing: -0.05em;
-  color: #7b7657;
-  font-weight: 400;
-  margin-top: 3px;
-}
-.pendulum-readout small {
-  font-size: 19px;
-}
-.pendulum-readout p {
-  font-size: 10px;
-  line-height: 1.8;
-  margin-top: 10px;
-}
-.pendulum-trace {
-  height: 75px;
-  width: 100%;
-}
-.lesson-pendulum .lab-controls {
-  border: 0;
-  padding: 45px 30px 25px 10px;
-  gap: 19px;
-}
-.lesson-pendulum .metrics {
-  background: transparent;
-  border-top: 1px solid #d9dacd;
-  border-bottom: 0;
-}
-.lesson-pendulum .metric {
-  border-color: #d9dacd;
-}
-.lesson-pendulum .lab-caption {
-  background: transparent;
-  border: 0;
-}
-.lesson-pendulum .scene-label {
-  top: 25px;
-  left: 32px;
-  color: #a4a793;
-  font-size: 9px;
-}
-.lesson-pendulum .energy-track {
-  background: #d7dacd;
-}
-.lesson-pendulum .energy-label {
-  font-size: 10px;
-  color: #9ba58c;
-}
-@media (max-width: 760px) {
-  .lesson-pendulum .lab-grid {
-    grid-template-columns: 1fr;
-  }
-  .lesson-pendulum .lab-toolbar {
-    padding: 20px 18px 0;
-  }
-  .pendulum-object {
-    height: 365px;
-  }
-  .lesson-pendulum .lab-scene {
-    min-height: 435px;
-  }
-  .pendulum-readout {
-    left: 18px;
-    top: 55px;
-  }
-  .pendulum-readout strong {
-    font-size: 28px;
-  }
-  .pendulum-readout p {
-    font-size: 9px;
-  }
-  .pendulum-trace {
-    height: 65px;
-  }
-  .lesson-pendulum .scene-label {
-    left: 18px;
-    top: 20px;
-  }
-  .lesson-pendulum .lab-controls {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .lesson-pendulum .lab-controls .formula {
-    grid-column: 1/-1;
-  }
-  .lesson-pendulum .metric {
-    padding: 15px;
-  }
-  .lesson-pendulum .lab-caption {
-    padding: 16px 20px;
   }
 }
 /* The drivetrain is horizontal, with gear choice directly beneath the mechanism. */
@@ -2210,41 +1668,6 @@ h3 {
 .prose summary {
   color: #567743;
 }
-.printer-stage-story > p {
-  font-size: 15px;
-  line-height: 1.9;
-  color: #67785b;
-}
-.printer-stage-story h3 {
-  color: #39512c;
-}
-.printer-micro > p {
-  color: #7c8d6b;
-  font-size: 12px;
-}
-.printer-paper .printer-pixels {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  grid-template-rows: repeat(8, minmax(0, 1fr));
-}
-.printer-paper .printer-pixels button {
-  padding: 0;
-  min-width: 0;
-  min-height: 0;
-  width: 100%;
-  height: 100%;
-}
-.printer-paper label {
-  font-size: 12px;
-}
-.printer-paper select {
-  font-size: 14px;
-}
-.printer-filmstrip button {
-  font-size: 13px;
-}
-.printer-filmstrip small {
-  font-size: 10px;
-}
 .lab-callout {
   font-size: 13px;
   line-height: 1.9;
@@ -2260,29 +1683,8 @@ h3 {
   .opening-description {
     font-size: 13px;
   }
-  .printer-stage-story > p {
-    font-size: 15px;
-  }
-  .printer-micro > p {
-    font-size: 10px;
-  }
-  .printer-filmstrip button {
-    font-size: 10px;
-  }
-  .printer-filmstrip small {
-    font-size: 8px;
-  }
-  .printer-paper label {
-    font-size: 9px;
-  }
-  .printer-paper select {
-    font-size: 11px;
-  }
   .lab-callout p {
     font-size: 14px;
-  }
-  .printer-paper .printer-pixels button {
-    min-height: 0;
   }
 }
 /* A cutaway building pairs a spatial queue with a strategy comparison ledger. */
@@ -2376,159 +1778,6 @@ h3 {
   }
   .lesson-elevator .comparison-wrap {
     padding: 18px;
-  }
-}
-/* Network requests use a sequence diagram and timing strips, not a simulated machine. */
-.lesson-network .experiment {
-  border: 0;
-  background: #f1f4f1;
-}
-.network-journey {
-  padding: 0 30px 6px;
-  background: #e8efec;
-}
-.network-address {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  border-bottom: 1px solid #d2ded7;
-  padding: 17px 0;
-  color: #829b8d;
-  font-size: 12px;
-}
-.network-address code {
-  font-family: 'Manrope Variable', sans-serif;
-  font-size: 12px;
-  color: #597c67;
-}
-.network-address-status {
-  margin-left: auto;
-  font-size: 8px;
-  letter-spacing: 0.1em;
-  color: #8ba193;
-}
-.network-journey svg {
-  width: 100%;
-  height: 300px;
-  fill: none;
-  max-width: 980px;
-  margin: auto;
-}
-.lesson-network .lab-toolbar {
-  border: 0;
-  background: transparent;
-}
-.lesson-network .lab-grid {
-  grid-template-columns: minmax(0, 1fr) 300px;
-}
-.lesson-network .network-flow {
-  padding: 26px 28px;
-  gap: 0;
-  background: transparent;
-}
-.lesson-network .network-node {
-  grid-template-columns: 25px 90px minmax(0, 1fr) 45px;
-  border: 0;
-  border-bottom: 1px solid #dce5de;
-  border-radius: 0;
-  background: none;
-  padding: 13px 0;
-  gap: 12px;
-}
-.lesson-network .network-node .node-icon {
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  font-size: 8px;
-  background: #e2eae2;
-  color: #8ea28c;
-}
-.lesson-network .network-node.current .node-icon {
-  background: #719875;
-  color: white;
-}
-.lesson-network .network-node .node-title {
-  font-size: 11px;
-  color: #5e7b5f;
-}
-.lesson-network .network-node p {
-  font-size: 10px;
-  color: #8ba28a;
-  line-height: 1.8;
-}
-.lesson-network .network-node time {
-  font-size: 10px;
-  color: #8ba08c;
-}
-.lesson-network .waterfall {
-  grid-column: 2/5;
-  height: 2px;
-  background: #dce5dc;
-  border-radius: 4px;
-}
-.lesson-network .waterfall span {
-  background: #7c9e80;
-}
-.lesson-network .lab-controls {
-  border: 0;
-  padding: 30px 27px 20px 10px;
-  gap: 18px;
-}
-.lesson-network .lab-callout {
-  padding: 0;
-  background: none;
-  font-size: 11px;
-}
-.lesson-network .metrics {
-  background: #fafbf7;
-  border-top: 1px solid #dce4d8;
-}
-.lesson-network .lab-caption {
-  border: 0;
-  background: transparent;
-}
-@media (max-width: 760px) {
-  .network-journey {
-    padding: 0 15px 0;
-  }
-  .network-journey svg {
-    height: 205px;
-  }
-  .network-address {
-    padding: 14px 0;
-    gap: 10px;
-  }
-  .network-address code {
-    font-size: 10px;
-  }
-  .network-address-status {
-    font-size: 6px;
-    max-width: 110px;
-    text-align: right;
-    line-height: 1.8;
-  }
-  .lesson-network .lab-grid {
-    grid-template-columns: 1fr;
-  }
-  .lesson-network .network-flow {
-    padding: 15px 20px;
-  }
-  .lesson-network .network-node {
-    grid-template-columns: 22px 1fr 40px;
-    gap: 7px 12px;
-  }
-  .lesson-network .network-node p {
-    grid-column: 2/4;
-    grid-row: 2;
-    font-size: 11px;
-  }
-  .lesson-network .waterfall {
-    grid-column: 2/4;
-  }
-  .lesson-network .lab-controls {
-    padding: 20px;
-    grid-template-columns: 1fr;
-    gap: 10px;
   }
 }
 /* JPEG is an image workbench: three equal surfaces, then the frequency controls. */

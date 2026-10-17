@@ -1,49 +1,36 @@
 import { t } from '../../i18n';
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useSimulation } from './useSimulation';
 import { useNarration } from './useNarration';
-import { films, filmDuration, type Chapter } from '../../data/films';
+import { filmDuration, filmRunningTime, type Film, type Soundtrack } from '../../lib/film';
+import { FilmContext } from './FilmContext';
+export { FilmContext, useShowcase, ramp, ease } from './FilmContext';
 import {
   consumeFilmLanguageState,
   registerFilmLanguageState,
   type FilmLanguageState,
 } from '../../lib/film-language';
-type Director = {
-  watch: boolean;
-  playing: boolean;
-  time: number;
-  chapter: number;
-  run: number;
-  duration: number;
-  chapters: Chapter[];
-  chapterTime: number;
-  chapterProgress: number;
-  narrating?: boolean;
-};
-export const FilmContext = createContext<Director>({
-  watch: false,
-  playing: false,
-  time: 0,
-  chapter: 0,
-  run: 0,
-  duration: 1,
-  chapters: [],
-  chapterTime: 0,
-  chapterProgress: 0,
-});
-export const useShowcase = () => useContext(FilmContext);
-export const ramp = (time: number, start: number, end: number) =>
-  Math.max(0, Math.min(1, (time - start) / (end - start)));
-export const ease = (t: number) => t * t * (3 - 2 * t);
-export default function Showcase({ slug, children }: { slug: string; children: ReactNode }) {
-  const film = films[slug];
+export default function Showcase({
+  slug,
+  film,
+  track,
+  children,
+}: {
+  slug: string;
+  film: Film;
+  track?: Soundtrack;
+  children: ReactNode;
+}) {
   const [watch, setWatch] = useState(true),
     [visible, setVisible] = useState(false),
     [playing, setPlaying] = useState(false),
     [time, setTime] = useState(0),
     [run, setRun] = useState(0),
     [switching, setSwitching] = useState(false),
+    [quickControl, setQuickControl] = useState(false),
     [promptDismissed, setPromptDismissed] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null),
+    transportRef = useRef<HTMLDivElement>(null);
   const clock = useRef(0),
     refresh = useRef(0),
     switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -58,11 +45,18 @@ export default function Showcase({ slug, children }: { slug: string; children: R
       })),
     [slug],
   );
-  const voice = useNarration(slug, watch && playing, visible, run, () => {
-    clock.current = film.duration;
-    setTime(film.duration);
-    setPlaying(false);
-  });
+  const voice = useNarration(
+    slug,
+    watch && playing,
+    visible,
+    run,
+    () => {
+      clock.current = film.duration;
+      setTime(film.duration);
+      setPlaying(false);
+    },
+    track,
+  );
   const advancing = watch && playing && visible && (!voice.enabled || !voice.waiting);
   const host = useSimulation((dt) => {
     clock.current = Math.min(
@@ -101,6 +95,33 @@ export default function Showcase({ slug, children }: { slug: string; children: R
     return () => {
       motion.removeEventListener('change', change);
       if (switchTimer.current) clearTimeout(switchTimer.current);
+    };
+  }, []);
+  useEffect(() => {
+    const phone = matchMedia('(max-width: 760px)');
+    let stageVisible = false,
+      transportVisible = false;
+    const update = () =>
+      setQuickControl(phone.matches && stageVisible && !transportVisible && !document.hidden);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === stageRef.current) stageVisible = entry.isIntersecting;
+          if (entry.target === transportRef.current)
+            transportVisible = entry.isIntersecting && entry.intersectionRatio >= 0.95;
+        }
+        update();
+      },
+      { threshold: [0, 0.95] },
+    );
+    if (stageRef.current) observer.observe(stageRef.current);
+    if (transportRef.current) observer.observe(transportRef.current);
+    phone.addEventListener('change', update);
+    document.addEventListener('visibilitychange', update);
+    return () => {
+      observer.disconnect();
+      phone.removeEventListener('change', update);
+      document.removeEventListener('visibilitychange', update);
     };
   }, []);
   const chapter = Math.max(
@@ -150,7 +171,32 @@ export default function Showcase({ slug, children }: { slug: string; children: R
       );
     else followChapterLink();
     window.addEventListener('hashchange', followChapterLink);
-    return () => window.removeEventListener('hashchange', followChapterLink);
+    const returnToFilm = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('[data-film-seek]');
+      if (
+        !link ||
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const requested = new URLSearchParams(link.hash.slice(1)).get('t');
+      if (requested === null || !Number.isFinite(Number(requested))) return;
+      // Also handle selecting the current hash: browsers do not emit hashchange again.
+      seek(Number(requested));
+      document.getElementById('experiment')?.scrollIntoView({
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+        block: 'start',
+      });
+    };
+    document.addEventListener('click', returnToFilm);
+    return () => {
+      window.removeEventListener('hashchange', followChapterLink);
+      document.removeEventListener('click', returnToFilm);
+    };
   }, []);
   const chapterTime = time - film.chapters[chapter].at;
   const chapterProgress = Math.min(
@@ -181,7 +227,7 @@ export default function Showcase({ slug, children }: { slug: string; children: R
         data-narration={voice.enabled ? (voice.waiting ? 'loading' : 'on') : 'off'}
         ref={host}
       >
-        <div className="showcase-film">
+        <div className="showcase-film" ref={stageRef}>
           {children}
           {voice.blocked && !promptDismissed && (
             <div className="voice-prompt" role="alert">
@@ -224,7 +270,17 @@ export default function Showcase({ slug, children }: { slug: string; children: R
             ))}
           </div>
         </div>
-        <div className="film-transport">
+        {watch && quickControl && !switching && (
+          <button
+            type="button"
+            className="film-quick-control"
+            onClick={() => (time >= film.duration ? replay() : setPlaying(!playing))}
+          >
+            <span aria-hidden="true">{playing ? 'Ⅱ' : '▷'}</span>
+            {playing ? t('暂停演示') : time >= film.duration ? t('重播演示') : t('播放演示')}
+          </button>
+        )}
+        <div className="film-transport" ref={transportRef}>
           <button
             className="film-play"
             disabled={switching}
@@ -265,12 +321,12 @@ export default function Showcase({ slug, children }: { slug: string; children: R
               step={0.1}
               value={time}
               aria-label={t('自动演示进度')}
-              aria-valuetext={`${filmDuration(time)} / ${filmDuration(film.duration)}`}
+              aria-valuetext={`${filmDuration(time)} / ${filmRunningTime(film.duration)}`}
               onChange={(e) => seek(Number(e.target.value))}
             />
           </div>
           <span className="film-time">
-            {filmDuration(time)} / {filmDuration(film.duration)}
+            {filmDuration(time)} / {filmRunningTime(film.duration)}
           </span>
           <button className="film-replay" aria-label={t('从头重播')} onClick={replay}>
             <svg viewBox="0 0 24 24" aria-hidden="true">

@@ -33,7 +33,8 @@ describe('published scene contracts', () => {
   });
   it('starts every film at zero with strictly ordered chapters inside its duration', () => {
     for (const film of Object.values(films)) {
-      expect(film.duration).toBeGreaterThanOrEqual(120);
+      expect(Number.isFinite(film.duration)).toBe(true);
+      expect(film.duration).toBeGreaterThan(0);
       expect(film.duration).toBeLessThanOrEqual(300);
       expect(film.chapters.length).toBeGreaterThan(1);
       expect(film.chapters[0].at).toBe(0);

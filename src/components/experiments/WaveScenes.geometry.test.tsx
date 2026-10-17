@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FilmContext } from '../lab/Showcase';
+import { FilmContext } from '../lab/FilmContext';
 import Resonance from './Resonance';
 import Beats from './Beats';
 import StandingWave from './StandingWave';

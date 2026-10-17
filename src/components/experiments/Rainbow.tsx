@@ -8,7 +8,7 @@ import {
   type RainbowView,
 } from '../../models/rainbow';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import {
   RainbowConcentration,

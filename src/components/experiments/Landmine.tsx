@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import { landmineShot, type LandmineView } from '../../models/landmine';
 import LandmineStudio from '../three/LandmineStudio';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { t } from '../../i18n';
 import { ENGINE, engineCycle, engineShot } from '../../models/four-stroke';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import { useCompact } from '../lab/useCompact';
 import { PressureVolume, strokeColors, strokeNames } from '../lab/EngineDiagram';

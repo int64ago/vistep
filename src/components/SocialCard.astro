@@ -4,7 +4,7 @@ import TopicCover from './TopicCover.astro';
 import PrinterCover from './covers/PrinterCover.astro';
 import '../i18n/english';
 import { localizedTopic } from '../i18n';
-import { films, filmDuration } from '../data/films';
+import { films, filmRunningTime } from '../data/films';
 const { topic: source } = Astro.props;
 const topic = source ? localizedTopic(source, 'en') : undefined;
 const title = topic?.name ?? 'See how things work.';
@@ -36,7 +36,7 @@ const object = !topic || ['bicycle', 'pendulum', 'jpeg'].includes(topic.slug);
     <text x="64" y="491" font-size="18" fill="#77846e"
       >{
         topic
-          ? `${filmDuration(films[topic.slug].duration)} / ANIMATED EXPLANATION`
+          ? `${filmRunningTime(films[topic.slug].duration)} / ANIMATED EXPLANATION`
           : 'Everyday mechanisms. Revealed step by step.'
       }</text
     >

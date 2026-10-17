@@ -3,6 +3,7 @@ import { existsSync, statSync } from 'node:fs';
 import scripts from './narration.json';
 import manifest from './audio-manifest.json';
 import { films } from './films';
+import english from '../i18n/en.json';
 type Track = {
   src: string;
   duration: number;
@@ -14,6 +15,14 @@ it('ships one complete, non-overlapping bilingual soundtrack for each film', () 
   for (const [slug, script] of Object.entries(scripts)) {
     expect(script.duration).toBe(films[slug].duration);
     expect(script.cues.length).toBe(films[slug].chapters.length);
+    script.cues.forEach((cue, i) => {
+      const chapter = films[slug].chapters[i];
+      expect(chapter.id).toBe(cue.id);
+      expect(chapter.at).toBe(cue.chapterAt);
+      for (const key of ['title', 'titleEn', 'caption', 'captionEn'] as const)
+        expect(chapter[key]).toBe(cue[key]);
+      expect((english as Record<string, string>)[cue.caption]).toBe(cue.captionEn);
+    });
     for (const locale of ['zh', 'en'] as const) {
       const track = audio[slug]?.[locale];
       expect(track, `${slug}/${locale}`).toBeDefined();

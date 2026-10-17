@@ -12,7 +12,7 @@ import {
   type MyopiaPoint,
 } from '../../models/myopia-lens';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import '../../styles/myopia-lens.css';
 type OpticalState = ReturnType<typeof myopiaOptics>;
 const path = (points: MyopiaPoint[]) =>

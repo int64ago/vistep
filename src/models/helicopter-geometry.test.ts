@@ -7,6 +7,7 @@ import {
   helicopterAirfoil,
   helicopterSolids,
   helicopterWorldPoint,
+  helicopterTracking,
 } from './helicopter-geometry';
 import { helicopterArtwork, HELICOPTER_COVER_VISUAL } from './helicopter-cover';
 import {
@@ -16,6 +17,34 @@ import {
 } from '../components/three/HelicopterStudio';
 
 describe('shared helicopter surfaces and responsive projection', () => {
+  it('anchors the tracked mark to the same blade and pitch axis in every macro view', () => {
+    for (const view of ['section', 'cyclic', 'collective'])
+      for (const phase of [0, 0.7, Math.PI, 5.9]) {
+        const visual = { ...HELICOPTER_COVER_VISUAL, view, phase, collectiveDeg: 13, cyclicDeg: 3 },
+          tracking = helicopterTracking(visual),
+          neutral = helicopterTracking({ ...visual, collectiveDeg: 4, cyclicDeg: 0 });
+        expect(tracking.point).toEqual(neutral.point);
+        for (let axis = 0; axis < 3; axis++)
+          expect((tracking.axis[0][axis] + tracking.axis[1][axis]) / 2).toBeCloseTo(
+            tracking.point[axis],
+            12,
+          );
+        const radius = view === 'section' ? H.radius * 0.75 : 0.72;
+        expect(tracking.point).toEqual(helicopterWorldPoint([radius, 0, 0], 'blade-a', visual));
+        for (const [width, height] of [
+          [254, 285],
+          [800, 310],
+        ]) {
+          const art = helicopterArtwork(width, height, visual);
+          for (const point of [art.tracking.point, ...art.tracking.axis]) {
+            expect(point[0]).toBeGreaterThan(8);
+            expect(point[0]).toBeLessThan(width - 8);
+            expect(point[1]).toBeGreaterThan(8);
+            expect(point[1]).toBeLessThan(height - 8);
+          }
+        }
+      }
+  });
   it('has a closed symmetric airfoil and an actual full-radius blade beyond its grip', () => {
     const points = helicopterAirfoil(32);
     expect(points[0][0]).toBe(0);
@@ -229,6 +258,12 @@ describe('shared helicopter surfaces and responsive projection', () => {
           reducedMotion: { matches: false } as MediaQueryList,
         });
         object.update!();
+        const tracked = root.getObjectByName('tracked-blade-marker')!;
+        expect(tracked.visible).toBe(true);
+        expect(tracked.position.toArray()).toEqual(
+          helicopterWorldPoint([0.72, 0, 0], 'blade-a', live.current),
+        );
+        expect(tracked.quaternion.angleTo(camera.quaternion)).toBeLessThan(1e-7);
         for (const part of protectedParts)
           for (const p of part.vertices) {
             const projected = new THREE.Vector3(

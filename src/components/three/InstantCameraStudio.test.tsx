@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FilmContext } from '../lab/Showcase';
+import { FilmContext } from '../lab/FilmContext';
 import InstantCamera from '../experiments/InstantCamera';
 import {
   IC,

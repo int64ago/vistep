@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import {
   EXCAVATOR,

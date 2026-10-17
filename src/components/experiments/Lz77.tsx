@@ -1,6 +1,6 @@
 import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { LZ_TEXT, lzEncode, lzDecode, lzFrame, type LzToken } from '../../models/lz77';
 import '../../styles/lz77.css';
 const shown = (s: string) => (s === '_' ? '␣' : s);

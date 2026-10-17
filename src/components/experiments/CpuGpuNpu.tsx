@@ -12,7 +12,7 @@ import {
   type ComputeFrame,
   type ComputeMatrix,
 } from '../../models/cpu-gpu-npu';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import '../../styles/cpu-gpu-npu.css';
 
 const identity = (row: number, column: number) => `Y${row + 1}${column + 1}`;

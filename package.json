@@ -19,7 +19,9 @@
     "audit:build": "node scripts/audit-build.mjs",
     "build:preview": "node scripts/build-preview.mjs && node scripts/audit-build.mjs dist-preview --preview",
     "verify": "pnpm format:check && pnpm audit:docs && pnpm check && pnpm test && pnpm build && pnpm audit:build",
-    "audit:docs": "node scripts/audit-docs.mjs"
+    "audit:docs": "node scripts/audit-docs.mjs",
+    "browser:review": "node scripts/browser-review-cli.mjs",
+    "scene:captions": "node scripts/sync-captions.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "8.0.0",
@@ -39,6 +41,7 @@
     "@types/react-dom": "^19.2.0",
     "@types/react-test-renderer": "19.1.0",
     "@types/three": "^0.180.0",
+    "playwright": "1.64.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "react-test-renderer": "19.2.8",

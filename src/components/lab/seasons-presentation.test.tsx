@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, it, vi } from 'vitest';
 import Seasons from '../experiments/Seasons';
-import { FilmContext } from './Showcase';
+import { FilmContext } from './FilmContext';
 
 vi.mock('./useCompact', () => ({ useCompact: () => true }));
 

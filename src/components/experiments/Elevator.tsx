@@ -1,6 +1,6 @@
 import { t } from '../../i18n';
 import { useRef, useState, useEffect, useMemo } from 'react';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { fixedReplay } from '../../models/replay';
 import { spanProgress } from '../../models/direction';
 import ElevatorStudio from '../three/ElevatorStudio';

@@ -7,7 +7,7 @@ import {
   type DifferentialMode,
 } from '../../models/differential';
 import { useCompact } from '../lab/useCompact';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import DifferentialStudio from '../three/DifferentialStudio';
 import {
   DifferentialRoad,
@@ -158,7 +158,7 @@ export default function Differential() {
           compare={focus === 'traction'}
         />
       )}
-      {focus !== 'paths' && focus !== 'torque' && focus !== 'traction' && (
+      {focus !== 'paths' && focus !== 'mean' && focus !== 'torque' && focus !== 'traction' && (
         <DifferentialReadouts motion={m} />
       )}
       {focus === 'spiders' && (

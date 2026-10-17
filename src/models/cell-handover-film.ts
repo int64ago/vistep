@@ -23,10 +23,9 @@ const linear = (p: number, start: number, end: number) =>
   Math.max(0, Math.min(1, (p - start) / (end - start)));
 const lerp = (a: number, b: number, u: number) => a + (b - a) * u;
 
-let plan: ReturnType<typeof buildPlan> | null = null;
-function buildPlan() {
-  const tuned = chSimulate(CH_DEFAULT),
-    eager = chSimulate(CH_EAGER);
+let plan: ReturnType<typeof chBuildFilmPlan> | null = null;
+/** Assemble the director from completed runs; the client prepares these in its Worker queue. */
+export function chBuildFilmPlan(tuned: ChRun, eager: ChRun) {
   const window = chCompareWindow(eager, tuned);
   const probe = chNearestNotStrongest(tuned);
   if (!window || !probe) throw new Error('Film plan requires a comparison window and a probe');
@@ -96,9 +95,10 @@ function buildPlan() {
 }
 /** Everything the film shows is derived once from the same two simulations. */
 export function chFilmPlan() {
-  plan ??= buildPlan();
+  plan ??= chBuildFilmPlan(chSimulate(CH_DEFAULT), chSimulate(CH_EAGER));
   return plan;
 }
+export type ChFilmPlan = ReturnType<typeof chBuildFilmPlan>;
 
 export type ChShot = {
   view: ChView;
@@ -133,12 +133,17 @@ export type ChShot = {
 };
 
 /** Chapter-relative and deterministic: a seek reconstructs the entire teaching state. */
-export function chShot(chapter: number, progress: number, chapterTime = 0): ChShot {
+export function chShot(
+  chapter: number,
+  progress: number,
+  chapterTime = 0,
+  prepared?: ChFilmPlan,
+): ChShot {
   if (![chapter, progress, chapterTime].every(Number.isFinite))
     throw new RangeError('Finite film position required');
   const c = Math.max(0, Math.min(6, Math.floor(chapter)));
   const p = Math.max(0, Math.min(1, progress));
-  const f = chFilmPlan();
+  const f = prepared ?? chFilmPlan();
   const shot: ChShot = {
     view: views[c],
     phone: 0,

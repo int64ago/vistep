@@ -12,7 +12,7 @@ import {
   type AirfoilShot,
 } from '../../models/airfoil';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import AirfoilTunnel from '../lab/AirfoilTunnel';
 import '../../styles/airfoil.css';
 

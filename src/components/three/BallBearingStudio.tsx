@@ -9,7 +9,7 @@ import {
   type BearingState,
   type BearingShot,
 } from '../../models/ball-bearing';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import BallBearingDiagram from '../lab/BallBearingDiagram';
 import Studio from './Studio';
 import { box, material, roller, screw } from './parts';

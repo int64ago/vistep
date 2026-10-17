@@ -15,7 +15,7 @@ vi.mock('./Studio', () => ({
     return null;
   },
 }));
-vi.mock('../lab/Showcase', () => ({
+vi.mock('../lab/FilmContext', () => ({
   useShowcase: () => ({ watch: true, chapter: harness.chapter }),
 }));
 vi.mock('../../i18n', () => ({ t: (s: string) => s }));

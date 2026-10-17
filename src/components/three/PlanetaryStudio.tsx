@@ -8,7 +8,7 @@ import {
   type PlanetaryMode,
 } from '../../models/planetary';
 import { TAU, type Point2 } from '../../models/mechanisms';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import PlanetaryDiagram from '../lab/PlanetaryDiagram';
 import Studio from './Studio';
 import { box, material, roller, screw } from './parts';

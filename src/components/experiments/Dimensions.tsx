@@ -2,7 +2,7 @@ import { t } from '../../i18n';
 import { useCallback, useRef, useState } from 'react';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
 import { Metric, Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { smooth } from '../../models/direction';
 import { hypercube, projectVertex, sphereSlice } from '../../models/dimensions';
 export default function Dimensions() {

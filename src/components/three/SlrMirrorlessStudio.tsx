@@ -13,7 +13,7 @@ import {
   cameraSignalRoutes,
   type CameraSignalPoint,
 } from '../../models/slr-mirrorless-render-geometry';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import Studio from './Studio';
 import { box, material } from './parts';
 import SlrMirrorlessDiagram from './SlrMirrorlessDiagram';

@@ -25,7 +25,7 @@ import {
   earPointOnPath,
   earPolyline,
 } from '../../models/ear-thermometer-geometry';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import '../../styles/ear-thermometer.css';
 
 const rayColor = (region: 'drum' | 'wall') => (region === 'drum' ? '#cf764b' : '#a99871');

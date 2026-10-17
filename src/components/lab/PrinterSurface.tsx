@@ -1,4 +1,5 @@
 import { t } from '../../i18n';
+import '../../styles/printer-surface.css';
 /** A magnified explanatory section, locked to the same drum/paper progress as the 3D model. */
 export default function PrinterSurface({ progress }: { progress: number }) {
   const stage = Math.min(5, Math.floor(progress)),
@@ -6,6 +7,17 @@ export default function PrinterSurface({ progress }: { progress: number }) {
   const x = 112 + 376 * q;
   return (
     <div className="printer-surface">
+      <p className="printer-surface-title">
+        {t(
+          stage < 3
+            ? '感光鼓表面'
+            : stage === 3
+              ? '鼓面 → 纸张'
+              : stage === 4
+                ? '加热与压力'
+                : '清洁并复位',
+        )}
+      </p>
       <svg viewBox="0 0 600 170" role="img" aria-label={t('放大观察同一个像素的表面变化')}>
         <defs>
           <linearGradient id="drum-surface" x2="0" y2="1">
@@ -13,15 +25,6 @@ export default function PrinterSurface({ progress }: { progress: number }) {
             <stop offset="1" stopColor="#809775" />
           </linearGradient>
         </defs>
-        <text x="24" y="25" fill="#7d8c6e" fontSize="12">
-          {stage < 3
-            ? t('感光鼓表面')
-            : stage === 3
-              ? t('鼓面 → 纸张')
-              : stage === 4
-                ? t('加热与压力')
-                : t('清洁并复位')}
-        </text>
         <rect
           x="80"
           y="90"
@@ -124,10 +127,8 @@ export default function PrinterSurface({ progress }: { progress: number }) {
         {stage < 3 && (
           <circle cx="300" cy="88" r="7" fill="none" stroke="#d19053" strokeWidth="2" />
         )}
-        <text x="300" y="166" textAnchor="middle" fontSize="11" fill="#92a080">
-          {t('局部示意 · 橙色标记同一像素')}
-        </text>
       </svg>
+      <p className="printer-surface-key">{t('局部示意 · 橙色标记同一像素')}</p>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { eclipseFrame, eclipseShot, ECLIPSE, type EclipseInput } from '../../models/solar-eclipse';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import '../../styles/solar-eclipse.css';
 type Frame = ReturnType<typeof eclipseFrame>;

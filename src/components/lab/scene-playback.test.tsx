@@ -193,7 +193,7 @@ const scenes = [
 async function mount(slug: string, Scene: React.ComponentType) {
   await act(() => {
     tree = create(
-      <Showcase slug={slug}>
+      <Showcase slug={slug} film={films[slug]}>
         <Scene />
         <Probe />
       </Showcase>,

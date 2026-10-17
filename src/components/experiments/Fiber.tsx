@@ -9,7 +9,7 @@ import {
   traceFiber,
 } from '../../models/fiber';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { FiberDrawing, InterfaceDrawing, PulseDrawing } from '../lab/FiberDrawing';
 import '../../styles/fiber.css';
 export default function Fiber() {

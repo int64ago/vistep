@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { t } from '../../i18n';
 import { cameraShot, lensRay, thinLens } from '../../models/optics';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import LensStudio from '../three/LensStudio';
 import LensDiagram from '../lab/LensDiagram';

@@ -27,6 +27,29 @@ body:has(.lesson-wrap) .site-header {
 .showcase-film {
   position: relative;
 }
+.film-quick-control {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #b8c1b459;
+  border-radius: 24px;
+  background: #f5f7f1f5;
+  color: #435147;
+  box-shadow: 0 4px 20px #20301f18;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+.film-quick-control:focus-visible {
+  outline: 2px solid #718368;
+  outline-offset: 3px;
+}
 .film-caption {
   display: flex;
   align-items: baseline;
@@ -157,35 +180,6 @@ body:has(.lesson-wrap) .site-header {
 .showcase[data-mode='watch'] .lab-scene {
   min-height: 0;
 }
-.showcase[data-mode='watch'] .printer-object-stage {
-  height: 470px;
-  border-radius: var(--radius-stage);
-}
-.showcase[data-mode='watch'] .printer-annotation {
-  left: 30px;
-  bottom: 26px;
-}
-.showcase[data-mode='watch'] .printer-annotation > span {
-  display: none;
-}
-.showcase[data-mode='watch'] .printer-annotation h2 {
-  font-size: 24px;
-}
-.showcase[data-mode='watch'] .printer-annotation p {
-  font-size: 12px;
-}
-.showcase[data-mode='watch'] .printer-study > .lab-caption {
-  display: none;
-}
-.lesson-printer .film-caption {
-  padding-left: 4px;
-  padding-right: 4px;
-}
-.lesson-printer .film-transport {
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-}
 .showcase[data-mode='watch'] .bike-canvas {
   height: 440px;
 }
@@ -204,32 +198,6 @@ body:has(.lesson-wrap) .site-header {
 }
 .lesson-bicycle .showcase[data-mode='watch'] .metric strong {
   font-size: 25px;
-}
-.lesson-pendulum .showcase[data-mode='watch'] .lab-grid {
-  grid-template-columns: minmax(0, 1fr) 210px;
-  align-items: center;
-}
-.lesson-pendulum .showcase[data-mode='watch'] .lab-controls {
-  display: flex;
-  padding: 30px 30px 30px 0;
-}
-.lesson-pendulum .showcase[data-mode='watch'] .lab-controls > :not(.pendulum-energy) {
-  display: none;
-}
-.pendulum-energy {
-  width: 100%;
-}
-.showcase[data-mode='watch'] .pendulum-object {
-  height: 425px;
-}
-.showcase[data-mode='watch'] .pendulum-readout {
-  top: 50px;
-}
-.showcase[data-mode='watch'] .pendulum-trace {
-  height: 55px;
-}
-.lesson-pendulum .showcase[data-mode='watch'] .scene-label {
-  display: none;
 }
 .showcase[data-mode='watch'] .refrigerator-object {
   height: 465px;
@@ -284,40 +252,6 @@ body:has(.lesson-wrap) .site-header {
 .lesson-noise .showcase[data-mode='watch'] .wave-status {
   padding: 0 38px 15px;
   font-size: 12px;
-}
-.lesson-network .showcase[data-mode='watch'] .network-journey {
-  padding-top: 8px;
-}
-.lesson-network .showcase[data-mode='watch'] .network-journey svg {
-  height: 290px;
-}
-.lesson-network .showcase[data-mode='watch'] .network-flow {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 14px;
-  padding: 18px 30px;
-}
-.lesson-network .showcase[data-mode='watch'] .network-node {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  border: 0;
-  align-content: start;
-}
-.lesson-network .showcase[data-mode='watch'] .network-node p {
-  display: none;
-}
-.lesson-network .showcase[data-mode='watch'] .network-node time {
-  display: block;
-  width: 100%;
-  font-size: 12px;
-}
-.lesson-network .showcase[data-mode='watch'] .waterfall {
-  width: 100%;
-  height: 4px;
-}
-.lesson-network .showcase[data-mode='watch'] .network-address-status {
-  display: none;
 }
 .lesson-jpeg .showcase[data-mode='watch'] .jpeg-workbench {
   padding: 48px 42px 25px;
@@ -526,20 +460,6 @@ body:has(.lesson-wrap) .site-header {
     padding: 0 12px;
     font-size: 16px;
   }
-  .showcase[data-mode='watch'] .printer-object-stage {
-    height: 350px;
-    margin: 0 -12px;
-  }
-  .showcase[data-mode='watch'] .printer-annotation {
-    left: 22px;
-    bottom: 16px;
-  }
-  .showcase[data-mode='watch'] .printer-annotation h2 {
-    font-size: 20px;
-  }
-  .showcase[data-mode='watch'] .printer-annotation p {
-    font-size: 10px;
-  }
   .showcase[data-mode='watch'] .bike-canvas {
     height: 325px;
   }
@@ -561,40 +481,6 @@ body:has(.lesson-wrap) .site-header {
   }
   .lesson-bicycle .showcase[data-mode='watch'] .metric span {
     font-size: 9px;
-  }
-  .lesson-pendulum .showcase[data-mode='watch'] .lab-grid {
-    grid-template-columns: 1fr;
-  }
-  .showcase[data-mode='watch'] .pendulum-object {
-    height: 345px;
-  }
-  .showcase[data-mode='watch'] .pendulum-readout {
-    top: 30px;
-    left: 22px;
-  }
-  .showcase[data-mode='watch'] .pendulum-readout strong {
-    font-size: 27px;
-  }
-  .showcase[data-mode='watch'] .pendulum-readout p {
-    font-size: 9px;
-  }
-  .lesson-pendulum .showcase[data-mode='watch'] .lab-controls {
-    padding: 5px 25px 12px;
-  }
-  .pendulum-energy {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 25px;
-  }
-  .pendulum-energy .energy-label {
-    margin-top: 0 !important;
-    grid-row: 1;
-    font-size: 11px;
-  }
-  .pendulum-energy .energy-track {
-    grid-row: 2;
-    margin-top: 8px;
-    height: 5px;
   }
   .showcase[data-mode='watch'] .refrigerator-object {
     height: 390px;
@@ -626,28 +512,6 @@ body:has(.lesson-wrap) .site-header {
   }
   .lesson-noise .showcase[data-mode='watch'] .lab-toolbar {
     right: 15px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-journey svg {
-    height: 260px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-flow {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding: 12px 20px;
-    gap: 4px 18px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-node {
-    gap: 5px;
-    padding: 9px 0;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-node .node-title {
-    font-size: 10px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-node .node-icon {
-    width: 20px;
-    height: 20px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-node time {
-    font-size: 10px;
   }
   .lesson-jpeg .showcase[data-mode='watch'] .jpeg-workbench {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -787,12 +651,6 @@ body:has(.lesson-wrap) .site-header {
 @media (min-width: 761px) {
   .showcase[data-mode='watch'] .bike-canvas {
     height: clamp(255px, calc(100svh - 440px), 440px);
-  }
-  .showcase[data-mode='watch'] .printer-object-stage {
-    height: clamp(320px, calc(100svh - 350px), 470px);
-  }
-  .showcase[data-mode='watch'] .pendulum-object {
-    height: clamp(280px, calc(100svh - 410px), 425px);
   }
   .showcase[data-mode='watch'] .refrigerator-object {
     height: clamp(270px, calc(100svh - 450px), 465px);
@@ -1013,27 +871,6 @@ body:has(.lesson-wrap) .site-header {
     font-size: 11px;
   }
 }
-.network-diagram-mobile {
-  display: none;
-}
-@media (max-width: 760px) {
-  .network-diagram-desktop {
-    display: none;
-  }
-  .network-diagram-mobile {
-    display: block;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-journey .network-diagram-mobile {
-    height: 250px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-flow {
-    padding-top: 3px;
-    padding-bottom: 3px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-node {
-    padding: 6px 0;
-  }
-}
 .lesson-jpeg svg.pixel-block {
   display: block;
   width: 100%;
@@ -1064,19 +901,6 @@ body:has(.lesson-wrap) .site-header {
     margin: 7px 0;
   }
 }
-.showcase[data-mode='watch'] .printer-annotation {
-  padding: 7px 12px;
-  background: #edf1e7e8;
-  border-radius: 11px;
-  backdrop-filter: blur(12px);
-}
-.showcase[data-mode='watch'] .printer-annotation h2 {
-  margin: 0;
-  font-size: 20px;
-}
-.showcase[data-mode='watch'] .printer-annotation p {
-  display: none;
-}
 .lesson-refrigerator .lab-scene:has(.studio-fallback) > :is(.refrigerator-cold, .refrigerator-hot) {
   display: none;
 }
@@ -1096,15 +920,6 @@ body:has(.lesson-wrap) .site-header {
   }
   .lesson-noise .showcase[data-mode='watch'] .wave-canvas {
     height: 240px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-journey svg {
-    height: 210px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-flow {
-    padding: 8px 30px;
-  }
-  .lesson-network .showcase[data-mode='watch'] .network-node {
-    padding: 3px 0;
   }
   .lesson-transformer .showcase[data-mode='watch'] .training-core {
     padding-top: 22px;

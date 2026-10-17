@@ -7,7 +7,7 @@ import {
   type TidesConfig,
   type TidesFocus,
 } from '../../models/tides';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import { Range } from '../lab/Controls';
 import TidesGlobe from '../three/TidesGlobe';

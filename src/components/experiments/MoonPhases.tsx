@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { t } from '../../i18n';
 import { LUNAR, SYNODIC_DAYS, lunarState, moonShot, phaseDiskPath } from '../../models/moon';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import LunarPortrait from '../three/LunarPortrait';
 import LunarGeometry from '../lab/LunarGeometry';
 import { useCompact } from '../lab/useCompact';

@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { t } from '../../i18n';
 import { Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import {
   BINDING_CURVE,
   CONFINEMENT_EXAMPLES,
@@ -97,13 +97,13 @@ export function fusionFootnote(
     case 'rate':
       return reactivityIsExtrapolated(q.temperatureKeV)
         ? '当前温度在拟合范围之外，读数为外推'
-        : '3000 K 的火焰远在左侧图外，反应率实际为零';
+        : '3000 K 远在拟合范围之外，低温外推可能下溢为零';
     case 'ignition':
       return shot.ignitionStep === 0
-        ? '火焰的温度不够，反应率为零'
+        ? '火焰温度远低于拟合范围，外推读数不代表点火预测'
         : shot.ignitionStep === 1
           ? '裂变火球的辐射加热并压缩燃料'
-          : '压缩后，同样的时间里烧掉更多';
+          : '压缩后，飞散前烧掉更多';
     case 'fuel':
       return '快中子也能让周围的铀核裂变，再释放能量';
     case 'confinement':
@@ -1305,9 +1305,9 @@ export default function HydrogenBomb() {
     binding: '氦-4 绑得更紧，多出的能量被释放',
     distribution: '只有分布尾巴上的少数核对能穿过势垒',
     rate: '温度提高几倍，反应率提高几千倍',
-    ignition: '只有裂变火球能提供这样的温度',
+    ignition: '裂变并非唯一的聚变点火路径',
     fuel: '氘化锂在燃烧中补给自己的氚',
-    confinement: '同一反应，三种留住高温的办法',
+    confinement: '不同燃料与约束，不能只比较温度',
   };
   return (
     <section className="hb-study" data-watch={film.watch} data-view={view}>

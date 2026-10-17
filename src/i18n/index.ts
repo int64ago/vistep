@@ -1,8 +1,8 @@
 import type { Topic } from '../data/topics';
 export type Locale = 'zh' | 'en';
 /**
- * English copy is registered rather than imported so the 430 KB dictionary only ships to
- * English pages: the server and the English islands import `./english`, Chinese pages never do.
+ * The full dictionary stays on the server. English islands register only the copy collected
+ * from their own scene, shared controls and film; Chinese pages ship no English dictionary.
  */
 const dictionary: Record<string, string> = {};
 export function registerDictionary(entries: Record<string, string>) {
@@ -27,7 +27,7 @@ export function localizedTopic(topic: Topic, locale: Locale): Topic {
   return {
     ...topic,
     ...Object.fromEntries(
-      ['name', 'title', 'question', 'description', 'duration', 'tag'].map((key) => [
+      ['name', 'title', 'question', 'description', 'tag'].map((key) => [
         key,
         translate(topic[key as keyof Topic] as string, locale),
       ]),

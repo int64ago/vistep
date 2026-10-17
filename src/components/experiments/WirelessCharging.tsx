@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import WirelessChargingStudio from '../three/WirelessChargingStudio';
 import {
   wirelessDefaults,

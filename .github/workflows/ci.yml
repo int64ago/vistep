@@ -17,7 +17,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -38,8 +38,23 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Initialize browser review evidence
+        run: pnpm browser:review --prepare-only
       - run: pnpm verify
       - run: pnpm build:preview
+      - name: Install pinned Chromium for browser review
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Review browser keyframes and resource failures
+        timeout-minutes: 10
+        run: pnpm browser:review
+      - name: Save browser review evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: browser-review-${{ github.sha }}-${{ github.run_attempt }}
+          path: artifacts/browser-review/latest/
+          if-no-files-found: warn
+          retention-days: 14
       - name: Save verified production assets
         if: >-
           github.repository == 'int64ago/vistep' && github.ref == 'refs/heads/main' &&

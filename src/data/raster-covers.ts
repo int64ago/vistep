@@ -1,2 +1,6 @@
-/** Detailed physical covers are rasterized at build time, keeping the catalog DOM small. */
-export const rasterCoverSlugs = ['keyboard-switch', 'helicopter', 'ak47', 'landmine'] as const;
+import { topics } from './topics';
+
+/** Every catalog cover is its own lazy image. Geometry stays in TopicCover;
+ * filtering 102 cards never inserts their meshes and SVG nodes into the page.
+ */
+export const rasterCoverSlugs = topics.map((topic) => topic.slug);

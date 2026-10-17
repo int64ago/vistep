@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { discoveryMetadata } from '../data/discovery-metadata';
+import { discoveryMetadata, discoverySearchKeywords } from '../data/discovery-metadata';
+import { films, filmRunningTime } from '../data/films';
 import { topics } from '../data/topics';
 import { localizedTopic } from '../i18n';
 import {
@@ -8,6 +9,7 @@ import {
   normalizeSearch,
   readFilters,
   writeFilters,
+  searchTokens,
   type SearchableScene,
 } from './discovery';
 const scenes: SearchableScene[] = [
@@ -39,27 +41,67 @@ const scenes: SearchableScene[] = [
     text: '一束光 how photons travel',
   },
 ];
+const catalog = topics.map((topic) => {
+  const en = localizedTopic(topic, 'en');
+  const meta = discoveryMetadata[topic.slug];
+  return {
+    slug: topic.slug,
+    category: meta.category,
+    minAge: meta.minAge,
+    duration: films[topic.slug].duration,
+    name: `${topic.name} ${en.name}`,
+    keywords: discoverySearchKeywords(topic.slug),
+    text: `${topic.title} ${topic.description} ${en.title} ${en.description}`,
+  };
+});
 describe('catalog discovery', () => {
   it('finds AI computation topics in the real bilingual catalog without matching the brand URL', () => {
-    const catalog = topics.map((topic) => {
-      const en = localizedTopic(topic, 'en');
-      const meta = discoveryMetadata[topic.slug];
-      return {
-        slug: topic.slug,
-        category: meta.category,
-        minAge: meta.minAge,
-        duration: 180,
-        name: `${topic.name} ${en.name}`,
-        keywords: [...meta.keywords.zh, ...meta.keywords.en].join(' '),
-        text: `${topic.title} ${topic.description} ${en.title} ${en.description}`,
-      };
-    });
     expect(
       matchingScenes(catalog, { ...emptyFilters(), query: 'AI' }).map((scene) => scene.slug),
     ).toEqual(['cpu-gpu-npu', 'transformer']);
     expect(
       matchingScenes(catalog, { ...emptyFilters(), query: '人工智能' }).map((scene) => scene.slug),
     ).toContain('transformer');
+  });
+  it('finds Chinese compounds and bilingual subject labels without asking readers to add spaces', () => {
+    expect(searchTokens('相机传感器')).toEqual(['相机', '传感器']);
+    expect(
+      matchingScenes(catalog, { ...emptyFilters(), query: '相机传感器' }).map(
+        (scene) => scene.slug,
+      ),
+    ).toContain('bayer-sensor');
+    for (const query of ['光与波动', 'Light & waves']) {
+      const found = matchingScenes(catalog, { ...emptyFilters(), query });
+      expect(found.map((scene) => scene.slug).sort()).toEqual(
+        catalog
+          .filter((scene) => scene.category === 'light-sound')
+          .map((scene) => scene.slug)
+          .sort(),
+      );
+    }
+    expect(
+      matchingScenes(catalog, { ...emptyFilters(), query: '电与磁' }).every(
+        (scene) => scene.category === 'electricity',
+      ),
+    ).toBe(true);
+    expect(
+      matchingScenes(catalog, {
+        ...emptyFilters(),
+        query: '相机传感器',
+        category: 'light-sound',
+        age: 12,
+        length: 'long',
+      }).map((scene) => scene.slug),
+    ).toContain('bayer-sensor');
+  });
+  it('displays fractional running times on the same side of three minutes as the duration filter', () => {
+    for (const slug of ['huffman', 'fourier-transform', 'diffraction']) {
+      const scene = catalog.find((item) => item.slug === slug)!;
+      expect(filmRunningTime(scene.duration)).toBe('3:01');
+      expect(matchingScenes([scene], { ...emptyFilters(), length: 'short' })).toEqual([]);
+      expect(matchingScenes([scene], { ...emptyFilters(), length: 'long' })).toEqual([scene]);
+    }
+    expect(filmRunningTime(180)).toBe('3:00');
   });
   it('treats short Latin acronyms as words rather than matching inside unrelated names', () => {
     const examples = [

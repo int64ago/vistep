@@ -1,10 +1,12 @@
+import '../../styles/pendulum.css';
 import { t } from '../../i18n';
 import { useRef, useState, useEffect } from 'react';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import PendulumStudio from '../three/PendulumStudio';
 import { Range, Metric, Segments, clamp } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { stepPendulum, pendulumEnergy, smallAnglePeriod } from '../../models/pendulum';
+import '../../styles/pendulum-trace.css';
 export default function Pendulum() {
   const demo = useShowcase();
   const [manualLength, setLength] = useState(1.4),
@@ -125,26 +127,26 @@ export default function Pendulum() {
               {((state.angle * 180) / Math.PI).toFixed(1)}
               <small>°</small>
             </strong>
-            <p>
-              {demo.watch
-                ? t(
-                    '{0} m · {1}',
-                    length.toFixed(1),
-                    damping < 0.01 ? `${gravity.toFixed(2)} m/s²` : t('增加阻尼'),
-                  )
-                : t('拉起摆球，然后松手。')}
-            </p>
           </div>
-          <svg className="pendulum-trace" viewBox="0 330 640 90" aria-label={t('实时角度轨迹')}>
-            <path d="M38 374H590" stroke="#cdd3c1" />
-            <polyline points={points} stroke="#ae8748" strokeWidth="1.6" fill="none" />
-            <text x="40" y="404" fill="#9b9e8b" fontSize="10">
-              ANGLE / TIME
-            </text>
-            <text x="555" y="404" fill="#9b9e8b" fontSize="10">
-              {state.time.toFixed(1)}s
-            </text>
-          </svg>
+          <p className="pendulum-parameters">
+            {demo.watch
+              ? t(
+                  '{0} m · {1}',
+                  length.toFixed(1),
+                  damping < 0.01 ? `${gravity.toFixed(2)} m/s²` : t('增加阻尼'),
+                )
+              : t('拉起摆球，然后松手。')}
+          </p>
+          <div className="pendulum-trace-panel">
+            <svg className="pendulum-trace" viewBox="0 330 640 65" aria-label={t('实时角度轨迹')}>
+              <path d="M38 374H590" stroke="#cdd3c1" />
+              <polyline points={points} stroke="#ae8748" strokeWidth="1.6" fill="none" />
+            </svg>
+            <div className="pendulum-trace-axis">
+              <span>{t('角度 / 时间')}</span>
+              <span>{state.time.toFixed(1)} s</span>
+            </div>
+          </div>
           {demo.watch && c >= 2 && (
             <div className="pendulum-energy-live" aria-label={t('能量交换')}>
               <span>

@@ -1,6 +1,6 @@
 import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { congestionRun, congestionDefaults, congestionAt } from '../../models/congestion-control';
 import '../../styles/congestion-control.css';
 export default function CongestionControl() {

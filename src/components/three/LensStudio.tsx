@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import * as THREE from 'three';
 import { t } from '../../i18n';
 import { lensRay, thinLens } from '../../models/optics';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import LensDiagram, { type LensState } from '../lab/LensDiagram';
 import Studio from './Studio';
 import { box, material } from './parts';

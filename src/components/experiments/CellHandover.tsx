@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import { useCompact } from '../lab/useCompact';
 import CellHandoverMap, {
@@ -19,7 +19,11 @@ import {
   chRunMarks,
   type ChMark,
 } from '../lab/CellHandoverInstruments';
-import { useCellHandoverField, useCellHandoverRun } from '../lab/useCellHandoverField';
+import {
+  useCellHandoverField,
+  useCellHandoverRun,
+  useCellHandoverPlan,
+} from '../lab/useCellHandoverField';
 import {
   CH,
   CH_DEFAULT,
@@ -34,7 +38,7 @@ import {
   type ChLayout,
   type ChRun,
 } from '../../models/cell-handover';
-import { chFilmPlan, chSample, chShot, type ChShot } from '../../models/cell-handover-film';
+import { chSample, chShot, type ChFilmPlan, type ChShot } from '../../models/cell-handover-film';
 import { chLadder } from '../../models/cell-handover-ladder';
 import '../../styles/cell-handover.css';
 
@@ -70,6 +74,17 @@ type Assignments = {
 };
 
 export default function CellHandover() {
+  const { plan, error } = useCellHandoverPlan();
+  if (!plan)
+    return (
+      <div className="lab-loading" role="status">
+        {error ? t('计算暂不可用，请重载页面重试。') : t('正在准备实验…')}
+      </div>
+    );
+  return <CellHandoverScene plan={plan} />;
+}
+
+function CellHandoverScene({ plan }: { plan: ChFilmPlan }) {
   const film = useShowcase(),
     compact = useCompact();
   const host = useRef<HTMLDivElement>(null);
@@ -82,7 +97,6 @@ export default function CellHandover() {
     observer.observe(host.current);
     return () => observer.disconnect();
   }, []);
-  const plan = useMemo(chFilmPlan, []);
   const layout = plan.tuned.layout;
   const colors = useMemo(() => chCellColors(layout), [layout]);
   const ladder = useMemo(() => chLadder(), []);
@@ -121,7 +135,7 @@ export default function CellHandover() {
     return () => clearTimeout(id);
   }, [layout, plan]);
 
-  const shot: ChShot = chShot(film.chapter, film.chapterProgress, film.chapterTime);
+  const shot: ChShot = chShot(film.chapter, film.chapterProgress, film.chapterTime, plan);
   const watch = film.watch;
   const view = watch ? shot.view : 'explore';
   const run: ChRun = watch ? (shot.run === 'eager' ? plan.eager : plan.tuned) : exploreRun;

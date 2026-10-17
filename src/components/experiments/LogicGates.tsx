@@ -1,6 +1,6 @@
 import { useId, useMemo, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import CmosCircuit, { CmosCascadeCircuit, CmosChargeCircuit } from '../lab/CmosCircuit';
 import {

@@ -4,6 +4,8 @@ import english from '../i18n/en.json';
 import { topics } from './topics';
 import { discoveryCategories, discoveryMetadata } from './discovery-metadata';
 import filmTimeline from './film-timeline.json';
+import { learningPaths, nextLearningStep } from './learning-paths';
+import { rasterCoverSlugs } from './raster-covers';
 
 const normalize = (value: string) => value.normalize('NFKC').trim().toLowerCase();
 
@@ -25,11 +27,45 @@ describe('homepage discovery metadata', () => {
           expect(discoveryMetadata[slug]?.category, slug).toBe(category!.id);
           const film = filmTimeline[slug as keyof typeof filmTimeline];
           expect(film, slug).toBeDefined();
-          expect(Number(row[2]) * 60 + Number(row[3]), slug).toBe(Math.floor(film.duration));
+          expect(Number(row[2]) * 60 + Number(row[3]), slug).toBe(Math.ceil(film.duration));
         }
       }
       expect(seen.sort(), locale).toEqual(topics.map((topic) => topic.slug).sort());
     }
+  });
+
+  it('keeps every scene reachable through an editorial relation and every path causally connected', () => {
+    const incoming = new Set(topics.flatMap((topic) => topic.related));
+    for (const topic of topics) expect(incoming.has(topic.slug), topic.slug).toBe(true);
+    for (const path of learningPaths) {
+      expect(new Set(path.steps.map((step) => step.slug)).size).toBe(path.steps.length);
+      for (const locale of ['zh', 'en'] as const) {
+        expect(path.title[locale].trim()).toBeTruthy();
+        expect(path.before[locale].trim()).toBeTruthy();
+      }
+      path.steps.forEach((step, index) => {
+        const topic = topics.find((topic) => topic.slug === step.slug)!;
+        expect(topic, step.slug).toBeDefined();
+        expect(step.why.zh.trim()).toBeTruthy();
+        expect(step.why.en.trim()).toBeTruthy();
+        const next = path.steps[index + 1];
+        if (next) {
+          expect(topic.related, `${step.slug} → ${next.slug}`).toContain(next.slug);
+          expect(nextLearningStep(step.slug, next.slug)?.why).toEqual(next.why);
+        }
+      });
+    }
+  });
+
+  it('serves every catalog cover as a standalone image instead of embedding the geometry', () => {
+    expect(rasterCoverSlugs).toEqual(topics.map((topic) => topic.slug));
+    const catalog = readFileSync(
+      new URL('../components/DiscoveryCatalog.astro', import.meta.url),
+      'utf8',
+    );
+    expect(catalog).toContain('src={`/covers/${topic.slug}.png`}');
+    expect(catalog).not.toContain('<TopicCover');
+    expect(catalog).toContain('loading="lazy"');
   });
 
   it('covers the published registry exactly once without invented slugs', () => {

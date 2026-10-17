@@ -18,7 +18,7 @@ const live = vi.hoisted(() => ({
   env: null as any,
   contexts: [] as any[],
 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => live.film }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => live.film }));
 vi.mock('../../i18n', () => ({ t: (s: string) => s }));
 vi.mock('three', async () => ({
   ...(await vi.importActual('three')),

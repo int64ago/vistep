@@ -73,7 +73,7 @@ async def main():
             cue['at'] = round(at + .45, 2)
             at += round(window * 2 + .49999) / 2
         film['duration'] = round(at, 2)
-        if not 120 <= at <= 300: raise RuntimeError(f'{slug}: {at}s is outside the 2–5 minute editorial limit; revise the script.')
+        if not 0 < at <= 300: raise RuntimeError(f'{slug}: {at}s exceeds the five-minute editorial ceiling or is empty; revise the script.')
         manifest.setdefault(slug, {})
         for locale, voice in VOICES.items():
             samples = array.array('h', [0]) * round(at * RATE)

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { islandDictionary } from '../../i18n/server/island-dictionary';
 import BrandMorph from '../../components/BrandMorph';
 import HomeObject from '../../components/HomeObject';
 import EnglishHomeObject from '../../components/english/HomeObject';
@@ -32,7 +33,7 @@ const href = (p: string) => localPath(p, locale);
       </div>
       {
         locale === 'en' ? (
-          <EnglishHomeObject client:only="react">
+          <EnglishHomeObject dictionary={islandDictionary('home')} client:only="react">
             <div slot="fallback" class="opening-object home-object-placeholder" aria-hidden="true">
               <CoverArt>
                 <TopicCover slug="printer" color="#8da486" />

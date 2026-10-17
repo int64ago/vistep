@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { bootBrowserSupport, browserSupportGaps } from './browser-support';
 function modernWindow(overrides: Record<string, unknown> = {}) {
   const gl = { getExtension: () => ({ loseContext() {} }) };
@@ -32,15 +32,16 @@ describe('browser support gate', () => {
         },
       }),
     );
-    expect(gaps).toEqual([
-      'ES modules',
-      'Web Workers',
-      'Web Audio',
-      'CSS :has()',
-      'CSS svh units',
-      'WebGL 2',
-    ]);
+    expect(gaps).toEqual(['ES modules', 'CSS :has()', 'CSS svh units']);
     expect(browserSupportGaps(modernWindow({ CSS: undefined }))).toEqual(['CSS.supports']);
+  });
+  it('lets two-dimensional lessons run without optional GPU, Worker or sound engines', () => {
+    const window = modernWindow({ Worker: undefined, AudioContext: undefined });
+    const probe = vi.fn(() => null);
+    window.document.createElement = (tag: string) =>
+      tag === 'script' ? ({ noModule: false } as any) : { getContext: probe };
+    expect(browserSupportGaps(window)).toEqual([]);
+    expect(probe).not.toHaveBeenCalled();
   });
   it('stays parseable by browsers that will fail the check', () => {
     for (const fn of [browserSupportGaps, bootBrowserSupport]) {
@@ -53,7 +54,7 @@ describe('browser support gate', () => {
     let hidden = true,
       text = '';
     const w = modernWindow({
-      Worker: undefined,
+      ResizeObserver: undefined,
       document: {
         ...modernWindow().document,
         documentElement: {
@@ -70,9 +71,9 @@ describe('browser support gate', () => {
       },
     });
     bootBrowserSupport(browserSupportGaps, w);
-    expect(attributes['data-unsupported']).toBe('Web Workers');
+    expect(attributes['data-unsupported']).toBe('ResizeObserver');
     expect(hidden).toBe(false);
-    expect(text).toBe('Web Workers');
+    expect(text).toBe('ResizeObserver');
     const untouched: Record<string, string> = {};
     bootBrowserSupport(browserSupportGaps, {
       ...modernWindow(),

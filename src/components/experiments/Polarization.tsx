@@ -5,7 +5,7 @@ import {
   polarizationSetup,
   type PolarizationSource,
 } from '../../models/polarization';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import {
   PolarizationDetail,
   PolarizationFocus,

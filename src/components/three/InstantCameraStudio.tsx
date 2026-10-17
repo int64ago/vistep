@@ -8,7 +8,7 @@ import {
   icImagePixels,
   type IcShot,
 } from '../../models/instant-camera';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import Studio, { type StudioContext } from './Studio';
 import { box, material, roller } from './parts';
 import InstantCameraDiagram from './InstantCameraDiagram';

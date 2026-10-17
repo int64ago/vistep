@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import { Ak47Energy } from '../lab/Ak47Mechanism';
 import Ak47Studio from '../three/Ak47Studio';

@@ -1,3 +1,7 @@
-import '../../i18n/english';
+import { registerDictionary } from '../../i18n';
 import HomeObject from '../HomeObject';
-export default HomeObject;
+
+export default function EnglishHomeObject({ dictionary }: { dictionary: Record<string, string> }) {
+  registerDictionary(dictionary);
+  return <HomeObject />;
+}

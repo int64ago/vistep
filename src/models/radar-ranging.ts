@@ -26,6 +26,38 @@ export function radarApparentRange(range: number, pri: number) {
   positive(range, pri);
   return radarRange(radarDelay(range) % pri);
 }
+/** Repeated transmit windows also blank the receiver, including late echoes. */
+export function radarTransmitWindows(pulse: number, pri: number, end: number) {
+  radarLimits(pulse, pri);
+  if (!Number.isFinite(end) || end < 0 || end / pri > 256)
+    throw new RangeError('Finite radar timeline of at most 256 intervals required');
+  return Array.from({ length: Math.floor(end / pri) + 1 }, (_, index) => ({
+    index,
+    start: index * pri,
+    end: Math.min(end, index * pri + pulse),
+  })).filter((window) => window.end > window.start);
+}
+/** Geometry-only timing of one echo, not a detector or a guarantee of a range estimate. */
+export function radarObservation(range: number, pulse: number, pri: number) {
+  const limits = radarLimits(pulse, pri),
+    delay = radarDelay(range),
+    phase = delay % pri;
+  let blanked = 0;
+  for (let index = Math.floor(delay / pri); index <= Math.floor((delay + pulse) / pri); index++)
+    blanked += Math.max(
+      0,
+      Math.min(delay + pulse, index * pri + pulse) - Math.max(delay, index * pri),
+    );
+  return {
+    range,
+    delay,
+    apparent: radarRange(phase),
+    ambiguous: delay >= pri,
+    frontBlanked: phase < pulse,
+    visibleFraction: Math.max(0, Math.min(1, 1 - blanked / pulse)),
+    ...limits,
+  };
+}
 /** Pulse envelope occupies path arclength [c(t−tau),ct], intersected with the round trip. */
 export function radarPulseSegments(range: number, time: number, pulse: number) {
   positive(range, pulse);

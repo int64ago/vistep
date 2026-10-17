@@ -20,7 +20,7 @@ Use [the production guide](docs/creating-a-scene.md) and [retrospective](docs/re
 
 For requests adding multiple scenes, agents must proactively use subagents, preferably with an independent owner for each scene. Assign the objective, skill, owned files and acceptance requirements. The main agent coordinates shared files, integrates the results and reviews each scene; a subagent's completion message is not acceptance evidence. Follow [AGENTS.md](AGENTS.md) and the guide's handoff workflow.
 
-Scenes must have their own appropriate visual form. A complete, understandable 2–5 minute silent demonstration comes before extra controls. Every chapter needs visible explanatory work; additional narration alone does not extend a scene. Derive geometry and numbers from the same model. Explain simplifications and cite technical sources. Keep Chinese and English content complete, with spoken scripts written for observation rather than reciting UI text.
+Scenes must have their own appropriate visual form. A complete, understandable silent demonstration comes before extra controls. Aim for 2–3 minutes with a five-minute ceiling; a complete shorter explanation does not need padding. Every chapter needs visible explanatory work; additional narration alone does not extend a scene. Derive geometry and numbers from the same model. Explain simplifications and cite technical sources. Keep Chinese and English content complete, with spoken scripts written for observation rather than reciting UI text.
 
 For scene changes, include desktop and phone key frames, the preview URL if available, full-playback observations in both languages, and relevant model checks. Record untested conditions explicitly. A successful build is not evidence of visual or vocal quality.
 

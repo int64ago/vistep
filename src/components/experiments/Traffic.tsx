@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { Metric, Range } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { useReducedMotion } from '../lab/useVisibility';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { fixedReplay } from '../../models/replay';
 import { newTraffic, stepTraffic, defaultTraffic, type Vehicle } from '../../models/traffic';
 export default function Traffic() {

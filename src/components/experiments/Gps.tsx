@@ -2,7 +2,7 @@ import { t } from '../../i18n';
 import { useCallback, useState, useRef, type PointerEvent } from 'react';
 import { Metric, Range, Segments, clamp } from '../lab/Controls';
 import SpatialCanvas, { THREE, type SpatialContext } from '../lab/SpatialCanvas';
-import { useShowcase, ramp, ease } from '../lab/Showcase';
+import { useShowcase, ramp, ease } from '../lab/FilmContext';
 import GpsGeometry from '../lab/GpsGeometry';
 import { gpsStoryTime } from '../../models/direction';
 import { distance, locate } from '../../models/gps';

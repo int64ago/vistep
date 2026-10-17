@@ -290,17 +290,48 @@ export function DiComparePlans({
           </div>
         ))}
       </div>
-      <div className="di-result-proof">
-        <span>{t('最终结果逐行一致')}</span>
-        <strong>
-          {index.rows.length === 1
-            ? `r${index.rows[0].rowId} · ${index.rows[0].payload}`
-            : `${index.rows.length} / ${tree.rows.length}`}
-        </strong>
-      </div>
+      <DiComparisonResult tree={tree} index={index} scan={scan} indexStep={a} scanStep={b} />
       <p className="di-inline-note">
         {t(wide ? '全部都要读时，索引还要多读自己的页。' : '索引页也要读；完整记录还要回到堆页。')}
       </p>
+    </div>
+  );
+}
+/** Compare only the rows reached by the current access history; future matches stay hidden. */
+function DiComparisonResult({
+  tree,
+  index,
+  scan,
+  indexStep,
+  scanStep,
+  compact = false,
+}: {
+  tree: DiTree;
+  index: DiQuery;
+  scan: DiQuery;
+  indexStep: DiQueryStep;
+  scanStep: DiQueryStep;
+  compact?: boolean;
+}) {
+  const complete = indexStep === index.steps.at(-1) && scanStep === scan.steps.at(-1),
+    left = [...indexStep.found].sort((a, b) => a - b),
+    right = [...scanStep.found].sort((a, b) => a - b),
+    agrees = left.length === right.length && left.every((id, i) => id === right[i]),
+    row =
+      complete && agrees && left.length === 1 ? tree.rows.find((r) => r.rowId === left[0]) : null;
+  return (
+    <div
+      className={compact ? 'di-phone-result' : 'di-result-proof'}
+      data-comparison-state={complete ? (agrees ? 'equal' : 'different') : 'pending'}
+    >
+      <span>{t(complete ? (agrees ? '最终结果逐行一致' : '最终结果不一致') : '查询进行中')}</span>
+      <strong>
+        {complete
+          ? row
+            ? `r${row.rowId} · ${row.payload}`
+            : `${left.length} / ${tree.rows.length}`
+          : t('两条路线仍在读取记录')}
+      </strong>
     </div>
   );
 }
@@ -491,7 +522,9 @@ function DiPhoneComparison({
   progress: number;
 }) {
   const index = diQuery(tree, low, high),
-    scan = diQuery(tree, low, high, 'scan');
+    scan = diQuery(tree, low, high, 'scan'),
+    at = (query: DiQuery) =>
+      query.steps[Math.min(query.steps.length - 1, Math.floor(progress * query.steps.length))];
   return (
     <div className="di-phone-comparison">
       <div className="di-phone-predicate">
@@ -526,14 +559,14 @@ function DiPhoneComparison({
           </section>
         );
       })}
-      <div className="di-phone-result">
-        <span>{t('最终结果逐行一致')}</span>
-        <b>
-          {index.rows.length === 1
-            ? `r${index.rows[0].rowId} · ${index.rows[0].payload}`
-            : `${index.rows.length} / ${tree.rows.length}`}
-        </b>
-      </div>
+      <DiComparisonResult
+        tree={tree}
+        index={index}
+        scan={scan}
+        indexStep={at(index)}
+        scanStep={at(scan)}
+        compact
+      />
     </div>
   );
 }

@@ -15,7 +15,7 @@ vi.mock('react', async () => ({
     return ref;
   },
 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => live.film }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => live.film }));
 vi.mock('./Studio', () => ({ default: () => null }));
 // Real OrbitControls, without a browser or WebGL. DOM sizing and pointer events are controlled inputs.
 class Surface extends EventTarget {

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Range, Metric } from '../lab/Controls';
 import { useSimulation } from '../lab/useSimulation';
 import { useReducedMotion } from '../lab/useVisibility';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { effectivePhase, residualAmplitude } from '../../models/noise';
 import { noiseShot } from '../../models/direction';
 export default function Noise() {

@@ -3,7 +3,7 @@ import { t } from '../../i18n';
 import { brakeShot, brakeState } from '../../models/brake';
 import { Range } from '../lab/Controls';
 import { useCompact } from '../lab/useCompact';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import BrakeStudio from '../three/BrakeStudio';
 import BrakeSection from '../lab/BrakeSection';
 import '../../styles/brake.css';

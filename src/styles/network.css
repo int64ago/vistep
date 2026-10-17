@@ -1,0 +1,246 @@
+/* Network composition, exploration controls and directed-film overrides. */
+/* Legacy editorial rules; original cascade order retained. */
+.lesson-network .experiment {
+  border: 0;
+  background: #f1f4f1;
+}
+.network-journey {
+  padding: 0 30px 6px;
+  background: #e8efec;
+}
+.network-address {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #d2ded7;
+  padding: 17px 0;
+  color: #829b8d;
+  font-size: 12px;
+}
+.network-address code {
+  font-family: 'Manrope Variable', sans-serif;
+  font-size: 12px;
+  color: #597c67;
+}
+.network-address-status {
+  margin-left: auto;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: #8ba193;
+}
+.network-journey svg {
+  width: 100%;
+  height: 300px;
+  fill: none;
+  max-width: 980px;
+  margin: auto;
+}
+.lesson-network .lab-toolbar {
+  border: 0;
+  background: transparent;
+}
+.lesson-network .lab-grid {
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+.lesson-network .network-flow {
+  padding: 26px 28px;
+  gap: 0;
+  background: transparent;
+}
+.lesson-network .network-node {
+  grid-template-columns: 25px 90px minmax(0, 1fr) 45px;
+  border: 0;
+  border-bottom: 1px solid #dce5de;
+  border-radius: 0;
+  background: none;
+  padding: 13px 0;
+  gap: 12px;
+}
+.lesson-network .network-node .node-icon {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  font-size: 8px;
+  background: #e2eae2;
+  color: #8ea28c;
+}
+.lesson-network .network-node.current .node-icon {
+  background: #719875;
+  color: white;
+}
+.lesson-network .network-node .node-title {
+  font-size: 11px;
+  color: #5e7b5f;
+}
+.lesson-network .network-node p {
+  font-size: 10px;
+  color: #8ba28a;
+  line-height: 1.8;
+}
+.lesson-network .network-node time {
+  font-size: 10px;
+  color: #8ba08c;
+}
+.lesson-network .waterfall {
+  grid-column: 2/5;
+  height: 2px;
+  background: #dce5dc;
+  border-radius: 4px;
+}
+.lesson-network .waterfall span {
+  background: #7c9e80;
+}
+.lesson-network .lab-controls {
+  border: 0;
+  padding: 30px 27px 20px 10px;
+  gap: 18px;
+}
+.lesson-network .lab-callout {
+  padding: 0;
+  background: none;
+  font-size: 11px;
+}
+.lesson-network .metrics {
+  background: #fafbf7;
+  border-top: 1px solid #dce4d8;
+}
+.lesson-network .lab-caption {
+  border: 0;
+  background: transparent;
+}
+@media (max-width: 760px) {
+  .network-journey {
+    padding: 0 15px 0;
+  }
+  .network-journey svg {
+    height: 205px;
+  }
+  .network-address {
+    padding: 14px 0;
+    gap: 10px;
+  }
+  .network-address code {
+    font-size: 10px;
+  }
+  .network-address-status {
+    font-size: 6px;
+    max-width: 110px;
+    text-align: right;
+    line-height: 1.8;
+  }
+  .lesson-network .lab-grid {
+    grid-template-columns: 1fr;
+  }
+  .lesson-network .network-flow {
+    padding: 15px 20px;
+  }
+  .lesson-network .network-node {
+    grid-template-columns: 22px 1fr 40px;
+    gap: 7px 12px;
+  }
+  .lesson-network .network-node p {
+    grid-column: 2/4;
+    grid-row: 2;
+    font-size: 11px;
+  }
+  .lesson-network .waterfall {
+    grid-column: 2/4;
+  }
+  .lesson-network .lab-controls {
+    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Legacy showcase rules; original cascade order retained. */
+.lesson-network .showcase[data-mode='watch'] .network-journey {
+  padding-top: 8px;
+}
+.lesson-network .showcase[data-mode='watch'] .network-journey svg {
+  height: 290px;
+}
+.lesson-network .showcase[data-mode='watch'] .network-flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+  padding: 18px 30px;
+}
+.lesson-network .showcase[data-mode='watch'] .network-node {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 0;
+  align-content: start;
+}
+.lesson-network .showcase[data-mode='watch'] .network-node p {
+  display: none;
+}
+.lesson-network .showcase[data-mode='watch'] .network-node time {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+}
+.lesson-network .showcase[data-mode='watch'] .waterfall {
+  width: 100%;
+  height: 4px;
+}
+.lesson-network .showcase[data-mode='watch'] .network-address-status {
+  display: none;
+}
+@media (max-width: 760px) {
+  .lesson-network .showcase[data-mode='watch'] .network-journey svg {
+    height: 260px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 12px 20px;
+    gap: 4px 18px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-node {
+    gap: 5px;
+    padding: 9px 0;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-node .node-title {
+    font-size: 10px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-node .node-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-node time {
+    font-size: 10px;
+  }
+}
+.network-diagram-mobile {
+  display: none;
+}
+@media (max-width: 760px) {
+  .network-diagram-desktop {
+    display: none;
+  }
+  .network-diagram-mobile {
+    display: block;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-journey .network-diagram-mobile {
+    height: 250px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-flow {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-node {
+    padding: 6px 0;
+  }
+}
+@media (min-width: 761px) and (max-height: 800px) {
+  .lesson-network .showcase[data-mode='watch'] .network-journey svg {
+    height: 210px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-flow {
+    padding: 8px 30px;
+  }
+  .lesson-network .showcase[data-mode='watch'] .network-node {
+    padding: 3px 0;
+  }
+}

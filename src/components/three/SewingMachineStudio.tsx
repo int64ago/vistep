@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import * as THREE from 'three';
 import Studio, { type StudioContext } from './Studio';
 import { box, material } from './parts';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import {
   SEWING as S,
   sewingCamera,

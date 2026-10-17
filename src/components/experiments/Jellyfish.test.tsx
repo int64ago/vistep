@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import Jellyfish from './Jellyfish';
 import { JELLY } from '../../models/jellyfish';
 const film = vi.hoisted(() => ({ watch: true, playing: false, chapter: 4, chapterProgress: 0.5 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => film }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
 vi.mock('../three/JellyfishStudio', () => ({ default: () => null }));
 vi.mock('../three/JellyfishFlat', () => ({ default: () => null }));
 const trees: ReactTestRenderer[] = [];

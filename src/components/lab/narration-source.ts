@@ -1,4 +1,5 @@
 type SourceEvents = { waiting: () => void; ready: () => void; error: () => void };
+export const NARRATION_WAIT_TIMEOUT_MS = 12_000;
 
 /** Keep native streaming, but make chapter seeks work on hosts that ignore Range requests. */
 export function narrationSource(audio: HTMLAudioElement, src: string, events: SourceEvents) {
@@ -8,8 +9,11 @@ export function narrationSource(audio: HTMLAudioElement, src: string, events: So
   let disposed = false;
   let objectUrl: string | null = null;
   let request: AbortController | null = null;
+  let deadline: ReturnType<typeof setTimeout> | undefined;
 
   const release = () => {
+    clearTimeout(deadline);
+    deadline = undefined;
     request?.abort();
     request = null;
     if (objectUrl) URL.revokeObjectURL(objectUrl);
@@ -30,6 +34,9 @@ export function narrationSource(audio: HTMLAudioElement, src: string, events: So
     events.waiting();
     const attempt = new AbortController();
     request = attempt;
+    deadline = setTimeout(() => {
+      if (!disposed && request === attempt) mediaError();
+    }, NARRATION_WAIT_TIMEOUT_MS);
     void fetch(src, { signal: attempt.signal, ...(reload ? { cache: 'reload' } : {}) })
       .then(async (response) => {
         if (!response.ok) throw new Error(`Narration asset returned ${response.status}`);
@@ -74,6 +81,8 @@ export function narrationSource(audio: HTMLAudioElement, src: string, events: So
     loadedMetadata() {
       if (disposed || failed) return;
       if (objectUrl) {
+        clearTimeout(deadline);
+        deadline = undefined;
         loading = false;
         request = null;
       }

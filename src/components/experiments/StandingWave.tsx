@@ -6,7 +6,7 @@ import {
   standingNodes,
   standingShot,
 } from '../../models/standing-wave';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import { Range } from '../lab/Controls';
 import '../../styles/standing-wave.css';

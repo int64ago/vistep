@@ -3,7 +3,7 @@ import { create, type ReactTestRenderer } from 'react-test-renderer';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import Esim from '../components/experiments/Esim';
-import { FilmContext } from '../components/lab/Showcase';
+import { FilmContext } from '../components/lab/FilmContext';
 function frame(chapter: number, progress: number, playing = false) {
   return renderToStaticMarkup(
     <FilmContext.Provider

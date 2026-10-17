@@ -7141,7 +7141,7 @@
     ]
   },
   "atomic-bomb": {
-    "duration": 243.5,
+    "duration": 247.5,
     "cues": [
       {
         "id": "atomic-bomb-01",
@@ -7210,27 +7210,27 @@
         "seconds": 24,
         "title": "反应堆与炸弹",
         "titleEn": "Reactor and bomb",
-        "caption": "同样的 k，反应堆靠缓发中子留出调节的时间。",
-        "captionEn": "Same k, but delayed neutrons give a reactor time to respond.",
-        "zh": "反应堆和炸弹用的是同一套物理，差别在 k 和代时间。反应堆把 k 控制在一附近。只靠瞬发中子，哪怕 k 只有一点零零一，灰线也会在一秒内失控。但有一小部分中子要等碎片衰变后才放出，平均晚十几秒，把代时间拉长到近零点一秒。蓝线一分钟才翻一倍，控制棒来得及调节。橙线是 k 等于一点五、每代十纳秒的链，约一微秒就冲到顶。",
-        "en": "A reactor and a bomb share the same physics; the difference is k and the generation time. A reactor holds k near one. With prompt neutrons alone, even k = 1.001 runs away within a second, as the grey line shows. But a small fraction of neutrons appear only after the fragments decay, more than ten seconds late, stretching the generation time to nearly a tenth of a second. The blue line takes a minute to double, and control rods can keep up. The orange line is k = 1.5 with ten nanoseconds per generation: it reaches the top in about a microsecond."
+        "caption": "平均代时间示意：缓发中子延缓增长，实际瞬态需另求解。",
+        "captionEn": "Mean-time illustration: delayed neutrons slow growth; actual transients need a separate model.",
+        "zh": "看这三条数量级曲线。前两条保持 k 等于一点零零一。灰线只计瞬发中子，增长很快；蓝线把缓发中子的等待时间折进一个平均值，约一分钟翻一倍。这是平均代时间的简化示意。实际反应堆还要跟踪前驱核、温度反馈和控制动作，不能用这条线预测。橙线另取 k 等于一点五、每代十纳秒，展示快速链式反应的量级。临界或超临界本身，都不等于发生爆炸。",
+        "en": "Compare these three curves as illustrations of scale. The first two keep k at 1.001. The grey curve counts prompt neutrons only and grows quickly. The blue curve folds delayed-neutron waiting into a mean generation time, taking roughly a minute to double. That is a simplification. Actual reactor transients require precursor populations, feedback and control action, which this chart does not solve. The orange curve separately uses k of 1.5 and ten nanoseconds per generation to illustrate a fast chain. Critical or supercritical does not by itself mean an explosion."
       },
       {
         "id": "atomic-bomb-07",
-        "chapterAt": 204.5,
-        "at": 204.95,
+        "chapterAt": 205.0,
+        "at": 205.45,
         "seconds": 24,
         "title": "它为什么会停",
         "titleEn": "Why it stops",
         "caption": "一膨胀，密度下降，k 跌回一以下，反应自己停下。",
         "captionEn": "Expansion lowers density, k drops below one, and the reaction stops itself.",
-        "zh": "增长如此之快，它是怎么停下来的？能量让材料急剧升温、膨胀。质量没有变，但密度下降，中子在两次碰撞之间要飞得更远，同样的球按平均自由程来量反而变小了。看标记沿曲线往回滑：膨胀到一点三四倍时 k 回到一，再大一点就跌回次临界。新放出的中子又开始漏掉，链式反应自己熄灭。这一切发生在不到一微秒里，只有一小部分原子核来得及裂变。",
-        "en": "If it grows this fast, how does it ever stop? The energy heats the material violently and it expands. The mass is unchanged, but the density falls, so a neutron travels farther between collisions. Measured in mean free paths, the same sphere is now smaller. Watch the marker slide back along the curve: at 1.34 times the original size k returns to one, and a little further it drops below. Newly released neutrons leak away again and the chain dies out. All of this happens in under a microsecond, and only a small fraction of the nuclei ever fission."
+        "zh": "增长如此之快，它是怎么停下来的？能量让材料急剧升温、膨胀。质量没有变，但密度下降，中子在两次碰撞之间要飞得更远，同样的球按平均自由程来量反而变小了。看标记沿曲线往回滑：膨胀到一点三四倍时 k 回到一，再大一点就跌回次临界。新放出的中子又开始漏掉，链式反应自己熄灭。这里展示的是膨胀、密度和中子泄漏的关系；具体会持续多久、有多少核裂变，这个模型并没有计算。",
+        "en": "If it grows this fast, how does it ever stop? The energy heats the material violently and it expands. The mass is unchanged, but the density falls, so a neutron travels farther between collisions. Measured in mean free paths, the same sphere is now smaller. Watch the marker slide back along the curve: at 1.34 times the original size k returns to one, and a little further it drops below. Newly released neutrons leak away again and the chain dies out. This shows how expansion, density and neutron leakage are related. The model does not calculate how long the process lasts or what fraction of the nuclei fission."
       }
     ]
   },
   "hydrogen-bomb": {
-    "duration": 210,
+    "duration": 218.0,
     "cues": [
       {
         "id": "hydrogen-bomb-01",
@@ -7253,7 +7253,7 @@
         "zh": "看这条结合能曲线的左端。氘和氚每个核子只绑住一到三兆电子伏，而氦四高得多，每个核子超过七兆电子伏。把氘和氚合成氦四，再放出一个中子，多出来的十七点六兆电子伏就变成了动能，大部分由中子带走。按每个核子算，这比铀裂变还多四倍以上。",
         "en": "Look at the left end of the binding-energy curve. Deuterium and tritium hold each nucleon with only one to three MeV, while helium-4 sits far higher, above seven MeV per nucleon. Fuse deuterium and tritium into helium-4, release a neutron, and the surplus 17.6 MeV becomes motion, most of it carried by the neutron. Per nucleon, that is more than four times what uranium fission gives.",
         "seconds": 24,
-        "chapterAt": 27,
+        "chapterAt": 27.0,
         "at": 27.45
       },
       {
@@ -7282,14 +7282,14 @@
       },
       {
         "id": "hydrogen-bomb-05",
-        "title": "只有裂变能点燃它",
-        "titleEn": "Only fission can light it",
-        "caption": "裂变火球的辐射把聚变燃料压紧、加热。",
-        "captionEn": "A fission fireball's radiation squeezes and heats the fuel.",
-        "zh": "看这架温度阶梯。化学火焰停在三千开，亮点纹丝不动，燃料毫无反应。只有一次裂变爆炸能在瞬间到达一亿度，它放出的辐射加热并压缩分开放置的聚变燃料。这团燃料被压得越小，密度越高，单位体积的反应率按密度的平方增长。压缩一千倍后，燃料飞散前烧掉的份额从不到千分之一升到大约百分之八。",
-        "en": "Watch the temperature ladder. A chemical flame stops at three thousand kelvin; the marker does not move and the fuel does nothing. Only a fission explosion reaches a hundred million kelvin in an instant, and its radiation heats and compresses the separately placed fusion fuel. As the fuel sphere shrinks, density rises and the rate per volume grows with density squared. Compressed a thousand times, the share burned before the fuel flies apart rises from under a tenth of a percent to about eight percent.",
+        "title": "热核武器中的裂变初级",
+        "titleEn": "The fission primary in thermonuclear weapons",
+        "caption": "裂变初级提供高温与辐射；聚变也有激光点火等途径。",
+        "captionEn": "A fission primary supplies heat and radiation; lasers provide another route to fusion ignition.",
+        "zh": "看这架温度阶梯。三千开的化学火焰，在本模型里只给出极小的聚变反应率。热核武器使用裂变初级提供高温与辐射，加热并压缩聚变燃料。但裂变不是聚变点火的唯一途径，激光实验也已经实现点火。画面随后比较同一团燃料的压缩：密度越高，单位体积反应率越大。这张燃烧比例图只隔离密度和约束时间，不包含自加热点火过程。",
+        "en": "Watch the temperature ladder. At three thousand kelvin, this model gives a very small fusion rate. A thermonuclear weapon uses a fission primary to supply intense heat and radiation, heating and compressing fusion fuel. Fission is not the only route to fusion ignition; laser experiments have also achieved it. The picture then compares compression of the same fuel. Higher density raises the reaction rate per volume. This burn-fraction illustration isolates density and confinement time; it does not solve self-heating or ignition.",
         "seconds": 24,
-        "chapterAt": 113,
+        "chapterAt": 113.0,
         "at": 113.45
       },
       {
@@ -7298,23 +7298,23 @@
         "titleEn": "Fuel that makes its own tritium",
         "caption": "中子把锂变成氚，燃料在燃烧中补给自己。",
         "captionEn": "Neutrons turn lithium into tritium; the fuel restocks itself.",
-        "zh": "氚有放射性，存不住，所以燃料用固体氘化锂。跟住这颗刚生成的中子：它带着十四兆电子伏飞出去，撞上一个锂六核，锂六裂成一个氚核和一个氦核，还多放出四点八兆电子伏。新的氚回到起点，继续和氘反应。飞出去的快中子也能让周围的铀核裂变，再放出一份能量。",
-        "en": "Tritium is radioactive and cannot be stored, so the fuel is solid lithium deuteride. Follow the newly made neutron: it flies off with fourteen MeV, strikes a lithium-6 nucleus, and lithium-6 splits into tritium and helium, releasing another 4.8 MeV. The new tritium returns to the start and reacts with deuterium again. Fast neutrons escaping the fuel can also fission surrounding uranium, releasing more energy.",
+        "zh": "氚会持续衰变，半衰期约十二点三年。长期储存需要考虑损失，不是完全存不住。这里说明一条公开的燃料路径：固体氘化锂能通过中子反应生成氚。跟住这颗中子，它撞上锂六核，生成一个氚核和一个氦核，并释放约四点八兆电子伏。新的氚可以参与后续的氘氚反应。这个图只解释核反应关系，不表示真实装置的布局或运行过程。",
+        "en": "Tritium decays continuously, with a half-life of about twelve point three years. Storage is possible, but long-term storage must account for that loss. This picture explains one publicly described fuel route: a neutron reaction in lithium deuteride can generate tritium. Follow the neutron to lithium-6. The reaction produces tritium and helium and releases about 4.8 MeV. The tritium can participate in a later D–T reaction. This picture explains nuclear reactions rather than a device layout or operating sequence.",
         "seconds": 24,
-        "chapterAt": 145,
-        "at": 145.45
+        "chapterAt": 147.5,
+        "at": 147.95
       },
       {
         "id": "hydrogen-bomb-07",
         "title": "三种留住高温的办法",
         "titleEn": "Three ways to hold the heat",
-        "caption": "同一反应，三种约束。",
-        "captionEn": "One reaction, three kinds of confinement.",
+        "caption": "磁场、惯性与引力：燃料和约束条件并不相同。",
+        "captionEn": "Magnetic, inertial and gravitational confinement use different fuels and conditions.",
         "zh": "同样的氘氚反应，要自持燃烧，密度、温度和约束时间的乘积得超过这条虚线。托卡马克用磁场，把稀薄的等离子体留住大约一秒。惯性约束走另一头：密度高出十一个多数量级，只留住一百亿分之一秒，二零二二年国家点火装置就这样首次实现点火。太阳则靠引力永久约束，烧的是慢得多的质子链，它有的是体积和时间。",
         "en": "For the same D–T reaction to sustain itself, density times temperature times confinement time must cross this dashed line. A tokamak uses magnetic fields to hold a thin plasma for about a second. Inertial confinement takes the other end: density eleven orders of magnitude higher, held for a ten-billionth of a second. That is how the National Ignition Facility first reached ignition in 2022. The Sun confines by gravity and burns the far slower proton chain; it has volume and time to spare.",
         "seconds": 24,
-        "chapterAt": 175.5,
-        "at": 175.95
+        "chapterAt": 183.5,
+        "at": 183.95
       }
     ]
   },

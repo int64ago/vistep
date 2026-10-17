@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import { lithiumShot, lithiumManual, type LithiumView } from '../../models/lithium-battery';
 import LithiumBatteryStudio from '../three/LithiumBatteryStudio';

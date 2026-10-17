@@ -255,24 +255,24 @@ export default function ExcavatorCircuit({
             <path d="M190 230V300H380" {...dash(lower, pale)} />
             <path d="M250 255H332M362 255H380V300" {...dash(relief, '#cf6d2a', 1.4)} />
           </g>
-          <g fontSize="13" fill="#5f6d66" fontFamily="inherit">
-            <text x="215" y="166" textAnchor="middle">
-              A
-            </text>
-            <text x="285" y="166" textAnchor="middle">
-              B
-            </text>
-            <text x="250" y="244" textAnchor="middle">
-              P
-            </text>
-            <text x="190" y="244" textAnchor="middle">
-              T
-            </text>
-            <text x="310" y="244" textAnchor="middle">
-              T
-            </text>
-          </g>
         </svg>
+        {(
+          [
+            ['A', 215, 158],
+            ['B', 285, 158],
+            ['P', 250, 240],
+            ['T', 190, 240],
+            ['T', 310, 240],
+          ] as const
+        ).map(([label, px, py]) => (
+          <span
+            key={`${label}-${px}`}
+            className="circuit-port"
+            style={{ left: `${(px / 560) * 100}%`, top: `${(py / 330) * 100}%` }}
+          >
+            {label}
+          </span>
+        ))}
         <span className="circuit-label" style={{ left: '2%', top: '1%' }}>
           {t('右操作杆')} ·{' '}
           {x > 0.02

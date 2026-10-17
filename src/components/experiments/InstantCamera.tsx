@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import InstantCameraStudio from '../three/InstantCameraStudio';
 import InstantCameraDiagram from '../three/InstantCameraDiagram';
@@ -45,11 +45,14 @@ function Photo({ shot, comparison = false }: { shot: IcShot; comparison?: boolea
     </div>
   );
 }
-function Spread({ shot, width }: { shot: IcShot; width: number }) {
-  const cardW = width < 600 ? 160 : 220,
+export function Spread({ shot, width }: { shot: IcShot; width: number }) {
+  const compact = width < 600,
+    cardW = compact ? Math.min(150, width * 0.5) : 180,
     cardH = (cardW * IC.length) / IC.width,
-    x = (width - cardW) / 2,
-    y = 12;
+    x = compact ? 20 : width * 0.25 - cardW / 2,
+    y = 42,
+    sliceX = compact ? width - 64 : width * 0.7,
+    sliceWidth = 29;
   const scale = cardW / IC.width,
     margin = shot.transport.imageMargin,
     front = shot.transport.front;
@@ -57,7 +60,8 @@ function Spread({ shot, width }: { shot: IcShot; width: number }) {
     imageY = y + (IC.length - IC.imageStart - IC.imageLength) * scale;
   const imageW = IC.imageWidth * scale,
     imageH = IC.imageLength * scale,
-    wetH = Math.max(0, front - IC.imageStart) * scale;
+    wetH = Math.max(0, front - IC.imageStart) * scale,
+    frontY = imageY + imageH - wetH;
   const rollerY = y + (IC.length - Math.min(Math.max(shot.transport.lead, 0), IC.length)) * scale;
   return (
     <svg
@@ -65,20 +69,30 @@ function Spread({ shot, width }: { shot: IcShot; width: number }) {
       role="img"
       aria-label={t('从药囊边到远端的试剂铺展，铺展前沿由同一张相纸经过滚轮的位置决定')}
     >
+      <text x={x + cardW / 2} y="25" textAnchor="middle">
+        {t('相纸表面')}
+      </text>
+      <text x={sliceX + sliceWidth / 2} y="25" textAnchor="middle">
+        {t('层间切面')}
+      </text>
       <rect x={x} y={y} width={cardW} height={cardH} rx="4" fill="#fbf5e6" stroke="#d6cbb3" />
       <rect x={imageX} y={imageY} width={imageW} height={imageH} fill="#d4d8c7" />
       <rect
+        data-part="plan-reagent"
         x={imageX}
-        y={imageY + imageH - wetH}
+        y={frontY}
         width={imageW}
         height={wetH}
         fill={paste}
         opacity=".92"
       />
+      <path d={`M${imageX} ${frontY}H${imageX + imageW}`} stroke={teal} strokeWidth="2" />
       <path
-        d={`M${imageX} ${imageY + imageH - wetH}H${imageX + imageW}`}
-        stroke={teal}
-        strokeWidth="2"
+        d={`M${x + cardW / 2} ${y}V${y + cardH}`}
+        stroke="#566d63"
+        strokeWidth="1"
+        strokeDasharray="3 5"
+        opacity=".55"
       />
       <rect
         x={imageX}
@@ -111,6 +125,40 @@ function Spread({ shot, width }: { shot: IcShot; width: number }) {
               fill="#ece0c4"
             />
           ))}
+      {/* A centreline slice of this sheet, with thickness magnified independently.
+          The longitudinal coordinate and wet front use the same scale as the plan view. */}
+      <g data-instant-slice-front={front.toFixed(3)}>
+        <rect x={sliceX} y={y} width="5" height={cardH} rx="2" fill="#dce3d4" stroke="#9cae9e" />
+        <rect x={sliceX + 5} y={y} width="5" height={cardH} fill="#efe1bd" />
+        <rect x={sliceX + 10} y={y} width="12" height={cardH} fill="#f8f4e7" />
+        <rect
+          data-part="slice-reagent"
+          x={sliceX + 10}
+          y={frontY}
+          width="12"
+          height={wetH}
+          fill={paste}
+        />
+        <rect x={sliceX + 22} y={y} width="7" height={cardH} rx="2" fill="#6c918b" />
+        <path
+          d={`M${imageX + imageW + 5} ${frontY}H${sliceX + 22}`}
+          stroke={teal}
+          strokeWidth="1.5"
+          strokeDasharray="3 5"
+        />
+        <circle cx={sliceX + 16} cy={frontY} r="3" fill={teal} />
+      </g>
+      <g
+        transform={`translate(${compact ? width / 2 : width * 0.5} ${Math.max(258, y + cardH + 18)})`}
+      >
+        <path d="M-60 0H-40" stroke={paste} strokeWidth="5" strokeLinecap="round" />
+        <text x="-32" y="5">
+          {t('层间试剂')}
+        </text>
+        <text x="0" y="32" textAnchor="middle">
+          {t('纵向同尺度；层厚放大')}
+        </text>
+      </g>
     </svg>
   );
 }

@@ -1,42 +1,4 @@
 /* Close observations belong to each experiment, not a shared dashboard. */
-.pendulum-energy-live {
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  bottom: 104px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 16px;
-  font-size: 12px;
-  color: #707b63;
-  pointer-events: none;
-}
-.pendulum-energy-live span {
-  display: grid;
-  gap: 4px;
-}
-.pendulum-energy-live b {
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-.pendulum-energy-live > div {
-  display: flex;
-  height: 6px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #a9ad9c33;
-}
-.pendulum-energy-live i {
-  height: 100%;
-  background: #b29258;
-}
-.pendulum-energy-live i:nth-child(2) {
-  background: #708d80;
-}
-.pendulum-energy-live i:nth-child(3) {
-  background: transparent;
-}
 .lesson-jpeg .showcase[data-mode='watch'] .jpeg-workbench[data-detail] {
   display: none;
 }
@@ -127,10 +89,6 @@
   outline-color: var(--film-muted);
 }
 @media (max-width: 760px) {
-  .pendulum-energy-live {
-    bottom: 93px;
-    gap: 10px;
-  }
   .jpeg-detail {
     padding: 25px 14px;
     min-height: 240px;
@@ -200,18 +158,6 @@
   line-height: 1.9;
   color: #74806c;
 }
-.printer-surface {
-  max-width: 660px;
-  margin: 12px auto 8px;
-  padding: 0 20px;
-}
-.printer-surface svg {
-  width: 100%;
-  display: block;
-}
-.lesson-printer .showcase:has(.printer-surface) .printer-object-stage {
-  height: clamp(300px, 40vh, 470px);
-}
 .gps-geometry,
 .heat-balance {
   display: grid;
@@ -259,12 +205,6 @@
   font-variant-numeric: tabular-nums;
 }
 @media (max-width: 760px) {
-  .printer-surface {
-    padding: 0 8px;
-  }
-  .lesson-printer .showcase:has(.printer-surface) .printer-object-stage {
-    height: 310px;
-  }
   .gps-geometry,
   .heat-balance {
     min-height: 300px;
@@ -276,14 +216,6 @@
   .bike-comparison > div {
     grid-template-columns: 35px 1fr 124px;
     gap: 8px;
-  }
-}
-@media (max-width: 760px) {
-  .printer-surface text {
-    font-size: 19px;
-  }
-  .printer-surface text:last-child {
-    font-size: 16px;
   }
 }
 
@@ -329,17 +261,6 @@
   .lesson-transformer .showcase[data-mode='watch'] .token-row {
     gap: 6px;
   }
-}
-
-.lesson-pendulum .showcase[data-mode='watch'] .lab-grid {
-  grid-template-columns: minmax(0, 1fr);
-}
-.lesson-pendulum .showcase[data-mode='watch'] .lab-controls {
-  display: none;
-}
-.pendulum-energy-live {
-  position: static;
-  margin: 16px 7% 12px;
 }
 .dimension-stage:has(.dimension-fallback) .projection-stats {
   display: none;

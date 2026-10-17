@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import BodyFatScale from './BodyFatScale';
 const film = vi.hoisted(() => ({ watch: true, playing: false, chapter: 0, chapterProgress: 0 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => film }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
 vi.mock('../three/BodyFatScaleStudio', () => ({
   default: () => <div data-test-scale-assembly="true" />,
 }));

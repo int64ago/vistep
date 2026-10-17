@@ -1,6 +1,7 @@
 import {
   helicopterSolids,
   helicopterWorldPoint,
+  helicopterTracking,
   HELI_ART,
   type HelicopterVisual,
   type HeliPoint,
@@ -180,6 +181,7 @@ export function helicopterArtwork(
           ],
         )
       : null;
+  const tracking = helicopterTracking(visual);
   return {
     width,
     height,
@@ -191,5 +193,12 @@ export function helicopterArtwork(
     sectionFlow,
     rootLocation: pixel(project(helicopterWorldPoint([0.72, 0, 0], 'blade-a', visual))),
     sectionLocation: pixel(project(helicopterWorldPoint([3.375, 0, 0], 'blade-a', visual))),
+    tracking: {
+      point: pixel(project(tracking.point)),
+      axis: tracking.axis.map((point) => pixel(project(point))) as [
+        [number, number],
+        [number, number],
+      ],
+    },
   };
 }

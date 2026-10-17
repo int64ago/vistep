@@ -16,7 +16,7 @@ import {
   type HashBlock,
   type HashRun,
 } from '../../models/hash';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import HashWords from '../lab/HashWords';
 import '../../styles/hash.css';
 

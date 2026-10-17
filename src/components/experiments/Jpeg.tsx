@@ -1,7 +1,7 @@
 import { t } from '../../i18n';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Metric, Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { smooth } from '../../models/direction';
 import JpegDetail from '../lab/JpegDetail';
 import { compressBlock, sampleBlock, frequencyOrder } from '../../models/jpeg';

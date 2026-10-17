@@ -15,6 +15,7 @@ describe('scene drafting command', () => {
         'en.mdx',
         'integration.md',
         'narration.json',
+        'review.json',
         'review.md',
         'storyboard.json',
         'zh.mdx',

@@ -1,6 +1,6 @@
 import { t } from '../../i18n';
 import { useState } from 'react';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import BicycleStudio from '../three/BicycleStudio';
 import { Metric, Range, Segments } from '../lab/Controls';
 import { bicycleModel } from '../../models/bicycle';

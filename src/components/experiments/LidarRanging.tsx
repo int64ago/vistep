@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import {
   lidarDelay,
@@ -25,8 +25,10 @@ export default function LidarRanging() {
     points = useMemo(() => lidarScan(s, scan), [s.step, s.jitter, s.threshold, scan]),
     hit = lidarRay(s.angle),
     showCloud = c >= 3 || !d.watch,
-    scale = compact ? Math.min((w - 48) / 8, 25) : Math.min((w - 64) / 12, 36),
-    height = compact ? 368 : 350,
+    height = compact ? 368 : Math.min(500, Math.max(350, ((w - 64) * 2) / 3 + 48)),
+    scale = compact
+      ? Math.min((w - 48) / 8, (height - 48) / 12)
+      : Math.min((w - 64) / 12, (height - 48) / 8),
     origin = { x: w / 2, y: height / 2 },
     project = (x: number, y: number) =>
       compact
@@ -99,7 +101,7 @@ export default function LidarRanging() {
                 <circle
                   cx={project(p.point.x, p.point.y).x}
                   cy={project(p.point.x, p.point.y).y}
-                  r={c === 6 ? 2 : 2.4}
+                  r={c === 6 ? 2.4 : 3}
                   fill={inks[p.hit.id]}
                 />
               )}
@@ -113,13 +115,15 @@ export default function LidarRanging() {
             opacity=".3"
           />
         )}
-        {(c < 4 || c === 5 || !d.watch) && (
+        {
           <>
             <path
               d={`M${P(0, 0)}L${P(hit.point.x, hit.point.y)}`}
               stroke="#f2d89c"
-              strokeWidth="1.7"
+              strokeWidth={showCloud ? 1.4 : 2}
+              opacity={showCloud ? 0.55 : 1}
             />
+            <circle cx={dot.x} cy={dot.y} r="10" fill="none" stroke="#f2d89c" strokeWidth="1.5" />
             <circle cx={dot.x} cy={dot.y} r="5" fill="#f2d89c" />
             {c < 2 && (
               <circle
@@ -130,7 +134,7 @@ export default function LidarRanging() {
               />
             )}
           </>
-        )}
+        }
         {c === 2 && (
           <>
             <path

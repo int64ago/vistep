@@ -9,7 +9,7 @@ import {
   type BfsShot,
   type BfsView,
 } from '../../models/body-fat-scale';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import BodyFatScaleStudio from '../three/BodyFatScaleStudio';
 import '../../styles/body-fat-scale.css';
 const gold = '#b77b32',

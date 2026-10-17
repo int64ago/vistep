@@ -13,14 +13,14 @@ Why does energy appear once they join? Look at the left side of the binding-ener
 - In the distribution view, raise the temperature from 3000 K to 1.2×10⁸ K. At low temperature every pair sits below 0.01 keV and the distribution is a single needle at the left. At a hundred million kelvin the tail reaches tens of keV; multiplied by the steeply rising tunnelling probability it forms a peak, the **Gamow peak**. At 10 keV it sits near 31 keV, and only about 10% of pairs have more energy than that.
 - Switch to the rate view. From the Sun's core at 1.3 keV to 10 keV, ⟨σv⟩ climbs from about 3×10⁻²⁰ to about 1.1×10⁻¹⁶ cm³/s: eight times the temperature, nearly four thousand times the rate. Choose D + D and the curve drops by two orders of magnitude at the same temperature.
 - In the compression view, hold 10 keV and compress the same fuel 10, 100 and 1000 times. Density rises by C, the reaction rate per volume by C², while the ρR the fuel holds before flying apart grows only as C^(2/3). The fraction burned before disassembly climbs from below a tenth of a percent to about 8%.
-- Return the temperature to 3000 K and compress again. However hard the fuel is squeezed, the rate readout stays at an extrapolated value far outside the fit range, effectively zero. No chemical explosive can light fusion.
+- Return the temperature to 3000 K and vary compression within this model's range. The rate is extremely small and may underflow to zero, far outside the fit's valid range. A low-temperature extrapolation is not a prediction of real ignition.
 
 <h2 id="deeper">From the barrier to staging: three numbers together</h2>
 
 <details>
-<summary>Why only fission can light it</summary>
+<summary>Why do thermonuclear weapons use a fission primary?</summary>
 
-Chemical burning tops out at a few thousand kelvin, a kinetic energy below 1 eV. The tunnelling exponent `√(E_G/E)` then exceeds a thousand, and the rate is zero in any practical sense. To bring the Gamow peak to tens of keV, the fuel must be heated to tens of millions up to a hundred million kelvin. A fission fireball reaches that order of magnitude (Glasstone & Dolan, _The Effects of Nuclear Weapons_, §1.23). On Earth, only a fission explosion supplies that temperature and radiation to a large mass of fuel in an instant; laser facilities also reach ignition conditions, but only in milligram-scale targets.
+At the selected chemical-flame conditions of a few thousand kelvin, mean kinetic energy is below 1 eV and this bare-Coulomb model gives an extremely small fusion rate. Raising temperature greatly increases D–T reactivity, but ignition also depends on density, confinement and energy losses rather than one temperature threshold. Public descriptions put a fission fireball at an order of a hundred million kelvin (Glasstone & Dolan, _The Effects of Nuclear Weapons_, §1.23). This explains the physical background of a thermonuclear weapon's fission primary; it does not make fission the only route to fusion ignition. [Laser experiments at the National Ignition Facility](https://www.energy.gov/articles/doe-national-laboratory-makes-history-achieving-fusion-ignition) have achieved fusion ignition.
 
 The public physical description is that the fission "primary" releases intense radiation, and this radiation heats and compresses a separately placed fusion fuel. This explanation draws only the temperature ladder and the burn fraction after compression; it does not describe the structure, dimensions or materials of any device.
 
@@ -44,7 +44,7 @@ Without confinement the fuel disassembles at the ion sound speed `c_s = √(2kT/
 <details>
 <summary>Why the fuel carries its own tritium</summary>
 
-Tritium is radioactive, with a half-life of about 12.3 years, so it cannot be stored for long. Public sources describe thermonuclear fuel as solid **lithium deuteride**: when a 14 MeV fusion neutron strikes lithium-6,
+Tritium is radioactive, with a half-life of about 12.3 years, as described in [DOE’s fusion-fuel overview](https://www.energy.gov/science/doe-explainsdeuterium-tritium-fusion-fuel). Long-term storage must account for continuing decay losses; storage is possible. One publicly described thermonuclear fuel route uses solid **lithium deuteride**: when a 14 MeV fusion neutron strikes lithium-6,
 
 <div className="formula">n + ⁶Li → T + ⁴He + 4.78 MeV</div>
 
@@ -66,6 +66,6 @@ The Sun takes a different road. Its core is only about 1.3 keV, but gravity keep
 
 The reactivity ⟨σv⟩ uses the Bosch–Hale (1992) parametrisation, valid from 0.2 to 100 keV; below 0.2 keV it is extrapolated with the non-resonant form `T^(−2/3) exp(−3E₀/kT)` to indicate order of magnitude only. The barrier drawing uses a bare Coulomb potential with a schematic nuclear well, and the tunnelling probability is the WKB Gamow factor without nuclear structure or resonances. Binding energies come from AME2020. The three points on the Lawson chart are order-of-magnitude references, not measured parameters of any specific machine. This explanation does not describe the construction of a weapon.
 
-References: [Glasstone & Dolan, The Effects of Nuclear Weapons, 1977 (OSTI)](https://www.osti.gov/biblio/6852629), [NRL Plasma Formulary](https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_19.pdf), [Bosch & Hale, Nuclear Fusion 32 (1992)](https://doi.org/10.1088/0029-5515/32/4/I07), [OpenStax University Physics 3, 10.6 Nuclear Fusion](https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion), [LLNL — National Ignition Facility ignition](https://www.llnl.gov/news/national-ignition-facility-achieves-fusion-ignition).
+References: [Glasstone & Dolan, The Effects of Nuclear Weapons, 1977 (OSTI)](https://www.osti.gov/biblio/6852629), [NRL Plasma Formulary](https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_19.pdf), [Bosch & Hale, Nuclear Fusion 32 (1992)](https://doi.org/10.1088/0029-5515/32/4/I07), [OpenStax University Physics 3, 10.6 Nuclear Fusion](https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion), [DOE — National Ignition Facility ignition](https://www.energy.gov/articles/doe-national-laboratory-makes-history-achieving-fusion-ignition).
 
 </details>

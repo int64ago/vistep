@@ -13,7 +13,7 @@ import {
   type SolarCellShot,
   type SolarCellFocus,
 } from '../../models/solar-cell';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import {
   SolarCellThresholdView,

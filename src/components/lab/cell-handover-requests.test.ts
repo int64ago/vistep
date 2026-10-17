@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   CellHandoverRequests,
+  CH_WORKER_TIMEOUT_MS,
   type ChJob,
   type ChReply,
   type ChResult,
@@ -81,16 +82,16 @@ describe('cellular worker request lifecycle', () => {
       ideal = vi.fn(),
       patch = vi.fn();
     const cancelOld = queue.subscribe(job(6), obsolete, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     expect(worker.sent).toHaveLength(1);
     cancelOld();
     const cancelIntermediate = queue.subscribe(job(7), obsolete, undefined, 0);
     const cancelIdeal = queue.subscribe(job(0), ideal, undefined, 0);
     const cancelPatch = queue.subscribe(job(6, 0.5), patch, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     cancelIntermediate();
     const cancelMain = queue.subscribe(job(10), main, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     expect(worker.sent).toHaveLength(1); // even ready changes cannot queue another native job
     worker.reply(worker.sent[0].id, 6);
     expect(obsolete).not.toHaveBeenCalled();
@@ -116,10 +117,11 @@ describe('cellular worker request lifecycle', () => {
       second = vi.fn();
     const stop1 = queue.subscribe(job(3), first, undefined, 0);
     const stop2 = queue.subscribe(job(3), second, undefined, 0);
-    vi.runAllTimers();
+    vi.advanceTimersByTime(0);
     expect(worker.sent).toHaveLength(1);
     worker.reply(999, 9);
     expect(first).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(1); // an unrelated reply does not cancel the deadline
     worker.reply(worker.sent[0].id, 3);
     worker.reply(worker.sent[0].id, 4);
     expect(first).toHaveBeenCalledOnce();
@@ -128,6 +130,138 @@ describe('cellular worker request lifecycle', () => {
     stop1();
     stop2();
     release();
+  });
+
+  it('clears a successful task deadline without disabling the healthy Worker', () => {
+    const computed = vi.fn(function* (): Generator<void, ChResult, void> {
+      return field(9);
+    });
+    const { queue, worker, release } = fixture({ compute: computed });
+    const receive = vi.fn();
+    queue.subscribe(job(4), receive, undefined, 0);
+    vi.advanceTimersByTime(0);
+    expect(vi.getTimerCount()).toBe(1);
+    worker.reply(worker.sent[0].id, 4);
+    expect(receive).toHaveBeenCalledWith(field(4));
+    expect(vi.getTimerCount()).toBe(0);
+    vi.advanceTimersByTime(CH_WORKER_TIMEOUT_MS);
+    expect(worker.terminate).not.toHaveBeenCalled();
+    expect(computed).not.toHaveBeenCalled();
+    queue.subscribe(job(5), receive, undefined, 0);
+    vi.advanceTimersByTime(0);
+    expect(worker.sent).toHaveLength(2);
+    worker.reply(worker.sent[1].id, 5);
+    expect(receive).toHaveBeenCalledTimes(2);
+    release();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('terminates a silent Worker at the deadline and cooperatively finishes the live task', () => {
+    const chunks: number[] = [];
+    function* compute(): Generator<void, ChResult, void> {
+      for (let i = 0; i < 9; i++) {
+        chunks.push(i);
+        yield;
+      }
+      return field(4);
+    }
+    const { queue, worker, release } = fixture({ compute, workerTimeoutMs: 50 });
+    const receive = vi.fn(),
+      fail = vi.fn();
+    queue.subscribe(job(4), receive, fail, 0);
+    vi.advanceTimersByTime(0);
+    vi.advanceTimersByTime(49);
+    expect(worker.terminate).not.toHaveBeenCalled();
+    expect(chunks).toEqual([]);
+    vi.advanceTimersByTime(1);
+    expect(worker.terminate).toHaveBeenCalledOnce();
+    expect(worker.onmessage).toBeNull();
+    expect(worker.onerror).toBeNull();
+    expect(receive).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(1);
+    expect(chunks.length).toBeGreaterThan(0);
+    expect(chunks.length).toBeLessThan(9); // one timer turn cannot synchronously drain the job
+    vi.advanceTimersByTime(10);
+    expect(receive).toHaveBeenCalledOnce();
+    expect(receive).toHaveBeenCalledWith(field(4));
+    expect(fail).not.toHaveBeenCalled();
+    expect(queue.peek(job(4))).toEqual(field(4));
+    expect(vi.getTimerCount()).toBe(0);
+    release();
+  });
+
+  it('ignores saved Worker callbacks after timing out, including during the local replacement', () => {
+    function* compute(): Generator<void, ChResult, void> {
+      for (let i = 0; i < 9; i++) yield;
+      return field(4);
+    }
+    const { queue, worker, release } = fixture({ compute, workerTimeoutMs: 50 });
+    const receive = vi.fn(),
+      fail = vi.fn();
+    queue.subscribe(job(4), receive, fail, 0);
+    vi.advanceTimersByTime(0);
+    const id = worker.sent[0].id,
+      lateMessage = worker.onmessage!,
+      lateError = worker.onerror!;
+    vi.advanceTimersByTime(50);
+    lateMessage({ data: { id, set: field(99) } } as MessageEvent<ChReply>);
+    lateError({ preventDefault: vi.fn() } as unknown as ErrorEvent);
+    expect(receive).not.toHaveBeenCalled();
+    expect(fail).not.toHaveBeenCalled();
+    expect(queue.peek(job(4))).toBeUndefined();
+    vi.advanceTimersByTime(10);
+    expect(receive).toHaveBeenCalledExactlyOnceWith(field(4));
+    lateMessage({ data: { id, set: field(100) } } as MessageEvent<ChReply>);
+    expect(queue.peek(job(4))).toEqual(field(4));
+    expect(worker.terminate).toHaveBeenCalledOnce();
+    release();
+  });
+
+  it('drops obsolete work on timeout and continues only the current ready subscriptions', () => {
+    const computed: number[] = [];
+    function* compute(input: ChJob): Generator<void, ChResult, void> {
+      const sigma = input.kind === 'field' ? input.request.sigmaDb : -1;
+      computed.push(sigma);
+      yield;
+      return field(sigma);
+    }
+    const { queue, worker, release } = fixture({ compute, workerTimeoutMs: 50 });
+    const obsolete = vi.fn(),
+      current = vi.fn();
+    const cancelOld = queue.subscribe(job(1), obsolete, undefined, 0);
+    vi.advanceTimersByTime(0);
+    cancelOld();
+    queue.subscribe(job(2), current, undefined, 0);
+    const cancelDropped = queue.subscribe(job(3), obsolete, undefined, 0);
+    vi.advanceTimersByTime(0);
+    cancelDropped();
+    vi.advanceTimersByTime(50);
+    vi.advanceTimersByTime(10);
+    expect(worker.sent).toHaveLength(1);
+    expect(worker.terminate).toHaveBeenCalledOnce();
+    expect(computed).toEqual([2]);
+    expect(obsolete).not.toHaveBeenCalled();
+    expect(current).toHaveBeenCalledExactlyOnceWith(field(2));
+    expect(queue.peek(job(1))).toBeUndefined();
+    release();
+  });
+
+  it('clears the native deadline and pending debounce when the final owner leaves', () => {
+    const computed = vi.fn(function* (): Generator<void, ChResult, void> {
+      return field(4);
+    });
+    const { queue, worker, release } = fixture({ compute: computed, workerTimeoutMs: 50 });
+    const receive = vi.fn();
+    queue.subscribe(job(4), receive, undefined, 0);
+    vi.advanceTimersByTime(0);
+    queue.subscribe(job(5), receive, undefined, 20);
+    expect(vi.getTimerCount()).toBe(2);
+    release();
+    expect(worker.terminate).toHaveBeenCalledOnce();
+    expect(vi.getTimerCount()).toBe(0);
+    vi.advanceTimersByTime(100);
+    expect(computed).not.toHaveBeenCalled();
+    expect(receive).not.toHaveBeenCalled();
   });
 
   it('fails over only live jobs and yields local batches so pending input and navigation can cancel them', () => {
@@ -145,20 +279,20 @@ describe('cellular worker request lifecycle', () => {
     const { queue, worker, release } = fixture({ compute });
     const receive = vi.fn();
     const cancelOld = queue.subscribe(job(1), receive, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     cancelOld();
     const cancelNext = queue.subscribe(job(2), receive, undefined, 0);
     const cancelDropped = queue.subscribe(job(3), receive, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     cancelDropped();
     worker.fail();
     expect(computed).toEqual([]); // no synchronous queue drain on the error event
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     expect(computed).toEqual([2]);
     expect(chunks.length).toBeLessThan(12);
     expect(receive).not.toHaveBeenCalled();
     cancelNext();
-    vi.runAllTimers();
+    vi.advanceTimersByTime(10);
     expect(computed).toEqual([2]);
     expect(receive).not.toHaveBeenCalled();
     expect(worker.terminate).toHaveBeenCalledOnce();
@@ -181,9 +315,9 @@ describe('cellular worker request lifecycle', () => {
     });
     const receive = vi.fn();
     queue.subscribe(job(4), receive, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     expect(receive).not.toHaveBeenCalled();
-    vi.runAllTimers();
+    vi.advanceTimersByTime(10);
     expect(receive).toHaveBeenCalledOnce();
     release();
   });
@@ -194,7 +328,7 @@ describe('cellular worker request lifecycle', () => {
       next = vi.fn();
     queue.subscribe(job(-1), vi.fn(), failed, 0);
     queue.subscribe(job(6), next, undefined, 0);
-    vi.runAllTimers();
+    vi.advanceTimersByTime(0);
     worker.onmessage?.({
       data: { id: worker.sent[0].id, error: 'Invalid shadowing' },
     } as MessageEvent<ChReply>);
@@ -215,7 +349,7 @@ describe('cellular worker request lifecycle', () => {
       receive = vi.fn();
     const leave = queue.retain();
     queue.subscribe(job(1), receive, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     const lateMessage = first.onmessage!,
       lateError = first.onerror!;
     queue.subscribe(job(2), receive); // pending debounce timer
@@ -225,7 +359,7 @@ describe('cellular worker request lifecycle', () => {
     expect(first.onmessage).toBeNull();
     const leaveAgain = queue.retain();
     queue.subscribe(job(3), receive, undefined, 0);
-    vi.runOnlyPendingTimers();
+    vi.advanceTimersByTime(0);
     lateMessage({ data: { id: first.sent[0].id, set: field(1) } } as MessageEvent<ChReply>);
     lateError({ preventDefault: vi.fn() } as unknown as ErrorEvent);
     expect(receive).not.toHaveBeenCalled();
@@ -239,7 +373,7 @@ describe('cellular worker request lifecycle', () => {
     const { queue, worker, release } = fixture({ budgetBytes: 300 });
     for (const sigma of [1, 2]) {
       const cancel = queue.subscribe(job(sigma), vi.fn(), undefined, 0);
-      vi.runOnlyPendingTimers();
+      vi.advanceTimersByTime(0);
       worker.reply(worker.sent.at(-1)!.id, sigma); // 154 retained bytes, so two cannot fit
       cancel();
     }

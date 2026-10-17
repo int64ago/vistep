@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { narrationSource } from './narration-source';
+import { narrationSource, NARRATION_WAIT_TIMEOUT_MS } from './narration-source';
+const sources: ReturnType<typeof narrationSource>[] = [];
 
 function fixture(rangeEnd = 0, readyState = 4) {
   const audio = {
@@ -16,18 +17,41 @@ function fixture(rangeEnd = 0, readyState = 4) {
   vi.stubGlobal('fetch', fetcher);
   vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:recording');
   vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => {});
+  const source = narrationSource(audio as unknown as HTMLAudioElement, audio.src, events);
+  sources.push(source);
   return {
     audio,
     events,
     fetcher,
-    source: narrationSource(audio as unknown as HTMLAudioElement, audio.src, events),
+    source,
   };
 }
 afterEach(() => {
+  sources.splice(0).forEach((source) => source.dispose());
+  vi.useRealTimers();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
 describe('narration on static hosts without byte ranges', () => {
+  it('aborts a hung fallback fetch at the deadline, ignores late data and allows retry', async () => {
+    vi.useFakeTimers();
+    const f = fixture();
+    let complete!: (response: Response) => void;
+    f.fetcher.mockReturnValueOnce(new Promise<Response>((resolve) => (complete = resolve)));
+    f.source.seek(58);
+    await vi.advanceTimersByTimeAsync(NARRATION_WAIT_TIMEOUT_MS);
+    expect(f.events.error).toHaveBeenCalledOnce();
+    expect(f.fetcher.mock.calls[0][1]?.signal?.aborted).toBe(true);
+    expect(f.source.loading).toBe(false);
+    complete(new Response(new Blob(['late'])));
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(URL.createObjectURL).not.toHaveBeenCalled();
+    f.source.seek(142);
+    f.source.retry();
+    expect(f.fetcher).toHaveBeenCalledTimes(2);
+    expect(f.fetcher.mock.calls[1][1]?.cache).toBe('reload');
+  });
   it('keeps native streaming when the requested position is seekable', () => {
     const f = fixture(192);
     f.source.seek(58);

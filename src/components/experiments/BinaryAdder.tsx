@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { t } from '../../i18n';
 import { adderShot, fullAdder, inputSignal, rippleAdder, type Bit } from '../../models/adder';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { AdderCircuit, AdderColumns } from '../lab/AdderDrawing';
 import '../../styles/adder.css';
 export default function BinaryAdder() {

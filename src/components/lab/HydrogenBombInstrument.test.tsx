@@ -62,7 +62,7 @@ describe('fusion instrument markup', () => {
     const flame = render('ignition', 860, 4, 0.1);
     expect(flame).toContain('≈ 0');
     const shot = hydrogenBombShot(4, 0.1);
-    expect(fusionFootnote('ignition', shot.parameters, shot, false)).toContain('反应率为零');
+    expect(fusionFootnote('ignition', shot.parameters, shot, false)).toContain('不代表点火预测');
     expect(fusionFootnote('rate', shot.parameters, shot, true)).toContain('外推');
     expect(flame).not.toMatch(/<circle[^>]*r="2"/);
   });

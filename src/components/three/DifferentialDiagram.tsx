@@ -214,33 +214,60 @@ export function DifferentialMechanism({ motion: m }: { motion: DifferentialMotio
   );
 }
 export function DifferentialMean({ motion: m }: { motion: DifferentialMotion }) {
-  const extent = Math.max(2, Math.abs(m.leftRate), Math.abs(m.rightRate)),
+  const compact = useCompact(),
+    extent = Math.max(2, Math.abs(m.leftRate), Math.abs(m.rightRate)),
     x = (v: number) => 150 + (120 * v) / extent;
   return (
     <div className="diff-mean">
       <p>{t('一侧比壳体慢多少，另一侧就快多少。')}</p>
-      <svg viewBox="0 0 300 142" aria-hidden="true">
-        <path d="M30 100H270" stroke="#59747b" />
-        <path d={`M${x(m.leftRate)} 66H${x(m.rightRate)}`} stroke="#94adb0" strokeWidth="3" />
-        {[
-          [m.leftRate, colors[0]],
-          [m.carrierRate, '#d7d9b9'],
-          [m.rightRate, colors[1]],
-        ].map(([v, c], i) => (
-          <g key={i}>
-            <path
-              d={`M${x(v as number)} 100V${i === 1 ? 35 : 55}`}
-              stroke={c as string}
-              strokeWidth="2"
-            />
-            <circle cx={x(v as number)} cy={i === 1 ? 35 : 55} r="7" fill={c as string} />
-          </g>
-        ))}
-      </svg>
-      <div className="diff-equation">
-        {m.leftRate.toFixed(2)} + {m.rightRate.toFixed(2)} = 2 × {m.carrierRate.toFixed(2)}
+      <div className="diff-mean-layout">
+        <div className="diff-mean-connections">
+          <DifferentialMechanism motion={m} />
+          <div className="diff-mean-parts">
+            {[
+              { label: '左轮', rate: m.leftRate, color: colors[0] },
+              { label: '差速器壳体', rate: m.carrierRate, color: '#d7d9b9' },
+              { label: '右轮', rate: m.rightRate, color: colors[1] },
+            ].map(({ label, rate, color }) => (
+              <span key={label}>
+                {t(label)}
+                <strong style={{ color }}>{rate.toFixed(2)}</strong>
+                <small>rad/s</small>
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="diff-mean-calculation">
+          <svg
+            className="diff-mean-scale"
+            viewBox={compact ? '0 15 300 100' : '0 0 300 142'}
+            aria-hidden="true"
+          >
+            <path d="M30 100H270" stroke="#59747b" />
+            <path d={`M${x(m.leftRate)} 66H${x(m.rightRate)}`} stroke="#94adb0" strokeWidth="3" />
+            {[
+              [m.leftRate, colors[0]],
+              [m.carrierRate, '#d7d9b9'],
+              [m.rightRate, colors[1]],
+            ].map(([v, c], i) => (
+              <g key={i}>
+                <path
+                  d={`M${x(v as number)} 100V${i === 1 ? 35 : 55}`}
+                  stroke={c as string}
+                  strokeWidth="2"
+                />
+                <circle cx={x(v as number)} cy={i === 1 ? 35 : 55} r="7" fill={c as string} />
+              </g>
+            ))}
+          </svg>
+          <div className="diff-equation">
+            <span style={{ color: colors[0] }}>{m.leftRate.toFixed(2)}</span> +{' '}
+            <span style={{ color: colors[1] }}>{m.rightRate.toFixed(2)}</span> = 2 ×{' '}
+            <span style={{ color: '#d7d9b9' }}>{m.carrierRate.toFixed(2)}</span>
+          </div>
+          <p>ωL + ωR = 2ωC</p>
+        </div>
       </div>
-      <p>ωL + ωR = 2ωC</p>
     </div>
   );
 }

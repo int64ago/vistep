@@ -6,7 +6,7 @@ import {
   type ConvectionOptions,
 } from '../../models/convection';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import { useConvection } from '../lab/useConvection';
 import ConvectionCell from '../lab/ConvectionCell';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { t } from '../../i18n';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import {
   rollingPixel,

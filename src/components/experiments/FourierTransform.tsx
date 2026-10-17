@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { t } from '../../i18n';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth, signalPath } from '../lab/SignalFigure';
 import {
   dft,

@@ -22,7 +22,7 @@ vi.mock('./Studio', () => ({
     return null;
   },
 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => ({ watch: true }) }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => ({ watch: true }) }));
 vi.mock('../lab/useCompact', () => ({ useCompact: () => capture.compact }));
 vi.mock('../../i18n', () => ({ t: (s: string) => s }));
 import EscapementStudio from './EscapementStudio';

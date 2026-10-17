@@ -28,6 +28,23 @@ export function normalizeSearch(value: string) {
     .replace(/\s+/g, ' ')
     .trim();
 }
+// Segment only the query: a Chinese compound such as 相机传感器 should find
+// the separate everyday/technical aliases 相机 and 拜耳传感器. Keep Latin
+// acronym boundaries intact (AI must still not match rainbow).
+const chineseWords =
+  typeof Intl.Segmenter === 'function' ? new Intl.Segmenter('zh', { granularity: 'word' }) : null;
+export function searchTokens(query: string): string[] {
+  const normalized = normalizeSearch(query);
+  return normalized
+    .split(' ')
+    .filter(Boolean)
+    .flatMap((token) => {
+      if (!/\p{Script=Han}/u.test(token) || !chineseWords) return [token];
+      return [...chineseWords.segment(token)]
+        .filter((part) => part.isWordLike)
+        .map((part) => part.segment);
+    });
+}
 export function readFilters(search: string, categories: readonly string[]): DiscoveryFilters {
   const params = new URLSearchParams(search);
   const category = params.get('category') ?? 'all';
@@ -59,7 +76,7 @@ export function sceneScore(scene: SearchableScene, filters: DiscoveryFilters): n
   if (filters.age !== null && scene.minAge > filters.age) return -1;
   if (filters.length === 'short' && scene.duration > 180) return -1;
   if (filters.length === 'long' && scene.duration <= 180) return -1;
-  const tokens = normalizeSearch(filters.query).split(' ').filter(Boolean);
+  const tokens = searchTokens(filters.query);
   const name = normalizeSearch(scene.name);
   const keywords = normalizeSearch(scene.keywords + ' ' + scene.slug);
   const text = normalizeSearch(scene.text.replace(/https?:\/\/[^\s\u3400-\u9fff]+/gi, ' '));

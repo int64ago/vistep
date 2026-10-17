@@ -13,7 +13,7 @@ vi.mock('./Studio', () => ({
     return null;
   },
 }));
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => ({ watch: true, chapter: 0 }) }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => ({ watch: true, chapter: 0 }) }));
 vi.mock('../../i18n', () => ({ t: (s: string) => s }));
 describe('rigid brake linkage and framing', () => {
   it('satisfies both fixed-length constraints throughout the complete input travel', () => {

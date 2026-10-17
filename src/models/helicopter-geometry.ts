@@ -437,6 +437,17 @@ export function helicopterWorldPoint(
   const p = f.tail ? [x * ca - z * sa, x * sa + z * ca, y] : [x * ca + z * sa, y, -x * sa + z * ca];
   return p.map((v, i) => v + f.position[i]) as HeliPoint;
 }
+/** Teaching annotation anchored to blade A's quarter-chord pitch axis. The
+ * section shot moves along that same blade; this is not an extra hardware part. */
+export function helicopterTracking(visual: HelicopterVisual) {
+  const radius = visual.view === 'section' ? HELICOPTER.radius * 0.75 : 0.72,
+    half = visual.view === 'section' ? 0.18 : 0.32,
+    point = (r: number) => helicopterWorldPoint([r, 0, 0], 'blade-a', visual);
+  return {
+    point: point(radius),
+    axis: [point(radius - half), point(radius + half)] as [HeliPoint, HeliPoint],
+  };
+}
 export function helicopterMeshData(solid: HeliSolid) {
   const positions: number[] = [],
     indices: number[] = [];

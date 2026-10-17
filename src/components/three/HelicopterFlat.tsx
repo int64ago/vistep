@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { t } from '../../i18n';
 import { helicopterArtwork } from '../../models/helicopter-cover';
-import { HeliArrow } from '../lab/HelicopterInstruments';
+import { HeliArrow, HelicopterTrackMark } from '../lab/HelicopterInstruments';
 import type { HelicopterVisual } from '../../models/helicopter-geometry';
 export default function HelicopterFlat({ visual }: { visual: HelicopterVisual }) {
   const host = useRef<HTMLDivElement>(null),
@@ -47,6 +47,17 @@ export default function HelicopterFlat({ visual }: { visual: HelicopterVisual })
           {art.sectionLift && <HeliArrow {...art.sectionLift} />}
           {art.sectionFlow && <HeliArrow {...art.sectionFlow} color="#77989d" />}
           {visual.torque && <HeliArrow a={art.tail.a} b={art.tail.b} />}
+          {['section', 'cyclic', 'collective'].includes(visual.view ?? 'aircraft') && (
+            <g>
+              <path
+                d={`M${art.tracking.axis[0]}L${art.tracking.axis[1]}`}
+                stroke="#a96e39"
+                strokeWidth="2"
+                strokeDasharray="4 4"
+              />
+              <HelicopterTrackMark x={art.tracking.point[0]} y={art.tracking.point[1]} />
+            </g>
+          )}
         </g>
       </svg>
     </div>

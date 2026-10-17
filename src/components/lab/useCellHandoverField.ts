@@ -1,5 +1,12 @@
-import { useEffect, useState } from 'react';
-import { type ChFieldSet, type ChParams, type ChRun } from '../../models/cell-handover';
+import { useEffect, useMemo, useState } from 'react';
+import {
+  CH_DEFAULT,
+  CH_EAGER,
+  type ChFieldSet,
+  type ChParams,
+  type ChRun,
+} from '../../models/cell-handover';
+import { chBuildFilmPlan } from '../../models/cell-handover-film';
 import {
   CellHandoverRequests,
   type ChFieldRequest,
@@ -47,4 +54,15 @@ export function useCellHandoverField(request: ChFieldRequest | null) {
 export function useCellHandoverRun(params: ChParams, fallback: ChRun) {
   const { value, current, error } = useWorkerResult<ChRun>({ kind: 'run', params });
   return { run: value ?? fallback, pending: !current && !error, error };
+}
+
+/** Film preparation uses the same cancellable Worker queue and cooperative fallback as exploration. */
+export function useCellHandoverPlan() {
+  const tuned = useWorkerResult<ChRun>({ kind: 'run', params: CH_DEFAULT });
+  const eager = useWorkerResult<ChRun>({ kind: 'run', params: CH_EAGER });
+  const plan = useMemo(
+    () => (tuned.value && eager.value ? chBuildFilmPlan(tuned.value, eager.value) : null),
+    [tuned.value, eager.value],
+  );
+  return { plan, error: tuned.error || eager.error };
 }

@@ -3,7 +3,7 @@ import { create, type ReactTestRenderer } from 'react-test-renderer';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import Speaker from './Speaker';
-import { FilmContext } from '../lab/Showcase';
+import { FilmContext } from '../lab/FilmContext';
 import { speakerResponse, speakerShot } from '../../models/speaker';
 
 const director = {

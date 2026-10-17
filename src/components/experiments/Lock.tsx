@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { lockInitial, lockPose, lockCommand, lockShot, type LockKey } from '../../models/lock';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import LockStudio from '../three/LockStudio';
 import { LockSection, LockStackStates, LockComparison } from '../three/LockDiagram';

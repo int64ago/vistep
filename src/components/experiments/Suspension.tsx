@@ -11,7 +11,7 @@ import {
   suspensionForces,
   type SuspensionRoad,
 } from '../../models/suspension';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import SuspensionStudio from '../three/SuspensionStudio';
 import SuspensionDiagram from '../lab/SuspensionDiagram';
 import SuspensionTrace from '../lab/SuspensionTrace';

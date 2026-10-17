@@ -29,7 +29,7 @@ vi.mock('react', async (original) => {
     },
   };
 });
-vi.mock('../lab/Showcase', () => ({ useShowcase: () => ({ watch: true }) }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => ({ watch: true }) }));
 vi.mock('./Studio', () => ({
   default: (props: any) => {
     capture.props = props;

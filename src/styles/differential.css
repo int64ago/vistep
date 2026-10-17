@@ -141,7 +141,7 @@
 .diff-distance span:last-child strong {
   color: #aed1d5;
 }
-.diff-mean svg {
+.diff-mean-calculation > svg {
   display: block;
   width: 100%;
   height: 160px;
@@ -151,6 +151,38 @@
   text-align: center;
   font-variant-numeric: tabular-nums;
   color: #dddabe;
+}
+.diff-mean-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+.diff-mean-connections > .diff-mechanism {
+  height: 210px;
+  width: 100%;
+}
+.diff-mean-parts {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr 1fr;
+  gap: 8px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.diff-mean-parts > span {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+}
+.diff-mean-parts strong {
+  font-size: 22px;
+  font-weight: 480;
+  font-variant-numeric: tabular-nums;
+}
+.diff-mean-parts small {
+  font-size: 16px;
+  color: var(--diff-muted);
 }
 .diff-load-scope {
   font-size: 16px;
@@ -410,6 +442,16 @@
   }
   .diff-equation {
     font-size: 21px;
+  }
+  .diff-mean-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .diff-mean-calculation > p {
+    margin-bottom: 0;
+  }
+  .diff-mean-calculation > .diff-mean-scale {
+    height: 95px;
   }
   .diff-torque-pair {
     gap: 16px;

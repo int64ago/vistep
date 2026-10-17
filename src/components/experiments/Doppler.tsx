@@ -7,7 +7,7 @@ import {
   type DopplerFocus,
 } from '../../models/doppler';
 import { Range } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import { DopplerArrivalRuler, DopplerField, dopplerVelocityLabel } from '../lab/DopplerField';
 import '../../styles/doppler.css';

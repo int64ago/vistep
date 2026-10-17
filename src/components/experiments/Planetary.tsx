@@ -8,7 +8,7 @@ import {
 } from '../../models/planetary';
 import { TAU } from '../../models/mechanisms';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { constraintNames, gearNames } from '../lab/PlanetaryDiagram';
 import PlanetaryStudio from '../three/PlanetaryStudio';
 import '../../styles/planetary.css';

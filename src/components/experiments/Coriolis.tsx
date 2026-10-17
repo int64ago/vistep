@@ -7,7 +7,7 @@ import {
   type CoriolisConfig,
   type RotationPoint,
 } from '../../models/coriolis';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import { Range } from '../lab/Controls';
 import '../../styles/coriolis.css';

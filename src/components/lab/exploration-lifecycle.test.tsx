@@ -19,7 +19,7 @@ const film = vi.hoisted(() => ({
   chapterProgress: 0,
   chapters: [{ at: 0 }, { at: 1 }, { at: 2 }],
 }));
-vi.mock('./Showcase', () => ({ useShowcase: () => film }));
+vi.mock('./FilmContext', () => ({ useShowcase: () => film }));
 
 const mounted: ReactTestRenderer[] = [];
 afterEach(async () => {

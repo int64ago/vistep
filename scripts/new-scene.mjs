@@ -13,7 +13,27 @@ export function createSceneDraft(root, slug, medium) {
   // Exclusive creation protects an existing draft, including its uncommitted edits.
   mkdirSync(directory);
   const files = {
-    'brief.md': `# ${slug}\n\nStatus: draft · Medium: ${medium} · Target: 2–3 minutes (2–5 permitted)\n\n## The one question / 唯一主问题\n\n## Before → after / 观众原先的直觉与最后能解释的现象\n\n## Follow one object / 全程追踪的对象\n\n## Why this medium / 为什么选择 ${medium}\n\n## Model / 状态、单位、不变量、教学简化\n\n## Sources / 对应关键判断的一手资料\n\n## Three decisive frames / 初始、转折、因果结果的桌面与手机构图\n\n## Optional experiment / 只保留能检验结论的操作\n\n## Fallback / 减少动态与静音；启动能力门禁后的静态可读性；运行时图形失败的后备视图\n`,
+    'brief.md': `# ${slug}\n\nStatus: draft · Medium: ${medium} · Target: about 2–3 minutes; complete shorter explanations welcome; maximum 5 minutes\n\n## The one question / 唯一主问题\n\n## Editorial decision / 误解、前置、与已有专题的区别、标题必要限定\n\n## Before → after / 观众原先的直觉与最后能解释的现象\n\n## Follow one object / 全程追踪的对象\n\n## Why this medium / 为什么选择 ${medium}\n\n## Model / 状态、单位、不变量、教学简化\n\n## Sources / 对应关键判断的一手资料\n\n## Three decisive frames / 初始、转折、因果结果的桌面与手机构图\n\n## Optional experiment / 只保留能检验结论的操作\n\n## Fallback / 减少动态与静音；启动能力门禁后的静态可读性；运行时图形失败的后备视图\n`,
+    'review.json':
+      JSON.stringify(
+        {
+          schemaVersion: 1,
+          slug,
+          source: { commit: null, treeHash: null },
+          owner: null,
+          checks: [
+            'model',
+            'browser',
+            'visual',
+            'listening-zh',
+            'listening-en',
+            'physical-device',
+          ].map((type) => ({ type, status: 'not-run', conditions: '', evidence: [] })),
+          publication: 'local',
+        },
+        null,
+        2,
+      ) + '\n',
     'storyboard.json':
       JSON.stringify(
         { slug, medium, duration: null, chapters: [], targetSeconds: 180, maximumSeconds: 300 },

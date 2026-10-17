@@ -10,7 +10,7 @@ vi.mock('react', async (original) => {
     useState: (initial: unknown) => react.useState(initial === 760 ? 278 : initial),
   };
 });
-vi.mock('../lab/Showcase', () => ({
+vi.mock('../lab/FilmContext', () => ({
   useShowcase: () => ({
     watch: true,
     chapter: film.chapter,

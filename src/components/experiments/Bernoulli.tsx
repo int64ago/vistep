@@ -6,7 +6,7 @@ import {
   solveBernoulli,
   type BernoulliShot,
 } from '../../models/bernoulli';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
 import BernoulliTube, { BernoulliHeads } from '../lab/BernoulliTube';
 import '../../styles/bernoulli.css';

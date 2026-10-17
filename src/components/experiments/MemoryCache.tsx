@@ -15,7 +15,7 @@ import {
   type CacheTraceName,
   type CacheView,
 } from '../../models/memory-cache';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import '../../styles/memory-cache.css';
 
 const colors = [

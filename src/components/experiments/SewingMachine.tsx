@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 import { t } from '../../i18n';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import { sewingInitial, sewingPose, sewingShot } from '../../models/sewing-machine';
 import SewingMachineStudio from '../three/SewingMachineStudio';

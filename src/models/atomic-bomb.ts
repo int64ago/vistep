@@ -130,7 +130,9 @@ export function generationsToReach(k: number, target: number) {
     throw new RangeError('Growth requires k > 1 and a target ≥ 1');
   return Math.log(target) / Math.log(k);
 }
-/** One delayed group: the average time between generations lengthens to (1−β)ℓ + β·τd. */
+/** Weighted mean delay, (1−β)ℓ + β·τd. This is NOT a one-group point-kinetics
+ * solution: the presentation uses a low-reactivity, order-of-magnitude
+ * mean-generation-time approximation and does not model precursor transients. */
 export function effectiveGenerationS(promptLifetimeS: number) {
   if (!Number.isFinite(promptLifetimeS) || promptLifetimeS <= 0)
     throw new RangeError('Prompt lifetime must be positive');

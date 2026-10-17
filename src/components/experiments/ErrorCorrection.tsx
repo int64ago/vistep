@@ -16,7 +16,7 @@ import {
   type EcMode,
   type EcShot,
 } from '../../models/error-correction';
-import { useShowcase } from '../lab/Showcase';
+import { useShowcase } from '../lab/FilmContext';
 import { useCompact } from '../lab/useCompact';
 import '../../styles/error-correction.css';
 
