@@ -1,131 +1,250 @@
-.bio-respiration {
-  background: #eceddb;
-  border-radius: 24px;
-  padding: clamp(14px, 3vw, 28px);
-  color: #4e614a;
-}
-.bio-respiration-kind {
+.br10 {
+  background: #eef0e3;
+  border-radius: 22px;
+  padding: 14px 20px;
+  color: #405d4b;
+  min-width: 0;
   font-size: 16px;
-  margin: 0 0 16px;
-  color: #7f896c;
 }
-.bio-respiration-apparatus {
-  max-width: 720px;
-  margin: auto;
+.br10 * {
+  box-sizing: border-box;
 }
-.bio-respiration-apparatus svg {
+.br10-kicker {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.3;
+  margin: 0 0 8px;
+  color: #6d7f64;
+}
+.br10 > svg {
   width: 100%;
   height: 310px;
   display: block;
-}
-.bio-respiration-labels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.45;
-}
-.bio-respiration-labels.three {
-  grid-template-columns: repeat(3, 1fr);
-}
-.bio-respiration-note {
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: center;
-  max-width: 640px;
-  margin: 16px auto;
-}
-.bio-respiration-assays {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
 }
-.bio-respiration-assays > div {
-  flex: 1;
-  min-width: 0;
-  text-align: center;
+.br10 svg text {
+  font-family: inherit;
+  font-size: 22px;
+  fill: currentColor;
 }
-.bio-respiration-assays svg {
-  width: 100%;
-  height: 240px;
-  display: block;
+.br10 svg text[fill] {
+  fill: revert-layer;
 }
-.bio-respiration-assays p {
-  font-size: 16px;
-  line-height: 1.5;
-}
-.bio-respiration-molecule,
-.bio-respiration-path {
-  width: 100%;
-  height: 320px;
-  display: block;
-}
-.bio-respiration-count {
+.br10-note {
   text-align: center;
   font-size: 16px;
+  line-height: 1.35;
+  min-height: 22px;
+  margin: 8px auto 0;
+  max-width: 650px;
 }
-.bio-respiration-products {
+.br10-labels,
+.br10-side-labels {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px 24px;
+  justify-content: space-around;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: center;
+}
+.br10-side-labels {
+  justify-content: space-between;
+  max-width: 650px;
+  margin: auto;
+}
+.br10-ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 500px;
+  margin: 32px auto;
+  gap: 28px;
+}
+.br10-nucleotide {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 15px;
+}
+.br10-nucleotide b {
+  font-size: 20px;
+}
+.br10-nucleotide > div {
+  display: flex;
+  gap: 6px;
+}
+.br10-nucleotide span {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #d9c697;
+  font-size: 18px;
+}
+.br10-account {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+.br10-predict {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin: 30px auto;
+  max-width: 650px;
+}
+.br10-predict > div {
+  display: grid;
+  gap: 22px;
+  text-align: center;
+  padding: 18px 12px;
+  background: #e0e6d5;
+  border-radius: 20px;
+}
+.br10-predict b {
+  font-size: 18px;
+}
+.br10-predict strong {
+  font-size: 24px;
+  font-weight: 500;
+}
+.br10-controls {
+  display: grid;
+  gap: 15px;
+  max-width: 720px;
+  margin: 25px auto 0;
+}
+.br10-controls .segmented {
+  flex-wrap: wrap;
+}
+.br10-controls button {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  min-width: 44px;
+  border: 1px solid #b4c2ac;
+  border-radius: 12px;
+  background: #f7f7ee;
+  padding: 9px 12px;
+}
+.br10-controls p {
   font-size: 16px;
   line-height: 1.5;
+  margin: 0;
 }
-.bio-respiration-controls {
-  display: grid;
-  gap: 16px;
-  margin: 25px auto 0;
-  max-width: 680px;
-}
-.bio-respiration-controls .segmented {
-  flex-wrap: wrap;
-}
-.bio-respiration-controls button {
+.br10-controls input {
   min-height: 44px;
-  font: inherit;
-  border: 1px solid #bcc5a9;
-  border-radius: 12px;
-  background: #f6f6e8;
-  color: inherit;
-  padding: 8px 12px;
-}
-.bio-respiration-controls p {
-  font-size: 16px;
-  line-height: 1.6;
 }
 @media (max-width: 540px) {
-  .bio-respiration-apparatus svg {
-    height: 195px;
+  .br10 {
+    padding: 8px 10px;
+    border-radius: 18px;
   }
-  .bio-respiration-labels.three {
-    gap: 6px;
+  .br10-kicker {
+    margin-bottom: 4px;
   }
-  .bio-respiration-assays {
-    gap: 14px;
-  }
-  .bio-respiration-assays svg {
-    height: 190px;
-  }
-  .bio-respiration-molecule {
+  .br10 > svg {
     height: 230px;
   }
-  .bio-respiration-path {
-    height: 280px;
+  .br10[data-mode='atp'] > svg {
+    height: 237px;
   }
-  .bio-respiration-products {
-    display: grid;
-    gap: 8px;
-    text-align: center;
+  .br10[data-mode='aerobic'] > svg {
+    height: 216px;
+  }
+  .br10 svg text {
+    font-size: 22px;
+  }
+  .br10-note {
+    margin-top: 5px;
+    line-height: 1.25;
+  }
+  .br10-labels {
+    gap: 10px;
+  }
+  .br10-ledger {
+    margin: 36px auto;
+    gap: 24px 15px;
+  }
+  .br10-nucleotide {
+    gap: 6px;
+  }
+  .br10-nucleotide > div {
+    gap: 3px;
+  }
+  .br10-nucleotide span {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+  .br10-account {
+    gap: 15px;
+  }
+  .br10-predict {
+    gap: 10px;
+    margin: 24px 0;
+  }
+  .br10-predict > div {
+    padding: 16px 5px;
+    gap: 24px;
+  }
+  .br10-predict b {
+    font-size: 16px;
+    min-height: 40px;
+  }
+  .br10-predict strong {
+    font-size: 22px;
+  }
+  .br10-side-labels {
+    font-size: 16px;
+    gap: 16px;
+  }
+  .br10-controls {
+    margin-top: 20px;
+  }
+  .showcase:has(.br10) {
+    scroll-margin-top: 16px;
   }
 }
-
-@media (max-width: 540px) {
-  .bio-respiration {
-    padding-top: 6px;
-    padding-bottom: 6px;
+@media (max-width: 540px) and (max-height: 700px) {
+  html:has(.br10) {
+    scroll-padding-top: 0;
+  }
+  .showcase:has(.br10) {
+    scroll-margin-top: 16px;
+  }
+  .br10 > svg {
+    height: 214px;
+  }
+  .br10[data-mode='atp'] > svg {
+    height: 225px;
+  }
+  .br10[data-mode='aerobic'] > svg {
+    height: 204px;
+  }
+}
+@media (max-width: 540px) and (max-height: 700px) {
+  .br10[data-mode='fermentation'] > svg {
+    height: 206px;
+  }
+}
+@media (max-width: 540px) and (max-height: 700px) {
+  .br10[data-mode='air'] > svg,
+  .br10[data-mode='sealed'] > svg,
+  .br10[data-mode='assay'] > svg {
+    height: 180px;
+  }
+  .br10[data-mode='glycolysis'] > svg {
+    height: 206px;
+  }
+  .br10[data-mode='atp'] > svg {
+    height: 217px;
+  }
+}
+@media (max-width: 540px) and (max-height: 700px) {
+  .br10[data-mode='atp'] > svg {
+    height: 210px;
   }
 }

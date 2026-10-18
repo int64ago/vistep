@@ -1,27 +1,85 @@
-<h2 id="understand">Turn theory into comparable observations</h2>
+<h2 id="understand">Same experiment, different times?</h2>
 
-Interferometers compare phases, muon experiments compare survival, and atomic clocks compare readings after reunion. The train is a thought experiment requiring time, position and a reference frame for each event.
+A flash at the centre of a carriage reaches both walls simultaneously in the train frame. In the ground frame, the rear wall approaches its light pulse while the front wall moves away, so the arrivals are not simultaneous. Keep the same emission and the same two wall-arrival events; change their coordinates.
 
-<h2 id="try">Rotate, change speed, change altitude</h2>
+Fast muons offer another test. With a mean proper lifetime of about 2.2 microseconds, why do so many reach lower altitudes? Compare fixed published counts with **one teaching population** subjected to classical and proper-time decay. A light clock and a contracted path explain how two frames agree on which particles survive.
 
-Rotate the interferometer to compare an ether-wind prediction with an ideal null result. Change muon speed to update proper time and survival. Reverse flight direction or change altitude to update all three clock contributions.
+Four flying atomic clocks bring the question to everyday scales. Speed and gravitational potential both contribute to accumulated clock offsets. Published analyzed results and a constant-height teaching model stay separate: controls never rewrite historical records.
 
-<h2 id="deeper">Parameters and limits</h2>
+<h2 id="try">Predict before changing a condition</h2>
+
+- When the train moves left, which end receives light first? The right end becomes the rear wall and approaches its pulse. At zero speed, the arrivals are simultaneous.
+- Over the same 10 km, will increasing speed from 0.99c to 0.995c leave more muons? The same 100 lifetime quantiles leave 11 and 22 survivors respectively. Each comparison preserves particle identities.
+- Set the flying-clock model's height to zero. Its height contribution disappears, but the speed difference in the same nonrotating frame remains. Eastward flight does not always produce a negative total offset.
+
+<h2 id="deeper">Events, records and model limits</h2>
 
 <details>
+<summary>Train flash: event times are not message-reception times</summary>
 
-<summary>Calculating the relativistic models</summary>
+Set proper carriage length L₀=1 and light speed c=1. In the train frame, the central flash is emitted at (t′,x′)=(0,0); the two wall-arrival events are (0.5,−0.5) and (0.5,+0.5). At β=0.6, the ground-frame simultaneous carriage length is 0.8. The rear encounter occurs at (t,x)=(0.25,−0.25), and the front encounter at (1,1).
 
-<div className="formula">γ = 1/√(1−v²/c²); t′ = γ(t−vx/c²); N/N₀ = exp[−t/(γτ₀)]</div>
+<div className="formula">t′ = γ(t − βx), x′ = γ(x − βt), γ = 1/√(1−β²)</div>
 
-The ether hypothesis uses Galilean velocity addition without Lorentz contraction, effective single-arm L=11 m, λ=500 nm and a 30 km/s ether wind. A 90-degree rotation predicts about 0.44 fringes using exact classical round-trip times. The lower ideal null strip does not recreate historical precision. Arms, source and detector rotate together.
+The ground times differ; transforming either event to the train frame gives 0.5. Coordinate times refer to synchronized clocks at the event locations, not the later arrival of messages at a distant observer. Changing coordinates does not create another emission. These are normalized diagrams, not a practically achievable train speed.
 
-The train uses L=c=1, ground events (t,x)=(0,−0.5),(0,+0.5), and β=0.6. Reception times are 0.3125 and 1.25; transformed emission times are −0.375 and +0.375. These two pairs must not be confused. The drawing uses ground coordinates, not a train-frame simultaneity slice.
+</details>
 
-Muons use the mean proper lifetime 2.1969811 μs, not a half-life; default speed is 0.995c over 10 km. Dots round an expected fraction without detector efficiency, energy loss or random histories.
+<details>
+<summary>Muons: fixed published counts and a matched teaching population</summary>
 
-<div className="formula">Δτ ≈ [gh − (vaircraft²−vground²)/2]·t/c²</div>
+Table I in Frisch and Smith's 1963 paper lists six one-hour summit counts of 568, 554, 582, 527, 588 and 559, and five sea-level counts of 412, 403, 436,395 and 393. The reported means are 563±10 and 408±9; the error metadata follow the paper's statistical standard deviations of the means. These were separate runs after moving the same apparatus, **not two detectors matching individual muons during flight**.
 
-Flying clocks use a weak-field, low-speed equatorial approximation: ground rotation 465.1 m/s, aircraft speed ±250 m/s relative to ground, default altitude 10 km and time 40 h. Latitude changes, oblateness and real flight paths are omitted. The aircraft loop shows direction and progress, not actual circumnavigation timing. All nanosecond readings are model predictions, not 1971 measurements.
+The sites differed in altitude by 1907 m. Summit-selected speeds were approximately 0.9950c–0.9954c; particles slowed in air, and shielding was adjusted to compensate approximately. The effectiveγ analysis has additional assumptions. The paper's 568→about27→412 example uses one run and a recorded stopped-decay distribution. It must not be mixed with the all-run means or replaced by a smooth exponential calculation relabeled 27.
+
+<div className="formula">τ = t/γ, N/N₀ = exp(−τ/τ₀), τ₀ = 2.1969811 μs</div>
+
+The teaching model instead assumes constant speed, a 10 km path and the free-muon mean lifetime. Its 100 fixed quantiles u=(i+0.5)/100 have lifetimes −τ₀ln(u). Both calculations reuse those lifetimes and identities, with no fresh random draws and no claim of historical particle-level records. At 0.99c, ground flight time is about 33.69 μs and proper time about 4.75 μs. The continuous survival probability is approximately 11.49%; this quantile population leaves 11 particles. At 0.995c, it leaves 22. Mean lifetime is not half-life; the latter is τ₀ln2.
+
+The light clock is a geometrical analogy, not mirrors inside a muon. In the muon frame the ground approaches over distance H/γ at the same relative speed, giving the same proper time and survivor identities. The model omits energy loss, detector efficiency, backgrounds and random statistical fluctuations.
+
+</details>
+
+<details>
+<summary>Atomic clocks: four clocks, two trips and distinct uncertainties</summary>
+
+Hafele and Keating used the same four cesium clocks, first eastward and then westward, referenced to MEAN(USNO). The following published offsets in ns incorporate rate-change analysis. They are not untreated differences between departure and return readings.
+
+| Clock ID          | Eastward | Westward |
+| ----------------- | -------: | -------: |
+| 120               |      −57 |     +277 |
+| 361               |      −74 |     +284 |
+| 408               |      −55 |     +266 |
+| 447               |      −51 |     +266 |
+| Published mean±SD |   −59±10 |   +273±7 |
+
+The actual-route eastward prediction has gravitational contribution +144±14, motion contribution −184±18 and total −40±23 ns. Westward values are +179±18, +96±10 and +275±21 ns. Prediction uncertainties and observed standard deviations have different meanings. The published westward 7 ns SD is not exactly recoverable from the four rounded printed integers; preserve the published metadata rather than presenting this transcription as an independent statistical reanalysis.
+
+Total eastward trip time was 65.4 hours, including 41.2 flying hours; westward values were 80.3 and 48.6 hours. The separate teaching model uses 40 hours at 10 km, airspeed ±250 m/s relative to the ground and equatorial ground speed 465.1 m/s. In a weak-field, slow-speed approximation:
+
+<div className="formula">Δτ ≈ [gh − (vair²−vground²)/2]t/c²</div>
+
+Both velocities belong to the same frame that does not rotate with Earth. Eastward flight adds speed; westward flight cancels part of the ground speed. Reversing direction does not reverse the height contribution. This ideal model omits latitude, real routes and Earth's oblateness. Its results are not the historical predictions, and a 40-hour interval is not drawn as exactly one circuit of Earth.
+
+</details>
+
+<details>
+<summary>The retained interferometer model</summary>
+
+The ether hypothesis uses Galilean velocity addition without Lorentz contraction: effective arm length 11 m, wavelength 500 nm and assumed ether speed 30 km/s. The two perpendicular routes leave and return to the same splitter before reaching a common detector. Rotating 90° changes the classical round-trip prediction by about 0.44 fringes. The original paper's wavelength conditions differ from these teaching parameters.
+
+The stationary lower strip is an **idealized null-result illustration**, not invented historical noise or error bars. The experiment constrained the simple ether-wind explanation; one ideal image does not by itself derive all of relativity.
+
+</details>
+
+<details>
+<summary>Primary sources</summary>
+
+- [Michelson and Morley: On the Relative Motion of the Earth and the Luminiferous Ether(1887)](https://history.aip.org/exhibits/gap/PDF/michelson.pdf)
+- [Einstein: On the Electrodynamics of Moving Bodies(1905, English translation),§1–4](https://www.fourmilab.ch/etexts/einstein/specrel/www/)
+- [Frisch and Smith: Measurement of the Relativistic Time Dilation Using μ-Mesons(1963), Table I and discussion](https://doi.org/10.1119/1.1969508)
+- [Hafele and Keating: Predicted Relativistic Time Gains(1972)](https://doi.org/10.1126/science.177.4044.166)
+- [Hafele and Keating: Observed Relativistic Time Gains(1972)](https://doi.org/10.1126/science.177.4044.168)
+- [Particle Data Group: Muon listing(2025)](https://pdg.lbl.gov/2025/listings/rpp2025-list-muon.pdf)
 
 </details>

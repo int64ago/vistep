@@ -1413,13 +1413,22 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['铁离子的显色与转化', '铁离子', '亚铁离子', '硫氰酸根', '配合平衡'],
+      zh: [
+        '铁离子的显色与转化',
+        '铁离子',
+        '亚铁离子',
+        '硫氰酸根',
+        '配合平衡',
+        '红色究竟在报告什么？',
+      ],
       en: [
         'Iron-ion colour, redox and coordination',
         'iron III',
         'iron II',
         'thiocyanate',
         'coordination equilibrium',
+        'Iron colour, redox and coordination',
+        'What does red actually report?',
       ],
     },
   },
@@ -1556,8 +1565,20 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['呼吸的气路与碳路径', '呼吸作用', '酵母菌', 'ATP', 'respiration'],
-      en: ['Respiratory gas and carbon pathways', 'cell biology', 'biology experiments'],
+      zh: [
+        '呼吸的气路与碳路径',
+        '呼吸作用',
+        '酵母菌',
+        'ATP',
+        'respiration',
+        '发酵究竟让什么重新流动起来？',
+      ],
+      en: [
+        'Respiratory gas and carbon pathways',
+        'cell biology',
+        'biology experiments',
+        'What does fermentation set flowing again?',
+      ],
     },
   },
   'chem-solution-preparation': {
@@ -2600,11 +2621,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'nature',
     minAge: 14,
     keywords: {
-      zh: ['光、事件与时钟', '相对论怎样接受实验检验？', '近代物理实验'],
+      zh: [
+        '光、事件与时钟',
+        '相对论怎样接受实验检验？',
+        '近代物理实验',
+        '同一次实验，为什么时间不同？',
+      ],
       en: [
         'Light, events and clocks',
         'How is relativity tested experimentally?',
         'modern physics experiment',
+        'Same experiment, different times?',
       ],
     },
   },

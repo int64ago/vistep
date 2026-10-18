@@ -1,33 +1,23 @@
 import { useState, useId } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
-import { resultantExperiment } from '../../models/force-resultant-lab';
+import { resultantExperiment, resultantFilmState } from '../../models/force-resultant-lab';
+import { useSignalWidth } from '../lab/SignalFigure';
 import { springWire } from '../../models/elasticity-lab';
 import '../../styles/force-resultant-lab.css';
 export default function ForceResultantLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [view, setView] = useState<'two' | 'one' | 'vectors'>('two'),
+  const { host, compact } = useSignalWidth();
+  const [view, setView] = useState<'two' | 'one' | 'vectors' | null>(null),
     [angleA, setAngleA] = useState(35),
     [angleB, setAngleB] = useState(50),
     [length, setLength] = useState(0.28);
-  const c = film.watch ? film.chapter : 2,
-    p = film.chapterProgress,
-    mode = film.watch
-      ? c === 1
-        ? 'one'
-        : c === 2
-          ? 'vectors'
-          : c === 3 && p < 0.3
-            ? 'one'
-            : 'two'
-      : view;
-  const a = film.watch
-      ? c === 3 && p > 0.3
-        ? 35 + 20 * Math.min(1, (p - 0.3) / 0.6)
-        : 35
-      : angleA,
+  const c = film.chapter,
+    director = resultantFilmState(c, film.chapterTime, browserLocale()),
+    mode = film.watch ? director.mode : (view ?? director.mode);
+  const a = film.watch ? director.leftAngle : angleA,
     b = film.watch ? 50 : angleB,
     s = resultantExperiment(a, b, film.watch ? 0.28 : length),
     origin = { x: 180, y: 325 - s.length * 390 };
@@ -43,7 +33,7 @@ export default function ForceResultantLab() {
           { degrees: b, force: s.rightForce, color: '#8a9e75' },
         ];
   return (
-    <section className="resultant-lab">
+    <section className="resultant-lab" ref={host} data-view={mode}>
       <header>
         <p>
           {t(
@@ -170,25 +160,37 @@ export default function ForceResultantLab() {
                   d={`M${origin.x} ${origin.y}L${l.x} ${l.y}`}
                   stroke="#ae8a60"
                   strokeWidth="2"
+                  pathLength="1"
+                  strokeDasharray="1"
+                  strokeDashoffset={film.watch ? 1 - director.sides : 0}
+                  opacity={film.watch && director.sides === 0 ? 0 : 1}
                   markerEnd={`url(#${id}a)`}
                 />
                 <path
                   d={`M${origin.x} ${origin.y}L${r.x} ${r.y}`}
                   stroke="#8a9e75"
                   strokeWidth="2"
+                  pathLength="1"
+                  strokeDasharray="1"
+                  strokeDashoffset={film.watch ? 1 - director.sides : 0}
+                  opacity={film.watch && director.sides === 0 ? 0 : 1}
                   markerEnd={`url(#${id}b)`}
                 />
                 <path
                   d={`M${l.x} ${l.y}L${sum.x} ${sum.y}L${r.x} ${r.y}`}
                   stroke="#a5ac91"
                   strokeDasharray="4 4"
+                  opacity={film.watch ? director.parallels : 1}
                   fill="none"
                 />
-                {(!film.watch || p > 0.3) && (
+                {(!film.watch || director.diagonal > 0) && (
                   <path
                     d={`M${origin.x} ${origin.y}L${sum.x} ${sum.y}`}
                     stroke="#6f9283"
                     strokeWidth="2.8"
+                    pathLength="1"
+                    strokeDasharray="1"
+                    strokeDashoffset={film.watch ? 1 - director.diagonal : 0}
                     markerEnd={`url(#${id}sum)`}
                   />
                 )}
@@ -199,16 +201,20 @@ export default function ForceResultantLab() {
         <circle cx={origin.x} cy={origin.y} r="7" fill="#f4f1e4" stroke="#9da88b" strokeWidth="2" />
       </svg>
       <div className="resultant-readings">
+        {mode !== 'one' && (
+          <>
+            <span>
+              {t(compact ? '左侧' : '左侧力')}
+              <strong>{s.leftForce.toFixed(2)} N</strong>
+            </span>
+            <span>
+              {t(compact ? '右侧' : '右侧力')}
+              <strong>{s.rightForce.toFixed(2)} N</strong>
+            </span>
+          </>
+        )}
         <span>
-          {t('左侧力')}
-          <strong>{s.leftForce.toFixed(2)} N</strong>
-        </span>
-        <span>
-          {t('右侧力')}
-          <strong>{s.rightForce.toFixed(2)} N</strong>
-        </span>
-        <span>
-          {t('等效单力')}
+          {t(mode === 'one' ? '单力' : compact ? '等效合力值' : '等效单力')}
           <strong>{film.watch && c === 0 ? '—' : `${s.required.toFixed(2)} N`}</strong>
         </span>
       </div>
@@ -225,7 +231,7 @@ export default function ForceResultantLab() {
         <div className="resultant-controls">
           <Segments
             label={t('观察步骤')}
-            value={view}
+            value={mode}
             onChange={setView}
             options={[
               { value: 'two', label: t('两个力') },

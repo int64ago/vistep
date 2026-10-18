@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { resultantExperiment, vectorSum } from './force-resultant-lab';
+import { resultantExperiment, vectorSum, resultantFilmState } from './force-resultant-lab';
 describe('equivalent replacement with an elastic strip', () => {
   it('independent symmetric reference gives each force R/(2cos angle)', () => {
     const s = resultantExperiment(60, 60, 0.3);
@@ -32,5 +32,31 @@ describe('equivalent replacement with an elastic strip', () => {
       b = resultantExperiment(35, 50, 0.35);
     expect(b.required).toBeCloseTo(2 * a.required);
     expect(b.leftForce).toBeCloseTo(2 * a.leftForce);
+  });
+  it('constructs the two vectors before revealing their diagonal', () => {
+    for (const [locale, before, after] of [
+      ['en', 8.5, 11],
+      ['zh', 12.5, 15],
+    ] as const) {
+      const a = resultantFilmState(2, before, locale),
+        b = resultantFilmState(2, after, locale);
+      expect(a.sides).toBe(1);
+      expect(a.parallels).toBe(1);
+      expect(a.diagonal).toBe(0);
+      expect(b.diagonal).toBe(1);
+    }
+  });
+  it('the final comparison replaces one force with a new pair without moving the target', () => {
+    for (const locale of ['en', 'zh'] as const) {
+      const a = resultantFilmState(3, 0, locale),
+        b = resultantFilmState(3, 20, locale);
+      expect(a.mode).toBe('one');
+      expect(b.mode).toBe('two');
+      const first = resultantExperiment(a.leftAngle),
+        last = resultantExperiment(b.leftAngle);
+      expect(first.ring).toEqual(last.ring);
+      expect(first.required).toBe(last.required);
+      expect(first.leftForce).not.toBe(last.leftForce);
+    }
   });
 });

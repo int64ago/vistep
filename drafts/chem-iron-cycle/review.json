@@ -1,0 +1,180 @@
+{
+  "sceneSlug": "chem-iron-cycle",
+  "phase": "frozen after author measured bilingual director and UI review; root final static review pending",
+  "owner": "chemistry_inventory",
+  "sourceCommit": "0a03c5e5c8d2648651d4a90881b6d77e069cb4cf",
+  "sourceHashes": {
+    "src/components/experiments/ChemIronCycle.tsx": "7e869fe43716e2fdb7c4fc6cd1dce7b15e9b8104dc37995cd4d33df546bfe470",
+    "src/components/experiments/ChemIronCycle.exploration.test.tsx": "f8e8391c4b493250120ef3268460a11c8e0c8f94dc26622837884310d405ee48",
+    "src/models/chem-iron-cycle.ts": "9cf2705dfb7c760f9b30cac3682079046c2641f0fbffc6a55b22c622a1350762",
+    "src/models/chem-iron-cycle.test.ts": "ee812ed3678b674dc16f4c1528998b2fc1ec08cef69023f8f88098980f728058",
+    "src/styles/chem-iron-cycle.css": "5c1623c1ae3fc165b814cde38e48cb4bd70fd6e44d778803f6180a35303fd222",
+    "src/components/covers/ChemIronCycleCover.astro": "ae9ed39e2d912790936d090b32db9ed2fc81c59958bd8627de4ef31e08b097cf",
+    "src/content/chem-iron-cycle.mdx": "03e038aa952f6e2f028b383ce6ca095f1782162ee7bec5a50cb694a481cf0fdc",
+    "src/content/en/chem-iron-cycle.mdx": "25d3c3d6f237aa0ea862b1171fe0c2778da4cc2a56a9ad1506b5532d2f004ebe"
+  },
+  "narrationStatus": {
+    "plannedSeconds": 256,
+    "recording": "Root generated current bilingual tracks; actual261s",
+    "canonicalCuesSha256": "f1ca82ed6c5a42b87b7cf5adcdaa8edc762debaae5a315c27feedb8c403c87bc",
+    "actualWordSynchronization": "Author chapterTime+locale calibration completed; source word files and cuts recorded in measured-sync.json",
+    "actualSeconds": 261,
+    "secondIndependentASR": {
+      "scope": "EN0/1/2 same PCM decoded with full large-v3 without text/language hints; confirms lacks and ironIII phrases missing/misrecognized by original turbo. Not subjective listening.",
+      "files": [
+        {
+          "path": "artifacts/teaching-principles/batch-10-chem-second-asr/en-0.json",
+          "sha256": "5afb5ccd5836ac9b3b08ddb3449ba18c455dfe6df95a9d74c9b3a345f0890399"
+        },
+        {
+          "path": "artifacts/teaching-principles/batch-10-chem-second-asr/en-1.json",
+          "sha256": "e9f66c910cb47d390002e9807a42fcc7171643a1204766ff1c9353713f3cf347"
+        },
+        {
+          "path": "artifacts/teaching-principles/batch-10-chem-second-asr/en-2.json",
+          "sha256": "7f0bb68a0ee2dfb18b3bb2b3e917f2a007999868cb1b5cfdf7e978efa5f597d0"
+        }
+      ],
+      "timingUpdate": "Applied final sentence boundaries for EN0close/prediction/reveal, EN1posttest, EN2aliquot/comparison; other transfer anchors remain within the corroborated spoken clauses.",
+      "actualFrames": "measured-second-asr/report.json",
+      "actualFramesStatus": "4 passed"
+    }
+  },
+  "checks": [
+    {
+      "type": "author numerical/component tests",
+      "status": "passed",
+      "tests": 21,
+      "command": "pnpm exec vitest run src/models/chem-iron-cycle.test.ts src/components/experiments/ChemIronCycle.exploration.test.tsx",
+      "scope": "Fe/SCN/charge invariants, independent algebraic benchmark, bis-species counterexample, finite boundaries, geometry inventory, prediction gates and absent-perturbation source/bond states"
+    },
+    {
+      "type": "scoped TypeScript",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-cycle-implementation/typecheck.json",
+      "scope": "Owned entrypoints and dependencies; no diagnostics. Not global Astro verification."
+    },
+    {
+      "type": "independent biological science peer",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-10-cross-review/biology-iron-model-check.json",
+      "scope": "623 assertions rerun by independent biology reviewer on latest pre-timing model hash; not UI/voice/full source review. Subsequent director-only changes covered by author21tests."
+    },
+    {
+      "type": "author automated browser frames",
+      "status": "passed-with-separate-harness-recheck",
+      "evidence": [
+        "artifacts/teaching-principles/iron-cycle-implementation/watch-final-stable/report.json",
+        "artifacts/teaching-principles/iron-cycle-implementation/recheck/report.json"
+      ],
+      "conditions": "Chromium, muted, reduced motion; EN/ZH320×568 and selected EN1440×1000",
+      "caseCount": 64,
+      "successfulInitialCases": 63,
+      "harnessFailure": "ZH add-ligand final reveal: execution context destroyed by navigation/HMR; retained as failed in original report",
+      "recheckCases": 8,
+      "recheckStatus": "all passed including interrupted case",
+      "maxPhonePlayerBottom": 558.96875,
+      "minActualSvgFontPx": 16,
+      "scope": "Paused states/DOM geometry, not continuous viewing, listening or real phone performance"
+    },
+    {
+      "type": "author actual UI controls",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-cycle-implementation/controls/report.json",
+      "scope": "EN/ZH real clicks/sliders: prediction/reveal; zero vs nonzero ligand/reduction; +2/+1 coordination states; backward identity seek; watch/explore isolation"
+    },
+    {
+      "type": "author visual selected-frame inspection",
+      "status": "passed",
+      "evidence": [
+        "watch-final-stable/chem-iron-cycle-en-320-chapter-6-free-reduced.png",
+        "watch-final-stable/chem-iron-cycle-en-320-chapter-7-ligand-addition.png",
+        "watch-final-stable/chem-iron-cycle-en-320-chapter-3-aliquot-moving.png",
+        "recheck/chem-iron-cycle-en-320-chapter-7-supply-before.png",
+        "recheck/chem-iron-cycle-en-320-chapter-6-unchanged-complex.png",
+        "recheck/chem-iron-cycle-zh-320-chapter-7-iron-reveal.png"
+      ],
+      "basePath": "artifacts/teaching-principles/iron-cycle-implementation/",
+      "scope": "Alongside earlier mixed-sample, redox transfer, equilibrium, mono/bis and desktop frames; author inspection, not independent acceptance"
+    },
+    {
+      "type": "cover consumers",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-cycle-implementation/covers/report.json",
+      "scope": "Actual cover PNG/social PNG/catalog; nested SVG letterboxing and misleading low liquid boundary repaired and re-opened"
+    },
+    {
+      "type": "complete normal-speed static viewing",
+      "status": "not-run",
+      "owner": "root final review after recordings"
+    },
+    {
+      "type": "new bilingual audio listening",
+      "status": "not-run",
+      "reason": "ASR and measured visual anchors are separate from subjective listening; root final review remains."
+    },
+    {
+      "type": "global verify/build/deployment",
+      "status": "not-run",
+      "owner": "root"
+    },
+    {
+      "type": "author measured bilingual synchronization and actual UI recheck",
+      "status": "passed-with-separate-harness-recheck",
+      "evidence": "artifacts/teaching-principles/iron-cycle-implementation/measured-sync.json",
+      "caseCount": 64,
+      "successfulInitialCases": 63,
+      "harnessRecheckCount": 5,
+      "harnessRecheckStatus": "all passed",
+      "controls": "EN/ZH both passed",
+      "maxPhonePlayerBottom": 558.96875,
+      "scope": "Paused real-browser states aligned with actual word anchors; not subjective listening or complete normal-speed playback"
+    },
+    {
+      "type": "author actual EN0–2 frames after corroborating full-large-v3 timings",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-cycle-implementation/measured-second-asr/report.json",
+      "cases": 4,
+      "scope": "Mixed prediction/reveal, post-redox SCN test, retained-metal comparison; muted reduced-motion320×568"
+    }
+  ],
+  "resolvedFindings": [
+    "Mobile SVG min-width260 caused sub16px text at258px actual content; measure actual width and support240-unit geometry.",
+    "One English equilibrium screen exceeded wholeplayer height; replaced verbose limitations with a compact solution SCN ledger and retained full assumptions in disclosure/article.",
+    "Shared prediction captions initially disclosed answers; packet now uses neutral captions.",
+    "Free ligand and K spectator crowded during entry; independent routes now keep K in solution.",
+    "No perturbation originally still moved the representative ligand; zero addition stays in supply and zero reduction retains its original bond.",
+    "Unchanged coloured complex remains visible while free FeIII is reduced.",
+    "SCN/Fe token spacing and purple shared-pair position now preserve visible bond separation.",
+    "Aliquot tags no longer overlap; liquid portions change with the same transfer parameter."
+  ],
+  "scientificLimitations": [
+    "Fixed textbook observations are separate from illustrative model concentrations, colours and timings. Do not create a measured RGB/spectrum/rate dataset.",
+    "Published zero-ionic-strength constants are used only in an ideal activity≈concentration teaching limit at25°C. Real acidic sample hydrolysis, chloride competition, activities and long-time SCN redox are omitted; do not describe the numerical mixture as the exact textbook sample.",
+    "Keep textbook Fe(SCN)3 shorthand visible on demand alongside the more detailed mono/bis convention. FeIII in the model means the unbound-to-SCN hydrated pool, not naked ions. A one-SCN or two-SCN formula does not mean iron has coordination number1or2.",
+    "Local N-end/water-exchange geometry is a topology illustration; not crystallographic coordinates, not a unique chloride-medium stereoisomer, and not a measured substitution mechanism or rate.",
+    "Redox dots are persistent electron bookkeeping tokens, not solvated electrons flying through the liquid. Charges include in-transit credits. Shared coordination-pair dots stay in the bond representation and never change Fe formalIII.",
+    "At full ideal reduction, dissolved Fe increases by metal contribution; FeIII loss is not iron removal. Equilibrium removal therefore retains FeII and consumed-metal accounts.",
+    "SCN free+mono+2bis and all-phase iron totals must hold during perturbation and visual redistribution, not only at endpoints. Adding KSCN includes its K+ in the spectator charge account.",
+    "A prescribed depletion of freeFeIII is an explanatory perturbation, not a claim that all physical reduction exclusively attacks free aquo ions before any complex. Conservative interpolation is not kinetic integration.",
+    "Individual complex species need not all decrease when FeIII falls: prepared counterexample shows a small bis increase as freeSCN rises while totalcomplex decreases.",
+    "Leftover-metal comparison is an explicit limited-dose net-account counterexample, not universal reaction ordering, measured kinetics or a promise about arbitrary excesschlorine. Chlorine also has other solution reactions outside the model.",
+    "A red response does not prove all iron isFeIII; absent visible red is not a universal zeroFeIII measurement or diagnostic claim. Matched textbook test conditions are essential.",
+    "Water/electrolytes may be omitted from local composition shorthand but cannot silently disappear from any displayed quantitative atom/charge ledger.",
+    "FeII lacks the same red response under the textbook test; this model omits FeII–SCN coordination. Never claim FeII cannot coordinate SCN at all."
+  ],
+  "pending": [
+    "Root final static normal-speed playback/listening/resource/entry checks",
+    "Final global verification/build and authorized release"
+  ],
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-10-review.json",
+    "manual": "artifacts/teaching-principles/batch-10-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

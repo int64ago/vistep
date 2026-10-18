@@ -1,0 +1,167 @@
+{
+  "status": "reviewed-ready-for-authorized-publication",
+  "scenes": [
+    "relativity-experiments",
+    "chem-iron-cycle",
+    "bio-respiration",
+    "friction-lab",
+    "force-pairs-lab",
+    "force-resultant-lab"
+  ],
+  "scope": "Three causal rebuilds and three retained-causal-content presentation/calibration repairs. Preserve original textbook inventory and order.",
+  "sceneEntryCounts": {
+    "relativity-experiments": 4,
+    "chem-iron-cycle": 4,
+    "bio-respiration": 3,
+    "friction-lab": 2,
+    "force-pairs-lab": 1,
+    "force-resultant-lab": 1
+  },
+  "checks": [
+    {
+      "kind": "original-source-and-entry-audit",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-10-source-entry-audit.json"
+    },
+    {
+      "kind": "root-provisional-actual-views",
+      "status": "reviewed-with-open-followups",
+      "evidence": "artifacts/teaching-principles/batch-10-root-early-views.json"
+    },
+    {
+      "kind": "secondary-independent-ASR-on-critical-chemistry-phrases",
+      "status": "resolved-decoder-ambiguities",
+      "evidence": "artifacts/teaching-principles/batch-10-chem-second-asr",
+      "samePCM": true,
+      "referenceOrLanguageHint": false,
+      "subjectiveListening": false,
+      "scope": "Full large-v3 recovered lacks and iron3 inEN0–2 whereturbo omitted/misheard; no transcript-driven recording alteration."
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 4239,
+      "testFiles": 587,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-10-gap-final-verify.log"
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-10-gap-final-preview.log"
+    },
+    {
+      "kind": "final-static-keyframes",
+      "status": "passed",
+      "cases": 216,
+      "conditions": "36 chapters×3positions×ZH1440/EN320x568; complete player, actualSVGfont>=16, primarytargets>=44, invalid paths/runtime errors. Capture count is not personal viewing count.",
+      "evidence": "artifacts/teaching-principles/batch-10-static-keyframes/report.json"
+    },
+    {
+      "kind": "root-actual-final-views",
+      "status": "passed-with-recorded-scope",
+      "evidence": "artifacts/teaching-principles/batch-10-root-final-views.json"
+    },
+    {
+      "kind": "real-controls-and-keyboard",
+      "status": "passed",
+      "physicsStates": 58,
+      "biologyAssertions": 58,
+      "chemistryRecords": 2,
+      "retainedAssertions": 46,
+      "evidence": "artifacts/teaching-principles/batch-10-controls-static"
+    },
+    {
+      "kind": "precise-entries-and-resource-failure",
+      "status": "passed",
+      "cases": 36,
+      "conditions": "All15entries both languages plus6audio failure/retry/offscreen/resume/manual pause.",
+      "evidence": "artifacts/teaching-principles/batch-10-behavior/report.json"
+    },
+    {
+      "kind": "initial-native-short-screen-anchor",
+      "status": "passed",
+      "cases": 24,
+      "conditions": "Direct#experiment without scripted reposition.",
+      "evidence": "artifacts/teaching-principles/batch-10-anchors/report.json"
+    },
+    {
+      "kind": "catalog-filters-and-no-JS",
+      "status": "passed",
+      "cases": 14,
+      "evidence": "artifacts/teaching-principles/batch-10-catalog/report.json"
+    },
+    {
+      "kind": "normal-rate-uninterrupted-native-playback",
+      "status": "passed",
+      "runs": 12,
+      "chapters": 72,
+      "conditions": "Native user-activated audio/film, no seeking after start,10s checkpoints. Root viewed selected running frames; not subjective listening, continuous human visual watching or physical-device performance.",
+      "evidence": "artifacts/teaching-principles/batch-10-continuous/report.json"
+    },
+    {
+      "kind": "measured-bilingual-tracks-and-independent-ASR",
+      "status": "passed-with-decoder-ambiguity-notes",
+      "cues": 72,
+      "evidence": "artifacts/teaching-principles/batch-10-transcription.json",
+      "scope": "Independent no-hint speech decoding and ordered critical-acronym audit; not subjective listening."
+    },
+    {
+      "kind": "final-exploration-type-and-keyboard-focus-repair",
+      "status": "passed",
+      "cases": 18,
+      "controls": 46,
+      "actualButtonFontMinimumPx": 16,
+      "evidence": "artifacts/teaching-principles/batch-10-controls-static/independent-gap-final/report.json"
+    },
+    {
+      "kind": "watch-preservation-after-scoped-exploration-CSS",
+      "status": "passed",
+      "recapturedPausedFrames": 78,
+      "byteIdenticalPausedFrames": 74,
+      "minorRasterizationDifferences": 4,
+      "evidence": "artifacts/teaching-principles/batch-10-watch-equivalence.json",
+      "scope": "Original216frames/12nativeplays use their recorded source. All78 recaptured3scene watch frames on the first CSS repair passed.74 are byte-identical;4 have34–38changed pixels(maxdelta5), with actual root comparison showing unchanged geometry/readings.3rebuilt scenes/model/recordings unchanged. Additional pair/resultant hidden-note margin was subsequently verified on final18independentframes. This is not a new full playback on the final CSS build."
+    }
+  ],
+  "pending": ["Actions deployment and live verification"],
+  "notClaimed": [
+    "Subjective listening",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ],
+  "resolvedVoiceWork": {
+    "issue": "Two independent no-hint decoders consistently confused ATP with ADP in the original English respiration recording. Similarity scores alone were insufficient.",
+    "probe": "artifacts/teaching-principles/bio-acronym-voice-probe/report.json",
+    "repair": "Spell A. T. P. and A. D. P. explicitly in five affected English cues. Scientific meaning, Chinese spoken text and captions unchanged.",
+    "historicalAudio": "artifacts/teaching-principles/batch-10-original-bio-audio",
+    "newDuration": 258,
+    "status": "New258s tracks independently decoded; ordered ATP/ADP audit passed within recorded transcription scope. Explicit T pronunciation disambiguates ATP from ADP. Secondary no-hint full decoder resolves English duplicate and ChineseADP.",
+    "subjectiveListening": false,
+    "audit": "artifacts/teaching-principles/batch-10-bio-acronym-audit.json"
+  },
+  "finalSource": {
+    "commit": "0a03c5e5c8d2648651d4a90881b6d77e069cb4cf",
+    "treeHash": "88c0bba5bba49c0f5438e68a68c97f86c956074a2e325e7aaeb15939c74dfe3f",
+    "gitDiffHash": "77d77005b1dfb3e0c7859a9421451492aa05f1cf269644f21639812c80e2f639",
+    "fileCount": 5243,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "resolved": [
+    "All three retained scenes now use16px exploration buttons and32px clearance below the final slider; final keyboard focus checked.",
+    "Explicit ATP/ADP English pronunciation and independent acronym-order audit, retaining initial ambiguity evidence.",
+    "Separate historical records from teaching predictions and label all clock IDs.",
+    "Trace three iron identities, finite-ligand accounting and two-stage coordination without equating color with unique species.",
+    "Track GAP oxidation, NAD carrier reuse and continuous stored-gradient decay after oxygen supply stops.",
+    "Retained force films use spoken-time anchors, distinct spring stiffness geometry, static breakaway and one actual replacement force.",
+    "Preserve all original source inventory and learning order; expand one respiration experiment entry into its three causal theory chapters."
+  ],
+  "limits": [
+    "Independent ASR and word synchronization do not establish subjective vocal naturalness.",
+    "Published relativity records are distinct from deterministic teaching cohorts and constant-route clock models.",
+    "Iron color and reaction progress are qualitative; published equilibrium constants are under stated ideal-solution assumptions.",
+    "Respiration diagrams explicitly merge proton/Mg details and do not assert a universal fixed ATP yield."
+  ]
+}

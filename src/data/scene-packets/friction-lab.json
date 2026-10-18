@@ -13,7 +13,8 @@
         "title": "OpenStax — Friction",
         "url": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction"
       }
-    ]
+    ],
+    "number": "226"
   },
   "discovery": {
     "category": "mechanisms",
@@ -76,7 +77,7 @@
         "en": "Pull a block horizontally at steady speed. The view follows the block, so the table marks move backward. Constant speed matters: zero acceleration means the horizontal pull balances friction, allowing the meter to measure kinetic friction. A clearly accelerating block would not satisfy that reading rule.",
         "seconds": 28,
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "load",
@@ -88,7 +89,7 @@
         "en": "Keep the surfaces and steady pulling method unchanged, and add a mass. The normal load rises, as does the force reading. In this dry-friction model, doubling normal load doubles kinetic friction. We changed how strongly the surfaces press together, not how quickly the block is pulled; keep these conditions separate.",
         "seconds": 27,
         "chapterAt": 28,
-        "at": 28.3
+        "at": 28.45
       },
       {
         "id": "hand",
@@ -100,7 +101,7 @@
         "en": "Try the related hand-on-table activity. Move the hand while changing downward pressure to compare sliding resistance. These numerical values remain model predictions, not measurements of a real sensation. Like the block experiment, the comparison keeps the contact materials fixed and changes normal load.",
         "seconds": 26,
         "chapterAt": 55,
-        "at": 55.3
+        "at": 55.45
       },
       {
         "id": "peak",
@@ -112,7 +113,7 @@
         "en": "Start from rest and gradually increase the pull. Static friction grows with it while the block remains still; it is not always a fixed maximum. At the breakaway threshold, motion begins and the reading falls. The paper keeps the highest position while the pointer returns. Immediately after breakaway the block accelerates, so pull approaches kinetic friction only as the speed settles.",
         "seconds": 30,
         "chapterAt": 81,
-        "at": 81.3
+        "at": 81.45
       },
       {
         "id": "sensor",
@@ -124,12 +125,13 @@
         "en": "A force sensor records the same process continuously: a rising force, a peak around breakaway, then a lower steady reading. It retains more information than a maximum alone. Pause at different times and compare graph, block motion and instrument reading. Maximum static friction and kinetic friction are distinct; the whole stationary interval must not be represented by the peak value.",
         "seconds": 29,
         "chapterAt": 111,
-        "at": 111.3
+        "at": 111.45
       }
     ]
   },
   "curriculumVariants": {
     "required-1-sliding-friction": {
+      "sceneSlug": "friction-lab",
       "chapterIds": ["steady", "load", "hand"],
       "label": {
         "zh": "滑动摩擦力与压力",
@@ -137,11 +139,17 @@
       }
     },
     "required-1-static-friction": {
+      "sceneSlug": "friction-lab",
       "chapterIds": ["peak", "sensor"],
       "label": {
         "zh": "静摩擦力随拉力变化",
         "en": "Static friction and increasing pull"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/friction-lab/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-10-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

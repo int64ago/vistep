@@ -1,28 +1,53 @@
 ---
-import { ironThiocyanate } from '../../models/chem-iron-cycle';
-const states = [
-  ironThiocyanate(0.0025, 0.0075),
-  ironThiocyanate(0, 0.0075),
-  ironThiocyanate(0.0025, 0.0275),
-];
+import { ironElectronFrame } from '../../models/chem-iron-cycle';
+const before = ironElectronFrame('reduce', 0, 280);
+const after = ironElectronFrame('reduce', 1, 280);
 ---
 
-<svg viewBox="0 0 640 400" aria-hidden="true"
-  ><rect width="640" height="400" fill="#eee9dd"></rect>{
-    states.map((m, i) => (
-      <g transform={`translate(${135 + i * 185},50)`}>
-        <path d="M-43 100H43V240a43 43 0 0 1-86 0Z" fill="#9e3b35" opacity={m.red * 0.75} />
-        {i === 1 &&
-          Array.from({ length: 8 }, (_, j) => (
-            <ellipse
-              cx={-28 + ((j * 13) % 55)}
-              cy={257 + (j % 3) * 6}
-              rx="5"
-              ry="3"
-              fill="#777e6b"
+<svg viewBox="0 0 640 368" aria-hidden="true">
+  <defs
+    ><linearGradient id="iron-cycle-cover-paper" x2="1" y2="1"
+      ><stop stop-color="#f1ebdd"></stop><stop offset="1" stop-color="#e2e6d7"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect width="640" height="400" fill="url(#iron-cycle-cover-paper)"></rect>
+  {
+    [before, after].map((m, i) => (
+      <g transform={`translate(${i ? 340 : 20},95)`}>
+        <path
+          d="M5 0V230Q5 250 25 250H255Q275 250 275 230V0"
+          fill="#cbd8c833"
+          stroke="#9eae9c"
+          stroke-width="2"
+        />
+        {m.atoms.map((a) => (
+          <g>
+            <circle
+              cx={a.x}
+              cy={a.y}
+              r="29"
+              fill={a.phase === 'metal' ? '#748174' : a.charge === 3 ? '#e1c9a4' : '#c6d9c8'}
+              stroke={a.id === 'metal-Fe' ? '#586c5c' : '#9e9b7d'}
+              stroke-width={a.id === 'metal-Fe' ? 3 : 1.5}
             />
-          ))}
+            <text x={a.x} y={a.y + 7} text-anchor="middle" font-size="22" fill="#4d5b4e">
+              {a.phase === 'metal' ? 'Fe' : a.charge === 3 ? 'Fe³⁺' : 'Fe²⁺'}
+            </text>
+          </g>
+        ))}
+        {m.electrons.map((e) => (
+          <circle cx={e.x} cy={e.y} r="7" fill="#c49c45" stroke="#fff3cc" stroke-width="2" />
+        ))}
       </g>
     ))
-  }</svg
->
+  }
+  <path
+    d="M287 210H345m-10-9 10 9-10 9"
+    fill="none"
+    stroke="#9d7a51"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <text x="320" y="53" text-anchor="middle" font-size="24" fill="#695e4e">2Fe³⁺ + Fe → 3Fe²⁺</text>
+</svg>

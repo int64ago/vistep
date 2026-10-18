@@ -17,7 +17,8 @@
         "title": "OpenStax — Conditions for Static Equilibrium",
         "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium"
       }
-    ]
+    ],
+    "number": "233"
   },
   "discovery": {
     "category": "mechanisms",
@@ -61,7 +62,7 @@
     "合力表示等效替代，不是又增加一个实际拉力。橡皮条取线性弹性近似，所有状态均为静止平衡。": "The resultant replaces the pair; it is not an extra physical pull. The strip is approximately linear elastic and all states are equilibria."
   },
   "narration": {
-    "duration": 112,
+    "duration": 113,
     "cues": [
       {
         "id": "two",
@@ -73,7 +74,7 @@
         "en": "Fix one end of an elastic strip and attach a ring to the other. Pull in two directions with force meters until the ring rests at O. Record the position, both force directions and both readings. Two numbers alone are insufficient because direction matters. The strip extension and orientation establish the effect the replacement must reproduce.",
         "seconds": 28,
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "one",
@@ -85,7 +86,7 @@
         "en": "Replace the pair with a single meter and bring the ring back to O. The fixed anchor and ring position are unchanged, restoring the same extension and orientation. This single force reproduces the original pair’s effect. Restore the actual point rather than relying on a visual approximation or assuming the two numerical readings should simply be added.",
         "seconds": 28,
         "chapterAt": 28,
-        "at": 28.3
+        "at": 28.45
       },
       {
         "id": "vectors",
@@ -97,7 +98,7 @@
         "en": "Read the vector record separately from the apparatus. Draw both forces from O using one scale, then complete the parallelogram. Its diagonal matches the single force in magnitude and direction. This is an equivalent resultant, not an additional third pull. Treating all three arrows as simultaneous physical forces would describe a different experiment.",
         "seconds": 28,
         "chapterAt": 56,
-        "at": 56.3
+        "at": 56.45
       },
       {
         "id": "reverse",
@@ -109,17 +110,23 @@
         "en": "Reverse the order: establish O with one force, then restore it with two. This investigates resolution. Changing the directions changes the individual readings while preserving the same strip effect. A resultant alone usually needs additional direction constraints to identify a pair. In exploration, changing O itself also changes the required equivalent single force.",
         "seconds": 28,
         "chapterAt": 84,
-        "at": 84.3
+        "at": 84.45
       }
     ]
   },
   "curriculumVariants": {
     "required-1-force-resultant": {
+      "sceneSlug": "force-resultant-lab",
       "chapterIds": ["two", "one", "vectors", "reverse"],
       "label": {
         "zh": "力的合成与分解",
         "en": "Force composition and resolution"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/force-resultant-lab/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-10-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

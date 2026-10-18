@@ -1,33 +1,26 @@
 import { useState, useId } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
-import { frictionPull, frictionSteady } from '../../models/friction-lab';
+import { frictionPull, frictionSteady, frictionFilmState } from '../../models/friction-lab';
+import { useSignalWidth } from '../lab/SignalFigure';
 import { springWire } from '../../models/elasticity-lab';
 import '../../styles/friction-lab.css';
 export default function FrictionLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [path, setPath] = useState<'steady' | 'static' | 'sensor' | 'hand'>(
-      film.variant === 'required-1-static-friction' ? 'static' : 'steady',
-    ),
+  const { host, compact } = useSignalWidth();
+  const [path, setPath] = useState<'steady' | 'static' | 'sensor' | 'hand' | null>(null),
     [load, setLoad] = useState(0.5),
     [pressure, setPressure] = useState(10),
     [time, setTime] = useState(2.5);
-  const c = film.watch ? film.chapter : 0,
-    p = film.chapterProgress,
-    mode = film.watch
-      ? c === 2
-        ? 'hand'
-        : c === 3
-          ? 'static'
-          : c === 4
-            ? 'sensor'
-            : 'steady'
-      : path;
-  const mass = film.watch ? (c === 1 ? 1 : 0.5) : load,
-    normalExtra = mode === 'hand' ? (film.watch ? 5 + 15 * Math.min(1, p * 1.5) : pressure) : 0;
-  const seconds = film.watch ? (mode === 'static' || mode === 'sensor' ? p * 4.4 : p * 4) : time;
+  const c = film.chapter;
+  const authoredMode = c === 2 ? 'hand' : c === 3 ? 'static' : c === 4 ? 'sensor' : 'steady';
+  const mode = film.watch ? authoredMode : (path ?? authoredMode);
+  const director = frictionFilmState(c, film.chapterTime, browserLocale());
+  const mass = film.watch ? director.mass : load,
+    normalExtra = mode === 'hand' ? (film.watch ? director.pressure : pressure) : 0;
+  const seconds = film.watch ? director.physicalTime : time;
   const s =
     mode === 'static' || mode === 'sensor'
       ? frictionPull(seconds, mass)
@@ -44,7 +37,7 @@ export default function FrictionLab() {
     return `${i ? 'L' : 'M'}${q.x} ${q.y}`;
   }).join(' ');
   return (
-    <section className="friction-lab">
+    <section className="friction-lab" ref={host} data-mode={mode} data-physical-time={seconds}>
       <header>
         <p>
           {t(
@@ -71,7 +64,7 @@ export default function FrictionLab() {
       </header>
       <div className="friction-bench">
         <svg
-          viewBox="0 0 360 230"
+          viewBox={compact ? (mode === 'hand' ? '12 75 336 145' : '12 90 336 130') : '0 0 360 230'}
           role="img"
           aria-label={t('接触面、木块或手、拉力测量装置随模型状态变化')}
         >
@@ -148,7 +141,7 @@ export default function FrictionLab() {
                     {s.pull.toFixed(2)}
                   </text>
                   <path d="M292 143H330" stroke="#8d9d80" strokeWidth="3" />
-                  <path d="M257 122Q269 82 320 90" stroke="#a4b49a" strokeWidth="2" fill="none" />
+                  <path d="M257 122Q269 96 320 106" stroke="#a4b49a" strokeWidth="2" fill="none" />
                 </g>
               ) : (
                 <g>
@@ -218,7 +211,7 @@ export default function FrictionLab() {
             )}
           </p>
           <svg
-            viewBox="0 0 350 190"
+            viewBox={compact ? '0 -10 350 218' : '0 0 350 190'}
             role="img"
             aria-label={t('拉力先增加到静摩擦上限，滑动后逐渐降向滑动摩擦力')}
           >
@@ -278,7 +271,7 @@ export default function FrictionLab() {
         <div className="friction-controls">
           <Segments
             label={t('实验路径')}
-            value={path}
+            value={mode}
             onChange={setPath}
             options={[
               { value: 'steady', label: t('匀速木块') },

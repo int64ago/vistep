@@ -104,7 +104,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Copper etching and protected patterns](../src/content/en/chem-copper-etching.mdx)                    | 1:51 | Why does a protected pattern survive copper etching?                          |
 | [Iron hydroxides and oxidation by air](../src/content/en/chem-iron-hydroxides.mdx)                    | 1:53 | Why does a pale precipitate become brown?                                     |
 | [Iron reacting with steam](../src/content/en/chem-iron-steam.mdx)                                     | 2:36 | Why can the solid gain mass as gas leaves?                                    |
-| [Iron-ion colour, redox and coordination](../src/content/en/chem-iron-cycle.mdx)                      | 3:45 | What happens to iron when the red colour disappears and returns?              |
+| [Iron colour, redox and coordination](../src/content/en/chem-iron-cycle.mdx)                          | 4:21 | What does red actually report?                                                |
 | [Hydrogen burning in chlorine](../src/content/en/chem-hydrogen-chlorine.mdx)                          | 1:30 | Does combustion always require oxygen?                                        |
 | [Chlorine: evidence and explanation](../src/content/en/chem-chlorine-discovery.mdx)                   | 3:04 | Does oxygen in a product prove that the gas contained oxygen?                 |
 | [Chlorine-water photolysis: from light to readings](../src/content/en/chem-chlorine-photolysis.mdx)   | 2:36 | How can light change all three readings?                                      |
@@ -157,7 +157,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 3:39 | Which question about photosynthesis can each line of evidence answer?            |
 | [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:04 | Separate pigments, then compare how wavelengths pass through them.               |
 | [Immune pathways and evidence](../src/content/en/bio-immune-pathways.mdx)                         | 2:50 | How does identifying a marker connect to an immune pathway?                      |
-| [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 2:46 | Connect the culture apparatus to the fate of matter inside cells.                |
+| [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 4:18 | What does fermentation set flowing again?                                        |
 | [Enzyme evidence and conditions](../src/content/en/bio-enzyme-investigations.mdx)                 | 4:11 | Why do cells rely on enzymes to speed reactions?                                 |
 | [Neural research and clinical evidence](../src/content/en/bio-neural-evidence.mdx)                | 2:38 | What can a response, a stimulation and a case each establish?                    |
 | [Seven lines of evidence about the nucleus](../src/content/en/bio-nuclear-evidence.mdx)           | 2:47 | What evidence distinguishes nucleus, cytoplasm and developmental environment?    |
@@ -457,7 +457,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | ------------------------------------------------------------------------------------------ | ---- | ---------------------------------------------------------------------- |
 | [Galaxy redshifts and the microwave sky](../src/content/en/cosmology-observations.mdx)     | 2:20 | How does received light reveal cosmic history?                         |
 | [Three paths to gravitational-wave evidence](../src/content/en/gravitational-wave-lab.mdx) | 3:48 | How does a tiny change become a reliable measurement?                  |
-| [Light, events and clocks](../src/content/en/relativity-experiments.mdx)                   | 3:44 | How is relativity tested experimentally?                               |
+| [Light, events and clocks](../src/content/en/relativity-experiments.mdx)                   | 4:42 | Same experiment, different times?                                      |
 | [From observations to celestial predictions](../src/content/en/celestial-observations.mdx) | 4:34 | What can a misplaced planet tell us?                                   |
 | [Greenhouse effect](../src/content/en/greenhouse-effect.mdx)                               | 2:37 | Does downward atmospheric radiation create extra energy?               |
 | [Plate boundaries](../src/content/en/plate-boundaries.mdx)                                 | 2:21 | Does convergent velocity alone decide which plate subducts?            |

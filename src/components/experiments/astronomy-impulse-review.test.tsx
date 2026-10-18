@@ -182,19 +182,36 @@ describe('actual apparatus geometry preserves the model', () => {
         expect(dy).toBeCloseTo(common ? dx : -dx);
       }
   });
-  it('points the flying-clock aircraft along its actual east or west trajectory', () => {
+  it('draws ground and flying-clock speeds in one geocentric frame, including westbound subtraction', () => {
     for (const direction of [-1, 1])
       for (const value of [0, 0.25, 0.6]) {
         const svg = renderToStaticMarkup(
           createElement(RelativityArtwork, { mode: 3, direction, value }),
         );
-        const transform = /translate\(([\d.e+-]+) ([\d.e+-]+)\) rotate\(([\d.e+-]+)\)/.exec(svg)!;
-        const a = direction * value * 2 * Math.PI;
-        const rotation = (Number(transform[3]) * Math.PI) / 180;
-        // The SVG nose points locally upward. Rotate that vector, then compare with dr/dt.
-        const nose = { x: Math.sin(rotation), y: -Math.cos(rotation) };
-        const velocity = { x: -direction * Math.sin(a), y: -direction * Math.cos(a) };
-        expect(nose.x * velocity.x + nose.y * velocity.y).toBeCloseTo(1, 10);
+        const vectors = [
+          ...svg.matchAll(/data-vector-dx="([\d.e+-]+)" data-vector-dy="([\d.e+-]+)"/g),
+        ].map((m) => [Number(m[1]), Number(m[2])]);
+        expect(vectors).toHaveLength(3);
+        const [ground, air, relative] = vectors;
+        // The westbound aircraft still moves east in this frame, just more slowly than Earth.
+        expect(ground[0]).toBeGreaterThan(0);
+        expect(air[0]).toBeGreaterThan(0);
+        expect(relative[0] / ground[0]).toBeCloseTo((direction * 250) / 465.1, 12);
+        expect(ground[0] + relative[0]).toBeCloseTo(air[0], 12);
+        expect(vectors.every((v) => v[1] === 0)).toBe(true);
+        const endpoints = (kind: string) => {
+          const path = new RegExp(
+            `data-clock-vector="${kind}"[^>]*><path d="M([\\d.e+-]+) ([\\d.e+-]+)L([\\d.e+-]+) ([\\d.e+-]+)"`,
+          ).exec(svg)!;
+          expect(path).not.toBeNull();
+          return path.slice(1).map(Number);
+        };
+        const g = endpoints('ground'),
+          a = endpoints('flying'),
+          r = endpoints('relative-air-speed');
+        expect(a[0]).toBe(g[0]);
+        expect(r[0]).toBeCloseTo(g[2], 12);
+        expect(a[2]).toBeCloseTo(r[2], 12);
       }
   });
   it('aims the horn at the same 30–90 degree elevation used by its atmospheric model', () => {

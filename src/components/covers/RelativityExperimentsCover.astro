@@ -3,4 +3,7 @@ import { RelativityArtwork } from '../experiments/RelativityExperiments';
 import StaticArtworkCover from './StaticArtworkCover.astro';
 ---
 
-<StaticArtworkCover artwork={RelativityArtwork} options={{ mode: 0, value: 0.35 }} />
+<StaticArtworkCover
+  artwork={RelativityArtwork}
+  options={{ mode: 1, value: 0.55, beta: 0.6, width: 400, cover: true }}
+/>

@@ -104,70 +104,77 @@
   }
 }
 
-/* The film caption carries the current explanation; longer notes remain in exploration. */
+/* The single film caption explains the current step. */
+.showcase[data-mode='watch'] .friction-lab > header,
+.showcase[data-mode='watch'] .friction-note,
+.showcase[data-mode='watch'] .friction-observation,
+.showcase[data-mode='watch'] .friction-comparison,
+.showcase[data-mode='watch'] .friction-record > p {
+  display: none;
+}
+.showcase[data-mode='watch'] .friction-bench svg {
+  height: 240px;
+}
+.friction-controls button {
+  min-width: 44px;
+}
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .friction-lab {
-    padding: 12px 8px;
+    padding: 0 10px;
+    min-height: 268px;
   }
-  .showcase[data-mode='watch'] .friction-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .friction-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .friction-lab > header > span,
-  .showcase[data-mode='watch'] .friction-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .friction-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .friction-lab > p[class$='-observation'] {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
   .showcase[data-mode='watch'] .friction-bench svg {
-    height: 170px;
+    height: 108px;
   }
-  .showcase[data-mode='watch'] .friction-bench svg text {
+  .showcase[data-mode='watch']
+    .friction-lab:is([data-mode='static'], [data-mode='sensor'])
+    .friction-bench
+    svg {
+    height: 94px;
+  }
+  .friction-bench svg text {
     font-size: 23px;
   }
   .showcase[data-mode='watch'] .friction-live {
-    gap: 8px 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 8px;
+    text-align: center;
   }
   .showcase[data-mode='watch'] .friction-live span {
-    flex-direction: row;
-    gap: 5px;
-    align-items: baseline;
+    display: block;
+    font-size: 16px;
   }
   .showcase[data-mode='watch'] .friction-live strong {
+    display: block;
     font-size: 18px;
+    line-height: 1.25;
+    white-space: nowrap;
   }
-  .showcase[data-mode='watch'] .friction-record > p {
-    margin: 4px 0;
+  .showcase[data-mode='watch'] .friction-live span:last-child {
+    grid-column: 1 / -1;
+    line-height: 1.25;
   }
   .showcase[data-mode='watch'] .friction-record svg {
-    height: 150px;
+    height: 116px;
     overflow: visible;
   }
   .showcase[data-mode='watch'] .friction-record svg text {
-    font-size: 23px;
+    font-size: 31px;
   }
-  .showcase[data-mode='watch'] .friction-comparison {
-    margin: 5px 0;
-  }
-}
-
-/* The current film caption already supplies this step's explanation. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .friction-lab > header {
-    display: none;
+  .showcase[data-mode='watch'] .friction-record > span {
+    display: block;
+    line-height: 1.25;
   }
 }
 
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .friction-record > p {
-    display: none;
-  }
+/* Exploration labels retain the same readable type scale as the explanation. */
+.friction-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.friction-note {
+  margin-top: 32px;
 }

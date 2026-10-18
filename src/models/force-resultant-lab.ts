@@ -39,3 +39,24 @@ export function resultantExperiment(
 export function vectorSum(a: ForceVector, b: ForceVector) {
   return { x: a.x + b.x, y: a.y + b.y };
 }
+
+export function resultantFilmState(chapter: number, seconds: number, locale: 'zh' | 'en' = 'zh') {
+  const t = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  const en = locale === 'en';
+  const ramp = (a: number, b: number) => Math.max(0, Math.min(1, (t - a) / (b - a)));
+  const mode: 'two' | 'one' | 'vectors' =
+    chapter === 1
+      ? 'one'
+      : chapter === 2
+        ? 'vectors'
+        : chapter === 3 && t < (en ? 5.3 : 7.3)
+          ? 'one'
+          : 'two';
+  return {
+    mode,
+    leftAngle: chapter === 3 ? 35 + 20 * ramp(en ? 7.8 : 9.4, en ? 12.8 : 14.9) : 35,
+    sides: ramp(en ? 3.4 : 4.9, en ? 5.9 : 9),
+    parallels: ramp(en ? 6 : 9.1, en ? 8 : 11.9),
+    diagonal: ramp(en ? 8.6 : 12.6, en ? 10.2 : 14.2),
+  };
+}

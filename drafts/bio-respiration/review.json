@@ -1,0 +1,170 @@
+{
+  "sceneSlug": "bio-respiration",
+  "owner": "/root/biology_inventory",
+  "status": "owned implementation frozen after measured 258 s synchronization; root final static acceptance pending",
+  "sourceCommit": "0a03c5e5c8d2648651d4a90881b6d77e069cb4cf",
+  "ownedSourceHashes": {
+    "src/models/bio-respiration.ts": "af24bcfed164094ebc476346bcb367a96e6fa2697cb43371d6d7dbc4fee40c2e",
+    "src/models/bio-respiration.test.ts": "d8559c6437f4b91581a600d5bb9648aef109b396b5d0c8d04f8e7cd436bb40c7",
+    "src/components/experiments/BioRespiration.tsx": "f25bd329509bb9c739652d4dbe576dcef1484dba94f3ad0bf144e67e123c231d",
+    "src/styles/bio-respiration.css": "87911db25b1301ef11bae9bc61dcfd4ab4ae7fdf302c62aef4196492bd60474d",
+    "src/components/covers/BioRespirationCover.astro": "2b2e51ff96dc4217fa39fa0200d436d6a9d989ec3c6630efb16742975311b03b",
+    "src/content/bio-respiration.mdx": "da64d617943779251f17ac69c95dbee2463c12be557a772883203cc2136b2d6b",
+    "src/content/en/bio-respiration.mdx": "68b3398b409433f3179161c43781ddac97bd2901d05b8eda8e8a00652d09f042",
+    "drafts/bio-respiration/brief.md": "b2bd0adee30799f95064bc9b8f69fc2c593927d776d6f0ceed2bb5b061a2db32",
+    "drafts/bio-respiration/principle-first-packet.json": "4bb318439c3c7bfa3d5be6dd281fc516db2790f11294cce1b0b7e90616885cf0"
+  },
+  "scientificEvidence": {
+    "preparation": "artifacts/teaching-principles/biology-next-respiration/ready-brief.json",
+    "sources": "artifacts/teaching-principles/biology-next-respiration/source-ledger.json",
+    "independentPreflight": "artifacts/teaching-principles/biology-next-respiration/independent-benchmarks.json",
+    "scope": "Textbook P86–96; rendered representative pages; IUBMB/Rhea full reaction entries; selected original full text and original abstracts distinguished in source ledger.",
+    "peer": "Chemistry owner source-read GAP/Carriers review found no material issue, explicitly not an independent execution or UI review."
+  },
+  "checks": [
+    {
+      "type": "author-model-tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/bio-respiration.test.ts",
+      "count": 17
+    },
+    {
+      "type": "author-scoped-typecheck",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --skipLibCheck --jsx react-jsx --target ES2022 --module ESNext --moduleResolution bundler --allowSyntheticDefaultImports src/components/experiments/BioRespiration.tsx src/models/bio-respiration.ts"
+    },
+    {
+      "type": "automated-provisional-keyframe-layout",
+      "status": "passed",
+      "reports": [
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/report.json",
+        "artifacts/teaching-principles/biology-next-respiration/final-causal/report.json"
+      ],
+      "frames": 66,
+      "minimumActualTextCssPx": 16,
+      "maximum320WholePlayerBottomCssPx": 565.578125,
+      "conditions": "Shared232s provisional new captions, narration saved off, Chromium muted/reduced-motion; Initial42 matrix checked horizontal clipping; final affected24 also check vertical SVG clipping. Not continuous viewing or listening."
+    },
+    {
+      "type": "automated-final-keyframe-layout",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/biology-next-respiration/measured-final/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-respiration/review-keyframes.mjs",
+      "frames": 54,
+      "minimumActualTextCssPx": 16,
+      "maximum320WholePlayerBottomCssPx": 565.578125,
+      "conditions": "Final shared 258 s timeline; bilingual 320×568, selected ZH1280/EN390 frames; horizontal/vertical SVG clipping and whole-player bounds; muted/reduced-motion. Screenshot metrics alone are not visual review."
+    },
+    {
+      "type": "author-actual-causal-image-review",
+      "status": "passed-for-listed-images",
+      "paths": [
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/zh-320-transfer.png",
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/en-320-received.png",
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/en-320-incoming.png",
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/en-320-gradient.png",
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/zh-320-carbons.png",
+        "artifacts/teaching-principles/biology-next-respiration/first-keyframes/zh-320-recycle.png",
+        "artifacts/teaching-principles/biology-next-respiration/final-causal/en-320-triose-product.png",
+        "artifacts/teaching-principles/biology-next-respiration/final-causal/en-320-blocked.png",
+        "artifacts/teaching-principles/biology-next-respiration/final-causal/en-320-resumed-substrate.png",
+        "artifacts/teaching-principles/biology-next-respiration/final-causal/zh-320-triose-oxidation.png",
+        "artifacts/teaching-principles/biology-next-respiration/final-causal/en-320-depleted.png"
+      ]
+    },
+    {
+      "type": "author-real-ui-interactions",
+      "status": "passed",
+      "count": 58,
+      "report": "artifacts/teaching-principles/biology-next-respiration/interactions-measured/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-respiration/review-interactions.mjs",
+      "scope": "Native clicks/keyboard: meaningful parameters, atom identities, Pi counterexample, oxygen-off decay, NAD block/recycle, homolactate, watch/explore isolation and explicit selection persistence; seven chapters, measured 258 s end/replay; all three teaching-window min/max/current first chapter including P92 glycolysis."
+    },
+    {
+      "type": "author-cover-consumers",
+      "status": "passed",
+      "paths": [
+        "artifacts/teaching-principles/biology-next-respiration/cover-measured/zh-1280-card.png",
+        "artifacts/teaching-principles/biology-next-respiration/cover-measured/en-390-card.png",
+        "artifacts/teaching-principles/biology-next-respiration/cover-measured/served-png-on-white.png",
+        "artifacts/teaching-principles/biology-next-respiration/cover-measured/social.png"
+      ],
+      "conditions": "Actually served dev cards and PNG/social; final measured duration 4:18. Author opened final EN390 card; image assets remained unchanged after earlier source-image review."
+    },
+    {
+      "type": "root-actual-image-review",
+      "status": "root-reported-prevoice-core-and-GAP-frames-accepted",
+      "scope": "Root reported actual opening of six original decisive frames plus final-causal en320 triose-product/blocked/resumed-substrate; accepted before TTS."
+    },
+    {
+      "type": "measured-word-time-sync",
+      "status": "passed-author-measured-director-calibration",
+      "duration": 258,
+      "chapterStarts": [0, 42, 69.5, 96, 130, 168, 215.5],
+      "wordTiming": "artifacts/teaching-principles/batch-10-timed-speech/bio-respiration-{zh,en}-{0..6}.json",
+      "scope": "Independent locale-specific presentation anchors use word time + 0.45 s. Scientific models are unchanged by locale. Reviewed actual affected images; not subjective complete voice listening."
+    },
+    {
+      "type": "full-continuous-static-playback",
+      "status": "not-run-by-author-root-owns-final-static"
+    },
+    {
+      "type": "subjective-complete-voice-listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run"
+    },
+    {
+      "type": "full-verify-and-preview-build",
+      "status": "not-run-by-author-root-owned"
+    },
+    {
+      "type": "author-actual-final-image-review",
+      "status": "passed-for-listed-images",
+      "paths": [
+        "artifacts/teaching-principles/biology-next-respiration/measured-final/en-320-triose-oxidation.png",
+        "artifacts/teaching-principles/biology-next-respiration/measured-final/en-320-received.png",
+        "artifacts/teaching-principles/biology-next-respiration/measured-final/en-320-oxygen-off.png",
+        "artifacts/teaching-principles/biology-next-respiration/measured-final/en-320-noextra.png",
+        "artifacts/teaching-principles/biology-next-respiration/measured-final/en-320-lactate.png",
+        "artifacts/teaching-principles/biology-next-respiration/measured-final/zh-1280-gradient.png",
+        "artifacts/teaching-principles/biology-next-respiration/cover-measured/en-390-card.png"
+      ],
+      "scope": "Actual images opened and inspected, including the ATP-footer baseline and NAD-entry-path repair; not a claim to have visually inspected all 54 generated images."
+    },
+    {
+      "type": "root-independent-acronym-recognition-audit",
+      "status": "root-reported-accepted-current-PCM",
+      "report": "artifacts/teaching-principles/batch-10-bio-acronym-audit.json",
+      "scope": "Root reported independent second-decoder confirmation of EN ATP/ADP and ZH ADP+Pi→ATP; recognizer punctuation and duplicate-token ambiguity documented. ASR is not natural-voice listening."
+    }
+  ],
+  "knownBoundaries": [
+    "No raw quantitative culture data, no fixed respiratory ATP yield, no membrane-voltage fit.",
+    "GAP functional-group representation is explicitly distinct from ATP net atom map.",
+    "Root holds all shared files and generated audio."
+  ],
+  "failuresAndFixes": [
+    "Initial short-screen alignment inherited site scroll padding and put controls below viewport; locally scoped scroll alignment corrected.",
+    "Initial shared generic carrier note implied return during NAD reduction; replaced by Pi participation and NAD+ reduction.",
+    "Initial GAP revisit used an insufficient three-carbon graphic; now explicit aldehyde/acyl-phosphate groups and fresh substrate batch.",
+    "One first dev UI comparison failed exact HTML equality without a captured difference; no cause asserted. Two subsequent full58-check runs passed; static repeat remains required.",
+    "Original EN recording ambiguously pronounced ATP/ADP. Root validated and regenerated explicit A. T. P. / A. D. P. pronunciations; final timeline is 258 s, with both locale directors calibrated to current word timings.",
+    "Measured ZH layout first found three vertically clipped ATP footer states. Local footer baseline moved upward; affected four-frame repeat and final 54-frame matrix passed.",
+    "Membrane NAD-entry curve crossed a carrier label; routed around the label and actually reviewed the final desktop image."
+  ],
+  "measuredDuration": 258,
+  "measuredChapterStarts": [0, 42, 69.5, 96, 130, 168, 215.5],
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-10-review.json",
+    "manual": "artifacts/teaching-principles/batch-10-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "status": "reviewed-ready-for-authorized-publication",
+  "status": "published-and-live-verified",
   "scenes": [
     "projectile-motion-lab",
     "chem-chlorine-photolysis",
@@ -106,7 +106,7 @@
       "evidence": "artifacts/teaching-principles/batch-8-continuous/report.json"
     }
   ],
-  "pending": ["Actions deployment and live verification"],
+  "pending": [],
   "notClaimed": [
     "Subjective listening",
     "Physical-phone performance",
@@ -136,5 +136,15 @@
     "checkout": "Dedicated managed Batch8 checkout, isolated from in-progress Batch9.",
     "setupRecovery": "Initial isolated verify saw GitLFS pointer files. Hydrated864existingaudioassets from original checkout, verified everySHA256againstpointerOID, then reran fullverify successfully.",
     "sourceFingerprintNote": "Staging candidate removed6deletedpaths fromls-files and addednewpaths togitdiff; file bytes unchanged. Final build and all browser QA use recorded final frozen fingerprint."
+  },
+  "publication": {
+    "status": "success",
+    "commit": "0a03c5e5c8d2648651d4a90881b6d77e069cb4cf",
+    "run": "https://github.com/int64ago/vistep/actions/runs/39151914647",
+    "workerVersion": "98fe315e-2057-4bd4-8dc7-d38aa873cdc1",
+    "finishedAt": "2026-10-18T18:25:48.325Z",
+    "deploymentEvidence": "artifacts/teaching-principles/batch-9-deployment/deployment.json",
+    "liveEvidence": "artifacts/teaching-principles/batch-8-live.json",
+    "delivery": "Cumulative Batch9 release includes Batch8; Batch8 own Actions skipped stale deploy."
   }
 }

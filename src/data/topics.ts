@@ -2860,11 +2860,11 @@ export const topics: Topic[] = [
   {
     slug: 'chem-iron-cycle',
     name: '铁离子的显色与转化',
-    title: '红色消失，又回来，铁发生了什么？',
-    question: '红色消失，又回来，铁发生了什么？',
-    description: '把Fe³⁺检验、铁粉还原、清液氧化与配合平衡连接起来，用同一物料衡算解释颜色变化。',
+    title: '同样的铁，为什么红色会消失又回来？',
+    question: '红色究竟在报告什么？',
+    description: '追踪铁与氯的电子收支、配体的解离与重组，分清显色、氧化还原与配合平衡。',
     color: '#baaa85',
-    tag: '铁离子 · 氧化还原 · 配合平衡',
+    tag: '电子收支 · 配体重组 · 显色证据',
     related: [
       'chem-electron-transfer',
       'chem-precipitation-paths',
@@ -2874,16 +2874,22 @@ export const topics: Topic[] = [
     sources: [
       {
         title:
-          'Inorganica Chimica Acta — Thermodynamic formation constants for iron(III) thiocyanate complexes',
+          'de Berg, Maeder & Clifford (2017), The thermodynamic formation constants for iron(III) thiocyanate complexes at zero ionic strength',
         url: 'https://doi.org/10.1016/j.ica.2017.06.017',
       },
       {
-        title: 'University of Delaware — Formation constant for monothiocyanatoiron(III)',
+        title:
+          'University of Delaware CHEM445 Experiment5, Formation Constant for Monothiocyanatoiron(III)',
         url: 'https://udel.edu/~dougr/Exp5.pdf',
       },
       {
         title: '人教版高中化学必修一72—73页、选择必修一36—37页、选择必修二97页',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title:
+          'Elijošiūtė2014 dissertation, iron(III) isothiocyanate structural/spectroscopic sections',
+        url: 'https://epubl.ktu.edu/object/elaba%3A2192910/2192910.pdf',
       },
     ],
     number: '336',
@@ -3136,9 +3142,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-respiration',
     name: '呼吸的气路与碳路径',
-    title: '酵母呼吸，气体从哪里来',
-    question: '把培养装置与细胞内的物质去向连接起来。',
-    description: '追踪气路、产物检测与六个碳，同时理解ATP的能量耦合。',
+    title: '两瓶酵母，能量从哪里来？',
+    question: '发酵究竟让什么重新流动起来？',
+    description: '从气体和乙醇的对照结果，追踪碳、电子载体与ATP的不同账目。',
     color: '#adb995',
     tag: '生物学',
     related: ['bio-enzyme-investigations', 'bio-cellular-logistics'],
@@ -3150,6 +3156,49 @@ export const topics: Topic[] = [
       {
         title: 'OpenStax: fermentation',
         url: 'https://openstax.org/books/microbiology/pages/8-4-fermentation',
+      },
+      {
+        title: 'IUBMB EC 2.7.1.1 hexokinase',
+        url: 'https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/1.html',
+      },
+      {
+        title: 'Rhea 17825: D-glucose + ATP = D-glucose 6-phosphate + ADP + H+',
+        url: 'https://www.rhea-db.org/rhea/17825',
+      },
+      {
+        title: 'IUBMB EC 1.2.1.12 glyceraldehyde-3-phosphate dehydrogenase',
+        url: 'https://iubmb.qmul.ac.uk/enzyme/EC1/2/1/12.html',
+      },
+      {
+        title: 'IUBMB EC 1.1.1.1 alcohol dehydrogenase',
+        url: 'https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/1.html',
+      },
+      {
+        title: 'Gilbert et al. (2011), intramolecular carbon isotope distribution in ethanol',
+        url: 'https://onlinelibrary.wiley.com/doi/10.1111/j.1365-3040.2011.02308.x',
+      },
+      {
+        title:
+          'Peter Mitchell, Nobel Lecture (1978), David Keilin’s Respiratory Chain Concept and Its Chemiosmotic Consequences',
+        url: 'https://www.nobelprize.org/uploads/2018/06/mitchell-lecture.pdf',
+      },
+      {
+        title:
+          'Hagman & Piškur (2015), A Study on the Fundamental Mechanism and the Evolutionary Driving Forces behind Aerobic Fermentation in Yeast',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4305316/',
+      },
+      {
+        title:
+          'Luttik et al. (1998), The Saccharomyces cerevisiae NDE1 and NDE2 genes encode separate mitochondrial NADH dehydrogenases catalyzing the oxidation of cytosolic NADH',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/9733747/',
+      },
+      {
+        title: 'Ndi1 associates with the III2IV supercomplex in Saccharomyces cerevisiae (2015)',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/26173916/',
+      },
+      {
+        title: 'Bennett & Steitz (1978), Glucose-induced conformational change in yeast hexokinase',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC336218/',
       },
     ],
     number: '326',
@@ -4895,9 +4944,9 @@ export const topics: Topic[] = [
   {
     slug: 'relativity-experiments',
     name: '光、事件与时钟',
-    title: '相对论怎样接受实验检验？',
-    question: '相对论怎样接受实验检验？',
-    description: '从转动干涉仪到μ子计数和飞行原子钟，比较可以观察的差异。',
+    title: '同一次实验，为什么时间不同？',
+    question: '同一次实验，为什么时间不同？',
+    description: '从列车闪光、μ子存活和四台飞行钟，看参考系与固有时间怎样接受检验。',
     color: '#94a9b5',
     tag: '相对论',
     related: ['gravity-measurements', 'celestial-observations'],
@@ -4917,6 +4966,31 @@ export const topics: Topic[] = [
       {
         title: 'NIST — Time and reference frames on rotating Earth',
         url: 'https://tf.nist.gov/general/pdf/711.pdf',
+      },
+      {
+        title: 'On the Relative Motion of the Earth and the Luminiferous Ether (1887)',
+        url: 'https://history.aip.org/exhibits/gap/PDF/michelson.pdf',
+      },
+      {
+        title: 'Einstein: On the Electrodynamics of Moving Bodies (1905), English translation',
+        url: 'https://www.fourmilab.ch/etexts/einstein/specrel/www/',
+      },
+      {
+        title:
+          'Frisch and Smith: Measurement of the Relativistic Time Dilation Using μ-Mesons (1963)',
+        url: 'https://doi.org/10.1119/1.1969508',
+      },
+      {
+        title: 'Hafele and Keating: Predicted Relativistic Time Gains (1972)',
+        url: 'https://doi.org/10.1126/science.177.4044.166',
+      },
+      {
+        title: 'Hafele and Keating: Observed Relativistic Time Gains (1972)',
+        url: 'https://doi.org/10.1126/science.177.4044.168',
+      },
+      {
+        title: 'Particle Data Group: Muon listing (2025)',
+        url: 'https://pdg.lbl.gov/2025/listings/rpp2025-list-muon.pdf',
       },
     ],
     number: '257',

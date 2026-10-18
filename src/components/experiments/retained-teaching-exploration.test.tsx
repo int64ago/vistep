@@ -3,6 +3,9 @@ import { act, create, type ReactTestRenderer } from 'react-test-renderer';
 import { afterEach, expect, it, vi } from 'vitest';
 import ApparentWeightLab from './ApparentWeightLab';
 import ElasticityLab from './ElasticityLab';
+import FrictionLab from './FrictionLab';
+import ForcePairsLab from './ForcePairsLab';
+import ForceResultantLab from './ForceResultantLab';
 
 const film = vi.hoisted(() => ({
   watch: true,
@@ -68,4 +71,59 @@ it('starts late-chapter exploration with rubber and restores its authored unload
   film.watch = true;
   await act(() => view!.update(createElement(ElasticityLab)));
   expect(reading()).toBe(authored);
+});
+it('enters friction exploration at the sensor chapter and isolates a manually increased load', async () => {
+  Object.assign(film, { watch: true, chapter: 4, chapterTime: 12, chapterProgress: 0.4 });
+  await act(() => {
+    view = create(createElement(FrictionLab));
+  });
+  const reading = () => text(view!.root.findByProps({ className: 'friction-live' }));
+  const authored = reading();
+  film.watch = false;
+  await act(() => view!.update(createElement(FrictionLab)));
+  expect(view!.root.findByProps({ className: 'friction-lab' }).props['data-mode']).toBe('sensor');
+  await act(() => view!.root.findByProps({ 'aria-label': '木块与砝码总质量' }).props.onChange(1));
+  expect(reading()).not.toBe(authored);
+  film.watch = true;
+  await act(() => view!.update(createElement(FrictionLab)));
+  expect(reading()).toBe(authored);
+  film.watch = false;
+  await act(() => view!.update(createElement(FrictionLab)));
+  expect(view!.root.findByProps({ 'aria-label': '木块与砝码总质量' }).props.value).toBe(1);
+});
+it('uses sensor exploration for force-pair records while preserving the authored calibration', async () => {
+  Object.assign(film, { watch: true, chapter: 2, chapterTime: 12, chapterProgress: 0.5 });
+  await act(() => {
+    view = create(createElement(ForcePairsLab));
+  });
+  const reading = () => text(view!.root.findByProps({ className: 'pair-readings' }));
+  const authored = reading();
+  film.watch = false;
+  await act(() => view!.update(createElement(ForcePairsLab)));
+  expect(view!.root.findByProps({ className: 'pair-lab' }).props['data-kind']).toBe('sensors');
+  await act(() =>
+    view!.root.findByProps({ 'aria-label': 'B仪器等效劲度系数' }).props.onChange(160),
+  );
+  film.watch = true;
+  await act(() => view!.update(createElement(ForcePairsLab)));
+  expect(reading()).toBe(authored);
+});
+it('shows only the actually applied single force after equivalent replacement', async () => {
+  Object.assign(film, { watch: true, chapter: 1, chapterTime: 12, chapterProgress: 0.5 });
+  await act(() => {
+    view = create(createElement(ForceResultantLab));
+  });
+  const readings = () => view!.root.findByProps({ className: 'resultant-readings' });
+  expect(readings().findAllByType('strong')).toHaveLength(1);
+  expect(text(readings())).toContain('单力');
+  film.watch = false;
+  await act(() => view!.update(createElement(ForceResultantLab)));
+  expect(view!.root.findByProps({ className: 'resultant-lab' }).props['data-view']).toBe('one');
+  const vectorButton = view!.root.findAllByType('button').find((b) => text(b) === '矢量记录');
+  expect(vectorButton).toBeDefined();
+  await act(() => vectorButton!.props.onClick());
+  expect(readings().findAllByType('strong')).toHaveLength(3);
+  film.watch = true;
+  await act(() => view!.update(createElement(ForceResultantLab)));
+  expect(readings().findAllByType('strong')).toHaveLength(1);
 });

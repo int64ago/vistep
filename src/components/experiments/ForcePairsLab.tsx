@@ -1,23 +1,35 @@
 import { useState, useId } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
-import { pairedBalances, pairExperiment } from '../../models/force-pairs-lab';
+import {
+  pairedBalances,
+  pairExperiment,
+  pairFilmState,
+  balanceScaleOffset,
+} from '../../models/force-pairs-lab';
+import { useSignalWidth } from '../lab/SignalFigure';
 import { springWire } from '../../models/elasticity-lab';
 import '../../styles/force-pairs-lab.css';
 export default function ForcePairsLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [instrument, setInstrument] = useState<'balances' | 'sensors'>('balances'),
+  const { host, compact } = useSignalWidth();
+  const [instrument, setInstrument] = useState<'balances' | 'sensors' | null>(null),
     [gap, setGap] = useState(0.5),
     [ratio, setRatio] = useState(120),
     [shift, setShift] = useState(0);
-  const c = film.watch ? film.chapter : instrument === 'balances' ? 1 : 3,
-    p = film.chapterProgress,
-    kind = film.watch ? (c < 2 ? 'balances' : 'sensors') : instrument;
+  const kind = film.watch
+    ? film.chapter < 2
+      ? 'balances'
+      : 'sensors'
+    : (instrument ?? (film.chapter < 2 ? 'balances' : 'sensors'));
+  const c = film.watch ? film.chapter : kind === 'balances' ? 1 : 3;
+  const director = pairFilmState(c, film.chapterTime, browserLocale());
+  const kB = film.watch ? director.rightStiffness : ratio;
   const s = film.watch
-    ? pairExperiment(c === 1 ? 3 : p * 4, c === 3, 80, c === 1 ? 160 : 120)
-    : pairedBalances(gap, shift, 80, ratio);
+    ? pairExperiment(director.physicalTime, director.bothMoving, 80, kB)
+    : pairedBalances(gap, shift, 80, kB);
   const X = (x: number) => 180 + x * 500,
     left = X(s.left),
     right = X(s.right),
@@ -25,12 +37,17 @@ export default function ForcePairsLab() {
     forceArrow = s.force * 7;
   const curve = (sign: number) =>
     Array.from({ length: 81 }, (_, i) => {
-      const tm = (p * 4 * i) / 80,
-        v = pairExperiment(tm, c === 3);
-      return `${i ? 'L' : 'M'}${40 + (tm / 4) * 280} ${95 - sign * v.force * 10}`;
+      const tm = (director.physicalTime * i) / 80,
+        v = pairExperiment(tm, director.bothMoving, 80, kB);
+      return `${i ? 'L' : 'M'}${40 + (tm / Math.max(4, director.physicalTime)) * 280} ${95 - sign * v.force * 10}`;
     }).join(' ');
   return (
-    <section className="pair-lab">
+    <section
+      className="pair-lab"
+      ref={host}
+      data-kind={kind}
+      data-physical-time={director.physicalTime}
+    >
       <header>
         <p>
           {t(
@@ -47,7 +64,7 @@ export default function ForcePairsLab() {
       </header>
       <svg
         className="pair-instruments"
-        viewBox="0 0 380 225"
+        viewBox={compact ? '0 65 380 150' : '0 0 380 225'}
         role="img"
         aria-label={t('两个相连仪器在共同挂钩处相互作用，读数大小相等方向相反')}
       >
@@ -60,10 +77,10 @@ export default function ForcePairsLab() {
           </marker>
         </defs>
         {[
-          { side: 1, anchor: left, extension: s.leftExtension, color: '#a78c64' },
-          { side: -1, anchor: right, extension: s.rightExtension, color: '#7b9687' },
+          { side: 1, anchor: left, extension: s.leftExtension, stiffness: 80, color: '#a78c64' },
+          { side: -1, anchor: right, extension: s.rightExtension, stiffness: kB, color: '#7b9687' },
         ].map((v, i) => {
-          const end = v.anchor + v.side * (30 + v.extension * 500);
+          const end = v.anchor + v.side * (30 + balanceScaleOffset(s.force, v.stiffness));
           return (
             <g key={i}>
               <path d={`M${v.anchor} 124h${-v.side * 14}`} stroke={v.color} strokeWidth="3" />
@@ -88,7 +105,36 @@ export default function ForcePairsLab() {
                     fill="none"
                     strokeWidth="1.5"
                   />
-                  <path d={`M${end} 115V134`} stroke={v.color} strokeWidth="2" />
+                  {Array.from({ length: 8 }, (_, tick) => {
+                    const x = v.anchor + v.side * (30 + balanceScaleOffset(tick, v.stiffness));
+                    return (
+                      <g
+                        key={tick}
+                        data-calibration-force={tick}
+                        data-calibration-stiffness={v.stiffness}
+                      >
+                        <path d={`M${x} 105v${tick % 2 ? 5 : 8}`} stroke={v.color} />
+                        {(tick === 0 || tick === 6) && (
+                          <text
+                            x={x}
+                            y="99"
+                            textAnchor="middle"
+                            fill={v.color}
+                            fontSize={compact ? 25 : 20}
+                          >
+                            {tick}
+                          </text>
+                        )}
+                      </g>
+                    );
+                  })}
+                  <path
+                    data-pointer-force={s.force}
+                    data-pointer-stiffness={v.stiffness}
+                    d={`M${end} 115V134`}
+                    stroke={v.color}
+                    strokeWidth="2"
+                  />
                 </>
               ) : (
                 <rect
@@ -139,18 +185,26 @@ export default function ForcePairsLab() {
       </svg>
       <div className="pair-readings">
         <div>
-          <span>{t('B作用于A · 向右')}</span>
+          <span aria-label={t('B作用于A · 向右')}>
+            {compact ? 'B → A · →' : t('B作用于A · 向右')}
+          </span>
           <strong>+{s.force.toFixed(2)} N</strong>
         </div>
         <div>
-          <span>{t('A作用于B · 向左')}</span>
+          <span aria-label={t('A作用于B · 向左')}>
+            {compact ? 'A → B · ←' : t('A作用于B · 向左')}
+          </span>
           <strong>−{s.force.toFixed(2)} N</strong>
         </div>
       </div>
       {kind === 'sensors' ? (
         <div className="pair-traces">
           <p>{t('统一向右为正，同一时刻读取两条曲线')}</p>
-          <svg viewBox="0 0 350 200" role="img" aria-label={t('两个传感器的力曲线相对于零线镜像')}>
+          <svg
+            viewBox={compact ? '0 -12 350 220' : '0 0 350 200'}
+            role="img"
+            aria-label={t('两个传感器的力曲线相对于零线镜像')}
+          >
             <path d="M40 15V177M40 95H325" stroke="#b3bfa3" fill="none" />
             <path
               d={film.watch ? curve(1) : `M40 ${95 - s.force * 10}H320`}
@@ -188,7 +242,7 @@ export default function ForcePairsLab() {
         <div className="pair-controls">
           <Segments
             label={t('测量仪器')}
-            value={instrument}
+            value={kind}
             onChange={setInstrument}
             options={[
               { value: 'balances', label: t('弹簧测力计') },

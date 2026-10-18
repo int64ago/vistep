@@ -7,13 +7,14 @@
     "description": "连接两只测力计或传感器，改变伸长、劲度与位置，按同一时刻辨认作用在不同对象上的力。",
     "color": "#b1bca2",
     "tag": "连接 · 配对 · 同时",
-    "related": ["elasticity-lab", "friction-lab"],
+    "related": ["elasticity-lab", "friction-lab", "force-resultant-lab", "recoil-lab"],
     "sources": [
       {
         "title": "OpenStax — Newton’s Third Law",
         "url": "https://openstax.org/books/university-physics-volume-1/pages/5-5-newtons-third-law"
       }
-    ]
+    ],
+    "number": "228"
   },
   "discovery": {
     "category": "mechanisms",
@@ -53,7 +54,7 @@
     "仪器内部按准静态弹性模型，忽略仪器自重和惯性；相互作用力相等反向不依赖物体是否运动。": "Instrument internals are quasistatic, neglecting weight and inertia. Equal opposite interaction does not depend on objects being at rest."
   },
   "narration": {
-    "duration": 111,
+    "duration": 111.5,
     "cues": [
       {
         "id": "balances",
@@ -65,7 +66,7 @@
         "en": "Connect the hooks of two spring balances and pull the right end slowly. The right instrument pulls the left, and the left pulls the right. Their readings rise together with equal magnitude. Identify the recipient of each force before judging from who initiates the pull or appears to remain still. These forces are one simultaneous interaction.",
         "seconds": 28,
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "stiffness",
@@ -77,7 +78,7 @@
         "en": "Use a balance with different stiffness. Its spring can extend by a different amount while measuring the same force. Each scale follows its own calibration; extension is not force itself. The arrows distinguish the force on A from the force on B. They point oppositely but act on different objects, so they are not a balanced pair on one free-body diagram.",
         "seconds": 28,
         "chapterAt": 28,
-        "at": 28.3
+        "at": 28.45
       },
       {
         "id": "sensors",
@@ -89,7 +90,7 @@
         "en": "Force sensors retain the full history. Define rightward as positive for both: B’s force on A lies above zero, and A’s force on B below it. Compare values at the same instant, not arbitrary peaks. Real instruments also require zeroing, mounting-direction checks and synchronized sampling before their records can be compared.",
         "seconds": 27,
         "chapterAt": 56,
-        "at": 56.3
+        "at": 56.45
       },
       {
         "id": "moving",
@@ -101,17 +102,23 @@
         "en": "Now move both endpoints. Rest is not required: the interaction forces remain simultaneous, equal and opposite. The instrument internals use a quasistatic approximation that neglects their inertia; this does not limit the third law to slow or stationary motion. To predict one object’s motion, include all its other forces as well, not just this pair acting on two different objects.",
         "seconds": 28,
         "chapterAt": 83,
-        "at": 83.3
+        "at": 83.45
       }
     ]
   },
   "curriculumVariants": {
     "required-1-third-law": {
+      "sceneSlug": "force-pairs-lab",
       "chapterIds": ["balances", "stiffness", "sensors", "moving"],
       "label": {
         "zh": "作用力和反作用力",
         "en": "Action and reaction forces"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/force-pairs-lab/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-10-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { pairedBalances, pairExperiment } from './force-pairs-lab';
+import {
+  pairedBalances,
+  pairExperiment,
+  balanceScaleOffset,
+  pairFilmState,
+} from './force-pairs-lab';
 describe('connected force balances', () => {
   it('different stiffness produces unequal extensions but an equal opposite interaction', () => {
     const s = pairedBalances(0.5);
@@ -28,6 +33,32 @@ describe('connected force balances', () => {
     for (let t = 0; t < 5; t += 0.1) {
       const s = pairExperiment(t, true);
       expect(s.onLeft).toBe(-s.onRight);
+    }
+  });
+  it('each calibrated tick and pointer uses the same physical extension', () => {
+    for (const rightK of [80, 120, 160])
+      for (const separation of [0.4, 0.46, 0.52]) {
+        const s = pairedBalances(separation, 0, 80, rightK);
+        expect(balanceScaleOffset(s.force, 80)).toBeCloseTo(s.leftExtension * 500, 12);
+        expect(balanceScaleOffset(s.force, rightK)).toBeCloseTo(s.rightExtension * 500, 12);
+        expect(balanceScaleOffset(s.force, rightK) / balanceScaleOffset(1, rightK)).toBeCloseTo(
+          s.force,
+          12,
+        );
+      }
+    expect(balanceScaleOffset(6.4, 80)).toBe(40);
+    expect(balanceScaleOffset(6.4, 160)).toBe(20);
+    for (const bad of [NaN, Infinity, -Infinity])
+      expect(() => balanceScaleOffset(bad, 80)).toThrow(RangeError);
+    expect(() => balanceScaleOffset(1, 0)).toThrow(RangeError);
+  });
+  it('the narrated replacement changes extension while calibrated signed readings still agree', () => {
+    for (const locale of ['en', 'zh'] as const) {
+      const d = pairFilmState(1, 8, locale),
+        s = pairExperiment(d.physicalTime, d.bothMoving, 80, d.rightStiffness);
+      expect(s.leftExtension / s.rightExtension).toBeCloseTo(2, 12);
+      expect(s.onLeft).toBe(-s.onRight);
+      expect(pairFilmState(3, 8, locale).bothMoving).toBe(true);
     }
   });
 });

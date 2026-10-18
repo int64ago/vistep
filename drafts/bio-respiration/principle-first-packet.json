@@ -1,0 +1,472 @@
+{
+  "sceneSlug": "bio-respiration",
+  "status": "owned implementation frozen after measured258s synchronization; root final static acceptance pending",
+  "plannedDuration": 232,
+  "preserveChapterIds": ["atp", "air", "sealed", "assay", "glycolysis", "aerobic", "fermentation"],
+  "narration": {
+    "cues": [
+      {
+        "id": "atp",
+        "title": "ATP究竟改变了谁？",
+        "titleEn": "What does ATP change?",
+        "caption": "ATP具体改变了哪个分子？",
+        "captionEn": "What does ATP change?",
+        "seconds": 36,
+        "zh": "ATP供能，究竟改变了什么？跟住末端这个磷原子。在己糖激酶中，它带着三个氧转移，原来连接前一个磷的氧留在ADP里。葡萄糖原来的氧接上磷，糖变成葡萄糖六磷酸。这是同一次酶反应中的耦联，不是一团能量先飞出来。游离无机磷酸不能替代这里的ATP。图中合并了质子和镁离子等细节。这是糖酵解的第一次ATP投入。",
+        "en": "When A. T. P. supplies energy, what changes? Follow its terminal phosphorus. In hexokinase, it transfers with three oxygen atoms. The oxygen linking it to the previous phosphorus stays in A. D. P.. The original oxygen on glucose joins the transferred phosphorus, forming glucose six-phosphate. These changes are coupled within one enzyme reaction; no energy packet flies between them. Free phosphate cannot replace A. T. P. here. Proton and magnesium details are omitted. This is the first A. T. P. investment in glycolysis."
+      },
+      {
+        "id": "air",
+        "title": "两瓶都能让石灰水变浑吗？",
+        "titleEn": "Can both cultures cloud limewater?",
+        "caption": "先排除空气带来的二氧化碳。",
+        "captionEn": "Exclude carbon dioxide already in the air.",
+        "seconds": 24,
+        "zh": "通气和密闭的两瓶酵母，为什么都可能产生二氧化碳？先别急着解释。通气瓶的气体还可能来自空气。跟住两种标记：外来的二氧化碳先被吸收，氧仍能进入培养瓶；新生成的二氧化碳再通向检测液。少了前面的吸收步骤，变浑就不能单独证明气体来自酵母。",
+        "en": "Why can both an aerated culture and a sealed culture produce carbon dioxide? First, check where the gas came from. In the aerated setup, incoming air already contains carbon dioxide. Follow the labels: that carbon dioxide is absorbed before oxygen reaches the culture. Newly produced carbon dioxide then reaches the detector. Without the first absorber, cloudiness alone cannot establish that the yeast made the gas."
+      },
+      {
+        "id": "sealed",
+        "title": "密闭就等于没有氧吗？",
+        "titleEn": "Does sealed mean oxygen-free?",
+        "caption": "氧用尽后仍产气，才提出新问题。",
+        "captionEn": "Gas after oxygen depletion poses a new question.",
+        "seconds": 25,
+        "zh": "塞住瓶口，瓶里原来还有氧。看这份有限的氧逐渐减少：早期出现气体，仍可能有有氧呼吸的贡献。等氧已经耗尽，气体却还能继续产生，这才需要另一条解释。我们将这段状态和通气条件比较。瓶子是否密闭只是装置条件，细胞实际有没有氧，才是判断过程的重要证据。",
+        "en": "A stopper does not remove the oxygen already inside a flask. Watch that finite supply decline. Early gas production can still include aerobic respiration. When oxygen is depleted but gas continues, another explanation is needed. We compare that state with the aerated condition. A sealed container is a setup condition; whether oxygen remains available to the cells is the evidence that matters."
+      },
+      {
+        "id": "assay",
+        "title": "同样冒气，产物也一样吗？",
+        "titleEn": "Same gas, same products?",
+        "caption": "检验识别产物，不直接数出ATP。",
+        "captionEn": "Product tests do not count ATP.",
+        "seconds": 30,
+        "zh": "把两份培养液的身份保持不变，再检验产物。二氧化碳检验能说明产气；乙醇检验还要排除残余葡萄糖带来的变色干扰。教材的理想化对照把两种代谢路径分开，但实际高糖酵母即使有氧，也可能产生乙醇。于是，检测结果需要和条件一起判断。现在的问题更具体了：碳去了哪里？为什么没有氧，细胞还能获得少量ATP？",
+        "en": "Keep the identities of the two culture samples as we test their products. Carbon dioxide detection establishes gas production. Interpreting the ethanol test also requires excluding color change caused by residual glucose. The textbook contrast separates ideal metabolic routes; real yeast at high sugar concentrations can produce ethanol even with oxygen. Conditions and tests must therefore be interpreted together. Where did the carbon go, and how can A. T. P. still be obtained without oxygen?"
+      },
+      {
+        "id": "glycolysis",
+        "title": "六个碳与两份载体",
+        "titleEn": "Six carbons and two carriers",
+        "caption": "碳拆开；ATP和电子载体另记账。",
+        "captionEn": "Track carbon, ATP and electron carriers separately.",
+        "seconds": 36,
+        "zh": "先跟住同一葡萄糖的六个碳。糖酵解把它们分到两个丙酮酸里，这时还没有释放二氧化碳。全程先投入两个ATP，随后生成四个，净得两个。同时，两份NAD加接受还原当量，变成NADH。现在只留下这两份载体：如果它们一直保持NADH状态，下一批需要NAD加的反应就无法继续。持续获得ATP，还需要把载体再生回来。",
+        "en": "Follow the six carbon atoms of one glucose. Glycolysis distributes them into two pyruvates; no carbon dioxide is released at this stage. Two A. T. P. are invested and four are produced, giving a net gain of two. At the same time, two NAD-plus carriers accept reducing equivalents and become NADH. Now keep only these two carriers available. If both remain reduced, the next reaction requiring NAD-plus cannot continue. Sustained A. T. P. production needs a way to regenerate the carriers."
+      },
+      {
+        "id": "aerobic",
+        "title": "氧怎样接上ATP合成？",
+        "titleEn": "How does oxygen support ATP production?",
+        "caption": "电子传递建立膜两侧的能量差。",
+        "captionEn": "Electron transfer builds a membrane energy difference.",
+        "seconds": 42,
+        "zh": "有氧时，碳可以进一步氧化成二氧化碳；但氧与ATP之间还有一段连接。看这个局部过程：载体交出电子，电子沿内膜上的传递链，最后交给氧，形成水。能量转移推动质子到膜的另一侧。质子再通过ATP合酶返回，推动ADP和无机磷酸生成ATP。突然停止供氧，电子传递受阻；已经建立的差异会逐渐消耗，ATP合成随之减慢，而不是瞬间清零。这里不按气泡数换算ATP。",
+        "en": "With oxygen, carbon can be oxidized further to carbon dioxide. But oxygen supports A. T. P. production through another connection. In this local view, a carrier passes electrons into a membrane transport chain. Oxygen ultimately accepts them to form water. Energy transfer moves protons across the membrane. Their return through A. T. P. synthase drives A. T. P. formation from A. D. P. and phosphate. Stop the oxygen supply: electron transfer is blocked, while the stored membrane difference gradually drains. A. T. P. production slows rather than vanishing instantly. Bubbles are not an A. T. P. counter."
+      },
+      {
+        "id": "fermentation",
+        "title": "没有氧，怎样让载体回来？",
+        "titleEn": "How are carriers recycled without oxygen?",
+        "caption": "再生载体，让糖酵解继续。",
+        "captionEn": "Recycle carriers so glycolysis can continue.",
+        "seconds": 39,
+        "zh": "没有氧，酵母可以走另一条路。丙酮酸先失去一个碳，形成二氧化碳；留下的两个碳接受NADH带来的还原当量，成为乙醇。原来那份NAD加回来了，下一批糖酵解得以继续。这段发酵本身没有额外生成ATP。再看同型乳酸发酵：三个碳全部留下，同样再生载体，却不产生二氧化碳。所以，没看见气泡，不等于没有获得ATP；气体和乙醇检测，也不能替代能量收支。",
+        "en": "Without oxygen, yeast can take another route. Pyruvate loses one carbon as carbon dioxide. The two-carbon product accepts reducing equivalents from NADH and becomes ethanol. The same NAD-plus carrier is restored, allowing another glycolytic batch to proceed. This fermentation step adds no further A. T. P.. In homolactic fermentation, all three carbons stay together and the carrier is also regenerated, but no carbon dioxide is produced. No visible bubbles therefore does not mean no A. T. P. production. Gas and ethanol tests cannot replace an energy account."
+      }
+    ]
+  },
+  "translations": {
+    "原有空气": "Original air",
+    "培养物A": "Culture A",
+    "培养物B": "Culture B",
+    "外来CO₂": "Incoming CO₂",
+    "新生成CO₂": "New CO₂",
+    "理想路径对照": "Ideal route comparison",
+    "教材结果示意": "Textbook result schematic",
+    "非实测曲线": "Not measured data",
+    "有限氧储量": "Finite oxygen supply",
+    "氧已耗尽": "Oxygen depleted",
+    "结果尚不充分": "Not yet conclusive",
+    "葡萄糖干扰": "Glucose interference",
+    "排除这一干扰": "This interference excluded",
+    "碳去向": "Carbon destinations",
+    "同一磷原子": "Same phosphorus",
+    "原有糖氧": "Original sugar oxygen",
+    "磷酰基净转移": "Net phosphoryl transfer",
+    "游离无机磷酸": "Free phosphate",
+    "省略镁与缓冲细节": "Mg and buffer details omitted",
+    "第一笔ATP投入": "First ATP investment",
+    "2投入，4生成": "2 invested, 4 produced",
+    "净得2ATP": "Net gain: 2 ATP",
+    "载体总数不变": "Carrier count unchanged",
+    "等待NAD⁺": "Waiting for NAD⁺",
+    "载体再生": "Carrier recycling",
+    "胞质侧": "Cytosolic side",
+    "内膜外侧": "Outside inner membrane",
+    "线粒体基质": "Mitochondrial matrix",
+    "质子差异": "Proton-motive difference",
+    "局部过程示意": "Local process schematic",
+    "电子交给氧": "Electrons pass to oxygen",
+    "储存差异逐渐消耗": "Stored difference drains",
+    "ATP合成减慢": "ATP synthesis slows",
+    "乙醛接受还原当量": "Acetaldehyde accepts reducing equivalents",
+    "同型乳酸发酵": "Homolactic fermentation",
+    "不新增ATP": "No additional ATP",
+    "无CO₂，也可得ATP": "ATP without CO₂",
+    "净收支，非全部步骤": "Net account, not every step",
+    "阻断载体再生": "Block carrier recycling",
+    "恢复载体再生": "Restore carrier recycling",
+    "供氧停止": "Oxygen supply stopped",
+    "等量糖的路径比较": "Routes for equal glucose",
+    "碳编号对应原葡萄糖": "Carbon IDs follow the original glucose",
+    "净转移示意": "Net transfer schematic",
+    "NAD⁺": "NAD⁺",
+    "NADH": "NADH",
+    "H⁺": "H⁺",
+    "Pᵢ": "Pᵢ",
+    "CO₂": "CO₂",
+    "O₂": "O₂",
+    "ATP": "ATP",
+    "ADP": "ADP",
+    "4生成 − 2投入 = 净得2ATP": "4 produced − 2 invested = 2 net ATP",
+    "ADP与磷酸化的糖同时形成": "ADP and glucose 6-phosphate form",
+    "ATP与磷的独立收支": "ATP and phosphorus accounts",
+    "ATP的受体": "ATP recipient",
+    "三个碳保留，不生成CO₂": "Three carbons retained; no CO₂",
+    "两个丙酮酸，此时没有CO₂": "Two pyruvates; no CO₂ yet",
+    "两份无机磷酸也参与": "Two inorganic phosphates also enter",
+    "两份磷基先接到糖上": "Two phosphoryl groups join the sugar",
+    "两种条件都可能产气": "Both conditions can produce gas",
+    "乙醇": "Ethanol",
+    "供体和受体进入同一酶": "Donor and recipient meet in one enzyme",
+    "停止供氧": "Stop oxygen supply",
+    "停止供氧，储存差异仍在": "Oxygen stops; stored difference remains",
+    "储存差异消耗，合成减慢": "Stored difference drains; synthesis slows",
+    "先投入2ATP": "First invest 2 ATP",
+    "先辨别气体来源": "Identify the gas source",
+    "六个原碳保持身份": "Six original carbons retain their identities",
+    "原载体回来，下一批可继续": "Carriers return; the next batch can proceed",
+    "发酵路径": "Fermentation route",
+    "变浑的来源仍有歧义": "Cloudiness still has an ambiguous source",
+    "同一磷原子转给葡萄糖原来的氧": "The same phosphorus joins the original glucose oxygen",
+    "同一试剂，两种原因": "One reagent, two possible causes",
+    "同一载体，再次参加反应": "The same carriers return",
+    "吸收步骤缺失": "Absorber absent",
+    "密闭不等于已经无氧": "Sealed does not mean oxygen-free",
+    "密闭瓶原有的氧逐渐用尽": "Oxygen already in the sealed flask is depleted",
+    "恢复供氧": "Restore oxygen supply",
+    "排除残余葡萄糖后再判断": "Exclude residual glucose before interpreting",
+    "教学时间与净收支示意，不是实测速率。": "Teaching time and net accounts, not measured rates.",
+    "有氧，也可能生成乙醇": "Ethanol can also form with oxygen",
+    "有限的氧": "Finite oxygen",
+    "来自培养物的新CO₂": "New CO₂ from the culture",
+    "检测与证据": "Tests and evidence",
+    "检测结果需要与条件一起判断": "Interpret tests together with conditions",
+    "气体的来源": "Gas source",
+    "氧化反应需要NAD⁺": "Oxidation requires NAD⁺",
+    "氧已耗尽，仍有新CO₂": "Oxygen depleted; new CO₂ continues",
+    "氧继续通入": "Oxygen passes",
+    "游离磷酸不能替代这里的ATP": "Free phosphate cannot replace ATP here",
+    "澄清石灰水": "Clear limewater",
+    "电子传递建立差异，质子回流推动ATP合成": "Electron transfer builds a difference; proton return drives ATP synthesis",
+    "碳与载体": "Carbon and carriers",
+    "碳去哪了？ATP从何而来？": "Where does carbon go? How is ATP made?",
+    "磷酰基供体": "Phosphoryl donor",
+    "空气CO₂被吸收": "CO₂ absorbed",
+    "糖上磷基": "Sugar-bound P",
+    "糖的原有氧，接上转来的磷": "The original sugar oxygen joins phosphorus",
+    "缺少NAD⁺，下一批受限": "No NAD⁺: the next batch is limited",
+    "膜上的耦联": "Membrane coupling",
+    "葡萄糖": "Glucose",
+    "葡萄糖也能干扰显色": "Glucose can also change the color",
+    "观察层次": "Observation level",
+    "观察时间": "Observation time",
+    "质子回流，推动ATP合成": "Proton return drives ATP synthesis",
+    "载体再生决定下一批反应能否继续": "Carrier recycling determines whether the next batch proceeds",
+    "载体的回来": "Carriers return",
+    "进气通到液下，出气来自瓶口": "Inlets reach below the liquid; outlets take headspace gas",
+    "追踪碳和载体": "Follow carbon and carriers",
+    "酒精发酵": "Ethanol fermentation",
+    "酵母培养液": "Yeast culture",
+    "高糖酵母的边界": "High-sugar yeast can ferment aerobically",
+    "载体再生，这一步不新增ATP": "Carriers recycled; no extra ATP here",
+    "基质侧": "Matrix side",
+    "缓冲液": "Buffer",
+    "乙醛 → 乙醇": "Acetaldehyde → ethanol",
+    "对照：持续供氧": "Compare: continuous oxygen",
+    "改为中途停氧": "Stop oxygen midway",
+    "下一批三碳底物": "Next triose substrates",
+    "回看三碳氧化步": "A glycolytic oxidation",
+    "Pi参与，NAD⁺接受还原当量": "Pi joins; NAD⁺ is reduced."
+  },
+  "teachingProfiles": {
+    "bio-required-1-mechanism-04": {
+      "sceneSlug": "bio-respiration",
+      "question": {
+        "zh": "ATP供能时，具体改变了哪个分子？",
+        "en": "When ATP supplies energy, which molecule changes?"
+      },
+      "lead": {
+        "zh": "追踪同一个磷原子，看ATP与葡萄糖在一次酶反应中共同改变。",
+        "en": "Follow one phosphorus as ATP and glucose change in a coupled enzyme reaction."
+      },
+      "principle": {
+        "zh": "ATP可以通过与受体反应耦联推动具体化学变化；磷酰基转移后形成ADP和磷酸化产物，不能把能量当作另一个飞出的粒子。",
+        "en": "ATP can drive a specific chemical change by coupling to a receiving reaction. Phosphoryl transfer produces ADP and a phosphorylated product; energy is not an extra emitted particle."
+      },
+      "transfer": {
+        "question": {
+          "zh": "把ATP换成同样含磷的游离无机磷酸，己糖激酶还能按相同反应改造葡萄糖吗？",
+          "en": "Can free inorganic phosphate replace ATP in the same hexokinase reaction?"
+        },
+        "explanation": {
+          "zh": "不能仅凭都含磷就替代。此酶反应使用ATP作为磷酰基供体；供体结构、反应配对及整体自由能变化都有关。图不计算实际自由能或完整催化过渡态。",
+          "en": "Sharing phosphorus is insufficient. This reaction uses ATP as its phosphoryl donor; donor structure, coupled chemistry and the overall free-energy change matter. The diagram does not calculate free energies or a full catalytic transition state."
+        }
+      }
+    },
+    "bio-required-1-090-1": {
+      "sceneSlug": "bio-respiration",
+      "question": {
+        "zh": "两瓶都产气，为什么不能说它们用同一种方式获得ATP？",
+        "en": "If both cultures produce gas, must they obtain ATP in the same way?"
+      },
+      "lead": {
+        "zh": "先辨别气体和乙醇来自哪里，再跟住碳与电子载体解释两条路径。",
+        "en": "Establish the sources of gas and ethanol, then follow carbon and electron carriers through the routes."
+      },
+      "principle": {
+        "zh": "对照检验支持产物判断，物质路径与载体再生解释代谢为何持续；气体不是ATP计数器，教材理想化对照不能替代对真实培养条件的分析。",
+        "en": "Controlled tests support product identification; carbon pathways and carrier recycling explain continued metabolism. Gas is not an ATP counter, and an ideal textbook contrast does not replace analysis of real culture conditions."
+      },
+      "transfer": {
+        "question": {
+          "zh": "一种培养物没有产生二氧化碳，能据此断言它没有通过糖酵解获得ATP吗？",
+          "en": "If a culture produces no carbon dioxide, can we conclude that glycolysis produced no ATP?"
+        },
+        "explanation": {
+          "zh": "不能。同型乳酸发酵保留三个碳并再生NAD+，可支持糖酵解净得ATP却不生成CO2。这里不把所有乳酸菌都归为同型发酵。",
+          "en": "No. Homolactic fermentation retains three carbons and regenerates NAD+, supporting a net glycolytic ATP gain without CO2. Not all lactic acid bacteria follow only that route."
+        }
+      }
+    },
+    "bio-required-1-mechanism-05": {
+      "sceneSlug": "bio-respiration",
+      "question": {
+        "zh": "没有氧，为什么还能继续获得少量ATP？",
+        "en": "Why can a little ATP still be obtained without oxygen?"
+      },
+      "lead": {
+        "zh": "六个碳始终有去向；两份电子载体必须回来，下一批反应才可继续。",
+        "en": "Every carbon has a destination, and the two carriers must return before another batch can proceed."
+      },
+      "principle": {
+        "zh": "糖酵解的净ATP收益与电子载体再生是不同账目。呼吸链或发酵可使NADH被氧化回NAD+；发酵末段不额外产生ATP，却支持前段持续进行。",
+        "en": "Net glycolytic ATP gain and carrier recycling are separate accounts. A respiratory chain or fermentation can reoxidize NADH to NAD+. The final fermentation reactions add no ATP but allow earlier reactions to continue."
+      },
+      "transfer": {
+        "question": {
+          "zh": "如果阻断乙醛接受还原当量，仍有葡萄糖，为什么糖酵解也会逐渐受限？",
+          "en": "If acetaldehyde cannot accept reducing equivalents, why can glycolysis become limited even while glucose remains?"
+        },
+        "explanation": {
+          "zh": "在限定的载体池且没有其他再生途径时，NADH积累、NAD+不足，甘油醛3-磷酸氧化这一步无法持续。不是把所有糖酵解步骤设为氧开关。",
+          "en": "With a finite carrier pool and no alternative recycling route, NADH accumulates and NAD+ becomes scarce. Glyceraldehyde-3-phosphate oxidation cannot continue. This is not an oxygen switch applied to every glycolytic step."
+        }
+      }
+    }
+  },
+  "topicSuggestion": {
+    "title": {
+      "zh": "两瓶酵母，能量从哪里来？",
+      "en": "Two yeast cultures: where does the energy go?"
+    },
+    "description": {
+      "zh": "从气体和乙醇的对照结果，追踪碳、电子载体与ATP的不同账目。",
+      "en": "Follow carbon, electron carriers and ATP from the contrasting products of two yeast cultures."
+    }
+  },
+  "windowRecommendations": [
+    {
+      "entryId": "bio-required-1-mechanism-04",
+      "printedPage": 86,
+      "sceneVariant": "atp",
+      "current": ["atp"],
+      "proposed": ["atp"],
+      "reason": "实际受体改变与游离Pi反例使独立ATP窗闭合。"
+    },
+    {
+      "entryId": "bio-required-1-090-1",
+      "printedPage": 90,
+      "sceneVariant": "air",
+      "current": ["air", "sealed", "assay"],
+      "proposed": ["air", "sealed", "assay", "glycolysis", "aerobic", "fermentation"],
+      "reason": "避免停在操作和检测，延长到碳/载体原因及无CO2仍可得ATP的回扣预测。"
+    },
+    {
+      "entryId": "bio-required-1-mechanism-05",
+      "printedPage": 92,
+      "sceneVariant": "aerobic",
+      "current": ["glycolysis", "aerobic", "fermentation"],
+      "proposed": ["glycolysis", "aerobic", "fermentation"],
+      "reason": "保留学习顺序；实际首章为glycolysis，未手选探索时必须跟随film.chapter而非sceneVariant。"
+    }
+  ],
+  "sourceIds": [
+    "pep-b1",
+    "iubmb-hexokinase",
+    "rhea-17825",
+    "iubmb-gapdh",
+    "iubmb-adh",
+    "gilbert-2011",
+    "mitchell-1978",
+    "crabtree-2015",
+    "luttik-1998",
+    "ndi1-2015",
+    "steitz-1978"
+  ],
+  "audio": {
+    "owner": "root",
+    "status": "recorded and independent ASR performed by root; subjective listening remains a separate check",
+    "spokenTextFrozen": true,
+    "pronunciationNote": "English spoken ATP/ADP use explicit A. T. P. / A. D. P.; only pronunciation notation changed.",
+    "measuredTiming": "258s chapter timeline; internal direction uses chapterTime and locale; no speech stretching"
+  },
+  "integrationOwner": "root only",
+  "next": "Root final static playback, audio acceptance, global verification and publishing.",
+  "sources": [
+    {
+      "title": "IUBMB EC 2.7.1.1 hexokinase",
+      "url": "https://iubmb.qmul.ac.uk/enzyme/EC2/7/1/1.html"
+    },
+    {
+      "title": "Rhea 17825: D-glucose + ATP = D-glucose 6-phosphate + ADP + H+",
+      "url": "https://www.rhea-db.org/rhea/17825"
+    },
+    {
+      "title": "IUBMB EC 1.2.1.12 glyceraldehyde-3-phosphate dehydrogenase",
+      "url": "https://iubmb.qmul.ac.uk/enzyme/EC1/2/1/12.html"
+    },
+    {
+      "title": "IUBMB EC 1.1.1.1 alcohol dehydrogenase",
+      "url": "https://iubmb.qmul.ac.uk/enzyme/EC1/1/1/1.html"
+    },
+    {
+      "title": "Gilbert et al. (2011), intramolecular carbon isotope distribution in ethanol",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1365-3040.2011.02308.x"
+    },
+    {
+      "title": "Peter Mitchell, Nobel Lecture (1978), David Keilin’s Respiratory Chain Concept and Its Chemiosmotic Consequences",
+      "url": "https://www.nobelprize.org/uploads/2018/06/mitchell-lecture.pdf"
+    },
+    {
+      "title": "Hagman & Piškur (2015), A Study on the Fundamental Mechanism and the Evolutionary Driving Forces behind Aerobic Fermentation in Yeast",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4305316/"
+    },
+    {
+      "title": "Luttik et al. (1998), The Saccharomyces cerevisiae NDE1 and NDE2 genes encode separate mitochondrial NADH dehydrogenases catalyzing the oxidation of cytosolic NADH",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9733747/"
+    },
+    {
+      "title": "Ndi1 associates with the III2IV supercomplex in Saccharomyces cerevisiae (2015)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26173916/"
+    },
+    {
+      "title": "Bennett & Steitz (1978), Glucose-induced conformational change in yeast hexokinase",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC336218/"
+    }
+  ],
+  "measuredDuration": 258.0,
+  "measuredChapterStarts": [0, 42.0, 69.5, 96.0, 130.0, 168.0, 215.5],
+  "directorAnchors": {
+    "zh": {
+      "atp": {
+        "transfer": [5.5, 15.2],
+        "freePi": 21.7,
+        "returnCompletedATP": 28.9
+      },
+      "air": {
+        "incoming": 5,
+        "newCO2": 16.3,
+        "withoutAbsorber": 19.8
+      },
+      "sealed": {
+        "depleted": 10,
+        "connectionCompleted": 11.2
+      },
+      "assay": {
+        "gas": 4,
+        "glucoseInterference": 7.2,
+        "aerobicEthanolBoundary": 15.7,
+        "question": 24.5
+      },
+      "glycolysis": {
+        "split": [2.7, 6.1],
+        "ledger": 8.7,
+        "GAPview": 13.8,
+        "NADReduction": [14.8, 18.6],
+        "nextBatchBlocked": 24.5
+      },
+      "aerobic": {
+        "membrane": 7.1,
+        "terminalWater": [12.5, 14.7],
+        "stopOxygen": 25.2,
+        "continuousReservoirAtCut": true
+      },
+      "fermentation": {
+        "decarboxylation": [3.1, 6.5],
+        "NADHtoNAD": [6.9, 11.9],
+        "nextGAPBatch": [12.4, 17.2],
+        "noExtraATPRecap": 17.2,
+        "homolactate": 20.9,
+        "prediction": 28.3
+      }
+    },
+    "en": {
+      "atp": {
+        "transfer": [7.2, 21.2],
+        "freePi": 29,
+        "returnCompletedATP": 36.3
+      },
+      "air": {
+        "incoming": 5,
+        "newCO2": 17.7,
+        "withoutAbsorber": 20.9
+      },
+      "sealed": {
+        "depleted": 10.1,
+        "connectionCompleted": 11.312
+      },
+      "assay": {
+        "gas": 5,
+        "glucoseInterference": 8.8,
+        "aerobicEthanolBoundary": 18.2,
+        "question": 26.7
+      },
+      "glycolysis": {
+        "split": [3.3, 6.5],
+        "ledger": 9.8,
+        "GAPview": 16.2,
+        "NADReduction": [17, 22.4],
+        "nextBatchBlocked": 27.8
+      },
+      "aerobic": {
+        "membrane": 9.8,
+        "terminalWater": [15.3, 18.3],
+        "stopOxygen": 31,
+        "continuousReservoirAtCut": true
+      },
+      "fermentation": {
+        "decarboxylation": [3.1, 6.5],
+        "NADHtoNAD": [6.7, 11.9],
+        "nextGAPBatch": [12.4, 18],
+        "noExtraATPRecap": 18,
+        "homolactate": 23,
+        "prediction": 32
+      }
+    },
+    "semantics": "Times relative to shared chapter start; ASR-relative word times were shifted by0.45s. Exact local reaction clocks are continuous teaching-time mappings, not measured molecular kinetics."
+  }
+}

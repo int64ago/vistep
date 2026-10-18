@@ -1,32 +1,52 @@
 ---
 import { carbonDestinations } from '../../models/bio-respiration';
-const atoms = carbonDestinations('ethanol');
+const products = carbonDestinations('ethanol').filter((a) => a.group === 0);
 ---
 
-<svg viewBox="0 0 400 230" aria-hidden="true"
-  ><rect width="400" height="230" rx="24" fill="#eceddb"></rect><path
-    d="M50 28H89V72L119 175Q123 193 103 193H36Q18 193 21 175L50 72Z"
-    fill="#d3c9a0"
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <rect width="400" height="230" rx="24" fill="#eef0e3"></rect>
+  <path
+    d="M44 52H78V88L105 179Q109 193 95 193H28Q13 193 17 179L44 88Z"
+    fill="#d0c29a"
     stroke="#8c9b7d"
-    stroke-width="2"></path><path
-    d="M75 55V13H162V172"
+    stroke-width="2"></path>
+  <path
+    d="M136 52H170V88L198 179Q203 193 187 193H119Q103 193 108 179L136 88Z"
+    fill="#e0e6d5"
+    stroke="#8c9b7d"
+    stroke-width="2"></path>
+  <rect x="41" y="47" width="40" height="11" rx="3" fill="#aaa080"></rect>
+  <rect x="133" y="47" width="40" height="11" rx="3" fill="#aaa080"></rect>
+  <path d="M69 78V25H145V165M162 78V25H194" fill="none" stroke="#809b86" stroke-width="4"></path>
+  <path
+    d="M24 157H100M115 157H191"
     fill="none"
-    stroke="#809b86"
-    stroke-width="4"></path><path
-    d="M144 31H181V86L207 175Q212 193 192 193H134Q117 193 120 175L144 86Z"
-    fill="#e1e5d2"
-    stroke="#8c9b7d"
-    stroke-width="2"></path>{
-    atoms.map((a, i) => (
-      <g transform={`translate(${260 + (i % 3) * 37} ${70 + Math.floor(i / 3) * 70})`}>
-        <circle r="12" fill={i < 3 ? '#ad8266' : '#718f7e'} />
+    stroke="#f7f8eb"
+    stroke-opacity=".5"
+    stroke-width="3"></path>
+  <circle cx="114" cy="25" r="6" fill="#537f72"></circle>
+  <path
+    d="M239 65Q301 23 365 65M365 95Q304 127 239 95"
+    fill="none"
+    stroke="#a4b59d"
+    stroke-width="2.5"></path>
+  <path d="M357 60l9 5-10 5M248 90l-10 5 10 5" fill="#809b86"></path>
+  <text x="246" y="87" text-anchor="middle" font-size="24" fill="#53735d">NAD⁺</text>
+  <text x="351" y="87" text-anchor="middle" font-size="24" fill="#9b794b">NADH</text>
+  <path d="M252 158H286" fill="none" stroke="#ac9276" stroke-width="3"></path>
+  {
+    products.map((a, i) => (
+      <g transform={`translate(${252 + i * 38 + (a.product === 'CO₂' ? 18 : 0)} 158)`}>
         {a.product === 'CO₂' && (
           <>
-            <circle cx="-18" r="6" fill="#c4cfba" />
-            <circle cx="18" r="6" fill="#c4cfba" />
+            <path d="M-23 0H23" fill="none" stroke="#c0ab8e" stroke-width="2" />
+            <circle cx="-24" r="7" fill="#c8d3c0" />
+            <circle cx="24" r="7" fill="#c8d3c0" />
           </>
         )}
+        <circle r="12" fill="#a16f51" />
       </g>
     ))
-  }</svg
->
+  }
+  <text x="282" y="208" text-anchor="middle" font-size="24" fill="#53735d">ATP + 2</text>
+</svg>

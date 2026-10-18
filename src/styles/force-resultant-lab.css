@@ -59,6 +59,7 @@
   flex-wrap: wrap;
 }
 .resultant-note {
+  margin-top: 32px;
   font-size: 16px;
   line-height: 1.6;
   color: #849472;
@@ -89,47 +90,42 @@
   }
 }
 
-/* The film caption carries the current explanation; longer notes remain in exploration. */
+/* One physical arrangement at a time; vector records are a separate view. */
+.showcase[data-mode='watch'] .resultant-lab > header,
+.showcase[data-mode='watch'] .resultant-result,
+.showcase[data-mode='watch'] .resultant-note {
+  display: none;
+}
+.resultant-readings strong {
+  white-space: nowrap;
+}
+.resultant-controls button {
+  min-width: 44px;
+}
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .resultant-lab {
-    padding: 12px 8px;
+    padding: 0 8px;
+    min-height: 274px;
   }
-  .showcase[data-mode='watch'] .resultant-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .resultant-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .resultant-lab > header > span,
-  .showcase[data-mode='watch'] .resultant-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .resultant-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .resultant-lab > p[class$='-observation'] {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
   .showcase[data-mode='watch'] .resultant-board {
-    height: 260px;
+    height: 218px;
+    margin: 0 auto;
   }
-  .showcase[data-mode='watch'] .resultant-board text {
-    font-size: 24px;
-  }
-  .showcase[data-mode='watch'] .resultant-result {
-    margin: 7px 0;
-    font-size: 16px;
+  .resultant-board text {
+    font-size: 27px;
   }
   .showcase[data-mode='watch'] .resultant-readings {
-    gap: 8px;
+    gap: 10px;
+  }
+  .showcase[data-mode='watch'] .resultant-readings strong {
+    font-size: 18px;
+    line-height: 1.4;
   }
 }
 
-/* The current film caption already supplies this step's explanation. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .resultant-lab > header {
-    display: none;
-  }
+/* Exploration labels retain the same readable type scale as the explanation. */
+.resultant-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: normal;
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { frictionPull, frictionSteady, normalFriction } from './friction-lab';
+import { frictionPull, frictionSteady, normalFriction, frictionFilmState } from './friction-lab';
 describe('friction apparatus', () => {
   it('static friction adapts below its maximum without motion', () => {
     const s = frictionPull(1);
@@ -42,5 +42,43 @@ describe('friction apparatus', () => {
     expect(s.peak).toBeCloseTo(normalFriction().staticLimit);
     expect(s.pull).toBeCloseTo(s.kinetic, 5);
     expect(s.peak).toBeGreaterThan(s.pull);
+  });
+  it('rejects non-finite physical inputs instead of drawing a non-finite trajectory', () => {
+    for (const bad of [NaN, Infinity, -Infinity]) {
+      expect(() => frictionSteady(bad)).toThrow(RangeError);
+      expect(() => frictionPull(bad)).toThrow(RangeError);
+      expect(() => frictionSteady(1, bad)).toThrow(RangeError);
+    }
+    expect(frictionSteady(-1).position).toBe(0);
+  });
+  it('holds rest during the recorded stationary explanation and retains the peak after release', () => {
+    for (const [locale, still, release, settled] of [
+      ['en', 8, 14, 25],
+      ['zh', 10, 15.8, 27.5],
+    ] as const) {
+      const frame = (seconds: number) =>
+        frictionPull(frictionFilmState(3, seconds, locale).physicalTime);
+      expect(frame(still).sliding).toBe(false);
+      expect(frame(still).pull).toBeLessThan(frame(still).staticLimit);
+      expect(frame(release).sliding).toBe(true);
+      expect(frame(release).acceleration).toBeGreaterThan(0);
+      expect(frame(settled).pull).toBeCloseTo(frame(settled).kinetic, 3);
+      expect(frame(settled).peak).toBeCloseTo(frame(settled).staticLimit, 12);
+    }
+  });
+  it('continuous sensor, block and reading can share a monotonic physical clock', () => {
+    for (const locale of ['zh', 'en'] as const)
+      for (const chapter of [3, 4]) {
+        let previous = 0;
+        for (let seconds = 0; seconds <= 35; seconds += 0.1) {
+          const time = frictionFilmState(chapter, seconds, locale).physicalTime;
+          expect(time).toBeGreaterThanOrEqual(previous);
+          previous = time;
+        }
+        const s = frictionPull(
+          frictionFilmState(4, locale === 'en' ? 8.2 : 10, locale).physicalTime,
+        );
+        expect(s.pull).toBeCloseTo(s.kinetic, 3);
+      }
   });
 });
