@@ -1590,7 +1590,7 @@
     },
     {
       "sceneSlug": "particle-evidence-lab",
-      "status": "batch-6-reviewed-awaiting-publication",
+      "status": "batch-6-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -1792,7 +1792,7 @@
     },
     {
       "sceneSlug": "gravitational-wave-lab",
-      "status": "content-reviewed-revise",
+      "status": "batch-7-reviewed-awaiting-publication",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -1914,7 +1914,7 @@
     },
     {
       "sceneSlug": "length-instruments",
-      "status": "batch-6-reviewed-awaiting-publication",
+      "status": "batch-6-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -10325,7 +10325,7 @@
     },
     {
       "sceneSlug": "chem-flame-spectra",
-      "status": "batch-6-reviewed-awaiting-publication",
+      "status": "batch-6-published",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -10412,7 +10412,7 @@
     },
     {
       "sceneSlug": "chem-chlorine-discovery",
-      "status": "content-reviewed-rebuild",
+      "status": "batch-7-reviewed-awaiting-publication",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -10432,11 +10432,13 @@
             "zh": "舍勒发现氯气",
             "en": "Scheele’s observation of chlorine and its later identification"
           },
-          "chapterIds": ["observation", "interpretation"],
+          "chapterIds": ["observation", "oxygen-source", "interpretation"],
           "contentReview": {
             "decision": "rebuild",
             "reason": "只播放两历史章；后两章的装置守恒不能补足元素身份判断。"
-          }
+          },
+          "priorChapterIds": ["observation", "interpretation"],
+          "chapterRevision": "Insert oxygen-source to close the evidence-to-explanation chain within the historical entry; all previous IDs and their order retained."
         },
         {
           "id": "chem-required-1-body-p48-2",
@@ -16276,7 +16278,7 @@
     },
     {
       "sceneSlug": "bio-dna-structure",
-      "status": "content-reviewed-revise",
+      "status": "batch-7-reviewed-awaiting-publication",
       "subjects": ["chemistry", "biology"],
       "lessons": [
         {
@@ -16469,7 +16471,7 @@
     },
     {
       "sceneSlug": "bio-cell-microscopy",
-      "status": "batch-6-reviewed-awaiting-publication",
+      "status": "batch-6-published",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -21572,7 +21574,7 @@
       "biology-content-review.json"
     ]
   },
-  "currentBatch": 6,
+  "currentBatch": 7,
   "layoutAudit": {
     "status": "active-follow-up",
     "baselineScenes": 154,
@@ -21581,7 +21583,7 @@
     "meaning": "Content-retain is not visual acceptance. Middle-frame short-screen baseline identifies a layout queue; it does not prove every textbook subwindow fails or certify complete playback.",
     "triage": "artifacts/teaching-principles/retained-layout-triage.json",
     "priorities": [
-      "Repair independently reproduced finite-but-invalid SVG paths in elasticity-lab/apparent-weight-lab.",
+      "Malformed quadratic SVG paths in elasticity-lab/apparent-weight-lab repaired inBatch7; scene-specific layout acceptance remains queued.",
       "Pilot scene-specific composition and concise captions across six retained-content scenes.",
       "Retain correct causal content; independently review complete windows, controls and playback before acceptance."
     ]

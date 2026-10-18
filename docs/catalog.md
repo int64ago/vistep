@@ -106,7 +106,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Iron reacting with steam](../src/content/en/chem-iron-steam.mdx)                                      | 1:26 | What changes when steam passes over hot iron?                                 |
 | [Iron-ion colour, redox and coordination](../src/content/en/chem-iron-cycle.mdx)                       | 3:45 | What happens to iron when the red colour disappears and returns?              |
 | [Hydrogen burning in chlorine](../src/content/en/chem-hydrogen-chlorine.mdx)                           | 1:30 | Does combustion always require oxygen?                                        |
-| [Chlorine: discovery, collection and tail gas](../src/content/en/chem-chlorine-discovery.mdx)          | 1:59 | How does obtaining a gas differ from explaining what it is?                   |
+| [Chlorine: evidence and explanation](../src/content/en/chem-chlorine-discovery.mdx)                    | 3:04 | Does oxygen in a product prove that the gas contained oxygen?                 |
 | [Three channels of chlorine-water photolysis evidence](../src/content/en/chem-chlorine-photolysis.mdx) | 1:35 | How do three traces point to the same reaction?                               |
 | [Dry and damp controls in chlorine bleaching](../src/content/en/chem-chlorine-bleaching.mdx)           | 1:29 | Why do two papers respond differently to the same chlorine?                   |
 | [Volumetric preparation and dilution](../src/content/en/chem-solution-preparation.mdx)                 | 2:58 | What do rinsing and making up to volume control?                              |
@@ -121,58 +121,58 @@ These optional sequences cross subject categories. The site gives a reason for e
 
 ## Life & ecology
 
-| Exploration                                                                                       | Film | Question                                                                          |
-| ------------------------------------------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------- |
-| [Investigating evidence about GM products](../src/content/en/bio-biotechnology-investigation.mdx) | 2:46 | What can a certificate or a line on a label establish?                            |
-| [From protein function to sequence evidence](../src/content/en/bio-protein-design.mdx)            | 3:22 | How can exchanging two amino acids produce a testable improvement?                |
-| [From DNA molecules to gel bands](../src/content/en/bio-dna-engineering.mdx)                      | 4:33 | After cutting, extracting and amplifying, how do we identify DNA?                 |
-| [Embryo formation, transfer and splitting](../src/content/en/bio-embryo-engineering.mdx)          | 3:08 | How does an embryo form, transfer and split?                                      |
-| [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:02 | What do culture, screening and nuclear transfer each change?                      |
-| [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 3:44 | How can a tissue regenerate a plant and two cells form a hybrid?                  |
-| [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:04 | What can one colony establish, and what remains uncertain?                        |
-| [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:40 | What does the environment select, and what changes across generations?            |
-| [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:03 | Why do some fermentations limit air while others need it?                         |
-| [Evidence for environmental conservation](../src/content/en/bio-conservation-evidence.mdx)        | 4:13 | How can an observation lead to a conservation plan?                               |
-| [Variation and experimental evidence](../src/content/en/bio-mutation-evidence.mdx)                | 4:37 | How do mutation, chromosome changes and association differ?                       |
-| [Gene expression and trait evidence](../src/content/en/bio-gene-expression.mdx)                   | 3:26 | Why can cells and traits differ when their genes remain?                          |
-| [Information and ecosystem stability](../src/content/en/bio-ecosystem-stability.mdx)              | 4:47 | How does an ecosystem respond to change?                                          |
-| [Genetic code and protein synthesis](../src/content/en/bio-genetic-code.mdx)                      | 3:53 | How can one base shift all the information downstream?                            |
-| [Decomposition by soil microbes](../src/content/en/bio-soil-decomposition.mdx)                    | 4:08 | How do changes in leaves and starch become evidence?                              |
-| [Evidence and mechanism of DNA replication](../src/content/en/bio-dna-replication.mdx)            | 3:42 | Why follow an intermediate band for another generation?                           |
-| [Energy and matter in ecosystems](../src/content/en/bio-ecosystem-energy.mdx)                     | 4:18 | After energy flows through, where does matter go?                                 |
-| [DNA constraints and structural models](../src/content/en/bio-dna-structure.mdx)                  | 2:47 | How can one structure satisfy diffraction, composition and chemical connectivity? |
-| [Community surveys and succession](../src/content/en/bio-community-survey.mdx)                    | 4:40 | What must we observe before explaining a community?                               |
-| [Three lines of evidence for genetic material](../src/content/en/bio-genetic-material.mdx)        | 3:49 | Did we observe a changed trait, or identify the material that transmits it?       |
-| [Competition, predation and communities](../src/content/en/bio-community-interactions.mdx)        | 3:52 | Why can removing a predator change more than prey abundance?                      |
-| [Sex linkage, pedigrees and population surveys](../src/content/en/bio-linked-inheritance.mdx)     | 3:46 | Restore sex, family relationships and sampling denominators to genetic evidence.  |
-| [Population growth and culture counts](../src/content/en/bio-population-growth.mdx)               | 4:09 | Where does each point on a growth curve come from?                                |
-| [Meiosis and chromosome transmission](../src/content/en/bio-meiosis.mdx)                          | 3:37 | How do one replication and two divisions produce distinct single sets?            |
-| [Population surveys and sampling](../src/content/en/bio-population-sampling.mdx)                  | 4:19 | How can a partial observation estimate a whole population?                        |
-| [Environmental sensing in plants](../src/content/en/bio-plant-environment.mdx)                    | 3:24 | How do plants turn light, temperature and gravity into growth signals?            |
-| [Mendel’s pea crosses](../src/content/en/bio-mendel-crosses.mdx)                                  | 3:39 | Track inherited factors from controlled pollination to quantitative tests.        |
-| [Differentiation, senescence and cell death](../src/content/en/bio-cell-fates.mdx)                | 2:51 | What can culture, nuclear exchange and lineage tracing establish?                 |
-| [Investigating plant growth regulators](../src/content/en/bio-plant-growth-regulators.mdx)        | 3:05 | How do comparisons reveal effects on growth, roots and ripening?                  |
-| [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 2:49 | Separate a process model from different cells in a fixed specimen.                |
-| [Evidence for auxin](../src/content/en/bio-auxin-evidence.mdx)                                    | 4:28 | How do experiments explain a plant bending toward light?                          |
-| [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 3:39 | Which question about photosynthesis can each line of evidence answer?             |
-| [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:04 | Separate pigments, then compare how wavelengths pass through them.                |
-| [Immune pathways and evidence](../src/content/en/bio-immune-pathways.mdx)                         | 2:50 | How does identifying a marker connect to an immune pathway?                       |
-| [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 2:46 | Connect the culture apparatus to the fate of matter inside cells.                 |
-| [Enzyme evidence and conditions](../src/content/en/bio-enzyme-investigations.mdx)                 | 4:11 | Why do cells rely on enzymes to speed reactions?                                  |
-| [Neural research and clinical evidence](../src/content/en/bio-neural-evidence.mdx)                | 2:38 | What can a response, a stimulation and a case each establish?                     |
-| [Seven lines of evidence about the nucleus](../src/content/en/bio-nuclear-evidence.mdx)           | 2:47 | What evidence distinguishes nucleus, cytoplasm and developmental environment?     |
-| [Controlled evidence for hormone action](../src/content/en/bio-endocrine-evidence.mdx)            | 4:30 | What can removing and restoring a signal establish?                               |
-| [Fluid exchange and homeostasis records](../src/content/en/bio-body-fluid-balance.mdx)            | 2:40 | How can cells remain within a stable range while conditions change?               |
-| [Synthetic genomes and living cells](../src/content/en/bio-engineered-genomes.mdx)                | 1:39 | Does DNA alone constitute a living cell?                                          |
-| [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 2:50 | Without filming the whole journey, how can we infer the route of a protein?       |
-| [From peptide bonds to insulin](../src/content/en/bio-protein-machines.mdx)                       | 1:35 | Why is a mixture of amino acids not a protein?                                    |
-| [Why water crosses a cell membrane](../src/content/en/bio-osmosis.mdx)                            | 4:22 | If water moves both ways, why does a cell shrink?                                 |
-| [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 3:45 | How can we infer a membrane too thin to see?                                      |
-| [A transferable chemical signal](../src/content/en/bio-chemical-signals.mdx)                      | 2:12 | Why does a second heart slow without a connecting nerve?                          |
-| [Experimental clues to nerve signaling](../src/content/en/bio-nerve-signals.mdx)                  | 2:34 | How do two needle deflections connect to signaling between neurons?               |
-| [Buffering the internal environment](../src/content/en/bio-buffer-comparison.mdx)                 | 1:51 | Why do equal acid additions change three samples differently?                     |
-| [Three food assays](../src/content/en/bio-food-tests.mdx)                                         | 2:53 | Red, orange, violet: what can a color prove?                                      |
-| [Cells under the microscope](../src/content/en/bio-cell-microscopy.mdx)                           | 3:02 | What changes under the microscope: the cell or its image?                         |
+| Exploration                                                                                       | Film | Question                                                                         |
+| ------------------------------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------- |
+| [Investigating evidence about GM products](../src/content/en/bio-biotechnology-investigation.mdx) | 2:46 | What can a certificate or a line on a label establish?                           |
+| [From protein function to sequence evidence](../src/content/en/bio-protein-design.mdx)            | 3:22 | How can exchanging two amino acids produce a testable improvement?               |
+| [From DNA molecules to gel bands](../src/content/en/bio-dna-engineering.mdx)                      | 4:33 | After cutting, extracting and amplifying, how do we identify DNA?                |
+| [Embryo formation, transfer and splitting](../src/content/en/bio-embryo-engineering.mdx)          | 3:08 | How does an embryo form, transfer and split?                                     |
+| [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:02 | What do culture, screening and nuclear transfer each change?                     |
+| [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 3:44 | How can a tissue regenerate a plant and two cells form a hybrid?                 |
+| [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:04 | What can one colony establish, and what remains uncertain?                       |
+| [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:40 | What does the environment select, and what changes across generations?           |
+| [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:03 | Why do some fermentations limit air while others need it?                        |
+| [Evidence for environmental conservation](../src/content/en/bio-conservation-evidence.mdx)        | 4:13 | How can an observation lead to a conservation plan?                              |
+| [Variation and experimental evidence](../src/content/en/bio-mutation-evidence.mdx)                | 4:37 | How do mutation, chromosome changes and association differ?                      |
+| [Gene expression and trait evidence](../src/content/en/bio-gene-expression.mdx)                   | 3:26 | Why can cells and traits differ when their genes remain?                         |
+| [Information and ecosystem stability](../src/content/en/bio-ecosystem-stability.mdx)              | 4:47 | How does an ecosystem respond to change?                                         |
+| [Genetic code and protein synthesis](../src/content/en/bio-genetic-code.mdx)                      | 3:53 | How can one base shift all the information downstream?                           |
+| [Decomposition by soil microbes](../src/content/en/bio-soil-decomposition.mdx)                    | 4:08 | How do changes in leaves and starch become evidence?                             |
+| [Evidence and mechanism of DNA replication](../src/content/en/bio-dna-replication.mdx)            | 3:42 | Why follow an intermediate band for another generation?                          |
+| [Energy and matter in ecosystems](../src/content/en/bio-ecosystem-energy.mdx)                     | 4:18 | After energy flows through, where does matter go?                                |
+| [DNA constraints and structural models](../src/content/en/bio-dna-structure.mdx)                  | 3:19 | Why can DNA bases not take any partner?                                          |
+| [Community surveys and succession](../src/content/en/bio-community-survey.mdx)                    | 4:40 | What must we observe before explaining a community?                              |
+| [Three lines of evidence for genetic material](../src/content/en/bio-genetic-material.mdx)        | 3:49 | Did we observe a changed trait, or identify the material that transmits it?      |
+| [Competition, predation and communities](../src/content/en/bio-community-interactions.mdx)        | 3:52 | Why can removing a predator change more than prey abundance?                     |
+| [Sex linkage, pedigrees and population surveys](../src/content/en/bio-linked-inheritance.mdx)     | 3:46 | Restore sex, family relationships and sampling denominators to genetic evidence. |
+| [Population growth and culture counts](../src/content/en/bio-population-growth.mdx)               | 4:09 | Where does each point on a growth curve come from?                               |
+| [Meiosis and chromosome transmission](../src/content/en/bio-meiosis.mdx)                          | 3:37 | How do one replication and two divisions produce distinct single sets?           |
+| [Population surveys and sampling](../src/content/en/bio-population-sampling.mdx)                  | 4:19 | How can a partial observation estimate a whole population?                       |
+| [Environmental sensing in plants](../src/content/en/bio-plant-environment.mdx)                    | 3:24 | How do plants turn light, temperature and gravity into growth signals?           |
+| [Mendel’s pea crosses](../src/content/en/bio-mendel-crosses.mdx)                                  | 3:39 | Track inherited factors from controlled pollination to quantitative tests.       |
+| [Differentiation, senescence and cell death](../src/content/en/bio-cell-fates.mdx)                | 2:51 | What can culture, nuclear exchange and lineage tracing establish?                |
+| [Investigating plant growth regulators](../src/content/en/bio-plant-growth-regulators.mdx)        | 3:05 | How do comparisons reveal effects on growth, roots and ripening?                 |
+| [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 2:49 | Separate a process model from different cells in a fixed specimen.               |
+| [Evidence for auxin](../src/content/en/bio-auxin-evidence.mdx)                                    | 4:28 | How do experiments explain a plant bending toward light?                         |
+| [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 3:39 | Which question about photosynthesis can each line of evidence answer?            |
+| [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:04 | Separate pigments, then compare how wavelengths pass through them.               |
+| [Immune pathways and evidence](../src/content/en/bio-immune-pathways.mdx)                         | 2:50 | How does identifying a marker connect to an immune pathway?                      |
+| [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 2:46 | Connect the culture apparatus to the fate of matter inside cells.                |
+| [Enzyme evidence and conditions](../src/content/en/bio-enzyme-investigations.mdx)                 | 4:11 | Why do cells rely on enzymes to speed reactions?                                 |
+| [Neural research and clinical evidence](../src/content/en/bio-neural-evidence.mdx)                | 2:38 | What can a response, a stimulation and a case each establish?                    |
+| [Seven lines of evidence about the nucleus](../src/content/en/bio-nuclear-evidence.mdx)           | 2:47 | What evidence distinguishes nucleus, cytoplasm and developmental environment?    |
+| [Controlled evidence for hormone action](../src/content/en/bio-endocrine-evidence.mdx)            | 4:30 | What can removing and restoring a signal establish?                              |
+| [Fluid exchange and homeostasis records](../src/content/en/bio-body-fluid-balance.mdx)            | 2:40 | How can cells remain within a stable range while conditions change?              |
+| [Synthetic genomes and living cells](../src/content/en/bio-engineered-genomes.mdx)                | 1:39 | Does DNA alone constitute a living cell?                                         |
+| [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 2:50 | Without filming the whole journey, how can we infer the route of a protein?      |
+| [From peptide bonds to insulin](../src/content/en/bio-protein-machines.mdx)                       | 1:35 | Why is a mixture of amino acids not a protein?                                   |
+| [Why water crosses a cell membrane](../src/content/en/bio-osmosis.mdx)                            | 4:22 | If water moves both ways, why does a cell shrink?                                |
+| [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 3:45 | How can we infer a membrane too thin to see?                                     |
+| [A transferable chemical signal](../src/content/en/bio-chemical-signals.mdx)                      | 2:12 | Why does a second heart slow without a connecting nerve?                         |
+| [Experimental clues to nerve signaling](../src/content/en/bio-nerve-signals.mdx)                  | 2:34 | How do two needle deflections connect to signaling between neurons?              |
+| [Buffering the internal environment](../src/content/en/bio-buffer-comparison.mdx)                 | 1:51 | Why do equal acid additions change three samples differently?                    |
+| [Three food assays](../src/content/en/bio-food-tests.mdx)                                         | 2:53 | Red, orange, violet: what can a color prove?                                     |
+| [Cells under the microscope](../src/content/en/bio-cell-microscopy.mdx)                           | 3:02 | What changes under the microscope: the cell or its image?                        |
 
 ## Mechanisms & motion
 
@@ -456,7 +456,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | Exploration                                                                                | Film | Question                                                               |
 | ------------------------------------------------------------------------------------------ | ---- | ---------------------------------------------------------------------- |
 | [Galaxy redshifts and the microwave sky](../src/content/en/cosmology-observations.mdx)     | 2:20 | How does received light reveal cosmic history?                         |
-| [Three paths to gravitational-wave evidence](../src/content/en/gravitational-wave-lab.mdx) | 2:48 | How can extremely small spacetime changes be identified?               |
+| [Three paths to gravitational-wave evidence](../src/content/en/gravitational-wave-lab.mdx) | 3:48 | How does a tiny change become a reliable measurement?                  |
 | [Light, events and clocks](../src/content/en/relativity-experiments.mdx)                   | 3:44 | How is relativity tested experimentally?                               |
 | [From observations to celestial predictions](../src/content/en/celestial-observations.mdx) | 4:34 | What can a misplaced planet tell us?                                   |
 | [Greenhouse effect](../src/content/en/greenhouse-effect.mdx)                               | 2:37 | Does downward atmospheric radiation create extra energy?               |

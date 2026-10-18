@@ -27,7 +27,7 @@ function Person({ drop = 0 }: { drop?: number }) {
         strokeLinejoin="round"
       />
       <path
-        d={`M133 ${hy - 54}Q146 ${hy - 60}159 ${hy - 52}L163 ${hy}Q145 ${hy + 7}130 ${hy}Z`}
+        d={`M133 ${hy - 54}Q146 ${hy - 60} 159 ${hy - 52}L163 ${hy}Q145 ${hy + 7} 130 ${hy}Z`}
         fill="#c7d4ba"
         stroke="#91a78c"
       />
@@ -42,7 +42,7 @@ function Person({ drop = 0 }: { drop?: number }) {
       <path d={`M141 ${hy - 56}v-10h12v12`} fill="#d4bea2" />
       <ellipse cx="147" cy={hy - 80} rx="14" ry="17" fill="#d4bea2" />
       <path
-        d={`M133 ${hy - 82}Q128 ${hy - 100}147 ${hy - 99}Q165 ${hy - 98}161 ${hy - 82}L155 ${hy - 91}L139 ${hy - 91}Z`}
+        d={`M133 ${hy - 82}Q128 ${hy - 100} 147 ${hy - 99}Q165 ${hy - 98} 161 ${hy - 82}L155 ${hy - 91}L139 ${hy - 91}Z`}
         fill="#87968a"
       />
       <path d="M136 228h20M148 230h21" stroke="#7d9480" strokeWidth="8" strokeLinecap="round" />

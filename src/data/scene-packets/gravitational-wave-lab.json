@@ -2,9 +2,9 @@
   "topic": {
     "slug": "gravitational-wave-lab",
     "name": "引力波证据的三条路径",
-    "title": "极微小的时空变化，怎样被辨认？",
-    "question": "极微小的时空变化，怎样被辨认？",
-    "description": "比较共振棒的响应、双星脉冲计时与两站激光干涉信号。",
+    "title": "极微小的变化，怎样变成可信的读数？",
+    "question": "极微小的变化，怎样变成可信的读数？",
+    "description": "从共振响应、脉冲星计时走到回程相位与光学读出，对照真实观测记录。",
     "color": "#94a9b5",
     "tag": "引力波",
     "related": ["gravity-measurements", "relativity-experiments"],
@@ -24,8 +24,37 @@
       {
         "title": "Nobel Prize — Hulse and Taylor",
         "url": "https://www.nobelprize.org/prizes/physics/1993/summary/"
+      },
+      {
+        "title": "J. Weber, Evidence for Discovery of Gravitational Radiation, Physical Review Letters 22, 1320 (1969)",
+        "url": "https://doi.org/10.1103/PhysRevLett.22.1320"
+      },
+      {
+        "title": "J. L. Levine and R. L. Garwin, New negative result for gravitational wave detection, and comparison with reported detection (1974)",
+        "url": "https://research.ibm.com/publications/new-negative-result-for-gravitational-wave-detection-and-comparison-with-reported-detection"
+      },
+      {
+        "title": "P. C. Peters and J. Mathews, Gravitational Radiation from Point Masses in a Keplerian Orbit, Physical Review 131, 435 (1963)",
+        "url": "https://doi.org/10.1103/PhysRev.131.435"
+      },
+      {
+        "title": "J. M. Weisberg and Y. Huang, Relativistic Measurements from Timing the Binary Pulsar PSR B1913+16, ApJ 829, 55 (2016)",
+        "url": "https://arxiv.org/abs/1606.02744"
+      },
+      {
+        "title": "J. Aasi et al., Advanced LIGO, Classical and Quantum Gravity 32, 074001 (2015)",
+        "url": "https://arxiv.org/abs/1411.4547"
+      },
+      {
+        "title": "LIGO-G1600204-v6, Data for Fig. 1 of the GW150914 discovery paper",
+        "url": "https://dcc.ligo.org/LIGO-G1600204-v6/public"
+      },
+      {
+        "title": "B. P. Abbott et al., Calibration of the Advanced LIGO detectors for the discovery of GW150914",
+        "url": "https://arxiv.org/abs/1602.03845"
       }
-    ]
+    ],
+    "number": "261"
   },
   "component": "src/components/experiments/GravitationalWaveLab.tsx",
   "cover": "src/components/covers/GravitationalWaveLabCover.astro",
@@ -33,8 +62,24 @@
     "category": "nature",
     "minAge": 14,
     "keywords": {
-      "zh": ["引力波证据的三条路径", "极微小的时空变化，怎样被辨认？", "近代物理实验"],
+      "zh": [
+        "极微小的变化，怎样变成可信的读数？",
+        "引力波",
+        "光程差",
+        "光学读出",
+        "回程相位",
+        "独立观测",
+        "引力波证据的三条路径",
+        "极微小的时空变化，怎样被辨认？",
+        "近代物理实验"
+      ],
       "en": [
+        "How does a tiny change become a reliable measurement?",
+        "gravitational waves",
+        "optical path difference",
+        "optical readout",
+        "returning phase",
+        "independent observations",
         "Three paths to gravitational-wave evidence",
         "How can extremely small spacetime changes be identified?",
         "modern physics experiment"
@@ -46,87 +91,156 @@
     "极微小的时空变化，怎样被辨认？": "How can extremely small spacetime changes be identified?",
     "比较共振棒的响应、双星脉冲计时与两站激光干涉信号。": "Compare resonant bars, binary-pulsar timing and two-site interferometry.",
     "近代物理": "Modern physics",
-    "引力波": "Gravitational waves"
+    "引力波": "Gravitational waves",
+    "能量被带走": "Energy radiates away",
+    "等质量关系示例 · 非实时缩轨": "Illustrative change, not real-time decay",
+    "分束 → 往返 → 合成": "Split · return · combine",
+    "教学信号 · 仅 A 受扰动": "Synthetic · local disturbance at A",
+    "教学信号 · A 与 B 共有": "Synthetic · shared A/B signal",
+    "教学信号 · 只剩背景": "Synthetic · backgrounds only",
+    "射电脉冲间隔": "Radio-pulse interval",
+    "能量损失 → 更紧的轨道": "Energy loss → tighter orbit",
+    "原图记录 · 累计时移 / s": "Published records · time shift / s",
+    "真实量级示例 · h = 10⁻²¹": "Physical-scale example · h = 10⁻²¹",
+    "先预测：两臂等量变化呢？": "Predict: both arms move equally?",
+    "两臂等量变化 · 差分为零": "Equal arm changes · zero difference",
+    "简化干涉仪 · 完整往返光路": "Simple interferometer · round trips",
+    "教学位移 · 回程相位与读出": "Teaching motion · phase and readout",
+    "旋近原理 · 与真实记录分开": "Inspiral principle · separate model",
+    "GW150914 · 真实滤波记录": "GW150914 · filtered observations",
+    "形变与响应放大": "Magnified response",
+    "相同微弱驱动": "Same weak drive",
+    "相同背景 · 改变共同成分": "Fixed backgrounds · shared component",
+    "远离 → 间隔变长": "Receding → longer intervals",
+    "靠近 → 间隔变短": "Approaching → shorter intervals",
+    "轨道相位": "Orbital phase",
+    "零衰减参考": "Zero-decay reference",
+    "已发表 GR 预测": "Published GR curve",
+    "后段记录待揭示": "Later records hidden",
+    "合成": "Sum",
+    "微小相位 → 微小读出": "Tiny phase → tiny readout",
+    "实际 LIGO 还需腔增强与校准": "Real LIGO adds cavities and calibration",
+    "H1：−7 ms、反号": "H1: −7 ms, inverted",
+    "简化读出 · 非完整 LIGO 响应": "Simple readout, not full LIGO response",
+    "4 km 光臂 · 光路简化": "4 km arms · simplified optics",
+    "暗端：功率不区分正负号": "Dark port: power loses the sign",
+    "教学工作点 π/2 · 非 LIGO 实际偏置": "Teaching bias π/2; not LIGO’s bias",
+    "点：原图观测；线：原图预测": "Points: observations; line: published prediction",
+    "h / 10⁻²¹ · 时间 / s": "h / 10⁻²¹ · time / s",
+    "比例示例 · 非实际实时缩轨": "Illustrative ratios, not real-time decay",
+    "轨道与多普勒示例 · 非实测记录": "Orbit/Doppler example, not observations",
+    "教学响应 · 非历史探测数据": "Teaching response, not historical data",
+    "两站对照": "Two-detector comparison",
+    "共振响应": "Resonant response",
+    "多年记录": "Multiyear records",
+    "脉冲计时": "Pulse timing",
+    "两站实测": "Two-site records",
+    "光学读出": "Optical readout",
+    "观察进度": "Observation progress",
+    "驱动频率 / Hz": "Drive frequency / Hz",
+    "仅 A 受扰动": "Local at A",
+    "共同信号": "Shared signal",
+    "只看背景": "Backgrounds",
+    "固定计时记录": "Fixed timing records",
+    "能量与轨道": "Energy and orbit",
+    "隐藏后段记录": "Hide later records",
+    "揭示后段记录": "Reveal later records",
+    "往返光路": "Round-trip paths",
+    "相位叠加": "Phase sum",
+    "真实量级": "Physical scale",
+    "教学单臂位移 / nm": "Teaching arm motion / nm",
+    "两臂同向": "Common motion",
+    "两臂反向": "Differential motion",
+    "精确暗端": "Exact dark port",
+    "教学偏置 π/2": "Teaching bias π/2",
+    "固定两站记录": "Fixed site records",
+    "旋近原理模型": "Inspiral model",
+    "显示原始时间轴": "Show original time axes",
+    "应用官方对齐变换": "Apply official alignment",
+    "极微小的变化，怎样变成可信的读数？": "How does a tiny change become a reliable measurement?",
+    "从共振响应、脉冲星计时走到回程相位与光学读出，对照真实观测记录。": "Follow resonance, pulsar timing and returning optical phase into measurable readouts and fixed observations.",
+    "机械响应、脉冲星计时与光学读出": "Mechanical response, pulsar timing and optical readout"
   },
   "narration": {
-    "duration": 168,
+    "duration": 228,
     "cues": [
       {
         "id": "bar-resonance",
         "title": "用共振放大微弱响应",
         "titleEn": "Amplify a weak response with resonance",
         "caption": "驱动频率接近共振频率时，金属棒的机械响应增强。",
-        "captionEn": "A bar responds more strongly near its resonant frequency.",
+        "captionEn": "Resonance magnifies a weak drive.",
+        "seconds": 28,
         "zh": "韦伯尝试用大型金属棒响应引力波引起的微小形变，再用传感器转成电信号。驱动频率接近棒的共振频率，响应会增强。形变在画面里极度放大，数值仍按小应变模型计算。这里是装置原理示意，并不表示这根棒实际收到了引力波。",
         "en": "Weber used large metal bars to seek tiny deformations from gravitational waves, converting motion into an electrical signal. Response increases near mechanical resonance. The drawing greatly magnifies deformation while the readout uses a small-strain model. It illustrates the proposed detector principle, not an actual detection.",
-        "seconds": 28,
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "bar-coincidence",
         "title": "共同出现，还要独立复核",
         "titleEn": "Coincidences still require independent confirmation",
         "caption": "早期韦伯棒的探测宣称，没有获得独立实验确认。",
-        "captionEn": "Independent experiments did not confirm Weber’s early detection claims.",
+        "captionEn": "Weber’s claim was not independently confirmed.",
+        "seconds": 28,
         "zh": "把远处两个探测器的信号放到一起，是排查局部干扰的方法之一，但相似波形本身还不够。下方两条曲线人为加入共同的阻尼振动和不同背景，用来说明比较方法。韦伯早年的引力波探测宣称没有被独立证实，不能把这段科学史讲成引力波已经被发现。",
         "en": "Comparing separated detectors can help reject local disturbances, but similar traces are not enough. These curves deliberately combine a common damped oscillation with different backgrounds to explain the method. Independent experiments failed to confirm Weber’s early claims. This history must not be presented as an established gravitational-wave discovery.",
-        "seconds": 28,
         "chapterAt": 28,
-        "at": 28.3
+        "at": 28.45
       },
       {
         "id": "pulsar-clock",
         "title": "把脉冲星当作计时信号",
         "titleEn": "Use a pulsar as a timing signal",
         "caption": "轨道运动改变脉冲到达间隔，连续计时约束双星轨道。",
-        "captionEn": "Orbital motion changes pulse arrival intervals, allowing repeated timing to constrain the orbit.",
+        "captionEn": "Orbital motion changes pulse intervals.",
+        "seconds": 28,
         "zh": "双星中的脉冲星提供反复到达的射电信号。它沿视线靠近和远离时，脉冲到达间隔发生周期变化。图中两星按偏心轨道绕质心运动，底部周期来自视线速度的低速多普勒近似。它只说明计时原理，真实脉冲星分析还包含传播、引力和参考系校正。",
         "en": "A pulsar supplies repeated radio pulses. As it approaches and recedes along the line of sight, arrival intervals change periodically. The stars follow eccentric barycentric orbits and the plotted period uses a low-speed Doppler approximation. Real timing also corrects propagation, gravity and reference-frame effects.",
-        "seconds": 28,
         "chapterAt": 56,
-        "at": 56.3
+        "at": 56.45
       },
       {
         "id": "pulsar-decay",
-        "title": "看多年累积的轨道变化",
-        "titleEn": "Track orbital change accumulated over years",
-        "caption": "引力辐射带走能量，轨道周期逐渐缩短。",
-        "captionEn": "Gravitational radiation removes energy and gradually shortens the orbital period.",
-        "zh": "长期计时表明双星轨道周期逐渐缩短，与引力波带走能量的预言相符。这是重要的间接证据。曲线展示赫尔斯—泰勒双星近似参数下，广义相对论预测的近星点提前量，随时间约呈平方增长；没有叠加虚构观测点，也没有把可见轨道缩小速度夸装成真实实时变化。",
-        "en": "Long-term timing found a shortening orbital period consistent with energy loss through gravitational radiation, providing indirect evidence. The curve shows the predicted accumulated periastron-time advance for approximate Hulse–Taylor parameters. It grows roughly quadratically. No invented observations or exaggerated real-time orbital shrinkage are plotted.",
-        "seconds": 28,
+        "title": "每一圈略早，几十年会怎样？",
+        "titleEn": "A little earlier each orbit: what accumulates?",
+        "caption": "周期略短，近星点更早到达。",
+        "captionEn": "Shorter periods make periastron arrive earlier.",
+        "seconds": 40,
+        "zh": "这些点来自已发表的脉冲星计时记录。横线表示轨道周期不变的参考。为什么测得的到达时刻越来越早？引力辐射带走能量，轨道结合得更紧，间距减小，每圈时间就更短。金色曲线是论文另外给出的广义相对论预测。先想一想，后来的记录应该靠近哪条线？现在揭开原有的后段观测点。这里累计提前约一分钟，并不是每圈的周期缩短了一分钟。它来自许多次很小的提前，是射电计时提供的间接证据。",
+        "en": "These are published pulsar timing records. The horizontal reference assumes an unchanged orbital period. Why do arrivals become earlier? Radiation carries away energy, leaving a more tightly bound, smaller orbit with a shorter period. The gold line is the paper’s separately published general-relativity prediction. Which line should the later records approach? Now reveal those original observations. About a minute of accumulated early arrival does not mean that each orbit became a minute shorter. Many tiny advances add up. Radio timing supplies indirect evidence.",
         "chapterAt": 84,
-        "at": 84.3
+        "at": 84.45
       },
       {
         "id": "ligo-arms",
-        "title": "比较两条垂直光臂",
-        "titleEn": "Compare perpendicular optical arms",
-        "caption": "引力波使两臂长度反向变化，光的相位差随之改变。",
-        "captionEn": "Opposite arm-length changes produce a change in optical phase difference.",
-        "zh": "激光被分成两路，在互相垂直的四千米光臂中往返，再干涉读出。所选偏振和入射方向下，一臂相对伸长时另一臂缩短。真实位移极小，画面只放大形变，读数仍以阿米给出。光臂中的腔镜画出位置关系，但这个教学模型没有计算光学腔增强和完整反馈系统。",
-        "en": "Laser light makes round trips through perpendicular four-kilometre arms and recombines. For the selected polarization and incidence, one arm lengthens as the other shortens. Visual deformation is greatly amplified while the readout remains in attometres. Cavity mirrors are indicated, but optical buildup and full feedback are not calculated.",
-        "seconds": 28,
-        "chapterAt": 112,
-        "at": 112.3
+        "title": "跟光走一趟，再看合成",
+        "titleEn": "Follow the round trip, then combine the fields",
+        "caption": "光程差改变回程相位，合成光场决定读出。",
+        "captionEn": "Path → phase → combined field → power.",
+        "seconds": 46,
+        "zh": "先跟着同一束光：分成两路，遇到端镜返回，再汇合到探测器。这里用较大的教学位移和明确的偏置工作点，把原理看清。一臂伸长，另一臂缩短，往返光程不同，两路返回光的相位就错开。合成的波改变，探测器的光强也改变。先预测：如果两臂一起等量伸长呢？相位一起变，相对差不变，差分信号为零。反转差分位移，偏置读出的变化也反向。回到真实量级，四千米光臂的差分只有四阿米，相位变化约四点七二乘十的负十一次方弧度。真实LIGO还需要光学腔、反馈和校准。",
+        "en": "Follow one beam: split it, reflect both parts from the end mirrors, then recombine them at the detector. Larger teaching displacements and an explicit biased operating point make the mechanism visible. Opposite arm changes alter round-trip path difference, shifting the returning phases. Their summed field changes the detected power. Predict what happens if both arms lengthen equally. Both phases change together: their difference, and the differential signal, stay unchanged. Reverse the differential motion and the biased signal reverses. At the physical scale, four-kilometre arms differ by just four attometres, a phase change of roughly four-point-seven-two times ten to the minus eleven radians. Real LIGO adds optical cavities, feedback and calibration.",
+        "chapterAt": 124.5,
+        "at": 124.95
       },
       {
         "id": "ligo-sites",
-        "title": "在两站比较啁啾和时延",
-        "titleEn": "Compare chirps and delays at two sites",
-        "caption": "频率和振幅共同上升的信号，在两站之间存在传播时延。",
-        "captionEn": "A signal with rising frequency and amplitude reaches separated sites with a delay.",
-        "zh": "致密双星接近时，引力波的频率和振幅一起升高，形成啁啾。两站在允许的传播时差内看到一致信号，还要结合仪器状态和统计分析，才能建立发现证据。下方使用前导阶旋近模型和七毫秒示例延迟，不是二零一五年事件数据，也没有模拟并合、铃宕或发现显著性。",
-        "en": "Approaching compact binaries produce a chirp with rising frequency and amplitude. Consistency between sites within a possible propagation delay must be combined with instrument checks and statistical analysis. These traces use leading-order inspiral and an illustrative seven-millisecond delay, not the twenty-fifteen event data, merger, ringdown or detection significance.",
-        "seconds": 28,
-        "chapterAt": 140,
-        "at": 140.3
+        "title": "两站真实记录，保留各自的噪声",
+        "titleEn": "Two real records, with their independent noise",
+        "caption": "两站记录可比较，但不是同一条理论曲线的复制。",
+        "captionEn": "Two real signals retain different noise.",
+        "seconds": 44,
+        "zh": "现在看二零一五年九月十四日的真实记录，已按论文的方法滤波。两站的波形相近，细小噪声却各不相同。为了叠放比较，官方图把汉福德记录前移七毫秒，并按两站的相对朝向反号。观察前后几个周期：后面的间隔更短。致密双星失去轨道能量，间距减小、绕转加快，旋近的引力波频率随之上升。这里的轨道模型用于解释，不是重新拟合事件。回到记录，利文斯顿先收到信号；论文测得的时差约六点九毫秒。两站一致性还要结合仪器检查和噪声统计，不能只凭一段相似波形宣布发现。",
+        "en": "Now inspect the actual records from September fourteenth, twenty fifteen, filtered as in the paper. Similar waveforms retain different noise. For comparison, the official plot moves Hanford’s record seven milliseconds earlier and reverses its polarity for the detectors’ relative orientation. Compare early and late cycles: the later spacing is shorter. A compact binary loses orbital energy, moves closer and orbits faster, increasing the inspiral-wave frequency. This separate orbit model explains the trend; it does not refit the event. Back in the records, Livingston received the signal first. The paper reports a delay of about six-point-nine milliseconds. Consistency also needs instrument checks and noise statistics; similar traces alone do not establish a discovery.",
+        "chapterAt": 175.5,
+        "at": 175.95
       }
     ]
   },
   "curriculumVariants": {
     "required-1-weber-bar": {
+      "sceneSlug": "gravitational-wave-lab",
       "chapterIds": ["bar-resonance", "bar-coincidence"],
       "label": {
         "zh": "韦伯棒",
@@ -134,6 +248,7 @@
       }
     },
     "required-1-binary-pulsar": {
+      "sceneSlug": "gravitational-wave-lab",
       "chapterIds": ["pulsar-clock", "pulsar-decay"],
       "label": {
         "zh": "双星脉冲星",
@@ -141,6 +256,7 @@
       }
     },
     "required-1-ligo-appendix": {
+      "sceneSlug": "gravitational-wave-lab",
       "chapterIds": ["ligo-arms", "ligo-sites"],
       "label": {
         "zh": "LIGO实验",
@@ -148,11 +264,17 @@
       }
     },
     "required-2-ligo": {
+      "sceneSlug": "gravitational-wave-lab",
       "chapterIds": ["ligo-arms", "ligo-sites"],
       "label": {
         "zh": "LIGO实验",
         "en": "LIGO experiment"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/gravitational-wave-lab/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-7-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

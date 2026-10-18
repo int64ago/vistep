@@ -36,6 +36,7 @@ const cases: {
   input?: string;
   value?: number;
   button?: string;
+  buttons?: string[];
 }[] = [
   {
     Scene: CelestialObservations,
@@ -68,7 +69,7 @@ const cases: {
     Scene: GravitationalWaveLab,
     variant: 'required-1-weber-bar',
     chapter: 1,
-    button: 'Compare: remove common signal',
+    buttons: ['Two-detector comparison', 'Backgrounds'],
   },
   {
     Scene: CosmologyObservations,
@@ -108,10 +109,13 @@ describe('authored astronomy and impulse films remain deterministic after explor
           .find((n) => n.props['aria-label'] === c.input)!;
         await act(() => control.props.onChange(c.value));
       } else {
-        const control = view.root
-          .findAllByType('button')
-          .find((n) => n.children.join('') === c.button)!;
-        await act(() => control.props.onClick());
+        for (const label of c.buttons ?? [c.button!]) {
+          const control = view.root
+            .findAllByType('button')
+            .find((n) => n.children.join('') === label)!;
+          expect(control, `Missing actual exploration control: ${label}`).toBeDefined();
+          await act(() => control.props.onClick());
+        }
       }
       film.watch = true;
       await act(() => view.update(createElement(c.Scene)));
@@ -120,13 +124,63 @@ describe('authored astronomy and impulse films remain deterministic after explor
 });
 
 describe('actual apparatus geometry preserves the model', () => {
-  it('extends one LIGO arm while contracting the perpendicular arm, with mirrors at their endpoints', () => {
-    const svg = renderToStaticMarkup(createElement(GravitationalArtwork, { mode: 2, value: 0.23 }));
-    const light = /M46 149H138V([\d.e+-]+)M138 149H([\d.e+-]+)M138 149V207/.exec(svg)!;
-    const top = Number(light[1]),
-      right = Number(light[2]);
-    expect((42 - top) * (right - 285)).toBeLessThan(0);
-    expect(svg).toContain(`M122 ${top}H154M${right} 133V165`);
+  it('returns both optical routes from their actual end mirrors to the same detector', () => {
+    const geometry = (motionNm: number, commonMotion: boolean) => {
+      const svg = renderToStaticMarkup(
+        createElement(GravitationalArtwork, {
+          mode: 2,
+          manualShot: 'paths',
+          motionNm,
+          commonMotion,
+        }),
+      );
+      const element = (attribute: string, value: string) =>
+        [...svg.matchAll(/<(?:path|rect)\b[^>]*>/g)]
+          .map((m) => m[0])
+          .find((tag) => tag.includes(`${attribute}="${value}"`))!;
+      const attr = (tag: string, name: string) => new RegExp(`\\b${name}="([^"]+)"`).exec(tag)![1]!;
+      const numbers = (tag: string) =>
+        attr(tag, 'd')
+          .match(/[-+]?\d*\.?\d+(?:e[-+]?\d+)?/gi)!
+          .map(Number);
+      const points = (route: string) => {
+        const n = numbers(element('data-optical-route', route));
+        return Array.from({ length: n.length / 2 }, (_, i) => [n[i * 2]!, n[i * 2 + 1]!] as const);
+      };
+      const x = points('x'),
+        y = points('y');
+      expect(x).toHaveLength(5);
+      expect(y).toHaveLength(5);
+      expect(x[0]).toEqual(y[0]);
+      expect(x[1]).toEqual(y[1]);
+      expect(x[3]).toEqual(x[1]);
+      expect(y[3]).toEqual(y[1]);
+      expect(x[4]).toEqual(y[4]);
+      const mx = numbers(element('data-optical-part', 'end-mirror-x'));
+      const my = numbers(element('data-optical-part', 'end-mirror-y'));
+      expect(mx[0]).toBeCloseTo(x[2]![0]);
+      expect((mx[1]! + mx[2]!) / 2).toBeCloseTo(x[2]![1]);
+      expect(my[1]).toBeCloseTo(y[2]![1]);
+      expect((my[0]! + my[2]!) / 2).toBeCloseTo(y[2]![0]);
+      const detector = element('data-optical-part', 'detector');
+      expect(Number(attr(detector, 'x')) + Number(attr(detector, 'width')) / 2).toBeCloseTo(
+        x[4]![0],
+      );
+      expect(x[4]![1]).toBeGreaterThanOrEqual(Number(attr(detector, 'y')));
+      expect(x[4]![1]).toBeLessThanOrEqual(
+        Number(attr(detector, 'y')) + Number(attr(detector, 'height')),
+      );
+      return [x[2]![0] - x[1]![0], y[1]![1] - y[2]![1]] as const;
+    };
+    const baseline = geometry(0, false);
+    for (const common of [false, true])
+      for (const motion of [-66.5, 66.5]) {
+        const lengths = geometry(motion, common);
+        const dx = lengths[0] - baseline[0],
+          dy = lengths[1] - baseline[1];
+        expect(Math.sign(dx)).toBe(Math.sign(motion));
+        expect(dy).toBeCloseTo(common ? dx : -dx);
+      }
   });
   it('points the flying-clock aircraft along its actual east or west trajectory', () => {
     for (const direction of [-1, 1])

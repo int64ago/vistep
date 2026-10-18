@@ -4,12 +4,14 @@ import {
   backboneSegments,
   residueRings,
   projectDna,
+  canonicalContactGraph,
 } from '../../models/bio-dna-structure';
 const colors: Record<string, string> = { A: '#b59c6c', T: '#8fa5a1', G: '#a28fa9', C: '#b18e85' };
+const angle = 0.8;
 const segments = backboneSegments().map((s) => ({
   ...s,
-  a: projectDna(s.a, 0.8),
-  b: projectDna(s.b, 0.8),
+  a: projectDna(s.a, angle),
+  b: projectDna(s.b, angle),
 }));
 const rings = dnaResidues
   .flatMap((r) =>
@@ -17,7 +19,7 @@ const rings = dnaResidues
       ...g,
       base: r.base,
       chain: r.chain,
-      points: g.points.map((p) => projectDna(p, 0.8)),
+      points: g.points.map((p) => projectDna(p, angle)),
     })),
   )
   .sort(
@@ -25,11 +27,12 @@ const rings = dnaResidues
       a.points.reduce((s, p) => s + p.z, 0) / a.points.length -
       b.points.reduce((s, p) => s + p.z, 0) / b.points.length,
   );
+const pair = canonicalContactGraph('A', 'T');
 ---
 
 <svg viewBox="0 0 400 230" aria-hidden="true">
   <rect width="400" height="230" rx="24" fill="#efeadf"></rect>
-  <g transform="translate(340 -45) rotate(90) scale(.9)">
+  <g transform="translate(-5 21) scale(.57)">
     {
       segments.map((s) => (
         <line
@@ -38,7 +41,7 @@ const rings = dnaResidues
           x2={s.b.x}
           y2={s.b.y}
           stroke={s.chain === 'A' ? '#b49d78' : '#7d9b95'}
-          stroke-width="5"
+          stroke-width="6"
           stroke-linecap="round"
         />
       ))
@@ -49,9 +52,88 @@ const rings = dnaResidues
           points={r.points.map((p) => `${p.x},${p.y}`).join(' ')}
           fill={r.kind === 'sugar' ? '#d6c7aa' : colors[r.base]}
           stroke="#f4eee0"
-          stroke-width=".7"
+          stroke-width="1"
         />
       ))
     }
-  </g></svg
->
+  </g>
+  <g transform="translate(140 37) scale(.8)">
+    <g fill="#b59c6c" fill-opacity=".18" stroke="#b59c6c" stroke-width="2">
+      <path d="M67 70L92 88V134L67 151L34 134V88Z"></path>
+      <path d="M34 88L11 85L3 112L14 141L34 134"></path>
+      <path d="M67 70L100 56M92 111H100" fill="none"></path>
+    </g>
+    <g
+      transform="translate(320 0) scale(-1 1)"
+      fill="#8fa5a1"
+      fill-opacity=".18"
+      stroke="#8fa5a1"
+      stroke-width="2"
+    >
+      <path d="M67 70L92 88V134L67 151L34 134V88Z"></path>
+      <path d="M67 70L100 56M92 111H100" fill="none"></path>
+    </g>
+    <text x="67" y="7" text-anchor="middle" font-size="27" fill="#8a6c3e">A</text>
+    <text x="253" y="7" text-anchor="middle" font-size="27" fill="#4d7c72">T</text>
+    {
+      pair.contacts
+        .filter((c) => c.compatible)
+        .map((c) => (
+          <line
+            x1={c.from!.x}
+            y1={c.from!.y}
+            x2={c.to!.x}
+            y2={c.to!.y}
+            stroke="#84755c"
+            stroke-width="2.4"
+            stroke-dasharray="4 5"
+          />
+        ))
+    }
+    {
+      pair.sites
+        .flat()
+        .filter((s) => s.role !== 'neither' && s.row < 2)
+        .map((s) => (
+          <g>
+            {s.hydrogen && (
+              <>
+                <line
+                  x1={s.x}
+                  y1={s.y}
+                  x2={s.hydrogen.x}
+                  y2={s.hydrogen.y}
+                  stroke="#a85c3c"
+                  stroke-width="2.5"
+                />
+                <text
+                  x={s.hydrogen.x}
+                  y={s.hydrogen.y + 7}
+                  text-anchor="middle"
+                  font-size="22"
+                  fill="#a85c3c"
+                  stroke="#efeadf"
+                  stroke-width="6"
+                  paint-order="stroke"
+                >
+                  H
+                </text>
+              </>
+            )}
+            <text
+              x={s.x}
+              y={s.y + 7}
+              text-anchor="middle"
+              font-size="23"
+              fill={s.role === 'donor' ? '#a85c3c' : '#427d8a'}
+              stroke="#efeadf"
+              stroke-width="8"
+              paint-order="stroke"
+            >
+              {s.atom.replace(/[0-9]/g, '')}
+            </text>
+          </g>
+        ))
+    }
+  </g>
+</svg>

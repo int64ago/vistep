@@ -1,33 +1,69 @@
 ---
-name: 'Chlorine: discovery, collection and tail gas'
-title: How does obtaining a gas differ from explaining what it is?
+name: 'Chlorine: evidence and explanation'
+title: Can observing water identify the original source of oxygen?
 ---
 
 <section id="understand">
-## Obtaining the gas and recognizing the element are separate events
+## An observation can survive a change of explanation
 
-Scheele obtained the yellow-green gas in 1774; Davy recognized chlorine as an element in 1810. A distinctive observation does not automatically provide the correct explanation of composition. The bottle and Cl₂ symbols in the history view are modern diagrams, not reconstructions of the original apparatus or Scheele’s knowledge.
+Scheele obtained a yellow-green gas in 1774. Its colour was an observation, not a direct determination of composition. A later oxygen-based explanation proposed that the gas contained readily transferable oxygen. That proposal needed a testable consequence.
 
-The textbook’s modern apparatus connects generation, collection and tail-gas absorption. A long inlet feeds the lower collecting jar, and gas leaving the upper outlet reaches sodium hydroxide solution. Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O transfers chlorine into dissolved ions rather than destroying it.
+In his 1810 paper, Davy discussed charcoal previously freed of hydrogen and moisture. Even strong heating failed to produce the expected decomposition. This challenged the proposed transferable oxygen, but a single failed reaction could not establish an element. The film’s vessel is a modern observation diagram; the dashed O? is a proposed explanation, not a particle Scheele observed.
+
+Another result sharpens the question. Gay-Lussac and Thénard had observed water when hydrogen chloride contacted lead oxide. Did oxygen in that product mean the gas originally contained it? Davy identified another possible source: the oxide itself.
+
+The modern net account is:
+
+**PbO + 2HCl → PbCl₂ + H₂O**
+
+Follow the same amber oxygen. It begins in lead oxide and is then counted in water with hydrogen supplied by the acid. Lead and chlorine are counted in the salt. The water observation remains; explaining it does not require water to have been present in the gas beforehand.
+
+In 1810 Davy argued from several observations for treating chlorine as an element. Only at the end does the film overlay the modern molecular account H₂ + Cl₂ → 2HCl, separating a present-day explanation from a historical observation.
 
 </section>
+
 <section id="try">
-## Account for every portion of chlorine
+## Test explanations without rewriting observations
 
-Follow the tracking dots through connected tubing. Increasing relative throughput makes collector composition approach its limit while cumulative chlorine in the exhaust continues to increase. Changing relative hydroxide capacity redistributes absorbed and unabsorbed gas, conserving total chlorine.
+Change the explanation in “Fixed record”. The historical observation stays unchanged; the explanatory prediction changes.
 
-The scene explains apparatus functions and conservation. Chlorine is toxic; no amounts, temperatures, flow rates or home gas-generation instructions are provided.
+In “Oxygen source”, remove PbO while retaining HCl and adding no external water. The listed inputs contain no oxygen, so the model cannot create new water. Then add one initial water unit: water is now present, but the initial water remains separately tagged and the amount of new water remains zero. A positive observation alone does not identify a material source.
+
+The allocation slider moves the same atoms through a net account. It is not elapsed reaction time, an elementary pathway or a rate measurement. Element counts remain invariant throughout.
+
+The modern-apparatus textbook entry has its own two-chapter explanation. Follow the connected generator, collector and absorber. Collector capacity is finite, so later chlorine also leaves in the outflow. Reduce hydroxide capacity: absorption becomes limited, and unabsorbed chlorine remains in the balance.
 
 </section>
+
 <section id="deeper">
 <details>
-<summary>The collection model does not predict real efficiency</summary>
+<summary>Historical record and modern model have different roles</summary>
 
-The collecting jar is an ideal well-mixed vessel with unit gas capacity. After relative throughput q, retained chlorine is 1−exp(−q), while cumulative departing chlorine is q−[1−exp(−q)]. Actual chlorine is denser than air and undergoes nonuniform displacement and mixing. This model connects input, retention and exhaust; it cannot specify actual collection times.
+The historical argument follows a reprint of Davy’s 1810 paper. The carbon test, the lead-oxide discussion and combination with hydrogen are distinct pieces of evidence. The water observation was attributed by Davy to Gay-Lussac and Thénard; it is not presented here as an experiment discovered by Davy alone.
 
-Absorption consumes two hydroxide units per chlorine unit, producing chloride and hypochlorite. Gas–liquid transfer, reaction rates, temperature, pressure differences and competing reactions are omitted. Tracking dots use the actual tubing polyline. The phone composition stacks the three apparatus units and reconnects the tubes vertically.
+Davy also reported a little condensation after attempted drying, decreasing as impurities were reduced. The film does not replace that account with “exactly zero water was measured”. Zero new water with no oxygen input is a modern conservation prediction for explicitly listed substances, not a historical measurement.
 
-The [RSC chlorine reference](https://periodic-table.rsc.org/element/17/chlorine) supports the historical dates. Apparatus and reactions follow Required Book 1, pages 44 and 47–49 (PDF pages 49 and 52–54); Figure 2-17 was checked visually. Historical research and the modern apparatus retain separate textbook positions.
+Coloured atoms represent a net material allocation, not isotope tracing, direct imaging or an elementary reaction mechanism. PbCl₂ identifies product composition; its diagram does not claim an isolated salt molecule’s structure. Lead, oxygen, hydrogen and chlorine identities persist during the allocation, and external initial water is tracked separately. Gas–solid interfaces, aqueous dissociation, conversion rates and side reactions are outside the model.
+
+</details>
+
+<details>
+<summary>Conservation through collection and absorption</summary>
+
+The collector is an ideal well-mixed vessel with unit gas capacity. After relative throughput q, retained chlorine is 1−exp(−q), while cumulative outflow is q−[1−exp(−q)]. Their sum is q. Real apparatus includes nonuniform displacement and mixing; this model does not predict efficiency or collection times.
+
+For the textbook’s ordinary-temperature alkaline net reaction, Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O, one chlorine unit consumes two hydroxide units. Available hydroxide limits absorption. Retained, absorbed and unabsorbed portions jointly conserve chlorine. Gas–liquid transfer, actual flow, pressure and products under hot concentrated alkaline conditions are not included.
+
+Tubing and tracer positions use the same vertices. The phone composition changes the arrangement while retaining the long inlet to the collector bottom and its upper outlet to the absorber. Bubbles rise only beneath the liquid surface. Chlorine is toxic; this explanation does not provide home generation conditions or recipes.
+
+</details>
+
+<details>
+<summary>Sources and reading scope</summary>
+
+Required Book 1, pages 43–49, supplies the textbook context for the history, alkaline reaction and modern apparatus. The historical entry is on page 44 and the apparatus entry on page 48.
+
+Davy’s [1810 paper](https://doi.org/10.1098/rstl.1810.0016) was read through the [1902 Alembic Club reprint](<https://upload.wikimedia.org/wikipedia/commons/7/72/The_elementary_nature_of_chlorine_-_papers_(IA_elementarynature00davyrich).pdf>). The reproduced paper on printed pages 21–39 was read, especially the carbon test on page 23, residual condensation on page 26 and lead-oxide argument on page 27. This reprint reproduces original pages 231–250 and explicitly omits pages 251–257; the omitted material is not claimed as read. The [Royal Society of Chemistry’s chlorine reference](https://periodic-table.rsc.org/element/17/chlorine) supplies later authoritative historical context.
 
 </details>
 </section>

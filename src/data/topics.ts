@@ -2228,9 +2228,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-dna-structure',
     name: 'DNA结构的约束与模型',
-    title: '不是随便拧成两条螺旋',
-    question: '一套结构，怎样同时满足衍射、组成与化学连接？',
-    description: '从衍射与碱基比例到反向平行骨架，再旋转真实DNA坐标检查空间连接。',
+    title: 'DNA的搭档为什么不能随便换？',
+    question: 'DNA的搭档为什么不能随便换？',
+    description: '跟住同一批碱基，比较计数、氢键接触与完整双螺旋，再从保留的一条链预测另一条。',
     color: '#b3a27f',
     tag: '生物学',
     related: ['bio-genetic-material', 'bio-protein-machines', 'bio-dna-replication'],
@@ -3003,10 +3003,10 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-chlorine-discovery',
-    name: '氯气：发现、收集与尾气',
-    title: '获得一种气体，与解释它是什么有何不同？',
-    question: '获得一种气体，与解释它是什么有何不同？',
-    description: '区分舍勒的观察与戴维的元素判断，再沿连续导管追踪发生、收集和尾气吸收。',
+    name: '氯气：证据与解释',
+    title: '产物里有氧，就能断定气体含氧吗？',
+    question: '产物里有氧，就能断定气体含氧吗？',
+    description: '水中的氧原来在哪里？从戴维的论证，到现代装置中每一份氯的去向。',
     color: '#bbc6a3',
     tag: '化学史 · 气体装置 · 尾气',
     related: ['chem-chlorine-bleaching', 'chem-anion-tests'],
@@ -3015,9 +3015,10 @@ export const topics: Topic[] = [
         title: 'Royal Society of Chemistry — Chlorine, history and properties',
         url: 'https://periodic-table.rsc.org/element/17/chlorine',
       },
+      { title: '人教版高中化学必修第一册44、47—49页', url: 'https://jc.pep.com.cn/' },
       {
-        title: '人教版高中化学必修第一册44、47—49页',
-        url: 'https://jc.pep.com.cn/',
+        title: 'H. Davy, Researches on the oxymuriatic acid, its nature and combinations,1810',
+        url: 'https://doi.org/10.1098/rstl.1810.0016',
       },
     ],
     number: '331',
@@ -4754,9 +4755,9 @@ export const topics: Topic[] = [
   {
     slug: 'gravitational-wave-lab',
     name: '引力波证据的三条路径',
-    title: '极微小的时空变化，怎样被辨认？',
-    question: '极微小的时空变化，怎样被辨认？',
-    description: '比较共振棒的响应、双星脉冲计时与两站激光干涉信号。',
+    title: '极微小的变化，怎样变成可信的读数？',
+    question: '极微小的变化，怎样变成可信的读数？',
+    description: '从共振响应、脉冲星计时走到回程相位与光学读出，对照真实观测记录。',
     color: '#94a9b5',
     tag: '引力波',
     related: ['gravity-measurements', 'relativity-experiments'],
@@ -4765,10 +4766,7 @@ export const topics: Topic[] = [
         title: 'LIGO — Review of gravitational-wave detectors and Weber claims',
         url: 'https://labcit.ligo.caltech.edu/~ajw/gwaves_review.pdf',
       },
-      {
-        title: 'LIGO — Binary-pulsar evidence',
-        url: 'https://www.ligo.caltech.edu/LA/page/faq',
-      },
+      { title: 'LIGO — Binary-pulsar evidence', url: 'https://www.ligo.caltech.edu/LA/page/faq' },
       {
         title: 'LIGO and Virgo — First binary-black-hole observation',
         url: 'https://arxiv.org/abs/1602.03837',
@@ -4776,6 +4774,39 @@ export const topics: Topic[] = [
       {
         title: 'Nobel Prize — Hulse and Taylor',
         url: 'https://www.nobelprize.org/prizes/physics/1993/summary/',
+      },
+      {
+        title:
+          'J. Weber, Evidence for Discovery of Gravitational Radiation, Physical Review Letters 22, 1320 (1969)',
+        url: 'https://doi.org/10.1103/PhysRevLett.22.1320',
+      },
+      {
+        title:
+          'J. L. Levine and R. L. Garwin, New negative result for gravitational wave detection, and comparison with reported detection (1974)',
+        url: 'https://research.ibm.com/publications/new-negative-result-for-gravitational-wave-detection-and-comparison-with-reported-detection',
+      },
+      {
+        title:
+          'P. C. Peters and J. Mathews, Gravitational Radiation from Point Masses in a Keplerian Orbit, Physical Review 131, 435 (1963)',
+        url: 'https://doi.org/10.1103/PhysRev.131.435',
+      },
+      {
+        title:
+          'J. M. Weisberg and Y. Huang, Relativistic Measurements from Timing the Binary Pulsar PSR B1913+16, ApJ 829, 55 (2016)',
+        url: 'https://arxiv.org/abs/1606.02744',
+      },
+      {
+        title: 'J. Aasi et al., Advanced LIGO, Classical and Quantum Gravity 32, 074001 (2015)',
+        url: 'https://arxiv.org/abs/1411.4547',
+      },
+      {
+        title: 'LIGO-G1600204-v6, Data for Fig. 1 of the GW150914 discovery paper',
+        url: 'https://dcc.ligo.org/LIGO-G1600204-v6/public',
+      },
+      {
+        title:
+          'B. P. Abbott et al., Calibration of the Advanced LIGO detectors for the discovery of GW150914',
+        url: 'https://arxiv.org/abs/1602.03845',
       },
     ],
     number: '261',

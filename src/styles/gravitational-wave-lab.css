@@ -1,0 +1,98 @@
+.gw-evidence-lab {
+  width: min(100%, 800px);
+  margin: 0 auto;
+  color: #405b62;
+}
+.gw-evidence-art {
+  width: 100%;
+}
+.gw-evidence-readout {
+  min-height: 36px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.gw-evidence-art svg {
+  display: block;
+  width: 100%;
+  border-radius: 23px;
+  background: radial-gradient(ellipse at 30% 15%, #294852, #142d36);
+  overflow: hidden;
+}
+.gw-evidence-art svg text {
+  font-family: inherit;
+}
+.gw-evidence-scale {
+  padding: 8px 10px 4px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  color: #657f7c;
+}
+.gw-evidence-controls {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  min-width: 0;
+}
+.gw-evidence-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+.gw-evidence-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 15px;
+  border: 1px solid #cfddd4;
+  background: #f4f7f2;
+  padding: 9px 12px;
+  color: #49615d;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.gw-evidence-controls button[aria-pressed='true'] {
+  background: #dbe9df;
+  border-color: #9bb5a4;
+}
+.gw-evidence-controls .control {
+  min-width: 0;
+  font-size: 16px;
+}
+.gw-evidence-controls input {
+  width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+.gw-evidence-controls .control-top {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .gw-evidence-readout {
+    padding: 5px 8px;
+  }
+  .gw-evidence-scale {
+    padding: 5px 8px 1px;
+  }
+  .gw-evidence-art svg {
+    border-radius: 18px;
+  }
+}
+@media (max-width: 600px) and (max-height: 700px) {
+  .lesson-gravitational-wave-lab #experiment {
+    scroll-margin-top: -74px;
+  }
+  html:has(.showcase[data-slug='gravitational-wave-lab']) {
+    scroll-padding-top: 90px;
+  }
+}

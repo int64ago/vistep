@@ -1,0 +1,164 @@
+{
+  "status": "reviewed-ready-for-authorized-publication",
+  "scenes": ["gravitational-wave-lab", "chem-chlorine-discovery", "bio-dna-structure"],
+  "intent": "Fixed observations, visible causal models and independent predictions; preserve textbook ordering and exact scientific scope.",
+  "checks": [
+    {
+      "kind": "independent-original-curriculum-and-media-audit",
+      "status": "passed",
+      "entries": 9,
+      "chapters": 17,
+      "tracks": 6,
+      "conditions": "Three original source files byte-identical; exact source records/order/page metadata preserved. Only chlorine-history window gains oxygen-source. All6tracks independently decoded. Packet planned214s/actual228s documentation mismatch corrected before verify.",
+      "evidence": "artifacts/teaching-principles/batch-7-cross-review/chemistry-shared-entry-audit.json"
+    },
+    {
+      "kind": "independent-scientific-data-and-model-review",
+      "status": "passed",
+      "evidence": [
+        "artifacts/teaching-principles/batch-7-cross-review/root-gravity-model-check.json",
+        "artifacts/teaching-principles/batch-7-cross-review/chemistry-gravity-review.json",
+        "artifacts/teaching-principles/batch-7-cross-review/chemistry-dna-contact-check.json",
+        "artifacts/teaching-principles/batch-7-cross-review/biology-review-of-chlorine.json"
+      ]
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 4099,
+      "testFiles": 581,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-7-verify.log"
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-7-preview.log"
+    },
+    {
+      "kind": "independent-transcription-and-word-timing",
+      "status": "passed",
+      "chapters": 34,
+      "conditions": "No language hint or reference text; not subjective listening. Chlorine Chinese lead term independently re-decoded with full large-v3 after turbo homophone substitutions; original recording retained.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-7-transcription.json",
+        "artifacts/teaching-principles/batch-7-chlorine-second-asr.json"
+      ]
+    },
+    {
+      "kind": "final-static-keyframes",
+      "status": "passed",
+      "cases": 102,
+      "conditions": "17chapters×3positions×ZH1440/EN320x568; whole player, actual SVG text size,44px targets and invalid paths/runtime errors. Capture count is not manual viewing count.",
+      "evidence": "artifacts/teaching-principles/batch-7-static-keyframes/report.json"
+    },
+    {
+      "kind": "root-actual-representative-and-causal-views",
+      "status": "passed",
+      "evidence": [
+        "artifacts/teaching-principles/batch-7-root-early-views.json",
+        "artifacts/teaching-principles/batch-7-root-final-views.json"
+      ]
+    },
+    {
+      "kind": "actual-controls-and-keyboard",
+      "status": "passed",
+      "physicsPages": 8,
+      "physicsAssertions": 98,
+      "biologyAssertions": 26,
+      "chemistryAssertions": 10,
+      "evidence": "artifacts/teaching-principles/batch-7-controls-static"
+    },
+    {
+      "kind": "precise-entries-and-resource-failure",
+      "status": "passed",
+      "cases": 21,
+      "conditions": "All9entries both languages;3audio failures/retry/offscreen/resume/manual pause.",
+      "evidence": "artifacts/teaching-principles/batch-7-behavior/report.json"
+    },
+    {
+      "kind": "initial-native-short-screen-anchors",
+      "status": "passed",
+      "cases": 12,
+      "conditions": "Direct#experiment without scripted reposition.",
+      "evidence": "artifacts/teaching-principles/batch-7-anchors/report.json"
+    },
+    {
+      "kind": "catalog-filters-and-no-JS",
+      "status": "passed",
+      "cases": 8,
+      "evidence": "artifacts/teaching-principles/batch-7-catalog/report.json"
+    },
+    {
+      "kind": "continuous-native-playback",
+      "status": "passed",
+      "runs": 6,
+      "chapters": 34,
+      "conditions": "Normal-rate native audio/film after user activation, no seeking after start,10second screenshot/telemetry checkpoints. Root viewed selected running checkpoints; not subjective listening, continuous human watching or physical-phone performance.",
+      "evidence": "artifacts/teaching-principles/batch-7-continuous/report.json"
+    }
+  ],
+  "pending": ["Actions deployment and live verification"],
+  "notClaimed": [
+    "Subjective listening",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ],
+  "sceneEntryCounts": {
+    "gravitational-wave-lab": 4,
+    "chem-chlorine-discovery": 2,
+    "bio-dna-structure": 3
+  },
+  "additionalRepairs": [
+    {
+      "scenes": ["elasticity-lab", "apparent-weight-lab"],
+      "scope": "Repair malformed quadratic SVG paths only; their full layout revisions remain queued.",
+      "evidence": "artifacts/teaching-principles/batch-7-svg-repairs/root-review.json"
+    },
+    {
+      "file": "src/components/experiments/astronomy-impulse-review.test.tsx",
+      "scope": "Adapt retired comparison control and obsolete fixed-coordinate assertions to current actual routes, mirrors and detector;12tests pass.",
+      "evidence": "artifacts/teaching-principles/batch-7-regressions.log"
+    }
+  ],
+  "reviewEvidence": {
+    "earlyManual": "artifacts/teaching-principles/batch-7-root-early-views.json",
+    "sourceContracts": "artifacts/teaching-principles/batch-7-source-contract-audit.json",
+    "scientificCrossReview": "artifacts/teaching-principles/batch-7-cross-review",
+    "transcription": "artifacts/teaching-principles/batch-7-transcription.json",
+    "leadTermSecondDecoder": "artifacts/teaching-principles/batch-7-chlorine-second-asr.json"
+  },
+  "reviewedAt": "2026-10-18T16:43:05.533832+00:00",
+  "buildSource": {
+    "commit": "7c9a429ced7e576257922258ad0821bcb866ca9e",
+    "treeHash": "a70422ba9f90c002448b2dd18796289cfbb9b167ef807e512cd3304cb4d05a17",
+    "gitDiffHash": "3f212cd110227a270ab8bd549a5147a82dc6f29baf4fbc53a0d3bc1f88a57f4c",
+    "fileCount": 5199,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "sourceConditions": "Full verify and preview completed after measured bilingual directors, fixed-data path caching, shared optical geometry assertions and source/translation synchronization. Root final browser checks used frozen static dist-preview on63305. Only review/plan/deployment metadata may change after the reviewed product fingerprint; subsequent scene work is excluded from this candidate.",
+  "rootReviewFindings": [
+    {
+      "issue": "PbO/PbCl2 source ledger used bond-like lines that suggested isolated molecules.",
+      "resolution": "Composition groups use dashed boundaries; actual HCl/water bonds retained. Stable oxygen identity visibly transfers in the declared net account.",
+      "status": "resolved-and-actually-reviewed"
+    },
+    {
+      "issue": "Common-motion comparison previously switched only one arm from the opposite-motion state.",
+      "resolution": "Both arms return continuously to one baseline before extending together, keeping zero differential readout throughout the common-motion phase.",
+      "status": "resolved-and-actually-reviewed"
+    },
+    {
+      "issue": "Later published pulsar observations and real two-site strain must remain independent of the teaching model.",
+      "resolution": "Original points/three full3441-point traces stay fixed; reveal/opacity and labelled official alignment change presentation only. Computed energy/optics remain distinct.",
+      "status": "independently-data-checked-and-actually-reviewed"
+    },
+    {
+      "issue": "GC pairing needed three contacts consistent with donor/acceptor identities; the full ideal helix must close the geometry textbook window.",
+      "resolution": "Contact geometry and pair totals use the same model; root viewed measured three-contact, phosphate, ideal-helix and complementary-strand prediction frames.",
+      "status": "resolved-and-actually-reviewed"
+    }
+  ]
+}

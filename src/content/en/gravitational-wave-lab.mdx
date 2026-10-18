@@ -1,23 +1,49 @@
-<h2 id="understand">Response, indirect evidence and direct detection</h2>
+<h2 id="understand">How does a tiny change become a measurement?</h2>
 
-Weber bars illustrate an early detector concept and independent confirmation. Binary pulsars provide indirect evidence through orbital energy loss. LIGO measures differential arm changes. These are distinct evidential roles.
+A vibrating metal bar, repeated radio-pulse arrival times and the phases of returning light offer different ways to make a small change measurable. Their evidential roles differ: Weber bars illustrate an early detector concept; binary pulsars provide indirect evidence for gravitational radiation; LIGO supplies records from a direct detector on Earth.
 
-<h2 id="try">Compare resonance and common signals</h2>
+Follow the response before drawing the conclusion. Resonance increases deformation under the same weak drive. Orbital motion changes pulse arrival intervals. Optical path difference changes returning phase, and the combined field determines detector power. Each link needs a testable physical relation.
 
-Change drive frequency to inspect bar response. Removing the deliberately added common waveform leaves different background traces. This illustrates a method without estimating the significance of a historical event.
+<h2 id="try">Ask what the instrument actually measures</h2>
 
-<h2 id="deeper">Physical scope</h2>
+In exploration, change the bar’s drive frequency, then compare a disturbance confined to detector A with a deliberately shared signal. Different backgrounds remain in both channels. Similar traces alone cannot establish a historical detection. Read Weber’s original claim separately from subsequent independent tests. [Weber, 1969](https://doi.org/10.1103/PhysRevLett.22.1320); [Levine and Garwin, 1974](https://research.ibm.com/publications/new-negative-result-for-gravitational-wave-detection-and-comparison-with-reported-detection).
+
+In the interferometer, compare opposite arm changes with equal changes in the same direction. Equal changes shift both phases together, leaving their difference and the change in differential readout at zero. Then choose the exact dark port: opposite signs of a small displacement produce the same power. Brightness does not always preserve the displacement’s sign.
+
+<h2 id="deeper">From orbital energy to fixed observations</h2>
+
+Radiating energy makes a binary more tightly bound, reducing its orbital scale and period. Many tiny advances accumulate into a substantial arrival-time shift. About a minute in the plot is accumulated early periastron arrival relative to a constant-period reference; it is not a minute removed from each orbital period.
+
+The points are 29 observation markers extracted from Figure 3 of Weisberg and Huang. The gold curve was extracted separately from that figure’s published general-relativity prediction. Controls never regenerate these records. Hiding and revealing later points is a classroom presentation sequence, not a claim about the paper’s training or holdout procedure. The original plot’s reference is preserved without inventing a new epoch or applying a second Galactic correction. [Original Figure 3 and equations 22–23](https://arxiv.org/abs/1606.02744).
 
 <details>
 
-<summary>Magnified deformation, actual numerical scales</summary>
+<summary>Mechanical and orbital model limits</summary>
 
-The bar uses one damped mode, L=1.5 m, f₀=1660 Hz, Q=1000 and drive strain 10⁻¹⁸. Steady amplitude is (Lhω²/2)/√[(ω₀²−ω²)²+(ωω₀/Q)²]. Motion is slowed and magnified, not an original instrument sensitivity or candidate event. Dual traces are a synthetic common damped oscillation plus distinct sinusoidal backgrounds.
+The bar uses one damped mode: length 1.5 m, resonant frequency 1660 Hz, quality factor 1000 and driving strain 10⁻¹⁸. Computation retains SI units while movement is magnified and slowed. The two-channel traces are fixed synthetic signals with different backgrounds, not historical candidates or estimates of their significance.
 
-The pulsar example uses masses 1.4398 and 1.3886 solar masses, e=0.6171334, orbital period 27906.98 s and spin period 59.03 ms in an edge-on orbit. Leading-order radiation predicts dP/dt≈−2.40×10⁻¹². Accumulated periastron advance is approximately 0.5(dP/dt)t²/P. The orbital drawing omits slow size evolution and periastron precession. The illustrative pulse-period curve uses Pobs=P₀(1+vline-of-sight/c).
+The pulse-orbit example uses masses of 1.4398 and 1.3886 solar masses, eccentricity 0.6171334, orbital period 27906.98 s and spin period 59.03 ms. An edge-on view illustrates first-order Doppler shifts. Leading-order radiation gives dP/dt of approximately −2.40×10⁻¹². This model neither replaces the paper’s complete timing solution nor refits historical observations.
 
-The interferometer has 4 km arms and λ=1064 nm. For selected plus polarization at normal incidence, ΔLx=+Lh/2 and ΔLy=−Lh/2, giving differential Lh and simple round-trip phase 4πLh/λ. The first two traces show opposite arm responses; the second segment shows delayed illustrative site strains.
-
-The leading-order inspiral uses chirp mass 28 solar masses, time-to-coalescence 0.300 to 0.005 seconds, and amplitude proportional to f^(2/3). It omits merger, ringdown, antenna factors, detector noise and actual-event fitting.
+The energy view compares E=−Gm₁m₂/(2a) with P²∝a³. The changing scale is an illustrative ratio, not physical shrinkage occurring over a few seconds. Pulsar mass inference depends on general relativity and other timing quantities; the orbital-period derivative provides an additional test. Not every fitted parameter is an independently measured input.
 
 </details>
+
+<details>
+
+<summary>Round-trip phase, bias and physical scale</summary>
+
+Let δLx and δLy denote one-way arm-length changes, with d=δLx−δLy. The round-trip path difference is 2d, so Δφ=4πd/λ. The simplified normalized output is P/P₀=sin²[(b+Δφ)/2], where b is a bias phase. The returning fields and displayed power share the same calculation.
+
+At the exact dark port, b=0, small phase changes produce a second-order power response and lose their sign. The teaching view uses b=π/2 to expose a signed first-order change; this is not Advanced LIGO’s actual small dark-fringe offset. The real instrument also requires optical cavities, local-oscillator light, feedback and response calibration. [Advanced LIGO, sections 2.3 and 4.8](https://arxiv.org/abs/1411.4547); [GW150914 calibration](https://arxiv.org/abs/1602.03845).
+
+For the selected normally incident plus polarization, 4000 m arms, strain h=10⁻²¹ and wavelength 1064 nm give arm changes of ±2×10⁻¹⁸ m. The difference is 4×10⁻¹⁸ m and the round-trip phase change approximately 4.72×10⁻¹¹ rad. Nanometre-scale teaching displacements explain the mechanism before the film returns to this physical scale. Visible mirror movement is not the actual displacement caused by the wave, and rendered brightness is not the published calibrated strain.
+
+</details>
+
+<h2 id="evidence">Two records retain their own noise</h2>
+
+The final waveforms are the official LIGO data for Figure 1 of GW150914. Amplitudes are in units of 10⁻²¹; time starts at 09:50:45 UTC on September 14, 2015. These records already have the paper’s 35–350 Hz bandpass and spectral-line rejection. They are not unprocessed raw measurements. [Official figure data](https://dcc.ligo.org/LIGO-G1600204-v6/public).
+
+For visual comparison, the official plot shifts Hanford 7 ms earlier and reverses its polarity for the detectors’ relative orientation in this event. Livingston stays unchanged. The paper estimates a physical arrival delay of approximately 6.9 ms, with Livingston first; distinguish that estimate from the rounded plotting shift. Neither trace is a copy of a single ideal chirp. [Discovery paper, Figure 1 and section II](https://arxiv.org/abs/1602.03837).
+
+A separate inspiral model explains energy loss, decreasing separation, faster orbital motion and increasing frequency. It does not fit this event, simulate merger or ringdown, or recompute black-hole masses, false-alarm rates or detection significance from this short record.

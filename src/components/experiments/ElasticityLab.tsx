@@ -139,7 +139,7 @@ export default function ElasticityLab() {
             ) : (
               <g>
                 <path
-                  d={`M124 ${bottom + 17}V${bottom + 64}Q143 ${bottom + 70}162 ${bottom + 64}V${bottom + 17}`}
+                  d={`M124 ${bottom + 17}V${bottom + 64}Q143 ${bottom + 70} 162 ${bottom + 64}V${bottom + 17}`}
                   fill="#d3dfd5"
                   fillOpacity=".3"
                   stroke="#9aaa93"

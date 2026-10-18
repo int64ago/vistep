@@ -1,32 +1,41 @@
 ---
-import { chlorineGasTrain } from '../../models/chem-chlorine-discovery';
-const m = chlorineGasTrain(3);
+import { oxygenSourceAtoms } from '../../models/chem-chlorine-discovery';
+const atoms = oxygenSourceAtoms(0.64, 500);
+const source = oxygenSourceAtoms(0, 500).find((a) => a.element === 'O')!;
+const oxygen = atoms.find((a) => a.element === 'O')!;
+const colours = { O: '#c68959', H: '#f5ecd9', Cl: '#aab77d', Pb: '#9da7a3' };
 ---
 
-<svg viewBox="0 0 640 400" aria-hidden="true"
-  ><rect width="640" height="400" fill="#e8eddd"></rect><path
-    d="M111 95V160A65 65 0 1 0 149 160V95Z"
-    fill="#b4c5a622"
-    stroke="#8b9c7c"
-    stroke-width="2"></path><path
-    d="M150 115V74H330V294M370 135V74H520V300"
-    stroke="#8b9c7c"
-    stroke-width="5"
-    fill="none"></path><path
-    d="M300 135V165L280 185V320H415V185L395 165V135Z"
-    fill="#c5ce83"
-    fill-opacity={m.collected * 0.4}
-    stroke="#8b9c7c"
-    stroke-width="2"></path><path
-    d="M470 205V320H585V205"
-    fill="#b7cdb222"
-    stroke="#8b9c7c"
-    stroke-width="2"></path><path d="M473 260H582V317H473Z" fill="#b8d0ba" opacity=".5"></path>{
-    [0, 1, 2].map((i) => (
-      <circle cx={524 + i * 7} cy={290 - i * 12} r="4" stroke="#96b18c" fill="none" />
-    ))
-  }<path d="M130 310Q109 291 130 269Q151 291 130 310" fill="#d7b57d"></path><path
-    d="M102 329H158"
-    stroke="#8b9c7c"
-    stroke-width="4"></path></svg
->
+<svg viewBox="0 0 640 400" aria-hidden="true">
+  <defs
+    ><radialGradient id="ccd-cover-paper"
+      ><stop stop-color="#fbf7e8"></stop><stop offset="1" stop-color="#e9eddb"
+      ></stop></radialGradient
+    ></defs
+  >
+  <rect width="640" height="400" fill="url(#ccd-cover-paper)"></rect>
+  <path d="M53 49H584M53 344H584" stroke="#a9b697" opacity=".45"></path>
+  <g transform="translate(70,65) scale(1,1.1)">
+    <path
+      d={`M${source.x} ${source.y} Q255 4 ${oxygen.x} ${oxygen.y}`}
+      fill="none"
+      stroke="#c68959"
+      stroke-width="2.5"
+      stroke-dasharray="5 7"></path>
+    <circle cx={source.x} cy={source.y} r="23" fill="none" stroke="#c68959" opacity=".2"></circle>
+    {
+      atoms.map((a) => (
+        <g transform={`translate(${a.x},${a.y})`}>
+          {a.element === 'O' && <circle r="29" fill="none" stroke="#c68959" opacity=".4" />}
+          <circle r={a.element === 'O' ? 23 : 19} fill={colours[a.element]} stroke="#79846b44" />
+          <text y="6" text-anchor="middle" font-size="19" font-family="sans-serif" fill="#435344">
+            {a.element}
+          </text>
+        </g>
+      ))
+    }
+  </g>
+  <text x="320" y="308" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#66765d"
+    >PbO + 2HCl → PbCl₂ + H₂O</text
+  >
+</svg>

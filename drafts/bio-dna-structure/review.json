@@ -1,0 +1,162 @@
+{
+  "sceneSlug": "bio-dna-structure",
+  "status": "frozen-after-measured-director-review",
+  "owner": "biology_inventory",
+  "baseCommit": "7c9a429ced7e576257922258ad0821bcb866ca9e",
+  "sourceSha256": {
+    "src/components/experiments/BioDnaStructure.tsx": "0cb65195dca3f9276286709ebb3b694251e93fb818f081ab4c4a2fd6991e2f66",
+    "src/models/bio-dna-structure.ts": "709578f4eb91c34c291af239bbef6543bcb086da482c94fa9707bcccc9ef5d99",
+    "src/models/bio-dna-structure.test.ts": "397b7cc2c60fc350af50a0bc2fc614645697391c8846e061fdae32fa184545f8",
+    "src/styles/bio-dna-structure.css": "a2197ceaa5ca6ee86496ddbd4de9c9c9575c045bc03d93807523614d6c79b0f3",
+    "src/components/covers/BioDnaStructureCover.astro": "a315ca024d8c306c86dcb4561b6c9bbcd3904f0553552175adf41191c096e663",
+    "src/content/bio-dna-structure.mdx": "c0431fcfb531e16840a5171052e4168a44816e23d4ff2adca86427cd0ae9317b",
+    "src/content/en/bio-dna-structure.mdx": "34690a8e280a08e3d5758597cf469bb233d1d5b8561ae21ff274ba7f4aabf5f1",
+    "drafts/bio-dna-structure/brief.md": "f6d25d03774c2984424227996fbaf22709b0addc821c6942c26e024b3bed5a7c",
+    "drafts/bio-dna-structure/principle-first-packet.json": "d2a95a43fd05c5e403995ec34063deed969c5e3043072ac9a9a86ebd61a01e67"
+  },
+  "sourceVersionNote": "Source hashes are this author handoff, not a build artifact or release hash. Later voice timing corrections will be recorded separately.",
+  "sourceReading": "ignored biology-next-dna/sources.json; full textbook sections, 1953 full papers as recorded; 1BNA archive; noncanonical paper only accessible abstract/excerpts.",
+  "automatedChecks": [
+    {
+      "kind": "independent model regression",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/bio-dna-structure.test.ts",
+      "tests": 11,
+      "includes": "22 actual intrachain bridges; actual pair distances; cached scattering; modern N/O/H roles and same-donor attachment; AC and GT limited counterexamples; 1000-step identity/count/non-overlap permutation; fixed references; ideal assembly; retained real IDs; trace and director boundaries."
+    },
+    {
+      "kind": "focused TypeScript",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit -p artifacts/teaching-principles/biology-next-dna/tsconfig.owned.json"
+    },
+    {
+      "kind": "paused whole-player geometry",
+      "status": "passed",
+      "count": 66,
+      "passed": 66,
+      "viewports": ["320×568 zh/en", "390×844 en", "1280×900 zh"],
+      "minimumActualTextPx": 16,
+      "browserErrors": [],
+      "report": "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/report.json",
+      "note": "Geometry automation; only explicitly listed frames below were actually opened for author visual inspection."
+    },
+    {
+      "kind": "actual browser UI",
+      "status": "passed",
+      "count": 26,
+      "report": "artifacts/teaching-principles/biology-next-dna/interactions/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-dna/review-interactions.mjs",
+      "note": "Real clicks, keyboard sliders, six chapter selections, watch/explore persistence, replay, canvas failure. Provisional186s runner; replace endpoint after measured timeline."
+    },
+    {
+      "kind": "textbook entry windows",
+      "status": "passed",
+      "count": 6,
+      "report": "artifacts/teaching-principles/biology-next-dna/windows/report.json",
+      "note": "Both languages × three real routes; initial min/max, sceneVariant/camera, chapter count and endpoint state. Not audio/end-stop proof."
+    }
+  ],
+  "authorVisualReview": {
+    "status": "passed for inspected states",
+    "frames": [
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-matching-repeat.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-AT-contact.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-AC-conflict.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-GC-contact.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-permuting.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/zh-320-whole-helix.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/zh-320-covalent-trace.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-across-bonds.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-rotated-direction.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-real-coordinates.png",
+      "artifacts/teaching-principles/biology-next-dna/keyframes-accepted/en-320-partner-reveal.png"
+    ],
+    "cover": [
+      "artifacts/teaching-principles/biology-next-dna/cover/en-390-card.png",
+      "artifacts/teaching-principles/biology-next-dna/cover/export.png"
+    ],
+    "fallback": "artifacts/teaching-principles/biology-next-dna/interactions/canvas-unavailable.png",
+    "fixes": [
+      "Intrinsic grid minimum width clipped right-side objects: fixed with minmax(0,1fr).",
+      "Parallel permutation paths occluded IDs: vacant-slot sequence and independent non-overlap check.",
+      "Result labels wrapped and overflowed320×568: unique shorter UI keys, preserved16px.",
+      "Redundant long Hydrogen bonds label clipped at right: removed; current explanatory sentence still names contacts.",
+      "Predicted GC initially used constant2dashes: now exact model-derived3, AT2.",
+      "Cover nested site array initially filtered without flattening: corrected and inspected actual SVG/raster."
+    ]
+  },
+  "independentReview": {
+    "chemistryModel": "artifacts/teaching-principles/batch-7-cross-review/chemistry-dna-contact-check.json",
+    "rootVisual": "Root message confirms actual inspection of recommended8causalframes and no voice blocker; final predictedGC view to be independently rechecked after measured calibration."
+  },
+  "notRun": [
+    {
+      "kind": "both full recordings listening",
+      "status": "not-run by author"
+    },
+    {
+      "kind": "complete continuous manual film watching",
+      "status": "not-run; paused frames and UI are separate evidence"
+    },
+    {
+      "kind": "physical phone performance",
+      "status": "not-run; emulated viewports are not a real device"
+    },
+    {
+      "kind": "full verify/build/static review/release",
+      "status": "root-owned pending"
+    }
+  ],
+  "sharedWrites": "None by author. Root owns narration/timeline/i18n/curricula/discovery/topics/audio and global checks.",
+  "next": "Root final static/continuous/audio review. Owned scene remains frozen.",
+  "measuredReview": {
+    "durationSeconds": 198.5,
+    "chapterStarts": [0, 29.5, 59.5, 105.5, 135, 163],
+    "recordings": {
+      "zh": "89da2fcb975a",
+      "en": "56f82691de17"
+    },
+    "source": "artifacts/teaching-principles/batch-7-timed-speech/",
+    "modelTests": 12,
+    "typecheck": "passed",
+    "wholePlayer": {
+      "frames": 66,
+      "passes": 66,
+      "report": "artifacts/teaching-principles/biology-next-dna/measured-keyframes/report.json"
+    },
+    "actualUI": {
+      "checks": 26,
+      "report": "artifacts/teaching-principles/biology-next-dna/measured-interactions/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-dna/review-measured-interactions.mjs"
+    },
+    "entryWindows": {
+      "checks": 6,
+      "report": "artifacts/teaching-principles/biology-next-dna/measured-windows/report.json",
+      "windows": [
+        [0, 105.5],
+        [59.5, 198.5],
+        [59.5, 198.5]
+      ]
+    },
+    "authorActuallyInspected": [
+      "en-320-GC-contact.png",
+      "zh-320-covalent-trace.png",
+      "en-320-real-coordinates.png",
+      "en-320-partner-reveal.png",
+      "en-320-single-chain.png",
+      "en-320-whole-helix.png"
+    ],
+    "frameDirectory": "artifacts/teaching-principles/biology-next-dna/measured-keyframes",
+    "note": "Technical comparison of measured independent word times with visible objects; not subjective listening or full continuous viewing. Early/middle/late planned states were independently retained in prior report."
+  },
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-7-review.json",
+    "manual": "artifacts/teaching-principles/batch-7-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

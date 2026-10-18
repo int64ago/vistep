@@ -1,147 +1,236 @@
-.chem-chlorine-discovery {
-  padding: 15px 8px 24px;
+.ccd {
+  --ccd-ink: #465947;
+  color: var(--ccd-ink);
+  background: radial-gradient(ellipse at 30% 12%, #fbf6e7, #edeedc 80%);
+  border-radius: 24px;
+  padding: 20px 24px;
   font-size: 16px;
-  color: #46593e;
 }
-.chem-chlorine-desktop {
+.ccd .ccd-stage {
+  width: min(100%, 720px);
+  margin: auto;
+}
+.ccd svg {
   display: block;
   width: 100%;
+  height: auto;
+  overflow: visible;
 }
-.chem-chlorine-mobile {
-  display: none;
+.ccd svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: var(--ccd-ink);
 }
-.chem-chlorine-pathlabels {
+.ccd svg .ccd-atom-letter {
+  font-size: 16px;
+  fill: #394c40;
+}
+.ccd .ccd-kicker {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #7d856d;
+}
+.ccd .ccd-line {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 8px 0 0;
+  min-height: 24px;
+}
+.ccd .ccd-atom-count {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  padding: 5px 0;
+  border-top: 1px solid #aeb79a66;
+  font-variant-numeric: tabular-nums;
+}
+.ccd .ccd-evidence-ribbon {
+  min-height: 190px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  text-align: center;
-  font-size: 17px;
-  gap: 8px;
+  align-items: center;
+  gap: 25px;
 }
-.chem-chlorine-ledger {
-  text-align: center;
-  border-top: 1px solid #9ba88a55;
-  margin-top: 25px;
-  padding-top: 20px;
+.ccd .ccd-evidence-ribbon > div {
   display: grid;
-  gap: 18px;
-  font-size: 19px;
+  justify-items: center;
+  text-align: center;
+  gap: 10px;
 }
-.chem-chlorine-ledger > div {
+.ccd .ccd-evidence-ribbon i {
+  width: 45px;
+  height: 35px;
+  display: block;
+}
+.ccd .ccd-charcoal-mark {
+  border-radius: 38% 63% 43% 30%;
+  background: #687260;
+  box-shadow: 15px 3px 0 -4px #899079;
+  transform: rotate(-12deg);
+}
+.ccd .ccd-water-mark {
+  background: #a9c6bf;
+  border-radius: 60% 40% 60% 30%;
+  transform: rotate(-35deg);
+}
+.ccd .ccd-combination-mark {
+  border-radius: 50%;
+  background: #bac68c;
+  box-shadow: 24px 0 0 -7px #f8eedb;
+}
+.ccd .ccd-evidence-ribbon b {
+  font-weight: 400;
+  font-size: 16px;
+  color: #7c846b;
+}
+.ccd .ccd-judgment {
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.45;
+  margin: 6px 0 0;
+}
+.ccd .ccd-net {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 6px;
+  font-size: 16px;
+  line-height: 1.4;
   flex-wrap: wrap;
-  font-size: 16px;
+  margin: 8px 0;
 }
-.chem-chlorine-ledger b {
-  font-weight: 500;
-}
-.chem-chlorine-ledger small {
-  font-size: 16px;
-}
-.chem-chlorine-history {
+.ccd .ccd-gas-ledger {
   display: grid;
-  grid-template-columns: 1fr 180px 1fr;
-  align-items: center;
-  gap: 15px;
-  min-height: 340px;
-  text-align: center;
-}
-.chem-chlorine-history > div {
-  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-}
-.chem-chlorine-history strong {
-  font-size: 35px;
-  font-weight: 400;
-  color: #758a5f;
-}
-.chem-chlorine-history span {
-  font-size: 20px;
-}
-.chem-chlorine-history p {
+  text-align: center;
+  border-top: 1px solid #aeb79a66;
+  padding-top: 7px;
   font-size: 16px;
-  line-height: 1.6;
-  margin: 6px 0;
 }
-.chem-chlorine-history svg {
-  width: 100%;
-}
-.chem-chlorine-history .is-unrevealed {
-  opacity: 0;
-}
-.chem-chlorine-controls {
+.ccd .ccd-gas-ledger span {
   display: grid;
-  gap: 20px;
-  border-top: 1px solid #9ba88a55;
-  padding-top: 22px;
-  margin-top: 25px;
+  gap: 3px;
 }
-.chem-chlorine-controls button,
-.chem-chlorine-controls input {
-  min-height: 44px;
+.ccd .ccd-gas-ledger b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
-.chem-chlorine-controls p {
+.ccd .ccd-unit {
+  text-align: center;
   font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
+  color: #7d856d;
+  margin-top: 6px;
+}
+.ccd .ccd-controls {
+  display: grid;
+  gap: 18px;
+  margin: 22px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid #aeb79a66;
+  max-width: 720px;
+}
+.ccd .segmented {
+  flex-wrap: wrap;
+}
+.ccd .ccd-controls button,
+.ccd .ccd-controls input {
+  min-height: 44px;
+  font-size: 16px;
+}
+.ccd details,
+.ccd details p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.ccd summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.ccd summary::before {
+  content: '+';
+  padding-right: 10px;
+}
+.ccd details[open] summary::before {
+  content: '−';
 }
 @media (max-width: 600px) {
-  .chem-chlorine-desktop {
-    display: none;
+  .ccd {
+    padding: 11px 10px;
+    border-radius: 20px;
   }
-  .chem-chlorine-mobile {
-    display: block;
-    width: 100%;
-    max-width: 360px;
-    margin: auto;
+  .ccd .ccd-kicker {
+    margin-bottom: 3px;
   }
-  .chem-chlorine-pathlabels {
-    display: none;
+  .ccd .ccd-line {
+    margin-top: 4px;
   }
-  .chem-chlorine-history {
-    grid-template-columns: 1fr 140px;
-    gap: 20px;
-    min-height: 370px;
-    text-align: left;
-  }
-  .chem-chlorine-history svg {
-    grid-column: 2;
-    grid-row: 1/3;
-  }
-  .chem-chlorine-history > div {
-    grid-column: 1;
-  }
-  .chem-chlorine-history strong {
-    font-size: 32px;
-  }
-  .chem-chlorine-ledger {
-    font-size: 17px;
-  }
-  .chem-chlorine-ledger > div {
-    gap: 12px 18px;
-  }
-}
-
-@media (max-width: 600px) {
-  .chem-chlorine-discovery {
-    padding: 8px 8px 12px;
-  }
-  .chem-chlorine-history {
-    min-height: 320px;
-    grid-template-columns: 1fr 110px;
-    gap: 14px;
-  }
-  .chem-chlorine-ledger {
-    padding-top: 10px;
-    margin-top: 12px;
+  .ccd .ccd-evidence-ribbon {
+    grid-template-columns: 1fr;
     gap: 8px;
+    min-height: 204px;
   }
-  .chem-chlorine-discovery[data-watch='true'] .chem-chlorine-ledger > div,
-  .chem-chlorine-discovery[data-watch='true'] .chem-chlorine-ledger small {
-    display: none;
+  .ccd .ccd-evidence-ribbon > div {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 2px 15px;
+    text-align: left;
+    justify-items: start;
   }
-  .chem-chlorine-mobile text {
-    font-size: 31px;
+  .ccd .ccd-evidence-ribbon i {
+    width: 26px;
+    height: 26px;
+    grid-row: 1 / 3;
+    align-self: center;
+    margin-left: 2px;
+  }
+  .ccd .ccd-judgment {
+    font-size: 16px;
+    min-height: 46px;
+  }
+  .ccd .ccd-net {
+    margin: 4px 0;
+    gap: 2px 6px;
+  }
+  .ccd .ccd-gas-ledger {
+    padding-top: 5px;
+    gap: 4px;
+  }
+  .ccd .ccd-unit {
+    margin-top: 4px;
+  }
+}
+@media (max-width: 600px) and (max-height: 640px) {
+  .experiment:has(.ccd) {
+    scroll-margin-top: -74px;
+  }
+  .showcase:has(.ccd) .film-caption {
+    padding: 9px 12px 6px;
+    gap: 8px;
+    min-height: 0;
+  }
+  .showcase:has(.ccd) .film-chapter {
+    flex-basis: 28px;
+  }
+  .showcase:has(.ccd) .film-caption p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .ccd {
+    padding: 8px 10px;
+  }
+  .ccd .ccd-kicker {
+    line-height: 1.3;
+  }
+  .ccd .ccd-line {
+    line-height: 1.35;
+  }
+}
+@media (max-width: 600px) and (max-height: 640px) {
+  .ccd .ccd-evidence-ribbon {
+    min-height: 196px;
   }
 }

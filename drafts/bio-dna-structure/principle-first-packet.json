@@ -1,0 +1,373 @@
+{
+  "sceneSlug": "bio-dna-structure",
+  "status": "frozen-after-measured-director-review",
+  "plannedDurationSeconds": 186,
+  "schema": "Root canonical teachingProfiles/narration.cues/translations",
+  "teachingProfiles": {
+    "bio-required-2-048-1": {
+      "sceneSlug": "bio-dna-structure",
+      "question": {
+        "zh": "一幅衍射图和四种碱基的总量，怎样约束同一个双螺旋？",
+        "en": "How do diffraction and base totals constrain the same double helix?"
+      },
+      "lead": {
+        "zh": "改变候选结构、打乱同一批碱基，再把接触位点与完整螺旋放回同一组证据中检验。",
+        "en": "Change a candidate, rearrange the same bases, then test local contacts and the whole helix together."
+      },
+      "principle": {
+        "zh": "散射与结构尺度、整体组成、局部化学配对提供不同约束；满足一条不能代替其余证据。",
+        "en": "Scattering and dimensions, total composition, and local chemical pairing impose different constraints; one does not replace the others."
+      },
+      "transfer": {
+        "question": {
+          "zh": "只打乱第二条链，A=T、G=C仍成立，能说结构已经正确了吗？",
+          "en": "Reordering the second strand leaves A = T and G = C. Is the structure therefore correct?"
+        },
+        "explanation": {
+          "zh": "不能。计数不随位置置换改变，局部供受体却可能不再匹配；还要检查配对、骨架、方向和整体结构尺度。",
+          "en": "No. Reordering preserves totals but can disrupt local donor–acceptor matches. Pairing, backbone connectivity, direction and overall dimensions still need testing."
+        }
+      }
+    },
+    "bio-required-2-051-1": {
+      "sceneSlug": "bio-dna-structure",
+      "question": {
+        "zh": "留下同一条DNA链，能预测另一条链吗？",
+        "en": "Can one retained DNA strand specify its partner?"
+      },
+      "lead": {
+        "zh": "从氢键位置追到糖磷酸骨架，检验方向后再补回同一段序列的伙伴。",
+        "en": "Follow hydrogen-bond sites into the sugar–phosphate backbone, test direction, then recover the same segment’s partner."
+      },
+      "principle": {
+        "zh": "标准互补配对约束搭档，链内共价连接确定化学方向；另一链须按反向平行关系对应。",
+        "en": "Standard complementary contacts constrain the partner, while covalent backbone connectivity defines chemical direction; the strands align antiparallel."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保留5′—AATGCC—3′，对应位置的另一链应怎样写？",
+          "en": "Keep 5′–AATGCC–3′. How should the opposing strand be written?"
+        },
+        "explanation": {
+          "zh": "按对应位置为3′—TTACGG—5′。这是结构给出的互补预测；实际复制还需要酶、原料和能量，不能由这个静态模型证明全过程。",
+          "en": "At corresponding positions it is 3′–TTACGG–5′. That is a structural prediction; actual replication also requires enzymes, substrates and energy, beyond this model."
+        }
+      }
+    },
+    "chem-elective-3-model-p124": {
+      "sceneSlug": "bio-dna-structure",
+      "question": {
+        "zh": "都是一双环加一单环，为什么A配T而不是C？",
+        "en": "Both have two rings plus one: why does A pair with T rather than C?"
+      },
+      "lead": {
+        "zh": "保留同一配准，比较朝内N、O及N上H的位置，再区分骨架中的共价键和两链间的氢键。",
+        "en": "Hold the alignment fixed and compare inward-facing N, O and N-bound H; then distinguish backbone covalent bonds from interstrand hydrogen bonds."
+      },
+      "principle": {
+        "zh": "在常见中性碱基与标准Watson–Crick构型中，供受体位置必须对应；环数只能提供宽度线索。",
+        "en": "For common neutral bases in standard Watson–Crick geometry, donor and acceptor sites must align; ring count provides only a width clue."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保持A不动，把T换成C，环数未变，哪两处接触失配？",
+          "en": "Keep A fixed and replace T with C. The ring count is unchanged: which two contacts fail?"
+        },
+        "explanation": {
+          "zh": "当前标准配准中，A的N6供体面对C的N4供体，A的N1受体面对C的N3受体。这个反例检验标准构型，不否认其他配准、质子化或互变异构状态下的非标准配对。",
+          "en": "In this fixed standard alignment, A’s N6 donor faces C’s N4 donor, and A’s N1 acceptor faces C’s N3 acceptor. This tests canonical geometry, not every possible shifted, protonated or tautomeric state."
+        }
+      }
+    }
+  },
+  "narration": {
+    "cues": [
+      {
+        "id": "diffraction",
+        "title": "结构改变，散射怎样回应？",
+        "titleEn": "How does scattering respond to structure?",
+        "caption": "固定证据，改变候选结构；散射图不是分子照片。",
+        "captionEn": "Keep the evidence fixed; change the structural candidate.",
+        "seconds": 28,
+        "zh": "先留下两条历史结构线索：沿轴的短间隔，和更长的重复周期。下面这幅是教学计算，不是原始照片。把直链卷成螺旋，再改变转角，散射分布跟着变，重复高度也会改变。候选结构必须接受同一份证据的检验。不过，衍射图不是分子照片；即使有螺旋线索，也还读不出每一处碱基和化学连接。",
+        "en": "Keep two historical structural clues: a short axial spacing and a longer repeat. The pattern below is a teaching calculation, not the original photograph. Curl straight strands into helices and change their twist: both scattering and repeat height change. Each candidate faces the same evidence. Yet diffraction is not a molecular photograph; it does not reveal every base or chemical connection."
+      },
+      {
+        "id": "composition",
+        "title": "总量没变，配对却变了",
+        "titleEn": "Same totals, different pairings",
+        "caption": "同一批碱基换位置，计数不变，接触未必对应。",
+        "captionEn": "Reordering the same bases preserves totals, not local matches.",
+        "seconds": 28,
+        "zh": "看这段教学序列：两条链合起来，A和T一样多，G和C一样多。现在跟住下方这六个碱基，只换位置，不换身份。计数柱没有动，有些对应位置却变错了。所以总量相等是线索，还不是逐位配对的解释。再只看上面一条链，它自己的A和T就不必相等。下一步，要把化学接触的位置也拿来检验。",
+        "en": "In this teaching duplex, total A equals T and total G equals C. Follow the six bases below as they change positions without changing identity. The counts stay fixed, yet some facing positions become mismatched. Equal totals are a clue, not an explanation of local pairing. Either individual strand need not have equal A and T. We must also test the sites that make chemical contact."
+      },
+      {
+        "id": "geometry",
+        "title": "接触位置决定标准搭档",
+        "titleEn": "Contact sites constrain the standard partner",
+        "caption": "环数相同，接触位点却未必对应。",
+        "captionEn": "Same ring count; different contact sites.",
+        "seconds": 46,
+        "zh": "一双环加一单环，为什么A不能随便配C？把朝内的化学位置展开。A上带氢的氮，对着T的氧；T上的氮氢，又对着A能接受氢键的位置。氢仍连在原来的氮上。换成C，在这个标准配准里，两处变成供体对供体、受体对受体。换回T，接触恢复；G与C则有三处。现在跟住这些配对，把它们放回完整双螺旋：骨架在外，配对在内，还要同时符合前面的周期和组成线索。保留这一处A，它的标准搭档应该是谁？",
+        "en": "Two rings plus one: why can A not take C instead? Look at the inward-facing sites. A’s nitrogen-bound hydrogen faces T’s oxygen; T’s N–H faces an accepting nitrogen on A. Each hydrogen stays bonded to its original nitrogen. Replace T with C: in this fixed standard alignment, donor faces donor and acceptor faces acceptor. Restore T and both contacts return; G with C has three. Follow these pairs into a complete double helix: backbones outside, pairs inside, also constrained by the earlier repeat and composition. Keep this A. Which standard partner fits?"
+      },
+      {
+        "id": "nucleotide",
+        "title": "沿骨架追踪一条连续路径",
+        "titleEn": "Trace one continuous backbone",
+        "caption": "沿链是共价骨架，跨链才是配对氢键。",
+        "captionEn": "Covalent bonds along strands; hydrogen bonds across.",
+        "seconds": 26,
+        "zh": "碱基之间的氢键，不是沿一条链前进的骨架。看这个糖：碱基接在一撇碳，二撇位置的氢提醒我们这是脱氧核糖。沿三撇氧追下去，经过磷酸，到下一个糖的五撇一侧，一条连续的共价路径就连起来了。现在横着看，两条链之间才是碱基配对的氢键。这里检验连接关系，没有演示核苷酸聚合反应。",
+        "en": "Hydrogen bonds between bases are not the backbone along a strand. A base attaches to the sugar’s one-prime carbon; hydrogen at two-prime identifies deoxyribose. Follow the three-prime oxygen through phosphate to the next sugar’s five-prime side: a continuous covalent path. Across the strands are the pairing hydrogen bonds. This tests connectivity, without depicting the polymerization reaction."
+      },
+      {
+        "id": "antiparallel",
+        "title": "相同字母，不等于相同方向",
+        "titleEn": "Matching letters do not fix direction",
+        "caption": "5′到3′是化学方向，转动视角也不变。",
+        "captionEn": "Chemical directions survive a change of view.",
+        "seconds": 26,
+        "zh": "配对字母都对上，方向就一定对吗？先把两条链都标成五撇走向三撇：这个同向方案没有通过结构检验。保持碱基对应，改成反向平行。沿一条骨架从五撇追到三撇，另一条链的化学方向正好相反。转动观察方向，端点身份和连接顺序仍保留；五撇和三撇不是屏幕的左和右。",
+        "en": "If the letters match, must the directions be right? Label both strands five-prime to three-prime in the same direction: this arrangement fails the structural test. Keep the paired positions but make the strands antiparallel. Tracing five-prime to three-prime along one backbone now opposes the other. Changing our viewpoint preserves the end identities and connections; prime labels do not mean screen left and right."
+      },
+      {
+        "id": "helix",
+        "title": "从实测空间，走向互补预测",
+        "titleEn": "From measured structure to a prediction",
+        "caption": "保留同一条链，预测另一条的序列与方向。",
+        "captionEn": "Keep one strand; predict its partner and direction.",
+        "seconds": 32,
+        "zh": "现在看后来实测的结构：这是1981年的十二碱基对DNA，不是1953年的原始模型。转动它，沿外侧两条连续骨架往下追，内侧的碱基成对堆叠，还能看见宽窄不同的沟槽。突出的一对使用实测氮氧坐标。最后，保留同一条链，把对面的搭档暂时藏起。按标准互补关系，就能预测它的序列和方向。这个结构线索启发复制设想，但不是复制反应本身。",
+        "en": "Now inspect a later measured structure: twelve DNA base pairs from 1981, not the original 1953 model. Rotate it and follow the continuous outer backbones, stacked inward-facing pairs and unequal grooves. The highlighted contact uses measured nitrogen and oxygen coordinates. Keep one strand and hide its partners. Standard complementary contacts predict the opposing sequence and direction. This structural clue suggests copying, but does not demonstrate the replication reaction."
+      }
+    ]
+  },
+  "translations": {
+    "历史结构线索": "Historical constraints",
+    "理想计算": "Ideal calculation",
+    "不是原始照片": "Not the original photograph",
+    "固定参考": "Fixed reference",
+    "候选结构": "Candidate structure",
+    "轴向间隔": "Axial spacing",
+    "一圈重复": "One-turn repeat",
+    "同一批碱基": "The same bases",
+    "位置改变，数量不变": "Positions change; totals stay fixed",
+    "标准中性构型": "Standard neutral forms",
+    "固定标准配准": "Fixed canonical alignment",
+    "氢仍连在供体上": "H remains on its donor",
+    "氢键供体": "H-bond donor",
+    "氢键受体": "H-bond acceptor",
+    "供体面对供体": "Donor faces donor",
+    "受体面对受体": "Acceptor faces acceptor",
+    "恢复对应接触": "Matching contacts restored",
+    "同一配对，完整双链": "The same pairs in a complete duplex",
+    "理想双链示意": "Ideal duplex model",
+    "沿链内骨架": "Along the covalent backbone",
+    "横跨两条链": "Across the strands",
+    "化学方向不随视角变": "Chemical direction survives rotation",
+    "后来实测结构": "Later measured structure",
+    "保留这一条链": "Keep this strand",
+    "预测对应搭档": "Predict the opposite partner",
+    "不是复制反应": "Not a replication reaction",
+    "选择结构证据": "Choose structural evidence",
+    "检验搭档": "Test a partner",
+    "恢复原顺序": "Restore the sequence",
+    "同ID重新排列": "Rearrange the same identities",
+    "隐藏搭档": "Hide the partner",
+    "揭示互补搭档": "Reveal the complementary partner",
+    "1981 · 1BNA实测坐标": "1981 · measured 1BNA",
+    "不符合参考周期": "Repeat differs",
+    "从同一链预测伙伴": "Predict from this strand",
+    "供体": "Donor",
+    "受体": "Acceptor",
+    "保留A，预测搭档": "Keep A; predict its partner",
+    "候选重复": "Candidate repeat",
+    "单链不要求A=T": "One strand need not have A = T",
+    "只计这一条链": "Count this strand only",
+    "同一条链，不是复制动画": "Same strand; not replication",
+    "同向候选：不符合标准双链": "Parallel candidate: not canonical DNA",
+    "固定历史尺度": "Fixed historical dimensions",
+    "固定配准：两处失配": "Fixed alignment: two mismatches",
+    "查看完整理想双链": "View the whole ideal duplex",
+    "检验局部接触": "Test local contacts",
+    "模型散射": "Model scattering",
+    "横跨两链的是氢键": "Hydrogen bonds span the strands",
+    "沿3′—O—P—O—5′追踪": "Trace 3′–O–P–O–5′",
+    "理想双链：骨架在外": "Ideal duplex: backbones outside",
+    "理想计算，不是原始照片": "Model, not the original photograph",
+    "短间隔与长周期": "Short spacing, long repeat",
+    "符合参考周期": "Repeat agrees",
+    "转动观察方向": "Change the viewpoint",
+    "同一批碱基连续移位，总量不变而四处局部配对改变": "The same identified bases change positions; totals stay fixed while four local pairs change",
+    "固定标准配准中的氮氧与供体氢；虚线表示氢键接触": "Nitrogen, oxygen and donor-bound hydrogen in a fixed canonical alignment; dashed lines mark hydrogen-bond contacts",
+    "同一配对进入完整理想双螺旋，固定0.34纳米间隔和3.4纳米重复": "The same pair enters an ideal duplex, with 0.34 nm spacing and a 3.4 nm repeat",
+    "沿三撇氧经过磷酸到下一糖的五撇侧，区别跨链氢键": "Trace the three-prime oxygen through phosphate to the next sugar’s five-prime side, distinct from interstrand hydrogen bonds",
+    "追踪五撇到三撇的化学方向，转动后端点身份仍保留": "Trace five-prime to three-prime chemical directions; the end identities survive viewpoint rotation",
+    "保留实测同一链的六个碱基身份，逐一预测反向互补伙伴": "Keep six identified bases from the same measured strand and predict their antiparallel partners",
+    "个环": "rings",
+    "依据1BNA真实坐标绘制两条DNA骨架、糖环、碱基平面与所选氢键": "Two DNA backbones, sugar rings, base planes and selected contacts drawn from measured 1BNA coordinates",
+    "反向平行检验": "Test antiparallel directions",
+    "将两链改为同向": "Try parallel directions",
+    "平行直链": "Straight strands",
+    "所选碱基对": "Selected base pair",
+    "改为反向平行": "Restore antiparallel directions",
+    "无法绘制衍射图；仍可查看链形状与下方结构模型。": "Scattering cannot be drawn; the strand and structural models remain available.",
+    "核苷酸与骨架连接": "Nucleotide connectivity",
+    "每步转24°": "24° per step",
+    "每步转36°": "36° per step",
+    "氢键": "H bonds",
+    "由有限理想双链散射点计算的衍射强度，不是51号照片": "Calculated scattering from finite ideal strands, not Photo 51",
+    "真实坐标空间观察": "Measured 3D structure",
+    "碱基组成约束": "Base composition",
+    "第一个碱基": "First base",
+    "第二个碱基": "Second base",
+    "绕分子轴旋转": "Rotate around the molecular axis",
+    "衍射与螺旋约束": "Scattering and helix constraints",
+    "配对几何检验": "Test pairing geometry",
+    "理想计算，非照片": "Calculated, not photographed",
+    "候选周期": "Model repeat",
+    "周期吻合": "Fits",
+    "周期不符": "Mismatch"
+  },
+  "curriculumWindows": [
+    {
+      "entryId": "bio-required-2-048-1",
+      "sceneVariant": "diffraction",
+      "chapterIds": ["diffraction", "composition", "geometry"],
+      "decision": "retain-window, close inside geometry",
+      "currentGap": "P49要求整合模型与结构约束，但旧窗口终止于局部碱基对。",
+      "closure": "geometry后段将同一批标准配对带回完整理想双螺旋；固定历史尺寸参考、数量关系与接触位点分层回扣，再留下一链预测另一链。"
+    },
+    {
+      "entryId": "bio-required-2-051-1",
+      "sceneVariant": "nucleotide",
+      "chapterIds": ["geometry", "nucleotide", "antiparallel", "helix"],
+      "decision": "retain-window",
+      "currentGap": "主链已有；用微观供受体补实第一步，末章由结构推到搭档预测，避免只验收手工连接。",
+      "closure": "标准配对→链内连接→化学反向→后来实测结构与同一链互补预测。"
+    },
+    {
+      "entryId": "chem-elective-3-model-p124",
+      "sceneVariant": "geometry",
+      "chapterIds": ["geometry", "nucleotide", "antiparallel", "helix"],
+      "decision": "retain-window",
+      "currentGap": "P125图4-19的N/O/H配位位置在旧画面缺席。",
+      "closure": "用标准中性位点和同3环反例解释选择性；再区别链内共价骨架与链间非共价氢键。"
+    }
+  ],
+  "topicSuggestion": {
+    "title": {
+      "zh": "DNA的搭档为什么不能随便换？",
+      "en": "Why can DNA bases not take any partner?"
+    },
+    "summary": {
+      "zh": "跟住同一批碱基，比较计数、氢键接触与完整双螺旋，再从保留的一条链预测另一条。",
+      "en": "Follow the same bases through counts, hydrogen-bond contacts and a whole helix, then predict a partner strand."
+    }
+  },
+  "directorTiming": {
+    "status": "measured198.5s; chapterTime + locale; voice text unchanged",
+    "chapterStarts": [0, 29.5, 59.5, 105.5, 135, 163],
+    "speechLeadInSeconds": 0.45,
+    "timingSource": "artifacts/teaching-principles/batch-7-timed-speech/bio-dna-structure-{zh|en}-{0..5}.json",
+    "chapters": [
+      {
+        "id": "diffraction",
+        "duration": 29.5,
+        "fixedEvidenceUntil": 6.4,
+        "candidateTwists": [
+          [6.4, 0],
+          [11.3, 36],
+          [13.8, 24]
+        ]
+      },
+      {
+        "id": "composition",
+        "duration": 30,
+        "zh": {
+          "permutation": [8.5, 14.4],
+          "singleAt": 20.5
+        },
+        "en": {
+          "permutation": [6.7, 12.9],
+          "singleAt": 18.65
+        }
+      },
+      {
+        "id": "geometry",
+        "duration": 46,
+        "contactsReveal": [3.8, 5.7],
+        "zh": {
+          "AC": 16.3,
+          "restoreAT": 23,
+          "GC": 24.95,
+          "assembly": [27.5, 31.2],
+          "prediction": 37.3
+        },
+        "en": {
+          "AC": 17.4,
+          "restoreAT": 24.5,
+          "GC": 27.5,
+          "assembly": [29, 32.4],
+          "prediction": 38.7
+        },
+        "partnerReveal": [43, 44]
+      },
+      {
+        "id": "nucleotide",
+        "duration": 29.5,
+        "tracePathAnchors": {
+          "C3": 11.4,
+          "O3": 12.55,
+          "P": 13.75,
+          "nextC5": 15.4,
+          "nextC4": 16.3
+        },
+        "acrossAt": {
+          "zh": 19.6,
+          "en": 18.5
+        }
+      },
+      {
+        "id": "antiparallel",
+        "duration": 28,
+        "antiparallelAt": 10.3,
+        "viewRotation": {
+          "zh": [20, 25],
+          "en": [19, 24]
+        }
+      },
+      {
+        "id": "helix",
+        "duration": 35.5,
+        "rotation": [8.8, 16],
+        "hidePartnersAt": 21.1,
+        "revealPartners": {
+          "zh": [25.5, 29.2],
+          "en": [24.6, 28.8]
+        }
+      }
+    ]
+  },
+  "scientificBoundaries": [
+    "Common neutral standard Watson–Crick geometry; fixed alignment counterexample does not forbid noncanonical pairs.",
+    "H remains covalently bound to donor; dotted H···acceptor is not hydrogen transfer.",
+    "Hydrogen-bond count is not a stability/energy/fidelity calculation.",
+    "Fixed historical dimensional constraints stay separate from each candidate output.",
+    "Ideal 1953-style model and later 1981 1BNA coordinates are visibly distinct.",
+    "Complement prediction is not a replication animation or experimental proof."
+  ],
+  "preparationSources": "sources.json",
+  "preparationBenchmarks": "preparation-benchmarks.json",
+  "acceptanceStatus": "Frozen after measured198.5s director: 12model tests,66/66 whole-player states,26real UI checks and6/6 real textbook window checks. Actual affected keyframes inspected; full listening, final static integration and physical-device performance remain separate root gates.",
+  "implementationScope": "Six chapter IDs and all three curriculum windows retained. Shared integration belongs to root.",
+  "implementationNotes": {
+    "composition": "Same six IDs: park unit5, shift neighbors through the vacant position, then restore unit5 in its new slot. Every unit remains non-overlapping.",
+    "contacts": "Fixed canonical schematic positions; H stays on donor N; noncanonical boundary in both articles.",
+    "prediction": "Same measured residue IDs; number of dashed contacts comes from canonicalContactGraph, not a constant.",
+    "measuredTiming": "Both actual speech timelines used; internal cuts may differ by locale while chapter clock is shared. No voice changes."
+  },
+  "measuredDurationSeconds": 198.5
+}

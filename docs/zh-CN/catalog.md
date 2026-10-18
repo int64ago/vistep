@@ -106,7 +106,7 @@
 | [铁与水蒸气的反应](../../src/content/chem-iron-steam.mdx)                         | 1:26 | 铁遇到水蒸气，条件改变了什么？                       |
 | [铁离子的显色与转化](../../src/content/chem-iron-cycle.mdx)                       | 3:45 | 红色消失，又回来，铁发生了什么？                     |
 | [氢气在氯气中燃烧](../../src/content/chem-hydrogen-chlorine.mdx)                  | 1:30 | 燃烧一定需要氧气吗？                                 |
-| [氯气：发现、收集与尾气](../../src/content/chem-chlorine-discovery.mdx)           | 1:59 | 获得一种气体，与解释它是什么有何不同？               |
+| [氯气：证据与解释](../../src/content/chem-chlorine-discovery.mdx)                 | 3:04 | 产物里有氧，就能断定气体含氧吗？                     |
 | [氯水光照的三路证据](../../src/content/chem-chlorine-photolysis.mdx)              | 1:35 | 三条曲线，怎样指向同一个反应？                       |
 | [干湿对照与氯气漂白](../../src/content/chem-chlorine-bleaching.mdx)               | 1:29 | 同样的氯气，为什么纸条表现不同？                     |
 | [容量瓶与定量配液](../../src/content/chem-solution-preparation.mdx)               | 2:58 | 洗涤和定容，分别控制了什么？                         |
@@ -140,7 +140,7 @@
 | [土壤微生物的分解作用](../../src/content/bio-soil-decomposition.mdx)          | 4:08 | 落叶与淀粉的变化，怎样成为证据？               |
 | [DNA复制的证据与过程](../../src/content/bio-dna-replication.mdx)              | 3:42 | 一道中间条带，为什么还要再等一代？             |
 | [生态系统的能量与物质](../../src/content/bio-ecosystem-energy.mdx)            | 4:18 | 能量流过以后，物质去了哪里？                   |
-| [DNA结构的约束与模型](../../src/content/bio-dna-structure.mdx)                | 2:47 | 一套结构，怎样同时满足衍射、组成与化学连接？   |
+| [DNA结构的约束与模型](../../src/content/bio-dna-structure.mdx)                | 3:19 | DNA的搭档为什么不能随便换？                    |
 | [群落调查与演替](../../src/content/bio-community-survey.mdx)                  | 4:40 | 先看见什么，才能解释一个群落？                 |
 | [遗传物质的三条证据](../../src/content/bio-genetic-material.mdx)              | 3:49 | 是改变了性状，还是找到了传递性状的物质？       |
 | [竞争、捕食与群落](../../src/content/bio-community-interactions.mdx)          | 3:52 | 少一个捕食者，为什么不只是多一些猎物？         |
@@ -456,7 +456,7 @@
 | 专题                                                                 | 演示 | 问题                                        |
 | -------------------------------------------------------------------- | ---- | ------------------------------------------- |
 | [星系红移与微波天空](../../src/content/cosmology-observations.mdx)   | 2:20 | 宇宙的历史，怎样藏在收到的光里？            |
-| [引力波证据的三条路径](../../src/content/gravitational-wave-lab.mdx) | 2:48 | 极微小的时空变化，怎样被辨认？              |
+| [引力波证据的三条路径](../../src/content/gravitational-wave-lab.mdx) | 3:48 | 极微小的变化，怎样变成可信的读数？          |
 | [光、事件与时钟](../../src/content/relativity-experiments.mdx)       | 3:44 | 相对论怎样接受实验检验？                    |
 | [从观测到天体预言](../../src/content/celestial-observations.mdx)     | 4:34 | 一个偏离预测的星点，能告诉我们什么？        |
 | [温室效应](../../src/content/greenhouse-effect.mdx)                  | 2:37 | 大气向下辐射，是不是额外创造了能量？        |

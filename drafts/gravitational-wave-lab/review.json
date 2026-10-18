@@ -1,0 +1,901 @@
+{
+  "sceneSlug": "gravitational-wave-lab",
+  "batch": 7,
+  "owner": "physics author / teaching_subject_fit",
+  "recordedAt": "2026-10-18T16:22:23.348812+00:00",
+  "status": "Frozen final author source after actual bilingual word calibration; root full verify/build/static acceptance pending",
+  "source": {
+    "head": "7c9a429ced7e576257922258ad0821bcb866ca9e",
+    "ownedFiles": {
+      "src/components/experiments/GravitationalWaveLab.tsx": "59f555afdd90a2e22685c06d488484a3b651237e729e97817459cc5de6ce935d",
+      "src/models/gravitational-wave-lab.ts": "bdeb9d43d9bf8cd1a20c9fa55d6e38e7da348d8be3a351844b633412cc986d25",
+      "src/models/gravitational-wave-lab.test.ts": "710202bc8f9bb5341b9eaa9b12e231ac9a0d88a652a237f5680e096bd39a96d1",
+      "src/models/gravitational-wave-records.ts": "12305c9e380a1f908d1680d2c392a628c5daad14ad993094efbf40493984d841",
+      "src/styles/gravitational-wave-lab.css": "4b9667a0e268ec2add1b1d24f9911053100c058fbb51e92d478743b928c4535e",
+      "src/components/covers/GravitationalWaveLabCover.astro": "501abda3bc08c26fbea201a7d0a7d0d28603581591ecf375c3890216c8711031",
+      "src/content/gravitational-wave-lab.mdx": "33613944fa7d1c8390a0ff30704d930eff3d252a83efa44a336dfe85bc405de4",
+      "src/content/en/gravitational-wave-lab.mdx": "e78716ba86238d57423b54e58224a47a9b135d028515693ba2ef7d6f093ebf4d",
+      "drafts/gravitational-wave-lab/brief.md": "19aa8acbf9d4771f5aa0111e2c31934882d3502b75b25043fa722d5c980c5442",
+      "drafts/gravitational-wave-lab/principle-first-packet.json": "a22fa232e571c1032357b672dfbaf1e0b58ce99f688d072cccca8c4a619fe80a"
+    },
+    "sharedWriter": "root; no author shared-file changes"
+  },
+  "preservation": {
+    "chapterIds": [
+      "bar-resonance",
+      "bar-coincidence",
+      "pulsar-clock",
+      "pulsar-decay",
+      "ligo-arms",
+      "ligo-sites"
+    ],
+    "windows": {
+      "required-1-weber-bar": [0, 1],
+      "required-1-binary-pulsar": [2, 3],
+      "required-1-ligo-appendix": [4, 5],
+      "required-2-ligo": [4, 5]
+    },
+    "spoken": "First three zh/en pairs checked byte-for-byte against HEAD; unchanged. Final three rewritten. Screen captions shortened independently.",
+    "provisionalSeconds": 214
+  },
+  "science": {
+    "primarySources": "artifacts/teaching-principles/physics-next-gravity/ready-brief.json",
+    "independentDownloadedData": "artifacts/teaching-principles/physics-next-gravity/independent-data-research.json",
+    "independentPreparationBenchmarks": {
+      "checks": 18,
+      "status": "passed",
+      "path": "artifacts/teaching-principles/physics-next-gravity/independent-benchmarks.json"
+    },
+    "productTests": {
+      "checks": 19,
+      "status": "passed",
+      "genericChecksAlsoPassed": 12,
+      "log": "artifacts/teaching-principles/gravity-implementation/measured-model-and-geometry.log"
+    },
+    "scopedStrictTypecheck": {
+      "status": "passed",
+      "config": "artifacts/teaching-principles/gravity-implementation/tsconfig.json",
+      "log": "artifacts/teaching-principles/gravity-implementation/measured-strict.log",
+      "limit": "Inherits repository strict configuration for owned React/models/tests; does not replace Astro check or full build."
+    },
+    "rootIndependent": "artifacts/teaching-principles/batch-7-cross-review/root-gravity-model-check.json",
+    "chemistryIndependent": "artifacts/teaching-principles/batch-7-cross-review/chemistry-gravity-review.json",
+    "limits": [
+      "Exact dark-port brightness loses sign; teaching quadrature bias differs from LIGO actual operation.",
+      "Pulse-orbit and energy-ratio views are teaching models; 29 original markers and 144 published GR curve vertices remain separate.",
+      "Official H/L records are filtered data, not synthetic chirps or raw instrument voltages.",
+      "7 ms plotting shift differs from reported 6.9 ms arrival delay. No event fit, significance, mass estimate or Galactic re-correction is performed."
+    ]
+  },
+  "automatedBrowser": {
+    "kind": "Paused actual Chromium pages; muted, reduced-motion; not listening or continuous human watching",
+    "origin": "http://127.0.0.1:4325",
+    "matrices": [
+      {
+        "report": "artifacts/teaching-principles/gravity-review-04/report.json",
+        "frames": 72,
+        "passed": true,
+        "sourceStable": true
+      },
+      {
+        "report": "artifacts/teaching-principles/gravity-review-05/report.json",
+        "frames": 32,
+        "passed": true,
+        "sourceStable": true
+      },
+      {
+        "report": "artifacts/teaching-principles/gravity-review-06/report.json",
+        "frames": 20,
+        "passed": true,
+        "sourceStable": true
+      }
+    ],
+    "wholePlayer320x568": {
+      "zh": {
+        "maxBottom": 562.0625,
+        "minTop": 16.5,
+        "transportAndChapterSelector": "within viewport"
+      },
+      "en": {
+        "maxBottom": 555.171875,
+        "minTop": 16.78125,
+        "transportAndChapterSelector": "within viewport"
+      }
+    },
+    "actualControls": {
+      "report": "artifacts/teaching-principles/gravity-controls-03/report.json",
+      "pages": 8,
+      "checks": 98,
+      "passed": true,
+      "scope": "Four textbook entries × both languages; initial apparatus, true chapter interval, manual retention, variable response, fixed data/rewind, optical common/dark/bias, physical scale, independent site paths, energy/frequency ratio and 44 px targets."
+    },
+    "measuredMatrix": {
+      "report": "artifacts/teaching-principles/gravity-measured-review-01/report.json",
+      "frames": 72,
+      "sourceStable": true,
+      "passed": true,
+      "note": "Memoization added afterward without changing path geometry; actual fixed-path controls rerun after memoization."
+    }
+  },
+  "personalAuthorVisualInspection": {
+    "status": "passed for inspected silent frames, not independent acceptance",
+    "phone": "All 36 phone keyframes were personally inspected at native-width contact-sheet scale, followed by repaired affected frames; contact manifests identify each source image.",
+    "contactSheets": [
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-01.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-02.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-03.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-04.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-05.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-06.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-07.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-08.png",
+      "artifacts/teaching-principles/gravity-review-05/contact/phone-09.png"
+    ],
+    "finalRepairSheets": [
+      "artifacts/teaching-principles/gravity-review-06/contact/phone-03.png",
+      "artifacts/teaching-principles/gravity-review-06/contact/phone-08.png",
+      "artifacts/teaching-principles/gravity-review-06/contact/phone-09.png"
+    ],
+    "desktopPersonallyOpened": [
+      "gravity-review-04/zh-1100-c0-50.png",
+      "gravity-review-04/en-1100-c1-50.png",
+      "gravity-review-04/en-1100-c2-40.png",
+      "gravity-review-05/en-1100-c3-90.png",
+      "gravity-review-04/en-1100-c4-40.png",
+      "gravity-review-05/en-1100-c5-45.png",
+      "gravity-review-05/zh-1100-c5-73.png"
+    ],
+    "coverActuallyOpened": [
+      "artifacts/teaching-principles/gravity-covers/catalog.png",
+      "artifacts/teaching-principles/gravity-covers/social.png",
+      "artifacts/teaching-principles/gravity-covers/catalog-card-en.png"
+    ],
+    "measuredPersonallyOpened": [
+      "zh-320-c4-47.png",
+      "zh-320-c4-51.png",
+      "zh-320-c4-54.png",
+      "zh-320-c4-57.png",
+      "en-320-c4-67.png",
+      "en-1100-c4-52.png",
+      "zh-320-c3-63.png",
+      "zh-320-c3-71.png",
+      "en-320-c3-57.png",
+      "en-320-c3-64.png",
+      "en-320-c5-28.png",
+      "en-320-c5-50.png",
+      "en-320-c5-70.png"
+    ],
+    "measuredDirectory": "artifacts/teaching-principles/gravity-measured-review-01"
+  },
+  "findingsAndRepairs": [
+    {
+      "finding": "Original interferometerStrain dy used unsafe input despite finite dx",
+      "repair": "Both arms now use the same finite bounded strain",
+      "evidence": "Model non-finite boundaries passed"
+    },
+    {
+      "finding": "250 px short-screen stage put Chinese complete player beyond viewport",
+      "repair": "Separate 220 px phone composition, objects/labels rearranged without shrinking 16 px text",
+      "history": "gravity-review-01"
+    },
+    {
+      "finding": "Review02 browser interrupted before English and old runner erroneously summarized completed subset as passed",
+      "repair": "New runner requires exact expected frame count, reports navigation exceptions and checks source hashes",
+      "history": "gravity-review-02 is incomplete, not accepted"
+    },
+    {
+      "finding": "English longest caption reserved 148 px and two-line qualifiers pushed player to603–626 px; one synthetic label exceeded SVG",
+      "repair": "Root shortened screen captions without changing spoken pairs; unique scene labels condensed and actual SVG bounds measured",
+      "history": "gravity-review-03 failed, gravity-review-04 passed"
+    },
+    {
+      "finding": "Personal image review found split/return label on detector, source-curve label crossing plot, and seconds unit touching final tick",
+      "repair": "Separated path annotation from detector, placed published-curve label in empty plot area, moved unit to footer",
+      "evidence": "gravity-review-05 and gravity-review-06 actual images"
+    },
+    {
+      "finding": "Interpolating H1 amplitude while aligning would invent a transient flattened record",
+      "repair": "Crossfade two immutable endpoint paths; preserve all original and official transformed samples",
+      "evidence": "Actual browser control checks verify path d strings identical before/after/rewind"
+    },
+    {
+      "finding": "Teaching energy numeric frequency increased while old object angle advanced uniformly",
+      "repair": "Integrate the same Kepler frequency to obtain visible orbital angle; derivative regression added",
+      "evidence": "16 product tests and affected energy frames"
+    },
+    {
+      "finding": "Two legacy generic regression assertions target removed button and old absolute SVG coordinates",
+      "status": "Reported to root; root owns generic test repair",
+      "actualRun": "astronomy-impulse-review.test.tsx: 10 passed, 2 failed before root repair",
+      "authorDidNotEditSharedTest": true
+    },
+    {
+      "finding": "Zero final differential length did not alone show the narrated simultaneous common movement.",
+      "repair": "After the held question, return both mirrors to the reference during the spoken pause; then move both equally while differential output remains zero throughout.",
+      "evidence": "Actual Chinese27.3/29s and English26.4/29s frames; continuous/common sequence and measured-word regression."
+    }
+  ],
+  "runners": {
+    "keyframes": "artifacts/teaching-principles/gravity-implementation/keyframes.mjs",
+    "controls": "artifacts/teaching-principles/gravity-implementation/controls.mjs",
+    "cover": "artifacts/teaching-principles/gravity-implementation/cover-review.mjs",
+    "originOverride": "REVIEW_ORIGIN",
+    "measuredInvocation": "GRAVITY_REVIEW_MEASURED=1 REVIEW_ORIGIN=<origin> GRAVITY_REVIEW_OUT=<new-output-directory> node artifacts/teaching-principles/gravity-implementation/keyframes.mjs"
+  },
+  "notRun": [
+    "Subjective listening to both full tracks; ASR is not listening.",
+    "Complete continuous native playback after final static build (root).",
+    "Full pnpm verify and pnpm build:preview (root).",
+    "Physical-device performance and real touchscreen testing.",
+    "Production deployment and online acceptance."
+  ],
+  "rootFollowup": {
+    "genericRegression": "Root reports all 12 astronomy-impulse-review tests passed after replacing retired selectors with real route/mirror/detector geometry assertions. This is root execution, not author execution.",
+    "visualAcceptance": "Root personally opened four decisive phone frames, one desktop returning-field frame and catalog cover; reported readable scoped evidence.",
+    "speech": "Root froze canonical spoken script and started synthesis session49547. Author will not edit spoken content."
+  },
+  "measuredSynchronization": {
+    "kind": "Author measured word-to-state calibration; independent ASR supplied by root, not subjective listening",
+    "measuredDuration": 228,
+    "chapterStarts": [0, 28, 56, 84, 124.5, 175.5],
+    "actualWordCuts": {
+      "zh": {
+        "pulsarEnergy": [10.45, 17.32],
+        "pulsarPrediction": [21.97, 26.15],
+        "pulsarLaterReveal": [26.15, 28.5],
+        "opticalPhaseAt": 6.3,
+        "oppositeArms": [12, 18.2],
+        "commonPrediction": [22.6, 26.05],
+        "resetToReference": [26.05, 26.5],
+        "bothArmsTogether": [26.5, 28.2],
+        "commonHold": [28.2, 30.7],
+        "reverse": [30.7, 34.3],
+        "physicalScaleAt": 34.5,
+        "H1Appears": 6,
+        "officialAlignment": [13.65, 17.7],
+        "separateInspiralModel": [22.2, 33.9]
+      },
+      "en": {
+        "pulsarEnergy": [9.35, 15.85],
+        "pulsarPrediction": [20.31, 23.17],
+        "pulsarLaterReveal": [23.17, 25.55],
+        "opticalPhaseAt": 7.15,
+        "oppositeArms": [13.55, 18.25],
+        "commonPrediction": [21.7, 25.25],
+        "resetToReference": [25.25, 25.55],
+        "bothArmsTogether": [25.55, 27.15],
+        "commonHold": [27.15, 31.35],
+        "reverse": [31.35, 34.9],
+        "physicalScaleAt": 35.1,
+        "H1Appears": 6.8,
+        "officialAlignment": [12.2, 16.6],
+        "separateInspiralModel": [23.45, 36.5]
+      }
+    },
+    "actualSpeech": [
+      {
+        "locale": "zh",
+        "chapter": 0,
+        "audio": "/narration/gravitational-wave-lab-zh-fa6d5a63bb88.mp3",
+        "pcmSHA256": "8c90cb9f926feb57a0540e8deee27f966990a7a73daec170ea225b3111ed1ed0",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-zh-0.json",
+        "wordTimeSHA256": "89c5881ba604cc34696885c44716c14a99c23ff158f17429397a45e16396b854",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 7.61,
+            "recognizedText": "微博尝试用大型金属棒响应引力波引起的微小形变,再用传感器转成电信号。"
+          },
+          {
+            "start": 8.07,
+            "end": 12.05,
+            "recognizedText": "驱动频率接近棒的共振频率,响应会增强。"
+          },
+          {
+            "start": 12.59,
+            "end": 17.33,
+            "recognizedText": "形变在画面里极度放大,数值仍按小硬变模型计算。"
+          },
+          {
+            "start": 17.83,
+            "end": 22.91,
+            "recognizedText": "这里是装置原理示意,并不表示这根棒实际收到了引力波。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 1,
+        "audio": "/narration/gravitational-wave-lab-zh-fa6d5a63bb88.mp3",
+        "pcmSHA256": "b00f21c153bed73e490539f197717b86a38459cc3dda9884fbc068cd646472c8",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-zh-1.json",
+        "wordTimeSHA256": "54091a5e9a8ad9dfeb50ee5e1f5ea5ef56c3740ac0bb5e7e43b55b2cac1d0ded",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 8.09,
+            "recognizedText": "把远处两个探测器的信号放到一起,是排查局部干扰的方法之一,但相似波形本身还不够。"
+          },
+          {
+            "start": 8.55,
+            "end": 15.13,
+            "recognizedText": "下方两条曲线人为加入共同的阻尼振动和不同背景,用来说明比较方法。"
+          },
+          {
+            "start": 15.69,
+            "end": 23.51,
+            "recognizedText": "韦伯早年的引力波探测宣称没有被独立证实,不能把这段科学史讲成引力波已经被发现。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 2,
+        "audio": "/narration/gravitational-wave-lab-zh-fa6d5a63bb88.mp3",
+        "pcmSHA256": "920f297b57c6216e95e0a3eaef507cfe4c9c384a6b8592ab16d8521bb775de3f",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-zh-2.json",
+        "wordTimeSHA256": "8b22ef9fab4d146ed242976aa9165319f79d77e166ad6af5834624524527b8c6",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 4.05,
+            "recognizedText": "双星中的脉冲星提供反复到达的射电信号。"
+          },
+          {
+            "start": 4.45,
+            "end": 9.61,
+            "recognizedText": "它沿视线靠近和远离时,脉冲到达间隔发生周期变化。"
+          },
+          {
+            "start": 10.09,
+            "end": 16.97,
+            "recognizedText": "图中两星按偏星轨道绕至新运动,底部周期来自视线速度的低速多普勒近似。"
+          },
+          {
+            "start": 17.35,
+            "end": 24.23,
+            "recognizedText": "它只说明即时远离,真实脉冲星分析还包含传播、引力和参考系校正。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 3,
+        "audio": "/narration/gravitational-wave-lab-zh-fa6d5a63bb88.mp3",
+        "pcmSHA256": "1881e5f737172bd2423f1f945e167e63a628e79bcab9d97217c2764a65dc568c",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-zh-3.json",
+        "wordTimeSHA256": "bd793f401c273ecb0974a4c788364c8a1f60fc5f8c91f4c9d9b39115e998ac56",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 3.59,
+            "recognizedText": "这些点来自已发表的麦冲星计时记录。"
+          },
+          {
+            "start": 3.99,
+            "end": 6.91,
+            "recognizedText": "横线表示轨道周期不变的参考。"
+          },
+          {
+            "start": 7.59,
+            "end": 10.07,
+            "recognizedText": "为什么测得的到达时刻越来越早?"
+          },
+          {
+            "start": 10.59,
+            "end": 16.85,
+            "recognizedText": "引力辐射带走能量,轨道结合得更紧,间距减小,每圈时间就更短。"
+          },
+          {
+            "start": 17.37,
+            "end": 21.53,
+            "recognizedText": "金色曲线是论文另外给出的广义相对论预测。"
+          },
+          {
+            "start": 21.97,
+            "end": 25.55,
+            "recognizedText": "先想一想,后来的记录应该靠近哪条线?"
+          },
+          {
+            "start": 26.15,
+            "end": 28.45,
+            "recognizedText": "现在揭开原有的后段观测点。"
+          },
+          {
+            "start": 28.99,
+            "end": 30.99,
+            "recognizedText": "这里累计提前约一分钟"
+          },
+          {
+            "start": 30.99,
+            "end": 33.89,
+            "recognizedText": "并不是每圈的周期缩短了一分钟"
+          },
+          {
+            "start": 33.89,
+            "end": 36.63,
+            "recognizedText": "它来自许多次很小的提前"
+          },
+          {
+            "start": 36.63,
+            "end": 39.29,
+            "recognizedText": "是射电计时提供的间接证据"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 4,
+        "audio": "/narration/gravitational-wave-lab-zh-fa6d5a63bb88.mp3",
+        "pcmSHA256": "f87c31a5ad5605bb0feee2d8203136862773d7a1769eba184e70c10e96e6b29e",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-zh-4.json",
+        "wordTimeSHA256": "92ae055370ec3fc73275c46f83008a880eab6767ab353e65d93097e587511e7c",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 5.89,
+            "recognizedText": "先跟着同一束光,分成两路,遇到端径返回,再会合到探测器。"
+          },
+          {
+            "start": 6.37,
+            "end": 11.49,
+            "recognizedText": "这里用较大的教学位移和明确的偏制工作点,把原理看清。"
+          },
+          {
+            "start": 12.03,
+            "end": 18.29,
+            "recognizedText": "一臂伸长,另一臂缩短,往返光程不同,两路返回光的相位就错开。"
+          },
+          {
+            "start": 18.81,
+            "end": 22.15,
+            "recognizedText": "合成的波改变,探测器的光强也改变。"
+          },
+          {
+            "start": 22.67,
+            "end": 26.03,
+            "recognizedText": "先预测,如果两臂一起等量伸长呢?"
+          },
+          {
+            "start": 26.59,
+            "end": 30.29,
+            "recognizedText": "相位一起变,相对差不变,差分信号为0。"
+          },
+          {
+            "start": 30.79,
+            "end": 34.41,
+            "recognizedText": "反转差分位移,偏制独出的变化也反向"
+          },
+          {
+            "start": 34.41,
+            "end": 43.09,
+            "recognizedText": "回到真实量级,4000米光闭的差分只有4阿米,相位变化约4.72×10的-11次方弧度"
+          },
+          {
+            "start": 43.09,
+            "end": 47.23,
+            "recognizedText": "真实,LEGO还需要光学枪、反馈和校准"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 5,
+        "audio": "/narration/gravitational-wave-lab-zh-fa6d5a63bb88.mp3",
+        "pcmSHA256": "cc135b727e7065b1a99faf72b2e3451da2173a9e85b794f43b0235f1c7045320",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-zh-5.json",
+        "wordTimeSHA256": "ea727384c9807f6c876cf49812176e36c4048968e5210d87ca7cf95d42b0a1ee",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 5.59,
+            "recognizedText": "现在看2015年9月14日的真实记录,以按论文的方法滤波。"
+          },
+          {
+            "start": 6.05,
+            "end": 9.91,
+            "recognizedText": "两站的波形相近,细小噪声却各不相同。"
+          },
+          {
+            "start": 10.33,
+            "end": 17.69,
+            "recognizedText": "为了叠放比较,官方图把汉福德记录前1-7毫秒,并按两站的相对朝向反号。"
+          },
+          {
+            "start": 18.27,
+            "end": 21.59,
+            "recognizedText": "观察前后几个周期,后面的间隔更短。"
+          },
+          {
+            "start": 22.23,
+            "end": 29.39,
+            "recognizedText": "致密双星失去轨道能量,间距减小,绕转加快,玄境的引力波频率随之上升。"
+          },
+          {
+            "start": 29.87,
+            "end": 32.11,
+            "recognizedText": "这里的轨道模型用于解释"
+          },
+          {
+            "start": 32.11,
+            "end": 33.85,
+            "recognizedText": "不是重新拟合事件"
+          },
+          {
+            "start": 33.85,
+            "end": 35.25,
+            "recognizedText": "回到记录"
+          },
+          {
+            "start": 35.25,
+            "end": 37.35,
+            "recognizedText": "利文斯顿先收到信号"
+          },
+          {
+            "start": 37.35,
+            "end": 40.39,
+            "recognizedText": "论文测得的时差约6.9毫秒"
+          },
+          {
+            "start": 40.83,
+            "end": 44.97,
+            "recognizedText": "两站一致性还要结合仪器检查和噪声统计"
+          },
+          {
+            "start": 44.97,
+            "end": 48.01,
+            "recognizedText": "不能只凭一段相似波形宣布发现"
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 0,
+        "audio": "/narration/gravitational-wave-lab-en-0c79fbfb7265.mp3",
+        "pcmSHA256": "3f760f5443bf0c87d89fcf6266a321047c7a6a782fb353174b7eb951a1178e69",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-en-0.json",
+        "wordTimeSHA256": "39e880aa0e3a3aef607dc5d9bd33a2b8b17133af18c5834a8c56108188f4397f",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 5.17,
+            "recognizedText": " Weber used large metal bars to seek tiny deformations from gravitational waves,"
+          },
+          {
+            "start": 5.29,
+            "end": 7.85,
+            "recognizedText": " converting motion into an electrical signal."
+          },
+          {
+            "start": 8.09,
+            "end": 11.11,
+            "recognizedText": " Response increases near mechanical resonance."
+          },
+          {
+            "start": 11.43,
+            "end": 16.69,
+            "recognizedText": " The drawing greatly magnifies deformation while the readout uses a small strain model."
+          },
+          {
+            "start": 16.97,
+            "end": 20.83,
+            "recognizedText": " It illustrates the proposed detector principle, not an actual detection."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 1,
+        "audio": "/narration/gravitational-wave-lab-en-0c79fbfb7265.mp3",
+        "pcmSHA256": "fa0a83b682fec26613e3c4e7ba3b8b982fa28d5ca0d30857cb3f9e8c7560c61c",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-en-1.json",
+        "wordTimeSHA256": "d21175340515d0441339674931970ec0a1f3acc8d8aa0b064f86a1b1b792d356",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 6.91,
+            "recognizedText": " Comparing separated detectors can help reject local disturbances, but similar traces are not enough."
+          },
+          {
+            "start": 7.11,
+            "end": 13.25,
+            "recognizedText": " These curves deliberately combine a common damped oscillation with different backgrounds to explain the method."
+          },
+          {
+            "start": 13.53,
+            "end": 17.31,
+            "recognizedText": " Independent experiments failed to confirm Weber's early claims."
+          },
+          {
+            "start": 17.59,
+            "end": 22.69,
+            "recognizedText": " This history must not be presented as an established gravitational wave discovery."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 2,
+        "audio": "/narration/gravitational-wave-lab-en-0c79fbfb7265.mp3",
+        "pcmSHA256": "62bb30f3f04c9ccc901eb9fb29ce6fecbad445f021211f77f2cf5e39f597f4e9",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-en-2.json",
+        "wordTimeSHA256": "11c0f9ba996a6537ba7e58c012feff961001090ee29e2573341fb463e1845881",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 2.75,
+            "recognizedText": " A pulsar supplies repeated radio pulses."
+          },
+          {
+            "start": 3.49,
+            "end": 6.29,
+            "recognizedText": " As it approaches and recedes along the line of sight,"
+          },
+          {
+            "start": 6.63,
+            "end": 8.97,
+            "recognizedText": " arrival intervals change periodically."
+          },
+          {
+            "start": 9.33,
+            "end": 12.23,
+            "recognizedText": " The stars follow eccentric-barycentric orbits,"
+          },
+          {
+            "start": 12.23,
+            "end": 15.71,
+            "recognizedText": " and the plotted period uses a low-speed Doppler approximation."
+          },
+          {
+            "start": 16.11,
+            "end": 20.77,
+            "recognizedText": " Real timing also corrects propagation, gravity, and reference frame effects."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 3,
+        "audio": "/narration/gravitational-wave-lab-en-0c79fbfb7265.mp3",
+        "pcmSHA256": "d02f10ddb48ff558abd39806abd680366dbaeaeef4984d792c6c2c54f8b66200",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-en-3.json",
+        "wordTimeSHA256": "2fd6269fd0e6f21e9617dc56b986e00bb912a574d9713a1c48f1df3b767d1387",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 2.53,
+            "recognizedText": " These are published pulsar timing records."
+          },
+          {
+            "start": 2.79,
+            "end": 6.65,
+            "recognizedText": " The horizontal reference assumes an unchanged orbital period."
+          },
+          {
+            "start": 7.17,
+            "end": 9.01,
+            "recognizedText": " Why do arrivals become earlier?"
+          },
+          {
+            "start": 9.43,
+            "end": 15.65,
+            "recognizedText": " Radiation carries away energy, leaving a more tightly bound, smaller orbit with a shorter period."
+          },
+          {
+            "start": 15.89,
+            "end": 20.07,
+            "recognizedText": " The gold line is the paper's separately published general relativity prediction."
+          },
+          {
+            "start": 20.31,
+            "end": 22.69,
+            "recognizedText": " Which line should the later records approach?"
+          },
+          {
+            "start": 23.17,
+            "end": 25.49,
+            "recognizedText": " Now reveal those original observations."
+          },
+          {
+            "start": 26.29,
+            "end": 31.55,
+            "recognizedText": " About a minute of accumulated early arrival does not mean that each orbit became a minute shorter."
+          },
+          {
+            "start": 31.87,
+            "end": 33.79,
+            "recognizedText": " Many tiny advances add up."
+          },
+          {
+            "start": 33.97,
+            "end": 36.37,
+            "recognizedText": " Radio timing supplies indirect evidence."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 4,
+        "audio": "/narration/gravitational-wave-lab-en-0c79fbfb7265.mp3",
+        "pcmSHA256": "7c0cedb04b5f34e7a86b3ece04543d3957a914d31ea9d557bb84d81cba7a0ed1",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-en-4.json",
+        "wordTimeSHA256": "6113cab48db2abe115fd6683b418e3472a20fe33a431ca8370075caf18a5a97a",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 6.91,
+            "recognizedText": " Follow one beam, split it, reflect both parts from the end mirrors, then recombine them at the detector."
+          },
+          {
+            "start": 7.19,
+            "end": 13.23,
+            "recognizedText": " Larger teaching displacements and an explicit biased operating point make the mechanism visible."
+          },
+          {
+            "start": 13.61,
+            "end": 18.29,
+            "recognizedText": " Opposite arm changes alter round-trip path difference, shifting the returning phases."
+          },
+          {
+            "start": 18.81,
+            "end": 21.43,
+            "recognizedText": " Their summed field changes the detected power."
+          },
+          {
+            "start": 21.77,
+            "end": 25.23,
+            "recognizedText": " Predict what happens if both arms lengthen equally."
+          },
+          {
+            "start": 25.55,
+            "end": 27.25,
+            "recognizedText": " Both phases change together."
+          },
+          {
+            "start": 27.25,
+            "end": 31.11,
+            "recognizedText": " Their difference and the differential signal stay unchanged."
+          },
+          {
+            "start": 31.45,
+            "end": 34.95,
+            "recognizedText": " Reverse the differential motion and the bias signal reverses."
+          },
+          {
+            "start": 35.11,
+            "end": 39.81,
+            "recognizedText": " At the physical scale, 4-kilometer arms differ by just 4 atom meters,"
+          },
+          {
+            "start": 40.03,
+            "end": 45.43,
+            "recognizedText": " a phase change of roughly 4.72 times 10 to the minus 11 radians."
+          },
+          {
+            "start": 45.95,
+            "end": 49.55,
+            "recognizedText": " Real LIGO adds optical cavities, feedback, and calibration."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 5,
+        "audio": "/narration/gravitational-wave-lab-en-0c79fbfb7265.mp3",
+        "pcmSHA256": "12fbff4eeb4677859d64676613ed21fc9d7f929a28d47043fd8f2b2650922162",
+        "wordTimeFile": "artifacts/teaching-principles/batch-7-timed-speech/gravitational-wave-lab-en-5.json",
+        "wordTimeSHA256": "301fc28e3c1d4992b6d2cf063cb978dfa72c65313021eb2e913f9b174843b5fa",
+        "chapterRelativeSegments": [
+          {
+            "start": 0.45,
+            "end": 6.53,
+            "recognizedText": " Now inspect the actual records from September 14, 2015, filtered as in the paper."
+          },
+          {
+            "start": 6.83,
+            "end": 9.47,
+            "recognizedText": " Similar waveforms retain different noise."
+          },
+          {
+            "start": 9.77,
+            "end": 14.91,
+            "recognizedText": " For comparison, the official plot moves Hanford's record 7 milliseconds earlier"
+          },
+          {
+            "start": 14.91,
+            "end": 18.85,
+            "recognizedText": " and reverses its polarity for the detector's relative orientation."
+          },
+          {
+            "start": 19.27,
+            "end": 21.19,
+            "recognizedText": " Compare early and late cycles."
+          },
+          {
+            "start": 21.49,
+            "end": 23.27,
+            "recognizedText": " The later spacing is shorter."
+          },
+          {
+            "start": 23.47,
+            "end": 28.73,
+            "recognizedText": " A compact binary loses orbital energy, moves closer, and orbits faster,"
+          },
+          {
+            "start": 29.25,
+            "end": 31.25,
+            "recognizedText": " increasing the in-spiral wave frequency."
+          },
+          {
+            "start": 31.55,
+            "end": 34.33,
+            "recognizedText": " This separate orbit model explains the trend."
+          },
+          {
+            "start": 34.59,
+            "end": 36.33,
+            "recognizedText": " It does not refit the event."
+          },
+          {
+            "start": 36.55,
+            "end": 40.05,
+            "recognizedText": " Back in the records, Livingston received the signal first."
+          },
+          {
+            "start": 40.27,
+            "end": 43.81,
+            "recognizedText": " The paper reports a delay of about 6.9 milliseconds."
+          },
+          {
+            "start": 44.49,
+            "end": 47.93,
+            "recognizedText": " Consistency also needs instrument checks and noise statistics."
+          },
+          {
+            "start": 48.27,
+            "end": 51.11,
+            "recognizedText": " Similar traces alone do not establish a discovery."
+          }
+        ]
+      }
+    ],
+    "tests": [
+      {
+        "command": [
+          "pnpm",
+          "exec",
+          "vitest",
+          "run",
+          "src/models/gravitational-wave-lab.test.ts",
+          "src/components/experiments/astronomy-impulse-review.test.tsx"
+        ],
+        "exitCode": 0,
+        "log": "artifacts/teaching-principles/gravity-implementation/measured-model-and-geometry.log"
+      },
+      {
+        "command": [
+          "pnpm",
+          "exec",
+          "tsc",
+          "--noEmit",
+          "-p",
+          "artifacts/teaching-principles/gravity-implementation/tsconfig.json"
+        ],
+        "exitCode": 0,
+        "log": "artifacts/teaching-principles/gravity-implementation/measured-strict.log"
+      }
+    ],
+    "browserReport": "artifacts/teaching-principles/gravity-measured-review-01/report.json",
+    "cacheFollowup": "Three full site-record paths are memoized by w/h, with all samples retained; eight-route/98-check controls-03 passed after cache change. No phone FPS claim."
+  },
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-7-review.json",
+    "manual": "artifacts/teaching-principles/batch-7-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}
