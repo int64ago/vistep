@@ -98,7 +98,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Periodic tables and property trends](../src/content/en/chem-periodic-patterns.mdx)                   | 3:30 | Which relationships does a periodic table preserve?                           |
 | [Atomic models and electron clouds](../src/content/en/chem-atomic-models.mdx)                         | 3:33 | What changes from an orbit to an electron cloud?                              |
 | [Experimental comparisons across a period and a group](../src/content/en/chem-periodic-practical.mdx) | 3:28 | How can experiments establish periodic trends?                                |
-| [Practical investigations of iron and its compounds](../src/content/en/chem-iron-practical.mdx)       | 3:08 | How does iron move between three oxidation states?                            |
+| [Where iron’s electrons go](../src/content/en/chem-iron-practical.mdx)                                | 3:27 | Why can iron two both accept and donate electrons?                            |
 | [Testing for iron in food](../src/content/en/chem-food-iron.mdx)                                      | 1:54 | What happens before the food extract turns red?                               |
 | [Aluminium oxide films in acid and base](../src/content/en/chem-aluminium-film.mdx)                   | 1:58 | Why can aluminium wait before releasing bubbles?                              |
 | [Copper etching and protected patterns](../src/content/en/chem-copper-etching.mdx)                    | 1:51 | Why does a protected pattern survive copper etching?                          |
@@ -155,7 +155,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 2:49 | Separate a process model from different cells in a fixed specimen.               |
 | [Evidence for auxin](../src/content/en/bio-auxin-evidence.mdx)                                    | 4:28 | How do experiments explain a plant bending toward light?                         |
 | [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 3:39 | Which question about photosynthesis can each line of evidence answer?            |
-| [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:04 | Separate pigments, then compare how wavelengths pass through them.               |
+| [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:43 | Why does one green spot separate into several bands?                             |
 | [Immune pathways and evidence](../src/content/en/bio-immune-pathways.mdx)                         | 2:50 | How does identifying a marker connect to an immune pathway?                      |
 | [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 4:18 | What does fermentation set flowing again?                                        |
 | [Enzyme evidence and conditions](../src/content/en/bio-enzyme-investigations.mdx)                 | 4:11 | Why do cells rely on enzymes to speed reactions?                                 |
@@ -455,7 +455,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 
 | Exploration                                                                                | Film | Question                                                               |
 | ------------------------------------------------------------------------------------------ | ---- | ---------------------------------------------------------------------- |
-| [Galaxy redshifts and the microwave sky](../src/content/en/cosmology-observations.mdx)     | 2:20 | How does received light reveal cosmic history?                         |
+| [Galaxy redshifts and the microwave sky](../src/content/en/cosmology-observations.mdx)     | 3:32 | How can light reveal an expanding universe?                            |
 | [Three paths to gravitational-wave evidence](../src/content/en/gravitational-wave-lab.mdx) | 3:48 | How does a tiny change become a reliable measurement?                  |
 | [Light, events and clocks](../src/content/en/relativity-experiments.mdx)                   | 4:42 | Same experiment, different times?                                      |
 | [From observations to celestial predictions](../src/content/en/celestial-observations.mdx) | 4:34 | What can a misplaced planet tell us?                                   |

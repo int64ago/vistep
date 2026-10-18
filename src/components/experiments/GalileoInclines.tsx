@@ -1,60 +1,46 @@
 import { useState, useId } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
   rollingIncline,
-  doubleInclineGeometry,
-  doubleInclineState,
+  galileoTrackView,
+  galileoTimingGeometry,
+  galileoFilmState,
 } from '../../models/galileo-inclines';
 import '../../styles/galileo-inclines.css';
 export default function GalileoInclines() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [path, setPath] = useState<'timing' | 'double' | 'energy'>(
-      film.variant?.includes('double')
-        ? 'double'
-        : film.variant?.includes('energy')
-          ? 'energy'
-          : 'timing',
-    ),
+  const [selectedPath, setPath] = useState<'timing' | 'double' | 'energy' | null>(null),
     [angle, setAngle] = useState(6),
     [right, setRight] = useState(25),
     [time, setTime] = useState(1.2);
-  const c = film.watch ? film.chapter : path === 'timing' ? 1 : path === 'energy' ? 5 : 3,
-    p = film.chapterProgress,
-    kind = film.watch ? (c < 3 ? 'timing' : c === 5 ? 'energy' : 'double') : path;
-  const angleNow = film.watch ? (c === 2 ? 12 : 6) : angle,
-    trial = c === 4 ? Math.min(2, Math.floor(p * 3)) : 0,
-    rightNow = film.watch ? (c === 4 ? [35, 15, 0][trial] : c === 5 ? 25 : 35) : right;
-  const run = film.watch
-    ? c === 4
-      ? (p * 3 - trial) * (trial === 2 ? 1.8 : trial === 1 ? 2.6 : 1.7)
-      : p * (c === 5 ? 2.1 : 1.7)
-    : Math.min(time, rightNow === 0 ? 1.9 : 3);
-  const roll = rollingIncline(
-      film.watch ? Math.min(1, p * 1.5) * rollingIncline(0, angleNow).endTime : time,
-      angleNow,
-    ),
-    double = doubleInclineState(run, rightNow),
-    geometry = doubleInclineGeometry(rightNow),
-    first = geometry.at(0),
-    last = geometry.at(geometry.length);
-  const scale = 330 / (last.x - first.x),
-    map = (x: number, y: number) => ({ x: 15 + (x - first.x) * scale, y: 201 - y * scale });
-  const center = map(double.x, double.y),
-    radius = 0.065 * scale;
-  const rail = Array.from({ length: 151 }, (_, i) => {
-    const q = geometry.at((geometry.length * i) / 150),
-      r = map(q.x + 0.065 * Math.sin(q.angle), q.y - 0.065 * Math.cos(q.angle));
-    return `${i ? 'L' : 'M'}${r.x} ${r.y}`;
-  }).join(' ');
-  const phi = (angleNow * Math.PI) / 180,
-    track = (s: number) => ({ x: 35 + s * 175 * Math.cos(phi), y: 80 + s * 175 * Math.sin(phi) }),
+  const director = galileoFilmState(film.chapter, film.chapterTime, browserLocale());
+  const path = selectedPath ?? director.kind;
+  const c = film.watch ? film.chapter : path === 'timing' ? 1 : path === 'energy' ? 5 : 3;
+  const kind = film.watch ? director.kind : path;
+  const angleNow = film.watch ? director.angle : angle,
+    rightNow = film.watch ? director.right : right;
+  const run = film.watch ? director.run : Math.min(time, 3);
+  const roll = rollingIncline(film.watch ? director.timingTime : time, angleNow);
+  const view = galileoTrackView(run, rightNow),
+    double = view.state,
+    center = view.center,
+    radius = view.radius;
+  const rail = view.rail.map((q, i) => `${i ? 'L' : 'M'}${q.x} ${q.y}`).join(' ');
+  const timing = galileoTimingGeometry(angleNow),
+    phi = timing.phi,
+    track = timing.at,
     ball = track(roll.position),
-    end = track(1.6);
+    end = timing.end;
   return (
-    <section className="galileo-lab">
+    <section
+      className="galileo-lab"
+      data-kind={kind}
+      data-camera={view.camera}
+      data-physical-time={kind === 'timing' ? roll.time : run}
+    >
       <header>
         <p>
           {t(
@@ -87,13 +73,16 @@ export default function GalileoInclines() {
                 </radialGradient>
               </defs>
               <path d={`M35 80L${end.x} ${end.y}V${end.y + 8}L35 88Z`} fill="#cdb692" />
-              <path
-                d={`M45 88V169M${end.x - 8} ${end.y + 8}V169`}
-                stroke="#b9ac8c"
-                strokeWidth="7"
-                strokeLinecap="round"
-              />
-              <path d="M25 170H328" stroke="#d5d5be" strokeWidth="3" />
+              {timing.supports.map((q, i) => (
+                <path
+                  key={i}
+                  d={`M${q.x} ${q.top}V${q.bottom}`}
+                  stroke="#b9ac8c"
+                  strokeWidth="7"
+                  strokeLinecap="round"
+                />
+              ))}
+              <path d={`M25 ${timing.tableY}H328`} stroke="#d5d5be" strokeWidth="3" />
               {[0.25, 0.5, 0.75, 1].map((f, i) => {
                 const q = track(1.6 * f * f);
                 return (
@@ -106,9 +95,9 @@ export default function GalileoInclines() {
                 );
               })}
               <g
-                transform={`translate(${ball.x + 7 * Math.sin(phi)} ${ball.y - 7 * Math.cos(phi)}) rotate(${(((roll.position * 175) / 7) * 180) / Math.PI})`}
+                transform={`translate(${ball.x + 9 * Math.sin(phi)} ${ball.y - 9 * Math.cos(phi)}) rotate(${(((roll.position * 175) / 9) * 180) / Math.PI})`}
               >
-                <circle r="7" fill={`url(#${id}ball)`} />
+                <circle r="9" fill={`url(#${id}ball)`} />
                 <path d="M-4-3L4 3" stroke="#8d7754" strokeWidth="1" />
               </g>
             </svg>
@@ -147,7 +136,7 @@ export default function GalileoInclines() {
                 <path d="M71 202H139" stroke="#c4ccb3" strokeWidth="3" />
               </svg>
               <span>
-                {t('收集的水质量')} <strong>{(roll.waterMass * 1000).toFixed(1)} g</strong>
+                {t('收集水量')} <strong>{(roll.waterMass * 1000).toFixed(1)} g</strong>
               </span>
             </div>
           </div>
@@ -183,7 +172,7 @@ export default function GalileoInclines() {
         <>
           <svg
             className="galileo-double"
-            viewBox="0 0 360 245"
+            viewBox="0 0 360 185"
             role="img"
             aria-label={t('平滑连接的双斜面上小球滚动，释放高度与回升高度对照')}
           >
@@ -193,16 +182,10 @@ export default function GalileoInclines() {
                 <stop offset="1" stopColor="#a18356" />
               </radialGradient>
             </defs>
-            <path d={`M15 ${map(0, 0.7).y}H345`} stroke="#b9bf9e" strokeDasharray="4 5" />
+            <path d={`M15 ${view.referenceY}H345`} stroke="#b9bf9e" strokeDasharray="4 5" />
             <path d={rail} stroke="#c9b38c" strokeWidth="7" fill="none" strokeLinecap="round" />
             <path d={rail} stroke="#e4d4b4" strokeWidth="1" fill="none" />
-            <circle
-              cx={map(first.x, first.y).x}
-              cy={map(first.x, first.y).y}
-              r={radius}
-              fill="none"
-              stroke="#b9bfa2"
-            />
+            <circle cx={view.first.x} cy={view.first.y} r={radius} fill="none" stroke="#b9bfa2" />
             <g
               transform={`translate(${center.x} ${center.y}) rotate(${((double.position / 0.065) * 180) / Math.PI})`}
             >
@@ -213,20 +196,46 @@ export default function GalileoInclines() {
                 strokeWidth="1"
               />
             </g>
-            {rightNow === 0 && (
-              <path d="M327 187H348m-7-5l7 5-7 5" stroke="#8d9f79" strokeWidth="1.7" fill="none" />
+            {rightNow === 0 &&
+              view.ticks
+                .filter((q) => q.x > 20 && q.x < 310)
+                .map((q) => (
+                  <g key={q.worldX}>
+                    <path d={`M${q.x} ${156 + radius + 1}v5`} stroke="#b7baa0" />
+                    <text x={q.x} y="182" textAnchor="middle" fontSize="22" fill="#7c8d68">
+                      {q.worldX} m
+                    </text>
+                  </g>
+                ))}
+            {view.continuesRight && (
+              <path d="M327 172H348m-7-5l7 5-7 5" stroke="#8d9f79" strokeWidth="1.7" fill="none" />
             )}
           </svg>
+          {view.continuesRight && (
+            <p className="galileo-continuation">
+              {t('轨道继续向右延伸')}
+              {rightNow > 0 && <> · {view.returnDistance.toFixed(1)} m</>}
+            </p>
+          )}
           <div className="galileo-values">
-            <span>
-              {t('右坡角度')} {rightNow}°
-            </span>
-            <span>
-              {t('当前高度')} {double.y.toFixed(2)} m
-            </span>
-            <span>
-              {t('模型时间')} {run.toFixed(2)} s
-            </span>
+            {kind === 'energy' ? (
+              <>
+                <span>h {double.y.toFixed(2)} m</span>
+                <span>v {Math.abs(double.velocity).toFixed(2)} m/s</span>
+              </>
+            ) : (
+              <>
+                <span>
+                  {t('右坡角度')} {rightNow}°
+                </span>
+                <span>
+                  {t('当前高度')} {double.y.toFixed(2)} m
+                </span>
+                <span>
+                  {t('模型时间')} {run.toFixed(2)} s
+                </span>
+              </>
+            )}
           </div>
           {kind === 'energy' && (
             <div className="galileo-energy">
@@ -236,10 +245,10 @@ export default function GalileoInclines() {
               </div>
               <p>
                 <span>
-                  {t('重力势能')} {double.potential.toFixed(2)} J/kg
+                  {t('势能')} {double.potential.toFixed(2)} J/kg
                 </span>
                 <span>
-                  {t('平动与转动动能')} {double.kinetic.toFixed(2)} J/kg
+                  {t('滚动动能')} {double.kinetic.toFixed(2)} J/kg
                 </span>
               </p>
             </div>
@@ -288,9 +297,9 @@ export default function GalileoInclines() {
           )}
           <Range
             label={t('模型时间')}
-            value={time}
+            value={kind === 'timing' ? Math.min(time, roll.endTime) : time}
             min={0}
-            max={kind === 'timing' ? 3 : right === 0 ? 1.9 : 3}
+            max={kind === 'timing' ? Math.ceil(roll.endTime * 100) / 100 : 3}
             step={0.01}
             unit="s"
             onChange={setTime}

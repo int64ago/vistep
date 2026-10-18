@@ -196,3 +196,62 @@
     display: none;
   }
 }
+
+.fall-paper-columns[data-count='2'] {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 400px;
+}
+.fall-paper-columns figcaption {
+  min-height: 48px;
+  height: 48px;
+  align-content: center;
+  line-height: 1.4;
+}
+.fall-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: normal;
+}
+.fall-note {
+  margin-top: 32px;
+}
+.showcase[data-mode='watch'] .fall-activities > header,
+.showcase[data-mode='watch'] .fall-note,
+.showcase[data-mode='watch'] .fall-logic-result {
+  display: none;
+}
+.showcase[data-mode='watch'] .fall-paper-columns {
+  margin-top: 0;
+}
+.showcase[data-mode='watch'] .fall-observation {
+  margin: 8px 0 0;
+  text-align: center;
+  display: block;
+}
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .fall-activities {
+    padding: 0 4px;
+  }
+  .showcase[data-mode='watch'] .fall-paper-columns svg {
+    height: 158px;
+  }
+  .showcase[data-mode='watch'] .fall-reasoning > svg {
+    height: 88px;
+  }
+  .showcase[data-mode='watch'] .fall-logic-claims p {
+    font-size: 16px;
+    margin: 6px 0;
+    padding: 3px 8px;
+    line-height: 1.4;
+  }
+  .showcase[data-mode='watch'] .fall-ruler svg {
+    height: auto;
+    aspect-ratio: 320 / 278;
+  }
+  .showcase[data-mode='watch'] .fall-ruler-readout {
+    gap: 10px;
+  }
+  .showcase[data-mode='watch'] .fall-ruler-readout b {
+    font-size: 19px;
+  }
+}

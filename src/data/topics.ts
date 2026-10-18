@@ -2597,10 +2597,11 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-iron-practical',
-    name: '铁及其化合物的实验活动',
-    title: '同一个铁元素，怎样在三种价态间转换？',
-    question: '同一个铁元素，怎样在三种价态间转换？',
-    description: '逐项呈现教材章末实验，用沉积、溶解、褪色和显色证据追踪铁的电子转移与配位变化。',
+    name: '铁的电子去向',
+    title: '二价铁为什么既能得电子，也能失电子？',
+    question: '二价铁为什么既能得电子，也能失电子？',
+    description:
+      '让七个实验成为一张价态转化图：跟住同一个铁、电子和显色对象，再预测铁粉不足时会剩下什么。',
     color: '#aeb99b',
     tag: '章末活动 · 铁价态 · 证据链',
     related: ['chem-iron-cycle', 'chem-copper-etching', 'chem-iron-hydroxides'],
@@ -2614,12 +2615,24 @@ export const topics: Topic[] = [
         url: 'https://research.me.udel.edu/~prasad/papers/2006_JMM_Zhang.pdf',
       },
       {
-        title: 'Original Fe(III)-thiocyanate stability-constant study',
+        title: 'Fe(III)–thiocyanate coordination study',
         url: 'https://doi.org/10.1016/j.ica.2017.06.017',
       },
       {
         title: '人教版高中化学必修第一册90页实验活动2',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'Iron(III) chloride etching of copper (2006)',
+        url: 'https://doi.org/10.1088/0960-1317/16/11/N02',
+      },
+      {
+        title: 'SUNY Buffalo State — iron(II) and permanganate titration',
+        url: 'https://staff.buffalostate.edu/nazareay/che112/manganate.htm',
+      },
+      {
+        title: 'Iodine–iodide–amylose complexes (2022)',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/36558106/',
       },
     ],
     number: '346',
@@ -3032,9 +3045,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-leaf-pigments',
     name: '叶片的色带与光谱',
-    title: '绿色叶片里，藏着哪些颜色',
-    question: '分离色素，再比较不同波长如何穿过它们。',
-    description: '从研磨提取到四条色带，使用真实光谱数据区分吸收和透过。',
+    title: '绿色叶片里，为什么会分出几条色带？',
+    question: '同一滴绿色，为什么会分成几条色带？',
+    description: '让色素在两相之间不断交换，看见迁移差异；再用真实光谱解释绿色透过与浓度变化。',
     color: '#9fab75',
     tag: '生物学',
     related: ['bio-food-tests', 'bio-cell-microscopy', 'bio-photosynthesis-evidence'],
@@ -3054,6 +3067,26 @@ export const topics: Topic[] = [
       {
         title: 'PhotochemCAD: beta-carotene in hexane',
         url: 'https://omlc.org/spectra/PhotochemCAD/html/041.html',
+      },
+      {
+        title: 'Martin and Synge (1941) — two-phase chromatography',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1265645/',
+      },
+      {
+        title: 'IUPAC Gold Book — chromatography',
+        url: 'https://goldbook.iupac.org/terms/view/C01075',
+      },
+      {
+        title: 'PhotochemCAD — measured chlorophyll a absorption',
+        url: 'https://omlc.org/spectra/PhotochemCAD/data/123-abs.txt',
+      },
+      {
+        title: 'PhotochemCAD — measured chlorophyll b absorption',
+        url: 'https://omlc.org/spectra/PhotochemCAD/data/125-abs.txt',
+      },
+      {
+        title: 'PhotochemCAD — measured beta-carotene absorption',
+        url: 'https://omlc.org/spectra/PhotochemCAD/data/041-abs.txt',
       },
     ],
     number: '330',
@@ -4766,9 +4799,9 @@ export const topics: Topic[] = [
   {
     slug: 'cosmology-observations',
     name: '星系红移与微波天空',
-    title: '宇宙的历史，怎样藏在收到的光里？',
-    question: '宇宙的历史，怎样藏在收到的光里？',
-    description: '比较谱线红移与距离，再追踪微波背景的校准和全天温差图。',
+    title: '怎样从光读出膨胀的宇宙？',
+    question: '怎样从光读出膨胀的宇宙？',
+    description: '追踪同一组谱线与波峰，用固定星系记录和微波频谱检验宇宙膨胀与冷却。',
     color: '#94a9b5',
     tag: '宇宙观测',
     related: ['atomic-spectrum-lab', 'celestial-observations'],
@@ -4788,6 +4821,34 @@ export const topics: Topic[] = [
       {
         title: 'Penzias — Commentary on the original antenna-temperature measurement',
         url: 'https://garfield.library.upenn.edu/classics1981/A1981LL57400001.pdf',
+      },
+      {
+        title: 'A relation between distance and radial velocity among extra-galactic nebulae',
+        url: 'https://doi.org/10.1073/pnas.15.3.168',
+      },
+      {
+        title: 'A Measurement of Excess Antenna Temperature at 4080 Mc/s',
+        url: 'https://doi.org/10.1086/148307',
+      },
+      {
+        title: 'Cosmic Black-Body Radiation',
+        url: 'https://doi.org/10.1086/148306',
+      },
+      {
+        title: 'The Cosmic Microwave Background Spectrum from the Full COBE FIRAS Data Set',
+        url: 'https://arxiv.org/abs/astro-ph/9605054',
+      },
+      {
+        title: 'COBE/FIRAS CMB monopole spectrum v1',
+        url: 'https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt',
+      },
+      {
+        title: 'What Is Cosmological Redshift?',
+        url: 'https://science.nasa.gov/asset/webb/what-is-cosmological-redshift/',
+      },
+      {
+        title: 'Strong Lines of Hydrogen (H)',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2.htm',
       },
     ],
     number: '263',

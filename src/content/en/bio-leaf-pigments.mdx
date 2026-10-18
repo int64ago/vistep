@@ -1,25 +1,49 @@
-<h2 id="understand">One green extract separates into several bands</h2>
+<h2 id="understand">Why can one green extract form several bands?</h2>
 
-Grinding disrupts leaf tissue, ethanol extracts pigments and filtration produces a mixture. The textbook uses silica to assist grinding and calcium carbonate to protect pigments. A narrow dry origin stays above the solvent reservoir. Different partitioning between stationary and moving phases produces different migration distances.
+A uniformly green extract need not be a pure pigment. Disrupting tissue lets solvent reach pigments in the leaf. Filtration retains larger debris, while dissolved pigments remain together. Distinguishing the components requires another observation.
 
-The main textbook bands, from the front toward the origin, are carotene, xanthophyll, chlorophyll a and chlorophyll b. Migration distance and darkness do not directly measure molecular size or precise abundance.
+During paper chromatography, some pigment moves with the mobile phase while another portion is retained. Repeated redistribution accumulates into different migration distances. In the textbook solvent system, the main bands run from carotene and xanthophyll near the front to chlorophyll a and b nearer the origin. This is neither a ranking of molecular size nor a universal order under all solvent conditions.
 
-<h2 id="try">Change a condition and inspect the evidence</h2>
+A counterexample tests the explanation: two pigments with identical partitioning can migrate together. One band therefore does not guarantee one chemical component.
 
-- Submerge the origin and observe pigment dissolving into the reservoir.
-- Widen the starting line and compare separation clarity.
-- Change wavelength and compare absorption with transmission.
-- Double concentration and check the Beer–Lambert relation rather than expecting transmission to simply halve.
+<h2 id="try">Predict a change before revealing it</h2>
 
-Required 1, Chapter 5, Section 4, pp. 98–99. Extraction and separation is the formal inquiry; absorption spectra are a research demonstration.
+- Submerge the origin and follow pigment leaving the shared starting zone. Paper plus reservoir preserves the total amount.
+- Widen the initial zone and see how the same components become harder to resolve.
+- Give two pigments equal partitioning and compare their population distributions and selected tracers.
+- Hold pigment, wavelength and path length fixed while doubling concentration. Transmission should square, rather than simply halve.
 
-<h2 id="deeper">Measured data and illustrative parameters</h2>
+The markers identify pigment classes; the exchange close-up is a teaching model, not a molecular movie. Exploration settings do not alter the authored film.
+
+<h2 id="deeper">Migration and absorption answer different questions</h2>
+
+An absorption measurement compares reference and transmitted light at the same wavelength. Chlorophyll a absorbs strongly near blue and red; more green light passes, but green absorption is not zero. The fractions shown use measured extinction coefficients in specified solvents. A green appearance does not mean that green is the strongest absorption region.
+
+For dilute solutions with scattering, reflection and fluorescence omitted, A = εcl and T = 10⁻ᴬ. Thus T(2c) = T(c)². The two equal absorbing amounts in the scene explain this multiplication; they do not represent an observed concentration-doubling experiment.
 
 <details>
-<summary>What spectral data are shown?</summary>
+<summary>How does the model generate migration instead of assigning four speeds?</summary>
 
-Extinction coefficients come from PhotochemCAD 2.1a / OMLC, interpolated at 5 nm intervals over 400–700 nm. Chlorophyll a and b use diethyl ether; beta-carotene uses hexane. Path length is 1 cm and default concentration is 5 µM. The model calculates A = εcl, T = 10⁻ᴬ and absorption fraction 1 − T, ignoring scattering, reflection and fluorescence. Provenance accompanies the model data.
+Let K be an effective stationary-to-mobile concentration ratio, with positive effective phase volumes Vₛ and Vₘ. The fraction of mass in the mobile phase is f = 1 / (1 + K Vₛ / Vₘ). Each illustrative solvent-volume step changes a population q to q′ⱼ = (1 − f)qⱼ + f qⱼ₋₁: retained mass plus mass transported from the preceding cell.
 
-These are solution absorption spectra, not a leaf action spectrum. Screen colors approximate spectral colors. The solvent front follows a capillary square-root time relation; four migration factors are illustrative, not standards for arbitrary solvents. The main pigment categories do not mean all plants contain only four pigment molecules.
+Total mass is conserved. After n steps from a narrow origin, mean displacement is nf and variance is nf(1 − f). Persistent tracers sample the same f; a few selected trajectories need not equal the population mean. Equal fractions produce coincident distributions. Between complete transfer steps, the band shading interpolates adjacent stage populations while selected markers move continuously; these are two explanatory displays, not identical instantaneous microscopic densities.
+
+This ideal teaching model follows repeated phase-distribution reasoning. It does not identify the stationary environment with one pure water layer or a single adsorption mechanism, and its cells are not physical paper pores. Partition values, amounts and step counts are illustrative, not predictions of experimental Rf. A visually slowing front is not a fit to textbook experimental timing. [Martin and Synge's original theory](https://pmc.ncbi.nlm.nih.gov/articles/PMC1265645/) supports repeated distribution and theoretical plates, not these leaf-pigment migration values.
+
+</details>
+
+<details>
+<summary>Which quantities come from real measurements?</summary>
+
+The existing PhotochemCAD / OMLC extinction coefficients are preserved, interpolated at 5 nm intervals over 400–700 nm. Chlorophyll a and b were measured in diethyl ether; beta-carotene was measured in hexane. The default concentration is 5 µM with a 1 cm path. Measurement provenance is available for [chlorophyll a](https://omlc.org/spectra/PhotochemCAD/html/123.html), [chlorophyll b](https://omlc.org/spectra/PhotochemCAD/html/125.html) and [beta-carotene](https://omlc.org/spectra/PhotochemCAD/html/041.html).
+
+No fourth measured xanthophyll spectrum is invented. Solution absorption is not whole-leaf reflectance, an action spectrum or photosynthetic efficiency. Display colors are illustrative, not calibrated colorimetry.
+
+</details>
+
+<details>
+<summary>Textbook learning order</summary>
+
+Required 1, Chapter 5, Section 4, pp. 97–101. The extraction/separation inquiry on p. 98 opens the first three chapters; the spectral evidence on pp. 98–99 opens the last two. The textbook's silica-assisted grinding and pigment protection with calcium carbonate remain preparation context. The film emphasizes the observations that support mixture, partitioning and absorption claims.
 
 </details>

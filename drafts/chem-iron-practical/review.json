@@ -1,0 +1,1116 @@
+{
+  "sceneSlug": "chem-iron-practical",
+  "status": "frozen after measured author calibration; awaiting final root static QA",
+  "owner": "chemistry_inventory",
+  "reviewType": "Author implementation review; biology independent check is separately attributed.",
+  "writtenProductFiles": true,
+  "writtenSharedFiles": false,
+  "plannedDurationSeconds": 206,
+  "measuredDurationSeconds": 207,
+  "sourceFiles": [
+    {
+      "path": "src/models/chem-iron-practical.ts",
+      "sha256": "ac4dc9b579489522a3dfe70cb4b9c83bbe0ba6aa4365dff9dc557adb9d922f08"
+    },
+    {
+      "path": "src/models/chem-iron-practical.test.ts",
+      "sha256": "d2e5c0889402edd2e1de03f60b6d90d5c2aac28d50dea25582c8f870497ef8a8"
+    },
+    {
+      "path": "src/components/experiments/ChemIronPractical.tsx",
+      "sha256": "41b6210b66328eaa5f35a74c1908b6021f64b40c6afa3ce7112a3a04648d6399"
+    },
+    {
+      "path": "src/components/experiments/ChemIronPractical.exploration.test.tsx",
+      "sha256": "c6cb2614ed6fc08d26fcaec12c0c161d1dcc30ea2926d6071a4b79fb8f74ceef"
+    },
+    {
+      "path": "src/styles/chem-iron-practical.css",
+      "sha256": "34a6e91054d03866a9455160a1940c995d7d3b1aa33ce932db9522bd68768f71"
+    },
+    {
+      "path": "src/components/covers/ChemIronPracticalCover.astro",
+      "sha256": "75ea3ca38de161169197b40a325dd2d79d2a47e3d6d6a1aa8d4fa6b5ab743b42"
+    },
+    {
+      "path": "src/content/chem-iron-practical.mdx",
+      "sha256": "adcf72653440de751bb1a2b8d50e012ff5a2bccdc823ca3c9fc4f577c09dc094"
+    },
+    {
+      "path": "src/content/en/chem-iron-practical.mdx",
+      "sha256": "ed5e5ccb6e58508b2b43e9c32aeae515cc84802d2ef7573b555142714dba0c51"
+    },
+    {
+      "path": "drafts/chem-iron-practical/brief.md",
+      "sha256": "ab71537b2ea6d115d6bf1c27903636216cbec38d146d8908fbdd5ae8577c3574"
+    },
+    {
+      "path": "drafts/chem-iron-practical/principle-first-packet.json",
+      "sha256": "2cdb84a910f06dee170fb902d9b178b99b33cd6fcc00a3139883e568f5b2cbbc"
+    }
+  ],
+  "checks": [
+    {
+      "type": "targeted model/static component contracts",
+      "status": "passed",
+      "modelTests": 19,
+      "componentTests": 7,
+      "total": 26,
+      "command": "pnpm exec vitest run src/models/chem-iron-practical.test.ts src/components/experiments/ChemIronPractical.exploration.test.tsx",
+      "scope": "Including full O/H pairwise separation, iodine residue identification, limits, electron transit and predictions."
+    },
+    {
+      "type": "scoped TypeScript",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/typecheck.json"
+    },
+    {
+      "type": "independent scientific model peer",
+      "status": "passed",
+      "owner": "biology_inventory",
+      "assertions": 1127,
+      "evidence": "artifacts/teaching-principles/batch-11-cross-review/biology-review-iron-practical-product.json",
+      "scope": "Actual real model with independent atom ledger; no UI, audio or fresh primary-source review."
+    },
+    {
+      "type": "actual provisional keyframes",
+      "status": "passed-with-recorded-recapture",
+      "originalCases": 58,
+      "originalPassed": 56,
+      "originalFailed": 2,
+      "recheckCases": 4,
+      "recheckPassed": 4,
+      "reason": "Two first-chapter captures had execution-context/navigation resets during dev edits; originals retained, no blanket claim first run passed.",
+      "evidence": [
+        "artifacts/teaching-principles/iron-practical-implementation/final-provisional-frames/report.json",
+        "artifacts/teaching-principles/iron-practical-implementation/final-provisional-recheck/report.json",
+        "artifacts/teaching-principles/iron-practical-implementation/iodine-clarification/report.json"
+      ],
+      "phoneLargestPlayerBottom": 560.8125,
+      "minimumMeasuredExplanatoryFontPx": 16
+    },
+    {
+      "type": "actual native controls",
+      "status": "passed",
+      "localeStates": [
+        {
+          "locale": "en",
+          "states": 63
+        },
+        {
+          "locale": "zh",
+          "states": 63
+        }
+      ],
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/controls/report.json",
+      "scope": "7cases×3presets×3progress positions per language; persistent IDs/charge plus conditional tests and watch isolation."
+    },
+    {
+      "type": "cover consumers",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/covers/report.json",
+      "actualViewed": ["covers/covers.png", "covers/catalog-en390.png"],
+      "limit": "Social route generated successfully, not separately claimed subjective composition review."
+    },
+    {
+      "type": "complete automatic playback",
+      "status": "incomplete-development-attempt",
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/continuous-silent-final/report.json",
+      "reason": "Normal wall-clock silent run moved backwards/reset after3seconds in dev. No full-viewing claim; root will run static normal playback."
+    },
+    {
+      "type": "synthesis/word timing/listening",
+      "status": "pending-root",
+      "scope": "Old audio deliberately off during author review; no measured sync or subjective listening claimed."
+    },
+    {
+      "type": "global verify/build/publication",
+      "status": "pending-root"
+    },
+    {
+      "type": "author measured word-event calibration",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/measured-sync.json",
+      "scope": "14 source word files; locale-specific prediction/electron/atom/O-H/test/map cuts. Independent ASR is root-provided, not subjective listening."
+    },
+    {
+      "type": "actual measured keyframes",
+      "status": "passed",
+      "cases": 61,
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/measured-frames/report.json",
+      "personallyViewedImages": 18,
+      "minimumMeasuredExplanatoryFontPx": 16,
+      "phoneLargestPlayerBottom": 560.8125
+    },
+    {
+      "type": "actual measured controls",
+      "status": "passed",
+      "states": 126,
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/measured-controls/report.json",
+      "scope": "63 each language plus reagent/finite-supply/charge/identity/watch-isolation checks; not a complete movie."
+    },
+    {
+      "type": "final two-role comparison recapture",
+      "status": "passed",
+      "cases": 3,
+      "personallyViewedImages": 3,
+      "evidence": "artifacts/teaching-principles/iron-practical-implementation/measured-comparison-final/report.json",
+      "scope": "Both Zn and MnO4/H paths and their arrowheads/partners visible in EN320, ZH320 and EN1440; no controller state changes."
+    },
+    {
+      "type": "independent measured spatial-gate peer",
+      "status": "passed",
+      "owner": "biology_inventory",
+      "assertions": 750,
+      "evidence": "artifacts/teaching-principles/batch-11-cross-review/biology-review-iron-motion.json",
+      "scope": "Model only: optional motion cannot bypass charge/credit gates; first Fe enters water while CuII waits. No UI/voice claims."
+    }
+  ],
+  "developmentCorrections": [
+    "Correct CuII acceptor, keep metal donor as third FeII in final six-ID case.",
+    "Complete acidic acceptor packet avoids bare MnVII; all13 net atoms survive.",
+    "Initial short player overflow fixed via actual experiment anchor and scoped caption spacing, retaining16px text/44px controls.",
+    "Remove only duplicate test readout and zero-credit row; positive in-transit account remains visible.",
+    "Electron rail moved below header; O/H net display lanes do not cross atom glyphs.",
+    "Iodine host labels2I in I2 plus residualIminus, explicitly not a unique colour-complex structure."
+  ],
+  "pendingBeforeFinalFreeze": [
+    "Author owned files frozen; remaining root acceptance is listed separately."
+  ],
+  "notClaimed": [
+    "Generated teaching accounts are not measured data.",
+    "Automated or static capture does not replace full watching.",
+    "No subjective voice listening, real-device performance or publication in this author report."
+  ],
+  "measuredTiming": {
+    "scope": "Author exact word-file/director comparison; independent ASR supplied by root, not subjective listening. Geometry is a net account, not a microscopic kinetic claim.",
+    "duration": 207,
+    "chapterStarts": [0, 26, 55, 83, 109, 147, 172],
+    "modelSha256": "ac4dc9b579489522a3dfe70cb4b9c83bbe0ba6aa4365dff9dc557adb9d922f08",
+    "sourceFolder": "artifacts/teaching-principles/batch-11-timed-speech",
+    "results": [
+      {
+        "locale": "zh",
+        "chapter": 0,
+        "chapterId": "iron-displaces-copper",
+        "seconds": 26,
+        "offset": 0.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-0.json",
+        "sourceSha256": "d231f9fc7ef25ed20b56f8d888b566a8c46de718e27b9c0d59ca1233aa244dbf",
+        "pcmSHA256": "a056834069b84dca0847d55fbfa3e9dc9069ee2dbc1faacdfa6a0442bcd7476a",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "surface",
+            "seconds": [0, 3.91]
+          },
+          {
+            "id": "transfer",
+            "seconds": [3.91, 14.25]
+          },
+          {
+            "id": "map",
+            "seconds": [14.25, 26]
+          }
+        ],
+        "testAt": null,
+        "revealAt": 14.25,
+        "departAt": 5.85,
+        "arriveAt": 11.1,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 3.5100000000000002,
+            "text": "铁丝上涨出了铜,铁丝本身去了哪里?"
+          },
+          {
+            "start": 3.91,
+            "end": 9.29,
+            "text": "跟住表面这个铁,它给出两个电子,进入水中成为二架铁。"
+          },
+          {
+            "start": 9.67,
+            "end": 13.83,
+            "text": "一份铜离子接收这两个电子,留在金属表面。"
+          },
+          {
+            "start": 14.25,
+            "end": 20.23,
+            "text": "把这次观察记在图上,铁从零架变成正二架,反映伙伴是铜离子。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 1,
+        "chapterId": "ferric-attacks-copper",
+        "seconds": 29,
+        "offset": 26.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-1.json",
+        "sourceSha256": "9aa1d7f2af363d1c50ee61ecfb5ef5049852af76aa7d494362f2108fa0642cc9",
+        "pcmSHA256": "24e5894680bc5019c4b0067d13e3d5f695f43326d1169af2ab29ff55d08852fd",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "predict",
+            "seconds": [0, 7.05]
+          },
+          {
+            "id": "transfer",
+            "seconds": [7.05, 15.29]
+          },
+          {
+            "id": "map",
+            "seconds": [15.29, 29]
+          }
+        ],
+        "testAt": null,
+        "revealAt": 15.29,
+        "departAt": 8.35,
+        "arriveAt": 11.25,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 3.29,
+            "text": "现在换成铜片和三架铁熔液。"
+          },
+          {
+            "start": 3.71,
+            "end": 6.55,
+            "text": "先猜,铜会长出来,还是熔解?"
+          },
+          {
+            "start": 7.05,
+            "end": 14.889999999999999,
+            "text": "这一次,铜给出两个电子,两份三架铁各接收一个,成为二架铁,铜自己进入水中。"
+          },
+          {
+            "start": 15.29,
+            "end": 18.47,
+            "text": "涂上新增正三架到正二架的路径。"
+          },
+          {
+            "start": 18.89,
+            "end": 22.99,
+            "text": "都是铁和铜,反应方向却要看具体是哪种粒子。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 2,
+        "chapterId": "iodide-starch",
+        "seconds": 28,
+        "offset": 55.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-2.json",
+        "sourceSha256": "f67bc4af8a10fc352972bf5e5d56205510b8351e75bff3e408f5a8338a82a68a",
+        "pcmSHA256": "fabae1516eafe03c654f29e81ea1fb666f1de9c3fd664e78fd2a306b7bd0e8e9",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "transfer",
+            "seconds": [0, 9.83]
+          },
+          {
+            "id": "iodine",
+            "seconds": [9.83, 25]
+          },
+          {
+            "id": "map",
+            "seconds": [25, 28]
+          }
+        ],
+        "testAt": 11.25,
+        "revealAt": 25,
+        "departAt": 5.1,
+        "arriveAt": 8.4,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.6900000000000004,
+            "text": "把电子提供者换成点离子。"
+          },
+          {
+            "start": 3.1100000000000003,
+            "end": 9.33,
+            "text": "两份点离子各给出一个电子,形成点,两份三架铁成为二架铁。"
+          },
+          {
+            "start": 9.830000000000002,
+            "end": 13.729999999999999,
+            "text": "加入淀粉后,蓝色出现在含点的显色体系里。"
+          },
+          {
+            "start": 14.29,
+            "end": 18.23,
+            "text": "跟住铁,它仍留在水中,没有变成蓝色小球。"
+          },
+          {
+            "start": 18.73,
+            "end": 23.349999999999998,
+            "text": "这条证据指向点的生成,不能直接当作二架铁的检验。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 3,
+        "chapterId": "zinc-reduces-iron",
+        "seconds": 26,
+        "offset": 83.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-3.json",
+        "sourceSha256": "e9fee3b29dad88a7532605b7d377b587bb331690a3dccb307f84e8ef972fc352",
+        "pcmSHA256": "25d742f2b7084b2f76f8eccfa845ab91f2b83535bc257867f5dcba45827f81c1",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "predict",
+            "seconds": [0, 7.45]
+          },
+          {
+            "id": "transfer",
+            "seconds": [7.45, 15.31]
+          },
+          {
+            "id": "map",
+            "seconds": [15.31, 26]
+          }
+        ],
+        "testAt": null,
+        "revealAt": 15.31,
+        "departAt": 7.85,
+        "arriveAt": 10.1,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.6700000000000004,
+            "text": "二架铁是否只能作为终点?"
+          },
+          {
+            "start": 3.1700000000000004,
+            "end": 5.890000000000001,
+            "text": "让芯与另一份二架铁熔液相遇,"
+          },
+          {
+            "start": 6.09,
+            "end": 6.97,
+            "text": "先做预测。"
+          },
+          {
+            "start": 7.45,
+            "end": 8.93,
+            "text": "芯给出两个电子,"
+          },
+          {
+            "start": 9.209999999999999,
+            "end": 11.77,
+            "text": "二架铁接收后成为金属铁。"
+          },
+          {
+            "start": 12.209999999999999,
+            "end": 14.809999999999999,
+            "text": "同一个铁从水里来到固体表面。"
+          },
+          {
+            "start": 15.309999999999999,
+            "end": 18.31,
+            "text": "芯增的路径从正二架通向零架,"
+          },
+          {
+            "start": 18.71,
+            "end": 19.33,
+            "text": "面对芯,"
+          },
+          {
+            "start": 19.59,
+            "end": 21.61,
+            "text": "二架铁是电子的接受者。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 4,
+        "chapterId": "permanganate-then-test",
+        "seconds": 38,
+        "offset": 109.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-4.json",
+        "sourceSha256": "d212ae85b591df36c46c0a44a57d4719ea84991a4738777ee1082855cfe94956",
+        "pcmSHA256": "630dce334fe5e7dff6b0f316d27fe6002b1e8680968e2de071a145d6ac6fafea",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "transfer",
+            "seconds": [0, 10.41]
+          },
+          {
+            "id": "acid",
+            "seconds": [10.41, 17.65]
+          },
+          {
+            "id": "test",
+            "seconds": [17.65, 21.43]
+          },
+          {
+            "id": "map",
+            "seconds": [21.43, 38]
+          }
+        ],
+        "testAt": 19.2,
+        "revealAt": 21.43,
+        "departAt": 6.05,
+        "arriveAt": 8.8,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 4.07,
+            "text": "换成酸性高蒙酸根,二价铁的角色反过来。"
+          },
+          {
+            "start": 4.55,
+            "end": 9.91,
+            "text": "五分二价铁各给出一个电子,一份高蒙酸根接收这五分电子。"
+          },
+          {
+            "start": 10.41,
+            "end": 11.989999999999998,
+            "text": "它的四个氧没有消失,"
+          },
+          {
+            "start": 12.43,
+            "end": 16.09,
+            "text": "净账本把它们和八分氢离子系入四分水。"
+          },
+          {
+            "start": 16.669999999999998,
+            "end": 20.99,
+            "text": "紫色退去后,再用流情酸根检验生成的三价铁。"
+          },
+          {
+            "start": 21.43,
+            "end": 27.79,
+            "text": "并排看这两条路径,面对不同伙伴,二价铁既能接受,也能给出电子。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 5,
+        "chapterId": "ferric-positive",
+        "seconds": 25,
+        "offset": 147.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-5.json",
+        "sourceSha256": "da9105731d0f37ff68a9f710d5f8c4fcb0f6c4dbb72a504283c8b69dd14405c1",
+        "pcmSHA256": "0a8d13183555fdc52772a54565be9cccfbce9f292a14275e9304399cde5a6ee0",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "binding",
+            "seconds": [0, 8.29]
+          },
+          {
+            "id": "predict",
+            "seconds": [8.29, 12.07]
+          },
+          {
+            "id": "map",
+            "seconds": [12.07, 25]
+          }
+        ],
+        "testAt": 4.9,
+        "revealAt": 12.07,
+        "departAt": null,
+        "arriveAt": null,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.33,
+            "text": "再看三架铁的显色对照。"
+          },
+          {
+            "start": 2.75,
+            "end": 7.91,
+            "text": "留情酸根参与配位,红色出现,中心铁仍是正三架。"
+          },
+          {
+            "start": 8.29,
+            "end": 11.569999999999999,
+            "text": "这次应该增加一条得失电子的箭头吗?"
+          },
+          {
+            "start": 12.069999999999999,
+            "end": 12.87,
+            "text": "不应该。"
+          },
+          {
+            "start": 13.469999999999999,
+            "end": 19.73,
+            "text": "把显色记录留在正三架这个位置,颜色改变,不一定意味着价态改变。"
+          },
+          {
+            "start": 20.19,
+            "end": 23.63,
+            "text": "这个对照将帮助我们判断最后一份样品。"
+          }
+        ]
+      },
+      {
+        "locale": "zh",
+        "chapter": 6,
+        "chapterId": "iron-before-test",
+        "seconds": 35,
+        "offset": 172.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-zh-6.json",
+        "sourceSha256": "54d8ef2634c782e3959f35028f036b75d8dda4dfab4d54f5bdef7f220ce93a30",
+        "pcmSHA256": "1a3bd4286a734cb27608b70173754c592c26cf20a42b279cd8fec2db4aab8b1f",
+        "audio": "/narration/chem-iron-practical-zh-2cca64268231.mp3",
+        "shots": [
+          {
+            "id": "predict",
+            "seconds": [0, 7.39]
+          },
+          {
+            "id": "transfer",
+            "seconds": [7.39, 18.27]
+          },
+          {
+            "id": "test",
+            "seconds": [18.27, 21.75]
+          },
+          {
+            "id": "map",
+            "seconds": [21.75, 35]
+          }
+        ],
+        "testAt": 19.9,
+        "revealAt": 21.75,
+        "departAt": 8.3,
+        "arriveAt": 10.8,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 4.75,
+            "text": "若一份金属铁面对五份三架铁,反应后还能显红吗?"
+          },
+          {
+            "start": 5.3100000000000005,
+            "end": 6.99,
+            "text": "先别加检验试剂。"
+          },
+          {
+            "start": 7.390000000000001,
+            "end": 13.809999999999999,
+            "text": "金属铁提供的两个电子,只能还原其中两份三架铁,它自己也进入水中。"
+          },
+          {
+            "start": 14.489999999999998,
+            "end": 17.89,
+            "text": "数一数,三份二架铁,三份三架铁。"
+          },
+          {
+            "start": 18.27,
+            "end": 21.27,
+            "text": "再加检验试剂,红色仍可出现。"
+          },
+          {
+            "start": 21.75,
+            "end": 27.009999999999998,
+            "text": "判断铁的角色与反应结果,要一起看价态,反应伙伴和数量。"
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 0,
+        "chapterId": "iron-displaces-copper",
+        "seconds": 26,
+        "offset": 0.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-0.json",
+        "sourceSha256": "f38611702c7b86e244c1909936ef530cd1f181b9795a885cc95185ed83c87531",
+        "pcmSHA256": "81aea4ab2798eeef3d8e63e7a67a697c361f1cc7129e7c8df3cbaad319ee22de",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "surface",
+            "seconds": [0, 4.07]
+          },
+          {
+            "id": "transfer",
+            "seconds": [4.07, 14.57]
+          },
+          {
+            "id": "map",
+            "seconds": [14.57, 26]
+          }
+        ],
+        "testAt": null,
+        "revealAt": 14.57,
+        "departAt": 6.35,
+        "arriveAt": 11.8,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.15,
+            "text": " Copper grows on the iron wire."
+          },
+          {
+            "start": 2.41,
+            "end": 3.73,
+            "text": " Where does the iron go?"
+          },
+          {
+            "start": 4.07,
+            "end": 5.61,
+            "text": " Follow one surface atom."
+          },
+          {
+            "start": 5.91,
+            "end": 10.01,
+            "text": " It supplies two electrons and enters the water as iron two."
+          },
+          {
+            "start": 10.33,
+            "end": 14.17,
+            "text": " One copper ion receives those credits and joins the surface."
+          },
+          {
+            "start": 14.569999999999999,
+            "end": 15.91,
+            "text": " Record the observed route."
+          },
+          {
+            "start": 16.31,
+            "end": 21.23,
+            "text": " Iron goes from zero to plus two, with copper ions as its reaction partner."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 1,
+        "chapterId": "ferric-attacks-copper",
+        "seconds": 29,
+        "offset": 26.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-1.json",
+        "sourceSha256": "2b7677f75184c278334579ac8fe6c8b5fb6c02f4224b4e5e2c299c944396d633",
+        "pcmSHA256": "111b2f7943bfab9452756554f8dee83421ea206e643f387f1a4c3bfd720e8426",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "predict",
+            "seconds": [0, 6.73]
+          },
+          {
+            "id": "transfer",
+            "seconds": [6.73, 16.49]
+          },
+          {
+            "id": "map",
+            "seconds": [16.49, 29]
+          }
+        ],
+        "testAt": null,
+        "revealAt": 16.49,
+        "departAt": 8.2,
+        "arriveAt": 12.1,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 3.0900000000000003,
+            "text": " Now use copper metal and iron 3 ions."
+          },
+          {
+            "start": 3.37,
+            "end": 6.37,
+            "text": " Predict, will copper grow or dissolve?"
+          },
+          {
+            "start": 6.73,
+            "end": 9.569999999999999,
+            "text": " This time, copper supplies two electrons."
+          },
+          {
+            "start": 9.93,
+            "end": 16.17,
+            "text": " Two iron 3 ions each receive one and become iron 2 while copper enters solution."
+          },
+          {
+            "start": 16.49,
+            "end": 18.95,
+            "text": " Add the route from plus 3 to plus 2."
+          },
+          {
+            "start": 19.189999999999998,
+            "end": 23.009999999999998,
+            "text": " The element names are unchanged, but the reacting species are different."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 2,
+        "chapterId": "iodide-starch",
+        "seconds": 28,
+        "offset": 55.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-2.json",
+        "sourceSha256": "9ef09ba6c637275ea10838025f2ad908b900a9dc54527c44452ea21ea875b29f",
+        "pcmSHA256": "a5af7b32af3dbf32e8b68c2aef595ead1692ceeb7647cb25fb6c93192d9805c4",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "transfer",
+            "seconds": [0, 9.87]
+          },
+          {
+            "id": "iodine",
+            "seconds": [9.87, 25]
+          },
+          {
+            "id": "map",
+            "seconds": [25, 28]
+          }
+        ],
+        "testAt": 12.65,
+        "revealAt": 25,
+        "departAt": 4.5,
+        "arriveAt": 8.5,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.09,
+            "text": " Replace the donor with iodide."
+          },
+          {
+            "start": 2.25,
+            "end": 9.37,
+            "text": " Two iodide ions each lose one electron, producing iodine as two iron-three ions become iron-two."
+          },
+          {
+            "start": 9.87,
+            "end": 12.989999999999998,
+            "text": " Starch then reveals the iodine-containing system in blue."
+          },
+          {
+            "start": 13.29,
+            "end": 14.35,
+            "text": " Follow the iron."
+          },
+          {
+            "start": 14.649999999999999,
+            "end": 18.37,
+            "text": " It stays in the water rather than turning into blue particles."
+          },
+          {
+            "start": 18.71,
+            "end": 21.43,
+            "text": " This evidence identifies iodine formation."
+          },
+          {
+            "start": 22.009999999999998,
+            "end": 24.41,
+            "text": " It is not a specific test for iron-two."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 3,
+        "chapterId": "zinc-reduces-iron",
+        "seconds": 26,
+        "offset": 83.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-3.json",
+        "sourceSha256": "2c80213e57c8d8adf111d518b8958b007ad43cc3944857533f2c11da0bf89ec7",
+        "pcmSHA256": "0298bf1e7608b1395cfa2e9f2de5ac3ed7a086adb42632e98e65193b1227f98d",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "predict",
+            "seconds": [0, 6.55]
+          },
+          {
+            "id": "transfer",
+            "seconds": [6.55, 14.87]
+          },
+          {
+            "id": "map",
+            "seconds": [14.87, 26]
+          }
+        ],
+        "testAt": null,
+        "revealAt": 14.87,
+        "departAt": 7.05,
+        "arriveAt": 9.55,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.19,
+            "text": " Must iron 2 be the endpoint?"
+          },
+          {
+            "start": 2.49,
+            "end": 6.25,
+            "text": " Predict what happens when zinc meets a fresh iron 2 solution."
+          },
+          {
+            "start": 6.55,
+            "end": 11.049999999999999,
+            "text": " Zinc supplies two electrons and iron 2 accepts them to become metal."
+          },
+          {
+            "start": 11.33,
+            "end": 14.569999999999999,
+            "text": " The same iron moves from water to the solid surface."
+          },
+          {
+            "start": 14.87,
+            "end": 17.009999999999998,
+            "text": " Add a route from plus 2 to 0."
+          },
+          {
+            "start": 17.31,
+            "end": 19.77,
+            "text": " With zinc, iron 2 accepts electrons."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 4,
+        "chapterId": "permanganate-then-test",
+        "seconds": 38,
+        "offset": 109.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-4.json",
+        "sourceSha256": "8a6e80b98799a88be3f5e35aedbbab23eed65ca6e309878c9973ed0847bb1e0d",
+        "pcmSHA256": "7ff9b20e177ae8409d9ed9444ae4718583684f318a40bb76dec25cadb6ac8662",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "transfer",
+            "seconds": [0, 10.29]
+          },
+          {
+            "id": "acid",
+            "seconds": [10.29, 19.55]
+          },
+          {
+            "id": "test",
+            "seconds": [19.55, 22.67]
+          },
+          {
+            "id": "map",
+            "seconds": [22.67, 38]
+          }
+        ],
+        "testAt": 20.5,
+        "revealAt": 22.67,
+        "departAt": 6.2,
+        "arriveAt": 8.65,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 3.5900000000000003,
+            "text": " With acidified permanganate, iron 2 changes roles."
+          },
+          {
+            "start": 4.19,
+            "end": 7.21,
+            "text": " Five iron 2 ions each donate one electron."
+          },
+          {
+            "start": 7.67,
+            "end": 9.93,
+            "text": " One permanganate receives all five."
+          },
+          {
+            "start": 10.29,
+            "end": 12.549999999999999,
+            "text": " Its four oxygens remain accounted for."
+          },
+          {
+            "start": 12.85,
+            "end": 17.27,
+            "text": " The net balance combines them with eight hydrogen ions in four waters."
+          },
+          {
+            "start": 17.57,
+            "end": 22.33,
+            "text": " After purple disappears, thiocyanate reveals the iron 3 product."
+          },
+          {
+            "start": 22.669999999999998,
+            "end": 23.99,
+            "text": " Compare the two routes."
+          },
+          {
+            "start": 24.29,
+            "end": 28.31,
+            "text": " With different partners, iron 2 can accept or donate electrons."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 5,
+        "chapterId": "ferric-positive",
+        "seconds": 25,
+        "offset": 147.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-5.json",
+        "sourceSha256": "c9225dfe3826bc0963bde0bc71ab3b3eeea8967c5953d6dc6f41af30844f30b6",
+        "pcmSHA256": "b653a90b7220d82d3984de1f120f452c544db169f38793d0b874153dbde42138",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "binding",
+            "seconds": [0, 9.43]
+          },
+          {
+            "id": "predict",
+            "seconds": [9.43, 12.07]
+          },
+          {
+            "id": "map",
+            "seconds": [12.07, 25]
+          }
+        ],
+        "testAt": 5.15,
+        "revealAt": 12.07,
+        "departAt": null,
+        "arriveAt": null,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 2.89,
+            "text": " Now examine the iron-3 color control."
+          },
+          {
+            "start": 3.5700000000000003,
+            "end": 9.049999999999999,
+            "text": " Thiocyanate binds, red appears, and the central iron remains formally plus-3."
+          },
+          {
+            "start": 9.43,
+            "end": 11.75,
+            "text": " Should we add an electron transfer arrow?"
+          },
+          {
+            "start": 12.069999999999999,
+            "end": 12.649999999999999,
+            "text": " No."
+          },
+          {
+            "start": 13.01,
+            "end": 15.41,
+            "text": " Keep this color record at the plus-3 position."
+          },
+          {
+            "start": 15.67,
+            "end": 18.75,
+            "text": " A color change need not change oxidation state."
+          },
+          {
+            "start": 18.99,
+            "end": 21.91,
+            "text": " This control will help us interpret the final sample."
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "chapter": 6,
+        "chapterId": "iron-before-test",
+        "seconds": 35,
+        "offset": 172.45,
+        "source": "artifacts/teaching-principles/batch-11-timed-speech/chem-iron-practical-en-6.json",
+        "sourceSha256": "122f1323cafc178fba1f60a5c2662fc8474cb57118e7f52a5b41d125915f8e6e",
+        "pcmSHA256": "8e9ca93f6b43e2649ea68a6ac928676295355e2176349109fddf3d06b194f8d1",
+        "audio": "/narration/chem-iron-practical-en-5886df537206.mp3",
+        "shots": [
+          {
+            "id": "predict",
+            "seconds": [0, 9.55]
+          },
+          {
+            "id": "transfer",
+            "seconds": [9.55, 21.27]
+          },
+          {
+            "id": "test",
+            "seconds": [21.27, 23.75]
+          },
+          {
+            "id": "map",
+            "seconds": [23.75, 35]
+          }
+        ],
+        "testAt": 22.9,
+        "revealAt": 23.75,
+        "departAt": 10.15,
+        "arriveAt": 13.3,
+        "sentences": [
+          {
+            "start": 0.45,
+            "end": 4.63,
+            "text": " Suppose one metal iron atom faces five iron, three ions."
+          },
+          {
+            "start": 4.97,
+            "end": 7.09,
+            "text": " Can the reacted sample still turn red?"
+          },
+          {
+            "start": 7.3500000000000005,
+            "end": 9.229999999999999,
+            "text": " Keep the test reagent out for now."
+          },
+          {
+            "start": 9.549999999999999,
+            "end": 14.489999999999998,
+            "text": " The metal supplies only two electrons, reducing two iron, three ions."
+          },
+          {
+            "start": 14.729999999999999,
+            "end": 16.35,
+            "text": " It also enters solution."
+          },
+          {
+            "start": 16.89,
+            "end": 21.009999999999998,
+            "text": " Count three iron, two ions, and three iron, three ions."
+          },
+          {
+            "start": 21.27,
+            "end": 23.47,
+            "text": " The later test can still turn red."
+          },
+          {
+            "start": 23.75,
+            "end": 28.689999999999998,
+            "text": " To predict the result, consider oxidation state, partner, and quantity together."
+          }
+        ]
+      }
+    ]
+  },
+  "remainingAcceptance": [
+    "Root final static normal-speed complete playback",
+    "Subjective audio listening is distinct and not claimed by this author",
+    "Global verify/build/resource validation and publication are root-owned",
+    "Real-device performance not measured by these screenshots"
+  ],
+  "newChangesAfterVoice": [
+    "Measured locale-specific chapterTime shots; no spoken edits",
+    "Separate donor/receiver spatial holds, gated by the original credit/formal-charge model",
+    "I₂ bond follows loss of the two iodine credits, with remaining I− retained",
+    "Both FeII roles and their Zn/MnO4 partners remain visible during the comparison sentence"
+  ],
+  "personallyViewedMeasuredImages": 21,
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-11-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

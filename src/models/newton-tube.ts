@@ -107,3 +107,30 @@ export const NEWTON_FEATHER_BARBS = [
   'M0 4L-5 0M0 4L6 -1',
   'M0 9L-3 6M0 9L4 5',
 ];
+
+/** Word-timed director. Every displayed position still comes from newtonPair. */
+export function newtonFilmState(chapter: number, seconds: number, locale: 'zh' | 'en') {
+  const c = Math.floor(clamp(finite(chapter, 0), 0, 4)),
+    t = Math.max(0, finite(seconds, 0)),
+    zh = locale === 'zh';
+  const r = (a: number, b: number) => clamp((t - a) / (b - a));
+  const impact = newtonFall(NEWTON_OBJECTS.iron, 0).impactTime,
+    hit = zh ? 8.2 : 8.4;
+  const airRun = t <= hit ? impact * r(2.4, hit) : impact + (1.7 - impact) * r(hit, zh ? 10.6 : 11);
+  const airTime = c === 0 ? 0 : c === 1 ? airRun : c === 4 ? 0.56 * r(2.9, zh ? 16.5 : 17.1) : 1.7;
+  const vacuumTime =
+    c < 3
+      ? 0
+      : c === 3
+        ? 0.56 * r(zh ? 2.4 : 2.9, zh ? 8.6 : 9.1)
+        : 0.56 * r(2.9, zh ? 16.5 : 17.1);
+  const action = r(1.3, zh ? 3.3 : 2.8);
+  return {
+    airTime,
+    vacuumTime,
+    density: c < 2 ? NEWTON_AIR_DENSITY : c === 2 ? NEWTON_AIR_DENSITY * (1 - action) ** 2 : 0,
+    pumping: c === 2 && action > 0 && action < 1,
+    comparison: c === 4,
+    ghost: c === 4 && t >= (zh ? 10.4 : 11.5),
+  };
+}

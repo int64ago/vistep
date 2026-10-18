@@ -144,9 +144,6 @@
   line-height: 1.6;
 }
 @media (max-width: 760px) {
-  html:has(.lesson-newton-tube) {
-    scroll-padding-top: 24px;
-  }
   .newton-film {
     padding: 0 6px;
   }
@@ -210,5 +207,41 @@
 @media (prefers-reduced-motion: reduce) {
   .newton-trial {
     transition: none;
+  }
+}
+
+.newton-controls .segmented {
+  flex-wrap: wrap;
+}
+.newton-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: normal;
+}
+.newton-film[data-watch='true'] .newton-model {
+  display: none;
+}
+@media (max-width: 640px) {
+  .newton-film[data-watch='true'] .newton-intro {
+    border: 0;
+    padding: 0;
+  }
+  .newton-film[data-watch='true'] .newton-intro p,
+  .newton-film[data-watch='true'] .newton-observation,
+  .newton-film[data-watch='true'] .newton-speed {
+    display: none;
+  }
+  .newton-film[data-watch='true'] .newton-intro > span {
+    margin: 0;
+  }
+  .newton-film[data-watch='true'] .newton-trials {
+    margin-top: 4px;
+  }
+  .newton-film[data-watch='true'] .newton-apparatus {
+    height: 166px;
+    margin-top: 0;
+  }
+  .newton-film[data-watch='true'] .newton-legend {
+    margin-top: 2px;
   }
 }

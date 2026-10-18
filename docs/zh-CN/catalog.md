@@ -98,7 +98,7 @@
 | [周期表与性质趋势](../../src/content/chem-periodic-patterns.mdx)                  | 3:30 | 元素排成周期表，哪些关系被保留下来？                 |
 | [原子模型与电子云](../../src/content/chem-atomic-models.mdx)                      | 3:33 | 从圆轨道到电子云，改变的是什么？                     |
 | [同周期与同主族的实验比较](../../src/content/chem-periodic-practical.mdx)         | 3:28 | 怎样用实验比较元素性质的递变？                       |
-| [铁及其化合物的实验活动](../../src/content/chem-iron-practical.mdx)               | 3:08 | 同一个铁元素，怎样在三种价态间转换？                 |
+| [铁的电子去向](../../src/content/chem-iron-practical.mdx)                         | 3:27 | 二价铁为什么既能得电子，也能失电子？                 |
 | [食品中铁元素的检验](../../src/content/chem-food-iron.mdx)                        | 1:54 | 滤液变红之前，每一步做了什么？                       |
 | [铝表面的氧化膜与酸碱反应](../../src/content/chem-aluminium-film.mdx)             | 1:58 | 同样的铝，为什么有时要等一会儿才冒泡？               |
 | [覆铜板蚀刻与图案保留](../../src/content/chem-copper-etching.mdx)                 | 1:51 | 覆铜板上的图案为什么能留下来？                       |
@@ -155,7 +155,7 @@
 | [细胞分裂与固定观察](../../src/content/bio-cell-division.mdx)                 | 2:49 | 把活的过程模型与固定装片里的不同细胞分开。     |
 | [生长素的证据链](../../src/content/bio-auxin-evidence.mdx)                    | 4:28 | 植物弯向光，怎样一步步找到原因？               |
 | [光合作用的证据链](../../src/content/bio-photosynthesis-evidence.mdx)         | 3:39 | 每一种证据，究竟能回答光合作用的哪一个问题？   |
-| [叶片的色带与光谱](../../src/content/bio-leaf-pigments.mdx)                   | 2:04 | 分离色素，再比较不同波长如何穿过它们。         |
+| [叶片的色带与光谱](../../src/content/bio-leaf-pigments.mdx)                   | 2:43 | 同一滴绿色，为什么会分成几条色带？             |
 | [免疫路径与证据](../../src/content/bio-immune-pathways.mdx)                   | 2:50 | 认出一种标记，怎样连到一条免疫路径？           |
 | [呼吸的气路与碳路径](../../src/content/bio-respiration.mdx)                   | 4:18 | 发酵究竟让什么重新流动起来？                   |
 | [酶的证据与条件](../../src/content/bio-enzyme-investigations.mdx)             | 4:11 | 细胞为什么靠酶加速反应？                       |
@@ -455,7 +455,7 @@
 
 | 专题                                                                 | 演示 | 问题                                        |
 | -------------------------------------------------------------------- | ---- | ------------------------------------------- |
-| [星系红移与微波天空](../../src/content/cosmology-observations.mdx)   | 2:20 | 宇宙的历史，怎样藏在收到的光里？            |
+| [星系红移与微波天空](../../src/content/cosmology-observations.mdx)   | 3:32 | 怎样从光读出膨胀的宇宙？                    |
 | [引力波证据的三条路径](../../src/content/gravitational-wave-lab.mdx) | 3:48 | 极微小的变化，怎样变成可信的读数？          |
 | [光、事件与时钟](../../src/content/relativity-experiments.mdx)       | 4:42 | 同一次实验，为什么时间不同？                |
 | [从观测到天体预言](../../src/content/celestial-observations.mdx)     | 4:34 | 一个偏离预测的星点，能告诉我们什么？        |

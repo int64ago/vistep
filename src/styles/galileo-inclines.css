@@ -218,3 +218,73 @@
     display: none;
   }
 }
+
+.galileo-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: normal;
+}
+.galileo-note {
+  margin-top: 32px;
+}
+.galileo-double {
+  overflow: hidden;
+}
+.galileo-continuation {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 2px 0 8px;
+}
+.showcase[data-mode='watch'] .galileo-lab > header,
+.showcase[data-mode='watch'] .galileo-cause,
+.showcase[data-mode='watch'] .galileo-note {
+  display: none;
+}
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .galileo-lab {
+    padding: 0 4px;
+  }
+  .showcase[data-mode='watch'] .galileo-timing {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 74px;
+    gap: 2px;
+    align-items: end;
+  }
+  .showcase[data-mode='watch'] .galileo-timing > svg {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+  .showcase[data-mode='watch'] .galileo-water {
+    display: block;
+  }
+  .showcase[data-mode='watch'] .galileo-water svg {
+    width: 58px;
+    margin: auto;
+  }
+  .showcase[data-mode='watch'] .galileo-water span {
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .galileo-water strong {
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .galileo-values {
+    gap: 4px 12px;
+    line-height: 1.4;
+    margin-top: 6px;
+  }
+  .showcase[data-mode='watch'] .galileo-records {
+    gap: 3px;
+    line-height: 1.4;
+  }
+  .showcase[data-mode='watch'] .galileo-records strong {
+    line-height: 1.4;
+  }
+  .showcase[data-mode='watch'] .galileo-double {
+    height: 142px;
+  }
+  .showcase[data-mode='watch'] .galileo-energy p {
+    text-align: left;
+  }
+}

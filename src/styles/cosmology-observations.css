@@ -1,0 +1,134 @@
+.cosmoobs {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  padding: 6px 12px 0;
+  box-sizing: border-box;
+  color: #35534f;
+}
+.cosmoobs-heading {
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: center;
+  padding: 0 2px 8px;
+  text-wrap: balance;
+}
+.cosmoobs-art {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  fill: #35534f;
+}
+.cosmoobs-art text {
+  font-family: inherit;
+  font-size: 17px;
+}
+.cosmoobs-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px 2px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.cosmoobs-controls label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+.cosmoobs-controls select {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #becdc2;
+  border-radius: 10px;
+  background: #f4f5ed;
+  color: #35534f;
+}
+.cosmoobs-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cosmoobs-controls button {
+  font: inherit;
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 12px;
+  color: #35534f;
+  background: #f4f5ed;
+  border: 1px solid #becdc2;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.cosmoobs-controls button[aria-pressed='true'] {
+  background: #dde9df;
+  border-color: #6e9384;
+}
+.cosmoobs-controls button:focus-visible,
+.cosmoobs-controls select:focus-visible,
+.cosmoobs-controls summary:focus-visible {
+  outline: 2px solid #517d9e;
+  outline-offset: 3px;
+}
+.cosmoobs-controls input[type='range'] {
+  margin-inline: 0;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 44px;
+}
+.cosmoobs-controls .control-top {
+  gap: 10px;
+}
+.cosmoobs-controls .control-top > span {
+  min-width: 0;
+}
+.cosmoobs-controls summary {
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.cosmoobs-controls p {
+  margin: 0;
+  padding: 8px 0;
+  font-size: 16px;
+}
+@media (max-width: 640px) {
+  .cosmoobs {
+    padding: 0 4px;
+  }
+  .cosmoobs-heading {
+    font-size: 16px;
+    min-height: 23px;
+    padding: 0 2px 3px;
+  }
+  .showcase[data-slug='cosmology-observations'] .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='cosmology-observations'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+}
+@media (max-width: 640px) and (max-height: 700px) {
+  .lesson-cosmology-observations #experiment {
+    scroll-margin-top: -74px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cosmoobs-controls button {
+    transition: none;
+  }
+}

@@ -1,0 +1,406 @@
+{
+  "schema": 1,
+  "slug": "cosmology-observations",
+  "status": "measured director and author native UI checks complete; owned source frozen for root acceptance",
+  "scope": {
+    "chapterIds": [
+      "redshift-spectrum",
+      "distance-relation",
+      "antenna-background",
+      "antenna-calibration",
+      "sky-map"
+    ],
+    "lessonWindows": {
+      "required-2-hubble": ["redshift-spectrum", "distance-relation"],
+      "required-2-cmb": ["antenna-background", "antenna-calibration", "sky-map"]
+    },
+    "plannedDuration": 200,
+    "retainedSpokenPairs": 0,
+    "reasonForAllFiveRevisions": "Existing narration described only illustrative samples/calibration/map; each revised chapter now has a new physical cause or fixed-record constraint. IDs, pages, order and exact windows remain unchanged."
+  },
+  "narration": {
+    "duration": 212,
+    "durationStatus": "measured shared track; cue seconds preserve initial requested targets, actual chapter spans below",
+    "cues": [
+      {
+        "id": "redshift-spectrum",
+        "title": "同一谱线图样，为什么一起变长？",
+        "titleEn": "Why does one line pattern stretch together?",
+        "caption": "同一比例，先预测第三条线。",
+        "captionEn": "One ratio predicts the third line.",
+        "seconds": 38,
+        "zh": "实验室里的这组三条谱线，是同一种原子的指纹。教学生成的星系光谱里，前两条波长都变成原来的1.05倍。第三条应该在哪里？它也要乘同一个比例，出现在约689纳米，而不是简单加上同一段波长。再盯住这几个波峰：空间尺度增长，波峰间距随之变大，当地测得的光速仍是光速。单独的红移也可能包含特有运动；还需要另一类证据：距离。",
+        "en": "The laboratory pattern has three lines: an atomic fingerprint. In this illustrative galaxy spectrum, the first two wavelengths are each one point zero five times their laboratory values. Where should the third appear? Apply the same ratio: about six hundred and eighty-nine nanometres, not the same additive shift. Now follow the crests. As the scale grows, their separation increases while local light speed stays constant. A redshift can also include peculiar motion. We need another kind of evidence: distance."
+      },
+      {
+        "id": "distance-relation",
+        "title": "为什么越远，距离增加越快？",
+        "titleEn": "Why does a larger distance grow faster?",
+        "caption": "记录不动；尺度增长解释距离增量。",
+        "captionEn": "Fixed records; growing scale explains the increments.",
+        "seconds": 44,
+        "zh": "这24个点来自哈勃1929年的原表：距离和径向速度分别估计、测量。换一条候选线，记录不跟着移动。正比关系描述了总体趋势，散布和负速度仍然保留；这是旧距离尺度，也没有做太阳运动修正。现在换成均匀膨胀模型。相同尺度变化，让原本更远的星系增加更多距离。换一颗星系作原点，关系依旧。于是同一时刻，距离加倍会怎样？膨胀贡献的速度也加倍。这就是速度等于H乘距离，不是地球占据特殊中心。",
+        "en": "These twenty-four points are from Hubble’s original nineteen twenty-nine table: estimated distances and measured radial velocities. Change the candidate line; the records stay put. A proportional relation describes the broad trend, with scatter and negative velocities retained. This historical distance scale has no solar-motion correction applied here. Now consider uniform expansion. The same scale change adds more distance to an initially larger separation. Choose another origin: the relation survives. At the same epoch, what happens at twice the distance? The expansion contribution doubles. That is H times distance, without a privileged Earth-centered origin."
+      },
+      {
+        "id": "antenna-background",
+        "title": "信号来自天空，还是器材？",
+        "titleEn": "Sky signal or apparatus?",
+        "caption": "共用接收机比较，再检查大气路径。",
+        "captionEn": "Compare through one receiver; check the air path.",
+        "seconds": 32,
+        "zh": "天空输入沿天线和开关进入接收机。现在切换到已知的冷负载：仍是同一台接收机，这个比较帮助校准系统。天空读数还包含大气和天线自身的贡献。把仰角放低，同样厚度的大气就有更长的穿行路径，读数会增大。图中的非天顶值是气层模型；1965年天顶方向6.7开尔文的记录不变。要解释天空，不能只看一个总数。",
+        "en": "Trace the sky input through the horn and selector into the receiver. Switch to a known cold reference: it uses that same receiver, helping calibrate the system. The sky reading still includes atmospheric and antenna contributions. Lower the elevation. The same atmospheric depth now gives a longer path and a larger reading. The non-zenith values shown here are an airmass model; the nineteen sixty-five zenith record remains six point seven kelvin. One total is not yet an explanation."
+      },
+      {
+        "id": "antenna-calibration",
+        "title": "扣除已知来源，还剩什么？",
+        "titleEn": "What remains after known contributions?",
+        "caption": "单频余量，还要接受整个频谱的检验。",
+        "captionEn": "A one-frequency excess needs a spectrum test.",
+        "seconds": 40,
+        "zh": "原论文在4.08吉赫兹记录了6.7开尔文。扣去大气2.3，再扣天线和旁瓣0.9，还剩多少？3.5开尔文，报告的不确定度是正负1.0。这是等效天线噪声温度，不是后来精确的背景温度。单一频率还不能证明黑体谱。后来FIRAS测量了多个频率。这里保留43行处理数据和发表残差：档案频谱由2.725开尔文参考黑体加残差组成，不能拿它再独立发现同一个温度。放大残差，可以看见并非完美零值的记录。",
+        "en": "At four point zero eight gigahertz, the original total was six point seven kelvin. Remove two point three for atmosphere and zero point nine for antenna and backlobes. What remains? Three point five kelvin, with a reported uncertainty of one kelvin. This is antenna noise temperature, not the later precise background temperature. One frequency cannot establish a blackbody spectrum. FIRAS later measured many frequencies. These forty-three processed rows preserve the published residuals. The archive spectrum is a two point seven two five kelvin reference plus residuals, not a new independent temperature discovery. Magnify the residuals: they are not all zero."
+      },
+      {
+        "id": "sky-map",
+        "title": "热辐射怎样变成冷微波？",
+        "titleEn": "How does thermal radiation become cold microwaves?",
+        "caption": "膨胀拉长波长，黑体温度随之降低。",
+        "captionEn": "Longer wavelengths accompany a colder blackbody.",
+        "seconds": 46,
+        "zh": "背景为什么指向更热的过去？跟住同一光波：膨胀拉长波长，降低单个光子的能量，也稀释单位体积里的光子。热辐射保持黑体形状，温度按尺度的倒数变化。先从今天约2.725开尔文出发，预测一个假想的进一步膨胀：尺度加倍，波长和温度各会怎样？波长加倍，温度减半，成为1.3625开尔文。曲线的峰向低频移动，也确实变矮，没有偷偷重新放大。最后回到今天：平均温度之上还有微开尔文级的小起伏。这里的全天图是合成示意，颜色经过放大，不是实测地图。",
+        "en": "Why does this background point to a hotter past? Follow the same light wave. Expansion lengthens its wavelength, lowers each photon’s energy, and dilutes the photon number per volume. Thermal radiation retains a blackbody shape, with temperature inversely proportional to scale. Starting from today’s approximate two point seven two five kelvin reference, predict a hypothetical further doubling of scale. What happens to wavelength and temperature? Wavelength doubles and temperature halves, to one point three six two five kelvin. The peak moves to lower frequency and really gets smaller; the curve is not renormalized. Finally return to today. Tiny microkelvin variations sit above the mean. This amplified-color sky is synthetic, not a measured map."
+      }
+    ]
+  },
+  "topic": {
+    "title": {
+      "zh": "怎样从光读出膨胀的宇宙？",
+      "en": "How can light reveal an expanding universe?"
+    },
+    "description": {
+      "zh": "追踪同一组谱线与波峰，用固定星系记录和微波频谱检验宇宙膨胀与冷却。",
+      "en": "Follow spectral lines and wave crests, then use fixed galaxy records and microwave spectra to examine expansion and cooling."
+    }
+  },
+  "teachingProfiles": {
+    "required-2-hubble": {
+      "question": {
+        "zh": "为什么越远的星系，谱线通常红移得越多？",
+        "en": "Why do more distant galaxies usually show more redshift?"
+      },
+      "principle": {
+        "zh": "共同的谱线比例给出红移；独立距离记录支持距离与退行贡献的关系，均匀尺度增长使v=HD。",
+        "en": "A common wavelength ratio measures redshift; independent distances constrain the trend, and uniform scale growth gives v=HD."
+      },
+      "transfer": {
+        "question": {
+          "zh": "同一时刻把距离换为两倍，膨胀导致的退行速度怎样？换一颗星系作原点呢？",
+          "en": "At the same epoch, what happens to the recession contribution at twice the distance? What if another galaxy is the origin?"
+        },
+        "explanation": {
+          "zh": "同一H下速度为两倍；换原点仍有同样的相对关系，不产生一个特权中心。个别星系的实际径向速度还含特有运动。",
+          "en": "It doubles at the same H. Another origin gives the same relative law; peculiar motions can still affect an individual radial velocity."
+        }
+      },
+      "sceneSlug": "cosmology-observations",
+      "lead": {
+        "zh": "先从谱线比例预测一条未揭晓的线，再用固定星系记录检验趋势，追踪均匀膨胀怎样造成距离增量。",
+        "en": "Predict a hidden spectral line, compare fixed galaxy records, then track how uniform expansion changes separations."
+      }
+    },
+    "required-2-cmb": {
+      "question": {
+        "zh": "排除器材和大气后，天空的微波信号怎样指向更热的过去？",
+        "en": "After accounting for the apparatus and atmosphere, how can a microwave sky point to a hotter past?"
+      },
+      "principle": {
+        "zh": "原始余量与后来近黑体的处理谱共同约束解释；膨胀使波长增长，热辐射保持黑体形状并按T∝1/a冷却。",
+        "en": "The original excess and later processed near-blackbody spectrum constrain the explanation; expansion lengthens wavelengths and cools a blackbody as T∝1/a."
+      },
+      "transfer": {
+        "question": {
+          "zh": "若尺度继续增为两倍，背景光波长和温度各怎样变化？",
+          "en": "If the scale doubles further, what happens to background wavelength and temperature?"
+        },
+        "explanation": {
+          "zh": "在同一膨胀模型中，波长加倍、温度减半。这是新条件的预测，不会改写1965记录或FIRAS数据。",
+          "en": "Wavelength doubles and temperature halves in the model. This prediction does not rewrite the1965 record or FIRAS data."
+        }
+      },
+      "sceneSlug": "cosmology-observations",
+      "lead": {
+        "zh": "跟随同一接收机的两种输入，检查历史余量和后来的处理谱，再预测进一步膨胀怎样改变热辐射。",
+        "en": "Trace two inputs through one receiver, examine the historical excess and later processed spectrum, then predict further cooling."
+      }
+    }
+  },
+  "translations": {
+    "教学生成光谱": "Illustrative spectrum",
+    "同一星系谱线": "Galaxy line pattern",
+    "实验室模板": "Laboratory template",
+    "第三条谱线将在哪里？": "Where will line 3 appear?",
+    "追踪同一组波峰": "Follow the same crests",
+    "当地 c 不变": "local c unchanged",
+    "无量纲尺度模型": "Dimensionless scale model",
+    "1929 原表 · D / Mpc": "1929 raw table · D / Mpc",
+    "均匀膨胀模型": "Uniform expansion model",
+    "相同尺度变化，远处增量更大": "Same scale change, larger increment",
+    "同一时刻，距离加倍呢？": "Same epoch: twice the distance?",
+    "天空与已知冷负载作比较": "Sky / known cold reference",
+    "切换输入，共用接收机": "Switch inputs, one receiver",
+    "同一厚度的大气层": "Same atmospheric depth",
+    "大气贡献": "Atmosphere",
+    "总天线温度": "Total antenna",
+    "非天顶值为气层模型": "Non-zenith values: airmass model",
+    "1965 天顶记录 · 4.08 GHz": "1965 zenith record · 4.08 GHz",
+    "实测总量": "Measured total",
+    "大气": "Atmosphere",
+    "天线及旁瓣": "Antenna / sidelobes",
+    "仍有多少无法解释？": "How much remains unexplained?",
+    "等效天线噪声温度": "Antenna noise temperature",
+    "FIRAS 处理数据 · ν / GHz": "Processed FIRAS · ν / GHz",
+    "尺度再加倍，温度会怎样？": "Scale doubles: what happens to T?",
+    "回到今天 · 平均 2.725 K": "Today again · mean 2.725 K",
+    "合成示意图 · 颜色已放大": "Synthetic map · amplified colors",
+    "24个固定记录": "24 fixed records",
+    "选择因果镜头": "Choose a causal view",
+    "重新预测": "Predict again",
+    "揭晓预测": "Reveal prediction",
+    "天线仰角进度": "Elevation setting",
+    "所选天区方向": "Selected sky direction",
+    "尺度变化进度": "Scale change",
+    "天空输入": "Sky input",
+    "冷负载输入": "Cold-reference input",
+    "恒定速度候选": "Constant speed",
+    "正比关系候选": "Proportional relation",
+    "原点": "Origin",
+    "独立模型 H / (km/s)/Mpc": "Separate model H / (km/s)/Mpc",
+    "原始总量": "Original total",
+    "扣除大气": "Remove atmosphere",
+    "再扣天线项": "Remove antenna term",
+    "记录与模型的边界": "Record and model boundaries",
+    "哈勃点来自1929年原表，距离尺度较旧，速度未经太阳运动修正。候选线不会改写点。FIRAS档案谱是2.725 K参考黑体加已发表残差，不是原始计数，也不是一次新的独立测温。": "The Hubble points are the 1929 raw table, on its historical distance scale and without solar-motion correction. Candidates do not move them. The FIRAS archive spectrum is a 2.725 K reference plus published residuals, not raw counts or a new independent temperature measurement.",
+    "天线余量是等效噪声温度；气层非天顶值、尺度增长、未来冷却和温差图均为明确标注的教学模型。": "The antenna excess is an equivalent noise temperature. Non-zenith airmass values, scale growth, future cooling and the angular map are teaching models.",
+    "同一组谱线": "One line pattern",
+    "波峰为什么分开？": "Why do crests separate?",
+    "固定记录，比较解释": "Fixed records, competing descriptions",
+    "同样增长，远近不同": "One scale, different increments",
+    "距离加倍，速度呢？": "Twice the distance: what speed?",
+    "哪个输入进入接收机？": "Which input reaches the receiver?",
+    "仰角改变了什么？": "What changes with elevation?",
+    "剩余信号来自哪里？": "Where does the excess come from?",
+    "后来测量整个频谱": "Later: measure the spectrum",
+    "放大已发表的残差": "Magnify published residuals",
+    "假想的进一步膨胀": "Hypothetical further expansion",
+    "平均值之外的细微起伏": "Tiny variations about the mean",
+    "同一谱线图样，为什么一起变长？": "Why does one line pattern stretch together?",
+    "同一比例，先预测第三条线。": "One ratio predicts the third line.",
+    "为什么越远，距离增加越快？": "Why does a larger distance grow faster?",
+    "记录不动；尺度增长解释距离增量。": "Fixed records; growing scale explains the increments.",
+    "信号来自天空，还是器材？": "Sky signal or apparatus?",
+    "共用接收机比较，再检查大气路径。": "Compare through one receiver; check the air path.",
+    "扣除已知来源，还剩什么？": "What remains after known contributions?",
+    "单频余量，还要接受整个频谱的检验。": "A one-frequency excess needs a spectrum test.",
+    "热辐射怎样变成冷微波？": "How does thermal radiation become cold microwaves?",
+    "膨胀拉长波长，黑体温度随之降低。": "Longer wavelengths accompany a colder blackbody.",
+    "同一尺度比：ΔD ∝ D": "Same scale ratio: ΔD ∝ D",
+    "天线仰角": "Antenna elevation",
+    "天区经度": "Sky longitude",
+    "尺度比 a": "Scale factor a"
+  },
+  "sources": [
+    {
+      "id": "hubble1929",
+      "title": "A relation between distance and radial velocity among extra-galactic nebulae",
+      "url": "https://doi.org/10.1073/pnas.15.3.168",
+      "localFile": "artifacts/teaching-principles/physics-next-cosmology/sources/hubble1929-original.pdf",
+      "sha256": "5642cfa2a28f5364ca1c78b96a556e05ade9bf64bd14c446c136475125f54a3f",
+      "readScope": "Full six-page original article via OCR, checked against actual Table I and printed173 image. First page includes a fragment of the preceding Humason article; not treated as Hubble text."
+    },
+    {
+      "id": "penzias1965",
+      "title": "A Measurement of Excess Antenna Temperature at 4080 Mc/s",
+      "url": "https://doi.org/10.1086/148307",
+      "localFile": "artifacts/teaching-principles/physics-next-cosmology/sources/penzias1965.pdf",
+      "sha256": "a69e196525fd9870cbc926c38b064228e10d2d30e28d0ae05e6340ef5cb8c906",
+      "readScope": "Full article text and actual printed420. Source includes ending of preceding Dicke article on first page; separated by title."
+    },
+    {
+      "id": "dicke1965",
+      "title": "Cosmic Black-Body Radiation",
+      "url": "https://doi.org/10.1086/148306",
+      "localFile": "artifacts/teaching-principles/physics-next-cosmology/sources/dicke1965.pdf",
+      "sha256": "2366644c40d772c230b67ce130e88302bda15dfb0e7b9e14b16510ac26d1a033",
+      "readScope": "Printed415–416 thermal-cooling and preliminary-spectrum argument read closely; later historically obsolete cosmology discussion read for context, not adopted as current cosmology."
+    },
+    {
+      "id": "fixsen1996",
+      "title": "The Cosmic Microwave Background Spectrum from the Full COBE FIRAS Data Set",
+      "url": "https://arxiv.org/abs/astro-ph/9605054",
+      "localFile": "artifacts/teaching-principles/physics-next-cosmology/sources/fixsen1996.pdf",
+      "sha256": "70165f3450634e5114c2f8015d85c8b5024a79fe0e26166f5a7e41877b5a2585",
+      "readScope": "All text pp1–32 read; actual Table4 and Fig4/5 viewed. Instrument calibration, spatial template fit, frequency correlation and 1996 temperature uncertainty read; no independent reanalysis of interferograms."
+    },
+    {
+      "id": "lambda",
+      "title": "COBE/FIRAS CMB monopole spectrum v1",
+      "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt",
+      "localFile": "artifacts/teaching-principles/physics-next-cosmology/sources/firas-monopole.txt",
+      "sha256": "df793c3dca09ebfa7dbc5aa0ec1951daa8884431bc30eff28a710d7516cf50fa",
+      "readScope": "All43 rows and complete header read. Official product description independently browsed; column2 construction explicitly identified."
+    },
+    {
+      "id": "NASA-redshift",
+      "title": "What Is Cosmological Redshift?",
+      "url": "https://science.nasa.gov/asset/webb/what-is-cosmological-redshift/",
+      "readScope": "Official extended description: galaxy separations and light wavelengths grow while bound galaxies retain size."
+    },
+    {
+      "id": "NIST-hydrogen",
+      "title": "Strong Lines of Hydrogen (H)",
+      "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2.htm",
+      "readScope": "Complete line table read; visible Balmer entries are air wavelengths. Existing rounded triplet is only a common-convention teaching template, not fine radial-velocity data."
+    }
+  ],
+  "director": {
+    "status": "calibrated to independent actual word timestamps in both languages",
+    "chapterStarts": [0, 38, 83, 116.5, 161.5],
+    "chapterSeconds": [38, 45, 33.5, 45, 50.5],
+    "clock": "chapter-local seconds = ASR file offset + word start - shared chapter start; includes the0.45s speech lead-in",
+    "audioHashes": {
+      "zh": "07e19e06bd13",
+      "en": "2a2f59e1d4ce"
+    },
+    "wordTimeFiles": "artifacts/teaching-principles/batch-11-timed-speech/cosmology-observations-{zh,en}-{0..4}.json",
+    "cutsByLocale": {
+      "zh": {
+        "thirdLine": 15.53,
+        "wave": 20.15,
+        "waveStart": 22.03,
+        "waveEnd": 25.27,
+        "candidate": 8.31,
+        "field": 19.91,
+        "fieldStart": 22.57,
+        "fieldEnd": 27.07,
+        "origin": 27.61,
+        "prediction": 30.45,
+        "distanceAnswer": 35.15,
+        "referenceOn": 4.55,
+        "referenceOff": 10.69,
+        "air": 15.09,
+        "lowerEnd": 19.53,
+        "zenithStart": 23.95,
+        "zenithEnd": 26.15,
+        "atmosphere": 5.39,
+        "antenna": 6.95,
+        "remainder": 10.31,
+        "firas": 23.01,
+        "residual": 37.29,
+        "thermalWaveStart": 4.69,
+        "thermalWaveEnd": 7.95,
+        "cooling": 10.79,
+        "coolingAnswer": 24.47,
+        "doubledScale": 26.49,
+        "today": 34.95,
+        "mapEnd": 45.87
+      },
+      "en": {
+        "thirdLine": 16.47,
+        "wave": 20.85,
+        "waveStart": 22.59,
+        "waveEnd": 25.67,
+        "candidate": 8.91,
+        "field": 22.23,
+        "fieldStart": 24.69,
+        "fieldEnd": 29.41,
+        "origin": 29.41,
+        "prediction": 32.85,
+        "distanceAnswer": 38.53,
+        "referenceOn": 4.21,
+        "referenceOff": 10.45,
+        "air": 15.15,
+        "lowerEnd": 19.73,
+        "zenithStart": 24.93,
+        "zenithEnd": 27.85,
+        "atmosphere": 6.49,
+        "antenna": 8.39,
+        "remainder": 12.27,
+        "firas": 26.11,
+        "residual": 40.39,
+        "thermalWaveStart": 5.55,
+        "thermalWaveEnd": 9.73,
+        "cooling": 12.69,
+        "coolingAnswer": 29.31,
+        "doubledScale": 31.23,
+        "today": 40.79,
+        "mapEnd": 49.35
+      }
+    },
+    "behavior": "All12 local lenses use measured semantic events. Third-line, distance, remainder and cooling answers remain hidden until their actual spoken reveal. Airmass lowers90→30deg while the actual cue says lower the elevation, then returns90deg before the original1965 zenith6.7K record. Rewinding returns hidden states deterministically. Fixed24/43 source records are independent of the film clock."
+  },
+  "scientificBoundaries": {
+    "redshift": {
+      "equations": ["1+z = a_observed/a_emitted", "lambda_observed=(1+z)*lambda_emitted"],
+      "inputs": "Scale ratio1–1.1 for spectral ruler; common-convention rounded Balmer air triplet434.05/486.13/656.28nm is an illustrative template, not high-precision measured galaxy data.",
+      "benchmark": "Ratio1.05 gives455.7525/510.4365/689.094nm. Third line held back before reveal.",
+      "boundaries": "No application of z≈v/c at high z. A redshifted spectrum can also contain peculiar/gravitational shifts; one spectrum alone does not prove expansion."
+    },
+    "homogeneousField": {
+      "equations": ["D_ij=a*(chi_i-chi_j)", "v_ij=H*D_ij"],
+      "identity": "Immutable galaxy IDs/comoving coordinates; selecting another origin changes displayed relative coordinates only, not pairwise distances or speeds.",
+      "HubbleRawComparison": "Optional equal-parameter constant-speed vs proportional least-squares candidates on24 raw historical points. Diagnostic independent values: mean373.125km/s; raw through-origin slope423.9373km/s/Mpc; RMS363.44vs224.20km/s. Label as our raw-table teaching comparison, not Hubble solar-corrected465/513 result or modernH0.",
+      "boundary": "Small/negative radial velocities in nearby galaxies preserved. Peculiar velocity and historical distance errors prevent exact-line claims."
+    },
+    "wavePhase": {
+      "equations": [
+        "a(t)=exp(Ht) in a dimensionless constant-H teaching example",
+        "chi_n(t)=n*lambda0 + c/H*(1-exp(-Ht))",
+        "x_n=a*chi_n; xdot_n-H*x_n=c; adjacent proper crest spacing=a*lambda0"
+      ],
+      "identity": "Fixed crest IDs; camera can follow the packet, but distances, ruler and frequency derive from same model. No decorative sine whose wavelength changes independently of labels.",
+      "boundaries": "This is not a fitted cosmic expansion history. H=0 uses continuous limit. Bound objects do not enlarge. Expansion is a metric description, not a material medium dragging light."
+    },
+    "antenna": {
+      "publishedBudget": "At4.08GHz: effective zenith antenna noise temperature6.7K; atmospheric2.3K; antenna/backlobe combined0.9K; reported residual3.5±1.0K. Preserve reported uncertainty; no invented independent quadrature estimate.",
+      "teachingElevation": "T_A(e)=3.5+0.9+2.3/sin(e), e30–90deg;9.0K at30deg and6.7K at90deg. Non-zenith curve explicitly illustrative, not digitized1965 samples.",
+      "calibration": "Known cold load and sky share a manual comparison switch/common receiver. No fictional historical receiver3K subtraction. Receiver calibration and antenna/emission terms are distinct.",
+      "temperatureIdentity": "Antenna noise temperature is an equivalent radiometric quantity, not literal instrument temperature. Do not silently identify it with the precise later thermodynamic CMB temperature; at4.08GHz J_nu(2.725K)=2.62827K.",
+      "geometry": "Horn mouth axis determines pointing; output port transformation and selector route share that geometry. Distinct labels for original total and inferred remainder."
+    },
+    "blackbody": {
+      "equation": "B_nu(T)=2h nu^3/[c^2 expm1(h nu/kT)] in SI; divide by1e-20 to show MJy/sr. Archive frequency(cm^-1) converts to Hz via100*c.",
+      "cooling": "T=T0/a, B_nu(T0/a)=a^-3 B_(a*nu)(T0); photon energy∝a^-1, number density∝a^-3, integrated energy density∝a^-4.",
+      "benchmark": "T0=2.725K at a1 to1.3625K at a2: Bnu peak160.2007→80.1004GHz and peak intensity1/8, not1/16. Integrated density is1/16.",
+      "FIRASIdentity": "Column2 is2.725K reference+published Table4 residual, not raw counts. Published residuals remain fixed, including negative deviations and all43 bins. Correlations disclosed; no new chi-square fitting with independent-bin assumption.",
+      "reconstructionCheck": "Modern exact-SI reconstruction differs from fixed archive by up to0.00760MJy/sr. Preserve official values and separate fitted reference; do not adjust observations to our model.",
+      "boundary": "nu=0 or T=0 returns finite zero; negative/nonfinite inputs clamped/fallback; expm1 avoids small-exponent cancellation."
+    },
+    "angularMap": {
+      "retained": "Existing deterministic low-order angular field, explicitly not Planck data or a LambdaCDM random realization.",
+      "geometry": "Finite Mollweide poles and opposite map edges; phi normalized, latitude clamped. Model selection never mutates data fixtures.",
+      "identity": "Today mean2.725K and deltaT in μK. It does not follow the future-cooling slider; switch lens explicitly returns to present-day synthetic sky."
+    }
+  },
+  "integrationNotes": [
+    "Root writes shared registry, dictionary, narration, film, profiles and audio. No candidate shared files.",
+    "Generic astronomy-impulse-review legacy literal horn test needs root migration to actual data-horn-output/axis/selector/receiver/route geometry.",
+    "Cover now uses the actual cooling spectrum and two tracked crests via CosmologyArtwork; original export and mode/phase API remain available.",
+    "Whole-player author keyframes, fresh entry fragments, all 12 native control views and both catalog cover consumers checked on dev4325. Root owns final static playback/build and speech integration.",
+    "Final additive UI keys: 天线仰角 → Antenna elevation; 天区经度 → Sky longitude; 尺度比 a → Scale factor a. Actual control outputs now use degrees or scale factor rather than normalized progress."
+  ],
+  "acceptance": {
+    "modelTests": "15 real-source scoped tests passed (11 model,4 component), including measured per-locale reveal/rewind and lowering-elevation semantic regression.",
+    "strictTypes": "Real owned TS/TSX passed the root Astro strict configuration via cosmology-implementation/tsconfig.json.",
+    "browser": "cosmology-measured-review-01:92 actual measured-time paused frames, both languages at320×568 and1100×900; no detected text clipping, nonfinite attributes, horizontal overflow or console errors. Selected decisive frames actually inspected, separate from automated matrix.",
+    "controls": "cosmology-measured-controls-01: all4 exact textbook entries/12views/72states/2cover consumers, no failures or page errors;24 Hubble and43 FIRAS data unchanged.",
+    "freshFragment": "cosmology-anchor-02: four fresh exact textbook entry #experiment navigations after root SSR correction, no corrective scrolling; full player top16.9–17.2, bottom553.5–553.75, height536.59px in320×568.",
+    "rootVisualReview": "Root personally reviewed four decisive EN320 review-02 frames and reported no blocking visual issue; this does not replace final static review.",
+    "measuredAudio": "Root tracks212s; zh07e19e06bd13/en2a2f59e1d4ce.10 independent ASR files read in full for scientific content and local word timing; both directors calibrated. Transcription is not subjective listening.",
+    "listening": "not run",
+    "continuousPlayback": "not run",
+    "physicalDevicePerformance": "not run",
+    "globalVerifyBuild": "root owned, pending for this batch"
+  }
+}

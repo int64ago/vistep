@@ -7,6 +7,7 @@ import GravityMeasurements, { GravityArtwork } from './GravityMeasurements';
 import RelativityExperiments, { RelativityArtwork } from './RelativityExperiments';
 import GravitationalWaveLab, { GravitationalArtwork } from './GravitationalWaveLab';
 import CosmologyObservations, { CosmologyArtwork } from './CosmologyObservations';
+import { cosmologyDirector } from '../../models/cosmology-observations';
 import ImpulseContactLab from './ImpulseContactLab';
 
 const film = vi.hoisted(() => ({
@@ -34,6 +35,7 @@ const cases: {
   variant: string;
   chapter: number;
   input?: string;
+  select?: string;
   value?: number;
   button?: string;
   buttons?: string[];
@@ -75,7 +77,8 @@ const cases: {
     Scene: CosmologyObservations,
     variant: 'required-2-hubble',
     chapter: 1,
-    input: 'Example H₀ / (km/s)/Mpc',
+    select: 'prediction',
+    input: 'Separate model H / (km/s)/Mpc',
     value: 90,
   },
   {
@@ -103,11 +106,24 @@ describe('authored astronomy and impulse films remain deterministic after explor
       const authored = view.toJSON();
       film.watch = false;
       await act(() => view.update(createElement(c.Scene)));
+      if (c.select) {
+        await act(() =>
+          view.root.findByType('select').props.onChange({ target: { value: c.select } }),
+        );
+      }
       if (c.input) {
         const control = view.root
           .findAllByType('input')
           .find((n) => n.props['aria-label'] === c.input)!;
+        expect(control, `Missing actual exploration control: ${c.input}`).toBeDefined();
         await act(() => control.props.onChange(c.value));
+        if (c.Scene === CosmologyObservations) {
+          const artwork = view.root.findByType(CosmologyArtwork);
+          expect(artwork.props.direction.shot).toBe('prediction');
+          expect(artwork.props.H0).toBe(90);
+          const labels = view.root.findAllByType('text').map((n) => n.children.join(''));
+          expect(labels).toContain('50 Mpc → 4500 km/s');
+        }
       } else {
         for (const label of c.buttons ?? [c.button!]) {
           const control = view.root
@@ -120,6 +136,13 @@ describe('authored astronomy and impulse films remain deterministic after explor
       film.watch = true;
       await act(() => view.update(createElement(c.Scene)));
       expect(view.toJSON()).toEqual(authored);
+      if (c.Scene === CosmologyObservations) {
+        expect(view.root.findByType(CosmologyArtwork).props.H0).toBe(70);
+        film.watch = false;
+        await act(() => view.update(createElement(c.Scene)));
+        expect(view.root.findByType('select').props.value).toBe('prediction');
+        expect(view.root.findByType(CosmologyArtwork).props.H0).toBe(90);
+      }
     });
 });
 
@@ -214,19 +237,73 @@ describe('actual apparatus geometry preserves the model', () => {
         expect(a[2]).toBeCloseTo(r[2], 12);
       }
   });
-  it('aims the horn at the same 30–90 degree elevation used by its atmospheric model', () => {
-    for (const value of [0, 0.5, 1]) {
-      const svg = renderToStaticMarkup(
-        createElement(CosmologyArtwork, { mode: 1, phase: 0, value }),
-      );
-      expect(svg).toContain(`rotate(${30 + 60 * value} 142 120)`);
-      expect(svg).toContain('M49 66L186 100V140L49 174Z');
-      expect(svg).toContain('TΣ');
-    }
-    const calibration = renderToStaticMarkup(
-      createElement(CosmologyArtwork, { mode: 1, phase: 1, value: 1 }),
-    );
-    expect(calibration).toContain('rotate(60 142 120)');
+  it('aims the physical horn and its connected receiver at the same elevation used by the atmospheric model', () => {
+    const attr = (tag: string, name: string) => new RegExp(`\\b${name}="([^"]+)"`).exec(tag)![1]!;
+    for (const width of [268, 640])
+      for (const elevation of [30, 60, 90])
+        for (const reference of [false, true]) {
+          const direction = { ...cosmologyDirector(2, 0), elevation, reference };
+          const svg = renderToStaticMarkup(createElement(CosmologyArtwork, { width, direction }));
+          const element = (attribute: string, value = 'true') => {
+            const tag = [...svg.matchAll(/<(?:path|rect|circle)\b[^>]*>/g)]
+              .map((m) => m[0])
+              .find((t) => t.includes(`${attribute}="${value}"`));
+            expect(tag, `${attribute}=${value}`).toBeDefined();
+            return tag!;
+          };
+          const points = (tag: string) => {
+            const values = attr(tag, 'd')
+              .match(/[-+]?\d*\.?\d+(?:e[-+]?\d+)?/gi)!
+              .map(Number);
+            return Array.from(
+              { length: values.length / 2 },
+              (_, i) => [values[2 * i]!, values[2 * i + 1]!] as const,
+            );
+          };
+          const axis = points(element('data-horn-axis'));
+          expect(axis).toHaveLength(4);
+          const [incoming, mouth, throat, port] = axis;
+          const dx = mouth![0] - port![0],
+            dy = mouth![1] - port![1];
+          expect((Math.atan2(-dy, -dx) * 180) / Math.PI).toBeCloseTo(elevation, 10);
+          // The incoming ray, mouth, throat and output share one straight axis.
+          for (const point of [incoming!, throat!])
+            expect((point[0] - port![0]) * dy - (point[1] - port![1]) * dx).toBeCloseTo(0, 9);
+          const outline = points(element('data-horn-outline'));
+          expect(outline).toHaveLength(6);
+          expect((outline[0]![0] + outline[5]![0]) / 2).toBeCloseTo(mouth![0], 10);
+          expect((outline[0]![1] + outline[5]![1]) / 2).toBeCloseTo(mouth![1], 10);
+          expect((outline[2]![0] + outline[3]![0]) / 2).toBeCloseTo(port![0], 10);
+          expect((outline[2]![1] + outline[3]![1]) / 2).toBeCloseTo(port![1], 10);
+          const output = element('data-horn-output'),
+            selector = element('data-horn-selector');
+          expect([Number(attr(output, 'cx')), Number(attr(output, 'cy'))]).toEqual(port);
+          const sky = points(element('data-horn-route', 'sky'));
+          const ref = points(element('data-horn-route', 'reference'));
+          const active = points(element('data-horn-route', 'active'));
+          expect(sky[0]).toEqual(port);
+          const selected = [Number(attr(selector, 'cx')), Number(attr(selector, 'cy'))];
+          expect(sky.slice(-2)[0]).toEqual(selected);
+          expect(ref.slice(-2)[0]).toEqual(selected);
+          expect(active).toEqual(reference ? ref : sky);
+          const receiver = element('data-horn-receiver');
+          const receiverCentre = [
+            Number(attr(receiver, 'x')) + Number(attr(receiver, 'width')) / 2,
+            Number(attr(receiver, 'y')) + Number(attr(receiver, 'height')) / 2,
+          ];
+          expect(sky.at(-1)).toEqual(receiverCentre);
+          expect(ref.at(-1)).toEqual(receiverCentre);
+          const atmosphere = renderToStaticMarkup(
+            createElement(CosmologyArtwork, {
+              width,
+              direction: { ...direction, shot: 'airmass' },
+            }),
+          ).replace(/<[^>]*>/g, '');
+          const contribution = 2.3 / Math.sin((elevation * Math.PI) / 180);
+          expect(atmosphere).toContain(`${elevation}°`);
+          expect(atmosphere).toContain(`Atmosphere: ${contribution.toFixed(1)} K`);
+          expect(atmosphere).toContain(`Total antenna: ${(3.5 + 0.9 + contribution).toFixed(1)} K`);
+        }
   });
   it('uses one mirror angle for the real reflected ray and enlarged ruler', () => {
     for (const mass of [79, 158, 200])

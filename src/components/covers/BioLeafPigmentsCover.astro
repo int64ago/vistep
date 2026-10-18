@@ -4,24 +4,51 @@ const state = chromatography(1);
 const curve = Array.from(
   { length: 61 },
   (_, i) =>
-    `${i ? 'L' : 'M'}${177 + i * 3} ${174 - pigmentTransmission('a', 400 + i * 5).absorbed * 111}`,
+    `${i ? 'L' : 'M'}${183 + i * 3} ${178 - pigmentTransmission('a', 400 + i * 5).absorbed * 116}`,
 ).join(' ');
 ---
 
-<svg viewBox="0 0 400 230" aria-hidden="true"
-  ><rect width="400" height="230" rx="24" fill="#efeddb"></rect><rect
-    x="61"
-    y="14"
-    width="59"
-    height="201"
-    rx="3"
-    fill="#f6f1dc"></rect>{
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <defs>
+    {
+      state.bands.map((b) => (
+        <linearGradient
+          id={`blp11-cover-${b.id}`}
+          gradientUnits="userSpaceOnUse"
+          x1="0"
+          x2="0"
+          y1="218"
+          y2="-2"
+        >
+          {Array.from({ length: 56 }, (_, i) => {
+            const mass = b.distribution.bins.reduce(
+              (sum, v) => sum + v.mass * Math.max(0, 1 - Math.abs(v.cell - (i - 5))),
+              0,
+            );
+            return (
+              <stop offset={i / 55} stop-color={b.color} stop-opacity={Math.min(1, mass * 8)} />
+            );
+          })}
+        </linearGradient>
+      ))
+    }
+  </defs>
+  <rect width="400" height="230" rx="24" fill="#efeddb"></rect>
+  <rect x="52" y="16" width="73" height="198" rx="6" fill="#f8f2df"></rect>
+  {
     state.bands.map((b) => (
-      <rect x="66" y={199 - b.distance} width="49" height="6" rx="2" fill={b.color} />
+      <rect x="57" y="16" width="63" height="198" fill={`url(#blp11-cover-${b.id})`} />
     ))
-  }<path d="M56 199H126M66 29H115" stroke="#9b9f81" stroke-dasharray="3 4"></path><path
-    d="M177 45V176H357"
+  }
+  <path d="M46 198H132M57 30H120" stroke="#8d9c7e" stroke-dasharray="3 4" fill="none"></path>
+  <path d="M183 51V180H363" fill="none" stroke="#adb99d"></path>
+  <path d={curve} fill="none" stroke="#4b8c7a" stroke-width="3"></path>
+  <path
+    d="M150 96v-21m-5 6 5-6 5 6M141 145v21m-5-6 5 6 5-6"
     fill="none"
-    stroke="#bdc5a7"></path><path d={curve} fill="none" stroke="#4b8c7a" stroke-width="3"
-  ></path></svg
->
+    stroke="#94a47e"
+    stroke-width="2"></path>
+  <circle cx="151" cy="123" r="6" fill="#4b8c7a"></circle><path
+    d="M142 107l6 6-6 6-6-6Z"
+    fill="#96a44d"></path>
+</svg>

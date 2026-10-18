@@ -1,0 +1,109 @@
+{
+  "sceneSlug": "newton-tube",
+  "status": "integrated-measured-candidate-awaiting-final-static-review",
+  "narration": {
+    "duration": 120,
+    "cues": [
+      {
+        "id": "same-release",
+        "title": "先固定其他条件",
+        "titleEn": "Hold the other conditions fixed",
+        "caption": "同一组物体，同高、同时、从静止释放。",
+        "captionEn": "Same objects, same height, released together from rest.",
+        "zh": "一片铁片，一根羽毛。我们很容易猜，重的应该先落地。不过，先别急着下结论。把它们放进同一支透明管，从同样的高度、同时由静止释放。画面展示的是这支管前后两次实验：物体不换，只改变里面的空气。",
+        "en": "An iron piece and a feather. It is tempting to say the heavier one must fall first. But let us control the experiment. Use the same transparent tube, the same release height, and let both start from rest together. These are two trials of that same apparatus. We will keep the objects and change only the air.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "with-air",
+        "title": "先看有空气的下落",
+        "titleEn": "Watch the fall with air",
+        "caption": "有空气时，铁片先到，羽毛后到。",
+        "captionEn": "With air present, the iron arrives first and the feather follows.",
+        "zh": "先保留管里的空气。看同一条释放线：铁片很快向下，羽毛明显落在后面。等铁片到达底部，羽毛还在下落。这个现象很熟悉，可它还不能告诉我们，差别究竟来自物体的轻重，还是来自空气的影响。",
+        "en": "First, keep the air. Follow the common release line. The iron moves ahead while the feather falls behind. When the iron reaches the bottom, the feather is still descending. This looks familiar, but the observation alone cannot tell us whether mass or the surrounding air causes the difference.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.45
+      },
+      {
+        "id": "remove-air",
+        "title": "抽去空气",
+        "titleEn": "Remove the air",
+        "caption": "抽去空气，保持其他条件不变。",
+        "captionEn": "Remove the air while holding the other conditions fixed.",
+        "zh": "现在打开阀门，抽去管中的空气。注意，铁片没有变轻，羽毛也没有变重，重力仍然存在。改变的是空气对下落的阻碍。这里用理想真空表示空气阻力可以忽略的情况；真实实验里，则要尽量减少残余空气。",
+        "en": "Now open the valve and remove the air. The iron has not become lighter, the feather has not become heavier, and gravity is still there. We are reducing the air resistance. The animation uses an ideal vacuum to show the limit where drag is absent. A real apparatus still needs its residual air reduced as far as practical.",
+        "seconds": 22,
+        "chapterAt": 48,
+        "at": 48.45
+      },
+      {
+        "id": "vacuum-drop",
+        "title": "再次同时释放",
+        "titleEn": "Release together again",
+        "caption": "忽略空气阻力，两者一起下落、一起到达。",
+        "captionEn": "Without air resistance, both fall together and arrive together.",
+        "zh": "再从同样的高度同时释放。盯住那根羽毛：这一次，它始终和铁片齐平，一起到达底部。原来，没有空气阻力时，羽毛也能和铁片一样快地下落。轻重不同，并没有让它们在同一地点获得不同的重力加速度。",
+        "en": "Release them together again from the same height. Keep your eye on the feather. This time it stays level with the iron all the way down, and they arrive together. Without air resistance, the feather falls just as quickly. Their different masses do not give them different gravitational accelerations at the same location.",
+        "seconds": 24,
+        "chapterAt": 70,
+        "at": 70.45
+      },
+      {
+        "id": "same-time",
+        "title": "把两次实验对齐",
+        "titleEn": "Align the two trials",
+        "caption": "相同条件下，自由落体的加速度与物体质量无关。",
+        "captionEn": "Under the same conditions, free-fall acceleration does not depend on mass.",
+        "zh": "最后，把两次下落放到同一个实验时刻。空气中，羽毛落后；理想真空中，两个物体始终齐平。看理想真空中的小圆点，每隔同样的时间留下一个位置，间距越来越大，说明下落在加快。只受重力、从静止开始的下落，就是自由落体运动。",
+        "en": "Now compare the two trials at exactly the same physical time. With air, the feather lags behind. In the ideal vacuum, both remain level. In the ideal vacuum, the colored dots mark equal time intervals. Their increasing spacing shows that the fall is accelerating. Here we study free fall from rest: motion that starts at rest and is driven by gravity alone.",
+        "seconds": 24,
+        "chapterAt": 94,
+        "at": 94.45
+      }
+    ]
+  },
+  "teachingProfiles": {
+    "required-1-newton-tube": {
+      "sceneSlug": "newton-tube",
+      "question": {
+        "zh": "抽走空气之后，羽毛为什么能跟上铁片？",
+        "en": "Why can a feather keep up with iron after removing the air?"
+      },
+      "lead": {
+        "zh": "保留同一组物体和释放条件，在相同的物理时刻比较两次轨迹。",
+        "en": "Keep the same objects and release conditions, then compare both trials at the same physical instant."
+      },
+      "principle": {
+        "zh": "抽气改变阻力，不改变重力；理想真空中铁片和羽毛具有相同的重力加速度。",
+        "en": "Pumping changes drag, not gravity. In ideal vacuum the iron and feather have the same gravitational acceleration."
+      },
+      "transfer": {
+        "question": {
+          "zh": "管中空气只减少一半，两者就必然同时落地吗？",
+          "en": "Would halving the air density guarantee simultaneous arrival?"
+        },
+        "explanation": {
+          "zh": "不会。剩余阻力仍由物体的迎风面积、阻力系数和速度决定；只有忽略阻力的极限才给出这里的同步下落。",
+          "en": "No. Remaining drag still depends on area, drag coefficient and speed. The synchronous result follows in the drag-free limit."
+        }
+      }
+    }
+  },
+  "translations": {
+    "纸团": "Paper ball",
+    "慢放，读数为物理时间": "Slow motion; readings use physical time",
+    "轨道继续向右延伸": "Track continues to the right"
+  },
+  "sourceScope": "Read Required1P47–51,P53,P83–85 and Required2P89–90 with surrounding theory. Existing models and recordings retained; independent32cue ASR read.",
+  "modelVsEvidence": "Fixed body orientation/drag coefficients, stable water flow and lossless rolling are teaching assumptions, not original measurements. Thought-experiment logic is not a simulated measured trajectory.",
+  "pending": [
+    "Actual integration and scoped component tests",
+    "Actual desktop/mobile frames and controls",
+    "Science peer on new camera/directors",
+    "Final build/native playback"
+  ]
+}

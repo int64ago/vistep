@@ -1,10 +1,10 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
   newtonPair,
-  newtonShot,
+  newtonFilmState,
   NEWTON_HEIGHT,
   NEWTON_AIR_DENSITY,
   NEWTON_FEATHER_PATH,
@@ -198,13 +198,11 @@ export default function NewtonTube() {
     [time, setTime] = useState(0.38);
   const c = film.watch ? film.chapter : 4;
   const shot = film.watch
-    ? newtonShot(c, film.chapterProgress)
-    : { airTime: time, vacuumTime: time, density, pumping: false, comparison: true };
+    ? newtonFilmState(c, film.chapterTime, browserLocale())
+    : { airTime: time, vacuumTime: time, density, pumping: false, comparison: true, ghost: true };
   const currentTime = c < 2 ? shot.airTime : shot.vacuumTime;
   const left = newtonPair(shot.airTime),
     right = newtonPair(shot.vacuumTime, shot.density);
-  const duration = (film.chapters[c + 1]?.at ?? film.duration) - (film.chapters[c]?.at ?? 0);
-  const slowFactor = (duration * 0.56) / (c === 1 ? 1.7 : 0.56);
   return (
     <section className="newton-film" data-chapter={c} data-watch={film.watch}>
       <div className="newton-intro">
@@ -243,7 +241,7 @@ export default function NewtonTube() {
             id={`${id}-air`}
             time={shot.airTime}
             density={NEWTON_AIR_DENSITY}
-            ghost={shot.comparison}
+            ghost={shot.ghost}
             pumping={false}
             dormant={false}
           />
@@ -280,7 +278,7 @@ export default function NewtonTube() {
             id={`${id}-vacuum`}
             time={shot.vacuumTime}
             density={shot.density}
-            ghost={shot.comparison}
+            ghost={shot.ghost}
             pumping={shot.pumping}
             dormant={film.watch && c < 2}
           />
@@ -309,13 +307,7 @@ export default function NewtonTube() {
           {t('羽毛')}
         </span>
         <span className="newton-speed">
-          {film.watch && c !== 0 && c !== 2 ? (
-            <>
-              {t('慢放')} {slowFactor.toFixed(1)}×
-            </>
-          ) : (
-            t('示意尺寸')
-          )}
+          {film.watch && c !== 0 && c !== 2 ? <>{t('慢放，读数为物理时间')}</> : t('示意尺寸')}
         </span>
       </div>
       {!film.watch && (
@@ -365,7 +357,7 @@ export default function NewtonTube() {
         <summary>{t('这段演示作了哪些简化？')}</summary>
         <p>
           {t(
-            '用同一片铁片和羽毛、同一释放高度与零初速度作对照。画面是管内运动的正视示意，慢放倍率随镜头标出；抽气过程用空气密度淡出表示，不模拟泵。理想真空令阻力为零。空气中用固定迎风面积和阻力系数近似羽毛，忽略翻滚、浮力及管壁影响；参数用于解释现象，不能代替真实测量。',
+            '用同一片铁片和羽毛、同一释放高度与零初速度作对照。画面是管内运动的正视示意，画面为解释过程慢放，读数使用物理时间；抽气过程用空气密度淡出表示，不模拟泵。理想真空令阻力为零。空气中用固定迎风面积和阻力系数近似羽毛，忽略翻滚、浮力及管壁影响；参数用于解释现象，不能代替真实测量。',
           )}
         </p>
       </details>

@@ -1,0 +1,32 @@
+{
+  "status": "candidate-in-progress",
+  "checks": [
+    {
+      "kind": "retained-speech-independent-ASR",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-11-transcription.json"
+    },
+    {
+      "kind": "candidate-model-tests",
+      "status": "passed",
+      "files": 4,
+      "tests": 23,
+      "evidence": "artifacts/teaching-principles/batch-11-staging/retained/model-preflight-2.log"
+    }
+  ],
+  "notClaimed": [
+    "Visual review",
+    "Subjective listening",
+    "Physical-phone performance",
+    "Full native playback"
+  ],
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-11-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

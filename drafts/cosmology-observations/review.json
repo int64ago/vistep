@@ -1,0 +1,358 @@
+{
+  "slug": "cosmology-observations",
+  "status": "measured director and author native UI checks complete; frozen for root independent static acceptance",
+  "owner": "teaching_subject_fit",
+  "updatedAt": "2026-10-18T19:07:57.056491+00:00",
+  "ownedPaths": [
+    "src/components/experiments/CosmologyObservations.tsx",
+    "src/components/experiments/CosmologyObservations.test.tsx",
+    "src/models/cosmology-observations.ts",
+    "src/models/cosmology-observations.test.ts",
+    "src/models/cosmology-observations-records.ts",
+    "src/styles/cosmology-observations.css",
+    "src/components/covers/CosmologyObservationsCover.astro",
+    "src/content/cosmology-observations.mdx",
+    "src/content/en/cosmology-observations.mdx",
+    "drafts/cosmology-observations/brief.md",
+    "drafts/cosmology-observations/principle-first-packet.json",
+    "drafts/cosmology-observations/review.json"
+  ],
+  "actualChecks": [
+    {
+      "kind": "model and component computation/render tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-11-staging/physics/vitest.config.ts",
+      "testCount": 14,
+      "scope": "10 independent numeric/identity/director tests plus4 component tests; not browser UI"
+    },
+    {
+      "kind": "strict types",
+      "status": "passed",
+      "command": "node artifacts/teaching-principles/batch-11-staging/physics/checks/check-types.mjs",
+      "scope": "Candidate owned TS/TSX using actual root Astro strict options; shared dependencies resolved read-only"
+    },
+    {
+      "kind": "independent preparation arithmetic",
+      "status": "passed",
+      "checks": 45,
+      "path": "artifacts/teaching-principles/physics-next-cosmology/independent-benchmarks-rerun.json"
+    },
+    {
+      "kind": "installed Astro Satteri MDX compiler",
+      "status": "passed",
+      "command": "node artifacts/teaching-principles/batch-11-staging/physics/checks/check-mdx.mjs",
+      "scope": "Two candidate articles compiled; not full Astro route/build acceptance"
+    },
+    {
+      "kind": "real source model/component tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/cosmology-observations.test.ts src/components/experiments/CosmologyObservations.test.tsx",
+      "testCount": 14
+    },
+    {
+      "kind": "real source strict types",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --project artifacts/teaching-principles/cosmology-implementation/tsconfig.json"
+    },
+    {
+      "kind": "actual paused browser frames",
+      "status": "passed within scope",
+      "report": "artifacts/teaching-principles/cosmology-review-03/report.json",
+      "frames": 104,
+      "locales": ["zh", "en"],
+      "viewports": ["320×568", "1100×900"],
+      "consoleErrors": 0,
+      "horizontalOverflow": 0,
+      "detectedClippedText": 0,
+      "minimumEffectiveSvgFontPx": 17.125925925925923,
+      "phonePlayerHeightPx": 536.59375,
+      "boundary": "Runner seeks actual canonical provisional timeline, then scrolls after lazy styles loaded. It does not prove fresh native fragment positioning or audio sync."
+    },
+    {
+      "kind": "actual native exploration controls",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/cosmology-controls-03/report.json",
+      "entries": 4,
+      "views": 12,
+      "states": 72,
+      "coverConsumers": 2,
+      "failures": 0,
+      "pageErrors": 0,
+      "scope": "Initial apparatus, all options and range endpoints, prediction reveal/reset, reference input path, fixed source arrays, model H and origin, state preservation watch→explore. Targets≥44px and font≥16px."
+    },
+    {
+      "kind": "fresh textbook fragment navigation",
+      "status": "passed after root SSR repair",
+      "report": "artifacts/teaching-principles/cosmology-anchor-02/report.json",
+      "entries": 4,
+      "correctiveScrolling": false,
+      "viewport": "320×568",
+      "fullPlayerTopPx": [16.90625, 17.15625],
+      "fullPlayerBottomPx": [553.5, 553.75],
+      "fullPlayerHeightPx": 536.59375,
+      "captionFontPx": 16
+    },
+    {
+      "kind": "actual measured source model/component tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/cosmology-observations.test.ts src/components/experiments/CosmologyObservations.test.tsx",
+      "testCount": 15,
+      "scope": "11 model/4 component; deterministic locale hold/reveal/rewind, lowering elevation and return-to-zenith states, finite measured components"
+    },
+    {
+      "kind": "actual measured source strict compilation",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --project artifacts/teaching-principles/cosmology-implementation/tsconfig.json"
+    },
+    {
+      "kind": "actual measured paused frames",
+      "status": "passed within scope",
+      "report": "artifacts/teaching-principles/cosmology-measured-review-01/report.json",
+      "frames": 92,
+      "locales": ["zh", "en"],
+      "viewports": ["320×568", "1100×900"],
+      "consoleErrors": 0,
+      "horizontalOverflow": 0,
+      "detectedClippedText": 0,
+      "minimumEffectiveSvgFontPx": 17.125925925925923,
+      "phonePlayerHeightPx": 536.59375,
+      "phonePlayerBottomPx": [553.09375, 553.78125],
+      "boundary": "Actual canonical212s timeline, muted; post-load scrolling. Separate earlier anchor-02 is fresh-fragment evidence. Not continuous playback/listening/real-device performance."
+    },
+    {
+      "kind": "actual measured source controls",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/cosmology-measured-controls-01/report.json",
+      "entries": 4,
+      "views": 12,
+      "states": 72,
+      "coverConsumers": 2,
+      "failures": 0,
+      "pageErrors": 0
+    },
+    {
+      "kind": "independent speech transcript and local word timing",
+      "status": "read and calibrated",
+      "files": 10,
+      "path": "artifacts/teaching-principles/batch-11-timed-speech",
+      "audioHashes": {
+        "zh": "07e19e06bd13",
+        "en": "2a2f59e1d4ce"
+      },
+      "duration": 212,
+      "scope": "Complete10 texts read for causal order, scientific numbers and provenance. Homophone/transcription spellings are not treated as proven audio errors. No listening claim."
+    }
+  ],
+  "initialFailures": [
+    {
+      "kind": "test expectation",
+      "detail": "Strict equality compared455.75250000000005 with455.7525; assertion corrected to floating-point tolerance."
+    },
+    {
+      "kind": "test expectation",
+      "detail": "Radiance benchmark copied incorrectly as383.9663. Independent45-digit Python Decimal calculation gave383.6650221755699665 at160GHz,2.725K. Correct model retained; test corrected."
+    },
+    {
+      "kind": "author initial actual visual issue",
+      "report": "artifacts/teaching-principles/cosmology-review-01/report.json",
+      "detail": "One EN320 field footer clipped and field F label overlapped a distance row. Revised phone field positions and shortened exact caption. Initial inspection also found absent units before prediction and an unlabeled reference curve; persistent units and explicit 2.725 K reference added. Affected review-02 and full review-03 passed."
+    },
+    {
+      "kind": "native fragment positioning",
+      "report": "artifacts/teaching-principles/cosmology-anchor-01/report.json",
+      "detail": "Fresh native entry had player top≈91px/bottom≈628px because scene CSS was lazy. Root added the existing scene-specific short-screen rule to initial SSR stylesheet; anchor-02 passed without corrective scrolling. No author shared edit."
+    },
+    {
+      "kind": "browser runner interruption",
+      "report": "artifacts/teaching-principles/cosmology-controls-02/report.json",
+      "detail": "ZH36 states passed, then catalog locator.screenshot failed with Chrome context ID loss, preventing EN in that run. Preserved report. Full rerun controls-03 completed4 entries/72 states/2 covers with no errors; do not count interrupted02 as full pass."
+    },
+    {
+      "kind": "provisional semantic director mismatch",
+      "detail": "Airmass shot raised30→90deg while cue said lowering elevation. Measured director now lowers90→30 while spoken, then returns90 before original1965zenith6.7K. Existing model and fixed records unchanged; independent semantic model test and actual both-language paused frames passed."
+    }
+  ],
+  "pending": [
+    {
+      "kind": "root static whole film native playback",
+      "status": "pending"
+    },
+    {
+      "kind": "listening",
+      "status": "pending"
+    },
+    {
+      "kind": "physical-device performance",
+      "status": "pending"
+    },
+    {
+      "kind": "root global verify/build/release",
+      "status": "pending"
+    }
+  ],
+  "independentReviews": {
+    "HubbleSourceTable": {
+      "status": "passed bounded source review",
+      "report": "artifacts/teaching-principles/batch-11-cross-review/biology-review-hubble.json",
+      "scope": "24 original Table I rows,72fields; original pages170/172/173 separate raw/corrected velocities and independent/inferred distances; no model/UI claim"
+    },
+    "candidateModel": {
+      "status": "passed bounded independent model review",
+      "report": "artifacts/teaching-principles/batch-11-cross-review/chemistry-review-cosmology.json",
+      "assertions": 331,
+      "scope": "Independent SI radiance/integral, scaling exponents, local phase velocity, crest identities, antenna account, immutable record arrays. No primary transcription/UI/audio claim. Subsequent owned change added automatic map selection sweep, not a change to reviewed physical formulas. Measured locale timing and lowering-elevation director change are subsequent author changes, not included in the peer331 assertions."
+    }
+  },
+  "boundary": "Tests, selected actual visual inspection, automated paused geometry, native controls, fresh fragment navigation, source transcription, independent numeric peer review, speech synchronization, listening, continuous playback and physical-device performance are distinct evidence. No audio or final static acceptance inferred.",
+  "toolingNotes": [
+    "Initial attempt to load @mdx-js/mdx was unavailable because Astro7 uses Satteri. Actual installed Astro Satteri compiler then compiled both articles."
+  ],
+  "sourceHashes": {
+    "src/components/experiments/CosmologyObservations.tsx": "34a3fa34a7b1a59ad8d9b32dd5f7c4e00c3360da40696bbc564f7ffb312ef2ec",
+    "src/components/experiments/CosmologyObservations.test.tsx": "ca5d19066cd41ff018c9b40ee8925f251dda0fa5c8b650a6c43d1e54daa2c48a",
+    "src/models/cosmology-observations.ts": "c0d939d8bf34bc302ea34055a3987e7720786bfa92ad035a8c43cb67a2bc71cf",
+    "src/models/cosmology-observations.test.ts": "a1f5a41ca61c9c27ee409091cc4767e472475357c9e4767accd8ba46183cb064",
+    "src/models/cosmology-observations-records.ts": "2e24d1a5b4d770d709d6d4a4cb6c90328c9c6a837bec4ab9d5d5e774735e36d4",
+    "src/styles/cosmology-observations.css": "5c53aff0fddfd98137746e17ebcca91b6bc9cce141e0bd8394b34f33c9283dd0",
+    "src/components/covers/CosmologyObservationsCover.astro": "6701c4452364099f98ffdf350af8a60c7a5b9a03f8f53a9017041c3d794d5300",
+    "src/content/cosmology-observations.mdx": "b5dd24554008d9a4d64ad6802280c0de5b5345ea80fd6172b46abb5406819c7f",
+    "src/content/en/cosmology-observations.mdx": "d955c69e2b922133cf739317eab4cc751109be9cdbcddbf1383975ea6679b0f3",
+    "drafts/cosmology-observations/brief.md": "65f7dd0f3dab10a345889921d35ef3373a94908662b11814a54fcd8a6f7bae3b",
+    "drafts/cosmology-observations/principle-first-packet.json": "bb047941d15fcc8c1bc2aa0868ebf4853a3d862f9b1f109871ec6e277e8656ab"
+  },
+  "stagingHistory": {
+    "root": "artifacts/teaching-principles/batch-11-staging/physics",
+    "scope": "Candidate staging checks retained below. Exactly12 authorized owned paths copied to live source; later responsive/control fixes made only in owned files.",
+    "transferRecord": "artifacts/teaching-principles/cosmology-implementation/transferred-candidate.json"
+  },
+  "personallyViewed": {
+    "review03": [
+      "zh-1100-c0-t18p00.png",
+      "zh-1100-c2-t4p00.png",
+      "zh-1100-c3-t26p00.png",
+      "zh-1100-c4-t33p00.png",
+      "zh-320-c1-t22p00.png",
+      "zh-320-c2-t29p00.png",
+      "zh-320-c3-t17p00.png",
+      "zh-320-c4-t40p00.png"
+    ],
+    "controls03": ["en-field-controls.png", "en-horn-controls.png", "en-cooling-controls.png"],
+    "anchor02": ["zh-required-2-hubble.png", "en-required-2-cmb.png"],
+    "earlier": "review-01 representative causal lenses, review-02 five EN320 corrected frames, controls-01 both catalog covers and four representative controls were personally inspected. Automated104-frame matrix is not a claim of personally viewing every frame.",
+    "rootIndependent": [
+      "cosmology-review-02/en-320-c1-t30p00.png",
+      "cosmology-review-02/en-320-c3-t26p00.png",
+      "cosmology-review-02/en-320-c4-t18p00.png",
+      "cosmology-review-02/en-320-c4-t33p00.png"
+    ],
+    "measuredReview01": [
+      "zh-320-c2-t18p00.png",
+      "zh-320-c2-t23p00.png",
+      "zh-320-c2-t27p00.png",
+      "zh-320-c3-t9p70.png",
+      "zh-320-c4-t22p00.png",
+      "zh-320-c4-t29p00.png",
+      "en-320-c0-t15p80.png",
+      "en-320-c0-t17p30.png",
+      "en-320-c1-t36p00.png",
+      "en-320-c3-t11p90.png",
+      "en-320-c3-t42p00.png",
+      "en-320-c4-t28p00.png",
+      "en-320-c4-t34p50.png",
+      "en-320-c4-t48p00.png",
+      "zh-1100-c1-t36p00.png",
+      "en-1100-c3-t29p00.png"
+    ]
+  },
+  "measuredDirector": {
+    "status": "calibrated to independent actual word timestamps in both languages",
+    "chapterStarts": [0, 38, 83, 116.5, 161.5],
+    "chapterSeconds": [38, 45, 33.5, 45, 50.5],
+    "clock": "chapter-local seconds = ASR file offset + word start - shared chapter start; includes the0.45s speech lead-in",
+    "audioHashes": {
+      "zh": "07e19e06bd13",
+      "en": "2a2f59e1d4ce"
+    },
+    "wordTimeFiles": "artifacts/teaching-principles/batch-11-timed-speech/cosmology-observations-{zh,en}-{0..4}.json",
+    "cutsByLocale": {
+      "zh": {
+        "thirdLine": 15.53,
+        "wave": 20.15,
+        "waveStart": 22.03,
+        "waveEnd": 25.27,
+        "candidate": 8.31,
+        "field": 19.91,
+        "fieldStart": 22.57,
+        "fieldEnd": 27.07,
+        "origin": 27.61,
+        "prediction": 30.45,
+        "distanceAnswer": 35.15,
+        "referenceOn": 4.55,
+        "referenceOff": 10.69,
+        "air": 15.09,
+        "lowerEnd": 19.53,
+        "zenithStart": 23.95,
+        "zenithEnd": 26.15,
+        "atmosphere": 5.39,
+        "antenna": 6.95,
+        "remainder": 10.31,
+        "firas": 23.01,
+        "residual": 37.29,
+        "thermalWaveStart": 4.69,
+        "thermalWaveEnd": 7.95,
+        "cooling": 10.79,
+        "coolingAnswer": 24.47,
+        "doubledScale": 26.49,
+        "today": 34.95,
+        "mapEnd": 45.87
+      },
+      "en": {
+        "thirdLine": 16.47,
+        "wave": 20.85,
+        "waveStart": 22.59,
+        "waveEnd": 25.67,
+        "candidate": 8.91,
+        "field": 22.23,
+        "fieldStart": 24.69,
+        "fieldEnd": 29.41,
+        "origin": 29.41,
+        "prediction": 32.85,
+        "distanceAnswer": 38.53,
+        "referenceOn": 4.21,
+        "referenceOff": 10.45,
+        "air": 15.15,
+        "lowerEnd": 19.73,
+        "zenithStart": 24.93,
+        "zenithEnd": 27.85,
+        "atmosphere": 6.49,
+        "antenna": 8.39,
+        "remainder": 12.27,
+        "firas": 26.11,
+        "residual": 40.39,
+        "thermalWaveStart": 5.55,
+        "thermalWaveEnd": 9.73,
+        "cooling": 12.69,
+        "coolingAnswer": 29.31,
+        "doubledScale": 31.23,
+        "today": 40.79,
+        "mapEnd": 49.35
+      }
+    },
+    "behavior": "All12 local lenses use measured semantic events. Third-line, distance, remainder and cooling answers remain hidden until their actual spoken reveal. Airmass lowers90→30deg while the actual cue says lower the elevation, then returns90deg before the original1965 zenith6.7K record. Rewinding returns hidden states deterministically. Fixed24/43 source records are independent of the film clock."
+  },
+  "browserRunners": {
+    "frames": "artifacts/teaching-principles/cosmology-implementation/review-frames.mjs",
+    "controls": "artifacts/teaching-principles/cosmology-implementation/review-controls.mjs",
+    "freshFragment": "artifacts/teaching-principles/cosmology-implementation/anchor-probe.mjs",
+    "environment": "All support REVIEW_ORIGIN and REVIEW_OUT; frames default to measured locale times. Muted; static origin chosen only by root."
+  },
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-11-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

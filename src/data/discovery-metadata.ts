@@ -1287,7 +1287,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['铁及其化合物的实验活动', '实验活动2', '铁丝', '铜片', '碘化钾', '锌片', '高锰酸钾'],
+      zh: [
+        '铁及其化合物的实验活动',
+        '实验活动2',
+        '铁丝',
+        '铜片',
+        '碘化钾',
+        '锌片',
+        '高锰酸钾',
+        '铁的电子去向',
+        '二价铁为什么既能得电子，也能失电子？',
+      ],
       en: [
         'Practical investigations of iron and its compounds',
         'iron practical',
@@ -1295,6 +1305,8 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         'iodide starch',
         'zinc',
         'permanganate',
+        'Where iron’s electrons go',
+        'Why can iron two both accept and donate electrons?',
       ],
     },
   },
@@ -1506,8 +1518,20 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['叶片的色带与光谱', '叶绿素', '层析', '吸收光谱', 'chromatography'],
-      en: ['Leaf bands and spectra', 'cell biology', 'biology experiments'],
+      zh: [
+        '叶片的色带与光谱',
+        '叶绿素',
+        '层析',
+        '吸收光谱',
+        'chromatography',
+        '同一滴绿色，为什么会分成几条色带？',
+      ],
+      en: [
+        'Leaf bands and spectra',
+        'cell biology',
+        'biology experiments',
+        'Why does one green spot separate into several bands?',
+      ],
     },
   },
   'chem-chlorine-photolysis': {
@@ -2525,11 +2549,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'nature',
     minAge: 14,
     keywords: {
-      zh: ['星系红移与微波天空', '宇宙的历史，怎样藏在收到的光里？', '近代物理实验'],
+      zh: [
+        '星系红移与微波天空',
+        '宇宙的历史，怎样藏在收到的光里？',
+        '近代物理实验',
+        '怎样从光读出膨胀的宇宙？',
+      ],
       en: [
         'Galaxy redshifts and the microwave sky',
         'How does received light reveal cosmic history?',
         'modern physics experiment',
+        'How can light reveal an expanding universe?',
       ],
     },
   },

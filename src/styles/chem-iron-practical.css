@@ -1,128 +1,116 @@
-.chem-iron-practical {
+.ipx {
+  color: #5d6658;
   font-size: 16px;
-  color: #53634e;
-  padding: 18px 8px 24px;
+  padding: 4px 0 8px;
 }
-.chem-practical-label {
-  text-align: center;
-  font-size: 22px;
-  line-height: 1.5;
-  margin-bottom: 16px;
+.ipx .ipx-stage {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
 }
-.chem-practical-stage {
+.ipx .ipx-stage svg {
+  display: block;
+  width: 100%;
+  height: 230px;
+  overflow: visible;
+}
+.ipx svg text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: #5d6658;
+  font-variant-numeric: tabular-nums;
+}
+.ipx .ipx-ledger {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-.chem-practical-stage svg {
-  width: 320px;
-  height: 300px;
-  flex-shrink: 0;
-}
-.chem-practical-observation {
-  width: 250px;
-  max-width: 100%;
-  text-align: center;
-}
-.chem-practical-reagent {
-  min-height: 30px;
-  font-size: 18px;
-  line-height: 1.5;
-}
-.chem-practical-valence {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin: 24px 0;
-}
-.chem-practical-valence span {
-  border-bottom: 2px solid transparent;
-  color: #a1af98;
-  padding: 8px 2px;
-  font-size: 23px;
-}
-.chem-practical-valence .active {
-  color: #64794f;
-  border-color: #9eaf86;
-}
-.chem-practical-observation p {
+  flex-wrap: wrap;
+  gap: 3px 14px;
   font-size: 16px;
-  line-height: 1.6;
-  margin: 0;
+  line-height: 1.35;
+  margin: 3px auto;
+  max-width: 620px;
 }
-.chem-practical-equation {
-  text-align: center;
-  font-size: 20px;
-  line-height: 1.6;
-  margin-top: 24px;
+.ipx .ipx-ledger span {
+  white-space: nowrap;
 }
-.chem-practical-controls {
+.ipx .ipx-controls {
   display: grid;
-  gap: 20px;
-  padding-top: 24px;
-  margin-top: 25px;
-  border-top: 1px solid #a6b29a55;
+  gap: 16px;
+  padding: 18px 0 8px;
+  margin-top: 14px;
+  border-top: 1px solid #b6bca64d;
 }
-.chem-practical-controls p {
+.ipx .segmented {
+  flex-wrap: wrap;
+}
+.ipx .ipx-controls button,
+.ipx .ipx-controls input,
+.ipx summary {
   font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
-}
-.chem-practical-controls button,
-.chem-practical-controls input {
   min-height: 44px;
 }
+.ipx .ipx-controls button {
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+.ipx .ipx-controls .control-top {
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.ipx .ipx-limits {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 9px auto 0;
+  max-width: 650px;
+}
+.ipx .ipx-limits summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+.ipx .ipx-limits summary::before {
+  content: '▸';
+  color: #77896b;
+}
+.ipx .ipx-limits[open] summary::before {
+  content: '▾';
+}
+.ipx .ipx-limits p {
+  font-size: 16px;
+  margin: 8px 0;
+}
 @media (max-width: 600px) {
-  .chem-practical-stage {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .ipx {
+    padding: 2px 0 4px;
   }
-  .chem-practical-stage svg {
-    width: 100%;
-    max-width: 280px;
-    height: 260px;
-    margin: auto;
+  .ipx .ipx-ledger {
+    gap: 2px 10px;
   }
-  .chem-practical-observation {
-    width: 100%;
+  .ipx .ipx-controls {
+    gap: 13px;
   }
-  .chem-practical-valence {
-    margin: 10px 0;
+  .ipx .ipx-controls button {
+    white-space: normal;
   }
-  .chem-practical-valence span {
-    font-size: 20px;
-    padding: 4px 2px;
-  }
-  .chem-practical-label {
-    font-size: 18px;
-  }
-  .chem-practical-equation {
-    font-size: 18px;
-  }
-  .chem-practical-observation p {
-    font-size: 16px;
+  .ipx .ipx-limits {
+    margin-top: 4px;
   }
 }
-
-@media (max-width: 600px) {
-  .chem-iron-practical {
-    padding: 10px 8px 12px;
+@media (max-width: 600px) and (max-height: 650px) {
+  .experiment:has(.ipx) {
+    scroll-margin-top: -74px;
   }
-  .chem-practical-label {
-    margin-bottom: 8px;
+  .showcase:has(.ipx) .film-caption {
+    min-height: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
-  .chem-practical-stage svg {
-    height: 210px;
+  .showcase:has(.ipx) .film-caption p {
+    font-size: 16px;
+    line-height: 1.3;
   }
-  .chem-practical-equation {
-    margin-top: 14px;
-  }
-  .chem-practical-reagent:empty {
-    display: none;
-  }
-  .chem-practical-valence {
-    margin: 6px 0;
+  .ipx[data-watch='true'] .ipx-limits {
+    margin-top: 0;
   }
 }

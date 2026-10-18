@@ -1,23 +1,65 @@
-<h2 id="understand">Observation needs comparisons and calibration</h2>
+<h2 id="understand">What can light reveal about a changing universe?</h2>
 
-Redshifts require laboratory wavelengths and independent distance estimates. An antenna excess requires checks of instrumental and environmental backgrounds. A sky map’s colors need an explicit temperature scale.
+A reddish-looking galaxy is not a redshift measurement. Identify an atomic line pattern and compare the wavelength of each line. The film uses an explicitly illustrative spectrum: two lines are each 1.05 times their laboratory wavelengths. The third must share that ratio. A 656.28 nm template line should appear near 689.09 nm, rather than acquire the same additive wavelength shift as the first line.
 
-<h2 id="try">Connect spectra, distances and readings</h2>
+Distance supplies another kind of evidence. The 1929 table places independently estimated galaxy distances beside measured radial velocities. Switching a candidate line never moves its 24 fixed records. Nearby negative velocities and the substantial scatter remain visible. The observations support a trend; they do not claim that every galaxy lies exactly on a line.
 
-Changing distance updates both spectral lines and the highlighted model point. Microwave views separately explore elevation, subtraction of known backgrounds and a point on the illustrative full-sky map.
+Now follow a fixed group of galaxies as its scale grows uniformly. A larger initial separation acquires a larger absolute increase in the same time. With D=aχ, the model gives v=H D. Choosing another galaxy as the origin preserves the relative law rather than giving Earth a special position. Bound galaxy glyphs keep their size; atoms and bound galaxies are not stretched with the large-scale separations.
 
-<h2 id="deeper">Teaching models and observed data</h2>
+<h2 id="try">Predict before revealing</h2>
+
+The film pauses on three questions: where should the third line appear; what recession contribution should a galaxy at twice the distance have at the same epoch; and how should wavelength and temperature change if the scale doubles further? Exploration preserves these unanswered states. You can reveal them repeatedly and change the origin, elevation, receiver input or fixed-record view.
+
+In the antenna view, trace the connection. Sky radiation enters the horn, passes through the selector and reaches a receiver. Switching inputs connects a known cold reference to that same receiver. This calibrates the receiving system; there is no invented noise knob that subtracts until it produces the desired answer.
+
+Lower elevation gives a longer atmospheric path. The non-zenith readings are a declared airmass model, while the 1965 zenith record stays fixed. Remove the atmospheric and antenna contributions separately to see exactly which term changes the balance.
+
+<h2 id="deeper">From a microwave excess to a hotter past</h2>
 
 <details>
+<summary>What did the 1965 experiment measure?</summary>
 
-<summary>Calculated examples are not historical datasets</summary>
+[Penzias and Wilson](https://doi.org/10.1086/148307) reported an effective zenith antenna noise temperature of about 6.7 K at 4.08 GHz. Their atmospheric contribution was about 2.3 K; antenna and backlobe terms totaled about 0.9 K. The unexplained remainder was 3.5±1.0 K. The film preserves their reported uncertainty rather than inventing a new combination of independent errors.
 
-<div className="formula">v ≈ H₀d; z ≈ v/c; λobs = λrest(1+z)</div>
+<div className="formula">6.7 K − 2.3 K − 0.9 K = 3.5 K</div>
 
-The low-redshift example spans 5–200 Mpc and H₀=50–90 (km/s)/Mpc, default 70. Illustrative hydrogen lines at 434.05, 486.13 and 656.28 nm share one redshift factor. Line widths, strengths and peculiar velocities are omitted. Plotted points are model samples without historical error bars, not estimates of current cosmological parameters.
+This is an equivalent radiometric noise temperature, not the physical temperature of the instrument or the later precise thermodynamic background temperature. The illustrative elevation model is Tantenna=3.5+0.9+2.3/sin(e). Its non-zenith points are not transcribed 1965 scans.
 
-Antenna temperature is Treceiver+Tatmosphere+Tsky, using 3 K, 1 K/sin(elevation), and 2.725 K respectively. This additive radiometer-temperature approximation omits frequency response, ground spillover, gain drift and calibration-load details. Subtraction holds elevation at 60 degrees. The raw receiver reading remains visible while the upper readout reports the corrected result.
+An excess at one frequency does not establish a full blackbody spectrum. [Dicke and colleagues](https://doi.org/10.1086/148306) connected thermal radiation with expansion and cooling, while emphasizing the need for observations at other frequencies. Their paper did not predict the modern 2.725 K value precisely in advance.
 
-The Mollweide equal-area map combines synthetic angular sine, cosine and second-order Legendre modes around 2.725 K, with deviations of tens of microkelvin. It is not observed Planck data, a random ΛCDM realization or a fitted angular power spectrum. See the sources for real maps and their context.
+</details>
+
+<details>
+<summary>Why can these 43 FIRAS points not independently discover 2.725 K again?</summary>
+
+COBE/FIRAS compared the sky with calibrators and accounted for instrumental effects, foregrounds and spatial templates. [Fixsen and colleagues' 1996 paper](https://arxiv.org/abs/astro-ph/9605054) presented the near-blackbody spectrum and its residuals. This film preserves all 43 rows of the [NASA LAMBDA product](https://lambda.gsfc.nasa.gov/product/cobe/firas_monopole_spect.html). Their frequencies and published residuals never follow model controls.
+
+The archived spectrum column is constructed from a 2.725 K reference blackbody plus published residuals. It is a processed scientific product, not raw counts. Fitting that column to recover its reference temperature would not be a new independent discovery. The residual view uses the archived 1σ uncertainties; frequency bins are correlated, and this film does not perform a new fit assuming independent errors.
+
+The frequency axis is in GHz, spectral radiance in MJy/sr, and residuals in kJy/sr. The original 1996 paper's temperature result and the later archive's reference value also have different identities. They are not merged into a single measurement.
+
+</details>
+
+<details>
+<summary>Why does expansion cool thermal radiation?</summary>
+
+Expansion increases the separation of successive crests and reduces each photon's energy, E=hν. It also dilutes the number of photons per physical volume. A blackbody spectrum remains a blackbody under this expansion, with temperature inversely proportional to scale.
+
+<div className="formula">λ ∝ a; T ∝ 1/a; Bν(T/a) = a⁻³ B(aν)(T)</div>
+
+Starting with today's approximately 2.725 K reference, the film predicts a clearly hypothetical further doubling of scale. Wavelength doubles and temperature falls to 1.3625 K. The Bν frequency peak moves from about 160.2 to 80.1 GHz, and its height becomes one eighth. The energy density integrated over all frequencies becomes one sixteenth. These are different quantities. Both curves keep the same physical intensity axis; the colder curve is not renormalized to look equally tall.
+
+The crest sequence uses a dimensionless constant-H phase example, not a fit to the real expansion history or age of the universe. Its local light speed relative to a comoving observer remains c. The final map explicitly returns to today's mean temperature and shows synthetic angular variations in microkelvin. It is neither a measured Planck map nor part of the future-cooling state.
+
+</details>
+
+<details>
+<summary>What are the limits of the 1929 records?</summary>
+
+[Hubble's Table I](https://doi.org/10.1073/pnas.15.3.168) uses a historical distance scale and raw radial velocities without solar-motion correction. The paper's Figure 1 and regression with solar-motion terms are different products. This film compares constant and proportional candidates for the raw table and does not label their slope a modern H₀ measurement.
+
+The table supplies no individual error bars, so none are invented. Table II distances inferred from velocities are excluded from the independent-distance sample. For NGC 7619, the paper's roughly 7 Mpc cluster distance is a coarse independent check; the approximately 7.8 Mpc value inferred from velocity has a different status.
+
+The line template uses rounded Balmer air wavelengths. Real spectra can include peculiar motions, gravitational redshift and measurement error. A shifted spectrum alone cannot separate these causes. Independent distances, the population trend and further cosmological observations constrain the expansion explanation.
 
 </details>

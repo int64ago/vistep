@@ -2,9 +2,9 @@
   "topic": {
     "slug": "cosmology-observations",
     "name": "星系红移与微波天空",
-    "title": "宇宙的历史，怎样藏在收到的光里？",
-    "question": "宇宙的历史，怎样藏在收到的光里？",
-    "description": "比较谱线红移与距离，再追踪微波背景的校准和全天温差图。",
+    "title": "怎样从光读出膨胀的宇宙？",
+    "question": "怎样从光读出膨胀的宇宙？",
+    "description": "追踪同一组谱线与波峰，用固定星系记录和微波频谱检验宇宙膨胀与冷却。",
     "color": "#94a9b5",
     "tag": "宇宙观测",
     "related": ["atomic-spectrum-lab", "celestial-observations"],
@@ -24,8 +24,37 @@
       {
         "title": "Penzias — Commentary on the original antenna-temperature measurement",
         "url": "https://garfield.library.upenn.edu/classics1981/A1981LL57400001.pdf"
+      },
+      {
+        "title": "A relation between distance and radial velocity among extra-galactic nebulae",
+        "url": "https://doi.org/10.1073/pnas.15.3.168"
+      },
+      {
+        "title": "A Measurement of Excess Antenna Temperature at 4080 Mc/s",
+        "url": "https://doi.org/10.1086/148307"
+      },
+      {
+        "title": "Cosmic Black-Body Radiation",
+        "url": "https://doi.org/10.1086/148306"
+      },
+      {
+        "title": "The Cosmic Microwave Background Spectrum from the Full COBE FIRAS Data Set",
+        "url": "https://arxiv.org/abs/astro-ph/9605054"
+      },
+      {
+        "title": "COBE/FIRAS CMB monopole spectrum v1",
+        "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt"
+      },
+      {
+        "title": "What Is Cosmological Redshift?",
+        "url": "https://science.nasa.gov/asset/webb/what-is-cosmological-redshift/"
+      },
+      {
+        "title": "Strong Lines of Hydrogen (H)",
+        "url": "https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2.htm"
       }
-    ]
+    ],
+    "number": "263"
   },
   "component": "src/components/experiments/CosmologyObservations.tsx",
   "cover": "src/components/covers/CosmologyObservationsCover.astro",
@@ -33,11 +62,17 @@
     "category": "nature",
     "minAge": 14,
     "keywords": {
-      "zh": ["星系红移与微波天空", "宇宙的历史，怎样藏在收到的光里？", "近代物理实验"],
+      "zh": [
+        "星系红移与微波天空",
+        "宇宙的历史，怎样藏在收到的光里？",
+        "近代物理实验",
+        "怎样从光读出膨胀的宇宙？"
+      ],
       "en": [
         "Galaxy redshifts and the microwave sky",
         "How does received light reveal cosmic history?",
-        "modern physics experiment"
+        "modern physics experiment",
+        "How can light reveal an expanding universe?"
       ]
     }
   },
@@ -46,70 +81,82 @@
     "宇宙的历史，怎样藏在收到的光里？": "How does received light reveal cosmic history?",
     "比较谱线红移与距离，再追踪微波背景的校准和全天温差图。": "Compare spectral shifts with distance, then follow microwave calibration and sky temperature differences.",
     "近代物理": "Modern physics",
-    "宇宙观测": "Cosmological observation"
+    "宇宙观测": "Cosmological observation",
+    "同一谱线图样，为什么一起变长？": "Why does one line pattern stretch together?",
+    "同一比例，先预测第三条线。": "One ratio predicts the third line.",
+    "为什么越远，距离增加越快？": "Why does a larger distance grow faster?",
+    "记录不动；尺度增长解释距离增量。": "Fixed records; growing scale explains the increments.",
+    "信号来自天空，还是器材？": "Sky signal or apparatus?",
+    "共用接收机比较，再检查大气路径。": "Compare through one receiver; check the air path.",
+    "扣除已知来源，还剩什么？": "What remains after known contributions?",
+    "单频余量，还要接受整个频谱的检验。": "A one-frequency excess needs a spectrum test.",
+    "热辐射怎样变成冷微波？": "How does thermal radiation become cold microwaves?",
+    "膨胀拉长波长，黑体温度随之降低。": "Longer wavelengths accompany a colder blackbody.",
+    "怎样从光读出膨胀的宇宙？": "How can light reveal an expanding universe?",
+    "追踪同一组谱线与波峰，用固定星系记录和微波频谱检验宇宙膨胀与冷却。": "Follow spectral lines and wave crests, then use fixed galaxy records and microwave spectra to examine expansion and cooling."
   },
   "narration": {
-    "duration": 140,
+    "duration": 212,
     "cues": [
       {
         "id": "redshift-spectrum",
-        "title": "先辨认同一组谱线",
-        "titleEn": "Identify the same pattern of spectral lines",
-        "caption": "整组谱线按相同比例移向长波，给出红移量。",
-        "captionEn": "A common wavelength scaling across spectral lines gives the redshift.",
-        "zh": "把远方星系的光展开成光谱，再与实验室已知谱线对照。不是只看星系显得红不红，而是识别同一组线如何整体移动。画面使用氢的三条示例谱线，统一乘以一加红移。宇宙学红移与空间膨胀有关，不能一概当成物体在静止空间中的普通多普勒运动。",
-        "en": "Disperse galaxy light and compare identifiable lines with laboratory wavelengths. Redshift is not simply whether a galaxy looks red; it is a shared scaling of a known line pattern. Three illustrative hydrogen lines are multiplied by one plus redshift. Cosmological redshift concerns expanding space, not merely ordinary motion through static space.",
-        "seconds": 28,
+        "title": "同一谱线图样，为什么一起变长？",
+        "titleEn": "Why does one line pattern stretch together?",
+        "caption": "同一比例，先预测第三条线。",
+        "captionEn": "One ratio predicts the third line.",
+        "seconds": 38,
+        "zh": "实验室里的这组三条谱线，是同一种原子的指纹。教学生成的星系光谱里，前两条波长都变成原来的1.05倍。第三条应该在哪里？它也要乘同一个比例，出现在约689纳米，而不是简单加上同一段波长。再盯住这几个波峰：空间尺度增长，波峰间距随之变大，当地测得的光速仍是光速。单独的红移也可能包含特有运动；还需要另一类证据：距离。",
+        "en": "The laboratory pattern has three lines: an atomic fingerprint. In this illustrative galaxy spectrum, the first two wavelengths are each one point zero five times their laboratory values. Where should the third appear? Apply the same ratio: about six hundred and eighty-nine nanometres, not the same additive shift. Now follow the crests. As the scale grows, their separation increases while local light speed stays constant. A redshift can also include peculiar motion. We need another kind of evidence: distance.",
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "distance-relation",
-        "title": "把红移与独立距离比较",
-        "titleEn": "Compare redshift with independent distance",
-        "caption": "近距离范围内，退行速度与距离近似成正比。",
-        "captionEn": "At low redshift, recession speed is approximately proportional to distance.",
-        "zh": "哈勃把星系红移相关的速度与独立估计的距离相比较，发现近似线性关系。这里的点按教学模型计算，不是他的原始数据；拖动距离可以追踪同一星系的谱线和图中位置。示例哈勃参数为每百万秒差距每秒七十千米，仅为演示选值，不代表今天没有测量不确定性。",
-        "en": "Hubble compared redshift-related velocities with independently estimated distances and found an approximate linear relation. These points are calculated teaching samples, not his original data. Changing distance links one spectrum with its plot position. Seventy kilometres per second per megaparsec is an illustrative parameter, not a claim of uncertainty-free modern measurement.",
-        "seconds": 28,
-        "chapterAt": 28,
-        "at": 28.3
+        "title": "为什么越远，距离增加越快？",
+        "titleEn": "Why does a larger distance grow faster?",
+        "caption": "记录不动；尺度增长解释距离增量。",
+        "captionEn": "Fixed records; growing scale explains the increments.",
+        "seconds": 44,
+        "zh": "这24个点来自哈勃1929年的原表：距离和径向速度分别估计、测量。换一条候选线，记录不跟着移动。正比关系描述了总体趋势，散布和负速度仍然保留；这是旧距离尺度，也没有做太阳运动修正。现在换成均匀膨胀模型。相同尺度变化，让原本更远的星系增加更多距离。换一颗星系作原点，关系依旧。于是同一时刻，距离加倍会怎样？膨胀贡献的速度也加倍。这就是速度等于H乘距离，不是地球占据特殊中心。",
+        "en": "These twenty-four points are from Hubble’s original nineteen twenty-nine table: estimated distances and measured radial velocities. Change the candidate line; the records stay put. A proportional relation describes the broad trend, with scatter and negative velocities retained. This historical distance scale has no solar-motion correction applied here. Now consider uniform expansion. The same scale change adds more distance to an initially larger separation. Choose another origin: the relation survives. At the same epoch, what happens at twice the distance? The expansion contribution doubles. That is H times distance, without a privileged Earth-centered origin.",
+        "chapterAt": 38,
+        "at": 38.45
       },
       {
         "id": "antenna-background",
-        "title": "先识别天线接收的不同分量",
-        "titleEn": "Identify contributions to an antenna reading",
-        "caption": "接收机、大气和天空共同构成原始信号。",
-        "captionEn": "Receiver noise, atmosphere and sky all contribute to the raw signal.",
-        "zh": "彭齐亚斯和威尔逊面对的并不是一眼就能认出的宇宙图像，而是微波天线中多出来的信号。必须检查仪器和环境，才能判断来源。这里把接收机、大气和天空分成教学分量；改变仰角，大气穿行路径改变，读数也随之变化。参数不复原一九六五年的测量。",
-        "en": "Penzias and Wilson encountered an unexplained microwave signal, not an immediately recognizable cosmic picture. Instrument and environmental contributions had to be checked. This model separates receiver, atmosphere and sky terms. Elevation changes the atmospheric path and raw reading. Its parameters do not reproduce the nineteen-sixty-five measurement.",
-        "seconds": 28,
-        "chapterAt": 56,
-        "at": 56.3
+        "title": "信号来自天空，还是器材？",
+        "titleEn": "Sky signal or apparatus?",
+        "caption": "共用接收机比较，再检查大气路径。",
+        "captionEn": "Compare through one receiver; check the air path.",
+        "seconds": 32,
+        "zh": "天空输入沿天线和开关进入接收机。现在切换到已知的冷负载：仍是同一台接收机，这个比较帮助校准系统。天空读数还包含大气和天线自身的贡献。把仰角放低，同样厚度的大气就有更长的穿行路径，读数会增大。图中的非天顶值是气层模型；1965年天顶方向6.7开尔文的记录不变。要解释天空，不能只看一个总数。",
+        "en": "Trace the sky input through the horn and selector into the receiver. Switch to a known cold reference: it uses that same receiver, helping calibrate the system. The sky reading still includes atmospheric and antenna contributions. Lower the elevation. The same atmospheric depth now gives a longer path and a larger reading. The non-zenith values shown here are an airmass model; the nineteen sixty-five zenith record remains six point seven kelvin. One total is not yet an explanation.",
+        "chapterAt": 83,
+        "at": 83.45
       },
       {
         "id": "antenna-calibration",
-        "title": "逐项校准，解释剩余信号",
-        "titleEn": "Calibrate contributions and interpret the remainder",
-        "caption": "扣除已知背景后，几乎各向同性的天空分量仍在。",
-        "captionEn": "After known backgrounds are removed, a nearly isotropic sky component remains.",
-        "zh": "保持天线方向不变，逐步扣除本例已知的接收机和大气分量，天空信号仍然存在。真实校准要靠独立测量，不能凭希望得到的结果任意相减。这里采用现代背景温度约二点七二五开尔文作为模型输入，不能把这个精确数值归到早期论文的原始测量上。",
-        "en": "With direction fixed, subtract the known receiver and atmospheric terms in this example. A sky component remains. Real calibration requires independent measurements, not arbitrary subtraction to obtain a desired answer. The model uses the modern approximate background temperature of two-point-seven-two-five kelvin, not the precision of the early paper.",
-        "seconds": 28,
-        "chapterAt": 84,
-        "at": 84.3
+        "title": "扣除已知来源，还剩什么？",
+        "titleEn": "What remains after known contributions?",
+        "caption": "单频余量，还要接受整个频谱的检验。",
+        "captionEn": "A one-frequency excess needs a spectrum test.",
+        "seconds": 40,
+        "zh": "原论文在4.08吉赫兹记录了6.7开尔文。扣去大气2.3，再扣天线和旁瓣0.9，还剩多少？3.5开尔文，报告的不确定度是正负1.0。这是等效天线噪声温度，不是后来精确的背景温度。单一频率还不能证明黑体谱。后来FIRAS测量了多个频率。这里保留43行处理数据和发表残差：档案频谱由2.725开尔文参考黑体加残差组成，不能拿它再独立发现同一个温度。放大残差，可以看见并非完美零值的记录。",
+        "en": "At four point zero eight gigahertz, the original total was six point seven kelvin. Remove two point three for atmosphere and zero point nine for antenna and backlobes. What remains? Three point five kelvin, with a reported uncertainty of one kelvin. This is antenna noise temperature, not the later precise background temperature. One frequency cannot establish a blackbody spectrum. FIRAS later measured many frequencies. These forty-three processed rows preserve the published residuals. The archive spectrum is a two point seven two five kelvin reference plus residuals, not a new independent temperature discovery. Magnify the residuals: they are not all zero.",
+        "chapterAt": 116.5,
+        "at": 116.95
       },
       {
         "id": "sky-map",
-        "title": "在近乎均匀的背景中寻找微小温差",
-        "titleEn": "Find tiny differences in an almost uniform background",
-        "caption": "全天图的颜色放大的是微开尔文级温差。",
-        "captionEn": "Full-sky colors magnify temperature differences measured in microkelvin.",
-        "zh": "后续卫星测量把天空展开成全天图，研究平均背景之上极微小的温度起伏。颜色不能理解成天空本来就有这么大的冷热差。页面用几个角向模式合成一幅示意图，并明确标注它不是普朗克卫星数据；移动选点，显示同一个温差场的微开尔文值和实际温度。",
-        "en": "Later satellites mapped tiny temperature differences across the full sky. The colors greatly exaggerate deviations from an almost uniform background. This illustration combines a few angular modes and explicitly is not Planck data. Moving the selected point reports the same field in microkelvin and as an actual temperature.",
-        "seconds": 28,
-        "chapterAt": 112,
-        "at": 112.3
+        "title": "热辐射怎样变成冷微波？",
+        "titleEn": "How does thermal radiation become cold microwaves?",
+        "caption": "膨胀拉长波长，黑体温度随之降低。",
+        "captionEn": "Longer wavelengths accompany a colder blackbody.",
+        "seconds": 46,
+        "zh": "背景为什么指向更热的过去？跟住同一光波：膨胀拉长波长，降低单个光子的能量，也稀释单位体积里的光子。热辐射保持黑体形状，温度按尺度的倒数变化。先从今天约2.725开尔文出发，预测一个假想的进一步膨胀：尺度加倍，波长和温度各会怎样？波长加倍，温度减半，成为1.3625开尔文。曲线的峰向低频移动，也确实变矮，没有偷偷重新放大。最后回到今天：平均温度之上还有微开尔文级的小起伏。这里的全天图是合成示意，颜色经过放大，不是实测地图。",
+        "en": "Why does this background point to a hotter past? Follow the same light wave. Expansion lengthens its wavelength, lowers each photon’s energy, and dilutes the photon number per volume. Thermal radiation retains a blackbody shape, with temperature inversely proportional to scale. Starting from today’s approximate two point seven two five kelvin reference, predict a hypothetical further doubling of scale. What happens to wavelength and temperature? Wavelength doubles and temperature halves, to one point three six two five kelvin. The peak moves to lower frequency and really gets smaller; the curve is not renormalized. Finally return to today. Tiny microkelvin variations sit above the mean. This amplified-color sky is synthetic, not a measured map.",
+        "chapterAt": 161.5,
+        "at": 161.95
       }
     ]
   },

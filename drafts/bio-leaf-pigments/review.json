@@ -1,0 +1,173 @@
+{
+  "sceneSlug": "bio-leaf-pigments",
+  "owner": "/root/biology_inventory",
+  "status": "frozen after measured 162.5 s calibration; root owns final static integration",
+  "baseCommit": "07e2248322b2594974a045b03d6b87f8f64aae40",
+  "ownedSha256": {
+    "src/models/bio-leaf-pigments.ts": "73d681bec144319b55d81e24a2f82e5d88889c391edeae586b72651dfe90966f",
+    "src/models/bio-leaf-pigments.test.ts": "3c69ffaa9cbeadc1a00a27257fbc0c171cce6f43d91199ad24777055330e1e2c",
+    "src/components/experiments/BioLeafPigments.tsx": "65056acda98d8e08302827187beda742ab771e4671b49c6d8e57c7aa6ae91d63",
+    "src/styles/bio-leaf-pigments.css": "3a4c004fb07a2f137721f2bd09009fea312dbd1402205a7e624a66473e2c0f20",
+    "src/components/covers/BioLeafPigmentsCover.astro": "87496b5549b781e8a7cc842a3fd96cf0e1c1afbe0900be0cf49ef160045ae9b4",
+    "src/content/bio-leaf-pigments.mdx": "ee5a0d91a67bb38f0673748128b1b0ebcc05886289a6be3e5932094f8c3dae8b",
+    "src/content/en/bio-leaf-pigments.mdx": "279b6e964e235fc5e71af034e82e979e5ae14baab0d1707a3027c0486d2aa594",
+    "drafts/bio-leaf-pigments/brief.md": "11e59f8d6f4a616225ef684ad79a1a6309a3846878f9c8062b52d84ab82f4e50",
+    "drafts/bio-leaf-pigments/principle-first-packet.json": "5f745f8ce40a8f7c0bd062f7814302e0892d111926cee911e13e1c620118c8bd"
+  },
+  "sourceEvidence": "artifacts/teaching-principles/biology-next-leaf-pigments/source-ledger.json",
+  "checks": [
+    {
+      "type": "model-tests",
+      "status": "passed",
+      "count": 15,
+      "command": "pnpm exec vitest run src/models/bio-leaf-pigments.test.ts"
+    },
+    {
+      "type": "scoped-types",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --skipLibCheck --jsx react-jsx --target ES2022 --module ESNext --moduleResolution bundler --allowSyntheticDefaultImports --resolveJsonModule src/components/experiments/BioLeafPigments.tsx src/models/bio-leaf-pigments.ts"
+    },
+    {
+      "type": "spectral-dependency-preservation",
+      "status": "passed",
+      "sha256": "93b0daa80e6f803d109d893857e00c844212cf914cd79184b45fad7e26f77b06"
+    },
+    {
+      "type": "independent-chemistry-partition-audit",
+      "status": "passed-bounded",
+      "report": "artifacts/teaching-principles/batch-11-cross-review/chemistry-review-leaf.json",
+      "limit": "Core population/trace law; not author UI, listening or full mechanism evidence."
+    },
+    {
+      "type": "whole-player-and-rendered-fonts",
+      "status": "passed",
+      "frames": 58,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/final-provisional-keyframes/report.json",
+      "phoneViewport": "320×568",
+      "phoneMaxBottom": 566.78125,
+      "minimumRenderedFont": 16,
+      "browserErrors": []
+    },
+    {
+      "type": "width-color-continuity-targeted-frames",
+      "status": "passed",
+      "frames": 4,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/final-width/report.json"
+    },
+    {
+      "type": "fresh-sample-restore-targeted-frames",
+      "status": "passed",
+      "frames": 4,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/fresh-origin/report.json"
+    },
+    {
+      "type": "actual-UI-controls",
+      "status": "passed",
+      "count": 62,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/interactions-stable/report.json",
+      "browserErrors": []
+    },
+    {
+      "type": "actual-resource-failure-and-no-JS",
+      "status": "passed",
+      "count": 4,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/faults-expanded/report.json",
+      "limit": "Real blocked Audio after user click; mute output; no bypass of autoplay, no listening."
+    },
+    {
+      "type": "cover-consumers",
+      "status": "author-visually-reviewed",
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/cover-final/report.json",
+      "actualOpened": ["en-390-card.png", "social.png"],
+      "previouslyOpened": ["cover/export.png", "cover/en-390-card.png"]
+    },
+    {
+      "type": "root-visual-review",
+      "status": "parent-reported-actual-review",
+      "scope": "Root explicitly viewed filter/exchange-a,b/coelute/green/double; not a substitute for final static verification."
+    },
+    {
+      "type": "subjective-voice-listening",
+      "status": "not-run"
+    },
+    {
+      "type": "measured-voice-synchronization",
+      "status": "author-word-time-and-silent-visual-reviewed",
+      "report": "drafts/bio-leaf-pigments/principle-first-packet.json",
+      "scope": "Locale-specific director anchors. No speech or shared file changes."
+    },
+    {
+      "type": "complete-final-static-playback",
+      "status": "pending-root-static-build"
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run"
+    },
+    {
+      "type": "full-verify-and-preview-build",
+      "status": "parent-owned-pending"
+    },
+    {
+      "type": "measured-whole-player-and-rendered-fonts",
+      "status": "passed",
+      "frames": 60,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/measured-keyframes/report.json",
+      "phoneViewport": "320×568",
+      "phoneMaxBottom": 566.78125,
+      "minimumRenderedFont": 16,
+      "browserErrors": []
+    },
+    {
+      "type": "measured-actual-UI-controls",
+      "status": "passed",
+      "count": 62,
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/measured-interactions/report.json",
+      "browserErrors": []
+    },
+    {
+      "type": "measured-cover-consumers",
+      "status": "author-visually-reviewed",
+      "report": "artifacts/teaching-principles/biology-next-leaf-pigments/measured-cover/report.json",
+      "actualOpened": ["en-390-card.png", "social.png"]
+    }
+  ],
+  "authorActualVisualScope": [
+    "Phone filtering, mobile/retained exchange at two phases, equal-partition counterexample, three-wavelength transmission, concentration prediction; desktop release and widths; phone blank; repaired desktop and EN320 widths; ZH/EN320 fresh-sample reset.",
+    "The last fresh-sample caption makes clear that restoring the comparison condition uses a new sample; washed-out material does not return by reversal.",
+    "Final browser frames include all five chapters in ZH/EN at320×568 and selected desktop/390px states; the frame matrix is technical measurement, not a claim that every frame was manually inspected.",
+    "Measured timeline: actually opened EN320 release/fresh-origin/exchange-a/resolved/three-wavelength/prediction, ZH320 filter/immersed/exchange-b/coelute/double and ZH1280 release; also EN exploration and both textbook-window endpoint frames. Every saved frame received automated layout checks, not every frame claimed manually viewed."
+  ],
+  "corrections": [
+    "Shortened repeated English UI and retained 16px actual text instead of shrinking the page.",
+    "Continuous shading of computed stage populations replaces visually misleading histogram stripes.",
+    "Origin liquid rises first; only then pigment leaves the paper, with paper+reservoir mass conserved.",
+    "Blank optical reference has zero displayed absorption, and optical intensity encoding uses one transmission factor.",
+    "Exploration close-up and concentration prediction have independent state; unrelated controls are hidden; watch parameters remain authored.",
+    "No-JavaScript initial probe read collapsed details; corrected actual native-summary click confirms readable articles.",
+    "One intermediate controls run timed out while scrolling without pageerrors; stable retry completed62checks. No unsupported root-cause claim.",
+    "Measured direction holds leaf-interior markers before disruption, switches to filtration at its spoken cue, shows a new sample before origin-width comparison, gives language-specific whole-paper/prediction cuts, and simultaneously compares three wavelengths instead of unreadably fast blue/red cuts. Numeric T² answer appears only after the prediction sentence."
+  ],
+  "pending": [
+    "Parent final static first-entry/whole-player/native playback review",
+    "Subjective full voice listening and physical-phone performance remain separately not-run",
+    "Publication by parent only"
+  ],
+  "measuredAudio": {
+    "duration": 162.5,
+    "chapterStarts": [0, 27, 53.5, 97.5, 129.5],
+    "zh": "638470d45a28",
+    "en": "654a8c43a157",
+    "wordSource": "artifacts/teaching-principles/batch-11-timed-speech/bio-leaf-pigments-{zh,en}-{0..4}.json",
+    "scope": "Read all ten timed segments and decisive word anchors; offset lead-in .45 s. Silent rendered frames checked, not subjective listening."
+  },
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-11-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

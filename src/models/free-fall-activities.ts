@@ -20,6 +20,7 @@ export function reactionTime(metres: number, gravity = 9.8) {
 }
 /** Hypothesis consequences are logical inequalities, not predictions of the true fall model. */
 export function tiedStoneArgument(stage: number) {
+  if (!Number.isFinite(stage)) throw new RangeError('Finite reasoning stage required.');
   return {
     stage: Math.max(0, Math.min(2, Math.floor(stage))),
     heavyGreaterThanLight: true,
@@ -29,6 +30,8 @@ export function tiedStoneArgument(stage: number) {
   };
 }
 export function fallActivityShot(chapter: number, progress: number) {
+  if (![chapter, progress].every(Number.isFinite))
+    throw new RangeError('Finite film position required.');
   const p = Math.max(0, Math.min(1, progress));
   return {
     mode: chapter < 2 ? 'paper' : chapter === 2 ? 'reasoning' : 'ruler',
@@ -36,5 +39,36 @@ export function fallActivityShot(chapter: number, progress: number) {
     logicStage: Math.min(2, Math.floor(p * 3)),
     reaction: chapter === 3 ? 0.18 : 0.26,
     release: Math.max(0, Math.min(1, (p - 0.1) / 0.65)),
+  } as const;
+}
+
+/** Authored chapter seconds, calibrated against the unchanged recordings. Physical
+ * fall time remains a separate clock; the zero-drag case is a new controlled trial. */
+export function fallFilmState(chapter: number, seconds: number, locale: 'zh' | 'en') {
+  if (![chapter, seconds].every(Number.isFinite))
+    throw new RangeError('Finite film position required.');
+  const c = Math.max(0, Math.min(4, Math.floor(chapter))),
+    t = Math.max(0, seconds);
+  const ramp = (a: number, b: number) => Math.max(0, Math.min(1, (t - a) / (b - a)));
+  const zh = locale === 'zh';
+  const vacuum = c === 1 && t >= (zh ? 16.1 : 14.8);
+  const time =
+    c < 2
+      ? 1.4 *
+        (vacuum
+          ? ramp(zh ? 17 : 15.6, zh ? 20.7 : 19.7)
+          : ramp(c === 0 ? (zh ? 5.4 : 4.7) : 1.5, c === 0 ? (zh ? 8.9 : 9.2) : 6.4))
+      : 0;
+  const logicStage = t < (zh ? 7 : 8) ? 0 : t < (zh ? 13.7 : 14.5) ? 1 : 2;
+  const reaction = c === 4 ? 0.1 + 0.1 * ramp(zh ? 5.1 : 6.2, zh ? 7.4 : 8.4) : 0.18;
+  return {
+    mode: c < 2 ? 'paper' : c === 2 ? 'reasoning' : 'ruler',
+    time,
+    density: vacuum ? 0 : 1.225,
+    showEraser: c === 1,
+    logicStage,
+    reaction,
+    release: c === 3 ? ramp(3.4, zh ? 7.4 : 7.8) : 1,
+    scaleComparison: c === 4,
   } as const;
 }

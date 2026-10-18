@@ -1,222 +1,733 @@
-import { useState } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
+  practicalFrame,
+  practicalAcidAtoms,
+  practicalBinding,
+  practicalFilm,
+  practicalIndicator,
+  practicalNet,
+  practicalRouteGeometry,
   IRON_PRACTICAL_CASES,
   IRON_PRACTICAL_EQUATIONS,
-  ironPractical,
-  ironPracticalDirector,
-  type IronPracticalCase,
+  type PracticalShot,
+  type PracticalMotion,
 } from '../../models/chem-iron-practical';
 import '../../styles/chem-iron-practical.css';
-export default function ChemIronPractical() {
-  const film = useShowcase(),
-    en = browserLocale() === 'en',
-    say = (a: string, b: string) => (en ? b : a);
-  const [kind, setKind] = useState<IronPracticalCase>('iron-copper'),
-    [extent, setExtent] = useState(0.5),
-    [partner, setPartner] = useState(1),
-    [test, setTest] = useState(true);
-  const d = film.watch
-    ? ironPracticalDirector(film.chapter, film.chapterProgress)
-    : { kind, extent, partner, test, progress: extent };
-  const m = ironPractical(d.kind, d.extent, d.partner, d.test);
-  const names: Record<IronPracticalCase, [string, string]> = {
-    'iron-copper': ['铁丝 + CuSO₄', 'Iron wire + CuSO₄'],
-    'ferric-copper': ['铜片 + FeCl₃', 'Copper + FeCl₃'],
-    'ferric-iodide': ['FeCl₃ + KI', 'FeCl₃ + KI'],
-    'ferrous-zinc': ['锌片 + FeCl₂', 'Zinc + FeCl₂'],
-    permanganate: ['酸性KMnO₄ + FeSO₄', 'Acidified KMnO₄ + FeSO₄'],
-    'ferric-test': ['FeCl₃ + KSCN', 'FeCl₃ + KSCN'],
-    'iron-test': ['FeCl₃ + 铁粉，再检验', 'FeCl₃ + iron, then test'],
-  };
-  const ferricOpacity = Math.min(0.5, m.fe3 * 0.45),
-    copperOpacity = Math.min(0.55, m.cu2 * 0.5),
-    purpleOpacity = Math.min(0.8, m.mn7 * 4),
-    iodineOpacity = m.starch ? 0.85 : Math.min(0.6, m.iodine),
-    label =
-      d.kind === 'ferric-iodide'
-        ? d.test
-          ? say('已加入淀粉', 'Starch added')
-          : 'KI'
-        : m.diagnostic
-          ? 'KSCN'
-          : d.kind === 'permanganate' && d.test
-            ? say('仍有MnO₄⁻，尚未显色检验', 'MnO₄⁻ remains; no SCN test yet')
-            : '';
+const say = (zh: string, en: string) => (browserLocale() === 'en' ? en : zh);
+const colours = {
+  iron: '#747e75',
+  ferric: '#ac8247',
+  ferrous: '#668f86',
+  copper: '#b77b4b',
+  zinc: '#85999d',
+  iodine: '#877297',
+  electron: '#b68c39',
+  red: '#a55249',
+  oxygen: '#a66158',
+  hydrogen: '#8aa4a0',
+  manganese: '#8a6b92',
+};
+const sampleNames = [
+  ['铁丝与铜离子', 'Iron and copper ions'],
+  ['铜片与三价铁', 'Copper and iron three'],
+  ['碘离子与三价铁', 'Iodide and iron three'],
+  ['锌与二价铁', 'Zinc and iron two'],
+  ['酸性高锰酸根与二价铁', 'Acidified permanganate'],
+  ['三价铁显色对照', 'Iron three colour control'],
+  ['铁粉先反应，再检验', 'Iron first; test afterwards'],
+] as const;
+function Line({
+  x,
+  y,
+  children,
+  anchor = 'middle',
+  fill,
+}: {
+  x: number;
+  y: number;
+  children: ReactNode;
+  anchor?: 'middle' | 'start' | 'end';
+  fill?: string;
+}) {
   return (
-    <section className="chem-iron-practical" data-watch={film.watch}>
-      <div className="chem-practical-label">{say(...names[d.kind])}</div>
-      <div className="chem-practical-stage">
-        <svg
-          viewBox="0 0 320 300"
-          role="img"
-          aria-label={say(
-            '当前铁实验的金属表面、溶液与显色证据',
-            'Metal surface, solution and colour evidence for the current iron experiment',
-          )}
-        >
+    <text x={x} y={y} textAnchor={anchor} style={fill ? { fill } : undefined}>
+      {children}
+    </text>
+  );
+}
+function ArrowRail({ x1, x2, y, id }: { x1: number; x2: number; y: number; id: string }) {
+  return (
+    <path
+      d={`M${x1} ${y}C${x1} ${y - 13} ${x2} ${y - 13} ${x2} ${y}`}
+      fill="none"
+      stroke="#bcaa73"
+      strokeWidth="1.5"
+      strokeDasharray="3 4"
+      markerEnd={`url(#${id})`}
+    />
+  );
+}
+function Transfer({
+  chapter,
+  preset,
+  p,
+  width,
+  id,
+  indicator = false,
+  record = false,
+  motion,
+}: {
+  chapter: number;
+  preset: number;
+  p: number;
+  width: number;
+  id: string;
+  indicator?: boolean;
+  record?: boolean;
+  motion?: PracticalMotion;
+}) {
+  const m = practicalFrame(chapter, p, preset, width, motion),
+    net = practicalNet(chapter, 1, preset),
+    w = m.width,
+    left = w < 440 ? 48 : 140,
+    right = w < 440 ? w - 48 : w - 140;
+  const test = practicalIndicator(chapter, preset, p >= 0.999 ? 1 : 0, indicator);
+  const atomColour = (a: (typeof m.actors)[number]) =>
+    a.element === 'Fe'
+      ? a.formalCharge === 0
+        ? colours.iron
+        : a.formalCharge === 3
+          ? colours.ferric
+          : colours.ferrous
+      : a.element === 'Cu'
+        ? a.formalCharge === 0
+          ? colours.copper
+          : '#679ba9'
+        : a.element === 'Zn'
+          ? colours.zinc
+          : colours.iodine;
+  return (
+    <g
+      data-event-chapter={chapter}
+      data-credit-charge={m.creditCharge}
+      data-current-charge={m.charge}
+      data-initial-charge={m.initialCharge}
+    >
+      <Line x={w / 2} y={19}>
+        {test.blue
+          ? say('碘收支示意，非显色结构', 'Iodine account, not a structure')
+          : record
+            ? say('教材观察 · 局部', 'Textbook observation')
+            : say('净电子份额记账', 'Net electron-credit account')}
+      </Line>
+      {m.credits.length > 0 && <ArrowRail x1={left} x2={right} y={60} id={id} />}
+      <path
+        d={`M12 59H${w - 12}V190Q${w - 12} 202 ${w - 24} 202H24Q12 202 12 190Z`}
+        fill="#dce9e432"
+        stroke="#c3d2c84d"
+      />
+      {m.actors.some((a) => a.phaseBefore === 'solid' || a.phaseAfter === 'solid') && (
+        <g>
           <path
-            d="M80 20V225a80 55 0 0 0 160 0V20"
-            fill="#cdd9c82a"
-            stroke="#95a58b"
+            d={`M${left - 30} 121q25-8 59-1l-6 68q-27 8-57 0Z`}
+            fill="#bcc6ba55"
+            stroke="#99a998"
+          />
+          <Line x={left + 13} y={220}>
+            {say('金属表面', 'Metal surface')}
+          </Line>
+        </g>
+      )}
+      {!m.actors.some((a) => a.phaseBefore === 'solid' || a.phaseAfter === 'solid') && (
+        <Line x={left} y={220}>
+          {chapter === 2
+            ? m.departed
+              ? 'I₂ + I⁻'
+              : 'I⁻'
+            : chapter === 4
+              ? 'Fe²⁺ / Fe³⁺'
+              : say('样品', 'Sample')}
+        </Line>
+      )}
+      <Line x={right} y={220}>
+        {say('水相', 'Water')}
+      </Line>
+      {test.blue && (
+        <g data-iodine-host="true">
+          <ellipse
+            cx={left}
+            cy="100"
+            rx={w < 440 ? 43 : 70}
+            ry="49"
+            fill="#6877a22a"
+            stroke="#64749b"
             strokeWidth="2"
           />
-          <path d="M84 100H236V225a76 51 0 0 1-152 0Z" fill="#d5e2c8" opacity=".35" />
-          {[
-            ['#d5b561', ferricOpacity],
-            ['#73acc1', copperOpacity],
-            ['#884c9b', purpleOpacity],
-            [m.starch ? '#344b6c' : '#ae8b3f', iodineOpacity],
-            ['#af4335', m.red * 0.85],
-          ].map(([colour, opacity], i) => (
-            <path
-              key={i}
-              d="M84 100H236V225a76 51 0 0 1-152 0Z"
-              fill={String(colour)}
-              opacity={Number(opacity)}
-            />
-          ))}
           <path
-            d="M91 38V223q0 35 30 43"
+            d={`M${left - 31} 71q62 12 0 24t0 24t0 24`}
             fill="none"
-            stroke="white"
-            strokeWidth="4"
-            opacity=".45"
+            stroke="#7887ad"
+            opacity=".65"
           />
-          {d.kind === 'iron-copper' && (
-            <>
-              <path
-                d="M155 25q-12 15 0 35V235"
-                fill="none"
-                stroke="#8d9692"
-                strokeWidth={16 * Math.sqrt(m.fe0)}
-              />
-              {Array.from({ length: 22 }, (_, i) => (
-                <ellipse
-                  key={i}
-                  cx={151 + (i % 3) * 4}
-                  cy={115 + i * 5}
-                  rx="5"
-                  ry="3"
-                  fill="#b9784e"
-                  opacity={i / 22 < m.cu0 ? 0.85 : 0}
-                />
-              ))}
-            </>
+        </g>
+      )}
+      {chapter === 2 &&
+        m.departed &&
+        m.actors.filter((a) => a.element === 'I' && a.changed).length >= 2 && (
+          <path
+            d={`M${m.actors[0]!.x} ${m.actors[0]!.y}L${m.actors[1]!.x} ${m.actors[1]!.y}`}
+            stroke={colours.iodine}
+            strokeWidth="3"
+          />
+        )}
+      {m.actors.map((a, i) => {
+        const count = m.actors.filter(
+            (x) => x.element === a.element && x.phaseBefore === a.phaseBefore,
+          ).length,
+          r = count === 1 ? 21 : 11,
+          marked = i === 0,
+          red = test.red && a.element === 'Fe' && a.formalCharge === 3;
+        return (
+          <g
+            key={a.id}
+            data-practical-atom={a.id}
+            data-element={a.element}
+            data-formal-charge={a.formalCharge}
+            data-phase={a.phase}
+          >
+            {marked && (
+              <circle cx={a.x} cy={a.y} r={r + 5} fill="none" stroke="#bda574" strokeWidth="1.5" />
+            )}
+            {red && <circle cx={a.x} cy={a.y} r={r + 6} fill={colours.red} opacity=".18" />}
+            <circle
+              cx={a.x}
+              cy={a.y}
+              r={r}
+              fill={atomColour(a)}
+              stroke="#fff9e8"
+              strokeWidth="1.3"
+            />
+            {
+              <Line x={a.x} y={a.y + 5.5} fill="#fffaf0">
+                {(r === 21 || a.element === 'I') && a.formalCharge !== 0
+                  ? `${a.element}${a.formalCharge === 2 ? '²⁺' : a.formalCharge === 3 ? '³⁺' : a.formalCharge === -1 ? '⁻' : '⁺'}`
+                  : a.element}
+              </Line>
+            }
+          </g>
+        );
+      })}
+      {m.credits.map((e) => (
+        <g
+          key={e.id}
+          data-electron-id={e.id}
+          data-electron-phase={e.phase}
+          opacity={record ? 0 : 1}
+        >
+          <circle cx={e.x} cy={e.y} r="4.5" fill={colours.electron} />
+        </g>
+      ))}
+      {chapter === 4 && (
+        <g data-acidic-acceptor-charge={m.acceptorCharge}>
+          <rect
+            x={right - 38}
+            y="77"
+            width="76"
+            height="87"
+            rx="17"
+            fill="#ece0ee"
+            stroke="#b29abb"
+          />
+          <Line x={right} y={103}>
+            {m.arrived ? 'Mn²⁺' : 'MnO₄⁻'}
+          </Line>
+          <Line x={right} y={131}>
+            {m.arrived ? '4H₂O' : '+ 8H⁺'}
+          </Line>
+          {(net.state.MnO4 ?? 0) > 0 && m.arrived && (
+            <Line x={right} y={185}>
+              {say('另有剩余', 'Also remains')}
+            </Line>
           )}
-          {d.kind === 'ferric-copper' &&
-            Array.from({ length: 3 }, (_, i) => (
-              <path
-                key={i}
-                d={`M${120 + i * 35} ${205 + (i % 2) * 20}l${19 * Math.sqrt((m.cu0 * 2) / Math.max(0.001, d.partner))} -6l4 18l-18 6Z`}
-                fill="#bb8158"
-                stroke="#a96d49"
-                opacity={m.cu0 > 1e-8 ? 1 : 0}
-              />
-            ))}
-          {d.kind === 'ferrous-zinc' && (
-            <>
-              <path
-                d={`M120 ${230 - (85 * m.zn0) / Math.max(0.001, d.partner)}l70-15v30l-70 15Z`}
-                fill="#aeb7b2"
-                stroke="#919f95"
-                opacity={m.zn0 > 1e-8 ? 1 : 0}
-              />
-              {Array.from({ length: 24 }, (_, i) => (
-                <circle
-                  key={i}
-                  cx={115 + ((i * 17) % 85)}
-                  cy={220 + ((i * 7) % 30)}
-                  r="3.5"
-                  fill="#65736b"
-                  opacity={i / 24 < m.fe0 ? 0.9 : 0}
-                />
-              ))}
-            </>
-          )}
-          {d.kind === 'iron-test' &&
-            Array.from({ length: 20 }, (_, i) => (
-              <circle
-                key={i}
-                cx={110 + ((i * 19) % 100)}
-                cy={238 + ((i * 7) % 25)}
-                r="3.5"
-                fill="#727e72"
-                opacity={i / 20 < (m.fe0 * 2) / Math.max(0.001, d.partner) ? 0.8 : 0}
-              />
-            ))}
-          {d.test && (m.diagnostic || d.kind === 'ferric-iodide') && (
-            <path d="M159 5v43h6V5M162 66q-6 9 0 10t0-10" fill="#bdcbb4" stroke="#91a68c" />
-          )}
+        </g>
+      )}
+      {indicator && (
+        <Line x={w / 2} y={188} fill={test.blue ? '#52688e' : test.red ? colours.red : undefined}>
+          {!test.requested
+            ? say('未加检验试剂', 'Test reagent absent')
+            : test.reactionPending
+              ? say('先完成反应记账', 'Complete the reaction account')
+              : test.pending
+                ? say('仍有紫色：检验待定', 'Purple remains: test pending')
+                : test.blue
+                  ? say('淀粉 · 含碘体系', 'Starch · iodine system')
+                  : test.red
+                    ? say('SCN⁻ 显红', 'SCN⁻: red response')
+                    : say('无同样显色', 'No same colour response')}
+        </Line>
+      )}
+    </g>
+  );
+}
+function Acid({ p, width }: { p: number; width: number }) {
+  const m = practicalAcidAtoms(p, width),
+    mn = m.atoms[0]!;
+  return (
+    <g data-acid-net-progress={m.progress}>
+      <Line x={m.width / 2} y={19}>
+        {say('酸性净账：4O + 8H', 'Acidic net account: 4O + 8H')}
+      </Line>
+      {m.atoms
+        .filter((a) => a.element === 'O')
+        .map((a) => (
+          <path
+            key={`old-${a.id}`}
+            d={`M${mn.x} ${mn.y}L${a.x} ${a.y}`}
+            stroke={colours.manganese}
+            opacity={m.mnO}
+            strokeWidth="2"
+          />
+        ))}
+      {[0, 1, 2, 3].flatMap((i) => {
+        const o = m.atoms.find((a) => a.id === `acid-O${i}`)!;
+        return [0, 1].map((j) => {
+          const h = m.atoms.find((a) => a.id === `acid-H${i * 2 + j}`)!;
+          return (
+            <path
+              key={`water-${i}-${j}`}
+              d={`M${o.x} ${o.y}L${h.x} ${h.y}`}
+              stroke="#a1aaa2"
+              opacity={m.waterBond}
+              strokeWidth="2"
+            />
+          );
+        });
+      })}
+      {m.atoms.map((a) => (
+        <g key={a.id} data-net-atom={a.id} data-element={a.element} data-group={a.group}>
+          <circle
+            cx={a.x}
+            cy={a.y}
+            r={a.element === 'H' ? 10 : a.element === 'O' ? 13 : 19}
+            fill={
+              a.element === 'Mn'
+                ? colours.manganese
+                : a.element === 'O'
+                  ? colours.oxygen
+                  : colours.hydrogen
+            }
+          />
+          <Line x={a.x} y={a.y + 5.5} fill="#fffaf0">
+            {a.element}
+          </Line>
+        </g>
+      ))}
+      <Line x={m.width / 2} y={222}>
+        {p >= 0.94 ? 'Mn²⁺ + 4H₂O' : 'MnO₄⁻ + 8H⁺ + 5e⁻'}
+      </Line>
+    </g>
+  );
+}
+function Binding({ p, preset, width }: { p: number; preset: number; width: number }) {
+  const m = practicalBinding(p, width, preset);
+  return (
+    <g data-binding-centre-oxidation={m.centreOxidation}>
+      <Line x={width / 2} y={22}>
+        {say('显色对照', 'Colour control')}
+      </Line>
+      <circle
+        cx={m.fe.x}
+        cy={m.fe.y}
+        r={42}
+        fill={m.red ? '#b95e4d22' : '#dfe8de'}
+        stroke="#c4cdbd"
+      />
+      <path
+        d={`M${m.fe.x} ${m.fe.y}L${m.water.x} ${m.water.y}`}
+        opacity={m.active ? 1 - m.progress : 1}
+        stroke="#a8b9ad"
+      />
+      <circle cx={m.water.x} cy={m.water.y} r="15" fill="#e1ece6" stroke="#b3c9bd" />
+      <Line x={m.water.x} y={m.water.y + 5}>
+        {'H₂O'}
+      </Line>
+      {m.ligand.present && (
+        <>
+          <path
+            d={`M${m.fe.x} ${m.fe.y}L${m.ligand.x} ${m.ligand.y}`}
+            stroke="#a598ad"
+            opacity={m.active ? m.progress : 0}
+            strokeWidth="2"
+          />
+          <rect
+            x={m.ligand.x - 29}
+            y={m.ligand.y - 14}
+            width="58"
+            height="28"
+            rx="14"
+            fill="#e4deea"
+            stroke="#b7a9c2"
+          />
+          <Line x={m.ligand.x} y={m.ligand.y + 5}>
+            {'SCN⁻'}
+          </Line>
+        </>
+      )}
+      <circle
+        cx={m.fe.x}
+        cy={m.fe.y}
+        r="24"
+        fill={m.centreOxidation === 3 ? '#eadac0' : '#d7e4dd'}
+        stroke="#a68d64"
+      />
+      <Line x={m.fe.x} y={m.fe.y + 5.5}>
+        {m.centreOxidation === 3 ? 'Fe³⁺' : 'Fe²⁺'}
+      </Line>
+      <Line x={width / 2} y={171}>
+        {say('中心铁的氧化数', 'Central iron oxidation state')}
+      </Line>
+      <Line x={width / 2} y={201}>{`+${m.centreOxidation} → +${m.centreOxidation}`}</Line>
+    </g>
+  );
+}
+function RouteMap({
+  chapter,
+  reveal,
+  width,
+  id,
+}: {
+  chapter: number;
+  reveal: boolean;
+  width: number;
+  id: string;
+}) {
+  const m = practicalRouteGeometry(chapter, reveal, width),
+    current = m.records.find((r) => r.chapter === chapter),
+    compare = chapter === 4 && reveal;
+  return (
+    <g
+      data-practical-map-records={m.records.length}
+      data-current-route-revealed={reveal}
+      data-role-comparison={compare}
+    >
+      <Line x={width / 2} y={22}>
+        {say('教材观察记录', 'Textbook observation record')}
+      </Line>
+      {m.records
+        .filter((r) => r.from !== r.to)
+        .map((r) => {
+          const a = r.fromPoint,
+            b = r.toPoint,
+            dir = Math.sign(b.x - a.x),
+            active = r.chapter === chapter || (compare && r.chapter === 3);
+          return (
+            <path
+              key={r.chapter}
+              d={`M${a.x + 22 * dir} ${a.y}C${a.x + 36 * dir} ${r.controlY} ${b.x - 36 * dir} ${r.controlY} ${b.x - 22 * dir} ${b.y}`}
+              fill="none"
+              stroke={active ? '#a78339' : '#9eb6a8'}
+              strokeWidth={active ? 3 : 1.5}
+              opacity={active ? 1 : 0.3}
+              markerEnd={active ? `url(#${id})` : undefined}
+            />
+          );
+        })}
+      {m.nodes.map((n) => (
+        <g key={n.oxidation}>
+          <circle
+            cx={n.x}
+            cy={n.y}
+            r="23"
+            fill={n.oxidation === 0 ? '#e0e4da' : n.oxidation === 2 ? '#d9e8df' : '#eadebd'}
+            stroke="#a3b2a0"
+          />
+          <Line x={n.x} y={n.y + 5.5}>
+            {n.oxidation === 0 ? 'Fe⁰' : n.oxidation === 2 ? 'Fe²⁺' : 'Fe³⁺'}
+          </Line>
+        </g>
+      ))}
+      {current && current.kind === 'coordination' && (
+        <g>
+          <ellipse
+            cx={current.toPoint.x}
+            cy={106}
+            rx="32"
+            ry="36"
+            fill="none"
+            stroke={colours.red}
+            strokeWidth="2"
+          />
+          <Line x={width / 2} y={172}>
+            {say('同一价态 · 配位显色', 'Same state · colour response')}
+          </Line>
+        </g>
+      )}
+      {compare && (
+        <>
+          <Line x={width * 0.25} y={180}>
+            Zn
+          </Line>
+          <Line x={width * 0.75} y={180}>
+            MnO₄⁻ / H⁺
+          </Line>
+        </>
+      )}
+      {current && current.kind === 'redox' && !compare && (
+        <Line x={width / 2} y={180}>
+          {say('反应伙伴', 'Reaction partner')}: {current.partner}
+        </Line>
+      )}
+      {!reveal && (
+        <Line x={width / 2} y={180}>
+          {say('是否需要新增箭头？', 'Does this need a new arrow?')}
+        </Line>
+      )}
+      <Line x={width / 2} y={215}>
+        {say('价态路径，不是能量图', 'Oxidation states, not energy')}
+      </Line>
+    </g>
+  );
+}
+export default function ChemIronPractical() {
+  const film = useShowcase(),
+    locale = browserLocale(),
+    container = useRef<HTMLDivElement>(null),
+    uid = useId().replaceAll(':', '');
+  const [width, setWidth] = useState(268),
+    [chapter, setChapter] = useState(0),
+    [preset, setPreset] = useState(0),
+    [progress, setProgress] = useState(0.5),
+    [view, setView] = useState<PracticalShot>('transfer'),
+    [test, setTest] = useState(true);
+  useEffect(() => {
+    const el = container.current;
+    if (!el) return;
+    const update = () => setWidth(Math.max(248, Math.min(720, Math.floor(el.clientWidth))));
+    update();
+    const o = new ResizeObserver(update);
+    o.observe(el);
+    return () => o.disconnect();
+  }, []);
+  const d = film.watch
+    ? practicalFilm(film.chapter, film.chapterTime, locale)
+    : { chapter, preset, progress, shot: view, prediction: false, reveal: progress >= 1, test };
+  const c = d.chapter,
+    sp = d.preset,
+    frameP =
+      d.shot === 'acid' || d.shot === 'map'
+        ? 1
+        : film.watch &&
+            (d.shot === 'surface' ||
+              d.shot === 'test' ||
+              d.shot === 'iodine' ||
+              d.shot === 'binding')
+          ? 1
+          : d.progress;
+  const motion = film.watch && d.shot === 'transfer' && 'motion' in d ? d.motion : undefined;
+  const frame = practicalFrame(c, frameP, sp, width, motion),
+    indicator = practicalIndicator(c, sp, frameP, d.test),
+    actualFe = frame.actors.filter((a) => a.element === 'Fe');
+  const fe0 = actualFe.filter((a) => a.formalCharge === 0).length,
+    fe2 = actualFe.filter((a) => a.formalCharge === 2).length,
+    fe3 = actualFe.filter((a) => a.formalCharge === 3).length;
+  const modeNames = sampleNames.map((a, value) => ({
+    value: String(value),
+    label: say(a[0], a[1]),
+  }));
+  const recipeLabels =
+    c === 6
+      ? [
+          say('1Fe + 5Fe³⁺', '1Fe + 5Fe³⁺'),
+          say('1Fe + 2Fe³⁺', '1Fe + 2Fe³⁺'),
+          say('2Fe + 5Fe³⁺', '2Fe + 5Fe³⁺'),
+        ]
+      : c === 4
+        ? [
+            say('5Fe²⁺ : 1MnO₄⁻', '5Fe²⁺ : 1MnO₄⁻'),
+            say('高锰酸根过量', 'Excess permanganate'),
+            say('二价铁过量', 'Excess iron two'),
+          ]
+        : c === 5
+          ? [
+              say('Fe³⁺ + SCN⁻', 'Fe³⁺ + SCN⁻'),
+              say('不加SCN⁻', 'No SCN⁻'),
+              say('Fe²⁺对照', 'Fe²⁺ control'),
+            ]
+          : [
+              say('示例配比', 'Example ratio'),
+              say('改变供给', 'Change supply'),
+              say('缺少反应伙伴', 'Partner absent'),
+            ];
+  const render =
+    d.shot === 'acid' ? (
+      <Acid p={d.progress} width={width} />
+    ) : d.shot === 'map' || (c === 5 && d.shot === 'predict') ? (
+      <RouteMap chapter={c} reveal={d.reveal} width={width} id={uid} />
+    ) : c === 5 ? (
+      <Binding p={d.progress} preset={sp} width={width} />
+    ) : (
+      <Transfer
+        chapter={c}
+        preset={sp}
+        p={frameP}
+        motion={motion}
+        width={width}
+        id={uid}
+        indicator={d.test && (d.shot === 'iodine' || d.shot === 'test')}
+        record={d.shot === 'surface'}
+      />
+    );
+  const aria = d.prediction
+    ? say('预测阶段，反应结果尚未揭示', 'Prediction: the result is not yet revealed')
+    : d.shot === 'acid'
+      ? say(
+          '同一锰、四个氧与八个氢的酸性净收支',
+          'The acidic net account preserves one manganese, four oxygen and eight hydrogen identities',
+        )
+      : say(sampleNames[c]![0], sampleNames[c]![1]);
+  return (
+    <section
+      className="ipx"
+      data-watch={film.watch}
+      data-practical-chapter={c}
+      data-practical-shot={d.shot}
+      data-preset={sp}
+      data-prediction={d.prediction}
+      data-diagnostic={
+        d.shot !== 'test'
+          ? undefined
+          : !indicator.requested
+            ? 'absent'
+            : indicator.pending || indicator.reactionPending
+              ? 'pending'
+              : indicator.red
+                ? 'red'
+                : 'no-red'
+      }
+    >
+      <div className="ipx-stage" ref={container}>
+        <svg viewBox={`0 0 ${width} 230`} role="img" aria-label={aria}>
+          <defs>
+            <marker
+              id={uid}
+              viewBox="0 0 7 7"
+              refX="6"
+              refY="3.5"
+              markerWidth="5"
+              markerHeight="5"
+              orient="auto"
+            >
+              <path d="M0 0L7 3.5L0 7Z" fill="#b68c39" />
+            </marker>
+          </defs>
+          {render}
         </svg>
-        <div className="chem-practical-observation">
-          <div className="chem-practical-reagent">{label}</div>
-          <div className="chem-practical-valence">
-            <span className={m.fe0 > 1e-9 ? 'active' : ''}>Fe⁰</span>
-            <span className={m.fe2 > 1e-9 ? 'active' : ''}>Fe²⁺</span>
-            <span className={m.fe3 > 1e-9 ? 'active' : ''}>Fe³⁺</span>
-          </div>
-          <p>
-            {d.kind === 'ferric-test'
-              ? say(
-                  '显色改变配位，不改变铁的价态',
-                  'Colour changes coordination, not the iron oxidation state',
-                )
-              : say('高亮表示当前存在的铁价态', 'Present oxidation states')}
-          </p>
-        </div>
       </div>
-      <div className="chem-practical-equation">{IRON_PRACTICAL_EQUATIONS[d.kind]}</div>
+      <div className="ipx-ledger" aria-live="off" data-net-charge={frame.charge}>
+        {d.prediction && c !== 5 ? (
+          <span>
+            {c === 6 ? '1Fe + 5Fe³⁺' : say('先预测，再看去向', 'Predict, then trace the change')}
+          </span>
+        ) : (
+          <>
+            <span>Fe⁰ {fe0}</span>
+            <span>Fe²⁺ {fe2}</span>
+            <span>Fe³⁺ {fe3}</span>
+          </>
+        )}
+        {!d.prediction &&
+          d.shot !== 'acid' &&
+          d.shot !== 'map' &&
+          c !== 5 &&
+          frame.creditCharge !== 0 && (
+            <span>
+              {say('在途份额', 'Credits in transit')} {Math.abs(frame.creditCharge)} e⁻
+            </span>
+          )}
+        {d.shot === 'acid' && (
+          <span>{say('净组成示意', 'Net composition')} · Mn 1 / O 4 / H 8</span>
+        )}
+      </div>
       {!film.watch && (
-        <div className="chem-practical-controls">
+        <div className="ipx-controls">
           <Segments
-            label={say('实验子项', 'Sub-experiment')}
-            value={kind}
-            options={IRON_PRACTICAL_CASES.map((value) => ({ value, label: say(...names[value]) }))}
-            onChange={(v) => setKind(v as IronPracticalCase)}
+            label={say('教材实验', 'Textbook experiment')}
+            value={String(chapter)}
+            options={modeNames}
+            onChange={(v) => {
+              setChapter(Number(v));
+              setPreset(0);
+              setView(Number(v) === 5 ? 'binding' : 'transfer');
+            }}
+          />
+          <Segments
+            label={say('物料条件', 'Material conditions')}
+            value={String(preset)}
+            options={recipeLabels.map((label, i) => ({ value: String(i), label }))}
+            onChange={(v) => setPreset(Number(v))}
+          />
+          <Segments
+            label={say('观察视图', 'Observation view')}
+            value={view}
+            options={[
+              {
+                value: c === 5 ? 'binding' : 'transfer',
+                label: say('跟踪变化', 'Trace the change'),
+              },
+              ...(c === 4 ? [{ value: 'acid', label: say('氧氢净账', 'O/H net account') }] : []),
+              ...([2, 4, 6].includes(c)
+                ? [{ value: c === 2 ? 'iodine' : 'test', label: say('后续检验', 'Follow-up test') }]
+                : []),
+              { value: 'map', label: say('教材路径图', 'Textbook route map') },
+            ]}
+            onChange={(v) => setView(v as PracticalShot)}
           />
           <Range
-            label={say('反应完成比例', 'Reaction extent')}
-            value={extent}
+            label={say('教学进度', 'Teaching progress')}
+            value={progress}
             min={0}
             max={1}
-            step={0.01}
-            onChange={setExtent}
+            step={0.005}
+            onChange={setProgress}
           />
-          {kind !== 'ferric-test' && (
-            <Range
-              label={say('另一反应物相对供给', 'Relative co-reactant supply')}
-              value={partner}
-              min={0}
-              max={2}
-              step={0.05}
-              onChange={setPartner}
-            />
-          )}
-          {['ferric-iodide', 'permanganate', 'ferric-test', 'iron-test'].includes(kind) && (
+          {[2, 4, 6].includes(c) && (
             <Segments
-              label={say('后续显色试剂', 'Follow-up colour reagent')}
+              label={say('检验试剂', 'Test reagent')}
               value={test ? 'on' : 'off'}
               options={[
-                { value: 'on', label: say('加入', 'Added') },
                 { value: 'off', label: say('未加入', 'Not added') },
+                { value: 'on', label: say('加入', 'Added') },
               ]}
               onChange={(v) => setTest(v === 'on')}
             />
           )}
-          <p>
-            Fe⁰ {m.fe0.toFixed(2)} · Fe²⁺ {m.fe2.toFixed(2)} · Fe³⁺ {m.fe3.toFixed(2)}
-          </p>
-          <p>
-            {say(
-              '采用理想净反应和定性颜色；忽略副反应、实际速率与颜色叠加的光谱计算。',
-              'Ideal net reactions and qualitative colours omit side reactions, actual rates and spectral mixing.',
-            )}
-          </p>
         </div>
       )}
+      <details className="ipx-limits">
+        <summary>{say('模型与证据边界', 'Model and evidence limits')}</summary>
+        <p>
+          {say(
+            '每章是新的独立样品。连线记录净电子份额，不是水中自由电子的轨迹；路径图记录教材中的反应，不是能量图或任意反应的可行性求解器。',
+            'Each chapter is a fresh sample. The rail assigns net electron credits; it is not a path of free electrons in water. The map records textbook reactions, not energy or a general reaction-feasibility solver.',
+          )}
+        </p>
+        <p>
+          {say(
+            '高锰酸根只显示酸性条件下生成Mn²⁺的净分支，氧氢路径不是逐步机理。显色是定性线索，省略Fe²⁺配位及完整的碘/淀粉与硫氰酸根平衡。',
+            'Permanganate uses the acidic Mn²⁺ net branch; O/H paths are not elementary mechanisms. Colours are qualitative. Fe²⁺ coordination and full iodine/starch and thiocyanate speciation are omitted.',
+          )}
+        </p>
+        <p>{IRON_PRACTICAL_EQUATIONS[IRON_PRACTICAL_CASES[c]!]}</p>
+        <p>
+          {say(
+            '教学物料份数并非教材试剂用量，进度不是实测速率。',
+            'Teaching amounts are not textbook reagent doses; progress is not a measured rate.',
+          )}
+        </p>
+      </details>
     </section>
   );
 }

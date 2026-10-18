@@ -97,3 +97,96 @@ export function doubleInclineState(time: number, rightDegrees = 25) {
     geometry,
   };
 }
+
+/** Camera scale never shrinks the physical sphere to fit a distant return point. */
+export function galileoTrackView(time: number, rightDegrees: number) {
+  const state = doubleInclineState(time, rightDegrees),
+    geometry = state.geometry;
+  const first = geometry.at(0),
+    last = geometry.at(geometry.length);
+  const scale = Math.max(110, Math.min(130, 330 / (last.x - first.x)));
+  const unshiftedX = 15 + (state.x - first.x) * scale;
+  const camera = Math.max(0, unshiftedX - 270);
+  const map = (x: number, y: number) => ({
+    x: 15 + (x - first.x) * scale - camera,
+    y: 156 - y * scale,
+  });
+  const points = [
+    0,
+    geometry.leftLength,
+    ...Array.from({ length: 41 }, (_, i) => geometry.leftLength + (geometry.arcLength * i) / 40),
+    geometry.length,
+  ];
+  // The horizontal ideal track extends beyond the finite display window.
+  if (rightDegrees === 0) points.push(Math.max(geometry.length, state.position + 2));
+  const rail = points.map((s) => {
+    const q = geometry.at(s);
+    return map(q.x + 0.065 * Math.sin(q.angle), q.y - 0.065 * Math.cos(q.angle));
+  });
+  return {
+    state,
+    scale,
+    camera,
+    first: map(first.x, first.y),
+    center: map(state.x, state.y),
+    radius: 0.065 * scale,
+    rail,
+    referenceY: map(0, geometry.height).y,
+    continuesRight: map(last.x, last.y).x > 345 || rightDegrees === 0,
+    returnDistance: geometry.rightLength,
+    ticks: Array.from({ length: Math.ceil(Math.max(2, state.x + 2)) + 1 }, (_, worldX) => ({
+      ...map(worldX, 0),
+      worldX,
+    })),
+  };
+}
+/** Physical construction points share one ramp equation, including support feet. */
+export function galileoTimingGeometry(degrees: number) {
+  if (!Number.isFinite(degrees) || degrees < 3 || degrees > 18)
+    throw new RangeError('Supported timing ramp is3…18degrees.');
+  rollingIncline(0, degrees);
+  const phi = (degrees * Math.PI) / 180,
+    tableY = 190;
+  const at = (s: number) => ({ x: 35 + s * 175 * Math.cos(phi), y: 80 + s * 175 * Math.sin(phi) });
+  const supports = [0.06, 1.55].map((s) => {
+    const q = at(s);
+    return { x: q.x, top: q.y + 8, bottom: tableY - 1 };
+  });
+  return { at, phi, tableY, end: at(1.6), supports };
+}
+export function galileoFilmState(chapter: number, seconds: number, locale: 'zh' | 'en') {
+  if (![chapter, seconds].every(Number.isFinite))
+    throw new RangeError('Finite film position required.');
+  const c = Math.max(0, Math.min(5, Math.floor(chapter))),
+    t = Math.max(0, seconds),
+    zh = locale === 'zh';
+  const r = (a: number, b: number) => Math.max(0, Math.min(1, (t - a) / (b - a)));
+  const angle = c === 2 ? 12 : 6;
+  const trial = c === 4 ? (t < (zh ? 5.7 : 5.2) ? 0 : t < (zh ? 10.2 : 8.9) ? 1 : 2) : 0;
+  const right = c === 4 ? [35, 15, 0][trial] : c === 5 ? 25 : 35;
+  const run =
+    c === 4
+      ? trial === 0
+        ? 1.7 * r(0.4, zh ? 5 : 4.8)
+        : trial === 1
+          ? 2.6 * r(zh ? 5.8 : 5.3, zh ? 9.8 : 8.6)
+          : 1.9 * r(zh ? 10.6 : 9.2, zh ? 15.1 : 14.5)
+      : c === 5
+        ? 2.1 * r(zh ? 3.8 : 4.1, zh ? 12.1 : 12.7)
+        : 1.7 * r(zh ? 2.7 : 1.8, zh ? 10.5 : 10.1);
+  const end = rollingIncline(0, angle).endTime;
+  const timingTime =
+    c === 0
+      ? end * r(zh ? 7.5 : 6.5, zh ? 15.1 : 12.6)
+      : c === 1
+        ? end * r(zh ? 4.5 : 4.6, zh ? 12.9 : 13.2)
+        : end * r(2.5, zh ? 7.5 : 6.9);
+  return {
+    kind: c < 3 ? 'timing' : c === 5 ? 'energy' : 'double',
+    angle,
+    right,
+    run,
+    timingTime,
+    trial,
+  } as const;
+}

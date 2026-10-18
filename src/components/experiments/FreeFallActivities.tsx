@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
@@ -7,7 +7,7 @@ import {
   reactionDistance,
   reactionTime,
   tiedStoneArgument,
-  fallActivityShot,
+  fallFilmState,
   type DropObject,
 } from '../../models/free-fall-activities';
 import '../../styles/free-fall-activities.css';
@@ -40,29 +40,24 @@ function FallingObject({ kind, x, y }: { kind: DropObject; x: number; y: number 
 }
 export default function FreeFallActivities() {
   const film = useShowcase();
-  const [path, setPath] = useState(() =>
-      film.variant?.includes('tied-stones')
-        ? 'reasoning'
-        : film.variant?.includes('reaction-ruler')
-          ? 'ruler'
-          : 'paper',
-    ),
+  const [selectedPath, setPath] = useState<string | null>(null),
     [time, setTime] = useState(0.5),
     [air, setAir] = useState('air'),
     [reaction, setReaction] = useState(0.2),
     [step, setStep] = useState(2);
-  const shot = fallActivityShot(film.chapter, film.chapterProgress),
+  const shot = fallFilmState(film.chapter, film.chapterTime, browserLocale()),
+    path = selectedPath ?? shot.mode,
     mode = film.watch ? shot.mode : path,
     now = film.watch ? shot.time : time,
     delay = film.watch ? shot.reaction : reaction,
     logic = tiedStoneArgument(film.watch ? shot.logicStage : step),
-    rho = film.watch ? 1.225 : air === 'air' ? 1.225 : 0,
-    fall = film.watch ? reactionDistance(delay) * shot.release : reactionDistance(delay),
+    rho = film.watch ? shot.density : air === 'air' ? 1.225 : 0,
+    fall = film.watch ? reactionDistance(delay * shot.release) : reactionDistance(delay),
     distance = Math.min(0.5, fall),
     caught = film.watch ? shot.release >= 1 : true,
     gripY = 254 - (distance / 0.5) * 224;
   return (
-    <section className="fall-activities">
+    <section className="fall-activities" data-kind={mode} data-density={rho}>
       <header>
         <p>
           {t(
@@ -85,49 +80,53 @@ export default function FreeFallActivities() {
       </header>
       {mode === 'paper' ? (
         <>
-          <div className="fall-paper-columns">
-            {objects.map((kind) => {
-              const s = paperDrop(kind, now, rho);
-              return (
-                <figure key={kind}>
-                  <figcaption>
-                    {t(kind === 'sheet' ? '平纸片' : kind === 'paper-ball' ? '同质量纸团' : '橡皮')}
-                  </figcaption>
-                  <svg
-                    viewBox="0 0 100 245"
-                    role="img"
-                    aria-label={t('由同一释放高度下落的纸或橡皮，接触基准一致')}
-                  >
-                    <path d="M15 34H85" stroke="#c4cbb9" strokeDasharray="3 4" />
-                    <path d="M12 218H88" stroke="#a2b39b" strokeWidth="2" />
-                    <path
-                      d={`M50 20V${20 + (s.distance / 1.4) * 184}`}
-                      stroke="#d3dac8"
-                      strokeDasharray="2 6"
-                    />
-                    <FallingObject kind={kind} x={50} y={20 + (s.distance / 1.4) * 184} />
-                    {s.landed && (
-                      <ellipse cx="50" cy="221" rx="23" ry="3" fill="#9baf91" opacity=".15" />
-                    )}
-                  </svg>
-                  <p>{kind === 'eraser' ? '20 g' : '5 g'}</p>
-                </figure>
-              );
-            })}
+          <div className="fall-paper-columns" data-count={film.watch && !shot.showEraser ? 2 : 3}>
+            {objects
+              .filter((kind) => !film.watch || shot.showEraser || kind !== 'eraser')
+              .map((kind) => {
+                const s = paperDrop(kind, now, rho);
+                return (
+                  <figure key={kind}>
+                    <figcaption>
+                      {t(kind === 'sheet' ? '平纸片' : kind === 'paper-ball' ? '纸团' : '橡皮')}
+                    </figcaption>
+                    <svg
+                      viewBox="0 0 100 245"
+                      role="img"
+                      aria-label={t('由同一释放高度下落的纸或橡皮，接触基准一致')}
+                    >
+                      <path d="M15 34H85" stroke="#c4cbb9" strokeDasharray="3 4" />
+                      <path d="M12 218H88" stroke="#a2b39b" strokeWidth="2" />
+                      <path
+                        d={`M50 20V${20 + (s.distance / 1.4) * 184}`}
+                        stroke="#d3dac8"
+                        strokeDasharray="2 6"
+                      />
+                      <FallingObject kind={kind} x={50} y={20 + (s.distance / 1.4) * 184} />
+                      {s.landed && (
+                        <ellipse cx="50" cy="221" rx="23" ry="3" fill="#9baf91" opacity=".15" />
+                      )}
+                    </svg>
+                    <p>{kind === 'eraser' ? '20 g' : '5 g'}</p>
+                  </figure>
+                );
+              })}
           </div>
           <div className="fall-observation">
             <span>
-              {t('实验时间')} {now.toFixed(2)} s
+              {t(rho === 0 ? '忽略阻力' : '有空气')} · {now.toFixed(2)} s
             </span>
-            <b>
-              {t(
-                now === 0
-                  ? '先保持同样的释放条件'
-                  : rho === 0
-                    ? '忽略空气阻力，三者保持齐平'
-                    : '形状改变了空气阻力的影响',
-              )}
-            </b>
+            {!film.watch && (
+              <b>
+                {t(
+                  now === 0
+                    ? '先保持同样的释放条件'
+                    : rho === 0
+                      ? '忽略空气阻力，三者保持齐平'
+                      : '形状改变了空气阻力的影响',
+                )}
+              </b>
+            )}
           </div>
         </>
       ) : mode === 'reasoning' ? (
@@ -178,15 +177,33 @@ export default function FreeFallActivities() {
                 />
               ))}
               <path d="M0 224H49" stroke="#b49052" strokeWidth="2" />
-              {[0.1, 0.15, 0.2, 0.25, 0.3].map((q) => (
-                <path
-                  key={q}
-                  d={`M30 ${224 - (reactionDistance(q) / 0.5) * 224}H49`}
-                  stroke="#6c8b70"
-                  strokeWidth="2"
-                />
+              {[0.1, 0.2, 0.3].map((q) => (
+                <g key={q}>
+                  <path
+                    d={`M30 ${224 - (reactionDistance(q) / 0.5) * 224}H49`}
+                    stroke="#6c8b70"
+                    strokeWidth="2"
+                  />
+                </g>
               ))}
             </g>
+            {[0.1, 0.2].map((q) => (
+              <g key={q}>
+                <path
+                  d={`M75 ${254 - (reactionDistance(q) / 0.5) * 224}H134`}
+                  stroke="#6c8b70"
+                  strokeDasharray="3 4"
+                />
+                <text
+                  x="12"
+                  y={254 - (reactionDistance(q) / 0.5) * 224 + 6}
+                  fontSize="22"
+                  fill="#607653"
+                >
+                  {q.toFixed(1)} s
+                </text>
+              </g>
+            ))}
             <g transform={`translate(0 ${gripY - 91})`}>
               <path
                 d={
@@ -209,7 +226,7 @@ export default function FreeFallActivities() {
               {t('换算时间')} <b>{(reactionTime(distance) * 1000).toFixed(0)} ms</b>
             </span>
           </div>
-          <p>{t('较大的时间刻度间隔，对应更长的下落距离。')}</p>
+          {!film.watch && <p>{t('较大的时间刻度间隔，对应更长的下落距离。')}</p>}
         </div>
       )}
       {!film.watch && (
