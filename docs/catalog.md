@@ -112,7 +112,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Volumetric preparation and dilution](../src/content/en/chem-solution-preparation.mdx)                 | 2:58 | What do rinsing and making up to volume control?                              |
 | [Two-step evidence for anions](../src/content/en/chem-anion-tests.mdx)                                 | 2:39 | Does a white precipitate identify an anion?                                   |
 | [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)            | 4:15 | When a precipitate changes, how can we trace its ions?                        |
-| [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                    | 1:31 | Does a changed oxidation state always mean complete electron transfer?        |
+| [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                    | 2:17 | How does electron counting fix reaction ratios?                               |
 | [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                           | 3:18 | What atomic information is hidden in a flame colour?                          |
 | [Evidence from sodium and sodium peroxide](../src/content/en/chem-sodium-reactions.mdx)                | 3:42 | How do sodium and its peroxide respond to air and water?                      |
 | [Comparing carbonate and bicarbonate](../src/content/en/chem-carbonate-comparison.mdx)                 | 3:22 | Why is bicarbonate still alkaline?                                            |
@@ -158,7 +158,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:04 | Separate pigments, then compare how wavelengths pass through them.                |
 | [Immune pathways and evidence](../src/content/en/bio-immune-pathways.mdx)                         | 2:50 | How does identifying a marker connect to an immune pathway?                       |
 | [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 2:46 | Connect the culture apparatus to the fate of matter inside cells.                 |
-| [Enzyme evidence and conditions](../src/content/en/bio-enzyme-investigations.mdx)                 | 3:10 | How do controls distinguish catalysis, specificity and enzyme inactivation?       |
+| [Enzyme evidence and conditions](../src/content/en/bio-enzyme-investigations.mdx)                 | 4:11 | Why do cells rely on enzymes to speed reactions?                                  |
 | [Neural research and clinical evidence](../src/content/en/bio-neural-evidence.mdx)                | 2:38 | What can a response, a stimulation and a case each establish?                     |
 | [Seven lines of evidence about the nucleus](../src/content/en/bio-nuclear-evidence.mdx)           | 2:47 | What evidence distinguishes nucleus, cytoplasm and developmental environment?     |
 | [Controlled evidence for hormone action](../src/content/en/bio-endocrine-evidence.mdx)            | 4:30 | What can removing and restoring a signal establish?                               |
@@ -205,7 +205,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Friction laboratory](../src/content/en/friction-lab.mdx)                                     | 2:20 | Why does friction change before the block moves?                                    |
 | [Elasticity laboratory](../src/content/en/elasticity-lab.mdx)                                 | 2:38 | Does twice the extension always require twice the force?                            |
 | [Seeing small deformations](../src/content/en/small-deformation-lab.mdx)                      | 1:51 | Why does the light spot move when the tabletop barely bends?                        |
-| [Finding the center of gravity](../src/content/en/suspension-center-of-gravity.mdx)           | 1:53 | How do two suspensions locate the same point?                                       |
+| [Finding the centre by suspension](../src/content/en/suspension-center-of-gravity.mdx)        | 2:30 | Why do different supports reveal the same point?                                    |
 | [Free-fall activities](../src/content/en/free-fall-activities.mdx)                            | 2:18 | What can paper, tied stones and a ruler tell us?                                    |
 | [How a phone senses acceleration](../src/content/en/phone-accelerometer-lab.mdx)              | 3:47 | Still reads 9.8; why does falling read zero?                                        |
 | [How tape records motion](../src/content/en/ticker-tape-lab.mdx)                              | 3:03 | Why do gaps grow when the ticking stays steady?                                     |

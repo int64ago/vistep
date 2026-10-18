@@ -1516,8 +1516,13 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['酶的证据与条件', '酶', '过氧化氢酶', '专一性', 'enzyme'],
-      en: ['Enzyme evidence and conditions', 'cell biology', 'biology experiments'],
+      zh: ['细胞为什么靠酶加速反应？', '酶的证据与条件', '酶', '过氧化氢酶', '专一性', 'enzyme'],
+      en: [
+        'Why do cells rely on enzymes to speed reactions?',
+        'Enzyme evidence and conditions',
+        'cell biology',
+        'biology experiments',
+      ],
     },
   },
   'bio-neural-evidence': {
@@ -1606,9 +1611,16 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['电子得失与电子对偏移', '氧化还原', '电子转移', '共用电子对'],
+      zh: [
+        '电子得失与电子对偏移',
+        '电子账本怎样决定反应配比？',
+        '氧化还原',
+        '电子转移',
+        '共用电子对',
+      ],
       en: [
         'Electron transfer and polar sharing',
+        'How does electron counting fix reaction ratios?',
         'oxidation reduction',
         'electron transfer',
         'polar shared pair',
@@ -2984,8 +2996,15 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'mechanisms',
     minAge: 12,
     keywords: {
-      zh: ['悬挂法找重心', '铅垂线', '三角形中线', '重心'],
-      en: ['Finding the center of gravity', 'plumb line', 'triangular lamina', 'centroid'],
+      zh: ['悬挂法找重心', '换了悬点，为什么仍找到同一点？', '铅垂线', '三角形中线', '重心'],
+      en: [
+        'Finding the centre by suspension',
+        'Why do different supports reveal the same point?',
+        'Finding the center of gravity',
+        'plumb line',
+        'triangular lamina',
+        'centroid',
+      ],
     },
   },
   'induction-coil-lab': {

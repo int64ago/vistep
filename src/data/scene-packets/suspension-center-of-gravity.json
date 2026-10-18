@@ -2,11 +2,11 @@
   "topic": {
     "slug": "suspension-center-of-gravity",
     "name": "悬挂法找重心",
-    "title": "两次悬挂，怎样找到薄板的同一个点？",
-    "question": "两次悬挂，怎样找到薄板的同一个点？",
-    "description": "让铅垂线留在薄板上，再换一个悬点；从不规则薄板到三角形中线，检验重心与质量分布。",
+    "title": "换了悬点，为什么仍找到同一点？",
+    "question": "换了悬点，为什么仍找到同一点？",
+    "description": "从重力的力臂看薄板转动，用两条固定墨迹定位重心，再预测加配重后的新位置。",
     "color": "#b2bd9d",
-    "tag": "悬挂 · 交点 · 重心",
+    "tag": "力臂 · 墨迹 · 质量分布",
     "related": ["center-of-mass", "pendulum"],
     "sources": [
       {
@@ -16,21 +16,41 @@
       {
         "title": "OpenStax — Conditions for Static Equilibrium",
         "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium"
+      },
+      {
+        "title": "OpenStax — Physical pendulums",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums"
+      },
+      {
+        "title": "OpenStax — Centre of mass and mass weighting",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass"
+      },
+      {
+        "title": "人教版高中物理必修第一册，58页与61页",
+        "url": "https://jc.pep.com.cn/"
       }
-    ]
+    ],
+    "number": "214"
   },
   "discovery": {
     "category": "mechanisms",
     "minAge": 12,
     "keywords": {
-      "zh": ["悬挂法找重心", "铅垂线", "三角形中线", "重心"],
-      "en": ["Finding the center of gravity", "plumb line", "triangular lamina", "centroid"]
+      "zh": ["悬挂法找重心", "换了悬点，为什么仍找到同一点？", "铅垂线", "三角形中线", "重心"],
+      "en": [
+        "Finding the centre by suspension",
+        "Why do different supports reveal the same point?",
+        "Finding the center of gravity",
+        "plumb line",
+        "triangular lamina",
+        "centroid"
+      ]
     }
   },
   "component": "src/components/experiments/SuspensionCenterOfGravity.tsx",
   "cover": "src/components/covers/SuspensionCenterOfGravityCover.astro",
   "translations": {
-    "悬挂法找重心": "Finding the center of gravity",
+    "悬挂法找重心": "Finding the centre by suspension",
     "两次悬挂，怎样找到薄板的同一个点？": "How do two suspensions locate the same point?",
     "让铅垂线留在薄板上，再换一个悬点；从不规则薄板到三角形中线，检验重心与质量分布。": "Record plumb lines on a hanging sheet, change the support, and test how shape and mass distribution locate its center.",
     "悬挂 · 交点 · 重心": "Suspend · Intersect · Locate",
@@ -51,68 +71,77 @@
     "三角形纸板": "Triangular card",
     "悬挂孔位置": "Suspension hole",
     "附加质量与板质量之比": "Added mass / sheet mass",
-    "小角度摆动采用阻尼近似；画线取停稳位置，忽略线重和悬点摩擦。": "Small swings use a damping approximation; lines are recorded at equilibrium, neglecting string mass and pivot friction."
+    "小角度摆动采用阻尼近似；画线取停稳位置，忽略线重和悬点摩擦。": "Small swings use a damping approximation; lines are recorded at equilibrium, neglecting string mass and pivot friction.",
+    "换了悬点，为什么仍找到同一点？": "Why do different supports reveal the same point?",
+    "从重力的力臂看薄板转动，用两条固定墨迹定位重心，再预测加配重后的新位置。": "See gravity turn a lamina, locate its centre with permanent ink, and predict what an added mass changes.",
+    "力臂 · 墨迹 · 质量分布": "Lever arm · Ink · Mass distribution"
   },
   "narration": {
-    "duration": 113,
+    "duration": 149.5,
     "cues": [
       {
         "id": "settle",
-        "title": "让薄板停稳",
-        "titleEn": "Let the sheet settle",
-        "caption": "先停稳，再沿悬线画线。",
-        "captionEn": "Wait for equilibrium before marking.",
-        "zh": "把薄板挂在一个小孔上，让它能够自由转动。开头的轻微摆动逐渐减小，最后重心落在悬点的正下方。此时铅垂线给出一条竖直方向，但我们还不能只凭这一条线确定重心是哪一个点。实验首先要等板停稳，不能沿着摆动中的位置匆忙画线。",
-        "en": "Hang the sheet from a small hole that allows it to turn freely. Its small swings die away until the center of gravity is below the support. The plumb line now gives a vertical direction, but this single line cannot identify one unique point. Wait for equilibrium before recording it; a swinging snapshot is not a valid mark.",
-        "seconds": 28,
+        "title": "偏着挂，为什么会转？",
+        "titleEn": "Why does the tilted lamina turn?",
+        "caption": "力臂决定重力的转动作用。",
+        "captionEn": "Lever arm sets gravity’s turning effect.",
+        "seconds": 34,
+        "zh": "夹子先把薄板偏着固定。看金色的重力线：它没有通过悬点，两条竖线之间的距离就是力臂。松开夹子，重力使板转动，力臂也跟着改变。板可能越过平衡位置，这时重力的转动方向反过来，让它往回摆。阻力逐渐消耗摆动的能量。真正停稳后，重力线通过悬点，重心在悬点下方。不是任意一个速度为零的瞬间，都已经平衡。",
+        "en": "The clamp holds the lamina at an angle. Follow the gold weight line: it misses the suspension pin. The perpendicular distance between the vertical lines is the lever arm. Release the clamp. Gravity turns the lamina and the lever arm changes. It can overshoot; then gravity turns it back. Drag gradually removes energy from the swing. Once it settles, the weight line passes through the pin, with the centre below it. Zero speed at a turning point alone does not mean equilibrium.",
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "first",
-        "title": "留下一条材料记录",
-        "titleEn": "Keep the first record",
-        "caption": "第一条线画在板上，随板一起转。",
-        "captionEn": "The first line belongs to the sheet and turns with it.",
-        "zh": "沿着悬线在板上画出第一条线。棕色虚线现在是一条留在材料上的记录，而不是屏幕里永远竖直的参考线。它经过重心，但线上还有许多候选位置。接下来要保留这条记录，只改变悬挂的小孔，让同一块板提供另一条独立的信息。",
-        "en": "Trace the first plumb line onto the sheet. The brown dashed line is now a record on the material, not a reference that must stay vertical on the screen. It passes through the center, but many candidate points remain. Keep the record and change only the suspension hole to obtain independent information from the same sheet.",
+        "title": "一条线，够不够？",
+        "titleEn": "Is one line enough?",
+        "caption": "第一条墨迹只限定一条直线。",
+        "captionEn": "One ink mark constrains only a line.",
         "seconds": 27,
-        "chapterAt": 28,
-        "at": 28.3
+        "zh": "现在薄板已经停稳。铅垂线保持竖直，我们沿它在板上留下一条墨迹。稳定平衡告诉我们，重心一定在这条线上。但看这几个候选位置，只凭一条线，还分不出究竟是哪一个。墨迹画在材料上，会跟着板转；真正的铅垂线却一直竖直。要把一条线缩小成一个点，还需要一次独立的观察。",
+        "en": "The lamina has settled. The plumb line is vertical; transfer that direction onto the board as an ink mark. Stable equilibrium says the centre of gravity lies somewhere on this line. But several candidate points remain. One line cannot distinguish them. The ink belongs to the material and will turn with it, while the plumb line stays vertical. To narrow a line down to one point, we need an independent observation.",
+        "chapterAt": 34,
+        "at": 34.45
       },
       {
         "id": "second",
-        "title": "换孔得到交点",
-        "titleEn": "Find the intersection",
-        "caption": "第二条线与第一条线交于重心。",
-        "captionEn": "The second record intersects the first at the center.",
-        "zh": "换一个孔，薄板转到新的平衡方向。注意第一条线也随板转动，它不会继续保持竖直。现在沿新的悬线画第二条线，两条记录的交点就是重心。我们找的是板上同一个材料位置，不是每次悬挂时重新产生一个重心。多换一个合适的孔，还可以检验记录是否一致。",
-        "en": "A different hole brings the sheet to a new equilibrium orientation. The first line rotates with it and no longer stays vertical. Record the new plumb line. Their intersection locates the center of gravity: the same material point through both suspensions. A third suitable hole can check whether the records agree.",
-        "seconds": 29,
-        "chapterAt": 55,
-        "at": 55.3
+        "title": "换孔后，什么没有变？",
+        "titleEn": "What stays fixed after changing holes?",
+        "caption": "旧墨迹随板转，新悬线提供第二个约束。",
+        "captionEn": "Old ink turns; a new plumb supplies another constraint.",
+        "seconds": 37,
+        "zh": "保留第一条墨迹，把板换到另一个孔，夹住后再释放。注意棕色的旧线：它随着薄板转动，没有偷偷变成新的竖直线。等板再次停稳，沿现在的铅垂线留下第二条墨迹。两条不同方向的记录相交，才把位置确定下来。这个交点是板上的同一个材料位置。悬点改变了停稳朝向，没有改变板内的质量分布，也就没有改变重心。若两次记录恰好重合，就要换一个更合适的孔。",
+        "en": "Keep the first ink mark and rehang the board from another hole, holding it before release. Watch the brown line: it turns with the board instead of silently becoming vertical again. After the board settles, mark the new plumb direction. Two records in different directions intersect and locate one point. That point belongs to the material. Changing the support changes the resting orientation, but not the mass distribution or the centre of gravity. If two records coincide, choose a more useful hole.",
+        "chapterAt": 62.5,
+        "at": 62.95
       },
       {
         "id": "triangle",
-        "title": "用三角形核验",
-        "titleEn": "Check a uniform triangle",
-        "caption": "均匀时中线交点吻合；添加配重后分离。",
-        "captionEn": "Medians agree for a uniform sheet; added mass breaks that match.",
-        "zh": "最后换成均匀三角形纸板。先画中线，再看悬挂得到的交点，两种方法在同一位置相遇。这里的均匀是重要条件。进入自由探索后，给一侧添加配重，外轮廓和中线没有改变，重心却向配重移动。悬挂法仍然有效，几何中心则不能继续代替整个组合的重心。",
-        "en": "Switch to a uniform triangular card. Its geometric medians predict the same point found by suspension. Uniformity is the crucial condition. In exploration, add a weight on one side. The outline and medians remain unchanged, but the center moves toward the weight. Suspension still works; the geometric centroid no longer represents the whole combination.",
-        "seconds": 29,
-        "chapterAt": 84,
-        "at": 84.3
+        "title": "加配重后，旧交点还对吗？",
+        "titleEn": "Does the old crossing survive an added mass?",
+        "caption": "轮廓不变，配重仍会移动组合重心。",
+        "captionEn": "The outline stays, but added mass shifts the centre.",
+        "seconds": 50,
+        "zh": "均匀三角形纸板可以先用三条中线预测重心，再用不同悬点的记录检验。现在先夹住板，在一侧装上配重。它的质量是原板的四分之三。旧墨迹和中线交点都没有移动，可整个组合的重心还在那里吗？质量加权预测：新重心沿着旧重心到配重的方向，走过这段距离的七分之三。空心圈标出预测位置。释放后，新的重力线使板转动。停稳画线，再换孔复查，两条新的蓝线交在预测位置附近。旧墨迹一直没改；改变的是质量分布。因此，几何中心只有在相应的均匀条件下，才能代表重心。",
+        "en": "A uniform triangular card lets us predict its centre from the medians, then test it with suspension records. Clamp the card and attach a mass on one side, three quarters of the original board mass. The old ink and median crossing stay fixed. Does the combined centre stay there too? Mass weighting predicts a shift toward the added mass, through three sevenths of the distance from the old centre. The hollow circle marks that prediction. Release the card: the new weight line turns it. Let it settle and record a line, then check another hole. Two new blue marks meet near the predicted point. The old ink never changed; the mass distribution did. A geometric centre represents the centre of gravity only under the appropriate uniformity conditions.",
+        "chapterAt": 99.5,
+        "at": 99.95
       }
     ]
   },
   "curriculumVariants": {
     "required-1-suspension-center": {
+      "sceneSlug": "suspension-center-of-gravity",
       "chapterIds": ["settle", "first", "second", "triangle"],
       "label": {
         "zh": "悬挂法找重心",
         "en": "Suspension method"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/suspension-center-of-gravity/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-4-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

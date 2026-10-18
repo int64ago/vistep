@@ -1,33 +1,29 @@
 ---
-import { peroxideReaction } from '../../models/bio-enzyme-investigations';
-const modes = ['blank', 'heated', 'iron', 'catalase'] as const;
+import { reactionPath, barrierHeights } from '../../models/bio-enzyme-investigations';
+const curve = (barrier: number) =>
+  Array.from(
+    { length: 81 },
+    (_, i) => `${i ? 'L' : 'M'}${36 + i * 4.1} ${153 - reactionPath(i / 80, barrier) * 7.6}`,
+  ).join(' ');
 ---
 
-<svg viewBox="0 0 400 230" aria-hidden="true"
-  ><rect width="400" height="230" rx="24" fill="#eeeedd"></rect>{
-    modes.map((mode, i) => {
-      const s = peroxideReaction(5, mode);
-      return (
-        <g transform={`translate(${52 + i * 87} 25)`}>
-          <path
-            d="M-20 0V140Q-20 165 0 165Q20 165 20 140V0"
-            fill={i === 2 ? '#d3c793' : i === 3 ? '#bfb59e' : '#d7dfbf'}
-            stroke="#91a38c"
-            stroke-width="2"
-          />
-          {Array.from({ length: 10 }, (_, j) => (
-            <circle
-              cx={-12 + ((j * 13) % 25)}
-              cy={145 - j * 11}
-              r="3"
-              fill="#f4f4df"
-              stroke="#afba9b"
-              opacity={j < s.oxygen * 20 ? 1 : 0}
-            />
-          ))}
-          <path d="M-24 0H24" stroke="#91a38c" stroke-width="3" />
-        </g>
-      );
-    })
-  }</svg
->
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" rx="24" fill="#edf0df"></rect>
+  <path d="M25 184H375" stroke="#d0d9c1" stroke-width="2"></path>
+  <path d={curve(barrierHeights.blank)} stroke="#a6b49f" stroke-width="4" stroke-linecap="round"
+  ></path>
+  <path d={curve(barrierHeights.catalase)} stroke="#b39163" stroke-width="6" stroke-linecap="round"
+  ></path>
+  <path
+    d="M200 49V78m-7-7 7 7 7-7"
+    stroke="#b39163"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <circle cx="36" cy="153" r="7" fill="#84a193"></circle>
+  <circle cx="364" cy="175.8" r="7" fill="#84a193"></circle>
+  <text x="26" y="208" fill="#586b54" font-size="23" font-family="sans-serif">H₂O₂</text>
+  <text x="282" y="37" fill="#586b54" font-size="21" font-family="sans-serif">H₂O + O₂</text>
+  <path d="M298 45Q354 86 364 165" stroke="#b8c6ad" stroke-width="1.5" stroke-dasharray="4 6"
+  ></path>
+</svg>

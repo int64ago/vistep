@@ -1,0 +1,257 @@
+{
+  "slug": "suspension-center-of-gravity",
+  "status": "author final measured-speech handoff; root static acceptance pending",
+  "sourceCommit": "8d7513dc511af18936b1d42a622c026f7acfa1de",
+  "owner": "teaching_subject_fit",
+  "sourceSha256": {
+    "src/models/suspension-center-of-gravity.ts": "35f246afc9350ef0bd1dbe16efba63761731f6cba47f00fa49716083c105b3f6",
+    "src/models/suspension-center-of-gravity.test.ts": "a4b8593d0119a0c32015f9fd67770304f82aa3ff30decadc48d6060caa672f30",
+    "src/components/experiments/SuspensionCenterOfGravity.tsx": "6984d8bcdebc8b708a884006f9c1d1043209a11bb166acd3fb12bffd2b088728",
+    "src/styles/suspension-center-of-gravity.css": "bd4d3519181184b43500e124d79265e163669c41b89607885ff422818caadfb9",
+    "src/content/suspension-center-of-gravity.mdx": "4a4bea0d295da325ec5b9f0b6b577b03ccbf0bc462a969ac531c0b74dbbe6e53",
+    "src/content/en/suspension-center-of-gravity.mdx": "6694897d2633086cbb3d3693bc936087262598d65031096626ba97b3663e2ad8",
+    "src/components/covers/SuspensionCenterOfGravityCover.astro": "44345b378007aa1c2a3b7d6d3bb41f383c19da228324ccc918b0459aa4e84a95"
+  },
+  "finalKeyframeSourceStable": true,
+  "finalKeyframeSourceMatchesCurrent": true,
+  "scope": {
+    "ownedFiles": [
+      "src/models/suspension-center-of-gravity.ts",
+      "src/models/suspension-center-of-gravity.test.ts",
+      "src/components/experiments/SuspensionCenterOfGravity.tsx",
+      "src/styles/suspension-center-of-gravity.css",
+      "src/content/suspension-center-of-gravity.mdx",
+      "src/content/en/suspension-center-of-gravity.mdx",
+      "src/components/covers/SuspensionCenterOfGravityCover.astro"
+    ],
+    "sharedFilesChangedByThisWorker": false,
+    "stagingOrBuildOrAudioGeneration": false,
+    "chapterIds": ["settle", "first", "second", "triangle"],
+    "textbookEntry": "required-1-suspension-center",
+    "selectionChanged": false
+  },
+  "evidence": [
+    {
+      "type": "primary source research",
+      "status": "passed",
+      "details": "Read local textbook full P58 plus P61 exercise and surrounding material; OpenStax primary textbook pages checked.",
+      "paths": [
+        "artifacts/teaching-principles/physics-next-suspension/ready-brief.json",
+        "artifacts/teaching-principles/physics-next-suspension/textbook-p58.png"
+      ]
+    },
+    {
+      "type": "independent numerical preparation",
+      "status": "passed",
+      "path": "artifacts/teaching-principles/physics-next-suspension/benchmark-results.json",
+      "limits": "Independent Python right-triangle/grid/nonlinear calculations; not browser evidence."
+    },
+    {
+      "type": "production model test",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/suspension-center-of-gravity.test.ts",
+      "tests": 15,
+      "lastActualRunLocal": "2026-10-18 21:45:34",
+      "details": "Includes root-reported zero-length/nonfinite line correction, nonlinear SI torque, energy, overdamping, unstable/neutral cases, fixed records and held-loading/prediction pause."
+    },
+    {
+      "type": "scoped TypeScript",
+      "status": "passed",
+      "command": "pnpm exec tsc -p artifacts/teaching-principles/suspension-check/tsconfig.json",
+      "details": "Actual zero exit after final component force-vector change."
+    },
+    {
+      "type": "author browser paused keyframes",
+      "status": "passed",
+      "path": "artifacts/teaching-principles/suspension-review-03/report.json",
+      "cases": 78,
+      "limits": "Both languages, 320/390/1100, 13 chapter states. Later triangle-scale/support-vector changes are superseded by review05."
+    },
+    {
+      "type": "author final affected keyframes",
+      "status": "passed",
+      "path": "artifacts/teaching-principles/suspension-review-05/report.json",
+      "cases": 42,
+      "failures": 0,
+      "conditions": "Chromium, narration off, reduced motion, 320x568/390x844/1100x900; real current shared caption and whole player.",
+      "measurements": [
+        {
+          "lang": "zh",
+          "width": 320,
+          "count": 7,
+          "maxPlayerHeight": 468.1875,
+          "maxActualBottom": 483.6875,
+          "maxConservativeBottomAt82": 550.1875
+        },
+        {
+          "lang": "zh",
+          "width": 390,
+          "count": 7,
+          "maxPlayerHeight": 468.1875,
+          "maxActualBottom": 483.6875,
+          "maxConservativeBottomAt82": 550.1875
+        },
+        {
+          "lang": "zh",
+          "width": 1100,
+          "count": 7,
+          "maxPlayerHeight": 542.5625,
+          "maxActualBottom": 558.5625,
+          "maxConservativeBottomAt82": 624.5625
+        },
+        {
+          "lang": "en",
+          "width": 320,
+          "count": 7,
+          "maxPlayerHeight": 482.1875,
+          "maxActualBottom": 497.96875,
+          "maxConservativeBottomAt82": 564.1875
+        },
+        {
+          "lang": "en",
+          "width": 390,
+          "count": 7,
+          "maxPlayerHeight": 468.1875,
+          "maxActualBottom": 484.375,
+          "maxConservativeBottomAt82": 550.1875
+        },
+        {
+          "lang": "en",
+          "width": 1100,
+          "count": 7,
+          "maxPlayerHeight": 541.5625,
+          "maxActualBottom": 557.5625,
+          "maxConservativeBottomAt82": 623.5625
+        }
+      ]
+    },
+    {
+      "type": "author actual UI controls",
+      "status": "passed",
+      "path": "artifacts/teaching-principles/suspension-controls-02/report.json",
+      "pages": 6,
+      "actualGeometryStates": 216,
+      "interactionAssertions": 60,
+      "details": "Actual hole/shape/keyboard/range actions, loading retains old ink, record disabled while moving, zero damping, clear, watch-explore persistence and textbook entry start.",
+      "measurementCorrection": "The initial controls report used the transformed local polygon bounding rectangle, which includes empty rotated corners and falsely reported clipping. The retained controls-02 uses actual transformed polygon vertices, then checks font/target/SVG/viewport conditions. No source geometry was changed to conceal those false positives.",
+      "limits": "Final force-vector length changes do not alter these controls/board poses; affected watch frames were rerun in review05."
+    },
+    {
+      "type": "author visual inspection",
+      "status": "passed for listed frames",
+      "paths": [
+        "artifacts/teaching-principles/suspension-review-05/zh-320-c0-85.png",
+        "artifacts/teaching-principles/suspension-review-05/en-320-c3-40.png",
+        "artifacts/teaching-principles/suspension-review-05/en-320-c3-45.png",
+        "artifacts/teaching-principles/suspension-review-05/en-1100-c3-98.png",
+        "artifacts/teaching-principles/suspension-review-03/zh-390-c2-20.png",
+        "artifacts/teaching-principles/suspension-controls-02/en-320-loaded-records.png"
+      ],
+      "details": "Opened actual images. Weight/support equal-length arrows at rest, old ink rotating, clamp during prediction, withheld new point before hollow prediction, final loaded crossing, and complete narrow player."
+    },
+    {
+      "type": "cover and social consumers",
+      "status": "passed for author images",
+      "paths": [
+        "artifacts/teaching-principles/suspension-check/covers.png",
+        "artifacts/teaching-principles/suspension-check/social.png"
+      ],
+      "details": "Both actual dev GET routes returned 200 image/png; opened rasterized results. Cover now derives records from settled poses and their intersection."
+    },
+    {
+      "type": "CSS global name collision",
+      "status": "passed",
+      "command": "rg -l suspension-cg- src",
+      "details": "Only owned component and owned stylesheet contain prefix."
+    },
+    {
+      "type": "new speech and locale synchronization",
+      "status": "completed; see measured bilingual synchronization below"
+    },
+    {
+      "type": "continuous full playback",
+      "status": "not run in this handoff",
+      "details": "Paused keyframes and controls do not establish continuous viewing."
+    },
+    {
+      "type": "human listening",
+      "status": "not run"
+    },
+    {
+      "type": "physical phone performance",
+      "status": "not run"
+    },
+    {
+      "type": "global verify/build/static final acceptance",
+      "status": "pending root"
+    },
+    {
+      "type": "measured bilingual semantic synchronization",
+      "status": "passed for author timing checks",
+      "audio": {
+        "zh": "/narration/suspension-center-of-gravity-zh-b1d326b37d4a.mp3",
+        "en": "/narration/suspension-center-of-gravity-en-a60530b2a6d8.mp3"
+      },
+      "wordTimeFilesRead": 8,
+      "keyEvents": {
+        "zh": {
+          "release0": 9.25,
+          "secondMark": [12.73, 15.47],
+          "secondIntersection": 17.8,
+          "loadQuestion": [13.77, 19.09],
+          "direction": 21.4,
+          "predictionPoint": 25.65,
+          "releaseLoad": 29.55,
+          "loadedIntersection": 36.6
+        },
+        "en": {
+          "release0": 11.1,
+          "secondMark": [12.69, 14.27],
+          "secondIntersection": 16.65,
+          "loadQuestion": [12.93, 18.19],
+          "direction": 20,
+          "predictionPoint": 22.1,
+          "releaseLoad": 27.8,
+          "loadedIntersection": 35.5
+        }
+      },
+      "actualSource": "suspensionTimedShot uses chapterTime and locale",
+      "command": "pnpm exec vitest run src/models/suspension-center-of-gravity.test.ts",
+      "tests": 18,
+      "lastActualRunLocal": "2026-10-18 21:53:37",
+      "limits": "No subjective listening; root owns continuous/static final review."
+    },
+    {
+      "type": "author final affected speech frames",
+      "status": "passed",
+      "path": "artifacts/teaching-principles/suspension-review-06/report.json",
+      "cases": 108,
+      "failures": 0,
+      "sourceUnchanged": true,
+      "newPredictionIdentityCheck": "Exact prediction circle exists only when the predicted-point stage is true, not in question or direction-only shots.",
+      "personallyOpened": [
+        "zh-320-c0-8.5s.png",
+        "en-320-c0-18.5s.png",
+        "zh-320-c2-14.5s.png",
+        "en-320-c3-20.8s.png",
+        "zh-390-c3-18s.png",
+        "zh-390-c3-26.5s.png",
+        "en-1100-c3-31.8s.png",
+        "en-320-c3-36s.png"
+      ],
+      "wholePlayerMax320": {
+        "zh": 468.1875,
+        "en": 482.1875
+      }
+    }
+  ],
+  "materialRepairs": [
+    "Gravity torque is now visibly tied to lever arm and a nonlinear shared state.",
+    "Permanent old marks no longer recompute through the new mass-weighted centre.",
+    "Prediction is withheld during the question, then explicitly shown before independent new records.",
+    "Only settled states can be recorded; zero velocity is insufficient.",
+    "Short-screen full player has compact cues, geometry-specific scaling and readable controls.",
+    "Zero-length/nonfinite line inputs return no intersection."
+  ],
+  "unresolvedProductFindings": []
+}

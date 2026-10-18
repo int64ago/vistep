@@ -1,0 +1,170 @@
+{
+  "sceneSlug": "chem-electron-transfer",
+  "status": "Ownedproduct frozen: measuredwordtimes and actualsilentframes passed; rootfinal continuous/listening/build acceptance pending",
+  "owner": "/root/chemistry_inventory (scene author)",
+  "sourceCommit": "8d7513dc511af18936b1d42a622c026f7acfa1de",
+  "sourceFiles": [
+    {
+      "path": "src/components/experiments/ChemElectronTransfer.tsx",
+      "sha256": "ecc0835db6cafa1a1244cfd05338c0248e6703d32f744d6e4da196a93a75d43a"
+    },
+    {
+      "path": "src/components/experiments/ChemElectronTransfer.exploration.test.tsx",
+      "sha256": "1315ec82e519de74190a556854891c569f8af01d86b412179269e9eb7829f8e3"
+    },
+    {
+      "path": "src/models/chem-electron-transfer.ts",
+      "sha256": "56ba2205dcf53661cba452f132ca012d07fc3a417636e5a73d3d239f880aa8a4"
+    },
+    {
+      "path": "src/models/chem-electron-transfer.test.ts",
+      "sha256": "7fe8083d9b67603eccd0762ba2d2a097165f72ac183e1279bd8fdc5ae8f1832d"
+    },
+    {
+      "path": "src/styles/chem-electron-transfer.css",
+      "sha256": "55943888c17353fb42c7403b3c81a3d2a20fc48147c000a1c6c347c0387dde6b"
+    },
+    {
+      "path": "src/components/covers/ChemElectronTransferCover.astro",
+      "sha256": "9fa2e5b36032ec34460fdb97c16e83a15d4c1dc6e70c4ca748edd3dbe3c2c6b2"
+    },
+    {
+      "path": "src/content/chem-electron-transfer.mdx",
+      "sha256": "1b6c963d789e9f3359fdb52272aba53225137cf05546f1062cec314fc677434a"
+    },
+    {
+      "path": "src/content/en/chem-electron-transfer.mdx",
+      "sha256": "8e6c7ddd4e0b17f95cd853785daafe752d555056d648b9e0608afefc9af055d4"
+    }
+  ],
+  "ownedProductsSHA256": "c7bda4c0b46bd85dc7825f2ff90403bdcf447a85fe71d0ba376205257566711a",
+  "conditions": {
+    "browser": null,
+    "origin": "http://127.0.0.1:4325",
+    "motion": "reduced",
+    "narration": "savedoff",
+    "viewports": [
+      [320, 568],
+      [390, 844],
+      [1440, 1000]
+    ],
+    "physicalDevice": false
+  },
+  "checks": {
+    "modelAndComponent": {
+      "status": "passed",
+      "tests": 13,
+      "command": "pnpm exec vitest run src/models/chem-electron-transfer.test.ts src/components/experiments/ChemElectronTransfer.exploration.test.tsx",
+      "scope": "Author tests against independent conservation benchmarks; not independent reviewer approval"
+    },
+    "scopedTypeScript": {
+      "status": "passed",
+      "config": "artifacts/teaching-principles/electron-transfer-implementation/tsconfig.json"
+    },
+    "scopedFormatting": {
+      "status": "passed"
+    },
+    "keyframes": {
+      "status": "passed",
+      "kind": "author self-review plus automatedlayout checks",
+      "cases": 90,
+      "passed": 90,
+      "maxShortPlayerBottom": 566.15625,
+      "smallFonts": 0,
+      "smallControls": 0,
+      "report": "artifacts/teaching-principles/electron-transfer-implementation/final-frames/report.json"
+    },
+    "actualUI": {
+      "status": "passed",
+      "checks": 26,
+      "report": "artifacts/teaching-principles/electron-transfer-implementation/interactions/report.json"
+    },
+    "cover": {
+      "status": "author viewedactualPNG",
+      "path": "artifacts/teaching-principles/electron-transfer-implementation/cover.png",
+      "consumers": "TopicCover feedsdiscovery/curriculum rasterandSocialCard SVG; actual catalog/socialcontext independent root review pending."
+    },
+    "fullContinuousPlayback": {
+      "status": "not-run",
+      "reason": "Root owns final stable preview after measuredvoice calibration; keyframes are not fullplayback."
+    },
+    "listening": {
+      "status": "not-run-by-author",
+      "reason": "Root owns finalbilingual listening; independentASR doesnotreplace it."
+    },
+    "measuredSynchronization": {
+      "status": "passed-author-word-timing-and-visual-stills",
+      "record": "artifacts/teaching-principles/electron-transfer-implementation/measured-sync.json",
+      "scope": "8 independent ASR word-time files read; locale-specific seconds;90 actualbrowserstills; notfullsubjectivelistening"
+    },
+    "globalBuild": {
+      "status": "not-run-by-author",
+      "owner": "root"
+    },
+    "finalChapter4Phone": {
+      "status": "passed",
+      "kind": "author self-review after independent root label-collision finding",
+      "cases": 24,
+      "passed": 24,
+      "report": "artifacts/teaching-principles/electron-transfer-implementation/phone-label-final/report.json",
+      "maxShortPlayerBottom": 556.15625
+    },
+    "measuredKeyframes": {
+      "report": "artifacts/teaching-principles/electron-transfer-implementation/measured-frames/report.json",
+      "passed": 90,
+      "total": 90,
+      "maxShortPlayerBottom": 565.5625,
+      "font": "No below16px measured labels",
+      "controls": "No below44px measured primarycontrols"
+    }
+  },
+  "criticalFrames": [
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-2-whole-second.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-3-formal-overlay.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-4-prediction-hold.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-4-fe-packet.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-4-excess-copper.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-4-second-iron-added.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-zh-320-chapter-4-both-copper.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-2-whole-second.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-3-formal-overlay.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-4-prediction-hold.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-4-fe-packet.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-4-excess-copper.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-4-second-iron-added.png",
+    "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/electron-transfer-implementation/measured-frames/chem-electron-transfer-en-320-chapter-4-both-copper.png"
+  ],
+  "priorFailures": [
+    {
+      "report": "artifacts/teaching-principles/electron-transfer-implementation/first-frames/report.json",
+      "reason": "Initialwholechapter exceededshortscreen; corrected redundantlabels andthen rechecked. OneHMRnavigationfailure also retained."
+    },
+    {
+      "report": "artifacts/teaching-principles/electron-transfer-implementation/revised-frames/report.json",
+      "reason": "89/90; oneHMRnavigationfailure retained. Final90frame rerun allpassed."
+    }
+  ],
+  "boundaries": [
+    "No classical electrontrajectory, freeelectronpool,quantum density orpartialcharge measurement.",
+    "Counted initialvalenceelectrons omitinnerelectrons; diagramdoesnotclaimNa+containszeroelectrons.",
+    "Fe/Cu model is discreteunit netstoichiometry; noactivity,hydrolysis,complexation orkinetics.",
+    "Author didnotclaim independentreviewer endorsement, subjectivefull-listening,physicaldevice performance orrelease. Root reviewseparatelydocumented."
+  ],
+  "independentRootReview": {
+    "reviewer": "root",
+    "scope": "Eight recommended actual keyframes;2Na/2Cl,shared/formalHCl,Fe/Cu quantities and identities accepted. Root found one overlapping remainingCu label in EN320 endpoint.",
+    "repair": "Root directlyviewed finalEN320 excess-copper repair andaccepted it beforevoiceproduction."
+  },
+  "rootIntegrationFollowup": {
+    "issue": "Independent reviewer found exploration gave answer at default prediction start.",
+    "changed": [
+      "src/components/experiments/ChemElectronTransfer.tsx",
+      "src/components/experiments/ChemElectronTransfer.exploration.test.tsx"
+    ],
+    "sourceHashes": {
+      "src/components/experiments/ChemElectronTransfer.tsx": "428083a648300d974edf235097d334fc2651e54902c13b7409d906f03fed7963",
+      "src/components/experiments/ChemElectronTransfer.exploration.test.tsx": "4f089c6d23ef0b4e1ecfc00f7be8efd7a5652eb2b55f3832949383370dc71200"
+    },
+    "note": "Author frozen visual states predate this exploration-only correction. Film and all recordings unchanged. Root static UI report validates start/advance/return and boundaries."
+  }
+}

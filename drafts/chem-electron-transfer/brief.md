@@ -1,11 +1,46 @@
-# 电子得失与电子对偏移
+# 电子账本怎样决定反应配比？
 
-Target chem-required-1-model-p23. Owner chemistry worker. Pure mechanism demonstration, never labelled student experiment.
+本轮是对合格理论场景的定向补充。保留 `transfer`、`balance`、`sharing`，新增 `predict-iron`，完整覆盖必修一P23的 `chem-required-1-model-p23` 教学窗口。它始终是理论说明，不称为实验录像。
 
-Misconception: all changes in oxidation number mean literal separated full ions. Prior: charge and valence electrons. Distinct expression: one tracked dot, invariant electron ledger and a shared polar cloud, no generic beaker. Phone retains the pair and places bookkeeping in two columns with CSS labels.
+要纠正的误解：电子失去和得到可分别计算；化学方程式的系数只需凭记忆；氧化数改变意味着真实分子中完整离子分离。先修为离子、电荷和初步原子结构。新增贡献是用同一电子账本作独立的数量预测，并实际保留过量铜离子。
 
-Claims: textbook required1 printed23–24 / PDF28–29; IUPAC Gold Book and 2016 recommendation distinguish formal ionic approximation from electron distribution. Eight valence electrons are conserved; a local pair is not a discrete molecule of ionic sodium chloride. Cloud is a declared diagram, not computed quantum density. Full H2/Cl2 mechanism is not inferred from an atom-pair diagram.
+## 四章的可见证据
 
-Three chapters: same electron transfers; pause at final allocation and balance2Na+Cl2; compare HCl shared pair. Director forces the completed final state during the ledger chapter so a seek never replays a transfer under final charge labels. Explorer switches mechanism and controls diagram progress, not kinetics.
+1. `transfer`：标记同一份电子，钠的出发账、转移账和氯的接收账合计始终八份。端点正负电荷对应；内层电子省略，不把局部对当孤立NaCl分子。
+2. `balance`：实际画出两个Na和两个Cl，不再只在一个原子对下面印 `2Na + Cl₂`。十六份初始价电子保持身份；两次分配对应两个钠和一个氯分子的数量关系。
+3. `sharing`：HCl共用电子对和偏氯包络持续保留，形式氧化数只在独立图层出现。切换记账层不会删除共用电子对或制造H⁺、Cl⁻。
+4. `predict-iron`：先给出Fe从0到+2、Cu从+2到0的两电子前提，问题停留后才揭晓。一个Fe只使一个Cu²⁺还原，另一份仍留水；加入第二个Fe时，第一个Cu保持原身份，再还原第二份。
 
-Independent model checks: total electrons8, oxidation-number sum0, ionic versus polar shared-pair distinction, transfer endpoints and polarity envelope. Scoped3 Vitest tests passed before final endpoint repair; rerun included in handoff. Visual continuous viewing, listening and physical-device checks remain not-run by author.
+主问题只有“电子账本怎样决定反应配比？”。阶段问题与答案由画面和旁白推进。第4章共享caption为“先预测，再用电子账本检验”，没有提前泄露数量答案。
+
+## 科学依据与限制
+
+| 主张                          | 已读取来源                           | 模型限定                                           |
+| ----------------------------- | ------------------------------------ | -------------------------------------------------- |
+| Na/Cl电子得失与完整反应系数   | 必修一印刷23/PDF28，全文与原图       | 只追踪起始价电子，内层电子省略；局部对属于延伸晶格 |
+| HCl共用电子对与形式氧化数区别 | 印刷24/PDF29；IUPAC2016第2—4节       | 云形只示意偏向，不是量子密度或部分电荷             |
+| Fe/Cu的两电子数量预测         | 印刷23页同页Fe+CuSO₄反应，全文与原图 | 教材近完全净反应，不是速率、活度或中间体路径       |
+
+准备时通读印刷22—26页上下文，原图核对P23—24。IUPAC Gold Book直开返回403，仅读取官方搜索索引；[2016原论文大学镜像](https://www.cup.uni-muenchen.de/ac/kluefers/homepage/L/kc2/literature/iupac_oxidation_state_2016.pdf)成功打开并读取定义和算法相关第2—4节，不能将电子原始来源当作最终氧化数定义。
+
+`ionicAllocation`共同提供标记相位、电荷和8/16份电子总账。标记在说明路径中时，其电荷仍计入账本；不是测得的自由电子池。`ironCopperTransfer`用成对两电子份额记账，不制造必经Fe⁺或Cu⁺。硫酸根恒定并计入电荷。控件为0、1、2份离散数量，允许按比例类比物质的量，不模拟任意溶液浓度。路径与封面标记都由同一几何函数采样；没有另一条不一致的装饰曲线。
+
+独立基准：1份Fe与2份Cu²⁺得到1份Cu、余1份Cu²⁺；2份Fe与1份Cu²⁺余1份Fe。零反应物不生造变化。测试另覆盖Fe/Cu原子数、电荷、电子账本、有限输入、第二个Fe加入时的身份延续和观看/探索隔离。
+
+## 画面与作者自查
+
+桌面模型限制到800px并居中，保持对象大小与连线留白。窄屏使用实测CSS宽度，双原子对分两行；320×568保留16px文字和44px目标，通过收紧重复账本文字保留整个播放器，不缩小对象字体。初轮第二章超高已修，旧失败证据保留。
+
+最终静音关键帧90/90通过，覆盖两语320×568、390×844、1440×1000。完整短屏播放器最深到566.16px。26项实际点击/键盘操作、13项模型/组件测试、局部TypeScript与格式检查通过。作者实际查看了决定性手机帧、桌面端点和生成封面PNG；完整目录/社交图上下文由主线程复核。上述均为作者自查，不能称独立审查。主线程随后独立查看8张关键图，指出英文短屏的一处“仍留水中”说明与硫酸根说明碰撞；已移除短屏重复标签，保留Cu²⁺对象和剩余读数，第四章两语窄屏24张补充停帧全部通过。
+
+记录在 `review.json`，含源commit、owned文件hash、条件、证据与失败保留。关键图片与脚本留在ignored的 `artifacts/teaching-principles/electron-transfer-implementation/`。
+
+## 实测声音与后续验证
+
+主线程已生成最终双语录音：中文 `62dc754cb264`，英文 `722ae623e991`，共享137秒时间线，章起点0、30、62、97秒。作者逐章读取8份独立ASR词时，按 `chapterTime + locale` 校准；没有改动冻结声稿。
+
+第一章跟踪转移为中文6.45–10.65秒、英文7.10–10.45秒。第二章两次分配合计约4.4秒，放在“跟住两个标记／失去两个、得到两个”附近；第三章共享电子对持续存在，形式层在中文11.50秒、英文12.25秒出现。第四章保持问题到约18秒，首对电子份额分别18.40–21.50秒、18.15–20.60秒到达；第二个Fe分别24.95秒、24.55秒加入，第一份Cu保持原身份，再用约3.2秒对应第二份Cu。画面时间是教学记账动作，不是电子飞行时间或反应速率。
+
+校准后实际浏览器90个停帧通过，覆盖两语320×568、390×844、1440×1000，短屏完整播放器最深566.16px；作者直接复看预测停留、首对份额、加入第二Fe、双钠氯、共享与形式层，以及桌面终态。记录在 `artifacts/teaching-principles/electron-transfer-implementation/measured-sync.json` 与 `measured-frames/report.json`。这些证据支持按实测语句的切点及静音停帧对应，不能代替完整播放与主观试听。
+
+完整稳定播放、完整试听、真机性能和全局verify/build仍由主线程独立记录。本负责人未执行全局构建、提交、发布或共享文件修改。owned产品现已冻结，等待主线程最终验收。

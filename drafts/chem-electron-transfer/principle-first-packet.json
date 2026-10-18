@@ -1,0 +1,202 @@
+{
+  "sceneSlug": "chem-electron-transfer",
+  "status": "Owned product frozen after measured bilingual timing and author visual checks; root final acceptance pending",
+  "chapterContract": {
+    "preserveIds": ["transfer", "balance", "sharing"],
+    "insertIds": ["predict-iron"],
+    "order": ["transfer", "balance", "sharing", "predict-iron"],
+    "plannedMinimumSeconds": 137,
+    "provisionalOnly": false,
+    "measuredSeconds": 137
+  },
+  "narration": {
+    "cues": [
+      {
+        "id": "transfer",
+        "title": "同一个电子，换了归属",
+        "titleEn": "One electron changes allocation",
+        "seconds": 30,
+        "caption": "同一份电子，失去与得到相对应。",
+        "captionEn": "The same electron is lost and gained.",
+        "zh": "先只看钠和氯的一对原子。钠有一个最外层电子，氯有七个。跟住金色标记：它从钠的电子账本进入氯的账本。钠少了一个电子，记作正一价离子；氯多了一个，记作负一价离子。八个价电子没有增加，也没有减少。这条连线是归属变化的说明，不是真实电子的运动轨迹。",
+        "en": "Start with one sodium and one chlorine atom. Sodium has one outer electron and chlorine has seven. Follow the gold marker from sodium’s account into chlorine’s. Losing one gives sodium a positive ionic charge; gaining one gives chlorine a negative charge. The eight valence electrons are still accounted for. The connecting line illustrates changing allocation, not an electron’s measured path."
+      },
+      {
+        "id": "balance",
+        "title": "为什么需要两个钠？",
+        "titleEn": "Why are two sodium atoms needed?",
+        "seconds": 32,
+        "caption": "两个钠各给一个；两个氯各收一个。",
+        "captionEn": "Two sodium atoms supply one electron each.",
+        "zh": "把局部的一对原子放回整个反应。一个氯分子有两个氯原子，每个各得到一个电子，所以需要两个钠原子，各给出一个电子。跟住这两个标记：失去两个，得到两个。方程式里的二不是随意添上的，它同时满足原子和电子的账本。生成的氯化钠是连续的离子晶格，画面只取其中两份来计数。",
+        "en": "Put the local pair back into the whole reaction. One chlorine molecule contains two chlorine atoms, each gaining one electron. It therefore needs two sodium atoms, each losing one. Follow both markers: two lost, two gained. The coefficient two satisfies the atom and electron accounts together. Sodium chloride forms an extended ionic lattice; the picture counts two formula units within it."
+      },
+      {
+        "id": "sharing",
+        "title": "形式分配，不等于真实分离",
+        "titleEn": "Formal allocation is not physical separation",
+        "seconds": 35,
+        "caption": "共用电子对还在，氧化数按规则记账。",
+        "captionEn": "The pair remains shared; oxidation states follow a rule.",
+        "zh": "氢和氯形成分子时，换一种图像。两个电子共同参与成键，分布偏向氯，但共用电子对仍然保留。现在只切换记账规则：把这对电子形式上分配给氯，氢的氧化数记为正一，氯记为负一。留意，分子图像没有变成分离的氢离子和氯离子。氧化数能帮助我们计数，却不是分子中每个原子真实电荷的测量值。",
+        "en": "Hydrogen and chlorine require a different picture. Two electrons participate in a shared bond whose distribution favours chlorine. Keep that shared pair in view while changing only the accounting rule: formally assign the pair to chlorine. Hydrogen’s oxidation state becomes plus one and chlorine’s minus one. The molecule has not turned into separated ions. Oxidation states help count electrons; they are not measured atomic charges inside the molecule."
+      },
+      {
+        "id": "predict-iron",
+        "title": "用电子账本预测铜的数量",
+        "titleEn": "Predict the copper amount",
+        "seconds": 40,
+        "caption": "先预测，再用电子账本检验。",
+        "captionEn": "Predict first, then check the electron account.",
+        "zh": "现在回到教材同页的铁与硫酸铜。一个铁原子变成二价铁离子，电子账本记作失去两个电子。一个二价铜离子变成铜，也需要两个电子。先判断：一个铁能让一个，还是两个铜离子成为铜？把这两个电子的份额对应起来，只有一个铜离子被还原，另一个仍留在溶液中。再增加一个铁，才有足够的电子份额还原第二个。这里检验的是净反应计量，不是在描绘真实电子运动路径。",
+        "en": "Return to iron and copper sulfate on the same textbook page. One iron atom becoming iron two-plus loses two electrons in the account. One copper two-plus ion becoming copper also needs two. Predict first: can one iron reduce one copper ion, or two? Match the two electron units. One copper ion is reduced while the other stays dissolved. Adding another iron supplies enough electron units for the second. This tests net stoichiometry, not a microscopic electron trajectory."
+      }
+    ]
+  },
+  "curriculumWindows": [
+    {
+      "targetId": "chem-required-1-model-p23",
+      "sceneVariant": "electron-allocation",
+      "existingChapterIds": ["transfer", "balance", "sharing"],
+      "proposedChapterIds": ["transfer", "balance", "sharing", "predict-iron"],
+      "printedPage": 23,
+      "pdfPage": 28
+    }
+  ],
+  "topicSuggestion": {
+    "name": "电子得失与电子对偏移",
+    "nameEn": "Electron transfer and polar sharing",
+    "title": "电子账本怎样决定反应配比？",
+    "titleEn": "How does electron counting fix reaction ratios?",
+    "description": "追踪电子归属，区分离子得失与共价共享，再用同一账本预测铁能还原多少铜。",
+    "descriptionEn": "Track electron allocation, distinguish ionic transfer from covalent sharing, then predict how much copper iron can reduce."
+  },
+  "teachingProfiles": {
+    "chem-required-1-model-p23": {
+      "question": {
+        "zh": "电子账本怎样决定反应配比？",
+        "en": "How does electron counting fix reaction ratios?"
+      },
+      "principle": {
+        "zh": "按反应中的原子个数计数，失去的电子份额等于得到的份额；形式氧化数与实际电子分布有区别。",
+        "en": "Electron loss and gain balance after counting all reacting atoms. Formal oxidation states differ from physical electron distributions."
+      },
+      "sceneSlug": "chem-electron-transfer",
+      "lead": {
+        "zh": "先追踪电子，再用同一账本检验钠、氯与铁、铜的数量关系。",
+        "en": "Track electron allocation, then use the same account to test sodium–chlorine and iron–copper ratios."
+      },
+      "transfer": {
+        "question": {
+          "zh": "1 mmol Fe与2 mmol Cu²⁺按教材净反应充分反应，得到多少铜，还剩多少Cu²⁺？",
+          "en": "For the textbook net reaction, how much copper forms and Cu²⁺ remains from 1 mmol Fe and 2 mmol Cu²⁺?"
+        },
+        "explanation": {
+          "zh": "生成1 mmol Cu，剩1 mmol Cu²⁺；每1 mmol Fe提供2 mmol电子份额，每1 mmol Cu²⁺还原也需要2 mmol电子份额。",
+          "en": "1 mmol Cu forms and 1 mmol Cu²⁺ remains. Each 1 mmol Fe supplies 2 mmol electron units; each 1 mmol Cu²⁺ reduced needs 2 mmol."
+        }
+      }
+    }
+  },
+  "translations": {
+    "跟住金色的电子份额": "Follow the gold electron unit",
+    "两个氯，需要两份电子": "Two Cl need two electrons",
+    "一对钠氯原子的八个价电子账本": "Eight valence electrons of a sodium–chlorine pair",
+    "两个钠和两个氯的十六个价电子账本": "Sixteen valence electrons of two sodium and two chlorine atoms",
+    "记账转移": "Allocation",
+    "局部离子对 · 晶格继续延伸": "Local pair · lattice continues",
+    "追踪电子": "Tracked e⁻",
+    "账本电荷": "Charge",
+    "总账电荷": "Account charge",
+    "转移中的电子也计入总账": "Moving units stay in the account",
+    "共用电子对始终保留": "The pair stays shared",
+    "氯化氢共用电子对偏向氯，形式分配层与分子分开": "The HCl shared pair favours chlorine; formal allocation is a separate layer",
+    "HCl 分子仍然中性": "The HCl molecule stays neutral",
+    "氧化数记账": "Oxidation-state account",
+    "共用电子": "Shared e⁻",
+    "1 Fe 能还原几个 Cu²⁺？": "How many Cu²⁺ can 1 Fe reduce?",
+    "没有 Fe，无法供给电子": "No Fe supplies electrons",
+    "没有 Cu²⁺ 可被还原": "No Cu²⁺ is available",
+    "两份电子，只够一个 Cu²⁺": "Two electron units reduce one Cu²⁺",
+    "比较供给与需求": "Compare supply and demand",
+    "铁和铜的两电子净反应计量，过量铜离子保留": "Two-electron iron–copper net accounting with excess copper ions retained",
+    "2e⁻ 账本": "2e⁻ account",
+    "仍留在水中": "Still dissolved",
+    "不变": "unchanged",
+    "生成 Cu": "Cu formed",
+    "剩余 Cu²⁺": "Cu²⁺ left",
+    "电子图像": "Electron picture",
+    "一对钠氯": "One Na–Cl pair",
+    "整个配比": "Whole ratio",
+    "共价共享": "Covalent sharing",
+    "预测铜": "Predict copper",
+    "形式分配层": "Formal allocation layer",
+    "显示": "Shown",
+    "隐藏": "Hidden",
+    "Fe 份数": "Fe units",
+    "Cu²⁺ 份数": "Cu²⁺ units",
+    "说明进度": "Explanation progress",
+    "记账模型的边界": "Limits of this account",
+    "圆点是可追踪的电子份额，不是经典轨道。转移中的份额计入账本，不表示可测得的自由电子池。HCl云只示意偏向，氧化数不是实际部分电荷。钠氯局部离子对属于延伸晶格；铁铜是教材净反应的近完全计量，没有模拟速率、活度或必经中间体。": "Dots are tracked electron units, not classical trajectories. Moving units remain in the account; they do not represent a measured free-electron pool. The HCl envelope only illustrates polarity; oxidation states are not physical partial charges. The NaCl pair belongs to an extended lattice. Iron–copper uses the textbook near-complete net account, with no rates, activities or mandatory intermediates."
+  },
+  "sourcePreparation": "artifacts/teaching-principles/chemistry-next-electron-transfer/ready-brief.json",
+  "voiceFreeze": {
+    "ready": true,
+    "date": "2026-10-18",
+    "text": "Four bilingual cues remain frozen. Root generated ZH62dc754cb264 and EN722ae623e991. Author calibrated measured word timing without changing speech.",
+    "visualEvidence": "Initial90frames plus24phonecollisionrepairframes; measured90frames aftercalibration.13model/componenttests and26priorUIoperations. These areauthorself-review; root independentreview isrecorded separately.",
+    "next": "Root independently inspects criticalframes and recordsvoices; author then calibrates chapterTime+locale using measuredwordtimes."
+  },
+  "reviewScope": "Author checks will be labelled self-review; root independent review remains separate.",
+  "implementedSubshots": {
+    "timingStatus": "Finalrecordings measured byindependentASR, authorcalibrated chapterTime+locale; notsubjectivelistening",
+    "secondsByLocale": {
+      "zh": {
+        "local": [6.45, 10.65],
+        "whole": [10.9, 15.3],
+        "sharing": [3.7, 7.5],
+        "formal": 11.5,
+        "predict": [18.4, 21.5],
+        "secondIron": 24.95,
+        "secondTransfer": [25.45, 28.7]
+      },
+      "en": {
+        "local": [7.1, 10.45],
+        "whole": [11, 15.3],
+        "sharing": [3.35, 7.6],
+        "formal": 12.25,
+        "predict": [18.15, 20.6],
+        "secondIron": 24.55,
+        "secondTransfer": [25.05, 28.15]
+      }
+    },
+    "measurementRecord": "artifacts/teaching-principles/electron-transfer-implementation/measured-sync.json",
+    "identity": "AtsecondFeaddition, progressresetsfromonepair1to twopairs.5; Cu-0 remainsCu, Cu-1 staysCuII untilits ownarrival."
+  },
+  "modelRevisions": {
+    "counts": "ionicAllocation maintains8 tracked initialvalenceunits foronepair or16 fortwopairs. donor+recipient+ledger is invariant; totalcharge includingledger is0. Geometry, markerphase andcharge use same rowstate.",
+    "covalent": "Sharedpair stays inphysicalHCl layer whileformalOS overlay appears separately. Envelope is illustrative, not quantum density or partialcharge.",
+    "prediction": "Discrete0/1/2Fe andCuII units; textbook near-complete netaccount. Twoelectron packet switchesFe0→II andCuII→0 without mandatoryI intermediates. Explicit sulfate+temporaryledger preservescharge. Adding secondFe retains firstCuidentity.",
+    "geometry": "Derived sampledarc paths are shared bycomponentandcover; finiteinputs clamped andallradii retained insidephoneview."
+  },
+  "sources": [
+    {
+      "title": "User-provided PEP textbook",
+      "file": "人教版高中化学-必修第一册.pdf",
+      "pages": "Printed23–24/PDF28–29; fullcontext22–26 read",
+      "basis": "ActualFe/Cu reaction onp23 and bothNaCl/HCl microscopic explanations. No chemicalexample invented or attributed toanotherpage."
+    },
+    {
+      "title": "IUPAC Gold Book oxidationstate",
+      "url": "https://goldbook.iupac.org/terms/view/O04365",
+      "read": "Directopen403; currentofficialsearchindex read, including ionic approximation andelectronallegiance. Not claimed direct fullpage read."
+    },
+    {
+      "title": "Karen,McArdle,Takats2016, Comprehensive definition of oxidationstate",
+      "doi": "10.1515/pac-2015-1204",
+      "url": "https://www.cup.uni-muenchen.de/ac/kluefers/homepage/L/kc2/literature/iupac_oxidation_state_2016.pdf",
+      "read": "Primarypaper via LMU universitymirror successfullyopened; abstractandsections2–4, printed832–834 read. PublisherdirectPDF returned405. Supports separation betweenformalallocation andphysicaldensity; electronorigin is not theformalOSdefinition."
+    }
+  ],
+  "reviewRecord": "drafts/chem-electron-transfer/review.json"
+}

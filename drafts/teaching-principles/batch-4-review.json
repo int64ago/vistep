@@ -1,0 +1,200 @@
+{
+  "batch": 4,
+  "status": "reviewed-ready-for-authorized-publication",
+  "baselineCommit": "8d7513dc511af18936b1d42a622c026f7acfa1de",
+  "owners": [
+    "Codex (/root)",
+    "Codex (/root/teaching_subject_fit)",
+    "Codex (/root/chemistry_inventory)",
+    "Codex (/root/biology_inventory)"
+  ],
+  "scope": {
+    "scenes": [
+      "suspension-center-of-gravity",
+      "chem-electron-transfer",
+      "bio-enzyme-investigations"
+    ],
+    "wholeCollectionComplete": false,
+    "textbookEntries": 8,
+    "preservation": "Original entry IDs, textbook titles and page attribution remain; one chemistry window extends to its new prediction chapter."
+  },
+  "checks": [
+    {
+      "kind": "subjective-listening",
+      "status": "not-run",
+      "reason": "No subjective listening interface; native playback and ASR will remain separately recorded."
+    },
+    {
+      "kind": "physical-phone-performance",
+      "status": "not-run",
+      "reason": "No physical phone; browser viewport emulation is separate evidence."
+    },
+    {
+      "kind": "independent-asr-and-word-timing",
+      "status": "passed",
+      "chapters": 32,
+      "conditions": "Independent local MLX Whisper large-v3-turbo without language/reference hints; all chapters have independent word timing. Root read lowest-similarity transcripts, including Chinese homophones. This is not subjective listening.",
+      "evidence": "artifacts/teaching-principles/batch-4-transcription.json"
+    },
+    {
+      "kind": "independent-midpoint-scientific-and-window-review",
+      "status": "passed-after-fix",
+      "entries": 7,
+      "scope": "One physics and six biology textbook windows; chemistry owner did not author these models. pH bubble rate mismatch corrected to same-scale instantaneous flux and reviewer reread it. This predates final voice timing.",
+      "evidence": "artifacts/teaching-principles/batch-4-cross-review/chemistry-review-of-suspension-enzyme.json"
+    },
+    {
+      "kind": "root-author-handoff-visual-inspection",
+      "status": "passed",
+      "scope": "Root actually viewed measured chemistry copper-prediction/first transfer/excess/second-iron/formal-overlay frames; six measured suspension clamp/torque/ink/hidden-point/prediction/new-crossing frames; repaired biology energy-axis/pH/recovery/water-transfer/release frames; all three authored covers. Final static covers and entire chapter set still pending.",
+      "evidence": [
+        "artifacts/teaching-principles/electron-transfer-implementation/measured-frames",
+        "artifacts/teaching-principles/suspension-review-06",
+        "artifacts/teaching-principles/biology-next-enzyme/final-keyframes",
+        "artifacts/teaching-principles/biology-next-enzyme/repaired-causal"
+      ]
+    },
+    {
+      "kind": "independent-final-electron-science-and-window-review",
+      "status": "passed-after-root-fix",
+      "entries": 1,
+      "independentParameterProbes": 1815,
+      "independentBilingualUIStates": 8,
+      "conditions": "Physics owner independently read final chemical model and textbook window, verified conserved inventories and persistent particle identities. Reviewer found premature manual reveal; root fixed it and reviewer independently rechecked both real routes. Original failure evidence retained. Root also viewed fixed start/advance images.",
+      "evidence": "artifacts/teaching-principles/batch-4-cross-review/physics-review-of-electron.json"
+    },
+    {
+      "kind": "scene-contracts",
+      "status": "passed",
+      "tests": 474,
+      "files": 7,
+      "evidence": "artifacts/teaching-principles/batch-4-scene-check.log"
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 3980,
+      "testFiles": 576,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "pages": 2134,
+      "evidence": "artifacts/teaching-principles/batch-4-verify.log"
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "pages": 2134,
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-4-preview.log"
+    },
+    {
+      "kind": "frozen-static-keyframes-and-player-bounds",
+      "status": "passed",
+      "cases": 116,
+      "conditions": "Chinese1440×1000 andEnglish320×568; all16 chapters, extra prediction/energy/cleavage/protonation/common-assay poses, actual rendered SVG font and primary transport geometry. Root actually viewed a representative final image from every chapter and additional causal poses; automated screenshot count is not a claim of viewing every saved image. Two final viewport confirmations wait for two animation frames after scrolling so the IntersectionObserver-driven quick control has settled; root verified it no longer overlays chapter controls.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-4-static-keyframes/report.json",
+        "artifacts/teaching-principles/batch-4-static-causal/report.json",
+        "artifacts/teaching-principles/batch-4-static-settled/report.json"
+      ]
+    },
+    {
+      "kind": "root-cover-visual-review",
+      "status": "passed",
+      "conditions": "Root viewed all3 final generated catalog PNGs and all3 social PNGs, including final measured durations.",
+      "evidence": [
+        "dist-preview/covers/suspension-center-of-gravity.png",
+        "dist-preview/covers/chem-electron-transfer.png",
+        "dist-preview/covers/bio-enzyme-investigations.png",
+        "dist-preview/social/suspension-center-of-gravity.png",
+        "dist-preview/social/chem-electron-transfer.png",
+        "dist-preview/social/bio-enzyme-investigations.png"
+      ]
+    },
+    {
+      "kind": "actual-controls-and-keyboard",
+      "status": "passed",
+      "physicsChecks": 60,
+      "physicsBoundaryStates": 216,
+      "biologyChecks": 14,
+      "chemistryChecks": 32,
+      "conditions": "Root reran actual clicks/range keyboard operations on frozen static preview. Material ink permanence, mass/damping controls, electron allocation and object identity, enzyme amount/main-object correspondence, exposure history, present condition, invalid/zero extremes, endpoint and replay.",
+      "harnessCorrection": "Initial biology runner used pre-voice subshot timing and waited for a protonation readout during another shot. Updated to the measured runner and actual progress controls; original timeout retained, no product change.",
+      "evidence": "artifacts/teaching-principles/batch-4-controls-static"
+    },
+    {
+      "kind": "entries-reduced-motion-audio-failure-and-visibility",
+      "status": "passed",
+      "cases": 19,
+      "conditions": "16 bilingual textbook window/question/transfer/reduced-motion checks;3 audio request aborts with clear retry and successful recovery, fully offscreen pause/visible resume/manual pause. Real notes opened before scrolling to ensure complete player invisibility.",
+      "evidence": "artifacts/teaching-principles/batch-4-behavior/report.json"
+    },
+    {
+      "kind": "catalog-combined-filters-and-no-JS-links",
+      "status": "passed",
+      "cases": 8,
+      "conditions": "Both languages: each of3 scenes through combined search/category/age/duration filters and reload, empty/reset, no horizontal overflow; no-JS catalog exposes all435 scene links.",
+      "evidence": "artifacts/teaching-principles/batch-4-catalog/report.json"
+    },
+    {
+      "kind": "uninterrupted-native-playback-with-rendered-checkpoints",
+      "status": "passed",
+      "runs": 6,
+      "chapters": 32,
+      "conditions": "Native audio and film at ordinary rate after explicit voice activation; no post-start seek,10-second screenshot/telemetry checkpoints; both locales,ZH desktop/EN390 phone viewport. Root viewed selected running-state checkpoints. Neither subjective listening nor continuous human visual watching nor physical-device performance.",
+      "evidence": "artifacts/teaching-principles/batch-4-continuous/report.json"
+    }
+  ],
+  "pending": ["Actions deployment and live verification"],
+  "rootReviewFindings": [
+    {
+      "issue": "Suspension revealed the new centre and weight arrow before the prediction; initial caption described rest while board remained tilted.",
+      "resolution": "New centre/weight hidden through question; separately labelled direction and hollow prediction precede release. Caption now describes lever arm. Root viewed measured frames.",
+      "status": "resolved"
+    },
+    {
+      "issue": "Degenerate/non-finite suspension record intersections produced non-finite geometry.",
+      "resolution": "Explicit finite and zero-length guards added to independently executed model tests.",
+      "status": "resolved"
+    },
+    {
+      "issue": "English narrow copper leftover label overlapped spectator footer; prediction caption also preempted the result.",
+      "resolution": "Redundant narrow label removed; actual remaining Cu²⁺ object/count preserved. Caption now invites prediction. Root viewed final measured states.",
+      "status": "resolved"
+    },
+    {
+      "issue": "Biology energy distribution lacked axis labels; recovery bars had mismatched baselines.",
+      "resolution": "Energy and relative-density labels added; fixed shared row tracks align bars. Root viewed repaired EN320 frames.",
+      "status": "resolved"
+    },
+    {
+      "issue": "Biology catalyst quantity changed a readout but not main tubes; pH bubbles encoded accumulated output with unequal scaling.",
+      "resolution": "Main tubes consume same computed catalyst inventory; pH uses instantaneous flux with common scale. Actual-input checks and independent reviewer confirm.",
+      "status": "resolved"
+    },
+    {
+      "issue": "Hydrolysis contact endpoints did not follow glycan movement; the two water hydrogens overlapped in transit.",
+      "resolution": "All contacts and net atom paths share model geometry; regression checks preserve atom identity and separation. Root viewed transition and release.",
+      "status": "resolved"
+    },
+    {
+      "issue": "Removing active cell-free extract still left a positive-product conclusion.",
+      "resolution": "Visible conclusion follows active-component state; actual UI check covers removal.",
+      "status": "resolved"
+    },
+    {
+      "issue": "Independent final chemistry review found exploration progress0 preempted the default Fe1/Cu²⁺2 prediction despite MDX instructions to predict first.",
+      "resolution": "Exploration hides conclusion and electron packets at progress0 for the stated prediction; advancement reveals them and seeking back restores the question. Zero/non-default quantities retain accurate boundary headings. Added semantic interaction regression and final static real-UI checks.",
+      "status": "resolved-and-root-static-UI-passed"
+    }
+  ],
+  "reviewedAt": "2026-10-18T14:16:32.161868+00:00",
+  "buildSource": {
+    "commit": "8d7513dc511af18936b1d42a622c026f7acfa1de",
+    "treeHash": "4defd5a5800e16711220790838b00e950fe191a62a045ba5deeeed53e5c3cfa6",
+    "gitDiffHash": "a0449e0ff33013bd638ffecc681a66e2e2c59a99e814f8e0d45cbb72a8d92fe7",
+    "fileCount": 5165,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "sourceConditions": "Production and preview were built before batch5 product edits. Source tree fingerprint matched before the60 candidate paths were staged. Final review/plan metadata were amended afterward. Runtime review used frozen dist-preview on63305, not the ongoing development tree."
+}

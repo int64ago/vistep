@@ -1,0 +1,299 @@
+{
+  "slug": "suspension-center-of-gravity",
+  "status": "frozen-for-root-after-measured-bilingual-speech-calibration",
+  "premise": {
+    "zh": "沿着同一块板的永久墨迹，区分悬点、朝向与质量分布。",
+    "en": "Follow permanent ink on one lamina to separate support, orientation and mass distribution."
+  },
+  "topic": {
+    "name": {
+      "zh": "悬挂法找重心",
+      "en": "Finding the centre by suspension"
+    },
+    "title": {
+      "zh": "换了悬点，为什么仍找到同一点？",
+      "en": "Why do different supports reveal the same point?"
+    },
+    "question": {
+      "zh": "换了悬点，为什么仍找到同一点？",
+      "en": "Why do different supports reveal the same point?"
+    },
+    "description": {
+      "zh": "从重力的力臂看薄板转动，用两条固定墨迹定位重心，再预测加配重后的新位置。",
+      "en": "See gravity turn a lamina, locate its centre with permanent ink, and predict what an added mass changes."
+    },
+    "tag": {
+      "zh": "力臂 · 墨迹 · 质量分布",
+      "en": "Lever arm · Ink · Mass distribution"
+    }
+  },
+  "curriculum": [
+    {
+      "entryId": "required-1-suspension-center",
+      "sceneVariant": "required-1-suspension-center",
+      "chapterIds": ["settle", "first", "second", "triangle"],
+      "selectionChanged": false,
+      "sourcePrintedPages": [58],
+      "contextPrintedPages": [61],
+      "question": {
+        "zh": "换了悬点，为什么两条墨迹仍指向同一点？",
+        "en": "Why do marks from different supports identify the same point?"
+      },
+      "principle": {
+        "zh": "稳定悬挂时重力线通过悬点；两条独立记录定位板上重心。改变质量分布会移动重心，改变朝向不会。",
+        "en": "At stable rest the weight line passes through the support. Independent records locate the material centre; mass redistribution moves it, rotation alone does not."
+      },
+      "transfer": {
+        "zh": "均匀三角形右侧加配重后，中线交点还是整个组合的重心吗？",
+        "en": "After a mass is added on one side of a uniform triangle, is the median crossing still the combined centre?"
+      },
+      "transferAnswer": {
+        "zh": "不是。旧中线与墨迹固定在板上，组合重心按质量加权向配重移动；需用加配重后的两次独立悬挂检验。",
+        "en": "No. Old medians and ink stay fixed on the material, while mass weighting shifts the combined centre toward the added mass. Test it with two new independent suspensions."
+      }
+    }
+  ],
+  "film": {
+    "plannedDuration": 148,
+    "chapters": [
+      {
+        "id": "settle",
+        "index": 0,
+        "title": {
+          "zh": "偏着挂，为什么会转？",
+          "en": "Why does the tilted lamina turn?"
+        },
+        "caption": {
+          "zh": "力臂决定重力的转动作用。",
+          "en": "Lever arm sets gravity’s turning effect."
+        },
+        "duration": 34,
+        "at": 0,
+        "cue": {
+          "at": 0.45,
+          "text": {
+            "zh": "夹子先把薄板偏着固定。看金色的重力线：它没有通过悬点，两条竖线之间的距离就是力臂。松开夹子，重力使板转动，力臂也跟着改变。板可能越过平衡位置，这时重力的转动方向反过来，让它往回摆。阻力逐渐消耗摆动的能量。真正停稳后，重力线通过悬点，重心在悬点下方。不是任意一个速度为零的瞬间，都已经平衡。",
+            "en": "The clamp holds the lamina at an angle. Follow the gold weight line: it misses the suspension pin. The perpendicular distance between the vertical lines is the lever arm. Release the clamp. Gravity turns the lamina and the lever arm changes. It can overshoot; then gravity turns it back. Drag gradually removes energy from the swing. Once it settles, the weight line passes through the pin, with the centre below it. Zero speed at a turning point alone does not mean equilibrium."
+          }
+        }
+      },
+      {
+        "id": "first",
+        "index": 1,
+        "title": {
+          "zh": "一条线，够不够？",
+          "en": "Is one line enough?"
+        },
+        "caption": {
+          "zh": "第一条墨迹只限定一条直线。",
+          "en": "One ink mark constrains only a line."
+        },
+        "duration": 27,
+        "at": 34,
+        "cue": {
+          "at": 34.45,
+          "text": {
+            "zh": "现在薄板已经停稳。铅垂线保持竖直，我们沿它在板上留下一条墨迹。稳定平衡告诉我们，重心一定在这条线上。但看这几个候选位置，只凭一条线，还分不出究竟是哪一个。墨迹画在材料上，会跟着板转；真正的铅垂线却一直竖直。要把一条线缩小成一个点，还需要一次独立的观察。",
+            "en": "The lamina has settled. The plumb line is vertical; transfer that direction onto the board as an ink mark. Stable equilibrium says the centre of gravity lies somewhere on this line. But several candidate points remain. One line cannot distinguish them. The ink belongs to the material and will turn with it, while the plumb line stays vertical. To narrow a line down to one point, we need an independent observation."
+          }
+        }
+      },
+      {
+        "id": "second",
+        "index": 2,
+        "title": {
+          "zh": "换孔后，什么没有变？",
+          "en": "What stays fixed after changing holes?"
+        },
+        "caption": {
+          "zh": "旧墨迹随板转，新悬线提供第二个约束。",
+          "en": "Old ink turns; a new plumb supplies another constraint."
+        },
+        "duration": 37,
+        "at": 61,
+        "cue": {
+          "at": 61.45,
+          "text": {
+            "zh": "保留第一条墨迹，把板换到另一个孔，夹住后再释放。注意棕色的旧线：它随着薄板转动，没有偷偷变成新的竖直线。等板再次停稳，沿现在的铅垂线留下第二条墨迹。两条不同方向的记录相交，才把位置确定下来。这个交点是板上的同一个材料位置。悬点改变了停稳朝向，没有改变板内的质量分布，也就没有改变重心。若两次记录恰好重合，就要换一个更合适的孔。",
+            "en": "Keep the first ink mark and rehang the board from another hole, holding it before release. Watch the brown line: it turns with the board instead of silently becoming vertical again. After the board settles, mark the new plumb direction. Two records in different directions intersect and locate one point. That point belongs to the material. Changing the support changes the resting orientation, but not the mass distribution or the centre of gravity. If two records coincide, choose a more useful hole."
+          }
+        }
+      },
+      {
+        "id": "triangle",
+        "index": 3,
+        "title": {
+          "zh": "加配重后，旧交点还对吗？",
+          "en": "Does the old crossing survive an added mass?"
+        },
+        "caption": {
+          "zh": "轮廓不变，配重仍会移动组合重心。",
+          "en": "The outline stays, but added mass shifts the centre."
+        },
+        "duration": 50,
+        "at": 98,
+        "cue": {
+          "at": 98.45,
+          "text": {
+            "zh": "均匀三角形纸板可以先用三条中线预测重心，再用不同悬点的记录检验。现在先夹住板，在一侧装上配重。它的质量是原板的四分之三。旧墨迹和中线交点都没有移动，可整个组合的重心还在那里吗？质量加权预测：新重心沿着旧重心到配重的方向，走过这段距离的七分之三。空心圈标出预测位置。释放后，新的重力线使板转动。停稳画线，再换孔复查，两条新的蓝线交在预测位置附近。旧墨迹一直没改；改变的是质量分布。因此，几何中心只有在相应的均匀条件下，才能代表重心。",
+            "en": "A uniform triangular card lets us predict its centre from the medians, then test it with suspension records. Clamp the card and attach a mass on one side, three quarters of the original board mass. The old ink and median crossing stay fixed. Does the combined centre stay there too? Mass weighting predicts a shift toward the added mass, through three sevenths of the distance from the old centre. The hollow circle marks that prediction. Release the card: the new weight line turns it. Let it settle and record a line, then check another hole. Two new blue marks meet near the predicted point. The old ink never changed; the mass distribution did. A geometric centre represents the centre of gravity only under the appropriate uniformity conditions."
+          }
+        }
+      }
+    ]
+  },
+  "translations": {
+    "夹住 · 尚未释放": "Held · before release",
+    "力臂随转动改变": "Changing lever arm",
+    "停稳：重心在悬点下方": "Settled: weight below pin",
+    "先看竖直线": "Vertical before ink",
+    "第一条墨迹": "First ink mark",
+    "一条线，多个候选点": "Many points, one line",
+    "换孔 C · 夹住后释放": "Hole C · hold, then release",
+    "旧墨迹跟着薄板转": "Old ink turns with the board",
+    "第二条独立记录": "A second independent mark",
+    "两线交点：一个位置": "Intersection: one point",
+    "中线预测，悬线检验": "Medians predict; ink tests",
+    "先夹住，再装配重": "Clamp first, then add the mass",
+    "预测：向配重走 3/7": "Predict: 3/7 toward the load",
+    "配重 = ¾ 板质量": "Added mass = ¾ board mass",
+    "配重使薄板再次转动": "Added mass turns the card",
+    "加配重后的第一条线": "First mark after loading",
+    "保留旧墨迹，换孔复查": "Keep ink; change the hole",
+    "新交点移，旧墨迹留": "New point; permanent old ink",
+    "移动时间，记录真正停稳的姿态": "Move time; record a settled pose",
+    "同一块薄板围绕悬点转动，保留板上墨迹并用新悬线检验重心": "One lamina turns about a pin; permanent ink and new plumb records test its centre of gravity",
+    "同一块板": "The same lamina",
+    "旧墨迹：固定在板上": "Old ink stays on the board",
+    "新记录：加配重后": "New ink: after loading",
+    "力臂": "Lever arm",
+    "薄板形状": "Lamina shape",
+    "不规则薄板": "Irregular lamina",
+    "三角形纸板": "Triangular card",
+    "悬挂孔": "Suspension hole",
+    "释放后时间": "Time after release",
+    "配重与板的质量比": "Added mass / board mass",
+    "停稳后留下墨迹": "Record settled ink",
+    "擦除墨迹": "Clear ink",
+    "显示两线交点": "Show ink intersection",
+    "已停稳，可以画线。": "Settled: ready to record.",
+    "尚未停稳；转折点的速度为零，也不能立即画线。": "Not settled. Zero speed at a turning point is not enough to record.",
+    "模型条件与阻尼": "Model conditions and damping",
+    "均匀薄板、均匀重力场和自由转动的固定销钉；配重视为点质量。演示以转动阻力表示能量耗散，不模拟真实气流。画面时间为教学慢放。墨迹来自模型姿态，不能代替真实测量。": "Uniform lamina and gravity, with a freely rotating fixed pin; added mass is a point mass. Viscous rotational drag represents energy loss, not actual airflow. Motion is presented on a teaching clock. Model-generated ink is not a real measurement.",
+    "阻尼率": "Damping rate",
+    "阻尼为零时会持续摆动；重心正好在悬点上方虽也零力矩，却是不稳定平衡。": "With zero damping the lamina keeps swinging. A centre exactly above the pin also gives zero torque, but that equilibrium is unstable.",
+    "预测方向：朝配重": "Prediction: toward the load"
+  },
+  "director": {
+    "clock": "chapter-relative provisional fractions; recalibrate against each language actual word times before final freeze",
+    "chapters": {
+      "settle": {
+        "hold": [0, 0.16],
+        "nonlinearSwing": [0.16, 0.84],
+        "settled": [0.84, 1]
+      },
+      "first": {
+        "vertical": [0, 0.18],
+        "drawInk": [0.18, 0.33],
+        "multipleCandidates": [0.38, 1]
+      },
+      "second": {
+        "rehangHeld": [0, 0.14],
+        "releaseAndOldInkRotation": [0.14, 0.62],
+        "secondMark": [0.65, 0.77],
+        "inferredIntersection": [0.78, 1]
+      },
+      "triangle": {
+        "medianPrediction": [0, 0.1],
+        "firstUniformRecord": [0.1, 0.13],
+        "uniformRehang": [0.13, 0.15],
+        "uniformSecondRelease": [0.15, 0.24],
+        "secondUniformRecord": [0.25, 0.29],
+        "clamp": [0.29, 0.34],
+        "addMassAndQuestionWithoutNewPoint": [0.34, 0.43],
+        "weightedPredictionHollowPoint": [0.43, 0.48],
+        "release": [0.48, 0.71],
+        "firstLoadedMark": [0.73, 0.78],
+        "rehangHeld": [0.78, 0.81],
+        "secondRelease": [0.81, 0.91],
+        "secondLoadedMark": [0.92, 1],
+        "result": [0.94, 1]
+      }
+    }
+  },
+  "model": {
+    "independentBenchmarks": "artifacts/teaching-principles/physics-next-suspension/benchmark-results.json",
+    "productionTests": "src/models/suspension-center-of-gravity.test.ts: 15 tests actually passed on 2026-10-18",
+    "limits": [
+      "Uniform field, rigid uniform lamina, free fixed pin; point added mass.",
+      "Viscous torque -2 gamma I omega, nonlinear RK4 in SI, illustrative clock.",
+      "Recorded ink derives from observed simulated pose, not real measured data.",
+      "Old records immutable across loading; observed intersections compared with independent weighted centre.",
+      "Zero angular velocity alone is not settlement; above-pin equilibrium is unstable."
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/int64ago/Downloads/人教版高中物理-必修第一册.pdf",
+      "pages": [58, 61],
+      "evidence": "artifacts/teaching-principles/physics-next-suspension/textbook-p58.png"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass"
+    }
+  ],
+  "review": {
+    "status": "author scoped checks and measured-speech director complete; root acceptance separate",
+    "report": "drafts/suspension-center-of-gravity/review.json",
+    "globalVerify": "root pending",
+    "speech": "Root produced both tracks; all 8 independent word-time files read. Actual locale director calibrated and silent keyframes viewed. Subjective listening not claimed.",
+    "physicalDevicePerformance": "not measured",
+    "listening": "not performed; new recordings not yet available"
+  },
+  "measuredSpeechDirector": {
+    "audio": {
+      "zh": "/narration/suspension-center-of-gravity-zh-b1d326b37d4a.mp3",
+      "en": "/narration/suspension-center-of-gravity-en-a60530b2a6d8.mp3"
+    },
+    "duration": 149.5,
+    "chapterStarts": [0, 34, 62.5, 99.5],
+    "wordTimeFolder": "artifacts/teaching-principles/batch-4-timed-speech/",
+    "filesRead": 8,
+    "sourceClock": "actual chapterTime and browser locale",
+    "cutTable": "SUSPENSION_SPEECH_CUTS in src/models/suspension-center-of-gravity.ts",
+    "artifact": "artifacts/teaching-principles/suspension-check/measured-cuts.json",
+    "normalizedPlanSuperseded": true,
+    "keyEvents": {
+      "zh": {
+        "release0": 9.25,
+        "secondMark": [12.73, 15.47],
+        "secondIntersection": 17.8,
+        "loadQuestion": [13.77, 19.09],
+        "direction": 21.4,
+        "predictionPoint": 25.65,
+        "releaseLoad": 29.55,
+        "loadedIntersection": 36.6
+      },
+      "en": {
+        "release0": 11.1,
+        "secondMark": [12.69, 14.27],
+        "secondIntersection": 16.65,
+        "loadQuestion": [12.93, 18.19],
+        "direction": 20,
+        "predictionPoint": 22.1,
+        "releaseLoad": 27.8,
+        "loadedIntersection": 35.5
+      }
+    },
+    "limits": [
+      "Physical dynamics retain one nonlinear trajectory; the observation clock slows visible rotation and compresses the decaying tail.",
+      "Independent word timing and silent keyframes do not establish subjective listening or continuous viewing."
+    ]
+  }
+}

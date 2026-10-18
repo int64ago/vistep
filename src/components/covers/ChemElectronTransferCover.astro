@@ -1,28 +1,32 @@
 ---
-import { transferPosition } from '../../models/chem-electron-transfer';
-const p = transferPosition(0.65);
+import { ionicGeometry } from '../../models/chem-electron-transfer';
+const g = ionicGeometry(400, 0.7, 2);
 ---
 
-<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
-  ><circle cx="98" cy="126" r="31" fill="#d3d0aa"></circle><circle
-    cx="290"
-    cy="126"
-    r="37"
-    fill="#b4c6a8"></circle><circle cx="98" cy="126" r="49" stroke="#b4c29f" stroke-dasharray="3 6"
-  ></circle><circle cx="290" cy="126" r="61" stroke="#a7bb97"></circle>{
-    Array.from({ length: 7 }, (_, i) => (
-      <circle
-        cx={290 + Math.cos(((i + 1) * Math.PI) / 4) * 61}
-        cy={126 + Math.sin(((i + 1) * Math.PI) / 4) * 61}
-        r="4"
-        fill="#86a48c"
-      />
+<svg viewBox={`0 0 400 ${g.height}`} fill="none" aria-hidden="true">
+  {
+    g.rows.map((r) => (
+      <g>
+        <path d={r.path} stroke="#bea375" stroke-dasharray="3 5" />
+        <circle cx={r.left} cy={r.y} r="25" fill="#d6d5b4" />
+        <circle cx={r.right} cy={r.y} r="27" fill="#b2c9ad" />
+        <circle cx={r.left} cy={r.y} r={r.radius} stroke="#b9c3a7" stroke-dasharray="2 5" />
+        <circle cx={r.right} cy={r.y} r={r.radius} stroke="#97b396" />
+        {r.chlorine.map((e) => (
+          <circle cx={e.x} cy={e.y} r="3.8" fill="#638875" />
+        ))}
+        <circle cx={r.moving.x} cy={r.moving.y} r="9" stroke="#b08442" stroke-width="1.5" />
+        <circle cx={r.moving.x} cy={r.moving.y} r="4.8" fill="#bb8b43" />
+        <text x={r.left} y={r.y + 6} text-anchor="middle" fill="#526951" font-size="20">
+          {r.sodiumCharge ? 'Na⁺' : 'Na'}
+        </text>
+        <text x={r.right} y={r.y + 6} text-anchor="middle" fill="#526951" font-size="20">
+          {r.chlorineCharge ? 'Cl⁻' : 'Cl'}
+        </text>
+      </g>
     ))
-  }<path d="M140 94Q227 25 351 126" stroke="#bba175" stroke-dasharray="4 6"></path><circle
-    cx={p.x * 0.8 + 12}
-    cy={p.y * 0.8 + 12}
-    r="7"
-    fill="#c09658"
-    stroke="#e9d09a"
-    stroke-width="2"></circle></svg
->
+  }
+  <text x="200" y={g.height - 12} text-anchor="middle" fill="#607c5b" font-size="22"
+    >2Na + Cl₂ → 2NaCl</text
+  >
+</svg>

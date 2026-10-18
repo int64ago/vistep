@@ -1,117 +1,112 @@
-.suspension-lab {
-  max-width: 740px;
+.suspension-cg-lab {
+  width: 100%;
+  max-width: 780px;
   margin: auto;
-  padding: 0 16px;
-  color: #617851;
+  padding: 8px 12px 0;
+  box-sizing: border-box;
+  color: #35564f;
 }
-.suspension-lab header {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  font-size: 16px;
-  border-bottom: 1px solid #dde5d3;
-  padding-bottom: 12px;
-}
-.suspension-lab header p {
-  font-size: 18px;
-  margin: 0;
-}
-.suspension-object {
+.suspension-cg-object {
   display: block;
   width: 100%;
-  height: 330px;
+  overflow: visible;
 }
-.suspension-key {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+.suspension-cg-object text {
+  font-family: inherit;
   font-size: 16px;
 }
-.suspension-key span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.suspension-key i {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #b17f56;
-}
-.suspension-key span + span i {
-  background: #5e846c;
-}
-.suspension-result {
-  font-size: 18px;
-  line-height: 1.6;
+.suspension-cg-shot-label {
   text-align: center;
-  margin: 18px 0 0;
+  font-size: 16px;
+  line-height: 1.45;
+  min-height: 24px;
+  padding: 3px 4px 7px;
+  text-wrap: balance;
 }
-.suspension-controls {
+.suspension-cg-controls {
   display: grid;
-  gap: 22px;
-  margin: 24px auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px 4px;
 }
-.suspension-note {
+.suspension-cg-controls p,
+.suspension-cg-controls summary,
+.suspension-cg-controls .control {
   font-size: 16px;
   line-height: 1.6;
-  color: #7e8e70;
+  margin: 0;
 }
-.suspension-controls .segmented {
+.suspension-cg-controls .segmented {
   flex-wrap: wrap;
 }
-@media (max-width: 760px) {
-  .suspension-lab {
-    padding: 0 5px;
-  }
-  .suspension-lab header {
-    display: block;
-    text-align: center;
-  }
-  .suspension-lab header p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  .suspension-object {
-    height: 285px;
-  }
-  .suspension-key {
-    gap: 16px;
-    font-size: 16px;
-  }
-  .suspension-key i {
-    width: 16px;
-  }
-  .suspension-result {
-    font-size: 16px;
-    margin-top: 12px;
-  }
+.suspension-cg-controls .segmented button {
+  font-size: 16px;
+  min-height: 44px;
+  min-width: 44px;
+  white-space: normal;
 }
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .suspension-lab {
-    padding: 12px 8px;
-  }
-  .showcase[data-mode='watch'] .suspension-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .suspension-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .suspension-lab > header > span,
-  .showcase[data-mode='watch'] .suspension-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .suspension-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .suspension-lab > p[class$='-observation'] {
-    display: none;
-  }
+.suspension-cg-pin-controls,
+.suspension-cg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-
+.suspension-cg-pin-controls button,
+.suspension-cg-actions button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 9px 13px;
+  border: 1px solid #c5d2c3;
+  border-radius: 12px;
+  background: #f6f7ef;
+  color: #35564f;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.suspension-cg-controls button[aria-pressed='true'] {
+  background: #dce9dd;
+  border-color: #8da995;
+}
+.suspension-cg-controls button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.suspension-cg-controls button:focus-visible,
+.suspension-cg-controls summary:focus-visible {
+  outline: 2px solid #537e96;
+  outline-offset: 3px;
+}
+.suspension-cg-controls details {
+  border-top: 1px solid #dce4d5;
+  padding-top: 12px;
+}
+.suspension-cg-controls details summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.suspension-cg-controls details p {
+  margin: 0 0 16px;
+}
+.suspension-cg-controls input[type='range'] {
+  width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+  min-height: 44px;
+}
 @media (max-width: 640px) {
-  .showcase[data-mode='watch'] .suspension-result {
-    display: none;
+  .suspension-cg-lab {
+    padding: 0 4px;
+  }
+  .suspension-cg-shot-label {
+    padding: 0 0 5px;
+  }
+  .suspension-cg-controls {
+    padding: 16px 2px;
   }
 }

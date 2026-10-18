@@ -3182,9 +3182,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-enzyme-investigations',
     name: '酶的证据与条件',
-    title: '同一反应，为什么有的更快',
-    question: '如何用对照区分催化、专一性与酶的失活？',
-    description: '从金属笼中的肉块到四支反应管，分开速率、检测与证据边界。',
+    title: '细胞为什么靠酶加速反应？',
+    question: '细胞为什么靠酶加速反应？',
+    description: '从对照现象追到能垒、催化构型与状态历史，再用恢复条件作预测。',
     color: '#aab28a',
     tag: '生物学',
     related: ['bio-food-tests', 'bio-protein-machines', 'bio-respiration'],
@@ -3200,6 +3200,20 @@ export const topics: Topic[] = [
       {
         title: 'Practical Biology: investigating catalase and hydrogen peroxide',
         url: 'https://practicalbiology.org/bio-molecules/factors-affecting-enzyme-activity/investigating-an-enzyme-controlled-reaction-catalase-and-hydrogen-peroxide-concentration.html',
+      },
+      { title: '人教版高中生物学必修1，76—84页', url: 'https://jc.pep.com.cn/' },
+      { title: 'IUPAC Gold Book — Catalyst', url: 'https://goldbook.iupac.org/terms/view/C00876' },
+      {
+        title: 'RCSB PDB 1CPU — Human pancreatic alpha-amylase binding subsites',
+        url: 'https://www.rcsb.org/structure/1CPU',
+      },
+      {
+        title: 'Neves et al. (2022) — Alpha-amylase dynamics and catalysis',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9778734/',
+      },
+      {
+        title: 'Rodriguez Sanoja et al. (2000) — Amylase activity and stability',
+        url: 'https://journals.asm.org/doi/10.1128/AEM.66.8.3350-3356.2000',
       },
     ],
     number: '324',
@@ -3402,9 +3416,9 @@ export const topics: Topic[] = [
   {
     slug: 'chem-electron-transfer',
     name: '电子得失与电子对偏移',
-    title: '氧化数改变，一定是完整电子离开了吗？',
-    question: '氧化数改变，一定是完整电子离开了吗？',
-    description: '用钠氯与氢氯的对照，区分离子形成、共用电子对偏移以及氧化数的形式记账。',
+    title: '电子账本怎样决定反应配比？',
+    question: '电子账本怎样决定反应配比？',
+    description: '追踪电子归属，区分离子得失与共价共享，再用同一账本预测铁能还原多少铜。',
     color: '#b5c6a5',
     tag: '氧化还原 · 电子归属 · 极性',
     related: [
@@ -3423,9 +3437,10 @@ export const topics: Topic[] = [
         title: 'IUPAC — Comprehensive definition of oxidation state',
         url: 'https://iupac.org/recommendation/comprehensive-definition-of-oxidation-state/',
       },
+      { title: '人教版高中化学必修第一册，23—24页', url: 'https://jc.pep.com.cn/' },
       {
-        title: '人教版高中化学必修第一册，23—24页',
-        url: 'https://jc.pep.com.cn/',
+        title: 'IUPAC (2016) — Comprehensive definition of oxidation state, full paper',
+        url: 'https://www.cup.uni-muenchen.de/ac/kluefers/homepage/L/kc2/literature/iupac_oxidation_state_2016.pdf',
       },
     ],
     number: '316',
@@ -5774,11 +5789,11 @@ export const topics: Topic[] = [
   {
     slug: 'suspension-center-of-gravity',
     name: '悬挂法找重心',
-    title: '两次悬挂，怎样找到薄板的同一个点？',
-    question: '两次悬挂，怎样找到薄板的同一个点？',
-    description: '让铅垂线留在薄板上，再换一个悬点；从不规则薄板到三角形中线，检验重心与质量分布。',
+    title: '换了悬点，为什么仍找到同一点？',
+    question: '换了悬点，为什么仍找到同一点？',
+    description: '从重力的力臂看薄板转动，用两条固定墨迹定位重心，再预测加配重后的新位置。',
     color: '#b2bd9d',
-    tag: '悬挂 · 交点 · 重心',
+    tag: '力臂 · 墨迹 · 质量分布',
     related: ['center-of-mass', 'pendulum'],
     sources: [
       {
@@ -5789,6 +5804,15 @@ export const topics: Topic[] = [
         title: 'OpenStax — Conditions for Static Equilibrium',
         url: 'https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium',
       },
+      {
+        title: 'OpenStax — Physical pendulums',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums',
+      },
+      {
+        title: 'OpenStax — Centre of mass and mass weighting',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass',
+      },
+      { title: '人教版高中物理必修第一册，58页与61页', url: 'https://jc.pep.com.cn/' },
     ],
     number: '214',
   },

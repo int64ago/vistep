@@ -1,6 +1,6 @@
 {
   "batch": 3,
-  "status": "reviewed-ready-for-authorized-publication",
+  "status": "published-and-live-verified",
   "baselineCommit": "b06f2c2f12b640ab4bcd6216a47fe686b8c2bfd7",
   "owners": [
     "Codex (/root)",
@@ -148,7 +148,7 @@
       "evidence": "artifacts/teaching-principles/batch-3-continuous/report.json"
     }
   ],
-  "pending": ["Actions deployment and live verification"],
+  "pending": [],
   "recordedDurations": {
     "phone-accelerometer-lab": 226.5,
     "chem-precipitation-paths": 255,
@@ -162,5 +162,19 @@
     "fileCount": 5157,
     "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
   },
-  "sourceConditions": "Production and preview built before batch4 edits; frozen tree fingerprint matched before60 candidate paths were staged. Final review/plan metadata were amended afterward. Runtime review used the frozen dist-preview on63305, not the live development tree."
+  "sourceConditions": "Production and preview built before batch4 edits; frozen tree fingerprint matched before60 candidate paths were staged. Final review/plan metadata were amended afterward. Runtime review used the frozen dist-preview on63305, not the live development tree.",
+  "publication": {
+    "commit": "8d7513dc511af18936b1d42a622c026f7acfa1de",
+    "actionsRun": "https://github.com/int64ago/vistep/actions/runs/39132277809",
+    "status": "success",
+    "version": "e7ef8d42-5e27-4965-b890-2e15ebe02bca",
+    "finishedAt": "2026-10-18T13:55:50.064Z",
+    "liveCheckedAt": "2026-10-18T13:57:14.707Z",
+    "pages": 6,
+    "recordingHashes": 6,
+    "evidence": [
+      "artifacts/teaching-principles/batch-3-deployment/deployment.json",
+      "artifacts/teaching-principles/batch-3-live.json"
+    ]
+  }
 }

@@ -112,7 +112,7 @@
 | [容量瓶与定量配液](../../src/content/chem-solution-preparation.mdx)               | 2:58 | 洗涤和定容，分别控制了什么？                         |
 | [阴离子的两步证据](../../src/content/chem-anion-tests.mdx)                        | 2:39 | 出现白色沉淀，就足以认出阴离子吗？                   |
 | [沉淀的生成、溶解与转化](../../src/content/chem-precipitation-paths.mdx)          | 4:15 | 沉淀变了，怎样证明离子的去向？                       |
-| [电子得失与电子对偏移](../../src/content/chem-electron-transfer.mdx)              | 1:31 | 氧化数改变，一定是完整电子离开了吗？                 |
+| [电子得失与电子对偏移](../../src/content/chem-electron-transfer.mdx)              | 2:17 | 电子账本怎样决定反应配比？                           |
 | [焰色与原子光谱](../../src/content/chem-flame-spectra.mdx)                        | 3:18 | 一团颜色里，藏着哪些原子信息？                       |
 | [钠与过氧化钠的证据链](../../src/content/chem-sodium-reactions.mdx)               | 3:42 | 同样含钠，遇到空气和水会怎样？                       |
 | [两种碳酸盐的对照](../../src/content/chem-carbonate-comparison.mdx)               | 3:22 | 名字里有氢，为什么还是碱性的？                       |
@@ -158,7 +158,7 @@
 | [叶片的色带与光谱](../../src/content/bio-leaf-pigments.mdx)                   | 2:04 | 分离色素，再比较不同波长如何穿过它们。         |
 | [免疫路径与证据](../../src/content/bio-immune-pathways.mdx)                   | 2:50 | 认出一种标记，怎样连到一条免疫路径？           |
 | [呼吸的气路与碳路径](../../src/content/bio-respiration.mdx)                   | 2:46 | 把培养装置与细胞内的物质去向连接起来。         |
-| [酶的证据与条件](../../src/content/bio-enzyme-investigations.mdx)             | 3:10 | 如何用对照区分催化、专一性与酶的失活？         |
+| [酶的证据与条件](../../src/content/bio-enzyme-investigations.mdx)             | 4:11 | 细胞为什么靠酶加速反应？                       |
 | [神经研究与病例证据](../../src/content/bio-neural-evidence.mdx)               | 2:38 | 一次反应、一次刺激、一个病例，各能说明什么？   |
 | [细胞核的七组证据](../../src/content/bio-nuclear-evidence.mdx)                | 2:47 | 核、细胞质与发育环境，各自留下什么证据？       |
 | [激素研究的对照证据](../../src/content/bio-endocrine-evidence.mdx)            | 4:30 | 拿走一种信号，再补回来，能说明什么？           |
@@ -205,7 +205,7 @@
 | [摩擦力测量实验](../../src/content/friction-lab.mdx)                 | 2:20 | 木块还没动，摩擦力为什么已经变了？         |
 | [弹性测量实验](../../src/content/elasticity-lab.mdx)                 | 2:38 | 伸长一倍，拉力一定增加一倍吗？             |
 | [微小形变观察](../../src/content/small-deformation-lab.mdx)          | 1:51 | 桌面几乎看不出弯曲，光点为什么动了？       |
-| [悬挂法找重心](../../src/content/suspension-center-of-gravity.mdx)   | 1:53 | 两次悬挂，怎样找到薄板的同一个点？         |
+| [悬挂法找重心](../../src/content/suspension-center-of-gravity.mdx)   | 2:30 | 换了悬点，为什么仍找到同一点？             |
 | [自由落体小实验](../../src/content/free-fall-activities.mdx)         | 2:18 | 一张纸、一对石头、一把尺，分别能回答什么？ |
 | [手机怎样感觉加速度](../../src/content/phone-accelerometer-lab.mdx)  | 3:47 | 没动读9.8，下落为什么读零？                |
 | [纸带怎样记录运动](../../src/content/ticker-tape-lab.mdx)            | 3:03 | 同样的节拍，为什么点越来越疏？             |

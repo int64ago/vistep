@@ -1,124 +1,555 @@
-.bio-enzyme {
-  background: #eeeedd;
-  padding: clamp(12px, 3vw, 28px);
+.bep-root {
+  background: linear-gradient(145deg, #f2f2e5, #e9efdf);
+  color: #4b604e;
   border-radius: 24px;
-  color: #4b5b44;
+  padding: 18px 22px;
+  overflow: hidden;
 }
-.bio-enzyme-kind {
-  font-size: 16px;
-  color: #7c8269;
-  margin: 0 0 8px;
+.bep-root * {
+  box-sizing: border-box;
 }
-.bio-enzyme-main {
-  width: 100%;
-  height: 290px;
-  display: block;
-}
-.bio-enzyme-tubes,
-.bio-enzyme-conditions,
-.bio-enzyme-specificity {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  max-width: 780px;
+.bep-scene {
+  min-height: 348px;
+  max-width: 680px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
-.bio-enzyme-tubes > div,
-.bio-enzyme-conditions > div,
-.bio-enzyme-specificity > div {
-  flex: 1;
+.bep-root svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.bep-root svg text {
+  font-family: inherit;
+  font-size: 23px;
+  fill: #51624e;
+}
+.bep-root .bep-atom {
+  font-size: 24px;
+  font-weight: 550;
+}
+.bep-root .bep-group {
+  font-size: 29px;
+  font-weight: 600;
+}
+.bep-root p {
+  margin: 0;
+}
+.bep-root span,
+.bep-root strong,
+.bep-root b,
+.bep-controls {
+  font-size: 16px;
+  line-height: 1.35;
+}
+.bep-root strong,
+.bep-root b {
+  font-weight: 550;
+}
+.bep-four {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+.bep-tube-unit {
   min-width: 0;
   text-align: center;
+  position: relative;
 }
-.bio-enzyme-tubes svg,
-.bio-enzyme-conditions svg,
-.bio-enzyme-specificity svg {
-  width: 100%;
-  max-height: 260px;
-  display: block;
+.bep-tube-unit svg {
+  height: 175px;
 }
-.bio-enzyme-tubes p,
-.bio-enzyme-conditions p,
-.bio-enzyme-specificity p {
-  font-size: 16px;
-  line-height: 1.4;
-  margin: 6px 0;
-}
-.bio-enzyme-ledger {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 24px;
-  font-size: 16px;
-}
-.bio-enzyme-controls {
+.bep-tube-unit > div {
   display: grid;
-  gap: 16px;
-  max-width: 680px;
-  margin: 24px auto;
-  font-size: 16px;
+  gap: 9px;
+  justify-items: center;
 }
-.bio-enzyme-controls .segmented {
-  flex-wrap: wrap;
-}
-.bio-enzyme-controls button {
+.bep-tube-unit span {
   min-height: 44px;
-  border-radius: 12px;
-  border: 1px solid #bac4a6;
-  background: #f6f6e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bep-tube-heated:before {
+  content: '';
+  position: absolute;
+  inset: 36% 6% 31%;
+  background: #c0d8d33b;
+  border: 2px solid #abc1b4;
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+  pointer-events: none;
+}
+.bep-oxygen,
+.bep-product-bar,
+.bep-starch-bar,
+.bep-competence {
+  display: block;
+  height: 7px;
+  border-radius: 20px;
+  background: #d2dbc7;
+  overflow: hidden;
+  width: 90%;
+  margin: auto;
+}
+.bep-oxygen > i,
+.bep-product-bar > i,
+.bep-starch-bar > i,
+.bep-competence > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #b69564;
+}
+.bep-starch-bar > i {
+  background: #687198;
+}
+.bep-energy,
+.bep-glucan,
+.bep-fold,
+.bep-charge,
+.bep-cage,
+.bep-extract {
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+}
+.bep-legend,
+.bep-axis-label,
+.bep-two-facts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.bep-legend {
+  margin-bottom: 5px;
+}
+.bep-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bep-axis-label {
+  margin-top: 0;
+}
+.bep-two-facts > span {
+  flex: 1;
+  text-align: center;
+}
+.bep-cold-dot,
+.bep-warm-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #6d9e9c;
+  flex-shrink: 0;
+}
+.bep-warm-dot {
+  background: #bf8a53;
+}
+.bep-small-note {
+  display: block;
+  text-align: center;
+  color: #74816c;
+  margin: 7px auto 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.bep-endpoint {
+  width: 100%;
+  max-width: 500px;
+  display: grid;
+  gap: 19px;
+}
+.bep-endpoint > p {
+  text-align: center;
+  font-size: 18px;
+}
+.bep-yield-row {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 12px;
+}
+.bep-yield-row > div,
+.bep-live-comparison > i {
+  height: 16px;
+  background: #d5deca;
+  border-radius: 20px;
+  overflow: hidden;
+  border-right: 2px solid #b5bc9e;
+}
+.bep-yield-row > div > i,
+.bep-live-comparison > i > i {
+  height: 100%;
+  display: block;
+  background: #97b1a0;
+  border-radius: 20px;
+}
+.bep-net-equation {
+  text-align: center;
+  font-size: 24px;
+  white-space: nowrap;
+}
+.bep-crystal {
+  display: grid;
+  grid-template-columns: 135px minmax(0, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 530px;
+  align-items: center;
+}
+.bep-crystal-origin {
+  text-align: center;
+  position: relative;
+}
+.bep-crystal-origin:after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 112px;
+  border: 2px solid #bdc6ab;
+  border-left: 0;
+  right: -13px;
+  top: 8px;
+  border-radius: 0 13px 13px 0;
+}
+.bep-crystal-tests {
+  display: grid;
+  gap: 15px;
+}
+.bep-crystal-test {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bep-crystal-test > svg {
+  height: 118px;
+  width: 70px;
+  flex-shrink: 0;
+}
+.bep-crystal-test > div {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.bep-crystal-test .bep-product-bar {
+  margin: 0;
+  width: 100%;
+}
+.bep-crystal-conclusion {
+  grid-column: 1/-1;
+  text-align: center;
+}
+.bep-assay-pair {
+  width: 100%;
+  max-width: 420px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.bep-assay-pair > div {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  text-align: center;
+}
+.bep-assay-pair svg {
+  height: 155px;
+}
+.bep-assay-pair span {
+  min-height: 43px;
+}
+.bep-assay-pair strong {
+  color: #956a4f;
+}
+.bep-three-assays {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px 20px;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+}
+.bep-three-assays > div {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+.bep-three-assays svg {
+  height: 155px;
+}
+.bep-assay-line {
+  grid-column: 1/-1;
+  text-align: center;
+  margin-top: 7px;
+}
+.bep-ph-assays {
+  width: 100%;
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  text-align: center;
+  gap: 10px;
+}
+.bep-ph-assays > div {
+  display: grid;
+  gap: 8px;
+}
+.bep-ph-assays > div > div {
+  display: flex;
+  min-width: 0;
+  justify-content: center;
+  gap: 2px;
+}
+.bep-ph-assays svg {
+  height: 145px;
+  width: 49%;
+  min-width: 0;
+}
+.bep-charge .bep-competence {
+  width: 55%;
+  margin-top: 10px;
+  background: #d7d5c6;
+}
+.bep-recovery {
+  width: 100%;
+  max-width: 520px;
+}
+.bep-treatment-heading {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+.bep-recovery-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  text-align: center;
+}
+.bep-recovery-groups > div {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+.bep-recovery-groups svg {
+  height: 132px;
+}
+.bep-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.bep-controls {
+  border-top: 1px solid #cbd6bd;
+  margin-top: 22px;
+  padding-top: 20px;
+  display: grid;
+  gap: 18px;
+}
+.bep-controls button {
+  min-height: 44px;
+  border: 1px solid #b9c5aa;
+  border-radius: 14px;
+  background: #f6f7ed;
   color: inherit;
   font: inherit;
-  padding: 8px;
+  padding: 10px 15px;
 }
-.bio-enzyme-controls p {
+.bep-controls p {
   font-size: 16px;
-  line-height: 1.6;
-}
-@media (max-width: 540px) {
-  .bio-enzyme-main {
-    height: 245px;
-  }
-  .bio-enzyme-tubes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-  }
-  .bio-enzyme-tubes svg {
-    height: 145px;
-  }
-  .bio-enzyme-conditions {
-    gap: 6px;
-  }
-  .bio-enzyme-conditions svg {
-    height: 190px;
-  }
-  .bio-enzyme-specificity {
-    gap: 10px;
-  }
-  .bio-enzyme-specificity svg {
-    height: 170px;
-  }
-  .bio-enzyme-tubes p {
-    margin: 3px 0;
-  }
-}
-
-.bio-enzyme-assay {
-  font-size: 16px;
-  text-align: center;
   line-height: 1.5;
-  margin: 12px auto 0;
-  max-width: 650px;
 }
-
+.bep-live-comparison {
+  display: grid;
+  grid-template-columns: auto minmax(40px, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
 @media (max-width: 540px) {
-  .bio-enzyme-tubes {
-    gap: 10px 16px;
+  .bep-root {
+    padding: 12px 12px;
+    border-radius: 20px;
   }
-  .bio-enzyme-tubes svg {
+  .bep-scene {
+    min-height: 230px;
+    gap: 5px;
+    max-width: 350px;
+  }
+  .bep-energy,
+  .bep-glucan,
+  .bep-fold,
+  .bep-charge,
+  .bep-cage,
+  .bep-extract {
+    max-width: 320px;
+  }
+  .bep-four {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+  }
+  .bep-tube-unit {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-align: left;
+  }
+  .bep-tube-unit svg {
+    height: 97px;
+    width: 45px;
+    flex-shrink: 0;
+  }
+  .bep-tube-unit > div {
+    width: 100%;
+    gap: 5px;
+    justify-items: start;
+    min-width: 0;
+  }
+  .bep-tube-unit span {
+    justify-content: start;
+    min-height: 0;
+  }
+  .bep-tube-heated:before {
+    inset: 40% auto 0 -2px;
+    width: 49px;
+  }
+  .bep-oxygen {
+    width: 100%;
+    margin: 0;
+  }
+  .bep-legend,
+  .bep-axis-label,
+  .bep-two-facts {
+    gap: 8px;
+  }
+  .bep-small-note {
+    margin-top: 4px;
+  }
+  .bep-endpoint {
+    gap: 12px;
+  }
+  .bep-endpoint > p {
+    font-size: 16px;
+  }
+  .bep-yield-row {
+    grid-template-columns: 65px minmax(0, 1fr) 28px;
+    gap: 9px;
+  }
+  .bep-net-equation {
+    font-size: 21px;
+  }
+  .bep-crystal {
+    grid-template-columns: 83px minmax(0, 1fr);
+    gap: 7px;
+  }
+  .bep-crystal-origin:after {
+    right: -5px;
+    width: 15px;
+    height: 100px;
+    top: -2px;
+  }
+  .bep-crystal-test {
+    gap: 5px;
+  }
+  .bep-crystal-test > svg {
+    width: 44px;
+    height: 90px;
+  }
+  .bep-crystal-tests {
+    gap: 9px;
+  }
+  .bep-crystal-test > div {
+    gap: 3px;
+  }
+  .bep-crystal-conclusion {
+    margin-top: 5px;
+  }
+  .bep-assay-pair {
+    gap: 14px;
+  }
+  .bep-assay-pair svg {
+    height: 107px;
+  }
+  .bep-three-assays {
+    gap: 8px;
+  }
+  .bep-three-assays svg {
+    height: 113px;
+  }
+  .bep-assay-line {
+    margin-top: 3px;
+  }
+  .bep-ph-assays {
+    gap: 7px;
+  }
+  .bep-ph-assays svg {
     height: 105px;
   }
-  .bio-enzyme-tubes p {
-    line-height: 1.3;
+  .bep-ph-assays > div {
+    gap: 5px;
   }
+  .bep-recovery-groups {
+    gap: 7px;
+  }
+  .bep-recovery-groups svg {
+    height: 88px;
+  }
+  .bep-treatment-heading {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .bep-recovery-groups > div {
+    gap: 4px;
+  }
+  .bep-controls {
+    margin-top: 18px;
+  }
+}
+/* The fixed 90px document scroll padding outlives the static mobile header.
+ * Align this short-screen player at 16px when native scrollIntoView is used. */
+@media (max-width: 540px) and (max-height: 700px) {
+  .showcase:has(.bep-root) {
+    scroll-margin-top: -74px;
+  }
+}
+.bep-axis-label:has(> span:only-child) {
+  justify-content: center;
+  text-align: center;
+}
+.bep-recovery-chain-label {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+  margin-top: 7px;
+}
+@media (max-width: 540px) {
+  .bep-shot-glucan .bep-two-facts > span:first-child {
+    flex: 0 0 57px;
+  }
+  .bep-shot-glucan .bep-two-facts > span:last-child {
+    flex: 1;
+  }
+}
+
+.bep-recovery-groups > div {
+  align-content: start;
+  grid-auto-rows: max-content;
+}
+.bep-recovery-groups strong {
+  min-height: 2.7em;
 }
