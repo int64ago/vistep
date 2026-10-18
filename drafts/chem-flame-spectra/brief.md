@@ -1,11 +1,50 @@
-# 焰色与原子光谱
+# 焰色与原子光谱：从颜色到能量与证据
 
-Owner chemistry worker. Three targets: required1 experiment2-6; elective2 model-p7 and instrument-p8. They keep distinct student-experiment, mechanism and instrument-observation labels.
+本次保留七个章 ID，以及三个化学教材入口的播放顺序。前三章中英标题、字幕、时长和口播与修改前逐字段相同；保留 Na/K 参考谱线及钴玻璃透射函数。其余四章补上能量转移、线形成、固定证据检验与起始能态反例。自动片与自由探索使用同一独立模型，探索状态不改变自动片。
 
-Misconception: one element is one perceived colour; cobalt glass changes the sample; energy lines are electron orbits. Prior knowledge: light wavelength and atomic energy. Three original representations: flame/wire/filter viewing path, level-energy diagram, aligned line strips for Li/He/Hg. Narrow view moves sample text below burner and uses CSS-sized spectral axes, not scaled SVG labels.
+## 教材窗口与问题
 
-Textbook evidence: required1 PDF45 printed40 and elective2 PDF10–11 printed7–8 fully read. RSC flame tests establishes qualitative colours. NIST strong-lines tables for Na,K,Li,He,Hg individually inspected; select neutral atom I lines only and convert air Å to nm. Width/brightness are display variables, not quantitative intensities. Co-glass analytical passbands are explicitly qualitative; no commercial calibration claim. Energy formula uses air wavelength approximation (<0.1% distinction acknowledged).
+| 教材位置                           | 完整窗口                    | 主问题与可见答案                                                                                                                                  |
+| ---------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 必修第一册，实验 2-6，印刷第 40 页 | sodium → potassium → filter | 钴玻璃改变了火焰，还是到眼睛的光？同一源谱通过玻璃后按波长衰减，钾原有谱线不搬动；只有钠时滤镜也不能生成钾谱线。                                  |
+| 选择性必修 2，印刷第 7 页          | emission → absorption       | 能隙变大，发出的光怎样变？跟踪 Na 两条允许跃迁：相同低态、更高上态，光子能量更高、波长更短；不匹配的高能光子仍不能使选定能态对吸收。              |
+| 选择性必修 2，印刷第 8 页          | patterns → dark-lines       | 几条亮线或暗线怎样检验身份？固定未知样和候选参考分别显示；Hg 多位置匹配后加入 Na，使全部记录无法再由显示的纯候选解释。Li 暗线还要求下能态有原子。 |
 
-Chapters: clean-wire baseline then Na; growing Na contamination in K; suppress selected wavelengths with cobalt glass; downward energy transition and photon; reverse absorption; three multi-line element patterns; matching illustrative dark lines with lower-population caveat. Watch modes use only shared clock; explore state cannot alter the director. No timers or external runtime assets.
+完整阅读相关教材文本：必修一印刷第 39–41 页、选必二印刷第 5–9 页；实际查看必修一第 40 页、选必二第 7–8 页原图。教材保留的是焰色实验及原子光谱图例；未知样、单次事件追踪和独立样本对照是本片编辑设计，不能称为教材原始测量。
 
-Benchmarks:500nm gives2.479684eV, inverse wavelength ratio; sodium doublet separation0.5974nm; filter cannot increase power and suppresses589nm while transmitting404nm. Zero contamination adds zero Na intensity. Scoped Vitest4 tests passed (2026-10-18). Browser continuous playback, speech listening and real-phone measurements not-run by author; root independently accepts them.
+## 七章的决定性画面
+
+1. **sodium**：先看洁净金属丝的对照，再出现 Na 黄色与选取双线。光源、光路、眼睛和图谱位置互相对应。
+2. **potassium**：增加 Na 干扰只增加另一组光，原有 K 线不动。肉眼混合颜色与分线证据不同。
+3. **filter**：玻璃放在源与眼睛之间。火焰颜色不变，透射光量减少、相对成分改变；所有谱条使用同一绝对强度尺度，没有独立归一化伪造增亮。
+4. **emission**：能态只占据离散值，能量在原子与光子之间转移。先暂停预测，再对比 Na 3p→3s 与 4p→3s；330 nm 用中性色与“不可见”文字，不能画成可见紫光。
+5. **absorption**：跟踪一个不匹配光子通过，再跟踪匹配光子消失于原子、原子进入上态。未匹配光子的波长由其自身能量计算（示例约 471.3 nm 真空），不能仍标为 589 nm。
+6. **patterns**：固定记录只先开放黄光附近，再展开全观察范围。切换 Li/He/Hg 只换参考。Hg 546 nm 的能态差、发出的光子与一条新亮线接成连续因果镜头；另加 Na 是一份明确的新记录。
+7. **dark-lines**：样本 A 是 Li 基态参考，跟踪吸收及一个向探测方向外释放的光子；样本 B/C 分别是独立准备的 610 nm 选定能态对下态空/有原子的试次。身份和初态同时重置，不呈现同一样本的完整双线净吸收谱。
+
+## 独立模型与边界
+
+`chem-flame-spectra.ts` 提供能态差、精确真空能量关系、离散吸收/发射事件、同源滤光账本、冻结未知谱与候选匹配。每个事件的原子能量与光子能量相加保持一致。几何中的飞行进度只表示可追踪的教学过程；没有把慢动作时间当成原子寿命、吸收概率或真实光速。
+
+参考谱使用 NIST 空气波长；能量账本来自能级波数差，并由真空关系换算。Na D2 为 2.104429426 eV、589.158263 nm 真空，对应 588.995 nm 空气；Na 紫外例为 3.753321566 eV、330.331937 nm 真空，对应 330.237 nm 空气。Li 的 670.7775 nm 与 610.3654 nm 具有不同下能态。图中的能态线和虚线箭头不是电子轨道。
+
+只选定允许跃迁与理想辐射事件，不声称模拟真实火焰的所有化学物种、碰撞、跃迁分支、宽化、绝对光强或完整净吸收。Li C 的 2p 既是所选 610 nm 线的下态，也可参与 670 nm 的受激发射，因此 670 nm 参考与 610 nm 两试次明确使用不同样本。弱探测本身不能消除受激发射，这不是简化的理由。暗线深度是所选线的定性示意，不是净透射率计算。
+
+未知样由冻结的 Hg 参考位置组成，是教学合成记录；匹配限于显示的参考库、显示范围和容差。加入 Na 不会改写原记录，不能把单一参考库中的匹配当作完整化学鉴定。滤镜曲线、线宽、强度与火焰色彩为教学近似；非有限输入都被收敛到有限边界。
+
+## 来源
+
+- [NIST Na 中性原子谱线](https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable3.htm) 与 [Na 能级](https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable5.htm)：完整表已读取，核对 3s、3p、4p 数值与空气/真空区分。
+- [NIST Li 谱线](https://physics.nist.gov/PhysRefData/Handbook/Tables/lithiumtable3.htm) 与 [强线](https://physics.nist.gov/PhysRefData/Handbook/Tables/lithiumtable2.htm)：核对两条跃迁的不同下能态。
+- [NIST Hg 谱线](https://physics.nist.gov/PhysRefData/Handbook/Tables/mercurytable3.htm)、[Hg 强线](https://physics.nist.gov/PhysRefData/Handbook/Tables/mercurytable2.htm)、[He 谱线](https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3.htm)：核对参考位置，Hg 579.0663 nm 来自强线表，546.0735 nm 能态来自持久谱线表。
+- [RSC 焰色实验](https://edu.rsc.org/resources/flame-tests-using-metal-salts/1875.article)：直接请求返回 405，读取的是搜索工具返回的正文。仅支撑定性焰色、分光观察及钴玻璃，不照搬“壳层跳跃”的简化为精确原子模型。
+
+## 验证与待办
+
+作者模型与组件测试 18 项、范围限定 TypeScript 编译及格式检查通过。独立生物负责人完成 7 个实际函数基准，无新增科学阻断；该报告仅覆盖模型，不能代替视觉或声画验收。
+
+实际静音关键帧涵盖 19 个事件，英文 320×568、1440×1000 与中文 320×568，共 57 案。56 案一次通过，英文桌面紫外帧遭 HMR 导航中断，另存失败并单独重跑三尺寸全部通过。两个语言全部 19 张短屏完整播放器均可见，实际字号不少于 16 px、主要操作不少于 44 px。曾发现 Li 段底部超出 4.95 px，已重新布局并重拍闭合，没有通过缩小字号解决。
+
+真实控件检查覆盖两个尺寸的 12 项状态对照，包括同源滤光、Na 干扰、光子匹配、候选切换保留记录、独立 Li A/B/C 与观看/探索隔离。首轮测试脚本把 Na 双线误计为一条，保留失败记录后修正脚本，产品无需为该误判改变。实际查看 cover PNG、social PNG 与目录卡片，修复播放按钮遮住波长文字的问题。
+
+最终录音为 229 秒，章起点为 0 / 28 / 56 / 85 / 121 / 152 / 188 秒。作者已读取两语 14 份独立逐词转写，使用 `chapterTime + locale` 校准实际事件：紫外揭晓分别在英文 18.35 秒与中文 20.21 秒；Li A 在吸收后保留上态，到向其他方向释放时才发光；B/C 换样与暗线出现跟随各自语句。新增 72 张实际实测事件帧全部通过，包含两语短屏及英文桌面，预测、吸收前后、固定记录、Li 三样本均亲看代表图。该证据是词时对照与静音停帧，不是人工试听。连续播放、最终静态构建、人工声音试听与实体手机性能分别记录；全局验证、部署与共享文件均由 root 负责。

@@ -166,3 +166,102 @@
   padding: 4px 10px;
   gap: 5px 10px;
 }
+
+/* Each directed shot keeps its causal view in the player instead of stacking all instruments. */
+.length-film[data-watch] {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.length-focus-instrument > .length-scale,
+.length-focus-instrument > .length-close,
+.length-focus-scale > .length-apparatus,
+.length-focus-scale > .length-contact,
+.length-focus-contact > .length-apparatus,
+.length-focus-contact > .length-scale > svg,
+.length-focus-contact > .length-scale > p {
+  display: none;
+}
+.length-focus-instrument.length-focus:has(.length-micrometer) > .length-contact {
+  display: none;
+}
+.length-mechanism {
+  margin: 8px 12px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.length-film[data-watch] .length-focus {
+  width: 100%;
+}
+.length-film[data-watch] .length-apparatus {
+  width: min(100%, 410px);
+}
+.length-film[data-watch] .length-scale {
+  width: min(100%, 480px);
+}
+.length-film[data-watch] .length-close {
+  width: min(calc(100% - 24px), 440px);
+  margin: 0 auto;
+}
+.length-film[data-watch] .length-close svg {
+  height: 88px;
+}
+.length-film[data-watch] .length-zero {
+  margin: 5px 12px;
+}
+.length-film[data-watch] .length-error {
+  display: block;
+  margin: 2px 12px;
+}
+.length-film[data-watch] .length-error br {
+  display: none;
+}
+.length-film[data-watch] .length-error {
+  font-size: 16px;
+}
+@media (max-width: 560px) {
+  .length-film[data-watch] {
+    min-height: 254px;
+  }
+  .length-scale svg text,
+  .length-apparatus text {
+    font-size: 28px;
+  }
+  .length-focus-contact .length-scale .length-result > b {
+    display: none;
+  }
+  .length-film[data-watch] .length-contact {
+    margin: 4px 10px;
+  }
+  .length-film[data-watch] .length-result {
+    gap: 2px 8px;
+    line-height: 1.5;
+  }
+}
+
+.length-focus-contact > .length-contact,
+.length-focus-contact > .length-close > span,
+.length-focus-contact > .length-scale > .length-result {
+  display: none;
+}
+.length-film[data-watch] .length-focus-contact > .length-scale {
+  margin: 0 auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .length-film[data-watch] .length-focus > :is(.length-apparatus, .length-scale, .length-close) {
+    animation: length-view-reveal 380ms ease both;
+  }
+}
+@keyframes length-view-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,39 +1,50 @@
 ---
-import { leafChloroplast } from '../../models/bio-cell-microscopy';
+import { leafChloroplast, LEAF_GEOMETRY, WALL_LANDMARK } from '../../models/bio-cell-microscopy';
+const g = LEAF_GEOMETRY;
 const chloroplasts = Array.from({ length: 18 }, (_, i) => leafChloroplast(i, 18));
+const trace = Array.from({ length: 61 }, (_, i) => leafChloroplast(3, i * 0.3));
+const start = trace[0];
 ---
 
-<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
-  ><path
-    d="M50 188H134M115 185V151C150 113 139 60 100 62"
-    stroke="#5b796c"
-    stroke-width="14"
-    stroke-linecap="round"></path><path d="M83 42L107 60L89 88L65 71Z" fill="#50695f"></path><path
-    d="M81 90V115M55 126H125"
-    stroke="#bdcba6"
-    stroke-width="8"></path><circle
-    cx="267"
-    cy="115"
-    r="95"
-    fill="#e2e8c6"
-    stroke="#597c62"
-    stroke-width="7"></circle><g transform="translate(267 115)"
-    ><rect
-      x="-78"
-      y="-35"
-      width="156"
-      height="70"
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="200" cy="118" rx="180" ry="99" fill="#e9edd7"></ellipse>
+  <g transform="translate(200 112) scale(2)">
+    <rect
+      x={-g.width / 2}
+      y={-g.height / 2}
+      width={g.width}
+      height={g.height}
       rx="9"
-      fill="#c9d99a"
-      stroke="#7c9860"
-      stroke-width="3"></rect><rect x="-65" y="-22" width="130" height="44" rx="16" fill="#e7ecc2"
-    ></rect>{
-      chloroplasts.map((p, i) => (
+      fill="#d4dfa9"
+      stroke="#77945e"
+      stroke-width="2"></rect>
+    <rect
+      x={-g.vacuoleWidth / 2}
+      y={-g.vacuoleHeight / 2}
+      width={g.vacuoleWidth}
+      height={g.vacuoleHeight}
+      rx={g.vacuoleRadius}
+      fill="#f1f0ce"
+      stroke="#b9c997"
+      stroke-width=".8"></rect>
+    <path
+      d={trace.map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`).join(' ')}
+      stroke="#a57140"
+      stroke-width="1"
+      stroke-dasharray="2 2"></path>
+    <ellipse cx={start.x} cy={start.y} rx="8" ry="6.5" stroke="#b49672" stroke-width="1"></ellipse>
+    {
+      chloroplasts.map((p) => (
         <g transform={`translate(${p.x} ${p.y}) rotate(${p.angle})`}>
-          <ellipse rx="5" ry="3" fill="#609247" />
-          {i === 3 && <ellipse rx="8" ry="6" stroke="#b08344" stroke-width="2" />}
+          <ellipse rx="4.6" ry="2.8" fill={p.id === 3 ? '#2f693d' : '#639344'} />
+          {p.id === 3 && <ellipse rx="8" ry="6.5" stroke="#a57140" stroke-width="1.4" />}
         </g>
       ))
-    }</g
-  ></svg
->
+    }
+    <path
+      d={`M${WALL_LANDMARK.x + 7} ${WALL_LANDMARK.y}H${WALL_LANDMARK.x}V${WALL_LANDMARK.y + 7}`}
+      stroke="#78658f"
+      stroke-width="3"></path>
+  </g>
+  <path d="M52 201H92M52 198V204M92 198V204" stroke="#51704b" stroke-width="2"></path>
+</svg>

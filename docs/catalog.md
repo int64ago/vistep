@@ -19,7 +19,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 
 | Exploration                                                                           | Film | Question                                                         |
 | ------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
-| [Evidence behind particle discoveries](../src/content/en/particle-evidence-lab.mdx)   | 4:48 | How can signals reveal an unseen new particle?                   |
+| [Evidence behind particle discoveries](../src/content/en/particle-evidence-lab.mdx)   | 4:54 | How do unseen particles leave measurable traces?                 |
 | [Experimental clues to nuclear reactions](../src/content/en/nuclear-evidence-lab.mdx) | 4:40 | How do products and tracks reveal a nuclear reaction?            |
 | [Decay statistics and applications](../src/content/en/decay-measurement-lab.mdx)      | 2:48 | How can unpredictable decays measure time and transport?         |
 | [Detecting invisible radiation](../src/content/en/radiation-evidence-lab.mdx)         | 4:40 | How do plates, ionization and tracks reveal invisible radiation? |
@@ -113,7 +113,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Two-step evidence for anions](../src/content/en/chem-anion-tests.mdx)                                 | 2:39 | Does a white precipitate identify an anion?                                   |
 | [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)            | 4:15 | When a precipitate changes, how can we trace its ions?                        |
 | [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                    | 2:17 | How does electron counting fix reaction ratios?                               |
-| [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                           | 3:18 | What atomic information is hidden in a flame colour?                          |
+| [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                           | 3:49 | Why do atoms emit particular colours of light?                                |
 | [Sodium, oxide and peroxide](../src/content/en/chem-sodium-reactions.mdx)                              | 4:27 | Why do substances containing sodium give different products?                  |
 | [Comparing carbonate and bicarbonate](../src/content/en/chem-carbonate-comparison.mdx)                 | 3:22 | Why is bicarbonate still alkaline?                                            |
 | [Electrolytes and current](../src/content/en/chem-ionic-conduction.mdx)                                | 1:59 | Why are ions alone not enough for conduction?                                 |
@@ -172,7 +172,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Experimental clues to nerve signaling](../src/content/en/bio-nerve-signals.mdx)                  | 2:34 | How do two needle deflections connect to signaling between neurons?               |
 | [Buffering the internal environment](../src/content/en/bio-buffer-comparison.mdx)                 | 1:51 | Why do equal acid additions change three samples differently?                     |
 | [Three food assays](../src/content/en/bio-food-tests.mdx)                                         | 2:53 | Red, orange, violet: what can a color prove?                                      |
-| [Cells under the microscope](../src/content/en/bio-cell-microscopy.mdx)                           | 2:18 | What does magnification actually reveal?                                          |
+| [Cells under the microscope](../src/content/en/bio-cell-microscopy.mdx)                           | 3:02 | What changes under the microscope: the cell or its image?                         |
 
 ## Mechanisms & motion
 

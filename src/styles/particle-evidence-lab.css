@@ -1,0 +1,130 @@
+.particle-proof {
+  width: min(100%, 800px);
+  margin: auto;
+  color: #425e65;
+}
+.particle-proof-provenance {
+  margin: 0 4px 6px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+}
+.particle-proof-surface {
+  overflow: hidden;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 25% 0, #324e59, #172f39 80%);
+}
+.particle-proof-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.particle-proof-art text {
+  font-family: inherit;
+  font-size: 16px;
+}
+.particle-proof-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.particle-proof-tabs button,
+.particle-proof-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 9px 13px;
+  border: 1px solid #b9ceca;
+  border-radius: 15px;
+  background: #f3f7ee;
+  color: #395c64;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.particle-proof-tabs button[aria-pressed='true'],
+.particle-proof-controls button[aria-pressed='true'] {
+  background: #dae9e2;
+  border-color: #8cb3ac;
+}
+.particle-proof-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px 2px;
+}
+.particle-proof-controls .control {
+  min-width: 0;
+  font-size: 16px;
+}
+.particle-proof-controls input[type='range'] {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  margin-inline: 0;
+}
+.particle-proof-controls details {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.particle-proof-controls summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.particle-proof-controls button:focus-visible,
+.particle-proof-tabs button:focus-visible {
+  outline: 2px solid #609b9b;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .particle-proof-surface {
+    border-radius: 19px;
+  }
+}
+@media (max-width: 480px) {
+  .particle-proof-retained .modern-apparatus text {
+    font-size: 20.5px;
+  }
+  .showcase[data-slug='particle-evidence-lab'] .film-caption {
+    min-height: 0;
+    gap: 12px;
+    padding: 10px 12px 8px;
+  }
+  .showcase[data-slug='particle-evidence-lab'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .showcase[data-slug='particle-evidence-lab'] .film-chapter {
+    flex-basis: 32px;
+  }
+  .showcase[data-slug='particle-evidence-lab'] .film-transport {
+    padding-inline: 12px;
+    padding-bottom: 6px;
+  }
+  .showcase[data-slug='particle-evidence-lab'] .film-chapters {
+    margin-inline: 12px;
+  }
+  .showcase[data-slug='particle-evidence-lab'] .film-chapters summary {
+    min-height: 44px;
+  }
+}
+@media (max-width: 480px) and (max-height: 700px) {
+  html:has(.showcase[data-slug='particle-evidence-lab']) {
+    scroll-padding-top: 90px;
+  }
+  .experiment:has(.showcase[data-slug='particle-evidence-lab']) {
+    scroll-margin-top: -74px;
+  }
+  .particle-proof-retained .modern-readout {
+    min-height: 32px;
+    padding: 3px;
+  }
+  .particle-proof-retained .modern-apparatus {
+    height: 220px;
+    margin-top: 4px;
+  }
+}

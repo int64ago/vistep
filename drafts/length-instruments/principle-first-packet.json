@@ -1,0 +1,88 @@
+{
+  "status": "focused-visual-and-timing-repair-under-review",
+  "sceneSlug": "length-instruments",
+  "owner": "root",
+  "teachingProfiles": {
+    "required-1-wire-diameter": {
+      "question": {
+        "zh": "把铜丝绕成十圈，为什么能减小读数误差？",
+        "en": "Why does measuring ten turns reduce reading error?"
+      },
+      "lead": {
+        "zh": "先用同一把尺测一圈，再测紧密排列的十圈。跟着总长、圈数和间隙，分清哪些误差会被分摊，哪些偏差仍会留下。",
+        "en": "Use the same ruler for one turn and then ten tightly packed turns. Follow the total span, turn count and gaps to distinguish reduced reading error from persistent bias."
+      },
+      "principle": {
+        "zh": "紧密排列时L=Nd：总长读数的同一误差界限除以N后，就是它对平均直径的贡献。间隙却额外进入总长，不会被这个除法自动消除。",
+        "en": "With tight packing, L=Nd. Dividing a fixed total-length reading bound by N gives its contribution to the mean diameter. Gaps add extra length that this division does not remove."
+      },
+      "transfer": {
+        "question": {
+          "zh": "每一圈之间都留有相同间隙，绕更多圈能消除偏大吗？",
+          "en": "If every neighbouring pair has the same gap, will more turns remove the overestimate?"
+        },
+        "explanation": {
+          "zh": "不能。N圈有N−1个间隙，得到的直径是d+(N−1)g/N。圈数很大时，额外部分接近g；读数误差变小不等于间隙偏差消失。",
+          "en": "No. N turns contain N−1 gaps, giving d+(N−1)g/N. As N grows, the extra term approaches g. Smaller reading uncertainty does not eliminate packing bias."
+        }
+      },
+      "sceneSlug": "length-instruments"
+    },
+    "r3-vernier-caliper": {
+      "question": {
+        "zh": "游标卡尺为什么能读出0.1毫米？",
+        "en": "How can a vernier resolve a tenth of a millimetre?"
+      },
+      "lead": {
+        "zh": "先看量爪接触物体，再放大两套刻度。主尺每格1毫米，游标每格0.9毫米；追踪哪两条线对齐，就能把微小位移读出来。",
+        "en": "Watch the jaws contact the object, then magnify both scales. Main divisions are 1 mm and vernier divisions 0.9 mm. Their aligned lines reveal the small displacement."
+      },
+      "principle": {
+        "zh": "游标每格比主尺少0.1毫米，第七条对齐对应0.7毫米。精细读数来自两套刻度的几何差，不是把结果多写几位小数。",
+        "en": "Each vernier division is 0.1 mm shorter, so alignment at the seventh division represents 0.7 mm. Fine readings come from geometric scale differences, not extra decimal places."
+      },
+      "transfer": {
+        "question": {
+          "zh": "换成20分度游标，就能消除量爪没有贴合造成的误差吗？",
+          "en": "Does a twenty-division vernier remove error from jaws that do not touch the object?"
+        },
+        "explanation": {
+          "zh": "不能。它把分度值改为0.05毫米，但读到的仍是量爪间距。只有测量面正确接触，间距才对应被测尺寸。",
+          "en": "No. It changes the least count to 0.05 mm, but still measures jaw separation. That separation represents the object only when the correct faces make contact."
+        }
+      },
+      "sceneSlug": "length-instruments"
+    },
+    "r3-screw-micrometer": {
+      "question": {
+        "zh": "转一圈，为什么只前进半毫米？",
+        "en": "Why does a full turn advance only half a millimetre?"
+      },
+      "lead": {
+        "zh": "沿着同一根螺杆，看旋转怎样变成轴向位移，再用接触处的近景观察薄纸。最后比较闭合时的零点读数和夹住纸后的示数。",
+        "en": "Follow one spindle as rotation becomes axial motion, then inspect its contact with thin paper. Compare the closed-face zero reading with the reading around the paper."
+      },
+      "principle": {
+        "zh": "螺距把一整圈对应到0.5毫米，圆周50格把它再分成0.01毫米。零点偏移会一起进入示数，因此要用示数减去同一个零点读数。",
+        "en": "A 0.5 mm pitch maps one turn to half a millimetre; fifty divisions give 0.01 mm each. A zero offset enters the reading too, so the same zero reading must be subtracted."
+      },
+      "transfer": {
+        "question": {
+          "zh": "闭合时读数为0.030毫米，夹住薄纸后为0.135毫米，纸有多厚？",
+          "en": "Closed faces read 0.030 mm and the paper reading is 0.135 mm. What is its corrected thickness?"
+        },
+        "explanation": {
+          "zh": "在零点偏移保持不变的模型中，厚度是0.135−0.030=0.105毫米。写到第三位小数并不保证同等准确度，测力和纸张形变仍可能影响结果。",
+          "en": "With the same zero offset, thickness is 0.135−0.030=0.105 mm. A third decimal place does not guarantee that accuracy: measuring force and paper deformation can still affect the result."
+        }
+      },
+      "sceneSlug": "length-instruments"
+    }
+  },
+  "preserveNarration": true,
+  "sourcesRead": [
+    "artifacts/teaching-principles/physics-audit/textbooks/required-1-p123-p124.txt",
+    "artifacts/teaching-principles/physics-audit/textbooks/required-3.txt printed62–66"
+  ],
+  "reviewEvidence": "artifacts/teaching-principles/length-instruments-root-repair.json"
+}

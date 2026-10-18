@@ -1,0 +1,105 @@
+{
+  "sceneSlug": "chem-flame-spectra",
+  "stage": "Owned product frozen after229s measured bilingual calibration",
+  "reviewType": "author review, with separate bounded independent model review",
+  "ownedFiles": [
+    "src/components/experiments/ChemFlameSpectra.tsx",
+    "src/components/experiments/ChemFlameSpectra.exploration.test.tsx",
+    "src/models/chem-flame-spectra.ts",
+    "src/models/chem-flame-spectra.test.ts",
+    "src/styles/chem-flame-spectra.css",
+    "src/components/covers/ChemFlameSpectraCover.astro",
+    "src/content/chem-flame-spectra.mdx",
+    "src/content/en/chem-flame-spectra.mdx",
+    "drafts/chem-flame-spectra/brief.md",
+    "drafts/chem-flame-spectra/principle-first-packet.json",
+    "drafts/chem-flame-spectra/review.json"
+  ],
+  "sourceHashes": {
+    "src/components/experiments/ChemFlameSpectra.tsx": "9747a516fb7b89a73c9adf883b51ea817c96997f0a027c5a2c28531efe79e275",
+    "src/components/experiments/ChemFlameSpectra.exploration.test.tsx": "6876bde0d4d3e7f5377fb824b427c01be73e22a1e656eef302f422905b9c4300",
+    "src/models/chem-flame-spectra.ts": "2cf5f545eb49e91d181bc7d7bf118fd29df366bc393d7419d78736e6db889909",
+    "src/models/chem-flame-spectra.test.ts": "8ababe0c86e3d3a22bf96968b5efcbd5a0d6cb27de89200faa5994e6eae6d054",
+    "src/styles/chem-flame-spectra.css": "4f31fe196d2a3714cd87e4fc5531fc504e6a63c1ca8443a6be187912eed4ffb8",
+    "src/components/covers/ChemFlameSpectraCover.astro": "48fb5cccef8690ad1d77cbd9a8acf7d6ab3baf12c0001264f8da1a76a10130cc",
+    "src/content/chem-flame-spectra.mdx": "699363ed1056a75c0c602fffc236bde453cb432ed46b7acf04d2f324bafcc5e4",
+    "src/content/en/chem-flame-spectra.mdx": "93ff6fae4d9f7e491317d0f94134a0b502bb09a41c603d08f867567ea5d13387",
+    "drafts/chem-flame-spectra/brief.md": "547d7bde77195cb18c9cd313c13e7d79183938330c5c1d7acdc131d08261af23",
+    "drafts/chem-flame-spectra/principle-first-packet.json": "18aa1d277293a16189883f7d3ab306a90770f953de333b17ecc2ff641949597d"
+  },
+  "tests": {
+    "scopedVitest": {
+      "passed": 18,
+      "files": 2
+    },
+    "scopedTsc": "passed",
+    "scopedPrettier": "passed"
+  },
+  "actualBrowser": {
+    "origin": "http://127.0.0.1:4325",
+    "mode": "muted reduced-motion",
+    "keyframes": {
+      "total": 57,
+      "passedInitial": 56,
+      "interrupted": [
+        {
+          "name": "chem-flame-spectra-en-1440-chapter-4-uv-energy",
+          "failures": [
+            "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+          ]
+        }
+      ],
+      "retry": "artifacts/teaching-principles/flame-implementation/final-uv-retry/report.json",
+      "completePlayerPhoneCases": 38,
+      "maxPhonePlayerBottom": 566.5625,
+      "screenHeight": 568,
+      "record": "artifacts/teaching-principles/flame-implementation/final-frames/report.json"
+    },
+    "actualControls": {
+      "checks": 12,
+      "record": "artifacts/teaching-principles/flame-implementation/exploration/report.json",
+      "firstHarnessFailure": "Expected one extra line although model intentionally adds Na doublet; failure retained and harness corrected."
+    },
+    "cover": {
+      "read": ["cover PNG", "social PNG", "catalog EN390"],
+      "record": "artifacts/teaching-principles/flame-implementation/covers/report.json",
+      "fixed": "Shift wavelength label to avoid catalog play-button overlap."
+    },
+    "measuredEvents": {
+      "passed": 72,
+      "cases": 72,
+      "max320playerBottom": 566.5625,
+      "record": "artifacts/teaching-principles/flame-implementation/measured-frames/report.json",
+      "sync": "artifacts/teaching-principles/flame-implementation/measured-sync.json"
+    }
+  },
+  "independentReview": {
+    "owner": "biology_inventory",
+    "record": "artifacts/teaching-principles/batch-6-cross-review/flame-implementation-check.json",
+    "scope": "7 actual-function numerical/state checks; not full visual or voice validation",
+    "finding": "No material blocker"
+  },
+  "closedFindings": [
+    "UV must be neutral/invisible, not purple",
+    "Unmatched photon label now follows its own wavelength",
+    "A/B/C lithium samples explicitly independent; no false complete shared-sample net spectrum",
+    "Li EN320 full player 4.95px overflow repaired without font reduction",
+    "Hg causal photon arrival forms reference line",
+    "Cover catalog play-button label overlap repaired"
+  ],
+  "notRunOrPending": [
+    "Root global verify and static preview",
+    "Root independent static and continuous review",
+    "Manual listening and physical-device performance"
+  ],
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-6-review.json",
+    "manual": "artifacts/teaching-principles/batch-6-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

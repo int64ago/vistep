@@ -1,0 +1,97 @@
+{
+  "status": "author-self-reviewed-awaiting-final-frozen-static",
+  "owner": "root",
+  "baselineCommit": "957fb40dd4e1d35e0d697bcb0482f5d0b938dc50",
+  "scope": "Focused visual/timing correction of an already-causal seven-chapter scene, plus three explicit textbook questions and transfer explanations. Both recordings and chapter windows unchanged.",
+  "sourceRead": [
+    "PEP Required1 printed123–124 complete text",
+    "PEP Required3 printed62–66 complete text",
+    "Existing independent instrument models and bilingual article"
+  ],
+  "changes": [
+    "One causal view per watch shot: instrument, scale or contact close-up; exploration keeps complete instrument",
+    "Sparse aligned vernier labels and increased thimble axis spacing",
+    "Rotation and translation continue to share screw pitch; one accent stripe tracks its angle",
+    "Contact and scale are settled when unchanged narration reads the final values",
+    "Zero check, paper insertion and gap counterexample use word-aligned retained recording times",
+    "The same total-length bound is divided by turn count; additional gap length remains visible",
+    "Floating-point near-contact snaps within1e-10mm; visible positive gaps do not disappear"
+  ],
+  "rootFindingsEvidence": "artifacts/teaching-principles/length-instruments-root-repair.json",
+  "authorChecks": [
+    {
+      "kind": "independent-physical-model-and-shot-boundaries",
+      "status": "passed",
+      "tests": 9,
+      "evidence": "artifacts/teaching-principles/length-tests.log"
+    },
+    {
+      "kind": "strict-scoped-types",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/length-strict.log"
+    },
+    {
+      "kind": "early-whole-player-frames",
+      "status": "passed",
+      "count": 36,
+      "evidence": "artifacts/teaching-principles/length-instruments-timed/report.json",
+      "conditions": "Developer server, prior to final nonphysical thimble text-spacing repair; this later detail was recaptured and root viewed both phone and desktop."
+    },
+    {
+      "kind": "real-controls-and-entries",
+      "status": "passed",
+      "cases": 18,
+      "evidence": "artifacts/teaching-principles/length-controls/report.json",
+      "conditions": "Both languages, three exact chapter windows, three vernier precisions with keyboard bounds, contact/zero,20turn gap comparison and replay."
+    },
+    {
+      "kind": "retained-recording-word-alignment",
+      "status": "passed",
+      "cases": 14,
+      "evidence": "artifacts/teaching-principles/batch-6-transcription.json",
+      "conditions": "Independent local ASR without script or language hint. Read words/times to align changed geometry. Not subjective listening."
+    },
+    {
+      "kind": "focused-second-independent-ASR",
+      "status": "completed",
+      "evidence": "artifacts/teaching-principles/batch-6-length-second-asr.json",
+      "conditions": "Full Whisper large-v3 decoder, no script or language prompt; preserves all numeric quantities. Both decoders transcribe the homophonous technical term估读as孤独. This is not treated as proof of wrong audible pronunciation or subjective listening; retained speech unchanged."
+    }
+  ],
+  "notRun": ["Subjective full-track listening", "Physical-phone performance"],
+  "pending": [
+    "Final frozen production/preview checks",
+    "Final root static and native playback inspection",
+    "Authorized publication"
+  ],
+  "retainedTracks": {
+    "zh": {
+      "src": "/narration/length-instruments-zh-57c29e6c447a.mp3",
+      "duration": 176.0,
+      "voice": "zh-CN-XiaoxiaoNeural"
+    },
+    "en": {
+      "src": "/narration/length-instruments-en-9aef8e0d3a6c.mp3",
+      "duration": 176.0,
+      "voice": "en-US-AvaMultilingualNeural"
+    }
+  },
+  "recordingHashes": {
+    "zh": "f20a276a93fda6db9fd794ba90a2aec10f0c7d27980c1a72d1c4cf93a8e1b707",
+    "en": "67a8e09cf0b435c32199c13265f12217088ef73e79c4e851266eb6322bcbfe7b"
+  },
+  "unchangedCoverActuallyViewed": [
+    "dist-preview/covers/length-instruments.png",
+    "dist-preview/social/length-instruments.png"
+  ],
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-6-review.json",
+    "manual": "artifacts/teaching-principles/batch-6-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

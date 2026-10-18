@@ -323,5 +323,255 @@
         "en": "No. The fixed period illustrates recurrence; real returns are affected by other planets, so this teaching model is not an exact ephemeris."
       }
     }
+  },
+  "required-1-wire-diameter": {
+    "question": {
+      "zh": "把铜丝绕成十圈，为什么能减小读数误差？",
+      "en": "Why does measuring ten turns reduce reading error?"
+    },
+    "lead": {
+      "zh": "先用同一把尺测一圈，再测紧密排列的十圈。跟着总长、圈数和间隙，分清哪些误差会被分摊，哪些偏差仍会留下。",
+      "en": "Use the same ruler for one turn and then ten tightly packed turns. Follow the total span, turn count and gaps to distinguish reduced reading error from persistent bias."
+    },
+    "principle": {
+      "zh": "紧密排列时L=Nd：总长读数的同一误差界限除以N后，就是它对平均直径的贡献。间隙却额外进入总长，不会被这个除法自动消除。",
+      "en": "With tight packing, L=Nd. Dividing a fixed total-length reading bound by N gives its contribution to the mean diameter. Gaps add extra length that this division does not remove."
+    },
+    "transfer": {
+      "question": {
+        "zh": "每一圈之间都留有相同间隙，绕更多圈能消除偏大吗？",
+        "en": "If every neighbouring pair has the same gap, will more turns remove the overestimate?"
+      },
+      "explanation": {
+        "zh": "不能。N圈有N−1个间隙，得到的直径是d+(N−1)g/N。圈数很大时，额外部分接近g；读数误差变小不等于间隙偏差消失。",
+        "en": "No. N turns contain N−1 gaps, giving d+(N−1)g/N. As N grows, the extra term approaches g. Smaller reading uncertainty does not eliminate packing bias."
+      }
+    },
+    "sceneSlug": "length-instruments"
+  },
+  "r3-vernier-caliper": {
+    "question": {
+      "zh": "游标卡尺为什么能读出0.1毫米？",
+      "en": "How can a vernier resolve a tenth of a millimetre?"
+    },
+    "lead": {
+      "zh": "先看量爪接触物体，再放大两套刻度。主尺每格1毫米，游标每格0.9毫米；追踪哪两条线对齐，就能把微小位移读出来。",
+      "en": "Watch the jaws contact the object, then magnify both scales. Main divisions are 1 mm and vernier divisions 0.9 mm. Their aligned lines reveal the small displacement."
+    },
+    "principle": {
+      "zh": "游标每格比主尺少0.1毫米，第七条对齐对应0.7毫米。精细读数来自两套刻度的几何差，不是把结果多写几位小数。",
+      "en": "Each vernier division is 0.1 mm shorter, so alignment at the seventh division represents 0.7 mm. Fine readings come from geometric scale differences, not extra decimal places."
+    },
+    "transfer": {
+      "question": {
+        "zh": "换成20分度游标，就能消除量爪没有贴合造成的误差吗？",
+        "en": "Does a twenty-division vernier remove error from jaws that do not touch the object?"
+      },
+      "explanation": {
+        "zh": "不能。它把分度值改为0.05毫米，但读到的仍是量爪间距。只有测量面正确接触，间距才对应被测尺寸。",
+        "en": "No. It changes the least count to 0.05 mm, but still measures jaw separation. That separation represents the object only when the correct faces make contact."
+      }
+    },
+    "sceneSlug": "length-instruments"
+  },
+  "r3-screw-micrometer": {
+    "question": {
+      "zh": "转一圈，为什么只前进半毫米？",
+      "en": "Why does a full turn advance only half a millimetre?"
+    },
+    "lead": {
+      "zh": "沿着同一根螺杆，看旋转怎样变成轴向位移，再用接触处的近景观察薄纸。最后比较闭合时的零点读数和夹住纸后的示数。",
+      "en": "Follow one spindle as rotation becomes axial motion, then inspect its contact with thin paper. Compare the closed-face zero reading with the reading around the paper."
+    },
+    "principle": {
+      "zh": "螺距把一整圈对应到0.5毫米，圆周50格把它再分成0.01毫米。零点偏移会一起进入示数，因此要用示数减去同一个零点读数。",
+      "en": "A 0.5 mm pitch maps one turn to half a millimetre; fifty divisions give 0.01 mm each. A zero offset enters the reading too, so the same zero reading must be subtracted."
+    },
+    "transfer": {
+      "question": {
+        "zh": "闭合时读数为0.030毫米，夹住薄纸后为0.135毫米，纸有多厚？",
+        "en": "Closed faces read 0.030 mm and the paper reading is 0.135 mm. What is its corrected thickness?"
+      },
+      "explanation": {
+        "zh": "在零点偏移保持不变的模型中，厚度是0.135−0.030=0.105毫米。写到第三位小数并不保证同等准确度，测力和纸张形变仍可能影响结果。",
+        "en": "With the same zero offset, thickness is 0.135−0.030=0.105 mm. A third decimal place does not guarantee that accuracy: measuring force and paper deformation can still affect the result."
+      }
+    },
+    "sceneSlug": "length-instruments"
+  },
+  "required-1-wu-parity": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "把过程镜像反转，电子的偏好还相同吗？",
+      "en": "Does the electron preference survive spatial inversion?"
+    },
+    "lead": {
+      "zh": "先建立核自旋方向，再比较计数与整个过程的空间反演。",
+      "en": "Establish spin direction, then compare counts with the spatially inverted process."
+    },
+    "principle": {
+      "zh": "空间反演改变动量方向，却不改变自旋这一轴矢量；弱过程的方向偏好使两种过程不等价。",
+      "en": "Parity reverses momentum but not axial-vector spin; the weak process’s directional preference makes the transformed process inequivalent."
+    },
+    "transfer": {
+      "question": {
+        "zh": "取消核极化后计数对称了，是否说明弱相互作用又恢复宇称守恒？",
+        "en": "If removing polarization makes counts symmetric, has the weak interaction regained parity symmetry?"
+      },
+      "explanation": {
+        "zh": "不是。失去统一的自旋方向会抹去这项定向比较，不能由此改变基本相互作用的性质。",
+        "en": "No. Removing a common spin direction erases this directional comparison; it does not change the interaction’s symmetry properties."
+      }
+    }
+  },
+  "e3-higgs-discovery": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "看不见母粒子，两个光子怎样透露它的质量？",
+      "en": "How can two photons reveal an unseen parent’s mass?"
+    },
+    "lead": {
+      "zh": "从量能器沉积到矢量动量，再用固定质量谱与另一探测器检验。",
+      "en": "Follow calorimeter deposits through vector momentum to fixed spectra and another detector."
+    },
+    "principle": {
+      "zh": "能量和矢量动量共同确定不变质量；重复出现的质量尺度需要背景比较与独立证据。",
+      "en": "Energy and vector momentum determine invariant mass; a recurring scale needs background comparisons and independent evidence."
+    },
+    "transfer": {
+      "question": {
+        "zh": "光子能量变得不等，母粒子的重建质量一定改变吗？",
+        "en": "Must unequal photon energies change the reconstructed parent mass?"
+      },
+      "explanation": {
+        "zh": "不一定。示例中母粒子运动使能量不等，但总动量也改变；把两者一起代入，不变质量仍是125 GeV/c²。",
+        "en": "No. Parent motion changes photon energies and total momentum together; the example still reconstructs 125 GeV/c²."
+      }
+    }
+  },
+  "e3-gamma-anomalous-absorption": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "透过材料的γ射线，为什么比预期更少？",
+      "en": "Why do fewer gamma rays pass through than expected?"
+    },
+    "lead": {
+      "zh": "把额外吸收作为线索，再看后来成对产生解释的能量门槛。",
+      "en": "Treat extra absorption as a clue, then inspect the later pair-creation threshold."
+    },
+    "principle": {
+      "zh": "产生电子和正电子需要至少两份电子静能；早期吸收异常与后来的过程解释需要区分。",
+      "en": "Pair creation requires at least two electron rest energies; distinguish the early anomaly from its later explanation."
+    },
+    "transfer": {
+      "question": {
+        "zh": "光子能量低于1.022 MeV，还能在这个模型中产生电子对吗？",
+        "en": "Can a photon below 1.022 MeV create a pair in this model?"
+      },
+      "explanation": {
+        "zh": "不能，能量不足以提供两份电子静能。早期吸收异常本身也不是直接拍到正电子。",
+        "en": "No: there is insufficient energy for two electron rest masses. The early anomaly itself was not a direct positron image."
+      }
+    }
+  },
+  "e3-electron-capture-recoil": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "没有直接抓到中微子，核反冲还能说明什么？",
+      "en": "What can nuclear recoil show without capturing the neutrino?"
+    },
+    "lead": {
+      "zh": "用反向动量和阻挡电势，把微小反冲转换成可检验的信号。",
+      "en": "Connect opposite momentum and retarding voltage to a measurable recoil signal."
+    },
+    "principle": {
+      "zh": "发出粒子带走动量时，子核反冲；阻挡电势筛选反冲离子的纵向动能。",
+      "en": "Emitted momentum implies daughter recoil; a retarding voltage selects recoil ions by longitudinal kinetic energy."
+    },
+    "transfer": {
+      "question": {
+        "zh": "提高正的阻挡电势，通过的离子会更多还是更少？",
+        "en": "Does a higher positive retarding voltage transmit more or fewer ions?"
+      },
+      "explanation": {
+        "zh": "更少。理想单电荷模型中，电势门槛达到全部反冲动能时，不再有离子通过。",
+        "en": "Fewer. In the ideal singly charged model, no ion passes when the barrier reaches the full recoil energy."
+      }
+    }
+  },
+  "e3-antisigma-event": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "一段没有气泡的空白，怎样指向反粒子？",
+      "en": "How can a gap without bubbles point to an antiparticle?"
+    },
+    "lead": {
+      "zh": "从正电轨迹与缺失动量出发，把A点重建和B点能量联系起来。",
+      "en": "Link positive tracks and missing momentum at A to the energy evidence at B."
+    },
+    "principle": {
+      "zh": "电荷与动量约束中性产物；B点超过普通中子动能的产物能量，提供湮灭解释所需的新证据。",
+      "en": "Charge and momentum constrain a neutral product; B supplies energy evidence beyond the ordinary neutron’s kinetic budget."
+    },
+    "transfer": {
+      "question": {
+        "zh": "只知道中性产物的质量和电荷，能确定它是反中子吗？",
+        "en": "Can mass and zero charge alone identify an antineutron?"
+      },
+      "explanation": {
+        "zh": "不能。中子与反中子的质量、电荷相同；还要结合B点湮灭所释放的能量等关联证据。",
+        "en": "No. Neutron and antineutron have the same mass and charge; linked evidence such as the B annihilation energy is needed."
+      }
+    }
+  },
+  "e3-wu-parity": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "把过程镜像反转，电子的偏好还相同吗？",
+      "en": "Does the electron preference survive spatial inversion?"
+    },
+    "lead": {
+      "zh": "先建立核自旋方向，再比较计数与整个过程的空间反演。",
+      "en": "Establish spin direction, then compare counts with the spatially inverted process."
+    },
+    "principle": {
+      "zh": "空间反演改变动量方向，却不改变自旋这一轴矢量；弱过程的方向偏好使两种过程不等价。",
+      "en": "Parity reverses momentum but not axial-vector spin; the weak process’s directional preference makes the transformed process inequivalent."
+    },
+    "transfer": {
+      "question": {
+        "zh": "取消核极化后计数对称了，是否说明弱相互作用又恢复宇称守恒？",
+        "en": "If removing polarization makes counts symmetric, has the weak interaction regained parity symmetry?"
+      },
+      "explanation": {
+        "zh": "不是。失去统一的自旋方向会抹去这项定向比较，不能由此改变基本相互作用的性质。",
+        "en": "No. Removing a common spin direction erases this directional comparison; it does not change the interaction’s symmetry properties."
+      }
+    }
+  },
+  "e3-jpsi-discovery": {
+    "sceneSlug": "particle-evidence-lab",
+    "question": {
+      "zh": "改了磁场，质量峰为什么还留在原处？",
+      "en": "Why does the mass peak stay when the field changes?"
+    },
+    "lead": {
+      "zh": "看曲率怎样给出动量，再比较改场记录与独立对撞能量扫描。",
+      "en": "See how curvature gives momentum, then compare changed-field records and a collider scan."
+    },
+    "principle": {
+      "zh": "正确校准的动量重建应保持粒子质量；不同测量在相近尺度出现共振，约束仪器假象的解释。",
+      "en": "Calibrated momentum reconstruction preserves mass; a second method’s resonance constrains an instrumental explanation."
+    },
+    "transfer": {
+      "question": {
+        "zh": "改磁场后，轨迹位置变了但质量峰没变，这多说明了什么？",
+        "en": "What does a stable mass peak despite moved detector tracks add?"
+      },
+      "explanation": {
+        "zh": "它削弱了只由特定探测位置造成假峰的解释。另一对撞实验的相近能量共振再提供不同方法的检验。",
+        "en": "It weakens an explanation based only on favored detector locations. A nearby collider resonance adds a check using a different method."
+      }
+    }
   }
 }

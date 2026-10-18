@@ -1,43 +1,32 @@
 ---
-import { flameLines, wavelengthColour } from '../../models/chem-flame-spectra';
-const lines = flameLines('K', 0.5, true);
+import { ATOMIC_LINES, transitionEnergy, wavelengthColour } from '../../models/chem-flame-spectra';
+const line = transitionEnergy('Na-D2');
+const upperY = 168 - (line.gapEv / 4) * 155;
 ---
 
-<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
-  ><rect width="400" height="230" rx="18" fill="#21493d"></rect><path
-    d="M65 180Q44 147 86 55Q79 115 104 131Q127 162 96 182Z"
-    fill="#baa2d5"
-    opacity=".8"></path><path d="M77 180Q69 157 87 124Q83 156 96 181Z" fill="#a6c6db"></path><rect
-    x="68"
-    y="184"
-    width="33"
-    height="27"
-    rx="5"
-    fill="#88a28a"></rect><path
-    d="M117 113Q91 106 86 121Q83 131 96 130Q108 128 106 117M115 113L178 75"
-    stroke="#d0d8b7"
-    stroke-width="3"></path><rect
-    x="187"
-    y="57"
-    width="37"
-    height="94"
-    rx="5"
-    fill="#8196ce"
-    fill-opacity=".5"
-    stroke="#9eafd0"></rect><path d="M107 111H185M226 111H260" stroke="#bda4d7"></path><rect
-    x="253"
-    y="171"
-    width="125"
-    height="34"
-    rx="4"
-    fill="#0e2b24"></rect>{
-    lines.map((x) => (
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <rect width="400" height="230" rx="18" fill="#21493d"></rect>
+  <path d={`M47 ${upperY}H157M47 168H157`} stroke="#bfcfb5" stroke-width="3"></path>
+  <path d={`M105 ${upperY + 12}V154m-7-8 7 8 7-8`} stroke="#e7ca8c" stroke-width="2.5"></path>
+  <circle cx="105" cy="168" r="7" fill="#edd29b"></circle>
+  <text x="51" y="55" fill="#d0ddc3" font-size="25">Na</text>
+  <text x="102" y="206" text-anchor="middle" fill="#dcc799" font-size="24"
+    >{line.gapEv.toFixed(2)} eV</text
+  >
+  <path d="M177 88H325" stroke="#8ca790" stroke-width="2" stroke-dasharray="3 8"></path>
+  <path d="M225 88q4-10 8 0t8 0t8 0t8 0" stroke={wavelengthColour(line.airNm)} stroke-width="3"
+  ></path>
+  <path d="M327 87V151" stroke="#7f9a86" stroke-width="2" stroke-dasharray="3 6"></path>
+  <rect x="223" y="154" width="149" height="27" rx="6" fill="#102b24"></rect>
+  {
+    ATOMIC_LINES.Na.map((x) => (
       <path
-        d={`M${253 + ((x.nm - 390) / 390) * 125} 173v30`}
+        d={`M${223 + ((x.nm - 500) / 150) * 149} 157v21`}
         stroke={wavelengthColour(x.nm)}
         stroke-width="2"
-        opacity={Math.min(1, x.observed)}
+        opacity={x.weight}
       />
     ))
-  }</svg
->
+  }
+  <text x="276" y="211" fill="#c9d8bd" text-anchor="middle" font-size="24">589 nm</text>
+</svg>

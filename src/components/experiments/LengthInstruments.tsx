@@ -1,19 +1,16 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { browserLocale, t } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
 import { useShowcase } from '../lab/FilmContext';
 import {
   accumulatedWire,
+  lengthFilmState,
   micrometerContact,
   micrometerReading,
   vernierReading,
   type VernierDivisions,
 } from '../../models/length-instruments';
 import '../../styles/length-instruments.css';
-const smooth = (v: number) => {
-  const p = Math.max(0, Math.min(1, v));
-  return p * p * (3 - 2 * p);
-};
 function Metal({ id }: { id: string }) {
   return (
     <defs>
@@ -55,7 +52,8 @@ function Vernier({ length, divisions }: { length: number; divisions: VernierDivi
         <path d={`M${aligned} 32V127`} stroke="#bd9d64" strokeWidth="4" opacity=".32" />
         {Array.from({ length: divisions + 3 }, (_, j) => {
           const x = 44 + j * unit,
-            major = divisions === 10 || j % (divisions === 20 ? 5 : 10) === 0;
+            major =
+              j === 0 || j === divisions + 2 || (j === s.aligned && j >= 3 && j <= divisions - 1);
           return (
             <g key={j}>
               <path d={`M${x} 72V${major ? 49 : 58}`} stroke="#849279" strokeWidth="1.4" />
@@ -69,7 +67,10 @@ function Vernier({ length, divisions }: { length: number; divisions: VernierDivi
         })}
         {Array.from({ length: divisions + 1 }, (_, j) => {
           const x = zero + j * s.vernierPitch * unit,
-            major = j === 0 || j === divisions || j === divisions / 2;
+            major =
+              j === 0 ||
+              j === divisions ||
+              (j === s.aligned && j >= divisions * 0.25 && j <= divisions * 0.75);
           return (
             <g key={j}>
               <path
@@ -103,7 +104,9 @@ function Caliper({
   inside,
   id,
   divisions,
+  focus,
 }: {
+  focus?: 'instrument' | 'scale';
   gap: number;
   size: number;
   inside: boolean;
@@ -116,7 +119,7 @@ function Caliper({
     height = inside ? 325 : 300,
     contact = Math.abs(gap - size) < 0.025;
   return (
-    <>
+    <div className={focus ? `length-focus length-focus-${focus}` : undefined}>
       <svg
         className="length-apparatus"
         viewBox={`0 0 440 ${height}`}
@@ -187,7 +190,12 @@ function Caliper({
         {t(contact ? '测量面已经贴合，再读取刻度' : '测量面尚未贴合，先调整位置')}
       </div>
       <Vernier length={gap} divisions={divisions} />
-    </>
+      {focus === 'scale' && (
+        <p className="length-mechanism">
+          1 mm − {((divisions - 1) / divisions).toFixed(2)} mm = {(1 / divisions).toFixed(2)} mm
+        </p>
+      )}
+    </div>
   );
 }
 function Micrometer({
@@ -196,7 +204,9 @@ function Micrometer({
   zeroError,
   id,
   kind,
+  focus,
 }: {
+  focus?: 'instrument' | 'scale' | 'contact';
   opening: number;
   object: number;
   zeroError: number;
@@ -210,9 +220,9 @@ function Micrometer({
     index = s.thimble,
     near = Math.floor(index),
     zoomEdge = 110 + (s.indicated - s.sleeve) * 150,
-    showClose = object > 0 && object < 1;
+    showClose = focus === 'contact' || (object > 0 && object < 1);
   return (
-    <>
+    <div className={focus ? `length-focus length-focus-${focus}` : undefined}>
       <svg
         className="length-apparatus length-micrometer"
         viewBox="0 0 440 280"
@@ -272,14 +282,21 @@ function Micrometer({
             <path
               key={i}
               d={`M${edge + 23} ${120 + 26 * Math.sin(angle)}H${edge + 60}`}
-              stroke="#94a58a"
-              strokeWidth="1"
+              stroke={i === 0 ? '#aa8045' : '#94a58a'}
+              strokeWidth={i === 0 ? 3 : 1}
             />
           ) : null;
         })}
         <rect x={edge + 65} y="102" width="28" height="36" rx="9" fill="#aebd9e" stroke="#97aa88" />
         <path d={`M${edge + 75} 108V132M${edge + 83} 108V132`} stroke="#cfd8bc" strokeWidth="2" />
       </svg>
+      {focus === 'instrument' && (
+        <p className="length-mechanism">
+          360° → 0.50 mm
+          <br />
+          0.50 mm ÷ 50 = 0.01 mm
+        </p>
+      )}
       {showClose && (
         <div className="length-close">
           <span>{t('接触处放大')}</span>
@@ -336,7 +353,7 @@ function Micrometer({
           <rect x={zoomEdge} y="14" width="220" height="140" rx="12" fill="#c9d8bb" />
           {Array.from({ length: 7 }, (_, i) => {
             const tick = near - 3 + i,
-              yy = 82 + (tick - index) * 20;
+              yy = 82 + (tick - index) * 34;
             return yy > 22 && yy < 149 ? (
               <g key={i}>
                 <path
@@ -360,17 +377,38 @@ function Micrometer({
         </div>
         {zeroError !== 0 && (
           <div className="length-zero">
-            {t('扣除零点读数')} {zeroError.toFixed(3)} mm → <b>{s.corrected.toFixed(3)} mm</b>
+            {focus === 'contact' ? (
+              <>
+                {s.indicated.toFixed(3)} − {zeroError.toFixed(3)} ={' '}
+                <b>{s.corrected.toFixed(3)} mm</b>
+              </>
+            ) : (
+              <>
+                {t('扣除零点读数')} {zeroError.toFixed(3)} mm → <b>{s.corrected.toFixed(3)} mm</b>
+              </>
+            )}
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
-function Accumulation({ turns, gap, id }: { turns: number; gap: number; id: string }) {
+function Accumulation({
+  turns,
+  gap,
+  id,
+  compact = false,
+}: {
+  turns: number;
+  gap: number;
+  id: string;
+  compact?: boolean;
+}) {
   const s = accumulatedWire(turns, 1.3, gap),
-    pitch = (1.3 + gap) * 12,
-    end = 65 + s.span * 12;
+    unit = Math.min(12, 350 / s.span),
+    rulerMax = Math.ceil(Math.max(30, s.span) / 5) * 5,
+    pitch = (1.3 + gap) * unit,
+    end = 65 + s.span * unit;
   return (
     <>
       <svg
@@ -383,13 +421,16 @@ function Accumulation({ turns, gap, id }: { turns: number; gap: number; id: stri
         <rect x="27" y="85" width="386" height="68" rx="26" fill="#d2c1a0" stroke="#b4a686" />
         <path d="M48 100H391M48 137H391" stroke="#b9a988" strokeWidth="1" opacity=".45" />
         {Array.from({ length: turns }, (_, i) => {
-          const cx = 65 + 7.8 + i * pitch;
+          const cx = 65 + 0.65 * unit + i * pitch;
           return (
             <g key={i}>
+              {gap > 0 && i < turns - 1 && (
+                <rect x={cx + 0.65 * unit} y="83" width={gap * unit} height="72" fill="#aa743e" />
+              )}
               <path
                 d={`M${cx} 83V155`}
                 stroke={`url(#${id}-copper)`}
-                strokeWidth="15.6"
+                strokeWidth={1.3 * unit}
                 strokeLinecap="butt"
               />
               <path d={`M${cx - 3} 87V151`} stroke="#f0d4a1" strokeWidth="2" opacity=".7" />
@@ -397,15 +438,15 @@ function Accumulation({ turns, gap, id }: { turns: number; gap: number; id: stri
           );
         })}
         <rect x="53" y="183" width="378" height="46" rx="6" fill="#eee4c8" stroke="#c5ba9b" />
-        {Array.from({ length: 31 }, (_, i) => (
+        {Array.from({ length: rulerMax + 1 }, (_, i) => (
           <g key={i}>
             <path
-              d={`M${65 + i * 12} 183V${i % 5 === 0 ? 203 : 195}`}
+              d={`M${65 + i * unit} 183V${i % 5 === 0 ? 203 : 195}`}
               stroke="#9b9577"
               strokeWidth="1.2"
             />
-            {i % 5 === 0 && (
-              <text x={65 + i * 12} y="222" textAnchor="middle">
+            {i % (rulerMax > 35 ? 10 : 5) === 0 && (
+              <text x={65 + i * unit} y="222" textAnchor="middle">
                 {i}
               </text>
             )}
@@ -419,11 +460,21 @@ function Accumulation({ turns, gap, id }: { turns: number; gap: number; id: stri
         <strong>d ≈ {s.estimate.toFixed(2)} mm</strong>
       </div>
       <div className="length-error">
-        {t('若总长读数误差为 ±0.1 mm')}
-        <br />
-        {t('平均到每圈')} ±{s.diameterError.toFixed(3)} mm
+        {compact ? (
+          <>
+            ±0.1 mm ÷ {turns} = ±{s.diameterError.toFixed(3)} mm
+          </>
+        ) : (
+          <>
+            {t('若总长读数误差为 ±0.1 mm')}
+            <br />
+            {t('平均到每圈')} ±{s.diameterError.toFixed(3)} mm
+          </>
+        )}
       </div>
-      {gap > 0 && <div className="length-zero">{t('圈间留缝，会把直径估得偏大。')}</div>}
+      {gap > 0 && !compact && (
+        <div className="length-zero">{t('圈间留缝，会把直径估得偏大。')}</div>
+      )}
     </>
   );
 }
@@ -446,36 +497,23 @@ export default function LengthInstruments() {
     [turns, setTurns] = useState(10),
     [gap, setGap] = useState(0);
   const c = film.chapter,
-    p = smooth((film.chapterProgress - 0.12) / 0.7),
+    shot = lengthFilmState(c, film.chapterTime, browserLocale()),
     active = film.watch ? (c < 3 ? 'caliper' : c < 6 ? 'micrometer' : 'accumulation') : mode,
-    inside = film.watch ? c === 2 : jaw === 'inside',
-    sample = film.watch ? (c === 2 ? 18.6 : 23.7) : size,
-    jawGap = film.watch ? (c === 0 ? 30 - 6.3 * p : c === 2 ? 14 + 4.6 * p : 23.7) : size,
-    kind = film.watch ? (c === 5 ? 'paper' : 'block') : specimen,
+    inside = film.watch ? shot.inside : jaw === 'inside',
+    sample = film.watch ? shot.sample : size,
+    jawGap = film.watch ? shot.jawGap : size,
+    kind = film.watch ? shot.kind : specimen,
     obj = film.watch
-      ? c === 3
-        ? 0
-        : c === 4
-          ? 6.725
-          : p < 0.35
-            ? 0
-            : 0.105
+      ? shot.object
       : specimen === 'paper'
         ? 0.105
         : specimen === 'hair'
           ? 0.075
           : 6.725,
-    microGap = film.watch
-      ? c === 3
-        ? 2 - 0.5 * p
-        : c === 4
-          ? 8 - 1.275 * p
-          : p < 0.35
-            ? 0
-            : 0.4 - 0.295 * Math.min(1, (p - 0.35) / 0.65)
-      : opening,
-    error = film.watch ? (c === 5 ? 0.03 : 0) : zero / 1000,
-    count = film.watch ? Math.max(1, Math.round(1 + 9 * p)) : turns;
+    microGap = film.watch ? shot.opening : opening,
+    error = film.watch ? shot.zeroError : zero / 1000,
+    count = film.watch ? shot.turns : turns,
+    activeGap = film.watch ? shot.gap : gap;
   return (
     <section
       className="length-film"
@@ -497,12 +535,20 @@ export default function LengthInstruments() {
           size={sample}
           inside={inside}
           divisions={film.watch ? 10 : (Number(divisions) as VernierDivisions)}
+          focus={film.watch ? shot.caliperFocus : undefined}
           id={id}
         />
       ) : active === 'micrometer' ? (
-        <Micrometer opening={microGap} object={obj} zeroError={error} id={id} kind={kind} />
+        <Micrometer
+          opening={microGap}
+          object={obj}
+          zeroError={error}
+          id={id}
+          kind={kind}
+          focus={film.watch ? (c === 3 ? 'instrument' : c === 4 ? 'scale' : 'contact') : undefined}
+        />
       ) : (
-        <Accumulation turns={count} gap={film.watch ? 0 : gap} id={id} />
+        <Accumulation turns={count} gap={activeGap} id={id} compact={film.watch} />
       )}
       <div className="length-note">
         {t(

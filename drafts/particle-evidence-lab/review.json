@@ -1,0 +1,183 @@
+{
+  "sceneSlug": "particle-evidence-lab",
+  "status": "measured director and product frozen for root global/static verification; final affected author browser checks running read-only",
+  "owner": "/root/teaching_subject_fit",
+  "sourceCommit": "957fb40dd4e1d35e0d697bcb0482f5d0b938dc50",
+  "scope": {
+    "chapterIdsPreserved": 12,
+    "textbookWindowsPreserved": 7,
+    "spokenCuesRevised": [0, 1, 6, 7, 10, 11],
+    "spokenCuesRetained": [2, 3, 4, 5, 8, 9],
+    "retainedGeometry": "Gamma, capture and parity apparatus geometry preserved. Equivalent UI labels and effective phone fonts repaired. No claim of byte-identical JSX."
+  },
+  "sources": {
+    "readyBrief": "artifacts/teaching-principles/physics-next-particles/ready-brief.json",
+    "ledger": "artifacts/teaching-principles/physics-next-particles/source-ledger.json",
+    "fixedFigureRecords": "src/models/particle-evidence-records.ts",
+    "originalOverlays": [
+      "artifacts/teaching-principles/physics-next-particles/atlas-digitization-review.png",
+      "artifacts/teaching-principles/physics-next-particles/jpsi-ting-source-overlay.png",
+      "artifacts/teaching-principles/physics-next-particles/jpsi-richter-source-overlay.png"
+    ]
+  },
+  "checks": {
+    "models": {
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/particle-evidence.test.ts",
+      "tests": 16,
+      "actualRun": "2026-10-18 23:44:14 Asia/Shanghai",
+      "importantBoundary": "Spectrometer intersections remain x=8 m for B=0/0.9/1/2 T for both charges; lower B changes y not detector position."
+    },
+    "types": {
+      "status": "passed",
+      "command": "pnpm exec tsc -p artifacts/teaching-principles/particle-implementation/tsconfig-scoped.json",
+      "scope": "Extends repository tsconfig including Astro strict/verbatimModuleSyntax; owned component/model/tests plus imports. Not whole Astro check."
+    },
+    "format": {
+      "status": "passed",
+      "previousResult": "Owned code/content passed; packet needed Prettier after JSON update.",
+      "command": "pnpm exec prettier --check [11 owned scene/content/draft files]"
+    },
+    "cssIsolation": {
+      "status": "passed",
+      "result": "particle-proof prefix occurs only in owned component and owned CSS. Modern apparatus rules are scoped under particle-proof-retained."
+    },
+    "mdxRuntime": {
+      "status": "passed",
+      "method": "Both language actual scene/textbook pages loaded during control review after article edits; no MDX500/pageerror observed."
+    },
+    "retainedSpeech": {
+      "status": "passed",
+      "method": "All six retained zh/en cue strings compared byte-for-byte with canonical narration."
+    }
+  },
+  "authorVisual": {
+    "status": "completed for described paused-state scope",
+    "environment": "Actual Playwright Chromium, reduced motion, narration off, dev4325; viewport emulation, not physical handset. Whole-player measured after native scrollIntoView after hydration; initial SSR anchors remain root final static scope.",
+    "initialNewMatrix": {
+      "report": "artifacts/teaching-principles/particle-review-04/report.json",
+      "states": 80,
+      "passed": 79,
+      "failure": "EN320 neutral-connection label extended outside SVG; shortened from Between vertices: inferred connection to Between A and B: inferred."
+    },
+    "affectedFixAndRetainedMatrix": {
+      "report": "artifacts/teaching-principles/particle-retained-review-03/report.json",
+      "states": 14,
+      "passed": 14,
+      "includes": "All six retained chapters in two phone languages, plus the fixed neutral frame in both languages."
+    },
+    "failedHistory": [
+      "particle-review-01/report.json",
+      "particle-review-04/report.json",
+      "particle-retained-review-01/report.json",
+      "particle-retained-review-02/report.json"
+    ],
+    "repairs": [
+      "Keep true fixed 8 m plane; phone close-up of calculated 11.2 cm hit displacement, not moving plate.",
+      "Fix source plot axes/legend spacing and wide-view label positions.",
+      "Restore scoped short-screen html scroll-padding to90 px, offsetting global modern-lab24 px override and matching root SSR anchor margin.",
+      "Retained SVG labels20.5 user units at320 yield16.04 CSS px; reduce only vertical blank space to220 px stage."
+    ],
+    "wholePlayer": [
+      {
+        "locale": "zh",
+        "newSceneMaxBottom": 491.890625,
+        "retainedFinalMaxBottom": 491.890625,
+        "viewport": [320, 568],
+        "newMinTextPx": 16
+      },
+      {
+        "locale": "en",
+        "newSceneMaxBottom": 562.5625,
+        "retainedFinalMaxBottom": 562.5625,
+        "viewport": [320, 568],
+        "newMinTextPx": 16
+      }
+    ],
+    "personallyViewed": [
+      "particle-review-02/zh-320-c0-20.png",
+      "particle-review-02/zh-320-c0-80.png",
+      "particle-review-02/zh-320-c1-50.png",
+      "particle-review-02/zh-320-c6-85.png",
+      "particle-review-02/zh-320-c7-85.png",
+      "particle-review-02/zh-320-c10-90.png",
+      "particle-review-02/zh-320-c11-60.png",
+      "particle-review-02/en-1100-c10-50.png",
+      "particle-review-03/zh-320-c0-80.png",
+      "particle-review-03/zh-320-c10-50.png",
+      "particle-review-03/en-1100-c10-50.png",
+      "particle-retained-review-03/en-320-c2-50.png",
+      "particle-retained-review-03/en-320-c6-85.png",
+      "particle-retained-review-03/zh-320-c9-80.png",
+      "particle-controls-01/en-e3-antisigma-event-explore.png"
+    ]
+  },
+  "actualControls": {
+    "status": "passed",
+    "report": "artifacts/teaching-principles/particle-controls-01/report.json",
+    "pages": 14,
+    "checks": 106,
+    "scope": "Seven actual teaching routes × both languages: window start/bounds, apparatus initial selection, keyboard range extremes and click phase controls, watch/explore manual-state preservation. Higgs beta invariant mass and arrow length ratio; fixed ATLAS points on fit-component changes; neutral hypothesis; fixed detector plane and changed-field geometry; fixed Richter records on scan selection. 16px controls,44px targets,no horizontal overflow/nonfinite geometry/pageerrors."
+  },
+  "covers": {
+    "status": "passed author visual",
+    "report": "artifacts/teaching-principles/particle-cover-review/report-loaded.json",
+    "personallyViewed": [
+      "particle-cover-review/catalog-en-loaded.png",
+      "particle-cover-review/catalog-zh-loaded.png",
+      "particle-cover-review/social.png"
+    ],
+    "mechanism": "Same calorimeter geometry, two completed photon deposits. Cover uses progress.3 before the full ledger; no separate concept-only drawing.",
+    "initialToolFailures": "Hidden unfiltered card and unawaited lazy image produced timeout/not-loaded results; final review searched existing catalog, scrolled to actual card and awaited decode."
+  },
+  "independentReview": {
+    "rootVisual": "Root independently opened six review-03 images and reported no material scientific blocker; arrow-scale question answered from same computed scale and then tested real DOM ratio.",
+    "model": "artifacts/teaching-principles/batch-6-cross-review/chemistry-particle-product-probes.json",
+    "limits": "Independent model report does not claim component, image transcription, complete playback or listening coverage."
+  },
+  "pending": [
+    "Final affected author frames/controls recorded in ignored artifacts without changing this frozen product snapshot",
+    "Root complete static player/anchor review and uninterrupted playback",
+    "Root pnpm verify and pnpm build:preview",
+    "Subjective audio listening capability/evidence remains separate from independent ASR",
+    "Physical-phone performance not tested",
+    "Publication not performed by author"
+  ],
+  "recordedTiming": {
+    "status": "implemented and tested; affected actual keyframes in progress",
+    "duration": 294,
+    "source": "drafts/particle-evidence-lab/principle-first-packet.json recordedTiming",
+    "changedPhysicalModel": false,
+    "retainedWuCorrection": "Existing narration says remove polarization; automatic P now rises, holds during count comparison and returns to0 at the actual bilingual words. Angular model and geometry unchanged.",
+    "visiblePion": "Added π⁺ label to momentum triangle when the voice switches from parent to departing pion.",
+    "runner": "artifacts/teaching-principles/particle-implementation/timed-keyframes.mjs",
+    "controlsRunner": "artifacts/teaching-principles/particle-implementation/controls.mjs",
+    "runnerOrigin": "REVIEW_ORIGIN; defaults4325, shared timeline read from canonical film JSON"
+  },
+  "rootFinalFrameCorrections": {
+    "fieldPrecision": "Transient0.943T displays0.94T, matching the model within declared display precision.",
+    "wuCaptionAndFooter": "Both describe polarization-dependent counts, so P0/50:50 does not contradict a fixed asymmetric label. Spoken recording unchanged.",
+    "evidence": "artifacts/teaching-principles/particle-implementation/measured-author-closeout.json",
+    "pending": "Root final static review"
+  },
+  "rootRegressionRepair": {
+    "failure": "Whole-repository React renderer tests exposed an unguarded browser matchMedia effect; after guarding, legacy assertion still targeted the retired Higgs artwork.",
+    "resolution": "Guard browser-only effect when window is absent. Keep authored-film independence test targeting actual revised artwork and add retained-parity coverage with realistic chapterTime; textbook apparatus test unchanged.",
+    "focusedTests": 18,
+    "evidence": [
+      "artifacts/teaching-principles/batch-6-before-browser-guard-verify.log",
+      "artifacts/teaching-principles/batch-6-regressions.log",
+      "artifacts/teaching-principles/batch-6-regressions-final.log"
+    ]
+  },
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-6-review.json",
+    "manual": "artifacts/teaching-principles/batch-6-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

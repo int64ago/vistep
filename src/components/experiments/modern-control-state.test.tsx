@@ -12,10 +12,19 @@ import MatterWaveLab, { MatterWaveArtwork } from './MatterWaveLab';
 import RadiationEvidenceLab, { RadiationArtwork } from './RadiationEvidenceLab';
 import DecayMeasurementLab, { DecayArtwork } from './DecayMeasurementLab';
 import NuclearEvidenceLab, { NuclearArtwork } from './NuclearEvidenceLab';
-import ParticleEvidenceLab, { ParticleArtwork } from './ParticleEvidenceLab';
+import ParticleEvidenceLab, {
+  ParticleArtwork,
+  ParticleEvidenceArtwork,
+} from './ParticleEvidenceLab';
 import { powderRadii } from '../../models/matter-wave-lab';
 
-const film = vi.hoisted(() => ({ watch: false, chapter: 0, chapterProgress: 0.6, variant: '' }));
+const film = vi.hoisted(() => ({
+  watch: false,
+  chapter: 0,
+  chapterTime: 14,
+  chapterProgress: 0.6,
+  variant: '',
+}));
 vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
 vi.mock('../../i18n', () => ({ browserLocale: () => 'en' }));
 vi.mock('../lab/Controls', () => ({
@@ -29,7 +38,13 @@ vi.mock('../lab/Controls', () => ({
 }));
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 afterEach(() =>
-  Object.assign(film, { watch: false, chapter: 0, chapterProgress: 0.6, variant: '' }),
+  Object.assign(film, {
+    watch: false,
+    chapter: 0,
+    chapterTime: 14,
+    chapterProgress: 0.6,
+    variant: '',
+  }),
 );
 const input = (view: ReactTestRenderer, label: string) =>
   view.root.findAllByType('input').find((x) => x.props['aria-label'] === label)!;
@@ -73,7 +88,8 @@ describe('modern-physics film state is independent of exploration', () => {
     ['radiation', RadiationEvidenceLab, RadiationArtwork, 0],
     ['decay', DecayMeasurementLab, DecayArtwork, 0],
     ['nuclear reaction', NuclearEvidenceLab, NuclearArtwork, 1],
-    ['particle evidence', ParticleEvidenceLab, ParticleArtwork, 1],
+    ['particle evidence', ParticleEvidenceLab, ParticleEvidenceArtwork, 1],
+    ['retained particle parity', ParticleEvidenceLab, ParticleArtwork, 9],
   ];
   for (const [name, Component, Artwork, chapter] of independent) {
     it(`restores ${name} after all currently visible exploration controls are changed`, async () => {

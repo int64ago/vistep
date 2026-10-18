@@ -3484,9 +3484,9 @@ export const topics: Topic[] = [
   {
     slug: 'chem-flame-spectra',
     name: '焰色与原子光谱',
-    title: '一团颜色里，藏着哪些原子信息？',
-    question: '一团颜色里，藏着哪些原子信息？',
-    description: '从钠钾焰色和钴玻璃的作用，进入能级跃迁以及锂、氦、汞的选取发射与吸收谱线。',
+    title: '原子为什么只发出特定颜色的光？',
+    question: '原子为什么只发出特定颜色的光？',
+    description: '把火焰的颜色拆成谱线，追踪光子与原子之间的能量交换，再用固定谱线推断未知样品。',
     color: '#a9b7b3',
     tag: '焰色 · 能级 · 原子光谱',
     related: ['atomic-spectrum-lab', 'prism-dispersion'],
@@ -3870,9 +3870,10 @@ export const topics: Topic[] = [
   {
     slug: 'bio-cell-microscopy',
     name: '显微镜中的细胞',
-    title: '从一个小室，到流动的细胞质',
-    question: '放大以后，究竟看见了什么？',
-    description: '保持细胞的真实尺度，先定位再放大，追踪同一个叶绿体。',
+    title: '显微镜里，细胞和图像怎样变化？',
+    question: '显微镜里，细胞和图像怎样变化？',
+    description:
+      '从细胞的边界追踪分裂，在同一标本上比较视野与图像放大，再用细胞壁作参照辨认内部运动。',
     color: '#719870',
     tag: '生物学',
     related: ['microscope', 'bio-membrane-evidence'],
@@ -3884,6 +3885,18 @@ export const topics: Topic[] = [
       {
         title: 'Nikon MicroscopyU: calibrated micrometry',
         url: 'https://www.microscopyu.com/microscopy-basics/linear-measurements-micrometry',
+      },
+      {
+        title: 'Nikon MicroscopyU — Field of view',
+        url: 'https://www.microscopyu.com/microscopy-basics/field-of-view',
+      },
+      {
+        title: 'Nikon MicroscopyU — Resolution',
+        url: 'https://www.microscopyu.com/microscopy-basics/resolution',
+      },
+      {
+        title: 'Robert Hooke — Micrographia, Observation XVIII',
+        url: 'https://ocw.mit.edu/courses/sts-003-the-rise-of-modern-science-fall-2010/aace2313aa705710ac016d583ef50dce_MITSTS_003F10_read14_hooke.pdf',
       },
     ],
     number: '302',
@@ -5098,9 +5111,9 @@ export const topics: Topic[] = [
   {
     slug: 'particle-evidence-lab',
     name: '粒子发现的证据链',
-    title: '看不见的新粒子，怎样从信号里被认出来？',
-    question: '看不见的新粒子，怎样从信号里被认出来？',
-    description: '比较质量谱、反常吸收、核反冲、关联径迹与宇称检验。',
+    title: '看不见的粒子，怎样留下可测的痕迹？',
+    question: '看不见的粒子，怎样留下可测的痕迹？',
+    description: '从轨迹弯曲、光子能量与核反冲出发，重建质量和动量，再让固定记录检验解释。',
     color: '#aebfa8',
     tag: '近代物理',
     related: ['nuclear-evidence-lab', 'cathode-ray-lab'],
@@ -5132,6 +5145,23 @@ export const topics: Topic[] = [
       {
         title: 'BeEST — Electron-capture recoil spectroscopy',
         url: 'https://beest.mines.edu/wp-content/uploads/sites/345/2022/07/BeEST_v1_KimPoster.pdf',
+      },
+      {
+        title: 'ATLAS — Observation of a new particle (2012)',
+        url: 'https://arxiv.org/abs/1207.7214',
+      },
+      { title: 'CMS — Observation of a new boson (2012)', url: 'https://arxiv.org/abs/1207.7235' },
+      {
+        title: 'Acta Physica Sinica — Anti-Sigma event (1960)',
+        url: 'https://wulixb.iphy.ac.cn/article/doi/10.7498/aps.16.365',
+      },
+      {
+        title: 'Samuel Ting — Nobel lecture (1976)',
+        url: 'https://www.nobelprize.org/uploads/2018/06/ting-lecture.pdf',
+      },
+      {
+        title: 'Burton Richter — Nobel lecture (1976)',
+        url: 'https://www.nobelprize.org/uploads/2018/06/richter-lecture.pdf',
       },
     ],
     number: '246',
@@ -5463,7 +5493,8 @@ export const topics: Topic[] = [
     name: '长度测量与精细读数',
     title: '怎样把看不清的小长度，变成可靠的读数？',
     question: '怎样把看不清的小长度，变成可靠的读数？',
-    description: '用真实刻度差、螺纹位移与密绕累积，练习卡尺、测微器和铜丝直径测量。',
+    description:
+      '看两套刻度的差怎样揭示微小位移、螺距怎样把转动变成微小位移，再分清多圈累积能减小什么误差。',
     color: '#b6c2a2',
     tag: '测量 · 刻度 · 误差',
     related: ['coulomb-torsion', 'lever'],

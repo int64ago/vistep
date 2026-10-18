@@ -1,0 +1,200 @@
+{
+  "sceneSlug": "bio-cell-microscopy",
+  "status": "owned-frozen-after-measured-181.5s-calibration",
+  "owner": "biology_inventory",
+  "sourceCommit": "957fb40dd4e1d35e0d697bcb0482f5d0b938dc50",
+  "sourceHashes": {
+    "src/models/bio-cell-microscopy.ts": "057dc003181a134317a4025311d5c0d68cf7e069ea8725c634c7fb107a822774",
+    "src/models/bio-cell-microscopy.test.ts": "7fd1430549ed2b1cfe5df60c1b92cefe4455ddf3228a6c2e3cb5cba4f3c63fea",
+    "src/components/experiments/BioCellMicroscopy.tsx": "d06aa4d0aaef63dee340a5b3bb337667e2ad8954f6a87fc14c2c210675803fe1",
+    "src/styles/bio-cell-microscopy.css": "cbbc366aa4011d7109ebb18d5e79204b3fd00b4f9eb2c0011564c63b95600cbe",
+    "src/components/covers/BioCellMicroscopyCover.astro": "fe13d654923d03789e7c462832250700a33f3e48964e329249cbed53b2a7106b",
+    "src/content/bio-cell-microscopy.mdx": "2f7adf3bbe5bf5728b6bfb0f155559a796ff7e07bd5b92d1e3a7de454d4f6eec",
+    "src/content/en/bio-cell-microscopy.mdx": "f4b71a900134f590503f555ba8c3d5c8ea467ffcc8443554535645b4affce26f"
+  },
+  "scope": "Batch6 local causal revision, preserve six chapter IDs and three textbook windows. No shared-file/audio/build/commit changes by author.",
+  "authorAutomated": [
+    {
+      "type": "model",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/bio-cell-microscopy.test.ts",
+      "tests": 9,
+      "coverage": [
+        "field number and whole-target counterexample",
+        "fixed parent wall, two already separate nuclei, central plate connection and area",
+        "same frozen image samples under enlargement",
+        "18 identities and shared drift cancellation",
+        "peripheral outline avoids vacuole and cell wall",
+        "deterministic director/finite boundaries"
+      ]
+    },
+    {
+      "type": "focused-types",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --jsx react-jsx --moduleResolution bundler --module esnext --target es2022 --skipLibCheck --resolveJsonModule --allowSyntheticDefaultImports src/models/bio-cell-microscopy.ts src/components/experiments/BioCellMicroscopy.tsx"
+    },
+    {
+      "type": "browser-paused-measurement",
+      "status": "passed",
+      "frames": 58,
+      "minimumMeasuredTextPx": 16,
+      "maximum320PlayerBottomPx": 561.75,
+      "zeroClippedLocalText": true,
+      "runner": "artifacts/teaching-principles/biology-next-microscopy/review-keyframes.mjs",
+      "report": "artifacts/teaching-principles/biology-next-microscopy/keyframes/report.json"
+    },
+    {
+      "type": "real-UI",
+      "status": "passed",
+      "checks": 16,
+      "runner": "artifacts/teaching-principles/biology-next-microscopy/review-interactions.mjs",
+      "report": "artifacts/teaching-principles/biology-next-microscopy/interactions/report.json",
+      "scope": "Clicks/keyboard sliders verify render state, 44px controls, endpoint and replay; headless reduced motion, narration saved off and output muted."
+    },
+    {
+      "type": "teaching-windows",
+      "status": "passed",
+      "checks": 6,
+      "runner": "artifacts/teaching-principles/biology-next-microscopy/review-windows.mjs",
+      "report": "artifacts/teaching-principles/biology-next-microscopy/windows/report.json",
+      "scope": "Three actual curriculum pages in both languages: start/min/max, end stop, replay and current-theme explore; reads provisional timeline."
+    }
+  ],
+  "authorActualVisualReview": {
+    "status": "passed-after-local-repair",
+    "method": "view_image on individual real browser PNGs",
+    "viewportConditions": ["320×568 zh/en", "1280×900 zh", "390×844 en card/selected frames"],
+    "viewedFrames": [
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-growing-plate.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-connected-plate.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-nested-fields.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-fixed-image-large.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-relative-flow.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-1280-relative-flow.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-cork-detail.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-cork-limit.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-tissues.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-low-target.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-lost-target.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/zh-320-recovered-target.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-closeup.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-shared-drift.png",
+      "artifacts/teaching-principles/biology-next-microscopy/keyframes/en-320-drift-only.png"
+    ],
+    "coverViewed": [
+      "artifacts/teaching-principles/biology-next-microscopy/cover-review/cover.png",
+      "artifacts/teaching-principles/biology-next-microscopy/cover-review/en-390-card.png",
+      "artifacts/teaching-principles/biology-next-microscopy/cover-review/zh-320-card.png"
+    ],
+    "findingsFixed": [
+      "EN close-up labels clipped inside overflow-hidden parent although body width passed; shortened scene-local UI and added local text bounds/scrollWidth audit.",
+      "Pixel readout now standard px and exact 2.0× display ratio."
+    ],
+    "limits": "Paused actual images, not continuous human viewing, subjective listening or physical phone performance."
+  },
+  "independentRootReview": {
+    "status": "reported-by-root",
+    "scope": "Parent actually viewed seven original causal frames and three repaired EN frames; no additional causal or clipping issue reported. Measured timing frames submitted separately."
+  },
+  "pending": [
+    {
+      "type": "subjective-bilingual-listening",
+      "status": "not-run-by-author",
+      "owner": "root",
+      "detail": "Root reports final synthesis and 12/12 independent ASR pass; ASR is not listening."
+    },
+    {
+      "type": "full-film-manual-view",
+      "status": "not-run",
+      "owner": "root"
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run"
+    },
+    {
+      "type": "global-verify-preview-publication",
+      "status": "not-run-by-author",
+      "owner": "root"
+    }
+  ],
+  "measuredSynchronization": {
+    "status": "passed-author-checks",
+    "totalSeconds": 181.5,
+    "chapterStarts": [0, 25.5, 66, 93, 127, 151.5],
+    "voiceHashes": {
+      "zh": "148a51789533",
+      "en": "0c1540b0dec0"
+    },
+    "alignment": "Independently transcribed word times plus cue offset minus chapter start; locale-specific cuts. No spoken text/shared/audio changes.",
+    "actualChanges": [
+      "Delay the parent-cell explanation until each language introduces tracing an existing cell; introduce the pre-separated nuclei before growing the cell plate.",
+      "Separate low-power loss, nested-field explanation, low-power return/centering and high-power recovery at their spoken moments.",
+      "Keep same-cell scale until tissue comparison; switch to identical recorded pixels only when the voice introduces that image.",
+      "Select a leaf cell before closeup; common drift precedes registered relative motion and the simultaneous-drift prediction."
+    ],
+    "automated": [
+      {
+        "type": "focused-model-tests",
+        "tests": 12,
+        "status": "passed"
+      },
+      {
+        "type": "focused-types",
+        "status": "passed"
+      },
+      {
+        "type": "paused-browser-matrix",
+        "frames": 54,
+        "status": "passed",
+        "minTextPx": 16,
+        "max320PlayerBottomPx": 561.34375,
+        "runner": "artifacts/teaching-principles/biology-next-microscopy/review-measured-keyframes.mjs",
+        "report": "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/report.json"
+      },
+      {
+        "type": "real-UI-controls",
+        "checks": 16,
+        "status": "passed",
+        "runner": "artifacts/teaching-principles/biology-next-microscopy/review-measured-interactions.mjs",
+        "report": "artifacts/teaching-principles/biology-next-microscopy/measured-interactions/report.json"
+      },
+      {
+        "type": "actual-teaching-window-end/replay",
+        "checks": 6,
+        "status": "passed",
+        "runner": "artifacts/teaching-principles/biology-next-microscopy/review-measured-windows.mjs",
+        "report": "artifacts/teaching-principles/biology-next-microscopy/measured-windows/report.json",
+        "resolvedRunnerIssue": "Initial runner omitted scroll into visible player; automatic play did not reach endpoint and timed out. Added real scrollIntoView plus two requestAnimationFrame settles before UI play. No product change required."
+      }
+    ],
+    "authorActuallyViewed": [
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/en-320-parent-two-nuclei.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/zh-320-growing-plate.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/en-320-lost-target.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/zh-320-nested-fields.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/en-320-fixed-image-small.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/zh-320-fixed-image-large.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/en-320-registered-before-flow.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/en-320-shared-drift.png",
+      "artifacts/teaching-principles/biology-next-microscopy/measured-keyframes/zh-1280-relative-flow.png"
+    ],
+    "viewingMethod": "Actual individual browser PNGs through view_image. Headless Chromium, reduced motion, saved narration off, muted audio output. This is not listening, continuous human viewing or physical-phone performance.",
+    "rootReview": "Requested after author handoff; root already accepted the original causal geometry and complete phone player."
+  },
+  "peerModelReview": {
+    "status": "reported-by-teaching_subject_fit",
+    "report": "artifacts/teaching-principles/batch-6-cross-review/physics-review-of-microscopy.json",
+    "scope": "Independent model benchmarks only: parent boundary/area, 480 μm whole-target visibility, same nearest-neighbor pixels and 18-marker drift cancellation. No browser or voice acceptance claim."
+  },
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-6-review.json",
+    "manual": "artifacts/teaching-principles/batch-6-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

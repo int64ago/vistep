@@ -1,210 +1,254 @@
-.chem-flame-spectra {
-  background: radial-gradient(ellipse at 35% 20%, #2c5148, #193d36);
-  color: #e1e6d0;
-  padding: clamp(22px, 3vw, 36px);
-  border-radius: 28px;
+.cfs {
+  background: radial-gradient(ellipse at 30% 10%, #2c5148, #183b35);
+  color: #e0e7d4;
+  padding: 22px;
+  border-radius: 26px;
   font-size: 16px;
-}
-.chem-flame-spectra header p {
-  font-size: clamp(22px, 2.4vw, 28px);
-  margin: 0 0 10px;
-}
-.chem-flame-spectra header span {
-  color: #a7c1ac;
-}
-.chem-flame-bench {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  align-items: center;
-  gap: 24px;
-}
-.chem-flame-bench svg {
-  width: 100%;
-  max-height: 320px;
-}
-.chem-flame-sample strong {
-  display: block;
-  font-weight: 500;
-  font-size: 21px;
-  line-height: 1.5;
-}
-.chem-flame-sample span {
-  display: block;
-  color: #b4c8af;
-  margin-top: 14px;
-}
-.chem-observed-colour {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-.chem-flame-spectra[data-watch='true'] header {
-  display: none;
-}
-.chem-flame-spectra[data-watch='true'] details {
-  margin-top: 10px;
-}
-.chem-flame-spectra[data-watch='true'] summary {
-  padding-block: 0;
-}
-.chem-flame-lines > span {
-  display: block;
-  margin-bottom: 14px;
-}
-.chem-spectrum-strip {
-  position: relative;
-  background: #0e2925;
-  border-radius: 7px;
-  height: 45px;
+  line-height: 1.4;
+  min-width: 0;
   overflow: hidden;
 }
-.chem-spectrum-strip i {
+.cfs * {
+  box-sizing: border-box;
+}
+.cfs .cfs-head {
+  font-size: 19px;
+  min-height: 27px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.cfs svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.cfs svg text {
+  font:
+    16px var(--font-sans),
+    sans-serif;
+  fill: #d4dfcb;
+}
+.cfs .cfs-strip-wrap {
+  min-width: 0;
+}
+.cfs .cfs-row-label {
+  font-size: 16px;
+  margin: 5px 0 7px;
+  color: #bdcfbc;
+}
+.cfs .cfs-strip {
+  height: 30px;
+  border-radius: 7px;
+  background: #102c28;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cfs .cfs-strip i {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  width: 3px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 7px currentColor;
+}
+.cfs .cfs-strip i[data-match='false'] {
+  outline: 1px solid #d89580;
+}
+.cfs .cfs-range-mask {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 3px;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px currentColor;
+  background: repeating-linear-gradient(130deg, #24453c, #24453c 6px, #2a4b41 6px, #2a4b41 8px);
+  opacity: 0.96;
 }
-.chem-spectrum-strip.is-absorption {
-  background: linear-gradient(90deg, #a78bcb, #81afd1, #80c5aa, #c7d486, #dfc77c, #d28e89);
-}
-.chem-spectrum-scale {
+.cfs .cfs-axis {
   display: flex;
   justify-content: space-between;
-  color: #abc1aa;
+  gap: 4px;
   font-size: 16px;
-  margin-top: 10px;
-  gap: 12px;
+  color: #afc5b2;
+  margin-top: 5px;
 }
-.chem-spectrum-comparison {
-  margin: 35px 0;
-}
-.chem-spectrum-comparison > div[data-active] {
-  opacity: 0.45;
-  padding: 10px 0;
-  transition: opacity 0.3s;
-}
-.chem-spectrum-comparison > div[data-active='true'] {
-  opacity: 1;
-}
-.chem-spectrum-row {
+.cfs .cfs-ledger {
   display: grid;
-  grid-template-columns: 44px 1fr;
+  grid-template-columns: 1fr 0.8fr 1.1fr;
+  gap: 5px;
+  border-top: 1px solid #527468;
+  padding-top: 9px;
+  font-size: 16px;
   align-items: center;
-  gap: 12px;
+  white-space: nowrap;
 }
-.chem-spectrum-row b {
-  font-size: 20px;
+.cfs .cfs-ledger b {
   font-weight: 500;
+  color: #f0d49d;
 }
-.chem-spectrum-comparison .chem-spectrum-scale {
-  margin-left: 56px;
+.cfs .cfs-ledger > span:last-child {
+  text-align: right;
 }
-.chem-energy-levels {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
-  align-items: center;
+.cfs .cfs-match-gap {
+  font-size: 16px;
+  margin: 18px 0 10px;
+  color: #ecd4a8;
+  text-align: center;
 }
-.chem-energy-levels svg {
-  width: 100%;
+.cfs .cfs-result {
+  font-size: 16px;
+  margin-top: 17px;
+  color: #c9d9bb;
 }
-.chem-energy-labels {
+.cfs .cfs-pattern {
+  min-height: 280px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: center;
 }
-.chem-energy-labels strong {
-  font-size: 22px;
-  font-weight: 500;
+.cfs .cfs-trial {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #e4c997;
+  border-bottom: 1px solid #58796a;
+  padding-bottom: 6px;
 }
-.chem-energy-labels p {
-  line-height: 1.7;
-}
-.chem-flame-controls {
-  background: #edf1de;
-  color: #3a5b49;
-  padding: 22px;
+.cfs .cfs-controls {
+  background: #edf1e2;
+  color: #355347;
+  border-radius: 18px;
+  padding: 16px;
   display: grid;
-  gap: 20px;
-  border-radius: 22px;
-  margin-top: 24px;
+  gap: 16px;
+  margin-top: 20px;
 }
-.chem-flame-controls button,
-.chem-flame-controls input {
+.cfs .cfs-controls .segmented {
+  flex-wrap: wrap;
+}
+.cfs .cfs-controls button,
+.cfs .cfs-controls input {
   min-height: 44px;
+  font-size: 16px;
 }
-.chem-flame-spectra details {
-  color: #b2c7ad;
-  line-height: 1.8;
-  margin-top: 18px;
+.cfs .cfs-limits {
+  margin-top: 9px;
+  font-size: 16px;
+  color: #b5c9b4;
+  line-height: 1.6;
 }
-.chem-flame-spectra summary {
-  min-height: 44px;
+.cfs .cfs-limits summary {
   cursor: pointer;
-  padding: 10px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.cfs .cfs-limits summary::before {
+  content: '+';
+  font-size: 20px;
+}
+.cfs .cfs-limits[open] summary::before {
+  content: '−';
+}
+.cfs .cfs-limits p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 4px 0 8px;
 }
 @media (max-width: 600px) {
-  .chem-flame-spectra {
-    padding: 14px 12px;
+  .cfs {
+    padding: 12px;
+    border-radius: 20px;
   }
-  .chem-flame-bench {
-    grid-template-columns: 1fr;
-    gap: 0;
+  .cfs .cfs-head {
+    font-size: 16px;
+    min-height: 22px;
+    margin-bottom: 3px;
   }
-  .chem-flame-bench svg {
-    max-height: 220px;
+  .cfs .cfs-row-label {
+    margin: 3px 0 5px;
   }
-  .chem-flame-sample strong {
-    font-size: 18px;
+  .cfs .cfs-strip {
+    height: 24px;
   }
-  .chem-flame-sample span {
-    margin-top: 8px;
+  .cfs .cfs-ledger {
+    font-size: 16px;
+    padding-top: 6px;
+    gap: 2px;
+    grid-template-columns: 1fr 0.85fr 1.12fr;
   }
-  .chem-flame-lines {
-    margin-top: 12px;
+  .cfs .cfs-ledger > span {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
   }
-  .chem-flame-lines > span {
-    margin-bottom: 8px;
+  .cfs .cfs-ledger > span:last-child {
+    justify-content: flex-end;
   }
-  .chem-energy-levels {
-    grid-template-columns: 1fr;
-    gap: 0;
+  .cfs .cfs-pattern {
+    min-height: 224px;
   }
-  .chem-energy-levels svg {
-    height: 190px;
+  .cfs .cfs-match-gap {
+    margin: 12px 0 6px;
   }
-  .chem-energy-labels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+  .cfs .cfs-result {
+    margin-top: 10px;
   }
-  .chem-energy-labels > p {
-    grid-column: 1/-1;
-    margin: 0;
+  .cfs .cfs-limits {
+    margin-top: 3px;
   }
-  .chem-energy-labels strong {
-    font-size: 18px;
-  }
-  .chem-spectrum-comparison {
-    margin: 25px 0;
-  }
-  .chem-spectrum-row {
-    grid-template-columns: 32px 1fr;
-    gap: 8px;
-  }
-  .chem-spectrum-comparison .chem-spectrum-scale {
-    margin-left: 40px;
-  }
-  .chem-flame-controls {
-    padding: 16px;
+  .cfs .cfs-trial {
+    padding-bottom: 4px;
+    margin-bottom: 4px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .chem-spectrum-comparison > div[data-active] {
-    transition: none;
+@media (max-width: 600px) and (max-height: 640px) {
+  .experiment:has(.cfs) {
+    scroll-margin-top: -74px;
   }
+  .cfs {
+    padding: 9px 10px;
+  }
+  .cfs .cfs-limits {
+    margin-top: 0;
+  }
+}
+
+.cfs[data-watch='true'] .cfs-limits {
+  display: none;
+}
+.cfs svg {
+  max-width: 720px;
+  margin-inline: auto;
+}
+.cfs .cfs-local-spectrum {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 3px 10px;
+  font-size: 16px;
+  border-top: 1px solid #527468;
+  padding-top: 6px;
+}
+.cfs .cfs-local-spectrum > div {
+  height: 20px;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cfs .cfs-local-spectrum i {
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  background: #142e29;
+}
+.cfs .cfs-local-spectrum > span:last-child {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #bed0bc;
+}
+.cfs .cfs-local-spectrum .cfs-formed-line {
+  background: #102b26;
 }
