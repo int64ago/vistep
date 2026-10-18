@@ -1,8 +1,9 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { browserLocale, t } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
+  apparentFilmTime,
   apparentMotion,
   leakingBottle,
   squatKnee,
@@ -53,33 +54,26 @@ function Person({ drop = 0 }: { drop?: number }) {
 export default function ApparentWeightLab() {
   const film = useShowcase(),
     id = useId().replace(/:/g, ''),
-    [mode, setMode] = useState<'squat' | 'lift' | 'bottle'>(
-      film.variant?.includes('bottle')
-        ? 'bottle'
-        : film.variant?.includes('elevator')
-          ? 'lift'
-          : 'squat',
-    ),
+    [mode, setMode] = useState<'squat' | 'lift' | 'bottle' | null>(null),
     [time, setTime] = useState(1),
     [mass, setMass] = useState(60),
     [direction, setDirection] = useState('up'),
     [instrument, setInstrument] = useState('scale');
+  const selectedMode =
+    mode ??
+    (film.variant?.includes('bottle') || film.chapter >= 4
+      ? 'bottle'
+      : film.variant?.includes('elevator') || film.chapter >= 2
+        ? 'lift'
+        : 'squat');
   const c = film.chapter,
-    p = film.chapterProgress,
-    trial = film.watch ? (c < 2 ? 'squat' : c < 4 ? 'lift' : 'bottle') : mode,
+    trial = film.watch ? (c < 2 ? 'squat' : c < 4 ? 'lift' : 'bottle') : selectedMode,
     isBottle = trial === 'bottle',
     dir = film.watch ? (c === 3 ? -1 : 1) : direction === 'up' ? 1 : -1,
     platform = film.watch ? c === 1 : instrument === 'platform',
-    physical = film.watch
-      ? trial === 'squat'
-        ? Math.min(1, p / 0.82) * (c === 0 ? 2.4 : 4.8)
-        : trial === 'lift'
-          ? Math.min(1, p / 0.85) * 8
-          : c === 4
-            ? -0.1
-            : -0.2 + Math.min(1, p / 0.78) * 0.62
-      : time;
-  const s = apparentMotion((isBottle ? 'squat' : trial) as WeightTrial, physical, mass, dir),
+    physical = film.watch ? apparentFilmTime(c, film.chapterTime, browserLocale()) : time;
+  const activeMass = film.watch ? 60 : mass;
+  const s = apparentMotion((isBottle ? 'squat' : trial) as WeightTrial, physical, activeMass, dir),
     b = leakingBottle(physical, film.watch ? c === 5 : true),
     weightState =
       Math.abs(s.a) < 0.02 ? '读数等于静止值' : s.a > 0 ? '读数高于静止值' : '读数低于静止值';
@@ -87,7 +81,7 @@ export default function ApparentWeightLab() {
       const q = apparentMotion(
         (isBottle ? 'squat' : trial) as WeightTrial,
         (i * s.duration) / 120,
-        mass,
+        activeMass,
         dir,
       );
       return q.time <= s.time ? q : null;
@@ -95,7 +89,7 @@ export default function ApparentWeightLab() {
     curve = record
       .map(
         (q, i) =>
-          `${i ? 'L' : 'M'}${34 + (q.time / s.duration) * 292} ${105 - ((q.normal - s.gravity) / mass) * 35}`,
+          `${i ? 'L' : 'M'}${34 + (q.time / s.duration) * 292} ${105 - ((q.normal - s.gravity) / activeMass) * 35}`,
       )
       .join(' ');
   return (
@@ -179,7 +173,12 @@ export default function ApparentWeightLab() {
               </svg>
             </div>
             <div className="apparent-weight-measure">
-              <p>{t('孔口内外压差')}</p>
+              <p>
+                <span className="apparent-pressure-label">{t('孔口内外压差')}</span>
+                <span className="apparent-pressure-symbol" aria-hidden="true">
+                  Δp
+                </span>
+              </p>
               <strong>
                 {b.pressure.toFixed(0)} <small>Pa</small>
               </strong>
@@ -287,19 +286,22 @@ export default function ApparentWeightLab() {
               >
                 <path d="M34 22V141H326" stroke="#c3cfb4" fill="none" />
                 <path d="M34 105H326" stroke="#b6a684" strokeDasharray="4 5" />
+                <text x="326" y="98" textAnchor="end" fontSize="26" fill="#998765">
+                  mg
+                </text>
                 <path d={curve} stroke="#8ca57b" strokeWidth="2.5" fill="none" />
                 {record.length > 0 && (
                   <circle
                     cx={34 + (s.time / s.duration) * 292}
-                    cy={105 - ((s.normal - s.gravity) / mass) * 35}
+                    cy={105 - ((s.normal - s.gravity) / activeMass) * 35}
                     r="4"
                     fill="#9b8c64"
                   />
                 )}
-                <text x="34" y="19" fontSize="21" fill="#80916f">
+                <text x="34" y="19" fontSize="26" fill="#80916f">
                   N
                 </text>
-                <text x="326" y="166" fontSize="21" textAnchor="end" fill="#80916f">
+                <text x="326" y="166" fontSize="26" textAnchor="end" fill="#80916f">
                   t / s
                 </text>
               </svg>
@@ -322,7 +324,7 @@ export default function ApparentWeightLab() {
         <div className="apparent-weight-controls">
           <Segments
             label={t('实验路径')}
-            value={mode}
+            value={selectedMode}
             onChange={(v) => {
               setMode(v);
               setTime(v === 'bottle' ? -0.15 : 1);

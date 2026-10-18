@@ -1,0 +1,99 @@
+.gravitymeasure-lab {
+  width: 100%;
+  max-width: 740px;
+  margin: auto;
+  padding: 8px 12px 0;
+  box-sizing: border-box;
+  color: #35574f;
+}
+.gravitymeasure-lab > svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  fill: #35574f;
+}
+.gravitymeasure-lab > svg text {
+  font-family: inherit;
+  font-size: 16px;
+}
+.gravitymeasure-header {
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+  padding: 2px 8px 8px;
+  min-height: 26px;
+}
+.gravitymeasure-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px 4px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.gravitymeasure-controls .segmented {
+  flex-wrap: wrap;
+}
+.gravitymeasure-controls button,
+.gravitymeasure-controls .segmented button {
+  font: inherit;
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  white-space: normal;
+  line-height: 1.35;
+}
+.gravitymeasure-controls > button {
+  background: #eef1e7;
+  color: #35574f;
+  border: 1px solid #bccdb9;
+  border-radius: 12px;
+  padding: 9px 14px;
+  cursor: pointer;
+}
+.gravitymeasure-controls input[type='range'] {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  margin-inline: 0;
+}
+.gravitymeasure-controls .control-top {
+  gap: 12px;
+}
+.gravitymeasure-controls .control-top > span {
+  min-width: 0;
+}
+.gravitymeasure-controls summary {
+  font-size: 16px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.gravitymeasure-controls details p {
+  margin: 0;
+  padding-top: 8px;
+}
+.gravitymeasure-controls button:focus-visible,
+.gravitymeasure-controls summary:focus-visible {
+  outline: 2px solid #547f9c;
+  outline-offset: 3px;
+}
+@media (max-width: 640px) {
+  .gravitymeasure-lab {
+    padding: 0 4px;
+  }
+  .gravitymeasure-header {
+    font-size: 16px;
+    padding: 2px 2px 4px;
+    min-height: 24px;
+  }
+  .gravitymeasure-controls {
+    padding: 16px 2px;
+  }
+}
+@media (max-width: 640px) and (max-height: 700px) {
+  .lesson-gravity-measurements #experiment {
+    scroll-margin-top: -74px;
+  }
+}

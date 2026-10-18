@@ -1,5 +1,9 @@
-# Apparent weight lab
+# Apparent weight: infer force from changing motion
 
-Three apparatus paths from Required1 §4.6: squat/body scale + force platform(57s), lift scale up/down(55s), held/falling vented bottle(56s). Six chapters168s. Physical support=N=m(g+a), constant mass/gravity, smooth analytic prescribed motion, rigid IK leg lengths. Lift shaft moves relative to cabin. Scale display N/g distinguished from mass; force trace only shows elapsed samples. Bottle head derives from geffective, newly emitted jet cutoff idealized; earlier droplets persist ballistically. Glass and water separate from scale views.
+Retain six chapters and the actual171s bilingual narration across Required1P109–112: squat/platform, upward/downward lift, held/falling bottle. The explanation separates velocity direction from acceleration and keeps N=m(g+a), constant authored mass, and old emitted droplets under gravity.
 
-Focused seven tests: numerical differentiation of analytic trajectories; opposite support under same downward velocity; cruise/downward reversal; leg length; freefall pressure and old water. Models simplified explicitly in MDX; no human empirical trace claimed. Independent desktop/mobile composition, bilingual packet and variants, cover. Parent owns full-film/narration/browser/global QA.
+Recompose phone watch as a compact person/readout above the visible force trace, velocity, acceleration and law. The bottle keeps its own full path and pressure difference. The trace is visible when the recording names it. Desktop removes duplicate explanations and keeps its larger apparatus and plot. Text remains at least16px; primary targets at least44px.
+
+Independent physical functions remain unchanged. New presentation time maps measured spoken events to physical trajectory states; it is not the motion's physical time. Peer review shifted the rising-force sign change after the full spoken greater-support phrase. A discovered exploration mass leak was fixed: watch uses60kg and exploration remembers its chosen mass. The initialized apparatus follows the current chapter; authored watch never inherits user controls.
+
+All original chapter IDs, source records, windows and voice bytes are preserved. Final static complete playback and global validation are pending. No subjective listening, continuous human viewing or real-phone performance is claimed.

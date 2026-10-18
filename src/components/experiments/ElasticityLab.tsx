@@ -1,8 +1,9 @@
 import { useState, useId } from 'react';
-import { t } from '../../i18n';
+import { browserLocale, t } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
+  elasticityFilmState,
   springExtension,
   rubberResponse,
   springWire,
@@ -12,32 +13,21 @@ import '../../styles/elasticity-lab.css';
 export default function ElasticityLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [mode, setMode] = useState<'spring' | 'rubber'>(
-      film.variant === 'required-1-rubber-elasticity' ? 'rubber' : 'spring',
-    ),
+  const [mode, setMode] = useState<'spring' | 'rubber' | null>(null),
     [mass, setMass] = useState(0.2),
     [extension, setExtension] = useState(0.08),
     [branch, setBranch] = useState<'loading' | 'unloading'>('loading'),
     [cycles, setCycles] = useState(0);
-  const c = film.watch ? film.chapter : mode === 'spring' ? 2 : 4,
-    p = film.chapterProgress;
-  const kind = film.watch ? (c < 3 ? 'spring' : 'rubber') : mode;
-  const n = film.watch
-    ? c === 0
-      ? 0
-      : c === 1
-        ? Math.min(6, Math.floor(p * 7))
-        : 6
-    : Math.round(mass / 0.05);
-  const cycle = film.watch ? (c === 5 ? Math.min(4, 1 + Math.floor(p * 4)) : 0) : cycles;
+  const selectedMode =
+    mode ??
+    (film.variant === 'required-1-rubber-elasticity' || film.chapter >= 3 ? 'rubber' : 'spring');
+  const c = film.watch ? film.chapter : selectedMode === 'spring' ? 2 : 4,
+    director = elasticityFilmState(c, film.chapterTime, browserLocale());
+  const kind = film.watch ? (c < 3 ? 'spring' : 'rubber') : selectedMode;
+  const n = film.watch ? director.weights : Math.round(mass / 0.05);
+  const cycle = film.watch ? director.cycles : cycles;
   const direction = film.watch ? (c === 4 ? 'unloading' : 'loading') : branch;
-  const x = film.watch
-    ? c === 3
-      ? 0.12 * Math.min(1, p * 1.3)
-      : c === 4
-        ? 0.12 * (1 - Math.min(1, p * 1.3))
-        : 0.12
-    : extension;
+  const x = film.watch ? director.extension : extension;
   const state =
     kind === 'spring'
       ? springExtension(film.watch ? n * 0.05 : mass)
@@ -61,7 +51,11 @@ export default function ElasticityLab() {
   const current = plot(state.extension, state.force),
     naturalY = top + 0.16 * 560;
   return (
-    <section className="elastic-lab">
+    <section
+      className="elastic-lab"
+      data-chapter={c}
+      data-phone-view={director.plotView ? 'plot' : 'apparatus'}
+    >
       <header>
         <p>
           {t(
@@ -173,14 +167,6 @@ export default function ElasticityLab() {
               fill="none"
             />
           </svg>
-          <div className="elastic-readings">
-            <span>
-              {t('伸长量')} <strong>{(state.extension * 100).toFixed(1)} cm</strong>
-            </span>
-            <span>
-              {t('弹力')} <strong>{state.force.toFixed(2)} N</strong>
-            </span>
-          </div>
         </div>
         <div className="elastic-graph">
           <p>{t('记录点组成力—伸长图像')}</p>
@@ -225,7 +211,7 @@ export default function ElasticityLab() {
                     strokeWidth="1.5"
                   />
                 )}
-                {Array.from({ length: n + 1 }, (_, i) => {
+                {Array.from({ length: (c >= 2 ? 6 : n) + 1 }, (_, i) => {
                   const a = springExtension(i * 0.05),
                     q = plot(a.extension, a.force);
                   return <circle key={i} cx={q.x} cy={q.y} r="4" fill="#83956d" />;
@@ -265,6 +251,14 @@ export default function ElasticityLab() {
             </div>
           )}
         </div>
+        <div className="elastic-readings">
+          <span>
+            {t('伸长量')} <strong>{(state.extension * 100).toFixed(1)} cm</strong>
+          </span>
+          <span>
+            {t('弹力')} <strong>{state.force.toFixed(2)} N</strong>
+          </span>
+        </div>
       </div>
       <p className="elastic-observation">
         {t(
@@ -279,7 +273,7 @@ export default function ElasticityLab() {
         <div className="elastic-controls">
           <Segments
             label={t('实验材料')}
-            value={mode}
+            value={selectedMode}
             onChange={setMode}
             options={[
               { value: 'spring', label: t('弹簧') },

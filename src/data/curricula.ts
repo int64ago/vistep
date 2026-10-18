@@ -93,6 +93,9 @@ const variantMap = variants as Record<
   string,
   { sceneSlug: string; chapterIds: string[]; sceneVariant?: string }
 >;
+// Verified against the supplied book's printed page and Fig. 7.2-3.
+// Keep the original inventory for provenance; correction never changes learning order.
+const verifiedPageCorrections: Record<string, number> = { 'required-2-cavendish': 53 };
 const registeredScenes = new Set(topics.map((topic) => topic.slug));
 
 function buildTextbookBooks(entries: readonly CurriculumSourceEntry[]): CurriculumBook[] {
@@ -126,7 +129,7 @@ function buildTextbookBooks(entries: readonly CurriculumSourceEntry[]): Curricul
       name: item.name,
       textbookTitle: item.textbookTitle,
       titleIsOriginal: item.titleIsOriginal,
-      page: item.page,
+      page: verifiedPageCorrections[item.id] ?? item.page,
       kind: item.kind,
       goal: item.goal,
       explanation: teachingExplanations[item.id],

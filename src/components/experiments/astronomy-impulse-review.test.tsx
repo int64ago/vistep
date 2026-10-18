@@ -48,7 +48,7 @@ const cases: {
     Scene: GravityMeasurements,
     variant: 'required-2-cavendish',
     chapter: 2,
-    input: 'Attractor mass / kg',
+    input: 'Model attractor mass / kg',
     value: 79,
   },
   {
@@ -211,16 +211,33 @@ describe('actual apparatus geometry preserves the model', () => {
     );
     expect(calibration).toContain('rotate(60 142 120)');
   });
-  it('keeps the enlarged torsion pointer inside its fixed scale at both mass bounds and signs', () => {
+  it('uses one mirror angle for the real reflected ray and enlarged ruler', () => {
     for (const mass of [79, 158, 200])
       for (const side of [-1, 1])
         for (const value of [0, 0.05, 0.125, 0.25, 0.5, 1]) {
           const svg = renderToStaticMarkup(
             createElement(GravityArtwork, { mode: 1, mass, side, value }),
           );
-          const x = Number(/M([\d.e+-]+) 250v27/.exec(svg)![1]);
-          expect(x).toBeGreaterThanOrEqual(75);
-          expect(x).toBeLessThanOrEqual(265);
+          const theta = Number(/data-optical-theta="([^"]+)"/.exec(svg)![1]);
+          const distance = Number(/data-optical-distance="([^"]+)"/.exec(svg)![1]);
+          const displacement = Number(/data-optical-screen-m="([^"]+)"/.exec(svg)![1]);
+          expect(displacement / distance).toBeCloseTo(Math.tan(2 * theta), 12);
+          const ray =
+            /data-optical-part="reflected" d="M([\d.e+-]+) ([\d.e+-]+)L([\d.e+-]+) ([\d.e+-]+)"/.exec(
+              svg,
+            )!;
+          expect(ray).not.toBeNull();
+          const [x0, y0, x1, y1] = ray.slice(1).map(Number);
+          expect((y0 - y1) / (x1 - x0)).toBeCloseTo(Math.tan(2 * theta), 12);
+          const pointer =
+            /data-optical-part="ruler-spot" data-scale="([^"]+)" d="M([\d.e+-]+) ([\d.e+-]+)v15"/.exec(
+              svg,
+            )!;
+          const ruler = /data-optical-part="ruler" d="M28 [\d.e+-]+H([\d.e+-]+)"/.exec(svg)!;
+          const centre = (28 + Number(ruler[1])) / 2;
+          expect(Number(pointer[2]) - centre).toBeCloseTo(displacement * Number(pointer[1]), 9);
+          expect(Number(pointer[2])).toBeGreaterThanOrEqual(28);
+          expect(Number(pointer[2])).toBeLessThanOrEqual(Number(ruler[1]));
         }
   });
   it('shows a larger Neptune perturbation on a fixed axis without moving observation points', async () => {

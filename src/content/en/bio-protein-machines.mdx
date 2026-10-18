@@ -1,24 +1,47 @@
-<h2 id="understand">Count, sequence, connectivity and conformation</h2>
+<h2 id="understand">Matching counts do not establish matching function</h2>
 
-A linear chain of n residues contains n−1 peptide bonds. Bovine insulin has two chains of 21 and 30 residues, giving 49 peptide bonds. Disulfides are distinct connections: A6–A11 is within one chain, while A7–B7 and A20–B19 join the chains.
+Bovine insulin has two peptide chains: 21 residues in A and 30 in B. Count adjacent joins: 20 in A and 29 in B, for 49 peptide bonds. For open, unbranched peptide chains, the count is residues minus chains. The separate chain ends matter, and a different type of connection must not enter this count.
 
-Chinese researchers completed the synthesis of biologically active crystalline bovine insulin in 1965. Correct sequence and connections are necessary, but activity requires an independent test rather than a precipitate or recognizable shape. This conformation comes from a later structure determination, not footage of that synthesis.
+Track one oxygen and two hydrogens in the close-up. Relative to free amino acids, forming one peptide bond accounts for one water molecule in the net composition. No atoms disappear. This is a composition account, not the cellular reaction mechanism. Applying it to the two unmodified open chains gives a net difference of 49 water molecules; it does not mean that ribosomes or insulin processing actually release these waters.
 
-<h2 id="try">Rotate and inspect the connections</h2>
+Six cysteines form three disulfides: A6–A11 within A, and A7–B7 and A20–B19 between chains. The close-up shows sulfur atoms on side chains. These links add spatial constraints without joining the chain ends into one longer peptide or adding three peptide bonds.
 
-- Toggle disulfides to distinguish them from the peptide backbone.
-- Rotate the structure: a crossing in a projection need not be a chemical bond.
-- Unfold the chains while tracking gold cysteine positions, then return to the measured conformation.
+<h2 id="try">Change connections, then check what follows</h2>
 
-Textbook: Required 1, Chapter 2, Section 4, pp. 30–33.
+- Move through the atom account and back. The same oxygen and two hydrogens remain identifiable; the hydrogen retained on nitrogen is not counted twice.
+- Exchange the different residues at A2 and A3. The counts remain 51 and 49 while the sequence changes. This is a candidate-sequence layout comparison, not a chemical mechanism for spontaneous residue swapping.
+- Hiding disulfides changes visibility. Removing only disulfides changes the teaching graph while retaining two peptide chains and 49 peptide bonds. Neither operation calculates unfolding or activity.
+- Rotate the same measured coordinates and inspect the sulfur atoms. Then switch to the new sequence candidate in the functional evidence view. A historical sample’s result cannot simply be copied to a new sample.
 
-<h2 id="deeper">Measured coordinates and explanatory transitions</h2>
+Textbook context: compulsory Biology 1, chapter 2, section 4, pp. 30–33. The p. 31 window closes the atom account, two-chain count and disulfide explanation; the p. 33 history window starts with the chains and closes with a separate functional comparison.
+
+<h2 id="deeper">What does each evidence source establish?</h2>
 
 <details>
-<summary>How are experimental coordinates used?</summary>
+<summary>The coordinate reference is not the historical synthetic sample</summary>
 
-Static coordinates come from the A and B chain Cα atoms of RCSB PDB 2A3G, totaling 51 residues. Thick lines trace the backbone; gold lines indicate residue connectivity, not exact sulfur-atom positions. Rotation preserves three-dimensional distances. Unfolding uses geometric interpolation, not molecular dynamics or an activity calculation.
+The reference is [RCSB PDB 2A3G](https://www.rcsb.org/structure/2A3G), a bovine insulin T6 crystal structure published in 2005. The film selects 51 C-alpha positions in chains A/B and C-alpha, C-beta and S-gamma positions for six cysteines. Thick lines trace the coarse backbone, not every atomic covalent bond. The close-up S–S edges join actual sulfur positions. Rotation preserves three-dimensional distances; crossings in projection need not be chemical connections.
 
-The condensation diagram represents net composition changes while omitting some hydrogen and group details. Ribosomal synthesis involves activation and energy coupling; the net-change drawing is not a procedure for spontaneous condensation of free amino acids.
+This is neither a structural record of the 1965 synthetic product nor a receptor-bound conformation. Layout changes and visibility controls do not simulate folding dynamics, energy minimization or activity. Fewer disulfide links mean fewer connectivity constraints; that alone does not specify a unique new conformation or prove zero activity.
+
+</details>
+
+<details>
+<summary>Where does the historical functional result come from?</summary>
+
+Research participant Cheng-Lu Tsou recalled that purified, fully synthetic bovine insulin showed the same biological activity as natural insulin in a mouse convulsion bioassay in 1965. His account appeared in 1998 and was reprinted in _Chinese Bulletin of Life Sciences_ 27(6), pp. 778–779, section 2, in 2015. Read the [complete participant account](https://lifescience.sinh.ac.cn/webadmin/upload/20156777.pdf) or its [Chinese Academy of Sciences republication](https://cemcs.cas.cn/zt_197708/nydsucg60zn/wshm/202508/t20250826_7915418.html).
+
+The view reconstructs the comparison between a natural reference and the purified synthetic sample. It supplies no invented doses, animal counts, response curves or original numerical values. The result marks mean “reported active,” not a live simulation or a modern statistical equivalence claim. Historical assay procedures are outside this lesson.
+
+The [1966 total-synthesis paper’s bibliographic record](https://pubmed.ncbi.nlm.nih.gov/5960685/) verifies the original study’s identity, but its full original assay data were not available for this production. The functional view is explicitly a qualitative reconstruction supported by a participant account. Later structural coordinates or modern measurements on other samples are not substituted for the 1965 records.
+
+</details>
+
+<details>
+<summary>Why are disulfides not extra condensation waters?</summary>
+
+The peptide account compares free amino acids with unmodified open peptide chains. Cells use activated substrates: ribosomal peptide-bond formation is not spontaneous condensation of two free amino acids as in this net-composition diagram.
+
+Disulfide formation is redox chemistry between thiol groups. A complete molecular formula would separately account for six fewer hydrogens when six thiols form three disulfides; it would not add three condensation waters. This film does not calculate a complete molecular mass or give a disulfide-reduction procedure.
 
 </details>

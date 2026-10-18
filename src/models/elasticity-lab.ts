@@ -49,3 +49,36 @@ export function springWire(length: number, turns = 11, width = 10) {
     y: (i / n) * length,
   }));
 }
+
+/** Spoken-time direction only; equilibrium and constitutive calculations stay independent. */
+export function elasticityFilmState(chapter: number, seconds: number, locale: 'zh' | 'en') {
+  const t = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  const en = locale === 'en';
+  const ramp = (a: number, b: number) => Math.max(0, Math.min(1, (t - a) / (b - a)));
+  const weights =
+    chapter === 0
+      ? t >= (en ? 7.2 : 9.5)
+        ? 2
+        : 0
+      : chapter === 1
+        ? Math.min(6, 1 + Math.floor(ramp(1, 21) * 6))
+        : t >= (en ? 8.4 : 13)
+          ? 6
+          : 3;
+  return {
+    weights,
+    extension:
+      chapter === 3
+        ? 0.12 * ramp(en ? 4 : 5.5, en ? 13 : 15)
+        : chapter === 4
+          ? 0.12 * (1 - ramp(1, en ? 9 : 12))
+          : 0.12,
+    cycles: chapter === 5 ? Math.min(4, Math.floor(ramp(3, 10) * 4)) : 0,
+    plotView:
+      chapter === 2 ||
+      chapter === 5 ||
+      (chapter === 1 && t >= (en ? 13.2 : 14.4)) ||
+      (chapter === 3 && t >= (en ? 8.1 : 9.4)) ||
+      (chapter === 4 && t >= (en ? 3.3 : 6.2)),
+  };
+}

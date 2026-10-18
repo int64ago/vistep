@@ -1,0 +1,134 @@
+{
+  "status": "reviewed-ready-for-authorized-publication",
+  "scenes": [
+    "gravity-measurements",
+    "chem-iron-steam",
+    "bio-protein-machines",
+    "elasticity-lab",
+    "apparent-weight-lab"
+  ],
+  "scope": "Three causal content rebuilds plus two retained-content presentation repairs. Preserve source records and textbook learning order.",
+  "sceneEntryCounts": {
+    "gravity-measurements": 3,
+    "chem-iron-steam": 1,
+    "bio-protein-machines": 2,
+    "elasticity-lab": 2,
+    "apparent-weight-lab": 3
+  },
+  "checks": [
+    {
+      "kind": "original-source-and-entry-audit",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-9-source-entry-audit.json"
+    },
+    {
+      "kind": "independent-recording-transcription",
+      "status": "passed",
+      "chapters": 54,
+      "subjectiveListening": false,
+      "evidence": "artifacts/teaching-principles/batch-9-transcription.json"
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 4185,
+      "testFiles": 585,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-9-verify.log"
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-9-preview.log"
+    },
+    {
+      "kind": "final-static-keyframes",
+      "status": "passed",
+      "cases": 202,
+      "conditions": "27chapters×3positions×ZH1440/EN320x568; complete player, actualSVGfont>=16, primarytargets>=44, invalid paths/runtime errors. Capture count is not personal viewing count.",
+      "evidence": "artifacts/teaching-principles/batch-9-static-keyframes/report.json"
+    },
+    {
+      "kind": "root-actual-final-views",
+      "status": "passed-with-recorded-scope",
+      "evidence": "artifacts/teaching-principles/batch-9-root-final-views.json"
+    },
+    {
+      "kind": "real-controls-and-keyboard",
+      "status": "passed",
+      "physicsAssertions": 122,
+      "biologyAssertions": 44,
+      "chemistryRecords": 2,
+      "retainedAssertions": 26,
+      "evidence": "artifacts/teaching-principles/batch-9-controls-static"
+    },
+    {
+      "kind": "precise-entries-and-resource-failure",
+      "status": "passed",
+      "cases": 27,
+      "conditions": "All11entries both languages plus5audio failure/retry/offscreen/resume/manual pause.",
+      "evidence": "artifacts/teaching-principles/batch-9-behavior/report.json"
+    },
+    {
+      "kind": "initial-native-short-screen-anchor",
+      "status": "passed",
+      "cases": 20,
+      "conditions": "Direct#experiment without scripted reposition.",
+      "evidence": "artifacts/teaching-principles/batch-9-anchors/report.json"
+    },
+    {
+      "kind": "catalog-filters-and-no-JS",
+      "status": "passed",
+      "cases": 12,
+      "evidence": "artifacts/teaching-principles/batch-9-catalog/report.json"
+    },
+    {
+      "kind": "normal-rate-uninterrupted-native-playback",
+      "status": "passed",
+      "runs": 10,
+      "chapters": 54,
+      "conditions": "Native user-activated audio/film, no seeking after start,10s checkpoints. Root viewed selected running frames; not subjective listening, continuous human visual watching or physical-device performance.",
+      "evidence": "artifacts/teaching-principles/batch-9-continuous/report.json"
+    },
+    {
+      "kind": "root-pre-freeze-actual-views",
+      "status": "performed-with-recorded-scope",
+      "evidence": "artifacts/teaching-principles/batch-9-root-early-views.json"
+    },
+    {
+      "kind": "independent-science-and-presentation-peer",
+      "status": "passed-with-recorded-scope",
+      "evidence": [
+        "artifacts/teaching-principles/batch-9-cross-review/chemistry-review-of-gravity-implementation.json",
+        "artifacts/teaching-principles/batch-9-cross-review/biology-review-of-iron-steam.json",
+        "artifacts/teaching-principles/batch-9-cross-review/chemistry-review-of-protein-implementation.json",
+        "artifacts/teaching-principles/batch-9-cross-review/chemistry-retained-models-review.json",
+        "artifacts/teaching-principles/batch-9-cross-review/biology-retained-layout-review.json"
+      ]
+    }
+  ],
+  "notClaimed": ["Subjective listening", "Physical-phone performance", "Continuous human watching"],
+  "pending": ["Actions deployment and live verification"],
+  "finalSource": {
+    "commit": "468ed60b261919593d7a11c9340774e470054ef7",
+    "treeHash": "c1573ae7f4489e6e6c0492e368b81f0eac9553fb8ee535dea1024054f011d8e8",
+    "gitDiffHash": "f7678801ba8243a7bc3b740309713ffc16fec3da27dcd426ef8afa362e3c9628",
+    "fileCount": 5226,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "resolved": [
+    "Kept raw source records unchanged while correcting the derived Cavendish entry page52→53 using the original book column.",
+    "Repaired retained exploration100kg mass leaking into authored60kg film and restored chapter-aware exploration defaults.",
+    "Repaired protein intermediate chain counts to add currently visible A/B bonds, not final counts.",
+    "Matched causal reveals and motion to independent ASR word times in both languages.",
+    "Initial source-wide run found only formatting issues in three regenerated scene packets; formatted and reran full verification.",
+    "Static retained-controls harness initially reused a same-document hash navigation with the prior explicit bottle selection; a real reload isolates the fresh mass test. No product change; all26 controls then passed."
+  ],
+  "limits": [
+    "Independent ASR includes an additional no-hint full large-v3 decode resolving3600分之一 in gravity. This is not subjective listening.",
+    "Protein historical activity is a qualitative participant account; no invented individual animal measurements.",
+    "Gravity article markers digitized from the published figure, distinct from fitted curves; nearest-pair publishedG inference distinguished from teaching four-pair torque model."
+  ]
+}

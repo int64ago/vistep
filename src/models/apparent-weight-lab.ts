@@ -83,3 +83,66 @@ export function squatKnee(hipHeight: number, segment = 0.44) {
   if (hipHeight < 0 || hipHeight > 2 * segment) throw new RangeError('Unreachable leg pose');
   return { x: Math.sqrt(segment * segment - (hipHeight / 2) ** 2), height: hipHeight / 2 };
 }
+
+/** Map the unchanged spoken chapters to physical time, never derive force from film speed. */
+export function apparentFilmTime(chapter: number, seconds: number, locale: 'zh' | 'en') {
+  const t = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  const en = locale === 'en';
+  const points: number[][] =
+    chapter === 0
+      ? [
+          [0, 0],
+          [2.3, 0.5],
+          [8.4, 1.2],
+          [15.6, 1.85],
+          [17.2, 1.9],
+          [28, 2.4],
+        ]
+      : chapter === 1
+        ? [
+            [0, 0],
+            [4.5, 2.4],
+            [9, 2.5],
+            [en ? 13.4 : 14.4, 3.1],
+            [en ? 15.8 : 18, 3.8],
+            [29, 4.8],
+          ]
+        : chapter === 2
+          ? [
+              [0, 0],
+              [en ? 2.8 : 3.6, 0.5],
+              [en ? 10.8 : 10.1, 2.5],
+              [en ? 17.3 : 16.6, 4.5],
+              [en ? 21 : 19.6, 6.5],
+              [29.5, 8],
+            ]
+          : chapter === 3
+            ? [
+                [0, 0],
+                [1.5, 0.5],
+                [en ? 4.2 : 4.8, 2.5],
+                [en ? 6.2 : 7.2, 4.5],
+                [en ? 9.7 : 10.8, 6.5],
+                [27.5, 8],
+              ]
+            : chapter === 4
+              ? [
+                  [0, -0.1],
+                  [28, -0.1],
+                ]
+              : [
+                  [0, -0.1],
+                  [0.7, 0],
+                  [4, 0.06],
+                  [14, 0.28],
+                  [29.5, 0.42],
+                ];
+  if (t <= points[0][0]) return points[0][1];
+  for (let i = 1; i < points.length; i++)
+    if (t <= points[i][0]) {
+      const [a, x] = points[i - 1],
+        [b, y] = points[i];
+      return x + (y - x) * ((t - a) / (b - a));
+    }
+  return points[points.length - 1][1];
+}

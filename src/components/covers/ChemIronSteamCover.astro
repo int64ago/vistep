@@ -1,51 +1,52 @@
 ---
-import { ironSteam } from '../../models/chem-iron-steam';
-const m = ironSteam();
+import { ironSteamAtoms } from '../../models/chem-iron-steam';
+const a = ironSteamAtoms(1, 600),
+  colour = { Fe: '#697572', O: '#b67e54', H: '#b9bfa0' };
 ---
 
-<svg viewBox="0 0 640 400" aria-hidden="true"
-  ><rect width="640" height="400" fill="#e8eddf"></rect><path
-    d="M470 100H75q-25 0-25 25t25 25H470"
-    fill="#c4d0ba22"
-    stroke="#92a18b"
-    stroke-width="2"></path>{
-    Array.from({ length: 10 }, (_, i) => (
-      <ellipse
-        cx={80 + ((i * 5) % 35)}
-        cy={115 + ((i * 11) % 23)}
-        rx="7"
-        ry="5"
-        fill="#dce6d4"
-        stroke="#adbaa0"
-      />
-    ))
-  }{
-    Array.from({ length: 23 }, (_, i) => (
-      <ellipse
-        cx={275 + ((i * 11) % 80)}
-        cy={135 + (i % 3) * 4}
-        rx="5"
-        ry="3"
-        fill={m.convertedFraction ? '#555f4e' : '#949b86'}
-      />
-    ))
-  }<path d="M470 125H555V282" fill="none" stroke="#92a18b" stroke-width="5"></path><path
-    d="M505 235V330H605V235"
-    fill="#c1d2bc22"
-    stroke="#92a18b"
-    stroke-width="2"></path>{
-    [0, 1, 2].map((i) => (
-      <circle cx={535 + i * 19} cy={265 - (i % 2) * 15} r="12" fill="#e1e7d0" stroke="#a6b99a" />
-    ))
-  }{
-    [95, 315].map((x) => (
-      <g>
-        <>
-          <path d={`M${x} 205q-18-25 0-42q18 25 0 42`} fill="#d7b477" />
-          <path d={`M${x - 25} 240h50l-10 35h-30Z`} fill="#b6c7ae" />
-          <path d={`M${x} 239v-30`} stroke="#a79f80" stroke-width="4" />
-        </>
-      </g>
-    ))
-  }</svg
->
+<svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs
+    ><radialGradient id="iron-steam-cover-light"
+      ><stop stop-color="#f7f1dc"></stop><stop offset="1" stop-color="#e0e8d9"
+      ></stop></radialGradient
+    ></defs
+  >
+  <rect width="640" height="400" fill="url(#iron-steam-cover-light)"></rect>
+  <path d="M65 305Q160 335 260 305" fill="none" stroke="#8eaa96" stroke-width="4"></path>
+  <g transform="translate(20 92)">
+    <path
+      d="M396 54Q260 3 66 106"
+      fill="none"
+      stroke="#b67e54"
+      stroke-width="2"
+      stroke-dasharray="3 8"
+      opacity=".35"></path>
+    {
+      a.bonds.map((b) => {
+        const x = a.atoms.find((x) => x.id === b.from)!,
+          y = a.atoms.find((x) => x.id === b.to)!;
+        return (
+          <path
+            d={`M${x.x} ${x.y}L${y.x} ${y.y}`}
+            stroke="#a0b59a"
+            stroke-width="6"
+            opacity={b.opacity}
+          />
+        );
+      })
+    }
+    {
+      a.atoms.map((x) => (
+        <g transform={`translate(${x.x} ${x.y})`}>
+          {x.highlighted && <circle r="23" fill="none" stroke="#b67e54" stroke-width="2" />}
+          <circle r={x.r + 3} fill={colour[x.element]} stroke="#eff2df" stroke-width="2" />
+          <circle cx="-4" cy="-5" r="4" fill="#f3f3df" opacity=".45" />
+        </g>
+      ))
+    }
+  </g>
+  <g fill="#526850" font-family="sans-serif" font-size="25"
+    ><text x="320" y="62" text-anchor="middle">3 Fe + 4 H₂O →</text><text x="82" y="365">Fe₃O₄</text
+    ><text x="475" y="365">4 H₂</text></g
+  >
+</svg>

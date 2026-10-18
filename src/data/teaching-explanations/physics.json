@@ -798,5 +798,205 @@
         "en": "No. A and B are both at3V, so there is no potential difference and no new net charge transfer in this ideal model. Halving again requires an identical, initially uncharged C; B’s stored charge cannot be erased."
       }
     }
+  },
+  "required-2-moon-earth-test": {
+    "sceneSlug": "gravity-measurements",
+    "question": {
+      "zh": "苹果会落地，月球为什么一直绕行？",
+      "en": "Why does an apple fall while the Moon keeps orbiting?"
+    },
+    "lead": {
+      "zh": "先用地面自由落体预测月球处的加速度，再由固定的月球距离和周期核对。",
+      "en": "Predict acceleration at lunar distance from surface free fall, then check it using fixed orbital distance and period."
+    },
+    "principle": {
+      "zh": "引力改变速度的方向；平方反比预测与轨道运动的独立运动学估计近似相合。",
+      "en": "Gravity changes velocity direction; the inverse-square prediction approximately matches an independently derived kinematic estimate."
+    },
+    "transfer": {
+      "question": {
+        "zh": "同一地球旁，试探物体离地心的距离变成两倍，引力加速度怎样变？",
+        "en": "Around the same Earth, what happens to acceleration when distance from its centre doubles?"
+      },
+      "explanation": {
+        "zh": "平方反比模型预测加速度变为四分之一；这是新情境的预测，不是改写月球的原始参考数据。",
+        "en": "The inverse-square model predicts one quarter of the acceleration. This is a new scenario, not a change to the fixed lunar reference data."
+      }
+    }
+  },
+  "required-2-cavendish": {
+    "sceneSlug": "gravity-measurements",
+    "question": {
+      "zh": "看不见的微弱引力，怎样变成一个能算出的数？",
+      "en": "How can an invisible, tiny attraction become a measurable number?"
+    },
+    "lead": {
+      "zh": "跟踪球的引力、细丝扭转和反射光点，再用发表的振动与平衡位置记录反求引力常量。",
+      "en": "Follow attraction, fibre twist and the reflected spot, then infer G from published oscillation and equilibrium measurements."
+    },
+    "principle": {
+      "zh": "校准扭丝的恢复作用后，光点位移可换算成引力；由已知质量和间距反求G，必须注明所用近似。",
+      "en": "A calibrated restoring torque converts optical displacement into attraction. Known masses and distances then give G under the stated approximation."
+    },
+    "transfer": {
+      "question": {
+        "zh": "若换成两倍刚度的细丝，同样的引力会让测得的G减半吗？",
+        "en": "Would a fibre twice as stiff halve the measured G under the same attraction?"
+      },
+      "explanation": {
+        "zh": "在线性、近邻恒力矩近似中，转角约减半；新刚度乘新转角仍给出同样的力矩，所以重新校准后G不变。",
+        "en": "In the linear, nearest-pair constant-torque approximation, the angle halves. The new stiffness times the new angle gives the same torque, so recalibration leaves G unchanged."
+      }
+    }
+  },
+  "required-2-newton-cannon": {
+    "sceneSlug": "gravity-measurements",
+    "question": {
+      "zh": "一直在下落，为什么还能绕过地球？",
+      "en": "How can something keep falling yet miss Earth?"
+    },
+    "lead": {
+      "zh": "从同一高度逐渐提高水平速度，追踪始终指向地心的加速度和是否碰到地表。",
+      "en": "Increase horizontal speed at the same altitude and follow inward acceleration and surface contact."
+    },
+    "principle": {
+      "zh": "轨道运动仍是自由落体；足够的横向速度让弯曲轨迹持续绕过地表。",
+      "en": "Orbital motion remains free fall. Sufficient tangential speed lets the curved path keep missing the surface."
+    },
+    "transfer": {
+      "question": {
+        "zh": "在同一高度把圆轨道速度稍微减小，引力会消失吗？轨道会怎样？",
+        "en": "At the same altitude, does gravity vanish if circular speed is reduced slightly, and what happens to the orbit?"
+      },
+      "explanation": {
+        "zh": "引力仍朝向地心；路径不再保持圆形，近地点降低。减速足够大时才会与地表相交，并非任何微小减速都立刻落地。",
+        "en": "Gravity still points inward. The orbit is no longer circular and its perigee is lower. Only a sufficient reduction makes it intersect Earth; a tiny reduction need not cause immediate impact."
+      }
+    }
+  },
+  "required-1-spring-elasticity": {
+    "sceneSlug": "elasticity-lab",
+    "question": {
+      "zh": "载荷翻倍，为什么弹簧总长没有翻倍？",
+      "en": "Why does doubling the load not double total spring length?"
+    },
+    "lead": {
+      "zh": "把没有载荷的位置留下，再追踪增加的那段长度。",
+      "en": "Keep the unloaded reference, then track the added length."
+    },
+    "principle": {
+      "zh": "线性范围内弹力与伸长量成正比；伸长量是总长减去原长。",
+      "en": "Within the linear range, force is proportional to extension: total length minus natural length."
+    },
+    "transfer": {
+      "question": {
+        "zh": "原长16cm的弹簧由20.9cm变成25.8cm，伸长量变成几倍？",
+        "en": "A spring with natural length16cm changes from20.9cm to25.8cm. What happens to extension?"
+      },
+      "explanation": {
+        "zh": "伸长由4.9cm变为9.8cm，翻了一倍；总长度仍包含不随载荷增加的16cm原长。",
+        "en": "Extension doubles from4.9cm to9.8cm; total length still includes the16cm unloaded length."
+      }
+    }
+  },
+  "required-1-rubber-elasticity": {
+    "sceneSlug": "elasticity-lab",
+    "question": {
+      "zh": "拉到同一长度，为什么需要的力还能不同？",
+      "en": "Why can the same extension require different forces?"
+    },
+    "lead": {
+      "zh": "沿着加载与卸载两条路径回到同一伸长位置，比较拉力。",
+      "en": "Reach the same extension by loading and unloading, then compare the forces."
+    },
+    "principle": {
+      "zh": "示意橡皮筋具有路径依赖：当前伸长相同，材料经历不同，所需力也可能不同。",
+      "en": "The illustrative rubber model depends on history: matching extension need not imply matching force."
+    },
+    "transfer": {
+      "question": {
+        "zh": "只知道当前伸长量，能唯一求出本模型的拉力吗？",
+        "en": "Does extension alone determine force in this model?"
+      },
+      "explanation": {
+        "zh": "还需知道加载或卸载分支及此前循环次数；真实材料的温度、拉伸速度等条件也需要实验检验。",
+        "en": "The branch and prior cycle count are also needed. Temperature, speed and other conditions require separate experiments for real materials."
+      }
+    }
+  },
+  "required-1-squat-scale": {
+    "sceneSlug": "apparent-weight-lab",
+    "question": {
+      "zh": "还在向下蹲，为什么体重计反而变大？",
+      "en": "Why can the scale reading rise while you are still moving down?"
+    },
+    "lead": {
+      "zh": "把向下加速和向下减速并排比较，质量与重力始终相同。",
+      "en": "Compare downward acceleration with downward braking while mass and gravity stay fixed."
+    },
+    "principle": {
+      "zh": "向下减速需要向上的合力，因此支持力大于重力；秤读的是支持力。",
+      "en": "Braking downward motion requires an upward net force, so support exceeds weight. The scale measures support."
+    },
+    "transfer": {
+      "question": {
+        "zh": "若下蹲到一半停住，读数会保持偏大吗？",
+        "en": "If you stop halfway through the squat, does the reading stay high?"
+      },
+      "explanation": {
+        "zh": "停稳后加速度为零，支持力回到mg；蹲得低本身不会改变质量或重力。",
+        "en": "Once stationary, acceleration is zero and support returns to mg. Being lower does not itself change mass or weight."
+      }
+    }
+  },
+  "required-1-elevator-scale": {
+    "sceneSlug": "apparent-weight-lab",
+    "question": {
+      "zh": "电梯一直上升，秤的读数为什么能先大后小？",
+      "en": "Why can the reading first rise and then fall during one upward journey?"
+    },
+    "lead": {
+      "zh": "跟住启动、匀速和制动；把速度方向与加速度方向分开。",
+      "en": "Follow start, cruise and braking, distinguishing velocity from acceleration."
+    },
+    "principle": {
+      "zh": "N=m(g+a)取决于加速度；向上运动也能向下加速，产生偏小的读数。",
+      "en": "N=m(g+a) depends on acceleration. Upward motion can have downward acceleration and a reduced reading."
+    },
+    "transfer": {
+      "question": {
+        "zh": "速度很大但保持匀速时，秤会一直偏大吗？",
+        "en": "Does a high but constant speed keep the scale reading high?"
+      },
+      "explanation": {
+        "zh": "匀速的加速度为零，读数恢复静止值。运动快慢与支持力大小不能直接对应。",
+        "en": "Constant speed has zero acceleration, so the rest reading returns. Speed alone does not determine support force."
+      }
+    }
+  },
+  "required-1-falling-bottle": {
+    "sceneSlug": "apparent-weight-lab",
+    "question": {
+      "zh": "瓶子下落以后，为什么新水流停止，旧水滴却继续飞？",
+      "en": "Why does falling stop the new jet while earlier droplets keep moving?"
+    },
+    "lead": {
+      "zh": "先看通气水瓶的孔口压差，再跟住释放后的瓶、水柱和旧水滴。",
+      "en": "Start with the pressure difference in a vented bottle, then track bottle, water column and emitted drops."
+    },
+    "principle": {
+      "zh": "瓶与水共同自由落体，瓶内有效重力为零，持续静水压差消失；已喷出的水仍受地球引力。",
+      "en": "Shared free fall makes effective gravity zero inside the bottle, removing sustained pressure head. Emitted water still feels Earth’s gravity."
+    },
+    "transfer": {
+      "question": {
+        "zh": "若没有新水流，是不是说明重力消失、旧水滴会停住？",
+        "en": "Does the loss of a new jet mean gravity disappears and earlier drops stop?"
+      },
+      "explanation": {
+        "zh": "不是。消失的是支持与持续压力作用；旧水滴仍按原水平速度和重力加速度运动，释放瞬态在本模型中省略。",
+        "en": "No. Support and sustained pressure effects vanish; earlier drops keep their horizontal motion and gravitational acceleration. The release transient is omitted."
+      }
+    }
   }
 }

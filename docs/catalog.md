@@ -103,7 +103,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Aluminium oxide films in acid and base](../src/content/en/chem-aluminium-film.mdx)                   | 1:58 | Why can aluminium wait before releasing bubbles?                              |
 | [Copper etching and protected patterns](../src/content/en/chem-copper-etching.mdx)                    | 1:51 | Why does a protected pattern survive copper etching?                          |
 | [Iron hydroxides and oxidation by air](../src/content/en/chem-iron-hydroxides.mdx)                    | 1:53 | Why does a pale precipitate become brown?                                     |
-| [Iron reacting with steam](../src/content/en/chem-iron-steam.mdx)                                     | 1:26 | What changes when steam passes over hot iron?                                 |
+| [Iron reacting with steam](../src/content/en/chem-iron-steam.mdx)                                     | 2:36 | Why can the solid gain mass as gas leaves?                                    |
 | [Iron-ion colour, redox and coordination](../src/content/en/chem-iron-cycle.mdx)                      | 3:45 | What happens to iron when the red colour disappears and returns?              |
 | [Hydrogen burning in chlorine](../src/content/en/chem-hydrogen-chlorine.mdx)                          | 1:30 | Does combustion always require oxygen?                                        |
 | [Chlorine: evidence and explanation](../src/content/en/chem-chlorine-discovery.mdx)                   | 3:04 | Does oxygen in a product prove that the gas contained oxygen?                 |
@@ -165,7 +165,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Fluid exchange and homeostasis records](../src/content/en/bio-body-fluid-balance.mdx)            | 2:40 | How can cells remain within a stable range while conditions change?              |
 | [Synthetic genomes and living cells](../src/content/en/bio-engineered-genomes.mdx)                | 2:36 | Why does synthesizing DNA not mean synthesizing a whole cell?                    |
 | [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 2:50 | Without filming the whole journey, how can we infer the route of a protein?      |
-| [From peptide bonds to insulin](../src/content/en/bio-protein-machines.mdx)                       | 1:35 | Why is a mixture of amino acids not a protein?                                   |
+| [Protein connections and function](../src/content/en/bio-protein-machines.mdx)                    | 2:27 | Do matching counts and appearance establish a working protein?                   |
 | [Why water crosses a cell membrane](../src/content/en/bio-osmosis.mdx)                            | 4:22 | If water moves both ways, why does a cell shrink?                                |
 | [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 3:45 | How can we infer a membrane too thin to see?                                     |
 | [A transferable chemical signal](../src/content/en/bio-chemical-signals.mdx)                      | 2:12 | Why does a second heart slow without a connecting nerve?                         |
@@ -176,69 +176,69 @@ These optional sequences cross subject categories. The site gives a reason for e
 
 ## Mechanisms & motion
 
-| Exploration                                                                                   | Film | Question                                                                   |
-| --------------------------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------- |
-| [Recording and Measuring Pendulums](../src/content/en/pendulum-measurement-lab.mdx)           | 4:16 | How do pendulum records reveal length, period and gravity?                 |
-| [Motor Drive and Resonance Pendulums](../src/content/en/forced-oscillation-lab.mdx)           | 2:09 | Why can different oscillators follow one frequency?                        |
-| [Recording and Measuring Spring Oscillations](../src/content/en/spring-oscillation-lab.mdx)   | 3:41 | How can repeated motion become comparable experimental records?            |
-| [Ball collisions at a ramp outlet](../src/content/en/ramp-collision-lab.mdx)                  | 2:51 | How can landing distances test momentum conservation?                      |
-| [Invariants in Collisions](../src/content/en/momentum-collision-lab.mdx)                      | 3:43 | What remains unchanged through a collision?                                |
-| [Studying arm flicks and throwing](../src/content/en/arm-motion-lab.mdx)                      | 3:58 | Why can a fingertip reach a high speed?                                    |
-| [Forces in catching and stopping](../src/content/en/impulse-contact-lab.mdx)                  | 2:48 | Why can stopping produce different forces?                                 |
-| [Testing mechanical-energy conservation](../src/content/en/mechanical-energy-lab.mdx)         | 3:49 | Does every loss of gravitational energy become kinetic energy?             |
-| [Centripetal-force experiments](../src/content/en/centripetal-force-lab.mdx)                  | 3:45 | Which force keeps an object turning?                                       |
-| [Circular motion on a bicycle](../src/content/en/bicycle-circular-motion.mdx)                 | 1:57 | Which is faster: the large sprocket or the small one?                      |
-| [Horizontal launch: one clock, two directions](../src/content/en/projectile-motion-lab.mdx)   | 4:38 | Does a faster sideways launch land later?                                  |
-| [Composing the motion of a wax float](../src/content/en/wax-motion-composition.mdx)           | 1:55 | The wax rises and the tube moves right: what is the combined motion?       |
-| [Velocity directions in curved motion](../src/content/en/curved-motion-lab.mdx)               | 2:47 | Which way does an object go when it leaves a curve?                        |
-| [Investigating balloon air drag](../src/content/en/balloon-drag-lab.mdx)                      | 2:26 | Measure first: what relationship does the drag data support?               |
-| [Position and velocity with sensors](../src/content/en/motion-sensor-lab.mdx)                 | 1:55 | How does a sensor turn a sound pulse into velocity?                        |
-| [From the Moon–Earth test to the torsion balance](../src/content/en/gravity-measurements.mdx) | 2:48 | How can weak gravitation become measurable?                                |
-| [Apparent-weight experiments](../src/content/en/apparent-weight-lab.mdx)                      | 2:51 | Why does a scale change when body mass stays the same?                     |
-| [Measuring mass in microgravity](../src/content/en/dynamic-mass-lab.mdx)                      | 1:53 | How can an astronaut be weighed without weight?                            |
-| [How force changes velocity](../src/content/en/newton-second-law-lab.mdx)                     | 3:07 | Why can a cart be pushed without accelerating?                             |
-| [Paper pull and reference frames](../src/content/en/inertial-frames-lab.mdx)                  | 1:54 | Why does a nearly stationary ball move backward in the paper frame?        |
-| [Galileo’s incline studies](../src/content/en/galileo-inclines.mdx)                           | 2:51 | How can slower motion reveal clues about falling and inertia?              |
-| [Force composition laboratory](../src/content/en/force-resultant-lab.mdx)                     | 1:53 | How can two angled pulls be replaced by one?                               |
-| [Length Instruments and Fine Readings](../src/content/en/length-instruments.mdx)              | 2:56 | How can a small hard-to-see length become a reliable reading?              |
-| [Action and reaction laboratory](../src/content/en/force-pairs-lab.mdx)                       | 1:52 | Can two linked force meters disagree about who pulls whom?                 |
-| [Friction laboratory](../src/content/en/friction-lab.mdx)                                     | 2:20 | Why does friction change before the block moves?                           |
-| [Elasticity laboratory](../src/content/en/elasticity-lab.mdx)                                 | 2:38 | Does twice the extension always require twice the force?                   |
-| [Seeing small deformations](../src/content/en/small-deformation-lab.mdx)                      | 1:51 | Why does the light spot move when the tabletop barely bends?               |
-| [Finding the centre by suspension](../src/content/en/suspension-center-of-gravity.mdx)        | 2:30 | Why do different supports reveal the same point?                           |
-| [Free-fall activities](../src/content/en/free-fall-activities.mdx)                            | 2:18 | What can paper, tied stones and a ruler tell us?                           |
-| [How a phone senses acceleration](../src/content/en/phone-accelerometer-lab.mdx)              | 3:47 | Still reads 9.8; why does falling read zero?                               |
-| [How tape records motion](../src/content/en/ticker-tape-lab.mdx)                              | 3:03 | Why do gaps grow when the ticking stays steady?                            |
-| [Newton Tube](../src/content/en/newton-tube.mdx)                                              | 2:00 | Does a feather fall slowly because it is light?                            |
-| [Center of mass](../src/content/en/center-of-mass.mdx)                                        | 2:21 | Can internal motion carry a whole system away?                             |
-| [Elastic collision](../src/content/en/elastic-collision.mdx)                                  | 2:18 | Will the energy lost from motion return?                                   |
-| [Angular momentum](../src/content/en/angular-momentum.mdx)                                    | 2:18 | Why spin faster without gaining angular momentum?                          |
-| [Gyroscope](../src/content/en/gyroscope.mdx)                                                  | 2:19 | Why does a gyroscope turn when gravity pulls downward?                     |
-| [Flywheel](../src/content/en/flywheel.mdx)                                                    | 2:16 | How does a flywheel smooth a pulsing drive?                                |
-| [Centrifugal governor](../src/content/en/centrifugal-governor.mdx)                            | 2:20 | How do flyballs regulate speed through a valve?                            |
-| [Ratchet](../src/content/en/ratchet.mdx)                                                      | 2:18 | Why can a one-way ratchet still roll back a little?                        |
-| [Geneva drive](../src/content/en/geneva-drive.mdx)                                            | 2:24 | Why does the wheel stop while its driver keeps turning?                    |
-| [Universal joint](../src/content/en/universal-joint.mdx)                                      | 2:39 | Does a bent shaft transmission keep constant speed?                        |
-| [Cam follower](../src/content/en/cam-follower.mdx)                                            | 2:17 | Does constant cam speed mean constant follower speed?                      |
-| [Screw jack](../src/content/en/screw-jack.mdx)                                                | 2:17 | How can a small turning torque lift a heavy load?                          |
-| [Inclined plane](../src/content/en/inclined-plane.mdx)                                        | 2:09 | Does a shallower ramp always save energy?                                  |
-| [Pulley systems](../src/content/en/pulley.mdx)                                                | 2:15 | Does another wheel always halve the effort?                                |
-| [Lever](../src/content/en/lever.mdx)                                                          | 2:12 | Does a longer bar always need less force?                                  |
-| [Keyboard switches](../src/content/en/keyboard-switch.mdx)                                    | 3:34 | One press. What changes inside a switch?                                   |
-| [Helicopter](../src/content/en/helicopter.mdx)                                                | 2:56 | How can a rotor lift a cabin that stays in one place?                      |
-| [Excavator](../src/content/en/excavator.mdx)                                                  | 4:06 | How does oil lift a bucket of earth?                                       |
-| [Zipper](../src/content/en/zipper.mdx)                                                        | 3:22 | Why can a slider separate teeth that resist a sideways pull?               |
-| [Clock escapement](../src/content/en/escapement.mdx)                                          | 3:30 | The pendulum keeps swinging. Why does the wheel advance only a small step? |
-| [Sewing machine](../src/content/en/sewing-machine.mdx)                                        | 3:19 | If the needle only moves up and down, what forms the stitch underneath?    |
-| [Pin-tumbler lock](../src/content/en/lock.mdx)                                                | 3:16 | How do six pin stacks clear one boundary together?                         |
-| [Car differential](../src/content/en/differential.mdx)                                        | 3:12 | How do the gears accommodate the outside wheel’s longer path?              |
-| [Car suspension](../src/content/en/suspension.mdx)                                            | 3:06 | Take the bump, then control the bounce.                                    |
-| [Ball bearing](../src/content/en/ball-bearing.mdx)                                            | 3:00 | Two contacts, one rolling motion.                                          |
-| [Hydraulic brakes](../src/content/en/hydraulic-brake.mdx)                                     | 2:58 | One liquid connection. Shared pressure.                                    |
-| [Planetary gearing](../src/content/en/planetary-gears.mdx)                                    | 2:55 | Change the constraint. Change the motion.                                  |
-| [Four-stroke engine](../src/content/en/four-stroke-engine.mdx)                                | 2:50 | Four strokes. One powered expansion.                                       |
-| [Bicycle gears](../src/content/en/bicycle.mdx)                                                | 2:59 | Small gears. Big difference.                                               |
-| [The pendulum](../src/content/en/pendulum.mdx)                                                | 3:02 | Lift, release, and watch energy flow.                                      |
+| Exploration                                                                                 | Film | Question                                                                   |
+| ------------------------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------- |
+| [Recording and Measuring Pendulums](../src/content/en/pendulum-measurement-lab.mdx)         | 4:16 | How do pendulum records reveal length, period and gravity?                 |
+| [Motor Drive and Resonance Pendulums](../src/content/en/forced-oscillation-lab.mdx)         | 2:09 | Why can different oscillators follow one frequency?                        |
+| [Recording and Measuring Spring Oscillations](../src/content/en/spring-oscillation-lab.mdx) | 3:41 | How can repeated motion become comparable experimental records?            |
+| [Ball collisions at a ramp outlet](../src/content/en/ramp-collision-lab.mdx)                | 2:51 | How can landing distances test momentum conservation?                      |
+| [Invariants in Collisions](../src/content/en/momentum-collision-lab.mdx)                    | 3:43 | What remains unchanged through a collision?                                |
+| [Studying arm flicks and throwing](../src/content/en/arm-motion-lab.mdx)                    | 3:58 | Why can a fingertip reach a high speed?                                    |
+| [Forces in catching and stopping](../src/content/en/impulse-contact-lab.mdx)                | 2:48 | Why can stopping produce different forces?                                 |
+| [Testing mechanical-energy conservation](../src/content/en/mechanical-energy-lab.mdx)       | 3:49 | Does every loss of gravitational energy become kinetic energy?             |
+| [Centripetal-force experiments](../src/content/en/centripetal-force-lab.mdx)                | 3:45 | Which force keeps an object turning?                                       |
+| [Circular motion on a bicycle](../src/content/en/bicycle-circular-motion.mdx)               | 1:57 | Which is faster: the large sprocket or the small one?                      |
+| [Horizontal launch: one clock, two directions](../src/content/en/projectile-motion-lab.mdx) | 4:38 | Does a faster sideways launch land later?                                  |
+| [Composing the motion of a wax float](../src/content/en/wax-motion-composition.mdx)         | 1:55 | The wax rises and the tube moves right: what is the combined motion?       |
+| [Velocity directions in curved motion](../src/content/en/curved-motion-lab.mdx)             | 2:47 | Which way does an object go when it leaves a curve?                        |
+| [Investigating balloon air drag](../src/content/en/balloon-drag-lab.mdx)                    | 2:26 | Measure first: what relationship does the drag data support?               |
+| [Position and velocity with sensors](../src/content/en/motion-sensor-lab.mdx)               | 1:55 | How does a sensor turn a sound pulse into velocity?                        |
+| [An apple, the Moon and a moving spot of light](../src/content/en/gravity-measurements.mdx) | 3:56 | Why does an apple fall while the Moon keeps orbiting?                      |
+| [Apparent-weight experiments](../src/content/en/apparent-weight-lab.mdx)                    | 2:51 | Why does a scale change when body mass stays the same?                     |
+| [Measuring mass in microgravity](../src/content/en/dynamic-mass-lab.mdx)                    | 1:53 | How can an astronaut be weighed without weight?                            |
+| [How force changes velocity](../src/content/en/newton-second-law-lab.mdx)                   | 3:07 | Why can a cart be pushed without accelerating?                             |
+| [Paper pull and reference frames](../src/content/en/inertial-frames-lab.mdx)                | 1:54 | Why does a nearly stationary ball move backward in the paper frame?        |
+| [Galileo’s incline studies](../src/content/en/galileo-inclines.mdx)                         | 2:51 | How can slower motion reveal clues about falling and inertia?              |
+| [Force composition laboratory](../src/content/en/force-resultant-lab.mdx)                   | 1:53 | How can two angled pulls be replaced by one?                               |
+| [Length Instruments and Fine Readings](../src/content/en/length-instruments.mdx)            | 2:56 | How can a small hard-to-see length become a reliable reading?              |
+| [Action and reaction laboratory](../src/content/en/force-pairs-lab.mdx)                     | 1:52 | Can two linked force meters disagree about who pulls whom?                 |
+| [Friction laboratory](../src/content/en/friction-lab.mdx)                                   | 2:20 | Why does friction change before the block moves?                           |
+| [Elasticity laboratory](../src/content/en/elasticity-lab.mdx)                               | 2:38 | Does twice the extension always require twice the force?                   |
+| [Seeing small deformations](../src/content/en/small-deformation-lab.mdx)                    | 1:51 | Why does the light spot move when the tabletop barely bends?               |
+| [Finding the centre by suspension](../src/content/en/suspension-center-of-gravity.mdx)      | 2:30 | Why do different supports reveal the same point?                           |
+| [Free-fall activities](../src/content/en/free-fall-activities.mdx)                          | 2:18 | What can paper, tied stones and a ruler tell us?                           |
+| [How a phone senses acceleration](../src/content/en/phone-accelerometer-lab.mdx)            | 3:47 | Still reads 9.8; why does falling read zero?                               |
+| [How tape records motion](../src/content/en/ticker-tape-lab.mdx)                            | 3:03 | Why do gaps grow when the ticking stays steady?                            |
+| [Newton Tube](../src/content/en/newton-tube.mdx)                                            | 2:00 | Does a feather fall slowly because it is light?                            |
+| [Center of mass](../src/content/en/center-of-mass.mdx)                                      | 2:21 | Can internal motion carry a whole system away?                             |
+| [Elastic collision](../src/content/en/elastic-collision.mdx)                                | 2:18 | Will the energy lost from motion return?                                   |
+| [Angular momentum](../src/content/en/angular-momentum.mdx)                                  | 2:18 | Why spin faster without gaining angular momentum?                          |
+| [Gyroscope](../src/content/en/gyroscope.mdx)                                                | 2:19 | Why does a gyroscope turn when gravity pulls downward?                     |
+| [Flywheel](../src/content/en/flywheel.mdx)                                                  | 2:16 | How does a flywheel smooth a pulsing drive?                                |
+| [Centrifugal governor](../src/content/en/centrifugal-governor.mdx)                          | 2:20 | How do flyballs regulate speed through a valve?                            |
+| [Ratchet](../src/content/en/ratchet.mdx)                                                    | 2:18 | Why can a one-way ratchet still roll back a little?                        |
+| [Geneva drive](../src/content/en/geneva-drive.mdx)                                          | 2:24 | Why does the wheel stop while its driver keeps turning?                    |
+| [Universal joint](../src/content/en/universal-joint.mdx)                                    | 2:39 | Does a bent shaft transmission keep constant speed?                        |
+| [Cam follower](../src/content/en/cam-follower.mdx)                                          | 2:17 | Does constant cam speed mean constant follower speed?                      |
+| [Screw jack](../src/content/en/screw-jack.mdx)                                              | 2:17 | How can a small turning torque lift a heavy load?                          |
+| [Inclined plane](../src/content/en/inclined-plane.mdx)                                      | 2:09 | Does a shallower ramp always save energy?                                  |
+| [Pulley systems](../src/content/en/pulley.mdx)                                              | 2:15 | Does another wheel always halve the effort?                                |
+| [Lever](../src/content/en/lever.mdx)                                                        | 2:12 | Does a longer bar always need less force?                                  |
+| [Keyboard switches](../src/content/en/keyboard-switch.mdx)                                  | 3:34 | One press. What changes inside a switch?                                   |
+| [Helicopter](../src/content/en/helicopter.mdx)                                              | 2:56 | How can a rotor lift a cabin that stays in one place?                      |
+| [Excavator](../src/content/en/excavator.mdx)                                                | 4:06 | How does oil lift a bucket of earth?                                       |
+| [Zipper](../src/content/en/zipper.mdx)                                                      | 3:22 | Why can a slider separate teeth that resist a sideways pull?               |
+| [Clock escapement](../src/content/en/escapement.mdx)                                        | 3:30 | The pendulum keeps swinging. Why does the wheel advance only a small step? |
+| [Sewing machine](../src/content/en/sewing-machine.mdx)                                      | 3:19 | If the needle only moves up and down, what forms the stitch underneath?    |
+| [Pin-tumbler lock](../src/content/en/lock.mdx)                                              | 3:16 | How do six pin stacks clear one boundary together?                         |
+| [Car differential](../src/content/en/differential.mdx)                                      | 3:12 | How do the gears accommodate the outside wheel’s longer path?              |
+| [Car suspension](../src/content/en/suspension.mdx)                                          | 3:06 | Take the bump, then control the bounce.                                    |
+| [Ball bearing](../src/content/en/ball-bearing.mdx)                                          | 3:00 | Two contacts, one rolling motion.                                          |
+| [Hydraulic brakes](../src/content/en/hydraulic-brake.mdx)                                   | 2:58 | One liquid connection. Shared pressure.                                    |
+| [Planetary gearing](../src/content/en/planetary-gears.mdx)                                  | 2:55 | Change the constraint. Change the motion.                                  |
+| [Four-stroke engine](../src/content/en/four-stroke-engine.mdx)                              | 2:50 | Four strokes. One powered expansion.                                       |
+| [Bicycle gears](../src/content/en/bicycle.mdx)                                              | 2:59 | Small gears. Big difference.                                               |
+| [The pendulum](../src/content/en/pendulum.mdx)                                              | 3:02 | Lift, release, and watch energy flow.                                      |
 
 ## Electricity & magnetism
 

@@ -115,63 +115,90 @@
   }
 }
 
-/* The film caption carries the current explanation; longer notes remain in exploration. */
+.elastic-readings {
+  grid-column: 1 / -1;
+}
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .elastic-lab {
-    padding: 12px 8px;
+    padding: 4px 8px;
   }
-  .showcase[data-mode='watch'] .elastic-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .elastic-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .elastic-lab > header > span,
-  .showcase[data-mode='watch'] .elastic-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .elastic-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .elastic-lab > p[class$='-observation'] {
+  .showcase[data-mode='watch'] .elastic-lab > header,
+  .showcase[data-mode='watch'] .elastic-observation,
+  .showcase[data-mode='watch'] .elastic-note,
+  .showcase[data-mode='watch'] .elastic-graph > p {
     display: none;
   }
-}
-
-@media (max-width: 640px) {
   .showcase[data-mode='watch'] .elastic-workbench {
-    gap: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 218px 40px;
+    gap: 2px;
+  }
+  .showcase[data-mode='watch'] .elastic-apparatus,
+  .showcase[data-mode='watch'] .elastic-graph {
+    grid-area: 1 / 1;
+    transition: opacity 0.4s ease;
   }
   .showcase[data-mode='watch'] .elastic-apparatus svg {
-    height: 165px;
+    height: 218px;
+  }
+  .showcase[data-mode='watch'] .elastic-graph svg {
+    height: 190px;
+  }
+  .showcase[data-mode='watch'] .elastic-graph svg text {
+    font-size: 25px;
+  }
+  .showcase[data-mode='watch'] .elastic-lab[data-phone-view='apparatus'] .elastic-graph,
+  .showcase[data-mode='watch'] .elastic-lab[data-phone-view='plot'] .elastic-apparatus {
+    opacity: 0;
+    visibility: hidden;
   }
   .showcase[data-mode='watch'] .elastic-readings {
-    gap: 16px;
+    grid-area: 2 / 1;
+    gap: 12px;
   }
   .showcase[data-mode='watch'] .elastic-readings span {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    line-height: 1.25;
   }
   .showcase[data-mode='watch'] .elastic-readings strong {
     font-size: 16px;
   }
-  .showcase[data-mode='watch'] .elastic-graph > p {
+  .showcase[data-mode='watch'] .elastic-legend {
+    gap: 2px 8px;
+  }
+  .showcase[data-mode='watch'] .elastic-legend > span:last-child {
     display: none;
   }
-  .showcase[data-mode='watch'] .elastic-graph svg {
-    height: 170px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .elastic-apparatus,
+  .elastic-graph {
+    transition: none !important;
   }
-  .showcase[data-mode='watch'] .elastic-graph svg text {
-    font-size: 24px;
-  }
-  .showcase[data-mode='watch'] .elastic-legend {
-    gap: 4px 10px;
+}
+@media (max-width: 560px) and (max-height: 700px) {
+  .lesson-elasticity-lab .experiment {
+    scroll-margin-top: -74px;
   }
 }
 
-/* The current film caption already supplies this step's explanation. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .elastic-lab > header {
-    display: none;
-  }
+.elastic-readings strong {
+  white-space: nowrap;
+}
+
+.showcase[data-mode='watch'] .elastic-lab > header,
+.showcase[data-mode='watch'] .elastic-note,
+.showcase[data-mode='watch'] .elastic-observation {
+  display: none;
+}
+
+.showcase[data-mode='watch'] .elastic-lab[data-chapter='0'] .elastic-graph {
+  visibility: hidden;
+}
+
+.elastic-controls .segmented button {
+  min-width: 44px;
 }

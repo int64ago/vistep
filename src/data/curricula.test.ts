@@ -20,6 +20,18 @@ import timeline from './film-timeline.json';
 import { featuredTeachingLessons, teachingExplanations } from './teaching-explanations';
 
 describe('textbook learning paths', () => {
+  it('corrects the Cavendish column page without rewriting the source inventory or learning position', () => {
+    const raw = source.find((entry) => entry.id === 'required-2-cavendish')!;
+    const shown = getCurriculumLessons('pep-high-school-physics').find(
+      ({ lesson }) => lesson.experimentId === raw.id,
+    )!;
+    expect(raw.page).toBe(52);
+    expect(shown.lesson.page).toBe(53);
+    expect(shown.lesson.order).toBe(raw.order);
+    expect(shown.lesson.textbookTitle).toEqual(raw.textbookTitle);
+    expect(shown.section.id).toBe(raw.section.id);
+  });
+
   it('keeps each authored explanation attached to its own textbook scene', () => {
     const lessons = curricula.flatMap((curriculum) => getCurriculumLessons(curriculum));
     for (const [id, explanation] of Object.entries(teachingExplanations)) {

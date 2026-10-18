@@ -1,0 +1,285 @@
+{
+  "sceneSlug": "chem-iron-steam",
+  "status": "Frozen after real-word director calibration and actual keyframe/control recheck",
+  "owner": "chemistry_inventory",
+  "reviewType": "Author self-review. Separate bounded independent model review is explicitly identified.",
+  "sourceCommit": "f96b88d38a9a0e2947f09c59b51316c0ac09a01c",
+  "sourceHashes": {
+    "src/components/experiments/ChemIronSteam.tsx": "a92b7cfeff49f5fea71775dcb0b04b5c62c2bf04a3bdff7e853d391334d8c1f9",
+    "src/components/experiments/ChemIronSteam.exploration.test.tsx": "5c5f2fcf0f4c367da30b094c20ec218ebcce3f2759cc72f9122c11e2a075e844",
+    "src/models/chem-iron-steam.ts": "ec3f209a1bacd5539daa7a14588783cf4dcfc391dfff34e2673ef5e2e709ac1e",
+    "src/models/chem-iron-steam.test.ts": "12ba901a0b2714e69e553add09ba2b0bcf0234d1861f144d4343ae503c140229",
+    "src/styles/chem-iron-steam.css": "2e95b50c4204d3e76a724e6cc9cb11b7c672f3bd8684f2ea06bef18e1f81c991",
+    "src/components/covers/ChemIronSteamCover.astro": "d5f2f23a57f96ca3ce7ca27b7359a42cc15d3a035b26eb885cfc71ff4a8e25f3",
+    "src/content/chem-iron-steam.mdx": "bbff65059df7e4d45a486f8d2a3cdfc1c83f1b88be60066f5e61cbc0f0ff1810",
+    "src/content/en/chem-iron-steam.mdx": "c237c2d1b6bea796068c1124f274baa7bda0de13a02884ac823c651c11df88bb"
+  },
+  "recordedAt": "2026-10-18T17:36:31.610828+00:00",
+  "scientificEvidence": {
+    "sources": "drafts/chem-iron-steam/principle-first-packet.json sources; exact read scopes retained",
+    "independentModelReview": "artifacts/teaching-principles/batch-9-cross-review/biology-review-of-iron-steam.json",
+    "independentChecks": 446,
+    "independentBoundary": "Net model/actual functions only; not UI, experimental phase prediction or voice. Peer446check model hash precedes the director-only/optional presentation-pass extension; it is not relabelled as a final-version independent UI review."
+  },
+  "checks": [
+    {
+      "kind": "scoped model + component tests",
+      "status": "passed",
+      "count": 14,
+      "command": "pnpm exec vitest run src/models/chem-iron-steam.test.ts src/components/experiments/ChemIronSteam.exploration.test.tsx"
+    },
+    {
+      "kind": "scoped TypeScript",
+      "status": "passed",
+      "command": "pnpm exec tsc -p artifacts/teaching-principles/iron-steam-implementation/tsconfig.json"
+    },
+    {
+      "kind": "actual exploration controls",
+      "status": "passed",
+      "conditions": "Headless Chromium, saved narration off, reduced motion, EN320×568 and EN1440×1000; author actual controls and 26 records",
+      "evidence": "artifacts/teaching-principles/iron-steam-implementation/exploration-final/report.json",
+      "limits": "Does not establish new five-chapter watch layout, physical-phone performance, or complete-film playback."
+    },
+    {
+      "kind": "actual visual author inspection",
+      "status": "passed for listed six repaired exploration frames and fourteen watch frames",
+      "files": [
+        "320-atoms-moving.png",
+        "320-atoms-after.png",
+        "320-mass-transfer.png",
+        "320-mass-arrived.png",
+        "320-prediction-revealed.png",
+        "1440-atoms-moving.png"
+      ],
+      "base": "artifacts/teaching-principles/iron-steam-implementation/exploration-final/",
+      "watchBase": "artifacts/teaching-principles/iron-steam-implementation/watch-first/",
+      "watchFiles": [
+        "chem-iron-steam-en-320-chapter-1-apparatus.png",
+        "chem-iron-steam-en-320-chapter-2-tracked-oxygen.png",
+        "chem-iron-steam-en-320-chapter-2-atoms-after.png",
+        "chem-iron-steam-en-320-chapter-3-mass-transfer.png",
+        "chem-iron-steam-en-320-chapter-3-mass-arrived.png",
+        "chem-iron-steam-en-320-chapter-5-prediction-revealed.png",
+        "chem-iron-steam-zh-320-chapter-2-atoms-moving.png",
+        "chem-iron-steam-en-1440-chapter-2-atoms-after.png",
+        "chem-iron-steam-en-320-chapter-4-bubble-control.png",
+        "chem-iron-steam-en-320-chapter-4-combustible-evidence.png",
+        "chem-iron-steam-en-320-chapter-4-nonunique-colour.png",
+        "chem-iron-steam-en-320-chapter-5-prediction-hidden.png",
+        "chem-iron-steam-en-320-chapter-5-prediction-inventories.png",
+        "chem-iron-steam-zh-320-chapter-3-mass-arrived.png"
+      ]
+    },
+    {
+      "kind": "cover consumers",
+      "status": "passed author actual visual inspection",
+      "evidence": "artifacts/teaching-principles/iron-steam-implementation/covers-final/report.json",
+      "conditions": "Final endpoint cover PNG, social PNG and EN390 catalog card; model composition3Fe4O and4H2. Shared title/duration still pending during capture."
+    },
+    {
+      "kind": "five-chapter whole player and watch/explore isolation",
+      "status": "passed actual paused-frame and control checks",
+      "reason": null,
+      "conditions": "42 actual paused cases, all smoke checks passed. EN320×568 and ZH320×568 max player bottom562.75/545.25px; EN1440×1000 max570.95px. No small font/control flags, overflow, scene-loading states or resource errors.",
+      "evidence": [
+        "artifacts/teaching-principles/iron-steam-implementation/watch-first/report.json",
+        "artifacts/teaching-principles/iron-steam-implementation/watch-controls-final/report.json"
+      ],
+      "limits": "Automated capture is not visual acceptance. Author inspected14 representative frames listed below, not all42."
+    },
+    {
+      "kind": "recorded speech / ASR / measured event synchronization / subjective listening",
+      "status": "not-run",
+      "reason": "New recording not yet generated; planning duration is not measured speech."
+    },
+    {
+      "kind": "global verify / static preview / publication",
+      "status": "not-run by author",
+      "owner": "root"
+    },
+    {
+      "kind": "physical-phone performance",
+      "status": "not-run"
+    },
+    {
+      "kind": "complete silent development playback",
+      "status": "not-completed",
+      "attempts": [
+        {
+          "evidence": "artifacts/teaching-principles/iron-steam-implementation/continuous-silent/report.json",
+          "observed": "No advancement at0s after double navigation and immediate play click; harness initialization race not resolved as a product fault."
+        },
+        {
+          "evidence": "artifacts/teaching-principles/iron-steam-implementation/continuous-silent-final/report.json",
+          "observed": "Advanced to10.1s then clock reset during shared development integration. Root identified HMR interference and deferred full playback to fixed static preview."
+        }
+      ],
+      "classification": "Not counted as a pass, and insufficient evidence for a scene/player defect.",
+      "remainingOwner": "root: full normal-rate bilingual recorded playback in frozen static preview"
+    },
+    {
+      "kind": "post-recording scoped model/component + TypeScript",
+      "status": "passed",
+      "count": 16,
+      "includes": "New measured bilingual event boundaries, multi-width atom-clearance regressions, separate H pass and A/B inventory semantics; all15IDs persist.",
+      "command": "pnpm exec vitest run src/models/chem-iron-steam.test.ts src/components/experiments/ChemIronSteam.exploration.test.tsx; scoped tsc"
+    },
+    {
+      "kind": "post-recording real paused keyframes",
+      "status": "passed smoke and selected author inspection",
+      "count": 53,
+      "conditions": "Muted, reduced motion, EN320×568/ZH320×568/EN1440×1000; whole phone player max563.15625px; no smallfont/control flags, horizontaloverflow or resource errors",
+      "evidence": "artifacts/teaching-principles/iron-steam-implementation/measured-final/report.json",
+      "notImplied": "53 automated captures do not mean53 manual visual acceptances."
+    },
+    {
+      "kind": "post-recording actual controls",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/iron-steam-implementation/measured-controls/report.json",
+      "conditions": "EN/ZH320×568 UI exploration→watch resets and backward seeks; saved narration off"
+    },
+    {
+      "kind": "actual measured visual author inspection",
+      "status": "passed for listed files",
+      "measuredFirstBase": "artifacts/teaching-principles/iron-steam-implementation/measured-frames/",
+      "measuredFirstFiles": [
+        "chem-iron-steam-en-320-chapter-2-atoms-before.png",
+        "chem-iron-steam-en-320-chapter-2-tracked-oxygen.png",
+        "chem-iron-steam-en-320-chapter-2-oxygen-all-in.png",
+        "chem-iron-steam-en-320-chapter-2-hydrogen-pairing.png",
+        "chem-iron-steam-en-320-chapter-3-mass-arrived.png",
+        "chem-iron-steam-en-320-chapter-5-prediction-A-only.png",
+        "chem-iron-steam-en-320-chapter-5-prediction-B-in.png",
+        "chem-iron-steam-zh-320-chapter-2-hydrogen-pairing.png",
+        "chem-iron-steam-zh-320-chapter-5-prediction-revealed.png",
+        "chem-iron-steam-en-1440-chapter-2-hydrogen-pairing.png"
+      ],
+      "finalBase": "artifacts/teaching-principles/iron-steam-implementation/measured-final/",
+      "finalFiles": [
+        "chem-iron-steam-en-320-chapter-3-mass-transfer.png",
+        "chem-iron-steam-en-320-chapter-3-mass-arrived.png",
+        "chem-iron-steam-en-320-chapter-3-mass-gas.png",
+        "chem-iron-steam-en-320-chapter-3-mass-water.png",
+        "chem-iron-steam-en-320-chapter-3-mass-total.png",
+        "chem-iron-steam-en-320-chapter-2-atoms-after.png",
+        "chem-iron-steam-en-320-chapter-5-prediction-A-only.png",
+        "chem-iron-steam-zh-320-chapter-2-tracked-oxygen.png"
+      ]
+    }
+  ],
+  "repairs": [
+    {
+      "foundIn": "exploration-first",
+      "issue": "Simultaneous O routes crossed visible Fe disks",
+      "repair": "Separated persistent O paths, sequential reading order, all-pair gap test across 404 frames",
+      "evidence": "Final six frames inspected; 14 tests passed."
+    },
+    {
+      "foundIn": "initial added overlap regression",
+      "issue": "Wide-view O1 early motion approached an H atom; first regression failed",
+      "repair": "O1 now first rises vertically then moves left; rerun passed. Failed history is not counted as acceptance."
+    },
+    {
+      "foundIn": "exploration-first",
+      "issue": "Intermediate formula retained 4 H₂O, mass Fe label had low contrast, incoming O covered the solid mass bar, and water well fill ignored remaining mass",
+      "repair": "Intermediate 8 H count, scoped white Fe label, O badge touches the added-mass bar from above, fill derives from remaining water."
+    },
+    {
+      "foundIn": "cover first/final consumer review",
+      "issue": "Nested cover letterbox strips and intermediate formula labels could imply a completed product before all O arrived",
+      "repair": "Matching slice preserveAspectRatio and endpoint model composition; final three consumer images recaptured and actually inspected."
+    },
+    {
+      "foundIn": "watch-controls first runner",
+      "issue": "Playwright rejects range.fill(\".1\") as malformed; this is input-driver formatting, not user/model behavior.",
+      "repair": "Changed runner to canonical \"0.1\"; EN/ZH actual-control rerun passed in separate watch-controls-final report. Original failure preserved."
+    }
+  ],
+  "remaining": [
+    "Root final global checks and fixed static complete normal-rate bilingual playback",
+    "Root P70 teaching-window/source integration acceptance",
+    "Subjective listening not supplied by author; ASR is not listening",
+    "Physical-phone performance not measured"
+  ],
+  "voiceFreeze": {
+    "cueSha256": "8b6aa9e9242ab8369c509f855aa10ed4786efb090f8c0d8ee2b046a4c59d92ea",
+    "plannedSeconds": [26, 38, 30, 26, 36],
+    "plannedTotal": 156,
+    "recorded": true,
+    "measuredSynchronization": "Paused model/state calibration against actual word timestamps; not full native playback or listening",
+    "duration": 156
+  },
+  "measuredTiming": {
+    "kind": "Actual recorded bilingual words; chapter-local anchors include0.45s leading silence",
+    "duration": 156,
+    "chapterSeconds": [26, 38, 30, 26, 36],
+    "chapterStarts": [0, 26, 64, 94, 120],
+    "sourceDirectory": "artifacts/teaching-principles/batch-9-timed-speech/",
+    "sourceHashes": {
+      "chem-iron-steam-zh-3.json": "ff6b5e284da7fa7ef8fe834c419f424af8eec480440199d9a610bbdfc43e04d5",
+      "chem-iron-steam-en-3.json": "f6cd486e8f9af3085d17986a64a48f9a1bf1a9e5873f67bff74aefb24b792e87",
+      "chem-iron-steam-en-2.json": "893bb1faaccb64d866272389647ffa01920dd575760d31747ce7188eefb216da",
+      "chem-iron-steam-zh-2.json": "b11a0b69e610bcb449ba6499ca02bf844fed579feee7186c588ab4de35d52d8d",
+      "chem-iron-steam-zh-4.json": "5afd93cff34d0a8d83565fde35193eb38efbcfa54de986dcabcea609b3239a29",
+      "chem-iron-steam-en-4.json": "cf5e20c9d2092db4292b197dd40a616bb4bc043c696e703078644c678927880c",
+      "chem-iron-steam-zh-1.json": "6e65e716bb9b9666cce66ac5494dbf8dc341596b42b5ce83489e79eda5e5d7f4",
+      "chem-iron-steam-en-1.json": "ee7781f71d28ef785fccd156f6faccc692641d0944d425f2214fd6a8e30a4561",
+      "chem-iron-steam-en-0.json": "b468f63231be329931a52577060d8e849362fa80006755629dcdca35ac035674",
+      "chem-iron-steam-zh-0.json": "6e8d842e2b9e5e82c9a7098baee3337df04b6fa97de0e1d451118e2a6d1f771d"
+    },
+    "anchors": {
+      "zh": {
+        "waterToIron": [11.8, 15.1],
+        "productToOutlet": [15.1, 17.2],
+        "firstO": [9.9, 12.7],
+        "otherO": [12.8, 15.1],
+        "hydrogenPairing": [15.15, 17.7],
+        "massTransfer": [4, 7.8],
+        "massFocus": [
+          ["solid", 7.8],
+          ["gas", 13.15],
+          ["water", 17.75],
+          ["total", 20.79]
+        ],
+        "combustibility": 6.33,
+        "nonuniqueColour": 13.63,
+        "predictionA": [10.95, 12.6],
+        "predictionB": [13.71, 15.85],
+        "reveal": 17.73
+      },
+      "en": {
+        "waterToIron": [12, 15.8],
+        "productToOutlet": [15.8, 18.4],
+        "firstO": [10.1, 13.8],
+        "otherO": [14.1, 17],
+        "hydrogenPairing": [17.15, 20.1],
+        "massTransfer": [4, 7.8],
+        "massFocus": [
+          ["solid", 7.8],
+          ["gas", 15.83],
+          ["water", 20.47],
+          ["total", 23.39]
+        ],
+        "combustibility": 6.63,
+        "nonuniqueColour": 14.37,
+        "predictionA": [12.11, 14.35],
+        "predictionB": [16.39, 18.65],
+        "reveal": 20.37
+      }
+    },
+    "limitations": [
+      "Word timestamps and paused state inspection are not subjective listening.",
+      "Complete static normal-rate playback is assigned to root."
+    ]
+  },
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-9-review.json",
+    "manual": "artifacts/teaching-principles/batch-9-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

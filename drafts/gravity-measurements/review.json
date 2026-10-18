@@ -1,0 +1,242 @@
+{
+  "status": "product-frozen-after-measured-director-review; root final static/full-playback/global verification pending",
+  "updatedAt": "2026-10-18T17:42:20.597Z",
+  "owner": "/root/teaching_subject_fit",
+  "scope": "Batch 9 author evidence, independent review and pending acceptance kept separate",
+  "sourceHashes": {
+    "src/components/experiments/GravityMeasurements.tsx": "bf110b3127373a2fab8317784358b4e18d26aaec86bf1198ff900e0e1e4829cb",
+    "src/components/experiments/GravityMeasurements.exploration.test.tsx": "8d7fddf060b7af46a73ab2877b0232d03596dc9d348d0e8275ec135193872022",
+    "src/models/gravity-measurements.ts": "da0bf57d492ecbd736f7a1e32d22d203adf960c1f046a5e1dcb8dbbded2b54ef",
+    "src/models/gravity-measurements.test.ts": "68abfa4be002f569828ce5e96d9e9f94f55673df21b8c4b949e94422493be248",
+    "src/models/gravity-measurements-records.json": "b1ebb039f5e09e423dbd61a418908cf5762d9ad2c6d98b1009e0376910b0f07f",
+    "src/styles/gravity-measurements.css": "61c5f1d71258b1bf1942faf59541fad95298ef0ec6d7be4ae1dc4ced659add36",
+    "src/components/covers/GravityMeasurementsCover.astro": "1f5b943d8bd54d19e0a82aad29f156f15843eed89dd39f4d1d38207deb21c0d7",
+    "src/content/gravity-measurements.mdx": "c3384bd6e734b3f71f81923f405f165af9c2c8bb4ecccf1e3dd5828133d484d1",
+    "src/content/en/gravity-measurements.mdx": "5af3152c0ef48b7eff880f302dcd3b1bee349a624074d57a03ccf3f612844eda"
+  },
+  "science": {
+    "sources": "artifacts/teaching-principles/physics-next-gravity/gravity-measurements/sources.json",
+    "boundaries": "artifacts/teaching-principles/physics-next-gravity/gravity-measurements/scientific-boundaries.json",
+    "fixedData": "2459 original PDF Fig.5 marker centres, separate two published fitted equilibrium lines; no local refit or raw DAQ claim",
+    "inference": "Modern nearest-pair constant-torque inverse is distinct from four-pair demonstration. Compiled lunar references do not change with predicted distance law.",
+    "sourceCorrection": [
+      {
+        "id": "required-2-cavendish",
+        "rawEntry": {
+          "id": "required-2-cavendish",
+          "book": {
+            "id": "required-2",
+            "order": 2,
+            "title": {
+              "zh": "必修第二册",
+              "en": "Compulsory Book 2"
+            }
+          },
+          "chapter": {
+            "id": "chapter-7",
+            "order": 7,
+            "title": {
+              "zh": "万有引力与宇宙航行",
+              "en": "Gravitation and spaceflight"
+            }
+          },
+          "section": {
+            "id": "section-7.2",
+            "order": 2,
+            "title": {
+              "zh": "万有引力定律",
+              "en": "Universal gravitation"
+            }
+          },
+          "order": 54,
+          "page": 52,
+          "name": {
+            "zh": "引力常量的测量：卡文迪什扭秤实验",
+            "en": "Measure G with a Cavendish torsion balance"
+          },
+          "textbookTitle": {
+            "zh": "引力常量的测量",
+            "en": "Measure G with a Cavendish torsion balance"
+          },
+          "titleIsOriginal": true,
+          "goal": {
+            "zh": "以大球对小球引力扭转细丝，再用镜面光杠杆测小转角。",
+            "en": "Use attraction between large and small masses to twist a fibre and read the angle with an optical lever."
+          },
+          "kind": {
+            "zh": "历史实验",
+            "en": "Historical experiment"
+          },
+          "existingSceneSlug": null
+        },
+        "rawSourcePath": "src/data/curriculum-source.json",
+        "oldPage": 52,
+        "proposedDisplayedPage": 53,
+        "reason": "P52 is the preceding 引力常量 introduction; the titled 拓展学习 引力常量的测量 and Fig7.2-3 are printedP53. This is a source-location correction, not an experiment-name or order change.",
+        "evidence": {
+          "text": "sources/textbook-chapter7-context.txt lines539–596",
+          "precedingPage": "sources/textbook-p52.png",
+          "formalColumnPage": "sources/textbook-p53.png",
+          "pdfPagesOneBased": [57, 58],
+          "printPages": [52, 53]
+        },
+        "status": "Root independently checked printedP53, added verifiedPageCorrections and ordering regression; original raw source remainsP52.",
+        "evidenceRoot": "artifacts/teaching-principles/physics-next-gravity/gravity-measurements"
+      }
+    ]
+  },
+  "automated": {
+    "modelAndComponent": {
+      "command": "pnpm exec vitest run src/models/gravity-measurements.test.ts src/components/experiments/GravityMeasurements.exploration.test.tsx",
+      "passed": 24
+    },
+    "strictTypecheck": {
+      "command": "pnpm exec tsc --noEmit -p artifacts/teaching-principles/gravity-measurements-implementation/tsconfig.json",
+      "status": "passed"
+    },
+    "preparationBenchmarks": {
+      "passed": 32,
+      "report": "artifacts/teaching-principles/physics-next-gravity/gravity-measurements/independent-benchmarks.json"
+    }
+  },
+  "independentReviews": [
+    {
+      "report": "artifacts/teaching-principles/batch-9-cross-review/chemistry-review-of-cavendish-preparation.json",
+      "scope": "Equation 8, geometric correction and calibration boundary"
+    },
+    {
+      "report": "artifacts/teaching-principles/batch-9-cross-review/chemistry-review-of-gravity-implementation.json",
+      "passed": 62,
+      "scope": "Actual function scientific probes; no visual or statistical reanalysis claim",
+      "physicsPrefixUnchangedSHA256": "1aa0606b56f805098ab95bd7915be0e576219f0a21e42263fe2daaeb8fe138e3",
+      "laterChanges": "Only measured director appended after the independently reviewed physical model; exact physics-prefix hash matches peer hash. Timing tested separately."
+    },
+    {
+      "report": "artifacts/teaching-principles/physics-next-gravity/gravity-measurements/vector-preflight/feasibility-review.json",
+      "scope": "Independent original-PDF marker extraction and actual rendered figure inspection"
+    }
+  ],
+  "browser": {
+    "mainMatrix": {
+      "mainMatrix": "artifacts/teaching-principles/gravity-measurements-review-03/report.json",
+      "count": 64,
+      "finalAffected": "artifacts/teaching-principles/gravity-measurements-review-05/report.json"
+    },
+    "affectedFrames": [
+      "artifacts/teaching-principles/gravity-measurements-review-04/report.json",
+      "artifacts/teaching-principles/gravity-measurements-review-05/report.json"
+    ],
+    "controls": {
+      "report": "artifacts/teaching-principles/gravity-measurements-controls-measured/report.json",
+      "checks": 122,
+      "pages": 6
+    },
+    "covers": "artifacts/teaching-principles/gravity-measurements-covers-02/report.json",
+    "wholePlayer": {
+      "viewport": "320×568 CSS px browser emulation",
+      "maxBottom": 563.96875,
+      "includes": "Artwork, longest actual integrated captions, seek/transport and chapter bar. Final EN published-record shot wraps to two header lines and remains fully visible at 320×568.",
+      "notPhysicalDevice": true
+    },
+    "personallyOpened": [
+      "artifacts/teaching-principles/gravity-measurements-review-03/en-320-c0-40.png",
+      "artifacts/teaching-principles/gravity-measurements-review-03/en-320-c2-30.png",
+      "artifacts/teaching-principles/gravity-measurements-review-03/en-320-c2-75.png",
+      "artifacts/teaching-principles/gravity-measurements-review-03/en-320-c3-25.png",
+      "artifacts/teaching-principles/gravity-measurements-review-03/en-320-c3-68.png",
+      "artifacts/teaching-principles/gravity-measurements-review-03/en-320-c3-93.png",
+      "artifacts/teaching-principles/gravity-measurements-review-04/zh-320-c1-57.png",
+      "artifacts/teaching-principles/gravity-measurements-review-04/en-1100-c2-30.png",
+      "artifacts/teaching-principles/gravity-measurements-review-04/zh-320-c3-93.png",
+      "artifacts/teaching-principles/gravity-measurements-review-05/en-320-c1-57.png",
+      "artifacts/teaching-principles/gravity-measurements-controls-02/en-required-2-cavendish-optical.png",
+      "artifacts/teaching-principles/gravity-measurements-controls-02/zh-required-2-cavendish-published.png",
+      "artifacts/teaching-principles/gravity-measurements-controls-02/en-required-2-newton-cannon-orbit.png",
+      "artifacts/teaching-principles/gravity-measurements-covers-02/cover.png"
+    ],
+    "measuredFrames": {
+      "report": "artifacts/teaching-principles/gravity-measurements-measured-review/report.json",
+      "count": 54,
+      "passed": true,
+      "audio": "off",
+      "personallyOpened": [
+        "artifacts/teaching-principles/gravity-measurements-measured-review/en-320-c3-t28.png",
+        "artifacts/teaching-principles/gravity-measurements-measured-review/en-320-c3-t30.png",
+        "artifacts/teaching-principles/gravity-measurements-measured-review/en-320-c3-t40-4.png",
+        "artifacts/teaching-principles/gravity-measurements-measured-review/en-320-c2-t16-43.png",
+        "artifacts/teaching-principles/gravity-measurements-measured-review/en-320-c2-t16-47.png",
+        "artifacts/teaching-principles/gravity-measurements-measured-review/zh-320-c1-t14.png",
+        "artifacts/teaching-principles/gravity-measurements-measured-review/en-320-c3-t6.png"
+      ]
+    }
+  },
+  "correctedDuringAuthorReview": [
+    {
+      "failure": "Original full player exceeded 568px and time-axis label exceeded SVG bounds",
+      "preserved": "artifacts/teaching-principles/gravity-measurements-review-01/report.json",
+      "fix": "Local short-screen anchor margin, remove redundant extra footer, keep clock units inside SVG; review03 main matrix passed with actual integrated captions."
+    },
+    {
+      "failure": "Projected sphere layout compressed separation and force-view mirror did not yet share actual mirror orientation",
+      "fix": "Same SI centre/radius scale for force view, opposite restoring direction and mirror orientation from same theta, positive surface-clearance tests; actual review03/04 frames."
+    },
+    {
+      "failure": "First clearance assertion required an unjustified 3cm margin and failed at a positive 2.64cm gap",
+      "fix": "Assert the physical nonintersection requirement instead; no simulation geometry altered to satisfy an arbitrary margin."
+    },
+    {
+      "failure": "Transparent raster background produced visible banding when inspected in isolation",
+      "preserved": "artifacts/teaching-principles/gravity-measurements-covers/cover.png",
+      "fix": "Scene-owned opaque cover backdrop; covers02 inspected."
+    }
+  ],
+  "retained": {
+    "chapterIds": [
+      "moon-acceleration",
+      "moon-comparison",
+      "torsion-attract",
+      "torsion-reverse",
+      "cannon-fall",
+      "cannon-orbit"
+    ],
+    "spokenByteIdentical": [4, 5],
+    "cannonModel": "cannonOrbit central-force body retained"
+  },
+  "sharedHandoff": {
+    "tests": "Root migrated actual optical geometry and reported 25 related tests passing; this author did not edit shared tests.",
+    "sourceCorrection": "Root independently verified P53 and added tracked presentation correction while preserving raw P52.",
+    "noSharedFilesEdited": true
+  },
+  "pending": [
+    "Root final static visual/full normal playback review",
+    "Full pnpm verify and build:preview",
+    "No subjective listening or physical-device performance evidence claimed"
+  ],
+  "measuredDirector": {
+    "artifact": "artifacts/teaching-principles/gravity-measurements-implementation/measured-cuts.json",
+    "cues": 12,
+    "wordTimes": "Root independent ASR provided all twelve files; no language/reference hints.",
+    "duration": 236,
+    "audio": {
+      "zh": "/narration/gravity-measurements-zh-3276aa593d37.mp3",
+      "en": "/narration/gravity-measurements-en-b51e9b467cc5.mp3"
+    },
+    "numericASR": {
+      "first": "36%",
+      "second": "3600分之一",
+      "samePCM": true,
+      "evidence": "artifacts/teaching-principles/batch-9-gravity-second-asr/",
+      "interpretation": "Independent full large-v3 correctly reconstructs fraction; retain both results. No source-text-only pronunciation claim, no subjective listening claim, no re-recording performed."
+    }
+  },
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-9-review.json",
+    "manual": "artifacts/teaching-principles/batch-9-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "sceneSlug": "bio-protein-machines",
+  "status": "measured-director-calibrated-voice-frozen",
+  "schema": "Root canonical teachingProfiles/narration.cues/translations",
+  "plannedDurationSeconds": 132,
+  "topicSuggestion": {
+    "name": {
+      "zh": "蛋白质的连接与功能",
+      "en": "Protein connections and function"
+    },
+    "title": {
+      "zh": "51个残基，为什么还不能证明它能工作？",
+      "en": "Why are 51 residues not enough to prove function?"
+    },
+    "question": {
+      "zh": "数量和外形都对了，蛋白质就一定能工作吗？",
+      "en": "Do matching counts and appearance establish a working protein?"
+    },
+    "description": {
+      "zh": "用牛胰岛素追踪肽键、两条链与三处二硫键，再把结构参照与有来源的功能证据分开检验。",
+      "en": "Track insulin’s peptide bonds, two chains and three disulfides, then separate a structural reference from sourced functional evidence."
+    }
+  },
+  "teachingProfiles": {
+    "bio-required-1-mechanism-01": {
+      "sceneSlug": "bio-protein-machines",
+      "question": {
+        "zh": "51个氨基酸残基，为什么只有49个肽键？",
+        "en": "Why do 51 amino-acid residues have only 49 peptide bonds?"
+      },
+      "lead": {
+        "zh": "追踪形成一处肽键的原子，再分别数完A、B两条开放链，区分肽键与二硫键。",
+        "en": "Track the atoms in one peptide connection, count the two open chains, and distinguish peptide bonds from disulfides."
+      },
+      "principle": {
+        "zh": "未成环的线性肽链中，肽键数等于残基数减链数；二硫键连接侧链，不能算成额外肽键。连接关系还限制空间结构。",
+        "en": "For open linear peptide chains, peptide-bond count equals residues minus chains. Disulfides join side chains and do not add peptide bonds; connectivity also constrains spatial structure."
+      },
+      "transfer": {
+        "question": {
+          "zh": "只切断牛胰岛素的三处二硫键，且不切肽键，残基数与肽键数会改变吗？",
+          "en": "If only the three disulfides are cut, with no peptide bonds cut, do residue and peptide-bond counts change?"
+        },
+        "explanation": {
+          "zh": "仍是51个残基、两条肽链、49个肽键；变的是三处侧链连接及空间约束。二硫键的氧化还原有自己的氢与电子账本，不额外产生三份“脱水缩合水”。这个数量结论不等于功能仍不变。",
+          "en": "There are still 51 residues, two peptide chains and 49 peptide bonds. Three side-chain connections and their spatial constraints have changed. Disulfide redox chemistry has a separate hydrogen/electron account; it does not add three condensation waters. Unchanged counts do not imply unchanged function."
+        }
+      }
+    },
+    "bio-required-1-033-1": {
+      "sceneSlug": "bio-protein-machines",
+      "question": {
+        "zh": "拼出相同数量的残基，怎样知道真的得到了有活性的胰岛素？",
+        "en": "How can we know that assembled residues make active insulin?"
+      },
+      "lead": {
+        "zh": "从两条链与三处连接出发，分清现代结构参照与1965年的独立功能证据。",
+        "en": "Start with two chains and three links, then distinguish a modern structural reference from independent functional evidence about the 1965 synthesis."
+      },
+      "principle": {
+        "zh": "残基数、序列和连接回答结构问题；有来源的生物测定另行检验功能。外形相似或模型重排不能代替活性证据。",
+        "en": "Counts, sequence and connections address structure; a sourced biological assay independently tests function. Similar appearance or a model rearrangement cannot establish activity."
+      },
+      "transfer": {
+        "question": {
+          "zh": "一个候选仍有51个残基和49个肽键，但交换了两个不同残基的位置，能直接继承天然胰岛素的活性结论吗？",
+          "en": "Can a candidate with 51 residues and 49 peptide bonds inherit the natural insulin result after two different residues exchange positions?"
+        },
+        "explanation": {
+          "zh": "不能。总数保持而序列已改变，既不能凭此宣布活性相同，也不能仅凭动画宣布活性为零。应核对结构，并对这个新样品独立做功能比较；影片中该候选始终标为待测。",
+          "en": "No. The count is unchanged but the sequence differs. The animation cannot establish either equal activity or zero activity. The new sample needs structural checking and an independent functional comparison; its activity remains marked unmeasured."
+        }
+      }
+    }
+  },
+  "narration": {
+    "cues": [
+      {
+        "id": "condense",
+        "title": "连成一条链，少了什么？",
+        "titleEn": "What changes when a chain forms?",
+        "caption": "同一组原子，形成肽键与一份水。",
+        "captionEn": "Same atoms: a peptide bond and water.",
+        "seconds": 32,
+        "zh": "把氨基酸放在一起，就等于蛋白质了吗？先只看一个连接。跟住羧基上的氧和氢，再看另一个氨基提供的氢：它们合成一份水，碳与氮之间留下新的肽键。原子没有凭空消失。这是相对自由氨基酸的净组成示意，不是细胞里真正的合成步骤。把这个连接重复下去，一条含五个残基的开放肽链，会有几个肽键？数一数相邻的接头，只有四个。",
+        "en": "Does putting amino acids together already make a protein? Watch just one connection. Follow the oxygen and hydrogen from the carboxyl group, then a hydrogen from the other amino group. They account for water, while a new peptide bond joins carbon to nitrogen. No atoms disappear. This is net composition relative to free amino acids, not the actual cellular synthesis pathway. Now count the joins in an open chain of five residues. There are four, because each join connects two neighbors."
+      },
+      {
+        "id": "chains",
+        "title": "51个残基，为什么是49个肽键？",
+        "titleEn": "Why do 51 residues make 49 peptide bonds?",
+        "caption": "两条开放链：20＋29＝49个肽键。",
+        "captionEn": "Two open chains: 20 + 29 = 49 joins.",
+        "seconds": 28,
+        "zh": "现在看牛胰岛素的两条链。A链二十一个残基，从头走到尾，经过二十个肽键；B链三十个残基，经过二十九个。加起来是五十一个残基，四十九个肽键。盯住标出的两个残基：调换它们的位置，总数没有变，排列顺序却变了。可见，数目相同只能说明账目相同，还不能说明是同一种蛋白质，更不能直接给它盖上“有活性”的章。",
+        "en": "Bovine insulin has two chains. Follow chain A: twenty-one residues and twenty peptide bonds. Chain B has thirty residues and twenty-nine bonds. Together, that is fifty-one residues and forty-nine peptide bonds. Now track the two highlighted residues as their positions are exchanged. The count stays the same, but the sequence changes. Matching the count does not establish the same protein, and it certainly cannot establish biological activity."
+      },
+      {
+        "id": "connect",
+        "title": "把两条链连起来的，不全是肽键",
+        "titleEn": "Different bonds constrain the same chains",
+        "caption": "三处二硫键，肽键仍是49个。",
+        "captionEn": "Three disulfides; still 49 peptide bonds.",
+        "seconds": 34,
+        "zh": "回到天然牛胰岛素的连接方式。跟住六个半胱氨酸：一处二硫键连在A链内部，另外两处跨接A、B两链。放大后，真正相连的是侧链上的两个硫原子。它们没有把两条肽链的端点接成一条长链，所以肽键仍是四十九个。画面收回到后来测得的结构参照；重排只为追踪位置，不是折叠过程的录像。反过来，只去掉二硫键而不切肽键，链内连接数不变，空间约束却少了。功能是否也不变，要另找证据。",
+        "en": "Return to the connections in native bovine insulin. Follow six cysteines. One disulfide lies within chain A; two others link chains A and B. Close up, the joined atoms are sulfur atoms on the side chains. These links do not join the chain ends into one longer peptide, so there are still forty-nine peptide bonds. The view settles into a later measured structure. This rearrangement tracks positions; it is not a film of folding. Remove only the disulfides and the peptide count stays unchanged, but spatial constraints are lost. Does function stay unchanged too? That needs separate evidence."
+      },
+      {
+        "id": "verify",
+        "title": "它真的能工作吗？",
+        "titleEn": "Does the product actually work?",
+        "caption": "结构与功能，需要各自的证据。",
+        "captionEn": "Structure and function need separate evidence.",
+        "seconds": 38,
+        "zh": "把结构模型放在一旁，看真正的功能比较。研究者邹承鲁记述：一九六五年，纯化的全合成牛胰岛素经过小鼠生物测定，表现出与天然胰岛素相同的活性。这里按他的记述重构对照关系，不是原始数值记录。天然参照与合成样品各有自己的结果；结果不是旋转模型算出来的。再看刚才那个总数相同、顺序改变的候选：能把天然样品的结论直接复制给它吗？不能。它的活性仍是待测，必须用独立测定与参照比较。",
+        "en": "Set the structural model aside and look at a functional comparison. Cheng-Lu Tsou recalled that, in 1965, purified, fully synthetic bovine insulin showed the same activity as natural insulin in a mouse bioassay. This reconstructs the comparison from his account; it is not an original numerical record. The natural reference and synthetic sample each have their own reported result. Rotating a molecular model did not calculate those results. Return to the candidate with the same count but a changed sequence. Can we simply copy the natural sample’s result onto it? No. Its activity remains unmeasured and needs its own comparison."
+      }
+    ]
+  },
+  "translations": {
+    "净组成示意": "Net-composition model",
+    "开放肽链": "Open peptide chain",
+    "同一组原子": "Same atoms",
+    "残基总数": "Residue count",
+    "链内肽键": "Peptide bonds",
+    "肽链数": "Peptide chains",
+    "只改排列": "Sequence swap",
+    "还原原序列": "Restore sequence",
+    "顺序改变，活性待测": "Sequence changed; activity unmeasured",
+    "骨架参照": "Backbone reference",
+    "侧链上的硫": "Side-chain sulfur",
+    "真实硫原子位置": "Measured sulfur positions",
+    "一处链内连接": "One within-chain link",
+    "两处跨链连接": "Two between-chain links",
+    "二硫键不是肽键": "Disulfide ≠ peptide bond",
+    "只移除二硫键": "Remove disulfides only",
+    "连接约束减少": "Fewer connection constraints",
+    "来源：PDB 2A3G": "Source: PDB 2A3G",
+    "现代结构参照": "Modern structural reference",
+    "历史功能比较": "Historical functional comparison",
+    "天然参照": "Natural reference",
+    "纯化全合成产物": "Purified synthetic",
+    "独立生物测定": "Independent bioassay",
+    "活性相同：研究者记述": "Same activity: researcher account",
+    "定性重构，非原始数值": "Qualitative; no raw values",
+    "新候选": "New candidate",
+    "活性待测": "Activity unmeasured",
+    "结构结果": "Structure result",
+    "功能结果": "Functional result",
+    "不能复制结论": "Result cannot be copied",
+    "先看连接": "See connections",
+    "查看功能证据": "View assay evidence",
+    "几何重排，不是折叠动力学": "Geometric rearrangement, not folding dynamics",
+    "显示二硫键": "Show disulfides",
+    "隐藏二硫键": "Hide disulfides",
+    "跟住一个氧和两个氢": "Follow one O and two H atoms",
+    "五个残基，四个相邻接头": "Five residues; four adjacent joins",
+    "位置": "Position",
+    "六个半胱氨酸，三处二硫键": "Six cysteines; three disulfides",
+    "结构参照": "Structure reference",
+    "牛胰岛素两条链的实测结构参照": "Measured reference for two bovine insulin chains",
+    "小鼠生物测定": "Mouse bioassay",
+    "报告有活性": "Reported active",
+    "独立测定": "Separate assay",
+    "新序列候选": "New sequence candidate",
+    "活性相同": "Same activity",
+    "研究者记述": "Participant account",
+    "两份样品，分别取证": "Two samples, separate evidence",
+    "观察主题": "View",
+    "原子账本": "Atoms",
+    "两条链": "Two chains",
+    "侧链连接": "Side-chain links",
+    "功能证据": "Function",
+    "净组成进度": "Net-composition progress",
+    "返回完整结构": "Whole structure",
+    "放大硫原子": "Sulfur close-up",
+    "恢复二硫连接": "Restore disulfides",
+    "骨架参照；移除连接不模拟解折叠": "Backbone reference; removing links does not simulate unfolding",
+    "回看历史结果": "Historical result",
+    "换成新序列候选": "New sequence candidate"
+  },
+  "curriculumRecommendations": [
+    {
+      "entryId": "bio-required-1-mechanism-01",
+      "book": "required-1",
+      "bookOrder": 1,
+      "chapterId": "chapter-2",
+      "chapterOrder": 2,
+      "chapter": {
+        "zh": "组成细胞的分子",
+        "en": "Molecules of cells"
+      },
+      "sectionId": "section-2-4",
+      "sectionOrder": 4,
+      "section": {
+        "zh": "蛋白质是生命活动的主要承担者",
+        "en": "Proteins are the main performers of life functions"
+      },
+      "withinSectionOrder": 5,
+      "printedPage": 31,
+      "pdfPage": 40,
+      "textbookTitle": {
+        "zh": "氨基酸脱水缩合与蛋白质空间结构",
+        "en": "Amino-acid condensation and protein spatial structure"
+      },
+      "titleIsOriginal": false,
+      "originalContext": "P30 Fig2-10/11，P31 Fig2-12与思考·讨论“氨基酸怎样构成蛋白质”；前后P28–33完整读取。",
+      "sceneVariant": "condensation",
+      "chapterIds": ["condense", "chains", "connect"],
+      "proposedChapterIds": ["condense", "chains", "connect"],
+      "windowChange": false,
+      "closure": "Visible O/H/C/N bookkeeping -> 21/30 open-chain graph -> independent disulfide topology -> remove only disulfides and predict unchanged peptide count, changed constraints."
+    },
+    {
+      "entryId": "bio-required-1-033-1",
+      "book": "required-1",
+      "bookOrder": 1,
+      "chapterId": "chapter-2",
+      "chapterOrder": 2,
+      "sectionId": "section-2-4",
+      "sectionOrder": 4,
+      "withinSectionOrder": 6,
+      "printedPage": 33,
+      "pdfPage": 42,
+      "textbookTitle": {
+        "zh": "人工合成结晶牛胰岛素",
+        "en": "Artificial synthesis of crystalline bovine insulin"
+      },
+      "titleIsOriginal": false,
+      "originalHeading": "生物科学史话·世界上第一个人工合成蛋白质的诞生",
+      "sceneVariant": "insulin",
+      "chapterIds": ["chains", "connect", "verify"],
+      "proposedChapterIds": ["chains", "connect", "verify"],
+      "windowChange": false,
+      "closure": "Two correctly specified chains -> specific connections in a modern structural reference -> a separate historical functional comparison -> same-count candidate with unknown activity, followed by the test that would decide it."
+    }
+  ],
+  "statusNotes": [
+    "Four frozen bilingual cues retain their original wording; root produced a 147-second common timeline without speeding up speech.",
+    "Internal chapterTime editing now follows independent word timing for each locale, including the 0.45-second cue lead.",
+    "Qualitative 1965 evidence comes from a named participant account; no invented quantitative curve."
+  ],
+  "director": {
+    "timing": "Measured chapterTime seconds, inclusive of 0.45-second cue lead; language-specific internal cuts preserve identical scientific states.",
+    "chapters": [
+      {
+        "id": "condense",
+        "seconds": 33,
+        "beats": [
+          {
+            "from": 0,
+            "to": 9.8,
+            "shot": "Hold the local net-composition atoms while ZH identifies carboxyl O/H and the other amino H; EN holds until11.7."
+          },
+          {
+            "from": 9.8,
+            "to": 14,
+            "shot": "ZH persistent atoms account for water and C–N; EN11.7–16.1."
+          },
+          {
+            "from": 14,
+            "to": 22.6,
+            "shot": "Hold completed atom ledger and net-composition limitation; EN16.1–24.3."
+          },
+          {
+            "from": 22.6,
+            "to": 33,
+            "shot": "Five persistent residues. ZH counts joins28.6–30.8 after asking; EN switches24.3 and counts24.6–28.3."
+          }
+        ],
+        "newEvidence": "A countable local atom/bond event and visible endpoint reasoning.",
+        "phone": "Single chemistry close-up in300px area then replace it with a five-residue count; no parallel full-chain diagram."
+      },
+      {
+        "id": "chains",
+        "seconds": 31.5,
+        "beats": [
+          {
+            "from": 0,
+            "to": 6.8,
+            "shot": "A joins sweep3–6.8ZH,2.4–6.5EN to20; B stays0."
+          },
+          {
+            "from": 6.8,
+            "to": 10.4,
+            "shot": "B joins sweep7.7–10.4ZH,7.1–10.2EN to29; A stays20."
+          },
+          {
+            "from": 10.4,
+            "to": 16.9,
+            "shot": "Hold independent20+29 total49; highlighted identities remain in native positions."
+          },
+          {
+            "from": 16.9,
+            "to": 31.5,
+            "shot": "Swap same A2/A3 identities16.9–18.3ZH or17.6–19.2EN; preserve51/49 and unknown activity."
+          }
+        ],
+        "newEvidence": "Independent adjacency graph generates20+29; conserved multiset does not imply conserved sequence.",
+        "phone": "Stacked compact A/B sequence strips with large endpoint labels; enlarged two-residue inset for swap rather than microscopic letter labels."
+      },
+      {
+        "id": "connect",
+        "seconds": 40.5,
+        "beats": [
+          {
+            "from": 0,
+            "to": 7.8,
+            "shot": "Within-A pair remains highlighted until words reach cross-chain links; ENuntil8.4."
+          },
+          {
+            "from": 7.8,
+            "to": 10.9,
+            "shot": "First cross-pair7.8–9.1ZH/8.4–9.5EN, second until sulfur cut10.9ZH/10.8EN."
+          },
+          {
+            "from": 10.9,
+            "to": 22.5,
+            "shot": "Actual A7/B7CA–CB–SG close-up and49-peptide distinction; EN10.8–21.3."
+          },
+          {
+            "from": 22.5,
+            "to": 29,
+            "shot": "Continuous camera pullback22.5–25.1ZH/21.3–24EN into unchanged modern structure; hold during non-folding limitation."
+          },
+          {
+            "from": 29,
+            "to": 40.5,
+            "shot": "Remove only SS when spoken:31ZH/29.2EN. Keep49 backbone joins and ask for separate function evidence."
+          }
+        ],
+        "newEvidence": "Actual sulfur-side-chain connectivity versus backbone adjacency; removal counterexample separates connectivity types.",
+        "phone": "One full native view or one sulfur close-up at a time; two or three anchored labels max; chemistry text>=16px after scaling."
+      },
+      {
+        "id": "verify",
+        "seconds": 42,
+        "beats": [
+          {
+            "from": 0,
+            "to": 11,
+            "shot": "Separate named historical sample identities, results unrevealed during study introduction."
+          },
+          {
+            "from": 11,
+            "to": 14,
+            "shot": "Reveal independent reference then synthetic reported result at11.6/12.8ZH or11/12EN, with spoken same-activity claim."
+          },
+          {
+            "from": 14,
+            "to": 26.5,
+            "shot": "Hold fixed source-supported comparison through qualitative-account and independent-evidence limitations."
+          },
+          {
+            "from": 26.5,
+            "to": 42,
+            "shot": "Return unknown candidate at26.5ZH/28.4EN. Hold through final request for its own independent test."
+          }
+        ],
+        "newEvidence": "A sourced biological endpoint replaces the prior model-only claim.",
+        "phone": "Two sample tracks stacked; active causal view occupies mainarea, structuralreferenceonlysmallnontextshape; source shortlabel below, fullcitationinarticle."
+      }
+    ]
+  },
+  "measuredTimeline": {
+    "totalSeconds": 147,
+    "chapterStarts": [0, 33, 64.5, 105],
+    "chapterSeconds": [33, 31.5, 40.5, 42],
+    "audio": {
+      "zh": "/narration/bio-protein-machines-zh-7e5bd06826fc.mp3",
+      "en": "/narration/bio-protein-machines-en-6c8aa6f6960c.mp3"
+    },
+    "timingEvidence": "artifacts/teaching-principles/batch-9-timed-speech/bio-protein-machines-{zh,en}-{0..3}.json",
+    "scope": "Independent ASR word timing; not subjective listening. Frozen cue seconds above retain planning provenance; measuredTimeline controls the actual film."
+  }
+}

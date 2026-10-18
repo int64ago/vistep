@@ -1383,8 +1383,22 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['铁与水蒸气的反应', '铁粉', '水蒸气', '四氧化三铁', '氢气'],
-      en: ['Iron reacting with steam', 'iron powder', 'steam', 'magnetite', 'hydrogen'],
+      zh: [
+        '铁与水蒸气的反应',
+        '铁粉',
+        '水蒸气',
+        '四氧化三铁',
+        '氢气',
+        '气体离开，固体为什么会增重？',
+      ],
+      en: [
+        'Iron reacting with steam',
+        'iron powder',
+        'steam',
+        'magnetite',
+        'hydrogen',
+        'Why can the solid gain mass as gas leaves?',
+      ],
     },
   },
   'bio-plant-growth-regulators': {
@@ -1743,8 +1757,21 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['从肽键到胰岛素', '胰岛素', '肽键', '二硫键'],
-      en: ['From peptide bonds to insulin', 'cell biology', 'biology experiments'],
+      zh: [
+        '从肽键到胰岛素',
+        '胰岛素',
+        '肽键',
+        '二硫键',
+        '蛋白质的连接与功能',
+        '数量和外形都对了，蛋白质就一定能工作吗？',
+      ],
+      en: [
+        'From peptide bonds to insulin',
+        'cell biology',
+        'biology experiments',
+        'Protein connections and function',
+        'Do matching counts and appearance establish a working protein?',
+      ],
     },
   },
   'chem-sodium-reactions': {
@@ -2598,11 +2625,19 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'mechanisms',
     minAge: 14,
     keywords: {
-      zh: ['从月地检验到扭秤', '微弱的引力，怎样成为可测量的量？', '近代物理实验'],
+      zh: [
+        '从月地检验到扭秤',
+        '微弱的引力，怎样成为可测量的量？',
+        '近代物理实验',
+        '苹果、月球和一束会移动的光',
+        '苹果会落地，月球为什么一直绕行？',
+      ],
       en: [
         'From the Moon–Earth test to the torsion balance',
         'How can weak gravitation become measurable?',
         'modern physics experiment',
+        'An apple, the Moon and a moving spot of light',
+        'Why does an apple fall while the Moon keeps orbiting?',
       ],
     },
   },

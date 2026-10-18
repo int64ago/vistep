@@ -1,37 +1,89 @@
 ---
-import { insulinGeometry, disulfideEdges } from '../../models/bio-protein-machines';
+import {
+  insulinGeometry,
+  insulinSidechains,
+  disulfideEdges,
+} from '../../models/bio-protein-machines';
 const points = insulinGeometry(1, 25),
-  edges = disulfideEdges(1, 25);
+  sides = insulinSidechains(25),
+  edges = disulfideEdges(25);
+const line = (ps: { x: number; y: number }[]) =>
+  ps.map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`).join(' ');
 ---
 
-<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
-  ><g transform="translate(200 120) scale(7 -7)"
-    >{
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="152" cy="116" rx="125" ry="96" fill="#eef2e6"></ellipse>
+  <g transform="translate(148 119) scale(5.4 -5.4)">
+    {
       ['A', 'B'].map((chain) => (
         <path
-          d={points
-            .filter((p) => p.chain === chain)
-            .map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`)
-            .join(' ')}
+          d={line(points.filter((p) => p.chain === chain))}
           fill="none"
           stroke={chain === 'A' ? '#719b87' : '#aa8eae'}
-          stroke-width="1.5"
+          stroke-width="1.2"
+          stroke-linecap="round"
           stroke-linejoin="round"
+        />
+      ))
+    }
+    {
+      sides
+        .filter((p) => p.atom === 'CA')
+        .flatMap((a) =>
+          [
+            ['CA', 'CB'],
+            ['CB', 'SG'],
+          ].map(([f, z]) => (
+            <path
+              d={line([
+                sides.find((p) => p.id === a.chain + a.residue + '-' + f)!,
+                sides.find((p) => p.id === a.chain + a.residue + '-' + z)!,
+              ])}
+              fill="none"
+              stroke="#9e9d79"
+              stroke-width=".45"
+            />
+          )),
+        )
+    }
+    {edges.map((e) => <path d={line([e.from, e.to])} stroke="#bd923f" stroke-width=".8" />)}
+    {
+      sides
+        .filter((p) => p.atom === 'SG')
+        .map((p) => <circle cx={p.x} cy={p.y} r=".7" fill="#d5ae5c" />)
+    }
+  </g>
+  <path d="M272 77V169" stroke="#c4cfbe" stroke-width="1.5"></path>
+  {
+    [76, 130].map((y, i) => (
+      <g>
+        <rect
+          x="293"
+          y={y}
+          width="24"
+          height="34"
+          rx="7"
+          fill={i ? '#e4d9e8' : '#d7e5da'}
+          stroke={i ? '#b49bb8' : '#8cae96'}
+        />
+        <path
+          d={`M292 ${y + 3}H318`}
+          stroke={i ? '#a68bac' : '#759d84'}
+          stroke-width="5"
           stroke-linecap="round"
         />
-      ))
-    }{
-      edges.map((e) => (
         <path
-          d={`M${e.from.x} ${e.from.y}L${e.to.x} ${e.to.y}`}
-          stroke="#c7a15a"
-          stroke-width=".8"
+          d={`M332 ${y + 18}L338 ${y + 24}L349 ${y + 11}`}
+          fill="none"
+          stroke="#75937b"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
-      ))
-    }{
-      points
-        .filter((p) => p.name === 'CYS')
-        .map((p) => <circle cx={p.x} cy={p.y} r=".7" fill="#d3af63" />)
-    }</g
-  ></svg
->
+      </g>
+    ))
+  }
+  <text x="300" y="48" text-anchor="middle" fill="#587460" font-size="21" font-family="sans-serif"
+    >51 / 49</text
+  >
+</svg>

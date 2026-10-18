@@ -1,23 +1,67 @@
-<h2 id="understand">From a shared law to an experimental reading</h2>
+<h2 id="understand">Why does an apple fall while the Moon keeps orbiting?</h2>
 
-The Moon–Earth test compares independent acceleration estimates; a torsion balance converts laboratory attraction into a measurable angle; the cannon thought experiment connects falling with orbital motion.
+Gravity can turn velocity as well as change its magnitude. An orbiting Moon therefore needs an inward acceleration. To test whether the same distance law applies near Earth and at lunar distance, keep prediction separate from the orbital calculation.
 
-<h2 id="try">Swap masses and change launch speed</h2>
+Start with the textbook’s given surface free-fall reference, 9.8 m/s². An inverse-square law predicts about 0.002692 m/s² at lunar distance. Independently use the fixed reference distance 384400 km and sidereal period 27.3217 days: circular kinematics gives about 0.002723 m/s², without using G. The orbital inputs come from [NASA’s Moon Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html); the surface reference is not calculated from this simulation’s Earth mass.
 
-Change attractor mass or position and compare responses released from rest. Vary the cannon’s speed continuously. Paths stop on the surface rather than pass through Earth.
+The values are close, not identical. The view preserves their roughly 1.16% difference. A circular approximation, Earth’s own motion, solar perturbations and reference definitions limit this simple comparison. It supports a common gravitational law; it is neither a precision measurement nor a replay of Newton’s original observations.
 
-<h2 id="deeper">Model parameters</h2>
+<h2 id="try">Change a prediction without changing the evidence</h2>
+
+Select another distance exponent or hypothetical radius. Only the prediction changes; the lunar references stay fixed. Doubling distance from Earth’s centre gives one quarter of the acceleration under an inverse-square law.
+
+In the torsion balance, follow attraction, restoring torque, the attached mirror and one reflected ray. The mirror and beam use the same angle. The ruler detail is enlarged; the physical rotation is not. A symmetric swap starts another release from rest rather than pretending to simulate a continuous exchange.
+
+The published-record view preserves four runs of plotted laser-spot observations from a modern paper. Dashed horizontal lines represent published fitted equilibria, not additional observations. Mass and stiffness controls cannot regenerate this evidence.
+
+Finally, increase horizontal launch speed at the same altitude. The path changes from hitting Earth to missing its curved surface while inward acceleration continues. Orbit remains free fall.
+
+<h2 id="deeper">From a spot of light to G</h2>
 
 <details>
 
-<summary>Models and historical experiments</summary>
+<summary>The lunar calculation and its limits</summary>
 
-<div className="formula">a = GM/r²; aMoon = 4π²r/T²; Iθ″ + bθ′ + κθ = τgravity</div>
+<div className="formula">aPrediction = g(R/r)²; aOrbit = 4π²r/T²</div>
 
-Earth uses R=6.371×10⁶ m and GM=3.986004418×10¹⁴ m³/s². The Moon uses 60.3 Earth radii and 27.321661 days in a circular approximation. Falling distances use short-time local acceleration, not a radial lunar trajectory.
+Here g = 9.8 m/s² is the textbook’s given free-fall reference, not a value computed from assumed G and Earth mass. The compiled references are R = 6371 km, r = 384400 km and T = 27.3217 days. We have not independently reduced original telescope records.
 
-Each test mass is 0.73 kg, half-rod length 0.9 m, each attractor 158 kg, initial transverse separation 0.23 m, and κ=2.5×10⁻⁵ N·m/rad. The damping ratio is about 0.35. Four point-mass interactions and their actual moment arms drive midpoint integration of the torsional equation. Rod mass, air disturbances and density variations are omitted. The main angle is unamplified; the lower pointer is an enlarged readout. The suspension is shown functionally over the top view. Every swap restarts from rest. These parameters are illustrative.
+For a circular orbit, departure from the initial tangent is 2r sin²(πt/T), about 4.902 m after 60 seconds. The inverse-square local constant-acceleration prediction is at²/2, about 4.846 m. This is a local projection, not a straight radial fall. Body sizes, orbital distance and the enlarged local ruler use separately identified display scales.
 
-The cannon uses central gravity in vacuum at 300 km altitude, velocity Verlet with a 2-second step, up to 6000 seconds, and a surface boundary. The view rescales with orbital extent; Earth’s screen size does not indicate a physical radius change.
+</details>
+
+<details>
+
+<summary>Torque, reflection and calibration</summary>
+
+Each pairwise gravitational force contributes its actual moment arm. The fibre opposes rotation:
+
+<div className="formula">Iθ″ + cθ′ + κθ = τGravity(θ)</div>
+
+The illustrative apparatus uses 0.73 kg small spheres, a 0.9 m half-rod, default 158 kg attractors, 0.23 m initial transverse separation and κ = 2.5×10⁻⁵ N·m/rad. Sphere centres and radii derived from lead density share one display scale, with separated surfaces. This deliberately large teaching apparatus is neither the paper’s equipment nor the 1798 instrument. Rod and mirror angles are not enlarged.
+
+Vector reflection determines the outgoing ray from its incident direction and the mirror normal. A mirror rotation θ turns the reflected direction by 2θ. At screen distance L, the spot shifts by L tan(2θ). Opposite equilibria are separated by ΔS = 2L tan(2θ₀), giving θ₀ ≈ ΔS/(4L) for small angles. This separation is not the one-sided shift or the amplitude of one oscillation.
+
+</details>
+
+<details>
+
+<summary>What is inferred from the published records?</summary>
+
+[Andrews and Bobowski’s experiment](https://arxiv.org/abs/1812.07644) provides measured geometry and fitted estimates in Table 1: equilibrium separation 1.87±0.14 cm, angular frequency 0.0216111 rad/s and decay time 1068.6 s. Our markers come from the original PDF plot; they are not synthetic observations generated using an assumed G. Original acquisition files and a new local fit are outside this demonstration’s evidence.
+
+The paper uses a constant-torque approximation for the two nearest pairs. Its calibration κ/I = ω²+1/τ² and Equation 8 give G ≈ (6.5±0.5)×10⁻¹¹ N·m²/kg². Frequency, decay and displacement are published fitted estimates. In the linear approximation, a twice-stiff fibre halves the deflection while recalibration leaves the inferred attraction and G unchanged.
+
+That inverse calculation is distinct from the four-force demonstration. With the paper’s geometry, remote pairs oppose the near-pair torque by about 7.49%. A position-dependent full-force model also changes the relation between oscillation frequency and fibre stiffness through the gravitational gradient. It cannot silently use the same inverse formula. [PASCO’s official manual](https://cdn.pasco.com/product_document/Cavendish-Torsion-Balance-Manual-AP-8215A.pdf) discusses the remote-mass correction; its apparatus dimensions must not be substituted into this paper’s records.
+
+Cavendish’s 1798 paper targeted Earth’s mean density. Modern optical equipment, records and the formulation in terms of G are not his original measurements. [Original paper scan](https://archive.org/download/jstor-106988/106988.pdf)
+
+</details>
+
+<details>
+
+<summary>The retained orbital thought experiment</summary>
+
+A horizontal launch starts 300 km above a spherical, airless Earth. Central gravity is integrated by velocity Verlet with a 2-second step, for at most 6000 seconds, stopping at surface contact. The circular speed at this altitude is about 7.73 km/s. This is not a buildable mountain cannon or a complete launch plan. The camera rescales to orbital extent; Earth’s physical radius stays fixed.
 
 </details>

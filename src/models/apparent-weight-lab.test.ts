@@ -1,3 +1,4 @@
+import { apparentFilmTime } from './apparent-weight-lab';
 import { describe, it, expect } from 'vitest';
 import { apparentMotion, leakingBottle, squatKnee } from './apparent-weight-lab';
 describe('apparent weight apparatus', () => {
@@ -58,4 +59,30 @@ describe('apparent weight apparatus', () => {
       expect(d.x).toBeGreaterThan(0);
     }
   });
+});
+
+it('matches spoken direction and support-force claims while using the independent physical trajectory', () => {
+  for (const lang of ['zh', 'en'] as const) {
+    const early = apparentMotion('squat', apparentFilmTime(0, 5, lang));
+    const late = apparentMotion('squat', apparentFilmTime(0, 13, lang));
+    expect(early.v).toBeLessThan(0);
+    expect(early.normal).toBeLessThan(early.gravity);
+    expect(late.v).toBeLessThan(0);
+    expect(late.normal).toBeGreaterThan(late.gravity);
+    const rise = apparentMotion('squat', apparentFilmTime(1, lang === 'en' ? 13 : 14, lang));
+    const brake = apparentMotion('squat', apparentFilmTime(1, lang === 'en' ? 15 : 16, lang));
+    expect(rise.normal).toBeGreaterThan(rise.gravity);
+    expect(brake.normal).toBeLessThan(brake.gravity);
+    const down = apparentMotion('lift', apparentFilmTime(3, 8, lang), 60, -1);
+    expect(down.v).toBeLessThan(0);
+    expect(down.a).toBeGreaterThan(0);
+    expect(down.normal).toBeGreaterThan(down.gravity);
+    const held = leakingBottle(apparentFilmTime(4, 15, lang), false);
+    const fall = leakingBottle(apparentFilmTime(5, 10, lang), true);
+    expect(held.pressure).toBeGreaterThan(0);
+    expect(fall.pressure).toBe(0);
+    expect(fall.a).toBe(-9.8);
+    expect(fall.drops.length).toBeGreaterThan(0);
+    expect(fall.drops.every((d) => d.emitted < 0)).toBe(true);
+  }
 });

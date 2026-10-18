@@ -1,3 +1,4 @@
+import { elasticityFilmState } from './elasticity-lab';
 import { describe, it, expect } from 'vitest';
 import { springExtension, rubberResponse, rubberCycleLoss, springWire } from './elasticity-lab';
 describe('elasticity experiment constitutive models', () => {
@@ -42,4 +43,19 @@ describe('elasticity experiment constitutive models', () => {
       expect(p.at(-1)!.y).toBe(len);
     }
   });
+});
+
+it('keeps the natural-length reference before loading and predicts doubled extension without doubling length', () => {
+  for (const lang of ['zh', 'en'] as const) {
+    expect(elasticityFilmState(0, 4, lang).weights).toBe(0);
+    expect(elasticityFilmState(0, 16, lang).weights).toBeGreaterThan(0);
+    const a = springExtension(elasticityFilmState(2, 1, lang).weights * 0.05);
+    const b = springExtension(elasticityFilmState(2, 17, lang).weights * 0.05);
+    expect(b.extension).toBeCloseTo(2 * a.extension);
+    expect(b.length).not.toBeCloseTo(2 * a.length);
+    expect(elasticityFilmState(1, 18, lang).plotView).toBe(true);
+    expect(elasticityFilmState(3, 0, lang).extension).toBe(0);
+    expect(elasticityFilmState(3, 16, lang).extension).toBeCloseTo(0.12);
+    expect(elasticityFilmState(4, 14, lang).extension).toBe(0);
+  }
 });

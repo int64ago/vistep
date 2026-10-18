@@ -2810,9 +2810,9 @@ export const topics: Topic[] = [
   {
     slug: 'chem-iron-steam',
     name: '铁与水蒸气的反应',
-    title: '铁遇到水蒸气，条件改变了什么？',
-    question: '铁遇到水蒸气，条件改变了什么？',
-    description: '沿湿棉花、红热铁粉与肥皂液追踪气体路径，把黑色固体和可燃气体联系到物料守恒。',
+    title: '气体离开，固体为什么会增重？',
+    question: '气体离开，固体为什么会增重？',
+    description: '跟住水中的氧进入固体，再用完整质量账与限水预测解释铁和水蒸气的反应。',
     color: '#b8c3a4',
     tag: '水蒸气 · 铁氧化 · 气体证据',
     related: ['chem-iron-cycle', 'chem-hydrogen-chlorine'],
@@ -3529,10 +3529,10 @@ export const topics: Topic[] = [
   },
   {
     slug: 'bio-protein-machines',
-    name: '从肽键到胰岛素',
-    title: '顺序相同，还要连接正确',
-    question: '一堆氨基酸为什么不是一个蛋白质？',
-    description: '从脱水缩合计数，到实测牛胰岛素骨架，观察序列、肽链与二硫键。',
+    name: '蛋白质的连接与功能',
+    title: '51个残基，为什么还不能证明它能工作？',
+    question: '数量和外形都对了，蛋白质就一定能工作吗？',
+    description: '用牛胰岛素追踪肽键、两条链与三处二硫键，再把结构参照与有来源的功能证据分开检验。',
     color: '#8da18d',
     tag: '生物学',
     related: ['bio-food-tests', 'bio-engineered-genomes', 'bio-immune-pathways'],
@@ -3544,6 +3544,11 @@ export const topics: Topic[] = [
       {
         title: 'RCSB PDB-101: insulin structure and disulfide connections',
         url: 'https://pdb101.rcsb.org/learn/paper-models/insulin-activity-page',
+      },
+      {
+        title:
+          'Tsou Cheng-Lu — Firsthand recollection of total insulin synthesis (2015 reprint of 1998 article)',
+        url: 'https://lifescience.sinh.ac.cn/webadmin/upload/20156777.pdf',
       },
     ],
     number: '313',
@@ -4939,25 +4944,33 @@ export const topics: Topic[] = [
   },
   {
     slug: 'gravity-measurements',
-    name: '从月地检验到扭秤',
-    title: '微弱的引力，怎样成为可测量的量？',
-    question: '微弱的引力，怎样成为可测量的量？',
-    description: '比较月球加速度、扭秤的微小转角和牛顿大炮的绕地轨迹。',
+    name: '苹果、月球和一束会移动的光',
+    title: '看不见的引力，怎样被测出来？',
+    question: '苹果会落地，月球为什么一直绕行？',
+    description: '用月球运动检验地面引力，再从细丝扭转和真实光点记录反求引力常量。',
     color: '#94a9b5',
     tag: '万有引力',
     related: ['kepler-orbits', 'celestial-observations', 'gravitational-wave-lab'],
     sources: [
       {
-        title: 'The Royal Society — Cavendish’s original paper',
-        url: 'https://makingscience.royalsociety.org/items/l-and-p_11_68/paper-experiments-to-determine-the-density-of-the-earth-by-henry-cavendish',
+        title: 'Moon Fact Sheet',
+        url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html',
       },
       {
-        title: 'OpenStax — Newton’s universal law of gravitation',
-        url: 'https://openstax.org/books/college-physics-2e/pages/6-5-newtons-universal-law-of-gravitation',
+        title: 'Earth Fact Sheet',
+        url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html',
       },
       {
-        title: 'NASA — Gravity and Newton’s cannon',
-        url: 'https://science.nasa.gov/learn/basics-of-space-flight/chapter3-4/',
+        title: 'Automation of the Cavendish Experiment to ‘Weigh the Earth’',
+        url: 'https://arxiv.org/abs/1812.07644',
+      },
+      {
+        title: 'Cavendish Gravitational Torsion Balance, Model AP-8215A, manual012-11032D',
+        url: 'https://cdn.pasco.com/product_document/Cavendish-Torsion-Balance-Manual-AP-8215A.pdf',
+      },
+      {
+        title: 'Experiments to Determine the Density of the Earth',
+        url: 'https://archive.org/download/jstor-106988/106988.pdf',
       },
     ],
     number: '255',
