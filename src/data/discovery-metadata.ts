@@ -1683,6 +1683,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     keywords: {
       zh: ['两种碳酸盐的对照', '碳酸钠', '碳酸氢钠', '热稳定性'],
       en: [
+        'Comparing carbonate and bicarbonate',
         'Comparing two carbonate salts',
         'sodium carbonate',
         'sodium bicarbonate',
@@ -3076,8 +3077,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'mechanisms',
     minAge: 12,
     keywords: {
-      zh: ['纸带运动实验室', '打点计时器', '瞬时速度', '加速度', '纸带', '自由落体'],
+      zh: [
+        '纸带怎样记录运动',
+        '纸带运动实验室',
+        '打点计时器',
+        '瞬时速度',
+        '加速度',
+        '纸带',
+        '自由落体',
+      ],
       en: [
+        'How tape records motion',
         'Ticker-tape laboratory',
         'ticker timer',
         'instantaneous velocity',

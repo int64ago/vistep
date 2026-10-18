@@ -1,0 +1,661 @@
+{
+  "slug": "ticker-tape-lab",
+  "status": "frozen-after-measured-bilingual-director-calibration",
+  "premise": {
+    "zh": "同一串等时点成为位移、速度、加速度证据，再用于下一点预测。",
+    "en": "One equal-time record becomes displacement, velocity and acceleration evidence, then predicts another mark."
+  },
+  "topic": {
+    "name": {
+      "zh": "纸带怎样记录运动",
+      "en": "How tape records motion"
+    },
+    "title": {
+      "zh": "同样的节拍，为什么点越来越疏？",
+      "en": "Why do gaps grow when the ticking stays steady?"
+    },
+    "question": {
+      "zh": "同样的节拍，为什么点越来越疏？",
+      "en": "Why do gaps grow when the ticking stays steady?"
+    },
+    "description": {
+      "zh": "跟踪同一串等时点，从点距读出速度变化，用等时位移差推导加速度，再预测小车和下落重物的下一段点迹。",
+      "en": "Follow one equal-time tape record, infer velocity and acceleration, then predict the next mark for a cart and a falling mass."
+    },
+    "tag": {
+      "zh": "点距 · 速度 · 预测",
+      "en": "Spacing · Velocity · Prediction"
+    }
+  },
+  "curriculum": [
+    {
+      "entryId": "required-1-ticker-timer",
+      "sceneVariant": "required-1-ticker-timer",
+      "chapterIds": ["timer"],
+      "selectionChanged": false,
+      "sourcePrintedPage": 18,
+      "question": {
+        "zh": "同样的节拍，为什么点距能不同？",
+        "en": "Why can gaps differ when the tick stays steady?"
+      },
+      "principle": {
+        "zh": "固定的采样时间把运动转换为点距；快而等距仍是匀速。",
+        "en": "Fixed sample times encode motion as spacing; wide, equal gaps still mean constant speed."
+      },
+      "transfer": {
+        "zh": "六个点跨过多少个时间间隔？点距大能否单独说明加速？",
+        "en": "How many intervals lie between six dots? Do wide gaps alone establish acceleration?"
+      }
+    },
+    {
+      "entryId": "required-1-tape-speed",
+      "sceneVariant": "required-1-tape-speed",
+      "chapterIds": ["average", "instant"],
+      "selectionChanged": false,
+      "sourcePrintedPage": 22,
+      "question": {
+        "zh": "纸带上的一个点，能直接告诉我当时多快吗？",
+        "en": "Can one dot directly tell us the velocity at that instant?"
+      },
+      "principle": {
+        "zh": "有限区间给平均速度；缩小局部区间逼近瞬时速度，仍受采样与读尺精度限制。",
+        "en": "A finite interval gives average velocity; narrowing it approaches instantaneous velocity within sampling and measurement limits."
+      },
+      "transfer": {
+        "zh": "缩短到半个打点周期的区间，是仪器新测到了数据，还是在插值？",
+        "en": "Does an interval shorter than one tick contain new measurements, or only interpolation?"
+      }
+    },
+    {
+      "entryId": "required-1-cart-velocity",
+      "sceneVariant": "required-1-cart-velocity",
+      "chapterIds": ["cart"],
+      "selectionChanged": false,
+      "sourcePrintedPage": 36,
+      "question": {
+        "zh": "小车越来越快，纸带怎样显示加速度是否恒定？",
+        "en": "How can tape show whether an accelerating cart has constant acceleration?"
+      },
+      "principle": {
+        "zh": "等时段的位移等量增加，对应等量速度增量；v–t 斜率给加速度。",
+        "en": "Equal increments in equal-time displacements imply equal velocity gains; the v–t slope gives acceleration."
+      },
+      "transfer": {
+        "zh": "1.5、2.1、2.7、3.3 cm 后下一段多长？这个预测用了什么假设？",
+        "en": "What gap follows 1.5, 2.1, 2.7 and 3.3 cm, and what assumption makes that prediction possible?"
+      }
+    },
+    {
+      "entryId": "required-1-free-fall-tape",
+      "sceneVariant": "required-1-free-fall-tape",
+      "chapterIds": ["fall"],
+      "selectionChanged": false,
+      "sourcePrintedPage": 48,
+      "question": {
+        "zh": "下落越来越快，是否意味着加速度也越来越大？",
+        "en": "Does falling faster mean acceleration is also growing?"
+      },
+      "principle": {
+        "zh": "相邻等时位移的恒定差指向恒定加速度；理想自由落体不依赖质量。",
+        "en": "A constant difference between equal-time displacements indicates constant acceleration; ideal free fall is mass-independent."
+      },
+      "transfer": {
+        "zh": "质量翻倍，忽略阻力时下一点会更远吗？真实纸带有哪些额外影响？",
+        "en": "Does doubling mass move the next mark farther in the drag-free model? What extra effects enter a real tape experiment?"
+      }
+    }
+  ],
+  "film": {
+    "plannedDuration": 183,
+    "chapters": [
+      {
+        "id": "timer",
+        "index": 0,
+        "title": {
+          "zh": "同节拍，不同点距",
+          "en": "Same ticks, different gaps"
+        },
+        "caption": {
+          "zh": "快而均匀，仍然是匀速。",
+          "en": "Fast and steady is still uniform."
+        },
+        "duration": 31,
+        "at": 0,
+        "cue": {
+          "at": 0.45,
+          "text": {
+            "zh": "同样的节拍，为什么点距不一样？先比较两条匀速纸带：快的一条，点更疏，但间距仍相等。看固定针尖，每隔零点零二秒留下一个新点，旧点随纸带移动。五个间隔共零点一秒，要数六个点。因此，点很疏只能说明这段时间走得远；要判断加速，还得看点距是否继续增加。",
+            "en": "Why can the gaps differ when the ticking stays steady? Compare two tapes moving at constant speeds. The faster tape has wider but still equal gaps. At the fixed needle, a new dot appears every zero point zero two seconds; older dots move with the paper. Five intervals take one tenth of a second and require six dots. Wide gaps show distance travelled, while growing gaps reveal increasing speed."
+          }
+        }
+      },
+      {
+        "id": "average",
+        "index": 1,
+        "title": {
+          "zh": "一段时间，一段位移",
+          "en": "One interval, one displacement"
+        },
+        "caption": {
+          "zh": "等时段越长，平均速度越大。",
+          "en": "A longer equal-time strip means faster motion."
+        },
+        "duration": 28,
+        "at": 31,
+        "cue": {
+          "at": 31.45,
+          "text": {
+            "zh": "现在追踪同一条变速纸带。从零点二秒到零点四秒，量出两端位移，再数十个小间隔，得到零点二秒。位移除以时间，就是这一段的平均速度。把区间移到零点六秒以后：时间仍是零点二秒，纸带却更长，平均速度也更大。这个数属于整段，不能直接贴到某一个点上。",
+            "en": "Follow one changing-motion record. Between zero point two and zero point four seconds, measure the displacement and count ten small intervals: zero point two seconds. Divide distance by time for the interval average. Move to the later interval. The same duration now covers more tape, so the average is larger. This number describes the whole interval, not an arbitrary individual dot."
+          }
+        }
+      },
+      {
+        "id": "instant",
+        "index": 2,
+        "title": {
+          "zh": "盯住同一个时刻",
+          "en": "Keep one instant fixed"
+        },
+        "caption": {
+          "zh": "缩小区间，仍保留采样边界。",
+          "en": "Narrow the interval; respect the sampling limit."
+        },
+        "duration": 33,
+        "at": 59,
+        "cue": {
+          "at": 59.45,
+          "text": {
+            "zh": "如果只问零点五秒时有多快呢？固定蓝色目标点，让金色区间从两侧缩小。有限区间的平均速度，逐渐靠近模型算出的瞬时速度。这里故意采用非匀加速运动，所以平均值不总等于中点值。最后只剩目标两侧最近的记录，仍相隔零点零四秒。屏幕能继续放大，却不能凭空补出仪器没有采到的点。",
+            "en": "How fast is the tape at exactly half a second? Keep the blue target fixed and bring the gold endpoints closer on both sides. The finite-interval average approaches the instantaneous model value. This motion has nonconstant acceleration, so midpoint equality is not automatic. The nearest recorded neighbors still span zero point zero four seconds. Magnifying the screen cannot create samples the instrument never recorded."
+          }
+        }
+      },
+      {
+        "id": "cart",
+        "index": 3,
+        "title": {
+          "zh": "从等时纸带到加速度",
+          "en": "From equal-time tape to acceleration"
+        },
+        "caption": {
+          "zh": "等时段等量增长，预测下一点。",
+          "en": "Equal gap increments predict the next mark."
+        },
+        "duration": 47,
+        "at": 92,
+        "cue": {
+          "at": 92.45,
+          "text": {
+            "zh": "小车拉着纸带前进，针尖仍按固定节拍记录。每五个间隔取一段，各历时零点一秒。把这些原来的段移到共同起点，长度依次是一点五、二点一、二点七、三点三厘米。除以同样的时间，就得到逐段速度。每次速度增加零点零六米每秒，除以零点一秒，加速度是零点六。速度点标在区间中点，连成直线。现在先别看新点：若规律继续，下一段多长？仍加零点六厘米，预测三点九厘米。新记录与预测吻合；这是模型证据，真实实验仍需测量核对。",
+            "en": "The cart pulls one tape through a timer with fixed ticks. Group five intervals: each strip represents one tenth of a second. Align the original strips. Their lengths are one point five, two point one, two point seven and three point three centimeters. Dividing by the same time gives successive velocities. Each gains zero point zero six meters per second. Divide again by the time interval: acceleration is zero point six. Plot velocities at interval midpoints to obtain a straight line. Before revealing the next strip, predict its length. Another zero point six centimeters gives three point nine. The new model record agrees; a real experiment still needs measured evidence."
+          }
+        }
+      },
+      {
+        "id": "fall",
+        "index": 4,
+        "title": {
+          "zh": "下落更快，加速度变了吗？",
+          "en": "Falling faster: does acceleration grow?"
+        },
+        "caption": {
+          "zh": "速度增加，加速度可以不变。",
+          "en": "Velocity can grow at constant acceleration."
+        },
+        "duration": 44,
+        "at": 139,
+        "cue": {
+          "at": 139.45,
+          "text": {
+            "zh": "换成竖直下落，纸带跟着重物走，计时规则不变。每零点一秒的段长是四点九、十四点七、二十四点五厘米。速度越来越大，但相邻段每次都增加九点八厘米。用这个增量除以时间间隔的平方，得到九点八米每二次方秒。若加速度继续不变，下一段应该是三十四点三厘米；新点验证了模型预测。最后把质量加倍：忽略空气和纸带阻力时，同一时刻两者下落一样远。这是理想预测，不能代替真实测量。",
+            "en": "Turn the record vertical. The tape follows a falling mass, with the same timing rule. At intervals of zero point one seconds, the gaps measure four point nine, fourteen point seven and twenty-four point five centimeters. Velocity grows, but each gap gains the same nine point eight centimeters. Divide that increment by the squared interval to obtain nine point eight meters per second squared. Continued constant acceleration predicts thirty-four point three centimeters next; the new mark agrees. Finally double the mass. Ignoring air and tape resistance, both fall the same distance in the same time. This ideal prediction does not replace real measurements."
+          }
+        }
+      }
+    ],
+    "narrationGenerated": false,
+    "sharedFilesEdited": false
+  },
+  "uiTranslations": {
+    "竖直纸带随重物下落，新点留在固定针尖处": "Vertical tape moves with the falling mass; new marks form at the fixed needle",
+    "重物": "Mass",
+    "理想无阻力": "Ideal, no drag",
+    "固定节拍": "Fixed ticks",
+    "固定计时器记录移动纸带，同一条纸带连接运动物体": "A stationary timer marks one tape connected to the moving object",
+    "点": "dots",
+    "相邻点": "Neighboring dots",
+    "每 5 个间隔取一段": "Group every 5 gaps",
+    "针尖固定，纸带移动": "Fixed needle, moving tape",
+    "等时间点距比较：更快但仍然匀速": "Equal-time marks: faster motion can still be uniform",
+    "匀速": "constant",
+    "6 个点 · 5 个间隔": "6 dots · 5 intervals",
+    "同一纸带上用实际采样端点测位移和时间": "Displacement and time are read between sampled endpoints on one tape",
+    "同一条纸带": "One recorded tape",
+    "个间隔": "gaps",
+    "蓝色值：模型瞬时速度": "Blue: model instant velocity",
+    "这一段的平均值": "interval average",
+    "等时位移得到的速度标在区间中点，等速度增量形成直线": "Velocities from equal-time displacements lie at interval midpoints and have equal increments",
+    "只用已见的点距推算下一段，随后核对新点": "Predict the next gap from the known gaps, then reveal the new mark",
+    "同一纸带的等时段移到共同起点，长度成为速度证据": "Equal-time sections of the same tape align at a common origin; length gives velocity",
+    "下一段还会加多少？": "How much longer next?",
+    "原来的点：0、5、10…": "Same marks: 0, 5, 10…",
+    " 每段增加": " increases by",
+    "预测与模型新点吻合": "Prediction matches the model mark",
+    "假设下一段仍匀加速": "Assume constant acceleration",
+    "运动留下记录": "Motion leaves a record",
+    "时间相同，看点距": "Same time, different gaps",
+    "盯住同一个时刻": "Keep the target time fixed",
+    "速度增量 / 时间": "Velocity change / time",
+    "质量改变，再预测": "Change mass, predict again",
+    "先预测，再看新点": "Predict, then reveal",
+    "同一纸带：早 → 晚": "Same tape: early → late",
+    "让纸带回答问题": "Read the evidence in the tape",
+    "运动记录": "Motion record",
+    "测量速度": "Measure velocity",
+    "小车加速": "Accelerating cart",
+    "自由落体": "Free fall",
+    "观察视图": "Evidence view",
+    "记录时刻": "Recording time",
+    "同样长的时间": "Same time interval",
+    "目标时刻两侧的间隔数": "Ticks on each side of the target",
+    "模型加速度": "Model acceleration",
+    "再预测一次": "Predict again",
+    "显示下一段": "Reveal the next strip",
+    "记录方式": "Marking mechanism",
+    "电磁打点": "Electromagnetic",
+    "电火花打点": "Spark timer",
+    "模型条件与真实实验": "Model conditions and the real experiment",
+    "所有点来自同一个理想运动模型，不是独立实测数据。图中慢放，读数使用真实秒。小车给定加速度，不把槽码重力当作绳张力；自由落体忽略空气和纸带阻力。": "Every dot comes from one ideal motion model, not an independent measurement. Playback is slowed; readings use physical seconds. Cart acceleration is prescribed: hanger weight is not identified with string tension. Free fall neglects air and tape resistance.",
+    "真实测量需检查打点频率、舍去模糊点迹并重复记录。缩短区间会放大读尺误差；两侧最近的已记录点相隔 0.04 s，不能把屏幕插值当成更密的采样。": "Check the real marking frequency, discard unclear marks and repeat recordings. Shorter intervals magnify ruler error. The nearest recorded dots on either side span 0.04 s; screen interpolation does not create finer measurements.",
+    "记录过程": "Recording",
+    "快慢对比": "Compare speeds",
+    "数时间间隔": "Count intervals",
+    "平均速度": "Average velocity",
+    "局部测速": "Local velocity",
+    "等时段": "Equal-time strips",
+    "速度图": "Velocity plot",
+    "下一段": "Next strip",
+    "换质量": "Change mass"
+  },
+  "normalizedBeats": {
+    "timer": [
+      {
+        "from": 0,
+        "to": 0.2,
+        "view": "steady",
+        "visible": "Two uniform speeds share one spatial scale."
+      },
+      {
+        "from": 0.2,
+        "to": 0.55,
+        "view": "acquire",
+        "visible": "Fixed needle, actual 50 Hz dots; oldest marks move with paper."
+      },
+      {
+        "from": 0.55,
+        "to": 0.8,
+        "view": "count",
+        "visible": "Six points span five intervals."
+      },
+      {
+        "from": 0.8,
+        "to": 1,
+        "view": "steady",
+        "visible": "Same equal-gap counterexample, no acceleration."
+      }
+    ],
+    "average": [
+      {
+        "from": 0,
+        "to": 0.18,
+        "view": "average",
+        "visible": "Original sampled endpoints .20/.40s highlighted. Derived values hidden."
+      },
+      {
+        "from": 0.18,
+        "to": 0.36,
+        "view": "average",
+        "visible": "Displacement bracket appears. Time and average remain hidden."
+      },
+      {
+        "from": 0.36,
+        "to": 0.52,
+        "view": "average",
+        "visible": "Gold marker counts ten actual0.02s gaps; progressive count is labelled n/10 gaps, not a completed duration."
+      },
+      {
+        "from": 0.52,
+        "to": 0.56,
+        "view": "average",
+        "visible": "Count complete: delta-t=.20s."
+      },
+      {
+        "from": 0.56,
+        "to": 0.8,
+        "view": "average",
+        "visible": "Now reveal dx/dt and average velocity."
+      },
+      {
+        "from": 0.8,
+        "to": 1,
+        "view": "average",
+        "visible": "Shift to .60/.80s, retaining same scale and duration."
+      }
+    ],
+    "instant": [
+      {
+        "from": 0,
+        "to": 0.22,
+        "view": "local",
+        "visible": "Half-width20 ticks centered on .50 s."
+      },
+      {
+        "from": 0.22,
+        "to": 0.79,
+        "view": "local",
+        "visible": "Half-width shrinks by actual ticks from20 to1."
+      },
+      {
+        "from": 0.79,
+        "to": 1,
+        "view": "local",
+        "visible": "Finite0.04s neighborhood held; average.300032 vs exact.300000."
+      }
+    ],
+    "cart": [
+      {
+        "from": 0,
+        "to": 0.2,
+        "view": "acquire",
+        "visible": "Acquisition to .4s; equal cart/hanger displacement, tangent pulley string."
+      },
+      {
+        "from": 0.2,
+        "to": 0.46,
+        "view": "segments",
+        "visible": "Original point IDs translate into four equal-time strips; alignment from.24 to.40."
+      },
+      {
+        "from": 0.46,
+        "to": 0.62,
+        "view": "segments",
+        "visible": "dx/0.10s becomes velocity; equal delta-v divided byT gives acceleration."
+      },
+      {
+        "from": 0.62,
+        "to": 0.8,
+        "view": "graph",
+        "visible": "Same interval colors at midpoint times in physical v–t axes."
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "view": "predict",
+        "visible": "Conditional next-strip prediction remains dashed; numerical answer and future raw points are hidden."
+      },
+      {
+        "from": 0.9,
+        "to": 0.92,
+        "view": "predict",
+        "visible": "Calculated 3.9 cm prediction appears; dashed future strip still has no newly acquired raw points."
+      },
+      {
+        "from": 0.92,
+        "to": 1,
+        "view": "predict",
+        "visible": "New marks reveal3.9cm answer; hold."
+      }
+    ],
+    "fall": [
+      {
+        "from": 0,
+        "to": 0.18,
+        "view": "acquire",
+        "visible": "Vertical acquisition to.3s."
+      },
+      {
+        "from": 0.18,
+        "to": 0.62,
+        "view": "segments",
+        "visible": "Three0.10s intervals align; dx gains9.8cm, a=9.8."
+      },
+      {
+        "from": 0.62,
+        "to": 0.76,
+        "view": "predict",
+        "visible": "Conditional next-strip prediction remains dashed; numerical answer and future raw points are hidden."
+      },
+      {
+        "from": 0.76,
+        "to": 0.79,
+        "view": "predict",
+        "visible": "Calculated 34.3 cm prediction appears; dashed future strip still has no newly acquired raw points."
+      },
+      {
+        "from": 0.79,
+        "to": 0.86,
+        "view": "predict",
+        "visible": "Reveal34.3cm."
+      },
+      {
+        "from": 0.86,
+        "to": 1,
+        "view": "masses",
+        "visible": "m and2m share .4s and78.4cm under no-drag assumptions."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "kind": "provided-textbook",
+      "file": "/Users/int64ago/Downloads/人教版高中物理-必修第一册.pdf",
+      "printedPages": [18, 22, 23, 36, 37, 38, 48, 49],
+      "evidence": "artifacts/teaching-principles/ticker-tape-ready/textbook-pages.txt"
+    },
+    {
+      "url": "https://spark.iop.org/ticker-timers-investigating-speed",
+      "verified": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/3-2-instantaneous-velocity-and-speed",
+      "verified": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/3-3-average-and-instantaneous-acceleration",
+      "verified": true
+    }
+  ],
+  "evidence": {
+    "model": {
+      "status": "passed",
+      "tests": 24,
+      "command": "pnpm exec vitest run src/models/ticker-tape-lab.test.ts"
+    },
+    "targetedTypecheck": {
+      "status": "passed",
+      "command": "pnpm exec tsc -p artifacts/teaching-principles/ticker-check/tsconfig.json"
+    },
+    "cssPrefix": {
+      "status": "passed",
+      "report": "artifacts/teaching-principles/ticker-check/css-prefix.json",
+      "uniqueSceneClassCount": 6
+    },
+    "browser": {
+      "status": "author-paused-review-and-actual-controls",
+      "broadReport": "artifacts/teaching-principles/ticker-review-04/report.json",
+      "broadCases": 96,
+      "scope": "zh/en at320x568,390x844,1100x900; all5chapters and16selectedsubshots",
+      "supplement": "artifacts/teaching-principles/ticker-review-05/report.json",
+      "supplementCases": 36,
+      "finalChangedShots": "artifacts/teaching-principles/ticker-review-08/report.json",
+      "controls": "artifacts/teaching-principles/ticker-controls-02/report.json",
+      "controlsCases": 64,
+      "curriculumRoutes": 8,
+      "wholePlayer": "Phone max477px measured including real longest caption, transport and closed chapters. At320x568, positioned90px below viewport top, bottom567px; body/SVG>=16px; controls>=44px.390px layouts max477px.",
+      "finalChangedShotCases": 44,
+      "postScreenshotStateVerified": true,
+      "finalOwnedSourceStable": true,
+      "discardedCapture": "ticker-review-07/en-320-c1-44.png: dev HMR reloaded between DOM measurement and screenshot. Replaced by review08 with post-screenshot state checks.",
+      "measuredSpeechCalibrationReports": [
+        "artifacts/teaching-principles/ticker-calibration-review-01/report.json",
+        "artifacts/teaching-principles/ticker-calibration-review-02/report.json"
+      ],
+      "measuredSpeechCalibrationCases": 63
+    },
+    "audio": {
+      "status": "not-run-by-owner",
+      "humanListening": false,
+      "rootGenerated": true,
+      "speechCalibration": "independent ASR word times + author paused referent review; human listening not performed"
+    },
+    "staticProduction": {
+      "status": "not-run-by-owner"
+    },
+    "completePlayback": {
+      "status": "not-run-by-owner"
+    },
+    "physicalPhone": {
+      "status": "not-run"
+    }
+  },
+  "pending": [
+    "Root independent final static keyframes, CSS bundle and continuous playback acceptance.",
+    "Human listening and physical-phone performance remain separate evidence gaps."
+  ],
+  "narrationCalibration": {
+    "freezeRequested": true,
+    "audioGeneratedByOwner": false,
+    "provisionalOnly": false,
+    "note": "All five chapters in both languages now use measured chapter-local event times including 0.45-second lead-in. English fall uses the revised explicit zero point one seconds phrase. Root independently accepts final static playback and sound synchronization; ASR and paused images are not human listening.",
+    "exactAnchors": [
+      {
+        "chapter": "average",
+        "phraseZh": "再数十个小间隔",
+        "phraseEn": "count ten small intervals",
+        "event": "count begins at.36; completed delta-t at.52"
+      },
+      {
+        "chapter": "average",
+        "phraseZh": "位移除以时间",
+        "phraseEn": "Divide distance by time",
+        "event": "average appears at.56"
+      },
+      {
+        "chapter": "cart",
+        "phraseZh": "速度点标在区间中点",
+        "phraseEn": "Plot velocities at interval midpoints",
+        "event": "graph.62–.80"
+      },
+      {
+        "chapter": "fall",
+        "phraseZh": "用这个增量除以时间间隔的平方",
+        "phraseEn": "Divide that increment by the squared interval",
+        "event": "delta-displacement formula held until.62"
+      },
+      {
+        "chapter": "fall",
+        "phraseZh": "最后把质量加倍",
+        "phraseEn": "Finally double the mass",
+        "event": "mass comparison begins.86"
+      }
+    ],
+    "status": "all-ten-cues-calibrated-to-final-recordings",
+    "method": "Monotone piecewise chapterTime-to-canonical-progress mapping for each locale; measured ASR offsets include the 0.45-second cue lead-in. Geometry and recorded dot identities are unchanged. Numerical prediction is separate from later raw-point reveal.",
+    "report": "artifacts/teaching-principles/ticker-calibration-review-01/report.json",
+    "authorPausedCases": 63,
+    "finalDuration": 183,
+    "audioBinding": {
+      "zh": {
+        "src": "/narration/ticker-tape-lab-zh-eded01ef8454.mp3",
+        "sha256": "187b499bd2bfbde8e6c49a8c8956cc7d6518a6af225b9d11204248f74f0b9bec",
+        "duration": 183.0
+      },
+      "en": {
+        "src": "/narration/ticker-tape-lab-en-efccb4628b8a.mp3",
+        "sha256": "4acfcf4ce2fbe9a723bfdeceb1c164d22aeeada299a443c0b9ecdaaffd642bda",
+        "duration": 183.0
+      }
+    },
+    "wordTimeSources": [
+      "artifacts/teaching-principles/batch-2-timed-speech/ticker-tape-lab-{zh,en}-{0..4}.json",
+      "artifacts/teaching-principles/batch-2-timed-speech-revision/ticker-tape-lab-en-4.json supersedes original en-4"
+    ],
+    "reports": [
+      "artifacts/teaching-principles/ticker-calibration-review-01/report.json",
+      "artifacts/teaching-principles/ticker-calibration-review-02/report.json"
+    ],
+    "chapterLocalEvents": {
+      "zh": {
+        "timer": {
+          "needle": 9,
+          "count": 15.15,
+          "counterexample": 18.65
+        },
+        "average": {
+          "distance": 5.4,
+          "countStart": 6.9,
+          "countComplete": 8.7,
+          "average": 10.1,
+          "laterInterval": 14
+        },
+        "instant": {
+          "shrinkStart": 5.1,
+          "nearestSamples": 18.9
+        },
+        "cart": {
+          "segments": 4.65,
+          "alignStart": 8.35,
+          "aligned": 10.8,
+          "velocity": 16.6,
+          "graph": 26.45,
+          "predictionQuestion": 30.3,
+          "predictionNumber": 37,
+          "newPoints": 38.55
+        },
+        "fall": {
+          "segments": 4.9,
+          "predictionQuestion": 21.6,
+          "predictionNumber": 24.7,
+          "newPoints": 26.45,
+          "massComparison": 28.15
+        }
+      },
+      "en": {
+        "timer": {
+          "needle": 10.2,
+          "count": 18,
+          "counterexample": 22.3
+        },
+        "average": {
+          "distance": 5.7,
+          "countStart": 7.2,
+          "countComplete": 9.2,
+          "average": 11.1,
+          "laterInterval": 14.6
+        },
+        "instant": {
+          "shrinkStart": 5.45,
+          "nearestSamples": 18.7
+        },
+        "cart": {
+          "segments": 3.8,
+          "alignStart": 8.3,
+          "aligned": 10.2,
+          "velocity": 17,
+          "graph": 28.6,
+          "predictionQuestion": 33.1,
+          "predictionNumber": 39,
+          "newPoints": 40.3
+        },
+        "fall": {
+          "segments": 5.85,
+          "predictionQuestion": 25.65,
+          "predictionNumber": 28,
+          "newPoints": 30.45,
+          "massComparison": 32.4
+        }
+      }
+    }
+  }
+}

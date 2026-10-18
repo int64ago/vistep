@@ -23,5 +23,105 @@
         "en": "Yes, if there is resistance: the forward push balances it, so the net force is zero. With negligible resistance, removing the push leaves the cart moving at constant velocity. Motion alone does not imply a forward net force."
       }
     }
+  },
+  "required-1-ticker-timer": {
+    "sceneSlug": "ticker-tape-lab",
+    "question": {
+      "zh": "同样的节拍，为什么点距能不同？",
+      "en": "Why can gaps differ when the tick stays steady?"
+    },
+    "lead": {
+      "zh": "让纸带先慢后快地经过同一个计时器，把每个点与固定的时间节拍一一对应。",
+      "en": "Move one tape through the same timer at different speeds, and connect each mark to an equal time interval."
+    },
+    "principle": {
+      "zh": "固定的采样时间把运动转换为点距；快而等距仍是匀速。",
+      "en": "Fixed sample times encode motion as spacing; wide, equal gaps still mean constant speed."
+    },
+    "transfer": {
+      "question": {
+        "zh": "六个点跨过多少个时间间隔？点距大能否单独说明加速？",
+        "en": "How many intervals lie between six dots? Do wide gaps alone establish acceleration?"
+      },
+      "explanation": {
+        "zh": "六个点之间有五个时间间隔。较大的点距说明这段时间内平均速度较大；只有比较相邻等时段的点距如何变化，才能判断速度是否增加。",
+        "en": "Six dots span five time intervals. A wider gap means a greater average velocity over that interval; acceleration requires comparing how gaps change between equal intervals."
+      }
+    }
+  },
+  "required-1-tape-speed": {
+    "sceneSlug": "ticker-tape-lab",
+    "question": {
+      "zh": "纸带上的一个点，能直接告诉我当时多快吗？",
+      "en": "Can one dot directly tell us the velocity at that instant?"
+    },
+    "lead": {
+      "zh": "在同一串点上改变读数区间，看平均速度怎样逼近某一时刻的速度，以及纸带能提供多少信息。",
+      "en": "Change the measurement interval on one recorded tape to see how an average estimates local velocity, and where the available measurements stop."
+    },
+    "principle": {
+      "zh": "有限区间给平均速度；缩小局部区间逼近瞬时速度，仍受采样与读尺精度限制。",
+      "en": "A finite interval gives average velocity; narrowing it approaches instantaneous velocity within sampling and measurement limits."
+    },
+    "transfer": {
+      "question": {
+        "zh": "缩短到半个打点周期的区间，是仪器新测到了数据，还是在插值？",
+        "en": "Does an interval shorter than one tick contain new measurements, or only interpolation?"
+      },
+      "explanation": {
+        "zh": "纸带只记录每次打点时的位置。小于一个周期的中间位置需要插值或额外的运动假设，不能当作计时器新增的观测。区间更短也会放大读尺误差的影响。",
+        "en": "The tape records positions only at the ticks. Positions between ticks require interpolation or an extra motion assumption; they are not new observations. Shorter intervals also amplify the effect of measurement error."
+      }
+    }
+  },
+  "required-1-cart-velocity": {
+    "sceneSlug": "ticker-tape-lab",
+    "question": {
+      "zh": "小车越来越快，纸带怎样显示加速度是否恒定？",
+      "en": "How can tape show whether an accelerating cart has constant acceleration?"
+    },
+    "lead": {
+      "zh": "保留同一辆小车、同一串点和同一把尺，把等时位移差与速度图联系起来，再预测下一点。",
+      "en": "Keep the cart, tape and ruler fixed while connecting equal-time displacements to velocity, then predict the next mark."
+    },
+    "principle": {
+      "zh": "等时段的位移等量增加，对应等量速度增量；v–t 斜率给加速度。",
+      "en": "Equal increments in equal-time displacements imply equal velocity gains; the v–t slope gives acceleration."
+    },
+    "transfer": {
+      "question": {
+        "zh": "1.5、2.1、2.7、3.3 cm 后下一段多长？这个预测用了什么假设？",
+        "en": "What gap follows 1.5, 2.1, 2.7 and 3.3 cm, and what assumption makes that prediction possible?"
+      },
+      "explanation": {
+        "zh": "若相邻等时段的位移继续每次增加 0.6 cm，下一段应为 3.9 cm。这用了加速度保持恒定的假设；若合力、摩擦或绳的状态改变，就需要重新检验。",
+        "en": "If equal-time displacements continue increasing by 0.6 cm each time, the next gap is 3.9 cm. This assumes constant acceleration; changes in net force, friction or the rope require a new check."
+      }
+    }
+  },
+  "required-1-free-fall-tape": {
+    "sceneSlug": "ticker-tape-lab",
+    "question": {
+      "zh": "下落越来越快，是否意味着加速度也越来越大？",
+      "en": "Does falling faster mean acceleration is also growing?"
+    },
+    "lead": {
+      "zh": "跟着重物留下的点，区分越来越大的速度与每秒增加的速度，用下一点检验恒定加速度。",
+      "en": "Follow the marks left by a falling mass, distinguish velocity from its gain each second, then test constant acceleration with the next mark."
+    },
+    "principle": {
+      "zh": "相邻等时位移的恒定差指向恒定加速度；理想自由落体不依赖质量。",
+      "en": "A constant difference between equal-time displacements indicates constant acceleration; ideal free fall is mass-independent."
+    },
+    "transfer": {
+      "question": {
+        "zh": "质量翻倍，忽略阻力时下一点会更远吗？真实纸带有哪些额外影响？",
+        "en": "Does doubling mass move the next mark farther in the drag-free model? What extra effects enter a real tape experiment?"
+      },
+      "explanation": {
+        "zh": "在相同初始条件、忽略空气阻力与纸带摩擦的模型中，质量翻倍仍有相同的重力加速度，下一点位置不变。真实实验中阻力、纸带摩擦和释放方式会造成偏差。",
+        "en": "With the same initial conditions and negligible air drag and tape friction, doubling mass leaves gravitational acceleration and the next mark unchanged. Drag, tape friction and release conditions can shift real measurements."
+      }
+    }
   }
 }

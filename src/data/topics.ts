@@ -3584,10 +3584,9 @@ export const topics: Topic[] = [
   {
     slug: 'chem-carbonate-comparison',
     name: '两种碳酸盐的对照',
-    title: '碳酸钠和碳酸氢钠，怎样用证据区分？',
-    question: '碳酸钠和碳酸氢钠，怎样用证据区分？',
-    description:
-      '沿教材顺序比较遇水温度、溶解、酚酞显色和受热分解，追踪二氧化碳通向石灰水，并核对固体与逸出物的质量。',
+    title: '名字里有氢，为什么还是碱性的？',
+    question: '名字里有氢，为什么还是碱性的？',
+    description: '从加水、显色与加热的对照，追踪水、离子和产物，把现象变成可检验的解释。',
     color: '#c5c9a2',
     tag: '水合 · 碱性 · 热分解',
     related: ['chem-ionic-conduction', 'latent-heat', 'chem-sodium-reactions'],
@@ -3607,6 +3606,14 @@ export const topics: Topic[] = [
       {
         title: 'NIH PubChem — Sodium carbonate, solubility',
         url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-carbonate',
+      },
+      {
+        title: 'USGS — Carbonate speciation and nominal equilibrium constants',
+        url: 'https://water.usgs.gov/water-resources/memos/memo.php?id=2098',
+      },
+      {
+        title: 'Pines et al. — How Acidic Is Carbonic Acid?',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/26862781/',
       },
       {
         title: '人教版高中化学必修第一册，38—39页',
@@ -3765,9 +3772,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-food-tests',
     name: '食物中的三种证据',
-    title: '让试剂留下可比较的证据',
-    question: '同样是变色，分别检测什么？',
-    description: '比较斐林、苏丹Ⅲ与双缩脲检测，保留空白对照和真实操作条件。',
+    title: '变红、变橙、变紫：颜色能证明什么？',
+    question: '变红、变橙、变紫：颜色能证明什么？',
+    description: '从同样处理的样品与对照出发，追踪铜、染料和蛋白长链，分清三种显色的原因。',
     color: '#b39360',
     tag: '生物学',
     related: ['bio-enzyme-investigations', 'bio-protein-machines'],
@@ -3775,6 +3782,18 @@ export const topics: Topic[] = [
       {
         title: 'National Institute of Education: Biology Practical Handbook, Practical 1',
         url: 'https://nie.lk/pdffiles/other/eALOM%20Biology%20Practical%20Handbook.pdf',
+      },
+      {
+        title: 'IUPAC–IUBMB — Reducing and non-reducing disaccharides',
+        url: 'https://iupac.qmul.ac.uk/2carb/noGreek/36.html',
+      },
+      {
+        title: 'Biological Stain Commission — Lipid staining and partition',
+        url: 'https://biologicalstaincommission.org/glossary/',
+      },
+      {
+        title: 'Kroneck et al. — Peptide nitrogen coordination of copper(II)',
+        url: 'https://febs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1432-1033.1980.tb04833.x',
       },
     ],
     number: '303',
@@ -5947,12 +5966,13 @@ export const topics: Topic[] = [
   },
   {
     slug: 'ticker-tape-lab',
-    name: '纸带运动实验室',
-    title: '纸带上的点，怎样变成速度和加速度？',
-    question: '纸带上的点，怎样变成速度和加速度？',
-    description: '从固定打点周期到纸带读数，沿四条教材实验路径学会记录时间、测量速度和研究加速度。',
+    name: '纸带怎样记录运动',
+    title: '同样的节拍，为什么点越来越疏？',
+    question: '同样的节拍，为什么点越来越疏？',
+    description:
+      '跟踪同一串等时点，从点距读出速度变化，用等时位移差推导加速度，再预测小车和下落重物的下一点。',
     color: '#a5b88e',
-    tag: '运动测量',
+    tag: '点距 · 速度 · 预测',
     related: ['newton-tube', 'sampling-aliasing', 'mechanical-energy-lab'],
     sources: [
       {
@@ -5962,6 +5982,10 @@ export const topics: Topic[] = [
       {
         title: 'OpenStax University Physics — Average and Instantaneous Acceleration',
         url: 'https://openstax.org/books/university-physics-volume-1/pages/3-3-average-and-instantaneous-acceleration',
+      },
+      {
+        title: 'Institute of Physics — Ticker timers: investigating speed',
+        url: 'https://spark.iop.org/ticker-timers-investigating-speed',
       },
     ],
     number: '204',

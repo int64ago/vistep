@@ -1,165 +1,139 @@
-.tape-lab {
-  max-width: 800px;
+/* Scene-specific prefix: these selectors do not style any other tape or laboratory. */
+.ticker-tape-scene {
+  max-width: 660px;
   margin: auto;
-  padding: 0 18px;
-  color: #56705d;
-}
-.tape-lab header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  border-bottom: 1px solid #dce5d6;
-  padding-bottom: 10px;
+  padding: 8px 16px 12px;
+  color: #365e4e;
   font-size: 16px;
-}
-.tape-lab header p {
-  margin: 0;
-  font-size: 18px;
-}
-.tape-lab b {
-  font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
-.tape-apparatus {
-  width: 100%;
-  height: 195px;
-  display: block;
-}
-.tape-record > div {
+.ticker-tape-scene .ticker-tape-eyebrow {
   display: flex;
   justify-content: space-between;
+  align-items: start;
   gap: 12px;
-  font-size: 16px;
-}
-.tape-record svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.tape-measure {
-  display: flex;
-  justify-content: space-around;
-  gap: 16px;
-  font-size: 16px;
-}
-.tape-measure b {
-  display: block;
-  font-size: 20px;
-  margin-top: 3px;
-}
-.tape-fit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 12px;
-}
-.tape-fit svg {
-  width: 55%;
-  max-width: 360px;
-}
-.tape-fit p {
+  min-height: 24px;
+  margin-bottom: 6px;
   font-size: 16px;
   line-height: 1.5;
 }
-.tape-fit b {
+.ticker-tape-scene .ticker-tape-eyebrow > span:last-child {
+  white-space: nowrap;
+  color: #647d64;
+}
+.ticker-tape-scene .ticker-tape-figure {
+  position: relative;
+  min-width: 0;
+}
+.ticker-tape-scene .ticker-tape-figure > svg:not(.ticker-tape-defs) {
   display: block;
-  font-size: 20px;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
-.tape-controls {
-  display: grid;
-  gap: 22px;
-  margin-top: 24px;
-}
-.tape-condition {
+.ticker-tape-scene .ticker-tape-figure text {
+  font-family: inherit;
   font-size: 16px;
-  line-height: 1.55;
-  color: #7e8d77;
-  margin: 16px 0 0;
 }
-.tape-controls .segmented {
+.ticker-tape-scene .ticker-tape-figure svg {
+  fill: currentColor;
+}
+.ticker-tape-scene .ticker-tape-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.ticker-tape-scene .ticker-tape-controls {
+  display: grid;
+  gap: 20px;
+  margin: 22px 0 0;
+  min-width: 0;
+}
+.ticker-tape-scene .ticker-tape-controls .segmented {
   flex-wrap: wrap;
 }
+.ticker-tape-scene .ticker-tape-controls .control-top,
+.ticker-tape-scene .ticker-tape-controls .segmented button {
+  font-size: 16px;
+}
+.ticker-tape-scene .ticker-tape-controls .segmented button,
+.ticker-tape-scene .ticker-tape-reveal,
+.ticker-tape-scene .ticker-tape-controls summary {
+  min-height: 44px;
+  min-width: 44px;
+}
+.ticker-tape-scene .ticker-tape-controls .segmented button {
+  white-space: normal;
+  padding: 9px 12px;
+}
+.ticker-tape-scene .ticker-tape-controls .control {
+  min-width: 0;
+}
+.ticker-tape-scene .ticker-tape-controls input[type='range'] {
+  width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+.ticker-tape-scene .ticker-tape-reveal {
+  border: 1px solid #a0b5a3;
+  background: #edf2e5;
+  border-radius: 12px;
+  padding: 9px 18px;
+  color: #365e4e;
+  font: inherit;
+  cursor: pointer;
+  justify-self: start;
+}
+.ticker-tape-scene .ticker-tape-reveal:hover {
+  background: #e1ebd7;
+}
+.ticker-tape-scene .ticker-tape-controls details {
+  border-top: 1px solid #d9e2d2;
+  padding-top: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.ticker-tape-scene .ticker-tape-controls summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.ticker-tape-scene .ticker-tape-controls p {
+  font-size: 16px;
+  line-height: 1.65;
+}
 @media (max-width: 760px) {
-  .tape-lab {
-    padding: 0 5px;
+  .ticker-tape-scene {
+    padding: 6px 0 8px;
   }
-  .tape-lab header {
-    display: block;
-    text-align: center;
-    font-size: 16px;
-  }
-  .tape-lab header p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  .tape-apparatus {
-    height: 155px;
-  }
-  .tape-measure {
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .tape-measure b {
-    font-size: 17px;
-  }
-  .tape-fit {
-    gap: 10px;
-  }
-  .tape-fit p {
-    font-size: 16px;
-    max-width: 124px;
-  }
-  .tape-fit svg {
-    width: 54%;
-  }
-  .tape-fit b {
-    font-size: 17px;
-  }
-  .tape-condition {
-    font-size: 16px;
-  }
-  .tape-lab .control-top {
-    font-size: 16px;
+  .ticker-tape-scene .ticker-tape-eyebrow {
+    gap: 8px;
   }
 }
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .tape-lab {
-    padding: 12px 8px;
+/* A full phone player includes its caption and transport, not only the drawing. */
+@media (max-width: 480px) {
+  .showcase[data-slug='ticker-tape-lab'] .film-caption {
+    gap: 12px;
+    padding: 10px 12px 8px;
+    min-height: 0;
   }
-  .showcase[data-mode='watch'] .tape-lab > header {
-    display: block;
-    text-align: center;
+  .showcase[data-slug='ticker-tape-lab'] .film-chapter {
+    flex-basis: 32px;
   }
-  .showcase[data-mode='watch'] .tape-lab > header p {
+  .showcase[data-slug='ticker-tape-lab'] .film-caption p {
     font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
+    line-height: 1.5;
   }
-  .showcase[data-mode='watch'] .tape-lab > header > span,
-  .showcase[data-mode='watch'] .tape-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .tape-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .tape-lab > p[class$='-observation'] {
-    display: none;
+  .showcase[data-slug='ticker-tape-lab'] .film-transport {
+    padding-inline: 12px;
+    padding-bottom: 8px;
   }
-}
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .tape-condition {
-    display: none;
+  .showcase[data-slug='ticker-tape-lab'] .film-chapters {
+    margin-inline: 12px;
   }
-  .showcase[data-mode='watch'] .tape-fit {
-    margin-top: 5px;
-  }
-}
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .tape-lab > header,
-  .showcase[data-mode='watch'][data-chapter='4'] .tape-measure {
-    display: none;
+  .showcase[data-slug='ticker-tape-lab'] .film-chapters summary {
+    min-height: 44px;
   }
 }

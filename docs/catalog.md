@@ -115,7 +115,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                    | 1:31 | Does a changed oxidation state always mean complete electron transfer?        |
 | [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                           | 3:18 | What atomic information is hidden in a flame colour?                          |
 | [Evidence from sodium and sodium peroxide](../src/content/en/chem-sodium-reactions.mdx)                | 3:42 | How do sodium and its peroxide respond to air and water?                      |
-| [Comparing two carbonate salts](../src/content/en/chem-carbonate-comparison.mdx)                       | 2:27 | How can observations distinguish carbonate from bicarbonate?                  |
+| [Comparing carbonate and bicarbonate](../src/content/en/chem-carbonate-comparison.mdx)                 | 3:22 | Why is bicarbonate still alkaline?                                            |
 | [Electrolytes and current](../src/content/en/chem-ionic-conduction.mdx)                                | 1:59 | Why are ions alone not enough for conduction?                                 |
 | [What makes light visible](../src/content/en/chem-colloid-light.mdx)                                   | 3:02 | Light passed through. Why can’t we see it from the side?                      |
 
@@ -171,7 +171,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [A transferable chemical signal](../src/content/en/bio-chemical-signals.mdx)                      | 2:12 | Why does a second heart slow without a connecting nerve?                          |
 | [Experimental clues to nerve signaling](../src/content/en/bio-nerve-signals.mdx)                  | 2:34 | How do two needle deflections connect to signaling between neurons?               |
 | [Buffering the internal environment](../src/content/en/bio-buffer-comparison.mdx)                 | 1:51 | Why do equal acid additions change three samples differently?                     |
-| [Three food assays](../src/content/en/bio-food-tests.mdx)                                         | 1:59 | What does each color change detect?                                               |
+| [Three food assays](../src/content/en/bio-food-tests.mdx)                                         | 2:53 | Red, orange, violet: what can a color prove?                                      |
 | [Cells under the microscope](../src/content/en/bio-cell-microscopy.mdx)                           | 2:18 | What does magnification actually reveal?                                          |
 
 ## Mechanisms & motion
@@ -208,7 +208,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Finding the center of gravity](../src/content/en/suspension-center-of-gravity.mdx)           | 1:53 | How do two suspensions locate the same point?                                       |
 | [Free-fall activities](../src/content/en/free-fall-activities.mdx)                            | 2:18 | What can paper, tied stones and a ruler tell us?                                    |
 | [Phone accelerometer experiments](../src/content/en/phone-accelerometer-lab.mdx)              | 2:46 | Why can a falling phone read zero?                                                  |
-| [Ticker-tape laboratory](../src/content/en/ticker-tape-lab.mdx)                               | 2:12 | How do dots on a tape become velocity and acceleration?                             |
+| [How tape records motion](../src/content/en/ticker-tape-lab.mdx)                              | 3:03 | Why do gaps grow when the ticking stays steady?                                     |
 | [Newton Tube](../src/content/en/newton-tube.mdx)                                              | 2:00 | Does a feather fall slowly because it is light?                                     |
 | [Center of mass](../src/content/en/center-of-mass.mdx)                                        | 2:21 | Can internal motion carry a whole system away?                                      |
 | [Elastic collision](../src/content/en/elastic-collision.mdx)                                  | 2:18 | Will the energy lost from motion return?                                            |

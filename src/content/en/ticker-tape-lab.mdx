@@ -1,42 +1,58 @@
-<h2 id="understand">Time stays regular; the spacing records motion</h2>
+<h2 id="understand">Why do the gaps grow when the ticking stays steady?</h2>
 
-A ticker timer marks at fixed time intervals. At the ideal50 Hz used here, neighboring dots are0.02 s apart. Five intervals occupy0.10 s and require six dots. Faster tape travels farther during the same interval, leaving wider gaps.
+The timer controls **when** a mark appears. The moving tape determines how far apart the marks are. A larger gap means the tape travelled farther during the same time interval.
 
-Four textbook paths use this recording method: learning the timer, measuring average and instantaneous velocity, investigating an accelerating cart, and studying a falling mass. Shared apparatus does not make the questions or analysis steps interchangeable.
+Wide gaps alone do not establish acceleration. Two tapes moving at different constant speeds both have evenly spaced marks; the faster tape has wider gaps. To detect acceleration, follow one record: does the displacement keep increasing over successive equal times?
 
-An electromagnetic timer drives a vibrating striker, making marks through carbon paper. A spark timer uses periodic electrical discharges. The actual marking frequency must be checked for either instrument. This film uses ideal50 Hz sampling and does not model the electrical transient, high voltage, or friction on the tape.
+Four textbook paths use this evidence. The timer chapter establishes time; the velocity chapters measure an interval and then a local neighborhood; the cart chapter turns equal-time strips into a velocity plot; the free-fall chapter predicts a later mark from earlier gaps. A dot keeps its acquisition identity throughout the explanation.
 
-<h2 id="try">Choose a measurement question before reading the tape</h2>
+<h2 id="try">Predict before revealing the next mark</h2>
 
-- **Timer:** move the recording time and watch a new dot appear after each fixed interval. Count gaps, rather than multiplying the number of dots by the period.
-- **Velocity:** select two recorded positions and divide their displacement difference by their time difference. Shortening the measurement window brings its average closer to the velocity at the window’s start.
-- **Accelerating cart:** calculate velocities from equal-time records, then plot them against time. The slope gives acceleration.
-- **Free fall:** apply the same sampling method to a vertically falling mass. Differences between consecutive equal-time displacements yield9.8 m/s² in this drag-free model.
+- **Fixed ticks:** compare two constant-speed records. The faster tape still has equal gaps. Five intervals require six dots. At the 50 Hz used here, neighboring marks are 0.02 s apart.
+- **Measure velocity:** compare 0.20–0.40 s with 0.60–0.80 s. The later interval is equally long in time but covers more distance, so its average velocity is higher. That number describes an interval.
+- **Local velocity:** keep 0.50 s fixed and bring the recorded endpoints closer on both sides. The gold finite-interval average approaches the blue instantaneous model value; these are different kinds of information.
+- **Accelerating cart:** group five short gaps at a time. The example gives 1.5, 2.1, 2.7 and 3.3 cm, each over 0.10 s. If that pattern continues, the next gap should be 3.9 cm. Pause, then reveal the new mark.
+- **Free fall:** successive gaps are 4.9, 14.7 and 24.5 cm, increasing by 9.8 cm each time. Constant acceleration predicts a next gap of 34.3 cm. Doubling the mass leaves the predicted drop distance unchanged in the ideal drag-free model.
 
-The apparatus and the removed tape are two views of one record. The removed strip is arranged from early to late time for reading. Its dots, ruler measurements, and graph all come from the same motion.
+Exploration lets you change records, inspect acquisition, vary the cart's model acceleration, narrow the velocity interval and reveal a predicted mark. Acceleration comparisons keep common physical scales. Rescaling every record to the same displayed length would conceal the effect being compared.
 
-<h2 id="deeper">Measurements and their assumptions</h2>
+<h2 id="deeper">How a paper record supports a physical inference</h2>
 
 <details>
-<summary>Average velocity is not the velocity at an arbitrary instant</summary>
+<summary>An interval directly gives an average velocity</summary>
 
-<div className="formula">vaverage = Δx/Δt</div>
+<div className="formula">vaverage = Δx / Δt</div>
 
-For general changing motion, a shrinking interval is needed to approach instantaneous velocity. The hand-pulled path deliberately uses smooth nonconstant acceleration, so a broad interval is not mistaken for an exact instantaneous measurement.
+The velocity path has smooth but nonconstant acceleration. A wide interval centered on 0.50 s does not give exactly the velocity at its midpoint. Narrowing the interval reduces the difference. The instantaneous value is an analytical model reference, not a precise reading supposedly obtained directly from two marks.
 
-Constant acceleration has a useful special property: the average over a time interval symmetric about its midpoint equals the velocity at that midpoint. This is the usual cart and free-fall tape method; it is not a general rule for all motion.
+The instrument records only at tick times. In a 50 Hz record, the nearest marks on either side of the center are 0.02 s earlier and later: the smallest symmetric neighborhood still spans 0.04 s. Continuous screen interpolation does not create additional samples. Shorter intervals also magnify real ruler errors.
+
+Constant acceleration has a special property: an interval's average velocity equals its instantaneous velocity at the midpoint. The cart's velocity points therefore belong at 0.05, 0.15, 0.25 and 0.35 s, rather than at arbitrarily chosen endpoints. This property does not hold for every changing motion.
 
 </details>
 
 <details>
-<summary>Acceleration from equal-time displacement differences</summary>
+<summary>Why can equal-time gaps predict another mark?</summary>
 
-With three recorded positions separated by the same intervalT, constant acceleration gives:
+For constant acceleration, consecutive displacements over the same duration T differ by aT². Three already recorded positions give:
 
-<div className="formula">a = (xnext − 2xmiddle + xprevious)/T²</div>
+<div className="formula">a = (xnext − 2xmiddle + xprevious) / T²</div>
 
-The cart path specifies acceleration; it does not equate hanger weight with string tension. A separate force–mass investigation must account for system mass and friction compensation. The falling path neglects air and tape resistance. Real frequency errors, ruler uncertainty, blurred marks, and friction affect results.
+If that acceleration continues, the next gap equals the last gap plus the increment between the last two gaps. The dashed strip shows this conditional prediction. The solid marks appear afterward as a new model record. The prediction function receives only three known positions; it does not look up the future position.
 
-These simulated records teach sampling and analysis. They are not independent experimental measurements ofg. Viewing is slowed, while all displayed physical times remain in seconds.
+The cart's gap increment is 0.6 cm. With T = 0.10 s, acceleration is 0.006 / 0.10² = 0.60 m/s². Free fall has a 9.8 cm increment, giving 0.098 / 0.10² = 9.80 m/s². Increasing velocity does not imply increasing acceleration.
 
 </details>
+
+<details>
+<summary>The apparatus and the model's limits</summary>
+
+An electromagnetic timer uses a vibrating striker and carbon paper; a spark timer uses periodic discharges. The illustration shows their recording function with ideal 50 Hz sampling. It does not model electrical transients or high-voltage operation. In a real experiment, check the frequency, choose clear marks and repeat the record. The textbook also recommends avoiding the closely packed initial marks when they are difficult to measure.
+
+Old marks move with the tape; new marks form at the stationary needle. Analysis arranges the same record from early to late time. Separating its intervals and aligning their starting points changes the view, not the data.
+
+Cart acceleration is prescribed. The string gives the cart and hanging mass equal displacement magnitudes. This scene does not substitute hanging weight for tension; an accelerating hanging mass has unequal weight and tension. Free fall neglects air and tape resistance. These are teaching-model records, not independent experimental measurements of g or a fresh validation of F = ma.
+
+</details>
+
+Sources: the supplied PEP High School Physics Required Book 1, printed pages 18, 22–23, 36–38 and 48–49; [Institute of Physics: ticker timers and speed](https://spark.iop.org/ticker-timers-investigating-speed); [OpenStax: instantaneous velocity](https://openstax.org/books/university-physics-volume-1/pages/3-2-instantaneous-velocity-and-speed); [OpenStax: acceleration](https://openstax.org/books/university-physics-volume-1/pages/3-3-average-and-instantaneous-acceleration).

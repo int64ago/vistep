@@ -1,39 +1,129 @@
 ---
-import { foodAssay, lipidDroplets } from '../../models/bio-food-tests';
-const protein = foodAssay('biuret', 'albumin', 4),
-  sugar = foodAssay('fehling', 'pear', 4);
+import { copperNetLedger, dyeFilmState, peptideMotif } from '../../models/bio-food-tests';
+const copper = copperNetLedger(1),
+  dye = dyeFilmState(18),
+  peptide = peptideMotif(1),
+  lipidMarks = Math.round((18 * dye.lipid) / (dye.bath + dye.lipid)),
+  px = (x: number) => 329 + (x - peptide.copper.x) * 0.59,
+  py = (y: number) => 111 + (y - peptide.copper.y) * 0.59;
 ---
 
-<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
-  ><g transform="translate(40 25)"
-    >{
-      [sugar, protein].map((s, i) => (
-        <g transform={`translate(${i * 70} 0)`}>
-          <path d="M3 83H41V145Q41 165 22 165Q3 165 3 145Z" fill={s.liquid} />
-          {s.precipitate > 0 && (
-            <path d="M3 140Q22 130 41 140V147Q41 165 22 165Q3 165 3 147Z" fill="#b76b45" />
-          )}
-          <path d="M8 30V120" stroke="#fff" stroke-opacity=".6" stroke-width="3" />
-        </g>
-      ))
-    }</g
-  ><rect
-    x="220"
-    y="45"
-    width="145"
-    height="140"
-    rx="22"
-    fill="#e1e7c5"
-    stroke="#9daa82"
-    stroke-width="2"></rect>{
-    lipidDroplets().map((p) => (
-      <ellipse
-        cx={225 + p.x * 0.5}
-        cy={33 + p.y * 0.75}
-        rx={p.r * 0.7}
-        ry={p.r * 0.55}
-        fill="#d78d36"
-      />
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- A new solid, redistribution of existing dye, and a new Cu(II) environment. -->
+  <path
+    d="M22 178H106M139 178H251M276 178H381"
+    stroke="#c2ceb5"
+    stroke-width="2"
+    stroke-linecap="round"></path>
+  <path d="M33 50H91V148Q91 174 62 174Q33 174 33 148Z" fill="#dce9e0" fill-opacity=".55"></path>
+  <path d="M36 89H88V148Q88 171 62 171Q36 171 36 148Z" fill="#d5e5df"></path>
+  <path
+    d={`M36 ${162 - copper.productUnits * 2.2}Q62 ${155 - copper.productUnits * 2.2} 88 ${162 - copper.productUnits * 2.2}V148Q88 171 62 171Q36 171 36 148Z`}
+    fill="#bb795d"></path>
+  <path
+    d="M29 50H95M33 50V148Q33 174 62 174Q91 174 91 148V50"
+    stroke="#829f94"
+    stroke-width="2.5"
+    stroke-linecap="round"></path>
+  <path d="M41 61V134" stroke="#fff" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"
+  ></path>
+  {
+    Array.from({ length: copper.productUnits }, (_, i) => (
+      <circle cx={44 + (i % 3) * 17} cy={151 + Math.floor(i / 3) * 10} r="2.7" fill="#925c4a" />
     ))
-  }</svg
->
+  }
+  <text x="62" y="212" fill="#736958" font-size="27" text-anchor="middle">Cu₂O</text>
+
+  <rect
+    x="139"
+    y="55"
+    width="112"
+    height="116"
+    rx="17"
+    fill="#e7e3bd"
+    stroke="#a5b28e"
+    stroke-width="2"></rect>
+  <ellipse
+    cx="205"
+    cy="113"
+    rx="37"
+    ry="34"
+    fill="#d79343"
+    fill-opacity={Math.min(1, dye.lipid / 45)}
+    stroke="#ba995a"
+    stroke-width="1.5"></ellipse>
+  {
+    Array.from({ length: 18 }, (_, i) => {
+      const inLipid = i < lipidMarks;
+      const a = i * 2.39996323;
+      const r = 9 + (i % 3) * 7;
+      const x = inLipid ? 205 + Math.cos(a) * r : 150 + ((i - lipidMarks) % 2) * 8;
+      const y = inLipid ? 113 + Math.sin(a) * r : 76 + Math.floor((i - lipidMarks) / 2) * 28;
+      return (
+        <path
+          d={`M${x - 3} ${y - 2}l3 2 3 -2m-3 2v4`}
+          stroke="#b87935"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      );
+    })
+  }
+  <path
+    d="M153 101H180m-5-4 5 4-5 4M179 126H152m5-4-5 4 5 4"
+    stroke="#6f9885"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path
+    d="M178 198H212m-6-5 6 5-6 5M212 212H178m6-5-6 5 6 5"
+    stroke="#799782"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+
+  {
+    peptide.donors.slice(0, 3).map((a, i) => {
+      const ca = peptide.carbons[i * 2],
+        c = peptide.carbons[i * 2 + 1],
+        n = peptide.donors[i + 1],
+        o = peptide.oxygens[i];
+      return (
+        <g>
+          <path
+            d={`M${px(a.x)} ${py(a.y)}L${px(ca.x)} ${py(ca.y)}L${px(c.x)} ${py(c.y)}L${px(n.x)} ${py(n.y)}`}
+            stroke="#8c9d85"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d={`M${px(c.x) - 1.5} ${py(c.y)}L${px(o.x) - 1.5} ${py(o.y)}M${px(c.x) + 1.5} ${py(c.y)}L${px(o.x) + 1.5} ${py(o.y)}`}
+            stroke="#8c9d85"
+            stroke-width="1.4"
+          />
+          <circle cx={px(o.x)} cy={py(o.y)} r="4" fill="#c1907d" />
+        </g>
+      );
+    })
+  }
+  {
+    peptide.donors.map((n) => (
+      <g>
+        <path
+          d={`M${px(n.x)} ${py(n.y)}L329 111`}
+          stroke="#a18bb0"
+          stroke-width="2"
+          stroke-dasharray="3 4"
+        />
+        <circle cx={px(n.x)} cy={py(n.y)} r="12" fill="#e9eedd" />
+        <text x={px(n.x)} y={py(n.y) + 8} fill="#73866c" font-size="24" text-anchor="middle">
+          N
+        </text>
+      </g>
+    ))
+  }
+  <circle cx="329" cy="111" r="22" fill="#c9b7d2" stroke="#a48bb2" stroke-width="2"></circle>
+  <text x="329" y="120" fill="#6c577b" font-size="25" text-anchor="middle">Cu</text>
+  <text x="329" y="40" fill="#7c6b88" font-size="24" text-anchor="middle">+2 → +2</text>
+</svg>

@@ -1,5 +1,5 @@
 {
-  "status": "pending-batch-2",
+  "status": "verified-awaiting-batch-2-publication",
   "sourceCorrections": [
     {
       "id": "required-1-wire-diameter",
@@ -43,7 +43,8 @@
       "observedSourceBehavior": "variants缺e1别名，indexOf=-1经Math.max变成0，探索质子装置；观看仍由原chapter2/3选择中子。",
       "expected": "中子反冲装置",
       "suggestedFix": "curriculum variant sceneVariant='e3-chadwick-neutron'或独立alias resolver并组件测试。",
-      "browserReproduced": false
+      "browserReproduced": true,
+      "resolutionStatus": "fixed-and-final-static-verified"
     },
     {
       "id": "physics-variant-wu",
@@ -56,7 +57,8 @@
       "observedSourceBehavior": "variants缺required-1别名，indexOf=-1经Math.max变成0，探索Higgs；观看仍由chapter8/9选择Wu。",
       "expected": "钴60极化/计数装置",
       "suggestedFix": "curriculum variant sceneVariant='e3-wu-parity'或alias resolver并组件测试。",
-      "browserReproduced": false
+      "browserReproduced": true,
+      "resolutionStatus": "fixed-and-final-static-verified"
     },
     {
       "id": "physics-variant-galileo-energy",
@@ -69,7 +71,18 @@
       "observedSourceBehavior": "includes('double')先命中，includes('energy')永远不执行；探索kind='double'，条件kind==='energy'下能量条消失。",
       "expected": "机械能观察/势能动能条",
       "suggestedFix": "将明确energy判断置前或用无歧义sceneVariant；覆盖watch→explore与用户手动选择保持。",
-      "browserReproduced": false
+      "browserReproduced": true,
+      "resolutionStatus": "fixed-and-final-static-verified"
     }
-  ]
+  ],
+  "rootEvidenceReview": "Read the exact printed-page text for 124 / 34 / 85; use explicit sceneVariant values without changing the movie windows or learning order.",
+  "validation": {
+    "componentRegressionTests": 3,
+    "curriculumTests": 8,
+    "result": "11 passed",
+    "browserBefore": "artifacts/teaching-principles/batch-2-apparatus-before/report.json",
+    "browserAfter": "artifacts/teaching-principles/batch-2-apparatus-after/report.json",
+    "observations": "All three wrong apparatus states reproduced on batch1 static; all three corrected in the final batch2 static build using real watch-to-explore controls. Mechanical-energy strip restored.",
+    "browserFinalStatic": "artifacts/teaching-principles/batch-2-apparatus-static-final/report.json"
+  }
 }

@@ -115,7 +115,7 @@
 | [电子得失与电子对偏移](../../src/content/chem-electron-transfer.mdx)              | 1:31 | 氧化数改变，一定是完整电子离开了吗？                 |
 | [焰色与原子光谱](../../src/content/chem-flame-spectra.mdx)                        | 3:18 | 一团颜色里，藏着哪些原子信息？                       |
 | [钠与过氧化钠的证据链](../../src/content/chem-sodium-reactions.mdx)               | 3:42 | 同样含钠，遇到空气和水会怎样？                       |
-| [两种碳酸盐的对照](../../src/content/chem-carbonate-comparison.mdx)               | 2:27 | 碳酸钠和碳酸氢钠，怎样用证据区分？                   |
+| [两种碳酸盐的对照](../../src/content/chem-carbonate-comparison.mdx)               | 3:22 | 名字里有氢，为什么还是碱性的？                       |
 | [电解质与电流](../../src/content/chem-ionic-conduction.mdx)                       | 1:59 | 有离子，为什么不一定能导电？                         |
 | [看见光的条件](../../src/content/chem-colloid-light.mdx)                          | 3:02 | 光穿过去了，为什么侧面看不见？                       |
 
@@ -171,7 +171,7 @@
 | [可转移的化学信号](../../src/content/bio-chemical-signals.mdx)                | 2:12 | 神经没有接通，另一颗心为什么也慢了？           |
 | [神经信号的实验线索](../../src/content/bio-nerve-signals.mdx)                 | 2:34 | 电表的两次偏转，怎样连到神经之间的传递？       |
 | [内环境的缓冲实验](../../src/content/bio-buffer-comparison.mdx)               | 1:51 | 同样加入酸，三份样液为何变化不同？             |
-| [食物中的三种证据](../../src/content/bio-food-tests.mdx)                      | 1:59 | 同样是变色，分别检测什么？                     |
+| [食物中的三种证据](../../src/content/bio-food-tests.mdx)                      | 2:53 | 变红、变橙、变紫：颜色能证明什么？             |
 | [显微镜中的细胞](../../src/content/bio-cell-microscopy.mdx)                   | 2:18 | 放大以后，究竟看见了什么？                     |
 
 ## 机械与运动
@@ -208,7 +208,7 @@
 | [悬挂法找重心](../../src/content/suspension-center-of-gravity.mdx)   | 1:53 | 两次悬挂，怎样找到薄板的同一个点？         |
 | [自由落体小实验](../../src/content/free-fall-activities.mdx)         | 2:18 | 一张纸、一对石头、一把尺，分别能回答什么？ |
 | [手机加速度实验](../../src/content/phone-accelerometer-lab.mdx)      | 2:46 | 自由下落时，手机为什么可能读出零？         |
-| [纸带运动实验室](../../src/content/ticker-tape-lab.mdx)              | 2:12 | 纸带上的点，怎样变成速度和加速度？         |
+| [纸带怎样记录运动](../../src/content/ticker-tape-lab.mdx)            | 3:03 | 同样的节拍，为什么点越来越疏？             |
 | [牛顿管实验](../../src/content/newton-tube.mdx)                      | 2:00 | 羽毛落得慢，是因为比较轻吗？               |
 | [质心](../../src/content/center-of-mass.mdx)                         | 2:21 | 内部运动能把整个系统带走吗？               |
 | [弹性碰撞](../../src/content/elastic-collision.mdx)                  | 2:18 | 碰撞时变慢的能量，会回来吗？               |

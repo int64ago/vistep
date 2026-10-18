@@ -1,0 +1,184 @@
+{
+  "batch": 2,
+  "status": "reviewed-awaiting-publication",
+  "baselineCommit": "c2df2cc00a85f5379dccb04a836b952980575939",
+  "owners": [
+    "Codex (/root)",
+    "Codex (/root/teaching_subject_fit)",
+    "Codex (/root/chemistry_inventory)",
+    "Codex (/root/biology_inventory)"
+  ],
+  "scope": {
+    "scenes": ["ticker-tape-lab", "chem-carbonate-comparison", "bio-food-tests"],
+    "newAuthoredTextbookQuestions": 7,
+    "wholeCollectionComplete": false
+  },
+  "sourceCorrections": "drafts/teaching-principles/source-and-variant-corrections.json",
+  "rootReviewFindings": [
+    {
+      "issue": "Bicarbonate pH uses a CO2-inclusive apparent constant, but pure H2CO3 transfer alone cannot explain that constant.",
+      "resolution": "Visible dissolved-CO2/hydration pool and combined-pool label added; independent carbon/charge equilibrium retained.",
+      "status": "model-and-endframe-reviewed"
+    },
+    {
+      "issue": "Dye tracer dwell-time offsets changed rates relative to the quantitative compartment model.",
+      "resolution": "Pure exponential event waits, continuous visual transfer within the wait and independent population-vs-analytic regression.",
+      "status": "model-reviewed"
+    },
+    {
+      "issue": "Hydrolysis OH label plus explicit H counted hydrogen twice visually.",
+      "resolution": "Explicit O and H atoms with endpoint bonds; stable original IDs retained.",
+      "status": "model-reviewed"
+    },
+    {
+      "issue": "Ticker acceleration expression omitted units.",
+      "resolution": "Added m/s² and inspected final actual narrow acceleration formulas.",
+      "status": "root-static-passed"
+    },
+    {
+      "issue": "Recorded speech and fraction-based visual thresholds disagreed after measurement, especially sugar hydrolysis, bicarbonate proton routes and the final food-test recap.",
+      "resolution": "Second-based per-language directors calibrated against measured word timestamps; final causal keyframes inspected.",
+      "status": "root-static-passed"
+    },
+    {
+      "issue": "English tenth-second was transcribed as ten-second, creating a unit ambiguity.",
+      "resolution": "Regenerated with explicit zero point one seconds; independent ASR confirms 0.1-second sampling.",
+      "status": "ASR-and-root-static-passed"
+    },
+    {
+      "issue": "Bicarbonate accepting/donating shots were only 1–2 seconds at measured speech speed.",
+      "resolution": "Expanded proton cue to34s; each tracked transfer gets about3s plus endpoint dwell. Both language event frames inspected.",
+      "status": "root-static-passed"
+    },
+    {
+      "issue": "Food-test exploration always reset to the first theme even when entering from protein/rinsing.",
+      "resolution": "Untouched exploration follows current chapter; a manual theme choice persists across watch/explore.",
+      "status": "author-ui-passed"
+    },
+    {
+      "issue": "Protein chapter recap showed dye while the constant caption referred only to copper.",
+      "resolution": "A concise chapter-wide caption now names the three color-change causes; root measured full phone player without overflow.",
+      "status": "root-preview-passed"
+    },
+    {
+      "issue": "Food cover still imported removed model functions; its reversible-arrow glyph and play-icon overlap also failed actual card review.",
+      "resolution": "Rebuilt cover from current copper, dye and peptide models; explicit SVG arrows and relocated copper-valence label; PNG and actual narrow/desktop cards inspected.",
+      "status": "root-card-passed"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "subjective-listening",
+      "status": "not-run",
+      "reason": "No subjective listening interface available; ASR and native playback telemetry will be recorded separately."
+    },
+    {
+      "kind": "physical-phone-performance",
+      "status": "not-run",
+      "reason": "Browser viewport emulation only; no physical phone access."
+    },
+    {
+      "kind": "independent-ASR",
+      "status": "passed",
+      "cases": 36,
+      "evidence": "artifacts/teaching-principles/batch-2-transcription-final.json",
+      "method": "mlx Whisper large-v3-turbo; no language or reference prompt. Wording of English 0.1-second sampling clarified after initial ambiguity. This is not subjective listening."
+    },
+    {
+      "kind": "automated-contracts-and-builds",
+      "status": "passed",
+      "tests": 3904,
+      "testFiles": 574,
+      "sceneCheckTests": 474,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "typeHints": 614,
+      "productionPages": 2134,
+      "previewPages": 2134,
+      "evidence": [
+        "artifacts/teaching-principles/batch-2-verify-final.log",
+        "artifacts/teaching-principles/batch-2-scene-check-final.log",
+        "artifacts/teaching-principles/batch-2-preview-final.log"
+      ]
+    },
+    {
+      "kind": "final-static-keyframes-and-layout",
+      "status": "passed",
+      "cases": 124,
+      "conditions": "92 chapter frames ZH1440/EN320 and32 time-specific causal frames EN320/ZH390/EN601/ZH768; actual SVG text and complete-player bounds checked; zero findings. Capture count is not manual-view count.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-2-static-final/report.json",
+        "artifacts/teaching-principles/batch-2-causal-static/report.json"
+      ]
+    },
+    {
+      "kind": "textbook-windows-questions-transfer-reduced-motion-audio-failure",
+      "status": "passed",
+      "cases": 17,
+      "evidence": "artifacts/teaching-principles/batch-2-behavior/report.json"
+    },
+    {
+      "kind": "exploration-inputs-and-watch-context",
+      "status": "passed",
+      "conditions": "Real buttons/keyboard: ticker64 parameter states plus8 textbook-route contexts, carbonate14 checks, food9 inference/replay checks plus4 context-persistence checks.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-2-controls-static/ticker/report.json",
+        "artifacts/teaching-principles/batch-2-controls-static/carbonate/exploration.json",
+        "artifacts/teaching-principles/batch-2-controls-static/food/report.json",
+        "artifacts/teaching-principles/batch-2-controls-static/food-context/report.json"
+      ]
+    },
+    {
+      "kind": "cover-and-catalog-card",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/biology-next-food-tests/cover-review/report.json",
+      "rootInspection": "Actual final EN390 card inspected; source-driven evidence, explicit arrows and unoccluded copper-valence caption."
+    },
+    {
+      "kind": "uninterrupted-native-audio-and-film-playback",
+      "status": "passed",
+      "runs": 6,
+      "chapters": 36,
+      "seekingAfterStart": false,
+      "maxClockDriftSeconds": 0.10141799999999535,
+      "conditions": "Chinese1440x1000 and English390x844; ordinary autoplay policy with explicit user voice activation. Native MP3/film time and rendered checkpoints every10s, no seek after start. Not subjective listening or physical-phone performance.",
+      "evidence": "artifacts/teaching-principles/batch-2-continuous/report.json"
+    }
+  ],
+  "pending": ["Actions production confirmation"],
+  "ciPrerequisite": {
+    "originalFirstBatchRun": 39125699621,
+    "observedFailure": "Iodine exhaustive path test exceeded its 5s timeout twice; collection dictionary test also timed out once. No failed scientific assertion reported.",
+    "fixCommit": "c2df2cc00a85f5379dccb04a836b952980575939",
+    "checks": "Same sample conditions, lower assertion-allocation overhead, per-scene dictionary coverage. 450 targeted tests passed.",
+    "productionRun": 39126987124,
+    "status": "published-successfully",
+    "evidence": "artifacts/teaching-principles/batch-1-deployment/deployment.json"
+  },
+  "rootVisualInspection": {
+    "status": "final-static-keyframes-reviewed",
+    "conditions": "Root inspected actual rendered decisive frames separately from capture totals; native continuous playback checked separately; no physical-phone or subjective-listening claim.",
+    "examples": [
+      "ticker same-tape segment lengths, acceleration units, v-t plot, conditional next-point prediction and equal-fall mass comparison",
+      "carbonate proton accepting/donating routes, CO2-inclusive pool, continuous heated gas path, atom allocation, full/partial residue mass",
+      "food copper identity/redox, glucose opening, sucrose hydrolysis, Sudan structure/phase exchange, unchanged droplet during rinse, peptide coordination and language-specific recap"
+    ],
+    "rootStaticStillReview": "Reviewed desktop and phone prediction/reveal, matched samples, both tracked proton transfers, carbon pool, full/partial residue, glucose ring-opening/hydrolysis, dye redistribution, connected peptide coordination and recap. Tablet layouts sampled at601/768."
+  },
+  "recordedDurationsSeconds": {
+    "ticker-tape-lab": 183,
+    "chem-carbonate-comparison": 202,
+    "bio-food-tests": 173
+  },
+  "frozenBuildSource": {
+    "commit": "c2df2cc00a85f5379dccb04a836b952980575939",
+    "treeHash": "d5ffc25e7259f69fdebb34636f5bf6d1ca97fe31491e61ff3056bcbfebb48e1a",
+    "gitDiffHash": "05ee130866c59ef49be4368adf1d86d9ac1ed4b152ba4a81dc47040d59850e54",
+    "fileCount": 5149,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "publication": {
+    "status": "pending",
+    "method": "Authorized main push triggers verified Actions publication; no duplicate manual deployment."
+  }
+}

@@ -159,7 +159,7 @@
     },
     {
       "sceneSlug": "ticker-tape-lab",
-      "status": "content-reviewed-revise",
+      "status": "batch-2-reviewed",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -465,7 +465,7 @@
     },
     {
       "sceneSlug": "phone-accelerometer-lab",
-      "status": "content-reviewed-revise",
+      "status": "batch-3-rewriting",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -614,7 +614,9 @@
             "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
             "metadataCorrection": null,
             "interfaceFindings": ["physics-variant-galileo-energy"]
-          }
+          },
+          "sceneVariant": "energy",
+          "appliedInterfaceCorrection": "source-and-variant-corrections.json"
         }
       ],
       "review": {
@@ -1139,7 +1141,7 @@
     },
     {
       "sceneSlug": "newton-second-law-lab",
-      "status": "batch-1-reviewed",
+      "status": "batch-1-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -1479,7 +1481,9 @@
             "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
             "metadataCorrection": null,
             "interfaceFindings": ["physics-variant-wu"]
-          }
+          },
+          "sceneVariant": "e3-wu-parity",
+          "appliedInterfaceCorrection": "source-and-variant-corrections.json"
         },
         {
           "id": "e3-higgs-discovery",
@@ -1789,7 +1793,7 @@
             "zh": "误差和有效数字",
             "en": "Uncertainty and significant figures"
           },
-          "page": 123,
+          "page": 124,
           "textbookTitle": {
             "zh": "用累积法测量铜丝直径",
             "en": "Measure wire diameter by accumulation"
@@ -1811,7 +1815,8 @@
               "articleAlreadyCorrect": "src/content/length-instruments.mdx"
             },
             "interfaceFindings": []
-          }
+          },
+          "appliedSourceCorrection": "source-and-variant-corrections.json"
         },
         {
           "id": "r3-vernier-caliper",
@@ -4606,7 +4611,9 @@
             "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
             "metadataCorrection": null,
             "interfaceFindings": ["physics-variant-chadwick"]
-          }
+          },
+          "sceneVariant": "e3-chadwick-neutron",
+          "appliedInterfaceCorrection": "source-and-variant-corrections.json"
         },
         {
           "id": "e3-rutherford-proton",
@@ -4838,7 +4845,7 @@
             "zh": "简谐运动",
             "en": "Simple harmonic motion"
           },
-          "page": 32,
+          "page": 34,
           "textbookTitle": {
             "zh": "用数码相机和计算机绘制弹簧振子的x-t图像",
             "en": "Use a digital camera and computer to plot a spring oscillator's displacement-time graph"
@@ -4858,7 +4865,8 @@
               "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/elective-1-p32-p34.txt"
             },
             "interfaceFindings": []
-          }
+          },
+          "appliedSourceCorrection": "source-and-variant-corrections.json"
         },
         {
           "id": "e1-pencil-trace",
@@ -8677,7 +8685,7 @@
             "zh": "氢原子光谱和玻尔的原子模型",
             "en": "Hydrogen spectra and the Bohr model"
           },
-          "page": 84,
+          "page": 85,
           "textbookTitle": {
             "zh": "观察和分析氢原子光谱",
             "en": "Observing and analysing the hydrogen spectrum"
@@ -8697,7 +8705,8 @@
               "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/elective-3-p84-p85.txt"
             },
             "interfaceFindings": []
-          }
+          },
+          "appliedSourceCorrection": "source-and-variant-corrections.json"
         },
         {
           "id": "e3-fraunhofer-spectral-analysis",
@@ -9129,7 +9138,7 @@
     },
     {
       "sceneSlug": "chem-colloid-light",
-      "status": "batch-1-reviewed",
+      "status": "batch-1-published",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -9235,7 +9244,7 @@
     },
     {
       "sceneSlug": "chem-precipitation-paths",
-      "status": "content-reviewed-revise",
+      "status": "batch-3-rewriting",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -9521,7 +9530,7 @@
     },
     {
       "sceneSlug": "chem-carbonate-comparison",
-      "status": "content-reviewed-rebuild",
+      "status": "batch-2-reviewed",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -15418,7 +15427,7 @@
     },
     {
       "sceneSlug": "bio-food-tests",
-      "status": "content-reviewed-rebuild",
+      "status": "batch-2-reviewed",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -15525,7 +15534,7 @@
     },
     {
       "sceneSlug": "bio-membrane-evidence",
-      "status": "content-reviewed-revise",
+      "status": "batch-3-rewriting",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -15950,7 +15959,7 @@
     },
     {
       "sceneSlug": "bio-osmosis",
-      "status": "batch-1-reviewed",
+      "status": "batch-1-published",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -20173,5 +20182,6 @@
       "chemistry-content-review.json",
       "biology-content-review.json"
     ]
-  }
+  },
+  "currentBatch": 3
 }

@@ -1,0 +1,102 @@
+{
+  "sceneSlug": "bio-food-tests",
+  "owner": "/root/biology_inventory",
+  "status": "historical-author-handoff-superseded-by-root-batch-review",
+  "date": "2026-10-18T12:17:56.537626+00:00",
+  "commit": "369a4da2aab8096b719fc9a1167715cf6ddca251",
+  "sourceHashes": {
+    "src/components/experiments/BioFoodTests.tsx": "f17e36693fee280a455d2f539b335f33f9d56cd40926da79b2e7150d2b88ea45",
+    "src/models/bio-food-tests.ts": "8df1cad3a6eaadf9e6f2365e902744a1b643ae686b40a6784c9c5bdc66142f3a",
+    "src/models/bio-food-tests.test.ts": "428f6482f04381547e02509d8ea725f1e2dc18ee6a2afb5fac163cea79907bf0",
+    "src/styles/bio-food-tests.css": "991769ce778243ca00d005bacf9c485c6bd7683411bb3a40aa35872596a5adff",
+    "src/content/bio-food-tests.mdx": "bd978454500ff580022dd07f58aba7fd9eb558a7df4dd0ad67ab1276174f8261",
+    "src/content/en/bio-food-tests.mdx": "63dec9c6496598a44afbdb69c44ce774a2cd0d0013d7e4186427b260c6f5ebba"
+  },
+  "checks": [
+    {
+      "type": "source-and-scientific-review",
+      "status": "passed-for-disclosed-teaching-model",
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-food-tests/ready-brief.json",
+        "artifacts/teaching-principles/chemistry-food-test-review/review.json"
+      ],
+      "notes": "Primary/official sources at recorded access levels; no claim of full kinetics or protein speciation."
+    },
+    {
+      "type": "automated-model-tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/bio-food-tests.test.ts",
+      "count": 13,
+      "notes": "Includes atom/charge endpoint ledger, hydrolysis/opening graph identity, closed/open analytic partition, independent population convergence, no donor collisions and bounded Cu(II) occupancy."
+    },
+    {
+      "type": "focused-typescript",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --jsx react-jsx --esModuleInterop --target es2022 --module esnext --moduleResolution bundler --skipLibCheck src/components/experiments/BioFoodTests.tsx"
+    },
+    {
+      "type": "browser-keyframe-capture-and-layout-measurement",
+      "status": "passed",
+      "count": 60,
+      "languages": ["zh", "en"],
+      "widths": [320, 390, 1280],
+      "height": 844,
+      "desktopHeight": 900,
+      "pageErrors": [],
+      "minRenderedSvgTextPx": 16.737417763157897,
+      "completePlayerHeightRangePx": [542, 583.953125],
+      "evidence": "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/report.json",
+      "notes": "Saved narration off, reduced motion, real browser viewport overrides; no physical phone claim. Capturing 60 frames is not a claim of manually viewing all 60."
+    },
+    {
+      "type": "author-visual-inspection",
+      "status": "passed-for-inspected-decisive-stills",
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/zh-320-glucose.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-320-glucose.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-320-affinity.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-320-partition.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-390-partition.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-320-protein-bound.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/zh-1280-copper.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-1280-hydrolysis.png",
+        "artifacts/teaching-principles/biology-next-food-tests/final-keyframes/en-320-rinse.png"
+      ],
+      "notes": "Actual images viewed: final ring-open, hydrolysis, affinity, partition, copper endpoint and peptide coordination. Earlier keyframe review also checked macro tubes, rinsing and alternate sizes. Fixed sub-16px SVG labels, peptide donor collision, hydroxyl duplication risk and clipped English SVG sentence."
+    },
+    {
+      "type": "real-ui-interaction",
+      "status": "passed",
+      "count": 9,
+      "evidence": "artifacts/teaching-principles/biology-next-food-tests/interactions/report.json",
+      "notes": "Actual buttons and keyboard: deep link, prehydrolysis prediction, invalid control, rinse amount, site availability, return to watch, seek to end, replay. Technical checks, not listening."
+    },
+    {
+      "type": "root-independent-visual-review",
+      "status": "partial-keyframes-accepted",
+      "owner": "/root",
+      "notes": "Root explicitly viewed copper, hydrolysis, rinse and protein-bound images. Root found the wash narration saying two droplets while one is visible; both packet cues corrected to the same single droplet. Root ring-opening inspection pending at this record."
+    },
+    {
+      "type": "full-normal-speed-continuous-visual-viewing",
+      "status": "not-run",
+      "reason": "Final measured audio/timeline not generated; root coordinates final complete player verification."
+    },
+    {
+      "type": "new-bilingual-voice-generation-and-listening",
+      "status": "not-run",
+      "reason": "Root owns audio, awaits visual acceptance. All browser checks were silent."
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run"
+    },
+    {
+      "type": "global-verify-preview-build-publication",
+      "status": "not-run-by-owner",
+      "owner": "/root"
+    }
+  ],
+  "finalRootAcceptance": "drafts/teaching-principles/batch-2-review.json",
+  "historicalEvidenceNote": "Checks below preserve the author handoff at its recorded time; later measured audio,17 model tests, timing calibration, cover repair and final static acceptance are recorded in the root batch review."
+}
