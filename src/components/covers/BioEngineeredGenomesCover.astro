@@ -1,33 +1,75 @@
 ---
-import { chromosomeLayout } from '../../models/bio-engineered-genomes';
-const groups = chromosomeLayout(15),
-  colors = ['#8cae91', '#c4aa72', '#aa95ac', '#81a8b0', '#b78677', '#a3b980', '#bc9b91', '#8c9aaf'];
+import {
+  genomeSegmentPoints,
+  genomeColors,
+  proteinGeometry,
+  yeastGrowth,
+} from '../../models/bio-engineered-genomes';
+const line = (ps: { x: number; y: number }[]) =>
+  ps.map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`).join(' ');
+const protein = proteinGeometry(1, 1);
 ---
 
-<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
-  ><path
-    d="M62 35C116 10 170 50 164 110C158 157 91 170 54 139C20 108 29 55 62 35Z"
-    fill="#d8dfbf"
-    stroke="#91a77e"
-    stroke-width="3"></path>{
-    Array.from({ length: 12 }, (_, i) => (
-      <path
-        d={`M${97 + 40 * Math.cos((i * Math.PI) / 6)} ${91 + 40 * Math.sin((i * Math.PI) / 6)}A40 40 0 0 1 ${97 + 40 * Math.cos((i * Math.PI) / 6 + 0.43)} ${91 + 40 * Math.sin((i * Math.PI) / 6 + 0.43)}`}
-        stroke={colors[i % 8]}
-        stroke-width="6"
-      />
-    ))
-  }<g transform="translate(140 165) scale(.9)"
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M42 36C108 8 204 13 248 46C289 77 302 156 268 190C215 224 93 223 42 184C2 153 8 72 42 36Z"
+    fill="#e1e7d5"
+    stroke="#b4c4a6"
+    stroke-width="2"></path>
+  <g transform="translate(-11 -29) scale(.9)"
     >{
-      groups.map((g) => (
-        <g>
-          <path d={`M${g.x} 0H${g.x + g.length}`} stroke="#7c8f77" stroke-width="3" />
-          {g.blocks.map((b, j) => (
-            <rect x={g.x + j * 14 + 1} y="-17" width="12" height="34" rx="5" fill={colors[b % 8]} />
-          ))}
-          <ellipse cx={g.x + g.length / 2} cy="0" rx="3" ry="7" fill="#746886" />
-        </g>
+      Array.from({ length: 12 }, (_, id) => (
+        <path d={line(genomeSegmentPoints(id, 1))} stroke={genomeColors[id % 8]} stroke-width="7" />
       ))
     }</g
-  ></svg
->
+  >
+  <path
+    d="M104 81C137 65 164 73 187 88S229 104 254 87"
+    stroke="#b37e93"
+    stroke-width="5"
+    stroke-linecap="round"></path>
+  <g transform="translate(199 105)">
+    <path
+      d="M-33-17C-41-43-13-48 0-35C21-45 41-28 34-10L23 10C9 15 5 5-4 12C-22 17-39 6-33-17Z"
+      fill="#b6a68c"
+      stroke="#8c7d65"
+      stroke-width="2"></path>
+    <path d="M-27-10Q0-2 28-10L27 0Q0 8-26 0Z" fill="#f5f2e8"></path>
+    <path
+      d="M-25 4C-31 19-9 30 6 23C22 28 33 16 27 3C10-7-12-7-25 4Z"
+      fill="#d9ccb1"
+      stroke="#9c8e72"
+      stroke-width="2"></path>
+    <path d="M8 12L10 29" stroke="#f5f2e8" stroke-width="5"></path>
+  </g>
+  <path d="M209 135C213 156 242 145 250 166" stroke="#6087a2" stroke-width="4"></path>
+  <g transform="translate(41 6)"
+    ><path d={line(protein)} stroke="#6087a2" stroke-width="4"></path>{
+      protein.map((p) => <circle cx={p.x} cy={p.y} r="3" fill="#709ab2" />)
+    }</g
+  >
+  <g transform="translate(296 57)">
+    <path d="M0 0V102H87" stroke="#a0ad9a" stroke-width="2"></path>
+    {
+      yeastGrowth.map((s, i) => (
+        <g>
+          <path
+            d={line(
+              s.points.map((p) => ({ x: 3 + (p.hours / 26) * 80, y: 99 - (p.od600 / 6) * 91 })),
+            )}
+            stroke={i ? '#b46280' : '#557fa4'}
+            stroke-width="2.5"
+          />
+          {s.points.map((p) => (
+            <circle
+              cx={3 + (p.hours / 26) * 80}
+              cy={99 - (p.od600 / 6) * 91}
+              r="2.3"
+              fill={i ? '#b46280' : '#557fa4'}
+            />
+          ))}
+        </g>
+      ))
+    }
+  </g>
+</svg>

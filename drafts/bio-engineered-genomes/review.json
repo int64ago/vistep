@@ -1,0 +1,222 @@
+{
+  "sceneSlug": "bio-engineered-genomes",
+  "batch": 8,
+  "owner": "/root/biology_inventory",
+  "status": "frozen measured handoff: author director/affected frames/UI complete; root static/full-playback/listening remains separate",
+  "source": {
+    "commit": "f96b88d38a9a0e2947f09c59b51316c0ac09a01c",
+    "files": {
+      "src/components/experiments/BioEngineeredGenomes.tsx": "382117449f5f64c84d789b378c2bddc1ec9e48c07fdd86d4bf32a6d7015e40ff",
+      "src/models/bio-engineered-genomes.ts": "424fc4a6aaea3a90fc3ca33ee7748f49ac4f2c4f0e82ec0f05261125804e6287",
+      "src/models/bio-engineered-genomes.test.ts": "b9c5a0a2a9e009108a7b63542607a3e9319d078459a608f2e64d6a913e59658d",
+      "src/models/bio-engineered-growth.json": "3d0457d58be5dc07d2877a7bb67de1be7e116200d84f2b193e7b5723f9f85767",
+      "src/styles/bio-engineered-genomes.css": "9168ac96d71276c755d765be43deae4bae9e73e76ce685717b3a753615f1ac23",
+      "src/components/covers/BioEngineeredGenomesCover.astro": "488df222ceaa695115bb7a305f995848bd7ef35ba7cb18b170e7f91c34ae4700",
+      "src/content/bio-engineered-genomes.mdx": "fd3a1b90dd889084217f11d68dd6848917c0a234bd5352c5ae4260aae0a63f84",
+      "src/content/en/bio-engineered-genomes.mdx": "7ccd8786c3a5d6c44fbf84bce596e87bd9e7eff18db2c6f795169928fcf02e1d",
+      "drafts/bio-engineered-genomes/brief.md": "93460676f5d51bc44d9508775d969309c63c13895ee48969cb2f6caa691577d5",
+      "drafts/bio-engineered-genomes/principle-first-packet.json": "c91a56ff03541e2884d9b8e97d65b1910ec94985d7a96da53dd3954f2142f60d"
+    }
+  },
+  "conditions": {
+    "origin": "http://127.0.0.1:4325",
+    "engine": "Playwright Chromium",
+    "voice": "new root recordings exist; muted during author UI/keyframe verification; independent word timestamps checked, not subjective listening",
+    "timeline": "measured156s:0/36/82/118",
+    "viewports": ["zh320x568", "en320x568", "zh1280x900", "en390x844"],
+    "motion": "reduced for paused and interaction checks"
+  },
+  "checks": [
+    {
+      "kind": "scoped model tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/bio-engineered-genomes.test.ts",
+      "count": 13,
+      "covers": [
+        "ring closure and per-frame continuity",
+        "16 region identities, lengths and fused endpoint continuity",
+        "DNA/RNA/protein identity separation",
+        "preexisting RNA and missing machinery counterexamples",
+        "two released precursors before pigment",
+        "amino acids join at ribosome exit with continuous older-residue motion",
+        "immutable independent published points",
+        "four chapter IDs and held final chromosome count",
+        "nonfinite/negative inputs",
+        "measured localized references; state continuity before counterexample; answer after spoken question"
+      ]
+    },
+    {
+      "kind": "independent extraction-to-product comparison",
+      "status": "passed",
+      "points": 20,
+      "report": "artifacts/teaching-principles/biology-next-genomes/fixed-data-integration-check.json",
+      "scope": "All fixed point coordinates/IDs, original citation/hashes, digitization bounds and biological replicate count match independently extracted source."
+    },
+    {
+      "kind": "focused TypeScript",
+      "status": "passed",
+      "command": "pnpm exec tsc --project artifacts/teaching-principles/biology-next-genomes/tsconfig.owned.json --noEmit"
+    },
+    {
+      "kind": "automated real-browser paused layout measurement",
+      "status": "passed",
+      "frames": 56,
+      "short320Frames": 42,
+      "minActualTextPx": 16,
+      "max320PlayerBottomPx": 561.96875,
+      "errors": [],
+      "report": "artifacts/teaching-principles/biology-next-genomes/watch-v2/report.json",
+      "notEquivalentTo": "full manual playback or physical phone measurement"
+    },
+    {
+      "kind": "actual UI and keyboard controls",
+      "status": "passed",
+      "count": 42,
+      "errors": [],
+      "report": "artifacts/teaching-principles/biology-next-genomes/interactions-v2/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-genomes/review-interactions.mjs",
+      "covers": [
+        "actual missing transcription/ribosome controls",
+        "existing RNA bypasses current transcription only",
+        "substrate off retains enzyme but removes pigment",
+        "persistent fusion region IDs and fixed growth points",
+        "watch/explore independence and retained manual theme",
+        "chapter menu, deep link, endpoint, replay",
+        "two-language unchanged textbook entry window",
+        "44px exploration targets"
+      ],
+      "harnessCorrection": "Initial harness incorrectly expected Return to demonstration to retain current time. Shared player deliberately replays; the corrected runner performs actual keyboard seek before comparing the same watch state."
+    },
+    {
+      "kind": "affected label frames and geometry",
+      "status": "passed",
+      "frames": 12,
+      "report": "artifacts/teaching-principles/biology-next-genomes/labels-corrected/report.json",
+      "actuallyViewed": [
+        "en-320-enzyme-cleavage.png",
+        "en-320-free-precursors.png",
+        "en-320-blue-product.png",
+        "zh-1280-enzyme-cleavage.png"
+      ],
+      "directory": "artifacts/teaching-principles/biology-next-genomes/labels-corrected/",
+      "findingResolved": "Before any release the label now says cleavage; after release it changes to released precursors, and only after pigment develops to blue product. Later-steps label moved above the substrate path to prevent overlap. The cleavage capture is now26.2s relative to recipient, before release, rather than the old27s partly released frame."
+    },
+    {
+      "kind": "author manually opened keyframes",
+      "status": "passed",
+      "paths": [
+        "artifacts/teaching-principles/biology-next-genomes/watch-v2/en-320-markers.png",
+        "artifacts/teaching-principles/biology-next-genomes/watch-v2/en-320-new-protein.png",
+        "artifacts/teaching-principles/biology-next-genomes/watch-v2/en-320-blue-product.png",
+        "artifacts/teaching-principles/biology-next-genomes/watch-v2/en-320-growth-late.png",
+        "artifacts/teaching-principles/biology-next-genomes/watch-v2/en-320-one-chromosome.png",
+        "artifacts/teaching-principles/biology-next-genomes/watch-v2/zh-1280-new-RNA.png"
+      ],
+      "scope": "Actual still images; not all56frames manually inspected"
+    },
+    {
+      "kind": "author actual cover inspection",
+      "status": "passed",
+      "paths": [
+        "artifacts/teaching-principles/biology-next-genomes/cover/en-390-card.png",
+        "artifacts/teaching-principles/biology-next-genomes/cover/zh-1280-card.png",
+        "artifacts/teaching-principles/biology-next-genomes/cover/export.png"
+      ],
+      "scope": "Actual rendered catalog cards and800x460raster export; no custom replacement APIs"
+    },
+    {
+      "kind": "independent chemistry peer",
+      "status": "passed with local label finding corrected",
+      "report": "artifacts/teaching-principles/batch-8-cross-review/chemistry-review-of-genome-reporter.json",
+      "scope": "600model states, source layer and3provided frames; not entire scene/voice acceptance",
+      "finding": "Premature released label corrected and actual pre-release/after-release/product frames re-inspected. Root synthesis still separate."
+    },
+    {
+      "kind": "root independent visual review",
+      "status": "root reported passed within stated scope",
+      "owner": "/root",
+      "scope": "Root directly viewed original Shao Fig5c left, fixed mean replot, markers/new-protein/blue-product/late-growth frames. Final measured frames/static acceptance remain root-owned."
+    },
+    {
+      "kind": "measured voice synchronization",
+      "status": "passed-author-word-timing-and-affected-stills",
+      "evidence": "artifacts/teaching-principles/biology-next-genomes/measured-timing.json",
+      "scope": "Read all8 independent ASR word files, preserved all4zh/en scripts, mapped chapter-relative time separately for each locale. Not subjective listening."
+    },
+    {
+      "kind": "complete manual playback and bilingual listening",
+      "status": "not-run",
+      "reason": "Separate root/author measured-track stage; paused stills and ASR do not count as listening."
+    },
+    {
+      "kind": "physical device performance",
+      "status": "not-run",
+      "reason": "Viewport emulation is not a physical phone."
+    },
+    {
+      "kind": "global verify/preview/production",
+      "status": "not-run-by-owner",
+      "reason": "Root owns shared files, build snapshot and publication."
+    },
+    {
+      "kind": "measured real-browser paused layouts",
+      "status": "passed",
+      "frames": 54,
+      "short320Frames": 40,
+      "minActualTextPx": 16,
+      "max320PlayerBottomPx": 562.375,
+      "viewportHeight": 568,
+      "report": "artifacts/teaching-principles/biology-next-genomes/measured-keyframes/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-genomes/review-measured-keyframes.mjs",
+      "manualActuallyViewed": [
+        "en-320-new-RNA",
+        "en-320-new-protein",
+        "en-320-enzyme-cleavage",
+        "zh-320-free-precursors",
+        "en-320-growth-mid",
+        "zh-320-answer",
+        "en-320-assembly",
+        "zh-320-assembly",
+        "zh-320-fusion-middle",
+        "en-320-prediction",
+        "zh-1280-new-protein"
+      ],
+      "notes": "Other54frames received automatic measurement only, not claimed manually watched. No body overflow/JSerrors."
+    },
+    {
+      "kind": "measured actual UI/window verification",
+      "status": "passed",
+      "checks": 42,
+      "report": "artifacts/teaching-principles/biology-next-genomes/measured-interactions/report.json",
+      "runner": "artifacts/teaching-principles/biology-next-genomes/review-measured-interactions.mjs",
+      "scope": "Same actual control interactions,0–156s unchanged four-chapter textbook window in both languages, replay/deep-link/seek/manual-theme persistence; not automatic full-end listening."
+    },
+    {
+      "kind": "measured final cover consumers",
+      "status": "passed-author-inspection",
+      "directory": "artifacts/teaching-principles/biology-next-genomes/cover-measured-loaded/",
+      "actuallyViewed": ["en-390-card.png", "zh-1280-card.png"],
+      "additionalViewedDirectory": "artifacts/teaching-principles/biology-next-genomes/cover-measured/",
+      "additionalViewed": ["served-png-on-white.png", "social.png"],
+      "notes": "New bilingual title and2:36 duration. Actual served PNG is transparent. Raw low-alpha RGB appears banded in image viewer; Chromium white compositing and social output show normal pale gradient/dots. Example alpha3/255 region is not an opaque green stripe. Initial updated-card capture preceded lazy image decode; corrected runner now waits for actual img.decode and captures loaded consumer."
+    }
+  ],
+  "sourceEvidence": "artifacts/teaching-principles/biology-next-genomes/sources.json",
+  "independentPreparationBenchmarks": "artifacts/teaching-principles/biology-next-genomes/independent-benchmarks.json",
+  "limitations": [
+    "Model timing and coarse molecular geometry are pedagogical.",
+    "Growth data are published figure means, not raw replicates; SEM omitted explicitly.",
+    "Expression is not a cellular viability oracle.",
+    "No complete chemical mechanism or assay calibration is inferred from pigment."
+  ],
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-8-review.json",
+    "manual": "artifacts/teaching-principles/batch-8-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

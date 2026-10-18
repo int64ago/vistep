@@ -3054,22 +3054,25 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-chlorine-photolysis',
-    name: '氯水光照的三路证据',
-    title: '三条曲线，怎样指向同一个反应？',
-    question: '三条曲线，怎样指向同一个反应？',
-    description: '追踪pH、氯离子和气相氧气三路传感器，把光照中的协同变化连接到次氯酸分解。',
+    name: '氯水光解：从光到读数',
+    title: '光怎样让三路读数一起变化？',
+    question: '光怎样让三路读数一起变化？',
+    description: '跟随光吸收和同一批原子，解释三路探头，再用顶空变化检验比例与产量。',
     color: '#b6c4a1',
     tag: '数字实验 · 传感器 · 守恒',
     related: ['chem-chlorine-bleaching', 'chem-anion-tests', 'chem-methane-substitution'],
     sources: [
       {
-        title:
-          'JACS Au — Hypochlorous acid photodecomposition, equation 8 and supporting Figure S24',
+        title: 'JACS Au — HOCl net photodecomposition, equation 8',
         url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10207101/',
       },
       {
         title: 'Water Research — Wavelength-dependent chlorine photolysis',
         url: 'https://doi.org/10.1016/j.watres.2018.06.018',
+      },
+      {
+        title: 'Watts and Linden (2007) — aqueous chlorine photolysis under UV',
+        url: 'https://doi.org/10.1016/j.watres.2007.03.032',
       },
       {
         title: '人教版高中化学必修第一册48页图2-16',
@@ -3395,9 +3398,10 @@ export const topics: Topic[] = [
   {
     slug: 'bio-engineered-genomes',
     name: '合成基因组与活细胞',
-    title: '改写遗传系统，还需要什么',
-    question: '一段DNA，等于一个生命吗？',
-    description: '对比细菌合成基因组与单染色体酵母，区分DNA装配、染色体重排和活性检验。',
+    title: '合成DNA，为什么还不等于合成细胞？',
+    question: '合成了DNA，为什么还不能说合成了整个细胞？',
+    description:
+      '从显色与DNA标记追到基因表达，再用单染色体酵母的固定生长记录，分清信息、机器和真实功能。',
     color: '#a6ad8c',
     tag: '生物学',
     related: ['bio-protein-machines', 'bio-cellular-logistics'],
@@ -4542,11 +4546,10 @@ export const topics: Topic[] = [
   },
   {
     slug: 'projectile-motion-lab',
-    name: '平抛运动实验',
-    title: '怎样从不同测量方法确认平抛的两个分运动？',
-    question: '怎样从不同测量方法确认平抛的两个分运动？',
-    description:
-      '从频闪、同时释放、复写纸与双接收器测距获得轨迹，再用木板和墙面变式检验规律、测出初速度。',
+    name: '平抛：同一时钟，两个方向',
+    title: '水平抛得更快，会更晚落地吗？',
+    question: '水平抛得更快，会更晚落地吗？',
+    description: '跟住同一时钟下的钢球，从等时位置与速度分量解释平抛，再预测新高度的落点。',
     color: '#b9c8aa',
     tag: '平抛 · 描迹 · 测量',
     related: ['wax-motion-composition', 'motion-sensor-lab', 'ramp-collision-lab'],
@@ -4558,6 +4561,14 @@ export const topics: Topic[] = [
       {
         title: 'Vernier — How does a Motion Detector work?',
         url: 'https://www.vernier.com/til/2961',
+      },
+      {
+        title: 'MIT OCW 8.01SC, Projectile Motion transcript',
+        url: 'https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/8733a0224555eed5677ba9fa7fe4f06e_83NmtaE7fEk.pdf',
+      },
+      {
+        title: 'Physics with Vernier, Computer8B Projectile Motion',
+        url: 'https://www.vernier.com/files/training/nsta-2017/physics_with_vernier.pdf',
       },
     ],
     number: '270',

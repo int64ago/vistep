@@ -1,24 +1,45 @@
-<h2 id="understand">Three different levels of achievement</h2>
+<h2 id="understand">Where did the blue color come from?</h2>
 
-Chemical DNA synthesis, chromosome rearrangement and a cell capable of sustained growth are distinct achievements. The 2010 bacterial-genome study used an existing recipient cell and explicitly noted that its cytoplasm was not synthetic.
+In 2010, researchers reported self-replicating bacterial cells controlled by a synthetic genome. The paper showed different colony colors: synthetic-genome colonies were blue, while the control was not. Designed DNA markers, sequencing and other independent characterization linked the recovered cells to the synthetic genome. A colony contains many cells. The film redraws the observations; it is not laboratory footage. [Gibson et al., 2010](https://doi.org/10.1126/science.1190719)
 
-The 2018 single-chromosome yeast study successively fused chromosome ends and deleted redundant centromeres, reorganizing sixteen chromosomes into one. Following the original paper clarifies the textbook’s brief account: this was not transplantation of a newly synthesized chromosome into an enucleated yeast cell.
+Neither DNA nor protein simply turned blue. Existing transcription machinery reads DNA to make a separate RNA molecule. Ribosomes then use RNA to assemble protein. The study’s reporter enzyme, beta-galactosidase, acted on an assay substrate, leading to a blue product. DNA, RNA, enzyme and pigment remain distinct objects. The recipient already supplied a membrane, cytoplasm and molecular machinery; synthesizing its genome did not synthesize the whole cell from scratch.
 
-<h2 id="try">Change packaging and inspect what remains</h2>
+The single-chromosome yeast of 2018 was a different study. Chromosomes were fused and some sequences deleted within existing yeast cells, reorganizing 16 chromosomes into 1. Fewer chromosomes did not mean one remaining gene. Published measurements showed growth, with differences from the parental strain rather than equality in every function. [Shao et al., 2018](https://www.nature.com/articles/s41586-018-0382-x)
 
-- Increase fusion count and compare chromosome number, centromere number and retained representative gene blocks.
-- Remove the model’s recipient environment: DNA remains, but a necessary condition is absent.
-- Disrupt a representative essential function to distinguish structural assembly from demonstrated activity.
+<h2 id="try">What does the same information still need?</h2>
 
-Textbook: Required 1, Chapter 1, Section 2, p. 12, exploration of artificial life. This is historical research and conceptual analysis, not a student synthesis protocol.
+- In Expression, keep the same DNA and remove transcription machinery or the ribosome. Inspect where RNA production and protein production stop.
+- Select “RNA already present.” Existing RNA can still be translated without transcription happening now; the dependencies are not one simultaneous all-inputs switch.
+- Remove the assay substrate to distinguish the enzyme from its colored product.
+- Track the marked region during chromosome reorganization. Reveal more published growth points: explanation controls never change those observations.
 
-<h2 id="deeper">The blocks do not encode real sequences</h2>
+DNA alone in a solution without expression machinery cannot automatically make the same protein. This means DNA alone: cell-free systems supplied with appropriate machinery, substrates and energy are a different case. Expression of one protein also does not by itself establish whole-cell survival and reproduction.
+
+<h2 id="deeper">Observation and explanation have different roles</h2>
 
 <details>
-<summary>How does the model relate to research?</summary>
+<summary>Textbook context and the two studies</summary>
 
-Twelve assembly pieces and sixteen colored yeast gene blocks are explanatory symbols, without actual DNA sequences or experimental parameters. Fusion retains major genetic content, but real engineering also changes centromeres, telomeres and some sequence regions; it does not preserve every base unchanged.
+This entry corresponds to Required 1, Chapter 1, Section 2, p. 12: the technology feature exploring artificial life. Its existing entry title, “Synthesize or redesign chromosomes and test cellular viability,” is an editorial summary.
 
-The logical model shows that complete assembly, a suitable cellular environment and essential functions are necessary. It predicts no success rate and replaces no growth, expression or reproduction experiment. These necessary conditions do not guarantee that any particular design will survive.
+The textbook paragraph compresses multiple research stages. The film distinguishes the 2010 synthetic bacterial genome from the 2018 yeast reorganization. Following the latter’s original paper, it does not show a newly synthesized chromosome transplanted into an enucleated yeast cell. Some centromere, telomere and other sequences were removed. The 16 representative regions therefore do not claim that every actual base or gene remained unchanged.
+
+</details>
+
+<details>
+<summary>Expression and color are simplified at a stated level</summary>
+
+The 12 DNA segments, RNA nodes and short peptide outline track identities; they are not actual gene sequences, molecule counts or a complete protein structure. Camera changes show explanatory levels, not a physical mechanism of DNA crossing an intact membrane. RNA and protein are built from additional material. Substrates and energy are required but not individually depicted. Event times show teaching order, not measured expression rates.
+
+Enzymatic X-gal hydrolysis releases an indoxyl derivative; subsequent chemistry produces a blue indigo derivative. The film combines later oxidation, dimerization and intermediate steps while preserving cleavage, release and later color formation. It is not an atom-by-atom mechanism, does not equate one substrate with a complete blue dimer, and does not infer enzyme quantity from color intensity. [Color chemistry](https://www.sigmaaldrich.com/US/en/technical-documents/technical-article/genomics/cloning-and-expression/blue-white-screening)
+
+</details>
+
+<details>
+<summary>Growth data and its limits</summary>
+
+The fixed points are extracted from the left panel of Shao et al.’s Fig. 5c: haploid parental BY4742 and single-chromosome SY14, reported as means from 3 biological replicates. The original has standard-error bars; this film redraws only the means. Conservative figure-reading bounds are approximately ±0.06 h and ±0.03 OD, not experimental uncertainty or standard error.
+
+OD₆₀₀ is optical density, not a direct viable-cell count. Connecting lines guide the eye rather than add measurements between samples. Progressive revelation is a teaching edit, not a claim that the authors performed a held-out prediction experiment. The model extrapolates no arbitrary genome’s growth rate or probability of success; its expression switches do not generate the data.
 
 </details>

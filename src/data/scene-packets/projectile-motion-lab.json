@@ -1,13 +1,13 @@
 {
   "topic": {
     "slug": "projectile-motion-lab",
-    "name": "平抛运动实验",
-    "title": "怎样从不同测量方法确认平抛的两个分运动？",
-    "question": "怎样从不同测量方法确认平抛的两个分运动？",
-    "description": "从频闪、同时释放、复写纸与双接收器测距获得轨迹，再用木板和墙面变式检验规律、测出初速度。",
+    "name": "平抛：同一时钟，两个方向",
+    "title": "水平抛得更快，会更晚落地吗？",
+    "question": "水平抛得更快，会更晚落地吗？",
+    "description": "跟住同一时钟下的钢球，从等时位置与速度分量解释平抛，再预测新高度的落点。",
     "color": "#b9c8aa",
     "tag": "平抛 · 描迹 · 测量",
-    "related": ["wax-motion-composition", "motion-sensor-lab"],
+    "related": ["wax-motion-composition", "motion-sensor-lab", "ramp-collision-lab"],
     "sources": [
       {
         "title": "OpenStax — Projectile Motion",
@@ -16,20 +16,39 @@
       {
         "title": "Vernier — How does a Motion Detector work?",
         "url": "https://www.vernier.com/til/2961"
+      },
+      {
+        "title": "MIT OCW 8.01SC, Projectile Motion transcript",
+        "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/8733a0224555eed5677ba9fa7fe4f06e_83NmtaE7fEk.pdf"
+      },
+      {
+        "title": "Physics with Vernier, Computer8B Projectile Motion",
+        "url": "https://www.vernier.com/files/training/nsta-2017/physics_with_vernier.pdf"
       }
-    ]
+    ],
+    "number": "270"
   },
   "discovery": {
     "category": "mechanisms",
     "minAge": 12,
     "keywords": {
-      "zh": ["平抛运动实验", "平抛描迹", "同时落地", "复写纸", "测初速度"],
+      "zh": [
+        "平抛运动实验",
+        "平抛描迹",
+        "同时落地",
+        "复写纸",
+        "测初速度",
+        "平抛：同一时钟，两个方向",
+        "水平抛得更快，会更晚落地吗？"
+      ],
       "en": [
         "Horizontal projectile experiments",
         "projectile tracing",
         "paired release",
         "carbon paper",
-        "launch velocity"
+        "launch velocity",
+        "Horizontal launch: one clock, two directions",
+        "Does a faster sideways launch land later?"
       ]
     }
   },
@@ -78,111 +97,175 @@
     "接球面下落距离": "Drop to catching surface",
     "模型时间": "Model time",
     "理想无气阻；钢球在槽内纯滚动，末端水平。数值是模型数据；描迹按球心位置校正，首次接触接球面即停帧。": "Ideal drag-free flight; the ball rolls without slipping to a horizontal exit. Values are model data; marks are corrected to ball-centre positions and motion freezes at first contact.",
-    "水平投射速度": "Horizontal launch speed"
+    "水平投射速度": "Horizontal launch speed",
+    "旧记录": "Earlier mark",
+    "墙面距离按球心校正": "Wall distance: centre corrected",
+    "首次接触即停帧": "Freeze at first contact",
+    "同一初速度 · 改变接球位置": "Same launch · move the catcher",
+    "水平等距": "Equal x steps",
+    "同时接触地面": "Same contact time",
+    "原点：抛出时的球心": "Origin: launch centre",
+    "固定教学坐标": "Fixed teaching points",
+    "理想模型 · 忽略空气阻力": "Ideal model · no air resistance",
+    "盯住同一串等时点": "Follow the same timed dots",
+    "从下落量恢复同一时钟": "Recover time from the drop",
+    "理想教学值": "Ideal teaching values",
+    "离手后，只剩重力": "After release: gravity only",
+    "同一时钟，两分量速度": "One clock, two velocity components",
+    "先预测，再释放": "Predict before release",
+    "空心标记：预测": "Outline: prediction",
+    "下一点在哪里？": "Where is the next point?",
+    "新点与预测相合": "New point meets prediction",
+    "弯曲外形还不够": "A curve alone is not enough",
+    "一次发射，两条距离约束": "One emission, two ranges",
+    "已知运动区在右侧": "Known region: right of the receivers",
+    "刻度尺能给出初速度吗？": "Can a ruler reveal launch speed?",
+    "平抛的同一时钟、分量速度和新落点预测": "A shared clock, velocity components and a new landing prediction",
+    "只用飞行数据": "From flight measurements alone",
+    "观察方式": "View",
+    "观察层次": "Observation layer",
+    "水平初速度": "Horizontal launch speed",
+    "球心下降量": "Centre drop",
+    "到墙前的球心位移": "Centre travel to wall",
+    "候选关系": "Candidate relation",
+    "预测用的新下降量": "New drop for prediction",
+    "演示进度": "Demonstration progress",
+    "圆对应同一次脉冲的发射位置；超声是单程测距，已知运动区域才排除镜像点。": "Both circles refer to the same emission event. Ultrasound travels one way; the known region excludes the mirror point.",
+    "理想模型不含空气阻力；在首次接触时停止，不模拟碰撞后的运动。球心是各坐标的共同基准。": "This ideal model omits air resistance and stops at first contact. All coordinates refer to the ball centre; post-impact motion is not modeled.",
+    "等时位置": "Timed dots",
+    "受力与速度": "Force and velocity",
+    "描点推断": "Mark inference",
+    "改变高度": "Change height",
+    "改变墙距": "Move wall",
+    "检验抛物线": "Test a parabola",
+    "观察记录": "Observe",
+    "解释与预测": "Explain / predict",
+    "线性关系": "Linear",
+    "二次关系": "Quadratic",
+    "平抛：同一时钟，两个方向": "Horizontal launch: one clock, two directions",
+    "水平抛得更快，会更晚落地吗？": "Does a faster sideways launch land later?",
+    "跟住同一时钟下的钢球，从等时位置与速度分量解释平抛，再预测新高度的落点。": "Follow one ball and one clock: use timed positions and velocity components to explain horizontal launch, then predict a new landing height.",
+    "同一串等时点": "The same timed dots",
+    "同一时钟：水平等距，竖直间距增大。": "One clock: equal horizontal steps, growing vertical steps.",
+    "抛得更快，会落得更晚吗？": "Faster sideways, later landing?",
+    "同高度、同时释放，两球始终同高。": "Same height and release time: both balls stay level.",
+    "轨迹怎样给出时间": "A path supplies a clock",
+    "下落量给出时间，再检验水平位移。": "Recover time, then compare horizontal steps.",
+    "为什么只改变一个分量": "Why one component changes",
+    "重力改变竖直速度，水平速度保持不变。": "Gravity changes vertical velocity; horizontal velocity stays constant.",
+    "新高度的新落点": "A new landing height",
+    "降低接球板后，新的落点在哪里？": "Lower the catcher: where will the ball land?",
+    "墙移远以后": "Moving the wall farther away",
+    "墙移远以后，小球会多下降多少？": "Move the wall farther: how much farther will the ball drop?",
+    "为什么是抛物线": "Why a parabola?",
+    "用两个分运动推导轨迹，再预测新点。": "Derive the path from both motions, then predict a new point.",
+    "刻度尺看见初速度": "A ruler reveals launch speed",
+    "高度给出时间，距离给出速度，再预测新高度。": "Height gives time, range gives speed, then predict a new height."
   },
   "narration": {
-    "duration": 223,
+    "duration": 278,
     "cues": [
       {
         "id": "strobe",
-        "title": "等时间记录位置",
-        "titleEn": "Record equal-time positions",
-        "seconds": 27,
-        "chapterAt": 0,
-        "at": 0.3,
-        "caption": "水平间距相同，竖直间距逐步增大。",
-        "captionEn": "Horizontal gaps are equal; vertical gaps grow.",
+        "title": "同一串等时点",
+        "titleEn": "The same timed dots",
+        "caption": "同一时钟：水平等距，竖直间距增大。",
+        "captionEn": "One clock: equal horizontal steps, growing vertical steps.",
+        "seconds": 28,
         "zh": "先用频闪或逐帧视频记录小球的位置。本例每零点零五秒留下一个位置点。把抛出点的球心作为原点，向右和向下建立坐标。相同时间内，水平位移相同，竖直位移却逐次增大。这些位置记录让我们分别研究两个方向，而不是仅仅凭一条弯曲的外形猜测运动规律。",
-        "en": "Begin with strobe photography or video frames. This example records a point every 0.05 seconds. Use the ball centre at launch as the origin, with axes right and down. Equal intervals have equal horizontal travel but increasing vertical travel. Position records let us study each direction separately rather than guessing a law from the curve’s appearance."
+        "en": "Begin with strobe photography or video frames. This example records a point every 0.05 seconds. Use the ball centre at launch as the origin, with axes right and down. Equal intervals have equal horizontal travel but increasing vertical travel. Position records let us study each direction separately rather than guessing a law from the curve’s appearance.",
+        "chapterAt": 0,
+        "at": 0.45
       },
       {
         "id": "paired",
-        "title": "比较同时释放的两球",
-        "titleEn": "Compare simultaneously released balls",
+        "title": "抛得更快，会落得更晚吗？",
+        "titleEn": "Faster sideways, later landing?",
+        "caption": "同高度、同时释放，两球始终同高。",
+        "captionEn": "Same height and release time: both balls stay level.",
         "seconds": 28,
-        "chapterAt": 27,
-        "at": 27.3,
-        "caption": "同高度、同起始时刻、竖直初速度均为零。",
-        "captionEn": "Same height and release instant, with zero initial vertical velocity.",
         "zh": "教材的弹性金属片同时完成两件事：把一球水平抛出，并释放另一球自由下落。两球起始高度相同，竖直初速度都为零。虽然水平位置越来越远，它们的高度始终相同，并且同时触地。改变水平投射强度会改变落点，却不改变同高度的下落时间；这为平抛的竖直分运动提供了直接对照。",
-        "en": "The spring-strip apparatus launches one ball horizontally while releasing another vertically. Both start at the same height and instant, with zero vertical velocity. Their horizontal positions separate, but their heights match and they land together. Changing horizontal launch strength changes range, not fall time from the same height. This directly tests the vertical component."
+        "en": "The spring-strip apparatus launches one ball horizontally while releasing another vertically. Both start at the same height and instant, with zero vertical velocity. Their horizontal positions separate, but their heights match and they land together. Changing horizontal launch strength changes range, not fall time from the same height. This directly tests the vertical component.",
+        "chapterAt": 28,
+        "at": 28.45
       },
       {
         "id": "carbon",
-        "title": "用复写纸逐点描迹",
-        "titleEn": "Trace successive carbon-paper marks",
-        "seconds": 29,
-        "chapterAt": 55,
-        "at": 55.3,
-        "caption": "每次从同一位置释放，只调整挡板。",
-        "captionEn": "Keep release conditions fixed and adjust only the catcher.",
-        "zh": "让钢球从斜槽同一位置静止滚下，槽的末端保持水平。球落到可调的倾斜挡板上，通过复写纸在背板白纸上留下印迹。改变挡板高度，再次从同一点释放，逐渐得到一组轨迹点。不同次的点要属于同一条轨迹，就必须保持初速度和抛出位置一致，并按球心位置处理有限大小造成的偏差。",
-        "en": "Roll the ball from rest at the same point on a ramp with a horizontal exit. An adjustable inclined catcher produces a carbon-paper mark on the backing sheet. Change catcher height and repeat to accumulate trajectory points. Combining marks from separate trials requires the same launch speed and origin, with finite ball size corrected to the ball centre."
+        "title": "轨迹怎样给出时间",
+        "titleEn": "A path supplies a clock",
+        "caption": "下落量给出时间，再检验水平位移。",
+        "captionEn": "Recover time, then compare horizontal steps.",
+        "seconds": 30,
+        "zh": "轨迹本身不带时钟。用竖直自由落体规律，把球心下降量换成飞行时间。这组理想教学坐标中，时间每次增加零点一秒，水平位移每次增加零点一四米，所以水平速度保持一点四米每秒。真实描点必须保持同一初速度，不能把不同条件的印迹拼在一起。",
+        "en": "A path has no clock. Use vertical free fall to convert centre drop into flight time. In these ideal teaching coordinates, time increases by zero point one seconds, while horizontal position increases by zero point one four metres. Horizontal speed is therefore constant at one point four metres per second. Real marks must share the same launch conditions.",
+        "chapterAt": 56.5,
+        "at": 56.95
       },
       {
         "id": "receivers",
-        "title": "用两次测距定位",
-        "titleEn": "Locate the ball from two ranges",
-        "seconds": 29,
-        "chapterAt": 84,
-        "at": 84.3,
-        "caption": "红外同步起点，两个超声距离确定位置。",
-        "captionEn": "Infrared supplies timing references; two acoustic ranges locate the ball.",
-        "zh": "还可以让运动物体同时发射红外和超声脉冲，由两个位置已知的接收器分别测距。一个距离只能把物体限制在一个圆上，两个距离的交会给出两个镜像候选点。再利用小球位于接收器哪一侧的信息，选出实际位置。连续记录这些坐标，计算机便能描出轨迹；这里保留了教材这套二维装置的定位原理。",
-        "en": "A moving object can emit infrared and ultrasound together, while two receivers at known positions independently measure range. One range constrains it to a circle; two circles give mirror candidate points. Knowing which side contains the object selects the physical position. Repeated coordinates trace the trajectory. This preserves the textbook’s two-dimensional ranging principle."
+        "title": "为什么只改变一个分量",
+        "titleEn": "Why one component changes",
+        "caption": "重力改变竖直速度，水平速度保持不变。",
+        "captionEn": "Gravity changes vertical velocity; horizontal velocity stays constant.",
+        "seconds": 30,
+        "zh": "跟住同一个球。离开装置后，忽略空气阻力，只有重力向下。水平合力为零，加速度也为零，已有的水平速度不需要持续推力来维持。重力使竖直速度每秒增加九点八米每秒。看速度三角形：水平边不变，竖直边变长，总速度转向下方。两个分运动共用一个时钟，合成这个球的运动。",
+        "en": "Follow the ball. After release, ignoring air resistance, only gravity acts downward. Zero horizontal force means zero horizontal acceleration; existing horizontal velocity needs no sustained push. Gravity increases vertical velocity by nine point eight metres per second each second. In the velocity triangle, the horizontal side stays fixed, the vertical side grows, and their sum turns downward. Both components share one clock.",
+        "chapterAt": 86.5,
+        "at": 86.95
       },
       {
         "id": "home-board",
-        "title": "用木板记录落点",
-        "titleEn": "Record marks on a catching board",
-        "seconds": 27,
-        "chapterAt": 113,
-        "at": 113.3,
-        "caption": "移动接球高度，把不同时间的落点留下。",
-        "captionEn": "Change the catching height to preserve positions at different flight times.",
-        "zh": "家庭实验变式把白纸和复写纸放在水平木板上，用支架调节木板高度。钢球从同一斜面位置滚下，沿水平桌面飞出，在木板上留下落点。竖直下落距离给出对应的飞行时间，再比较水平位移与时间。这里改变的是接球装置的位置，不能同时改变释放点，否则不同落点就不能直接组成同一运动的证据。",
-        "en": "The home variant places paper and carbon paper on a horizontal board supported at adjustable heights. A ball rolls from the same ramp point, leaves the horizontal tabletop, and marks the board. Vertical drop gives flight time for comparison with horizontal travel. Change the catcher location while preserving the release point; otherwise the marks no longer describe one common launch."
+        "title": "新高度的新落点",
+        "titleEn": "A new landing height",
+        "caption": "降低接球板后，新的落点在哪里？",
+        "captionEn": "Lower the catcher: where will the ball land?",
+        "seconds": 30,
+        "zh": "先看小球落到较高的接球板上。初速度不变，把球心下降量变成四倍，水平距离也会变成四倍吗？先停一下。下降量与时间平方成正比，所以飞行时间只加倍；水平速度不变，水平距离也只加倍。放好空心预测标记，再释放小球。它到达标记处才接触接球板。",
+        "en": "First the ball reaches the higher board. Keep launch speed, but quadruple the centre drop. Will horizontal distance also quadruple? Pause here. Drop grows with time squared, so flight time only doubles. Unchanged horizontal speed then doubles the range. Place the outlined prediction, then release the ball. It reaches the mark at first contact.",
+        "chapterAt": 118,
+        "at": 118.45
       },
       {
         "id": "home-wall",
-        "title": "换成墙面再测量",
-        "titleEn": "Use a wall for the alternative measurement",
-        "seconds": 27,
-        "chapterAt": 140,
-        "at": 140.3,
-        "caption": "固定纸面方向，改变桌边到墙的距离。",
-        "captionEn": "Keep paper on a vertical wall and vary its distance from the table edge.",
-        "zh": "另一种变式把复写纸和白纸固定在墙上，改变桌边到墙的水平距离。每次记录球击中墙面的高度，就得到不同的坐标点。此时要测量的是水平间距和竖直下降量，而不是把墙面落点误当成同一高度的落地距离。图中到达墙面就停帧，落点位置由同一平抛方程计算。",
-        "en": "Another variant fixes paper and carbon paper to a wall and varies its distance from the table edge. Each impact height supplies another coordinate pair. Measure horizontal separation and vertical drop; do not mistake a wall mark for a landing range at one common height. The scene freezes at wall contact, with every mark computed from the same horizontal-launch equations."
+        "title": "墙移远以后",
+        "titleEn": "Moving the wall farther away",
+        "caption": "墙移远以后，小球会多下降多少？",
+        "captionEn": "Move the wall farther: how much farther will the ball drop?",
+        "seconds": 28,
+        "zh": "保留近处的撞点，把到墙前的球心水平位移加倍。下降量会加倍，还是变成四倍？水平速度不变，飞行时间加倍；下降量随时间平方变化，因此变成四倍。空心标记先预测，随后释放检验理想模型。墙面距离要扣除球半径，才是球心位移。首次接触就停下，不模拟碰撞后的运动。",
+        "en": "Keep the first mark and double the centre travel to the wall. Will the drop double or quadruple? Constant horizontal velocity doubles flight time. Drop grows with time squared, so it quadruples. Place the prediction, then release to check the ideal model. Subtract the ball radius from wall-surface distance to obtain centre travel. Stop at first contact; post-impact motion is not modeled.",
+        "chapterAt": 148,
+        "at": 148.45
       },
       {
         "id": "parabola",
-        "title": "检验是否为抛物线",
-        "titleEn": "Test the parabolic relation",
-        "seconds": 28,
-        "chapterAt": 167,
-        "at": 167.3,
-        "caption": "非零点的y/x²近似相同，支持y与x²成正比。",
-        "captionEn": "A common y/x² at nonzero points supports proportionality to x².",
-        "zh": "进入下一节的检验任务，重新使用得到的轨迹坐标。原点必须选在抛出点球心，竖直轴向下。对几个非零位置计算竖直位移除以水平位移的平方，若比值在误差范围内近似相同，就支持二次函数关系。原点本身不能参与这个比值，因为零除以零没有意义。本例没有加入测量噪声，实际实验还需要考虑读数误差。",
-        "en": "For the following section’s check, reuse the trajectory coordinates. Put the origin at the launch centre with downward vertical positive. Compute vertical displacement divided by horizontal displacement squared for several nonzero points. A common value within uncertainty supports a quadratic relation. Exclude the origin because zero divided by zero is undefined. This ideal dataset has no added measurement noise."
+        "title": "为什么是抛物线",
+        "titleEn": "Why a parabola?",
+        "caption": "用两个分运动推导轨迹，再预测新点。",
+        "captionEn": "Derive the path from both motions, then predict a new point.",
+        "seconds": 36,
+        "zh": "一条线看起来弯曲，还不能说明它就是抛物线。把原点放在抛出时的球心，向下为正，看这组固定的理想教学坐标。先试竖直位移与水平位移成正比，直线跟不上后面的点。再除以水平位移的平方，比值都为二点五每米。为什么？水平位移等于初速度乘时间，竖直位移等于二分之一重力加速度乘时间平方。消去同一个时间，就得到竖直位移与水平位移平方成正比。现在先遮住最后一点：水平位移零点五六米，预测下降零点七八四米。再揭开这个固定点。它展示模型的预测关系，不是新增的实验证据。",
+        "en": "A curved line is not automatically a parabola. Put the origin at the launch centre, with downward positive, and inspect these fixed ideal teaching coordinates. First try a linear relation. The line misses the later points. Dividing vertical displacement by horizontal displacement squared gives two point five per metre. Why? Horizontal displacement is launch speed times time; vertical displacement is half gravity times time squared. Eliminate the shared time to obtain the quadratic relation. Keep the last point hidden. At a horizontal distance of zero point five six metres, predict a drop of zero point seven eight four metres. Now reveal it. This illustrates the model, not new experimental evidence.",
+        "chapterAt": 177,
+        "at": 177.45
       },
       {
         "id": "speed",
-        "title": "用一把尺反求初速度",
-        "titleEn": "Infer launch speed using a ruler",
-        "seconds": 28,
-        "chapterAt": 195,
-        "at": 195.3,
-        "caption": "高度决定飞行时间，水平距离给出速度。",
-        "captionEn": "Height determines flight time; range then gives speed.",
-        "zh": "最后把接球面放到地面，测量桌面高度和抛出点正下方到落点的水平距离。球离桌时竖直速度为零，飞行时间由两倍高度除以重力加速度后开方得到。水平距离除以这个时间，就得到离桌的初速度。这项测量用的是平抛规律，不需要预先知道斜槽摩擦或用释放高度猜初速度。",
-        "en": "Finally catch the ball at floor level. Measure tabletop height and horizontal distance from directly below the launch point to impact. Zero initial vertical velocity gives flight time as the square root of twice the height divided by gravity. Divide horizontal range by that time for launch speed. This measurement uses flight geometry rather than assuming the ramp’s friction or inferring speed from release height."
+        "title": "刻度尺看见初速度",
+        "titleEn": "A ruler reveals launch speed",
+        "caption": "高度给出时间，距离给出速度，再预测新高度。",
+        "captionEn": "Height gives time, range gives speed, then predict a new height.",
+        "seconds": 40,
+        "zh": "如果没有计时器，只有刻度尺，能求出离桌速度吗？先测桌面到水平接球面的高度零点八零米，以及从抛出点正下方到落点的水平距离零点五六米。对同一个球，起点和终点的半径偏移相互抵消，这个高度正是球心下降量。因为球水平离桌，竖直初速度为零，高度给出飞行时间，约零点四零四秒。水平距离除以时间，得到初速度约一点三八六米每秒，不需要知道斜槽中的摩擦。现在保持这个速度，把接球面提高到下降量只有零点二零米。先预测：时间变成一半，落点应在零点二八米处。放好空心标记，再让小球飞出。",
+        "en": "Can a ruler reveal launch speed without a timer? Measure a height of zero point eight zero metres and a horizontal range of zero point five six metres. With the same ball on horizontal support surfaces, the radius offsets at both ends cancel, so this height is also the centre drop. A horizontal launch has zero initial vertical velocity. The height gives a flight time of about zero point four zero four seconds. Range divided by time gives about one point three eight six metres per second, without knowing ramp friction. Keep that speed and raise the catcher so the drop is only zero point two zero metres. Predict first: half the time means a range of zero point two eight metres. Place the outline, then launch.",
+        "chapterAt": 227,
+        "at": 227.45
       }
     ]
   },
   "curriculumVariants": {
     "required-2-horizontal-projectile": {
+      "sceneSlug": "projectile-motion-lab",
       "chapterIds": ["strobe", "paired", "carbon", "receivers", "home-board", "home-wall"],
       "label": {
         "zh": "探究平抛运动的特点",
@@ -190,6 +273,7 @@
       }
     },
     "required-2-parabola-check": {
+      "sceneSlug": "projectile-motion-lab",
       "chapterIds": ["parabola"],
       "label": {
         "zh": "检验平抛轨迹是不是抛物线",
@@ -197,11 +281,17 @@
       }
     },
     "required-2-launch-speed": {
+      "sceneSlug": "projectile-motion-lab",
       "chapterIds": ["speed"],
       "label": {
         "zh": "用刻度尺测量平抛初速度",
         "en": "Measure launch speed using a ruler"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/projectile-motion-lab/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-8-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

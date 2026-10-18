@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { dischargeState, sensorSamples, capacitorSharing } from './capacitor-current-lab';
+import {
+  dischargeState,
+  sensorSamples,
+  capacitorSharing,
+  capacitorFilmState,
+} from './capacitor-current-lab';
 describe('current sensor and capacitor charge sharing', () => {
   it('matches an independent RC time-constant benchmark', () => {
     const s = dischargeState(2);
@@ -34,5 +39,45 @@ describe('current sensor and capacitor charge sharing', () => {
     expect(s.energyAfter / s.energyBefore).toBe(0.5);
     expect(s.dissipated).toBeGreaterThan(0);
     expect(capacitorSharing(0.2).b).toBe(0);
+  });
+  it('holds a charged open circuit, then reveals the recorded curve in both languages', () => {
+    for (const locale of ['zh', 'en'] as const) {
+      const before = capacitorFilmState(0, 1.8, locale);
+      expect(before.dischargeClosed).toBe(false);
+      expect(before.physicalTime).toBe(0);
+      const record = capacitorFilmState(0, 7, locale);
+      expect(record.dischargeClosed).toBe(true);
+      expect(record.plotView).toBe(true);
+      expect(record.physicalTime).toBeGreaterThan(0);
+      expect(dischargeState(record.physicalTime).remainingCharge).toBeGreaterThan(0);
+    }
+  });
+  it('keeps the first receiver charged when the second receiving capacitor is introduced', () => {
+    for (const locale of ['zh', 'en'] as const) {
+      const first = capacitorFilmState(2, 23, locale);
+      const next = capacitorFilmState(3, 0, locale);
+      const a = capacitorSharing(first.sharingProgress, first.sharingRound);
+      const b = capacitorSharing(next.sharingProgress, next.sharingRound);
+      expect(a.connected).toBe(false);
+      expect(a.chargeB).toBeCloseTo(0.003, 12);
+      expect(b.a).toBe(a.a);
+      expect(b.chargeB).toBe(0);
+      expect(b.connected).toBe(false);
+    }
+  });
+  it('reconstructs finite, monotonic discharge states when seeking across the film', () => {
+    for (const locale of ['zh', 'en'] as const) {
+      for (const chapter of [0, 1]) {
+        let previous = 0;
+        for (let seconds = 0; seconds <= 24; seconds += 0.1) {
+          const state = capacitorFilmState(chapter, seconds, locale);
+          expect(state.physicalTime).toBeGreaterThanOrEqual(previous);
+          expect(state.physicalTime).toBeLessThanOrEqual(8);
+          previous = state.physicalTime;
+        }
+      }
+      expect(capacitorFilmState(0, NaN, locale).physicalTime).toBe(0);
+      expect(capacitorFilmState(0, -1, locale).physicalTime).toBe(0);
+    }
   });
 });

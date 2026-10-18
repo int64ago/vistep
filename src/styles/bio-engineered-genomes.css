@@ -1,110 +1,232 @@
-.bio-genomes {
-  background: #e9edde;
-  padding: clamp(12px, 3vw, 28px);
+.begx-root {
+  background: linear-gradient(140deg, #f0f1e7, #e6ebdd);
   border-radius: 24px;
-  color: #485c47;
+  padding: 18px;
+  color: #405347;
+  min-width: 0;
 }
-.bio-genome-stage {
-  width: 100%;
-  height: 320px;
-  display: block;
-}
-.bio-genome-summary {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 20px;
+.begx-era {
   text-align: center;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.35;
+  color: #6a7567;
+  margin: 0 0 8px;
 }
-.bio-genome-evidence {
-  font-size: 16px;
-  text-align: center;
-  line-height: 1.6;
-  margin: 16px auto 0;
-  max-width: 650px;
-}
-.bio-genome-controls {
+.begx-stage {
   display: grid;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  max-width: 750px;
+  margin: auto;
+}
+.begx-svg {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: 310px;
+  margin: auto;
+  overflow: visible;
+}
+.begx-root svg text {
+  font-family: inherit;
+  font-size: 20px;
+  fill: #405347;
+}
+.begx-note {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 7px auto 0;
+  text-align: center;
   max-width: 650px;
-  margin: 24px auto;
-  font-size: 16px;
 }
-.bio-genome-controls button {
-  min-height: 44px;
-  padding: 8px;
-  border: 1px solid #b9c5ab;
-  border-radius: 12px;
-  background: #f4f5e8;
-  font: inherit;
-  color: inherit;
-}
-.bio-genome-controls p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-@media (max-width: 540px) {
-  .bio-genome-stage {
-    height: 250px;
-  }
-  .bio-genome-summary {
-    gap: 8px 12px;
-  }
-}
-.bio-genome-function-head {
-  display: flex;
-  justify-content: center;
-  gap: 8px 20px;
-  flex-wrap: wrap;
-  font-size: 16px;
-  margin: 5px 0 18px;
-}
-.bio-genome-function {
+.begx-colony-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
-  max-width: 680px;
+  max-width: 620px;
   margin: auto;
 }
-.bio-genome-function p {
-  font-size: 16px;
-  line-height: 1.45;
+.begx-colony-pair > div {
+  min-width: 0;
   text-align: center;
-  margin: 0 0 7px;
-  min-height: 24px;
 }
-.bio-genome-function svg {
-  width: 100%;
-  height: 175px;
+.begx-colony-pair svg {
   display: block;
+  width: 100%;
+  max-height: 220px;
+  margin: 0 auto;
 }
-.bio-genome-controls .segmented {
+.begx-colony-pair strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 500;
+  min-height: 44px;
+}
+.begx-markers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  margin: 7px auto;
+  font-size: 16px;
+  color: #a3ab9d;
+  max-width: 220px;
+}
+.begx-markers span {
+  display: grid;
+  place-items: center;
+  gap: 3px;
+  border-radius: 10px;
+  background: #d9e1d0;
+  padding: 6px 0;
+}
+.begx-markers b {
+  font-size: 16px;
+  font-weight: 500;
+}
+.begx-mark-on {
+  color: #4d7469 !important;
+  background: #d3e0d5 !important;
+}
+.begx-tally {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.begx-tally b {
+  font-weight: 550;
+  font-size: 21px;
+}
+.begx-growth .begx-tally span:first-child {
+  color: #497eaa;
+}
+.begx-growth .begx-tally span:last-child {
+  color: #a65170;
+}
+.begx-controls {
+  display: grid;
+  gap: 18px;
+  margin: 22px auto 0;
+  max-width: 650px;
+  font-size: 16px;
+}
+.begx-controls .segmented {
   flex-wrap: wrap;
 }
-@media (max-width: 540px) {
-  .bio-genome-function {
-    grid-template-columns: 1fr;
-    gap: 12px;
+.begx-controls .segmented button,
+.begx-controls input[type='range'] {
+  min-height: 44px;
+}
+.begx-controls p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.begx-toggles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.begx-toggles button {
+  font: inherit;
+  min-height: 44px;
+  line-height: 1.3;
+  background: #f5f4e9;
+  border: 1px solid #bbc5ae;
+  border-radius: 13px;
+  padding: 9px;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+.begx-toggles button[aria-pressed='true'] {
+  background: #d9e5d7;
+  border-color: #8daa90;
+}
+.begx-root .control-top {
+  font-size: 16px;
+}
+.begx-root .control-top output {
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .begx-root {
+    padding: 10px 8px;
+    border-radius: 19px;
   }
-  .bio-genome-function svg {
-    height: 110px;
+  .begx-era {
+    margin-bottom: 5px;
   }
-  .bio-genome-function-head {
-    margin-bottom: 12px;
+  .begx-svg {
+    height: auto;
+    max-width: 300px;
+    aspect-ratio: 300/238;
   }
-  .bio-genome-evidence {
-    margin-top: 10px;
+  .begx-fusion .begx-svg {
+    height: 230px;
+    aspect-ratio: 300/250;
   }
-  .bio-genome-function p {
-    margin-bottom: 0;
+  .begx-colony-pair {
+    gap: 10px;
+  }
+  .begx-colony-pair strong {
+    min-height: 44px;
+  }
+  .begx-colony-pair svg {
+    max-height: 124px;
+  }
+  .begx-note {
+    margin-top: 5px;
+  }
+  .begx-markers {
+    gap: 3px;
+    margin: 5px 0;
+  }
+  .begx-markers span {
+    padding: 4px 0;
+  }
+  .begx-tally {
+    gap: 20px;
+  }
+  .begx-controls {
+    margin-top: 18px;
+  }
+  .begx-root svg text {
+    font-size: 20px;
   }
 }
-
-@media (max-width: 600px) {
-  .bio-genomes {
-    padding-top: 8px;
-    padding-bottom: 8px;
+@media (max-width: 600px) and (max-height: 650px) {
+  .showcase:has(.begx-root) {
+    scroll-margin-top: -74px;
+  }
+  .begx-root {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  .begx-era {
+    margin-bottom: 3px;
+  }
+  .begx-svg {
+    height: 198px;
+    aspect-ratio: auto;
+  }
+  .begx-fusion .begx-svg {
+    height: 180px;
+  }
+  .begx-colony-pair svg {
+    max-height: 114px;
+  }
+  .begx-note {
+    line-height: 1.3;
+  }
+  .begx-tally b {
+    font-size: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .begx-toggles button {
+    transition: none;
   }
 }

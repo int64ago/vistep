@@ -1,53 +1,98 @@
 ---
-import { photolysisTrace } from '../../models/chem-chlorine-photolysis';
-const trace = photolysisTrace(1);
-const curves = [
-  { key: 'pH' as const, min: 1.4, max: 2.2, c: '#a67f79' },
-  { key: 'chlorideMgL' as const, min: 200, max: 1000, c: '#729c87' },
-  { key: 'oxygenPercent' as const, min: 18, max: 23, c: '#ae9b65' },
+import {
+  photolysisEvent,
+  TEXTBOOK_PHOTOLYSIS_DIRECTIONS,
+} from '../../models/chem-chlorine-photolysis';
+const event = photolysisEvent(17, 310);
+const colours = { H: '#c2aa83', O: '#b37948', Cl: '#718e67' };
+const probes = [
+  { x: 91, y: 266, c: '#a17c78', label: 'pH' },
+  { x: 142, y: 286, c: '#718e67', label: 'Cl⁻' },
+  { x: 193, y: 172, c: '#b37948', label: 'O₂ / %' },
 ];
 ---
 
-<svg viewBox="0 0 640 400" aria-hidden="true"
-  ><rect width="640" height="400" fill="#e9eddd"></rect><path
-    d="M90 100V140L65 160V320Q65 335 80 335H240Q255 335 255 320V160L230 140V100Z"
-    fill="#c7d18c22"
-    stroke="#8d9f7e"
-    stroke-width="2"></path><path
-    d="M67 220H253V320Q253 333 240 333H80Q67 333 67 320Z"
-    fill="#c3cf83"
-    opacity=".25"></path>{
-    [110, 155, 200].map((x, i) => (
+<svg viewBox="0 0 640 400" aria-hidden="true">
+  <rect width="640" height="400" fill="#e9edda"></rect>
+  <ellipse cx="446" cy="209" rx="176" ry="137" fill="#f3efda" opacity=".7"></ellipse>
+  <path
+    d="M72 117V143Q72 153 58 162V296Q58 316 78 316H207Q227 316 227 296V162Q212 153 212 143V117"
+    fill="#f7f5e5"
+    fill-opacity=".5"
+    stroke="#94a48c"
+    stroke-width="2"></path>
+  <path d="M60 220H225V296Q225 314 207 314H78Q60 314 60 296Z" fill="#b4c780" opacity=".28"></path>
+  <ellipse cx="142" cy="220" rx="82" ry="5" fill="#afc083" opacity=".35"></ellipse>
+  <rect x="67" y="109" width="150" height="17" rx="5" fill="#a7b79a"></rect>
+  {
+    probes.map((p, i) => (
       <g>
-        <path
-          d={`M${x} ${i === 2 ? 180 : 285}V${70 - i * 15}H${350 + i * 20}`}
-          fill="none"
-          stroke={curves[i].c}
-          stroke-width="4"
-        />
-      </g>
-    ))
-  }{
-    curves.map((c, i) => (
-      <g transform={`translate(350,${100 + i * 85})`}>
         <>
-          <path d="M0 0V60H240" stroke="#a4b195" fill="none" />
           <path
-            d={trace
-              .map(
-                (s, j) =>
-                  `${j ? 'L' : 'M'}${j * 4} ${60 - ((s[c.key] - c.min) / (c.max - c.min)) * 55}`,
-              )
-              .join(' ')}
-            stroke={c.c}
-            stroke-width="3"
+            d={`M${p.x} ${p.y}V${63 + i * 12}H${255 + i * 10}V${94 + i * 12}`}
             fill="none"
+            stroke={p.c}
+            stroke-width="4"
+            stroke-linecap="round"
           />
+          <circle cx={p.x} cy={p.y} r="7" fill="#faf6e4" stroke={p.c} stroke-width="3" />
+          <text x={73 + i * 76} y="354" fill={p.c} font-size="21" text-anchor="middle">
+            {p.label} {TEXTBOOK_PHOTOLYSIS_DIRECTIONS[i].direction < 0 ? '↓' : '↑'}
+          </text>
         </>
       </g>
     ))
-  }<path d="M20 160L58 180V235L20 255Z" fill="#aeba9c"></path><path
-    d="M58 180L89 160V280L58 235Z"
-    fill="#ddce89"
-    opacity=".5"></path></svg
->
+  }
+  <rect x="248" y="91" width="49" height="63" rx="8" fill="#cad4be" stroke="#94a48c"></rect>
+  <path d="M257 139l10-13 8 4 12-25" fill="none" stroke="#6c8870" stroke-width="2"></path>
+  <g transform="translate(310 76)">
+    {
+      event.bonds
+        .filter((b) => b.opacity > 0)
+        .map((b) => {
+          const a = event.atoms.find((a) => a.id === b.a)!,
+            z = event.atoms.find((a) => a.id === b.b)!;
+          return (
+            <path
+              d={`M${a.x} ${a.y}L${z.x} ${z.y}`}
+              stroke="#a6b18e"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+          );
+        })
+    }
+    {
+      event.atoms.map((a) => (
+        <g>
+          <>
+            <circle
+              cx={a.x}
+              cy={a.y}
+              r={a.radius + 1}
+              fill={colours[a.element]}
+              fill-opacity=".55"
+              stroke={colours[a.element]}
+              stroke-width="1.5"
+            />
+            <text x={a.x} y={a.y + 6} fill="#42594c" text-anchor="middle" font-size="19">
+              {a.element}
+            </text>
+          </>
+        </g>
+      ))
+    }
+    {event.electrons.map((e) => <circle cx={e.x} cy={e.y} r="4" fill="#425e70" />)}
+    <text x="77" y="122" text-anchor="middle" font-size="22" fill="#42594c">HO·</text><text
+      x="260"
+      y="122"
+      text-anchor="middle"
+      font-size="22"
+      fill="#42594c">Cl·</text
+    >
+    <text x="187" y="207" text-anchor="middle" font-size="22" fill="#42594c">HOCl</text>
+  </g>
+  <path d="M369 46q4-10 8 0t8 0t8 0t8 0" fill="none" stroke="#516a77" stroke-width="2.5"
+  ></path><path d="M370 31l6 4m8-4l6 4m8-4l6 4" stroke="#71818a"></path>
+  <text x="422" y="54" fill="#516a77" font-size="23">UV</text>
+</svg>

@@ -1,0 +1,371 @@
+{
+  "sceneSlug": "bio-engineered-genomes",
+  "status": "frozen: unchanged recorded voice and measured156s director; author affected UI/frame checks passed",
+  "schema": "Root canonical teachingProfiles/narration.cues/translations",
+  "plannedDurationSeconds": 150,
+  "topicSuggestion": {
+    "name": {
+      "zh": "合成基因组与活细胞",
+      "en": "Synthetic genomes and living cells"
+    },
+    "title": {
+      "zh": "合成DNA，为什么还不等于合成细胞？",
+      "en": "Why is synthetic DNA not a synthetic cell?"
+    },
+    "question": {
+      "zh": "合成了DNA，为什么还不能说合成了整个细胞？",
+      "en": "Why does synthesizing DNA not mean synthesizing a whole cell?"
+    },
+    "description": {
+      "zh": "从显色与DNA标记追到基因表达，再用单染色体酵母的固定生长记录，分清信息、机器和真实功能。",
+      "en": "Follow colony color and DNA identity into gene expression, then use published yeast growth data to distinguish information, machinery and function."
+    }
+  },
+  "teachingProfiles": {
+    "bio-required-1-012-1": {
+      "sceneSlug": "bio-engineered-genomes",
+      "question": {
+        "zh": "合成了DNA，为什么还不能说合成了整个细胞？",
+        "en": "Why does synthesizing DNA not mean synthesizing a whole cell?"
+      },
+      "lead": {
+        "zh": "从菌落显色和DNA来源证据出发，追踪已有机器怎样读取新信息，再用单染色体酵母的真实生长记录检验结论。",
+        "en": "Start with colony color and DNA identity, follow existing machinery reading new information, then test the limits against published yeast growth data."
+      },
+      "principle": {
+        "zh": "DNA提供遗传信息，表达依赖已有细胞机器与物质条件；染色体条数不等于基因数量，结构改造也不能代替功能证据。",
+        "en": "DNA supplies genetic information; expression depends on cellular machinery and material conditions. Chromosome count is not gene count, and structural redesign does not substitute for functional evidence."
+      },
+      "transfer": {
+        "question": {
+          "zh": "把同一段DNA单独放在没有表达机器的溶液里，能自动得到与受体细胞中相同的蛋白质吗？",
+          "en": "Can the same DNA, alone in a solution without expression machinery, automatically make the same protein as in a recipient cell?"
+        },
+        "explanation": {
+          "zh": "不能。转录需要读取DNA的分子机器，翻译还需要RNA、核糖体、原料与能量。这里说的是只有DNA的溶液；含有合适表达系统的无细胞体系是另一种情况。能生成某种蛋白质也不等于证明整个细胞能够生存繁殖。",
+          "en": "No. Transcription needs machinery that reads DNA, and translation needs RNA, ribosomes, substrates and energy. This comparison is DNA alone; cell-free systems supplied with expression machinery are a different case. Making one protein still does not establish whole-cell survival and reproduction."
+        }
+      }
+    }
+  },
+  "narration": {
+    "cues": [
+      {
+        "id": "assembly",
+        "title": "蓝色菌落能证明什么？",
+        "titleEn": "What does a blue colony establish?",
+        "caption": "合成基因组，不等于合成整个细胞。",
+        "captionEn": "A synthetic genome is not a whole cell.",
+        "seconds": 36,
+        "zh": "先看2010年研究的两种菌落：带合成基因组的菌落显蓝色，对照不显蓝色。一处菌落里有许多细胞。研究者还检测到人为设计的DNA标记，把这些细胞与新基因组联系起来。但这不等于细胞的每个部件都被人工合成了。看这些示意色段接成完整DNA环：颜色帮助追踪身份，环本身还不是能运转的细胞。变蓝时，究竟是谁在工作？",
+        "en": "Start with two colony types from the 2010 study. Colonies carrying the synthetic genome turned blue; the control did not. A colony contains many cells. Designed DNA markers linked the cells to the new genome, but did not show that every cellular component had been synthesized. Follow these illustrative segments into a complete DNA circle. Their colors track identity; the circle alone is not a functioning cell. What actually produced the blue color?"
+      },
+      {
+        "id": "recipient",
+        "title": "新信息，已有机器",
+        "titleEn": "New information, existing machinery",
+        "caption": "信息经过已有机器，转成可见的作用。",
+        "captionEn": "Existing machinery reads new information.",
+        "seconds": 44,
+        "zh": "看移植后的解释模型。细胞膜和这些分子机器原先就存在，不是DNA刚刚变出来的。跟住新DNA上的一段信息：已有机器读取它，合成一条新的RNA；核糖体再沿RNA工作，用氨基酸组装蛋白质。DNA和RNA都没有变成那条蛋白质。研究中的显色蛋白是一种酶，它让检测底物产生蓝色产物。因此，蓝色是基因表达发挥作用的线索。若只留下同一段DNA，拿走表达机器，这条过程就走不下去。原料与能量也必不可少，只是这里没有逐一展开。",
+        "en": "This is an explanatory model of the cell after transplantation. Its membrane and molecular machinery already existed; DNA did not turn into them. Follow one region of the new DNA. Existing machinery reads it to make a separate RNA molecule. A ribosome then follows that message, assembling protein from amino acids. Neither DNA nor RNA turns into the protein. In the study, a reporter enzyme made a blue product from an assay substrate: a visible consequence of gene expression. Keep the same DNA but remove the machinery, and this sequence cannot run. Substrates and energy are also required, though not shown individually."
+      },
+      {
+        "id": "fusion",
+        "title": "十六变一，信息也少了十五份吗？",
+        "titleEn": "Sixteen to one: fifteen shares of information lost?",
+        "caption": "染色体条数变少，不等于信息按比例减少。",
+        "captionEn": "Fewer chromosomes need not mean less information.",
+        "seconds": 32,
+        "zh": "现在换到2018年的另一项研究：酿酒酵母。跟住同一个被标出的基因区段，原有的十六条染色体逐步连接，代表性区段仍能追踪到。条数变少，不等于只剩一个基因，或丢掉了十五份信息。实际研究还删除了部分着丝粒、端粒等序列，所以也不能说每个碱基都原封不动。这是在已有酵母细胞中重排染色体，不是把新染色体放进空细胞。可连成一条以后，它真的还能生长吗？",
+        "en": "Now switch to a different study: budding yeast in 2018. Follow the highlighted gene region as sixteen existing chromosomes are joined. Representative regions remain traceable. Fewer chromosomes do not mean one remaining gene or fifteen lost shares of information. Some centromere, telomere and other sequences were removed, so not every base remained unchanged. This was chromosome reorganization within existing yeast cells, not a new chromosome placed in an empty cell. Could the resulting cells actually grow?"
+      },
+      {
+        "id": "function",
+        "title": "让独立观测回答",
+        "titleEn": "Let independent observations answer",
+        "caption": "DNA的信息与细胞的功能，需要分别检验。",
+        "captionEn": "DNA information is not whole-cell function.",
+        "seconds": 38,
+        "zh": "让真实记录来回答。这是论文中的两组生长均值：正常酵母与单染色体酵母。横轴是时间，纵轴是培养液的光学密度，不是直接数出多少活细胞。看后面的点：单染色体酵母仍然生长，但曲线没有与正常酵母完全重合。论文还报告了其他功能上的差别，所以连成一条并不保证一切表现不变。最后回到那段DNA：信息相同，若周围没有读取和装配的机器，还会自动出现同样的蛋白质吗？",
+        "en": "Let the published observations answer. These are mean growth measurements for parental yeast and the single-chromosome strain. Time runs across the plot; optical density is not a direct count of living cells. Reveal the later points: the redesigned cells still grow, but their curve does not exactly match the parent. The paper reports differences in other functions too. One connected chromosome does not guarantee that everything stays unchanged. Return to the same DNA: without machinery to read and assemble from its information, would the same protein appear automatically?"
+      }
+    ]
+  },
+  "translations": {
+    "论文现象图解": "Published observations, redrawn",
+    "2010：合成基因组": "2010: synthetic genome",
+    "2018：酵母染色体重排": "2018: yeast chromosomes",
+    "菌落，不是单个细胞": "Colony, not one cell",
+    "原研究对照": "Study control",
+    "携带合成基因组": "Synthetic-genome cells",
+    "来源标记": "DNA identity markers",
+    "检出": "Detected",
+    "未检出": "Not detected",
+    "示意分段": "Illustrative segments",
+    "完整DNA不是完整细胞": "Complete DNA ≠ complete cell",
+    "移植后解释模型": "Model after transplantation",
+    "已有机器": "Existing machinery",
+    "新DNA的信息": "New DNA information",
+    "新RNA": "New RNA",
+    "新蛋白质": "New protein",
+    "显色产物": "Colored product",
+    "读取DNA": "Reading DNA",
+    "组装蛋白质": "Building protein",
+    "信息流，不是物质变身": "Information flow, not material conversion",
+    "只有DNA": "DNA alone",
+    "表达系统具备": "Machinery present",
+    "表达系统缺失": "Machinery absent",
+    "RNA已存在": "RNA already present",
+    "转录机器": "Transcription machinery",
+    "翻译机器": "Translation machinery",
+    "检测底物": "Assay substrate",
+    "表达不等于整体活性": "Expression is not whole-cell viability",
+    "同一代表区段": "Same representative region",
+    "保留的代表区段": "Retained representative regions",
+    "条数不是基因数": "Chromosomes ≠ genes",
+    "部分序列被删除": "Some sequences removed",
+    "原有酵母细胞": "Existing yeast cell",
+    "固定发表数据": "Fixed published data",
+    "均值；误差棒未重绘": "Means; error bars omitted",
+    "图读近似值": "Approximate figure readings",
+    "正常酵母": "Parental yeast",
+    "单染色体酵母": "Single-chromosome yeast",
+    "培养时间": "Time",
+    "光学密度": "Optical density",
+    "揭晓后段": "Reveal later points",
+    "不是活细胞计数": "Not a viable-cell count",
+    "原始点不随模型改变": "Observed points stay fixed",
+    "没有自动生成蛋白质": "No automatic protein production",
+    "来源与表达": "Identity and expression",
+    "包装与生长": "Packaging and growth",
+    "跟踪区段": "Tracked region",
+    "理论状态，不是实验录像": "Explanatory state, not recorded footage",
+    "2010：论文现象图解": "2010: study observations",
+    "来源标记：合成基因组组检出，对照未检出。": "Designed markers: present in synthetic-genome cells, absent in controls.",
+    "DNA保留，新RNA另行合成": "DNA remains; new RNA is made.",
+    "RNA保留，新蛋白质另行合成": "RNA remains; new protein is made.",
+    "已有转录机器": "Existing reader",
+    "转录机器缺失": "Reader absent",
+    "已有核糖体": "Existing ribosome",
+    "核糖体缺失": "Ribosome absent",
+    "没有新酶": "No new enzyme",
+    "后续步骤": "Later steps",
+    "蓝色产物": "Blue product",
+    "释放的中间产物": "Released intermediates",
+    "酶作用后释放；后续显色步骤合并。": "Released first; later color-forming steps are combined.",
+    "代表区段": "Regions",
+    "跟住箭头标出的同一区段。": "Follow the same marked region.",
+    "同一区段仍在；部分边界序列被删除。": "The marked region remains; some boundary sequences are removed.",
+    "没有表达机器，还会产生蛋白质吗？": "Without machinery, will protein appear?",
+    "发表均值；误差棒未重绘。": "Published means; error bars omitted.",
+    "来源证据": "Identity evidence",
+    "信息表达": "Expression",
+    "发表生长数据": "Growth data",
+    "同一批示意DNA片段连续装配": "The same illustrative DNA segments join continuously",
+    "同一RNA在已有核糖体上合成新蛋白质": "The same RNA directs new protein synthesis at an existing ribosome",
+    "底物在酶处裂开，释放后经后续步骤显色": "Substrate cleavage precedes release and later color formation",
+    "同一DNA没有表达机器": "The same DNA without expression machinery",
+    "同一代表区段跨越染色体重排": "The same representative region during chromosome reorganization",
+    "固定发表生长均值，不是模型计算": "Fixed published growth means, not computed predictions",
+    "回到同一段DNA": "Return to the same DNA",
+    "4个来源标记": "Four identity markers",
+    "区段仍在；部分边界序列删除。": "Regions retained; some boundaries removed.",
+    "释放后显色（合并步骤）": "Released, then colored (simplified).",
+    "均值；略去误差棒。": "Means; error bars omitted.",
+    "氨基酸": "Amino acids",
+    "小时": "Hours",
+    "无检测底物": "No assay substrate",
+    "底物在酶处裂开": "Substrate cleavage"
+  },
+  "curriculumRecommendations": [
+    {
+      "entryId": "bio-required-1-012-1",
+      "sceneSlug": "bio-engineered-genomes",
+      "chapterIds": ["assembly", "recipient", "fusion", "function"],
+      "sceneVariant": "genomes",
+      "changeWindow": false,
+      "reason": "All four current chapters already form the complete textbook window; repair the internal evidence and mechanism, not the selection."
+    }
+  ],
+  "directorPlan": [
+    {
+      "id": "assembly",
+      "seconds": 36,
+      "beats": [
+        {
+          "from": 0,
+          "to": 8,
+          "shot": "two-published-colony-observations",
+          "claim": "The observed assay colors differ; colonies are groups of cells."
+        },
+        {
+          "from": 8,
+          "to": 16,
+          "shot": "independent-designed-marker-results",
+          "claim": "Source identity is independently supported, without claiming marks alone prove every genomic base."
+        },
+        {
+          "from": 16,
+          "to": 31,
+          "shot": "same-12-segments-join",
+          "claim": "A complete DNA object is not a whole cell; no assembly protocol."
+        },
+        {
+          "from": 31,
+          "to": 36,
+          "shot": "hold-DNA-and-question",
+          "claim": "What machinery gave the observed phenotype?"
+        }
+      ]
+    },
+    {
+      "id": "recipient",
+      "seconds": 44,
+      "beats": [
+        {
+          "from": 0,
+          "to": 6,
+          "shot": "post-transplant-cell-existing-machine-ids",
+          "claim": "Inherited cellular context precedes expression."
+        },
+        {
+          "from": 6,
+          "to": 15,
+          "shot": "new-RNA-from-DNA-template",
+          "claim": "DNA retained; a distinct new RNA is synthesized from available material."
+        },
+        {
+          "from": 15,
+          "to": 25,
+          "shot": "same-RNA-at-existing-ribosome",
+          "claim": "Amino-acid chain emerges and is released as a distinct protein, not transformed RNA."
+        },
+        {
+          "from": 25,
+          "to": 36,
+          "shot": "reporter-enzyme-blue-product",
+          "claim": "The enzyme catalyzes assay product formation; blue is not the color of DNA or protein."
+        },
+        {
+          "from": 36,
+          "to": 44,
+          "shot": "same-information-no-machinery-counterexample",
+          "claim": "Reset the initial state for a controlled teaching contrast, no all-cell viability prediction."
+        }
+      ]
+    },
+    {
+      "id": "fusion",
+      "seconds": 32,
+      "beats": [
+        {
+          "from": 0,
+          "to": 5,
+          "shot": "separate-2018-yeast-study",
+          "claim": "Distinct organism/year and existing nuclear cellular context."
+        },
+        {
+          "from": 5,
+          "to": 18,
+          "shot": "16-to-1-persistent-region",
+          "claim": "Stable region identities across changing chromosome groups."
+        },
+        {
+          "from": 18,
+          "to": 24,
+          "shot": "deleted-boundary-sequences-qualified",
+          "claim": "Representative region preservation is not every-base conservation."
+        },
+        {
+          "from": 24,
+          "to": 32,
+          "shot": "one-chromosome-held-and-growth-question",
+          "claim": "Do not restart fusion in next chapter."
+        }
+      ]
+    },
+    {
+      "id": "function",
+      "seconds": 38,
+      "beats": [
+        {
+          "from": 0,
+          "to": 7,
+          "shot": "fixed-study-growth-data-axes",
+          "claim": "Use Fig5c haploid mean points, not model output."
+        },
+        {
+          "from": 7,
+          "to": 18,
+          "shot": "reveal-fixed-later-measurements",
+          "claim": "Both series increase, no exact match; visual reveal is teaching, not prospective testing."
+        },
+        {
+          "from": 18,
+          "to": 27,
+          "shot": "same-single-chromosome-count-and-two-curves",
+          "claim": "Growth under tested conditions does not establish equality of all functions."
+        },
+        {
+          "from": 27,
+          "to": 34,
+          "shot": "same-DNA-without-machinery-predict",
+          "claim": "A specific transfer prediction from the visible expression mechanism."
+        },
+        {
+          "from": 34,
+          "to": 38,
+          "shot": "hold-no-new-RNA-or-protein",
+          "claim": "Bare DNA alone does not run the expression chain; suitable cell-free systems are a different case."
+        }
+      ]
+    }
+  ],
+  "timingNote": "Spoken zh/en text unchanged. Director now uses measured chapterTime + locale; switches/reveals follow independently transcribed words, and final prediction answers follow the spoken question.",
+  "scientificSimplifications": {
+    "reporter": "Two illustrative precursor units are released after enzyme action before a later combined oxidation/dimerization step forms blue pigment. No elementary mechanism, complete chemical balance, assay calibration, or one-substrate-to-one-pigment stoichiometry is claimed. DNA, RNA, protein and pigment remain distinct objects.",
+    "growth": "Fixed digitized Fig5c LEFT plotted means; not raw data, omitted SEM, approximate readings."
+  },
+  "measuredTiming": {
+    "duration": 156,
+    "chapterStarts": [0, 36, 82, 118],
+    "chapterDurations": [36, 46, 36, 38],
+    "anchors": {
+      "zh": {
+        "markers": 10.5,
+        "assembly": 21.5,
+        "ringComplete": 25.1,
+        "dnaAlone": 27.3,
+        "transcription": 8.6,
+        "translation": 15.1,
+        "reporter": 24.3,
+        "counterexample": 34.4,
+        "fusionStart": 4.6,
+        "fusionEnd": 12.3,
+        "revealStart": 14.6,
+        "revealEnd": 18.5,
+        "prediction": 28,
+        "answer": 37
+      },
+      "en": {
+        "markers": 11.5,
+        "assembly": 19.1,
+        "ringComplete": 23.1,
+        "dnaAlone": 25.3,
+        "transcription": 9.9,
+        "translation": 16.4,
+        "reporter": 24.9,
+        "counterexample": 32.9,
+        "fusionStart": 4.6,
+        "fusionEnd": 11.8,
+        "revealStart": 13.5,
+        "revealEnd": 17,
+        "prediction": 28.3,
+        "answer": 36.3
+      }
+    },
+    "evidence": "artifacts/teaching-principles/biology-next-genomes/measured-timing.json",
+    "semantics": "Anchors are chapter-relative seconds including the recorded0.45s lead. Expression clock is pedagogical event order, not biological rates. Planned cue seconds remain synthesis minima; shared measured timeline is root-owned."
+  }
+}

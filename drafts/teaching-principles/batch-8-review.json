@@ -1,0 +1,140 @@
+{
+  "status": "reviewed-ready-for-authorized-publication",
+  "scenes": [
+    "projectile-motion-lab",
+    "chem-chlorine-photolysis",
+    "bio-engineered-genomes",
+    "capacitor-current-lab"
+  ],
+  "scope": "Three causal content revisions plus one retained-content layout/synchronization pilot. Preserve original textbook records and ordering.",
+  "sceneEntryCounts": {
+    "projectile-motion-lab": 3,
+    "chem-chlorine-photolysis": 1,
+    "bio-engineered-genomes": 1,
+    "capacitor-current-lab": 2
+  },
+  "checks": [
+    {
+      "kind": "original-source-and-entry-audit",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-8-source-entry-audit.json"
+    },
+    {
+      "kind": "independent-recording-transcription",
+      "status": "passed",
+      "chapters": 42,
+      "subjectiveListening": false,
+      "evidence": "artifacts/teaching-principles/batch-8-transcription.json"
+    },
+    {
+      "kind": "root-actual-causal-views",
+      "status": "performed-with-recorded-scope",
+      "evidence": "artifacts/teaching-principles/batch-8-root-early-views.json"
+    },
+    {
+      "kind": "independent-science-and-director-review",
+      "status": "passed-with-recorded-scope",
+      "evidence": [
+        "artifacts/teaching-principles/batch-8-cross-review/chemistry-review-of-projectile.json",
+        "artifacts/teaching-principles/batch-8-cross-review/biology-review-of-photolysis.json",
+        "artifacts/teaching-principles/batch-8-cross-review/root-genomes-data.json",
+        "artifacts/teaching-principles/batch-8-cross-review/biology-review-of-capacitor.json"
+      ]
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 4138,
+      "testFiles": 582,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-8-final-verify.log"
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-8-final-preview.log"
+    },
+    {
+      "kind": "final-static-keyframes",
+      "status": "passed",
+      "cases": 126,
+      "conditions": "21chapters×3positions×ZH1440/EN320x568; complete player, actualSVGfont>=16, primarytargets>=44, invalid paths/runtime errors. Capture count is not personal viewing count.",
+      "evidence": "artifacts/teaching-principles/batch-8-static-keyframes/report.json"
+    },
+    {
+      "kind": "root-actual-final-views",
+      "status": "passed-with-recorded-scope",
+      "evidence": "artifacts/teaching-principles/batch-8-root-final-views.json"
+    },
+    {
+      "kind": "real-controls-and-keyboard",
+      "status": "passed",
+      "physicsAssertions": 194,
+      "biologyAssertions": 42,
+      "chemistryRecords": 32,
+      "capacitorAssertions": 18,
+      "evidence": "artifacts/teaching-principles/batch-8-controls-static"
+    },
+    {
+      "kind": "precise-entries-and-resource-failure",
+      "status": "passed",
+      "cases": 18,
+      "conditions": "All7entries both languages plus4audio failure/retry/offscreen/resume/manual pause.",
+      "evidence": "artifacts/teaching-principles/batch-8-behavior/report.json"
+    },
+    {
+      "kind": "initial-native-short-screen-anchor",
+      "status": "passed",
+      "cases": 16,
+      "conditions": "Direct#experiment without scripted reposition.",
+      "evidence": "artifacts/teaching-principles/batch-8-anchors/report.json"
+    },
+    {
+      "kind": "catalog-filters-and-no-JS",
+      "status": "passed",
+      "cases": 10,
+      "evidence": "artifacts/teaching-principles/batch-8-catalog/report.json"
+    },
+    {
+      "kind": "normal-rate-uninterrupted-native-playback",
+      "status": "passed",
+      "runs": 8,
+      "chapters": 42,
+      "conditions": "Native user-activated audio/film, no seeking after start,10s checkpoints. Root viewed selected running frames; not subjective listening, continuous human visual watching or physical-device performance.",
+      "evidence": "artifacts/teaching-principles/batch-8-continuous/report.json"
+    }
+  ],
+  "pending": ["Actions deployment and live verification"],
+  "notClaimed": [
+    "Subjective listening",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ],
+  "chapters": 21,
+  "tracks": 8,
+  "resolved": [
+    "Projectile actual first synthesis307.5s exceeded300s; shortened redundant passages without changing retained first2cues or speeding speech. Final278s.",
+    "Projectile question phases no longer leak future values in captions or desktop t/v readouts.",
+    "Capacitor complete-player first2matrices each failed3integral frames; duplicate area label removed on phone watch, preserving numeric evidence and font size. Final39passed.",
+    "Catalog initially retained old durations; regenerated both source catalogs with explicit --write."
+  ],
+  "finalSource": {
+    "commit": "f96b88d38a9a0e2947f09c59b51316c0ac09a01c",
+    "treeHash": "c16ebbd6ef18aa4a49eb9c712ea963b680904d2282bde8260027cfc6e58bc8fe",
+    "gitDiffHash": "050636caf194e723cdd809371d4bebee23c95dadd938126fbdf19154971b1723",
+    "fileCount": 5206,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "finalCorrection": {
+    "finding": "Longest projectile velocity vector overlapped the reading band at late chapter3.",
+    "change": "Reserve25additionalSVGunits with the same common component-vector scale; no physics/narration/timing changes.",
+    "validation": "Rebuilt isolated candidate; repeated126keyframes, all8nativefullplays, all controls/entries/anchors/catalog checks. Initial artifacts retained underbatch-8-initial-*."
+  },
+  "verificationEnvironment": {
+    "checkout": "Dedicated managed Batch8 checkout, isolated from in-progress Batch9.",
+    "setupRecovery": "Initial isolated verify saw GitLFS pointer files. Hydrated864existingaudioassets from original checkout, verified everySHA256againstpointerOID, then reran fullverify successfully.",
+    "sourceFingerprintNote": "Staging candidate removed6deletedpaths fromls-files and addednewpaths togitdiff; file bytes unchanged. Final build and all browser QA use recorded final frozen fingerprint."
+  }
+}

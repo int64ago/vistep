@@ -1,9 +1,9 @@
-# Follow charge through a measured current area
+# 从电流面积测电荷
 
-PEP Required 3 §10.4 pp.39–40. Four shots: sensor records discharge, replay with current-area accumulation, share A with identical empty B, remove B and share A with a new empty C. The source capacitor stays identifiable, and B remains accounted for in the second comparison. Sensor and charge-sharing variants use different circuit topology and apparatus paths; they are not caption swaps.
+本轮保留四章的全部双语口播、96.5秒原录音、两个教材窗口与独立 RC/共享电荷模型。重点是把已经存在的原理真正显示出来：开关闭合后放电，电流曲线在讲到时出现，下一章重新看同一次放电并积累面积；移走 B 后它仍保有电荷，A 与新的空 C 继续共享。
 
-Source/model: ideal RC discharge and capacitor energy from OpenStax University Physics 2 §10.6/§8.3; textbook supplies current-sensor method and consecutive sharing. The current trace, voltage, charge and sampled trapezoidal area all derive from one state. Sampling is simulated at 0.05 s, not a claimed physical acquisition. Color strip is a symbolic charge cue on an opaque capacitor, not a fluid level. Charge-sharing relaxation includes a small resistance; equal final charges do not imply conserved field energy.
+教材必修第三册第10.4节第38—40页包含电容、传感器曲线与连续共享。教材原方法将 B 放电后再接回；画面换成相同的空 C，让移走的 B 电荷仍可追踪。这两种方法对 A 下一轮共享的初始条件相同。正文明确说明该差异，以及6V、1mF、2kΩ是理想教学值而非教材实测数据。OpenStax University Physics2 §10.5 支持 RC 指数放电；曲线是0.05s采样的模型，用梯形积分近似已释放电荷，有限时刻仍有剩余。
 
-Desktop: physical capacitor/sensor loop over an I–t trace. Narrow view stacks the same circuit and chart, keeping numeric readings in >=16px CSS; tick labels scale separately. Sharing mode replaces sensor/chart with two capacitors and an explicit removed-B state for round two.
+桌面同时显示真实连接的电路和曲线，手机按讲解切换观察对象并保留稳定高度。手机积分章去掉已由字幕表达的重复面积标签，仍显示积分和剩余电荷；实际字体与操作尺寸保持16px/44px。第一、二轮各有3帧因播放器576px超高而失败，修正后的39个停帧全部通过（含两语320×568）。独立模型测试8项；同伴只读复核18,184状态和18项语义/交互检查。8条原声音独立转写通过，不能替代主观试听。
 
-Independent benchmark: C=1mF,R=2kΩ,U₀=6V gives τ=2s and I(τ)=3/e mA. Sampled area at8s differs from C(U₀−U) by under0.006%. Boundary counterexample: finite-time residual charge is strictly positive; capacitor sharing loses half of the initial field energy despite charge conservation. Five targeted tests passed. Packet validation (4 contiguous chapters, 96 planned seconds) and TSX syntax check passed. Rendered visual review, full playback and listening remain not run until root integration.
+最终静态构建、入口、资源失败、正常速度原生播放由批次验收另行记录；真实手机性能、人工连续观看和主观试听不冒充已完成。

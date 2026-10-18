@@ -1,195 +1,117 @@
-.projectile-motion-lab {
-  max-width: 1040px;
+.projectile-cause-lab {
+  width: 100%;
+  max-width: 800px;
   margin: auto;
-  padding: clamp(18px, 4vw, 42px);
-  color: #526d53;
+  color: #35534e;
 }
-.projectile-motion-lab header {
+.projectile-cause-art {
+  width: 100%;
+  min-width: 0;
+  background: linear-gradient(150deg, #f5f3e7, #edf2e7);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.projectile-cause-header,
+.projectile-cause-footer {
   text-align: center;
-}
-.projectile-motion-lab header p {
-  font-size: clamp(21px, 2.5vw, 28px);
-  line-height: 1.5;
-  margin: 0 0 8px;
-}
-.projectile-motion-lab header > span {
   font-size: 16px;
-  color: #829572;
+  line-height: 1.35;
+  padding: 9px 12px;
+  min-height: 39px;
+  box-sizing: border-box;
 }
-.projectile-motion-stage {
-  max-width: 650px;
-  margin: 20px auto;
+.projectile-cause-header {
+  color: #35534e;
 }
-.projectile-motion-stage svg {
+.projectile-cause-footer {
+  color: #687f70;
+}
+.projectile-cause-art svg {
   display: block;
   width: 100%;
+  max-width: none;
+  height: auto;
+  overflow: visible;
 }
-.projectile-motion-readings {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px 26px;
+.projectile-cause-art svg text {
   font-size: 16px;
+  font-family: var(--font-sans), sans-serif;
 }
-.projectile-motion-readings span {
-  display: flex;
-  gap: 9px;
-}
-.projectile-motion-readings b {
-  font-weight: 400;
-  color: #9b8b62;
-}
-.projectile-motion-cause {
-  font-size: 17px;
-  line-height: 1.7;
-  max-width: 730px;
-  margin: 25px auto;
-  text-align: center;
-}
-.projectile-motion-note {
-  font-size: 16px;
-  color: #849374;
-  line-height: 1.6;
-  max-width: 760px;
-  margin: 20px auto;
-  text-align: center;
-}
-.projectile-motion-analysis {
-  max-width: 520px;
-  margin: 22px auto;
-}
-.projectile-motion-analysis > p {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.5;
-}
-.projectile-motion-analysis table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  font-size: 16px;
-}
-.projectile-motion-analysis th {
-  font-weight: 400;
-  padding: 8px;
-  border-bottom: 1px solid #d9e1cc;
-}
-.projectile-motion-analysis td {
-  padding: 6px 8px;
-  color: #8d9d77;
-}
-.projectile-motion-speed {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.6;
-}
-.projectile-motion-speed strong {
-  font-size: 25px;
-  color: #8c9f73;
-  font-weight: 400;
-}
-.projectile-motion-controls {
+.projectile-cause-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 20px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 22px 8px 4px;
+  min-width: 0;
 }
-.projectile-motion-controls > .segmented {
-  grid-column: 1/-1;
-  justify-self: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 100%;
-}
-.projectile-motion-controls .segmented button {
-  min-height: 44px;
+.projectile-cause-controls .control {
+  min-width: 0;
   font-size: 16px;
 }
-.projectile-motion-controls .segment-selection {
-  display: none;
+.projectile-cause-controls .control-top {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.projectile-cause-controls input[type='range'] {
+  width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+  min-height: 44px;
+}
+.projectile-cause-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  grid-column: 1/-1;
+}
+.projectile-cause-buttons button {
+  color: #536e60;
+  border: 1px solid #cbd7c8;
+  background: #f6f7f0;
+  border-radius: 12px;
+  padding: 10px 13px;
+  min-width: 44px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.35;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.projectile-cause-buttons button[aria-pressed='true'] {
+  background: #dcebdc;
+  border-color: #8eaa95;
+  color: #294e44;
+}
+.projectile-cause-buttons button:focus-visible {
+  outline: 2px solid #438c90;
+  outline-offset: 3px;
+}
+.projectile-cause-controls > p {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
 }
 @media (max-width: 640px) {
-  .projectile-motion-lab {
-    padding: 20px 12px;
+  .projectile-cause-controls {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .projectile-motion-stage {
-    margin: 16px -5px;
+  .projectile-cause-header,
+  .projectile-cause-footer {
+    padding: 6px 5px;
+    min-height: 34px;
   }
-  .projectile-motion-readings {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .projectile-motion-readings span {
-    justify-content: space-between;
-  }
-  .projectile-motion-controls {
-    grid-template-columns: 1fr;
-  }
-  .projectile-motion-controls > .segmented {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .projectile-motion-controls .segmented button {
-    min-width: 0;
-    white-space: normal;
-    padding: 10px 8px;
-    line-height: 1.4;
-  }
-  .projectile-motion-speed strong {
-    font-size: 21px;
-  }
-  .projectile-motion-analysis table {
-    font-size: 16px;
+  .projectile-cause-art {
+    border-radius: 12px;
   }
 }
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .projectile-motion-lab {
-    padding: 12px 8px;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-lab > header > span,
-  .showcase[data-mode='watch'] .projectile-motion-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .projectile-motion-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .projectile-motion-lab > p[class$='-observation'] {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .projectile-motion-stage {
-    margin: 6px 0;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-stage svg {
-    max-height: 230px;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-readings {
-    gap: 5px;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-analysis {
-    margin: 6px 0;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-analysis > p {
-    margin: 5px 0;
-    font-size: 16px;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-analysis th,
-  .showcase[data-mode='watch'] .projectile-motion-analysis td {
-    padding: 3px 6px;
-  }
-  .showcase[data-mode='watch'] .projectile-motion-speed {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 6px 0;
+@media (max-width: 640px) and (max-height: 700px) {
+  .lesson-projectile-motion-lab #experiment {
+    scroll-margin-top: -74px;
   }
 }

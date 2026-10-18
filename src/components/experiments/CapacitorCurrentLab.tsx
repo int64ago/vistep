@@ -1,17 +1,14 @@
 import { useId, useMemo, useState } from 'react';
-import { t } from '../../i18n';
+import { browserLocale, t } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
 import { useShowcase } from '../lab/FilmContext';
 import {
   capacitorSharing,
+  capacitorFilmState,
   dischargeState,
   sensorSamples,
 } from '../../models/capacitor-current-lab';
 import '../../styles/capacitor-current-lab.css';
-const ease = (v: number) => {
-  const p = Math.max(0, Math.min(1, v));
-  return p * p * (3 - 2 * p);
-};
 function Capacitor({
   x,
   y,
@@ -61,14 +58,15 @@ function SensorCircuit({
   time,
   capacitance,
   resistance,
+  closed = true,
 }: {
   id: string;
   time: number;
   capacitance: number;
   resistance: number;
+  closed?: boolean;
 }) {
-  const s = dischargeState(time, capacitance, resistance),
-    closed = true;
+  const s = dischargeState(time, capacitance, resistance);
   return (
     <>
       <svg
@@ -76,6 +74,7 @@ function SensorCircuit({
         viewBox="0 0 440 210"
         role="img"
         aria-label={t('已充电的电容器经过开关、电流传感器与电阻放电')}
+        data-switch={closed ? 'closed' : 'open'}
       >
         <Defs id={id} />
         <ellipse cx="216" cy="188" rx="181" ry="10" fill="#6f8d7c" opacity=".07" />
@@ -115,7 +114,7 @@ function SensorCircuit({
       </svg>
       <div className="capcurrent-readout">
         <span>
-          {t('传感器电流')} <b>{(s.current * 1000).toFixed(2)} mA</b>
+          {t('传感器电流')} <b>{((closed ? s.current : 0) * 1000).toFixed(2)} mA</b>
         </span>
         <span>
           U <b>{s.voltage.toFixed(2)} V</b>
@@ -193,7 +192,7 @@ function CurrentPlot({
       </svg>
       {showArea && (
         <div className="capcurrent-integral">
-          <span>{t('曲线下面积')}</span>
+          <span className="capcurrent-area-label">{t('曲线下面积')}</span>
           <strong>∫I dt = {(data.integrated * 1000).toFixed(2)} mC</strong>
           <span>
             {t('仍留在电容器中')} {(last.remainingCharge * 1000).toFixed(2)} mC
@@ -263,29 +262,30 @@ function Sharing({ id, progress, round }: { id: string; progress: number; round:
 export default function CapacitorCurrentLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [mode, setMode] = useState(
-      film.variant === 'r3-capacitor-charge-sharing' ? 'sharing' : 'sensor',
-    ),
+  const [mode, setMode] = useState<string | null>(null),
     [time, setTime] = useState(3),
     [capacitance, setCapacitance] = useState(1000),
     [resistance, setResistance] = useState(2000),
     [area, setArea] = useState(true),
-    [round, setRound] = useState('1'),
+    [round, setRound] = useState<string | null>(null),
     [progress, setProgress] = useState(0);
   const c = film.chapter,
-    p = ease((film.chapterProgress - 0.12) / 0.72),
-    active = film.watch ? (c < 2 ? 'sensor' : 'sharing') : mode,
-    timer = film.watch ? p * 8 : time,
+    director = capacitorFilmState(c, film.chapterTime, browserLocale()),
+    exploreMode = mode ?? (c < 2 ? 'sensor' : 'sharing'),
+    exploreRound = round ?? (c === 3 ? '2' : '1'),
+    active = film.watch ? (c < 2 ? 'sensor' : 'sharing') : exploreMode,
+    timer = film.watch ? director.physicalTime : time,
     cap = film.watch ? 0.001 : capacitance / 1e6,
     r = film.watch ? 2000 : resistance,
     showArea = film.watch ? c === 1 : area,
-    shareProgress = film.watch ? p : progress,
-    shareRound = (film.watch ? (c === 3 ? 2 : 1) : Number(round)) as 1 | 2;
+    shareProgress = film.watch ? director.sharingProgress : progress,
+    shareRound = (film.watch ? director.sharingRound : Number(exploreRound)) as 1 | 2;
   return (
     <section
       className="capcurrent-film"
       data-watch={film.watch || undefined}
       data-chapter={film.chapter}
+      data-plot-view={director.plotView}
     >
       <p className="capcurrent-kicker">
         {t(
@@ -297,10 +297,18 @@ export default function CapacitorCurrentLab() {
         )}
       </p>
       {active === 'sensor' ? (
-        <>
-          <SensorCircuit id={id} time={timer} capacitance={cap} resistance={r} />
+        <div className="capcurrent-sensor">
+          <div className="capcurrent-circuit">
+            <SensorCircuit
+              id={id}
+              time={timer}
+              capacitance={cap}
+              resistance={r}
+              closed={!film.watch || director.dischargeClosed}
+            />
+          </div>
           <CurrentPlot time={timer} capacitance={cap} resistance={r} showArea={showArea} />
-        </>
+        </div>
       ) : (
         <Sharing id={id} progress={shareProgress} round={shareRound} />
       )}
@@ -315,14 +323,14 @@ export default function CapacitorCurrentLab() {
         <div className="capcurrent-controls">
           <Segments
             label={t('选择电容测量实验')}
-            value={mode}
+            value={exploreMode}
             onChange={setMode}
             options={[
               { value: 'sensor', label: t('电流与面积') },
               { value: 'sharing', label: t('依次分电') },
             ]}
           />
-          {mode === 'sensor' ? (
+          {exploreMode === 'sensor' ? (
             <>
               <Range
                 label={t('放电时间')}
@@ -359,7 +367,7 @@ export default function CapacitorCurrentLab() {
             <>
               <Segments
                 label={t('分电轮次')}
-                value={round}
+                value={exploreRound}
                 onChange={(v) => {
                   setRound(v);
                   setProgress(0);

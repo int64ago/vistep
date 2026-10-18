@@ -1,49 +1,95 @@
 ---
 name: Horizontal projectile experiments
-title: How do different measurements reveal the two parts of horizontal projectile motion?
+title: Does a faster sideways launch land later?
 ---
 
 <section id="understand">
 
-PEP Required Book 2 §5.3 (pages 10–13) includes strobe/video records, simultaneous launch and drop, carbon-paper tracing, two-receiver ranging, and board/wall variants. Section5.4 then checks the parabola (page17) and measures launch speed with a ruler (page18). Separate chapter windows preserve this learning order.
+One ball launches horizontally while another drops from the same height at the same instant. The first travels farther, yet does not stay aloft longer. Follow their heights, then project the launched ball's motion onto two directions.
 
-Ideal horizontal launch follows x = v₀t and y = gt²/2, with the ball centre at launch as origin and right/down positive. Horizontal velocity changes range but not the fall time from a common height.
+Ignoring air resistance, only downward gravity acts after release. With no horizontal force, the existing horizontal velocity continues. Vertical velocity starts at zero and grows by about 9.8 metres per second each second. Both components share one clock and combine into a velocity that turns increasingly downward.
+
+The vertical drop determines flight time; horizontal velocity determines the distance covered during that time. Four times the drop gives twice the time and range. Doubling the centre's horizontal travel to a wall doubles time and quadruples the drop.
 
 </section>
 <section id="try">
 
-Compare paired balls with the same starting height, release instant and zero vertical velocity. In tracing experiments, keep the ramp release point fixed and change only catcher height or wall distance, so all marks belong to one launch condition.
+In exploration, choose “Paired release.” Keep the centre drop fixed and change only horizontal launch speed. The balls remain level. Range changes; their first-contact time does not.
 
-The two-receiver path locates the source from two one-way acoustic ranges. The parabola path calculates y/x² for nonzero points. Finally, tabletop height h and range l give v₀ = l√[g/(2h)]. Exploration recomputes trajectories and contact points.
+“Force and velocity” separates the gravity diagram from the velocity triangle. At later times, its horizontal side retains the same length while its vertical side grows. The arrows use one common scale and the same computed velocity values.
+
+In “Test a parabola,” compare linear and quadratic candidates. Changing the candidate does not rewrite the fixed teaching coordinates; advancing progress reveals the final point. In “Infer launch speed,” use a 0.80 m drop and 0.56 m range, then predict a new catcher height.
 
 </section>
 <section id="deeper">
 
 <details>
+<summary>Textbook order and complete entry windows</summary>
 
-<summary>Common launch conditions and contact</summary>
+PEP Required Book 2 §5.3, pages 10–13, develops the component motions from timed positions, paired release and trajectory tracing. The main window follows records, a controlled comparison, recovered time, force-based explanation and predictions under changed conditions. Tracing, ultrasound localization and home apparatus remain available in exploration; their preparation is optional detail.
 
-A solid sphere rolls from rest at a fixed ramp point to a horizontal exit. Rotational kinetic energy is included; release potential energy is not all assigned to translation. The curved ramp joins the flight with continuous position and horizontal exit velocity.
-
-The laboratory catcher presses carbon paper against a backing sheet. Home variants use a horizontal board or a vertical wall. Motion freezes at first contact; subsequent printing and rolling impacts are not dynamically simulated. Marks are corrected to centre coordinates, treating finite radius consistently. Values are ideal model examples without drag or instrument error, not newly measured evidence.
-
-</details>
-
-<details>
-
-<summary>Two-range geometry</summary>
-
-Receivers occupy known positions on a vertical baseline. Simultaneous infrared and ultrasound emission gives two one-way delays and ranges. Two circles generally have mirror intersections on opposite sides of the baseline. Knowing that the object lies to the right selects one; two ranges alone do not always give a unique unrestricted point.
-
-Coordinates refer to emission time. Tiny infrared travel times are neglected; sound speed is343 m/s. Multiple echoes and missing pulses are omitted. Unlike reflected round-trip sensing, these one-way paths are not divided by two.
+Section 5.4 applies Newton's laws to velocity components on page 14, eliminates time on page 16, asks readers to test a parabola on page 17, and asks them to infer speed with a ruler on page 18. Both single-chapter entries include their own conditions, reasoning and prediction.
 
 </details>
 
 <details>
+<summary>A path does not carry a clock</summary>
 
-<summary>Parabola and launch-speed checks</summary>
+Take the launch centre as origin, with right and down positive. After the paired comparison establishes vertical free fall, a centre drop supplies time through t = √(2y/g). Equal horizontal increments over equal recovered intervals then support constant horizontal velocity.
 
-For repeated identical launches, test whether y/x² is constant within uncertainty or plot y against x². Exclude0/0 at the origin. The ideal ratio is g/(2v₀²). Height and range infer actual flight speed independently of detailed ramp losses, but only if the exit is horizontal so initial vertical velocity is zero.
+The fixed teaching coordinates use times 0.1, 0.2, 0.3 and 0.4 s; horizontal positions 0.14, 0.28, 0.42 and 0.56 m; and drops 0.049, 0.196, 0.441 and 0.784 m. These are explicitly ideal values. They illustrate the inference; they are neither digitized textbook measurements nor independent experimental validation of the equations that generated them.
+
+Real marks require one common launch condition. A curved trace alone cannot independently identify both time-dependent component motions. Mixing marks from different launch speeds breaks the inference.
+
+</details>
+
+<details>
+<summary>Why a parabola, and how can it predict a hidden point?</summary>
+
+For a nonzero horizontal launch, x = v₀t and y = gt²/2. Eliminating the shared time gives y = [g/(2v₀²)]x². With fixed launch speed, that coefficient does not change along the path. Exclude the origin from y/x²: 0/0 is undefined. Zero horizontal speed produces a vertical path and cannot use this y(x) formula.
+
+Both candidates face the same fixed teaching points. The final point appears after the prediction, and neither changing a candidate nor seeking backward rewrites it. This pause lets the reader apply the theory; it does not turn a model result into an independent measurement.
+
+</details>
+
+<details>
+<summary>A ruler, launch speed and the radius correction</summary>
+
+Horizontal departure means zero initial vertical velocity. Centre drop H gives t = √(2H/g), and horizontal range L gives v₀ = L/t. For H = 0.80 m and L = 0.56 m, time is about 0.404 s and speed about 1.386 m/s. Raising the catcher to leave a drop of 0.20 m halves the time and predicts a range of 0.28 m.
+
+For the same ball on horizontal support surfaces, its centre begins one radius above the tabletop and reaches first contact one radius above the catcher. The offsets cancel, so surface-to-surface height equals centre drop. They do not cancel at a vertical wall: subtract the radius from the wall distance to obtain centre travel before contact.
+
+This inference uses flight geometry, not ramp release height or a friction assumption. Real measurements require repeated trials and estimates of reading and launch variation; a single landing should not be expected to match a calculated value with unlimited precision.
+
+</details>
+
+<details>
+<summary>Apparatus, contact and model limits</summary>
+
+Tracing exploration retains continuous rolling, horizontal departure and first contact. The ramp solver treats a solid sphere rolling without slip, including rotational kinetic energy: v₀² = 10gh/7, where h is the centre drop along the ramp, not the subsequent flight drop. The closest rail surface is a normal offset of the centre path by one ball radius; rail thickness is included in the drawing.
+
+Catchers and walls share the same centre/radius geometry. The film freezes at first contact without simulating rebound, carbon-paper compression or post-impact motion. The textbook's depth-tilted printing strip is simplified to its receiving surface in side view.
+
+Air drag, spin-induced aerodynamic forces and instrument noise are omitted. If launch velocity has a vertical component, equal starting heights no longer guarantee simultaneous landing.
+
+</details>
+
+<details>
+<summary>Two receivers, one emission event</summary>
+
+The moving source emits infrared and ultrasound together. Neglecting the very short infrared travel time, acoustic delay multiplied by sound speed gives one source-to-receiver distance. This is one-way travel: do not divide by two.
+
+Two known receivers define two circles, usually leaving mirror candidates on opposite sides of their baseline. A known motion region selects the appropriate side. Both circles in exploration locate the source at the same emission instant, not its later position when a pulse arrives. Sound speed is 343 m/s; multipath, missing pulses and measurement error are omitted.
+
+</details>
+
+<details>
+<summary>Sources</summary>
+
+- People's Education Press, _Physics, Required Book 2_, Chapter 5, pages 10–18; the complete textbook supplied locally.
+- [MIT OCW: original Projectile Motion lecture](https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/8733a0224555eed5677ba9fa7fe4f06e_83NmtaE7fEk.pdf), applying Newton's laws by component and distinguishing position–time plots from the trajectory.
+- [Vernier: Physics with Vernier, Computer 8B](https://www.vernier.com/files/training/nsta-2017/physics_with_vernier.pdf), prediction before impact, reference offsets, trial variation and nonhorizontal-launch boundaries.
+- [PASCO: Path of a Projectile](https://www.pasco.com/resources/lab-experiments/1452), relating vertical drop to horizontal travel for a horizontal launch.
 
 </details>
 

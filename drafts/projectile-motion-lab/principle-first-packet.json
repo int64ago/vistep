@@ -1,0 +1,520 @@
+{
+  "sceneSlug": "projectile-motion-lab",
+  "status": "measured director and owned product frozen for root independent final verification",
+  "narration": {
+    "duration": 278,
+    "cues": [
+      {
+        "id": "strobe",
+        "title": "同一串等时点",
+        "titleEn": "The same timed dots",
+        "caption": "同一时钟：水平等距，竖直间距增大。",
+        "captionEn": "One clock: equal horizontal steps, growing vertical steps.",
+        "seconds": 28,
+        "zh": "先用频闪或逐帧视频记录小球的位置。本例每零点零五秒留下一个位置点。把抛出点的球心作为原点，向右和向下建立坐标。相同时间内，水平位移相同，竖直位移却逐次增大。这些位置记录让我们分别研究两个方向，而不是仅仅凭一条弯曲的外形猜测运动规律。",
+        "en": "Begin with strobe photography or video frames. This example records a point every 0.05 seconds. Use the ball centre at launch as the origin, with axes right and down. Equal intervals have equal horizontal travel but increasing vertical travel. Position records let us study each direction separately rather than guessing a law from the curve’s appearance."
+      },
+      {
+        "id": "paired",
+        "title": "抛得更快，会落得更晚吗？",
+        "titleEn": "Faster sideways, later landing?",
+        "caption": "同高度、同时释放，两球始终同高。",
+        "captionEn": "Same height and release time: both balls stay level.",
+        "seconds": 28,
+        "zh": "教材的弹性金属片同时完成两件事：把一球水平抛出，并释放另一球自由下落。两球起始高度相同，竖直初速度都为零。虽然水平位置越来越远，它们的高度始终相同，并且同时触地。改变水平投射强度会改变落点，却不改变同高度的下落时间；这为平抛的竖直分运动提供了直接对照。",
+        "en": "The spring-strip apparatus launches one ball horizontally while releasing another vertically. Both start at the same height and instant, with zero vertical velocity. Their horizontal positions separate, but their heights match and they land together. Changing horizontal launch strength changes range, not fall time from the same height. This directly tests the vertical component."
+      },
+      {
+        "id": "carbon",
+        "title": "轨迹怎样给出时间",
+        "titleEn": "A path supplies a clock",
+        "caption": "下落量给出时间，再检验水平位移。",
+        "captionEn": "Recover time, then compare horizontal steps.",
+        "seconds": 30,
+        "zh": "轨迹本身不带时钟。用竖直自由落体规律，把球心下降量换成飞行时间。这组理想教学坐标中，时间每次增加零点一秒，水平位移每次增加零点一四米，所以水平速度保持一点四米每秒。真实描点必须保持同一初速度，不能把不同条件的印迹拼在一起。",
+        "en": "A path has no clock. Use vertical free fall to convert centre drop into flight time. In these ideal teaching coordinates, time increases by zero point one seconds, while horizontal position increases by zero point one four metres. Horizontal speed is therefore constant at one point four metres per second. Real marks must share the same launch conditions."
+      },
+      {
+        "id": "receivers",
+        "title": "为什么只改变一个分量",
+        "titleEn": "Why one component changes",
+        "caption": "重力改变竖直速度，水平速度保持不变。",
+        "captionEn": "Gravity changes vertical velocity; horizontal velocity stays constant.",
+        "seconds": 30,
+        "zh": "跟住同一个球。离开装置后，忽略空气阻力，只有重力向下。水平合力为零，加速度也为零，已有的水平速度不需要持续推力来维持。重力使竖直速度每秒增加九点八米每秒。看速度三角形：水平边不变，竖直边变长，总速度转向下方。两个分运动共用一个时钟，合成这个球的运动。",
+        "en": "Follow the ball. After release, ignoring air resistance, only gravity acts downward. Zero horizontal force means zero horizontal acceleration; existing horizontal velocity needs no sustained push. Gravity increases vertical velocity by nine point eight metres per second each second. In the velocity triangle, the horizontal side stays fixed, the vertical side grows, and their sum turns downward. Both components share one clock."
+      },
+      {
+        "id": "home-board",
+        "title": "新高度的新落点",
+        "titleEn": "A new landing height",
+        "caption": "降低接球板后，新的落点在哪里？",
+        "captionEn": "Lower the catcher: where will the ball land?",
+        "seconds": 30,
+        "zh": "先看小球落到较高的接球板上。初速度不变，把球心下降量变成四倍，水平距离也会变成四倍吗？先停一下。下降量与时间平方成正比，所以飞行时间只加倍；水平速度不变，水平距离也只加倍。放好空心预测标记，再释放小球。它到达标记处才接触接球板。",
+        "en": "First the ball reaches the higher board. Keep launch speed, but quadruple the centre drop. Will horizontal distance also quadruple? Pause here. Drop grows with time squared, so flight time only doubles. Unchanged horizontal speed then doubles the range. Place the outlined prediction, then release the ball. It reaches the mark at first contact."
+      },
+      {
+        "id": "home-wall",
+        "title": "墙移远以后",
+        "titleEn": "Moving the wall farther away",
+        "caption": "墙移远以后，小球会多下降多少？",
+        "captionEn": "Move the wall farther: how much farther will the ball drop?",
+        "seconds": 28,
+        "zh": "保留近处的撞点，把到墙前的球心水平位移加倍。下降量会加倍，还是变成四倍？水平速度不变，飞行时间加倍；下降量随时间平方变化，因此变成四倍。空心标记先预测，随后释放检验理想模型。墙面距离要扣除球半径，才是球心位移。首次接触就停下，不模拟碰撞后的运动。",
+        "en": "Keep the first mark and double the centre travel to the wall. Will the drop double or quadruple? Constant horizontal velocity doubles flight time. Drop grows with time squared, so it quadruples. Place the prediction, then release to check the ideal model. Subtract the ball radius from wall-surface distance to obtain centre travel. Stop at first contact; post-impact motion is not modeled."
+      },
+      {
+        "id": "parabola",
+        "title": "为什么是抛物线",
+        "titleEn": "Why a parabola?",
+        "caption": "用两个分运动推导轨迹，再预测新点。",
+        "captionEn": "Derive the path from both motions, then predict a new point.",
+        "seconds": 36,
+        "zh": "一条线看起来弯曲，还不能说明它就是抛物线。把原点放在抛出时的球心，向下为正，看这组固定的理想教学坐标。先试竖直位移与水平位移成正比，直线跟不上后面的点。再除以水平位移的平方，比值都为二点五每米。为什么？水平位移等于初速度乘时间，竖直位移等于二分之一重力加速度乘时间平方。消去同一个时间，就得到竖直位移与水平位移平方成正比。现在先遮住最后一点：水平位移零点五六米，预测下降零点七八四米。再揭开这个固定点。它展示模型的预测关系，不是新增的实验证据。",
+        "en": "A curved line is not automatically a parabola. Put the origin at the launch centre, with downward positive, and inspect these fixed ideal teaching coordinates. First try a linear relation. The line misses the later points. Dividing vertical displacement by horizontal displacement squared gives two point five per metre. Why? Horizontal displacement is launch speed times time; vertical displacement is half gravity times time squared. Eliminate the shared time to obtain the quadratic relation. Keep the last point hidden. At a horizontal distance of zero point five six metres, predict a drop of zero point seven eight four metres. Now reveal it. This illustrates the model, not new experimental evidence."
+      },
+      {
+        "id": "speed",
+        "title": "刻度尺看见初速度",
+        "titleEn": "A ruler reveals launch speed",
+        "caption": "高度给出时间，距离给出速度，再预测新高度。",
+        "captionEn": "Height gives time, range gives speed, then predict a new height.",
+        "seconds": 40,
+        "zh": "如果没有计时器，只有刻度尺，能求出离桌速度吗？先测桌面到水平接球面的高度零点八零米，以及从抛出点正下方到落点的水平距离零点五六米。对同一个球，起点和终点的半径偏移相互抵消，这个高度正是球心下降量。因为球水平离桌，竖直初速度为零，高度给出飞行时间，约零点四零四秒。水平距离除以时间，得到初速度约一点三八六米每秒，不需要知道斜槽中的摩擦。现在保持这个速度，把接球面提高到下降量只有零点二零米。先预测：时间变成一半，落点应在零点二八米处。放好空心标记，再让小球飞出。",
+        "en": "Can a ruler reveal launch speed without a timer? Measure a height of zero point eight zero metres and a horizontal range of zero point five six metres. With the same ball on horizontal support surfaces, the radius offsets at both ends cancel, so this height is also the centre drop. A horizontal launch has zero initial vertical velocity. The height gives a flight time of about zero point four zero four seconds. Range divided by time gives about one point three eight six metres per second, without knowing ramp friction. Keep that speed and raise the catcher so the drop is only zero point two zero metres. Predict first: half the time means a range of zero point two eight metres. Place the outline, then launch."
+      }
+    ],
+    "provisionalDuration": 250
+  },
+  "translations": {
+    "旧记录": "Earlier mark",
+    "墙面距离按球心校正": "Wall distance: centre corrected",
+    "首次接触即停帧": "Freeze at first contact",
+    "同一初速度 · 改变接球位置": "Same launch · move the catcher",
+    "水平等距": "Equal x steps",
+    "同时接触地面": "Same contact time",
+    "原点：抛出时的球心": "Origin: launch centre",
+    "固定教学坐标": "Fixed teaching points",
+    "理想模型 · 忽略空气阻力": "Ideal model · no air resistance",
+    "盯住同一串等时点": "Follow the same timed dots",
+    "从下落量恢复同一时钟": "Recover time from the drop",
+    "理想教学值": "Ideal teaching values",
+    "离手后，只剩重力": "After release: gravity only",
+    "同一时钟，两分量速度": "One clock, two velocity components",
+    "先预测，再释放": "Predict before release",
+    "空心标记：预测": "Outline: prediction",
+    "下一点在哪里？": "Where is the next point?",
+    "新点与预测相合": "New point meets prediction",
+    "弯曲外形还不够": "A curve alone is not enough",
+    "一次发射，两条距离约束": "One emission, two ranges",
+    "已知运动区在右侧": "Known region: right of the receivers",
+    "刻度尺能给出初速度吗？": "Can a ruler reveal launch speed?",
+    "平抛的同一时钟、分量速度和新落点预测": "A shared clock, velocity components and a new landing prediction",
+    "只用飞行数据": "From flight measurements alone",
+    "观察方式": "View",
+    "观察层次": "Detail",
+    "水平初速度": "Horizontal launch speed",
+    "球心下降量": "Centre drop",
+    "到墙前的球心位移": "Centre travel to wall",
+    "候选关系": "Candidate relation",
+    "预测用的新下降量": "New drop for prediction",
+    "演示进度": "Demonstration progress",
+    "圆对应同一次脉冲的发射位置；超声是单程测距，已知运动区域才排除镜像点。": "Both circles refer to the same emission event. Ultrasound travels one way; the known region excludes the mirror point.",
+    "理想模型不含空气阻力；在首次接触时停止，不模拟碰撞后的运动。球心是各坐标的共同基准。": "This ideal model omits air resistance and stops at first contact. All coordinates refer to the ball centre; post-impact motion is not modeled.",
+    "等时位置": "Timed dots",
+    "同时释放": "Paired release",
+    "受力与速度": "Force and velocity",
+    "描点推断": "Mark inference",
+    "双接收器": "Two receivers",
+    "改变高度": "Change height",
+    "改变墙距": "Move wall",
+    "检验抛物线": "Test a parabola",
+    "测初速度": "Infer launch speed",
+    "观察记录": "Observe",
+    "解释与预测": "Explain / predict",
+    "线性关系": "Linear",
+    "二次关系": "Quadratic"
+  },
+  "teachingProfiles": {
+    "required-2-horizontal-projectile": {
+      "question": {
+        "zh": "水平抛得更快，会更晚落地吗？",
+        "en": "Does a faster sideways launch land later?"
+      },
+      "lead": {
+        "zh": "跟住同一串等时点，再改变一个条件，看水平运动和下落怎样共用一个时钟。",
+        "en": "Follow timed dots, then change one condition to see how horizontal motion and falling share one clock."
+      },
+      "principle": {
+        "zh": "忽略空气阻力，重力只改变竖直速度。水平方向匀速，竖直方向自由落体；同高度的飞行时间不由水平速度决定。",
+        "en": "Ignoring air resistance, gravity changes only vertical velocity. Horizontal motion is uniform and vertical motion is free fall; horizontal speed does not set flight time from a given height."
+      },
+      "transfer": {
+        "question": {
+          "zh": "同高度同时水平抛出两球，一球的水平初速度加倍。落地时间和水平距离怎样变？",
+          "en": "Two balls launch horizontally together from the same height. One has twice the horizontal speed. What changes about flight time and range?"
+        },
+        "explanation": {
+          "zh": "竖直初速度都为0时，下落时间相同；水平速度加倍，水平距离也加倍。",
+          "en": "With zero initial vertical velocity for both, flight time is unchanged. Twice the horizontal speed gives twice the range."
+        }
+      },
+      "sceneSlug": "projectile-motion-lab"
+    },
+    "required-2-parabola-check": {
+      "question": {
+        "zh": "怎样从坐标判断轨迹为什么是抛物线？",
+        "en": "How do coordinates reveal why the path is parabolic?"
+      },
+      "lead": {
+        "zh": "区分线性与二次关系，把两个分运动连接起来，再预测一个尚未揭示的点。",
+        "en": "Compare linear and quadratic relations, connect both component motions, then predict an unrevealed point."
+      },
+      "principle": {
+        "zh": "理想平抛中x=v₀t、y=gt²/2。消去同一个时间，得到y=[g/(2v₀²)]x²；坐标原点和初始条件必须一致。",
+        "en": "For ideal horizontal launch, x=v₀t and y=gt²/2. Eliminating the shared time gives y=[g/(2v₀²)]x²; the origin and launch conditions must remain consistent."
+      },
+      "transfer": {
+        "question": {
+          "zh": "在同一次理想平抛中，水平位移变为2倍，竖直下降量变为多少？",
+          "en": "In one ideal horizontal launch, what happens to vertical drop when horizontal displacement doubles?"
+        },
+        "explanation": {
+          "zh": "飞行时间随水平位移加倍，下降量随时间平方变化，因此变为4倍。",
+          "en": "Time doubles with horizontal displacement, and drop grows with time squared, so the drop becomes four times as large."
+        }
+      },
+      "sceneSlug": "projectile-motion-lab"
+    },
+    "required-2-launch-speed": {
+      "question": {
+        "zh": "不测飞行时间，只用刻度尺能求初速度吗？",
+        "en": "Can a ruler reveal launch speed without timing the flight?"
+      },
+      "lead": {
+        "zh": "让高度给出时间，落点给出速度，再把接球面移到新的高度。",
+        "en": "Use height to infer time and range to infer speed, then move the catcher to a new height."
+      },
+      "principle": {
+        "zh": "水平离桌时竖直初速度为0，球心下降量H给出t=√(2H/g)，水平距离L给出v₀=L/t。",
+        "en": "For a horizontal departure, initial vertical velocity is zero. Centre drop H gives t=√(2H/g), and horizontal range L gives v₀=L/t."
+      },
+      "transfer": {
+        "question": {
+          "zh": "下降0.80米时水平距离0.56米。保持初速度，下降量改为0.20米，预测水平距离是多少？",
+          "en": "A drop of 0.80 m gives a range of 0.56 m. Keeping launch speed, what range is predicted for a drop of 0.20 m?"
+        },
+        "explanation": {
+          "zh": "下降量变为四分之一，时间变为一半；水平速度不变，水平距离为0.28米。",
+          "en": "One quarter of the drop gives half the flight time. Unchanged horizontal speed therefore gives a range of 0.28 m."
+        }
+      },
+      "sceneSlug": "projectile-motion-lab"
+    }
+  },
+  "topicSuggestions": {
+    "question": {
+      "zh": "水平抛得更快，会更晚落地吗？",
+      "en": "Does a faster sideways launch land later?"
+    },
+    "description": {
+      "zh": "跟住同一时钟下的钢球，从等时位置与速度分量解释平抛，再预测新高度的落点。",
+      "en": "Follow one ball and one clock: use timed positions and velocity components to explain horizontal launch, then predict a new landing height."
+    }
+  },
+  "preservation": {
+    "chapterIds": [
+      "strobe",
+      "paired",
+      "carbon",
+      "receivers",
+      "home-board",
+      "home-wall",
+      "parabola",
+      "speed"
+    ],
+    "windows": {
+      "required-2-horizontal-projectile": [
+        "strobe",
+        "paired",
+        "carbon",
+        "receivers",
+        "home-board",
+        "home-wall"
+      ],
+      "required-2-parabola-check": ["parabola"],
+      "required-2-launch-speed": ["speed"]
+    },
+    "byteIdenticalSpokenPairs": ["strobe", "paired"],
+    "screenTitlesAndCaptions": "All can change; preserving spoken text does not mean retaining old captions.",
+    "changedWatchMeanings": {
+      "receivers": "now force→velocity mechanism; functional two-receiver apparatus is optional exploration",
+      "carbon": "fixed center coordinates→free-fall time→horizontal velocity",
+      "home-board": "new height prediction",
+      "home-wall": "new wall-distance prediction"
+    }
+  },
+  "timing": {
+    "kind": "Actual per-locale word-timed chapter director, not speech time stretching",
+    "source": "artifacts/teaching-principles/batch-8-timed-speech/projectile-motion-lab-{zh|en}-{0..7}.json",
+    "leadInSeconds": 0.45,
+    "duration": 278,
+    "chapterStarts": [0, 28.0, 56.5, 86.5, 118.0, 148.0, 177.0, 227.0],
+    "secondsProgressKnots": {
+      "zh": [
+        [
+          [0, 0],
+          [1, 0.04],
+          [7.1, 0.5],
+          [12.55, 0.55],
+          [28, 1]
+        ],
+        [
+          [0, 0],
+          [3.9, 0.04],
+          [17.2, 0.43],
+          [18.2, 0.5],
+          [18.6, 0.54],
+          [24.2, 0.93],
+          [28.5, 1]
+        ],
+        [
+          [0, 0],
+          [0.15, 0.02],
+          [1.75, 0.38],
+          [2.4, 0.42],
+          [15.45, 0.65],
+          [30, 1]
+        ],
+        [
+          [0, 0],
+          [17.5, 0.3],
+          [23.4, 0.85],
+          [31.5, 1]
+        ],
+        [
+          [0, 0],
+          [0.2, 0.02],
+          [2.9, 0.23],
+          [3.4, 0.28],
+          [20.1, 0.46],
+          [22.15, 0.66],
+          [25.3, 0.94],
+          [30, 1]
+        ],
+        [
+          [0, 0.23],
+          [1.6, 0.28],
+          [15.8, 0.46],
+          [17.95, 0.66],
+          [19.5, 0.94],
+          [29, 1]
+        ],
+        [
+          [0, 0],
+          [11.2, 0.22],
+          [17.0, 0.34],
+          [22.4, 0.48],
+          [35.9, 0.65],
+          [40.4, 0.74],
+          [43.15, 0.83],
+          [50, 1]
+        ],
+        [
+          [0, 0],
+          [0.4, 0.02],
+          [4.7, 0.2],
+          [21.1, 0.24],
+          [28.4, 0.4],
+          [38.6, 0.53],
+          [46.65, 0.66],
+          [49.1, 0.78],
+          [50.5, 0.96],
+          [51, 1]
+        ]
+      ],
+      "en": [
+        [
+          [0, 0],
+          [1, 0.04],
+          [7.8, 0.5],
+          [12.95, 0.55],
+          [28, 1]
+        ],
+        [
+          [0, 0],
+          [1.1, 0.04],
+          [14.9, 0.43],
+          [15.65, 0.5],
+          [16.05, 0.54],
+          [22.2, 0.93],
+          [28.5, 1]
+        ],
+        [
+          [0, 0],
+          [0.15, 0.02],
+          [1.55, 0.38],
+          [1.95, 0.42],
+          [16.0, 0.65],
+          [30, 1]
+        ],
+        [
+          [0, 0],
+          [20.95, 0.3],
+          [27.9, 0.85],
+          [31.5, 1]
+        ],
+        [
+          [0, 0],
+          [0.2, 0.02],
+          [2.25, 0.23],
+          [2.55, 0.28],
+          [17.6, 0.46],
+          [19.9, 0.66],
+          [22.5, 0.94],
+          [30, 1]
+        ],
+        [
+          [0, 0.23],
+          [1.3, 0.28],
+          [13.15, 0.46],
+          [14.95, 0.66],
+          [16.65, 0.94],
+          [29, 1]
+        ],
+        [
+          [0, 0],
+          [10.05, 0.22],
+          [14.6, 0.34],
+          [21.1, 0.48],
+          [31.95, 0.65],
+          [37.2, 0.74],
+          [41.1, 0.83],
+          [50, 1]
+        ],
+        [
+          [0, 0],
+          [0.4, 0.02],
+          [3.0, 0.2],
+          [22.2, 0.24],
+          [27.4, 0.4],
+          [35.2, 0.53],
+          [44.6, 0.66],
+          [45.9, 0.78],
+          [48.5, 0.96],
+          [51, 1]
+        ]
+      ]
+    },
+    "model": "src/models/projectile-motion-lab.ts: projectileSpeechProgress → projectileShot",
+    "scope": "All eight chapters: shared-clock paired release; free-fall time recovery then speed; force then velocity; board/wall prediction→release→contact; parabola hidden point→prediction→record; independent ruler measurements→time→speed→new-height prediction. Seeking reconstructs state."
+  },
+  "scientificModels": {
+    "reference": "artifacts/teaching-principles/physics-next-projectile/ready-brief.json",
+    "fixedRecords": "explicit synthetic ideal values; held-out revelation illustrates a model, not independent physical validation",
+    "contact": "same center/radius/contact surface for all targets; rail surface normal-offset from retained center-path solver",
+    "inverse": "H and L independently specify inferred speed; no reading of release height",
+    "units": "SI; x right and y down; no air resistance; stop at first contact",
+    "springStrip": "The paired release view uses an ideal simultaneous launch boundary, not an elastic transient simulation; the strip is a schematic trigger and remains outside the flight balls."
+  },
+  "acceptance": {
+    "modelTests": {
+      "status": "passed",
+      "tests": 19,
+      "log": "artifacts/teaching-principles/projectile-implementation/model-measured.log"
+    },
+    "strict": {
+      "status": "passed",
+      "scope": "owned component/model/test with repository strict config, not full Astro/global verification",
+      "log": "artifacts/teaching-principles/projectile-implementation/strict-measured.log"
+    },
+    "visual": {
+      "status": "author inspected decisive actual frames",
+      "stableMatrix": "projectile-review-04: 92 frames, 2 languages × 320×568 and 1100×900, all pass",
+      "affectedRepeat": "projectile-review-05: 28 frames after earlier-record/trigger geometry repair; projectile-review-06: 16 frames after moving old-label off the rail, all pass",
+      "wholePlayer": "Maximum phone bottom 558.97 px at top 16.5 in a 568 px viewport, including current caption, transport and chapter row; no fixed-header space assumption",
+      "conditions": "Current 250-second provisional shared captions, muted; reduced motion and paused seeks. Not continuous full playback/listening or a physical phone performance measurement.",
+      "captionFollowup": "Both question captions integrated by root, 4 affected bilingual phone frames rechecked in projectile-review-07: passed, sourceStable=true. Spoken text unchanged.",
+      "measuredReview": {
+        "status": "passed",
+        "frames": 76,
+        "report": "artifacts/teaching-principles/projectile-measured-review/report.json",
+        "sourceStable": true,
+        "phoneWholePlayerMaxBottom": 559.1875,
+        "phoneWholePlayerMaxHeight": 542,
+        "viewport": "320×568, actual scroll placement ~16–17 px; current captions, transport and chapter button included",
+        "kind": "Muted actual word-timed paused frames, not continuous playback or listening"
+      }
+    },
+    "controls": {
+      "status": "passed after measured director changes",
+      "report": "artifacts/teaching-principles/projectile-controls-measured/report.json",
+      "pages": 6,
+      "checks": 194,
+      "scope": "3 textbook entries × 2 languages, initial view/window, nine views, actual controls/bounds/rewind/prediction and SVG geometry; final following change only repositions earlier-mark label, not exploration"
+    },
+    "cover": {
+      "status": "actual catalog/social/cover rendered and personally inspected",
+      "report": "artifacts/teaching-principles/projectile-covers/report.json"
+    },
+    "independentScience": {
+      "report": "artifacts/teaching-principles/batch-8-cross-review/chemistry-review-of-projectile.json",
+      "scope": "163 model/geometry states and independent ruler example; predates small earlier-mark/trigger UI repair. No browser/full RK4 claim."
+    },
+    "audio": {
+      "initialFailure": "307.5 s synthesis safely stopped before metadata writes; preserved batch-8-voice-physics.log",
+      "finalDuration": 278,
+      "sources": {
+        "zh": "/narration/projectile-motion-lab-zh-7a24d345ccee.mp3",
+        "en": "/narration/projectile-motion-lab-en-d110d8912beb.mp3"
+      },
+      "asr": "root reports 16/16 independent chapter transcriptions passed; author read all segment/word times for calibration",
+      "listening": "not performed by owner; independent transcription does not establish subjective listening"
+    },
+    "global": "not run by owner; root handles full verify/preview/static acceptance"
+  },
+  "sources": [
+    {
+      "id": "textbook",
+      "title": "普通高中教科书 物理 必修第二册（人教版）",
+      "local": "/Users/int64ago/Downloads/人教版高中物理-必修第二册.pdf",
+      "context": "Entire Chapter5 printed1–21 reviewed in text; key diagrams printed11,12,13,18 actually rendered and viewed.",
+      "evidence": "sources/textbook-chapter5-context.txt",
+      "screenshots": [
+        "sources/textbook-p11.png",
+        "sources/textbook-p12.png",
+        "sources/textbook-p13.png",
+        "sources/textbook-p18.png"
+      ],
+      "claims": [
+        "horizontal/vertical experimental decomposition",
+        "same-initial-condition trail",
+        "two-receiver one-way geometry",
+        "Newton-law derivation",
+        "parabolic elimination",
+        "ruler launch-speed task"
+      ]
+    },
+    {
+      "id": "mit",
+      "title": "MIT OCW 8.01SC, Projectile Motion transcript",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/8733a0224555eed5677ba9fa7fe4f06e_83NmtaE7fEk.pdf",
+      "local": "sources/mit-projectile-transcript.pdf",
+      "scope": "pp1–3, separate Newton equations and x(t),y(t),y(x) distinctions; official author course source."
+    },
+    {
+      "id": "vernier",
+      "title": "Physics with Vernier, Computer8B Projectile Motion",
+      "url": "https://www.vernier.com/files/training/nsta-2017/physics_with_vernier.pdf",
+      "local": "sources/vernier-physics-2017.pdf",
+      "scope": "Computer8B pp1–6: predict before first floor impact; launch reference offset, trial variation, same-height control, nonhorizontal boundary."
+    },
+    {
+      "id": "pasco",
+      "title": "PASCO Path of a Projectile",
+      "url": "https://www.pasco.com/resources/lab-experiments/1452",
+      "scope": "Official experiment objective: relate vertical drop to horizontal distance for horizontal launch. Page read through web; no numeric data imported."
+    }
+  ]
+}

@@ -1792,7 +1792,7 @@
     },
     {
       "sceneSlug": "gravitational-wave-lab",
-      "status": "batch-7-reviewed-awaiting-publication",
+      "status": "batch-7-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -2179,7 +2179,7 @@
     },
     {
       "sceneSlug": "projectile-motion-lab",
-      "status": "content-reviewed-revise",
+      "status": "batch-8-reviewed-awaiting-publication",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3459,7 +3459,7 @@
     },
     {
       "sceneSlug": "capacitor-current-lab",
-      "status": "content-reviewed-retain",
+      "status": "batch-8-reviewed-awaiting-publication",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3534,6 +3534,10 @@
         "failedFrames": 1,
         "contentDecisionUnchanged": true,
         "evidence": "artifacts/teaching-principles/retained-baseline-keyframes/report.json"
+      },
+      "retainedContentPilot": {
+        "scope": "Short-screen plot typography/caption and visible spoken curve; preserve RC/sharing models,4chapter IDs/2windows/recordings. Align switch/readouts to original word timing and exploration to current chapter.",
+        "baseline": "artifacts/teaching-principles/retained-baseline-keyframes/report.json"
       }
     },
     {
@@ -10412,7 +10416,7 @@
     },
     {
       "sceneSlug": "chem-chlorine-discovery",
-      "status": "batch-7-reviewed-awaiting-publication",
+      "status": "batch-7-published",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -10578,7 +10582,7 @@
     },
     {
       "sceneSlug": "chem-chlorine-photolysis",
-      "status": "content-reviewed-revise",
+      "status": "batch-8-reviewed-awaiting-publication",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -10598,11 +10602,18 @@
             "zh": "验证次氯酸光照分解产物的数字化实验",
             "en": "Digital experiment verifying hypochlorous acid photolysis products"
           },
-          "chapterIds": ["sensors", "illuminate", "stoichiometry"],
+          "chapterIds": [
+            "sensors",
+            "light-entry",
+            "illuminate",
+            "stoichiometry",
+            "headspace-predict"
+          ],
           "contentReview": {
             "decision": "revise",
             "reason": "三章完整但最后因果桥仍是式子与文字；优先补可见的物种来源及头空体积反事实。"
-          }
+          },
+          "priorChapterIds": ["sensors", "illuminate", "stoichiometry"]
         }
       ],
       "review": {
@@ -16278,7 +16289,7 @@
     },
     {
       "sceneSlug": "bio-dna-structure",
-      "status": "batch-7-reviewed-awaiting-publication",
+      "status": "batch-7-published",
       "subjects": ["chemistry", "biology"],
       "lessons": [
         {
@@ -16559,7 +16570,7 @@
     },
     {
       "sceneSlug": "bio-engineered-genomes",
-      "status": "content-reviewed-revise",
+      "status": "batch-8-reviewed-awaiting-publication",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -21574,7 +21585,7 @@
       "biology-content-review.json"
     ]
   },
-  "currentBatch": 7,
+  "currentBatch": 8,
   "layoutAudit": {
     "status": "active-follow-up",
     "baselineScenes": 154,

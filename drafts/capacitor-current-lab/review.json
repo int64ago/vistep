@@ -1,0 +1,42 @@
+{
+  "status": "author-static-and-peer-reviewed-awaiting-frozen-preview",
+  "checks": [
+    {
+      "kind": "model-tests",
+      "count": 8,
+      "evidence": "artifacts/teaching-principles/batch-8-capacitor-tests.log"
+    },
+    {
+      "kind": "complete-player-stopped-frames",
+      "count": 39,
+      "passed": 39,
+      "conditions": "ZH1440,ZH320x568,EN320x568; actualfont>=16,target>=44; no horizontal overflow",
+      "evidence": "artifacts/teaching-principles/capacitor-layout-03/report.json"
+    },
+    {
+      "kind": "independent-ASR",
+      "count": 8,
+      "evidence": "artifacts/teaching-principles/batch-8-transcription.json",
+      "subjectiveListening": false
+    },
+    {
+      "kind": "independent-model-and-exploration-peer",
+      "evidence": "artifacts/teaching-principles/batch-8-cross-review/biology-review-of-capacitor.json"
+    }
+  ],
+  "resolved": [
+    "First two matrices each failed3 integral frames at576.44px. Removed duplicated area label without removing numerical evidence; final39passed, phone maximum565.22px.",
+    "Existing watch hid the first spoken current curve. Timed reveal and stable circuit/plot layout now expose it."
+  ],
+  "pending": ["Final static/native entry and playback review", "Final source-wide validation"],
+  "rootFinalReview": {
+    "status": "passed-described-static-model-and-native-playback-scope",
+    "batch": "drafts/teaching-principles/batch-8-review.json",
+    "manual": "artifacts/teaching-principles/batch-8-root-final-views.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

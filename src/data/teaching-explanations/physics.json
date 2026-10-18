@@ -673,5 +673,130 @@
         "en": "No. Other-site observations, instrument checks, noise backgrounds and waveform analysis are also needed. This real snippet explains the signal and delay; it does not reproduce discovery significance or black-hole mass inference."
       }
     }
+  },
+  "required-2-horizontal-projectile": {
+    "question": {
+      "zh": "水平抛得更快，会更晚落地吗？",
+      "en": "Does a faster sideways launch land later?"
+    },
+    "lead": {
+      "zh": "跟住同一串等时点，再改变一个条件，看水平运动和下落怎样共用一个时钟。",
+      "en": "Follow timed dots, then change one condition to see how horizontal motion and falling share one clock."
+    },
+    "principle": {
+      "zh": "忽略空气阻力，重力只改变竖直速度。水平方向匀速，竖直方向自由落体；同高度的飞行时间不由水平速度决定。",
+      "en": "Ignoring air resistance, gravity changes only vertical velocity. Horizontal motion is uniform and vertical motion is free fall; horizontal speed does not set flight time from a given height."
+    },
+    "transfer": {
+      "question": {
+        "zh": "同高度同时水平抛出两球，一球的水平初速度加倍。落地时间和水平距离怎样变？",
+        "en": "Two balls launch horizontally together from the same height. One has twice the horizontal speed. What changes about flight time and range?"
+      },
+      "explanation": {
+        "zh": "竖直初速度都为0时，下落时间相同；水平速度加倍，水平距离也加倍。",
+        "en": "With zero initial vertical velocity for both, flight time is unchanged. Twice the horizontal speed gives twice the range."
+      }
+    },
+    "sceneSlug": "projectile-motion-lab"
+  },
+  "required-2-parabola-check": {
+    "question": {
+      "zh": "怎样从坐标判断轨迹为什么是抛物线？",
+      "en": "How do coordinates reveal why the path is parabolic?"
+    },
+    "lead": {
+      "zh": "区分线性与二次关系，把两个分运动连接起来，再预测一个尚未揭示的点。",
+      "en": "Compare linear and quadratic relations, connect both component motions, then predict an unrevealed point."
+    },
+    "principle": {
+      "zh": "理想平抛中x=v₀t、y=gt²/2。消去同一个时间，得到y=[g/(2v₀²)]x²；坐标原点和初始条件必须一致。",
+      "en": "For ideal horizontal launch, x=v₀t and y=gt²/2. Eliminating the shared time gives y=[g/(2v₀²)]x²; the origin and launch conditions must remain consistent."
+    },
+    "transfer": {
+      "question": {
+        "zh": "在同一次理想平抛中，水平位移变为2倍，竖直下降量变为多少？",
+        "en": "In one ideal horizontal launch, what happens to vertical drop when horizontal displacement doubles?"
+      },
+      "explanation": {
+        "zh": "飞行时间随水平位移加倍，下降量随时间平方变化，因此变为4倍。",
+        "en": "Time doubles with horizontal displacement, and drop grows with time squared, so the drop becomes four times as large."
+      }
+    },
+    "sceneSlug": "projectile-motion-lab"
+  },
+  "required-2-launch-speed": {
+    "question": {
+      "zh": "不测飞行时间，只用刻度尺能求初速度吗？",
+      "en": "Can a ruler reveal launch speed without timing the flight?"
+    },
+    "lead": {
+      "zh": "让高度给出时间，落点给出速度，再把接球面移到新的高度。",
+      "en": "Use height to infer time and range to infer speed, then move the catcher to a new height."
+    },
+    "principle": {
+      "zh": "水平离桌时竖直初速度为0，球心下降量H给出t=√(2H/g)，水平距离L给出v₀=L/t。",
+      "en": "For a horizontal departure, initial vertical velocity is zero. Centre drop H gives t=√(2H/g), and horizontal range L gives v₀=L/t."
+    },
+    "transfer": {
+      "question": {
+        "zh": "下降0.80米时水平距离0.56米。保持初速度，下降量改为0.20米，预测水平距离是多少？",
+        "en": "A drop of 0.80 m gives a range of 0.56 m. Keeping launch speed, what range is predicted for a drop of 0.20 m?"
+      },
+      "explanation": {
+        "zh": "下降量变为四分之一，时间变为一半；水平速度不变，水平距离为0.28米。",
+        "en": "One quarter of the drop gives half the flight time. Unchanged horizontal speed therefore gives a range of 0.28 m."
+      }
+    },
+    "sceneSlug": "projectile-motion-lab"
+  },
+  "r3-capacitor-current-sensor": {
+    "sceneSlug": "capacitor-current-lab",
+    "question": {
+      "zh": "不数电子，怎样知道流过多少电荷？",
+      "en": "How can current reveal how much charge has passed?"
+    },
+    "lead": {
+      "zh": "先看同一次放电的电流，再把短时间内流过的小份电荷累加起来。",
+      "en": "Watch the current from one discharge, then add the small amounts of charge that pass in short intervals."
+    },
+    "principle": {
+      "zh": "电流表示单位时间流过的电荷；I–t曲线下面积给出已释放电荷，有限时刻还有电荷留在电容器中。",
+      "en": "Current is charge per unit time. The area under an I–t curve gives released charge; some charge remains at every finite time."
+    },
+    "transfer": {
+      "question": {
+        "zh": "初始电压和电容相同，电阻加倍，初始电流与最终可释放的总电荷怎样变化？",
+        "en": "With the same initial voltage and capacitance, what changes when resistance doubles: initial current or total available charge?"
+      },
+      "explanation": {
+        "zh": "初始电流U₀/R减半，RC时间常数加倍。初始电荷CU₀不变，所以放电时间趋于无穷时可释放的总电荷相同；在相同的有限时间内，较大电阻释放得较少。",
+        "en": "Initial current U₀/R halves and the RC time constant doubles. Initial charge CU₀ stays the same, so the total released as time tends to infinity is unchanged. At the same finite time, the larger resistor releases less."
+      }
+    }
+  },
+  "r3-capacitor-charge-sharing": {
+    "sceneSlug": "capacitor-current-lab",
+    "question": {
+      "zh": "接上相同的空电容器，电压为什么减半？",
+      "en": "Why does an identical empty capacitor halve the voltage?"
+    },
+    "lead": {
+      "zh": "跟住A和第一次接收电荷的B，再把A接到新的空电容器C上。",
+      "en": "Track A and its first receiver B, then connect A to a new empty capacitor C."
+    },
+    "principle": {
+      "zh": "相同电容器连接后达到相同电压；在总电荷守恒且接收电容器初始不带电时，各分得一半电荷和原电压。",
+      "en": "Identical connected capacitors reach the same voltage. With total charge conserved and the receiver initially empty, each retains half the original charge and voltage."
+    },
+    "transfer": {
+      "question": {
+        "zh": "第一次分电后，把仍带电的B再次接回A，A还会减半吗？",
+        "en": "After the first sharing, reconnect the still-charged B to A. Does A halve again?"
+      },
+      "explanation": {
+        "zh": "不会。此时A和B都是3V，两者没有电势差，理想模型中不发生新的净电荷转移。再次减半的条件是换入相同且初始不带电的C，不能把B原有的电荷抹掉。",
+        "en": "No. A and B are both at3V, so there is no potential difference and no new net charge transfer in this ideal model. Halving again requires an identical, initially uncharged C; B’s stored charge cannot be erased."
+      }
+    }
   }
 }

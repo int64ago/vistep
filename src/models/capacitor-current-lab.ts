@@ -87,3 +87,28 @@ export function capacitorSharing(
     dissipated: energyBefore - energyAfter,
   };
 }
+
+/** Presentation time follows the unchanged recordings; RC time remains a separate physical axis. */
+export function capacitorFilmState(chapter: number, seconds: number, locale: 'zh' | 'en') {
+  const t = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  const range = (a: number, b: number) => Math.max(0, Math.min(1, (t - a) / (b - a)));
+  const smooth = (p: number) => p * p * (3 - 2 * p);
+  const en = locale === 'en';
+  const closedAt = chapter === 0 ? 2.5 : chapter === 2 ? (en ? 7.5 : 7.2) : en ? 6.3 : 7.1;
+  const equalAt = chapter === 2 ? (en ? 11.3 : 12) : en ? 9.3 : 10.4;
+  const openAt = chapter === 2 ? (en ? 11.9 : 12.8) : en ? 10 : 11.2;
+  const physicalTime =
+    chapter === 0
+      ? 8 * smooth(range(closedAt, en ? 16.5 : 19.5))
+      : 8 * smooth(range(1, en ? 15 : 17));
+  // capacitorSharing's progress is a normalized connection state, not elapsed RC seconds.
+  const sharingProgress =
+    t < closedAt ? 0.2 : t < equalAt ? 0.25 + 0.5 * range(closedAt, equalAt) : t < openAt ? 0.8 : 1;
+  return {
+    physicalTime,
+    dischargeClosed: chapter !== 0 || t >= closedAt,
+    plotView: chapter === 1 || t >= (en ? 6.2 : 6.35),
+    sharingProgress,
+    sharingRound: (chapter === 3 ? 2 : 1) as 1 | 2,
+  };
+}

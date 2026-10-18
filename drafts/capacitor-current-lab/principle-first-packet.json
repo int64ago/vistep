@@ -1,0 +1,125 @@
+{
+  "sceneSlug": "capacitor-current-lab",
+  "status": "retained-content-layout-and-synchronization-pilot",
+  "scope": "Keep the causal content and physical calculations; show the spoken current trace and make the full phone player fit.",
+  "narration": {
+    "duration": 96.5,
+    "cues": [
+      {
+        "id": "sensor-discharge",
+        "title": "记录同一次放电",
+        "titleEn": "Record one discharge",
+        "caption": "电流逐渐减小，电容器两端电压同时降低。",
+        "captionEn": "Current declines as the capacitor voltage falls.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.45,
+        "zh": "看已经充电的电容器。开关闭合，电荷经过传感器和电阻流动，传感器留下电流随时间变化的曲线。开始时电压较高，电流较大。随着电荷减少，电压降低，电流也逐渐变小。曲线尾部趋近零，但有限时间后仍有少量电荷留下。",
+        "en": "Watch the charged capacitor. When the switch closes, charge passes through the sensor and resistor, producing a current-time record. Initial voltage and current are high. As charge decreases, voltage falls and current declines. The tail approaches zero, but some charge remains at every finite time."
+      },
+      {
+        "id": "integrate-current",
+        "title": "把面积加起来",
+        "titleEn": "Add the area",
+        "caption": "面积给出已释放电荷。",
+        "captionEn": "Area gives released charge.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.45,
+        "zh": "重新看同一次放电，这次关注曲线下面的阴影。一个很短的时间内，电流乘以时间就是流过的电荷。把所有小面积相加，得到已经放出的电荷量。下面同时保留剩余电荷的读数，两部分合起来，才是开始时储存的总量。",
+        "en": "Replay the discharge and watch the shaded area. Over a short interval, current times time gives transferred charge. Adding the small areas gives the charge already released. The remaining-charge reading stays visible too. Released and remaining portions together make the initial total."
+      },
+      {
+        "id": "share-first",
+        "title": "接到相同的空电容器",
+        "titleEn": "Connect an identical empty capacitor",
+        "caption": "达到共同电压后，电荷与电压都各减半。",
+        "captionEn": "At a common voltage, each has half the original charge and voltage.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48.45,
+        "zh": "换一种方法观察电荷与电压。A 原先带电，B 是相同的空电容器。闭合连接开关，电荷重新分配，直到两端电压相同。再断开连接，A 和 B 各得到一半电荷，电压也都是原来的一半。电荷守恒，但连接过程中会损失一部分电场能。",
+        "en": "Now compare charge and voltage another way. A is charged and B is an identical empty capacitor. Close the switch and charge redistributes until their voltages match. Disconnect them: each retains half the original charge and half the voltage. Charge is conserved, but some field energy is lost during connection."
+      },
+      {
+        "id": "share-again",
+        "title": "再换一只新的空电容器",
+        "titleEn": "Use another empty capacitor",
+        "caption": "B 保留自己的电荷，A 接到新 C 后再次减半。",
+        "captionEn": "B retains its share; connecting A to a new C halves A again.",
+        "seconds": 24,
+        "chapterAt": 72.5,
+        "at": 72.95,
+        "zh": "把上一只 B 移走，它仍然保留自己的电荷。现在拿来一只新的空电容器 C，接到同一只 A 上。达到共同电压后再断开，A 的电荷与电压又减半。关键是每次接入的电容器都相同，而且原先没有充电，不能把已经带电的 B 当作新的空电容器。",
+        "en": "Remove the previous B; it still holds its share. Bring in a new empty capacitor C and connect it to the same A. After they reach a common voltage, disconnect them. A’s charge and voltage halve again. Each receiving capacitor must be identical and initially uncharged; the already charged B is not a fresh empty capacitor."
+      }
+    ]
+  },
+  "teachingProfiles": {
+    "r3-capacitor-current-sensor": {
+      "sceneSlug": "capacitor-current-lab",
+      "question": {
+        "zh": "不数电子，怎样知道流过多少电荷？",
+        "en": "How can current reveal how much charge has passed?"
+      },
+      "lead": {
+        "zh": "先看同一次放电的电流，再把短时间内流过的小份电荷累加起来。",
+        "en": "Watch the current from one discharge, then add the small amounts of charge that pass in short intervals."
+      },
+      "principle": {
+        "zh": "电流表示单位时间流过的电荷；I–t曲线下面积给出已释放电荷，有限时刻还有电荷留在电容器中。",
+        "en": "Current is charge per unit time. The area under an I–t curve gives released charge; some charge remains at every finite time."
+      },
+      "transfer": {
+        "question": {
+          "zh": "初始电压和电容相同，电阻加倍，初始电流与最终可释放的总电荷怎样变化？",
+          "en": "With the same initial voltage and capacitance, what changes when resistance doubles: initial current or total available charge?"
+        },
+        "explanation": {
+          "zh": "初始电流U₀/R减半，RC时间常数加倍。初始电荷CU₀不变，所以放电时间趋于无穷时可释放的总电荷相同；在相同的有限时间内，较大电阻释放得较少。",
+          "en": "Initial current U₀/R halves and the RC time constant doubles. Initial charge CU₀ stays the same, so the total released as time tends to infinity is unchanged. At the same finite time, the larger resistor releases less."
+        }
+      }
+    },
+    "r3-capacitor-charge-sharing": {
+      "sceneSlug": "capacitor-current-lab",
+      "question": {
+        "zh": "接上相同的空电容器，电压为什么减半？",
+        "en": "Why does an identical empty capacitor halve the voltage?"
+      },
+      "lead": {
+        "zh": "跟住A和第一次接收电荷的B，再把A接到新的空电容器C上。",
+        "en": "Track A and its first receiver B, then connect A to a new empty capacitor C."
+      },
+      "principle": {
+        "zh": "相同电容器连接后达到相同电压；在总电荷守恒且接收电容器初始不带电时，各分得一半电荷和原电压。",
+        "en": "Identical connected capacitors reach the same voltage. With total charge conserved and the receiver initially empty, each retains half the original charge and voltage."
+      },
+      "transfer": {
+        "question": {
+          "zh": "第一次分电后，把仍带电的B再次接回A，A还会减半吗？",
+          "en": "After the first sharing, reconnect the still-charged B to A. Does A halve again?"
+        },
+        "explanation": {
+          "zh": "不会。此时A和B都是3V，两者没有电势差，理想模型中不发生新的净电荷转移。再次减半的条件是换入相同且初始不带电的C，不能把B原有的电荷抹掉。",
+          "en": "No. A and B are both at3V, so there is no potential difference and no new net charge transfer in this ideal model. Halving again requires an identical, initially uncharged C; B’s stored charge cannot be erased."
+        }
+      }
+    }
+  },
+  "preservation": {
+    "spokenCues": "All4ZH/EN byte-identical to Batch7 HEAD",
+    "audio": "Both existing96.5s recordings retained",
+    "models": ["dischargeState", "sensorSamples", "capacitorSharing"],
+    "curriculum": "Both original entries and4chapter IDs unchanged"
+  },
+  "director": "Separate presentation seconds from physical RC time; switch closes before discharge; trace appears at its spoken introduction; original B retains its charge when empty C arrives.",
+  "sourceQualification": "Textbook P40 discharges B before reuse. Illustration uses a distinct identical empty C, preserving the same initial condition while making removed B accounting visible.6V/1mF/2kΩ are ideal teaching values, not textbook measured samples.",
+  "boundedPeer": "artifacts/teaching-principles/batch-8-cross-review/biology-review-of-capacitor.json",
+  "layout": "No font reduction; remove duplicate area label only on phone watch, retain integral and remaining charge; keep circuit-to-plot height stable.",
+  "notClaimed": [
+    "Subjective listening",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ]
+}

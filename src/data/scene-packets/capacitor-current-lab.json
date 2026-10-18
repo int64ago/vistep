@@ -17,7 +17,8 @@
         "title": "OpenStax — Energy Stored in a Capacitor",
         "url": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor"
       }
-    ]
+    ],
+    "number": "225"
   },
   "discovery": {
     "category": "electricity",
@@ -67,10 +68,18 @@
     "从电流面积测电荷": "Charge from Current Area",
     "一条下降的电流曲线，怎样告诉我们放出了多少电？": "How does a declining current curve reveal released charge?",
     "观察电容放电的 I–t 曲线，从面积求电荷，再用相同空电容器逐次分电作对照。": "Record a capacitor’s I–t discharge, find charge from area, and compare successive sharing with identical empty capacitors.",
-    "电流积分 · 电荷守恒": "Current integration · Charge conservation"
+    "电流积分 · 电荷守恒": "Current integration · Charge conservation",
+    "记录同一次放电": "Record one discharge",
+    "电流逐渐减小，电容器两端电压同时降低。": "Current declines as the capacitor voltage falls.",
+    "把面积加起来": "Add the area",
+    "面积给出已释放电荷。": "Area gives released charge.",
+    "接到相同的空电容器": "Connect an identical empty capacitor",
+    "达到共同电压后，电荷与电压都各减半。": "At a common voltage, each has half the original charge and voltage.",
+    "再换一只新的空电容器": "Use another empty capacitor",
+    "B 保留自己的电荷，A 接到新 C 后再次减半。": "B retains its share; connecting A to a new C halves A again."
   },
   "narration": {
-    "duration": 96,
+    "duration": 96.5,
     "cues": [
       {
         "id": "sensor-discharge",
@@ -80,7 +89,7 @@
         "captionEn": "Current declines as the capacitor voltage falls.",
         "seconds": 24,
         "chapterAt": 0,
-        "at": 0.4,
+        "at": 0.45,
         "zh": "看已经充电的电容器。开关闭合，电荷经过传感器和电阻流动，传感器留下电流随时间变化的曲线。开始时电压较高，电流较大。随着电荷减少，电压降低，电流也逐渐变小。曲线尾部趋近零，但有限时间后仍有少量电荷留下。",
         "en": "Watch the charged capacitor. When the switch closes, charge passes through the sensor and resistor, producing a current-time record. Initial voltage and current are high. As charge decreases, voltage falls and current declines. The tail approaches zero, but some charge remains at every finite time."
       },
@@ -88,11 +97,11 @@
         "id": "integrate-current",
         "title": "把面积加起来",
         "titleEn": "Add the area",
-        "caption": "曲线下面积给出已释放电荷，剩余部分仍在电容器中。",
-        "captionEn": "The area gives released charge; the rest remains in the capacitor.",
+        "caption": "面积给出已释放电荷。",
+        "captionEn": "Area gives released charge.",
         "seconds": 24,
         "chapterAt": 24,
-        "at": 24.4,
+        "at": 24.45,
         "zh": "重新看同一次放电，这次关注曲线下面的阴影。一个很短的时间内，电流乘以时间就是流过的电荷。把所有小面积相加，得到已经放出的电荷量。下面同时保留剩余电荷的读数，两部分合起来，才是开始时储存的总量。",
         "en": "Replay the discharge and watch the shaded area. Over a short interval, current times time gives transferred charge. Adding the small areas gives the charge already released. The remaining-charge reading stays visible too. Released and remaining portions together make the initial total."
       },
@@ -104,7 +113,7 @@
         "captionEn": "At a common voltage, each has half the original charge and voltage.",
         "seconds": 24,
         "chapterAt": 48,
-        "at": 48.4,
+        "at": 48.45,
         "zh": "换一种方法观察电荷与电压。A 原先带电，B 是相同的空电容器。闭合连接开关，电荷重新分配，直到两端电压相同。再断开连接，A 和 B 各得到一半电荷，电压也都是原来的一半。电荷守恒，但连接过程中会损失一部分电场能。",
         "en": "Now compare charge and voltage another way. A is charged and B is an identical empty capacitor. Close the switch and charge redistributes until their voltages match. Disconnect them: each retains half the original charge and half the voltage. Charge is conserved, but some field energy is lost during connection."
       },
@@ -115,8 +124,8 @@
         "caption": "B 保留自己的电荷，A 接到新 C 后再次减半。",
         "captionEn": "B retains its share; connecting A to a new C halves A again.",
         "seconds": 24,
-        "chapterAt": 72,
-        "at": 72.4,
+        "chapterAt": 72.5,
+        "at": 72.95,
         "zh": "把上一只 B 移走，它仍然保留自己的电荷。现在拿来一只新的空电容器 C，接到同一只 A 上。达到共同电压后再断开，A 的电荷与电压又减半。关键是每次接入的电容器都相同，而且原先没有充电，不能把已经带电的 B 当作新的空电容器。",
         "en": "Remove the previous B; it still holds its share. Bring in a new empty capacitor C and connect it to the same A. After they reach a common voltage, disconnect them. A’s charge and voltage halve again. Each receiving capacitor must be identical and initially uncharged; the already charged B is not a fresh empty capacitor."
       }
@@ -124,6 +133,7 @@
   },
   "curriculumVariants": {
     "r3-capacitor-current-sensor": {
+      "sceneSlug": "capacitor-current-lab",
       "chapterIds": ["sensor-discharge", "integrate-current"],
       "label": {
         "zh": "用传感器观察电容器的放电过程",
@@ -131,11 +141,17 @@
       }
     },
     "r3-capacitor-charge-sharing": {
+      "sceneSlug": "capacitor-current-lab",
       "chapterIds": ["share-first", "share-again"],
       "label": {
         "zh": "电容器电势差与电荷量的关系",
         "en": "Relate capacitor voltage to charge"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/capacitor-current-lab/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-8-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

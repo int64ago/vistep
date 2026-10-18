@@ -1,0 +1,779 @@
+{
+  "sceneSlug": "chem-chlorine-photolysis",
+  "status": "Final measured director and author review frozen for root static integration; canonical spoken cues unchanged",
+  "chapterContract": {
+    "preserveIds": ["sensors", "illuminate", "stoichiometry"],
+    "insertIds": ["light-entry", "headspace-predict"],
+    "order": ["sensors", "light-entry", "illuminate", "stoichiometry", "headspace-predict"],
+    "oldIdsRemainSubsequence": true
+  },
+  "entryWindows": {
+    "chem-required-1-body-p48": {
+      "sceneVariant": "photolysis",
+      "chapterIds": ["sensors", "light-entry", "illuminate", "stoichiometry", "headspace-predict"],
+      "sourceOrderUnchanged": true
+    }
+  },
+  "narration": {
+    "plannedDuration": 156,
+    "cues": [
+      {
+        "id": "sensors",
+        "title": "三个探头，为什么一起变？",
+        "titleEn": "Why do all three probes change?",
+        "caption": "一个下降，两个上升：它们测的是什么？",
+        "captionEn": "One falls, two rise. What does each probe measure?",
+        "seconds": 26,
+        "zh": "光照后，同一瓶氯水里的三条读数都变了。液体的pH下降，氯离子浓度上升，上方气体中氧气的比例也上升。沿着探头找一找：两支在水里，一支在气体中。它们测的不是同一个量，为什么会一起变化？先跟着光，进入一个分子。",
+        "en": "After illumination, three readings from one chlorine-water sample change. Liquid pH falls, chloride concentration rises, and the oxygen fraction above the liquid rises. Follow the probes: two are in the liquid, one in the gas. They measure different quantities. What connects these changes? Follow the light into a molecule."
+      },
+      {
+        "id": "light-entry",
+        "title": "光吸收后，哪条键断开？",
+        "titleEn": "After absorption, which bond breaks?",
+        "caption": "盯住氧—氯键的两个电子。",
+        "captionEn": "Track the two electrons in the oxygen–chlorine bond.",
+        "seconds": 32,
+        "zh": "看这个被吸收的紫外光子。次氯酸的氧—氯键可以由此断开。盯住成键的两个电子：分开时，各有一个跟着自己的片段。氢仍连在氧上，形成羟基自由基；另一边是氯自由基。它们都是电中性的，还不是探头读到的氯离子。光先打开了一条反应通道。",
+        "en": "Watch this selected absorbed ultraviolet photon. It can open a channel that breaks the oxygen–chlorine bond. Track the two bonding electrons: one stays with each fragment as they separate. Hydrogen remains joined to oxygen, making a hydroxyl radical; the other fragment is a chlorine radical. Both are neutral. We have not yet made the chloride ion measured by the probe."
+      },
+      {
+        "id": "illuminate",
+        "title": "同一批原子，最后去了哪里？",
+        "titleEn": "Where do the same atoms end up?",
+        "caption": "经过后续多步反应，再看净变化。",
+        "captionEn": "After further reactions, follow the net changes.",
+        "seconds": 34,
+        "zh": "断开这条键只是起点，并不是生成氧气的完整过程。现在把后续多步反应合成一张净变化账本。两份次氯酸减少，水中增加两份氢离子和两份氯离子；两个氧原子组成一份氧气。氢离子增多，对应pH降低；氯离子增多，对应另一支探头上升。再跟着同一对氧，越过液面，来到气体探头这一侧。",
+        "en": "Breaking that bond is a beginning, not the complete route to oxygen. Now combine subsequent reactions into a net account. Two hypochlorous acid units are consumed, adding two hydrogen ions and two chloride ions to the liquid; their oxygen atoms form one oxygen molecule. More hydrogen ions mean lower pH, while chloride concentration rises. Follow the same oxygen pair across the liquid surface to the gas probe’s side."
+      },
+      {
+        "id": "stoichiometry",
+        "title": "同一份变化，为什么读数增幅不同？",
+        "titleEn": "Why do the readings change by different amounts?",
+        "caption": "先数物质的量，再看各自的刻度。",
+        "captionEn": "Count the amounts, then inspect each measurement scale.",
+        "seconds": 30,
+        "zh": "数一数：新增两份氯离子，对应一份氧气。这就是净反应给出的二比一关系。可别期待三条曲线长得一样。pH把氢离子浓度放到对数刻度上；氯离子探头读浓度；氧气探头读它占全部气体的比例。尤其是这个分母：原来有多少气体，也会改变最后的氧气读数。",
+        "en": "Count the products: two new chloride ions accompany one oxygen molecule. That is the net reaction’s two-to-one amount relation. But the three curves need not look alike. pH uses a logarithmic concentration scale, the chloride probe measures concentration, and the oxygen probe measures a fraction of all the gas. Notice that denominator: the amount of gas already there also affects the final reading."
+      },
+      {
+        "id": "headspace-predict",
+        "title": "氧气比例更小，就产得更少吗？",
+        "titleEn": "Does a smaller oxygen fraction mean less was made?",
+        "caption": "同样产气，哪路读数会变？",
+        "captionEn": "With equal oxygen production, which reading changes?",
+        "seconds": 34,
+        "zh": "现在换两份独立样品：液体一样多，次氯酸净分解量也一样，只把B上方的气体体积加倍。先猜，哪路读数会变？两份新生成的氧气相同，B却有更多原有气体。混合后，B的氧气比例较小，液体的pH和氯离子浓度仍然相同。所以，看到比例较低，先问分母变了没有，再判断产量。",
+        "en": "Compare two separate samples with equal liquid volumes and equal net decomposition. Only B has twice the initial headspace. First predict: which reading changes? Both make the same amount of oxygen, but B starts with more gas. After mixing, B has the smaller oxygen fraction; liquid pH and chloride concentration remain equal. Before interpreting a lower fraction as lower production, check whether its denominator changed."
+      }
+    ],
+    "duration": 156
+  },
+  "teachingProfiles": {
+    "chem-required-1-body-p48": {
+      "sceneSlug": "chem-chlorine-photolysis",
+      "question": {
+        "zh": "光怎样让三路读数一起变化？",
+        "en": "How can light change all three readings?"
+      },
+      "lead": {
+        "zh": "沿着同一批原子，从吸收光到净变化，再追到液相与气相探头。",
+        "en": "Follow the same atoms from absorbed light to net change and the liquid and gas probes."
+      },
+      "principle": {
+        "zh": "光可开启化学变化；教材净反应把HClO减少与H⁺、Cl⁻、O₂增加联系起来，不同探头读的是不同物理量。",
+        "en": "Light can initiate chemistry. The textbook net reaction links HOCl loss to H⁺, Cl⁻ and O₂ gains; different probes measure different quantities."
+      },
+      "transfer": {
+        "question": {
+          "zh": "净分解量相同，气相体积加倍，哪路读数改变？",
+          "en": "At equal net decomposition, which reading changes when headspace doubles?"
+        },
+        "explanation": {
+          "zh": "该理想模型生成相同的O₂，但较大的气相有更多原有气体，O₂比例上升较少；液相体积和生成的H⁺、Cl⁻量相同，pH及氯离子浓度相同。",
+          "en": "The ideal model generates the same O₂, but a larger headspace contains more initial gas, so its oxygen fraction rises less. Equal liquid volume and equal H⁺/Cl⁻ production leave liquid pH and chloride concentration equal."
+        }
+      }
+    }
+  },
+  "topicProposal": {
+    "title": {
+      "zh": "氯水光解：从光到读数",
+      "en": "Chlorine-water photolysis: from light to readings"
+    },
+    "description": {
+      "zh": "跟随光吸收和同一批原子，解释三路探头，再用顶空变化检验比例与产量。",
+      "en": "Follow absorbed light and the same atoms to explain three probes, then test whether a changed fraction means a changed yield."
+    }
+  },
+  "sources": [
+    {
+      "id": "textbook",
+      "file": "人教版高中化学-必修第一册.pdf",
+      "printedPages": [46, 47, 48],
+      "pdfPages": [51, 52, 53],
+      "read": "Complete extracted context from chlorine hydrolysis through net HOCl decomposition and entire digital-experiment box. Existing PDF53 PNG actually viewed again; graph directions and the 0–150s observed axis verified.",
+      "evidence": "P47 net2HClO→2HCl+O2 under light; P48 Fig2-16 pHdown/chlorideup/headspaceO2up. Textbook does not specify light spectrum, microscopic radical mechanism or full initial conditions.",
+      "imageEvidence": "artifacts/chemistry-inventory/required-1-p53-photolysis.png"
+    },
+    {
+      "id": "watts2007",
+      "url": "https://doi.org/10.1016/j.watres.2007.03.032",
+      "primary": "Watts and Linden, Water Research41,2871–2878",
+      "read": "Publisher search-index abstract and introduction excerpt. Reports OH-radical formation in aqueous chlorine UV254nm studies; no full-paper figure or detailed rate implementation claimed.",
+      "supports": "An independently studied UV initiation/radical layer, separate from textbook strong-light experiment.",
+      "notImported": "No fluence, scavenger concentrations, operating instructions or numerical quantum yield."
+    },
+    {
+      "id": "yin2018",
+      "url": "https://doi.org/10.1016/j.watres.2018.06.018",
+      "primary": "Wavelength-dependent chlorine photolysis and subsequent radical production using UV-LEDs as light sources, Water Research142,452–458",
+      "read": "Publisher indexed abstract, highlights, introduction, conclusion and partial results; direct-page403 recorded.",
+      "supports": "HOCl/OCl− response depends on wavelength and pH; HO· and Cl· production is discussed for short-UV channels; absorption matters, not just photon energy.",
+      "boundary": "Will not transfer these UV-LED rates or pH5–10 fits to textbook acidic chlorine water or unspecified strong illumination."
+    },
+    {
+      "id": "shiraishi2023",
+      "url": "https://doi.org/10.1021/jacsau.3c00066",
+      "primary": "Sunlight-Driven Generation of Hypochlorous Acid on Plasmonic Au/AgCl Catalysts in Aerated Chloride Solution",
+      "read": "Read relevant full-article XML paragraphs, and now personally opened the original Equation8 JPEG obtained from the documented public EuropePMC supplementaryFiles API. Eq8 visually reads HClO --hν(λ<400nm)--> 1/2O2 + H+ + Cl−. FigureS24 and supporting-information numerical data were not independently viewed.",
+      "local": "sources/jacsau-2023.xml",
+      "boundary": "Catalytic generation paper provides an ancillary decomposition control, not proof that every chlorine-water illumination follows this sole mechanism.",
+      "equationImage": {
+        "member": "au3c00066_m008.jpg",
+        "path": "sources/au3c00066_m008.jpg",
+        "sha256": "848f01ae4f3b6e4f232f4de2e69a0fdfdae610221818ef99699144045c9794f7",
+        "api": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10207101/supplementaryFiles",
+        "visualRead": true,
+        "transcription": "HClO — hν (λ < 400 nm) → ½ O₂ + H⁺ + Cl⁻",
+        "supports": "The written net stoichiometry and light label in this paper. It is not an elementary radical mechanism or the measured wavelength spectrum of the textbook experiment."
+      }
+    },
+    {
+      "id": "thomsen2001",
+      "url": "https://doi.org/10.1063/1.1413964",
+      "primary": "Femtosecond photolysis of aqueous HOCl, JCP115,9361–9369",
+      "read": "Aarhus institutional metadata verified. DOI publisher fetch unavailable; original abstract appeared in a third-party transcription. Not yet treated as independently read full text.",
+      "boundary": "No266nm lifetime, fraction recombination or unit quantum-yield numerical claim will be placed in the product based only on this partial access."
+    }
+  ],
+  "translations": {
+    "教材观察方向": "Textbook observed trends",
+    "两支探头在液体中，一支在气相中；固定教材观察为pH下降、氯离子增加、氧气比例增加": "Two probes in liquid and one in headspace; fixed textbook trends are falling pH, rising chloride and rising oxygen fraction",
+    "紫外 · 不可见 · 选定事件": "UV · invisible · selected event",
+    "氧氯键已均裂，氢氧仍相连，两个中性片段各保留一个选定电子": "The oxygen–chlorine bond has split homolytically; hydrogen remains joined to oxygen, and each neutral fragment retains one selected electron",
+    "六原子样本，追踪一条氧氯键及其两个成键电子": "A six-atom sample; track one oxygen–chlorine bond and its two bonding electrons",
+    "未吸收：这条键未变": "Unabsorbed: this bond stays intact",
+    "两个中性片段 · 各有一个未成对电子": "Neutral fragments · one unpaired electron each",
+    "先吸收，再分开": "Absorb first, then separate",
+    "氢—氧仍相连": "Hydrogen stays joined to oxygen",
+    "后续多步反应": "Further reactions",
+    "净变化 · 中间步骤省略": "Net change · steps merged",
+    "同一批六原子的净去向，氧气全部越过液面后才计入顶空；液相氢离子和氯离子总电荷为零": "Net destinations of the same six atoms: oxygen counts in the headspace only after its entire drawing clears the surface; aqueous hydrogen and chloride ions have zero total charge",
+    "气": "Gas",
+    "总电荷": "Charge",
+    "O₂ 生成": "O₂ formed",
+    "未入气相": "Not in gas",
+    "气相": "Gas",
+    "算例 · 氧气比例的分母": "Calculated example · the denominator",
+    "全部气体": "All gas",
+    "新增 O₂ 同时进入分子与分母": "New O₂ enters both counts",
+    "算例 · 非实测": "Calculated example · not measurements",
+    "横轴为归一化净反应进程，不是时间": "the horizontal axis is normalized net extent, not time",
+    "横轴：归一化净反应进程": "Axis: normalized net extent",
+    "两份独立样品 · 等量新增 O₂": "Separate samples · equal new O₂",
+    "A与B独立样品的液体相同，新增氧气相同；比较不同初始气体体积": "Independent A and B samples have equal liquid volumes and equal newly generated oxygen; compare different initial gas volumes",
+    "同值": "Both",
+    "各 100 mL": "Each 100 mL",
+    "探索视角": "Explore",
+    "探头": "Probes",
+    "断键": "Bond",
+    "去向": "Atoms",
+    "读数": "Scales",
+    "预测": "Predict",
+    "逐步追踪": "Follow the steps",
+    "选择一个事件": "Select an event",
+    "吸收并解离": "Absorb and dissociate",
+    "未吸收": "Unabsorbed",
+    "测量量": "Measurement",
+    "独立模型样品": "Independent model sample",
+    "光照净模型": "Illuminated net model",
+    "理想避光对照": "Ideal dark control",
+    "净分解进程": "Net decomposition extent",
+    "B 初始顶空": "Initial headspace B",
+    "重新预测": "Predict again",
+    "揭晓读数": "Reveal readings",
+    "模型怎样简化？": "What does the model simplify?",
+    "教材记录只保留固定观察方向。254 nm紫外是单独选定的吸收解离事件，不代表教材光源、完整光谱、量子产率或反应速率。图中只追踪选定O—Cl键的两个电子，H—O不断。": "The textbook observations retain fixed directions. The selected 254 nm absorption/dissociation event is not the textbook source spectrum, an absorption spectrum, a quantum yield or a rate law. Only the two electrons of the selected O–Cl bond are tracked; H–O stays joined.",
+    "初始自由基与后续净反应是两个描述层次。净原子路径合并中间步骤，H⁺表示水合的酸性氢离子；图中不展开水合结构和后续电子网络。氧气在完整越过液面前不计入顶空。": "Initial radicals and the later net reaction are different descriptive levels. Atom paths combine intermediate steps; H⁺ stands for hydrated acidic hydrogen. Solvent structure and subsequent electron transfers are not expanded. The tracked oxygen enters the headspace account only after its whole drawing crosses the surface.",
+    "算例取100 mL液体、初始HOCl 0.018 mol/L、H⁺及Cl⁻各0.008 mol/L；初始气相298.15 K、1 atm、O₂比例18%。使用浓度近似pH，忽略溶解、平衡、竞争反应与传质；终态假设生成O₂全进入顶空。横轴是净进程，不是教材150秒实测。改变顶空比较独立样品，避光模型省略缓慢暗反应。": "The example uses 100 mL liquid, initially 0.018 mol/L HOCl and 0.008 mol/L each of H⁺ and Cl⁻; initial gas is at 298.15 K and 1 atm with 18% O₂. Concentration approximates pH; dissolution, equilibria, competing reactions and transport are omitted. At the endpoint all generated O₂ is in the headspace. The axis is net extent, not the textbook 150-second record. Changing headspace compares separate samples; the dark model omits slow dark chemistry."
+  },
+  "scientificBoundaries": [
+    "No H2/Cl2 initiation or explosive-mixture apparatus is involved; textbook entry is chlorine-water photolysis.",
+    "UV photon is neutral/hatched and labelled invisible; do not render it as visible purple.",
+    "A photon being energetic enough is not proof it is absorbed or yields one lasting radical pair. No quantitative radical yields or lifetimes.",
+    "HO· and Cl· are radicals, not H+ and Cl−; the microscope scene and net-product scene are explicitly distinct.",
+    "No complete elementary O2 mechanism inferred from three endpoint sensors. Subsequent branching and solvent processes exist.",
+    "The illustrative acid/chloride values assume concentration-based pH and ignore speciation/activity/hydrolysis; all generated O2 in gas is an endpoint approximation.",
+    "Headspace controls compare independent samples, not unexplained deformation of the same sealed bottle.",
+    "Switching to a dark independent sample does not erase products in the lit sample or assert absolute absence of long-time dark chemistry.",
+    "No operating recipe, chlorine generation conditions, household UV treatment recommendation or exposure optimization."
+  ],
+  "atomContinuityContract": {
+    "atomicIds": [
+      "sample-A-H0",
+      "sample-A-O0",
+      "sample-A-Cl0",
+      "sample-A-H1",
+      "sample-A-O1",
+      "sample-A-Cl1"
+    ],
+    "scope": "All6atoms exist throughout the molecular2-HOCl batch. The second molecule is visibly present but subdued during first-molecule close-up. Do not recreate HOCl0 after it has cleaved.",
+    "chapterBoundary": "The first frame of illuminate reuses exactly the terminal positions/identities of light-entry: HO·0+Cl·0 plus intactHOCl1. Camera/frame changes may be eased, not particle respawn. A lens transition changes from initial-event explanation to net-allocation accounting; it does not reverse the first event.",
+    "electronIds": ["selected-bond-e0", "selected-bond-e1"],
+    "electronScope": "Exactly2 selected dots throughout light-entry. Before cleavage they represent the chosen bonding pair; afterward1belongs toO0fragment and1toCl0fragment. H–O stays joined. Their explicit rendering ends when the lens switches to atom-only net accounting; never show electron count dropping to0 or claim these2dots track the full downstream redox network.",
+    "netTransition": "During explicitly net-only intermediate drawing, retain all6element tokens. Do not claim transient positions are chemical species or elementary trajectories. At product completion show2hydratedH+,2Cl− and1O2 simultaneously, integer ionic charges only and total0.",
+    "gasLedger": "The single representative O2 is counted once. Before its centroid crosses the labelled headspace boundary: generated1=not-yet-headspace1+headspace0. After crossing:1=0+1. Quantitative bulk plots stay hidden during this discrete transfer; endpoint bulk account can then scale to0.9mmol without falsely counting a visible half molecule.",
+    "comparisonIdentity": "Headspace counterfactual uses distinctsample-A andsample-B namespaces; equal initial conditions are not the same physical atoms duplicated."
+  },
+  "automaticShotContract": {
+    "status": "Historical prevoice planning contract; its planned second boundaries are superseded by actualWordCuts and measured-sync.json. Identity, hidden-answer, and causal-order requirements remain active.",
+    "timing": "Historical planning seconds only. Do not evaluate these old absolute boundaries as final production timing; use actual chapterTime+locale cuts and final regression tests.",
+    "probeEpsilonSeconds": 0.001,
+    "chapters": [
+      {
+        "id": "sensors",
+        "seconds": 26,
+        "shots": [
+          {
+            "from": 0,
+            "to": 3,
+            "shot": "one-vessel-question",
+            "visible": [
+              "vessel",
+              "liquid-surface",
+              "pH-tip-in-liquid",
+              "chloride-tip-in-liquid",
+              "O2-tip-in-headspace",
+              "fixed-textbook-source-tag"
+            ],
+            "hidden": ["net-products", "molecular-cause", "generated-numeric-traces"]
+          },
+          {
+            "from": 3,
+            "to": 8,
+            "shot": "follow-pH",
+            "visible": ["pH-probe-route", "fixed-pH-down-arrow"],
+            "hidden": ["chloride-arrow", "oxygen-arrow", "net-products"]
+          },
+          {
+            "from": 8,
+            "to": 13,
+            "shot": "follow-chloride",
+            "visible": ["chloride-probe-route", "fixed-chloride-up-arrow"],
+            "hidden": ["oxygen-arrow", "net-products"]
+          },
+          {
+            "from": 13,
+            "to": 18,
+            "shot": "follow-oxygen",
+            "visible": ["O2-headspace-probe-route", "fixed-oxygen-fraction-up-arrow"],
+            "hidden": ["net-products"]
+          },
+          {
+            "from": 18,
+            "to": 26,
+            "shot": "three-measurements-one-mystery",
+            "visible": ["three-fixed-trend-directions", "which-common-change-question"],
+            "hidden": ["net-equation-answer", "calculated-numeric-values"]
+          }
+        ],
+        "boundaryAssertions": [
+          "At2.999noarrow;3.000pHarrow;8.000chloridearrow;13.000O2arrow.",
+          "Probe endpoints remain in their proper phases; changing any later control leaves these3fixed directions untouched.",
+          "The gas-probe label includes fraction, notamount. No x-axis labelledseconds on illustrative model traces."
+        ]
+      },
+      {
+        "id": "light-entry",
+        "seconds": 32,
+        "shots": [
+          {
+            "from": 0,
+            "to": 4,
+            "shot": "two-HOCl-focus-first",
+            "visible": [
+              "all-six-atom-identities",
+              "intact-HO-bond0",
+              "intact-OCl-bond0",
+              "intact-second-HOCl",
+              "selected-electron-pair"
+            ],
+            "hidden": ["ionic-charges", "radical-labels", "oxygen-product", "photon"]
+          },
+          {
+            "from": 4,
+            "to": 8,
+            "shot": "UV-approach",
+            "visible": [
+              "neutral-hatched-UV-wavepacket",
+              "invisible-254nm-selected-event-tag",
+              "two-selected-electrons",
+              "all-six-atoms"
+            ],
+            "hidden": ["radical-labels", "ionic-charges", "oxygen-product"]
+          },
+          {
+            "from": 8,
+            "to": 11.5,
+            "shot": "absorbed-before-cleavage",
+            "visible": [
+              "absorbed-energy-ring",
+              "intact-OH",
+              "intact-OCl",
+              "two-selected-electrons",
+              "all-six-atoms"
+            ],
+            "hidden": ["travelling-photon", "radical-labels", "ionic-charges", "oxygen-product"]
+          },
+          {
+            "from": 11.5,
+            "to": 17,
+            "shot": "OCl-homolysis",
+            "visible": [
+              "continuous-OCl-fragment-separation",
+              "two-electron-trajectories",
+              "unchanged-HO-bond",
+              "unchanged-second-HOCl",
+              "all-six-atoms"
+            ],
+            "hidden": ["H-plus", "Cl-minus", "O2-product"]
+          },
+          {
+            "from": 17,
+            "to": 32,
+            "shot": "neutral-radical-endpoint",
+            "visible": [
+              "HO-radical0",
+              "Cl-radical0",
+              "one-dot-on-each-fragment",
+              "intact-second-HOCl",
+              "all-six-atoms"
+            ],
+            "hidden": ["travelling-photon", "H-plus", "Cl-minus", "O2-product"]
+          }
+        ],
+        "boundaryAssertions": [
+          "At7.999photonvisibleandbondintact;8.000photonhiddenbutbondstillintact.",
+          "At11.499no separation;11.5separationstarts;17endpoint has one selected dot per neutral fragment.",
+          "For all times6atomIDs and2electronIDs occur exactly once; norm(H0−O0) stays constant; noH+ orCl− text/aria inthischapter.",
+          "An explore unabsorbed-event choice retains OCl throughout; it does not claim a full absorption spectrum or quantum yield.",
+          "The next chapter initial atom positions equal this chapter terminal positions before camera transform."
+        ]
+      },
+      {
+        "id": "illuminate",
+        "seconds": 34,
+        "shots": [
+          {
+            "from": 0,
+            "to": 4,
+            "shot": "from-channel-to-net-lens",
+            "visible": [
+              "same-HO-radical0-and-Cl-radical0",
+              "same-intact-HOCl1",
+              "all-six-atom-identities",
+              "subsequent-multistep-transition"
+            ],
+            "hidden": [
+              "O2-product",
+              "pH-numeric-value",
+              "chloride-numeric-value",
+              "oxygen-fraction-value"
+            ]
+          },
+          {
+            "from": 4,
+            "to": 8,
+            "shot": "atom-only-net-account",
+            "visible": [
+              "all-six-element-tokens",
+              "net-not-elementary-label",
+              "initial-total2H2O2Cl"
+            ],
+            "hidden": [
+              "electron-dot-ledger",
+              "unique-intermediate-species-claim",
+              "oxygen-fraction-value"
+            ]
+          },
+          {
+            "from": 8,
+            "to": 16,
+            "shot": "net-atom-allocation",
+            "visible": [
+              "all-six-continuous-atom-trajectories",
+              "net-not-elementary-label",
+              "atom-total2H2O2Cl"
+            ],
+            "hidden": [
+              "fractional-ionic-charge",
+              "O2-already-in-headspace",
+              "oxygen-fraction-value"
+            ]
+          },
+          {
+            "from": 16,
+            "to": 20,
+            "shot": "net-products-in-liquid-region",
+            "visible": [
+              "two-hydrated-H-plus-symbols",
+              "two-Cl-minus",
+              "one-O2-same-O-identities",
+              "charge-total-zero",
+              "oxygen-ledger-produced1-notHeadspace1-headspace0"
+            ],
+            "hidden": ["oxygen-fraction-value"]
+          },
+          {
+            "from": 20,
+            "to": 26,
+            "shot": "same-O2-rises-to-boundary",
+            "visible": [
+              "continuous-O2-path",
+              "oxygen-ledger-produced1-notHeadspace1-headspace0",
+              "unchanged-liquid-products"
+            ],
+            "hidden": ["headspace-inventory1", "oxygen-fraction-value"]
+          },
+          {
+            "from": 26,
+            "to": 28,
+            "shot": "same-O2-wholly-in-headspace",
+            "visible": [
+              "same-O2-above-liquid",
+              "oxygen-ledger-produced1-notHeadspace0-headspace1",
+              "O2-probe-highlight"
+            ],
+            "hidden": ["oxygen-fraction-value"]
+          },
+          {
+            "from": 28,
+            "to": 34,
+            "shot": "three-phase-readings-linked",
+            "visible": [
+              "pH-down-associated-with-more-H-plus",
+              "Cl-up-associated-with-more-Cl-minus",
+              "oxygen-fraction-up-associated-with-added-headspaceO2",
+              "all-six-atoms"
+            ],
+            "hidden": ["unique-radical-pathway-claim"]
+          }
+        ],
+        "boundaryAssertions": [
+          "At0 atom identity/positions match light-entry at32; do not restore the first OCl bond.",
+          "Electron tracking scope ends explicitly atnet-lens switch; do not show electron count becoming0.",
+          "All6atomIDs remain; atomic inventory stays2H2O2Cl, symbolic ionic charge is neverfractional and endpoint charge0.",
+          "For16≤t<26: producedO2=1,notHeadspace=1,headspace=0. For26≤t:1=0+1. No visualduplicateO2.",
+          "Position is derived from the same state: afterformationO2centroid y=42;20→26smoothly moves42→−12;26→28moves−12→−42. Liquid boundaryy=0,glyphverticalradius12; at26lowerboundtouches0,thenwholeglyphisabove. Labels/readout phase therefore matches actualglyphbounds.",
+          "Bulkcomputedgasfraction is absent until the next chapter; do not mix1representativeO2 with0.9mmol bulk readout during transit."
+        ]
+      },
+      {
+        "id": "stoichiometry",
+        "seconds": 30,
+        "shots": [
+          {
+            "from": 0,
+            "to": 8,
+            "shot": "two-chlorides-one-oxygen",
+            "visible": [
+              "prior-endpoint-identities",
+              "2Cl-to-1O2-count-brackets",
+              "net-amount-ratio"
+            ],
+            "hidden": ["fake-time-fit", "equal-slope-claim"]
+          },
+          {
+            "from": 8,
+            "to": 15,
+            "shot": "bulk-example-pH-scale",
+            "visible": [
+              "calculated-example-tag",
+              "normalized-net-extent-axis",
+              "pH-log-scale",
+              "H-plus-concentration"
+            ],
+            "hidden": ["textbook-observation-label-on-computed-trace"]
+          },
+          {
+            "from": 15,
+            "to": 21,
+            "shot": "bulk-example-chloride-scale",
+            "visible": [
+              "calculated-example-tag",
+              "chloride-concentration-scale",
+              "same-normalized-extent"
+            ],
+            "hidden": ["textbook-time-axis"]
+          },
+          {
+            "from": 21,
+            "to": 30,
+            "shot": "bulk-example-oxygen-denominator",
+            "visible": [
+              "oxygen-fraction-numerator-new-plus-initialO2",
+              "denominator-initial-allgas-plus-newO2",
+              "same-normalized-extent"
+            ],
+            "hidden": ["headspace-comparison-answer"]
+          }
+        ],
+        "boundaryAssertions": [
+          "The amount relationusesincrements, not total initialchloride/totalinitialO2.",
+          "Bulk initialvaluesaredeclaredexample inputs, not re-labelled textbook measurements.",
+          "At14.999pHshot,15chloride;20.999chloride,21oxygenfraction. Phone shows one enlargedscaleatonce.",
+          "The genericsharedcaption does not pre-answer the nextheadspace prediction."
+        ]
+      },
+      {
+        "id": "headspace-predict",
+        "seconds": 34,
+        "shots": [
+          {
+            "from": 0,
+            "to": 8,
+            "shot": "two-independent-sample-premises",
+            "visible": [
+              "A-and-B-separate-identities",
+              "equal-liquid100mLeach",
+              "A500mLB1000mL",
+              "equal-generatedO2-0.9mmol",
+              "initial18percentboth"
+            ],
+            "hidden": [
+              "final-pH",
+              "final-chloride",
+              "final-O2percent",
+              "B-lower-answer",
+              "liquid-equal-answer"
+            ]
+          },
+          {
+            "from": 8,
+            "to": 14,
+            "shot": "hold-prediction",
+            "visible": ["which-reading-changes-question", "premise-identities"],
+            "hidden": [
+              "all-final-result-text",
+              "answer-aria-labels",
+              "comparative-lower-or-same-labels"
+            ]
+          },
+          {
+            "from": 14,
+            "to": 24,
+            "shot": "mix-same-added-O2-into-different-baselines",
+            "visible": [
+              "equal-added-O2-labelledamount",
+              "baseline-gas-n0-versus2n0",
+              "tracked-O2-pair-in-each-independent-sample",
+              "question-caption"
+            ],
+            "hidden": ["final-numeric-readings", "lower-answer-label"]
+          },
+          {
+            "from": 24,
+            "to": 28,
+            "shot": "reveal-gas-fractions",
+            "visible": [
+              "A21.4588percent",
+              "B19.7666percent",
+              "equal-O2-0.9mmol",
+              "denominator-difference"
+            ],
+            "hidden": ["unqualified-lower-yield-label"]
+          },
+          {
+            "from": 28,
+            "to": 34,
+            "shot": "reveal-liquid-invariance",
+            "visible": [
+              "equalpH1.58503",
+              "equalCl921.7mgL",
+              "gasfraction-difference",
+              "equal-oxygen-production"
+            ],
+            "hidden": ["yield-changed-claim"]
+          }
+        ],
+        "boundaryAssertions": [
+          "At23.999finalO2values and answerlabels/aria absent; at24appear.",
+          "At27.999finalpH/Cloutputs absent; at28appear.",
+          "During8≤t<14stage contains? forpredictedoutputs; no lower-answer in title,caption,ariaorhiddenDOMdescription.",
+          "AandBhave distinctsampleID namespaces; noonephysicalbottledeforms while changinggasvolume.",
+          "Withsameextentandliquid,pH_A=pH_B,Cl_A=Cl_B,nO2_A=nO2_B; n0_B=2n0_A and finalxO2_B<finalxO2_A."
+        ]
+      }
+    ],
+    "wholePlayerRequirements": [
+      "320×568anddesktop actualbilingualcompleteplayerinspection",
+      "Noessentialledgerhiddenbyresponsivebranch",
+      "Chinese/EnglishactualSVGscaledfont≥16px;actualoperationtargets≥44px",
+      "Noresultleaksduringprediction throughcaption,accessiblelabeloroffscreenanswertext"
+    ],
+    "globalIdentities": [
+      "sample-A-H0",
+      "sample-A-O0",
+      "sample-A-Cl0",
+      "sample-A-H1",
+      "sample-A-O1",
+      "sample-A-Cl1"
+    ],
+    "scientificTestPlan": [
+      "Independent atomsH2O2Cl2andendpointioniccharge0",
+      "HO0bondlengthconstant duringOClhomolysis;2selectedelectronIDsneverlost",
+      "HeadspaceledgerderivedfromsameO2geometryphase;forward/backwardseekreconstructsexactstate",
+      "FiniteNaN/+Inf/−Infextent/headspace/arrivalguards",
+      "Independentgasfractioncalculation with500/1000mLand0.9mmol;exampleinputsnotobserveddata",
+      "Immutable textbook directions evenafterexplorationcontrols",
+      "Fullchapterseek0/end plus exactboundaries±.001bothlocales aftermeasuredcalibration"
+    ]
+  },
+  "sharedChangesRequired": [
+    "Root has integrated five measured chapters, sole P48 entry window, source/profile metadata, UI translations and two recorded tracks. No further spoken-text change requested.",
+    "Root owns final global verification, frozen static whole-film review, listening evidence and publication."
+  ],
+  "timingStatus": {
+    "kind": "Actual chapterTime and locale calibrated from all ten independently generated word-timing files",
+    "duration": 156,
+    "chapterStarts": [0, 26, 58, 92, 122],
+    "measuredEvidence": "artifacts/teaching-principles/photolysis-implementation/measured-sync.json",
+    "voiceChange": "None; existing root-generated Chinese and English 156-second recordings retained.",
+    "directorLimit": "Monotone mappings into existing model clocks preserve atom/electron identities and geometry; visual seconds are not chemical rates."
+  },
+  "translationImplementation": "All new scene UI uses say(zh,en); dictionary copied here for integration visibility.",
+  "initialVisualEvidence": "artifacts/teaching-principles/photolysis-implementation/final-silent-frames/report.json",
+  "independentModelReview": "artifacts/teaching-principles/batch-8-cross-review/biology-review-of-photolysis.json",
+  "actualWordCuts": {
+    "zh": {
+      "probes": [4.85, 6, 8.65, 10.8],
+      "event": [
+        [0, 0],
+        [0.45, 4],
+        [2.1, 8],
+        [7.35, 11.5],
+        [10.9, 17],
+        [32, 32]
+      ],
+      "net": [
+        [0, 0],
+        [5.2, 4],
+        [9.25, 8],
+        [14.9, 16],
+        [24.45, 20],
+        [27.3, 26],
+        [28.6, 28],
+        [34, 34]
+      ],
+      "scales": [11, 14.35, 16.55],
+      "prediction": 8.8,
+      "mixStart": 11.4,
+      "mixEnd": 16.7,
+      "gas": 18.55,
+      "liquid": 21.9
+    },
+    "en": {
+      "probes": [5.7, 6.95, 9.4, 12],
+      "event": [
+        [0, 0],
+        [0.45, 4],
+        [2.7, 8],
+        [8.8, 11.5],
+        [12.1, 17],
+        [32, 32]
+      ],
+      "net": [
+        [0, 0],
+        [4.2, 4],
+        [7.6, 8],
+        [14.4, 16],
+        [23.5, 20],
+        [27.2, 26],
+        [28.2, 28],
+        [34, 34]
+      ],
+      "scales": [11.45, 14.4, 16.55],
+      "prediction": 8.7,
+      "mixStart": 11.65,
+      "mixEnd": 16.7,
+      "gas": 18.2,
+      "liquid": 22.1
+    }
+  },
+  "measuredCorrespondence": [
+    {
+      "chapter": "sensors",
+      "evidence": "ZH pH4.42–5.28, Cl5.54–6.92, O2 8.20–9.84; EN pH5.24–6.12, Cl6.48–8.14, O2 8.92–11.38 (cue-relative).",
+      "change": "Reveal each fixed trend while its probe is named; show all for the liquid/gas placement explanation."
+    },
+    {
+      "chapter": "light-entry",
+      "evidence": "ZH two electrons5.64–7.22, separation7.22–10.44, hydrogen remains10.84–12.24; EN electrons6.50–8.44, separation8.72–11.72, hydrogen12.14–14.20.",
+      "change": "Selected photon arrives2.1/2.7 chapter seconds, then selected two-electron separation7.35–10.9ZH /8.8–12.1EN. Each transfer lasts at least3s, and completed radicals precede the hydrogen/neutral-fragment explanation."
+    },
+    {
+      "chapter": "illuminate",
+      "evidence": "ZH net-account4.76–8.56, ions9.08–14.32, oxygen14.66–17.04, follow/cross24.00–28.40. EN net3.86–7.04, ions7.36–14.02, oxygen14.28–17.50, follow/cross23.06–27.82.",
+      "change": "Preserve prior six-atom endpoints until the explicit net-account transition; allocate during product clause. Hold resulting oxygen below liquid until follow phrase24.45ZH/23.5EN, whole-glyph arrival27.3ZH/27.2EN."
+    },
+    {
+      "chapter": "stoichiometry",
+      "evidence": "ZH pH10.60–13.76, Cl14.12–15.72, O2 15.98–18.76; EN pH11.02–13.62, Cl13.82–15.78, O2 15.96–19.50.",
+      "change": "Keep2:1 objects through amount explanation; show pH at11.0/11.45, chloride14.35/14.4, denominator16.55 in both languages."
+    },
+    {
+      "chapter": "headspace-predict",
+      "evidence": "ZH question8.36–10.44, mixed15.74–16.48, smaller fraction16.78–18.52, equal liquid18.90–21.86. EN question8.24–10.80, mixed15.68–16.26, smaller16.56–18.70, equal liquid19.06–22.40.",
+      "change": "No movement/answer through actual question. Independent oxygen samples mix11.4/11.65–16.7. Gas values reveal18.55ZH/18.2EN, liquid equality21.9ZH/22.1EN."
+    }
+  ],
+  "measuredVisualEvidence": {
+    "path": "artifacts/teaching-principles/photolysis-implementation/measured-frames/report.json",
+    "cases": 42,
+    "passed": 42,
+    "phoneMaxBottom": {
+      "zh": 558.453125,
+      "en": 566.75
+    }
+  },
+  "nativeContinuousEvidence": {
+    "path": "artifacts/teaching-principles/photolysis-implementation/native-measured-segments/report.json",
+    "clips": [
+      {
+        "locale": "en",
+        "start": 26,
+        "end": 54,
+        "name": "selected-event",
+        "status": "passed"
+      },
+      {
+        "locale": "zh",
+        "start": 58,
+        "end": 89,
+        "name": "phase-transfer",
+        "status": "passed"
+      },
+      {
+        "locale": "en",
+        "start": 122,
+        "end": 154,
+        "name": "prediction",
+        "status": "passed"
+      }
+    ],
+    "scope": "User-started native HTMLAudio clock and model-state synchronization; system output muted; bounded segments, not full-film or subjective listening."
+  },
+  "canonicalCueSHA256": "5699096e1bf501db22a1ee71eaa8cc0bca2547a5f428ddbb0af04094b8fbfc59"
+}
