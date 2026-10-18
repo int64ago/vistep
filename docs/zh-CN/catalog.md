@@ -117,7 +117,7 @@
 | [钠与过氧化钠的证据链](../../src/content/chem-sodium-reactions.mdx)               | 3:42 | 同样含钠，遇到空气和水会怎样？                       |
 | [两种碳酸盐的对照](../../src/content/chem-carbonate-comparison.mdx)               | 2:27 | 碳酸钠和碳酸氢钠，怎样用证据区分？                   |
 | [电解质与电流](../../src/content/chem-ionic-conduction.mdx)                       | 1:59 | 有离子，为什么不一定能导电？                         |
-| [胶体中的光路](../../src/content/chem-colloid-light.mdx)                          | 1:55 | 为什么胶体会显出一条光路？                           |
+| [看见光的条件](../../src/content/chem-colloid-light.mdx)                          | 3:02 | 光穿过去了，为什么侧面看不见？                       |
 
 ## 生命与生态
 
@@ -166,7 +166,7 @@
 | [合成基因组与活细胞](../../src/content/bio-engineered-genomes.mdx)            | 1:39 | 一段DNA，等于一个生命吗？                      |
 | [细胞里的分泌路线](../../src/content/bio-cellular-logistics.mdx)              | 1:58 | 蛋白质怎样离开制造它的细胞？                   |
 | [从肽键到胰岛素](../../src/content/bio-protein-machines.mdx)                  | 1:35 | 一堆氨基酸为什么不是一个蛋白质？               |
-| [细胞怎样吸水](../../src/content/bio-osmosis.mdx)                             | 3:08 | 水一直在动，为什么液面会停？                   |
+| [水为什么穿过细胞膜](../../src/content/bio-osmosis.mdx)                       | 4:22 | 水一直在来回，细胞为什么还会变瘪？             |
 | [细胞膜的证据链](../../src/content/bio-membrane-evidence.mdx)                 | 2:46 | 看见暗纹，就知道膜的成分了吗？                 |
 | [可转移的化学信号](../../src/content/bio-chemical-signals.mdx)                | 2:12 | 神经没有接通，另一颗心为什么也慢了？           |
 | [神经信号的实验线索](../../src/content/bio-nerve-signals.mdx)                 | 2:34 | 电表的两次偏转，怎样连到神经之间的传递？       |
@@ -196,7 +196,7 @@
 | [从月地检验到扭秤](../../src/content/gravity-measurements.mdx)       | 2:48 | 微弱的引力，怎样成为可测量的量？           |
 | [超重与失重实验](../../src/content/apparent-weight-lab.mdx)          | 2:51 | 身体没变重，体重计为何忽高忽低？           |
 | [太空测质量](../../src/content/dynamic-mass-lab.mdx)                 | 1:53 | 失重时，怎样测出宇航员的质量？             |
-| [小车力与加速度实验](../../src/content/newton-second-law-lab.mdx)    | 2:50 | 改变拉力或质量，怎样让实验回答同一个问题？ |
+| [力怎样改变速度](../../src/content/newton-second-law-lab.mdx)        | 3:07 | 为什么有推力，却不一定加速？               |
 | [抽纸与参考系](../../src/content/inertial-frames-lab.mdx)            | 1:54 | 球几乎没动，为什么纸上的观察者看到它后退？ |
 | [伽利略斜面研究](../../src/content/galileo-inclines.mdx)             | 2:51 | 把运动变慢，怎样看出自由落体与惯性的线索？ |
 | [力的合成与分解实验](../../src/content/force-resultant-lab.mdx)      | 1:53 | 两个斜着拉的力，怎样换成一个力？           |

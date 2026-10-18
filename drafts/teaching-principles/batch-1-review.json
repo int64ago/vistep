@@ -1,0 +1,148 @@
+{
+  "batch": 1,
+  "status": "reviewed-for-publication-with-recorded-limitations",
+  "baselineCommit": "59ab767f60d3e1be5dad3e50bf73ea72ed1db433",
+  "owners": [
+    "Codex (/root)",
+    "Codex (/root/teaching_subject_fit)",
+    "Codex (/root/chemistry_inventory)",
+    "Codex (/root/biology_inventory)"
+  ],
+  "scope": {
+    "scenes": ["newton-second-law-lab", "chem-colloid-light", "bio-osmosis"],
+    "authoredTextbookQuestions": 8,
+    "wholeCollectionComplete": false
+  },
+  "checks": [
+    {
+      "kind": "independent-ASR",
+      "status": "passed",
+      "cases": 36,
+      "evidence": "artifacts/teaching-principles/batch-1-transcription-final.json",
+      "method": "mlx Whisper large-v3-turbo; no language or reference prompt; not subjective listening"
+    },
+    {
+      "kind": "uninterrupted-native-playback",
+      "status": "passed",
+      "cases": 6,
+      "evidence": "artifacts/teaching-principles/batch-1-continuous/report.json",
+      "conditions": "Chinese 1440×1000 / English 390×844; ordinary audio policy; explicit voice gesture; no seeking after start; static preview; last layout-only changes reviewed separately",
+      "maxObservedAudioFilmDifferenceSeconds": 0.101,
+      "observations": "Every film reached its measured end; zero page errors and invalid paths. Checkpoints every 10 seconds are not a claim of continuous human viewing."
+    },
+    {
+      "kind": "entry-windows-reduced-motion-audio-failure",
+      "status": "passed",
+      "cases": 19,
+      "evidence": "artifacts/teaching-principles/batch-1-behavior/report.json"
+    },
+    {
+      "kind": "teaching-navigation-search-transfer",
+      "status": "passed",
+      "cases": 10,
+      "evidence": "artifacts/teaching-principles/shell-02/report.json"
+    },
+    {
+      "kind": "exploration-boundaries",
+      "status": "passed",
+      "cases": 6,
+      "evidence": "artifacts/teaching-principles/batch-1-edge-controls/report.json",
+      "observations": "Funnel concentration extremes/gauze, ATP-off, side blocker and settled source-off exercised with actual controls; root inspected rendered high-concentration state."
+    },
+    {
+      "kind": "subjective-listening",
+      "status": "not-run",
+      "reason": "No subjective audio listening interface available; ASR and native audio telemetry are separate evidence."
+    },
+    {
+      "kind": "physical-phone-performance",
+      "status": "not-run",
+      "reason": "Browser viewport emulation only; no physical phone access."
+    },
+    {
+      "kind": "automated-contracts-and-builds",
+      "status": "passed",
+      "sceneCheck": "passed",
+      "tests": 3424,
+      "testFiles": 572,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "typeHints": 607,
+      "productionPages": 2134,
+      "previewPages": 2134,
+      "evidence": [
+        "artifacts/teaching-principles/batch-1-scene-check-reviewed.log",
+        "artifacts/teaching-principles/batch-1-verify-reviewed.log",
+        "artifacts/teaching-principles/batch-1-preview-build-reviewed.log"
+      ]
+    },
+    {
+      "kind": "final-layout-keyframes",
+      "status": "passed",
+      "cases": 104,
+      "conditions": "Chinese 1440 / English 320; colloid also Chinese and English 601 / 768. Complete player fits tested phone frame; zero automated small-font, small-primary-control or path findings. Final changes compared as stills; unchanged native playback evidence kept separately.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-1-final-frames/report.json (only unchanged 26 osmosis cases)",
+        "artifacts/teaching-principles/batch-1-layout-final/report.json (38 Newton/colloid cases supersede earlier layout)",
+        "artifacts/teaching-principles/batch-1-tablet-final/report.json (40 cases)"
+      ],
+      "rootVisualInspection": "Inspected actual rendered key frames: balanced/coasting/braking/paired mass and hanging-weight Newton states; transmission/blocker/dipole source-off/color/transfer scattering; initial/equalized water potential, plasmolysis/recovery, reversed aquaporin and ATP control. Reviewed final Newton single-cart narrow frames and colloid 601px sample/color compositions after repairs."
+    }
+  ],
+  "integrationCorrections": [
+    {
+      "scene": "newton-second-law-lab",
+      "chapter": "paired",
+      "before": "Narration announced release at about 3s, while linear physical playback released at 9.72s; braking was also late.",
+      "revision": "Same continuous physical model; presentation clock now releases at 2.88s, brakes at15.68s and reaches rest at25.92s. Watch-to-explore uses the same mapping."
+    },
+    {
+      "scene": "newton-second-law-lab",
+      "chapter": "force / mass / boundary",
+      "before": "One-second comparison results, combined relation and heavy hanging-mass trial appeared after their spoken references.",
+      "revision": "Comparison reaches one physical second at30% of its chapter. Fnet=Ma appears at43% of the mass chapter; heavy trial begins at35% of the boundary chapter."
+    },
+    {
+      "scene": "chem-colloid-light",
+      "chapter": "comparison",
+      "before": "Eye route and blocker removal arrived after their spoken references.",
+      "revision": "Complete eye route at11.76s; blocker inserted16.8–20.16s and removed30.24–32.76s. Side path alone is blocked."
+    },
+    {
+      "scene": "chem-colloid-light",
+      "chapter": "particles",
+      "before": "Eye darkened about8s after speech said it did.",
+      "revision": "One shared retarded model clock uses continuous interpolation: source off27.36s, charge response ends32.16s, last eye wave ends36.96s."
+    },
+    {
+      "scene": "chem-colloid-light",
+      "chapter": "dilution",
+      "revision": "Color comparison begins24s; window-light transfer begins36s, aligned with both measured spoken tracks."
+    },
+    {
+      "scene": "bio-osmosis",
+      "chapter": "funnel",
+      "revision": "Keep the initial mixing potential visible while it is explained; advance the same funnel model from15.96s to26.88s, then hold pressure equilibrium while molecules continue moving."
+    },
+    {
+      "scene": "bio-osmosis",
+      "chapter": "aquaporin",
+      "revision": "Fade the original trial16.2–18s; reset to the reversed bath18–19.8s; show net loss before the21s statement."
+    },
+    {
+      "scene": "bio-osmosis",
+      "chapter": "active",
+      "before": "Independent English transcription decoded ATP as ADP.",
+      "revision": "Spell the spoken acronym A T P explicitly and regenerate; assess the new independent transcription, without assuming either ASR result proves pronunciation."
+    },
+    "Newton phone spacing reduced without shrinking text; detailed mg-as-T percent error remains in optional exploration.",
+    "Funnel water-potential plot derives its range from the same state, preventing the external-concentration extremes from cropping its levels.",
+    "Isolate Newton cart CSS selectors from the existing Newton tube; production bundling exposed a two-column collision. Phone rig top clearance is composed at 64px rather than shrinking the apparatus.",
+    "Use the same measured width for colloid SVG geometry and column layout; distinguish awaiting incident light from a stopped response."
+  ],
+  "publication": {
+    "status": "pending",
+    "method": "Existing authorization; main push triggers Actions. No duplicate manual deployment."
+  },
+  "implementationCommitBeforeReviewRecordAmend": "f88d2bc"
+}

@@ -17,8 +17,50 @@ import { rasterCoverSlugs } from './raster-covers';
 import source from './curriculum-source.json';
 import variants from './curriculum-variants.json';
 import timeline from './film-timeline.json';
+import { featuredTeachingLessons, teachingExplanations } from './teaching-explanations';
 
 describe('textbook learning paths', () => {
+  it('keeps each authored explanation attached to its own textbook scene', () => {
+    const lessons = curricula.flatMap((curriculum) => getCurriculumLessons(curriculum));
+    for (const [id, explanation] of Object.entries(teachingExplanations)) {
+      const context = lessons.find(({ lesson }) => lesson.experimentId === id);
+      expect(context, id).toBeDefined();
+      expect(context!.lesson.sceneSlug, id).toBe(explanation.sceneSlug);
+      expect(context!.lesson.explanation, id).toBe(explanation);
+      for (const locale of ['zh', 'en'] as const) {
+        for (const text of [
+          explanation.question,
+          explanation.lead,
+          explanation.principle,
+          explanation.transfer.question,
+          explanation.transfer.explanation,
+        ]) {
+          expect(text[locale].trim(), `${id}/${locale}`).not.toBe('');
+        }
+      }
+    }
+    expect(new Set(featuredTeachingLessons).size).toBe(featuredTeachingLessons.length);
+    for (const id of featuredTeachingLessons) expect(teachingExplanations[id], id).toBeDefined();
+  });
+
+  it('retains the osmotic cause before red-cell and plant-cell consequences', () => {
+    const context = getCurriculumLessons('pep-high-school-biology').find(
+      ({ lesson }) => lesson.experimentId === 'bio-required-1-064-1',
+    )!;
+    expect(curriculumFilmSelection(context.lesson)).toEqual({
+      chapterIds: ['diffusion', 'funnel', 'red-cell', 'plasmolysis', 'recovery'],
+      variant: 'plant',
+    });
+    expect(context.lesson.textbookTitle.zh).toBe('探究植物细胞的吸水和失水');
+    const redCell = getCurriculumLessons('pep-high-school-biology').find(
+      ({ lesson }) => lesson.experimentId === 'bio-required-1-063-1',
+    )!;
+    expect(curriculumFilmSelection(redCell.lesson)).toEqual({
+      chapterIds: ['funnel', 'red-cell'],
+      variant: 'red-cell',
+    });
+  });
+
   it('publishes the complete chemistry and biology inventories in textbook learning order', () => {
     for (const [id, counts] of [
       ['pep-high-school-chemistry', [36, 39, 29, 33, 46]],

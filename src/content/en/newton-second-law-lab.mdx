@@ -1,39 +1,69 @@
-<h2 id="understand">Control conditions before comparing motion</h2>
+<h2 id="understand">Why can a cart be pushed without getting faster?</h2>
 
-The apparatus contains a cart, paper tape, ticker timer, fixed pulley and hanging masses. First adjust the track tilt without a hanging mass. The cart should move approximately uniformly with its tape attached. Gravity along the incline compensates resistance, including tape drag.
+When you push a shopping cart at a steady velocity, your hand still applies a force. The cart does not keep accelerating because the forward push balances resistance. Looking at one force alone can make “a force is present” seem equivalent to “speed must increase.” Ask instead: **What is the sum of the external forces, and how much does velocity change in the same time?**
 
-For one cart mass, change the hanging load and use tape records to compare pull and acceleration. Then change cart mass under approximately unchanged pulling conditions and examine acceleration against inverse mass. Data points come from differences of equal-time positions, sharing the same state as both moving bodies.
+The film begins with a moving cart under equal and opposite forces. Its velocity arrow keeps the same length and its velocity–time trace stays level. A hanging mass then pulls a cart from rest: the arrow grows and the trace rises. The useful quantity is no longer its current speed, but its change in velocity per second — its acceleration.
 
-The alternative textbook method uses two carts released and stopped together from rest. With equal durations and constant accelerations, displacement ratio equals acceleration ratio. A common clamp controls both trailing strings; stacked tracks are a layout variant of the same method.
+<h2 id="try">Make each comparison answer one question</h2>
 
-<h2 id="try">Test the weight-as-tension approximation</h2>
+**Keep the cart and change the net force.** Trials A and B both use a 0.60 kg cart, starting from rest for one second. Actual tensions of 0.12 N and 0.24 N produce velocity gains of 0.20 m/s and 0.40 m/s. Doubling the net force doubles acceleration.
 
-- Remove the hanging load in the compensation path and change tilt. A slightly raised board is not sufficient evidence; check for equal tape spacings.
-- Hold cart mass fixed and increase the hanger. Compare actual string tension with tape-derived acceleration.
-- Keep the hanging mass while changing cart mass. Its weight stays fixed, but its tension still changes slightly with the system acceleration.
-- Increase the hanging mass substantially. Observe why treating its weight as tension works better when it is much lighter than the cart.
-- In the paired path, compare a common time interval. If either cart reaches its measurement endpoint first, both records end together.
+**Keep the net force and add mass.** Carts of 0.40 kg and 0.80 kg each experience a net force of 0.16 N. After one second their velocities are 0.40 m/s and 0.20 m/s. Doubling mass halves acceleration. To keep the actual tension exactly equal, the model uses slightly different hanging masses. An unchanged hanging weight would not give exactly the same tension.
 
-<h2 id="deeper">Retain the hanging mass's own acceleration</h2>
+Together, these relationships give Newton’s second law for constant mass in an inertial reference frame:
+
+<div className="formula">Fnet = Ma, a = Δv / Δt</div>
+
+Fnet is the vector sum of external forces on the cart, and M is the mass of that chosen object. The displayed values are predictions from an independent mechanics model. They reconstruct and test the relationships; they are not measurements or an independent experimental proof of the law.
+
+In Explore, change cart mass, actual tension or hanging mass. Predict the velocity gain over a fixed interval before moving the time control to check it.
+
+<h2 id="deeper">Why does the cart keep moving after release?</h2>
+
+A continuous shot pushes the cart, withdraws the pusher, then engages a brake. On an ideal track with negligible resistance, withdrawing the pusher removes the net force and acceleration. **It does not erase the velocity already acquired.** The velocity–time trace has a level section. When the brake applies a backward force, the cart is still moving forward but slowing down. Velocity and net force need not point in the same direction.
+
+Apply this to everyday motion. On a level floor, which is larger when you push a shopping cart at constant velocity: your push or resistance? If the cart slows after you let go, which force is still acting? Reason from net force and change in velocity, rather than whether someone is pushing.
 
 <details>
 
-<summary>Exact compensated equations</summary>
+<summary>Why is hanging weight not the same as tension?</summary>
 
-Let cart mass be M and hanging mass m. The string is inextensible, with negligible pulley mass and friction. When slope gravity exactly compensates cart resistance:
+Let M be cart mass and m hanging mass. Compensate resistance along the track, neglect string and pulley mass and pulley friction, and keep the inextensible string taut. Cart and hanging mass then have accelerations of equal magnitude.
 
-<div className="formula">a = mg / (M + m); T = Ma = m(g − a)</div>
+<div className="formula">T = Ma, mg − T = ma</div>
 
-Actual tension T is below mg. Substituting mg overestimates the true tension by the fraction m/M. The approximation is good only when m is much smaller than M. A fixed-hanger acceleration-versus-inverse-cart-mass graph is consequently approximate, not forced to be perfectly straight at every mass ratio.
+The hanging mass accelerates downward, so its downward weight exceeds the upward tension. Solving both equations gives:
+
+<div className="formula">a = mg / (M + m), T = m(g − a)</div>
+
+Using mg in place of T overestimates the actual tension by the relative fraction m/M. With a 0.60 kg cart and a 0.02 kg hanging mass, that is about 3.3%. With a 0.20 kg hanging mass, it is about 33.3%. This explains the textbook condition that the hanging mass must be much smaller than the cart. Keeping the hanging mass fixed keeps mg fixed, but not T exactly fixed.
+
+For its exact equal-tension comparison, the model calculates m = T / (g − T/M). In a real experiment, actual tension can be measured, or the small-mass-ratio approximation can be used with its error reported.
 
 </details>
 
 <details>
 
-<summary>Incomplete compensation and tape differences</summary>
+<summary>The textbook’s tape, compensation and displacement methods</summary>
 
-For track angleθ and resistanceμMg cosθ, moving acceleration is [mg + Mg(sinθ − μ cosθ)] / (M + m). The defaultμ is0.025 and compensation requires tanθ = μ. An initially stationary cart with insufficient drive can remain static, rather than being falsely launched backward.
+PEP Physics, Compulsory Book 1, Chapter 4, Section 2, printed pages 88–92, presents several measurement routes. Apparatus adjustments support the question being investigated.
 
-Equal-time positions give a = (sᵢ₊₁ − 2sᵢ + sᵢ₋₁) / Δt². The displayed0.10 s counting points represent fixed-interval selections from denser dots, not a10 Hz power supply. Measurement freezes at its endpoint without modeling a stop collision.
+- Remove the hanging mass and let the cart move with its tape attached. Tilt the track until the cart travels at approximately constant velocity. The check must include tape resistance. The model approximates resistance as μMg cosθ, with μ = 0.025 by default; compensation requires tanθ = μ.
+- Equal-time tape dots record positions. The difference between consecutive displacements, divided by the square of the time interval, gives acceleration. The expanded view uses a 0.10 s counting interval selected from a denser record, not a 10 Hz supply.
+- Release two carts from rest and stop both with a common clamp. For the same duration of constant acceleration, their displacement ratio equals their acceleration ratio. The parallel trials share a clock; the film does not simulate the stopping collision at a clamp.
+
+Without exact compensation, acceleration during motion is [mg + Mg(sinθ − μ cosθ)] / (M + m). The angle control in Explore changes this result. Static friction may hold the cart at rest if the drive is insufficient. Motion freezes at the measurement endpoint; a stop collision is not simulated. Keep the ideal coasting shot distinct from a real track with resistance.
+
+</details>
+
+<details>
+
+<summary>Sources and limits</summary>
+
+Textbook: PEP Physics, Compulsory Book 1, Chapter 4, Section 2, printed pages 88–92.
+
+[OpenStax: Newton’s Second Law](https://openstax.org/books/university-physics-volume-1/pages/5-3-newtons-second-law) explains net external force, acceleration, mass and force balance at constant velocity. [Vernier: Newton’s Second Law experiment](https://www.vernier.com/experiment/pep-4_newtons-second-law/) describes investigation with a cart and hanging mass. Experimental designs may treat the cart or the entire system as their object of study; identify that object before comparing results.
+
+This model covers low-speed, one-dimensional motion with constant mass, using g = 9.8 m/s². One geometric model determines both string segments and the pulley tangency. Cart travel equals the hanging mass’s descent and total string length remains constant.
 
 </details>

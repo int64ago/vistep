@@ -8,6 +8,10 @@ Historical commit IDs retain the source references recorded at the time. Git LFS
 
 ## Findings that change the process
 
+### Textbook coverage did not establish explanatory depth — 2026-10-18
+
+Reader feedback on the expanded teaching area identified a gap between covering experiments and making their principles engaging. Some films followed apparatus and procedures; others contained a causal explanation, but their textbook entry selected only a short observation. Original experiment titles and repeated learning goals reinforced the procedural framing. The revision now reviews each actual textbook playback window, preserves the textbook reference while leading with a scientific question, and requires visible evidence, a mechanism and a new prediction. These requirements describe the ongoing rebuild; they do not certify that every existing scene has already been revised. Progress and per-scene decisions are tracked in [the rebuild plan](../drafts/teaching-principles/rebuild-plan.json).
+
 | Failure                                              | Cause                                         | Production response                                                                                        |
 | ---------------------------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | A large isolated brand panel                         | Branding treated as a separate feature        | Integrate the name animation into the opening typography; keep its full meaning visible.                   |

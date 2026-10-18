@@ -15,7 +15,40 @@ interface Props {
 const { context, locale = 'zh' } = Astro.props;
 const { section, lesson } = context;
 const { previous, next } = curriculumNeighbors(context);
+const explanation = lesson.explanation;
 ---
+
+{
+  explanation && (
+    <section
+      class="teaching-reasoning"
+      aria-label={locale === 'zh' ? '从现象得到的解释' : 'What explains the observation'}
+    >
+      <h2>{locale === 'zh' ? '把现象连成一个解释' : 'Connect the observations'}</h2>
+      <p>{explanation.principle[locale]}</p>
+      <details class="teaching-transfer">
+        <summary>
+          <span class="teaching-transfer-label">
+            {locale === 'zh' ? '换个情境，试着解释' : 'Use the idea in a new situation'}
+          </span>
+          <span>{explanation.transfer.question[locale]}</span>
+          <span class="teaching-transfer-action">
+            <span class="teaching-transfer-closed">
+              {locale === 'zh' ? '展开推理' : 'Explore the reasoning'}
+            </span>
+            <span class="teaching-transfer-open">
+              {locale === 'zh' ? '收起推理' : 'Close the reasoning'}
+            </span>
+            <span class="teaching-transfer-plus" aria-hidden="true">
+              ＋
+            </span>
+          </span>
+        </summary>
+        <p>{explanation.transfer.explanation[locale]}</p>
+      </details>
+    </section>
+  )
+}
 
 <div class="teaching-lesson-context">
   <div class="teaching-lesson-location">
@@ -26,7 +59,14 @@ const { previous, next } = curriculumNeighbors(context);
     <span>{locale === 'zh' ? `教材第 ${lesson.page} 页` : `Textbook page ${lesson.page}`}</span>
   </div>
   <div class="teaching-lesson-purpose">
-    <p><span>{locale === 'zh' ? '本节目标' : 'Learning goal'}</span>{lesson.goal[locale]}</p>
+    {
+      !explanation && (
+        <p>
+          <span>{locale === 'zh' ? '本节目标' : 'Learning goal'}</span>
+          {lesson.goal[locale]}
+        </p>
+      )
+    }
     <p class="teaching-lesson-original">
       <span
         >{
@@ -52,7 +92,9 @@ const { previous, next } = curriculumNeighbors(context);
       <a href={curriculumLessonPath(previous, locale)}>
         <>
           <span>{locale === 'zh' ? '← 上一项' : '← Previous'}</span>
-          <strong>{previous.lesson.name[locale]}</strong>
+          <strong>
+            {previous.lesson.explanation?.question[locale] ?? previous.lesson.name[locale]}
+          </strong>
         </>
       </a>
     ) : (
@@ -64,7 +106,7 @@ const { previous, next } = curriculumNeighbors(context);
       <a href={curriculumLessonPath(next, locale)}>
         <>
           <span>{locale === 'zh' ? '下一项 →' : 'Next →'}</span>
-          <strong>{next.lesson.name[locale]}</strong>
+          <strong>{next.lesson.explanation?.question[locale] ?? next.lesson.name[locale]}</strong>
         </>
       </a>
     )

@@ -1,163 +1,155 @@
 .chem-colloid-light {
-  color: #e0e6d6;
-  background: radial-gradient(ellipse at 50% 20%, #284b48, #173935 72%);
-  border-radius: 28px;
-  padding: clamp(20px, 3vw, 36px);
+  color: #e6e8d8;
+  background: radial-gradient(ellipse at 50% 25%, #31534a, #173d36 78%);
+  border-radius: 26px;
+  padding: 22px;
   font-size: 16px;
+  min-width: 0;
   overflow: hidden;
 }
-.chem-colloid-light header {
-  display: flex;
-  gap: 20px;
-  align-items: baseline;
-  justify-content: space-between;
+.chem-colloid-light svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
-.chem-colloid-light header p {
-  font-size: clamp(20px, 2.4vw, 28px);
-  line-height: 1.5;
-  margin: 0;
-  max-width: 25em;
+.chem-colloid-light svg text {
+  fill: #e5e8d7;
+  font-size: 16px;
+  font-family: inherit;
 }
-.chem-colloid-light header span {
-  color: #a9c4b5;
-  white-space: nowrap;
+.chem-colloid-light svg .colloid-muted {
+  fill: #b3c7b5;
 }
-.chem-colloid-bench {
+.colloid-samples,
+.colloid-wavelength-comparison {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 28px;
+  gap: 16px 24px;
 }
-.chem-colloid-bench figure {
+.colloid-samples figure,
+.colloid-wavelength-comparison figure {
   margin: 0;
   min-width: 0;
 }
-.chem-colloid-bench figcaption {
+.colloid-samples figcaption,
+.colloid-wavelength-comparison figcaption {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.5;
 }
-.chem-colloid-bench svg {
-  display: block;
-  width: 100%;
-  max-height: 390px;
+.colloid-model-badge {
+  color: #bfd1bc;
+  font-size: 16px;
+  line-height: 1.5;
 }
-.chem-colloid-bench figure p {
+.colloid-evidence {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 16px 0 0;
   text-align: center;
-  color: #b6ccbd;
-  line-height: 1.6;
-  margin: 0;
 }
-.chem-colloid-cause {
-  font-size: 18px;
-  line-height: 1.7;
-  text-align: center;
-  margin: 28px auto;
-  max-width: 40em;
+.colloid-energy {
+  margin-top: 14px;
 }
-.chem-colloid-micro {
+.colloid-energy-track {
+  height: 12px;
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #122e29;
+}
+.colloid-energy-track span {
+  background: #b9cbb1;
+}
+.colloid-energy-track i {
+  background: #e5ad85;
+}
+.colloid-energy p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  margin: 10px 0 0;
+  line-height: 1.5;
+}
+.colloid-explore {
+  padding: 18px;
+  margin-top: 22px;
+  border-radius: 19px;
+  background: #edf0e0;
+  color: #294e41;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 20px;
-  border-top: 1px solid #9dbbad33;
+  gap: 18px;
 }
-.chem-colloid-micro svg {
-  width: 100%;
+.colloid-explore .segmented {
+  flex-wrap: wrap;
 }
-.chem-colloid-micro p {
-  line-height: 1.7;
-}
-.chem-colloid-controls {
-  background: #eef0df;
-  color: #294c43;
-  border-radius: 20px;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.chem-colloid-controls button {
+.colloid-explore button,
+.colloid-explore input {
+  font-size: 16px;
   min-height: 44px;
 }
-.chem-colloid-light details {
-  margin-top: 20px;
-  color: #b6ccbd;
-  line-height: 1.8;
+.colloid-block-toggle {
+  border-radius: 14px;
+  border: 1px solid #96aa93;
+  background: #dce7cd;
+  color: #294e41;
+  padding: 10px 16px;
+  cursor: pointer;
 }
-.chem-colloid-light summary {
+.colloid-limits {
+  margin-top: 16px;
+  color: #bdcfba;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.colloid-limits summary {
   min-height: 44px;
+  display: list-item;
   cursor: pointer;
   padding: 10px 0;
 }
-.chem-colloid-light details p {
-  max-width: 64ch;
-}
-.chem-colloid-light input[type='range'] {
-  min-height: 44px;
-}
-.chem-colloid-light[data-watch='true'] header,
-.chem-colloid-light[data-watch='true'] .chem-colloid-cause,
-.chem-colloid-light[data-watch='true'] figure > p {
-  display: none;
-}
-.chem-colloid-light[data-watch='true'] .chem-colloid-bench {
-  margin-top: 0;
-}
-.chem-colloid-light[data-watch='true'][data-micro='true'] .chem-colloid-bench {
-  display: none;
-}
-.chem-colloid-light[data-watch='true'] .chem-colloid-micro {
-  border: 0;
-  grid-template-columns: 1fr;
-  gap: 0;
-  max-width: 660px;
-  margin: auto;
-  text-align: center;
-}
-.chem-colloid-light[data-watch='true'] .chem-colloid-micro > p {
-  display: none;
-}
-.chem-colloid-wavelength {
-  font-size: 16px;
+.colloid-limits p {
+  margin: 10px 0;
 }
 @media (max-width: 600px) {
   .chem-colloid-light {
-    padding: 22px 16px;
-    border-radius: 22px;
+    padding: 16px 12px;
+    border-radius: 21px;
   }
-  .chem-colloid-light header {
-    display: block;
-  }
-  .chem-colloid-light header span {
-    display: block;
-    margin-top: 12px;
-  }
-  .chem-colloid-bench {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .chem-colloid-bench figure {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .chem-colloid-bench svg {
-    max-height: 210px;
-  }
-  .chem-colloid-bench figcaption {
+  .colloid-energy p {
     font-size: 16px;
-    line-height: 1.5;
   }
-  html[lang='en'] .chem-colloid-bench figcaption {
-    min-height: 4.5em;
+  .colloid-explore {
+    padding: 14px;
   }
-  .chem-colloid-controls,
-  .chem-colloid-micro {
-    grid-template-columns: 1fr;
+  .colloid-limits {
+    margin-top: 10px;
   }
-  .chem-colloid-micro p {
-    margin-top: 0;
-  }
-  .chem-colloid-cause {
-    text-align: left;
-  }
+}
+
+.colloid-canvas {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* The same measured canvas width controls both SVG geometry and column layout. */
+.chem-colloid-light[data-compact='true'] .colloid-samples,
+.chem-colloid-light[data-compact='true'] .colloid-wavelength-comparison {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.chem-colloid-light[data-compact='true'] .colloid-samples figcaption {
+  text-align: left;
+}
+.chem-colloid-light[data-compact='true'] .colloid-wavelength-comparison {
+  gap: 7px;
+}
+.chem-colloid-light[data-compact='true'] .colloid-wavelength-comparison figure {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.chem-colloid-light[data-compact='true'] .colloid-wavelength-comparison figcaption {
+  text-align: left;
 }

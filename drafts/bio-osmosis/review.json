@@ -1,0 +1,212 @@
+{
+  "slug": "bio-osmosis",
+  "owner": "bio-foundations",
+  "status": "author-frozen-awaiting-independent-integration-review",
+  "reviewedAt": "2026-10-18T11:37:47.977161+00:00",
+  "baseCommit": "59ab767f60d3e1be5dad3e50bf73ea72ed1db433",
+  "fingerprintScope": "Owned files only; shared files are concurrently owned by root. No build or release is certified by this record.",
+  "files": {
+    "src/components/experiments/BioOsmosis.tsx": "cf4c001f24db59c25126a53ee627afd9cfd7555ad929a16a0962bf69d7cd0363",
+    "src/models/bio-osmosis.ts": "420c52757cae1bb9afb7c7a09cf0cf2ebde361fedd2ec8f2672c0605928e1c0a",
+    "src/models/bio-osmosis.test.ts": "ec80dd1923e5fced7a641b47f2fc64afbe17cfd637cd71a8de261387686525cc",
+    "src/styles/bio-osmosis.css": "d6073d05946e981509c802d758bade44f57f4d90bcf61ac2b944f060a2dbd076",
+    "src/content/bio-osmosis.mdx": "13046e92a3135dd386b7ee52974192d18b8849021109d32da38f52d328fe0882",
+    "src/content/en/bio-osmosis.mdx": "cf8c559b27dc9faf010edddc06e3d1fc6181d8bad4850988f2ff6b7ce8362dfd",
+    "drafts/bio-osmosis/brief.md": "5a6fa3cde616c896105b62b18c59951020e4a1a897b615729fc652bc1c7c544e",
+    "drafts/bio-osmosis/principle-first-packet.json": "679334a70f085ea7fb73f6bbc790c2b5ba4c65e7452010474358f668199c6736"
+  },
+  "film": {
+    "chapterIds": [
+      {
+        "id": "diffusion",
+        "title": "一颗分子往回走，整滴墨水却散开",
+        "titleEn": "One doubles back; the drop spreads",
+        "caption": "无规则运动，形成有方向的净扩散。",
+        "captionEn": "Random motion produces net spreading.",
+        "at": 0
+      },
+      {
+        "id": "funnel",
+        "title": "水位停了，水分子没有停",
+        "titleEn": "The level stops; molecules do not",
+        "caption": "混合降低水势，压力抬高水势，净流量由两侧之差决定。",
+        "captionEn": "Mixing lowers water potential; pressure raises it. Their difference drives net flow.",
+        "at": 28
+      },
+      {
+        "id": "red-cell",
+        "title": "盐没有抽走整个细胞",
+        "titleEn": "Salt does not remove the whole cell",
+        "caption": "失水使细胞变小，也使胞内溶质更浓。",
+        "captionEn": "Water loss shrinks the cell and concentrates its contents.",
+        "at": 70
+      },
+      {
+        "id": "plasmolysis",
+        "title": "把失水推理带进植物细胞",
+        "titleEn": "Bring the argument into a plant cell",
+        "caption": "液泡和原生质体缩小，细胞壁留在外面。",
+        "captionEn": "The vacuole and protoplast shrink inside the wall.",
+        "at": 98
+      },
+      {
+        "id": "recovery",
+        "title": "复原之后，为什么不继续胀大",
+        "titleEn": "Why recovery does not mean endless swelling",
+        "caption": "靠近细胞壁后，膨压抵消进一步吸水。",
+        "captionEn": "Wall contact builds turgor that opposes further uptake.",
+        "at": 126
+      },
+      {
+        "id": "aquaporin",
+        "title": "水通道，改变快慢而不是方向",
+        "titleEn": "Channels change speed, not the driving direction",
+        "caption": "水通道加快被动过水，反转梯度也加快失水。",
+        "captionEn": "Channels speed passive flow, including water loss after reversal.",
+        "at": 158
+      },
+      {
+        "id": "passive",
+        "title": "蛋白质，不等于主动运输",
+        "titleEn": "A protein does not make transport active",
+        "caption": "两条被动路径都消耗浓度差，平衡后仍能交换。",
+        "captionEn": "Both passive routes reduce a gradient; exchange persists.",
+        "at": 194
+      },
+      {
+        "id": "active",
+        "title": "用供能对照检验逆势运输",
+        "titleEn": "Test uphill transport with an energy control",
+        "caption": "相同起点，供能的泵才能继续逆势积累。",
+        "captionEn": "From the same start, only the energized pump accumulates uphill.",
+        "at": 224
+      }
+    ],
+    "duration": 254,
+    "voices": "Existing audio was disabled for author checks; root will generate and verify updated voices."
+  },
+  "checks": [
+    {
+      "type": "independent-model-assertions",
+      "status": "passed",
+      "testCount": 16,
+      "evidence": "artifacts/bio-osmosis-principle/model-final.log",
+      "scope": "Independent analytic equilibria; total water/retained solute conservation; water-potential/flux identity; continued opposing exchange; continuous particle identity and shared membrane collision path; channel-gradient reversal; plant contact; finite invalid inputs."
+    },
+    {
+      "type": "strict-types",
+      "status": "passed",
+      "evidence": "artifacts/bio-osmosis-principle/typecheck-final.log",
+      "scope": "Scoped component and model strict TypeScript command; no global build claim."
+    },
+    {
+      "type": "automated-paused-browser-samples",
+      "status": "passed",
+      "count": 80,
+      "locales": ["zh", "en"],
+      "widths": [320, 390, 1280],
+      "errors": [],
+      "horizontalOverflow": 0,
+      "renderedComponentHtmlTextBelow16px": 0,
+      "evidence": "artifacts/bio-osmosis-principle/final/report.json",
+      "conditions": "Chromium, saved sound off, reduced motion, actual page hash navigation; browser viewport overrides, not physical phones. These 80 samples are not 80 manually inspected stills."
+    },
+    {
+      "type": "author-keyframe-visual-inspection",
+      "status": "passed",
+      "actuallyInspectedLatestFrames": [
+        "artifacts/bio-osmosis-principle/final/zh-320-funnel-32.png",
+        "artifacts/bio-osmosis-principle/final/en-320-funnel-91.png",
+        "artifacts/bio-osmosis-principle/final/en-320-plasmolysis-32.png",
+        "artifacts/bio-osmosis-principle/final/en-320-recovery-91.png",
+        "artifacts/bio-osmosis-principle/final/en-320-diffusion-91.png",
+        "artifacts/bio-osmosis-principle/final/en-320-red-cell-91.png",
+        "artifacts/bio-osmosis-principle/final/en-320-passive-91.png",
+        "artifacts/bio-osmosis-principle/final/en-320-active-91.png",
+        "artifacts/bio-osmosis-principle/final/en-320-aquaporin-91.png",
+        "artifacts/bio-osmosis-principle/final/en-1280-funnel-32.png",
+        "artifacts/bio-osmosis-principle/final/zh-390-recovery-91.png"
+      ],
+      "scope": "Representative latest screenshots spanning all eight chapters, including potential before/after balance, plant wall and gap, aquaporin prediction, microscopic exchange and energy control. Earlier revision frames informed fixes but are not claimed as the final version."
+    },
+    {
+      "type": "actual-ui-interaction",
+      "status": "passed",
+      "count": 5,
+      "evidence": "artifacts/bio-osmosis-principle/interactions-final-ui/report.json",
+      "scope": "Gauze control; reversed aquaporin gradient; ATP toggle; switching to watch resets the film; watch funnel remains independent of exploratory gauze."
+    },
+    {
+      "type": "bilingual-folded-history-ui",
+      "status": "passed",
+      "evidence": "artifacts/bio-osmosis-principle/textbook-history-report.json",
+      "scope": "Real summary click and text presence for three evidence steps, not a voice change."
+    },
+    {
+      "type": "original-speed-technical-playback",
+      "status": "invalidated-by-development-update",
+      "evidence": "artifacts/bio-osmosis-principle/interactions/report.json",
+      "scope": "Observed normal progress until root shared HMR changed duration from 250 to 254 and reset playback. This is not a pass or an attributed product failure. Root will check the final static build."
+    },
+    {
+      "type": "full-human-watching",
+      "status": "not-run",
+      "owner": "root final integration"
+    },
+    {
+      "type": "updated-voice-listening",
+      "status": "not-run",
+      "owner": "root; voice assets not generated by author"
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run"
+    },
+    {
+      "type": "independent-review",
+      "status": "pending",
+      "owner": "root"
+    }
+  ],
+  "maxPlayerHeights": [
+    {
+      "locale": "zh",
+      "width": 320,
+      "height": 687.75
+    },
+    {
+      "locale": "zh",
+      "width": 390,
+      "height": 694.578125
+    },
+    {
+      "locale": "zh",
+      "width": 1280,
+      "height": 636.84375
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "height": 739.96875
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "height": 722.96875
+    },
+    {
+      "locale": "en",
+      "width": 1280,
+      "height": 633.84375
+    }
+  ],
+  "limits": [
+    "Random trajectories illustrate unbiased thermal motion; the relative-unit water-potential model supplies the net-flow calculation. No claim of a full microscopic simulation of osmosis.",
+    "Opposing arrows are a phenomenological gross-flow decomposition, not measured molecular counts.",
+    "The plant membrane detail summarizes protoplast permeability without resolving plasma membrane and tonoplast separately.",
+    "The active pump omits voltage and leakage and does not imply every active process directly uses ATP.",
+    "The aquaporin reversed-bath shot is explicitly a teaching prediction, separate from the original functional-expression experiment.",
+    "The 1950 history is attributed to the textbook; 1988 isolation and 1992 functional evidence are separately sourced."
+  ],
+  "handoff": "All listed owned files are frozen for root integration. Shared data, narration, curriculum, i18n, build and release remain root-owned."
+}

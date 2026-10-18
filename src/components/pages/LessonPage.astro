@@ -23,6 +23,7 @@ import {
 const { topic: originalTopic, Content, curriculumContext } = Astro.props;
 const locale = (Astro.props.locale ?? 'zh') as Locale;
 const context = curriculumContext as CurriculumContext | undefined;
+const explanation = context?.lesson.explanation;
 const selection = curriculumFilmSelection(context?.lesson);
 const selectedWindow = filmWindow(films[originalTopic.slug], selection);
 const topic = localizedTopic(originalTopic, locale);
@@ -38,10 +39,10 @@ const ageLabel =
   locale={locale}
   topic={originalTopic}
   title={context
-    ? `${context.lesson.name[locale]} · ${context.book.title[locale]} | vistep.ai`
+    ? `${explanation?.question[locale] ?? context.lesson.name[locale]} · ${context.book.title[locale]} | vistep.ai`
     : `${topic.name} — ${topic.title} | vistep.ai`}
   description={context
-    ? `${context.curriculum.title[locale]} · ${context.lesson.name[locale]} — ${context.lesson.goal[locale]}`
+    ? `${context.curriculum.title[locale]} · ${explanation?.question[locale] ?? context.lesson.name[locale]} — ${explanation?.lead[locale] ?? context.lesson.goal[locale]}`
     : topic.description}
 >
   <main
@@ -97,7 +98,7 @@ const ageLabel =
           }
         </div><h1>
           {
-            (context ? context.lesson.name[locale] : topic.title)
+            (context ? (explanation?.question[locale] ?? context.lesson.name[locale]) : topic.title)
               .split(locale === 'zh' ? '，' : '\u0000')
               .map((phrase, i, parts) => (
                 <span class="title-phrase">
@@ -106,7 +107,9 @@ const ageLabel =
                 </span>
               ))
           }
-        </h1><p>{context ? context.lesson.goal[locale] : topic.description}</p>
+        </h1><p>
+          {context ? (explanation?.lead[locale] ?? context.lesson.goal[locale]) : topic.description}
+        </p>
       </div><div class="lesson-viewing">
         <span class="lesson-time"
           >{filmRunningTime(selectedWindow.end - selectedWindow.start)} {tr('演示')}</span

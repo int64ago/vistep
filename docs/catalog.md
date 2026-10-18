@@ -117,7 +117,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Evidence from sodium and sodium peroxide](../src/content/en/chem-sodium-reactions.mdx)                | 3:42 | How do sodium and its peroxide respond to air and water?                      |
 | [Comparing two carbonate salts](../src/content/en/chem-carbonate-comparison.mdx)                       | 2:27 | How can observations distinguish carbonate from bicarbonate?                  |
 | [Electrolytes and current](../src/content/en/chem-ionic-conduction.mdx)                                | 1:59 | Why are ions alone not enough for conduction?                                 |
-| [Light paths in a colloid](../src/content/en/chem-colloid-light.mdx)                                   | 1:55 | Why does a colloid reveal the light path?                                     |
+| [What makes light visible](../src/content/en/chem-colloid-light.mdx)                                   | 3:02 | Light passed through. Why can’t we see it from the side?                      |
 
 ## Life & ecology
 
@@ -166,7 +166,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Synthetic genomes and living cells](../src/content/en/bio-engineered-genomes.mdx)                | 1:39 | Does DNA alone constitute a living cell?                                          |
 | [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 1:58 | How do proteins leave the cell that makes them?                                   |
 | [From peptide bonds to insulin](../src/content/en/bio-protein-machines.mdx)                       | 1:35 | Why is a mixture of amino acids not a protein?                                    |
-| [How cells gain and lose water](../src/content/en/bio-osmosis.mdx)                                | 3:08 | If water keeps moving, why does the level stop rising?                            |
+| [Why water crosses a cell membrane](../src/content/en/bio-osmosis.mdx)                            | 4:22 | If water moves both ways, why does a cell shrink?                                 |
 | [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 2:46 | Do dark bands identify membrane molecules?                                        |
 | [A transferable chemical signal](../src/content/en/bio-chemical-signals.mdx)                      | 2:12 | Why does a second heart slow without a connecting nerve?                          |
 | [Experimental clues to nerve signaling](../src/content/en/bio-nerve-signals.mdx)                  | 2:34 | How do two needle deflections connect to signaling between neurons?               |
@@ -196,7 +196,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [From the Moon–Earth test to the torsion balance](../src/content/en/gravity-measurements.mdx) | 2:48 | How can weak gravitation become measurable?                                         |
 | [Apparent-weight experiments](../src/content/en/apparent-weight-lab.mdx)                      | 2:51 | Why does a scale change when body mass stays the same?                              |
 | [Measuring mass in microgravity](../src/content/en/dynamic-mass-lab.mdx)                      | 1:53 | How can an astronaut be weighed without weight?                                     |
-| [Cart force and acceleration](../src/content/en/newton-second-law-lab.mdx)                    | 2:50 | How can force and mass be varied in a controlled experiment?                        |
+| [How force changes velocity](../src/content/en/newton-second-law-lab.mdx)                     | 3:07 | Why can a cart be pushed without accelerating?                                      |
 | [Paper pull and reference frames](../src/content/en/inertial-frames-lab.mdx)                  | 1:54 | Why does a nearly stationary ball move backward in the paper frame?                 |
 | [Galileo’s incline studies](../src/content/en/galileo-inclines.mdx)                           | 2:51 | How can slower motion reveal clues about falling and inertia?                       |
 | [Force composition laboratory](../src/content/en/force-resultant-lab.mdx)                     | 1:53 | How can two angled pulls be replaced by one?                                        |

@@ -1,20 +1,46 @@
-# Osmosis production brief
+# Osmosis: from an observation to a transferable principle
 
-Track conserved dye mass, conserved intracellular impermeant solute, fixed plant walls and the identities of translocated solute symbols. Resolve “water stops moving at equilibrium”, “cell wall shrinks with the vacuole”, and “all protein-assisted transport uses ATP”.
+Owner: bio-foundations. This revision responds to the user's request to explain principles from textbook phenomena, rather than presenting laboratory instructions. It preserves the eight existing chapter IDs and every apparatus variant. Shared registration, translations, curriculum routing, generated speech and release remain the root integrator's responsibility.
 
-Eight causal shots: diffusion broadening, finite funnel head, three tonicity outcomes, plasmolysis, water replacement/recovery, permeability comparison, passive gradient decay, energy-coupled uphill transfer. Each textbook target receives its exact consecutive cue set and explicit exploration state.
+The opening question is why a salty bath can shrink a cell even while water moves both ways. Follow one marked dye particle, then one marked water particle and a retained set of intracellular solute symbols. The decisive observation is a stationary funnel level with continuing bidirectional water exchange. The theory is a difference in water potential, combining mixing and pressure; the plant wall supplies a new mechanical boundary condition. Recovery and a reversed aquaporin bath test predictions from that theory.
 
-Sources: local Required 1 P62–71; OpenStax passive transport; primary Preston et al. Science 1992 CHIP28 expression; official Royal Swedish Academy background. Source chronology is distinguished from textbook summary: 1988 isolation and 1992 functional expression.
+## Causal sequence
 
-Independent benchmarks: dye sum=1 at all times; impermeant amount concentration×volume=1; isotonic volume=1; high external concentration 2 gives volume .5; funnel hydrostatic= osmotic at equilibrium; gauze/equal concentration give no sustained rise; active transport requires ATP and total solute is 2. Boundary tests stop red-cell expansion at rupture and constrain plant turgor expansion. These are relative-unit explanatory models, not physiological fits.
+| Existing chapter ID | New visible evidence                                                                                                               | Principle or prediction                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| diffusion           | A marked random walker doubles back while the same conserved population spreads; the histogram counts those actual particles.      | Individual randomness can produce net diffusion.                                                            |
+| funnel              | Retained sucrose, random water trajectories, a rising column, and separate mixing and pressure contributions to water potential.   | Net water flow follows the water-potential difference; unequal concentrations can coexist with equilibrium. |
+| red-cell            | Identical cells in three baths; retained intracellular symbols become concentrated as volume falls.                                | Water, rather than the whole cellular content, accounts for shrinkage before membrane rupture.              |
+| plasmolysis         | Vacuole and protoplast retract inside a less extensible wall; external-solute markers occupy the gap.                              | The observed separation follows water loss and different mechanical responses.                              |
+| recovery            | The same shrunken initial state takes up water; contact generates opposing pressure and a stable volume.                           | More fresh water does not imply unlimited expansion; cells without walls can rupture.                       |
+| aquaporin           | Matched initial cells swell at different rates; a visibly reset, separately labelled hypertonic prediction reverses both outcomes. | Channel expression changes permeability, not the source of energy or preferred direction.                   |
+| passive             | Conserved cargo uses lipid or carrier paths; a marked pair keeps exchanging after the macroscopic distribution stabilizes.         | Protein-assisted transport can be passive; equilibrium does not stop microscopic exchange.                  |
+| active              | Identical uphill starting distributions with ATP supplied or absent; only the supplied model accumulates cargo.                    | Energy coupling, rather than protein presence alone, enables uphill transport.                              |
 
-Desktop and phone: red-cell comparison retains three readable labels; plant cross-section occupies a dedicated field, funnel has connected glass neck, bulb and semipermeable bottom. Watch state is independent of controls, no per-scene timers. Later review must inspect the transport path, graph contrast and labels at 320/390 pixels.
+The planned bilingual timeline is 254 seconds, subject to root's real speech measurements. Detailed normalized shot thresholds and complete scripts are in [the handoff packet](principle-first-packet.json). The plant-cell curriculum entrance is proposed to span the first five chapters; the red-cell entrance includes the funnel premise before the cell comparison. Other entrances retain their focused objectives and local causal explanations.
 
-## Acceptance evidence
+## Sources, assumptions and limits
 
-Implementation owner: bio-foundations. Source textbooks remain local; the reviewed inventory supplies print and PDF pages. Model tests are separate from visual or listening acceptance.
+| Claim                                                  | Source and verified scope                                                                                                                               | Assumptions / boundary                                                                                                                    |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| CHIP28 expression increases osmotic water permeability | [Preston et al., Science 1992](https://pubmed.ncbi.nlm.nih.gov/1373524/), original abstract                                                             | The reversed-bath shot is an explicitly labelled teaching prediction, not a claimed original treatment.                                   |
+| Solvent chemical potential depends on activity         | [IUPAC activity definition](https://goldbook.iupac.org/terms/view/A00115)                                                                               | Water potential is referenced to pure water; concentration is a dilute, idealized approximation to the mixing contribution.               |
+| Pressure and osmotic contributions govern water flow   | [Cardoso and Cartwright 2014](https://arxiv.org/abs/1403.8077), original theoretical paper                                                              | Relative units and an isothermal linear approximation; concentrated/non-ideal mixtures require more complete thermodynamics.              |
+| Discovery chronology                                   | [Royal Swedish Academy background](https://www.nobelprize.org/uploads/2018/06/advanced-chemistryprize2003-1.pdf), indexed text and Figure 1 description | The direct PDF fetch returned HTTP 403 during this revision; its indexed official text distinguishes 1988 isolation from 1992 expression. |
+| Dynamic equilibrium and cell-wall interpretation       | [OpenStax, Passive Transport](https://openstax.org/books/biology-2e/pages/5-2-passive-transport), official educational synthesis                        | Supporting exposition, not a primary experimental report.                                                                                 |
 
-- Automated scoped model tests: pending at authorship; see batch report.
-- Browser playback, desktop and 320/390 layouts: pending root review.
-- Both complete recorded voices: pending root synthesis and listening.
-- Physical phone performance: not run.
+The funnel's internal and external water volumes sum to 9 relative units; each retained solute amount is conserved. The two liquid levels use their respective cross-sections, and their difference gives the hydrostatic term. The plotted potential difference multiplied by permeability equals the computed net flux. A semipermeable material is shown for the funnel, rather than falsely depicting cellophane as a lipid membrane.
+
+Microscopic trajectories are unbiased, reproducible random walks that never read a concentration gradient. They illustrate thermal motion, not a complete molecular-dynamics calculation of osmosis. Relative opposing arrow widths are a phenomenological decomposition of the computed net flow. Solute density in the local field uses a continuous sampling-window projection; the small number of visible markers is not a molecular census. The plant membrane detail summarizes protoplast permeability rather than resolving the plasma membrane and tonoplast separately. The rendered pore and collision boundary share `osmosisMembrane` geometry, with a margin for the tracked particle's radius.
+
+The plant wall deforms slightly after contact; its geometry and contact pressure derive from the same volume. Real wall anisotropy, growth and viscoelasticity are omitted. Red-cell lysis is an illustrative boundary, after which normal intact-cell conservation and equilibrium descriptions no longer apply. The passive and active cargo models omit membrane voltage and leakage, and do not represent all active transport as directly ATP-consuming.
+
+The bilingual folded textbook note preserves the page 68 evidence chain: isotope-water rates motivate a special pathway; 1988 protein isolation provides a candidate; 1992 expression tests its permeability function. The [1988 original abstract](https://jscholarship.library.jhu.edu/items/e0d285cd-8397-4a46-b4da-2a849c98efa7) was checked directly in the Johns Hopkins repository. It does not establish water-channel function merely by identifying the protein. The 1950 observation is explicitly attributed to the textbook account.
+
+## Distinct phone composition
+
+The phone places the funnel and compact potential diagram in one row, then the enlarged membrane beneath. Plant recovery puts the cell beside the pressure comparison, with readable HTML labels outside scaled SVG geometry. Desktop uses adjacent macro and micro views. All meaningful labels use CSS pixels rather than tiny SVG text. Controls appear only in exploration; questions and current object/state labels carry the silent sequence.
+
+## Evidence boundaries
+
+See [review record](review.json) for versioned checks. Numerical tests, real browser UI checks, sampled stills, original-speed technical playback, full human watching, speech listening and physical-phone performance remain separate evidence categories. The author does not certify root's integration, generated speech or publication.

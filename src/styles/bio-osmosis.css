@@ -1,65 +1,230 @@
 .bio-osmosis {
-  padding: clamp(12px, 3vw, 28px);
-  background: #e9eee0;
+  padding: 20px 24px;
+  background: linear-gradient(140deg, #eef1e7, #e4ece3);
   border-radius: 24px;
   color: #40564a;
+  max-width: 1000px;
+  margin: auto;
+  --bo-blue: #498f9d;
+  --bo-gold: #b38a54;
 }
-.bio-osmosis-mode {
+.bio-osmosis p {
   font-size: 16px;
-  margin: 0 0 10px;
-  color: #74816b;
+  line-height: 1.45;
+  margin: 0;
 }
-.bio-osmosis-main,
-.bio-osmosis > svg {
-  width: 100%;
-  height: 290px;
+.bio-osmosis .bo-question {
+  font-size: 18px;
+  font-weight: 550;
+  text-align: center;
+  margin: 0 0 16px;
+}
+.bio-osmosis svg {
   display: block;
+  width: 100%;
+  overflow: visible;
 }
-.bio-osmosis-readings {
-  display: flex;
-  gap: 10px 24px;
-  justify-content: center;
-  flex-wrap: wrap;
-  font-size: 16px;
-}
-.bio-red-comparison,
-.bio-aqp-comparison,
-.bio-transport-grid {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  max-width: 760px;
+.bo-causal-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 38px;
+  max-width: 790px;
   margin: auto;
 }
-.bio-red-comparison > div,
-.bio-aqp-comparison > div,
-.bio-transport-grid > div {
+.bo-funnel > svg {
+  height: 245px;
+}
+.bo-exchange {
+  min-width: 0;
+}
+.bo-exchange > svg {
+  height: 148px;
+}
+.bo-side-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+.bo-flow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  margin: 5px 10px;
+  font-size: 16px;
+}
+.bo-flow svg {
+  height: 38px;
+}
+.bio-osmosis .bo-result {
+  text-align: center;
+  margin: 8px 0 0;
+}
+.bo-balance {
+  display: grid;
+  gap: 7px;
+  max-width: 330px;
+  margin: 10px auto 0;
+}
+.bo-balance > div {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 10px;
+  align-items: center;
+  font-size: 16px;
+}
+.bo-balance i {
+  height: 9px;
+  display: block;
+  background: #d6dfd4;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.bo-balance b {
+  display: block;
+  height: 100%;
+  background: #719ca3;
+  border-radius: 9px;
+}
+.bo-balance > div:nth-child(2) b {
+  background: #b4985e;
+}
+.bo-diffusion {
+  max-width: 560px;
+  margin: auto;
+}
+.bo-diffusion > svg {
+  height: 245px;
+}
+.bo-histogram {
+  height: 42px;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  margin: 0 25px;
+  border-bottom: 1px solid #b7c4b4;
+}
+.bo-histogram i {
+  flex: 1;
+  background: #b9807e;
+  border-radius: 4px 4px 0 0;
+}
+.bo-proof-labels,
+.bo-plant-labels {
+  display: flex;
+  justify-content: center;
+  gap: 10px 22px;
+  font-size: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.bo-proof-labels span,
+.bo-plant-labels span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.bo-proof-labels i,
+.bo-plant-labels i {
+  display: inline-block;
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #a96b27;
+}
+.bo-proof-labels .bo-rose {
+  background: #b96f71;
+}
+.bo-proof-labels .bo-square {
+  background: #855b61;
+  border-radius: 2px;
+}
+.bo-plant-labels .bo-wall {
+  background: #94a579;
+}
+.bo-plant-labels .bo-membrane {
+  background: #8f7597;
+}
+.bo-plant-labels .bo-vacuole {
+  background: #b88daf;
+}
+.bo-plant > svg {
+  height: 220px;
+}
+.bio-osmosis .bo-detail {
+  margin: 12px auto 0;
+  max-width: 310px;
+  text-align: center;
+  color: #6b7564;
+}
+.bo-red-comparison,
+.bo-aqp-comparison,
+.bo-transport-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  max-width: 690px;
+  margin: auto;
+}
+.bo-red-comparison > div,
+.bo-aqp-comparison > div,
+.bo-transport-grid > div {
   flex: 1;
   min-width: 0;
   text-align: center;
 }
-.bio-red-comparison svg,
-.bio-aqp-comparison svg,
-.bio-transport-grid svg {
-  width: 100%;
-  max-height: 270px;
-  display: block;
+.bo-red-comparison svg {
+  height: 230px;
 }
-.bio-red-comparison p,
-.bio-aqp-comparison p,
-.bio-transport-grid p {
+.bo-aqp-comparison {
+  max-width: 510px;
+}
+.bo-aqp-comparison svg {
+  height: 220px;
+}
+.bio-osmosis .bo-evidence-tag {
+  text-align: center;
+  color: #887444;
+  margin: 0 auto 5px;
+}
+.bo-transport-grid {
+  max-width: 600px;
+}
+.bo-transport svg {
+  height: 265px;
+}
+.bo-population {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  gap: 7px;
+  align-items: center;
+  margin: 10px auto;
+  max-width: 220px;
   font-size: 16px;
-  line-height: 1.4;
-  margin: 8px 0;
 }
-.bio-transport-grid > div {
-  max-width: 310px;
+.bo-population i {
+  height: 9px;
+  background: #d4ded1;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.bo-population b {
+  display: block;
+  height: 100%;
+  background: #6b9c91;
+}
+.bo-population i:nth-child(3) b {
+  background: #8c7e9e;
 }
 .bio-osmosis-controls {
   display: grid;
   gap: 15px;
   max-width: 680px;
-  margin: 24px auto;
+  margin: 24px auto 0;
   font-size: 16px;
 }
 .bio-osmosis-controls .segmented {
@@ -78,32 +243,257 @@
   font-size: 16px;
   line-height: 1.6;
 }
-@media (max-width: 540px) {
-  .bio-osmosis-main,
-  .bio-osmosis > svg {
-    height: 245px;
+@media (max-width: 600px) {
+  .bio-osmosis {
+    padding: 14px 12px;
+    border-radius: 19px;
   }
-  .bio-red-comparison {
-    gap: 3px;
-  }
-  .bio-red-comparison svg {
-    height: 110px;
-  }
-  .bio-aqp-comparison,
-  .bio-transport-grid {
-    gap: 8px;
-  }
-  .bio-aqp-comparison svg {
-    max-height: 180px;
-  }
-  .bio-transport-grid svg {
-    max-height: 200px;
-  }
-  .bio-osmosis-readings {
-    gap: 6px 14px;
-  }
-  .bio-red-comparison p {
+  .bio-osmosis .bo-question {
     font-size: 16px;
-    margin: 5px 0;
+    margin-bottom: 9px;
+    line-height: 1.4;
+  }
+  .bo-causal-pair {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .bo-funnel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 7px;
+  }
+  .bo-funnel > svg {
+    height: 170px;
+  }
+  .bo-balance > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    line-height: 1.15;
+  }
+  .bo-balance {
+    gap: 10px;
+    margin: 0;
+  }
+  .bo-exchange > svg {
+    height: 108px;
+  }
+  .bo-side-labels {
+    margin-bottom: 1px;
+    padding: 0 12px;
+  }
+  .bo-flow {
+    margin: 0 10px;
+    gap: 6px;
+  }
+  .bo-flow svg {
+    height: 31px;
+  }
+  .bio-osmosis .bo-result {
+    margin-top: 4px;
+  }
+  .bo-diffusion > svg {
+    height: 205px;
+  }
+  .bo-proof-labels {
+    gap: 8px 15px;
+  }
+  .bo-histogram {
+    height: 40px;
+    margin: 0 12px;
+  }
+  .bo-plant > svg {
+    height: 160px;
+  }
+  .bo-plant-labels {
+    gap: 8px 12px;
+    margin-top: 2px;
+  }
+  .bio-osmosis .bo-detail {
+    display: none;
+  }
+  .bo-mode-recovery .bo-plant {
+    display: grid;
+    grid-template-columns: 1fr 105px;
+    gap: 6px;
+    align-items: center;
+  }
+  .bo-mode-recovery .bo-plant > svg {
+    height: 145px;
+  }
+  .bo-mode-recovery .bo-plant-labels {
+    grid-column: 1/-1;
+    grid-row: 2;
+    font-size: 16px;
+  }
+  .bo-red-comparison {
+    gap: 5px;
+  }
+  .bo-red-comparison svg {
+    height: 125px;
+  }
+  .bo-aqp-comparison {
+    gap: 10px;
+  }
+  .bo-aqp-comparison svg {
+    height: 160px;
+  }
+  .bio-osmosis .bo-evidence-tag {
+    max-width: 270px;
+    font-size: 16px;
+  }
+  .bo-transport-grid {
+    gap: 7px;
+  }
+  .bo-transport svg {
+    height: 190px;
+  }
+  .bo-population {
+    gap: 4px;
+  }
+  .bo-population i {
+    height: 8px;
+  }
+  .bo-mode-plant .bo-question,
+  .bo-mode-recovery .bo-question {
+    margin-bottom: 4px;
+  }
+}
+@media (max-width: 360px) {
+  .bio-osmosis {
+    padding: 12px 8px;
+  }
+  .bo-red-comparison svg {
+    height: 103px;
+  }
+  .bo-funnel > svg {
+    height: 150px;
+  }
+  .bo-exchange > svg {
+    height: 100px;
+  }
+  .bo-plant > svg {
+    height: 145px;
+  }
+  .bo-mode-recovery .bo-plant {
+    grid-template-columns: 1fr 90px;
+  }
+  .bo-mode-recovery .bo-plant > svg {
+    height: 128px;
+  }
+  .bo-transport svg {
+    height: 165px;
+  }
+  .bo-aqp-comparison svg {
+    height: 145px;
+  }
+}
+.bo-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #647c73;
+}
+.bo-key i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #528f9d;
+}
+.bo-key b {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  background: #b38a54;
+  margin-left: 5px;
+}
+@media (max-width: 600px) {
+  .bo-funnel {
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .bo-funnel > svg {
+    transform: scale(1.13);
+    transform-origin: center;
+  }
+  .bo-side-labels {
+    padding: 0 3px;
+  }
+  .bo-key {
+    gap: 4px;
+  }
+}
+.bio-osmosis .bo-exchange > svg {
+  overflow: hidden;
+  border-radius: 18px;
+}
+.bo-funnel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+}
+.bo-funnel > svg {
+  height: 240px;
+}
+.bo-potential {
+  text-align: center;
+  min-width: 0;
+}
+.bio-osmosis .bo-potential > p {
+  font-size: 16px;
+}
+.bo-potential > svg {
+  height: 130px;
+}
+.bo-potential-sides {
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+}
+.bo-potential-causes {
+  display: grid;
+  gap: 3px;
+  margin-top: 6px;
+  color: #8b784f;
+  font-size: 16px;
+}
+.bo-mode-funnel .bo-causal-pair {
+  grid-template-columns: 1.15fr 1fr;
+  gap: 26px;
+  max-width: 850px;
+}
+@media (max-width: 600px) {
+  .bo-mode-funnel .bo-causal-pair {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .bo-funnel {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .bo-funnel > svg {
+    height: 186px;
+    transform: scale(1.12);
+  }
+  .bo-potential > svg {
+    height: 100px;
+  }
+  .bo-potential-causes {
+    margin-top: 4px;
+    gap: 2px;
+  }
+  .bo-potential-sides {
+    justify-content: space-between;
+  }
+  .bio-osmosis .bo-potential > p {
+    line-height: 1.25;
+  }
+}
+@media (max-width: 360px) {
+  .bo-funnel > svg {
+    height: 170px;
+  }
+  .bo-potential > svg {
+    height: 84px;
   }
 }

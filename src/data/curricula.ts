@@ -5,6 +5,7 @@ import biologySource from './biology-curriculum-source.json';
 import variants from './curriculum-variants.json';
 import { topics } from './topics';
 import type { FilmSelection } from '../lib/film';
+import { teachingExplanations, type TeachingExplanation } from './teaching-explanations';
 
 export type CurriculumText = Record<Locale, string>;
 
@@ -18,6 +19,7 @@ export interface CurriculumLesson {
   page: number;
   kind: CurriculumText;
   goal: CurriculumText;
+  explanation?: TeachingExplanation;
   experimentId?: string;
   chapterIds?: string[];
   /** Initial apparatus state, independent of the textbook location that links to it. */
@@ -127,6 +129,7 @@ function buildTextbookBooks(entries: readonly CurriculumSourceEntry[]): Curricul
       page: item.page,
       kind: item.kind,
       goal: item.goal,
+      explanation: teachingExplanations[item.id],
     });
   }
   return books;
@@ -141,8 +144,8 @@ const registeredCurricula: Curriculum[] = [
     stage: { zh: '高中', en: 'High school' },
     publisher: { zh: '人民教育出版社', en: 'People’s Education Press' },
     description: {
-      zh: '沿着教材的学习顺序，把实验中的关键过程看清楚。',
-      en: 'Follow the textbook’s learning sequence and see the key moments of each experiment.',
+      zh: '从看得见的运动与变化出发，追问力、能量和波动背后的规律。',
+      en: 'Start with visible motion and change, then uncover the principles of forces, energy and waves.',
     },
     books: buildTextbookBooks(source),
   },
@@ -154,8 +157,8 @@ const registeredCurricula: Curriculum[] = [
     stage: { zh: '高中', en: 'High school' },
     publisher: { zh: '人民教育出版社', en: 'People’s Education Press' },
     description: {
-      zh: '观察颜色、沉淀与气体的变化，把实验现象和微观过程连起来。',
-      en: 'Connect changes in color, precipitates and gases with the processes between particles.',
+      zh: '从一束光、一种颜色或一次反应，走进微粒与物质变化的世界。',
+      en: 'Follow a beam, a colour or a reaction into the world of particles and chemical change.',
     },
     books: buildTextbookBooks(chemistrySource),
   },
@@ -167,8 +170,8 @@ const registeredCurricula: Curriculum[] = [
     stage: { zh: '高中', en: 'High school' },
     publisher: { zh: '人民教育出版社', en: 'People’s Education Press' },
     description: {
-      zh: '从显微观察到生态调查，跟随对照、示踪与测量理解生命。',
-      en: 'Follow controls, tracers and measurements, from microscopic observations to ecological investigations.',
+      zh: '追踪水、能量和信息怎样流动，理解细胞与生命系统为何这样运作。',
+      en: 'Trace water, energy and information to understand how cells and living systems work.',
     },
     books: buildTextbookBooks(biologySource),
   },

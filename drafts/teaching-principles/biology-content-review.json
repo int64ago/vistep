@@ -1,0 +1,2171 @@
+{
+  "scope": {
+    "scenes": 50,
+    "entries": 172
+  },
+  "method": "Read actual chapter scripts, rendering/model branches, articles and textbook playback windows. Preserve good explanatory forms. This is not pixel or voice acceptance.",
+  "records": [
+    {
+      "sceneSlug": "bio-cell-microscopy",
+      "decision": "revise",
+      "phenomenon": "木栓的小格、活动细胞和缩小的视野分别说明什么？",
+      "evidence": [
+        "低倍中心与高倍视野由同一物理尺寸换算；叶绿体沿中央液泡外侧移动，以细胞壁为固定参照。",
+        "显微镜倍率与视野、流动与固定参照之间已有可见因果；细胞学说片段从两类结构直接归纳，后续修正只在讲解中出现。",
+        "高倍前未居中的目标会离开视野是已有预测；细胞学说还需可区分“细胞自发形成”和“已有细胞分裂”的新证据。"
+      ],
+      "necessaryChanges": "针对 P3 增加学说受到新观察修正的镜头，并区分观察样本和一般学说；P9/P50 不重做。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioCellMicroscopy.tsx",
+        "model": "src/models/bio-cell-microscopy.ts",
+        "articleZh": "src/content/bio-cell-microscopy.mdx",
+        "articleEn": "src/content/en/bio-cell-microscopy.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-003-1",
+          "coverage": "partial",
+          "reason": "cork→common-structure 能比较木栓与活细胞，却未展示教材 P3–4 学说建立和修正中的细胞来源证据。",
+          "chapterIds": ["cork", "common-structure"]
+        },
+        {
+          "id": "bio-required-1-009-1",
+          "coverage": "complete",
+          "reason": "locate→magnify 目标物理大小不变、视野变小，中心/边缘对照可解释为何先定位；不是单纯操作指导。",
+          "chapterIds": ["locate", "magnify"]
+        },
+        {
+          "id": "bio-required-1-050-1",
+          "coverage": "complete",
+          "reason": "chloroplasts→stream 以固定壁和液泡边缘为参照追踪同一叶绿体，支持细胞质流动观察，未把示意速度当测量。",
+          "chapterIds": ["chloroplasts", "stream"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-engineered-genomes",
+      "decision": "revise",
+      "phenomenon": "人工组装的 DNA 为什么还要放进细胞并检验功能？",
+      "evidence": [
+        "组装片段身份连续，完整环转入受体；酵母 16→1 保留基因块；function 从单染色体状态承接并显示必要条件与假设性出芽。",
+        "结构完成不等于功能完成的区分准确，但最后的功能画面仍由必要条件布尔值决定，没有独立实验观察作为证据终点。",
+        "去掉必要条件可展示模型不满足要求，但不能据此预测真实成功率；这个限定必须继续保留。"
+      ],
+      "necessaryChanges": "在 function 增加一个可核查的真实功能/生长证据及对照，明确与必要条件教学模型分屏；不把合成细菌基因组与酵母染色体融合混成同一实验。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEngineeredGenomes.tsx",
+        "model": "src/models/bio-engineered-genomes.ts",
+        "articleZh": "src/content/bio-engineered-genomes.mdx",
+        "articleEn": "src/content/en/bio-engineered-genomes.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-012-1",
+          "coverage": "partial",
+          "reason": "assembly→recipient→fusion→function 已完整选择，但功能终点是限定的教学状态，尚缺原研究的独立功能证据，属于片内证据缺口。",
+          "chapterIds": ["assembly", "recipient", "fusion", "function"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-food-tests",
+      "decision": "rebuild",
+      "phenomenon": "同样叫糖，为什么梨汁出现砖红色沉淀而蔗糖没有？洗去背景染液后脂肪为什么仍有颜色？",
+      "evidence": [
+        "相同试剂的样品/水对照、蔗糖阴性、花生颗粒洗前洗后和蛋白紫色都可见；foodAssay 用材料布尔属性、阶段与加热条件直接生成显色。",
+        "控制与选择性结论成立，但还原作用、脂溶性染料分配、肽键配位都只由旁白命名；可见过程仍是加液后变色。",
+        "蔗糖阴性已经是好反例；需要让未加热/不匹配检测的预测从可见机制推出，而非依赖结果表。"
+      ],
+      "necessaryChanges": "重构为先预测再看对照，显色后只放大决定性分子/相间步骤，回到原试管解释颜色。三种机制分别设计，保留定性限定，不用颜色深浅估浓度。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioFoodTests.tsx",
+        "model": "src/models/bio-food-tests.ts",
+        "articleZh": "src/content/bio-food-tests.mdx",
+        "articleEn": "src/content/en/bio-food-tests.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-018-1",
+          "coverage": "causal-gap",
+          "reason": "5 章全部播放，窗口没有漏章；缺口在画面本身，洗去浮色/沉淀/紫色仍按预设状态出现，需把检测选择性的原因拍出来。",
+          "chapterIds": ["reducing-sugar", "negative-control", "stain", "wash", "protein"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-protein-machines",
+      "decision": "revise",
+      "phenomenon": "把 51 个氨基酸接起来，为什么还不能宣布合成了有活性的胰岛素？",
+      "evidence": [
+        "脱水数由残基与链数计算；A/B 两链和三条二硫键可追踪，真实结构坐标限制连接。",
+        "一级连接到空间结构讲得清楚；verify 主要仍是结构和文字，“独立检验生物活性”没有可见检验对象与结果。",
+        "可提出相同残基数量但错误二硫键是否仍有相同功能；必须以测定验证，不能仅凭外形给出活性。"
+      ],
+      "necessaryChanges": "在 verify 加来源明确的功能证据或明确标示的比较性测定示意，展示结构相似和功能检验回答不同问题；P31 数量守恒主线保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioProteinMachines.tsx",
+        "model": "src/models/bio-protein-machines.ts",
+        "articleZh": "src/content/bio-protein-machines.mdx",
+        "articleEn": "src/content/en/bio-protein-machines.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-mechanism-01",
+          "coverage": "complete",
+          "reason": "condense→chains→connect 追踪残基、脱水与二硫键结构，覆盖机制入口；不需要把模型当真实折叠动力学。",
+          "chapterIds": ["condense", "chains", "connect"]
+        },
+        {
+          "id": "bio-required-1-033-1",
+          "coverage": "partial",
+          "reason": "chains→connect→verify 最后一章只说应检验活性，缺“怎样的观察才支持有活性”的证据镜头。",
+          "chapterIds": ["chains", "connect", "verify"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-membrane-evidence",
+      "decision": "revise",
+      "phenomenon": "看不见膜分子时，怎样由面积、通透性和标记混合推测结构？",
+      "evidence": [
+        "各历史实验保留不同观察量；融合标记有持续身份和随机横向位移；monolayer 把已知双层铺开成单层并得到两倍面积。",
+        "面积推理的方向倒置：先画双层再展开只解释已知模型，未让观察在一层/两层等假说之间作选择。mosaic 单章引用“这些证据”但入口未带证据。",
+        "应先给固定提取量及观测面积，再让一层/两层模型预测所需面积；固定膜与流动膜对荧光混合做不同预测。"
+      ],
+      "necessaryChanges": "重剪 monolayer 为证据→候选结构→约束；为 mosaic/build 内置一条证据回扣或拓宽相邻窗口。其余历史对照和限定保留，不能把电镜暗亮暗直接等同化学夹心层。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioMembraneEvidence.tsx",
+        "model": "src/models/bio-membrane-evidence.ts",
+        "articleZh": "src/content/bio-membrane-evidence.mdx",
+        "articleEn": "src/content/en/bio-membrane-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-042-1",
+          "coverage": "complete",
+          "reason": "permeability 的相同观察条件和不同通透性支持含脂质的推测，讲解明确不能证明全由脂质组成。",
+          "chapterIds": ["permeability"]
+        },
+        {
+          "id": "bio-required-1-042-2",
+          "coverage": "causal-gap",
+          "reason": "monolayer 从预设双层展开获得 2 倍面积，未由独立面积测量推导层数；需调整镜头的推理方向。",
+          "chapterIds": ["monolayer"]
+        },
+        {
+          "id": "bio-required-1-042-3",
+          "coverage": "complete",
+          "reason": "tension 比较界面张力及蛋白吸附效应，结论保持旧假说层级，没有冒充现代膜结构的证明。",
+          "chapterIds": ["tension"]
+        },
+        {
+          "id": "bio-required-1-043-1",
+          "coverage": "complete",
+          "reason": "em 把暗亮暗作为染色对比证据并限制化学解释，单章能回答自己的研究问题。",
+          "chapterIds": ["em"]
+        },
+        {
+          "id": "bio-required-1-043-2",
+          "coverage": "complete",
+          "reason": "fusion 同一标记从分区到混合，支持横向流动；可加固定膜预测但不必重拍全片。",
+          "chapterIds": ["fusion"]
+        },
+        {
+          "id": "bio-required-1-mechanism-02",
+          "coverage": "partial",
+          "reason": "mosaic 独立入口直接综合“这些证据”，当前窗口没有证据回扣；需片内短回看或附连续前置片段。",
+          "chapterIds": ["mosaic"]
+        },
+        {
+          "id": "bio-required-1-046-1",
+          "coverage": "partial",
+          "reason": "build 主要拼装模型，缺用亲疏水界面/流动证据检查模型的镜头；不是增加材料步骤。",
+          "chapterIds": ["build"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-cellular-logistics",
+      "decision": "revise",
+      "phenomenon": "同一批标记蛋白怎样从内质网走到细胞外？细胞模型为什么不能随意摆放器官？",
+      "evidence": [
+        "3/17/117 分钟节点保留；同一 cargo 沿共享管腔和运输几何连续运动，融合开口与质膜一致。",
+        "运输机制本身可见且有守恒；原研究的离散定位观察与连续路径推断在主画面中区分不够，模型章单独旋转不检验结构。",
+        "阻断某段运输时，标记应积累在哪一侧、下游是否减少，是从路径得出的新预测；现主片没有演示。"
+      ],
+      "necessaryChanges": "先摆三次定位证据，再显式转为推断路径；结尾只加一个上游积累预测。model 入口用 cargo 路径检验连通性，保留真实几何。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioCellularLogistics.tsx",
+        "model": "src/models/bio-cellular-logistics.ts",
+        "articleZh": "src/content/bio-cellular-logistics.mdx",
+        "articleEn": "src/content/en/bio-cellular-logistics.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-051-1",
+          "coverage": "partial",
+          "reason": "pulse→golgi→vesicles→release 运输完整，但连续动画易被当作研究直接录像，需显式分离观察节点与机制推断并加阻断预测。",
+          "chapterIds": ["pulse", "golgi", "vesicles", "release"]
+        },
+        {
+          "id": "bio-required-1-057-1",
+          "coverage": "partial",
+          "reason": "model 只看结构不足以说明细胞器连接为何如此；补一条实际运输路径作为模型可检验约束。",
+          "chapterIds": ["model"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-nuclear-evidence",
+      "decision": "retain",
+      "phenomenon": "细胞核决定什么？去核后的短时活动与长期发育有什么区别？",
+      "evidence": [
+        "核来源贯穿移植；横缢保留细胞质桥并追踪核进入；变形虫去核/补核连续；伞藻核来源与再生帽型对应。",
+        "干预、失效与补回救援形成可见证据链。猴的结局为历史研究结果，不假装模型能计算克隆成功；蛙实验限定的是分化核的潜能。",
+        "补核、换核来源和有核/无核部分给出不同预期；保留核质配合、受体贡献和研究范围限定。"
+      ],
+      "necessaryChanges": "无必须整篇重构项。猴片可在后续编辑加入“结构完成不等于发育成功”的问题标题，但不虚构重编程机制或普遍成功率。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioNuclearEvidence.tsx",
+        "model": "src/models/bio-nuclear-evidence.ts",
+        "articleZh": "src/content/bio-nuclear-evidence.mdx",
+        "articleEn": "src/content/en/bio-nuclear-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-054-1",
+          "coverage": "complete",
+          "reason": "cow 核供体、卵细胞与妊娠受体来源分别标明，性状来源推断有明确对象。",
+          "chapterIds": ["cow"]
+        },
+        {
+          "id": "bio-required-1-054-2",
+          "coverage": "complete",
+          "reason": "axolotl 对调核来源后比较体色，支持核遗传信息的作用，未声称一切性状仅由核决定。",
+          "chapterIds": ["axolotl"]
+        },
+        {
+          "id": "bio-required-1-054-3",
+          "coverage": "complete",
+          "reason": "constrict 同一细胞质桥内追踪核进入与分裂恢复，救援证据在单章内完成。",
+          "chapterIds": ["constrict"]
+        },
+        {
+          "id": "bio-required-1-055-1",
+          "coverage": "complete",
+          "reason": "amoeba 去核后短期活动和补核后恢复可见，避免把“短时还能动”误解为核无作用。",
+          "chapterIds": ["amoeba"]
+        },
+        {
+          "id": "bio-required-1-055-2",
+          "coverage": "complete",
+          "reason": "alga 嫁接/核来源和再生帽型关联明确，具有可检验的核来源对照。",
+          "chapterIds": ["alga"]
+        },
+        {
+          "id": "bio-required-1-058-1",
+          "coverage": "complete",
+          "reason": "monkey 用研究结局与必要条件讲难点，定位为研究概要；不把 2 只健康猴误当普适成功率。",
+          "chapterIds": ["monkey"]
+        },
+        {
+          "id": "bio-required-1-120-2",
+          "coverage": "complete",
+          "reason": "frog 分化细胞核移植支持基因组潜能，保留卵细胞环境和选择条件，窗口可独立理解。",
+          "chapterIds": ["frog"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-osmosis",
+      "decision": "retain",
+      "phenomenon": "水位停了，水分子是否也停了？盐为什么让植物细胞变瘪？",
+      "evidence": [
+        "无规则双向轨迹、正的双向通量、净通量、混合和压力两项水势、细胞内外溶质守恒、壁与原生质层分别可见。",
+        "本轮重构已把现象→保留溶质→水势差→压力抵消→动平衡拍在同一装置中；植物入口前五章形成完整因果链。",
+        "清水恢复时细胞壁限制继续膨胀；水通道改变速度不反转方向；ATP 缺失时逆梯度输送停止而被动通路仍可运行。"
+      ],
+      "necessaryChanges": "冻结 batch1，不改源。以当前 261 秒实装时间表和当前教材窗口为准；新音轨与最终静态连续播放仍由 root 独立验收。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioOsmosis.tsx",
+        "model": "src/models/bio-osmosis.ts",
+        "articleZh": "src/content/bio-osmosis.mdx",
+        "articleEn": "src/content/en/bio-osmosis.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-062-1",
+          "coverage": "complete",
+          "reason": "funnel 单章已经内置混合水势、保留溶质、压力抵消和双向动态平衡，漏斗入口可独立看。",
+          "chapterIds": ["funnel"]
+        },
+        {
+          "id": "bio-required-1-062-2",
+          "coverage": "complete",
+          "reason": "diffusion 追踪一颗分子回头与群体扩散，排除水分子知道方向的错误直觉。",
+          "chapterIds": ["diffusion"]
+        },
+        {
+          "id": "bio-required-1-063-1",
+          "coverage": "complete",
+          "reason": "当前为 funnel→red-cell，已经补水势前提，再解释内外浓度、体积和无壁细胞的边界。",
+          "chapterIds": ["funnel", "red-cell"]
+        },
+        {
+          "id": "bio-required-1-064-1",
+          "coverage": "complete",
+          "reason": "当前为 diffusion→funnel→red-cell→plasmolysis→recovery，完整串起无规则运动、净通量、壁限制与恢复预测。",
+          "chapterIds": ["diffusion", "funnel", "red-cell", "plasmolysis", "recovery"]
+        },
+        {
+          "id": "bio-required-1-mechanism-03",
+          "coverage": "complete",
+          "reason": "passive→active 同梯度下比较方向与 ATP 依赖，通道没有画成水泵。",
+          "chapterIds": ["passive", "active"]
+        },
+        {
+          "id": "bio-required-1-068-1",
+          "coverage": "complete",
+          "reason": "aquaporin 有表达/未表达功能对照；1950 示踪、1988 分离、1992 功能验证的证据层级已在 MDX 保留。",
+          "chapterIds": ["aquaporin"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-enzyme-investigations",
+      "decision": "rebuild",
+      "phenomenon": "同样冒气泡，加热与加酶为何不同？低温和高温造成的低活性为什么不能等同？",
+      "evidence": [
+        "四管反应速率、细胞外发酵、脲酶蛋白/活性检验与温度恢复对照可见；peroxideRates 和 amylaseSpecificity 直接赋予各条件速率/底物结果。",
+        "历史实验的排除性证据可以保留。核心酶片没有可见的活化能路径、酶底物匹配或热损伤状态，理论主要由名称与旁白承担。",
+        "教材 P78 明确区分提高分子能量与降低活化能；应据此预测同样终产量但速度不同，并由酶状态预测低温复温恢复与失活后不恢复。"
+      ],
+      "necessaryChanges": "重构 peroxide/specificity/temperature/ph/recovery 的决定性镜头；原四管现象先行，随后并列能量条件/催化路径与酶结构约束，再回原装置验证。stomach/cell-free/urease 保留证据链。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEnzymeInvestigations.tsx",
+        "model": "src/models/bio-enzyme-investigations.ts",
+        "articleZh": "src/content/bio-enzyme-investigations.mdx",
+        "articleEn": "src/content/en/bio-enzyme-investigations.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-076-1",
+          "coverage": "complete",
+          "reason": "stomach 铁笼排除机械研磨、仍有消化的对照直接支持化学消化解释，历史片可保留。",
+          "chapterIds": ["stomach"]
+        },
+        {
+          "id": "bio-required-1-077-1",
+          "coverage": "causal-gap",
+          "reason": "peroxide 四管只呈不同速率，入口未包含 P78 的活化能机制；缺的是加热与酶为何不同。",
+          "chapterIds": ["peroxide"]
+        },
+        {
+          "id": "bio-required-1-079-1",
+          "coverage": "complete",
+          "reason": "cell-free 有无细胞与滤液发酵对照，排除必须是完整活细胞的假说。",
+          "chapterIds": ["cell-free"]
+        },
+        {
+          "id": "bio-required-1-079-2",
+          "coverage": "complete",
+          "reason": "urease 蛋白检验与催化活性分开，支持研究判断，不能把结晶外形当酶性质证据。",
+          "chapterIds": ["urease"]
+        },
+        {
+          "id": "bio-required-1-081-1",
+          "coverage": "causal-gap",
+          "reason": "specificity 由底物类型直接指定有无水解，需让匹配/催化及产物检测间的关系可见。",
+          "chapterIds": ["specificity"]
+        },
+        {
+          "id": "bio-required-1-082-1",
+          "coverage": "causal-gap",
+          "reason": "temperature→ph→recovery 已有恢复反例，但酶活性由经验函数给出，低温与结构破坏的区别仍只讲不见。",
+          "chapterIds": ["temperature", "ph", "recovery"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-respiration",
+      "decision": "rebuild",
+      "phenomenon": "酵母通气和密封为什么得到不同产物？有了氧为何能够继续释放更多能量？",
+      "evidence": [
+        "气路连接、二氧化碳吸收装置、残留氧和酒精检测均有明确对照；机制片保留六个碳的身份和产物去向。",
+        "P90 实验入口停在检测结果，未进入物质路径；ATP 章的耦联及发酵中载体再生主要靠文字，不是由可见收支推出。",
+        "应预测去掉氧后哪一步无法持续、何种替代路径使前段继续，以及乳酸发酵为什么不能照搬酵母的产气观察。"
+      ],
+      "necessaryChanges": "重构以两瓶结果为悬念，连接碳与电子载体/能量的简化收支，再返回检测预测；独立 ATP 入口展示一次真实教学耦联。保留条件与物质守恒，不用产气多少直接当 ATP 数。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioRespiration.tsx",
+        "model": "src/models/bio-respiration.ts",
+        "articleZh": "src/content/bio-respiration.mdx",
+        "articleEn": "src/content/en/bio-respiration.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-mechanism-04",
+          "coverage": "causal-gap",
+          "reason": "atp 只显示 ATP/ADP 转换而缺一项被耦联过程的能量与状态变化，难从画面解释为何能驱动活动。",
+          "chapterIds": ["atp"]
+        },
+        {
+          "id": "bio-required-1-090-1",
+          "coverage": "partial",
+          "reason": "air→sealed→assay 有完整实验比较，却在不同产物被检出后结束，没有通向 glycolysis/aerobic/fermentation 的可见机制。",
+          "chapterIds": ["air", "sealed", "assay"]
+        },
+        {
+          "id": "bio-required-1-mechanism-05",
+          "coverage": "causal-gap",
+          "reason": "glycolysis→aerobic→fermentation 碳去向明确，但能量路径及发酵为何使前段继续尚未成为可见因果。",
+          "chapterIds": ["glycolysis", "aerobic", "fermentation"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-leaf-pigments",
+      "decision": "revise",
+      "phenomenon": "一条绿色线为什么分成几条不同高度的色带？",
+      "evidence": [
+        "原点浸入液面时溶散、正常情况多条色带随前沿上移；吸收光谱用实际系数计算透射并比较色素。",
+        "chromatography 使用固定 Rf 乘前沿位置，较快/较慢被直接赋定；色素在流动相与固定相之间的分配没有可见桥梁。",
+        "原点浸没是现有好反例；还应由分配停留差别预测同一色素为何落后或领先，而不是背四条带顺序。"
+      ],
+      "necessaryChanges": "在 separate 加两个持续标记的色素，交替随流动相移动/停留在固定相，回到分离结果；不将示意 Rf 当所有溶剂通用常数。光谱部分保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioLeafPigments.tsx",
+        "model": "src/models/bio-leaf-pigments.ts",
+        "articleZh": "src/content/bio-leaf-pigments.mdx",
+        "articleEn": "src/content/en/bio-leaf-pigments.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-098-1",
+          "coverage": "causal-gap",
+          "reason": "extract→origin→separate 有操作与失误对照，但带速直接由 Rf 决定，缺分配过程解释为何分离。",
+          "chapterIds": ["extract", "origin", "separate"]
+        },
+        {
+          "id": "bio-required-1-098-2",
+          "coverage": "complete",
+          "reason": "spectrum→compare 显示波长选择性吸收与透射，能预测颜色/透射变化，且来源与简化清楚。",
+          "chapterIds": ["spectrum", "compare"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-photosynthesis-evidence",
+      "decision": "revise",
+      "phenomenon": "光合放出的氧来自哪里？暂时关灯后，碳同化为何还能持续片刻？",
+      "evidence": [
+        "局部照光与好氧菌定位、谱段对比、氧同位素身份、ATP/NADPH 储量和叶圆片净产氧都有可追踪对象。",
+        "氧来源和能量耦联已有因果；阿尔农片主要让光照与 ATP 同时出现，卡尔文片按预设时间出现标记池，原始取样证据与路径推断不够区分。",
+        "coupling 的关灯短暂延续与耗尽、discs 的产氧和呼吸竞争已有预测。carbon 应让早/晚取样有不同分布来限制“先经过谁”。"
+      ],
+      "necessaryChanges": "只补 atp 的光能转存中间步骤及 carbon 的短时取样证据→路径推断；不能用动画中预先画出的循环证明该循环。其余研究保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioPhotosynthesisEvidence.tsx",
+        "model": "src/models/bio-photosynthesis-evidence.ts",
+        "articleZh": "src/content/bio-photosynthesis-evidence.mdx",
+        "articleEn": "src/content/en/bio-photosynthesis-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-100-1",
+          "coverage": "complete",
+          "reason": "local 局部光照与好氧菌空间分布对应，明确细菌是氧的指示者而非直接测光。",
+          "chapterIds": ["local"]
+        },
+        {
+          "id": "bio-required-1-101-1",
+          "coverage": "complete",
+          "reason": "spectrum 同一材料不同波段的聚集分布比较，支持作用谱解释。",
+          "chapterIds": ["spectrum"]
+        },
+        {
+          "id": "bio-required-1-102-1",
+          "coverage": "complete",
+          "reason": "hill 光、受体与释放氧的条件对照能排除部分替代解释，保留离体体系限定。",
+          "chapterIds": ["hill"]
+        },
+        {
+          "id": "bio-required-1-102-2",
+          "coverage": "complete",
+          "reason": "isotope 水与二氧化碳分别标记，追踪到释放氧，直接区分来源假说。",
+          "chapterIds": ["isotope"]
+        },
+        {
+          "id": "bio-required-1-102-3",
+          "coverage": "causal-gap",
+          "reason": "atp 在光照后生成 ATP，但能量怎样进入可利用载体主要由旁白给出；需与现有 coupling 桥接或补局部机制。",
+          "chapterIds": ["atp"]
+        },
+        {
+          "id": "bio-required-1-mechanism-06",
+          "coverage": "complete",
+          "reason": "coupling 储量消耗和关灯后的延迟响应支持光反应与碳反应的物质能量联系。",
+          "chapterIds": ["coupling"]
+        },
+        {
+          "id": "bio-required-1-104-1",
+          "coverage": "partial",
+          "reason": "carbon 预设的标记池顺序没有先展示不同脉冲时长的观察证据，需区分取样结果与循环路径推断。",
+          "chapterIds": ["carbon"]
+        },
+        {
+          "id": "bio-required-1-105-1",
+          "coverage": "complete",
+          "reason": "prepare→discs 叶片气体量、浮力及净产氧竞争连贯；操作为建立可观察量服务。",
+          "chapterIds": ["prepare", "discs"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-cell-division",
+      "decision": "revise",
+      "phenomenon": "怎样从静止装片认出一个持续变化的分裂过程？为什么体积增大使交换相对困难？",
+      "evidence": [
+        "染色体身份在复制、排列、分离和分割中保持；表面积/体积由同一立方体几何推导；根尖样本固定不继续分裂。",
+        "机制与大小模型充分；prepare/fixed 单独入口偏辨认与制片，缺从多细胞静态形态推理时间顺序的桥梁。",
+        "分裂中若只看一条染色单体会怎样误计数、相同渗入深度下大立方体受影响比例较低，均可由现有模型预测。"
+      ],
+      "necessaryChanges": "仅给固定装片入口增加相邻阶段的特征对齐和次序推理，不把固定细胞动画成活细胞，也不把细胞比例无条件等同阶段时长。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioCellDivision.tsx",
+        "model": "src/models/bio-cell-division.ts",
+        "articleZh": "src/content/bio-cell-division.mdx",
+        "articleEn": "src/content/en/bio-cell-division.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-mechanism-07",
+          "coverage": "complete",
+          "reason": "replicate→align→segregate→divide 同一染色体身份与计数贯穿全程，能解释子细胞物质分配。",
+          "chapterIds": ["replicate", "align", "segregate", "divide"]
+        },
+        {
+          "id": "bio-required-1-mechanism-08",
+          "coverage": "complete",
+          "reason": "size 同一尺寸变化同时改变面积、体积与渗透比例，理论由几何得出。",
+          "chapterIds": ["size"]
+        },
+        {
+          "id": "bio-required-1-116-1",
+          "coverage": "partial",
+          "reason": "prepare→fixed 形成装片并识别阶段，但尚未把静态多细胞证据组装成阶段顺序；需补推理而非更多制片步骤。",
+          "chapterIds": ["prepare", "fixed"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-cell-fates",
+      "decision": "revise",
+      "phenomenon": "分化细胞是否丢掉了其他基因？细胞分裂次数与细胞死亡的证据能说明到什么程度？",
+      "evidence": [
+        "胡萝卜细胞培养、不同年龄来源的培养次数、核质交换与线虫谱系/凋亡基因干预分开呈现。",
+        "核质交换与基因干预已有对照和边界；culture 仅按适宜条件长成植株，age 是资料比较，没有给“观察支持哪种假说”的可见候选。",
+        "同样基因组不同表达状态、单次核交换并不意味着普遍逆转衰老，均应作为可检验或受限预测；不擅自追加普适衰老机制。"
+      ],
+      "necessaryChanges": "优化 culture 的保留基因组/表达选择假说比较、age 的个体来源与培养条件区别。nuclear→limits 与 lineage→genes 保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioCellFates.tsx",
+        "model": "src/models/bio-cell-fates.ts",
+        "articleZh": "src/content/bio-cell-fates.mdx",
+        "articleEn": "src/content/en/bio-cell-fates.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-1-120-1",
+          "coverage": "causal-gap",
+          "reason": "culture 从培养到植株的预设生长，需要把再生证据与“分化是否丢失基因”的两个解释对应起来。",
+          "chapterIds": ["culture"]
+        },
+        {
+          "id": "bio-required-1-125-1",
+          "coverage": "partial",
+          "reason": "age 展示不同来源分裂次数，需在画面中区分年龄相关证据和一般机制，避免只读数字后下普遍结论。",
+          "chapterIds": ["age"]
+        },
+        {
+          "id": "bio-required-1-125-2",
+          "coverage": "complete",
+          "reason": "nuclear→limits 保留核质交换结果和不能普遍逆龄的限定，当前剪辑完整。",
+          "chapterIds": ["nuclear", "limits"]
+        },
+        {
+          "id": "bio-required-1-127-1",
+          "coverage": "complete",
+          "reason": "lineage→genes 从可重复细胞命运到基因干预改变死亡，因果证据齐全。",
+          "chapterIds": ["lineage", "genes"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-mendel-crosses",
+      "decision": "revise",
+      "phenomenon": "看不见的遗传因子怎样通过后代比例被检验？",
+      "evidence": [
+        "配子组合逐格生成；787/277、87/79 与两性状教材计数和理论分布分别呈现；抽样有放回且重复次数可变。",
+        "模型和实测比对清楚；P3/P9 窗口在解释既有自交结果后结束，可检验的新预测位于另一个学习入口。",
+        "test/diTest 已能让隐性亲本暴露待测亲本配子，是可保留的关键预测。"
+      ],
+      "necessaryChanges": "P3/P9 结尾留下具体测交预测并链接后续学习位置；保持教材顺序，不为了闭环直接越过 P6/P11 的分步学习。无需重写随机模型或扩大全片。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioMendelCrosses.tsx",
+        "model": "src/models/bio-mendel-crosses.ts",
+        "articleZh": "src/content/bio-mendel-crosses.mdx",
+        "articleEn": "src/content/en/bio-mendel-crosses.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-003-1",
+          "coverage": "prediction-gap",
+          "reason": "pollination→parents→self 有事实和分离假说，却未在本窗口提出用于检验的新组合；结尾加测交预测、引到 P7。",
+          "chapterIds": ["pollination", "parents", "self"]
+        },
+        {
+          "id": "bio-required-2-006-1",
+          "coverage": "complete",
+          "reason": "sampling 由配子随机抽取、有放回与样本量形成接近而不必恰好 3:1 的结果，方法与理论连贯。",
+          "chapterIds": ["sampling"]
+        },
+        {
+          "id": "bio-required-2-007-1",
+          "coverage": "complete",
+          "reason": "test 隐性亲本只提供 d，后代直接揭示待测配子，预测与实测相比较，单章前提已说明。",
+          "chapterIds": ["test"]
+        },
+        {
+          "id": "bio-required-2-009-1",
+          "coverage": "prediction-gap",
+          "reason": "diParents→diSelf 建立独立组合解释但未提出新的可检验结果，结尾引到 P11 的测交预测。",
+          "chapterIds": ["diParents", "diSelf"]
+        },
+        {
+          "id": "bio-required-2-011-1",
+          "coverage": "complete",
+          "reason": "diTest 四种配子与四表型一一对应，且讲明独立遗传与相近存活率等条件。",
+          "chapterIds": ["diTest"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-meiosis",
+      "decision": "retain",
+      "phenomenon": "同源染色体怎样分开，而受精又怎样恢复染色体组？",
+      "evidence": [
+        "交叉片段身份、同源/姐妹关系、两轮分离与配子组合保持一致，固定装片使用静态细胞。",
+        "模型把减半与恢复从染色体行为推出，并把一个细胞的两个配子类型与多个细胞的四种可能区分。",
+        "改变中期排列可预测配子组合；不再复制的第二次分裂、受精恢复倍性都是可见检验。"
+      ],
+      "necessaryChanges": "无必须重构项；保持交叉互换的真实对应身份和萨顿类比不是最终证明的限定。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioMeiosis.tsx",
+        "model": "src/models/bio-meiosis.ts",
+        "articleZh": "src/content/bio-meiosis.mdx",
+        "articleEn": "src/content/en/bio-meiosis.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-mechanism-09",
+          "coverage": "complete",
+          "reason": "homologs→exchange→first→second→assortment→fertilize 完成减半与恢复，染色体身份贯穿。",
+          "chapterIds": ["homologs", "exchange", "first", "second", "assortment", "fertilize"]
+        },
+        {
+          "id": "bio-required-2-024-1",
+          "coverage": "complete",
+          "reason": "fixed 从同源配对、分离等特征判断固定细胞阶段，不假装固定细胞继续分裂。",
+          "chapterIds": ["fixed"]
+        },
+        {
+          "id": "bio-required-2-025-1",
+          "coverage": "complete",
+          "reason": "前五章直接检验模型中同源/姐妹、交换与随机排列，适合教材建模位置。",
+          "chapterIds": ["homologs", "exchange", "first", "second", "assortment"]
+        },
+        {
+          "id": "bio-required-2-029-1",
+          "coverage": "complete",
+          "reason": "sutton 比较基因与染色体的平行行为，明确这是提出假说的线索，不代替后续直接遗传证据。",
+          "chapterIds": ["sutton"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-linked-inheritance",
+      "decision": "retain",
+      "phenomenon": "白眼为何与性别相连？家系与人群调查怎样避免错误推断？",
+      "evidence": [
+        "正反交及测交后代由 X/Y 配子来源计算；系谱约束保留不确定基因型；人群资料按人数加权且去重。",
+        "遗传位置假说给出不同杂交预测，实测支持/排除；抽样偏差与分母变化解释调查推断的限度。",
+        "反交产生不同结果、未知母亲基因型不能被强行确定、偏倚样本不能估人群频率，均有现成反例。"
+      ],
+      "necessaryChanges": "无必须重构项。不同入口分别回答遗传机制、家系推理、抽样推断，不合成单一实验流程。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioLinkedInheritance.tsx",
+        "model": "src/models/bio-linked-inheritance.ts",
+        "articleZh": "src/content/bio-linked-inheritance.mdx",
+        "articleEn": "src/content/en/bio-linked-inheritance.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-030-1",
+          "coverage": "complete",
+          "reason": "parents→f2→test→reciprocal 由假说生成不同交配预测并比较，完整证据链。",
+          "chapterIds": ["parents", "f2", "test", "reciprocal"]
+        },
+        {
+          "id": "bio-required-2-034-1",
+          "coverage": "complete",
+          "reason": "dalton→pedigree 从家族观察进入约束推理，未知状态保持未知。",
+          "chapterIds": ["dalton", "pedigree"]
+        },
+        {
+          "id": "bio-required-2-093-1",
+          "coverage": "complete",
+          "reason": "survey→pooling 展示样本选择、分母及正确合并，不能把病例家系比例当患病率。",
+          "chapterIds": ["survey", "pooling"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-genetic-material",
+      "decision": "retain",
+      "phenomenon": "转化因子是什么？进入细菌的噬菌体成分又是什么？",
+      "evidence": [
+        "四组转化对照与再分离、抽提物去除成分、标记 DNA/蛋白及分离去向都呈现有身份的观察。",
+        "去除/保留候选物和核酸酶对照检验必要性；不同标签与子代证据约束遗传物质解释，保留研究体系范围。",
+        "若蛋白而非 DNA 是关键，去除处理与沉淀/上清标记应有另一组预测；搅拌不充分是现有干扰反例。"
+      ],
+      "necessaryChanges": "无必须重构项；这些是可作为后续改造参照的证据型影片。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioGeneticMaterial.tsx",
+        "model": "src/models/bio-genetic-material.ts",
+        "articleZh": "src/content/bio-genetic-material.mdx",
+        "articleEn": "src/content/en/bio-genetic-material.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-043-1",
+          "coverage": "complete",
+          "reason": "controls→recovery 比较处理及恢复出的活 S 后代，未把死菌“复活”当解释。",
+          "chapterIds": ["controls", "recovery"]
+        },
+        {
+          "id": "bio-required-2-044-1",
+          "coverage": "complete",
+          "reason": "extract→remove 分离候选物与选择性去除相配合，DNase 对照在窗口内。",
+          "chapterIds": ["extract", "remove"]
+        },
+        {
+          "id": "bio-required-2-044-2",
+          "coverage": "complete",
+          "reason": "label→entry→separate→progeny 标签来源、进入途径、分离及后代完整，有限结果不被夸大为所有生物结论。",
+          "chapterIds": ["label", "entry", "separate", "progeny"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-dna-structure",
+      "decision": "revise",
+      "phenomenon": "四种碱基的数量和衍射图怎样限制 DNA 的结构？",
+      "evidence": [
+        "composition 打乱第二链后计数柱不变、逐位互补却被破坏；geometry 比较配对宽度和氢键；后半片使用真实坐标与链内骨架连接。",
+        "用多个相互独立约束排除结构假说，桥梁充分；P48 的剪辑只到局部配对，没有把约束重新合成双螺旋。",
+        "已有“数量相同但顺序不互补”的反例；直链/螺旋散射也可比较，明确计算图不是原始 Photo 51。"
+      ],
+      "necessaryChanges": "只修 P48 的收束：补完整模型回扣每条证据，或扩到现有 helix；保持 P51 结构制作路径。不能将 X 形视为独立充分证明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioDnaStructure.tsx",
+        "model": "src/models/bio-dna-structure.ts",
+        "articleZh": "src/content/bio-dna-structure.mdx",
+        "articleEn": "src/content/en/bio-dna-structure.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-048-1",
+          "coverage": "partial",
+          "reason": "diffraction→composition→geometry 有约束比较，但在局部碱基对结束；教材 P49 要比较搭建模型与衍射约束，缺整合后的双螺旋镜头。",
+          "chapterIds": ["diffraction", "composition", "geometry"]
+        },
+        {
+          "id": "bio-required-2-051-1",
+          "coverage": "complete",
+          "reason": "geometry→nucleotide→antiparallel→helix 从化学配对到骨架与反向平行，能检验错误连接；保留。",
+          "chapterIds": ["geometry", "nucleotide", "antiparallel", "helix"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-dna-replication",
+      "decision": "retain",
+      "phenomenon": "一条中间密度带为什么还不够，第二代又排除了什么？",
+      "evidence": [
+        "三种复制假说生成不同密度带；旧链身份跨代保留；分子复制部分展示解旋、引物和方向。",
+        "先预测再观察，第一代排保守、第二代排分散；密度由分子内重标记比例推导，非预设柱状结论。",
+        "各假说在下一代的带位置/比例不同；改变代数可反复检验。"
+      ],
+      "necessaryChanges": "无必须重构项。保留稳定同位素与密度带测量、真实分子结构与教学机制的区分。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioDnaReplication.tsx",
+        "model": "src/models/bio-dna-replication.ts",
+        "articleZh": "src/content/bio-dna-replication.mdx",
+        "articleEn": "src/content/en/bio-dna-replication.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-053-1",
+          "coverage": "complete",
+          "reason": "label→first→second→dispersive→lineage 完整区分三个假说，不以第一代中间带独自证明半保留。",
+          "chapterIds": ["label", "first", "second", "dispersive", "lineage"]
+        },
+        {
+          "id": "bio-required-2-mechanism-10",
+          "coverage": "complete",
+          "reason": "unwind→extend→finish 追踪模板与新链、合成方向及不同链的方式，覆盖机制入口。",
+          "chapterIds": ["unwind", "extend", "finish"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-genetic-code",
+      "decision": "retain",
+      "phenomenon": "为什么插入一个碱基和三个碱基不同？多聚 U 怎样对应一种氨基酸？",
+      "evidence": [
+        "移码后逐三联体分组；原始多聚 U 计数与对照；转录/翻译中模板、RNA、tRNA 与肽链身份明确。",
+        "分组变化直接解释移码与下游恢复；统计和材料替换检验密码对应；翻译连接读码与肽转移。",
+        "三碱基插入只恢复下游读框而不保证原功能；终止密码招募释放因子而非普通 tRNA，均有边界反例。"
+      ],
+      "necessaryChanges": "无必须重构项。保留特殊体外 poly-U 体系不同于通常起始规则的说明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioGeneticCode.tsx",
+        "model": "src/models/bio-genetic-code.ts",
+        "articleZh": "src/content/bio-genetic-code.mdx",
+        "articleEn": "src/content/en/bio-genetic-code.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-mechanism-11",
+          "coverage": "complete",
+          "reason": "transcribe→rna→initiate→elongate→release 从 DNA 模板到肽链完成，标签和方向可追踪。",
+          "chapterIds": ["transcribe", "rna", "initiate", "elongate", "release"]
+        },
+        {
+          "id": "bio-required-2-070-1",
+          "coverage": "complete",
+          "reason": "frame→restore 对比 1/3 碱基变化，明确局部序列改变与下游读框恢复的区别。",
+          "chapterIds": ["frame", "restore"]
+        },
+        {
+          "id": "bio-required-2-070-2",
+          "coverage": "complete",
+          "reason": "poly-u→counts 材料控制与独立计数支持 UUU 对应苯丙氨酸，不把模型生成读码当实验观测。",
+          "chapterIds": ["poly-u", "counts"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-gene-expression",
+      "decision": "retain",
+      "phenomenon": "不同细胞有相同基因，为什么检测到不同 RNA？性状改变都意味着 DNA 序列改变吗？",
+      "evidence": [
+        "鸡细胞 DNA/RNA 矩阵对照；柳穿鱼甲基化标记与花型；固定基因型小鼠及亲代培养温度/后代对照。",
+        "同基因而 RNA 不同排除简单丢基因解释；甲基化与表达状态、环境与后代结果分层，不把相关证据夸成通用规则。",
+        "恢复相同环境后后代是否保持改变、未检出是否等于绝对不存在，均被显式区分。"
+      ],
+      "necessaryChanges": "无必须重构项；后续可增加问题式标题，不能为了生动编造普适的甲基化开关或把温度实验当酶机制的直接证明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioGeneExpression.tsx",
+        "model": "src/models/bio-gene-expression.ts",
+        "articleZh": "src/content/bio-gene-expression.mdx",
+        "articleEn": "src/content/en/bio-gene-expression.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-072-1",
+          "coverage": "complete",
+          "reason": "dna→rna 对照同一组三种基因，解释细胞差异来自表达而非简单丢失。",
+          "chapterIds": ["dna", "rna"]
+        },
+        {
+          "id": "bio-required-2-073-1",
+          "coverage": "complete",
+          "reason": "flower→methyl→inherit→mice 序列、表达标记、性状和传代证据分别观察，并保留案例范围。",
+          "chapterIds": ["flower", "methyl", "inherit", "mice"]
+        },
+        {
+          "id": "bio-required-2-075-1",
+          "coverage": "complete",
+          "reason": "temperature→offspring 用同基因型不同温度及后代条件区分环境影响和遗传改变。",
+          "chapterIds": ["temperature", "offspring"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-mutation-evidence",
+      "decision": "retain",
+      "phenomenon": "怎样发现未直接看见的突变？染色体变多与某一条多了有什么不同？",
+      "evidence": [
+        "遗传检验中的缺失后代、病例/对照分母、低温下纺锤体与复位分裂、固定染色体计数及片段顺序均可见。",
+        "遗传方案把突变变成可测后代差异；纺锤体失败到染色体加倍有连贯机制；病例对照明确关联而非个体风险因果。",
+        "整套加倍、单条增减、倍性与来源不等价；低温不保证每个细胞加倍；有既有反例。"
+      ],
+      "necessaryChanges": "无必须重构项，保留实测资料/教学模型以及有丝分裂失败和正常增殖的区别。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioMutationEvidence.tsx",
+        "model": "src/models/bio-mutation-evidence.ts",
+        "articleZh": "src/content/bio-mutation-evidence.mdx",
+        "articleEn": "src/content/en/bio-mutation-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-083-1",
+          "coverage": "complete",
+          "reason": "irradiate→inherit 通过遗传方案识别诱变效应，未把某一射线剂量当精确突变率。",
+          "chapterIds": ["irradiate", "inherit"]
+        },
+        {
+          "id": "bio-required-2-084-1",
+          "coverage": "complete",
+          "reason": "association 同人数病例/对照数据与分母在同一视图，讲明不能据此给个人致病概率。",
+          "chapterIds": ["association"]
+        },
+        {
+          "id": "bio-required-2-mechanism-12",
+          "coverage": "complete",
+          "reason": "number→origin→copies→order 分开数目、来源、倍性及结构改变，反例清楚。",
+          "chapterIds": ["number", "origin", "copies", "order"]
+        },
+        {
+          "id": "bio-required-2-089-1",
+          "coverage": "complete",
+          "reason": "prepare→spindle→count 从处理、分裂障碍到固定计数，机制和观测相接，未保证处理必然成功。",
+          "chapterIds": ["prepare", "spindle", "count"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-evolution-evidence",
+      "decision": "revise",
+      "phenomenon": "相似结构为什么支持共同祖先？环境变化是在创造所需变异，还是选择已有变异？",
+      "evidence": [
+        "化石年代、同源骨排列、胚胎和分子差异；蛾频率、预先存在的抗性标记和隔离/再相遇情境分别呈现。",
+        "自然选择与隔离机制有清楚反例；共同祖先部分仍偏证据类别轮播，需要把共同排列与独立功能要求之间的推理关系拍出来。",
+        "保留“背景不使个体定向变色”“药物选择已有抗性”“地理分离不等于生殖隔离”；新增共同祖先假说对未比较结构的预测。"
+      ],
+      "necessaryChanges": "只修 fossil/anatomy/embryo/molecular 的比较逻辑，用同源排列与功能差异及分支关系约束解释；不能画成一种现生动物变成另一种。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEvolutionEvidence.tsx",
+        "model": "src/models/bio-evolution-evidence.ts",
+        "articleZh": "src/content/bio-evolution-evidence.mdx",
+        "articleEn": "src/content/en/bio-evolution-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-required-2-101-1",
+          "coverage": "partial",
+          "reason": "前四章列出四类证据，尚缺从关系模式到共同祖先解释的可见桥梁和新比较预测。",
+          "chapterIds": ["fossil", "anatomy", "embryo", "molecular"]
+        },
+        {
+          "id": "bio-required-2-112-1",
+          "coverage": "complete",
+          "reason": "moths→frequency 已有变异在不同环境下差异存活，基因频率由幸存与繁殖推导。",
+          "chapterIds": ["moths", "frequency"]
+        },
+        {
+          "id": "bio-required-2-115-1",
+          "coverage": "complete",
+          "reason": "discs→selection 预存抗性群体与选择结果相接，不把抑菌圈独自当作抗性起源时间的证明。",
+          "chapterIds": ["discs", "selection"]
+        },
+        {
+          "id": "bio-required-2-mechanism-13",
+          "coverage": "complete",
+          "reason": "barrier→reunion 区分地理隔离与生殖隔离，重新接触给出可检验差别。",
+          "chapterIds": ["barrier", "reunion"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-body-fluid-balance",
+      "decision": "revise",
+      "phenomenon": "水和溶质怎样穿过体液区室？丢水后身体通过哪里减少继续丢失？",
+      "evidence": [
+        "示踪粒子在血浆/组织液/淋巴中守恒，红细胞不随意出血管；体温记录保留缺测；水盐调节显示器官、信号与尿量数值。",
+        "体液路径和温度调查成立；ADH/醛固酮段目前是器官图加数值，肾小管重吸收改变尿中损失这一步缺少可见路径。",
+        "输入/丢失增加时反馈如何改变收支可算；需让阻断肾响应时的失衡预测由同一可见通路推出。"
+      ],
+      "necessaryChanges": "只补 water-adh/sodium-aldosterone 的过滤液—重吸收—尿液局部镜头，并与全身收支对应；保留激素来源正确性与示意时间尺度。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioBodyFluidBalance.tsx",
+        "model": "src/models/bio-body-fluid-balance.ts",
+        "articleZh": "src/content/bio-body-fluid-balance.mdx",
+        "articleEn": "src/content/en/bio-body-fluid-balance.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-mechanism-14",
+          "coverage": "complete",
+          "reason": "plasma-tissue→lymph-return 有连续示踪和隔室限制，能解释组织液回流路径。",
+          "chapterIds": ["plasma-tissue", "lymph-return"]
+        },
+        {
+          "id": "bio-elective-1-012-1",
+          "coverage": "complete",
+          "reason": "temperature-record→temperature-compare 方法服务于真实可重复观察，缺测不当零，示例不冒充用户数据。",
+          "chapterIds": ["temperature-record", "temperature-compare"]
+        },
+        {
+          "id": "bio-elective-1-mechanism-17",
+          "coverage": "causal-gap",
+          "reason": "heat-balance→water-adh→sodium-aldosterone 中热收支可见，水盐调节却从信号直接到尿量数字，需要重吸收的空间因果桥。",
+          "chapterIds": ["heat-balance", "water-adh", "sodium-aldosterone"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-buffer-comparison",
+      "decision": "retain",
+      "phenomenon": "同样加酸，为什么缓冲液的 pH 变化更小，继续加却又失效？",
+      "evidence": [
+        "相同初始体积及同量滴加对照；酸/碱两套新鲜样品；缓冲组分余量和 pH 按电荷平衡求解。",
+        "有限组分消耗与 pH 稳定/耗尽相连，不把稳定解释成酸消失或永久不变。",
+        "超过容量或用已消耗样品做反向比较会改变结论，片内展示了边界。"
+      ],
+      "necessaryChanges": "无必须重构项；保持新鲜酸/碱两组和组分收支，避免把示意缓冲体系当人体全套调节。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioBufferComparison.tsx",
+        "model": "src/models/bio-buffer-comparison.ts",
+        "articleZh": "src/content/bio-buffer-comparison.mdx",
+        "articleEn": "src/content/en/bio-buffer-comparison.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-007-1",
+          "coverage": "complete",
+          "reason": "fresh→equal-acid→capacity→fresh-base→exhausted 有相等输入、机制余量与容量反例，完整闭环。",
+          "chapterIds": ["fresh", "equal-acid", "capacity", "fresh-base", "exhausted"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-neural-evidence",
+      "decision": "retain",
+      "phenomenon": "声音怎样从无反应变成预测食物的信号？脑区刺激与损伤各能支持什么结论？",
+      "evidence": [
+        "配对/消退响应、运动区刺激部位与身体运动、不同语言损伤中的能力保留/丧失对照。",
+        "学习模型根据预测误差改变而非随机播放反应；干预及功能分离支持有限的脑功能解释。",
+        "无食物的重复声音降低条件反应；不同刺激/损伤产生不同保留能力，不把脑区视为孤立唯一模块。"
+      ],
+      "necessaryChanges": "无必须重构项。保留行为推理层级，不为追求“分子机制”虚构经典实验未测的神经连接。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioNeuralEvidence.tsx",
+        "model": "src/models/bio-neural-evidence.ts",
+        "articleZh": "src/content/bio-neural-evidence.mdx",
+        "articleEn": "src/content/en/bio-neural-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-024-1",
+          "coverage": "complete",
+          "reason": "baseline→pairing→extinction 从基线到形成再消退，有新条件反例。",
+          "chapterIds": ["baseline", "pairing", "extinction"]
+        },
+        {
+          "id": "bio-elective-1-034-1",
+          "coverage": "complete",
+          "reason": "motor-leg→motor-hand 在同一脑区图上改变刺激位置，对应运动变化，单入口证据够用。",
+          "chapterIds": ["motor-leg", "motor-hand"]
+        },
+        {
+          "id": "bio-elective-1-037-1",
+          "coverage": "complete",
+          "reason": "language-s→language-h 用保留/受损能力的差异支持功能分工，限定为案例线索。",
+          "chapterIds": ["language-s", "language-h"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-nerve-signals",
+      "decision": "revise",
+      "phenomenon": "两个电极为何先后得到相反电位差？跨膜电压怎样成为可传播信号？",
+      "evidence": [
+        "同一波形经过两电极，差分读数由位置决定；突触膜融合、递质通路和受体结合真实连通；生物电争论有替代解释对照。",
+        "表面记录和突触可保留；membrane 中 Na/K 流与电位由预设曲线给出，离子通透改变怎样造成电压变化未充分可视化。",
+        "阻断受体后递质仍在却不能引起同样响应是好反例；跨膜部分需由电荷/通透状态预测电压及恢复。"
+      ],
+      "necessaryChanges": "局部改造 membrane：让少量跨膜电荷、通道状态和电压相互对应，可用清楚限定的教学模型；无须强行上完整电生理求解或重做历史章节。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioNerveSignals.tsx",
+        "model": "src/models/bio-nerve-signals.ts",
+        "articleZh": "src/content/bio-nerve-signals.mdx",
+        "articleEn": "src/content/en/bio-nerve-signals.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-027-1",
+          "coverage": "complete",
+          "reason": "surface-a→surface-b 用同一沿神经移动的波与电极差分解释正负变化，断路对照能检验。",
+          "chapterIds": ["surface-a", "surface-b"]
+        },
+        {
+          "id": "bio-elective-1-mechanism-15",
+          "coverage": "causal-gap",
+          "reason": "membrane→synapse-release→synapse-receptor 后半路径完整，前半动作电位仍主要按预设曲线播放，需补电荷/通透因果桥。",
+          "chapterIds": ["membrane", "synapse-release", "synapse-receptor"]
+        },
+        {
+          "id": "bio-elective-1-032-1",
+          "coverage": "complete",
+          "reason": "metal-evidence→tissue-evidence 明确金属与组织两种解释及控制条件，完成历史争论推理。",
+          "chapterIds": ["metal-evidence", "tissue-evidence"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-chemical-signals",
+      "decision": "retain",
+      "phenomenon": "第一颗心的刺激为何能通过液体影响第二颗心？去掉神经后小肠还怎样通知胰腺？",
+      "evidence": [
+        "液体体积和持续标记沿路径转移、心率响应有延迟；未刺激液/失活信号对照；酸的不同到达路线及去神经保留血流。",
+        "改变路径与保留条件排除“直接神经传到另一器官”等替代解释，血液/液体中可传递因素形成可见推理。",
+        "转移对照液不应产生同样响应；酸直接入血与作用小肠黏膜的预测不同。"
+      ],
+      "necessaryChanges": "无必须重构项，是可保留的现象驱动范例。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioChemicalSignals.tsx",
+        "model": "src/models/bio-chemical-signals.ts",
+        "articleZh": "src/content/bio-chemical-signals.mdx",
+        "articleEn": "src/content/en/bio-chemical-signals.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-031-1",
+          "coverage": "complete",
+          "reason": "heart-stimulate→heart-transfer→heart-controls 包含干预、信号路径与阴性对照，明确化学传递证据。",
+          "chapterIds": ["heart-stimulate", "heart-transfer", "heart-controls"]
+        },
+        {
+          "id": "bio-elective-1-045-1",
+          "coverage": "complete",
+          "reason": "secretin-route→secretin-denervated→secretin-extract 逐步排除路线/神经假说并检验提取物，完整闭环。",
+          "chapterIds": ["secretin-route", "secretin-denervated", "secretin-extract"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-endocrine-evidence",
+      "decision": "retain",
+      "phenomenon": "摘除器官后出现的改变，怎样用补回和反馈干预解释？",
+      "evidence": [
+        "摘除/移植/救援，胚胎观察与未做实验的预测分层；血糖物质收支和甲状腺反馈模型各有干预。",
+        "损失、补回与上游反馈区分激素来源及作用；现象与模型输出有可见因果联系。",
+        "移植恢复、TRH 干预后的多层响应及胚胎预测均明确；模型数值不当生理诊断。"
+      ],
+      "necessaryChanges": "无必须重构项。保留胚胎观察与预测的标注，不把有限干预外推为万能调节规律。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEndocrineEvidence.tsx",
+        "model": "src/models/bio-endocrine-evidence.ts",
+        "articleZh": "src/content/bio-endocrine-evidence.mdx",
+        "articleEn": "src/content/en/bio-endocrine-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-046-1",
+          "coverage": "complete",
+          "reason": "insulin-source→insulin-rescue 观察来源及补回效果，建立激素解释。",
+          "chapterIds": ["insulin-source", "insulin-rescue"]
+        },
+        {
+          "id": "bio-elective-1-047-1",
+          "coverage": "complete",
+          "reason": "gland-remove→gland-graft 摘除与异位移植共同排除必须原位连接的解释。",
+          "chapterIds": ["gland-remove", "gland-graft"]
+        },
+        {
+          "id": "bio-elective-1-049-1",
+          "coverage": "complete",
+          "reason": "embryo-observe→embryo-predict 明确已观察与待验证推断，不伪造后者为原实验。",
+          "chapterIds": ["embryo-observe", "embryo-predict"]
+        },
+        {
+          "id": "bio-elective-1-mechanism-16",
+          "coverage": "complete",
+          "reason": "glucose-fed→glucose-fasting 同一收支与反馈模型解释相反扰动。",
+          "chapterIds": ["glucose-fed", "glucose-fasting"]
+        },
+        {
+          "id": "bio-elective-1-053-1",
+          "coverage": "complete",
+          "reason": "thyroid-remove→thyroid-rescue→thyroid-trh→thyroid-feedback 上下游干预与负反馈约束完整。",
+          "chapterIds": ["thyroid-remove", "thyroid-rescue", "thyroid-trh", "thyroid-feedback"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-immune-pathways",
+      "decision": "retain",
+      "phenomenon": "如何证明一条管是淋巴管？为什么先前记忆不能直接替代对另一种抗原的识别？",
+      "evidence": [
+        "脑膜管的身份标记与运输标记分开；抗原呈递、匹配受体、抗体胞外结合、感染细胞识别及记忆比较对象明确。",
+        "身份/功能两种证据相互约束；适应性免疫条件链不是所有免疫细胞一起亮起，信号与特异识别相连。",
+        "换抗原不能直接套用旧记忆，受体不匹配不能形成同样结果；教学响应曲线不承诺现实保护时长。"
+      ],
+      "necessaryChanges": "无必须重构项；保留脑膜位置，不能把脑膜淋巴管直接画在脑实质内。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioImmunePathways.tsx",
+        "model": "src/models/bio-immune-pathways.ts",
+        "articleZh": "src/content/bio-immune-pathways.mdx",
+        "articleEn": "src/content/en/bio-immune-pathways.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-070-1",
+          "coverage": "complete",
+          "reason": "meningeal-identity→meningeal-transport 先辨身份再验运输功能，单入口证据闭合。",
+          "chapterIds": ["meningeal-identity", "meningeal-transport"]
+        },
+        {
+          "id": "bio-elective-1-mechanism-18",
+          "coverage": "complete",
+          "reason": "antigen-present→b-cell-activate→antibody-bind→cytotoxic-target→immune-memory 特异性及效应对象清楚，末尾有换抗原预测。",
+          "chapterIds": [
+            "antigen-present",
+            "b-cell-activate",
+            "antibody-bind",
+            "cytotoxic-target",
+            "immune-memory"
+          ]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-auxin-evidence",
+      "decision": "retain",
+      "phenomenon": "尖端感光还是弯曲？传下去的是什么？怎样排除琼脂本身的作用？",
+      "evidence": [
+        "遮挡部位、可透/不可透隔层、左右偏置、空白琼脂和相同标记运输对照配成成对镜头。",
+        "每个经典实验都从不同控制排除替代解释，两侧长度差实际生成弯曲而非单纯旋转植株。",
+        "改变偏置侧、空白/含物质琼脂、反向运输和高浓度都形成可见新预测。"
+      ],
+      "necessaryChanges": "无必须重构项；可作为一条实验结果逐步约束理论的重点范例。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioAuxinEvidence.tsx",
+        "model": "src/models/bio-auxin-evidence.ts",
+        "articleZh": "src/content/bio-auxin-evidence.mdx",
+        "articleEn": "src/content/en/bio-auxin-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-090-1",
+          "coverage": "complete",
+          "reason": "darwin-tip→darwin-shade 位置控制区分感受和响应部位。",
+          "chapterIds": ["darwin-tip", "darwin-shade"]
+        },
+        {
+          "id": "bio-elective-1-091-1",
+          "coverage": "complete",
+          "reason": "boysen-agar→boysen-barrier 可透/不透隔层使传递解释可检验。",
+          "chapterIds": ["boysen-agar", "boysen-barrier"]
+        },
+        {
+          "id": "bio-elective-1-091-2",
+          "coverage": "complete",
+          "reason": "paal-offset→paal-mirror 无单侧光条件下左右偏置产生相反弯曲。",
+          "chapterIds": ["paal-offset", "paal-mirror"]
+        },
+        {
+          "id": "bio-elective-1-091-3",
+          "coverage": "complete",
+          "reason": "went-loading→went-control 含物质琼脂和空白琼脂排除材料本身影响。",
+          "chapterIds": ["went-loading", "went-control"]
+        },
+        {
+          "id": "bio-elective-1-094-1",
+          "coverage": "complete",
+          "reason": "dose-sensitive→dose-inhibition 同浓度不同器官以及高浓度反应，防止“越多越好”。",
+          "chapterIds": ["dose-sensitive", "dose-inhibition"]
+        },
+        {
+          "id": "bio-elective-1-095-1",
+          "coverage": "complete",
+          "reason": "transport-positive→transport-controls 正向结果和反向/空白对照一起检验方向性。",
+          "chapterIds": ["transport-positive", "transport-controls"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-plant-growth-regulators",
+      "decision": "retain",
+      "phenomenon": "培养滤液为何能使水稻异常伸长？“最适浓度”和“催熟效果”怎样由可靠比较得到？",
+      "evidence": [
+        "除菌滤液/培养基对照、不同剂量的重复插条和原始计数、乙烯释放与水果初始成熟程度对照。",
+        "过滤后作用排除必须活菌侵入；粗筛到细筛与重复数据支持局部最适；初始状态混杂能破坏催熟比较。",
+        "相同比例不同总量、初始成熟差别及对照设置改变解释；示例数量不替代真实记录。"
+      ],
+      "necessaryChanges": "无必须重构项；保留教学曲线/真实调查空白的区别，不凭一个示例给普适农业剂量。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioPlantGrowthRegulators.tsx",
+        "model": "src/models/bio-plant-growth-regulators.ts",
+        "articleZh": "src/content/bio-plant-growth-regulators.mdx",
+        "articleEn": "src/content/en/bio-plant-growth-regulators.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-096-1",
+          "coverage": "complete",
+          "reason": "ga-filtration→ga-rice 用除菌滤液与培养基对照支持可溶物质解释。",
+          "chapterIds": ["ga-filtration", "ga-rice"]
+        },
+        {
+          "id": "bio-elective-1-103-1",
+          "coverage": "complete",
+          "reason": "root-preliminary→root-refine→root-records 预测、重复与数据记录相连，未把模型最优值当真实实验结果。",
+          "chapterIds": ["root-preliminary", "root-refine", "root-records"]
+        },
+        {
+          "id": "bio-elective-1-104-1",
+          "coverage": "complete",
+          "reason": "ethylene-release→fruit-comparison→fruit-confounding 从物质释放到对照，再用初始状态反例检验推断。",
+          "chapterIds": ["ethylene-release", "fruit-comparison", "fruit-confounding"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-plant-environment",
+      "decision": "retain",
+      "phenomenon": "植物为什么会记住过去的低温？根冠感受重力怎样与单纯损伤区别？",
+      "evidence": [
+        "光受体状态及表达、相同当前环境下不同低温历史、淀粉体沉降、两侧生长及根冠/损伤对照。",
+        "感受—信号—差异生长有连续状态；相同当前条件保留历史变量；定向能力下降与全面停止生长被区分。",
+        "改变光态、冷史、重力方向或保留/破坏感受区会产生不同预测；不是只切换弯曲姿态。"
+      ],
+      "necessaryChanges": "无必须重构项；保留受体/物种范围和教学简化，不扩成植物所有光周期反应。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioPlantEnvironment.tsx",
+        "model": "src/models/bio-plant-environment.ts",
+        "articleZh": "src/content/bio-plant-environment.mdx",
+        "articleEn": "src/content/en/bio-plant-environment.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-1-mechanism-19",
+          "coverage": "complete",
+          "reason": "light-receptor→light-expression→cold-history→seasonal-wood→gravity-sediment→gravity-organ 虽覆盖多个环境变量，但各段都有对应状态与结果，机制入口范围匹配。",
+          "chapterIds": [
+            "light-receptor",
+            "light-expression",
+            "cold-history",
+            "seasonal-wood",
+            "gravity-sediment",
+            "gravity-organ"
+          ]
+        },
+        {
+          "id": "bio-elective-1-108-1",
+          "coverage": "complete",
+          "reason": "root-cap-controls→root-cap-growth→root-cap-injury 区分感受缺失与普遍损伤，替代解释被实际对照检验。",
+          "chapterIds": ["root-cap-controls", "root-cap-growth", "root-cap-injury"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-population-sampling",
+      "decision": "retain",
+      "phenomenon": "捕得多一定代表种群大吗？样方与重捕怎样把局部观察变成总体估计？",
+      "evidence": [
+        "固定动物总体下检测条件改变捕获数；标记混合/重捕、同一植物分布下随机与偏选样方、相机/DNA/声音去重。",
+        "观测过程与真实总体明确分开，标记比例、面积比例和身份归并解释估计方法及偏差来源。",
+        "标签丢失、偏选密集区、同一动物重复记录给出不同错误估计，反例来自同一底层总体。"
+      ],
+      "necessaryChanges": "无必须重构项；调查方法的抽样推理就是本条原理，不需要补无关的细胞机制。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioPopulationSampling.tsx",
+        "model": "src/models/bio-population-sampling.ts",
+        "articleZh": "src/content/bio-population-sampling.mdx",
+        "articleEn": "src/content/en/bio-population-sampling.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-002-1",
+          "coverage": "complete",
+          "reason": "trap-path→trap-detection 固定真实总体而改变检测概率，直接说明捕获数不是总体数。",
+          "chapterIds": ["trap-path", "trap-detection"]
+        },
+        {
+          "id": "bio-elective-2-003-1",
+          "coverage": "complete",
+          "reason": "capture-mark→capture-mix→capture-estimate 标记比例与代表性条件可见，标签/混合问题有边界。",
+          "chapterIds": ["capture-mark", "capture-mix", "capture-estimate"]
+        },
+        {
+          "id": "bio-elective-2-005-1",
+          "coverage": "complete",
+          "reason": "quadrat-random→quadrat-boundary→quadrat-bias 在同一分布上比较抽样与边界规则，能推导偏差。",
+          "chapterIds": ["quadrat-random", "quadrat-boundary", "quadrat-bias"]
+        },
+        {
+          "id": "bio-elective-2-006-1",
+          "coverage": "complete",
+          "reason": "identity-camera→identity-dna→identity-sound 不同线索服务同一身份去重，未知不冒充新个体。",
+          "chapterIds": ["identity-camera", "identity-dna", "identity-sound"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-population-growth",
+      "decision": "revise",
+      "phenomenon": "为什么指数增长不能一直持续？计数曲线变缓或下降时，怎样判断可能原因？",
+      "evidence": [
+        "细菌谱系倍增、历史培养观测/独立 logistic 模型、血细胞计数室体积与取样、林冠资料分别呈现。",
+        "计数方法因果充分，增长模型却直接给密度限制项；酵母窗口在画出记录曲线结束，没有资源/出生死亡收支的解释与可检验区分。",
+        "72 小时指数外推给不合理规模是好反例；应进一步预测在给定资源补充/死亡变化假设下，曲线哪些特征应改变，不能凭原曲线证明唯一原因。"
+      ],
+      "necessaryChanges": "补 logistic 的个体收支或资源约束镜头；酵母入口从真实/示例记录进入候选原因与下一轮对照预测。保留缺测与未造原始数据的做法。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioPopulationGrowth.tsx",
+        "model": "src/models/bio-population-growth.ts",
+        "articleZh": "src/content/bio-population-growth.mdx",
+        "articleEn": "src/content/en/bio-population-growth.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-007-1",
+          "coverage": "complete",
+          "reason": "binary-lineage→binary-predict 倍增来自分裂谱系，并用不现实外推揭示条件限制。",
+          "chapterIds": ["binary-lineage", "binary-predict"]
+        },
+        {
+          "id": "bio-elective-2-009-1",
+          "coverage": "causal-gap",
+          "reason": "gause-observation→logistic-model 区分原观测与模型正确，但限制项直接产生曲线，资源/竞争为何减慢增长尚未可见。",
+          "chapterIds": ["gause-observation", "logistic-model"]
+        },
+        {
+          "id": "bio-elective-2-011-1",
+          "coverage": "partial",
+          "reason": "yeast-mix→yeast-load→yeast-count→yeast-record 抽样与换算完整，教材 P11 要讨论增长趋势及影响因素，本窗口停在记录图。",
+          "chapterIds": ["yeast-mix", "yeast-load", "yeast-count", "yeast-record"]
+        },
+        {
+          "id": "bio-elective-2-013-1",
+          "coverage": "complete",
+          "reason": "canopy-evidence→environment-cause 同时呈现环境变量与可能混杂，相关线索不被单独当作唯一因果。",
+          "chapterIds": ["canopy-evidence", "environment-cause"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-community-interactions",
+      "decision": "retain",
+      "phenomenon": "一起培养为什么改变结局？移除捕食者为什么反而可能减少物种？",
+      "evidence": [
+        "原始/数字化培养观测、单独/混合和资源重叠模型；雪兔猞猁历史序列与析因干预；有限岩面占据与海星移除。",
+        "竞争由资源重叠与有限位置推导；时间相关和食物/捕食干预分开，间接效应通过相同空间份额追踪。",
+        "减小资源重叠、同时改善两因素及移除海星后竞争排除都有不同预测；未将历史相关当单因果。"
+      ],
+      "necessaryChanges": "无必须重构项；可用作生态类“现象—证据—理论—新预测”的范例。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioCommunityInteractions.tsx",
+        "model": "src/models/bio-community-interactions.ts",
+        "articleZh": "src/content/bio-community-interactions.mdx",
+        "articleEn": "src/content/en/bio-community-interactions.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-014-1",
+          "coverage": "complete",
+          "reason": "competition-separate→competition-mixed→competition-overlap 事实与独立模型/资源重叠反例形成闭环。",
+          "chapterIds": ["competition-separate", "competition-mixed", "competition-overlap"]
+        },
+        {
+          "id": "bio-elective-2-015-1",
+          "coverage": "complete",
+          "reason": "hare-lynx-records→hare-food-web→hare-factorial 从相关到多因素干预，结论与数据级别匹配。",
+          "chapterIds": ["hare-lynx-records", "hare-food-web", "hare-factorial"]
+        },
+        {
+          "id": "bio-elective-2-025-1",
+          "coverage": "complete",
+          "reason": "shore-remove→shore-recruit→shore-displacement 捕食变化通过有限空间与竞争传递，间接效应可见。",
+          "chapterIds": ["shore-remove", "shore-recruit", "shore-displacement"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-community-survey",
+      "decision": "retain",
+      "phenomenon": "生活在同一地点的鸟一定占同一生态位吗？取样器怎样影响看见的土壤动物？",
+      "evidence": [
+        "栖息地与食物内容两维比较；取土体积、驱避提取和吸取路径；不同初始土壤/种源下的演替。",
+        "观测维度、检测偏差与群落过程分开；土壤积累和种源改变后续生长，演替不是固定顺序换图片。",
+        "相同栖地不同食物、漏检与未知分类、低水分下不走向森林均是实际反例。"
+      ],
+      "necessaryChanges": "无必须重构项。保留调查记录为空、未知类群不伪装确认物种等证据边界。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioCommunitySurvey.tsx",
+        "model": "src/models/bio-community-survey.ts",
+        "articleZh": "src/content/bio-community-survey.mdx",
+        "articleEn": "src/content/en/bio-community-survey.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-028-1",
+          "coverage": "complete",
+          "reason": "niche-habitat→niche-contents→niche-field-notes 用两维证据反驳同地即同生态位，支持自己的调查设计。",
+          "chapterIds": ["niche-habitat", "niche-contents", "niche-field-notes"]
+        },
+        {
+          "id": "bio-elective-2-030-1",
+          "coverage": "complete",
+          "reason": "soil-core→soil-extraction→soil-aspirator→soil-classify 取样体积与动物行为/器械路径解释检测偏差，分类边界清楚。",
+          "chapterIds": ["soil-core", "soil-extraction", "soil-aspirator", "soil-classify"]
+        },
+        {
+          "id": "bio-elective-2-mechanism-20",
+          "coverage": "complete",
+          "reason": "succession-primary→succession-secondary→succession-conditions 同一过程不同初始条件与水分，产生可检验的不同轨迹。",
+          "chapterIds": ["succession-primary", "succession-secondary", "succession-conditions"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-ecosystem-energy",
+      "decision": "retain",
+      "phenomenon": "营养级间消失的能量去了哪里？物质循环是否意味着能量也循环？",
+      "evidence": [
+        "湖泊能量预算闭合、呼吸/未利用份额分流；农田路径区分能量和营养；碳标记双向流、污染物保留比例。",
+        "守恒预算解释效率而非背数值；循环对象与能量耗散不同；污染物富集从摄入和排出收支得到。",
+        "改变保留率可不富集；缩小转移总量不代表所有能量消失；库存变化与通量不同均被区分。"
+      ],
+      "necessaryChanges": "无必须重构项。保留真实资料四舍五入误差，不把效率强行裁成固定 10%–20%。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEcosystemEnergy.tsx",
+        "model": "src/models/bio-ecosystem-energy.ts",
+        "articleZh": "src/content/bio-ecosystem-energy.mdx",
+        "articleEn": "src/content/en/bio-ecosystem-energy.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-056-1",
+          "coverage": "complete",
+          "reason": "lake-levels→lake-budget→lake-efficiency 从各去向预算推导转移效率，结论有收支依据。",
+          "chapterIds": ["lake-levels", "lake-budget", "lake-efficiency"]
+        },
+        {
+          "id": "bio-elective-2-059-1",
+          "coverage": "complete",
+          "reason": "field-evidence→field-reuse 调查路径和可支持证据相连，区分营养再利用与能量单向流动。",
+          "chapterIds": ["field-evidence", "field-reuse"]
+        },
+        {
+          "id": "bio-elective-2-mechanism-21",
+          "coverage": "complete",
+          "reason": "carbon-short→carbon-reservoirs→contaminant-uptake→contaminant-trophic 两种物质过程分别守恒，有双向通量与低保留反例。",
+          "chapterIds": [
+            "carbon-short",
+            "carbon-reservoirs",
+            "contaminant-uptake",
+            "contaminant-trophic"
+          ]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-soil-decomposition",
+      "decision": "revise",
+      "phenomenon": "淀粉消失却没有检出还原糖，能否宣布没有分解？",
+      "evidence": [
+        "落叶灭菌/未灭菌对照，土壤提取液分样、碘和斐林两种检测、糖被继续消耗的末段均存在。",
+        "末段已经有出色反例；前面长操作链未持续把聚合物→可检出产物→继续利用的物质状态放在同一画面上，主要问题是组织顺序。",
+        "既定 starchState 的还原糖生成与继续消耗可预测阳性短暂、迟测阴性，不能把阴性直接等于没分解。"
+      ],
+      "necessaryChanges": "以矛盾结果开场，提前可见淀粉/小分子/消耗三池，操作只保留保障对照的必要环节。复用现有守恒模型，不重造整套器具。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioSoilDecomposition.tsx",
+        "model": "src/models/bio-soil-decomposition.ts",
+        "articleZh": "src/content/bio-soil-decomposition.mdx",
+        "articleEn": "src/content/en/bio-soil-decomposition.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-065-1",
+          "coverage": "partial",
+          "reason": "litter-control→litter-change→litter-record 有对照及观察，需更直接连接微生物作用与材料减少，而非只记录孔洞变多。",
+          "chapterIds": ["litter-control", "litter-change", "litter-record"]
+        },
+        {
+          "id": "bio-elective-2-066-1",
+          "coverage": "complete-with-reorder",
+          "reason": "extract-prepare→starch-pair→starch-split→starch-iodine→starch-fehling→starch-consumption 机制与反例实际齐备；建议从末段矛盾结果倒推，不缺窗口。",
+          "chapterIds": [
+            "extract-prepare",
+            "starch-pair",
+            "starch-split",
+            "starch-iodine",
+            "starch-fehling",
+            "starch-consumption"
+          ]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-ecosystem-stability",
+      "decision": "retain",
+      "phenomenon": "遮住形象为何仍能吸引昆虫？生态缸封闭后为什么仍会失衡？",
+      "evidence": [
+        "网罩/不透明罩/空白来源、有限反馈响应、生态缸昼夜氧与碳储量及负荷变化可见。",
+        "控制排除视觉线索；负反馈与超过调节能力分开；消费者负荷和昼夜收支解释失衡，不把封口当稳定充分条件。",
+        "超负荷、夜间耗氧与阈值扰动给出不同结果；阈值是限定的模型而非通用生态定律。"
+      ],
+      "necessaryChanges": "无必须重构项。继续区分稳定记录和无限长期稳定，不给动物饲养保证。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEcosystemStability.tsx",
+        "model": "src/models/bio-ecosystem-stability.ts",
+        "articleZh": "src/content/bio-ecosystem-stability.mdx",
+        "articleEn": "src/content/en/bio-ecosystem-stability.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-072-1",
+          "coverage": "complete",
+          "reason": "signal-mesh→signal-opaque→signal-record 控制视觉和空白来源，化学信息解释在窗口内被检验。",
+          "chapterIds": ["signal-mesh", "signal-opaque", "signal-record"]
+        },
+        {
+          "id": "bio-elective-2-mechanism-22",
+          "coverage": "complete",
+          "reason": "feedback-limits→stability-measures→stability-threshold 反馈和抗扰/恢复能力及边界明确。",
+          "chapterIds": ["feedback-limits", "stability-measures", "stability-threshold"]
+        },
+        {
+          "id": "bio-elective-2-078-1",
+          "coverage": "complete",
+          "reason": "tank-build→tank-diel→tank-load→tank-journal 氧碳收支推出昼夜变化和负荷失衡，再回真实记录。",
+          "chapterIds": ["tank-build", "tank-diel", "tank-load", "tank-journal"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-conservation-evidence",
+      "decision": "retain",
+      "phenomenon": "测到一项指标、拍到一次穿越或算出一块地的碳，分别能支持多大的结论？",
+      "evidence": [
+        "多地点水指标、动物通道观察与后续证据层级、氮收支和容纳能力、生态园物流、分层面积加权与历史碳库存。",
+        "调查设计与推断范围成为可见主线；相同总量守恒及按面积加权解释为什么直观均值会偏。",
+        "穿越不等于基因交流、一次浓度不等于完整水质、库存不等于年固碳；每类都有可区分预测/反例。"
+      ],
+      "necessaryChanges": "无必须重构项。保留实地记录必须由真实调查提供，不能用动画替代采样。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioConservationEvidence.tsx",
+        "model": "src/models/bio-conservation-evidence.ts",
+        "articleZh": "src/content/bio-conservation-evidence.mdx",
+        "articleEn": "src/content/en/bio-conservation-evidence.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-2-087-1",
+          "coverage": "complete",
+          "reason": "environment-sites→environment-evidence 多指标与来源范围控制结论，未把单点测量当归因证明。",
+          "chapterIds": ["environment-sites", "environment-evidence"]
+        },
+        {
+          "id": "bio-elective-2-094-1",
+          "coverage": "complete",
+          "reason": "conservation-crossing→conservation-evidence 区分使用通道、种群联系和遗传交流证据。",
+          "chapterIds": ["conservation-crossing", "conservation-evidence"]
+        },
+        {
+          "id": "bio-elective-2-mechanism-23",
+          "coverage": "complete",
+          "reason": "engineering-cycle→engineering-fit 同一氮收支和输入/容量限制解释循环与协调。",
+          "chapterIds": ["engineering-cycle", "engineering-fit"]
+        },
+        {
+          "id": "bio-elective-2-108-1",
+          "coverage": "complete",
+          "reason": "courtyard-paths→courtyard-journal 气/液/固路径及可记录证据清楚，参观结论不伪造。",
+          "chapterIds": ["courtyard-paths", "courtyard-journal"]
+        },
+        {
+          "id": "bio-elective-2-110-1",
+          "coverage": "complete",
+          "reason": "carbon-plot→carbon-weighting→carbon-history 分层面积权重和时间差使库存/通量推断可检验。",
+          "chapterIds": ["carbon-plot", "carbon-weighting", "carbon-history"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-fermentation-pathways",
+      "decision": "revise",
+      "phenomenon": "泡菜、酒和醋为何需要不同的氧条件？一次亚硝酸盐检测能否代表整个发酵过程？",
+      "evidence": [
+        "碳去向、坛口密封、排气、醋酸氧输入与反应器溶氧/散热可见；亚硝酸盐段只有一次取样和标准曲线。",
+        "发酵路径和规模效应有模型支撑；P6 亚硝酸盐目标是随时间变化，当前没有多时点结果及生成/消耗候选解释。",
+        "反应器停气后溶氧不应瞬时归零、体积增大快于面积是好预测；检测部分需预测不同取样时点可能改变判断，不能预设普适峰值日。"
+      ],
+      "necessaryChanges": "优先补 nitrite 时间记录与可检验原因，标清示例或真实数据；其余路径保留。泡菜场景不把乳酸菌说成一遇氧就死亡。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioFermentationPathways.tsx",
+        "model": "src/models/bio-fermentation-pathways.ts",
+        "articleZh": "src/content/bio-fermentation-pathways.mdx",
+        "articleEn": "src/content/en/bio-fermentation-pathways.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-006-1",
+          "coverage": "complete",
+          "reason": "pickle-seal→pickle-conversion 密封条件和乳酸生成路径对应，限定为简化物质过程。",
+          "chapterIds": ["pickle-seal", "pickle-conversion"]
+        },
+        {
+          "id": "bio-elective-3-006-2",
+          "coverage": "partial",
+          "reason": "nitrite-sampling→nitrite-calibration 只回答一次怎样测，未回答教材要求的含量随制作时间怎样变；需多时点记录/比较。",
+          "chapterIds": ["nitrite-sampling", "nitrite-calibration"]
+        },
+        {
+          "id": "bio-elective-3-007-1",
+          "coverage": "complete",
+          "reason": "wine-reaction→wine-vent→vinegar-oxygen 同一碳路径与不同氧条件，排气目的可由产物推导。",
+          "chapterIds": ["wine-reaction", "wine-vent", "vinegar-oxygen"]
+        },
+        {
+          "id": "bio-elective-3-008-1",
+          "coverage": "complete",
+          "reason": "industrial-scale→industrial-evidence 体积/面积变化解释放大困难，实际资料和教学模型有区分。",
+          "chapterIds": ["industrial-scale", "industrial-evidence"]
+        },
+        {
+          "id": "bio-elective-3-mechanism-24",
+          "coverage": "complete",
+          "reason": "reactor-paths→reactor-oxygen→reactor-cooling 气体、溶氧消耗与热交换路径连贯，反事实能由同一收支得出。",
+          "chapterIds": ["reactor-paths", "reactor-oxygen", "reactor-cooling"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-microbial-culture",
+      "decision": "revise",
+      "phenomenon": "一个菌落是否就是纯菌？能在尿素培养基上生长是否已经证明会分解尿素？",
+      "evidence": [
+        "划线连续来源、未接种空白、筛选重复使候选排名反转、稀释体积与 CFU 换算，以及不同样本单位均可见。",
+        "检测与抽样推理很强；尿素选择机制仅由培养基/菌型布尔规则决定，营养利用和“生长不等于鉴定”之间缺物质桥梁。",
+        "高初筛值不一定重复成立、空白污染会破坏判断；尿素段需预测可用氮源变化对选择性的影响，不能提供未经验证的种属鉴定。"
+      ],
+      "necessaryChanges": "只补尿素水解—可利用氮—生长的限定教学路径，并在 watch 展示一次空白异常如何使本批结论无效；保留筛选与计数模型。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioMicrobialCulture.tsx",
+        "model": "src/models/bio-microbial-culture.ts",
+        "articleZh": "src/content/bio-microbial-culture.mdx",
+        "articleEn": "src/content/en/bio-microbial-culture.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-012-1",
+          "coverage": "complete",
+          "reason": "culture-medium→culture-streak→culture-blank 稀释来源与空白条件服务纯培养判断；可增强异常空白反例，不需重拍全部。",
+          "chapterIds": ["culture-medium", "culture-streak", "culture-blank"]
+        },
+        {
+          "id": "bio-elective-3-015-1",
+          "coverage": "complete",
+          "reason": "screen-parallel→screen-retest 初筛与独立复测产生不同排序，明确为什么单孔高值不足。",
+          "chapterIds": ["screen-parallel", "screen-retest"]
+        },
+        {
+          "id": "bio-elective-3-018-1",
+          "coverage": "causal-gap",
+          "reason": "urea-select→urea-dilution→urea-replicates→urea-accounting 计数合理，但选择依据是直接指定生长，需连接尿素利用与营养条件。",
+          "chapterIds": ["urea-select", "urea-dilution", "urea-replicates", "urea-accounting"]
+        },
+        {
+          "id": "bio-elective-3-020-1",
+          "coverage": "complete",
+          "reason": "survey-air→survey-liquids→survey-soil 采样体积/质量/暴露条件不同，数值不可直接横比的原理由方法对象得出。",
+          "chapterIds": ["survey-air", "survey-liquids", "survey-soil"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-plant-cell-engineering",
+      "decision": "rebuild",
+      "phenomenon": "已经分化的茎段为什么还能长成完整植株？改变条件怎样改变发育方向？",
+      "evidence": [
+        "培养四阶段按 tissueState 的 stage/progress 生长，唯一干预是污染；另一个入口有激素比例/总量对照，杂交部分有来源身份和核/叶绿体证据。",
+        "P35 的目标包含基本原理，但画面是培养流程长大；基因组保留、脱分化/再分化的证据推理与条件改变不在同一窗口。",
+        "相同起始材料改变条件应有不同发育结果；同样比例不同总量已有好反例，当前只在 P37。"
+      ],
+      "necessaryChanges": "重构 tissue 四章为再生现象→分化是否丢失信息的候选解释→条件/表达状态与发育方向→新条件预测；P36 杂交与 P37 比例片保留，不把全能性说成任意细胞随时可成株。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioPlantCellEngineering.tsx",
+        "model": "src/models/bio-plant-cell-engineering.ts",
+        "articleZh": "src/content/bio-plant-cell-engineering.mdx",
+        "articleEn": "src/content/en/bio-plant-cell-engineering.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-035-1",
+          "coverage": "causal-gap",
+          "reason": "tissue-callus→tissue-shoot→tissue-root→tissue-acclimatize 主要按阶段长大；教材 P35 的基本原理与激素条件不在此窗口形成因果链。",
+          "chapterIds": ["tissue-callus", "tissue-shoot", "tissue-root", "tissue-acclimatize"]
+        },
+        {
+          "id": "bio-elective-3-036-1",
+          "coverage": "complete",
+          "reason": "hybrid-wall→hybrid-fusion→hybrid-nuclei→hybrid-evidence 从壁障碍到融合，再用核/细胞器来源检验；明确未得到理想“上番茄下马铃薯”。",
+          "chapterIds": ["hybrid-wall", "hybrid-fusion", "hybrid-nuclei", "hybrid-evidence"]
+        },
+        {
+          "id": "bio-elective-3-037-1",
+          "coverage": "complete",
+          "reason": "hormone-control→hormone-ratio→hormone-dose 有无激素、比例与同一比例不同总量的比较，不能当普适处方。",
+          "chapterIds": ["hormone-control", "hormone-ratio", "hormone-dose"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-animal-cell-engineering",
+      "decision": "revise",
+      "phenomenon": "为什么要传代，而换一瓶液体不一定等于恢复增殖？杂交瘤为何要筛选两次？",
+      "evidence": [
+        "动物细胞增长与液体/细胞转移守恒、缓冲计算；杂交来源、筛选存活、特异性与单克隆概率；移核保留供体与受体身份。",
+        "后两条证据明确；培养片采用容量参数直接给增长曲线，传代后的空间/营养改变怎样重新允许增长主要靠口述。",
+        "杂交存活不等于抗体特异、单孔不必只有一个克隆是已有反例；培养段需有未传代/只换液/合理稀释的限定对照。"
+      ],
+      "necessaryChanges": "针对 culture-growth/passage 补密度限制与干预后的可见差别，清楚标教学因素而非预测真实培养率；保留杂交瘤和核移植路径。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioAnimalCellEngineering.tsx",
+        "model": "src/models/bio-animal-cell-engineering.ts",
+        "articleZh": "src/content/bio-animal-cell-engineering.mdx",
+        "articleEn": "src/content/en/bio-animal-cell-engineering.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-044-1",
+          "coverage": "causal-gap",
+          "reason": "culture-dissociate→culture-growth→culture-passage→culture-buffer 有真实转移与缓冲，但传代前后增长条件的机制桥不够可见。",
+          "chapterIds": [
+            "culture-dissociate",
+            "culture-growth",
+            "culture-passage",
+            "culture-buffer"
+          ]
+        },
+        {
+          "id": "bio-elective-3-048-1",
+          "coverage": "complete",
+          "reason": "hybrid-fuse→hybrid-select→hybrid-specificity→hybrid-clone 两个筛选回答不同问题，并用占孔概率限制单克隆结论。",
+          "chapterIds": ["hybrid-fuse", "hybrid-select", "hybrid-specificity", "hybrid-clone"]
+        },
+        {
+          "id": "bio-elective-3-052-1",
+          "coverage": "complete",
+          "reason": "nuclear-enucleate→nuclear-fuse→nuclear-activate→nuclear-origins 核/胞质来源和发育阶段清楚，未把卵裂当完整克隆成功。",
+          "chapterIds": ["nuclear-enucleate", "nuclear-fuse", "nuclear-activate", "nuclear-origins"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-embryo-engineering",
+      "decision": "revise",
+      "phenomenon": "同一胚胎移给不同生理阶段的受体为什么条件不同？把胚胎切成两半一定都能发育吗？",
+      "evidence": [
+        "受精准备状态、膜接触与原核来源、守恒卵裂；移植显示日期差和实际路径；分割保留内细胞团/滋养层身份。",
+        "受精与分割机制可见；移植只把周期对齐为日期差，没有把受体支持环境与胚胎需求联系起来。",
+        "偏切造成一半缺内细胞团是现成强反例；受体不同步需由明确条件而非伪造成功率解释风险。"
+      ],
+      "necessaryChanges": "只补 transfer-synchrony 的生理条件对照，来源可核查，不给 Δ 天数到成功概率的虚构函数；保留分割镜头。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioEmbryoEngineering.tsx",
+        "model": "src/models/bio-embryo-engineering.ts",
+        "articleZh": "src/content/bio-embryo-engineering.mdx",
+        "articleEn": "src/content/en/bio-embryo-engineering.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-060-1",
+          "coverage": "complete",
+          "reason": "ivf-prepare→ivf-contact→ivf-cleavage 必要准备与接触/原核/卵裂连续，保留必要不等于充分。",
+          "chapterIds": ["ivf-prepare", "ivf-contact", "ivf-cleavage"]
+        },
+        {
+          "id": "bio-elective-3-061-1",
+          "coverage": "causal-gap",
+          "reason": "transfer-inspect→transfer-synchrony→transfer-route 只见筛选、日期差与操作路径，未解释同期的生理意义。",
+          "chapterIds": ["transfer-inspect", "transfer-synchrony", "transfer-route"]
+        },
+        {
+          "id": "bio-elective-3-062-1",
+          "coverage": "complete",
+          "reason": "split-structure→split-balanced→split-offset 细胞类型守恒且偏切导致不同细胞组成，直接给出理论预测。",
+          "chapterIds": ["split-structure", "split-balanced", "split-offset"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-dna-engineering",
+      "decision": "revise",
+      "phenomenon": "白色丝状物为什么还要鉴定？DNA 片段长度不同为何在凝胶中跑得不同？",
+      "evidence": [
+        "切开/配对/连接区别氢键与磷酸二酯键；粗滤液和沉淀保留杂质，鉴定有空白；PCR 链身份与引物、凝胶方向正确。",
+        "重组与 PCR 主线强；提取片主要呈现研磨过滤沉淀显蓝，溶解度/选择性来源没有可见比较；凝胶尺寸分离由经验距离函数直接给出。",
+        "平末端/不兼容末端、缺表达元件和空白孔可检验；提取应预测白色物/颜色阴性各自不能排除什么。"
+      ],
+      "necessaryChanges": "重写提取三章的镜头重心：混合物物性差异→粗分离→独立身份检验，补简化溶解/沉淀条件；电泳增加孔隙阻滞的桥，不修改已正确的化学连接和 PCR 方向。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioDnaEngineering.tsx",
+        "model": "src/models/bio-dna-engineering.ts",
+        "articleZh": "src/content/bio-dna-engineering.mdx",
+        "articleEn": "src/content/en/bio-dna-engineering.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-mechanism-25",
+          "coverage": "complete",
+          "reason": "dna-cut→dna-pair→dna-ligate→dna-vector 区分互补配对与骨架封口，条件及反例明确。",
+          "chapterIds": ["dna-cut", "dna-pair", "dna-ligate", "dna-vector"]
+        },
+        {
+          "id": "bio-elective-3-074-1",
+          "coverage": "causal-gap",
+          "reason": "dna-extract→dna-precipitate→dna-identify 对照在但主要仍是操作后出物/显色；教材 P74 物性差异原理需进入主画面。",
+          "chapterIds": ["dna-extract", "dna-precipitate", "dna-identify"]
+        },
+        {
+          "id": "bio-elective-3-mechanism-26",
+          "coverage": "complete",
+          "reason": "dna-acquire→dna-construct→dna-introduce 来源、表达元件及进入细胞与表达的区别清楚。",
+          "chapterIds": ["dna-acquire", "dna-construct", "dna-introduce"]
+        },
+        {
+          "id": "bio-elective-3-084-1",
+          "coverage": "causal-gap",
+          "reason": "pcr-cycle→pcr-yield→pcr-gel PCR 模板/倍增因果完整，凝胶迁移只按长度函数给距离，需要孔隙与长度的教学桥梁。",
+          "chapterIds": ["pcr-cycle", "pcr-yield", "pcr-gel"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-biotechnology-investigation",
+      "decision": "retain",
+      "phenomenon": "一个批准条目、一个标签和一句营销话，分别证明了什么？",
+      "evidence": [
+        "真实固定历史文件对象/用途/地区/日期核对，包装正反面、已记录与未知样本分开，来源与风险主张分层。",
+        "改变用途就打破文件匹配、未记录不能改非转基因、来源宣称不能推出更安全，都是可见的信息推理。",
+        "改用途/日期、减少覆盖、缺比较证据会改变结论状态；调查计划依赖真实录入，不生成虚假访问。"
+      ],
+      "necessaryChanges": "无必须重构项。它是调查/证据素养条目，不应冒充可实施的遗传工程实验；法规更新仍需实施时另查。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioBiotechnologyInvestigation.tsx",
+        "model": "src/models/bio-biotechnology-investigation.ts",
+        "articleZh": "src/content/bio-biotechnology-investigation.mdx",
+        "articleEn": "src/content/en/bio-biotechnology-investigation.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-092-1",
+          "coverage": "complete",
+          "reason": "biotech-record→biotech-scope→biotech-product 历史文件字段限制与生产方法对象区分清楚。",
+          "chapterIds": ["biotech-record", "biotech-scope", "biotech-product"]
+        },
+        {
+          "id": "bio-elective-3-105-1",
+          "coverage": "complete",
+          "reason": "biotech-label→biotech-sample→biotech-claim→biotech-communicate 从观察、样本到主张及可复核计划，不把态度当证据。",
+          "chapterIds": ["biotech-label", "biotech-sample", "biotech-claim", "biotech-communicate"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-protein-design",
+      "decision": "retain",
+      "phenomenon": "想要一种功能，能否唯一倒推出 DNA？“更好”的蛋白是否在所有条件下都更好？",
+      "evidence": [
+        "同肽 32 种编码、变体测定排名随条件变化；真实胰岛素坐标和 B28/B29 交换；平衡曲线、登录号与成熟链比对。",
+        "多对一编码限制反推唯一性；功能由独立测定检验；聚合平衡守恒与覆盖率防止只凭漂亮结构或局部一致宣称功能。",
+        "浓度改变聚合比例、局部 100% 一致却未覆盖末端、测定条件使排名反转，均有现有反例。"
+      ],
+      "necessaryChanges": "无必须重构项；保留示意关联常数和真实结构/序列数据分层，不推导用药或体内效果。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BioProteinDesign.tsx",
+        "model": "src/models/bio-protein-design.ts",
+        "articleZh": "src/content/bio-protein-design.mdx",
+        "articleEn": "src/content/en/bio-protein-design.mdx",
+        "narration": "src/data/narration.json",
+        "timeline": "src/data/film-timeline.json"
+      },
+      "windows": [
+        {
+          "id": "bio-elective-3-mechanism-27",
+          "coverage": "complete",
+          "reason": "protein-objective→protein-codons→protein-assay 设计假说、编码不唯一与独立测定形成闭环。",
+          "chapterIds": ["protein-objective", "protein-codons", "protein-assay"]
+        },
+        {
+          "id": "bio-elective-3-095-1",
+          "coverage": "complete",
+          "reason": "insulin-structure→insulin-swap→insulin-association 真实位置到改变方案，再以限定平衡检验聚合倾向，不宣称绝不形成六聚体。",
+          "chapterIds": ["insulin-structure", "insulin-swap", "insulin-association"]
+        },
+        {
+          "id": "bio-elective-3-096-1",
+          "coverage": "complete",
+          "reason": "protein-records→protein-align→protein-coverage 来源、范围、比对与覆盖反例相接，适合教材网络数据分析目标。",
+          "chapterIds": ["protein-records", "protein-align", "protein-coverage"]
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    }
+  ]
+}

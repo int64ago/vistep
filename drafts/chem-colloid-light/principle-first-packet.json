@@ -1,0 +1,311 @@
+{
+  "slug": "chem-colloid-light",
+  "status": "frozen-for-root-review",
+  "chapterIdMapping": {
+    "formation": "formation",
+    "comparison": "comparison",
+    "particles": "particles",
+    "dilution": "dilution"
+  },
+  "topic": {
+    "name": "看见光的条件",
+    "nameEn": "What makes light visible",
+    "title": "光穿过去了，为什么侧面看不见？",
+    "titleEn": "Light passed through. Why can’t we see it from the side?",
+    "description": "从两块亮着的光屏出发，追踪微粒如何把光送入眼睛，再用遮挡、关光和稀释检验散射解释。",
+    "descriptionEn": "Start with two lit screens, trace how particles send light to an eye, and test scattering with a blocker, source switch-off and dilution.",
+    "ages": "14+",
+    "category": "chemistry",
+    "medium": "svg"
+  },
+  "pedagogy": {
+    "textbookQuestion": "同样有光通过，为什么胶体的侧面光路明显而盐溶液中不明显？",
+    "corePrinciple": "光是否在某处传播，与是否有来自该处的光进入眼睛不同。入射场驱动微粒的极化，散射将一部分能量送向其他方向。",
+    "misconceptions": [
+      "侧面看不见就是没有光通过",
+      "胶粒自己发光或把光困在样品里",
+      "所有散射能量都会进入眼睛",
+      "丁达尔效应意味着盐溶液绝对不散射",
+      "瑞利蓝红比值适用于任何粒径或浓度"
+    ],
+    "transferQuestions": [
+      {
+        "question": "只在微粒与侧面的观察者之间加遮挡，哪个观察位置会变暗？",
+        "answer": "侧面接收变暗；未散射的光仍到达后方光屏。"
+      },
+      {
+        "question": "粒径和光源相同，稀释后侧向接收和未散射量怎样变化？",
+        "answer": "侧向接收减少，未散射量增大。"
+      },
+      {
+        "question": "窗边光柱怎样进入眼睛？能直接用本片的3.8倍解释雾的颜色吗？",
+        "answer": "尘埃把部分窗光送向眼睛；较大雾滴不能套用小球瑞利比值。"
+      }
+    ]
+  },
+  "narration": {
+    "duration": 182,
+    "cues": [
+      {
+        "id": "formation",
+        "title": "看不见，不等于没有光",
+        "titleEn": "Unseen does not mean absent",
+        "seconds": 32,
+        "caption": "后方光屏亮着：两种样品都有光通过。",
+        "captionEn": "Both rear screens are lit: light passed through.",
+        "zh": "同样的红光穿过两份样品。先别盯着烧杯，看看后方的光屏：两块都亮着，说明光都穿过了样品。可是从侧面看，氢氧化铁胶体中有明显光路，盐溶液中却不明显。为什么光明明在这里，我们却看不见它？眼睛要看见某处，必须有来自那里的光进入眼睛。接下来要追踪的，就是从原来向前的光束，到旁边眼睛的这段路。",
+        "en": "The same red light passes through two samples. Before looking inside them, inspect the rear screens. Both are lit, so light passed through both samples. Yet a side view reveals a clear path in the iron hydroxide colloid and no obvious path in the salt solution. How can light be there without being visible? To see a place, your eye must receive light from it. We need to trace the route from the forward beam to an eye beside it.",
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "comparison",
+        "title": "只挡住通往眼睛的光",
+        "titleEn": "Block only the route to the eye",
+        "seconds": 42,
+        "caption": "挡住侧向路径，眼睛变暗；直穿的光仍到达光屏。",
+        "captionEn": "Block the side path: the eye darkens, but the screen stays lit.",
+        "zh": "现在从上方放大一个散射位置。跟着这段路径：光先从光源到达微粒，一部分继续向前，另一小部分向侧面传播，进入眼睛。只有到达眼睛的那一小部分，才让我们看见这里。检验这个解释，只需在微粒和眼睛之间插入遮挡片。看，侧面的眼睛收不到光了，后方光屏却仍然亮着。光没有在样品里消失，是入眼的路线被截断了。移开遮挡片，这条路线恢复，眼睛也重新收到光。",
+        "en": "Look down on one enlarged scattering site. Follow the route: light reaches the particle. Some continues forward, while a small part travels sideways into the eye. Only the part reaching that eye makes the location visible to this observer. We can test the explanation by inserting a blocker between particle and eye. The side observer now receives no light, yet the rear screen stays lit. Light has not disappeared inside the sample. Its route to the eye has been intercepted. Remove the blocker and that route opens again.",
+        "chapterAt": 32,
+        "at": 32.45
+      },
+      {
+        "id": "particles",
+        "title": "微粒怎样响应入射光",
+        "titleEn": "How the particle responds to light",
+        "seconds": 48,
+        "caption": "入射电场驱动电荷响应，变化的极化产生散射光。",
+        "captionEn": "The incident field drives a charge response that produces scattered light.",
+        "zh": "微粒不是把光弹开的硬墙。再放大一点，光带来的电场先到达微粒，使里面的正负电荷分布发生相对位移。这里画出一种偏振下的响应，整个胶粒并没有这样上下运动。变化的极化产生向外传播的电磁场；看，其中一路到达了眼睛。散射光的能量来自入射光，频率也保持相同。现在关闭光源。先是入射的最后一段波到达，接着电荷响应停止，已经离开的散射波再传播到眼睛。最后眼睛变暗：微粒不会脱离光源继续发光。图中的速度和位移都经过了放大。",
+        "en": "The particle is not a hard wall bouncing light away. Zoom closer. The arriving electric field drives a relative displacement of positive and negative charge distributions. We show one polarization; the whole particle is not bobbing up and down. This changing polarization produces an outward electromagnetic field. One route reaches the eye. Its energy comes from the incident light, and its frequency stays the same. Now switch off the source. The final incoming wave arrives, the charge response stops, and the last scattered wave travels onward to the eye. Then the eye darkens. The particle does not keep glowing independently. Speeds and displacements are greatly exaggerated.",
+        "chapterAt": 74,
+        "at": 74.45
+      },
+      {
+        "id": "dilution",
+        "title": "让解释预测新的现象",
+        "titleEn": "Make the explanation predict",
+        "seconds": 60,
+        "caption": "同一个散射解释，接受稀释、换色与新场景的检验。",
+        "captionEn": "Test the same explanation by dilution, color and a new setting.",
+        "zh": "一个解释如果有用，就应该能预测还没有看过的结果。现在换成透明小球的类比模型，保持大小和光源不变，减少颗粒。侧面收集的光变少，原方向直穿的比例却增大。下方同一份入射能量被分成直穿和首次散射两份，并没有凭空增加。再保持颗粒和入射功率相同，比较红光和蓝光。小粒子模型预测蓝光更容易被散射；这里侧向接收约是红光的三点八倍。最后离开烧杯，看暗室里的窗口光柱。沿着窗口、尘埃、眼睛这条路，仍然能解释为什么路径显现。但大尘粒、雾滴或多次散射不能套用刚才的数值比例。可迁移的是因果解释，数值模型要守住它的条件。",
+        "en": "A useful explanation should predict something we have not yet seen. Switch to an analogy of transparent small spheres. Keep size and illumination fixed while removing particles. Side collection falls, while more light continues unscattered. The strip divides the same incident energy into unscattered light and light scattered once; it creates no extra energy. Next, keep particles and incident power fixed and compare red with blue. The small-particle model predicts stronger blue scattering: about three point eight times as much side collection here. Finally leave the beaker for a shaft of window light. Trace window, dust and eye: redirected light still explains the visible path. But large dust, fog droplets and multiple scattering cannot use the same numerical ratio. Transfer the causal explanation while respecting the model’s limits.",
+        "chapterAt": 122,
+        "at": 122.45
+      }
+    ]
+  },
+  "internalShots": [
+    {
+      "chapterId": "formation",
+      "progress": [0, 1],
+      "visibleEvidence": "两份已制样品、各自光源与后方亮光屏；盐水无明显侧束、胶体侧束明显。教材样品是观察对象，不填入球模型数字。"
+    },
+    {
+      "chapterId": "comparison",
+      "progress": [0, 0.21],
+      "visibleEvidence": "入射路线逐渐延伸到微粒；光屏只在光到达后亮。"
+    },
+    {
+      "chapterId": "comparison",
+      "progress": [0.21, 0.42],
+      "visibleEvidence": "微粒到眼睛的路径逐渐延伸，入眼后眼睛亮。"
+    },
+    {
+      "chapterId": "comparison",
+      "progress": [0.45, 0.55],
+      "visibleEvidence": "遮挡片平滑滑入；实际覆盖侧路时截断光路，眼睛暗而后屏仍亮。"
+    },
+    {
+      "chapterId": "comparison",
+      "progress": [0.55, 0.86],
+      "visibleEvidence": "遮挡对照停留。"
+    },
+    {
+      "chapterId": "comparison",
+      "progress": [0.86, 0.94],
+      "visibleEvidence": "遮挡片平滑移开；入眼路径恢复。"
+    },
+    {
+      "chapterId": "particles",
+      "progress": [0, 0.1583],
+      "visibleEvidence": "同一有限入射波列先传播到粒子，随后出现受驱电荷响应。"
+    },
+    {
+      "chapterId": "particles",
+      "progress": [0.1583, 0.6083],
+      "visibleEvidence": "正负电荷分布相对位移，六个x-y平面方向的场使用同一retarded drive；侧面眼睛延时接收。"
+    },
+    {
+      "chapterId": "particles",
+      "progress": [0.6083, 0.7333],
+      "visibleEvidence": "源停止，最后入射波到达；电荷响应在8.8/12停止。"
+    },
+    {
+      "chapterId": "particles",
+      "progress": [0.7333, 0.925],
+      "visibleEvidence": "响应已停但最后的散射波仍在传播，最晚11.1/12到眼睛。"
+    },
+    {
+      "chapterId": "particles",
+      "progress": [0.925, 1],
+      "visibleEvidence": "只剩灰色方向参考，入射与散射场都消失，眼睛暗。"
+    },
+    {
+      "chapterId": "dilution",
+      "progress": [0, 0.45],
+      "visibleEvidence": "120→30 ppm、同一稳定粒子集合逐步减少；侧向接收减弱，未散射份额增加，能量分条保持总和。"
+    },
+    {
+      "chapterId": "dilution",
+      "progress": [0.45, 0.68],
+      "visibleEvidence": "同30ppm同18nm同入射功率，633/450nm两样品及侧眼/后屏对照；侧向收集比约3.8。"
+    },
+    {
+      "chapterId": "dilution",
+      "progress": [0.68, 1],
+      "visibleEvidence": "离开烧杯，窗口—尘埃—眼睛的完整路线；模型适用范围在话语/折叠说明明确。"
+    }
+  ],
+  "textbook": {
+    "file": "人教版高中化学-必修第一册.pdf",
+    "printedPage": 9,
+    "pdfPage": 14,
+    "chapter": "第一章 物质及其变化",
+    "section": "第一节 物质的分类及转化",
+    "experiment": "实验1-1",
+    "distinction": "屏幕、挡片、受驱电荷镜头、透明球定量模型、迁移问题为编辑加入；不声称教材原有实验操作。"
+  },
+  "sources": [
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_32.html#Ch32-S5",
+      "verified": "2026-10-18",
+      "supports": "incident E drives charge response; reradiation; small-particle frequency scaling; particle-size limit",
+      "type": "original author physics lecture"
+    },
+    {
+      "url": "https://pages.nist.gov/SCATMECH/docs/rayscat.htm",
+      "verified": "2026-10-18",
+      "supports": "nonabsorbing Rayleigh sphere and medium optical parameters, small-size condition",
+      "type": "NIST official model documentation"
+    },
+    {
+      "url": "https://pages.nist.gov/SCATMECH/docs/phase.htm",
+      "verified": "2026-10-18",
+      "supports": "unpolarized Rayleigh angular distribution",
+      "type": "NIST official model documentation"
+    },
+    {
+      "url": "https://pages.nist.gov/SCATMECH/code/rayscat.cpp",
+      "verified": "2026-10-18",
+      "supports": "Original Csca implementation gives the same Rayleigh cross section used here",
+      "type": "NIST original implementation"
+    }
+  ],
+  "i18n": {
+    "strategy": "browserLocale plus local say(zh,en); no new tr() calls",
+    "trDictionary": {},
+    "articleTranslations": "Both owned MDX files updated; dynamic SVG aria and UI in component are bilingual."
+  },
+  "modelLimits": [
+    "Textbook iron-hydroxide specimens are qualitative only; nonabsorbing sphere parameters are not a fit.",
+    "Unpolarized Rayleigh power/collector model; dipole closeup shows one polarization, with incident x, E z, eye +y, projected in SVG.",
+    "8-degree side collector is deliberately large for an optical observer; no direct laser viewing or actual eye irradiance claim.",
+    "Power budget is first-event, not a full radiative-transfer calculation. Exploration tau <=0.13; displayed brightness boosted, not human photometry.",
+    "Static guides distinguish illustrative paths from normally invisible light in clean air."
+  ],
+  "rootRemaining": [
+    "Merge proposed shared topic/metadata/narration/captions if accepted; preserve four chapter IDs and curriculum links.",
+    "Generate and listen to both new voice tracks; validate subshot alignment against actual normalized durations.",
+    "Re-run whole-player phone screenshots after new captions/voice, full playback, resource failure and required repository validation.",
+    "Current cover remains the source/colloid/eye comparison and API-compatible; optional hero wording follows new topic."
+  ],
+  "validation": {
+    "scopedTests": 9,
+    "ownedTypeScriptDiagnostics": 0,
+    "browserKeyframes": 32,
+    "locales": ["zh", "en"],
+    "viewports": [
+      [320, 844],
+      [1440, 1000]
+    ],
+    "maxPhoneWholePlayerBottom": 805.2,
+    "minSvgFontPx": 16,
+    "uiStatesVerified": [
+      "path-open",
+      "path-blocked",
+      "source-off",
+      "zero-particles",
+      "blue-prediction"
+    ],
+    "fullPlayback": "Incomplete: timeline element became absent after 26.1s, with no pageerror; possible development reload, not confirmed. Repeat on stable preview.",
+    "listening": false,
+    "physicalPhone": false,
+    "evidenceDirectories": [
+      "artifacts/chemistry-inventory/review-colloid-principle/",
+      "artifacts/chemistry-inventory/review-colloid-interaction/"
+    ]
+  },
+  "rootTimingRevision": {
+    "date": "2026-10-18",
+    "supersedes": "Author draft timing percentages below; final implementation and measured timeline take precedence.",
+    "durationSeconds": 182.0,
+    "chapters": [
+      {
+        "id": "formation",
+        "title": "看不见，不等于没有光",
+        "titleEn": "Unseen does not mean absent",
+        "caption": "后方光屏亮着：两种样品都有光通过。",
+        "captionEn": "Both rear screens are lit: light passed through.",
+        "at": 0
+      },
+      {
+        "id": "comparison",
+        "title": "只挡住通往眼睛的光",
+        "titleEn": "Block only the route to the eye",
+        "caption": "挡住侧向路径，眼睛变暗；直穿的光仍到达光屏。",
+        "captionEn": "Block the side path: the eye darkens, but the screen stays lit.",
+        "at": 32.0
+      },
+      {
+        "id": "particles",
+        "title": "微粒怎样响应入射光",
+        "titleEn": "How the particle responds to light",
+        "caption": "入射电场驱动电荷响应，变化的极化产生散射光。",
+        "captionEn": "The incident field drives a charge response that produces scattered light.",
+        "at": 74.0
+      },
+      {
+        "id": "dilution",
+        "title": "让解释预测新的现象",
+        "titleEn": "Make the explanation predict",
+        "caption": "同一个散射解释，接受稀释、换色与新场景的检验。",
+        "captionEn": "Test the same explanation by dilution, color and a new setting.",
+        "at": 122.0
+      }
+    ],
+    "evidence": "artifacts/teaching-principles/batch-1-timed-speech/; batch-1-transcription-final.json",
+    "method": "Independent local Whisper word/segment timing compared with the scene directors and rendered shot states; no subjective listening claim.",
+    "changes": [
+      {
+        "scene": "chem-colloid-light",
+        "chapter": "comparison",
+        "before": "Eye route and blocker removal arrived after their spoken references.",
+        "revision": "Complete eye route at11.76s; blocker inserted16.8–20.16s and removed30.24–32.76s. Side path alone is blocked."
+      },
+      {
+        "scene": "chem-colloid-light",
+        "chapter": "particles",
+        "before": "Eye darkened about8s after speech said it did.",
+        "revision": "One shared retarded model clock uses continuous interpolation: source off27.36s, charge response ends32.16s, last eye wave ends36.96s."
+      },
+      {
+        "scene": "chem-colloid-light",
+        "chapter": "dilution",
+        "revision": "Color comparison begins24s; window-light transfer begins36s, aligned with both measured spoken tracks."
+      }
+    ],
+    "listening": "not-run; independent ASR is separate evidence"
+  }
+}

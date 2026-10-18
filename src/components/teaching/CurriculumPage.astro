@@ -19,7 +19,7 @@ const books = [...curriculum.books].sort((a, b) => a.order - b.order);
 const copy = {
   zh: {
     teaching: '教学专区',
-    intro: '跟着章节走，从观察理解原理。',
+    intro: '顺着教材的章节，从一个现象追问它背后的原理。',
     guide: '教材目录',
     guideHint: '按教材学习顺序',
     available: `${books.length} 册 · ${lessons.length} 个学习位置`,
@@ -29,13 +29,13 @@ const copy = {
     section: (order: number) => `第 ${order} 节`,
     page: (page: number) => `教材第 ${page} 页`,
     textbook: '教材原名',
-    watch: '开始观察',
-    note: '目录按教材正文的学习顺序排列。实验、历史研究、调查与结构模型保留各自类型；同一过程可以在不同章节承担不同的观察任务。',
-    target: '这一节，先看清',
+    watch: '跟着问题看下去',
+    note: '目录按教材正文的学习顺序排列，保留教材原名、页码和研究类型。从现象找到证据，再用原理解释新的情境。',
+    target: '这一节，要理解',
   },
   en: {
     teaching: 'Learn',
-    intro: 'Follow the chapters. Understand through observation.',
+    intro: 'Follow the chapters, then ask what explains each observation.',
     guide: 'Chapter guide',
     guideHint: 'In textbook order',
     available: `${books.length} books · ${lessons.length} learning entries`,
@@ -44,9 +44,9 @@ const copy = {
     section: (order: number) => `Section ${order}`,
     page: (page: number) => `Textbook page ${page}`,
     textbook: 'Textbook title',
-    watch: 'Start observing',
-    note: 'Entries follow the textbook sequence. Experiments, historical research, investigations and models keep their distinct identities. A shared process may serve different learning goals.',
-    target: 'In this section, observe',
+    watch: 'Follow the question',
+    note: 'Entries keep their textbook order, original titles, page references and research types. Follow observations to evidence, then use a principle to explain a new situation.',
+    target: 'In this section, understand',
   },
 }[locale];
 ---
@@ -89,7 +89,9 @@ const copy = {
       <input
         id="teaching-search"
         type="search"
-        placeholder={locale === 'zh' ? '实验名称、装置或章节' : 'Experiment, apparatus or chapter'}
+        placeholder={locale === 'zh'
+          ? '想理解的问题、原理或教材名称'
+          : 'Question, principle or textbook title'}
         autocomplete="off"
       />
       <span class="teaching-search-result" aria-live="polite" data-locale={locale}></span>
@@ -197,14 +199,19 @@ const copy = {
                               </span>
                               <h3>{section.title[locale]}</h3>
                             </div>
-                            <div class="teaching-section-goal">
-                              <span>{copy.target}</span>
-                              <p>{sectionLessons[0].lesson.goal[locale]}</p>
-                            </div>
+                            {sectionLessons.length > 1 && (
+                              <div class="teaching-section-goal">
+                                <span>{copy.target}</span>
+                                <p>
+                                  {sectionLessons[0].lesson.explanation?.lead[locale] ??
+                                    sectionLessons[0].lesson.goal[locale]}
+                                </p>
+                              </div>
+                            )}
                             <ol class="teaching-experiment-list">
                               {sectionLessons.map((context) => (
                                 <li
-                                  data-searchable={`${context.lesson.name[locale]} ${context.lesson.textbookTitle[locale]} ${section.title[locale]} ${context.lesson.kind[locale]}`}
+                                  data-searchable={`${context.lesson.name[locale]} ${context.lesson.textbookTitle[locale]} ${section.title[locale]} ${context.lesson.kind[locale]} ${context.lesson.explanation?.question[locale] ?? ''} ${context.lesson.explanation?.principle[locale] ?? ''}`}
                                 >
                                   <a
                                     class="teaching-experiment-row"
@@ -224,8 +231,19 @@ const copy = {
                                         <span>{context.lesson.kind[locale]}</span>
                                         <span>{copy.page(context.lesson.page)}</span>
                                       </div>
-                                      <h4>{context.lesson.name[locale]}</h4>
-                                      <p>{context.lesson.goal[locale]}</p>
+                                      <h4>
+                                        {context.lesson.explanation?.question[locale] ??
+                                          context.lesson.name[locale]}
+                                      </h4>
+                                      <p>
+                                        {context.lesson.explanation?.lead[locale] ??
+                                          context.lesson.goal[locale]}
+                                      </p>
+                                      {context.lesson.explanation && (
+                                        <p class="teaching-original-title">
+                                          {copy.textbook} · {context.lesson.textbookTitle[locale]}
+                                        </p>
+                                      )}
                                       <span class="teaching-experiment-enter">
                                         {copy.watch}
                                         <span aria-hidden="true">↗</span>

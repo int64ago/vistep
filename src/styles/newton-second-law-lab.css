@@ -1,208 +1,269 @@
 .newton-cart-lab {
-  max-width: 820px;
-  margin: auto;
-  padding: 0 16px;
-  color: #657c55;
+  width: min(100%, 820px);
+  margin-inline: auto;
+  padding: 20px;
+  color: #394c3f;
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  background: radial-gradient(ellipse at 50% 20%, #f4f5e9 0, #edf1e5 72%);
+  border-radius: 22px;
+}
+.newton-cart-lab * {
+  box-sizing: border-box;
+}
+.newton-question {
+  margin-bottom: 18px;
+}
+.newton-question p {
+  margin: 0;
+  font-size: clamp(19px, 2.2vw, 25px);
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.newton-question > span {
+  display: block;
+  margin-top: 5px;
+  color: #72806b;
   font-size: 16px;
 }
-.newton-cart-lab header {
+.newton-green {
+  color: #427461;
+}
+.newton-orange {
+  color: #a2593b;
+}
+.newton-blue {
+  color: #426d91;
+}
+.newton-force-balance,
+.newton-observation,
+.newton-result,
+.newton-cart-trial-heading,
+.newton-tension-evidence {
   display: flex;
-  gap: 22px;
+  align-items: baseline;
   justify-content: space-between;
-}
-.newton-cart-lab header p {
-  font-size: 18px;
-  margin: 0;
-}
-.newton-cart-lab header span {
-  color: #879875;
-}
-.newton-cart-apparatus {
-  display: block;
-  width: 100%;
-  height: 330px;
-}
-.newton-cart-values {
-  display: flex;
-  justify-content: center;
-  gap: 36px;
-  text-align: center;
+  gap: 8px 16px;
   flex-wrap: wrap;
 }
-.newton-cart-values span {
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
+.newton-force-balance {
+  justify-content: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dfe5d4;
 }
-.newton-cart-values strong {
-  font-size: 21px;
-  line-height: 1.7;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
+.newton-observation {
+  justify-content: center;
+  gap: 7px 22px;
 }
-.newton-cart-tape {
-  max-width: 510px;
-  margin: auto;
-  text-align: center;
+.newton-cart-trial-heading {
+  padding-inline: 8px;
 }
-.newton-cart-tape p {
-  font-size: 16px;
-  margin: 20px 0 0;
+.newton-cart-trial-heading strong {
+  font-weight: 600;
 }
-.newton-cart-tape svg {
+.newton-cart-trials {
+  min-width: 0;
+}
+.newton-cart-trials[data-paired='true'] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.newton-cart-trial {
+  min-width: 0;
+}
+.newton-rig,
+.newton-street,
+.newton-velocity-trace {
   width: 100%;
-  height: 75px;
+  min-width: 0;
+}
+.newton-rig svg,
+.newton-street svg,
+.newton-velocity-trace svg {
   display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
-.newton-cart-pair {
-  text-align: center;
+.newton-velocity-trace {
+  margin-top: 8px;
+}
+.newton-result {
+  margin-top: 18px;
+  border-top: 1px solid #d6dfcb;
+  padding-top: 14px;
+}
+.newton-result strong {
+  color: #41634d;
+  font-size: 19px;
+}
+.newton-condition {
+  margin: 12px 0 0;
+  color: #67775e;
   font-size: 16px;
-  margin: 20px auto;
 }
-.newton-cart-pair p {
-  margin: 0 0 8px;
+.newton-tension-evidence {
+  margin: 14px 8px 0;
+  justify-content: center;
 }
-.newton-cart-pair span {
-  margin: 0 12px;
+.newton-phase-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  color: #8a9483;
 }
-.newton-cart-pair strong {
-  display: block;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 1.8;
-}
-.newton-cart-approx {
+.newton-phase-strip span {
+  padding: 5px 8px;
   text-align: center;
-  font-size: 16px;
-  line-height: 1.6;
+  border-radius: 10px;
 }
-.newton-cart-approx span {
-  margin: 0 14px;
-}
-.newton-cart-cause {
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.6;
+.newton-phase-strip [data-active='true'] {
+  color: #406d52;
+  background: #dde8d5;
 }
 .newton-cart-controls {
   display: grid;
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
+  border-top: 1px solid #d6dfcb;
+  margin-top: 22px;
+  padding-top: 20px;
+}
+.newton-cart-controls .segmented,
+.newton-cart-controls > p,
+.newton-method {
+  grid-column: 1 / -1;
+}
+.newton-cart-controls .control,
+.newton-cart-controls .control-top {
+  min-width: 0;
+  font-size: 16px;
+}
+.newton-cart-controls .control-top {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.newton-cart-controls input[type='range'] {
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  margin-inline: 0;
 }
 .newton-cart-controls .segmented {
   flex-wrap: wrap;
+  gap: 4px;
 }
-.newton-cart-note {
+.newton-cart-controls .segmented button {
+  white-space: normal;
   font-size: 16px;
-  line-height: 1.6;
-  color: #859673;
+  min-height: 44px;
+  min-width: 44px;
+  flex: 1 1 auto;
 }
-@media (max-width: 760px) {
+.newton-method {
+  border-top: 1px solid #d6dfcb;
+  padding-top: 12px;
+}
+.newton-method summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding-block: 10px;
+}
+.newton-method p {
+  font-size: 16px;
+  color: #64735b;
+}
+.newton-tape-dots {
+  position: relative;
+  height: 28px;
+  background: #e6dbc0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.newton-tape-dots span {
+  position: absolute;
+  top: 12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #756c55;
+}
+@media (max-width: 560px) {
   .newton-cart-lab {
-    padding: 0 4px;
+    padding: 12px;
+    border-radius: 16px;
   }
-  .newton-cart-lab header {
+  .newton-question {
+    margin-bottom: 8px;
+  }
+  .newton-question p {
+    font-size: 19px;
+  }
+  .newton-question > span {
+    display: none;
+  }
+  .newton-cart-lab:is(
+      [data-view='tension'],
+      [data-view='force'],
+      [data-view='mass'],
+      [data-view='boundary']
+    )
+    .newton-question
+    > span {
     display: block;
-    text-align: center;
+    margin-top: 3px;
+    line-height: 20px;
   }
-  .newton-cart-lab header p {
+  .newton-cart-trials[data-paired='true'] {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .newton-cart-trials[data-paired='true'] .newton-cart-trial {
+    position: relative;
+  }
+  .newton-cart-trials[data-paired='true'] .newton-observation {
+    position: absolute;
+    left: 8px;
+    bottom: 2px;
+    width: calc(100% - 70px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    justify-content: start;
+  }
+  .newton-cart-trials[data-paired='true'] .newton-cart-trial + .newton-cart-trial {
+    border-top: 1px solid #dfe5d4;
+    padding-top: 8px;
+  }
+  .newton-cart-trial-heading {
+    padding: 0;
+    gap: 3px 8px;
+  }
+  .newton-cart-trial-heading span {
     font-size: 16px;
-    margin-bottom: 5px;
   }
-  .newton-cart-apparatus {
-    height: 275px;
+  .newton-observation {
+    gap: 5px 13px;
   }
-  .newton-cart-values {
-    gap: 16px;
+  .newton-result {
+    margin-top: 8px;
+    padding-top: 8px;
+    gap: 4px 10px;
   }
-  .newton-cart-values strong {
+  .newton-result strong {
     font-size: 18px;
   }
-  .newton-cart-cause {
-    font-size: 16px;
+  .newton-force-balance {
+    justify-content: space-between;
+    gap: 4px 10px;
   }
-}
-
-.newton-cart-analysis {
-  max-width: 450px;
-  margin: auto;
-  text-align: center;
-}
-.newton-cart-analysis p {
-  font-size: 16px;
-  margin: 12px 0;
-}
-.newton-cart-analysis svg {
-  display: block;
-  width: 100%;
-  height: 180px;
-}
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .newton-cart-lab {
-    padding: 12px 8px;
+  .newton-cart-controls {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .showcase[data-mode='watch'] .newton-cart-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .newton-cart-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .newton-cart-lab > header > span,
-  .showcase[data-mode='watch'] .newton-cart-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .newton-cart-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .newton-cart-lab > p[class$='-observation'] {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .newton-cart-apparatus {
-    height: 185px;
-  }
-  .showcase[data-mode='watch'] .newton-cart-values {
-    gap: 7px 15px;
-  }
-  .showcase[data-mode='watch'] .newton-cart-values span {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 6px;
-  }
-  .showcase[data-mode='watch'] .newton-cart-values strong {
-    line-height: 1.4;
-  }
-  .showcase[data-mode='watch'] .newton-cart-pair {
-    margin: 6px 0;
-  }
-  .showcase[data-mode='watch'] .newton-cart-tape p {
-    margin: 5px 0;
-  }
-  .showcase[data-mode='watch'] .newton-cart-tape svg {
-    height: 55px;
-  }
-  .showcase[data-mode='watch'] .newton-cart-approx {
-    margin: 5px 0;
-  }
-  .showcase[data-mode='watch'] .newton-cart-analysis p {
-    margin: 4px 0;
-  }
-  .showcase[data-mode='watch'] .newton-cart-analysis svg {
-    height: 150px;
-    overflow: visible;
-  }
-  .showcase[data-mode='watch'] .newton-cart-analysis svg text {
-    font-size: 23px;
-  }
-}
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .newton-cart-lab > header,
-  .showcase[data-mode='watch'][data-chapter='2'] .newton-cart-tape,
-  .showcase[data-mode='watch'][data-chapter='3'] .newton-cart-tape,
-  .showcase[data-mode='watch'][data-chapter='5'] .newton-cart-tape {
-    display: none;
+  .newton-cart-lab[data-watch='true'] .newton-condition {
+    margin-top: 9px;
   }
 }

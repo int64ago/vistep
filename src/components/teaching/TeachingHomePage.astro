@@ -1,6 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { curricula, curriculumPath, getCurriculumLessons } from '../../data/curricula';
+import {
+  curricula,
+  curriculumPath,
+  curriculumLessonPath,
+  getCurriculumLessons,
+} from '../../data/curricula';
+import { featuredTeachingLessons } from '../../data/teaching-explanations';
 import type { Locale } from '../../i18n';
 import TeachingArtwork from './TeachingArtwork.astro';
 import TeachingBookMark from './TeachingBookMark.astro';
@@ -9,34 +15,43 @@ interface Props {
   locale?: Locale;
 }
 const { locale = 'zh' } = Astro.props;
+const featured = featuredTeachingLessons.map((id) =>
+  curricula
+    .flatMap((curriculum) => getCurriculumLessons(curriculum))
+    .find(({ lesson }) => lesson.experimentId === id)!,
+);
 const copy = {
   zh: {
     title: '教学专区',
-    heading: ['顺着教材学，', '让原理看得见。'],
-    intro: '从一次观察到一个结论。跟着物理、化学与生物教材的顺序，停在理解发生的那一刻。',
+    heading: ['从「怎么会这样」，', '走到「原来如此」。'],
+    intro: '从教材里的一个现象出发。跟踪看不见的过程，找到支撑解释的证据，再用原理回答一个新问题。',
+    questions: '先带着一个问题出发',
+    questionsNote: '运动、光与细胞，各有一条追问的线索。',
     collection: '选择你的教材',
     collectionNote: '章节有顺序，好奇心有去处。',
     action: '打开教材目录',
     available: '已收录',
     experiments: '个学习位置',
-    approach: '和课堂的进度，一起往前。',
+    approach: '现象是起点，理解才是目的。',
     approachText:
-      '每个学习位置都保留教材中的名称与上下文。先观看过程，再暂停观察、改变条件，回到教材理解结论。实验、调查与原理演示各有标注。',
+      '沿教材的学习顺序，把观察、证据和理论联系起来。改变一个条件，看看原来的解释还能不能成立。教材原名和页码始终保留，方便回到课堂。',
     lesson: '正在展开',
   },
   en: {
     title: 'Learn',
-    heading: ['Follow the textbook.', 'See the principles.'],
+    heading: ['Start with “why?”.', 'See how it makes sense.'],
     intro:
-      'From an observation to a conclusion. Follow your physics, chemistry or biology textbook, and pause at the moment that matters.',
+      'Start with an observation from your textbook. Follow the hidden process, find the evidence, and use the explanation to answer a new question.',
+    questions: 'Begin with a question',
+    questionsNote: 'Three ways into motion, light and living cells.',
     collection: 'Choose your textbook',
     collectionNote: 'A clear sequence. Room for curiosity.',
     action: 'Open the chapter guide',
     available: '',
     experiments: 'learning entries',
-    approach: 'Keep pace with the classroom.',
+    approach: 'An observation starts the story.',
     approachText:
-      'Every entry keeps its textbook name and context. Watch, pause to observe, and change a condition before returning to the explanation. Experiments, investigations and models are clearly identified.',
+      'Follow textbook order while connecting observations, evidence and theory. Change a condition and see whether the explanation still holds. Original titles and page references keep the connection to your classroom.',
     lesson: 'Now exploring',
   },
 }[locale];
@@ -58,6 +73,28 @@ const copy = {
       <div class="teaching-hero-art"><TeachingArtwork /></div>
     </header>
 
+    <section class="teaching-questions" aria-labelledby="teaching-questions-title">
+      <div class="teaching-section-label">
+        <h2 id="teaching-questions-title">{copy.questions}</h2><p>{copy.questionsNote}</p>
+      </div>
+      <div class="teaching-question-list">
+        {
+          featured.map((context) => (
+            <a class="teaching-question" href={curriculumLessonPath(context, locale)}>
+              <span>
+                {context.curriculum.subject[locale]} · {context.section.title[locale]}
+              </span>
+              <strong>{context.lesson.explanation!.question[locale]}</strong>
+              <p>{context.lesson.explanation!.lead[locale]}</p>
+              <span class="teaching-question-link">
+                {locale === 'zh' ? '跟着问题看下去' : 'Follow the question'}{' '}
+                <span aria-hidden="true">↗</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
     <section class="teaching-collection" aria-labelledby="teaching-textbooks">
       <div class="teaching-section-label">
         <h2 id="teaching-textbooks">{copy.collection}</h2>

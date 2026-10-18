@@ -1,33 +1,53 @@
 ---
-name: Light paths in a colloid
-title: Why does a colloid reveal the light path?
+name: What makes light visible
+title: Light passed through. Why can’t we see it from the side?
 ---
 
 <section id="understand">
-## Look from the side
+## Passing through is different from reaching your eye
 
-Salt solution and iron hydroxide colloid both transmit light. When viewed perpendicular to a red incident beam, however, the colloid reveals a distinct light path. Dispersed particles redirect some of the light toward the observer: the Tyndall effect. The sample is scattering incident light, not emitting its own light.
+Both rear screens are lit. Light has not disappeared inside the sodium chloride solution. Yet a side view reveals a clear beam in the iron hydroxide colloid and no obvious beam in the solution. The question is how light gets from its original forward direction into an eye beside the beam.
 
-The textbook first forms a red-brown iron hydroxide colloid and then compares it with sodium chloride solution. Colour growth represents preparation qualitatively; actual preparation conditions and particle distributions affect the observation.
+Enlarge one scattering site and connect the source, particle and eye. Some incident energy travels in other directions after interacting with the particle. A small part enters the eye. Many particles along the illuminated region collectively reveal the path: the textbook’s Tyndall effect.
+
+Now intercept only the particle-to-eye path. The eye darkens while the rear screen stays lit. Light still passes through the sample; the route available to the observer has changed. This control separates “I cannot see it” from “no light is there.”
 
 </section>
 <section id="try">
-## Change one factor at a time
+## Make the explanation earn its predictions
 
-Reduce particle volume fraction and compare the side beam with transmitted light. Then hold the fraction fixed and change particle radius. Larger particles are fewer in number at a fixed fraction, but each scatters much more strongly. Finally compare red and blue illumination.
+In “Block a path,” insert and remove the blocker. Predict which observation point will darken. In “Why it scatters,” move the slow-motion time control: the incident field arrives, the charge distribution responds, and the scattered field reaches the eye. After switching off the source, the final wave still needs time to travel. The particle is not a little lamp glowing independently.
 
-The controls operate on a transparent-sphere analogy. Their values are not measurements of the textbook iron hydroxide sample.
+“Test a prediction” uses a separate, explicit analogy: nonabsorbing transparent spheres of radius 18 nm. Fewer particles should reduce side collection and increase the unscattered fraction. Keep particles and incident power fixed, then change from red to blue. Side collection increases. This prediction belongs to the small-particle model; its numerical ratio is not a measurement of iron hydroxide.
+
+Take the explanation out of the beaker. Why can a shaft of window light be visible in a dark room? Draw a window–dust–eye path. Then decide which section you could intercept to hide the shaft from that observer while light still reaches somewhere else.
 
 </section>
 <section id="deeper">
 <details>
-<summary>Model, conservation and limits</summary>
+<summary>How can a particle redirect energy?</summary>
 
-The Rayleigh cross section scales with radius to the sixth power and inverse wavelength to the fourth power. With fixed particle volume fraction, number density decreases with radius cubed, so the scattering coefficient increases with radius cubed. Exponential attenuation determines transmission; transmitted and total scattered fractions add to one.
+The incident electric field drives the material’s charge distribution. Its changing polarization produces an outward-propagating electromagnetic field. The energy comes from the incident light. In this elastic-scattering model, incident and scattered light have the same frequency. The close-up shows one polarization: positive and negative charge distributions move relative to each other. The whole colloid particle is not mechanically bobbing by the displayed amount. Travel times, displacement and speed are illustrative.
 
-The model neglects absorption, interactions and multiple scattering. A real red-brown colloid is not a collection of perfectly transparent spheres. Display brightness is amplified, and the observer receives only a small portion of all scattered light. Solutions also scatter weakly: “not obvious” does not mean “zero scattering.”
+The driven-charge account is developed in [The Feynman Lectures, section 32–5](https://www.feynmanlectures.caltech.edu/I_32.html#Ch32-S5). The same discussion explains a boundary: small-particle scaling requires a particle much smaller than the wavelength in the medium. It cannot be extrapolated indefinitely as particles grow.
 
-Textbook position: PEP Chemistry Required Book 1, Chapter 1, Section 1, Experiment 1-1, printed page 9, supplied PDF page 14. Scientific references: [OpenStax Colloids](https://openstax.org/books/chemistry-2e/pages/11-5-colloids) and [NIST Rayleigh model](https://pages.nist.gov/SCATMECH/docs/rayscat.htm).
+</details>
+
+<details>
+<summary>What do the numbers include?</summary>
+
+The transparent-sphere analogy uses a Rayleigh scattering cross section. At fixed material and radius, the cross section scales inversely with the fourth power of wavelength. The assumed refractive indices are 1.59 for particles and 1.333 for the medium, with a 10 cm path. The unscattered fraction is exp(−NσL); the fraction undergoing a first scattering event is 1−exp(−NσL). These add to one, but the scattered fraction does not all enter the eye.
+
+A side collector at 90° accepts an 8° half-angle cone, integrated over the unpolarized Rayleigh angular pattern. The blocker intercepts this small share without changing unscattered transmission. The calculation follows [NIST’s small-sphere model](https://pages.nist.gov/SCATMECH/docs/rayscat.htm) and [unpolarized Rayleigh phase function](https://pages.nist.gov/SCATMECH/docs/phase.htm), with a full-sphere unit normalization here.
+
+Absorption, particle interactions and subsequent scattering are omitted. Exploration stays below optical depth 0.13. Display brightness is amplified and does not simulate human color sensitivity. Real iron hydroxide colloids absorb and have a size distribution. Ordinary solutions also scatter weakly: “not obvious” does not mean zero. Large dust grains, fog droplets and dense dispersions can still redirect light, but the blue/red numerical ratio shown here does not apply to them.
+
+</details>
+
+<details>
+<summary>Connection to the textbook</summary>
+
+This scene accompanies experiment 1-1 in chapter 1, section 1 of the supplied PEP Chemistry, Required Book 1, printed page 9 (PDF page 14). The textbook prepares a red-brown iron hydroxide colloid and compares it with sodium chloride solution, viewed perpendicular to illumination. The film begins with prepared samples. Rear screens, a blocker and a microscopic analogy are added teaching controls; they are not presented as original textbook steps.
 
 </details>
 </section>

@@ -1,0 +1,75 @@
+{
+  "status": "pending-batch-2",
+  "sourceCorrections": [
+    {
+      "id": "required-1-wire-diameter",
+      "oldPage": 123,
+      "newPage": 124,
+      "book": "required-1",
+      "reason": "123页介绍单根铜丝直径的误差；“如果把铜丝密绕在木棒上，测量10圈铜丝的直径之和”在124页。",
+      "originalPdf": "/Users/int64ago/Downloads/人教版高中物理-必修第一册.pdf",
+      "pdfPage": 129,
+      "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/required-1-p123-p124.txt",
+      "articleAlreadyCorrect": "src/content/length-instruments.mdx"
+    },
+    {
+      "id": "e1-spring-motion-recording",
+      "book": "elective-1",
+      "oldPage": 32,
+      "newPage": 34,
+      "reason": "32页介绍水平弹簧振子；33页频闪记录；与现有入口原题完全相同的“做一做：用数码相机和计算机绘制弹簧振子的x-t图像”在34页。",
+      "pdfPage": 39,
+      "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/elective-1-p32-p34.txt"
+    },
+    {
+      "id": "e3-hydrogen-spectrum",
+      "book": "elective-3",
+      "oldPage": 84,
+      "newPage": 85,
+      "reason": "84页介绍一般光谱，图4.4-2包含“分子状态的氢光谱”；“氢原子光谱的实验规律”、四条巴耳末谱线图4.4-3和分析在85页。",
+      "pdfPage": 90,
+      "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/elective-3-p84-p85.txt"
+    }
+  ],
+  "interfaceFindings": [
+    {
+      "id": "physics-variant-chadwick",
+      "lessonId": "e1-chadwick-reference",
+      "sceneSlug": "nuclear-evidence-lab",
+      "kind": "explore-initial-apparatus",
+      "severity": "P2",
+      "file": "src/components/experiments/NuclearEvidenceLab.tsx",
+      "line": 280,
+      "observedSourceBehavior": "variants缺e1别名，indexOf=-1经Math.max变成0，探索质子装置；观看仍由原chapter2/3选择中子。",
+      "expected": "中子反冲装置",
+      "suggestedFix": "curriculum variant sceneVariant='e3-chadwick-neutron'或独立alias resolver并组件测试。",
+      "browserReproduced": false
+    },
+    {
+      "id": "physics-variant-wu",
+      "lessonId": "required-1-wu-parity",
+      "sceneSlug": "particle-evidence-lab",
+      "kind": "explore-initial-apparatus",
+      "severity": "P2",
+      "file": "src/components/experiments/ParticleEvidenceLab.tsx",
+      "line": 370,
+      "observedSourceBehavior": "variants缺required-1别名，indexOf=-1经Math.max变成0，探索Higgs；观看仍由chapter8/9选择Wu。",
+      "expected": "钴60极化/计数装置",
+      "suggestedFix": "curriculum variant sceneVariant='e3-wu-parity'或alias resolver并组件测试。",
+      "browserReproduced": false
+    },
+    {
+      "id": "physics-variant-galileo-energy",
+      "lessonId": "required-2-double-incline-energy",
+      "sceneSlug": "galileo-inclines",
+      "kind": "explore-initial-apparatus",
+      "severity": "P2",
+      "file": "src/components/experiments/GalileoInclines.tsx",
+      "line": 14,
+      "observedSourceBehavior": "includes('double')先命中，includes('energy')永远不执行；探索kind='double'，条件kind==='energy'下能量条消失。",
+      "expected": "机械能观察/势能动能条",
+      "suggestedFix": "将明确energy判断置前或用无歧义sceneVariant；覆盖watch→explore与用户手动选择保持。",
+      "browserReproduced": false
+    }
+  ]
+}

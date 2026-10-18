@@ -3553,14 +3553,19 @@ export const topics: Topic[] = [
   },
   {
     slug: 'bio-osmosis',
-    name: '细胞怎样吸水',
-    title: '从一滴墨水，到细胞膜两侧',
-    question: '水一直在动，为什么液面会停？',
-    description: '比较扩散、漏斗渗透、红细胞、质壁分离和水通道，追踪守恒的物质。',
+    name: '水为什么穿过细胞膜',
+    title: '盐让细胞变瘪，水却从未停止运动',
+    question: '水一直在来回，细胞为什么还会变瘪？',
+    description:
+      '从墨滴的无规则运动到膜两侧的双向交换，用漏斗水柱与细胞变形推导渗透、动平衡和膨压，再预测水通道反转外液后的结果。',
     color: '#8aa197',
     tag: '生物学',
     related: ['bio-membrane-evidence', 'osmosis'],
     sources: [
+      {
+        title: 'IUPAC Gold Book — Chemical potential',
+        url: 'https://goldbook.iupac.org/terms/view/C01032',
+      },
       {
         title: 'OpenStax Biology 2e: passive transport',
         url: 'https://openstax.org/books/biology-2e/pages/5-2-passive-transport',
@@ -3729,15 +3734,19 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-colloid-light',
-    name: '胶体中的光路',
-    title: '为什么胶体会显出一条光路？',
-    question: '为什么胶体会显出一条光路？',
+    name: '看见光的条件',
+    title: '光穿过去了，为什么侧面看不见？',
+    question: '光穿过去了，为什么侧面看不见？',
     description:
-      '并排观察氯化钠溶液和氢氧化铁胶体，从侧向散射理解丁达尔效应，再用小颗粒模型探索浓度和波长。',
+      '从两块亮着的光屏出发，追踪微粒如何把光送入眼睛，再用遮挡、关光和稀释检验散射解释。',
     color: '#9fbbac',
     tag: '胶体 · 散射 · 光路',
     related: ['rayleigh-scattering'],
     sources: [
+      {
+        title: 'Feynman Lectures — Radiation Damping. Light Scattering',
+        url: 'https://www.feynmanlectures.caltech.edu/I_32.html#Ch32-S5',
+      },
       {
         title: 'OpenStax Chemistry 2e — Colloids',
         url: 'https://openstax.org/books/chemistry-2e/pages/11-5-colloids',
@@ -5034,13 +5043,13 @@ export const topics: Topic[] = [
   },
   {
     slug: 'newton-second-law-lab',
-    name: '小车力与加速度实验',
-    title: '改变拉力或质量，怎样让实验回答同一个问题？',
-    question: '改变拉力或质量，怎样让实验回答同一个问题？',
+    name: '力怎样改变速度',
+    title: '为什么有推力，却不一定加速？',
+    question: '为什么有推力，却不一定加速？',
     description:
-      '从阻力补偿、纸带差分到双车位移比，保留槽码与小车的共同加速度，检验牵引近似的边界。',
+      '从匀速推车出发，比较相同时间的速度增量，用控制变量和撤力反例理解F合=Ma，并检验槽码重力近似的边界。',
     color: '#b3be9b',
-    tag: '控制变量 · 纸带 · 位移比',
+    tag: '合力 · 加速度 · 控制变量',
     related: ['ticker-tape-lab', 'force-pairs-lab'],
     sources: [
       {

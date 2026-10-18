@@ -10,6 +10,8 @@ With Codex, invoke the [vistep-scene skill](../.agents/skills/vistep-scene/SKILL
 
 Identify the reader's initial intuition, one object to follow, the observation that changes their understanding, and the model's limits. Record the misconception, prerequisite, distinct contribution and scientific qualifications in the title. Keep a small claim → source section → assumptions → valid range table, with an independent benchmark and a boundary counterexample. For an induction motor, for example, follow the rotating magnetic field, induced rotor current and torque—not a decorative motor shell.
 
+For textbook teaching, the experiment starts an explanation. Frame a worthwhile question, show the evidence that distinguishes possible explanations, make the causal mechanism visible, and use the resulting principle to predict a new situation. Keep apparatus preparation and procedural instructions available on demand. Preserve textbook sequence, original titles and page references, but let authored questions lead readers into the content. Inspect the actual chapter window opened by each textbook entry: a film with a complete explanation can still become a disconnected procedure when an entry cuts out its causal lead-in or conclusion. Renaming a card, adding a final formula or lengthening speech does not repair that gap.
+
 An optional internal helper creates an unpublished `drafts/<slug>/` workspace:
 
 ```sh

@@ -1,0 +1,2055 @@
+{
+  "scope": {
+    "scenes": 85,
+    "entries": 183
+  },
+  "method": "Read actual chapter scripts, rendering/model branches, articles and textbook playback windows. Preserve good explanatory forms. This is not pixel or voice acceptance.",
+  "records": [
+    {
+      "sceneSlug": "chem-colloid-light",
+      "decision": "retain",
+      "evidence": [
+        "formation：后方两光屏与侧面明暗分离；comparison：只挡微粒—眼睛分支，后屏不变。",
+        "particles：DipoleShot的电荷分布和六路场共享dipoleField的延迟源；dilution：稀释、等功率红蓝、窗口尘埃三个可见检验。"
+      ],
+      "missingBridge": "无新增内容缺口；batch1冻结的新版本仍待主线程完成最终声音与稳定快照验收。",
+      "preserve": ["四个旧chapter ID", "散射能量与接收锥分开", "不把透明球数值当Fe(OH)₃测量"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-1-1",
+          "decision": "retain",
+          "reason": "四章在同一教材窗口，问题、截路对照、驱动机制、迁移都在片内。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-ionic-conduction",
+      "decision": "retain",
+      "evidence": [
+        "solid明确提出已有离子为何灯不亮；dissolve的ionicParticle由晶格坐标插值到分散坐标；drift以电荷符号改变位移方向。",
+        "ionicConduction分别处理固体约束、纯水背景、溶液浓度和断路；文章要求断路后确认离子不消失，再改浓度。"
+      ],
+      "missingBridge": "无必须重建的因果桥；可保持现有独立表达。",
+      "preserve": ["电离先于通电", "不亮不等于零电流", "晶格→分散→定向迁移"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-1-2",
+          "decision": "retain",
+          "reason": "solid/water/dissolve/drift完整含现象对照与电荷载体机制。"
+        },
+        {
+          "id": "chem-required-1-model-p15",
+          "decision": "retain",
+          "reason": "dissolve从晶格分散开始，drift保留断路反例；正文电离位置不依赖前两章。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-precipitation-paths",
+      "decision": "revise",
+      "evidence": [
+        "barium/spectators有沉淀和Na⁺/Cl⁻余量账本；magnesiumAcid实际联立Ksp、镁总量和电荷平衡。",
+        "ChemPrecipitationPaths的acid主画面只画固体减少与水对照；H⁺消耗OH⁻→溶解补充的关键链主要在acid语稿和公式。",
+        "iron语稿提出游离OH⁻反例，但fe.direct/fe.exchange两路数值只在!film.watch时显示。"
+      ],
+      "missingBridge": "把已存在的离子去向与竞争路径模型变成watch中的可见因果镜头，尤其酸溶与氢氧化物转化；无需重写平衡求解。",
+      "preserve": ["物质守恒求解", "水对照", "银盐同一份银和Ag₂S二银计量"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-1-3",
+          "decision": "revise",
+          "reason": "barium/spectators可保留旁观离子账本，补Ba²⁺/SO₄²⁻从水相进入固相的可追踪桥。"
+        },
+        {
+          "id": "chem-elective-1-experiment-3-3",
+          "decision": "revise",
+          "reason": "water-control/acid窗口没有可见OH⁻消耗与溶解补充，只有变少的沉淀与方程式。"
+        },
+        {
+          "id": "chem-elective-1-experiment-3-4",
+          "decision": "revise",
+          "reason": "silver三章有组成条与同银守恒，补为什么新难溶相让旧相释放离子的模型解释和新剂量预测。"
+        },
+        {
+          "id": "chem-elective-1-experiment-3-5",
+          "decision": "revise",
+          "reason": "magnesium/iron语音已指出同色异因，但watch未显示direct与exchange两条份额，应把现有探索证据纳入窗口。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-electron-transfer",
+      "decision": "revise",
+      "evidence": [
+        "transfer与sharing确实分别渲染移动电子和偏向氯的密度包络；electronLedger保持8个价电子。",
+        "balance把氧化数升降与电子得失对齐，sharing明确形式氧化数不等于HCl的实际离子电荷。"
+      ],
+      "missingBridge": "这是合格理论演示，不必伪装成实验；补一个未演示的计量/氧化数判断，让学生用规则预测，再由电子总账检验。",
+      "preserve": ["离子得失与共价偏移的不同图像", "不把路径称电子轨迹"],
+      "windows": [
+        {
+          "id": "chem-required-1-model-p23",
+          "decision": "revise",
+          "reason": "三章理论说明完整，但结尾仍是同一HCl例子的解释，没有新的可检验应用。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-sodium-reactions",
+      "decision": "revise",
+      "evidence": [
+        "water-motion区分浮、熔、运动；immersedSphere按密度比算浸没比例，半径随剩余量立方根缩小。",
+        "surface/heated窗口分别只有变暗或燃烧产物观察；密度/放热/产物计量镜头不在这两个窗口。",
+        "potassium-water口头提出锂预测，但画面仍是钾的演示且模型不呈现结构差异。"
+      ],
+      "missingBridge": "保留可信器物与水反应模型；按各短窗口补自己的条件对照和物性/价电子解释，不能借全片别章充当本条的推理。",
+      "preserve": ["浮力几何", "Na与Na₂O₂气体证据区分", "不把钾焰色倒推唯一氧化物"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-1",
+          "decision": "revise",
+          "reason": "surface只显示切开与变暗，需把表面隔绝/接触空气作为因果对照。"
+        },
+        {
+          "id": "chem-required-1-experiment-2-2",
+          "decision": "revise",
+          "reason": "heated孤立播放，缺少与常温产物不同的同条件比较桥。"
+        },
+        {
+          "id": "chem-required-1-inquiry-p36",
+          "decision": "retain",
+          "reason": "water-motion/water-products已有分开的现象原因、量的耦合和颜色证据边界；可保留。"
+        },
+        {
+          "id": "chem-required-1-experiment-2-3",
+          "decision": "revise",
+          "reason": "peroxide两章能鉴定氧气/碱，但为何同含钠却不同气体仍缺O元素归属的可见解释。"
+        },
+        {
+          "id": "chem-required-1-inquiry-p100",
+          "decision": "revise",
+          "reason": "钾两章含同族比较结论与锂预测，需把价电子/核吸引趋势变成画面，避免只说更活泼。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-carbonate-comparison",
+      "decision": "rebuild",
+      "evidence": [
+        "water/indicator的carbonateDissolving只返回预定heatDirection和indicatorTone；画面温度方向与颜色没有由水合/酸碱过程导出。",
+        "bicarbonate-heat有完整气路到石灰水；mass按同一反应程度分配残渣、水、CO₂，并保留总质量。"
+      ],
+      "missingBridge": "重点重建加水/显色窗口：从两种盐的实际对照引出水合能量或碳酸体系与水作用的适龄模型；当前用性质表复现结果，没有解释结果的中间过程。热分解镜头可保留并补预测。",
+      "preserve": ["加热器—导管—石灰水的连接", "0.6308残渣比与质量总账"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-4",
+          "decision": "rebuild",
+          "reason": "water/indicator只含定性温度和深浅色终点，核心原因在该窗口缺席。"
+        },
+        {
+          "id": "chem-required-1-experiment-2-5",
+          "decision": "revise",
+          "reason": "三段加热窗口已有产物证据和守恒，可用未知质量/未完全分解反推作结尾，无需重画全部器材。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-flame-spectra",
+      "decision": "revise",
+      "evidence": [
+        "sodium/potassium/filter使用同一个flameLines+cobaltTransmission改变综合色与线强，不移动波长。",
+        "emission/absorption的能级圆点和光子与photonEnergyEv相连；patterns/dark-lines则只显示Li/He/Hg谱线。"
+      ],
+      "missingBridge": "全场景已有好机制；需给各教材窗口设独立问题并补窗口内验证。谱线窗口不能借未选入的能级章解释暗线来源。",
+      "preserve": ["滤镜只改透过光组成", "同轴参考谱线", "能量差与波长关系"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-6",
+          "decision": "retain",
+          "reason": "Na干扰→K混色→滤光的三章已有控制变量与可见机制，适合保留。"
+        },
+        {
+          "id": "chem-elective-2-model-p7",
+          "decision": "revise",
+          "reason": "能级两章解释收放能量，增加一组更大能隙→更短波长的可见预测即可。"
+        },
+        {
+          "id": "chem-elective-2-instrument-p8",
+          "decision": "revise",
+          "reason": "patterns/dark-lines未包含emission/absorption机制，需在本窗口补能级匹配的短桥或明示完整局部原因。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-chlorine-discovery",
+      "decision": "rebuild",
+      "evidence": [
+        "observation/interpretation是1774气瓶与1810身份标签的时间轴；ChemChlorineDiscovery history分支没有用于排除旧组成解释的实验。",
+        "connected-path/absorption有共享pipePosition管路，chlorineGasTrain核对收集、尾气、OH⁻容量。"
+      ],
+      "missingBridge": "历史窗口从观察直接跳到新元素结论，缺戴维证据为何推翻原解释的因果论证；先查教材/原始史料决定可呈现的证据，不能补编。",
+      "preserve": ["现代装置的真实连接", "吸收容量与氯总账", "历史与现代模型明确区分"],
+      "windows": [
+        {
+          "id": "chem-required-1-history-p44",
+          "decision": "rebuild",
+          "reason": "只播放两历史章；后两章的装置守恒不能补足元素身份判断。"
+        },
+        {
+          "id": "chem-required-1-body-p48-2",
+          "decision": "retain",
+          "reason": "现代气路两章自足解释收集不是无限吞气、吸收有容量；探索可检验容量不足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-hydrogen-chlorine",
+      "decision": "retain",
+      "evidence": [
+        "pale-flame以无O₂燃烧反驳狭义定义；mist区分气体HCl与含水微滴。",
+        "fog closeup在moist开关下显示微滴/水合离子或气态分子；hydrogenChlorine保持产物量而改变fog。atom-account保持H/Cl身份。"
+      ],
+      "missingBridge": "无必须重建的内容桥；湿/干对照现已可检验。",
+      "preserve": ["燃烧不一定由O₂参与", "气体产物与雾的可见性分开", "放热值不当作火焰温度"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-7",
+          "decision": "retain",
+          "reason": "三章在同一窗口，现象、湿度解释、无水反例与原子守恒完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-chlorine-bleaching",
+      "decision": "retain",
+      "evidence": [
+        "paper-pair严格保留干纸参照；fresh-flower把气体干燥与组织含水区分。",
+        "water-mechanism渲染Cl₂/H₂O→HCl/HClO与24个氧化前后着色单元，chlorineBleaching由waterAvailable和gasPresent共同控制。"
+      ],
+      "missingBridge": "可保留；概念着色结构已声明不是特定染料真实路径，后续视觉升级不应删掉这个边界。",
+      "preserve": ["干湿对照", "鲜花迁移反例", "物质条件驱动同一显色模型"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-8",
+          "decision": "retain",
+          "reason": "三个章节顺序包含观察对照、看似反例、含水机制，窗口自足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-chlorine-photolysis",
+      "decision": "revise",
+      "evidence": [
+        "sensors辨认液/气探头，illuminate同步三条曲线；chlorinePhotolysis从同一decomposed计算H⁺、Cl⁻、O₂。",
+        "stoichiometry可见式与Δn账本，但分解物种到三路信号的桥主要由旁白解释；改变headspace的预测只在探索。"
+      ],
+      "missingBridge": "在保留传感器/曲线的前提下加一次同反应量改变气相体积的自动对照，并把HClO减少→离子/气体增加的守恒连线显露，避免只看三条模型曲线就接受机理。",
+      "preserve": ["模型曲线与教材实测区分", "气相比例分母同步增加", "避光与独立体积样品"],
+      "windows": [
+        {
+          "id": "chem-required-1-body-p48",
+          "decision": "revise",
+          "reason": "三章完整但最后因果桥仍是式子与文字；优先补可见的物种来源及头空体积反事实。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-anion-tests",
+      "decision": "retain",
+      "evidence": [
+        "chloride-solid/sulfate-solid先让目标与碳酸盐都出沉淀，暴露单一颜色判据失败。",
+        "后加酸只消耗carbonateConverted，渲染固体减少和CO₂；evidence保留两阳离子样品与干扰对照，抽出净离子式。"
+      ],
+      "missingBridge": "无必须重建的推理缺口；可保持选择性反应排除假阳性的表达。",
+      "preserve": ["先出现相同现象再排除反例", "不同检验酸避免引入待检离子", "酸不足可保留沉淀"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-9",
+          "decision": "retain",
+          "reason": "氯离子三章含第一证据、反例排除、净离子解释；无需后段。"
+        },
+        {
+          "id": "chem-required-2-experiment-5-4",
+          "decision": "retain",
+          "reason": "硫酸根三章自带同样完整推理，未依赖氯离子窗口。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-solution-preparation",
+      "decision": "retain",
+      "evidence": [
+        "transfer/rinse让容量瓶内和原容器残留的同一份溶质此消彼长；solutionPreparation以recovery和volume分别算c。",
+        "meniscus使用flaskLevel积分体积到液面；mixingLayers只消除局部梯度不改变平均值。文章给出过量定容后吸去均匀溶液不能修复浓度的预测。"
+      ],
+      "missingBridge": "虽然按操作顺序展开，关键步骤都有独立守恒或测量原因；应保留，不因步骤命名而重建。",
+      "preserve": [
+        "溶质量/体积/空间均匀性三个不同变量",
+        "95%残留仅为放大假设",
+        "局部凹液面与总体积耦合"
+      ],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-2-10",
+          "decision": "retain",
+          "reason": "前五章从称量到混匀已完整回答洗涤与定容各控制什么。"
+        },
+        {
+          "id": "chem-required-1-activity-1",
+          "decision": "retain",
+          "reason": "第六章在已完整五章后补守恒稀释；与正文位置顺序一致。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-iron-steam",
+      "decision": "revise",
+      "evidence": [
+        "steam-path/hot-iron/gas-evidence 连续追踪蒸气经过红热铁、固体变黑和气体检验；ironSteam 用 Fe 与水的限制量守恒计算。",
+        "ChemIronSteam 的铁粒依 convertedFraction 变色、管路与气泡相连；固体增重和水限制读数却只在 !film.watch 内。"
+      ],
+      "missingBridge": "配平式已经说明元素归属，但观看态没有让水中 O 进入固体、H 离开成为气体的可见分流；应把增重/限水预测变成镜头证据。",
+      "preserve": ["真实连续蒸气路径", "气泡并非氢气充分证据的限定", "Fe/水限制量模型"],
+      "windows": [
+        {
+          "id": "chem-required-1-body-p70",
+          "decision": "revise",
+          "reason": "完整三章有现象与检验，缺一个可见的元素去向及限水预测镜头。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-iron-hydroxides",
+      "decision": "retain",
+      "evidence": [
+        "two-precipitates 对照 Fe(II)/Fe(III) 生成物；air-change 与 iron-account 追踪同一批铁转化而非铁消失。",
+        "ChemIronHydroxides 的 micro 分支显示四份铁；oxygen-control 同时画 tube(false,true) 零氧对照和通氧管，ironHydroxides 由 min(Fe(II),4O₂) 限定变色量。"
+      ],
+      "missingBridge": "无必须重建的桥；颜色为教学编码及实际外观变化的边界已说明。",
+      "preserve": ["同一铁账本", "缺氧反例", "四铁配一氧气的模型"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-3-1",
+          "decision": "retain",
+          "reason": "四章包含对照、因果、守恒与氧不足预测。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-iron-cycle",
+      "decision": "revise",
+      "evidence": [
+        "reduce/supernatant/oxidize 用独立上清液避免残余铁粉重新还原，数字账本明确 2Fe³⁺+Fe→3Fe²⁺。",
+        "equilibrium-reference/remove-iron/add-ligand 三管真实调用 mass-action 求解，但画面主要是红色深浅；coordination 另有 free/mono/bis 物种条和 +3 价态说明。"
+      ],
+      "missingBridge": "红色变化已经是证据，配体解离/重组为何响应自由 Fe³⁺ 或 SCN⁻ 改变主要停在语言和条形数值；还原/氧化窗口也没有把电子去向可追踪地连接两个反应。",
+      "preserve": ["上清液分离的反例逻辑", "多种配合物模型", "各教材位置独立窗口"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-3-2",
+          "decision": "revise",
+          "reason": "compare-ions 单章只呈显色差异，需一句可见的检验原理桥，避免只记试剂颜色。"
+        },
+        {
+          "id": "chem-required-1-experiment-3-3",
+          "decision": "revise",
+          "reason": "三章程序有理由，补铁粉电子到 Fe³⁺ 的可追踪关系及残铁反例。"
+        },
+        {
+          "id": "chem-elective-1-experiment-2-1",
+          "decision": "revise",
+          "reason": "三管可比，补配合物与自由粒子互相转化，令平衡位移由物种变化推导。"
+        },
+        {
+          "id": "chem-elective-2-experiment-3-4",
+          "decision": "revise",
+          "reason": "coordination 有物种分配但缺配位连接的对象视图与可检验改变。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-copper-etching",
+      "decision": "retain",
+      "evidence": [
+        "protect-pattern→etch-cross-section→redox-account→reveal-trace 先区分保护层与铜，横截面暴露铜随剩余量变薄，保护区不变。",
+        "copperProtected 统一顶视及截面几何；Cu/Fe 账本依限制 Fe³⁺ 决定蚀刻深度，文章和探索要求不足氧化剂留下未断铜层。"
+      ],
+      "missingBridge": "无必须重建的因果桥。",
+      "preserve": ["同一掩膜驱动两视图", "铜原子去向", "不足试剂导致电路未隔离预测"],
+      "windows": [
+        {
+          "id": "chem-required-1-inquiry-p74",
+          "decision": "retain",
+          "reason": "四章完整从图案问题到选择性反应和成品预测。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-food-iron",
+      "decision": "retain",
+      "evidence": [
+        "prepare-sample/separate-filtrate 的同一批标记分到滤渣和滤液，明确未提取部分没有被检验；oxidize-sample 只改变可测铁价态。",
+        "interpret-colour 对照空白；foodIron 的 recovery/ironPresent/oxidation/SCN 独立决定信号，文章明确无显色的多种原因。"
+      ],
+      "missingBridge": "无必须重建的桥；可选改进是将多个假阴性从探索带入自动片。",
+      "preserve": ["提取率与总铁区分", "空白对照", "阴性不能直接推出无铁"],
+      "windows": [
+        {
+          "id": "chem-required-1-practice-p76",
+          "decision": "retain",
+          "reason": "四章具备样本代表性、反应条件和证据解释的完整链。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-aluminium-film",
+      "decision": "retain",
+      "evidence": [
+        "acid-film 先消耗氧化膜而无氢气，acid-metal 才使金属变薄并出气；同一 aluminiumFilm 顺序预算模型决定两者。",
+        "base-comparison 比较有膜/无膜同量铝；amphoteric-products 显示 Al³⁺ 与 [Al(OH)₄]⁻ 的不同去向。"
+      ],
+      "missingBridge": "无必须重建的桥；保留无气泡不等于无反应的推论。",
+      "preserve": ["膜与金属分层", "有膜无膜对照", "两性与金属氧化还原分开"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-3-4",
+          "decision": "retain",
+          "reason": "酸窗口可独立理解表面膜为何延迟气泡。"
+        },
+        {
+          "id": "chem-required-1-experiment-3-5",
+          "decision": "retain",
+          "reason": "碱对照与产物比较自足，不必追加酸窗口操作。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-iron-practical",
+      "decision": "rebuild",
+      "evidence": [
+        "七章逐个展示 Fe/Cu、Fe³⁺/Cu、I⁻/Fe³⁺、Zn/Fe²⁺、MnO₄⁻/Fe²⁺、显色、铁粉后检验；模型分别守恒 Fe/Cu/Zn/I/Mn 与电子。",
+        "ChemIronPractical 的器物能随模型沉积、溶解和变色，但观看画面只有 Fe⁰/Fe²⁺/Fe³⁺ 当前标签及逐式反应；没有共同价态网络把七种现象组织为 Fe²⁺ 双重角色。"
+      ],
+      "missingBridge": "需要以同一铁的价态网络重建影片论证，使每个新增实验排除或支持一个预测；保留全部七实验及独立模型，不把七次换试剂当作理论。",
+      "preserve": ["所有七个教材实验", "高锰酸根消耗后再检验的顺序", "限制量及电子守恒"],
+      "windows": [
+        {
+          "id": "chem-required-1-activity-2",
+          "decision": "rebuild",
+          "reason": "完整活动窗口虽不截断，却连续七份实验结果；中央共同解释和迁移预测缺少可见证据组织。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-atomic-models",
+      "decision": "revise",
+      "evidence": [
+        "dalton-sphere 到 bohr-levels 展示模型形状和限制，没有阴极射线/散射/谱线如何排除旧模型的图像证据。",
+        "probability-cloud 逐增900个同状态样本；probability-boundary 用 radialCdf 求90%轮廓，s-state-spread 同尺比较节点，p-orientations 只改变投影。"
+      ],
+      "missingBridge": "历史窗口需补至少一个旧模型失败的决定性证据；电子云窗口已能用采样/边界反例解释概率，不能一并重做。",
+      "preserve": ["氢解析概率与共同长度尺度", "采样点不是多个电子", "90%边界非硬墙"],
+      "windows": [
+        {
+          "id": "chem-required-1-model-p94",
+          "decision": "rebuild",
+          "reason": "五章历史更替缺促成更替的实验证据，只陈列先后假说。"
+        },
+        {
+          "id": "chem-elective-2-model-p12",
+          "decision": "retain",
+          "reason": "四章从多点疑问到统计解释、轮廓与节点检验完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-periodic-practical",
+      "decision": "revise",
+      "evidence": [
+        "前三章保留原卤素水作参照，halogenDisplacement 根据单质与离子排名及计量变色；base-distinguishes 另取新分样而非使用已加酸样品。",
+        "模型有真实电子量与酸碱消耗，但观看态主要为分孔颜色/沉淀变化，氧化性排序和第三周期关联在旁白末句才出现。"
+      ],
+      "missingBridge": "让三条置换证据逐条生成有方向的能力排序，并用反向组合验证；氢氧化物两性结论需同一物种的酸/碱去向联接。",
+      "preserve": ["新分样对照", "试管与点滴板教材差别", "冷水观察尺度限定"],
+      "windows": [
+        {
+          "id": "chem-required-1-experiment-4-1",
+          "decision": "revise",
+          "reason": "有三组证据，缺由证据形成排序并预测未测组合的画面。"
+        },
+        {
+          "id": "chem-required-1-inquiry-p109",
+          "decision": "revise",
+          "reason": "有效对照应保留，补周期位置与反应证据之间关系。"
+        },
+        {
+          "id": "chem-required-1-activity-3",
+          "decision": "revise",
+          "reason": "全活动完整但八章仍分列，应以两条比较结论收束。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-periodic-patterns",
+      "decision": "revise",
+      "evidence": [
+        "period-rows/table-forms 用 periodicCell 同一118元素坐标展开f区；valence-filling 的 orbitalOccupancy 可见先单占后配对。",
+        "ionization-dips 的 Mg→Al、P→S 下降只在数据条和旁白解释，轨道占据分支不在这个教材窗口内。"
+      ],
+      "missingBridge": "性质曲线的异常需和被移除电子的轨道/配对同时对应；表格布局可保留为结构问题，不必假装化学实验。",
+      "preserve": ["缺失值不画零", "教材取整相等值", "同一元素布局转化"],
+      "windows": [
+        {
+          "id": "chem-required-1-model-p105",
+          "decision": "retain",
+          "reason": "布局问题与同元素对照完整，属理论演示。"
+        },
+        {
+          "id": "chem-elective-2-model-p21",
+          "decision": "revise",
+          "reason": "排布规则有对象表达，但Cr/Cu异常仅给实测结论，可增加证据边界提示及应用。"
+        },
+        {
+          "id": "chem-elective-2-model-p26",
+          "decision": "revise",
+          "reason": "数据窗口截掉占据图；离群点的因果解释需要在此重现。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-bond-overlap",
+      "decision": "retain",
+      "evidence": [
+        "ionic-account 保28电子与总电荷，ionic-neighborhood 同一六邻接三维局部否定孤立NaCl分子；共享与部分电荷画法分开。",
+        "s/s、s/p、σ/π 剖面由 overlapField 计算，alignment-boundary 固定距离只转一侧，90°净重叠为零且场仍存在。"
+      ],
+      "missingBridge": "无必须重建的桥；这是对理想模型的检验，不冒充实测键密度。",
+      "preserve": ["计算剖面", "角向反例", "电子式和真实轨迹界限"],
+      "windows": [
+        {
+          "id": "chem-required-1-model-p113",
+          "decision": "retain",
+          "reason": "电子归属到局部结构及极性对照可独立成立。"
+        },
+        {
+          "id": "chem-elective-2-model-p34",
+          "decision": "retain",
+          "reason": "形状比较到正交预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-sulfur-dioxide",
+      "decision": "retain",
+      "evidence": [
+        "water-enters 的气相/水相同份硫标记与 sulfurDissolution 压强平衡共同推水位；塞住时无转移。",
+        "fuchsin-fades→heat-restores→unheated-control 用同起点和未加热对照，支持不稳定无色物质解释而非永久破坏。"
+      ],
+      "missingBridge": "无必须重建的桥；酸性仅定性证据，未杜撰pH。",
+      "preserve": ["气液守恒", "同样褪色起点", "不外推所有色素"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-5-1",
+          "decision": "retain",
+          "reason": "溶解/酸性窗口独立保留压力与物质去向。"
+        },
+        {
+          "id": "chem-required-2-experiment-5-2",
+          "decision": "retain",
+          "reason": "褪色—恢复—未加热反例完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-sugar-carbonization",
+      "decision": "retain",
+      "evidence": [
+        "dehydration-account 12C/22H/11O 账本区分脱水和蒸干；porous-expansion 以同量固体孔隙增加改变外体积。",
+        "fixed-solid-pores 明确固定固体量，carbonColumnOutline 高度由 bulkVolume 决定；oxidizing-acid 单独核对副反应电子。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["质量与体积区分", "非纯碳边界", "固定量控制实验"],
+      "windows": [
+        {
+          "id": "chem-required-2-body-p5",
+          "decision": "retain",
+          "reason": "五章由变黑、膨胀到两种作用及几何预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-sulfur-transformations",
+      "decision": "revise",
+      "evidence": [
+        "iron-sulfur-ignition/front 的局部热源撤离后，simulateIronSulfur 扩散+放热反馈生成传播前沿，非整条同时点亮。",
+        "硫化物及铜路径的颜色/气体有独立计量模型；价态图在首尾，铜窗口的硫进入盐/气两路主要由式与旁白陈述。"
+      ],
+      "missingBridge": "保留热前沿；为液相价态改变补可追踪的电子接受/供出与硫原子分路，避免图谱和器物之间只有口述连接。",
+      "preserve": ["热反馈真实计算", "铜丝提起保持已有产物", "不同硫终点作为假设而非预测"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-5-3",
+          "decision": "revise",
+          "reason": "铜三章双证据充足，补同一硫的盐/气分流。"
+        },
+        {
+          "id": "chem-required-2-inquiry-p8",
+          "decision": "revise",
+          "reason": "全窗口有理论地图，需把路径实时画回地图，铁硫段保留。"
+        },
+        {
+          "id": "chem-required-2-activity-5",
+          "decision": "revise",
+          "reason": "活动无开头地图，应在各实验中带入价态关系，末尾不得首次解释。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-nitrogen-oxides",
+      "decision": "retain",
+      "evidence": [
+        "water-clears-colour 显示NO₂消失却仍余NO；oxygen-is-limiting 实际比较空气2.1与纯氧15的氮进入液相比例。",
+        "nitrogenInitial/oxidize/absorb 共用原子账本驱动活塞；secondary-oxidation 用先无色再变棕揭示相同终色不同路径。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["无色不等于无气体", "氧限制预测", "先后路径区别"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-5-5",
+          "decision": "retain",
+          "reason": "四章现象、守恒、反例和量化预测完整。"
+        },
+        {
+          "id": "chem-required-2-experiment-5-8",
+          "decision": "retain",
+          "reason": "浓稀酸三章以二次氧化反例避免颜色口诀。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-ammonia-fountain",
+      "decision": "retain",
+      "evidence": [
+        "first-water-dissolves-gas 降低气相与压强，atmosphere-drives-jet 用同一压差求速度与喷高，喷口淹没后不再画自由喷流。",
+        "residual-air-limits-filling 两瓶相同模型不同初始空气产生不同终液量；探索无首滴/夹闭分别切断不同因果边。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["气相减少→压差→水流反馈", "无触发与断路反例", "残余空气预测"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-5-6",
+          "decision": "retain",
+          "reason": "五章完整，有驱动机制和独立边界检验。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-ammonium-smoke",
+      "decision": "retain",
+      "evidence": [
+        "contact-creates-solid 在两扩散场重叠处按局部反应生成保留的固体；smoke-is-particles 改尺度而不把气体着色。",
+        "one-reactant-absent 保同空间时间移除HCl，ammoniumSmoke 的a场仍扩散而solid=0，直接否定靠近本身产生白烟。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["空间重叠反应", "颗粒与气体区分", "单反应物对照"],
+      "windows": [
+        {
+          "id": "chem-required-2-body-p14",
+          "decision": "retain",
+          "reason": "四章问题、形成机制和移除条件验证完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-ammonium-cycle",
+      "decision": "retain",
+      "evidence": [
+        "paper-evidence-conditions 比较湿纸、干纸和直接沾碱，litmusEvidence 明确相同蓝色的不同来源。",
+        "collection 有初始空气有限体积输运；mouth-test-is-qualitative 在嘴部已响应时仍画剩余空气；absorber 由液面下降与漏斗口露气决定断水路。"
+      ],
+      "missingBridge": "无必须重建的桥，制取步骤承担因果解释而非操作罗列。",
+      "preserve": ["假阳性对照", "定性检出不等于纯度", "漏斗几何条件"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-5-7",
+          "decision": "retain",
+          "reason": "三盐共性与检验证据边界完整。"
+        },
+        {
+          "id": "chem-required-2-body-p15",
+          "decision": "retain",
+          "reason": "制取、排空气、验满边界、吸收几何自足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-rainwater-ph",
+      "decision": "retain",
+      "evidence": [
+        "calibration-and-threshold 两标准点校准改变读数，仍保留跨5.6的误差区间；records-with-gaps 缺样不填零。",
+        "define-average-acidity 用同pH4/6改变水量比例，aggregateRain 先平均10^-pH再换算，对比固定算术均值。"
+      ],
+      "missingBridge": "无必须重建的桥；本片理论是测量与统计推断，不需要硬加分子反应。",
+      "preserve": ["误差跨界保留不确定性", "合成数据身份", "对数统计预测"],
+      "windows": [
+        {
+          "id": "chem-required-2-practice-p17",
+          "decision": "retain",
+          "reason": "五章逐层限制证据可支持的结论。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-salt-purification",
+      "decision": "retain",
+      "evidence": [
+        "carbonate-has-two-targets 追踪原Ca与试剂引入Ba；acid-after-filtration 真实并列先过滤/先加酸，显示杂质重新入液。",
+        "saltPurification 分别保离子、固体、滤出量与电荷；completion-probe 以新浑浊区分原来有沉淀和已完成。"
+      ],
+      "missingBridge": "无必须重建的桥；这是优秀的解释型流程，保留。",
+      "preserve": ["试剂引入新杂质", "顺序反例", "过滤只分离固体"],
+      "windows": [
+        {
+          "id": "chem-required-2-activity-4",
+          "decision": "retain",
+          "reason": "八章每个步骤改变同一批物质去向，并验证反向顺序。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-reaction-heat",
+      "decision": "retain",
+      "evidence": [
+        "cooling-after-reaction 生成物保留但温度回落，reactionHeat 分别累计反应热与环境交换。",
+        "water-interface-freezes 按潜热计算冰份额，ice-connects-the-wood 与干木片同冷却并列，几何连接依冰而非低温开关。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["反应与传热区分", "相变潜热", "湿/干木片因果对照"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-6-1",
+          "decision": "retain",
+          "reason": "放热三章包括初温、反应、反应后反例。"
+        },
+        {
+          "id": "chem-required-2-experiment-6-2",
+          "decision": "retain",
+          "reason": "吸热三章把低温、相变、连接逐级推导。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-bond-energy",
+      "decision": "retain",
+      "evidence": [
+        "breaking/forming 保同四原子，679与862能量条来自bondEnergyBook，net-energy-balance 得差值而非单键口诀。",
+        "hess-same-endpoints/cancel-and-solve 共用物种系数，CO在两式消去；反向/倍乘同时改式与焓。"
+      ],
+      "missingBridge": "无必须重建的桥，保持假想核算路径不冒充基元机理。",
+      "preserve": ["同原子身份", "状态函数路径", "反向倍乘预测"],
+      "windows": [
+        {
+          "id": "chem-required-2-model-p33",
+          "decision": "retain",
+          "reason": "四章核算自足。"
+        },
+        {
+          "id": "chem-elective-1-model-p14",
+          "decision": "retain",
+          "reason": "两章相同端点与代数消去自足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-galvanic-cells",
+      "decision": "retain",
+      "evidence": [
+        "cell-open/close/carriers 区分局部析氢与导线电子、溶液离子；cell-paper/material 以同金属、石墨和干燥条件排除两金属口诀。",
+        "cell-lift 以盐桥口真正离开液面为断路判据，已有沉积保留；fuel-isolate 让电源/负载互斥，fuelCycle按存储电荷消耗氢氧。"
+      ],
+      "missingBridge": "无必须重建的桥；五窗口保持各自电极反应差异。",
+      "preserve": ["局部反应不等于外电流", "盐桥几何断路", "电解与放电隔离", "串联内阻同步增长"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-6-3",
+          "decision": "retain",
+          "reason": "三章两类载流子解释完整。"
+        },
+        {
+          "id": "chem-required-2-inquiry-p37",
+          "decision": "retain",
+          "reason": "水果/湿纸/串联有同电极反例与负载预测。"
+        },
+        {
+          "id": "chem-required-2-activity-6",
+          "decision": "retain",
+          "reason": "干燥与材料对照能检验构成条件。"
+        },
+        {
+          "id": "chem-elective-1-experiment-4-1",
+          "decision": "retain",
+          "reason": "盐桥、质量账本与抬起反例完整。"
+        },
+        {
+          "id": "chem-elective-1-activity-5",
+          "decision": "retain",
+          "reason": "储能、隔离、放电构成可检验因果链。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-reaction-rates",
+      "decision": "revise",
+      "evidence": [
+        "rate-curves 区分同10mL终点、平均收集速率与漏气，zincGas 分开生成/收集；collision 两次控制能量与取向并保四原子。",
+        "rate-temperature/concentration 和 thio/catalysts 窗口只含宏观对照；碰撞能量/频率/催化路径机制在另一个选必窗口，前两入口未包含。"
+      ],
+      "missingBridge": "保留独立有效碰撞段；在必修入口增加适龄的分子相遇或越垒短镜头，解释为什么更快而非只描述更快，避免跨窗依赖。",
+      "preserve": ["速率与总量区别", "漏气反例", "原子身份与两步HI示意", "催化不改端点"],
+      "windows": [
+        {
+          "id": "chem-required-2-inquiry-p43",
+          "decision": "revise",
+          "reason": "两章对照有效但速度改变的原因只有条件对应，需局部机制。"
+        },
+        {
+          "id": "chem-required-2-activity-7",
+          "decision": "revise",
+          "reason": "三章定性观察有控制条件，缺机制和一个新条件预测。"
+        },
+        {
+          "id": "chem-elective-1-inquiry-p26",
+          "decision": "retain",
+          "reason": "实验设计/同终点/误差曲线形成测量推理链。"
+        },
+        {
+          "id": "chem-elective-1-model-p28",
+          "decision": "retain",
+          "reason": "能量、取向、催化路径有控制变化及可见反例。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-methane-substitution",
+      "decision": "revise",
+      "evidence": [
+        "same-mixture-light-control 保同样本光照对照，track-substitution-atoms 追踪H进入HCl、Cl进入碳骨架；mixture-not-single-product 保重复取代账本。",
+        "导演/模型以illuminated开关和预设守恒事件分布推进；光引发自由基链只在旁白中，净换位图明确不是机理。"
+      ],
+      "missingBridge": "补光只触发链的可见桥：光裂解、链传播再生自由基、终止，保留净原子核算及混合产物；不把开关硬解释为真实即时停反应。",
+      "preserve": ["新鲜暗对照", "CH₃Cl不是油滴", "重复取代非实测产率"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-1",
+          "decision": "revise",
+          "reason": "完整窗口已有净连接与预测，核心光照因果仍欠独立机理镜头。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-unsaturated-hydrocarbons",
+      "decision": "revise",
+      "evidence": [
+        "ethene-addition-connectivity 追踪Br各连一碳、原H不被取代，bromineAddition限一/两份Br₂；乙炔洗气瓶有CuS及有限容量。",
+        "乙烯第一窗口仅 flame/permanganate，画面褪色+氧化还原标签，没有同一烃电子供出与MnO₄⁻消耗的可见桥。"
+      ],
+      "missingBridge": "只修氧化性质入口，补电子收支与两种褪色为何不同；保留加成连接和净化干扰排除。",
+      "preserve": ["两检验不是串联洗气", "净化容量", "加成和取代区别"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-2",
+          "decision": "revise",
+          "reason": "现象可见，氧化还原原因仍靠结论标签。"
+        },
+        {
+          "id": "chem-required-2-experiment-7-3",
+          "decision": "retain",
+          "reason": "溴褪色到连接变化及剂量边界完整。"
+        },
+        {
+          "id": "chem-elective-3-inquiry-p37",
+          "decision": "retain",
+          "reason": "制取、杂质排除、两步加成、燃烧证据边界自足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-carbon-frameworks",
+      "decision": "retain",
+      "evidence": [
+        "dichloromethane-rotations 把六种顶点选择经pairAlignment刚体旋转重合，四碳分支则无法旋转改变邻接。",
+        "carbonMolecule 同坐标生成球棍，graphHydrogens 从键级求氢数；ethene-plane 从侧视转正面显共面，π方向与键数分开。"
+      ],
+      "missingBridge": "无必须重建的桥，属于模型搭建与几何推理。",
+      "preserve": ["旋转等价实证", "价数推分子式", "同坐标连接"],
+      "windows": [
+        {
+          "id": "chem-required-2-model-p70",
+          "decision": "retain",
+          "reason": "基础几何窗口通过观察角度检验结构。"
+        },
+        {
+          "id": "chem-required-2-activity-8",
+          "decision": "retain",
+          "reason": "活动完整区分画法、构象与连接。"
+        },
+        {
+          "id": "chem-elective-2-model-p36",
+          "decision": "retain",
+          "reason": "σ/π计数窗口由真实连接生成计数。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-sodium-alcohol",
+      "decision": "revise",
+      "evidence": [
+        "hydroxyl-hydrogen-account 保乙基C—H，两份羟基H组成H₂，Na独立成离子；两项产物检验不称纯度证明。",
+        "same-sodium-two-liquids 以同Na比较快慢/终量，group-environment 仅并列水/乙醇结构并说环境不同，实际速率曲线人为指定。"
+      ],
+      "missingBridge": "首窗口保留；基团影响窗口需明确能支持的理论范围，并用可计算电荷/酸碱或结构证据搭桥，不能让示意快慢本身充当电子效应证明。",
+      "preserve": ["氢来源追踪", "两检验证据合看", "浮沉与快慢分开"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-4",
+          "decision": "retain",
+          "reason": "四章产气鉴定到羟基H去向完整。"
+        },
+        {
+          "id": "chem-elective-3-experiment-1-1",
+          "decision": "revise",
+          "reason": "对照有效，基团影响的因果桥仍是结构并列与口述。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-alcohol-oxidation",
+      "decision": "revise",
+      "evidence": [
+        "copper-oxide-cycle 同一铜丝多次往返，累计乙醛增而Cu总量不变；alcohol-carbonyl-account 显示两H离去及氧归属。",
+        "dichromate-orange-green/oxidation-continues-to-acid 只有铬两栏、橙绿试管与净式，乙醇→乙醛→乙酸的连接/电子变化未形成独立镜头。"
+      ],
+      "missingBridge": "仅为酸性重铬酸盐窗口补分子连接及电子交接，复用已成熟Cu循环无需推倒。",
+      "preserve": ["同铜对象循环", "有机氧保留", "氧化剂不足边界"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-5",
+          "decision": "retain",
+          "reason": "四章可见催化循环及净原子去向完整。"
+        },
+        {
+          "id": "chem-elective-3-experiment-3-3",
+          "decision": "revise",
+          "reason": "两章有铬价态证据，缺有机物连续氧化的对象桥。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-ester-reaction",
+      "decision": "revise",
+      "evidence": [
+        "mixed-vapour-transfer 用同一reaction/receiver账区分生成与收集，carbonate-wash-layers 保上下层均非纯品。",
+        "acid-hydrolysis-reversibility 双向流与 base-consumption-carboxylate 的OH⁻消耗是独立状态；制酯三章却没有酯键连接怎样形成的对象镜头。"
+      ],
+      "missingBridge": "在制备入口加入酸/醇原子去向与酯键形成的净连接对照，再解释收集/洗涤；不需要拆掉连通器物与水解条件比较。",
+      "preserve": ["生成量不等于收集量", "碱被消耗", "温度单变量比较"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-6",
+          "decision": "revise",
+          "reason": "制酯入口有装置和分离机制，化学结构桥缺失。"
+        },
+        {
+          "id": "chem-required-2-activity-9",
+          "decision": "revise",
+          "reason": "综合活动各证据保留，制酯段同上。"
+        },
+        {
+          "id": "chem-elective-3-inquiry-p77",
+          "decision": "retain",
+          "reason": "四章水解对照、可逆与OH预算及温度预测自足。"
+        },
+        {
+          "id": "chem-elective-3-activity-1",
+          "decision": "revise",
+          "reason": "制备水解全活动补同一酯键前后关系即可。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-sugar-tests",
+      "decision": "revise",
+      "evidence": [
+        "anomeric-linkage-evidence 实际画蔗糖两个位点占用与麦芽糖自由端；水解保链单元、条件调节和前后对照。",
+        "glucose-silver-mirror/copper-oxide 只画银壁/Cu₂O及价态记号；葡萄糖环/开链平衡补充还原物的关键解释仅旁白。"
+      ],
+      "missingBridge": "给葡萄糖两个短入口补可见环开链—还原试剂过程；其余结构与有效检验条件的镜头保留，避免把所有糖检验推倒。",
+      "preserve": ["部分水解双阳性", "无碱为无效而非阴性", "异头位点比较"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-7",
+          "decision": "revise",
+          "reason": "两检验结果充分，缺糖为何可还原的结构桥。"
+        },
+        {
+          "id": "chem-required-2-experiment-7-8",
+          "decision": "retain",
+          "reason": "淀粉到单体及条件转换、前后证据完整。"
+        },
+        {
+          "id": "chem-elective-3-experiment-4-1",
+          "decision": "revise",
+          "reason": "同葡萄糖短入口缺口。"
+        },
+        {
+          "id": "chem-elective-3-inquiry-p106",
+          "decision": "retain",
+          "reason": "同分子式不同连接与自由端原因可见。"
+        },
+        {
+          "id": "chem-elective-3-experiment-4-2",
+          "decision": "retain",
+          "reason": "纤维→水解产物→条件调整→检验链完整。"
+        },
+        {
+          "id": "chem-elective-3-activity-3",
+          "decision": "revise",
+          "reason": "综合活动需补葡萄糖桥，并把蔗糖水解前后连接区别带入此窗口。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-protein-states",
+      "decision": "revise",
+      "evidence": [
+        "salt-redissolve 与 denatured-dilution-persistence 保同八链，proteinSymbol 分别改变聚集和展开，稀释不删除蛋白质。",
+        "nitric-acid-yellow 只有白沉淀再黄色和芳香位点标签，位点反应/缺失反例只在探索参数；必修窗口还包含燃烧但无统一证据组织。"
+      ],
+      "missingBridge": "补黄色来源的位点示意和不同蛋白质响应预测；必修三性质应按空间状态/化学组成/显色位点组织，不只换试剂。",
+      "preserve": ["盐析与变性差别", "稀释反例", "肽链未水解", "不同金属盐准确身份"],
+      "windows": [
+        {
+          "id": "chem-required-2-experiment-7-9",
+          "decision": "revise",
+          "reason": "三个性质窗口需组织成证据类型区别，黄色加结构桥。"
+        },
+        {
+          "id": "chem-elective-3-experiment-4-3",
+          "decision": "retain",
+          "reason": "同链聚集与复溶清楚。"
+        },
+        {
+          "id": "chem-elective-3-experiment-4-4",
+          "decision": "retain",
+          "reason": "三处理及加水反例完整。"
+        },
+        {
+          "id": "chem-elective-3-experiment-4-5",
+          "decision": "revise",
+          "reason": "单黄色章仅现象顺序，补可反应位点与缺位点预测。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-metal-extraction",
+      "decision": "revise",
+      "evidence": [
+        "metalAtomMap保原子身份，CO/Al把同氧移入不同产物；electrolysis碳阳极随模型缩短。",
+        "七章准确归纳电子得失，却没有为什么某些化合物能热分解、某些必须其他还原途径的可检验选择依据；条件开关只开/关既选路线。"
+      ],
+      "missingBridge": "保留原子与电子账本，增加一组同还原剂面对不同金属化合物的能量/证据比较，让路线选择形成预测而非目录。",
+      "preserve": ["熔体非溶液", "碳阳极消耗", "净反应不作实际机理"],
+      "windows": [
+        {
+          "id": "chem-required-2-model-p98",
+          "decision": "revise",
+          "reason": "完整但以路线逐项陈列结束，缺新原料如何选路线的推理桥。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-seawater-membranes",
+      "decision": "retain",
+      "evidence": [
+        "reverse-pressure 箭头在P−π过零时反向，permeate-concentrate 同水盐账使浓缩与通量下降相连。",
+        "dense-polymer-layer 否定普通孔筛，retained-product 固定溶质数减水量；membranePartition保两侧份数并允许盐透过。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["压力阈值预测", "水盐双守恒", "浓缩液也可为产品"],
+      "windows": [
+        {
+          "id": "chem-required-2-model-p100",
+          "decision": "retain",
+          "reason": "淡化窗口有自然方向、反向条件和反馈预测。"
+        },
+        {
+          "id": "chem-elective-3-model-p148",
+          "decision": "retain",
+          "reason": "膜类别到材料选择性和保留产品完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-petroleum-refining",
+      "decision": "retain",
+      "evidence": [
+        "identity 将被圈十六烷放大，邻接不变；fractionationFrame 同40点按columnState出口走连通路径。",
+        "四裂化净式由crackingProducts图键级求H数，最后同丁烷两种替代途径明确不同时发生。"
+      ],
+      "missingBridge": "无必须重建的桥，沸点排序不冒充VLE已明确。",
+      "preserve": ["物理分离/化学连接对照", "碳身份", "氢数由价数求得"],
+      "windows": [
+        {
+          "id": "chem-required-2-model-p103",
+          "decision": "retain",
+          "reason": "七章围绕分子身份是否改变推进，具有参数预测。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-tofu-coagulation",
+      "decision": "retain",
+      "evidence": [
+        "thermal-protein-preparation 保20蛋白符号展开，ion-induced-gel-network 用heat×dose共同决定连接。",
+        "press-serum-release 同curd/serum账转移水，hydrated-curd-cutaway保含水网络，压制不增蛋白。"
+      ],
+      "missingBridge": "无必须重建的桥；操作顺序已承担多尺度解释。",
+      "preserve": ["热处理与凝固共同条件", "豆渣损失", "湿质量和蛋白总量分开"],
+      "windows": [
+        {
+          "id": "chem-required-2-practice-p115",
+          "decision": "retain",
+          "reason": "七章从吸水到网络与压制因果链完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-calorimetry",
+      "decision": "retain",
+      "evidence": [
+        "account-for-missing-heat 把同放热拆溶液/杯体/环境并对照绝热虚线，三次平均不能补系统漏热。",
+        "冰量热器两层冰与两条排水独立，iceCalorimetry增加外界热只改变防护层，耗尽才漏入测量层。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["温差→热量换算", "系统误差反例", "独立排水几何"],
+      "windows": [
+        {
+          "id": "chem-elective-1-inquiry-p5",
+          "decision": "retain",
+          "reason": "四章测量、计量、重复与漏热推断完整。"
+        },
+        {
+          "id": "chem-elective-1-history-p16",
+          "decision": "retain",
+          "reason": "三章构造、相变标尺与环境隔离预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-equilibrium-response",
+      "decision": "revise",
+      "evidence": [
+        "eq-from-reactants/products 的两速率通道非零且同终点；eq-expand/compress把即时浓度与后续松弛明确分时。",
+        "实验活动 Fe/Cr/Cu 渲染是试管色与加液量，未展示配位粒子交换；单gas-temperature窗口为冷热两瓶而机制在旁白。"
+      ],
+      "missingBridge": "保动态与压缩两阶段，给温度和活动局部增加物种互变/速率失衡证据，不能只让模型在后台算平衡、前台换颜色。",
+      "preserve": ["即时与迟后变化分开", "同瓶交换水浴", "合成氨速度/终点区别及循环"],
+      "windows": [
+        {
+          "id": "chem-elective-1-model-p32",
+          "decision": "retain",
+          "reason": "两起点/两非零速率论证完整。"
+        },
+        {
+          "id": "chem-elective-1-experiment-2-2",
+          "decision": "retain",
+          "reason": "两反向操作清晰拆分两个效应。"
+        },
+        {
+          "id": "chem-elective-1-experiment-2-3",
+          "decision": "revise",
+          "reason": "单冷热章有对照，热为何偏向某方向的桥不可见。"
+        },
+        {
+          "id": "chem-elective-1-model-p46",
+          "decision": "retain",
+          "reason": "教材数据、速度、循环累计量构成工程推理。"
+        },
+        {
+          "id": "chem-elective-1-activity-1",
+          "decision": "revise",
+          "reason": "五活动窗口控制严谨，需把颜色连到共同平衡物种变化。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-acid-evidence",
+      "decision": "revise",
+      "evidence": [
+        "acid-dilution 同时显示电离比例增、H浓度减；acid-total 共同终点由总酸4mmol及残Mg推得，不以游离H量代替总量。",
+        "acid-carbonate 单章只有逐滴产气、净式与酸性比较口述，没有氢转移/逸气的可见驱动链。"
+      ],
+      "missingBridge": "保测量和总量解释，仅补碳酸盐窗口从质子转移到CO₂逸出的因果桥。",
+      "preserve": ["强弱不等于总量", "稀释比例/浓度区分", "压强曲线非实测及加速原因未决"],
+      "windows": [
+        {
+          "id": "chem-elective-1-experiment-3-1",
+          "decision": "retain",
+          "reason": "四项同浓度证据加稀释反例完整。"
+        },
+        {
+          "id": "chem-elective-1-experiment-3-2",
+          "decision": "revise",
+          "reason": "单产气章需要原理短镜头，不必调用整片强弱酸实验。"
+        },
+        {
+          "id": "chem-elective-1-body-p61",
+          "decision": "retain",
+          "reason": "基线、过程曲线与共同总量推理完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-acid-base-titration",
+      "decision": "retain",
+      "evidence": [
+        "titration-equivalence 放大19.8–20.2，指标变色范围与当量点分开；strongTitration由剩余电荷含水求pH。",
+        "halfDropState 分悬滴/瓶壁/主体，冲水后才改主体pH；water-location用守恒解释滴定管水/瓶内水/额外样品不同偏差。"
+      ],
+      "missingBridge": "无必须重建的桥；本片步骤已有明确测量因果。",
+      "preserve": ["半滴真实去向", "两滴定方向", "随机重复不能去系统误差", "空白记录"],
+      "windows": [
+        {
+          "id": "chem-elective-1-body-p67",
+          "decision": "retain",
+          "reason": "曲线、计量和指标范围构成完整原理窗口。"
+        },
+        {
+          "id": "chem-elective-1-activity-2",
+          "decision": "retain",
+          "reason": "九章活动围绕物质何时进入被测体系与误差，非无解释操作。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-hydrolysis-applications",
+      "decision": "revise",
+      "evidence": [
+        "saltHydrolysis 求解电荷和物料平衡，但 hydro-neutral/basic/ammonium 的组件主视图是玻璃棒、pH纸和数值，水向盐离子转移质子的机制没有出现。",
+        "hydro-iron-dilute 保留水解比例增加而颜色变浅的对照；hydro-mud-settle 的团聚沉降、hydro-oil-rinse 的油层转移有实际几何和独立水空白。"
+      ],
+      "missingBridge": "盐类别入口需从六种结果陈列改为水—离子质子转移与新盐预测；铁水解和生活活动只补共同平衡桥，保留已有控制变量及物料过程。",
+      "preserve": ["浓度与水解比例分开", "泥团沉降与同份水空白", "油层冲洗的物料去向"],
+      "windows": [
+        {
+          "id": "chem-elective-1-inquiry-p71",
+          "decision": "rebuild",
+          "reason": "六盐入口的中心解释仍在旁白，需将酸碱来源变为独立可见过程。"
+        },
+        {
+          "id": "chem-elective-1-inquiry-p75",
+          "decision": "revise",
+          "reason": "热、稀释、晶体、加酸对照有效，需可见水合铁物种与质子交换解释方向。"
+        },
+        {
+          "id": "chem-elective-1-activity-3",
+          "decision": "revise",
+          "reason": "六活动的物料与现象真实；补水解改变物种、去污发生在何处的共同桥。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-electrolysis-plating",
+      "decision": "retain",
+      "evidence": [
+        "electro-carriers 将导线电子与U形管离子分开追踪，electro-charge 由同一Q算沉积量和微米厚度。",
+        "plating-transfer 保留同铁对象先离液再转移；plating-reverse 翻转极性改变溶解/沉积，plating-open 给出无电源仍可局部置换的反例。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["载流粒子区别", "电量—金属—面积厚度一致", "表面有铜不等于证明电镀"],
+      "windows": [
+        {
+          "id": "chem-elective-1-experiment-4-2",
+          "decision": "retain",
+          "reason": "物种、电极产物、输运与电量关系完整。"
+        },
+        {
+          "id": "chem-elective-1-activity-4",
+          "decision": "retain",
+          "reason": "处理表面与电流路径有原因，反向和开路两类反例自足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-corrosion-protection",
+      "decision": "retain",
+      "evidence": [
+        "oxygenColumn 同时计算有限顶空气体消耗、压强与水位；漏气对照改变读数而不凭空停止化学反应。",
+        "protect-contact-control 将新鲜仅Fe试样与相连金属区分，Fe²⁺检验和酚酞颜色不等同；warmer-energy-balance 将释放热分为储热/散热，碳、水、空气均是模型输入。"
+      ],
+      "missingBridge": "无必须重建的桥；本次是源内容审读，不替代此前浏览器修复验收。",
+      "preserve": ["测量信号与反应本身分开", "金属接触路径", "暖包有限氧与热收支"],
+      "windows": [
+        {
+          "id": "chem-elective-1-experiment-4-3",
+          "decision": "retain",
+          "reason": "吸氧证据与两种锌/铜对照构成解释。"
+        },
+        {
+          "id": "chem-elective-1-experiment-4-4",
+          "decision": "retain",
+          "reason": "电子路径、取样显色与接触反例完整。"
+        },
+        {
+          "id": "chem-elective-1-practice-p116",
+          "decision": "retain",
+          "reason": "实验设计、氧供应、热收支与缺条件反例完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-noble-gas-evidence",
+      "decision": "retain",
+      "evidence": [
+        "sun/mineral 在同波长轴比较He587.56148与Na双线，并将矿物气体对应到同线；density 用相同T/P/V比较6.4mg差且提供温度反例。",
+        "separation 保留未知物身份直到选择性去除后；xenon 用近似电离能提出可检验猜想，boundary 不把首次产物等同后来XeF₂。"
+      ],
+      "missingBridge": "无必须重建的桥，历史证据被转成测量、排除与预测。",
+      "preserve": ["谱线标尺和误差", "密度混杂因素", "惰性结论的适用条件"],
+      "windows": [
+        {
+          "id": "chem-elective-2-history-p26",
+          "decision": "retain",
+          "reason": "天体与矿物的独立测量对应自足。"
+        },
+        {
+          "id": "chem-elective-2-history-p26-2",
+          "decision": "retain",
+          "reason": "固定条件、微小质量差及排除实验完整。"
+        },
+        {
+          "id": "chem-elective-2-history-p27",
+          "decision": "retain",
+          "reason": "量化类比形成预测，随后改写绝对惰性结论。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-infrared-structure",
+      "decision": "retain",
+      "evidence": [
+        "vibration 的约化质量振子保质心，N₂在偶极变化为零时仍振动却不出现所示吸收；scan 输出振幅与透过率来自同参数。",
+        "functional/compare 将乙醇、醚相同分子式与O—H差别对应谱，并允许水背景产生假线索。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["振动不自动等于红外吸收", "同位素频移预测", "水背景反例"],
+      "windows": [
+        {
+          "id": "chem-elective-2-instrument-p41",
+          "decision": "retain",
+          "reason": "仪器光路、振动响应、吸收条件和扫描连续。"
+        },
+        {
+          "id": "chem-elective-3-instrument-p18",
+          "decision": "retain",
+          "reason": "官能团结构差别、谱证据与污染反例独立自足。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-mass-spectrometry",
+      "decision": "retain",
+      "evidence": [
+        "ionize 显示入射1个/出射2个电子与正离子，sector 的实际偏转半径和狭缝由mV/q/B求得，fragments 保92→91带电+1中性去向。",
+        "formula 排除31/45错误峰，isotopes 区分93同位素，structure 用乙醇/醚说明分子式未唯一确定连接。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["轨迹与仪器真实同几何", "基峰不是分子量", "组成与连接的证据层级"],
+      "windows": [
+        {
+          "id": "chem-elective-2-instrument-p42",
+          "decision": "retain",
+          "reason": "电离、分选、碎片与甲苯例完整。"
+        },
+        {
+          "id": "chem-elective-3-instrument-p17",
+          "decision": "retain",
+          "reason": "错误峰排除到公式、同位素与结构不唯一完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-molecular-shapes",
+      "decision": "revise",
+      "evidence": [
+        "two/three/four-domains 及孤电子对分支由预设VSEPR方向生成最终形状，气球类比也直接给定排布；没有竞争排布的间距或排斥比较。",
+        "opposite/bent/substitution 的偶极矢量由同坐标求和，CO₂零、H₂O弯曲和CH₄/CH₃Cl不抵消是实际几何结果。"
+      ],
+      "missingBridge": "仅给电子域形状窗口增加平面四向与四面体等候选排布比较，解释为什么选择该空间方向；不假装从简化排斥算出精确量子键角。",
+      "preserve": ["多重键按一个域", "深度与观察角度", "偶极矢量真实求和"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p44",
+          "decision": "revise",
+          "reason": "从域数直接展示最终形状，缺选择空间排布的可见桥。"
+        },
+        {
+          "id": "chem-elective-2-model-p49",
+          "decision": "revise",
+          "reason": "二原子键长增加独立证据，后续形状桥仍需补。"
+        },
+        {
+          "id": "chem-elective-2-model-p52",
+          "decision": "retain",
+          "reason": "方向与相消完整，已有可检验替换预测。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-hydrogen-bond-network",
+      "decision": "retain",
+      "evidence": [
+        "pair 固定O···O距离改变方向，bondScore随方向降低；shell 在同四近邻中区分两给体两受体。",
+        "melt 保36个水身份及分子内几何，重新判断氢键而不全删；floatGeometry 用排水面积反求水位并区分宏观密度参照。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["氢键有方向", "融化仍有氢键", "微观结构与宏观参照不冒充同一计算"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p57",
+          "decision": "retain",
+          "reason": "局部作用、开放结构、融化与浮力迁移构成完整链。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-chirality-evidence",
+      "decision": "retain",
+      "evidence": [
+        "mirror/overlay 的手性由三重积与刚体旋转求，D=C反例可重合；不是仅用颜色宣布不同。",
+        "sort/solutions/mix 保八个晶体身份，溶液旋光依两份含量之差及Malus投影，等量互消不消除手性分子；selective 有零选择性对照。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["空间重合检验", "晶体到溶液证据", "旋光为零不等于无手性"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p60",
+          "decision": "retain",
+          "reason": "镜像、重合与相同基团反例完整。"
+        },
+        {
+          "id": "chem-elective-2-history-p61",
+          "decision": "retain",
+          "reason": "历史分离、旋光、混合及选择性作用依次增加证据。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-liquid-crystal",
+      "decision": "retain",
+      "evidence": [
+        "melting/clearing 同一液槽比较流动与光学变化，order/isotropic 的24杆保身份并实际计算取向序和位置有序指标。",
+        "field 用强锚定Frank模型求阈值和层内取向，再由相位计算透光；撤场可恢复，非直接设定亮暗。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["流动与无序不是同义", "历史胆甾相与后续向列模型明确换例", "阈值及边界取向"],
+      "windows": [
+        {
+          "id": "chem-elective-2-history-p69",
+          "decision": "retain",
+          "reason": "宏观两次变化、微观两种有序和电场预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-crystal-growth",
+      "decision": "retain",
+      "evidence": [
+        "iodine 同48份在源/气相/冷面重新分配，无冷面不形成所示沉积；salt/dilute 由同离子量与容量判断析出/复溶。",
+        "seed/growth 保同晶种转移悬挂，alumGrowth 溶液与晶体总量守恒，layers 保紫核与透明外层而不整块变色。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["同物质不同相去向", "浓度/容量条件", "晶种与分层生长身份"],
+      "windows": [
+        {
+          "id": "chem-elective-2-experiment-3-1",
+          "decision": "retain",
+          "reason": "熔融、气相与溶液三途径由物质相态和条件比较。"
+        },
+        {
+          "id": "chem-elective-2-practice-p93",
+          "decision": "retain",
+          "reason": "晶种、容量与连续壳层形成可追踪生长链。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-crystal-diffraction",
+      "decision": "revise",
+      "evidence": [
+        "sharing/count 用真实相邻单元分摊，refine 改一个O坐标即重算48反射及残差并迭代下降。",
+        "quasi-pattern/PatternComparison 将实际点阵与计算Heatmap并列；structureIntensity 求Σexp(i相位)，但组件只有点图、强度图和粉末曲线，未呈现波如何相长/相消。"
+      ],
+      "missingBridge": "在衍射两个窗口补固定观察方向的波/相位相加镜头，再回到整图；保留真实计算、晶胞分摊和结构精修。",
+      "preserve": ["实际坐标计算而非装饰花纹", "有限图不伪证无限周期", "残差驱动精修"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p73",
+          "decision": "retain",
+          "reason": "共享计数是独立完整几何论证。"
+        },
+        {
+          "id": "chem-elective-2-model-p74",
+          "decision": "revise",
+          "reason": "准周期对照成立，需把原子排列连到相干强度的可见桥。"
+        },
+        {
+          "id": "chem-elective-2-instrument-p75",
+          "decision": "revise",
+          "reason": "点阵到谱图目前为输入输出并列，需相位桥解释峰与环。"
+        },
+        {
+          "id": "chem-elective-3-instrument-p20",
+          "decision": "retain",
+          "reason": "候选坐标、计算图、残差改变构成自足逆问题论证。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-crystal-bonding",
+      "decision": "retain",
+      "evidence": [
+        "iodine 保九个I₂身份，分开目标分子时内键不变、分子间虚线消退；diamond/quartz 从同中心逐层展开真实连接范围。",
+        "cleave 先切同一(111)平面跨面键、再刚体分开两部分，内部键长保持；Si/O共享连接反推1:2组成。"
+      ],
+      "missingBridge": "无必须重建的桥；结构展示以连接范围作证据，不需伪造晶体生长动力学。",
+      "preserve": ["共价/氢键/分子间作用分层", "有限边界延续", "硬度与脆性区别"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p78",
+          "decision": "retain",
+          "reason": "五章由分离时哪种连接改变形成结构判据和性质边界。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-metal-and-graphite",
+      "decision": "retain",
+      "evidence": [
+        "metalLayers 随滑移求最近邻抬升且共有电子区域连续；drift/scatter 画归一化Drude速度分布，零场、反场、弛豫时间改变平均漂移。",
+        "graphite 保层内连接，orbitals 显平行p侧向重叠，conductivity 用同电场方向乘各向异性张量得到非平行J且跨层非零。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["热运动宽度与漂移不混同", "机械模型边界", "石墨跨层不是绝缘"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p86",
+          "decision": "retain",
+          "reason": "共有电子、形变、漂移与温度反例完整。"
+        },
+        {
+          "id": "chem-elective-2-model-p90",
+          "decision": "retain",
+          "reason": "层内/间连接差别、轨道方向和张量预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-coordination-colors",
+      "decision": "revise",
+      "evidence": [
+        "salts 仅六种固体/足水溶液色比较，指向共同含铜组分但未显出共同水合环境；ligands 则保同Cu和四个水/氨身份连续交换。",
+        "silver-complex 在Tube旁渐显完整线形银氨，silver模型同时解Ksp/Kf并能改背景Cl；画面未出现游离Ag被配位后使固体继续补入的中间链。"
+      ],
+      "missingBridge": "六盐入口补共同水合配位中心；银盐窗口补自由Ag—配合态—固体三份之间的驱动链。铜配体替换镜头保留，不需要重新做全部试管。",
+      "preserve": [
+        "同Cu配体身份",
+        "轴向水与教材简写区别",
+        "AgCl未必完全溶解",
+        "铁配合环境与游离Fe不同"
+      ],
+      "windows": [
+        {
+          "id": "chem-elective-2-experiment-3-2",
+          "decision": "revise",
+          "reason": "结果对照有效，但共同水合环境仅口述。"
+        },
+        {
+          "id": "chem-elective-2-experiment-3-3",
+          "decision": "retain",
+          "reason": "宏观沉淀/深蓝与同中心微观配体交换相接。"
+        },
+        {
+          "id": "chem-elective-2-experiment-3-5",
+          "decision": "revise",
+          "reason": "结构与结果并列，缺配位降低自由Ag促溶解的可见桥。"
+        },
+        {
+          "id": "chem-elective-2-activity",
+          "decision": "revise",
+          "reason": "保铜四章，补银促溶及铁配合环境的局部说明镜头。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-host-guest-recognition",
+      "decision": "retain",
+      "evidence": [
+        "cages/host 保60/70碳笼连接及同原子标记；filter/release 的competition守恒两客体和主体，并允许K比相同时不富集。",
+        "crownFit 由氧位、孔径和离子半径推偏离平面距离；compare 保18冠6六氧的实际骨架且明确几何不等于亲和力。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["两客体都可结合", "富集不等于纯品", "回收主体与客体守恒", "尺寸适配的边界"],
+      "windows": [
+        {
+          "id": "chem-elective-2-model-p98",
+          "decision": "retain",
+          "reason": "结构识别、竞争分配、分离回收及另一主客体的迁移完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-wohler-isomers",
+      "decision": "revise",
+      "evidence": [
+        "atoms/structure 按邻接及键级求氢数，pentane三个骨架和ethanol/ether氧邻居形成可检查区别。",
+        "origin 的实验室制尿素历史结论配器物/结构端点，未给如何认定所得与尿素同一的历史证据；overlap/cis 则实际扭转轨道到正交并提供同取代基反例。"
+      ],
+      "missingBridge": "历史入口补当时可用的身份比较与推论边界；结构异构和顺反窗口完整保留。",
+      "preserve": ["氰酸铵盐与中性尿素区分", "氢数由价数生成", "刚体旋转不偷换双键扭转"],
+      "windows": [
+        {
+          "id": "chem-elective-3-history-p1",
+          "decision": "revise",
+          "reason": "组成守恒清楚，但历史实验何以支持身份/来源结论仍靠陈述。"
+        },
+        {
+          "id": "chem-elective-3-model-p8",
+          "decision": "retain",
+          "reason": "三类异构由实际邻接差别推导。"
+        },
+        {
+          "id": "chem-elective-3-model-p35",
+          "decision": "retain",
+          "reason": "侧向重叠损失解释旋转限制，再用反例检验顺反条件。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-distillation",
+      "decision": "retain",
+      "evidence": [
+        "vapour-enrichment 同一Raoult/蒸气压模型计算汽液组成，changing-residue 每小份蒸出扣同物种量，馏分不预设纯品。",
+        "connected-path/condensation-control 同中心线追踪汽化、冷凝与接收，冷凝关闭只进未冷凝账、不把已蒸发物删除。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["纯沸点不是混合物逐项开关", "瓶内反馈", "相变与收集分开"],
+      "windows": [
+        {
+          "id": "chem-elective-3-body-p13",
+          "decision": "retain",
+          "reason": "七章含差异、微观份额、仪器测量、动态物料及反例完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-solvent-extraction",
+      "decision": "retain",
+      "evidence": [
+        "solute-distribution 从D、V及守恒求两相量；density-layer-order 保同分配只换密度，揭开下层必为水的错误。",
+        "headspace-pressure 由Boyle和液柱静压求停流，fresh-portions 保总溶剂分次重算，所有接收量同步扣漏斗内量。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["浓度比不等于物质量比", "相身份与上下分开", "步骤背后的压强原因"],
+      "windows": [
+        {
+          "id": "chem-elective-3-body-p14",
+          "decision": "retain",
+          "reason": "分配、密度、分液压强及新鲜份数预测构成完整原理。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-benzoic-recrystallization",
+      "decision": "retain",
+      "evidence": [
+        "hot-dissolution/cooling-crystals 用教材三温度溶解度求容量，hot-filtration 降温会把同目标物留在滤纸。",
+        "cold-wash 同时减少盐与损失苯甲酸；dry-mass-recovery 分质量收率/纯度，chloride-check 不把肉眼阴性当绝对零。"
+      ],
+      "missingBridge": "无必须重建的桥；操作本身已经由容量与物料解释。",
+      "preserve": ["泥沙/盐/目标物三去向", "洗涤取舍", "视觉纯净不代替分析"],
+      "windows": [
+        {
+          "id": "chem-elective-3-inquiry-p14",
+          "decision": "retain",
+          "reason": "八章从物性差异到损失核算和检验边界连续。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-pigment-chromatography",
+      "decision": "retain",
+      "evidence": [
+        "residence-and-motion 跟踪暂时吸附/可移动两状态，phaseBalance 推v/v流=1/(1+k)，retention-contrast 同保留即真实重叠。",
+        "band-overlap 由归一分布求交叠；remove-colored-solid 保教材取固体层而非假装收纯液，ethanol-recovery 保每种色素总量。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["停留时间导致平均速度不同", "保留差异归零反例", "历史取层与现代柱图区分"],
+      "windows": [
+        {
+          "id": "chem-elective-3-history-p16",
+          "decision": "retain",
+          "reason": "微观停留、宏观分离、重叠边界与回收完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-elemental-analysis",
+      "decision": "retain",
+      "evidence": [
+        "transport 中水在真实除水位置停止、CO₂继续，absorbed 到达状态决定增重；关闭干燥使水进入碱管，碳推断偏高。",
+        "ratio 从产物质量倒推元素原子比，limits 用同组成乙醇/醚和onlyCHO前提区分证据范围。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["物质路径决定读数", "氧化剂氧不误计样品", "实验式不是结构式"],
+      "windows": [
+        {
+          "id": "chem-elective-3-history-p16-2",
+          "decision": "retain",
+          "reason": "测量设计、守恒逆算、系统干扰与推断边界完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-nmr-hydrogen",
+      "decision": "retain",
+      "evidence": [
+        "environments 将每个H身份连到谱组，integral 解析积分同Lorentzian而非按峰高，OH宽矮保面积。",
+        "ether 以同分子式连接不同形成单环境；splitting 保3/2面积改线数，exchange 只移除OH常规¹H信号，FID同谱参数。"
+      ],
+      "missingBridge": "无必须重建的桥；本片任务是结构证据而非完整核自旋量子推导。",
+      "preserve": ["环境/线数/面积分开", "元素分析之后的结构约束", "交换条件边界"],
+      "windows": [
+        {
+          "id": "chem-elective-3-instrument-p19",
+          "decision": "retain",
+          "reason": "六章将分子位置、信号、积分及未知候选排除连起来。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-aromatic-comparison",
+      "decision": "revise",
+      "evidence": [
+        "benzene-br 的完整Br₂跨相且总量保留，benzene-mn 保紫色；芳香离域为何不能当三个普通双键只在旁白。",
+        "paired-mn/sidechain 保同苄位C氧化成羧基、苯环不变，tertbutyl无苄位H反例改变实际模型。"
+      ],
+      "missingBridge": "仅给苯入口补普通烯烃与芳香环连接/离域的可见差异，明确两个阴性/萃取观察不足独自证明全部芳香理论；侧链窗口保留。",
+      "preserve": ["颜色转移与反应消耗区分", "受限氧化剂守恒", "无苄位氢反例"],
+      "windows": [
+        {
+          "id": "chem-elective-3-experiment-2-1",
+          "decision": "revise",
+          "reason": "萃取机制充分，芳香结构到反应差异的桥不可见。"
+        },
+        {
+          "id": "chem-elective-3-experiment-2-2",
+          "decision": "retain",
+          "reason": "同试剂对照、同碳去向和新底物预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-elimination-substitution",
+      "decision": "revise",
+      "evidence": [
+        "hydrolysis 的Net保碳骨架改C—Br/C—O，sampling 真实取上层水样，silver提供零水解但未酸化仍沉淀的反例。",
+        "elimination 净β-H/Br去向形成π键；ethanol/alkene-tests 的GasTrain追踪SO₂净化却没有乙醇OH与邻H形成水、C=C生成的连接镜头。"
+      ],
+      "missingBridge": "只补乙醇制乙烯教材窗口的脱水净结构桥，保现有净化与检验反例；不把消去条件当百分百选择性。",
+      "preserve": ["取样相身份", "零反应假阳性", "两洗气目的不同", "同路径杂质捕获"],
+      "windows": [
+        {
+          "id": "chem-elective-3-experiment-3-1",
+          "decision": "retain",
+          "reason": "净取代、取样、酸化干扰完整。"
+        },
+        {
+          "id": "chem-elective-3-inquiry-p56",
+          "decision": "retain",
+          "reason": "取代/消去连接对照与乙醇夹带反例完整。"
+        },
+        {
+          "id": "chem-elective-3-experiment-3-2",
+          "decision": "revise",
+          "reason": "制气净化的证据链完整，制气化学连接变化仍缺可见镜头。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-phenol-properties",
+      "decision": "revise",
+      "evidence": [
+        "base/acid-return 同苯环OH/O⁻状态与溶解/分离量对应；comparison/control 实际追踪乙酸杂质并用只含杂质隔离反例排除。",
+        "co2 只切OH/O⁻与净式；bromination 标246位而OH活化原因口述；iron 仅颜色块及配体名；history 画器械、敷料、报告三类但无具体病例观察/结果。"
+      ],
+      "missingBridge": "按窗口补：CO₂质子去向、羟基对环影响的对照、铁配位环境。历史一章需由具体原始观察与干预结果重建证据叙事，不能仅轮播历史证据类别。",
+      "preserve": [
+        "溶解物种与浑浊守恒",
+        "溴过量留色",
+        "酸性比较的净化反例",
+        "非随机历史资料的正确限定"
+      ],
+      "windows": [
+        {
+          "id": "chem-elective-3-experiment-3-4",
+          "decision": "retain",
+          "reason": "酸碱导致形态和分离变化有双向对照。"
+        },
+        {
+          "id": "chem-elective-3-body-p64",
+          "decision": "revise",
+          "reason": "酸性比较有现象，质子由何处转到何处未可见。"
+        },
+        {
+          "id": "chem-elective-3-experiment-3-5",
+          "decision": "revise",
+          "reason": "取代位置与计量清楚，需与苯对照解释OH影响。"
+        },
+        {
+          "id": "chem-elective-3-experiment-3-6",
+          "decision": "revise",
+          "reason": "配位只是名称/色块，补微观中心—配体联系及条件对照。"
+        },
+        {
+          "id": "chem-elective-3-history-p66",
+          "decision": "rebuild",
+          "reason": "历史类别陈列没有具体观察结果支撑干预推论。"
+        },
+        {
+          "id": "chem-elective-3-inquiry-p75",
+          "decision": "retain",
+          "reason": "羧酸证据、气体链和只留乙酸反例形成独立推理。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-aldehyde-tests",
+      "decision": "retain",
+      "evidence": [
+        "silver-prep 与 silver 分开配位溶解/还原，metalMarkers 固定Ag身份到同内壁；Cu两标记归同Cu₂O单位。",
+        "CarbonylView 将有机端醛→羧酸根连到2e账，redox 氧化剂不足与丙酮阴性会实际改变产物。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["试剂制备不误称银镜", "银/铜还原价态不同", "每份醛两电子", "同有机结构反例"],
+      "windows": [
+        {
+          "id": "chem-elective-3-experiment-3-7",
+          "decision": "retain",
+          "reason": "制剂、沉积位置、官能团氧化与电子账完整。"
+        },
+        {
+          "id": "chem-elective-3-experiment-3-8",
+          "decision": "retain",
+          "reason": "分散固体、Cu(I)产物与有机端变化及阴性预测完整。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-soap-assembly",
+      "decision": "retain",
+      "evidence": [
+        "hydrolysis 的esterGeometry 保甘油侧氧，saltOut/washCurd 保皂/母液/洗液关系。",
+        "amphiphile 同油滴几何决定头尾方向，oilLift 需覆盖与扰动共同成立；hardWater按Ca:皂=1:2减少可用皂。"
+      ],
+      "missingBridge": "无必须重建的桥。",
+      "preserve": ["结构来源→两亲排列→去污", "油不被分解", "硬水条件反例", "盐析不逆变回油脂"],
+      "windows": [
+        {
+          "id": "chem-elective-3-practice-p82",
+          "decision": "retain",
+          "reason": "制备分离与作用原理连接起来，最后迁移到表活类别并限定。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-organic-detection",
+      "decision": "retain",
+      "evidence": [
+        "retrosynthesis 保六碳身份，branchYield 用受限支路而非五步机械连乘；正推设计与逆推非自发分解区分。",
+        "identify 的identificationDemo 只有观察结束才逐项排候选，失效前处理不能加证据；aspirin 保保护/显露酚OH及酸未中和的无效条件。"
+      ],
+      "missingBridge": "无必须重建的桥；综合活动运用已学反应安排证据，不必重复所有反应机理。",
+      "preserve": ["假说集合随真实观察缩小", "独立样品不串试剂", "有限候选范围", "分支产率限制"],
+      "windows": [
+        {
+          "id": "chem-elective-3-model-p84",
+          "decision": "retain",
+          "reason": "目标结构拆分、正推核验及数量限制完整。"
+        },
+        {
+          "id": "chem-elective-3-activity-2",
+          "decision": "retain",
+          "reason": "检验对象、条件、反例和候选排除构成综合推理。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-protein-structure",
+      "decision": "retain",
+      "evidence": [
+        "primary/local/whole 保1CRN同46残基，隔很远的两段在空间靠近但仍一条链；structureLinks 以实测O/N、SG坐标连实际氢键/二硫键。",
+        "four-chain-assembly 使用4HHB四链刚体分开展示而内部几何不变，直接区别局部段与独立亚基。"
+      ],
+      "missingBridge": "层级辨认任务已自足，不把实测结构展示升级为预测折叠路径或动力学；可在后续通用引导中添加新结构辨层题。",
+      "preserve": ["同对象跨尺度", "真实坐标与教材图来源区分", "单链不必有四级结构"],
+      "windows": [
+        {
+          "id": "chem-elective-3-model-p114",
+          "decision": "retain",
+          "reason": "定义用可追踪几何实例辨别，明确不是四步合成或折叠动力学。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "bio-dna-structure",
+      "decision": "revise",
+      "evidence": [
+        "PairGeometry 只画环、字母与basePair按互补字母返回的2/3条虚线；geometry旁白要求供受体位置，但这里没有供/受体原子位置。",
+        "nucleotide/antiparallel 沿糖磷酸连接检验方向，helix 依据1BNA实际骨架和氢键坐标；composition打乱序列不改总量是真反例。"
+      ],
+      "missingBridge": "共享场景仅建议补碱基供体/受体与同3环错误配对的可见桥，保真实坐标、方向和组分证据。生物两窗口不作为本次化学独立审计结论。",
+      "preserve": [
+        "真实1BNA模型",
+        "反向平行不是固定左右",
+        "组成关系不唯一决定结构",
+        "原子连接与缩略图区分"
+      ],
+      "windows": [
+        {
+          "id": "chem-elective-3-model-p124",
+          "decision": "revise",
+          "reason": "化学P124关注互补原因；环数不足与供受体匹配之间仍缺镜头。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    },
+    {
+      "sceneSlug": "chem-polymer-networks",
+      "decision": "retain",
+      "evidence": [
+        "addition 保八碳四氯身份，condensation 对有限开链明确2n−1个连接及水，esterLink追踪醇氧。",
+        "base 不只换催化剂，resinState需甲醛过量；network保连接，absorb将自由水/保留水分账，weigh未倾尽会虚增结果。"
+      ],
+      "missingBridge": "无必须重建的桥；容量与拓扑的教学近似明示。",
+      "preserve": [
+        "有限链端基计数",
+        "配比与交联共同条件",
+        "无稳定网不能当湿凝胶",
+        "扣皮/自由水系统误差"
+      ],
+      "windows": [
+        {
+          "id": "chem-elective-3-model-p132",
+          "decision": "retain",
+          "reason": "两聚合类型由净连接与小分子数量推出。"
+        },
+        {
+          "id": "chem-elective-3-experiment-5-1",
+          "decision": "retain",
+          "reason": "条件到拓扑差别可见且有必要条件反例。"
+        },
+        {
+          "id": "chem-elective-3-inquiry-p147",
+          "decision": "retain",
+          "reason": "亲水网络、有限水源与称量定义连成测量推理。"
+        }
+      ],
+      "reviewType": "source-content review; not visual, listening, device performance or a full scientific revalidation"
+    }
+  ]
+}

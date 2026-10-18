@@ -1,0 +1,482 @@
+{
+  "slug": "newton-second-law-lab",
+  "status": "frozen-for-root-independent-review",
+  "premise": {
+    "zh": "从有推力却匀速的矛盾出发，用同时间速度增量、两组严格控制变量和撤力反例推导合力决定加速度。",
+    "en": "Begin with a push that does not increase speed; use equal-time velocity gains, two controlled comparisons and release to connect net force with acceleration."
+  },
+  "topic": {
+    "name": {
+      "zh": "力怎样改变速度",
+      "en": "How force changes velocity"
+    },
+    "question": {
+      "zh": "为什么有推力，却不一定加速？",
+      "en": "Why can a cart be pushed without accelerating?"
+    },
+    "title": {
+      "zh": "为什么有推力，却不一定加速？",
+      "en": "Why can a cart be pushed without accelerating?"
+    },
+    "description": {
+      "zh": "从匀速推车出发，比较相同时间的速度增量，用控制变量和撤力反例理解F合=Ma，并检验槽码重力近似的边界。",
+      "en": "Compare velocity gained over equal time, then remove the force. Controlled cart trials connect net force with acceleration and expose the limits of using hanging weight as tension."
+    },
+    "tag": {
+      "zh": "合力 · 加速度 · 控制变量",
+      "en": "Net force · Acceleration · Controlled trials"
+    }
+  },
+  "curriculum": [
+    {
+      "entryId": "required-1-newton-second-law",
+      "sceneVariant": "required-1-newton-second-law",
+      "chapterIds": ["compensate", "tape", "force", "mass", "paired", "boundary"],
+      "selectionChanged": false,
+      "question": {
+        "zh": "为什么有推力却能匀速，同样拉时重车又更难加速？",
+        "en": "Why can a push coexist with constant velocity, and why does the same pull accelerate a heavier cart less?"
+      },
+      "principle": {
+        "zh": "质量不变时a与合力成正比，合力不变时a与质量成反比；合力改变速度，而非维持速度。",
+        "en": "At fixed mass acceleration is proportional to net force; at fixed net force it is inversely proportional to mass. Net force changes velocity."
+      },
+      "transfer": {
+        "zh": "匀速推购物车时推力和阻力谁大？撤手后慢下来，又是哪一个力仍在？",
+        "en": "At constant shopping-cart velocity, which is larger: push or resistance? After release, which force still causes slowing?"
+      },
+      "previousChapterSemantics": {
+        "compensate": "Setup moved to optional detail; now balanced nonzero forces at constant velocity.",
+        "tape": "Tape procedure moved to optional detail; now velocity change and acceleration.",
+        "force": "Same cart; exact actual tension is doubled.",
+        "mass": "Exact equal tension; hanging mass adjusted rather than assuming fixed mg fixes T.",
+        "paired": "Paired displacement method remains in article and optional evidence; this chapter now gives continuous push/coast/brake counterexample.",
+        "boundary": "Exact two-body force balance retained; light/heavy trials and everyday transfer."
+      }
+    }
+  ],
+  "film": {
+    "plannedDuration": 187,
+    "chapters": [
+      {
+        "id": "compensate",
+        "index": 0,
+        "title": {
+          "zh": "有推力，也能匀速",
+          "en": "A push can coexist with constant velocity"
+        },
+        "caption": {
+          "zh": "合力为零，速度不变。",
+          "en": "Zero net force preserves velocity."
+        },
+        "duration": 30,
+        "at": 0,
+        "cue": {
+          "at": 0.45,
+          "text": {
+            "zh": "推着购物车匀速前进，手还在用力，为什么车没有越来越快？看这辆已有速度的小车：绿色推力和橙色阻力大小相等、方向相反。蓝色速度箭头没有伸长，速度曲线保持水平。有推力，不等于有合力；要看所有外力合起来还剩多少。",
+            "en": "You can push a shopping cart at a steady speed without letting go. Why does it not keep getting faster? This cart already has a velocity. The green push and orange resistance are equal and opposite. Its blue velocity arrow keeps the same length, and the trace stays level. A push is one force; what matters is the sum of all external forces."
+          }
+        }
+      },
+      {
+        "id": "tape",
+        "index": 1,
+        "title": {
+          "zh": "看速度怎样改变",
+          "en": "Follow the change in velocity"
+        },
+        "caption": {
+          "zh": "看同一秒内速度增加多少。",
+          "en": "Compare velocity gained in one second."
+        },
+        "duration": 30,
+        "at": 30,
+        "cue": {
+          "at": 30.45,
+          "text": {
+            "zh": "轨道先补偿阻力，再用槽码牵引小车从静止出发。绳子张紧后，小车向右，槽码向下；两个位移受同一根绳约束。盯住蓝箭头：它逐渐伸长，速度图向上爬。我们要比较的是相同时间里的速度增量，不是车已经跑得多快。速度变化的快慢，就是加速度。",
+            "en": "With track resistance compensated, let a hanging mass pull the cart from rest. The cart moves right as the hanging mass descends. One taut string constrains both displacements. Watch the blue arrow grow and the velocity trace rise. We need to compare how much velocity is gained in the same time, rather than just how fast the cart is already moving. That rate of change is acceleration."
+          }
+        }
+      },
+      {
+        "id": "force",
+        "index": 2,
+        "title": {
+          "zh": "同质量，合力翻倍",
+          "en": "Same mass, twice the net force"
+        },
+        "caption": {
+          "zh": "同质量：合力翻倍，加速度翻倍。",
+          "en": "Same mass: twice the force, twice the acceleration."
+        },
+        "duration": 31,
+        "at": 60,
+        "cue": {
+          "at": 60.45,
+          "text": {
+            "zh": "怎样知道变快是拉力造成的？保留同样质量，从静止同步计时，只把实际合力增加一倍。看A、B两车：一秒后，速度分别增加零点二和零点四米每秒。质量不变时，合力翻倍，加速度也翻倍。这里展示的是模型预测；真实实验要从运动记录中取得证据。",
+            "en": "To isolate the effect of force, keep the cart mass unchanged and start both trials from rest. Double only the actual net force. After the same one second, cart A has gained zero point two metres per second, and cart B zero point four. Twice the net force gives twice the acceleration. These are model predictions; a real experiment must obtain evidence from recorded motion."
+          }
+        }
+      },
+      {
+        "id": "mass",
+        "index": 3,
+        "title": {
+          "zh": "同合力，质量翻倍",
+          "en": "Same net force, twice the mass"
+        },
+        "caption": {
+          "zh": "同合力：质量翻倍，加速度减半。",
+          "en": "Same force: twice the mass, half the acceleration."
+        },
+        "duration": 33,
+        "at": 91,
+        "cue": {
+          "at": 91.45,
+          "text": {
+            "zh": "这次保持相同的实际合力，把小车质量从零点四千克增加到零点八千克。同一秒内，重车得到的速度增量只有一半，加速度也只有一半。把两组关系合起来，就是合力等于质量乘加速度。这里略调了槽码，保证控制的是拉力，而不只是槽码重力。",
+            "en": "This time keep the actual net force equal and increase cart mass from zero point four to zero point eight kilograms. Over the same second, the heavier cart gains half as much velocity: its acceleration is halved. Combining both comparisons gives net force equals mass times acceleration. The hanging masses are adjusted slightly to keep tension equal, rather than merely keeping hanging weight equal."
+          }
+        }
+      },
+      {
+        "id": "paired",
+        "index": 4,
+        "title": {
+          "zh": "撤力不等于停止",
+          "en": "Release does not erase velocity"
+        },
+        "caption": {
+          "zh": "撤力仍匀速；反向合力使车减速。",
+          "en": "Release preserves velocity. Braking changes it."
+        },
+        "duration": 32,
+        "at": 124,
+        "cue": {
+          "at": 124.45,
+          "text": {
+            "zh": "先推小车，让它获得速度。现在推杆撤开了：理想轨道上阻力忽略，合力归零。看，小车没有突然停下，蓝箭头保留原来的长度，图线也变平。接着制动片接触小车，产生向后的合力。车仍向前走，却逐渐减速。合力决定速度怎样变，不负责维持速度。",
+            "en": "First the pusher gives the cart some velocity. Now it withdraws. On this ideal track, resistance is negligible, so net force becomes zero. The cart does not suddenly stop: its blue arrow keeps its length and the trace becomes level. Next the brake engages and a backward net force appears. The cart still moves forward, but slows down. Net force changes velocity; it does not maintain it."
+          }
+        }
+      },
+      {
+        "id": "boundary",
+        "index": 5,
+        "title": {
+          "zh": "槽码也需要加速度",
+          "en": "The hanging mass also accelerates"
+        },
+        "caption": {
+          "zh": "槽码向下加速，mg必须大于T。",
+          "en": "The falling mass needs mg > T to accelerate."
+        },
+        "duration": 31,
+        "at": 156,
+        "cue": {
+          "at": 156.45,
+          "text": {
+            "zh": "最后看槽码本身。它也在向下加速，所以重力必须大于绳子向上的拉力。轻槽码时，两者相差较小；换成重槽码，差别就明显了。不能总把槽码重力当作拉力。回到购物车：匀速时推力和阻力怎样比较？撤手后慢下来，是因为哪一个力还在？",
+            "en": "Finally, examine the hanging mass. It accelerates downward, so its weight must exceed the upward string tension. With a light hanging mass the difference is small. A heavier one makes the gap clear. Hanging weight cannot always stand in for tension. Return to the shopping cart: how do push and resistance compare at constant velocity? When it slows after release, which force is still acting?"
+          }
+        }
+      }
+    ],
+    "narrationGenerated": false,
+    "sharedFilesEdited": false
+  },
+  "normalizedBeats": {
+    "common": {
+      "motionStarts": 0.07,
+      "motionFinishes": 0.83,
+      "description": "Chapters0/1/4 use physicalTime=clamp((progress−.07)/.76)×trialDuration. Paired chapters2/3 finish their one-second trial at progress.38: clamp((progress−.07)/.31). Results then hold while narration explains them."
+    },
+    "compensate": [
+      {
+        "from": 0,
+        "to": 1,
+        "visible": "A cart already moving at .24 m/s has push .18 N and resistance .18 N. Equal opposing arrows; horizontal v(t)."
+      }
+    ],
+    "tape": [
+      {
+        "from": 0.07,
+        "to": 0.83,
+        "visible": "A .6 kg cart under exact .18 N tension accelerates at .3 m/s²; string constraints tie cart travel to hanging-mass descent. Blue velocity grows."
+      }
+    ],
+    "force": [
+      {
+        "from": 0.07,
+        "to": 0.38,
+        "visible": "A/B .6 kg carts share one clock. T=.12/.24 N; a=.2/.4 m/s²; at 1 s v=.2/.4 m/s. Both rigs use identical vector scales."
+      },
+      {
+        "from": 0.38,
+        "to": 1,
+        "visible": "One-second measured window held: vA=.20 m/s and vB=.40 m/s. Numerical results are already visible when narration discusses them."
+      }
+    ],
+    "mass": [
+      {
+        "from": 0.07,
+        "to": 0.38,
+        "visible": "A/B .4/.8 kg carts under exact T=.16 N complete the same one-second trial."
+      },
+      {
+        "from": 0.38,
+        "to": 0.6,
+        "visible": "Results held at vA=.40 m/s and vB=.20 m/s; M×2 → a÷2."
+      },
+      {
+        "from": 0.6,
+        "to": 1,
+        "visible": "Combine both comparisons: Fnet=Ma."
+      }
+    ],
+    "paired": [
+      {
+        "from": 0.07,
+        "to": 0.303846,
+        "visible": "Contacting pusher applies .18 N; velocity rises continuously."
+      },
+      {
+        "from": 0.303846,
+        "to": 0.596154,
+        "visible": "Pusher withdraws and remains behind. No horizontal force; .24 m/s persists. A growing gap and flat plot section show release."
+      },
+      {
+        "from": 0.596154,
+        "to": 0.83,
+        "visible": "Brake contacts the cart; net force −.18 N slows it while it still moves right."
+      },
+      {
+        "from": 0.83,
+        "to": 1,
+        "visible": "Cart comes to rest; endpoint held, no reverse launch."
+      }
+    ],
+    "boundary": [
+      {
+        "from": 0.04,
+        "to": 0.38,
+        "visible": ".02 kg hanging mass with .6 kg cart. T≈.18968 N versus mg=.196 N; relative overestimate3.33%."
+      },
+      {
+        "from": 0.38,
+        "to": 0.5,
+        "visible": "Light trial held."
+      },
+      {
+        "from": 0.5,
+        "to": 0.54,
+        "visible": "Explicit new heavy-mass trial starts from rest."
+      },
+      {
+        "from": 0.54,
+        "to": 0.88,
+        "visible": ".2 kg hanging mass with .6 kg cart. T=1.47 N versus mg=1.96 N, overestimate33.33%. Upward T and downward mg arrows attach to hanging mass."
+      },
+      {
+        "from": 0.88,
+        "to": 1,
+        "visible": "Heavy trial held; narrator asks everyday transfer question."
+      }
+    ],
+    "narrationCaution": "These are normalized visual beats, not ASR timing evidence. Root must independently check regenerated Chinese and English speech against each visible intervention, especially release at .303846, brake at .596154 and heavy trial at .5."
+  },
+  "models": {
+    "newtonCart": "Exact two-body dynamics, g=9.8. T=m(g−a); compensated a=mg/(M+m).",
+    "hangerForTension": "m=T/(g−T/M), valid M>0 and0≤T<Mg. Keeps actual T constant when cart M changes.",
+    "cartForceSequence": "Closed-form piecewise motion, continuous x/v at force changes; zero net force preserves existing velocity, braking stops at rest.",
+    "newtonRigGeometry": "Side elevation, tangent rope entry and quarter pulley arc; cart advance shortens straight segment exactly as hanging segment grows.",
+    "vectorScaling": "Each view uses fixed scales based on its possible model range. Paired rigs receive common max tension and velocity, preserving within-pair ratios. Arrow scales are not intended for comparison across different chapters.",
+    "limits": [
+      "Ideal light inextensible taut string; frictionless massless pulley.",
+      "Hanging-mass trials compensate resistance. Separate coasting trial neglects resistance.",
+      "The stop at the measurement limit is a held observation, not a modeled impact.",
+      "One-dimensional, low-speed, constant-mass mechanics.",
+      "Displayed values are model predictions, not experimental measurements."
+    ]
+  },
+  "sources": [
+    {
+      "kind": "user-provided-primary-textbook",
+      "path": "/Users/int64ago/Downloads/人教版高中物理-必修第一册.pdf",
+      "printedPages": "88–92",
+      "pdfPages": "93–97",
+      "checked": "full section extracted with pdftotext; methods, control variables, tape, displacement ratio and small hanging-mass condition checked"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/5-3-newtons-second-law",
+      "title": "OpenStax University Physics Volume1 §5.3",
+      "verified": "2026-10-18",
+      "claims": [
+        "Net external force changes velocity; acceleration is proportional to net force and inversely proportional to mass.",
+        "Constant velocity permits nonzero forces that balance."
+      ]
+    },
+    {
+      "url": "https://www.vernier.com/experiment/pep-4_newtons-second-law/",
+      "title": "Vernier Physics Explorations and Projects, experiment4",
+      "verified": "2026-10-18",
+      "claims": [
+        "Cart, hanging mass and low-friction track are an established experimental route.",
+        "State whether the cart or entire system is the research object; experimental designs differ."
+      ]
+    }
+  ],
+  "uiDictionary": {
+    "小车沿轨道向右运动，连续绳路绕过定滑轮，槽码同步下降。蓝箭头表示速度，绿箭头表示拉力。": "The cart moves right while its hanging mass descends through an unbroken pulley string. Blue indicates velocity; green indicates tension.",
+    "速度箭头跟随小车。推杆接触时施力，撤开后小车继续运动；制动片接触后减速。": "The velocity arrow follows the cart. A contacting pusher applies force; after release the cart keeps moving, then a contacting brake slows it.",
+    "速度—时间图，曲线斜率表示加速度": "Velocity–time trace: its slope is acceleration",
+    "有推力，却没有变快": "A push, yet no gain in speed",
+    "拉起来，看速度怎样变": "Pull — then follow the changing speed",
+    "同一质量，合力翻倍": "Same mass, twice the net force",
+    "重车为什么难加速？": "Why does extra mass slow the gain?",
+    "撤力，车会立即停下吗？": "Remove the force: does the cart stop?",
+    "绳子的拉力就是重力吗？": "Is tension the hanging weight?",
+    "观察速度怎样变化": "Follow the change in velocity",
+    "阻力": "Resistance",
+    "合": "net",
+    "连续运动阶段": "Continuous motion phases",
+    "推": "Push",
+    "撤力": "Coast",
+    "制动": "Brake",
+    "同一计时": "Same clock",
+    "F合 = Ma": "Fnet = Ma",
+    "略调槽码，保持两车T相同。": "Adjusted hanging masses keep T equal.",
+    "把mg当T，高估": "mg as T: +",
+    "要检验的想法": "Choose a claim to test",
+    "匀速也有力": "Balanced forces",
+    "拉力与变速": "Pull and speed",
+    "合力翻倍": "Double force",
+    "质量翻倍": "Double mass",
+    "撤力与制动": "Release and brake",
+    "槽码的边界": "Tension limit",
+    "模型时间": "Model time",
+    "A车实际合力": "Actual net force on A",
+    "槽码质量": "Hanging mass",
+    "蓝色：速度；绿色：推力或拉力；橙色：阻力或槽码重力。": "Blue: velocity. Green: push or tension. Orange: resistance or hanging weight.",
+    "教材中的纸带、补偿与位移比": "Textbook evidence: tape, compensation and displacement",
+    "先不挂槽码，带着纸带给小车一个初速度。调整木板，让沿板的重力分量补偿阻力；匀速才说明补偿成立。下面的倾角直接改变计算。": "Remove the hanging mass and give the cart an initial speed with its tape attached. Tilt the rail until downhill gravity balances resistance. Constant velocity is the check; the angle below changes the model.",
+    "木板倾角": "Rail angle",
+    "补偿检验": "Compensation check",
+    "纸带上的等时间点记录位置；相邻两段位移之差给出加速度。两车从静止在同一时刻释放、同一时刻截取，位移比也等于加速度比。": "Equal-time tape dots record position; the change between consecutive displacements gives acceleration. Two carts released from rest and measured for the same duration also give a displacement ratio equal to their acceleration ratio.",
+    "等时间纸带点": "Equal-time tape dots",
+    "此处计数点间隔0.10秒，是从更密的打点中选点；不是10赫兹电源。": "The displayed counting interval is 0.10 s, selected from a denser tape record; it does not mean a 10 Hz supply.",
+    "理想不可伸长轻绳、无摩擦轻滑轮。牵引实验已补偿阻力；到测量终点定格，不模拟碰撞。数值是模型预测，不能代替实测。": "Ideal light inextensible string and frictionless light pulley. Resistance is compensated in the hanging-mass trials. The measurement freezes at the rail limit; collisions are not simulated. Values are model predictions, not measured data.",
+    "小车质量": "Cart mass",
+    "A车质量": "Cart A mass",
+    "推力": "Push",
+    "制动力": "Brake",
+    "理想轨道：阻力忽略": "Resistance neglected",
+    "推杆与阻力同时存在": "Push + resistance",
+    "轨道已补偿阻力": "Rail resistance compensated"
+  },
+  "uiDictionaryNote": "Component uses local say(zh,en) with browserLocale. Literal pairs are included for editorial review; no shared dictionary merge is required for these local expressions. Shared topic/chapter/caption copy must be integrated by root.",
+  "review": {
+    "modelTests": "14 passed; command pnpm exec vitest run src/models/newton-second-law-lab.test.ts",
+    "firstBrowserPass": "48 states across zh/en and320/1100; six chapters and six explore modes at endpoints; 0 console errors and horizontal overflow. This pass exposed additional source-level vector-bound issues and was followed by refinement.",
+    "initialScreens": "artifacts/newton-principle-first/review-01/",
+    "finalBrowserPass": "60 final keyframes with actual root-integrated source captions and187s provisional timeline, no injected captions, across zh/en and320/390/1100.0 runtime, viewport, SVG-bounds or control-target/font failures. Preceding348-state matrix covered288 explore endpoint combinations.",
+    "voiceListening": "not performed; shared audio unchanged",
+    "wholeFilmHumanViewing": "not yet; root will regenerate narration then independently review",
+    "globalVerify": "not run by worker",
+    "buildPreview": "not run by worker",
+    "finalScreens": "artifacts/newton-principle-first/review-05-final/",
+    "playerHeight": {
+      "viewportHeight": 844,
+      "captionCondition": "Actual source captions, not injected.",
+      "completePlayerMax": {
+        "zh-320": 736.734375,
+        "zh-390": 756.453125,
+        "en-320": 777.328125,
+        "en-390": 756.453125
+      },
+      "includes": "scene, longest shared-caption measurement, transport and collapsed chapter entry",
+      "availableAfter65pxTopOffset": 779,
+      "fit": true,
+      "note": "Browser emulation. Complete player includes collapsed chapter list. After65px top offset, max777.33px fits779px available. Physical-device/mobile toolbar behavior not measured.",
+      "maxStageThroughTransport": 728.328125
+    },
+    "comparisonHandoff": "20 early/late comparison watch→explore cases passed, including actual one-second result held before speech discussion.",
+    "optionalTape": "6 tilt/tape cases passed: both languages, compensated equal spacing,0° decreasing spacing,3° increasing spacing.",
+    "record": "drafts/newton-second-law-lab/principle-first-review.md"
+  },
+  "rootTimingRevision": {
+    "date": "2026-10-18",
+    "supersedes": "Author draft timing percentages below; final implementation and measured timeline take precedence.",
+    "durationSeconds": 187.0,
+    "chapters": [
+      {
+        "id": "compensate",
+        "title": "有推力，也能匀速",
+        "titleEn": "A push can coexist with constant velocity",
+        "caption": "合力为零，速度不变。",
+        "captionEn": "Zero net force preserves velocity.",
+        "at": 0
+      },
+      {
+        "id": "tape",
+        "title": "看速度怎样改变",
+        "titleEn": "Follow the change in velocity",
+        "caption": "看同一秒内速度增加多少。",
+        "captionEn": "Compare velocity gained in one second.",
+        "at": 30.0
+      },
+      {
+        "id": "force",
+        "title": "同质量，合力翻倍",
+        "titleEn": "Same mass, twice the net force",
+        "caption": "同质量：合力翻倍，加速度翻倍。",
+        "captionEn": "Same mass: twice the force, twice the acceleration.",
+        "at": 60.0
+      },
+      {
+        "id": "mass",
+        "title": "同合力，质量翻倍",
+        "titleEn": "Same net force, twice the mass",
+        "caption": "同合力：质量翻倍，加速度减半。",
+        "captionEn": "Same force: twice the mass, half the acceleration.",
+        "at": 91.0
+      },
+      {
+        "id": "paired",
+        "title": "撤力不等于停止",
+        "titleEn": "Release does not erase velocity",
+        "caption": "撤力仍匀速；反向合力使车减速。",
+        "captionEn": "Release preserves velocity. Braking changes it.",
+        "at": 124.0
+      },
+      {
+        "id": "boundary",
+        "title": "槽码也需要加速度",
+        "titleEn": "The hanging mass also accelerates",
+        "caption": "槽码向下加速，mg必须大于T。",
+        "captionEn": "The falling mass needs mg > T to accelerate.",
+        "at": 156.0
+      }
+    ],
+    "evidence": "artifacts/teaching-principles/batch-1-timed-speech/; batch-1-transcription-final.json",
+    "method": "Independent local Whisper word/segment timing compared with the scene directors and rendered shot states; no subjective listening claim.",
+    "changes": [
+      {
+        "scene": "newton-second-law-lab",
+        "chapter": "paired",
+        "before": "Narration announced release at about 3s, while linear physical playback released at 9.72s; braking was also late.",
+        "revision": "Same continuous physical model; presentation clock now releases at 2.88s, brakes at15.68s and reaches rest at25.92s. Watch-to-explore uses the same mapping."
+      },
+      {
+        "scene": "newton-second-law-lab",
+        "chapter": "force / mass / boundary",
+        "before": "One-second comparison results, combined relation and heavy hanging-mass trial appeared after their spoken references.",
+        "revision": "Comparison reaches one physical second at30% of its chapter. Fnet=Ma appears at43% of the mass chapter; heavy trial begins at35% of the boundary chapter."
+      }
+    ],
+    "listening": "not-run; independent ASR is separate evidence"
+  }
+}

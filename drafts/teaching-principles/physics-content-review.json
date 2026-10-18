@@ -1,0 +1,4410 @@
+{
+  "scope": {
+    "scenes": 109,
+    "entries": 271
+  },
+  "method": "Source content, textbook page context, actual playback windows. Not new visual, playback, listening or full scientific revalidation.",
+  "records": [
+    {
+      "sceneSlug": "mutual-induction-lab",
+      "decision": "retain",
+      "phenomenon": "接通、保持、断开同一原线圈时，另一回路只有变化期间响应。",
+      "evidence": [
+        "MutualInductionLab.tsx:36–49,88–149,203–212：磁通透明度、表针、I/ε曲线和时间游标来自ringResponse；两回路分离。",
+        "mutualResponse用ε=−M dI/dt；ring-steady把有磁通与有感应区分，ring-open把原电流方向与变化方向区分。 audio-withdraw在频率和振幅不变时减小插入量；文章还给出提高频率的预测。"
+      ],
+      "necessaryChanges": "无必须重建项；保留历史发现与线性互感模型的区别。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MutualInductionLab.tsx",
+        "model": "src/models/mutual-induction-lab.ts",
+        "article": "src/content/mutual-induction-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-faraday-history",
+          "decision": "retain",
+          "reason": "四个铁环入口保留完整接通—稳态反例—反向响应；音频入口两章自带原电流/响应及抽出对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ring-close", "ring-steady", "ring-open"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-faraday-appendix",
+          "decision": "retain",
+          "reason": "四个铁环入口保留完整接通—稳态反例—反向响应；音频入口两章自带原电流/响应及抽出对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ring-close", "ring-steady", "ring-open"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-faraday-iron-ring",
+          "decision": "retain",
+          "reason": "四个铁环入口保留完整接通—稳态反例—反向响应；音频入口两章自带原电流/响应及抽出对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ring-close", "ring-steady", "ring-open"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-faraday-ring",
+          "decision": "retain",
+          "reason": "四个铁环入口保留完整接通—稳态反例—反向响应；音频入口两章自带原电流/响应及抽出对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ring-close", "ring-steady", "ring-open"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-mutual-induction-audio",
+          "decision": "retain",
+          "reason": "四个铁环入口保留完整接通—稳态反例—反向响应；音频入口两章自带原电流/响应及抽出对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["audio-nested", "audio-withdraw"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "ticker-tape-lab",
+      "decision": "revise",
+      "phenomenon": "固定节拍留下的点，如何变成速度和加速度。",
+      "evidence": [
+        "TickerTapeLab.tsx:38–56,190–270：paperMotion/tapeDots生成等时位置，tapeInterval读两点，tapeAcceleration读三点，图像与装置共用状态。",
+        "平均速度由位移/时间得到；instant用非匀加速三次轨迹缩短区间，避免中点速度恒等式被错误推广。 instant有缩短区间；cart/fall主要展示已设a对应的点，没有让观众先用另一段记录预测下一位置。"
+      ],
+      "necessaryChanges": "保留装置和计算；把cart/fall入口补成读等时点→相邻位移变化→预测下一点的可见局部链，调试退至展开。",
+      "sourceFiles": {
+        "component": "src/components/experiments/TickerTapeLab.tsx",
+        "model": "src/models/ticker-tape-lab.ts",
+        "article": "src/content/ticker-tape-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-ticker-timer",
+          "decision": "retain",
+          "reason": "timer单章只回答打点原理；average+instant链完整；cart、fall各单章缺少从已有读点规则到新预测的独立起承，不能视为全片推理已自动继承。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["timer"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-tape-speed",
+          "decision": "retain",
+          "reason": "timer单章只回答打点原理；average+instant链完整；cart、fall各单章缺少从已有读点规则到新预测的独立起承，不能视为全片推理已自动继承。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["average", "instant"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-cart-velocity",
+          "decision": "revise",
+          "reason": "timer单章只回答打点原理；average+instant链完整；cart、fall各单章缺少从已有读点规则到新预测的独立起承，不能视为全片推理已自动继承。",
+          "needed": "保留装置和计算；把cart/fall入口补成读等时点→相邻位移变化→预测下一点的可见局部链，调试退至展开。",
+          "chapterIds": ["cart"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-free-fall-tape",
+          "decision": "revise",
+          "reason": "timer单章只回答打点原理；average+instant链完整；cart、fall各单章缺少从已有读点规则到新预测的独立起承，不能视为全片推理已自动继承。",
+          "needed": "保留装置和计算；把cart/fall入口补成读等时点→相邻位移变化→预测下一点的可见局部链，调试退至展开。",
+          "chapterIds": ["fall"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "motion-sensor-lab",
+      "decision": "retain",
+      "phenomenon": "移动发射器与固定回声探头，为何同样测距却有不同的二分之一因子。",
+      "evidence": [
+        "MotionSensorLab.tsx:20–38,100–162,170–209；sonicPulse的wave/target画传播、反射及移动物体，records用接收时刻过滤。",
+        "sonicMeasurement显式求发射、反射、接收时刻；active以红外为计时参考，reflection往返且位置时间取反射时刻。 reflection与前面one-way形成可检验迁移；探索可反转速度并保持同一传播模型。"
+      ],
+      "necessaryChanges": "无需重建；保留脉冲显著慢放和实际声速的区别。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MotionSensorLab.tsx",
+        "model": "src/models/motion-sensor-lab.ts",
+        "article": "src/content/motion-sensor-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-sensor-speed",
+          "decision": "retain",
+          "reason": "唯一入口reference→one-way→samples→reflection完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["reference", "one-way", "samples", "reflection"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "free-fall-activities",
+      "decision": "retain",
+      "phenomenon": "相同质量纸张改变形状会改变下落；反应时间怎样藏在尺子距离里。",
+      "evidence": [
+        "FreeFallActivities.tsx paper分支用paperDrop画三物体；reasoning按logicStage揭示两项冲突；ruler按reactionDistance和gripY连续改变手指相对尺的位置。",
+        "fallActivityShot区分真实下落模型与tiedStoneArgument逻辑不等式；reactionTime是h=gt²/2的逆变换。 尺标以0.18/0.26s对照显示非线性；无空气探索检验三者齐平；捆石段指出原假设自相矛盾。"
+      ],
+      "necessaryChanges": "无需整体重建；实际复看片需确认纸片/纸团接触基准与模型一致，本次为源码审计。",
+      "sourceFiles": {
+        "component": "src/components/experiments/FreeFallActivities.tsx",
+        "model": "src/models/free-fall-activities.ts",
+        "article": "src/content/free-fall-activities.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-paper-drop",
+          "decision": "retain",
+          "reason": "paper+eraser完整对照；stones单章自含假设—两个冲突结果；ruler+scale自含释放距离—换算—刻度迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["paper", "eraser"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-tied-stones",
+          "decision": "retain",
+          "reason": "paper+eraser完整对照；stones单章自含假设—两个冲突结果；ruler+scale自含释放距离—换算—刻度迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["stones"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-reaction-ruler",
+          "decision": "retain",
+          "reason": "paper+eraser完整对照；stones单章自含假设—两个冲突结果；ruler+scale自含释放距离—换算—刻度迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ruler", "scale"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "newton-tube",
+      "decision": "retain",
+      "phenomenon": "羽毛在空气中落后，抽走空气后是否仍落后。",
+      "evidence": [
+        "NewtonTube.tsx Tube:等时ghost点、共同接触面、Specimen位置都读newtonPair；newtonShot先空气、抽气、真空，末章同时间并排。",
+        "newtonFall独立二次阻力模型和稳定真空极限；改变空气而保留对象、质量、释放条件。 comparison与密度滑块检验过渡；真空等时点间距增大同时区分等加速度与等速度。"
+      ],
+      "necessaryChanges": "保留；不能将解析模型输出说成独立实验测定g。",
+      "sourceFiles": {
+        "component": "src/components/experiments/NewtonTube.tsx",
+        "model": "src/models/newton-tube.ts",
+        "article": "src/content/newton-tube.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-newton-tube",
+          "decision": "retain",
+          "reason": "chapterIds为空意味着全片，五章链没有被剪断。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "phone-accelerometer-lab",
+      "decision": "revise",
+      "phenomenon": "静止手机读约g，自由下落却读零；电梯匀速时仍读g。",
+      "evidence": [
+        "PhoneAccelerometerLab.tsx:67–155画外壳、手掌和电梯；162–205显示raw/corrected及历史曲线；仅spring-meter画内部弹性部件。",
+        "phoneMotion明确raw=a+g；支撑移除与读数同步，但手机内部试验质量相对外壳的支撑/形变没有被画出。 lift巡航和制动提供v与a反例；弹簧测力计的F/m−g是有效迁移。"
+      ],
+      "necessaryChanges": "补手机内部质量块—悬挂—外壳局部镜头，和外部运动共用a；让支撑消失→相对形变/信号消失可见。保留现有连续轨迹、符号与量级。",
+      "sourceFiles": {
+        "component": "src/components/experiments/PhoneAccelerometerLab.tsx",
+        "model": "src/models/phone-accelerometer-lab.ts",
+        "article": "src/content/phone-accelerometer-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-phone-free-fall",
+          "decision": "revise",
+          "reason": "free-fall三章和电梯三章各自成立；但两组关于原始读数为何测比力的桥主要靠旁白/公式。",
+          "needed": "补手机内部质量块—悬挂—外壳局部镜头，和外部运动共用a；让支撑消失→相对形变/信号消失可见。保留现有连续轨迹、符号与量级。",
+          "chapterIds": ["supported", "fall", "corrected"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-elevator-acceleration",
+          "decision": "revise",
+          "reason": "free-fall三章和电梯三章各自成立；但两组关于原始读数为何测比力的桥主要靠旁白/公式。",
+          "needed": "补手机内部质量块—悬挂—外壳局部镜头，和外部运动共用a；让支撑消失→相对形变/信号消失可见。保留现有连续轨迹、符号与量级。",
+          "chapterIds": ["lift", "lift-correction", "spring-meter"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "galileo-inclines",
+      "decision": "retain",
+      "phenomenon": "斜面把太快的运动变慢；右坡变平后小球为何还继续走。",
+      "evidence": [
+        "GalileoInclines.tsx:35–55和timing/double分支从同一rollingIncline/doubleInclineState计算球、轨道与水量，c4依次35°/15°/0°。",
+        "rollingIncline有5/7转动惯量因子，平方刻度与等时点可见；double几何平滑拼接，能量含转动，不能把滚动外推成g。 horizontal极限是主片预测；energy把高度换速度与总能量并列。"
+      ],
+      "necessaryChanges": "保留；水平无穷远是理想外推，画面有限轨道不能冒充无限实际实验。",
+      "sourceFiles": {
+        "component": "src/components/experiments/GalileoInclines.tsx",
+        "model": "src/models/galileo-inclines.ts",
+        "article": "src/content/galileo-inclines.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-galileo-incline",
+          "decision": "retain",
+          "reason": "slow/square/limits、return/horizontal及energy单章分别自含自己的规律；energy第一句明确从同一理想装置观察能量，不依赖重新操作。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["slow", "square", "limits"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-double-incline",
+          "decision": "retain",
+          "reason": "slow/square/limits、return/horizontal及energy单章分别自含自己的规律；energy第一句明确从同一理想装置观察能量，不依赖重新操作。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["return", "horizontal"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-double-incline-energy",
+          "decision": "retain",
+          "reason": "slow/square/limits、return/horizontal及energy单章分别自含自己的规律；energy第一句明确从同一理想装置观察能量，不依赖重新操作。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["energy"],
+          "metadataCorrection": null,
+          "interfaceFindings": ["physics-variant-galileo-energy"]
+        }
+      ]
+    },
+    {
+      "sceneSlug": "celestial-observations",
+      "decision": "revise",
+      "phenomenon": "天体位置记录怎样排除简单轨道并引出可检验预言。",
+      "evidence": [
+        "CelestialArtwork mode0圈/椭圆模型差；mode1连续卫星位置；mode2由uranusHistory已知外行星正向积分并把同一行星方向画入观察窗；mode3日期与开普勒轨迹。",
+        "textbook-astronomy.ts保留质量扰动、太阳间接项；但海王星段并未由残差反求未知方向，观察窗是已知参数的重复输出。 Halley过去日期→1758可检验预测已明确；Neptune的独立检验目前主要在cue陈述，非独立证据视图。"
+      ],
+      "necessaryChanges": "局部重剪海王星/第谷：先固定观察记录，比较候选假设，再保留一段未用于拟合的检验；若仍用示例正向模型，应直接呈现它说明的范围。无需重做卫星光路。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CelestialObservations.tsx",
+        "model": null,
+        "article": "src/content/celestial-observations.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-galileo-telescope",
+          "decision": "retain",
+          "reason": "五个入口各两章均有效；伽利略卫星与哈雷窗口可保留；第谷残差和海王星窗口应明确数据/假设/预测各自来源，尤其neptune-check。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["galilean-telescope", "moon-records"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-tycho-observations",
+          "decision": "revise",
+          "reason": "五个入口各两章均有效；伽利略卫星与哈雷窗口可保留；第谷残差和海王星窗口应明确数据/假设/预测各自来源，尤其neptune-check。",
+          "needed": "局部重剪海王星/第谷：先固定观察记录，比较候选假设，再保留一段未用于拟合的检验；若仍用示例正向模型，应直接呈现它说明的范围。无需重做卫星光路。",
+          "chapterIds": ["position-records", "orbit-residuals"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-jupiter-moons",
+          "decision": "retain",
+          "reason": "五个入口各两章均有效；伽利略卫星与哈雷窗口可保留；第谷残差和海王星窗口应明确数据/假设/预测各自来源，尤其neptune-check。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["galilean-telescope", "moon-records"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-neptune",
+          "decision": "revise",
+          "reason": "五个入口各两章均有效；伽利略卫星与哈雷窗口可保留；第谷残差和海王星窗口应明确数据/假设/预测各自来源，尤其neptune-check。",
+          "needed": "局部重剪海王星/第谷：先固定观察记录，比较候选假设，再保留一段未用于拟合的检验；若仍用示例正向模型，应直接呈现它说明的范围。无需重做卫星光路。",
+          "chapterIds": ["uranus-residual", "neptune-check"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-halley",
+          "decision": "retain",
+          "reason": "五个入口各两章均有效；伽利略卫星与哈雷窗口可保留；第谷残差和海王星窗口应明确数据/假设/预测各自来源，尤其neptune-check。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["comet-records", "comet-return"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "suspension-center-of-gravity",
+      "decision": "revise",
+      "phenomenon": "换悬点后板上的线转了，交点为何仍是同一点。",
+      "evidence": [
+        "SuspensionCenterOfGravity.tsx:27–49,92–149：板/孔/旧线同一材料坐标变换，第二条线在c2 .45后出现，重心真实质量加权。",
+        "suspensionState按重心位于悬点下方定平衡；suspensionOffset含实际面积惯量；主片可见转动，但使板继续转/停止的重力矩桥仅在MDX。 triangle为均匀几何核验；配重可检验均匀假设，但added在watch始终0，迁移只在探索中发生。"
+      ],
+      "necessaryChanges": "局部补重力作用线/悬点间力臂，末章让一个配重移重心；保留现有材料坐标和双线证据。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SuspensionCenterOfGravity.tsx",
+        "model": "src/models/suspension-center-of-gravity.ts",
+        "article": "src/content/suspension-center-of-gravity.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-suspension-center",
+          "decision": "revise",
+          "reason": "唯一四章窗口连续完整定位过程；缺显式施力—转动—停止的可见桥及主片配重反例。",
+          "needed": "局部补重力作用线/悬点间力臂，末章让一个配重移重心；保留现有材料坐标和双线证据。",
+          "chapterIds": ["settle", "first", "second", "triangle"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "small-deformation-lab",
+      "decision": "retain",
+      "phenomenon": "桌子几乎不弯，远处光点却移动。",
+      "evidence": [
+        "SmallDeformationLab.tsx:22–41,98–112,156–175：同一opticalLever求两次反射、镜架倾斜和墙面光点，另有标注500倍的梁剖面。",
+        "beamDeflection→镜架局部斜率→reflectedDirection→墙交点；distance只移墙，force保持60，区分信号放大与形变增大。 distance控制比较和release恢复提供两项主片检验。"
+      ],
+      "necessaryChanges": "保留；不是因为含步骤就需重建。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SmallDeformationLab.tsx",
+        "model": "src/models/small-deformation-lab.ts",
+        "article": "src/content/small-deformation-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-small-deformation",
+          "decision": "retain",
+          "reason": "zero/press/distance/release覆盖基准—干预—几何解释—恢复，无剪断。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["zero", "press", "distance", "release"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "elasticity-lab",
+      "decision": "retain",
+      "phenomenon": "总长度、伸长量、力是否成正比；橡皮筋能否套同一关系。",
+      "evidence": [
+        "ElasticityLab.tsx:25–61,104–178,219–255：砝码数逐增，点逐次出现，c2才揭示直线；橡皮曲线按加载/卸载进度生长。",
+        "springExtension静止mg=kx；rubberResponse独立非线性/路径依赖与循环软化，线圈固定圈数、宽度近似体积守恒。 line明确翻倍的是伸长量；rubber-unload与cycles检验路径及历史，非换皮弹簧。"
+      ],
+      "necessaryChanges": "保留；式子生成的点已标为教学模型，真实实验推断需重复测量。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ElasticityLab.tsx",
+        "model": "src/models/elasticity-lab.ts",
+        "article": "src/content/elasticity-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-spring-elasticity",
+          "decision": "retain",
+          "reason": "弹簧natural/masses/line与橡皮rubber-load/unload/cycles各独立成链。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["natural", "masses", "line"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-rubber-elasticity",
+          "decision": "retain",
+          "reason": "弹簧natural/masses/line与橡皮rubber-load/unload/cycles各独立成链。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rubber-load", "rubber-unload", "cycles"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "friction-lab",
+      "decision": "retain",
+      "phenomenon": "木块不动时摩擦力能变，运动时读数何时才代表摩擦。",
+      "evidence": [
+        "FrictionLab.tsx:28–45,89–98,166–184,234–235：同一pull决定弹簧、指针、留峰纸团和曲线，地纹移动由位置决定。",
+        "frictionPull静止阶段f=F≤μsN；起滑后F=fk+ma且速度/位置连续；steady与load仅改变N。 load翻倍与hand压力是迁移；peak起滑暂时a≠0反例保留，不把所有读数当摩擦。"
+      ],
+      "necessaryChanges": "保留；复看片留意仅靠地纹表达匀速是否足够醒目，源码不存在把起滑加速度删掉的问题。",
+      "sourceFiles": {
+        "component": "src/components/experiments/FrictionLab.tsx",
+        "model": "src/models/friction-lab.ts",
+        "article": "src/content/friction-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-sliding-friction",
+          "decision": "retain",
+          "reason": "steady/load/hand与peak/sensor两窗口各自包含明确条件和结果。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["steady", "load", "hand"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-static-friction",
+          "decision": "retain",
+          "reason": "steady/load/hand与peak/sensor两窗口各自包含明确条件和结果。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["peak", "sensor"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "force-pairs-lab",
+      "decision": "retain",
+      "phenomenon": "主动拉的一侧或更长的弹簧会不会受更大力。",
+      "evidence": [
+        "ForcePairsLab.tsx:18–30,63–129,143–162：两仪器端点算同一个joint；力箭头分对象、曲线同时间异号；换k后伸长不同。",
+        "pairedBalances共用连接约束与T，读数并非按两段独立动画制造；第三定律与整体受力平衡明确分离。 stiffness主片反例、moving两端改变位置检验结论，仪器准静态近似已区分于定律。"
+      ],
+      "necessaryChanges": "保留；末章不等于已演示仪器猛烈加速的完整动态响应。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ForcePairsLab.tsx",
+        "model": "src/models/force-pairs-lab.ts",
+        "article": "src/content/force-pairs-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-third-law",
+          "decision": "retain",
+          "reason": "四章全含，证据—误读排除—同步方向—运动迁移连续。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["balances", "stiffness", "sensors", "moving"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "force-resultant-lab",
+      "decision": "retain",
+      "phenomenon": "两个斜拉的力如何换成同效果的一次拉力。",
+      "evidence": [
+        "ForceResultantLab.tsx:17–43,97–108,156–199：同O点实际装置先两力/单力，再矢量；对角线按sum坐标生成。",
+        "resultantExperiment解水平相消和竖直合力；固定端与O点保持，等效标准可见；虚拟对角线不当实际第三拉力。 reverse先单力再改变两方向恢复效果；探索改O点明确改变合力。"
+      ],
+      "necessaryChanges": "保留。可增生活导入但不能因此重做已存在的有效证据链。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ForceResultantLab.tsx",
+        "model": "src/models/force-resultant-lab.ts",
+        "article": "src/content/force-resultant-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-force-resultant",
+          "decision": "retain",
+          "reason": "two/one/vectors/reverse完整，没有把等效前提剪走。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["two", "one", "vectors", "reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "inertial-frames-lab",
+      "decision": "retain",
+      "phenomenon": "同一球桌面看几乎不动，纸面看却后退。",
+      "evidence": [
+        "InertialFramesLab.tsx:17–20,38–42,69–103同时用paperBall和两种offset作图，实际转角也来自接触积分。",
+        "paperBall区分平动/转动、纸/桌接触；x′=x−X，理想零摩擦专章隔离真实作用与换参考系。 ideal与slow均为主片控制比较，不靠只念牛顿第一定律。"
+      ],
+      "necessaryChanges": "保留；微摩擦真实位移优于强锁球，不能简化回“球绝不动”。",
+      "sourceFiles": {
+        "component": "src/components/experiments/InertialFramesLab.tsx",
+        "model": "src/models/inertial-frames-lab.ts",
+        "article": "src/content/inertial-frames-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-paper-frame",
+          "decision": "retain",
+          "reason": "table/paper/ideal/slow全窗口完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["table", "paper", "ideal", "slow"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "newton-second-law-lab",
+      "decision": "retain",
+      "phenomenon": "匀速有推力却不加速；撤去合力仍保留速度。",
+      "evidence": [
+        "已冻结batch1：NewtonSecondLawLab按net-force/牵引/同F同M比较/连续push-coast-brake镜头；review-05-final是真实共享字幕的60状态记录。",
+        "独立model同一时间速度增量与Fnet=Ma；槽码mg−T=ma，绳路恒长。 paired撤力/制动反例和boundary轻重槽码3.3%/33.3%边界均可见。"
+      ],
+      "necessaryChanges": "本篇为此前作者自审，不冒充新的独立审查；最终新声音/全片由root验收。",
+      "sourceFiles": {
+        "component": "src/components/experiments/NewtonSecondLawLab.tsx",
+        "model": "src/models/newton-second-law-lab.ts",
+        "article": "src/content/newton-second-law-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-newton-second-law",
+          "decision": "retain",
+          "reason": "保留原六ID的唯一教材窗口完整，新章内容已由root接管整合。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["compensate", "tape", "force", "mass", "paired", "boundary"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "dynamic-mass-lab",
+      "decision": "retain",
+      "phenomenon": "失重但惯性质量仍可测。",
+      "evidence": [
+        "DynamicMassLab.tsx:15–32,173–220逐过光栅记录时刻，未有3位置前不显示质量；dynamicMassState由独立交叉时刻重建a，再F/a−tare。",
+        "同恒力换62/82kg的主片比较；折叠支架的定长连杆来自foldingSupport，非普通变力弹簧。"
+      ],
+      "necessaryChanges": "保留；6kg随动质量/理想恒力限度清楚。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DynamicMassLab.tsx",
+        "model": "src/models/dynamic-mass-lab.ts",
+        "article": "src/content/dynamic-mass-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-space-mass",
+          "decision": "retain",
+          "reason": "weightless/pull/grating/mass四章自含条件、运动、证据、反推和重人预测。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["weightless", "pull", "grating", "mass"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "apparent-weight-lab",
+      "decision": "retain",
+      "phenomenon": "下蹲后半仍向下却读数变大；下落瓶停止新喷流。",
+      "evidence": [
+        "ApparentWeightLab.tsx:73–99,132–181,272–306同apparentMotion算姿态、v/a和N曲线；leakingBottle保留释放前旧滴并停止释放后新滴。",
+        "N=m(g+a)从运动方向与加速度反号对照得到；瓶的有效重力→静水压→出流链有独立孔口和旧水滴。"
+      ],
+      "necessaryChanges": "保留；真实瓶释放流体瞬态被明确省略，不删旧滴。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ApparentWeightLab.tsx",
+        "model": "src/models/apparent-weight-lab.ts",
+        "article": "src/content/apparent-weight-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-squat-scale",
+          "decision": "retain",
+          "reason": "squat/platform、lift-up/down、bottle-held/fall各两章均完整；电梯入口可独立看到匀速非零速度的正常示数。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["squat", "platform"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-elevator-scale",
+          "decision": "retain",
+          "reason": "squat/platform、lift-up/down、bottle-held/fall各两章均完整；电梯入口可独立看到匀速非零速度的正常示数。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["lift-up", "lift-down"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-falling-bottle",
+          "decision": "retain",
+          "reason": "squat/platform、lift-up/down、bottle-held/fall各两章均完整；电梯入口可独立看到匀速非零速度的正常示数。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["bottle-held", "bottle-fall"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "balloon-drag-lab",
+      "decision": "retain",
+      "phenomenon": "气球下落阻力到底随速度一次方还是平方变化。",
+      "evidence": [
+        "BalloonDragLab.tsx:17–40,145–214用教材七组数据生成散点、两种拟合和RMSE；balloonFit在同样过原点约束下比较。",
+        "先等时帧检验终端，再平衡推阻力，最后拟合；没有用预设二次阻力代替教材线性样例。"
+      ],
+      "necessaryChanges": "保留数据证据链；可把加速反例带入主片作为节奏优化，不需重建。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BalloonDragLab.tsx",
+        "model": "src/models/balloon-drag-lab.ts",
+        "article": "src/content/balloon-drag-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-balloon-drag",
+          "decision": "retain",
+          "reason": "apparatus/terminal/loads/fit/limits全含；加速度反例仅探索，主片已有浮力敏感性对照和适用范围。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["apparatus", "terminal", "loads", "fit", "limits"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "hertz-wave-lab",
+      "decision": "retain",
+      "phenomenon": "无导线相连的两间隙为何依次响应，怎样证明是波。",
+      "evidence": [
+        "HertzWaveLab各mode分别传播/接收、standingField、snellAngle、环方向投影、slitIntensity；hertzPulse含r/c延迟，接收不提前。",
+        "不同装置证据共同支持传播/波动；反射干涉、折射、偏振、衍射逐章新增实际比较。"
+      ],
+      "necessaryChanges": "保留；亮度不等于精确火花击穿模型、各装置不同近似已明示。",
+      "sourceFiles": {
+        "component": "src/components/experiments/HertzWaveLab.tsx",
+        "model": "src/models/hertz-wave-lab.ts",
+        "article": "src/content/hertz-wave-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-hertz",
+          "decision": "retain",
+          "reason": "两个教材入口均取六章完整链；末段缩狭缝主瓣变宽为可见预测。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "spark-emission",
+            "spark-reception",
+            "wave-reflection",
+            "wave-refraction",
+            "wave-polarization",
+            "wave-diffraction"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-hertz-electromagnetic-waves",
+          "decision": "retain",
+          "reason": "两个教材入口均取六章完整链；末段缩狭缝主瓣变宽为可见预测。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "spark-emission",
+            "spark-reception",
+            "wave-reflection",
+            "wave-refraction",
+            "wave-polarization",
+            "wave-diffraction"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "particle-evidence-lab",
+      "decision": "revise",
+      "phenomenon": "不可见粒子如何由产物、反冲与方向计数推断。",
+      "evidence": [
+        "ParticleArtwork各mode由invariantPair/pairEvidence/captureTransmission/parityCounts/resonanceBins驱动；Wu phase1画I↑p↓与I↑p↑；反超子保留推断虚线而非可见中性径迹。",
+        "每两章一般有装置信号→推断桥，但质量谱是预设高斯期望；反超子phase1一次出现全部后续顶点，未让位置与动量约束逐步排除假设。"
+      ],
+      "necessaryChanges": "局部强化“候选≠发现”：保留背景对照和明确样本身份，将一组已观测记录与候选解释的可检验差别可见化；非整篇跨所有历史实验重建。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ParticleEvidenceLab.tsx",
+        "model": null,
+        "article": "src/content/particle-evidence-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-wu-parity",
+          "decision": "retain",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wu-asymmetry", "wu-parity"],
+          "metadataCorrection": null,
+          "interfaceFindings": ["physics-variant-wu"]
+        },
+        {
+          "id": "e3-higgs-discovery",
+          "decision": "revise",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "局部强化“候选≠发现”：保留背景对照和明确样本身份，将一组已观测记录与候选解释的可检验差别可见化；非整篇跨所有历史实验重建。",
+          "chapterIds": ["higgs-event", "higgs-spectrum"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-gamma-anomalous-absorption",
+          "decision": "retain",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["gamma-anomaly", "gamma-pair"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-electron-capture-recoil",
+          "decision": "retain",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["capture-momentum", "capture-retarding"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-antisigma-event",
+          "decision": "revise",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "局部强化“候选≠发现”：保留背景对照和明确样本身份，将一组已观测记录与候选解释的可检验差别可见化；非整篇跨所有历史实验重建。",
+          "chapterIds": ["anti-production", "anti-linked"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-wu-parity",
+          "decision": "retain",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wu-asymmetry", "wu-parity"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-jpsi-discovery",
+          "decision": "revise",
+          "reason": "七入口各保留对应两章，ID均有效；Wu、K俘获窗口较完整；Higgs/Jpsi发现证据和反超子鉴别应进一步分离教学过程与独立记录。",
+          "needed": "局部强化“候选≠发现”：保留背景对照和明确样本身份，将一组已观测记录与候选解释的可检验差别可见化；非整篇跨所有历史实验重建。",
+          "chapterIds": ["j-fixed", "j-collider"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "gravitational-wave-lab",
+      "decision": "revise",
+      "phenomenon": "极小长度/计时变化如何成为引力波证据。",
+      "evidence": [
+        "GravitationalArtwork:131–160算arm.dx/dy画两臂伸缩，探测器rect恒定；interferometerStrain算phase，但画面只画h和−h两条预设曲线，未显示回程相位叠加到探测信号。",
+        "韦伯/脉冲星/直接探测身份区分正确；LIGO关键长度差→相位差→明暗/校准信号桥缺可见中间态；pulsar-decay只有理论曲线。"
+      ],
+      "necessaryChanges": "优先局部改LIGO可见回程相位/合成读出，再两站延迟；脉冲星若称观测检验应加入可核验观测或明确只展示理论预测。",
+      "sourceFiles": {
+        "component": "src/components/experiments/GravitationalWaveLab.tsx",
+        "model": "src/models/gravitational-wave-lab.ts",
+        "article": "src/content/gravitational-wave-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-weber-bar",
+          "decision": "retain",
+          "reason": "四入口各两章完整取到本类型前后段；LIGO两入口同缺光学读出桥。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["bar-resonance", "bar-coincidence"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-binary-pulsar",
+          "decision": "revise",
+          "reason": "四入口各两章完整取到本类型前后段；LIGO两入口同缺光学读出桥。",
+          "needed": "优先局部改LIGO可见回程相位/合成读出，再两站延迟；脉冲星若称观测检验应加入可核验观测或明确只展示理论预测。",
+          "chapterIds": ["pulsar-clock", "pulsar-decay"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-1-ligo-appendix",
+          "decision": "revise",
+          "reason": "四入口各两章完整取到本类型前后段；LIGO两入口同缺光学读出桥。",
+          "needed": "优先局部改LIGO可见回程相位/合成读出，再两站延迟；脉冲星若称观测检验应加入可核验观测或明确只展示理论预测。",
+          "chapterIds": ["ligo-arms", "ligo-sites"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-ligo",
+          "decision": "revise",
+          "reason": "四入口各两章完整取到本类型前后段；LIGO两入口同缺光学读出桥。",
+          "needed": "优先局部改LIGO可见回程相位/合成读出，再两站延迟；脉冲星若称观测检验应加入可核验观测或明确只展示理论预测。",
+          "chapterIds": ["ligo-arms", "ligo-sites"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "length-instruments",
+      "decision": "revise",
+      "phenomenon": "量爪接触、游标刻度差、螺距和多圈累积怎样放大可靠读数。",
+      "evidence": [
+        "LengthInstruments.tsx Caliper/Micrometer/CopperWire branches读vernierReading/micrometerContact/accumulatedWire；watch三装置分开，接触位置限制前进，细样品局部放大。",
+        "游标两刻度差、螺纹每转0.5mm、误差随N分摊均来自几何；不是更多小数位就更准。"
+      ],
+      "necessaryChanges": "内容保留，仅教材source page修正：required-1-wire-diameter=123应为124，123只有单根直径误差引入，124才密绕10圈；MDX已为124。",
+      "sourceFiles": {
+        "component": "src/components/experiments/LengthInstruments.tsx",
+        "model": "src/models/length-instruments.ts",
+        "article": "src/content/length-instruments.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-1-wire-diameter",
+          "decision": "retain",
+          "reason": "caliper3章、micrometer3章与wire单章各自闭合；wire已自含1→10圈和间隙反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wire-accumulation"],
+          "metadataCorrection": {
+            "id": "required-1-wire-diameter",
+            "oldPage": 123,
+            "newPage": 124,
+            "book": "required-1",
+            "reason": "123页介绍单根铜丝直径的误差；“如果把铜丝密绕在木棒上，测量10圈铜丝的直径之和”在124页。",
+            "originalPdf": "/Users/int64ago/Downloads/人教版高中物理-必修第一册.pdf",
+            "pdfPage": 129,
+            "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/required-1-p123-p124.txt",
+            "articleAlreadyCorrect": "src/content/length-instruments.mdx"
+          },
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-vernier-caliper",
+          "decision": "retain",
+          "reason": "caliper3章、micrometer3章与wire单章各自闭合；wire已自含1→10圈和间隙反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["caliper-contact", "vernier-reading", "internal-jaws"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-screw-micrometer",
+          "decision": "retain",
+          "reason": "caliper3章、micrometer3章与wire单章各自闭合；wire已自含1→10圈和间隙反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["screw-pitch", "micrometer-reading", "zero-and-thin-sample"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "curved-motion-lab",
+      "decision": "retain",
+      "phenomenon": "离开弯轨走切线；磁铁在前方加速与在侧面转弯有何差别。",
+      "evidence": [
+        "CurvedMotionLab.tsx:23–43及arc/magnet/dart分支，arcExit出口位置速度连续；magneticRolling用力梯度RK4且含滚动惯量；飞镖由速度定朝向并尖端止地。",
+        "轨道约束撤去与方向保持、磁力相对速度方向对比，明确合力不必造成弯曲。"
+      ],
+      "necessaryChanges": "保留；飞镖快速尾翼对齐为教学近似，不能作为真实刚体姿态计算。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CurvedMotionLab.tsx",
+        "model": "src/models/curved-motion-lab.ts",
+        "article": "src/content/curved-motion-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-curve-tangent",
+          "decision": "retain",
+          "reason": "三个两章入口arc/short-track、magnet-front/side、dart/angle均有干预与比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["arc", "short-track"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-magnetic-path",
+          "decision": "retain",
+          "reason": "三个两章入口arc/short-track、magnet-front/side、dart/angle均有干预与比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["magnet-front", "magnet-side"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-dart-direction",
+          "decision": "retain",
+          "reason": "三个两章入口arc/short-track、magnet-front/side、dart/angle均有干预与比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["dart", "dart-angle"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "wax-motion-composition",
+      "decision": "retain",
+      "phenomenon": "上升蜡块和横移玻璃管的同时运动，何时直何时弯。",
+      "evidence": [
+        "WaxMotionComposition.tsx:17–37,85–138同waxMotion时钟算管位置、蜡块、逐秒点、投影与矢量；waxRise独立启动瞬态。",
+        "x和y同t相加；均匀两分速度比固定为直线，横向a改变逐秒水平间距。"
+      ],
+      "necessaryChanges": "保留；横向流固影响已限为教材理想化。",
+      "sourceFiles": {
+        "component": "src/components/experiments/WaxMotionComposition.tsx",
+        "model": "src/models/wax-motion-composition.ts",
+        "article": "src/content/wax-motion-composition.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-wax-motion",
+          "decision": "retain",
+          "reason": "rise/uniform/vectors/accelerated全含；末章直接显示教材4/12/20/28cm反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rise", "uniform", "vectors", "accelerated"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "projectile-motion-lab",
+      "decision": "revise",
+      "phenomenon": "平抛两个方向如何由记录独立判断。",
+      "evidence": [
+        "ProjectileMotionLab.tsx:33–86,181–220,256–289同模型产生同高双球/等时点/轨迹/描点；repeated每次只改屏位置，rampFlight连续滚出。",
+        "最强证据为strobe+paired；后四章主要替换测量装置；parabola只算y/x²，speed只反推v0，两入口有自身假设。"
+      ],
+      "necessaryChanges": "保留前两章和接触模型，主片围绕同高度落时与水平独立性组织，描迹/双接收器/家庭方案转按需；在speed结尾变高度预测新落点。现有章ID需保留或逐入口报告重映射。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ProjectileMotionLab.tsx",
+        "model": "src/models/projectile-motion-lab.ts",
+        "article": "src/content/projectile-motion-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-horizontal-projectile",
+          "decision": "revise",
+          "reason": "主实验六章窗口含关键证据，却以四种描迹方案收尾；单章parabola/speed能独立算关系但无留出新条件的验证。",
+          "needed": "保留前两章和接触模型，主片围绕同高度落时与水平独立性组织，描迹/双接收器/家庭方案转按需；在speed结尾变高度预测新落点。现有章ID需保留或逐入口报告重映射。",
+          "chapterIds": ["strobe", "paired", "carbon", "receivers", "home-board", "home-wall"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-parabola-check",
+          "decision": "revise",
+          "reason": "主实验六章窗口含关键证据，却以四种描迹方案收尾；单章parabola/speed能独立算关系但无留出新条件的验证。",
+          "needed": "保留前两章和接触模型，主片围绕同高度落时与水平独立性组织，描迹/双接收器/家庭方案转按需；在speed结尾变高度预测新落点。现有章ID需保留或逐入口报告重映射。",
+          "chapterIds": ["parabola"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-launch-speed",
+          "decision": "revise",
+          "reason": "主实验六章窗口含关键证据，却以四种描迹方案收尾；单章parabola/speed能独立算关系但无留出新条件的验证。",
+          "needed": "保留前两章和接触模型，主片围绕同高度落时与水平独立性组织，描迹/双接收器/家庭方案转按需；在speed结尾变高度预测新落点。现有章ID需保留或逐入口报告重映射。",
+          "chapterIds": ["speed"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "bicycle-circular-motion",
+      "decision": "retain",
+      "phenomenon": "链速相同却转速不同，同轮各点又相反。",
+      "evidence": [
+        "BicycleCircularMotion.tsx:17–31,60–103，同chainLoop相位算链节和两齿轮角度；bicycleCircular明确平均节距速度及同轴后轮。",
+        "闭链不能积链→两轮平均输送同链长；40/20齿比→角速度比；同轮两半径→v比例。"
+      ],
+      "necessaryChanges": "保留；不能把离散滚子链平均关系改说成无多边形瞬时波动。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BicycleCircularMotion.tsx",
+        "model": "src/models/bicycle-circular-motion.ts",
+        "article": "src/content/bicycle-circular-motion.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-bicycle-speeds",
+          "decision": "retain",
+          "reason": "四章全含，两类约束的对照就是末章迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["raised-wheel", "chain-speed", "angles", "same-wheel"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "centripetal-force-lab",
+      "decision": "retain",
+      "phenomenon": "剪线后切线离开，向心力由哪些实际力提供。",
+      "evidence": [
+        "CentripetalForceLab.tsx:227–246、Instrument内闭合belt/forceLever、funnel:444–454支持/重力/合力分解；centripetalRig共用mω²r。",
+        "质量/半径/ω三单变量保持条件不同，读数1/2/4比来自独立模型；沙袋倾角和漏斗转速由平衡求，不强画不可能轨道。"
+      ],
+      "necessaryChanges": "主体保留；沙袋入口可顺手补矢量分解近景，不需要再造四套实验。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CentripetalForceLab.tsx",
+        "model": "src/models/centripetal-force-lab.ts",
+        "article": "src/content/centripetal-force-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-cut-string",
+          "decision": "retain",
+          "reason": "cut单章自含撤约束反例；bag单章自含张力分解但仅绳/数值，funnel+resultant补可见向量；instrument/mass/radius/omega完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["cut"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-sandbag-force",
+          "decision": "retain",
+          "reason": "cut单章自含撤约束反例；bag单章自含张力分解但仅绳/数值，funnel+resultant补可见向量；instrument/mass/radius/omega完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["bag"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-centripetal-apparatus",
+          "decision": "retain",
+          "reason": "cut单章自含撤约束反例；bag单章自含张力分解但仅绳/数值，funnel+resultant补可见向量；instrument/mass/radius/omega完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["instrument", "mass", "radius", "omega"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-funnel-ball",
+          "decision": "retain",
+          "reason": "cut单章自含撤约束反例；bag单章自含张力分解但仅绳/数值，funnel+resultant补可见向量；instrument/mass/radius/omega完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["funnel", "resultant"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "ellipse-string-lab",
+      "decision": "retain",
+      "phenomenon": "一根绳限制哪些点，焦点合并为何成圆。",
+      "evidence": [
+        "EllipseStringLab.tsx:14–35,81–110，pin→tip→pin同stringEllipse两距离；长度带呈总和，circle连续减d。",
+        "a=L/2,b²=a²−c²来自不可伸长两段绳，不虚加焦点间底边。"
+      ],
+      "necessaryChanges": "保留，参数绕行不是行星等时轨迹这一边界应继续保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/EllipseStringLab.tsx",
+        "model": "src/models/ellipse-string-lab.ts",
+        "article": "src/content/ellipse-string-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-draw-ellipse",
+          "decision": "retain",
+          "reason": "pins/sum/trace/circle全含；焦点合并是可见极限检验。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["pins", "sum", "trace", "circle"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "gravity-measurements",
+      "decision": "revise",
+      "phenomenon": "实验室微弱引力与月球轨道如何共用规律。",
+      "evidence": [
+        "GravityArtwork:67–68月地两小球的y都硬写173+68*value²；readout另用moonEarthTest两种a；torsionTorque逐对四球算转矩，cannonOrbit真实中心引力积分。",
+        "月地检验独立半径/周期在数字上存在，但两落距画面强制完全重合；扭秤转角读数还未可见走到由校准κ反求G。"
+      ],
+      "necessaryChanges": "局部补由独立观测计算的两轨迹/误差比较，扭秤展示τ=κθ与几何反求G；勿只增加旁白。",
+      "sourceFiles": {
+        "component": "src/components/experiments/GravityMeasurements.tsx",
+        "model": "src/models/gravity-measurements.ts",
+        "article": "src/content/gravity-measurements.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-moon-earth-test",
+          "decision": "revise",
+          "reason": "moon两章、torsion两章、cannon两章完整但前二类“怎样测出”的末步弱；cannon可保留。",
+          "needed": "局部补由独立观测计算的两轨迹/误差比较，扭秤展示τ=κθ与几何反求G；勿只增加旁白。",
+          "chapterIds": ["moon-acceleration", "moon-comparison"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-cavendish",
+          "decision": "revise",
+          "reason": "moon两章、torsion两章、cannon两章完整但前二类“怎样测出”的末步弱；cannon可保留。",
+          "needed": "局部补由独立观测计算的两轨迹/误差比较，扭秤展示τ=κθ与几何反求G；勿只增加旁白。",
+          "chapterIds": ["torsion-attract", "torsion-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-newton-cannon",
+          "decision": "retain",
+          "reason": "moon两章、torsion两章、cannon两章完整但前二类“怎样测出”的末步弱；cannon可保留。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["cannon-fall", "cannon-orbit"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "relativity-experiments",
+      "decision": "revise",
+      "phenomenon": "以太预测与零结果、接收与发射事件、寿命和钟差怎样被区分。",
+      "evidence": [
+        "RelativityArtwork用etherFringes画预测条纹/固定理想零结果；simultaneity画两光到达及变换事件；muon点阵仅用mu.survival；flightClock分运动与高度条。",
+        "simultaneity谨慎不把先接收当作发出不同时，时钟两效应完整；muon.classical计算却未给独立并排期望阵列，经典差异主要数字/旁白。"
+      ],
+      "necessaryChanges": "保留轨迹/时钟，补μ子相同初始粒子数的经典/固有时间两阵列和同一到达时刻；窄屏两系不混坐标。",
+      "sourceFiles": {
+        "component": "src/components/experiments/RelativityExperiments.tsx",
+        "model": "src/models/relativity-experiments.ts",
+        "article": "src/content/relativity-experiments.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-michelson-morley",
+          "decision": "retain",
+          "reason": "四个两章窗口各自有设定与结果；muon与MM的历史证据明确为示意，未声称拟合。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ether-prediction", "null-result"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-simultaneity",
+          "decision": "retain",
+          "reason": "四个两章窗口各自有设定与结果；muon与MM的历史证据明确为示意，未声称拟合。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["train-reception", "train-events"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-muons",
+          "decision": "revise",
+          "reason": "四个两章窗口各自有设定与结果；muon与MM的历史证据明确为示意，未声称拟合。",
+          "needed": "保留轨迹/时钟，补μ子相同初始粒子数的经典/固有时间两阵列和同一到达时刻；窄屏两系不混坐标。",
+          "chapterIds": ["muon-survival", "muon-frames"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-atomic-clocks",
+          "decision": "retain",
+          "reason": "四个两章窗口各自有设定与结果；muon与MM的历史证据明确为示意，未声称拟合。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["clock-east", "clock-west"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "cosmology-observations",
+      "decision": "revise",
+      "phenomenon": "谱线和校准后的天空余量怎样约束宇宙解释。",
+      "evidence": [
+        "CosmologyArtwork:99–142谱线/散点同hubbleSpectrum；151–194天线同方向扣已知分量；sky-map合成Mollweide且清楚标示非Planck。",
+        "读谱和背景校准可见，但线性点由输入H0直接生成，红移→空间尺度增长的理论桥未画；不能让输入关系成为独立发现证据。"
+      ],
+      "necessaryChanges": "补波长随尺度增长的追踪镜头，并将独立距离记录与待拟合关系分开；背景来源可展示冷却黑体预测，保留真实与合成图身份。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CosmologyObservations.tsx",
+        "model": "src/models/cosmology-observations.ts",
+        "article": "src/content/cosmology-observations.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-hubble",
+          "decision": "revise",
+          "reason": "redshift-spectrum/distance-relation与antenna/background/calibration/sky-map窗口无切断；后者校准完整、理论宇宙来源仍主要口述。",
+          "needed": "补波长随尺度增长的追踪镜头，并将独立距离记录与待拟合关系分开；背景来源可展示冷却黑体预测，保留真实与合成图身份。",
+          "chapterIds": ["redshift-spectrum", "distance-relation"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-cmb",
+          "decision": "revise",
+          "reason": "redshift-spectrum/distance-relation与antenna/background/calibration/sky-map窗口无切断；后者校准完整、理论宇宙来源仍主要口述。",
+          "needed": "补波长随尺度增长的追踪镜头，并将独立距离记录与待拟合关系分开；背景来源可展示冷却黑体预测，保留真实与合成图身份。",
+          "chapterIds": ["antenna-background", "antenna-calibration", "sky-map"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "mechanical-energy-lab",
+      "decision": "retain",
+      "phenomenon": "下落与下滑时，减少的势能去了哪里。",
+      "evidence": [
+        "MechanicalEnergyLab.tsx:157–217 director分别取纸带、有限遮光片、悬重和摆；350–400能量条比较势能减少与动能增加，cartOnly对照不遗漏随动悬重。",
+        "gΔh与中心差分v²/2比较后引入向上阻力，其负功对应差值；悬重系统的动能需同时包括两物体。"
+      ],
+      "necessaryChanges": "保留能量差值主线，装置可以折叠但不能仅因多测量方法重建。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MechanicalEnergyLab.tsx",
+        "model": "src/models/mechanical-energy-lab.ts",
+        "article": "src/content/mechanical-energy-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-mechanical-energy",
+          "decision": "retain",
+          "reason": "fall/tape/resistance/track/gates/hanger/system/pendulum完整；摆末段明确是待实施方案，不冒充验证。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "fall",
+            "tape",
+            "resistance",
+            "track",
+            "gates",
+            "hanger",
+            "system",
+            "pendulum"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "arm-motion-lab",
+      "decision": "retain",
+      "phenomenon": "甩手的高速来自哪里；助跑如何改变标枪速度。",
+      "evidence": [
+        "ArmMotionLab director与三连杆解析导数同源；教材26cm/25fps、17cm转弯半径数据和腕部手机估计分别显示；释放点连续接自由飞行。",
+        "近端平动叠加各关节相对速度；向心加速度与速度方向转变对应，手机原始量与运动加速度分开；助跑增加质心平动。"
+      ],
+      "necessaryChanges": "保留。液滴固定释放是规定条件，不声称由黏附力模型预测脱落。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ArmMotionLab.tsx",
+        "model": "src/models/arm-motion-lab.ts",
+        "article": "src/content/arm-motion-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "required-2-hand-flick",
+          "decision": "retain",
+          "reason": "flick/vectors/video/radius/phone/crosscheck六章、javelin/runup两章均保留对照和估算边界。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["flick", "vectors", "video", "radius", "phone", "crosscheck"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "required-2-javelin",
+          "decision": "retain",
+          "reason": "flick/vectors/video/radius/phone/crosscheck六章、javelin/runup两章均保留对照和估算边界。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["javelin", "runup"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "electrostatic-induction",
+      "decision": "retain",
+      "phenomenon": "不接触的带电棒怎样让导体分离出正负电荷。",
+      "evidence": [
+        "ElectrostaticInduction Pair从connected走到separate/reconnect，SurfaceCharge与总Q同模型；Friction逐个Sign轨迹从棒到丝绸；Jar箔角由electroscopeState和Foils共同驱动。",
+        "电子转移/可移动电荷重排与总电荷守恒可见；预带电验电器先合再开反例避免“张开一定同号”；分开后撤棒保留电荷。"
+      ],
+      "necessaryChanges": "保留；模型符号数为代表电荷，不当精确电子计数。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ElectrostaticInduction.tsx",
+        "model": "src/models/electrostatic-induction.ts",
+        "article": "src/content/electrostatic-induction.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-friction-charging",
+          "decision": "retain",
+          "reason": "friction单章、induction三章、electroscope两章、hair单章各自有完整设定与结果。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["friction"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-static-induction",
+          "decision": "retain",
+          "reason": "friction单章、induction三章、electroscope两章、hair单章各自有完整设定与结果。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["approach", "separate", "reconnect"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-electroscope",
+          "decision": "retain",
+          "reason": "friction单章、induction三章、electroscope两章、hair单章各自有完整设定与结果。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["electroscope-neutral", "electroscope-sign"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-charged-hair",
+          "decision": "retain",
+          "reason": "friction单章、induction三章、electroscope两章、hair单章各自有完整设定与结果。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["charged-filaments"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "franklin-electricity-evidence",
+      "decision": "retain",
+      "phenomenon": "云电与摩擦电如何通过共同效应比较。",
+      "evidence": [
+        "FranklinElectricityEvidence.tsx:85–117两套对照分别充电/储存/释放；evidenceCharge RC、foils平衡和energy随同一电压变化。",
+        "历史报告与现代重建分开，符号可相反而共有电效应相同；储存→负载释放可见，不能只比一次火花定全部性质。"
+      ],
+      "necessaryChanges": "保留现代对照表达与明确历史证据身份。",
+      "sourceFiles": {
+        "component": "src/components/experiments/FranklinElectricityEvidence.tsx",
+        "model": "src/models/franklin-electricity-evidence.ts",
+        "article": "src/content/franklin-electricity-evidence.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-franklin-electricity",
+          "decision": "retain",
+          "reason": "friction-reference/cloud-report/shared-effects/stored-release四章完整；没有冒充风筝实验复原。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["friction-reference", "cloud-report", "shared-effects", "stored-release"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "oil-drop-lab",
+      "decision": "revise",
+      "phenomenon": "看不见的微小电荷怎样由油滴运动量出来。",
+      "evidence": [
+        "OilDropLab→ModernPhysicsSeries→ModernLab.tsx:78–100 oilY用当前terminalDown乘观察时间；312–374显示板场与力；charges e从起始读数可见，量子化章预设整数n改变。",
+        "Stokes终速、浮力修正和平衡U模型正确，但落速→半径→有效重力→q的测量桥未呈现；改变U时位置用v(t)·t而不是积分，不能当连续实际轨迹。"
+      ],
+      "necessaryChanges": "局部重做测量推断镜头：先计时标尺估r，再读平衡U反求q，汇集多个未知q记录检验公因子；U变化时按实际速度积分或明确分段重新实验。",
+      "sourceFiles": {
+        "component": "src/components/experiments/OilDropLab.tsx",
+        "model": null,
+        "article": "src/content/oil-drop-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-millikan-charge",
+          "decision": "revise",
+          "reason": "两个教材入口都取fall/balance/quantization三章，没有剪掉；三章仍主要展示已知参数的正向结果。",
+          "needed": "局部重做测量推断镜头：先计时标尺估r，再读平衡U反求q，汇集多个未知q记录检验公因子；U变化时按实际速度积分或明确分段重新实验。",
+          "chapterIds": ["fall", "balance", "quantization"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-millikan-oil-drop",
+          "decision": "revise",
+          "reason": "两个教材入口都取fall/balance/quantization三章，没有剪掉；三章仍主要展示已知参数的正向结果。",
+          "needed": "局部重做测量推断镜头：先计时标尺估r，再读平衡U反求q，汇集多个未知q记录检验公因子；U变化时按实际速度积分或明确分段重新实验。",
+          "chapterIds": ["fall", "balance", "quantization"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "coulomb-torsion",
+      "decision": "retain",
+      "phenomenon": "扭秤如何把微小斥力变成可比较的读数。",
+      "evidence": [
+        "CoulombTorsion独立Hanging/Balance，root求实际力臂转矩；null-balance恢复原几何后读κφ/L；chargeSharing实际接触后才分电荷。",
+        "同几何倍距→四倍力、接触分荷→半力分别控制变量；复零避免一边距离改变一边转角改变的混淆。"
+      ],
+      "necessaryChanges": "保留，接触相同导体和点电荷近似继续标明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CoulombTorsion.tsx",
+        "model": "src/models/coulomb-torsion.ts",
+        "article": "src/content/coulomb-torsion.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-charge-force-comparison",
+          "decision": "retain",
+          "reason": "hanging单章自含近/远；null-balance/distance-law/charge-sharing三章完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["hanging-sphere"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-coulomb-balance",
+          "decision": "retain",
+          "reason": "hanging单章自含近/远；null-balance/distance-law/charge-sharing三章完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["null-balance", "distance-law", "charge-sharing"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "electric-field-mapping",
+      "decision": "retain",
+      "phenomenon": "油中碎屑为什么排成这些形状。",
+      "evidence": [
+        "ElectricFieldMapping.tsx:18–35先fragmentAngle缓慢对齐，p>.7才显计算线；同localField给线积分、探针方向、电势等值。",
+        "碎屑给轴线，正试探电荷另给方向，不把纹理当真实有向线；异号/同号/平板比较，零E并不必零V。"
+      ],
+      "necessaryChanges": "保留，碎屑数值为取向示意而非流体颗粒动力学。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ElectricFieldMapping.tsx",
+        "model": "src/models/electric-field-mapping.ts",
+        "article": "src/content/electric-field-mapping.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-electric-field-lines",
+          "decision": "retain",
+          "reason": "single/opposite/like/plates四章完整，末章近似均匀场为迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["single-charge", "opposite-charges", "like-charges", "parallel-plates"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "electrostatic-applications-lab",
+      "decision": "retain",
+      "phenomenon": "金属壳为何能屏蔽，带电烟尘又怎样被收集。",
+      "evidence": [
+        "ElectrostaticApplicationsLab.tsx:288–330闭壳场解与绝缘控制；粒子born/collected/exited保留ID，关闭后已收集颗粒不消失。",
+        "导体表面重排使腔内E为零，外部场不删除；烟尘受力轨迹进入极板并沉积，开关/电荷/场比较。"
+      ],
+      "necessaryChanges": "保留两套不同装置，不能用壳外场一起归零的便捷画法替代。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ElectrostaticApplicationsLab.tsx",
+        "model": "src/models/electrostatic-applications-lab.ts",
+        "article": "src/content/electrostatic-applications-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-electrostatic-shielding",
+          "decision": "retain",
+          "reason": "shielding三章和smoke三章分别完整，绝缘壳和断电均是可见反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["uncovered-detector", "metal-cage", "insulating-control"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-electrostatic-smoke",
+          "decision": "retain",
+          "reason": "shielding三章和smoke三章分别完整，绝缘壳和断电均是可见反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["smoke-before", "smoke-collection", "smoke-after"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "rc-circuit",
+      "decision": "retain",
+      "phenomenon": "电容充电为何越来越慢，电流与电压怎样互相约束。",
+      "evidence": [
+        "RcCircuit使用rcShot/rcState同源V/I/Q和能量；电路、量值预算、参考曲线及手机独立图；5τ到99.3%并不突跳满。",
+        "源电压分摊→电阻电流→电容电荷增量闭环；R/C分别变化对照，放电隔离电源，能量去向分开。"
+      ],
+      "necessaryChanges": "保留；电荷不穿越介质，能量非全部进入电容。",
+      "sourceFiles": {
+        "component": "src/components/experiments/RcCircuit.tsx",
+        "model": "src/models/rc-circuit.ts",
+        "article": "src/content/rc-circuit.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-capacitor-charge-discharge",
+          "decision": "retain",
+          "reason": "教材chapterIds空数组按全片七章解释，start/budget/tau/resistance/capacitance/discharge/energy完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "capacitor-current-lab",
+      "decision": "retain",
+      "phenomenon": "怎样由电流记录算电荷，电荷分享为什么不断减半。",
+      "evidence": [
+        "CapacitorCurrentLab director:263–283，sensorSamples与dischargeState同路径；曲线梯形积分同CΔU比较；Sharing保存旧B再引入新空C。",
+        "放出与剩余电荷守恒；相同电容连接后等压，第一次和第二次不是把旧接收电容清空。"
+      ],
+      "necessaryChanges": "保留；积分采样误差与解析值分开。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CapacitorCurrentLab.tsx",
+        "model": "src/models/capacitor-current-lab.ts",
+        "article": "src/content/capacitor-current-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-capacitor-current-sensor",
+          "decision": "retain",
+          "reason": "sensor-discharge/integrate-current两章；share-first/share-again两章各自闭合。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["sensor-discharge", "integrate-current"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-capacitor-charge-sharing",
+          "decision": "retain",
+          "reason": "sensor-discharge/integrate-current两章；share-first/share-again两章各自闭合。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["share-first", "share-again"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "parallel-plate-capacitor-lab",
+      "decision": "retain",
+      "phenomenon": "断开电源以后，移动极板为什么让电压改变。",
+      "evidence": [
+        "ParallelPlateCapacitorLab.tsx:28–48 heldCharge保留断开瞬间Q；几何平移改变交叠面积，插入介质按并联区域求C；电表角同U。",
+        "固定Q后逐一改变d/S/介质→C变→U反变；探索重接电源提供固定V的不同约束。"
+      ],
+      "necessaryChanges": "保留；固定V反例可短带入结尾优化，但不构成现有因果链缺失。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ParallelPlateCapacitorLab.tsx",
+        "model": "src/models/parallel-plate-capacitor-lab.ts",
+        "article": "src/content/parallel-plate-capacitor-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-parallel-plate-capacitance",
+          "decision": "retain",
+          "reason": "isolate-charge/plate-gap/plate-overlap/insert-dielectric四章完整；主片始终保持孤立条件，理论关系与实验一致。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["isolate-charge", "plate-gap", "plate-overlap", "insert-dielectric"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "resistivity-lab",
+      "decision": "retain",
+      "phenomenon": "电阻由导线哪些条件决定，仪表又怎样改变测得值。",
+      "evidence": [
+        "ResistivityLab.tsx:340–379 seriesWireComparison/measurement/fit/infer同模型；四串联线保持相同I；直径√2对应面积2倍；仪表内阻进入网络。",
+        "L/S/材料单因素对照→ρ关系；裸灯丝热态与冷态不同；内外接的测量偏差依真实R_A/R_V方向预测。"
+      ],
+      "necessaryChanges": "保留真实接线与误差因果；不是把输入ρ画成独立实测验证。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ResistivityLab.tsx",
+        "model": "src/models/resistivity-lab.ts",
+        "article": "src/content/resistivity-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-conductor-voltage-current",
+          "decision": "retain",
+          "reason": "voltage-current单章、三wire章、heated-filament单章、measure-resistivity/meter-loading两章均自含所需条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["voltage-current"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-resistance-factors",
+          "decision": "retain",
+          "reason": "voltage-current单章、三wire章、heated-filament单章、measure-resistivity/meter-loading两章均自含所需条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wire-length", "wire-area", "wire-material"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-resistivity-temperature",
+          "decision": "retain",
+          "reason": "voltage-current单章、三wire章、heated-filament单章、measure-resistivity/meter-loading两章均自含所需条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["heated-filament"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-wire-resistivity",
+          "decision": "retain",
+          "reason": "voltage-current单章、三wire章、heated-filament单章、measure-resistivity/meter-loading两章均自含所需条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["measure-resistivity", "meter-loading"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "multimeter-lab",
+      "decision": "revise",
+      "phenomenon": "同一指针怎样测电压、电流和电阻；怎样定位断路。",
+      "evidence": [
+        "MultimeterLab.tsx:139–289实际表笔节点和量程共算指针；297–385显示外部接线/MeterFace；ohmmeterState含内部电源与非线性刻度，diode为指定黑笔正的表型。",
+        "故障窗口以高内阻电压表真实加载逐段定位，可保留；实践七章主要轮换测量对象，表内分流/串联分压/自带电源怎样让同一表头工作未可见。"
+      ],
+      "necessaryChanges": "局部增加表内电流路径近景，将电压/电流/电阻三种连接与同一表头连接起来；灯泡/人体/二极管作为按需应用，保留fault独立窗口。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MultimeterLab.tsx",
+        "model": "src/models/multimeter-lab.ts",
+        "article": "src/content/multimeter-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-multimeter-practice",
+          "decision": "revise",
+          "reason": "practice七章window完整但缺统一内部原理桥；fault三章完整且已有排查预测。",
+          "needed": "局部增加表内电流路径近景，将电压/电流/电阻三种连接与同一表头连接起来；灯泡/人体/二极管作为按需应用，保留fault独立窗口。",
+          "chapterIds": [
+            "voltage-parallel",
+            "current-series",
+            "ohm-zero",
+            "fixed-resistor",
+            "cold-filament",
+            "hand-contact",
+            "diode-direction"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-multimeter-faults",
+          "decision": "retain",
+          "reason": "practice七章window完整但缺统一内部原理桥；fault三章完整且已有排查预测。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["fault-battery", "fault-switch-wire", "fault-socket"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "thermal-process-lab",
+      "decision": "retain",
+      "phenomenon": "为什么电流翻倍更热，相同温度却不继续传热，铁不发光也在辐射。",
+      "evidence": [
+        "ThermalProcessLab.tsx:275–290三套独立视图；jouleCalorimeter求I²R与损耗；eggCooling双热容给同一交换能与熵；glowingIron/ironSpectrum用Planck积分可见比例。",
+        "同R比I、同I比R；鸡蛋和水能量互补且同温零流；连续升温让可见谱段逐渐出现，非“开始发光才辐射”。"
+      ],
+      "necessaryChanges": "保留，归一化谱与绝对功率、铁熔点前的教学范围已说明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ThermalProcessLab.tsx",
+        "model": "src/models/thermal-process-lab.ts",
+        "article": "src/content/thermal-process-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-joule-heating-history",
+          "decision": "retain",
+          "reason": "三类入口分别2/2/3章完整，等温与低温红外均可见反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["joule-current", "joule-resistance"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-egg-cooling",
+          "decision": "retain",
+          "reason": "三类入口分别2/2/3章完整，等温与低温红外均可见反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["egg-cooling", "egg-equal-start"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-thermal-glow",
+          "decision": "retain",
+          "reason": "三类入口分别2/2/3章完整，等温与低温红外均可见反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["iron-infrared", "iron-red-glow", "iron-bright-glow"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "battery-emf-lab",
+      "decision": "retain",
+      "phenomenon": "并联灯为何反而变暗，怎样从负载响应知道电源内部。",
+      "evidence": [
+        "BatteryEmfLab.tsx:453–503实际loadedSource网络，parallelLamps/fitSource；教材ORANGE_DATA/BANK_DATA保留，低电量重建数据另标。",
+        "增加负载→内部压降→端压下降，r=0反例；U-I截距/斜率反推；稳压电源输出等效斜率不误称电芯内阻，限流分开。"
+      ],
+      "necessaryChanges": "保留；故事起点已有实际反常现象。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BatteryEmfLab.tsx",
+        "model": "src/models/battery-emf-lab.ts",
+        "article": "src/content/battery-emf-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-parallel-lamp-brightness",
+          "decision": "retain",
+          "reason": "lamps两章、dry两章、fruit三章、bank三章各自保留读数→推断→边界；教材原数据与模拟不混同。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["parallel-lamps", "internal-drop"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-dry-cell-emf",
+          "decision": "retain",
+          "reason": "lamps两章、dry两章、fruit三章、bank三章各自保留读数→推断→边界；教材原数据与模拟不混同。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["dry-cell-load", "dry-cell-fit"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-fruit-cell-emf",
+          "decision": "retain",
+          "reason": "lamps两章、dry两章、fruit三章、bank三章各自保留读数→推断→边界；教材原数据与模拟不混同。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["fruit-electrodes", "fruit-resistance-box", "orange-microammeter"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-power-bank-research",
+          "decision": "retain",
+          "reason": "lamps两章、dry两章、fruit三章、bank三章各自保留读数→推断→边界；教材原数据与模拟不混同。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["bank-load", "bank-charge", "bank-model-limit"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "magnetic-field-survey",
+      "decision": "retain",
+      "phenomenon": "通电导线怎样转动磁针；铁屑纹理能告诉多少。",
+      "evidence": [
+        "MagneticFieldSurvey.tsx:351–369开关/反向与场样式；oerstedCompass明确叠加25μT地磁；loopMagneticField离散Biot–Savart，七环有限长螺线管。",
+        "磁针N极给向量方向，铁屑只给轴向；直线电流反向保留铁屑轴线却翻针，场为叠加不是装饰曲线。"
+      ],
+      "necessaryChanges": "保留；有限长与来源内部屏蔽区域不等于理想无限场。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MagneticFieldSurvey.tsx",
+        "model": "src/models/magnetic-field-survey.ts",
+        "article": "src/content/magnetic-field-survey.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-oersted",
+          "decision": "retain",
+          "reason": "oersted两章、patterns五章各自完整；环→多环的几何叠加为预测迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["oersted-switch", "oersted-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-magnetic-field-patterns",
+          "decision": "retain",
+          "reason": "oersted两章、patterns五章各自完整；环→多环的几何叠加为预测迁移。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "bar-filings",
+            "horseshoe-gap",
+            "straight-wire-pattern",
+            "single-loop-pattern",
+            "solenoid-pattern"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "magnetic-force-lab",
+      "decision": "retain",
+      "phenomenon": "电流或磁场反向怎样改变导线受力；铁钉为何不变成排斥。",
+      "evidence": [
+        "MagneticForceLab.tsx:40–48 shot同suspendedWire/parallelForce/nailForce；currentSpring固定步长历史按实际接点迟滞开关电流，线圈下端与接点同位移。",
+        "独立反I/反B给力方向，软铁依∇B²两极性同吸引；平行导线同向/异向对照，接点开断循环因果可见。"
+      ],
+      "necessaryChanges": "保留。铁钉位移仅方向示意且没有伪装定量轨迹；力与位移放大已标明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MagneticForceLab.tsx",
+        "model": "src/models/magnetic-force-lab.ts",
+        "article": "src/content/magnetic-force-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-wire-magnetic-force",
+          "decision": "retain",
+          "reason": "wire三章、solenoid两章及parallel/spring各单章均自含对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wire-forward", "wire-reverse-current", "wire-reverse-field"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-parallel-wire-forces",
+          "decision": "retain",
+          "reason": "wire三章、solenoid两章及parallel/spring各单章均自含对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["parallel-wires"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-ampere-wire-force",
+          "decision": "retain",
+          "reason": "wire三章、solenoid两章及parallel/spring各单章均自含对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wire-forward", "wire-reverse-current", "wire-reverse-field"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-solenoid-nail-attraction",
+          "decision": "retain",
+          "reason": "wire三章、solenoid两章及parallel/spring各单章均自含对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["solenoid-attract", "solenoid-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-parallel-current-force",
+          "decision": "retain",
+          "reason": "wire三章、solenoid两章及parallel/spring各单章均自含对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["parallel-wires"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-current-spring-oscillation",
+          "decision": "retain",
+          "reason": "wire三章、solenoid两章及parallel/spring各单章均自含对照。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["spring-contact"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "wire-force-factors-lab",
+      "decision": "retain",
+      "phenomenon": "导线总长度不变，为什么受力仍改变。",
+      "evidence": [
+        "WireForceFactorsLab.tsx:63–77交叠长度与实际端点同activeWireLength；P投影把悬线平衡位移、有效段高亮、括线共算。",
+        "同I/同B切接点再平移出磁区，区分总长度与有效ℓ；F/(Iℓ)得B，磁体并排不被误说场强倍增。"
+      ],
+      "necessaryChanges": "保留，方向箭头定长与定量数字分开。",
+      "sourceFiles": {
+        "component": "src/components/experiments/WireForceFactorsLab.tsx",
+        "model": "src/models/wire-force-factors-lab.ts",
+        "article": "src/content/wire-force-factors-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-wire-force-factors",
+          "decision": "retain",
+          "reason": "current-factor/contact-length/effective-overlap/field-factor四章完整，第三章本身就是迁移反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["current-factor", "contact-length", "effective-overlap", "field-factor"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "induction-conditions-lab",
+      "decision": "retain",
+      "phenomenon": "有磁通或整个回路运动，为什么仍可能没有感应。",
+      "evidence": [
+        "InductionConditionsLab.tsx:240–247 director七条真实路径；rodInduction由x/v算Φ与ε，coilInduction同M(x)及导数算ε；装置接点保持连接。",
+        "静止/沿场平移/横滑隔离面积变化；开闭、变阻器、插拔分别隔离I和几何，保持电流却仍感应为关键反例。"
+      ],
+      "necessaryChanges": "保留；教材页定位正文需要全文再次核对，文章115–116与目录114/115的差别先不据文章直接改。",
+      "sourceFiles": {
+        "component": "src/components/experiments/InductionConditionsLab.tsx",
+        "model": "src/models/induction-conditions-lab.ts",
+        "article": "src/content/induction-conditions-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-motional-induction",
+          "decision": "retain",
+          "reason": "rod三章、coil四章分别完整，稳定前后归零可见。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rod-still", "rod-parallel", "rod-cutting"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "r3-induced-current-conditions",
+          "decision": "retain",
+          "reason": "rod三章、coil四章分别完整，稳定前后归零可见。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "coil-switch-close",
+            "coil-switch-open",
+            "coil-rheostat",
+            "coil-insertion"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "induction-coil-lab",
+      "decision": "revise",
+      "phenomenon": "静止磁体为何不感应；旋转圆盘怎样向外电路供电。",
+      "evidence": [
+        "InductionCoilLab.tsx:54–84由同磁通模型给表针/铝环方向；drop比较两高度/两匝数轨迹；218–275圆盘分支只有旋转标线、B点和外电路，没有径向载流子/受力路径。",
+        "磁体、环、下落窗口对照强，可保留；圆盘的v随半径→qv×B径向分离→轴边电势→闭合电流仅旁白和读数，主画面缺桥。"
+      ],
+      "necessaryChanges": "局部补圆盘径向分离和外电路方向/反转、机械转矩能量对应；不重建已成立的其他装置。",
+      "sourceFiles": {
+        "component": "src/components/experiments/InductionCoilLab.tsx",
+        "model": "src/models/induction-coil-lab.ts",
+        "article": "src/content/induction-coil-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-faraday-disc",
+          "decision": "revise",
+          "reason": "magnet三章、ring两章、drop两章完整；两个disc教材入口各两章都缺同一可见机理。",
+          "needed": "局部补圆盘径向分离和外电路方向/反转、机械转矩能量对应；不重建已成立的其他装置。",
+          "chapterIds": ["disc-rotate", "disc-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-lenz-magnet-coil",
+          "decision": "retain",
+          "reason": "magnet三章、ring两章、drop两章完整；两个disc教材入口各两章都缺同一可见机理。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["magnet-rest", "magnet-move", "magnet-pole"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-lenz-aluminium-ring",
+          "decision": "retain",
+          "reason": "magnet三章、ring两章、drop两章完整；两个disc教材入口各两章都缺同一可见机理。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ring-closed", "ring-open"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-faraday-falling-magnet",
+          "decision": "retain",
+          "reason": "magnet三章、ring两章、drop两章完整；两个disc教材入口各两章都缺同一可见机理。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["drop-height", "drop-turns"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-faraday-disc",
+          "decision": "revise",
+          "reason": "magnet三章、ring两章、drop两章完整；两个disc教材入口各两章都缺同一可见机理。",
+          "needed": "局部补圆盘径向分离和外电路方向/反转、机械转矩能量对应；不重建已成立的其他装置。",
+          "chapterIds": ["disc-rotate", "disc-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "electromagnetic-wave-receiver",
+      "decision": "retain",
+      "phenomenon": "没有导线连接的接收表为何延迟响应，源停止后又为何继续。",
+      "evidence": [
+        "ElectromagneticWaveReceiver.tsx:14–24对齐r/c+65ns比较距离；场使用retarded time，receiverIndication平方律后平滑；120+200p继续波包传播。",
+        "源→延迟场→接收响应，传播中的包不随源瞬时消失；同到达阶段比较才分离空间衰减。"
+      ],
+      "necessaryChanges": "保留，RF检波假设与普通直流表区别已清楚说明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ElectromagneticWaveReceiver.tsx",
+        "model": "src/models/electromagnetic-wave-receiver.ts",
+        "article": "src/content/electromagnetic-wave-receiver.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-electromagnetic-wave-receiver",
+          "decision": "retain",
+          "reason": "packet-arrival/receiver-distance/packet-after-source三章完整，最后是关键反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["packet-arrival", "receiver-distance", "packet-after-source"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "phone-energy-research",
+      "decision": "retain",
+      "phenomenon": "耗电差能否只归因于亮度。",
+      "evidence": [
+        "PhoneEnergyResearch.tsx:32–46同机两trial控制/混杂，phonePower分组件且phoneEnergy解析积分；屏亮/任务/电池百分比与同模型对应。",
+        "单因素比较→混杂因素破坏归因→整数电量分辨率掩盖差异；无声任务不响应音量，是可操作反例。"
+      ],
+      "necessaryChanges": "保留；可见能量记账并非硬件真实拆机供电图，已限定。",
+      "sourceFiles": {
+        "component": "src/components/experiments/PhoneEnergyResearch.tsx",
+        "model": "src/models/phone-energy-research.ts",
+        "article": "src/content/phone-energy-research.mdx"
+      },
+      "windows": [
+        {
+          "id": "r3-phone-energy-research",
+          "decision": "retain",
+          "reason": "brightness/volume/task/confounds四章完整；研究设计目的适合合成教学数据，未冒充实测排名。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "brightness-control",
+            "volume-control",
+            "task-control",
+            "confounds-resolution"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "momentum-collision-lab",
+      "decision": "retain",
+      "phenomenon": "速度看起来传过去，究竟碰撞中什么量不变。",
+      "evidence": [
+        "MomentumCollisionLab.tsx:341–355具体碰撞附件/方向同collision1D；TEXTBOOK_STICKY保留约−2.23%偏差；flagTransit/纸带同轨迹，springSeparation自然长度脱离。",
+        "先等质量再异质量否定速度和，教材实数候选mv与动能比较；弹/粘/弹簧分离区分动量守恒和能量类型。"
+      ],
+      "necessaryChanges": "保留；本篇已符合现象到理论的叙事，不因装置操作重做。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MomentumCollisionLab.tsx",
+        "model": "src/models/momentum-collision-lab.ts",
+        "article": "src/content/momentum-collision-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-hanging-ball-collision",
+          "decision": "retain",
+          "reason": "hanging两章、sticky单章、air四章、energy两章各有现象与可比量；单章教材数据自含比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["hanging-equal", "hanging-unequal"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-sticky-cart-invariant",
+          "decision": "retain",
+          "reason": "hanging两章、sticky单章、air四章、energy两章各有现象与可比量；单章教材数据自含比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["printed-sticky-data"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-air-track-momentum",
+          "decision": "retain",
+          "reason": "hanging两章、sticky单章、air四章、energy两章各有现象与可比量；单章教材数据自含比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["air-elastic", "air-sticking", "air-spring-release", "tape-velocity"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-collision-energy",
+          "decision": "retain",
+          "reason": "hanging两章、sticky单章、air四章、energy两章各有现象与可比量；单章教材数据自含比较。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["energy-elastic", "energy-sticking"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "impulse-contact-lab",
+      "decision": "retain",
+      "phenomenon": "同样停下，接触时间和质量为何改变受力。",
+      "evidence": [
+        "ImpulseContactLab.tsx:162–179分离质量/时间；stoppedMotion积分位移、求导加速度、半正弦力同曲线；crashTrace另积分70kg乘员相对运动。",
+        "同Δp比T保面积改峰值；气球填空气增加惯性；车体合力与乘员约束力独立，避免人数均分。"
+      ],
+      "necessaryChanges": "保留规定力时程的模型身份，不当实车安全试验。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ImpulseContactLab.tsx",
+        "model": "src/models/impulse-contact-lab.ts",
+        "article": "src/content/impulse-contact-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-balloon-inertia",
+          "decision": "retain",
+          "reason": "balloon三章、crash三章各自完整，有同动量不同力和车体/乘员反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["balloon-filled", "balloon-empty", "balloon-time"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-car-crash-test",
+          "decision": "retain",
+          "reason": "balloon三章、crash三章各自完整，有同动量不同力和车体/乘员反例。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["car-stop", "car-duration", "occupant-restraint"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "ramp-collision-lab",
+      "decision": "retain",
+      "phenomenon": "不测瞬时速度，怎样用落点检验动量。",
+      "evidence": [
+        "RampCollisionLab.tsx:22–65实际滚入、直径接触、共同出口、同落高；落点从rampCollisionState/rampBallPath推导，标注扇形引线不移动点。",
+        "共同飞行时间使OP/OM/ON分别代速度，m·距离不是动量；末章只降低碰撞释放点却留旧P，使无效比较的假违背可见。"
+      ],
+      "necessaryChanges": "保留，模拟确定性落点与真实误差区域分开。",
+      "sourceFiles": {
+        "component": "src/components/experiments/RampCollisionLab.tsx",
+        "model": "src/models/ramp-collision-lab.ts",
+        "article": "src/content/ramp-collision-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-ramp-ball-momentum",
+          "decision": "retain",
+          "reason": "setup/reference/collision/ranges/momentum/height六章完整，实验条件就是推理组成。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["setup", "reference", "collision", "ranges", "momentum", "height"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "nuclear-evidence-lab",
+      "decision": "revise",
+      "phenomenon": "核内发生的事怎样从产物/反冲/径迹判断。",
+      "evidence": [
+        "NuclearArtwork:121–161反冲靶H/N和上限条；164–214钡鉴定仅三试管+Ba文字牌；218–250径迹逐点生长；253–281链各代条由抽象k直接算。",
+        "中子反冲和带电共同顶点可保留；钡为什么被识别为钡、链中逃逸/吸收怎样形成再生数，仍是文字连接而非可追踪证据。"
+      ],
+      "necessaryChanges": "局部补产物鉴定的比较证据、带身份的中子代际/损失路径；不做工程反应堆。修e1入口sceneVariant别名并正式回归。",
+      "sourceFiles": {
+        "component": "src/components/experiments/NuclearEvidenceLab.tsx",
+        "model": null,
+        "article": "src/content/nuclear-evidence-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-chadwick-reference",
+          "decision": "retain",
+          "reason": "全部六入口各两章完整；另e1-chadwick-reference watch正确但explore初态回退质子（variants仅含e3别名）。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["neutron-recoil", "neutron-mass"],
+          "metadataCorrection": null,
+          "interfaceFindings": ["physics-variant-chadwick"]
+        },
+        {
+          "id": "e3-rutherford-proton",
+          "decision": "retain",
+          "reason": "全部六入口各两章完整；另e1-chadwick-reference watch正确但explore初态回退质子（variants仅含e3别名）。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["nitrogen-flashes", "nitrogen-balance"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-chadwick-neutron",
+          "decision": "retain",
+          "reason": "全部六入口各两章完整；另e1-chadwick-reference watch正确但explore初态回退质子（variants仅含e3别名）。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["neutron-recoil", "neutron-mass"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-uranium-fission-discovery",
+          "decision": "revise",
+          "reason": "全部六入口各两章完整；另e1-chadwick-reference watch正确但explore初态回退质子（variants仅含e3别名）。",
+          "needed": "局部补产物鉴定的比较证据、带身份的中子代际/损失路径；不做工程反应堆。修e1入口sceneVariant别名并正式回归。",
+          "chapterIds": ["barium-product", "fission-channel"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-uranium-multifragment-fission",
+          "decision": "retain",
+          "reason": "全部六入口各两章完整；另e1-chadwick-reference watch正确但explore初态回退质子（variants仅含e3别名）。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ternary-tracks", "quaternary-tracks"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-fermi-controlled-chain-reaction",
+          "decision": "revise",
+          "reason": "全部六入口各两章完整；另e1-chadwick-reference watch正确但explore初态回退质子（variants仅含e3别名）。",
+          "needed": "局部补产物鉴定的比较证据、带身份的中子代际/损失路径；不做工程反应堆。修e1入口sceneVariant别名并正式回归。",
+          "chapterIds": ["chain-generations", "controlled-chain"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "recoil-lab",
+      "decision": "retain",
+      "phenomenon": "喷出的气/水怎样改变剩余物体的运动。",
+      "evidence": [
+        "RecoilLab.tsx:298–310同clock比较面积；balloonParcel保留每份释放时绝对v；waterRotorTrajectory/rotorOutlet/waterParcel同几何求水位、I、出口切速与弹道。",
+        "开放部分动量增量由已喷出部分补足；喷口面积2只使初始流率2；两切向水口平动力抵消但转矩相加，反向重试。"
+      ],
+      "necessaryChanges": "保留；其具体物质路径已经承担主要解释，不改成数字卡。",
+      "sourceFiles": {
+        "component": "src/components/experiments/RecoilLab.tsx",
+        "model": "src/models/recoil-lab.ts",
+        "article": "src/content/recoil-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-air-balloon-recoil",
+          "decision": "retain",
+          "reason": "balloon/gas/area与water/reverse/angular各三章自含完整系统和预测。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["balloon", "gas", "area"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-rotor-recoil",
+          "decision": "retain",
+          "reason": "balloon/gas/area与water/reverse/angular各三章自含完整系统和预测。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["water", "reverse", "angular"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "spring-oscillation-lab",
+      "decision": "retain",
+      "phenomenon": "怎么把来回运动变成时间记录，再比较周期。",
+      "evidence": [
+        "SpringOscillationLab.tsx:107–124每组十周期完成才写记录；horizontal/vertical/pencil几何区分位置与曲线；相位第二球在delay前held。",
+        "等时间采样→x-t；振幅半而周期不变；同频并不等相位；质量/均匀弹簧长度分别研究并明确模型计时。"
+      ],
+      "necessaryChanges": "保留记录实验的目标；若加强“为什么回复”可补F方向，但本篇不需变成所有振动理论总览。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SpringOscillationLab.tsx",
+        "model": "src/models/spring-oscillation-lab.ts",
+        "article": "src/content/spring-oscillation-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-spring-motion-recording",
+          "decision": "retain",
+          "reason": "五入口分别2/1/2/2/2章，各自设定与比较完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["horizontal-frames", "vertical-frames"],
+          "metadataCorrection": {
+            "id": "e1-spring-motion-recording",
+            "book": "elective-1",
+            "oldPage": 32,
+            "newPage": 34,
+            "reason": "32页介绍水平弹簧振子；33页频闪记录；与现有入口原题完全相同的“做一做：用数码相机和计算机绘制弹簧振子的x-t图像”在34页。",
+            "pdfPage": 39,
+            "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/elective-1-p32-p34.txt"
+          },
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-pencil-trace",
+          "decision": "retain",
+          "reason": "五入口分别2/1/2/2/2章，各自设定与比较完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["pencil-trace"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-spring-period-amplitude",
+          "decision": "retain",
+          "reason": "五入口分别2/1/2/2/2章，各自设定与比较完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["amplitude-full", "amplitude-half"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-oscillator-phase",
+          "decision": "retain",
+          "reason": "五入口分别2/1/2/2/2章，各自设定与比较完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["phase-together", "phase-delay"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-spring-period-research",
+          "decision": "retain",
+          "reason": "五入口分别2/1/2/2/2章，各自设定与比较完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["mass-research", "length-research"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "sound-measurement-lab",
+      "decision": "retain",
+      "phenomenon": "波形上怎样比较音高，湖上怎样用光声差测声速。",
+      "evidence": [
+        "SoundMeasurementLab.tsx:34–56等时窗及真实声延迟；capture真实getUserMedia→FFT时域采样→自相关，无法识别保留null；lake波前与接收计时同模型。",
+        "同时间10/15周期→3:2而非振幅判断音高；闪光同步和传播时差→d/t，历史原记录与教材模拟1400分清。"
+      ],
+      "necessaryChanges": "保留。波形归一化不可用于比较真实响度。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SoundMeasurementLab.tsx",
+        "model": "src/models/sound-measurement-lab.ts",
+        "article": "src/content/sound-measurement-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-sound-wave-recording",
+          "decision": "retain",
+          "reason": "record三章和lake三章各自完整，探索可实际录音但本次没有采集/试听。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["sound-record-do", "sound-record-sol", "sound-count"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-geneva-lake-sound",
+          "decision": "retain",
+          "reason": "record三章和lake三章各自完整，探索可实际录音但本次没有采集/试听。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["lake-flash", "lake-delay", "lake-speed"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "floating-oscillator",
+      "decision": "retain",
+      "phenomenon": "浮筷离开平衡后，水怎样把它拉回来。",
+      "evidence": [
+        "FloatingOscillator.tsx:15–23有限浸入长度给顶/底、水线括号和浮/重两箭头；floatForce和ODE共享截断排水体积，图中静水力不混总力。",
+        "排水量改→浮力减重力→回复方向→部分浸没线性；全浸没平台反例、阻尼使振幅衰减均在主片。"
+      ],
+      "necessaryChanges": "保留。这是优质现象→力→模型边界案例。",
+      "sourceFiles": {
+        "component": "src/components/experiments/FloatingOscillator.tsx",
+        "model": "src/models/floating-oscillator.ts",
+        "article": "src/content/floating-oscillator.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-floating-chopstick",
+          "decision": "retain",
+          "reason": "lift-release/immersion-restoring/damping/submerged-boundary四章完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["lift-release", "immersion-restoring", "damping", "submerged-boundary"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "pendulum-measurement-lab",
+      "decision": "retain",
+      "phenomenon": "墨迹/计时/角度怎样反推周期与重力。",
+      "evidence": [
+        "PendulumMeasurementLab.tsx:54–104完整五/二十周期后记录；inkDrop继承切向v和落时；rodGeometry共轴杆线约束；EFFECTIVE_DATA六真实点残差保留。",
+        "实际落点不是针尖即时位置；漏球半径→g偏小的反例；倾平面g sinθ改变回复力，水平边界无振动。"
+      ],
+      "necessaryChanges": "保留；模型计时与教材原值分别注明，没有公式伪装实测。",
+      "sourceFiles": {
+        "component": "src/components/experiments/PendulumMeasurementLab.tsx",
+        "model": "src/models/pendulum-measurement-lab.ts",
+        "article": "src/content/pendulum-measurement-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-ink-pendulum",
+          "decision": "retain",
+          "reason": "ink两章、length两章、gravity三章、rod三章分别完整，各独立条件清楚。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["ink-apparatus", "ink-time-trace"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-pendulum-length-period",
+          "decision": "retain",
+          "reason": "ink两章、length两章、gravity三章、rod三章分别完整，各独立条件清楚。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["length-timing", "length-plot"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-pendulum-gravity",
+          "decision": "retain",
+          "reason": "ink两章、length两章、gravity三章、rod三章分别完整，各独立条件清楚。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["gravity-length", "gravity-timing", "gravity-error"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-effective-gravity-pendulum",
+          "decision": "retain",
+          "reason": "ink两章、length两章、gravity三章、rod三章分别完整，各独立条件清楚。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rod-plane", "rod-angle-timing", "textbook-effective-data"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "pendulum",
+      "decision": "retain",
+      "phenomenon": "中点回复力为零，摆球为何仍最快；什么改变节奏。",
+      "evidence": [
+        "Pendulum.tsx:19–25分参数控制，stepPendulum完整非线性；PendulumStudio有gravity/restoring ArrowHelper，能量同state；watch根据绝对时间重建非连续seek。",
+        "切向重力加速→势/动能交换→惯性过零；长度/质量/重力控制，大角度和阻尼边界实际可见。"
+      ],
+      "necessaryChanges": "保留现有理论型表达；35°基准并非极小角，T读数明确小角度近似，后续视觉审查可比较实际周期差。",
+      "sourceFiles": {
+        "component": "src/components/experiments/Pendulum.tsx",
+        "model": "src/models/pendulum.ts",
+        "article": "src/content/pendulum.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-pendulum-factors",
+          "decision": "retain",
+          "reason": "空chapterIds为全十二章，完整含现象、力、能量、周期、四对照与边界。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "singing-basin",
+      "decision": "retain",
+      "phenomenon": "手慢慢摩擦，盆为何发声并喷水。",
+      "evidence": [
+        "SingingBasin.tsx:23–48明确手移动速度与盆模态分开；basinEnergy解析增长/饱和/撤去供能衰减；rim与antinodes、逐滴抛物线同E驱动。",
+        "摩擦供能与耗散比决定振幅，不误把摩擦频率当固有频率；四腹/六腹受控选模，放手后延迟衰减。"
+      ],
+      "necessaryChanges": "保留自激而非强行套受迫共振的解释，液面破碎仅阈值示意需继续限定。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SingingBasin.tsx",
+        "model": "src/models/singing-basin.ts",
+        "article": "src/content/singing-basin.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-water-spraying-basin",
+          "decision": "retain",
+          "reason": "basin-still/growth/four/six/release五章完整；弱供能与无水边界在探索。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["basin-still", "basin-growth", "basin-four", "basin-six", "basin-release"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "forced-oscillation-lab",
+      "decision": "retain",
+      "phenomenon": "两根不同弹簧为何同频，共梁摆为何选择性增强。",
+      "evidence": [
+        "ForcedOscillationLab.tsx:28–46 motorOscillator含暂态，measuredDriveFrequency从实际过零测；coupledPendulumTrajectory联立横梁和七摆，放大横梁20倍局部。",
+        "共享驱动→暂态衰减后跟随频率；重摆能量经梁传递且反作用保留；改D长度改变强响应轻摆。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ForcedOscillationLab.tsx",
+        "model": "src/models/forced-oscillation-lab.ts",
+        "article": "src/content/forced-oscillation-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-forced-frequency",
+          "decision": "retain",
+          "reason": "motor两章、beam三章完整；持续驱动与有限初始能量不混为永恒稳态。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["motor-start", "motor-frequency"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-resonance-pendulums",
+          "decision": "retain",
+          "reason": "motor两章、beam三章完整；持续驱动与有限初始能量不混为永恒稳态。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["beam-transfer", "beam-matching", "beam-retune"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "mechanical-wave-lab",
+      "decision": "retain",
+      "phenomenon": "波向前走时，绳元、学生与弹簧圈去了哪里。",
+      "evidence": [
+        "MechanicalWaveLab.tsx:38–46同source延迟场绘绳/圈/标记，pulseX空心标记与redY物质标记分离；springHelix按材料坐标定位。",
+        "不同位置重复源的较早状态→传播；横向/纵向方向对照，人浪明示类比并非弹性机制相同。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MechanicalWaveLab.tsx",
+        "model": "src/models/mechanical-wave-lab.ts",
+        "article": "src/content/mechanical-wave-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-rope-wave",
+          "decision": "retain",
+          "reason": "rope三章、human两章、spring两章分别自含运动/标记反例，不依赖全片才懂。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rope-up", "rope-down", "rope-train"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-human-wave",
+          "decision": "retain",
+          "reason": "rope三章、human两章、spring两章分别自含运动/标记反例，不依赖全片才懂。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["human-delay", "human-track"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-spring-longitudinal-wave",
+          "decision": "retain",
+          "reason": "rope三章、human两章、spring两章分别自含运动/标记反例，不依赖全片才懂。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["spring-compression", "spring-track"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "ripple-tank-lab",
+      "decision": "retain",
+      "phenomenon": "改变同一水面的边界/深度/振源，为何得到不同波纹。",
+      "evidence": [
+        "RippleTankLab.tsx:67–117 complex field→同一canvas瞬时高度；quietProbe固定基准，失谐改成独立驱动；movingRipples每个圆心固定在emitted位置。",
+        "反射角/浅水速度与波长/缝宽λ比/相位叠加/移动源发射点各有具体改变条件；纸屑局部往复不随波走。"
+      ],
+      "necessaryChanges": "保留。图色不是能量，渐改参数是建立后波场比较，已说明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/RippleTankLab.tsx",
+        "model": "src/models/ripple-tank-lab.ts",
+        "article": "src/content/ripple-tank-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-water-wave-paper",
+          "decision": "retain",
+          "reason": "六入口均各两章，完整对照；源/挡板真实形态随实验改变。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["paper-tap", "paper-periodic"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-reflection",
+          "decision": "retain",
+          "reason": "六入口均各两章，完整对照；源/挡板真实形态随实验改变。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["water-reflect", "water-reflect-angle"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-refraction",
+          "decision": "retain",
+          "reason": "六入口均各两章，完整对照；源/挡板真实形态随实验改变。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["water-refract", "water-depth"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-diffraction",
+          "decision": "retain",
+          "reason": "六入口均各两章，完整对照；源/挡板真实形态随实验改变。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["water-gap", "water-wavelength"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-interference",
+          "decision": "retain",
+          "reason": "六入口均各两章，完整对照；源/挡板真实形态随实验改变。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["water-coherent", "water-detune"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-moving-water-source",
+          "decision": "retain",
+          "reason": "六入口均各两章，完整对照；源/挡板真实形态随实验改变。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["water-source-still", "water-source-move"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "wave-interference",
+      "decision": "retain",
+      "phenomenon": "两脉冲抵消成平直绳，能量去哪了。",
+      "evidence": [
+        "WaveInterference:38–56逐shot选真实行波/同点/能量；interferenceAt对合位移求dt/dx后算KE/PE/flux；前沿由乘积导数传播。",
+        "同横坐标位移和→零位移但非零速度→再现脉冲；等振幅反相条件、驻波形成与局部能流是可见预测。"
+      ],
+      "necessaryChanges": "保留，作为后续因果镜头参照。",
+      "sourceFiles": {
+        "component": "src/components/experiments/WaveInterference.tsx",
+        "model": "src/models/wave-interference.ts",
+        "article": "src/content/wave-interference.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-rope-superposition",
+          "decision": "retain",
+          "reason": "空ID为全八章，完整且独立表达很强。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "sound-interference-lab",
+      "decision": "revise",
+      "phenomenon": "两个同源扬声器为何在某些位置安静。",
+      "evidence": [
+        "SoundInterferenceLab.tsx:24–33同两距离求声强和旗位；保留680Hz旧旗再改变f，预测检验成立；场图与Δr读数存在。",
+        "由路程差到相位再到两个压力的相加，目前画面主要热图/相对强度条，未展示同点两贡献抵消；主讲解仍需旁白补关键桥。"
+      ],
+      "necessaryChanges": "局部增加接收点的两路压力小波形或相量及和，按真实1/r幅度保留不完全相消；保留旧旗频率预测与空间表达。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SoundInterferenceLab.tsx",
+        "model": "src/models/sound-interference-lab.ts",
+        "article": "src/content/sound-interference-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-sound-interference",
+          "decision": "revise",
+          "reason": "speakers-common/receiver/flags/frequency四章完整无切断；首章到第二章缺可见两声到达相位。",
+          "needed": "局部增加接收点的两路压力小波形或相量及和，按真实1/r幅度保留不完全相消；保留旧旗频率预测与空间表达。",
+          "chapterIds": [
+            "speakers-common",
+            "speakers-receiver",
+            "speakers-flags",
+            "speakers-frequency"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "doppler-lab",
+      "decision": "retain",
+      "phenomenon": "源频率没变，接收频率为何变化。",
+      "evidence": [
+        "DopplerLab.tsx:69–77解retarded emission；fronts保留原圆心；同十波峰发出/到达刻度；queue实际人过移动虚线计数。",
+        "到达间距压缩而非源音调改变；观察者逆/顺走隔离接收相遇率，人数不是介质质点。"
+      ],
+      "necessaryChanges": "保留实际迟滞时刻与显示当前源位置的区别。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DopplerLab.tsx",
+        "model": "src/models/doppler-lab.ts",
+        "article": "src/content/doppler-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-rotating-buzzer",
+          "decision": "retain",
+          "reason": "buzzer三章、queue三章均完整，理论从可数事件得到。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["buzzer-still", "buzzer-rotate", "buzzer-arrivals"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-queue-doppler",
+          "decision": "retain",
+          "reason": "buzzer三章、queue三章均完整，理论从可数事件得到。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["queue-still", "queue-against", "queue-with"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "refraction",
+      "decision": "retain",
+      "phenomenon": "波前过界面为什么改间距与方向，正入射为何不转弯。",
+      "evidence": [
+        "Refraction.tsx:14–34同Snell状态与shared phase画两侧波前，光线垂直波前；refractionShot分别固定i/n与正入射/反向。",
+        "界面切向相位相容、频率同一→速度/λ变→方向约束；正入射反例明确。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/Refraction.tsx",
+        "model": "src/models/refraction.ts",
+        "article": "src/content/refraction.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-refraction-law",
+          "decision": "retain",
+          "reason": "空ID为完整六章，无剪辑缺口；教材规律入口不是只显示一条弯光线。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "geometric-optics-lab",
+      "decision": "retain",
+      "phenomenon": "观察到的针像、筷子和文字为何不在原位置。",
+      "evidence": [
+        "GeometricOpticsLab:225–248 pin误差来自C实际位置；cylinderRay求两圆界面交点/Snell；虚像由出射线反延长交会，筷宽由边缘物点投影。",
+        "对准记录重建折射率；圆柱杯不能代平界面；厚玻璃精确视深与d/n近轴对照形成适用条件预测。"
+      ],
+      "necessaryChanges": "保留实物观察→光路反推关系。",
+      "sourceFiles": {
+        "component": "src/components/experiments/GeometricOpticsLab.tsx",
+        "model": "src/models/geometric-optics-lab.ts",
+        "article": "src/content/geometric-optics-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-refractive-index-pins",
+          "decision": "retain",
+          "reason": "pins三章、cup两章、plate两章分别完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["pins-faces", "pins-align", "pins-index"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-chopstick-image",
+          "decision": "retain",
+          "reason": "pins三章、cup两章、plate两章分别完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["cup-interfaces", "cup-width"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-glass-apparent-depth",
+          "decision": "retain",
+          "reason": "pins三章、cup两章、plate两章分别完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["plate-image", "plate-angle"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "total-reflection-lab",
+      "decision": "retain",
+      "phenomenon": "光为什么沿弯棒或水流走，弯得更急会怎样。",
+      "evidence": [
+        "TotalReflectionLab:278–285逐分支geometry；traceGuide逐实际边界求交与Fresnel R/T；waterJet中心抛物线+连续性半径，光仍直线段。",
+        "临界角→多次真实反射→小半径漏光反例；软木塞遮挡小角度，刚消失临界h反求n。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/TotalReflectionLab.tsx",
+        "model": "src/models/total-reflection-lab.ts",
+        "article": "src/content/total-reflection-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-semicircle-total-reflection",
+          "decision": "retain",
+          "reason": "四入口各两章完整，半圆/弯棒/水流/测n分别独立装置。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["semicircle-refract", "semicircle-critical"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-curved-acrylic-guide",
+          "decision": "retain",
+          "reason": "四入口各两章完整，半圆/弯棒/水流/测n分别独立装置。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rod-reflections", "rod-bend-loss"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-water-jet-light",
+          "decision": "retain",
+          "reason": "四入口各两章完整，半圆/弯棒/水流/测n分别独立装置。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["jet-guide", "jet-head"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-liquid-index-total-reflection",
+          "decision": "retain",
+          "reason": "四入口各两章完整，半圆/弯棒/水流/测n分别独立装置。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["cork-block", "cork-index"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "double-slit",
+      "decision": "retain",
+      "phenomenon": "多开一道光路，为什么某处反而更暗。",
+      "evidence": [
+        "DoubleSlit:382–386 samePoint/shot模型，doubleSlitAt复振幅和后模平方，检测CDF与场分开；相量/光程/屏点状态共算。",
+        "单缝→双缝反常结果→同点光程相位→振幅和→强度；d/λ/a三控制预测，最后逐事件不画哪路轨迹。"
+      ],
+      "necessaryChanges": "保留作为因果解释参照；模拟点不是独立实测证据。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DoubleSlit.tsx",
+        "model": "src/models/double-slit.ts",
+        "article": "src/content/double-slit.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-optical-double-slit",
+          "decision": "retain",
+          "reason": "空ID为全七章，完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "thin-film-lab",
+      "decision": "revise",
+      "phenomenon": "膜厚或劈尖支撑改变，反射条纹为何移动。",
+      "evidence": [
+        "ThinFilmArtwork:32–38计算实际phaseShift，127–139两条相位波形；肥皂膜只正面条纹/灯，劈尖只有侧玻璃与条纹，未追踪前后表面反射的具体两路径。",
+        "控制厚度与单/双纸支持Δx预测正确；两条相位曲线与各界面光程/反射半周没有可见对应，关键来源仍靠旁白。"
+      ],
+      "necessaryChanges": "局部加膜/气层剖面、第一束与第二束连续反射路径与相位标记；不把多重反射R误说成仅两束精确强度。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ThinFilmLab.tsx",
+        "model": "src/models/thin-film-lab.ts",
+        "article": "src/content/thin-film-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-soap-film-interference",
+          "decision": "revise",
+          "reason": "soap三章与wedge两章完整，但各自两束来源的桥应更清楚。",
+          "needed": "局部加膜/气层剖面、第一束与第二束连续反射路径与相位标记；不把多重反射R误说成仅两束精确强度。",
+          "chapterIds": ["soap-yellow", "soap-drain", "soap-white"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-wedge-interference",
+          "decision": "revise",
+          "reason": "soap三章与wedge两章完整，但各自两束来源的桥应更清楚。",
+          "needed": "局部加膜/气层剖面、第一束与第二束连续反射路径与相位标记；不把多重反射R误说成仅两束精确强度。",
+          "chapterIds": ["wedge-two", "wedge-one"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "double-slit-measurement-lab",
+      "decision": "retain",
+      "phenomenon": "如何用亮纹位置反推出波长，固定像元又怎样记录。",
+      "evidence": [
+        "DoubleSlitMeasurement:217–234实际分划x走五间隔；inferWavelength首尾可误对准，改λ/d清旧记录；sensorArray有限像元解析平均；lloydMirror算反射点/额外π。",
+        "N条=N−1间隔→Δx→λ，改色检验；固定阵列非移动探头；洛埃镜中心暗纹不同于双缝。"
+      ],
+      "necessaryChanges": "保留，可减少开场器材列举但不需要重做模型/主体。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DoubleSlitMeasurementLab.tsx",
+        "model": "src/models/double-slit-measurement-lab.ts",
+        "article": "src/content/double-slit-measurement-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-double-slit-wavelength",
+          "decision": "retain",
+          "reason": "measurement四章、sensor两章、lloyd两章完整，测量目的的操作均有推理作用。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["bench-align", "reticle-first", "reticle-six", "filter-color"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-double-slit-light-sensor",
+          "decision": "retain",
+          "reason": "measurement四章、sensor两章、lloyd两章完整，测量目的的操作均有推理作用。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["sensor-array", "sensor-profile"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-lloyd-mirror",
+          "decision": "retain",
+          "reason": "measurement四章、sensor两章、lloyd两章完整，测量目的的操作均有推理作用。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["lloyd-paths", "lloyd-phase"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "optical-diffraction-lab",
+      "decision": "revise",
+      "phenomenon": "缝窄为何铺宽，圆盘几何阴影中央为何有亮点。",
+      "evidence": [
+        "OpticalDiffractionArtwork:25–45调用真实Fresnel/Babinet积分；47–179只展示孔/盘/缝和算出的屏图/强度曲线，没有开口内贡献或绕盘边缘相位的可见叠加。",
+        "输入宽度/半径到结果的科学计算充分，但由传播贡献相消/相长到预测的中间桥隐藏在函数中；白光强度相加只口述。"
+      ],
+      "necessaryChanges": "局部重构主片为开口分区贡献→角方向相消→收窄首零点外移；圆盘先示几何预测再展示边缘同相的中央结果。铅笔/卡尺保留为按需迁移入口。",
+      "sourceFiles": {
+        "component": "src/components/experiments/OpticalDiffractionLab.tsx",
+        "model": "src/models/optical-diffraction-lab.ts",
+        "article": "src/content/optical-diffraction-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-single-slit-diffraction",
+          "decision": "revise",
+          "reason": "slit六章主要连续器材替换；poisson两章有预测结果却缺它如何推出；全部ID有效。",
+          "needed": "局部重构主片为开口分区贡献→角方向相消→收窄首零点外移；圆盘先示几何预测再展示边缘同相的中央结果。铅笔/卡尺保留为按需迁移入口。",
+          "chapterIds": [
+            "slit-wide",
+            "slit-narrow",
+            "slit-white",
+            "circular-aperture",
+            "pencil-gap",
+            "caliper-gap"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-poisson-spot",
+          "decision": "revise",
+          "reason": "slit六章主要连续器材替换；poisson两章有预测结果却缺它如何推出；全部ID有效。",
+          "needed": "局部重构主片为开口分区贡献→角方向相消→收窄首零点外移；圆盘先示几何预测再展示边缘同相的中央结果。铅笔/卡尺保留为按需迁移入口。",
+          "chapterIds": ["poisson-shadow", "poisson-size"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "matter-wave-lab",
+      "decision": "revise",
+      "phenomenon": "晶体/电子散射为什么有离散峰、环和逐点条纹。",
+      "evidence": [
+        "MatterWave:244–245 xray plane-phase watch value恒1；Artwork mode4:196–234固定两路径且两波只加value·2π，相位未从画出的d/θ求得；其余laueSpots是真三维散射条件。",
+        "电子电压→λ→环半径预测及多晶取向成环清楚；晶面“多走2d sinθ”局部图还未标出多走的两段，phase控制与几何解耦。"
+      ],
+      "necessaryChanges": "将晶面两路增量与θ、d同算并连续对应相位再回斑点；保留三维Laue计算/真实身份区分。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MatterWaveLab.tsx",
+        "model": "src/models/matter-wave-lab.ts",
+        "article": "src/content/matter-wave-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-xray-crystal-diffraction",
+          "decision": "revise",
+          "reason": "xray两入口各三章完整，electron四章完整；局部相位镜头缺可见因果，非要重建全部实验。",
+          "needed": "将晶面两路增量与θ、d同算并连续对应相位再回斑点；保留三维Laue计算/真实身份区分。",
+          "chapterIds": ["xray-spots", "plane-phase", "crystal-rotation"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-xray-crystal-diffraction",
+          "decision": "revise",
+          "reason": "xray两入口各三章完整，electron四章完整；局部相位镜头缺可见因果，非要重建全部实验。",
+          "needed": "将晶面两路增量与θ、d同算并连续对应相位再回斑点；保留三维Laue计算/真实身份区分。",
+          "chapterIds": ["xray-spots", "plane-phase", "crystal-rotation"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-electron-diffraction",
+          "decision": "retain",
+          "reason": "xray两入口各三章完整，electron四章完整；局部相位镜头缺可见因果，非要重建全部实验。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["electron-reflection", "electron-peak", "foil-rings", "interference"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "polarization-evidence-lab",
+      "decision": "retain",
+      "phenomenon": "转狭缝为何筛横波而不筛纵波，光的明暗告诉什么。",
+      "evidence": [
+        "PolarizationEvidence:208–215实际mode/source；mechanicalPolarizer透射P、反射−(I−P)保边界连续；观察玻璃/table/LCD分别Fresnel/混合统计而非统一cos²。",
+        "横向分量投影→转板振动减；纵向沿轴不受同方向选择；自然光一半、反光角度/LCD残余光分别对照。"
+      ],
+      "necessaryChanges": "保留，具体材料参数为教学示例。",
+      "sourceFiles": {
+        "component": "src/components/experiments/PolarizationEvidenceLab.tsx",
+        "model": "src/models/polarization-evidence-lab.ts",
+        "article": "src/content/polarization-evidence-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-wave-slit-polarization",
+          "decision": "retain",
+          "reason": "mechanical三章、real-sources四章完整；木板类比不被误当光偏振片真实孔。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rope-parallel", "rope-rotate", "spring-longitudinal"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e1-polarization-real-sources",
+          "decision": "retain",
+          "reason": "mechanical三章、real-sources四章完整；木板类比不被误当光偏振片真实孔。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["window-light", "glass-reflection", "table-reflection", "lcd-light"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "polarization",
+      "decision": "retain",
+      "phenomenon": "交叉两片变暗，为什么加第三片反而透光。",
+      "evidence": [
+        "Polarization:119–126统一shot/场时钟；polarizationState逐P C P算强度，polarizationField逐级投影同源，phoneFilm按投影/能量镜头构图。",
+        "先横向场→非偏振统计→逐片投影→I平方→45°中片让末片面对新方向；逐级吸收账和两端零输出反例可见。"
+      ],
+      "necessaryChanges": "保留，作为可见机制标准之一。",
+      "sourceFiles": {
+        "component": "src/components/experiments/Polarization.tsx",
+        "model": "src/models/polarization.ts",
+        "article": "src/content/polarization.mdx"
+      },
+      "windows": [
+        {
+          "id": "e1-optical-polarization",
+          "decision": "retain",
+          "reason": "空ID为全八章，完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "charged-particle-lab",
+      "decision": "retain",
+      "phenomenon": "一条弯轨迹怎样分辨电荷与质量。",
+      "evidence": [
+        "ChargedParticleLab:52–93同Lorentz解析轨迹/壁碰截断；isotopeRadius相同U而非同v；positronTrack板前后同点同切线、相对论p给两曲率。",
+        "无B/反B控制；速度垂直磁力→速率不变；相同U质量平方根；铅板能损先判方向再换电荷假设。"
+      ],
+      "necessaryChanges": "保留，不把教学轨迹当历史照片复刻。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ChargedParticleLab.tsx",
+        "model": "src/models/charged-particle-lab.ts",
+        "article": "src/content/charged-particle-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-electron-beam-deflection",
+          "decision": "retain",
+          "reason": "beam两章、orbit两章、mass两章、positron两章在两教材入口均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["beam-straight", "beam-bend"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-positron-cloud-chamber",
+          "decision": "retain",
+          "reason": "beam两章、orbit两章、mass两章、positron两章在两教材入口均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["positron-direction", "positron-charge"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-electron-orbit",
+          "decision": "retain",
+          "reason": "beam两章、orbit两章、mass两章、positron两章在两教材入口均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["orbit-radius", "orbit-helix"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-mass-spectrometer",
+          "decision": "retain",
+          "reason": "beam两章、orbit两章、mass两章、positron两章在两教材入口均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["mass-tracks", "mass-inference"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-positron-discovery-reference",
+          "decision": "retain",
+          "reason": "beam两章、orbit两章、mass两章、positron两章在两教材入口均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["positron-direction", "positron-charge"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "eddy-current-lab",
+      "decision": "revise",
+      "phenomenon": "磁体没有碰到导体，为什么能减速或带动它。",
+      "evidence": [
+        "EddyCurrentLab:155–263 disc只有无方向椭圆环示意、tube六圈恒定透明度，frame只两转角与slip；有效阻尼/转差模型独立但图中未对应磁通变化符号。",
+        "相同初态开/闭对照与能量方向正确；磁通变化→环流方向→反向力/转矩仍主要口述，甚至管内所有环同时同透明度不随磁体位置变化。"
+      ],
+      "necessaryChanges": "局部强化至少tube/disc的活动环区域、感应方向和力/热去向，并对开缝保留局部残流；frame给相对角速度/转差导致力矩的追踪。保留已有运动解与对照。",
+      "sourceFiles": {
+        "component": "src/components/experiments/EddyCurrentLab.tsx",
+        "model": "src/models/eddy-current-lab.ts",
+        "article": "src/content/eddy-current-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-galvanometer-damping",
+          "decision": "retain",
+          "reason": "五入口各两章完整，缺口是桥而非裁切。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["meter-open", "meter-short"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-aluminium-frame-drive",
+          "decision": "revise",
+          "reason": "五入口各两章完整，缺口是桥而非裁切。",
+          "needed": "局部强化至少tube/disc的活动环区域、感应方向和力/热去向，并对开缝保留局部残流；frame给相对角速度/转差导致力矩的追踪。保留已有运动解与对照。",
+          "chapterIds": ["frame-forward", "frame-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-copper-disc-brake",
+          "decision": "revise",
+          "reason": "五入口各两章完整，缺口是桥而非裁切。",
+          "needed": "局部强化至少tube/disc的活动环区域、感应方向和力/热去向，并对开缝保留局部残流；frame给相对角速度/转差导致力矩的追踪。保留已有运动解与对照。",
+          "chapterIds": ["disc-free", "disc-brake"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-magnet-coil-damping",
+          "decision": "retain",
+          "reason": "五入口各两章完整，缺口是桥而非裁切。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["spring-open", "spring-closed"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-magnet-falling-tube",
+          "decision": "revise",
+          "reason": "五入口各两章完整，缺口是桥而非裁切。",
+          "needed": "局部强化至少tube/disc的活动环区域、感应方向和力/热去向，并对开缝保留局部残流；frame给相对角速度/转差导致力矩的追踪。保留已有运动解与对照。",
+          "chapterIds": ["tube-complete", "tube-slit"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "self-induction-lab",
+      "decision": "retain",
+      "phenomenon": "断电灯为什么闪亮，有时却不闪。",
+      "evidence": [
+        "SelfInductionLab:31–34电流同switchOn/off；电源断开后实际线圈+灯闭回路，170–181线圈/负载方向分别画；有符号sensor曲线。",
+        "稳态匹配电阻后比较启动；断电储磁能经现存回路释放、灯电流反向；r_L从2到10Ω给不闪反例。"
+      ],
+      "necessaryChanges": "保留；灯丝热惯性未算，亮度为功率映射已说明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SelfInductionLab.tsx",
+        "model": "src/models/self-induction-lab.ts",
+        "article": "src/content/self-induction-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-self-induction-switch-on",
+          "decision": "retain",
+          "reason": "on三章、off四章完整，具体接线正是原理，不需要撤掉。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["on-calibrate", "on-rise", "on-sensor"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-self-induction-switch-off",
+          "decision": "retain",
+          "reason": "on三章、off四章完整，具体接线正是原理，不需要撤掉。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["off-loop", "off-flash", "off-no-flash", "off-sensor"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "ac-circuit-lab",
+      "decision": "revise",
+      "phenomenon": "交流为什么被L/C不同阻碍，LC为什么反向充电。",
+      "evidence": [
+        "AcCircuitLab:64–105独立AC相量/RC暂态/LC阻尼解析；274–310 LC仅开关/静态元件/两±号，325–335只给U/I和剩余总能；无分开的电场/磁场能可见交换。",
+        "示波器/LED方向窗口可保留；电容充放电与自感维持I的微过程只由数字和旁白表示，LC关键过零不停止缺可追踪桥。"
+      ],
+      "necessaryChanges": "局部补极板电荷、沿闭回路电流箭头、线圈磁场与两储能的同状态交换；同RMS比较与DC暂态必须保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/AcCircuitLab.tsx",
+        "model": "src/models/ac-circuit-lab.ts",
+        "article": "src/content/ac-circuit-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-ac-dc-oscilloscope",
+          "decision": "retain",
+          "reason": "scope2/led2/inductor2/capacitor3/lc3章均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["scope-dc", "scope-ac"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-ac-led-direction",
+          "decision": "retain",
+          "reason": "scope2/led2/inductor2/capacitor3/lc3章均完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["led-forward", "led-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-inductive-reactance-lamp",
+          "decision": "revise",
+          "reason": "scope2/led2/inductor2/capacitor3/lc3章均完整。",
+          "needed": "局部补极板电荷、沿闭回路电流箭头、线圈磁场与两储能的同状态交换；同RMS比较与DC暂态必须保留。",
+          "chapterIds": ["inductor-dc", "inductor-ac"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-capacitive-reactance-lamp",
+          "decision": "revise",
+          "reason": "scope2/led2/inductor2/capacitor3/lc3章均完整。",
+          "needed": "局部补极板电荷、沿闭回路电流箭头、线圈磁场与两储能的同状态交换；同RMS比较与DC暂态必须保留。",
+          "chapterIds": ["capacitor-dc", "capacitor-ac", "capacitor-frequency"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-lc-oscillation-measurement",
+          "decision": "revise",
+          "reason": "scope2/led2/inductor2/capacitor3/lc3章均完整。",
+          "needed": "局部补极板电荷、沿闭回路电流箭头、线圈磁场与两储能的同状态交换；同RMS比较与DC暂态必须保留。",
+          "chapterIds": ["lc-charge", "lc-exchange", "lc-loss"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "transformer-electric",
+      "decision": "retain",
+      "phenomenon": "两根不接触的线圈为何有电压，带负载后能量从哪来。",
+      "evidence": [
+        "ElectricTransformer.tsx ElectricTraces同flux/v2时间轴与ElectricPower能量条；ElectricTransformerStudio:175–300连续实际24/12/24/48匝、闭磁路箭头和各侧电流；electricAC相量含励磁/负载/损耗。",
+        "斜率而非Φ幅度→每匝电压相加→负载反作用→同功率配比；限流DC暂态与改f保持V提供边界反例。"
+      ],
+      "necessaryChanges": "保留。manifest原自动文件推断null，实际组件ElectricTransformer.tsx和专属Studio已查。",
+      "sourceFiles": {
+        "component": null,
+        "model": "src/models/transformer-electric.ts",
+        "article": "src/content/transformer-electric.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-transformer-turns-ratio",
+          "decision": "retain",
+          "reason": "空ID为全八章，完整；不同理想条件明确。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "wireless-interference-lab",
+      "decision": "retain",
+      "phenomenon": "蓝牙连接了，为何未必让Wi-Fi变慢。",
+      "evidence": [
+        "WirelessInterferenceLab:14–23同seed调度保持时频条件；coexistenceSchedule只把同时同频活动标碰撞；study输入真实记录另summarizeRepeated。",
+        "空闲/活动→重叠条件→自适应避开→5GHz排除同频，最后设计交替重复实测。"
+      ],
+      "necessaryChanges": "保留，算法不是协议完整实现已标明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/WirelessInterferenceLab.tsx",
+        "model": "src/models/wireless-interference-lab.ts",
+        "article": "src/content/wireless-interference-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-wifi-bluetooth-interference",
+          "decision": "retain",
+          "reason": "baseline/overlap/adaptive/five/study五章完整，模拟率不冒充网速。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "wireless-baseline",
+            "wireless-overlap",
+            "wireless-adaptive",
+            "wireless-five",
+            "wireless-study"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "sensor-control-lab",
+      "decision": "retain",
+      "phenomenon": "物理量怎样经过敏感元件和电路控制灯/报警器。",
+      "evidence": [
+        "SensorControlLab:67–79独立reed/light/bimetal/pressure，动态触点与执行支路；PRESSURE_DATA十六原值，实际0.5N初载；lightControl算基极加载及输出限流。",
+        "敏感元件读数→普通电阻控制→分压/晶体管/继电器转换→执行动作；温控感温接通却加热断开反例具体。"
+      ],
+      "necessaryChanges": "保留不同装置，不把NTC趋势推广所有温度传感器。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SensorControlLab.tsx",
+        "model": "src/models/sensor-control-lab.ts",
+        "article": "src/content/sensor-control-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-reed-switch-lamp",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["reed-contact"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-photoresistor-measurement",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["photoresistor-shade", "photoresistor-reference"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-thermistor-measurement",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["thermistor-touch", "thermistor-bath"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-reed-switch-alarm",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["door-alarm"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-light-controlled-switch",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["light-transistor", "light-relay"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-bimetal-temperature-switch",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["bimetal-thermostat"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-film-pressure-sensor-study",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["pressure-loading", "pressure-sensitivity", "pressure-sorting"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e2-thermistor-water-bath-study",
+          "decision": "retain",
+          "reason": "8入口各自1/2/2/1/2/1/3/1章，单章reed/door/bimetal/bath均自含转换过程。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["thermistor-bath"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "hall-effect",
+      "decision": "retain",
+      "phenomenon": "电流同向，霍尔电压为什么换号。",
+      "evidence": [
+        "HallEffect:25–31 drift/FB/FE/边缘符号同hallEffect；电表固定下红上黑，稳态轨迹不假装侧向无限加速；hallDriftDistance积变化漂移。",
+        "v与q共同影响磁力，正/负载流子同下偏却边缘电荷符号不同；磁场反转、密度1/4→|V|4清楚。"
+      ],
+      "necessaryChanges": "保留，稳态比较与建立瞬态分明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/HallEffect.tsx",
+        "model": "src/models/hall-effect.ts",
+        "article": "src/content/hall-effect.mdx"
+      },
+      "windows": [
+        {
+          "id": "e2-hall-effect-measurement",
+          "decision": "retain",
+          "reason": "空ID为全六章，完整含模型边界。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "molecular-measurement-lab",
+      "decision": "revise",
+      "phenomenon": "炭粒为何乱动，混合体积为何不是相加，油膜如何给分子尺度。",
+      "evidence": [
+        "MolecularMeasurementLab:47–57生成carbonTrack并画可见粒子；mix只是waterAlcoholMix指定96mL终点；oil纯体积/面积与固定轮廓、单层结构有完整计算。",
+        "油膜四章可保留；炭粒不均衡撞击、水醇相互作用导致体积改变，在现画面分别只有随机轨迹/量筒液位，微观桥只旁白。"
+      ],
+      "necessaryChanges": "局部增加可见颗粒与不可见分子撞击的双尺度图；水醇采用保分子数、明确非定量结构示意，不用刚性球固定空隙冒充机制。油膜保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MolecularMeasurementLab.tsx",
+        "model": "src/models/molecular-measurement-lab.ts",
+        "article": "src/content/molecular-measurement-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-brownian-carbon-particles",
+          "decision": "revise",
+          "reason": "brownian两章、mix两章、oil四章完整，但前两组应补解释身份明确的局部机制图，不把假原子当显微观察。",
+          "needed": "局部增加可见颗粒与不可见分子撞击的双尺度图；水醇采用保分子数、明确非定量结构示意，不用刚性球固定空隙冒充机制。油膜保留。",
+          "chapterIds": ["carbon-observe", "carbon-temperature"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-water-alcohol-volume",
+          "decision": "revise",
+          "reason": "brownian两章、mix两章、oil四章完整，但前两组应补解释身份明确的局部机制图，不把假原子当显微观察。",
+          "needed": "局部增加可见颗粒与不可见分子撞击的双尺度图；水醇采用保分子数、明确非定量结构示意，不用刚性球固定空隙冒充机制。油膜保留。",
+          "chapterIds": ["mixture-measure", "mixture-contract"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-oleic-acid-film",
+          "decision": "retain",
+          "reason": "brownian两章、mix两章、oil四章完整，但前两组应补解释身份明确的局部机制图，不把假原子当显微观察。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["oil-drops", "oil-spread", "oil-area", "oil-thickness"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "statistical-motion-lab",
+      "decision": "retain",
+      "phenomenon": "单次不确定，整体分布为何有规律；落豆如何模拟压强。",
+      "evidence": [
+        "StatisticalMotionLab:30–46固定bernoulli身份/实际路径和直方图；beansOnScale独立到达冲量滤波+累积重量，粒子落后保留。",
+        "多组合通中槽、四币1:4:6:4:1同类计数；固定rate只改h→冲量增，停止落豆后撞击项归零而重量仍在。"
+      ],
+      "necessaryChanges": "保留，豆不反弹与气体2mv区别明确。",
+      "sourceFiles": {
+        "component": "src/components/experiments/StatisticalMotionLab.tsx",
+        "model": "src/models/statistical-motion-lab.ts",
+        "article": "src/content/statistical-motion-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-galton-board",
+          "decision": "retain",
+          "reason": "galton两章、coin两章、beans三章完整；实际章顺与教材位置不同但各窗口映射正确。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["galton-one", "galton-many"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-beans-pressure-model",
+          "decision": "retain",
+          "reason": "galton两章、coin两章、beans三章完整；实际章顺与教材位置不同但各窗口映射正确。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["beans-one", "beans-stream", "beans-height"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-coin-statistics",
+          "decision": "retain",
+          "reason": "galton两章、coin两章、beans三章完整；实际章顺与教材位置不同但各窗口映射正确。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["coins-ten", "coins-pool"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "thermal-measurement-lab",
+      "decision": "retain",
+      "phenomenon": "哪些读数能建立热学关系，条件失效会怎样。",
+      "evidence": [
+        "ThermalMeasurementLab:25–42能量交换/死体积/绝热指数/水柱位置同各模型；p与1/V图点对应总体积；热金属转移轨迹进入杯。",
+        "热容权重而非温度平均；漏杯低估c；慢等温pV与快压缩升T反例；可移动水柱维持p，冷却回原体积。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ThermalMeasurementLab.tsx",
+        "model": "src/models/thermal-measurement-lab.ts",
+        "article": "src/content/thermal-measurement-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-mixing-calorimetry",
+          "decision": "retain",
+          "reason": "mix3/boyle3/flask3章各自完整，操作承担控制条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["mix-prepare", "mix-equilibrate", "mix-cup"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-boyle-syringe",
+          "decision": "retain",
+          "reason": "mix3/boyle3/flask3章各自完整，操作承担控制条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["boyle-slow", "boyle-reciprocal", "boyle-fast"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-isobaric-flask-expansion",
+          "decision": "retain",
+          "reason": "mix3/boyle3/flask3章各自完整，操作承担控制条件。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["flask-seal", "flask-warm", "flask-cool"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "solid-structure-lab",
+      "decision": "retain",
+      "phenomenon": "规则外形、不同方向导热和层状剥离能说明什么。",
+      "evidence": [
+        "SolidStructureLab:25–35 anisotropic kernel→同50°C边界，exfoliation明确层数守恒；原子图示与器物分开。",
+        "同性质同温边界圆/椭圆比较支持各向异性，ratio=1回圆；剥离保片内蜂窝层间分开；外形不足以单独定晶体。"
+      ],
+      "necessaryChanges": "保留；如果强化原子键差可局部补，但现观察→可限结论已充分。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SolidStructureLab.tsx",
+        "model": "src/models/solid-structure-lab.ts",
+        "article": "src/content/solid-structure-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-crystal-rosin-observation",
+          "decision": "retain",
+          "reason": "grains2/wax2/tape2章完整，理论示意未冒充光学照片。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["crystal-shape", "crystal-order"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-thermal-anisotropy",
+          "decision": "retain",
+          "reason": "grains2/wax2/tape2章完整，理论示意未冒充光学照片。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["wax-heating", "wax-directions"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-graphene-exfoliation",
+          "decision": "retain",
+          "reason": "grains2/wax2/tape2章完整，理论示意未冒充光学照片。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["tape-peeling", "tape-monolayer"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "diamagnetic-levitation-lab",
+      "decision": "retain",
+      "phenomenon": "16T强场为何仍可能悬不起来。",
+      "evidence": [
+        "DiamagneticLevitationLab:15–21分别zero/uniform/gradient；magneticLift给B与dB/dz，RK4含mg/阻尼；两力箭头用磁加速度与g，扰动回稳。",
+        "均匀强场净升力零反例→梯度力→局部平衡稳定；蛙用水近似且不由一维结论宣称三维稳定。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DiamagneticLevitationLab.tsx",
+        "model": "src/models/diamagnetic-levitation-lab.ts",
+        "article": "src/content/diamagnetic-levitation-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-diamagnetic-levitation",
+          "decision": "retain",
+          "reason": "drop-gravity/uniform/gradient/restore/frog-history五章完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "drop-gravity",
+            "drop-uniform",
+            "drop-gradient",
+            "drop-restore",
+            "frog-history"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "surface-tension-lab",
+      "decision": "retain",
+      "phenomenon": "水面怎样托针、拉线，压到水下为何又下沉。",
+      "evidence": [
+        "SurfaceTensionLab:44–61同弧长thread/ring、定体积sessileDrop；fullGlass含重力Young–Laplace与排/溢水守恒；浮针两侧切向箭头及压入后独立沉降。",
+        "刺膜后单侧张力、定长度圆面积、接触角对比；浮针与沉底曲别针不混，完全浸没无界面支持反例。"
+      ],
+      "necessaryChanges": "保留。",
+      "sourceFiles": {
+        "component": "src/components/experiments/SurfaceTensionLab.tsx",
+        "model": "src/models/surface-tension-lab.ts",
+        "article": "src/content/surface-tension-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-full-glass-paperclips",
+          "decision": "retain",
+          "reason": "glass2/film4/wetting2/needle2章各完整，且每个器物承担不同证据。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["glass-clips", "glass-overflow"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-soap-film-thread",
+          "decision": "retain",
+          "reason": "glass2/film4/wetting2/needle2章各完整，且每个器物承担不同证据。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["thread-balanced", "thread-puncture", "loop-balanced", "loop-puncture"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-wetting-droplets",
+          "decision": "retain",
+          "reason": "glass2/film4/wetting2/needle2章各完整，且每个器物承担不同证据。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["drop-glass", "drop-wax"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-floating-needle",
+          "decision": "retain",
+          "reason": "glass2/film4/wetting2/needle2章各完整，且每个器物承担不同证据。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["needle-paper", "needle-submerge"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "capillary",
+      "decision": "retain",
+      "phenomenon": "细管无泵为何上升，过90°为何反而下降。",
+      "evidence": [
+        "Capillary.tsx:20–58同capillaryFrame与同比例局部meniscus；82–88切向/竖向力从角几何推导；高度真实而主图管宽仅放大。",
+        "接触线竖分量∝r而相对重量面积∝r²→h∝1/r；γ/θ分离，90°零分量及下降边界直接可见。"
+      ],
+      "necessaryChanges": "保留；黏性准静态起始/下降近似限制清楚。",
+      "sourceFiles": {
+        "component": "src/components/experiments/Capillary.tsx",
+        "model": "src/models/capillary.ts",
+        "article": "src/content/capillary.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-capillary-observation",
+          "decision": "retain",
+          "reason": "空ID为全八章，局部→整体→动态→边界完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "magdeburg-bowls-lab",
+      "decision": "revise",
+      "phenomenon": "冷却后两碗为何拉不开，开一条缝为何立即分开。",
+      "evidence": [
+        "MagdeburgBowlsLab:18–41用sealedBowls统一开缝、气温、压差与每侧拉力；45–128有碗壳、静态内部气点和向外拉力，缺外压/内压的表面力。",
+        "ΔpA阈值和每侧力不相加正确，但空气进入及外界气压压紧的因果只在caption/数字出现。"
+      ],
+      "necessaryChanges": "局部补内外压力在两半球上的合力与开缝气流、同状态压力平衡，保留固定n/V近似和真实每侧力。",
+      "sourceFiles": {
+        "component": "src/components/experiments/MagdeburgBowlsLab.tsx",
+        "model": "src/models/magdeburg-bowls-lab.ts",
+        "article": "src/content/magdeburg-bowls-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-magdeburg-bowls",
+          "decision": "revise",
+          "reason": "四章完整含开缝反例。",
+          "needed": "局部补内外压力在两半球上的合力与开缝气流、同状态压力平衡，保留固定n/V近似和真实每侧力。",
+          "chapterIds": ["bowls-seal", "bowls-cool", "bowls-pull", "bowls-air"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "thermodynamic-work-lab",
+      "decision": "retain",
+      "phenomenon": "压缩、摩擦、重物落下为何能升温，快速放气为何起雾。",
+      "evidence": [
+        "ThermodynamicWorkLab各独立work模型与连通机械路径：重物绳路/轴角由下降量得到；电功实验仍是重物发电；cloud用刚性瓶开放系统质量和温度比；Rumford到沸点后计相变热。",
+        "压缩快慢对照→功和散热；同mgh不同m/h、时间累计电功、快速泄压冷却/凝结、钝钻不以切屑为必要条件。"
+      ],
+      "necessaryChanges": "保留；微观分子视图可另补，但现热功证据并非仅操作指导。",
+      "sourceFiles": {
+        "component": "src/components/experiments/ThermodynamicWorkLab.tsx",
+        "model": "src/models/thermodynamic-work-lab.ts",
+        "article": "src/content/thermodynamic-work-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-compression-ignition",
+          "decision": "retain",
+          "reason": "五个入口各两章，独立观察和受控变量完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["compress-fast", "compress-slow"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-joule-paddle-calorimeter",
+          "decision": "retain",
+          "reason": "五个入口各两章，独立观察和受控变量完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["joule-paddles", "joule-same-work"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-joule-electrical-calorimeter",
+          "decision": "retain",
+          "reason": "五个入口各两章，独立观察和受控变量完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["joule-generator", "joule-current-time"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-expansion-cloud-bottle",
+          "decision": "retain",
+          "reason": "五个入口各两章，独立观察和受控变量完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["cloud-pressurize", "cloud-release"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-rumford-boring",
+          "decision": "retain",
+          "reason": "五个入口各两章，独立观察和受控变量完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rumford-contact", "rumford-blunt"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "drinking-bird-lab",
+      "decision": "retain",
+      "phenomenon": "饮水鸟为何反复点头，湿度高或头干为何停。",
+      "evidence": [
+        "drinking-bird-lab独立ODE/事件：头部蒸发、两球蒸气压、液柱位置、重力矩、管口真实露出、通气排液；DrinkingBirdLab按history里事件分章，液面保持水平。",
+        "外部水蒸发→头冷→压差→内液上升→重心/力矩→倾斜管口露出→压差消失排液→复位；非预设周期，干头/RH100反例。"
+      ],
+      "necessaryChanges": "保留，不能将内液误画成外界补入的水。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DrinkingBirdLab.tsx",
+        "model": "src/models/drinking-bird-lab.ts",
+        "article": "src/content/drinking-bird-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-drinking-bird",
+          "decision": "retain",
+          "reason": "六章覆盖完整一周期，各章从模型实际milestone切片。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "bird-dry",
+            "bird-cool",
+            "bird-rise",
+            "bird-tip",
+            "bird-reset",
+            "bird-cycle"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "diffusion-microstates-lab",
+      "decision": "retain",
+      "phenomenon": "染料自然散开，为什么不会自行全回到一边。",
+      "evidence": [
+        "DiffusionMicrostatesLab保持dyeFrames粒子身份和反射边界；gasPartition在撤板前后连续；四粒子16个microstates显式枚举。",
+        "单粒子随机不是朝低浓度有意走；扩散宏观浓度变化与可实现状态数桥接；大N全一侧概率2^-N提供可预测边界。"
+      ],
+      "necessaryChanges": "保留；无碰撞理想粒子示意的限制明确。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DiffusionMicrostatesLab.tsx",
+        "model": "src/models/diffusion-microstates-lab.ts",
+        "article": "src/content/diffusion-microstates-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-dye-in-water",
+          "decision": "retain",
+          "reason": "染料两章、气体四章各自完整；气体扩展统计解释在独立入口里。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["dye-drop", "dye-spread"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-gas-microstates",
+          "decision": "retain",
+          "reason": "染料两章、气体四章各自完整；气体扩展统计解释在独立入口里。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["gas-partition", "gas-release", "gas-enumerate", "gas-probability"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "blackbody-lab",
+      "decision": "revise",
+      "phenomenon": "炉温升高，为什么既更亮又峰值向短波移动。",
+      "evidence": [
+        "ModernLab:127–182同一固定纵轴绘3个Planck光谱、峰线与扫谱探头；states.blackbody保留温度对照。",
+        "热腔→分光→曲线变化→Wien可预测；quantum章仅再次绘Planck曲线并口述量子化，缺古典预测失败或离散交换的可见比较。"
+      ],
+      "necessaryChanges": "在共同刻度上增加古典预测与短波观测趋势冲突，标明真实记录/理论生成身份；由冲突引出量子假设而非由已知Planck公式画图再称证据。",
+      "sourceFiles": {
+        "component": "src/components/experiments/BlackbodyLab.tsx",
+        "model": null,
+        "article": "src/content/blackbody-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-blackbody-spectrum-measurement",
+          "decision": "revise",
+          "reason": "四章完整，无裁切错误；应保留升温/读峰，局部加强最后的理论证据。",
+          "needed": "在共同刻度上增加古典预测与短波观测趋势冲突，标明真实记录/理论生成身份；由冲突引出量子假设而非由已知Planck公式画图再称证据。",
+          "chapterIds": ["cavity", "heat", "peak", "quantum"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "photoelectric-lab",
+      "decision": "retain",
+      "phenomenon": "更亮的低频光为何不能放出电子。",
+      "evidence": [
+        "ModernLab:184–310锌箔开合、电子阈值/收集及反向电压回转用同photoelectric；738–786依次独立扫f/intensity/voltage；Planck点与斜率有同尺度坐标。",
+        "f控制每个光子能量，强度控制粒子数；反压能量门槛、斜率h/e和非零逸出功截距；低频无电子反例。"
+      ],
+      "necessaryChanges": "保留；模型生成点不能独立实测h、理想纵向能量分布已声明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/PhotoelectricLab.tsx",
+        "model": null,
+        "article": "src/content/photoelectric-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-photoelectric-zinc",
+          "decision": "retain",
+          "reason": "锌两章/光电管三章/测h两章各自完整且不混两种逸出功。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["zinc-visible", "zinc-ultraviolet"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-photoelectric-cell",
+          "decision": "retain",
+          "reason": "锌两章/光电管三章/测h两章各自完整且不混两种逸出功。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["threshold", "intensity", "stopping"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-photoelectric-planck-measurement",
+          "decision": "retain",
+          "reason": "锌两章/光电管三章/测h两章各自完整且不混两种逸出功。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["planck-points", "planck-slope"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "atomic-scattering-lab",
+      "decision": "revise",
+      "phenomenon": "偏转与波长变化如何推断看不见的结构。",
+      "evidence": [
+        "ModernLab:470–533四条库仑Verlet轨迹按b变偏转，Compton峰/电子反冲同四动量模型；谱参考线保持原位。",
+        "Compton三章完整且前/后散射边界可见。Rutherford理论轨迹连贯，但四个特选粒子同等画出，绝大多数直行与少量大角事件的实验分布仅口述；弥散正电模型失败也未可视。"
+      ],
+      "necessaryChanges": "保留库仑轨迹，先给身份明确的计数/角分布证据，再局部放大特选事件，并与弥散正电预测比较；不要把4条示意等权当真实比例。",
+      "sourceFiles": {
+        "component": "src/components/experiments/AtomicScatteringLab.tsx",
+        "model": null,
+        "article": "src/content/atomic-scattering-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-compton-scattering",
+          "decision": "retain",
+          "reason": "两个三章入口选择正确；仅金箔证据→结构推断需补。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["compton-forward", "compton-angle", "compton-back"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-rutherford-scattering",
+          "decision": "revise",
+          "reason": "两个三章入口选择正确；仅金箔证据→结构推断需补。",
+          "needed": "保留库仑轨迹，先给身份明确的计数/角分布证据，再局部放大特选事件，并与弥散正电预测比较；不要把4条示意等权当真实比例。",
+          "chapterIds": ["foil", "close", "backscatter"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "cathode-ray-lab",
+      "decision": "retain",
+      "phenomenon": "阴极射线的负电与比荷怎样由受控偏转得到。",
+      "evidence": [
+        "ModernLab:368–434电/磁场和同一thomsonTrajectory有限场区/切线漂移，平衡不是另画直线；435–469薄窗厚度/T与外屏信号同状态。",
+        "E与B分别对照→相消得v→r求e/m；不同材料只支持普遍性，需另测e才知m；透膜不能单独证明核式结构。"
+      ],
+      "necessaryChanges": "保留；若下一版强化测量可显示场强和r的可读作图，但当前已有方法与因果，模型预设常量已披露。",
+      "sourceFiles": {
+        "component": "src/components/experiments/CathodeRayLab.tsx",
+        "model": null,
+        "article": "src/content/cathode-ray-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-thomson-electron",
+          "decision": "retain",
+          "reason": "Thomson四章/Lenard两章完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["electric", "magnetic", "balance", "universal"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-lenard-electron-foil",
+          "decision": "retain",
+          "reason": "Thomson四章/Lenard两章完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["window", "thickness"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "atomic-spectrum-lab",
+      "decision": "revise",
+      "phenomenon": "光展开后怎样识别元素，并发现旧理论的微小误差。",
+      "evidence": [
+        "ModernLab:534–620波长轴局部放大钠双线/太阳暗线与实验室亮线对齐；622–700微波腔后亚稳态信号与lambQuenching同源。",
+        "钠/太阳匹配和Lamb扫描可保留；hydrogen-series只把所选谱线加粗，n/readout变，图中没有起终能级/能差到光子的桥，无法由观察理解谱系收敛原因。"
+      ],
+      "necessaryChanges": "局部给氢n→2能级跃迁/ΔE与所选λ同时对应，保留波长聚集；精密扫描可将腔后变暗明确为亚稳态转态/快速衰变，不让观众误以为原子消失。",
+      "sourceFiles": {
+        "component": "src/components/experiments/AtomicSpectrumLab.tsx",
+        "model": null,
+        "article": "src/content/atomic-spectrum-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-salt-flame",
+          "decision": "retain",
+          "reason": "焰色2/氢2/太阳2/精密3章各完整，1933与1947装置区分。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["flame", "doublet"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-hydrogen-spectrum",
+          "decision": "revise",
+          "reason": "焰色2/氢2/太阳2/精密3章各完整，1933与1947装置区分。",
+          "needed": "局部给氢n→2能级跃迁/ΔE与所选λ同时对应，保留波长聚集；精密扫描可将腔后变暗明确为亚稳态转态/快速衰变，不让观众误以为原子消失。",
+          "chapterIds": ["hydrogen-lines", "hydrogen-series"],
+          "metadataCorrection": {
+            "id": "e3-hydrogen-spectrum",
+            "book": "elective-3",
+            "oldPage": 84,
+            "newPage": 85,
+            "reason": "84页介绍一般光谱，图4.4-2包含“分子状态的氢光谱”；“氢原子光谱的实验规律”、四条巴耳末谱线图4.4-3和分析在85页。",
+            "pdfPage": 90,
+            "evidencePath": "artifacts/teaching-principles/physics-audit/textbooks/elective-3-p84-p85.txt"
+          },
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-fraunhofer-spectral-analysis",
+          "decision": "retain",
+          "reason": "焰色2/氢2/太阳2/精密3章各完整，1933与1947装置区分。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["solar-dark", "solar-match"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-precision-hydrogen-spectrum",
+          "decision": "retain",
+          "reason": "焰色2/氢2/太阳2/精密3章各完整，1933与1947装置区分。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["precision", "lamb-scan", "lamb-gap"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "prism-dispersion",
+      "decision": "retain",
+      "phenomenon": "同一束白光为何从同一棱镜分向不同方向。",
+      "evidence": [
+        "PrismDispersion/prismRay用真实多边形交点与两次矢量折射，bk7按材料Sellmeier；phone独立尺寸；prismShot逐先单色后多色。",
+        "两表面法线/折射→波长相关n→不同出射角；固定n各色合并、旋转改几何、单色不生新频率三反例。"
+      ],
+      "necessaryChanges": "保留，角度条放大而非真实接收屏，线性介质范围明确。",
+      "sourceFiles": {
+        "component": "src/components/experiments/PrismDispersion.tsx",
+        "model": "src/models/prism-dispersion.ts",
+        "article": "src/content/prism-dispersion.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-newton-prism-sunlight",
+          "decision": "retain",
+          "reason": "空chapterIds表示完整六章，完整。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "radiation-evidence-lab",
+      "decision": "revise",
+      "phenomenon": "感光、电离、凝结如何把看不见的辐射变成证据。",
+      "evidence": [
+        "RadiationArtwork日照/无日照仍曝光；同momentum磁轨反B；膨胀S驱动液滴显现；Xray衰减同模型。Curie mode1:94–150分离容器/离子为静态，表针和活度由value线性改变。",
+        "其余四对窗口有控制/可观测信号桥；居里段口述同条件单位质量比较，但画面没有被测质量/活度对照，不能看出小组分富集怎样排除普通矿物解释。"
+      ],
+      "necessaryChanges": "给分离前后同测量条件、样品质量与电离电流并列以及单位质量比较；离子向极板运动需与所画电路一致。保留日照反例与云室条件。",
+      "sourceFiles": {
+        "component": "src/components/experiments/RadiationEvidenceLab.tsx",
+        "model": null,
+        "article": "src/content/radiation-evidence-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-becquerel-radioactivity",
+          "decision": "retain",
+          "reason": "五入口各两章完整；仅Curie证据链局部不足。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["plate-light", "plate-dark"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-curie-radium-polonium",
+          "decision": "revise",
+          "reason": "五入口各两章完整；仅Curie证据链局部不足。",
+          "needed": "给分离前后同测量条件、样品质量与电离电流并列以及单位质量比较；离子向极板运动需与所画电路一致。保留日照反例与云室条件。",
+          "chapterIds": ["curie-current", "curie-separate"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-radioactive-ray-deflection",
+          "decision": "retain",
+          "reason": "五入口各两章完整；仅Curie证据链局部不足。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["rays-field", "rays-reverse"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-wilson-cloud-chamber",
+          "decision": "retain",
+          "reason": "五入口各两章完整；仅Curie证据链局部不足。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["cloud-expand", "cloud-track"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-rontgen-xrays",
+          "decision": "retain",
+          "reason": "五入口各两章完整；仅Curie证据链局部不足。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["xray-source", "xray-contrast"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "decay-measurement-lab",
+      "decision": "revise",
+      "phenomenon": "随机核寿命如何成为统计时钟和示踪信号。",
+      "evidence": [
+        "DecayArtwork:氡固定seed样本与期望曲线；carbon污染固定真实年龄、测得比例增大；P32三区条宽用tracerCompartments，植物亮点却y=246−value*165+j*10，与迁移身份/量无关。",
+        "氡/碳14自含完整反例。P32声稿说同一时刻归一化分清迁移与衰变，但图只有相对初始活度和单个uptakeFraction，未并列衰变总量/归一化各区；上移点也非模型分区迁移。"
+      ],
+      "necessaryChanges": "将土壤→根→茎叶身份与分区模型对应，显式对照总放射性损失和当时各区占比。保留氡随机身份和污染造成测年偏差。",
+      "sourceFiles": {
+        "component": "src/components/experiments/DecayMeasurementLab.tsx",
+        "model": null,
+        "article": "src/content/decay-measurement-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-radon-half-life",
+          "decision": "retain",
+          "reason": "三个两章入口正确，无裁切问题，P32局部需改。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["random-nuclei", "ensemble-law"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-phosphorus-tracer",
+          "decision": "revise",
+          "reason": "三个两章入口正确，无裁切问题，P32局部需改。",
+          "needed": "将土壤→根→茎叶身份与分区模型对应，显式对照总放射性损失和当时各区占比。保留氡随机身份和污染造成测年偏差。",
+          "chapterIds": ["tracer-path", "tracer-decay"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-radiocarbon-dating",
+          "decision": "retain",
+          "reason": "三个两章入口正确，无裁切问题，P32局部需改。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["carbon-clock", "carbon-bias"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    },
+    {
+      "sceneSlug": "gas-efficiency-lab",
+      "decision": "retain",
+      "phenomenon": "大火耗气更多是否就是效率更低。",
+      "evidence": [
+        "GasEfficiencyLab/GasEfficiency真实教材coolingCelsius/lowTemperatureTrials/boilingTrials与燃气表终初差；热水器用真实连通管路/积水，耗气缺值保留问号。",
+        "固定m/ΔT比较燃料、冷却等时降温比揭示散热；38/50温升不同需先cmΔT，再除燃料热；无数据不代生成结论。"
+      ],
+      "necessaryChanges": "保留，101.9°C原记录未擅改、动画温度不是原始连续实测、混水不证明效率已说明。",
+      "sourceFiles": {
+        "component": "src/components/experiments/GasEfficiencyLab.tsx",
+        "model": "src/models/gas-efficiency-lab.ts",
+        "article": "src/content/gas-efficiency-lab.mdx"
+      },
+      "windows": [
+        {
+          "id": "e3-gas-stove-efficiency",
+          "decision": "retain",
+          "reason": "灶具四章/热水器三章均完整；研究设计是必要可测预测而非空泛操作。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": [
+            "stove-paths",
+            "stove-cooling",
+            "stove-low-temperature",
+            "stove-strategies"
+          ],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        },
+        {
+          "id": "e3-gas-water-heater-efficiency",
+          "decision": "retain",
+          "reason": "灶具四章/热水器三章均完整；研究设计是必要可测预测而非空泛操作。",
+          "needed": "保留此教材窗口；其他子装置问题不自动扩散到本入口。",
+          "chapterIds": ["heater-38", "heater-50", "heater-compare"],
+          "metadataCorrection": null,
+          "interfaceFindings": []
+        }
+      ]
+    }
+  ]
+}
