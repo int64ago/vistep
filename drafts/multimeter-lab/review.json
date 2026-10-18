@@ -1,0 +1,155 @@
+{
+  "slug": "multimeter-lab",
+  "phase": "Batch 13 isolated candidate; not integrated",
+  "status": "Candidate prepared; product acceptance pending",
+  "baseCommit": "1cf7cc492201b579eff9a2adf1bd04712aa57e5a",
+  "ownership": "Only this ignored staging mirror was edited. No real source/drafts/shared, recording, global build, dist, staging or commit operations.",
+  "sourceReview": {
+    "textbook": "Complete relevant Required 3 P68–77 text, plus actual original page images P73/P74; P70 conversion, P72–73 applications, P74 three specified faults, P76 wire extension.",
+    "primary": "Official HIOKI FAQ, 3007 manual resistance/semiconductor sections, OpenStax circuit principles. Specific meter polarity and separate sensitivity references retained.",
+    "primaryImagesPersonallyViewed": [
+      "checks/sources/textbook-078.png",
+      "checks/sources/textbook-079.png",
+      "checks/sources/hioki-11.png"
+    ]
+  },
+  "retained": {
+    "chapterIds": [
+      "voltage-parallel",
+      "current-series",
+      "ohm-zero",
+      "fixed-resistor",
+      "cold-filament",
+      "hand-contact",
+      "diode-direction",
+      "fault-battery",
+      "fault-switch-wire",
+      "fault-socket"
+    ],
+    "windows": {
+      "r3-multimeter-practice": [
+        "voltage-parallel",
+        "current-series",
+        "ohm-zero",
+        "fixed-resistor",
+        "cold-filament",
+        "hand-contact",
+        "diode-direction"
+      ],
+      "r3-multimeter-faults": ["fault-battery", "fault-switch-wire", "fault-socket"]
+    },
+    "spokenPairsByteIdentical": [
+      "cold-filament",
+      "hand-contact",
+      "diode-direction",
+      "fault-battery",
+      "fault-switch-wire",
+      "fault-socket"
+    ],
+    "captionChangesSeparate": true
+  },
+  "tests": {
+    "modelAndComponent": {
+      "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-13-staging/physics/vitest.config.ts",
+      "files": 2,
+      "tests": 19,
+      "status": "passed"
+    },
+    "strictTypes": {
+      "command": "node artifacts/teaching-principles/batch-13-staging/physics/checks/check-types.mjs",
+      "scope": "Owned candidate TS and dependency graph under repository Astro strict compiler options",
+      "status": "passed"
+    },
+    "mdx": {
+      "command": "node artifacts/teaching-principles/batch-13-staging/physics/checks/check-mdx.mjs",
+      "status": "Both candidate articles compiled with installed Astro MDX renderer"
+    },
+    "independentScience": {
+      "report": "artifacts/teaching-principles/batch-13-cross-review/chemistry-review-multimeter.json",
+      "assertions": 859,
+      "status": "passed",
+      "reviewedModelSha256": "0a90792c8594a5bc677dda5a3dcc54a4aac470b13eecf87a9382fefadfebaa24",
+      "scope": "Same head, DC ranges, actual ohm network KCL/KVL, loading and 48 fault networks. No peer UI, audio or diode claim.",
+      "finalFormattedModelSha256": "9cd275c59328b49c180fbd37921d43a84934cb4a56648911e719586c29c5e7fb",
+      "sincePeer": "Only formatting changed the model after the independently reviewed hash; no equations or parameter domains changed."
+    }
+  },
+  "baseline": {
+    "report": "checks/baseline/report.json",
+    "scope": "Four actual OLD development-page states. Does not show the new candidate.",
+    "phonePlayerHeightPx": [631.640625, 678.4375, 640.4375],
+    "finding": "Existing player did not fit 320×568; actual new complete-player dimensions remain unmeasured."
+  },
+  "candidateGeometry": {
+    "scope": "Isolated SSR artwork rendered in browser; no native product player or captions/controls.",
+    "fullReports": [
+      "checks/candidate-geometry/report.json",
+      "checks/candidate-geometry-02/report.json",
+      "checks/candidate-geometry-03/report.json"
+    ],
+    "statesPerFullPass": 68,
+    "lastFullStatus": "No text bounds failures, nonfinite SVG attributes or page errors.",
+    "localFollowups": [
+      "checks/candidate-geometry-04/report.json",
+      "checks/candidate-geometry-05/report.json"
+    ],
+    "personallyViewedLatest": [
+      "checks/candidate-geometry-03/en-640-c1-t12.png",
+      "checks/candidate-geometry-03/en-640-c0-t3.png",
+      "checks/candidate-geometry-03/en-640-c2-t20.png",
+      "checks/candidate-geometry-03/en-268-c6-t20.png",
+      "checks/candidate-geometry-03/zh-268-c0-t12.png",
+      "checks/candidate-geometry-03/en-640-c3-t10.png",
+      "checks/candidate-geometry-03/zh-268-c9-t20.png",
+      "checks/candidate-geometry-03/en-640-c5-t18.png",
+      "checks/candidate-geometry-04/zh-268-c5-t18.png",
+      "checks/candidate-geometry-04/cover-e7ebdf.png",
+      "checks/candidate-geometry-05/en-268-c6-t20.png",
+      "checks/candidate-geometry-05/zh-640-c6-t20.png"
+    ],
+    "coverScope": "Isolated code-generated cover with shared text-removal behavior, on light backgrounds. Actual catalog and social consumers not yet reviewed."
+  },
+  "authorCorrections": [
+    "Added a physical shunt to every ohm range so the same 2 kilohm head can realize low input resistance.",
+    "Derived ammeter burden from the same shunt network.",
+    "Added real probe reversal and prevented hidden short/open settings from changing a new specimen.",
+    "Separated external meter and apparatus horizontally on desktop, retained compact vertical phone composition.",
+    "Shortened crowded internal-cell label; distinguished meter current from filament current.",
+    "Represented reverse diode near analog infinity instead of a spurious precise huge resistance.",
+    "Connected stylized body path through one torso, preserving the same person.",
+    "External source wire now explicitly carries lamp plus voltage-meter current.",
+    "Diode footer reports the actual A/K lead placement instead of duplicating the shared general polarity caption."
+  ],
+  "pending": [
+    "Root copy exact manifest and integrate shared packet.",
+    "Actual 320×568 and desktop whole player, longest actual captions, two fresh teaching entrances, first anchor, 44px/16px controls, all manual modes.",
+    "Actual catalog/social cover consumers.",
+    "Independent root decisive-frame review before voice freeze.",
+    "Root audio generation, independent transcription, actual word-time calibration and repeated final-frame/control checks.",
+    "Native uninterrupted playback, subjective listening if available, physical-device performance separately.",
+    "Root complete verify/build and frozen static acceptance."
+  ],
+  "notClaimed": [
+    "Complete product visual acceptance",
+    "Actual native controls",
+    "Voice/listening/word synchronization",
+    "Full continuous playback",
+    "Physical-device performance",
+    "Global verify/build"
+  ],
+  "evidenceRoot": "artifacts/teaching-principles/batch-13-staging/physics",
+  "rootIntegration": {
+    "status": "validated-awaiting-authorized-publication",
+    "batch": "drafts/teaching-principles/batch-13-review.json",
+    "actualAudio": "src/data/audio-manifest.json",
+    "transcriptReview": "artifacts/teaching-principles/batch-13-transcript-text-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "checks": "drafts/teaching-principles/batch-13-review.json",
+    "frozenSource": "artifacts/teaching-principles/batch-13-frozen-source.json",
+    "actualViews": "artifacts/teaching-principles/batch-13-root-actual-views.json"
+  }
+}

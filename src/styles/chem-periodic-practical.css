@@ -1,97 +1,195 @@
-.chem-periodic-practical {
+.cpp13 {
+  color: #53655c;
   font-size: 16px;
-  color: #53634e;
-  padding: 18px 8px 24px;
-}
-.chem-periodic-pair {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-}
-.chem-periodic-sample {
-  width: 210px;
-  text-align: center;
-}
-.chem-periodic-object-label {
-  text-align: center;
-  font-size: 20px;
-  line-height: 1.5;
-  min-height: 32px;
-}
-.chem-periodic-sample svg {
-  display: block;
   width: 100%;
-  height: 270px;
+  padding: 8px 0 0;
 }
-.chem-periodic-pair.plate .chem-periodic-sample svg {
-  height: 220px;
-}
-.chem-periodic-observed {
-  font-size: 18px;
-  line-height: 1.5;
-}
-.chem-periodic-equation {
-  text-align: center;
-  font-size: 20px;
-  line-height: 1.6;
-  margin-top: 25px;
-}
-.chem-periodic-magnesium {
-  display: block;
-  width: 330px;
-  max-width: 100%;
+.cpp13-stage {
+  width: 100%;
+  max-width: 760px;
   margin: auto;
+  min-height: 270px;
 }
-.chem-periodic-controls {
-  display: grid;
-  gap: 20px;
-  padding-top: 24px;
-  margin-top: 25px;
-  border-top: 1px solid #a6b29a55;
+.cpp13-stage > div {
+  width: 100%;
 }
-.chem-periodic-controls p {
+.cpp13 svg {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+.cpp13 svg text {
+  font-family: inherit;
   font-size: 16px;
-  line-height: 1.7;
-  margin: 0;
+  fill: #53655c;
 }
-.chem-periodic-controls button,
-.chem-periodic-controls input {
+.cpp13-label {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  min-height: 24px;
+  margin-bottom: 6px;
+}
+.cpp13-readout,
+.cpp13-net-equation,
+.cpp13-small {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+}
+.cpp13-readout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px 16px;
+}
+.cpp13-readout span {
+  color: #697b6e;
+}
+.cpp13-net-equation {
+  margin: 7px auto 0;
+}
+.cpp13-two-values {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.cpp13-small {
+  margin-top: 5px;
+}
+.cpp13-relations {
+  display: grid;
+  gap: 8px;
+  max-width: 390px;
+  margin: 12px auto;
+}
+.cpp13-relations > div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #b5c3ab55;
+  padding: 6px 18px;
+  font-size: 18px;
+}
+.cpp13-prediction {
+  display: grid;
+  gap: 12px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  padding: 12px 6px;
+}
+.cpp13-prediction strong {
+  font-size: 20px;
+  font-weight: 500;
+}
+.cpp13-large-question {
+  min-height: 210px;
+  place-content: center;
+}
+.cpp13-controls {
+  display: grid;
+  gap: 18px;
+  max-width: 620px;
+  margin: 20px auto;
+}
+.cpp13-controls button,
+.cpp13-controls input {
   min-height: 44px;
 }
+.cpp13 .segmented button {
+  font-size: 16px;
+  min-width: 44px;
+}
+.cpp13-details {
+  margin: 14px auto 4px;
+  max-width: 680px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.cpp13-details summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+.cpp13-details summary::before {
+  content: '+';
+  margin-right: 8px;
+  color: #839c86;
+}
+.cpp13-details[open] summary::before {
+  content: '−';
+}
+.cpp13-details p {
+  margin: 8px 0;
+  font-size: 16px;
+}
 @media (max-width: 600px) {
-  .chem-periodic-pair {
-    gap: 12px;
+  .cpp13 {
+    padding-top: 2px;
   }
-  .chem-periodic-sample {
-    width: 50%;
-    min-width: 0;
+  .cpp13-stage {
+    min-height: 263px;
   }
-  .chem-periodic-object-label,
-  .chem-periodic-observed {
+  .cpp13-label {
+    margin-bottom: 3px;
+  }
+  .cpp13-details {
+    margin-top: 5px;
+  }
+  .cpp13-relations {
+    gap: 3px;
+    margin: 5px auto;
+  }
+  .cpp13-relations > div {
     font-size: 16px;
+    padding: 5px 12px;
   }
-  .chem-periodic-sample svg {
-    height: 195px;
+  .cpp13-prediction {
+    gap: 8px;
+    padding: 8px 4px;
   }
-  .chem-periodic-pair.plate {
-    display: grid;
-    gap: 12px;
-  }
-  .chem-periodic-pair.plate .chem-periodic-sample {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    width: 100%;
-    align-items: center;
-  }
-  .chem-periodic-pair.plate .chem-periodic-sample svg {
-    grid-column: 2;
-    grid-row: 1/3;
-    height: 100px;
-  }
-  .chem-periodic-equation {
+  .cpp13-prediction strong {
     font-size: 18px;
   }
-  .chem-periodic-magnesium {
-    max-width: 285px;
+  .cpp13-controls .segmented {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 380px) and (max-height: 620px) {
+  .cpp13-stage {
+    min-height: 245px;
+  }
+  .cpp13-details {
+    margin-top: 0;
+  }
+  .cpp13-net-equation {
+    margin-top: 3px;
+  }
+}
+
+/* Short-screen watch keeps the causal image and transport together. Extended
+ * model qualifications remain available in Explore and the adjacent article. */
+.cpp13[data-watch='true'] .cpp13-details {
+  display: none;
+}
+@media (max-width: 600px) and (max-height: 700px) {
+  .showcase:has(.cpp13) .film-caption {
+    min-height: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 8px;
+  }
+  .showcase:has(.cpp13) .film-caption p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .showcase:has(.cpp13) .film-chapter {
+    flex-basis: 28px;
   }
 }

@@ -1,15 +1,16 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
-  mutualShot,
+  mutualFilmShot,
   ringResponse,
   audioResponse,
   type MutualMode,
 } from '../../models/mutual-induction-lab';
 import '../../styles/textbook-electromagnetism.css';
 import '../../styles/teaching-lab-legibility.css';
+import '../../styles/mutual-induction-lab.css';
 const wire = (x: number, y: number, width: number, height: number, turns = 10) =>
   Array.from({ length: turns * 36 + 1 }, (_, i) => {
     const q = i / (turns * 36);
@@ -18,48 +19,65 @@ const wire = (x: number, y: number, width: number, height: number, turns = 10) =
 export default function MutualInductionLab() {
   const film = useShowcase(),
     id = useId().replace(/:/g, '');
-  const [mode, setMode] = useState<MutualMode>(film.variant?.includes('audio') ? 'audio' : 'ring'),
-    [action, setAction] = useState('close'),
+  const [manualMode, setMode] = useState<MutualMode | null>(null),
+    [manualAction, setAction] = useState<string | null>(null),
     [time, setTime] = useState(0.12),
     [insertion, setInsertion] = useState(0.9),
     [phase, setPhase] = useState(0.2),
     [frequency, setFrequency] = useState(440);
+  const mode: MutualMode = manualMode ?? (film.chapter < 3 ? 'ring' : 'audio');
+  const action =
+    manualAction ?? (film.chapter === 1 ? 'steady' : film.chapter === 2 ? 'open' : 'close');
   const signalFrequency = film.watch ? 440 : frequency;
   const shot = film.watch
-    ? mutualShot(film.chapter, film.chapterProgress)
+    ? mutualFilmShot(film.chapter, film.chapterTime, browserLocale())
     : {
         mode,
         action: action as 'close' | 'steady' | 'open',
         time: mode === 'ring' ? time : phase / signalFrequency,
         insertion,
+        beforeSwitch: false,
+        moving: false,
       };
-  const state =
+  const physicalState =
     shot.mode === 'ring'
       ? ringResponse(shot.time, shot.action)
       : audioResponse(shot.time, shot.insertion, signalFrequency);
+  const state = shot.beforeSwitch
+    ? { ...physicalState, current: 0, derivative: 0, fluxLinkage: 0, emf: 0 }
+    : physicalState;
   const emf = state.emf,
     needle = Math.max(-0.85, Math.min(0.85, emf * 0.42));
   const chart = (kind: 'current' | 'emf') =>
     Array.from({ length: 181 }, (_, i) => {
       const q = i / 180;
-      const s =
-        shot.mode === 'ring'
+      const s = shot.beforeSwitch
+        ? { current: 0, emf: 0 }
+        : shot.mode === 'ring'
           ? ringResponse(q * 0.85, shot.action)
           : audioResponse((q * 3) / signalFrequency, shot.insertion, signalFrequency);
       return `${i ? 'L' : 'M'}${30 + q * 300} ${kind === 'current' ? 44 - s.current * (shot.mode === 'ring' ? 19 : 650) : 107 - s.emf * (shot.mode === 'ring' ? 13 : 22)}`;
     }).join(' ');
   return (
-    <div className="textbook-em mutual-induction-lab">
+    <div
+      className="textbook-em mutual-induction-lab"
+      data-mode={shot.mode}
+      data-action={shot.action}
+      data-current={state.current}
+      data-emf={emf}
+    >
       <div className="textbook-em-state">
         <span>{t(shot.mode === 'ring' ? '法拉第铁环' : '套入线圈的音频信号')}</span>
         <span>
           {shot.mode === 'ring'
             ? t(
-                shot.action === 'close'
-                  ? '接通电源'
-                  : shot.action === 'steady'
-                    ? '保持直流'
-                    : '断开电源',
+                shot.beforeSwitch
+                  ? '等待接通'
+                  : shot.action === 'close'
+                    ? '接通电源'
+                    : shot.action === 'steady'
+                      ? '保持直流'
+                      : '断开电源',
               )
             : `f = ${signalFrequency} Hz`}
         </span>
@@ -100,13 +118,13 @@ export default function MutualInductionLab() {
             <path d={wire(101, 108, 28, 45, 9)} fill="none" stroke="#b78f53" strokeWidth="3" />
             <path d={wire(230, 108, 28, 45, 9)} fill="none" stroke="#6f917c" strokeWidth="3" />
             <path
-              d="M106 108H45V194M134 108V220H96M45 210V220H64"
+              d="M106 108H45V194M134 108V220H96M45 204V220H64"
               fill="none"
               stroke="#b49662"
               strokeWidth="2"
             />
             <path
-              d="M225 108H205V220H263M263 108H316V220H297"
+              d="M235 108H205V220H263M263 108H316V220H297"
               fill="none"
               stroke="#75947d"
               strokeWidth="2"
@@ -115,7 +133,7 @@ export default function MutualInductionLab() {
             <circle cx="64" cy="220" r="3" fill="#a88b55" />
             <circle cx="96" cy="220" r="3" fill="#a88b55" />
             <path
-              d={shot.action === 'open' ? 'M64 220L92 203' : 'M64 220H96'}
+              d={shot.action === 'open' || shot.beforeSwitch ? 'M64 220L92 203' : 'M64 220H96'}
               stroke="#9a8c62"
               strokeWidth="2.5"
             />
@@ -163,7 +181,7 @@ export default function MutualInductionLab() {
             <rect x="17" y="212" width="46" height="34" rx="8" fill="#e5e9da" stroke="#b5c3a8" />
             <path d="M24 229q8-17 16 0t16 0" fill="none" stroke="#a58b5b" strokeWidth="2" />
             <path
-              d="M149 133H122V264H302V242M279 133H326V220H317"
+              d="M149 133H122V264H302V235M279 133H326V220H317"
               stroke="#77947a"
               fill="none"
               strokeWidth="2"
@@ -174,7 +192,7 @@ export default function MutualInductionLab() {
               stroke="#8fa57e"
               strokeWidth="2"
               fill="none"
-              opacity={Math.min(1, 0.2 + Math.abs(emf))}
+              opacity={shot.moving ? 0 : Math.min(1, 0.2 + Math.abs(emf))}
             />
             <text x="180" y="53" textAnchor="middle">
               M = {(state.mutual * 1000).toFixed(1)} mH
@@ -182,16 +200,18 @@ export default function MutualInductionLab() {
           </>
         )}
       </svg>
+      {shot.moving && <p className="mutual-moving">{t('移动中，信号比较暂停')}</p>}
       <div className="textbook-em-meters">
         <span>
           I₁ <b>{state.current.toFixed(3)} A</b>
         </span>
         <span>
-          ε₂ <b>{emf.toFixed(3)} V</b>
+          ε₂ <b>{shot.moving ? '—' : emf.toFixed(3)} V</b>
         </span>
       </div>
       <svg
         className="textbook-em-chart"
+        style={{ opacity: shot.moving ? 0 : 1 }}
         viewBox="0 0 360 140"
         role="img"
         aria-label={t('原线圈电流与副线圈电动势的波形')}

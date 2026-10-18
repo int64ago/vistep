@@ -1,110 +1,233 @@
-.bio-division {
+.bcd13 {
   background: #efebe0;
   border-radius: 24px;
   padding: clamp(14px, 3vw, 28px);
   color: #665b60;
 }
-.bio-division-kind {
+.bcd13-kind {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.4;
   color: #8b7e83;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
-.bio-division-cell,
-.bio-division-prepare {
-  width: 100%;
-  height: 300px;
+.bcd13-cell,
+.bcd13-preparation,
+.bcd13-field,
+.bcd13-record {
   display: block;
+  width: 100%;
+  max-width: 660px;
+  height: 285px;
+  margin: auto;
 }
-.bio-division-ledger {
+.bcd13-ledger {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 22px;
+  gap: 6px 20px;
   font-size: 16px;
   line-height: 1.4;
 }
-.bio-division-cubes {
+.bcd13-cubes {
   display: flex;
   gap: 15px;
   max-width: 720px;
   margin: auto;
 }
-.bio-division-cubes > div {
+.bcd13-cubes > div {
   flex: 1;
   min-width: 0;
   text-align: center;
-  font-size: 16px;
 }
-.bio-division-cubes svg {
+.bcd13-cubes svg {
   width: 100%;
-  height: 200px;
+  height: 170px;
   display: block;
 }
-.bio-division-cubes p {
+.bcd13-cubes p,
+.bcd13-features p,
+.bcd13-populations p {
   font-size: 16px;
   line-height: 1.4;
-  margin: 7px 0;
+  margin: 6px 0;
 }
-.bio-division-field {
+.bcd13-note {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  max-width: 650px;
+  margin: 10px auto 0;
+}
+.bcd13-features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 760px;
+  margin: auto;
+}
+.bcd13-features > div {
+  border-radius: 16px;
+  background: #f2ede3;
+  text-align: center;
+  padding: 8px 4px;
+  transition: background 0.3s;
+}
+.bcd13-features > div.bcd13-active {
+  background: #e1d4bd;
+}
+.bcd13-feature-id,
+.bcd13-phone-feature {
+  display: none;
+}
+.bcd13-features svg {
   display: block;
   width: 100%;
-  height: 300px;
+  height: 116px;
 }
-.bio-division-fixedinfo {
+.bcd13-record-head {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
   justify-content: center;
+  gap: 24px;
   font-size: 16px;
+  line-height: 1.4;
 }
-.bio-division-note {
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: center;
-  max-width: 640px;
-  margin: 14px auto 0;
-}
-.bio-division-controls {
+.bcd13-populations {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
+  max-width: 560px;
+  margin: auto;
+  text-align: center;
+}
+.bcd13-populations svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+.bcd13-controls {
+  display: grid;
+  gap: 18px;
   max-width: 680px;
   margin: 24px auto 0;
 }
-.bio-division-controls .segmented {
+.bcd13-controls .segmented {
   flex-wrap: wrap;
 }
-.bio-division-controls button {
+.bcd13-controls button {
   min-height: 44px;
   font: inherit;
+  font-size: 16px;
   color: inherit;
   padding: 8px 12px;
   background: #f8f5eb;
   border: 1px solid #cbbfc3;
   border-radius: 12px;
 }
+.bcd13-controls button:focus-visible {
+  outline: 2px solid #9b7793;
+  outline-offset: 4px;
+}
+.bcd13-controls .control {
+  margin-bottom: 12px;
+}
+.bcd13-controls .control-top {
+  font-size: 16px;
+  line-height: 1.4;
+}
 @media (max-width: 540px) {
-  .bio-division-cell,
-  .bio-division-prepare {
-    height: 260px;
+  .bcd13 {
+    padding: 12px 10px;
   }
-  .bio-division-cubes {
-    gap: 6px;
+  .bcd13-kind {
+    margin-bottom: 6px;
   }
-  .bio-division-cubes svg {
-    height: 145px;
+  .bcd13-cell {
+    height: 190px;
   }
-  .bio-division-cubes p {
+  .bcd13-preparation {
+    height: 183px;
+  }
+  .bcd13-field {
+    height: 170px;
+  }
+  .bcd13-record {
+    height: 172px;
+  }
+  .bcd13-ledger {
+    gap: 4px 12px;
+  }
+  .bcd13-ledger > span:first-child {
+    width: 100%;
+    text-align: center;
+  }
+  .bcd13-cubes {
+    gap: 4px;
+  }
+  .bcd13-cubes svg {
+    height: 110px;
+  }
+  .bcd13-cubes p {
+    margin: 4px 0;
+  }
+  .bcd13-features {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .bcd13-features > div {
+    padding: 4px;
+  }
+  .bcd13-features svg {
+    height: 76px;
+  }
+  .bcd13-features .bcd13-feature-detail {
+    display: none;
+  }
+  .bcd13-features .bcd13-feature-id {
+    display: block;
+  }
+  .bcd13-phone-feature {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 6px 0;
+  }
+  .bcd13-features p {
+    margin: 1px 0;
+  }
+  .bcd13-features p:last-child {
     font-size: 16px;
   }
-  .bio-division-field {
-    height: 220px;
+  .bcd13-populations {
+    gap: 8px;
+  }
+  .bcd13-populations svg {
+    height: 100px;
+  }
+  .bcd13-note {
+    margin-top: 6px;
+  }
+  .bcd13-controls {
+    margin-top: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bcd13-features > div {
+    transition: none;
   }
 }
 
-@media (max-width: 540px) {
-  .bio-division {
-    padding-top: 12px;
-    padding-bottom: 12px;
+@media (max-width: 640px) {
+  .bcd13-watch {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .showcase[data-slug='bio-cell-division'] .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='bio-cell-division'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.4;
   }
 }

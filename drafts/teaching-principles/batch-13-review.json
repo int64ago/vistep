@@ -1,0 +1,159 @@
+{
+  "status": "validated-awaiting-authorized-publication",
+  "scenes": [
+    "multimeter-lab",
+    "chem-periodic-practical",
+    "bio-cell-division",
+    "motion-sensor-lab",
+    "mutual-induction-lab"
+  ],
+  "scope": "Three causal rebuilds and two retained-content timing/model/layout repairs. Preserve all14 original entry windows and34 chapter IDs in learning order.",
+  "sceneEntryCounts": {
+    "multimeter-lab": 2,
+    "chem-periodic-practical": 3,
+    "bio-cell-division": 3,
+    "motion-sensor-lab": 1,
+    "mutual-induction-lab": 5
+  },
+  "chapters": 34,
+  "checks": [
+    {
+      "kind": "source-and-entry-audit",
+      "status": "passed",
+      "entries": 14,
+      "evidence": "artifacts/teaching-principles/batch-13-source-entry-audit.json"
+    },
+    {
+      "kind": "independent-ASR",
+      "status": "68/68-passed",
+      "evidence": "artifacts/teaching-principles/batch-13-transcription.json"
+    },
+    {
+      "kind": "transcript-reading-and-critical-second-decoder",
+      "status": "reviewed-not-audition",
+      "evidence": "artifacts/teaching-principles/batch-13-transcript-text-review.json"
+    },
+    {
+      "kind": "final-static-paused-keyframes",
+      "status": "passed",
+      "count": 204,
+      "evidence": "artifacts/teaching-principles/batch-13-static-keyframes-02/report.json"
+    },
+    {
+      "kind": "native-anchor-short-screen",
+      "status": "passed",
+      "count": 20,
+      "evidence": "artifacts/teaching-principles/batch-13-anchors-02/report.json"
+    },
+    {
+      "kind": "entry-windows-and-audio-failure-retry-offscreen",
+      "status": "passed",
+      "count": 33,
+      "evidence": "artifacts/teaching-principles/batch-13-behavior/report.json"
+    },
+    {
+      "kind": "catalog-and-no-JS",
+      "status": "passed",
+      "count": 12,
+      "evidence": "artifacts/teaching-principles/batch-13-catalog/report.json"
+    },
+    {
+      "kind": "cover-and-social-assets",
+      "status": "passed",
+      "count": 10,
+      "evidence": "artifacts/teaching-principles/batch-13-covers/report.json"
+    },
+    {
+      "kind": "native-uninterrupted-playback",
+      "status": "passed",
+      "count": 10,
+      "evidence": "artifacts/teaching-principles/batch-13-continuous/report.json",
+      "chapters": 68,
+      "scope": "User activated native audio,normal rate,no seeking,10s checkpoints. Precedes final chemistry-label and biology-padding corrections; other3 scenes unchanged."
+    },
+    {
+      "kind": "affected-scenes-native-replay",
+      "status": "passed",
+      "count": 4,
+      "evidence": "artifacts/teaching-principles/batch-13-continuous-02/report.json",
+      "chapters": 30,
+      "scope": "Final static chemistry and biology replay after presentation fixes; unchanged sound/model."
+    },
+    {
+      "kind": "native-controls-multimeter",
+      "status": "passed",
+      "count": 108,
+      "evidence": "artifacts/teaching-principles/batch-13-controls-static/multimeter/report.json"
+    },
+    {
+      "kind": "native-controls-retained",
+      "status": "passed",
+      "count": 56,
+      "evidence": "artifacts/teaching-principles/batch-13-controls-static/retained/report.json"
+    },
+    {
+      "kind": "native-controls-biology",
+      "status": "passed",
+      "count": 76,
+      "evidence": "artifacts/teaching-principles/batch-13-controls-static/biology/report.json"
+    },
+    {
+      "kind": "native-chemistry-controls",
+      "status": "passed",
+      "states": 228,
+      "entries": 6,
+      "evidence": "artifacts/teaching-principles/batch-13-controls-static/chemistry/report.json"
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 4388,
+      "testFiles": 594,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-13-verify-02.log",
+      "scope": "Followed by5targetedchemistrytests and production+preview rebuild for final label/padding presentation fixes."
+    },
+    {
+      "kind": "final-production-build-and-audit",
+      "status": "passed",
+      "pages": 2134,
+      "canonicalPages": 2133,
+      "evidence": "artifacts/teaching-principles/batch-13-final-build.log"
+    },
+    {
+      "kind": "final-preview-build-noindex-audit",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-13-final-preview.log"
+    }
+  ],
+  "resolved": [
+    "One physical50µA/2kΩ head determines series, shunt and ohm networks; retain finite meter loading, question/reveal and full ohm range calibration.",
+    "Chemical observations stay fixed while a separate electron/atom net account explains oxidation and acid/base stoichiometry; doses state their net background convention.",
+    "Fixed-cell shapes suggest ordering; a separately published single-cell record supports temporal order; a synchronized-population counterexample preserves cycle settings.",
+    "Original sound-sensor readings wait for the pulse arrival; single-way and reflected paths retain the moving-cart position convention.",
+    "Mutual-induction receiver wire meets the actual component boundary; preswitch readouts and waveforms agree; moving-coupling states do not display a stationary-M formula as a complete model.",
+    "English multimeter fraction narration clarified and re-recorded; locale-specific measured word times drive visual reveals.",
+    "Animal daughter cells end with two complete membrane contours enclosing the same nuclei and chromosome identities.",
+    "Final static phone review caught a longEnglishsolid-compositionlabel and6px biologyoverflow; shortenedlabel andremoved12pxverticalpadding;204finalframes/20nativeanchorspass."
+  ],
+  "pending": ["Authorized Actions publication and live asset checks"],
+  "notClaimed": [
+    "Subjective narration audition",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ],
+  "finalSource": {
+    "commit": "b77c626ffcd0df30602337d9b03ea4e0e143b6de",
+    "treeHash": "2266aac61f1dec768fd23ad6e9a0ea72d3f4e9eac060abd0a476b3ae020ec41a",
+    "gitDiffHash": "6b63cacf4f66c11a2abf03d78de041e01e6fccc7c19ddc88cd83327fba3ed701",
+    "fileCount": 5289,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "rootActualViews": "artifacts/teaching-principles/batch-13-root-actual-views.json",
+  "evidenceLimits": [
+    "Before final presentation fixes, native control/entry/catalog/cover results remain applicable: no behavior/model/metadata/asset changed.",
+    "Native playback and ASR do not substitute for subjective audition or continuous human watching.",
+    "Browser viewport emulation does not establish physical-phone performance."
+  ]
+}

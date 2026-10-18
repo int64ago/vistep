@@ -2538,16 +2538,16 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-periodic-practical',
-    name: '同周期与同主族的实验比较',
-    title: '怎样用实验比较元素性质的递变？',
-    question: '怎样用实验比较元素性质的递变？',
-    description: '从卤素置换到镁与水，再用镁铝氢氧化物的酸碱对照连接同主族与同周期的证据。',
+    name: '元素性质与证据',
+    title: '从变色到周期性：怎样让比较成为证据？',
+    question: '怎样从反应现象推出元素的性质？',
+    description: '跟住电子、氧和氢，从卤素置换和氢氧化物比较建立可检验的元素性质规律。',
     color: '#b9bd92',
     tag: '卤素 · 镁与水 · 两性氢氧化物',
     related: ['chem-sodium-reactions', 'chem-aluminium-film', 'chem-anion-tests'],
     sources: [
       {
-        title: 'RSC Education — aqueous halogens and displacement',
+        title: 'RSC: Halogen displacement',
         url: 'https://edu.rsc.org/experiments/halogens-in-aqueous-solution-and-their-displacement-reactions/733.article',
       },
       {
@@ -2561,6 +2561,23 @@ export const topics: Topic[] = [
       {
         title: '人教版高中化学必修第一册104、109、122页',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'University of Washington: Amphoteric Nature of Aluminum Hydroxide',
+        url: 'https://chem.washington.edu/lecture-demos/amphoteric-nature-aluminum-hydroxide',
+      },
+      {
+        title: 'OpenStax Chemistry 2e §15.3 Coupled equilibria',
+        url: 'https://openstax.org/books/chemistry-2e/pages/15-3-coupled-equilibria',
+      },
+      {
+        title: 'OpenStax: Equilibrium calculations, I2/I−/I3− example',
+        url: 'https://openstax.org/books/chemistry-atoms-first-2e/pages/13-4-equilibrium-calculations',
+      },
+      {
+        title:
+          'Taub et al. (2002), Mechanism of Dihydrogen Formation in the Magnesium–Water Reaction',
+        url: 'https://scholarworks.brandeis.edu/esploro/outputs/journalArticle/Mechanism-of-Dihydrogen-Formation-in-the/9923989475601921',
       },
     ],
     number: '349',
@@ -2938,9 +2955,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-cell-division',
     name: '细胞分裂与固定观察',
-    title: '同一套染色体，怎样分成两份',
-    question: '把活的过程模型与固定装片里的不同细胞分开。',
-    description: '追踪姐妹染色单体，比较细胞大小，并在静止根尖视野中辨认分裂时期。',
+    title: '细胞分裂：形态、顺序与计数',
+    question: '细胞分裂：形态、顺序与计数',
+    description: '追踪姐妹身份，再区分固定装片、活细胞记录和群体比例能提供的证据。',
     color: '#b09eac',
     tag: '生物学',
     related: ['bio-cell-microscopy', 'bio-nuclear-evidence', 'bio-cell-fates'],
@@ -2952,6 +2969,15 @@ export const topics: Topic[] = [
       {
         title: 'Science & Plants for Schools: root-tip preparations',
         url: 'https://www.saps.org.uk/teaching-resources/resources/5915/using-spider-plants-to-prepare-root-tip-squashes/',
+      },
+      {
+        title:
+          'Pietra et al. (2013), Arabidopsis SABRE and CLASP interact to stabilize cell division plane orientation and planar polarity',
+        url: 'https://www.nature.com/articles/ncomms3779.pdf',
+      },
+      {
+        title: 'Week-long imaging of cell divisions in Arabidopsis root meristem (2019)',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6446972/',
       },
     ],
     number: '335',
@@ -5431,24 +5457,29 @@ export const topics: Topic[] = [
   {
     slug: 'multimeter-lab',
     name: '多用电表实验',
-    title: '同一根指针，为什么要换接法、换刻度？',
-    question: '同一根指针，为什么要换接法、换刻度？',
-    description: '跟随模拟式多用电表的真实接线，区分电压、电流、欧姆测量与故障定位。',
+    title: '一根指针，为什么能测三种量？',
+    question: '一根指针，为什么能测三种量？',
+    description:
+      '打开多用电表的等效电路，跟随同一表头的分压、分流和内电池路径，再用真实加载解释灯不亮的故障。',
     color: '#c4cbb0',
     tag: '测量 · 电表 · 故障',
     related: ['resistivity-lab', 'length-instruments'],
     sources: [
       {
-        title: 'HIOKI — 3007 Analog Multimeter Instruction Manual',
+        title: 'HIOKI 3007 instruction manual, resistance polarity and LI/LV sections',
         url: 'https://www.hioki.com/download/29783',
       },
       {
-        title: 'HIOKI — Analog voltmeter sensitivity and input resistance',
+        title: 'HIOKI — Analog tester input resistance FAQ',
         url: 'https://www.hioki.com/us-en/support/faq/detail/id_121',
       },
       {
         title: 'OpenStax — Electrical Measuring Instruments',
         url: 'https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments',
+      },
+      {
+        title: '人民教育出版社 — 高中物理必修第三册，P68–77',
+        url: 'https://jc.pep.com.cn/',
       },
     ],
     number: '244',

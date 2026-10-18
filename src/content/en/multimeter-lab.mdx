@@ -1,30 +1,47 @@
-<h2 id="understand">Connections, ranges and scales change together</h2>
+<h2 id="understand">The head measures its own current</h2>
 
-One pointer can serve several measurements only when the **connection, range and scale agree**. Follow the circuit path before reading the pointer.
+How can one pointer measure voltage, current and resistance? Follow the quantity it actually responds to: **current through the moving coil**. A different internal circuit converts each external quantity into head current.
 
-- Voltage: connect across the target and convert the linear scale using the selected range.
-- Current: insert the meter in series; its internal resistance also changes current.
-- Resistance: isolate the specimen from external power. Short and zero the probes before measuring, and check again after changing the multiplier. The ohm scale is nonlinear, with zero on the right.
+- **Voltage mode:** a large series resistor takes most of the voltage. The complete meter connects across the target, and its current depends on terminal voltage.
+- **Current mode:** a low-resistance shunt bypasses the sensitive head. The two branch currents recombine to give the external current.
+- **Resistance mode:** an internal cell supplies test current through an isolated specimen. A larger specimen resistance produces less head current.
 
-The sequence covers a fixed resistor, cold filament, hand contact and diode. Diode readings depend on direction and instrument conditions; they are not a fixed material resistance. This example follows the cited HIOKI analog meter: its black probe is internally positive on the resistance function. Other instruments require their own manual.
+This teaching head has a **50 µA full-scale current** and **2 kΩ resistance**. Its 5 V range adds 98 kΩ in series; its 0.5 A range adds about 0.20002 Ω in parallel. These are explanatory circuit choices, not a complete manufacturer schematic. Moving wire marks indicate conventional current direction, not carrier speed or a count of charges.
 
-<h2 id="try">Follow the probes to diagnose faults</h2>
+<h2 id="try">Predict before changing the range</h2>
 
-The fault sequence starts with an unlit lamp and checks the battery, switch, wire and outer socket terminals. **Voltage across a section does not guarantee normal operating current through it.** Diagnosis is restricted to four specified single faults. Other real possibilities, including a broken filament, remain outside this set.
+With almost unchanged terminal voltage, switching from the 5 V range to 10 V increases resistance and roughly halves deflection. The new range still indicates almost the same voltage. The qualification matters: finite meter resistance can also change the circuit being measured.
 
-<h2 id="deeper">Model and measurement limits</h2>
+The ohm scale cannot be divided uniformly. Let calibrated internal resistance be R₀. Shorted probes produce maximum current. Adding R₀ makes total resistance 2R₀ and deflection one half. Adding 2R₀ makes the total 3R₀, so deflection is one third, not one quarter.
+
+<div className="formula">f = R₀ / (R₀ + Rₓ)</div>
+
+Changing the multiplier changes the internal circuit, so short-circuit zero needs checking again. The resistor, cold filament, hand contacts and diode apply the same principle under different conditions. A cold filament differs from a hot one; contact resistance is not a personal constant; a diode’s apparent resistance depends on test conditions.
+
+**The black lead supplies positive potential in this modeled analog ohmmeter.** This convention is supported by the cited HIOKI 3007 resistance instructions. It is not a universal rule for analog or digital meters.
+
+<h2 id="deeper">Voltage can exist without a working lamp current</h2>
 
 <details>
-<summary>Model, readings and limits</summary>
+<summary>The meter becomes part of the fault circuit</summary>
 
-The voltmeter has finite input resistance at 20 kΩ/V; the ammeter adds 0.5 Ω. Resistance mode combines a 1.5 V internal supply, adjustable internal resistance and current movement:
+A nearly open contact has high resistance and may carry most of the circuit voltage. A voltmeter connected across it adds a small parallel current path. The diagram reports meter current and filament current separately. Voltage alone does not establish that the filament has enough current to light normally.
 
-f = I / Iₘ; R = Rₘ (1/f − 1).
-
-After calibration, Rₘ = 20m Ω, where m is the multiplier. A change in internal resistance represents zero error. The diode solution intersects an exponential junction curve with the instrument load line; reverse leakage is approximated without breakdown. Hands use an equivalent contact resistance. The DC lamp uses fixed resistance rather than a complete thermal model. Faulty contacts use very high finite resistance; the whole network is recalculated when the voltmeter is connected.
-
-Images and data are teaching-model outputs, not physical measurements.
+Textbook page 74 compares a depleted cell, bad switch contact and bad socket contact. The retained broken-wire example also relates to the exercise on page 76. Those candidates narrow a diagnosis; they do not exclude a broken filament or every other real fault.
 
 </details>
 
-Sources: [HIOKI 3007 manual](https://www.hioki.com/download/29783), [analog meter input resistance](https://www.hioki.com/us-en/support/faq/detail/id_121), and [OpenStax electrical measuring instruments](https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments).
+<details>
+<summary>Equivalent circuits and limits</summary>
+
+Voltage sensitivity is 20 kΩ/V, corresponding to 50 µA at full scale. Ammeter input resistance comes from the actual parallel head-and-shunt circuit. The lamp example uses a 3 V source with 0.5 Ω internal resistance and a fixed 20 Ω filament equivalent; it is not a thermal simulation.
+
+Ohms mode has a 1.5 V cell. Multiplier m sets R₀ = 20m Ω. The head and shunt have parallel equivalent Rₚ = R₀/15, leaving series resistance R₀ − Rₚ. All four multipliers therefore use the same physical head. Zero adjustment changes the series part. Supported multipliers stop at 1000; this passive topology cannot be extended without limit.
+
+The diode uses a forward exponential model and small reverse leakage, excluding breakdown. Hands use an equivalent contact resistance, without health inference. Bad contacts use a large but finite 1 GΩ resistance. Every probe change recalculates the complete loaded network.
+
+The 20 kΩ/V reference concerns HIOKI 3030-10/3008. The 3007 has a different sensitivity; its manual is cited only for the specified ohms polarity and semiconductor-test conventions. All readings here are model calculations under declared conditions, not independent observations.
+
+</details>
+
+Sources: [HIOKI 3007 manual](https://www.hioki.com/download/29783), [HIOKI analog input resistance](https://www.hioki.com/us-en/support/faq/detail/id_121), [OpenStax electrical measuring instruments](https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments). Textbook context: PEP High School Physics Required 3, pages 68–77, especially 70 and 72–74.

@@ -1,0 +1,114 @@
+{
+  "sceneSlug": "bio-cell-division",
+  "batch": 13,
+  "status": "candidate frozen for root integration; actual product acceptance pending",
+  "scope": "Only ignored candidate paths changed. No actual src/drafts/shared/audio/dist-preview/index writes.",
+  "plannedDurationSeconds": 196,
+  "chapterIds": ["replicate", "align", "segregate", "divide", "size", "prepare", "fixed"],
+  "windows": {
+    "bio-required-1-mechanism-07": ["replicate", "align", "segregate", "divide"],
+    "bio-required-1-mechanism-08": ["size"],
+    "bio-required-1-116-1": ["prepare", "fixed"]
+  },
+  "originalWindowCheck": {
+    "source": "src/data/curriculum-variants.json",
+    "result": "All 3 candidate chapter lists exactly match current canonical lists. Original entry titles and sceneVariant keys remain unchanged."
+  },
+  "authorModelValidation": {
+    "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-13-staging/biology/owned-vitest.config.mjs",
+    "testsPassed": 9,
+    "scope": [
+      "Persistent sister identities and per-pole count",
+      "Independent cube shell-volume benchmarks",
+      "Whole-system versus per-cell accounting",
+      "Finite invalid inputs",
+      "Fixed sample and live-record immutability",
+      "Synchrony counterexample with identical phase boundaries",
+      "Exact synthetic phase-boundary regression"
+    ],
+    "repairedFindings": [
+      "Alignment endpoint formerly crossed into separation; now remains below 3.",
+      "Cell-plate endpoint formerly rounded just below 1; completed cytokinesis now reaches exactly 1.",
+      "Peer found positive modulo rounding at age .88; add 1 only for negative remainders."
+    ]
+  },
+  "authorCandidateRendering": {
+    "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-13-staging/biology/vitest.render.config.mjs",
+    "testsPassed": 3,
+    "scope": "SSR fixtures, current-chapter default exploration, and stable twelve preparation IDs/stages. SSR is not real control interaction."
+  },
+  "authorScopedTypecheck": {
+    "command": "node artifacts/teaching-principles/batch-13-staging/biology/check-staged.mjs",
+    "errors": 0,
+    "scope": "Compiler host substitutes only candidate component/model roots; dependencies remain read-only actual source."
+  },
+  "independentPeer": {
+    "report": "artifacts/teaching-principles/batch-13-cross-review/chemistry-review-cell-division.json",
+    "assertionsPassed": 90,
+    "scope": "Bounded model/source check. Does not certify original primary figure, browser UI or speech.",
+    "changesAfterPeer": "Formatting only in the model; UI preparation sample and compact phone comparison were refined separately."
+  },
+  "authorVisualReview": {
+    "method": "Actual screenshots of isolated server-rendered candidate component, not the full product player",
+    "capturedFrames": 60,
+    "locales": ["zh", "en"],
+    "widths": [320, 1100],
+    "noHorizontalOverflow": true,
+    "minimumTextPx": 16,
+    "maxPhoneStageHeightPx": 317.5625,
+    "report": "candidate-stage/frames/report.json",
+    "personallyInspectedShots": [
+      "en-320-features",
+      "en-320-count-after",
+      "zh-320-record-20",
+      "en-320-cubes",
+      "zh-320-fixed-revealed",
+      "zh-1100-aligned",
+      "en-320-daughters",
+      "en-1100-record-69",
+      "en-1100-count-after"
+    ],
+    "findingsAndRepairs": [
+      "Initial phone four-card two-row layout reached 387 px; changed to four-cell strip and one selected explanation. Final maximum isolated phone stage is 317.5625 px.",
+      "Fixed anaphase schematic uses single separated chromatids, not X-shaped duplicated chromosomes.",
+      "Preparation now includes all five representative fixed stages while preserving the same twelve IDs across visibility changes."
+    ],
+    "limitations": [
+      "No shared player/captions or actual page style inherited in isolated fixtures.",
+      "No continuous watch, recorded voice, native controls or physical device inference from these screenshots."
+    ]
+  },
+  "speech": {
+    "firstFiveBilingualStrings": "10/10 exactly equal canonical existing audio-manifest text",
+    "changedCues": ["prepare", "fixed"],
+    "newTtsGenerated": false,
+    "spokenFrozenForCandidate": true,
+    "measuredTiming": "pending root generation/integration"
+  },
+  "rootVisualReview": "pending",
+  "actualFullPlayer": "pending root integration",
+  "realControlsAndKeyboard": "pending",
+  "fullNativePlayback": "pending",
+  "audioFailureHandling": "pending",
+  "naturalVoiceListening": "not performed",
+  "physicalPhonePerformance": "not performed",
+  "cover": {
+    "status": "Existing original cover retained; model API compatibility preserved",
+    "actualConsumerReview": "pending after root integration"
+  },
+  "primaryEvidence": "See research/source-ledger.json and brief. Original Figure 6c times only; schematic observations are not live footage, exact geometry or whole-cycle duration.",
+  "rootIntegration": {
+    "status": "validated-awaiting-authorized-publication",
+    "batch": "drafts/teaching-principles/batch-13-review.json",
+    "actualAudio": "src/data/audio-manifest.json",
+    "transcriptReview": "artifacts/teaching-principles/batch-13-transcript-text-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "checks": "drafts/teaching-principles/batch-13-review.json",
+    "frozenSource": "artifacts/teaching-principles/batch-13-frozen-source.json",
+    "actualViews": "artifacts/teaching-principles/batch-13-root-actual-views.json"
+  }
+}

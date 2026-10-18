@@ -1,0 +1,124 @@
+{
+  "sceneSlug": "motion-sensor-lab",
+  "status": "integrated-and-validated",
+  "scope": "Retain18bilingualspoken cues across both films; measured directors, causal state and bounded model corrections, same chapter IDs/windows; concise English captions only.",
+  "narration": {
+    "duration": 115,
+    "cues": [
+      {
+        "id": "reference",
+        "title": "同时发射两种信号",
+        "titleEn": "Transmit two signals together",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.45,
+        "caption": "红外提供起点，超声提供可测的延迟。",
+        "captionEn": "An infrared reference times the slower sound.",
+        "zh": "把发射器固定在小车上，接收器留在轨道端，并连接计算机。发射器同时发出红外脉冲和超声脉冲。红外传播极快，先到达接收器，启动计时；超声传播慢得多，随后到达。教材用这两种信号的时间差来测距离。单次测量首先给出位置，速度还需要另一次位置记录。",
+        "en": "Fix the emitter to the cart and connect a stationary receiver to the computer. Infrared and ultrasound are emitted together. Infrared arrives first and starts the timer; much slower ultrasound follows. The textbook uses their arrival-time difference to measure range. One measurement gives position; velocity requires a second position record."
+      },
+      {
+        "id": "one-way",
+        "title": "一次单程测距",
+        "titleEn": "Measure the one-way range",
+        "seconds": 28,
+        "chapterAt": 27,
+        "at": 27.45,
+        "caption": "x约等于声速乘时差，不需要除以二。",
+        "captionEn": "One-way range ≈ sound speed × delay.",
+        "zh": "把短暂的传播过程放慢，跟着超声脉冲走到接收器。小车仍在运动，但这一脉冲从发射时的位置出发，之后在空气中独立传播。超声到达后，距离才显示出来。由于红外传播时间远小于声传播时间，教材近似用声速乘以这段时差。这里声波只走了一程，不能再除以二。",
+        "en": "Slow the propagation and follow the ultrasonic pulse to the receiver. The cart keeps moving, but the pulse starts at the emission position and then travels independently through the air. Range appears only after arrival. Infrared travel time is tiny compared with sound, so the textbook multiplies the delay by sound speed. This is a one-way path; do not divide by two."
+      },
+      {
+        "id": "samples",
+        "title": "连续位置生成速度",
+        "titleEn": "Generate velocity from successive positions",
+        "seconds": 29,
+        "chapterAt": 55,
+        "at": 55.45,
+        "caption": "0.02秒一次测距，位移除以对应时间。",
+        "captionEn": "Position differences reveal velocity.",
+        "zh": "让传感器每隔零点零二秒重复测量，屏幕上逐步出现位置点。比较相邻两个点，位置差是这小段时间里的位移，位移除以时间就是平均速度。对于匀速小车，这个结果就是它的速度；对于变速运动，足够短的区间平均速度才可近似瞬时速度。计算机不会跳过位置信息，直接凭空知道速度。",
+        "en": "Repeat the measurement every 0.02 seconds. Position points accumulate on the screen. The difference between two positions is displacement; divide by their interval for average velocity. For this constant-speed cart the result is exact. During changing motion, a sufficiently short interval average only approximates instantaneous velocity. The computer derives velocity from positions rather than knowing it independently."
+      },
+      {
+        "id": "reflection",
+        "title": "改为发射与接收同一探头",
+        "titleEn": "Use one transducer for the round trip",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.45,
+        "caption": "超声碰到反射面后返回，路程约为两倍距离。",
+        "captionEn": "An echo travels out and back.",
+        "zh": "换成反射式传感器，固定探头发射超声，小车上的反射面把它送回同一个探头。现在计时包含去程和回程，声速乘总时间给出往返路程，所以距离计算要除以二。运动目标的位置在反射时刻确定；本模型也保留了传播期间的微小移动。两种装置都能连续测速，但计时起点和声波路径不同，计算式不能混用。",
+        "en": "Switch to a reflected-echo sensor. A fixed transducer sends ultrasound to the cart and receives its return. Timing includes both outbound and inbound legs, so sound speed times total time gives a round-trip distance; divide by two. Range belongs to the reflection instant, and the model retains the cart’s small motion during flight. Both arrangements measure velocity repeatedly, but their timing references and paths differ."
+      }
+    ]
+  },
+  "teachingProfiles": {
+    "required-1-sensor-speed": {
+      "sceneSlug": "motion-sensor-lab",
+      "question": {
+        "zh": "同样测距离，为什么有时要除以二？",
+        "en": "Why do some distance sensors divide by two?"
+      },
+      "lead": {
+        "zh": "追踪一次声脉冲的出发、到达和反射，再比较连续两次位置。",
+        "en": "Follow emission, arrival and reflection, then compare two measured positions."
+      },
+      "principle": {
+        "zh": "传播时差先给出距离，连续两次位置才给出速度；单程与往返不能使用相同的距离公式。",
+        "en": "Travel delay determines range, and two positions determine velocity. One-way and return paths require different range formulas."
+      },
+      "transfer": {
+        "question": {
+          "zh": "把探头改为同时发射和接收，原来的距离公式还适用吗？",
+          "en": "Does the same range formula apply when one probe both transmits and receives?"
+        },
+        "explanation": {
+          "zh": "不直接适用。回波经过往返，声速乘总时差给出两程路长；应除以二，并对应反射时刻的位置。",
+          "en": "No. The echo travels out and back. Sound speed times total delay is the two-leg distance; divide by two and assign the range to the reflection instant."
+        }
+      }
+    }
+  },
+  "sourceReview": "artifacts/teaching-principles/batch-13-staging/retained/sources/source-review.json",
+  "pending": ["Authorized publication"],
+  "integratedFilm": {
+    "duration": 115,
+    "chapters": [
+      {
+        "id": "reference",
+        "title": "同时发射两种信号",
+        "titleEn": "Transmit two signals together",
+        "caption": "红外提供起点，超声提供可测的延迟。",
+        "captionEn": "An infrared reference times the slower sound.",
+        "at": 0
+      },
+      {
+        "id": "one-way",
+        "title": "一次单程测距",
+        "titleEn": "Measure the one-way range",
+        "caption": "x约等于声速乘时差，不需要除以二。",
+        "captionEn": "One-way range ≈ sound speed × delay.",
+        "at": 27
+      },
+      {
+        "id": "samples",
+        "title": "连续位置生成速度",
+        "titleEn": "Generate velocity from successive positions",
+        "caption": "0.02秒一次测距，位移除以对应时间。",
+        "captionEn": "Position differences reveal velocity.",
+        "at": 55
+      },
+      {
+        "id": "reflection",
+        "title": "改为发射与接收同一探头",
+        "titleEn": "Use one transducer for the round trip",
+        "caption": "超声碰到反射面后返回，路程约为两倍距离。",
+        "captionEn": "An echo travels out and back.",
+        "at": 84
+      }
+    ]
+  }
+}

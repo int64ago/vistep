@@ -1,47 +1,11 @@
 ---
-import { ohmmeterState } from '../../models/multimeter-lab';
-const { compact = false } = Astro.props;
-const s = ohmmeterState(470, 10);
-const angle = ((-70 + 140 * s.deflection) * Math.PI) / 180;
-const tip = [200 + 76 * Math.sin(angle), 119 - 76 * Math.cos(angle)];
+import StaticArtworkCover from './StaticArtworkCover.astro';
+import { MultimeterArtwork } from '../experiments/MultimeterLab';
+import { multimeterDirector } from '../../models/multimeter-lab';
+const direction = { ...multimeterDirector(1, 14), progress: 0.35 };
 ---
 
-<svg viewBox="0 0 400 250" fill="none" aria-hidden="true" data-compact={compact}>
-  <rect x="75" y="22" width="250" height="148" rx="26" fill="#e0e5cf" stroke="#bdc8aa"></rect>
-  <rect x="87" y="33" width="226" height="100" rx="18" fill="#f4efd6"></rect>
-  <path d="M125 91Q200 17 275 91" stroke="#a4b28e"></path>
-  {
-    Array.from({ length: 11 }, (_, i) => {
-      const a = ((-70 + i * 14) * Math.PI) / 180;
-      return (
-        <path
-          d={`M${200 + 78 * Math.sin(a)} ${119 - 78 * Math.cos(a)}L${200 + 85 * Math.sin(a)} ${119 - 85 * Math.cos(a)}`}
-          stroke="#9baa82"
-        />
-      );
-    })
-  }
-  <path d={`M200 119L${tip}`} stroke="#ab7858" stroke-width="2.5" stroke-linecap="round"></path>
-  <circle cx="200" cy="119" r="5" fill="#ab7858"></circle><circle
-    cx="200"
-    cy="149"
-    r="13"
-    fill="#b5c19e"></circle>
-  <circle cx="115" cy="157" r="5" fill="#b37a60"></circle><circle
-    cx="285"
-    cy="157"
-    r="5"
-    fill="#6d8071"></circle>
-  <path d="M115 157C55 180 81 221 172 216" stroke="#b37a60" stroke-width="2.8"></path><path
-    d="M285 157C345 180 319 221 228 216"
-    stroke="#6d8071"
-    stroke-width="2.8"></path>
-  <path d="M155 216H175M225 216H245" stroke="#a6b490" stroke-width="2"></path><rect
-    x="175"
-    y="207"
-    width="50"
-    height="18"
-    rx="8"
-    fill="#c6ba8e"></rect>
-  <path d="M186 207v18m10-18v18m10-18v18" stroke="#95825b" stroke-width="4"></path>
-</svg>
+<StaticArtworkCover
+  artwork={MultimeterArtwork}
+  options={{ direction, narrow: true, cover: true }}
+/>

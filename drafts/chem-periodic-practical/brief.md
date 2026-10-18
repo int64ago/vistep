@@ -1,9 +1,44 @@
-# 同周期与同主族的实验比较
+# From colour change to periodicity
 
-覆盖31实验4-1、33第三周期探究、35实验活动3；正文PDF109/114/127逐项通读。8章207秒：Cl/Br→Cl/I→Br/I→Mg冷水→Mg热水→NH3制两种沉淀→新分样酸→另一分样碱。正文卤素入口用K盐试管；活动sceneVariant=chapter-practical用Na盐点滴板，并保留氯水阶段3孔（Br/I/原氯水）和溴水阶段2孔。31映射前三章，33后五章，35完整八章。
+Batch 13 candidate for `chem-periodic-practical`. All candidate files remain in ignored staging until the integrator explicitly unlocks the scene. No shared data, product source, audio or build output is changed by this candidate.
 
-独立卤素守恒、Mg水计量、两种氢氧化物酸碱计量模型；反向卤素为额外探索。无虚构动力学；Mg冷水无明显现象仅指本演示尺度。SCN和泛烧杯未套用；实际不同试管/点滴板/Mg条加热器。颜色定性，I2用计量当量，NH3制备理想化并说明弱碱及真实平衡限制。
+The question is how a comparison becomes evidence. Prerequisites are ions, basic oxidation numbers and acid/base net equations. The misconception is that a colour, a quiet surface or a white residue directly determines reactivity. The new film follows electron credits, then water-derived atoms, then hydroxide oxygens and the unchanged metal oxidation state. It contributes comparisons and counterexamples instead of repeating the iron-cycle ligand equilibrium or the sodium film.
 
-4模型测试、packet只读、全自有MDX/代码scoped prettier通过；模型测试含全卤素配对守恒与逆向边界、Mg水物料、3H/2H酸耗、Al强碱溶解与Mg不溶边界。手机点滴板每孔与标签重排，不缩小桌面三孔图；16px中文、44px操作。封面由同卤素生成量上色。
+## Preserved learning windows
 
-作者已在独立4337预览以320×844检查14个暂停关键帧（英文试管3、中文全8章、英文点滴板3）；几何与横向溢出检查通过，实际查看其中关键画面并将手机试管高度减到195px、点滴板单孔100px。控件保持视口内。证据与源hash见review.json；这是作者暂停帧自检，连续观看、配音试听、真机仍未做，待root主线独立验收。
+- Required Volume 1 P104 experiment 4-1: `chlorine-bromide`, `chlorine-iodide`, `bromine-iodide`; `halogen-tubes`. Potassium salts and a retained halogen-water reference.
+- P109 inquiry: `magnesium-cold`, `magnesium-hot`, `prepare-hydroxides`, `acid-dissolves-both`, `base-distinguishes`; `period-comparison`. Starts independently with the cold/warm question and ends with limited-reagent prediction and the Na/Mg/Al row.
+- P122 activity 3: all eight IDs in that order; `chapter-practical`. Sodium salts and three chlorine-comparison wells, followed by two bromine-comparison wells, then the period inquiry. Original entry IDs, titles and page/order are preserved by the integration proposal.
+
+## Directed causal shots
+
+| Chapter               | New visible evidence                              | Bridge and prediction                                                                                                 |
+| --------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Chlorine/bromide      | Original chlorine colour beside new orange sample | Four atom IDs and two conserved electron credits show what changed.                                                   |
+| Chlorine/iodide       | A second fixed comparison                         | Net iodine equivalents; the first two observations cannot rank Br/I.                                                  |
+| Bromine/iodide        | The missing observed edge                         | Fixed records construct an order; reverse I₂/Br⁻ answer stays hidden during the prediction hold.                      |
+| Cold magnesium        | A short observation without obvious bubbles       | A qualitative surface enlargement distinguishes limited pace from impossibility; heating question remains unanswered. |
+| Heated magnesium      | Gas and indicator change                          | Seven persistent atom IDs and electron accounting yield H₂ plus solid hydroxide net composition.                      |
+| Hydroxide preparation | Both precipitates look white                      | The same water H transfers to NH₃; metal charge requires two or three OH groups.                                      |
+| Acid comparison       | Both dissolve with enough acid                    | Original O becomes water; a fresh two-proton net-dose comparison leaves one third Al solid.                           |
+| Base comparison       | Al dissolves, Mg remains conspicuous              | One extra OH forms soluble [Al(OH)₄]⁻ while Al remains +3; half-dose prediction, then fixed period records.           |
+
+The provisional silent timing is 250 seconds. English has 614 words; this is a planned window, not measured speech. Root must synthesize only after actual integrated visual acceptance, keep natural pace and confirm a final duration below 300 seconds with margin. Every chapter uses the shared chapter-relative clock, without independent timers. Prediction answer thresholds are explicit in `periodicDirector` and tested at either side of the boundary. Seeking reconstructs objects from the same state.
+
+The aesthetic begins with pale glazed porcelain and aqueous colour, then follows the same palette into loose, open atom accounts. No wall of instrument cards. SVG coordinates use measured CSS pixels so labels remain 16 px. Phones place three spot-plate wells in shallow rows; the net-event view takes the full width. Long qualifications remain in an accessible folded explanation. Stage-only candidate renders are useful for collisions but do not constitute full-player acceptance.
+
+## Science and sources
+
+The full textbook sections P102–104, P108–110 and P121–122 were extracted and read. Target P104/P109/P122 pages were rendered and inspected to verify apparatus, order, exact comparisons and source/PDF page correspondence. The source ledger in the packet records actual web access scopes.
+
+The university chemistry demonstration independently supports ammonia preparation and acid/base split portions. OpenStax explains OH consumption and soluble aluminium complex formation as coupled equilibria. The author-institution abstract of Taub et al. 2002 supports the normally sluggish Mg/water reaction and surface constraints; it is not a source for importing its Mg/Fe/NaCl kinetics into pure textbook water. OpenStax's iodine example bounds I₂ equivalents versus I₃⁻ speciation. RSC displacement was available only as an official indexed excerpt; no claim of reading the inaccessible full page is made.
+
+The halogen observations are immutable records. The model predicts a qualitative reverse outcome from the inferred order; it does not regenerate observations to validate itself. Its finite stoichiometry permits at most 0.5 mmol X₂ for 1 mmol Y⁻ and excludes excess oxidation. The electron symbols are formal accounting credits, with departure/in-transfer/arrival charges included exactly once.
+
+Cold magnesium means “not obvious in this short observation”, not a rate of zero. Atom paths are net allocations, not elementary steps. The seven-atom Mg/water diagram keeps oxidation-number accounting consistent during transfer. Phenolphthalein has no quantitative pH or yield scale.
+
+Hydroxide amounts are explicitly net reagent after NH₃/NH₄⁺ and other background reactions, not actual laboratory doses. The model tracks finite stoichiometric dissolution, not a complete equilibrium mixture. Al's central oxidation state and the complex's total charge are distinct. Trace Mg dissolution, hydrolysis, hydration shells, activity coefficients and solid polymorphs are omitted. Solid boxes are formula-unit compositions, not molecules or crystal coordination geometries.
+
+## Handoff evidence and remaining work
+
+Candidate model/component tests, scoped type checking, primary-source scope and isolated stage rendering are recorded separately in `review.json`. Real controls, the complete 320×568 player with captions/transport, actual entry routes, ordinary/reduced-motion playback, cover consumers, audio listening, measured word timing and static build remain root-coordinated post-integration checks. Nothing in the candidate screenshot count or test total substitutes for those tasks. No commit, TTS or global build was run.

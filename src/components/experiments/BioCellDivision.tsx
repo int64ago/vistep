@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { t } from '../../i18n';
+import { browserLocale, t } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase, ease, ramp } from '../lab/FilmContext';
+import { useShowcase } from '../lab/FilmContext';
 import {
   mitoticState,
+  animalCytokinesis,
   cubeExchange,
   fixedRootField,
-  stageCounts,
   type MitoticPhase,
+  divisionDirector,
+  FIXED_FEATURES,
+  liveRecordAt,
 } from '../../models/bio-cell-division';
 import '../../styles/bio-cell-division.css';
 type Mode = 'mitosis' | 'size' | 'prepare' | 'fixed';
@@ -67,67 +70,327 @@ function Cube({ edge, depth }: { edge: number; depth: number }) {
     </svg>
   );
 }
+function FixedGlyph({
+  stage,
+  x = 0,
+  y = 0,
+  scale = 1,
+}: {
+  stage: MitoticPhase;
+  x?: number;
+  y?: number;
+  scale?: number;
+}) {
+  return (
+    <g transform={`translate(${x} ${y}) scale(${scale})`}>
+      <rect
+        x="-25"
+        y="-32"
+        width="50"
+        height="64"
+        rx="8"
+        fill="#e9e0d5"
+        stroke="#b8a89b"
+        strokeWidth="1.5"
+      />
+      {stage === 'interphase' ? (
+        <>
+          <ellipse rx="14" ry="18" fill="#cab2cc" />
+          <path d="M-8 -8Q12 -2 -2 9T10 12" fill="none" stroke="#a081a5" strokeWidth="2" />
+        </>
+      ) : stage === 'telophase' ? (
+        <>
+          <ellipse cx="-13" rx="9" ry="19" fill="#c9afc9" />
+          <ellipse cx="13" rx="9" ry="19" fill="#c9afc9" />
+          <path d="M0 -27V27" stroke="#9c9487" strokeWidth="2" />
+        </>
+      ) : (
+        Array.from({ length: stage === 'anaphase' ? 32 : 16 }, (_, j) => {
+          const x =
+            stage === 'metaphase'
+              ? (j % 2) * 6 - 3
+              : stage === 'anaphase'
+                ? (j < 16 ? -13 : 13) + (j % 2) * 5 - 2.5
+                : ((j * 11) % 32) - 16;
+          const y =
+            stage === 'metaphase'
+              ? Math.floor(j / 2) * 5 - 18
+              : stage === 'anaphase'
+                ? Math.floor((j % 16) / 2) * 5 - 18
+                : ((j * 7) % 39) - 19;
+          const d =
+            stage === 'anaphase'
+              ? `M${x + (j < 16 ? 2 : -2)} ${y - 2}L${x} ${y}L${x + (j < 16 ? 2 : -2)} ${y + 2}`
+              : `M${x - 2} ${y - 2}l4 4m0-4l-4 4`;
+          return (
+            <path
+              key={j}
+              d={d}
+              fill="none"
+              stroke="#98739e"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+            />
+          );
+        })
+      )}
+    </g>
+  );
+}
+function PreparationEvidence({ progress }: { progress: number }) {
+  const field = fixedRootField(0),
+    cells = [0, 2, 20, 32, 41, 5, 7, 11, 14, 23, 38, 49].map((i) => field[i]);
+  return (
+    <>
+      <svg
+        viewBox="0 0 300 205"
+        className="bcd13-preparation"
+        role="img"
+        aria-label={t('同十二个固定细胞，分散与染色只改变可见性，不让细胞继续分裂')}
+      >
+        <rect x="7" y="7" width="286" height="190" rx="18" fill="#e5e7da" stroke="#b7bca8" />
+        {cells.map((cell, i) => (
+          <g
+            key={cell.id}
+            opacity={0.25 + 0.75 * progress}
+            data-fixed-cell={cell.id}
+            data-fixed-stage={cell.stage}
+          >
+            <FixedGlyph
+              stage={cell.stage}
+              scale={0.62}
+              x={145 + (38 + (i % 4) * 74 - 145) * progress}
+              y={97 + (39 + Math.floor(i / 4) * 63 - 97) * progress}
+            />
+          </g>
+        ))}
+      </svg>
+      <p className="bcd13-note">{t('形态固定；分散后看清。')}</p>
+    </>
+  );
+}
+function Field({
+  field,
+  selected,
+  synchronized = false,
+}: {
+  field: number;
+  selected: number;
+  synchronized?: boolean;
+}) {
+  const cells = fixedRootField(field, synchronized),
+    chosen = cells[selected] ?? cells[0];
+  return (
+    <>
+      <svg
+        viewBox="0 0 360 215"
+        className="bcd13-field"
+        role="img"
+        aria-label={t('合成固定视野；每个细胞的阶段保持不变')}
+      >
+        {cells.map((c, i) => (
+          <g key={c.id} data-fixed-cell={c.id} data-fixed-stage={c.stage}>
+            <FixedGlyph stage={c.stage} x={c.x} y={c.y} scale={0.51} />
+            {i === selected && (
+              <rect
+                x={c.x - 15}
+                y={c.y - 18}
+                width="30"
+                height="37"
+                rx="5"
+                fill="none"
+                stroke="#a6784d"
+                strokeWidth="2"
+              />
+            )}
+          </g>
+        ))}
+      </svg>
+      <p className="bcd13-note">
+        {t('细胞')} {chosen.id + 1} · {t(stageNames[chosen.stage])}
+      </p>
+    </>
+  );
+}
+function FeatureComparison({ active }: { active: number }) {
+  const cells = fixedRootField(0);
+  return (
+    <>
+      <div className="bcd13-features">
+        {FIXED_FEATURES.map((f, i) => (
+          <div
+            key={f.cell}
+            className={i === active ? 'bcd13-active' : ''}
+            data-fixed-cell={f.cell}
+            data-fixed-stage={cells[f.cell].stage}
+          >
+            <svg viewBox="0 0 80 76" role="img" aria-label={t(f.feature)}>
+              <FixedGlyph stage={cells[f.cell].stage} x={40} y={38} />
+            </svg>
+            <p className="bcd13-feature-id">{f.cell + 1}</p>
+            <p className="bcd13-feature-detail">
+              {f.cell + 1} · {t(stageNames[f.stage])}
+            </p>
+            <p className="bcd13-feature-detail">{t(f.feature)}</p>
+          </div>
+        ))}
+      </div>
+      <p className="bcd13-phone-feature">
+        {t(stageNames[FIXED_FEATURES[active].stage])} · {t(FIXED_FEATURES[active].feature)}
+      </p>
+      <p className="bcd13-note">{t('不同细胞的形态，提示候选次序。')}</p>
+    </>
+  );
+}
+function LiveRecord({ index }: { index: number }) {
+  const r = liveRecordAt(index),
+    two = index >= 2,
+    late = index === 4;
+  return (
+    <>
+      <div className="bcd13-record-head">
+        <span>{t('同一活细胞')}</span>
+        <strong>{r.minute} min</strong>
+      </div>
+      <svg
+        viewBox="0 0 300 185"
+        className="bcd13-record"
+        role="img"
+        aria-label={t('已发表的同一拟南芥细胞时序，形态概括而非显微照片')}
+        data-record-cell={r.cellId}
+        data-record-minute={r.minute}
+      >
+        <rect x="55" y="7" width="190" height="169" rx="24" fill="#e3e7da" stroke="#b7b6a8" />
+        {index === 0 && (
+          <>
+            <path d="M72 91H105M195 91H228" stroke="#ad83a9" strokeWidth="6" />
+            <ellipse cx="150" cy="91" rx="30" ry="34" fill="#88a17c" />
+            <ellipse cx="150" cy="91" rx="18" ry="22" fill="#e3e7da" />
+          </>
+        )}
+        {index > 0 && index < 4 && (
+          <g stroke="#a786ac" fill="none" strokeWidth="2">
+            {[-27, -14, 0, 14, 27].map((dx) => (
+              <path
+                key={dx}
+                d={`M150 28Q${150 + dx * 2} 60 ${150 + dx} 91Q${150 + dx * 2} 122 150 155`}
+              />
+            ))}
+          </g>
+        )}
+        {index === 1 && <ellipse cx="150" cy="91" rx="33" ry="8" fill="#789d70" />}
+        {two &&
+          [-1, 1].map((side) => (
+            <g key={side}>
+              <ellipse
+                cx="150"
+                cy={91 + side * (late ? 48 : index === 3 ? 37 : 27)}
+                rx={late ? 26 : 29}
+                ry={late ? 21 : 9}
+                fill="#789d70"
+              />
+              {late && <ellipse cx="150" cy={91 + side * 48} rx="15" ry="11" fill="#d7e1ce" />}
+            </g>
+          ))}
+      </svg>
+      <p className="bcd13-note">{t('拟南芥 · 2013 · 时序概括')}</p>
+    </>
+  );
+}
+function CountComparison({ synchronized }: { synchronized: boolean }) {
+  const groups = [fixedRootField(0), fixedRootField(0, synchronized)];
+  return (
+    <>
+      <div className="bcd13-populations">
+        {groups.map((cells, g) => (
+          <div key={g}>
+            <p>{t(g === 0 ? '不同步群体' : synchronized ? '同步群体' : '相同群体')}</p>
+            <svg
+              viewBox="0 0 130 95"
+              role="img"
+              aria-label={t('五十个合成细胞，中期用紫色标出')}
+              data-metaphase-count={cells.filter((c) => c.stage === 'metaphase').length}
+            >
+              {cells.map((c, i) => (
+                <rect
+                  key={c.id}
+                  x={2 + (i % 10) * 13}
+                  y={4 + Math.floor(i / 10) * 18}
+                  width="10"
+                  height="14"
+                  rx="3"
+                  fill={c.stage === 'metaphase' ? '#98739e' : '#d8d2c2'}
+                />
+              ))}
+            </svg>
+            <p>
+              {t('中期')} {cells.filter((c) => c.stage === 'metaphase').length}/50
+            </p>
+          </div>
+        ))}
+      </div>
+      <p className="bcd13-note">{t('周期设定相同；只改变起点分布。')}</p>
+    </>
+  );
+}
 export default function BioCellDivision() {
   const f = useShowcase(),
-    [mode, setMode] = useState<Mode>(
-      f.variant === 'size' ? 'size' : f.variant === 'fixed' ? 'fixed' : 'mitosis',
-    ),
+    [mode, setMode] = useState<Mode | null>(null),
+    [fixedView, setFixedView] = useState('field'),
+    [synchronized, setSynchronized] = useState(false),
+    [recordIndex, setRecordIndex] = useState(0),
+    [featureIndex, setFeatureIndex] = useState(0),
     [progress, setProgress] = useState(2.5),
     [animal, setAnimal] = useState(false),
     [depth, setDepth] = useState(0.5),
     [field, setField] = useState(0),
     [selected, setSelected] = useState(0),
     [preparation, setPreparation] = useState(0.5);
-  const p = f.watch ? ease(ramp(f.chapterProgress, 0.05, 0.85)) : preparation,
-    m = f.watch
-      ? f.chapter < 4
-        ? 'mitosis'
-        : f.chapter === 4
-          ? 'size'
-          : f.chapter === 5
-            ? 'prepare'
-            : 'fixed'
-      : mode,
-    stage = f.watch
-      ? f.chapter === 0
-        ? p * 1.5
-        : f.chapter === 1
-          ? 1.5 + p * 1.5
-          : f.chapter === 2
-            ? 3 + p
-            : f.chapter === 3
-              ? 4 + p * 1.999
-              : 0
-      : progress,
+  const directed = divisionDirector(f.chapter, f.chapterTime, browserLocale()),
+    defaultMode: Mode =
+      f.chapter < 4 ? 'mitosis' : f.chapter === 4 ? 'size' : f.chapter === 5 ? 'prepare' : 'fixed',
+    m = f.watch ? defaultMode : (mode ?? defaultMode),
+    p = f.watch ? directed.preparation : preparation,
+    stage = f.watch ? directed.mitosis : progress,
     state = mitoticState(stage),
+    animalEnvelope = animalCytokinesis(stage),
     isAnimal = !f.watch && animal,
-    penetration = f.watch ? 0.5 : depth,
-    root = fixedRootField(f.watch ? 0 : field),
-    highlight = f.watch ? Math.min(49, Math.floor(p * 50)) : selected,
-    counts = stageCounts(f.watch ? 0 : field),
-    chosen = root[highlight];
+    penetration = f.watch ? directed.depth : depth,
+    fixedShot = f.watch ? directed.fixedShot : fixedView,
+    activeFeature = f.watch ? directed.feature : featureIndex,
+    liveIndex = f.watch ? directed.recordIndex : recordIndex;
   return (
-    <section className="bio-division">
-      <p className="bio-division-kind">
+    <section
+      className={`bcd13 bcd13-${f.watch ? 'watch' : 'explore'}`}
+      data-division-mode={m}
+      data-division-shot={m === 'fixed' ? fixedShot : m}
+    >
+      <p className="bcd13-kind">
         {t(
           m === 'mitosis'
-            ? '机制示意：2n = 4；洋葱实际2n = 16'
+            ? '分裂模型 · 2n = 4'
             : m === 'size'
               ? '表面积与体积的数学模型'
-              : '固定装片：不同细胞，分别观察',
+              : m === 'prepare'
+                ? '固定装片，保留不同阶段'
+                : fixedShot === 'live-record'
+                  ? '独立证据：活细胞时序'
+                  : '固定视野 · 合成示意',
         )}
       </p>
       {m === 'mitosis' ? (
         <>
           <svg
-            className="bio-division-cell"
+            className="bcd13-cell"
             viewBox="0 0 370 270"
             role="img"
             aria-label={t('姐妹染色单体保持身份，着丝粒分开后分别移向两极')}
           >
             {isAnimal ? (
               <path
-                d={`M185 ${25 + state.division * 110}C100 0 20 30 22 134C20 237 100 266 185 ${245 - state.division * 110}C270 266 350 237 348 134C350 30 270 0 185 ${25 + state.division * 110}Z`}
+                d={animalEnvelope.path}
+                data-animal-split={animalEnvelope.split}
+                data-membrane-gap={animalEnvelope.gap}
                 fill="#e0d3cc"
                 stroke="#a99b98"
                 strokeWidth="3"
@@ -168,7 +431,12 @@ export default function BioCellDivision() {
                 />
               ))}
             {state.chromatids.map((c) => (
-              <g key={c.id} opacity={c.visible}>
+              <g
+                key={c.id}
+                opacity={c.visible}
+                data-chromatid-id={c.id}
+                data-original-chromosome={c.chromosome}
+              >
                 <path
                   d={Array.from({ length: 25 }, (_, j) => {
                     const u = j / 12 - 1,
@@ -187,17 +455,18 @@ export default function BioCellDivision() {
               </g>
             ))}
             {stage >= 4 &&
-              [115, 255].map((x, i) => (
+              animalEnvelope.nuclei.map((n, i) => (
                 <ellipse
                   key={i}
-                  cx={x}
-                  cy="120"
-                  rx="43"
-                  ry="83"
+                  cx={n.cx}
+                  cy={n.cy}
+                  rx={n.rx}
+                  ry={n.ry}
                   fill="none"
                   stroke="#a398b0"
                   strokeWidth="2"
-                  opacity={Math.min(1, stage - 4)}
+                  opacity={n.opacity}
+                  data-daughter-nucleus={i}
                 />
               ))}
             {!isAnimal && (
@@ -223,20 +492,20 @@ export default function BioCellDivision() {
               opacity={Math.max(0, Math.min(1, stage - 1, 5 - stage))}
             />
           </svg>
-          <div className="bio-division-ledger">
+          <div className="bcd13-ledger">
             <span>{t(stageNames[state.phase])}</span>
             <span>
               {t(stage >= 5 ? '每个子细胞染色体' : '当前细胞染色体')} {state.chromosomesPerCell}
             </span>
             <span>
-              {t('同一组DNA标记')} {Math.round(state.dnaInWholeSystem)}
+              {t(stage >= 5 ? '两子细胞合计 DNA' : '全细胞 DNA')} {stage < 1 ? '4 → 8' : 8}
             </span>
           </div>
         </>
       ) : m === 'size' ? (
         <>
-          <p className="bio-division-note">{t('到达体积')}</p>
-          <div className="bio-division-cubes">
+          <p className="bcd13-note">{t('到达体积')}</p>
+          <div className="bcd13-cubes">
             {[2, 4, 8].map((edge) => {
               const s = cubeExchange(edge, penetration);
               return (
@@ -251,134 +520,26 @@ export default function BioCellDivision() {
           </div>
         </>
       ) : m === 'prepare' ? (
-        <>
-          <svg
-            className="bio-division-prepare"
-            viewBox="0 0 370 240"
-            role="img"
-            aria-label={t('根尖先解离、漂洗和染色，再压片分散细胞')}
-          >
-            <path
-              d="M43 35Q20 92 50 163Q60 179 67 161Q84 107 60 35"
-              fill="#d7cdb6"
-              stroke="#aaa086"
-              strokeWidth="2"
-            />
-            <path d="M45 146L69 146" stroke="#a77a78" strokeWidth="3" />
-            <path
-              d="M106 94H174L159 144H121Z"
-              fill="#c3adc3"
-              fillOpacity={0.2 + 0.5 * p}
-              stroke="#9c8c9e"
-              strokeWidth="2"
-            />
-            <path
-              d="M203 178L324 145L358 179L238 213Z"
-              fill="#dce1d4"
-              stroke="#a4afa0"
-              strokeWidth="2"
-            />
-            {Array.from({ length: 12 }, (_, i) => (
-              <rect
-                key={i}
-                x={239 + (i % 4) * 18 * p}
-                y={167 + Math.floor(i / 4) * 8 * p}
-                width="8"
-                height="6"
-                rx="2"
-                fill="#ac8da8"
-              />
-            ))}
-            <path
-              d={`M224 ${145 - p * 8}L299 ${125 + p * 6}L331 ${153 + p * 6}L256 ${173 - p * 8}Z`}
-              fill="#e6e9e0"
-              fillOpacity=".4"
-              stroke="#a9b3a2"
-            />
-          </svg>
-          <div className="bio-division-ledger">
-            <span>{t('解离')}</span>
-            <span>{t('漂洗')}</span>
-            <span>{t('染色')}</span>
-            <span>{t('压片')}</span>
-          </div>
-        </>
+        <PreparationEvidence progress={p} />
+      ) : fixedShot === 'field' ? (
+        <Field field={f.watch ? 0 : field} selected={f.watch ? 20 : selected} />
+      ) : fixedShot === 'features' ? (
+        <FeatureComparison active={activeFeature} />
+      ) : fixedShot === 'live-record' ? (
+        <LiveRecord index={liveIndex} />
       ) : (
-        <>
-          <svg
-            className="bio-division-field"
-            viewBox="0 0 360 215"
-            role="img"
-            aria-label={t('五十个固定细胞的时期保持不变，只移动观察位置')}
-          >
-            {root.map((cell, i) => {
-              const x = cell.x,
-                y = cell.y,
-                s = cell.stage;
-              return (
-                <g key={cell.id} onClick={() => !f.watch && setSelected(i)}>
-                  <rect
-                    x={x - 13}
-                    y={y - 15}
-                    width="28"
-                    height="34"
-                    rx="5"
-                    fill={i === highlight ? '#e2d5bd' : '#ebe4d6'}
-                    stroke={i === highlight ? '#b18557' : '#c3b9a5'}
-                    strokeWidth={i === highlight ? 2 : 1}
-                  />
-                  {s === 'interphase' ? (
-                    <>
-                      <ellipse cx={x} cy={y} rx="7" ry="10" fill="#c7aec8" />
-                      <path d={`M${x - 4} ${y - 3}q7 5 0 7`} fill="none" stroke="#a58aa9" />
-                    </>
-                  ) : (
-                    Array.from(
-                      { length: s === 'anaphase' || s === 'telophase' ? 32 : 16 },
-                      (_, j) => {
-                        const q = s === 'anaphase' || s === 'telophase',
-                          half = j < 16 ? -1 : 1,
-                          dx = s === 'metaphase' ? 0 : q ? half * 6 : ((j * 7) % 15) - 7,
-                          dy = s === 'metaphase' ? j - 7 : ((j * 5) % 19) - 9;
-                        return (
-                          <path
-                            key={j}
-                            d={`M${x + dx - 1} ${y + dy - 1}l2 2-2 2`}
-                            fill="none"
-                            stroke="#9a779e"
-                            strokeWidth="1"
-                          />
-                        );
-                      },
-                    )
-                  )}
-                </g>
-              );
-            })}
-          </svg>
-          <div className="bio-division-fixedinfo">
-            <span>
-              {t('当前观察细胞')} {chosen.id + 1} · {t(stageNames[chosen.stage])}
-            </span>
-            <span>
-              {t('间期')} {counts.interphase}/50 · {t('分裂期')} {50 - counts.interphase}/50
-            </span>
-          </div>
-          <p className="bio-division-note">
-            {t('装片细胞已固定；动画移动观察位置，不让同一个死细胞继续分裂。')}
-          </p>
-        </>
+        <CountComparison synchronized={f.watch ? directed.synchronized : synchronized} />
       )}
       {!f.watch && (
-        <div className="bio-division-controls">
+        <div className="bcd13-controls">
           <Segments
             label={t('观察对象')}
-            value={mode}
-            onChange={setMode}
+            value={m}
+            onChange={(v) => setMode(v as Mode)}
             options={[
               { value: 'mitosis', label: t('分裂机制') },
               { value: 'size', label: t('大小模型') },
-              { value: 'prepare', label: t('装片制作') },
+              { value: 'prepare', label: t('制片证据') },
               { value: 'fixed', label: t('固定视野') },
             ]}
           />
@@ -410,7 +571,7 @@ export default function BioCellDivision() {
           )}{' '}
           {m === 'prepare' && (
             <Range
-              label={t('制片进程')}
+              label={t('分散与显色')}
               value={preparation}
               min={0}
               max={1}
@@ -420,17 +581,61 @@ export default function BioCellDivision() {
           )}
           {m === 'fixed' && (
             <>
-              <Range
-                label={t('观察细胞编号')}
-                value={selected}
-                min={0}
-                max={49}
-                step={1}
-                onChange={setSelected}
+              <Segments
+                label={t('证据镜头')}
+                value={fixedView}
+                onChange={setFixedView}
+                options={[
+                  { value: 'field', label: t('固定视野') },
+                  { value: 'features', label: t('形态比较') },
+                  { value: 'live-record', label: t('活体记录') },
+                  { value: 'counterexample', label: t('统计反例') },
+                ]}
               />
-              <button type="button" onClick={() => setField((field + 1) % 2)}>
-                {t('移动到另一个固定视野')}
-              </button>
+              {fixedView === 'field' && (
+                <Range
+                  label={t('观察细胞编号')}
+                  value={selected + 1}
+                  min={1}
+                  max={50}
+                  step={1}
+                  onChange={(v) => setSelected(v - 1)}
+                />
+              )}
+              {fixedView === 'features' && (
+                <Range
+                  label={t('比较形态')}
+                  value={featureIndex + 1}
+                  min={1}
+                  max={4}
+                  step={1}
+                  onChange={(v) => setFeatureIndex(v - 1)}
+                />
+              )}
+              {fixedView === 'field' && (
+                <button type="button" onClick={() => setField((field + 1) % 2)}>
+                  {t('另一个合成视野')}
+                </button>
+              )}
+              {fixedView === 'live-record' && (
+                <Range
+                  label={t('发表记录帧')}
+                  value={recordIndex}
+                  min={0}
+                  max={4}
+                  step={1}
+                  onChange={setRecordIndex}
+                />
+              )}
+              {fixedView === 'counterexample' && (
+                <button
+                  type="button"
+                  aria-pressed={synchronized}
+                  onClick={() => setSynchronized(!synchronized)}
+                >
+                  {t(synchronized ? '同步群体' : '不同步群体')}
+                </button>
+              )}
             </>
           )}
         </div>

@@ -1473,5 +1473,205 @@
         "en": "Since |q|U/d=W, fixed weight and spacing require half the voltage. Finer substeps also accommodate finite records, so a bounded search cannot itself prove no smaller unit exists; absolute charge additionally depends on calibration."
       }
     }
+  },
+  "r3-multimeter-practice": {
+    "sceneSlug": "multimeter-lab",
+    "question": {
+      "zh": "同一根指针怎样分别测电压、电流和电阻？",
+      "en": "How can one pointer measure voltage, current and resistance?"
+    },
+    "lead": {
+      "zh": "追踪表内三条不同路径，看同一个敏感表头怎样对应不同的外部量。",
+      "en": "Follow three internal circuits that connect the same sensitive head to different quantities."
+    },
+    "principle": {
+      "zh": "表头响应自身电流。串联电阻分担电压，并联电阻分走电流；欧姆挡用内电池和已知内阻把待测电阻变成电流。",
+      "en": "The head responds to its own current. A series resistor shares voltage, a shunt diverts current, and an internal cell makes resistance measurable through test current."
+    },
+    "transfer": {
+      "question": {
+        "zh": "理想 3 V 电源不变，把 5 V 挡换成 10 V 挡，指针偏转和电压读数分别怎样变化？",
+        "en": "An ideal source stays at 3 V. What happens to pointer deflection and the reading when the range changes from 5 V to 10 V?"
+      },
+      "explanation": {
+        "zh": "输入电阻由 100 kΩ 变成 200 kΩ，表头电流从 30 µA 变成 15 µA，偏转由满量程的 60% 变成 30%；按新量程读仍是 3 V。实际电源还可能受有限输入电阻影响。",
+        "en": "Input resistance rises from 100 to 200 kilohms, so head current falls from 30 to 15 microamps and deflection from 60% to 30%. The new range still reads 3 V. A real source may also respond to the meter’s finite input resistance."
+      }
+    }
+  },
+  "r3-multimeter-faults": {
+    "sceneSlug": "multimeter-lab",
+    "question": {
+      "zh": "灯不亮，为什么故障两端反而可能有较大电压？",
+      "en": "Why can a fault show a large voltage while the lamp stays dark?"
+    },
+    "lead": {
+      "zh": "在同一电路逐段接入有限内阻电压表，区分电压、测量电流和灯丝电流。",
+      "en": "Probe one loaded circuit and distinguish voltage, meter current and filament current."
+    },
+    "principle": {
+      "zh": "近乎断路的接触承担大部分电压；电压表跨接后又形成一条微小电流路径。有电压不能证明灯丝有足够工作电流。",
+      "en": "A nearly open contact takes most of the voltage. The parallel voltmeter creates a small current path; voltage alone does not establish sufficient filament current."
+    },
+    "transfer": {
+      "question": {
+        "zh": "电池有电压，闭合开关两端电压很小，灯座外侧接近电源电压，能完全排除灯丝断裂吗？",
+        "en": "The battery has voltage, the closed switch has almost none, and the socket terminals show nearly the source voltage. Can a broken filament be ruled out?"
+      },
+      "explanation": {
+        "zh": "不能。在教材限定的候选故障中支持灯座接触不良；灯丝断裂也可能产生类似读数，需要更多独立检查。本模型只比较声明的单一故障。",
+        "en": "No. Among the textbook’s candidate faults this supports bad socket contact, but a broken filament can produce a similar reading. Further independent checks are needed; this model compares only its declared single faults."
+      }
+    }
+  },
+  "required-1-sensor-speed": {
+    "sceneSlug": "motion-sensor-lab",
+    "question": {
+      "zh": "同样测距离，为什么有时要除以二？",
+      "en": "Why do some distance sensors divide by two?"
+    },
+    "lead": {
+      "zh": "追踪一次声脉冲的出发、到达和反射，再比较连续两次位置。",
+      "en": "Follow emission, arrival and reflection, then compare two measured positions."
+    },
+    "principle": {
+      "zh": "传播时差先给出距离，连续两次位置才给出速度；单程与往返不能使用相同的距离公式。",
+      "en": "Travel delay determines range, and two positions determine velocity. One-way and return paths require different range formulas."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把探头改为同时发射和接收，原来的距离公式还适用吗？",
+        "en": "Does the same range formula apply when one probe both transmits and receives?"
+      },
+      "explanation": {
+        "zh": "不直接适用。回波经过往返，声速乘总时差给出两程路长；应除以二，并对应反射时刻的位置。",
+        "en": "No. The echo travels out and back. Sound speed times total delay is the two-leg distance; divide by two and assign the range to the reflection instant."
+      }
+    }
+  },
+  "required-1-faraday-history": {
+    "sceneSlug": "mutual-induction-lab",
+    "question": {
+      "zh": "两组导线没接通，指针为什么会偏转？",
+      "en": "Why does the meter move without a wire connection?"
+    },
+    "lead": {
+      "zh": "比较接通、保持直流和断开的同一套铁环线圈。",
+      "en": "Compare closing, steady direct current and opening in the same iron-ring apparatus."
+    },
+    "principle": {
+      "zh": "副线圈响应磁通的变化；原电流方向不变，增减方向相反也会让感应电动势反向。",
+      "en": "The secondary responds to changing flux. Reversing whether primary current rises or falls reverses emf without reversing the current itself."
+    },
+    "transfer": {
+      "question": {
+        "zh": "维持更强但不变的电流，副线圈会一直响应吗？",
+        "en": "Would a stronger but steady primary current keep producing a response?"
+      },
+      "explanation": {
+        "zh": "不会。在这里的固定几何模型中，稳定磁通的变化率为零，不持续产生感应电动势。",
+        "en": "No. At fixed geometry, steady flux has zero time derivative and does not sustain an induced emf."
+      }
+    }
+  },
+  "required-1-faraday-appendix": {
+    "sceneSlug": "mutual-induction-lab",
+    "question": {
+      "zh": "两组导线没接通，指针为什么会偏转？",
+      "en": "Why does the meter move without a wire connection?"
+    },
+    "lead": {
+      "zh": "比较接通、保持直流和断开的同一套铁环线圈。",
+      "en": "Compare closing, steady direct current and opening in the same iron-ring apparatus."
+    },
+    "principle": {
+      "zh": "副线圈响应磁通的变化；原电流方向不变，增减方向相反也会让感应电动势反向。",
+      "en": "The secondary responds to changing flux. Reversing whether primary current rises or falls reverses emf without reversing the current itself."
+    },
+    "transfer": {
+      "question": {
+        "zh": "维持更强但不变的电流，副线圈会一直响应吗？",
+        "en": "Would a stronger but steady primary current keep producing a response?"
+      },
+      "explanation": {
+        "zh": "不会。在这里的固定几何模型中，稳定磁通的变化率为零，不持续产生感应电动势。",
+        "en": "No. At fixed geometry, steady flux has zero time derivative and does not sustain an induced emf."
+      }
+    }
+  },
+  "r3-faraday-iron-ring": {
+    "sceneSlug": "mutual-induction-lab",
+    "question": {
+      "zh": "两组导线没接通，指针为什么会偏转？",
+      "en": "Why does the meter move without a wire connection?"
+    },
+    "lead": {
+      "zh": "比较接通、保持直流和断开的同一套铁环线圈。",
+      "en": "Compare closing, steady direct current and opening in the same iron-ring apparatus."
+    },
+    "principle": {
+      "zh": "副线圈响应磁通的变化；原电流方向不变，增减方向相反也会让感应电动势反向。",
+      "en": "The secondary responds to changing flux. Reversing whether primary current rises or falls reverses emf without reversing the current itself."
+    },
+    "transfer": {
+      "question": {
+        "zh": "维持更强但不变的电流，副线圈会一直响应吗？",
+        "en": "Would a stronger but steady primary current keep producing a response?"
+      },
+      "explanation": {
+        "zh": "不会。在这里的固定几何模型中，稳定磁通的变化率为零，不持续产生感应电动势。",
+        "en": "No. At fixed geometry, steady flux has zero time derivative and does not sustain an induced emf."
+      }
+    }
+  },
+  "e2-faraday-ring": {
+    "sceneSlug": "mutual-induction-lab",
+    "question": {
+      "zh": "两组导线没接通，指针为什么会偏转？",
+      "en": "Why does the meter move without a wire connection?"
+    },
+    "lead": {
+      "zh": "比较接通、保持直流和断开的同一套铁环线圈。",
+      "en": "Compare closing, steady direct current and opening in the same iron-ring apparatus."
+    },
+    "principle": {
+      "zh": "副线圈响应磁通的变化；原电流方向不变，增减方向相反也会让感应电动势反向。",
+      "en": "The secondary responds to changing flux. Reversing whether primary current rises or falls reverses emf without reversing the current itself."
+    },
+    "transfer": {
+      "question": {
+        "zh": "维持更强但不变的电流，副线圈会一直响应吗？",
+        "en": "Would a stronger but steady primary current keep producing a response?"
+      },
+      "explanation": {
+        "zh": "不会。在这里的固定几何模型中，稳定磁通的变化率为零，不持续产生感应电动势。",
+        "en": "No. At fixed geometry, steady flux has zero time derivative and does not sustain an induced emf."
+      }
+    }
+  },
+  "e2-mutual-induction-audio": {
+    "sceneSlug": "mutual-induction-lab",
+    "question": {
+      "zh": "没有电接触，线圈怎样传递信号？",
+      "en": "How can coils transfer a signal without contact?"
+    },
+    "lead": {
+      "zh": "保留相同的电流信号，比较线圈停在不同套入位置后的接收响应。",
+      "en": "Keep the same drive current and compare received responses at different stationary insertions."
+    },
+    "principle": {
+      "zh": "变化的电流产生变化的磁通；线圈耦合越弱，同样变化率产生的接收电动势越小。",
+      "en": "Changing current changes linked flux. Weaker coupling gives a smaller induced emf for the same current rate of change."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持套入程度与电流幅度，提高频率，会怎样？",
+        "en": "What changes if frequency rises at fixed insertion and current amplitude?"
+      },
+      "explanation": {
+        "zh": "在本线性高阻模型中，电流变化率增大，感应电动势幅值增大；这不能直接换算真实扬声器响度。",
+        "en": "In this linear high-impedance model, the current changes faster and the induced emf amplitude rises. This does not directly determine loudspeaker volume."
+      }
+    }
   }
 }

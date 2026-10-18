@@ -1,38 +1,78 @@
 ---
-import { halogenDisplacement, HALOGEN_COLOURS } from '../../models/chem-periodic-practical';
-const m = halogenDisplacement('Cl', 'Br');
+import { halogenEvent, HALOGEN_COLOURS } from '../../models/chem-periodic-practical';
+const event = halogenEvent('Cl', 'Br', 0.5, 460);
 ---
 
-<svg viewBox="0 0 640 400" aria-hidden="true"
-  ><rect width="640" height="400" fill="#e8eddf"></rect><rect
-    x="90"
-    y="80"
-    width="460"
-    height="240"
-    rx="35"
-    fill="#e3e7da"
-    stroke="#c8d1bf"></rect>{
-    [210, 430].map((x, i) => (
+<svg viewBox="0 0 640 400" aria-hidden="true">
+  <defs
+    ><linearGradient id="periodic-cover-porcelain" x2="0.8" y2="1"
+      ><stop stop-color="#f2f3e9"></stop><stop offset="1" stop-color="#dce4d3"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect width="640" height="400" fill="#e8eddf"></rect>
+  <rect
+    x="55"
+    y="35"
+    width="530"
+    height="180"
+    rx="38"
+    fill="url(#periodic-cover-porcelain)"
+    stroke="#c4d0b8"></rect>
+  {
+    [
+      { x: 175, e: 'Br' as const },
+      { x: 320, e: 'I' as const },
+      { x: 465, e: 'Cl' as const },
+    ].map(({ x, e }) => (
       <g>
         <>
-          <ellipse cx={x} cy="200" rx="80" ry="75" fill="#cbd5c1" stroke="#aab99d" />
-          <ellipse
-            cx={x}
-            cy="200"
-            rx="69"
-            ry="64"
-            fill={HALOGEN_COLOURS[i ? 'Cl' : 'Br']}
-            opacity={i ? 0.65 : m.product * 1.6}
-          />
+          <ellipse cx={x} cy="121" rx="55" ry="49" fill="#bfcdb4" stroke="#a4b496" />
+          <ellipse cx={x} cy="121" rx="48" ry="42" fill={HALOGEN_COLOURS[e]} opacity=".72" />
           <path
-            d={`M${x - 50} 170q15-28 43-27`}
+            d={`M${x - 31} 98q12-17 34-15`}
             fill="none"
             stroke="#fbfcf4"
-            stroke-width="5"
-            opacity=".65"
+            stroke-width="4"
+            opacity=".8"
           />
         </>
       </g>
     ))
-  }</svg
->
+  }
+  <g transform="translate(90 205)">
+    <path
+      d="M112 65Q230 15 339 65M112 130Q230 180 339 130"
+      fill="none"
+      stroke="#bda878"
+      stroke-dasharray="4 6"></path>
+    {
+      event.atoms.map((a) => (
+        <g transform={`translate(${a.x} ${a.y})`}>
+          <>
+            <circle r="18" fill={HALOGEN_COLOURS[a.element as 'Cl' | 'Br']} />
+            <text
+              text-anchor="middle"
+              dy=".35em"
+              fill="#4f6256"
+              font-size="18"
+              font-family="sans-serif"
+            >
+              {a.element}
+            </text>
+          </>
+        </g>
+      ))
+    }
+    {
+      event.electrons.map((e) => (
+        <g transform={`translate(${e.x} ${e.y})`}>
+          <>
+            <circle r="11" fill="#8da2bb" />
+            <path d="M-4 0H4" stroke="#f6f8ef" stroke-width="2" />
+          </>
+        </g>
+      ))
+    }
+  </g>
+</svg>

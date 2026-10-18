@@ -1254,6 +1254,8 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         '氯溴碘',
         '镁',
         '氢氧化铝',
+        '元素性质与证据',
+        '怎样从反应现象推出元素的性质？',
       ],
       en: [
         'Experimental comparisons across a period and a group',
@@ -1262,6 +1264,8 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         'magnesium water',
         'aluminium hydroxide',
         'spotting tile',
+        'Element properties and evidence',
+        'How can reactions reveal element properties?',
       ],
     },
   },
@@ -1452,8 +1456,20 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['细胞分裂与固定观察', '有丝分裂', '根尖', '细胞周期', 'mitosis'],
-      en: ['Cell division and fixed specimens', 'cell biology', 'biology experiments'],
+      zh: [
+        '细胞分裂与固定观察',
+        '有丝分裂',
+        '根尖',
+        '细胞周期',
+        'mitosis',
+        '细胞分裂：形态、顺序与计数',
+      ],
+      en: [
+        'Cell division and fixed specimens',
+        'cell biology',
+        'biology experiments',
+        'Cell division: shape, order and counting',
+      ],
     },
   },
   'bio-auxin-evidence': {
@@ -2901,8 +2917,22 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'electricity',
     minAge: 14,
     keywords: {
-      zh: ['多用电表实验', '多用电表', '欧姆调零', '二极管', '故障检测'],
-      en: ['Multimeter Experiments', 'analog multimeter', 'ohm zero', 'diode', 'circuit faults'],
+      zh: [
+        '多用电表实验',
+        '多用电表',
+        '欧姆调零',
+        '二极管',
+        '故障检测',
+        '一根指针，为什么能测三种量？',
+      ],
+      en: [
+        'Multimeter Experiments',
+        'analog multimeter',
+        'ohm zero',
+        'diode',
+        'circuit faults',
+        'Why can one pointer measure three quantities?',
+      ],
     },
   },
   'statistical-motion-lab': {

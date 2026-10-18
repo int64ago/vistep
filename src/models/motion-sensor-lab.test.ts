@@ -36,3 +36,13 @@ describe('two textbook ultrasonic arrangements', () => {
     expect(() => sonicMeasurement('active', 0, 0, -1)).toThrow();
   });
 });
+
+it('rejects nonfinite pulse time and zero sampling interval', () => {
+  for (const bad of [NaN, Infinity, -Infinity])
+    expect(() => sonicPulse('active', 0, bad)).toThrow(RangeError);
+  expect(() => sensorVelocity('reflection', 0, 0.3, 0)).toThrow(RangeError);
+});
+
+it('rejects an epoch that cannot represent the sample interval', () => {
+  expect(() => sensorVelocity('active', 1e15, 0.3, 0.02)).toThrow(RangeError);
+});

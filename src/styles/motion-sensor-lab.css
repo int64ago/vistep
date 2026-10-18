@@ -201,3 +201,68 @@
     font-size: 24px;
   }
 }
+
+/* A short phone has its own watch composition: apparatus OR sampled evidence. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .motion-sensor-lab {
+    padding: 6px 8px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-apparatus > svg {
+    height: 122px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-key {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing {
+    gap: 4px 10px;
+    margin: 6px 0 0;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing > div {
+    min-width: 100px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing > div > span {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-lab[data-shot='samples'] .motion-sensor-apparatus {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-samples > svg {
+    height: 106px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-samples > .motion-sensor-pair {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 641px) {
+  .showcase[data-mode='watch'] .motion-sensor-lab {
+    padding: 16px 24px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-apparatus > svg {
+    height: 280px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-lab > .motion-sensor-note {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing {
+    margin: 16px 0;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-lab[data-shot='samples'] .motion-sensor-apparatus {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-samples > svg {
+    height: 180px;
+  }
+}
+@media (max-width: 640px) {
+  .showcase[data-slug='motion-sensor-lab'] .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='motion-sensor-lab'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}

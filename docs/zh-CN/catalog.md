@@ -97,7 +97,7 @@
 | [电子式与轨道重叠](../../src/content/chem-bond-overlap.mdx)                       | 3:50 | 怎样区分电子转移、共用与轨道重叠？                   |
 | [周期表与性质趋势](../../src/content/chem-periodic-patterns.mdx)                  | 3:30 | 元素排成周期表，哪些关系被保留下来？                 |
 | [原子模型与证据](../../src/content/chem-atomic-models.mdx)                        | 4:18 | 看不见原子，凭什么改变原子模型？                     |
-| [同周期与同主族的实验比较](../../src/content/chem-periodic-practical.mdx)         | 3:28 | 怎样用实验比较元素性质的递变？                       |
+| [元素性质与证据](../../src/content/chem-periodic-practical.mdx)                   | 4:59 | 怎样从反应现象推出元素的性质？                       |
 | [铁的电子去向](../../src/content/chem-iron-practical.mdx)                         | 3:27 | 二价铁为什么既能得电子，也能失电子？                 |
 | [食品中铁元素的检验](../../src/content/chem-food-iron.mdx)                        | 1:54 | 滤液变红之前，每一步做了什么？                       |
 | [铝表面的氧化膜与酸碱反应](../../src/content/chem-aluminium-film.mdx)             | 1:58 | 同样的铝，为什么有时要等一会儿才冒泡？               |
@@ -152,7 +152,7 @@
 | [孟德尔的豌豆杂交](../../src/content/bio-mendel-crosses.mdx)                  | 3:39 | 从控制花粉到检验比例，追踪遗传因子怎样传递。   |
 | [细胞的分化、衰老与凋亡](../../src/content/bio-cell-fates.mdx)                | 2:51 | 培养、核质交换与谱系追踪，各自能回答什么？     |
 | [植物生长调节剂的探究](../../src/content/bio-plant-growth-regulators.mdx)     | 3:05 | 植物变长、生根或成熟，怎样确定处理的作用？     |
-| [细胞分裂与固定观察](../../src/content/bio-cell-division.mdx)                 | 2:49 | 把活的过程模型与固定装片里的不同细胞分开。     |
+| [细胞分裂与固定观察](../../src/content/bio-cell-division.mdx)                 | 3:16 | 细胞分裂：形态、顺序与计数                     |
 | [生长素的证据链](../../src/content/bio-auxin-evidence.mdx)                    | 4:28 | 植物弯向光，怎样一步步找到原因？               |
 | [光合作用的证据链](../../src/content/bio-photosynthesis-evidence.mdx)         | 4:46 | 光怎样变成推动合成的能量？                     |
 | [叶片的色带与光谱](../../src/content/bio-leaf-pigments.mdx)                   | 2:43 | 同一滴绿色，为什么会分成几条色带？             |
@@ -253,7 +253,7 @@
 | [富兰克林的电学证据](../../src/content/franklin-electricity-evidence.mdx)  | 1:36 | 雷电与摩擦电，怎样建立实验上的联系？             |
 | [水滴与青蛙的抗磁悬浮](../../src/content/diamagnetic-levitation-lab.mdx)   | 2:10 | 没有磁铁的水滴，为什么也能悬浮？                 |
 | [电源电动势与内阻实验](../../src/content/battery-emf-lab.mdx)              | 4:08 | 电源有电，为什么接上负载电压就变了？             |
-| [多用电表实验](../../src/content/multimeter-lab.mdx)                       | 3:55 | 同一根指针，为什么要换接法、换刻度？             |
+| [多用电表实验](../../src/content/multimeter-lab.mdx)                       | 4:38 | 一根指针，为什么能测三种量？                     |
 | [电阻与电阻率实验](../../src/content/resistivity-lab.mdx)                  | 2:41 | 电阻变化，究竟是哪一个条件变了？                 |
 | [传感器测量与自动控制](../../src/content/sensor-control-lab.mdx)           | 4:24 | 怎样让光、温度和压力控制一盏灯？                 |
 | [Wi-Fi与蓝牙干扰实验](../../src/content/wireless-interference-lab.mdx)     | 2:10 | 连接蓝牙以后，Wi-Fi一定会变慢吗？                |

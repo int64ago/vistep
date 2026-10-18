@@ -13498,7 +13498,7 @@
         "title": "接通的瞬间",
         "titleEn": "Closing the switch",
         "caption": "原线圈电流变化，副线圈才响应。",
-        "captionEn": "The secondary responds while the primary current changes.",
+        "captionEn": "Changing primary current induces an emf.",
         "at": 0
       },
       {
@@ -13506,7 +13506,7 @@
         "title": "电流稳定以后",
         "titleEn": "After current settles",
         "caption": "有磁场，不等于持续产生电动势。",
-        "captionEn": "A magnetic field alone does not sustain an emf.",
+        "captionEn": "Steady flux gives zero induced emf.",
         "at": 26
       },
       {
@@ -13514,7 +13514,7 @@
         "title": "断开后反向",
         "titleEn": "Opening reverses the response",
         "caption": "磁通减小，感应电动势方向反转。",
-        "captionEn": "Decreasing flux reverses the induced emf.",
+        "captionEn": "Decreasing flux reverses the emf.",
         "at": 52
       },
       {
@@ -13522,7 +13522,7 @@
         "title": "连续传送音频信号",
         "titleEn": "A continuous audio signal",
         "caption": "变化的原电流，不需要电接触就能传递信号。",
-        "captionEn": "Changing primary current transfers a signal without electrical contact.",
+        "captionEn": "Changing flux transfers a signal.",
         "at": 78
       },
       {
@@ -13530,7 +13530,7 @@
         "title": "抽出以后比较",
         "titleEn": "Compare after withdrawal",
         "caption": "相同信号源，更小的耦合带来更弱的接收信号。",
-        "captionEn": "The same source produces a weaker signal with less coupling.",
+        "captionEn": "Weaker coupling gives a weaker signal.",
         "at": 104
       }
     ]
@@ -15103,87 +15103,87 @@
     ]
   },
   "multimeter-lab": {
-    "duration": 235,
+    "duration": 278.0,
     "chapters": [
       {
         "id": "voltage-parallel",
-        "title": "电压要并联",
-        "titleEn": "Voltage goes in parallel",
-        "caption": "跨接同一只灯泡的两端，读电压挡。",
-        "captionEn": "Probe both lamp terminals and read the voltage scale.",
+        "title": "一个表头，怎样测电压？",
+        "titleEn": "One head: how does it measure voltage?",
+        "caption": "串联电阻分担电压，表头仍只读小电流。",
+        "captionEn": "A series resistor limits head current.",
         "at": 0
       },
       {
         "id": "current-series",
-        "title": "电流要串联",
-        "titleEn": "Current goes in series",
-        "caption": "打开一处导线，让该支路电流经过电表。",
-        "captionEn": "Open a wire so the branch current passes through the meter.",
-        "at": 22
+        "title": "大电流怎样绕过表头？",
+        "titleEn": "How does large current bypass the head?",
+        "caption": "总电流在表头与分流支路之间分配。",
+        "captionEn": "Total current splits between head and shunt.",
+        "at": 35.0
       },
       {
         "id": "ohm-zero",
-        "title": "右端是零欧姆",
-        "titleEn": "Zero ohms is on the right",
-        "caption": "短接表笔，调零；换倍率后要重新检查。",
-        "captionEn": "Short and zero the probes; check again after changing the multiplier.",
-        "at": 44
+        "title": "电阻测量的电流从哪来？",
+        "titleEn": "Where does resistance-test current come from?",
+        "caption": "内电池驱动回路；短接时偏转最大。",
+        "captionEn": "The internal cell drives the test current.",
+        "at": 69.5
       },
       {
         "id": "fixed-resistor",
-        "title": "非均匀的刻度",
-        "titleEn": "A nonlinear scale",
-        "caption": "先读欧姆刻度，再乘倍率。",
-        "captionEn": "Read the ohm scale, then multiply by the selected factor.",
-        "at": 66
+        "title": "为什么欧姆刻度不均匀？",
+        "titleEn": "Why is the ohm scale nonlinear?",
+        "caption": "外部电阻与内阻共同决定表头电流。",
+        "captionEn": "External and internal resistance both matter.",
+        "at": 103.0
       },
       {
         "id": "cold-filament",
         "title": "灯丝也能测电阻",
         "titleEn": "Measure a cold filament",
-        "caption": "测得的是此时的冷态电阻。",
-        "captionEn": "This reading is the filament’s present cold resistance.",
-        "at": 88
+        "caption": "冷态电阻不能代替正常发光时的电阻。",
+        "captionEn": "Cold resistance differs from hot resistance.",
+        "at": 131.0
       },
       {
         "id": "hand-contact",
         "title": "接触条件也重要",
         "titleEn": "Contact conditions matter",
-        "caption": "同一个人，接触方式改变，读数也会改变。",
-        "captionEn": "Changing hand contact can change the reading for the same person.",
-        "at": 108
+        "caption": "同一条手部路径，接触条件改变读数。",
+        "captionEn": "Contact changes the path’s resistance.",
+        "at": 151.0
       },
       {
         "id": "diode-direction",
         "title": "交换表笔，读数变了",
         "titleEn": "Swap probes, change the reading",
-        "caption": "本模拟式欧姆挡中，黑表笔向外供给正电势。",
-        "captionEn": "This modeled analog ohmmeter supplies positive potential at the black probe.",
-        "at": 131
+        "caption": "此表型的黑表笔为内部正极。",
+        "captionEn": "This model’s black lead is positive.",
+        "at": 174.0
       },
       {
         "id": "fault-battery",
         "title": "灯不亮，先检查电源",
         "titleEn": "First check the source",
-        "caption": "电池两端接近零，与有电压但断路不同。",
-        "captionEn": "Near-zero battery voltage differs from a powered open circuit.",
-        "at": 159
+        "caption": "同样灯不亮，电池电压可能不同。",
+        "captionEn": "The same dark lamp can have different causes.",
+        "at": 202.0
       },
       {
         "id": "fault-switch-wire",
         "title": "寻找异常电压降",
         "titleEn": "Find the unusual voltage drop",
-        "caption": "开关或导线断路时，其两端可能承担大部分电压。",
-        "captionEn": "An open switch or wire can carry most of the circuit voltage.",
-        "at": 183
+        "caption": "电表接入后，测量支路也通过电流。",
+        "captionEn": "The meter also loads the tested circuit.",
+        "at": 226.0
       },
       {
         "id": "fault-socket",
         "title": "有电压，仍可能不发光",
         "titleEn": "Voltage without light",
-        "caption": "灯座外侧有电压，不能单凭这一点认定灯丝正常。",
-        "captionEn": "Voltage outside the socket does not by itself prove the filament is intact.",
-        "at": 207
+        "caption": "有电压，不保证有正常工作电流。",
+        "captionEn": "Voltage does not guarantee working current.",
+        "at": 250.0
       }
     ]
   },
@@ -15858,7 +15858,7 @@
         "title": "同时发射两种信号",
         "titleEn": "Transmit two signals together",
         "caption": "红外提供起点，超声提供可测的延迟。",
-        "captionEn": "Infrared supplies the reference; ultrasound supplies a measurable delay.",
+        "captionEn": "An infrared reference times the slower sound.",
         "at": 0
       },
       {
@@ -15866,7 +15866,7 @@
         "title": "一次单程测距",
         "titleEn": "Measure the one-way range",
         "caption": "x约等于声速乘时差，不需要除以二。",
-        "captionEn": "Range is approximately sound speed times delay, without a factor of two.",
+        "captionEn": "One-way range ≈ sound speed × delay.",
         "at": 27
       },
       {
@@ -15874,7 +15874,7 @@
         "title": "连续位置生成速度",
         "titleEn": "Generate velocity from successive positions",
         "caption": "0.02秒一次测距，位移除以对应时间。",
-        "captionEn": "Sample every 0.02 seconds and divide displacement by the matching interval.",
+        "captionEn": "Position differences reveal velocity.",
         "at": 55
       },
       {
@@ -15882,7 +15882,7 @@
         "title": "改为发射与接收同一探头",
         "titleEn": "Use one transducer for the round trip",
         "caption": "超声碰到反射面后返回，路程约为两倍距离。",
-        "captionEn": "Ultrasound reflects from the target and returns along a two-way path.",
+        "captionEn": "An echo travels out and back.",
         "at": 84
       }
     ]
@@ -20310,63 +20310,63 @@
     ]
   },
   "bio-cell-division": {
-    "duration": 169,
+    "duration": 196.0,
     "chapters": [
       {
         "id": "replicate",
-        "title": "先复制DNA",
-        "titleEn": "Replicate DNA first",
-        "caption": "DNA复制后，染色体数不立即加倍。",
-        "captionEn": "DNA replication does not immediately double chromosome number.",
+        "title": "DNA 复制了，染色体数就翻倍吗？",
+        "titleEn": "Does DNA replication double chromosome number?",
+        "caption": "先复制 DNA，再分配两个副本。",
+        "captionEn": "Copy DNA, then distribute the two copies.",
         "at": 0
       },
       {
         "id": "align",
-        "title": "把复制后的染色体排好",
-        "titleEn": "Align replicated chromosomes",
-        "caption": "姐妹染色单体分别连接相对两极的纺锤丝。",
-        "captionEn": "Sister chromatids attach toward opposite spindle poles.",
-        "at": 23
+        "title": "怎样让两个副本去往不同方向？",
+        "titleEn": "How do sister copies head to opposite poles?",
+        "caption": "姐妹连向两极，分开后各一份。",
+        "captionEn": "Sisters connect toward opposite poles.",
+        "at": 23.0
       },
       {
         "id": "segregate",
-        "title": "分开后，各有一套",
-        "titleEn": "Separate into matching sets",
-        "caption": "姐妹染色单体分开成为子染色体，分别向两极移动。",
-        "captionEn": "Sisters become daughter chromosomes and move toward opposite poles.",
-        "at": 45
+        "title": "为什么暂时数到八条？",
+        "titleEn": "Why are there temporarily eight chromosomes?",
+        "caption": "分离改变计数，DNA 没有再次复制。",
+        "captionEn": "Separation changes the count, not the DNA amount.",
+        "at": 45.0
       },
       {
         "id": "divide",
-        "title": "重新建立两个细胞",
-        "titleEn": "Establish two daughter cells",
-        "caption": "植物形成细胞板；动物通过分裂沟完成胞质分裂。",
-        "captionEn": "Plants form a cell plate; animal cells divide through a cleavage furrow.",
-        "at": 69
+        "title": "分成两份后，各剩多少？",
+        "titleEn": "What does each daughter receive?",
+        "caption": "两子细胞各保留原来的染色体数。",
+        "captionEn": "Each daughter retains the original count.",
+        "at": 69.0
       },
       {
         "id": "size",
-        "title": "同样深度，不同占比",
-        "titleEn": "Equal depth, different fractions",
-        "caption": "立方体越大，表面积与体积之比越小。",
-        "captionEn": "Larger cubes have less surface area per unit volume.",
-        "at": 92
+        "title": "外层同样厚，大块为何覆盖更少？",
+        "titleEn": "Why does the same shell reach less of a larger cube?",
+        "caption": "同样外层厚度，大块覆盖比例更小。",
+        "captionEn": "Equal shell thickness covers less of a larger cube.",
+        "at": 92.0
       },
       {
         "id": "prepare",
-        "title": "固定后才能清楚比较",
-        "titleEn": "Prepare a fixed specimen",
-        "caption": "解离、漂洗、染色和压片，使细胞分散并显示染色体。",
-        "captionEn": "Dissociation, rinsing, staining and squashing separate cells and reveal chromosomes.",
-        "at": 117
+        "title": "这张装片保留了什么？",
+        "titleEn": "What does a fixed preparation preserve?",
+        "caption": "形态保留，分散与染色让它可辨。",
+        "captionEn": "Spreading and staining reveal preserved shapes.",
+        "at": 117.0
       },
       {
         "id": "fixed",
-        "title": "换一个细胞，不是等它分裂",
-        "titleEn": "Change cells, not their fixed stage",
-        "caption": "视野保持固定，只移动观察位置并统计时期。",
-        "captionEn": "The field remains fixed while observation and stage counting move between cells.",
-        "at": 141
+        "title": "形态、先后与时长是同一种证据吗？",
+        "titleEn": "Do shape, order and duration need the same evidence?",
+        "caption": "形态、先后和时长，需要不同证据。",
+        "captionEn": "Shape, order and duration need different evidence.",
+        "at": 146.0
       }
     ]
   },
@@ -21124,71 +21124,71 @@
     ]
   },
   "chem-periodic-practical": {
-    "duration": 207.5,
+    "duration": 299.0,
     "chapters": [
       {
         "id": "chlorine-bromide",
-        "title": "氯水与溴离子",
-        "titleEn": "Chlorine water meets bromide",
-        "caption": "与氯水参照比较，Br₂生成带来黄橙色。",
-        "captionEn": "Compared with chlorine-water reference, Br₂ formation gives yellow-orange colour.",
+        "title": "新颜色从哪里来？",
+        "titleEn": "Where does the new colour come from?",
+        "caption": "新颜色，是谁失去了电子？",
+        "captionEn": "Whose electrons produce the new colour?",
         "at": 0
       },
       {
         "id": "chlorine-iodide",
-        "title": "同一氧化剂，换成碘离子",
-        "titleEn": "The same oxidant with iodide",
-        "caption": "氯水能氧化I⁻，产生含碘的棕色。",
-        "captionEn": "Chlorine water oxidizes I⁻, producing a brown iodine-containing solution.",
-        "at": 25
+        "title": "换成碘离子，还能交换吗？",
+        "titleEn": "Does the exchange work with iodide?",
+        "caption": "换一种离子，追踪同一笔电子账。",
+        "captionEn": "A new ion; the same electron account.",
+        "at": 32.0
       },
       {
         "id": "bromine-iodide",
-        "title": "溴水也能置换碘",
-        "titleEn": "Bromine also displaces iodine",
-        "caption": "Br₂能氧化I⁻，三组证据支持Cl₂ > Br₂ > I₂。",
-        "captionEn": "Br₂ oxidizes I⁻; the three comparisons support Cl₂ > Br₂ > I₂.",
-        "at": 50
+        "title": "补上缺的一条证据",
+        "titleEn": "Complete the missing comparison",
+        "caption": "溴与碘的比较，让排序可以预测。",
+        "captionEn": "The missing comparison enables a prediction.",
+        "at": 62.5
       },
       {
         "id": "magnesium-cold",
-        "title": "把镁放进冷水",
-        "titleEn": "Magnesium in cold water",
-        "caption": "冷水中反应不明显；比较时要记录温度与表面条件。",
-        "captionEn": "Reaction is not appreciable in cold water; temperature and surface condition matter.",
-        "at": 77
+        "title": "没有明显气泡，就是不能反应？",
+        "titleEn": "Does no visible bubbling mean no reaction?",
+        "caption": "镁的短时观察，不能代替速率与趋势。",
+        "captionEn": "A short observation cannot settle reactivity.",
+        "at": 98.5
       },
       {
         "id": "magnesium-hot",
-        "title": "加热后追踪产物",
-        "titleEn": "Follow products after heating",
-        "caption": "热水中现象增强；H₂与Mg(OH)₂对应水和镁的转化。",
-        "captionEn": "Heating makes the reaction more evident; H₂ and Mg(OH)₂ account for water and magnesium.",
-        "at": 101.5
+        "title": "气体里的氢原来在哪里？",
+        "titleEn": "Where was the hydrogen before it became gas?",
+        "caption": "水里的氢变成气体，镁交出电子。",
+        "captionEn": "Water supplies the gas; magnesium supplies electrons.",
+        "at": 131.0
       },
       {
         "id": "prepare-hydroxides",
-        "title": "先制得两种白色沉淀",
-        "titleEn": "Prepare two white precipitates",
-        "caption": "氨水分别使Al³⁺与Mg²⁺形成白色氢氧化物沉淀。",
-        "captionEn": "Aqueous ammonia produces white hydroxide precipitates from Al³⁺ and Mg²⁺.",
-        "at": 128.5
+        "title": "同样的白色，组成也相同吗？",
+        "titleEn": "Does the same white colour mean the same composition?",
+        "caption": "氨从水接受质子，沉淀保存金属身份。",
+        "captionEn": "Ammonia accepts a proton; the metals retain their identities.",
+        "at": 169.5
       },
       {
         "id": "acid-dissolves-both",
-        "title": "酸让两种沉淀都减少",
-        "titleEn": "Acid dissolves both precipitates",
-        "caption": "Al(OH)₃与Mg(OH)₂都能消耗H⁺而溶解。",
-        "captionEn": "Al(OH)₃ and Mg(OH)₂ both consume H⁺ and dissolve.",
-        "at": 154.5
+        "title": "酸为什么能让两份沉淀消失？",
+        "titleEn": "Why can acid dissolve both solids?",
+        "caption": "氢氧根的氧留在新生成的水里。",
+        "captionEn": "The hydroxide oxygens remain in the new water.",
+        "at": 205.0
       },
       {
         "id": "base-distinguishes",
-        "title": "强碱把两者区分开",
-        "titleEn": "Strong base distinguishes the two",
-        "caption": "Al(OH)₃溶于强碱形成[Al(OH)₄]⁻，Mg(OH)₂保持沉淀。",
-        "captionEn": "Al(OH)₃ dissolves in strong base as [Al(OH)₄]⁻; Mg(OH)₂ remains precipitated.",
-        "at": 179.5
+        "title": "碱为什么只带走其中一份？",
+        "titleEn": "Why does base carry away only one solid?",
+        "caption": "铝的价态不变，配离子的总电荷变了。",
+        "captionEn": "Aluminium keeps its oxidation state; the complex has a new charge.",
+        "at": 245.0
       }
     ]
   },

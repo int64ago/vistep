@@ -12,7 +12,7 @@ import MolecularMeasurementLab from './MolecularMeasurementLab';
 import StatisticalMotionLab from './StatisticalMotionLab';
 import SolidStructureLab from './SolidStructureLab';
 import WirelessInterferenceLab from './WirelessInterferenceLab';
-vi.mock('../../i18n', () => ({ t: (s: string) => s }));
+vi.mock('../../i18n', () => ({ t: (s: string) => s, browserLocale: () => 'zh' }));
 const base: Director = {
   watch: true,
   playing: false,

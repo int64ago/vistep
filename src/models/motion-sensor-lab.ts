@@ -61,6 +61,7 @@ export function sonicPulse(
   velocity = 0.3,
   start = 1.2,
 ) {
+  if (!Number.isFinite(elapsed)) throw new RangeError('Finite pulse time required');
   const s = sonicMeasurement(method, emission, velocity, start),
     time = Math.max(0, Math.min(s.flight, elapsed)),
     world = emission + time;
@@ -88,5 +89,28 @@ export function sensorVelocity(
     throw new RangeError('Positive sampling interval required');
   const a = sonicMeasurement(method, emission, velocity),
     b = sonicMeasurement(method, emission + interval, velocity);
-  return { a, b, velocity: (b.measured - a.measured) / (b.positionTime - a.positionTime) };
+  const dt = b.positionTime - a.positionTime;
+  if (!(dt > 0)) throw new RangeError('Sampling interval is below time resolution');
+  return { a, b, velocity: (b.measured - a.measured) / dt };
+}
+
+/** Language-specific presentation seconds calibrated to the unchanged narration.
+ * Physical propagation is still solved by sonicMeasurement/sonicPulse. */
+export function motionSensorShot(chapter: number, seconds: number, locale: 'zh' | 'en' = 'zh') {
+  const t = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  const phase = (start: number, end: number) =>
+    Math.max(0, Math.min(1, (t - start) / (end - start)));
+  const en = locale === 'en';
+  let fraction = 0;
+  if (chapter === 0) fraction = phase(en ? 7.7 : 10.2, en ? 12.7 : 16.8);
+  else if (chapter === 1) fraction = phase(0.5, en ? 11.4 : 12.8);
+  else if (chapter === 3) {
+    // Reach the reflector, then return. Hold the physical endpoint for the formula.
+    fraction = phase(2.7, 7.3);
+  }
+  return {
+    method: (chapter === 3 ? 'reflection' : 'active') as SensorMethod,
+    fraction,
+    recordTime: phase(0.5, en ? 6.4 : 6.0) * 1.5,
+  };
 }

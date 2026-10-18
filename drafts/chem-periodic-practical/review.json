@@ -1,54 +1,195 @@
 {
+  "sceneSlug": "chem-periodic-practical",
+  "status": "ignored candidate frozen; root integration pending",
   "owner": "chemistry_inventory",
-  "kind": "author-self-review",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "sourceFiles": {
-    "src/models/chem-periodic-practical.ts": "0fa62f94bbd6e42333e7befded956cc6bada52d97ee8f9ecb27d7a4e4a96b28b",
-    "src/components/experiments/ChemPeriodicPractical.tsx": "4e4f26254ff756601193931652262121a6c02912a77ee097b1b9aef13022bf56",
-    "src/styles/chem-periodic-practical.css": "55792c4fba6afc08350a971164167d6967b76c3a3499256f3074eecd7ee8b146",
-    "src/data/scene-packets/chem-periodic-practical.json": "3c3687e5bc8e59473059cf72055dc32a740e2f91093951f680234e9b009a03fe"
-  },
-  "conditions": {
-    "browser": "Playwright Chromium, headless",
-    "viewport": "320×844 emulation; not a physical phone",
-    "reducedMotion": true,
-    "audio": "off; missing local audio deliberately not treated as listening",
-    "preview": "isolated independent pnpm install --ignore-workspace; port4337",
-    "plateVariant": "snapshot-only true variant override exercises exact production plate branch without requiring unintegrated curriculum route"
-  },
-  "checks": [
+  "kind": "Author preparation and self-review; independent peer evidence explicitly separated",
+  "sourceCommit": "1cf7cc492201b579eff9a2adf1bd04712aa57e5a",
+  "scientificSources": [
     {
-      "type": "model",
-      "status": "passed",
-      "tests": 4
+      "id": "pep",
+      "title": "人教版高中化学必修第一册",
+      "fileName": "人教版高中化学-必修第一册.pdf",
+      "printedPages": [102, 103, 104, 108, 109, 110, 121, 122],
+      "pdfPages": [107, 108, 109, 113, 114, 115, 126, 127],
+      "readScope": "Full extracted target/context paragraphs; rendered P104/P109/P122 inspected for apparatus, sequence and PDF offset.",
+      "claim": "Three qualitative displacement observations, magnesium cold/heated liquid water, ammonia preparation and acid/base split; table radii and period context."
     },
     {
-      "type": "paused-keyframe-geometry",
+      "id": "uw",
+      "url": "https://chem.washington.edu/lecture-demos/amphoteric-nature-aluminum-hydroxide",
+      "title": "University of Washington: Amphoteric Nature of Aluminum Hydroxide",
+      "readScope": "Complete department demonstration page",
+      "claim": "Ammonia precipitates Al hydroxide; separate acid/base portions dissolve; reference remains."
+    },
+    {
+      "id": "openstax",
+      "url": "https://openstax.org/books/chemistry-2e/pages/15-3-coupled-equilibria",
+      "title": "OpenStax Chemistry 2e §15.3 Coupled equilibria",
+      "readScope": "Acid-dependent dissolution and aluminium complexation paragraphs/equations",
+      "claim": "Coupling OH consumption or [Al(OH)4]− formation to dissolution. No quantitative K model imported."
+    },
+    {
+      "id": "iodine",
+      "url": "https://openstax.org/books/chemistry-atoms-first-2e/pages/13-4-equilibrium-calculations",
+      "title": "OpenStax: Equilibrium calculations, I2/I−/I3− example",
+      "readScope": "Example 13.6/13.7",
+      "claim": "Iodine equivalents are not a complete aqueous-speciation count."
+    },
+    {
+      "id": "mg-primary",
+      "url": "https://scholarworks.brandeis.edu/esploro/outputs/journalArticle/Mechanism-of-Dihydrogen-Formation-in-the/9923989475601921",
+      "doi": "10.1021/jp0143847",
+      "title": "Taub et al. (2002), Mechanism of Dihydrogen Formation in the Magnesium–Water Reaction",
+      "readScope": "Author-institution abstract only; not full mechanistic paper",
+      "claim": "Net Mg/water reaction is thermodynamically favoured but normally sluggish; surface oxide/hydroxide limits access. Its Mg/Fe/NaCl mechanism and rates are NOT transferred to textbook pure-water experiment."
+    },
+    {
+      "id": "rsc-displacement",
+      "url": "https://edu.rsc.org/experiments/halogens-in-aqueous-solution-and-their-displacement-reactions/733.article",
+      "title": "RSC: Halogen displacement",
+      "readScope": "Search-indexed official excerpt; direct open returned405",
+      "claim": "Qualitative aqueous colour comparisons and dilution distinction; no claim of complete article review."
+    }
+  ],
+  "checks": {
+    "scopedTests": {
       "status": "passed",
-      "cases": 14,
-      "maxHorizontalOverflow": 0,
-      "evidence": [
-        "artifacts/chemistry-inventory/review-periodic",
-        "artifacts/chemistry-inventory/review-periodic-zh",
-        "artifacts/chemistry-inventory/review-periodic-plate-final"
+      "total": 18,
+      "failed": 0,
+      "evidence": "artifacts/teaching-principles/batch-13-staging/chemistry/tests.json"
+    },
+    "scopedTypecheck": {
+      "status": "passed",
+      "diagnostics": 0,
+      "evidence": "artifacts/teaching-principles/batch-13-staging/chemistry/typecheck.json"
+    },
+    "format": {
+      "status": "passed",
+      "scope": "11 owned candidate files only"
+    },
+    "independentNetReview": {
+      "status": "passed within stated scope",
+      "assertions": 795,
+      "evidence": "artifacts/teaching-principles/batch-13-cross-review/biology-periodic-net.json",
+      "scope": "periodHydroxide/hydroxideNet O/H/metal identity, finite acid/base amounts and charge. No original source reread or UI claim.",
+      "laterChanges": "Only presentation coordinates, rigid OH offsets and Mg credit geometry changed after that source hash; no reviewed acid/base stoichiometry changed."
+    },
+    "isolatedStage": {
+      "status": "passed for measured bounds and selected manual stills only",
+      "captureCount": 88,
+      "locales": ["zh", "en"],
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568
+        },
+        {
+          "width": 1100,
+          "height": 568
+        }
+      ],
+      "font": "Arial fallback, not deployed bundled fonts",
+      "minActualSvgFont": 16,
+      "horizontalOverflows": 0,
+      "maxFixtureHeight": 367.375,
+      "evidence": "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/report.json",
+      "limitations": "SSR fixtures omit real player chrome, captions, controls, active React state and resource lifecycle. This is NOT whole-player, continuous playback, speech, or physical-device acceptance.",
+      "manuallyInspected": [
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-plate-three.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-1100-electrons.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-reverse-answer.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-magnesium-moving.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-magnesium-final.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/zh-320-acid-Al.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-acid-limit.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-base-moving.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-base-final.png",
+        "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-period.png"
+      ],
+      "resolved": [
+        "Mg hydrogen/credit/label paths were separated and credit endpoints derived by the model.",
+        "Base OH groups retain outward H offsets to avoid crossing labels; central Al +3 stays in the title, not a moving overlapping label.",
+        "An incomplete halogen order no longer places the unknown element at an asserted rank.",
+        "Activity keeps three Cl wells/two Br wells; free exploration uses a valid selected pair. Zero oxidant clears model-driven liquid tint."
       ]
     },
-    {
-      "type": "visual-author-inspection",
-      "status": "passed",
-      "observed": "Viewed English tube1/Mg5/base8, Chinese base8, final English plate1; controls remain visible within844 high viewport. Phone tube viewBox whitespace shortened; plate wells100px."
+    "actualWholePlayer": {
+      "status": "not-run",
+      "reason": "Real source remains locked; must run actual routes at 320×568 after root integration."
     },
-    {
-      "type": "continuous-playback",
+    "actualControls": {
+      "status": "not-run",
+      "reason": "Await React integration; model and SSR contracts are not control interaction."
+    },
+    "completePlayback": {
       "status": "not-run"
     },
-    {
-      "type": "listening",
+    "coverConsumers": {
+      "status": "not-run",
+      "sourceChecked": "src/components/TopicCover.astro uses this cover; catalog/social acceptance pending"
+    },
+    "audio": {
+      "status": "not-generated"
+    },
+    "wordSynchronization": {
+      "status": "not-run",
+      "plannedSeconds": 250
+    },
+    "physicalPhonePerformance": {
       "status": "not-run"
     },
-    {
-      "type": "physical-phone",
-      "status": "not-run"
+    "globalVerifyAndBuild": {
+      "status": "root-owned; not-run by author"
     }
-  ]
+  },
+  "recommendedFrames": [
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-plate-three.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-1100-electrons.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-reverse-answer.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-magnesium-moving.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-magnesium-final.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/zh-320-acid-Al.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-acid-limit.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-base-moving.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-base-final.png",
+    "artifacts/teaching-principles/batch-13-staging/chemistry/candidate-stage/en-320-period.png"
+  ],
+  "handoff": {
+    "preservedChapterIds": [
+      "chlorine-bromide",
+      "chlorine-iodide",
+      "bromine-iodide",
+      "magnesium-cold",
+      "magnesium-hot",
+      "prepare-hydroxides",
+      "acid-dissolves-both",
+      "base-distinguishes"
+    ],
+    "entryIds": [
+      "chem-required-1-experiment-4-1",
+      "chem-required-1-inquiry-p109",
+      "chem-required-1-activity-3"
+    ],
+    "ownedFiles": 11,
+    "sharedWrites": false,
+    "actualProductWrites": false,
+    "tts": false,
+    "commit": false
+  },
+  "modelSha256": "81132f49de623b09c271734062ec7446d70d482d676a4df6f4a70c37ce3a1cca",
+  "componentSha256": "28954bfd905b85eff7b53c4830ddf1da06e8e724a3f03973fe3be9eef94228aa",
+  "rootIntegration": {
+    "status": "validated-awaiting-authorized-publication",
+    "batch": "drafts/teaching-principles/batch-13-review.json",
+    "actualAudio": "src/data/audio-manifest.json",
+    "transcriptReview": "artifacts/teaching-principles/batch-13-transcript-text-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "checks": "drafts/teaching-principles/batch-13-review.json",
+    "frozenSource": "artifacts/teaching-principles/batch-13-frozen-source.json",
+    "actualViews": "artifacts/teaching-principles/batch-13-root-actual-views.json"
+  }
 }

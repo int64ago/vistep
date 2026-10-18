@@ -22,3 +22,19 @@ describe('mutual-induction apparatuses', () => {
     expect(audioResponse(0, 0.9, 0).emf).toBe(0);
   });
 });
+
+it('rejects undefined signal inputs and negative inductance or frequency', () => {
+  for (const bad of [NaN, Infinity, -Infinity]) {
+    expect(() => mutualResponse(bad, 1)).toThrow(RangeError);
+    expect(() => mutualResponse(1, bad)).toThrow(RangeError);
+    expect(() => ringResponse(bad, 'close')).toThrow(RangeError);
+    expect(() => audioResponse(0, 0.9, bad)).toThrow(RangeError);
+  }
+  expect(() => mutualResponse(1, 1, 0.8, -1)).toThrow(RangeError);
+  expect(() => audioResponse(0, 0.9, -10)).toThrow(RangeError);
+});
+
+it('computes finite large inductances without intermediate overflow and rejects overflowed outputs', () => {
+  expect(mutualResponse(0, 1, 1, 1e308, 1e308).emf).toBeCloseTo(-1e308);
+  expect(() => mutualResponse(1e308, 1, 1, 1e308, 1e308)).toThrow(RangeError);
+});

@@ -1,82 +1,57 @@
-import { act, createElement } from 'react';
-import { create, type ReactTestRenderer } from 'react-test-renderer';
-import { beforeAll, expect, it, vi } from 'vitest';
-import { FilmContext, type Director } from '../lab/FilmContext';
+import { describe, it, expect, vi } from 'vitest';
+import { renderToStaticMarkup } from 'react-dom/server';
 import ChemPeriodicPractical from './ChemPeriodicPractical';
-
-vi.mock('../../i18n', () => ({ browserLocale: () => 'zh' }));
-
+import { FilmContext, type Director } from '../lab/FilmContext';
+vi.mock('../../i18n', () => ({ browserLocale: () => 'en' }));
+vi.mock('../lab/SignalFigure', () => ({
+  useSignalWidth: () => ({ host: { current: null }, width: 288, compact: true }),
+}));
 const base: Director = {
   watch: true,
   playing: false,
   time: 0,
   chapter: 0,
-  chapterProgress: 0,
-  chapterTime: 0,
-  duration: 207.5,
-  chapters: [],
   run: 0,
+  duration: 250,
+  chapters: [],
+  chapterTime: 0,
+  chapterProgress: 0,
 };
-beforeAll(() => {
-  (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
-});
-const content = (state: Partial<Director>) =>
-  createElement(
-    FilmContext.Provider,
-    { value: { ...base, ...state } },
-    createElement(ChemPeriodicPractical),
+const frame = (chapter: number, time: number, variant?: string) =>
+  renderToStaticMarkup(
+    <FilmContext.Provider value={{ ...base, chapter, chapterTime: time, variant }}>
+      <ChemPeriodicPractical />
+    </FilmContext.Provider>,
   );
-const labels = (tree: ReactTestRenderer) =>
-  tree.root
-    .findAllByProps({ className: 'chem-periodic-object-label' })
-    .map((node) => node.children.join(''));
-async function click(tree: ReactTestRenderer, label: string) {
-  await act(() =>
-    tree.root
-      .findAllByType('button')
-      .find((node) => node.children.join('') === label)!
-      .props.onClick(),
-  );
-}
-
-it('keeps the period comparison on cold-water magnesium when entering exploration', async () => {
-  let tree!: ReactTestRenderer;
-  const selected = { variant: 'period-comparison', chapter: 3 };
-  await act(() => {
-    tree = create(content(selected));
+describe('periodic film visible causal contracts', () => {
+  it('starts with real reference samples, then traces two electron credits', () => {
+    expect(frame(0, 4)).toContain('halogen-water reference');
+    expect(frame(0, 13).match(/data-electron-id=/g)).toHaveLength(2);
+    expect(frame(0, 13)).toContain('Transfer credits: −2');
   });
-  expect(labels(tree)).toEqual(['镁 · 冷水']);
-  await act(() => tree.update(content({ ...selected, watch: false })));
-  expect(labels(tree)).toEqual(['镁 · 冷水']);
-  expect(tree.root.findAllByProps({ className: 'chem-periodic-magnesium' })).toHaveLength(1);
-  await click(tree, '加热');
-  expect(labels(tree)).toEqual(['镁 · 热水']);
-  await act(() => tree.unmount());
-});
-
-it('keeps the chapter activity on its sodium-halide spotting tile and preserves reader choices', async () => {
-  let tree!: ReactTestRenderer;
-  const selected = { variant: 'chapter-practical' };
-  await act(() => {
-    tree = create(content(selected));
+  it('preserves the activity three-well comparison and separate experiment tubes', () => {
+    expect(frame(0, 4, 'chapter-practical').match(/data-plate-well=/g)).toHaveLength(3);
+    expect(frame(2, 3, 'chapter-practical').match(/data-plate-well=/g)).toHaveLength(2);
+    expect(frame(0, 4, 'halogen-tubes')).not.toContain('data-plate-well=');
   });
-  await act(() => tree.update(content({ ...selected, watch: false })));
-  expect(labels(tree)).toContain('NaBr + Cl₂');
-  expect(tree.root.findAllByProps({ className: 'chem-periodic-pair plate' })).toHaveLength(1);
-  await click(tree, '正文试管');
-  expect(labels(tree)).toContain('KBr + Cl₂');
-  await act(() => tree.update(content(selected)));
-  await act(() => tree.update(content({ ...selected, watch: false })));
-  expect(labels(tree)).toContain('KBr + Cl₂');
-  await act(() => tree.unmount());
-});
-
-it('opens the numbered halogen experiment with its potassium-halide test tubes', async () => {
-  let tree!: ReactTestRenderer;
-  await act(() => {
-    tree = create(content({ variant: 'halogen-tubes', watch: false }));
+  it('does not reveal reverse and half-dose predictions too early', () => {
+    expect(frame(2, 20)).not.toContain('No appreciable reverse displacement');
+    expect(frame(2, 27)).toContain('No appreciable reverse displacement');
+    expect(frame(7, 30)).toContain('Will all of it dissolve?');
+    expect(frame(7, 30)).not.toContain('data-solid="0.5"');
+    expect(frame(7, 34)).toContain('data-solid="0.5"');
   });
-  expect(labels(tree)).toEqual(['KBr + Cl₂', 'Cl₂ 参照']);
-  expect(tree.root.findAllByProps({ className: 'chem-periodic-pair plate' })).toHaveLength(0);
-  await act(() => tree.unmount());
+  it('retains all atom IDs and separates net transfer from the cold observation', () => {
+    expect(frame(3, 5)).toContain('Not obvious ≠ always zero');
+    expect(frame(4, 18).match(/data-atom-id=/g)).toHaveLength(7);
+    expect(frame(5, 12)).toContain('data-atom-id="water-H-transfer"');
+  });
+  it('makes the limited-acid counterexample and unchanged central oxidation visible', () => {
+    expect(frame(6, 23)).toContain('Which solid remains?');
+    expect(frame(6, 23)).not.toContain('Al: solid 0.33');
+    expect(frame(6, 27)).toContain('Al: solid 0.33');
+    expect(frame(6, 27)).toContain('Mg: solid 0.00');
+    expect(frame(7, 17)).toContain('Al stays +3');
+    expect(frame(7, 38).match(/data-period-record=/g)).toHaveLength(3);
+  });
 });

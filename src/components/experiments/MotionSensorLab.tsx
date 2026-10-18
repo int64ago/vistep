@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
   sonicMeasurement,
+  motionSensorShot,
   sonicPulse,
   sensorVelocity,
   type SensorMethod,
@@ -11,18 +12,19 @@ import {
 import '../../styles/motion-sensor-lab.css';
 export default function MotionSensorLab() {
   const film = useShowcase(),
-    [method, setMethod] = useState<SensorMethod>('active'),
+    [manualMethod, setMethod] = useState<SensorMethod | null>(null),
     [phase, setPhase] = useState(0.6),
     [velocity, setVelocity] = useState(0.3),
     c = film.chapter,
-    p = film.chapterProgress,
-    kind = film.watch ? (c === 3 ? 'reflection' : 'active') : method,
+    shot = motionSensorShot(c, film.chapterTime, browserLocale()),
+    method: SensorMethod = manualMethod ?? (c === 3 ? 'reflection' : 'active'),
+    kind = film.watch ? shot.method : method,
     v = film.watch ? 0.3 : velocity,
     recording = film.watch && c === 2,
-    global = recording ? Math.min(1, p / 0.84) * 1.5 : 0.8,
+    global = recording ? shot.recordTime : 0.8,
     emission = recording ? Math.floor(global / 0.02) * 0.02 : 0.8,
     measure = sonicMeasurement(kind, emission, v),
-    fraction = film.watch ? (c === 0 ? 0 : Math.min(1, p / 0.78)) : phase,
+    fraction = film.watch ? shot.fraction : phase,
     elapsed = recording ? global - emission : fraction * measure.flight,
     s = sonicPulse(kind, emission, elapsed, v),
     cx = 45 + s.target * 125,
@@ -33,7 +35,13 @@ export default function MotionSensorLab() {
     ).filter((q) => q.received <= global),
     pair = records.length > 1 ? sensorVelocity(kind, records.at(-2)!.emission, v) : null;
   return (
-    <section className="motion-sensor-lab">
+    <section
+      className="motion-sensor-lab"
+      data-sensor={kind}
+      data-shot={recording ? 'samples' : 'pulse'}
+      data-arrived={show}
+      data-record-count={records.length}
+    >
       <header>
         <p>
           {t(
@@ -50,7 +58,7 @@ export default function MotionSensorLab() {
       </header>
       <div className="motion-sensor-apparatus">
         <svg
-          viewBox="0 0 390 275"
+          viewBox="0 55 390 210"
           role="img"
           aria-label={t(
             kind === 'active'
@@ -172,6 +180,10 @@ export default function MotionSensorLab() {
               t / s
             </text>
           </svg>
+          <p className="motion-sensor-pair">
+            Δx = {pair ? (pair.b.measured - pair.a.measured).toFixed(3) : '—'} m · Δt ={' '}
+            {pair ? (pair.b.positionTime - pair.a.positionTime).toFixed(3) : '—'} s
+          </p>
           <p className="motion-sensor-value">
             v = Δx/Δt = <b>{pair ? pair.velocity.toFixed(3) : '—'} m/s</b>
           </p>

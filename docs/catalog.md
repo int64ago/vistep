@@ -32,92 +32,92 @@ These optional sequences cross subject categories. The site gives a reason for e
 
 ## Chemistry & reactions
 
-| Exploration                                                                                           | Film | Question                                                                      |
-| ----------------------------------------------------------------------------------------------------- | ---- | ----------------------------------------------------------------------------- |
-| [Pigment column chromatography](../src/content/en/chem-pigment-chromatography.mdx)                    | 3:19 | Why do pigment bands separate in the same liquid flow?                        |
-| [Host–guest molecular recognition](../src/content/en/chem-host-guest-recognition.mdx)                 | 3:04 | How can similar carbon cages be selectively separated?                        |
-| [Corrosion, protection and warmer research](../src/content/en/chem-corrosion-protection.mdx)          | 4:36 | How can metal oxidation be suppressed—or used to generate sustained heat?     |
-| [Benzoic acid recrystallization](../src/content/en/chem-benzoic-recrystallization.mdx)                | 3:45 | Why does purification reduce the recovered mass?                              |
-| [Coordination changes color and solubility](../src/content/en/chem-coordination-colors.mdx)           | 4:04 | How do new ligands change the same metal’s behavior?                          |
-| [Electrolysis and copper plating](../src/content/en/chem-electrolysis-plating.mdx)                    | 3:45 | How can copper be deposited on the intended electrode?                        |
-| [Extraction and layer separation](../src/content/en/chem-solvent-extraction.mdx)                      | 3:16 | Which layer contains the solute?                                              |
-| [Electronic structure in metals and graphite](../src/content/en/chem-metal-and-graphite.mdx)          | 3:39 | Does conductivity imply the same internal bonding?                            |
-| [Distillation and fractions](../src/content/en/chem-distillation.mdx)                                 | 3:14 | Why does vapour differ from the flask liquid?                                 |
-| [Salt hydrolysis and experimental conditions](../src/content/en/chem-hydrolysis-applications.mdx)     | 4:45 | Why is a salt solution not necessarily neutral?                               |
-| [Bonding levels in crystals](../src/content/en/chem-crystal-bonding.mdx)                              | 2:42 | Which connections change when a crystal separates?                            |
-| [Seawater and separation membranes](../src/content/en/chem-seawater-membranes.mdx)                    | 3:47 | What crosses the membrane, and what remains?                                  |
-| [Unit cells and diffraction evidence](../src/content/en/chem-crystal-diffraction.mdx)                 | 4:01 | How do bright spots reveal invisible arrangements?                            |
-| [Metal extraction routes](../src/content/en/chem-metal-extraction.mdx)                                | 3:16 | How does a metal in a mineral become an element?                              |
-| [Separating and cracking petroleum](../src/content/en/chem-petroleum-refining.mdx)                    | 2:47 | Do fractionation and cracking both make smaller molecules?                    |
-| [The last half-drop and the burette reading](../src/content/en/chem-acid-base-titration.mdx)          | 4:11 | Why can the last half-drop change the result?                                 |
-| [Making tofu](../src/content/en/chem-tofu-coagulation.mdx)                                            | 3:07 | How does soymilk become a hydrated curd?                                      |
-| [Levels of protein structure](../src/content/en/chem-protein-structure.mdx)                           | 2:34 | How can one chain have several structural levels?                             |
-| [Where crystals grow from](../src/content/en/chem-crystal-growth.mdx)                                 | 3:53 | Does crystallization always require dissolving a material in water?           |
-| [Three kinds of weak-acid evidence](../src/content/en/chem-acid-evidence.mdx)                         | 3:00 | How can a weak acid release the same amount of hydrogen?                      |
-| [Protein salting out and denaturation](../src/content/en/chem-protein-states.mdx)                     | 3:46 | Why do cloudy proteins respond differently to water?                          |
-| [The two transitions of liquid crystals](../src/content/en/chem-liquid-crystal.mdx)                   | 2:37 | Must positional and orientational order disappear together?                   |
-| [Sugar tests and hydrolysis](../src/content/en/chem-sugar-tests.mdx)                                  | 4:56 | Why do the tests change after hydrolysis?                                     |
-| [What changes before equilibrium shifts?](../src/content/en/chem-equilibrium-response.mdx)            | 4:26 | Why do reactions continue when equilibrium looks still?                       |
-| [Chirality, crystals and optical evidence](../src/content/en/chem-chirality-evidence.mdx)             | 3:27 | How does failed superposition connect to Pasteur’s experimental conclusion?   |
-| [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                       | 4:22 | Where is the ester collected, and how does it hydrolyse?                      |
-| [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                            | 3:35 | Do more bubbles always mean a faster reaction?                                |
-| [Hydrogen bonds and the open structure of ice](../src/content/en/chem-hydrogen-bond-network.mdx)      | 2:27 | Why does ice occupy more space than liquid water?                             |
-| [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                      | 2:51 | Why does copper turn black and then return?                                   |
-| [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                         | 2:48 | Where in ethanol does the released hydrogen come from?                        |
-| [Mass separation and molecular-formula evidence](../src/content/en/chem-mass-spectrometry.mdx)        | 3:18 | Can the tallest or rightmost peak establish molecular mass?                   |
-| [Two charge pathways in a galvanic cell](../src/content/en/chem-galvanic-cells.mdx)                   | 4:47 | If electrons avoid the liquid, how does the circuit close?                    |
-| [Evidence from ethene and ethyne](../src/content/en/chem-unsaturated-hydrocarbons.mdx)                | 3:46 | Why do two colour changes need different explanations?                        |
-| [Infrared absorption and structural evidence](../src/content/en/chem-infrared-structure.mdx)          | 2:23 | How does infrared absorption reveal a molecular functional group?             |
-| [Evidence behind noble-gas discoveries](../src/content/en/chem-noble-gas-evidence.mdx)                | 2:50 | How did subtle differences reveal elements and revise the idea of inertness?  |
-| [Light-induced methane substitution](../src/content/en/chem-methane-substitution.mdx)                 | 2:28 | Why does one tube fade, form droplets and draw liquid upward?                 |
-| [Polymer links and absorbing networks](../src/content/en/chem-polymer-networks.mdx)                   | 3:22 | Why can a polymer network take up water while remaining connected?            |
-| [Temperature-rise and ice calorimetry](../src/content/en/chem-calorimetry.mdx)                        | 3:25 | How can reaction heat become a measurable reading?                            |
-| [Bond-energy accounts and Hess paths](../src/content/en/chem-bond-energy.mdx)                         | 2:53 | If breaking bonds takes energy, how can a reaction release heat?              |
-| [Organic structures and identification evidence](../src/content/en/chem-organic-detection.mdx)        | 4:18 | How can structures, conditions and test results form checkable reasoning?     |
-| [Soap formation and cleaning](../src/content/en/chem-soap-assembly.mdx)                               | 2:47 | How does soap form from fat and help oil detach?                              |
-| [Reaction heat and thermal evidence](../src/content/en/chem-reaction-heat.mdx)                        | 2:44 | Why can absorbing heat freeze water beneath a beaker?                         |
-| [Two reducing tests for aldehydes](../src/content/en/chem-aldehyde-tests.mdx)                         | 1:56 | Why does one aldehyde group produce two different solid forms?                |
-| [Phenol through several kinds of evidence](../src/content/en/chem-phenol-properties.mdx)              | 4:12 | How do acid–base, substitution and color tests support different conclusions? |
-| [Rainwater pH and measurement evidence](../src/content/en/chem-rainwater-ph.mdx)                      | 2:32 | How much can one pH reading tell us?                                          |
-| [Substitution, elimination and evidence](../src/content/en/chem-elimination-substitution.mdx)         | 3:46 | How do conditions change an alkyl halide reaction and its evidence?           |
-| [Where ions go during salt purification](../src/content/en/chem-salt-purification.mdx)                | 3:35 | How can impurities be removed without leaving new ones?                       |
-| [Extraction or reaction](../src/content/en/chem-aromatic-comparison.mdx)                              | 2:20 | Do color changes in benzene and toluene mean the same thing?                  |
-| [Testing ammonium and collecting ammonia](../src/content/en/chem-ammonium-cycle.mdx)                  | 3:11 | How can we tell ammonia is released and collected?                            |
-| [Structural clues in proton NMR](../src/content/en/chem-nmr-hydrogen.mdx)                             | 2:47 | How does proton NMR distinguish ethanol and dimethyl ether?                   |
-| [Ammonia and hydrogen chloride: white smoke](../src/content/en/chem-ammonium-smoke.mdx)               | 1:49 | Why do two colourless gases make a white cloud?                               |
-| [Weighing carbon and hydrogen](../src/content/en/chem-elemental-analysis.mdx)                         | 2:18 | Why collect water before carbon dioxide?                                      |
-| [Same composition, different structures](../src/content/en/chem-wohler-isomers.mdx)                   | 3:07 | Does a formula tell us how atoms connect?                                     |
-| [The ammonia fountain](../src/content/en/chem-ammonia-fountain.mdx)                                   | 2:16 | Why does water fountain upward into the flask?                                |
-| [Nitrogen oxides: colour and fate](../src/content/en/chem-nitrogen-oxides.mdx)                        | 3:08 | Has a gas disappeared when its colour fades?                                  |
-| [Sulfur across oxidation states](../src/content/en/chem-sulfur-transformations.mdx)                   | 3:57 | How does sulfur move between oxidation states?                                |
-| [Sucrose dehydration and expansion](../src/content/en/chem-sugar-carbonization.mdx)                   | 2:14 | Does an expanding black column contain more carbon?                           |
-| [Following sulfur dioxide](../src/content/en/chem-sulfur-dioxide.mdx)                                 | 2:14 | Can a vanished colour return?                                                 |
-| [Molecular shapes](../src/content/en/chem-molecular-shapes.mdx)                                       | 4:11 | Do polar bonds always make a polar molecule?                                  |
-| [Carbon frameworks in space](../src/content/en/chem-carbon-frameworks.mdx)                            | 3:30 | How do carbon bonds build different molecular shapes?                         |
-| [Lewis diagrams and orbital overlap](../src/content/en/chem-bond-overlap.mdx)                         | 3:50 | How do transfer, sharing and orbital overlap differ?                          |
-| [Periodic tables and property trends](../src/content/en/chem-periodic-patterns.mdx)                   | 3:30 | Which relationships does a periodic table preserve?                           |
-| [Atomic models and evidence](../src/content/en/chem-atomic-models.mdx)                                | 4:18 | What evidence can change an atomic model?                                     |
-| [Experimental comparisons across a period and a group](../src/content/en/chem-periodic-practical.mdx) | 3:28 | How can experiments establish periodic trends?                                |
-| [Where iron’s electrons go](../src/content/en/chem-iron-practical.mdx)                                | 3:27 | Why can iron two both accept and donate electrons?                            |
-| [Testing for iron in food](../src/content/en/chem-food-iron.mdx)                                      | 1:54 | What happens before the food extract turns red?                               |
-| [Aluminium oxide films in acid and base](../src/content/en/chem-aluminium-film.mdx)                   | 1:58 | Why can aluminium wait before releasing bubbles?                              |
-| [Copper etching and protected patterns](../src/content/en/chem-copper-etching.mdx)                    | 1:51 | Why does a protected pattern survive copper etching?                          |
-| [Iron hydroxides and oxidation by air](../src/content/en/chem-iron-hydroxides.mdx)                    | 1:53 | Why does a pale precipitate become brown?                                     |
-| [Iron reacting with steam](../src/content/en/chem-iron-steam.mdx)                                     | 2:36 | Why can the solid gain mass as gas leaves?                                    |
-| [Iron colour, redox and coordination](../src/content/en/chem-iron-cycle.mdx)                          | 4:21 | What does red actually report?                                                |
-| [Hydrogen burning in chlorine](../src/content/en/chem-hydrogen-chlorine.mdx)                          | 1:30 | Does combustion always require oxygen?                                        |
-| [Chlorine: evidence and explanation](../src/content/en/chem-chlorine-discovery.mdx)                   | 3:04 | Does oxygen in a product prove that the gas contained oxygen?                 |
-| [Chlorine-water photolysis: from light to readings](../src/content/en/chem-chlorine-photolysis.mdx)   | 2:36 | How can light change all three readings?                                      |
-| [Dry and damp controls in chlorine bleaching](../src/content/en/chem-chlorine-bleaching.mdx)          | 1:29 | Why do two papers respond differently to the same chlorine?                   |
-| [Volumetric preparation and dilution](../src/content/en/chem-solution-preparation.mdx)                | 2:58 | What do rinsing and making up to volume control?                              |
-| [Two-step evidence for anions](../src/content/en/chem-anion-tests.mdx)                                | 2:39 | Does a white precipitate identify an anion?                                   |
-| [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)           | 4:15 | When a precipitate changes, how can we trace its ions?                        |
-| [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                   | 2:17 | How does electron counting fix reaction ratios?                               |
-| [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                          | 3:49 | Why do atoms emit particular colours of light?                                |
-| [Sodium, oxide and peroxide](../src/content/en/chem-sodium-reactions.mdx)                             | 4:27 | Why do substances containing sodium give different products?                  |
-| [Comparing carbonate and bicarbonate](../src/content/en/chem-carbonate-comparison.mdx)                | 3:22 | Why is bicarbonate still alkaline?                                            |
-| [Electrolytes and current](../src/content/en/chem-ionic-conduction.mdx)                               | 1:59 | Why are ions alone not enough for conduction?                                 |
-| [What makes light visible](../src/content/en/chem-colloid-light.mdx)                                  | 3:02 | Light passed through. Why can’t we see it from the side?                      |
+| Exploration                                                                                         | Film | Question                                                                      |
+| --------------------------------------------------------------------------------------------------- | ---- | ----------------------------------------------------------------------------- |
+| [Pigment column chromatography](../src/content/en/chem-pigment-chromatography.mdx)                  | 3:19 | Why do pigment bands separate in the same liquid flow?                        |
+| [Host–guest molecular recognition](../src/content/en/chem-host-guest-recognition.mdx)               | 3:04 | How can similar carbon cages be selectively separated?                        |
+| [Corrosion, protection and warmer research](../src/content/en/chem-corrosion-protection.mdx)        | 4:36 | How can metal oxidation be suppressed—or used to generate sustained heat?     |
+| [Benzoic acid recrystallization](../src/content/en/chem-benzoic-recrystallization.mdx)              | 3:45 | Why does purification reduce the recovered mass?                              |
+| [Coordination changes color and solubility](../src/content/en/chem-coordination-colors.mdx)         | 4:04 | How do new ligands change the same metal’s behavior?                          |
+| [Electrolysis and copper plating](../src/content/en/chem-electrolysis-plating.mdx)                  | 3:45 | How can copper be deposited on the intended electrode?                        |
+| [Extraction and layer separation](../src/content/en/chem-solvent-extraction.mdx)                    | 3:16 | Which layer contains the solute?                                              |
+| [Electronic structure in metals and graphite](../src/content/en/chem-metal-and-graphite.mdx)        | 3:39 | Does conductivity imply the same internal bonding?                            |
+| [Distillation and fractions](../src/content/en/chem-distillation.mdx)                               | 3:14 | Why does vapour differ from the flask liquid?                                 |
+| [Salt hydrolysis and experimental conditions](../src/content/en/chem-hydrolysis-applications.mdx)   | 4:45 | Why is a salt solution not necessarily neutral?                               |
+| [Bonding levels in crystals](../src/content/en/chem-crystal-bonding.mdx)                            | 2:42 | Which connections change when a crystal separates?                            |
+| [Seawater and separation membranes](../src/content/en/chem-seawater-membranes.mdx)                  | 3:47 | What crosses the membrane, and what remains?                                  |
+| [Unit cells and diffraction evidence](../src/content/en/chem-crystal-diffraction.mdx)               | 4:01 | How do bright spots reveal invisible arrangements?                            |
+| [Metal extraction routes](../src/content/en/chem-metal-extraction.mdx)                              | 3:16 | How does a metal in a mineral become an element?                              |
+| [Separating and cracking petroleum](../src/content/en/chem-petroleum-refining.mdx)                  | 2:47 | Do fractionation and cracking both make smaller molecules?                    |
+| [The last half-drop and the burette reading](../src/content/en/chem-acid-base-titration.mdx)        | 4:11 | Why can the last half-drop change the result?                                 |
+| [Making tofu](../src/content/en/chem-tofu-coagulation.mdx)                                          | 3:07 | How does soymilk become a hydrated curd?                                      |
+| [Levels of protein structure](../src/content/en/chem-protein-structure.mdx)                         | 2:34 | How can one chain have several structural levels?                             |
+| [Where crystals grow from](../src/content/en/chem-crystal-growth.mdx)                               | 3:53 | Does crystallization always require dissolving a material in water?           |
+| [Three kinds of weak-acid evidence](../src/content/en/chem-acid-evidence.mdx)                       | 3:00 | How can a weak acid release the same amount of hydrogen?                      |
+| [Protein salting out and denaturation](../src/content/en/chem-protein-states.mdx)                   | 3:46 | Why do cloudy proteins respond differently to water?                          |
+| [The two transitions of liquid crystals](../src/content/en/chem-liquid-crystal.mdx)                 | 2:37 | Must positional and orientational order disappear together?                   |
+| [Sugar tests and hydrolysis](../src/content/en/chem-sugar-tests.mdx)                                | 4:56 | Why do the tests change after hydrolysis?                                     |
+| [What changes before equilibrium shifts?](../src/content/en/chem-equilibrium-response.mdx)          | 4:26 | Why do reactions continue when equilibrium looks still?                       |
+| [Chirality, crystals and optical evidence](../src/content/en/chem-chirality-evidence.mdx)           | 3:27 | How does failed superposition connect to Pasteur’s experimental conclusion?   |
+| [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                     | 4:22 | Where is the ester collected, and how does it hydrolyse?                      |
+| [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                          | 3:35 | Do more bubbles always mean a faster reaction?                                |
+| [Hydrogen bonds and the open structure of ice](../src/content/en/chem-hydrogen-bond-network.mdx)    | 2:27 | Why does ice occupy more space than liquid water?                             |
+| [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                    | 2:51 | Why does copper turn black and then return?                                   |
+| [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                       | 2:48 | Where in ethanol does the released hydrogen come from?                        |
+| [Mass separation and molecular-formula evidence](../src/content/en/chem-mass-spectrometry.mdx)      | 3:18 | Can the tallest or rightmost peak establish molecular mass?                   |
+| [Two charge pathways in a galvanic cell](../src/content/en/chem-galvanic-cells.mdx)                 | 4:47 | If electrons avoid the liquid, how does the circuit close?                    |
+| [Evidence from ethene and ethyne](../src/content/en/chem-unsaturated-hydrocarbons.mdx)              | 3:46 | Why do two colour changes need different explanations?                        |
+| [Infrared absorption and structural evidence](../src/content/en/chem-infrared-structure.mdx)        | 2:23 | How does infrared absorption reveal a molecular functional group?             |
+| [Evidence behind noble-gas discoveries](../src/content/en/chem-noble-gas-evidence.mdx)              | 2:50 | How did subtle differences reveal elements and revise the idea of inertness?  |
+| [Light-induced methane substitution](../src/content/en/chem-methane-substitution.mdx)               | 2:28 | Why does one tube fade, form droplets and draw liquid upward?                 |
+| [Polymer links and absorbing networks](../src/content/en/chem-polymer-networks.mdx)                 | 3:22 | Why can a polymer network take up water while remaining connected?            |
+| [Temperature-rise and ice calorimetry](../src/content/en/chem-calorimetry.mdx)                      | 3:25 | How can reaction heat become a measurable reading?                            |
+| [Bond-energy accounts and Hess paths](../src/content/en/chem-bond-energy.mdx)                       | 2:53 | If breaking bonds takes energy, how can a reaction release heat?              |
+| [Organic structures and identification evidence](../src/content/en/chem-organic-detection.mdx)      | 4:18 | How can structures, conditions and test results form checkable reasoning?     |
+| [Soap formation and cleaning](../src/content/en/chem-soap-assembly.mdx)                             | 2:47 | How does soap form from fat and help oil detach?                              |
+| [Reaction heat and thermal evidence](../src/content/en/chem-reaction-heat.mdx)                      | 2:44 | Why can absorbing heat freeze water beneath a beaker?                         |
+| [Two reducing tests for aldehydes](../src/content/en/chem-aldehyde-tests.mdx)                       | 1:56 | Why does one aldehyde group produce two different solid forms?                |
+| [Phenol through several kinds of evidence](../src/content/en/chem-phenol-properties.mdx)            | 4:12 | How do acid–base, substitution and color tests support different conclusions? |
+| [Rainwater pH and measurement evidence](../src/content/en/chem-rainwater-ph.mdx)                    | 2:32 | How much can one pH reading tell us?                                          |
+| [Substitution, elimination and evidence](../src/content/en/chem-elimination-substitution.mdx)       | 3:46 | How do conditions change an alkyl halide reaction and its evidence?           |
+| [Where ions go during salt purification](../src/content/en/chem-salt-purification.mdx)              | 3:35 | How can impurities be removed without leaving new ones?                       |
+| [Extraction or reaction](../src/content/en/chem-aromatic-comparison.mdx)                            | 2:20 | Do color changes in benzene and toluene mean the same thing?                  |
+| [Testing ammonium and collecting ammonia](../src/content/en/chem-ammonium-cycle.mdx)                | 3:11 | How can we tell ammonia is released and collected?                            |
+| [Structural clues in proton NMR](../src/content/en/chem-nmr-hydrogen.mdx)                           | 2:47 | How does proton NMR distinguish ethanol and dimethyl ether?                   |
+| [Ammonia and hydrogen chloride: white smoke](../src/content/en/chem-ammonium-smoke.mdx)             | 1:49 | Why do two colourless gases make a white cloud?                               |
+| [Weighing carbon and hydrogen](../src/content/en/chem-elemental-analysis.mdx)                       | 2:18 | Why collect water before carbon dioxide?                                      |
+| [Same composition, different structures](../src/content/en/chem-wohler-isomers.mdx)                 | 3:07 | Does a formula tell us how atoms connect?                                     |
+| [The ammonia fountain](../src/content/en/chem-ammonia-fountain.mdx)                                 | 2:16 | Why does water fountain upward into the flask?                                |
+| [Nitrogen oxides: colour and fate](../src/content/en/chem-nitrogen-oxides.mdx)                      | 3:08 | Has a gas disappeared when its colour fades?                                  |
+| [Sulfur across oxidation states](../src/content/en/chem-sulfur-transformations.mdx)                 | 3:57 | How does sulfur move between oxidation states?                                |
+| [Sucrose dehydration and expansion](../src/content/en/chem-sugar-carbonization.mdx)                 | 2:14 | Does an expanding black column contain more carbon?                           |
+| [Following sulfur dioxide](../src/content/en/chem-sulfur-dioxide.mdx)                               | 2:14 | Can a vanished colour return?                                                 |
+| [Molecular shapes](../src/content/en/chem-molecular-shapes.mdx)                                     | 4:11 | Do polar bonds always make a polar molecule?                                  |
+| [Carbon frameworks in space](../src/content/en/chem-carbon-frameworks.mdx)                          | 3:30 | How do carbon bonds build different molecular shapes?                         |
+| [Lewis diagrams and orbital overlap](../src/content/en/chem-bond-overlap.mdx)                       | 3:50 | How do transfer, sharing and orbital overlap differ?                          |
+| [Periodic tables and property trends](../src/content/en/chem-periodic-patterns.mdx)                 | 3:30 | Which relationships does a periodic table preserve?                           |
+| [Atomic models and evidence](../src/content/en/chem-atomic-models.mdx)                              | 4:18 | What evidence can change an atomic model?                                     |
+| [Element properties and evidence](../src/content/en/chem-periodic-practical.mdx)                    | 4:59 | How can reactions reveal element properties?                                  |
+| [Where iron’s electrons go](../src/content/en/chem-iron-practical.mdx)                              | 3:27 | Why can iron two both accept and donate electrons?                            |
+| [Testing for iron in food](../src/content/en/chem-food-iron.mdx)                                    | 1:54 | What happens before the food extract turns red?                               |
+| [Aluminium oxide films in acid and base](../src/content/en/chem-aluminium-film.mdx)                 | 1:58 | Why can aluminium wait before releasing bubbles?                              |
+| [Copper etching and protected patterns](../src/content/en/chem-copper-etching.mdx)                  | 1:51 | Why does a protected pattern survive copper etching?                          |
+| [Iron hydroxides and oxidation by air](../src/content/en/chem-iron-hydroxides.mdx)                  | 1:53 | Why does a pale precipitate become brown?                                     |
+| [Iron reacting with steam](../src/content/en/chem-iron-steam.mdx)                                   | 2:36 | Why can the solid gain mass as gas leaves?                                    |
+| [Iron colour, redox and coordination](../src/content/en/chem-iron-cycle.mdx)                        | 4:21 | What does red actually report?                                                |
+| [Hydrogen burning in chlorine](../src/content/en/chem-hydrogen-chlorine.mdx)                        | 1:30 | Does combustion always require oxygen?                                        |
+| [Chlorine: evidence and explanation](../src/content/en/chem-chlorine-discovery.mdx)                 | 3:04 | Does oxygen in a product prove that the gas contained oxygen?                 |
+| [Chlorine-water photolysis: from light to readings](../src/content/en/chem-chlorine-photolysis.mdx) | 2:36 | How can light change all three readings?                                      |
+| [Dry and damp controls in chlorine bleaching](../src/content/en/chem-chlorine-bleaching.mdx)        | 1:29 | Why do two papers respond differently to the same chlorine?                   |
+| [Volumetric preparation and dilution](../src/content/en/chem-solution-preparation.mdx)              | 2:58 | What do rinsing and making up to volume control?                              |
+| [Two-step evidence for anions](../src/content/en/chem-anion-tests.mdx)                              | 2:39 | Does a white precipitate identify an anion?                                   |
+| [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)         | 4:15 | When a precipitate changes, how can we trace its ions?                        |
+| [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                 | 2:17 | How does electron counting fix reaction ratios?                               |
+| [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                        | 3:49 | Why do atoms emit particular colours of light?                                |
+| [Sodium, oxide and peroxide](../src/content/en/chem-sodium-reactions.mdx)                           | 4:27 | Why do substances containing sodium give different products?                  |
+| [Comparing carbonate and bicarbonate](../src/content/en/chem-carbonate-comparison.mdx)              | 3:22 | Why is bicarbonate still alkaline?                                            |
+| [Electrolytes and current](../src/content/en/chem-ionic-conduction.mdx)                             | 1:59 | Why are ions alone not enough for conduction?                                 |
+| [What makes light visible](../src/content/en/chem-colloid-light.mdx)                                | 3:02 | Light passed through. Why can’t we see it from the side?                      |
 
 ## Life & ecology
 
@@ -152,7 +152,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Mendel’s pea crosses](../src/content/en/bio-mendel-crosses.mdx)                                  | 3:39 | Track inherited factors from controlled pollination to quantitative tests.       |
 | [Differentiation, senescence and cell death](../src/content/en/bio-cell-fates.mdx)                | 2:51 | What can culture, nuclear exchange and lineage tracing establish?                |
 | [Investigating plant growth regulators](../src/content/en/bio-plant-growth-regulators.mdx)        | 3:05 | How do comparisons reveal effects on growth, roots and ripening?                 |
-| [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 2:49 | Separate a process model from different cells in a fixed specimen.               |
+| [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 3:16 | Cell division: shape, order and counting                                         |
 | [Evidence for auxin](../src/content/en/bio-auxin-evidence.mdx)                                    | 4:28 | How do experiments explain a plant bending toward light?                         |
 | [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 4:46 | How can light supply energy for synthesis?                                       |
 | [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:43 | Why does one green spot separate into several bands?                             |
@@ -253,7 +253,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Franklin’s Electrical Evidence](../src/content/en/franklin-electricity-evidence.mdx)          | 1:36 | How can experiments link lightning with frictional electricity?                          |
 | [Diamagnetic levitation of water and a frog](../src/content/en/diamagnetic-levitation-lab.mdx) | 2:10 | How can a water drop levitate without being a magnet?                                    |
 | [Source EMF and Internal Resistance](../src/content/en/battery-emf-lab.mdx)                    | 4:08 | Why does source voltage change when a load is connected?                                 |
-| [Multimeter Experiments](../src/content/en/multimeter-lab.mdx)                                 | 3:55 | One pointer: why change connections and scales?                                          |
+| [Multimeter Experiments](../src/content/en/multimeter-lab.mdx)                                 | 4:38 | Why can one pointer measure three quantities?                                            |
 | [Resistance and Resistivity Experiments](../src/content/en/resistivity-lab.mdx)                | 2:41 | When resistance changes, which condition changed?                                        |
 | [Sensor measurement and automatic control](../src/content/en/sensor-control-lab.mdx)           | 4:24 | How can light, temperature and pressure control a lamp?                                  |
 | [Wi-Fi and Bluetooth interference](../src/content/en/wireless-interference-lab.mdx)            | 2:10 | Does connecting Bluetooth always slow Wi-Fi?                                             |

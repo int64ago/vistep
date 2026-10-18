@@ -1,107 +1,128 @@
-.mm-film {
-  width: min(100%, 650px);
+.mm2 {
+  width: 100%;
+  max-width: 680px;
   margin: auto;
-  color: #62745a;
+  color: #3e5350;
 }
-.mm-kicker {
+.mm2-title {
+  font-size: 17px;
+  line-height: 1.4;
   text-align: center;
-  margin: 0 12px 6px;
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 1.6;
+  padding: 0 10px 5px;
+  min-height: 24px;
 }
-.mm-apparatus {
+.mm2-art {
   display: block;
-  width: min(100%, 400px);
+  width: 100%;
   height: auto;
+  max-height: 310px;
   margin: auto;
+  overflow: visible;
 }
-.mm-apparatus text {
-  font: 22px var(--font-sans, sans-serif);
-  fill: #798967;
+.mm2-art text {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 17px;
+  fill: #3e5350;
 }
-.mm-apparatus .mm-scale-unit {
-  font-size: 18px;
-}
-.mm-reading {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 7px 18px;
-  font-size: 16px;
-  padding: 0 12px;
-}
-.mm-reading strong {
-  font-size: 22px;
-  color: #9b8157;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-.mm-reading > span:last-child {
-  line-height: 1.6;
-}
-.mm-status {
-  font-size: 16px;
-  text-align: center;
-  color: #849174;
-  margin: 9px 10px;
-}
-.mm-controls {
+.mm2-controls {
   display: grid;
   gap: 18px;
-  background: #edf1e3;
-  border-radius: 24px;
-  margin: 22px 0;
-  padding: 24px;
-}
-.mm-controls button {
-  min-height: 44px;
-}
-.mm-controls > button {
-  border: 1px solid #cad2b7;
-  background: #f4f4e8;
-  color: #738263;
-  border-radius: 16px;
-  padding: 10px 18px;
-  font: inherit;
-}
-.mm-details {
+  margin: 20px 12px;
+  padding: 20px;
+  background: #eef1e7;
+  border-radius: 22px;
+  min-width: 0;
   font-size: 16px;
-  line-height: 1.8;
-  margin: 20px 14px;
+  line-height: 1.7;
 }
-.mm-details summary {
+.mm2-controls label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.mm2-controls select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   min-height: 44px;
-  padding: 8px 0;
+  border: 1px solid #c8d3c0;
+  border-radius: 12px;
+  background: #fafbf6;
+  color: inherit;
+  font: inherit;
+  padding: 8px;
+}
+.mm2-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+  font-family: inherit;
+  color: inherit;
+  background: #fafbf6;
+  border: 1px solid #c8d3c0;
+  border-radius: 14px;
+  padding: 8px 12px;
   cursor: pointer;
 }
-.mm-details p {
-  color: #7a8c6c;
-  margin: 0 0 16px;
+.mm2-controls button[aria-pressed='true'] {
+  background: #dce8d8;
+  border-color: #91a78b;
 }
-@media (max-width: 480px) {
-  .mm-controls {
-    padding: 18px 14px;
+.mm2-controls .segmented {
+  flex-wrap: wrap;
+}
+.mm2-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.mm2-controls input[type='range'] {
+  margin-inline: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.mm2-controls details {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.mm2-controls summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .mm2 {
+    max-width: 290px;
   }
-  .mm-apparatus text {
-    font-size: 24px;
+  .mm2-art {
+    max-height: none;
   }
-  .mm-apparatus .mm-scale-unit {
-    font-size: 22px;
+  .mm2-title {
+    font-size: 16px;
+    line-height: 1.4;
+    padding-inline: 4px;
   }
-  .mm-reading strong {
-    font-size: 20px;
+  .mm2-controls {
+    margin: 18px 0;
+    padding: 16px 12px;
+  }
+}
+@media (max-width: 600px) {
+  .mm2 {
+    padding-inline: 4px;
+    box-sizing: border-box;
+  }
+  .mm2-art {
+    max-width: 268px;
   }
 }
 
-/* Automatic film uses the player caption; expanded reading stays in exploration. */
-.mm-film[data-watch] > .mm-kicker,
-.mm-film[data-watch] > .mm-caption,
-.mm-film[data-watch] > details {
-  display: none;
-}
-@media (max-width: 480px) {
-  .mm-apparatus .mm-scale-unit {
-    font-size: 25px;
+@media (max-width: 640px) {
+  .showcase[data-slug='multimeter-lab'] .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='multimeter-lab'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.4;
   }
 }

@@ -1,0 +1,61 @@
+{
+  "status": "candidate-reviewed-not-product-acceptance",
+  "sourceReview": "artifacts/teaching-principles/batch-13-staging/retained/sources/source-review.json",
+  "checks": [
+    {
+      "kind": "independent-model-and-geometry-review",
+      "assertions": 401,
+      "evidence": "artifacts/teaching-principles/batch-13-cross-review/physics-review-retained.json",
+      "scope": "Before final input-boundary guards; two physical/rendering findings resolved and independently rechecked."
+    },
+    {
+      "kind": "scoped-model-tests",
+      "tests": 13,
+      "evidence": "artifacts/teaching-principles/batch-13-staging/retained/model-tests-02.log"
+    },
+    {
+      "kind": "strict-owned-types",
+      "errors": 0,
+      "evidence": "artifacts/teaching-principles/batch-13-staging/retained/typecheck.json"
+    },
+    {
+      "kind": "whole-player-overlay",
+      "frames": 54,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-13-staging/retained/whole-player-07/report.json"
+    },
+    {
+      "kind": "actual-native-controls-overlay",
+      "checks": 56,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-13-staging/retained/controls-01/report.json"
+    }
+  ],
+  "limitations": [
+    "Candidate overlay serves actual player with owned module overrides; source dictionary extractor still reads original source, so2newEnglishlabelsawait actual integration.",
+    "Source fingerprint in overlay reports describes original repository plus ignored overrides separately; not production build.",
+    "No subjective listening, physical-device performance or continuous human watching claimed."
+  ],
+  "resolved": [
+    "Finite propagation/roundtrip timing and same-pairvelocity; visibleframechapterfollow untilmanualselection.",
+    "Secondaryreceiver/battery/coil endpoint continuity; before-switch readings and curves zero.",
+    "Stationarymutualmodel maskedwhilecoilmoves; samefluxderivative.",
+    "Desktop/mobilewatchcomposedseparately; actual16pxlabels/44pxtargets,shortEnglishcaptions.",
+    "Nonfiniteinput and representability/overflowguards."
+  ],
+  "pending": ["Product-level verify/build/static/nativeaudio/entryanchorchecks"],
+  "rootIntegration": {
+    "status": "validated-awaiting-authorized-publication",
+    "batch": "drafts/teaching-principles/batch-13-review.json",
+    "actualAudio": "src/data/audio-manifest.json",
+    "transcriptReview": "artifacts/teaching-principles/batch-13-transcript-text-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "checks": "drafts/teaching-principles/batch-13-review.json",
+    "frozenSource": "artifacts/teaching-principles/batch-13-frozen-source.json",
+    "actualViews": "artifacts/teaching-principles/batch-13-root-actual-views.json"
+  }
+}
