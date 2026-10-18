@@ -1,184 +1,262 @@
-.bio-photo {
-  padding: clamp(14px, 3vw, 28px);
+.bpe12 {
+  padding: 18px 24px;
+  background: #eef0df;
+  color: #4e604d;
   border-radius: 24px;
-  background: #eeefda;
-  color: #506145;
+  --bpe-ink: #4e604d;
 }
-.bio-photo-kind {
-  font-size: 16px;
-  margin: 0 0 12px;
-  color: #7c8967;
-}
-.bio-photo-alga,
-.bio-photo-coupling,
-.bio-photo-preparation {
-  width: 100%;
-  height: 300px;
-  display: block;
-}
-.bio-photo-legend,
-.bio-photo-stores {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 22px;
-  font-size: 16px;
-  line-height: 1.5;
-}
-.bio-photo-vials {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  max-width: 540px;
-  margin: auto;
-}
-.bio-photo-vials > div {
-  width: 45%;
-  text-align: center;
-}
-.bio-photo-vials svg {
-  width: 100%;
-  height: 245px;
-  display: block;
-}
-.bio-photo-vials p,
-.bio-photo-isotopes p,
-.bio-photo-discgroups p {
+.bpe12 p {
   font-size: 16px;
   line-height: 1.4;
-  margin: 6px 0;
 }
-.bio-photo-note {
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 650px;
-  margin: 14px auto 0;
-  text-align: center;
+.bpe12-kind {
+  margin: 0 0 8px;
+  color: #75826b;
 }
-.bio-photo-isotopes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  text-align: center;
-}
-.bio-photo-isotopes svg {
-  width: 100%;
-  height: 230px;
-  display: block;
-}
-.bio-photo-stores span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.bio-photo-stores i {
-  height: 8px;
-  display: block;
-  border-radius: 8px;
-  background: #a3b475;
-}
-.bio-photo-carbon {
-  width: 100%;
-  height: 200px;
-  display: block;
-}
-.bio-photo-tracer {
-  display: flex;
-  gap: 24px;
-  max-width: 650px;
+.bpe12-visual {
+  max-width: 700px;
   margin: auto;
 }
-.bio-photo-tracer > div {
-  flex: 1;
-  min-width: 0;
-  font-size: 16px;
+.bpe12-visual > svg {
+  display: block;
+  width: 100%;
+  height: 300px;
+  overflow: visible;
 }
-.bio-photo-tracer p {
+.bpe12 svg text {
+  font-family: inherit;
+  font-size: 19px;
+  fill: var(--bpe-ink);
+}
+.bpe12 svg text[fill='#fff'] {
+  fill: #fff;
+}
+.bpe12-note {
+  text-align: center;
+  margin: 6px 0 0;
+}
+.bpe12-vials,
+.bpe12-sheets,
+.bpe12-discgroups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 520px;
+  margin: auto;
+  text-align: center;
+}
+.bpe12-discgroups {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 620px;
+}
+.bpe12-vials p,
+.bpe12-sheets p,
+.bpe12-discgroups p {
+  margin: 3px 0;
+}
+.bpe12-vials svg {
+  display: block;
+  width: 100%;
+  height: 225px;
+}
+.bpe12-sheets svg {
+  display: block;
+  width: 100%;
+  height: 215px;
+}
+.bpe12-discgroups svg {
+  display: block;
+  width: 100%;
+  height: 240px;
+}
+.bpe12-positive {
+  color: #34735e;
+  font-weight: 600;
+}
+.bpe12-isotopes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+}
+.bpe12-isotopes p {
+  margin: 3px 0;
+}
+.bpe12-isotopes svg {
+  width: 100%;
+  height: 155px;
+  display: block;
+}
+.bpe12-isotopes > .bpe12-note {
+  grid-column: 1/-1;
+}
+.bpe12-record {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+.bpe12-record p {
   margin: 5px 0;
 }
-.bio-photo-tracer > div > div {
-  height: 10px;
-  background: #d8dfbd;
+.bpe12-record-bars {
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+  min-height: 146px;
+  align-items: end;
+  padding-top: 8px;
+}
+.bpe12-record-bars > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+}
+.bpe12-record-bars i {
+  width: 66px;
+  background: #9eaf7e;
+  border-radius: 8px 8px 2px 2px;
+}
+.bpe12-record-bars strong {
+  font-weight: 600;
+}
+.bpe12-energy,
+.bpe12-stocks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 18px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.bpe12-energy > span,
+.bpe12-stocks > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bpe12-energy i,
+.bpe12-stocks i {
+  display: block;
+  width: 75px;
+  height: 8px;
+  background: #d7dfc2;
   border-radius: 8px;
   overflow: hidden;
 }
-.bio-photo-tracer i {
+.bpe12-energy b,
+.bpe12-stocks b {
   display: block;
-  background: #b28b59;
   height: 100%;
+  background: #b49a60;
+  border-radius: 8px;
 }
-.bio-photo-discgroups {
-  display: flex;
-  gap: 20px;
-  max-width: 650px;
-  margin: auto;
+.bpe12-stocks > span:nth-child(2) b {
+  background: #73978a;
 }
-.bio-photo-discgroups > div {
-  flex: 1;
-  min-width: 0;
-  text-align: center;
-}
-.bio-photo-discgroups svg {
-  width: 100%;
-  height: 260px;
-  display: block;
-}
-.bio-photo-controls {
+.bpe12-controls {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   max-width: 680px;
-  margin: 24px auto 0;
+  margin: 28px auto 0;
+  font-size: 16px;
 }
-.bio-photo-controls .segmented {
+.bpe12-controls .segmented {
   flex-wrap: wrap;
 }
-.bio-photo-controls button {
-  min-height: 44px;
+.bpe12-controls button {
   font: inherit;
+  font-size: 16px;
+  min-height: 44px;
+  min-width: 44px;
   color: inherit;
-  background: #f6f7e8;
-  border: 1px solid #c3cbaa;
+  background: #f8f7eb;
+  border: 1px solid #c6ceb5;
   border-radius: 12px;
   padding: 8px 12px;
 }
+.bpe12-controls button[aria-pressed='true'] {
+  background: #d8e3c9;
+  border-color: #a6ba8d;
+}
+.bpe12-control-note {
+  margin: 12px 0 0;
+}
 @media (max-width: 540px) {
-  .bio-photo-alga,
-  .bio-photo-preparation {
-    height: 250px;
+  .bpe12 {
+    padding: 10px 10px 12px;
+    border-radius: 20px;
   }
-  .bio-photo-coupling {
-    height: 245px;
+  .bpe12-kind {
+    margin-bottom: 2px;
   }
-  .bio-photo-vials {
-    gap: 16px;
+  .bpe12-visual > svg {
+    height: auto;
+    max-width: 300px;
+    margin: auto;
   }
-  .bio-photo-vials svg {
-    height: 210px;
+  .bpe12 svg text {
+    font-size: 19px;
   }
-  .bio-photo-isotopes {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .bpe12-vials,
+  .bpe12-sheets,
+  .bpe12-discgroups {
+    gap: 8px;
   }
-  .bio-photo-isotopes svg {
-    height: 120px;
+  .bpe12-vials svg {
+    height: 163px;
   }
-  .bio-photo-carbon {
+  .bpe12-sheets svg {
+    height: 140px;
+  }
+  .bpe12-sheets svg text {
+    font-size: 20px;
+  }
+  .bpe12-discgroups svg {
     height: 150px;
   }
-  .bio-photo-tracer {
-    gap: 12px;
+  .bpe12-isotopes {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
-  .bio-photo-discgroups {
-    gap: 6px;
+  .bpe12-isotopes svg {
+    height: auto;
+    max-height: 75px;
   }
-  .bio-photo-discgroups svg {
-    height: 210px;
+  .bpe12-record-bars {
+    min-height: 146px;
+    gap: 42px;
+  }
+  .bpe12-record p {
+    margin: 4px 0;
+  }
+  .bpe12-note {
+    margin-top: 5px;
+  }
+  .bpe12-energy {
+    gap: 4px 12px;
+  }
+  .bpe12-stocks {
+    gap: 4px 14px;
+  }
+  .bpe12-stocks i {
+    width: 50px;
+  }
+  .bpe12-mode-coupling .bpe12-note {
+    margin-top: 2px;
+  }
+  .bpe12-controls {
+    margin-top: 24px;
   }
 }
-
-@media (max-width: 540px) {
-  .bio-photo {
-    padding-top: 12px;
-    padding-bottom: 12px;
+@media (max-width: 540px) and (max-height: 640px) {
+  .bpe12 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .bpe12-mode-atp .bpe12-visual > svg {
+    max-height: 230px;
   }
 }

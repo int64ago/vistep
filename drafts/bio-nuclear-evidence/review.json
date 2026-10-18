@@ -1,0 +1,56 @@
+{
+  "sceneSlug": "bio-nuclear-evidence",
+  "status": "integrated-measured-repair-awaiting-static-review",
+  "scope": "Retain causal textbook content and independent model; repair phone composition, explicit exploration selection and language-specific measured presentation timing. Two English passages explicitly distinguish the removal/absence of the nucleus.",
+  "checks": [
+    {
+      "kind": "full-textbook-and-existing-content-review",
+      "evidence": "artifacts/teaching-principles/retained-biology-next/source-review.json"
+    },
+    {
+      "kind": "independent-scientific-peer-model-review",
+      "assertions": 6037,
+      "evidence": "artifacts/teaching-principles/batch-12-cross-review/biology-retained-science.json"
+    },
+    {
+      "kind": "live-independent-model-tests",
+      "tests": 10,
+      "evidence": "artifacts/teaching-principles/retained-biology-next/model-tests-live.log"
+    },
+    {
+      "kind": "actual-player-keyframes",
+      "initial": 90,
+      "initialFailureCount": 9,
+      "repairedFrames": 9,
+      "evidence": [
+        "artifacts/teaching-principles/retained-biology-next/integrated-01/report.json",
+        "artifacts/teaching-principles/retained-biology-next/integrated-02/report.json"
+      ]
+    },
+    {
+      "kind": "actual-controls",
+      "states": 80,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/retained-biology-next/controls-02/report.json"
+    },
+    {
+      "kind": "root-actual-image-inspection",
+      "evidence": "artifacts/teaching-principles/batch-12-root-early-views.json"
+    }
+  ],
+  "limits": [
+    "ASR and native browser playback are separate from subjective listening and continuous human watching.",
+    "Physical phone performance is not measured.",
+    "Biological duration is illustrative, not a fitted measured time."
+  ],
+  "pending": ["Final static acceptance", "Full verify and preview build"],
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-12-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

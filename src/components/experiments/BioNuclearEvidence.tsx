@@ -1,9 +1,10 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase, ease, ramp } from '../lab/FilmContext';
+import { useShowcase, ease } from '../lab/FilmContext';
 import {
   nuclearTransfer,
+  nuclearFilmProgress,
   constrictedEmbryo,
   amoebaFragment,
   algaRegeneration,
@@ -108,14 +109,13 @@ function Animal({
 export default function BioNuclearEvidence() {
   const f = useShowcase(),
     uid = useId().replace(/:/g, ''),
-    [mode, setMode] = useState<NuclearCase>(
-      keys.includes(f.variant as NuclearCase) ? (f.variant as NuclearCase) : 'alga',
-    ),
+    [mode, setMode] = useState<NuclearCase | null>(null),
     [progress, setProgress] = useState(0.9),
     [restore, setRestore] = useState(true),
     [donor, setDonor] = useState<'umbrella' | 'daisy'>('daisy');
-  const m = f.watch ? keys[Math.min(f.chapter, 6)] : mode,
-    p = f.watch ? ease(ramp(f.chapterProgress, 0.05, 0.85)) : progress,
+  const authored = keys[Math.min(f.chapter, 6)],
+    m = f.watch ? authored : (mode ?? authored),
+    p = f.watch ? nuclearFilmProgress(f.chapter, f.chapterTime, browserLocale()) : progress,
     enabled = f.watch || restore,
     transfer = nuclearTransfer(p, enabled),
     embryo = constrictedEmbryo(p, enabled),
@@ -123,7 +123,7 @@ export default function BioNuclearEvidence() {
     alga = algaRegeneration(p, algaSource, 'umbrella'),
     algaTravel = ease(Math.min(1, p / 0.55));
   return (
-    <section className="bio-nuclear">
+    <section className="bio-nuclear" data-watch={f.watch} data-kind={m} data-progress={p}>
       <p className="bio-nuclear-kind">
         {!f.watch && <>{t('历史研究重建')} · </>}
         {t(names[keys.indexOf(m)])}
@@ -307,18 +307,19 @@ export default function BioNuclearEvidence() {
               <rect
                 key={i}
                 x={50 + i * 100}
-                y={150 - n * 5 * Math.min(1, p * 1.4)}
+                y={150 - n * 5}
                 width="45"
-                height={n * 5 * Math.min(1, p * 1.4)}
+                height={n * 5}
+                opacity={p >= [0.35, 0.6, 0.9][i] ? 1 : 0}
                 rx="7"
                 fill={['#c0b59a', '#a4b696', '#879f81'][i]}
               />
             ))}
           </svg>
           <div className="bio-nuclear-ledger">
-            <span>21 {t('代孕母猴')}</span>
-            <span>6 {t('妊娠')}</span>
-            <span>2 {t('健康幼猴')}</span>
+            <span style={{ visibility: p >= 0.35 ? 'visible' : 'hidden' }}>21 {t('代孕母猴')}</span>
+            <span style={{ visibility: p >= 0.6 ? 'visible' : 'hidden' }}>6 {t('妊娠')}</span>
+            <span style={{ visibility: p >= 0.9 ? 'visible' : 'hidden' }}>2 {t('健康幼猴')}</span>
           </div>
         </>
       ) : (
@@ -410,7 +411,7 @@ export default function BioNuclearEvidence() {
       {!f.watch && (
         <div className="bio-nuclear-controls">
           <Segments
-            value={mode}
+            value={m}
             onChange={setMode}
             label={t('研究案例')}
             options={keys.map((value, i) => ({ value, label: t(names[i]) }))}
@@ -423,12 +424,12 @@ export default function BioNuclearEvidence() {
             step={0.01}
             onChange={setProgress}
           />
-          {mode !== 'monkey' && mode !== 'alga' && (
+          {m !== 'monkey' && m !== 'alga' && (
             <button type="button" aria-pressed={restore} onClick={() => setRestore(!restore)}>
               {t(restore ? '移入细胞核：是' : '移入细胞核：否')}
             </button>
           )}
-          {mode === 'alga' && (
+          {m === 'alga' && (
             <Segments
               value={donor}
               onChange={setDonor}

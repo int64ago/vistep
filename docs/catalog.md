@@ -27,7 +27,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Atomic evidence in spectra](../src/content/en/atomic-spectrum-lab.mdx)               | 4:12 | What can a spectrum reveal about matter and theory?              |
 | [Cathode rays and electrons](../src/content/en/cathode-ray-lab.mdx)                   | 2:48 | How can a beam reveal its charge and mass?                       |
 | [Microscopic scattering experiments](../src/content/en/atomic-scattering-lab.mdx)     | 2:48 | How does scattering reveal an invisible interior?                |
-| [Oil drops and elementary charge](../src/content/en/oil-drop-lab.mdx)                 | 1:24 | How can one oil drop reveal the unit of electric charge?         |
+| [Oil drops and elementary charge](../src/content/en/oil-drop-lab.mdx)                 | 3:26 | How can a moving oil drop reveal its charge?                     |
 | [Photoelectric-effect laboratory](../src/content/en/photoelectric-lab.mdx)            | 3:16 | Why can brighter light still fail to release electrons?          |
 
 ## Chemistry & reactions
@@ -96,7 +96,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Carbon frameworks in space](../src/content/en/chem-carbon-frameworks.mdx)                            | 3:30 | How do carbon bonds build different molecular shapes?                         |
 | [Lewis diagrams and orbital overlap](../src/content/en/chem-bond-overlap.mdx)                         | 3:50 | How do transfer, sharing and orbital overlap differ?                          |
 | [Periodic tables and property trends](../src/content/en/chem-periodic-patterns.mdx)                   | 3:30 | Which relationships does a periodic table preserve?                           |
-| [Atomic models and electron clouds](../src/content/en/chem-atomic-models.mdx)                         | 3:33 | What changes from an orbit to an electron cloud?                              |
+| [Atomic models and evidence](../src/content/en/chem-atomic-models.mdx)                                | 4:18 | What evidence can change an atomic model?                                     |
 | [Experimental comparisons across a period and a group](../src/content/en/chem-periodic-practical.mdx) | 3:28 | How can experiments establish periodic trends?                                |
 | [Where iron’s electrons go](../src/content/en/chem-iron-practical.mdx)                                | 3:27 | Why can iron two both accept and donate electrons?                            |
 | [Testing for iron in food](../src/content/en/chem-food-iron.mdx)                                      | 1:54 | What happens before the food extract turns red?                               |
@@ -154,7 +154,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Investigating plant growth regulators](../src/content/en/bio-plant-growth-regulators.mdx)        | 3:05 | How do comparisons reveal effects on growth, roots and ripening?                 |
 | [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 2:49 | Separate a process model from different cells in a fixed specimen.               |
 | [Evidence for auxin](../src/content/en/bio-auxin-evidence.mdx)                                    | 4:28 | How do experiments explain a plant bending toward light?                         |
-| [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 3:39 | Which question about photosynthesis can each line of evidence answer?            |
+| [Evidence for photosynthesis](../src/content/en/bio-photosynthesis-evidence.mdx)                  | 4:46 | How can light supply energy for synthesis?                                       |
 | [Leaf bands and spectra](../src/content/en/bio-leaf-pigments.mdx)                                 | 2:43 | Why does one green spot separate into several bands?                             |
 | [Immune pathways and evidence](../src/content/en/bio-immune-pathways.mdx)                         | 2:50 | How does identifying a marker connect to an immune pathway?                      |
 | [Respiratory gas and carbon pathways](../src/content/en/bio-respiration.mdx)                      | 4:18 | What does fermentation set flowing again?                                        |

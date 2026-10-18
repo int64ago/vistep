@@ -1211,6 +1211,8 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         '玻尔',
         '电子云',
         '原子轨道',
+        '原子模型与证据',
+        '看不见原子，凭什么改变原子模型？',
       ],
       en: [
         'Atomic models and electron clouds',
@@ -1221,6 +1223,8 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         'Bohr',
         'electron cloud',
         'orbital',
+        'Atomic models and evidence',
+        'What evidence can change an atomic model?',
       ],
     },
   },
@@ -1464,8 +1468,20 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['光合作用的证据链', '光合作用', '恩格尔曼', '希尔反应', '卡尔文'],
-      en: ['Evidence for photosynthesis', 'cell biology', 'biology experiments'],
+      zh: [
+        '光合作用的证据链',
+        '光合作用',
+        '恩格尔曼',
+        '希尔反应',
+        '卡尔文',
+        '光怎样变成推动合成的能量？',
+      ],
+      en: [
+        'Evidence for photosynthesis',
+        'cell biology',
+        'biology experiments',
+        'How can light supply energy for synthesis?',
+      ],
     },
   },
   'chem-hydrogen-chlorine': {
@@ -3234,11 +3250,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'matter',
     minAge: 14,
     keywords: {
-      zh: ['油滴与元电荷', '怎样用一个油滴，量出电荷的最小单位？', '近代物理实验'],
+      zh: [
+        '油滴与元电荷',
+        '怎样用一个油滴，量出电荷的最小单位？',
+        '近代物理实验',
+        '怎样从油滴的运动称出电荷？',
+      ],
       en: [
         'Oil drops and elementary charge',
         'How can one oil drop reveal the unit of electric charge?',
         'modern physics experiment',
+        'How can a moving oil drop reveal its charge?',
       ],
     },
   },

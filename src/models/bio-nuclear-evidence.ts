@@ -1,6 +1,6 @@
 export type NuclearCase =
   'cow' | 'axolotl' | 'constriction' | 'amoeba' | 'alga' | 'monkey' | 'frog';
-const clamp = (x: number) => Math.min(1, Math.max(0, x));
+const clamp = (x: number) => (Number.isFinite(x) ? Math.min(1, Math.max(0, x)) : 0);
 const smooth = (x: number) => {
   const p = clamp(x);
   return p * p * (3 - 2 * p);
@@ -26,7 +26,7 @@ export function nuclearTransfer(progress: number, hasDonor = true) {
 export function constrictedEmbryo(progress: number, transfer = true) {
   const p = clamp(progress),
     leftStage = Math.min(4, (p / 0.43) * 4),
-    rightStage = transfer ? Math.max(0, Math.min(3, ((p - 0.68) / 0.32) * 3)) : 0,
+    rightStage = transfer ? Math.max(0, Math.min(3, ((p - 0.68) / (1 - 0.68)) * 3)) : 0,
     q = transfer ? smooth((p - 0.48) / 0.18) : 0;
   // A nucleus from a near-bridge blastomere passes through the open cytoplasmic bridge.
   const source = cleavageRegions(16, 106, 126)[7].nucleus,
@@ -107,7 +107,7 @@ export function algaRegeneration(
   nucleus: 'umbrella' | 'daisy',
   graft: 'umbrella' | 'daisy',
 ) {
-  const p = Math.max(0, Math.min(1, progress));
+  const p = clamp(progress);
   return {
     nucleus,
     stem: graft,
@@ -122,3 +122,73 @@ export const macaqueOutcomes = {
   nuclearDNA: 'fibroblast donor',
   mitochondrialDNA: 'oocyte donor',
 } as const;
+
+function filmProgress(seconds: number, points: readonly (readonly [number, number])[]) {
+  const t = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  for (let i = 1; i < points.length; i++) {
+    if (t <= points[i][0]) {
+      const [a, x] = points[i - 1],
+        [b, y] = points[i];
+      return x + (y - x) * smooth((t - a) / (b - a));
+    }
+  }
+  return points[points.length - 1][1];
+}
+
+/** Chapter-local seconds, including the measured 0.45 s audio lead-in.
+ * These are presentation cues, not biological rates or experimental measurements. */
+export function nuclearFilmProgress(chapter: number, seconds: number, locale: string) {
+  const en = locale === 'en';
+  const cues: (readonly (readonly [number, number])[])[] = [
+    [
+      [0, 0],
+      [3.5, 0],
+      [en ? 8.5 : 7.8, 0.4],
+      [en ? 13.5 : 11, 0.72],
+      [en ? 15.4 : 13.5, 1],
+    ],
+    [
+      [0, 0],
+      [2, 0],
+      [en ? 7.5 : 6.4, 0.4],
+      [en ? 8 : 7, 0.72],
+      [en ? 9.7 : 8.5, 1],
+    ],
+    [
+      [0, 0],
+      [3.5, 0],
+      [en ? 7.1 : 6.5, 0.43],
+      [en ? 7.6 : 7.1, 0.48],
+      [en ? 9.8 : 9.4, 0.66],
+      [12.6, 1],
+    ],
+    [
+      [0, 0],
+      [3, 0],
+      [en ? 11.9 : 11.6, 0.38],
+      [en ? 14.2 : 14.6, 0.65],
+      [en ? 16.2 : 17, 1],
+    ],
+    [
+      [0, 0],
+      [en ? 5.5 : 4.4, 0],
+      [en ? 9.2 : 7.8, 0.55],
+      [en ? 12.5 : 11.3, 1],
+    ],
+    [
+      [0, 0],
+      [en ? 5.6 : 6.8, 0.2],
+      [en ? 8.5 : 10.2, 0.4],
+      [en ? 10.2 : 12.1, 0.65],
+      [en ? 11.8 : 14.9, 1],
+    ],
+    [
+      [0, 0],
+      [en ? 6.1 : 5.5, 0],
+      [en ? 8.5 : 7.4, 0.4],
+      [en ? 9 : 8, 0.72],
+      [en ? 12.2 : 10.3, 1],
+    ],
+  ];
+  return filmProgress(seconds, cues[Math.min(6, Math.max(0, Math.floor(chapter) || 0))]);
+}

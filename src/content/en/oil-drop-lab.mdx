@@ -1,22 +1,66 @@
-<h2 id="understand">Determine weight before weighing charge</h2>
+<h2 id="understand">How can visible motion weigh an invisible charge?</h2>
 
-The textbooks mention Millikan’s measurement without giving a complete classroom procedure. This scene supplements that historical context with the measurement principle.
+A microscope shows a slowly moving bright spot. It is a scattered-light image, not a resolved sphere whose diameter can simply be measured. We first infer the drop’s effective weight from its motion, then use an electric field to determine its charge.
 
-The no-field terminal speed estimates drop radius. The balancing voltage then determines charge. A negatively charged drop experiences an upward force in a downward field.
+The textbook references are required volume 3, P5, and elective volume 3, P79. Both retain the complete three-chapter explanation. The first two chapters are a declared teaching reconstruction. The third uses fixed records for Drop No. 6 in [Table IV of Millikan’s 1913 paper](https://doi.org/10.1103/PhysRev.2.109).
 
-<h2 id="try">Compare charge with balancing voltage</h2>
+With no electric field, the teaching drop covers 0.50 mm steadily in about 6.87 s. Given viscosity and density, that speed constrains its radius. At the same observed speed, a smaller candidate has more drag than effective weight and would slow down. A larger candidate would accelerate. A radius of about 0.80 μm supports steady motion, giving an effective weight near 1.80×10⁻¹⁴N.
 
-Keep drop size fixed, change the electron count and adjust voltage until speed approaches zero. More charge needs less balancing voltage. The display gives charge magnitude; the actual charge is negative. Downward velocity is positive.
+Effective weight means gravity minus buoyancy. A drop that keeps falling need not keep accelerating.
 
-<h2 id="deeper">Approximations and historical limits</h2>
+<h2 id="try">Change voltage and test a new prediction</h2>
+
+A positive upper plate and negative lower plate produce a downward field. The negatively charged drop feels an upward electric force. Increasing voltage can turn falling into rising. Only at rest is viscous drag zero, allowing the electric force alone to balance effective weight.
+
+<div className="formula">E=U/d; at rest, |q|U/d=W, so |q|=Wd/U.</div>
+
+The teaching trial balances near 141.0 V across a 5 mm gap, implying a charge magnitude near 6.40×10⁻¹⁹C. No electron count is supplied. An assumed model charge is not presented as evidence for quantization.
+
+Predict first: if the same drop’s charge doubles while its weight and plate gap stay fixed, what balancing voltage is needed? The old voltage gives twice the electric force, so the drop rises. Halving voltage to about 70.5 V restores balance.
+
+Exploration accepts continuously variable model charge and voltage. Changing voltage starts a new marked trial; its time control reconstructs that trial’s motion history. Candidate increments move comparison marks, never the historical record points.
+
+<h2 id="deeper">From one charge measurement to evidence of discrete changes</h2>
 
 <details>
-<summary>Stokes drag and force balance</summary>
+<summary>Why measure the fall speed first?</summary>
 
-<div className="formula">Feffective = (4πr³/3)(ρoil−ρair)g; Fdrag = 6πηrv; |q|U/d = Feffective</div>
+Let r be radius, with oil and air densities ρoil and ρair. Downward is positive. The independent model uses:
 
-The model uses a radius of0.8 μm, a5 mm plate gap, oil density860 kg/m³ and air viscosity1.81×10⁻⁵ Pa·s. Motion uses the terminal-speed approximation. Air-slip corrections, Brownian motion, evaporation and density uncertainty are omitted, so this is not a precision charge measurement.
+<div className="formula">W=(4πr³/3)(ρoil−ρair)g; C=1+b/(pr); γ=6πηr/C; m dv/dt=W−|q|U/d−γv.</div>
 
-Length, time and force arrows use separate display scales. Changing the electron count directly is a teaching control; historical experiments changed charge through physical processes and inferred it from observations. Integer charge is assumed here, whereas experimental evidence requires measured data and error analysis.
+C is a first-order slip correction, p is pressure, and γ is the drag coefficient. At no-field terminal speed, γv↓=W. Rearranging gives:
+
+<div className="formula">r²+(b/p)r=9ηv↓/[2(ρoil−ρair)g].</div>
+
+Inferring radius and weight requires viscosity, density, pressure and a slip model. Declared teaching inputs are oil density 860 kg/m³, air density 1.225 kg/m³, η=1.81×10⁻⁵Pa·s, p=101325Pa and b=8.2×10⁻³Pa·m. The slip expression and units of b are documented in the [PASCO instrument manual](https://web.physics.ucsb.edu/~phys128/experiments/electron/Millikan-Oil-Drop-Manual-AP-8210A.pdf). These inputs do not reproduce every condition of the 1913 apparatus.
+
+Each constant-voltage interval uses an analytic motion solution. Position and velocity remain continuous at a voltage switch. For these conditions, velocity relaxes in about 7.44 μs; the main film shows seconds, not a visibly resolved microscopic transient. Plate contact prevents crossing. Brownian motion, evaporation and detailed wall corrections are omitted, so displayed precision is not an experimental uncertainty estimate.
+
+</details>
+
+<details>
+<summary>Raw times, corrected reciprocals and inferred integers</summary>
+
+Section 9 of the original paper, printed pages 123–124, identifies Table IV’s columns. Columns 1 and 4 contain fall and rise timings. Columns 2/3 are auxiliary stopwatch checks. Column 5 contains the author’s corrected reciprocal rise times. Integers in columns 7/9 are inferred results and must not be supplied as observations.
+
+The fixed file preserves 22 fall readings and 21 rise readings in 13 successive states. The independently transcribed fall mean is 11.877727 s; the table prints 11.880 s. Both are retained. Rise times change greatly, including 80.708 s, about 22.375 s and 140.565 s, while fall times remain comparatively stable. That supports a changing electrical response while drop size is approximately stable.
+
+For the same drop, timed distance D and electric field, terminal upward motion gives |q|E=W+γv↑. Combining it with no-field fall gives:
+
+<div className="formula">|q|=(γD/E)(1/t↓+1/t↑); therefore Δ|q|=(γD/E)Δ(1/t↑).</div>
+
+This is the physical bridge from changing times to changing charge. Author-corrected reciprocals differ from raw reciprocal means and remain separately identified. Differences here are recomputed from column 5: for example, 0.05079−0.01285=0.03794s⁻¹. We do not copy the inconsistent printed difference at that position in column 6.
+
+</details>
+
+<details>
+<summary>What can a common increment establish?</summary>
+
+Using only the first 8 adjacent changes as a teaching training set, a declared candidate interval of 0.004–0.007s⁻¹ yields a fitted increment near 0.0053781s⁻¹. Approximate counts 6,7,1,3,1,5,4,3 emerge from comparison; they are not input data.
+
+Doubling the increment misses small odd steps. Halving it still accommodates the finite records. The table supports recurring small increments, but a search interval cannot itself establish that no smaller unit exists. The last change is held out: starting from state 12 at 0.01285s⁻¹, an increase of 2 fitted steps predicts state 13 near 0.023606s⁻¹. Revealing the record gives 0.02364s⁻¹, a difference near 0.000034s⁻¹. This is a declared teaching holdout, not a claim that the historical experiment preregistered this test. No independent error bars are invented.
+
+An absolute charge unit also needs length, drag and slip calibration and comparisons across drops. A value in historical electrostatic units cannot be silently replaced by the modern exact value. Today e=1.602176634×10⁻¹⁹C is an [SI defining value](https://www.nist.gov/si-redefinition/definitions-si-base-units), not the precision of a 1913 measurement.
 
 </details>

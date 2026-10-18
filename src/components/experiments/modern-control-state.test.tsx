@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import ModernLab, { ModernLabArtwork } from './ModernLab';
 import PhotoelectricLab from './PhotoelectricLab';
 import BlackbodyLab from './BlackbodyLab';
-import OilDropLab from './OilDropLab';
+import OilDropLab, { OilDropArtwork } from './OilDropLab';
 import AtomicScatteringLab from './AtomicScatteringLab';
 import CathodeRayLab from './CathodeRayLab';
 import AtomicSpectrumLab from './AtomicSpectrumLab';
@@ -50,15 +50,15 @@ const input = (view: ReactTestRenderer, label: string) =>
   view.root.findAllByType('input').find((x) => x.props['aria-label'] === label)!;
 
 describe('modern-physics film state is independent of exploration', () => {
-  const series: [string, ComponentType, number, string?][] = [
+  const series: [string, ComponentType, number, string?, ComponentType<any>?][] = [
     ['photocell', PhotoelectricLab, 4, 'Photocell'],
     ['blackbody', BlackbodyLab, 3],
-    ['oil drop', OilDropLab, 2],
+    ['oil drop', OilDropLab, 2, undefined, OilDropArtwork],
     ['Compton scattering', AtomicScatteringLab, 5, 'Compton scattering'],
     ['cathode rays', CathodeRayLab, 2],
     ['Lamb spectroscopy', AtomicSpectrumLab, 8, 'Precision hydrogen spectroscopy'],
   ];
-  for (const [name, Component, chapter, path] of series) {
+  for (const [name, Component, chapter, path, Artwork = ModernLabArtwork] of series) {
     it(`restores the authored ${name} apparatus after parameter changes`, async () => {
       film.watch = true;
       film.chapter = chapter;
@@ -66,7 +66,7 @@ describe('modern-physics film state is independent of exploration', () => {
       await act(() => {
         view = create(createElement(Component));
       });
-      const baseline = view.root.findByType(ModernLabArtwork).props;
+      const baseline = view.root.findByType(Artwork).props;
       film.watch = false;
       await act(() => view.update(createElement(Component)));
       if (path) {
@@ -78,7 +78,7 @@ describe('modern-physics film state is independent of exploration', () => {
       }
       film.watch = true;
       await act(() => view.update(createElement(Component)));
-      expect(view.root.findByType(ModernLabArtwork).props).toEqual(baseline);
+      expect(view.root.findByType(Artwork).props).toEqual(baseline);
       await act(() => view.unmount());
     });
   }

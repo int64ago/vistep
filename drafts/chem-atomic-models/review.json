@@ -1,52 +1,230 @@
 {
+  "sceneSlug": "chem-atomic-models",
+  "status": "owned measured product frozen; root static acceptance pending",
+  "createdAt": "2026-10-18T19:21:40.114Z",
   "owner": "chemistry_inventory",
-  "kind": "author-self-review",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "sourceFiles": {
-    "src/models/chem-atomic-models.ts": "6c7758f675cedb3fb921519aaf6e41b7d0b05e709852206c5aee01939feba9c4",
-    "src/components/experiments/ChemAtomicModels.tsx": "f5d1859a6675cb5a6d636ab84b955903e74dac78dd8e6c42811c05d3416e1ff6",
-    "src/styles/chem-atomic-models.css": "a8581161b6daf653ccb3cf5546f3d5fa398da350067f3e9a2c17e4e8412d1221",
-    "src/data/scene-packets/chem-atomic-models.json": "b69865cf7b2482eda02174126dc79c5269e4b657c95e87b6a499e928d85b1289"
-  },
-  "conditions": {
-    "browser": "Playwright Chromium, headless",
-    "viewport": "320×844 emulation; not a physical phone",
-    "reducedMotion": true,
-    "audio": "off; no listening claim",
-    "preview": "independent snapshot pnpm installation; port4337"
-  },
+  "authorReview": true,
   "checks": [
     {
-      "type": "model",
-      "status": "passed",
-      "tests": 4
+      "type": "source review",
+      "status": "completed within stated source scopes",
+      "evidence": "artifacts/teaching-principles/chemistry-next-atomic-models/sources; packet.sources"
     },
     {
-      "type": "paused-keyframe-geometry",
+      "type": "independent model review",
+      "status": "passed within bounded function scope",
+      "assertions": 234,
+      "evidence": "artifacts/teaching-principles/batch-12-cross-review/physics-review-atomic.json",
+      "limit": "Subsequent separate-view timing director is author-tested; no peer UI/voice claim."
+    },
+    {
+      "type": "candidate-only stage screenshots",
+      "status": "rendered; representative author inspection",
+      "cases": 72,
+      "manuallyViewedAcrossRevisions": 14,
+      "evidence": "artifacts/teaching-principles/chemistry-next-atomic-models/candidate-stage/report.json",
+      "conditions": "SSR fixtures, zh/en,320/1100width,568height,reduced-motion; Arial fallback; full player and live React controls absent."
+    },
+    {
+      "type": "actual product tests",
       "status": "passed",
-      "cases": 11,
-      "maxHorizontalOverflow": 0,
+      "count": 18,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/tests.json"
+    },
+    {
+      "type": "scoped TypeScript",
+      "status": "passed",
+      "diagnostics": 0,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/typecheck.json"
+    },
+    {
+      "type": "actual provisional watch frames",
+      "status": "passed after bounded corrections/repeat",
+      "cases": 64,
+      "conditions": "zh/en,320×568/1440×1000,muted,reduced-motion",
       "evidence": [
-        "artifacts/chemistry-inventory/review-atomic-final",
-        "artifacts/chemistry-inventory/review-atomic-final-zh"
-      ]
+        "artifacts/teaching-principles/atomic-models-implementation/provisional-frames/report.json",
+        "artifacts/teaching-principles/atomic-models-implementation/layout-repair/report.json",
+        "artifacts/teaching-principles/atomic-models-implementation/layout-repair-2/report.json",
+        "artifacts/teaching-principles/atomic-models-implementation/final-provisional/report.json",
+        "artifacts/teaching-principles/atomic-models-implementation/beam-repaired/report.json"
+      ],
+      "limits": "63/64 final-provisional captures passed. ZH neutrality reset to chapter0/time0 in active dev; repeat passed. Earlier desktop beam frames are superseded. Captures alone are not manual visual acceptance or complete playback.",
+      "maxPhonePlayerBottom": 562.265625
     },
     {
-      "type": "visual-author-inspection",
+      "type": "actual controls and teaching windows",
       "status": "passed",
-      "observed": "Viewed final English p-orbital phone frame and original 1s frame. Replaced tiny three-column phone clouds with one large orientation at a time, while desktop remains comparative. Removed duplicated explanation from watch stage; transport remains within viewport."
+      "states": 108,
+      "entries": 4,
+      "errors": 0,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/final-controls-corrected/report.json",
+      "limits": "Author live control tests, not independent review or playback. Intermediate control script reading a hidden label failed and remains as evidence."
     },
     {
-      "type": "continuous-playback",
-      "status": "not-run"
+      "type": "retained cue contract",
+      "status": "passed",
+      "fieldComparisons": 64,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/retained-cue-contract.json"
     },
     {
-      "type": "listening",
-      "status": "not-run"
+      "type": "actual cover consumer images",
+      "status": "rendered and personally viewed",
+      "evidence": [
+        "artifacts/teaching-principles/atomic-models-implementation/covers/catalog.png",
+        "artifacts/teaching-principles/atomic-models-implementation/covers/social.png"
+      ],
+      "limits": "Development endpoints; final static metadata/render root-owned."
     },
     {
-      "type": "physical-phone",
-      "status": "not-run"
+      "type": "full playback / listening / physical-phone performance",
+      "status": "not run",
+      "reason": "Measured director calibration is recorded separately below. Final static normal playback is root-owned; no owner subjective listening or physical-phone performance claim."
+    },
+    {
+      "type": "global verify/build/static/deploy",
+      "status": "not run; root owned"
+    },
+    {
+      "type": "independent detector-geometry follow-up",
+      "status": "passed within stated scope",
+      "states": 90,
+      "assertions": 450,
+      "evidence": "artifacts/teaching-principles/batch-12-cross-review/physics-atomic-cathode-view.json",
+      "limits": "Independent scalar beam geometry and clearances; noUI/voice claim."
+    },
+    {
+      "type": "measured bilingual event calibration",
+      "status": "passed",
+      "eventAssertions": 46,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/measured-sync.json",
+      "limits": "Actual independent decoded words, not listening. Includes hashes of16word-time files."
+    },
+    {
+      "type": "measured author tests",
+      "status": "passed",
+      "count": 18,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/measured-tests.json"
+    },
+    {
+      "type": "measured actual keyframes",
+      "status": "passed after navigation repeat",
+      "cases": 52,
+      "manuallyViewed": 10,
+      "evidence": [
+        "artifacts/teaching-principles/atomic-models-implementation/measured-frames/report.json",
+        "artifacts/teaching-principles/atomic-models-implementation/measured-repeat/report.json"
+      ],
+      "limits": "51/52initially passed; failednavigation preserved. Only representative frames were personally inspected; not complete playback."
+    },
+    {
+      "type": "measured actual controls",
+      "status": "passed",
+      "states": 108,
+      "entries": 4,
+      "evidence": "artifacts/teaching-principles/atomic-models-implementation/measured-controls-repeat/report.json",
+      "limits": "Earlier navigation-aborted attempt preserved at measured-controls/report.json."
     }
-  ]
+  ],
+  "findingsResolved": [
+    {
+      "issue": "Original history presented only model shapes",
+      "action": "Added fixed evidence, controlled predictions and distinct causal states to first four chapters."
+    },
+    {
+      "issue": "Equal normalized scattering progress could imply equal physical flight time",
+      "action": "Separate slowed views; point centre holds at zero speed; labels and article disclose time/scale separation."
+    },
+    {
+      "issue": "2s spherical node cannot be seen directly in projected density",
+      "action": "Kept common-scale clouds and added analytic radial plot with visible r=2a0 zero."
+    },
+    {
+      "issue": "Nonfinite legacy orbital inputs",
+      "action": "Finite guards and bounded sample counts, preserving normal analytic outputs."
+    },
+    {
+      "issue": "Short-screen longest caption and wrong anchor compensation overflowed player",
+      "action": "Retained caption text; own16px/1.3 compact layout and narrower chapter column; rootSSR experiment anchor. Final fullplayer bottom≤562.27px."
+    },
+    {
+      "issue": "Desktop transverse scale grew with horizontal width, clipping plates and detector contact",
+      "action": "cathodeView independent transverse mapping and author boundary regression; affected actual desktop/mobile frames repeated."
+    },
+    {
+      "issue": "Positive/neutral exploration candidates inherited negative-charge label",
+      "action": "Current charge sign selects candidate label; live54states/language repeated."
+    }
+  ],
+  "recommendedStageFrames": [
+    "artifacts/teaching-principles/atomic-models-implementation/beam-repaired/chem-atomic-models-en-1440-chapter-1-field-plus.png",
+    "artifacts/teaching-principles/atomic-models-implementation/beam-repaired/chem-atomic-models-zh-320-chapter-1-field-minus.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-2-materials.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-3-zero-speed-turn.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-3-energy-question.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-3-energy-answer.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-4-blue-question.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-4-blue-answer.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-provisional/chem-atomic-models-en-320-chapter-7-s-node.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-controls-corrected/en-beam-candidate.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-controls-corrected/en-chem-required-1-model-p94-end.png",
+    "artifacts/teaching-principles/atomic-models-implementation/final-controls-corrected/zh-chem-elective-2-model-p12-end.png"
+  ],
+  "handoff": "Eleven owned files frozen. Spoken unchanged; actual258s localized first4director calibrated. Root shared/static acceptance and complete normal playback pending. No further UItranslations added in timing pass.",
+  "sourceFiles": [
+    {
+      "path": "src/models/chem-atomic-models.ts",
+      "sha256": "5aa772c6d82ebecd47c2bcd19f7edce0e9618feeb86e4ebfc422060ea46a825a"
+    },
+    {
+      "path": "src/models/chem-atomic-models.test.ts",
+      "sha256": "1b406a788f9d804c494b6fc4ab59535b0d7ede84dd2d975304ab6018948da65a"
+    },
+    {
+      "path": "src/components/experiments/ChemAtomicModels.tsx",
+      "sha256": "4fc5a2a96b53438f10bfe6e02ccdce256a27823f51c8566dd7ed41579a761098"
+    },
+    {
+      "path": "src/components/experiments/ChemAtomicModels.exploration.test.tsx",
+      "sha256": "53590729d024171f581b696fd5c4e7b328987a5f15a7b1305a416b51539adc6e"
+    },
+    {
+      "path": "src/styles/chem-atomic-models.css",
+      "sha256": "1fff20b4af554a48b89cd9225c0d304321848bc685adfa47ee29561a473cfc7b"
+    },
+    {
+      "path": "src/components/covers/ChemAtomicModelsCover.astro",
+      "sha256": "6c6274129d9f6a19455331f1fc02d445eadc540c8a74075980e562201808bde0"
+    },
+    {
+      "path": "src/content/chem-atomic-models.mdx",
+      "sha256": "2e1938c556751a82b5f16917d20672cda20fc5dabd3f2fd4f9e58cebd2c81c44"
+    },
+    {
+      "path": "src/content/en/chem-atomic-models.mdx",
+      "sha256": "2ca07d68bf44ae50be38a531455264ef8a5845509335373ff6bb1c961b2200b5"
+    }
+  ],
+  "updatedAt": "2026-10-18T19:41:41.838Z",
+  "recommendedMeasuredFrames": [
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-en-320-chapter-3-zero-speed-turn.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-en-320-chapter-3-point-return.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-en-320-chapter-4-blue-question.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-en-320-chapter-4-blue-release.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-zh-320-chapter-1-field-minus.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-zh-320-chapter-2-neutrality.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-zh-320-chapter-3-zero-speed-turn.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-zh-320-chapter-3-energy-question.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-zh-320-chapter-4-blue-release.png",
+    "artifacts/teaching-principles/atomic-models-implementation/measured-frames/chem-atomic-models-en-1440-chapter-4-blue-answer.png"
+  ],
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-12-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
 }

@@ -184,3 +184,52 @@
     height: 190px;
   }
 }
+
+.bio-meiosis-complement {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+.bio-meiosis-complement text {
+  font-family: inherit;
+}
+@media (max-width: 640px) {
+  .bio-meiosis[data-watch='true'] {
+    padding: 8px 4px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-kind {
+    display: none;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-stage {
+    height: 186px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-complement {
+    height: 190px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-note {
+    display: none;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-key {
+    line-height: 1.4;
+    gap: 4px 12px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-orientations {
+    gap: 12px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-gametes svg {
+    height: 64px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-fixed {
+    grid-template-columns: 76px 1fr;
+    gap: 4px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-field {
+    height: 140px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-fixed-detail {
+    height: 190px;
+  }
+  .bio-meiosis-controls {
+    font-size: 16px;
+  }
+}

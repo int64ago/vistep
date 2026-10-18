@@ -27,7 +27,7 @@
 | [光谱中的原子证据](../../src/content/atomic-spectrum-lab.mdx)    | 4:12 | 把光展开，怎样认出物质与理论的细小偏差？     |
 | [阴极射线与电子](../../src/content/cathode-ray-lab.mdx)          | 2:48 | 一束看不见的射线，怎样显露电荷与质量？       |
 | [微观散射实验](../../src/content/atomic-scattering-lab.mdx)      | 2:48 | 看不见的内部，怎样由偏转留下证据？           |
-| [油滴与元电荷](../../src/content/oil-drop-lab.mdx)               | 1:24 | 怎样用一个油滴，量出电荷的最小单位？         |
+| [油滴与元电荷](../../src/content/oil-drop-lab.mdx)               | 3:26 | 怎样从油滴的运动称出电荷？                   |
 | [光电效应实验室](../../src/content/photoelectric-lab.mdx)        | 3:16 | 更亮的光，为什么仍打不出电子？               |
 
 ## 化学与反应
@@ -96,7 +96,7 @@
 | [碳骨架与空间结构](../../src/content/chem-carbon-frameworks.mdx)                  | 3:30 | 同样是碳成键，怎样搭出不同分子？                     |
 | [电子式与轨道重叠](../../src/content/chem-bond-overlap.mdx)                       | 3:50 | 怎样区分电子转移、共用与轨道重叠？                   |
 | [周期表与性质趋势](../../src/content/chem-periodic-patterns.mdx)                  | 3:30 | 元素排成周期表，哪些关系被保留下来？                 |
-| [原子模型与电子云](../../src/content/chem-atomic-models.mdx)                      | 3:33 | 从圆轨道到电子云，改变的是什么？                     |
+| [原子模型与证据](../../src/content/chem-atomic-models.mdx)                        | 4:18 | 看不见原子，凭什么改变原子模型？                     |
 | [同周期与同主族的实验比较](../../src/content/chem-periodic-practical.mdx)         | 3:28 | 怎样用实验比较元素性质的递变？                       |
 | [铁的电子去向](../../src/content/chem-iron-practical.mdx)                         | 3:27 | 二价铁为什么既能得电子，也能失电子？                 |
 | [食品中铁元素的检验](../../src/content/chem-food-iron.mdx)                        | 1:54 | 滤液变红之前，每一步做了什么？                       |
@@ -154,7 +154,7 @@
 | [植物生长调节剂的探究](../../src/content/bio-plant-growth-regulators.mdx)     | 3:05 | 植物变长、生根或成熟，怎样确定处理的作用？     |
 | [细胞分裂与固定观察](../../src/content/bio-cell-division.mdx)                 | 2:49 | 把活的过程模型与固定装片里的不同细胞分开。     |
 | [生长素的证据链](../../src/content/bio-auxin-evidence.mdx)                    | 4:28 | 植物弯向光，怎样一步步找到原因？               |
-| [光合作用的证据链](../../src/content/bio-photosynthesis-evidence.mdx)         | 3:39 | 每一种证据，究竟能回答光合作用的哪一个问题？   |
+| [光合作用的证据链](../../src/content/bio-photosynthesis-evidence.mdx)         | 4:46 | 光怎样变成推动合成的能量？                     |
 | [叶片的色带与光谱](../../src/content/bio-leaf-pigments.mdx)                   | 2:43 | 同一滴绿色，为什么会分成几条色带？             |
 | [免疫路径与证据](../../src/content/bio-immune-pathways.mdx)                   | 2:50 | 认出一种标记，怎样连到一条免疫路径？           |
 | [呼吸的气路与碳路径](../../src/content/bio-respiration.mdx)                   | 4:18 | 发酵究竟让什么重新流动起来？                   |

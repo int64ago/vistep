@@ -115,3 +115,172 @@
     font-size: 16px;
   }
 }
+/* Scene-owned responsive compositions: SVG coordinates follow measured CSS pixels. */
+.cam12.chem-atomic-models {
+  padding: 8px 0 10px;
+  color: #4f665e;
+}
+.cam12 svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #4f665e;
+}
+.cam12-history {
+  max-width: 780px;
+  margin: auto;
+}
+.cam12-history svg {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+.cam12-label {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.cam12-small {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.cam12-predict {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+}
+.cam12-predict strong {
+  font-size: 21px;
+  font-weight: 500;
+}
+.cam12-records table {
+  border-collapse: collapse;
+  width: min(100%, 520px);
+  margin: 6px auto;
+  font-size: 16px;
+}
+.cam12-records th {
+  font-weight: 500;
+  color: #738478;
+}
+.cam12-records th,
+.cam12-records td {
+  padding: 2px 12px;
+  text-align: center;
+  height: 25px;
+  border: 0;
+}
+.cam12-records tbody tr:nth-child(even) {
+  background: #8b9e8910;
+}
+.cam12-scattering {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.cam12 .chem-atom-controls {
+  padding: 20px 8px 0;
+}
+.cam12 .chem-atom-controls button {
+  font-size: 16px;
+  min-height: 44px;
+}
+.cam12 .chem-atom-cloud {
+  height: 280px;
+  width: 280px;
+}
+.cam12 .chem-atom-heading {
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+.cam12 .chem-atom-note {
+  line-height: 1.3;
+  margin-top: 6px;
+}
+@media (max-width: 559px) {
+  .cam12-scattering {
+    display: block;
+  }
+  .cam12-history {
+    min-height: 0;
+  }
+  .cam12-label {
+    padding: 0 6px;
+  }
+  .cam12 .chem-atom-cloud {
+    width: 240px;
+    height: 240px;
+  }
+  .cam12 .chem-atom-p-orientations .chem-atom-small {
+    width: 240px;
+    height: 215px;
+  }
+  .cam12 .chem-atom-s-comparison {
+    gap: 10px;
+  }
+  .cam12 .chem-atom-s-comparison .chem-atom-small {
+    width: 100%;
+    height: 190px;
+  }
+  .cam12 .chem-atom-p-labels {
+    font-size: 16px;
+    gap: 24px;
+  }
+}
+@media (max-width: 420px) and (max-height: 650px) {
+  .cam12.chem-atomic-models {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .cam12 .chem-atom-cloud {
+    height: 206px;
+    width: 206px;
+  }
+  .cam12 .chem-atom-p-orientations .chem-atom-small {
+    height: 196px;
+    width: 220px;
+  }
+  .cam12 .chem-atom-note {
+    margin-top: 3px;
+  }
+  .cam12-records th,
+  .cam12-records td {
+    height: 22px;
+    padding-block: 1px;
+  }
+  .showcase:has(.cam12) .film-caption {
+    min-height: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    gap: 8px;
+  }
+  .showcase:has(.cam12) .film-chapter {
+    flex-basis: 32px;
+  }
+  .showcase:has(.cam12) .film-caption p {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+}
+
+.cam12-radial {
+  display: block;
+  margin: 4px auto 0;
+  max-width: 100%;
+}
+.cam12 .chem-atom-s-comparison .chem-atom-small {
+  height: 150px;
+}
+@media (max-width: 559px) {
+  .cam12 .chem-atom-s-comparison .chem-atom-small {
+    height: 106px;
+  }
+}

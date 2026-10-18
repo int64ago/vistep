@@ -1,35 +1,41 @@
 ---
-name: 'Atomic models and electron clouds'
-title: 'What changes from an orbit to an electron cloud?'
+name: 'Atomic models and evidence'
+title: 'What evidence can change an atomic model?'
 ---
 
 <section id="understand">
-## The meaning of orbital changes
+## Let evidence change the picture
 
-The textbook compares Dalton’s solid sphere, Thomson’s diffuse positive charge, Rutherford’s nucleus, Bohr’s quantized circular orbits and the modern electron cloud. These are successive models of knowledge, not footage of one atom physically changing shape.
+Dalton’s indivisible sphere is a historical hypothesis. A cathode-ray spot bends toward the positive plate and reverses when the field reverses. Thomson changed gases and cathodes, yet found mass-to-charge ratios of the same order. A common negative component requires internal structure. Neutrality requires positive charge too; spreading it through a sphere remains a further hypothesis.
 
-A modern atomic orbital describes a quantum state. Cloud dots encode probability, so hydrogen’s single electron does not multiply as dots accumulate. A 90% contour is convenient, but leaves 10% probability outside. The s states are spherical; p states are directional, with three orientations shown separately.
+Occasional large-angle alpha scattering adds another constraint. The comparison gives a broad sphere and a compact centre the same positive charge. With the stated modern parameters, the sphere cannot stop the head-on particle; the compact centre converts kinetic energy into potential energy until the particle turns. The historical observation stays fixed while the calculation changes.
+
+Bohr’s discrete energies produce another test: an emitted photon carries the difference between two states. A larger gap predicts a shorter wavelength. Fixed hydrogen lines support that relationship without photographing circular electron paths. A modern orbital describes a quantum state, and cloud dots sample its probability density rather than count electrons.
 
 </section>
 <section id="try">
-## Change the statistical representation, not the electron count
+## Predict, then reveal
 
-Vary the number of samples and see the distribution become clearer. Change cumulative probability to move the contour radius without changing the underlying distribution. The 1s/2s comparison uses a common length scale so separate magnification cannot hide their size difference.
+Reverse the plates, or choose a positive or neutral candidate, and inspect the computed spot. These controls do not rewrite historical records. In the scattering model, raise total energy from 5 MeV to 10 MeV. The fixed-centre Coulomb approximation predicts half the head-on turning distance.
 
-Bohr’s n takes discrete values. The historical hydrogen radius scales as n² and energy is approximately −13.605693/n² eV. Switching levels does not simulate a continuous transition path or a modern electron trajectory.
+Change the hydrogen transition from 3→2 to 4→2. The larger gap predicts a shorter wavelength. The page separately labels NIST air records and model vacuum predictions; its 1 nm display cannot test fine structure.
+
+More cloud samples clarify the same distribution without adding electrons. A larger probability sphere encloses more probability; it is not a wall. The 1s/2s comparison uses one length scale and retains the 2s radial node. Each p orientation represents a separate state.
 
 </section>
 <section id="deeper">
 <details>
-<summary>Analytic distributions, sampling and limitations</summary>
+<summary>Records, calculations and scientific limits</summary>
 
-In units of a₀, hydrogen’s 1s radial probability density is 4r²exp(−2r), with cumulative probability 1−exp(−2r)(1+2r+2r²). Independent bisection gives a 90% sphere radius near 2.66116a₀. For 2s the radial density is r²(2−r)²exp(−r)/8, with a node at r=2a₀. For 2p it is r⁴exp(−r)/24, combined with a cos²θ angular distribution.
+**Cathode rays.** [Thomson’s 1897 paper](https://en.wikisource.org/wiki/Cathode_Rays) describes electric deflection and material comparisons. The table transcribes the seven second-method m/e values, 1.3, 1.1, 1.2, 1.5, 1.5, 1.3, 1.1, multiplied by 10⁻⁷ in the original units. The first five used aluminium cathodes, the last two platinum. Variation is preserved. The animation uses a modern uniform-field calculation with geometry derived from qE and flight time, with an independently enlarged transverse scale that differs from the horizontal scale. A charge-to-mass ratio alone does not separately determine mass.
 
-A deterministic low-discrepancy sequence samples the three-dimensional distribution before orthogonal projection. Dots are never connected into a trajectory. Inside/outside colour uses three-dimensional radius; counting projected points inside the circle does not measure probability inside the sphere. Finite dots and display limits are not the complete continuous distribution. Display samples clamp to the 0.1%–99.9% radial quantiles; analytic cumulative probability retains the full distribution.
+**Scattering.** [Rutherford’s 1911 paper](https://personal.math.ubc.ca/~cass/rutherford/r.pdf), pp 669–671, discusses large deflections and concentrated charge, and notes that the scattering deductions alone do not determine the central charge’s sign. The modern example uses alpha charge +2e, central charge +79e, a diffuse radius of 100 pm and total energy 5 MeV. Omitting negative electrons makes the diffuse positive sphere an upper-bound positive barrier: its maximum is about 3.413 keV. A fixed point centre gives a head-on turn at about 45.503 fm. The views have different length scales and separate slow playback; their normalized progress is not a common physical flight time. Nuclear recoil is omitted, and the turn lies outside the gold nucleus. This is neither an angular-distribution fit nor a reconstruction of 1911 particle records.
 
-[MIT’s hydrogen lectures](https://www.ocw.mit.edu/courses/5-61-physical-chemistry-fall-2007/c2078ff25c61c136e67ceb6fd8eb9b34_lecture21to22.pdf), pages 4 and 6–7, supply wavefunctions, nodes and radial probabilities. This nonrelativistic, field-free hydrogen model does not predict many-electron shielding or fine structure. [The Niels Bohr Institute](https://nbi.ku.dk/english/www/niels/bohr/bohratomet/) and [Nobel Foundation electron history](https://www.nobelprize.org/prizes/physics/1906/thomson/facts/) support the historical distinctions.
+**Spectra.** [Bohr’s 1913 paper](https://www.gutenberg.org/cache/epub/72787/pg72787-images.html) proposes stationary states and ΔE=hν, then tests the relationship against hydrogen spectra. The calculation uses reduced mass: R_H=R∞/(1+m_e/m_p) and λ_vac⁻¹=R_H(1/n_low²−1/n_high²), with [NIST CODATA constants](https://physics.nist.gov/cuu/Constants/Table/allascii.txt). Fixed examples are selected air fine components from the [NIST hydrogen table](https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2.htm). [NIST’s wavelength guidance](https://physics.nist.gov/PhysRefData/ASD/Html/lineshelp.html) distinguishes air and vacuum. Line widths and brightness are illustrative; observations are not adjusted to fit, and the energy-transfer glyph is not a classical electron trajectory.
 
-Textbooks: Required Book 1 page 94 (PDF page 99), and Elective Book 2 pages 12–13 (PDF pages 15–16). These are historical/model positions, not student experiments. Historical nucleus/electron sizes are exaggerated, and charge signs are not particle counts.
+**Probability.** In units of a₀, the 1s radial density is 4 r²exp(−2 r), with a 90% radius near 2.66116 a₀. The 2s density is r²(2−r)²exp(−r)/8 and has a node at 2 a₀; 2p uses r⁴exp(−r)/24 with a cos²θ angular distribution. The [MIT hydrogen lecture](https://ocw.mit.edu/courses/5-61-physical-chemistry-fall-2007/c2078ff25c61c136e67ceb6fd8eb9b34_lecture21to22.pdf) provides the analytic basis. Deterministic low-discrepancy samples are generated in three dimensions before projection. Outside-sphere membership uses the 3D radius. Sample tails are limited to the 0.1%–99.9% quantiles, while cumulative probability uses the full analytic distribution. These are nonrelativistic, field-free hydrogen states, not general many-electron radii.
+
+The original learning positions remain: Required 1 P94/PDF 99 follows the historical evidence into probability sampling; Elective 2 P12–13/PDF 15–16 retains the independent cloud, 90% boundary, s-node and p-orientation sequence. Both are model-learning positions, not student laboratory experiments.
 
 </details>
 </section>

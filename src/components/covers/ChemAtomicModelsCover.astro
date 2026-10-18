@@ -1,29 +1,66 @@
 ---
-import { ORBITAL_SAMPLES, projectOrbital, orbitalRadius } from '../../models/chem-atomic-models';
-const r = orbitalRadius('1s', 0.9),
-  scale = 34;
+import {
+  cathodeRay,
+  ORBITAL_SAMPLES,
+  projectOrbital,
+  orbitalRadius,
+  HYDROGEN_LINE_RECORDS,
+} from '../../models/chem-atomic-models';
+const ray = cathodeRay(1, -1, 15e6),
+  x = (v: number) => 45 + ((v + 0.025) / 0.165) * 240,
+  y = (v: number) => 155 - v * 5800;
+const path = ray.points.map((p, i) => `${i ? 'L' : 'M'}${x(p.x)},${y(p.y)}`).join(' '),
+  r = orbitalRadius('1s', 0.9),
+  scale = 31;
 ---
 
-<svg viewBox="0 0 640 400" aria-hidden="true"
-  ><rect width="640" height="400" fill="#e8eddf"></rect><circle
-    cx="320"
-    cy="200"
+<svg viewBox="0 0 640 400" aria-hidden="true">
+  <rect width="640" height="400" fill="#e8eddf"></rect>
+  <path
+    d="M32 83Q18 83 18 103V216Q18 236 32 236H301V83Z"
+    fill="#cbdcd21b"
+    stroke="#99af9f"
+    stroke-width="2"></path>
+  <path
+    d={`M${x(0)} ${y(0.0075)}H${x(0.05)}M${x(0)} ${y(-0.0075)}H${x(0.05)}`}
+    stroke="#b47d55"
+    stroke-width="6"
+    stroke-linecap="round"></path>
+  <path d={`M${x(0.14)} 100V214`} stroke="#a1b7a0" stroke-width="10"></path>
+  <path d={path} fill="none" stroke="#669b82" stroke-width="4"></path>
+  <circle cx={x(0.14)} cy={y(ray.spot.y)} r="8" fill="#a9dca5"></circle>
+  <path d="M117 90h16m-8-8v16M117 219h16" stroke="#b47d55" stroke-width="3"></path>
+  <circle
+    cx="460"
+    cy="160"
     r={r * scale}
     fill="#acb9940c"
     stroke="#98aa7d"
-    stroke-width="2"
-    stroke-dasharray="6 5"></circle>{
+    stroke-width="1.5"
+    stroke-dasharray="5 5"></circle>
+  {
     ORBITAL_SAMPLES['1s'].map((p) => {
       const q = projectOrbital(p);
       return (
         <circle
-          cx={320 + q.x * scale}
-          cy={200 - q.y * scale}
-          r="2"
+          cx={460 + q.x * scale}
+          cy={160 - q.y * scale}
+          r="1.8"
           fill="#768b56"
           opacity={p.r > r ? 0.15 : 0.55}
         />
       );
     })
-  }<circle cx="320" cy="200" r="4" fill="#b67d54"></circle></svg
->
+  }
+  <circle cx="460" cy="160" r="4" fill="#b67d54"></circle>
+  <rect x="80" y="296" width="480" height="42" rx="13" fill="#263d39"></rect>
+  {
+    HYDROGEN_LINE_RECORDS.map((r) => (
+      <path
+        d={`M${100 + ((r.airNm - 410) / 280) * 440} 302V332`}
+        stroke={r.colour}
+        stroke-width="6"
+      />
+    ))
+  }
+</svg>

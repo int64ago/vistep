@@ -2449,11 +2449,10 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-atomic-models',
-    name: '原子模型与电子云',
-    title: '从圆轨道到电子云，改变的是什么？',
-    question: '从圆轨道到电子云，改变的是什么？',
-    description:
-      '沿教材模型史比较内部结构、离散能级和概率描述，用氢原子解析分布构造电子云及90%轮廓。',
+    name: '原子模型与证据',
+    title: '看不见原子，凭什么改变原子模型？',
+    question: '看不见原子，凭什么改变原子模型？',
+    description: '从偏转光点、折返粒子和固定谱线，走到一个电子的概率分布。',
     color: '#aabd91',
     tag: '历史模型 · 概率 · 原子轨道',
     related: [
@@ -2479,6 +2478,35 @@ export const topics: Topic[] = [
       {
         title: '人教版高中化学必修第一册94页、选择性必修2 12—13页',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'J. J. Thomson, Cathode Rays (1897)',
+        url: 'https://en.wikisource.org/wiki/Cathode_Rays',
+      },
+      {
+        title:
+          'E. Rutherford, The Scattering of α and β Particles by Matter and the Structure of the Atom (1911)',
+        url: 'https://personal.math.ubc.ca/~cass/rutherford/r.pdf',
+      },
+      {
+        title: 'N. Bohr, On the Constitution of Atoms and Molecules, Part I (1913)',
+        url: 'https://www.gutenberg.org/cache/epub/72787/pg72787-images.html',
+      },
+      {
+        title: 'NIST strong hydrogen lines',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2.htm',
+      },
+      {
+        title: 'NIST CODATA recommended constants',
+        url: 'https://physics.nist.gov/cuu/Constants/Table/allascii.txt',
+      },
+      {
+        title: 'NIST ASD wavelength and refractive-index help',
+        url: 'https://physics.nist.gov/PhysRefData/ASD/Html/lineshelp.html',
+      },
+      {
+        title: 'MIT 5.61 hydrogen atom lecture',
+        url: 'https://ocw.mit.edu/courses/5-61-physical-chemistry-fall-2007/c2078ff25c61c136e67ceb6fd8eb9b34_lecture21to22.pdf',
       },
     ],
     number: '351',
@@ -2961,9 +2989,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-photosynthesis-evidence',
     name: '光合作用的证据链',
-    title: '从细菌聚集到叶片上浮',
-    question: '每一种证据，究竟能回答光合作用的哪一个问题？',
-    description: '追踪放氧位置、同位素来源、能量载体与叶片浮力，区分研究结论和学生探究。',
+    title: '光合作用：氧从哪来，光怎样驱动合成？',
+    question: '光怎样变成推动合成的能量？',
+    description: '从独立对照、同位素和固定记录，追踪氧、质子梯度与碳的去向。',
     color: '#a4b97b',
     tag: '生物学',
     related: ['bio-leaf-pigments', 'bio-respiration'],
@@ -2973,7 +3001,7 @@ export const topics: Topic[] = [
         url: 'https://www.nature.com/articles/139881a0',
       },
       {
-        title: 'Ruben, Randall, Kamen and Hyde (1941): heavy oxygen tracing',
+        title: 'Ruben et al. (1941), Heavy Oxygen (O18) as a Tracer in the Study of Photosynthesis',
         url: 'https://doi.org/10.1021/ja01848a512',
       },
       {
@@ -2985,12 +3013,38 @@ export const topics: Topic[] = [
         url: 'https://escholarship.org/uc/item/70q925dw',
       },
       {
-        title: 'Science & Plants for Schools: investigating photosynthesis with leaf discs',
+        title: 'SAPS, Investigating photosynthesis with leaf discs',
         url: 'https://www.saps.org.uk/teaching-resources/resources/284/student-sheet-3-investigating-photosynthesis-with-leaf-discs/',
       },
       {
         title: 'University of Hamburg: historical Engelmann material and algae distinction',
         url: 'https://www-archiv.fdm.uni-hamburg.de/b-online/d24/24.htm',
+      },
+      {
+        title: 'Hill (1937), Oxygen evolved by isolated chloroplasts',
+        url: 'https://doi.org/10.1038/139881a0',
+      },
+      {
+        title: 'Arnon, Allen & Whatley (1954), Photosynthesis by Isolated Chloroplasts',
+        url: 'https://doi.org/10.1021/ja01653a025',
+      },
+      {
+        title:
+          'Jagendorf & Uribe (1966), ATP formation caused by acid-base transition of spinach chloroplasts',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC285771/',
+      },
+      {
+        title:
+          'Hahn et al. (2018), Structure, mechanism, and regulation of the chloroplast ATP synthase',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/29748256/',
+      },
+      {
+        title: 'Calvin (1961), The Path of Carbon in Photosynthesis, original UCRL-9966 report',
+        url: 'https://digital.library.unt.edu/ark:/67531/metadc902187/',
+      },
+      {
+        title: 'Dynamic photosynthetic labeling and carbon-positional mass spectrometry (2025)',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11809591/',
       },
     ],
     number: '333',
@@ -5995,9 +6049,9 @@ export const topics: Topic[] = [
   {
     slug: 'oil-drop-lab',
     name: '油滴与元电荷',
-    title: '怎样用一个油滴，量出电荷的最小单位？',
-    question: '怎样用一个油滴，量出电荷的最小单位？',
-    description: '跟踪同一滴油的下降、悬停和带电变化，把力平衡变成电荷测量。',
+    title: '怎样从油滴的运动称出电荷？',
+    question: '怎样从油滴的运动称出电荷？',
+    description: '跟踪同一颗未知油滴，用终速和电压反求电荷，再以密立根固定计时记录检验共同小增量。',
     color: '#aebfa8',
     tag: '近代物理',
     related: ['cathode-ray-lab', 'electric-field-mapping'],
@@ -6009,6 +6063,18 @@ export const topics: Topic[] = [
       {
         title: 'University of Toronto — Millikan experiment manual',
         url: 'https://www.physics.utoronto.ca/~phy224_324/LabManuals/MillikanExperiment.pdf',
+      },
+      {
+        title: 'On the Elementary Electrical Charge and the Avogadro Constant',
+        url: 'https://doi.org/10.1103/PhysRev.2.109',
+      },
+      {
+        title: 'Millikan Oil Drop Apparatus AP-8210A Instruction Manual',
+        url: 'https://web.physics.ucsb.edu/~phys128/experiments/electron/Millikan-Oil-Drop-Manual-AP-8210A.pdf',
+      },
+      {
+        title: 'Definitions of SI Base Units — Ampere',
+        url: 'https://www.nist.gov/si-redefinition/definitions-si-base-units',
       },
     ],
     number: '217',

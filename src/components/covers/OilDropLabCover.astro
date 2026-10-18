@@ -1,9 +1,17 @@
 ---
-import { ModernLabArtwork } from '../experiments/ModernLab';
+import { OilDropArtwork } from '../experiments/OilDropLab';
+import { oilDropPhysics, type OilDirection } from '../../models/oil-drop-lab';
 import StaticArtworkCover from './StaticArtworkCover.astro';
+// The cover is a physical settled state, independent of either language's editing clock.
+const direction: OilDirection = {
+  shot: 'force-balance',
+  physicalTime: 6,
+  progress: 1,
+  voltage: oilDropPhysics().balanceVoltage!,
+  chargeScale: 1,
+  reveal: true,
+  candidateScale: 1,
+};
 ---
 
-<StaticArtworkCover
-  artwork={ModernLabArtwork}
-  options={{ kind: 'oil', value: 0.7, progress: 0.7, cover: true }}
-/>
+<StaticArtworkCover artwork={OilDropArtwork} options={{ cover: true, direction }} />

@@ -1,0 +1,134 @@
+.oildrop {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  padding: 6px 12px 0;
+  box-sizing: border-box;
+  color: #354a48;
+}
+.oildrop-heading {
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: center;
+  padding: 0 2px 8px;
+  text-wrap: balance;
+}
+.oildrop-art {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  fill: #354a48;
+}
+.oildrop-art text {
+  font-family: inherit;
+  font-size: 17px;
+}
+.oildrop-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px 2px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.oildrop-controls label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+.oildrop-controls select {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #becdc2;
+  border-radius: 10px;
+  background: #f4f5ed;
+  color: #354a48;
+}
+.oildrop-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.oildrop-controls button {
+  font: inherit;
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 12px;
+  color: #354a48;
+  background: #f4f5ed;
+  border: 1px solid #becdc2;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.oildrop-controls button[aria-pressed='true'] {
+  background: #dde9df;
+  border-color: #6e9384;
+}
+.oildrop-controls button:focus-visible,
+.oildrop-controls select:focus-visible,
+.oildrop-controls summary:focus-visible {
+  outline: 2px solid #517d9e;
+  outline-offset: 3px;
+}
+.oildrop-controls input[type='range'] {
+  margin-inline: 0;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 44px;
+}
+.oildrop-controls .control-top {
+  gap: 10px;
+}
+.oildrop-controls .control-top > span {
+  min-width: 0;
+}
+.oildrop-controls summary {
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.oildrop-controls p {
+  margin: 0;
+  padding: 8px 0;
+  font-size: 16px;
+}
+@media (max-width: 640px) {
+  .oildrop {
+    padding: 0 4px;
+  }
+  .oildrop-heading {
+    font-size: 16px;
+    min-height: 23px;
+    padding: 0 2px 3px;
+  }
+  .showcase[data-slug='oil-drop-lab'] .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='oil-drop-lab'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+}
+@media (max-width: 640px) and (max-height: 700px) {
+  .lesson-oil-drop-lab #experiment {
+    scroll-margin-top: -74px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oildrop-controls button {
+    transition: none;
+  }
+}

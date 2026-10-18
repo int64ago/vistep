@@ -1,0 +1,358 @@
+{
+  "slug": "oil-drop-lab",
+  "status": "Owned product frozen after measured-word calibration, scoped tests and actual paused/native controls. Awaiting root final static/global acceptance.",
+  "owner": "teaching_subject_fit",
+  "stagingRoot": "artifacts/teaching-principles/batch-12-staging/physics",
+  "ownedPaths": [
+    "src/components/experiments/OilDropLab.tsx",
+    "src/components/experiments/OilDropLab.test.tsx",
+    "src/models/oil-drop-lab.ts",
+    "src/models/oil-drop-lab.test.ts",
+    "src/models/oil-drop-lab-records.ts",
+    "src/styles/oil-drop-lab.css",
+    "src/components/covers/OilDropLabCover.astro",
+    "src/content/oil-drop-lab.mdx",
+    "src/content/en/oil-drop-lab.mdx",
+    "drafts/oil-drop-lab/brief.md",
+    "drafts/oil-drop-lab/principle-first-packet.json",
+    "drafts/oil-drop-lab/review.json"
+  ],
+  "checks": [
+    {
+      "kind": "staged model and component tests",
+      "status": "passed",
+      "testCount": 19,
+      "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-12-staging/physics/vitest.config.ts",
+      "scope": "13 model+6 component tests; no player/native browser claim"
+    },
+    {
+      "kind": "actual Astro strict TS options",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/batch-12-staging/physics/checks/strict-typecheck.json"
+    },
+    {
+      "kind": "actual installed Astro Satteri MDX compiler",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/batch-12-staging/physics/checks/mdx-parse.json",
+      "scope": "Both staged articles parsed; no global route/build claim"
+    },
+    {
+      "kind": "isolated candidate SVG geometry",
+      "status": "initial6 overflow findings corrected in affected6 rerun",
+      "initialReport": "artifacts/teaching-principles/batch-12-staging/physics/checks/candidate-geometry/report.json",
+      "rerunReport": "artifacts/teaching-principles/batch-12-staging/physics/checks/candidate-geometry-02/report.json",
+      "scope": "60 isolated SSR SVG documents, fallback fonts; no shared player, native user controls or actual page. Not final visual acceptance."
+    },
+    {
+      "kind": "isolated held-out notation correction",
+      "status": "passed",
+      "states": 2,
+      "report": "artifacts/teaching-principles/batch-12-staging/physics/checks/candidate-geometry-03/report.json",
+      "scope": "Changed ambiguous r to explicit(1/t) notation;2affectedENnarrowframes only."
+    },
+    {
+      "kind": "actual live scoped model/component tests",
+      "status": "passed",
+      "testCount": 19,
+      "command": "pnpm exec vitest run src/models/oil-drop-lab.test.ts src/components/experiments/OilDropLab.test.tsx"
+    },
+    {
+      "kind": "actual live Astro strict TypeScript options",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/oil-drop-implementation/strict-typecheck.json",
+      "scope": "Owned TypeScript imports; not full Astro check/build."
+    },
+    {
+      "kind": "actual paused native visual geometry",
+      "status": "passed",
+      "frames": 60,
+      "reports": [
+        "artifacts/teaching-principles/oil-drop-review-01/report.json",
+        "artifacts/teaching-principles/oil-drop-review-02/report.json"
+      ],
+      "conditions": "zh/en ×320×568/1100×900, muted, reduced motion, provisional202s. SVG≥17.13px; fullphoneplayer536.59px. Not continuous playback or physicaldevice performance."
+    },
+    {
+      "kind": "actual native controls and textbook windows",
+      "status": "passed after localized corrections",
+      "states": 90,
+      "entries": 4,
+      "report": "artifacts/teaching-principles/oil-drop-controls-02/report.json",
+      "scope": "All11views, originaldata identity,12rawstates, modelvoltage/charge,heldout reveal/rewind,watch/explore preservation; controls≥44px."
+    },
+    {
+      "kind": "fresh textbook fragment navigation",
+      "status": "passed after root SSR correction",
+      "entries": 4,
+      "report": "artifacts/teaching-principles/oil-drop-anchor-02/report.json",
+      "scope": "No corrective scroll; player top16.7–17.0/bottom553.3–553.6 in320×568."
+    },
+    {
+      "kind": "actual cover consumers",
+      "status": "passed by author after cover correction",
+      "report": "artifacts/teaching-principles/oil-drop-cover-consumer-review/report.json",
+      "social": "artifacts/teaching-principles/oil-drop-cover-consumer-review/social-report.json",
+      "scope": "Actual teaching/discovery at1100/320 and generated social onexplicitwhite imagebackground."
+    },
+    {
+      "kind": "unavailable optional rendering/audio APIs",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/oil-drop-resource-01/report.json",
+      "scope": "Two actual muted SVG pages with WebGL/Worker/WebAudio unavailable. No claim about narration asset failure."
+    },
+    {
+      "kind": "measured director model and component regressions",
+      "status": "passed",
+      "testCount": 22,
+      "command": "pnpm exec vitest run src/models/oil-drop-lab.test.ts src/components/experiments/OilDropLab.test.tsx",
+      "scope": "Bilingual reveal/rewind, initial prediction hold, continuous charge-voltage trial, finer-step caveat, instantaneous rest versus equilibrium; no global test claim"
+    },
+    {
+      "kind": "measured director strict types",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/oil-drop-implementation/strict-typecheck.json",
+      "scope": "Live owned imports against actual Astro strict TS options; no full Astro/build claim"
+    },
+    {
+      "kind": "actual measured-event paused frames",
+      "status": "passed",
+      "frames": 80,
+      "reports": [
+        "artifacts/teaching-principles/oil-drop-measured-review-01/report.json",
+        "artifacts/teaching-principles/oil-drop-measured-review-02/report.json"
+      ],
+      "scope": "Both languages × 320×568/1100×900; muted, reduced motion; no clipping/nonfinite/overflow or runtime errors; selected frames personally viewed, not all80"
+    },
+    {
+      "kind": "actual measured native controls",
+      "status": "passed",
+      "states": 90,
+      "entries": 4,
+      "report": "artifacts/teaching-principles/oil-drop-measured-controls-01/report.json",
+      "scope": "All11 views, actual inputs and fixed record identity, cover consumers, watch/explore preservation"
+    },
+    {
+      "kind": "canonical hovering-caption affected frames",
+      "status": "passed",
+      "frames": 6,
+      "report": "artifacts/teaching-principles/oil-drop-measured-caption-01/report.json",
+      "scope": "Both languages at320×568; full player536.59375px, top16.5–17.1875/bottom553.09375–553.78125. ENinitialprediction andZHhover personally viewed"
+    },
+    {
+      "kind": "two independent critical-term second decodes",
+      "status": "completed without reference or language hints",
+      "reports": [
+        "artifacts/teaching-principles/batch-12-oil-second-asr/zh-0.json",
+        "artifacts/teaching-principles/batch-12-oil-second-asr/en-1.json"
+      ],
+      "scope": "Full large-v3 recognized air-slip phrase and coulombs; original MP3/PCM/WAV hashes and first/second results retained. Not subjective listening"
+    }
+  ],
+  "initialFailures": [
+    {
+      "kind": "model boundary found by independent chemistry reviewer",
+      "detail": "oilStep and oilForces clipped legitimate transient velocity at±0.1m/s. At radius.2μm/charge3e−18C/gap.02m/eta1e−6/pressure10000/slipB.02/U600, one.0002s step disagreed with two.0001s steps. Expanded safety domain±100m/s encloses all generated velocities; added exact peer counterexample and viscous-force regression. Independent20-probe rerun passed.",
+      "before": "artifacts/teaching-principles/batch-12-cross-review/chemistry-oil-before-fix.json",
+      "after": "artifacts/teaching-principles/batch-12-cross-review/chemistry-oil.json"
+    },
+    {
+      "kind": "isolated SVG author layout",
+      "detail": "Six EN268 candidate states had long overflow labels. Shortened English phrases; affected6 rerun passed. No font shrink."
+    },
+    {
+      "kind": "actual native narrow exploration",
+      "detail": "EN half-step sentence width289.33px extended beyond280px experiment. Shortened to Finer steps also fit; all90controls02 states passed. Balance button exposed fullfloatingpointvoltage;0.1Vstep now formats display without rounding modelstate.",
+      "report": "artifacts/teaching-principles/oil-drop-controls-01/report.json"
+    },
+    {
+      "kind": "fresh fragment anchor",
+      "detail": "First navigation resolved before lazy localstyle, leaving player at90.7–91px withbottom627px. Root added thisslug to initial SSRshortscreenrule;4freshentries passed.",
+      "before": "artifacts/teaching-principles/oil-drop-anchor-01/report.json",
+      "after": "artifacts/teaching-principles/oil-drop-anchor-02/report.json"
+    },
+    {
+      "kind": "actual cover communication",
+      "detail": "Default charge-inference art without text leftalmostempty spot/arrows. Same-model balanced microscope view now retains recognizable object andforcecomparison.",
+      "before": "artifacts/teaching-principles/oil-drop-controls-01/zh-catalog-cover.png",
+      "after": "artifacts/teaching-principles/oil-drop-cover-consumer-review/discovery-320.png"
+    },
+    {
+      "kind": "measured initial-rest semantic mismatch",
+      "detail": "During doubled-charge prediction, zero initial velocity under nonzero net force had been labeled Balanced. It now says Initially still, while genuine force balance remains Balanced. Shared caption clarified hovering instead of all zero-velocity instants; six affected actual phone frames passed."
+    }
+  ],
+  "independentEvidence": [
+    {
+      "kind": "original table transcription",
+      "path": "artifacts/teaching-principles/physics-next-oil-drop/independent-table-check/biology-table-iv-review.json",
+      "scope": "Original PDF15–16 viewed;22 fall/21rise times in13states and col5values; no correction-table reanalysis or physics/UI acceptance."
+    },
+    {
+      "kind": "independent arithmetic and implementation probes",
+      "path": "artifacts/teaching-principles/batch-12-cross-review/chemistry-oil.json",
+      "scope": "Step-fit/holdout boundaries and actual function20probes after velocity-domain fix; no UI/source transcription re-audit."
+    },
+    {
+      "kind": "independent scalar benchmark",
+      "path": "artifacts/teaching-principles/physics-next-oil-drop/independent-benchmarks.json"
+    }
+  ],
+  "pending": [
+    "Root final static continuous native playback and independent visual acceptance",
+    "Subjective listening (ASR is separate evidence)",
+    "Physical-device performance",
+    "Root full verify/build/publication"
+  ],
+  "sourceReading": {
+    "textbook": "Full relevant original sections around required3P5 and elective3P79 read; actual page images checked. Exact3IDs/2windows/pageorder unchanged.",
+    "primary": "Original Millikan1913 methods and TableIV/§9 source inspected; quote/source identity from Caltech archive verified online. PASCO force/slip reference and NIST exact SI value verified. No all-table statistical reanalysis claimed.",
+    "excluded": "Toronto old manual link404; PASCO sample table excluded due internal inconsistencies. NIST directquery URL rejected invalid characters; published SI definitions page used instead."
+  },
+  "personallyViewedCandidate": [
+    "candidate-geometry/en-268-c0-t31.png",
+    "candidate-geometry/en-268-c1-t24.png",
+    "candidate-geometry-02/en-268-c1-t3.png",
+    "candidate-geometry-03/en-268-c2-t73.png"
+  ],
+  "recommendedNativeKeyframes": [
+    {
+      "locale": "en",
+      "chapter": 1,
+      "seconds": 43,
+      "reason": "held initial doubled-charge question and correctly labeled instantaneous rest"
+    },
+    {
+      "locale": "en",
+      "chapter": 1,
+      "seconds": 46,
+      "reason": "same voltage produces rising motion and reversed drag"
+    },
+    {
+      "locale": "zh",
+      "chapter": 2,
+      "seconds": 55,
+      "reason": "conditional predicted reciprocal without revealing fixed observation"
+    },
+    {
+      "locale": "zh",
+      "chapter": 2,
+      "seconds": 60,
+      "reason": "independent fixed record revealed"
+    },
+    {
+      "locale": "en",
+      "chapter": 2,
+      "seconds": 69,
+      "reason": "finer increments also fit finite data; not a proof of fundamental minimum"
+    }
+  ],
+  "updatedAt": "2026-10-18T19:40:43.605278+00:00",
+  "sourceCommit": "1cf7cc492201b579eff9a2adf1bd04712aa57e5a",
+  "stagingSourceHashes": {
+    "src/components/experiments/OilDropLab.tsx": "8aebe208e265ec171bfab2035c94f9604a2f18a48a13d5be5b9020f3eb84084d",
+    "src/components/experiments/OilDropLab.test.tsx": "b73ecda58b6d6f910212e62825fc77d9017daf9d6c2d3205d97bd89cfdcef606",
+    "src/models/oil-drop-lab.ts": "ca1dfbfded2a29a3ba08eeb8a1831b95267bc1dd26e8f17acd211450f9fe000e",
+    "src/models/oil-drop-lab.test.ts": "dc9325398f331597acaa84bcda927fb491609132ba6a3f72add0bb95af61e533",
+    "src/models/oil-drop-lab-records.ts": "66cc9a3a583f97ee6f3d8f0fcd235946d0fbb9e9eb3a84f56ea0caffe05a0206",
+    "src/styles/oil-drop-lab.css": "d60bfaeeefd44a740d2c11efd6151c66e79bf054d671cd81aeae81d9ace80c9e",
+    "src/components/covers/OilDropLabCover.astro": "74020db5fd292e0b04a6ee7a814502f76a100e86b9450856e1a830179d99ad34",
+    "src/content/oil-drop-lab.mdx": "2b6f3e86305bd36a195d919e4f39623d40ff00135f8f2fcecf1dae9ad20df098",
+    "src/content/en/oil-drop-lab.mdx": "b2b80644971722603248f1fe68753d24f0ea0c17ee67267564940d91bce55c64",
+    "drafts/oil-drop-lab/brief.md": "ac7215a9ae9d0f5f4e42f32aca5caf940a5a34baf5dccd91aafa3ee61aa58219",
+    "drafts/oil-drop-lab/principle-first-packet.json": "68fcf797d544a5f80389486e7dabe3b027045b000819d340ae2adf72046a95b7"
+  },
+  "personallyViewedNative": [
+    "oil-drop-review-01/en-320-c0-t31p00.png",
+    "oil-drop-review-01/en-320-c1-t16p00.png",
+    "oil-drop-review-01/en-320-c1-t3p00.png",
+    "oil-drop-review-01/en-320-c2-t64p00.png",
+    "oil-drop-review-01/en-320-c2-t73p00.png",
+    "oil-drop-review-01/zh-1100-c0-t8p00.png",
+    "oil-drop-review-01/en-320-c0-t49p00.png",
+    "oil-drop-review-02/zh-320-c1-t37p00.png",
+    "oil-drop-review-02/zh-320-c1-t49p00.png",
+    "oil-drop-review-02/zh-320-c1-t57p00.png",
+    "oil-drop-review-02/zh-320-c2-t23p00.png",
+    "oil-drop-review-02/en-1100-c2-t44p00.png",
+    "oil-drop-controls-01/en-force-balance-controls.png",
+    "oil-drop-controls-01/zh-historical-times-controls.png",
+    "oil-drop-controls-01/zh-catalog-cover.png",
+    "oil-drop-controls-01/en-catalog-cover.png",
+    "oil-drop-controls-02/en-force-balance-controls.png",
+    "oil-drop-controls-02/en-lattice-controls.png",
+    "oil-drop-cover-consumer-review/discovery-320.png",
+    "oil-drop-cover-consumer-review/teaching-320.png",
+    "oil-drop-cover-consumer-review/social-white.png",
+    "oil-drop-anchor-02/en-r3-millikan-charge.png"
+  ],
+  "rootReview": {
+    "evidenceType": "Root reported personal review, separate from author checks",
+    "scope": "4 decisive mechanism frames and2actualnewcover images; root approved voice production",
+    "recording": "Root owns synthesis and independent ASR; author didnotgenerate audio."
+  },
+  "silentSourceHashes": {
+    "src/components/experiments/OilDropLab.tsx": "6f3a9807e7a42612b9c3b04015a52fa6ce02ff4b1f9ce0dddffcdcf479e6e5dc",
+    "src/components/experiments/OilDropLab.test.tsx": "b73ecda58b6d6f910212e62825fc77d9017daf9d6c2d3205d97bd89cfdcef606",
+    "src/models/oil-drop-lab.ts": "ca1dfbfded2a29a3ba08eeb8a1831b95267bc1dd26e8f17acd211450f9fe000e",
+    "src/models/oil-drop-lab.test.ts": "dc9325398f331597acaa84bcda927fb491609132ba6a3f72add0bb95af61e533",
+    "src/models/oil-drop-lab-records.ts": "66cc9a3a583f97ee6f3d8f0fcd235946d0fbb9e9eb3a84f56ea0caffe05a0206",
+    "src/styles/oil-drop-lab.css": "d60bfaeeefd44a740d2c11efd6151c66e79bf054d671cd81aeae81d9ace80c9e",
+    "src/components/covers/OilDropLabCover.astro": "4200c0eb47132a0ec884d045f8be11cb2734b2a8952ece8112d34b63751ebbd4",
+    "src/content/oil-drop-lab.mdx": "2b6f3e86305bd36a195d919e4f39623d40ff00135f8f2fcecf1dae9ad20df098",
+    "src/content/en/oil-drop-lab.mdx": "901f58280033363bf8621096b01a9351e9ebbffdaf2c62ff1714a57ad994997e",
+    "drafts/oil-drop-lab/brief.md": "209b00c9118d21b0bfac9d1d16dfea540507b4b6fe3f37ee4682fa980bec9dbc",
+    "drafts/oil-drop-lab/principle-first-packet.json": "cb382411d775e7c4313e8d29be807e55dece55eb2b768d23ba733943a91e5e0c"
+  },
+  "measuredAudio": {
+    "duration": 205.5,
+    "chapterStarts": [0, 56, 120],
+    "tracks": {
+      "zh": "oil-drop-lab-zh-178bfa813d9c.mp3",
+      "en": "oil-drop-lab-en-792489aea147.mp3"
+    },
+    "timingEvidence": "artifacts/teaching-principles/oil-drop-implementation/measured-cuts.json",
+    "spokenChanged": false
+  },
+  "measuredFixes": [
+    "Locale-specific actual-word cuts replace provisional normalization;0.45s cuelead included.",
+    "Question holds doubled-charge initial condition, then old-voltage response, then halfvoltage on the same continuous history.",
+    "Fixed record remains hidden until reveal; half-step caveat gets its own visible counterexample without changing observations.",
+    "Cover specifies same settled physical state independently of director timestamp."
+  ],
+  "personallyViewedMeasured": [
+    "oil-drop-measured-review-01/en-320-c1-t43p00.png",
+    "oil-drop-measured-review-01/en-320-c1-t46p00.png",
+    "oil-drop-measured-review-02/zh-320-c2-t55p00.png",
+    "oil-drop-measured-review-02/zh-320-c2-t60p00.png",
+    "oil-drop-measured-review-01/en-320-c2-t69p00.png",
+    "oil-drop-measured-review-01/en-320-c1-t52p00.png",
+    "oil-drop-measured-review-02/zh-320-c1-t10p80.png",
+    "oil-drop-measured-review-01/zh-1100-c2-t45p50.png",
+    "oil-drop-measured-controls-01/en-catalog-cover.png",
+    "oil-drop-measured-review-01/en-320-c1-t28p00.png",
+    "oil-drop-measured-caption-01/en-320-c1-t43p00.png",
+    "oil-drop-measured-caption-01/zh-320-c1-t51p00.png"
+  ],
+  "sourceHashes": {
+    "src/components/experiments/OilDropLab.tsx": "1892af5c4653cfb2c93ef9ff5ab27d51ac153111b6243c3eaad77a5c2027befb",
+    "src/components/experiments/OilDropLab.test.tsx": "e9d081b50aa2be14e1daca842a74711ed10d73c83c8d5a6a21b0b186dd0e6b51",
+    "src/models/oil-drop-lab.ts": "4cd5960a366ef107fa4ed59b1eb2eff956a80cdcbe64760e5407fe9e57121868",
+    "src/models/oil-drop-lab.test.ts": "a1e33c11a77b5f99b64c7165c4ab0529054db85be8050f003ff03d9d95d9f6ed",
+    "src/models/oil-drop-lab-records.ts": "66cc9a3a583f97ee6f3d8f0fcd235946d0fbb9e9eb3a84f56ea0caffe05a0206",
+    "src/styles/oil-drop-lab.css": "d60bfaeeefd44a740d2c11efd6151c66e79bf054d671cd81aeae81d9ace80c9e",
+    "src/components/covers/OilDropLabCover.astro": "4f116e85eada51feceb0f3b0841ec471cdf94c7cb1fa0f6f6f1a71d04e64cd29",
+    "src/content/oil-drop-lab.mdx": "2b6f3e86305bd36a195d919e4f39623d40ff00135f8f2fcecf1dae9ad20df098",
+    "src/content/en/oil-drop-lab.mdx": "901f58280033363bf8621096b01a9351e9ebbffdaf2c62ff1714a57ad994997e",
+    "drafts/oil-drop-lab/brief.md": "8672ce7e85e80b138a7c3896874179b22f2ed44e1765f3818ed4be7bd10c0573",
+    "drafts/oil-drop-lab/principle-first-packet.json": "8393b706c206e388b7b94f58e43a77366503133ba69fa7fb9813c5a5f849c41b"
+  },
+  "rootFinalReview": {
+    "status": "passed-with-described-scope",
+    "batch": "drafts/teaching-principles/batch-12-review.json",
+    "notClaimed": [
+      "Subjective listening",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

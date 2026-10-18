@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
-import { useShowcase, ease, ramp } from '../lab/FilmContext';
+import { useShowcase } from '../lab/FilmContext';
 import {
   meiosisState,
+  meiosisFilmProgress,
   meioticGametes,
   exchangeGeometry,
   fixedMeioticCells,
@@ -163,26 +164,84 @@ function Gamete({ chromatids, gene = false }: { chromatids: MeiosisChromatid[]; 
     </svg>
   );
 }
+/** A separate chromosome-complement schematic, not gametes from the preceding meiosis. */
+function Complement({ progress, gene }: { progress: number; gene: boolean }) {
+  const p = Math.max(0, Math.min(1, progress));
+  return (
+    <svg
+      className="bio-meiosis-complement"
+      viewBox="0 0 350 250"
+      role="img"
+      aria-label={t('两套染色体汇合，受精卵恢复成对状态')}
+      data-complement={p}
+    >
+      {[0, 1].map((side) => (
+        <ellipse
+          key={side}
+          cx={side ? 260 - 85 * p : 90 + 85 * p}
+          cy="112"
+          rx="66"
+          ry="80"
+          fill="#dedecb"
+          stroke="#a7ad91"
+          opacity={1 - p}
+        />
+      ))}
+      <ellipse cx="175" cy="112" rx="142" ry="87" fill="#dedecb" stroke="#a7ad91" opacity={p} />
+      {[0, 2].flatMap((cell, side) =>
+        meioticGametes(false, 0)[cell].map((c, i) => {
+          const x = (side ? 260 - 58 * p : 90 + 58 * p) + (i - 0.5) * 34;
+          return (
+            <g key={c.id} data-complement-chromosome={c.id}>
+              <Chromatid c={{ ...c, x, y: 112, arm: 0, length: c.length * 1.25 }} />
+              {gene && i === 0 && (
+                <text x={x} y="63" fontSize="25" textAnchor="middle" fill={colors[c.homolog]}>
+                  {side ? 'd' : 'D'}
+                </text>
+              )}
+            </g>
+          );
+        }),
+      )}
+      {p < 0.5 ? (
+        <>
+          <text x="90" y="224" fontSize="24" fill="currentColor" textAnchor="middle">
+            n = 2
+          </text>
+          <text x="260" y="224" fontSize="24" fill="currentColor" textAnchor="middle">
+            n = 2
+          </text>
+        </>
+      ) : (
+        <text x="175" y="224" fontSize="24" fill="currentColor" textAnchor="middle">
+          2n = 4
+        </text>
+      )}
+    </svg>
+  );
+}
+
 export default function BioMeiosis() {
   const f = useShowcase(),
-    [mode, setMode] = useState<Mode>(
-      modes.includes(f.variant as Mode) ? (f.variant as Mode) : 'homologs',
-    ),
+    [mode, setMode] = useState<Mode | null>(null),
     [progress, setProgress] = useState(0.7),
     [crossover, setCrossover] = useState(true),
     [orientation, setOrientation] = useState<0 | 1>(0),
     [selected, setSelected] = useState(2);
-  const m = f.watch ? modes[Math.min(7, f.chapter)] : mode,
-    p = f.watch ? ease(ramp(f.chapterProgress, 0.04, 0.9)) : progress,
+  const authored = modes[Math.min(7, f.chapter)],
+    m = f.watch ? authored : (mode ?? authored),
+    p = f.watch ? meiosisFilmProgress(f.chapter, f.chapterTime, browserLocale()) : progress,
     stage =
       m === 'homologs' ? p * 1.2 : m === 'first' ? 1.5 + p : m === 'second' ? 2.5 + p * 1.5 : 4,
     state = meiosisState(stage, f.watch || crossover, f.watch ? 0 : orientation),
     observed = fixedMeioticSelection(f.watch ? Math.min(11, Math.floor(p * 12)) : selected),
     ploidy = restoredPloidy(2, 2);
   return (
-    <section className="bio-meiosis" data-watch={f.watch}>
+    <section className="bio-meiosis" data-watch={f.watch} data-kind={m} data-progress={p}>
       <p className="bio-meiosis-kind">{t(names[modes.indexOf(m)])}</p>
-      {m === 'exchange' ? (
+      {f.watch && (m === 'fertilize' || m === 'sutton') ? (
+        <Complement progress={p} gene={m === 'sutton'} />
+      ) : m === 'exchange' ? (
         <>
           <svg
             className="bio-meiosis-stage"
@@ -366,7 +425,7 @@ export default function BioMeiosis() {
         <div className="bio-meiosis-controls">
           <Segments
             label={t('观察对象')}
-            value={mode}
+            value={m}
             onChange={setMode}
             options={modes.map((value, i) => ({ value, label: t(names[i]) }))}
           />

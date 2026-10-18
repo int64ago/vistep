@@ -162,3 +162,54 @@
     height: 130px;
   }
 }
+
+/* Phone watch composition keeps the current experiment and transport together. */
+@media (max-width: 640px) {
+  .bio-nuclear[data-watch='true'] {
+    padding: 8px 4px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-nuclear-kind {
+    display: none;
+  }
+  .bio-nuclear[data-watch='true'] .bio-nuclear-stage {
+    height: 180px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-nuclear-transfer-top {
+    height: 102px;
+    aspect-ratio: auto;
+  }
+  .bio-nuclear[data-watch='true'] .bio-nuclear-transfer-bottom {
+    height: 75px;
+    aspect-ratio: auto;
+  }
+  .bio-nuclear[data-watch='true'] .bio-nuclear-source-labels {
+    min-height: 44px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-nuclear-source-labels,
+  .bio-nuclear[data-watch='true'] .bio-nuclear-result-labels,
+  .bio-nuclear[data-watch='true'] .bio-nuclear-alga-labels {
+    line-height: 1.35;
+    gap: 8px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-amoeba-pair svg {
+    height: 155px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-monkey-chart {
+    height: 115px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-monkey-path {
+    gap: 6px;
+  }
+  .bio-nuclear[data-watch='true'] .bio-monkey-path span {
+    padding: 5px 8px;
+  }
+  .bio-nuclear-controls {
+    font-size: 16px;
+  }
+  .bio-nuclear-controls > p {
+    margin-top: 32px;
+  }
+  .bio-nuclear[data-watch='true'][data-kind='frog'] .bio-nuclear-transfer-top {
+    height: 94px;
+  }
+}

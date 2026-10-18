@@ -1,11 +1,12 @@
 ---
-import { engelmannBacteria } from '../../models/bio-photosynthesis-evidence';
+import { engelmannBacteria, SYNTHASE_GEOMETRY } from '../../models/bio-photosynthesis-evidence';
 const bacteria = engelmannBacteria(1, 'spot', 0.4);
 ---
 
-<svg viewBox="0 0 400 230" aria-hidden="true"
-  ><rect width="400" height="230" rx="24" fill="#eeefda"></rect><g transform="translate(20 -10)"
-    ><rect
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <rect width="400" height="230" rx="24" fill="#eef0df"></rect>
+  <g transform="translate(4 10) scale(.66)">
+    <rect
       x="26"
       y="103"
       width="308"
@@ -13,22 +14,18 @@ const bacteria = engelmannBacteria(1, 'spot', 0.4);
       rx="12"
       fill="#d5dfb7"
       stroke="#8da87b"
-      stroke-width="2"></rect>{
-      [90, 150, 210, 270].map((x) => <path d={`M${x} 104V156`} stroke="#99ad82" />)
-    }<path
+      stroke-width="2"></rect>
+    {[90, 150, 210, 270].map((x) => <path d={`M${x} 104V156`} stroke="#99ad82" />)}
+    <path
       d={Array.from(
         { length: 151 },
         (_, i) => `${i ? 'L' : 'M'}${30 + i * 2} ${130 + 17 * Math.sin((i / 150) * Math.PI * 10)}`,
       ).join(' ')}
       fill="none"
       stroke="#71965b"
-      stroke-width="8"></path><rect
-      x="137"
-      y="26"
-      width="26"
-      height="132"
-      fill="#ead897"
-      opacity=".5"></rect>{
+      stroke-width="8"></path>
+    <rect x="137" y="26" width="26" height="132" fill="#ead897" opacity=".5"></rect>
+    {
       bacteria.map((b) => (
         <rect
           x={b.x - 3}
@@ -36,10 +33,42 @@ const bacteria = engelmannBacteria(1, 'spot', 0.4);
           width="6"
           height="2.8"
           rx="1.4"
-          fill="#717e62"
+          fill="#536f61"
           transform={`rotate(${(b.id * 37) % 150} ${b.x} ${b.y})`}
         />
       ))
-    }</g
-  ></svg
->
+    }
+  </g>
+  <text x="111" y="183" text-anchor="middle" font-size="24" fill="#54735b">O₂</text>
+  <g transform="translate(236 18) scale(.62)">
+    <path d="M0 90H225M0 150H225" stroke="#a3b984" stroke-width="10"></path>
+    <path
+      d="M101 64Q61 80 65 130L65 170Q80 181 100 159H167Q190 132 184 102Q180 77 155 65Z"
+      fill="#b9baa2"
+      stroke="#8f9e88"
+      stroke-width="3"></path>
+    <path d={SYNTHASE_GEOMETRY.entry} fill="none" stroke="#f2ecd5" stroke-width="12"></path>
+    <path d={SYNTHASE_GEOMETRY.exit} fill="none" stroke="#e0e9cb" stroke-width="12"></path>
+    <circle cx="135" cy="120" r="35" fill="#c6a373" stroke="#9c805b" stroke-width="3"></circle>
+    {
+      Array.from({ length: 14 }, (_, i) => (
+        <circle
+          cx={135 + 29 * Math.cos((i / 14) * Math.PI * 2)}
+          cy={120 + 29 * Math.sin((i / 14) * Math.PI * 2)}
+          r="4"
+          fill="#947750"
+        />
+      ))
+    }
+    <path d="M135 154V185" stroke="#9d835c" stroke-width="9"></path>
+    <ellipse cx="135" cy="207" rx="53" ry="29" fill="#d5bf95" stroke="#a28960" stroke-width="3"
+    ></ellipse>
+    <circle cx="111" cy="37" r="10" fill="#b16e4d"></circle><text
+      x="132"
+      y="48"
+      font-size="30"
+      fill="#5d6651">H⁺</text
+    >
+    <text x="135" y="218" text-anchor="middle" font-size="30" fill="#6e6349">ATP</text>
+  </g>
+</svg>
