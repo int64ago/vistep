@@ -1,0 +1,99 @@
+.icl-scene {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  color: #395851;
+  min-width: 0;
+  font-size: 16px;
+}
+.icl-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 24px;
+}
+.icl-heading span:last-child {
+  color: #66776a;
+  text-align: right;
+}
+.icl-art {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.icl-art text {
+  font-size: 16px;
+  fill: #395851;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-variant-numeric: tabular-nums;
+}
+.icl-controls {
+  display: grid;
+  gap: 16px;
+  border-top: 1px solid #dce3d6;
+  margin-top: 12px;
+  padding: 18px 12px;
+  min-width: 0;
+}
+.icl-controls .segmented {
+  flex-wrap: wrap;
+}
+.icl-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+}
+.icl-controls label,
+.icl-controls p,
+.icl-controls summary {
+  font-size: 16px;
+  line-height: 1.55;
+}
+.icl-controls input[type='range'] {
+  width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+.icl-controls details {
+  padding: 12px 0;
+}
+.icl-controls summary {
+  cursor: pointer;
+  min-height: 44px;
+}
+.icl-controls p {
+  margin: 8px 0;
+  max-width: 64ch;
+}
+.icl-scene[data-watch='true'] .icl-heading {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+@media (max-width: 439px) {
+  .icl-heading {
+    gap: 8px;
+    padding-inline: 8px;
+    min-height: 38px;
+    align-items: center;
+  }
+  .icl-heading span {
+    max-width: 52%;
+  }
+  .icl-controls {
+    padding-inline: 8px;
+  }
+  .icl-art text {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .icl-scene * {
+    scroll-behavior: auto;
+  }
+}

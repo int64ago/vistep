@@ -1,3 +1,4 @@
+import { hydrogenChlorineFilmShot } from './chem-hydrogen-chlorine';
 import { describe, it, expect } from 'vitest';
 import { hydrogenChlorine, hclAtoms, hydrogenChlorineDirector } from './chem-hydrogen-chlorine';
 describe('hydrogen chlorine reaction', () => {
@@ -28,4 +29,20 @@ describe('hydrogen chlorine reaction', () => {
     expect(atoms[3].x - atoms[1].x).toBe(30);
     expect(hydrogenChlorineDirector(1, 0).extent).toBe(1);
   });
+});
+
+it('holds the completed product while the narrated dry comparison removes the mist', () => {
+  for (const locale of ['zh', 'en'] as const) {
+    const wet = hydrogenChlorineFilmShot(1, 16, locale),
+      dry = hydrogenChlorineFilmShot(1, 19, locale);
+    expect(wet.extent).toBe(1);
+    expect(dry.extent).toBe(wet.extent);
+    expect(wet.moist).toBe(true);
+    expect(dry.moist).toBe(false);
+    expect(hydrogenChlorineFilmShot(2, 9, locale).extent).toBe(1);
+  }
+  for (const v of [NaN, Infinity, -Infinity]) {
+    expect(hclAtoms(v).every((a) => Number.isFinite(a.x) && Number.isFinite(a.y))).toBe(true);
+    expect(Number.isFinite(hydrogenChlorineFilmShot(v, v).extent)).toBe(true);
+  }
 });

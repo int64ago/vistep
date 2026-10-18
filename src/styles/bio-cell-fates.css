@@ -1,230 +1,372 @@
-.bio-fates {
-  padding: clamp(14px, 3vw, 28px);
+.bcf14 {
+  padding: clamp(14px, 3vw, 26px);
   border-radius: 24px;
   background: #eeeddd;
   color: #59614b;
 }
-.bio-fates-kind {
+.bcf14-kind {
   font-size: 16px;
-  color: #858c71;
-  margin: 0 0 12px;
-  line-height: 1.5;
+  line-height: 1.4;
+  margin: 0 0 10px;
+  color: #7b836a;
 }
-.bio-fates-culture {
-  width: 100%;
-  height: 300px;
+.bcf14-culture,
+.bcf14-expression,
+.bcf14-information {
   display: block;
+  width: 100%;
+  height: 265px;
+  max-width: 650px;
+  margin: auto;
 }
-.bio-fates-legend,
-.bio-fates-remaining,
-.bio-fates-genechain {
+.bcf14-note,
+.bcf14-bound,
+.bcf14-evidence-label {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 10px auto 0;
+  max-width: 660px;
+}
+.bcf14-bound {
+  color: #7b836a;
+}
+.bcf14-question {
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 8px 0;
+}
+.bcf14-expression-head,
+.bcf14-legend,
+.bcf14-molecule-labels,
+.bcf14-genechain {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 24px;
+  gap: 6px 24px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
-.bio-fates-age {
+.bcf14-expression-head {
+  justify-content: space-around;
+}
+.bcf14-molecule-labels {
   display: grid;
-  gap: 36px;
-  max-width: 660px;
-  margin: 50px auto;
+  grid-template-columns: 40% 25% 35%;
+  gap: 0;
+  text-align: center;
+  max-width: 474px;
+  margin: auto;
 }
-.bio-fates-age > div {
+.bcf14-totals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  text-align: center;
+  max-width: 520px;
+  margin: 6px auto;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bcf14-totals strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+}
+.bcf14-age {
+  display: grid;
+  gap: 18px;
+  max-width: 620px;
+  margin: 22px auto;
+}
+.bcf14-age > div {
   display: grid;
   grid-template-columns: 100px 1fr 50px;
+  gap: 12px;
   align-items: center;
-  gap: 20px;
   font-size: 16px;
+  line-height: 1.4;
 }
-.bio-fates-bar {
-  height: 24px;
-  position: relative;
-  border-radius: 8px;
+.bcf14-bar {
+  height: 22px;
   background: #d9dfc5;
+  border-radius: 8px;
+  position: relative;
 }
-.bio-fates-bar i {
+.bcf14-bar i {
   display: block;
   height: 100%;
   border-radius: 8px;
   background: #9fb186;
 }
-.bio-fates-bar b {
+.bcf14-bar b {
   position: absolute;
-  top: -4px;
-  bottom: -4px;
+  top: -3px;
+  bottom: -3px;
   width: 2px;
-  background: #7e926b;
+  background: #7d9269;
 }
-.bio-fates-note {
+.bcf14-alive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   font-size: 16px;
-  line-height: 1.6;
-  text-align: center;
-  max-width: 650px;
-  margin: 16px auto 0;
+  line-height: 1.4;
 }
-.bio-fates-swap {
+.bcf14-alive svg {
+  width: 130px;
+  height: 76px;
+}
+.bcf14-swap {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 25px;
+  gap: 20px;
   text-align: center;
 }
-.bio-fates-swap svg {
-  width: 100%;
-  height: 240px;
-  display: block;
-}
-.bio-fates-swap p {
+.bcf14-swap p,
+.bcf14-limits p,
+.bcf14-gene-pair p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 7px 0;
 }
-.bio-fates-limits {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 700px;
-  margin: auto;
-}
-.bio-fates-limits strong {
-  font-size: 24px;
-  font-weight: 500;
-}
-.bio-fates-limits svg {
-  width: 100%;
-  height: 140px;
+.bcf14-swap svg {
   display: block;
+  width: 100%;
+  height: 210px;
 }
-.bio-fates-limits p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-.bio-fates-limits > .bio-fates-note {
+.bcf14-swap > .bcf14-note {
   grid-column: 1/-1;
 }
-.bio-fates-worm {
-  display: block;
+.bcf14-limits {
+  text-align: center;
+  max-width: 620px;
+  margin: auto;
+}
+.bcf14-limits > strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+.bcf14-limits svg {
   width: 100%;
-  height: 125px;
-}
-.bio-fates-lineage {
+  height: 190px;
   display: block;
-  width: 100%;
-  height: 200px;
 }
-.bio-fates-genechain {
-  margin-top: 12px;
-  color: #7e8e63;
-}
-.bio-fates-controls {
-  display: grid;
-  gap: 16px;
-  max-width: 680px;
-  margin: 24px auto 0;
-}
-.bio-fates-controls .segmented {
-  flex-wrap: wrap;
-}
-.bio-fates-controls button {
-  min-height: 44px;
-  font: inherit;
-  color: inherit;
-  padding: 8px 12px;
-  background: #f7f7e9;
-  border: 1px solid #c1c9ac;
-  border-radius: 12px;
-}
-@media (max-width: 540px) {
-  .bio-fates-culture {
-    height: 255px;
-  }
-  .bio-fates-age {
-    gap: 30px;
-    margin: 35px auto;
-  }
-  .bio-fates-age > div {
-    grid-template-columns: 80px 1fr 38px;
-    gap: 10px;
-  }
-  .bio-fates-swap {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .bio-fates-swap svg {
-    height: 120px;
-  }
-  .bio-fates-limits {
-    gap: 15px;
-  }
-  .bio-fates-limits svg {
-    height: 110px;
-  }
-  .bio-fates-worm {
-    height: 90px;
-  }
-  .bio-fates-lineage {
-    height: 175px;
-  }
-}
-
-.bio-fates-comparison {
+.bcf14-study-bars {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 20px;
-  max-width: 450px;
-  margin: 14px auto;
-  font-size: 16px;
-  line-height: 1.5;
+  gap: 20px;
+  max-width: 360px;
+  margin: 10px auto;
 }
-
+.bcf14-study-bars > div {
+  display: grid;
+  grid-template-rows: 24px 110px 26px;
+  justify-items: center;
+  align-items: end;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bcf14-study-bars i {
+  width: 52px;
+  background: #a3b589;
+  border-radius: 8px 8px 0 0;
+}
+.bcf14-study-bars .bcf14-bound-bar {
+  background: repeating-linear-gradient(135deg, #d1dac1 0 6px, #e4e9d7 6px 12px);
+  border-top: 2px dashed #819669;
+}
+.bcf14-lineage {
+  display: block;
+  width: 100%;
+  max-width: 660px;
+  height: 270px;
+  margin: auto;
+}
+.bcf14-gene-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 540px;
+  margin: auto;
+  text-align: center;
+}
+.bcf14-gene-pair svg {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+.bcf14-genechain {
+  margin: 10px auto;
+}
+.bcf14-genechain span[data-functional='false'] {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: #9f7b6c;
+}
+.bcf14-controls {
+  display: grid;
+  gap: 18px;
+  margin: 24px auto 0;
+  max-width: 680px;
+  font-size: 16px;
+}
+.bcf14-controls .segmented {
+  flex-wrap: wrap;
+}
+.bcf14-controls .control-top {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bcf14-controls .control {
+  margin-bottom: 12px;
+}
+.bcf14-controls button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #bdc7a9;
+  border-radius: 12px;
+  background: #f7f7ec;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+}
+.bcf14-controls button:focus-visible {
+  outline: 2px solid #8a9d74;
+  outline-offset: 4px;
+}
 @media (max-width: 540px) {
-  .bio-fates {
-    padding: 12px;
+  .bcf14 {
+    padding: 12px 10px;
   }
-  .bio-fates[data-watch='true'] .bio-fates-kind {
-    display: none;
+  .bcf14-kind {
+    margin-bottom: 6px;
   }
-  .bio-fates-culture {
-    height: 225px;
+  .bcf14-culture {
+    height: 175px;
   }
-  .bio-fates-age {
-    margin: 22px auto;
-    gap: 24px;
+  .bcf14-information {
+    height: 118px;
   }
-  .bio-fates-swap svg {
-    height: 105px;
+  .bcf14-expression {
+    height: 150px;
   }
-  .bio-fates-limits svg {
-    height: 80px;
-  }
-  .bio-fates-limits p {
-    margin: 8px 0;
-  }
-  .bio-fates-limits {
-    gap: 10px;
-  }
-  .bio-fates-worm {
-    height: 55px;
-  }
-  .bio-fates-lineage {
-    height: 138px;
-  }
-  .bio-fates-legend {
+  .bcf14-expression-head {
     gap: 4px 12px;
   }
-  .bio-fates-genechain {
+  .bcf14-note,
+  .bcf14-bound,
+  .bcf14-evidence-label {
+    margin-top: 6px;
+  }
+  .bcf14-question {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+  .bcf14-age {
+    gap: 12px;
+    margin: 14px auto;
+  }
+  .bcf14-age > div {
+    grid-template-columns: 72px 1fr 38px;
+    gap: 8px;
+  }
+  .bcf14-alive {
     gap: 6px;
-    margin-top: 8px;
   }
-  .bio-fates-note {
-    margin-top: 8px;
+  .bcf14-alive svg {
+    width: 90px;
+    height: 55px;
   }
-  .bio-fates-comparison {
-    gap: 4px 10px;
+  .bcf14-swap {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .bcf14-swap > div[data-active='false'] {
+    display: none;
+  }
+  .bcf14-swap svg {
+    height: 145px;
+  }
+  .bcf14-swap p {
+    margin: 4px 0;
+  }
+  .bcf14-limits svg {
+    height: 130px;
+  }
+  .bcf14-limits > strong {
+    font-size: 20px;
+  }
+  .bcf14-lineage {
+    height: 165px;
+  }
+  .bcf14-gene-pair {
+    gap: 8px;
+  }
+  .bcf14-gene-pair svg {
+    height: 120px;
+  }
+  .bcf14-gene-pair p {
+    margin: 3px 0;
+  }
+  .bcf14-genechain {
+    gap: 4px 8px;
+    margin: 6px auto;
+  }
+  .bcf14-study-bars {
+    margin: 6px auto;
+  }
+  .bcf14-study-bars > div {
+    grid-template-rows: 24px 85px 26px;
+  }
+  .bcf14-legend {
+    gap: 4px 12px;
+  }
+  .bcf14-controls {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-slug='bio-cell-fates'] .film-caption {
+    min-height: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='bio-cell-fates'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .bcf14[data-watch='true'] {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .bcf14[data-watch='true'] .bcf14-age {
+    gap: 8px;
     margin: 8px auto;
   }
-  .bio-fates[data-mode='genes'] .bio-fates-legend {
-    display: none;
+  .bcf14[data-watch='true'] .bcf14-age > div {
+    grid-template-columns: 105px 1fr 32px;
+    gap: 6px;
+  }
+  .bcf14[data-watch='true'] .bcf14-limits svg {
+    height: 85px;
+  }
+  .bcf14[data-watch='true'] .bcf14-limits p {
+    margin: 4px 0;
+  }
+  .bcf14[data-watch='true'] .bcf14-study-bars > div {
+    grid-template-rows: 24px 70px 26px;
+  }
+  .bcf14[data-watch='true'] .bcf14-lineage {
+    height: 135px;
+  }
+  .bcf14[data-watch='true'] .bcf14-expression {
+    height: 144px;
+  }
+  .bcf14[data-watch='true'] .bcf14-gene-pair svg {
+    height: 100px;
   }
 }

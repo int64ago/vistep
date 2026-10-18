@@ -1,0 +1,59 @@
+{
+  "status": "candidate-reviewed-not-product-acceptance",
+  "sourceReview": "artifacts/teaching-principles/batch-14-staging/retained/sources/source-review.json",
+  "checks": [
+    {
+      "kind": "model tests",
+      "tests": 12,
+      "scope": "Both retained scenes",
+      "evidence": "artifacts/teaching-principles/batch-14-staging/retained/model-tests.log"
+    },
+    {
+      "kind": "strict types",
+      "errors": 0,
+      "evidence": "artifacts/teaching-principles/batch-14-staging/retained/typecheck.json"
+    },
+    {
+      "kind": "independent geometry and finite model probes",
+      "assertions": 17641,
+      "evidence": "artifacts/teaching-principles/batch-14-cross-review/physics-review-retained-chemistry-03.json"
+    },
+    {
+      "kind": "native overlay controls",
+      "checks": 80,
+      "evidence": "artifacts/teaching-principles/batch-14-staging/retained/controls-01/report.json"
+    },
+    {
+      "kind": "retained audio ASR",
+      "cues": 14,
+      "evidence": "artifacts/teaching-principles/batch-14-transcription.json"
+    }
+  ],
+  "notClaimed": [
+    "Final static product acceptance",
+    "Subjective listening",
+    "Physical phone performance",
+    "Continuous human visual watching"
+  ],
+  "resolved": [
+    "Measured spoken cuts replace arbitrary normalized timing.",
+    "Exploration follows current chapter until manual selection; authored film remains isolated.",
+    "Zero product/concentration states do not draw nonexistent product or salt ions.",
+    "Finite model guards and short-screen composition."
+  ],
+  "pending": [
+    "Final overlay keyframes and root visual review",
+    "Actual product integration and verification"
+  ],
+  "rootIntegration": {
+    "batch": 14,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-14-review.json",
+    "scope": "Final actual static product review, native controls and complete native playback; author evidence kept separate.",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

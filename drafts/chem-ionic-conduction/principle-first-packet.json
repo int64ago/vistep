@@ -1,0 +1,150 @@
+{
+  "sceneSlug": "chem-ionic-conduction",
+  "status": "candidate only; final product integration pending",
+  "scope": "Retain all original spoken fields, audio and measured chapter timing. Correct causal reveal timing, mobile composition and exploration state.",
+  "narration": {
+    "duration": 119,
+    "cues": [
+      {
+        "id": "solid",
+        "title": "固体中的离子",
+        "titleEn": "Ions in the solid",
+        "seconds": 27,
+        "caption": "干燥盐有离子，晶格却限制了它们的自由移动。",
+        "captionEn": "Dry salts contain ions, but the lattice prevents free movement.",
+        "zh": "先把两根电极放入干燥氯化钠，再换成干燥硝酸钾。教材中检测灯都没有亮。两种盐都是由离子构成的，为什么还不能导电？关键在于晶体把离子约束在晶格位置附近。存在带电粒子只是一个条件；这些粒子还必须能够在整个样品中自由移动。图中的检测器只模拟这种响应。",
+        "en": "First compare dry sodium chloride with dry potassium nitrate. The textbook indicator does not light for either sample. Both salts contain ions, so what is missing? In the crystal, ions remain bound near lattice positions. Charged particles must also be able to move through the sample. Our ideal detector represents the contrast; it is not a calibration of the textbook bulb.",
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "water",
+        "title": "灯不亮的边界",
+        "titleEn": "What an unlit detector means",
+        "seconds": 27,
+        "caption": "蒸馏水只有很少的离子，微弱电流可能低于显示阈值。",
+        "captionEn": "Distilled water has few ions, so its tiny current may be below the indication threshold.",
+        "zh": "再看蒸馏水。画面中的检测灯没有亮，但精细的模型读数仍然不是零。水会微弱地自电离，所以绝对纯净的水也有少量可移动离子。教材特别提醒，蒸馏水导电能力很弱，灯泡不能显示，不代表完全没有电流。现实中的水还会受到溶入气体和杂质的影响。",
+        "en": "Now inspect distilled water. The light remains off, yet the model shows a small nonzero current. Water weakly self-ionizes, so even ideally pure water contains a few mobile ions. As the textbook notes, a bulb may fail to reveal such weak conduction. Real water can also acquire dissolved gases and impurities. A detection limit is a limit of the observation, not proof of an absolute zero.",
+        "chapterAt": 28,
+        "at": 28.45
+      },
+      {
+        "id": "dissolve",
+        "title": "溶解释放可移动离子",
+        "titleEn": "Dissolution frees mobile ions",
+        "seconds": 31,
+        "caption": "两种盐溶于水后，原有离子分散到溶液中。",
+        "captionEn": "Dissolving either salt disperses its existing ions through water.",
+        "zh": "把干燥盐换成盐溶液。观察放大图：原先整齐排列的正负离子分散开来，并没有凭空产生新的电子。氯化钠给出钠离子和氯离子，硝酸钾给出钾离子和硝酸根离子。在同样的电路里，溶液能够传递电荷。模型电流取决于离子浓度和迁移能力，数值是稀溶液近似，不是教材的实测记录。",
+        "en": "Replace the dry salt with its solution. In the enlarged view, the ordered ions disperse; dissolution has not created new electrons. Sodium chloride supplies sodium and chloride ions. Potassium nitrate supplies potassium and nitrate ions. Both solutions carry charge in the same circuit. Model current depends on ion concentration and mobility, using a dilute-solution approximation rather than claimed textbook measurements.",
+        "chapterAt": 57,
+        "at": 57.45
+      },
+      {
+        "id": "drift",
+        "title": "接通后才有定向迁移",
+        "titleEn": "Connection produces directed drift",
+        "seconds": 31,
+        "caption": "电离先于通电；正负离子向相反电极移动。",
+        "captionEn": "Dissociation precedes connection; opposite ions drift toward opposite electrodes.",
+        "zh": "最后把已经溶解的样品暂时断开电路。离子仍然存在，只是没有外电场造成的定向迁移。重新接通后，阳离子向负极偏移，阴离子向正极偏移，两者都贡献同一个方向的电流。这里仅观察局部的短时间位移，省略电极表面的反应，不把离子画成永远穿过金属或在电极上无限堆积。",
+        "en": "Open the circuit after the salt has dissolved. The ions remain present; connection did not cause their formation. Close it again and positive ions drift toward the negative electrode while negative ions drift toward the positive electrode. Both motions contribute to the same conventional current. We show only a local, short-time displacement. Electrode reactions are omitted, rather than depicting ions passing through metal or accumulating indefinitely.",
+        "chapterAt": 88,
+        "at": 88.45
+      }
+    ]
+  },
+  "integratedFilm": {
+    "duration": 119,
+    "chapters": [
+      {
+        "id": "solid",
+        "title": "固体中的离子",
+        "titleEn": "Ions in the solid",
+        "caption": "干燥盐有离子，晶格却限制了它们的自由移动。",
+        "captionEn": "Dry salts contain ions, but the lattice prevents free movement.",
+        "at": 0
+      },
+      {
+        "id": "water",
+        "title": "灯不亮的边界",
+        "titleEn": "What an unlit detector means",
+        "caption": "蒸馏水只有很少的离子，微弱电流可能低于显示阈值。",
+        "captionEn": "Distilled water has few ions, so its tiny current may be below the indication threshold.",
+        "at": 28
+      },
+      {
+        "id": "dissolve",
+        "title": "溶解释放可移动离子",
+        "titleEn": "Dissolution frees mobile ions",
+        "caption": "两种盐溶于水后，原有离子分散到溶液中。",
+        "captionEn": "Dissolving either salt disperses its existing ions through water.",
+        "at": 57
+      },
+      {
+        "id": "drift",
+        "title": "接通后才有定向迁移",
+        "titleEn": "Connection produces directed drift",
+        "caption": "电离先于通电；正负离子向相反电极移动。",
+        "captionEn": "Dissociation precedes connection; opposite ions drift toward opposite electrodes.",
+        "at": 88
+      }
+    ]
+  },
+  "preserveCanonicalTiming": true,
+  "teachingProfiles": {
+    "chem-required-1-experiment-1-2": {
+      "sceneSlug": "chem-ionic-conduction",
+      "question": {
+        "zh": "有离子，为什么灯仍然不亮？",
+        "en": "Why can a sample contain ions without lighting the lamp?"
+      },
+      "lead": {
+        "zh": "比较固体盐、蒸馏水与盐溶液，再跟踪带电粒子怎样移动。",
+        "en": "Compare dry salts, distilled water and salt solutions, then follow moving charges."
+      },
+      "principle": {
+        "zh": "导电需要可移动的电荷；检测灯不亮也可能只是电流低于显示阈值。",
+        "en": "Conduction requires mobile charges. An unlit indicator may also mean that current is below its detection threshold."
+      },
+      "transfer": {
+        "question": {
+          "zh": "把盐浓度降到零，电流一定变成零吗？",
+          "en": "Must current become zero when the salt concentration reaches zero?"
+        },
+        "explanation": {
+          "zh": "不一定。模型保留纯水自电离的微弱背景电流；盐离子消失不代表所有可移动电荷都消失。",
+          "en": "No. The model retains the weak background from water self-ionization. Removing salt ions does not remove all mobile charges."
+        }
+      }
+    },
+    "chem-required-1-model-p15": {
+      "sceneSlug": "chem-ionic-conduction",
+      "question": {
+        "zh": "断开电路，溶液中的离子会消失吗？",
+        "en": "Do dissolved ions disappear when the circuit opens?"
+      },
+      "lead": {
+        "zh": "保持同一组离子，先观察溶解，再比较接通与断开电路。",
+        "en": "Keep the same ion identities through dissolution and compare closed and open circuits."
+      },
+      "principle": {
+        "zh": "电离使已有离子分散到水中；电场造成定向迁移，两种电荷的反向运动都可贡献同向电流。",
+        "en": "Dissociation disperses existing ions in water. An electric field drives directed migration, and opposite charges moving oppositely contribute to the same conventional current."
+      },
+      "transfer": {
+        "question": {
+          "zh": "关掉电源，哪些变化会停止，哪些粒子仍然存在？",
+          "en": "What stops when the power is disconnected, and which particles remain?"
+        },
+        "explanation": {
+          "zh": "模型中的定向漂移与电流停止，溶液中的离子仍保留。真实离子的热运动不在本图中显示。",
+          "en": "Directed drift and current stop in the model, while dissolved ions remain. Thermal motion is omitted from the diagram."
+        }
+      }
+    }
+  },
+  "sourceReview": "artifacts/teaching-principles/batch-14-staging/retained/sources/source-review.json",
+  "pending": ["Actual product verify/build/static/entry/native playback checks"]
+}

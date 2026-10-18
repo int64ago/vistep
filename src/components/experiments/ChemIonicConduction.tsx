@@ -4,7 +4,7 @@ import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
   ionicConduction,
-  ionicDirector,
+  ionicFilmShot,
   ionicParticle,
   type IonicSample,
 } from '../../models/chem-ionic-conduction';
@@ -13,14 +13,16 @@ export default function ChemIonicConduction() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
     say = (zh: string, english: string) => (en ? english : zh);
-  const [sample, setSample] = useState<IonicSample>(
-      film.variant === 'ions' ? 'nacl' : 'nacl-solid',
-    ),
+  const [manualSample, setSample] = useState<IonicSample | null>(null),
     [concentration, setConcentration] = useState(1),
-    [field, setField] = useState('on'),
+    [manualField, setField] = useState<string | null>(null),
     [progress, setProgress] = useState(0.8);
+  const authored = ionicFilmShot(film.chapter, film.chapterTime, browserLocale()),
+    sample =
+      manualSample ?? (film.variant === 'ions' && film.chapter < 2 ? 'nacl' : authored.sample),
+    field = manualField ?? (authored.connected ? 'on' : 'off');
   const d = film.watch
-    ? ionicDirector(film.chapter, film.chapterProgress)
+    ? authored
     : {
         sample,
         dissolved: sample.endsWith('solid') ? 0 : 1,
@@ -33,7 +35,7 @@ export default function ChemIonicConduction() {
     3,
     d.connected,
   );
-  const microscopic = film.watch ? film.chapter >= 2 : d.sample !== 'water';
+  const microscopic = film.watch ? authored.microscopic : d.sample !== 'water';
   const label =
     d.sample === 'water'
       ? say('蒸馏水', 'Distilled water')
@@ -65,7 +67,14 @@ export default function ChemIonicConduction() {
               'Opposite ion motions both carry electric current.',
             );
   return (
-    <section className="chem-ionic-conduction" data-watch={film.watch} data-micro={microscopic}>
+    <section
+      className="chem-ionic-conduction"
+      data-watch={film.watch}
+      data-micro={microscopic}
+      data-sample={d.sample}
+      data-connected={d.connected}
+      data-current={s.currentMicroAmp}
+    >
       <header>
         <p>{say('有离子，还要能够移动', 'Ions must also be mobile')}</p>
         <span>{label}</span>
@@ -166,7 +175,7 @@ export default function ChemIonicConduction() {
             <span>{Math.abs(s.currentMicroAmp).toFixed(1)} µA</span>
           </div>
           <svg
-            viewBox="0 0 360 210"
+            viewBox="0 0 360 224"
             role="img"
             aria-label={say(
               '晶格离子解离后，正负离子在电场中向相反方向偏移',
@@ -181,10 +190,10 @@ export default function ChemIonicConduction() {
             <text x="331" y="207" textAnchor="middle" fill="#5e7a6d" fontSize="26">
               −
             </text>
-            {Array.from({ length: 20 }, (_, i) => {
+            {Array.from({ length: !s.solid && s.concentration === 0 ? 0 : 20 }, (_, i) => {
               const a = ionicParticle(i, d.dissolved, d.connected ? d.drift : 0);
               return (
-                <g key={i}>
+                <g key={i} data-ion-id={i} data-charge={a.charge}>
                   <circle
                     cx={a.x}
                     cy={a.y}
@@ -208,22 +217,31 @@ export default function ChemIonicConduction() {
               );
             })}
           </svg>
-          <div className="chem-ionic-legend">
-            <span>
-              <i />
-              {s.cation}
-            </span>
-            <span>
-              <i />
-              {s.anion}
-            </span>
-            <p>
+          {!s.solid && s.concentration === 0 ? (
+            <p className="chem-ionic-background">
               {say(
-                '局部短时间位移，未画出水分子和电极反应。',
-                'Local short-time displacement; water molecules and electrode reactions are omitted.',
+                '零盐浓度：只剩水的微弱电离背景。',
+                'Zero salt: only water’s ionic background remains.',
               )}
             </p>
-          </div>
+          ) : (
+            <div className="chem-ionic-legend">
+              <span>
+                <i />
+                {s.cation}
+              </span>
+              <span>
+                <i />
+                {s.anion}
+              </span>
+              <p>
+                {say(
+                  '局部短时间位移，未画出水分子和电极反应。',
+                  'Local short-time displacement; water molecules and electrode reactions are omitted.',
+                )}
+              </p>
+            </div>
+          )}
         </div>
       )}
       {!film.watch && <p className="chem-ionic-cause">{note}</p>}

@@ -160,3 +160,43 @@
   gap: 16px;
   font-size: 16px;
 }
+
+.chem-ionic-conduction[data-watch='true'] > details {
+  display: none;
+}
+@media (max-width: 600px) {
+  .chem-ionic-conduction[data-watch='true'] {
+    padding: 8px;
+    border-radius: 20px;
+  }
+  .chem-ionic-conduction[data-watch='true'] header span {
+    margin: 0 0 6px;
+    line-height: 1.35;
+  }
+  .chem-ionic-conduction[data-watch='true'] .chem-ionic-apparatus svg {
+    height: 150px;
+  }
+  .chem-ionic-conduction[data-watch='true'] .chem-ionic-reading strong {
+    font-size: 16px;
+  }
+  .chem-ionic-conduction[data-watch='true'] .chem-ionic-reading span {
+    margin: 5px 0;
+  }
+  .chem-ionic-conduction[data-watch='true'] .chem-ionic-closeup {
+    border: 0;
+  }
+  .chem-ionic-conduction[data-watch='true'] .chem-ionic-closeup svg {
+    height: 145px;
+  }
+  .chem-ionic-conduction[data-watch='true'] .chem-ionic-legend {
+    justify-content: center;
+  }
+  .showcase[data-slug='chem-ionic-conduction'] .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='chem-ionic-conduction'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}

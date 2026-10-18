@@ -1,53 +1,203 @@
 {
+  "sceneSlug": "chem-periodic-patterns",
+  "status": "ignored candidate frozen; root integration and voice acceptance pending",
   "owner": "chemistry_inventory",
-  "kind": "author-self-review",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "sourceFiles": {
-    "src/models/chem-periodic-patterns.ts": "0e1e6e394e51d891ef3d284d99514be2ac2a221e5bc225ee84a631548a5c7a84",
-    "src/components/experiments/ChemPeriodicPatterns.tsx": "4dd76dbd5476720b9b557eb819a40ec9311ebbf76013eb2351c4c5f8481a2a64",
-    "src/styles/chem-periodic-patterns.css": "f49a99e459b96a93d636ad98191edbfe2e6f9a74dedfa7c554c40e077394048a",
-    "src/data/scene-packets/chem-periodic-patterns.json": "0c2eba2d3ad3148781af52b8ed574e2f409bb272076e8f630fdf58a2ee3ec505"
-  },
-  "conditions": {
-    "browser": "Chromium via Playwright, headless",
-    "viewport": "320×844 emulation, not physical device",
-    "reducedMotion": true,
-    "audio": "off",
-    "preview": "own independent snapshot on4337"
-  },
-  "checks": [
+  "kind": "Author self-review with separately attributed independent physics evidence",
+  "sourceCommit": "b77c626ffcd0df30602337d9b03ea4e0e143b6de",
+  "scientificSources": [
     {
-      "type": "model",
-      "status": "passed",
-      "tests": 4
+      "id": "required1",
+      "title": "人教版高中化学 必修第一册 P104–106",
+      "file": "人教版高中化学-必修第一册.pdf",
+      "printedPages": [104, 105, 106],
+      "pdfPages": [109, 110, 111],
+      "readScope": "Full extracted pages; P105 research prompt read. Three-page extraction preserved under sources."
     },
     {
-      "type": "paused-keyframe-geometry",
-      "status": "passed",
-      "cases": 13,
-      "evidence": [
-        "artifacts/chemistry-inventory/review-periodic-patterns",
-        "artifacts/chemistry-inventory/review-periodic-patterns-zh",
-        "artifacts/chemistry-inventory/review-periodic-patterns-final"
+      "id": "elective2",
+      "title": "人教版选择性必修2 P20–27，图1-23与P26探究",
+      "file": "人教版高中化学-选择性必修2-物质结构与性质.pdf",
+      "printedPages": [20, 21, 22, 23, 24, 25, 26, 27],
+      "pdfPages": [23, 24, 25, 26, 27, 28, 29, 30],
+      "readScope": "Full eight-page text; original P25 figure rendered and visually checked. P26 compares EN and IE and P24 gives qualitative dip explanations."
+    },
+    {
+      "id": "nist-asd",
+      "title": "NIST ASD: neutral ground configurations and first ionization energies",
+      "url": "https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&level_out=on&shells_out=on&spectra=H-DS+i&unc_out=on&units=1",
+      "readScope": "Full returned table read for Li–Ar, K/Rb/Cs, Br/I, Cr/Cu; values retained from the evaluated data, not refitted. Version 5.12 returned."
+    },
+    {
+      "id": "nist-pairs",
+      "title": "NIST Handbook atomic and singly ionized Mg, Al, P, S ground states",
+      "urls": [
+        "https://physics.nist.gov/PhysRefData/Handbook/Tables/magnesiumtable1.htm",
+        "https://physics.nist.gov/PhysRefData/Handbook/Tables/aluminumtable1.htm",
+        "https://physics.nist.gov/PhysRefData/Handbook/Tables/phosphorustable1.htm",
+        "https://physics.nist.gov/PhysRefData/Handbook/Tables/sulfurtable1.htm"
       ],
-      "note": "EN8+ZH3 and2 affected EN cues repeated after spacing-only caption correction; no horizontal overflow."
+      "readScope": "All four full short tables read; neutral and singly ionized configurations checked. Modern ASD precision is used; small legacy rounding differences are not merged."
     },
     {
-      "type": "visual-author-inspection",
-      "status": "passed",
-      "observed": "Viewed320px table transformation,Cu occupancy,andionization bar chart. All text16px or larger; transport within viewport."
-    },
-    {
-      "type": "continuous-playback",
-      "status": "not-run"
-    },
-    {
-      "type": "listening",
-      "status": "not-run"
-    },
-    {
-      "type": "physical-phone",
-      "status": "not-run"
+      "id": "iupac",
+      "title": "IUPAC periodic table guidance",
+      "url": "https://iupac.org/what-we-do/periodic-table-of-elements/",
+      "readScope": "Full page read; explicitly no preferred 18/32-column form; group-3 convention not resolved by this geometry."
     }
-  ]
+  ],
+  "checks": {
+    "scopedTests": {
+      "status": "passed",
+      "total": 20,
+      "failed": 0,
+      "path": "artifacts/teaching-principles/batch-14-staging/chemistry/amendment-tests.json",
+      "scope": "11 model tests, 6 SSR evidence tests, 3 mounted React state-lifecycle regressions."
+    },
+    "strictTypecheck": {
+      "status": "passed",
+      "diagnostics": 0,
+      "path": "artifacts/teaching-principles/batch-14-staging/chemistry/typecheck.json"
+    },
+    "scopedFormat": {
+      "status": "passed"
+    },
+    "independentScience": {
+      "status": "passed within scope",
+      "assertions": 382,
+      "path": "artifacts/teaching-principles/batch-14-cross-review/physics-review-periodic.json",
+      "scope": "Threshold/remaining energy, intermediate electron and charge ledgers, fixed IDs, finite geometry. Reviewer did not reread original NIST transcription or inspect UI."
+    },
+    "isolatedStage": {
+      "status": "passed for measured bounds and selected manual stills",
+      "captures": 88,
+      "viewports": [
+        [320, 568],
+        [1100, 568]
+      ],
+      "locales": ["zh", "en"],
+      "minActualSvgFont": 16,
+      "maxStageHeight": 333.1875,
+      "horizontalOverflow": 0,
+      "font": "Arial fallback",
+      "evidence": "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/report.json",
+      "manualFrames": [
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-compact.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-wide.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-copper.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/zh-320-period-data.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-rounded-tie.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-iodine-question.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-iodine-answer.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-ie-observations.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-p-s-moving.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-1100-mg-al-moving.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-threshold-question.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/zh-320-threshold-answer.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/en-320-threshold-answer.png"
+      ],
+      "limitations": "Isolated SSR stage, no production captions/transport/player; not full continuous viewing. Not all automated screenshots manually inspected."
+    },
+    "isolatedControls": {
+      "status": "passed",
+      "states": 68,
+      "failures": [],
+      "errors": [],
+      "evidence": "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-controls/report.json",
+      "method": "Real React controls clicked; range native value setter + input/change events. Simplified isolated CSS. Does not establish physical touch or production wrapper behavior.",
+      "manualFrame": "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-controls/en-320-ps-threshold.png",
+      "note": "All original 68 states rerun after the mode amendment, zero failures and errors."
+    },
+    "cover": {
+      "status": "isolated source render manually inspected; consumers not-run",
+      "image": "artifacts/teaching-principles/batch-14-staging/chemistry/candidate-stage/cover.png",
+      "tooling": "Astro compiler output rendered via Container; generated harness stubs obsolete metadata only. Initial compiler API/metadata incompatibilities were harness failures, not scene acceptance.",
+      "consumers": [
+        "src/components/TopicCover.astro",
+        "catalog/social actual consumers require root check"
+      ]
+    },
+    "wholePlayer": {
+      "status": "not-run",
+      "reason": "Actual source remains locked; must measure all3 windows and longest captions at320×568 after integration."
+    },
+    "fullPlayback": {
+      "status": "not-run"
+    },
+    "audio": {
+      "status": "not-generated for changed cues; first6 must remain cached"
+    },
+    "wordTiming": {
+      "status": "not-run",
+      "plannedSeconds": 236
+    },
+    "physicalDevicePerformance": {
+      "status": "not-run"
+    },
+    "globalVerifyBuild": {
+      "status": "root-owned; not-run by author"
+    },
+    "modeAmendment": {
+      "status": "passed",
+      "states": 40,
+      "viewports": [
+        [320, 568],
+        [1100, 568]
+      ],
+      "locales": ["en", "zh"],
+      "evidence": "artifacts/teaching-principles/batch-14-staging/chemistry/mode-amendment-controls/report.json",
+      "scope": "Native buttons/select changes on mounted React in isolated harness. First entry follows current chapter and record group; explicit topic and group persist; watch stays independent. Not production routes, player bounds, narration or full-film acceptance.",
+      "manualFrames": [
+        "artifacts/teaching-principles/batch-14-staging/chemistry/mode-amendment-controls/en-320-follow-halogen.png",
+        "artifacts/teaching-principles/batch-14-staging/chemistry/mode-amendment-controls/en-320-manual-cu-persists.png"
+      ],
+      "harnessFailure": "artifacts/teaching-principles/batch-14-staging/chemistry/mode-amendment-controls/first-harness-failure.json"
+    },
+    "sourceLinksAmendment": {
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-14-cross-review/chemistry-periodic-link-fix.json",
+      "scope": "Four exact NIST Handbook URLs opened and read; only malformed href spaces corrected."
+    }
+  },
+  "resolvedFindings": [
+    "Moving token previously crossed the3p label/box. It now leaves vertically and uses a clear counting lane.",
+    "Exploration IE previously reused EN-only Ar-missing/K-Rb-tie text; metric-dependent explanations corrected and68 live control checks passed.",
+    "Astro statement-body map formatting dropped cover labels; cover uses precomputed states and explicit fragments, then actual source was rendered and inspected.",
+    "Independent biology peer found first exploration resetting to variant-based mode; mode now follows the active chapter until explicit topic selection. Unselected fixed-record group also follows chapters 5/6. Manual group selection pins fixed-data exploration, and watch reads its own values. Three mounted React regressions plus 40 native-control states passed.",
+    "Independent biology peer found four spaces inside EN NIST source URLs; exact official pages independently opened and all four href strings corrected. Source values, model and spoken cues unchanged."
+  ],
+  "handoff": {
+    "ownedFiles": 11,
+    "preservedIDs": [
+      "period-rows",
+      "table-forms",
+      "valence-filling",
+      "configuration-exceptions",
+      "period-electronegativity",
+      "alkali-trend",
+      "halogen-trend",
+      "ionization-dips"
+    ],
+    "entries": [
+      "chem-required-1-model-p105",
+      "chem-elective-2-model-p21",
+      "chem-elective-2-model-p26"
+    ],
+    "actualSourceWrites": false,
+    "sharedWrites": false,
+    "tts": false,
+    "commit": false
+  },
+  "modelSha256": "f4292fe253ebd71650bf4e3f54f5e5a9a52db8bf9d0a2859080386b11d33e545",
+  "componentSha256": "cfa6e1b978138bbeac07ca0d4b27583188db84d7081274170f34d612eb8df777",
+  "rootIntegration": {
+    "batch": 14,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-14-review.json",
+    "scope": "Final actual static product review, native controls and complete native playback; author evidence kept separate.",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
 }

@@ -95,7 +95,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Molecular shapes](../src/content/en/chem-molecular-shapes.mdx)                                     | 4:11 | Do polar bonds always make a polar molecule?                                  |
 | [Carbon frameworks in space](../src/content/en/chem-carbon-frameworks.mdx)                          | 3:30 | How do carbon bonds build different molecular shapes?                         |
 | [Lewis diagrams and orbital overlap](../src/content/en/chem-bond-overlap.mdx)                       | 3:50 | How do transfer, sharing and orbital overlap differ?                          |
-| [Periodic tables and property trends](../src/content/en/chem-periodic-patterns.mdx)                 | 3:30 | Which relationships does a periodic table preserve?                           |
+| [Periodic tables and property trends](../src/content/en/chem-periodic-patterns.mdx)                 | 3:56 | Why do periodic trends bend?                                                  |
 | [Atomic models and evidence](../src/content/en/chem-atomic-models.mdx)                              | 4:18 | What evidence can change an atomic model?                                     |
 | [Element properties and evidence](../src/content/en/chem-periodic-practical.mdx)                    | 4:59 | How can reactions reveal element properties?                                  |
 | [Where iron’s electrons go](../src/content/en/chem-iron-practical.mdx)                              | 3:27 | Why can iron two both accept and donate electrons?                            |
@@ -150,7 +150,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Population surveys and sampling](../src/content/en/bio-population-sampling.mdx)                  | 4:19 | How can a partial observation estimate a whole population?                       |
 | [Environmental sensing in plants](../src/content/en/bio-plant-environment.mdx)                    | 3:24 | How do plants turn light, temperature and gravity into growth signals?           |
 | [Mendel’s pea crosses](../src/content/en/bio-mendel-crosses.mdx)                                  | 3:39 | Track inherited factors from controlled pollination to quantitative tests.       |
-| [Differentiation, senescence and cell death](../src/content/en/bio-cell-fates.mdx)                | 2:51 | What can culture, nuclear exchange and lineage tracing establish?                |
+| [Differentiation, senescence and cell death](../src/content/en/bio-cell-fates.mdx)                | 3:16 | Cell fates: information, origins and execution                                   |
 | [Investigating plant growth regulators](../src/content/en/bio-plant-growth-regulators.mdx)        | 3:05 | How do comparisons reveal effects on growth, roots and ripening?                 |
 | [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 3:16 | Cell division: shape, order and counting                                         |
 | [Evidence for auxin](../src/content/en/bio-auxin-evidence.mdx)                                    | 4:28 | How do experiments explain a plant bending toward light?                         |
@@ -265,7 +265,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Self-induction lamp experiments](../src/content/en/self-induction-lab.mdx)                    | 2:48 | Why can a lamp shine after the source is disconnected?                                   |
 | [Mutual-induction experiments](../src/content/en/mutual-induction-lab.mdx)                     | 2:10 | How does a signal cross between unconnected circuits?                                    |
 | [Electric Field Patterns in Oil](../src/content/en/electric-field-mapping.mdx)                 | 1:36 | What can arrowless fragments reveal about an electric field?                             |
-| [Electromagnetic-induction experiments](../src/content/en/induction-coil-lab.mdx)              | 3:54 | Why is there no induced current when the magnet is still?                                |
+| [Electromagnetic-induction experiments](../src/content/en/induction-coil-lab.mdx)              | 3:54 | Is it the field, or the flux through the coil, that changes?                             |
 | [Coulomb’s Torsion Balance](../src/content/en/coulomb-torsion.mdx)                             | 1:42 | How can a tiny electric force become a comparable twist?                                 |
 | [Charged-particle experiments](../src/content/en/charged-particle-lab.mdx)                     | 3:44 | What can a curved particle track tell us?                                                |
 | [Charging and the Electroscope](../src/content/en/electrostatic-induction.mdx)                 | 2:47 | How can two conductors acquire opposite charges without contact?                         |

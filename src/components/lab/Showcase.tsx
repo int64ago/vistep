@@ -88,7 +88,10 @@ export default function Showcase({
   useEffect(() => {
     let intersecting = false;
     const update = () => setVisible(intersecting && !document.hidden);
-    const observer = new IntersectionObserver(([entry]) => {
+    const observer = new IntersectionObserver((entries) => {
+      // One observed host can cross out and back before a queued delivery.
+      const entry = entries[entries.length - 1];
+      if (!entry) return;
       intersecting = entry.isIntersecting;
       update();
     });

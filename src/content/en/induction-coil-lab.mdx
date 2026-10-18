@@ -1,26 +1,41 @@
-<h2 id="understand">Compare the changing process, not merely the presence of a field</h2>
+<h2 id="understand">The magnet stays present. Why does the needle respond only to motion?</h2>
 
-A magnet held beside a coil can produce substantial flux while induced emf remains zero. Moving it closer or farther changes flux and deflects the galvanometer. Reverse either the pole or the motion while holding the other fixed: the emf reverses.
+Hold one pole over the coil, approach, pause, and withdraw. Flux can remain nonzero while the current returns to zero. Reversing the motion reverses the deflection. Compare how flux changes, rather than whether a field is present.
 
-The aluminium ring makes the electrical response mechanical. Current in a closed ring opposes relative motion. A split interrupts that circulating current: an emf may still exist, but the sustained loop current and its force disappear. Ring motion is enlarged and is not a measured displacement.
+In the flux view, green shows the magnet's flux direction and copper the field established by the induced current. They oppose each other during approach, but can point the same way during withdrawal. The current opposes the **change** in flux. The four direction records come from textbook Fig. 2.1-1, viewed from the magnet side; they contain no measured current amplitudes.
 
-A high-impedance voltage sensor records the falling-magnet experiment. At the same turn count, a higher release changes speed and the voltage pulse. Keeping the trajectory fixed while changing turns isolates the proportional dependence on turn count. The pale80-turn trace preserves that comparison.
+A suspended aluminium ring makes the electrical response mechanical. It is pushed away during approach and pulled toward a withdrawing magnet. A gap leaves changing flux and a possible loop emf, but removes the complete circulating current and its magnetic force in this model. Force direction is not instantaneous velocity direction: a suspended ring can keep swinging.
 
-The disc generator uses a different apparatus. Rotation gives each radius a different conductor speed; magnetic force separates charge radially. Axle and rim brushes complete the external circuit. A stationary disc does not generate merely because it is in a magnetic field.
+<h2 id="try">Predict before changing the condition</h2>
 
-<h2 id="try">Keep the control variables fixed</h2>
+- Keep the approach and reverse the pole. What if both the pole and motion are reversed?
+- Split the ring. Which disappears: flux, emf, or the circulating current and its force?
+- Keep the release height, magnet and trajectory. Change 80 turns to 160 and compare emf at the **same instant**.
+- Stop the disc in the same field, then reverse it. What changes when its external circuit is opened?
 
-- At a fixed position, set magnet speed to zero; then reverse speed and pole separately.
-- Open and close the ring under the same magnet motion.
-- Compare release heights at fixed turns, then compare turns at fixed height.
-- Stop or reverse the disc and check emf polarity.
+Exploration remembers manual choices; the automatic film uses its own conditions. The motion clock includes genuine rests, and local views share the same physical state.
 
-<h2 id="deeper">Flux, force and energy come from the same function</h2>
+<h2 id="deeper">One flux function connects current, force and energy</h2>
 
-<div className="formula">ε = −N dΦ/dt; I = ε/R; Fmagnet = NI dΦ/dz</div>
+<div className="formula">ε = −N dΦ/dt; I = ε/R; Fmagnet = NI ∂Φ/∂z</div>
 
-The bar magnet is approximated as an axial point dipole. A circular loop of radius0.025m has flux μ₀ma²/[2(a²+z²)^(3/2)], where m is magnetic moment. The energy balance is−Fv = I²R. Self-inductance, finite magnet shape and feedback from ring motion are omitted.
+The magnet is an axial point dipole. Flux through one circular turn is μ₀ma²/[2(a²+z²)^(3/2)], where m is magnetic moment and a is loop radius. Positive current is counterclockwise viewed from the magnet side. The circuit is resistive, with inductance neglected. Drawn turns are representative; the labelled total is used in calculations. The galvanometer has a stated teaching range of ±5 µA.
 
-The falling-magnet sensor draws negligible current, so magnetic braking is neglected. The magnet follows gravitational motion and stops at the bottom. The drawing shows representative windings; calculations use the labelled total turn count. The disc uses ε = Bωr²/2 with ideal brushes, omitting contact resistance and fringe fields. The axle-to-rim polarity convention remains fixed.
+The ring follows an independent damped-pendulum equation. Electrical calculations use the physical relative position and velocity of magnet and ring. A local view enlarges angle 200 times without feeding this gain into the model. The strong-magnet moment of 3 A·m², ring mass of 1 g, resistance of 3 mΩ and pivot-to-centre distance of 14 cm are teaching parameters, not textbook measurements. Axial coupling neglects the tiny ring tilt, self-inductance and gap-capacitance transients. Input from the magnet's driver, minus power delivered mechanically to the ring, equals resistive heating.
 
-Sources: [OpenStax on Faraday’s and Lenz’s laws](https://openstax.org/books/college-physics/pages/23-2-faradays-law-of-induction-lenzs-law) and [electromagnetic induction](https://openstax.org/books/physics/pages/20-3-electromagnetic-induction). Textbook locations: Selective Compulsory Book2, pp24–30 and47.
+Falling-magnet curves are **model calculations, not acquired voltage data**. The high-impedance sensor draws negligible current, so the magnet follows a gravitational trajectory without magnetic braking and stops at the lower catch. Both turn counts use one unclipped voltage scale. A higher release instead changes speed at the same position: a different controlled comparison.
+
+<h2>Why can a disc generate in a constant field?</h2>
+
+At radius r the conductor moves at ωr. The radial magnetic force on positive charge is qωrB. Integrating the motional emf from axle to rim gives ε = Bωr²/2. Brushes complete the external circuit; opening it removes current without necessarily removing emf.
+
+The whole disc's constant area does not settle the behaviour of this sliding-contact circuit. Here v×B is evaluated directly. The drawn radial path represents the direction of a distributed current, not a single insulated radial wire. Brushes are ideal, the field uniform, and displayed rotation is slowed. Load current produces a braking torque; maintaining rotation requires mechanical input equal to I²R.
+
+<details>
+<summary>Textbook context and references</summary>
+
+PEP Selective Compulsory Book 2: pp. 24–26 on current direction and Lenz's law, p. 26 on a suspended ring and p. 29 Exercise 5 on closed/split rings, pp. 30–32 on falling-magnet voltage and induction, and p. 47 Exercise 6 on the disc. Compulsory Book 3 pp. 115–116 introduces induction and the disc application. Original textbook titles and learning order are preserved.
+
+Formula and direction checks: [OpenStax on Faraday's and Lenz's laws](https://openstax.org/books/college-physics/pages/23-2-faradays-law-of-induction-lenzs-law). Motional emf and mechanical work: [OpenStax, Motional Emf, Example 13.5](https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf). Apparatus artwork, chosen parameters, pendulum dynamics and plotted curves are independently constructed teaching models.
+
+</details>

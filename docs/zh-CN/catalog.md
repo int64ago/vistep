@@ -95,7 +95,7 @@
 | [分子的空间形状](../../src/content/chem-molecular-shapes.mdx)                     | 4:11 | 有极性键，分子就一定有极性吗？                       |
 | [碳骨架与空间结构](../../src/content/chem-carbon-frameworks.mdx)                  | 3:30 | 同样是碳成键，怎样搭出不同分子？                     |
 | [电子式与轨道重叠](../../src/content/chem-bond-overlap.mdx)                       | 3:50 | 怎样区分电子转移、共用与轨道重叠？                   |
-| [周期表与性质趋势](../../src/content/chem-periodic-patterns.mdx)                  | 3:30 | 元素排成周期表，哪些关系被保留下来？                 |
+| [周期表与性质趋势](../../src/content/chem-periodic-patterns.mdx)                  | 3:56 | 周期规律为什么会转弯？                               |
 | [原子模型与证据](../../src/content/chem-atomic-models.mdx)                        | 4:18 | 看不见原子，凭什么改变原子模型？                     |
 | [元素性质与证据](../../src/content/chem-periodic-practical.mdx)                   | 4:59 | 怎样从反应现象推出元素的性质？                       |
 | [铁的电子去向](../../src/content/chem-iron-practical.mdx)                         | 3:27 | 二价铁为什么既能得电子，也能失电子？                 |
@@ -150,7 +150,7 @@
 | [种群调查与取样](../../src/content/bio-population-sampling.mdx)               | 4:19 | 只看见一部分，怎样估计整个种群？               |
 | [植物的环境感知](../../src/content/bio-plant-environment.mdx)                 | 3:24 | 植物怎样把光、温度和重力变成生长信号？         |
 | [孟德尔的豌豆杂交](../../src/content/bio-mendel-crosses.mdx)                  | 3:39 | 从控制花粉到检验比例，追踪遗传因子怎样传递。   |
-| [细胞的分化、衰老与凋亡](../../src/content/bio-cell-fates.mdx)                | 2:51 | 培养、核质交换与谱系追踪，各自能回答什么？     |
+| [细胞的分化、衰老与凋亡](../../src/content/bio-cell-fates.mdx)                | 3:16 | 细胞命运：信息、来源与执行                     |
 | [植物生长调节剂的探究](../../src/content/bio-plant-growth-regulators.mdx)     | 3:05 | 植物变长、生根或成熟，怎样确定处理的作用？     |
 | [细胞分裂与固定观察](../../src/content/bio-cell-division.mdx)                 | 3:16 | 细胞分裂：形态、顺序与计数                     |
 | [生长素的证据链](../../src/content/bio-auxin-evidence.mdx)                    | 4:28 | 植物弯向光，怎样一步步找到原因？               |
@@ -265,7 +265,7 @@
 | [自感与两灯实验](../../src/content/self-induction-lab.mdx)                 | 2:48 | 断开电源以后，灯泡为什么还会亮？                 |
 | [互感实验室](../../src/content/mutual-induction-lab.mdx)                   | 2:10 | 两组导线没有接通，信号怎样传过去？               |
 | [油盘中的电场图样](../../src/content/electric-field-mapping.mdx)           | 1:36 | 没有箭头的碎屑，能告诉我们怎样的电场？           |
-| [电磁感应实验室](../../src/content/induction-coil-lab.mdx)                 | 3:54 | 磁体不动时，为什么没有感应电流？                 |
+| [电磁感应实验室](../../src/content/induction-coil-lab.mdx)                 | 3:54 | 改变的是磁场，还是穿过线圈的磁通？               |
 | [库仑扭秤](../../src/content/coulomb-torsion.mdx)                          | 1:42 | 怎样把微小的静电力变成可比较的扭角？             |
 | [带电粒子实验室](../../src/content/charged-particle-lab.mdx)               | 3:44 | 一条弯曲轨迹，能告诉我们什么？                   |
 | [静电起电与验电器](../../src/content/electrostatic-induction.mdx)          | 2:47 | 不接触，怎样让两个导体带上相反的电？             |

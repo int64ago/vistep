@@ -19,6 +19,9 @@ function environment() {
     show(visible: boolean) {
       this.callback([{ isIntersecting: visible }]);
     }
+    queue(states: boolean[]) {
+      this.callback(states.map((isIntersecting) => ({ isIntersecting })));
+    }
   }
   vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
   vi.stubGlobal('document', document);
@@ -135,5 +138,42 @@ describe('scene scheduling while hidden', () => {
     env.hideTab(false);
     expect(frame).not.toHaveBeenCalled();
     expect(env.frames.size).toBe(0);
+  });
+});
+
+describe('queued visibility transitions for one simulation host', () => {
+  it('uses the latest in/out event and does not integrate hidden wall time', async () => {
+    const env = environment(),
+      frame = vi.fn();
+    await mount(frame);
+    const observer = [...env.observers][0];
+    observer.queue([false, true]);
+    expect(env.frames.size).toBe(1);
+    env.tick(1000);
+    env.tick(1020);
+    expect(frame).toHaveBeenLastCalledWith(0.02, 0.02);
+    observer.queue([true, false]);
+    expect(env.frames.size).toBe(0);
+    env.tick(20000);
+    expect(frame).toHaveBeenCalledTimes(2);
+    observer.queue([false, true]);
+    env.tick(30000);
+    expect(frame).toHaveBeenLastCalledWith(0, 0.02);
+    env.tick(30020);
+    expect(frame).toHaveBeenLastCalledWith(0.02, 0.04);
+  });
+  it('does not bypass document hidden state when the latest target entry is visible', async () => {
+    const env = environment(),
+      frame = vi.fn();
+    await mount(frame);
+    env.hideTab(true);
+    [...env.observers][0].queue([false, true]);
+    expect(env.frames.size).toBe(0);
+    env.hideTab(false);
+    expect(env.frames.size).toBe(1);
+    env.tick(30000);
+    expect(frame).toHaveBeenLastCalledWith(0, 0);
+    [...env.observers][0].queue([]);
+    expect(env.frames.size).toBe(1);
   });
 });

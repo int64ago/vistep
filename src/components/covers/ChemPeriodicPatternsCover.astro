@@ -1,34 +1,92 @@
 ---
-import { PERIOD_3 } from '../../models/chem-periodic-patterns';
+import { PERIOD_3, ionizationGeometry } from '../../models/chem-periodic-patterns';
+const x = (i: number) => 38 + i * 39;
+const y = (e: number) => 266 - e * 10;
+const path = PERIOD_3.map((r, i) => `${i ? 'L' : 'M'}${x(i)} ${y(r.ie)}`).join(' ');
+const atoms = (['Mg', 'Al'] as const).map((symbol) => ({
+  symbol,
+  s: ionizationGeometry(symbol, 6.5, 1, 272),
+}));
 ---
 
-<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-  ><rect width="640" height="400" fill="#eef0e5"></rect><path
-    d="M90 315H560"
-    stroke="#bdc8ae"
-    stroke-width="2"></path>{
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="400" fill="#f0f1e7"></rect>
+  <text x="35" y="57" font-size="25" fill="#506957">Na → Ar</text>
+  <text x="354" y="57" font-size="25" fill="#506957">6.5 eV</text>
+  <path d="M35 268H323" fill="none" stroke="#b8c6b0"></path>
+  <path d={path} fill="none" stroke="#91a57e" stroke-width="3" stroke-linecap="round"></path>
+  {
     PERIOD_3.map((e, i) => (
       <g>
         <>
-          <rect
-            x={92 + i * 58}
-            y={315 - e.ie * 13}
-            width="34"
-            height={e.ie * 13}
-            rx="10"
-            fill={i === 2 || i === 5 ? '#b99774' : '#94aa7c'}
+          <line
+            x1={x(i)}
+            x2={x(i)}
+            y1="266"
+            y2={y(e.ie)}
+            stroke="#c8d2bf"
+            stroke-width="10"
+            stroke-linecap="round"
           />
-          <text x={109 + i * 58} y="349" text-anchor="middle" font-size="20" fill="#596d4f">
+          <circle cx={x(i)} cy={y(e.ie)} r="5" fill={i === 2 || i === 5 ? '#ae825e' : '#68825f'} />
+          <text x={x(i)} y="295" font-size="19" text-anchor="middle" fill="#53694e">
             {e.symbol}
           </text>
         </>
       </g>
     ))
-  }<path
-    d="M180 202L235 237M353 156L409 158"
-    fill="none"
-    stroke="#8f7155"
-    stroke-width="3"
-    stroke-linecap="round"></path><text x="88" y="68" font-size="24" fill="#566c4c">Na → Ar</text
-  ></svg
->
+  }
+  {
+    atoms.map(({ symbol, s }, i) => (
+      <g transform={`translate(344 ${87 + i * 136})`}>
+        <>
+          <text x="8" y="22" font-size="23" fill="#506957">
+            {symbol}
+            {s.phase === 'free' ? '⁺' : ''}
+          </text>
+          <text x="60" y="22" font-size="19" fill="#506957">
+            {s.record.ie.toFixed(3)} eV
+          </text>
+          <circle
+            cx={s.free.x}
+            cy={s.free.y}
+            r="19"
+            fill="none"
+            stroke="#bcaf8c"
+            stroke-dasharray="3 4"
+          />
+          <rect x="36" y="52" width="32" height="35" rx="9" fill="#e4ebda" stroke="#9fb08f" />
+          {[0, 1, 2].map((k) => (
+            <rect
+              x={s.start + k * (s.slotWidth + s.gap)}
+              y="52"
+              width="32"
+              height="35"
+              rx="9"
+              fill="#e4ebda"
+              stroke="#9fb08f"
+            />
+          ))}
+          <text x="52" y="107" font-size="18" text-anchor="middle" fill="#506957">
+            3s
+          </text>
+          <text x="146" y="107" font-size="18" text-anchor="middle" fill="#506957">
+            3p
+          </text>
+          {s.electrons.map((e) => (
+            <g transform={`translate(${e.x} ${e.y})`}>
+              <>
+                {e.tracked ? (
+                  <ellipse rx={e.phase === 'bound' ? 8 : 17} ry="14" fill="#dec99f" />
+                ) : null}
+                <text text-anchor="middle" dy=".3em" font-size="19" fill="#506957">
+                  {e.tracked && e.phase !== 'bound' ? 'e⁻' : e.spin === 0 ? '↑' : '↓'}
+                </text>
+              </>
+            </g>
+          ))}
+        </>
+      </g>
+    ))
+  }
+</svg>

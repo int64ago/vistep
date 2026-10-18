@@ -1178,7 +1178,16 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['周期表与性质趋势', '周期表', '电子排布', '电负性', '电离能', '铬', '铜'],
+      zh: [
+        '周期表与性质趋势',
+        '周期表',
+        '电子排布',
+        '电负性',
+        '电离能',
+        '铬',
+        '铜',
+        '周期规律为什么会转弯？',
+      ],
       en: [
         'Periodic tables and property trends',
         'periodic table',
@@ -1187,6 +1196,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         'ionization energy',
         'chromium',
         'copper',
+        'Why do periodic trends bend?',
       ],
     },
   },
@@ -1395,8 +1405,13 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['细胞的分化、衰老与凋亡', '细胞', '生物实验'],
-      en: ['Differentiation, senescence and cell death', 'cell biology', 'biology experiments'],
+      zh: ['细胞的分化、衰老与凋亡', '细胞', '生物实验', '细胞命运：信息、来源与执行'],
+      en: [
+        'Differentiation, senescence and cell death',
+        'cell biology',
+        'biology experiments',
+        'Cell fates: information, origins and execution',
+      ],
     },
   },
   'chem-iron-steam': {
@@ -3340,12 +3355,20 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'electricity',
     minAge: 14,
     keywords: {
-      zh: ['电磁感应实验室', '楞次定律', '法拉第定律', '闭合铝环', '圆盘发电机'],
+      zh: [
+        '电磁感应实验室',
+        '楞次定律',
+        '法拉第定律',
+        '闭合铝环',
+        '圆盘发电机',
+        '改变的是磁场，还是穿过线圈的磁通？',
+      ],
       en: [
         'Electromagnetic-induction experiments',
         'Lenz law',
         'Faraday law',
         'homopolar generator',
+        'Is it the field, or the flux through the coil, that changes?',
       ],
     },
   },

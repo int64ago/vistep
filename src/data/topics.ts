@@ -2395,20 +2395,19 @@ export const topics: Topic[] = [
   {
     slug: 'chem-periodic-patterns',
     name: '周期表与性质趋势',
-    title: '元素排成周期表，哪些关系被保留下来？',
-    question: '元素排成周期表，哪些关系被保留下来？',
-    description:
-      '跟踪同一118种元素的布局变化、价层电子排布与教材电负性数据，再对比电离能的真实下降。',
+    title: '周期规律为什么会转弯？',
+    question: '周期规律为什么会转弯？',
+    description: '从固定元素数据到轨道占据，追踪周期规律中的相等、缺失与下降。',
     color: '#a5b68e',
     tag: '周期表 · 电子排布 · 数据',
     related: ['chem-atomic-models', 'chem-periodic-practical'],
     sources: [
       {
-        title: 'IUPAC — periodic-table forms and group numbering',
+        title: 'IUPAC periodic table guidance',
         url: 'https://iupac.org/what-we-do/periodic-table-of-elements/',
       },
       {
-        title: 'NIST ASD — neutral-atom configurations and ionization energies',
+        title: 'NIST ASD: neutral ground configurations and first ionization energies',
         url: 'https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&level_out=on&shells_out=on&spectra=H-DS+i&unc_out=on&units=1',
       },
       {
@@ -2835,23 +2834,24 @@ export const topics: Topic[] = [
   {
     slug: 'bio-cell-fates',
     name: '细胞的分化、衰老与凋亡',
-    title: '细胞怎样走向不同的命运',
-    question: '培养、核质交换与谱系追踪，各自能回答什么？',
-    description: '从胡萝卜再生到线虫细胞谱系，区分教材比较、原始研究与有条件的结论。',
+    title: '细胞命运：信息、来源与执行',
+    question: '细胞命运：信息、来源与执行',
+    description: '由再生、培养和遗传干预的证据，区分分化、衰老与死亡。',
     color: '#a5b48b',
     tag: '生物学',
     related: ['bio-nuclear-evidence', 'bio-cell-division'],
     sources: [
       {
-        title: 'Steward et al. 1958: Organization in cultures grown from freely suspended cells',
+        title:
+          'Steward, Mapes & Mears (1958), Organization in cultures grown from freely suspended cells',
         url: 'https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/j.1537-2197.1958.tb10599.x',
       },
       {
-        title: 'Muggleton-Harris and Hayflick 1976: cellular aging in reconstituted cells',
+        title: 'Muggleton-Harris & Hayflick (1976), Cellular aging studied by reconstruction',
         url: 'https://www.sciencedirect.com/science/article/pii/001448277690269X',
       },
       {
-        title: 'Drescher-Lincoln and Smith 1983: inhibition by senescent cytoplasts',
+        title: 'Drescher-Lincoln & Smith (1983), Inhibition by senescent cytoplasts',
         url: 'https://pubmed.ncbi.nlm.nih.gov/6301866/',
       },
       {
@@ -2859,8 +2859,20 @@ export const topics: Topic[] = [
         url: 'https://pubmed.ncbi.nlm.nih.gov/838129/',
       },
       {
-        title: 'Horvitz laboratory: original publications on programmed cell death',
+        title: 'Horvitz laboratory original publications on programmed cell death',
         url: 'https://web.mit.edu/horvitz/www/pubtopic.html',
+      },
+      {
+        title: 'Steward & Mapes (1963), The totipotency of cultured carrot cells',
+        url: 'https://indianbotsoc.org/assets/upload/uploaded/1963%20Vol%2042%20A%20%20F.C.%20Steward%20%26%20Marion%20O.%20Mapes%20237-247.pdf',
+      },
+      {
+        title: 'Ellis & Horvitz (1986), Genetic control of programmed cell death',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/3955651/',
+      },
+      {
+        title: 'Chinnaiyan et al. (1997), Role of CED-4 in the activation of CED-3',
+        url: 'https://www.nature.com/articles/41913',
       },
     ],
     number: '339',
@@ -6181,9 +6193,9 @@ export const topics: Topic[] = [
   {
     slug: 'induction-coil-lab',
     name: '电磁感应实验室',
-    title: '磁体不动时，为什么没有感应电流？',
-    question: '磁体不动时，为什么没有感应电流？',
-    description: '从插拔磁体到圆盘发电机，把磁通变化、环流与机械作用逐一对上。',
+    title: '磁体一直在场，为什么指针只在运动时偏转？',
+    question: '改变的是磁场，还是穿过线圈的磁通？',
+    description: '从四种方向证据出发，追踪磁通变化、闭合电流与力，再预测落磁脉冲和圆盘发电。',
     color: '#799066',
     tag: '磁通与电动势',
     related: ['transformer-electric', 'eddy-current-brake'],
@@ -6195,6 +6207,10 @@ export const topics: Topic[] = [
       {
         title: 'OpenStax — Electromagnetic induction',
         url: 'https://openstax.org/books/physics/pages/20-3-electromagnetic-induction',
+      },
+      {
+        title: 'OpenStax — Motional Emf, rotating rod and energy (Example 13.5)',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf',
       },
     ],
     number: '213',

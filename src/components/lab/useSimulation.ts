@@ -36,7 +36,10 @@ export function useSimulation(frame: (dt: number, time: number) => void, running
       if (visible && !document.hidden) schedule();
       else stop();
     };
-    const obs = new IntersectionObserver(([entry]) => {
+    const obs = new IntersectionObserver((entries) => {
+      // A delivery may contain an older offscreen entry followed by the current one.
+      const entry = entries[entries.length - 1];
+      if (!entry) return;
       visible = entry.isIntersecting;
       last = null;
       update();

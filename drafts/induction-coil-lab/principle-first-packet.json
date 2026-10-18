@@ -1,0 +1,511 @@
+{
+  "status": "frozen ignored candidate for root integration; actual product/player acceptance pending",
+  "topic": {
+    "slug": "induction-coil-lab",
+    "name": "电磁感应实验室",
+    "title": "磁体一直在场，为什么指针只在改变时偏转？",
+    "question": "磁体一直在场，为什么指针只在改变时偏转？",
+    "description": "从四种方向证据出发，追踪磁通变化、闭合电流与力，再预测落磁脉冲和圆盘发电。",
+    "color": "#799066",
+    "tag": "磁通与电动势",
+    "related": ["transformer-electric", "eddy-current-brake"],
+    "sources": [
+      {
+        "title": "OpenStax — Faraday and Lenz laws",
+        "url": "https://openstax.org/books/college-physics/pages/23-2-faradays-law-of-induction-lenzs-law"
+      },
+      {
+        "title": "OpenStax — Motional Emf, rotating rod and energy (Example 13.5)",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/InductionCoilLab.tsx",
+  "cover": "src/components/covers/InductionCoilLabCover.astro",
+  "narration": {
+    "duration": 234,
+    "cues": [
+      {
+        "id": "magnet-rest",
+        "title": "磁体在场，电流为何为零",
+        "titleEn": "A magnet is present, but current is zero",
+        "caption": "磁通存在，不等于磁通正在变化。",
+        "captionEn": "Flux can exist without changing.",
+        "zh": "先把磁体停在线圈旁。磁场穿过线圈，可是电流表不偏转。关键并不是磁场有没有，而是穿过这个回路的磁通量有没有改变。这个静止对照，要一直记在心里。",
+        "en": "Hold the magnet beside the coil. Magnetic flux passes through, yet the galvanometer stays at zero. The key is not whether a field exists, but whether the flux through this circuit changes. Keep this stationary comparison in mind.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0.6
+      },
+      {
+        "id": "magnet-move",
+        "title": "靠近和远离，方向相反",
+        "titleEn": "Approaching and withdrawing reverse the response",
+        "caption": "磁极不变，运动反向，感应电流反向。",
+        "captionEn": "With the pole fixed, reversing motion reverses induction.",
+        "zh": "让同一个磁极靠近线圈，再远离。电流表在两段运动中向相反方向偏转，停住时又归零。线圈中的感应电流产生磁场，阻碍原来磁通量的变化，而不是简单地反对原磁场。",
+        "en": "Move the same pole toward the coil, then withdraw it. The galvanometer reverses between the two motions and returns to zero when motion stops. The induced field opposes the change of flux, not simply the original magnetic field.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26.6
+      },
+      {
+        "id": "magnet-pole",
+        "title": "保持运动，反转磁极",
+        "titleEn": "Keep the motion and reverse the pole",
+        "caption": "同样的运动，翻转磁极会怎样？",
+        "captionEn": "Same motion: what if the pole reverses?",
+        "zh": "现在保留相同的靠近和远离过程，只把磁体翻转。磁通变化的符号反了，电流方向也随之反转。把磁极和运动方向分开比较，就能把教材的四种情况逐一核对。",
+        "en": "Repeat the same approach and withdrawal with the magnet reversed. The sign of the flux change reverses, and so does the current. Comparing pole direction separately from motion accounts for all four textbook cases.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52.6
+      },
+      {
+        "id": "ring-closed",
+        "title": "让闭合铝环回应磁体",
+        "titleEn": "Let a closed ring respond",
+        "caption": "闭合电流阻碍磁体和铝环的相对运动。",
+        "captionEn": "The closed current loop opposes relative motion.",
+        "zh": "换成悬挂的铝环。磁体靠近时，闭合环受到排斥；磁体离开时，环被带向磁体。反对的是相对运动造成的磁通变化。环的位移为观察而放大，感应电流和作用方向来自同一个磁通模型。",
+        "en": "Use a suspended aluminium ring. It is pushed away when the magnet approaches and pulled toward a withdrawing magnet. The response opposes the flux change caused by relative motion. Ring displacement is enlarged; current and force share one flux model.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78.6
+      },
+      {
+        "id": "ring-open",
+        "title": "切断一处，环流消失",
+        "titleEn": "Break the ring and remove the loop current",
+        "caption": "缺口切断的是什么？",
+        "captionEn": "What does the gap interrupt?",
+        "zh": "让磁体做同样的运动，但把铝环切开。磁通仍然改变，回路却不能流过完整的环电流，明显的机械响应消失。这说明观察到的作用需要电流路径，不能解释成磁体天生吸引所有金属。",
+        "en": "Repeat the same motion with a split ring. Flux still changes, but the complete circulating current cannot flow and the mechanical response disappears. The effect needs an electrical path; it is not universal magnetic attraction of metals.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104.6
+      },
+      {
+        "id": "drop-height",
+        "title": "同一线圈，改变释放高度",
+        "titleEn": "Change release height, keep the coil",
+        "caption": "下落更快，磁通变化也更快。",
+        "captionEn": "Faster passage changes flux more rapidly.",
+        "zh": "先从较低位置放开磁体，再提高释放位置。线圈保持八十匝，电压传感器记录两个方向的脉冲。提高位置改变了通过线圈时的速度。我们测的是电动势，传感器几乎不取电流，因此这里忽略电磁制动。",
+        "en": "Drop the magnet from a lower position, then release it higher. Keep eighty turns. The voltage sensor records a two-sided pulse; the higher release changes the speed through the coil. Its high input impedance draws little current, so this model neglects magnetic braking.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130.6
+      },
+      {
+        "id": "drop-turns",
+        "title": "同一次运动，增加匝数",
+        "titleEn": "Keep the motion and increase turns",
+        "caption": "匝数加倍，脉冲怎样变？",
+        "captionEn": "Double the turns: how does the pulse change?",
+        "zh": "现在固定释放高度和磁体，把线圈增到一百六十匝。浅色曲线保留八十匝的结果，深色曲线来自相同的下落轨迹。比较对应时刻，两倍匝数给出两倍电动势；这与改变速度是两个独立的对照。",
+        "en": "Fix the release height and magnet, and double the winding to one hundred sixty turns. The pale curve keeps the eighty-turn result. Both use the same trajectory: at corresponding instants, double the turns gives double the emf. This is separate from changing speed.",
+        "seconds": 26,
+        "chapterAt": 156,
+        "at": 156.6
+      },
+      {
+        "id": "disc-rotate",
+        "title": "圆盘怎样连接外电路",
+        "titleEn": "How the disc connects to a circuit",
+        "caption": "轴与边缘电刷，连接径向电动势。",
+        "captionEn": "Axle and rim brushes connect the radial emf.",
+        "zh": "看铜质圆盘。磁场穿过圆盘，转动使各处导体切过磁场，电荷受到径向作用。中心轴和边缘电刷分别接向负载，形成完整电流路径。每个半径处的速度不同，不能把整片圆盘当成一根同速导线。",
+        "en": "The magnetic field crosses a copper disc. Rotation gives the conductor a velocity and separates charge radially. Brushes at the axle and rim connect the load. Different radii have different speeds; the disc is not one straight wire moving at a single speed.",
+        "seconds": 26,
+        "chapterAt": 182,
+        "at": 182.6
+      },
+      {
+        "id": "disc-reverse",
+        "title": "停转与反转是关键对照",
+        "titleEn": "Stop and reverse as controlled comparisons",
+        "caption": "停转则电动势为零，反转则极性反向。",
+        "captionEn": "Stopping removes emf; reversing rotation reverses polarity.",
+        "zh": "反转圆盘，轴与边缘之间的电动势也反向。如果停下，电动势归零。维持负载电流需要持续的外部机械功，磁场没有凭空提供能量。模型的机械输入功率与电阻消耗功率相等。",
+        "en": "Reverse the disc and the axle-to-rim polarity reverses. Stop it and emf vanishes. Sustaining load current requires mechanical input; the field supplies no free energy. The model balances mechanical input with power dissipated in the resistor.",
+        "seconds": 26,
+        "chapterAt": 208,
+        "at": 208.6
+      }
+    ]
+  },
+  "translations": {
+    "电磁感应实验室": "Electromagnetic-induction experiments",
+    "磁体不动时，为什么没有感应电流？": "Why is there no induced current when the magnet is still?",
+    "从插拔磁体到圆盘发电机，把磁通变化、环流与机械作用逐一对上。": "From a moving magnet to a disc generator, connect changing flux, circulating current and mechanical response.",
+    "磁通与电动势": "Flux and emf",
+    "磁体与线圈": "Magnet and coil",
+    "闭合与断开铝环": "Closed and split rings",
+    "落磁电压测量": "Falling-magnet voltage",
+    "圆盘发电机": "Disc generator",
+    "铝环闭合": "Ring closed",
+    "铝环断开": "Ring split",
+    "磁通变化、感应电流方向与真实装置位置": "Flux change, induced-current direction and apparatus position",
+    "磁体不动：电动势为零": "Magnet stationary: zero emf",
+    "改变的是穿过线圈的磁通": "The flux through the coil is changing",
+    "闭合电流阻碍相对运动": "The closed current opposes relative motion",
+    "断口切断电流，阻尼消失": "The gap interrupts current and damping",
+    "轴与边缘电刷接通外电路": "Axle and rim brushes complete the circuit",
+    "轴到边缘电动势": "Axle-to-rim emf",
+    "环内感应电流": "Induced ring current",
+    "感应电动势": "Induced emf",
+    "同一次下落的电压脉冲，浅线为80匝对照": "Voltage pulses for the same drop, with an eighty-turn reference",
+    "选择感应实验": "Choose an induction experiment",
+    "磁体到线圈的轴向距离": "Axial magnet-to-coil distance",
+    "磁体轴向速度": "Magnet axial velocity",
+    "磁极朝向": "Pole orientation",
+    "北极朝向线圈": "North pole toward coil",
+    "南极朝向线圈": "South pole toward coil",
+    "铝环连接": "Ring connection",
+    "闭合": "Closed",
+    "断开": "Open",
+    "释放高度": "Release height",
+    "线圈匝数": "Coil turns",
+    "下落时间": "Fall time",
+    "圆盘角速度": "Disc angular velocity",
+    "磁通模型与测量边界": "Flux model and measurement limits",
+    "条形磁体用轴向点磁偶极近似，感应电动势由同一磁通函数的时间导数计算。铝环用纯电阻闭合回路，位移放大且忽略其反馈与自感。落磁测量采用高输入阻抗电压传感器，忽略反作用制动；图中绕线只展示代表匝，读数使用标示总匝数。圆盘以轴—边缘的运动电动势计算，电刷视为理想接触。": "The magnet is an axial point dipole; emf is the time derivative of its loop flux. The ring is purely resistive, with enlarged motion and no motion feedback or inductance. The falling-magnet sensor has high input impedance, so braking is neglected. Drawn windings are representative; readings use the labelled turn count. The disc uses axle-to-rim motional emf and ideal brushes.",
+    "装置与读数": "Apparatus",
+    "磁通与变化": "Flux and change",
+    "四种方向记录": "Four direction records",
+    "电流与受力": "Current and force",
+    "同轴电压曲线": "Voltage traces",
+    "半径处的运动": "Motion at each radius",
+    "功率去向": "Power transfer",
+    "同一线圈": "Same coil",
+    "磁体静止": "Magnet still",
+    "靠近线圈": "Approaching",
+    "远离线圈": "Withdrawing",
+    "靠近": "approach",
+    "远离": "withdraw",
+    "逆时针": "CCW",
+    "顺时针": "CW",
+    "教材记录 · 从上方看": "Textbook · top view",
+    "闭合电流路径": "Closed current path",
+    "断口仍在": "A gap remains",
+    "环路闭合": "Closed ring",
+    "环路断开": "Split ring",
+    "计算电压 · 同一纵轴": "Model voltage · one scale",
+    "先预测": "Predict first",
+    "同为80匝": "Both: 80 turns",
+    "轴电刷": "Axle brush",
+    "边缘": "Rim",
+    "稳恒磁场中，导体在动": "Fixed field, moving conductor",
+    "磁场恒定，仍需做功": "Fixed field; work is still needed",
+    "机械输入": "Mechanical",
+    "电阻发热": "Resistor heat",
+    "观察视图": "Observation view",
+    "同一运动时钟": "One motion clock",
+    "朝向线圈的磁极": "Pole facing the loop",
+    "电流路径": "Current path",
+    "模型、方向与放大边界": "Model, directions and enlargement",
+    "曲线是点磁偶极与纯电阻模型的计算，不是采集的实验记录。正电流从磁体一侧看为逆时针。铝环动力学使用真实微小位移；局部响应镜头只把转角放大200倍，不把放大值带回磁通计算。落磁采用近似开路的高阻电压测量。圆盘内画出代表性的径向电流路径，电刷为理想接触。": "Curves are point-dipole and resistive-model calculations, not acquired data. Positive current is counterclockwise viewed from the magnet side. Ring dynamics uses its physical displacement; the local response view enlarges angle 200 times without feeding that gain into flux. Falling-magnet voltage uses a high-impedance sensor. The disc shows a representative radial current path and ideal brushes.",
+    "磁体一直在场，为什么指针只在改变时偏转？": "The magnet stays present. Why does the needle respond to change?",
+    "从四种方向证据出发，追踪磁通变化、闭合电流与力，再预测落磁脉冲和圆盘发电。": "From four direction records, follow changing flux, closed current and force, then predict falling-magnet pulses and disc generation.",
+    "磁场仍在，导体静止": "Field present, conductor still",
+    "圆盘停转，功率为零": "Disc stopped: zero power",
+    "外回路断开，负载功率为零": "Open circuit: zero load power"
+  },
+  "teachingProfiles": {
+    "e2-lenz-magnet-coil": {
+      "sceneSlug": "induction-coil-lab",
+      "question": {
+        "zh": "磁体一直在场，指针为什么只在改变时偏转？",
+        "en": "The magnet stays present. Why does the needle respond to change?"
+      },
+      "lead": {
+        "zh": "先停住，再靠近、远离，最后只反转磁极。用同一时钟把指针、磁通和感应磁场对上。",
+        "en": "Hold, approach, withdraw, then reverse only the pole. Match the needle, flux and induced field on one clock."
+      },
+      "principle": {
+        "zh": "感应电动势取决于磁通变化率。闭合线圈中的电流建立磁场，阻碍原磁通的变化；远离时两磁场可以同向。",
+        "en": "Emf depends on the rate of flux change. Current in the closed coil produces a field opposing that change; the two fields can align during withdrawal."
+      },
+      "transfer": {
+        "question": {
+          "zh": "在同一位置、同样速率下，同时反转磁极和运动方向，电流会反向吗？",
+          "en": "At the same position and speed, reverse both pole and motion. Does current reverse?"
+        },
+        "explanation": {
+          "zh": "不会。磁通空间变化的符号与速度符号各反转一次，乘积不变，因此电动势和电流方向不变。四种教材方向记录可交叉核对。",
+          "en": "No. Reversing both the spatial flux gradient and velocity leaves their product unchanged, so emf and current retain their direction. Cross-check the four textbook records."
+        }
+      }
+    },
+    "e2-lenz-aluminium-ring": {
+      "sceneSlug": "induction-coil-lab",
+      "question": {
+        "zh": "为什么只切一处，铝环对磁体的回应就变了？",
+        "en": "Why does one gap change the ring’s response?"
+      },
+      "lead": {
+        "zh": "比较同一磁体运动下的完整环与断环，把电动势、环流和受力逐一分开。",
+        "en": "Compare a closed and split ring under the same magnet motion, separating emf, current and force."
+      },
+      "principle": {
+        "zh": "改变的磁通可以产生电动势，但完整环流需要闭合路径；本模型的机械作用来自环流，并反馈到相对运动。",
+        "en": "Changing flux can produce emf, but circulating current requires a closed path. In this model that current creates force and feeds back into relative motion."
+      },
+      "transfer": {
+        "question": {
+          "zh": "磁体仍在靠近断环，哪些量可以不为零，哪些量消失？",
+          "en": "While the magnet approaches a split ring, what can remain nonzero and what vanishes?"
+        },
+        "explanation": {
+          "zh": "磁通变化率和绕环电动势可以不为零；完整环流为零，模型中由该环流产生的力也为零。不能把无明显摆动等同于完全没有感应电动势。",
+          "en": "Flux rate and loop emf can remain nonzero. Complete circulating current, and its magnetic force in the model, vanish. No visible swing does not establish zero emf."
+        }
+      }
+    },
+    "e2-faraday-falling-magnet": {
+      "sceneSlug": "induction-coil-lab",
+      "question": {
+        "zh": "更高释放与更多匝数，为什么都能改变电压脉冲？",
+        "en": "Why can height and turn count both change a voltage pulse?"
+      },
+      "lead": {
+        "zh": "先保持80匝比较释放高度，再固定同一轨迹，把80匝加到160匝。曲线是标明身份的模型计算。",
+        "en": "First compare release heights at 80 turns, then use the identical trajectory with 160 turns. Curves are explicitly model calculations."
+      },
+      "principle": {
+        "zh": "改变高度改变通过同一位置的速度和单匝磁通变化率；固定运动时，各匝电动势串联相加，ε正比于N。",
+        "en": "Height changes speed and single-turn flux rate at the same position. With motion fixed, turn emfs add in series and ε is proportional to N."
+      },
+      "transfer": {
+        "question": {
+          "zh": "同一磁体、同一释放高度，把80匝改成40匝，同一时刻的电动势如何变？",
+          "en": "Keep the magnet and release height. Change 80 turns to 40: what happens at a corresponding instant?"
+        },
+        "explanation": {
+          "zh": "在每匝磁通相同、传感器高阻且不明显制动的近似下，电动势减半；峰值出现时刻与轨迹保持不变。",
+          "en": "With equal flux per turn and a high-impedance sensor causing negligible braking, emf halves. The trajectory and peak times remain unchanged."
+        }
+      }
+    },
+    "e2-faraday-disc": {
+      "sceneSlug": "induction-coil-lab",
+      "question": {
+        "zh": "磁场不变，转动的圆盘怎样产生电动势？",
+        "en": "How does a rotating disc generate emf in a fixed field?"
+      },
+      "lead": {
+        "zh": "沿铜盘中的径向作用追到轴和边缘电刷，再用停转、反转及开路作对照。",
+        "en": "Follow radial action through the axle and rim brushes, then compare stopping, reversing and opening the circuit."
+      },
+      "principle": {
+        "zh": "各半径的速度为ωr，径向v×B作用累加成ε=Bωr²/2；负载电流需要外部机械功，并产生制动力矩。",
+        "en": "Speed at radius r is ωr. Radial v×B contributions integrate to ε=Bωr²/2; load current requires mechanical input and produces braking torque."
+      },
+      "transfer": {
+        "question": {
+          "zh": "同样磁场和角速度，只接到半径r/2处，轴到该处的电动势是多少？",
+          "en": "At the same field and angular speed, contact radius r/2 instead. What emf appears from the axle?"
+        },
+        "explanation": {
+          "zh": "是轴到原边缘电动势的四分之一。因为速度随半径增长，不能按导体长度减半就推成一半。",
+          "en": "One quarter of the original rim emf. Since speed grows with radius, halving length alone does not give half the emf."
+        }
+      }
+    },
+    "r3-faraday-disc": {
+      "sceneSlug": "induction-coil-lab",
+      "question": {
+        "zh": "圆盘停止后，磁场还在，为什么电流归零？",
+        "en": "After the disc stops, the field remains. Why does current vanish?"
+      },
+      "lead": {
+        "zh": "沿铜盘中的径向作用追到轴和边缘电刷，再用停转、反转及开路作对照。",
+        "en": "Follow radial action through the axle and rim brushes, then compare stopping, reversing and opening the circuit."
+      },
+      "principle": {
+        "zh": "磁场中的导体运动产生径向电动势，轴与边缘的电刷提供外电路路径。停转使运动电动势为零，反转使极性改变。",
+        "en": "Conductor motion creates radial emf, while axle and rim brushes connect the external circuit. Stopping removes motional emf; reversing changes polarity."
+      },
+      "transfer": {
+        "question": {
+          "zh": "圆盘仍转动，但断开负载导线，电流和电动势都消失吗？",
+          "en": "Keep the disc turning but open the load wire. Do both current and emf disappear?"
+        },
+        "explanation": {
+          "zh": "电流为零，但轴与边缘间仍可有运动电动势。电动势和完整电路中的电流是不同的量。",
+          "en": "Current becomes zero, but axle-to-rim motional emf can remain. Emf and closed-circuit current are different quantities."
+        }
+      }
+    }
+  },
+  "curriculumVariants": {
+    "e2-lenz-magnet-coil": {
+      "chapterIds": ["magnet-rest", "magnet-move", "magnet-pole"],
+      "label": {
+        "zh": "探究影响感应电流方向的因素",
+        "en": "Induced-current direction"
+      }
+    },
+    "e2-lenz-aluminium-ring": {
+      "chapterIds": ["ring-closed", "ring-open"],
+      "label": {
+        "zh": "比较磁体与闭合、断开铝环的相互作用",
+        "en": "Closed and split aluminium rings"
+      }
+    },
+    "e2-faraday-falling-magnet": {
+      "chapterIds": ["drop-height", "drop-turns"],
+      "label": {
+        "zh": "探究感应电动势与变化快慢、匝数的关系",
+        "en": "Induced voltage, motion and turns"
+      }
+    },
+    "e2-faraday-disc": {
+      "chapterIds": ["disc-rotate", "disc-reverse"],
+      "label": {
+        "zh": "法拉第圆盘发电机实验",
+        "en": "Faraday’s disc generator"
+      }
+    },
+    "r3-faraday-disc": {
+      "chapterIds": ["disc-rotate", "disc-reverse"],
+      "label": {
+        "zh": "法拉第圆盘发电机实验",
+        "en": "Faraday’s disc generator"
+      }
+    }
+  },
+  "scope": {
+    "chapterIds": [
+      "magnet-rest",
+      "magnet-move",
+      "magnet-pole",
+      "ring-closed",
+      "ring-open",
+      "drop-height",
+      "drop-turns",
+      "disc-rotate",
+      "disc-reverse"
+    ],
+    "windows": 5,
+    "distinctWindows": 4,
+    "preservedSpokenPairs": 9,
+    "changedSpokenPairs": 0,
+    "spokenHash": "723a98a015e505860f5c2a57b1ccdd6a59e65492dc280514f8cc709c13ba8f5e",
+    "retainedContract": "Nine zh/en spoken pairs remain byte-identical to existing scene packet; screen captions 2/4/6 become questions. Director and artwork are substantially rebuilt.",
+    "candidateOnly": true
+  },
+  "sourceCorrections": [
+    {
+      "entryId": "e2-lenz-aluminium-ring",
+      "rawPage": 26,
+      "proposedDisplayPage": 29,
+      "reason": "P26 is suspended closed ring; the complete closed/split comparison is P29 Exercise5. Keep P26 contextual reference and raw source, root decides central correction.",
+      "evidence": "artifacts/teaching-principles/batch-14-staging/physics/checks/book-p29.png"
+    }
+  ],
+  "scientificBoundaries": [
+    "Textbook direction records are fixed qualitative source evidence; no measured amplitudes are invented.",
+    "Voltage and flux traces are computed model predictions, not historical/collected observations.",
+    "Compact coil: equal flux in all represented turns; point magnetic dipole, quasi-static pure resistance, no self-inductance.",
+    "Ring: SI damped pendulum and physical relative motion; axial coupling neglects tiny tilt. Moment3 A m², R3mΩ, mass1g, pivot-to-centre.14m are teaching parameters. Local angle gain200 never affects the model.",
+    "Disc: steady uniform field, sliding ideal brushes, radial v×B integral. Fixed whole-disc flux is not used to falsely infer zero emf. Representative current route, slowed material rotation.",
+    "High-impedance falling-magnet voltage neglects electrical braking. The lower catch stops the magnet."
+  ],
+  "director": {
+    "clock": "Provisional26s chapters, retained existing voice; actual word timing alignment pending root integration",
+    "cuts": [
+      {
+        "id": "magnet-rest",
+        "events": {
+          "0": "still apparatus, nonzero flux / zero I",
+          "10": "constant-flux line + zero induced field"
+        }
+      },
+      {
+        "id": "magnet-move",
+        "events": {
+          "0": "same-pole approach/hold/withdraw clock",
+          "14": "freeze physical t=5 during withdrawal: induced field aligns with original flux",
+          "23": "return to stopped clock8, I=0"
+        }
+      },
+      {
+        "id": "magnet-pole",
+        "events": {
+          "0": "pole flipped, ask before motion",
+          "7": "replay same trajectory",
+          "19": "four fixed textbook directions"
+        }
+      },
+      {
+        "id": "ring-closed",
+        "events": {
+          "0": "physical-scale ring and magnet move on same clock",
+          "12": "magnified physical t2.5 snapshot",
+          "18": "replay t2.5→4.5",
+          "21": "hold withdrawal force and displacement"
+        }
+      },
+      {
+        "id": "ring-open",
+        "events": {
+          "0": "split-ring question before motion",
+          "5": "same magnet trajectory",
+          "12": "same physicalt4.5: nonzero emf / current0 / force0"
+        }
+      },
+      {
+        "id": "drop-height",
+        "events": {
+          "1": "low release",
+          "10": "higher release prediction",
+          "12": "high release",
+          "15": "one-axis computed voltage comparison"
+        }
+      },
+      {
+        "id": "drop-turns",
+        "events": {
+          "0": "double turns prediction",
+          "7": "identical fall starts",
+          "8": "compare to80-turn curve",
+          "18": "completed160-turn pulse"
+        }
+      },
+      {
+        "id": "disc-rotate",
+        "events": {
+          "0": "connected axle/rim/load",
+          "7": "two radii: tangential v and radial qvB",
+          "16": "same circuit with current path"
+        }
+      },
+      {
+        "id": "disc-reverse",
+        "events": {
+          "0": "reverse",
+          "7": "stop without changing angle",
+          "12": "resume and compare mechanical/resistive power"
+        }
+      }
+    ]
+  },
+  "acceptance": {
+    "modelTests": "24 scoped tests passed (18 model +6 component bindings/SSR)",
+    "strictTypes": "passed using actual Astro strict options",
+    "candidateGeometry": "134 isolated SVG/cover states after geometry correction;20 targeted bilingual states after final zero/open heading correction. No reported text clips/nonfinite geometry/console errors;16px minimum computed SVG text. Actual complete player not included.",
+    "actualProductPlayer": "pending root integration; full320x568 player/longest actual caption/transport not yet accepted",
+    "actualNativeControls": "React interaction bindings passed; native browser control events/full player pending",
+    "audio": "no new synthesis; preserved speech timing to verify",
+    "rootReview": "pending independent actual player and source acceptance",
+    "mdx": "both articles compiled with installed Astro Satteri"
+  },
+  "integrationNotes": [
+    "Actual src and shared remain untouched. Copy only the11 files named in candidate-manifest.json, never checks or symlinks.",
+    "Existing TeachingLabModes ring-control label 铝环连接 is preserved; ring-open cannot open the independent coil or disc circuits. Root need not weaken this regression.",
+    "No audio is generated; all9 spoken pairs match canonical byte-for-byte. Actual retained word-time alignment must be checked after integration; provisional director timings are documented.",
+    "Do not equate isolated SVG geometry/React bindings with complete-player/native playback, subjective listening or real-device performance."
+  ]
+}

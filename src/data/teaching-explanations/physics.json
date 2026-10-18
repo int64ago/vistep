@@ -1673,5 +1673,130 @@
         "en": "In this linear high-impedance model, the current changes faster and the induced emf amplitude rises. This does not directly determine loudspeaker volume."
       }
     }
+  },
+  "e2-lenz-magnet-coil": {
+    "sceneSlug": "induction-coil-lab",
+    "question": {
+      "zh": "磁体一直在场，指针为什么只在改变时偏转？",
+      "en": "The magnet stays present. Why does the needle respond to change?"
+    },
+    "lead": {
+      "zh": "先停住，再靠近、远离，最后只反转磁极。用同一时钟把指针、磁通和感应磁场对上。",
+      "en": "Hold, approach, withdraw, then reverse only the pole. Match the needle, flux and induced field on one clock."
+    },
+    "principle": {
+      "zh": "感应电动势取决于磁通变化率。闭合线圈中的电流建立磁场，阻碍原磁通的变化；远离时两磁场可以同向。",
+      "en": "Emf depends on the rate of flux change. Current in the closed coil produces a field opposing that change; the two fields can align during withdrawal."
+    },
+    "transfer": {
+      "question": {
+        "zh": "在同一位置、同样速率下，同时反转磁极和运动方向，电流会反向吗？",
+        "en": "At the same position and speed, reverse both pole and motion. Does current reverse?"
+      },
+      "explanation": {
+        "zh": "不会。磁通空间变化的符号与速度符号各反转一次，乘积不变，因此电动势和电流方向不变。四种教材方向记录可交叉核对。",
+        "en": "No. Reversing both the spatial flux gradient and velocity leaves their product unchanged, so emf and current retain their direction. Cross-check the four textbook records."
+      }
+    }
+  },
+  "e2-lenz-aluminium-ring": {
+    "sceneSlug": "induction-coil-lab",
+    "question": {
+      "zh": "为什么只切一处，铝环对磁体的回应就变了？",
+      "en": "Why does one gap change the ring’s response?"
+    },
+    "lead": {
+      "zh": "比较同一磁体运动下的完整环与断环，把电动势、环流和受力逐一分开。",
+      "en": "Compare a closed and split ring under the same magnet motion, separating emf, current and force."
+    },
+    "principle": {
+      "zh": "改变的磁通可以产生电动势，但完整环流需要闭合路径；本模型的机械作用来自环流，并反馈到相对运动。",
+      "en": "Changing flux can produce emf, but circulating current requires a closed path. In this model that current creates force and feeds back into relative motion."
+    },
+    "transfer": {
+      "question": {
+        "zh": "磁体仍在靠近断环，哪些量可以不为零，哪些量消失？",
+        "en": "While the magnet approaches a split ring, what can remain nonzero and what vanishes?"
+      },
+      "explanation": {
+        "zh": "磁通变化率和绕环电动势可以不为零；完整环流为零，模型中由该环流产生的力也为零。不能把无明显摆动等同于完全没有感应电动势。",
+        "en": "Flux rate and loop emf can remain nonzero. Complete circulating current, and its magnetic force in the model, vanish. No visible swing does not establish zero emf."
+      }
+    }
+  },
+  "e2-faraday-falling-magnet": {
+    "sceneSlug": "induction-coil-lab",
+    "question": {
+      "zh": "更高释放与更多匝数，为什么都能改变电压脉冲？",
+      "en": "Why can height and turn count both change a voltage pulse?"
+    },
+    "lead": {
+      "zh": "先保持80匝比较释放高度，再固定同一轨迹，把80匝加到160匝。曲线是标明身份的模型计算。",
+      "en": "First compare release heights at 80 turns, then use the identical trajectory with 160 turns. Curves are explicitly model calculations."
+    },
+    "principle": {
+      "zh": "改变高度改变通过同一位置的速度和单匝磁通变化率；固定运动时，各匝电动势串联相加，ε正比于N。",
+      "en": "Height changes speed and single-turn flux rate at the same position. With motion fixed, turn emfs add in series and ε is proportional to N."
+    },
+    "transfer": {
+      "question": {
+        "zh": "同一磁体、同一释放高度，把80匝改成40匝，同一时刻的电动势如何变？",
+        "en": "Keep the magnet and release height. Change 80 turns to 40: what happens at a corresponding instant?"
+      },
+      "explanation": {
+        "zh": "在每匝磁通相同、传感器高阻且不明显制动的近似下，电动势减半；峰值出现时刻与轨迹保持不变。",
+        "en": "With equal flux per turn and a high-impedance sensor causing negligible braking, emf halves. The trajectory and peak times remain unchanged."
+      }
+    }
+  },
+  "e2-faraday-disc": {
+    "sceneSlug": "induction-coil-lab",
+    "question": {
+      "zh": "磁场不变，转动的圆盘怎样产生电动势？",
+      "en": "How does a rotating disc generate emf in a fixed field?"
+    },
+    "lead": {
+      "zh": "沿铜盘中的径向作用追到轴和边缘电刷，再用停转、反转及开路作对照。",
+      "en": "Follow radial action through the axle and rim brushes, then compare stopping, reversing and opening the circuit."
+    },
+    "principle": {
+      "zh": "各半径的速度为ωr，径向v×B作用累加成ε=Bωr²/2；负载电流需要外部机械功，并产生制动力矩。",
+      "en": "Speed at radius r is ωr. Radial v×B contributions integrate to ε=Bωr²/2; load current requires mechanical input and produces braking torque."
+    },
+    "transfer": {
+      "question": {
+        "zh": "同样磁场和角速度，只接到半径r/2处，轴到该处的电动势是多少？",
+        "en": "At the same field and angular speed, contact radius r/2 instead. What emf appears from the axle?"
+      },
+      "explanation": {
+        "zh": "是轴到原边缘电动势的四分之一。因为速度随半径增长，不能按导体长度减半就推成一半。",
+        "en": "One quarter of the original rim emf. Since speed grows with radius, halving length alone does not give half the emf."
+      }
+    }
+  },
+  "r3-faraday-disc": {
+    "sceneSlug": "induction-coil-lab",
+    "question": {
+      "zh": "圆盘停止后，磁场还在，为什么电流归零？",
+      "en": "After the disc stops, the field remains. Why does current vanish?"
+    },
+    "lead": {
+      "zh": "沿铜盘中的径向作用追到轴和边缘电刷，再用停转、反转及开路作对照。",
+      "en": "Follow radial action through the axle and rim brushes, then compare stopping, reversing and opening the circuit."
+    },
+    "principle": {
+      "zh": "磁场中的导体运动产生径向电动势，轴与边缘的电刷提供外电路路径。停转使运动电动势为零，反转使极性改变。",
+      "en": "Conductor motion creates radial emf, while axle and rim brushes connect the external circuit. Stopping removes motional emf; reversing changes polarity."
+    },
+    "transfer": {
+      "question": {
+        "zh": "圆盘仍转动，但断开负载导线，电流和电动势都消失吗？",
+        "en": "Keep the disc turning but open the load wire. Do both current and emf disappear?"
+      },
+      "explanation": {
+        "zh": "电流为零，但轴与边缘间仍可有运动电动势。电动势和完整电路中的电流是不同的量。",
+        "en": "Current becomes zero, but axle-to-rim motional emf can remain. Emf and closed-circuit current are different quantities."
+      }
+    }
   }
 }

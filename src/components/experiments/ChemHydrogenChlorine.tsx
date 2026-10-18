@@ -5,23 +5,31 @@ import { Range, Segments } from '../lab/Controls';
 import {
   hydrogenChlorine,
   hclAtoms,
-  hydrogenChlorineDirector,
+  hydrogenChlorineFilmShot,
 } from '../../models/chem-hydrogen-chlorine';
 import '../../styles/chem-hydrogen-chlorine.css';
 export default function ChemHydrogenChlorine() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
     say = (a: string, b: string) => (en ? b : a);
-  const [view, setView] = useState('flame'),
-    [extent, setExtent] = useState(0.5),
-    [moist, setMoist] = useState(true);
-  const d = film.watch
-      ? hydrogenChlorineDirector(film.chapter, film.chapterProgress)
-      : { view, extent, moist, progress: extent },
+  const [manualView, setView] = useState<string | null>(null),
+    [manualExtent, setExtent] = useState<number | null>(null),
+    [manualMoist, setMoist] = useState<boolean | null>(null);
+  const authored = hydrogenChlorineFilmShot(film.chapter, film.chapterTime, browserLocale()),
+    view = manualView ?? authored.view,
+    extent = manualExtent ?? authored.extent,
+    moist = manualMoist ?? authored.moist;
+  const d = film.watch ? authored : { view, extent, moist, progress: extent },
     m = hydrogenChlorine(d.extent, d.moist),
     a = hclAtoms(d.extent);
   return (
-    <section className="chem-hydrogen-chlorine" data-watch={film.watch}>
+    <section
+      className="chem-hydrogen-chlorine"
+      data-watch={film.watch}
+      data-hcl-view={d.view}
+      data-moist={d.moist}
+      data-product={m.hydrogenChloride}
+    >
       {d.view === 'molecules' ? (
         <div className="chem-hcl-molecules">
           <svg
@@ -50,7 +58,7 @@ export default function ChemHydrogenChlorine() {
               />
             ))}
             {a.map((atom) => (
-              <g key={atom.id}>
+              <g key={atom.id} data-atom-id={atom.id}>
                 <circle
                   cx={atom.x}
                   cy={atom.y}
@@ -133,7 +141,11 @@ export default function ChemHydrogenChlorine() {
             </svg>
             <figcaption>
               {d.view === 'fog'
-                ? say('产物气体在湿空气中形成酸雾', 'Product gas forms acid mist in moist air')
+                ? m.hydrogenChloride === 0
+                  ? say('这份物质尚未生成产物', 'No product in this portion yet')
+                  : d.moist
+                    ? say('湿空气：出现酸雾', 'Moist air: acid mist')
+                    : say('无水对照：气体仍存在', 'Dry air: gas remains')
                 : say('苍白色火焰', 'Pale flame')}
             </figcaption>
           </figure>
@@ -143,18 +155,24 @@ export default function ChemHydrogenChlorine() {
                 viewBox="0 0 135 140"
                 role="img"
                 aria-label={
-                  d.moist
-                    ? say(
-                        '白雾来自含酸液滴，不是白色氯化氢分子',
-                        'White mist consists of acid-containing droplets, not white hydrogen chloride molecules',
-                      )
-                    : say(
-                        '干燥条件下的氯化氢分子示意',
-                        'Hydrogen chloride molecule in dry conditions',
-                      )
+                  m.hydrogenChloride === 0
+                    ? say('尚未生成氯化氢', 'No hydrogen chloride has formed')
+                    : d.moist
+                      ? say(
+                          '白雾来自含酸液滴，不是白色氯化氢分子',
+                          'White mist consists of acid-containing droplets, not white hydrogen chloride molecules',
+                        )
+                      : say(
+                          '干燥条件下的氯化氢分子示意',
+                          'Hydrogen chloride molecule in dry conditions',
+                        )
                 }
               >
-                {d.moist ? (
+                {m.hydrogenChloride === 0 ? (
+                  <text x="67.5" y="75" textAnchor="middle" fontSize="16" fill="#53684b">
+                    {say('尚无HCl', 'No HCl yet')}
+                  </text>
+                ) : d.moist ? (
                   <>
                     <circle
                       cx="67.5"
@@ -201,9 +219,14 @@ export default function ChemHydrogenChlorine() {
                 )}
               </svg>
               <p>
-                {d.moist
-                  ? say('含水合离子的酸雾液滴', 'Acid droplets containing hydrated ions')
-                  : say('无水条件：产物气体仍存在', 'Dry conditions: product gas still exists')}
+                {m.hydrogenChloride === 0
+                  ? say(
+                      '反应进度为零，尚无产物或酸雾。',
+                      'Zero conversion: no product or acid mist.',
+                    )
+                  : d.moist
+                    ? say('含水合离子的酸雾液滴', 'Acid droplets containing hydrated ions')
+                    : say('无水条件：产物气体仍存在', 'Dry conditions: product gas still exists')}
               </p>
             </div>
           )}
