@@ -19,7 +19,7 @@ const books = [...curriculum.books].sort((a, b) => a.order - b.order);
 const copy = {
   zh: {
     teaching: '教学专区',
-    intro: '实验跟着章节走，理解跟着观察来。',
+    intro: '跟着章节走，从观察理解原理。',
     guide: '教材目录',
     guideHint: '按教材学习顺序',
     available: `${books.length} 册 · ${lessons.length} 个学习位置`,
@@ -29,13 +29,13 @@ const copy = {
     section: (order: number) => `第 ${order} 节`,
     page: (page: number) => `教材第 ${page} 页`,
     textbook: '教材原名',
-    watch: '走进实验',
-    note: '目录按教材正文的学习顺序排列，包含演示、学生实验、动手活动与历史实验。同一装置可在不同章节承担不同的观察任务。',
+    watch: '开始观察',
+    note: '目录按教材正文的学习顺序排列。实验、历史研究、调查与结构模型保留各自类型；同一过程可以在不同章节承担不同的观察任务。',
     target: '这一节，先看清',
   },
   en: {
     teaching: 'Learn',
-    intro: 'Experiments in chapter order. Understanding through observation.',
+    intro: 'Follow the chapters. Understand through observation.',
     guide: 'Chapter guide',
     guideHint: 'In textbook order',
     available: `${books.length} books · ${lessons.length} learning entries`,
@@ -44,8 +44,8 @@ const copy = {
     section: (order: number) => `Section ${order}`,
     page: (page: number) => `Textbook page ${page}`,
     textbook: 'Textbook title',
-    watch: 'Enter the experiment',
-    note: 'Entries follow the textbook sequence, including demonstrations, student experiments, activities and historical investigations. A shared apparatus may serve different learning goals.',
+    watch: 'Start observing',
+    note: 'Entries follow the textbook sequence. Experiments, historical research, investigations and models keep their distinct identities. A shared process may serve different learning goals.',
     target: 'In this section, observe',
   },
 }[locale];
@@ -85,7 +85,7 @@ const copy = {
       }
     </nav>
     <div class="teaching-search">
-      <label for="teaching-search">{locale === 'zh' ? '查找实验' : 'Find an experiment'}</label>
+      <label for="teaching-search">{locale === 'zh' ? '查找内容' : 'Find an entry'}</label>
       <input
         id="teaching-search"
         type="search"

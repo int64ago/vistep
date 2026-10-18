@@ -1,0 +1,203 @@
+.cpn {
+  color: #66765f;
+  font-size: 16px;
+}
+.cpn-stage {
+  min-height: 330px;
+  padding: 20px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 40% 20%, #faf5e3, #e0e6d3);
+}
+.cpn svg {
+  display: block;
+  margin: auto;
+  width: 100%;
+  fill: currentColor;
+}
+.cpn svg text {
+  text-anchor: middle;
+  font-size: 22px;
+}
+.cpn-molecule {
+  height: 255px;
+  max-width: 450px;
+}
+.cpn-equation {
+  text-align: center;
+  font-size: 21px;
+  margin: 8px 0;
+}
+.cpn-sub {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 8px auto 0;
+  max-width: 580px;
+}
+.cpn-resin {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 390px);
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+.cpn-bath {
+  height: 240px;
+}
+.cpn-rings {
+  height: 270px;
+}
+.cpn-resin-label {
+  text-align: center;
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+.cpn-gel {
+  height: 285px;
+  max-width: 420px;
+}
+.cpn-key {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.cpn-key span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cpn-key i {
+  display: inline-block;
+  width: 19px;
+  height: 3px;
+  background: #80967f;
+}
+.cpn-key i.cross {
+  background: #aa8158;
+}
+.cpn-key i.water {
+  background: #79a8b7;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.cpn-samples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  justify-content: center;
+  gap: 26px;
+}
+.cpn-sample {
+  text-align: center;
+  min-width: 0;
+}
+.cpn-sample > b {
+  font-size: 18px;
+  font-weight: 500;
+}
+.cpn-sample svg {
+  height: 245px;
+}
+.cpn .cpn-sample svg text {
+  font-size: 23px;
+}
+.cpn-mass {
+  font-size: 16px;
+  line-height: 1.55;
+}
+.cpn-ratio {
+  font-size: 23px;
+  font-weight: 500;
+}
+.cpn-sample-note {
+  text-align: center;
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.cpn-controls {
+  display: grid;
+  gap: 18px;
+  padding: 22px 4px;
+}
+.cpn-controls button {
+  min-height: 44px;
+}
+.cpn-note {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+  margin: 12px auto;
+  line-height: 1.5;
+}
+.cpn.is-watch > .cpn-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cpn-stage {
+    padding: 12px 4px;
+    min-height: 310px;
+    border-radius: 22px;
+  }
+  .cpn-molecule {
+    height: 245px;
+  }
+  .cpn .cpn-molecule text {
+    font-size: 24px;
+  }
+  .cpn-equation {
+    font-size: 18px;
+  }
+  .cpn-resin {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cpn-bath {
+    height: 95px;
+    max-width: 100px;
+  }
+  .cpn-rings {
+    height: 235px;
+  }
+  .cpn .cpn-rings text {
+    font-size: 24px;
+  }
+  .cpn-resin-label {
+    margin-bottom: 0;
+  }
+  .cpn-gel {
+    height: 270px;
+  }
+  .cpn .cpn-gel text {
+    font-size: 24px;
+  }
+  .cpn-key {
+    gap: 12px;
+    font-size: 16px;
+  }
+  .cpn-samples {
+    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cpn-sample svg {
+    height: 180px;
+  }
+  .cpn .cpn-sample svg text {
+    font-size: 28px;
+  }
+  .cpn-ratio {
+    font-size: 21px;
+  }
+  .cpn-sample-note {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .cpn-controls {
+    padding: 18px 0;
+  }
+}
+
+.cpn-number {
+  white-space: nowrap;
+}

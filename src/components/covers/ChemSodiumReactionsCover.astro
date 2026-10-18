@@ -1,0 +1,28 @@
+---
+import { alkaliWater, immersedSphere } from '../../models/chem-sodium-reactions';
+const s = alkaliWater(0.45),
+  r = 24 * s.radiusFraction,
+  y = 120 + r * (immersedSphere(s.density) * 2 - 1);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><defs
+    ><linearGradient id="chem-sodium-cover-metal"
+      ><stop stop-color="#e9ead5"></stop><stop offset=".5" stop-color="#a5b4a6"></stop><stop
+        offset="1"
+        stop-color="#d0d9c8"></stop></linearGradient
+    ></defs
+  ><path
+    d="M58 112V169Q58 201 200 201T342 169V112"
+    stroke="#9eb297"
+    stroke-width="2"
+    fill="#b9ceae33"></path><ellipse cx="200" cy="112" rx="142" ry="26" fill="#b9d3b5" opacity=".3"
+  ></ellipse><path d="M60 122V169Q60 199 200 199T340 169V122Z" fill="#bf87a0" opacity=".2"
+  ></path><circle cx="190" cy={y} r={r} fill="url(#chem-sodium-cover-metal)"></circle><path
+    d="M60 122Q200 152 340 122"
+    stroke="#a7c0a3"></path>{
+    Array.from({ length: 8 }, (_, i) => (
+      <circle cx={187 + Math.sin(i * 3) * 17} cy={115 - i * 7} r={2 + (i % 3)} stroke="#a5bba0" />
+    ))
+  }</svg
+>

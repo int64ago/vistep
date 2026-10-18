@@ -1,0 +1,25 @@
+---
+import { donorFusion, enucleation } from '../../models/bio-animal-cell-engineering';
+const f = donorFusion(0.33),
+  e = enucleation(0, 400);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f1e8ec"></rect>
+  <g transform="translate(187 113) scale(1.05)">
+    <circle r="85" fill="none" stroke="#ddcbbd" stroke-width="7"></circle>
+    <path d={f.path} fill="#eadcbe" stroke="#c8b492" stroke-width="2"></path>
+    {
+      e.mitochondria.map((a) => (
+        <ellipse cx={a.x - e.cx} cy={a.y - e.cy} rx="3.5" ry="2" fill="#b59e7d" />
+      ))
+    }
+    <circle cx={f.nucleus.x} cy={f.nucleus.y} r="5" fill="#9581a4"></circle>
+  </g>
+  <path
+    d="M311 49v18m0-18-10-12m10 12 10-12M82 173v18m0-18-10-12m10 12 10-12"
+    stroke="#b39db9"
+    stroke-width="4"
+    fill="none"
+    stroke-linecap="round"></path>
+</svg>

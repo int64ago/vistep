@@ -1,0 +1,65 @@
+---
+import { layout } from '../../models/chem-elemental-analysis';
+const l = layout(false),
+  path = l.path.map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`).join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><rect width="400" height="230" fill="#ebeee0"></rect><g transform="translate(4 18) scale(.57)"
+    ><path d={path} stroke="#93ab97" stroke-width="13" stroke-linejoin="round"></path><path
+      d={path}
+      stroke="#f4f7e9"
+      stroke-width="8"
+      stroke-linejoin="round"></path><rect
+      x="45"
+      y="72"
+      width="220"
+      height="36"
+      rx="17"
+      fill="#dbe4d5"
+      stroke="#8eaa92"
+      stroke-width="2"></rect><rect x="55" y="114" width="200" height="28" rx="8" fill="#c5b595"
+    ></rect><rect
+      x="326"
+      y="73"
+      width="88"
+      height="34"
+      rx="15"
+      fill="#dadcc5"
+      stroke="#8eaa92"
+      stroke-width="2"></rect>{
+      l.bulbs.map((b, i) => (
+        <circle
+          cx={b.x}
+          cy={b.y}
+          r={b.r}
+          fill={i > 0 && i < 4 ? '#b8caac' : '#e3eadd'}
+          stroke="#8eaa92"
+          stroke-width="2"
+        />
+      ))
+    }<circle cx="365" cy="90" r="8" fill="#70a0a4"></circle><circle
+      cx="529"
+      cy="169"
+      r="7"
+      fill="#b97d69"></circle><circle cx="541" cy="169" r="7" fill="#b97d69"></circle><text
+      x="155"
+      y="56"
+      font-size="25"
+      text-anchor="middle"
+      fill="#5a6f57">CuO</text
+    ><text x="370" y="56" font-size="25" text-anchor="middle" fill="#5a6f57">H₂O</text><text
+      x="535"
+      y="220"
+      font-size="25"
+      text-anchor="middle"
+      fill="#5a6f57">CO₂</text
+    ></g
+  ><path d="M50 183H350" stroke="#c8d2b7"></path><text
+    x="200"
+    y="212"
+    text-anchor="middle"
+    font-size="21"
+    fill="#6f835f">C : H : O → 2 : 6 : 1</text
+  ></svg
+>

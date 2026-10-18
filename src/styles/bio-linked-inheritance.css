@@ -1,0 +1,359 @@
+.bio-linked {
+  background: #eeedde;
+  border-radius: 25px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #5a6350;
+}
+.bio-linked-kind {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #879078;
+  margin: 0 0 12px;
+}
+.bio-linked-parents {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+.bio-linked-parents > div {
+  display: grid;
+  justify-items: center;
+  font-size: 18px;
+}
+.bio-linked-parents svg {
+  width: 105px;
+  height: 110px;
+  display: block;
+}
+.bio-linked-parents > b {
+  font-size: 24px;
+  font-weight: 400;
+}
+.bio-linked-transfer {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  font-size: 16px;
+  max-width: 480px;
+  margin: 14px auto 0;
+}
+.bio-linked-gamete-path {
+  display: block;
+  width: 100%;
+  height: 75px;
+  max-width: 480px;
+  margin: auto;
+}
+.bio-linked-offspring {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.bio-linked-offspring > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 3px;
+  border-radius: 17px;
+  background: #e3e5cf;
+  padding: 10px 13px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  transition: background 0.3s;
+}
+.bio-linked-offspring > div[data-active='true'] {
+  background: #d5dfc1;
+  border-color: #aebf99;
+}
+.bio-linked-offspring svg {
+  height: 85px;
+  width: 82px;
+  display: block;
+}
+.bio-linked-offspring strong {
+  font-weight: 500;
+}
+.bio-linked-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 15px auto 0;
+  max-width: 670px;
+}
+.bio-linked-flower-observation {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  max-width: 620px;
+  margin: auto;
+  align-items: center;
+}
+.bio-linked-flower-observation svg {
+  width: 100%;
+  height: 260px;
+}
+.bio-linked-flower-observation dl {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 20px 0 0;
+}
+.bio-linked-flower-observation dt {
+  color: #80886c;
+  margin-top: 15px;
+}
+.bio-linked-flower-observation dd {
+  margin: 4px 0 0;
+}
+.bio-linked-lights {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  font-size: 18px;
+}
+.bio-linked-lights span {
+  opacity: 0.4;
+}
+.bio-linked-lights [data-active='true'] {
+  opacity: 1;
+}
+.bio-linked-pedigree-wide svg,
+.bio-linked-pedigree-small svg {
+  width: 100%;
+  display: block;
+}
+.bio-linked-pedigree-small {
+  display: none;
+}
+.bio-linked-genotype {
+  font-size: 18px;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 18px;
+  margin: 14px auto 0;
+}
+.bio-linked-genotype strong {
+  font-weight: 500;
+}
+.bio-linked-genotype > span:last-child {
+  font-size: 16px;
+}
+.bio-linked-legend {
+  display: flex;
+  gap: 10px 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 15px;
+}
+.bio-linked-population {
+  display: block;
+  width: 100%;
+  height: 300px;
+  max-width: 600px;
+  margin: auto;
+}
+.bio-linked-survey-result {
+  display: flex;
+  justify-content: center;
+  gap: 12px 26px;
+  flex-wrap: wrap;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.bio-linked-survey-result strong {
+  font-weight: 500;
+}
+.bio-linked-pooling {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 600px;
+  margin: 40px auto;
+}
+.bio-linked-pooling > div {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.bio-linked-pooling strong {
+  font-size: 28px;
+  font-weight: 400;
+}
+.bio-linked-pooled {
+  grid-column: 1/-1;
+  border-top: 1px solid #c2cbb0;
+  padding-top: 25px;
+}
+.bio-linked-controls {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+  margin: 26px auto 0;
+  font-size: 16px;
+}
+.bio-linked-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-linked-controls button,
+.bio-linked-controls select {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  background: #f7f6e9;
+  border: 1px solid #c0c8ab;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+.bio-linked-controls label {
+  display: grid;
+  gap: 8px;
+}
+@media (max-width: 700px) {
+  .bio-linked-pedigree-wide {
+    display: none;
+  }
+  .bio-linked-pedigree-small {
+    display: block;
+    max-width: 400px;
+    margin: auto;
+  }
+  .bio-linked-pedigree-small svg {
+    height: auto;
+    aspect-ratio: 300/275;
+  }
+}
+@media (max-width: 540px) {
+  .bio-linked-parents {
+    gap: 18px;
+  }
+  .bio-linked-parents svg {
+    width: 88px;
+    height: 95px;
+  }
+  .bio-linked-transfer {
+    gap: 10px;
+    font-size: 16px;
+  }
+  .bio-linked-gamete-path {
+    height: 60px;
+  }
+  .bio-linked-offspring {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .bio-linked-offspring > div {
+    padding: 8px;
+  }
+  .bio-linked-offspring svg {
+    height: 68px;
+    width: 66px;
+  }
+  .bio-linked-flower-observation {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .bio-linked-flower-observation svg {
+    height: 170px;
+  }
+  .bio-linked-flower-observation dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-top: 13px;
+  }
+  .bio-linked-flower-observation dt {
+    margin: 0;
+  }
+  .bio-linked-flower-observation dd {
+    margin: 0;
+    grid-row: 2;
+  }
+  .bio-linked-lights {
+    justify-content: center;
+  }
+  .bio-linked-population {
+    height: 230px;
+  }
+  .bio-linked-pooling {
+    gap: 20px;
+    margin: 30px auto;
+  }
+  .bio-linked-pooling strong {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-linked {
+    padding: 12px;
+  }
+  .bio-linked[data-watch='true'] .bio-linked-kind {
+    display: none;
+  }
+  .bio-linked-parents svg {
+    height: 62px;
+    width: 75px;
+  }
+  .bio-linked-parents > div {
+    font-size: 16px;
+  }
+  .bio-linked-transfer {
+    margin-top: 8px;
+  }
+  .bio-linked-gamete-path {
+    height: 36px;
+  }
+  .bio-linked-offspring {
+    gap: 6px;
+  }
+  .bio-linked-offspring > div {
+    padding: 4px;
+    gap: 1px;
+    line-height: 1.4;
+  }
+  .bio-linked-offspring svg {
+    height: 40px;
+    width: 50px;
+  }
+  .bio-linked-note {
+    margin-top: 10px;
+  }
+  .bio-linked-flower-observation svg {
+    height: 130px;
+  }
+  .bio-linked-flower-observation dl {
+    gap: 6px 12px;
+  }
+  .bio-linked-pedigree-small {
+    max-width: 270px;
+  }
+  .bio-linked-population {
+    height: 190px;
+  }
+  .bio-linked-pooling {
+    gap: 14px;
+    margin: 18px auto;
+  }
+  .bio-linked-pooled {
+    padding-top: 16px;
+  }
+  .bio-linked-legend {
+    margin-top: 10px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-linked[data-watch='true'][data-mode='f2'] .bio-linked-parents svg,
+  .bio-linked[data-watch='true'][data-mode='test'] .bio-linked-parents svg {
+    display: none;
+  }
+}

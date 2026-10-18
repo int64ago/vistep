@@ -1,0 +1,11 @@
+# Sulfur dioxide observations
+
+Targets 36 and 37: required 2 experiments 5-1 and 5-2, printed pages 3–4 / PDF 8–9, full source bodies read. One sample links dissolution/acidity to fuchsin fading/heating recovery. No invented pH, solubility kinetics or detailed fuchsin structure. Added unheated final control clearly labelled as teaching comparison.
+
+Five chapters, 134 seconds: underwater opening / rising water; same solution tested with paper; fuchsin enters before fading; heating restores colour; matched bleached samples with different temperature histories. Variants dissolution-acidity cues 0–1 and bleach-recovery cues 2–4 are consecutive, with exact exploratory initial apparatus.
+
+Independent quasistatic model solves ideal-gas amount and hydrostatic water-column balance, constant temperature and nominal uniform tube, 0.18 m height / 0.03 m submerged mouth. Extent is a prescribed transfer state, not rate; no Henry-law extrapolation. Connected reservoir receives dissolved inventory. Complete dissolution yields no gas phase and null gas pressure. Dye states conserve identity and total fraction; heating recovers only the bleached fraction. SO2 colourless, dots schematic. Textbook H2SO3 notation qualified as simplified aqueous equilibrium language.
+
+SVG apparatus with connected water reservoir and submerged stopper, clamped test tubes, acid paper, open heated tube and unheated comparison. Fixed 240 px phone stage, HTML 16 px text, no duplicate internal watch caption. No WebGL or external visual resource required. Independent tests cover ideal-gas / hydrostatic identities, sealed and zero-gas boundaries, total sulfur inventory, reversible dye-state identity and director order. Scoped 4 model tests, owned TypeScript diagnostics 0, packet and formatting passed. Actual 320 px paused checks passed all five chapters in both languages, with apparatus / paper / heating / paired sample images actually inspected; root owns full playback, audio and physical-device review.
+
+Sources: local textbook for fuchsin recoloration and procedure identity; University of Wisconsin demonstration for gas dissolution / indicator evidence. RSC page was discovered but its body returned 405, so it was not used for additional claims.

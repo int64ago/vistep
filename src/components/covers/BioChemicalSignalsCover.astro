@@ -1,0 +1,24 @@
+---
+import { heartTransfer } from '../../models/bio-chemical-signals';
+const f = heartTransfer(0.7);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#f4eee3"></rect>{
+    [110, 290].map((x, i) => (
+      <g>
+        <path d={`M${x - 7} 107V78q7-8 14 0v29`} fill="none" stroke="#ac7b73" stroke-width="8" />
+        {Array.from({ length: 6 }, (_, n) => (
+          <circle
+            cx={x - 43 + n * 16}
+            cy={178 - (n % 2) * 14}
+            r="3"
+            fill="#b38c53"
+            opacity={i ? f.amountB : f.amountA}
+          />
+        ))}
+      </g>
+    ))
+  }<path d="M110 64V28h180v37m-6-9 6 9 6-9" fill="none" stroke="#b89b6f" stroke-width="2"
+  ></path></svg
+>

@@ -1,0 +1,35 @@
+---
+name: 'Atomic models and electron clouds'
+title: 'What changes from an orbit to an electron cloud?'
+---
+
+<section id="understand">
+## The meaning of orbital changes
+
+The textbook compares Dalton’s solid sphere, Thomson’s diffuse positive charge, Rutherford’s nucleus, Bohr’s quantized circular orbits and the modern electron cloud. These are successive models of knowledge, not footage of one atom physically changing shape.
+
+A modern atomic orbital describes a quantum state. Cloud dots encode probability, so hydrogen’s single electron does not multiply as dots accumulate. A 90% contour is convenient, but leaves 10% probability outside. The s states are spherical; p states are directional, with three orientations shown separately.
+
+</section>
+<section id="try">
+## Change the statistical representation, not the electron count
+
+Vary the number of samples and see the distribution become clearer. Change cumulative probability to move the contour radius without changing the underlying distribution. The 1s/2s comparison uses a common length scale so separate magnification cannot hide their size difference.
+
+Bohr’s n takes discrete values. The historical hydrogen radius scales as n² and energy is approximately −13.605693/n² eV. Switching levels does not simulate a continuous transition path or a modern electron trajectory.
+
+</section>
+<section id="deeper">
+<details>
+<summary>Analytic distributions, sampling and limitations</summary>
+
+In units of a₀, hydrogen’s 1s radial probability density is 4r²exp(−2r), with cumulative probability 1−exp(−2r)(1+2r+2r²). Independent bisection gives a 90% sphere radius near 2.66116a₀. For 2s the radial density is r²(2−r)²exp(−r)/8, with a node at r=2a₀. For 2p it is r⁴exp(−r)/24, combined with a cos²θ angular distribution.
+
+A deterministic low-discrepancy sequence samples the three-dimensional distribution before orthogonal projection. Dots are never connected into a trajectory. Inside/outside colour uses three-dimensional radius; counting projected points inside the circle does not measure probability inside the sphere. Finite dots and display limits are not the complete continuous distribution. Display samples clamp to the 0.1%–99.9% radial quantiles; analytic cumulative probability retains the full distribution.
+
+[MIT’s hydrogen lectures](https://www.ocw.mit.edu/courses/5-61-physical-chemistry-fall-2007/c2078ff25c61c136e67ceb6fd8eb9b34_lecture21to22.pdf), pages 4 and 6–7, supply wavefunctions, nodes and radial probabilities. This nonrelativistic, field-free hydrogen model does not predict many-electron shielding or fine structure. [The Niels Bohr Institute](https://nbi.ku.dk/english/www/niels/bohr/bohratomet/) and [Nobel Foundation electron history](https://www.nobelprize.org/prizes/physics/1906/thomson/facts/) support the historical distinctions.
+
+Textbooks: Required Book 1 page 94 (PDF page 99), and Elective Book 2 pages 12–13 (PDF pages 15–16). These are historical/model positions, not student experiments. Historical nucleus/electron sizes are exaggerated, and charge signs are not particle counts.
+
+</details>
+</section>

@@ -1,0 +1,53 @@
+{
+  "owner": "chemistry_inventory",
+  "kind": "author-self-review",
+  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
+  "sourceFiles": {
+    "src/models/chem-bond-overlap.ts": "e4952fc8736df407b5318d12e78b3d08c79be552891c9512251e81d134e912cf",
+    "src/components/experiments/ChemBondOverlap.tsx": "e5802f2ef13123b13dde21a23c6d2b2e4a7d0e23b6b2645cdf23d3448ee97668",
+    "src/styles/chem-bond-overlap.css": "2a5f8fe6685238dcd6db65421ca7a2906586c79bd68a04ecddfa1cbf3e300325",
+    "src/data/scene-packets/chem-bond-overlap.json": "bbab91171054aff027bc29d5381388c33b1a1dddc475a2c8867a5634bbbaa044"
+  },
+  "conditions": {
+    "browser": "Chromium via Playwright",
+    "viewport": "320×844 emulated; not physical phone",
+    "reducedMotion": true,
+    "audio": "off",
+    "preview": "isolated independent source and dependencies on4337"
+  },
+  "checks": [
+    {
+      "type": "model",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "type": "paused-keyframe-geometry",
+      "status": "passed",
+      "evidence": [
+        "artifacts/chemistry-inventory/review-bond-overlap",
+        "artifacts/chemistry-inventory/review-bond-overlap-retry",
+        "artifacts/chemistry-inventory/review-bond-overlap-final",
+        "artifacts/chemistry-inventory/review-bond-overlap-final-zh"
+      ],
+      "note": "All9 English cues passed after retry of initial dev navigation-context destruction;4 changed Lewis/lattice cues repeated;4 final Chinese cues passed. Initial failure retained in evidence."
+    },
+    {
+      "type": "visual-author-inspection",
+      "status": "passed",
+      "observed": "Viewed ionic six-neighbor composition,pi nodal slice,rotated-p slice,andfinal NaCl bookkeeping with10+18=28. Labels>=16px andtransport within viewport. Removed duplicated lattice headline after initial review."
+    },
+    {
+      "type": "continuous-playback",
+      "status": "not-run"
+    },
+    {
+      "type": "listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical-phone",
+      "status": "not-run"
+    }
+  ]
+}

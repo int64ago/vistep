@@ -1,0 +1,59 @@
+---
+import { codeRna } from '../../models/bio-genetic-code';
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#efecdf"></rect><path
+    d="M95 161Q76 90 121 63Q180 24 223 57Q294 35 307 117L302 161Z"
+    fill="#d2c2a8"
+    stroke="#ae997c"
+    stroke-width="2"></path><path d="M101 180Q131 218 210 207Q279 211 302 180Z" fill="#c0ccc1"
+  ></path><path d="M27 170H375" stroke="#8a7564" stroke-width="3"></path>{
+    codeRna
+      .slice(0, 12)
+      .split('')
+      .map((b, i) => (
+        <g>
+          <>
+            <rect
+              x={28 + i * 29}
+              y="160"
+              width="25"
+              height="23"
+              rx="5"
+              fill={['#8e9b7a', '#b88169', '#7196a4'][i % 3]}
+            />
+            <text x={40 + i * 29} y="177" text-anchor="middle" fill="white" font-size="16">
+              {b}
+            </text>
+          </>
+        </g>
+      ))
+  }{
+    [150, 237].map((x) => (
+      <path
+        d={`M${x - 25} 148L${x - 8} 121V83H${x + 11}V119L${x + 29} 148Z`}
+        fill="#f2ede0"
+        stroke="#8a9b90"
+        stroke-width="3"
+      />
+    ))
+  }<path d="M180 80H250" stroke="#9b6c55" stroke-width="4"></path>{
+    ['Met', 'Phe', 'Gly'].map((aa, i) => (
+      <g>
+        <>
+          <rect x={171 + i * 26} y="73" width="20" height="14" rx="5" fill="#b88369" />
+          <text
+            x={180 + i * 26}
+            y={66 - (i % 2) * 15}
+            text-anchor="middle"
+            font-size="13"
+            fill="#885e4b"
+          >
+            {aa}
+          </text>
+        </>
+      </g>
+    ))
+  }</svg
+>

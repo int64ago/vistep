@@ -1,0 +1,49 @@
+---
+name: 'Rainwater pH and measurement evidence'
+title: 'How much can one pH reading tell us?'
+---
+
+<section id="understand">
+
+The textbook activity directly collects rain, retains distilled or tap water as a reference, measures with pH paper or a meter, and suggests repeated records when feasible. Water that first crosses a roof, leaves or the ground also reflects contact and wash-off effects. Measure the reference rather than assigning it pH 7 in advance.
+
+The preceding page uses 5.6 as an approximate normal-rain reference and describes rain below 5.6 as acid rain. Atmospheric CO₂ can make water mildly acidic; real precipitation also contains other natural and human-derived components. This film explicitly calls 5.6 the textbook reference. A value below 7 alone does not establish pollution-caused acid rain.
+
+</section>
+<section id="try">
+
+Change the synthetic sample pH and compare uncalibrated and calibrated readings against the 5.6 reference. The illustrated ±0.15 is a teaching error example, not a specification for a meter model. Preserve uncertainty when that interval crosses the reference.
+
+The seven-day record retains a missing sample on day 3. All samples, sequence values and dates are synthetic teaching fixtures, not measurements from your location or a monitoring station. Change the pH 4 sample's fraction of total water to compare arithmetic mean pH with a hydrogen-ion-weighted statistic.
+
+</section>
+<section id="deeper">
+<details>
+<summary>Calibration, resolution and measurement limits</summary>
+
+The teaching electrode relation is E=E₀−gSpH, with S=RTln10/F, approximately 59.16 mV per pH unit at 25℃. The fixture uses offset E₀ = 12 mV and slope factor g=0.96. Standards at pH 4 and pH 7 recover those two parameters exactly for this affine model. Real electrodes also face junction potentials, temperature effects, response time and contamination.
+
+Paper is represented by integer pH steps with an ideal half-step interval on either side. Actual paper has its own range, step size and colour chart; animation colours are not a manufacturer's chart. The meter displays two decimals while the separate ±0.15 teaching interval prevents display resolution being mistaken for accuracy.
+
+Rain and other low-conductivity waters pose specific difficulties. The [USGS research abstract](https://www.usgs.gov/publications/ph-measurement-low-conductivity-waters) discusses sources of error and improved methods. The depicted calibration explains a principle rather than certifying accuracy or providing a complete operating protocol.
+
+</details>
+<details>
+<summary>Mean pH and mean hydrogen ions answer different questions</summary>
+
+Strictly, pH is the negative common logarithm of hydrogen-ion activity. In a dilute-solution teaching approximation, 10 to the negative pH is proportional to hydrogen-ion concentration. Multiply this quantity by each water amount, sum, divide by total water, and then take the negative logarithm. This differs from averaging pH values directly.
+
+Equal water amounts at pH 4 and pH 6 give approximately 4.30 after this conversion, while their arithmetic mean pH is 5. With only 10% of the water at pH 4, the weighted conversion is approximately 4.96. Zero-volume or invalid samples are excluded; an empty valid record returns no statistic.
+
+These are statistical comparisons, not predictions of equilibrium after mixing arbitrary real water samples. Buffering, gas exchange and acid-base reactions can change actual mixtures. Nor is pH a measure of total titratable acidity. A pH reading alone cannot distinguish sulfuric, nitric or organic acids, or locate an emission source.
+
+</details>
+<details>
+<summary>Textbook and technical sources</summary>
+
+Required 2 printed 16/PDF 21 supplies the acid-rain explanation; printed 17/PDF 22 supplies the research-and-practice activity. Text and the activity page image were checked. The activity includes research, sampling, measurement, repeated records, discussion and a report. Synthetic values here do not constitute a completed local survey.
+
+The [US EPA](https://www.epa.gov/acidrain/what-acid-rain) explains CO₂ background acidity and acidic deposition from SO₂ and NOₓ. The [NADP network](https://nadp.slh.wisc.edu/networks/national-trends-network/) describes wet-only sampling, quality checks and long records. Its [annual metadata](https://nadp.slh.wisc.edu/wp-content/uploads/2022/03/ntn-annual-Meta.pdf) places pH within precipitation-weighted concentration summaries. These principles inform the explanation without equating a school activity with professional monitoring quality.
+
+</details>
+</section>

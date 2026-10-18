@@ -1,0 +1,36 @@
+---
+import { phageDnaPoint, phageCoatOffset } from '../../models/bio-genetic-material';
+const dna = Array.from({ length: 24 }, (_, i) => phageDnaPoint(i, 0.76));
+const coat = phageCoatOffset(0);
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <rect width="400" height="230" rx="24" fill="#efebdf"></rect>
+  <g transform="translate(65 -21) scale(.8)">
+    <path d="M0 200Q175 180 350 200V314H0Z" fill="#dbe0c6"></path>
+    <path
+      d="M0 200Q175 180 350 200M0 207Q175 187 350 207"
+      fill="none"
+      stroke="#9ea781"
+      stroke-width="3"></path>
+    <path d="M169 190H181V204H169Z" fill="#dbe0c6"></path>
+    <g
+      transform={`translate(${175 + coat.x} ${133 + coat.y})`}
+      fill="none"
+      stroke="#b38b66"
+      stroke-width="3"
+    >
+      <path d="M0 -70L22 -55V-28L0 -13L-22 -28V-55Z" fill="#b38b6618"></path>
+      <path d="M0 -13V30M-6 -11V23M6 -11V23M-10 24H10M-5 25L-24 39L-31 54M5 25L24 39L31 54M0 30V57"
+      ></path>
+    </g>
+    <polyline
+      points={dna.map((p) => `${p.x},${p.y}`).join(' ')}
+      fill="none"
+      stroke="#748ea9"
+      stroke-width="4"
+      stroke-linecap="round"></polyline>
+    <circle cx={dna[10].x} cy={dna[10].y} r="6" fill="#748ea9" stroke="#f6f1e4" stroke-width="2"
+    ></circle>
+  </g>
+</svg>

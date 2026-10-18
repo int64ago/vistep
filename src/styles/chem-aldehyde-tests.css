@@ -1,0 +1,189 @@
+.cat {
+  color: #657665;
+  font-size: 16px;
+}
+.cat-stage {
+  padding: 24px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 35% 15%, #faf6e8, #e4eadc);
+  min-height: 350px;
+}
+.cat svg {
+  display: block;
+  width: 100%;
+}
+.cat svg text {
+  font-size: 22px;
+  fill: currentColor;
+}
+.cat-layout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 350px);
+  gap: 35px;
+  align-items: center;
+  justify-content: center;
+}
+.cat-tube svg {
+  height: 295px;
+}
+.cat-tube-caption {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+}
+.cat-molecular {
+  text-align: center;
+  min-width: 0;
+}
+.cat-carbon {
+  height: 180px;
+}
+.cat-molecular p,
+.cat-molecular strong {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.cat-prep-symbol {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  color: #9a9676;
+  padding: 30px 0;
+}
+.cat-electrons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-size: 16px;
+}
+.cat-electrons b {
+  font-size: 25px;
+  font-weight: 500;
+}
+.cat-reduction {
+  margin: 12px 0 0;
+  font-size: 18px !important;
+}
+.cat-result {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 18px;
+}
+.cat-result b {
+  font-size: 20px;
+  font-weight: 500;
+}
+.cat-controls {
+  display: grid;
+  gap: 18px;
+  padding: 20px 4px;
+}
+.cat-controls button {
+  min-height: 44px;
+}
+.cat-note {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+.cat.is-watch > .cat-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cat-stage {
+    padding: 8px 6px;
+    border-radius: 22px;
+    min-height: 330px;
+  }
+  .cat-layout {
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 0;
+  }
+  .cat-tube svg {
+    height: 235px;
+  }
+  .cat-tube text {
+    font-size: 31px;
+  }
+  .cat-carbon {
+    height: 155px;
+  }
+  .cat-carbon text {
+    font-size: 31px;
+  }
+  .cat-electrons {
+    flex-direction: column;
+    gap: 3px;
+  }
+  .cat-electrons b {
+    font-size: 22px;
+  }
+  .cat-reduction {
+    font-size: 16px !important;
+  }
+  .cat-prep-symbol {
+    font-size: 24px;
+    padding: 15px 0;
+    overflow-wrap: anywhere;
+  }
+  .cat-molecular p {
+    margin: 8px 0;
+  }
+  .cat-result {
+    gap: 5px 14px;
+    margin-top: 16px;
+  }
+  .cat-result b {
+    font-size: 18px;
+  }
+  .cat-controls {
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .cat-layout {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .cat-tube {
+    width: 100%;
+    margin: auto;
+  }
+  .cat-tube svg {
+    height: 185px;
+  }
+  .cat-tube text {
+    font-size: 24px;
+  }
+  .cat-molecular {
+    max-width: 320px;
+    width: 100%;
+    margin: auto;
+  }
+  .cat-carbon {
+    height: 85px;
+  }
+  .cat .cat-carbon text {
+    font-size: 25px;
+  }
+  .cat-electrons {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .cat-prep-symbol {
+    padding: 5px 0;
+  }
+  .cat-molecular p {
+    margin: 3px 0;
+  }
+  .cat.is-watch .cat-result {
+    margin-top: 8px;
+  }
+}

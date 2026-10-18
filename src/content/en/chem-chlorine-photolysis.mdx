@@ -1,0 +1,33 @@
+---
+name: Three channels of chlorine-water photolysis evidence
+title: How do three traces point to the same reaction?
+---
+
+<section id="understand">
+## Locate the source of each signal
+
+The pH and chloride probes contact the liquid, while the oxygen probe measures the headspace. Their signals feed one acquisition system. Textbook Figure 2-16 shows decreasing pH, increasing chloride concentration and an increasing oxygen volume fraction during illumination.
+
+The textbook net reaction, 2HOCl → 2HCl + O₂, connects increasing acidity and chloride with oxygen generation. Actual photochemistry contains more detailed steps: a net equation is not a complete reaction mechanism.
+
+</section>
+<section id="try">
+## Generate all traces from one reaction extent
+
+Every displayed reading uses the same reaction extent. Change the headspace volume: oxygen yield stays fixed, but its fractional increase changes, while pH and chloride are unchanged. The ideal independent dark sample gives flat traces.
+
+The plot explicitly says that these are stoichiometric predictions rather than measurements. No noise is copied from the textbook, and model progress is not fitted to its 0–150 second time axis. The dark model omits slow dark reactions; it does not imply indefinite stability.
+
+</section>
+<section id="deeper">
+<details>
+<summary>Initial conditions and limitations</summary>
+
+The teaching scenario uses 100 mL of liquid, initially 0.018 mol/L HOCl and 0.008 mol/L each of H⁺ and Cl⁻. Initial gas is counted at 298.15 K and 1 atm, with oxygen set to 18%. These are illustrative choices, not reconstructed textbook conditions. Changing headspace creates an independent sample, not an expanding sealed vessel. The vessel section is schematic, with liquid level responding to the liquid–gas volume ratio.
+
+Each mole of decomposed HOCl adds one mole each of H⁺ and Cl⁻, and half a mole of O₂, conserving chlorine. pH is −log₁₀[H⁺]; chloride mass concentration uses 35.45 g/mol. Added oxygen enters both the oxygen count and total gas count. Activities, oxygen dissolution, chlorine hydrolysis, acid dissociation equilibria and competing products are omitted. This is not a quantitative prediction of a real experiment.
+
+Equation 8 and supporting Figure S24 of the [JACS Au study](https://pmc.ncbi.nlm.nih.gov/articles/PMC10207101/) address oxygen and chloride production from HOCl photolysis. The [Water Research study](https://doi.org/10.1016/j.watres.2018.06.018) demonstrates pH and wavelength effects on actual photolysis. Textbook source: Required Book 1, page 48 (PDF page 53); the complete text and all three curve directions were checked visually.
+
+</details>
+</section>

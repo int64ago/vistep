@@ -1,0 +1,41 @@
+---
+import { nitrogenEquilibrium, nitrogenRelax } from '../../models/chem-equilibrium-response';
+const initial = nitrogenEquilibrium(20, 25);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#e3dfcc"></rect>{
+    [60, 0].map((t, i) => {
+      const x = 122 + i * 156,
+        y = 142,
+        a = nitrogenRelax(initial.monomer, 20, t, 100);
+      return (
+        <g>
+          <>
+            <path
+              d={`M${x - 61} 108V195Q${x - 61} 210 ${x - 45} 210H${x + 45}Q${x + 61} 210 ${x + 61} 195V108`}
+              fill={i ? '#bad4df' : '#e8c8aa'}
+              fill-opacity=".7"
+              stroke="#aabdb0"
+              stroke-width="2"
+            />
+            <path
+              d={`M${x - 11} ${y - 87}V${y - 44}A47 47 0 1 0 ${x + 11} ${y - 44}V${y - 87}Z`}
+              fill="#f1f2df"
+              stroke="#9bab99"
+              stroke-width="2"
+            />
+            <path
+              d={`M${x - 9} ${y - 84}V${y - 43}A45 45 0 1 0 ${x + 9} ${y - 43}V${y - 84}Z`}
+              fill="#a45b3c"
+              fill-opacity={a.opacity}
+            />
+            <rect x={x - 15} y={y - 93} width="30" height="13" rx="4" fill="#b29e80" />
+            <path d={`M${x - 59} 133H${x - 47}m94 0h12`} stroke="#a9bcab" stroke-width="2" />
+          </>
+        </g>
+      );
+    })
+  }<path d="M178 77Q200 53 222 77m-8 -1l8 1l-1 -8" fill="none" stroke="#9da991" stroke-width="3"
+  ></path></svg
+>

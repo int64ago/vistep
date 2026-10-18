@@ -1,0 +1,39 @@
+---
+import { adaptiveImmunity } from '../../models/bio-immune-pathways';
+const frame = adaptiveImmunity(0.92);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eef2e7"></rect>
+  <ellipse cx="90" cy="115" rx="43" ry="48" fill="#beced6" stroke="#95abb4" stroke-width="2"
+  ></ellipse>
+  <ellipse cx="77" cy="119" rx="18" ry="24" fill="#99adb4"></ellipse>
+  {
+    [0, 1, 2].map((i) => (
+      <path d={`M96 ${83 + i * 17}q35 8 0 13`} fill="none" stroke="#8ea8b3" stroke-width="3" />
+    ))
+  }
+  <circle cx="300" cy="115" r="39" fill="#dac5a7" stroke="#b69b76" stroke-width="2"></circle>
+  {
+    frame.antibodies.map((a) => {
+      const angle = Math.PI - 0.7 + a.id * 0.28,
+        end = { x: 300 + Math.cos(angle) * 40 - 8, y: 115 + Math.sin(angle) * 40 + 5 };
+      const x = 143 + (end.x - 143) * a.progress,
+        y = 97 + a.id * 8 + (end.y - 97 - a.id * 8) * a.progress;
+      return (
+        <g>
+          <>
+            <circle cx={end.x + 8} cy={end.y - 5} r="3" fill="#b28751" />
+            <path
+              d="M-10 0H0l8-5M0 0l8 5"
+              transform={`translate(${x} ${y})`}
+              fill="none"
+              stroke="#7697aa"
+              stroke-width="2.5"
+            />
+          </>
+        </g>
+      );
+    })
+  }
+</svg>

@@ -1,0 +1,87 @@
+.chem-electrolysis {
+  max-width: 640px;
+  margin-inline: auto;
+  font-size: 16px;
+  color: #5a6669;
+}
+.chem-electrolysis svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chem-electrolysis svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #5a6669;
+}
+.chem-electrolysis-head {
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: center;
+  padding: 8px 12px;
+}
+.chem-electrolysis-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #cfd9d6;
+}
+.chem-electrolysis-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chem-electrolysis button {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  border: 1px solid #bfd0cc;
+  background: #f2f7f3;
+  border-radius: 24px;
+  padding: 8px 14px;
+}
+.chem-electrolysis button[aria-pressed='true'] {
+  background: #dce9e0;
+  border-color: #9bb9a9;
+}
+.chem-electrolysis label {
+  display: grid;
+  gap: 8px;
+}
+.chem-electrolysis input,
+.chem-electrolysis select,
+.chem-electrolysis textarea {
+  font: inherit;
+  color: inherit;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #89ab98;
+}
+.chem-electrolysis select,
+.chem-electrolysis textarea {
+  padding: 8px;
+  border: 1px solid #c9d9d0;
+  border-radius: 12px;
+  background: #f9fcf8;
+}
+.chem-electrolysis textarea {
+  min-height: 88px;
+}
+.chem-electrolysis p,
+.chem-electrolysis details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.chem-electrolysis summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chem-electrolysis button:focus-visible,
+.chem-electrolysis input:focus-visible,
+.chem-electrolysis textarea:focus-visible,
+.chem-electrolysis select:focus-visible {
+  outline: 2px solid #8ba995;
+  outline-offset: 3px;
+}

@@ -1,0 +1,149 @@
+.chem-chroma {
+  font-size: 16px;
+  line-height: 1.45;
+  color: #778b78;
+  min-width: 0;
+  padding: 5px 8px;
+}
+.chem-chroma-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.chem-chroma-column {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  margin: auto;
+}
+.chem-chroma-note,
+.chem-chroma-legend {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  margin-top: 12px;
+}
+.chem-chroma-legend {
+  color: #89957f;
+}
+.chem-chroma-speeds {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.chem-chroma-speeds span {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 4px 5px;
+}
+.chem-chroma-speeds i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: block;
+}
+.chem-chroma-speeds b {
+  font-size: 18px;
+  font-weight: 400;
+  grid-column: 1/-1;
+  text-align: center;
+}
+.chem-chroma-residence {
+  display: grid;
+  gap: 18px;
+  padding: 7px 0;
+}
+.chem-chroma-lane svg {
+  width: 100%;
+  display: block;
+  max-width: 350px;
+  margin: auto;
+}
+.chem-chroma-lane-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+}
+.chem-chroma-phase {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 3px;
+}
+.chem-chroma-profiles {
+  width: 100%;
+  max-width: 250px;
+  display: block;
+  margin: auto;
+}
+.chem-chroma-reading {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 13px;
+}
+.chem-chroma-reading b {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+.chem-chroma-vials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  text-align: center;
+  padding-top: 10px;
+}
+.chem-chroma-vials svg {
+  display: block;
+  width: 100%;
+  max-width: 110px;
+  margin: 8px auto 0;
+}
+.chem-chroma-controls {
+  display: grid;
+  gap: 23px;
+  margin-top: 26px;
+}
+.chem-chroma-controls button {
+  font-size: 16px;
+  min-height: 44px;
+}
+@media (min-width: 650px) {
+  .chem-chroma {
+    max-width: 710px;
+    margin: auto;
+    padding: 16px 25px;
+  }
+  .chem-chroma-title {
+    font-size: 21px;
+  }
+  .chem-chroma-column {
+    max-width: 300px;
+  }
+  .chem-chroma-residence {
+    max-width: 520px;
+    margin: auto;
+    gap: 25px;
+  }
+  .chem-chroma-profiles {
+    max-width: 350px;
+  }
+  .chem-chroma-vials {
+    max-width: 440px;
+    margin: auto;
+  }
+  .chem-chroma-reading {
+    margin-top: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-chroma * {
+    transition: none !important;
+  }
+}

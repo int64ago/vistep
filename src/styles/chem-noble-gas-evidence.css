@@ -1,0 +1,259 @@
+.cnge {
+  color: #617365;
+  font-size: 16px;
+}
+.cnge-stage {
+  min-height: 330px;
+  padding: 22px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 40% 20%, #f9f4df, #e0e8d6);
+}
+.cnge svg {
+  display: block;
+  width: 100%;
+  margin: auto;
+  fill: currentColor;
+}
+.cnge svg text {
+  font-size: 22px;
+  text-anchor: middle;
+}
+.cnge-source {
+  max-width: 390px;
+  margin: auto;
+}
+.cnge-source svg {
+  height: 110px;
+}
+.cnge-spectrum-rows {
+  max-width: 650px;
+  margin: auto;
+}
+.cnge-spectrum-row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  align-items: center;
+  gap: 15px;
+  margin: 9px 0;
+  font-size: 16px;
+}
+.cnge-spectrum-row svg {
+  height: 48px;
+}
+.cnge-axis {
+  position: relative;
+  margin-left: 125px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.cnge-axis span:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cnge-line-key {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  font-size: 16px;
+}
+.cnge-bulbs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 210px));
+  justify-content: center;
+  gap: 32px;
+  text-align: center;
+}
+.cnge-bulbs b {
+  font-weight: 500;
+  font-size: 16px;
+}
+.cnge-bulbs svg {
+  height: 195px;
+}
+.cnge-bulbs strong {
+  font-weight: 500;
+  font-size: 25px;
+}
+.cnge-difference {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 16px;
+}
+.cnge-difference b {
+  font-size: 22px;
+  font-weight: 500;
+}
+.cnge-meter {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 420px;
+  margin: 25px auto 0;
+  border-top: 2px solid #bec6ad;
+  padding-top: 12px;
+  font-size: 16px;
+}
+.cnge-meter i {
+  position: absolute;
+  top: -9px;
+  height: 16px;
+  width: 3px;
+  background: #9a7950;
+  border-radius: 5px;
+  transition: left 0.15s;
+}
+.cnge-separation {
+  height: 280px;
+  max-width: 400px;
+}
+.cnge-ledger {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  font-size: 21px;
+}
+.cnge-sub {
+  text-align: center;
+  font-size: 16px;
+  margin: 10px 0 0;
+  line-height: 1.4;
+}
+.cnge-xenon {
+  height: 265px;
+  max-width: 480px;
+}
+.cnge-ionization {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 18px;
+  margin-top: 12px;
+}
+.cnge-boundary {
+  max-width: 420px;
+  margin: auto;
+}
+.cnge-boundary svg {
+  height: 245px;
+}
+.cnge-boundary p {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.cnge-controls {
+  display: grid;
+  gap: 18px;
+  padding: 22px 4px;
+}
+.cnge-controls button {
+  min-height: 44px;
+}
+.cnge-note {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px auto;
+}
+.cnge.is-watch > .cnge-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cnge-stage {
+    padding: 12px 5px;
+    min-height: 310px;
+    border-radius: 22px;
+  }
+  .cnge-source svg {
+    height: 85px;
+  }
+  .cnge-spectrum-row {
+    display: block;
+    margin: 10px 0;
+  }
+  .cnge-spectrum-row > span {
+    display: block;
+    margin: 0 0 4px;
+  }
+  .cnge-spectrum-row svg {
+    height: 37px;
+  }
+  .cnge-axis {
+    position: relative;
+    margin-left: 0;
+  }
+  .cnge-axis span:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .cnge-line-key {
+    gap: 4px;
+    font-size: 16px;
+  }
+  .cnge-line-key span {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .cnge-bulbs {
+    gap: 10px;
+  }
+  .cnge-bulbs b {
+    display: block;
+    min-height: 42px;
+    line-height: 1.35;
+  }
+  .cnge-bulbs svg {
+    height: 150px;
+  }
+  .cnge-bulbs strong {
+    font-size: 22px;
+  }
+  .cnge-difference {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .cnge-difference b {
+    display: block;
+    margin-top: 8px;
+  }
+  .cnge-separation {
+    height: 255px;
+  }
+  .cnge .cnge-separation text {
+    font-size: 24px;
+  }
+  .cnge-ledger {
+    gap: 28px;
+    font-size: 20px;
+  }
+  .cnge-xenon {
+    height: 250px;
+  }
+  .cnge .cnge-xenon text {
+    font-size: 25px;
+  }
+  .cnge-ionization {
+    gap: 14px;
+    font-size: 16px;
+  }
+  .cnge .cnge-boundary text {
+    font-size: 24px;
+  }
+  .cnge-boundary p {
+    font-size: 16px;
+  }
+  .cnge-controls {
+    padding: 18px 0;
+  }
+}

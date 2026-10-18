@@ -1,0 +1,84 @@
+.bio-auxin {
+  color: #53604c;
+}
+.bio-auxin svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-auxin svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #53604c;
+}
+.bio-auxin-head {
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-auxin-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 15px;
+  border-top: 1px solid #dce3d1;
+}
+.bio-auxin-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-auxin button {
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  border: 1px solid #ccd8c1;
+  border-radius: 24px;
+  background: #f8faf2;
+  padding: 8px 16px;
+}
+.bio-auxin button[aria-pressed='true'] {
+  background: #dfe8d1;
+  border-color: #96ac83;
+}
+.bio-auxin label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-auxin input {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #8fa575;
+}
+.bio-auxin details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-auxin summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-auxin button:focus-visible,
+.bio-auxin input:focus-visible {
+  outline: 2px solid #839c6d;
+  outline-offset: 3px;
+}
+
+.bio-auxin {
+  padding: 10px 12px 0;
+  box-sizing: border-box;
+}
+.bio-auxin[data-watch='true'] .bio-auxin-head {
+  display: none;
+}
+.bio-auxin summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 8px;
+}
+.bio-auxin details[open] summary::after {
+  content: '−';
+}

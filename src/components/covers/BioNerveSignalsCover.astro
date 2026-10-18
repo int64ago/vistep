@@ -1,0 +1,39 @@
+---
+import { nerveSurface } from '../../models/bio-nerve-signals';
+const f = nerveSurface(1.75);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#eef1e9"></rect><rect
+    x="35"
+    y="97"
+    width="330"
+    height="42"
+    rx="21"
+    fill="#d2dfb5"
+    stroke="#9caf86"></rect>{
+    Array.from({ length: 60 }, (_, i) => (
+      <rect
+        x={36 + i * 5.5}
+        y="99"
+        width="5"
+        height="38"
+        fill="#c78960"
+        opacity={-f.outside(i * 2) / 12}
+      />
+    ))
+  }<path d="M131 95V40h40M186 95V40h43" stroke="#8d9da7" stroke-width="2" fill="none"></path><circle
+    cx="200"
+    cy="40"
+    r="28"
+    fill="#fafbf6"
+    stroke="#a4b5b8"></circle><path d="m200 53-17-26" stroke="#b77a58" stroke-width="2"></path><path
+    d={Array.from(
+      { length: 181 },
+      (_, i) =>
+        `${i ? 'L' : 'M'}${35 + (i * 330) / 180},${190 - nerveSurface(i / 30).difference * 2}`,
+    ).join(' ')}
+    fill="none"
+    stroke="#7796a9"
+    stroke-width="2.5"></path></svg
+>

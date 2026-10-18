@@ -1,0 +1,105 @@
+.bio-chemical {
+  color: #584b4a;
+  width: 100%;
+  padding: 16px 12px 0;
+  box-sizing: border-box;
+}
+.bio-chemical[data-watch='true'] .bio-chemical-head b {
+  display: none;
+}
+.bio-chemical[data-watch='true'] .bio-chemical-head span {
+  max-width: none;
+}
+.bio-chemical svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-chemical svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #635553;
+}
+.bio-chemical-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  min-height: 44px;
+  align-items: center;
+}
+.bio-chemical-head b {
+  font-size: 18px;
+  font-weight: 500;
+}
+.bio-chemical-note {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #796b64;
+  margin: 8px 0;
+}
+.bio-chemical-controls {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid #e4dcd6;
+  padding-top: 14px;
+}
+.bio-chemical-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bio-chemical button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 22px;
+  border: 1px solid #d8cac2;
+  background: #fcf9f4;
+  color: inherit;
+  font: inherit;
+}
+.bio-chemical button[aria-pressed='true'] {
+  background: #ebddd2;
+  border-color: #b89a85;
+}
+.bio-chemical-controls label {
+  font-size: 16px;
+  display: grid;
+  gap: 7px;
+}
+.bio-chemical input {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #ae8370;
+}
+.bio-chemical details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-chemical summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-chemical button:focus-visible,
+.bio-chemical input:focus-visible {
+  outline: 2px solid #a3826c;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .bio-chemical-head {
+    align-items: flex-start;
+  }
+  .bio-chemical-head span {
+    max-width: 65%;
+  }
+}
+
+.bio-chemical summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 12px;
+}
+.bio-chemical details[open] summary::after {
+  content: '−';
+}

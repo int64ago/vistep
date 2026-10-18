@@ -1,0 +1,27 @@
+---
+import { infraredTrace } from '../../models/chem-infrared-structure';
+const d = infraredTrace('ethanol', 1, 0)
+  .map((v, i) => `${i ? 'L' : 'M'}${v.x} ${v.y}`)
+  .join(' ');
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e4ead7"></rect><g transform="translate(60 130) scale(1.4)"
+    ><path d="M48 20 V151 H358" stroke="#9aac8d" stroke-width="2" fill="none"></path><rect
+      x="79"
+      y="25"
+      width="52"
+      height="125"
+      rx="12"
+      fill="#d8bd85"
+      opacity=".3"></rect><path d={d} stroke="#ae7f51" stroke-width="3" fill="none"></path></g
+  ><path d="M227 85 H386" stroke="#98aa8c" stroke-width="6"></path><circle
+    cx="267"
+    cy="85"
+    r="34"
+    fill="#bc947c"></circle><circle cx="386" cy="85" r="22" fill="#f1e7c6"></circle><path
+    d="M100 75 Q112 52 124 75 T148 75 T172 75 T196 75"
+    stroke="#bd9664"
+    stroke-width="3"
+    fill="none"></path></svg
+>

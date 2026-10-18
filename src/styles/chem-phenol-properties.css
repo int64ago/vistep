@@ -1,0 +1,238 @@
+.cpp {
+  color: #64735f;
+  font-size: 16px;
+}
+.cpp-stage {
+  padding: 22px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 40% 25%, #f9f5e5, #e5e9d9);
+  min-height: 340px;
+}
+.cpp svg {
+  width: 100%;
+  display: block;
+}
+.cpp svg text {
+  font-size: 22px;
+  fill: currentColor;
+}
+.cpp-pair {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 285px);
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+.cpp-tube svg {
+  height: 245px;
+}
+.cpp-ring {
+  height: 235px;
+}
+.cpp .cpp-site {
+  font-size: 16px;
+  fill: #929e80;
+}
+.cpp-readout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 25px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+.cpp-readout p {
+  margin: 0;
+  font-size: 16px;
+}
+.cpp-readout b {
+  font-size: 19px;
+}
+.cpp-iron {
+  text-align: center;
+  display: grid;
+  gap: 12px;
+  font-size: 17px;
+}
+.cpp-optical {
+  height: 75px;
+  width: 100px;
+  margin: auto;
+  border-radius: 50%;
+  box-shadow: inset 0 0 25px #faf7e780;
+}
+.cpp-iron strong {
+  font-weight: 500;
+}
+.cpp-desktop {
+  max-height: 290px;
+}
+.cpp-mobile {
+  display: none !important;
+}
+.cpp-apparatus-key {
+  display: flex;
+  gap: 10px 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+.cpp-legend {
+  text-align: center;
+  font-size: 16px;
+}
+.cpp-conclusion {
+  display: block;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.cpp-history {
+  max-width: 650px;
+  margin: auto;
+}
+.cpp-history svg {
+  height: 220px;
+}
+.cpp-history-line {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.cpp-history-line span {
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.5;
+}
+.cpp-history-line .active {
+  border-color: #9baf90;
+  opacity: 1;
+}
+.cpp-history p {
+  text-align: center;
+  line-height: 1.6;
+  font-size: 16px;
+}
+.cpp-acids {
+  text-align: center;
+  display: grid;
+  gap: 12px;
+  max-width: 430px;
+  margin: auto;
+}
+.cpp-formula {
+  font-family: Georgia, serif;
+  font-size: 32px;
+}
+.cpp-acid-observation svg {
+  height: 210px;
+}
+.cpp-acid-observation span {
+  display: block;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.cpp-acids small {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.cpp-controls {
+  display: grid;
+  gap: 18px;
+  padding: 20px 4px;
+}
+.cpp-controls button {
+  min-height: 44px;
+}
+.cpp-note {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+.cpp.is-watch > .cpp-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cpp-stage {
+    padding: 12px 6px;
+    border-radius: 22px;
+    min-height: 310px;
+  }
+  .cpp-pair {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 2px;
+  }
+  .cpp-tube svg {
+    height: 205px;
+  }
+  .cpp-ring {
+    height: 210px;
+  }
+  .cpp .cpp-ring text {
+    font-size: 27px;
+  }
+  .cpp .cpp-site {
+    font-size: 23px;
+  }
+  .cpp-readout {
+    gap: 5px 12px;
+    margin-top: 12px;
+  }
+  .cpp-readout b {
+    font-size: 17px;
+  }
+  .cpp-iron {
+    font-size: 16px;
+    gap: 8px;
+  }
+  .cpp-optical {
+    width: 75px;
+    height: 60px;
+  }
+  .cpp-desktop {
+    display: none !important;
+  }
+  .cpp-mobile {
+    display: block !important;
+    max-height: 290px;
+  }
+  .cpp-apparatus-key {
+    display: grid;
+    text-align: center;
+    gap: 4px;
+  }
+  .cpp-legend {
+    margin: 8px 0;
+  }
+  .cpp-history svg {
+    height: 160px;
+  }
+  .cpp-history-line {
+    gap: 8px;
+  }
+  .cpp-history-line span {
+    font-size: 16px;
+    flex: 1;
+  }
+  .cpp-history p {
+    text-align: left;
+  }
+  .cpp-history svg text {
+    font-size: 32px;
+  }
+  .cpp-controls {
+    padding: 14px 0;
+  }
+  .cpp-acid-observation svg {
+    height: 185px;
+  }
+  .cpp-acid-observation text {
+    font-size: 23px;
+  }
+}

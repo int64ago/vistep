@@ -1,0 +1,252 @@
+.bio-genetic-material {
+  background: #efebdf;
+  border-radius: 25px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #625f51;
+}
+.bio-material-kind {
+  font-size: 16px;
+  line-height: 1.45;
+  color: #85816d;
+  margin: 0 0 12px;
+}
+.bio-material-groups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.bio-material-groups > div {
+  border-radius: 18px;
+  padding: 8px;
+  background: #eee8d7;
+  outline: 2px solid transparent;
+  transition:
+    background 0.25s,
+    outline-color 0.25s;
+}
+.bio-material-groups > div.is-current {
+  background: #e2ddc7;
+  outline-color: #b8b095;
+}
+.bio-material-groups p {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 45px;
+  margin: 0;
+  text-align: center;
+}
+.bio-material-groups svg {
+  display: block;
+  width: 100%;
+  height: 115px;
+}
+.bio-material-groups strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+.bio-material-note {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 650px;
+  margin: 12px auto 0;
+}
+.bio-material-recovery > svg {
+  display: block;
+  width: 100%;
+  height: 240px;
+}
+.bio-material-recovery > p,
+.bio-material-result {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 10px 0;
+}
+.bio-material-molecules {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  max-width: 600px;
+  margin: auto;
+}
+.bio-material-molecules > div {
+  text-align: center;
+  font-size: 16px;
+}
+.bio-material-molecules svg {
+  width: 100%;
+  height: 80px;
+  display: block;
+}
+.bio-material-culture {
+  display: block;
+  width: 100%;
+  height: 190px;
+}
+.bio-material-interface {
+  display: block;
+  width: 100%;
+  height: 295px;
+}
+.bio-material-fraction {
+  position: relative;
+}
+.bio-material-fraction svg {
+  display: block;
+  width: 100%;
+  height: 267px;
+}
+.bio-material-fraction-key {
+  display: flex;
+  justify-content: center;
+  gap: 12px 22px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bio-material-label {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 630px;
+  margin: auto;
+  align-items: center;
+  gap: 10px 20px;
+}
+.bio-material-label p,
+.bio-material-children p {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 8px 0;
+}
+.bio-material-label svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+.bio-material-label > .bio-material-note {
+  grid-column: 1/-1;
+}
+.bio-material-children svg {
+  display: block;
+  width: 100%;
+  height: 190px;
+}
+.bio-material-evidence {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-material-evidence strong {
+  font-weight: 500;
+  font-size: 28px;
+}
+.bio-material-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 16px;
+  max-width: 700px;
+  margin: 24px auto 0;
+}
+.bio-material-controls label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 9px;
+  font-size: 16px;
+}
+.bio-material-controls button,
+.bio-material-controls select {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid #bcb69f;
+  border-radius: 12px;
+  background: #f8f4e8;
+  padding: 8px 12px;
+  color: inherit;
+  max-width: 100%;
+}
+.bio-material-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-material-controls select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 540px) {
+  .bio-material-groups {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .bio-material-groups p {
+    min-height: 45px;
+  }
+  .bio-material-groups svg {
+    height: 80px;
+  }
+  .bio-material-groups > div {
+    padding: 7px 4px;
+  }
+  .bio-material-interface {
+    height: 280px;
+  }
+  .bio-material-label {
+    gap: 8px;
+  }
+  .bio-material-label svg {
+    height: 150px;
+  }
+  .bio-material-label p {
+    min-height: 66px;
+  }
+  .bio-material-label .bio-material-note {
+    min-height: 0;
+  }
+  .bio-material-molecules svg {
+    height: 65px;
+  }
+  .bio-material-culture {
+    height: 175px;
+  }
+  .bio-material-children svg {
+    height: 155px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-genetic-material {
+    padding: 12px;
+  }
+  .bio-genetic-material[data-watch='true'] .bio-material-kind {
+    display: none;
+  }
+  .bio-material-recovery > svg {
+    height: 200px;
+  }
+  .bio-material-interface {
+    height: 235px;
+  }
+  .bio-material-groups svg {
+    height: 68px;
+  }
+  .bio-material-label svg {
+    height: 125px;
+  }
+  .bio-material-culture {
+    height: 155px;
+  }
+  .bio-material-children svg {
+    height: 125px;
+  }
+  .bio-material-evidence strong {
+    font-size: 25px;
+  }
+}

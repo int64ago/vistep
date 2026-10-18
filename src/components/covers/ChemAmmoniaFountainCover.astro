@@ -1,0 +1,34 @@
+---
+import { ammoniaFountain, fountainLiquidHeight } from '../../models/chem-ammonia-fountain';
+const s = ammoniaFountain(20);
+const y = 205 - fountainLiquidHeight(s.water, 90);
+---
+
+<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><defs
+    ><clipPath id="ammonia-cover-sphere"><circle cx="200" cy="115" r="90"></circle></clipPath></defs
+  ><circle cx="200" cy="115" r="90" fill="#eff1e544" stroke="#a7b496" stroke-width="2"
+  ></circle><rect
+    x="110"
+    y={y}
+    width="180"
+    height="185"
+    fill="#c9a4bb"
+    opacity=".6"
+    clip-path="url(#ammonia-cover-sphere)"></rect><path
+    d="M182 202V235H218V202"
+    stroke="#a7b496"
+    stroke-width="2"></path><path d="M180 232H220L216 249H184Z" fill="#b5a18a"></path><path
+    d="M200 116V374"
+    stroke="#a7b496"
+    stroke-width="7"></path><path d="M200 116V374" stroke="#d2bacb" stroke-width="3"></path><path
+    d="M200 116Q198 37 179 46Q143 57 143 145M200 116Q205 39 219 49Q251 63 255 145"
+    stroke="#c9a4bb"
+    stroke-width="3"></path><path
+    d="M82 319V380Q82 392 96 392H304Q318 392 318 380V319"
+    stroke="#a7b496"
+    stroke-width="2"></path><path
+    d="M86 350H314V380Q314 388 302 388H98Q86 388 86 380Z"
+    fill="#c0d7cd"
+    opacity=".5"></path></svg
+>

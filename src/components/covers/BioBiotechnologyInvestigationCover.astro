@@ -1,0 +1,41 @@
+---
+import { compareCertificate } from '../../models/bio-biotechnology-investigation';
+const c = compareCertificate(0, {
+  id: 'MON87427',
+  use: 'production',
+  region: 'South-China',
+  date: '2026-10-18',
+});
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#dbe0c9"></rect><g
+    transform="translate(53 28) rotate(-4 80 87)"
+    ><rect width="158" height="176" rx="12" fill="#f6f4e4" stroke="#c9d1b7"></rect><path
+      d="M24 29H119M24 47H104M24 81H134M24 110H134M24 139H134"
+      stroke="#bdc6aa"
+      stroke-width="5"
+      stroke-linecap="round"></path><path
+      d="M23 108H133"
+      stroke="#dfc499"
+      stroke-width="15"
+      opacity=".7"></path></g
+  ><g transform="translate(253 38)"
+    >{
+      c.checks.map((x, i) => (
+        <g transform={`translate(0 ${i * 43})`}>
+          <>
+            <circle cx="15" cy="15" r="15" fill={x.match ? '#b3c19a' : '#dcc49f'} />
+            <path
+              d={x.match ? 'M8 15l5 5l9 -11' : 'M9 9l12 12M21 9L9 21'}
+              stroke="#607252"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+            />
+          </>
+        </g>
+      ))
+    }</g
+  ><path d="M219 111q15 -7 28 0" fill="none" stroke="#a5b18e" stroke-width="2"></path></svg
+>

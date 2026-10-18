@@ -1,0 +1,53 @@
+{
+  "owner": "chemistry_inventory",
+  "kind": "author-self-review",
+  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
+  "sourceFiles": {
+    "src/models/chem-periodic-patterns.ts": "0e1e6e394e51d891ef3d284d99514be2ac2a221e5bc225ee84a631548a5c7a84",
+    "src/components/experiments/ChemPeriodicPatterns.tsx": "4dd76dbd5476720b9b557eb819a40ec9311ebbf76013eb2351c4c5f8481a2a64",
+    "src/styles/chem-periodic-patterns.css": "f49a99e459b96a93d636ad98191edbfe2e6f9a74dedfa7c554c40e077394048a",
+    "src/data/scene-packets/chem-periodic-patterns.json": "0c2eba2d3ad3148781af52b8ed574e2f409bb272076e8f630fdf58a2ee3ec505"
+  },
+  "conditions": {
+    "browser": "Chromium via Playwright, headless",
+    "viewport": "320×844 emulation, not physical device",
+    "reducedMotion": true,
+    "audio": "off",
+    "preview": "own independent snapshot on4337"
+  },
+  "checks": [
+    {
+      "type": "model",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "type": "paused-keyframe-geometry",
+      "status": "passed",
+      "cases": 13,
+      "evidence": [
+        "artifacts/chemistry-inventory/review-periodic-patterns",
+        "artifacts/chemistry-inventory/review-periodic-patterns-zh",
+        "artifacts/chemistry-inventory/review-periodic-patterns-final"
+      ],
+      "note": "EN8+ZH3 and2 affected EN cues repeated after spacing-only caption correction; no horizontal overflow."
+    },
+    {
+      "type": "visual-author-inspection",
+      "status": "passed",
+      "observed": "Viewed320px table transformation,Cu occupancy,andionization bar chart. All text16px or larger; transport within viewport."
+    },
+    {
+      "type": "continuous-playback",
+      "status": "not-run"
+    },
+    {
+      "type": "listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical-phone",
+      "status": "not-run"
+    }
+  ]
+}

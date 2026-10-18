@@ -1,0 +1,44 @@
+---
+import { partition, layerColors } from '../../models/chem-aromatic-comparison';
+const p = partition();
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><rect width="400" height="230" fill="#efefdf"></rect>{
+    [0, 1].map((i) => (
+      <g transform={`translate(${75 + i * 170} 15)`}>
+        <>
+          <path
+            d="M0 12V150Q0 190 40 190T80 150V12"
+            fill="#e7ead6"
+            stroke="#a6b8a1"
+            stroke-width="2"
+          />
+          <path
+            d="M3 78H77V150Q77 187 40 187T3 150Z"
+            fill={
+              i === 0
+                ? layerColors(p.waterConcentration, 'bromine')
+                : layerColors(1, 'permanganate')
+            }
+          />
+          <path
+            d="M3 38H77V78H3Z"
+            fill={i === 0 ? layerColors(p.organicConcentration, 'bromine') : '#e3e7cd'}
+          />
+          <path d="M9 24V150Q9 173 21 180" stroke="#fff" stroke-opacity=".65" stroke-width="3" />
+          <ellipse cx="40" cy="12" rx="40" ry="7" stroke="#a6b8a1" />
+          <path d="M3 78H77" stroke="#a1ad88" />
+          <text x="40" y="207" text-anchor="middle" font-size="20" fill="#6b7b5f">
+            {i === 0 ? 'Br₂' : 'MnO₄⁻'}
+          </text>
+        </>
+      </g>
+    ))
+  }<path d="M115 143Q164 123 115 71" stroke="#a07f4b" stroke-width="2" stroke-dasharray="3 5"
+  ></path><circle cx="123" cy="86" r="5" fill="#a67942"></circle><circle
+    cx="133"
+    cy="86"
+    r="5"
+    fill="#a67942"></circle></svg
+>

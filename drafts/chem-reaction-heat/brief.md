@@ -1,0 +1,9 @@
+# Reaction heat
+
+Targets51/52 required2 numbered experiments6-1/6-2, printed32/33 PDF37/38. Full bodies and photographs checked. Six chapters163s: initial temperature; reacting ribbon/bubbles/warming; unchanged products during later cooling; crystal reaction and liquid; interface freezing; wet/dry wood lifting comparison. Two consecutive3-cue variants.
+
+Independent chemical inventories conserve Mg/H/charge and Ba/N/O/H/Cl total composition. Thermal model is deliberately illustrative: Mg Q96J/C16J/K gives adiabatic26C from20; crystals Q−800J/C20J/K plus.5g interface water. Sensible heats4180/2100Jkg−1K−1, latent333500Jkg−1. Enthalpy method holds0C during partial freezing, then allows subzero temperature. Environment exchange K(Tambient−T), dt<=.05s. Six tests check exact energy ledger, independent endpoints, phase plateau, dry/insufficient-cooling boundaries, unchanged products after reaction and deterministic seek.
+
+No measured textbook trajectory, calibrated reaction kinetics, physical quantities from a reagent recipe, mixture-phase thermodynamics or mechanical ice strength are claimed. Reaction extent is prescribed and directly controls material consumption and thermal budget. Dry control uses the same reaction extent and exchange coefficient, differing only in interface water. Attachment abovehalf frozen is a teaching threshold, not strength prediction.
+
+Original test-tube/clamp/thermometer geometry and a distinct covered beaker/wood interface. Final shot has two actual beakers lifted together, with wet wood following only if the model attaches it; dry wood remains on the bench. Chinese16px and44px controls. Official RSC indexed text, Wisconsin page and UCSD indexed demo checked, source page images observed. Scoped TS/packet/browser review pending; root owns audio/global review/release.

@@ -1,0 +1,39 @@
+---
+import { leafChloroplast } from '../../models/bio-cell-microscopy';
+const chloroplasts = Array.from({ length: 18 }, (_, i) => leafChloroplast(i, 18));
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><path
+    d="M50 188H134M115 185V151C150 113 139 60 100 62"
+    stroke="#5b796c"
+    stroke-width="14"
+    stroke-linecap="round"></path><path d="M83 42L107 60L89 88L65 71Z" fill="#50695f"></path><path
+    d="M81 90V115M55 126H125"
+    stroke="#bdcba6"
+    stroke-width="8"></path><circle
+    cx="267"
+    cy="115"
+    r="95"
+    fill="#e2e8c6"
+    stroke="#597c62"
+    stroke-width="7"></circle><g transform="translate(267 115)"
+    ><rect
+      x="-78"
+      y="-35"
+      width="156"
+      height="70"
+      rx="9"
+      fill="#c9d99a"
+      stroke="#7c9860"
+      stroke-width="3"></rect><rect x="-65" y="-22" width="130" height="44" rx="16" fill="#e7ecc2"
+    ></rect>{
+      chloroplasts.map((p, i) => (
+        <g transform={`translate(${p.x} ${p.y}) rotate(${p.angle})`}>
+          <ellipse rx="5" ry="3" fill="#609247" />
+          {i === 3 && <ellipse rx="8" ry="6" stroke="#b08344" stroke-width="2" />}
+        </g>
+      ))
+    }</g
+  ></svg
+>

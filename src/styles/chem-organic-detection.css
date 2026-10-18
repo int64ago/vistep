@@ -1,0 +1,258 @@
+.cod {
+  color: #66795f;
+  font-size: 16px;
+}
+.cod-stage {
+  min-height: 335px;
+  padding: 24px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 45% 25%, #faf7e7, #e4eadb);
+}
+.cod svg {
+  display: block;
+  width: 100%;
+}
+.cod svg text {
+  font-size: 20px;
+  fill: currentColor;
+}
+.cod-desktop {
+  height: 270px;
+}
+.cod-mobile {
+  display: none !important;
+}
+.cod-plan-label {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.cod-route {
+  display: grid;
+  gap: 13px;
+  max-width: 620px;
+  margin: auto;
+}
+.cod-route > div {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 3px 12px;
+  opacity: 0.25;
+  transition: opacity 0.3s;
+}
+.cod-route .active {
+  opacity: 1;
+}
+.cod-route b {
+  grid-row: span 2;
+  font-size: 20px;
+  color: #a39163;
+}
+.cod-route span {
+  font-size: 18px;
+}
+.cod-route small {
+  font-size: 16px;
+  color: #8b987a;
+}
+.cod-test-row {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 310px);
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.cod-test-row svg {
+  height: 265px;
+}
+.cod-test-row p,
+.cod-test-row strong {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.cod-test-row b {
+  font-size: 24px;
+  font-weight: 500;
+}
+.cod-aspirin {
+  max-width: 450px;
+  margin: auto;
+}
+.cod-aspirin svg {
+  height: 255px;
+}
+.cod-aspirin-labels {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.cod-aspirin-labels span {
+  flex: 1;
+}
+.cod-candidates {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cod-candidates span {
+  padding: 9px 14px;
+  border-radius: 16px;
+  background: #dce7d4;
+  font-size: 18px;
+}
+.cod-candidates .excluded {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+.cod-decision {
+  margin: 30px auto 0;
+  max-width: 550px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+.cod-add,
+.cod-clear {
+  min-height: 44px;
+  border: 1px solid #becbab;
+  border-radius: 14px;
+  background: #edf0df;
+  color: #65795d;
+  font: inherit;
+  padding: 8px 14px;
+  margin: 10px 6px 0 0;
+}
+.cod-nmr {
+  max-width: 620px;
+  margin: auto;
+}
+.cod-nmr svg {
+  height: 275px;
+}
+.cod-nmr p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.cod-controls {
+  display: grid;
+  gap: 18px;
+  padding: 20px 4px;
+}
+.cod-controls button {
+  min-height: 44px;
+}
+.cod-note {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+.cod.is-watch > .cod-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cod-stage {
+    padding: 12px 6px;
+    border-radius: 22px;
+    min-height: 310px;
+  }
+  .cod-desktop {
+    display: none !important;
+  }
+  .cod-mobile {
+    display: block !important;
+    height: 300px;
+  }
+  .cod .cod-mobile text {
+    font-size: 20px;
+  }
+  .cod .cod-mobile > text {
+    font-size: 18px;
+  }
+  .cod-test-row {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 9px;
+  }
+  .cod-test-row svg {
+    height: 240px;
+  }
+  .cod-test-row b {
+    font-size: 20px;
+  }
+  .cod-route {
+    gap: 10px;
+  }
+  .cod-route span {
+    font-size: 16px;
+  }
+  .cod-aspirin svg {
+    height: 220px;
+  }
+  .cod .cod-aspirin text {
+    font-size: 23px;
+  }
+  .cod-aspirin-labels {
+    gap: 10px;
+  }
+  .cod-candidates {
+    gap: 8px;
+  }
+  .cod-candidates span {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+  .cod-decision {
+    font-size: 16px;
+    margin-top: 18px;
+  }
+  .cod-nmr svg {
+    height: 230px;
+  }
+  .cod .cod-nmr text {
+    font-size: 31px;
+  }
+  .cod-controls {
+    padding: 14px 0;
+  }
+}
+
+.cod-current-formula {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  line-height: 1.7;
+  color: #8b956c;
+  text-align: center;
+  margin: 0 0 18px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .cod-current-formula {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cod.is-watch .cod-route > div:not(.current) small {
+    display: none;
+  }
+  .cod.is-watch .cod-route > div:not(.current) b {
+    grid-row: auto;
+  }
+}
+
+.cod-watch-test {
+  margin-top: 12px;
+}
+@media (max-width: 600px) {
+  .cod-watch-test {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+  .cod-watch-test svg {
+    height: 175px;
+  }
+}

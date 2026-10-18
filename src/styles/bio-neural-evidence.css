@@ -1,0 +1,99 @@
+.bio-neural-evidence {
+  color: #565b4f;
+}
+.bio-neural-evidence svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-neural-evidence svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #565b4f;
+}
+.bio-neural-heading {
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-neural-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbe0d2;
+}
+.bio-neural-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-neural-evidence button {
+  min-height: 44px;
+  border-radius: 24px;
+  padding: 8px 16px;
+  border: 1px solid #ced6c2;
+  background: #f8f9f2;
+  color: inherit;
+  font: inherit;
+}
+.bio-neural-evidence button[aria-pressed='true'] {
+  background: #e1e8d7;
+  border-color: #98aa87;
+}
+.bio-neural-evidence label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-neural-evidence input {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #8da27c;
+}
+.bio-neural-evidence table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.bio-neural-evidence th,
+.bio-neural-evidence td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e5d9;
+}
+.bio-neural-evidence th {
+  font-weight: 500;
+}
+.bio-neural-evidence details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-neural-evidence summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-neural-evidence button:focus-visible,
+.bio-neural-evidence input:focus-visible {
+  outline: 2px solid #829870;
+  outline-offset: 3px;
+}
+
+.bio-neural-evidence {
+  padding: 10px 12px 0;
+  box-sizing: border-box;
+}
+.bio-neural-evidence summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 8px;
+}
+.bio-neural-evidence details[open] summary::after {
+  content: '−';
+}
+.bio-neural-evidence[data-watch='true'] .bio-neural-heading {
+  display: none;
+}

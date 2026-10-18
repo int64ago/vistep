@@ -1,0 +1,146 @@
+.chem-sulfur-transformations {
+  font-size: 16px;
+  color: #647152;
+  padding: 18px 10px;
+}
+.chem-str-title {
+  text-align: center;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 450;
+}
+.chem-str-stage {
+  display: block;
+  width: 100%;
+  height: 310px;
+  margin: 4px auto;
+}
+.chem-str-map {
+  display: block;
+  width: 100%;
+  height: 245px;
+  max-width: 440px;
+  margin: 10px auto;
+}
+.chem-str-note,
+.chem-str-evidence {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 420px;
+  margin: 8px auto 0;
+}
+.chem-str-evidence span {
+  display: block;
+}
+.chem-str-copper-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 350px;
+  margin: 8px auto 0;
+}
+.chem-str-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+  border-top: 1px solid #aeb89b44;
+  padding-top: 20px;
+}
+.chem-str-controls button,
+.chem-str-controls input,
+.chem-str-controls summary {
+  min-height: 44px;
+}
+.chem-str-controls summary {
+  font-size: 16px;
+  cursor: pointer;
+}
+.chem-str-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .chem-sulfur-transformations {
+    padding: 14px 8px;
+  }
+  .chem-str-title {
+    font-size: 17px;
+  }
+  .chem-str-stage {
+    height: 240px;
+  }
+  .chem-str-map {
+    height: 190px;
+  }
+  .chem-str-evidence,
+  .chem-str-note {
+    margin-top: 6px;
+  }
+  .chem-str-copper-labels {
+    gap: 10px;
+  }
+}
+
+.chem-str-iron {
+  height: 235px;
+}
+@media (max-width: 600px) {
+  .chem-str-iron {
+    height: 185px;
+  }
+}
+
+.chem-str-boundaries {
+  max-width: 360px;
+  margin: 24px auto;
+  font-size: 16px;
+}
+.chem-str-balance {
+  text-align: center;
+  font-size: 23px;
+  margin-bottom: 22px;
+}
+.chem-str-amounts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  text-align: center;
+  font-size: 20px;
+}
+.chem-str-boundaries p {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.chem-str-air {
+  display: grid;
+  grid-template-columns: 65px 1fr;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #b0b89a55;
+  padding-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.chem-str-air > span:first-child {
+  grid-row: span 2;
+  color: #a18a62;
+}
+@media (max-width: 600px) {
+  .chem-str-boundaries {
+    margin: 15px auto;
+  }
+  .chem-str-air {
+    font-size: 16px;
+  }
+  .chem-str-balance {
+    font-size: 21px;
+  }
+  .chem-str-amounts {
+    font-size: 18px;
+  }
+}

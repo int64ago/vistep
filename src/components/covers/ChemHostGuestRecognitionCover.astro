@@ -1,0 +1,103 @@
+---
+import { C60, host, crownFit, add, rotate, type V } from '../../models/chem-host-guest-recognition';
+const c = crownFit(6, 'K');
+const instances = [
+  {
+    molecule: host,
+    origin: { x: 205, y: 253 },
+    position: { x: 0, y: 0, z: 0 },
+    scale: 17,
+    color: '#ad9564',
+    pitch: 0.86,
+  },
+  {
+    molecule: C60,
+    origin: { x: 205, y: 253 },
+    position: { x: 0, y: 0, z: 2 },
+    scale: 17,
+    color: '#608578',
+    pitch: 0.86,
+  },
+  {
+    molecule: c,
+    origin: { x: 492, y: 215 },
+    position: { x: 0, y: 0, z: 0 },
+    scale: 26,
+    color: '#83958a',
+    pitch: 0.65,
+  },
+];
+const objects: {
+  z: number;
+  kind: 'bond' | 'atom';
+  a: { x: number; y: number; z: number };
+  b?: { x: number; y: number; z: number };
+  color: string;
+  r?: number;
+}[] = [];
+for (const it of instances) {
+  const project = (v: V) => {
+    const p = rotate(add(v, it.position), 0, it.pitch);
+    return { x: it.origin.x + p.x * it.scale, y: it.origin.y + p.y * it.scale, z: p.z };
+  };
+  const pts = it.molecule.atoms.map((a) => project(a.p));
+  for (const [i, j] of it.molecule.bonds)
+    objects.push({
+      z: (pts[i].z + pts[j].z) / 2,
+      kind: 'bond',
+      a: pts[i],
+      b: pts[j],
+      color: it.color,
+    });
+  it.molecule.atoms.forEach((a, i) =>
+    objects.push({
+      z: pts[i].z,
+      kind: 'atom',
+      a: pts[i],
+      color: a.element === 'O' ? '#b98371' : it.color,
+      r: a.element === 'O' ? 5 : 2.7,
+    }),
+  );
+}
+objects.sort((a, b) => a.z - b.z);
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="400" fill="#e7ede3"></rect>
+  <ellipse cx="203" cy="284" rx="135" ry="24" fill="#99ab8f" fill-opacity=".09"></ellipse>
+  {
+    objects.map((o) =>
+      o.kind === 'bond' ? (
+        <path
+          d={`M${o.a.x} ${o.a.y} L${o.b!.x} ${o.b!.y}`}
+          fill="none"
+          stroke={o.color}
+          stroke-width="2.4"
+        />
+      ) : (
+        <circle cx={o.a.x} cy={o.a.y} r={o.r} fill={o.color} />
+      ),
+    )
+  }
+  {
+    c.atoms
+      .filter((a) => a.element === 'O')
+      .map((a) => {
+        const p = rotate(a.p, 0, 0.65);
+        const d = Math.hypot(p.x, p.y);
+        return (
+          <path
+            d={`M${492 + p.x * 26} ${215 + p.y * 26} L${492 + (p.x / d) * c.ionRadius * 26} ${215 + (p.y / d) * c.ionRadius * 26}`}
+            fill="none"
+            stroke="#9ba073"
+            stroke-width="1.2"
+            stroke-dasharray="4 5"
+          />
+        );
+      })
+  }
+  <circle cx="492" cy="215" r={c.ionRadius * 26} fill="#a8b989" stroke="#839967" stroke-width="1.5"
+  ></circle>
+  <circle cx="483" cy="206" r="10" fill="#f7f0c8" fill-opacity=".4"></circle>
+  <path d="M486 215 H498 M492 209 V221" fill="none" stroke="#5e744f" stroke-width="1.6"></path>
+</svg>

@@ -1,0 +1,41 @@
+---
+name: 'Sulfur across oxidation states'
+title: 'How does sulfur move between oxidation states?'
+---
+
+<section id="understand">
+
+Placing sulfur at −2, 0, +4 and +6 reveals that it can be oxidized or reduced. The map is a reasoning aid; yellow dispersed material, fading fuchsin, a blue copper solution and a local glowing front provide distinct observations.
+
+Experiment 5-3 retains its liftable copper coil. Experimental Activity 5 uses a copper piece, includes separate Na₂S reactions with H₂SO₃ and acidified KMnO₄, and starts an iron–sulfur powder strip with a hot glass rod. The activity entry borrows the earlier cooled copper-solution observation as explanation, explicitly distinguishing it from the original activity steps.
+
+</section>
+<section id="try">
+
+Compare reagents in the sulfide view. For permanganate, choose hypothetical sulfur endpoints S or SO₄²⁻ and compare their electron requirements. This does not automatically predict products from colour; acidity, amounts and other conditions require independent evidence.
+
+Follow the connected copper-apparatus gas tube to fuchsin. Lifting the wire stops further reaction but retains formed products. In the iron–sulfur view, remove ignition or change the Fe/S amount ratio. Heat transfer and exothermic feedback determine whether the model front can propagate.
+
+</section>
+<section id="deeper">
+<details>
+<summary>Sulfur and electron inventories</summary>
+
+The copper equation is Cu+2H₂SO₄(concentrated)→CuSO₄+SO₂+2H₂O. One sulfur enters SO₂ while another stays in sulfate; not all consumed sulfuric acid is reduced.
+
+In the sulfide/sulfur-four comproportionation path, two sulfurs at −2 each lose two electrons to reach zero. One sulfur at +4 gains four electrons to reach zero. Sulfur and electrons balance; aqueous speciation and acid–base reactions are not compressed into a single claimed molecular mechanism.
+
+Acidic permanganate accepting five electrons per ion forms Mn²⁺. Sulfur moving from −2 to zero supplies two electrons per sulfur, whereas reaching +6 supplies eight. These are separate admissible balances, not evidence that fading uniquely identifies either endpoint. Insufficient acidity can also change the manganese product; that branch is not simulated.
+
+</details>
+<details>
+<summary>Iron–sulfur heat propagation and limits</summary>
+
+Thirty-six adjacent cells store temperature and reacted fraction. A local heat pulse acts for only 0.7 model time units, followed by neighbour diffusion, threshold-triggered exothermic reaction and environmental heat loss. The explicit time step is 0.01, with diffusivity 4, heat-loss coefficient 0.15, reaction coefficient 5 and heat-release coefficient 1.4. All are dimensionless teaching parameters, not measured iron–sulfur kinetics. The discrete model explains ignition, propagation and cooling.
+
+Reaction in each cell is limited by the available iron or sulfur. The default Fe/S amount ratio of about 1.15 approximates conversion of the textbook activity’s mass ratio, leaving a small iron excess in the ideal main pathway. Pure product is not claimed. Real work in air can include iron oxidation and sulfur combustion; the heat-front model computes only Fe+S→FeS.
+
+Textbook: required 2, pages 5, 8 and 30 (PDF 10, 13 and 35). The [University of Wisconsin iron–sulfur demonstration](https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/02atomsmolpage/reaction_of_iron_and_sulfu.htm) supports exothermic red-glow observations. [OpenStax’s redox chapter](https://openstax.org/books/chemistry-2e/pages/17-1-review-of-redox-chemistry) supports half-reaction and electron-balance reasoning. The film explains textbook mechanisms without supplying home gas-generation or corrosive-reagent recipes.
+
+</details>
+</section>

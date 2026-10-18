@@ -1,0 +1,287 @@
+.bio-expression-scene {
+  max-width: 900px;
+  margin: auto;
+  color: #53665c;
+}
+.bio-expression-stage {
+  min-height: 350px;
+  padding: 20px;
+  background: radial-gradient(ellipse at 40% 30%, #f7f6e9, #ebeede);
+  border-radius: 25px;
+}
+.bio-expression-stage p,
+.bio-expression-stage small,
+.bio-expression-stage b {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-expression-stage small {
+  display: block;
+}
+.bio-expression-detection {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: center;
+  gap: 28px;
+}
+.bio-expression-cell {
+  text-align: center;
+}
+.bio-expression-cell svg {
+  width: 100%;
+  display: block;
+}
+.bio-expression-table table {
+  border-collapse: separate;
+  border-spacing: 0 7px;
+  width: 100%;
+  font-size: 17px;
+}
+.bio-expression-table td {
+  text-align: center;
+  font-size: 23px;
+  padding: 8px 12px;
+}
+.bio-expression-table th {
+  text-align: left;
+  font-weight: 500;
+  min-width: 40px;
+  font-size: 16px;
+}
+.bio-expression-table tbody th {
+  padding: 8px;
+  max-width: 145px;
+}
+.bio-expression-table tr.active {
+  background: #e2e6d7;
+}
+.bio-expression-table p {
+  margin: 10px 0;
+}
+.bio-expression-flowers {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
+}
+.bio-expression-flowers svg {
+  height: 270px;
+  display: block;
+  max-width: 100%;
+}
+.bio-expression-methyl,
+.bio-expression-mice {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  gap: 30px;
+}
+.bio-expression-methyl > svg {
+  max-width: 230px;
+  margin: auto;
+  width: 100%;
+}
+.bio-expression-cpg svg {
+  width: 100%;
+  display: block;
+  max-width: 430px;
+}
+.bio-expression-cpg {
+  text-align: center;
+}
+.bio-expression-cpg p {
+  margin: 0;
+}
+.bio-expression-mice > div:first-child {
+  text-align: center;
+}
+.bio-expression-mice svg {
+  max-width: 330px;
+  width: 100%;
+}
+.bio-expression-inherit {
+  display: grid;
+  grid-template-columns: 1fr 20px 0.75fr 20px 1fr;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.bio-expression-inherit svg {
+  max-height: 190px;
+  width: 100%;
+}
+.bio-expression-parentflowers {
+  display: flex;
+}
+.bio-expression-inherit p {
+  margin: 5px;
+}
+.bio-expression-temperature {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  max-width: 630px;
+  margin: auto;
+}
+.bio-expression-temperature svg {
+  max-width: 330px;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+.bio-expression-temperature > small {
+  grid-column: 1/-1;
+}
+.bio-expression-temperature p {
+  margin: 2px;
+}
+.bio-expression-larva {
+  max-width: 220px;
+  margin: 25px auto;
+}
+.bio-expression-cohort span {
+  font-size: 16px;
+}
+.bio-expression-controls {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+.bio-expression-controls label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-expression-controls select {
+  min-height: 44px;
+  width: 100%;
+  padding: 9px 13px;
+  border-radius: 12px;
+  background: #f3f4e9;
+  border: 1px solid #ccd3c2;
+  color: inherit;
+  font: inherit;
+}
+@media (max-width: 600px) {
+  .bio-expression-stage {
+    padding: 14px 9px;
+    border-radius: 19px;
+    min-height: 320px;
+  }
+  .bio-expression-detection {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+  .bio-expression-cell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+  }
+  .bio-expression-cell svg {
+    width: 70px;
+    flex-shrink: 0;
+  }
+  .bio-expression-table th {
+    min-width: 33px;
+  }
+  .bio-expression-table tbody th {
+    max-width: 110px;
+    padding: 4px;
+  }
+  .bio-expression-table td {
+    padding: 4px 8px;
+  }
+  .bio-expression-table p,
+  .bio-expression-table small {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .bio-expression-flowers {
+    gap: 5px;
+  }
+  .bio-expression-flowers svg {
+    height: 210px;
+  }
+  .bio-expression-methyl,
+  .bio-expression-mice {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .bio-expression-methyl > svg {
+    height: 170px;
+  }
+  .bio-expression-mice > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .bio-expression-mice > div:first-child svg {
+    width: 150px;
+  }
+  .bio-expression-mice p {
+    margin: 6px;
+  }
+  .bio-expression-inherit {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+  .bio-expression-inherit > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .bio-expression-inherit > div > b {
+    width: 82px;
+    flex-shrink: 0;
+  }
+  .bio-expression-inherit > span {
+    transform: rotate(90deg);
+    line-height: 18px;
+  }
+  .bio-expression-inherit svg {
+    height: 100px;
+    width: auto;
+    max-width: 120px;
+  }
+  .bio-expression-inherit > div:last-child {
+    flex-wrap: wrap;
+  }
+  .bio-expression-inherit > div:last-child p {
+    max-width: 130px;
+  }
+  .bio-expression-inherit > div:last-child .bio-expression-parentflowers {
+    width: 100%;
+    justify-content: center;
+  }
+  .bio-expression-temperature {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .bio-expression-cohort {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .bio-expression-larva {
+    max-width: 110px;
+    margin: 8px 0;
+  }
+  .bio-expression-temperature > div > svg {
+    height: 190px;
+  }
+  .bio-expression-cohort span {
+    width: 100%;
+  }
+}
+.bio-expression-scene.is-watch .bio-expression-cpg p,
+.bio-expression-scene.is-watch .bio-expression-mice > div:last-child > p,
+.bio-expression-scene.is-watch .bio-expression-mice > div:last-child > small,
+.bio-expression-scene.is-watch .bio-expression-temperature > small {
+  display: none;
+}

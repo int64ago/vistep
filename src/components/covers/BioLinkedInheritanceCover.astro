@@ -1,0 +1,41 @@
+---
+import { inferTextbookPedigree } from '../../models/bio-linked-inheritance';
+const inferred = inferTextbookPedigree();
+const nodes = [
+  { id: 'I-1', x: 150, y: 48, male: true, affected: true },
+  { id: 'I-2', x: 250, y: 48, male: false, affected: false },
+  { id: 'II-3', x: 150, y: 117, male: false, affected: false },
+  { id: 'II-4', x: 250, y: 117, male: true, affected: false },
+  { id: 'III-5', x: 125, y: 189, male: true, affected: false },
+  { id: 'III-6', x: 275, y: 189, male: true, affected: true },
+];
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eeedde"></rect><path
+    d="M166 48H234M200 48V82H150V101M166 117H234M200 117V153H125V173M200 153H275V173"
+    fill="none"
+    stroke="#adb497"
+    stroke-width="2"></path>{
+    nodes.map((n) => (
+      <g>
+        {n.male ? (
+          <rect
+            x={n.x - 16}
+            y={n.y - 16}
+            width="32"
+            height="32"
+            rx="3"
+            fill={n.affected ? '#9c818e' : '#f2efdf'}
+            stroke="#9ba58b"
+          />
+        ) : (
+          <circle cx={n.x} cy={n.y} r="16" fill="#f2efdf" stroke="#9ba58b" />
+        )}
+        {inferred[n.id].length === 1 && inferred[n.id][0] === 'Bb' && (
+          <circle cx={n.x} cy={n.y} r="5" fill="#9c818e" />
+        )}
+      </g>
+    ))
+  }</svg
+>

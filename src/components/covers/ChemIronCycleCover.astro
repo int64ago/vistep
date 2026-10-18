@@ -1,0 +1,28 @@
+---
+import { ironThiocyanate } from '../../models/chem-iron-cycle';
+const states = [
+  ironThiocyanate(0.0025, 0.0075),
+  ironThiocyanate(0, 0.0075),
+  ironThiocyanate(0.0025, 0.0275),
+];
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#eee9dd"></rect>{
+    states.map((m, i) => (
+      <g transform={`translate(${135 + i * 185},50)`}>
+        <path d="M-43 100H43V240a43 43 0 0 1-86 0Z" fill="#9e3b35" opacity={m.red * 0.75} />
+        {i === 1 &&
+          Array.from({ length: 8 }, (_, j) => (
+            <ellipse
+              cx={-28 + ((j * 13) % 55)}
+              cy={257 + (j % 3) * 6}
+              rx="5"
+              ry="3"
+              fill="#777e6b"
+            />
+          ))}
+      </g>
+    ))
+  }</svg
+>

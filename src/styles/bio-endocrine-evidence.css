@@ -1,0 +1,114 @@
+.bio-endocrine {
+  color: #565847;
+  padding: 10px 12px 0;
+  box-sizing: border-box;
+}
+.bio-endocrine[data-watch='true'] .bio-endocrine-heading small {
+  display: none;
+}
+.bio-endocrine svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-endocrine svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #575b4c;
+}
+.bio-endocrine-heading {
+  font-size: 17px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+.bio-endocrine-heading small {
+  font-size: 16px;
+  color: #879080;
+}
+.bio-endocrine-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #dce2d2;
+}
+.bio-endocrine-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bio-endocrine button {
+  min-height: 44px;
+  border: 1px solid #ccd5bf;
+  border-radius: 24px;
+  padding: 8px 16px;
+  font: inherit;
+  color: inherit;
+  background: #f8faf3;
+}
+.bio-endocrine button[aria-pressed='true'] {
+  background: #e1e8d3;
+  border-color: #93a27c;
+}
+.bio-endocrine label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-endocrine input {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #899a68;
+}
+.bio-endocrine table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin: 20px 0;
+  table-layout: fixed;
+}
+.bio-endocrine td,
+.bio-endocrine th {
+  padding: 14px 3px;
+  overflow-wrap: anywhere;
+  text-align: center;
+  border-bottom: 1px solid #dce3d2;
+}
+.bio-endocrine th {
+  font-weight: 500;
+  background: #eef3e6;
+}
+.bio-endocrine-note,
+.bio-endocrine details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-endocrine summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-endocrine summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 8px;
+}
+.bio-endocrine details[open] summary::after {
+  content: '−';
+}
+.bio-endocrine button:focus-visible,
+.bio-endocrine input:focus-visible {
+  outline: 2px solid #819264;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .bio-endocrine {
+    padding-top: 0;
+  }
+  .bio-endocrine-heading {
+    min-height: 40px;
+  }
+}

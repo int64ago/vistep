@@ -1,0 +1,68 @@
+---
+import {
+  nitrogenInitial,
+  oxidizeNitrogen,
+  absorbNitrogen,
+  nitrogenGasVolume,
+} from '../../models/chem-nitrogen-oxides';
+const states = [
+  oxidizeNitrogen(nitrogenInitial(10)),
+  absorbNitrogen(oxidizeNitrogen(nitrogenInitial(10))),
+];
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#edf1e5"></rect>
+  {
+    states.map((s, i) => {
+      const y = 95 + i * 170,
+        p = 130 + (nitrogenGasVolume(s) + 5) * 6;
+      return (
+        <g>
+          <>
+            <path
+              d={`M60 ${y + 21}H105L120 ${y + 12}V${y + 68}L105 ${y + 59}H60Z`}
+              fill="#dbe4d3"
+              stroke="#9daf91"
+              stroke-width="2"
+            />
+            <rect
+              x="120"
+              y={y}
+              width="330"
+              height="80"
+              rx="7"
+              fill="#f9fbf6"
+              stroke="#9daf91"
+              stroke-width="2"
+            />
+            <rect
+              x="126"
+              y={y + 6}
+              width={p - 126}
+              height="53"
+              fill="#ac744f"
+              opacity={s.no2 > 0.1 ? 0.34 : 0}
+            />
+            <rect x="126" y={y + 59} width={p - 126} height="15" fill="#b8d3c3" />
+            <path
+              d={`M${p + 8} ${y + 23}H555V${y + 57}H${p + 8}`}
+              fill="#dde6d1"
+              stroke="#a3b493"
+            />
+            <rect x={p} y={y + 3} width="9" height="74" rx="2" fill="#abbf92" />
+            <path
+              d={`M555 ${y + 12}V${y + 68}`}
+              stroke="#91a87a"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+          </>
+          <text x="290" y={y + 112} text-anchor="middle" fill="#657b52" font-size="23">
+            {nitrogenGasVolume(s).toFixed(1)} mL
+          </text>
+        </g>
+      );
+    })
+  }
+</svg>

@@ -75,6 +75,10 @@
   color: var(--teaching-muted);
   font-size: 16px;
 }
+.teaching-textbooks {
+  display: grid;
+  gap: 20px;
+}
 .teaching-textbook {
   display: grid;
   grid-template-columns: 104px minmax(0, 1fr) auto;
@@ -114,6 +118,18 @@
   opacity: 0.4;
   width: 24px;
   margin-bottom: 11px;
+}
+.teaching-book-mark-chemistry {
+  color: #7c6548;
+  background: linear-gradient(90deg, #cdbb9e 0, #e4d4b8 9%, #ece2cf 16%, #e2d2b7 100%);
+}
+.teaching-book-mark-biology {
+  color: #426e6c;
+  background: linear-gradient(90deg, #a8c4bf 0, #c7ddd5 9%, #dce9e3 16%, #c9dcd5 100%);
+}
+:lang(en) .teaching-book-mark-name {
+  font-size: 14px;
+  letter-spacing: -0.02em;
 }
 .teaching-book-mark-name {
   font-size: 20px;

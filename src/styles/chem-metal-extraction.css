@@ -1,0 +1,74 @@
+.chem-metal {
+  font-size: 16px;
+  color: #807c65;
+  min-width: 0;
+  padding: 5px 8px;
+}
+.chem-metal-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.chem-metal-svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-metal-phase {
+  text-align: center;
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.chem-metal-equation {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 9px auto;
+  overflow-wrap: anywhere;
+}
+.chem-metal-electrons {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0 4px;
+  color: #89937f;
+}
+.chem-metal-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 25px;
+}
+.chem-metal-controls button {
+  font-size: 16px;
+  min-height: 44px;
+}
+.chem-metal-controls label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+}
+.chem-metal-controls input[type='checkbox'] {
+  width: 24px;
+  height: 24px;
+}
+@media (min-width: 650px) {
+  .chem-metal {
+    max-width: 740px;
+    padding: 15px 30px;
+    margin: auto;
+  }
+  .chem-metal-svg {
+    max-width: 400px;
+  }
+  .chem-metal-title {
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-metal * {
+    transition: none !important;
+  }
+}

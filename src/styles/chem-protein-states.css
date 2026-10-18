@@ -1,0 +1,96 @@
+.chem-protein {
+  font-size: 16px;
+  color: #8b967a;
+  padding: 4px 8px;
+  min-width: 0;
+}
+.chem-protein-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.chem-protein-svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-protein-reagent {
+  text-align: center;
+  font-size: 21px;
+  margin: 12px 0;
+}
+.chem-protein-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #99a589;
+  margin: 10px 0 3px;
+}
+.chem-protein-pair,
+.chem-protein-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 320px;
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.chem-protein-pair svg,
+.chem-protein-three svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 7px;
+}
+.chem-protein-three {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  font-size: 16px;
+}
+.chem-protein-pair-label {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  font-size: 17px;
+  margin: 8px 0;
+}
+.chem-protein-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 25px;
+}
+.chem-protein-controls button {
+  min-height: 44px;
+  font-size: 16px;
+}
+.chem-protein-controls label {
+  font-size: 16px;
+}
+@media (min-width: 650px) {
+  .chem-protein {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px 30px;
+  }
+  .chem-protein-title {
+    font-size: 21px;
+  }
+  .chem-protein-svg {
+    max-width: 400px;
+  }
+  .chem-protein-pair {
+    max-width: 330px;
+  }
+  .chem-protein-three {
+    max-width: 370px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-protein * {
+    transition: none !important;
+  }
+}

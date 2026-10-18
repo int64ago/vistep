@@ -1,0 +1,31 @@
+---
+import { algaRegeneration } from '../../models/bio-nuclear-evidence';
+const state = algaRegeneration(1, 'daisy', 'umbrella');
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><g transform="translate(270 184)"
+    ><path
+      d="M0 0Q12-70 0-125M0 0l-18 15M0 0l15 13M0 0v21"
+      stroke="#6a9b88"
+      stroke-width="6"
+      stroke-linecap="round"></path><circle r="8" fill="#a16f64"></circle>{
+      state.cap === 'daisy' &&
+        Array.from({ length: 10 }, (_, i) => (
+          <ellipse
+            cx="0"
+            cy="-17"
+            rx="6"
+            ry="20"
+            fill="#bd917e"
+            transform={`translate(0 -125) rotate(${i * 36})`}
+          />
+        ))
+    }</g
+  ><circle cx="105" cy="115" r="51" fill="#ded1a4" stroke="#b7a678" stroke-width="3"
+  ></circle><circle cx="105" cy="115" r="15" fill="#99778e"></circle><path
+    d="M160 115Q202 105 225 155"
+    stroke="#a5ab8e"
+    stroke-width="3"
+    stroke-dasharray="5 7"></path></svg
+>

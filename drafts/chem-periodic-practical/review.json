@@ -1,0 +1,54 @@
+{
+  "owner": "chemistry_inventory",
+  "kind": "author-self-review",
+  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
+  "sourceFiles": {
+    "src/models/chem-periodic-practical.ts": "0fa62f94bbd6e42333e7befded956cc6bada52d97ee8f9ecb27d7a4e4a96b28b",
+    "src/components/experiments/ChemPeriodicPractical.tsx": "4e4f26254ff756601193931652262121a6c02912a77ee097b1b9aef13022bf56",
+    "src/styles/chem-periodic-practical.css": "55792c4fba6afc08350a971164167d6967b76c3a3499256f3074eecd7ee8b146",
+    "src/data/scene-packets/chem-periodic-practical.json": "3c3687e5bc8e59473059cf72055dc32a740e2f91093951f680234e9b009a03fe"
+  },
+  "conditions": {
+    "browser": "Playwright Chromium, headless",
+    "viewport": "320×844 emulation; not a physical phone",
+    "reducedMotion": true,
+    "audio": "off; missing local audio deliberately not treated as listening",
+    "preview": "isolated independent pnpm install --ignore-workspace; port4337",
+    "plateVariant": "snapshot-only true variant override exercises exact production plate branch without requiring unintegrated curriculum route"
+  },
+  "checks": [
+    {
+      "type": "model",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "type": "paused-keyframe-geometry",
+      "status": "passed",
+      "cases": 14,
+      "maxHorizontalOverflow": 0,
+      "evidence": [
+        "artifacts/chemistry-inventory/review-periodic",
+        "artifacts/chemistry-inventory/review-periodic-zh",
+        "artifacts/chemistry-inventory/review-periodic-plate-final"
+      ]
+    },
+    {
+      "type": "visual-author-inspection",
+      "status": "passed",
+      "observed": "Viewed English tube1/Mg5/base8, Chinese base8, final English plate1; controls remain visible within844 high viewport. Phone tube viewBox whitespace shortened; plate wells100px."
+    },
+    {
+      "type": "continuous-playback",
+      "status": "not-run"
+    },
+    {
+      "type": "listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical-phone",
+      "status": "not-run"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+---
+import { surveyMeadow, selectQuadrats } from '../../models/bio-population-sampling';
+const plants = surveyMeadow(),
+  plots = selectQuadrats(8, 17);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eef2e5"></rect>
+  <rect x="95" y="10" width="210" height="210" rx="12" fill="#dfe8ce"></rect>
+  {
+    plants.map((p) => {
+      const x = 95 + p.x * 21,
+        y = 10 + p.y * 21;
+      return p.target ? (
+        <g>
+          <>
+            <path d={`M${x} ${y}v-5m0 2-3-1m3 2 3-1`} stroke="#7e925f" fill="none" />
+            <circle cx={x} cy={y - 6} r="2.3" fill="#d4b967" />
+          </>
+        </g>
+      ) : (
+        <path d={`M${x} ${y}l-2-5m2 5 2-5`} stroke="#a6b38f" fill="none" />
+      );
+    })
+  }
+  {
+    plots.map((q) => (
+      <rect
+        x={95 + q.x * 21}
+        y={10 + q.y * 21}
+        width="21"
+        height="21"
+        fill="#ddbd67"
+        fill-opacity=".12"
+        stroke="#9b895d"
+        stroke-width="2"
+      />
+    ))
+  }
+  <path d="M33 42v28h28M367 160v28h-28" stroke="#b2bb9f" stroke-width="2" fill="none"></path>
+</svg>

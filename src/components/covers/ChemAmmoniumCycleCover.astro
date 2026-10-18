@@ -1,0 +1,42 @@
+---
+import { ammoniaCollection } from '../../models/chem-ammonium-cycle';
+const s = ammoniaCollection(0.9);
+---
+
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><path
+    d="M220 333V91Q220 50 255 50Q290 50 290 91V333"
+    stroke="#a3b392"
+    stroke-width="2"
+    fill="#eef2e644"></path>{
+    Array.from(s.cells, (v, i) => (
+      <g>
+        <>
+          <circle
+            cx={235 + (i % 3) * 14}
+            cy={80 + i * 12}
+            r="4"
+            fill="none"
+            stroke="#9bae89"
+            opacity={v}
+          />
+          <circle cx={280 - (i % 2) * 12} cy={84 + i * 12} r="3" fill="#c8bfa0" opacity={1 - v} />
+        </>
+      </g>
+    ))
+  }<g transform="translate(35 250) rotate(8)"
+    ><path
+      d="M0-21H165V21H0Q-21 21-21 0Q-21-21 0-21Z"
+      stroke="#a3b392"
+      stroke-width="2"
+      fill="#eff3e633"></path><path d="M-4 6H66V16H-4Z" fill="#ccc7b0"></path><path
+      d="M161-25H175V25H161Z"
+      fill="#baaa8d"></path></g
+  ><path d="M208 274H250V92" stroke="#a3b392" stroke-width="6" fill="none"></path><path
+    d="M208 274H250V92"
+    stroke="#e9efe0"
+    stroke-width="2"
+    fill="none"></path><rect x="311" y="335" width="45" height="13" rx="2" fill="#9cacc6"
+  ></rect><path d="M60 350Q40 322 68 286Q61 312 76 326Q85 343 60 350" fill="#d6bb83" opacity=".8"
+  ></path></svg
+>

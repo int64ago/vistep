@@ -1,0 +1,32 @@
+---
+import { proteinGeometry } from '../../models/chem-protein-structure';
+const g = proteinGeometry('whole', -0.2);
+---
+
+<svg viewBox="0 0 320 240" fill="none" aria-hidden="true"
+  ><g transform="translate(0 -20)"
+    >{
+      g.segments.map((s) => (
+        <line
+          x1={s.a.point[0]}
+          y1={s.a.point[1]}
+          x2={s.b.point[0]}
+          y2={s.b.point[1]}
+          stroke={
+            s.b.secondary === 'helix'
+              ? '#ad7585'
+              : s.b.secondary === 'sheet'
+                ? '#aa9a59'
+                : '#90a79b'
+          }
+          stroke-width="7"
+          stroke-linecap="round"
+        />
+      ))
+    }{
+      g.links.map((l) => (
+        <line x1={l.a[0]} y1={l.a[1]} x2={l.b[0]} y2={l.b[1]} stroke="#baa453" stroke-width="4" />
+      ))
+    }</g
+  ></svg
+>

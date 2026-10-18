@@ -1,0 +1,62 @@
+{
+  "owner": "chemistry_inventory",
+  "kind": "author-self-review",
+  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
+  "sourceFiles": {
+    "src/models/chem-carbon-frameworks.ts": "bbba3e7246924a013ae4aeab2c146feaf6c5f83d8422c203ea411ad9fc37cc96",
+    "src/components/three/ChemMoleculeStudio.tsx": "a2ae8dd45198e904570a0742a7f089383a5b278b22ce810820b097765b4c6272",
+    "src/components/experiments/ChemCarbonFrameworks.tsx": "e0b8993a5d94e93fa479327f1ad8be2a9da175f576c4abda8de211440e3dd12f",
+    "src/styles/chem-carbon-frameworks.css": "a4572ba90fb6542a70fbbc9880014e96395611daaafe3a170fee5d529086a1da",
+    "src/data/scene-packets/chem-carbon-frameworks.json": "1061b8864dd716554ae8d8c5fd570273a42c21d888f1b8a15335352c5b4c9f5c"
+  },
+  "conditions": {
+    "browser": "Chromium via Playwright, WebGL enabled except forced-fallback cases",
+    "viewport": "320×844 emulation; not physical phone",
+    "reducedMotion": true,
+    "audio": "off",
+    "preview": "independent source/dependencies on4337"
+  },
+  "checks": [
+    {
+      "type": "model",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "type": "paused-keyframe-geometry",
+      "status": "passed",
+      "cases": 16,
+      "evidence": [
+        "artifacts/chemistry-inventory/review-carbon-frameworks",
+        "artifacts/chemistry-inventory/review-carbon-final",
+        "artifacts/chemistry-inventory/review-carbon-final-zh"
+      ],
+      "note": "EN7+changedpiEN2+ZH7. All pass; final material disposal addition does not change appearance."
+    },
+    {
+      "type": "visual-author-inspection",
+      "status": "passed",
+      "observed": "Viewed methane, ethene, ethyne, dichloromethane, isobutane and connectivity graph. Increased pi-guide contrast and added colour keys; viewed final ethyne in3D andSVG fallback. Complete transport stays inviewport."
+    },
+    {
+      "type": "forced-WebGL-fallback",
+      "status": "passed",
+      "conditions": "getContext deliberately returnsnull onlyforWebGL; Canvas2D retained",
+      "cases": 3,
+      "evidence": "artifacts/chemistry-inventory/review-carbon-fallback",
+      "note": "Allthree cases show functional same-coordinate SVG fallback. Generic checker reports expected THREE.WebGLRenderer: Error creating WebGL context. Console failure is retained, not relabelled as a clean browser run."
+    },
+    {
+      "type": "continuous-playback",
+      "status": "not-run"
+    },
+    {
+      "type": "listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical-phone",
+      "status": "not-run"
+    }
+  ]
+}

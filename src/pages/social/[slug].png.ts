@@ -18,8 +18,8 @@ export const GET: APIRoute = async ({ params }) => {
   );
   const png = new Resvg(svg, {
     font: {
-      fontFiles: ['Manrope.ttf', 'ManropeGreek.ttf', 'NotoArrow.ttf'].map((name) =>
-        resolve('scripts/assets', name),
+      fontFiles: ['Manrope.ttf', 'ManropeGreek.ttf', 'NotoArrow.ttf', 'NotoScientific.ttf'].map(
+        (name) => resolve('scripts/assets', name),
       ),
       loadSystemFonts: false,
       defaultFontFamily: 'Manrope',

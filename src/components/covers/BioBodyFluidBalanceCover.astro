@@ -1,0 +1,37 @@
+---
+import { extracellularTracer } from '../../models/bio-body-fluid-balance';
+const state = extracellularTracer(14);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f0f3e9"></rect>
+  <rect x="24" y="31" width="352" height="36" rx="18" fill="#e5c9c2" stroke="#bc9d92"></rect>
+  <rect x="24" y="177" width="352" height="30" rx="15" fill="#dbe4c2" stroke="#a6b68c"></rect>
+  {
+    [80, 190, 300].map((x, i) => (
+      <g>
+        <>
+          <ellipse cx={x} cy={110 + (i % 2) * 20} rx="38" ry="26" fill="#cbdabb" stroke="#a5b796" />
+          <ellipse cx={x + 7} cy={110 + (i % 2) * 20} rx="10" ry="8" fill="#a8bf9c" />
+        </>
+      </g>
+    ))
+  }
+  {
+    state.amount.map((amount, i) =>
+      Array.from({ length: Math.round(amount * 45) }, (_, j) => (
+        <circle
+          cx={40 + ((j * 37) % 320)}
+          cy={i === 0 ? 43 + (j % 2) * 12 : i === 1 ? 155 + (j % 2) * 8 : 186 + (j % 2) * 9}
+          r="2.8"
+          fill="#987b50"
+        />
+      )),
+    )
+  }
+  <path
+    d="M135 73v70m-5-7 5 7 5-7M350 147V75m-5 7 5-7 5 7M228 157v15m-5-7 5 7 5-7"
+    fill="none"
+    stroke="#9aad7f"
+    stroke-width="2"></path>
+</svg>

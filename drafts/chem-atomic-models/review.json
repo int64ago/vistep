@@ -1,0 +1,52 @@
+{
+  "owner": "chemistry_inventory",
+  "kind": "author-self-review",
+  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
+  "sourceFiles": {
+    "src/models/chem-atomic-models.ts": "6c7758f675cedb3fb921519aaf6e41b7d0b05e709852206c5aee01939feba9c4",
+    "src/components/experiments/ChemAtomicModels.tsx": "f5d1859a6675cb5a6d636ab84b955903e74dac78dd8e6c42811c05d3416e1ff6",
+    "src/styles/chem-atomic-models.css": "a8581161b6daf653ccb3cf5546f3d5fa398da350067f3e9a2c17e4e8412d1221",
+    "src/data/scene-packets/chem-atomic-models.json": "b69865cf7b2482eda02174126dc79c5269e4b657c95e87b6a499e928d85b1289"
+  },
+  "conditions": {
+    "browser": "Playwright Chromium, headless",
+    "viewport": "320×844 emulation; not a physical phone",
+    "reducedMotion": true,
+    "audio": "off; no listening claim",
+    "preview": "independent snapshot pnpm installation; port4337"
+  },
+  "checks": [
+    {
+      "type": "model",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "type": "paused-keyframe-geometry",
+      "status": "passed",
+      "cases": 11,
+      "maxHorizontalOverflow": 0,
+      "evidence": [
+        "artifacts/chemistry-inventory/review-atomic-final",
+        "artifacts/chemistry-inventory/review-atomic-final-zh"
+      ]
+    },
+    {
+      "type": "visual-author-inspection",
+      "status": "passed",
+      "observed": "Viewed final English p-orbital phone frame and original 1s frame. Replaced tiny three-column phone clouds with one large orientation at a time, while desktop remains comparative. Removed duplicated explanation from watch stage; transport remains within viewport."
+    },
+    {
+      "type": "continuous-playback",
+      "status": "not-run"
+    },
+    {
+      "type": "listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical-phone",
+      "status": "not-run"
+    }
+  ]
+}

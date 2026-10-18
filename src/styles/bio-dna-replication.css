@@ -1,0 +1,172 @@
+.bio-dna-replication {
+  background: #efeddf;
+  border-radius: 25px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #656453;
+}
+.bio-replication-kind {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #858470;
+  margin: 0 0 12px;
+}
+.bio-replication-note {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 650px;
+  margin: 12px auto 0;
+}
+.bio-replication-tube {
+  display: block;
+  width: 100%;
+  height: 270px;
+}
+.bio-replication-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  max-width: 600px;
+  gap: 18px;
+  margin: auto;
+}
+.bio-replication-comparison p,
+.bio-replication-label p {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 0 0 6px;
+}
+.bio-replication-molecules {
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+  margin: 20px auto;
+}
+.bio-replication-molecules svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+.bio-replication-key {
+  display: flex;
+  gap: 8px 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.bio-replication-key span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bio-replication-key i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.bio-replication-fork {
+  display: block;
+  width: 100%;
+  height: 315px;
+}
+.bio-replication-label {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  max-width: 550px;
+  gap: 14px;
+  margin: auto;
+}
+.bio-replication-label > svg {
+  display: block;
+  width: 100%;
+  height: 210px;
+}
+.bio-replication-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 16px;
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+.bio-replication-controls label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-replication-controls button,
+.bio-replication-controls select {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid #bdbba1;
+  border-radius: 12px;
+  background: #f7f4e7;
+  padding: 8px 12px;
+  color: inherit;
+  max-width: 100%;
+}
+.bio-replication-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-replication-controls select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 540px) {
+  .bio-dna-replication {
+    padding: 12px;
+  }
+  .bio-dna-replication[data-watch='true'] .bio-replication-kind {
+    display: none;
+  }
+  .bio-replication-comparison > div {
+    min-width: 0;
+  }
+  .bio-replication-comparison {
+    gap: 8px;
+  }
+  .bio-replication-comparison p {
+    min-height: 69px;
+    overflow-wrap: anywhere;
+  }
+  .bio-replication-tube {
+    height: 210px;
+  }
+  .bio-replication-fork {
+    height: 225px;
+  }
+  .bio-replication-molecules {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px;
+    margin: 10px auto;
+  }
+  .bio-replication-molecules svg {
+    height: 85px;
+  }
+  .bio-replication-label {
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+  .bio-replication-label > svg {
+    height: 170px;
+  }
+}
+
+.bio-replication-origin {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+  color: #647c93;
+}
+
+@media (max-width: 600px) {
+  .bio-replication-fork text {
+    font-size: 26px;
+  }
+}

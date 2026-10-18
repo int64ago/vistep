@@ -1,0 +1,29 @@
+---
+import { pigmentBands } from '../../models/chem-pigment-chromatography';
+const model = pigmentBands(1);
+---
+
+<svg viewBox="0 0 260 260" aria-hidden="true">
+  <path d="M91 15V248M169 248V15" fill="#edf1e7" stroke="#a2b3a2" stroke-width="2"></path>
+  <path d="M95 35H165V234H95Z" fill="#e7e1ca"></path>
+  {
+    model.bands.map((b) =>
+      b.cells.map((a, i) => (
+        <rect
+          x="95"
+          y={35 + (198 * (i + 0.5)) / 160}
+          width="70"
+          height="1.4"
+          fill={b.color}
+          opacity={Math.min(0.88, a * 13)}
+        />
+      )),
+    )
+  }
+  <path
+    d="M97 237Q109 232 120 237Q133 232 145 237L162 237 158 244H102Z"
+    fill="#faf8ee"
+    stroke="#c9ccb8"></path>
+  <path d="M193 52V207M187 198L193 207 199 198" fill="none" stroke="#a7b9a1" stroke-width="2"
+  ></path>
+</svg>

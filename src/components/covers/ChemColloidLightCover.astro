@@ -1,0 +1,54 @@
+---
+import { colloidOptics } from '../../models/chem-colloid-light';
+const samples = [colloidOptics(18, 0), colloidOptics()];
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <rect width="400" height="230" rx="18" fill="#254a43"></rect>
+  {
+    samples.map((sample, i) => {
+      const x = 95 + i * 200;
+      return (
+        <g>
+          <path
+            d={`M${x - 48} 48V155Q${x - 48} 169 ${x - 34} 169H${x + 34}Q${x + 48} 169 ${x + 48} 155V48`}
+            stroke="#a1bfb3"
+            stroke-width="2"
+          />
+          <path
+            d={`M${x - 45} 73H${x + 45}V154Q${x + 45} 166 ${x + 32} 166H${x - 32}Q${x - 45} 166 ${x - 45} 154Z`}
+            fill={i ? '#b99b6b' : '#b5d2c4'}
+            fill-opacity=".13"
+          />
+          <path d={`M${x - 45} 73H${x + 45}`} stroke="#91b0a2" stroke-opacity=".6" />
+          <rect x={x - 83} y="108" width="22" height="16" rx="4" fill="#7fa596" />
+          <path
+            d={`M${x - 61} 116H${x - 48}M${x + 48} 116H${x + 76}`}
+            stroke="#f2c18b"
+            stroke-width="2"
+            opacity={0.3 + 0.65 * sample.transmitted}
+          />
+          <path
+            d={`M${x - 45} 116H${x + 45}`}
+            stroke="#f2c18b"
+            stroke-width="5"
+            opacity={Math.min(0.9, sample.scattered * 3)}
+          />
+          {Array.from({ length: 6 }, (_, j) => (
+            <path
+              d={`M${x - 34 + j * 14} 116L${x - 12 + j * 5} 198`}
+              stroke="#f3bd8e"
+              stroke-width="1.2"
+              opacity={Math.min(0.45, sample.scattered * 1.5)}
+            />
+          ))}
+          <path
+            d={`M${x - 13} 205Q${x} 194 ${x + 13} 205Q${x} 217 ${x - 13} 205Z`}
+            stroke="#bfceb3"
+          />
+          <circle cx={x} cy="205" r="3" fill="#bfceb3" />
+        </g>
+      );
+    })
+  }
+</svg>

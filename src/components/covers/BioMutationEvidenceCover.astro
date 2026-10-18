@@ -1,0 +1,26 @@
+---
+import { structureSegments } from '../../models/bio-mutation-evidence';
+const parts = structureSegments('translocation', 1);
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eeeae1"></rect><path
+    d="M32 77H365M32 177H365"
+    stroke="#ddd9cf"
+    stroke-width="2"></path>{
+    parts.map((s) => (
+      <g transform={`translate(${s.x + 34} ${s.y})`}>
+        <>
+          <path
+            d="M-19 -13H12L20 0L12 13H-19Z"
+            fill={s.chromosome ? '#78979c' : '#a78ba5'}
+            stroke={s.chromosome ? '#5b7c81' : '#846b86'}
+          />
+          <text y="7" text-anchor="middle" fill="white" font-size="22">
+            {s.letter}
+          </text>
+        </>
+      </g>
+    ))
+  }</svg
+>

@@ -1,0 +1,33 @@
+---
+import { carbonateHeating } from '../../models/chem-carbonate-comparison';
+const s = carbonateHeating('bicarbonate', 1, 1);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><path d="M40 181H190M67 181V62M67 79H129" stroke="#a6b395" stroke-width="4"></path><path
+    d="M224 72H94A20 20 0 0 0 94 112H224"
+    fill="#d4dfc833"
+    stroke="#9caf94"
+    stroke-width="2"></path><path d="M85 104Q127 99 166 109H92Z" fill="#d8cda5"></path><rect
+    x="210"
+    y="72"
+    width="14"
+    height="40"
+    rx="3"
+    fill="#a99572"></rect><path d="M218 91H306Q317 91 317 103V173" stroke="#9fbaa4" stroke-width="7"
+  ></path><path d="M218 91H306Q317 91 317 103V173" stroke="#eef1da" stroke-width="3"></path><path
+    d="M286 126V186Q286 200 320 200T354 186V126"
+    stroke="#9bb393"
+    stroke-width="2"
+    fill="#bfd2b322"></path><path
+    d="M288 159V185Q288 198 320 198T352 185V159Z"
+    fill="#edeed4"
+    opacity={s.extent * 0.8}></path><path
+    d="M113 176Q101 154 124 130Q121 151 134 158Q139 171 126 177Z"
+    fill="#d1ab71"></path><rect x="106" y="178" width="31" height="25" rx="7" fill="#afbc96"
+  ></rect>{
+    [0, 1, 2, 3].map((i) => (
+      <circle cx={317 + (i % 2) * 5} cy={171 - i * 7} r="2" stroke="#a3b89a" />
+    ))
+  }</svg
+>

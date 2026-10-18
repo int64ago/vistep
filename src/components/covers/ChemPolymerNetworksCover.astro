@@ -1,0 +1,47 @@
+---
+import { gelNodes, gelLinks } from '../../models/chem-polymer-networks';
+const nodes = gelNodes(0.75);
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e0e8d9"></rect><ellipse
+    cx="320"
+    cy="210"
+    rx="260"
+    ry="156"
+    fill="#d0e2de"></ellipse><g transform="translate(80 -5) scale(1.5)"
+    >{
+      gelLinks.map(([i, j]) => (
+        <path
+          d={`M${nodes[i].x} ${nodes[i].y} Q${(nodes[i].x + nodes[j].x) / 2} ${(nodes[i].y + nodes[j].y) / 2 + 8} ${nodes[j].x} ${nodes[j].y}`}
+          stroke={j - i === 6 ? '#aa8158' : '#80967f'}
+          stroke-width={j - i === 6 ? 4 : 3}
+          fill="none"
+        />
+      ))
+    }{nodes.map((n) => <circle cx={n.x} cy={n.y} r="4" fill="#75947e" />)}{
+      [2, 9, 15, 22].map((i) => (
+        <g>
+          <>
+            <path
+              d={`M${nodes[i].x} ${nodes[i].y} V${nodes[i].y - 15}`}
+              stroke="#7b9484"
+              stroke-width="2"
+            />
+            <circle cx={nodes[i].x} cy={nodes[i].y - 19} r="7" fill="#e6d5a7" />
+          </>
+        </g>
+      ))
+    }</g
+  >{
+    Array.from({ length: 15 }, (_, i) => (
+      <circle
+        cx={110 + ((i * 83) % 420)}
+        cy={80 + ((i * 51) % 260)}
+        r="5"
+        fill="#8ab4bd"
+        opacity=".6"
+      />
+    ))
+  }</svg
+>

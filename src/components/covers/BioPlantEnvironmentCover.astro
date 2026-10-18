@@ -1,0 +1,46 @@
+---
+import { tropicGrowth } from '../../models/bio-plant-environment';
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eef2e3"></rect>
+  {
+    (['root', 'shoot'] as const).map((kind, i) => {
+      const f = tropicGrowth(1, kind),
+        end = f.point(1),
+        x = 50 + i * 200;
+      return (
+        <g transform={`translate(${x} 115)`}>
+          <ellipse cx="-10" cy="0" rx="15" ry="11" fill="#cdb47d" stroke="#ac9466" />
+          <path
+            d={f.outline()}
+            fill={i ? '#b1c693' : '#e1d5b7'}
+            stroke={i ? '#8ea570' : '#b1a17d'}
+            stroke-width="2"
+          />
+          {[0.2, 0.4, 0.6, 0.8].map((t) => {
+            const a = f.point(t, 1),
+              b = f.point(t, -1);
+            return <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke={i ? '#9aaf80' : '#c6b697'} />;
+          })}
+          {i ? (
+            <path
+              d="M0 0q14-20 25-8Q16 4 0 0"
+              transform={`translate(${end.x} ${end.y}) rotate(${(end.angle * 180) / Math.PI})`}
+              fill="#9cb87d"
+              stroke="#849f68"
+            />
+          ) : (
+            <path
+              d="M0-7Q14 0 0 7Z"
+              transform={`translate(${end.x} ${end.y}) rotate(${(end.angle * 180) / Math.PI})`}
+              fill="#bbc0a1"
+              stroke="#9aa380"
+            />
+          )}
+          <path d="M135-26v50m-5-7 5 7 5-7" fill="none" stroke="#a89c7c" stroke-width="2" />
+        </g>
+      );
+    })
+  }
+</svg>

@@ -1,0 +1,41 @@
+---
+import { sector, collectorR, SCALE } from '../../models/chem-mass-spectrometry';
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e3ead7"></rect><g transform="translate(66 -4) scale(1.5)"
+    ><rect
+      x="38"
+      y="20"
+      width="292"
+      height="180"
+      rx="16"
+      fill="#d3e1d9"
+      stroke="#a3b6a4"
+      stroke-width="2"></rect>{
+      Array.from({ length: 35 }, (_, i) => (
+        <circle cx={60 + (i % 7) * 40} cy={40 + Math.floor(i / 7) * 34} r="1.6" fill="#a1b8a7" />
+      ))
+    }{
+      [65, 91, 92].map((m, i) => (
+        <path
+          d={sector(m, 1, 1000, 0.3)
+            .points.map((v, j) => `${j ? 'L' : 'M'}${v.x} ${v.y}`)
+            .join(' ')}
+          fill="none"
+          stroke={['#9cae93', '#a1a382', '#b68a52'][i]}
+          stroke-width="2.4"
+        />
+      ))
+    }<path d="M60 200 V258" stroke="#b68a52" stroke-width="3"></path><path
+      d="M37 216 H52 M68 216 H91 M37 239 H52 M68 239 H91"
+      stroke="#91a78f"
+      stroke-width="4"></path><rect
+      x={60 + 2 * collectorR * SCALE - 20}
+      y="202"
+      width="40"
+      height="34"
+      rx="9"
+      fill="#bfcea9"></rect></g
+  ></svg
+>

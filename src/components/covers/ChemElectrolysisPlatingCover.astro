@@ -1,0 +1,32 @@
+---
+import { electrolysisState } from '../../models/chem-electrolysis-plating';
+const a = electrolysisState('plating', 600, 0.2);
+---
+
+<svg viewBox="0 0 400 240" aria-hidden="true">
+  <rect width="400" height="240" rx="24" fill="#e7eddf"></rect>
+  <rect x="156" y="22" width="88" height="40" rx="11" fill="#d4dece" stroke="#a5baac"></rect>
+  <text x="176" y="49" text-anchor="middle" font-size="22" fill="#62858b">−</text><text
+    x="224"
+    y="49"
+    text-anchor="middle"
+    font-size="22"
+    fill="#a37355">+</text
+  >
+  <path d="M176 62V76H130V108M224 62V76H270V108" fill="none" stroke="#7f9f91" stroke-width="3"
+  ></path>
+  <path
+    d="M91 100V204Q91 220 107 220H293Q309 220 309 204V100"
+    fill="#f2f7eb"
+    stroke="#adc1b2"
+    stroke-width="2"></path>
+  <path d="M94 134V204Q94 217 108 217H292Q306 217 306 204V134Z" fill="#b7d7cb"></path>
+  <rect x="117" y="106" width="26" height="92" rx="3" fill="#a6b2a6"></rect>
+  <path d="M117 134V198H143V134" fill="none" stroke="#b87b50" stroke-width="4"></path>
+  <rect x="257" y="106" width="26" height="92" rx="3" fill="#bf8962"></rect>
+  <path d="M243 161H157m12-7-12 7 12 7" fill="none" stroke="#7da69c" stroke-width="2"></path>
+  <text x="200" y="190" font-size="18" text-anchor="middle" fill="#6a867b">Cu²⁺</text>
+  <text x="200" y="120" font-size="17" text-anchor="middle" fill="#747b66"
+    >{(a.depositMass * 1000).toFixed(1)} mg</text
+  >
+</svg>

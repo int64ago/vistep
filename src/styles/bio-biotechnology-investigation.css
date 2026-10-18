@@ -1,0 +1,184 @@
+.bio-biotech {
+  font-size: 16px;
+  color: #585f59;
+}
+.bio-biotech-head {
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.4;
+  padding: 8px 12px;
+}
+.bio-biotech-stage {
+  min-height: 330px;
+  display: grid;
+  align-content: center;
+  padding: 12px 18px;
+  gap: 12px;
+}
+.bio-biotech-paper {
+  background: #f7f6e9;
+  border-radius: 12px 24px 16px 12px;
+  padding: 16px;
+  box-shadow: 0 5px 20px #6979650c;
+  border: 1px solid #dfe1ce;
+}
+.bio-biotech-paper strong {
+  font-size: 19px;
+  font-weight: 550;
+  display: block;
+  overflow-wrap: anywhere;
+}
+.bio-biotech-paper p {
+  font-size: 16px;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+.bio-biotech-field {
+  padding: 9px 0;
+  border-bottom: 1px solid #dcdfcd;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.bio-biotech-field:last-child {
+  border: 0;
+}
+.bio-biotech-field[data-active='true'] {
+  background: #e7e9d3;
+  border-radius: 8px;
+  padding-inline: 6px;
+}
+.bio-biotech-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.bio-biotech-check {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.4;
+}
+.bio-biotech-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e4e8d3;
+  flex-shrink: 0;
+}
+.bio-biotech-mark[data-state='false'] {
+  background: #ecdcca;
+}
+.bio-biotech-mark[data-state='unknown'] {
+  background: #e4e5df;
+}
+.bio-biotech-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-biotech-stage svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #585f59;
+}
+.bio-biotech-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dfe1d1;
+}
+.bio-biotech-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-biotech button {
+  font: inherit;
+  color: inherit;
+  background: #f7f7ed;
+  border: 1px solid #cbd2be;
+  border-radius: 24px;
+  min-height: 44px;
+  padding: 8px 14px;
+}
+.bio-biotech button[aria-pressed='true'] {
+  background: #e3e8d1;
+  border-color: #a6b193;
+}
+.bio-biotech label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-biotech input,
+.bio-biotech select,
+.bio-biotech textarea {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  width: 100%;
+  min-width: 0;
+  accent-color: #96aa82;
+}
+.bio-biotech input:not([type='range']),
+.bio-biotech select,
+.bio-biotech textarea {
+  padding: 8px;
+  background: #fbfcf4;
+  border: 1px solid #d1d7c4;
+  border-radius: 12px;
+}
+.bio-biotech textarea {
+  min-height: 80px;
+}
+.bio-biotech details,
+.bio-biotech p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-biotech summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-biotech button:focus-visible,
+.bio-biotech input:focus-visible,
+.bio-biotech textarea:focus-visible,
+.bio-biotech select:focus-visible {
+  outline: 2px solid #94a77d;
+  outline-offset: 3px;
+}
+.bio-biotech-record {
+  display: grid;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid #dadfce;
+}
+.bio-biotech-counters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  text-align: center;
+  line-height: 1.5;
+}
+.bio-biotech-counters strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 450;
+}
+@media (min-width: 600px) {
+  .bio-biotech-paper {
+    max-width: 470px;
+    width: 100%;
+    margin: auto;
+  }
+  .bio-biotech-stage {
+    padding: 12px 24px;
+  }
+  .bio-biotech-record {
+    grid-template-columns: 1fr 1fr;
+  }
+}

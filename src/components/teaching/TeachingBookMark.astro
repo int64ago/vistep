@@ -1,0 +1,89 @@
+---
+import type { Curriculum } from '../../data/curricula';
+import type { Locale } from '../../i18n';
+interface Props {
+  curriculum: Curriculum;
+  locale: Locale;
+}
+const { curriculum, locale } = Astro.props;
+const subject = curriculum.subjectKey;
+---
+
+<div class={`teaching-book-mark teaching-book-mark-${subject}`} aria-hidden="true">
+  <span class="teaching-book-mark-rule"></span>
+  <span class="teaching-book-mark-name">{curriculum.subject[locale]}</span>
+  <svg viewBox="0 0 100 70" fill="none">
+    {
+      subject === 'physics' && (
+        <>
+          <path d="M14 55h73M22 56V15" stroke="currentColor" stroke-opacity=".25" />
+          <path
+            d="M22 48c19-1 35-9 53-31"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+          <circle cx="22" cy="48" r="3" fill="currentColor" />
+          <circle cx="48" cy="38" r="3" fill="currentColor" />
+          <circle cx="75" cy="17" r="3" fill="currentColor" />
+        </>
+      )
+    }
+    {
+      subject === 'chemistry' && (
+        <>
+          <path
+            d="M35 12h25M39 12v19L24 55q-3 6 5 6h38q8 0 5-6L56 31V12"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M32 44h32l9 13q1 4-6 4H29q-6 0-5-4Z" fill="currentColor" opacity=".15" />
+          <path d="M32 44h32" stroke="currentColor" stroke-opacity=".4" />
+          <circle cx="44" cy="48" r="2" fill="currentColor" opacity=".7" />
+          <circle cx="53" cy="38" r="2" fill="currentColor" opacity=".5" />
+          <circle cx="47" cy="26" r="1.6" fill="currentColor" opacity=".4" />
+        </>
+      )
+    }
+    {
+      subject === 'biology' && (
+        <>
+          <path
+            d="M20 39C16 20 32 9 52 13c21 3 34 17 27 33-5 14-25 17-41 11-10-4-16-10-18-18Z"
+            fill="currentColor"
+            fill-opacity=".08"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <ellipse
+            cx="48"
+            cy="35"
+            rx="11"
+            ry="10"
+            fill="currentColor"
+            fill-opacity=".18"
+            stroke="currentColor"
+            stroke-opacity=".5"
+          />
+          <circle cx="49" cy="34" r="3" fill="currentColor" opacity=".6" />
+          <path
+            d="m28 28 7-4m-4 22 7 4m25-24 6 4m-9 18 8-3"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            opacity=".65"
+          />
+          <path
+            d="M28 30h7m-5 14 7 4m27-24 6 4m-9 18 8-3"
+            stroke="currentColor"
+            stroke-width=".8"
+            opacity=".5"
+          />
+        </>
+      )
+    }
+  </svg>
+  <span class="teaching-book-mark-bottom">{subject.toUpperCase()}</span>
+</div>

@@ -1,0 +1,313 @@
+.bio-evolution-scene {
+  max-width: 900px;
+  margin: auto;
+  color: #596b59;
+}
+.bio-evolution-stage {
+  min-height: 350px;
+  border-radius: 25px;
+  background: radial-gradient(ellipse at 45% 35%, #f7f5e8, #e8ecda);
+  padding: 20px 24px;
+}
+.bio-evolution-stage b,
+.bio-evolution-stage p,
+.bio-evolution-stage small,
+.bio-evolution-stage span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-evolution-stage small {
+  display: block;
+  margin-top: 12px;
+}
+.bio-evolution-fossil {
+  max-width: 570px;
+  text-align: center;
+  margin: auto;
+}
+.bio-evolution-fossil svg {
+  width: 100%;
+  display: block;
+}
+.bio-evolution-anatomy {
+  max-width: 570px;
+  margin: auto;
+}
+.bio-evolution-limbs {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+}
+.bio-evolution-limbs > div {
+  width: 50%;
+}
+.bio-evolution-limbs svg {
+  width: 100%;
+  height: 285px;
+  display: block;
+}
+.bio-evolution-bone-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: center;
+  margin-top: 13px;
+}
+.bio-evolution-bone-key span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bio-evolution-bone-key i {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+}
+.bio-evolution-embryos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+  max-width: 500px;
+  margin: auto;
+}
+.bio-evolution-embryos svg {
+  width: 100%;
+  height: 270px;
+  display: block;
+}
+.bio-evolution-embryos small {
+  grid-column: 1/-1;
+}
+.bio-evolution-molecular {
+  max-width: 570px;
+  margin: auto;
+}
+.bio-evolution-molecular > div {
+  display: grid;
+  grid-template-columns: 90px 1fr 35px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+.bio-evolution-molecular > div.active {
+  background: #dce3cd;
+}
+.bio-evolution-molecular > div > div {
+  height: 17px;
+  background: #e0e5d6;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bio-evolution-molecular i {
+  display: block;
+  height: 100%;
+  background: #8aa17c;
+  border-radius: 5px;
+}
+.bio-evolution-molecular output {
+  text-align: right;
+  font-size: 16px;
+}
+.bio-evolution-moths,
+.bio-evolution-frequency,
+.bio-evolution-isolation {
+  max-width: 530px;
+  margin: auto;
+  text-align: center;
+}
+.bio-evolution-moths svg,
+.bio-evolution-frequency svg,
+.bio-evolution-isolation > svg {
+  width: 100%;
+  display: block;
+}
+.bio-evolution-moths p {
+  margin: 8px 0;
+}
+.bio-evolution-gene-readout {
+  display: flex;
+  gap: 17px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.bio-evolution-gene-readout span {
+  font-variant-numeric: tabular-nums;
+}
+.bio-evolution-genotypes {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+.bio-evolution-genotypes span {
+  display: grid;
+  gap: 5px;
+}
+.bio-evolution-antibiotic {
+  max-width: 540px;
+  margin: auto;
+  text-align: center;
+}
+.bio-evolution-antibiotic > svg {
+  width: 100%;
+  max-width: 330px;
+  display: block;
+  margin: auto;
+}
+.bio-evolution-disc-legend,
+.bio-evolution-diameters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.bio-evolution-transfer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.bio-evolution-transfer > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bio-evolution-transfer > div > svg {
+  width: 65px;
+  height: 50px;
+}
+.bio-evolution-transfer > svg {
+  width: 100px;
+}
+.bio-evolution-transfer > b {
+  max-width: 125px;
+}
+.bio-evolution-antibiotic p {
+  margin: 8px 0;
+}
+.bio-evolution-reunion > div {
+  border-radius: 17px;
+  margin-top: 10px;
+  padding: 7px;
+  background: #e8ecdf;
+}
+.bio-evolution-reunion > div.active {
+  background: #d5dec7;
+}
+.bio-evolution-reunion svg {
+  width: 100%;
+  max-width: 380px;
+  display: block;
+  margin: auto;
+}
+.bio-evolution-reunion p {
+  margin: 0 0 12px;
+}
+.bio-evolution-controls {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+.bio-evolution-controls label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-evolution-controls button,
+.bio-evolution-controls select {
+  min-height: 44px;
+  padding: 9px 13px;
+  border-radius: 12px;
+  border: 1px solid #c7d0ba;
+  background: #f1f3e5;
+  font: inherit;
+  color: inherit;
+}
+.bio-evolution-controls select {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .bio-evolution-stage {
+    padding: 14px 8px;
+    min-height: 320px;
+    border-radius: 19px;
+  }
+  .bio-evolution-limbs {
+    gap: 3px;
+  }
+  .bio-evolution-limbs svg {
+    height: 240px;
+  }
+  .bio-evolution-bone-key {
+    gap: 6px 13px;
+  }
+  .bio-evolution-embryos {
+    gap: 4px;
+  }
+  .bio-evolution-embryos svg {
+    height: 210px;
+  }
+  .bio-evolution-molecular > div {
+    grid-template-columns: 114px 1fr 24px;
+    gap: 4px;
+    margin-top: 0;
+    padding: 1px 4px;
+  }
+  .bio-evolution-genotypes {
+    gap: 20px;
+  }
+  .bio-evolution-antibiotic > svg {
+    max-width: 275px;
+  }
+  .bio-evolution-antibiotic:has(.bio-evolution-transfer) > svg {
+    max-width: 180px;
+  }
+  .bio-evolution-antibiotic:has(.bio-evolution-transfer) > svg text {
+    font-size: 27px;
+  }
+  .bio-evolution-diameters {
+    gap: 2px 12px;
+    margin-top: 4px;
+  }
+  .bio-evolution-scene.is-watch .bio-evolution-diameters span:not(:first-child) {
+    display: none;
+  }
+  .bio-evolution-transfer {
+    gap: 6px;
+  }
+  .bio-evolution-transfer > div {
+    gap: 3px;
+  }
+  .bio-evolution-transfer > div > svg {
+    width: 43px;
+  }
+  .bio-evolution-transfer > svg {
+    width: 65px;
+  }
+  .bio-evolution-transfer > b {
+    max-width: 110px;
+  }
+  .bio-evolution-transfer b {
+    font-size: 16px;
+  }
+  .bio-evolution-disc-legend {
+    gap: 5px 12px;
+  }
+  .bio-evolution-gene-readout {
+    gap: 8px 15px;
+  }
+  .bio-evolution-stage small {
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+}
+.bio-evolution-scene.is-watch .bio-evolution-moths > p,
+.bio-evolution-scene.is-watch .bio-evolution-antibiotic > p {
+  display: none;
+}

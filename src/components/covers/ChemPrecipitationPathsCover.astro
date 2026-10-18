@@ -1,0 +1,24 @@
+---
+import { silverExchange } from '../../models/chem-precipitation-paths';
+const states = [silverExchange(0, 0), silverExchange(1, 0), silverExchange(1, 0.5)];
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  >{
+    states.map((s, j) => (
+      <g transform={`translate(${j * 120 + 45} 0)`}>
+        <path d="M2 105V168A29 29 0 0 0 60 168V105Z" fill="#bdd3b5" opacity=".2" />
+        {Array.from({ length: 16 }, (_, i) => (
+          <ellipse
+            cx={10 + (i % 4) * 14}
+            cy={173 + Math.floor(i / 4) * 5}
+            rx="8"
+            ry="4"
+            fill={s.ag2S ? '#526c5d' : s.agI ? '#d9ca7c' : '#e7e5cc'}
+          />
+        ))}
+      </g>
+    ))
+  }<path d="M113 113h26m-7-5 7 5-7 5M233 113h26m-7-5 7 5-7 5" stroke="#a9b792" stroke-width="2"
+  ></path></svg
+>

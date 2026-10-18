@@ -1,0 +1,108 @@
+.chem-carbon-frameworks {
+  font-size: 16px;
+  color: #54654b;
+  padding: 18px 10px;
+}
+.chem-carbon-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 18px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.chem-carbon-title strong {
+  font-weight: 450;
+}
+.chem-carbon-title > span {
+  color: #8b9a79;
+  font-size: 18px;
+}
+.chem-carbon-studio {
+  height: 330px;
+  min-height: 0;
+}
+.chem-carbon-studio > svg,
+.chem-carbon-studio .studio-fallback svg {
+  width: 100%;
+  height: 100%;
+}
+.chem-carbon-graph {
+  width: 340px;
+  max-width: 100%;
+  display: block;
+  margin: 12px auto;
+  height: 260px;
+}
+.chem-carbon-evidence {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.chem-carbon-legend {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 12px;
+}
+.chem-carbon-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.chem-carbon-legend i {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #8c9b8155;
+}
+.chem-carbon-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid #9dac8c55;
+}
+.chem-carbon-controls button,
+.chem-carbon-controls input,
+.chem-carbon-controls summary {
+  min-height: 44px;
+}
+.chem-carbon-controls summary {
+  font-size: 16px;
+  cursor: pointer;
+}
+.chem-carbon-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .chem-carbon-frameworks {
+    padding: 14px 8px;
+  }
+  .chem-carbon-title {
+    font-size: 17px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .chem-carbon-title > span {
+    font-size: 17px;
+  }
+  .chem-carbon-studio {
+    height: 240px;
+    min-height: 0;
+  }
+  .chem-carbon-graph {
+    height: 230px;
+  }
+  .chem-carbon-evidence {
+    font-size: 16px;
+  }
+  .chem-carbon-legend {
+    gap: 12px;
+    font-size: 16px;
+  }
+}

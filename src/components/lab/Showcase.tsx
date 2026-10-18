@@ -70,6 +70,7 @@ export default function Showcase({
     },
     track,
     start,
+    () => setPlaying(false),
   );
   const advancing = watch && playing && visible && (!voice.enabled || !voice.waiting);
   const host = useSimulation((dt) => {

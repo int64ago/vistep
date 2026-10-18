@@ -1,0 +1,32 @@
+---
+import { meioticGametes } from '../../models/bio-meiosis';
+const gametes = meioticGametes(true, 1),
+  colors = ['#b58a91', '#829bb6'];
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eeeadd"></rect>{
+    gametes.map((g, i) => (
+      <g transform={`translate(${106 + (i % 2) * 188} ${61 + Math.floor(i / 2) * 108})`}>
+        <ellipse rx="64" ry="45" fill="#dedecb" stroke="#a7ad91" stroke-width="2" />
+        {g.map((c, j) => (
+          <g transform={`translate(${(j - 0.5) * 33} 0)`}>
+            <path
+              d={`M0 ${-c.length}V${c.length * 0.42}`}
+              stroke={colors[c.proximalOrigin]}
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+            <path
+              d={`M0 ${c.length * 0.42}V${c.length}`}
+              stroke={colors[c.distalOrigin]}
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+            <circle r="3.2" fill="#756b82" />
+          </g>
+        ))}
+      </g>
+    ))
+  }</svg
+>

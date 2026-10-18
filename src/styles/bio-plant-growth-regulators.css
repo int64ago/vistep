@@ -1,0 +1,115 @@
+.bio-regulators {
+  color: #53624d;
+  font-size: 16px;
+}
+.bio-regulators svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-regulators svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #53624d;
+}
+.bio-regulators-head {
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-regulators-key {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 0 12px;
+}
+.bio-regulators-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbe2cf;
+}
+.bio-regulators-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-regulators button {
+  min-height: 44px;
+  border: 1px solid #cad7bd;
+  border-radius: 24px;
+  background: #f8faf2;
+  color: inherit;
+  font: inherit;
+  padding: 8px 16px;
+}
+.bio-regulators button[aria-pressed='true'] {
+  background: #dfe7d0;
+  border-color: #97ac85;
+}
+.bio-regulators label {
+  display: grid;
+  gap: 8px;
+}
+.bio-regulators input {
+  min-height: 44px;
+  min-width: 0;
+  width: 100%;
+  accent-color: #8ea575;
+  font: inherit;
+}
+.bio-regulators-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.bio-regulators details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-regulators summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-regulators-record {
+  padding: 4px 0 14px;
+  min-height: 280px;
+}
+.bio-regulators table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+.bio-regulators td,
+.bio-regulators th {
+  text-align: left;
+  padding: 12px 5px;
+  border-bottom: 1px solid #e0e5d7;
+}
+.bio-regulators p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-regulators button:focus-visible,
+.bio-regulators input:focus-visible {
+  outline: 2px solid #839a72;
+  outline-offset: 3px;
+}
+
+.bio-regulators {
+  padding: 10px 12px 0;
+  box-sizing: border-box;
+}
+.bio-regulators[data-watch='true'] .bio-regulators-head {
+  display: none;
+}
+.bio-regulators summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 8px;
+}
+.bio-regulators details[open] summary::after {
+  content: '−';
+}

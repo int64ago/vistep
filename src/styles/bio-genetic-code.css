@@ -1,0 +1,203 @@
+.bio-code-scene {
+  color: #526462;
+  max-width: 900px;
+  margin: auto;
+}
+.bio-code-stage {
+  min-height: 335px;
+  display: grid;
+  align-items: center;
+  padding: 18px 22px;
+  background: radial-gradient(ellipse at 45% 35%, #f8f6eb, #eeece0);
+  border-radius: 25px;
+}
+.bio-code-stage p,
+.bio-code-stage small {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 12px 0 0;
+  display: block;
+}
+.bio-code-stage p {
+  text-align: center;
+}
+.bio-code-frame {
+  max-width: 680px;
+  margin: auto;
+}
+.bio-code-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+}
+.bio-code-ribbon span {
+  width: 25px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 18px;
+  border-radius: 7px;
+}
+.bio-code-ribbon .end {
+  margin-right: 9px;
+}
+.bio-code-ribbon .insert {
+  box-shadow: 0 0 0 3px #5f7e76;
+}
+.bio-code-mutation {
+  text-align: center;
+  font-size: 23px;
+  margin: 14px;
+}
+.bio-code-aa {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  font-size: 17px;
+  color: #94634f;
+}
+.bio-code-tubes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 550px;
+  margin: auto;
+  text-align: center;
+}
+.bio-code-tubes svg {
+  display: block;
+  height: 210px;
+  width: 100%;
+}
+.bio-code-tubes b {
+  font-size: 19px;
+}
+.bio-code-counts {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+}
+.bio-code-count {
+  display: grid;
+  grid-template-columns: 80px 1fr 75px;
+  gap: 14px;
+  align-items: center;
+  margin: 21px 0;
+  font-size: 17px;
+}
+.bio-code-count > div {
+  height: 25px;
+  background: #e0e4d8;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.bio-code-count i {
+  height: 100%;
+  display: block;
+  background: #b18167;
+  border-radius: 7px;
+}
+.bio-code-count output {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.bio-code-transcribe,
+.bio-code-translate {
+  max-width: 530px;
+  margin: auto;
+  width: 100%;
+}
+.bio-code-transcribe svg,
+.bio-code-translate svg {
+  width: 100%;
+  display: block;
+}
+.bio-code-controls {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+.bio-code-controls label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-code-controls button,
+.bio-code-controls select {
+  min-height: 44px;
+  border-radius: 12px;
+  padding: 9px 13px;
+  background: #f3f2e9;
+  border: 1px solid #cbd3c8;
+  font: inherit;
+  color: inherit;
+}
+.bio-code-controls select {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .bio-code-stage {
+    padding: 14px 8px;
+    min-height: 310px;
+    border-radius: 19px;
+  }
+  .bio-code-ribbon span {
+    width: 22px;
+    height: 31px;
+    font-size: 17px;
+  }
+  .bio-code-ribbon {
+    gap: 2px;
+    max-width: 310px;
+    margin: auto;
+  }
+  .bio-code-ribbon .end {
+    margin-right: 6px;
+  }
+  .bio-code-tubes {
+    gap: 4px;
+  }
+  .bio-code-tubes svg {
+    height: 155px;
+  }
+  .bio-code-count {
+    grid-template-columns: 65px 1fr 60px;
+    gap: 6px;
+    font-size: 16px;
+  }
+  .bio-code-stage p,
+  .bio-code-stage small {
+    font-size: 16px;
+  }
+  .bio-code-transcribe svg {
+    width: 100%;
+  }
+  .bio-code-aa {
+    gap: 12px;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 350px) {
+  .bio-code-ribbon span {
+    width: 21px;
+  }
+  .bio-code-ribbon .end {
+    margin-right: 4px;
+  }
+}
+.bio-code-peptide {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 8px;
+  color: #8c624e;
+}
+.bio-code-scene.is-watch .bio-code-frame > p,
+.bio-code-scene.is-watch .bio-code-assay > p:last-child,
+.bio-code-scene.is-watch .bio-code-transcribe > p,
+.bio-code-scene.is-watch .bio-code-translate > p {
+  display: none;
+}

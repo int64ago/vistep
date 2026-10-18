@@ -1,0 +1,110 @@
+.bio-division {
+  background: #efebe0;
+  border-radius: 24px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #665b60;
+}
+.bio-division-kind {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8b7e83;
+  margin: 0 0 12px;
+}
+.bio-division-cell,
+.bio-division-prepare {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+.bio-division-ledger {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bio-division-cubes {
+  display: flex;
+  gap: 15px;
+  max-width: 720px;
+  margin: auto;
+}
+.bio-division-cubes > div {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  font-size: 16px;
+}
+.bio-division-cubes svg {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+.bio-division-cubes p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 7px 0;
+}
+.bio-division-field {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+.bio-division-fixedinfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  font-size: 16px;
+}
+.bio-division-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 640px;
+  margin: 14px auto 0;
+}
+.bio-division-controls {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+.bio-division-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-division-controls button {
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  padding: 8px 12px;
+  background: #f8f5eb;
+  border: 1px solid #cbbfc3;
+  border-radius: 12px;
+}
+@media (max-width: 540px) {
+  .bio-division-cell,
+  .bio-division-prepare {
+    height: 260px;
+  }
+  .bio-division-cubes {
+    gap: 6px;
+  }
+  .bio-division-cubes svg {
+    height: 145px;
+  }
+  .bio-division-cubes p {
+    font-size: 16px;
+  }
+  .bio-division-field {
+    height: 220px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-division {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

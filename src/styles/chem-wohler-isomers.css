@@ -1,0 +1,198 @@
+.chem-wi {
+  --ink: #4f6659;
+  --muted: #7b8574;
+  color: var(--ink);
+  font-size: 16px;
+}
+.chem-wi-stage {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 22px;
+  background: radial-gradient(ellipse at 45% 38%, #faf9f1, #f0f0e5);
+  border-radius: 28px;
+}
+.chem-wi svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.chem-wi b,
+.chem-wi strong {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.chem-wi small,
+.chem-wi p,
+.chem-wi span {
+  font-size: 16px;
+  line-height: 1.55;
+}
+.chem-wi-history {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 0 25px;
+}
+.chem-wi-specimen {
+  text-align: center;
+}
+.chem-wi-specimen span {
+  display: block;
+  margin-top: 5px;
+}
+.chem-wi-boundary {
+  grid-column: 1/-1;
+  text-align: center;
+  margin: 15px auto 0;
+  max-width: 570px;
+  color: var(--muted);
+}
+.chem-wi-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.chem-wi-formula {
+  margin-top: 20px;
+}
+.chem-wi-key {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  gap: 28px;
+  margin-top: 10px;
+}
+.chem-wi-key span {
+  font-size: 20px;
+}
+.chem-wi-skeleton {
+  max-width: 420px;
+  width: 100%;
+  margin: auto;
+}
+.chem-wi-skeleton > strong {
+  margin: 8px;
+}
+.chem-wi-bond-key {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.chem-wi-bond-key span {
+  padding: 6px 11px;
+  border-radius: 16px;
+  color: #8e9584;
+}
+.chem-wi-bond-key .active {
+  background: #dfe5d0;
+  color: #4e6555;
+}
+.chem-wi-overlap {
+  max-width: 440px;
+  width: 100%;
+  margin: auto;
+}
+.chem-wi-overlap small {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  color: var(--muted);
+}
+.chem-wi-conclusion {
+  text-align: center;
+  margin: 20px 0 0;
+}
+.chem-wi-controls {
+  display: grid;
+  gap: 18px;
+  padding: 20px 8px;
+}
+.chem-wi-controls button {
+  min-height: 44px;
+}
+.chem-wi.is-watch .chem-wi-boundary {
+  font-size: 16px;
+}
+.chem-wi.is-watch .chem-wi-conclusion {
+  display: none;
+}
+@media (max-width: 600px) {
+  .chem-wi-stage {
+    padding: 12px 8px;
+    min-height: 310px;
+    border-radius: 22px;
+  }
+  .chem-wi-history {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .chem-wi-specimen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+  .chem-wi-specimen svg {
+    width: 115px;
+  }
+  .chem-wi-specimen span {
+    width: 100%;
+    margin: 0;
+  }
+  .chem-wi-structure {
+    max-width: 310px;
+    margin: auto;
+    width: 100%;
+  }
+  .chem-wi-boundary {
+    margin-top: 8px;
+  }
+  .chem-wi-pair {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .chem-wi-pair > div {
+    max-width: 310px;
+    width: 100%;
+    margin: auto;
+  }
+  .chem-wi-pair svg {
+    max-height: 180px;
+  }
+  .chem-wi-key {
+    display: none;
+  }
+  .chem-wi-formula {
+    margin-top: 8px;
+  }
+  .chem-wi-overlap small {
+    margin-top: 7px;
+  }
+  .chem-wi-controls {
+    padding: 14px 0;
+  }
+  .chem-wi.is-watch .chem-wi-specimen span,
+  .chem-wi.is-watch .chem-wi-boundary {
+    display: none;
+  }
+  .chem-wi.is-watch .chem-wi-pair svg {
+    max-height: 165px;
+  }
+  .chem-wi.is-watch .chem-wi-pair b {
+    font-size: 16px;
+  }
+  .chem-wi.is-watch .chem-wi-formula {
+    margin: 3px;
+  }
+  .chem-wi.is-watch .chem-wi-history .chem-wi-specimen {
+    display: none;
+  }
+}

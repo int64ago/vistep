@@ -1,0 +1,32 @@
+---
+import { ionicConduction, ionicParticle } from '../../models/chem-ionic-conduction';
+const s = ionicConduction('nacl');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M69 139V43H177M223 43H330V139" stroke="#819b83" stroke-width="3"></path><circle
+    cx="200"
+    cy="43"
+    r="23"
+    fill="#e8ddaf"
+    stroke="#9cad88"></circle><path
+    d={`M200 55l${s.currentMicroAmp / 40} -24`}
+    stroke="#9b855d"
+    stroke-width="2"></path><path
+    d="M45 119V185Q45 204 200 204T355 185V119"
+    stroke="#9fb99b"
+    stroke-width="2"
+    fill="#b4d2b433"></path><rect x="61" y="115" width="16" height="60" rx="4" fill="#728f7a"
+  ></rect><rect x="322" y="115" width="16" height="60" rx="4" fill="#728f7a"></rect>
+  {
+    Array.from({ length: 12 }, (_, i) => {
+      const p = ionicParticle(i, 1, 0.6);
+      return (
+        <g>
+          <path d={`M${p.x * 0.85 + 42} ${p.y * 0.4 + 110}h6`} stroke="#fbf3d6" />
+          {p.charge > 0 && <path d={`M${p.x * 0.85 + 45} ${p.y * 0.4 + 107}v6`} stroke="#fbf3d6" />}
+        </g>
+      );
+    })
+  }
+</svg>

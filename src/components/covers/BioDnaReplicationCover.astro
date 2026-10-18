@@ -1,0 +1,24 @@
+---
+import { densityBands } from '../../models/bio-dna-replication';
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#efeddf"></rect>{
+    [0, 1, 2].map((generation) => (
+      <g transform={`translate(${49 + generation * 118} 12) scale(.75)`}>
+        <path
+          d="M30 18V222Q30 251 73 251Q116 251 116 222V18"
+          fill="#dce2cf"
+          stroke="#a5b09c"
+          stroke-width="3"
+        />
+        {densityBands(generation).map((b) => (
+          <g opacity={0.3 + 0.7 * b.fraction}>
+            <rect x="33" y={b.y - 7} width="80" height="14" rx="7" fill="#718da4" />
+            <path d={`M34 ${b.y}H112`} stroke="#536d83" stroke-width="3" />
+          </g>
+        ))}
+      </g>
+    ))
+  }</svg
+>

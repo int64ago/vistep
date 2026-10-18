@@ -1,0 +1,17 @@
+---
+import { chlorineBleaching, bleachColour } from '../../models/chem-chlorine-bleaching';
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e9ecdc"></rect>{
+    (['dry-paper', 'wet-paper'] as const).map((specimen, i) => (
+      <g transform={`translate(${210 + i * 220},60)`}>
+        <path
+          d="M-25 80Q0 87 25 80V235Q0 230-25 235Z"
+          fill={bleachColour(chlorineBleaching(specimen, 1).colourRemaining)}
+        />
+        {i === 1 && <path d="M0 108q-10 12 0 19q10-7 0-19" fill="#bbd8ca" />}
+      </g>
+    ))
+  }</svg
+>

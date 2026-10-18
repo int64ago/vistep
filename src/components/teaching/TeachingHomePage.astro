@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { curricula, curriculumPath, getCurriculumLessons } from '../../data/curricula';
 import type { Locale } from '../../i18n';
 import TeachingArtwork from './TeachingArtwork.astro';
+import TeachingBookMark from './TeachingBookMark.astro';
 import '../../styles/teaching.css';
 interface Props {
   locale?: Locale;
@@ -12,7 +13,7 @@ const copy = {
   zh: {
     title: '教学专区',
     heading: ['顺着教材学，', '让原理看得见。'],
-    intro: '从一次观察到一个结论。跟着教材的顺序，走进实验，停在关键的一刻。',
+    intro: '从一次观察到一个结论。跟着物理、化学与生物教材的顺序，停在理解发生的那一刻。',
     collection: '选择你的教材',
     collectionNote: '章节有顺序，好奇心有去处。',
     action: '打开教材目录',
@@ -20,14 +21,14 @@ const copy = {
     experiments: '个学习位置',
     approach: '和课堂的进度，一起往前。',
     approachText:
-      '每个实验都保留教材中的位置与名称。先观看完整过程，再暂停观察、改变条件，回到教材理解结论。',
+      '每个学习位置都保留教材中的名称与上下文。先观看过程，再暂停观察、改变条件，回到教材理解结论。实验、调查与原理演示各有标注。',
     lesson: '正在展开',
   },
   en: {
     title: 'Learn',
     heading: ['Follow the textbook.', 'See the principles.'],
     intro:
-      'From an observation to a conclusion. Follow the learning sequence, step inside an experiment, and pause at the moment that matters.',
+      'From an observation to a conclusion. Follow your physics, chemistry or biology textbook, and pause at the moment that matters.',
     collection: 'Choose your textbook',
     collectionNote: 'A clear sequence. Room for curiosity.',
     action: 'Open the chapter guide',
@@ -35,7 +36,7 @@ const copy = {
     experiments: 'learning entries',
     approach: 'Keep pace with the classroom.',
     approachText:
-      'Every experiment keeps its textbook location and textbook context. Watch the process, pause to observe, then change a condition and return to the explanation.',
+      'Every entry keeps its textbook name and context. Watch, pause to observe, and change a condition before returning to the explanation. Experiments, investigations and models are clearly identified.',
     lesson: 'Now exploring',
   },
 }[locale];
@@ -68,25 +69,7 @@ const copy = {
             const lessons = getCurriculumLessons(curriculum);
             return (
               <a class="teaching-textbook" href={curriculumPath(curriculum.id, locale)}>
-                <div class="teaching-book-mark" aria-hidden="true">
-                  <span class="teaching-book-mark-rule" />
-                  <span class="teaching-book-mark-name">{curriculum.subject[locale]}</span>
-                  <svg viewBox="0 0 100 70" fill="none">
-                    <path d="M14 55h73M22 56V15" stroke="currentColor" stroke-opacity=".25" />
-                    <path
-                      d="M22 48c19-1 35-9 53-31"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                    />
-                    <>
-                      <circle cx="22" cy="48" r="3" fill="currentColor" />
-                      <circle cx="48" cy="38" r="3" fill="currentColor" />
-                      <circle cx="75" cy="17" r="3" fill="currentColor" />
-                    </>
-                  </svg>
-                  <span class="teaching-book-mark-bottom">PHYSICS</span>
-                </div>
+                <TeachingBookMark curriculum={curriculum} locale={locale} />
                 <div class="teaching-textbook-info">
                   <div class="teaching-textbook-meta">
                     <>

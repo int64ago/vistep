@@ -1,0 +1,19 @@
+<svg viewBox="0 0 320 240" aria-hidden="true"
+  ><path
+    d="M58 40V205Q58 222 73 222H247Q262 222 262 205V40"
+    fill="#e9eedc"
+    stroke="#a2b69a"
+    stroke-width="3"></path><path
+    d="M61 90H259V207Q259 219 247 219H73Q61 219 61 207Z"
+    fill="#bdcfb1"></path>{
+    Array.from({ length: 24 }, (_, i) => (
+      <path
+        d="M-23 0L-16-3H23L16 3Z"
+        transform={`translate(${160 + Math.sin(i * 3) * 70} ${190 + Math.cos(i * 7) * 15}) rotate(${(i * 53) % 180})`}
+        fill="#faf8e9"
+        stroke="#9caf90"
+        stroke-width="1"
+      />
+    ))
+  }<path d="M222 17L166 199" stroke="#a0b29b" stroke-width="5"></path></svg
+>

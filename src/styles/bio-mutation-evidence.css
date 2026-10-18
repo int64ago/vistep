@@ -1,0 +1,240 @@
+.bio-mutation-scene {
+  max-width: 900px;
+  margin: auto;
+  color: #5d6661;
+}
+.bio-mutation-stage {
+  min-height: 350px;
+  padding: 20px 24px;
+  background: radial-gradient(ellipse at 40% 30%, #f6f3eb, #e9e9df);
+  border-radius: 25px;
+}
+.bio-mutation-stage b,
+.bio-mutation-stage p,
+.bio-mutation-stage small,
+.bio-mutation-stage span {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-mutation-stage small {
+  display: block;
+  margin-top: 12px;
+}
+.bio-mutation-vials {
+  display: flex;
+  gap: 45px;
+  text-align: center;
+  justify-content: center;
+}
+.bio-mutation-vials svg {
+  width: 190px;
+  display: block;
+  margin: auto;
+}
+.bio-mutation-vials p {
+  margin: 2px;
+}
+.bio-mutation-irradiate > small {
+  text-align: center;
+}
+.bio-mutation-cross {
+  display: grid;
+  gap: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.bio-mutation-offspring {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  text-align: center;
+}
+.bio-mutation-offspring svg {
+  width: 100%;
+  height: 110px;
+  display: block;
+}
+.bio-mutation-offspring span {
+  display: block;
+}
+.bio-mutation-association {
+  max-width: 600px;
+  margin: auto;
+}
+.bio-mutation-bars > div {
+  padding: 15px 10px;
+  border-radius: 15px;
+}
+.bio-mutation-bars > div.active {
+  background: #e3e6da;
+}
+.bio-mutation-bars > div > div {
+  display: flex;
+  width: 100%;
+  height: 33px;
+  margin: 10px 0;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.bio-mutation-bars span,
+.bio-mutation-key {
+  background: #a98576;
+}
+.bio-mutation-bars i,
+.bio-mutation-key.pale {
+  background: #c4cec0;
+}
+.bio-mutation-key {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 4px;
+}
+.bio-mutation-association p {
+  margin: 5px 0;
+}
+.bio-mutation-protocol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  justify-content: center;
+}
+.bio-mutation-protocol span {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #e4e8dd;
+}
+.bio-mutation-protocol .active {
+  background: #c8d9d2;
+  color: #476e66;
+}
+.bio-mutation-prepare > svg {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto 0;
+  display: block;
+}
+.bio-mutation-mitosis,
+.bio-mutation-field,
+.bio-mutation-sets,
+.bio-mutation-structure {
+  max-width: 480px;
+  margin: auto;
+  text-align: center;
+}
+.bio-mutation-mitosis svg,
+.bio-mutation-sets svg,
+.bio-mutation-structure svg {
+  width: 100%;
+  display: block;
+}
+.bio-mutation-field svg {
+  width: 100%;
+  max-width: 285px;
+  display: block;
+  margin: auto;
+}
+.bio-mutation-chromcount {
+  font-size: 17px;
+  margin-top: 10px;
+}
+.bio-mutation-controls {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+.bio-mutation-controls label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-mutation-controls select,
+.bio-mutation-controls button {
+  min-height: 44px;
+  padding: 9px 13px;
+  border: 1px solid #ccd1c4;
+  border-radius: 12px;
+  background: #f1f2e8;
+  color: inherit;
+  font: inherit;
+}
+.bio-mutation-controls select {
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .bio-mutation-stage {
+    padding: 14px 8px;
+    min-height: 320px;
+    border-radius: 19px;
+  }
+  .bio-mutation-vials {
+    gap: 4px;
+  }
+  .bio-mutation-vials > div {
+    width: 50%;
+  }
+  .bio-mutation-vials svg {
+    width: 100%;
+    max-width: 180px;
+  }
+  .bio-mutation-offspring {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .bio-mutation-offspring svg {
+    height: 85px;
+  }
+  .bio-mutation-cross {
+    margin-bottom: 12px;
+  }
+  .bio-mutation-protocol {
+    gap: 6px;
+  }
+  .bio-mutation-protocol span {
+    font-size: 16px;
+    padding: 6px 9px;
+  }
+  .bio-mutation-bars > div {
+    padding: 12px 6px;
+  }
+  .bio-mutation-field svg {
+    max-width: 260px;
+  }
+}
+.bio-mutation-origin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0 14px;
+}
+.bio-mutation-origin span {
+  display: grid;
+  gap: 4px;
+  font-size: 16px;
+}
+.bio-mutation-origin b {
+  font-size: 18px;
+}
+.bio-mutation-origin i {
+  font-style: normal;
+}
+
+@media (max-width: 600px) {
+  .bio-mutation-offspring svg {
+    height: 62px;
+  }
+  .bio-mutation-offspring {
+    gap: 8px;
+  }
+  .bio-mutation-cross {
+    margin-bottom: 8px;
+  }
+  .bio-mutation-bars > div {
+    padding: 7px 6px;
+  }
+  .bio-mutation-bars > div > div {
+    height: 27px;
+    margin: 7px 0;
+  }
+}

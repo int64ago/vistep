@@ -1,0 +1,100 @@
+.bio-dna {
+  max-width: 600px;
+  margin-inline: auto;
+  color: #62624f;
+  font-size: 16px;
+}
+.bio-dna svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-dna svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #62624f;
+}
+.bio-dna-head {
+  font-size: 17px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+.bio-dna-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbd9c7;
+}
+.bio-dna-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-dna button {
+  min-height: 44px;
+  padding: 8px 15px;
+  font: inherit;
+  color: inherit;
+  background: #f8f7ee;
+  border: 1px solid #ceceba;
+  border-radius: 24px;
+}
+.bio-dna button[aria-pressed='true'] {
+  background: #e8e7d2;
+  border-color: #a8ae8a;
+}
+.bio-dna label {
+  display: grid;
+  gap: 8px;
+}
+.bio-dna input,
+.bio-dna select,
+.bio-dna textarea {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  accent-color: #a5ae83;
+}
+.bio-dna input[type='number'],
+.bio-dna select,
+.bio-dna textarea {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #fcfcf5;
+}
+.bio-dna textarea {
+  min-height: 88px;
+}
+.bio-dna details,
+.bio-dna p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-dna summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-dna button:focus-visible,
+.bio-dna input:focus-visible,
+.bio-dna textarea:focus-visible {
+  outline: 2px solid #a6af87;
+  outline-offset: 3px;
+}
+.bio-dna-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.bio-dna .gel text {
+  fill: #dfebe4;
+}

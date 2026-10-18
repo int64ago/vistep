@@ -1,0 +1,43 @@
+---
+import { illustrativeLineage } from '../../models/bio-cell-fates';
+const position = (id: number) => {
+  const node = illustrativeLineage[id],
+    first = 2 ** node.level - 1;
+  return { x: 30 + ((id - first + 0.5) / 2 ** node.level) * 340, y: 34 + node.level * 49 };
+};
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eeeddd"></rect>{
+    illustrativeLineage.map((node) => {
+      const q = position(node.id),
+        p = node.parent === null ? null : position(node.parent);
+      return (
+        <g>
+          {p && (
+            <path
+              d={`M${p.x} ${p.y}V${q.y - 20}H${q.x}V${q.y}`}
+              fill="none"
+              stroke="#a9b58e"
+              stroke-width="2"
+            />
+          )}
+          <circle
+            cx={q.x}
+            cy={q.y}
+            r={node.scheduledDeath ? 5 : 10}
+            fill={node.scheduledDeath ? '#b39a8f' : '#93a978'}
+            opacity={node.scheduledDeath ? 0.45 : 1}
+          />
+          {node.scheduledDeath && (
+            <path
+              d={`M${q.x - 6} ${q.y - 6}l12 12m0-12-12 12`}
+              stroke="#a17c70"
+              stroke-width="1.5"
+            />
+          )}
+        </g>
+      );
+    })
+  }</svg
+>

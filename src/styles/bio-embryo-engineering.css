@@ -1,0 +1,94 @@
+.bio-embryo {
+  color: #62624f;
+  font-size: 16px;
+}
+.bio-embryo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-embryo svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #62624f;
+}
+.bio-embryo-head {
+  font-size: 17px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+.bio-embryo-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbd9c7;
+}
+.bio-embryo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-embryo button {
+  min-height: 44px;
+  padding: 8px 15px;
+  font: inherit;
+  color: inherit;
+  background: #f8f7ee;
+  border: 1px solid #ceceba;
+  border-radius: 24px;
+}
+.bio-embryo button[aria-pressed='true'] {
+  background: #e8e7d2;
+  border-color: #a8ae8a;
+}
+.bio-embryo label {
+  display: grid;
+  gap: 8px;
+}
+.bio-embryo input,
+.bio-embryo select,
+.bio-embryo textarea {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  accent-color: #a5ae83;
+}
+.bio-embryo input[type='number'],
+.bio-embryo select,
+.bio-embryo textarea {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #fcfcf5;
+}
+.bio-embryo textarea {
+  min-height: 88px;
+}
+.bio-embryo details,
+.bio-embryo p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-embryo summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-embryo button:focus-visible,
+.bio-embryo input:focus-visible,
+.bio-embryo textarea:focus-visible {
+  outline: 2px solid #a6af87;
+  outline-offset: 3px;
+}
+.bio-embryo-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}

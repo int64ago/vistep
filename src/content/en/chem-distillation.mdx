@@ -1,0 +1,49 @@
+---
+name: 'Distillation and fractions'
+title: 'Why does vapour differ from the flask liquid?'
+---
+
+<section id="understand">
+
+## Separation follows differences in volatility
+
+The textbook illustrates distillation with dichloromethane, chloroform and carbon tetrachloride, listing approximate normal boiling points of 40,62 and 77°C. Pure boiling points are references. Mixed vapour normally contains multiple components, so simple distillation enriches fractions without guaranteeing three pure products in one pass.
+
+Follow evaporation, the distillation head, condensation in the inner tube and collection in an open receiver. Coolant uses the separate jacket. Composition, temperature and collection come from one ideal equilibrium and material-balance model.
+
+</section>
+
+<section id="try">
+
+## Compare mixed and pure feeds
+
+Choose the mixture, pure dichloromethane or pure carbon tetrachloride and change model progress. The mixture residue and equilibrium temperature change. An ideal pure feed at fixed pressure retains its boiling temperature. The cooling switch recalculates a separate trial from its start; it does not erase previously collected liquid within one physical run.
+
+Colours identify otherwise colourless substances. Stacked fraction colours account for component amounts rather than immiscible layers. This chlorinated-solvent apparatus explains mechanisms without household operating or mixture-preparation instructions.
+
+</section>
+
+<section id="deeper">
+
+<details>
+<summary>Equilibrium, integration and limitations</summary>
+
+The model anchors a constant-enthalpy Clausius–Clapeyron approximation at NIST normal boiling points 313,334.3 and 349.8 K, using vaporization enthalpies 28.06,29.24 and 29.82 kJ/mol: pᵢ = 1.01325 exp[(ΔHᵢ/R)(1/Tbᵢ − 1/T)] bar. Narrow-temperature Antoine fits are not extrapolated through the whole calculation.
+
+Assuming ideal gas and liquid phases, it solves Σxᵢpᵢ(T) = 1.01325 bar for the bubble point and calculates yᵢ = xᵢpᵢ/P. Constant enthalpy and omitted activity or azeotropy are teaching approximations, not measured ternary equilibrium data.
+
+Chosen initial mole fractions are 0.45,0.35,0.20 with normalized total 1. Small vapour increments are removed and equilibrium recalculated until 72 % is removed, divided into three 24 % accounting cuts. Every species is conserved between residue and cuts. Liquid levels represent relative amount, without conversion using true molar volumes. Heating power, elapsed time, yield and safe operating limits are not predicted; the endpoint simply retains residue in the model.
+
+Close boiling points, azeotropy, thermal instability or demanding purity can make simple distillation insufficient. Thermometer placement explains the head reading, while actual supports, joint details and heat losses are omitted. The model supplies no hazardous operating conditions.
+
+</details>
+
+## Textbook and sources
+
+PEP Elective Volume 3, chapter 1 section 2, printed page 13 / PDF 18, body text and figure 1-7. The activity title is an editorial summary.
+
+- [NIST: dichloromethane phase changes](https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Mask=4)
+- [NIST: chloroform phase changes](https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=4)
+- [NIST: carbon tetrachloride phase changes](https://webbook.nist.gov/cgi/cbook.cgi?ID=C56235&Mask=4)
+
+</section>

@@ -1,0 +1,26 @@
+---
+import { pureCulture, plateGeometry } from '../../models/bio-microbial-culture';
+const w = 300,
+  g = plateGeometry(w),
+  colonies = pureCulture(1, w);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f1eedc"></rect><g transform="translate(20 -37) scale(1.1)"
+    ><circle cx={g.cx} cy={g.cy} r={g.r + 4} fill="#f8f4e5" stroke="#b8c2ac" stroke-width="2"
+    ></circle><circle cx={g.cx} cy={g.cy} r={g.r} fill="#e3d9ac"></circle>{
+      colonies.map((a) => <circle cx={a.x} cy={a.y} r={a.r} fill="#b1a378" opacity=".8" />)
+    }<path
+      d={`M${g.cx - g.r * 0.8} ${g.cy - g.r * 0.45}A${g.r} ${g.r} 0 0 1 ${g.cx + g.r * 0.35} ${g.cy - g.r * 0.88}`}
+      stroke="#fcf9e8"
+      stroke-width="3"
+      fill="none"></path></g
+  ><path d="M307 66l42-30" stroke="#adb6a4" stroke-width="4"></path><ellipse
+    cx="303"
+    cy="69"
+    rx="6"
+    ry="4"
+    fill="none"
+    stroke="#a6b39c"
+    stroke-width="2"></ellipse>
+</svg>

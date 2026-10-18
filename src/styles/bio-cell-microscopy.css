@@ -1,0 +1,92 @@
+.bio-microscope {
+  padding: clamp(12px, 3vw, 30px);
+  color: #304d41;
+  background: radial-gradient(ellipse at 65% 30%, #eff1db, #e5eadd);
+  border-radius: 24px;
+}
+.bio-micro-layout {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.5fr) minmax(260px, 1fr);
+  max-width: 820px;
+  margin: auto;
+  align-items: center;
+  gap: 24px;
+}
+.bio-micro-instrument svg {
+  display: block;
+  width: 100%;
+  max-height: 275px;
+}
+.bio-micro-instrument p,
+.bio-micro-scale {
+  font-size: 16px;
+  text-align: center;
+}
+.bio-micro-view svg {
+  width: 100%;
+  max-height: 360px;
+  display: block;
+}
+.bio-micro-scale {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.bio-micro-observation {
+  max-width: 680px;
+  margin: 18px auto 10px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  min-height: 3.2em;
+}
+.bio-micro-note {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #657665;
+}
+.bio-micro-controls {
+  max-width: 640px;
+  display: grid;
+  gap: 15px;
+  margin: 20px auto;
+}
+.bio-micro-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-micro-controls button {
+  min-height: 44px;
+}
+@media (max-width: 540px) {
+  .bio-micro-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .bio-micro-instrument {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .bio-micro-instrument svg {
+    width: 52px;
+    height: 72px;
+  }
+  .bio-micro-instrument p {
+    margin: 0;
+  }
+  .bio-micro-view svg {
+    max-height: 300px;
+  }
+  .bio-micro-scale {
+    font-size: 16px;
+    justify-content: space-between;
+  }
+  .bio-micro-observation {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+}

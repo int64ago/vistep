@@ -1,0 +1,39 @@
+---
+import { strongTitration } from '../../models/chem-acid-base-titration';
+const curve = Array.from(
+  { length: 121 },
+  (_, i) => `${237 + i * 1.15},${192 - strongTitration('base-into-acid', i / 3).pH * 10}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 400 240" aria-hidden="true">
+  <defs
+    ><linearGradient id="titration-bg" x2="1" y2="1"
+      ><stop stop-color="#f4f3e8"></stop><stop offset="1" stop-color="#e0e8d7"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="240" rx="24" fill="url(#titration-bg)"></rect>
+  <path d="M58 25V108L63 116V136H67V116L72 108V25" fill="#edf4e6" stroke="#9bb39e" stroke-width="2"
+  ></path>
+  <path d="M60 54Q65 59 70 54V108L65 115V134" fill="#c0d6be"></path>
+  <rect x="51" y="115" width="28" height="8" rx="3" fill="#b9c6ad"></rect>
+  {[0, 1, 2, 3, 4].map((i) => <path d={`M73 ${36 + i * 15}h8`} stroke="#97ad94" />)}
+  <path
+    d="M43 151V169L15 217Q12 225 23 225H107Q118 225 115 217L87 169V151"
+    fill="#f2f7e8"
+    stroke="#9fb6a0"
+    stroke-width="2"></path>
+  <path d="M30 199L18 218Q17 223 25 223H105Q113 223 112 218L100 199Z" fill="#e0a9bb"></path>
+  <circle cx="65" cy="141" r="3" fill="#bdd5bb"></circle>
+  <rect x="156" y="38" width="39" height="170" rx="8" fill="#eef4e3" stroke="#a3b79a"></rect>
+  <path d="M158 119Q176 131 193 119V206H158Z" fill="#bad3b8"></path>
+  {
+    [0, 1, 2, 3, 4, 5, 6].map((i) => (
+      <path d={`M156 ${64 + i * 20}h${i % 2 ? 8 : 14}`} stroke="#91a78c" />
+    ))
+  }
+  <path d="M237 39V192H378" fill="none" stroke="#a9b89c"></path>
+  <polyline points={curve} fill="none" stroke="#83a68e" stroke-width="3"></polyline>
+  <text x="306" y="219" font-size="16" text-anchor="middle" fill="#69785f">pH · V</text>
+</svg>

@@ -1,0 +1,21 @@
+---
+import { limbBones } from '../../models/bio-evolution-evidence';
+const colors = ['#c1a25e', '#b48c9d', '#8d94ac', '#b59c73', '#9e7477', '#648da0'];
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#edf0df"></rect>{
+    (['human', 'bat'] as const).map((limb, i) => (
+      <g transform={`translate(${i * 180 + 20} 7) scale(.84)`}>
+        {limbBones(limb).map((b) => (
+          <path
+            d={`M${b.a[0]} ${b.a[1]}L${b.b[0]} ${b.b[1]}`}
+            stroke={colors[b.group]}
+            stroke-width={b.width}
+            stroke-linecap="round"
+          />
+        ))}
+      </g>
+    ))
+  }</svg
+>

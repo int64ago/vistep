@@ -1,0 +1,35 @@
+---
+import { rootTrialCounts, cuttingRootGeometry } from '../../models/bio-plant-growth-regulators';
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eff3e7"></rect>
+  {
+    [0.1, 1, 10].map((dose, i) => {
+      const x = 75 + i * 125,
+        roots = cuttingRootGeometry(rootTrialCounts(dose)[1], 1);
+      return (
+        <g>
+          <path
+            d={`M${x - 37} 85v118q0 8 8 8h58q8 0 8-8V85`}
+            fill="#e5eddd"
+            stroke="#aebfa0"
+            stroke-width="2"
+          />
+          <path d={`M${x - 33} 113h66v89q0 5-5 5h-56q-5 0-5-5Z`} fill="#d1dec5" />
+          <path d={`M${x} 128V32`} stroke="#8da278" stroke-width="6" />
+          <path
+            d={`M${x} 65q-30-30-31-8q12 17 31 8M${x} 86q31-30 32-8q-12 17-32 8`}
+            fill="#a4ba87"
+            stroke="#8ca373"
+          />
+          <g transform={`translate(${x} 128)`}>
+            {roots.map((r) => (
+              <path d={r.path} fill="none" stroke="#b49f75" stroke-width="1.7" />
+            ))}
+          </g>
+        </g>
+      );
+    })
+  }
+</svg>

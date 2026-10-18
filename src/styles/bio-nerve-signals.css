@@ -1,0 +1,108 @@
+.bio-nerve {
+  color: #3c4d59;
+  width: 100%;
+  padding: 16px 12px 0;
+  box-sizing: border-box;
+}
+.bio-nerve[data-watch='true'] .bio-nerve-note {
+  display: none;
+}
+.bio-nerve svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-nerve svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #425361;
+}
+.bio-nerve-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  min-height: 44px;
+  margin-bottom: 8px;
+}
+.bio-nerve-head b {
+  font-size: 21px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.bio-nerve-note {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #697b88;
+  margin: 8px 0;
+}
+.bio-nerve-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.bio-nerve button {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid #c4d0d7;
+  border-radius: 23px;
+  background: #f6f9f9;
+  color: inherit;
+  padding: 8px 16px;
+}
+.bio-nerve button[aria-pressed='true'] {
+  background: #e0eaf0;
+  border-color: #8ea9b7;
+}
+.bio-nerve-controls {
+  display: grid;
+  gap: 14px;
+  border-top: 1px solid #dde5e8;
+  padding-top: 16px;
+}
+.bio-nerve-controls label {
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+}
+.bio-nerve input {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #718fa5;
+}
+.bio-nerve details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-nerve summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.bio-nerve button:focus-visible,
+.bio-nerve input:focus-visible {
+  outline: 2px solid #6e8a9a;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .bio-nerve-head {
+    align-items: flex-start;
+  }
+  .bio-nerve-head span {
+    max-width: 65%;
+  }
+  .bio-nerve-head b {
+    font-size: 18px;
+  }
+}
+
+.bio-nerve summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 12px;
+}
+.bio-nerve details[open] summary::after {
+  content: '−';
+}

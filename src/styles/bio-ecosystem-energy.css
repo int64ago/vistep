@@ -1,0 +1,90 @@
+.bio-energy {
+  font-size: 16px;
+  color: #5d644e;
+}
+.bio-energy svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-energy svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #5d644e;
+}
+.bio-energy-head {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.bio-energy-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #d9dfc9;
+}
+.bio-energy-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-energy button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 24px;
+  border: 1px solid #c5d0b4;
+  background: #f7f8ee;
+  color: inherit;
+  font: inherit;
+}
+.bio-energy button[aria-pressed='true'] {
+  background: #e4e9d2;
+  border-color: #9ba982;
+}
+.bio-energy label {
+  display: grid;
+  gap: 8px;
+}
+.bio-energy input,
+.bio-energy select,
+.bio-energy textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  accent-color: #a0aa7c;
+}
+.bio-energy select,
+.bio-energy textarea {
+  padding: 9px;
+  border: 1px solid #c5d0b4;
+  border-radius: 12px;
+  background: #fafbf5;
+}
+.bio-energy textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.bio-energy details,
+.bio-energy p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-energy summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-energy button:focus-visible,
+.bio-energy input:focus-visible,
+.bio-energy select:focus-visible,
+.bio-energy textarea:focus-visible {
+  outline: 2px solid #99aa7d;
+  outline-offset: 3px;
+}

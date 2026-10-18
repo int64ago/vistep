@@ -1,0 +1,44 @@
+---
+import { mudParticle } from '../../models/chem-hydrolysis-applications';
+---
+
+<svg viewBox="0 0 400 240" aria-hidden="true">
+  <defs
+    ><linearGradient id="hydrolysis-bg" x2="1" y2="1"
+      ><stop stop-color="#f0f3e5"></stop><stop offset="1" stop-color="#e1e4cc"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="240" rx="24" fill="url(#hydrolysis-bg)"></rect>
+  {
+    [0, 1, 2].map((i) => (
+      <g transform={`translate(${78 + i * 122} 0)`}>
+        <path
+          d="M-29 55V197Q-29 214 -15 214H15Q29 214 29 197V55"
+          fill="#f1f5e5"
+          stroke="#9fb49d"
+          stroke-width="2"
+        />
+        <path
+          d="M-27 99V196Q-27 212 -14 212H14Q27 212 27 196V99Z"
+          fill={i === 1 ? '#d8d4ae' : '#d1ddc4'}
+        />
+        {Array.from({ length: 36 }, (_, j) => {
+          const a = mudParticle(j, 300, i === 0 ? 'none' : i === 1 ? 'Fe' : 'Al');
+          return (
+            <circle
+              cx={25 * a.x}
+              cy={100 + (107 * a.depth) / 60}
+              r="2"
+              fill="#907957"
+              opacity=".7"
+            />
+          );
+        })}
+        <text x="0" y="37" text-anchor="middle" font-size="17" fill="#697659">
+          {i === 0 ? 'H₂O' : i === 1 ? 'Fe³⁺' : 'Al³⁺'}
+        </text>
+      </g>
+    ))
+  }
+</svg>

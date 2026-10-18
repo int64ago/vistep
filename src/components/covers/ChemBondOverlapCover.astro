@@ -1,0 +1,26 @@
+---
+import { overlapField } from '../../models/chem-bond-overlap';
+const cells = Array.from({ length: 80 * 48 }, (_, i) => {
+  const x = i % 80,
+    y = Math.floor(i / 80),
+    v = overlapField('pi', 1.8, (x - 40) / 10, (24 - y) / 10);
+  return { x, y, opacity: Math.min(0.9, Math.sqrt(v) * 1.8) };
+});
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#eff2e8"></rect>{
+    cells.map((c) => (
+      <rect
+        x={c.x * 8}
+        y={8 + c.y * 8}
+        width="8.1"
+        height="8.1"
+        fill="#789358"
+        opacity={c.opacity}
+      />
+    ))
+  }<path d="M75 200H565" stroke="#a9b59c" stroke-dasharray="6 5"></path>{
+    [-1, 1].map((s) => <circle cx={320 + s * 72} cy="200" r="7" fill="#b1855c" />)
+  }<text x="80" y="65" fill="#526747" font-size="27">p–p · π</text></svg
+>

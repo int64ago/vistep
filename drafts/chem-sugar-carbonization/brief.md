@@ -1,0 +1,11 @@
+# Sucrose carbonization
+
+Target 38, required 2 body page 5 / PDF 10, with exercise 4 page 10 / PDF 15 supporting gas and oxidation analysis. Split from sulfur transformations because dehydration and porous expansion require a distinct object and model. Body demonstration identity retained.
+
+Five chapters, 134 seconds: colour changes before volume; dehydration atom inventory; gas-filled pore expansion; selected oxidation / electron balance; fixed-solid porosity boundary comparison. Scene variant sugar-dehydration spans all five. Watch ignores prior exploration.
+
+Independent model balances the selected C12H22O11→12C+11H2O and C+2H2SO4→CO2+2SO2+2H2O paths for every dehydration and oxidation fraction. Porosity controls bulk volume V=Vs/(1−phi); carbon framework reference volume 0.45 is explicitly a teaching geometry parameter, not measured density. Phi capped .88 for the carbon phase; unreacted sucrose is compact. Overall porosity comes from the resulting volume split. All allowed states fit within maximum bulk volume 3.75; zero solid yields zero volume and an empty column path. SVG column height / pore texture derive from this state; grains deterministic. Distinguish drying, dehydration, oxidation and foaming. No physical kinetics, gas composition, purity or real pore fraction claimed.
+
+Source: local body/exercise; University Wisconsin demonstration full page read; RSC search extract specifically supports heat/steam expansion and SO2, though full-page access returned 405. Limit attribution to those supported facts. Teaching scene gives no operational recipe.
+
+Four independent tests: atom balances, pore-versus-amount separation, finite boundaries and stable grain identity, fixed-solid director comparison. Phone 240 px apparatus, HTML text at least 16 px, controls 44 px. Scoped tests (4), owned TypeScript diagnostics (0), packet and formatting passed. Actual 320 px paused checks cover all chapters in both languages; changed compact/porous/ledger/final stages rechecked, including 95% fully expanded endpoints. One initial dev navigation-context failure passed on retry. Images actually inspected; no continuous-play claim. Root owns full continuous viewing, speech and real-device acceptance.

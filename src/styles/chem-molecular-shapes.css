@@ -1,0 +1,118 @@
+.chem-molecular-shapes {
+  padding: 18px 10px;
+  color: #526a70;
+  font-size: 16px;
+}
+.chem-shapes-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.chem-shapes-title strong {
+  font-weight: 450;
+}
+.chem-shapes-title > span {
+  color: #7e969a;
+}
+.chem-shapes-stage {
+  width: 100%;
+  height: 310px;
+  display: block;
+  margin: 4px auto;
+}
+.chem-shapes-readout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.chem-shapes-readout > span {
+  font-size: 16px;
+}
+.chem-shapes-legend {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+.chem-shapes-legend span,
+.chem-shapes-key {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.chem-shapes-legend i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #61707655;
+}
+.chem-shapes-key i {
+  width: 20px;
+  height: 2px;
+  background: #678995;
+  position: relative;
+}
+.chem-shapes-key i:after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -3px;
+  border-left: 7px solid #678995;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.chem-shapes-sum {
+  color: #9b6a3d;
+  font-weight: 450;
+}
+.chem-shapes-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #98aaa833;
+}
+.chem-shapes-controls button,
+.chem-shapes-controls input,
+.chem-shapes-controls summary {
+  min-height: 44px;
+}
+.chem-shapes-controls summary {
+  font-size: 16px;
+  cursor: pointer;
+}
+.chem-shapes-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .chem-molecular-shapes {
+    padding: 14px 8px;
+  }
+  .chem-shapes-title {
+    font-size: 17px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .chem-shapes-stage {
+    height: 240px;
+  }
+  .chem-shapes-readout {
+    font-size: 16px;
+    gap: 8px 16px;
+  }
+  .chem-shapes-legend {
+    gap: 14px;
+    margin-top: 10px;
+  }
+}

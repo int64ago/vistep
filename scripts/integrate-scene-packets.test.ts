@@ -185,6 +185,29 @@ describe('short explanation integration', () => {
     },
   );
 
+  it('preserves an apparatus key independently of the textbook location', () => {
+    const { root, run } = fixture();
+    const packetPath = join(root, 'src/data/scene-packets/short-explanation.json');
+    const packet = JSON.parse(readFileSync(packetPath, 'utf8'));
+    packet.curriculumVariants['chem-new-book-location'] = {
+      chapterIds: ['step-1'],
+      sceneVariant: 'shared-apparatus',
+      label: { zh: '同一装置的新学习位置', en: 'A new context for the same apparatus' },
+    };
+    writeFileSync(packetPath, JSON.stringify(packet));
+    const result = run('--apply');
+    expect(result.status, result.stderr).toBe(0);
+    const variants = JSON.parse(
+      readFileSync(join(root, 'src/data/curriculum-variants.json'), 'utf8'),
+    );
+    expect(variants['chem-new-book-location']).toMatchObject({
+      sceneSlug: 'short-explanation',
+      chapterIds: ['step-1'],
+      sceneVariant: 'shared-apparatus',
+    });
+    expect(variants['existing-experiment'].sceneVariant).toBeUndefined();
+  });
+
   it('keeps the five-minute ceiling inclusive', () => {
     const { run } = fixture(300);
     const result = run();

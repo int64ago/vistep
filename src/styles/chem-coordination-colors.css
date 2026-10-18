@@ -1,0 +1,200 @@
+.ccol {
+  color: #425b59;
+}
+.ccol-stage {
+  max-width: 850px;
+  margin: auto;
+  padding: 13px 20px;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at 35% 15%, #f8f6e9, #e4ece5);
+}
+.ccol-heading {
+  font-size: 16px;
+  line-height: 1.35;
+  min-height: 26px;
+}
+.ccol-heading b {
+  font-weight: 500;
+  color: #8c815f;
+}
+.ccol-stage > svg {
+  height: 337px;
+  width: 100%;
+  display: block;
+}
+.ccol-formula {
+  text-align: center;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.ccol-note {
+  font-size: 16px;
+  line-height: 1.35;
+  margin: 8px 0;
+  text-align: center;
+}
+.ccol-key {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  font-size: 16px;
+}
+.ccol-salts {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+.ccol-salts > div {
+  text-align: center;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ccol-salts svg {
+  height: 220px;
+  width: 100%;
+
+  transform-origin: center;
+}
+.ccol-salts strong {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+  font-weight: 550;
+}
+.ccol-salts span {
+  font-size: 16px;
+  margin-top: 5px;
+}
+.ccol-salts strong .ccol-formula-part {
+  display: inline-block;
+  margin: 0;
+  font-size: inherit;
+  white-space: nowrap;
+}
+.ccol-iron {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.ccol-iron > div {
+  text-align: center;
+}
+.ccol-iron svg {
+  display: block;
+  width: 100%;
+  height: 310px;
+}
+.ccol-iron strong,
+.ccol-iron span {
+  display: block;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.ccol-iron span {
+  font-size: 16px;
+  margin-top: 6px;
+}
+.ccol-silver {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+}
+.ccol-silver > div {
+  text-align: center;
+  min-width: 0;
+}
+.ccol-silver svg {
+  width: 100%;
+  height: 290px;
+  display: block;
+}
+.ccol-silver strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.ccol-silver p {
+  grid-column: 1/-1;
+  font-size: 16px;
+  line-height: 1.35;
+  text-align: center;
+  margin: 0;
+}
+.ccol-controls {
+  display: grid;
+  gap: 18px;
+  padding-top: 24px;
+}
+.ccol-controls p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .ccol-stage {
+    padding: 10px 8px;
+    border-radius: 20px;
+  }
+  .ccol-stage > svg {
+    height: 257px;
+  }
+  .ccol-salts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px 5px;
+  }
+  .ccol-salts svg {
+    height: 100px;
+  }
+  .ccol-salts span {
+    display: none;
+  }
+  .ccol-salts strong {
+    font-size: 16px;
+    line-height: 1.2;
+    min-height: 39px;
+  }
+  .ccol-formula {
+    font-size: 18px;
+  }
+  .ccol-iron svg {
+    height: 238px;
+  }
+  .ccol-iron strong {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+  }
+  .ccol-silver svg {
+    height: 224px;
+  }
+  .ccol-silver strong {
+    font-size: 16px;
+  }
+  .ccol-key {
+    gap: 14px;
+  }
+  .ccol-silver p {
+    margin-top: 6px;
+  }
+}
+@media (max-width: 360px) {
+  .ccol-stage > svg {
+    height: 230px;
+  }
+  .ccol-salts svg {
+    height: 91px;
+  }
+  .ccol-iron svg {
+    height: 202px;
+  }
+  .ccol-iron span {
+    line-height: 1.3;
+  }
+  .ccol-silver svg {
+    height: 192px;
+  }
+  .ccol-key {
+    gap: 12px;
+  }
+}

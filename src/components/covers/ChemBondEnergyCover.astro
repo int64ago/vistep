@@ -1,0 +1,65 @@
+---
+import { bondEnergyBook, trackedBondAtoms } from '../../models/chem-bond-energy';
+const b = bondEnergyBook(1),
+  a = trackedBondAtoms(1);
+---
+
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><g transform="translate(40 35)"
+    >{
+      [
+        [0, 2],
+        [1, 3],
+      ].map(([i, j]) => (
+        <line
+          x1={a[i].x}
+          y1={a[i].y}
+          x2={a[j].x}
+          y2={a[j].y}
+          stroke="#a2af9d"
+          stroke-width="8"
+          stroke-linecap="round"
+        />
+      ))
+    }{
+      a.map((x) => (
+        <g>
+          <>
+            <circle
+              cx={x.x}
+              cy={x.y}
+              r={x.element === 'H' ? 20 : 30}
+              fill={x.element === 'H' ? '#e6e9dc' : '#bac9ad'}
+              stroke={x.element === 'H' ? '#bfc9b3' : '#a4b594'}
+              stroke-width="2"
+            />
+            <circle
+              cx={x.x - 6}
+              cy={x.y - 8}
+              r={x.element === 'H' ? 9 : 13}
+              fill="#f6f8eb"
+              opacity=".25"
+            />
+          </>
+        </g>
+      ))
+    }</g
+  ><path d="M72 242V345M70 344H331" stroke="#c6d0ba" stroke-width="2"></path><rect
+    x="73"
+    y="250"
+    width={(b.input / 862) * 250}
+    height="23"
+    rx="9"
+    fill="#c6b593"></rect><rect
+    x="73"
+    y="296"
+    width={(b.output / 862) * 250}
+    height="23"
+    rx="9"
+    fill="#a3bcae"></rect><path
+    d={`M${73 + (b.input / 862) * 250} 276V326H323V322`}
+    fill="none"
+    stroke="#98b3a1"
+    stroke-width="2"
+    stroke-dasharray="4 5"></path></svg
+>

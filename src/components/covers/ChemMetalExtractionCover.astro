@@ -1,0 +1,13 @@
+---
+import { metalAtomMap } from '../../models/chem-metal-extraction';
+const atoms = metalAtomMap('carbon-monoxide', 0.85);
+const color: Record<string, string> = { Fe: '#b39373', O: '#bb7f76', C: '#79857c' };
+---
+
+<svg viewBox="0 0 320 260" aria-hidden="true"
+  >{atoms.map((a) => <circle cx={a.x} cy={a.y} r="18" fill={color[a.element]} />)}<path
+    d="M130 135H190m-10-8 10 8-10 8"
+    fill="none"
+    stroke="#a3af95"
+    stroke-width="3"></path></svg
+>

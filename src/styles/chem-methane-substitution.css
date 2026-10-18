@@ -1,0 +1,132 @@
+.chem-methane {
+  padding: 4px 8px 8px;
+  color: #849078;
+  font-size: 16px;
+  min-width: 0;
+}
+.chem-methane-heading {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.chem-methane-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  max-width: 400px;
+  margin: auto;
+}
+.chem-methane-vessel {
+  min-width: 0;
+  text-align: center;
+  font-size: 17px;
+}
+.chem-methane-vessel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.chem-methane-vessel small {
+  font-size: 16px;
+}
+.chem-methane-reservoir {
+  text-align: center;
+  line-height: 1.55;
+  margin: 12px auto;
+  max-width: 380px;
+  font-size: 16px;
+}
+.chem-methane-note {
+  text-align: center;
+  margin: 15px 0 5px;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #9ca78e;
+}
+.chem-methane-evidence {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  text-align: center;
+  font-size: 17px;
+}
+.chem-methane-initial {
+  text-align: center;
+  font-size: 22px;
+  margin: 10px;
+}
+.chem-methane-molecule {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: auto;
+}
+.chem-methane-equation {
+  font-size: 22px;
+  line-height: 1.8;
+  text-align: center;
+}
+.chem-methane-products {
+  display: grid;
+  gap: 14px;
+  max-width: 500px;
+  margin: auto;
+}
+.chem-methane-products > div {
+  display: grid;
+  grid-template-columns: 94px 1fr;
+  gap: 6px 12px;
+  align-items: center;
+}
+.chem-methane-products strong {
+  font-size: 21px;
+  font-weight: 450;
+}
+.chem-methane-products span {
+  grid-column: 2;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.chem-methane-products > div > div {
+  height: 5px;
+  border-radius: 10px;
+  background: #f0f3ec;
+  overflow: hidden;
+}
+.chem-methane-products i {
+  display: block;
+  height: 100%;
+  background: #b5c2a0;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+.chem-methane-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 25px;
+}
+.chem-methane-controls label {
+  font-size: 16px;
+}
+.chem-methane-controls button {
+  min-height: 44px;
+}
+@media (min-width: 650px) {
+  .chem-methane {
+    max-width: 650px;
+    margin: auto;
+    padding: 15px 30px;
+  }
+  .chem-methane-heading {
+    font-size: 21px;
+  }
+  .chem-methane-evidence {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-methane * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,57 @@
+---
+import {
+  dnaResidues,
+  backboneSegments,
+  residueRings,
+  projectDna,
+} from '../../models/bio-dna-structure';
+const colors: Record<string, string> = { A: '#b59c6c', T: '#8fa5a1', G: '#a28fa9', C: '#b18e85' };
+const segments = backboneSegments().map((s) => ({
+  ...s,
+  a: projectDna(s.a, 0.8),
+  b: projectDna(s.b, 0.8),
+}));
+const rings = dnaResidues
+  .flatMap((r) =>
+    residueRings(r).map((g) => ({
+      ...g,
+      base: r.base,
+      chain: r.chain,
+      points: g.points.map((p) => projectDna(p, 0.8)),
+    })),
+  )
+  .sort(
+    (a, b) =>
+      a.points.reduce((s, p) => s + p.z, 0) / a.points.length -
+      b.points.reduce((s, p) => s + p.z, 0) / b.points.length,
+  );
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <rect width="400" height="230" rx="24" fill="#efeadf"></rect>
+  <g transform="translate(340 -45) rotate(90) scale(.9)">
+    {
+      segments.map((s) => (
+        <line
+          x1={s.a.x}
+          y1={s.a.y}
+          x2={s.b.x}
+          y2={s.b.y}
+          stroke={s.chain === 'A' ? '#b49d78' : '#7d9b95'}
+          stroke-width="5"
+          stroke-linecap="round"
+        />
+      ))
+    }
+    {
+      rings.map((r) => (
+        <polygon
+          points={r.points.map((p) => `${p.x},${p.y}`).join(' ')}
+          fill={r.kind === 'sugar' ? '#d6c7aa' : colors[r.base]}
+          stroke="#f4eee0"
+          stroke-width=".7"
+        />
+      ))
+    }
+  </g></svg
+>

@@ -1,0 +1,21 @@
+---
+import { tofuNodes, tofuNetwork } from '../../models/chem-tofu-coagulation';
+const network = tofuNetwork(1, 1);
+---
+
+<svg viewBox="0 0 320 240" aria-hidden="true"
+  ><rect x="20" y="20" width="280" height="210" rx="45" fill="#f5edda"></rect>{
+    network.edges.map((e) => (
+      <path
+        d={`M${tofuNodes[e.a].x} ${tofuNodes[e.a].y}L${tofuNodes[e.b].x} ${tofuNodes[e.b].y}`}
+        stroke="#b4a16c"
+        stroke-width="4"
+        opacity={e.weight}
+      />
+    ))
+  }{
+    tofuNodes.map((n) => (
+      <ellipse cx={n.x} cy={n.y} rx="11" ry="7" fill="#e8ddba" stroke="#ac955f" stroke-width="2" />
+    ))
+  }</svg
+>

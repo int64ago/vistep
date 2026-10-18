@@ -1,0 +1,42 @@
+---
+import { penrosePoints, structureIntensity } from '../../models/chem-crystal-diffraction';
+const points = penrosePoints();
+const samples = Array.from({ length: 6400 }, (_, i) => {
+  const x = i % 80,
+    y = Math.floor(i / 80),
+    q = structureIntensity(points, ((x - 39.5) / 39.5) * 2.5, ((y - 39.5) / 39.5) * 2.5);
+  return { x, y, value: Math.min(1, Math.log1p(q * 700) / Math.log(701)) };
+});
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#dce8df"></rect><rect
+    x="340"
+    y="60"
+    width="280"
+    height="280"
+    rx="25"
+    fill="#192c2e"></rect><defs
+    ><clipPath id="cdf-cover-clip"
+      ><rect x="340" y="60" width="280" height="280" rx="25"></rect></clipPath
+    ></defs
+  ><g clip-path="url(#cdf-cover-clip)"
+    >{
+      samples.map((s) => (
+        <rect
+          x={340 + s.x * 3.5}
+          y={60 + s.y * 3.5}
+          width="3.6"
+          height="3.6"
+          fill={`rgb(${Math.round(25 + s.value * 207)},${Math.round(44 + s.value * 195)},${Math.round(46 + s.value * 162)})`}
+        />
+      ))
+    }</g
+  >{
+    points.map((p) => <circle cx={166 + p.x * 19} cy={200 + p.y * 19} r="2.6" fill="#7b9e91" />)
+  }<path
+    d="M300 200 H324 M318 194 L325 200 L318 206"
+    fill="none"
+    stroke="#ad9569"
+    stroke-width="2.5"></path></svg
+>

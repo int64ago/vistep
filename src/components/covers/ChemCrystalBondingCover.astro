@@ -1,0 +1,72 @@
+---
+import { quartz, iodine, rotate, atomColor, atomicRadius } from '../../models/chem-crystal-bonding';
+const panels = [
+  { s: iodine(0.88), cx: 160, cy: 202, scale: 15, yaw: 0 },
+  { s: quartz, cx: 455, cy: 206, scale: 21, yaw: 0.73 },
+];
+const geometry = panels.map((p) => ({
+  s: p.s,
+  atoms: p.s.atoms.map((a) => {
+    const v = rotate(a.p, p.yaw, 0.28);
+    return {
+      ...a,
+      x: p.cx + v.x * p.scale,
+      y: p.cy - v.y * p.scale,
+      z: v.z,
+      r: atomicRadius[a.element] * p.scale,
+    };
+  }),
+}));
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="400" fill="#e9eee4"></rect><path
+    d="M318 70 V330"
+    fill="none"
+    stroke="#c2cebe"
+    stroke-width="1"></path>
+  {
+    geometry.map((g) => (
+      <g>
+        {g.s.bonds.map((b) => {
+          const a = g.atoms.find((a) => a.id === b.a)!,
+            c = g.atoms.find((a) => a.id === b.b)!;
+          return (
+            <path
+              d={`M${a.x} ${a.y} L${c.x} ${c.y}`}
+              fill="none"
+              stroke={b.kind === 'covalent' ? '#92aaa1' : '#a48bad'}
+              stroke-width={b.kind === 'covalent' ? 3 : 1.4}
+              stroke-dasharray={b.kind === 'covalent' ? undefined : '3 4'}
+              opacity={b.opacity ?? 1}
+            />
+          );
+        })}
+        {g.atoms
+          .sort((a, b) => a.z - b.z)
+          .map((a) => (
+            <g>
+              <circle cx={a.x} cy={a.y} r={a.r} fill={atomColor[a.element]} />
+              <circle
+                cx={a.x - a.r * 0.25}
+                cy={a.y - a.r * 0.3}
+                r={a.r * 0.35}
+                fill="#fcfaef"
+                opacity=".5"
+              />
+              {a.id === g.s.focus && (
+                <circle
+                  cx={a.x}
+                  cy={a.y}
+                  r={a.r + 4}
+                  fill="none"
+                  stroke="#b99355"
+                  stroke-width="1.5"
+                />
+              )}
+            </g>
+          ))}
+      </g>
+    ))
+  }
+</svg>

@@ -1,0 +1,46 @@
+---
+import { cellOsmosis } from '../../models/bio-osmosis';
+const v = cellOsmosis(1.8, 12, true).volume,
+  s = Math.cbrt(v),
+  w = 170 * s,
+  h = 112 * s;
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><rect
+    x="180"
+    y="45"
+    width="195"
+    height="140"
+    rx="20"
+    fill="#dce3c3"
+    stroke="#7c9770"
+    stroke-width="5"></rect><rect
+    x={277 - w / 2}
+    y={115 - h / 2}
+    width={w}
+    height={h}
+    rx="22"
+    fill="#c8bdcf"
+    stroke="#877892"
+    stroke-width="2"></rect><rect
+    x={277 - w * 0.42}
+    y={115 - h * 0.37}
+    width={w * 0.84}
+    height={h * 0.74}
+    rx="20"
+    fill="#b78bb0"></rect><path
+    d="M25 68V192H145V68"
+    fill="#c7deda"
+    fill-opacity=".6"
+    stroke="#8ca89c"
+    stroke-width="2"></path><path
+    d="M80 25V120L47 171H124L91 120V25"
+    fill="#c2c69c"
+    fill-opacity=".75"
+    stroke="#8ca89c"
+    stroke-width="2"></path><path d="M47 171H124" stroke="#a58b67" stroke-width="4"></path><path
+    d="M107 50V95m-5-5 5 5 5-5"
+    stroke="#849c91"
+    stroke-width="2"></path></svg
+>

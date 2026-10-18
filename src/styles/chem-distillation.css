@@ -1,0 +1,133 @@
+.chem-distill {
+  padding: 5px 8px;
+  color: #72877a;
+  min-width: 0;
+  font-size: 16px;
+}
+.chem-distill-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.chem-distill-apparatus {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-distill-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px 0 4px;
+}
+.chem-distill-species {
+  display: grid;
+  gap: 24px;
+  padding: 25px 5px 8px;
+}
+.chem-distill-species > div:not(.chem-distill-note) {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  font-size: 22px;
+}
+.chem-distill-species i,
+.chem-distill-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.chem-distill-species b {
+  font-weight: 400;
+}
+.chem-distill-composition {
+  display: grid;
+  gap: 12px;
+  margin: 12px 2px;
+}
+.chem-distill-composition-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.chem-distill-composition-row > div {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.chem-distill-composition-row i {
+  display: block;
+  height: 100%;
+}
+.chem-distill-legend {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+.chem-distill-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.chem-distill-fractions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  text-align: center;
+  padding-top: 24px;
+}
+.chem-distill-fractions svg {
+  width: 100%;
+  display: block;
+}
+.chem-distill-fractions b {
+  font-size: 18px;
+  font-weight: 400;
+}
+.chem-distill-fractions .chem-distill-note {
+  grid-column: 1/-1;
+}
+.chem-distill-controls {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+.chem-distill-controls button {
+  min-height: 44px;
+  font-size: 16px;
+}
+@media (min-width: 650px) {
+  .chem-distill {
+    max-width: 720px;
+    margin: auto;
+    padding: 16px 28px;
+  }
+  .chem-distill-apparatus {
+    max-width: 460px;
+  }
+  .chem-distill-species {
+    max-width: 440px;
+    margin: auto;
+  }
+  .chem-distill-fractions {
+    max-width: 440px;
+    margin: auto;
+  }
+  .chem-distill-title {
+    font-size: 21px;
+  }
+  .chem-distill-composition {
+    max-width: 420px;
+    margin: 15px auto;
+  }
+}

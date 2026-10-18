@@ -17,17 +17,13 @@ import {
   curriculumPath,
   curriculumSectionPath,
   curriculumSectionNumber,
+  curriculumFilmSelection,
   type CurriculumContext,
 } from '../../data/curricula';
 const { topic: originalTopic, Content, curriculumContext } = Astro.props;
 const locale = (Astro.props.locale ?? 'zh') as Locale;
 const context = curriculumContext as CurriculumContext | undefined;
-const selection = context?.lesson.chapterIds?.length
-  ? {
-      chapterIds: context.lesson.chapterIds,
-      variant: context.lesson.experimentId ?? context.lesson.id,
-    }
-  : undefined;
+const selection = curriculumFilmSelection(context?.lesson);
 const selectedWindow = filmWindow(films[originalTopic.slug], selection);
 const topic = localizedTopic(originalTopic, locale);
 const tr = (s: string) => translate(s, locale);
@@ -44,7 +40,9 @@ const ageLabel =
   title={context
     ? `${context.lesson.name[locale]} · ${context.book.title[locale]} | vistep.ai`
     : `${topic.name} — ${topic.title} | vistep.ai`}
-  description={context ? context.lesson.goal[locale] : topic.description}
+  description={context
+    ? `${context.curriculum.title[locale]} · ${context.lesson.name[locale]} — ${context.lesson.goal[locale]}`
+    : topic.description}
 >
   <main
     id="main"

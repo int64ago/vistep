@@ -1,0 +1,131 @@
+.bio-respiration {
+  background: #eceddb;
+  border-radius: 24px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #4e614a;
+}
+.bio-respiration-kind {
+  font-size: 16px;
+  margin: 0 0 16px;
+  color: #7f896c;
+}
+.bio-respiration-apparatus {
+  max-width: 720px;
+  margin: auto;
+}
+.bio-respiration-apparatus svg {
+  width: 100%;
+  height: 310px;
+  display: block;
+}
+.bio-respiration-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.bio-respiration-labels.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+.bio-respiration-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 640px;
+  margin: 16px auto;
+}
+.bio-respiration-assays {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 600px;
+  margin: auto;
+}
+.bio-respiration-assays > div {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+.bio-respiration-assays svg {
+  width: 100%;
+  height: 240px;
+  display: block;
+}
+.bio-respiration-assays p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-respiration-molecule,
+.bio-respiration-path {
+  width: 100%;
+  height: 320px;
+  display: block;
+}
+.bio-respiration-count {
+  text-align: center;
+  font-size: 16px;
+}
+.bio-respiration-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-respiration-controls {
+  display: grid;
+  gap: 16px;
+  margin: 25px auto 0;
+  max-width: 680px;
+}
+.bio-respiration-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-respiration-controls button {
+  min-height: 44px;
+  font: inherit;
+  border: 1px solid #bcc5a9;
+  border-radius: 12px;
+  background: #f6f6e8;
+  color: inherit;
+  padding: 8px 12px;
+}
+.bio-respiration-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 540px) {
+  .bio-respiration-apparatus svg {
+    height: 195px;
+  }
+  .bio-respiration-labels.three {
+    gap: 6px;
+  }
+  .bio-respiration-assays {
+    gap: 14px;
+  }
+  .bio-respiration-assays svg {
+    height: 190px;
+  }
+  .bio-respiration-molecule {
+    height: 230px;
+  }
+  .bio-respiration-path {
+    height: 280px;
+  }
+  .bio-respiration-products {
+    display: grid;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-respiration {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}

@@ -1,0 +1,162 @@
+.chem-ionic-conduction {
+  background: #edf1df;
+  color: #3f5c4d;
+  border-radius: 28px;
+  padding: clamp(20px, 3vw, 36px);
+  font-size: 16px;
+}
+.chem-ionic-conduction header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.chem-ionic-conduction header p {
+  font-size: clamp(22px, 2.4vw, 28px);
+  margin: 0;
+}
+.chem-ionic-conduction header span {
+  color: #73866c;
+}
+.chem-ionic-apparatus {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.chem-ionic-apparatus svg {
+  width: 100%;
+  max-height: 320px;
+}
+.chem-ionic-reading strong,
+.chem-ionic-reading span {
+  display: block;
+  margin: 12px 0;
+}
+.chem-ionic-reading strong {
+  font-size: 20px;
+  font-weight: 500;
+}
+.chem-ionic-reading p {
+  line-height: 1.7;
+  color: #73866c;
+}
+.chem-ionic-closeup {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 24px;
+  border-top: 1px solid #a8b99e55;
+}
+.chem-ionic-closeup svg {
+  width: 100%;
+  max-height: 240px;
+}
+.chem-ionic-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.chem-ionic-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chem-ionic-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ba9470;
+}
+.chem-ionic-legend span:nth-child(2) i {
+  background: #7daea3;
+}
+.chem-ionic-legend p {
+  line-height: 1.7;
+  margin: 0;
+  color: #73866c;
+}
+.chem-ionic-cause {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 16px 0;
+}
+.chem-ionic-controls {
+  display: grid;
+  gap: 18px;
+  background: #fbfaed;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 22px;
+}
+.chem-ionic-controls button,
+.chem-ionic-controls input {
+  min-height: 44px;
+}
+.chem-ionic-conduction details {
+  line-height: 1.8;
+  color: #73866c;
+}
+.chem-ionic-conduction summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+@media (max-width: 600px) {
+  .chem-ionic-conduction {
+    padding: 22px 18px;
+  }
+  .chem-ionic-conduction header {
+    display: block;
+  }
+  .chem-ionic-conduction header span {
+    display: block;
+    margin-top: 10px;
+  }
+  .chem-ionic-apparatus {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .chem-ionic-apparatus svg {
+    max-height: 240px;
+  }
+  .chem-ionic-reading p {
+    display: none;
+  }
+  .chem-ionic-reading strong {
+    font-size: 18px;
+    margin: 0;
+  }
+  .chem-ionic-reading span {
+    margin: 8px 0;
+  }
+  .chem-ionic-closeup {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .chem-ionic-closeup svg {
+    max-height: 190px;
+  }
+  .chem-ionic-legend {
+    gap: 12px;
+  }
+  .chem-ionic-legend p {
+    flex-basis: 100%;
+  }
+  .chem-ionic-cause {
+    font-size: 16px;
+  }
+}
+.chem-ionic-conduction[data-watch='true'] header > p,
+.chem-ionic-conduction[data-watch='true'][data-micro='true'] .chem-ionic-apparatus,
+.chem-ionic-conduction[data-watch='true'] .chem-ionic-legend > p,
+.chem-ionic-conduction[data-watch='true'] .chem-ionic-reading > p {
+  display: none;
+}
+.chem-ionic-field-state {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+}

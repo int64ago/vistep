@@ -1,0 +1,123 @@
+.chem-copper-etching {
+  font-size: 16px;
+  color: #53634e;
+  padding: 18px 8px 24px;
+}
+.chem-etch-top {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+}
+.chem-etch-desktop {
+  display: block;
+  width: 100%;
+}
+.chem-etch-mobile {
+  display: none;
+}
+.chem-etch-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.chem-etch-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chem-etch-legend i {
+  width: 18px;
+  height: 12px;
+  border-radius: 3px;
+}
+.chem-etch-equation {
+  text-align: center;
+  font-size: 22px;
+  margin-top: 22px;
+}
+.chem-etch-account {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.chem-etch-account div {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+.chem-etch-account strong {
+  font-size: 24px;
+  font-weight: 500;
+}
+.chem-etch-account p {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+}
+.chem-etch-controls {
+  display: grid;
+  gap: 20px;
+  margin-top: 25px;
+  padding-top: 24px;
+  border-top: 1px solid #a6b29a55;
+}
+.chem-etch-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+.chem-etch-controls input,
+.chem-etch-controls button {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .chem-etch-desktop {
+    display: none;
+  }
+  .chem-etch-mobile {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: auto;
+  }
+  .chem-etch-equation {
+    font-size: 18px;
+  }
+  .chem-etch-legend {
+    gap: 14px;
+  }
+  .chem-etch-account {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-copper-etching {
+    padding: 10px 8px 12px;
+  }
+}
+
+.chem-etch-desktop {
+  max-width: 900px;
+  margin: auto;
+}
+@media (max-width: 600px) {
+  .chem-etch-account {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 8px;
+    margin-top: 16px;
+  }
+  .chem-etch-account strong {
+    font-size: 20px;
+  }
+  .chem-etch-account p {
+    grid-column: 1 / -1;
+  }
+}

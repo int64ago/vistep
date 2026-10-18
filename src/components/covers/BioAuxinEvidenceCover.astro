@@ -1,0 +1,50 @@
+---
+import { coleoptileGrowth, coleoptileOutline } from '../../models/bio-auxin-evidence';
+const types = ['intact', 'tip-covered'] as const;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eff2e6"></rect>
+  {
+    types.map((kind, i) => {
+      const x = 115 + i * 175,
+        g = coleoptileGrowth(kind, 1, 'left'),
+        tip = g.point(1);
+      return (
+        <g>
+          <path d={`M${x - 43} 195h86l-8 25h-70Z`} fill="#cbbb9a" />
+          <path d={`M${x - 68} 84h34m-7-5 7 5-7 5`} fill="none" stroke="#c4ae6a" stroke-width="3" />
+          <g transform={`translate(${x} 193)`}>
+            <path
+              d={coleoptileOutline(kind, 1, 'left')}
+              fill="#b9cca1"
+              stroke="#8da777"
+              stroke-width="2"
+            />
+            {[0.2, 0.4, 0.6, 0.8].map((t) => {
+              const a = g.point(t, -1),
+                b = g.point(t, 1);
+              return <path d={`M${a.x} ${a.y}L${b.x} ${b.y}`} stroke="#9cb28b" />;
+            })}
+            <g transform={`translate(${tip.x} ${tip.y}) rotate(${(tip.angle * 180) / Math.PI})`}>
+              <path
+                d="M-12 0Q-9-23 0-27Q9-23 12 0Z"
+                fill="#b4c797"
+                stroke="#8aa472"
+                stroke-width="2"
+              />
+              {kind === 'tip-covered' && (
+                <path
+                  d="M-15 7V-18Q0-42 15-18V7Z"
+                  fill="#a7aea3"
+                  stroke="#7f8c81"
+                  stroke-width="2"
+                />
+              )}
+            </g>
+          </g>
+        </g>
+      );
+    })
+  }
+</svg>

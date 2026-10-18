@@ -1,0 +1,144 @@
+.chem-ester {
+  color: #8b9679;
+  font-size: 16px;
+  padding: 4px 8px;
+  min-width: 0;
+}
+.chem-ester-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.chem-ester-svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-ester-flux {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 15px auto;
+}
+.chem-ester-equation {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.55;
+  margin: 10px 0 3px;
+}
+.chem-ester-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0 3px;
+  color: #9ba78b;
+}
+.chem-ester-two,
+.chem-ester-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 8px 0;
+}
+.chem-ester-three {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.chem-ester-three b {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.chem-ester-key {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+.chem-ester-key i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.chem-ester-bath-label {
+  text-align: center;
+  font-size: 17px;
+  margin: 12px 0;
+}
+.chem-ester-molecules {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  text-align: center;
+  font-size: 21px;
+  margin: 28px 0;
+}
+.chem-ester-molecules > span {
+  font-size: 34px;
+  color: #b3baa0;
+  line-height: 1.1;
+}
+.chem-ester-molecules small {
+  font-size: 18px;
+}
+.chem-ester-salt {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px 15px;
+  align-items: center;
+  max-width: 340px;
+  margin: 20px auto;
+  font-size: 18px;
+}
+.chem-ester-salt div {
+  height: 13px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f0f2e7;
+}
+.chem-ester-salt i {
+  height: 100%;
+  display: block;
+  background: #a8b99a;
+  border-radius: 10px;
+}
+.chem-ester-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 25px;
+}
+.chem-ester-controls button {
+  min-height: 44px;
+  font-size: 16px;
+}
+.chem-ester-controls label {
+  font-size: 16px;
+}
+@media (min-width: 650px) {
+  .chem-ester {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px 30px;
+  }
+  .chem-ester-title {
+    font-size: 21px;
+  }
+  .chem-ester-svg {
+    max-width: 400px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-ester * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,53 @@
+---
+import { photolysisTrace } from '../../models/chem-chlorine-photolysis';
+const trace = photolysisTrace(1);
+const curves = [
+  { key: 'pH' as const, min: 1.4, max: 2.2, c: '#a67f79' },
+  { key: 'chlorideMgL' as const, min: 200, max: 1000, c: '#729c87' },
+  { key: 'oxygenPercent' as const, min: 18, max: 23, c: '#ae9b65' },
+];
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e9eddd"></rect><path
+    d="M90 100V140L65 160V320Q65 335 80 335H240Q255 335 255 320V160L230 140V100Z"
+    fill="#c7d18c22"
+    stroke="#8d9f7e"
+    stroke-width="2"></path><path
+    d="M67 220H253V320Q253 333 240 333H80Q67 333 67 320Z"
+    fill="#c3cf83"
+    opacity=".25"></path>{
+    [110, 155, 200].map((x, i) => (
+      <g>
+        <path
+          d={`M${x} ${i === 2 ? 180 : 285}V${70 - i * 15}H${350 + i * 20}`}
+          fill="none"
+          stroke={curves[i].c}
+          stroke-width="4"
+        />
+      </g>
+    ))
+  }{
+    curves.map((c, i) => (
+      <g transform={`translate(350,${100 + i * 85})`}>
+        <>
+          <path d="M0 0V60H240" stroke="#a4b195" fill="none" />
+          <path
+            d={trace
+              .map(
+                (s, j) =>
+                  `${j ? 'L' : 'M'}${j * 4} ${60 - ((s[c.key] - c.min) / (c.max - c.min)) * 55}`,
+              )
+              .join(' ')}
+            stroke={c.c}
+            stroke-width="3"
+            fill="none"
+          />
+        </>
+      </g>
+    ))
+  }<path d="M20 160L58 180V235L20 255Z" fill="#aeba9c"></path><path
+    d="M58 180L89 160V280L58 235Z"
+    fill="#ddce89"
+    opacity=".5"></path></svg
+>

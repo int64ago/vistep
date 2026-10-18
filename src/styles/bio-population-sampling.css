@@ -1,0 +1,89 @@
+.bio-sampling {
+  color: #56634f;
+  font-size: 16px;
+}
+.bio-sampling svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-sampling svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #56634f;
+}
+.bio-sampling-head {
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-sampling-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 15px;
+  border-top: 1px solid #d9e1cd;
+}
+.bio-sampling-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-sampling button {
+  min-height: 44px;
+  border: 1px solid #cad6bd;
+  border-radius: 24px;
+  background: #f8faf2;
+  color: inherit;
+  font: inherit;
+  padding: 8px 16px;
+}
+.bio-sampling button[aria-pressed='true'] {
+  background: #dfe8d2;
+  border-color: #97ac84;
+}
+.bio-sampling label {
+  display: grid;
+  gap: 8px;
+}
+.bio-sampling input {
+  width: 100%;
+  min-height: 44px;
+  min-width: 0;
+  font: inherit;
+  accent-color: #8da474;
+}
+.bio-sampling details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-sampling summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-sampling-record-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.bio-sampling-records p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-sampling button:focus-visible,
+.bio-sampling input:focus-visible {
+  outline: 2px solid #829a71;
+  outline-offset: 3px;
+}
+
+.bio-sampling {
+  padding: 12px;
+}
+.bio-sampling[data-watch='true'] .bio-sampling-head {
+  display: none;
+}
+.bio-sampling[data-watch='true'] > details {
+  display: none;
+}

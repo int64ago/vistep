@@ -1,0 +1,117 @@
+.chem-ammonium-cycle {
+  padding: 18px 10px;
+  font-size: 16px;
+  color: #687d5c;
+}
+.chem-ammonium-heading {
+  text-align: center;
+  font-size: 19px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.chem-ammonium-tests,
+.chem-ammonium-preparation,
+.chem-ammonium-absorber {
+  display: block;
+  width: 100%;
+  height: 300px;
+  margin: 4px auto;
+}
+.chem-ammonium-saltlabels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  font-size: 16px;
+  gap: 5px;
+}
+.chem-ammonium-equation {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.8;
+  margin: 24px 0 8px;
+}
+.chem-ammonium-papers {
+  display: grid;
+  gap: 28px;
+  max-width: 380px;
+  margin: 35px auto;
+}
+.chem-ammonium-paper {
+  display: grid;
+  grid-template-columns: 65px 1fr;
+  gap: 22px;
+  align-items: center;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.chem-ammonium-strip {
+  height: 18px;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px #73836c10;
+}
+.chem-ammonium-preparation-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 6px auto;
+  max-width: 380px;
+}
+.chem-ammonium-note {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.7;
+  margin: 12px auto;
+}
+.chem-ammonium-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #b1bea544;
+}
+.chem-ammonium-controls button,
+.chem-ammonium-controls input,
+.chem-ammonium-controls summary {
+  min-height: 44px;
+}
+.chem-ammonium-controls summary,
+.chem-ammonium-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.chem-ammonium-controls summary {
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .chem-ammonium-cycle {
+    padding: 14px 8px;
+  }
+  .chem-ammonium-heading {
+    font-size: 17px;
+  }
+  .chem-ammonium-tests {
+    height: 210px;
+  }
+  .chem-ammonium-preparation,
+  .chem-ammonium-absorber {
+    height: 240px;
+  }
+  .chem-ammonium-equation {
+    font-size: 16px;
+  }
+  .chem-ammonium-paper {
+    grid-template-columns: 48px 1fr;
+    font-size: 16px;
+    gap: 18px;
+  }
+  .chem-ammonium-papers {
+    margin: 26px auto;
+    gap: 24px;
+  }
+  .chem-ammonium-preparation-labels {
+    gap: 9px;
+  }
+}

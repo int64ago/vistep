@@ -1,0 +1,20 @@
+---
+import { hydrogenChlorine } from '../../models/chem-hydrogen-chlorine';
+const state = hydrogenChlorine(0.5);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8ecdc"></rect><path
+    d="M230 110V141L195 169V342H445V169L410 141V110"
+    fill="#c0cb7d"
+    fill-opacity={0.1 + 0.3 * state.chlorine}
+    stroke="#93a382"
+    stroke-width="2"></path><ellipse cx="320" cy="110" rx="90" ry="11" stroke="#93a382" fill="none"
+  ></ellipse><path d="M115 28H290Q310 28 310 48V247" stroke="#a0b39a" fill="none" stroke-width="12"
+  ></path><path d="M115 28H290Q310 28 310 48V247" stroke="#dbe4d2" fill="none" stroke-width="6"
+  ></path>{
+    state.flame && (
+      <path d="M310 247Q275 205 310 164Q345 205 310 247" fill="#f5f1dd" stroke="#dbd7bd" />
+    )
+  }<path d="M310 247Q296 221 310 202Q326 225 310 247" fill="#fffdf0"></path></svg
+>

@@ -12,6 +12,3786 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'chem-pigment-chromatography',
+    name: '色素柱色谱',
+    title: '同一股液流，为什么色带分开？',
+    question: '同一股液流，为什么色带分开？',
+    description: '追踪碳酸钙柱中的停留、迁移和分带，再从历史实验的固体色层提取色素。',
+    color: '#b8caa0',
+    tag: '吸附与迁移',
+    related: ['rayleigh-scattering'],
+    sources: [
+      {
+        title: 'Tswett: primary papers in translation',
+        url: 'https://webserver.lemoyne.edu/giunta/tswett.html',
+      },
+      {
+        title: 'IUPAC Gold Book: retention factor',
+        url: 'https://goldbook.iupac.org/terms/view/R05359',
+      },
+    ],
+    number: '435',
+  },
+  {
+    slug: 'chem-host-guest-recognition',
+    name: '主客体分子识别',
+    title: '分子怎样认出合适的客体？',
+    question: '同样是碳笼，为什么能选择性分离？',
+    description: '跟踪杯酚与富勒烯的结合、过滤和释放，再比较冠醚的空腔与离子尺寸。',
+    color: '#e7ede3',
+    tag: '物质结构',
+    related: ['chem-coordination-colors', 'chem-chirality-evidence'],
+    sources: [
+      {
+        title: 'Atwood et al. (1994): selective fullerene complexation',
+        url: 'https://www.nature.com/articles/368229a0',
+      },
+      {
+        title: 'H. Kroto fullerene coordinates via Beloit College',
+        url: 'https://chem.beloit.edu/edetc/pmks/pages/bucky.html',
+      },
+      {
+        title: 'IUPAC fullerene nomenclature',
+        url: 'https://publications.iupac.org/pac/74/4/0629/index.html',
+      },
+      {
+        title: '1987 Nobel Prize: molecular recognition',
+        url: 'https://www.nobelprize.org/prizes/chemistry/1987/speedread/',
+      },
+      {
+        title: 'Charles Pedersen Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/pedersen-lecture.pdf',
+      },
+    ],
+    number: '434',
+  },
+  {
+    slug: 'chem-corrosion-protection',
+    name: '金属腐蚀、防护与暖贴研究',
+    title: '同样的金属氧化，怎样让它少腐蚀或持续发热？',
+    question: '同样的金属氧化，怎样让它少腐蚀或持续发热？',
+    description:
+      '用耗氧水柱、铜加速析氢和凝胶显色追踪腐蚀，再用有对照的供氧与热量模型设计暖贴研究。',
+    color: '#d6ddbe',
+    tag: '电化学腐蚀 · 阴极保护 · 暖贴研究',
+    related: ['chem-galvanic-cells', 'chem-electrolysis-plating', 'chem-reaction-rates'],
+    sources: [
+      {
+        title: 'Nuffield — Change and decay, original corrosion and indicator experiments',
+        url: 'https://assets.ctfassets.net/pc40tpn1u6ef/file-14167/107922fffcb6d08aa56775d4f02b55a5/8389-Revised_Nuffield_chemistry_options__option_6_change_and_decay__edited_.pdf',
+      },
+      {
+        title: 'Taira — Experimental-type lectures on air-activated disposable hand warmers',
+        url: 'https://www.jstage.jst.go.jp/article/krev/27/0/27_1_1/_article/-char/en',
+      },
+      {
+        title: 'Klarzak et al. — Temperature and humidity effects on commercial chemical warmers',
+        url: 'https://www.sciencedirect.com/science/article/pii/S2451904917304389',
+      },
+      {
+        title: 'NIST-JANAF — Hematite thermochemistry',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C1317608&Mask=A',
+      },
+    ],
+    number: '433',
+  },
+  {
+    slug: 'chem-benzoic-recrystallization',
+    name: '苯甲酸重结晶',
+    title: '晶体变纯，为什么质量变少？',
+    question: '晶体变纯，为什么质量变少？',
+    description: '用教材溶解度数据追踪热溶、过滤、冷析晶、洗涤与收率，分清盐和苯甲酸的去向。',
+    color: '#c1cba8',
+    tag: '溶解与析晶',
+    related: ['rayleigh-scattering', 'chem-pigment-chromatography'],
+    sources: [
+      {
+        title: 'University of York: recrystallisation',
+        url: 'https://chemtl.york.ac.uk/techniques/purification/recrystallisation/single-solvents',
+      },
+      {
+        title: 'Lisa Nichols: crystallization procedure',
+        url: 'https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_%28Nichols%29/03%3A_Crystallization/3.05%3A_Procedural_Generalities/3.5A%3A_General_Procedure',
+      },
+    ],
+    number: '432',
+  },
+  {
+    slug: 'chem-coordination-colors',
+    name: '配位改变颜色与溶解',
+    title: '从沉淀到配离子',
+    question: '同一金属换了配体，性质怎样改变？',
+    description: '用铜、银和铁的对照观察配体、颜色、沉淀与配合平衡。',
+    color: '#7f9eb5',
+    tag: '物质结构',
+    related: ['chem-phenol-properties', 'chem-crystal-growth', 'chem-host-guest-recognition'],
+    sources: [
+      {
+        title: 'RSC — Copper(II) and ammonia equilibrium',
+        url: 'https://edu.rsc.org/experiments/an-equilibrium-using-copperii-and-ammonia/1711.article',
+      },
+      {
+        title: 'University laboratory manual — Tetraamminecopper sulfate',
+        url: 'https://www.pssou.ac.in/naac/1.3.3/2.%20MANUAL%20FOR%20FIELD%20WORK%2C%20PROJECTS%2C%20INTERNSHIP/BSC_CHEMISTRY.pdf',
+      },
+      {
+        title: 'Yamaguchi and Ohtaki — Aqueous tetraamminecopper geometry',
+        url: 'https://academic.oup.com/bcsj/article-abstract/52/2/415/7358133',
+      },
+      {
+        title: 'Truman University — Silver solubility and formation constants',
+        url: 'https://chemlab.truman.edu/chemical-principles/inorganic-quantitative-analysis/',
+      },
+      {
+        title: 'Indiana University — Solubility of silver chloride',
+        url: 'https://www.chem.indiana.edu/faculty-research/faculty-resources/chemistry-demos/demo/solubility-of-silver-chloride/',
+      },
+      {
+        title: 'Buffalo State — Iron thiocyanate equilibrium',
+        url: 'https://staff.buffalostate.edu/nazareay/che112/ex6.htm',
+      },
+    ],
+    number: '431',
+  },
+  {
+    slug: 'chem-electrolysis-plating',
+    name: '电解与铜电镀',
+    title: '怎样把铜留在指定的电极上？',
+    question: '怎样把铜留在指定的电极上？',
+    description:
+      '沿电源、导线、离子和电极界面追踪氯化铜电解，再比较铁件表面处理、电镀、反接与断路置换。',
+    color: '#cbdcd1',
+    tag: '电解 · 铜电镀 · 电量守恒',
+    related: [
+      'chem-galvanic-cells',
+      'chem-acid-evidence',
+      'chem-ionic-conduction',
+      'chem-corrosion-protection',
+    ],
+    sources: [
+      {
+        title: 'RSC — Microscale copper chloride electrolysis',
+        url: 'https://edu.rsc.org/experiments/electrolysis-on-a-microscale-14-16-years/4020615.article',
+      },
+      {
+        title: 'University of Arizona — Copper electrolysis',
+        url: 'https://superfund.arizona.edu/resources/learning-modules-english/copper-mining-and-processing/hands-activity-guide-copper',
+      },
+      {
+        title: 'University of Wisconsin — Metal displacement',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/sstutorial/Text8/Tx82/tx82.html',
+      },
+    ],
+    number: '430',
+  },
+  {
+    slug: 'chem-solvent-extraction',
+    name: '萃取与分液',
+    title: '溶质去了哪一层？',
+    question: '溶质去了哪一层？',
+    description: '分清溶质分配、密度分层与分液通气，比较分次萃取和固液萃取。',
+    color: '#c2c9a4',
+    tag: '两相分配',
+    related: ['rayleigh-scattering', 'chem-benzoic-recrystallization'],
+    sources: [
+      {
+        title: 'Lisa Nichols: extraction theory',
+        url: 'https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_%28Nichols%29/04%3A_Extraction/4.05%3A_Extraction_Theory',
+      },
+      {
+        title: 'Lisa Nichols: extraction procedures',
+        url: 'https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_%28Nichols%29/04%3A_Extraction/4.06%3A_Step-by-Step_Procedures_For_Extractions',
+      },
+    ],
+    number: '429',
+  },
+  {
+    slug: 'chem-metal-and-graphite',
+    name: '金属与石墨的电子结构',
+    title: '结合、滑移与定向导电',
+    question: '都会导电，内部的连接也一样吗？',
+    description: '从金属共有电子到石墨层状结构，比较滑移与导电方向。',
+    color: '#8caa9c',
+    tag: '物质结构',
+    related: ['chem-crystal-bonding', 'chem-crystal-diffraction', 'chem-coordination-colors'],
+    sources: [
+      {
+        title: 'University of Texas — Metallic solids',
+        url: 'https://ch301.cm.utexas.edu/imfs/solids/metallic-solids.html',
+      },
+      {
+        title: 'Cambridge DoITPoMS — Slip and crystallographic planes',
+        url: 'https://www.doitpoms.ac.uk/tlplib/miller_indices/uses.php',
+      },
+      {
+        title: 'UCSB — Drude transport lecture',
+        url: 'https://web.physics.ucsb.edu/~phys123B/w2015/lecture1.pdf',
+      },
+      {
+        title: 'Primak and Fuchs — C-axis electrical conductivity of graphite',
+        url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.103.544',
+      },
+      {
+        title: 'Nature Communications — Stacking-fault scattering in graphite',
+        url: 'https://www.nature.com/articles/ncomms6837',
+      },
+    ],
+    number: '428',
+  },
+  {
+    slug: 'chem-distillation',
+    name: '蒸馏与馏分',
+    title: '蒸气为什么与瓶里的液体不同？',
+    question: '蒸气为什么与瓶里的液体不同？',
+    description: '沿连续装置追踪汽化、冷凝和收集，比较三种氯代甲烷在汽相、液相与馏分中的组成。',
+    color: '#b4c5b3',
+    tag: '挥发性差异',
+    related: ['rayleigh-scattering', 'chem-solvent-extraction'],
+    sources: [
+      {
+        title: 'NIST: dichloromethane phase changes',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C75092&Mask=4',
+      },
+      {
+        title: 'NIST: chloroform phase changes',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C67663&Mask=4',
+      },
+      {
+        title: 'NIST: carbon tetrachloride phase changes',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C56235&Mask=4',
+      },
+    ],
+    number: '427',
+  },
+  {
+    slug: 'chem-hydrolysis-applications',
+    name: '盐的水解与实验条件',
+    title: '盐溶于水，为什么不一定呈中性？',
+    question: '盐溶于水，为什么不一定呈中性？',
+    description: '从六种盐的酸碱性到铁盐水解，再用连续颗粒、胶体制备和冷热冲洗观察水解的应用。',
+    color: '#ced6b9',
+    tag: '盐类水解 · 凝聚 · 实验对照',
+    related: [
+      'chem-acid-evidence',
+      'chem-colloid-light',
+      'chem-equilibrium-response',
+      'chem-electrolysis-plating',
+    ],
+    sources: [
+      {
+        title: 'Colorado Boulder — Salts as acids and bases',
+        url: 'https://www.colorado.edu/lab/lecture-demo-manual/e780-acidbase-salts-acids-and-bases',
+      },
+      {
+        title: 'Wisconsin — Salt hydrolysis',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/sstutorial/Text12/Tx1210/tx1210.html',
+      },
+      {
+        title: 'Iron(III) hydrolysis and solubility at25C',
+        url: 'https://pubs.acs.org/doi/10.1021/es070174h',
+      },
+      {
+        title: 'EPA — Coagulation mechanisms and water conditions',
+        url: 'https://www.epa.gov/pesticide-science-and-assessing-pesticide-risks/finalization-guidance-incorporation-water-treatment',
+      },
+      {
+        title: 'RSC — Alkaline hydrolysis of lipids',
+        url: 'https://edu.rsc.org/exhibition-chemistry/soap-from-bacon-the-dangers-of-alkaline-solutions/2020068.article',
+      },
+    ],
+    number: '426',
+  },
+  {
+    slug: 'chem-crystal-bonding',
+    name: '晶体中的连接层次',
+    title: '从独立分子到共价网络',
+    question: '晶体分开时，到底断开什么连接？',
+    description: '追踪碘、水、金刚石和石英中的真实连接关系。',
+    color: '#8b9b7b',
+    tag: '物质结构',
+    related: ['chem-hydrogen-bond-network', 'chem-crystal-diffraction', 'chem-metal-and-graphite'],
+    sources: [
+      {
+        title: 'OpenStax — Bonding in crystalline solids',
+        url: 'https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter',
+      },
+      {
+        title: 'NIST — Iodine diatomic constants',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?Mask=1000&Source=1973TEL849',
+      },
+      {
+        title: 'Sutter et al. — α-quartz coordinates at 298 K',
+        url: 'https://journals.iucr.org/j/issues/2022/04/00/te5094/index.html',
+      },
+      {
+        title: 'GIA — Hardness, toughness and diamond cleavage',
+        url: 'https://www.gia.edu/gia-news-research/how-protect-diamond-chipping',
+      },
+    ],
+    number: '425',
+  },
+  {
+    slug: 'chem-seawater-membranes',
+    name: '海水与分离膜',
+    title: '水穿过，盐留下什么？',
+    question: '水穿过，盐留下什么？',
+    description: '从蒸馏到反渗透，追踪水、盐与浓缩液，再比较四类高分子分离膜。',
+    color: '#b5c3a4',
+    tag: '选择性分离',
+    related: ['rayleigh-scattering', 'chem-distillation'],
+    sources: [
+      {
+        title: 'DuPont: reverse osmosis',
+        url: 'https://www.dupont.com/water/technologies/reverse-osmosis-ro.html',
+      },
+      {
+        title: 'US EPA: treatment technologies',
+        url: 'https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies',
+      },
+    ],
+    number: '424',
+  },
+  {
+    slug: 'chem-crystal-diffraction',
+    name: '晶胞与衍射的证据',
+    title: '从共享空间，到重建结构',
+    question: '亮斑怎样告诉我们看不见的排列？',
+    description: '算清晶胞中的共享份额，比较周期、准周期与无序，再从公开坐标测量有机结构。',
+    color: '#dce8df',
+    tag: '物质结构',
+    related: ['chem-crystal-growth', 'chem-infrared-structure', 'chem-crystal-bonding'],
+    sources: [
+      {
+        title: 'IUCr — Crystal definition',
+        url: 'https://dictionary.iucr.org/Crystal',
+      },
+      {
+        title: 'Frank — A primer of substitution tilings',
+        url: 'https://pages.vassar.edu/nafrank/files/2012/08/substitutions.pdf',
+      },
+      {
+        title: 'IUCr — Calculation of structure factors',
+        url: 'https://www.iucr.org/what-we-do/education/pamphlets/introduction-calculation-of-structure-factors',
+      },
+      {
+        title: 'Fetah et al. — Published artemisinin coordinate and geometry tables',
+        url: 'https://journals.iucr.org/b/issues/2026/03/00/aw5104/index.html',
+      },
+    ],
+    number: '423',
+  },
+  {
+    slug: 'chem-metal-extraction',
+    name: '金属冶炼的还原路线',
+    title: '矿物中的金属怎样回到单质？',
+    question: '矿物中的金属怎样回到单质？',
+    description: '比较热分解、还原剂与熔盐电解，追踪元素和电子的去向。',
+    color: '#8f9686',
+    tag: '冶炼原理',
+    related: ['chem-electron-transfer', 'chem-ionic-conduction', 'chem-seawater-membranes'],
+    sources: [
+      {
+        title: 'OpenStax representative metals',
+        url: 'https://openstax.org/books/chemistry-2e/pages/18-2-occurrence-and-preparation-of-the-representative-metals',
+      },
+      {
+        title: 'OpenStax metallurgy',
+        url: 'https://openstax.org/books/chemistry-2e/pages/19-1-occurrence-preparation-and-properties-of-transition-metals-and-their-compounds',
+      },
+      {
+        title: 'OpenStax electrolysis',
+        url: 'https://openstax.org/books/chemistry-2e/pages/17-7-electrolysis',
+      },
+    ],
+    number: '422',
+  },
+  {
+    slug: 'chem-petroleum-refining',
+    name: '石油的分离与裂化',
+    title: '分开分子，还是拆开分子',
+    question: '分馏与裂化，都得到小分子吗？',
+    description:
+      '追踪同一批代表分子经过分馏塔，再用保留碳原子身份的净反应，区分物理分离与化学转化。',
+    color: '#e7e9d9',
+    tag: '石油化工',
+    related: ['chem-unsaturated-hydrocarbons', 'chem-carbon-frameworks', 'chem-metal-extraction'],
+    sources: [
+      {
+        title: 'EIA — The refining process',
+        url: 'https://www.eia.gov/energyexplained/oil-and-petroleum-products/refining-crude-oil-the-refining-process.php',
+      },
+      {
+        title: 'NIST Chemistry WebBook — Hexadecane',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C544763&Mask=4',
+      },
+      {
+        title: 'NIST Chemistry WebBook — Tetracosane',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C646311&Mask=4',
+      },
+      {
+        title: 'OpenStax — Industrial preparation and use of alkenes',
+        url: 'https://openstax.org/books/organic-chemistry/pages/7-1-industrial-preparation-and-use-of-alkenes',
+      },
+    ],
+    number: '421',
+  },
+  {
+    slug: 'chem-acid-base-titration',
+    name: '最后半滴与滴定读数',
+    title: '最后半滴，为什么能改变测量结果？',
+    question: '最后半滴，为什么能改变测量结果？',
+    description: '从滴定曲线和实际液路出发，观察润洗、量取、半滴、终点、重复读数与浓度计算。',
+    color: '#d9d5bd',
+    tag: '中和滴定 · 读数 · 误差',
+    related: ['chem-acid-evidence', 'chem-equilibrium-response', 'chem-hydrolysis-applications'],
+    sources: [
+      {
+        title: 'Purdue — Use of the buret',
+        url: 'https://chemed.chem.purdue.edu/genchem/lab/equipment/buret/use.html',
+      },
+      {
+        title: 'Purdue — Performing the titration',
+        url: 'https://chemed.chem.purdue.edu/genchem/lab/techniques/titration/perform.html',
+      },
+      {
+        title: 'Harper College — Performing titrations',
+        url: 'https://dept.harpercollege.edu/chemistry/chm/100/dgodambe/thedisk/labtech/titrate2.htm',
+      },
+      {
+        title: 'Boston College — Titration laboratory procedure',
+        url: 'https://dev.bc.edu/content/dam/bc1/schools/mcas/Chemistry/pdf/undergrad/lab-courses/gen/fall/Titration.pdf',
+      },
+    ],
+    number: '420',
+  },
+  {
+    slug: 'chem-tofu-coagulation',
+    name: '豆腐的制作',
+    title: '豆浆怎样变成含水的豆腐？',
+    question: '豆浆怎样变成含水的豆腐？',
+    description: '沿着泡豆、磨豆、过滤、煮浆、点卤和压制，追踪蛋白质网络与水分去向。',
+    color: '#a29470',
+    tag: '食品化学',
+    related: ['chem-protein-states', 'chem-colloid-light'],
+    sources: [
+      {
+        title: 'Li et al.2024 soybean coagulation',
+        url: 'https://ift.onlinelibrary.wiley.com/doi/10.1111/1750-3841.17498',
+      },
+      {
+        title: 'Zhao et al.2016 calcium sulfate gels',
+        url: 'https://doi.org/10.1111/ijfs.13010',
+      },
+    ],
+    number: '419',
+  },
+  {
+    slug: 'chem-protein-structure',
+    name: '蛋白质的多级结构',
+    title: '同一条链，为什么有不同层次的结构？',
+    question: '同一条链，为什么有不同层次的结构？',
+    description: '从真实序列、螺旋与折叠，追踪到完整蛋白质和四链血红蛋白。',
+    color: '#8c786e',
+    tag: '分子结构',
+    related: ['chem-protein-states', 'bio-dna-structure'],
+    sources: [
+      {
+        title: 'RCSB PDB 1CRN',
+        url: 'https://www.rcsb.org/structure/1CRN',
+      },
+      {
+        title: 'RCSB PDB 4HHB',
+        url: 'https://www.rcsb.org/structure/4HHB',
+      },
+      {
+        title: 'PDB-101 biological assemblies',
+        url: 'https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/biological-assemblies',
+      },
+    ],
+    number: '418',
+  },
+  {
+    slug: 'chem-crystal-growth',
+    name: '晶体从哪里长出来',
+    title: '留下形状，也留下生长的层次',
+    question: '结晶一定要先把物质溶进水里吗？',
+    description: '追踪熔体、蒸气、溶液三条路径，再养大一颗保留原核的明矾晶体。',
+    color: '#e4ebe2',
+    tag: '物质结构',
+    related: ['chem-liquid-crystal', 'chem-hydrogen-bond-network', 'chem-crystal-diffraction'],
+    sources: [
+      {
+        title: 'UW–Madison — Precipitating sodium chloride',
+        url: 'https://demolab.chem.wisc.edu/analytical-chemistry-demonstrations/dissociation-and-solubility-precipitating-sodium-chloride-from-its-solution-2/',
+      },
+      {
+        title: 'University of Colorado — Sublimation demonstration',
+        url: 'https://www.colorado.edu/lab/lecture-demo-manual/t560-prep-notes',
+      },
+      {
+        title: 'IUCr — Crystal growing guidance',
+        url: 'https://www.iucr.org/__data/assets/pdf_file/0010/155944/CG_brochure.pdf',
+      },
+      {
+        title: 'National Taiwan University — Preparation of alum',
+        url: 'https://teaching.ch.ntu.edu.tw/gclab/eng/wp-content/uploads/5_M07_Preparation-of-alum.pdf',
+      },
+    ],
+    number: '417',
+  },
+  {
+    slug: 'chem-acid-evidence',
+    name: '弱酸的三种证据',
+    title: '弱酸为什么也能放出一样多的氢气？',
+    question: '弱酸为什么也能放出一样多的氢气？',
+    description:
+      '分开离子浓度、反应速率与酸的总量，用 pH、导电、碳酸盐和镁的压强曲线比较盐酸与醋酸。',
+    color: '#cbd9bd',
+    tag: '弱酸 · 电离 · 实验证据',
+    related: ['chem-reaction-rates', 'chem-equilibrium-response', 'chem-acid-base-titration'],
+    sources: [
+      {
+        title: 'RSC — The acidic reactions of ethanoic acid',
+        url: 'https://edu.rsc.org/experiments/the-acidic-reactions-of-ethanoic-acid/462.article',
+      },
+      {
+        title: 'Purdue — Weak acids and pH',
+        url: 'https://chemed.chem.purdue.edu/genchem/topicreview/bp/ch17/ph.php',
+      },
+      {
+        title: 'Conductance measurements, Current Separations 18:3',
+        url: 'https://citeseerx.ist.psu.edu/document?doi=3dab888c40a36852c81dbf9ba98c328887921a36&repid=rep1&type=pdf',
+      },
+    ],
+    number: '416',
+  },
+  {
+    slug: 'chem-protein-states',
+    name: '蛋白质的盐析与变性',
+    title: '同样浑浊，加水后为什么不同？',
+    question: '同样浑浊，加水后为什么不同？',
+    description: '比较盐析复溶、三种变性处理、铅盐凝聚与硝酸显色，并区分灼烧。',
+    color: '#b9c2a3',
+    tag: '蛋白质实验',
+    related: [
+      'chem-sugar-tests',
+      'chem-colloid-light',
+      'chem-protein-structure',
+      'chem-tofu-coagulation',
+    ],
+    sources: [
+      {
+        title: 'University of Maryland: ammonium sulfate precipitation',
+        url: 'https://terpconnect.umd.edu/~nsw/ench485/lab6a.htm',
+      },
+      {
+        title: 'Merck: protein precipitation and resuspension',
+        url: 'https://www.sigmaaldrich.com/CX/en/technical-documents/technical-article/protein-biology/protein-lysis-and-extraction/precipitation-procedures',
+      },
+      {
+        title: 'OpenStax: proteins',
+        url: 'https://openstax.org/books/biology-2e/pages/3-4-proteins',
+      },
+    ],
+    number: '415',
+  },
+  {
+    slug: 'chem-liquid-crystal',
+    name: '液晶的两次变化',
+    title: '已经能流动，为什么还不一样',
+    question: '位置和方向的有序，必须同时消失吗？',
+    description: '从历史样品的熔点与澄清点，走向可分开的有序性与受边界约束的电场取向。',
+    color: '#e1e9d2',
+    tag: '物质结构',
+    related: ['chem-molecular-shapes', 'chem-chirality-evidence', 'chem-crystal-growth'],
+    sources: [
+      {
+        title: 'Kent State — History of liquid-crystal research',
+        url: 'https://www.kent.edu/amlci/our-legacy',
+      },
+      {
+        title: 'Andrienko — Introduction to liquid crystals, Max Planck author copy',
+        url: 'https://pages-andrienko-10bcaa2045685d6c9509367c68ef5f030a701b968e1f8e8.pages.mpip-mainz.mpg.de/teaching/liquid_crystals/liquid_crystals.pdf',
+      },
+    ],
+    number: '414',
+  },
+  {
+    slug: 'chem-sugar-tests',
+    name: '糖类的检验与水解',
+    title: '水解前后，检验为什么会变？',
+    question: '水解前后，检验为什么会变？',
+    description: '分开观察溶解、碘显色、银镜与铜沉淀，追踪水解改变的样品与检验条件。',
+    color: '#b7bca3',
+    tag: '糖类实验',
+    related: ['chem-aldehyde-tests', 'chem-ester-reaction', 'chem-protein-states'],
+    sources: [
+      {
+        title: 'OpenStax: monosaccharide reactions',
+        url: 'https://openstax.org/books/organic-chemistry/pages/25-6-reactions-of-monosaccharides',
+      },
+      {
+        title: 'OpenStax: disaccharides',
+        url: 'https://openstax.org/books/organic-chemistry/pages/25-8-disaccharides',
+      },
+      {
+        title: 'RSC: detecting starch in food',
+        url: 'https://edu.rsc.org/experiments/detecting-starch-in-food-on-a-microscale/563.article',
+      },
+    ],
+    number: '413',
+  },
+  {
+    slug: 'chem-equilibrium-response',
+    name: '平衡改变之前，颜色先发生了什么',
+    title: '平衡不动，为什么反应还在继续？',
+    question: '平衡不动，为什么反应还在继续？',
+    description: '从双向反应到气体压缩、冷热交换与溶液颜色，追踪条件改变、瞬时效应和新的平衡。',
+    color: '#d8ceb6',
+    tag: '化学平衡 · 压强 · 温度',
+    related: ['chem-reaction-rates', 'chem-galvanic-cells', 'chem-acid-evidence'],
+    sources: [
+      {
+        title: 'Purdue — Nitrogen oxide pressure equilibrium',
+        url: 'https://chemed.chem.purdue.edu/demos/demosheets/16.2.html',
+      },
+      {
+        title: 'Purdue — Temperature and NO2/N2O4',
+        url: 'https://chemed.chem.purdue.edu/demos/demosheets/16.3.html',
+      },
+      {
+        title: 'Purdue — Iron thiocyanate equilibria',
+        url: 'https://chemed.chem.purdue.edu/demos/demosheets/18.5.html',
+      },
+      {
+        title: 'RSC — Chromate–dichromate equilibrium',
+        url: 'https://edu.rsc.org/experiments/a-chromate-dichromate-equilibrium/1710.article',
+      },
+      {
+        title: 'University of Sydney — Chemistry demonstrations',
+        url: 'https://scilearn.sydney.edu.au/fychemistry/demonstrations/files/fullset.pdf',
+      },
+      {
+        title: 'BASF — Fertilizer out of thin air',
+        url: 'https://www.basf.com/gb/en/media/science-around-us/fertilizer-out-of-thin-air',
+      },
+    ],
+    number: '412',
+  },
+  {
+    slug: 'chem-chirality-evidence',
+    name: '手性、晶体与旋光证据',
+    title: '镜像能转成同一个吗',
+    question: '从不能重合的基团排列，怎样走到巴斯德的实验结论？',
+    description: '保留基团与晶体身份，用旋转、分选、溶解和旋光检验空间结构。',
+    color: '#e4e9d5',
+    tag: '物质结构',
+    related: ['chem-molecular-shapes', 'chem-wohler-isomers', 'chem-liquid-crystal'],
+    sources: [
+      {
+        title: 'IUPAC — Enantiomer',
+        url: 'https://goldbook.iupac.org/terms/view/E02069',
+      },
+      {
+        title: 'University of Illinois — Pasteur 1848 paper and figures',
+        url: 'https://xray-exhibit.scs.illinois.edu/books/pasteur.php',
+      },
+      {
+        title: 'IUPAC — Angle of optical rotation',
+        url: 'https://old.goldbook.iupac.org/pdf/A00348.pdf',
+      },
+      {
+        title: 'OpenStax — Polarization and Malus’s law',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization',
+      },
+    ],
+    number: '411',
+  },
+  {
+    slug: 'chem-ester-reaction',
+    name: '乙酸乙酯的制备与水解',
+    title: '酯从哪里收集，又怎样水解？',
+    question: '酯从哪里收集，又怎样水解？',
+    description: '从综合性质证据走进连通的制酯装置，再控制介质与温度比较水解。',
+    color: '#b9b38c',
+    tag: '酯化与水解',
+    related: ['chem-alcohol-oxidation', 'chem-sodium-alcohol', 'chem-sugar-tests'],
+    sources: [
+      {
+        title: 'OpenStax: chemistry of esters',
+        url: 'https://openstax.org/books/organic-chemistry/pages/21-6-chemistry-of-esters',
+      },
+      {
+        title: 'OpenStax: carboxylic-acid reactions',
+        url: 'https://openstax.org/books/organic-chemistry/pages/21-3-reactions-of-carboxylic-acids',
+      },
+      {
+        title: 'NIOSH: ethyl acetate',
+        url: 'https://www.cdc.gov/niosh/npg/npgd0260.html',
+      },
+    ],
+    number: '410',
+  },
+  {
+    slug: 'chem-reaction-rates',
+    name: '怎样比较化学反应的快慢',
+    title: '气泡多，就一定反应快吗？',
+    question: '气泡多，就一定反应快吗？',
+    description: '用同条件试管、同体积气体终点和原子连续轨迹，分清速率、产量与有效碰撞。',
+    color: '#c8d9c5',
+    tag: '反应速率 · 控制变量 · 有效碰撞',
+    related: ['chem-galvanic-cells', 'bio-enzyme-investigations', 'chem-equilibrium-response'],
+    sources: [
+      {
+        title: 'RSC — Monitoring reactions',
+        url: 'https://edu.rsc.org/cpd/monitoring-reactions-teaching-practical-science/3009854.article',
+      },
+      {
+        title: 'RSC — Effect of temperature on reaction rate',
+        url: 'https://edu.rsc.org/experiments/the-effect-of-temperature-on-reaction-rate/448.article',
+      },
+      {
+        title: 'IUPAC Gold Book — Catalyst',
+        url: 'https://goldbook.iupac.org/terms/view/C00876',
+      },
+      {
+        title: 'IUPAC Gold Book — Activation energy',
+        url: 'https://goldbook.iupac.org/terms/view/A00102',
+      },
+    ],
+    number: '409',
+  },
+  {
+    slug: 'chem-hydrogen-bond-network',
+    name: '氢键与冰的开放结构',
+    title: '分子完整，排列改变',
+    question: '冰为什么比液态水更疏松？',
+    description: '从氧间距离、四面体邻居到六方网络，区分融化中的分子与连接。',
+    color: '#dfe8d6',
+    tag: '物质结构',
+    related: ['chem-molecular-shapes', 'chem-infrared-structure', 'chem-chirality-evidence'],
+    sources: [
+      {
+        title: 'Caltech — Physical properties of ice',
+        url: 'https://www.its.caltech.edu/~atomic/snowcrystals/ice/ice.htm',
+      },
+      {
+        title: 'Georgia Tech — Molecular interactions',
+        url: 'https://williams.chemistry.gatech.edu/structure/molecular_interactions/mol_int.html',
+      },
+      {
+        title: 'USGS — Water density',
+        url: 'https://www.usgs.gov/water-science-school/science/water-density',
+      },
+    ],
+    number: '408',
+  },
+  {
+    slug: 'chem-alcohol-oxidation',
+    name: '乙醇的两种氧化',
+    title: '铜丝为什么变黑又变红？',
+    question: '铜丝为什么变黑又变红？',
+    description: '追踪同一根铜丝的催化循环，再比较酸性重铬酸钾的氧化证据。',
+    color: '#b6a07b',
+    tag: '有机氧化',
+    related: ['chem-sodium-alcohol', 'chem-aldehyde-tests', 'chem-ester-reaction'],
+    sources: [
+      {
+        title: 'University of Göttingen: ethanal from ethanol',
+        url: 'https://unterrichtsmaterialien-chemie.uni-goettingen.de/exp_neu.php?id=2137',
+      },
+      {
+        title: 'OpenStax: oxidation of alcohols',
+        url: 'https://openstax.org/books/organic-chemistry/pages/17-7-oxidation-of-alcohols',
+      },
+    ],
+    number: '407',
+  },
+  {
+    slug: 'chem-sodium-alcohol',
+    name: '钠与乙醇的证据链',
+    title: '气泡里的氢来自乙醇的哪里？',
+    question: '气泡里的氢来自乙醇的哪里？',
+    description: '从气体、燃烧产物和羟基氢追踪钠与乙醇反应，再与钠水反应作相同条件对照。',
+    color: '#b6c5a4',
+    tag: '羟基 · 气体检验 · 对照',
+    related: ['chem-sodium-reactions', 'chem-carbon-frameworks', 'chem-alcohol-oxidation'],
+    sources: [
+      {
+        title: 'RSC — Properties of alcohols',
+        url: 'https://edu.rsc.org/experiments/the-properties-of-alcohols/463.article',
+      },
+      {
+        title: 'RSC — Sodium density and properties',
+        url: 'https://periodic-table.rsc.org/element/11/sodium',
+      },
+      {
+        title: 'OpenStax — Alcohol and phenol properties, original author text',
+        url: 'https://openstax.org/books/organic-chemistry/pages/17-2-properties-of-alcohols-and-phenols',
+      },
+      {
+        title: '人教版必修二77—78页、选必三7页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '406',
+  },
+  {
+    slug: 'chem-mass-spectrometry',
+    name: '质谱分离与分子式证据',
+    title: '先分开离子，再解释峰',
+    question: '最高的峰、最右的峰，哪一个能说明分子质量？',
+    description: '从电子电离、磁场曲率到碎片与同位素，检查分子质量推断所需的条件。',
+    color: '#dde5ce',
+    tag: '物质结构',
+    related: ['chem-elemental-analysis', 'chem-infrared-structure'],
+    sources: [
+      {
+        title: 'IUPAC Gold Book — Mass-to-charge ratio',
+        url: 'https://goldbook.iupac.org/terms/view/M03752.html',
+      },
+      {
+        title: 'NIST Chemistry WebBook — Ethanol mass spectrum',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Mask=200',
+      },
+      {
+        title: 'University of Arizona — Alcohol mass-spectrometry example',
+        url: 'https://cbc.arizona.edu/education/mass-spectrometry-tutorial/mass-spectrometry-examples/quiz-alcohols',
+      },
+      {
+        title: 'NIST — Carbon isotopic compositions',
+        url: 'https://physics.nist.gov/cgi-bin/Compositions/stand_alone.pl?ascii=html&ele=C&isotype=all',
+      },
+    ],
+    number: '405',
+  },
+  {
+    slug: 'chem-galvanic-cells',
+    name: '原电池中的两条电荷通路',
+    title: '电子绕过溶液，电路怎样闭合？',
+    question: '电子绕过溶液，电路怎样闭合？',
+    description: '从锌铜稀酸、水果与湿纸到盐桥和简易燃料电池，追踪真实连接、离子补偿和有限反应物。',
+    color: '#c1d6cb',
+    tag: '原电池 · 盐桥 · 燃料电池',
+    related: ['chem-ionic-conduction', 'chem-electron-transfer', 'battery-emf-lab'],
+    sources: [
+      {
+        title: 'Purdue Chemistry — Electrochemical reactions',
+        url: 'https://chemed.chem.purdue.edu/genchem/topicreview/bp/ch20/electro.php',
+      },
+      {
+        title: 'RSC Education — Batteries and electrochemical cells',
+        url: 'https://edu.rsc.org/feature/batteries-and-electrochemical-cells/3007554.article',
+      },
+      {
+        title: 'University of Washington — Electrolysis of water',
+        url: 'https://chem.washington.edu/lecture-demos/electrolysis-water',
+      },
+      {
+        title: 'RSC Periodic Table — Zinc',
+        url: 'https://periodic-table.rsc.org/element/30/zinc',
+      },
+      {
+        title: 'RSC Periodic Table — Copper',
+        url: 'https://periodic-table.rsc.org/element/29/copper',
+      },
+    ],
+    number: '404',
+  },
+  {
+    slug: 'chem-unsaturated-hydrocarbons',
+    name: '乙烯与乙炔的性质证据',
+    title: '两次褪色，解释为什么不同？',
+    question: '两次褪色，解释为什么不同？',
+    description: '按教材顺序比较燃烧、氧化与加成，再追踪乙炔从发生到净化和性质检验的完整气路。',
+    color: '#b4c3a4',
+    tag: '氧化 · 加成 · 排除干扰',
+    related: ['chem-methane-substitution', 'chem-carbon-frameworks', 'chem-petroleum-refining'],
+    sources: [
+      {
+        title: 'OpenStax — Reactions of alkynes, original author text',
+        url: 'https://openstax.org/books/organic-chemistry/pages/9-3-reactions-of-alkynes-addition-of-hx-and-x2',
+      },
+      {
+        title: 'UW-Madison — Organic chemistry carbide lamp',
+        url: 'https://demolab.chem.wisc.edu/general-chemistry-demonstrations-topic-page/organic-chemistry-carbide-lamp-2/',
+      },
+      {
+        title: 'RSC — Preparing ethyne on a microscale',
+        url: 'https://edu.rsc.org/experiments/preparing-ethyne-on-a-microscale/551.article',
+      },
+      {
+        title: '人教版必修二67—68页、选必三37—38页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '403',
+  },
+  {
+    slug: 'chem-infrared-structure',
+    name: '红外吸收与结构证据',
+    title: '透过光变弱，结构线索浮现',
+    question: '怎样从一段红外吸收推断分子里的官能团？',
+    description: '沿同一光路比较强度，连接振动、透过率谱与乙醇和二甲醚的结构证据。',
+    color: '#dce5ce',
+    tag: '物质结构',
+    related: ['chem-nmr-hydrogen', 'chem-organic-detection', 'chem-mass-spectrometry'],
+    sources: [
+      {
+        title: 'OpenStax — Infrared spectroscopy',
+        url: 'https://openstax.org/books/organic-chemistry/pages/12-6-infrared-spectroscopy',
+      },
+      {
+        title: 'OpenStax — Spectroscopy of alcohols and phenols',
+        url: 'https://openstax.org/books/organic-chemistry/pages/17-11-spectroscopy-of-alcohols-and-phenols',
+      },
+      {
+        title: 'NIST — Infrared studies for atmospheric atlases',
+        url: 'https://www.nist.gov/pml/sensor-science/optical-radiation/infrared-studies-atmospheric-atlases',
+      },
+    ],
+    number: '402',
+  },
+  {
+    slug: 'chem-noble-gas-evidence',
+    name: '稀有气体的发现证据',
+    title: '一条谱线，一点质量差，一次新反应',
+    question: '科学家如何从微小差别发现元素，再修正“惰性”的判断？',
+    description: '对齐氦谱线，追踪氩的分离，再观察密封容器中氙参与反应的证据。',
+    color: '#dce5d1',
+    tag: '物质结构',
+    related: ['chem-flame-spectra', 'chem-periodic-practical', 'chem-infrared-structure'],
+    sources: [
+      {
+        title: 'NIST — Persistent lines of neutral helium',
+        url: 'https://www.physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable3.htm',
+      },
+      {
+        title: 'NIST — Strong lines of sodium',
+        url: 'https://www.physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm',
+      },
+      {
+        title: 'Nobel Prize — William Ramsay',
+        url: 'https://www.nobelprize.org/prizes/chemistry/1904/ramsay/facts/',
+      },
+      {
+        title: 'American Chemical Society — Neil Bartlett and reactive noble gases',
+        url: 'https://www.acs.org/education/whatischemistry/landmarks/bartlettnoblegases.html',
+      },
+      {
+        title: 'NIST — Atomic xenon data',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/xenontable1.htm',
+      },
+      {
+        title: 'NIST Chemistry WebBook — Molecular oxygen ionization energy',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?Formula=O2&NoIon=on&cIE=on&cTG=on',
+      },
+      {
+        title: 'Lawrence Berkeley Laboratory — Oxidation products of xenon and platinum fluorides',
+        url: 'https://escholarship.org/content/qt46b5r4v5/qt46b5r4v5.pdf',
+      },
+    ],
+    number: '401',
+  },
+  {
+    slug: 'chem-methane-substitution',
+    name: '甲烷的光照取代',
+    title: '为什么一侧褪色、出现液滴并抬高液面？',
+    question: '为什么一侧褪色、出现液滴并抬高液面？',
+    description: '比较甲烷与氯气的光照和遮光样本，追踪原子取代与多种可见证据。',
+    color: '#bdc59f',
+    tag: '对照 · 取代 · 产物混合物',
+    related: ['chem-carbon-frameworks', 'chem-hydrogen-chlorine', 'chem-unsaturated-hydrocarbons'],
+    sources: [
+      {
+        title: 'OpenStax — Radical halogenation, original author textbook',
+        url: 'https://openstax.org/books/organic-chemistry/pages/10-2-preparing-alkyl-halides-from-alkanes-radical-halogenation',
+      },
+      {
+        title: 'NIST — Chloromethane boiling point',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C74873&Type=TBOIL',
+      },
+      {
+        title: '人教版必修第二册第64—65页实验7-1',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '400',
+  },
+  {
+    slug: 'bio-biotechnology-investigation',
+    name: '转基因产品的证据调查',
+    title: '一张证书或一行标签，究竟能说明什么？',
+    question: '一张证书或一行标签，究竟能说明什么？',
+    description: '对照原始批准条目、包装原文和调查记录，识别用途边界、缺失信息及营销推断。',
+    color: '#ced8bc',
+    tag: '社会调查 · 证据与标识',
+    related: ['bio-protein-design', 'bio-dna-engineering', 'bio-fermentation-pathways'],
+    sources: [
+      {
+        title: 'MARA —2024 imported-processing certificate list',
+        url: 'https://www.moa.gov.cn/ztzl/zjyqwgz/spxx/202410/P020241011735468898553.pdf',
+      },
+      {
+        title: 'MARA —2024 production-application certificate list',
+        url: 'https://www.moa.gov.cn/ztzl/zjyqwgz/spxx/202410/P020241011735470924167.pdf',
+      },
+      {
+        title: 'MARA — Agricultural GMO labelling rules,2017 revision',
+        url: 'https://kjs.moa.gov.cn/zcjd/201904/t20190418_6184800.htm',
+      },
+      {
+        title: 'MARA — Agricultural GMO safety regulation,2017 revision',
+        url: 'https://kjs.moa.gov.cn/zcjd/201904/t20190418_6184797.htm',
+      },
+      {
+        title: 'FDA —100 Years of Insulin',
+        url: 'https://www.fda.gov/about-fda/fda-history-exhibits/100-years-insulin',
+      },
+      {
+        title: 'MARA — Approval information',
+        url: 'https://www.moa.gov.cn/ztzl/zjyqwgz/spxx/',
+      },
+    ],
+    number: '399',
+  },
+  {
+    slug: 'chem-polymer-networks',
+    name: '聚合物连接与吸水网络',
+    title: '从单体连接到吸水称量',
+    question: '为什么连成网络的树脂能吸水，却不会像小分子一样散开？',
+    description: '追踪加聚与缩聚的连接，比较酚醛树脂条件，再用守恒称量检查吸水率。',
+    color: '#d7dfc8',
+    tag: '有机化学',
+    related: ['chem-soap-assembly', 'chem-phenol-properties'],
+    sources: [
+      {
+        title: 'OpenStax — Chain-growth polymers',
+        url: 'https://openstax.org/books/organic-chemistry/pages/31-1-chain-growth-polymers',
+      },
+      {
+        title: 'OpenStax — Polymer structure and physical properties',
+        url: 'https://openstax.org/books/organic-chemistry/pages/31-7-polymer-structure-and-physical-properties',
+      },
+      {
+        title: 'Purdue University — Superabsorbent materials demonstration',
+        url: 'https://chemed.chem.purdue.edu/genchem/demosheets/25.5.html',
+      },
+    ],
+    number: '398',
+  },
+  {
+    slug: 'chem-calorimetry',
+    name: '温差与融冰量热',
+    title: '怎样把反应热变成可测量的读数？',
+    question: '怎样把反应热变成可测量的读数？',
+    description: '从教材中和反应量热探究出发，追踪温差、热量和误差，再拆开历史冰量热计的独立水路。',
+    color: '#b8c7b1',
+    tag: '温差 · 能量归属 · 融冰',
+    related: ['chem-reaction-heat', 'chem-bond-energy'],
+    sources: [
+      {
+        title: 'RSC — Measuring energy changes',
+        url: 'https://edu.rsc.org/cpd/measuring-energy-changes-teaching-practical-science/4010499.article',
+      },
+      {
+        title: 'NBS — Vapor Pressure Formulation for Ice, latent heat reference',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5295832/',
+      },
+      {
+        title: 'Lavoisier — Elements of Chemistry, original calorimeter description',
+        url: 'https://www.gutenberg.org/files/30775/30775-h/30775-h.htm',
+      },
+      {
+        title: 'Science Museum — Replica of Lavoisier’s calorimeter',
+        url: 'https://collection.sciencemuseumgroup.org.uk/objects/co2543/replica-of-lavoisiers-calorimeter',
+      },
+      {
+        title: '人教版选择性必修1第5—6、16页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '397',
+  },
+  {
+    slug: 'bio-protein-design',
+    name: '从蛋白质功能到序列证据',
+    title: '交换两个氨基酸，怎样证明改造有效？',
+    question: '交换两个氨基酸，怎样证明改造有效？',
+    description: '沿真实胰岛素坐标找到改造位置，比较编码简并、条件化测定及带版本的成熟链序列。',
+    color: '#d3d6b8',
+    tag: '蛋白质工程 · 结构与序列',
+    related: [
+      'bio-dna-engineering',
+      'bio-animal-cell-engineering',
+      'bio-microbial-culture',
+      'bio-biotechnology-investigation',
+    ],
+    sources: [
+      {
+        title: 'RCSB PDB — Human insulin structure1TRZ',
+        url: 'https://www.rcsb.org/structure/1TRZ',
+      },
+      {
+        title: 'RCSB PDB — Lispro hexamer structure1LPH',
+        url: 'https://www.rcsb.org/structure/1LPH',
+      },
+      {
+        title: 'NCBI Protein — Human insulin precursor NP_000198.1',
+        url: 'https://www.ncbi.nlm.nih.gov/protein/NP_000198.1',
+      },
+      {
+        title: 'NCBI Protein — Pig insulin precursor NP_001103242.1',
+        url: 'https://www.ncbi.nlm.nih.gov/protein/NP_001103242.1',
+      },
+      {
+        title: 'NCBI Protein — Bovine insulin precursor P01317.2',
+        url: 'https://www.ncbi.nlm.nih.gov/protein/P01317.2',
+      },
+      {
+        title: 'NCBI — BLAST glossary',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK62051/',
+      },
+    ],
+    number: '396',
+  },
+  {
+    slug: 'chem-bond-energy',
+    name: '键能账本与盖斯路径',
+    title: '断键吸能，反应为什么仍能放热？',
+    question: '断键吸能，反应为什么仍能放热？',
+    description: '追踪同一组原子的断键成键收支，再用石墨—一氧化碳—二氧化碳路径检验盖斯定律。',
+    color: '#bfc8aa',
+    tag: '键能 · 焓变 · 盖斯定律',
+    related: ['chem-reaction-heat', 'chem-bond-overlap', 'chem-calorimetry'],
+    sources: [
+      {
+        title: 'NIST — Hydrogen chloride thermochemistry',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C7647010&Mask=1',
+      },
+      {
+        title: 'NIST — Carbon monoxide thermochemistry',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C630080&Mask=1',
+      },
+      {
+        title: 'NIST — Carbon dioxide thermochemistry',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Mask=1',
+      },
+      {
+        title: 'IUPAC — Enthalpy',
+        url: 'https://old.goldbook.iupac.org/html/E/E02141.html',
+      },
+      {
+        title: '人教版必修第二册33页、选择性必修1第14—16页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '395',
+  },
+  {
+    slug: 'chem-organic-detection',
+    name: '有机结构与鉴别证据',
+    title: '从目标倒推，从观察排除',
+    question: '怎样把结构、反应条件和检验结果连接成可检查的推理？',
+    description: '追踪逆合成的六个碳，并组合四类检验、阿司匹林水解与氢谱证据。',
+    color: '#ccd6bd',
+    tag: '有机化学',
+    related: ['chem-aldehyde-tests', 'chem-nmr-hydrogen', 'chem-polymer-networks'],
+    sources: [
+      {
+        title: 'E. J. Corey — Nobel lecture on retrosynthetic analysis',
+        url: 'https://www.nobelprize.org/uploads/2018/06/corey-lecture.pdf',
+      },
+      {
+        title: 'Royal Society of Chemistry — Microscale aspirin analysis',
+        url: 'https://edu.rsc.org/experiments/analysis-of-aspirin-tablets-on-a-microscale/557.article',
+      },
+      {
+        title: 'Royal Society of Chemistry — Aspirin preparation and phenolic impurities',
+        url: 'https://edu.rsc.org/resources/the-preparation-of-aspirin-16-18-years/4017328.article',
+      },
+      {
+        title: 'KFUPM — Organic classification tests',
+        url: 'https://faculty.kfupm.edu.sa/Chem/hmuallem/courses/Chem303/Chem-303%20Classification%20Tests%20Handout.pdf',
+      },
+    ],
+    number: '394',
+  },
+  {
+    slug: 'chem-soap-assembly',
+    name: '肥皂的形成与去污',
+    title: '从三条酯键，到一个油水界面',
+    question: '肥皂怎样从油脂中形成，又怎样帮助油污离开？',
+    description: '连接皂化、盐析、洗涤、界面排列与硬水计量，保留制备研究的证据边界。',
+    color: '#d4d1ab',
+    tag: '有机化学',
+    related: ['chem-elimination-substitution', 'chem-phenol-properties', 'chem-organic-detection'],
+    sources: [
+      {
+        title: 'OpenStax — Soap',
+        url: 'https://openstax.org/books/organic-chemistry/pages/27-2-soap',
+      },
+      {
+        title: 'OpenStax — Ester hydrolysis',
+        url: 'https://openstax.org/books/organic-chemistry/pages/21-6-chemistry-of-esters',
+      },
+      {
+        title: 'Royal Society of Chemistry — Soap salting out',
+        url: 'https://edu.rsc.org/exhibition-chemistry/soap-from-bacon-the-dangers-of-alkaline-solutions/2020068.article',
+      },
+    ],
+    number: '393',
+  },
+  {
+    slug: 'chem-reaction-heat',
+    name: '反应热与冷热证据',
+    title: '吸热为什么反而让杯底结冰？',
+    question: '吸热为什么反而让杯底结冰？',
+    description: '比较镁与盐酸的温升、反应后的散热，以及晶体反应吸热造成的界面结冰。',
+    color: '#c7c9ac',
+    tag: '反应热 · 相变 · 能量去向',
+    related: ['chem-ammonium-cycle', 'chem-sulfur-transformations', 'chem-bond-energy'],
+    sources: [
+      {
+        title: 'RSC — Exothermic metal–acid reactions',
+        url: 'https://edu.rsc.org/experiments/exothermic-metal-acid-reactions/1731.article',
+      },
+      {
+        title: 'University of Wisconsin — Endothermic barium hydroxide/ammonium salt reactions',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/06thermopage/endothermic_reactions_of_b.htm',
+      },
+      {
+        title: 'UC San Diego — Hydrated barium hydroxide and ammonium chloride',
+        url: 'https://prod.chem.ucsd.edu/undergraduate/teaching-labs/demos/demo45.html',
+      },
+      {
+        title: '人教版必修第二册32—33页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '392',
+  },
+  {
+    slug: 'bio-dna-engineering',
+    name: '从DNA分子到电泳条带',
+    title: '剪开、提取、扩增后，怎样判断得到的DNA？',
+    question: '剪开、提取、扩增后，怎样判断得到的DNA？',
+    description: '追踪限制酶切点、粗提取对照、表达载体和PCR引物，用实际长度模型阅读凝胶条带。',
+    color: '#c2cdbf',
+    tag: 'DNA工具 · PCR · 电泳证据',
+    related: [
+      'bio-animal-cell-engineering',
+      'bio-microbial-culture',
+      'bio-plant-cell-engineering',
+      'bio-protein-design',
+    ],
+    sources: [
+      {
+        title: 'NEB — EcoRI recognition and cleavage',
+        url: 'https://www.neb.com/en-us/products/r0101-ecori',
+      },
+      {
+        title: 'Addgene — Molecular biology reference',
+        url: 'https://www.addgene.org/mol-bio-reference/',
+      },
+      {
+        title: 'Addgene — Polymerase chain reaction',
+        url: 'https://www.addgene.org/protocols/pcr/',
+      },
+      {
+        title: 'Addgene — Agarose gel electrophoresis',
+        url: 'https://www.addgene.org/protocols/gel-electrophoresis/',
+      },
+    ],
+    number: '391',
+  },
+  {
+    slug: 'chem-aldehyde-tests',
+    name: '醛的两种还原检验',
+    title: '银镜和砖红沉淀，电子去了哪里？',
+    question: '同一个醛基，为什么给出两种不同的固体证据？',
+    description: '从新制试剂到内壁银镜与氧化亚铜，按电子计量连接宏观现象。',
+    color: '#cbd2bf',
+    tag: '有机化学',
+    related: ['chem-phenol-properties', 'chem-elimination-substitution', 'chem-soap-assembly'],
+    sources: [
+      {
+        title: 'Royal Society of Chemistry — Silver mirror test',
+        url: 'https://edu.rsc.org/experiments/the-silver-mirror-test-with-tollens-reagent/822.article',
+      },
+      {
+        title: 'Rutgers University — Silver mirror formation',
+        url: 'https://chem.rutgers.edu/cldf-demos/1032-cldf-demo-silver-mirror',
+      },
+      {
+        title: 'CCEA — Further physical and organic chemistry',
+        url: 'https://ccea.org.uk/downloads/docs/Support/eGuide/2020/A2%201%20Chemistry%20eGuide%3A%20Further%20Physical%20and%20Organic%20Chemistry.pdf',
+      },
+    ],
+    number: '390',
+  },
+  {
+    slug: 'chem-phenol-properties',
+    name: '苯酚的多种证据',
+    title: '一支试管的变化，需要哪一种解释？',
+    question: '酸碱、取代与显色怎样分别支持结论？',
+    description: '用可逆析出、邻对位溴代、铁盐显色和净化对照，追踪苯酚与羧酸的证据。',
+    color: '#ccd0b4',
+    tag: '有机化学',
+    related: ['chem-aromatic-comparison', 'chem-elimination-substitution', 'chem-aldehyde-tests'],
+    sources: [
+      {
+        title: 'University of Calgary — Phenol structure and acidity',
+        url: 'https://www.chem.ucalgary.ca/courses/350/Carey5th/Ch24/ch24-1.html',
+      },
+      {
+        title: 'KFUPM — Organic classification tests',
+        url: 'https://faculty.kfupm.edu.sa/Chem/hmuallem/courses/Chem303/Chem-303%20Classification%20Tests%20Handout.pdf',
+      },
+      {
+        title: 'Science Museum Group — Joseph Lister',
+        url: 'https://collection.sciencemuseumgroup.org.uk/people/cp37522/joseph-lister',
+      },
+      {
+        title: 'University of Massachusetts — Ionization constants at 25 °C',
+        url: 'https://owl.oit.umass.edu/departments/Demo/appendix/chemistry/ion.html',
+      },
+    ],
+    number: '389',
+  },
+  {
+    slug: 'chem-rainwater-ph',
+    name: '雨水pH与测量证据',
+    title: '一次pH读数能说明多少？',
+    question: '一次pH读数能说明多少？',
+    description: '从直接取样、参照和校准出发，比较测量分辨率、连续记录与平均酸度的含义。',
+    color: '#b9d0c3',
+    tag: '环境测量 · 证据边界',
+    related: ['chem-sulfur-dioxide', 'chem-nitrogen-oxides', 'chem-reaction-heat'],
+    sources: [
+      {
+        title: 'US EPA — What is Acid Rain?',
+        url: 'https://www.epa.gov/acidrain/what-acid-rain',
+      },
+      {
+        title: 'USGS — pH measurement of low-conductivity waters',
+        url: 'https://www.usgs.gov/publications/ph-measurement-low-conductivity-waters',
+      },
+      {
+        title: 'NADP — National Trends Network sampling and quality checks',
+        url: 'https://nadp.slh.wisc.edu/networks/national-trends-network/',
+      },
+      {
+        title: 'NADP — precipitation-weighted concentration metadata',
+        url: 'https://nadp.slh.wisc.edu/wp-content/uploads/2022/03/ntn-annual-Meta.pdf',
+      },
+      {
+        title: '人教版必修第二册16—17页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '388',
+  },
+  {
+    slug: 'chem-elimination-substitution',
+    name: '取代、消去与证据',
+    title: '产物出现之前，证据先要净化',
+    question: '同一种卤代烃，条件怎样改变反应与检验？',
+    description: '跟踪水相取样、净键变化与两套洗气装置，分清产物检验和杂质干扰。',
+    color: '#c2d1b9',
+    tag: '有机化学',
+    related: ['chem-aromatic-comparison', 'chem-nmr-hydrogen', 'chem-phenol-properties'],
+    sources: [
+      {
+        title: 'University of Calgary — Substitution and elimination competition',
+        url: 'https://www.chem.ucalgary.ca/courses/353/Carey5th/useful/subelim.html',
+      },
+      {
+        title: 'University of Calgary — Alkene formation by elimination',
+        url: 'https://www.chem.ucalgary.ca/courses/350/Carey5th/Ch05/ch5-0.html',
+      },
+      {
+        title: 'Royal Society of Chemistry — Dehydration of ethanol to ethene',
+        url: 'https://edu.rsc.org/experiments/dehydration-of-ethanol-to-form-ethene/1718.article',
+      },
+    ],
+    number: '387',
+  },
+  {
+    slug: 'bio-embryo-engineering',
+    name: '胚胎的形成、转移与分割',
+    title: '一个胚胎怎样形成，又怎样移植和分割？',
+    question: '一个胚胎怎样形成，又怎样移植和分割？',
+    description: '从成熟与获能到子宫角移植，追踪同一胚胎和囊胚内细胞团，区分技术过程与发育结果。',
+    color: '#d9c7b3',
+    tag: '体外受精 · 胚胎移植 · 内细胞团',
+    related: [
+      'bio-animal-cell-engineering',
+      'bio-plant-cell-engineering',
+      'bio-endocrine-evidence',
+      'bio-dna-engineering',
+    ],
+    sources: [
+      {
+        title: 'FAO — Training manual for embryo transfer in cattle: embryo transfer and synchrony',
+        url: 'https://www.fao.org/4/t0117e/t0117e08.htm',
+      },
+      {
+        title: 'FAO — Evaluation of bovine embryos',
+        url: 'https://www.fao.org/4/t0117e/t0117e07.htm',
+      },
+      {
+        title: 'Velásquez et al. — Splitting bovine blastocysts and resulting demi-embryos (2014)',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/25496989/',
+      },
+    ],
+    number: '386',
+  },
+  {
+    slug: 'chem-salt-purification',
+    name: '粗盐提纯的离子去向',
+    title: '怎样除掉杂质，又不留下新的杂质？',
+    question: '怎样除掉杂质，又不留下新的杂质？',
+    description: '追踪沉淀、过滤、加酸和蒸发中的物质去向，比较过量试剂与步骤顺序。',
+    color: '#becab3',
+    tag: '离子去向 · 化学提纯',
+    related: ['chem-precipitation-paths', 'chem-anion-tests', 'chem-rainwater-ph'],
+    sources: [
+      {
+        title: 'RSC — Dissolved solids in seawater',
+        url: 'https://edu.rsc.org/experiments/what-are-the-dissolved-solids-in-seawater/1785.article',
+      },
+      {
+        title: 'RSC — Removing hardness with sodium carbonate',
+        url: 'https://edu.rsc.org/experiments/how-can-hardness-in-water-be-removed/1734.article',
+      },
+      {
+        title: 'RSC — Properties of group 2 elements',
+        url: 'https://edu.rsc.org/experiments/properties-of-group-2-elements/513.article',
+      },
+      {
+        title: '人教版必修第二册实验活动4（29页）',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '385',
+  },
+  {
+    slug: 'bio-animal-cell-engineering',
+    name: '动物细胞的培养与工程',
+    title: '培养、筛选和核移植，分别改变了什么？',
+    question: '培养、筛选和核移植，分别改变了什么？',
+    description: '追踪传代液量、杂交瘤两层筛选和核移植的细胞来源，区分生长、特异性与克隆证据。',
+    color: '#d4bfd2',
+    tag: '传代 · 杂交瘤 · 核移植',
+    related: [
+      'bio-plant-cell-engineering',
+      'bio-immune-pathways',
+      'bio-body-fluid-balance',
+      'bio-embryo-engineering',
+    ],
+    sources: [
+      {
+        title: 'ATCC — Guide to subculturing cell line monolayers',
+        url: 'https://www.atcc.org/resources/technical-documents/guide-to-subculturing-cell-line-monolayers',
+      },
+      {
+        title:
+          'Köhler and Milstein — Continuous cultures of fused cells secreting antibody of predefined specificity (1975)',
+        url: 'https://www.nature.com/articles/256495a0',
+      },
+      {
+        title:
+          'Wilmut et al. — Viable offspring derived from fetal and adult mammalian cells (1997)',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/9039911/',
+      },
+    ],
+    number: '384',
+  },
+  {
+    slug: 'chem-aromatic-comparison',
+    name: '萃取还是反应',
+    title: '颜色变浅，物质去了哪里？',
+    question: '苯和甲苯的褪色现象，能说明同一件事吗？',
+    description: '用分层、分配守恒与氧化对照，区分溴的萃取和侧链反应。',
+    color: '#c5bf9b',
+    tag: '有机化学',
+    related: ['chem-wohler-isomers', 'chem-precipitation-paths', 'chem-elimination-substitution'],
+    sources: [
+      {
+        title: 'Michigan State University — Aromaticity and characteristic reactivity',
+        url: 'https://www2.chemistry.msu.edu/faculty/reusch/virttxtjml/react3.htm',
+      },
+      {
+        title: 'OpenStax — Oxidation of aromatic side chains',
+        url: 'https://openstax.org/books/organic-chemistry/pages/16-8-oxidation-of-aromatic-compounds',
+      },
+      {
+        title: 'University of Calgary — Oxidation of alkylbenzenes',
+        url: 'https://www.chem.ucalgary.ca/courses/351/Carey5th/Ch19/ch19-2-5.html',
+      },
+      {
+        title: 'IUPAC Gold Book — Partition ratio',
+        url: 'https://goldbook.iupac.org/terms/view/P04440',
+      },
+    ],
+    number: '383',
+  },
+  {
+    slug: 'chem-ammonium-cycle',
+    name: '铵根检验与氨的收集',
+    title: '怎样确认氨被释放并收集？',
+    question: '怎样确认氨被释放并收集？',
+    description: '从三种铵盐的湿润试纸证据，追踪氨的发生、排空气收集与吸收讨论。',
+    color: '#bbc6a4',
+    tag: '铵根 · 气体证据 · 排空气',
+    related: ['chem-ammonia-fountain', 'chem-ammonium-smoke', 'chem-salt-purification'],
+    sources: [
+      {
+        title: 'RSC — reactions of positive ions with sodium hydroxide',
+        url: 'https://edu.rsc.org/resources/reactions-of-positive-ions-with-sodium-hydroxide/4018529.article',
+      },
+      {
+        title: 'RSC — Ammonia fountain demonstration',
+        url: 'https://edu.rsc.org/experiments/ammonia-fountain-demonstration/979.article',
+      },
+      {
+        title: 'RSC — ammonia collection and limits of a mouth indicator test',
+        url: 'https://edu.rsc.org/states-of-matter/demonstrate-changes-of-state-using-volume-differences/4017698.article',
+      },
+      {
+        title: '人教版必修第二册14—15页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '382',
+  },
+  {
+    slug: 'chem-nmr-hydrogen',
+    name: '氢谱里的结构线索',
+    title: '同样六个氢，为什么出现不同的谱？',
+    question: '怎样用氢谱区分乙醇和二甲醚？',
+    description: '追踪六个氢的环境、信号面积与分裂，理解OH交换的限定条件。',
+    color: '#b9c5a8',
+    tag: '有机化学',
+    related: ['chem-wohler-isomers', 'chem-elemental-analysis', 'chem-aromatic-comparison'],
+    sources: [
+      {
+        title: 'JEOL — Reading NMR chemical shift, integration and coupling',
+        url: 'https://www.jeol.com/column/detail005.php',
+      },
+      {
+        title: 'University of Wisconsin — Proton NMR lecture notes',
+        url: 'https://www2.chem.wisc.edu/deptfiles/chem345-gellman/Sp13/LecNotes/sp14_345-1_gellman_01312014.pdf',
+      },
+      {
+        title: 'University of California, Berkeley — Pulsed NMR and free-induction decay',
+        url: 'https://experimentationlab.berkeley.edu/PulsedNMR',
+      },
+    ],
+    number: '381',
+  },
+  {
+    slug: 'chem-ammonium-smoke',
+    name: '氨与氯化氢的白烟',
+    title: '两种无色气体，为什么会冒出白烟？',
+    question: '两种无色气体，为什么会冒出白烟？',
+    description: '在玻璃棒之间追踪气体扩散、接触反应与固体微粒形成，分清烟和雾。',
+    color: '#9dad9c',
+    tag: '接触反应 · 固体微粒 · 白烟',
+    related: ['chem-ammonia-fountain', 'chem-colloid-light', 'chem-ammonium-cycle'],
+    sources: [
+      {
+        title: 'Thompson et al. — HCl/NH3 counterdiffusion, JCP 2019',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/31005123/',
+      },
+      {
+        title: 'UW–Madison — Ammonium Chloride Ring',
+        url: 'https://demolab.chem.wisc.edu/physical-chemistry-demonstrations/kinetics-rate-of-diffusion-the-ammonium-chloride-ring-2/',
+      },
+      {
+        title: '人教版必修第二册14页图5-12',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '380',
+  },
+  {
+    slug: 'bio-plant-cell-engineering',
+    name: '植物细胞的再生与融合',
+    title: '一段组织怎样长成植株，两枚细胞怎样成为杂种？',
+    question: '一段组织怎样长成植株，两枚细胞怎样成为杂种？',
+    description: '追踪同一外植体的再生、原生质体膜与核的融合，以及激素比例和浓度的对照。',
+    color: '#c5d1ad',
+    tag: '外植体 · 原生质体 · 再分化',
+    related: [
+      'bio-plant-growth-regulators',
+      'bio-microbial-culture',
+      'bio-auxin-evidence',
+      'bio-animal-cell-engineering',
+    ],
+    sources: [
+      {
+        title: 'Skoog and Miller — Chemical regulation of growth and organ formation (1957)',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/13486467/',
+      },
+      {
+        title: 'Pernisová et al. — Cytokinins modulate auxin-induced organogenesis (2009)',
+        url: 'https://www.pnas.org/doi/10.1073/pnas.0811539106',
+      },
+      {
+        title: 'Melchers, Sacristán and Holder — Potato–tomato somatic hybrids (1978)',
+        url: 'https://link.springer.com/article/10.1007/BF02906548',
+      },
+    ],
+    number: '379',
+  },
+  {
+    slug: 'chem-elemental-analysis',
+    name: '称出碳与氢',
+    title: '产物的增重，怎样揭示有机物组成？',
+    question: '为什么要先收集水，再收集二氧化碳？',
+    description: '沿李比希元素分析的连续气路，分别捕获水和二氧化碳，再从称量推回元素比例。',
+    color: '#bdc8a4',
+    tag: '有机化学',
+    related: ['chem-wohler-isomers', 'chem-ionic-conduction', 'chem-nmr-hydrogen'],
+    sources: [
+      {
+        title: 'Science History Institute — Liebig’s kaliapparat',
+        url: 'https://archives.sciencehistory.org/repositories/3/archival_objects/51152',
+      },
+      {
+        title: 'OpenStax — Quantitative chemical analysis',
+        url: 'https://openstax.org/books/chemistry/pages/4-5-quantitative-chemical-analysis',
+      },
+      {
+        title: 'Yale University — Combustion analysis and historical development',
+        url: 'https://oyc.yale.edu/chemistry/chem-125a/lecture-21',
+      },
+    ],
+    number: '378',
+  },
+  {
+    slug: 'chem-wohler-isomers',
+    name: '组成相同，结构不同',
+    title: '分子式相同，为什么会是不同物质？',
+    question: '分子式能告诉我们怎样连接吗？',
+    description: '从维勒制得尿素的证据，比较碳架、位置、官能团与顺反异构。',
+    color: '#b8c1a1',
+    tag: '有机化学',
+    related: ['chem-molecular-shapes', 'bio-protein-machines', 'chem-elemental-analysis'],
+    sources: [
+      {
+        title: 'ACS — Urea and Wöhler’s synthesis',
+        url: 'https://www.acs.org/molecule-of-the-week/archive/u/urea.html',
+      },
+      {
+        title: 'IUPAC — Stereochemical definitions and terminology',
+        url: 'https://publications.iupac.org/pac/1976/pdf/4501x0011.pdf',
+      },
+      {
+        title: 'Tsipis & Karipidis 2003 — Mechanism of the Wöhler synthesis',
+        url: 'https://doi.org/10.1021/ja020656n',
+      },
+    ],
+    number: '377',
+  },
+  {
+    slug: 'chem-ammonia-fountain',
+    name: '氨的喷泉',
+    title: '水为什么会向上喷入烧瓶？',
+    question: '水为什么会向上喷入烧瓶？',
+    description: '把氨溶解、压强下降、连续进水和酚酞变色接成一条可追踪的过程。',
+    color: '#b8c2a4',
+    tag: '溶解 · 压差 · 水相碱性',
+    related: ['chem-sulfur-dioxide', 'chem-nitrogen-oxides', 'chem-ammonium-smoke'],
+    sources: [
+      {
+        title: 'Indiana University — The Ammonia Fountain',
+        url: 'https://www.chem.indiana.edu/faculty-research/faculty-resources/chemistry-demos/demo/the-ammonia-fountain/',
+      },
+      {
+        title: 'Purdue University — Ammonia Fountain',
+        url: 'https://chemed.chem.purdue.edu/genchem/demosheets/17.2.html',
+      },
+      {
+        title: '人教版必修第二册13—14页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '376',
+  },
+  {
+    slug: 'bio-microbial-culture',
+    name: '从分散菌体到培养证据',
+    title: '一个菌落能告诉我们多少，又不能告诉我们什么？',
+    question: '一个菌落能告诉我们多少，又不能告诉我们什么？',
+    description: '跟随接种环、稀释液和微孔板，从纯培养走到选择计数与检测方法调查。',
+    color: '#c4cbaa',
+    tag: '划线 · CFU · 复筛',
+    related: [
+      'bio-fermentation-pathways',
+      'bio-population-growth',
+      'bio-soil-decomposition',
+      'bio-plant-cell-engineering',
+    ],
+    sources: [
+      {
+        title: 'ASM — The Streak Plate Protocol',
+        url: 'https://asm.org/protocols/the-streak-plate-protocol',
+      },
+      {
+        title: 'ASM — Colony Morphology Protocol',
+        url: 'https://asm.org/protocols/colony-morphology-protocol',
+      },
+      {
+        title: 'FDA — BAM Chapter 3: Aerobic Plate Count',
+        url: 'https://www.fda.gov/food/laboratory-methods-food/bam-chapter-3-aerobic-plate-count',
+      },
+      {
+        title: 'CDC — Environmental sampling: air volume and settling',
+        url: 'https://www.cdc.gov/infection-control/hcp/environmental-control/environmental-sampling.html',
+      },
+    ],
+    number: '375',
+  },
+  {
+    slug: 'bio-evolution-evidence',
+    name: '进化证据与种群变化',
+    title: '证据相互支持，种群逐代改变',
+    question: '环境筛选的是谁，真正改变的又是什么？',
+    description: '连接共同祖先的四类证据、教材自然选择计算、虚拟抑菌圈与隔离的独立判据。',
+    color: '#94a57b',
+    tag: '生物学',
+    related: ['bio-mutation-evidence', 'bio-linked-inheritance'],
+    sources: [
+      {
+        title: 'Hu et al. (2009): Anchiornis feathered hind limbs',
+        url: 'https://www.nature.com/articles/nature08322',
+      },
+      {
+        title: 'Gillis et al. (2013): developmental homology of pharyngeal arches',
+        url: 'https://www.nature.com/articles/ncomms2429',
+      },
+      {
+        title: 'Graham and Smith (2013): pharyngeal apparatus development',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3564725/',
+      },
+      {
+        title: 'Cook et al. (2012): selective bird predation on peppered moths',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3391436/',
+      },
+      {
+        title: 'Lederberg and Lederberg (1952): replica plating and indirect selection',
+        url: 'https://journals.asm.org/doi/10.1128/jb.63.3.399-406.1952',
+      },
+      {
+        title: 'UC Berkeley: mechanisms of speciation',
+        url: 'https://ib.berkeley.edu/courses/bio1b/evolutionspring11/pdfs/MoritzNotes9.pdf',
+      },
+    ],
+    number: '374',
+  },
+  {
+    slug: 'chem-nitrogen-oxides',
+    name: '氮氧化物的颜色与去向',
+    title: '气体变回无色，就已经消失了吗？',
+    question: '气体变回无色，就已经消失了吗？',
+    description: '用密闭注射器的物质守恒区分变色与吸收，再比较浓、稀硝酸与铜的主要气体产物。',
+    color: '#aebf94',
+    tag: 'NO与NO₂ · 氧气限制 · 产物鉴别',
+    related: ['chem-sulfur-dioxide', 'chem-sulfur-transformations', 'chem-ammonia-fountain'],
+    sources: [
+      {
+        title: 'University of Wisconsin — nitric acid acts on copper',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/04chemrxnpage/nitric_acid_acts_on_copper.htm',
+      },
+      {
+        title: 'Sytsma et al. — gas-phase analysis of copper/nitric acid, 2018',
+        url: 'https://doi.org/10.1333/s00897182790a',
+      },
+      {
+        title: '人教版必修第二册13、15页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '373',
+  },
+  {
+    slug: 'bio-fermentation-pathways',
+    name: '发酵的容器与条件',
+    title: '同样是发酵，为什么有的隔绝空气，有的持续通气？',
+    question: '同样是发酵，为什么有的隔绝空气，有的持续通气？',
+    description: '从泡菜水封、亚硝酸盐取样到果酒果醋与工业罐，追踪气液路径和条件调控。',
+    color: '#c8c7a4',
+    tag: '水封 · 发酵 · 传质',
+    related: [
+      'bio-soil-decomposition',
+      'bio-population-growth',
+      'bio-conservation-evidence',
+      'bio-microbial-culture',
+    ],
+    sources: [
+      {
+        title: 'NCHFP — Suitable containers, covers and weights',
+        url: 'https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/',
+      },
+      {
+        title: 'UC Davis — Fermentation management practices',
+        url: 'https://wine.ucdavis.edu/industry-info/enology/fermentation-management-guides/wine-fermentation/fermentation-management-practices',
+      },
+      {
+        title: 'UC Davis Food Safety — Vinegar fermentation',
+        url: 'https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/inline-files/192137_0.pdf',
+      },
+      {
+        title:
+          'US EPA — Method 353.2 (aqueous nitrite calibration principles, not food preparation)',
+        url: 'https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P101D1VY.txt',
+      },
+    ],
+    number: '372',
+  },
+  {
+    slug: 'chem-sulfur-transformations',
+    name: '不同价态硫的转化',
+    title: '硫怎样从一个价态走向另一个？',
+    question: '硫怎样从一个价态走向另一个？',
+    description: '用硫化物试管、铜与浓硫酸导气装置、铁硫热传播对照价态与实验现象。',
+    color: '#b2bc92',
+    tag: '氧化还原 · 连续证据 · 热传播',
+    related: ['chem-sulfur-dioxide', 'chem-electron-transfer', 'chem-nitrogen-oxides'],
+    sources: [
+      {
+        title: 'University of Wisconsin — reaction of iron and sulfur',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/02atomsmolpage/reaction_of_iron_and_sulfu.htm',
+      },
+      {
+        title: 'OpenStax — balancing redox chemistry',
+        url: 'https://openstax.org/books/chemistry-2e/pages/17-1-review-of-redox-chemistry',
+      },
+      {
+        title: '人教版必修第二册5、8、30页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '371',
+  },
+  {
+    slug: 'bio-conservation-evidence',
+    name: '环境调查与生态保护证据',
+    title: '从一次观察，怎样走到保护方案？',
+    question: '从一次观察，怎样走到保护方案？',
+    description: '从水质与保护案例到庭院路径和碳样方，追踪调查证据、模型边界与区域汇总。',
+    color: '#bfc9a7',
+    tag: '野外记录 · 生态工程 · 碳调查',
+    related: ['bio-community-survey', 'bio-ecosystem-stability', 'bio-ecosystem-energy'],
+    sources: [
+      {
+        title: 'Ministry of Ecology and Environment — GB 3838-2002',
+        url: 'https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/shjbh/shjzlbz/200206/t20020601_66497.shtml',
+      },
+      {
+        title: 'Sawaya et al. — Genetic connectivity at Banff wildlife crossings',
+        url: 'https://doi.org/10.1098/rspb.2013.1705',
+      },
+      {
+        title: 'US EPA — Basic Information about Anaerobic Digestion',
+        url: 'https://www.epa.gov/anaerobic-digestion/basic-information-about-anaerobic-digestion',
+      },
+      {
+        title: 'Tang et al. — Carbon pools in China’s terrestrial ecosystems',
+        url: 'https://doi.org/10.1073/pnas.1700291115',
+      },
+      {
+        title: 'Fang et al. — Climate change, human impacts, and carbon sequestration in China',
+        url: 'https://doi.org/10.1073/pnas.1700304115',
+      },
+    ],
+    number: '370',
+  },
+  {
+    slug: 'bio-mutation-evidence',
+    name: '变异与实验判据',
+    title: '变化发生在哪一层？',
+    question: '突变、染色体变化与相关性证据，怎样分清？',
+    description: '追踪后代检出、病例对照分母、低温根尖处理和具有身份的染色体片段。',
+    color: '#a18ca7',
+    tag: '生物学',
+    related: ['bio-gene-expression', 'bio-meiosis', 'bio-evolution-evidence'],
+    sources: [
+      {
+        title: 'Muller (1927), original Science paper record',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/17802387/',
+      },
+      {
+        title: 'Muller: The Production of Mutations, Nobel lecture',
+        url: 'https://www.nobelprize.org/prizes/medicine/1946/muller/lecture/',
+      },
+      {
+        title: 'NCI: tobacco and cancer evidence',
+        url: 'https://www.cancer.gov/about-cancer/causes-prevention/risk/tobacco',
+      },
+      {
+        title: 'NHGRI: chromosome abnormalities',
+        url: 'https://www.genome.gov/about-genomics/fact-sheets/Chromosome-Abnormalities-Fact-Sheet',
+      },
+      {
+        title: 'NHGRI: structural variation',
+        url: 'https://www.genome.gov/genetics-glossary/Structural-Variation',
+      },
+    ],
+    number: '369',
+  },
+  {
+    slug: 'bio-gene-expression',
+    name: '基因表达与性状证据',
+    title: '基因还在，表达改变了',
+    question: 'DNA相同，为什么细胞与性状仍会不同？',
+    description: '从鸡细胞检测表、柳穿鱼和小鼠的表观遗传，到残翅果蝇的发育温度对照。',
+    color: '#a8b494',
+    tag: '生物学',
+    related: ['bio-genetic-code', 'bio-cell-fates', 'bio-mutation-evidence'],
+    sources: [
+      {
+        title: 'Cubas, Vincent and Coen (1999): natural epigenetic floral variation',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/10490023/',
+      },
+      {
+        title: 'Waterland and Jirtle (2003): epigenetic regulation at the Avy locus',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/165709/',
+      },
+      {
+        title: 'Harnly (1936): temperature-effective periods of vestigial wings',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/17246789/',
+      },
+      {
+        title: 'FlyBase: Harnly original vestigial-wing temperature research',
+        url: 'https://flybase.org/reports/FBrf0002002',
+      },
+    ],
+    number: '368',
+  },
+  {
+    slug: 'chem-sugar-carbonization',
+    name: '蔗糖的脱水与膨胀',
+    title: '黑色柱体变大，是碳变多了吗？',
+    question: '黑色柱体变大，是碳变多了吗？',
+    description: '区分浓硫酸的脱水与氧化作用，再用元素守恒和孔隙体积解释变黑、产气与膨胀。',
+    color: '#b1b797',
+    tag: '脱水 · 元素守恒 · 多孔结构',
+    related: ['chem-sulfur-dioxide', 'chem-electron-transfer', 'chem-sulfur-transformations'],
+    sources: [
+      {
+        title: 'University of Wisconsin — dehydration of sugar by sulfuric acid',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/22organicpage/dehydration_of_sugar_by_su.htm',
+      },
+      {
+        title: 'RSC — the dehydration of sucrose',
+        url: 'https://edu.rsc.org/exhibition-chemistry/the-dehydration-of-sucrose/2020073.article',
+      },
+      {
+        title: '人教版必修第二册5页正文及10页练习4',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '367',
+  },
+  {
+    slug: 'bio-ecosystem-stability',
+    name: '信息传递与生态系统稳定性',
+    title: '一个生态系统怎样回应变化？',
+    question: '一个生态系统怎样回应变化？',
+    description: '隔离昆虫信息线索，区分抵抗与恢复，并在有昼夜收支的生态缸中持续观察。',
+    color: '#bcc8a7',
+    tag: '信息对照 · 反馈限制 · 生态缸',
+    related: [
+      'bio-community-interactions',
+      'bio-ecosystem-energy',
+      'bio-soil-decomposition',
+      'bio-conservation-evidence',
+    ],
+    sources: [
+      {
+        title: 'Sakurai et al. — Sex pheromone receptor and silkmoth behavior',
+        url: 'https://doi.org/10.1371/journal.pgen.1002115',
+      },
+      {
+        title: 'USGS — Daily variation in dissolved oxygen and carbon dioxide',
+        url: 'https://pubs.usgs.gov/fs/FS-060-99/',
+      },
+      {
+        title: 'National Park Service — Aquatic Ecology Teacher Guide',
+        url: 'https://www.nps.gov/romo/learn/education/upload/Aquatic-Ecology-Teacher-Guide-Final.pdf',
+      },
+    ],
+    number: '366',
+  },
+  {
+    slug: 'bio-genetic-code',
+    name: '遗传密码与蛋白质合成',
+    title: '从三个字母，到一条肽链',
+    question: '一个碱基的位置，怎样改变后面的信息？',
+    description: '把阅读框实验、合成RNA证据与连续转录翻译联系起来，追踪同一段信息的去向。',
+    color: '#b4876e',
+    tag: '生物学',
+    related: ['bio-dna-replication', 'bio-protein-machines', 'bio-gene-expression'],
+    sources: [
+      {
+        title: 'Crick et al. (1961), original Nature paper, NLM archive',
+        url: 'https://digirepo.nlm.nih.gov/ext/document/101584582X412/PDF/101584582X412.pdf',
+      },
+      {
+        title: 'Nirenberg and Matthaei (1961), original PNAS paper',
+        url: 'https://njc.rockefeller.edu/pdf3/NirenbergMatthaeiPNAS1961.pdf',
+      },
+      {
+        title: 'NHGRI: genetic code deciphering',
+        url: 'https://www.genome.gov/25520300/online-education-kit-1966-genetic-code-cracked',
+      },
+      {
+        title: 'NCBI Bookshelf: from RNA to protein',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK26829/',
+      },
+      {
+        title: 'NCBI Bookshelf: translation phases in eukaryotes',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK586875/',
+      },
+    ],
+    number: '365',
+  },
+  {
+    slug: 'chem-sulfur-dioxide',
+    name: '二氧化硫的连续观察',
+    title: '颜色消失了，还能回来吗？',
+    question: '颜色消失了，还能回来吗？',
+    description: '沿同一份溶液观察气体溶解、酸性、品红褪色与加热复色，分清现象和结论。',
+    color: '#a8bb9a',
+    tag: '溶解 · 酸性 · 可逆褪色',
+    related: ['chem-chlorine-bleaching', 'chem-ionic-conduction', 'chem-sugar-carbonization'],
+    sources: [
+      {
+        title: 'University of Wisconsin — preparation and properties of sulfur dioxide',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/1819group1-8page/preparation_sulfurdioxide.htm',
+      },
+      {
+        title: '人教版必修第二册3–4页：实验5-1、5-2',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '364',
+  },
+  {
+    slug: 'bio-soil-decomposition',
+    name: '土壤微生物的分解作用',
+    title: '落叶与淀粉的变化，怎样成为证据？',
+    question: '落叶与淀粉的变化，怎样成为证据？',
+    description: '比较处理土与自然土，追踪淀粉培养液的分样和显色，并检验产物继续被消耗的反例。',
+    color: '#c9c6a7',
+    tag: '土壤对照 · 独立分样 · 检测边界',
+    related: [
+      'bio-community-survey',
+      'bio-ecosystem-energy',
+      'bio-enzyme-investigations',
+      'bio-fermentation-pathways',
+    ],
+    sources: [
+      {
+        title: 'USDA NRCS — Soil Respiration',
+        url: 'https://www.nrcs.usda.gov/state-offices/illinois/soil-tech-note-17a-soil-respiration',
+      },
+      {
+        title: 'University of Maryland — Starch Hydrolysis by Amylase',
+        url: 'https://user.eng.umd.edu/~nsw/ench485/lab5.htm',
+      },
+      {
+        title: 'Austin Community College — Starch Hydrolysis',
+        url: 'https://sites.google.com/austincc.edu/microbugz/lab-exercises/differential-tests/starch-hydrolysis',
+      },
+    ],
+    number: '363',
+  },
+  {
+    slug: 'chem-molecular-shapes',
+    name: '分子的空间形状',
+    title: '有极性键，分子就一定有极性吗？',
+    question: '有极性键，分子就一定有极性吗？',
+    description: '从六种教材模型与四气球类比走向电子对几何，再用三维向量检验分子极性。',
+    color: '#a6bcb5',
+    tag: '空间模型 · VSEPR · 分子极性',
+    related: ['chem-carbon-frameworks', 'chem-bond-overlap', 'chem-hydrogen-bond-network'],
+    sources: [
+      {
+        title: 'OpenStax — molecular structure and polarity',
+        url: 'https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity',
+      },
+      {
+        title: 'IUPAC Gold Book — electric dipole moment',
+        url: 'https://goldbook.iupac.org/terms/view/E01929',
+      },
+      {
+        title: '人教版选择性必修2 43–53页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '362',
+  },
+  {
+    slug: 'bio-dna-replication',
+    name: 'DNA复制的证据与过程',
+    title: '一条旧链，配一条新链',
+    question: '一道中间条带，为什么还要再等一代？',
+    description: '从稳定同位素与密度梯度预测，走到可追踪母链、引物和5′到3′延伸的机制。',
+    color: '#99a58c',
+    tag: '生物学',
+    related: ['bio-dna-structure', 'bio-cell-division', 'bio-genetic-code'],
+    sources: [
+      {
+        title: 'Meselson and Stahl (1958), Caltech original-paper record',
+        url: 'https://authors.library.caltech.edu/records/pggy5-n0t48',
+      },
+      {
+        title: 'Meselson and Stahl (1958), PNAS/PMC',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC528642/',
+      },
+      {
+        title: 'Nagoya University: Okazaki fragments and original research',
+        url: 'https://www.itbm.nagoya-u.ac.jp/okazaki_award/okazaki_fragment.html',
+      },
+      {
+        title: 'Nobel Prize: primer dependence and the end-replication problem',
+        url: 'https://www.nobelprize.org/prizes/medicine/2009/advanced-information/',
+      },
+    ],
+    number: '361',
+  },
+  {
+    slug: 'bio-ecosystem-energy',
+    name: '生态系统的能量与物质',
+    title: '能量流过以后，物质去了哪里？',
+    question: '能量流过以后，物质去了哪里？',
+    description: '核对湖泊年能量收支，建立有证据的调查图，追踪碳循环与污染物积累。',
+    color: '#bdc9a8',
+    tag: '能量账本 · 碳标记 · 浓度变化',
+    related: [
+      'bio-community-interactions',
+      'bio-community-survey',
+      'bio-population-growth',
+      'bio-ecosystem-stability',
+    ],
+    sources: [
+      {
+        title: 'Lindeman — The Trophic-Dynamic Aspect of Ecology (1942)',
+        url: 'https://doi.org/10.2307/1930126',
+      },
+      {
+        title: 'NOAA — Carbon cycle basics',
+        url: 'https://gml.noaa.gov/outreach/carbon_toolkit/basics.html',
+      },
+      {
+        title: 'US EPA — Toxics in the Food Web',
+        url: 'https://www.epa.gov/salish-sea/toxics-food-web',
+      },
+    ],
+    number: '360',
+  },
+  {
+    slug: 'chem-carbon-frameworks',
+    name: '碳骨架与空间结构',
+    title: '同样是碳成键，怎样搭出不同分子？',
+    question: '同样是碳成键，怎样搭出不同分子？',
+    description: '通过真实三维球棍坐标比较四面体、平面与直线；用旋转重合和价数守恒区分摆法与结构。',
+    color: '#a9b997',
+    tag: '球棍模型 · σ与π · 同分异构',
+    related: [
+      'chem-bond-overlap',
+      'chem-atomic-models',
+      'chem-molecular-shapes',
+      'chem-wohler-isomers',
+    ],
+    sources: [
+      {
+        title: 'OpenStax — hybrid orbitals and molecular geometry',
+        url: 'https://openstax.org/books/chemistry-2e/pages/8-2-hybrid-atomic-orbitals',
+      },
+      {
+        title: 'OpenStax — ethane bonding and near-tetrahedral angles',
+        url: 'https://openstax.org/books/organic-chemistry/pages/1-7-sp3-hybrid-orbitals-and-the-structure-of-ethane',
+      },
+      {
+        title: '人教版必修第二册70、95页、选择性必修2 36页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '359',
+  },
+  {
+    slug: 'bio-dna-structure',
+    name: 'DNA结构的约束与模型',
+    title: '不是随便拧成两条螺旋',
+    question: '一套结构，怎样同时满足衍射、组成与化学连接？',
+    description: '从衍射与碱基比例到反向平行骨架，再旋转真实DNA坐标检查空间连接。',
+    color: '#b3a27f',
+    tag: '生物学',
+    related: ['bio-genetic-material', 'bio-protein-machines', 'bio-dna-replication'],
+    sources: [
+      {
+        title: 'Watson and Crick, Nature (1953)',
+        url: 'https://www.nature.com/articles/171737a0',
+      },
+      {
+        title: 'Franklin and Gosling, Nature (1953)',
+        url: 'https://www.nature.com/articles/171740a0',
+      },
+      {
+        title: 'Cochran, Crick and Vand: transform of atoms on a helix (1952)',
+        url: 'https://doi.org/10.1107/S0365110X52001635',
+      },
+      {
+        title: 'RCSB PDB 1BNA: measured B-DNA dodecamer',
+        url: 'https://www.rcsb.org/structure/1BNA',
+      },
+      {
+        title: 'NHGRI: DNA fact sheet',
+        url: 'https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet',
+      },
+    ],
+    number: '358',
+  },
+  {
+    slug: 'bio-community-survey',
+    name: '群落调查与演替',
+    title: '先看见什么，才能解释一个群落？',
+    description: '从湿地水鸟观察和土壤小动物采集，到不同起点与环境条件下的群落演替。',
+    color: '#bbcaab',
+    tag: '野外记录 · 采集通路 · 环境改变',
+    related: [
+      'bio-population-sampling',
+      'bio-community-interactions',
+      'bio-plant-environment',
+      'bio-soil-decomposition',
+    ],
+    sources: [
+      {
+        title: 'Harvard Arnold Arboretum — Fieldwork Techniques',
+        url: 'https://arboretum.harvard.edu/wp-content/uploads/2020/07/Fieldwork-Techniques.pdf',
+      },
+      {
+        title: 'Jing et al. — Foraging strategies and shorebird habitat use at Chongming Dongtan',
+        url: 'https://doi.org/10.1007/s11284-006-0302-7',
+      },
+      {
+        title: 'National Park Service — Plant Succession, Kenai Fjords',
+        url: 'https://www.nps.gov/kefj/learn/nature/plant-succession.htm',
+      },
+      {
+        title: 'National Park Service — Plant Succession, Glacier Bay',
+        url: 'https://home.nps.gov/glba/learn/nature/succession.htm',
+      },
+    ],
+    question: '先看见什么，才能解释一个群落？',
+    number: '357',
+  },
+  {
+    slug: 'chem-bond-overlap',
+    name: '电子式与轨道重叠',
+    title: '怎样区分电子转移、共用与轨道重叠？',
+    question: '怎样区分电子转移、共用与轨道重叠？',
+    description: '从NaCl的电子记账与六配位局部，转向Cl₂、HCl共用电子，再用计算剖面比较σ与π。',
+    color: '#a6ba8f',
+    tag: '化学键 · 电子式 · 轨道对称性',
+    related: ['chem-atomic-models', 'chem-electron-transfer', 'chem-carbon-frameworks'],
+    sources: [
+      {
+        title: 'IUPAC physical-organic glossary — sigma and pi symmetry',
+        url: 'https://iupac.qmul.ac.uk/gtpoc/SaSp.html',
+      },
+      {
+        title: 'OpenStax — valence bond theory',
+        url: 'https://openstax.org/books/chemistry-2e/pages/8-1-valence-bond-theory',
+      },
+      {
+        title: 'OpenStax — ionic crystal neighborhoods',
+        url: 'https://openstax.org/books/chemistry-2e/pages/10-6-lattice-structures-in-crystalline-solids',
+      },
+      {
+        title: '人教版必修第一册113—115页、选择性必修2 34—35页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '356',
+  },
+  {
+    slug: 'bio-genetic-material',
+    name: '遗传物质的三条证据',
+    title: '把转化因子追踪到DNA',
+    question: '是改变了性状，还是找到了传递性状的物质？',
+    description: '从四组肺炎链球菌对照、选择性去除，到噬菌体同位素的进入、分离与子代检测。',
+    color: '#b49c7c',
+    tag: '生物学',
+    related: ['bio-linked-inheritance', 'bio-membrane-evidence', 'bio-dna-structure'],
+    sources: [
+      {
+        title: 'Griffith (1928), original paper record',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/20474956/',
+      },
+      {
+        title: 'Avery, MacLeod and McCarty (1944)',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/19871359/',
+      },
+      {
+        title: 'McCarty and Avery (1946), DNase treatment',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/19871520/',
+      },
+      {
+        title: 'Hershey and Chase (1952), original abstract and paper',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2147348/',
+      },
+    ],
+    number: '355',
+  },
+  {
+    slug: 'bio-community-interactions',
+    name: '竞争、捕食与群落',
+    title: '少一个捕食者，为什么不只是多一些猎物？',
+    description: '比较草履虫培养、雪兔猞猁长期证据与海星移除，追踪竞争和捕食的间接效应。',
+    color: '#aebea5',
+    tag: '历史实验 · 循环因果 · 岩面占位',
+    related: [
+      'bio-population-sampling',
+      'bio-population-growth',
+      'bio-community-survey',
+      'bio-ecosystem-energy',
+    ],
+    sources: [
+      {
+        title: 'Mühlbauer et al. — gauseR digitized Gause experiments',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7713957/',
+      },
+      {
+        title: 'gauseR author data repository',
+        url: 'https://github.com/adamtclark/gauseR',
+      },
+      {
+        title: 'ecostudy — lynxhare supplementary historical compilation',
+        url: 'https://github.com/jarioksa/ecostudy/blob/master/man/lynxhare.Rd',
+      },
+      {
+        title: 'Stenseth et al. — Population regulation in snowshoe hare and Canadian lynx',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC24646/',
+      },
+      {
+        title: 'Krebs et al. — Impact of Food and Predation on the Snowshoe Hare Cycle',
+        url: 'https://www.zoology.ubc.ca/~krebs/papers/122.pdf',
+      },
+      {
+        title: 'Paine — Food Web Complexity and Species Diversity',
+        url: 'https://www.journals.uchicago.edu/doi/abs/10.1086/282400',
+      },
+    ],
+    question: '少一个捕食者，为什么不只是多一些猎物？',
+    number: '354',
+  },
+  {
+    slug: 'chem-periodic-patterns',
+    name: '周期表与性质趋势',
+    title: '元素排成周期表，哪些关系被保留下来？',
+    question: '元素排成周期表，哪些关系被保留下来？',
+    description:
+      '跟踪同一118种元素的布局变化、价层电子排布与教材电负性数据，再对比电离能的真实下降。',
+    color: '#a5b68e',
+    tag: '周期表 · 电子排布 · 数据',
+    related: ['chem-atomic-models', 'chem-periodic-practical'],
+    sources: [
+      {
+        title: 'IUPAC — periodic-table forms and group numbering',
+        url: 'https://iupac.org/what-we-do/periodic-table-of-elements/',
+      },
+      {
+        title: 'NIST ASD — neutral-atom configurations and ionization energies',
+        url: 'https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&level_out=on&shells_out=on&spectra=H-DS+i&unc_out=on&units=1',
+      },
+      {
+        title: '人教版必修第一册105页、选择性必修2 20—26页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '353',
+  },
+  {
+    slug: 'bio-linked-inheritance',
+    name: '性连锁、系谱与人群调查',
+    title: '同一个比例，可能隐藏什么',
+    question: '把性别、家系和抽样分母放回遗传证据里。',
+    description: '重建果蝇白眼杂交，推断教材家系中的可能基因型，并比较家系证据与合成人群调查。',
+    color: '#b29cab',
+    tag: '生物学',
+    related: ['bio-mendel-crosses', 'bio-meiosis', 'bio-genetic-material'],
+    sources: [
+      {
+        title: 'Morgan 1910, Sex limited inheritance in Drosophila: original publication record',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/17759620/',
+      },
+      {
+        title: 'Dalton’s original color observations, Science History Institute',
+        url: 'https://digital.sciencehistory.org/works/fb4949523',
+      },
+      {
+        title: 'NHGRI: pedigree',
+        url: 'https://www.genome.gov/genetics-glossary/Pedigree',
+      },
+      {
+        title: 'MedlinePlus Genetics: color vision deficiency',
+        url: 'https://medlineplus.gov/genetics/condition/color-vision-deficiency/',
+      },
+    ],
+    number: '352',
+  },
+  {
+    slug: 'chem-atomic-models',
+    name: '原子模型与电子云',
+    title: '从圆轨道到电子云，改变的是什么？',
+    question: '从圆轨道到电子云，改变的是什么？',
+    description:
+      '沿教材模型史比较内部结构、离散能级和概率描述，用氢原子解析分布构造电子云及90%轮廓。',
+    color: '#aabd91',
+    tag: '历史模型 · 概率 · 原子轨道',
+    related: [
+      'chem-flame-spectra',
+      'chem-electron-transfer',
+      'chem-bond-overlap',
+      'chem-periodic-patterns',
+      'chem-noble-gas-evidence',
+    ],
+    sources: [
+      {
+        title: 'MIT OpenCourseWare — hydrogen-atom wavefunctions and radial distributions',
+        url: 'https://www.ocw.mit.edu/courses/5-61-physical-chemistry-fall-2007/c2078ff25c61c136e67ceb6fd8eb9b34_lecture21to22.pdf',
+      },
+      {
+        title: 'Niels Bohr Institute — historical atomic model',
+        url: 'https://nbi.ku.dk/english/www/niels/bohr/bohratomet/',
+      },
+      {
+        title: 'Nobel Foundation — Thomson and electrons',
+        url: 'https://www.nobelprize.org/prizes/physics/1906/thomson/facts/',
+      },
+      {
+        title: '人教版高中化学必修第一册94页、选择性必修2 12—13页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '351',
+  },
+  {
+    slug: 'bio-population-growth',
+    name: '种群增长与培养计数',
+    title: '增长曲线的每一个点从哪里来？',
+    description: '从细菌分裂规则、高斯培养证据到酵母计数室与真实记录，区分模型预测和观察。',
+    color: '#c1ccaa',
+    tag: '数学模型 · 显微计数 · 调查证据',
+    related: ['bio-population-sampling', 'bio-plant-environment', 'bio-community-interactions'],
+    sources: [
+      {
+        title: 'OpenStax — Population Growth and Regulation',
+        url: 'https://openstax.org/books/concepts-biology/pages/19-2-population-growth-and-regulation',
+      },
+      {
+        title: 'Thermo Fisher — Counting Cells in a Hemocytometer',
+        url: 'https://www.thermofisher.com/be/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/counting-cells-in-a-hemacytometer.html',
+      },
+      {
+        title: 'Bio-Rad — Cell Counting with a Hemocytometer',
+        url: 'https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_6235.pdf',
+      },
+    ],
+    question: '增长曲线的每一个点从哪里来？',
+    number: '350',
+  },
+  {
+    slug: 'chem-periodic-practical',
+    name: '同周期与同主族的实验比较',
+    title: '怎样用实验比较元素性质的递变？',
+    question: '怎样用实验比较元素性质的递变？',
+    description: '从卤素置换到镁与水，再用镁铝氢氧化物的酸碱对照连接同主族与同周期的证据。',
+    color: '#b9bd92',
+    tag: '卤素 · 镁与水 · 两性氢氧化物',
+    related: ['chem-sodium-reactions', 'chem-aluminium-film', 'chem-anion-tests'],
+    sources: [
+      {
+        title: 'RSC Education — aqueous halogens and displacement',
+        url: 'https://edu.rsc.org/experiments/halogens-in-aqueous-solution-and-their-displacement-reactions/733.article',
+      },
+      {
+        title: 'RSC Education — magnesium and water comparison context',
+        url: 'https://edu.rsc.org/exhibition-chemistry/the-reaction-of-magnesium-with-steam/4012602.article',
+      },
+      {
+        title: 'OpenStax — precipitation, solubility and multiple equilibria',
+        url: 'https://openstax.org/books/chemistry/pages/15-3-multiple-equilibria',
+      },
+      {
+        title: '人教版高中化学必修第一册104、109、122页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '349',
+  },
+  {
+    slug: 'bio-meiosis',
+    name: '减数分裂与染色体传递',
+    title: '先分同源，再分姐妹',
+    question: '一次复制、两次分裂，怎样留下各不相同的一套？',
+    description: '追踪同源染色体、非姐妹互换和独立分配，再区分固定装片观察与染色体遗传假说。',
+    color: '#ad9aaf',
+    tag: '生物学',
+    related: ['bio-cell-division', 'bio-mendel-crosses'],
+    sources: [
+      {
+        title: 'NHGRI: meiosis',
+        url: 'https://www.genome.gov/genetics-glossary/Meiosis',
+      },
+      {
+        title: 'NHGRI: crossing over',
+        url: 'https://www.genome.gov/genetics-glossary/Crossing-Over',
+      },
+      {
+        title: 'NHGRI: chromosome theory of heredity',
+        url: 'https://www.genome.gov/25520242/online-education-kit-1902-chromosome-theory-of-heredity',
+      },
+    ],
+    number: '348',
+  },
+  {
+    slug: 'bio-population-sampling',
+    name: '种群调查与取样',
+    title: '只看见一部分，怎样估计整个种群？',
+    description: '让灯诱捕、标记重捕、样方计数和非损伤记录真正发生在固定个体与空间中。',
+    color: '#b1c49b',
+    tag: '真实取样过程 · 个体身份 · 检测偏差',
+    related: ['bio-plant-environment', 'bio-auxin-evidence'],
+    sources: [
+      {
+        title: 'Surveying Moths Using Light Traps: Effects of Weather and Time of Year',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3956935/',
+      },
+      {
+        title: 'USGS — Capture-recapture and removal methods for sampling closed populations',
+        url: 'https://www.usgs.gov/publications/capture-recapture-and-removal-methods-sampling-closed-populations',
+      },
+      {
+        title: 'British Ecological Society — Maths in Ecology',
+        url: 'https://www.britishecologicalsociety.org/learning-and-resources/learning-resources/mathsinecology/',
+      },
+      {
+        title: 'National Park Service — Evolving Research Technologies',
+        url: 'https://home.nps.gov/subjects/bears/evolvingtechnologies.htm',
+      },
+      {
+        title: 'Individuality and Stability in Male Songs of Cao Vit Gibbons',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4008529/',
+      },
+    ],
+    question: '只看见一部分，怎样估计整个种群？',
+    number: '347',
+  },
+  {
+    slug: 'chem-iron-practical',
+    name: '铁及其化合物的实验活动',
+    title: '同一个铁元素，怎样在三种价态间转换？',
+    question: '同一个铁元素，怎样在三种价态间转换？',
+    description: '逐项呈现教材章末实验，用沉积、溶解、褪色和显色证据追踪铁的电子转移与配位变化。',
+    color: '#aeb99b',
+    tag: '章末活动 · 铁价态 · 证据链',
+    related: ['chem-iron-cycle', 'chem-copper-etching', 'chem-iron-hydroxides'],
+    sources: [
+      {
+        title: 'RSC Education — oxidation states of iron',
+        url: 'https://edu.rsc.org/experiments/oxidation-states-of-iron/517.article',
+      },
+      {
+        title: 'University of Delaware — copper etching with ferric ions',
+        url: 'https://research.me.udel.edu/~prasad/papers/2006_JMM_Zhang.pdf',
+      },
+      {
+        title: 'Original Fe(III)-thiocyanate stability-constant study',
+        url: 'https://doi.org/10.1016/j.ica.2017.06.017',
+      },
+      {
+        title: '人教版高中化学必修第一册90页实验活动2',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '346',
+  },
+  {
+    slug: 'chem-food-iron',
+    name: '食品中铁元素的检验',
+    title: '滤液变红之前，每一步做了什么？',
+    question: '滤液变红之前，每一步做了什么？',
+    description: '沿研磨、过滤、氧化和显色追踪可检出的铁，区分样品处理与结论边界。',
+    color: '#a9b88a',
+    tag: '样品处理 · 铁检验 · 证据',
+    related: ['chem-iron-cycle', 'chem-solution-preparation'],
+    sources: [
+      {
+        title: 'NJIT teaching laboratory — extraction and analysis of iron in food',
+        url: 'https://web.njit.edu/~mitra/green_chemistry/EXP_6.htm',
+      },
+      {
+        title: 'RSC Education — oxidation states and thiocyanate test',
+        url: 'https://edu.rsc.org/experiments/oxidation-states-of-iron/517.article',
+      },
+      {
+        title: '人教版高中化学必修第一册76页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '345',
+  },
+  {
+    slug: 'chem-aluminium-film',
+    name: '铝表面的氧化膜与酸碱反应',
+    title: '同样的铝，为什么有时要等一会儿才冒泡？',
+    question: '同样的铝，为什么有时要等一会儿才冒泡？',
+    description: '从表面氧化膜的放大剖面，区分膜的溶解、金属产氢和酸碱中的铝物种。',
+    color: '#bac5b6',
+    tag: '氧化膜 · 铝 · 两性氧化物',
+    related: ['chem-iron-steam', 'chem-electron-transfer'],
+    sources: [
+      {
+        title: 'Original study — dissolution and barrier properties of alumina films',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7801786/',
+      },
+      {
+        title: 'RSC Education — reacting aluminium foil with acid',
+        url: 'https://edu.rsc.org/resources/reacting-aluminium-foil-with-acid/652.article',
+      },
+      {
+        title: '人教版高中化学必修第一册82页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '344',
+  },
+  {
+    slug: 'chem-copper-etching',
+    name: '覆铜板蚀刻与图案保留',
+    title: '覆铜板上的图案为什么能留下来？',
+    question: '覆铜板上的图案为什么能留下来？',
+    description: '从保护层和铜箔剖面追踪腐蚀边界，再用铁、铜的物料守恒解释图案形成。',
+    color: '#bfa27d',
+    tag: '铜箔 · 氧化还原 · 选择性去除',
+    related: ['chem-iron-cycle', 'chem-electron-transfer'],
+    sources: [
+      {
+        title: 'University of Delaware original study — wet etching of copper foil',
+        url: 'https://research.me.udel.edu/~prasad/papers/2006_JMM_Zhang.pdf',
+      },
+      {
+        title: 'Georgia Tech — ferric chloride etching research',
+        url: 'https://hdl.handle.net/1853/43026',
+      },
+      {
+        title: '人教版高中化学必修第一册74—75页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '343',
+  },
+  {
+    slug: 'bio-plant-environment',
+    name: '植物的环境感知',
+    title: '植物怎样把光、温度和重力变成生长信号？',
+    description: '从细胞内光受体、低温经历和年轮，到淀粉体沉降、根茎弯曲及根冠对照实验。',
+    color: '#b7c89d',
+    tag: '光信号 · 春化 · 根冠感知',
+    related: ['bio-auxin-evidence', 'bio-plant-growth-regulators'],
+    sources: [
+      {
+        title: 'Phytochrome- and Gibberellin-Mediated Regulation during Lettuce Germination',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2259076/',
+      },
+      {
+        title: 'VERNALIZATION1 controls developmental responses of winter wheat',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6382010/',
+      },
+      {
+        title: 'Laser ablation of root cap cells: implications for models of graviperception',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/11542616/',
+      },
+      {
+        title: 'Arabidopsis: a model for root and shoot gravitropism',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3243349/',
+      },
+    ],
+    question: '植物怎样把光、温度和重力变成生长信号？',
+    number: '342',
+  },
+  {
+    slug: 'bio-mendel-crosses',
+    name: '孟德尔的豌豆杂交',
+    title: '消失的性状，为什么又出现了',
+    question: '从控制花粉到检验比例，追踪遗传因子怎样传递。',
+    description: '重建单性状与双性状杂交、放回抽样和测交，分开概率预测与教材实测记录。',
+    color: '#a8b68b',
+    tag: '生物学',
+    related: ['bio-cell-division', 'bio-engineered-genomes'],
+    sources: [
+      {
+        title: 'Mendel 1866, Experiments in Plant Hybridization: annotated English translation',
+        url: 'https://cs.brown.edu/people/rblumber/MendelWeb/Mendel.html',
+      },
+      {
+        title: 'Mendel 1866: original publication digitized by the Smithsonian Libraries',
+        url: 'https://library.si.edu/digital-library/book/versucheberpflan00mend',
+      },
+    ],
+    number: '341',
+  },
+  {
+    slug: 'chem-iron-hydroxides',
+    name: '铁的氢氧化物与空气氧化',
+    title: '浅色沉淀为什么会变成红褐色？',
+    question: '浅色沉淀为什么会变成红褐色？',
+    description: '对照两种铁盐与碱的反应，再追踪氧气参与时同一批铁的价态和沉淀变化。',
+    color: '#a8b69a',
+    tag: '沉淀 · 空气氧化 · 对照',
+    related: ['chem-iron-cycle', 'chem-precipitation-paths'],
+    sources: [
+      {
+        title: 'RSC Education — Oxidation states of iron',
+        url: 'https://edu.rsc.org/experiments/oxidation-states-of-iron/517.article',
+      },
+      {
+        title: 'Original study — aerial oxidation products depend on conditions',
+        url: 'https://doi.org/10.1039/DT9860001243',
+      },
+      {
+        title: '人教版高中化学必修第一册71—72页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '340',
+  },
+  {
+    slug: 'bio-cell-fates',
+    name: '细胞的分化、衰老与凋亡',
+    title: '细胞怎样走向不同的命运',
+    question: '培养、核质交换与谱系追踪，各自能回答什么？',
+    description: '从胡萝卜再生到线虫细胞谱系，区分教材比较、原始研究与有条件的结论。',
+    color: '#a5b48b',
+    tag: '生物学',
+    related: ['bio-nuclear-evidence', 'bio-cell-division'],
+    sources: [
+      {
+        title: 'Steward et al. 1958: Organization in cultures grown from freely suspended cells',
+        url: 'https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/j.1537-2197.1958.tb10599.x',
+      },
+      {
+        title: 'Muggleton-Harris and Hayflick 1976: cellular aging in reconstituted cells',
+        url: 'https://www.sciencedirect.com/science/article/pii/001448277690269X',
+      },
+      {
+        title: 'Drescher-Lincoln and Smith 1983: inhibition by senescent cytoplasts',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/6301866/',
+      },
+      {
+        title: 'Sulston and Horvitz 1977: post-embryonic cell lineages',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/838129/',
+      },
+      {
+        title: 'Horvitz laboratory: original publications on programmed cell death',
+        url: 'https://web.mit.edu/horvitz/www/pubtopic.html',
+      },
+    ],
+    number: '339',
+  },
+  {
+    slug: 'chem-iron-steam',
+    name: '铁与水蒸气的反应',
+    title: '铁遇到水蒸气，条件改变了什么？',
+    question: '铁遇到水蒸气，条件改变了什么？',
+    description: '沿湿棉花、红热铁粉与肥皂液追踪气体路径，把黑色固体和可燃气体联系到物料守恒。',
+    color: '#b8c3a4',
+    tag: '水蒸气 · 铁氧化 · 气体证据',
+    related: ['chem-iron-cycle', 'chem-hydrogen-chlorine'],
+    sources: [
+      {
+        title: 'Karlsruhe Institute of Technology — Iron–steam–hydrogen cycle',
+        url: 'https://vbt.ebi.kit.edu/english/28_1127.php',
+      },
+      {
+        title: 'ETH Zürich original study — Steam–iron process',
+        url: 'https://doi.org/10.1039/D3SE01228J',
+      },
+      {
+        title: '人教版高中化学必修第一册70页图3-5',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '338',
+  },
+  {
+    slug: 'bio-plant-growth-regulators',
+    name: '植物生长调节剂的探究',
+    title: '植物变长、生根或成熟，怎样确定处理的作用？',
+    description: '追踪无菌体滤液，逐根记录插条，并用乙烯释放与成熟指标检验处理和对照。',
+    color: '#bccaa4',
+    tag: '滤液证据 · 生根记录 · 水果成熟',
+    related: ['bio-auxin-evidence', 'bio-chemical-signals'],
+    sources: [
+      {
+        title: 'A Century of Gibberellin Research',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4622167/',
+      },
+      {
+        title: 'University of Florida — Common rooting hormones',
+        url: 'https://irrecenvhort.ifas.ufl.edu/Propagation/labs/Module-3-Asexual-propagation-labs/Rooting-hormones/Module3-rooting-hormones-lab-script.pdf',
+      },
+      {
+        title: 'University of Maryland — Ethylene and the Regulation of Fruit Ripening',
+        url: 'https://extension.umd.edu/resource/ethylene-and-regulation-fruit-ripening',
+      },
+    ],
+    question: '植物变长、生根或成熟，怎样确定处理的作用？',
+    number: '337',
+  },
+  {
+    slug: 'chem-iron-cycle',
+    name: '铁离子的显色与转化',
+    title: '红色消失，又回来，铁发生了什么？',
+    question: '红色消失，又回来，铁发生了什么？',
+    description: '把Fe³⁺检验、铁粉还原、清液氧化与配合平衡连接起来，用同一物料衡算解释颜色变化。',
+    color: '#baaa85',
+    tag: '铁离子 · 氧化还原 · 配合平衡',
+    related: [
+      'chem-electron-transfer',
+      'chem-precipitation-paths',
+      'chem-iron-practical',
+      'chem-food-iron',
+    ],
+    sources: [
+      {
+        title:
+          'Inorganica Chimica Acta — Thermodynamic formation constants for iron(III) thiocyanate complexes',
+        url: 'https://doi.org/10.1016/j.ica.2017.06.017',
+      },
+      {
+        title: 'University of Delaware — Formation constant for monothiocyanatoiron(III)',
+        url: 'https://udel.edu/~dougr/Exp5.pdf',
+      },
+      {
+        title: '人教版高中化学必修一72—73页、选择必修一36—37页、选择必修二97页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '336',
+  },
+  {
+    slug: 'bio-cell-division',
+    name: '细胞分裂与固定观察',
+    title: '同一套染色体，怎样分成两份',
+    question: '把活的过程模型与固定装片里的不同细胞分开。',
+    description: '追踪姐妹染色单体，比较细胞大小，并在静止根尖视野中辨认分裂时期。',
+    color: '#b09eac',
+    tag: '生物学',
+    related: ['bio-cell-microscopy', 'bio-nuclear-evidence', 'bio-cell-fates'],
+    sources: [
+      {
+        title: 'Practical Biology: investigating mitosis in a root-tip squash',
+        url: 'https://practicalbiology.org/cells-to-systems/cell-division/investigating-mitosis-in-a-root-tip-squash.html',
+      },
+      {
+        title: 'Science & Plants for Schools: root-tip preparations',
+        url: 'https://www.saps.org.uk/teaching-resources/resources/5915/using-spider-plants-to-prepare-root-tip-squashes/',
+      },
+    ],
+    number: '335',
+  },
+  {
+    slug: 'bio-auxin-evidence',
+    name: '生长素的证据链',
+    title: '植物弯向光，怎样一步步找到原因？',
+    description: '从感光部位、琼脂传递和偏置来源，到剂量比较与运输设计，逐步区分观察和推断。',
+    color: '#b6c99e',
+    tag: '向光性 · 历史对照 · 生长素',
+    related: ['bio-chemical-signals', 'bio-endocrine-evidence'],
+    sources: [
+      {
+        title: 'Darwin — The Power of Movement in Plants',
+        url: 'https://darwin-online.org.uk/converted/published/1880_Movement_F1325/1880_Movement_F1324.html',
+      },
+      {
+        title:
+          'Boysen-Jensen (1913) — Über die Leitung des phototropischen Reizes in der Avenakoleoptile',
+        url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1438-8677.1913.tb06990.x',
+      },
+      {
+        title: 'Briggs — Phototropism: Some History, Some Puzzles, and a Look Ahead',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3875795/',
+      },
+      {
+        title: 'Polar Auxin Transport and Asymmetric Auxin Distribution',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3243298/',
+      },
+    ],
+    question: '植物弯向光，怎样一步步找到原因？',
+    number: '334',
+  },
+  {
+    slug: 'bio-photosynthesis-evidence',
+    name: '光合作用的证据链',
+    title: '从细菌聚集到叶片上浮',
+    question: '每一种证据，究竟能回答光合作用的哪一个问题？',
+    description: '追踪放氧位置、同位素来源、能量载体与叶片浮力，区分研究结论和学生探究。',
+    color: '#a4b97b',
+    tag: '生物学',
+    related: ['bio-leaf-pigments', 'bio-respiration'],
+    sources: [
+      {
+        title: 'Hill (1937): oxygen evolved by isolated chloroplasts',
+        url: 'https://www.nature.com/articles/139881a0',
+      },
+      {
+        title: 'Ruben, Randall, Kamen and Hyde (1941): heavy oxygen tracing',
+        url: 'https://doi.org/10.1021/ja01848a512',
+      },
+      {
+        title: 'Arnon, Whatley and Allen (1954): photosynthetic phosphorylation',
+        url: 'https://pubs.acs.org/doi/abs/10.1021/ja01653a025',
+      },
+      {
+        title: 'Calvin: The Path of Carbon in Photosynthesis, Nobel lecture',
+        url: 'https://escholarship.org/uc/item/70q925dw',
+      },
+      {
+        title: 'Science & Plants for Schools: investigating photosynthesis with leaf discs',
+        url: 'https://www.saps.org.uk/teaching-resources/resources/284/student-sheet-3-investigating-photosynthesis-with-leaf-discs/',
+      },
+      {
+        title: 'University of Hamburg: historical Engelmann material and algae distinction',
+        url: 'https://www-archiv.fdm.uni-hamburg.de/b-online/d24/24.htm',
+      },
+    ],
+    number: '333',
+  },
+  {
+    slug: 'chem-hydrogen-chlorine',
+    name: '氢气在氯气中燃烧',
+    title: '燃烧一定需要氧气吗？',
+    question: '燃烧一定需要氧气吗？',
+    description: '观察苍白色火焰，区分无色HCl气体与湿空气中的酸雾，再追踪H₂和Cl₂的原子重组。',
+    color: '#bbc6a5',
+    tag: '燃烧 · 氯化氢 · 白雾',
+    related: ['chem-chlorine-discovery', 'chem-electron-transfer'],
+    sources: [
+      {
+        title: 'University of Wisconsin–Madison — Reaction of chlorine with hydrogen',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Inorganic/pages/Group67/chlorine_and_hydrogen.htm',
+      },
+      {
+        title: 'NIST Chemistry WebBook — Hydrogen chloride gas thermochemistry',
+        url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C7647010&Mask=1',
+      },
+      {
+        title: '人教版高中化学必修第一册45页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '332',
+  },
+  {
+    slug: 'chem-chlorine-discovery',
+    name: '氯气：发现、收集与尾气',
+    title: '获得一种气体，与解释它是什么有何不同？',
+    question: '获得一种气体，与解释它是什么有何不同？',
+    description: '区分舍勒的观察与戴维的元素判断，再沿连续导管追踪发生、收集和尾气吸收。',
+    color: '#bbc6a3',
+    tag: '化学史 · 气体装置 · 尾气',
+    related: ['chem-chlorine-bleaching', 'chem-anion-tests'],
+    sources: [
+      {
+        title: 'Royal Society of Chemistry — Chlorine, history and properties',
+        url: 'https://periodic-table.rsc.org/element/17/chlorine',
+      },
+      {
+        title: '人教版高中化学必修第一册44、47—49页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '331',
+  },
+  {
+    slug: 'bio-leaf-pigments',
+    name: '叶片的色带与光谱',
+    title: '绿色叶片里，藏着哪些颜色',
+    question: '分离色素，再比较不同波长如何穿过它们。',
+    description: '从研磨提取到四条色带，使用真实光谱数据区分吸收和透过。',
+    color: '#9fab75',
+    tag: '生物学',
+    related: ['bio-food-tests', 'bio-cell-microscopy', 'bio-photosynthesis-evidence'],
+    sources: [
+      {
+        title: 'Royal Society of Chemistry: leaf chromatography',
+        url: 'https://edu.rsc.org/mixtures-and-separation/leaf-chromatography/389.article',
+      },
+      {
+        title: 'PhotochemCAD: chlorophyll a in diethyl ether',
+        url: 'https://omlc.org/spectra/PhotochemCAD/html/123.html',
+      },
+      {
+        title: 'PhotochemCAD: chlorophyll b in diethyl ether',
+        url: 'https://omlc.org/spectra/PhotochemCAD/html/125.html',
+      },
+      {
+        title: 'PhotochemCAD: beta-carotene in hexane',
+        url: 'https://omlc.org/spectra/PhotochemCAD/html/041.html',
+      },
+    ],
+    number: '330',
+  },
+  {
+    slug: 'chem-chlorine-photolysis',
+    name: '氯水光照的三路证据',
+    title: '三条曲线，怎样指向同一个反应？',
+    question: '三条曲线，怎样指向同一个反应？',
+    description: '追踪pH、氯离子和气相氧气三路传感器，把光照中的协同变化连接到次氯酸分解。',
+    color: '#b6c4a1',
+    tag: '数字实验 · 传感器 · 守恒',
+    related: ['chem-chlorine-bleaching', 'chem-anion-tests', 'chem-methane-substitution'],
+    sources: [
+      {
+        title:
+          'JACS Au — Hypochlorous acid photodecomposition, equation 8 and supporting Figure S24',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10207101/',
+      },
+      {
+        title: 'Water Research — Wavelength-dependent chlorine photolysis',
+        url: 'https://doi.org/10.1016/j.watres.2018.06.018',
+      },
+      {
+        title: '人教版高中化学必修第一册48页图2-16',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '329',
+  },
+  {
+    slug: 'bio-immune-pathways',
+    name: '免疫路径与证据',
+    title: '认出一种标记，怎样连到一条免疫路径？',
+    description: '区分脑膜淋巴管的结构与运输证据，再追踪抗原呈递、克隆扩增、抗体和感染细胞。',
+    color: '#b1c69f',
+    tag: '标记身份 · 抗原匹配 · 免疫记忆',
+    related: ['bio-neural-evidence', 'bio-chemical-signals', 'bio-protein-machines'],
+    sources: [
+      {
+        title:
+          'Louveau et al. (2015) — Structural and functional features of central nervous system lymphatic vessels',
+        url: 'https://www.nature.com/articles/nature14432',
+      },
+      {
+        title: 'OpenStax — Adaptive Immune Response',
+        url: 'https://openstax.org/books/biology-2e/pages/42-2-adaptive-immune-response',
+      },
+    ],
+    question: '认出一种标记，怎样连到一条免疫路径？',
+    number: '328',
+  },
+  {
+    slug: 'chem-chlorine-bleaching',
+    name: '干湿对照与氯气漂白',
+    title: '同样的氯气，为什么纸条表现不同？',
+    question: '同样的氯气，为什么纸条表现不同？',
+    description: '比较干燥纸条、湿润纸条和鲜花，识别水在教材漂白实验中的作用。',
+    color: '#bbc8a5',
+    tag: '对照实验 · 次氯酸 · 氧化',
+    related: [
+      'chem-anion-tests',
+      'chem-precipitation-paths',
+      'chem-chlorine-photolysis',
+      'chem-sulfur-dioxide',
+    ],
+    sources: [
+      {
+        title: 'Royal Society of Chemistry — Reactions of chlorine with water or halide ions',
+        url: 'https://edu.rsc.org/experiments/reactions-of-chlorine-with-water-or-halide-ions/530.article',
+      },
+      {
+        title: 'JACS Au — Hypochlorous acid generation and bleaching observations',
+        url: 'https://pubs.acs.org/doi/abs/10.1021/jacsau.3c00066',
+      },
+      {
+        title: '人教版高中化学必修第一册46—47页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '327',
+  },
+  {
+    slug: 'bio-respiration',
+    name: '呼吸的气路与碳路径',
+    title: '酵母呼吸，气体从哪里来',
+    question: '把培养装置与细胞内的物质去向连接起来。',
+    description: '追踪气路、产物检测与六个碳，同时理解ATP的能量耦合。',
+    color: '#adb995',
+    tag: '生物学',
+    related: ['bio-enzyme-investigations', 'bio-cellular-logistics'],
+    sources: [
+      {
+        title: 'NCBI Bookshelf: metabolic energy',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK9903/',
+      },
+      {
+        title: 'OpenStax: fermentation',
+        url: 'https://openstax.org/books/microbiology/pages/8-4-fermentation',
+      },
+    ],
+    number: '326',
+  },
+  {
+    slug: 'chem-solution-preparation',
+    name: '容量瓶与定量配液',
+    title: '洗涤和定容，分别控制了什么？',
+    question: '洗涤和定容，分别控制了什么？',
+    description: '追踪称量、溶解、转移、洗涤、定容和稀释，把溶质量与最终体积连接到浓度。',
+    color: '#b0c3a8',
+    tag: '物质的量 · 容量瓶 · 稀释',
+    related: ['chem-ionic-conduction', 'chem-anion-tests', 'bio-buffer-comparison'],
+    sources: [
+      {
+        title: 'University of Wisconsin–Madison — Dissolving a solute',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/lab/labdocs/modules/volflask/volflaskdisol.htm',
+      },
+      {
+        title: 'University of Wisconsin–Madison — Filling a volumetric flask',
+        url: 'https://www2.chem.wisc.edu/deptfiles/genchem/lab/labdocs/modules/volflask/volflaskfill.htm',
+      },
+      {
+        title: 'NIST — Volumetric calibrations and meniscus reading',
+        url: 'https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.7383-2019.pdf',
+      },
+      {
+        title: '人教版高中化学必修第一册59、65—66页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '325',
+  },
+  {
+    slug: 'bio-enzyme-investigations',
+    name: '酶的证据与条件',
+    title: '同一反应，为什么有的更快',
+    question: '如何用对照区分催化、专一性与酶的失活？',
+    description: '从金属笼中的肉块到四支反应管，分开速率、检测与证据边界。',
+    color: '#aab28a',
+    tag: '生物学',
+    related: ['bio-food-tests', 'bio-protein-machines', 'bio-respiration'],
+    sources: [
+      {
+        title: 'Eduard Buchner: Nobel lecture',
+        url: 'https://www.nobelprize.org/prizes/chemistry/1907/buchner/lecture/',
+      },
+      {
+        title: 'James Sumner: Nobel lecture',
+        url: 'https://www.nobelprize.org/prizes/chemistry/1946/sumner/lecture/',
+      },
+      {
+        title: 'Practical Biology: investigating catalase and hydrogen peroxide',
+        url: 'https://practicalbiology.org/bio-molecules/factors-affecting-enzyme-activity/investigating-an-enzyme-controlled-reaction-catalase-and-hydrogen-peroxide-concentration.html',
+      },
+    ],
+    number: '324',
+  },
+  {
+    slug: 'bio-neural-evidence',
+    name: '神经研究与病例证据',
+    title: '一次反应、一次刺激、一个病例，各能说明什么？',
+    description: '分别组织条件学习、运动皮层定位和语言病例的观察，让干预与推断保持边界。',
+    color: '#b7b9a1',
+    tag: '条件学习 · 皮层定位 · 病例',
+    related: ['bio-nerve-signals', 'bio-chemical-signals'],
+    sources: [
+      {
+        title: 'Pavlov — Nobel Lecture',
+        url: 'https://www.nobelprize.org/prizes/medicine/1904/pavlov/lecture/',
+      },
+      {
+        title: 'Neuroscience — Functional Organization of the Primary Motor Cortex',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK11095/',
+      },
+      {
+        title: 'Neuroscience — Aphasias',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK10972/',
+      },
+    ],
+    question: '一次反应、一次刺激、一个病例，各能说明什么？',
+    number: '323',
+  },
+  {
+    slug: 'chem-anion-tests',
+    name: '阴离子的两步证据',
+    title: '出现白色沉淀，就足以认出阴离子吗？',
+    question: '出现白色沉淀，就足以认出阴离子吗？',
+    description: '并排比较氯化物、硫酸盐和碳酸盐，追踪加试剂、加酸两步形成的证据。',
+    color: '#b1c2ac',
+    tag: '定性分析 · 沉淀 · 对照',
+    related: [
+      'chem-precipitation-paths',
+      'chem-ionic-conduction',
+      'chem-solution-preparation',
+      'chem-chlorine-bleaching',
+    ],
+    sources: [
+      {
+        title: 'Truman State University — Inorganic qualitative analysis',
+        url: 'https://chemlab.truman.edu/chemical-principles/inorganic-quantitative-analysis/',
+      },
+      {
+        title: 'Royal Society of Chemistry — Testing salts for anions and cations',
+        url: 'https://edu.rsc.org/experiments/testing-salts-for-anions-and-cations/464.article',
+      },
+      {
+        title: '人教版高中化学必修第一册49页、第二册6页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '322',
+  },
+  {
+    slug: 'chem-precipitation-paths',
+    name: '沉淀的生成、溶解与转化',
+    title: '沉淀出现以后，离子去了哪里？',
+    question: '沉淀出现以后，离子去了哪里？',
+    description:
+      '追踪硫酸钡与旁观离子，比较酸和水对氢氧化镁的作用，再沿教材观察银盐和氢氧化物的转化。',
+    color: '#b7c6a5',
+    tag: '离子反应 · 沉淀 · 溶解平衡',
+    related: ['chem-ionic-conduction', 'chem-carbonate-comparison', 'chem-anion-tests'],
+    sources: [
+      {
+        title: 'UMass Chemistry — Solubility product table',
+        url: 'https://owl.oit.umass.edu/departments/Chemistry/appendix/ksp.html',
+      },
+      {
+        title: 'UMass Chemistry — Common-ion effect, barium sulfate benchmark',
+        url: 'https://genchem.chem.umass.edu/whelan/Lectures_Chem_112/Spring_2019/Lecture_18.pdf',
+      },
+      {
+        title: 'OpenStax Chemistry 2e — Precipitation and dissolution',
+        url: 'https://openstax.org/books/chemistry-2e/pages/15-1-precipitation-and-dissolution',
+      },
+      {
+        title: '人教版高中化学必修一17页、选必一82—83页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '321',
+  },
+  {
+    slug: 'bio-nuclear-evidence',
+    name: '细胞核的七组证据',
+    title: '换一个细胞核，会改变什么',
+    question: '核、细胞质与发育环境，各自留下什么证据？',
+    description: '比较核移植、横缢、去核恢复与伞藻再生，追踪细胞核的来源和作用。',
+    color: '#aaa086',
+    tag: '生物学',
+    related: ['bio-cellular-logistics', 'bio-engineered-genomes'],
+    sources: [
+      {
+        title: 'Gurdon (1962): developmental capacity of tadpole intestinal nuclei',
+        url: 'https://journals.biologists.com/dev/article-pdf/10/4/622/2653611/develop_10_4_622.pdf',
+      },
+      {
+        title: 'Liu et al. (2018): cloning macaque monkeys by somatic cell nuclear transfer',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/29395327/',
+      },
+      {
+        title: 'Hämmerling (1953): nucleo-cytoplasmic relationships in Acetabularia',
+        url: 'https://www.sciencedirect.com/science/chapter/bookseries/pii/S0074769608610426',
+      },
+      {
+        title: 'Hans Spemann: Nobel lecture',
+        url: 'https://www.nobelprize.org/prizes/medicine/1935/spemann/lecture/',
+      },
+      {
+        title: 'Nobel Committee: developmental reprogramming evidence',
+        url: 'https://www.nobelprize.org/prizes/medicine/2012/advanced-information/',
+      },
+    ],
+    number: '320',
+  },
+  {
+    slug: 'bio-endocrine-evidence',
+    name: '激素研究的对照证据',
+    title: '拿走一种信号，再补回来，能说明什么？',
+    question: '拿走一种信号，再补回来，能说明什么？',
+    description: '区分胰岛素供体与受体、摘除与移植、兔胚胎观察与预测，再检验血糖和甲状腺反馈。',
+    color: '#bbbc9e',
+    tag: '减法与加法 · 内分泌反馈',
+    related: ['bio-chemical-signals', 'diffusion'],
+    sources: [
+      {
+        title: 'Banting — Nobel Lecture',
+        url: 'https://www.nobelprize.org/prizes/medicine/1923/banting/lecture/',
+      },
+      {
+        title: 'Endotext — Sexual Differentiation',
+        url: 'https://www.ncbi.nlm.nih.gov/books/NBK279001/',
+      },
+      {
+        title: 'OpenStax — Regulation of Body Processes',
+        url: 'https://openstax.org/books/biology-2e/pages/37-3-regulation-of-body-processes',
+      },
+    ],
+    number: '319',
+  },
+  {
+    slug: 'bio-body-fluid-balance',
+    name: '体液交换与稳态记录',
+    title: '环境不断变化，细胞如何仍生活在稳定范围？',
+    question: '环境不断变化，细胞如何仍生活在稳定范围？',
+    description: '在体液路径中核对示踪量，编辑家庭体温调查记录，再比较热量、水和钠的反馈收支。',
+    color: '#b4c7a2',
+    tag: '体液联系 · 调查记录 · 稳态',
+    related: ['osmosis', 'diffusion', 'bio-buffer-comparison'],
+    sources: [
+      {
+        title: 'OpenStax — Body Fluids and Fluid Compartments',
+        url: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/26-1-body-fluids-and-fluid-compartments',
+      },
+      {
+        title: 'OpenStax — Homeostasis',
+        url: 'https://openstax.org/books/biology-2e/pages/33-3-homeostasis',
+      },
+      {
+        title: 'OpenStax — Regulation of Body Processes',
+        url: 'https://openstax.org/books/biology-2e/pages/37-3-regulation-of-body-processes',
+      },
+    ],
+    number: '318',
+  },
+  {
+    slug: 'bio-engineered-genomes',
+    name: '合成基因组与活细胞',
+    title: '改写遗传系统，还需要什么',
+    question: '一段DNA，等于一个生命吗？',
+    description: '对比细菌合成基因组与单染色体酵母，区分DNA装配、染色体重排和活性检验。',
+    color: '#a6ad8c',
+    tag: '生物学',
+    related: ['bio-protein-machines', 'bio-cellular-logistics'],
+    sources: [
+      {
+        title:
+          'Gibson et al. (2010): a bacterial cell controlled by a chemically synthesized genome',
+        url: 'https://doi.org/10.1126/science.1190719',
+      },
+      {
+        title: 'Shao et al. (2018): creating a functional single-chromosome yeast',
+        url: 'https://www.nature.com/articles/s41586-018-0382-x',
+      },
+    ],
+    number: '317',
+  },
+  {
+    slug: 'chem-electron-transfer',
+    name: '电子得失与电子对偏移',
+    title: '氧化数改变，一定是完整电子离开了吗？',
+    question: '氧化数改变，一定是完整电子离开了吗？',
+    description: '用钠氯与氢氯的对照，区分离子形成、共用电子对偏移以及氧化数的形式记账。',
+    color: '#b5c6a5',
+    tag: '氧化还原 · 电子归属 · 极性',
+    related: [
+      'chem-ionic-conduction',
+      'electrolysis',
+      'chem-sodium-reactions',
+      'chem-galvanic-cells',
+      'chem-reaction-rates',
+    ],
+    sources: [
+      {
+        title: 'IUPAC Gold Book — Oxidation state',
+        url: 'https://goldbook.iupac.org/terms/view/O04365',
+      },
+      {
+        title: 'IUPAC — Comprehensive definition of oxidation state',
+        url: 'https://iupac.org/recommendation/comprehensive-definition-of-oxidation-state/',
+      },
+      {
+        title: '人教版高中化学必修第一册，23—24页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '316',
+  },
+  {
+    slug: 'bio-cellular-logistics',
+    name: '细胞里的分泌路线',
+    title: '跟着同一批标记蛋白走',
+    question: '蛋白质怎样离开制造它的细胞？',
+    description: '以脉冲示踪重建内质网、高尔基体、囊泡与细胞膜之间的连续路线。',
+    color: '#a4ac82',
+    tag: '生物学',
+    related: ['bio-nuclear-evidence'],
+    sources: [
+      {
+        title: 'Jamieson and Palade (1967): intracellular transport of secretory proteins',
+        url: 'https://rupress.org/jcb/article-abstract/34/2/577/16998/INTRACELLULAR-TRANSPORT-OF-SECRETORY-PROTEINS-IN?redirectedFrom=PDF',
+      },
+      {
+        title: 'Jamieson and Palade: original paper hosted by Rockefeller University',
+        url: 'https://shahamlab.rockefeller.edu/ET_readings/JamiesonPalade1967.pdf',
+      },
+    ],
+    number: '315',
+  },
+  {
+    slug: 'chem-flame-spectra',
+    name: '焰色与原子光谱',
+    title: '一团颜色里，藏着哪些原子信息？',
+    question: '一团颜色里，藏着哪些原子信息？',
+    description: '从钠钾焰色和钴玻璃的作用，进入能级跃迁以及锂、氦、汞的选取发射与吸收谱线。',
+    color: '#a9b7b3',
+    tag: '焰色 · 能级 · 原子光谱',
+    related: ['atomic-spectrum-lab', 'prism-dispersion'],
+    sources: [
+      {
+        title: 'RSC Education — Flame tests using metal salts',
+        url: 'https://edu.rsc.org/resources/flame-tests-using-metal-salts/1875.article',
+      },
+      {
+        title: 'NIST — Sodium strong lines',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm',
+      },
+      {
+        title: 'NIST — Potassium strong lines',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/potassiumtable2.htm',
+      },
+      {
+        title: 'NIST — Lithium strong lines',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/lithiumtable2.htm',
+      },
+      {
+        title: 'NIST — Helium strong lines',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable2.htm',
+      },
+      {
+        title: 'NIST — Mercury strong lines',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/mercurytable2.htm',
+      },
+      {
+        title: '人教版高中化学必修一40页、选必二7—8页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '314',
+  },
+  {
+    slug: 'bio-protein-machines',
+    name: '从肽键到胰岛素',
+    title: '顺序相同，还要连接正确',
+    question: '一堆氨基酸为什么不是一个蛋白质？',
+    description: '从脱水缩合计数，到实测牛胰岛素骨架，观察序列、肽链与二硫键。',
+    color: '#8da18d',
+    tag: '生物学',
+    related: ['bio-food-tests', 'bio-engineered-genomes', 'bio-immune-pathways'],
+    sources: [
+      {
+        title: 'RCSB PDB 2A3G: experimentally determined T6 bovine insulin',
+        url: 'https://www.rcsb.org/structure/2A3G',
+      },
+      {
+        title: 'RCSB PDB-101: insulin structure and disulfide connections',
+        url: 'https://pdb101.rcsb.org/learn/paper-models/insulin-activity-page',
+      },
+    ],
+    number: '313',
+  },
+  {
+    slug: 'chem-sodium-reactions',
+    name: '钠与过氧化钠的证据链',
+    title: '同样含钠，遇到空气和水会怎样？',
+    question: '同样含钠，遇到空气和水会怎样？',
+    description:
+      '从钠的新切面、受热氧化、水中反应到过氧化钠放氧，分别追踪可见证据，并比较教材中的钾演示。',
+    color: '#c1c7a3',
+    tag: '金属 · 氧化 · 气体检验',
+    related: [
+      'chem-carbonate-comparison',
+      'chem-ionic-conduction',
+      'chem-electron-transfer',
+      'chem-sodium-alcohol',
+    ],
+    sources: [
+      {
+        title: 'RSC — Sodium: element information',
+        url: 'https://periodic-table.rsc.org/element/11/Sodium',
+      },
+      {
+        title: 'RSC Education — Alkali metals and water',
+        url: 'https://edu.rsc.org/lesson-plans/how-do-alkali-metals-react-with-water-14-16-years/89.article',
+      },
+      {
+        title: 'ACS Journal of Chemical Education — Sodium peroxide and water demonstration',
+        url: 'https://pubs.acs.org/doi/10.1021/acs.jchemed.4c00375',
+      },
+      {
+        title: 'NIH PubChem — Sodium peroxide',
+        url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-peroxide',
+      },
+      {
+        title: '人教版高中化学必修第一册，34—37、100页',
+        url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'RSC — Potassium: density and properties',
+        url: 'https://periodic-table.rsc.org/element/19/potassium',
+      },
+    ],
+    number: '312',
+  },
+  {
+    slug: 'bio-osmosis',
+    name: '细胞怎样吸水',
+    title: '从一滴墨水，到细胞膜两侧',
+    question: '水一直在动，为什么液面会停？',
+    description: '比较扩散、漏斗渗透、红细胞、质壁分离和水通道，追踪守恒的物质。',
+    color: '#8aa197',
+    tag: '生物学',
+    related: ['bio-membrane-evidence', 'osmosis'],
+    sources: [
+      {
+        title: 'OpenStax Biology 2e: passive transport',
+        url: 'https://openstax.org/books/biology-2e/pages/5-2-passive-transport',
+      },
+      {
+        title: 'Preston et al. (1992): water channels in Xenopus oocytes expressing CHIP28',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/1373524/',
+      },
+      {
+        title: 'Royal Swedish Academy: advanced information for the 2003 chemistry prize',
+        url: 'https://www.nobelprize.org/uploads/2018/06/advanced-chemistryprize2003-1.pdf',
+      },
+    ],
+    number: '311',
+  },
+  {
+    slug: 'chem-carbonate-comparison',
+    name: '两种碳酸盐的对照',
+    title: '碳酸钠和碳酸氢钠，怎样用证据区分？',
+    question: '碳酸钠和碳酸氢钠，怎样用证据区分？',
+    description:
+      '沿教材顺序比较遇水温度、溶解、酚酞显色和受热分解，追踪二氧化碳通向石灰水，并核对固体与逸出物的质量。',
+    color: '#c5c9a2',
+    tag: '水合 · 碱性 · 热分解',
+    related: ['chem-ionic-conduction', 'latent-heat', 'chem-sodium-reactions'],
+    sources: [
+      {
+        title: 'ACS — Temperature Changes in Dissolving',
+        url: 'https://www.acs.org/middleschoolchemistry/lessonplans/chapter5/lesson9.html',
+      },
+      {
+        title: 'College of Alameda — Thermal Decomposition of Sodium Bicarbonate',
+        url: 'https://alameda.edu/hubfs/Chem-1A-Exp.-7-Decomposition-of-Sodium-Carbonate.pdf',
+      },
+      {
+        title: 'NIH PubChem — Sodium bicarbonate, solubility',
+        url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-bicarbonate',
+      },
+      {
+        title: 'NIH PubChem — Sodium carbonate, solubility',
+        url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-carbonate',
+      },
+      {
+        title: '人教版高中化学必修第一册，38—39页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '310',
+  },
+  {
+    slug: 'bio-membrane-evidence',
+    name: '细胞膜的证据链',
+    title: '一层膜，怎样被逐步认识',
+    question: '看见暗纹，就知道膜的成分了吗？',
+    description: '从通透性、脂质铺展到细胞融合，区分直接观察、推断与结构模型。',
+    color: '#81996e',
+    tag: '生物学',
+    related: ['bio-cell-microscopy', 'bio-osmosis'],
+    sources: [
+      {
+        title: 'Gorter and Grendel (1925): bimolecular lipid layers',
+        url: 'https://rupress.org/jem/article-abstract/41/4/439/26091/ON-BIMOLECULAR-LAYERS-OF-LIPOIDS-ON-THE?redirectedFrom=PDF',
+      },
+      {
+        title: 'Frye and Edidin (1970): intermixing cell-surface antigens',
+        url: 'https://journals.biologists.com/jcs/article-abstract/7/2/319/59409/The-rapid-intermixing-of-cell-surface-antigens?redirectedFrom=PDF',
+      },
+      {
+        title: 'Singer and Nicolson (1972): the fluid mosaic model',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/4333397/',
+      },
+      {
+        title: 'Danielli and Davson (1935): permeability of thin films',
+        url: 'https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcp.1030050409',
+      },
+    ],
+    number: '309',
+  },
+  {
+    slug: 'bio-chemical-signals',
+    name: '可转移的化学信号',
+    title: '神经没有接通，另一颗心为什么也慢了？',
+    question: '神经没有接通，另一颗心为什么也慢了？',
+    description: '追踪蛙心营养液中的同一份示踪物，并用促胰液素实验区分神经路径与血液路径。',
+    color: '#c6b09a',
+    tag: '营养液转移 · 化学信使',
+    related: ['diffusion', 'osmosis', 'bio-endocrine-evidence'],
+    sources: [
+      {
+        title: 'Otto Loewi — Nobel Lecture',
+        url: 'https://www.nobelprize.org/prizes/medicine/1936/loewi/lecture/',
+      },
+      {
+        title: 'Bayliss and Starling (1902) — The mechanism of pancreatic secretion',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1540572/',
+      },
+    ],
+    number: '308',
+  },
+  {
+    slug: 'bio-nerve-signals',
+    name: '神经信号的实验线索',
+    title: '电表的两次偏转，怎样连到神经之间的传递？',
+    question: '电表的两次偏转，怎样连到神经之间的传递？',
+    description: '从两个表面电极追踪同一束兴奋，再观察膜电位、突触释放和生物电历史对照。',
+    color: '#9ab3c0',
+    tag: '差分电位 · 突触 · 实验解释',
+    related: ['rc-circuit', 'diffusion', 'bio-neural-evidence'],
+    sources: [
+      {
+        title: 'OpenStax — How Neurons Communicate',
+        url: 'https://openstax.org/books/biology-2e/pages/35-2-how-neurons-communicate',
+      },
+      {
+        title: 'Nobel Prize — Nerve Signaling',
+        url: 'https://educationalgames.nobelprize.org/educational/medicine/nerve_signaling/overview/index.php',
+      },
+    ],
+    number: '307',
+  },
+  {
+    slug: 'bio-buffer-comparison',
+    name: '内环境的缓冲实验',
+    title: '同样加入酸，三份样液为何变化不同？',
+    question: '同样加入酸，三份样液为何变化不同？',
+    description: '用相同滴加量比较水、磷酸盐与生物材料的模型曲线，追踪缓冲对的转化和有限容量。',
+    color: '#9ab49b',
+    tag: '酸碱扰动 · 缓冲容量',
+    related: ['osmosis', 'diffusion', 'bio-body-fluid-balance', 'chem-solution-preparation'],
+    sources: [
+      {
+        title: 'OpenStax — Buffers',
+        url: 'https://openstax.org/books/chemistry-2e/pages/14-6-buffers',
+      },
+    ],
+    number: '306',
+  },
+  {
+    slug: 'chem-ionic-conduction',
+    name: '电解质与电流',
+    title: '有离子，为什么不一定能导电？',
+    question: '有离子，为什么不一定能导电？',
+    description: '比较干燥盐、蒸馏水与两种盐溶液，追踪晶格离子的解离、定向移动和检测阈值。',
+    color: '#b9c9a6',
+    tag: '电离 · 离子移动 · 导电',
+    related: ['electrolysis', 'resistivity-lab', 'chem-electron-transfer'],
+    sources: [
+      {
+        title: 'OpenStax Chemistry 2e — Electrolytes',
+        url: 'https://openstax.org/books/chemistry-2e/pages/11-2-electrolytes',
+      },
+      {
+        title: 'UMass Environmental Engineering — Conductivity, Table 18.3',
+        url: 'https://www.ecs.umass.edu/cee/reckhow/courses/572/572bk18/572BK18.html',
+      },
+      {
+        title: 'USGS — Specific Conductance',
+        url: 'https://www.usgs.gov/publications/chapter-a63-specific-conductance',
+      },
+      {
+        title: '人教版高中化学必修第一册，14—16页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '305',
+  },
+  {
+    slug: 'chem-colloid-light',
+    name: '胶体中的光路',
+    title: '为什么胶体会显出一条光路？',
+    question: '为什么胶体会显出一条光路？',
+    description:
+      '并排观察氯化钠溶液和氢氧化铁胶体，从侧向散射理解丁达尔效应，再用小颗粒模型探索浓度和波长。',
+    color: '#9fbbac',
+    tag: '胶体 · 散射 · 光路',
+    related: ['rayleigh-scattering'],
+    sources: [
+      {
+        title: 'OpenStax Chemistry 2e — Colloids',
+        url: 'https://openstax.org/books/chemistry-2e/pages/11-5-colloids',
+      },
+      {
+        title: 'NIST SCATMECH — RayleighScatterer',
+        url: 'https://pages.nist.gov/SCATMECH/docs/rayscat.htm',
+      },
+      {
+        title: '人教版高中化学必修第一册，实验1-1，9页',
+        url: 'https://jc.pep.com.cn/',
+      },
+    ],
+    number: '304',
+  },
+  {
+    slug: 'bio-food-tests',
+    name: '食物中的三种证据',
+    title: '让试剂留下可比较的证据',
+    question: '同样是变色，分别检测什么？',
+    description: '比较斐林、苏丹Ⅲ与双缩脲检测，保留空白对照和真实操作条件。',
+    color: '#b39360',
+    tag: '生物学',
+    related: ['bio-enzyme-investigations', 'bio-protein-machines'],
+    sources: [
+      {
+        title: 'National Institute of Education: Biology Practical Handbook, Practical 1',
+        url: 'https://nie.lk/pdffiles/other/eALOM%20Biology%20Practical%20Handbook.pdf',
+      },
+    ],
+    number: '303',
+  },
+  {
+    slug: 'bio-cell-microscopy',
+    name: '显微镜中的细胞',
+    title: '从一个小室，到流动的细胞质',
+    question: '放大以后，究竟看见了什么？',
+    description: '保持细胞的真实尺度，先定位再放大，追踪同一个叶绿体。',
+    color: '#719870',
+    tag: '生物学',
+    related: ['microscope', 'bio-membrane-evidence'],
+    sources: [
+      {
+        title: 'Florida State University: microscopy field number and magnification',
+        url: 'https://micro.magnet.fsu.edu/primer/faq.html',
+      },
+      {
+        title: 'Nikon MicroscopyU: calibrated micrometry',
+        url: 'https://www.microscopyu.com/microscopy-basics/linear-measurements-micrometry',
+      },
+    ],
+    number: '302',
+  },
+  {
     slug: 'singing-basin',
     name: '摩擦铜盆的振动与水花',
     title: '慢慢摩擦盆耳，为什么会出现水花？',
@@ -1624,7 +5404,12 @@ export const topics: Topic[] = [
     description: '从食盐焰色、氢线光谱和太阳暗线，走到精密测量发现的能级差。',
     color: '#aebfa8',
     tag: '近代物理',
-    related: ['photoelectric-lab', 'prism-dispersion', 'cosmology-observations'],
+    related: [
+      'photoelectric-lab',
+      'prism-dispersion',
+      'cosmology-observations',
+      'chem-flame-spectra',
+    ],
     sources: [
       {
         title: 'NIST — Strong lines of sodium',
@@ -2448,7 +6233,7 @@ export const topics: Topic[] = [
     description: '沿 PEM 电解槽分追质子与外部电子，把电荷、产气比例、输入电能和有限水量逐项对齐。',
     color: '#a5bca9',
     tag: '电化学',
-    related: ['fuel-cell', 'rc-circuit', 'diode-junction'],
+    related: ['fuel-cell', 'rc-circuit', 'diode-junction', 'chem-ionic-conduction'],
     sources: [
       {
         title: 'DOE: Hydrogen Production — Electrolysis',
@@ -3698,7 +7483,7 @@ export const topics: Topic[] = [
       '逐波长核对直达与散射收支，比较四次方选择、角分布与长路径，再把整段光谱和视觉响应连接。',
     tag: '光谱与散射',
     color: '#6d8fa7',
-    related: ['rainbow', 'polarization', 'prism-dispersion'],
+    related: ['rainbow', 'polarization', 'prism-dispersion', 'chem-colloid-light'],
     sources: [
       {
         title: 'NASA GSFC: Rayleigh Scattering',
@@ -4593,7 +8378,7 @@ export const topics: Topic[] = [
     description: '跟住穿过半透膜的水，看浓度、液柱压力与外加压力怎样共同决定净流动。',
     color: '#6f9c94',
     tag: '膜与压差',
-    related: ['diffusion', 'capillary'],
+    related: ['diffusion', 'capillary', 'bio-osmosis'],
     sources: [
       {
         title: 'OpenStax · Colligative Properties: Osmosis',
@@ -6077,7 +9862,7 @@ export const topics: Topic[] = [
       '沿有限共轭显微镜的真实光路，理解倒立中间像、目镜角放大、粗细调焦、景深与数值孔径，并用计算点像辨别分辨率和空放大。',
     color: '#9baac3',
     tag: '光学 · 成像与分辨率',
-    related: ['camera-lens', 'myopia-lens', 'diffraction'],
+    related: ['camera-lens', 'myopia-lens', 'diffraction', 'bio-cell-microscopy'],
     sources: [
       {
         title: 'MIT · Geometric Optics, C. Warde',

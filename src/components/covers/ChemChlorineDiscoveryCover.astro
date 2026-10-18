@@ -1,0 +1,32 @@
+---
+import { chlorineGasTrain } from '../../models/chem-chlorine-discovery';
+const m = chlorineGasTrain(3);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddd"></rect><path
+    d="M111 95V160A65 65 0 1 0 149 160V95Z"
+    fill="#b4c5a622"
+    stroke="#8b9c7c"
+    stroke-width="2"></path><path
+    d="M150 115V74H330V294M370 135V74H520V300"
+    stroke="#8b9c7c"
+    stroke-width="5"
+    fill="none"></path><path
+    d="M300 135V165L280 185V320H415V185L395 165V135Z"
+    fill="#c5ce83"
+    fill-opacity={m.collected * 0.4}
+    stroke="#8b9c7c"
+    stroke-width="2"></path><path
+    d="M470 205V320H585V205"
+    fill="#b7cdb222"
+    stroke="#8b9c7c"
+    stroke-width="2"></path><path d="M473 260H582V317H473Z" fill="#b8d0ba" opacity=".5"></path>{
+    [0, 1, 2].map((i) => (
+      <circle cx={524 + i * 7} cy={290 - i * 12} r="4" stroke="#96b18c" fill="none" />
+    ))
+  }<path d="M130 310Q109 291 130 269Q151 291 130 310" fill="#d7b57d"></path><path
+    d="M102 329H158"
+    stroke="#8b9c7c"
+    stroke-width="4"></path></svg
+>

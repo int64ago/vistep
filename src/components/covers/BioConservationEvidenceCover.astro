@@ -1,0 +1,46 @@
+---
+import { crossingPosition } from '../../models/bio-conservation-evidence';
+const w = 400,
+  bear = crossingPosition(0.58, w);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#edf2e2"></rect>
+  <rect x="18" y="15" width="364" height="200" rx="32" fill="#dce7cd"></rect>
+  <path d="M180 15h40v200h-40Z" fill="#bbbbaa"></path><path
+    d="M200 15v200"
+    stroke="#e8e6d5"
+    stroke-width="2"
+    stroke-dasharray="8 10"></path>
+  <rect x="187" y="51" width="10" height="20" rx="3" fill="#91a092"></rect><rect
+    x="205"
+    y="181"
+    width="10"
+    height="20"
+    rx="3"
+    fill="#91a092"></rect>
+  <path d="M176 15v79m0 52v69m48-200v79m0 52v69" stroke="#a6b194" stroke-width="2"></path>
+  <path d="M136 97q64-12 128 0v46q-64 12-128 0Z" fill="#a7bc8c" stroke="#91a780" stroke-width="2"
+  ></path><path
+    d="M141 105q59-11 118 0m-118 30q59 11 118 0"
+    fill="none"
+    stroke="#c4d4ac"
+    stroke-width="2"></path>
+  <g transform={`translate(${bear.x} 120)`}
+    ><ellipse rx="16" ry="10" fill="#958c75"></ellipse><circle cx="14" cy="-4" r="8" fill="#958c75"
+    ></circle><circle cx="12" cy="-11" r="4" fill="#958c75"></circle><path
+      d="M-10 7v9m19-9v9"
+      stroke="#958c75"
+      stroke-width="5"></path><circle cx="18" cy="-4" r="1.2" fill="#5c6854"></circle></g
+  >
+  {
+    [62, 101, 301, 342].map((x, i) => (
+      <g>
+        <>
+          <path d={`M${x} ${i % 2 ? 177 : 77}v-24`} stroke="#a0a280" stroke-width="3" />
+          <path d={`M${x - 12} ${i % 2 ? 164 : 64}l12-27 12 27Z`} fill="#a8bc91" />
+        </>
+      </g>
+    ))
+  }
+</svg>

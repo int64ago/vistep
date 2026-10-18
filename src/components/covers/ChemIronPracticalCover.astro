@@ -1,0 +1,31 @@
+---
+import { ironPractical } from '../../models/chem-iron-practical';
+const m = ironPractical('iron-copper', 0.7);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect><path
+    d="M170 40V290a150 65 0 0 0 300 0V40"
+    fill="#cdd9c822"
+    stroke="#95a58b"
+    stroke-width="2"></path><path
+    d="M174 150H466V290a146 61 0 0 1-292 0Z"
+    fill="#73acc1"
+    opacity={m.cu2 * 0.5 + 0.15}></path><path
+    d="M315 30q-12 15 0 35V310"
+    fill="none"
+    stroke="#8d9692"
+    stroke-width={12 + 12 * m.fe0}></path>{
+    Array.from({ length: 24 }, (_, i) => (
+      <ellipse
+        cx={309 + (i % 3) * 5}
+        cy={170 + i * 5}
+        rx="7"
+        ry="4"
+        fill="#b9784e"
+        opacity={i / 24 < m.cu0 ? 0.85 : 0}
+      />
+    ))
+  }<path d="M188 55V285q0 43 38 51" fill="none" stroke="white" stroke-width="5" opacity=".4"
+  ></path></svg
+>

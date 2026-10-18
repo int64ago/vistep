@@ -1,0 +1,85 @@
+.chem-benzoic {
+  padding: 5px 8px;
+  min-width: 0;
+  font-size: 16px;
+  color: #7a8d6e;
+}
+.chem-benzoic-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.chem-benzoic-beaker,
+.chem-benzoic-test,
+.chem-benzoic-dry,
+.chem-benzoic-mixture svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-benzoic-filter {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: auto;
+}
+.chem-benzoic-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin-top: 16px;
+}
+.chem-benzoic-data b {
+  display: block;
+  font-size: 21px;
+  font-weight: 400;
+  margin-top: 6px;
+}
+.chem-benzoic-tags {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+.chem-benzoic-note {
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.45;
+  margin: 12px 0;
+}
+.chem-benzoic-controls {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+.chem-benzoic-controls button {
+  min-height: 44px;
+  font-size: 16px;
+}
+@media (min-width: 650px) {
+  .chem-benzoic {
+    max-width: 700px;
+    margin: auto;
+    padding: 16px 28px;
+  }
+  .chem-benzoic-beaker,
+  .chem-benzoic-test,
+  .chem-benzoic-dry,
+  .chem-benzoic-mixture svg {
+    max-width: 420px;
+  }
+  .chem-benzoic-filter {
+    max-width: 340px;
+  }
+  .chem-benzoic-title {
+    font-size: 21px;
+  }
+}

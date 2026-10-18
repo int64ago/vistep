@@ -1,0 +1,95 @@
+.chem-titration {
+  max-width: 640px;
+  margin-inline: auto;
+  font-size: 16px;
+  color: #5a6669;
+}
+.chem-titration svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chem-titration svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #5a6669;
+}
+.chem-titration-head {
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: center;
+  padding: 8px 12px;
+}
+.chem-titration-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #cfd9d6;
+}
+.chem-titration-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chem-titration button {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  border: 1px solid #bfd0cc;
+  background: #f2f7f3;
+  border-radius: 24px;
+  padding: 8px 14px;
+}
+.chem-titration button[aria-pressed='true'] {
+  background: #dce9e0;
+  border-color: #9bb9a9;
+}
+.chem-titration label {
+  display: grid;
+  gap: 8px;
+}
+.chem-titration input,
+.chem-titration select,
+.chem-titration textarea {
+  font: inherit;
+  color: inherit;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #89ab98;
+}
+.chem-titration select,
+.chem-titration textarea {
+  padding: 8px;
+  border: 1px solid #c9d9d0;
+  border-radius: 12px;
+  background: #f9fcf8;
+}
+.chem-titration textarea {
+  min-height: 88px;
+}
+.chem-titration p,
+.chem-titration details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.chem-titration summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chem-titration button:focus-visible,
+.chem-titration input:focus-visible,
+.chem-titration textarea:focus-visible,
+.chem-titration select:focus-visible {
+  outline: 2px solid #8ba995;
+  outline-offset: 3px;
+}
+
+.chem-titration fieldset {
+  min-width: 0;
+  border: 1px solid #cbd8c7;
+  border-radius: 14px;
+  padding: 12px;
+  margin-block: 12px;
+}

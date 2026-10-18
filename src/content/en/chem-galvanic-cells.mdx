@@ -1,0 +1,36 @@
+---
+title: Two charge pathways in a galvanic cell
+description: Follow electrode reactions, connected geometry and material balance through acid, fruit, wet-paper, bridged and simple fuel cells.
+---
+
+<h2 id="understand">The external wire and electrolyte complete the circuit together</h2>
+
+Zinc can react locally with dilute sulfuric acid and evolve hydrogen without external current. Connecting zinc to copper allows electrons to reach the copper surface, where hydrogen ions are reduced. Copper supplies a conducting reaction surface; this is not copper-ion deposition.
+
+In the separate `Zn/ZnSO₄` and `CuSO₄/Cu` half-cells connected by a salt bridge, the cathode reaction is instead `Cu²⁺+2e⁻→Cu`. Similar-looking apparatus can involve different reactions. Ions carry charge through the electrolyte; free electrons do not traverse the whole liquid.
+
+<h2 id="try">Change one important condition at a time</h2>
+
+1. Open and close the acid cell’s external circuit. Distinguish local gas at zinc from the ammeter reading.
+2. Compare Zn/Cu, Zn/C and Cu/C, then remove the electrolyte route. Interpret the materials through their reactions rather than treating “two metals” as sufficient.
+3. Change series count in the fruit and saline-paper examples. Both EMF and internal resistance add, and the LED has a forward condition. The resistive load is adjustable in the first two views.
+4. Lift the bridge until its mouths actually leave the liquids. Change initial ion concentrations independently and inspect the calculated EMF.
+5. Select “both disconnected” in the fuel-cell activity before connecting the load. Set prior electrolysis time to zero to test discharge without retained gas.
+
+Your observation field starts blank. Enter actual materials, connections, electrolyte, readings and controls. Model readings are not automatically converted into experimental records.
+
+<h2 id="deeper">Five textbook positions share a conservation argument</h2>
+
+Required Book 2 experiment 6-3, the p37 inquiry and experimental activity 6 address the acid cell, simple-cell design and cell requirements. Elective Book 1 experiment 4-1 introduces a bridge; activity 5 switches from electrolysis to a simple hydrogen–oxygen cell. Each position has consecutive chapters and its own exploration entry.
+
+The fruit example approximates Zn/H⁺ chemistry in acid. The oxygenated saline-paper example instead approximates cathodic oxygen reduction. Materials, surface state, passivation, oxygen and contact area influence actual results. The [RSC account of batteries](https://edu.rsc.org/feature/batteries-and-electrochemical-cells/3007554.article) discusses active-metal consumption and material choices. The matching-copper control also assumes matching solution conditions; it does not assert that identical electrodes can never form a cell.
+
+The fruit model assumes pH 3, zinc-ion activity 10⁻⁴ and hydrogen pressure 1 bar, giving approximately 0.701 V from a simplified Nernst expression. This is not a measurement from a real fruit. Each cell has 1000Ω illustrative internal resistance. The paper example separately assumes 0.8 V and 600Ω. With `n` cells and resistance `R`, current is `I=nE/(nr+R)`. The LED branch assumes a 1.6 V forward drop and a 220Ω series resistor. Below the forward condition, its drawn branch carries no current and the LED stays dark.
+
+The bridged-cell benchmark follows [Purdue’s electrochemistry material](https://chemed.chem.purdue.edu/genchem/topicreview/bp/ch20/electro.php): equal ideal activities give an approximately 1.10 V zinc–copper standard EMF. The model uses 25°C, 50 mL per chamber and 220Ω total resistance. Midpoint integration accounts for changing potential as charge transfers. With extent `ξ`, `Q=2Fξ`; zinc dissolution and copper deposition each involve `ξ` moles, while compensating bridge K⁺ and Cl⁻ each involve `2ξ`. Markers show routes rather than a complete particle inventory.
+
+Both electrodes begin at an illustrative 20 mg. Exaggerated thickness still follows mass and density. The model uses [zinc](https://periodic-table.rsc.org/element/30/zinc) and [copper](https://periodic-table.rsc.org/element/29/copper) molar masses of 65.38 and 63.546 g/mol and densities of 7.134 and 8.96 g/cm³. Equal mole changes therefore do not imply equal mass or thickness changes. Removing the bridge interrupts current while preserving earlier deposits. Displayed E is a thermodynamic calculation, not a voltage measured by the ammeter.
+
+The textbook fuel-cell activity uses sodium sulfate, phenolphthalein and activated graphite. It first applies external power, then disconnects that source before connecting a load. The [University of Washington demonstration](https://chem.washington.edu/lecture-demos/electrolysis-water) likewise describes cathodic hydrogen/hydroxide formation and anodic oxygen production. K1 and K2 are mutually exclusive in the scene.
+
+The gas model assumes 0.2 A electrolysis with H₂:O₂ production of 2:1. An illustrative 0.8% remains available for discharge; this is not a measured retention yield. Discharge potential declines linearly with remaining charge through 320Ω total resistance, so current decays. Gases are consumed in a 2:1 ratio and water forms. Unretained gas has left, so the model does not pretend the whole system returns to its initial state or erase the local pink colour. Diffusion, mixing, detailed kinetics and commercial efficiency are omitted.

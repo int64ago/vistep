@@ -1,0 +1,38 @@
+---
+title: From protein function to sequence evidence
+description: Use measured coordinates, coding choices and versioned sequences to formulate and test a protein-engineering hypothesis.
+---
+
+<h2 id="understand">Define what “better” means</h2>
+
+Protein engineering begins with a functional objective, proposes structural and amino-acid changes, then tests products made through gene design and expression. This is backward reasoning in a design process. During cellular expression, information still proceeds from DNA through RNA to protein. An appealing structure or a similar sequence cannot replace functional evidence.
+
+Under the standard genetic code, the textbook peptide Ala–Trp–Lys–Glu–Phe admits 32 illustrated coding-DNA combinations: 4×1×2×2×2. The displayed triplets are the **5′→3′ coding strand**, not the template strand. This counts only those fifteen bases, not all possible expression constructs.
+
+The temperature comparison is a separate **synthetic enzyme assay**. Two variants have different initial activities and inactivation rates, so their ranking after incubation can change. Its values are neither measurements of an actual enzyme nor insulin data.
+
+<h2 id="try">Track positions, then evaluate evidence</h2>
+
+1. Change the coding choice: the DNA triplets change while the peptide remains the same.
+2. Compare the synthetic assay at 20°C and 70°C. Change observation progress to distinguish initial activity from activity after incubation.
+3. Rotate the insulin backbone to locate B28, B29 and the three disulfides. Switching structures selects independent measured coordinates.
+4. Compare human, pig and bovine mature chains. Align A and B separately before aggregating their match counts.
+5. Enter comparable protein regions from your own investigation and record the database, species, accession.version, region, retrieval date and original link. Blank records do not manufacture investigation results.
+
+<h2 id="deeper">
+  Structures, simplified equilibria and database records answer different questions
+</h2>
+
+Human insulin contains a 21-residue A chain and a 30-residue B chain. The view uses A/B-chain Cα and cysteine sulfur coordinates from [PDB 1TRZ](https://www.rcsb.org/structure/1TRZ). Gold links mark the A6–A11, A7–B7 and A20–B19 disulfides. Dashed Cα-to-sulfur connections are geometric guides across omitted side chains, not a full atomic bond diagram.
+
+Insulin lispro exchanges proline at B28 and lysine at B29. [PDB 1LPH](https://www.rcsb.org/structure/1LPH) preserves structural evidence for this analogue, including its hexameric assembly. The two coordinate sets have not been superposed, so switching is not a molecular deformation trajectory. Reduced association does not mean that dimers or hexamers cannot form under any conditions.
+
+The exploratory equilibrium retains only `2M ⇌ D`, with `D=K M²` and `C=M+2D`. Its arbitrary concentration units and illustrative constants 4 and 0.4 are not measured lispro parameters. Zinc, hexamers, administration and absorption are omitted. At zero total concentration, the monomer fraction is undefined. The model explains conservation and concentration dependence.
+
+The fixed sequence records were retrieved on **2026-10-18**. Human [NP_000198.1](https://www.ncbi.nlm.nih.gov/protein/NP_000198.1) and pig [NP_001103242.1](https://www.ncbi.nlm.nih.gov/protein/NP_001103242.1) are RefSeq entries. Bovine [P01317.2](https://www.ncbi.nlm.nih.gov/protein/P01317.2) originates in UniProtKB/Swiss-Prot and is also indexed by NCBI Protein. NCBI Protein aggregates several sources; its records should not all be described as belonging to the same source database.
+
+The precursor lengths are 110, 108 and 105 residues. Extracting annotated mature chains gives 50/51 matching human–pig positions and 48/51 matching human–cow positions. These counts aggregate separately aligned A and B chains; they do not imply that mature insulin is one continuous concatenated polypeptide.
+
+The first twenty human and bovine B-chain residues have 100% identity but cover only 20/30 of the chain. Extending to all thirty yields 29/30 identity. A perfect fragment match does not establish an identical full protein. The [NCBI glossary](https://www.ncbi.nlm.nih.gov/books/NBK62051/) helps distinguish identity, alignment scope and search statistics.
+
+The personal sequence tool uses a teaching Needleman–Wunsch global alignment: match +2, mismatch −1 and gap −2, with up to 160 residues per input. It does not search a database, perform BLAST, return E-values or establish functional equivalence. Confirm that the input regions are comparable before interpreting the output.

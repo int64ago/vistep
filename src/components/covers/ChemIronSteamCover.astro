@@ -1,0 +1,51 @@
+---
+import { ironSteam } from '../../models/chem-iron-steam';
+const m = ironSteam();
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect><path
+    d="M470 100H75q-25 0-25 25t25 25H470"
+    fill="#c4d0ba22"
+    stroke="#92a18b"
+    stroke-width="2"></path>{
+    Array.from({ length: 10 }, (_, i) => (
+      <ellipse
+        cx={80 + ((i * 5) % 35)}
+        cy={115 + ((i * 11) % 23)}
+        rx="7"
+        ry="5"
+        fill="#dce6d4"
+        stroke="#adbaa0"
+      />
+    ))
+  }{
+    Array.from({ length: 23 }, (_, i) => (
+      <ellipse
+        cx={275 + ((i * 11) % 80)}
+        cy={135 + (i % 3) * 4}
+        rx="5"
+        ry="3"
+        fill={m.convertedFraction ? '#555f4e' : '#949b86'}
+      />
+    ))
+  }<path d="M470 125H555V282" fill="none" stroke="#92a18b" stroke-width="5"></path><path
+    d="M505 235V330H605V235"
+    fill="#c1d2bc22"
+    stroke="#92a18b"
+    stroke-width="2"></path>{
+    [0, 1, 2].map((i) => (
+      <circle cx={535 + i * 19} cy={265 - (i % 2) * 15} r="12" fill="#e1e7d0" stroke="#a6b99a" />
+    ))
+  }{
+    [95, 315].map((x) => (
+      <g>
+        <>
+          <path d={`M${x} 205q-18-25 0-42q18 25 0 42`} fill="#d7b477" />
+          <path d={`M${x - 25} 240h50l-10 35h-30Z`} fill="#b6c7ae" />
+          <path d={`M${x} 239v-30`} stroke="#a79f80" stroke-width="4" />
+        </>
+      </g>
+    ))
+  }</svg
+>

@@ -1,0 +1,260 @@
+.cdf {
+  color: #526961;
+}
+.cdf-stage {
+  padding: 25px;
+  background: radial-gradient(ellipse at 35% 20%, #edf1e6, #dce8df);
+  border-radius: 30px;
+  min-height: 350px;
+}
+.cdf svg {
+  display: block;
+  width: 100%;
+  height: 310px;
+  margin: auto;
+  overflow: visible;
+}
+.cdf svg text {
+  font-family: inherit;
+  font-size: 20px;
+  fill: #617a70;
+  text-anchor: middle;
+}
+.cdf p {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 8px 0 0;
+}
+.cdf strong {
+  font-size: 20px;
+  font-weight: 550;
+}
+.cdf-main {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  align-items: center;
+  gap: 25px;
+}
+.cdf-cell-evidence {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+.cdf b {
+  font-size: 18px;
+  font-weight: 500;
+}
+.cdf-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 18px;
+}
+.cdf-heatmap {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+  border-radius: 17px;
+  overflow: hidden;
+  background: #192c2e;
+}
+.cdf-heatmap canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: auto;
+}
+.cdf-compute {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  color: #e5ebe0;
+  font-size: 16px;
+  padding: 12px;
+  text-align: center;
+}
+.cdf-compute button {
+  border: 1px solid #879c91;
+  background: #304740;
+  color: #eef2e9;
+  border-radius: 12px;
+  min-height: 44px;
+  padding: 10px;
+  font: inherit;
+}
+.cdf-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.cdf-comparison-row .cdf-pair {
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+.cdf-comparison-row svg {
+  height: 145px;
+}
+.cdf-comparison-row .cdf-heatmap {
+  max-width: 155px;
+}
+.cdf-comparison-row p {
+  margin: 0;
+}
+.cdf-powder {
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+}
+.cdf-powder svg {
+  height: 340px;
+}
+.cdf-curve-labels {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 16px;
+}
+.cdf-curve-labels span:before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  border-top: 3px solid #6e9993;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+.cdf-curve-labels span + span:before {
+  border-color: #b39768;
+}
+.cdf-refine {
+  max-width: 580px;
+  margin: auto;
+}
+.cdf-refine-read {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 16px;
+  flex-wrap: wrap;
+}
+.cdf-refine-read span {
+  display: flex;
+  gap: 8px;
+}
+.cdf-metric {
+  text-align: center;
+}
+.cdf-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px 0;
+}
+.cdf-controls button {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .cdf-stage {
+    padding: 8px 7px 12px;
+    min-height: 0;
+    border-radius: 23px;
+  }
+  .cdf svg {
+    height: auto;
+    max-height: 215px;
+  }
+  .cdf-main {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+  .cdf-cell-evidence {
+    line-height: 1.45;
+  }
+  .cdf-cell-evidence p {
+    margin: 3px 0;
+  }
+  .cdf strong {
+    font-size: 18px;
+  }
+  .cdf p {
+    margin: 5px 0 0;
+  }
+  .cdf-pair {
+    gap: 8px;
+  }
+  .cdf-quasi-pair {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 0;
+  }
+  .cdf-quasi-pair svg {
+    height: auto;
+    max-height: 160px;
+  }
+  .cdf-heatmap {
+    border-radius: 12px;
+  }
+  .cdf-comparison {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .cdf-comparison-row .cdf-pair {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .cdf-comparison-row svg,
+  .cdf-comparison-row .cdf-heatmap {
+    height: 115px;
+    max-height: 115px;
+    width: 115px;
+  }
+  .cdf-comparison-row p {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .cdf-powder svg {
+    height: auto;
+    max-height: 260px;
+  }
+  .cdf svg text {
+    font-size: 24px;
+  }
+  .cdf-curve-labels {
+    gap: 15px;
+  }
+  .cdf-refine-read {
+    gap: 3px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cdf-refine-read span {
+    gap: 8px;
+  }
+  .cdf-refine-read b {
+    font-size: 18px;
+  }
+  .cdf-controls {
+    padding: 18px 0;
+  }
+}
+
+.cdf-atom-key {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 16px;
+}
+.cdf-atom-key span:before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8a9f99;
+  margin-right: 6px;
+}
+.cdf-atom-key span + span:before {
+  background: #c48d77;
+}

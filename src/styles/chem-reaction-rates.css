@@ -1,0 +1,85 @@
+.chem-rates {
+  font-size: 16px;
+  color: #5a6669;
+}
+.chem-rates svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chem-rates svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #5a6669;
+}
+.chem-rates-head {
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: center;
+  padding: 8px 12px;
+}
+.chem-rates-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #cfd9d6;
+}
+.chem-rates-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chem-rates button {
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  border: 1px solid #bfd0cc;
+  background: #f2f7f3;
+  border-radius: 24px;
+  padding: 8px 14px;
+}
+.chem-rates button[aria-pressed='true'] {
+  background: #dce9e0;
+  border-color: #9bb9a9;
+}
+.chem-rates label {
+  display: grid;
+  gap: 8px;
+}
+.chem-rates input,
+.chem-rates select,
+.chem-rates textarea {
+  font: inherit;
+  color: inherit;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #89ab98;
+}
+.chem-rates select,
+.chem-rates textarea {
+  padding: 8px;
+  border: 1px solid #c9d9d0;
+  border-radius: 12px;
+  background: #f9fcf8;
+}
+.chem-rates textarea {
+  min-height: 88px;
+}
+.chem-rates p,
+.chem-rates details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.chem-rates summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chem-rates button:focus-visible,
+.chem-rates input:focus-visible,
+.chem-rates textarea:focus-visible,
+.chem-rates select:focus-visible {
+  outline: 2px solid #8ba995;
+  outline-offset: 3px;
+}

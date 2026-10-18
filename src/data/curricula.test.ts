@@ -5,6 +5,10 @@ import {
   curriculumLessonPath,
   curriculumSectionId,
   getCurriculumLessons,
+  getCurriculum,
+  curriculumInventory,
+  curriculumInventories,
+  curriculumFilmSelection,
   type Curriculum,
   type CurriculumSection,
 } from './curricula';
@@ -15,6 +19,33 @@ import variants from './curriculum-variants.json';
 import timeline from './film-timeline.json';
 
 describe('textbook learning paths', () => {
+  it('publishes the complete chemistry and biology inventories in textbook learning order', () => {
+    for (const [id, counts] of [
+      ['pep-high-school-chemistry', [36, 39, 29, 33, 46]],
+      ['pep-high-school-biology', [55, 33, 30, 27, 27]],
+    ] as const) {
+      const curriculum = getCurriculum(id)!;
+      const inventory = curriculumInventories[id];
+      expect(inventory, id).toHaveLength(counts.reduce<number>((sum, count) => sum + count, 0));
+      expect(
+        curriculum.books.map(
+          (book) => getCurriculumLessons({ ...curriculum, books: [book] }).length,
+        ),
+        id,
+      ).toEqual(counts);
+      const expected = [...inventory].sort(
+        (a, b) =>
+          a.book.order - b.book.order ||
+          a.chapter.order - b.chapter.order ||
+          a.section.order - b.section.order ||
+          a.order - b.order,
+      );
+      expect(
+        getCurriculumLessons(id).map(({ lesson }) => lesson.experimentId),
+        id,
+      ).toEqual(expected.map((entry) => entry.id));
+    }
+  });
   it('covers all six audited books without dropping a learning position', () => {
     expect(source).toHaveLength(271);
     const lessons = getCurriculumLessons('pep-high-school-physics');
@@ -29,14 +60,16 @@ describe('textbook learning paths', () => {
       expected.map((entry) => entry.id),
     );
     expect(
-      curricula[0].books.map(
-        (book) => getCurriculumLessons({ ...curricula[0], books: [book] }).length,
+      getCurriculum('pep-high-school-physics')!.books.map(
+        (book) =>
+          getCurriculumLessons({ ...getCurriculum('pep-high-school-physics')!, books: [book] })
+            .length,
       ),
     ).toEqual([37, 31, 41, 59, 38, 65]);
   });
   it('keeps each textbook selection attached to a real, consecutive film segment', () => {
-    const sourceIds = new Set(source.map((entry) => entry.id));
-    expect(sourceIds.size).toBe(source.length);
+    const sourceIds = new Set(curriculumInventory.map((entry) => entry.id));
+    expect(sourceIds.size).toBe(curriculumInventory.length);
     for (const [id, selection] of Object.entries(variants)) {
       expect(sourceIds.has(id), id).toBe(true);
       const film = timeline[selection.sceneSlug as keyof typeof timeline];
@@ -52,7 +85,7 @@ describe('textbook learning paths', () => {
     }
   });
   it('sorts by the full textbook hierarchy even when stored out of order', () => {
-    const base = curricula[0];
+    const base = getCurriculum('pep-high-school-physics')!;
     const book = base.books[0];
     const chapter = book.chapters[0];
     const section = chapter.sections[0];
@@ -100,6 +133,33 @@ describe('textbook learning paths', () => {
       'b2-c1-s1-l1',
     ]);
     expect(JSON.stringify(shuffled)).toBe(original);
+  });
+
+  it('keeps the initial apparatus stable when another textbook reuses its film', () => {
+    const base = getCurriculumLessons('pep-high-school-physics')[0].lesson;
+    const first = {
+      ...base,
+      id: 'first-location',
+      experimentId: 'chem-first-location',
+      chapterIds: ['observe', 'compare'],
+      sceneVariant: 'shared-apparatus',
+    };
+    const second = { ...first, id: 'second-location', experimentId: 'bio-second-location' };
+    expect(curriculumFilmSelection(first)).toEqual(curriculumFilmSelection(second));
+    expect(curriculumFilmSelection(first)).toEqual({
+      chapterIds: ['observe', 'compare'],
+      variant: 'shared-apparatus',
+    });
+    expect(curriculumFilmSelection({ ...first, sceneVariant: undefined })?.variant).toBe(
+      'chem-first-location',
+    );
+    expect(curriculumFilmSelection({ ...first, chapterIds: undefined })).toEqual({
+      chapterIds: [],
+      variant: 'shared-apparatus',
+    });
+    expect(
+      curriculumFilmSelection({ ...first, chapterIds: undefined, sceneVariant: undefined }),
+    ).toBeUndefined();
   });
 
   it('links only complete registered scenes and keeps lesson routes unique', () => {

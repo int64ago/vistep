@@ -1,0 +1,47 @@
+---
+import { saltPurification } from '../../models/chem-salt-purification';
+const s = saltPurification(5, 0.85);
+const retained = Object.values(s.removed).reduce((a, b) => a + b, 0);
+---
+
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><path d="M275 65V350M235 350H320" stroke="#a7b6ab" stroke-width="6" stroke-linecap="round"
+  ></path><ellipse cx="205" cy="120" rx="62" ry="10" fill="none" stroke="#a7b6ab" stroke-width="4"
+  ></ellipse><path
+    d="M133 105L195 199V278H211V199L276 105Z"
+    stroke="#a1b4b3"
+    stroke-width="2.5"
+    fill="#e5efeb44"></path><path
+    d="M145 112L203 194L263 112"
+    fill="#f4f1df"
+    stroke="#cec9b5"
+    stroke-width="2"></path>{
+    Array.from({ length: 33 }, (_, i) => (
+      <circle
+        cx={169 + ((i * 17) % 74)}
+        cy={130 + ((i * 11) % 30)}
+        r="4"
+        fill={i % 8 ? '#fcfbed' : '#b9ad90'}
+        opacity={retained / 3.3}
+      />
+    ))
+  }<path
+    d="M205 242V341Q205 353 217 353H319Q331 353 331 341V241"
+    fill="#e7efea44"
+    stroke="#9cacb0"
+    stroke-width="2.5"></path><path
+    d={`M211 ${345 - 58 * s.filtration}H325V339Q325 347 317 347H219Q211 347 211 339Z`}
+    fill="#bfd5c777"></path><path d="M210 278V340" stroke="#acc9ba" stroke-width="2"></path><g
+    transform="translate(45 60) rotate(28)"
+    ><path
+      d="M0 0V70Q0 78 9 78H67Q76 78 76 69V0L85-4"
+      fill="#e5eee455"
+      stroke="#9cacb0"
+      stroke-width="2.5"></path><path d="M5 39H70V68Q70 73 63 73H12Q5 73 5 68Z" fill="#c1d1bf77"
+    ></path></g
+  ><path d="M102 42L184 130" stroke="#b2c3bd" stroke-width="5" stroke-linecap="round"></path><path
+    d="M114 83Q138 91 185 136"
+    stroke="#b6cfc4"
+    stroke-width="4"
+    fill="none"></path></svg
+>

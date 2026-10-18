@@ -1,0 +1,51 @@
+---
+import {
+  ice,
+  centralId,
+  shellIds,
+  rotate,
+  sub,
+  hydrogenLinks,
+} from '../../models/chem-hydrogen-bond-network';
+const waters = ice.filter((w) => shellIds.includes(w.id));
+const o = ice.find((w) => w.id === centralId)!.o;
+const project = (p: { x: number; y: number; z: number }) => {
+  const v = rotate(sub(p, o), 0.5, 0.65);
+  return { x: 320 + v.x * 46, y: 200 - v.y * 46 };
+};
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#dfe8d6"></rect>{
+    hydrogenLinks(waters).map((l) => (
+      <line
+        x1={project(l.a).x}
+        y1={project(l.a).y}
+        x2={project(l.b).x}
+        y2={project(l.b).y}
+        stroke="#769c99"
+        stroke-width="3"
+        stroke-dasharray="5 6"
+      />
+    ))
+  }{
+    waters.map((w) => (
+      <g>
+        {w.h.map((h) => (
+          <line
+            x1={project(w.o).x}
+            y1={project(w.o).y}
+            x2={project(h).x}
+            y2={project(h).y}
+            stroke="#a7ad94"
+            stroke-width="8"
+          />
+        ))}
+        <circle cx={project(w.o).x} cy={project(w.o).y} r="19" fill="#ba8473" />
+        {w.h.map((h) => (
+          <circle cx={project(h).x} cy={project(h).y} r="10" fill="#f2ebcf" stroke="#b7c2ac" />
+        ))}
+      </g>
+    ))
+  }</svg
+>

@@ -1,0 +1,59 @@
+---
+import { daniell, saltBridge, bridgeIon } from '../../models/chem-galvanic-cells';
+const g = saltBridge(400, 0),
+  d = daniell(3000, true, true, 1, 1),
+  L = g.left - 13,
+  R = g.right + 13;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#d9e4db"></rect>{
+    [g.left, g.right].map((x, i) => (
+      <g>
+        <>
+          <path
+            d={`M${x - 44} 81V200Q${x - 44} 217 ${x - 28} 217H${x + 28}Q${x + 44} 217 ${x + 44} 200V81`}
+            fill="#eef6eb"
+            fill-opacity=".4"
+            stroke="#aabfb8"
+            stroke-width="2"
+          />
+          <path
+            d={`M${x - 42} 108V200Q${x - 42} 215 ${x - 28} 215H${x + 28}Q${x + 42} 215 ${x + 42} 200V108Z`}
+            fill={i ? '#9dbfd1' : '#bdd2c6'}
+            fill-opacity=".7"
+          />
+        </>
+      </g>
+    ))
+  }<path d={`M${L} 61V24H182M218 24H${R}V61`} fill="none" stroke="#839e94" stroke-width="3"
+  ></path><circle cx="200" cy="24" r="17" fill="#f4f6e8" stroke="#aebfac"></circle><path
+    d="M200 32l10 -17"
+    stroke="#80977e"
+    stroke-width="2"></path><rect
+    x={L - d.zincWidth / 2}
+    y="61"
+    width={d.zincWidth}
+    height="124"
+    rx="3"
+    fill="#9daead"></rect><rect
+    x={R - d.copperWidth / 2}
+    y="61"
+    width={d.copperWidth}
+    height="124"
+    rx="3"
+    fill="#b98f74"></rect><g transform="translate(0 -52)"
+    ><path d={g.path} stroke="#bdcdbf" stroke-width="13" fill="none"></path><path
+      d={g.path}
+      stroke="#e8ebd3"
+      stroke-width="8"
+      fill="none"></path>{
+      (['left', 'right'] as const).map((dir) =>
+        [0.15, 0.5, 0.85].map((p) => {
+          const q = bridgeIon(400, p, dir);
+          return <circle cx={q.x} cy={q.y} r="3" fill={dir === 'left' ? '#96a479' : '#b392b0'} />;
+        }),
+      )
+    }</g
+  ></svg
+>

@@ -1,0 +1,155 @@
+.csa {
+  color: #677758;
+  font-size: 16px;
+}
+.csa-stage {
+  min-height: 340px;
+  padding: 22px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 45% 20%, #faf6e4, #e5ead7);
+}
+.csa svg {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+.csa svg text {
+  font-size: 20px;
+  fill: currentColor;
+}
+.csa-ester {
+  height: 280px;
+  max-width: 600px;
+}
+.csa-curd {
+  height: 280px;
+  max-width: 450px;
+}
+.csa-interface {
+  height: 300px;
+  max-width: 400px;
+}
+.csa-balance {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 14px;
+  font-size: 16px;
+}
+.csa-balance b {
+  font-size: 23px;
+  font-weight: 500;
+}
+.csa-interface-key {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.csa-interface-key span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.csa-interface-key i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #779b82;
+}
+.csa-interface-key .tail {
+  border-radius: 0;
+  height: 3px;
+  width: 20px;
+  background: #a89165;
+}
+.csa-hard {
+  text-align: center;
+  font-size: 16px;
+}
+.csa-families {
+  max-width: 480px;
+  margin: auto;
+  text-align: center;
+}
+.csa-families svg {
+  height: 200px;
+}
+.csa-families text {
+  font-size: 35px;
+}
+.csa-families b {
+  font-size: 24px;
+  font-weight: 500;
+}
+.csa-families p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.csa-controls {
+  display: grid;
+  gap: 18px;
+  padding: 20px 4px;
+}
+.csa-controls button {
+  min-height: 44px;
+}
+.csa-note {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.csa.is-watch > .csa-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .csa-stage {
+    padding: 12px 5px;
+    min-height: 320px;
+    border-radius: 22px;
+  }
+  .csa-ester {
+    height: 240px;
+  }
+  .csa .csa-ester text {
+    font-size: 24px;
+  }
+  .csa-ester > text {
+    font-size: 22px;
+  }
+  .csa-curd {
+    height: 250px;
+  }
+  .csa .csa-curd text {
+    font-size: 22px;
+  }
+  .csa-interface {
+    height: 280px;
+  }
+  .csa .csa-interface text {
+    font-size: 22px;
+  }
+  .csa-interface-key {
+    gap: 8px 15px;
+  }
+  .csa-balance {
+    gap: 20px;
+  }
+  .csa-controls {
+    padding: 15px 0;
+  }
+  .csa-families p {
+    font-size: 16px;
+  }
+}
+
+.csa-ester-note {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 5px 0;
+}

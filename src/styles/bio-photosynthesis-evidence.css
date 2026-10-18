@@ -1,0 +1,184 @@
+.bio-photo {
+  padding: clamp(14px, 3vw, 28px);
+  border-radius: 24px;
+  background: #eeefda;
+  color: #506145;
+}
+.bio-photo-kind {
+  font-size: 16px;
+  margin: 0 0 12px;
+  color: #7c8967;
+}
+.bio-photo-alga,
+.bio-photo-coupling,
+.bio-photo-preparation {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+.bio-photo-legend,
+.bio-photo-stores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-photo-vials {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  max-width: 540px;
+  margin: auto;
+}
+.bio-photo-vials > div {
+  width: 45%;
+  text-align: center;
+}
+.bio-photo-vials svg {
+  width: 100%;
+  height: 245px;
+  display: block;
+}
+.bio-photo-vials p,
+.bio-photo-isotopes p,
+.bio-photo-discgroups p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 6px 0;
+}
+.bio-photo-note {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 14px auto 0;
+  text-align: center;
+}
+.bio-photo-isotopes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  text-align: center;
+}
+.bio-photo-isotopes svg {
+  width: 100%;
+  height: 230px;
+  display: block;
+}
+.bio-photo-stores span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bio-photo-stores i {
+  height: 8px;
+  display: block;
+  border-radius: 8px;
+  background: #a3b475;
+}
+.bio-photo-carbon {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+.bio-photo-tracer {
+  display: flex;
+  gap: 24px;
+  max-width: 650px;
+  margin: auto;
+}
+.bio-photo-tracer > div {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+}
+.bio-photo-tracer p {
+  margin: 5px 0;
+}
+.bio-photo-tracer > div > div {
+  height: 10px;
+  background: #d8dfbd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.bio-photo-tracer i {
+  display: block;
+  background: #b28b59;
+  height: 100%;
+}
+.bio-photo-discgroups {
+  display: flex;
+  gap: 20px;
+  max-width: 650px;
+  margin: auto;
+}
+.bio-photo-discgroups > div {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+.bio-photo-discgroups svg {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+.bio-photo-controls {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+.bio-photo-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-photo-controls button {
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  background: #f6f7e8;
+  border: 1px solid #c3cbaa;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+@media (max-width: 540px) {
+  .bio-photo-alga,
+  .bio-photo-preparation {
+    height: 250px;
+  }
+  .bio-photo-coupling {
+    height: 245px;
+  }
+  .bio-photo-vials {
+    gap: 16px;
+  }
+  .bio-photo-vials svg {
+    height: 210px;
+  }
+  .bio-photo-isotopes {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .bio-photo-isotopes svg {
+    height: 120px;
+  }
+  .bio-photo-carbon {
+    height: 150px;
+  }
+  .bio-photo-tracer {
+    gap: 12px;
+  }
+  .bio-photo-discgroups {
+    gap: 6px;
+  }
+  .bio-photo-discgroups svg {
+    height: 210px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-photo {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

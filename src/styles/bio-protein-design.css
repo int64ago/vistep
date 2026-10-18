@@ -1,0 +1,105 @@
+.bio-protein {
+  max-width: 600px;
+  margin-inline: auto;
+  color: #62624f;
+  font-size: 16px;
+}
+.bio-protein svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-protein svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #62624f;
+}
+.bio-protein-head {
+  font-size: 17px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+.bio-protein-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbd9c7;
+}
+.bio-protein-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-protein button {
+  min-height: 44px;
+  padding: 8px 15px;
+  font: inherit;
+  color: inherit;
+  background: #f8f7ee;
+  border: 1px solid #ceceba;
+  border-radius: 24px;
+}
+.bio-protein button[aria-pressed='true'] {
+  background: #e8e7d2;
+  border-color: #a8ae8a;
+}
+.bio-protein label {
+  display: grid;
+  gap: 8px;
+}
+.bio-protein input,
+.bio-protein select,
+.bio-protein textarea {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  accent-color: #a5ae83;
+}
+.bio-protein input[type='number'],
+.bio-protein select,
+.bio-protein textarea {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #fcfcf5;
+}
+.bio-protein textarea {
+  min-height: 88px;
+}
+.bio-protein details,
+.bio-protein p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-protein summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-protein button:focus-visible,
+.bio-protein input:focus-visible,
+.bio-protein textarea:focus-visible {
+  outline: 2px solid #a6af87;
+  outline-offset: 3px;
+}
+.bio-protein-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.bio-protein-alignment {
+  overflow-wrap: anywhere;
+}
+.bio-protein-alignment code {
+  display: block;
+  white-space: pre-wrap;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}

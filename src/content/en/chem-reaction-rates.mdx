@@ -1,0 +1,35 @@
+---
+title: How to compare reaction rates
+description: Move from controlled comparisons and a common gas endpoint to traceable collisions and catalytic pathways.
+---
+
+<h2 id="understand">Define the quantity being compared</h2>
+
+More visible bubbles may indicate faster gas production, but bubble size, dissolution, leaks and the observation interval also matter. A useful comparison needs a shared criterion. The film moves from matched test tubes to a common gas-volume endpoint, then follows atoms through collisions.
+
+Rate and final yield are different quantities. Equal zinc masses can give equal theoretical hydrogen yields when both acid supplies are sufficient, while taking different times to reach 10 mL. Equal volumes of different hydrochloric acid concentrations can also limit marble consumption differently, changing the final yield.
+
+<h2 id="try">Make the comparison reproducible</h2>
+
+1. Keep peroxide and iron chloride conditions fixed, and change the second water bath. Compare the same time interval and record actual temperatures.
+2. Change marble surface area in both groups while preserving the total amount of solid. Separate the surface-area question from the concentration question.
+3. Compare the concentration and temperature views for thiosulfate. Check total volume, optical path, acid amount and observation criterion.
+4. Change acid concentration and leakage in the zinc view. Complete leakage permits a reaction without the syringe reaching its endpoint.
+5. Enter your own measured seconds to calculate `10/t` mL/s. Blank fields do not inherit simulated results.
+6. Toggle energy and orientation in the microscopic view, following the same four atoms. The final generic energy diagram is a separate illustration, not a measured energy surface for hydrogen iodide.
+
+<h2 id="deeper">Textbook coverage and assumptions</h2>
+
+The required second volume, pp43–44, supplies peroxide, iron chloride, two hydrochloric acid concentrations and marble. Its water-bath comparison is prescribed; the acid and marble amounts in this film are a proposed design. Activity 7, pp57–58, compares thiosulfate concentration, temperature and peroxide catalysts. Elective 1, p26, progresses from designing controls to timing hydrogen production; pp27–29 provide mechanisms, rather than additional student experiments.
+
+The thiosulfate recipe follows the book: 2 mL of 0.1 M stock in one tube; 1 mL stock plus 1 mL water in the other; then 2 mL of 0.1 M sulfuric acid in each. Both mixtures total 4 mL, giving initial thiosulfate concentrations of 0.05 M and 0.025 M. In `S₂O₃²⁻ + 2H⁺ → S↓ + SO₂↑ + H₂O`, sulfur causes cloudiness. The sulfur dioxide requires appropriate laboratory ventilation; direct smelling is not an observation method.
+
+The optical model uses `c(S)=c₀(1−exp(−kt))` and transmission `T=exp(−40c(S))` at a fixed path length. The cross is an added viewing target. The [RSC cloudiness experiment](https://edu.rsc.org/experiments/the-effect-of-temperature-on-reaction-rate/448.article) uses hydrochloric acid; this film retains the textbook's sulfuric acid, so numerical results must not be transferred between those recipes. A model threshold of `T=0.5` requires `c(S)=ln2/40`. Below that initial concentration, even complete conversion cannot reach the threshold. Inverse endpoint time is only a relative indicator under specified conditions.
+
+Peroxide follows an illustrative first-order decay. At 25 °C, the uncatalyzed constant is `0.0005 s⁻¹`, and both catalyst cases use `0.015 s⁻¹`. Equal illustrative constants avoid inventing an efficiency ranking; they do not establish equal real efficiencies. The initial amount assumes approximately 1 g/mL solution density, and `2H₂O₂→2H₂O+O₂` conserves material. Arrhenius temperature factors use illustrative activation parameters of 35 kJ/mol for peroxide and 45 kJ/mol for the turbidity model. They are not fitted data. A hotter reaction can be faster initially but slower later after depleting its reactant.
+
+The zinc view preserves 2 g Zn, 40 mL of 1 M or 4 M sulfuric acid and the 10 mL endpoint. [RSC's monitoring guidance](https://edu.rsc.org/cpd/monitoring-reactions-teaching-practical-science/3009854.article) includes gas-syringe measurement of metal–acid reactions. Our model starts at a common post-addition baseline and uses a dry-gas approximation at 25 °C and 101.325 kPa. It neglects mixing, air displaced during addition, water vapor, tubing dead volume and piston friction. Real experiments must control those errors; a simulated common zero does not eliminate them physically.
+
+The model sets `V=Vmax(1−exp(−kt))` and deliberately calibrates 1 M to reach 10 mL at 30 s, and 4 M at 7.5 s. This assumes proportional dependence on acid concentration; these times are not textbook measurements. Both theoretical final yields are approximately 748 mL, much larger than the displayed 10 mL observation window. The small syringe is not shown collecting an entire reaction. Leakage partitions produced gas into collected and escaped amounts. `10/t` measures average gas collection; conversion to a chemical reaction rate also requires temperature, pressure, reaction volume and stoichiometry.
+
+The collision reconstruction follows the textbook's two steps, `2HI→H₂+2I·` then `2I·→I₂`, retaining iodine radicals before their bond forms. Two-dimensional spheres and deterministic conditions are teaching simplifications. The separate generic catalytic profile keeps reactant and product endpoints unchanged, consistent with the [IUPAC catalyst definition](https://goldbook.iupac.org/terms/view/C00876). [IUPAC's Arrhenius activation energy](https://goldbook.iupac.org/terms/view/A00102) is an empirical parameter defined by the temperature dependence of a rate constant. An arbitrary collision energy or diagram peak must not automatically be treated as a measured activation energy.

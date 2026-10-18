@@ -1,0 +1,133 @@
+.ccb {
+  color: #42564f;
+}
+.ccb-stage {
+  max-width: 780px;
+  margin: auto;
+  padding: 12px 18px;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at 40% 20%, #faf8ef, #e6ece2);
+}
+.ccb-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 16px;
+  min-height: 36px;
+}
+.ccb-heading strong {
+  font-size: 26px;
+  font-weight: 550;
+  color: #667d6a;
+}
+.ccb-stage > svg {
+  display: block;
+  width: 100%;
+  height: 330px;
+  overflow: visible;
+}
+.ccb-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 25px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.ccb-evidence span {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.ccb-evidence b {
+  color: #697d65;
+  font-weight: 600;
+}
+.ccb-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  font-size: 16px;
+  margin-top: 14px;
+}
+.ccb-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ccb-legend i {
+  display: inline-block;
+  width: 25px;
+  border-top: 3px solid #8eaaa6;
+}
+.ccb-legend .ccb-dashed {
+  border-top: 2px dashed #a4814b;
+}
+.ccb-legend .ccb-boundary {
+  border-top: 2px dotted #9caf9f;
+}
+.ccb-controls {
+  display: grid;
+  gap: 18px;
+  padding-top: 25px;
+}
+.ccb-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .ccb-stage {
+    padding: 9px 8px;
+    border-radius: 20px;
+  }
+  .ccb-heading {
+    gap: 12px;
+    line-height: 1.25;
+  }
+  .ccb-heading strong {
+    font-size: 24px;
+  }
+  .ccb-stage > svg {
+    height: 248px;
+  }
+  .ccb-evidence {
+    gap: 5px 14px;
+  }
+  .ccb-evidence span {
+    gap: 5px;
+  }
+  .ccb-legend {
+    gap: 7px 14px;
+    margin-top: 9px;
+  }
+}
+@media (max-width: 360px) {
+  .ccb-stage > svg {
+    height: 221px;
+  }
+  .ccb-heading {
+    align-items: flex-start;
+  }
+  .ccb-evidence {
+    column-gap: 10px;
+  }
+  .ccb-mode-quartz .ccb-evidence {
+    gap: 4px 15px;
+  }
+}
+.ccb-element {
+  display: inline-block;
+  min-width: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  align-self: center;
+}
+.ccb-si {
+  background: #bcad76;
+}
+.ccb-o {
+  background: #bb7770;
+}

@@ -1,0 +1,50 @@
+---
+name: 'Levels of protein structure'
+title: 'How can one chain have several structural levels?'
+---
+
+<section id="understand">
+
+## Four different structural questions
+
+Primary structure records residue order. Secondary structure describes local backbone conformations. Tertiary structure describes the overall conformation of one polypeptide. Quaternary structure describes how multiple folded chains are organized together. These are related levels, rather than four mutually exclusive kinds of protein or four mandatory animation steps.
+
+The film follows the same 46-residue **crambin chain, PDB 1CRN**, through the first three levels, then switches to four-chain **human deoxyhemoglobin, PDB 4HHB**. These real RCSB PDB examples illustrate the textbook concepts; they are not the source coordinates of textbook figure 4-9.
+
+</section>
+
+<section id="try">
+
+## Keep track of the chain
+
+Pause on a sequence residue, then use exploration to compare the helix, beta sheet and complete chain. Rotate the coordinate projection to inspect contacts. In the hemoglobin view, separating the four chains changes only their display positions, preserving each chain’s internal geometry.
+
+The two beta-sheet segments belong to the same crambin chain. Two parallel-looking traces do not automatically indicate two separate subunits.
+
+</section>
+
+<section id="deeper">
+
+<details>
+<summary>Coordinates, traces and model limits</summary>
+
+Thick lines are **alpha-carbon traces**, not direct covalent bonds between alpha carbons. Other backbone atoms lie between successive alpha carbons. Geometry is projected from deposited coordinates, rather than drawn as an arbitrary coil. The local helix view uses residues 7–17; complete secondary-structure colouring follows the PDB HELIX and SHEET records.
+
+Dashed hydrogen-bond contacts connect actual carbonyl oxygen and amide nitrogen positions. The selected helical Oᵢ···Nᵢ₊₄ distances are about 2.88–3.13 Å. Corresponding hydrogen coordinates are absent, so the view neither invents hydrogen positions nor reports these as measured H···O distances. Four backbone contacts join beta-sheet segments 1–4 and 32–35.
+
+Three disulfide bonds connect Cys3–Cys40, Cys4–Cys32 and Cys16–Cys26. Gold links use the actual SG atoms, approximately 2.00–2.05 Å apart. They do not represent every interaction stabilizing the tertiary structure.
+
+The hemoglobin view includes only the alpha-carbon traces of protein chains A, B, C and D. Heme, water and other atoms are omitted. The film does not model folding pathways, thermal motion or oxygen binding. Camera movements and display separation are not kinetic evidence.
+
+</details>
+
+## Textbook position and sources
+
+PEP Selective Compulsory 3, Organic Chemistry, chapter 4 section 2, printed pages 114–115 / PDF 119–120. This is a structural demonstration, not a student experiment.
+
+- [RCSB PDB: 1CRN crambin](https://www.rcsb.org/structure/1CRN)
+- [RCSB PDB: 4HHB human deoxyhemoglobin](https://www.rcsb.org/structure/4HHB)
+- [PDB-101: biological assemblies](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/biological-assemblies)
+- [OpenStax Biology 2e: proteins](https://openstax.org/books/biology-2e/pages/3-4-proteins)
+
+</section>

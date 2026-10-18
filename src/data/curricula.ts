@@ -1,7 +1,10 @@
 import { localPath, type Locale } from '../i18n';
 import source from './curriculum-source.json';
+import chemistrySource from './chemistry-curriculum-source.json';
+import biologySource from './biology-curriculum-source.json';
 import variants from './curriculum-variants.json';
 import { topics } from './topics';
+import type { FilmSelection } from '../lib/film';
 
 export type CurriculumText = Record<Locale, string>;
 
@@ -17,6 +20,8 @@ export interface CurriculumLesson {
   goal: CurriculumText;
   experimentId?: string;
   chapterIds?: string[];
+  /** Initial apparatus state, independent of the textbook location that links to it. */
+  sceneVariant?: string;
   titleIsOriginal?: boolean;
 }
 
@@ -43,12 +48,28 @@ export interface CurriculumBook {
 
 export interface Curriculum {
   id: string;
+  subjectKey: 'physics' | 'chemistry' | 'biology';
   title: CurriculumText;
   subject: CurriculumText;
   stage: CurriculumText;
   publisher: CurriculumText;
   description: CurriculumText;
   books: CurriculumBook[];
+}
+
+export interface CurriculumSourceEntry {
+  id: string;
+  book: Pick<CurriculumBook, 'id' | 'order' | 'title'>;
+  chapter: Pick<CurriculumChapter, 'id' | 'order' | 'title'>;
+  section: Pick<CurriculumSection, 'id' | 'order' | 'title'>;
+  order: number;
+  page: number;
+  name: CurriculumText;
+  textbookTitle: CurriculumText;
+  titleIsOriginal: boolean;
+  goal: CurriculumText;
+  kind: CurriculumText;
+  existingSceneSlug: string | null;
 }
 
 export interface CurriculumContext {
@@ -60,13 +81,21 @@ export interface CurriculumContext {
 }
 
 /** The audited inventory is separate from reusable scene registrations. */
-export const curriculumInventory = source;
-const variantMap = variants as Record<string, { sceneSlug: string; chapterIds: string[] }>;
+export const curriculumInventories: Record<string, CurriculumSourceEntry[]> = {
+  'pep-high-school-physics': source,
+  'pep-high-school-chemistry': chemistrySource,
+  'pep-high-school-biology': biologySource,
+};
+export const curriculumInventory = Object.values(curriculumInventories).flat();
+const variantMap = variants as Record<
+  string,
+  { sceneSlug: string; chapterIds: string[]; sceneVariant?: string }
+>;
 const registeredScenes = new Set(topics.map((topic) => topic.slug));
 
-function buildTextbookBooks(): CurriculumBook[] {
+function buildTextbookBooks(entries: readonly CurriculumSourceEntry[]): CurriculumBook[] {
   const books: CurriculumBook[] = [];
-  for (const item of source) {
+  for (const item of entries) {
     const variant = variantMap[item.id];
     const sceneSlug = variant?.sceneSlug ?? item.existingSceneSlug;
     if (!sceneSlug || !registeredScenes.has(sceneSlug)) continue;
@@ -91,6 +120,7 @@ function buildTextbookBooks(): CurriculumBook[] {
       order: item.order,
       sceneSlug,
       chapterIds: variant?.chapterIds,
+      sceneVariant: variant?.sceneVariant,
       name: item.name,
       textbookTitle: item.textbookTitle,
       titleIsOriginal: item.titleIsOriginal,
@@ -102,9 +132,10 @@ function buildTextbookBooks(): CurriculumBook[] {
   return books;
 }
 
-export const curricula: Curriculum[] = [
+const registeredCurricula: Curriculum[] = [
   {
     id: 'pep-high-school-physics',
+    subjectKey: 'physics',
     title: { zh: '人教版高中物理', en: 'PEP High School Physics' },
     subject: { zh: '物理', en: 'Physics' },
     stage: { zh: '高中', en: 'High school' },
@@ -113,9 +144,45 @@ export const curricula: Curriculum[] = [
       zh: '沿着教材的学习顺序，把实验中的关键过程看清楚。',
       en: 'Follow the textbook’s learning sequence and see the key moments of each experiment.',
     },
-    books: buildTextbookBooks(),
+    books: buildTextbookBooks(source),
+  },
+  {
+    id: 'pep-high-school-chemistry',
+    subjectKey: 'chemistry',
+    title: { zh: '人教版高中化学', en: 'PEP High School Chemistry' },
+    subject: { zh: '化学', en: 'Chemistry' },
+    stage: { zh: '高中', en: 'High school' },
+    publisher: { zh: '人民教育出版社', en: 'People’s Education Press' },
+    description: {
+      zh: '观察颜色、沉淀与气体的变化，把实验现象和微观过程连起来。',
+      en: 'Connect changes in color, precipitates and gases with the processes between particles.',
+    },
+    books: buildTextbookBooks(chemistrySource),
+  },
+  {
+    id: 'pep-high-school-biology',
+    subjectKey: 'biology',
+    title: { zh: '人教版高中生物', en: 'PEP High School Biology' },
+    subject: { zh: '生物', en: 'Biology' },
+    stage: { zh: '高中', en: 'High school' },
+    publisher: { zh: '人民教育出版社', en: 'People’s Education Press' },
+    description: {
+      zh: '从显微观察到生态调查，跟随对照、示踪与测量理解生命。',
+      en: 'Follow controls, tracers and measurements, from microscopic observations to ecological investigations.',
+    },
+    books: buildTextbookBooks(biologySource),
   },
 ];
+/** Only curricula with registered lessons have a public entry point. */
+export const curricula = registeredCurricula.filter((curriculum) => curriculum.books.length > 0);
+
+export function curriculumFilmSelection(lesson?: CurriculumLesson): FilmSelection | undefined {
+  if (!lesson || (!lesson.chapterIds?.length && !lesson.sceneVariant)) return undefined;
+  return {
+    chapterIds: lesson.chapterIds ?? [],
+    variant: lesson.sceneVariant ?? lesson.experimentId ?? lesson.id,
+  };
+}
 
 const byOrder = <T extends { order: number }>(items: T[]) =>
   [...items].sort((a, b) => a.order - b.order);

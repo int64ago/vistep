@@ -1,0 +1,87 @@
+.chem-sodium-reactions {
+  background: radial-gradient(ellipse at 50% 55%, #f3edda, #e7ead4);
+  color: #52624f;
+  border-radius: 28px;
+  padding: clamp(22px, 3vw, 36px);
+  font-size: 16px;
+}
+.chem-sodium-reactions header p {
+  font-size: clamp(21px, 2.4vw, 28px);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+.chem-sodium-reactions header span {
+  color: #8a9476;
+}
+.chem-sodium-object {
+  max-width: 640px;
+  margin: 14px auto;
+}
+.chem-sodium-object svg {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+}
+.chem-sodium-evidence {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.6;
+  font-size: 18px;
+  min-height: 56px;
+}
+.chem-sodium-controls {
+  display: grid;
+  gap: 20px;
+  padding: 22px;
+  background: #fcfaed;
+  border-radius: 22px;
+  margin: 24px 0;
+}
+.chem-sodium-controls button,
+.chem-sodium-controls input {
+  min-height: 44px;
+}
+.chem-sodium-reactions details {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #7d896b;
+  margin-top: 18px;
+}
+.chem-sodium-reactions summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.chem-sodium-reactions[data-watch='true'] header {
+  display: none;
+}
+.chem-sodium-reactions[data-watch='true'] .chem-sodium-evidence > :not(:first-child) {
+  display: none;
+}
+.chem-sodium-reactions[data-watch='true'] .chem-sodium-evidence {
+  min-height: 0;
+  font-size: 16px;
+}
+.chem-sodium-reactions[data-watch='true'] details {
+  margin-top: 8px;
+}
+@media (max-width: 600px) {
+  .chem-sodium-reactions {
+    padding: 14px 12px;
+  }
+  .chem-sodium-object {
+    margin: 0 auto 12px;
+  }
+  .chem-sodium-object svg {
+    height: 240px;
+  }
+  .chem-sodium-evidence {
+    font-size: 16px;
+    align-items: flex-start;
+  }
+  .chem-sodium-controls {
+    padding: 16px;
+  }
+}

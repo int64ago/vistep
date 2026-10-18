@@ -1,0 +1,35 @@
+---
+import { mitoticState } from '../../models/bio-cell-division';
+const state = mitoticState(3.7);
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#efebe0"></rect><g transform="translate(15 -20)"
+    ><rect
+      x="24"
+      y="44"
+      width="322"
+      height="184"
+      rx="18"
+      fill="#e4dfcf"
+      stroke="#aaa48d"
+      stroke-width="3"></rect>{
+      state.chromatids.map((c) => (
+        <g>
+          <>
+            <path d={`M${c.sister === 0 ? 53 : 317} 130L${c.x} ${c.y}`} stroke="#b9b19b" />
+            <path
+              d={`M${c.x + c.armOffset} ${c.y - 14}L${c.x} ${c.y}L${c.x + c.armOffset} ${c.y + 14}`}
+              fill="none"
+              stroke={c.color}
+              stroke-width="4"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+            <circle cx={c.x} cy={c.y} r="2.5" fill="#706779" />
+          </>
+        </g>
+      ))
+    }</g
+  ></svg
+>

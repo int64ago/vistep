@@ -1,0 +1,243 @@
+.cce {
+  color: #4a5c50;
+}
+.cce-stage {
+  background: radial-gradient(ellipse at 40% 30%, #f1f0da, #dfe7d4);
+  border-radius: 29px;
+  padding: 20px 24px;
+  min-height: 350px;
+  text-align: center;
+}
+.cce svg {
+  display: block;
+  margin: auto;
+  overflow: visible;
+}
+.cce svg text {
+  fill: #4c6053;
+  text-anchor: middle;
+  font-family: inherit;
+  font-size: 19px;
+}
+.cce .cce-letter {
+  font-size: 21px;
+  fill: #fff9e6;
+}
+.cce-mirror-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  gap: 40px;
+  max-width: 560px;
+  margin: auto;
+}
+.cce-mirror-pair > div {
+  min-width: 0;
+}
+.cce-mirror-pair i {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  bottom: 12%;
+  width: 2px;
+  background: linear-gradient(transparent, #9eb6a5, transparent);
+  transform: rotate(3deg);
+}
+.cce-mirror-pair span {
+  font-size: 17px;
+}
+.cce-molecule {
+  width: 100%;
+  height: 260px;
+}
+svg.cce-overlay {
+  max-width: 440px;
+  height: 300px;
+}
+.cce-match {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.cce-match strong {
+  font-size: 21px;
+  font-weight: 500;
+}
+.cce-sub {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0 2px;
+}
+.cce-sort {
+  width: 100%;
+  height: 340px;
+  max-width: 450px;
+}
+.cce-solutions {
+  max-width: 370px;
+  margin: auto;
+}
+.cce-solutions svg {
+  width: 100%;
+  height: 160px;
+}
+.cce-dials {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  max-width: 420px;
+  margin: auto;
+}
+.cce-dial {
+  min-width: 0;
+  font-size: 16px;
+}
+.cce-dial svg {
+  width: 100%;
+  height: 150px;
+}
+.cce-bench {
+  width: 100%;
+  height: 185px;
+  max-width: 470px;
+}
+.cce-optics-readout {
+  display: grid;
+  grid-template-columns: 180px minmax(150px, 220px);
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.cce-ledger {
+  display: grid;
+  gap: 10px;
+  font-size: 17px;
+}
+.cce-ledger > div {
+  display: grid;
+  grid-template-columns: 20px 1fr 35px;
+  align-items: center;
+  gap: 7px;
+}
+.cce-ledger i {
+  height: 8px;
+  border-radius: 10px;
+  background: #ccd6be;
+  overflow: hidden;
+}
+.cce-ledger em {
+  display: block;
+  height: 100%;
+  background: #8ca38a;
+  border-radius: 10px;
+}
+.cce-ledger strong {
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+.cce-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px 2px;
+}
+.cce-controls button {
+  min-height: 44px;
+  border: 1px solid #b4c3a8;
+  background: #e8ecd9;
+  border-radius: 15px;
+  padding: 10px 18px;
+  color: inherit;
+  cursor: pointer;
+}
+.cce-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .cce-stage {
+    min-height: 0;
+    border-radius: 23px;
+    padding: 12px 4px;
+  }
+  .cce-mirror-pair {
+    gap: 8px;
+  }
+  .cce-molecule {
+    height: auto;
+  }
+  .cce .cce-letter {
+    font-size: 22px;
+  }
+  .cce-mirror-pair span {
+    font-size: 16px;
+  }
+  .cce-sub {
+    font-size: 16px;
+    margin: 10px 6px 0;
+  }
+  svg.cce-overlay {
+    height: auto;
+    max-height: 290px;
+  }
+  .cce-match {
+    gap: 7px;
+    margin: 0 7px;
+  }
+  .cce-match strong {
+    font-size: 20px;
+  }
+  .cce-sort {
+    height: auto;
+    max-height: 330px;
+  }
+  .cce svg text {
+    font-size: 22px;
+  }
+  .cce-solutions svg {
+    height: auto;
+    max-height: 145px;
+  }
+  .cce-dials {
+    gap: 8px;
+  }
+  .cce-dial svg {
+    height: auto;
+    max-height: 145px;
+  }
+  .cce-optics-readout {
+    grid-template-columns: 45% minmax(0, 1fr);
+    gap: 7px;
+    padding: 0 5px;
+  }
+  .cce-bench {
+    height: auto;
+    max-height: 155px;
+  }
+  .cce-ledger {
+    font-size: 16px;
+    gap: 9px;
+  }
+  .cce-ledger > div {
+    grid-template-columns: 15px minmax(0, 1fr) 30px;
+    gap: 3px;
+  }
+  .cce-ledger strong {
+    font-size: 16px;
+  }
+  .cce-controls {
+    padding: 18px 0;
+  }
+}
+
+.cce-crystal-counts {
+  display: flex;
+  justify-content: space-around;
+  font-size: 17px;
+  gap: 20px;
+  max-width: 450px;
+  margin: 0 auto;
+}

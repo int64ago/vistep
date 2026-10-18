@@ -1,0 +1,55 @@
+---
+name: 'Sugar tests and hydrolysis'
+title: 'Why do the tests change after hydrolysis?'
+---
+
+import ChemSugarTests from '../../components/experiments/ChemSugarTests';
+
+<section id="understand">
+
+A sugar’s name is not an experimental result. Dissolution, iodine colour, a silver mirror and a brick-red precipitate answer different questions. Hydrolysis also changes the sample being tested.
+
+<ChemSugarTests client:visible />
+
+## Separate the questions
+
+Glucose can reduce Ag(I) to metallic silver in an ammoniacal test, and Cu(II) to Cu(I), forming brick-red Cu₂O with fresh copper reagent under alkaline, warmed conditions. These observations support reducing behaviour; neither is a uniquely identifying fingerprint for glucose. Most glucose molecules in water are cyclic, while a small open-chain population reacts and is replenished by equilibrium.
+
+The blue iodine–starch response asks whether starch remains. A partly hydrolysed sample may contain both long chains and reducing products, so both tests can be positive. Use separate sample portions rather than combining every reagent into one supposed test.
+
+## Changed composition changes the interpretation
+
+Untreated sucrose does not give a clear ordinary reducing-sugar test. Maltose retains a free hemiacetal end that can open, whereas sucrose uses both anomeric sites in its glycosidic connection.
+
+Sucrose hydrolysis yields glucose and fructose. A positive result afterwards describes the changed sample, not the original sucrose. Fructose can also participate through rearrangement in the alkaline test; a positive result does not mean that every starting molecule already contained an aldehyde group.
+
+Long starch and cellulose chains do not usually give a clear positive under these textbook qualitative conditions. They are not absolutely devoid of reducing ends. Hydrolysis increases the number of small reducing units and changes the evidence.
+
+</section>
+<section id="try">
+
+## Make the conditions matter
+
+Choose partially hydrolysed starch. Use iodine first, then choose copper for a separate portion and observe that both results can be positive. Disable alkaline testing: the display identifies invalid conditions rather than presenting the lack of precipitate as a valid negative.
+
+Compare untreated sucrose with maltose, then increase hydrolysis. Silver and copper share a two-electron capacity account. Changing sample amount can make the fixed metal reagent limiting. The film always restores its own curricular conditions independently of exploration.
+
+</section>
+<section id="deeper">
+
+<details>
+<summary>Model, limits and textbook positions</summary>
+
+Hydrolysis mixes untreated and fully hydrolysed endpoints, omitting real oligosaccharides, dextrins and stepwise kinetics. Starch/cellulose use a linear chain of degree 1000 with explicit end groups: C₆ₙH₁₀ₙ₊₂O₅ₙ₊₁ consumes n−1 water units to yield n glucose units. The textbook repeat-unit equation omits that end correction. The eight displayed symbols are an abbreviated fragment, not a real chain length or branching topology.
+
+Reducing capacity is normalised to equal hexose-unit amounts. One reactive end supplies two electron units; both metal accounts preserve inventory and limiting reagents. Real complexation equilibria, fructose product distributions, nucleation and deposition shape are omitted. A chosen 0.02-unit visibility threshold makes low end-group density undetectable in the model. Colour, mirror coverage and precipitate height are not quantitative measurements; real sensitivity depends on concentration and conditions.
+
+Cool-water starch dispersion and warm gelatinisation are qualitative states. Acid hydrolysates must be cooled and adjusted to suitable alkalinity for the textbook copper interpretation. Cellulose needs its specified acid treatment; the animation does not imply that ordinary hot water suffices. Practical silver and copper testing is organised by a school laboratory.
+
+Curriculum: required book 2 printed pages 84–85, experiments 7-7/7-8 / PDF 89–90; elective 3 page 103 experiment 4-1 / PDF 108, page 106 disaccharide inquiry / PDF 111, page 108 experiment 4-2 / PDF 113, and page 130 activity 3 / PDF 135. The combined activity covers solubility and before/after hydrolysis tests for glucose, sucrose and starch. The iodine observation belongs to required experiment 7-8 and is an associated, distinct piece of evidence in the film.
+
+</details>
+
+Scientific checks: [OpenStax monosaccharide reactions](https://openstax.org/books/organic-chemistry/pages/25-6-reactions-of-monosaccharides), [disaccharide structure and properties](https://openstax.org/books/organic-chemistry/pages/25-8-disaccharides), [RSC starch testing in food](https://edu.rsc.org/experiments/detecting-starch-in-food-on-a-microscale/563.article).
+
+</section>

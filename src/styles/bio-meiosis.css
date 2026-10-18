@@ -1,0 +1,186 @@
+.bio-meiosis {
+  background: #eeeadd;
+  border-radius: 25px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #5b6250;
+}
+.bio-meiosis-kind {
+  font-size: 16px;
+  color: #858972;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+.bio-meiosis-stage {
+  display: block;
+  width: 100%;
+  height: 330px;
+}
+.bio-meiosis-key {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-meiosis-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 650px;
+  margin: 15px auto 0;
+}
+.bio-meiosis-orientations {
+  display: grid;
+  gap: 22px;
+  max-width: 650px;
+  margin: auto;
+}
+.bio-meiosis-orientations > div > p {
+  font-size: 16px;
+  text-align: center;
+  margin: 0 0 8px;
+}
+.bio-meiosis-gametes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 480px;
+  margin: auto;
+}
+.bio-meiosis-gametes svg {
+  display: block;
+  width: 100%;
+  height: 105px;
+}
+.bio-meiosis-union {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+  max-width: 500px;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.bio-meiosis-union p {
+  font-size: 16px;
+  line-height: 1.45;
+  min-height: 24px;
+  margin: 0 0 7px;
+}
+.bio-meiosis-union svg {
+  display: block;
+  height: 110px;
+  width: 100%;
+}
+.bio-meiosis-union strong,
+.bio-meiosis-zygote strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.bio-meiosis-union > b {
+  font-size: 28px;
+  font-weight: 400;
+}
+.bio-meiosis-zygote {
+  display: grid;
+  justify-items: center;
+  max-width: 400px;
+  margin: 8px auto 0;
+}
+.bio-meiosis-zygote svg {
+  width: 100%;
+  height: 165px;
+  display: block;
+}
+.bio-meiosis-fixed {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.bio-meiosis-field,
+.bio-meiosis-fixed-detail {
+  width: 100%;
+  height: 310px;
+  display: block;
+}
+.bio-meiosis-controls {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+  margin: 26px auto 0;
+}
+.bio-meiosis-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-meiosis-controls button {
+  font: inherit;
+  min-height: 44px;
+  color: inherit;
+  background: #f7f4e8;
+  border: 1px solid #c5c8ad;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+@media (max-width: 540px) {
+  .bio-meiosis-stage {
+    height: 305px;
+  }
+  .bio-meiosis-key {
+    gap: 8px 15px;
+  }
+  .bio-meiosis-gametes svg {
+    height: 80px;
+  }
+  .bio-meiosis-orientations {
+    gap: 15px;
+  }
+  .bio-meiosis-union {
+    gap: 5px;
+    grid-template-columns: 1fr 20px 1fr;
+  }
+  .bio-meiosis-union p {
+    min-height: 47px;
+  }
+  .bio-meiosis-union svg {
+    height: 90px;
+  }
+  .bio-meiosis-zygote svg {
+    height: 140px;
+  }
+  .bio-meiosis-fixed {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .bio-meiosis-field {
+    height: 150px;
+  }
+  .bio-meiosis-fixed-detail {
+    height: 230px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-meiosis {
+    padding: 12px;
+  }
+  .bio-meiosis[data-watch='true'] .bio-meiosis-kind {
+    display: none;
+  }
+  .bio-meiosis-stage {
+    height: 245px;
+  }
+  .bio-meiosis-gametes svg {
+    height: 68px;
+  }
+  .bio-meiosis-orientations {
+    gap: 12px;
+  }
+  .bio-meiosis-note {
+    margin-top: 10px;
+  }
+  .bio-meiosis-fixed-detail {
+    height: 190px;
+  }
+}

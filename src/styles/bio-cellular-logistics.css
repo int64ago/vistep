@@ -1,0 +1,86 @@
+.bio-logistics {
+  padding: clamp(12px, 3vw, 28px);
+  background: #e9eddd;
+  border-radius: 24px;
+  color: #465c49;
+}
+.bio-logistics-cutaway svg {
+  width: 100%;
+  height: 330px;
+  display: block;
+}
+.bio-logistics-labels {
+  display: flex;
+  justify-content: center;
+  gap: 9px 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.bio-logistics-time {
+  text-align: center;
+  font-size: 16px;
+  margin: 14px 0 0;
+}
+.bio-logistics-controls {
+  display: grid;
+  gap: 16px;
+  margin: 24px auto;
+  max-width: 650px;
+  font-size: 16px;
+}
+.bio-logistics-controls button {
+  min-height: 44px;
+  border: 1px solid #b7c5aa;
+  border-radius: 12px;
+  background: #f7f7ec;
+  color: inherit;
+  font: inherit;
+  padding: 8px;
+}
+.bio-logistics-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 540px) {
+  .bio-logistics-cutaway svg {
+    height: 255px;
+  }
+  .bio-logistics-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .bio-logistics-time {
+    margin-top: 10px;
+  }
+}
+
+.bio-logistics-cutaway {
+  position: relative;
+}
+.bio-logistics-viewlabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: #e9eddded;
+  z-index: 1;
+}
+.bio-logistics-labels > span {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+}
+.bio-logistics-labels b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 540px) {
+  .bio-logistics-labels > span {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

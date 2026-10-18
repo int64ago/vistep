@@ -1,0 +1,42 @@
+---
+import { reactionHeat } from '../../models/chem-reaction-heat';
+const s = reactionHeat('crystals', 40);
+const lift = s.attached ? 42 : 0;
+---
+
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><path d="M38 364H363" stroke="#d1d7c8" stroke-width="2"></path><g
+    transform={`translate(0 ${-lift})`}
+    ><rect x="68" y="332" width="264" height="25" rx="2" fill="#d9ccb0" stroke="#b8aa8b"
+    ></rect><path
+      d="M78 341q50-10 107 0t132 0M81 350q51-9 101 0t132 0"
+      stroke="#bbad8f"
+      fill="none"
+      opacity=".6"></path><ellipse
+      cx="200"
+      cy="328"
+      rx="75"
+      ry="6"
+      fill="#d2e0e1"
+      opacity={s.iceFraction}></ellipse><path
+      d="M99 88L109 94V300Q109 324 130 324H270Q291 324 291 300V88"
+      fill="#e5eee833"
+      stroke="#9cacb0"
+      stroke-width="2.5"></path><path
+      d="M116 236H284V299Q284 317 265 317H135Q116 317 116 299Z"
+      fill="#d6dfca"
+      opacity=".7"></path><path d="M91 85H308V91H91Z" fill="#d0dfd055" stroke="#a1b4a6"></path>{
+      Array.from({ length: 24 }, (_, i) => (
+        <path
+          d={`M${122 + ((i * 29) % 151)} ${316 - (i % 3) * 4}l6-7 7 7-6 5Z`}
+          fill="#d2e0e1"
+          opacity={s.iceFraction * 0.8}
+        />
+      ))
+    }<path
+      d="M52 258L98 271m-13-11 13 11-15 1M350 258L302 271m12-11-12 11 15 1"
+      stroke="#9fb9be"
+      stroke-width="2.5"
+      fill="none"></path></g
+  ></svg
+>

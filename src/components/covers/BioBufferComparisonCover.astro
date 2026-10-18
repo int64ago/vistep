@@ -1,0 +1,31 @@
+---
+import { bufferColors, bufferMaterials, bufferState } from '../../models/bio-buffer-comparison';
+const states = bufferMaterials.map((m) => bufferState(m, 30, 'acid'));
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#eef3e9"></rect>{
+    states.map((s, i) => (
+      <g transform={`translate(${42 + i * 115} 25)`}>
+        <>
+          <path
+            d="M6 30v100q0 10 10 10h54q10 0 10-10V30"
+            stroke="#96afa2"
+            stroke-width="2"
+            fill="#f9fcf8"
+          />
+          <path d="M9 66h68v63q0 8-8 8H17q-8 0-8-8Z" fill={bufferColors[i]} opacity=".3" />
+          <path d="M12 36v83" stroke="white" stroke-width="4" />
+          <path d="M39 12h12v22l-6 12-6-12Z" fill="#a69a82" />
+          <path d="M45 48q-7 10 0 11q7-1 0-11" fill="#b47e6d" />
+          <path
+            d={`M12 ${184 - s.pH * 5}h64`}
+            stroke={bufferColors[i]}
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+        </>
+      </g>
+    ))
+  }</svg
+>

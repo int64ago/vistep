@@ -1,0 +1,15 @@
+---
+import { reverseOsmosis } from '../../models/chem-seawater-membranes';
+const m = reverseOsmosis(60, 35, 1);
+---
+
+<svg viewBox="0 0 320 240" aria-hidden="true"
+  ><path d="M35 40V210H285V40" fill="#e5ebdc" stroke="#9eae9e" stroke-width="3"></path><path
+    d="M38 90H155V207H38Z"
+    fill="#afc6b4"></path><path d={`M166 ${205 - m.permeateVolume * 2}H282V207H166Z`} fill="#b7d7c7"
+  ></path><path d="M160 45V210" stroke="#a7b08c" stroke-width="12"></path>{
+    Array.from({ length: 15 }, (_, i) => (
+      <circle cx={50 + (i % 5) * 22} cy={111 + Math.floor(i / 5) * 35} r="4" fill="#aa9768" />
+    ))
+  }<path d="M196 125H252m-10-8 10 8-10 8" fill="none" stroke="#77a59a" stroke-width="4"></path></svg
+>

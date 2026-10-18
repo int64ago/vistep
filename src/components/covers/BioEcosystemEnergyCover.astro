@@ -1,0 +1,63 @@
+---
+import { carbonMarkers, carbonLedger } from '../../models/bio-ecosystem-energy';
+const markers = carbonMarkers(0.61),
+  ledger = carbonLedger(markers);
+const centers = {
+  air: { x: 200, y: 40 },
+  plant: { x: 104, y: 128 },
+  animal: { x: 296, y: 128 },
+  soil: { x: 200, y: 200 },
+  ocean: { x: 0, y: 0 },
+  fossil: { x: 0, y: 0 },
+};
+const point = (pool: keyof typeof centers, id: number) => ({
+  x: centers[pool].x + ((id % 4) - 1.5) * 10,
+  y: centers[pool].y + (Math.floor(id / 4) - 1) * 9,
+});
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f0f2e5"></rect>
+  <path
+    d="M200 40L104 128L296 128L200 40M104 128L200 200L200 40"
+    stroke="#c9bfa2"
+    stroke-width="2"
+    fill="none"></path>
+  {
+    (['air', 'plant', 'animal', 'soil'] as const).map((k) => (
+      <ellipse
+        cx={centers[k].x}
+        cy={centers[k].y}
+        rx="43"
+        ry="23"
+        fill={k === 'soil' ? '#ded4ba' : '#dfe6cb'}
+        stroke="#c3cda9"
+      />
+    ))
+  }
+  <path
+    d="M74 161v-54m0 20q-23-5-19-20q16 1 19 14m0-12q22-8 19-21q-17 3-19 16"
+    fill="#9eaf7d"
+    stroke="#839966"
+    stroke-width="2"></path>
+  <path d="M285 159l-16-12v24l16-12q20-19 43-3l7 3-7 3q-23 16-43-3" fill="#a1b9a7" stroke="#819d8c"
+  ></path><circle cx="322" cy="156" r="2" fill="#607969"></circle>
+  {
+    markers.map((m) => {
+      const a = point(m.from, m.id),
+        b = point(m.to, m.id);
+      return (
+        <circle
+          cx={a.x + (b.x - a.x) * m.phase}
+          cy={a.y + (b.y - a.y) * m.phase}
+          r={m.id === 9 ? 5 : 3}
+          fill={m.id === 9 ? '#a38050' : '#bba075'}
+          stroke="#9a835e"
+          stroke-width=".6"
+        />
+      );
+    })
+  }
+  <path d="M165 205q35-12 70 0m-62 5q28-8 56 0" stroke="#c1b291" stroke-width="2" fill="none"
+  ></path>
+</svg>

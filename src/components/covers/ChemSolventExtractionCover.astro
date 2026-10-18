@@ -1,0 +1,25 @@
+---
+import { funnelShape, funnelLevel } from '../../models/chem-solvent-extraction';
+---
+
+<svg viewBox="55 0 210 240" aria-hidden="true"
+  ><defs><clipPath id="extract-cover"><path d={funnelShape}></path></clipPath></defs><path
+    d={funnelShape}
+    fill="#eff2e7"
+    stroke="#a1b4a4"
+    stroke-width="2"></path><g clip-path="url(#extract-cover)"
+    ><path d={`M80 ${funnelLevel(150)}H240V${funnelLevel(100)}H80Z`} fill="#c6d2ae"></path><path
+      d={`M80 ${funnelLevel(100)}H240V211H80Z`}
+      fill="#bdd7d2"></path>{
+      Array.from({ length: 18 }, (_, i) => (
+        <circle cx={133 + (i % 6) * 11} cy={100 + Math.floor(i / 6) * 12} r="3" fill="#ac886f" />
+      ))
+    }</g
+  ><path d="M146 199H175" stroke="#98ac99" stroke-width="7" stroke-linecap="round"></path><rect
+    x="150"
+    y="10"
+    width="20"
+    height="14"
+    rx="4"
+    fill="#b5b59a"></rect></svg
+>

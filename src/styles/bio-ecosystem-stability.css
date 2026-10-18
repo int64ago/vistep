@@ -1,0 +1,94 @@
+.bio-stability {
+  color: #62624f;
+  font-size: 16px;
+}
+.bio-stability svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-stability svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #62624f;
+}
+.bio-stability-head {
+  font-size: 17px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  text-align: center;
+}
+.bio-stability-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbd9c7;
+}
+.bio-stability-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-stability button {
+  min-height: 44px;
+  padding: 8px 15px;
+  font: inherit;
+  color: inherit;
+  background: #f8f7ee;
+  border: 1px solid #ceceba;
+  border-radius: 24px;
+}
+.bio-stability button[aria-pressed='true'] {
+  background: #e8e7d2;
+  border-color: #a8ae8a;
+}
+.bio-stability label {
+  display: grid;
+  gap: 8px;
+}
+.bio-stability input,
+.bio-stability select,
+.bio-stability textarea {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  accent-color: #a5ae83;
+}
+.bio-stability input[type='number'],
+.bio-stability select,
+.bio-stability textarea {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #fcfcf5;
+}
+.bio-stability textarea {
+  min-height: 88px;
+}
+.bio-stability details,
+.bio-stability p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-stability summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-stability button:focus-visible,
+.bio-stability input:focus-visible,
+.bio-stability textarea:focus-visible {
+  outline: 2px solid #a6af87;
+  outline-offset: 3px;
+}
+.bio-stability-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}

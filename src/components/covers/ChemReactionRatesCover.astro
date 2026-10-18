@@ -1,0 +1,72 @@
+---
+import { turbidity, syringeGeometry, zincGas } from '../../models/chem-reaction-rates';
+const g = syringeGeometry(400, zincGas(30, 1).volumeMl);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#dce6d8"></rect>
+  {
+    [2, 1].map((stock, i) => {
+      const x = 77 + i * 68,
+        t = turbidity(20, stock, 25);
+      return (
+        <g>
+          <>
+            <path
+              d={`M${x - 18} 38V178Q${x - 18} 198 ${x} 198Q${x + 18} 198 ${x + 18} 178V38`}
+              fill="#eef5e9"
+              stroke="#9fb4a6"
+              stroke-width="2"
+            />
+            <path
+              d={`M${x - 10} 139l20 20m0 -20l-20 20`}
+              stroke="#617567"
+              stroke-width="4"
+              opacity={t.transmission}
+            />
+            <path
+              d={`M${x - 16} 88V178Q${x - 16} 196 ${x} 196Q${x + 16} 196 ${x + 16} 178V88Z`}
+              fill="#f6edc8"
+              opacity={1 - t.transmission}
+            />
+          </>
+        </g>
+      );
+    })
+  }
+  <g transform="translate(70 0)"
+    ><rect
+      x={g.x0}
+      y="43"
+      width={g.span}
+      height="26"
+      rx="3"
+      fill="#f0f5e9"
+      stroke="#a0b8a9"
+      stroke-width="2"></rect><rect
+      x={g.x0}
+      y="45"
+      width={g.piston - g.x0}
+      height="22"
+      fill="#bdd5ae"></rect><path
+      d={`M${g.piston} 44V68m0 -12h45m0 -10v20`}
+      stroke="#829b8b"
+      stroke-width="3"></path>{
+      [0, 10, 20].map((v) => <path d={`M${g.x0 + (g.span * v) / 20} 42V36`} stroke="#8da492" />)
+    }<path d={`M${g.x0} 56H${g.x0 - 16}V115H190V130`} fill="none" stroke="#9eb5a9" stroke-width="6"
+    ></path><path
+      d="M183 127V146L157 197Q155 205 163 205H237Q245 205 243 197L217 146V127Z"
+      fill="#eff5e9"
+      stroke="#a0b7a8"
+      stroke-width="2"></path><path
+      d="M174 173L160 199Q158 203 166 203H234Q242 203 240 199L226 173Z"
+      fill="#bdd7c9"></path><rect x="181" y="124" width="38" height="9" rx="2" fill="#b8a88e"
+    ></rect>{
+      [0, 1, 2, 3].map((i) => <ellipse cx={183 + i * 11} cy="197" rx="4" ry="3" fill="#8fa49a" />)
+    }{
+      [0, 1, 2].map((i) => (
+        <circle cx={190 + i * 10} cy={180 - i * 10} r="3" fill="#f2f7ed" stroke="#a6bbae" />
+      ))
+    }</g
+  >
+</svg>

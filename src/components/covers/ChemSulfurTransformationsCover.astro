@@ -1,0 +1,50 @@
+---
+import { simulateIronSulfur, heatFrameAt } from '../../models/chem-sulfur-transformations';
+const h = heatFrameAt(simulateIronSulfur(), 3.7);
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#edf0e4"></rect>
+  {
+    ['−2', '0', '+4', '+6'].map((s, i) => (
+      <g>
+        <>
+          <circle cx={120 + i * 135} cy="105" r="30" fill="#e1dfc4" />
+          <text x={120 + i * 135} y="113" text-anchor="middle" fill="#687650" font-size="26">
+            {s}
+          </text>
+        </>
+      </g>
+    ))
+  }
+  <path d="M65 285L105 246H540L580 285V320H65Z" fill="#c9c5b2" stroke="#a6ab92"></path>
+  {
+    h.reacted.map((r, i) => {
+      const g = Math.max(0, Math.min(1, (h.temperature[i] - 0.4) / 0.9));
+      return (
+        <g>
+          <ellipse cx={116 + i * 12} cy="255" rx="11" ry="17" fill="#c58c55" opacity={g * 0.35} />
+          <circle
+            cx={116 + i * 12}
+            cy={259 + (i % 3) * 3}
+            r="7"
+            fill={
+              g > 0.05
+                ? `rgb(${78 + g * 139},${74 + g * 43},${56 + g * 7})`
+                : r > 0.5
+                  ? '#626a56'
+                  : i % 2
+                    ? '#d8c37d'
+                    : '#8a9082'
+            }
+          />
+        </g>
+      );
+    })
+  }
+  <path
+    d="M100 157Q170 207 235 157m-8 1l8-1-2 8M500 157Q440 207 370 157m2 8l-2-8 8 1"
+    fill="none"
+    stroke="#a38c64"
+    stroke-width="2"></path>
+</svg>

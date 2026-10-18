@@ -1,0 +1,131 @@
+.chem-electron-transfer {
+  background: #edeedc;
+  color: #52684f;
+  border-radius: 28px;
+  padding: clamp(22px, 3vw, 36px);
+  font-size: 16px;
+}
+.chem-electron-transfer header p {
+  font-size: clamp(21px, 2.4vw, 28px);
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+.chem-electron-transfer header span {
+  color: #869378;
+}
+.chem-electron-map {
+  max-width: 640px;
+  margin: auto;
+}
+.chem-electron-map svg {
+  width: 100%;
+  display: block;
+  max-height: 300px;
+}
+.chem-electron-equation {
+  text-align: center;
+  font-size: 23px;
+}
+.chem-electron-equation span {
+  display: block;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #849174;
+  margin-top: 12px;
+}
+.chem-electron-ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 28px auto 0;
+  gap: 12px 24px;
+  max-width: 620px;
+}
+.chem-electron-ledger div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 18px;
+  border-top: 1px solid #b9c3a1;
+}
+.chem-electron-ledger div > span {
+  font-size: 21px;
+}
+.chem-electron-ledger div p {
+  margin: 0;
+  line-height: 1.7;
+}
+.chem-electron-ledger > p {
+  grid-column: 1/-1;
+  line-height: 1.7;
+  margin: 0;
+}
+.chem-electron-controls {
+  display: grid;
+  gap: 22px;
+  padding: 22px;
+  background: #fcfaed;
+  border-radius: 20px;
+  margin-top: 24px;
+}
+.chem-electron-controls button,
+.chem-electron-controls input {
+  min-height: 44px;
+}
+.chem-electron-transfer details {
+  color: #7d8e70;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+.chem-electron-transfer summary {
+  cursor: pointer;
+  padding: 10px 0;
+  min-height: 44px;
+}
+.chem-electron-transfer[data-watch='true'] header,
+.chem-electron-transfer[data-watch='true'] .chem-electron-equation span {
+  display: none;
+}
+.chem-electron-transfer[data-watch='true'] .chem-electron-ledger {
+  margin-top: 12px;
+}
+.chem-electron-transfer[data-watch='true'] .chem-electron-ledger > p {
+  display: none;
+}
+.chem-electron-map text {
+  font-size: 28px;
+}
+@media (max-width: 600px) {
+  .chem-electron-transfer {
+    padding: 14px 12px;
+  }
+  .chem-electron-map {
+    margin: 0 -12px;
+  }
+  .chem-electron-map svg {
+    height: 210px;
+  }
+  .chem-electron-equation {
+    font-size: 19px;
+  }
+  .chem-electron-ledger {
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .chem-electron-ledger div {
+    display: block;
+    padding: 12px 5px;
+  }
+  .chem-electron-ledger div p {
+    margin-top: 8px;
+  }
+  .chem-electron-controls {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-electron-transfer {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}

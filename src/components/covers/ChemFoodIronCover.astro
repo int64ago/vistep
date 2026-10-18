@@ -1,0 +1,30 @@
+---
+import { foodIron } from '../../models/chem-food-iron';
+const m = foodIron();
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect><path
+    d="M55 195Q70 320 230 325Q390 320 405 195Z"
+    fill="#d6ddc5"
+    stroke="#a4ae94"
+    stroke-width="2"></path><ellipse cx="230" cy="195" rx="175" ry="35" fill="#abb796"></ellipse>{
+    Array.from({ length: 12 }, (_, i) => (
+      <path
+        d={`M${95 + ((i * 37) % 230)} ${179 + ((i * 13) % 30)}q24-26 44 0q-22 22-44 0`}
+        fill={i % 2 ? '#6d8d52' : '#87a264'}
+      />
+    ))
+  }<path
+    d="M270 70q4-15 20-10t10 22l-35 120q-7 17-25 9t-8-26Z"
+    fill="#c5ccb4"
+    stroke="#96a58b"
+    stroke-width="2"></path><path
+    d="M470 70V280a40 40 0 0 0 80 0V70"
+    fill="#cbd8c833"
+    stroke="#93a28c"
+    stroke-width="2"></path><path
+    d="M473 170H547V280a37 37 0 0 1-74 0Z"
+    fill="#ac4435"
+    opacity={m.signal * 0.85}></path></svg
+>

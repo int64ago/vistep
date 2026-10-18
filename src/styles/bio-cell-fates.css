@@ -1,0 +1,230 @@
+.bio-fates {
+  padding: clamp(14px, 3vw, 28px);
+  border-radius: 24px;
+  background: #eeeddd;
+  color: #59614b;
+}
+.bio-fates-kind {
+  font-size: 16px;
+  color: #858c71;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+.bio-fates-culture {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+.bio-fates-legend,
+.bio-fates-remaining,
+.bio-fates-genechain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 24px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.bio-fates-age {
+  display: grid;
+  gap: 36px;
+  max-width: 660px;
+  margin: 50px auto;
+}
+.bio-fates-age > div {
+  display: grid;
+  grid-template-columns: 100px 1fr 50px;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+}
+.bio-fates-bar {
+  height: 24px;
+  position: relative;
+  border-radius: 8px;
+  background: #d9dfc5;
+}
+.bio-fates-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+  background: #9fb186;
+}
+.bio-fates-bar b {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  background: #7e926b;
+}
+.bio-fates-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 650px;
+  margin: 16px auto 0;
+}
+.bio-fates-swap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  text-align: center;
+}
+.bio-fates-swap svg {
+  width: 100%;
+  height: 240px;
+  display: block;
+}
+.bio-fates-swap p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 7px 0;
+}
+.bio-fates-limits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 700px;
+  margin: auto;
+}
+.bio-fates-limits strong {
+  font-size: 24px;
+  font-weight: 500;
+}
+.bio-fates-limits svg {
+  width: 100%;
+  height: 140px;
+  display: block;
+}
+.bio-fates-limits p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-fates-limits > .bio-fates-note {
+  grid-column: 1/-1;
+}
+.bio-fates-worm {
+  display: block;
+  width: 100%;
+  height: 125px;
+}
+.bio-fates-lineage {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+.bio-fates-genechain {
+  margin-top: 12px;
+  color: #7e8e63;
+}
+.bio-fates-controls {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+.bio-fates-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-fates-controls button {
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  padding: 8px 12px;
+  background: #f7f7e9;
+  border: 1px solid #c1c9ac;
+  border-radius: 12px;
+}
+@media (max-width: 540px) {
+  .bio-fates-culture {
+    height: 255px;
+  }
+  .bio-fates-age {
+    gap: 30px;
+    margin: 35px auto;
+  }
+  .bio-fates-age > div {
+    grid-template-columns: 80px 1fr 38px;
+    gap: 10px;
+  }
+  .bio-fates-swap {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .bio-fates-swap svg {
+    height: 120px;
+  }
+  .bio-fates-limits {
+    gap: 15px;
+  }
+  .bio-fates-limits svg {
+    height: 110px;
+  }
+  .bio-fates-worm {
+    height: 90px;
+  }
+  .bio-fates-lineage {
+    height: 175px;
+  }
+}
+
+.bio-fates-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+  max-width: 450px;
+  margin: 14px auto;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 540px) {
+  .bio-fates {
+    padding: 12px;
+  }
+  .bio-fates[data-watch='true'] .bio-fates-kind {
+    display: none;
+  }
+  .bio-fates-culture {
+    height: 225px;
+  }
+  .bio-fates-age {
+    margin: 22px auto;
+    gap: 24px;
+  }
+  .bio-fates-swap svg {
+    height: 105px;
+  }
+  .bio-fates-limits svg {
+    height: 80px;
+  }
+  .bio-fates-limits p {
+    margin: 8px 0;
+  }
+  .bio-fates-limits {
+    gap: 10px;
+  }
+  .bio-fates-worm {
+    height: 55px;
+  }
+  .bio-fates-lineage {
+    height: 138px;
+  }
+  .bio-fates-legend {
+    gap: 4px 12px;
+  }
+  .bio-fates-genechain {
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .bio-fates-note {
+    margin-top: 8px;
+  }
+  .bio-fates-comparison {
+    gap: 4px 10px;
+    margin: 8px auto;
+  }
+  .bio-fates[data-mode='genes'] .bio-fates-legend {
+    display: none;
+  }
+}

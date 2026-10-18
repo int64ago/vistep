@@ -1,0 +1,28 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><defs
+    ><radialGradient id="soap-o"
+      ><stop stop-color="#e6cc8c"></stop><stop offset="1" stop-color="#c5a65f"
+      ></stop></radialGradient
+    ></defs
+  ><rect width="640" height="400" fill="#e3ecdd"></rect><path
+    d="M0 329Q90 313 180 330T360 329T640 330V400H0"
+    fill="#c0b58f"></path><circle cx="320" cy="182" r="94" fill="url(#soap-o)"></circle>{
+    Array.from({ length: 20 }, (_, i) => {
+      const a = (i / 20) * Math.PI * 2,
+        x = 320 + 112 * Math.cos(a),
+        y = 182 + 112 * Math.sin(a),
+        tx = 320 + 60 * Math.cos(a),
+        ty = 182 + 60 * Math.sin(a);
+      return (
+        <g>
+          <path d={`M${x} ${y}L${tx} ${ty}`} stroke="#aa9164" stroke-width="4" />
+          <circle cx={x} cy={y} r="9" fill="#759b80" stroke="#f1f7e8" stroke-width="2" />
+        </g>
+      );
+    })
+  }<path
+    d="M68 80Q95 52 115 83M520 252Q547 220 565 250"
+    fill="none"
+    stroke="#b4cfc0"
+    stroke-width="3"></path></svg
+>

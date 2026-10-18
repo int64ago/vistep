@@ -13,10 +13,14 @@ export type DiscoveryCategory =
   | 'computing'
   | 'nature'
   | 'matter'
+  | 'chemistry'
+  | 'life'
   | 'math-systems'
   | 'weapons-safety';
 export const discoveryCategories: { id: DiscoveryCategory; label: { zh: string; en: string } }[] = [
   { id: 'matter', label: { zh: '原子与物质', en: 'Atoms & matter' } },
+  { id: 'chemistry', label: { zh: '化学与反应', en: 'Chemistry & reactions' } },
+  { id: 'life', label: { zh: '生命与生态', en: 'Life & ecology' } },
   {
     id: 'mechanisms',
     label: {
@@ -97,6 +101,1657 @@ export function discoverySearchKeywords(slug: string): string {
 }
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  'chem-pigment-chromatography': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['色素柱色谱', '色谱', '茨韦特', '植物色素'],
+      en: ['Pigment column chromatography', 'chromatography', 'Tswett', 'plant pigments'],
+    },
+  },
+  'chem-host-guest-recognition': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['主客体分子识别', '超分子', '杯酚', '富勒烯', '冠醚', '分子识别'],
+      en: ['Host–guest molecular recognition', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-corrosion-protection': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '金属腐蚀、防护与暖贴研究',
+        '吸氧腐蚀',
+        '牺牲阳极',
+        '铁氰化钾',
+        '酚酞',
+        '暖贴',
+        '金属接触腐蚀',
+      ],
+      en: [
+        'Corrosion, protection and warmer research',
+        'oxygen absorption corrosion',
+        'sacrificial anode',
+        'ferricyanide',
+        'phenolphthalein',
+        'hand warmer',
+        'galvanic contact',
+      ],
+    },
+  },
+  'chem-benzoic-recrystallization': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['苯甲酸重结晶', '苯甲酸', '重结晶', '溶解度'],
+      en: ['Benzoic acid recrystallization', 'benzoic acid', 'recrystallization', 'solubility'],
+    },
+  },
+  'chem-coordination-colors': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['配位改变颜色与溶解', '配合物', '铜氨', '氯化银', '配位键', '硫氰化铁', '配体'],
+      en: ['Coordination changes color and solubility', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-electrolysis-plating': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['电解与铜电镀', '氯化铜电解', '铁件镀铜', '表面处理', '法拉第电解定律', '电镀极性'],
+      en: [
+        'Electrolysis and copper plating',
+        'copper chloride electrolysis',
+        'copper plating iron',
+        'surface preparation',
+        'Faraday electrolysis law',
+        'electroplating polarity',
+      ],
+    },
+  },
+  'chem-solvent-extraction': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['萃取与分液', '萃取', '分液漏斗', '分配比'],
+      en: [
+        'Extraction and layer separation',
+        'extraction',
+        'separatory funnel',
+        'distribution ratio',
+      ],
+    },
+  },
+  'chem-metal-and-graphite': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['金属与石墨的电子结构', '金属键', '电子气', '石墨', '各向异性', '位错', '电导', 'p轨道'],
+      en: [
+        'Electronic structure in metals and graphite',
+        'structure of matter',
+        'chemical evidence',
+      ],
+    },
+  },
+  'chem-distillation': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['蒸馏与馏分', '蒸馏', '馏分', '汽液平衡'],
+      en: ['Distillation and fractions', 'distillation', 'fractions', 'vapour liquid equilibrium'],
+    },
+  },
+  'chem-hydrolysis-applications': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['盐的水解与实验条件', '盐类水解', '硫酸铁', '净水', '氢氧化铁胶体', '纯碱去油'],
+      en: [
+        'Salt hydrolysis and experimental conditions',
+        'salt hydrolysis',
+        'ferric sulfate',
+        'clarification',
+        'iron hydroxide colloid',
+        'carbonate cleaning',
+      ],
+    },
+  },
+  'chem-crystal-bonding': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['晶体中的连接层次', '分子晶体', '共价晶体', '金刚石', '石英', '解理', '氢键'],
+      en: ['Bonding levels in crystals', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-seawater-membranes': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['海水与分离膜', '海水淡化', '反渗透', '高分子膜'],
+      en: ['Seawater and separation membranes', 'desalination', 'osmosis', 'polymer membrane'],
+    },
+  },
+  'chem-crystal-diffraction': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['晶胞与衍射的证据', '晶胞', '面心立方', '准晶', '彭罗斯', 'X射线', '衍射', '青蒿素'],
+      en: ['Unit cells and diffraction evidence', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-metal-extraction': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['金属冶炼的还原路线', '金属冶炼', '还原', '电解', '铝热反应'],
+      en: ['Metal extraction routes', 'metallurgy', 'reduction', 'electrolysis', 'thermite'],
+    },
+  },
+  'chem-petroleum-refining': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['石油的分离与裂化', '原油', '分馏', '裂化', '裂解', '乙烯', '丙烯', '沸点'],
+      en: [
+        'Separating and cracking petroleum',
+        'crude oil',
+        'fractionation',
+        'cracking',
+        'pyrolysis',
+        'ethene',
+        'propene',
+        'boiling point',
+      ],
+    },
+  },
+  'chem-acid-base-titration': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['最后半滴与滴定读数', '酸碱滴定', '酚酞', '滴定管', '当量点', '半滴'],
+      en: [
+        'The last half-drop and the burette reading',
+        'acid-base titration',
+        'phenolphthalein',
+        'burette',
+        'equivalence',
+        'partial drop',
+      ],
+    },
+  },
+  'chem-tofu-coagulation': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['豆腐的制作', '豆腐', '蛋白质', '凝胶', '凝固剂'],
+      en: ['Making tofu', 'tofu', 'protein', 'gel', 'coagulant'],
+    },
+  },
+  'chem-protein-structure': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['蛋白质的多级结构', '蛋白质', '肽链', '二级结构', '四级结构', '血红蛋白'],
+      en: [
+        'Levels of protein structure',
+        'protein',
+        'peptide',
+        'secondary structure',
+        'quaternary structure',
+        'hemoglobin',
+      ],
+    },
+  },
+  'chem-crystal-growth': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['晶体从哪里长出来', '结晶', '明矾', '晶种', '碘', '凝华', '同离子效应', '套色晶体'],
+      en: ['Where crystals grow from', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-acid-evidence': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['弱酸的三种证据', '醋酸', '盐酸', '电离平衡', '压强传感器', '碳酸钠'],
+      en: [
+        'Three kinds of weak-acid evidence',
+        'acetic acid',
+        'hydrochloric acid',
+        'ionization equilibrium',
+        'pressure transducer',
+        'sodium carbonate',
+      ],
+    },
+  },
+  'chem-protein-states': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['蛋白质的盐析与变性', '蛋白质', '盐析', '变性', '硫酸铵', '显色'],
+      en: [
+        'Protein salting out and denaturation',
+        'protein',
+        'salting out',
+        'denaturation',
+        'ammonium sulfate',
+        'xanthoproteic',
+      ],
+    },
+  },
+  'chem-liquid-crystal': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['液晶的两次变化', '液晶', '莱尼采尔', '澄清点', '取向序', '相变', '显示器'],
+      en: ['The two transitions of liquid crystals', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-sugar-tests': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['糖类的检验与水解', '还原糖', '淀粉', '葡萄糖', '蔗糖', '麦芽糖', '纤维素'],
+      en: [
+        'Sugar tests and hydrolysis',
+        'reducing sugar',
+        'starch',
+        'glucose',
+        'sucrose',
+        'maltose',
+        'cellulose',
+      ],
+    },
+  },
+  'chem-equilibrium-response': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['平衡改变之前，颜色先发生了什么', '化学平衡', '勒夏特列', '二氧化氮', '铜盐', '合成氨'],
+      en: [
+        'What changes before equilibrium shifts?',
+        'chemical equilibrium',
+        'Le Chatelier',
+        'nitrogen dioxide',
+        'copper complexes',
+        'ammonia synthesis',
+      ],
+    },
+  },
+  'chem-chirality-evidence': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['手性、晶体与旋光证据', '手性', '对映体', '旋光', '巴斯德', '外消旋', '晶体分选'],
+      en: ['Chirality, crystals and optical evidence', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-ester-reaction': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['乙酸乙酯的制备与水解', '乙酸乙酯', '乙酸', '酯化', '水解', '碳酸钠'],
+      en: [
+        'Preparing and hydrolysing an ester',
+        'ethyl acetate',
+        'ethanoic acid',
+        'esterification',
+        'hydrolysis',
+        'sodium carbonate',
+      ],
+    },
+  },
+  'chem-reaction-rates': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['怎样比较化学反应的快慢', '化学反应速率', '硫代硫酸钠', '气体注射器', '催化剂'],
+      en: [
+        'How to compare reaction rates',
+        'reaction rate',
+        'thiosulfate',
+        'gas syringe',
+        'catalyst',
+      ],
+    },
+  },
+  'chem-hydrogen-bond-network': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氢键与冰的开放结构', '氢键', '冰', '水', '四面体', '晶体', '密度'],
+      en: [
+        'Hydrogen bonds and the open structure of ice',
+        'structure of matter',
+        'chemical evidence',
+      ],
+    },
+  },
+  'chem-alcohol-oxidation': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['乙醇的两种氧化', '乙醇', '铜丝', '氧化铜', '重铬酸钾'],
+      en: ['Two oxidation routes for ethanol', 'ethanol', 'copper', 'copper oxide', 'dichromate'],
+    },
+  },
+  'chem-sodium-alcohol': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['钠与乙醇的证据链', '乙醇', '钠', '羟基', '氢气', '石灰水', '对照'],
+      en: [
+        'Evidence from sodium and ethanol',
+        'ethanol',
+        'sodium',
+        'hydroxyl',
+        'hydrogen',
+        'limewater',
+        'comparison',
+      ],
+    },
+  },
+  'chem-mass-spectrometry': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['质谱分离与分子式证据', '质谱', '分子离子', '碎片离子', '质荷比', '同位素', '分子式'],
+      en: [
+        'Mass separation and molecular-formula evidence',
+        'structure of matter',
+        'chemical evidence',
+      ],
+    },
+  },
+  'chem-galvanic-cells': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['原电池中的两条电荷通路', '锌铜原电池', '盐桥', '水果电池', '燃料电池'],
+      en: [
+        'Two charge pathways in a galvanic cell',
+        'zinc copper cell',
+        'salt bridge',
+        'fruit battery',
+        'fuel cell',
+      ],
+    },
+  },
+  'chem-unsaturated-hydrocarbons': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['乙烯与乙炔的性质证据', '乙烯', '乙炔', '高锰酸钾', '溴', '加成', '电石', '净化'],
+      en: [
+        'Evidence from ethene and ethyne',
+        'ethene',
+        'ethyne',
+        'permanganate',
+        'bromine',
+        'addition',
+        'calcium carbide',
+        'purification',
+      ],
+    },
+  },
+  'chem-infrared-structure': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['红外吸收与结构证据', '红外光谱', '透过率', '吸光度', '振动', '羟基', '同分异构体'],
+      en: [
+        'Infrared absorption and structural evidence',
+        'structure of matter',
+        'chemical evidence',
+      ],
+    },
+  },
+  'chem-noble-gas-evidence': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['稀有气体的发现证据', '稀有气体', '氦', '氩', '氙', '光谱', '密度', '科学史'],
+      en: ['Evidence behind noble-gas discoveries', 'structure of matter', 'chemical evidence'],
+    },
+  },
+  'chem-methane-substitution': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['甲烷的光照取代', '甲烷', '氯气', '光照', '取代反应', '液滴'],
+      en: [
+        'Light-induced methane substitution',
+        'methane',
+        'chlorine',
+        'light',
+        'substitution',
+        'droplets',
+      ],
+    },
+  },
+  'bio-biotechnology-investigation': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['转基因产品的证据调查', '转基因产品', '标识调查', '安全证书', '科普计划', '营销证据'],
+      en: [
+        'Investigating evidence about GM products',
+        'GM products',
+        'label investigation',
+        'biosafety certificates',
+        'science communication',
+        'marketing evidence',
+      ],
+    },
+  },
+  'chem-polymer-networks': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['聚合物连接与吸水网络', '有机化学', '化学实验'],
+      en: ['Polymer links and absorbing networks', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-calorimetry': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['温差与融冰量热', '量热计', '中和热', '温差', '融冰', '拉瓦锡', '误差'],
+      en: [
+        'Temperature-rise and ice calorimetry',
+        'calorimeter',
+        'neutralisation',
+        'temperature rise',
+        'melting ice',
+        'Lavoisier',
+        'error',
+      ],
+    },
+  },
+  'bio-protein-design': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['从蛋白质功能到序列证据', '胰岛素', '赖脯胰岛素', '蛋白质工程', '序列比对', 'BLAST'],
+      en: [
+        'From protein function to sequence evidence',
+        'insulin',
+        'lispro',
+        'protein engineering',
+        'sequence alignment',
+        'BLAST',
+      ],
+    },
+  },
+  'chem-bond-energy': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['键能账本与盖斯路径', '键能', '断键', '成键', '盖斯定律', '焓', '反应热'],
+      en: [
+        'Bond-energy accounts and Hess paths',
+        'bond energy',
+        'bond breaking',
+        'bond formation',
+        'Hess law',
+        'enthalpy',
+        'reaction heat',
+      ],
+    },
+  },
+  'chem-organic-detection': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['有机结构与鉴别证据', '有机化学', '化学实验'],
+      en: [
+        'Organic structures and identification evidence',
+        'organic chemistry',
+        'chemical evidence',
+      ],
+    },
+  },
+  'chem-soap-assembly': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['肥皂的形成与去污', '有机化学', '化学实验'],
+      en: ['Soap formation and cleaning', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-reaction-heat': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['反应热与冷热证据', '放热', '吸热', '反应热', '镁', '氯化铵', '氢氧化钡', '结冰'],
+      en: [
+        'Reaction heat and thermal evidence',
+        'exothermic',
+        'endothermic',
+        'reaction heat',
+        'magnesium',
+        'ammonium chloride',
+        'barium hydroxide',
+        'freezing',
+      ],
+    },
+  },
+  'bio-dna-engineering': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['从DNA分子到电泳条带', '限制酶', 'DNA连接酶', 'DNA粗提取', 'PCR', '琼脂糖凝胶电泳'],
+      en: [
+        'From DNA molecules to gel bands',
+        'restriction enzymes',
+        'DNA ligase',
+        'DNA extraction',
+        'PCR',
+        'agarose gel electrophoresis',
+      ],
+    },
+  },
+  'chem-aldehyde-tests': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['醛的两种还原检验', '有机化学', '化学实验'],
+      en: ['Two reducing tests for aldehydes', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-phenol-properties': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['苯酚的多种证据', '有机化学', '化学实验'],
+      en: ['Phenol through several kinds of evidence', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-rainwater-ph': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['雨水pH与测量证据', '雨水', '酸雨', 'pH', '参照', '校准', '平均酸度'],
+      en: [
+        'Rainwater pH and measurement evidence',
+        'rainwater',
+        'acid rain',
+        'pH',
+        'calibration',
+        'uncertainty',
+        'average acidity',
+      ],
+    },
+  },
+  'chem-elimination-substitution': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['取代、消去与证据', '有机化学', '化学实验'],
+      en: ['Substitution, elimination and evidence', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'bio-embryo-engineering': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['胚胎的形成、转移与分割', '体外受精', '胚胎移植', '胚胎分割', '内细胞团'],
+      en: [
+        'Embryo formation, transfer and splitting',
+        'in vitro fertilization',
+        'embryo transfer',
+        'embryo splitting',
+        'inner cell mass',
+      ],
+    },
+  },
+  'chem-salt-purification': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['粗盐提纯的离子去向', '粗盐', '精盐', '沉淀', '过滤', '氯化钡', '碳酸钠'],
+      en: [
+        'Where ions go during salt purification',
+        'crude salt',
+        'purification',
+        'precipitation',
+        'filtration',
+        'barium',
+        'carbonate',
+      ],
+    },
+  },
+  'bio-animal-cell-engineering': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['动物细胞的培养与工程', '动物细胞培养', '单克隆抗体', '杂交瘤', '体细胞核移植'],
+      en: [
+        'Animal-cell culture and engineering',
+        'animal cell culture',
+        'monoclonal antibodies',
+        'hybridomas',
+        'somatic nuclear transfer',
+      ],
+    },
+  },
+  'chem-aromatic-comparison': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['萃取还是反应', '芳香烃', '苯', '甲苯', '溴水', '萃取', '侧链氧化'],
+      en: ['Extraction or reaction', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-ammonium-cycle': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['铵根检验与氨的收集', '铵根', '氨', '石蕊', '气体收集', '倒吸'],
+      en: [
+        'Testing ammonium and collecting ammonia',
+        'ammonium',
+        'ammonia',
+        'litmus',
+        'gas collection',
+        'suck-back',
+      ],
+    },
+  },
+  'chem-nmr-hydrogen': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氢谱里的结构线索', '核磁共振', '氢谱', '乙醇', '二甲醚', '积分'],
+      en: ['Structural clues in proton NMR', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-ammonium-smoke': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氨与氯化氢的白烟', '氨', '氯化氢', '氯化铵', '白烟', '气溶胶'],
+      en: [
+        'Ammonia and hydrogen chloride: white smoke',
+        'ammonia',
+        'hydrogen chloride',
+        'ammonium chloride',
+        'white smoke',
+        'aerosol',
+      ],
+    },
+  },
+  'bio-plant-cell-engineering': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['植物细胞的再生与融合', '菊花组织培养', '原生质体融合', '植物体细胞杂交', '激素配比'],
+      en: [
+        'Plant-cell regeneration and fusion',
+        'chrysanthemum tissue culture',
+        'protoplast fusion',
+        'somatic hybridization',
+        'hormone ratio',
+      ],
+    },
+  },
+  'chem-elemental-analysis': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['称出碳与氢', '李比希', '元素分析', '燃烧分析', '实验式'],
+      en: ['Weighing carbon and hydrogen', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-wohler-isomers': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['组成相同，结构不同', '同分异构', '维勒', '尿素', '顺反异构'],
+      en: ['Same composition, different structures', 'organic chemistry', 'chemical evidence'],
+    },
+  },
+  'chem-ammonia-fountain': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氨的喷泉', '氨', '喷泉', '酚酞', '压差', '溶解'],
+      en: [
+        'The ammonia fountain',
+        'ammonia',
+        'fountain',
+        'phenolphthalein',
+        'pressure',
+        'solubility',
+      ],
+    },
+  },
+  'bio-microbial-culture': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['从分散菌体到培养证据', '酵母纯培养', '微生物筛选', '尿素分解菌', '菌落计数'],
+      en: [
+        'From dispersed cells to culture evidence',
+        'yeast pure culture',
+        'microbial screening',
+        'urea-degrading bacteria',
+        'colony counting',
+      ],
+    },
+  },
+  'bio-evolution-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['进化证据与种群变化', '共同祖先', '进化', '自然选择', '基因频率', '抗生素', '隔离'],
+      en: ['Evolutionary evidence and population change', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-nitrogen-oxides': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氮氧化物的颜色与去向', '一氧化氮', '二氧化氮', '注射器', '硝酸', '铜', '氧气限制'],
+      en: [
+        'Nitrogen oxides: colour and fate',
+        'nitric oxide',
+        'nitrogen dioxide',
+        'syringe',
+        'nitric acid',
+        'copper',
+        'limiting oxygen',
+      ],
+    },
+  },
+  'bio-fermentation-pathways': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['发酵的容器与条件', '泡菜', '果酒果醋', '亚硝酸盐检测', '发酵罐'],
+      en: [
+        'Vessels and conditions in fermentation',
+        'pickles',
+        'wine and vinegar',
+        'nitrite calibration',
+        'bioreactor',
+      ],
+    },
+  },
+  'chem-sulfur-transformations': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '不同价态硫的转化',
+        '硫',
+        '价态',
+        '硫化钠',
+        '亚硫酸',
+        '高锰酸钾',
+        '铜',
+        '浓硫酸',
+        '硫化亚铁',
+      ],
+      en: [
+        'Sulfur across oxidation states',
+        'sulfur',
+        'oxidation states',
+        'sulfide',
+        'permanganate',
+        'copper',
+        'sulfuric acid',
+        'iron sulfide',
+      ],
+    },
+  },
+  'bio-conservation-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '环境调查与生态保护证据',
+        '环境调查',
+        '生物多样性保护',
+        '沼气池',
+        '生态工程',
+        '碳汇样方',
+      ],
+      en: [
+        'Evidence for environmental conservation',
+        'environmental survey',
+        'biodiversity conservation',
+        'biogas digester',
+        'ecological engineering',
+        'carbon inventory',
+      ],
+    },
+  },
+  'bio-mutation-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['变异与实验判据', '突变', '染色体', '低温诱导', '病例对照', '倒位', '易位'],
+      en: ['Variation and experimental evidence', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-gene-expression': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['基因表达与性状证据', '基因表达', '表观遗传', '甲基化', '柳穿鱼', '果蝇', '性状'],
+      en: ['Gene expression and trait evidence', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-sugar-carbonization': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['蔗糖的脱水与膨胀', '浓硫酸', '蔗糖', '脱水性', '氧化性', '碳', '孔隙'],
+      en: [
+        'Sucrose dehydration and expansion',
+        'concentrated sulfuric acid',
+        'sucrose',
+        'dehydration',
+        'oxidation',
+        'carbon',
+        'porosity',
+      ],
+    },
+  },
+  'bio-ecosystem-stability': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['信息传递与生态系统稳定性', '化学信息', '蚕蛾醇', '负反馈', '抵抗力稳定性', '生态缸'],
+      en: [
+        'Information and ecosystem stability',
+        'pheromone',
+        'bombykol',
+        'negative feedback',
+        'resistance',
+        'ecological tank',
+      ],
+    },
+  },
+  'bio-genetic-code': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['遗传密码与蛋白质合成', '遗传密码', '转录', '翻译', '移码', '多聚U', '核糖体'],
+      en: ['Genetic code and protein synthesis', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-sulfur-dioxide': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['二氧化硫的连续观察', '二氧化硫', '品红', '漂白', '加热复色', '酸性'],
+      en: [
+        'Following sulfur dioxide',
+        'sulfur dioxide',
+        'fuchsin',
+        'bleaching',
+        'colour recovery',
+        'acidity',
+      ],
+    },
+  },
+  'bio-soil-decomposition': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['土壤微生物的分解作用', '落叶腐烂', '淀粉分解', '土壤浸出液', '斐林试剂', '碘液'],
+      en: [
+        'Decomposition by soil microbes',
+        'litter decay',
+        'starch hydrolysis',
+        'soil extract',
+        'Fehling reagent',
+        'iodine test',
+      ],
+    },
+  },
+  'chem-molecular-shapes': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '分子的空间形状',
+        '分子空间结构',
+        '价层电子对互斥',
+        '气球模型',
+        '键角',
+        '偶极',
+        '分子极性',
+      ],
+      en: [
+        'Molecular shapes',
+        'molecular shape',
+        'VSEPR',
+        'balloon analogy',
+        'bond angle',
+        'dipole',
+        'polarity',
+      ],
+    },
+  },
+  'bio-dna-replication': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['DNA复制的证据与过程', '细胞', '生物实验'],
+      en: ['Evidence and mechanism of DNA replication', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-ecosystem-energy': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['生态系统的能量与物质', '林德曼', '能量流动', '碳循环', '生物富集', '食物网调查'],
+      en: [
+        'Energy and matter in ecosystems',
+        'Lindeman',
+        'energy flow',
+        'carbon cycle',
+        'bioaccumulation',
+        'food web investigation',
+      ],
+    },
+  },
+  'chem-carbon-frameworks': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '碳骨架与空间结构',
+        '球棍模型',
+        '甲烷',
+        '乙烷',
+        '乙烯',
+        '乙炔',
+        '二氯甲烷',
+        '丁烷',
+        '同分异构',
+      ],
+      en: [
+        'Carbon frameworks in space',
+        'ball and stick',
+        'methane',
+        'ethane',
+        'ethene',
+        'ethyne',
+        'dichloromethane',
+        'butane',
+        'isomerism',
+      ],
+    },
+  },
+  'bio-dna-structure': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['DNA结构的约束与模型', '细胞', '生物实验'],
+      en: ['DNA constraints and structural models', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-community-survey': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['群落调查与演替', '生态位', '诱虫器', '土壤动物', '初生演替', '次生演替'],
+      en: [
+        'Community surveys and succession',
+        'ecological niche',
+        'Berlese funnel',
+        'soil fauna',
+        'primary succession',
+        'secondary succession',
+      ],
+    },
+  },
+  'chem-bond-overlap': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['电子式与轨道重叠', '离子键', '共价键', '电子式', 'σ键', 'π键', '轨道重叠'],
+      en: [
+        'Lewis diagrams and orbital overlap',
+        'ionic bond',
+        'covalent bond',
+        'Lewis diagram',
+        'sigma',
+        'pi',
+        'orbital overlap',
+      ],
+    },
+  },
+  'bio-genetic-material': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['遗传物质的三条证据', '细胞', '生物实验'],
+      en: ['Three lines of evidence for genetic material', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-community-interactions': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['竞争、捕食与群落', '草履虫竞争', '雪兔猞猁', '海星移除', '关键物种'],
+      en: [
+        'Competition, predation and communities',
+        'Paramecium competition',
+        'hare lynx',
+        'sea star removal',
+        'keystone predator',
+      ],
+    },
+  },
+  'chem-periodic-patterns': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['周期表与性质趋势', '周期表', '电子排布', '电负性', '电离能', '铬', '铜'],
+      en: [
+        'Periodic tables and property trends',
+        'periodic table',
+        'electron configuration',
+        'electronegativity',
+        'ionization energy',
+        'chromium',
+        'copper',
+      ],
+    },
+  },
+  'bio-linked-inheritance': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['性连锁、系谱与人群调查', '细胞', '生物实验'],
+      en: ['Sex linkage, pedigrees and population surveys', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-atomic-models': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '原子模型与电子云',
+        '原子模型',
+        '道尔顿',
+        '汤姆孙',
+        '卢瑟福',
+        '玻尔',
+        '电子云',
+        '原子轨道',
+      ],
+      en: [
+        'Atomic models and electron clouds',
+        'atomic models',
+        'Dalton',
+        'Thomson',
+        'Rutherford',
+        'Bohr',
+        'electron cloud',
+        'orbital',
+      ],
+    },
+  },
+  'bio-population-growth': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['种群增长与培养计数', '酵母菌', '血细胞计数板', '种群增长', '郁闭度'],
+      en: [
+        'Population growth and culture counts',
+        'yeast',
+        'hemocytometer',
+        'population growth',
+        'carrying capacity',
+      ],
+    },
+  },
+  'chem-periodic-practical': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '同周期与同主族的实验比较',
+        '实验4-1',
+        '实验活动3',
+        '第三周期',
+        '氯溴碘',
+        '镁',
+        '氢氧化铝',
+      ],
+      en: [
+        'Experimental comparisons across a period and a group',
+        'periodic trends',
+        'halogen displacement',
+        'magnesium water',
+        'aluminium hydroxide',
+        'spotting tile',
+      ],
+    },
+  },
+  'bio-meiosis': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['减数分裂与染色体传递', '细胞', '生物实验'],
+      en: ['Meiosis and chromosome transmission', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-population-sampling': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['种群调查与取样', '样方', '标记重捕', '黑光灯', '种群密度'],
+      en: [
+        'Population surveys and sampling',
+        'quadrats',
+        'mark recapture',
+        'light traps',
+        'population density',
+      ],
+    },
+  },
+  'chem-iron-practical': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['铁及其化合物的实验活动', '实验活动2', '铁丝', '铜片', '碘化钾', '锌片', '高锰酸钾'],
+      en: [
+        'Practical investigations of iron and its compounds',
+        'iron practical',
+        'copper displacement',
+        'iodide starch',
+        'zinc',
+        'permanganate',
+      ],
+    },
+  },
+  'chem-food-iron': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['食品中铁元素的检验', '菠菜', '食品检铁', '过滤', '硫氰化钾'],
+      en: ['Testing for iron in food', 'spinach', 'food iron test', 'filtration', 'thiocyanate'],
+    },
+  },
+  'chem-aluminium-film': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['铝表面的氧化膜与酸碱反应', '铝片', '氧化铝', '盐酸', '氢氧化钠', '实验3-4', '实验3-5'],
+      en: [
+        'Aluminium oxide films in acid and base',
+        'aluminium',
+        'aluminum',
+        'oxide film',
+        'hydrochloric acid',
+        'sodium hydroxide',
+      ],
+    },
+  },
+  'chem-copper-etching': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['覆铜板蚀刻与图案保留', '覆铜板', '蚀刻', '氯化铁', '印刷电路板'],
+      en: [
+        'Copper etching and protected patterns',
+        'copper clad board',
+        'etching',
+        'ferric chloride',
+        'printed circuit board',
+      ],
+    },
+  },
+  'bio-plant-environment': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['植物的环境感知', '光敏色素', '春化', '重力', '根冠'],
+      en: [
+        'Environmental sensing in plants',
+        'phytochrome',
+        'vernalization',
+        'gravitropism',
+        'root cap',
+      ],
+    },
+  },
+  'bio-mendel-crosses': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['孟德尔的豌豆杂交', '细胞', '生物实验'],
+      en: ['Mendel’s pea crosses', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-iron-hydroxides': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['铁的氢氧化物与空气氧化', '氢氧化亚铁', '氢氧化铁', '实验3-1', '沉淀颜色'],
+      en: [
+        'Iron hydroxides and oxidation by air',
+        'ferrous hydroxide',
+        'ferric hydroxide',
+        'oxygen',
+        'precipitate',
+      ],
+    },
+  },
+  'bio-cell-fates': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['细胞的分化、衰老与凋亡', '细胞', '生物实验'],
+      en: ['Differentiation, senescence and cell death', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-iron-steam': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['铁与水蒸气的反应', '铁粉', '水蒸气', '四氧化三铁', '氢气'],
+      en: ['Iron reacting with steam', 'iron powder', 'steam', 'magnetite', 'hydrogen'],
+    },
+  },
+  'bio-plant-growth-regulators': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['植物生长调节剂的探究', '赤霉素', '插条生根', '乙烯利'],
+      en: ['Investigating plant growth regulators', 'gibberellin', 'rooting cuttings', 'ethephon'],
+    },
+  },
+  'chem-iron-cycle': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['铁离子的显色与转化', '铁离子', '亚铁离子', '硫氰酸根', '配合平衡'],
+      en: [
+        'Iron-ion colour, redox and coordination',
+        'iron III',
+        'iron II',
+        'thiocyanate',
+        'coordination equilibrium',
+      ],
+    },
+  },
+  'bio-cell-division': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['细胞分裂与固定观察', '有丝分裂', '根尖', '细胞周期', 'mitosis'],
+      en: ['Cell division and fixed specimens', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-auxin-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['生长素的证据链', '向光性', '胚芽鞘', '极性运输'],
+      en: ['Evidence for auxin', 'phototropism', 'coleoptile', 'polar transport'],
+    },
+  },
+  'bio-photosynthesis-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['光合作用的证据链', '光合作用', '恩格尔曼', '希尔反应', '卡尔文'],
+      en: ['Evidence for photosynthesis', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-hydrogen-chlorine': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氢气在氯气中燃烧', '氢气', '氯气', '氯化氢', '白雾'],
+      en: [
+        'Hydrogen burning in chlorine',
+        'hydrogen',
+        'chlorine',
+        'hydrogen chloride',
+        'acid mist',
+      ],
+    },
+  },
+  'chem-chlorine-discovery': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氯气：发现、收集与尾气', '舍勒', '戴维', '氯气', '尾气吸收'],
+      en: [
+        'Chlorine: discovery, collection and tail gas',
+        'Scheele',
+        'Davy',
+        'chlorine',
+        'tail gas absorption',
+      ],
+    },
+  },
+  'bio-leaf-pigments': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['叶片的色带与光谱', '叶绿素', '层析', '吸收光谱', 'chromatography'],
+      en: ['Leaf bands and spectra', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-chlorine-photolysis': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['氯水光照的三路证据', '氯水', '光照分解', '次氯酸', 'pH传感器'],
+      en: [
+        'Three channels of chlorine-water photolysis evidence',
+        'chlorine water',
+        'photolysis',
+        'hypochlorous acid',
+        'pH sensor',
+      ],
+    },
+  },
+  'bio-immune-pathways': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['免疫路径与证据', '脑膜淋巴管', '抗体', '特异性免疫'],
+      en: [
+        'Immune pathways and evidence',
+        'meningeal lymphatics',
+        'antibodies',
+        'adaptive immunity',
+      ],
+    },
+  },
+  'chem-chlorine-bleaching': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['干湿对照与氯气漂白', '氯气', '漂白', '干湿纸条', '次氯酸'],
+      en: [
+        'Dry and damp controls in chlorine bleaching',
+        'chlorine',
+        'bleaching',
+        'dry and damp paper',
+        'hypochlorous acid',
+      ],
+    },
+  },
+  'bio-respiration': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['呼吸的气路与碳路径', '呼吸作用', '酵母菌', 'ATP', 'respiration'],
+      en: ['Respiratory gas and carbon pathways', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-solution-preparation': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['容量瓶与定量配液', '容量瓶', '定容', '洗涤', '稀释'],
+      en: [
+        'Volumetric preparation and dilution',
+        'volumetric flask',
+        'quantitative transfer',
+        'meniscus',
+        'dilution',
+      ],
+    },
+  },
+  'bio-enzyme-investigations': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['酶的证据与条件', '酶', '过氧化氢酶', '专一性', 'enzyme'],
+      en: ['Enzyme evidence and conditions', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-neural-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['神经研究与病例证据', '条件反射', '脑损伤病例', '皮层运动区'],
+      en: ['Neural research and clinical evidence', 'conditioning', 'cortical mapping', 'aphasia'],
+    },
+  },
+  'chem-anion-tests': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['阴离子的两步证据', '氯离子', '硫酸根', '碳酸根干扰', '硝酸银'],
+      en: [
+        'Two-step evidence for anions',
+        'chloride',
+        'sulfate',
+        'carbonate interference',
+        'silver nitrate',
+      ],
+    },
+  },
+  'chem-precipitation-paths': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['沉淀的生成、溶解与转化', '沉淀转化', '硫酸钡', '氢氧化镁溶解'],
+      en: [
+        'Precipitation, dissolution and conversion',
+        'precipitate conversion',
+        'barium sulfate',
+        'magnesium hydroxide dissolution',
+      ],
+    },
+  },
+  'bio-nuclear-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['细胞核的七组证据', '细胞核', '核移植', '伞藻'],
+      en: ['Seven lines of evidence about the nucleus', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-endocrine-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['激素研究的对照证据', '减法与加法 · 内分泌反馈', '人教版高中生物'],
+      en: [
+        'Controlled evidence for hormone action',
+        'Removal and rescue · endocrine feedback',
+        'PEP high school biology',
+      ],
+    },
+  },
+  'bio-body-fluid-balance': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['体液交换与稳态记录', '体液联系 · 调查记录 · 稳态', '人教版高中生物'],
+      en: [
+        'Fluid exchange and homeostasis records',
+        'Fluid connections · records · homeostasis',
+        'PEP high school biology',
+      ],
+    },
+  },
+  'bio-engineered-genomes': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['合成基因组与活细胞', '合成生物学', '染色体', '酵母'],
+      en: ['Synthetic genomes and living cells', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-electron-transfer': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['电子得失与电子对偏移', '氧化还原', '电子转移', '共用电子对'],
+      en: [
+        'Electron transfer and polar sharing',
+        'oxidation reduction',
+        'electron transfer',
+        'polar shared pair',
+      ],
+    },
+  },
+  'bio-cellular-logistics': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['细胞里的分泌路线', '分泌蛋白', '同位素示踪', '细胞器'],
+      en: ['The cellular secretion route', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-flame-spectra': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['焰色与原子光谱', '焰色试验', '钴玻璃', '发射吸收光谱'],
+      en: [
+        'Flame colours and atomic spectra',
+        'flame test',
+        'cobalt glass',
+        'emission absorption spectra',
+      ],
+    },
+  },
+  'bio-protein-machines': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['从肽键到胰岛素', '胰岛素', '肽键', '二硫键'],
+      en: ['From peptide bonds to insulin', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-sodium-reactions': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['钠与过氧化钠的证据链', '钠与水', '过氧化钠', '碱金属'],
+      en: [
+        'Evidence from sodium and sodium peroxide',
+        'sodium and water',
+        'sodium peroxide',
+        'alkali metals',
+      ],
+    },
+  },
+  'bio-osmosis': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['细胞怎样吸水', '渗透作用', '质壁分离', '水通道'],
+      en: ['How cells gain and lose water', 'cell biology', 'biology experiments'],
+    },
+  },
+  'chem-carbonate-comparison': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['两种碳酸盐的对照', '碳酸钠', '碳酸氢钠', '热稳定性'],
+      en: [
+        'Comparing two carbonate salts',
+        'sodium carbonate',
+        'sodium bicarbonate',
+        'thermal stability',
+      ],
+    },
+  },
+  'bio-membrane-evidence': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['细胞膜的证据链', '细胞膜', '流动镶嵌模型', '细胞融合'],
+      en: ['Evidence for membrane structure', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-chemical-signals': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['可转移的化学信号', '营养液转移 · 化学信使', '人教版高中生物'],
+      en: [
+        'A transferable chemical signal',
+        'Fluid transfer · chemical messengers',
+        'PEP high school biology',
+      ],
+    },
+  },
+  'bio-nerve-signals': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['神经信号的实验线索', '差分电位 · 突触 · 实验解释', '人教版高中生物'],
+      en: [
+        'Experimental clues to nerve signaling',
+        'Differential voltage · synapses · evidence',
+        'PEP high school biology',
+      ],
+    },
+  },
+  'bio-buffer-comparison': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['内环境的缓冲实验', '酸碱扰动 · 缓冲容量', '人教版高中生物'],
+      en: [
+        'Buffering the internal environment',
+        'Acid–base disturbance · buffer capacity',
+        'PEP high school biology',
+      ],
+    },
+  },
+  'chem-ionic-conduction': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['电解质与电流', '电解质', '氯化钠导电', '离子电离'],
+      en: [
+        'Electrolytes and current',
+        'electrolyte',
+        'sodium chloride conductivity',
+        'ionic dissociation',
+      ],
+    },
+  },
+  'chem-colloid-light': {
+    category: 'chemistry',
+    minAge: 14,
+    keywords: {
+      zh: ['胶体中的光路', '丁达尔效应', '氢氧化铁', '侧向散射'],
+      en: ['Light paths in a colloid', 'Tyndall effect', 'iron hydroxide', 'side scattering'],
+    },
+  },
+  'bio-food-tests': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['食物中的三种证据', '还原糖', '苏丹Ⅲ', '双缩脲'],
+      en: ['Three food assays', 'cell biology', 'biology experiments'],
+    },
+  },
+  'bio-cell-microscopy': {
+    category: 'life',
+    minAge: 14,
+    keywords: {
+      zh: ['显微镜中的细胞', '显微镜', '叶绿体', '细胞质流动'],
+      en: ['Cells under the microscope', 'cell biology', 'biology experiments'],
+    },
+  },
   'singing-basin': {
     category: 'light-sound',
     minAge: 14,

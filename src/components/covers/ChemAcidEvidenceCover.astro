@@ -1,0 +1,56 @@
+---
+import { acidSpeciation, magnesiumPressure } from '../../models/chem-acid-evidence';
+const curves = ['HCl', 'HAc'].map((kind) =>
+  Array.from(
+    { length: 80 },
+    (_, j) =>
+      `${239 + j * 1.58},${176 - magnesiumPressure(kind as 'HCl' | 'HAc', (j * 300) / 79).deltaP * 1.5}`,
+  ).join(' '),
+);
+---
+
+<svg viewBox="0 0 400 240" aria-hidden="true">
+  <defs
+    ><linearGradient id="acid-evidence-bg" x2="1" y2="1"
+      ><stop stop-color="#f1f3e7"></stop><stop offset="1" stop-color="#dce7da"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="240" rx="24" fill="url(#acid-evidence-bg)"></rect>
+  {
+    [0, 1].map((i) => (
+      <g transform={`translate(${74 + i * 94} 0)`}>
+        <path
+          d="M-28 104V179Q-28 194 -17 194H17Q28 194 28 179V104"
+          fill="#f6f7e8"
+          stroke="#a4b9a8"
+          stroke-width="2"
+        />
+        <path d="M-26 128V178Q-26 192 -16 192H16Q26 192 26 178V128Z" fill="#b8d3c0" opacity=".7" />
+        <rect x="-24" y="40" width="48" height="35" rx="9" fill="#e0ead6" stroke="#9cb39b" />
+        <text x="0" y="63" text-anchor="middle" font-size="17" fill="#5c7060">
+          {acidSpeciation(i ? 'HAc' : 'HCl', 0.1).pH.toFixed(2)}
+        </text>
+        <path d="M17 75V92H0V120" fill="none" stroke="#8ea891" stroke-width="3" />
+        <rect x="-4" y="115" width="8" height="40" rx="3" fill="#a2b9a4" />
+        <circle cy="156" r="5" fill="#e0e7bd" stroke="#99ad8e" />
+        <text x="0" y="216" text-anchor="middle" font-size="16" fill="#677665">
+          {i ? 'HAc' : 'HCl'}
+        </text>
+      </g>
+    ))
+  }
+  <path d="M239 62V177H367" stroke="#a4b69d" fill="none"></path>
+  {
+    curves.map((points, i) => (
+      <polyline
+        points={points}
+        fill="none"
+        stroke={i ? '#77a68a' : '#bf9767'}
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    ))
+  }
+  <text x="301" y="209" text-anchor="middle" font-size="16" fill="#687562">H₂ · ΔP</text>
+</svg>

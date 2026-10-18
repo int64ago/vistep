@@ -1,0 +1,52 @@
+---
+import {
+  sugarCarbonization,
+  sugarColour,
+  carbonColumnOutline,
+  SUGAR_GRAINS,
+} from '../../models/chem-sugar-carbonization';
+const states = [sugarCarbonization(0, 0, 0), sugarCarbonization(1, 0, 0.84)];
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#f0f0e4"></rect>
+  {
+    states.map((m, j) => {
+      const h = 55 * m.bulkVolume,
+        c = 150 + j * 330,
+        p = carbonColumnOutline(h, c, 305, 52);
+      return (
+        <g>
+          <>
+            <defs>
+              <clipPath id={`sugar-cover-${j}`}>
+                <path d={p} />
+              </clipPath>
+            </defs>
+            <ellipse cx={c} cy="318" rx="80" ry="9" fill="#b4b8a0" opacity=".2" />
+            <path d={p} fill={sugarColour(m.dehydration)} />
+            <g clip-path={`url(#sugar-cover-${j})`}>
+              {SUGAR_GRAINS.map((g) => (
+                <ellipse
+                  cx={c - 55 + g.x * 110}
+                  cy={305 - g.y * h}
+                  rx={j ? 3 + g.r : g.r}
+                  ry={j ? 1 + g.r : g.r * 0.7}
+                  fill={j ? '#b9baa5' : '#fff8df'}
+                  opacity={j ? 0.4 : 0.8}
+                />
+              ))}
+            </g>
+            <path
+              d={`M${c - 67} 205V305Q${c - 67} 317 ${c - 55} 317H${c + 55}Q${c + 67} 317 ${c + 67} 305V205M${c - 67} 205Q${c} 214 ${c + 67} 205`}
+              fill="none"
+              stroke="#a5b099"
+              stroke-width="2"
+            />
+          </>
+        </g>
+      );
+    })
+  }
+  <path d="M285 232H350l-10-7m10 7l-10 7" stroke="#9d9f7f" stroke-width="2" fill="none"></path>
+</svg>

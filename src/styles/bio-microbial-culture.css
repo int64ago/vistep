@@ -1,0 +1,94 @@
+.bio-culture {
+  color: #62624f;
+  font-size: 16px;
+}
+.bio-culture svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-culture svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #62624f;
+}
+.bio-culture-head {
+  font-size: 17px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+.bio-culture-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbd9c7;
+}
+.bio-culture-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-culture button {
+  min-height: 44px;
+  padding: 8px 15px;
+  font: inherit;
+  color: inherit;
+  background: #f8f7ee;
+  border: 1px solid #ceceba;
+  border-radius: 24px;
+}
+.bio-culture button[aria-pressed='true'] {
+  background: #e8e7d2;
+  border-color: #a8ae8a;
+}
+.bio-culture label {
+  display: grid;
+  gap: 8px;
+}
+.bio-culture input,
+.bio-culture select,
+.bio-culture textarea {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  accent-color: #a5ae83;
+}
+.bio-culture input[type='number'],
+.bio-culture select,
+.bio-culture textarea {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #fcfcf5;
+}
+.bio-culture textarea {
+  min-height: 88px;
+}
+.bio-culture details,
+.bio-culture p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-culture summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-culture button:focus-visible,
+.bio-culture input:focus-visible,
+.bio-culture textarea:focus-visible {
+  outline: 2px solid #a6af87;
+  outline-offset: 3px;
+}
+.bio-culture-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}

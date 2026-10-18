@@ -1,0 +1,70 @@
+---
+import { tankLayout, tankState } from '../../models/bio-ecosystem-stability';
+const w = 360,
+  g = tankLayout(w),
+  state = tankState(8);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#eff2e4"></rect>
+  <g transform="translate(47 -10) scale(.85)">
+    <rect
+      x="12"
+      y="72"
+      width={w - 24}
+      height="197"
+      rx="10"
+      fill="#f5f7ed"
+      stroke="#adba9f"
+      stroke-width="2"></rect><rect x="9" y="66" width={w - 18} height="8" rx="4" fill="#c4cfb7"
+    ></rect>
+    {
+      [0.35, 0.5, 0.65].map((v) => (
+        <path
+          d={`M${w * v} 75L${w * v + 22} 185`}
+          stroke="#d5c589"
+          stroke-width="8"
+          opacity={0.2 * state.light}
+        />
+      ))
+    }
+    <path
+      d={`M14 ${g.landY}H${g.landEdge}L${g.slopeEnd} ${g.soilY}H${g.right}V267H14Z`}
+      fill="#aaa184"></path><path
+      d={`M14 ${g.landY + 16}H${g.landEdge - 3}L${g.slopeEnd - 1} ${g.soilY + 12}H${g.right}V267H14Z`}
+      fill="#c2b494"></path>
+    <path d={g.waterPath} fill="#c6dcd1" fill-opacity=".8"></path><path
+      d={`M${g.cross} 190H${g.right}`}
+      stroke="#a4bfb1"
+      stroke-width="2"></path>
+    <path
+      d="M68 165q-13-20-16-32m16 32q-2-30 5-40m-5 40q12-25 21-29"
+      fill="none"
+      stroke="#8ea271"
+      stroke-width="3"
+      stroke-linecap="round"></path><path
+      d="M68 166v12l-12 12m12-12 14 13"
+      stroke="#a39171"
+      fill="none"></path>
+    <path
+      d={`M${w * 0.74} 242v-53m0 30q-21-15-20-29m20 42q17-17 20-33m-20 10q12-10 14-24`}
+      fill="none"
+      stroke="#83a38b"
+      stroke-width="3"></path>
+    {
+      [240, 304].map((x) => (
+        <g>
+          <>
+            <path d={`M${x - 7} 236h15m-2 0 4-4`} stroke="#8a8e6c" stroke-width="2" />
+            <circle cx={x} cy="231" r="5" fill="#b9aa7a" stroke="#92865f" />
+          </>
+        </g>
+      ))
+    }
+    <path
+      d="M157 251h5m20 5h5m20-3h5m20 5h5m20-2h5m20 2h5"
+      stroke="#969c76"
+      stroke-width="2"
+      stroke-linecap="round"></path>
+  </g>
+</svg>

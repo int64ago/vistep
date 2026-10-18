@@ -1,0 +1,32 @@
+---
+import { carbonDestinations } from '../../models/bio-respiration';
+const atoms = carbonDestinations('ethanol');
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eceddb"></rect><path
+    d="M50 28H89V72L119 175Q123 193 103 193H36Q18 193 21 175L50 72Z"
+    fill="#d3c9a0"
+    stroke="#8c9b7d"
+    stroke-width="2"></path><path
+    d="M75 55V13H162V172"
+    fill="none"
+    stroke="#809b86"
+    stroke-width="4"></path><path
+    d="M144 31H181V86L207 175Q212 193 192 193H134Q117 193 120 175L144 86Z"
+    fill="#e1e5d2"
+    stroke="#8c9b7d"
+    stroke-width="2"></path>{
+    atoms.map((a, i) => (
+      <g transform={`translate(${260 + (i % 3) * 37} ${70 + Math.floor(i / 3) * 70})`}>
+        <circle r="12" fill={i < 3 ? '#ad8266' : '#718f7e'} />
+        {a.product === 'CO₂' && (
+          <>
+            <circle cx="-18" r="6" fill="#c4cfba" />
+            <circle cx="18" r="6" fill="#c4cfba" />
+          </>
+        )}
+      </g>
+    ))
+  }</svg
+>

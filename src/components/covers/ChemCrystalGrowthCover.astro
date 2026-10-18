@@ -1,0 +1,48 @@
+---
+import { octahedron } from '../../models/chem-crystal-growth';
+const shapes = [
+  { x: 320, y: 220, r: 105, color: '#d6e2e0' },
+  { x: 320, y: 220, r: 80, color: '#b8a3c1' },
+  { x: 320, y: 220, r: 57, color: '#dce5e6' },
+];
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="400" fill="#e4ebe2"></rect><ellipse
+    cx="320"
+    cy="352"
+    rx="157"
+    ry="20"
+    fill="#cbd7cf"
+    opacity=".5"></ellipse>
+  <path
+    d="M166 71 V321 Q166 350 196 350 H444 Q474 350 474 321 V71"
+    fill="#e7eee8"
+    fill-opacity=".5"
+    stroke="#a4bbba"
+    stroke-width="4"></path>
+  <path
+    d="M173 137 H467 V316 Q467 342 441 342 H199 Q173 342 173 316Z"
+    fill="#c7dde0"
+    fill-opacity=".5"></path>
+  <path d="M173 137 H467" fill="none" stroke="#a4c1c5" stroke-width="2"></path>
+  <path d="M148 65 L451 49 L494 73 L190 89Z" fill="#d0c7ab" stroke="#b5ad94" stroke-width="2"
+  ></path>
+  <path d="M320 66 V219" fill="none" stroke="#849a91" stroke-width="2"></path>
+  {
+    shapes.map((s) => (
+      <g transform={`translate(${s.x} ${s.y})`}>
+        {octahedron(s.r).faces.map((f) => (
+          <polygon
+            points={f.points.map((p) => `${p.x},${p.y}`).join(' ')}
+            fill={s.color}
+            fill-opacity={f.light * 0.78}
+            stroke="#8ca2a1"
+            stroke-width="1"
+          />
+        ))}
+      </g>
+    ))
+  }
+  <path d="M186 93 V299" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="5"></path>
+</svg>

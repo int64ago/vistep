@@ -1,0 +1,39 @@
+---
+import { foodAssay, lipidDroplets } from '../../models/bio-food-tests';
+const protein = foodAssay('biuret', 'albumin', 4),
+  sugar = foodAssay('fehling', 'pear', 4);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><g transform="translate(40 25)"
+    >{
+      [sugar, protein].map((s, i) => (
+        <g transform={`translate(${i * 70} 0)`}>
+          <path d="M3 83H41V145Q41 165 22 165Q3 165 3 145Z" fill={s.liquid} />
+          {s.precipitate > 0 && (
+            <path d="M3 140Q22 130 41 140V147Q41 165 22 165Q3 165 3 147Z" fill="#b76b45" />
+          )}
+          <path d="M8 30V120" stroke="#fff" stroke-opacity=".6" stroke-width="3" />
+        </g>
+      ))
+    }</g
+  ><rect
+    x="220"
+    y="45"
+    width="145"
+    height="140"
+    rx="22"
+    fill="#e1e7c5"
+    stroke="#9daa82"
+    stroke-width="2"></rect>{
+    lipidDroplets().map((p) => (
+      <ellipse
+        cx={225 + p.x * 0.5}
+        cy={33 + p.y * 0.75}
+        rx={p.r * 0.7}
+        ry={p.r * 0.55}
+        fill="#d78d36"
+      />
+    ))
+  }</svg
+>

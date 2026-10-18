@@ -1,0 +1,38 @@
+---
+import { environments, sampledSpectrum } from '../../models/chem-nmr-hydrogen';
+const g = environments('ethanol'),
+  max = Math.max(...sampledSpectrum(g).map((x) => x.value));
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><rect width="400" height="230" fill="#eeefe3"></rect><path d="M35 182H370" stroke="#b5c2a7"
+  ></path>{
+    g.map((group) => (
+      <path
+        d={sampledSpectrum([group])
+          .map(
+            (p, i) =>
+              `${i ? 'L' : 'M'}${35 + ((6 - p.delta) / 6) * 330} ${182 - (p.value / max) * 120}`,
+          )
+          .join(' ')}
+        stroke={group.color}
+        stroke-width="2.5"
+      />
+    ))
+  }<path
+    d={sampledSpectrum(g)
+      .map(
+        (p, i) =>
+          `${i ? 'L' : 'M'}${35 + ((6 - p.delta) / 6) * 330} ${155 - (p.integral / 6) * 95}`,
+      )
+      .join(' ')}
+    stroke="#889b74"
+    stroke-width="2"
+    stroke-dasharray="4 4"></path><text
+    x="200"
+    y="38"
+    text-anchor="middle"
+    font-size="22"
+    fill="#6a7d5e">CH₃ · CH₂ · OH</text
+  ><text x="200" y="214" text-anchor="middle" font-size="20" fill="#6a7d5e">3 : 2 : 1</text></svg
+>

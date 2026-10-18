@@ -1,0 +1,147 @@
+.chem-chlorine-discovery {
+  padding: 15px 8px 24px;
+  font-size: 16px;
+  color: #46593e;
+}
+.chem-chlorine-desktop {
+  display: block;
+  width: 100%;
+}
+.chem-chlorine-mobile {
+  display: none;
+}
+.chem-chlorine-pathlabels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  font-size: 17px;
+  gap: 8px;
+}
+.chem-chlorine-ledger {
+  text-align: center;
+  border-top: 1px solid #9ba88a55;
+  margin-top: 25px;
+  padding-top: 20px;
+  display: grid;
+  gap: 18px;
+  font-size: 19px;
+}
+.chem-chlorine-ledger > div {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.chem-chlorine-ledger b {
+  font-weight: 500;
+}
+.chem-chlorine-ledger small {
+  font-size: 16px;
+}
+.chem-chlorine-history {
+  display: grid;
+  grid-template-columns: 1fr 180px 1fr;
+  align-items: center;
+  gap: 15px;
+  min-height: 340px;
+  text-align: center;
+}
+.chem-chlorine-history > div {
+  display: grid;
+  gap: 8px;
+}
+.chem-chlorine-history strong {
+  font-size: 35px;
+  font-weight: 400;
+  color: #758a5f;
+}
+.chem-chlorine-history span {
+  font-size: 20px;
+}
+.chem-chlorine-history p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 6px 0;
+}
+.chem-chlorine-history svg {
+  width: 100%;
+}
+.chem-chlorine-history .is-unrevealed {
+  opacity: 0;
+}
+.chem-chlorine-controls {
+  display: grid;
+  gap: 20px;
+  border-top: 1px solid #9ba88a55;
+  padding-top: 22px;
+  margin-top: 25px;
+}
+.chem-chlorine-controls button,
+.chem-chlorine-controls input {
+  min-height: 44px;
+}
+.chem-chlorine-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .chem-chlorine-desktop {
+    display: none;
+  }
+  .chem-chlorine-mobile {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+  }
+  .chem-chlorine-pathlabels {
+    display: none;
+  }
+  .chem-chlorine-history {
+    grid-template-columns: 1fr 140px;
+    gap: 20px;
+    min-height: 370px;
+    text-align: left;
+  }
+  .chem-chlorine-history svg {
+    grid-column: 2;
+    grid-row: 1/3;
+  }
+  .chem-chlorine-history > div {
+    grid-column: 1;
+  }
+  .chem-chlorine-history strong {
+    font-size: 32px;
+  }
+  .chem-chlorine-ledger {
+    font-size: 17px;
+  }
+  .chem-chlorine-ledger > div {
+    gap: 12px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-chlorine-discovery {
+    padding: 8px 8px 12px;
+  }
+  .chem-chlorine-history {
+    min-height: 320px;
+    grid-template-columns: 1fr 110px;
+    gap: 14px;
+  }
+  .chem-chlorine-ledger {
+    padding-top: 10px;
+    margin-top: 12px;
+    gap: 8px;
+  }
+  .chem-chlorine-discovery[data-watch='true'] .chem-chlorine-ledger > div,
+  .chem-chlorine-discovery[data-watch='true'] .chem-chlorine-ledger small {
+    display: none;
+  }
+  .chem-chlorine-mobile text {
+    font-size: 31px;
+  }
+}

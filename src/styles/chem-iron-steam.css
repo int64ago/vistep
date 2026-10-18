@@ -1,0 +1,79 @@
+.chem-iron-steam {
+  font-size: 16px;
+  color: #465640;
+  padding: 14px 8px 24px;
+}
+.chem-steam-desktop {
+  display: block;
+  width: 100%;
+}
+.chem-steam-mobile {
+  display: none;
+}
+.chem-steam-reaction {
+  text-align: center;
+  font-size: 22px;
+  padding: 15px 0;
+}
+.chem-steam-evidence {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin-top: 15px;
+}
+.chem-steam-controls {
+  display: grid;
+  gap: 20px;
+  margin-top: 25px;
+  padding-top: 22px;
+  border-top: 1px solid #9caa8e55;
+}
+.chem-steam-controls button,
+.chem-steam-controls input {
+  min-height: 44px;
+}
+.chem-steam-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+.chem-steam-amounts {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  font-size: 18px;
+}
+@media (max-width: 600px) {
+  .chem-steam-desktop {
+    display: none;
+  }
+  .chem-steam-mobile {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+  }
+  .chem-steam-reaction {
+    font-size: 18px;
+  }
+  .chem-steam-evidence {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-iron-steam {
+    padding: 10px 8px 12px;
+  }
+  .chem-steam-reaction {
+    padding: 8px 0;
+  }
+  .chem-steam-evidence {
+    margin-top: 8px;
+    gap: 4px;
+  }
+}

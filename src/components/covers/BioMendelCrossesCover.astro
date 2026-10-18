@@ -1,0 +1,22 @@
+---
+import { mendelCross, peaOutline } from '../../models/bio-mendel-crosses';
+const cross = mendelCross('YyRr', 'YyRr');
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#efedde"></rect>{
+    cross.cells.map((c) => (
+      <g transform={`translate(${102 + c.column * 65} ${37 + c.row * 51})`}>
+        <>
+          <path
+            d={peaOutline(c.phenotype, 18)}
+            fill={c.phenotype.startsWith('yellow') ? '#c9b768' : '#9cae7d'}
+            stroke="#a9aa7d"
+            stroke-width="1.5"
+          />
+          <path d="M-6-5Q-11 0-5 5" fill="none" stroke="#eee9cb" stroke-width="2" />
+        </>
+      </g>
+    ))
+  }</svg
+>

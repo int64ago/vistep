@@ -1,0 +1,103 @@
+.bio-fluid {
+  width: 100%;
+  color: #475c59;
+  padding: 10px 12px 0;
+  box-sizing: border-box;
+}
+.bio-fluid svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-fluid svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #4a615d;
+}
+.bio-fluid-heading {
+  font-size: 17px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-fluid-note,
+.bio-fluid details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-fluid-controls {
+  display: grid;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #dce6df;
+}
+.bio-fluid-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bio-fluid button {
+  min-height: 44px;
+  border: 1px solid #c9d7cf;
+  border-radius: 22px;
+  background: #f5faf7;
+  color: inherit;
+  font: inherit;
+  padding: 8px 15px;
+}
+.bio-fluid button[aria-pressed='true'] {
+  background: #dcebe3;
+  border-color: #8da99b;
+}
+.bio-fluid label {
+  font-size: 16px;
+  display: grid;
+  gap: 8px;
+}
+.bio-fluid input {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #749786;
+}
+.bio-fluid table {
+  width: 100%;
+  font-size: 16px;
+  border-collapse: collapse;
+}
+.bio-fluid th,
+.bio-fluid td {
+  padding: 10px 3px;
+  text-align: center;
+  border-bottom: 1px solid #dce5df;
+}
+.bio-fluid th {
+  font-weight: 500;
+}
+.bio-fluid summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.bio-fluid summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 8px;
+}
+.bio-fluid details[open] summary::after {
+  content: '−';
+}
+.bio-fluid button:focus-visible,
+.bio-fluid input:focus-visible {
+  outline: 2px solid #709688;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .bio-fluid {
+    padding-top: 6px;
+  }
+  .bio-fluid th,
+  .bio-fluid td {
+    padding: 6px 3px;
+  }
+}

@@ -1,0 +1,174 @@
+.ces {
+  color: #607969;
+  font-size: 16px;
+}
+.ces-stage {
+  padding: 22px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 40% 20%, #faf7e8, #e9eee1);
+  min-height: 360px;
+}
+.ces svg {
+  display: block;
+  width: 100%;
+}
+.ces svg text {
+  font-size: 22px;
+  fill: currentColor;
+}
+.ces-net {
+  max-width: 540px;
+  height: 230px;
+  margin: auto;
+}
+.ces-equation,
+.ces-condition {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.ces-sample {
+  max-width: 430px;
+  margin: auto;
+}
+.ces-sample svg {
+  height: 245px;
+}
+.ces-labels {
+  display: flex;
+  justify-content: space-around;
+  gap: 14px;
+}
+.ces-labels span {
+  flex: 1;
+  text-align: center;
+}
+.ces-result {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+.ces-desktop {
+  max-height: 300px;
+}
+.ces-mobile {
+  display: none !important;
+}
+.ces-key {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 25px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.ces-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+  font-size: 16px;
+}
+.ces-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ces-legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #6d9a86;
+}
+.ces-legend .impurity {
+  background: #be975c;
+}
+.ces-evidence {
+  display: grid;
+  gap: 8px;
+  text-align: center;
+  font-size: 16px;
+}
+.ces-evidence b {
+  font-size: 18px;
+}
+.ces-evidence small {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.ces-controls {
+  display: grid;
+  gap: 18px;
+  padding: 20px 4px;
+}
+.ces-controls button {
+  min-height: 44px;
+}
+.ces-note {
+  display: block;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 12px;
+  text-align: center;
+}
+.ces.is-watch > .ces-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .ces-stage {
+    padding: 10px 5px;
+    border-radius: 22px;
+    min-height: 325px;
+  }
+  .ces-desktop {
+    display: none !important;
+  }
+  .ces-mobile {
+    display: block !important;
+    max-height: 282px;
+  }
+  .ces-net {
+    height: 185px;
+  }
+  .ces .ces-net text {
+    font-size: 24px;
+  }
+  .ces-key {
+    display: grid;
+    gap: 5px;
+    text-align: center;
+  }
+  .ces-legend {
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 9px;
+  }
+  .ces .ces-mobile text {
+    font-size: 23px;
+  }
+  .ces-sample svg {
+    height: 220px;
+  }
+  .ces-labels {
+    gap: 5px;
+  }
+  .ces-result {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+  .ces-evidence {
+    gap: 6px;
+  }
+  .ces-controls {
+    padding: 15px 0;
+  }
+  .ces-equation {
+    font-size: 16px;
+  }
+  .ces.is-watch .ces-legend {
+    margin-top: 7px;
+  }
+}

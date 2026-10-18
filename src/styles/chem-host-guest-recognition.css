@@ -1,0 +1,187 @@
+.chgr {
+  color: #435b52;
+}
+.chgr-stage {
+  max-width: 850px;
+  margin: auto;
+  background: radial-gradient(ellipse at 30% 15%, #f8f5e8, #e4ece2);
+  border-radius: 26px;
+  padding: 13px 20px;
+}
+.chgr-heading {
+  font-size: 16px;
+  line-height: 1.35;
+  min-height: 27px;
+}
+.chgr-stage > svg {
+  display: block;
+  height: 340px;
+  width: 100%;
+}
+.chgr-cages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.chgr-cages > div {
+  text-align: center;
+  min-width: 0;
+}
+.chgr-cages svg {
+  width: 100%;
+  height: 290px;
+  display: block;
+}
+.chgr-cages strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.chgr-cages span {
+  font-size: 16px;
+  line-height: 1.35;
+}
+.chgr-note {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+  margin: 8px 0 0;
+}
+.chgr-filter > svg {
+  display: block;
+  height: 320px;
+  width: 100%;
+}
+.chgr-pools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 22px;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.chgr-pools b {
+  font-weight: 500;
+  color: #6f8466;
+}
+.chgr-crown > svg {
+  width: 100%;
+  height: 325px;
+  display: block;
+}
+.chgr-crown-label {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.chgr-crown-label strong {
+  font-weight: 550;
+}
+.chgr-crown p {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+  margin: 5px 0;
+}
+.chgr-key {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 16px;
+}
+.chgr-comparison {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.chgr-comparison .chgr-crown > svg {
+  height: 220px;
+}
+.chgr-comparison .chgr-crown-label {
+  flex-direction: column;
+  gap: 4px;
+}
+.chgr-controls {
+  display: grid;
+  gap: 18px;
+  padding-top: 24px;
+}
+.chgr-controls p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .chgr-stage {
+    padding: 9px 8px;
+    border-radius: 20px;
+  }
+  .chgr-stage > svg {
+    height: 263px;
+  }
+  .chgr-cages {
+    gap: 5px;
+  }
+  .chgr-cages svg {
+    height: 213px;
+  }
+  .chgr-cages strong {
+    font-size: 20px;
+  }
+  .chgr-cages span {
+    display: block;
+  }
+  .chgr-filter > svg {
+    height: 238px;
+  }
+  .chgr-pools {
+    gap: 5px 12px;
+  }
+  .chgr-crown > svg {
+    height: 257px;
+  }
+  .chgr-comparison {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 8px;
+  }
+  .chgr-comparison .chgr-crown > svg {
+    height: 102px;
+  }
+  .chgr-comparison .chgr-crown-label {
+    font-size: 16px;
+    gap: 0;
+  }
+  .chgr-comparison .chgr-crown p {
+    margin: 3px 0;
+  }
+  .chgr-heading {
+    line-height: 1.3;
+  }
+  .chgr-note {
+    line-height: 1.3;
+  }
+}
+@media (max-width: 360px) {
+  .chgr-stage > svg {
+    height: 235px;
+  }
+  .chgr-cages svg {
+    height: 187px;
+  }
+  .chgr-filter > svg {
+    height: 218px;
+  }
+  .chgr-crown > svg {
+    height: 230px;
+  }
+  .chgr-comparison .chgr-crown > svg {
+    height: 88px;
+  }
+  .chgr-key {
+    gap: 16px;
+  }
+}

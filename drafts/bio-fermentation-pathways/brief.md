@@ -1,0 +1,13 @@
+# Fermentation pathways — production brief
+
+Owns elective-3-006-1/006-2/007-1/008-1/mechanism-24, 12 consecutive cues planned 240 s. One formal inquiry column contains pickle and wine/vinegar subprojects; do not count nitrite design, industrial investigation or mechanism as completed student experiments.
+
+Source read: full local printed pp2–9 and22–24. Primary/official web checked NCHFP submersion, UC Davis oxygen management, UC Davis-hosted vinegar fermentation (oxygen-transfer section), EPA353.2 aqueous colorimetry. No claim to read all101 vinegar-PDF pages. EPA matrix and nitrogen units differ from this explicitly synthetic NO2-ion food-calibration exercise. Avoid implying legal limits, consumption advice or exact methods.
+
+Art direction: warm ceramic crock in section with separate annular seal, mauve liquid in a transparent fruit bottle with connected gas bend, then a working steel/glass reactor section with bottom sparger, submerged impellers, separate jacket and top exhaust. Maintain actual16px labels; responsive apparatus widths derived from CSS width, no scaled-down SVG type. Keep watch free of secondary explanatory paragraphs. Source/limitations live in article and explore details.
+
+Model benchmarks: glucose180g + O2(64y) balance ethanol46/CO2 44/acetate60/water18; carbon6mol always. Nitrite syntheticA.068,blank.020,slope.040,50mL/10g/2x =>12mg/kg asNO2-. Pipette5mL conserved against50mL initial source, travels above both rims. Surface/volume length2 ratio area4/volume8. ReactorO=6+transfer−use;T=28+.7t−removed. Zeroair retains then consumes existing dissolvedO; coolingoff raises temperature. Pickle selectedhomolactic path; air exposure does not forcibly kill allLAB.
+
+Boundary checks: clamp reaction extents/oxygen lack; finitegeometry240/320/800; all1001sampleframesmassconserved and traversal at y100; blank/out-of-range assay rejects; reactorallair/mix/coolcombinations nonnegativeOandbalance; watch reconstructed after explore edits and target variant entry. Model7 + component2 tests passed. No browser screenshots, full playback, voice listening or deviceperformance performed by worker; root must independently review all12 cues, path contact,320 playerfullheight and resource fallback. Model-generated cover and both articles included.
+
+Watch chapters: seal intact→liquidconversion; extractiontransfer→blank/standards; glucoseethanol→gasoutlet→oxygenvinegar; surfacevolume→sourcedindustrialworkflow; connectedparts→aircontrast→coolingcontrast. Controls are meaningful only in applicable localviews (saltconversion, vinegaroxygen, geometric scaling). No personal empirical data prefilled. Composition length/unit labels shortened for narrowview.

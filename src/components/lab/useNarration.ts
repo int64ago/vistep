@@ -12,6 +12,7 @@ export function useNarration(
   onEnded: () => void,
   track?: Soundtrack,
   startTime = 0,
+  onInterrupted?: () => void,
 ) {
   const audio = useRef<HTMLAudioElement | null>(null);
   const source = useRef<ReturnType<typeof narrationSource> | null>(null);
@@ -22,6 +23,10 @@ export function useNarration(
   const [waiting, setWaiting] = useState(false);
   const [error, setError] = useState(false);
   const [blocked, setBlocked] = useState(false);
+  const playbackRequested = useRef(false);
+  playbackRequested.current = enabled && playing && visible;
+  const interrupted = useRef(onInterrupted);
+  interrupted.current = onInterrupted;
   const alive = useRef(true);
   const desired = useRef(false);
   const targetTime = useRef(startTime);
@@ -54,6 +59,20 @@ export function useNarration(
     };
     a.onended = () => {
       if (current()) ended.current();
+    };
+    a.onpause = () => {
+      // Native media controls or an OS interruption can pause the soundtrack independently.
+      // Reflect that pause in the film instead of displaying a running, frozen media clock.
+      if (
+        current() &&
+        a.paused &&
+        playbackRequested.current &&
+        desired.current &&
+        !source.current?.loading &&
+        !a.ended &&
+        !document.hidden
+      )
+        interrupted.current?.();
     };
     const failed = () => {
       if (!current()) return;
@@ -144,7 +163,14 @@ export function useNarration(
       source.current = null;
       if (a) {
         a.pause();
-        a.onplaying = a.onwaiting = a.oncanplay = a.onended = a.onerror = a.onloadedmetadata = null;
+        a.onplaying =
+          a.onwaiting =
+          a.oncanplay =
+          a.onended =
+          a.onpause =
+          a.onerror =
+          a.onloadedmetadata =
+            null;
         a.removeAttribute('src');
         a.load();
         a.remove();

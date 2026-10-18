@@ -1,0 +1,37 @@
+---
+import { insulinGeometry, disulfideEdges } from '../../models/bio-protein-machines';
+const points = insulinGeometry(1, 25),
+  edges = disulfideEdges(1, 25);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><g transform="translate(200 120) scale(7 -7)"
+    >{
+      ['A', 'B'].map((chain) => (
+        <path
+          d={points
+            .filter((p) => p.chain === chain)
+            .map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`)
+            .join(' ')}
+          fill="none"
+          stroke={chain === 'A' ? '#719b87' : '#aa8eae'}
+          stroke-width="1.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+      ))
+    }{
+      edges.map((e) => (
+        <path
+          d={`M${e.from.x} ${e.from.y}L${e.to.x} ${e.to.y}`}
+          stroke="#c7a15a"
+          stroke-width=".8"
+        />
+      ))
+    }{
+      points
+        .filter((p) => p.name === 'CYS')
+        .map((p) => <circle cx={p.x} cy={p.y} r=".7" fill="#d3af63" />)
+    }</g
+  ></svg
+>

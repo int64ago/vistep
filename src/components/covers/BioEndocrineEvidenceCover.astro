@@ -1,0 +1,45 @@
+---
+import { thyroidFeedback } from '../../models/bio-endocrine-evidence';
+const state = thyroidFeedback(6, 'extra-thyroid');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f0f1e7"></rect>
+  {
+    [state.h, state.s, state.t].map((v, i) => (
+      <g>
+        <ellipse
+          cx="188"
+          cy={44 + i * 72}
+          rx={54 + v * 10}
+          ry="23"
+          fill={['#ded3ba', '#d4dcb9', '#bfd4c6'][i]}
+          stroke="#a1ad94"
+        />
+        {Array.from({ length: Math.round(v * 8) }, (_, j) => (
+          <circle
+            cx={165 + (j % 5) * 12}
+            cy={39 + i * 72 + Math.floor(j / 5) * 9}
+            r="3"
+            fill="#889974"
+          />
+        ))}
+        {i < 2 && (
+          <path
+            d={`M188 ${70 + i * 72}v17m-5-6 5 6 5-6`}
+            fill="none"
+            stroke="#9cab89"
+            stroke-width="2"
+          />
+        )}
+      </g>
+    ))
+  }
+  <path
+    d="M126 188H70V44h44M70 116h44m0-7v14m0-86v14"
+    fill="none"
+    stroke="#b98a73"
+    stroke-width="3"
+    stroke-linejoin="round"></path>
+  <path d="M292 185h41m-7-5 7 5-7 5" stroke="#9ba77e" fill="none" stroke-width="3"></path>
+</svg>

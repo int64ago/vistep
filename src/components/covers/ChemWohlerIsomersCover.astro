@@ -1,0 +1,30 @@
+---
+import { structure, nodeLabel } from '../../models/chem-wohler-isomers';
+const structures = [structure('pentane'), structure('neopentane')];
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><rect width="400" height="230" fill="#eeeee1"></rect><path d="M36 184H364" stroke="#d8dbc8"
+  ></path>{
+    structures.map((s, i) => (
+      <g transform={`translate(${12 + i * 194} 36) scale(.58)`}>
+        {s.bonds.map((b) => {
+          const a = s.atoms.find((x) => x.id === b.a)!,
+            d = s.atoms.find((x) => x.id === b.b)!;
+          return <path d={`M${a.x} ${a.y}L${d.x} ${d.y}`} stroke="#7d927c" stroke-width="5" />;
+        })}
+        {s.atoms.map((a) => (
+          <g>
+            <rect x={a.x - 27} y={a.y - 20} width="54" height="40" rx="17" fill="#eeeee1" />
+            <text x={a.x} y={a.y + 8} text-anchor="middle" font-size="26" fill="#526950">
+              {nodeLabel(a)}
+            </text>
+          </g>
+        ))}
+      </g>
+    ))
+  }<text x="200" y="181" text-anchor="middle" font-size="24" fill="#84936d">C₅H₁₂</text><path
+    d="M187 93H213M187 103H213M208 86L193 110"
+    stroke="#c4ad7d"
+    stroke-width="3"></path></svg
+>

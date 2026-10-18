@@ -1,0 +1,249 @@
+.cms {
+  font-size: 16px;
+  color: #667960;
+}
+.cms-stage {
+  min-height: 330px;
+  padding: 22px;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 45% 20%, #faf4df, #dfe7d2);
+}
+.cms svg {
+  display: block;
+  width: 100%;
+  margin: auto;
+  fill: currentColor;
+}
+.cms svg text {
+  font-size: 23px;
+  text-anchor: middle;
+}
+.cms-ion {
+  height: 280px;
+  max-width: 450px;
+}
+.cms-sub {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px auto 0;
+  max-width: 560px;
+}
+.cms-sector {
+  height: 270px;
+  max-width: 430px;
+}
+.cms-sector-readout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  margin-top: 8px;
+  font-size: 16px;
+}
+.cms-sector-readout b {
+  font-weight: 500;
+}
+.cms-offset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 12px auto 0;
+  font-size: 16px;
+}
+.cms-offset strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+.cms-spectrum {
+  height: 225px;
+  max-width: 650px;
+}
+.cms-peak-note {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+.cms-isotope {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 18px;
+  margin: 16px auto;
+}
+.cms-isotope b {
+  font-weight: 500;
+  display: block;
+  margin-top: 6px;
+}
+.cms-formula {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 25px;
+  text-align: center;
+  font-size: 18px;
+}
+.cms-formula p {
+  margin: 6px 0;
+  line-height: 1.45;
+}
+.cms-formula > b,
+.cms-formula strong {
+  font-size: 23px;
+  font-weight: 500;
+}
+.cms-formula-ratio {
+  display: grid;
+  font-size: 22px;
+  min-width: 80px;
+}
+.cms-formula-ratio i {
+  height: 1px;
+  background: #9bad8e;
+  margin: 5px 0;
+}
+.cms-formula p:last-child {
+  width: 100%;
+  font-size: 16px;
+}
+.cms-structures {
+  max-width: 430px;
+  margin: auto;
+  text-align: center;
+}
+.cms-structures > b {
+  font-size: 23px;
+  font-weight: 500;
+}
+.cms-structures svg {
+  height: 245px;
+}
+.cms-structures p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+.cms-controls {
+  display: grid;
+  gap: 18px;
+  padding: 22px 4px;
+}
+.cms-controls button {
+  min-height: 44px;
+}
+.cms-tune {
+  justify-self: start;
+  border: 1px solid #bac5a9;
+  background: #e9efdc;
+  color: inherit;
+  border-radius: 15px;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+.cms-note {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 12px auto;
+}
+.cms.is-watch > .cms-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cms-stage {
+    padding: 12px 4px;
+    border-radius: 22px;
+    min-height: 310px;
+  }
+  .cms-ion {
+    height: 260px;
+  }
+  .cms .cms-ion text {
+    font-size: 24px;
+  }
+  .cms-sector {
+    height: 250px;
+  }
+  .cms .cms-sector text {
+    font-size: 25px;
+  }
+  .cms-sector-readout {
+    gap: 6px 15px;
+  }
+  .cms-sector-readout b {
+    width: 100%;
+    text-align: center;
+  }
+  .cms-offset {
+    gap: 7px;
+    font-size: 16px;
+    flex-wrap: wrap;
+  }
+  .cms-offset strong {
+    font-size: 20px;
+  }
+  .cms-spectrum {
+    height: 180px;
+  }
+  .cms .cms-spectrum text {
+    font-size: 25px;
+  }
+  .cms-peak-note {
+    font-size: 16px;
+  }
+  .cms-isotope {
+    gap: 20px;
+    font-size: 16px;
+  }
+  .cms-formula {
+    font-size: 16px;
+    gap: 8px 18px;
+  }
+  .cms-formula > p:first-child {
+    width: 100%;
+  }
+  .cms-formula-ratio {
+    font-size: 20px;
+  }
+  .cms-structures svg {
+    height: 235px;
+  }
+  .cms .cms-structures text {
+    font-size: 25px;
+  }
+  .cms-structures p {
+    font-size: 16px;
+  }
+  .cms-controls {
+    padding: 18px 0;
+  }
+}
+
+.cms-offset-track {
+  position: relative;
+  width: min(280px, 90%);
+  height: 16px;
+  margin: 12px auto 0;
+  background: #d8e0c8;
+  border-radius: 10px;
+}
+.cms-offset-track i {
+  position: absolute;
+  left: 45%;
+  width: 10%;
+  height: 100%;
+  background: #b5c3a1;
+  border-radius: 5px;
+}
+.cms-offset-track b {
+  position: absolute;
+  top: -3px;
+  width: 3px;
+  height: 22px;
+  background: #ae8050;
+  border-radius: 5px;
+}

@@ -1,0 +1,62 @@
+---
+import { shapeMolecule, shapeProject, shapeDipoles } from '../../models/chem-molecular-shapes';
+const models = ['carbon-dioxide', 'water', 'methane'].map(shapeMolecule),
+  col = { C: '#5e7075', H: '#e7e4d7', O: '#bf786d', N: '#778eac', Cl: '#9bad78' };
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="400" fill="#eaf0ed"></rect>
+  {
+    models.map((m, j) => {
+      const p = m.atoms.map((a) => ({ ...a, ...shapeProject(a, j === 2 ? 0.6 : 0, 0.2) })),
+        v = shapeProject(shapeDipoles(m).resultant, 0, 0);
+      return (
+        <g transform={`translate(${108 + j * 210} 180)`}>
+          {m.bonds.map((b) => (
+            <line
+              x1={p[b.a].x * 55}
+              y1={-p[b.a].y * 55}
+              x2={p[b.b].x * 55}
+              y2={-p[b.b].y * 55}
+              stroke="#9aaba8"
+              stroke-width="7"
+              stroke-linecap="round"
+            />
+          ))}
+          {p
+            .sort((a, b) => a.z - b.z)
+            .map((a) => (
+              <circle
+                cx={a.x * 55}
+                cy={-a.y * 55}
+                r={a.element === 'H' ? 9 : 14}
+                fill={col[a.element]}
+                stroke="#758b8733"
+              />
+            ))}
+          {Math.hypot(v.x, v.y) > 0.01 ? (
+            <path
+              d={`M0 20 L${v.x * 45} ${20 - v.y * 45} l-5 -8 m5 8 l5 -8`}
+              fill="none"
+              stroke="#a87242"
+              stroke-width="3"
+            />
+          ) : (
+            <circle
+              cx="0"
+              cy="0"
+              r="25"
+              fill="none"
+              stroke="#a87242"
+              stroke-width="2"
+              stroke-dasharray="3 5"
+            />
+          )}
+          <text x="0" y="114" text-anchor="middle" font-size="24" fill="#526a70">
+            {['180°', '105°', '109°28′'][j]}
+          </text>
+        </g>
+      );
+    })
+  }
+</svg>

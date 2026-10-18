@@ -1,0 +1,41 @@
+---
+import { ammoniumSmoke, SMOKE_GRID } from '../../models/chem-ammonium-smoke';
+const s = ammoniumSmoke(6);
+const left = 45 + Math.round(0.41 * 39) * 7.7,
+  right = 45 + Math.round(0.59 * 39) * 7.7,
+  tip = 77 + 14 * 7.7;
+---
+
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><defs
+    ><radialGradient id="smoke-cover-back"
+      ><stop stop-color="#71867d"></stop><stop offset="1" stop-color="#9ba798"
+      ></stop></radialGradient
+    ><filter id="smoke-cover-blur"><feGaussianBlur stdDeviation="4.5"></feGaussianBlur></filter
+    ><linearGradient id="smoke-cover-glass"
+      ><stop stop-color="#b7c7bc"></stop><stop offset=".5" stop-color="#eef3e9"></stop><stop
+        offset="1"
+        stop-color="#a1b5a7"></stop></linearGradient
+    ></defs
+  ><rect x="20" y="25" width="360" height="350" rx="55" fill="url(#smoke-cover-back)"></rect><path
+    d={`M67 50L${left} ${tip}M335 50L${right} ${tip}`}
+    stroke="url(#smoke-cover-glass)"
+    stroke-width="11"
+    stroke-linecap="round"></path><g filter="url(#smoke-cover-blur)"
+    >{
+      Array.from(
+        s.solid,
+        (v, i) =>
+          v > 0.00005 && (
+            <circle
+              cx={45 + (i % SMOKE_GRID.width) * 7.7}
+              cy={77 + Math.floor(i / SMOKE_GRID.width) * 7.7}
+              r="6.9"
+              fill="#f4f5eb"
+              opacity={Math.min(0.86, 1 - Math.exp(-v * 18))}
+            />
+          ),
+      )
+    }</g
+  ></svg
+>

@@ -1,0 +1,49 @@
+---
+import { carbonMolecule, rotatePoint } from '../../models/chem-carbon-frameworks';
+const models = ['methane', 'ethene', 'ethyne'].map((key) => carbonMolecule(key));
+const col = { C: '#61725a', H: '#e7ddbe', Cl: '#a7bc8e' };
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#eef1e6"></rect>{
+    models.map((m, j) => {
+      const p = m.atoms.map((a) => ({
+          ...a,
+          ...rotatePoint(a, { x: 0, y: 1, z: 0 }, j === 0 ? 0.5 : 0),
+        })),
+        s = 45;
+      return (
+        <g transform={`translate(${112 + j * 208} 195)`}>
+          {m.bonds.map((b) =>
+            Array.from({ length: b.order }, (_, k) => (
+              <line
+                x1={p[b.a].x * s}
+                y1={-p[b.a].y * s + (k - (b.order - 1) / 2) * 7}
+                x2={p[b.b].x * s}
+                y2={-p[b.b].y * s + (k - (b.order - 1) / 2) * 7}
+                stroke="#a8b397"
+                stroke-width="6"
+                stroke-linecap="round"
+              />
+            )),
+          )}
+          {p
+            .sort((a, b) => a.z - b.z)
+            .map((a) => (
+              <circle
+                cx={a.x * s}
+                cy={-a.y * s}
+                r={a.element === 'C' ? 13 : 8}
+                fill={col[a.element]}
+                stroke="#82956d"
+                stroke-width="1"
+              />
+            ))}
+          <text x="0" y="105" text-anchor="middle" fill="#5b714c" font-size="23">
+            {['109.47°', '120°', '180°'][j]}
+          </text>
+        </g>
+      );
+    })
+  }</svg
+>

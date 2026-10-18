@@ -138,7 +138,17 @@ for (const slug of slugs) {
       throw new Error(`${slug}/${id}: curriculum chapters must exist in consecutive order.`);
     if (variants[id] && variants[id].sceneSlug !== slug)
       throw new Error(`${id}: a different scene already owns this textbook entry.`);
-    variants[id] = { sceneSlug: slug, chapterIds: variant.chapterIds, label: variant.label };
+    if (
+      variant.sceneVariant !== undefined &&
+      (typeof variant.sceneVariant !== 'string' || !variant.sceneVariant.trim())
+    )
+      throw new Error(`${slug}/${id}: apparatus variant must be a nonempty key.`);
+    variants[id] = {
+      sceneSlug: slug,
+      chapterIds: variant.chapterIds,
+      label: variant.label,
+      ...(variant.sceneVariant ? { sceneVariant: variant.sceneVariant } : {}),
+    };
   }
   if (new Set(film.cues.map((cue) => cue.id)).size !== film.cues.length)
     throw new Error(`${slug}: duplicate chapter identity.`);
@@ -214,7 +224,10 @@ for (const slug of slugs) {
   source.discovery = prepend(
     source.discovery,
     'export const discoveryMetadata: Record<string, DiscoveryMetadata> = {\n',
-    `${JSON.stringify(slug)}: ${JSON.stringify(discovery, null, 2)},\n`,
+    `${JSON.stringify(slug)}: ${JSON.stringify(discovery, null, 2)},`
+      .split('\n')
+      .map((line) => `  ${line}`)
+      .join('\n') + '\n',
   );
   additions.push(`${topic.number}: ${slug} (${film.cues.length} planned chapters)`);
 }

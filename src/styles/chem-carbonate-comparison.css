@@ -1,0 +1,188 @@
+.chem-carbonate-comparison {
+  background: #f0efdd;
+  color: #53624c;
+  border-radius: 28px;
+  padding: clamp(22px, 3vw, 36px);
+  font-size: 16px;
+}
+.chem-carbonate-comparison header {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.chem-carbonate-comparison header p {
+  font-size: clamp(21px, 2.3vw, 28px);
+  margin: 0;
+}
+.chem-carbonate-comparison header span {
+  white-space: nowrap;
+  color: #879270;
+}
+.chem-carbonate-tubes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 700px;
+  margin: 24px auto;
+}
+.chem-carbonate-tubes figure {
+  margin: 0;
+  text-align: center;
+}
+.chem-carbonate-tubes figcaption {
+  font-size: 20px;
+}
+.chem-carbonate-tubes svg {
+  width: 100%;
+  max-height: 300px;
+}
+.chem-carbonate-tubes p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+.chem-carbonate-heating {
+  max-width: 700px;
+  margin: 22px auto;
+}
+.chem-carbonate-heating svg {
+  width: 100%;
+  display: block;
+}
+.chem-carbonate-apparatus-labels {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  font-size: 18px;
+}
+.chem-carbonate-balance {
+  padding: 12px 0;
+}
+.chem-carbonate-balance p {
+  text-align: center;
+  font-size: 20px;
+}
+.chem-carbonate-mass-track {
+  display: flex;
+  height: 18px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e0e4ce;
+}
+.chem-carbonate-mass-track i {
+  background: #b7bc93;
+}
+.chem-carbonate-mass-track i:nth-child(2) {
+  background: #a3c5b8;
+}
+.chem-carbonate-mass-track i:nth-child(3) {
+  background: #c7ad82;
+}
+.chem-carbonate-mass-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+  font-size: 16px;
+}
+.chem-carbonate-controls {
+  padding: 20px;
+  background: #fcfaee;
+  border-radius: 22px;
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+}
+.chem-carbonate-controls button,
+.chem-carbonate-controls input {
+  min-height: 44px;
+}
+.chem-carbonate-comparison details {
+  line-height: 1.8;
+  color: #7d8a6d;
+  margin-top: 16px;
+}
+.chem-carbonate-comparison summary {
+  cursor: pointer;
+  padding: 10px 0;
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .chem-carbonate-comparison {
+    padding: 22px 16px;
+  }
+  .chem-carbonate-comparison header {
+    display: block;
+  }
+  .chem-carbonate-comparison header span {
+    display: block;
+    margin-top: 12px;
+  }
+  .chem-carbonate-tubes {
+    gap: 6px;
+    margin: 20px auto;
+  }
+  .chem-carbonate-tubes svg {
+    height: 220px;
+  }
+  .chem-carbonate-tubes figcaption {
+    font-size: 18px;
+  }
+  .chem-carbonate-tubes p {
+    font-size: 16px;
+  }
+  .chem-carbonate-heating svg {
+    min-height: 210px;
+  }
+  .chem-carbonate-apparatus-labels {
+    font-size: 16px;
+    gap: 12px;
+  }
+  .chem-carbonate-balance p {
+    font-size: 17px;
+  }
+  .chem-carbonate-mass-labels {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .chem-carbonate-controls {
+    padding: 16px;
+  }
+}
+
+.chem-carbonate-comparison[data-watch='true'] header p {
+  display: none;
+}
+.chem-carbonate-comparison[data-watch='true'][data-balance='true'] .chem-carbonate-heating {
+  display: none;
+}
+.chem-carbonate-comparison[data-watch='true'][data-balance='true'] .chem-carbonate-balance {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.chem-carbonate-comparison[data-watch='true'] .chem-carbonate-tubes {
+  margin: 16px auto 8px;
+}
+@media (max-width: 600px) {
+  .chem-carbonate-comparison[data-watch='true'] {
+    padding: 16px 12px;
+  }
+  .chem-carbonate-comparison[data-watch='true'] header span {
+    margin-top: 0;
+  }
+  .chem-carbonate-tubes svg {
+    height: 180px;
+  }
+  .chem-carbonate-heating svg {
+    min-height: 0;
+  }
+  .chem-carbonate-apparatus-labels span:first-child {
+    display: none;
+  }
+  .chem-carbonate-heating {
+    margin: 12px auto;
+  }
+}

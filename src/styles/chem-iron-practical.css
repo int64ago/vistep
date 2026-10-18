@@ -1,0 +1,128 @@
+.chem-iron-practical {
+  font-size: 16px;
+  color: #53634e;
+  padding: 18px 8px 24px;
+}
+.chem-practical-label {
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.chem-practical-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.chem-practical-stage svg {
+  width: 320px;
+  height: 300px;
+  flex-shrink: 0;
+}
+.chem-practical-observation {
+  width: 250px;
+  max-width: 100%;
+  text-align: center;
+}
+.chem-practical-reagent {
+  min-height: 30px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.chem-practical-valence {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+.chem-practical-valence span {
+  border-bottom: 2px solid transparent;
+  color: #a1af98;
+  padding: 8px 2px;
+  font-size: 23px;
+}
+.chem-practical-valence .active {
+  color: #64794f;
+  border-color: #9eaf86;
+}
+.chem-practical-observation p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+.chem-practical-equation {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-top: 24px;
+}
+.chem-practical-controls {
+  display: grid;
+  gap: 20px;
+  padding-top: 24px;
+  margin-top: 25px;
+  border-top: 1px solid #a6b29a55;
+}
+.chem-practical-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+.chem-practical-controls button,
+.chem-practical-controls input {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .chem-practical-stage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .chem-practical-stage svg {
+    width: 100%;
+    max-width: 280px;
+    height: 260px;
+    margin: auto;
+  }
+  .chem-practical-observation {
+    width: 100%;
+  }
+  .chem-practical-valence {
+    margin: 10px 0;
+  }
+  .chem-practical-valence span {
+    font-size: 20px;
+    padding: 4px 2px;
+  }
+  .chem-practical-label {
+    font-size: 18px;
+  }
+  .chem-practical-equation {
+    font-size: 18px;
+  }
+  .chem-practical-observation p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-iron-practical {
+    padding: 10px 8px 12px;
+  }
+  .chem-practical-label {
+    margin-bottom: 8px;
+  }
+  .chem-practical-stage svg {
+    height: 210px;
+  }
+  .chem-practical-equation {
+    margin-top: 14px;
+  }
+  .chem-practical-reagent:empty {
+    display: none;
+  }
+  .chem-practical-valence {
+    margin: 6px 0;
+  }
+}

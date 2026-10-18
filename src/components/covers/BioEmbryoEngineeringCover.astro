@@ -1,0 +1,36 @@
+---
+import { embryoSplit } from '../../models/bio-embryo-engineering';
+const s = embryoSplit(0.96);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#eee6dc"></rect><defs
+    ><clipPath id="embryo-cover-top"><rect x="-60" y="-60" width="120" height="60"></rect></clipPath
+    ><clipPath id="embryo-cover-bottom"
+      ><rect x="-60" y="0" width="120" height="60"></rect></clipPath
+    ></defs
+  ><g transform="translate(200 115) scale(1.2)"
+    >{
+      [0, 1].map((half) => (
+        <g transform={`translate(0 ${(half ? 1 : -1) * s.separation})`}>
+          <>
+            <g clip-path={`url(#embryo-cover-${half ? 'bottom' : 'top'})`}>
+              <circle r="47" fill="none" stroke="#d7c9b1" stroke-width="12" />
+              {s.cells
+                .filter((a) => a.half === half)
+                .map((a) => (
+                  <circle
+                    cx={a.x}
+                    cy={a.y - (half ? 1 : -1) * s.separation}
+                    r={a.r}
+                    fill={a.type === 'ICM' ? '#a28ba7' : '#b9a587'}
+                  />
+                ))}
+            </g>
+            <path d="M-55 0H55" stroke="#bba58c" stroke-width="1.5" />
+          </>
+        </g>
+      ))
+    }</g
+  ><path d="M65 115H115l-12-9m12 9-12 9" fill="none" stroke="#9fb6b2" stroke-width="3"></path></svg
+>

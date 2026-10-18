@@ -1,0 +1,106 @@
+.chem-hydrogen-chlorine {
+  padding: 14px 8px 24px;
+  font-size: 16px;
+  color: #465b3f;
+}
+.chem-hcl-apparatus {
+  max-width: 420px;
+  margin: auto;
+}
+.chem-hcl-apparatus.with-closeup {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  max-width: 760px;
+  gap: 25px;
+  align-items: center;
+}
+.chem-hcl-apparatus figure {
+  margin: 0;
+  min-width: 0;
+}
+.chem-hcl-apparatus svg {
+  display: block;
+  width: 100%;
+}
+.chem-hcl-apparatus figcaption,
+.chem-hcl-fogdetail p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.chem-hcl-molecules {
+  max-width: 600px;
+  margin: auto;
+}
+.chem-hcl-molecules svg {
+  width: 100%;
+  display: block;
+}
+.chem-hcl-formula {
+  text-align: center;
+  font-size: 27px;
+}
+.chem-hcl-energy {
+  display: grid;
+  gap: 12px;
+  text-align: center;
+  margin-top: 35px;
+  padding-top: 22px;
+  border-top: 1px solid #96a58b55;
+  font-size: 16px;
+}
+.chem-hcl-energy strong {
+  font-size: 25px;
+  font-weight: 500;
+}
+.chem-hcl-controls {
+  display: grid;
+  gap: 20px;
+  border-top: 1px solid #96a58b55;
+  margin-top: 26px;
+  padding-top: 22px;
+}
+.chem-hcl-controls button,
+.chem-hcl-controls input {
+  min-height: 44px;
+}
+.chem-hcl-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 550px) {
+  .chem-hcl-apparatus.with-closeup {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .chem-hcl-fogdetail {
+    display: grid;
+    grid-template-columns: 135px 1fr;
+    align-items: center;
+    gap: 15px;
+  }
+  .chem-hcl-fogdetail p {
+    text-align: left;
+    font-size: 16px;
+  }
+  .chem-hcl-formula {
+    font-size: 24px;
+  }
+  .chem-hcl-energy {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 550px) {
+  .chem-hydrogen-chlorine {
+    padding: 10px 8px 12px;
+  }
+  .chem-hcl-apparatus > figure > svg {
+    height: 220px;
+  }
+  .chem-hcl-apparatus.with-closeup {
+    gap: 10px;
+  }
+}

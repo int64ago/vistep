@@ -1,0 +1,41 @@
+---
+import { flaskProfile, flaskLevel } from '../../models/chem-solution-preparation';
+const path = flaskProfile(320),
+  y = flaskLevel(100);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><defs><clipPath id="chem-prep-cover-clip"><path d={path}></path></clipPath></defs><rect
+    width="640"
+    height="400"
+    fill="#e7ece2"></rect><ellipse cx="320" cy="342" rx="180" ry="15" fill="#779275" opacity=".1"
+  ></ellipse><path d={path} fill="#bed0bb22" stroke="#839c86" stroke-width="2"></path><g
+    clip-path="url(#chem-prep-cover-clip)"
+    ><rect x="220" y={y} width="200" height="240" fill="#b5cbb9" opacity=".45"></rect><path
+      d={`M305 ${y - 5}Q320 ${y + 5}335 ${y - 5}`}
+      stroke="#739982"
+      fill="none"></path>{
+      Array.from({ length: 25 }, (_, i) => (
+        <circle
+          cx={265 + ((i * 19) % 110)}
+          cy={190 + ((i * 29) % 130)}
+          r="3"
+          fill="#b09b73"
+          opacity=".6"
+        />
+      ))
+    }</g
+  ><path d="M298 100H342" stroke="#9e8059" stroke-width="2"></path><path
+    d="M314 5V21L320 34L326 21V5"
+    fill="#a2bca5"></path><circle cx="320" cy="55" r="3" fill="#8fad99"></circle><path
+    d="M346 100H495M495 100L487 94M495 100L487 106"
+    fill="none"
+    stroke="#8ea384"
+    stroke-dasharray="3 5"></path><text
+    x="320"
+    y="247"
+    text-anchor="middle"
+    font-size="26"
+    fill="#5d775f">100 mL</text
+  ></svg
+>

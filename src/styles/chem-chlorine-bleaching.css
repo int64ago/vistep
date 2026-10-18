@@ -1,0 +1,223 @@
+.chem-chlorine-bleaching {
+  color: #415442;
+  font-size: 16px;
+  padding: 16px 8px 24px;
+}
+.chem-bleach-jars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 620px;
+  margin: auto;
+}
+.chem-bleach-jars figure {
+  margin: 0;
+  min-width: 0;
+}
+.chem-bleach-jars svg {
+  display: block;
+  width: 100%;
+}
+.chem-bleach-jars figcaption {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.chem-bleach-gas {
+  grid-column: 1/-1;
+  text-align: center;
+  border-top: 1px solid #9ca98e66;
+  padding-top: 18px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.chem-bleach-jars.is-flower {
+  grid-template-columns: 1fr;
+  max-width: 350px;
+}
+.chem-bleach-micro {
+  padding: 20px 6px;
+}
+.chem-bleach-water {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  margin: 20px 0 45px;
+}
+.chem-bleach-water span {
+  padding: 12px;
+  border-bottom: 1px solid #9ca98e88;
+}
+.chem-bleach-water i {
+  font-style: normal;
+}
+.chem-bleach-sites {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px 14px;
+  max-width: 560px;
+  margin: auto;
+}
+.chem-bleach-sites > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  height: 28px;
+}
+.chem-bleach-sites i {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ae697a;
+  position: relative;
+}
+.chem-bleach-sites i + i {
+  margin-left: 6px;
+}
+.chem-bleach-sites i + i:before {
+  content: '';
+  height: 2px;
+  background: #ae697a;
+  width: 7px;
+  position: absolute;
+  left: -7px;
+  top: 6px;
+}
+.chem-bleach-sites .is-changed i {
+  background: #b6bba4;
+}
+.chem-bleach-sites .is-changed i:nth-child(2) {
+  transform: translateY(7px);
+}
+.chem-bleach-sites .is-changed i:before {
+  display: none;
+}
+.chem-bleach-key {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 35px;
+  flex-wrap: wrap;
+}
+.chem-bleach-key span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+.chem-bleach-key i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ae697a;
+}
+.chem-bleach-key span + span i {
+  background: #b6bba4;
+}
+.chem-bleach-controls {
+  display: grid;
+  gap: 20px;
+  border-top: 1px solid #9ca98e55;
+  padding-top: 23px;
+  margin-top: 25px;
+}
+.chem-bleach-controls button,
+.chem-bleach-controls input {
+  min-height: 44px;
+}
+.chem-bleach-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 520px) {
+  .chem-bleach-jars {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .chem-bleach-jars figure {
+    display: grid;
+    grid-template-columns: 1fr 165px;
+    align-items: center;
+  }
+  .chem-bleach-jars svg {
+    grid-column: 2;
+    grid-row: 1;
+    width: 165px;
+  }
+  .chem-bleach-jars figcaption {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    font-size: 17px;
+  }
+  .chem-bleach-jars.is-flower figure {
+    display: block;
+  }
+  .chem-bleach-jars.is-flower svg {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+  }
+  .chem-bleach-jars.is-flower figcaption {
+    text-align: center;
+  }
+  .chem-bleach-sites {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px 9px;
+  }
+  .chem-bleach-water {
+    font-size: 20px;
+    gap: 10px;
+  }
+  .chem-bleach-key {
+    justify-content: flex-start;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .chem-chlorine-bleaching {
+    padding: 10px 8px 12px;
+  }
+  .chem-bleach-jars {
+    gap: 8px;
+  }
+  .chem-bleach-jars figure {
+    grid-template-columns: 1fr 130px;
+  }
+  .chem-bleach-jars svg {
+    width: 130px;
+  }
+  .chem-bleach-jars.is-flower svg {
+    max-width: 200px;
+  }
+  .chem-bleach-gas {
+    padding-top: 10px;
+    margin-top: 2px;
+  }
+  .chem-bleach-micro {
+    padding: 4px;
+  }
+  .chem-bleach-water {
+    margin: 4px 0 18px;
+    gap: 6px;
+  }
+  .chem-bleach-water span {
+    padding: 6px;
+  }
+  .chem-bleach-sites {
+    gap: 10px 9px;
+  }
+  .chem-bleach-sites > div {
+    height: 20px;
+  }
+  .chem-bleach-key {
+    margin-top: 22px;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,34 @@
+---
+import { copperEtching, COPPER_TRACE } from '../../models/chem-copper-etching';
+const m = copperEtching();
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect><rect
+    x="75"
+    y="55"
+    width="490"
+    height="295"
+    rx="14"
+    fill="#7f9a7c"></rect><path
+    d="M75 335q0 15 15 15h460q15 0 15-15v10q0 15-15 15H90q-15 0-15-15Z"
+    fill="#b7b58f"></path>{
+    m.depth === 1 && (
+      <>
+        <path
+          d={COPPER_TRACE.map((p, i) => `${i ? 'L' : 'M'}${80 + p[0] * 12} ${58 + p[1] * 12}`).join(
+            ' ',
+          )}
+          stroke="#bd885e"
+          stroke-width="33.6"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          fill="none"
+        />
+        {[COPPER_TRACE[0], COPPER_TRACE.at(-1)!].map((p) => (
+          <circle cx={80 + p[0] * 12} cy={58 + p[1] * 12} r="31.2" fill="#bd885e" />
+        ))}
+      </>
+    )
+  }<path d="M105 317h420" stroke="#b0c0a1" stroke-width="2" opacity=".5"></path></svg
+>

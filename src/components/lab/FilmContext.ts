@@ -12,7 +12,7 @@ export type Director = {
   chapterTime: number;
   chapterProgress: number;
   narrating?: boolean;
-  /** Textbook identity used to initialize the corresponding exploration apparatus. */
+  /** Apparatus key used to initialize exploration; independent of its textbook location. */
   variant?: string;
 };
 export const FilmContext = createContext<Director>({

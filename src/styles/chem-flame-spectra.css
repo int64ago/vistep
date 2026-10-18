@@ -1,0 +1,210 @@
+.chem-flame-spectra {
+  background: radial-gradient(ellipse at 35% 20%, #2c5148, #193d36);
+  color: #e1e6d0;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: 28px;
+  font-size: 16px;
+}
+.chem-flame-spectra header p {
+  font-size: clamp(22px, 2.4vw, 28px);
+  margin: 0 0 10px;
+}
+.chem-flame-spectra header span {
+  color: #a7c1ac;
+}
+.chem-flame-bench {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.chem-flame-bench svg {
+  width: 100%;
+  max-height: 320px;
+}
+.chem-flame-sample strong {
+  display: block;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.5;
+}
+.chem-flame-sample span {
+  display: block;
+  color: #b4c8af;
+  margin-top: 14px;
+}
+.chem-observed-colour {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.chem-flame-spectra[data-watch='true'] header {
+  display: none;
+}
+.chem-flame-spectra[data-watch='true'] details {
+  margin-top: 10px;
+}
+.chem-flame-spectra[data-watch='true'] summary {
+  padding-block: 0;
+}
+.chem-flame-lines > span {
+  display: block;
+  margin-bottom: 14px;
+}
+.chem-spectrum-strip {
+  position: relative;
+  background: #0e2925;
+  border-radius: 7px;
+  height: 45px;
+  overflow: hidden;
+}
+.chem-spectrum-strip i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px currentColor;
+}
+.chem-spectrum-strip.is-absorption {
+  background: linear-gradient(90deg, #a78bcb, #81afd1, #80c5aa, #c7d486, #dfc77c, #d28e89);
+}
+.chem-spectrum-scale {
+  display: flex;
+  justify-content: space-between;
+  color: #abc1aa;
+  font-size: 16px;
+  margin-top: 10px;
+  gap: 12px;
+}
+.chem-spectrum-comparison {
+  margin: 35px 0;
+}
+.chem-spectrum-comparison > div[data-active] {
+  opacity: 0.45;
+  padding: 10px 0;
+  transition: opacity 0.3s;
+}
+.chem-spectrum-comparison > div[data-active='true'] {
+  opacity: 1;
+}
+.chem-spectrum-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.chem-spectrum-row b {
+  font-size: 20px;
+  font-weight: 500;
+}
+.chem-spectrum-comparison .chem-spectrum-scale {
+  margin-left: 56px;
+}
+.chem-energy-levels {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.chem-energy-levels svg {
+  width: 100%;
+}
+.chem-energy-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chem-energy-labels strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+.chem-energy-labels p {
+  line-height: 1.7;
+}
+.chem-flame-controls {
+  background: #edf1de;
+  color: #3a5b49;
+  padding: 22px;
+  display: grid;
+  gap: 20px;
+  border-radius: 22px;
+  margin-top: 24px;
+}
+.chem-flame-controls button,
+.chem-flame-controls input {
+  min-height: 44px;
+}
+.chem-flame-spectra details {
+  color: #b2c7ad;
+  line-height: 1.8;
+  margin-top: 18px;
+}
+.chem-flame-spectra summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+@media (max-width: 600px) {
+  .chem-flame-spectra {
+    padding: 14px 12px;
+  }
+  .chem-flame-bench {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .chem-flame-bench svg {
+    max-height: 220px;
+  }
+  .chem-flame-sample strong {
+    font-size: 18px;
+  }
+  .chem-flame-sample span {
+    margin-top: 8px;
+  }
+  .chem-flame-lines {
+    margin-top: 12px;
+  }
+  .chem-flame-lines > span {
+    margin-bottom: 8px;
+  }
+  .chem-energy-levels {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .chem-energy-levels svg {
+    height: 190px;
+  }
+  .chem-energy-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .chem-energy-labels > p {
+    grid-column: 1/-1;
+    margin: 0;
+  }
+  .chem-energy-labels strong {
+    font-size: 18px;
+  }
+  .chem-spectrum-comparison {
+    margin: 25px 0;
+  }
+  .chem-spectrum-row {
+    grid-template-columns: 32px 1fr;
+    gap: 8px;
+  }
+  .chem-spectrum-comparison .chem-spectrum-scale {
+    margin-left: 40px;
+  }
+  .chem-flame-controls {
+    padding: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-spectrum-comparison > div[data-active] {
+    transition: none;
+  }
+}

@@ -36,6 +36,7 @@
 
 ## Review records
 
+- [PEP chemistry and biology review](qa-pep-sciences.md): ten-book learning order, independent repairs, separate visual/playback/ASR evidence, and final-check status.
 - [PEP physics curriculum review](qa-pep-curriculum.md): six-book coverage, independent repairs, ASR and sampled browser evidence, and remaining acceptance gaps.
 - [Twenty-exploration review](qa-twenty-explorations.md): scenes 83–102, independent source repairs, recordings and separate browser/device evidence.
 

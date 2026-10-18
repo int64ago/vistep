@@ -1,0 +1,35 @@
+---
+import { crystal, camera } from '../../models/chem-chirality-evidence';
+const shapes = ([1, -1] as const).map((h, j) =>
+  crystal(h)
+    .map((f) => {
+      const p = f.points.map((v) => camera(v, 0.55 * h, 0.2));
+      return {
+        cap: f.cap,
+        z: p.reduce((s, v) => s + v.z, 0) / p.length,
+        points: p.map((v) => `${(j === 0 ? 200 : 440) + v.x * 70},${200 - v.y * 70}`).join(' '),
+      };
+    })
+    .sort((a, b) => a.z - b.z),
+);
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e4e9d5"></rect><path
+    d="M320 55 V345"
+    fill="none"
+    stroke="#a8bfad"
+    stroke-width="2"
+    stroke-dasharray="4 8"></path>{
+    shapes.flatMap((fs) =>
+      fs.map((f) => (
+        <polygon
+          points={f.points}
+          fill={f.cap ? '#ab8758' : f.z > 0 ? '#c5d8cc' : '#a5beb6'}
+          stroke="#7e9d90"
+          stroke-width="1.4"
+        />
+      )),
+    )
+  }</svg
+>

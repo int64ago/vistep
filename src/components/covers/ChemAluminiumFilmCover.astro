@@ -1,0 +1,43 @@
+---
+import { aluminiumFilm } from '../../models/chem-aluminium-film';
+const coated = aluminiumFilm('base', 0.1, 1.2, 0.12),
+  bare = aluminiumFilm('base', 0, 1.2, 0.12);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect>{
+    [coated, bare].map((m, i) => {
+      const x = 60 + i * 300;
+      return (
+        <g>
+          <rect
+            x={x}
+            y={250 + 50 * (1 - m.metalLeft)}
+            width="220"
+            height={50 * m.metalLeft}
+            fill="#a7b0ab"
+          />
+          {m.oxideLeft > 0 && (
+            <rect
+              x={x}
+              y={250 - 22 * m.oxideFraction}
+              width="220"
+              height={22 * m.oxideFraction}
+              fill="#c9c9b3"
+            />
+          )}
+          {m.hydrogen > 0 &&
+            Array.from({ length: 8 }, (_, j) => (
+              <circle
+                cx={x + 25 + ((j * 31) % 170)}
+                cy={130 + ((j * 23) % 85)}
+                r={5 + (j % 3)}
+                fill="#edf2e433"
+                stroke="#9cb8b7"
+              />
+            ))}
+        </g>
+      );
+    })
+  }</svg
+>

@@ -1,0 +1,304 @@
+.chem-rainwater-ph {
+  padding: 16px 10px;
+  font-size: 16px;
+  color: #6a806e;
+}
+.chem-rain-heading {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.chem-rain-apparatus {
+  display: block;
+  width: 100%;
+  height: 280px;
+  max-width: 440px;
+  margin: auto;
+}
+.chem-rain-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 430px;
+  margin: 12px auto;
+}
+.chem-rain-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 14px auto 0;
+  max-width: 440px;
+  color: #82957e;
+}
+.chem-rain-instruments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 400px;
+  margin: 22px auto;
+  text-align: center;
+  align-items: end;
+}
+.chem-rain-paper,
+.chem-rain-device {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  line-height: 1.5;
+}
+.chem-rain-strip {
+  height: 120px;
+  width: 35px;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px #6e806815;
+}
+.chem-rain-device svg {
+  width: 140px;
+  height: 190px;
+}
+.chem-rain-instruments strong {
+  font-weight: 500;
+  font-size: 23px;
+}
+.chem-rain-calibration {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+  margin: 28px auto 18px;
+}
+.chem-rain-calibration span:first-child,
+.chem-rain-calibration span:nth-child(2) {
+  border: 1px solid #b1c0a966;
+  padding: 9px 12px;
+  border-radius: 12px;
+  color: #9ba897;
+}
+.chem-rain-calibration .active {
+  background: #e8efde;
+  color: #6f8560 !important;
+}
+.chem-rain-meter-value {
+  text-align: center;
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+  margin: 12px auto;
+}
+.chem-rain-meter-value small {
+  font-size: 18px;
+}
+.chem-rain-interval {
+  display: block;
+  width: 100%;
+  height: 150px;
+  max-width: 410px;
+  margin: auto;
+}
+.chem-rain-result {
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.chem-rain-record-chart {
+  display: flex;
+  gap: 12px;
+  max-width: 460px;
+  margin: 46px auto 24px;
+  height: 220px;
+}
+.chem-rain-ylabels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  font-variant-numeric: tabular-nums;
+  width: 18px;
+}
+.chem-rain-plot {
+  position: relative;
+  flex: 1;
+}
+.chem-rain-grid {
+  position: absolute;
+  inset: 0 0 32px;
+  border-top: 1px solid #c3d0bc88;
+  border-bottom: 1px solid #c3d0bc88;
+  background: linear-gradient(
+    to bottom,
+    transparent 49.5%,
+    #c3d0bc77 49.5%,
+    #c3d0bc77 50%,
+    transparent 50%
+  );
+}
+.chem-rain-threshold {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed #c6ac86;
+}
+.chem-rain-events {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 100%;
+  position: relative;
+}
+.chem-rain-event {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+}
+.chem-rain-event > span {
+  height: 24px;
+  line-height: 24px;
+}
+.chem-rain-event-line {
+  flex: 1;
+  position: relative;
+}
+.chem-rain-dot {
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #97b3aa;
+  transform: translate(-50%, -50%);
+}
+.chem-rain-dot b {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.chem-rain-missing {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #a8b39c;
+}
+.chem-rain-average-samples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  max-width: 290px;
+  margin: 24px auto;
+  text-align: center;
+}
+.chem-rain-average-samples > div {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+.chem-rain-volume {
+  height: 125px;
+  width: 68px;
+  border: 1.5px solid #a9bba7;
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.chem-rain-volume i {
+  display: block;
+  width: 100%;
+  background: #c4d8c477;
+}
+.chem-rain-average {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 420px;
+  margin: 20px auto;
+  text-align: center;
+  line-height: 1.5;
+}
+.chem-rain-average b {
+  display: block;
+  font-weight: 500;
+  font-size: 26px;
+  margin: 8px 0;
+}
+.chem-rain-controls {
+  display: grid;
+  gap: 24px;
+  margin: 25px auto 0;
+  border-top: 1px solid #b4c4a744;
+  padding-top: 20px;
+}
+.chem-rain-controls button,
+.chem-rain-controls input,
+.chem-rain-controls summary {
+  min-height: 44px;
+}
+.chem-rain-controls p,
+.chem-rain-controls summary {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.chem-rain-controls summary {
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .chem-rainwater-ph {
+    padding: 12px 7px;
+  }
+  .chem-rain-heading {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+  .chem-rain-apparatus {
+    height: 210px;
+  }
+  .chem-rain-pair {
+    gap: 18px;
+  }
+  .chem-rain-instruments {
+    gap: 18px;
+    margin: 16px auto;
+  }
+  .chem-rain-device svg {
+    width: 115px;
+    height: 160px;
+  }
+  .chem-rain-strip {
+    height: 100px;
+  }
+  .chem-rain-interval {
+    height: 125px;
+  }
+  .chem-rain-calibration {
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .chem-rain-record-chart {
+    height: 185px;
+    margin-top: 40px;
+    gap: 8px;
+  }
+  .chem-rain-average-samples {
+    gap: 25px;
+    margin: 18px auto;
+  }
+  .chem-rain-volume {
+    height: 100px;
+    width: 60px;
+  }
+  .chem-rain-average {
+    gap: 14px;
+    margin: 14px auto;
+  }
+  .chem-rain-average b {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,43 @@
+---
+import { membraneTracer } from '../../models/bio-membrane-evidence';
+const markers = Array.from({ length: 48 }, (_, i) => membraneTracer(i, 30));
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><circle cx="110" cy="115" r="76" fill="#d6dfc3" stroke="#a8b28e" stroke-width="3"></circle>{
+    markers.map((q) => (
+      <rect
+        x={107 + 73 * q.x}
+        y={111 + 73 * q.y}
+        width="6"
+        height="8"
+        rx="2"
+        fill={q.origin === 'mouse' ? '#6a9e68' : '#bf7967'}
+      />
+    ))
+  }<ellipse cx="90" cy="110" rx="15" ry="21" fill="#b8bcaa"></ellipse><ellipse
+    cx="130"
+    cy="124"
+    rx="15"
+    ry="21"
+    fill="#aeb6ab"></ellipse><g transform="translate(220 90)"
+    >{
+      Array.from({ length: 12 }, (_, i) => (
+        <g>
+          <>
+            <path
+              d={`M${i * 13} 0v23M${i * 13 + 3} 1v22M${i * 13} 50V27M${i * 13 + 3} 49V27`}
+              stroke="#b8aa77"
+              stroke-width="2"
+            />
+            <circle cx={i * 13} cy="0" r="4.8" fill="#91ae7b" />
+            <circle cx={i * 13} cy="50" r="4.8" fill="#91ae7b" />
+          </>
+        </g>
+      ))
+    }<path d="M57-14Q42 0 49 23Q39 52 58 64H77Q92 47 82 26Q97-1 77-14Z" fill="#9d92aa"></path><path
+      d="M67-14V-35l-12-10m12 10 12-10"
+      stroke="#a78b5d"
+      stroke-width="3"></path></g
+  ></svg
+>

@@ -1,0 +1,82 @@
+.bio-growth {
+  color: #56624d;
+  font-size: 16px;
+}
+.bio-growth svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-growth svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #56624d;
+}
+.bio-growth-head {
+  font-size: 17px;
+  line-height: 1.45;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+}
+.bio-growth-controls {
+  border-top: 1px solid #d9e0cd;
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+}
+.bio-growth-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bio-growth button {
+  min-height: 44px;
+  border-radius: 24px;
+  border: 1px solid #c7d2ba;
+  padding: 8px 16px;
+  background: #f5f7ef;
+  color: inherit;
+  font: inherit;
+}
+.bio-growth button[aria-pressed='true'] {
+  background: #dfe8d2;
+  border-color: #9bae88;
+}
+.bio-growth label {
+  display: grid;
+  gap: 8px;
+}
+.bio-growth input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  font: inherit;
+  accent-color: #8ba276;
+}
+.bio-growth details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-growth summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-growth-records {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.bio-growth button:focus-visible,
+.bio-growth input:focus-visible {
+  outline: 2px solid #889d76;
+  outline-offset: 3px;
+}
+
+.bio-growth {
+  padding: 12px;
+}
+.bio-growth[data-watch='true'] .bio-growth-head {
+  display: none;
+}

@@ -1679,6 +1679,20 @@ h3 {
 .lab-callout p {
   font-size: 16px;
 }
+
+.showcase:is([data-slug^='chem-'], [data-slug^='bio-']) .segmented button {
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+  font-size: 16px;
+  color: #485c43;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.showcase:is([data-slug^='chem-'], [data-slug^='bio-']) .showcase-film input[type='range'] {
+  margin-inline: 0;
+}
 @media (max-width: 760px) {
   .opening-description {
     font-size: 13px;

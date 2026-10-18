@@ -1,0 +1,157 @@
+.chem-bond-energy {
+  padding: 16px 10px;
+  font-size: 16px;
+  color: #748267;
+}
+.chem-bond-heading {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.chem-bond-atoms {
+  display: block;
+  width: 100%;
+  height: 210px;
+  max-width: 430px;
+  margin: 0 auto;
+}
+.chem-bond-ledger {
+  display: grid;
+  gap: 24px;
+  max-width: 400px;
+  margin: 16px auto;
+}
+.chem-bond-ledger > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
+  row-gap: 8px;
+  align-items: center;
+}
+.chem-bond-ledger span {
+  font-size: 16px;
+}
+.chem-bond-ledger i {
+  height: 9px;
+  background: #c6b593;
+  border-radius: 8px;
+  grid-column: 1/-1;
+  grid-row: 2;
+}
+.chem-bond-ledger i.release {
+  background: #a3bcae;
+}
+.chem-bond-ledger strong {
+  font-size: 21px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.chem-bond-net {
+  text-align: center;
+  font-size: 25px;
+  margin: 24px auto 16px;
+}
+.chem-bond-note {
+  text-align: center;
+  line-height: 1.6;
+  font-size: 16px;
+  margin: 16px auto 0;
+  max-width: 440px;
+  color: #8a987c;
+}
+.chem-bond-hess {
+  width: 100%;
+  height: 310px;
+  display: block;
+  max-width: 440px;
+  margin: auto;
+}
+.chem-bond-equations {
+  display: grid;
+  gap: 19px;
+  margin: 24px auto;
+  max-width: 440px;
+  text-align: center;
+}
+.chem-bond-equations > div {
+  display: grid;
+  gap: 7px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.chem-bond-equations b {
+  font-size: 22px;
+  font-weight: 500;
+}
+.chem-bond-cancel {
+  border-top: 1px solid #c4d0b844;
+  border-bottom: 1px solid #c4d0b844;
+  padding: 10px 0;
+  color: #91a088;
+}
+.chem-bond-cancel span {
+  font-size: 16px;
+}
+.chem-bond-cancel strong {
+  font-weight: 400;
+  font-size: 18px;
+}
+.chem-bond-total {
+  color: #6e8a71;
+}
+.chem-bond-controls {
+  display: grid;
+  gap: 24px;
+  margin: 24px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #adbea744;
+}
+.chem-bond-controls button,
+.chem-bond-controls input,
+.chem-bond-controls summary {
+  min-height: 44px;
+}
+.chem-bond-controls p,
+.chem-bond-controls summary {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.chem-bond-controls summary {
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .chem-bond-energy {
+    padding: 12px 7px;
+  }
+  .chem-bond-heading {
+    font-size: 17px;
+  }
+  .chem-bond-atoms {
+    height: 160px;
+  }
+  .chem-bond-ledger {
+    gap: 18px;
+    margin: 10px auto;
+  }
+  .chem-bond-ledger strong {
+    font-size: 20px;
+  }
+  .chem-bond-net {
+    font-size: 24px;
+    margin: 18px auto 12px;
+  }
+  .chem-bond-hess {
+    height: 245px;
+  }
+  .chem-bond-equations {
+    margin: 18px auto;
+    gap: 14px;
+  }
+  .chem-bond-equations > div {
+    font-size: 16px;
+  }
+  .chem-bond-equations b {
+    font-size: 20px;
+  }
+}

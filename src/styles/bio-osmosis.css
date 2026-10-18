@@ -1,0 +1,109 @@
+.bio-osmosis {
+  padding: clamp(12px, 3vw, 28px);
+  background: #e9eee0;
+  border-radius: 24px;
+  color: #40564a;
+}
+.bio-osmosis-mode {
+  font-size: 16px;
+  margin: 0 0 10px;
+  color: #74816b;
+}
+.bio-osmosis-main,
+.bio-osmosis > svg {
+  width: 100%;
+  height: 290px;
+  display: block;
+}
+.bio-osmosis-readings {
+  display: flex;
+  gap: 10px 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.bio-red-comparison,
+.bio-aqp-comparison,
+.bio-transport-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  max-width: 760px;
+  margin: auto;
+}
+.bio-red-comparison > div,
+.bio-aqp-comparison > div,
+.bio-transport-grid > div {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+.bio-red-comparison svg,
+.bio-aqp-comparison svg,
+.bio-transport-grid svg {
+  width: 100%;
+  max-height: 270px;
+  display: block;
+}
+.bio-red-comparison p,
+.bio-aqp-comparison p,
+.bio-transport-grid p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 8px 0;
+}
+.bio-transport-grid > div {
+  max-width: 310px;
+}
+.bio-osmosis-controls {
+  display: grid;
+  gap: 15px;
+  max-width: 680px;
+  margin: 24px auto;
+  font-size: 16px;
+}
+.bio-osmosis-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-osmosis-controls button {
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #bac8b1;
+  border-radius: 12px;
+  background: #f5f6eb;
+  color: inherit;
+  font: inherit;
+}
+.bio-osmosis-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 540px) {
+  .bio-osmosis-main,
+  .bio-osmosis > svg {
+    height: 245px;
+  }
+  .bio-red-comparison {
+    gap: 3px;
+  }
+  .bio-red-comparison svg {
+    height: 110px;
+  }
+  .bio-aqp-comparison,
+  .bio-transport-grid {
+    gap: 8px;
+  }
+  .bio-aqp-comparison svg {
+    max-height: 180px;
+  }
+  .bio-transport-grid svg {
+    max-height: 200px;
+  }
+  .bio-osmosis-readings {
+    gap: 6px 14px;
+  }
+  .bio-red-comparison p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+}

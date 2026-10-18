@@ -1,0 +1,9 @@
+# Active stability family
+
+Read full textbookpp68–79; reread74–79 after outputtruncation. Targets072-1 chemicalcommunication experimentaldesign,mechanism22 feedback/resistance/resilience,078-1 ecologicaltankmodelbuilding. Textbooktankhaslandslopestones/sand5–15cm/humus5–10cm,water5–10cm,cover,indirectlight,weeklyrecords;notgenericsealedbottleandnotalllistedanimalsrequirement. Needmodelconditionalstabilitynotclaimpermanentbalance.
+
+Sourcesprimarysilkmothresearch2011PMC3128102,2015PMC4457163; bombykolnotgeneraluniversalpheromone, walkingmaleBombyxmori (domesticatednotflying). Aircarriessignal,meshonlyexcludescontactdoesnotexcludevisual; opaqueenclosurewithbentairduct andmatchedemptychamber demonstratesadditionalcontrol. Noexactscientificeffectsizeinvented;recordsblank,watchexampleclearlysynthetic. Nocharcoalblockingairconfound.
+
+USGSdissolvedoxygenphysicalsourceandNASAclosedecosystemcontext consulted. Tankmodelhasinternalheadspaceexchange,notoutsideO2throughsealedlid. Water1L/headspace0.3LinitialairO84mg,waterO8mg,photosynthesis+respirationchangeoxygen,internalgastransferconservesO. Carboninorganic32+organic100mgCtotal132,photo consumes.375mgC per mgO2,resp reverse. Fixedstock72h teachingmodel,notlongtermcommunityforecast;lightvariesdaynight,plantsrespireatnighttoo. Highloadcancausehypoxia,do notkilliconsorclaimsafeanimalstocking.
+
+10cues220s:mesh / opaque+blankaircontrol / record; feedback / resistancevsrecovery / strongdisturbance; tankbuild / daynight / consumerload / weeklyrecord actually11cues242 if3+3+4=10 yes10; tankbuildindex6,diel7,load8,record9.

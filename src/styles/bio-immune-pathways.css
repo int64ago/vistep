@@ -1,0 +1,84 @@
+.bio-immune {
+  color: #525e50;
+}
+.bio-immune svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-immune svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #566152;
+}
+.bio-immune-head {
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-immune-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #d9e2d2;
+}
+.bio-immune-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bio-immune button {
+  min-height: 44px;
+  font: inherit;
+  color: inherit;
+  padding: 8px 16px;
+  border: 1px solid #c8d5bf;
+  border-radius: 24px;
+  background: #f7faf3;
+}
+.bio-immune button[aria-pressed='true'] {
+  background: #dfead5;
+  border-color: #96ad88;
+}
+.bio-immune label {
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-immune input {
+  min-height: 44px;
+  width: 100%;
+  accent-color: #86a575;
+}
+.bio-immune details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-immune summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-immune button:focus-visible,
+.bio-immune input:focus-visible {
+  outline: 2px solid #82a072;
+  outline-offset: 3px;
+}
+
+.bio-immune {
+  padding: 10px 12px 0;
+  box-sizing: border-box;
+}
+.bio-immune[data-watch='true'] .bio-immune-head {
+  display: none;
+}
+.bio-immune summary::after {
+  content: '+';
+  margin-left: auto;
+  padding-left: 8px;
+}
+.bio-immune details[open] summary::after {
+  content: '−';
+}

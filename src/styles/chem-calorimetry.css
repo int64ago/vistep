@@ -1,0 +1,218 @@
+.chem-calorimetry {
+  color: #839179;
+  padding: 4px 8px 8px;
+  font-size: 16px;
+  min-width: 0;
+}
+.chem-cal-heading {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.chem-cal-cup {
+  display: block;
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto;
+  height: auto;
+}
+.chem-cal-plot {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  height: auto;
+}
+.chem-cal-ice {
+  display: block;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+}
+.chem-cal-start,
+.chem-cal-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  text-align: center;
+}
+.chem-cal-start div,
+.chem-cal-two div {
+  display: grid;
+  gap: 5px;
+}
+.chem-cal-start span {
+  font-size: 16px;
+}
+.chem-cal-start b,
+.chem-cal-two b {
+  font-size: 20px;
+  font-weight: 450;
+}
+.chem-cal-result {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+.chem-cal-note {
+  text-align: center;
+  font-size: 16px;
+  margin: 12px 0 6px;
+  line-height: 1.55;
+  color: #9aa68e;
+}
+.chem-cal-trials > div {
+  display: grid;
+  grid-template-columns: 0.65fr 1fr 1fr 1fr;
+  gap: 6px;
+  padding: 9px 0;
+  border-bottom: 1px solid #edf0e8;
+  text-align: center;
+  transition: opacity 0.3s;
+}
+.chem-cal-trials {
+  font-size: 16px;
+}
+.chem-cal-trials b {
+  font-weight: 450;
+}
+.chem-cal-equation {
+  display: grid;
+  gap: 8px;
+  text-align: center;
+  margin: 12px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.chem-cal-equation b {
+  font-size: 23px;
+  font-weight: 450;
+}
+.chem-cal-terms {
+  display: grid;
+  gap: 10px;
+  margin: 16px auto;
+  max-width: 330px;
+}
+.chem-cal-terms > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 17px;
+}
+.chem-cal-terms b {
+  font-weight: 450;
+}
+.chem-cal-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 16px;
+}
+.chem-cal-key i {
+  width: 15px;
+  border-top: 3px solid #bba587;
+}
+.chem-cal-key i.ideal {
+  border-top: 3px dashed #b4c2b3;
+}
+.chem-cal-melt {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.chem-cal-cylinder {
+  height: 108px;
+  width: 140px;
+  border: 2px solid #c4cec0;
+  border-top: 0;
+  border-radius: 0 0 22px 22px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.chem-cal-cylinder > div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #d4e2d8;
+  transition: height 0.2s;
+}
+.chem-cal-cylinder strong {
+  position: relative;
+  font-size: 25px;
+  font-weight: 450;
+}
+.chem-cal-guard {
+  text-align: center;
+  font-size: 17px;
+}
+.chem-cal-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 25px;
+}
+.chem-cal-controls label {
+  font-size: 16px;
+}
+.chem-cal-controls button {
+  min-height: 44px;
+}
+.chem-calorimetry p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (min-width: 650px) {
+  .chem-calorimetry {
+    max-width: 700px;
+    margin: auto;
+    padding: 14px 25px;
+  }
+  .chem-cal-heading {
+    font-size: 21px;
+  }
+  .chem-cal-start {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .chem-cal-trials {
+    max-width: 500px;
+    margin: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-calorimetry * {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-cal-heading {
+    margin-bottom: 8px;
+  }
+  .chem-cal-cup {
+    height: 165px;
+  }
+  .chem-cal-cup text {
+    font-size: 24px;
+  }
+  .chem-cal-note {
+    margin: 6px 0 0;
+  }
+  .chem-cal-trials > div {
+    padding: 6px 0;
+  }
+  .chem-cal-equation {
+    gap: 4px;
+  }
+  .chem-cal-cylinder {
+    height: 96px;
+  }
+}

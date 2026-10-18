@@ -1,0 +1,100 @@
+.bio-survey {
+  font-size: 16px;
+  color: #58644e;
+}
+.bio-survey svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-survey svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #58644e;
+}
+.bio-survey-head {
+  min-height: 38px;
+  font-size: 17px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px 0;
+  text-align: center;
+}
+.bio-survey-controls {
+  border-top: 1px solid #d8e0cd;
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+}
+.bio-survey-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-survey button {
+  min-height: 44px;
+  border: 1px solid #c3d0b8;
+  border-radius: 24px;
+  padding: 8px 16px;
+  color: inherit;
+  background: #f6f8f0;
+  font: inherit;
+}
+.bio-survey button[aria-pressed='true'] {
+  background: #e0e8d4;
+  border-color: #96aa86;
+}
+.bio-survey label {
+  display: grid;
+  gap: 6px;
+}
+.bio-survey input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  font: inherit;
+  accent-color: #91a67b;
+}
+.bio-survey details,
+.bio-survey p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-survey summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-survey-journal {
+  display: grid;
+  gap: 8px;
+  min-height: 310px;
+}
+.bio-survey-journal label {
+  padding: 0 10px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.bio-survey-journal span {
+  color: #8a977a;
+}
+.bio-survey-journal-label {
+  margin: 0;
+  text-align: center;
+}
+.bio-survey-records {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.bio-survey button:focus-visible,
+.bio-survey input:focus-visible {
+  outline: 2px solid #8ba17a;
+  outline-offset: 3px;
+}
+
+.bio-survey-journal svg {
+  height: 80px;
+}

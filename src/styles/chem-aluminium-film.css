@@ -1,0 +1,152 @@
+.chem-aluminium-film {
+  color: #53634e;
+  font-size: 16px;
+  padding: 18px 8px 24px;
+}
+.chem-al-film-plates {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.chem-al-film-specimen {
+  width: 320px;
+  max-width: 100%;
+  text-align: center;
+}
+.chem-al-film-specimen svg {
+  width: 100%;
+  display: block;
+}
+.chem-al-film-label {
+  font-size: 20px;
+  min-height: 32px;
+}
+.chem-al-film-phase {
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 48px;
+}
+.chem-al-film-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.chem-al-film-legend span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.chem-al-film-legend i {
+  width: 18px;
+  height: 12px;
+  border-radius: 3px;
+}
+.chem-al-film-species {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+  min-height: 300px;
+}
+.chem-al-film-species > div {
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  font-size: 20px;
+}
+.chem-al-film-species svg {
+  width: 220px;
+  height: 220px;
+}
+.chem-al-ion {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #a7b0ab;
+  color: #fafbf2;
+  width: 95px;
+  height: 95px;
+  font-size: 26px;
+}
+.chem-al-film-controls {
+  display: grid;
+  gap: 20px;
+  padding-top: 24px;
+  margin-top: 25px;
+  border-top: 1px solid #a6b29a55;
+}
+.chem-al-film-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+.chem-al-film-controls button,
+.chem-al-film-controls input {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .chem-al-film-plates.pair {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  .chem-al-film-plates.pair .chem-al-film-specimen {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+    width: 100%;
+    max-width: 340px;
+    margin: auto;
+  }
+  .chem-al-film-plates.pair .chem-al-film-specimen svg {
+    grid-column: 2;
+    grid-row: 1/3;
+  }
+  .chem-al-film-label {
+    font-size: 16px;
+    min-height: 0;
+  }
+  .chem-al-film-phase {
+    font-size: 16px;
+    min-height: 0;
+  }
+  .chem-al-film-species {
+    gap: 12px;
+  }
+  .chem-al-film-species svg {
+    width: 180px;
+    height: 180px;
+  }
+  .chem-al-film-species > div {
+    font-size: 16px;
+  }
+  .chem-al-ion {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+  }
+}
+
+.chem-al-film-solution {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 600px) {
+  .chem-aluminium-film {
+    padding: 10px 8px 12px;
+  }
+  .chem-al-film-species {
+    min-height: 250px;
+  }
+  .chem-al-film-legend {
+    margin-top: 12px;
+  }
+  .chem-al-film-species svg text {
+    font-size: 23px;
+  }
+}

@@ -1,0 +1,42 @@
+---
+import { shoreSites } from '../../models/bio-community-interactions';
+const patches = [shoreSites(0), shoreSites(8)];
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#e6ebde"></rect>
+  {
+    patches.map((sites, j) => (
+      <g>
+        <rect x={20 + j * 190} y="57" width="170" height="114" rx="16" fill="#b1bbab" />
+        {sites.map((c) => {
+          const x = 20 + j * 190 + c.x * 170,
+            y = 57 + c.y * 114;
+          return c.type === 'mussel' ? (
+            <ellipse
+              cx={x}
+              cy={y}
+              rx="3.6"
+              ry="6"
+              transform={`rotate(30 ${x} ${y})`}
+              fill="#596d77"
+              stroke="#8eaaa9"
+            />
+          ) : c.type === 'barnacle' ? (
+            <path d={`M${x - 5} ${y + 4}l3-9h4l3 9Z`} fill="#d9d6bd" stroke="#a3a18a" />
+          ) : c.type === 'limpet' ? (
+            <ellipse cx={x} cy={y} rx="5" ry="3.5" fill="#bea777" />
+          ) : c.type === 'chiton' ? (
+            <ellipse cx={x} cy={y} rx="3" ry="5" fill="#95866e" />
+          ) : null;
+        })}
+      </g>
+    ))
+  }
+  <path
+    d="M110 89q5 16 9 16h16l-14 12 5 18-16-11-16 11 5-18-14-12h16q4 0 9-16Z"
+    fill="#b58266"
+    stroke="#966b54"
+    stroke-width="2"></path>
+  <path d="M183 192h34m-8-6 8 6-8 6" fill="none" stroke="#91a17f" stroke-width="2"></path>
+</svg>

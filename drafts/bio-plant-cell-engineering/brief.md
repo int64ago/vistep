@@ -1,0 +1,9 @@
+# Plant-cell engineering brief
+
+Targets elective3-035-1/036-1/037-1,11 planned220s cues. Source full printed31–40 reviewed, core35–38. Skoog1957 bibliography checked only; PNAS2009 primary publisher page accessed; Springer1978 original abstract read. NCBI/PMC browser captcha recorded, no claim to full1978paper. OriginalRubisco smallsubunits demonstrate both nuclearparents; chloroplasts differ among lines. No made-up72chromosome count, A1/A2/B1/B2 are merely originlabels.
+
+Art: sameembeddedstem→callus→connectedshoot→connectedroots→acclimatizedcutawaypot; sourcevesseltransitionexplicitstageeditnotglassphysicallychangingpot. Protoplasts narrowvertical andwidehorizontal. Wallsremovedwhilemembranesstay; contactthenactualunionoutline (twoexternalcirclearcs), commoncytoplasm before nuclearunion, newwalloutsidecurrentmembrane.12organelleIDs avoidcoincidentfinalpoints byphaseoffset. Four nuclearIDs persist. Modelconserves2Dcross-sectionalarea, notassertionoftrue3Dvolume/membranearea.
+
+Hormonedesignnoexternal0/0 separateundefinedratio;modelendogenousbaseline .08illustrative. Root/shootsmoothlogratioandtotaldose response;equalratio.1/.1,1/1,10/10different. Responseparametersnotchrysanthemumrecipe, notactualmeasuredfractions. Owncountsblank, cellswithbothrootandshoot allowed overlap. Controlsupdateactualgeometry/model;watchindependentafterexplorechanges.
+
+Model7tests+component2tests passed. 1001fusionframesarea2*pi*r0², contactat.25, finalR=sqrt2r0; labels/organellescontainedacross240/320/800, nuclearfusioninsidecytoplasm; ratiozero/highdose/lowdose/validrecordboundaries. Model-derivedcover andzh/enarticle. Scopedpacketreadonlyvalidation379passed. No browser/fullwatch/listening/realphoneperformance claims;rootdoesindependentreview. AllSVGbody16px+controls44px;watchonlyobjectsandnecessaryreadouts. Check narrowlabelwidth andcoursechapterseek inroot.

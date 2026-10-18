@@ -1,0 +1,54 @@
+---
+import { gelZones } from '../../models/chem-corrosion-protection';
+const zones = [gelZones('zinc'), gelZones('copper')];
+---
+
+<svg viewBox="0 0 400 240" aria-hidden="true">
+  <defs
+    ><radialGradient id="corrosion-pink"
+      ><stop stop-color="#d7a2ae" stop-opacity=".9"></stop><stop
+        offset="1"
+        stop-color="#d7a2ae"
+        stop-opacity="0"></stop></radialGradient
+    ><radialGradient id="corrosion-blue"
+      ><stop stop-color="#8293b6" stop-opacity=".9"></stop><stop
+        offset="1"
+        stop-color="#8293b6"
+        stop-opacity="0"></stop></radialGradient
+    ></defs
+  >
+  <rect width="400" height="240" rx="24" fill="#e7ebd8"></rect>
+  {
+    zones.map((a, i) => (
+      <g transform={`translate(${i ? 298 : 102} 123)`}>
+        <>
+          <circle r="86" fill="#eff2df" stroke="#a8b99d" stroke-width="2" />
+          <circle r="80" fill="#e0e6c6" />
+        </>
+        {a.blueSites.map((x) => (
+          <ellipse cx={x} cy="0" rx="30" ry="26" opacity={a.blue} fill="url(#corrosion-blue)" />
+        ))}
+        {a.pinkSites.map((x) => (
+          <ellipse cx={x} cy="0" rx="32" ry="29" fill="url(#corrosion-pink)" />
+        ))}
+        <>
+          <path d="M-57-4H50L61 0L50 4H-57Z" fill="#8ca193" />
+          <path d="M-57-10V10" stroke="#7a9482" stroke-width="5" stroke-linecap="round" />
+        </>
+        {i ? (
+          <path
+            d="M-12-9q7 0 6 18m1-18q7 0 6 18m1-18q7 0 6 18m1-18q7 0 6 18"
+            fill="none"
+            stroke="#b4815b"
+            stroke-width="3"
+          />
+        ) : (
+          <rect x="-11" y="-10" width="22" height="20" rx="2" fill="#bbc5a7" stroke="#8c9e80" />
+        )}
+        <text x="0" y="-97" text-anchor="middle" font-size="19" fill="#6e8164">
+          {i ? 'Fe + Cu' : 'Fe + Zn'}
+        </text>
+      </g>
+    ))
+  }
+</svg>

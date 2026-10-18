@@ -1,0 +1,79 @@
+.chem-bond-overlap {
+  padding: 20px 14px;
+  color: #56664d;
+  font-size: 16px;
+}
+.chem-bond-label,
+.chem-bond-evidence {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.chem-bond-label {
+  margin-bottom: 10px;
+}
+.chem-bond-evidence {
+  margin-top: 10px;
+}
+.chem-bond-lewis,
+.chem-bond-lattice {
+  display: block;
+  width: 350px;
+  max-width: 100%;
+  max-height: 300px;
+  margin: auto;
+}
+.chem-bond-overlap canvas {
+  display: block;
+  width: 540px;
+  max-width: 100%;
+  max-height: 360px;
+  aspect-ratio: 1.5;
+  object-fit: contain;
+  margin: auto;
+  border-radius: 28px;
+}
+.chem-bond-controls {
+  display: grid;
+  gap: 22px;
+  padding-top: 24px;
+  margin-top: 25px;
+  border-top: 1px solid #a3b08b55;
+}
+.chem-bond-controls button,
+.chem-bond-controls input,
+.chem-bond-controls summary {
+  min-height: 44px;
+}
+.chem-bond-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.chem-bond-controls summary {
+  font-size: 16px;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .chem-bond-overlap {
+    padding: 16px 8px;
+  }
+  .chem-bond-label,
+  .chem-bond-evidence {
+    font-size: 16px;
+  }
+  .chem-bond-lewis {
+    height: 210px;
+  }
+  .chem-bond-lattice {
+    height: 240px;
+    max-width: 280px;
+  }
+  .chem-bond-lattice text {
+    font-size: 21px;
+  }
+  .chem-bond-overlap canvas {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+  }
+}

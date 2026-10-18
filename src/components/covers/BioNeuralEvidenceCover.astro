@@ -1,0 +1,31 @@
+---
+import { lateralBrainOutline, motorMapping } from '../../models/bio-neural-evidence';
+const regions = ['leg', 'hand', 'face'] as const;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f0f1e7"></rect>
+  <g transform="translate(46 20)"
+    ><path d={lateralBrainOutline} fill="#dedccf" stroke="#aba994" stroke-width="2"></path>
+    <path
+      d="M62 53q-24 29-5 48t-8 39M92 34q-14 25 7 44t-5 41M180 33q-19 31 9 52t-5 49M224 44q-22 27 4 43t-1 46M61 152q25-26 53-3t48 3q29-32 65 2"
+      stroke="#bcb9a7"
+      stroke-width="2"
+      fill="none"></path>
+    {
+      regions.map((k) => {
+        const r = motorMapping(k).cortex;
+        return (
+          <ellipse
+            cx={r.x}
+            cy={r.y}
+            rx={r.r * 0.45}
+            ry={r.r}
+            fill={k === 'hand' ? '#b78d6b' : '#b3c0a0'}
+          />
+        );
+      })
+    }
+    <path d="M151 91H249m-7-5 7 5-7 5" fill="none" stroke="#a38e6c" stroke-width="2"></path>
+  </g>
+</svg>

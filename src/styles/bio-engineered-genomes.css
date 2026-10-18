@@ -1,0 +1,110 @@
+.bio-genomes {
+  background: #e9edde;
+  padding: clamp(12px, 3vw, 28px);
+  border-radius: 24px;
+  color: #485c47;
+}
+.bio-genome-stage {
+  width: 100%;
+  height: 320px;
+  display: block;
+}
+.bio-genome-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-genome-evidence {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  margin: 16px auto 0;
+  max-width: 650px;
+}
+.bio-genome-controls {
+  display: grid;
+  gap: 16px;
+  max-width: 650px;
+  margin: 24px auto;
+  font-size: 16px;
+}
+.bio-genome-controls button {
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #b9c5ab;
+  border-radius: 12px;
+  background: #f4f5e8;
+  font: inherit;
+  color: inherit;
+}
+.bio-genome-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 540px) {
+  .bio-genome-stage {
+    height: 250px;
+  }
+  .bio-genome-summary {
+    gap: 8px 12px;
+  }
+}
+.bio-genome-function-head {
+  display: flex;
+  justify-content: center;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin: 5px 0 18px;
+}
+.bio-genome-function {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  max-width: 680px;
+  margin: auto;
+}
+.bio-genome-function p {
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 0 0 7px;
+  min-height: 24px;
+}
+.bio-genome-function svg {
+  width: 100%;
+  height: 175px;
+  display: block;
+}
+.bio-genome-controls .segmented {
+  flex-wrap: wrap;
+}
+@media (max-width: 540px) {
+  .bio-genome-function {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .bio-genome-function svg {
+    height: 110px;
+  }
+  .bio-genome-function-head {
+    margin-bottom: 12px;
+  }
+  .bio-genome-evidence {
+    margin-top: 10px;
+  }
+  .bio-genome-function p {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .bio-genomes {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}

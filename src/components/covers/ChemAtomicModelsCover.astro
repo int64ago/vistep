@@ -1,0 +1,29 @@
+---
+import { ORBITAL_SAMPLES, projectOrbital, orbitalRadius } from '../../models/chem-atomic-models';
+const r = orbitalRadius('1s', 0.9),
+  scale = 34;
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect><circle
+    cx="320"
+    cy="200"
+    r={r * scale}
+    fill="#acb9940c"
+    stroke="#98aa7d"
+    stroke-width="2"
+    stroke-dasharray="6 5"></circle>{
+    ORBITAL_SAMPLES['1s'].map((p) => {
+      const q = projectOrbital(p);
+      return (
+        <circle
+          cx={320 + q.x * scale}
+          cy={200 - q.y * scale}
+          r="2"
+          fill="#768b56"
+          opacity={p.r > r ? 0.15 : 0.55}
+        />
+      );
+    })
+  }<circle cx="320" cy="200" r="4" fill="#b67d54"></circle></svg
+>

@@ -1,0 +1,137 @@
+.chem-sea {
+  font-size: 16px;
+  color: #6f8879;
+  min-width: 0;
+  padding: 5px 8px;
+}
+.chem-sea-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+.chem-sea-svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-sea-evidence {
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 12px 0 5px;
+}
+.chem-sea-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  gap: 10px;
+  margin: 12px 0 5px;
+  font-size: 16px;
+}
+.chem-sea-pair b {
+  display: block;
+  font-weight: 400;
+  font-size: 21px;
+  margin-top: 5px;
+}
+.chem-sea-resources {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  padding: 10px 0;
+}
+.chem-sea-resources > span {
+  display: block;
+  margin: 8px;
+}
+.chem-sea-branches {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 12px;
+}
+.chem-sea-products {
+  display: grid;
+  gap: 14px;
+  margin-top: 5px;
+}
+.chem-sea-products > div {
+  display: grid;
+  grid-template-columns: 1fr 24px 2.2fr;
+  align-items: center;
+  gap: 5px;
+  color: #929c78;
+}
+.chem-sea-class {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+.chem-sea-class svg {
+  display: block;
+  width: 100%;
+}
+.chem-sea-class strong {
+  font-size: 18px;
+  font-weight: 400;
+}
+.chem-sea-legend {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 15px;
+}
+.chem-sea-controls {
+  display: grid;
+  gap: 24px;
+  margin-top: 25px;
+}
+.chem-sea-controls button {
+  min-height: 44px;
+  font-size: 16px;
+}
+@media (min-width: 650px) {
+  .chem-sea {
+    max-width: 740px;
+    padding: 15px 30px;
+    margin: auto;
+  }
+  .chem-sea-svg {
+    max-width: 400px;
+  }
+  .chem-sea-classes {
+    max-width: 440px;
+    margin: auto;
+  }
+  .chem-sea-title {
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-sea * {
+    transition: none !important;
+  }
+}
+
+.chem-sea-brine-arrow {
+  transform: translateX(22%);
+}
+.chem-sea-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  justify-content: center;
+}
+.chem-sea-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chem-sea-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}

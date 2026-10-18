@@ -1,0 +1,97 @@
+.chem-fold {
+  color: #66796f;
+  font-size: 16px;
+  min-width: 0;
+  padding: 5px 8px;
+}
+.chem-fold-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.chem-fold-svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-fold-sequence {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5px 0;
+  max-width: 320px;
+  margin: 30px auto 20px;
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  color: #738f80;
+}
+.chem-fold-sequence span {
+  border-radius: 8px;
+  padding: 4px 0;
+}
+.chem-fold-sequence .selected {
+  background: #e8d6b7;
+  color: #6c5a3a;
+}
+.chem-fold-evidence {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+.chem-fold-selected {
+  font-size: 24px;
+  text-align: center;
+  color: #a38551;
+  margin: 16px 0 35px;
+}
+.chem-fold-key {
+  text-align: center;
+  font-size: 16px;
+  margin: 8px 0 4px;
+  color: #7d8f85;
+}
+.chem-fold-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 8px auto;
+}
+.chem-fold-controls {
+  display: grid;
+  gap: 24px;
+  margin-top: 26px;
+}
+.chem-fold-controls button {
+  min-height: 44px;
+  font-size: 16px;
+}
+@media (min-width: 650px) {
+  .chem-fold {
+    max-width: 760px;
+    margin: auto;
+    padding: 12px 30px;
+  }
+  .chem-fold-svg {
+    max-width: 410px;
+  }
+  .chem-fold-sequence {
+    max-width: 520px;
+    font-size: 26px;
+    margin: 50px auto;
+  }
+  .chem-fold-title {
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-fold * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,28 @@
+---
+import { transferPosition } from '../../models/chem-electron-transfer';
+const p = transferPosition(0.65);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
+  ><circle cx="98" cy="126" r="31" fill="#d3d0aa"></circle><circle
+    cx="290"
+    cy="126"
+    r="37"
+    fill="#b4c6a8"></circle><circle cx="98" cy="126" r="49" stroke="#b4c29f" stroke-dasharray="3 6"
+  ></circle><circle cx="290" cy="126" r="61" stroke="#a7bb97"></circle>{
+    Array.from({ length: 7 }, (_, i) => (
+      <circle
+        cx={290 + Math.cos(((i + 1) * Math.PI) / 4) * 61}
+        cy={126 + Math.sin(((i + 1) * Math.PI) / 4) * 61}
+        r="4"
+        fill="#86a48c"
+      />
+    ))
+  }<path d="M140 94Q227 25 351 126" stroke="#bba175" stroke-dasharray="4 6"></path><circle
+    cx={p.x * 0.8 + 12}
+    cy={p.y * 0.8 + 12}
+    r="7"
+    fill="#c09658"
+    stroke="#e9d09a"
+    stroke-width="2"></circle></svg
+>

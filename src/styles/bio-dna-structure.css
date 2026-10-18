@@ -1,0 +1,188 @@
+.bio-dna-structure {
+  background: #efeadf;
+  border-radius: 25px;
+  padding: clamp(14px, 3vw, 28px);
+  color: #645f51;
+}
+.bio-dna-kind {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #85806d;
+  margin: 0 0 12px;
+}
+.bio-dna-note {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 650px;
+  margin: 12px auto 0;
+}
+.bio-dna-diffraction {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) 100px;
+  justify-content: center;
+  gap: 12px 28px;
+  align-items: center;
+}
+.bio-dna-diffraction canvas {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #151e22;
+}
+.bio-dna-diffraction > .bio-dna-note {
+  grid-column: 1/-1;
+}
+.bio-dna-fiber svg {
+  width: 100%;
+  height: 235px;
+  display: block;
+}
+.bio-dna-fiber span {
+  font-size: 16px;
+  display: block;
+  text-align: center;
+  line-height: 1.4;
+}
+.bio-dna-letterrows {
+  display: grid;
+  gap: 9px;
+  max-width: 430px;
+  margin: 24px auto;
+}
+.bio-dna-letterrows > div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.bio-dna-letterrows span {
+  border-radius: 10px;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 0;
+  outline: 2px solid transparent;
+}
+.bio-dna-letterrows span.mismatch {
+  outline-color: #976c6c;
+  outline-offset: 2px;
+}
+.bio-dna-counts {
+  height: 130px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 30px;
+}
+.bio-dna-counts > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+}
+.bio-dna-counts > div > div {
+  width: 27px;
+  border-radius: 5px 5px 0 0;
+}
+.bio-dna-counts strong {
+  font-weight: 500;
+}
+.bio-dna-pair,
+.bio-dna-ladder,
+.bio-dna-nucleotide,
+.bio-dna-molecular {
+  display: block;
+  width: 100%;
+}
+.bio-dna-pair {
+  height: 240px;
+}
+.bio-dna-nucleotide {
+  height: 330px;
+}
+.bio-dna-ladder {
+  height: 295px;
+}
+.bio-dna-molecular {
+  height: 340px;
+}
+.bio-dna-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 16px;
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+.bio-dna-controls label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 8px;
+  font-size: 16px;
+}
+.bio-dna-controls select,
+.bio-dna-controls button {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid #beb59b;
+  border-radius: 12px;
+  background: #f7f2e6;
+  padding: 8px 12px;
+  color: inherit;
+  max-width: 100%;
+}
+.bio-dna-controls .segmented {
+  flex-wrap: wrap;
+}
+.bio-dna-controls select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 540px) {
+  .bio-dna-diffraction {
+    grid-template-columns: minmax(0, 1fr) 65px;
+    gap: 10px;
+  }
+  .bio-dna-fiber svg {
+    height: 190px;
+  }
+  .bio-dna-pair {
+    height: 205px;
+  }
+  .bio-dna-letterrows > div {
+    gap: 6px;
+  }
+  .bio-dna-letterrows span {
+    font-size: 20px;
+  }
+  .bio-dna-nucleotide {
+    height: 310px;
+  }
+  .bio-dna-molecular {
+    height: 310px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bio-dna-structure {
+    padding: 12px;
+  }
+  .bio-dna-structure[data-watch='true']:not([data-mode='helix']) .bio-dna-kind {
+    display: none;
+  }
+  .bio-dna-nucleotide {
+    height: 300px;
+  }
+  .bio-dna-ladder {
+    height: 250px;
+  }
+  .bio-dna-molecular {
+    height: 265px;
+  }
+  .bio-dna-letterrows {
+    margin: 12px auto;
+  }
+}

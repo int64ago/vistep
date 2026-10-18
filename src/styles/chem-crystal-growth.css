@@ -1,0 +1,159 @@
+.ccg {
+  color: #526460;
+}
+.ccg-stage {
+  padding: 24px;
+  background: radial-gradient(ellipse at 35% 15%, #f3f0df, #e4ebe2);
+  border-radius: 30px;
+}
+.ccg-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(180px, 0.8fr);
+  gap: 24px;
+  align-items: center;
+}
+.ccg svg {
+  width: 100%;
+  height: 335px;
+  display: block;
+  overflow: visible;
+}
+.ccg-evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.ccg-evidence strong {
+  font-size: 20px;
+  font-weight: 550;
+}
+.ccg p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.ccg-count,
+.ccg-baths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.ccg-count span,
+.ccg-balance span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ccg b {
+  font-size: 22px;
+  font-weight: 500;
+}
+.ccg-balance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.ccg-phase {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ccg-phase span {
+  position: relative;
+  min-height: 30px;
+  isolation: isolate;
+}
+.ccg-phase i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background: #d6c783;
+  opacity: 0.45;
+  border-radius: 8px;
+  z-index: -1;
+}
+.ccg-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px 0;
+}
+.ccg-controls button {
+  min-height: 44px;
+}
+.ccg-mode-layers .ccg-layout {
+  grid-template-columns: 1fr;
+}
+.ccg-mode-layers .ccg-evidence strong {
+  order: -1;
+}
+.ccg-mode-layers .ccg-baths {
+  max-width: 420px;
+  align-self: center;
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .ccg-stage {
+    padding: 7px 6px 12px;
+    border-radius: 23px;
+  }
+  .ccg-layout {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .ccg svg {
+    height: auto;
+    max-height: 220px;
+  }
+  .ccg-mode-layers svg {
+    max-height: 235px;
+  }
+  .ccg-evidence {
+    gap: 4px;
+  }
+  .ccg-evidence strong {
+    font-size: 18px;
+  }
+  .ccg-count {
+    margin: 0 12px;
+  }
+  .ccg-count span {
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 7px;
+  }
+  .ccg-balance {
+    gap: 10px;
+    margin: 0 10px;
+  }
+  .ccg-balance span {
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .ccg b {
+    font-size: 20px;
+  }
+  .ccg-phase {
+    flex-direction: row;
+    justify-content: center;
+    gap: 9px;
+  }
+  .ccg-phase span {
+    min-width: 70px;
+  }
+  .ccg-limit {
+    display: none;
+  }
+  .ccg-mode-layers .ccg-evidence strong {
+    font-size: 16px;
+  }
+  .ccg-controls {
+    padding: 18px 0;
+  }
+}

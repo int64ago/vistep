@@ -1,0 +1,177 @@
+.cis {
+  font-size: 16px;
+  color: #667961;
+}
+.cis-stage {
+  padding: 22px;
+  border-radius: 28px;
+  min-height: 330px;
+  background: radial-gradient(ellipse at 45% 20%, #faf5df, #dfe8d3);
+}
+.cis svg {
+  display: block;
+  width: 100%;
+  margin: auto;
+  fill: currentColor;
+}
+.cis svg text {
+  font-size: 23px;
+  text-anchor: middle;
+}
+.cis-instrument {
+  height: 145px;
+  max-width: 460px;
+}
+.cis-readout {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-size: 20px;
+  margin: 8px 0;
+}
+.cis-readout b {
+  font-weight: 500;
+}
+.cis-energy {
+  display: grid;
+  grid-template-columns: auto minmax(60px, 190px) auto;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px auto;
+  font-size: 18px;
+}
+.cis-energy > div {
+  height: 15px;
+  background: #e3cf9a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cis-energy i {
+  display: block;
+  height: 100%;
+  background: #98b19b;
+  border-radius: 10px;
+}
+.cis-short {
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 550px;
+  margin: 18px auto;
+}
+.cis-vibration {
+  height: 255px;
+  max-width: 430px;
+}
+.cis-vibration-state {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.cis-plot {
+  height: 210px;
+  max-width: 620px;
+}
+.cis-axes-label {
+  text-align: center;
+  font-size: 16px;
+}
+.cis-molecule {
+  height: 150px;
+  max-width: 430px;
+}
+.cis-band-key {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  font-size: 18px;
+  margin-top: 8px;
+}
+.cis-candidates {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 23px;
+  padding: 26px 0;
+}
+.cis-candidates .ethanol {
+  color: #aa7950;
+}
+.cis-candidates .ether {
+  color: #729c9e;
+}
+.cis-controls {
+  display: grid;
+  gap: 18px;
+  padding: 22px 4px;
+}
+.cis-controls button {
+  min-height: 44px;
+}
+.cis-note {
+  display: block;
+  text-align: center;
+  margin: 12px auto;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.cis.is-watch > .cis-note {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cis-stage {
+    padding: 12px 3px;
+    min-height: 310px;
+    border-radius: 22px;
+  }
+  .cis-instrument {
+    height: 130px;
+  }
+  .cis .cis-instrument text {
+    font-size: 25px;
+  }
+  .cis-readout {
+    font-size: 18px;
+    gap: 22px;
+  }
+  .cis-energy {
+    gap: 9px;
+    grid-template-columns: auto minmax(50px, 1fr) auto;
+    font-size: 16px;
+    margin: 25px 5px;
+  }
+  .cis-short {
+    font-size: 16px;
+  }
+  .cis-vibration {
+    height: 255px;
+  }
+  .cis .cis-vibration text {
+    font-size: 25px;
+  }
+  .cis-plot {
+    height: 180px;
+  }
+  .cis .cis-plot text {
+    font-size: 25px;
+  }
+  .cis-molecule {
+    height: 135px;
+  }
+  .cis .cis-molecule text {
+    font-size: 25px;
+  }
+  .cis-band-key {
+    font-size: 16px;
+    gap: 20px;
+  }
+  .cis-candidates {
+    font-size: 20px;
+    gap: 25px;
+    padding: 20px 0;
+  }
+  .cis-controls {
+    padding: 18px 0;
+  }
+}

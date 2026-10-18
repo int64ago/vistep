@@ -1,0 +1,33 @@
+---
+import { peroxideReaction } from '../../models/bio-enzyme-investigations';
+const modes = ['blank', 'heated', 'iron', 'catalase'] as const;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eeeedd"></rect>{
+    modes.map((mode, i) => {
+      const s = peroxideReaction(5, mode);
+      return (
+        <g transform={`translate(${52 + i * 87} 25)`}>
+          <path
+            d="M-20 0V140Q-20 165 0 165Q20 165 20 140V0"
+            fill={i === 2 ? '#d3c793' : i === 3 ? '#bfb59e' : '#d7dfbf'}
+            stroke="#91a38c"
+            stroke-width="2"
+          />
+          {Array.from({ length: 10 }, (_, j) => (
+            <circle
+              cx={-12 + ((j * 13) % 25)}
+              cy={145 - j * 11}
+              r="3"
+              fill="#f4f4df"
+              stroke="#afba9b"
+              opacity={j < s.oxygen * 20 ? 1 : 0}
+            />
+          ))}
+          <path d="M-24 0H24" stroke="#91a38c" stroke-width="3" />
+        </g>
+      );
+    })
+  }</svg
+>

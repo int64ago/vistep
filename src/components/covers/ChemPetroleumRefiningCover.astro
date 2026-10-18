@@ -1,0 +1,65 @@
+---
+import {
+  petroleumSpecies,
+  oilPath,
+  fractionationFrame,
+} from '../../models/chem-petroleum-refining';
+const parcels = fractionationFrame(0.73);
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e7e9d9"></rect><g transform="translate(116 15) scale(1.2)"
+    ><rect
+      x="116"
+      y="18"
+      width="80"
+      height="282"
+      rx="36"
+      fill="#d7d4b8"
+      stroke="#9fa88c"
+      stroke-width="1.5"></rect><path
+      d="M128 49 V269"
+      stroke="#f4f1dc"
+      stroke-width="5"
+      opacity=".5"></path>{
+      [69, 109, 149, 189, 229, 269].map((y, i) => (
+        <path
+          d={`M${i % 2 ? 125 : 138} ${y} H${i % 2 ? 174 : 186}`}
+          stroke="#9aa487"
+          stroke-width="2"
+        />
+      ))
+    }<rect x="7" y="243" width="64" height="50" rx="14" fill="#bf9e76" opacity=".5"></rect>{
+      petroleumSpecies.map((s, i) => (
+        <g>
+          <>
+            <polyline
+              points={oilPath(i)
+                .map((v) => `${v.x},${v.y}`)
+                .join(' ')}
+              fill="none"
+              stroke={s.color}
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="249"
+              y={oilPath(i).at(-1)!.y - 12}
+              width="31"
+              height="24"
+              rx="8"
+              fill="#eeedda"
+              stroke={s.color}
+            />
+          </>
+        </g>
+      ))
+    }{
+      parcels.map((p) => (
+        <circle cx={p.x} cy={p.y} r="3" fill={petroleumSpecies[p.species].color} />
+      ))
+    }<path d="M17 278 Q25 253 33 278 Q41 253 49 278" fill="none" stroke="#bc8e58" stroke-width="3"
+    ></path></g
+  ></svg
+>

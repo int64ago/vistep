@@ -1,0 +1,247 @@
+.chem-iron-cycle {
+  padding: 14px 8px 24px;
+  font-size: 16px;
+  color: #594d40;
+}
+.chem-iron-tubes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 650px;
+  margin: auto;
+}
+.chem-iron-tubes figure {
+  margin: 0;
+  flex: 1;
+  max-width: 280px;
+  min-width: 0;
+}
+.chem-iron-tubes svg {
+  width: 100%;
+  display: block;
+  max-height: 320px;
+}
+.chem-iron-tubes figcaption {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 17px;
+  line-height: 1.5;
+  text-align: center;
+}
+.chem-iron-tubes figcaption b {
+  font-weight: 500;
+}
+.chem-iron-redox {
+  display: grid;
+  gap: 20px;
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #aa9d8555;
+  font-size: 20px;
+}
+.chem-iron-redox > div {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 18px;
+}
+.chem-iron-redox b {
+  font-weight: 500;
+}
+.chem-iron-redox small {
+  font-size: 16px;
+}
+.chem-iron-decant {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+.chem-iron-decant figure {
+  margin: 0;
+  transform-origin: 50% 70%;
+}
+.chem-iron-decant svg {
+  width: 100%;
+  display: block;
+}
+.chem-iron-decant figcaption {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+.chem-iron-transferline {
+  align-self: start;
+  padding-top: 70px;
+}
+.chem-iron-complexdiagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  min-height: 180px;
+  font-size: 24px;
+}
+.chem-iron-complexdiagram > span {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: #d0bf8c55;
+}
+.chem-iron-complexdiagram i {
+  font-style: normal;
+}
+.chem-iron-complexdiagram > div {
+  display: grid;
+  gap: 20px;
+  color: #9d4b42;
+}
+.chem-iron-complexdiagram b {
+  font-weight: 400;
+}
+.chem-iron-species {
+  max-width: 520px;
+  margin: auto;
+  display: grid;
+  gap: 22px;
+}
+.chem-iron-species > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 16px;
+}
+.chem-iron-species i {
+  height: 7px;
+  border-radius: 7px;
+  grid-column: 1/3;
+  grid-row: 2;
+}
+.chem-iron-species b {
+  text-align: right;
+  font-weight: 500;
+}
+.chem-iron-coordination p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  margin: 28px 0 0;
+}
+.chem-iron-controls {
+  display: grid;
+  gap: 20px;
+  border-top: 1px solid #aa9d8555;
+  margin-top: 26px;
+  padding-top: 22px;
+}
+.chem-iron-controls .segmented {
+  flex-wrap: wrap;
+}
+.chem-iron-controls button,
+.chem-iron-controls input {
+  min-height: 44px;
+}
+.chem-iron-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 540px) {
+  .chem-iron-tubes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .chem-iron-tubes figure {
+    max-width: none;
+    display: grid;
+    grid-template-columns: 1fr 140px;
+    align-items: center;
+  }
+  .chem-iron-tubes svg {
+    grid-column: 2;
+    grid-row: 1;
+    width: 140px;
+    height: 177px;
+  }
+  .chem-iron-tubes figcaption {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    justify-content: flex-start;
+    font-size: 17px;
+  }
+  .chem-iron-redox {
+    font-size: 17px;
+  }
+  .chem-iron-redox > div {
+    font-size: 16px;
+    gap: 12px;
+  }
+  .chem-iron-complexdiagram {
+    gap: 14px;
+    font-size: 20px;
+  }
+  .chem-iron-complexdiagram > span {
+    width: 72px;
+    height: 72px;
+  }
+  .chem-iron-decant {
+    grid-template-columns: 1fr 35px 1fr;
+    gap: 0;
+  }
+  .chem-iron-decant figcaption {
+    font-size: 16px;
+  }
+  .chem-iron-transferline {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 540px) {
+  .chem-iron-cycle {
+    padding: 14px 12px 14px;
+  }
+  .chem-iron-tubes.is-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .chem-iron-cycle[data-mode='test'] .chem-iron-tubes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .chem-iron-tubes.is-three figure,
+  .chem-iron-cycle[data-mode='test'] .chem-iron-tubes figure {
+    display: block;
+  }
+  .chem-iron-tubes.is-three svg,
+  .chem-iron-cycle[data-mode='test'] .chem-iron-tubes svg {
+    width: 100%;
+    height: 185px;
+  }
+  .chem-iron-tubes.is-three figcaption,
+  .chem-iron-cycle[data-mode='test'] .chem-iron-tubes figcaption {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    text-align: center;
+    font-size: 16px;
+  }
+  .chem-iron-tubes.is-three figcaption b {
+    flex-basis: 100%;
+  }
+  .chem-iron-tubes:not(.is-three) figure:only-child {
+    grid-template-columns: 1fr 120px;
+  }
+  .chem-iron-tubes:not(.is-three) figure:only-child svg {
+    width: 120px;
+  }
+  .chem-iron-decant > figure > svg {
+    height: 190px;
+  }
+}

@@ -1,0 +1,58 @@
+---
+import { metalLayers, graphiteBase, rotate } from '../../models/chem-metal-and-graphite';
+const metal = metalLayers(0.7).atoms;
+const atoms = graphiteBase.atoms.map((a) => {
+  const p = rotate(a.p, 0.18, 1.13);
+  return { ...a, x: 462 + p.x * 21, y: 202 - p.y * 21, z: p.z };
+});
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs
+    ><radialGradient id="cmgc"
+      ><stop stop-color="#ecdfb8"></stop><stop offset="1" stop-color="#b3a17b"
+      ></stop></radialGradient
+    ></defs
+  ><rect width="640" height="400" fill="#e7ece2"></rect><rect
+    x="32"
+    y="108"
+    width="270"
+    height="192"
+    rx="35"
+    fill="#b4cdca"
+    fill-opacity=".5"></rect>
+  {
+    metal.map((a) => (
+      <circle
+        cx={153 + a.p.x * 29}
+        cy={204 + a.p.y * 29}
+        r="13.5"
+        fill="url(#cmgc)"
+        stroke="#a59877"
+        stroke-width=".6"
+      />
+    ))
+  }
+  {
+    graphiteBase.bonds.map((b) => {
+      const a = atoms.find((a) => a.id === b.a)!,
+        c = atoms.find((a) => a.id === b.b)!;
+      return (
+        <path d={`M${a.x} ${a.y} L${c.x} ${c.y}`} fill="none" stroke="#7e9388" stroke-width="2.7" />
+      );
+    })
+  }
+  {
+    atoms
+      .sort((a, b) => a.z - b.z)
+      .map((a) => (
+        <g>
+          <>
+            <circle cx={a.x} cy={a.y} r="4.9" fill="#5a756c" />
+            <circle cx={a.x - 1} cy={a.y - 1} r="1.6" fill="#b9cec0" />
+          </>
+        </g>
+      ))
+  }<path d="M87 75 H195 L186 69 M195 75 L186 81" fill="none" stroke="#b38a52" stroke-width="3"
+  ></path>
+</svg>

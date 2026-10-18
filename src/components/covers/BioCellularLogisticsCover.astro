@@ -1,0 +1,37 @@
+---
+import { secretoryPopulation } from '../../models/bio-cellular-logistics';
+const state = secretoryPopulation(65);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><ellipse cx="200" cy="115" rx="165" ry="100" fill="#dce4c5" stroke="#829d77" stroke-width="3"
+  ></ellipse><circle cx="125" cy="150" r="32" fill="#b9afbf" stroke="#8d839c" stroke-width="3"
+  ></circle><circle cx="129" cy="145" r="9" fill="#94869f"></circle>{
+    [0, 1, 2, 3].map((i) => (
+      <path
+        d={`M75 ${60 + i * 13}Q120 ${45 + i * 13} 175 ${60 + i * 13}`}
+        stroke="#adb692"
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+    ))
+  }{
+    [0, 1, 2, 3].map((i) => (
+      <path
+        d={`M${235 + i * 4} 68Q${275 + i * 4} 100 ${235 + i * 4} 132`}
+        stroke="#baab82"
+        stroke-width="5"
+        fill="none"
+      />
+    ))
+  }{
+    state.cargo.map((c) => (
+      <g>
+        <>
+          <circle cx={200 + c.x} cy={115 + c.y} r="6" fill="#e1dcbd" stroke="#a4ae88" />
+          <circle cx={200 + c.x} cy={115 + c.y} r="2" fill="#b99167" />
+        </>
+      </g>
+    ))
+  }</svg
+>

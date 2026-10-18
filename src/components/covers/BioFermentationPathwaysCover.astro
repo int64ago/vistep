@@ -1,0 +1,41 @@
+---
+import { jarGeometry, fermentationState } from '../../models/bio-fermentation-pathways';
+const g = jarGeometry(310),
+  state = fermentationState(0.7);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f1eddb"></rect>
+  <g transform="translate(68 -30) scale(.85)">
+    <path d={`${g.body}Z`} fill="#eee9d5" stroke="#b3b59d" stroke-width="3"></path>
+    <path
+      d={`M${g.left + 2} 151H${g.right - 2}V229Q${g.right - 2} 250 ${g.right - 22} 250H${g.left + 22}Q${g.left + 2} 250 ${g.left + 2} 229Z`}
+      fill="#bb919c"></path>
+    <rect x={g.cx - 32} y="84" width="64" height="9" rx="3" fill="#bcb596"></rect>
+    <path
+      d={`M${g.cx} 102V64H${g.cx + 30}V88H${g.cx + 49}V49`}
+      fill="none"
+      stroke="#a9bcb0"
+      stroke-width="9"
+      stroke-linejoin="round"></path>
+    <path
+      d={`M${g.cx} 102V64H${g.cx + 30}V88H${g.cx + 49}V49`}
+      fill="none"
+      stroke="#f9f7e7"
+      stroke-width="5"
+      stroke-linejoin="round"></path>
+    <path d={`M${g.cx + 30} 80V88H${g.cx + 49}V80`} stroke="#abc8c5" stroke-width="5" fill="none"
+    ></path>
+    {
+      Array.from({ length: Math.round(state.co2 * 5) }, (_, i) => (
+        <circle cx={g.cx + ((i % 3) - 1) * 12} cy={211 - i * 13} r="3" fill="#e9eee2" />
+      ))
+    }
+    <path d={`M${g.left + 10} 160v58`} stroke="#e5c9c7" stroke-width="4" stroke-linecap="round"
+    ></path>
+  </g>
+  <g transform="translate(65 160) rotate(-18)"
+    ><ellipse rx="19" ry="12" fill="#abc19d"></ellipse><path d="M-12 0h24" stroke="#d8e2c6"
+    ></path></g
+  >
+</svg>

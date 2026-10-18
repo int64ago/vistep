@@ -1,0 +1,33 @@
+---
+import { chromosomeLayout } from '../../models/bio-engineered-genomes';
+const groups = chromosomeLayout(15),
+  colors = ['#8cae91', '#c4aa72', '#aa95ac', '#81a8b0', '#b78677', '#a3b980', '#bc9b91', '#8c9aaf'];
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><path
+    d="M62 35C116 10 170 50 164 110C158 157 91 170 54 139C20 108 29 55 62 35Z"
+    fill="#d8dfbf"
+    stroke="#91a77e"
+    stroke-width="3"></path>{
+    Array.from({ length: 12 }, (_, i) => (
+      <path
+        d={`M${97 + 40 * Math.cos((i * Math.PI) / 6)} ${91 + 40 * Math.sin((i * Math.PI) / 6)}A40 40 0 0 1 ${97 + 40 * Math.cos((i * Math.PI) / 6 + 0.43)} ${91 + 40 * Math.sin((i * Math.PI) / 6 + 0.43)}`}
+        stroke={colors[i % 8]}
+        stroke-width="6"
+      />
+    ))
+  }<g transform="translate(140 165) scale(.9)"
+    >{
+      groups.map((g) => (
+        <g>
+          <path d={`M${g.x} 0H${g.x + g.length}`} stroke="#7c8f77" stroke-width="3" />
+          {g.blocks.map((b, j) => (
+            <rect x={g.x + j * 14 + 1} y="-17" width="12" height="34" rx="5" fill={colors[b % 8]} />
+          ))}
+          <ellipse cx={g.x + g.length / 2} cy="0" rx="3" ry="7" fill="#746886" />
+        </g>
+      ))
+    }</g
+  ></svg
+>

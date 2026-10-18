@@ -1,0 +1,44 @@
+---
+import { projectedInsulin } from '../../models/bio-protein-design';
+const points = projectedInsulin(400, 0.7);
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#dfdfc7"></rect><g transform="translate(0 -36)"
+    >{
+      (['A', 'B'] as const).map((chain) => (
+        <polyline
+          points={points
+            .filter((a) => a.atom === 'CA' && a.chain === chain)
+            .map((a) => `${a.x},${a.y}`)
+            .join(' ')}
+          stroke={chain === 'A' ? '#8d9e78' : '#a38ba9'}
+          stroke-width="9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
+      ))
+    }{
+      [
+        ['A6', 'A11'],
+        ['A7', 'B7'],
+        ['A20', 'B19'],
+      ].map(([a, b]) => {
+        const A = points.find((x) => x.id === a + '-SG')!,
+          B = points.find((x) => x.id === b + '-SG')!;
+        return <path d={`M${A.x} ${A.y}L${B.x} ${B.y}`} stroke="#bf9c48" stroke-width="4" />;
+      })
+    }{
+      points
+        .filter((a) => a.chain === 'B' && a.atom === 'CA' && [28, 29].includes(a.residue))
+        .map((a) => (
+          <circle cx={a.x} cy={a.y} r="8" fill="#d6b864" stroke="#faf8df" stroke-width="3" />
+        ))
+    }</g
+  ><path
+    d="M47 79v70m-8 -6l8 6l8 -6M343 79v70m-8 -6l8 6l8 -6"
+    stroke="#aeb591"
+    stroke-width="2"
+    fill="none"></path></svg
+>

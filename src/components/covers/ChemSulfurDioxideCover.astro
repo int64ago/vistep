@@ -1,0 +1,40 @@
+---
+import { sulfurDissolution, sulfurDye, sulfurPink } from '../../models/chem-sulfur-dioxide';
+const m = sulfurDissolution(0.78),
+  y = 290 - (210 * m.rise) / m.height;
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#edf1e8"></rect>
+  <path
+    d="M60 245V312Q60 327 75 327H265Q280 327 280 312V245"
+    fill="#c2d9d244"
+    stroke="#9faf9e"
+    stroke-width="2"></path>
+  <path
+    d="M130 300V82Q130 60 165 60Q200 60 200 82V300"
+    fill="#ffffff66"
+    stroke="#8aa196"
+    stroke-width="2"></path>
+  <path d={`M134 ${y}H196V300H134Z`} fill="#b5d5ca" opacity=".7"></path>
+  {
+    [0, 1].map((k) => (
+      <g transform={`translate(${390 + k * 140} 0)`}>
+        <>
+          <path
+            d="M-26 92V275Q-26 303 0 303Q26 303 26 275V92"
+            fill="#ffffff44"
+            stroke="#91a59a"
+            stroke-width="2"
+          />
+          <path
+            d="M-23 190V275Q-23 299 0 299Q23 299 23 275V190Z"
+            fill={sulfurPink(sulfurDye(1, k).coloured)}
+          />
+          <ellipse cx="0" cy="92" rx="26" ry="4" fill="#e9eee6" stroke="#91a59a" />
+        </>
+      </g>
+    ))
+  }
+  <path d="M430 210H478l-9-6m9 6l-9 6" fill="none" stroke="#a48b6b" stroke-width="2"></path>
+</svg>

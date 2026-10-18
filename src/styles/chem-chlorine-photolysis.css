@@ -1,0 +1,161 @@
+.chem-chlorine-photolysis {
+  padding: 12px 8px 24px;
+  color: #43543d;
+  font-size: 16px;
+}
+.chem-photo-model {
+  font-size: 16px;
+  text-align: center;
+  margin: 4px 0 22px;
+  color: #6a765c;
+}
+.chem-photo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+}
+.chem-photo-bottle {
+  margin: 0;
+  min-width: 0;
+}
+.chem-photo-bottle svg {
+  display: block;
+  width: 100%;
+  height: 360px;
+}
+.chem-photo-bottle figcaption {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+.chem-photo-charts {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.chem-photo-charts figure {
+  margin: 0;
+}
+.chem-photo-charts figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 0 10px 0 20px;
+  font-size: 17px;
+}
+.chem-photo-charts strong {
+  font-weight: 500;
+}
+.chem-photo-charts svg {
+  width: 100%;
+  display: block;
+  height: 100px;
+}
+.chem-photo-axis {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.5;
+}
+.chem-photo-ledger {
+  border-top: 1px solid #8f9f7e55;
+  padding-top: 20px;
+  margin-top: 24px;
+  text-align: center;
+  display: grid;
+  gap: 16px;
+  font-size: 19px;
+}
+.chem-photo-ledger > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px 26px;
+}
+.chem-photo-ledger b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.chem-photo-controls {
+  margin-top: 24px;
+  border-top: 1px solid #8f9f7e55;
+  padding-top: 22px;
+  display: grid;
+  gap: 20px;
+}
+.chem-photo-controls button,
+.chem-photo-controls input {
+  min-height: 44px;
+}
+.chem-photo-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .chem-photo-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .chem-photo-bottle {
+    max-width: 360px;
+    margin: auto;
+    width: 100%;
+  }
+  .chem-photo-charts {
+    gap: 18px;
+  }
+  .chem-photo-charts svg {
+    height: 105px;
+  }
+  .chem-photo-ledger {
+    font-size: 17px;
+  }
+  .chem-photo-controls .segmented {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-chlorine-photolysis {
+    padding: 8px 8px 12px;
+  }
+  .chem-photo-model {
+    margin: 0 0 10px;
+  }
+  .chem-photo-grid {
+    gap: 16px;
+  }
+  .chem-photo-bottle svg {
+    height: 180px;
+  }
+  .chem-photo-bottle figcaption {
+    margin-top: 4px;
+  }
+  .chem-photo-charts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .chem-photo-charts figcaption {
+    display: grid;
+    gap: 0;
+    padding: 0;
+    font-size: 16px;
+    text-align: center;
+  }
+  .chem-photo-charts svg {
+    height: 48px;
+  }
+  .chem-photo-axis {
+    grid-column: 1 / -1;
+  }
+  .chem-photo-ledger {
+    margin-top: 12px;
+    padding-top: 10px;
+    gap: 8px;
+  }
+  .chem-chlorine-photolysis[data-watch='true'] .chem-photo-amounts {
+    display: none;
+  }
+}

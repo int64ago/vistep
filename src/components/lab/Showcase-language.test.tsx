@@ -52,6 +52,7 @@ function environment() {
     duration = 400;
     readyState = 4;
     paused = true;
+    ended = false;
     volume = 1;
     preload = '';
     hidden = false;
@@ -62,6 +63,7 @@ function environment() {
     oncanplay = null;
     onloadedmetadata: (() => void) | null = null;
     onended: (() => void) | null = null;
+    onpause: (() => void) | null = null;
     onerror: (() => void) | null = null;
     error: { code: number } | null = null;
     play = vi.fn(() => {
@@ -201,6 +203,56 @@ afterEach(() => {
 });
 
 describe('actual Showcase + useNarration + narrationSource language lifecycle (controlled media/events)', () => {
+  it('reflects a native audio interruption and resumes from the same place on a reader tap', async () => {
+    const env = environment();
+    env.navigate('https://vistep.ai/explore/rainbow/');
+    const tree = await mount();
+    const audio = env.audios.at(-1)!;
+    await act(() => {
+      audio.currentTime = 31;
+      env.tick(20);
+      env.tick(60);
+    });
+    await act(() => {
+      audio.paused = true;
+      audio.onpause?.();
+    });
+    pause(tree);
+    expect(probe(tree)['data-time']).toBe(31);
+    expect(button(tree, 'voice').props['aria-pressed']).toBe(true);
+    expect(env.local.getItem('vistep:narration')).toBeNull();
+    await act(() => button(tree, 'play').props.onClick());
+    expect(audio.paused).toBe(false);
+    expect(audio.playTimes.at(-1)).toBe(31);
+    await unmount(tree);
+  });
+  it('does not turn an ordinary offscreen audio pause into a persistent reader pause', async () => {
+    const env = environment();
+    env.navigate('https://vistep.ai/explore/rainbow/');
+    const tree = await mount();
+    const audio = env.audios.at(-1)!;
+    await act(() => env.visibility(false));
+    await act(() => audio.onpause?.());
+    await act(() => env.visibility(true));
+    expect(probe(tree)['data-playing']).toBe(true);
+    expect(audio.paused).toBe(false);
+    await unmount(tree);
+  });
+  it('ignores a queued offscreen pause event after the soundtrack has already resumed', async () => {
+    const env = environment();
+    env.navigate('https://vistep.ai/explore/rainbow/');
+    const tree = await mount();
+    const audio = env.audios.at(-1)!;
+    await act(() => env.visibility(false));
+    expect(audio.paused).toBe(true);
+    // pause() sets paused immediately, but dispatches its native event in a later task.
+    await act(() => env.visibility(true));
+    expect(audio.paused).toBe(false);
+    await act(() => audio.onpause?.());
+    expect(probe(tree)['data-playing']).toBe(true);
+    expect(audio.paused).toBe(false);
+    await unmount(tree);
+  });
   it('keeps textbook playback, audio, replay and seeking inside the authored chapter selection', async () => {
     const env = environment();
     env.navigate('https://vistep.ai/teaching/pep-high-school-physics/selected-experiment/');

@@ -1,0 +1,42 @@
+---
+import { syntheticRainRecords } from '../../models/chem-rainwater-ph';
+const records = syntheticRainRecords;
+---
+
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><path d="M30 70Q32 46 61 51Q77 20 109 47Q134 41 140 70Z" fill="#c5d5d055"></path>{
+    Array.from({ length: 8 }, (_, i) => (
+      <path
+        d={`M${43 + i * 12} ${90 + (i % 3) * 18}l-5 17`}
+        stroke="#abc3c8"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    ))
+  }<path
+    d="M42 162V301Q42 315 57 315H139Q154 315 154 301V162"
+    fill="#e6f0eb44"
+    stroke="#9caca9"
+    stroke-width="2.5"></path><path
+    d="M48 246H148V299Q148 309 137 309H59Q48 309 48 299Z"
+    fill="#c2d7cd77"></path><rect
+    x="91"
+    y="103"
+    width="39"
+    height="159"
+    rx="9"
+    fill="#cbd5ad"
+    stroke="#a1ae8c"></rect><rect x="97" y="137" width="27" height="31" rx="4" fill="#e9edd8"
+  ></rect><path d="M101 262V287Q111 300 120 287V262" fill="#cbd7c355" stroke="#a1ae8c"></path><path
+    d="M201 165V315H364"
+    fill="none"
+    stroke="#b8c9b2"
+    stroke-width="2"></path><path d="M201 200H364" stroke="#c4ab83" stroke-dasharray="5 7"></path>{
+    records.map(
+      (r, i) =>
+        r.ph !== null && (
+          <circle cx={217 + i * 23} cy={180 + (6 - r.ph) * 77} r="5.5" fill="#95b5ac" />
+        ),
+    )
+  }<path d="M255 290H267" stroke="#a9b8a2" stroke-width="2"></path></svg
+>

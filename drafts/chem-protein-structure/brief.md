@@ -1,0 +1,7 @@
+# Protein structure direction
+
+Target 173, elective3 pp114–115/PDF119–120. Full body read; source diagram PDF120 visually inspected. Core misconception: a beta sheet is not necessarily multiple chains, and tertiary/quaternary differ in chain identity. Sequence→helix→sheet→same whole chain→different true tetramer. Data from official 1CRN/4HHB downloads, raw files ignored, derived atoms JSON records URLs and SHA256. No textbook PDF or images copied into public output.
+
+Model is a deterministic projection of real atomic coordinates, with alpha-carbon trace, actual O···N endpoints and real SG sulfur bonds. 1CRN chain46; 4HHB counts141/146/141/146, no chain bridging. PDB HELIX7–19/23–30, SHEET1–4/32–35. Alpha helix close shot7–17. Selected O···N distances2.83–3.13Å. Three S—S2.00–2.05Å. Independent tests pin sequences/counts/distances, rotation invariance, no beta gap bridge and chain-rigid explosion. No guessed hydrogen, kinetics, all-atom claim, or universal disulfide claim.
+
+Phone separate typographic sequence then one coordinate view with compact evidence/legend; no four simultaneous mini-panels. SVG contains no undersized text. Watch isolated from exploration; controls only select observed structure/rotate/track a residue/explode rigid chains. Five chapters154s. Root handles speech and integration. Research: official RCSB pages and PDB101 full opened; OpenStax protein chapter full opened. Extracted atom data from original archive, not webpage prose.

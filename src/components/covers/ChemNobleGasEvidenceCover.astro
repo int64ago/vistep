@@ -1,0 +1,37 @@
+---
+import { heliumLine, sodiumLines, spectrum } from '../../models/chem-noble-gas-evidence';
+---
+
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e4ead9"></rect><circle
+    cx="133"
+    cy="119"
+    r="54"
+    fill="#d5b463"></circle><circle cx="133" cy="119" r="46" fill="#e6d49b"></circle><path
+    d="M184 111 Q218 91 218 123 Q214 144 188 145"
+    stroke="#c29b60"
+    stroke-width="8"
+    fill="none"></path>{
+    [[heliumLine], [heliumLine], sodiumLines].map((ls, i) => (
+      <g>
+        <rect x="271" y={70 + i * 90} width="303" height="58" rx="11" fill="#29434a" />
+        {Array.from({ length: 300 }, (_, j) => (
+          <path
+            d={`M${272 + j} ${78 + i * 90} V${120 + i * 90}`}
+            stroke="#e5c77a"
+            opacity={Math.min(1, spectrum(584 + (j / 299) * 8, ls, 0.16))}
+            stroke-width="1.3"
+          />
+        ))}
+      </g>
+    ))
+  }<path
+    d={`M${272 + ((heliumLine - 584) / 8) * 300} 54 V234`}
+    stroke="#bca76e"
+    stroke-dasharray="4 6"></path><path
+    d="M96 250 H174 V317 Q174 341 135 341 Q96 341 96 317 Z"
+    fill="#d1c8b1"
+    stroke="#a29d86"
+    stroke-width="3"></path><path d="M125 268 V321 M145 268 V321" stroke="#c7a46b" stroke-width="4"
+  ></path></svg
+>

@@ -1,0 +1,210 @@
+.chem-precipitation-paths {
+  background: #edf0df;
+  color: #50654e;
+  border-radius: 28px;
+  padding: clamp(22px, 3vw, 36px);
+  font-size: 16px;
+}
+.chem-precipitation-paths header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: baseline;
+}
+.chem-precipitation-paths header p {
+  font-size: clamp(21px, 2.3vw, 28px);
+  line-height: 1.5;
+  margin: 0;
+}
+.chem-precipitation-paths header span {
+  font-size: 22px;
+  color: #7e9276;
+}
+.chem-precip-vessels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin: 15px auto;
+  max-width: 720px;
+}
+.chem-precip-vessels figure {
+  margin: 0;
+  max-width: 350px;
+  flex: 1;
+  min-width: 0;
+}
+.chem-precip-vessels svg {
+  width: 100%;
+  max-height: 300px;
+  display: block;
+}
+.chem-precip-vessels figcaption {
+  text-align: center;
+  font-size: 18px;
+}
+.chem-precip-ionledger {
+  flex: 1;
+  min-width: 0;
+}
+.chem-precip-ionledger > span {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+.chem-precip-ionledger div {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 7px 12px;
+  align-items: center;
+  margin: 14px 0;
+}
+.chem-precip-ionledger b {
+  font-weight: 500;
+}
+.chem-precip-ionledger i {
+  height: 7px;
+  max-width: 100%;
+  background: #a1b99d;
+  border-radius: 6px;
+}
+.chem-precip-ionledger strong {
+  grid-column: 2;
+  font-weight: 400;
+  font-size: 16px;
+}
+.chem-precip-ionledger p {
+  line-height: 1.7;
+}
+.chem-precip-formula {
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.7;
+  margin: 20px 0;
+  overflow-wrap: anywhere;
+}
+.chem-precip-solid-track {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.chem-precip-solid-track span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.chem-precip-solid-track i {
+  height: 16px;
+  border-radius: 7px;
+  border: 1px solid #a6b19555;
+}
+.chem-precip-fe {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  line-height: 1.7;
+}
+.chem-precip-controls {
+  display: grid;
+  gap: 20px;
+  padding: 22px;
+  background: #fcfaee;
+  border-radius: 22px;
+  margin-top: 24px;
+}
+.chem-precip-controls button,
+.chem-precip-controls input {
+  min-height: 44px;
+}
+.chem-precipitation-paths details {
+  line-height: 1.8;
+  color: #7e8c70;
+  margin-top: 18px;
+}
+.chem-precipitation-paths summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.chem-precipitation-paths[data-watch='true'] header,
+.chem-precipitation-paths[data-watch='true'] .chem-precip-ionledger p {
+  display: none;
+}
+.chem-precipitation-paths[data-watch='true'] summary {
+  padding-block: 0;
+}
+.chem-precipitation-paths[data-watch='true'] .chem-precip-formula {
+  margin-block: 10px;
+}
+.chem-precipitation-paths[data-watch='true'] .chem-precip-solid-track {
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .chem-precipitation-paths {
+    padding: 14px 12px;
+  }
+  .chem-precipitation-paths header {
+    display: block;
+  }
+  .chem-precipitation-paths header span {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .chem-precip-vessels {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chem-precip-vessels:not(.has-control) figure {
+    flex-basis: 100%;
+    max-width: 240px;
+  }
+  .chem-precip-vessels svg {
+    height: 220px;
+  }
+  .chem-precip-vessels.has-control svg {
+    height: 210px;
+  }
+  .chem-precip-vessels figcaption {
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 48px;
+  }
+  .chem-precipitation-paths[data-watch='true'][data-spectators='true'] .chem-precip-vessels svg {
+    height: 160px;
+  }
+  .chem-precip-ionledger {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 18px;
+  }
+  .chem-precip-ionledger > span,
+  .chem-precip-ionledger > p {
+    grid-column: 1/-1;
+    margin: 0;
+  }
+  .chem-precip-ionledger div {
+    margin: 6px 0;
+  }
+  .chem-precip-formula {
+    font-size: 18px;
+  }
+  .chem-precip-controls {
+    padding: 16px;
+  }
+  .chem-precip-fe {
+    display: grid;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-precipitation-paths {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}

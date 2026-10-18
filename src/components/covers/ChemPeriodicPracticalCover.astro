@@ -1,0 +1,38 @@
+---
+import { halogenDisplacement, HALOGEN_COLOURS } from '../../models/chem-periodic-practical';
+const m = halogenDisplacement('Cl', 'Br');
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e8eddf"></rect><rect
+    x="90"
+    y="80"
+    width="460"
+    height="240"
+    rx="35"
+    fill="#e3e7da"
+    stroke="#c8d1bf"></rect>{
+    [210, 430].map((x, i) => (
+      <g>
+        <>
+          <ellipse cx={x} cy="200" rx="80" ry="75" fill="#cbd5c1" stroke="#aab99d" />
+          <ellipse
+            cx={x}
+            cy="200"
+            rx="69"
+            ry="64"
+            fill={HALOGEN_COLOURS[i ? 'Cl' : 'Br']}
+            opacity={i ? 0.65 : m.product * 1.6}
+          />
+          <path
+            d={`M${x - 50} 170q15-28 43-27`}
+            fill="none"
+            stroke="#fbfcf4"
+            stroke-width="5"
+            opacity=".65"
+          />
+        </>
+      </g>
+    ))
+  }</svg
+>

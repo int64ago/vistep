@@ -1,0 +1,45 @@
+---
+import { engelmannBacteria } from '../../models/bio-photosynthesis-evidence';
+const bacteria = engelmannBacteria(1, 'spot', 0.4);
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect width="400" height="230" rx="24" fill="#eeefda"></rect><g transform="translate(20 -10)"
+    ><rect
+      x="26"
+      y="103"
+      width="308"
+      height="54"
+      rx="12"
+      fill="#d5dfb7"
+      stroke="#8da87b"
+      stroke-width="2"></rect>{
+      [90, 150, 210, 270].map((x) => <path d={`M${x} 104V156`} stroke="#99ad82" />)
+    }<path
+      d={Array.from(
+        { length: 151 },
+        (_, i) => `${i ? 'L' : 'M'}${30 + i * 2} ${130 + 17 * Math.sin((i / 150) * Math.PI * 10)}`,
+      ).join(' ')}
+      fill="none"
+      stroke="#71965b"
+      stroke-width="8"></path><rect
+      x="137"
+      y="26"
+      width="26"
+      height="132"
+      fill="#ead897"
+      opacity=".5"></rect>{
+      bacteria.map((b) => (
+        <rect
+          x={b.x - 3}
+          y={b.y - 1.4}
+          width="6"
+          height="2.8"
+          rx="1.4"
+          fill="#717e62"
+          transform={`rotate(${(b.id * 37) % 150} ${b.x} ${b.y})`}
+        />
+      ))
+    }</g
+  ></svg
+>

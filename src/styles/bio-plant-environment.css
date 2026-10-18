@@ -1,0 +1,75 @@
+.bio-environment {
+  color: #55624f;
+  font-size: 16px;
+}
+.bio-environment svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.bio-environment svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #55624f;
+}
+.bio-environment-head {
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.bio-environment-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbe2d1;
+}
+.bio-environment-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-environment button {
+  min-height: 44px;
+  border: 1px solid #cbd7bf;
+  border-radius: 24px;
+  background: #f8faf2;
+  color: inherit;
+  font: inherit;
+  padding: 8px 16px;
+}
+.bio-environment button[aria-pressed='true'] {
+  background: #dfe8d3;
+  border-color: #9aaf87;
+}
+.bio-environment label {
+  display: grid;
+  gap: 8px;
+}
+.bio-environment input {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #8fa577;
+}
+.bio-environment details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-environment summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.bio-environment button:focus-visible,
+.bio-environment input:focus-visible {
+  outline: 2px solid #839a72;
+  outline-offset: 3px;
+}
+
+.bio-environment {
+  padding: 12px;
+}
+.bio-environment[data-watch='true'] .bio-environment-head {
+  display: none;
+}

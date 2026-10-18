@@ -1,0 +1,164 @@
+.chem-sugar-carbonization {
+  padding: 18px 10px;
+  color: #606c55;
+  font-size: 16px;
+}
+.chem-sugar-title {
+  text-align: center;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 450;
+}
+.chem-sugar-stage {
+  display: block;
+  width: 100%;
+  height: 310px;
+  margin: 4px auto;
+}
+.chem-sugar-ledger,
+.chem-sugar-oxidation {
+  max-width: 380px;
+  margin: 20px auto;
+  padding: 0 8px;
+  min-height: 270px;
+}
+.chem-sugar-formula {
+  text-align: center;
+  font-size: 27px;
+  letter-spacing: 2px;
+  margin: 12px 0 24px;
+}
+.chem-sugar-atom-row {
+  display: grid;
+  grid-template-columns: 22px 1fr 24px;
+  gap: 12px;
+  align-items: center;
+  margin: 15px 0;
+}
+.chem-sugar-atom-row > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.chem-sugar-atom-row i {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.chem-sugar-atom-row b {
+  font-size: 16px;
+  font-weight: 450;
+}
+.chem-sugar-atom-row .carbon {
+  background: #646d5a;
+}
+.chem-sugar-atom-row .hydrogen {
+  background: #e1d9b6;
+}
+.chem-sugar-atom-row .oxygen {
+  background: #b68570;
+}
+.chem-sugar-products {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 28px;
+  font-size: 24px;
+}
+.chem-sugar-small {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+.chem-sugar-oxidation-path,
+.chem-sugar-valence {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  align-items: center;
+}
+.chem-sugar-oxidation-path {
+  font-size: 23px;
+  margin-top: 20px;
+}
+.chem-sugar-valence {
+  font-size: 17px;
+  color: #9a7c57;
+  margin-top: 8px;
+}
+.chem-sugar-valence i,
+.chem-sugar-oxidation-path i {
+  font-style: normal;
+}
+.chem-sugar-equation {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.9;
+  margin-top: 26px;
+}
+.chem-sugar-evidence {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.chem-sugar-controls {
+  display: grid;
+  gap: 22px;
+  border-top: 1px solid #adb59f44;
+  margin-top: 24px;
+  padding-top: 20px;
+}
+.chem-sugar-controls button,
+.chem-sugar-controls input,
+.chem-sugar-controls summary {
+  min-height: 44px;
+}
+.chem-sugar-controls summary {
+  font-size: 16px;
+  cursor: pointer;
+}
+.chem-sugar-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .chem-sugar-carbonization {
+    padding: 14px 8px;
+  }
+  .chem-sugar-title {
+    font-size: 17px;
+  }
+  .chem-sugar-stage {
+    height: 240px;
+  }
+  .chem-sugar-ledger,
+  .chem-sugar-oxidation {
+    min-height: 235px;
+    margin: 12px auto;
+    padding: 0;
+  }
+  .chem-sugar-formula {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  .chem-sugar-atom-row {
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .chem-sugar-products {
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  .chem-sugar-equation {
+    font-size: 17px;
+    margin-top: 18px;
+  }
+  .chem-sugar-small {
+    margin-top: 15px;
+  }
+}

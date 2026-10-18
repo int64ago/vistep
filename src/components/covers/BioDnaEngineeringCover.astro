@@ -1,0 +1,33 @@
+---
+import { gelFrame } from '../../models/bio-dna-engineering';
+const g = gelFrame(1, 'offtarget');
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+  ><rect width="400" height="230" fill="#dbe4d8"></rect><rect
+    x="57"
+    y="22"
+    width="286"
+    height="190"
+    rx="20"
+    fill="#384a45"></rect>{
+    g.lanes.map((l, i) => (
+      <g>
+        <rect x={103 + i * 60} y="38" width="20" height="7" rx="2" fill="#243831" />
+        {l.bands.map((b) => (
+          <rect
+            x={101 + i * 60}
+            y={45 + (b.y - 80) * 0.9}
+            width="24"
+            height="5"
+            rx="2"
+            fill="#c4e1a4"
+          />
+        ))}
+      </g>
+    ))
+  }<path d="M83 198H323" stroke="#789fae" stroke-dasharray="4 5" stroke-width="2"></path><path
+    d="M24 54H40M360 174H378M369 165V183"
+    stroke="#97aa9c"
+    stroke-width="3"></path></svg
+>

@@ -1,0 +1,99 @@
+.chem-food-iron {
+  font-size: 16px;
+  color: #53634e;
+  padding: 18px 8px 24px;
+}
+.chem-food-object-label {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.chem-food-extraction,
+.chem-food-filter,
+.chem-food-oxidation {
+  max-width: 400px;
+  margin: auto;
+}
+.chem-food-extraction svg,
+.chem-food-filter svg,
+.chem-food-oxidation svg {
+  display: block;
+  width: 100%;
+}
+.chem-food-ledger {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  font-size: 16px;
+  margin-top: 14px;
+}
+.chem-food-oxidation p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+.chem-food-pair {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+}
+.chem-food-tube {
+  text-align: center;
+  width: 180px;
+  font-size: 18px;
+}
+.chem-food-tube svg {
+  display: block;
+  width: 100%;
+  height: 280px;
+}
+.chem-food-controls {
+  display: grid;
+  gap: 20px;
+  padding-top: 24px;
+  margin-top: 25px;
+  border-top: 1px solid #a6b29a55;
+}
+.chem-food-controls p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+.chem-food-controls button,
+.chem-food-controls input {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .chem-food-object-label {
+    font-size: 18px;
+  }
+  .chem-food-pair {
+    gap: 12px;
+  }
+  .chem-food-tube {
+    width: 50%;
+    font-size: 16px;
+  }
+  .chem-food-tube svg {
+    height: 245px;
+  }
+  .chem-food-filter {
+    max-width: 320px;
+  }
+  .chem-food-oxidation {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .chem-food-iron {
+    padding: 10px 8px 12px;
+  }
+  .chem-food-object-label {
+    margin-bottom: 12px;
+  }
+  .chem-food-tube svg {
+    height: 220px;
+  }
+}

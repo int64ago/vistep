@@ -1,0 +1,94 @@
+.bio-plant-cell {
+  color: #62624f;
+  font-size: 16px;
+}
+.bio-plant-cell svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bio-plant-cell svg text {
+  font: 16px var(--font-body, sans-serif);
+  fill: #62624f;
+}
+.bio-plant-cell-head {
+  font-size: 17px;
+  line-height: 1.4;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+.bio-plant-cell-controls {
+  display: grid;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #dbd9c7;
+}
+.bio-plant-cell-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bio-plant-cell button {
+  min-height: 44px;
+  padding: 8px 15px;
+  font: inherit;
+  color: inherit;
+  background: #f8f7ee;
+  border: 1px solid #ceceba;
+  border-radius: 24px;
+}
+.bio-plant-cell button[aria-pressed='true'] {
+  background: #e8e7d2;
+  border-color: #a8ae8a;
+}
+.bio-plant-cell label {
+  display: grid;
+  gap: 8px;
+}
+.bio-plant-cell input,
+.bio-plant-cell select,
+.bio-plant-cell textarea {
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  accent-color: #a5ae83;
+}
+.bio-plant-cell input[type='number'],
+.bio-plant-cell select,
+.bio-plant-cell textarea {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #fcfcf5;
+}
+.bio-plant-cell textarea {
+  min-height: 88px;
+}
+.bio-plant-cell details,
+.bio-plant-cell p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bio-plant-cell summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bio-plant-cell button:focus-visible,
+.bio-plant-cell input:focus-visible,
+.bio-plant-cell textarea:focus-visible {
+  outline: 2px solid #a6af87;
+  outline-offset: 3px;
+}
+.bio-plant-cell-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}

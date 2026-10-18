@@ -1,0 +1,49 @@
+---
+import { yeastCells, inCountingSquare } from '../../models/bio-population-growth';
+const cells = yeastCells(3, 1),
+  side = 150,
+  x = 125,
+  y = 40;
+---
+
+<svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" fill="#f0f2e7"></rect><circle
+    cx="200"
+    cy="115"
+    r="98"
+    fill="#e6e5d2"
+    stroke="#c7cdb6"
+    stroke-width="3"></circle>
+  {
+    Array.from({ length: 5 }, (_, i) => (
+      <path
+        d={`M${x + (i * side) / 4} ${y}v${side}M${x} ${y + (i * side) / 4}h${side}`}
+        stroke={i === 0 ? '#8fa07c' : '#c0bfa5'}
+        stroke-width={i === 0 ? 2 : 1}
+        fill="none"
+      />
+    ))
+  }
+  {
+    cells.map((c) => (
+      <g opacity={inCountingSquare(c) ? 1 : 0.3}>
+        <>
+          <ellipse
+            cx={x + c.x * side}
+            cy={y + c.y * side}
+            rx="4"
+            ry="5.5"
+            fill="#c3a972"
+            stroke="#9a8055"
+          />
+          <circle cx={x + c.x * side - 0.8} cy={y + c.y * side} r="1.2" fill="#a18c68" />
+        </>
+      </g>
+    ))
+  }
+  <path
+    d="M51 156v-58m-9 58h18m-18-58h18M344 74v58m-9-58h18m-18 58h18"
+    stroke="#b8c2a4"
+    fill="none"
+    stroke-width="2"></path>
+</svg>

@@ -1,0 +1,29 @@
+---
+import { ironHydroxides, hydroxideColour } from '../../models/chem-iron-hydroxides';
+const m = ironHydroxides(3, 0.2);
+---
+
+<svg viewBox="0 0 640 400" aria-hidden="true"
+  ><rect width="640" height="400" fill="#e9eddf"></rect>{
+    [180, 460].map((x, i) => (
+      <g>
+        <path d={`M${x - 42} 160h84V280a42 42 0 0 1-84 0Z`} fill={i ? '#c3d4b366' : '#ddcb8880'} />
+        {Array.from({ length: 35 }, (_, j) => (
+          <ellipse
+            cx={x - 32 + ((j * 17) % 65)}
+            cy={225 + ((j * 19) % 68)}
+            rx="8"
+            ry="5"
+            fill={i ? hydroxideColour(m.fraction) : '#a15e3c'}
+            opacity=".75"
+          />
+        ))}
+      </g>
+    ))
+  }<path d="M525 85q-55 10-62 63m-5-8 5 9 7-8" fill="none" stroke="#82a4b0" stroke-width="3"
+  ></path><circle cx="542" cy="65" r="12" fill="#95b6bf"></circle><circle
+    cx="558"
+    cy="65"
+    r="12"
+    fill="#95b6bf"></circle></svg
+>

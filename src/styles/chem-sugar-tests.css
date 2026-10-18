@@ -1,0 +1,93 @@
+.chem-sugar {
+  font-size: 16px;
+  color: #8c967f;
+  padding: 4px 8px;
+  min-width: 0;
+}
+.chem-sugar-title {
+  font-size: 18px;
+  line-height: 1.45;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.chem-sugar-svg {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
+}
+.chem-sugar-svg.compact {
+  max-width: 230px;
+}
+.chem-sugar-equation {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 9px 0;
+}
+.chem-sugar-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #9ca68d;
+  margin: 10px 0 3px;
+}
+.chem-sugar-two,
+.chem-sugar-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: center;
+  margin: 8px 0;
+}
+.chem-sugar-three {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.chem-sugar-route {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  text-align: center;
+  font-size: 18px;
+  margin: 15px 0 0;
+}
+.chem-sugar-route i {
+  font-style: normal;
+  color: #b6bda5;
+}
+.chem-sugar-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 25px;
+}
+.chem-sugar-controls label,
+.chem-sugar-controls button {
+  font-size: 16px;
+}
+.chem-sugar-controls button {
+  min-height: 44px;
+}
+@media (min-width: 650px) {
+  .chem-sugar {
+    max-width: 700px;
+    padding: 15px 30px;
+    margin: auto;
+  }
+  .chem-sugar-title {
+    font-size: 21px;
+  }
+  .chem-sugar-svg {
+    max-width: 400px;
+  }
+  .chem-sugar-svg.compact {
+    max-width: 260px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chem-sugar * {
+    transition: none !important;
+  }
+}
