@@ -1,37 +1,65 @@
 ---
-import { secretoryPopulation } from '../../models/bio-cellular-logistics';
-const state = secretoryPopulation(65);
+import { historicalLocalization, erLumen, golgiLumen } from '../../models/bio-cellular-logistics';
+const samples = [0, 1, 2].map(historicalLocalization);
+const curve = (points: { x: number; y: number }[]) =>
+  points.map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`).join(' ');
 ---
 
-<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
-  ><ellipse cx="200" cy="115" rx="165" ry="100" fill="#dce4c5" stroke="#829d77" stroke-width="3"
-  ></ellipse><circle cx="125" cy="150" r="32" fill="#b9afbf" stroke="#8d839c" stroke-width="3"
-  ></circle><circle cx="129" cy="145" r="9" fill="#94869f"></circle>{
-    [0, 1, 2, 3].map((i) => (
-      <path
-        d={`M75 ${60 + i * 13}Q120 ${45 + i * 13} 175 ${60 + i * 13}`}
-        stroke="#adb692"
-        stroke-width="7"
-        stroke-linecap="round"
-      />
-    ))
-  }{
-    [0, 1, 2, 3].map((i) => (
-      <path
-        d={`M${235 + i * 4} 68Q${275 + i * 4} 100 ${235 + i * 4} 132`}
-        stroke="#baab82"
-        stroke-width="5"
-        fill="none"
-      />
-    ))
-  }{
-    state.cargo.map((c) => (
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="230" rx="24" fill="#edf0df"></rect>
+  {
+    samples.map((s, i) => (
       <g>
-        <>
-          <circle cx={200 + c.x} cy={115 + c.y} r="6" fill="#e1dcbd" stroke="#a4ae88" />
-          <circle cx={200 + c.x} cy={115 + c.y} r="2" fill="#b99167" />
-        </>
+        <rect x={9 + i * 132} y="22" width="118" height="167" rx="18" fill="#e4e9d5" />
+        <text
+          x={68 + i * 132}
+          y="53"
+          text-anchor="middle"
+          font-family="sans-serif"
+          font-size="22"
+          fill="#586b54"
+        >
+          {s.minutes} min
+        </text>
+        <g transform={`translate(${68 + i * 132} 122) scale(.31)`}>
+          <ellipse rx="143" ry="108" fill="#d6e0c2" stroke="#8da17f" stroke-width="5" />
+          <ellipse cx="-62" cy="45" rx="32" ry="29" fill="#bfb5c8" />
+          {[0, 1, 2, 3].map((l) => (
+            <path
+              d={curve(Array.from({ length: 25 }, (_, j) => erLumen(l, j / 24)))}
+              stroke="#9eab83"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+          ))}
+          {[0, 1, 2, 3].map((l) => (
+            <path
+              d={curve(Array.from({ length: 25 }, (_, j) => golgiLumen(l, j / 24)))}
+              stroke="#b4a581"
+              stroke-width="7"
+              stroke-linecap="round"
+            />
+          ))}
+          {s.spots.map((p) => (
+            <path
+              d={`M${p.x - 4} ${p.y - 3}l8 4`}
+              stroke="#986d4c"
+              stroke-width="7"
+              stroke-linecap="round"
+            />
+          ))}
+        </g>
+        <text
+          x={68 + i * 132}
+          y="177"
+          text-anchor="middle"
+          font-family="sans-serif"
+          font-size="20"
+          fill="#879273"
+        >
+          {['A', 'B', 'C'][i]}
+        </text>
       </g>
     ))
-  }</svg
->
+  }
+</svg>

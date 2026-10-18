@@ -1,0 +1,254 @@
+.celestial-evidence {
+  width: min(100%, 800px);
+  margin: auto;
+  color: #49646a;
+}
+.celestial-evidence-provenance {
+  margin: 0 2px 6px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+}
+.celestial-evidence-surface {
+  padding: 12px 0 10px;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 20% 0, #304c58, #172d36 80%);
+  color: #d6e2d8;
+}
+.celestial-evidence-title {
+  margin: 0 9px 3px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+}
+.celestial-evidence-surface svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.celestial-evidence-surface svg text {
+  font: inherit;
+  font-size: 16px;
+  fill: #d6e2d8;
+}
+.celestial-evidence-grid {
+  fill: none;
+  stroke: #45616a;
+  stroke-width: 1;
+}
+.celestial-evidence-divider {
+  fill: none;
+  stroke: #6b8790;
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+.celestial-evidence-record {
+  fill: #ebcc8f;
+  stroke: #172d36;
+  stroke-width: 1;
+}
+.celestial-evidence-prediction {
+  fill: none;
+  stroke: #95c6d3;
+  stroke-width: 2;
+}
+.celestial-evidence-model-line {
+  fill: none;
+  stroke: #95c6d3;
+  stroke-width: 1.8;
+}
+.celestial-evidence-gap {
+  fill: none;
+  stroke: #d6af70;
+  stroke-width: 1.8;
+}
+.celestial-evidence-stationary {
+  fill: none;
+  stroke: #a5b4b1;
+  stroke-width: 1.8;
+  stroke-dasharray: 3 4;
+}
+.celestial-evidence-orbit {
+  fill: none;
+  stroke: #4b6570;
+  stroke-width: 1;
+}
+.celestial-evidence-force {
+  fill: none;
+  stroke: #95c6d3;
+  stroke-width: 2;
+}
+.celestial-evidence-relative {
+  fill: none;
+  stroke: #ebcc8f;
+  stroke-width: 2.5;
+}
+.celestial-evidence-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px 17px;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 0 8px;
+}
+.celestial-evidence-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.celestial-evidence-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #ebcc8f;
+  background: #ebcc8f;
+  border-radius: 50%;
+}
+.celestial-evidence-legend .celestial-evidence-ring {
+  width: 11px;
+  height: 11px;
+  background: transparent;
+  border: 2px solid #95c6d3;
+}
+.celestial-evidence-stat {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+}
+.celestial-evidence-tabs,
+.celestial-evidence-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.celestial-evidence-tabs {
+  margin: 0 0 16px;
+}
+.celestial-evidence-tabs button,
+.celestial-evidence-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 9px 13px;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: normal;
+  border: 1px solid #bdceca;
+  border-radius: 14px;
+  background: #f5f8ef;
+  color: #3d6165;
+  cursor: pointer;
+}
+.celestial-evidence-tabs button[aria-pressed='true'],
+.celestial-evidence-controls button[aria-pressed='true'] {
+  background: #dce9e3;
+  border-color: #8caea9;
+}
+.celestial-evidence-controls button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.celestial-evidence-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 17px;
+  margin: 20px 2px 0;
+  padding-bottom: 16px;
+}
+.celestial-evidence-controls .segmented {
+  flex-wrap: wrap;
+}
+.celestial-evidence-controls .control {
+  min-width: 0;
+  font-size: 16px;
+}
+.celestial-evidence-controls input[type='range'] {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  margin-inline: 0;
+}
+.celestial-evidence-controls details {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.celestial-evidence-controls summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.celestial-evidence-controls button:focus-visible,
+.celestial-evidence-tabs button:focus-visible {
+  outline: 2px solid #5c8e93;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .celestial-evidence-surface {
+    border-radius: 19px;
+    padding-block: 9px;
+  }
+  .celestial-evidence-title {
+    margin-inline: 8px;
+  }
+}
+@media (max-width: 560px) and (max-height: 700px) {
+  .experiment:has(.showcase[data-slug='celestial-observations']) {
+    scroll-margin-top: -74px;
+  }
+  .celestial-evidence-provenance {
+    margin-bottom: 4px;
+  }
+  .celestial-evidence-stat {
+    margin-top: 4px;
+  }
+  .celestial-evidence-surface {
+    padding-block: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .showcase[data-slug='celestial-observations'] .film-caption {
+    gap: 12px;
+    padding: 10px 12px 8px;
+    min-height: 0;
+  }
+  .showcase[data-slug='celestial-observations'] .film-chapter {
+    flex-basis: 32px;
+  }
+  .showcase[data-slug='celestial-observations'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .showcase[data-slug='celestial-observations'] .film-transport {
+    padding-inline: 12px;
+    padding-bottom: 6px;
+  }
+  .showcase[data-slug='celestial-observations'] .film-chapters {
+    margin-inline: 12px;
+  }
+  .showcase[data-slug='celestial-observations'] .film-chapters summary {
+    min-height: 44px;
+  }
+}
+@media (max-width: 480px) and (max-height: 700px) {
+  .celestial-evidence-stat[data-view='records'] {
+    display: none;
+  }
+  .showcase[data-slug='celestial-observations'][data-mode='watch'] .astronomy-lab .modern-key {
+    display: none;
+  }
+}
+@media (max-width: 480px) and (max-height: 700px) {
+  .showcase[data-slug='celestial-observations'] .astronomy-lab .modern-readout {
+    min-height: 32px;
+    padding: 3px;
+  }
+  .showcase[data-slug='celestial-observations'] .astronomy-art {
+    height: 248px;
+    margin-top: 4px;
+  }
+}

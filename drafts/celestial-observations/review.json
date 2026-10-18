@@ -1,0 +1,249 @@
+{
+  "scene": "celestial-observations",
+  "owner": "teaching_subject_fit",
+  "role": "Author self-review; independent root acceptance separately recorded by root",
+  "sourceCommit": "4bf0b955caadd60b414fff1a526bcf0589abb549",
+  "createdAt": "2026-10-18T14:32:37.249629+00:00",
+  "status": "Owned product frozen again after independent legacy moon-record defect correction and actual author recheck; root independent final acceptance remains separate.",
+  "sourceHashes": {
+    "src/components/experiments/CelestialObservations.tsx": "7e3626dca85a37259d19f4e0d50e48caf1251820995d301369d6c8859d65b621",
+    "src/models/celestial-evidence.ts": "a2594c70b97c0c47ad44e835ddd99d1a477a06385655f3ccd029c2872ec90521",
+    "src/models/celestial-evidence.test.ts": "954abc7769c811aac31bbace0c1fd038a44526e008f7a7b52938d7ed11e92c49",
+    "src/styles/celestial-observations.css": "ec98a5a414d7b826d8a18e5d7252f16b5dd9d402546758f3119cb68c6be1b65f",
+    "src/content/celestial-observations.mdx": "4a3025db3ba189996e982c14a9015fdd5bf4cb347c5aff50a56a49a74d6686d8",
+    "src/content/en/celestial-observations.mdx": "f788e0328fee24e897e9f62367d248c8205b54e9c7b620ec49c02d7272c41fac",
+    "drafts/celestial-observations/brief.md": "6d7f51b1848aa142c3d0925ed910e0808b83470c5f220b26b9671c5911e1e54a",
+    "drafts/celestial-observations/principle-first-packet.json": "443e309778f367a1deb5e704f4b0e977bc57292ccf8e7f7a7b62e6332abae574",
+    "src/components/covers/CelestialObservationsCover.astro": "024bc1ab8e8bdda116065956121d9110fa9a17d3c7c2223f7ea9dab5227e4ef4",
+    "src/components/experiments/CelestialObservations.test.tsx": "f3d53207590a56ab6b116b1a1e5c0c51b3aac23d2439eedcce76c43fe47b9931"
+  },
+  "scope": {
+    "revisedChapters": [
+      "position-records",
+      "orbit-residuals",
+      "moon-records",
+      "uranus-residual",
+      "neptune-check"
+    ],
+    "unchangedChapters": ["galilean-telescope", "comet-records", "comet-return"],
+    "textbookWindows": 5,
+    "sharedFilesEditedByAuthor": false,
+    "unchangedSpokenCues": ["galilean-telescope", "moon-records", "comet-records", "comet-return"]
+  },
+  "sources": {
+    "research": "artifacts/teaching-principles/physics-next-celestial/ready-brief.json",
+    "primaryScan": "artifacts/teaching-principles/physics-next-celestial/",
+    "independentBenchmark": "artifacts/teaching-principles/physics-next-celestial/benchmark-results.json",
+    "boundaries": [
+      "Mars and Uranus comparison tables are explicitly synthetic and independently frozen, not historical observations.",
+      "The candidate grid tests a conditional restricted model, not a unique inverse solution.",
+      "Historical geocentric longitude and three-night RA/Dec retain their separate coordinate/date conventions.",
+      "The third-night straight-line exercise is retrospective classroom prediction, not Le Verrier’s original calculation."
+    ]
+  },
+  "automated": [
+    {
+      "kind": "Model tests",
+      "command": "pnpm exec vitest run src/models/celestial-evidence.test.ts --maxWorkers=1",
+      "status": "passed",
+      "tests": 10,
+      "time": "2026-10-18 22:30:33 Asia/Shanghai"
+    },
+    {
+      "kind": "Scoped TypeScript",
+      "command": "pnpm exec tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler --target ES2022 --skipLibCheck --allowImportingTsExtensions src/models/celestial-evidence.ts src/components/experiments/CelestialObservations.tsx",
+      "status": "passed",
+      "limitation": "Did not pass --strict; later full Astro project check found six errors. See globalStrictCheckFailure."
+    },
+    {
+      "kind": "Actual browser controls",
+      "status": "passed",
+      "pages": 10,
+      "assertions": 112,
+      "evidence": "artifacts/teaching-principles/celestial-controls-01/report.json",
+      "conditions": "Muted Chromium, reduced motion, 320 × 568. All five actual teaching windows in both languages; fixed records, lock/reveal/reset, 12 force candidate combinations per language, initial apparatus, 44px targets and 16px text."
+    },
+    {
+      "kind": "Preserved JSX comparison",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/celestial-covers/legacy-preservation.json"
+    }
+  ],
+  "visual": [
+    {
+      "kind": "All8 chapters sampled with integrated provisional captions",
+      "status": "passed",
+      "frames": 38,
+      "evidence": "artifacts/teaching-principles/celestial-review-03/report.json",
+      "note": "Earlier failed review01/02 retained. Source prior to measured calibration."
+    },
+    {
+      "kind": "Actual-recording calibration keyframes",
+      "status": "passed",
+      "frames": 33,
+      "evidence": "artifacts/teaching-principles/celestial-review-04/report.json",
+      "conditions": "Both languages at 320 × 568, plus three desktop frames at 1100 × 900. Includes candidate change, force, half/full mass, locked prediction and held-record reveal."
+    },
+    {
+      "kind": "Final two-pixel transport-spacing recheck",
+      "status": "passed",
+      "frames": 4,
+      "evidence": "artifacts/teaching-principles/celestial-review-05/report.json",
+      "playerHeights": [
+        {
+          "lang": "zh",
+          "chapter": 1,
+          "height": 501.5625,
+          "bottom": 518.0625
+        },
+        {
+          "lang": "zh",
+          "chapter": 5,
+          "height": 501.5625,
+          "bottom": 518.0625
+        },
+        {
+          "lang": "en",
+          "chapter": 1,
+          "height": 549.5625,
+          "bottom": 566.75
+        },
+        {
+          "lang": "en",
+          "chapter": 5,
+          "height": 549.5625,
+          "bottom": 566.75
+        }
+      ]
+    },
+    {
+      "kind": "Fresh native textbook anchor after root SSR fix",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/celestial-anchor-final/report.json",
+      "originalFailure": "artifacts/teaching-principles/celestial-anchor/report.json",
+      "note": "First direct #experiment navigation previously preceded lazy CSS and landed at 91px; root moved the scoped short-screen offset into SSR-loaded CSS. Final first entry reaches 17px without a JS re-scroll."
+    },
+    {
+      "kind": "Actual generated cover/social consumer",
+      "status": "passed",
+      "evidence": [
+        "artifacts/teaching-principles/celestial-covers/cover.png",
+        "artifacts/teaching-principles/celestial-covers/social.png"
+      ],
+      "note": "Author opened both returned PNGs; the unchanged Jupiter observation mechanism remains visible."
+    }
+  ],
+  "personallyInspected": [
+    "celestial-review-04/en-320-c1-20s.png",
+    "celestial-review-04/zh-320-c4-29s.png",
+    "celestial-review-04/en-320-c5-33s.png",
+    "celestial-review-04/en-1100-c4-14s.png",
+    "celestial-controls-01/en-force--0.4.png",
+    "celestial-controls-01/en-force-0.6.png",
+    "celestial-controls-01/en-force-1.6.png",
+    "artifacts/teaching-principles/celestial-moon-records-final/en-320-required-2-jupiter-moons-8s.png",
+    "artifacts/teaching-principles/celestial-moon-records-final/en-320-required-2-jupiter-moons-14s.png",
+    "artifacts/teaching-principles/celestial-moon-records-final/zh-1100-required-1-galileo-telescope-14s.png",
+    "artifacts/teaching-principles/celestial-moon-records-final/covers.png",
+    "artifacts/teaching-principles/celestial-moon-records-final/social.png"
+  ],
+  "timing": {
+    "duration": 274,
+    "starts": [0, 34.5, 72, 100, 128, 172, 218, 246],
+    "audio": {
+      "zh": "b7e1b99d3588",
+      "en": "500ba4b3c8b0"
+    },
+    "wordEvidence": "artifacts/teaching-principles/batch-5-timed-speech/celestial-observations-{zh,en}-{0,1,4,5}.json",
+    "method": "Independent ASR timestamps supplied by root; author read segments and key words, applied0.45slead-in. Not subjective listening."
+  },
+  "notRun": [
+    "Author full real-time 274-second playback",
+    "Subjective full-track listening",
+    "Physical-device performance",
+    "Final static preview review",
+    "Global pnpm verify and build:preview",
+    "Publication"
+  ],
+  "nextOwner": "root",
+  "scopeBeforeMoonCorrection": {
+    "revisedChapters": ["position-records", "orbit-residuals", "uranus-residual", "neptune-check"],
+    "unchangedChapters": ["galilean-telescope", "moon-records", "comet-records", "comet-return"],
+    "textbookWindows": 5,
+    "sharedFilesEditedByAuthor": false
+  },
+  "lateMoonRecordCorrection": {
+    "foundBy": "Independent chemistry review, confirmed by root",
+    "originalDefect": "Each row recomputed jupiterMoons(j + progress * 4) while the live view/readout used progress * 16; changing time rewrote the supposedly fixed observation records.",
+    "fix": "Frozen adjacent elapsed-day 0–4 snapshots; reveal only records already reached. Live view and readout use the same continuous 0–4-day clock. Chapter 2 retains its original 16-day optical-view orbit. Day 4 reached at 13.19 s ZH / 12.13 s EN according to the unchanged recording, then held. Cover value=1 keeps all five rows.",
+    "tests": {
+      "command": "pnpm exec vitest run src/models/celestial-evidence.test.ts src/components/experiments/CelestialObservations.test.tsx --maxWorkers=1",
+      "executed": "2026-10-18 22:43:46 Asia/Shanghai",
+      "passed": 15,
+      "firstAttempt": "Three component cases initially failed on a stale loop index introduced during editing; corrected and all15 passed.",
+      "meaning": "Frozen rows survive advance and rewind, same-day live positions match the saved snapshot, optical chapter retains16days, fifth row completes before chapter switch, finite boundaries."
+    },
+    "scopedTypeScript": "passed",
+    "actualBrowser": {
+      "report": "artifacts/teaching-principles/celestial-moon-records-final/report.json",
+      "passed": true,
+      "teachingPages": 8,
+      "watchFrames": 40,
+      "controlCases": 8,
+      "contexts": "Two actual textbook windows × ZH/EN ×320×568/1100×900. Silent browser.",
+      "enPhonePlayer": {
+        "x": 21,
+        "y": 16.84375,
+        "top": 16.84375,
+        "right": 299,
+        "bottom": 561.84375,
+        "left": 21,
+        "width": 278,
+        "height": 545
+      },
+      "zhPhonePlayer": {
+        "x": 21,
+        "y": 17.46875,
+        "top": 17.46875,
+        "right": 299,
+        "bottom": 514.46875,
+        "left": 21,
+        "width": 278,
+        "height": 497
+      },
+      "coverConsumers": [
+        "artifacts/teaching-principles/celestial-moon-records-final/covers.png",
+        "artifacts/teaching-principles/celestial-moon-records-final/social.png"
+      ]
+    },
+    "originalPreservationClaim": "Prior full mode1/mode3 equality record retained as initial-scope evidence, superseded by explicit moon-record correction. Final exact-branch comparison covers only telescope optical paths and Halley.",
+    "finalPreservation": "artifacts/teaching-principles/celestial-moon-records-final/preservation.json",
+    "sourceCorrectionsOnly": false,
+    "voicesChanged": false,
+    "profilesAdded": [
+      "required-1-galileo-telescope",
+      "required-2-jupiter-moons",
+      "required-2-halley"
+    ]
+  },
+  "globalStrictCheckFailure": {
+    "reportedBy": "root during full pnpm verify / Astro check after author freeze",
+    "status": "failed; root owns fix and strict-project rerun, not yet confirmed passed in this author record",
+    "file": "src/components/experiments/CelestialObservations.tsx",
+    "lines": [714, 724, 764, 802, 809, 825],
+    "finding": "Six strict-type diagnostics: activeOrbit, activeMass and d.overlay can include undefined.",
+    "authorCheckLimit": "The previously passed scoped tsc command did not enable --strict and therefore did not cover the project/Astro strict configuration. It must not be presented as a substitute for full project validation.",
+    "sourceHashScope": "sourceHashes preserve the author handoff snapshot; root subsequent product fixes have separate hashes/evidence."
+  },
+  "rootStrictCheckCorrection": {
+    "status": "passed-fresh-full-verify",
+    "scope": "Previous scoped tsc lacked --strict; six optional director field errors caught by full Astro project check, repaired by root. Do not treat earlier scoped checks as a full project typecheck.",
+    "evidence": "artifacts/teaching-principles/batch-5-before-strict-fix-verify.log",
+    "finalEvidence": "artifacts/teaching-principles/batch-5-verify.log"
+  },
+  "rootCometRevealRepair": {
+    "status": "passed-final-static-and-native-physics-rerun",
+    "handoff": "artifacts/teaching-principles/celestial-comet-reveal/handoff.json",
+    "scope": "Supersedes previous exact-preservation claim for all Halley JSX. Orbit/focus/Kepler motion/tail and voice remain unchanged; historical records, pending prediction, and later1758 evidence now form three distinct visual states. Root actually viewed4 handoff screenshots."
+  }
+}

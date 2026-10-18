@@ -198,5 +198,130 @@
         "en": "No. Old medians and ink stay fixed on the material, while mass weighting shifts the combined centre toward the added mass. Test it with two new independent suspensions."
       }
     }
+  },
+  "required-2-tycho-observations": {
+    "sceneSlug": "celestial-observations",
+    "question": {
+      "zh": "记录不肯跟着圆轨道走，该改记录还是模型？",
+      "en": "When the records miss a circular orbit, should the records or model change?"
+    },
+    "principle": {
+      "zh": "同一组记录约束候选；系统偏差与未用于比较的记录检验模型。",
+      "en": "The same records constrain each candidate; systematic errors and unused records test the model."
+    },
+    "lead": {
+      "zh": "固定每次方向，用相同规则比较，再保留两次记录检验预测。",
+      "en": "Fix each direction, compare with the same rule, then reserve two records to test predictions."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把轨道转一下，让某一天重合，为什么还不够？",
+        "en": "Why is rotating the orbit to match one date insufficient?"
+      },
+      "explanation": {
+        "zh": "还要解释其他日期，并在参数锁定后预测未用于比较的记录；一个点相合不能排除错误模型。",
+        "en": "It must also explain other dates and predict unused records after parameters are locked. One matching point cannot rule out a wrong model."
+      }
+    }
+  },
+  "required-2-neptune": {
+    "sceneSlug": "celestial-observations",
+    "question": {
+      "zh": "偏差可能暗示新行星，怎样避免自己证明自己？",
+      "en": "A discrepancy suggests a new planet. What would independently test it?"
+    },
+    "principle": {
+      "zh": "候选需解释固定偏差，锁定预测后再接受独立观测检验；有限记录与给定候选不能保证唯一轨道。",
+      "en": "A candidate must explain fixed discrepancies and face independent observations after prediction is locked. Limited data and candidate choices do not guarantee a unique orbit."
+    },
+    "lead": {
+      "zh": "先看额外引力如何改变相对运动，再清场比较真实三夜观测。",
+      "en": "See how extra gravity changes relative motion, then compare three actual historical nights."
+    },
+    "transfer": {
+      "question": {
+        "zh": "在预测方向附近找到一个星点，就能宣布发现新行星吗？",
+        "en": "Does one point near a predicted direction establish a new planet?"
+      },
+      "explanation": {
+        "zh": "不够。还要与星图和其他夜晚的位置比较，确认运动并排除已知恒星；更长观测才能进一步约束轨道。",
+        "en": "No. Compare with the chart and positions on other nights to test motion and exclude a known star. Longer observations further constrain the orbit."
+      }
+    }
+  },
+  "required-1-galileo-telescope": {
+    "sceneSlug": "celestial-observations",
+    "question": {
+      "zh": "看到木星旁的光点，为什么还要连续记录？",
+      "en": "Why keep observing after seeing points beside Jupiter?"
+    },
+    "principle": {
+      "zh": "望远镜使光束进入眼睛；连续位置记录才能区分一次看见与绕木星运动的证据。",
+      "en": "The telescope redirects light; repeated positions distinguish one sighting from evidence of motion around Jupiter."
+    },
+    "lead": {
+      "zh": "先追踪望远镜光路，再看同一组光点怎样逐日换位。",
+      "en": "Follow the telescope light path, then compare the same points on successive days."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把望远镜放大五倍，就能一次确认光点是卫星吗？",
+        "en": "Does fivefold magnification alone establish that the points are moons?"
+      },
+      "explanation": {
+        "zh": "不能。光学放大提供观察条件；还要比较多个日期，看到光点反复在木星两侧换位。",
+        "en": "No. Magnification enables observation; positions on successive dates must show repeated changes around Jupiter."
+      }
+    }
+  },
+  "required-2-jupiter-moons": {
+    "sceneSlug": "celestial-observations",
+    "question": {
+      "zh": "几个光点为什么反复在木星两侧换位？",
+      "en": "Why do the points repeatedly change sides around Jupiter?"
+    },
+    "principle": {
+      "zh": "沿轨道平面观察绕木星运动的卫星，会看到投影位置改变，背后的卫星还可能被木星遮住。",
+      "en": "Moons orbiting Jupiter change their projected positions in an edge-on view; a moon behind Jupiter can be hidden."
+    },
+    "lead": {
+      "zh": "保留五个相邻日期的记录，与上方同一天的光点位置对应。",
+      "en": "Keep five adjacent-day records and match each to the same day in the live view."
+    },
+    "transfer": {
+      "question": {
+        "zh": "一颗光点暂时看不见，就说明卫星消失了吗？",
+        "en": "Does a temporarily missing point mean the moon has vanished?"
+      },
+      "explanation": {
+        "zh": "不能。在这个模型中，卫星可能转到木星背后而被遮住；继续观察可检验它是否再次出现。",
+        "en": "No. In this model it may move behind Jupiter and be occulted; later observations can test whether it reappears."
+      }
+    }
+  },
+  "required-2-halley": {
+    "sceneSlug": "celestial-observations",
+    "question": {
+      "zh": "彗星远去后，为什么还能预测它再次回归？",
+      "en": "How can a comet’s return be predicted after it moves away?"
+    },
+    "principle": {
+      "zh": "非匀速的椭圆运动允许周期性回归；相似历史记录支持同一天体解释，未来回归再检验它。",
+      "en": "Nonuniform elliptical motion permits recurrence; similar historical records support one-body interpretation, which a later return tests."
+    },
+    "lead": {
+      "zh": "观察近太阳快、远太阳慢的运动，再把历史年份与后来的回归联系起来。",
+      "en": "Watch faster motion near the Sun and slower motion farther away, then connect past records with a later return."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把75.3年逐次加到历史年份，就能精确得到下一次回归日期吗？",
+        "en": "Can repeatedly adding 75.3 years give exact return dates?"
+      },
+      "explanation": {
+        "zh": "不能。这里的固定周期只说明重复轨道；真实回归还受其他行星摄动，不能把教学模型当作精确星历。",
+        "en": "No. The fixed period illustrates recurrence; real returns are affected by other planets, so this teaching model is not an exact ephemeris."
+      }
+    }
   }
 }

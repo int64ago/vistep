@@ -1,0 +1,247 @@
+{
+  "batch": 5,
+  "status": "reviewed-ready-for-authorized-publication",
+  "baselineCommit": "4bf0b955caadd60b414fff1a526bcf0589abb549",
+  "owners": [
+    "Codex (/root)",
+    "Codex (/root/teaching_subject_fit)",
+    "Codex (/root/chemistry_inventory)",
+    "Codex (/root/biology_inventory)"
+  ],
+  "scope": {
+    "scenes": ["celestial-observations", "chem-sodium-reactions", "bio-cellular-logistics"],
+    "textbookEntries": 12,
+    "wholeCollectionComplete": false
+  },
+  "checks": [
+    {
+      "kind": "subjective-listening",
+      "status": "not-run",
+      "reason": "No subjective listening interface; native playback and ASR remain separate evidence."
+    },
+    {
+      "kind": "physical-phone-performance",
+      "status": "not-run",
+      "reason": "No physical phone; emulated browser viewports are separate evidence."
+    },
+    {
+      "kind": "root-primary-source-and-model-review",
+      "status": "passed-with-access-limits",
+      "evidence": "artifacts/teaching-principles/batch-5-root-source-review.json",
+      "conditions": "Root viewed original Encke1846 scans and compared coordinate/epoch values against the model, and read NIST sodium data. Root did not obtain full PMC biology text; source access limits retained."
+    },
+    {
+      "kind": "independent-asr-and-word-timing",
+      "status": "passed-with-secondary-term-recheck",
+      "chapters": 42,
+      "evidence": "artifacts/teaching-principles/batch-5-transcription.json",
+      "conditions": "No language/reference hints. Root read lowest similarity transcripts. Numeric words versus digits account for much of the historical-date score difference. A sodium/potassium discrepancy in turbo ASR is separately recorded, not dismissed as a homophone."
+    },
+    {
+      "kind": "secondary-independent-sodium-term-transcription",
+      "status": "matched-authored-terms",
+      "evidence": "artifacts/teaching-principles/batch-5-sodium-second-asr.json",
+      "conditions": "Full-decoder Whisper large-v3 without language/reference hint correctly transcribes potassium versus sodium and lithium→sodium→potassium in Chinese chapter8. Original turbo disagreement retained. Neither decode is subjective listening."
+    },
+    {
+      "kind": "root-author-handoff-visual-inspection",
+      "status": "passed-for-inspected-stills",
+      "conditions": "Root viewed6 sodium causal phone frames (peroxide units/O₂ demand/H motion/H endpoint/peroxide motion/endpoint),2 sodium final comparison frames,4 celestial evidence/force/holdout frames,3 repaired biology open-pore/fill/rotation frames, earlier separate-sample/bud/fusion frames, and biology cover. Final static complete chapter set remains pending.",
+      "evidence": [
+        "artifacts/teaching-principles/sodium-implementation/final-frames",
+        "artifacts/teaching-principles/celestial-review-03",
+        "artifacts/teaching-principles/biology-next-logistics/repaired-causal"
+      ]
+    },
+    {
+      "kind": "independent-sodium-model-review",
+      "status": "passed",
+      "cases": 284,
+      "evidence": "artifacts/teaching-principles/batch-5-cross-review/physics-review-of-sodium-model.json",
+      "conditions": "Physics owner independently probed net Na/O/H and electron accounting plus stable atom IDs. Predates final timing refinements; not UI or speech review."
+    },
+    {
+      "kind": "independent-logistics-topology-and-gate-review",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-5-cross-review/physics-review-of-logistics.json",
+      "conditions": "Independent conservation, boundary continuity, fusion/topology, projected cargo/fill side and membrane handoff probes. Early/late block and reopening preserve identities; fixed textbook samples remain independent of controls. Not browser viewing or listening."
+    },
+    {
+      "kind": "scene-contracts",
+      "status": "passed",
+      "tests": 474,
+      "testFiles": 7,
+      "evidence": "artifacts/teaching-principles/batch-5-scene-check.log"
+    },
+    {
+      "kind": "author-moon-record-repair-and-root-stills",
+      "status": "passed-for-stated-scope",
+      "evidence": "artifacts/teaching-principles/celestial-moon-records-final/report.json",
+      "conditions": "Author inspected 8 bilingual desktop/phone textbook pages, 40 frames and 8 exploration round trips; 15 model/component tests passed. Root viewed final EN320 Jupiter and ZH1100 telescope states. Not independent browser review or listening."
+    },
+    {
+      "kind": "independent-celestial-record-and-inference-review",
+      "status": "passed-after-repair",
+      "evidence": "artifacts/teaching-principles/batch-5-cross-review/chemistry-review-of-celestial.json",
+      "conditions": "Non-author checked immutable records, held-out independence, differential gravity, original1846 coordinates, complete entry windows and repaired moon records. Distinguishes numerical review and actual screenshot inspection from new browser playback."
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "source": {
+        "commit": "4bf0b955caadd60b414fff1a526bcf0589abb549",
+        "treeHash": "bfbee0fd55556af3ffebf1e2de92b21733557c805e9744f9f101c3e3866dcfd0",
+        "gitDiffHash": "2d10d763d4d8b75360db23825b7059a3e7a07c963278c6b53bfe63662336fe07",
+        "fileCount": 5177,
+        "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+      },
+      "tests": 4024,
+      "testFiles": 579,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "pages": 2134,
+      "evidence": "artifacts/teaching-principles/batch-5-verify.log"
+    },
+    {
+      "kind": "shared-translation-restoration",
+      "status": "passed",
+      "conditions": "Restored 年→yr and 观测→Result in shared dictionary and archival packet before the final full verify, retaining unrelated scene labels. Affected474 scene contracts and a production build/audit also passed before the later comet repair.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-5-translation-restoration.json",
+        "artifacts/teaching-principles/batch-5-scene-check.log",
+        "artifacts/teaching-principles/batch-5-final-production.log"
+      ]
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "pages": 2134,
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-5-preview.log"
+    },
+    {
+      "kind": "frozen-static-keyframes-and-player-bounds",
+      "status": "passed",
+      "cases": 126,
+      "conditions": "All21 chapters at3 positions inZH1440×1000 andEN320×568; actual transformed SVG font sizes,44px transport targets, horizontal bounds and whole player. Root viewed representative final frames from every chapter and additional causal views; capture count is not manual-view count.",
+      "evidence": "artifacts/teaching-principles/batch-5-static-keyframes/report.json"
+    },
+    {
+      "kind": "root-cover-and-social-review",
+      "status": "passed",
+      "conditions": "Root actually viewed all3 final catalog covers and3 final social images with measured durations.",
+      "evidence": [
+        "dist-preview/covers/celestial-observations.png",
+        "dist-preview/covers/chem-sodium-reactions.png",
+        "dist-preview/covers/bio-cellular-logistics.png",
+        "dist-preview/social/celestial-observations.png",
+        "dist-preview/social/chem-sodium-reactions.png",
+        "dist-preview/social/bio-cellular-logistics.png"
+      ]
+    },
+    {
+      "kind": "actual-controls-and-keyboard",
+      "status": "passed",
+      "physicsAssertions": 112,
+      "biologyAssertions": 16,
+      "chemistryRecordedCases": 6,
+      "conditions": "Root reran real controls on static preview: evidence immutability, prediction lock/reveal, molecule counts and identities, selective transport block/reopen, membrane geometry, keyboard controls and replay. Used measured170s biology runner, retaining provisional runner separately.",
+      "evidence": "artifacts/teaching-principles/batch-5-controls-static"
+    },
+    {
+      "kind": "all-textbook-entries-and-resource-behavior",
+      "status": "passed",
+      "cases": 27,
+      "conditions": "All12 entries in both languages: precise questions, preserved chapter windows, transfer explanation, reduced-motion pause;3 audio failures with retry, full offscreen pause/visible resume and manual pause.",
+      "evidence": "artifacts/teaching-principles/batch-5-behavior/report.json"
+    },
+    {
+      "kind": "fresh-native-anchor-without-script-reposition",
+      "status": "passed",
+      "cases": 12,
+      "conditions": "Three explore pages and three representative textbook entries in both languages at320×568, direct#experiment; no post-load scroll. SSR-loaded scoped CSS provides the initial position.",
+      "evidence": "artifacts/teaching-principles/batch-5-anchors/report.json"
+    },
+    {
+      "kind": "catalog-discovery-and-no-JS",
+      "status": "passed",
+      "cases": 8,
+      "conditions": "Both languages,3 scenes through combined search/category/age/duration and reload;empty/reset;435 links remain visible without JS.",
+      "evidence": "artifacts/teaching-principles/batch-5-catalog/report.json"
+    },
+    {
+      "kind": "continuous-native-film-and-audio-playback",
+      "status": "passed",
+      "runs": 6,
+      "chapters": 42,
+      "conditions": "Normal-rate native audio and film after user activation, no seeking after start,10-second screenshot/telemetry checkpoints;root viewed selected running checkpoints. Not subjective listening, continuous human visual watching or physical-phone performance.",
+      "evidence": "artifacts/teaching-principles/batch-5-continuous/report.json"
+    }
+  ],
+  "pending": ["Actions deployment and live verification"],
+  "rootReviewFindings": [
+    {
+      "issue": "First short-phone #experiment navigation preceded lazy scene styles, leaving the player at91px and hiding controls below the viewport.",
+      "resolution": "Root added scoped anchor offsets for these3 scenes to SSR-loaded editorial.css. Physics author independently observed initial17px positions with no post-load scrolling. Final static12-route check pending.",
+      "status": "resolved-in-final-static-review"
+    },
+    {
+      "issue": "Biology open-pore rotation originally occurred after membrane flattening; cell interior fill still followed the original ellipse.",
+      "resolution": "Author holds the pore during rotation and derives interior fill from the same fused boundary. Root viewed repaired start/end and desktop frames.",
+      "status": "resolved-at-handoff"
+    },
+    {
+      "issue": "Narrow English layouts and sodium receiving-electron positions overlapped or pushed controls out of view.",
+      "resolution": "Per-scene composition, actual particle positions and concise captions repaired, preserving16px text and44px controls. Final static complete chapter checks pending.",
+      "status": "resolved-in-final-static-review"
+    },
+    {
+      "issue": "Independent review found the retained five Jupiter date rows were recomputed as playback advanced, with a different clock in the upper view.",
+      "resolution": "Initial verification was stopped before completion and preserved. Fixed daily snapshots now use the same day clock as the current view and appear progressively; rewinding changes visibility, not recorded positions. Root inspected final phone and desktop views; author model/component and browser evidence retained. Independent closure: forward/backward states and 112 recorded row coordinates match immutable dates; same-day current view and records agree. See batch-5-cross-review/chemistry-review-of-celestial.json.",
+      "status": "resolved-and-independently-closed"
+    },
+    {
+      "issue": "Full Astro project checking caught six possibly-undefined optional director fields. Author scoped tsc lacked --strict and did not establish this check.",
+      "resolution": "Root made existing orbit/mass defaults explicit for optional fields and coerced optional overlay to boolean; valid director behavior is unchanged. Failed full verify log and source fingerprint retained; fresh strict verify required.",
+      "status": "resolved-in-full-verify"
+    },
+    {
+      "issue": "Full tests exposed the old astronomy regression using the removed legacy Neptune artwork/range control; the new media-query effect also assumed window in a non-browser renderer.",
+      "resolution": "Guarded the browser-only effect. Updated regression to actual discrete controls, preserved authored-film restoration, and checked rendered perturbation magnitude on a fixed axis plus immutable observation positions. All27 celestial-related tests pass; fresh full verify pending.",
+      "status": "resolved-in-full-verify",
+      "evidence": [
+        "artifacts/teaching-principles/batch-5-before-regression-update-verify.log",
+        "artifacts/teaching-principles/batch-5-celestial-regression.log"
+      ]
+    },
+    {
+      "issue": "Final root static viewing found identical Halley chapter6/7 outcomes and1758 shown before prediction. This was retained old presentation, not caught by automated layout checks.",
+      "resolution": "Owner preserved orbit geometry and audio while adding fixed past records, pending return, then measured-word-timed1758 reveal.18 targeted tests and16 bilingual browser states passed. Root viewed4 repaired states. Final static and native physics rerun pending.",
+      "status": "resolved-in-final-static-review",
+      "evidence": "artifacts/teaching-principles/celestial-comet-reveal/handoff.json"
+    }
+  ],
+  "measuredFilms": {
+    "celestial-observations": {
+      "duration": 274.0,
+      "starts": [0, 34.5, 72.0, 100.0, 128.0, 172.0, 218.0, 246.0]
+    },
+    "chem-sodium-reactions": {
+      "duration": 266.5,
+      "starts": [0, 29.0, 64.5, 93.5, 129.5, 166.0, 200.0, 229.0]
+    },
+    "bio-cellular-logistics": {
+      "duration": 170.0,
+      "starts": [0, 32.0, 63.0, 95.0, 134.0]
+    }
+  },
+  "reviewedAt": "2026-10-18T15:20:21.336797+00:00",
+  "buildSource": {
+    "commit": "4bf0b955caadd60b414fff1a526bcf0589abb549",
+    "treeHash": "bfbee0fd55556af3ffebf1e2de92b21733557c805e9744f9f101c3e3866dcfd0",
+    "gitDiffHash": "2d10d763d4d8b75360db23825b7059a3e7a07c963278c6b53bfe63662336fe07",
+    "fileCount": 5177,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "sourceConditions": "Full verify and preview build passed on the frozen final tree after strict typing, inherited regression, shared dictionary and comet reveal repairs. Final browser review used frozen dist-preview on63305; fingerprint matched before exact candidate staging. Unchanged chemistry/biology native runs retain their earlier source evidence; physics playback was rerun after comet repair. Final review/plan metadata updated afterward."
+}

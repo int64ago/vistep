@@ -1631,8 +1631,19 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['细胞里的分泌路线', '分泌蛋白', '同位素示踪', '细胞器'],
-      en: ['The cellular secretion route', 'cell biology', 'biology experiments'],
+      zh: [
+        '没有拍到全过程，怎样知道蛋白质走过哪里？',
+        '细胞里的分泌路线',
+        '分泌蛋白',
+        '同位素示踪',
+        '细胞器',
+      ],
+      en: [
+        'Without filming the whole journey, how can we infer the route of a protein?',
+        'The cellular secretion route',
+        'cell biology',
+        'biology experiments',
+      ],
     },
   },
   'chem-flame-spectra': {
@@ -1660,8 +1671,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['钠与过氧化钠的证据链', '钠与水', '过氧化钠', '碱金属'],
+      zh: [
+        '钠、氧化物与过氧化物',
+        '同样含钠，为什么反应产物不同？',
+        '钠与过氧化钠的证据链',
+        '钠与水',
+        '过氧化钠',
+        '碱金属',
+      ],
       en: [
+        'Sodium, oxide and peroxide',
+        'Why do substances containing sodium give different products?',
         'Evidence from sodium and sodium peroxide',
         'sodium and water',
         'sodium peroxide',
@@ -2476,8 +2496,14 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'nature',
     minAge: 14,
     keywords: {
-      zh: ['从观测到天体预言', '天空中的光点，怎样成为可检验的证据？', '近代物理实验'],
+      zh: [
+        '一个偏离预测的星点，能告诉我们什么？',
+        '从观测到天体预言',
+        '天空中的光点，怎样成为可检验的证据？',
+        '近代物理实验',
+      ],
       en: [
+        'What can a misplaced planet tell us?',
         'From observations to celestial predictions',
         'How do points in the sky become testable evidence?',
         'modern physics experiment',

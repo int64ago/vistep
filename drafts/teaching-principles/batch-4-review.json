@@ -1,6 +1,6 @@
 {
   "batch": 4,
-  "status": "reviewed-ready-for-authorized-publication",
+  "status": "published-and-live-verified",
   "baselineCommit": "8d7513dc511af18936b1d42a622c026f7acfa1de",
   "owners": [
     "Codex (/root)",
@@ -145,7 +145,7 @@
       "evidence": "artifacts/teaching-principles/batch-4-continuous/report.json"
     }
   ],
-  "pending": ["Actions deployment and live verification"],
+  "pending": [],
   "rootReviewFindings": [
     {
       "issue": "Suspension revealed the new centre and weight arrow before the prediction; initial caption described rest while board remained tilted.",
@@ -196,5 +196,19 @@
     "fileCount": 5165,
     "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
   },
-  "sourceConditions": "Production and preview were built before batch5 product edits. Source tree fingerprint matched before the60 candidate paths were staged. Final review/plan metadata were amended afterward. Runtime review used frozen dist-preview on63305, not the ongoing development tree."
+  "sourceConditions": "Production and preview were built before batch5 product edits. Source tree fingerprint matched before the60 candidate paths were staged. Final review/plan metadata were amended afterward. Runtime review used frozen dist-preview on63305, not the ongoing development tree.",
+  "publication": {
+    "commit": "4bf0b955caadd60b414fff1a526bcf0589abb549",
+    "actionsRun": "https://github.com/int64ago/vistep/actions/runs/39135347449",
+    "status": "success",
+    "version": "19f63d10-af8b-41f0-9fea-3dd3117c627c",
+    "finishedAt": "2026-10-18T14:40:44.130Z",
+    "liveCheckedAt": "2026-10-18T14:44:17.237Z",
+    "pages": 6,
+    "recordingHashes": 6,
+    "evidence": [
+      "artifacts/teaching-principles/batch-4-deployment/deployment.json",
+      "artifacts/teaching-principles/batch-4-live.json"
+    ]
+  }
 }

@@ -2,17 +2,24 @@ import { createElement, type ComponentType } from 'react';
 import { act, create, type ReactTestRenderer } from 'react-test-renderer';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import CelestialObservations, { CelestialArtwork } from './CelestialObservations';
+import CelestialObservations from './CelestialObservations';
 import GravityMeasurements, { GravityArtwork } from './GravityMeasurements';
 import RelativityExperiments, { RelativityArtwork } from './RelativityExperiments';
 import GravitationalWaveLab, { GravitationalArtwork } from './GravitationalWaveLab';
 import CosmologyObservations, { CosmologyArtwork } from './CosmologyObservations';
 import ImpulseContactLab from './ImpulseContactLab';
 
-const film = vi.hoisted(() => ({ watch: true, chapter: 0, chapterProgress: 0.63, variant: '' }));
+const film = vi.hoisted(() => ({
+  watch: true,
+  chapter: 0,
+  chapterProgress: 0.63,
+  chapterTime: 24,
+  variant: '',
+}));
 vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
 vi.mock('../../i18n', () => ({ browserLocale: () => 'en' }));
-vi.mock('../lab/Controls', () => ({
+vi.mock('../lab/Controls', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../lab/Controls')>()),
   Range: (props: { label: string; value: number; onChange: (value: number) => void }) =>
     createElement('input', { ...props, 'aria-label': props.label }),
 }));
@@ -34,8 +41,7 @@ const cases: {
     Scene: CelestialObservations,
     variant: 'required-2-neptune',
     chapter: 4,
-    input: 'Perturber mass / example Neptune mass',
-    value: 0,
+    button: '0',
   },
   {
     Scene: GravityMeasurements,
@@ -163,16 +169,44 @@ describe('actual apparatus geometry preserves the model', () => {
           expect(x).toBeLessThanOrEqual(265);
         }
   });
-  it('shows a larger Neptune perturbation as a larger residual instead of rescaling it away', () => {
-    const endpoint = (mass: number) => {
-      const svg = renderToStaticMarkup(
-        createElement(CelestialArtwork, { mode: 2, phase: 0, value: 1, mass }),
-      );
-      const d = /<path d="([^"]+)" stroke="#c2ae83"/.exec(svg)![1];
-      return Math.abs(Number(/L[\d.e+-]+ ([\d.e+-]+)$/.exec(d)![1]) - 235);
+  it('shows a larger Neptune perturbation on a fixed axis without moving observation points', async () => {
+    Object.assign(film, {
+      watch: false,
+      chapter: 4,
+      chapterTime: 24,
+      variant: 'required-2-neptune',
+    });
+    let view!: ReactTestRenderer;
+    await act(() => {
+      view = create(createElement(CelestialObservations));
+    });
+    mounted.push(view);
+    const snapshot = () => {
+      const svg = view.root.findByProps({
+        'aria-label': 'Fixed synthetic residuals and an extra-gravity candidate',
+      });
+      const d = svg.findByProps({ className: 'celestial-evidence-model-line' }).props.d as string;
+      const y0 = Number(/^M[\d.e+-]+ ([\d.e+-]+)/.exec(d)![1]);
+      const end = Number(/L[\d.e+-]+ ([\d.e+-]+)$/.exec(d)![1]);
+      return {
+        displacement: Math.abs(end - y0),
+        records: svg
+          .findAll((n) => n.props['data-record-id'])
+          .map((n) => [n.props['data-record-id'], n.props.cx, n.props.cy]),
+      };
     };
-    expect(endpoint(2) / endpoint(1)).toBeGreaterThan(1.9);
-    // The integrator drift stays well below one tenth of a displayed pixel.
-    expect(endpoint(0)).toBeLessThan(0.1);
+    const zero = snapshot();
+    const atMass = async (mass: string) => {
+      const button = view.root.findAllByType('button').find((n) => n.children.join('') === mass)!;
+      await act(() => button.props.onClick());
+      return snapshot();
+    };
+    const half = await atMass('0.5'),
+      full = await atMass('1');
+    expect(full.displacement / half.displacement).toBeGreaterThan(1.9);
+    expect(full.displacement / half.displacement).toBeLessThan(2.1);
+    expect(zero.displacement).toBeLessThan(0.1);
+    expect(half.records).toEqual(zero.records);
+    expect(full.records).toEqual(zero.records);
   });
 });

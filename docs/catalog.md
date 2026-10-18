@@ -114,7 +114,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)            | 4:15 | When a precipitate changes, how can we trace its ions?                        |
 | [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                    | 2:17 | How does electron counting fix reaction ratios?                               |
 | [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                           | 3:18 | What atomic information is hidden in a flame colour?                          |
-| [Evidence from sodium and sodium peroxide](../src/content/en/chem-sodium-reactions.mdx)                | 3:42 | How do sodium and its peroxide respond to air and water?                      |
+| [Sodium, oxide and peroxide](../src/content/en/chem-sodium-reactions.mdx)                              | 4:27 | Why do substances containing sodium give different products?                  |
 | [Comparing carbonate and bicarbonate](../src/content/en/chem-carbonate-comparison.mdx)                 | 3:22 | Why is bicarbonate still alkaline?                                            |
 | [Electrolytes and current](../src/content/en/chem-ionic-conduction.mdx)                                | 1:59 | Why are ions alone not enough for conduction?                                 |
 | [What makes light visible](../src/content/en/chem-colloid-light.mdx)                                   | 3:02 | Light passed through. Why can’t we see it from the side?                      |
@@ -164,7 +164,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Controlled evidence for hormone action](../src/content/en/bio-endocrine-evidence.mdx)            | 4:30 | What can removing and restoring a signal establish?                               |
 | [Fluid exchange and homeostasis records](../src/content/en/bio-body-fluid-balance.mdx)            | 2:40 | How can cells remain within a stable range while conditions change?               |
 | [Synthetic genomes and living cells](../src/content/en/bio-engineered-genomes.mdx)                | 1:39 | Does DNA alone constitute a living cell?                                          |
-| [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 1:58 | How do proteins leave the cell that makes them?                                   |
+| [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 2:50 | Without filming the whole journey, how can we infer the route of a protein?       |
 | [From peptide bonds to insulin](../src/content/en/bio-protein-machines.mdx)                       | 1:35 | Why is a mixture of amino acids not a protein?                                    |
 | [Why water crosses a cell membrane](../src/content/en/bio-osmosis.mdx)                            | 4:22 | If water moves both ways, why does a cell shrink?                                 |
 | [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 3:45 | How can we infer a membrane too thin to see?                                      |
@@ -458,7 +458,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Galaxy redshifts and the microwave sky](../src/content/en/cosmology-observations.mdx)     | 2:20 | How does received light reveal cosmic history?                         |
 | [Three paths to gravitational-wave evidence](../src/content/en/gravitational-wave-lab.mdx) | 2:48 | How can extremely small spacetime changes be identified?               |
 | [Light, events and clocks](../src/content/en/relativity-experiments.mdx)                   | 3:44 | How is relativity tested experimentally?                               |
-| [From observations to celestial predictions](../src/content/en/celestial-observations.mdx) | 3:44 | How do points in the sky become testable evidence?                     |
+| [From observations to celestial predictions](../src/content/en/celestial-observations.mdx) | 4:34 | What can a misplaced planet tell us?                                   |
 | [Greenhouse effect](../src/content/en/greenhouse-effect.mdx)                               | 2:37 | Does downward atmospheric radiation create extra energy?               |
 | [Plate boundaries](../src/content/en/plate-boundaries.mdx)                                 | 2:21 | Does convergent velocity alone decide which plate subducts?            |
 | [Stellar parallax](../src/content/en/stellar-parallax.mdx)                                 | 2:21 | Why is the half-year displacement 2p rather than parallax p?           |

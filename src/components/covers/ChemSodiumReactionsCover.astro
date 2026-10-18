@@ -1,28 +1,58 @@
 ---
-import { alkaliWater, immersedSphere } from '../../models/chem-sodium-reactions';
-const s = alkaliWater(0.45),
-  r = 24 * s.radiusFraction,
-  y = 120 + r * (immersedSphere(s.density) * 2 - 1);
+import { sodiumWaterAccount } from '../../models/chem-sodium-reactions';
+const metal = sodiumWaterAccount('metal', 4),
+  peroxide = sodiumWaterAccount('peroxide', 4);
 ---
 
-<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
-  ><defs
-    ><linearGradient id="chem-sodium-cover-metal"
-      ><stop stop-color="#e9ead5"></stop><stop offset=".5" stop-color="#a5b4a6"></stop><stop
-        offset="1"
-        stop-color="#d0d9c8"></stop></linearGradient
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <defs
+    ><linearGradient id="csr-cover-metal"
+      ><stop stop-color="#f6f6e9"></stop><stop offset=".42" stop-color="#b7c6b6"></stop><stop
+        offset=".6"
+        stop-color="#e2e8d9"></stop><stop offset="1" stop-color="#9cae99"></stop></linearGradient
     ></defs
-  ><path
-    d="M58 112V169Q58 201 200 201T342 169V112"
-    stroke="#9eb297"
+  >
+  <path
+    d="M30 72v87q0 37 77 37t77-37V72M216 72v87q0 37 77 37t77-37V72"
+    stroke="#9bb4a0"
     stroke-width="2"
-    fill="#b9ceae33"></path><ellipse cx="200" cy="112" rx="142" ry="26" fill="#b9d3b5" opacity=".3"
-  ></ellipse><path d="M60 122V169Q60 199 200 199T340 169V122Z" fill="#bf87a0" opacity=".2"
-  ></path><circle cx="190" cy={y} r={r} fill="url(#chem-sodium-cover-metal)"></circle><path
-    d="M60 122Q200 152 340 122"
-    stroke="#a7c0a3"></path>{
-    Array.from({ length: 8 }, (_, i) => (
-      <circle cx={187 + Math.sin(i * 3) * 17} cy={115 - i * 7} r={2 + (i % 3)} stroke="#a5bba0" />
+    fill="#bfd4c122"></path>
+  <path d="M32 111v48q0 35 75 35t75-35v-48M218 111v48q0 35 75 35t75-35v-48" fill="#bfd4c155"></path>
+  <ellipse cx="106" cy="110" rx="22" ry="12" fill="url(#csr-cover-metal)"></ellipse>
+  <path d="M267 167l24-10 26 12-21 10Z" fill="#d8cf93" stroke="#c5bb88"></path>
+  {
+    Array.from({ length: metal.hydrogen }, (_, i) => (
+      <g>
+        <>
+          <circle cx={83 + i * 42} cy="50" r="10" fill="#f5efd5" stroke="#b3b994" />
+          <circle cx={101 + i * 42} cy="50" r="10" fill="#f5efd5" stroke="#b3b994" />
+        </>
+      </g>
     ))
-  }</svg
->
+  }
+  {
+    Array.from({ length: peroxide.oxygen }, () => (
+      <g>
+        <>
+          <circle cx="283" cy="50" r="15" fill="#b7d0c5" stroke="#86a99a" />
+          <circle cx="307" cy="50" r="15" fill="#b7d0c5" stroke="#86a99a" />
+        </>
+      </g>
+    ))
+  }
+  <path d="M106 91V69m-5 6 5-6 5 6M295 92V73m-5 6 5-6 5 6" stroke="#9cb09a" stroke-width="2"></path>
+  <text x="106" y="220" text-anchor="middle" fill="#4b6955" font-size="28">Na</text><text
+    x="280"
+    y="220"
+    text-anchor="middle"
+    fill="#4b6955"
+    font-size="28">Na₂O₂</text
+  >
+  <text x="106" y="21" text-anchor="middle" fill="#4b6955" font-size="24">H₂</text><text
+    x="295"
+    y="21"
+    text-anchor="middle"
+    fill="#4b6955"
+    font-size="24">O₂</text
+  >
+</svg>

@@ -1,86 +1,295 @@
-.bio-logistics {
-  padding: clamp(12px, 3vw, 28px);
-  background: #e9eddd;
+.blp-root {
+  padding: 20px 24px;
+  background: linear-gradient(145deg, #f0f1df, #e4ead6);
   border-radius: 24px;
-  color: #465c49;
+  color: #4b604c;
+  overflow: hidden;
 }
-.bio-logistics-cutaway svg {
-  width: 100%;
-  height: 330px;
+.blp-root * {
+  box-sizing: border-box;
+}
+.blp-root svg {
   display: block;
+  width: 100%;
+  height: auto;
 }
-.bio-logistics-labels {
+.blp-root span,
+.blp-root strong,
+.blp-root b,
+.blp-root p {
+  font-size: 16px;
+  line-height: 1.35;
+}
+.blp-root strong,
+.blp-root b {
+  font-weight: 550;
+}
+.blp-root p {
+  margin: 0;
+}
+.blp-scene {
+  min-height: 340px;
+  max-width: 680px;
+  margin: auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 9px 20px;
-  flex-wrap: wrap;
-  font-size: 16px;
+  gap: 10px;
 }
-.bio-logistics-time {
-  text-align: center;
-  font-size: 16px;
-  margin: 14px 0 0;
+.blp-cell {
+  max-width: 460px;
+  margin: auto;
 }
-.bio-logistics-controls {
-  display: grid;
-  gap: 16px;
-  margin: 24px auto;
-  max-width: 650px;
-  font-size: 16px;
+.blp-history {
+  max-width: 480px;
+  width: 100%;
 }
-.bio-logistics-controls button {
-  min-height: 44px;
-  border: 1px solid #b7c5aa;
-  border-radius: 12px;
-  background: #f7f7ec;
-  color: inherit;
-  font: inherit;
-  padding: 8px;
-}
-.bio-logistics-controls p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-@media (max-width: 540px) {
-  .bio-logistics-cutaway svg {
-    height: 255px;
-  }
-  .bio-logistics-labels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .bio-logistics-time {
-    margin-top: 10px;
-  }
-}
-
-.bio-logistics-cutaway {
-  position: relative;
-}
-.bio-logistics-viewlabel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 16px;
-  padding: 3px 8px;
-  border-radius: 8px;
-  background: #e9eddded;
-  z-index: 1;
-}
-.bio-logistics-labels > span {
+.blp-evidence-title,
+.blp-two-labels {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.blp-evidence-title {
+  max-width: 430px;
+  margin: auto;
+}
+.blp-location {
+  text-align: center;
+  margin-top: 3px;
+  font-size: 16px;
+}
+.blp-note {
+  display: block;
+  text-align: center;
+  color: #718169;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.blp-evidence-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #cbd6bb;
+}
+.blp-evidence-strip > div {
+  display: grid;
+  text-align: center;
   gap: 5px;
+}
+.blp-pulse {
+  width: 100%;
+  max-width: 460px;
+}
+.blp-pulse-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 9px;
+}
+.blp-pulse-track {
+  height: 15px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 8px;
+}
+.blp-pulse-track > i {
+  width: 22%;
+  background: #d4b38e;
+}
+.blp-pulse-track > b {
+  flex: 1;
+  background: #d7dfc7;
+}
+.blp-pulse-track > span {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  top: 4px;
+}
+.blp-inference {
+  width: 100%;
+  max-width: 610px;
+  display: grid;
+  gap: 26px;
+}
+.blp-order {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  text-align: center;
+}
+.blp-order > div {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 20px 4px;
+  border-radius: 18px;
+  background: #e4e9d3;
+}
+.blp-order svg {
+  position: absolute;
+  width: 46px;
+  right: -35px;
+  top: 45%;
+}
+.blp-counter {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+.blp-strike {
+  text-decoration: line-through;
+  text-decoration-color: #ad8660;
+  text-decoration-thickness: 2px;
+}
+.blp-handoff,
+.blp-surface {
+  width: 100%;
+  max-width: 470px;
+}
+.blp-handoff > svg {
+  margin: 6px auto;
+}
+.blp-surface > svg {
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 6px auto;
+}
+.blp-block {
+  width: 100%;
+  max-width: 540px;
+}
+.blp-ledger-head {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.blp-condition {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
   align-items: baseline;
 }
-.bio-logistics-labels b {
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
+.blp-comparison-row {
+  margin: 9px auto 15px;
+}
+.blp-comparison-row svg {
+  max-height: 132px;
+}
+.blp-controls {
+  border-top: 1px solid #c6d1b7;
+  padding-top: 20px;
+  margin: 24px auto 0;
+  max-width: 650px;
+  display: grid;
+  gap: 18px;
+  font-size: 16px;
+}
+.blp-controls button {
+  min-height: 44px;
+  border: 1px solid #b6c4a8;
+  border-radius: 14px;
+  background: #f8f8ef;
+  color: inherit;
+  font: inherit;
+  padding: 10px 14px;
+}
+.blp-controls p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.blp-controls .segmented {
+  gap: 6px;
 }
 @media (max-width: 540px) {
-  .bio-logistics-labels > span {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .blp-root {
+    padding: 12px;
+    border-radius: 20px;
+  }
+  .blp-scene {
+    min-height: 234px;
+    max-width: 350px;
+    gap: 7px;
+  }
+  .blp-evidence-title {
+    gap: 10px;
+  }
+  .blp-evidence-strip {
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 9px;
+  }
+  .blp-evidence-strip > div {
+    gap: 3px;
+  }
+  .blp-shot-pulse-label .blp-cell {
+    max-width: 195px;
+  }
+  .blp-history .blp-cell {
+    max-width: 290px;
+  }
+  .blp-history .blp-location {
+    margin-top: 0;
+  }
+  .blp-pulse-labels {
+    gap: 10px;
+  }
+  .blp-inference {
+    gap: 12px;
+  }
+  .blp-order {
+    gap: 14px;
+  }
+  .blp-order > div {
+    padding: 8px 4px;
+    gap: 9px;
+  }
+  .blp-order svg {
+    width: 26px;
+    right: -20px;
+  }
+  .blp-two-labels {
+    gap: 10px;
+  }
+  .blp-handoff,
+  .blp-surface {
+    max-width: 320px;
+  }
+  .blp-condition {
+    gap: 8px;
+  }
+  .blp-condition strong {
+    max-width: 70%;
+  }
+  .blp-comparison-row {
+    margin: 8px auto 10px;
+  }
+  .blp-comparison-row svg {
+    max-height: 100px;
+  }
+  .blp-ledger-head {
+    margin-bottom: 5px;
+  }
+  .blp-controls {
+    margin-top: 18px;
+  }
+  .blp-shot-sample-summary .blp-history .blp-cell {
+    max-width: 190px;
+  }
+}
+@media (max-width: 540px) and (max-height: 700px) {
+  .showcase:has(.blp-root) {
+    scroll-margin-top: -74px;
   }
 }

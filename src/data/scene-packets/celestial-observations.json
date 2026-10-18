@@ -2,9 +2,9 @@
   "topic": {
     "slug": "celestial-observations",
     "name": "从观测到天体预言",
-    "title": "天空中的光点，怎样成为可检验的证据？",
-    "question": "天空中的光点，怎样成为可检验的证据？",
-    "description": "联系第谷的位置记录、木星卫星、海王星摄动与哈雷彗星回归。",
+    "title": "一个偏离预测的星点，能告诉我们什么？",
+    "question": "一个偏离预测的星点，能告诉我们什么？",
+    "description": "固定记录、比较轨道与引力候选，再让未使用的记录和独立观测检验预言。",
     "color": "#94a9b5",
     "tag": "天文观测",
     "related": ["kepler-orbits", "telescope"],
@@ -24,8 +24,17 @@
       {
         "title": "NASA — Halley’s return and its history",
         "url": "https://www.nasa.gov/history/955-years-ago-halleys-comet-and-the-battle-of-hastings/"
+      },
+      {
+        "title": "Johannes Kepler, Astronomia nova (1609), Chapter XIX, printed113–114; ETH-Bibliothek Zürich Rar4482, public domain",
+        "url": "https://doi.org/10.3931/e-rara-558"
+      },
+      {
+        "title": "J. F. Encke, letter Berlin26 September1846, Astronomische Nachrichten25 no580, columns49–52",
+        "url": "https://articles.adsabs.harvard.edu/pdf/1846AN.....25...49E"
       }
-    ]
+    ],
+    "number": "253"
   },
   "component": "src/components/experiments/CelestialObservations.tsx",
   "cover": "src/components/covers/CelestialObservationsCover.astro",
@@ -33,8 +42,14 @@
     "category": "nature",
     "minAge": 14,
     "keywords": {
-      "zh": ["从观测到天体预言", "天空中的光点，怎样成为可检验的证据？", "近代物理实验"],
+      "zh": [
+        "一个偏离预测的星点，能告诉我们什么？",
+        "从观测到天体预言",
+        "天空中的光点，怎样成为可检验的证据？",
+        "近代物理实验"
+      ],
       "en": [
+        "What can a misplaced planet tell us?",
         "From observations to celestial predictions",
         "How do points in the sky become testable evidence?",
         "modern physics experiment"
@@ -46,34 +61,105 @@
     "天空中的光点，怎样成为可检验的证据？": "How do points in the sky become testable evidence?",
     "联系第谷的位置记录、木星卫星、海王星摄动与哈雷彗星回归。": "Connect angular records, Jupiter’s moons, Neptune’s perturbation and Halley’s return.",
     "近代物理": "Modern physics",
-    "天文观测": "Astronomical observation"
+    "天文观测": "Astronomical observation",
+    "天体位置、观测记录与预测检验": "Celestial positions, observation records and prediction tests",
+    "固定记录": "Fixed record",
+    "模型预测": "Prediction",
+    "不随候选模型改变的五条合成方向记录": "Five fixed synthetic direction records",
+    "同一坐标上的方向记录与候选预测": "Fixed direction records and candidate predictions on common axes",
+    "冻结的合成偏差与额外引力候选": "Fixed synthetic residuals and an extra-gravity candidate",
+    " 年": " yr",
+    "远方行星同时吸引太阳与天王星，比较两者加速度之差": "The perturber pulls both the Sun and Uranus; compare their accelerations",
+    "太阳": "Sun",
+    "天王星": "Uranus",
+    "候选N": "Body N",
+    "金色：相对加速度": "Gold: relative acceleration",
+    "同一历元地心黄经的计算值与观测值相差54.75角分": "Same-epoch geocentric longitudes differ by54.75 arcminutes",
+    "计算": "Calculated",
+    "观测": "Result",
+    "三夜历史坐标与事后课堂外推；横向已乘cos赤纬": "Three historical positions and retrospective classroom extrapolation; RA offsets include cos declination",
+    "固定合成记录 · 非第谷实测": "Fixed teaching data · not Tycho’s",
+    "1846 · Encke 观测记录": "1846 · Encke observation report",
+    "固定合成记录 · 非1846星历": "Fixed teaching data · not 1846",
+    "圆模型接受同一组记录检验": "The circle faces the same records",
+    "先固定每次观察的方向": "Fix each observed direction first",
+    "圆轨道": "Circle",
+    "椭圆轨道": "Ellipse",
+    "揭晓新记录": "New records revealed",
+    "预测已锁定": "Prediction locked",
+    "只比较前5次": "Compare first 5 only",
+    "太阳也受到远方行星的吸引": "The distant body also pulls the Sun",
+    "同历元 · 地心黄经": "Same epoch · geocentric longitude",
+    "课堂外推 · 非当年反演": "Classroom test · not 1846 inversion",
+    "光点固定，还是在移动？": "Fixed point, or a moving body?",
+    "额外质量": "Extra mass",
+    "揭晓后3次": "Last 3 revealed",
+    "前5次记录": "First 5 records",
+    "前5次均方根偏差": "First 5 RMS error",
+    "第3夜：接近运动预测": "Night 3: near the moving prediction",
+    "空心：已锁定的第3夜预测": "Hollow: locked prediction for night 3",
+    "23日 · 第一条记录": "23 Sept · first record",
+    "24日 · 光点已换位置": "24 Sept · the point has moved",
+    "相对摄动 = 天王星所受 − 太阳所受": "Relative perturbation = Uranus pull − Sun pull",
+    "角度相对同一个固定参考方向": "Angles use one fixed reference direction",
+    "证据视图": "Evidence view",
+    "合成记录": "Teaching records",
+    "引力原因": "Gravity cause",
+    "历史三夜": "Three historical nights",
+    "轨道候选": "Orbit candidate",
+    "初相位 / rad": "Initial phase / rad",
+    "只用前5次拟合": "Fit first 5 only",
+    "示例质量倍数": "Example mass scale",
+    "候选初相位 / rad": "Candidate phase / rad",
+    "比较12个候选：只用前5次": "Compare 12 candidates: first 5 only",
+    "回到第一夜": "Reset to night 1",
+    "查看第二夜": "Show night 2",
+    "锁定第3夜预测": "Lock night 3 prediction",
+    "揭晓第三夜": "Reveal night 3",
+    "锁定预测": "Lock prediction",
+    "揭晓保留记录": "Reveal unused records",
+    "重新比较": "Compare again",
+    "数据来源、单位与模型边界": "Data, units and model limits",
+    "火星与天王星表是预先冻结的合成教材例，不是历史实测。只用前5次记录比较；锁定后才揭开余下记录。天王星为日心方向差，质量和初相位仅在给定候选中比较，其他初始条件固定。": "The Mars and Uranus tables are frozen synthetic teaching examples. Only the first 5 records are used for comparison; the remaining records are revealed after locking. Uranus residuals are heliocentric, with other initial conditions fixed and a limited mass/phase grid.",
+    "1846三夜坐标来自Encke原始报告，保留柏林平时。局部天图横向为赤经差乘平均赤纬余弦；第三夜线性外推是事后课堂检验，不是勒维耶的计算。": "The three 1846 positions come from Encke’s original report, retaining mean Berlin time. The local chart multiplies RA differences by the cosine of mean declination. The third-night linear extrapolation is a retrospective classroom test, not Le Verrier’s calculation.",
+    "连续观察": "Repeated observations",
+    "天": "days",
+    "年": "yr",
+    "几颗光点反复围绕木星换位，形成连续证据。": "Repeated changes around Jupiter provide a connected set of observations.",
+    "相似的多次记录，最终接受未来回归的检验。": "Similar past records lead to a prediction tested by a future return.",
+    "观察时间": "Observation time",
+    "一个偏离预测的星点，能告诉我们什么？": "What can a misplaced planet tell us?",
+    "固定记录、比较轨道与引力候选，再让未使用的记录和独立观测检验预言。": "Freeze the records, compare orbit and gravity candidates, then test predictions with unused records and independent observations.",
+    "历史记录": "Past records",
+    "等待回归检验": "Return predicted",
+    "回归已被观察到": "Return observed"
   },
   "narration": {
-    "duration": 224,
+    "duration": 274,
     "cues": [
       {
         "id": "position-records",
-        "title": "把位置记录下来",
-        "titleEn": "Record celestial positions",
-        "caption": "稳定的角度记录，让轨道理论接受检验。",
-        "captionEn": "Consistent angular records put orbital theories to the test.",
-        "zh": "第谷在望远镜出现以前，用大型角度仪器积累了精密的行星位置记录。这里把观察方向和角度读数连起来。上方是简化地球、火星轨道算出的视方向，仪器只是角度观测的功能示意，不复刻第谷的实测表。",
-        "en": "Before telescopes, Tycho used large angular instruments to build precise planetary records. Here a viewing direction is linked to an angular reading. The upper direction comes from simplified Earth and Mars orbits. The instrument illustrates angular observation, not an original historical data table.",
-        "seconds": 28,
+        "title": "记录不跟着模型走",
+        "titleEn": "Records do not follow the model",
+        "caption": "先固定记录，再比较同一时刻的预测。",
+        "captionEn": "Fix the records, then compare predictions.",
+        "zh": "一个星点不在预测的位置，该改记录，还是改模型？第谷的精密记录给开普勒提出了这个问题。先用一张明确的合成表看清方法：五个日期，各有一个方向，金色实点固定不动。现在叠加简单圆轨道的空心预测。同一天的两个标记没有重合，而且偏差随日期改变。移动模型时，不能让证据跟着移动。这张表不是第谷的原始数据，也不复现历史上的八角分。",
+        "en": "If a planet misses its predicted position, should we change the record or the model? Tycho’s precise observations posed this challenge to Kepler. Here, a synthetic table makes the method visible. Five dates have five fixed gold records. Add the hollow predictions of a simple circular orbit. On the same dates, the marks disagree, and the discrepancy changes. Moving the model must not move the evidence. This is teaching data, not Tycho’s table or the historical eight-arcminute reconstruction.",
+        "seconds": 32,
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "orbit-residuals",
-        "title": "比较预测和位置",
-        "titleEn": "Compare prediction with position",
-        "caption": "系统偏差不能靠多记几位小数消除。",
-        "captionEn": "A systematic discrepancy cannot be removed by extra decimal places.",
-        "zh": "同一时刻，比较椭圆轨道与简单圆轨道算出的方向，差值画在右侧。真实的第谷资料使开普勒能够检验并改进轨道模型。这里两条轨道只说明残差的含义，不是对历史模型的拟合，也不能把示例差值当成著名的八角分偏差。",
-        "en": "Compare directions calculated from an ellipse and a simple circle at the same time. Their difference is plotted at the right. Tycho’s actual records enabled Kepler to test orbital models. This example explains residuals; it is not a historical fit or the famous eight-arcminute discrepancy.",
-        "seconds": 28,
-        "chapterAt": 28,
-        "at": 28.3
+        "title": "把新记录留到最后",
+        "titleEn": "Save new records for the test",
+        "caption": "参数先锁定，余下记录后揭晓。",
+        "captionEn": "Lock the parameters before revealing unused records.",
+        "zh": "让两个候选面对同样五条记录。圆轨道和指定椭圆都只调整初相位，采用相同的比较规则。圆轨道留下成串的偏差；椭圆更接近这些记录，但这还不够。现在锁定椭圆的参数，把后面两次方向先画成空心预测。暂停判断：新记录会落在哪里？揭开原本保留的两个金点。它们接近预测，为这个候选增加证据。这里只比较两种指定模型，不能说靠七个点重做了开普勒的发现。",
+        "en": "Give both candidates the same five records. Fit only their starting phase, using the same rule for the circle and the specified ellipse. The circle leaves a pattern of errors; the ellipse comes closer. But a close fit is not enough. Lock its parameters and draw hollow predictions for two unused dates. Pause: where should the new records lie? Reveal the two gold points that were held back. Their agreement adds evidence for this candidate. Comparing two specified models does not recreate Kepler’s discovery.",
+        "seconds": 36,
+        "chapterAt": 34.5,
+        "at": 34.95
       },
       {
         "id": "galilean-telescope",
@@ -84,8 +170,8 @@
         "zh": "伽利略式望远镜使用凸物镜和凹目镜。下方追踪平行入射光束，物镜使它趋向会聚，凹目镜在焦点之前让光束重新平行。上方呈现木星附近的光点。光学剖面取理想近轴模型，放大率为五；观察窗口另放大，不能当成真实视场大小。",
         "en": "A Galilean telescope combines a positive objective and negative eyepiece. The objective converges incoming parallel rays; before they reach the focus, the eyepiece makes them parallel again. The paraxial diagram has magnification five. The upper observation window is enlarged independently and is not a true field-of-view scale.",
         "seconds": 28,
-        "chapterAt": 56,
-        "at": 56.3
+        "chapterAt": 72,
+        "at": 72.45
       },
       {
         "id": "moon-records",
@@ -96,32 +182,32 @@
         "zh": "一次看到几个光点还不够。连续观察，光点反复出现在木星两侧，远近次序改变，有时被木星遮住。下方把五个相邻日期并排成记录。四颗卫星采用近似圆轨道和各自周期；初始相位为教学选值，不是伽利略一六一零年的原始观测复原。",
         "en": "One glimpse is insufficient. Repeated observations show points on both sides of Jupiter, changing order and occasionally disappearing behind it. Five adjacent dates are recorded below. The four moons use approximate circular orbits and their distinct periods. Initial phases are illustrative, not a reconstruction of Galileo’s original observations.",
         "seconds": 28,
-        "chapterAt": 84,
-        "at": 84.3
+        "chapterAt": 100,
+        "at": 100.45
       },
       {
         "id": "uranus-residual",
-        "title": "从轨道偏差提出假设",
-        "titleEn": "Form a hypothesis from an orbital discrepancy",
-        "caption": "额外引力会使天王星方向偏离简单预测。",
-        "captionEn": "An additional gravitational pull shifts Uranus from a simpler prediction.",
-        "zh": "天王星的运动与当时预测存在偏差。远方还有行星的假设，把这个偏差转为可计算的问题。页面积分太阳、天王星和示例海王星的引力关系，画出与不加摄动时的方向差。模型包含太阳也受到摄动的修正，但初始轨道经过简化，不能用于复算一八四六年的预言。",
-        "en": "Uranus differed from contemporary predictions. A further planet offered a testable cause. The model integrates a simplified Sun–Uranus–Neptune system, including acceleration of the Sun, and plots the angular difference from an unperturbed orbit. Idealized initial conditions do not reproduce the historical eighteen-forty-six prediction.",
-        "seconds": 28,
-        "chapterAt": 112,
-        "at": 112.3
+        "title": "偏差能由额外引力解释吗？",
+        "titleEn": "Can extra gravity explain the discrepancy?",
+        "caption": "候选要解释固定偏差，还要预测新记录。",
+        "captionEn": "Explain fixed discrepancies, then predict new records.",
+        "zh": "天王星偏离预测，可能是观测、模型，或遗漏的引力。这里先固定一张合成偏差表，检查最后一种可能。远方行星不只吸引天王星，也吸引太阳；金色箭头表示两者加速度之差，它才改变日心相对运动。回到同一刻度的记录：半份示例质量解释不够，另一候选更接近前五次。锁定这个候选，先预测后面三次，再揭开保留记录。吻合支持这个有条件的解释，却不能仅靠这几个候选确定一颗真实行星；还需要独立的天空观测。",
+        "en": "Uranus missed predictions: perhaps the observations, the model, or an omitted pull were responsible. Freeze this synthetic residual table to test the last possibility. A distant body pulls both Uranus and the Sun. The gold arrow is the difference between their accelerations, changing their relative motion. Back on the same plot scale, half the example mass falls short; another candidate fits the first five records better. Lock it, predict three later records, then reveal them. Agreement supports this conditional model. A limited candidate grid cannot establish a real planet: independent sky observations are still needed.",
+        "seconds": 44,
+        "chapterAt": 128,
+        "at": 128.45
       },
       {
         "id": "neptune-check",
-        "title": "让独立观测检验预言",
-        "titleEn": "Test a prediction by independent observation",
-        "caption": "算出位置以后，还要到天空中寻找和复查。",
-        "captionEn": "A calculated location must still be searched and checked in the sky.",
-        "zh": "勒维耶把预测位置交给观测者，伽勒与同伴利用星图寻找，随后确认了海王星。右侧把模型中的远方行星方向投影到小窗，强调计算和观察必须对应。这里没有反演历史观测来预测位置，画面不能替代那项计算；自由探索可改变摄动质量，检查残差如何响应。",
-        "en": "Le Verrier sent a predicted position to observers; Galle and his colleague compared the sky with a chart and identified Neptune. The small window projects the model planet’s direction. It does not solve the historical inverse problem. Exploration changes the perturbing mass to test its effect on the residual.",
-        "seconds": 28,
-        "chapterAt": 140,
-        "at": 140.3
+        "title": "让下一晚检验新光点",
+        "titleEn": "Let the next night test the new point",
+        "caption": "真实记录独立于模型，下一夜检验是否移动。",
+        "captionEn": "Independent records test whether the new point moves.",
+        "zh": "清掉合成坐标，换成恩克在一八四六年发表的真实报告。同一历元的地心黄经，计算位置与观测位置相差五十四点七五角分：接近，但并不相等。再看九月二十三日到二十五日的三夜坐标。第二夜，光点已经离开第一夜的位置，恒星不动的解释受到检验。现在只用前两夜做一次事后的课堂直线外推，先锁定第三夜的空心预测，再揭晓实际记录。新记录靠近运动预测。这个练习不是勒维耶的原始计算，三夜也不足以确定完整轨道。",
+        "en": "Clear the synthetic axes and open Encke’s actual eighteen-forty-six report. At the same epoch, the calculated and observed geocentric longitudes differ by fifty-four point seven five arcminutes: nearby, not identical. Now inspect three nights, September twenty-third through twenty-fifth. By the second night the point has moved, testing the fixed-star explanation. Use just those two nights for a retrospective classroom linear extrapolation. Lock the hollow third-night prediction, then reveal the actual record. It lies near the moving prediction. This is not Le Verrier’s original calculation, and three nights do not determine a complete orbit.",
+        "seconds": 46,
+        "chapterAt": 172,
+        "at": 172.45
       },
       {
         "id": "comet-records",
@@ -132,8 +218,8 @@
         "zh": "哈雷把历史上的几次彗星记录联系起来，提出它们可能是同一颗彗星的反复回归。图中太阳位于椭圆焦点，彗星靠近太阳时更快，远离时更慢。时间等速推进，运动速度由开普勒方程决定，不沿椭圆均匀移动；尾巴方向背离太阳，是简化方向提示。",
         "en": "Halley connected several comet records as possible returns of one body. The Sun lies at an ellipse’s focus. The comet moves faster nearby and slower far away. Time advances uniformly while Kepler’s equation determines position, rather than uniform motion along the ellipse. The tail only indicates the antisolar direction.",
         "seconds": 28,
-        "chapterAt": 168,
-        "at": 168.3
+        "chapterAt": 218,
+        "at": 218.45
       },
       {
         "id": "comet-return",
@@ -144,13 +230,14 @@
         "zh": "从一五三一、一六零七和一六八二年的记录出发，哈雷预言彗星再次回归；一七五八年它果然被重新发现。下方列出这些历史年份。模型取固定的七十五点三年周期，只演示重复轨道；真实回归日期受其他行星摄动，不能靠这个固定周期逐次外推。",
         "en": "Records from fifteen thirty-one, sixteen oh-seven and sixteen eighty-two led Halley to predict another return. The comet was rediscovered in seventeen fifty-eight. These historical dates appear below. The fixed seventy-five-point-three-year model illustrates recurrence; actual return dates depend on perturbations and cannot be extrapolated from this fixed period.",
         "seconds": 28,
-        "chapterAt": 196,
-        "at": 196.3
+        "chapterAt": 246,
+        "at": 246.45
       }
     ]
   },
   "curriculumVariants": {
     "required-2-tycho-observations": {
+      "sceneSlug": "celestial-observations",
       "chapterIds": ["position-records", "orbit-residuals"],
       "label": {
         "zh": "第谷观测",
@@ -158,6 +245,7 @@
       }
     },
     "required-2-jupiter-moons": {
+      "sceneSlug": "celestial-observations",
       "chapterIds": ["galilean-telescope", "moon-records"],
       "label": {
         "zh": "木星卫星",
@@ -165,6 +253,7 @@
       }
     },
     "required-1-galileo-telescope": {
+      "sceneSlug": "celestial-observations",
       "chapterIds": ["galilean-telescope", "moon-records"],
       "label": {
         "zh": "木星卫星",
@@ -172,6 +261,7 @@
       }
     },
     "required-2-neptune": {
+      "sceneSlug": "celestial-observations",
       "chapterIds": ["uranus-residual", "neptune-check"],
       "label": {
         "zh": "海王星预测",
@@ -179,11 +269,17 @@
       }
     },
     "required-2-halley": {
+      "sceneSlug": "celestial-observations",
       "chapterIds": ["comet-records", "comet-return"],
       "label": {
         "zh": "哈雷回归",
         "en": "Halley’s return"
       }
     }
+  },
+  "principleFirstRevision": {
+    "brief": "drafts/celestial-observations/principle-first-packet.json",
+    "record": "drafts/teaching-principles/batch-5-review.json",
+    "measuredAudio": "src/data/audio-manifest.json"
   }
 }

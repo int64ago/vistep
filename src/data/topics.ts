@@ -3448,9 +3448,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-cellular-logistics',
     name: '细胞里的分泌路线',
-    title: '跟着同一批标记蛋白走',
-    question: '蛋白质怎样离开制造它的细胞？',
-    description: '以脉冲示踪重建内质网、高尔基体、囊泡与细胞膜之间的连续路线。',
+    title: '没有拍到全过程，怎样知道蛋白质走过哪里？',
+    question: '没有拍到全过程，怎样知道蛋白质走过哪里？',
+    description: '由三次定位推断路径，再用真实膜边界和出口阻断检验解释。',
     color: '#a4ac82',
     tag: '生物学',
     related: ['bio-nuclear-evidence'],
@@ -3462,6 +3462,21 @@ export const topics: Topic[] = [
       {
         title: 'Jamieson and Palade: original paper hosted by Rockefeller University',
         url: 'https://shahamlab.rockefeller.edu/ET_readings/JamiesonPalade1967.pdf',
+      },
+      {
+        title:
+          'Caro & Palade (1964) — Protein synthesis, storage, and discharge in the pancreatic exocrine cell (abstract)',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2106415/',
+      },
+      {
+        title:
+          'Jamieson & Palade (1967) — Intracellular transport of secretory proteins, I (abstract)',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2107305/',
+      },
+      {
+        title:
+          'Jamieson & Palade (1967) — Intracellular transport of secretory proteins, II (abstract and indexed methods)',
+        url: 'https://doi.org/10.1083/jcb.34.2.597',
       },
     ],
     number: '315',
@@ -3530,11 +3545,11 @@ export const topics: Topic[] = [
   },
   {
     slug: 'chem-sodium-reactions',
-    name: '钠与过氧化钠的证据链',
-    title: '同样含钠，遇到空气和水会怎样？',
-    question: '同样含钠，遇到空气和水会怎样？',
+    name: '钠、氧化物与过氧化物',
+    title: '同样含钠，为什么反应产物不同？',
+    question: '同样含钠，为什么反应产物不同？',
     description:
-      '从钠的新切面、受热氧化、水中反应到过氧化钠放氧，分别追踪可见证据，并比较教材中的钾演示。',
+      '从表面接触对照追到氧的价态与水中氢的去向，用原子和电子账本预测不同气体，再比较钠和钾的等量产氢。',
     color: '#c1c7a3',
     tag: '金属 · 氧化 · 气体检验',
     related: [
@@ -3560,13 +3575,35 @@ export const topics: Topic[] = [
         title: 'NIH PubChem — Sodium peroxide',
         url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-peroxide',
       },
-      {
-        title: '人教版高中化学必修第一册，34—37、100页',
-        url: 'https://jc.pep.com.cn/',
-      },
+      { title: '人教版高中化学必修第一册，34—37、100页', url: 'https://jc.pep.com.cn/' },
       {
         title: 'RSC — Potassium: density and properties',
         url: 'https://periodic-table.rsc.org/element/19/potassium',
+      },
+      {
+        title: 'IUPAC Gold Book: peroxides',
+        url: 'https://goldbook.iupac.org/terms/view/P04510/html',
+      },
+      {
+        title: 'NIST Handbook: Atomic Data for Lithium',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/lithiumtable1.htm',
+      },
+      {
+        title: 'NIST Handbook: Atomic Data for Sodium',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable1.htm',
+      },
+      {
+        title: 'NIST Handbook: Atomic Data for Potassium',
+        url: 'https://physics.nist.gov/PhysRefData/Handbook/Tables/potassiumtable1.htm',
+      },
+      {
+        title:
+          'A Simple, Safe, and Easy Demonstration of the Reaction between Sodium Peroxide and Water',
+        url: 'https://pubs.acs.org/doi/abs/10.1021/acs.jchemed.4c00375',
+      },
+      {
+        title: 'NOAA CAMEO: Sodium peroxide',
+        url: 'https://cameochemicals.noaa.gov/chemical/1516',
       },
     ],
     number: '312',
@@ -4898,9 +4935,9 @@ export const topics: Topic[] = [
   {
     slug: 'celestial-observations',
     name: '从观测到天体预言',
-    title: '天空中的光点，怎样成为可检验的证据？',
-    question: '天空中的光点，怎样成为可检验的证据？',
-    description: '联系第谷的位置记录、木星卫星、海王星摄动与哈雷彗星回归。',
+    title: '一个偏离预测的星点，能告诉我们什么？',
+    question: '一个偏离预测的星点，能告诉我们什么？',
+    description: '固定记录、比较轨道与引力候选，再让未使用的记录和独立观测检验预言。',
     color: '#94a9b5',
     tag: '天文观测',
     related: ['kepler-orbits', 'telescope'],
@@ -4913,13 +4950,20 @@ export const topics: Topic[] = [
         title: 'JPL — Planetary discovery circumstances',
         url: 'https://ssd.jpl.nasa.gov/planets/discovery.html',
       },
-      {
-        title: 'NASA — 1P/Halley',
-        url: 'https://science.nasa.gov/solar-system/comets/1p-halley/',
-      },
+      { title: 'NASA — 1P/Halley', url: 'https://science.nasa.gov/solar-system/comets/1p-halley/' },
       {
         title: 'NASA — Halley’s return and its history',
         url: 'https://www.nasa.gov/history/955-years-ago-halleys-comet-and-the-battle-of-hastings/',
+      },
+      {
+        title:
+          'Johannes Kepler, Astronomia nova (1609), Chapter XIX, printed113–114; ETH-Bibliothek Zürich Rar4482, public domain',
+        url: 'https://doi.org/10.3931/e-rara-558',
+      },
+      {
+        title:
+          'J. F. Encke, letter Berlin26 September1846, Astronomische Nachrichten25 no580, columns49–52',
+        url: 'https://articles.adsabs.harvard.edu/pdf/1846AN.....25...49E',
       },
     ],
     number: '253',

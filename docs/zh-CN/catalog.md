@@ -114,7 +114,7 @@
 | [沉淀的生成、溶解与转化](../../src/content/chem-precipitation-paths.mdx)          | 4:15 | 沉淀变了，怎样证明离子的去向？                       |
 | [电子得失与电子对偏移](../../src/content/chem-electron-transfer.mdx)              | 2:17 | 电子账本怎样决定反应配比？                           |
 | [焰色与原子光谱](../../src/content/chem-flame-spectra.mdx)                        | 3:18 | 一团颜色里，藏着哪些原子信息？                       |
-| [钠与过氧化钠的证据链](../../src/content/chem-sodium-reactions.mdx)               | 3:42 | 同样含钠，遇到空气和水会怎样？                       |
+| [钠、氧化物与过氧化物](../../src/content/chem-sodium-reactions.mdx)               | 4:27 | 同样含钠，为什么反应产物不同？                       |
 | [两种碳酸盐的对照](../../src/content/chem-carbonate-comparison.mdx)               | 3:22 | 名字里有氢，为什么还是碱性的？                       |
 | [电解质与电流](../../src/content/chem-ionic-conduction.mdx)                       | 1:59 | 有离子，为什么不一定能导电？                         |
 | [看见光的条件](../../src/content/chem-colloid-light.mdx)                          | 3:02 | 光穿过去了，为什么侧面看不见？                       |
@@ -164,7 +164,7 @@
 | [激素研究的对照证据](../../src/content/bio-endocrine-evidence.mdx)            | 4:30 | 拿走一种信号，再补回来，能说明什么？           |
 | [体液交换与稳态记录](../../src/content/bio-body-fluid-balance.mdx)            | 2:40 | 环境不断变化，细胞如何仍生活在稳定范围？       |
 | [合成基因组与活细胞](../../src/content/bio-engineered-genomes.mdx)            | 1:39 | 一段DNA，等于一个生命吗？                      |
-| [细胞里的分泌路线](../../src/content/bio-cellular-logistics.mdx)              | 1:58 | 蛋白质怎样离开制造它的细胞？                   |
+| [细胞里的分泌路线](../../src/content/bio-cellular-logistics.mdx)              | 2:50 | 没有拍到全过程，怎样知道蛋白质走过哪里？       |
 | [从肽键到胰岛素](../../src/content/bio-protein-machines.mdx)                  | 1:35 | 一堆氨基酸为什么不是一个蛋白质？               |
 | [水为什么穿过细胞膜](../../src/content/bio-osmosis.mdx)                       | 4:22 | 水一直在来回，细胞为什么还会变瘪？             |
 | [细胞膜的证据链](../../src/content/bio-membrane-evidence.mdx)                 | 3:45 | 看不清细胞膜，怎样知道它长什么样？             |
@@ -458,7 +458,7 @@
 | [星系红移与微波天空](../../src/content/cosmology-observations.mdx)   | 2:20 | 宇宙的历史，怎样藏在收到的光里？            |
 | [引力波证据的三条路径](../../src/content/gravitational-wave-lab.mdx) | 2:48 | 极微小的时空变化，怎样被辨认？              |
 | [光、事件与时钟](../../src/content/relativity-experiments.mdx)       | 3:44 | 相对论怎样接受实验检验？                    |
-| [从观测到天体预言](../../src/content/celestial-observations.mdx)     | 3:44 | 天空中的光点，怎样成为可检验的证据？        |
+| [从观测到天体预言](../../src/content/celestial-observations.mdx)     | 4:34 | 一个偏离预测的星点，能告诉我们什么？        |
 | [温室效应](../../src/content/greenhouse-effect.mdx)                  | 2:37 | 大气向下辐射，是不是额外创造了能量？        |
 | [板块边界](../../src/content/plate-boundaries.mdx)                   | 2:21 | 同样的汇聚速度，能不能直接决定谁会俯冲？    |
 | [恒星视差](../../src/content/stellar-parallax.mdx)                   | 2:21 | 半年角位移为什么是 2p，而不是定义的视差 p？ |

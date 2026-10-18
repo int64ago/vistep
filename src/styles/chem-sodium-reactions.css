@@ -1,87 +1,97 @@
-.chem-sodium-reactions {
-  background: radial-gradient(ellipse at 50% 55%, #f3edda, #e7ead4);
-  color: #52624f;
-  border-radius: 28px;
-  padding: clamp(22px, 3vw, 36px);
+.csr {
+  background: radial-gradient(ellipse at 50% 30%, #f5f1df, #e8eddb);
+  color: #476552;
+  border: 1px solid #dde3cc;
+  border-radius: 26px;
+  padding: 18px 16px;
   font-size: 16px;
 }
-.chem-sodium-reactions header p {
-  font-size: clamp(21px, 2.4vw, 28px);
-  margin: 0 0 10px;
-  line-height: 1.5;
-}
-.chem-sodium-reactions header span {
-  color: #8a9476;
-}
-.chem-sodium-object {
-  max-width: 640px;
-  margin: 14px auto;
-}
-.chem-sodium-object svg {
+.csr svg {
   display: block;
   width: 100%;
-  max-height: 390px;
+  max-width: 760px;
+  margin-inline: auto;
+  overflow: visible;
 }
-.chem-sodium-evidence {
+.csr svg text {
+  font-family: inherit;
+  font-size: 16px;
+  fill: #42614e;
+}
+.csr .csr-dot text {
+  font-size: 16px;
+  font-weight: 500;
+}
+.csr-kicker,
+.csr-account,
+.csr-scope {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+}
+.csr-kicker {
+  margin-bottom: 5px;
+}
+.csr-account {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  line-height: 1.6;
-  font-size: 18px;
-  min-height: 56px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  margin-top: 4px;
 }
-.chem-sodium-controls {
+.csr-scope {
+  margin-top: 4px;
+}
+.csr-controls {
   display: grid;
-  gap: 20px;
-  padding: 22px;
-  background: #fcfaed;
-  border-radius: 22px;
-  margin: 24px 0;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #d0dbc6;
 }
-.chem-sodium-controls button,
-.chem-sodium-controls input {
+.csr-controls button {
+  min-height: 44px;
+  font-size: 16px;
+  color: inherit;
+  border: 1px solid #b7c7ae;
+  border-radius: 15px;
+  padding: 9px 12px;
+  background: #f7f7ec;
+}
+.csr-controls button[aria-pressed='true'] {
+  background: #dce8d3;
+}
+.csr-controls input {
   min-height: 44px;
 }
-.chem-sodium-reactions details {
+.csr-details {
   font-size: 16px;
-  line-height: 1.8;
-  color: #7d896b;
-  margin-top: 18px;
+  line-height: 1.7;
+  margin-top: 16px;
 }
-.chem-sodium-reactions summary {
+.csr-details summary {
+  min-height: 44px;
+  padding-block: 10px;
   cursor: pointer;
-  min-height: 44px;
-  padding: 10px 0;
 }
-.chem-sodium-reactions[data-watch='true'] header {
+.csr[data-watch='true'] .csr-details {
   display: none;
-}
-.chem-sodium-reactions[data-watch='true'] .chem-sodium-evidence > :not(:first-child) {
-  display: none;
-}
-.chem-sodium-reactions[data-watch='true'] .chem-sodium-evidence {
-  min-height: 0;
-  font-size: 16px;
-}
-.chem-sodium-reactions[data-watch='true'] details {
-  margin-top: 8px;
 }
 @media (max-width: 600px) {
-  .chem-sodium-reactions {
-    padding: 14px 12px;
+  .csr {
+    padding: 12px 10px;
+    border-radius: 22px;
   }
-  .chem-sodium-object {
-    margin: 0 auto 12px;
+  .csr[data-short='true'] {
+    padding: 9px 8px;
   }
-  .chem-sodium-object svg {
-    height: 240px;
+  .csr-account {
+    gap: 2px 8px;
   }
-  .chem-sodium-evidence {
-    font-size: 16px;
-    align-items: flex-start;
-  }
-  .chem-sodium-controls {
-    padding: 16px;
+}
+@media (max-width: 600px) and (max-height: 700px) {
+  .experiment:has(.csr) {
+    scroll-margin-top: -74px;
   }
 }
