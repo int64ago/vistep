@@ -19,6 +19,9 @@ describe('crystallization routes', () => {
     expect(sulfurState(1).crystallized).toBe(1);
   });
   it('keeps 48 iodine identities inside the covered vessel on continuous paths', () => {
+    // Visit every original sample without constructing 576,000 assertion objects.
+    // Keep the first offending state for a useful failure report on slower CI CPUs.
+    const violations: unknown[] = [];
     for (const cool of [false, true]) {
       let old = iodineParcels(0, cool);
       for (let i = 1; i <= 1000; i++) {
@@ -26,17 +29,25 @@ describe('crystallization routes', () => {
         for (let j = 0; j < 48; j++) {
           const a = now[j],
             b = old[j];
-          expect(a.id).toBe(j);
-          expect(a.point.x).toBeGreaterThan(88);
-          expect(a.point.x).toBeLessThan(232);
-          expect(a.point.y).toBeGreaterThanOrEqual(iodineLid(a.point.x) - 0.5);
-          expect(a.point.y).toBeLessThanOrEqual(190);
-          expect(Math.hypot(a.point.x - b.point.x, a.point.y - b.point.y)).toBeLessThan(1);
+          const step = Math.hypot(a.point.x - b.point.x, a.point.y - b.point.y);
+          if (
+            !(
+              a.id === j &&
+              a.point.x > 88 &&
+              a.point.x < 232 &&
+              a.point.y >= iodineLid(a.point.x) - 0.5 &&
+              a.point.y <= 190 &&
+              step < 1
+            ) &&
+            violations.length < 5
+          )
+            violations.push({ cool, frame: i, id: j, state: a, step });
         }
         old = now;
       }
       expect(old.filter((x) => x.phase === 'deposit')).toHaveLength(cool ? 48 : 0);
     }
+    expect(violations).toEqual([]);
   });
   it('balances both ions and redissolves the precipitate on dilution', () => {
     for (let a = 0; a <= 0.4; a += 0.02)

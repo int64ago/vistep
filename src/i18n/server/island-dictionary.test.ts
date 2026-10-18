@@ -41,10 +41,11 @@ describe('scene-scoped English dictionaries', () => {
       ['other-scene', '../components/experiments/OtherScene'],
     ]);
   });
-  it('includes the selected film and shared player/error UI for every real lazy loader', () => {
-    for (const topic of topics) {
-      const subset = sceneDictionary(topic.slug);
-      const film = timeline[topic.slug as keyof typeof timeline];
+  it.each(topics.map((topic) => topic.slug))(
+    'includes the selected film and shared player/error UI for %s',
+    (slug) => {
+      const subset = sceneDictionary(slug);
+      const film = timeline[slug as keyof typeof timeline];
       for (const chapter of film.chapters) {
         expectCopy(subset, chapter.title);
         expectCopy(subset, chapter.caption);
@@ -63,9 +64,9 @@ describe('scene-scoped English dictionaries', () => {
       ])
         expectCopy(subset, key);
       // A type-only Film import must not drag the collection timeline back in.
-      expect(Object.keys(subset).length, topic.slug).toBeLessThan(Object.keys(full).length / 5);
-    }
-  }, 20_000);
+      expect(Object.keys(subset).length, slug).toBeLessThan(Object.keys(full).length / 5);
+    },
+  );
 
   it('reuses unchanged extraction and invalidates same-size edits for development reloads', () => {
     const directory = mkdtempSync(join(tmpdir(), 'vistep-island-source-'));
