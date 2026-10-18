@@ -1,11 +1,55 @@
-# 沉淀的生成、溶解与转化
+# 沉淀变了，怎样证明离子的去向？
 
-Owner chemistry worker. Four targets: required1 experiment1-3, elective1 experiments3-3/3-4/3-5. Chloride/sulfate interference tests and coarse-salt purification are deliberately split into their own apparatus/decision families in the plan.
+本轮将原有9章操作顺序改为10章因果解释，保留全部旧ID，新增`iron-pathways`。四个教材播放窗口各自闭合：必修一实验1-3；选必一实验3-3、3-4、3-5。专题主线是追踪同一份物质，而非把试管换色。共享叙述、时间轴、教学配置、字典与音轨由主线程维护；本负责人只交付组件、独立模型、内容、封面和packet。
 
-Misconception: every ion disappears when a solid forms; a changed colour uniquely proves a pathway. Prior: ions, conservation and reaction equation. Medium: material-tracking vessels, side-by-side acid/water control, solid-composition strip and spectator ledger. Same test tube is shared only for actual sequential precipitation processes; each entry owns its reagent sequence and model state. Mobile composes current tube before a horizontal ledger, and retains acid/water contrast.
+要纠正的误解包括：出现沉淀就没有溶液离子；外观不变就没有交换；颜色变化等于原子变成另一种元素；同样褐色能证明同样的转化量。先修知识是离子、物料守恒和净离子方程式。Q与Ksp在酸溶解处作为解释层引入，不把所有窗口变成公式讲义。
 
-Sources: required1 PDF22 printed17; elective1 PDF87–88 printed82–83, plus printed79–81 for equilibrium context. UMass Ksp table chosen consistently (BaSO4 1.1e-10, MgOH2 1.5e-11), cross-checked with its worked barium sulfate example. OpenStax explains equilibrium framework. Its current appendix differs on BaSO4, so this model explicitly uses the UMass value rather than silently mixing tables. No kinetic measurements claimed.
+## 十章可见证据
 
-Nine chapters: barium solid formation; spectator ledger; water control; acid consuming OH; AgCl formation; AgI; Ag2S with2Ag stoichiometry; Mg solid starting point; Fe solid with direct/exchange pathway distinction. Correct variants and deterministic director isolate textbook positions. Director initializes AgCl formation with growing total Ag before later exchanges.
+1. `barium`：两份透明溶液混合出现白色；转入界面，标记Ba与SO₄从水进入同一固相；钡不足时留下真正的溶解硫酸根。
+2. `spectators`：Na与Cl继续留水；增加BaCl₂后，多余Ba也留在水相。方程式的约去不等于物质消失。
+3. `water-control`：先保留两份水中Mg(OH)₂，再放大一份的反向交换。平衡意味着净量不变。
+4. `acid`：标记质子由H₃O⁺到OH⁻形成水；Q降低后，标记Mg从旧固相进入水；最后比较有限酸、足量酸与水对照。
+5. `silver-chloride`：单独的定性界面特写，银标记一出一入；明确粒子比例不代表固液含量。
+6. `silver-iodide`：固定十个Ag身份，先离开AgCl计入水相账本，再进入AgI；Cl留水。碘不足时停在6份AgCl、4份AgI；补足碘时原4份身份不重置，余下6份再转移。
+7. `silver-sulfide`：银成对转移并落点，2Ag:1S关系可见，I回到水中。
+8. `magnesium`：两个白色起点只改变初始额外OH，给后面的解释设定对照。
+9. `iron`：Fe(OH)₃接收OH，标记Mg留水；末态给出3Mg:2Fe的完整净计量式。
+10. `iron-pathways`：相同0.4 mmol Fe(OH)₃，分别释放0.6或0 mmol Mg²⁺。褐色不足以确定原有镁固体的变化。
 
-Benchmarks: sqrt(Ksp) equimolar residual; Mg pure-water solubility cbrt(Ksp/4) and acid charge balance; conserved silver for arbitrary ordered additions; same FeOH3 amount with/without initial OH but different Mg solid conversion. Four scoped Vitest tests passed; rerun after initial-Ag refinement included. Visual/playback/listening/physical-device evidence remains not-run by author.
+银盐探索另保留一个必须继续变化的中间态，避免“先取AgI的银”算法被误当成最终平衡。I=0.3、S(-II)=0.2 mmol时，中间态AgCl/AgI/Ag₂S=0.6/0/0.2；允许释放的I重新参与后，近完全物料端点为0.3/0.3/0.2。UI给出条件性过饱和检验，实际移动相同Ag与I标记，端点I确实连到AgI中的标记Ag。
+
+## 独立模型与边界
+
+BaSO₄使用25°C、固定最终体积0.1 L、初始1 mmol SO₄、Ksp=1.1×10⁻¹⁰的稀溶液平衡。Mg(OH)₂使用总Mg=0.010 mol/L、Ksp=1.5×10⁻¹¹、Kw=10⁻¹⁴及电荷平衡。酸中间帧保持Mg、Kw和电荷；只在仍有固体的平衡端点满足Q=Ksp。零酸不会让标记Mg假溶出，固体耗尽后移除固相图形。模型用量不冒充教材滴数。
+
+银是近完全净计量极限，假定所示碱性、有效硫化物条件下Ag₂S近于完全形成；不求完整三固相平衡、质子化、络合或速率。反例的条件Q(AgI)/Ksp=(1.8×10⁻¹⁰/8.5×10⁻¹⁷)×0.3/0.4≈1.59×10⁶，说明“还有AgCl、释放I、却没有AgI”的中间态不能直接宣布最终。它不提供完整水相自由浓度。
+
+`silverTransferSlots`是粒子位置与账本的共同来源。每个Ag代表0.1 mmol库存份额，离开即从旧相扣除，抵达后才加入新相；在途Ag计入水相，总Ag一直为1 mmol。硫化物按两Ag成组。运动和在途量是说明图，不能当作测得的Ag⁺浓度或驻留时间。界面微观特写单独标明定性；Ag₂S连接只是式量关系，不是晶格结构。
+
+铁模型将额外OH优先供给作为净物料记账约定，并非测得的反应先后。三价铁标签不写成金属Fe；零铁不显示Fe粒子。同色对照使用明确固定配方，隐藏不会改变该对照的控件。模型没有求解铁水解、固相老化和全部活度效应。
+
+## 来源与实际读取范围
+
+教材：人教版必修一印刷16–18页（PDF21–23，核心实验印刷17/PDF22）；选必一印刷79–85页（PDF84–90，核心实验82–83/PDF87–88）。本轮准备时已读全文上下文并核对相关原图；来源PDF留在用户Downloads，不入Git。
+
+- [UMass溶度积表](https://owl.oit.umass.edu/departments/Chemistry/appendix/ksp.html)：读取25°C数值表，统一Ba、Mg常数。
+- [OpenStax沉淀与溶解](https://openstax.org/books/chemistry-2e/pages/15-1-precipitation-and-dissolution)：读取固液动态平衡与离子积判据。
+- [Rutgers氢氧化镁演示](https://www.chem.rutgers.edu/cldf-demos/1023-cldf-demo-milk-of-magnesia)：读取实验说明与酸耗OH后悬浮固体继续溶解的观察。不是精确反应速率数据。
+- [Temple溶解度与pH演示](https://sites.temple.edu/chemdemo/2024/10/24/solubility-and-ph/)：准备阶段读其颜色/溶解对照；不由颜色反推唯一反应路径。
+
+## 画面与交互
+
+桌面以宽幅固液界面或双样品对照为主；手机SVG单位跟随实际CSS宽度，文字16px。320×568大部分使用184px粒子区；银镜头202px，保留跟踪的两个Ag和一个S的明确连接，其余同式量单位用成对短括号，配单行银账本。恢复短屏的必要小标题，通过仅本专题的`.experiment`锚点修正把播放器放在约16px处，避免已滚出的静态页头留下90px空白。没有缩小字体或操作目标。
+
+探索选择独立于观看导演状态。剂量改变真实模型；不适用当前镜头的酸量/铁量控件隐藏。全屏和短屏仍保留暂停、重播、进度、章节及旁白开关。新封面取同一银转移几何；`TopicCover`供发现页、教学列表PNG与社交卡片使用。
+
+## 证据与未完成项
+
+独立模型/组件18项测试通过；包含独立AgI再形成反例、逐帧银库存与标记相别一致、成对Ag₂S、酸的镁/电荷/Kw守恒、非有限输入、零剂量真实图形、观看与探索隔离、碘补量的身份连续、实测因果事件先后及短屏显式2Ag:1S。scoped TypeScript与全部owned文件Prettier检查通过。
+
+开发页实际完成28项中英文点击/键盘操作。按最终255s声轨词时检查116张关键帧，全部通过；随后48张银镜头复查身份连续与补量，再补18张显式短屏S的停帧。覆盖两语320×568、390×844与1440桌面；完整播放器最深底565.78px，最终短屏银镜头最深底531.78px，文字不低于16px、播放目标不低于44px。较早的32张短屏与96张广泛停帧记录保留但不代替实测声轨证据。证据位于ignored的`artifacts/teaching-principles/precipitation-implementation/`。
+
+双语10cue已录制，总长255s。导演使用各章秒数与locale，按20份独立ASR词时校准，包含0.45s章前静音：酸先去OH，明确停留Q降低后才让Mg转移；银先入水再落点，首对2Ag:1S停留后再完成十银/五份；双语分别安排补足碘的可检验预测。没有把原235s归一化进度当作声音同步。首章采用主线程最终“透明溶液”版本，音频2b9488e71ea0；未改其余声稿。
+
+首次连续静音播放受开发HMR重置而中止，**不能算完整观看通过**；早期Preparing占位失败图也明确保留，铁两路径已在新实测停帧重新通过。本负责人已完成实测事件校准与静音关键帧，产品文件冻结供主线程做稳定预览完整播放、实际配音试听和最终静态构建。未声称已完成全轨试听、物理真机性能或全站verify/build；这些与模型、停帧证据分别记录。

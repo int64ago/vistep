@@ -1,41 +1,73 @@
-<h2 id="understand">Why can one falling phone report both zero and minusg?</h2>
+<h2 id="understand">Still reads 9.8; why does falling read zero?</h2>
 
-First identify the output. A raw accelerometer measures **specific force**: nongravitational contact or support force per unit mass. Place the phone flat with its screen-normalz axis pointing upward. At supported rest, the raw reading is approximately+g. During free fall, it is approximately zero.
+Follow **one proof mass inside the sensor**. An elastic suspension connects it to the case, beside fixed sensing electrodes. When a hand supports the phone, gravity displaces the mass downward relative to the supported case. Elastic force acts upward. Unequal electrode gaps produce unequal capacitances, encoding relative displacement. The sensor does not read distance travelled or speed.
 
-An app may also provide “linear acceleration” or an output with gravity removed. It estimates the gravity reference, often using orientation information, and subtracts it. With the phone’s orientation fixed here, that output is zero at rest,−g during free fall, and positive during the catch.
+After support is removed, the case begins falling and the internal deformation relaxes. Once settled, the mass is near its unstrained center and the raw signal is approximately zero. Gravity remains, and downward speed keeps increasing. **Zero signal means neither zero gravity nor zero coordinate acceleration.**
 
-The textbook’s falling-phone graph on printed pages49–50 uses the latter output meaning. The word “acceleration” in an app’s name does not guarantee that every mode displays the same quantity.
+A catch reverses the change. The hand contacts the phone before slowing its case. The proof mass lags, moving farther down relative to the case, and the signal increases. Velocity can still point down while acceleration points up: downward speed is decreasing.
 
-<h2 id="try">Check the meaning in two situations</h2>
+This is a **single-axis mechanical equivalent** with an elastic suspension and differential capacitance. Real MEMS beams, combs, electrodes and electronics vary. Micrometre displacement is magnified; this is not the exact interior of every phone. [Analog Devices explains the sensing mechanism](https://www.analog.com/en/resources/technical-articles/accelerometer-and-gyroscopes-sensors-operation-sensing-and-applications.html), including suspended mass, fixed electrodes and differential capacitance.
 
-**Hold, release, catch:** pause at0.20 s. The phone is stationary: raw acceleration is9.8 m/s² and gravity-corrected acceleration is zero. At0.55 s it is in free fall, giving zero and−9.8 m/s² respectively. During the catch, the phone is still moving down while slowing, so its coordinate acceleration points up.
+<h2 id="try">Use counterexamples to interpret the signal</h2>
 
-**An upward lift journey:** observe starting, cruising and braking. The raw reading is greater thang during the start, equal tog at constant speed, and less thang while braking. All three stages can involve upward motion. Direction of travel alone does not determine the reading. The gravity-corrected output shows the acceleration along the selected vertical coordinate.
+**Rest and free fall.** Choose “Inside the sensor” in exploration. At 0.20 s, the modeled raw signal is 9.8 m/s²; at 0.55 s it is near zero. Inspect 0, 0.64 and 3.50 ms after release. Both mass and signal change continuously; changing a chapter label does not teleport the mass to its center.
 
-**Force-meter alternative:** switch instruments in the lift situation. With a0.20 kg hanging mass, infera = F/m − g from the measured tensionF. This mode neglects the spring’s transient vibration and compares steady readings within each constant-acceleration or constant-velocity segment. The instrument does not directly measure acceleration.
+**Catching a downward-moving phone.** At 0.78 s, velocity is −1.47 m/s while acceleration is +18.375 m/s². Reducing downward speed requires upward acceleration. The green raw signal and gold corrected signal in “Same-time traces” share one clock.
 
-The drawing keeps the same phone orientation. Its position, curves and numbers derive from one motion record, so scrubbing time changes the physical state as well as the labels.
+**A lift that keeps rising.** During startup, cruising and braking, the phone may move upward throughout, yet settled raw signals are 10.8, 9.8 and 8.8 m/s². With orientation fixed, subtracting 9.8 gives +1, 0 and −1 m/s². Steady upward travel still needs support; slowing that upward travel requires downward acceleration.
 
-<h2 id="deeper">What the sensor measures</h2>
+The falling-phone graph on textbook pages 49–50 has the meaning of coordinate acceleration, rather than the values expected from every raw accelerometer mode. This does not identify the app’s particular filtering pipeline. [Android’s official documentation](https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion) distinguishes accelerometer output with a gravity reference from linear acceleration without that reference.
+
+<h2 id="deeper">From structure to calculation and an independent instrument</h2>
 
 <details>
-<summary>The fixed-orientation relationship</summary>
+<summary>Why does the millisecond response differ from case acceleration?</summary>
 
-Upward is positive here, so the vertical gravitational acceleration is−g. The ideal raw accelerometer output is:
+Take upward as positive. Let q be proof-mass displacement relative to the case and a the case acceleration. The equivalent dynamics are:
 
-<div className="formula">f = a − (−g) = a + g；a = f − g</div>
+<div className="formula">q″ + 2ωq′ + ω²q = −(a + g)</div>
 
-At rest,a is zero andf equalsg. In free fall,a equals−g andf is zero. If the phone rotates, gravity’s components along all three sensor axes change. One cannot simply subtract9.8 from an arbitrary axis. Real apps combine orientation estimates and filtering, with possible errors and delay.
+The response is critically damped. The value ω = 2π × 500 s⁻¹ is illustrative, not a phone specification. Position q and relative velocity q′ remain continuous across changes in case acceleration. At release, the case acceleration becomes −g while the mass retains its earlier elastic deformation; they do not instantly acquire the same acceleration.
+
+The displacement-calibrated signal is f = −ω²q. Actual suspension force per unit mass is −ω²q − 2ωq′. The green arrow shows **elastic force only**, excluding damping. Damping can briefly reverse total suspension force; exploration details expose its calculated value.
+
+The corrected signal is always the same-time value f − g. It approaches case acceleration after settling. A moving mass is never paired with an instantly idealized zero signal. The slowed internal response is explicitly timed in milliseconds; external position, internal displacement and outputs use one physical clock.
 
 </details>
 
 <details>
-<summary>The teaching trajectories</summary>
+<summary>How do electrode gaps encode displacement?</summary>
 
-The drop holds the phone still for0.4 s, allows0.3 s of free fall, then uses0.16 s of constant upward acceleration to bring its downward velocity to zero. The phone remains at its final height. Abrupt acceleration changes make the segments clear; a real catch is smoother and can include vibration.
+At the neutral position, each clear surface gap is d₀ = 4 μm. With upward q positive, the upper gap is d₀ − q and the lower gap d₀ + q. Ideal parallel-plate capacitances are:
 
-The lift waits, accelerates upward at1 m/s² for two seconds, cruises at2 m/s for two seconds, and brakes at−1 m/s² for two seconds before resting. It rises eight metres. Both outputs and the position are derived from this trajectory; noise, saturation and sensor range limits are omitted.
+<div className="formula">Ctop = εA/(d₀−q), Cbottom = εA/(d₀+q)</div>
 
-This is a visualization of the sensor principle, not a request to drop a real phone. For physical data collection, establish the axes and output mode and protect the device.
+Their normalized difference is (Ctop − Cbottom)/(Ctop + Cbottom) = q/d₀. One q determines the drawn gaps, finite plate edges and output, with contact boundaries checked. Settled catch displacement is approximately −2.855 μm, smaller than the 4 μm clear gap. [Analog Devices describes differential sensing and below-resonance operation](https://www.analog.com/en/resources/analog-dialogue/articles/dual-axis-low-g-fully-integrated-accelerometers.html); the dimensions and response parameters here are teaching choices.
+
+</details>
+
+<details>
+<summary>Can force readings determine acceleration without knowing the mass?</summary>
+
+The exercise on textbook page 112 specifies **equal startup and braking acceleration magnitudes**. Compare settled readings for the same mass, omitting initial spring vibration:
+
+<div className="formula">G₁ = m(g+a), G₂ = m(g−a)</div>
+
+Adding gives 2mg; subtracting gives 2ma. Taking their ratio eliminates mass:
+
+<div className="formula">a = g(G₁−G₂)/(G₁+G₂)</div>
+
+Readings of 2.16 N and 1.76 N yield a = 1.00 m/s². With a known mass, each settled stage also permits a = F/m − g. This model uses 0.20 kg to obtain benchmarks of 2.16, 1.96 and 1.76 N. If startup and braking magnitudes differ, the two-reading shortcut does not recover either stage acceleration.
+
+</details>
+
+<details>
+<summary>What lies outside this model?</summary>
+
+Orientation stays fixed. Rotation changes gravity components, so subtracting a constant 9.8 from an arbitrary axis is insufficient. Real systems also involve orientation estimation, filtering, noise, range limits and response delay.
+
+The prescribed trajectory holds the phone for 0.4 s, releases it for 0.3 s and catches it with 0.16 s of constant upward acceleration. A real catch is smoother. The microscopic proof mass’s back-reaction on the case is neglected. The lift rises 8 m through acceleration at +1 m/s², cruising at 2 m/s and braking at −1 m/s². The force meter shows settled-stage snapshots, not an instantaneous real spring response.
+
+These are testable model predictions, not newly collected measurements. Understanding the principle does not require dropping a phone.
 
 </details>

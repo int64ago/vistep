@@ -1,0 +1,166 @@
+{
+  "batch": 3,
+  "status": "reviewed-ready-for-authorized-publication",
+  "baselineCommit": "b06f2c2f12b640ab4bcd6216a47fe686b8c2bfd7",
+  "owners": [
+    "Codex (/root)",
+    "Codex (/root/teaching_subject_fit)",
+    "Codex (/root/chemistry_inventory)",
+    "Codex (/root/biology_inventory)"
+  ],
+  "scope": {
+    "scenes": ["phone-accelerometer-lab", "chem-precipitation-paths", "bio-membrane-evidence"],
+    "newAuthoredTextbookQuestions": 13,
+    "wholeCollectionComplete": false
+  },
+  "rootReviewFindings": [
+    {
+      "issue": "A fixed catch hand overlapped the falling phone before the physical catch, then jumped to its attached position.",
+      "resolution": "One persistent hand derives its contact height from the same 0.7-second motion state; root viewed 0.69/0.7/0.7035 frames: gap, first contact with lagged zero signal, then supported phone with 28.2 signal.",
+      "status": "root-rendered-contact-passed"
+    },
+    {
+      "issue": "Silver phase inventory and visible departure/arrival followed different progress functions.",
+      "resolution": "One shared transfer-slot state drives geometry and inventory; root viewed first pair in water (0.80 solid + 0.20 water), paired sulfide arrivals and partial-dose intermediate versus endpoint.",
+      "status": "model-and-root-rendered-passed"
+    },
+    {
+      "issue": "Partial silver iodide/sulfide doses left free iodide and AgCl at an inconsistent claimed endpoint.",
+      "resolution": "Separate illustrative intermediate from the near-complete stoichiometric endpoint and allow released iodide to re-form AgI; explicitly not a full equilibrium or kinetic model.",
+      "status": "cross-review-model-and-root-rendered-passed"
+    },
+    {
+      "issue": "Changing the membrane area-estimation factor changed the ratio but not the corresponding candidate prediction.",
+      "resolution": "Prediction uses the same factor; historical human A/B observations remain immutable and separate from the collection-loss counterexample.",
+      "status": "model-and-root-rendered-passed"
+    },
+    {
+      "issue": "Cell exterior label appeared below the membrane despite exterior glycans appearing above.",
+      "resolution": "Explicit “Cell exterior above” orientation label; root viewed final rendered composition.",
+      "status": "root-rendered-passed"
+    },
+    {
+      "issue": "A monolayer-to-bilayer transition still labelled its intermediate geometry as the original surface arrangement.",
+      "resolution": "Caption now distinguishes the initial surface, rearrangement and final two water-facing surfaces. Voice and model unchanged. Root viewed the English 320px mid-transition and Chinese final bilayer at measured chapter progress0.66.",
+      "status": "root-final-static-rendered-passed"
+    },
+    {
+      "issue": "ASR rendered the polyphonic Chinese word 澄清 ambiguously; this does not establish what a human listener would hear.",
+      "resolution": "Changed only the first precipitation cue to transparent solutions (透明溶液); rebuilt the recording and independently transcribed the final 46 cues. All chapter timings remain unchanged by this wording revision.",
+      "status": "independent-transcription-passed"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "subjective-listening",
+      "status": "not-run",
+      "reason": "No subjective listening interface available; independent transcription and native playback telemetry are separate evidence."
+    },
+    {
+      "kind": "physical-phone-performance",
+      "status": "not-run",
+      "reason": "Browser viewport emulation only; no physical phone access."
+    },
+    {
+      "kind": "independent-ASR-and-word-timing",
+      "status": "passed",
+      "cases": 46,
+      "evidence": "artifacts/teaching-principles/batch-3-transcription.json",
+      "timingDirectory": "artifacts/teaching-principles/batch-3-timed-speech",
+      "conditions": "Local MLX Whisper large-v3-turbo without language hint or reference prompt; measured word timestamps from the same decode. Root inspected low-similarity cases and core terms; homophone spelling and numerical normalization are not treated as pronunciation proof. Not subjective listening."
+    },
+    {
+      "kind": "scene-contracts",
+      "status": "passed",
+      "tests": 474,
+      "files": 7,
+      "evidence": "artifacts/teaching-principles/batch-3-scene-check.log"
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "tests": 3942,
+      "testFiles": 575,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "pages": 2134,
+      "evidence": "artifacts/teaching-principles/batch-3-verify.log"
+    },
+    {
+      "kind": "preview-build-and-audit",
+      "status": "passed",
+      "pages": 2134,
+      "noindex": true,
+      "evidence": "artifacts/teaching-principles/batch-3-preview.log"
+    },
+    {
+      "kind": "independent-textbook-window-review",
+      "status": "passed",
+      "entries": 11,
+      "scope": "Chemistry4 andbiology7; source, actualselectedwindows, finalscripts and independently executed model/window probes. Reviewer did not author these two implementations. Phone2 windows separately root-reviewed through source/entry/control review.",
+      "evidence": "artifacts/teaching-principles/batch-3-independent-window-review.json"
+    },
+    {
+      "kind": "frozen-static-keyframes-and-player-bounds",
+      "status": "passed",
+      "cases": 156,
+      "conditions": "Chinese1440×1000 andEnglish320×568; all23 chapters, additional acid/silver/fold causal poses, actual rendered SVG font and primary transport geometry. Root actually viewed a representative image from every chapter and additional causal poses; automated screenshot count is not a claim to have visually inspected every saved image.",
+      "evidence": [
+        "artifacts/teaching-principles/batch-3-static-keyframes/report.json",
+        "artifacts/teaching-principles/batch-3-static-causal/report.json"
+      ]
+    },
+    {
+      "kind": "root-cover-visual-review",
+      "status": "passed",
+      "conditions": "Root viewed all3 final generated catalog PNGs and all3 social PNGs, including measured final duration labels.",
+      "evidence": [
+        "dist-preview/covers/phone-accelerometer-lab.png",
+        "dist-preview/covers/chem-precipitation-paths.png",
+        "dist-preview/covers/bio-membrane-evidence.png",
+        "dist-preview/social/phone-accelerometer-lab.png",
+        "dist-preview/social/chem-precipitation-paths.png",
+        "dist-preview/social/bio-membrane-evidence.png"
+      ]
+    },
+    {
+      "kind": "actual-controls-and-keyboard",
+      "status": "passed",
+      "phoneChecks": 56,
+      "biologyChecks": 11,
+      "chemistryChecks": 28,
+      "conditions": "Root reran actual clicks/range keyboard operations on frozen static preview; contact times, per-entry initial apparatus, manual-state persistence, model inputs, endpoint and replay.",
+      "evidence": "artifacts/teaching-principles/batch-3-controls-static"
+    },
+    {
+      "kind": "entries-reduced-motion-audio-failure-and-visibility",
+      "status": "passed",
+      "cases": 29,
+      "conditions": "26bilingual textbookwindow/question/transfer/reducedmotion checks;3 audio request aborts with clearretry andsuccessful recovery, realoffscreenpause/visibleresume/manualpause. Initial offscreen test did not have enough scroll travel while notes were collapsed; test now opens the real notes before scrolling. No product code changed for this harness correction. Original failure retained.",
+      "evidence": "artifacts/teaching-principles/batch-3-behavior/report.json"
+    },
+    {
+      "kind": "uninterrupted-native-playback-with-rendered-checkpoints",
+      "status": "passed",
+      "runs": 6,
+      "chapters": 46,
+      "conditions": "Nativeaudio andfilm at ordinaryrate after explicit voice activation; no poststartseek, 10-second screenshot/telemetrycheckpoints; bothlocales,ZHdesktop/EN390phone viewport. Root viewed selected running-state checkpoints. This is neither subjective listening nor continuous human visual watching nor physical-deviceperformance.",
+      "evidence": "artifacts/teaching-principles/batch-3-continuous/report.json"
+    }
+  ],
+  "pending": ["Actions deployment and live verification"],
+  "recordedDurations": {
+    "phone-accelerometer-lab": 226.5,
+    "chem-precipitation-paths": 255,
+    "bio-membrane-evidence": 225
+  },
+  "reviewedAt": "2026-10-18T13:35:34.967063+00:00",
+  "buildSource": {
+    "commit": "b06f2c2f12b640ab4bcd6216a47fe686b8c2bfd7",
+    "treeHash": "ac80b556e87da48f5875fedcbecf9c7a8b2447c0be75f3e4bbb7fb8b490841e2",
+    "gitDiffHash": "45b1dc5eebd16c4841241dd27bde09d91b4119ea3a330ee01c6d81049cd05a28",
+    "fileCount": 5157,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "sourceConditions": "Production and preview built before batch4 edits; frozen tree fingerprint matched before60 candidate paths were staged. Final review/plan metadata were amended afterward. Runtime review used the frozen dist-preview on63305, not the live development tree."
+}

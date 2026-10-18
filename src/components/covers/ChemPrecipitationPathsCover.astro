@@ -1,24 +1,41 @@
 ---
-import { silverExchange } from '../../models/chem-precipitation-paths';
-const states = [silverExchange(0, 0), silverExchange(1, 0), silverExchange(1, 0.5)];
+import { silverTransferGeometry } from '../../models/chem-precipitation-paths';
+const geometry = silverTransferGeometry(400, 1, 0, 'iodide', 0.22);
+const trace = Array.from({ length: 41 }, (_, i) => {
+  const p = silverTransferGeometry(400, 1, 0, 'iodide', (i * 0.4) / 40).tokens[0];
+  return `${i ? 'L' : 'M'}${p.x.toFixed(2)} ${p.y.toFixed(2)}`;
+}).join(' ');
 ---
 
-<svg viewBox="0 0 400 230" fill="none" aria-hidden="true"
-  >{
-    states.map((s, j) => (
-      <g transform={`translate(${j * 120 + 45} 0)`}>
-        <path d="M2 105V168A29 29 0 0 0 60 168V105Z" fill="#bdd3b5" opacity=".2" />
-        {Array.from({ length: 16 }, (_, i) => (
-          <ellipse
-            cx={10 + (i % 4) * 14}
-            cy={173 + Math.floor(i / 4) * 5}
-            rx="8"
-            ry="4"
-            fill={s.ag2S ? '#526c5d' : s.agI ? '#d9ca7c' : '#e7e5cc'}
-          />
-        ))}
+<svg viewBox="0 0 400 280" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ppx-cover-water" x2="0" y2="1">
+      <stop stop-color="#e7ecdc" stop-opacity=".2"></stop>
+      <stop offset="1" stop-color="#b5cdb9" stop-opacity=".45"></stop>
+    </linearGradient>
+  </defs>
+  <path
+    d="M23 35V239Q23 262 46 262H354Q377 262 377 239V35"
+    fill="url(#ppx-cover-water)"
+    stroke="#a9bda8"
+    stroke-width="2"></path>
+  <path d="M26 221Q75 211 126 223V259H46Q26 259 26 239Z" fill="#e7e2c9"></path>
+  <path d="M149 227Q200 209 251 227V259H149Z" fill="#d4be69" opacity=".65"></path>
+  <path d={trace} stroke="#acb99d" stroke-width="2" stroke-dasharray="4 6"></path>
+  {
+    geometry.tokens.map((t) => (
+      <g transform={`translate(${t.x} ${t.y})`}>
+        {t.tracked && <circle r="18" stroke="#b58e40" stroke-width="2" />}
+        <circle
+          r="12"
+          fill={t.phase === 'water' ? '#9fbead' : t.phase === 1 ? '#d8c471' : '#e8e3cb'}
+          stroke="#fff9e7"
+          stroke-width="2"
+        />
       </g>
     ))
-  }<path d="M113 113h26m-7-5 7 5-7 5M233 113h26m-7-5 7 5-7 5" stroke="#a9b792" stroke-width="2"
-  ></path></svg
->
+  }
+  <circle cx="266" cy="73" r="15" fill="#d8c471" stroke="#f8f0cd" stroke-width="2"></circle>
+  <path d="M254 83Q238 107 216 119" stroke="#b8ab6b" stroke-width="2"></path>
+  <path d="M222 109L215 120L228 119" stroke="#b8ab6b" stroke-width="2"></path>
+</svg>

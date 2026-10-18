@@ -1,0 +1,164 @@
+{
+  "slug": "phone-accelerometer-lab",
+  "owner": "teaching_subject_fit",
+  "status": "author review complete; root independent review and measured-speech calibration pending",
+  "sourceCommit": "b06f2c2f12b640ab4bcd6216a47fe686b8c2bfd7",
+  "sourceHashes": {
+    "src/components/experiments/PhoneAccelerometerLab.tsx": "0266190c81df611e9c4132f0c05716ab1f2ae63875a936662b3524b0585e6bf5",
+    "src/models/phone-accelerometer-lab.ts": "3e33c9fdd6aea28c19cb0d7954be3d9006ae995883e0824a56c6d5a86aefdace",
+    "src/models/phone-accelerometer-lab.test.ts": "9ec9e6f12381a53793e9d63771944a12b50294e4443b54e5e08c49f552da5ba5",
+    "src/styles/phone-accelerometer-lab.css": "04a0709b4eede56c58cd70928d6457de2d328f6e1bb21d220ce72c12dc1162bf",
+    "src/content/phone-accelerometer-lab.mdx": "7fa9c3e3c90f40b44d5d8b428880a7a3cf593c916529c62469797f9c41d865ac",
+    "src/content/en/phone-accelerometer-lab.mdx": "0c72776aa7a73f9270678711289da2e1c9037a28d93499e4f651721d5c4fe9db",
+    "src/components/covers/PhoneAccelerometerLabCover.astro": "38b4f01b008a8b7c59ab6ce0619ccbbdd0b6aea6deee8276717a525aec221cc2"
+  },
+  "primarySourcesVerified": "2026-10-18: Analog Devices two mechanism articles and Android Motion Sensors; see packet URLs",
+  "checks": [
+    {
+      "type": "numerical-model",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/phone-accelerometer-lab.test.ts",
+      "result": "17 tests: independent critical response, continuity, total suspension reversal, dynamic f−g, electrodes/gaps, inference boundaries, persistent hand contact"
+    },
+    {
+      "type": "scoped-typecheck",
+      "status": "passed",
+      "command": "pnpm exec tsc -p artifacts/teaching-principles/phone-check/tsconfig.json"
+    },
+    {
+      "type": "author-keyframes",
+      "status": "passed-after-correction",
+      "conditions": "Silent dev4325; reducedMotion reduce; viewport overrides, no real device. Both locales.",
+      "initialReport": "artifacts/teaching-principles/phone-review-03/report.json",
+      "initialCount": 84,
+      "initialPassed": 72,
+      "findings": "12 frames had tiny bottom-label clipping; preserved in initial report. Earlier excessive full-player height and default black roof fill repaired.",
+      "affectedRetest": "artifacts/teaching-principles/phone-review-04/report.json",
+      "retested": 16,
+      "passed": 16,
+      "finalMeterDerivation": "artifacts/teaching-principles/phone-review-06/report.json"
+    },
+    {
+      "type": "whole-player",
+      "status": "passed",
+      "conditions": "Actual navigation and scroll below navigation; closed chapter drawer included; real root-integrated captions.",
+      "viewport": "320×568",
+      "maxPlayerHeight": 479.09375,
+      "maxPlayerBottomApprox": 561.3,
+      "maxTransportBottomApprox": 516.3,
+      "articleCaptionPending": "One semantically general catch caption proposed; shorter than existing longest captions, no expected height change."
+    },
+    {
+      "type": "interactive-controls",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/phone-review-04/report.json",
+      "conditions": "Two textbook routes × zh/en; default mode/time, keyboard range update, choice preservation after watch/explore, exact .69/.7/.7035 times, all views and settled meter stages.",
+      "fontMinimum": 16,
+      "targetMinimum": 44
+    },
+    {
+      "type": "bilingual-mdx-runtime",
+      "status": "passed",
+      "report": "artifacts/teaching-principles/phone-review-04/articles.json",
+      "result": "Both pages HTTP200, headings/formula content present, no failed images. Subsequent plain Chinese sentence edit changes no markup."
+    },
+    {
+      "type": "cover-consumers",
+      "status": "passed-author-visual",
+      "paths": [
+        "artifacts/teaching-principles/phone-review-04/catalog-cover.png",
+        "artifacts/teaching-principles/phone-review-04/social-cover.png"
+      ],
+      "result": "Actual PNG endpoints rendered and visually inspected. Model-shared q and electrode edges remain connected."
+    },
+    {
+      "type": "continuous-human-viewing",
+      "status": "not-run"
+    },
+    {
+      "type": "human-listening",
+      "status": "not-run"
+    },
+    {
+      "type": "speech-synchronization",
+      "status": "pending",
+      "owner": "author calibrates after root synthesis and independent timed ASR"
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run"
+    },
+    {
+      "type": "global-verify-and-static-build",
+      "status": "pending",
+      "owner": "root"
+    },
+    {
+      "type": "publication",
+      "status": "pending",
+      "owner": "root"
+    }
+  ],
+  "rootReviewFrames": [
+    "artifacts/teaching-principles/phone-review-04/zh-required-1-phone-free-fall-contact-0.69.png",
+    "artifacts/teaching-principles/phone-review-04/zh-required-1-phone-free-fall-contact-0.7.png",
+    "artifacts/teaching-principles/phone-review-04/zh-required-1-phone-free-fall-contact-0.7035.png",
+    "artifacts/teaching-principles/phone-review-03/en-320-c3-0.24.png",
+    "artifacts/teaching-principles/phone-review-03/en-320-c3-0.36.png",
+    "artifacts/teaching-principles/phone-review-04/en-1100-c3-0.6.png",
+    "artifacts/teaching-principles/phone-review-06/en-320-c5-0.7.png",
+    "artifacts/teaching-principles/phone-review-06/en-320-c5-0.82.png",
+    "artifacts/teaching-principles/phone-review-06/en-320-c5-0.94.png"
+  ],
+  "reproduce": "node artifacts/teaching-principles/phone-check/final-review.mjs (all keyframes and controls); review-04.mjs for affected geometry plus controls; review-06.mjs for prediction sequence.",
+  "measuredSpeechCalibration": {
+    "status": "passed-author-timing-and-paused-keyframes",
+    "owner": "teaching_subject_fit",
+    "duration": 226.5,
+    "evidence": "artifacts/teaching-principles/phone-review-08/timed-speech-evidence.json",
+    "all12WordTimeFilesRead": true,
+    "audio": {
+      "zh": "phone-accelerometer-lab-zh-1540d99864d6.mp3",
+      "en": "phone-accelerometer-lab-en-179e5376e3c3.mp3"
+    },
+    "targetedTests": "18/18 passed",
+    "scopedTsc": "passed",
+    "keyframes": {
+      "review07": "84 paused bilingual frames, 82 passed; two gravity labels too high at early fall, fixed",
+      "review08": "60/60 affected/representative frames passed; source hashes stable",
+      "controlReview": "review07 all 4 actual textbook entry/language cases passed, all views, range keyboard, watch/explore persistence and force-meter reveal"
+    },
+    "full320Player": {
+      "maximumHeight": 479.09375,
+      "top": 82,
+      "bottom": 561.09375,
+      "viewportHeight": 568,
+      "includes": "caption, transport and collapsed chapters; both languages"
+    },
+    "personallyViewedFrames": [
+      "artifacts/teaching-principles/phone-review-07/en-320-c2-31s.png",
+      "artifacts/teaching-principles/phone-review-07/en-320-c5-15s.png",
+      "artifacts/teaching-principles/phone-review-07/en-320-c5-44.5s.png",
+      "artifacts/teaching-principles/phone-review-08/en-320-c1-19s.png",
+      "artifacts/teaching-principles/phone-review-08/zh-320-c5-40s.png",
+      "artifacts/teaching-principles/phone-review-08/en-1100-c2-31s.png",
+      "artifacts/teaching-principles/phone-review-08/en-320-c5-46s.png"
+    ],
+    "notClaimed": [
+      "subjective listening",
+      "full continuous viewing",
+      "physical-phone performance",
+      "production/static acceptance"
+    ],
+    "reproduce": "node artifacts/teaching-principles/phone-check/review-07.mjs; node artifacts/teaching-principles/phone-check/review-08.mjs"
+  },
+  "finalCalibratedSourceHashes": {
+    "src/components/experiments/PhoneAccelerometerLab.tsx": "29de208c5698bcd519b048058dc0e2fa9c721aed93b8adc0521e6b67af23c869",
+    "src/models/phone-accelerometer-lab.ts": "f71882a43fc5e9353cc0a118a8d8b49757a6b54daf39e84c582b2f7882397958",
+    "src/models/phone-accelerometer-lab.test.ts": "474da545264d8b914f9909a392e1c673f25f53a200871d9de4f1d5f6d047bbb1",
+    "src/styles/phone-accelerometer-lab.css": "04a0709b4eede56c58cd70928d6457de2d328f6e1bb21d220ce72c12dc1162bf",
+    "src/content/phone-accelerometer-lab.mdx": "7fa9c3e3c90f40b44d5d8b428880a7a3cf593c916529c62469797f9c41d865ac",
+    "src/content/en/phone-accelerometer-lab.mdx": "0c72776aa7a73f9270678711289da2e1c9037a28d93499e4f651721d5c4fe9db",
+    "src/components/covers/PhoneAccelerometerLabCover.astro": "38b4f01b008a8b7c59ab6ce0619ccbbdd0b6aea6deee8276717a525aec221cc2"
+  }
+}

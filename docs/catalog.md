@@ -111,7 +111,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Dry and damp controls in chlorine bleaching](../src/content/en/chem-chlorine-bleaching.mdx)           | 1:29 | Why do two papers respond differently to the same chlorine?                   |
 | [Volumetric preparation and dilution](../src/content/en/chem-solution-preparation.mdx)                 | 2:58 | What do rinsing and making up to volume control?                              |
 | [Two-step evidence for anions](../src/content/en/chem-anion-tests.mdx)                                 | 2:39 | Does a white precipitate identify an anion?                                   |
-| [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)            | 3:50 | Where do the ions go when a precipitate appears?                              |
+| [Precipitation, dissolution and conversion](../src/content/en/chem-precipitation-paths.mdx)            | 4:15 | When a precipitate changes, how can we trace its ions?                        |
 | [Electron transfer and polar sharing](../src/content/en/chem-electron-transfer.mdx)                    | 1:31 | Does a changed oxidation state always mean complete electron transfer?        |
 | [Flame colours and atomic spectra](../src/content/en/chem-flame-spectra.mdx)                           | 3:18 | What atomic information is hidden in a flame colour?                          |
 | [Evidence from sodium and sodium peroxide](../src/content/en/chem-sodium-reactions.mdx)                | 3:42 | How do sodium and its peroxide respond to air and water?                      |
@@ -167,7 +167,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 1:58 | How do proteins leave the cell that makes them?                                   |
 | [From peptide bonds to insulin](../src/content/en/bio-protein-machines.mdx)                       | 1:35 | Why is a mixture of amino acids not a protein?                                    |
 | [Why water crosses a cell membrane](../src/content/en/bio-osmosis.mdx)                            | 4:22 | If water moves both ways, why does a cell shrink?                                 |
-| [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 2:46 | Do dark bands identify membrane molecules?                                        |
+| [Evidence for membrane structure](../src/content/en/bio-membrane-evidence.mdx)                    | 3:45 | How can we infer a membrane too thin to see?                                      |
 | [A transferable chemical signal](../src/content/en/bio-chemical-signals.mdx)                      | 2:12 | Why does a second heart slow without a connecting nerve?                          |
 | [Experimental clues to nerve signaling](../src/content/en/bio-nerve-signals.mdx)                  | 2:34 | How do two needle deflections connect to signaling between neurons?               |
 | [Buffering the internal environment](../src/content/en/bio-buffer-comparison.mdx)                 | 1:51 | Why do equal acid additions change three samples differently?                     |
@@ -207,7 +207,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Seeing small deformations](../src/content/en/small-deformation-lab.mdx)                      | 1:51 | Why does the light spot move when the tabletop barely bends?                        |
 | [Finding the center of gravity](../src/content/en/suspension-center-of-gravity.mdx)           | 1:53 | How do two suspensions locate the same point?                                       |
 | [Free-fall activities](../src/content/en/free-fall-activities.mdx)                            | 2:18 | What can paper, tied stones and a ruler tell us?                                    |
-| [Phone accelerometer experiments](../src/content/en/phone-accelerometer-lab.mdx)              | 2:46 | Why can a falling phone read zero?                                                  |
+| [How a phone senses acceleration](../src/content/en/phone-accelerometer-lab.mdx)              | 3:47 | Still reads 9.8; why does falling read zero?                                        |
 | [How tape records motion](../src/content/en/ticker-tape-lab.mdx)                              | 3:03 | Why do gaps grow when the ticking stays steady?                                     |
 | [Newton Tube](../src/content/en/newton-tube.mdx)                                              | 2:00 | Does a feather fall slowly because it is light?                                     |
 | [Center of mass](../src/content/en/center-of-mass.mdx)                                        | 2:21 | Can internal motion carry a whole system away?                                      |

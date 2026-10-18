@@ -1,43 +1,70 @@
 ---
-import { membraneTracer } from '../../models/bio-membrane-evidence';
-const markers = Array.from({ length: 48 }, (_, i) => membraneTracer(i, 30));
+import {
+  areaObservations,
+  areaRectangle,
+  membraneGeometry,
+} from '../../models/bio-membrane-evidence';
+const source = areaObservations[0],
+  geometry = membraneGeometry();
+const A = areaRectangle(source.cellArea, 46, 126 / 0.94),
+  B = areaRectangle(source.spreadArea, 46, 126 / 0.94);
+const x = (v: number) => 220 + v * 0.43,
+  y = (v: number) => 20 + v * 0.64;
 ---
 
-<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
-  ><circle cx="110" cy="115" r="76" fill="#d6dfc3" stroke="#a8b28e" stroke-width="3"></circle>{
-    markers.map((q) => (
-      <rect
-        x={107 + 73 * q.x}
-        y={111 + 73 * q.y}
-        width="6"
-        height="8"
-        rx="2"
-        fill={q.origin === 'mouse' ? '#6a9e68' : '#bf7967'}
-      />
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect
+    x="30"
+    y={172 - A.height}
+    width={A.width}
+    height={A.height}
+    rx="4"
+    fill="#a3b3a6"
+    fill-opacity=".8"></rect>
+  <rect
+    x="108"
+    y={172 - B.height}
+    width={B.width}
+    height={B.height}
+    rx="4"
+    fill="#c6a272"
+    fill-opacity=".8"></rect>
+  <path d="M25 178H160" stroke="#94a48e" stroke-width="2"></path>
+  <text x="53" y="205" text-anchor="middle" font-size="25" fill="#70836f">A</text>
+  <path
+    d="M101 190Q105 186 109 190T117 190M101 198Q105 194 109 198T117 198"
+    stroke="#9d8159"
+    stroke-width="2"
+    stroke-linecap="round"></path>
+  <text x="139" y="205" text-anchor="middle" font-size="25" fill="#9d8159">2A</text>
+  <path
+    d="M175 112H202m-6-5 6 5-6 5"
+    stroke="#98a487"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <rect x="219" y={y(40)} width="160" height={y(120) - y(40)} rx="13" fill="#d1e3dc"></rect>
+  <rect x="219" y={y(166)} width="160" height={y(228) - y(166)} rx="13" fill="#d1e3dc"></rect>
+  <rect x="219" y={y(120)} width="160" height={y(166) - y(120)} fill="#e2d5ad"></rect>
+  {
+    geometry.lipids.map((q) => (
+      <g>
+        <path
+          d={q.tails
+            .map((p) => 'M' + x(q.x) + ' ' + y(q.y) + 'L' + x(p.x) + ' ' + y(p.y))
+            .join(' ')}
+          stroke="#b2a16e"
+          stroke-width="1.3"
+        />
+        <circle cx={x(q.x)} cy={y(q.y)} r="2.8" fill={q.id === 5 ? '#b98251' : '#88a77e'} />
+      </g>
     ))
-  }<ellipse cx="90" cy="110" rx="15" ry="21" fill="#b8bcaa"></ellipse><ellipse
-    cx="130"
-    cy="124"
-    rx="15"
-    ry="21"
-    fill="#aeb6ab"></ellipse><g transform="translate(220 90)"
-    >{
-      Array.from({ length: 12 }, (_, i) => (
-        <g>
-          <>
-            <path
-              d={`M${i * 13} 0v23M${i * 13 + 3} 1v22M${i * 13} 50V27M${i * 13 + 3} 49V27`}
-              stroke="#b8aa77"
-              stroke-width="2"
-            />
-            <circle cx={i * 13} cy="0" r="4.8" fill="#91ae7b" />
-            <circle cx={i * 13} cy="50" r="4.8" fill="#91ae7b" />
-          </>
-        </g>
-      ))
-    }<path d="M57-14Q42 0 49 23Q39 52 58 64H77Q92 47 82 26Q97-1 77-14Z" fill="#9d92aa"></path><path
-      d="M67-14V-35l-12-10m12 10 12-10"
-      stroke="#a78b5d"
-      stroke-width="3"></path></g
-  ></svg
->
+  }
+  <path
+    d="M287 78Q277 87 287 97V126Q278 141 290 148H308Q319 139 309 126V97Q318 86 308 78Z"
+    fill="#c2b4cb"
+    stroke="#9a86a6"
+    stroke-width="1.5"></path>
+  <rect x="287" y={y(120)} width="22" height={y(166) - y(120)} rx="3" fill="#a08fac"></rect>
+  <path d="M298 78V63l-11-8m11 8 11-8" stroke="#b4945c" stroke-width="2.5"></path>
+</svg>

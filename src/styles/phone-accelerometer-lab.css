@@ -1,188 +1,163 @@
-.phone-accel-lab {
-  max-width: 760px;
-  margin: auto;
-  color: #58705a;
-  padding: 0 16px;
-}
-.phone-accel-lab header {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #dce4d4;
-  font-size: 16px;
-}
-.phone-accel-lab header p {
-  margin: 0;
-  font-size: 18px;
-}
-.phone-accel-causal {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  align-items: center;
-  gap: 20px;
-}
-.phone-accel-causal > svg {
+.phone-sensor-lab {
   width: 100%;
-  height: 220px;
-  display: block;
-}
-.phone-accel-readouts p {
+  max-width: 640px;
+  min-width: 0;
+  margin: auto;
+  color: #37544c;
   font-size: 16px;
-  line-height: 1.5;
-  margin: 15px 0;
-}
-.phone-accel-readouts strong {
-  display: block;
-  font-size: 30px;
-  font-weight: 450;
   font-variant-numeric: tabular-nums;
 }
-.phone-accel-readouts strong span {
+.phone-sensor-clock {
+  min-height: 29px;
+  text-align: center;
   font-size: 16px;
-  color: #819278;
+  line-height: 1.35;
+  padding: 1px 6px 5px;
+  color: #648075;
 }
-.phone-accel-readouts i {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 7px;
-}
-.phone-raw {
-  background: #6e927b;
-}
-.phone-corrected {
-  background: #bd9b63;
-}
-.phone-accel-trace {
-  max-width: 500px;
-  margin: auto;
-}
-.phone-accel-trace > div {
-  display: flex;
-  justify-content: space-between;
-  font-size: 16px;
-}
-.phone-accel-trace svg {
+.phone-sensor-stage {
   display: block;
   width: 100%;
-  height: 142px;
+  height: 270px;
+  overflow: hidden;
 }
-.phone-accel-equation {
+.phone-sensor-stage text {
+  font-family: inherit;
   font-size: 16px;
-  text-align: center;
-  margin: 15px 0;
+  fill: #37544c;
 }
-.phone-accel-controls {
+.phone-sensor-stage text[fill] {
+  fill: revert-layer;
+}
+.phone-sensor-stage .phone-sensor-answer {
+  font-size: 25px;
+}
+.phone-sensor-readouts {
   display: grid;
-  gap: 20px;
-  margin: 25px auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 0 8px;
 }
-.phone-accel-lab details {
+.phone-sensor-readouts p {
+  margin: 0;
   font-size: 16px;
-  color: #7b8d72;
+  line-height: 1.3;
+  text-align: center;
 }
-.phone-accel-lab summary {
+.phone-sensor-readouts span {
+  display: block;
+  min-height: 22px;
+}
+.phone-sensor-readouts strong {
+  font-size: 24px;
+  font-weight: 500;
+  color: #386b60;
+  white-space: nowrap;
+}
+.phone-sensor-readouts small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.phone-sensor-readouts strong.phone-sensor-secondary {
+  color: #aa753b;
+}
+.phone-sensor-readouts i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.phone-sensor-controls {
+  display: grid;
+  min-width: 0;
+  gap: 20px;
+  margin: 24px 10px 10px;
+}
+.phone-sensor-controls .segmented {
+  flex-wrap: wrap;
+}
+.phone-sensor-controls button {
+  min-height: 44px;
+  min-width: 44px;
+  font-size: 16px;
+}
+.phone-sensor-controls input[type='range'] {
+  min-width: 0;
+  width: 100%;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+.phone-sensor-controls label {
+  min-width: 0;
+}
+.phone-sensor-predict {
+  padding: 10px 14px;
+  border: 1px solid #c4d1c5;
+  border-radius: 18px;
+  background: #edf2e8;
+  color: #375b4d;
+  cursor: pointer;
+}
+.phone-sensor-controls summary {
   min-height: 44px;
   align-content: center;
   cursor: pointer;
-}
-.phone-accel-lab details p {
   font-size: 16px;
-  line-height: 1.7;
 }
-.phone-accel-controls .segmented {
-  flex-wrap: wrap;
+.phone-sensor-controls details p {
+  font-size: 16px;
+  line-height: 1.6;
 }
-@media (max-width: 760px) {
-  .phone-accel-lab {
-    padding: 0 5px;
-  }
-  .phone-accel-lab header {
-    display: block;
-    text-align: center;
-  }
-  .phone-accel-lab header p {
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-  .phone-accel-causal {
-    display: block;
-  }
-  .phone-accel-causal > svg {
-    height: 156px;
-  }
-  .phone-accel-readouts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .phone-accel-readouts p {
-    font-size: 16px;
-    margin: 2px 0 12px;
-  }
-  .phone-accel-readouts strong {
-    font-size: 25px;
-    margin-top: 4px;
-  }
-  .phone-accel-readouts strong span {
-    display: block;
-    font-size: 16px;
-  }
-  .phone-accel-trace svg {
-    height: 128px;
-  }
-  .phone-accel-equation {
-    font-size: 16px;
-    text-align: left;
-  }
-  .phone-accel-lab details {
-    margin-top: 6px;
-  }
-}
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
 @media (max-width: 640px) {
-  .showcase[data-mode='watch'] .phone-accel-lab {
-    padding: 12px 8px;
+  .phone-sensor-lab {
+    max-width: 400px;
   }
-  .showcase[data-mode='watch'] .phone-accel-lab > header {
-    display: block;
-    text-align: center;
+  .phone-sensor-clock {
+    min-height: 29px;
   }
-  .showcase[data-mode='watch'] .phone-accel-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
+  .phone-sensor-readouts {
+    gap: 6px;
+    padding: 0 2px;
   }
-  .showcase[data-mode='watch'] .phone-accel-lab > header > span,
-  .showcase[data-mode='watch'] .phone-accel-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .phone-accel-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .phone-accel-lab > p[class$='-observation'] {
-    display: none;
+  .phone-sensor-readouts strong {
+    font-size: 22px;
+  }
+  .phone-sensor-readouts span {
+    min-height: 21px;
   }
 }
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .phone-accel-equation,
-  .showcase[data-mode='watch'] .phone-accel-lab > details {
-    display: none;
+@media (max-width: 480px) {
+  .phone-sensor-clock {
+    min-height: 24px;
+    padding: 0 3px 2px;
   }
-  .showcase[data-mode='watch'] .phone-accel-readouts strong {
+  .phone-sensor-readouts strong {
     font-size: 21px;
   }
-  .showcase[data-mode='watch'] .phone-accel-readouts strong span {
-    display: inline;
+  .phone-sensor-readouts span {
+    min-height: 20px;
   }
-  .showcase[data-mode='watch'] .phone-accel-readouts p {
-    margin: 2px 0 6px;
+  .showcase[data-slug='phone-accelerometer-lab'] .film-caption {
+    gap: 12px;
+    padding: 10px 12px 8px;
+    min-height: 0;
   }
-}
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .phone-accel-lab > header,
-  .showcase[data-mode='watch'] .phone-accel-trace > div:first-child > span:first-child {
-    display: none;
+  .showcase[data-slug='phone-accelerometer-lab'] .film-chapter {
+    flex-basis: 32px;
+  }
+  .showcase[data-slug='phone-accelerometer-lab'] .film-caption p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .showcase[data-slug='phone-accelerometer-lab'] .film-transport {
+    padding-inline: 12px;
+    padding-bottom: 8px;
+  }
+  .showcase[data-slug='phone-accelerometer-lab'] .film-chapters {
+    margin-inline: 12px;
+  }
+  .showcase[data-slug='phone-accelerometer-lab'] .film-chapters summary {
+    min-height: 44px;
   }
 }

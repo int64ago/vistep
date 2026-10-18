@@ -3262,10 +3262,10 @@ export const topics: Topic[] = [
   {
     slug: 'chem-precipitation-paths',
     name: '沉淀的生成、溶解与转化',
-    title: '沉淀出现以后，离子去了哪里？',
-    question: '沉淀出现以后，离子去了哪里？',
+    title: '沉淀变了，怎样证明离子的去向？',
+    question: '沉淀变了，怎样证明离子的去向？',
     description:
-      '追踪硫酸钡与旁观离子，比较酸和水对氢氧化镁的作用，再沿教材观察银盐和氢氧化物的转化。',
+      '从固液界面追踪离子：用酸耗OH⁻、银盐再形成与铁沉淀对照，把颜色变化变成可检验的解释。',
     color: '#b7c6a5',
     tag: '离子反应 · 沉淀 · 溶解平衡',
     related: ['chem-ionic-conduction', 'chem-carbonate-comparison', 'chem-anion-tests'],
@@ -3282,9 +3282,14 @@ export const topics: Topic[] = [
         title: 'OpenStax Chemistry 2e — Precipitation and dissolution',
         url: 'https://openstax.org/books/chemistry-2e/pages/15-1-precipitation-and-dissolution',
       },
+      { title: '人教版高中化学必修一17页、选必一82—83页', url: 'https://jc.pep.com.cn/' },
       {
-        title: '人教版高中化学必修一17页、选必一82—83页',
-        url: 'https://jc.pep.com.cn/',
+        title: 'Rutgers Chemistry — Milk of magnesia: hydroxide consumption and dissolution',
+        url: 'https://www.chem.rutgers.edu/cldf-demos/1023-cldf-demo-milk-of-magnesia',
+      },
+      {
+        title: 'IUPAC Gold Book — Solubility product',
+        url: 'https://goldbook.iupac.org/terms/view/S05742',
       },
     ],
     number: '321',
@@ -3625,9 +3630,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-membrane-evidence',
     name: '细胞膜的证据链',
-    title: '一层膜，怎样被逐步认识',
-    question: '看见暗纹，就知道膜的成分了吗？',
-    description: '从通透性、脂质铺展到细胞融合，区分直接观察、推断与结构模型。',
+    title: '看不清细胞膜，怎样知道它长什么样？',
+    question: '看不清细胞膜，怎样知道它长什么样？',
+    description: '用面积、界面、图像和标记运动逐步检验膜结构假说。',
     color: '#81996e',
     tag: '生物学',
     related: ['bio-cell-microscopy', 'bio-osmosis'],
@@ -3647,6 +3652,18 @@ export const topics: Topic[] = [
       {
         title: 'Danielli and Davson (1935): permeability of thin films',
         url: 'https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcp.1030050409',
+      },
+      {
+        title: 'Gorter & Grendel (1925) — Original paper and area measurements',
+        url: 'https://www.rpgroup.caltech.edu/cshl_pboc_2026/assets/pdfs/Gorter1924.pdf',
+      },
+      {
+        title: 'Singer & Nicolson (1972) — Original fluid mosaic model',
+        url: 'https://dasher.wustl.edu/bio5357/discussion/science-175-720-72.pdf',
+      },
+      {
+        title: 'Walter & Gutknecht — Permeability of small nonelectrolytes',
+        url: 'https://link.springer.com/article/10.1007/BF01870127',
       },
     ],
     number: '309',
@@ -5924,12 +5941,12 @@ export const topics: Topic[] = [
   },
   {
     slug: 'phone-accelerometer-lab',
-    name: '手机加速度实验',
-    title: '自由下落时，手机为什么可能读出零？',
-    question: '自由下落时，手机为什么可能读出零？',
-    description: '同一次托住、释放、接住与电梯上行，分清原始加速度计和去重力输出。',
+    name: '手机怎样感觉加速度',
+    title: '没动读9.8，下落为什么读零？',
+    question: '没动读9.8，下落为什么读零？',
+    description: '放大手机里的悬挂质量块，从支撑、释放与接住理解读数，再用电梯和测力计推导加速度。',
     color: '#abbca0',
-    tag: '传感器 · 加速度',
+    tag: '支撑 · 位移 · 加速度',
     related: ['newton-tube', 'gyroscope', 'apparent-weight-lab'],
     sources: [
       {
@@ -5939,6 +5956,14 @@ export const topics: Topic[] = [
       {
         title: 'Android Sensors — Motion sensors',
         url: 'https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion',
+      },
+      {
+        title: 'Analog Devices — Accelerometer sensing mechanisms',
+        url: 'https://www.analog.com/en/resources/technical-articles/accelerometer-and-gyroscopes-sensors-operation-sensing-and-applications.html',
+      },
+      {
+        title: 'Analog Devices — Suspended mass and differential capacitance',
+        url: 'https://www.analog.com/en/resources/analog-dialogue/articles/dual-axis-low-g-fully-integrated-accelerometers.html',
       },
     ],
     number: '206',

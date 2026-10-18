@@ -1,0 +1,220 @@
+{
+  "sceneSlug": "bio-membrane-evidence",
+  "owner": "/root/biology_inventory",
+  "status": "author-measured-timing-frozen-awaiting-root-static-review",
+  "date": "2026-10-18T13:08:53.297330+00:00",
+  "commit": "b06f2c2f12b640ab4bcd6216a47fe686b8c2bfd7",
+  "sourceHashes": {
+    "src/components/experiments/BioMembraneEvidence.tsx": "11898ea7144afd97863f6eb547d7d42d9eb6be0593b19833e90351ec7df9946b",
+    "src/models/bio-membrane-evidence.ts": "d9a0c9803a07d577f63f24f541e128a86d1c3af9b033fcc3dd2d074a37018cec",
+    "src/models/bio-membrane-evidence.test.ts": "a876a4ea2e31027c8d20f68ec554068f78e7437a86e475d4af5d8f06b0700fd1",
+    "src/styles/bio-membrane-evidence.css": "9403e75e7c938794a68fd7a2518f94956a37ea96eb136f15e17893977f42d4b3",
+    "src/content/bio-membrane-evidence.mdx": "d031bf1d75db650db921227eb2f90407eda463b4d5da55fa322ff7f3ad1781c9",
+    "src/content/en/bio-membrane-evidence.mdx": "7dbf092383c02c89e6a451085434010b00643cd58d57e1092f6ca3b89ca54654",
+    "src/components/covers/BioMembraneEvidenceCover.astro": "676a23eb042d85a1fc682cf4e22008f522b9b4fae95ecce26cd4a2cc9598ed0f",
+    "drafts/bio-membrane-evidence/brief.md": "3134b4d62db90014c99b0f39efb056eadca2f0fc3b7874968a3ff530a9367eb3",
+    "drafts/bio-membrane-evidence/principle-first-packet.json": "7c8c43f190f7103cf9dc22ef9e05d72fb3e71f1d0bf3d0cf3b8ea5ef9bc90de1"
+  },
+  "plannedDurationSeconds": 214,
+  "chapterIds": ["permeability", "monolayer", "tension", "em", "fusion", "mosaic", "build"],
+  "checks": [
+    {
+      "type": "source-and-scientific-review",
+      "status": "passed-for-disclosed-teaching-model",
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-membrane-evidence/ready-brief.json",
+        "drafts/bio-membrane-evidence/principle-first-packet.json"
+      ],
+      "notes": "Textbook P40–46 text read, selected P42/43/46 rendered. Original Gorter five-page scan read with independent A/B data. Singer–Nicolson selected P720–722 and figures read, not all pages. Frye–Edidin publisher abstract and Walter–Gutknecht publisher summary read; no claim of inaccessible full text. Historical time samples remain distinct; continuous diffusion is an explicitly 1D explanatory model with angular D."
+    },
+    {
+      "type": "automated-model-tests",
+      "status": "passed",
+      "command": "pnpm exec vitest run src/models/bio-membrane-evidence.test.ts",
+      "count": 13,
+      "notes": "Independent conservation/equilibrium, immutable observations, corrected area estimate consistency, equal-width area geometry, lipid identity/rigid tails, force balance, contrast normalization, distinct historical samples, random-path and anchored continuity, population Fourier decay, orientation constraints and director boundaries."
+    },
+    {
+      "type": "focused-typescript",
+      "status": "passed",
+      "command": "pnpm exec tsc --noEmit --jsx react-jsx --module esnext --moduleResolution bundler --target ES2022 --allowSyntheticDefaultImports --resolveJsonModule --skipLibCheck --types astro/client src/components/experiments/BioMembraneEvidence.tsx src/models/bio-membrane-evidence.ts"
+    },
+    {
+      "type": "browser-keyframe-capture-and-layout-measurement",
+      "status": "passed",
+      "count": 81,
+      "languages": ["zh", "en"],
+      "viewports": [
+        [320, 900],
+        [390, 900],
+        [1280, 900]
+      ],
+      "minBodyTextPx": 16,
+      "maxCompletePlayerHeightPx": 604.046875,
+      "horizontalOverflowCount": 0,
+      "pageErrors": [],
+      "evidence": "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/report.json",
+      "notes": "Saved narration off and reduced motion. Capture count is not a claim of manually viewing every frame. Phone sizes are browser emulation, not a physical-device test."
+    },
+    {
+      "type": "browser-keyframe-capture-and-layout-measurement",
+      "status": "passed",
+      "count": 54,
+      "languages": ["zh", "en"],
+      "viewports": [[320, 568]],
+      "minBodyTextPx": 16,
+      "maxCompletePlayerHeightPx": 516.984375,
+      "horizontalOverflowCount": 0,
+      "pageErrors": [],
+      "evidence": "artifacts/teaching-principles/biology-next-membrane-evidence/short-keyframes/report.json",
+      "notes": "Saved narration off and reduced motion. Capture count is not a claim of manually viewing every frame. Phone sizes are browser emulation, not a physical-device test."
+    },
+    {
+      "type": "actual-320x568-viewport-and-author-visual-inspection",
+      "status": "passed",
+      "count": 6,
+      "operation": "Native element.scrollIntoView with block:start and behavior:instant; local short-screen margin compensates global scroll padding after static header leaves viewport.",
+      "maxPlayerBottomPx": 532.765625,
+      "minBodyTextPx": 16,
+      "allFit": true,
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-membrane-evidence/short-viewport/en-area-hypotheses.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/short-viewport/en-permeability.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/short-viewport/en-protein.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/short-viewport/en-build.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/short-viewport/zh-area-hypotheses.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/short-viewport/zh-protein.png"
+      ],
+      "notes": "All six final full-viewport images actually viewed by author. Area evidence/predictions, entry curves, protein sidedness and fixed-material limitation readable; playback and chapter controls entirely visible."
+    },
+    {
+      "type": "author-causal-still-inspection",
+      "status": "passed-for-inspected-stills",
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-area-objects.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-area-data.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-area-hypotheses.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-area-fold.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/en-390-area-water.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/en-390-area-loss.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-partition.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-fusion-counterfactual.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/en-390-fusion-samples.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/en-390-diffusion.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-mosaic-protein.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/en-390-build-wrong.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-320-build-behavior.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/en-390-em-blur.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/keyframes/zh-1280-adsorption.png"
+      ],
+      "notes": "These causal views were actually inspected during author review; final compact-caption captures replaced files at the same paths. Six final whole-viewport stills are independently recorded above. Not a claim of complete continuous viewing."
+    },
+    {
+      "type": "cover-and-cards",
+      "status": "passed",
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-membrane-evidence/cover-review/cover.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/cover-review/zh-1280-card.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/cover-review/zh-320-card.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/cover-review/en-390-card.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/cover-review/report.json"
+      ],
+      "notes": "Actually viewed PNG and desktop/phone cards. Equal-width independent area evidence and bilayer-protein geometry share the model. Approximate-equality symbol uses explicit vector paths to avoid raster font loss. All model consumers updated."
+    },
+    {
+      "type": "actual-ui-interaction",
+      "status": "passed",
+      "count": 11,
+      "evidence": "artifacts/teaching-principles/biology-next-membrane-evidence/interactions/report.json",
+      "notes": "Actual clicks and range keyboard operations test deep link, current-topic explore, parameter response, wrong/repair orientation, persistent explicit topic, full-film endpoint and replay. No audio claim."
+    },
+    {
+      "type": "actual-bilingual-textbook-window-boundaries",
+      "status": "passed",
+      "count": 14,
+      "evidence": "artifacts/teaching-principles/biology-next-membrane-evidence/windows/report.json",
+      "notes": "All seven real textbook URLs in both languages: initial chapter/min/max, keyboard seek just before endpoint then real Play and automatic stop, same terminal chapter, replay at entry start, and explore following entry. Planned 214s timeline; root must repeat after measured narration changes timings."
+    },
+    {
+      "type": "root-independent-visual-review",
+      "status": "accepted-keyframes-and-short-viewport",
+      "owner": "/root",
+      "notes": "Root reports actual inspection of independent areas and candidates, lipid orientation, historical fusion samples, protein sidedness, conditional crossing, fixed-material behavior, cover EN390 and final six short-screen frames. Source-model review corrected area-factor inconsistency. Root accepted final voice freeze."
+    },
+    {
+      "type": "full-normal-speed-continuous-visual-viewing",
+      "status": "not-run-by-owner",
+      "reason": "Not performed by author; root owns final static complete playback."
+    },
+    {
+      "type": "new-bilingual-voice-generation-and-listening",
+      "status": "not-run-by-owner",
+      "reason": "Root is generating frozen narration; no new audio listening claimed."
+    },
+    {
+      "type": "physical-phone-performance",
+      "status": "not-run-by-owner",
+      "reason": "Only browser viewport emulation performed."
+    },
+    {
+      "type": "global-verify-preview-build-publication",
+      "status": "not-run-by-owner",
+      "reason": "Root owns shared integration, verify, static preview and deployment."
+    },
+    {
+      "type": "measured-voice-cue-calibration",
+      "status": "passed-technical-not-listening",
+      "evidence": "artifacts/teaching-principles/batch-3-timed-speech/",
+      "notes": "Both languages use measured ASR word times plus 0.45s narration onset. Local director aligns all seven chapters, orders blur before historical chemical interpretation, and shows correct water contact before the wrong-orientation counterexample. The original recordings and shared files were not changed."
+    },
+    {
+      "type": "calibrated-model-and-timing-regression",
+      "status": "passed",
+      "count": 16,
+      "command": "pnpm exec vitest run src/models/bio-membrane-evidence.test.ts",
+      "notes": "Adds language-specific area/folding/loss cue boundaries, blur-before-hypothesis order, continuous correct/wrong material orientation and measured total225s. Focused TypeScript also passed."
+    },
+    {
+      "type": "measured-keyframes-layout-capture",
+      "status": "passed",
+      "count": 42,
+      "evidence": "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/report.json",
+      "notes": "34 complete320x568 player frames (17 in each language), plus four1280 desktop and four390 frames; expected shot and rendered16px text checks pass, no overflow or page errors."
+    },
+    {
+      "type": "author-measured-visual-inspection",
+      "status": "passed-for-inspected-stills",
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/zh-320-fold.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-fold.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-loss.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/zh-320-image-blur.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-image-interpretation.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/zh-1280-fold.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/zh-320-build-correct.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/zh-320-build-wrong.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-build-correct.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-build-wrong.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-390-build-wrong.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/zh-320-anchor.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-heads-water.png",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-cues/en-320-partition.png"
+      ],
+      "notes": "All14listed final images actually viewed. Does not claim all42stills or continuous film were manually watched."
+    },
+    {
+      "type": "measured-actual-ui-and-entry-windows",
+      "status": "passed",
+      "interactionChecks": 11,
+      "bilingualEntryChecks": 14,
+      "evidence": [
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-interactions/report.json",
+        "artifacts/teaching-principles/biology-next-membrane-evidence/measured-windows/report.json"
+      ],
+      "notes": "Actual clicks and keyboard controls against225s timeline. One initial test selected the last SVG path, which became a hypothesis marker after cue reordering; corrected selector targets the actual contrast curve and passes. This was a selector defect, not an ignored functional failure."
+    }
+  ],
+  "nextStep": "Root owns full static verification, actual voice/listening acceptance and authorized delivery. Owned source is frozen; author continues only ignored next-scene research until further scoped instruction.",
+  "measuredDurationSeconds": 225,
+  "measuredCalibrationDate": "2026-10-18T13:14:24.089943+00:00"
+}

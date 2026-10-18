@@ -111,7 +111,7 @@
 | [干湿对照与氯气漂白](../../src/content/chem-chlorine-bleaching.mdx)               | 1:29 | 同样的氯气，为什么纸条表现不同？                     |
 | [容量瓶与定量配液](../../src/content/chem-solution-preparation.mdx)               | 2:58 | 洗涤和定容，分别控制了什么？                         |
 | [阴离子的两步证据](../../src/content/chem-anion-tests.mdx)                        | 2:39 | 出现白色沉淀，就足以认出阴离子吗？                   |
-| [沉淀的生成、溶解与转化](../../src/content/chem-precipitation-paths.mdx)          | 3:50 | 沉淀出现以后，离子去了哪里？                         |
+| [沉淀的生成、溶解与转化](../../src/content/chem-precipitation-paths.mdx)          | 4:15 | 沉淀变了，怎样证明离子的去向？                       |
 | [电子得失与电子对偏移](../../src/content/chem-electron-transfer.mdx)              | 1:31 | 氧化数改变，一定是完整电子离开了吗？                 |
 | [焰色与原子光谱](../../src/content/chem-flame-spectra.mdx)                        | 3:18 | 一团颜色里，藏着哪些原子信息？                       |
 | [钠与过氧化钠的证据链](../../src/content/chem-sodium-reactions.mdx)               | 3:42 | 同样含钠，遇到空气和水会怎样？                       |
@@ -167,7 +167,7 @@
 | [细胞里的分泌路线](../../src/content/bio-cellular-logistics.mdx)              | 1:58 | 蛋白质怎样离开制造它的细胞？                   |
 | [从肽键到胰岛素](../../src/content/bio-protein-machines.mdx)                  | 1:35 | 一堆氨基酸为什么不是一个蛋白质？               |
 | [水为什么穿过细胞膜](../../src/content/bio-osmosis.mdx)                       | 4:22 | 水一直在来回，细胞为什么还会变瘪？             |
-| [细胞膜的证据链](../../src/content/bio-membrane-evidence.mdx)                 | 2:46 | 看见暗纹，就知道膜的成分了吗？                 |
+| [细胞膜的证据链](../../src/content/bio-membrane-evidence.mdx)                 | 3:45 | 看不清细胞膜，怎样知道它长什么样？             |
 | [可转移的化学信号](../../src/content/bio-chemical-signals.mdx)                | 2:12 | 神经没有接通，另一颗心为什么也慢了？           |
 | [神经信号的实验线索](../../src/content/bio-nerve-signals.mdx)                 | 2:34 | 电表的两次偏转，怎样连到神经之间的传递？       |
 | [内环境的缓冲实验](../../src/content/bio-buffer-comparison.mdx)               | 1:51 | 同样加入酸，三份样液为何变化不同？             |
@@ -207,7 +207,7 @@
 | [微小形变观察](../../src/content/small-deformation-lab.mdx)          | 1:51 | 桌面几乎看不出弯曲，光点为什么动了？       |
 | [悬挂法找重心](../../src/content/suspension-center-of-gravity.mdx)   | 1:53 | 两次悬挂，怎样找到薄板的同一个点？         |
 | [自由落体小实验](../../src/content/free-fall-activities.mdx)         | 2:18 | 一张纸、一对石头、一把尺，分别能回答什么？ |
-| [手机加速度实验](../../src/content/phone-accelerometer-lab.mdx)      | 2:46 | 自由下落时，手机为什么可能读出零？         |
+| [手机怎样感觉加速度](../../src/content/phone-accelerometer-lab.mdx)  | 3:47 | 没动读9.8，下落为什么读零？                |
 | [纸带怎样记录运动](../../src/content/ticker-tape-lab.mdx)            | 3:03 | 同样的节拍，为什么点越来越疏？             |
 | [牛顿管实验](../../src/content/newton-tube.mdx)                      | 2:00 | 羽毛落得慢，是因为比较轻吗？               |
 | [质心](../../src/content/center-of-mass.mdx)                         | 2:21 | 内部运动能把整个系统带走吗？               |

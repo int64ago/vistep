@@ -1546,9 +1546,16 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'chemistry',
     minAge: 14,
     keywords: {
-      zh: ['沉淀的生成、溶解与转化', '沉淀转化', '硫酸钡', '氢氧化镁溶解'],
+      zh: [
+        '沉淀的生成、溶解与转化',
+        '沉淀变了，怎样证明离子的去向？',
+        '沉淀转化',
+        '硫酸钡',
+        '氢氧化镁溶解',
+      ],
       en: [
         'Precipitation, dissolution and conversion',
+        'When a precipitate changes, how can we trace its ions?',
         'precipitate conversion',
         'barium sulfate',
         'magnesium hydroxide dissolution',
@@ -1695,8 +1702,19 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['细胞膜的证据链', '细胞膜', '流动镶嵌模型', '细胞融合'],
-      en: ['Evidence for membrane structure', 'cell biology', 'biology experiments'],
+      zh: [
+        '看不清细胞膜，怎样知道它长什么样？',
+        '细胞膜的证据链',
+        '细胞膜',
+        '流动镶嵌模型',
+        '细胞融合',
+      ],
+      en: [
+        'How can we infer a membrane too thin to see?',
+        'Evidence for membrane structure',
+        'cell biology',
+        'biology experiments',
+      ],
     },
   },
   'bio-chemical-signals': {
@@ -3055,8 +3073,19 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'mechanisms',
     minAge: 14,
     keywords: {
-      zh: ['手机加速度实验', '自由落体', '加速度传感器', '电梯加速度', '比力', '去重力'],
+      zh: [
+        '手机怎样感觉加速度',
+        '没动读9.8，下落为什么读零？',
+        '手机加速度实验',
+        '自由落体',
+        '加速度传感器',
+        '电梯加速度',
+        '比力',
+        '去重力',
+      ],
       en: [
+        'How a phone senses acceleration',
+        'Still reads 9.8; why does falling read zero?',
         'Phone accelerometer experiments',
         'specific force',
         'free fall',

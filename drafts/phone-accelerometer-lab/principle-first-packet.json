@@ -1,0 +1,475 @@
+{
+  "slug": "phone-accelerometer-lab",
+  "status": "frozen-for-root-after-measured-speech-calibration",
+  "premise": {
+    "zh": "跟踪同一质量块，区分内部位移读数、速度与外壳加速度。",
+    "en": "Track one proof mass to distinguish internal displacement signal, velocity and casing acceleration."
+  },
+  "topic": {
+    "name": {
+      "zh": "手机怎样感觉加速度",
+      "en": "How a phone senses acceleration"
+    },
+    "title": {
+      "zh": "没动读9.8，下落为什么读零？",
+      "en": "Still reads 9.8; why does falling read zero?"
+    },
+    "question": {
+      "zh": "没动读9.8，下落为什么读零？",
+      "en": "Still reads 9.8; why does falling read zero?"
+    },
+    "description": {
+      "zh": "放大手机里的悬挂质量块，从支撑、释放与接住理解读数，再用电梯和测力计推导加速度。",
+      "en": "Magnify a suspended proof mass to explain support, release and catch, then infer acceleration in a lift with two instruments."
+    },
+    "tag": {
+      "zh": "支撑 · 位移 · 加速度",
+      "en": "Support · Displacement · Acceleration"
+    }
+  },
+  "curriculum": [
+    {
+      "entryId": "required-1-phone-free-fall",
+      "sceneVariant": "required-1-phone-free-fall",
+      "chapterIds": ["supported", "fall", "corrected"],
+      "selectionChanged": false,
+      "sourcePrintedPages": [49, 50],
+      "question": {
+        "zh": "手机没动读9.8，下落为什么读零？",
+        "en": "Why does a stationary phone read 9.8, but a falling phone read zero?"
+      },
+      "principle": {
+        "zh": "支撑通过外壳和悬挂使质量块偏移；固定朝向下，稳定原始读数减g才对应运动加速度。",
+        "en": "Support strains the suspended mass through the case; with fixed orientation, settled raw signal minus g gives coordinate acceleration."
+      },
+      "transfer": {
+        "zh": "接住时手机仍向下运动，加速度和校正输出是什么符号？",
+        "en": "During the catch, the phone still moves down. What signs do acceleration and the corrected output have?"
+      },
+      "transferAnswer": {
+        "zh": "向上为正时，加速度为正，因为向下速度在减小；响应稳定后的校正输出也为正。",
+        "en": "With upward positive, acceleration is positive because downward velocity decreases in magnitude; the settled corrected output is also positive."
+      }
+    },
+    {
+      "entryId": "required-1-elevator-acceleration",
+      "sceneVariant": "required-1-elevator-acceleration",
+      "chapterIds": ["lift", "lift-correction", "spring-meter"],
+      "selectionChanged": false,
+      "sourcePrintedPages": [112],
+      "contextPrintedPages": [111],
+      "question": {
+        "zh": "电梯一直向上，为什么读数先大后小？",
+        "en": "Why can an upward lift journey give first larger, then smaller readings?"
+      },
+      "principle": {
+        "zh": "速度变化决定所需支撑；测力计依据F−mg=ma，等幅加减速时可由两次稳定示数消去质量。",
+        "en": "Changing velocity changes required support. A force meter uses F−mg=ma; equal acceleration magnitudes let two settled readings eliminate mass."
+      },
+      "transfer": {
+        "zh": "同一重物启动读2.16N、制动读1.76N，若加速度等幅，能否不用质量求a？",
+        "en": "The same mass reads 2.16N during startup and 1.76N during braking. With equal acceleration magnitudes, can a be found without the mass?"
+      },
+      "transferAnswer": {
+        "zh": "a=g(G₁−G₂)/(G₁+G₂)=1.00m/s²；若两阶段不等幅，此式不能恢复任一阶段的加速度。",
+        "en": "a=g(G₁−G₂)/(G₁+G₂)=1.00m/s². If the magnitudes differ, this formula does not recover either stage acceleration."
+      }
+    }
+  ],
+  "film": {
+    "plannedDuration": 213,
+    "chapters": [
+      {
+        "id": "supported",
+        "index": 0,
+        "title": {
+          "zh": "没动，为什么读9.8？",
+          "en": "Still, but reading 9.8?"
+        },
+        "caption": {
+          "zh": "支撑让内部质量块偏离中位。",
+          "en": "Support shifts the proof mass."
+        },
+        "duration": 30,
+        "at": 0,
+        "cue": {
+          "at": 0.45,
+          "text": {
+            "zh": "手机明明没动，为什么读数是九点八？先别把它当速度计。看芯片里的等效结构：外壳固定着电极和弹性悬挂，金点标记的是同一块小质量。手托住外壳，质量块受重力向下偏，弹力向上平衡。上下电极的间隙不再相等，差动电容把偏移变成读数。静止时仍然受到支撑，九点八记录的是这种作用。",
+            "en": "The phone is still, so why does it read nine point eight? It is not a speedometer. Zoom into an equivalent sensor: the case holds fixed electrodes and an elastic suspension. Follow the gold mark on the proof mass. The hand supports the case; gravity displaces the mass downward, balanced by elastic force. Unequal electrode gaps produce unequal capacitances, which encode the displacement. Rest does not mean an absence of support."
+          }
+        }
+      },
+      {
+        "id": "fall",
+        "index": 1,
+        "title": {
+          "zh": "下落，为什么反而接近零？",
+          "en": "Falling, yet almost zero?"
+        },
+        "caption": {
+          "zh": "支撑撤去，读数回零；重力仍在。",
+          "en": "Signal near zero; gravity remains."
+        },
+        "duration": 33,
+        "at": 30,
+        "cue": {
+          "at": 30.45,
+          "text": {
+            "zh": "撤开手，读数会怎样？先看放慢的毫秒响应：外壳先失去支撑，质量块不会瞬间跳回中间。它相对外壳的偏移逐渐减小，电极间隙趋于相等，读数也连续接近零。恢复正常运动时间：手机越来越快地向下落，重力并没有消失。零读数说明这里的内部弹性变形消退了，不是手机没有加速度。现在想一想，手接住它时会发生什么？",
+            "en": "What happens when the hand withdraws? Slow down the millisecond response. The case loses support first; the proof mass cannot jump instantly to the center. Its relative displacement relaxes, the electrode gaps become equal, and the signal approaches zero continuously. Return to the motion clock: the phone is falling faster, and gravity is still present. A zero signal here reflects relaxed elastic strain, not zero coordinate acceleration. Predict what changes when the hand catches it."
+          }
+        }
+      },
+      {
+        "id": "corrected",
+        "index": 2,
+        "title": {
+          "zh": "接住时，向下还是向上？",
+          "en": "At the catch: down or up?"
+        },
+        "caption": {
+          "zh": "接住的正峰，来自向下减速。",
+          "en": "Catch peak: slowing downward motion."
+        },
+        "duration": 39,
+        "at": 63,
+        "cue": {
+          "at": 63.45,
+          "text": {
+            "zh": "手先接触手机，才开始把它接住。外壳减慢下落，质量块来不及跟上，相对外壳向下偏得更多，读数上升。看同一时刻：速度仍向下，加速度却向上，因为向下的速度正在减小。再把原始信号减去固定的重力参考九点八。静止成为零，下落成为负九点八，接住出现正峰。两条曲线使用同一个时钟；在极短的传感器响应期间，校正信号也有滞后。先认清输出和轴向，才能读懂教材中的下落曲线。",
+            "en": "The hand makes contact before it slows the phone. As the case decelerates, the proof mass lags and moves farther down relative to it, increasing the signal. At the same instant, velocity is downward while acceleration is upward: downward speed is decreasing. Now subtract the fixed gravity reference, nine point eight. Rest becomes zero, free fall becomes minus nine point eight, and the catch gives a positive peak. Both traces share one clock. During the brief sensor response, the corrected signal also lags. Identify the output and axis before interpreting the textbook curve."
+          }
+        }
+      },
+      {
+        "id": "lift",
+        "index": 3,
+        "title": {
+          "zh": "电梯一直上行，读数会一直偏大吗？",
+          "en": "Rising throughout: always above g?"
+        },
+        "caption": {
+          "zh": "读数随速度的变化，不随上行方向。",
+          "en": "Changing speed changes the signal."
+        },
+        "duration": 35,
+        "at": 102,
+        "cue": {
+          "at": 102.45,
+          "text": {
+            "zh": "换成向上运行的电梯。先看传感器：同一外壳里的质量块，由悬挂支撑。启动时，轿厢和手机一起向上加速，偏移比静止时更大，稳定读数是十点八。匀速后，手机仍在上行，读数却回到九点八。到站前开始制动，手机还向上走，但越走越慢，读数降到八点八。三个阶段都在上行，读数却不同。决定差别的是速度怎样变化，不是已经走得多快。",
+            "en": "Consider an upward lift journey. First identify the suspended proof mass inside the case. During startup, cabin and phone accelerate upward together. The mass deflects more than at rest, giving a settled signal of ten point eight. During cruising, the phone still rises but the signal returns to nine point eight. Before the stop, it is still moving upward while slowing; the signal falls to eight point eight. All three stages rise. What matters is how velocity changes, not how fast the lift already travels."
+          }
+        }
+      },
+      {
+        "id": "lift-correction",
+        "index": 4,
+        "title": {
+          "zh": "上行减速，加速度是什么符号？",
+          "en": "Rising and slowing: which sign?"
+        },
+        "caption": {
+          "zh": "同向参考下，读数减g得到稳定加速度。",
+          "en": "Fixed axis: settled signal − g = a."
+        },
+        "duration": 31,
+        "at": 137,
+        "cue": {
+          "at": 137.45,
+          "text": {
+            "zh": "固定向上为正，保持手机朝向不变。启动阶段的十点八减去九点八，得到正一。匀速阶段相减得到零，即使手机每秒仍向上走两米。到制动阶段，先预测符号：它仍在上行，但速度正在减小。八点八减去九点八，结果是负一，加速度向下。读数小于九点八不等于手机正在向下走。若手机转动，重力在各轴的分量也会变，就不能照搬这个常数相减。",
+            "en": "Keep the upward axis and phone orientation fixed. During startup, ten point eight minus nine point eight gives plus one. During cruising, subtraction gives zero even though the phone rises at two metres per second. Before revealing braking acceleration, predict its sign. The phone still rises but slows. Eight point eight minus nine point eight is minus one: acceleration points down. A signal below gravity does not mean downward travel. Rotation changes gravity components, so this constant subtraction would no longer apply."
+          }
+        }
+      },
+      {
+        "id": "spring-meter",
+        "index": 5,
+        "title": {
+          "zh": "不用手机，怎样求出加速度？",
+          "en": "How can a force meter find acceleration?"
+        },
+        "caption": {
+          "zh": "两次稳定拉力，在等幅条件下消去质量。",
+          "en": "Equal magnitudes let us eliminate mass."
+        },
+        "duration": 45,
+        "at": 168,
+        "cue": {
+          "at": 168.45,
+          "text": {
+            "zh": "不用手机，挂一个弹簧测力计也能研究电梯。挂钩连接轿厢顶部，弹簧拉住同一重物。这里比较稳定阶段，略去起始振动。零点二千克的重物，启动、匀速、制动时分别读二点一六、一点九六、一点七六牛。由拉力减重力等于质量乘加速度，得到拉力除以质量，再减去重力加速度。教材还问：如果不知道质量呢？当启动和制动的加速度大小相等，两次读数一加得到两倍重力，一减得到两倍质量乘加速度。相除消去质量，算得一米每二次方秒。若加速和制动不等幅，这个捷径就不成立。",
+            "en": "A force meter offers another way to investigate the lift. Its hook is connected to the cabin roof, and its spring supports the same mass. Compare settled stages, omitting initial vibration. A mass of zero point two kilograms gives two point one six, one point nine six, and one point seven six newtons during startup, cruising, and braking. Force minus weight equals mass times acceleration, so acceleration is force divided by mass, minus gravity. What if the mass is unknown? If startup and braking accelerations have equal magnitudes, adding the readings gives twice the weight; subtracting gives twice mass times acceleration. Their ratio eliminates mass, yielding one metre per second squared. Unequal magnitudes invalidate this shortcut."
+          }
+        }
+      }
+    ]
+  },
+  "director": [
+    {
+      "chapterId": "supported",
+      "supersededProvisionalNormalizedBeats": [
+        {
+          "from": 0,
+          "to": 0.24,
+          "view": "handset"
+        },
+        {
+          "from": 0.24,
+          "to": 1,
+          "view": "sensor"
+        }
+      ]
+    },
+    {
+      "chapterId": "fall",
+      "physicalTime": ".34–.4 s withdrawal; .4–.4035 s explicitly slowed response; then normal motion to .65 s.",
+      "supersededProvisionalNormalizedBeats": [
+        {
+          "from": 0,
+          "to": 0.15,
+          "view": "handset"
+        },
+        {
+          "from": 0.15,
+          "to": 0.54,
+          "view": "sensor: 0–3.5 ms release"
+        },
+        {
+          "from": 0.54,
+          "to": 0.76,
+          "view": "sensor: settled"
+        },
+        {
+          "from": 0.76,
+          "to": 1,
+          "view": "handset: falling/predict catch"
+        }
+      ]
+    },
+    {
+      "chapterId": "corrected",
+      "supersededProvisionalNormalizedBeats": [
+        {
+          "from": 0,
+          "to": 0.14,
+          "view": "catch: approach/contact"
+        },
+        {
+          "from": 0.14,
+          "to": 0.35,
+          "view": "sensor: 0–3.5 ms catch"
+        },
+        {
+          "from": 0.35,
+          "to": 0.58,
+          "view": "catch: v down/a up"
+        },
+        {
+          "from": 0.58,
+          "to": 1,
+          "view": "trace"
+        }
+      ]
+    },
+    {
+      "chapterId": "lift",
+      "desktop": "Cabin and sensor section coexist; both use the same physical time. The phone alternates internal and whole-cabin evidence.",
+      "supersededProvisionalNormalizedBeats": [
+        {
+          "from": 0,
+          "to": 0.18,
+          "view": "sensor: independent introduction"
+        },
+        {
+          "from": 0.18,
+          "to": 0.43,
+          "view": "lift: speeding"
+        },
+        {
+          "from": 0.43,
+          "to": 0.68,
+          "view": "lift: cruising"
+        },
+        {
+          "from": 0.68,
+          "to": 1,
+          "view": "lift: braking"
+        }
+      ],
+      "supersededPhoneInternalIntervals": [
+        [0, 0.31],
+        [0.43, 0.54],
+        [0.68, 0.8]
+      ]
+    },
+    {
+      "chapterId": "lift-correction",
+      "supersededProvisionalNormalizedBeats": [
+        {
+          "from": 0,
+          "to": 0.3,
+          "view": "conversion: +1"
+        },
+        {
+          "from": 0.3,
+          "to": 0.55,
+          "view": "conversion: 0"
+        },
+        {
+          "from": 0.55,
+          "to": 0.76,
+          "view": "conversion: predict brake"
+        },
+        {
+          "from": 0.76,
+          "to": 1,
+          "view": "conversion: reveal −1"
+        }
+      ]
+    },
+    {
+      "chapterId": "spring-meter",
+      "supersededProvisionalNormalizedBeats": [
+        {
+          "from": 0,
+          "to": 0.28,
+          "view": "meter settled start"
+        },
+        {
+          "from": 0.28,
+          "to": 0.43,
+          "view": "meter settled cruise"
+        },
+        {
+          "from": 0.43,
+          "to": 0.58,
+          "view": "meter settled brake"
+        },
+        {
+          "from": 0.58,
+          "to": 0.76,
+          "view": "same two readings: sum=2mg; difference=2ma"
+        },
+        {
+          "from": 0.76,
+          "to": 0.88,
+          "view": "ratio eliminates mass; unknown numeric result"
+        },
+        {
+          "from": 0.88,
+          "to": 1,
+          "view": "reveal 1.00 m/s²"
+        }
+      ]
+    }
+  ],
+  "scientificContracts": [
+    "Dynamic raw = −ω²q; corrected = raw−g. The prescribed casing acceleration stays separately named.",
+    "Critical damping; q and q velocity continuous. Release does not instantly give the proof mass the casing acceleration.",
+    "Elastic arrow excludes damping. The optional total suspension readout includes −2ωq velocity and may reverse.",
+    "Illustrative500Hz response, neutral clear gaps4μm; actual chip structure and dimensions vary.",
+    "Whole cabin, support and phone share the same world transform. Sensor cutaway is a magnified case-relative view.",
+    "Force-meter views compare settled plateaus, not instantaneously moving real springs. Equal acceleration magnitudes are required for the mass-elimination shortcut."
+  ],
+  "sources": [
+    {
+      "url": "https://www.analog.com/en/resources/technical-articles/accelerometer-and-gyroscopes-sensors-operation-sensing-and-applications.html",
+      "readScope": "Basic operation and differential sensing, figures2–3 and text; capacitance and damping context.",
+      "use": "Representative mass/spring/fixed-electrode mechanism; no exact phone chip claim."
+    },
+    {
+      "url": "https://www.analog.com/en/resources/analog-dialogue/articles/dual-axis-low-g-fully-integrated-accelerometers.html",
+      "readScope": "Sensor Structure and Circuit Architecture.",
+      "use": "Differential capacitor, polysilicon suspension and below-resonance/filtered response. Numerical dynamics here are independently derived, not a device specification."
+    },
+    {
+      "url": "https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion",
+      "readScope": "Accelerometer and linear acceleration sections, including fixed upward z-axis and table/freefall behaviour.",
+      "use": "Settled sign conventions and gravity subtraction; no attribution of a particular filtering pipeline to PEP screenshot."
+    }
+  ],
+  "evidence": {
+    "modelTests": "18/18 targeted tests passed, including actual bilingual event timing and deterministic backward seeking; scoped tsc passed.",
+    "visual": "Measured-speech review-07: 84 keyframes (82 pass, two early-freefall g labels clipped); review-08: all 60 affected/representative bilingual frames pass after gravity-label placement correction. Author personally inspected selected actual images; root independent static/full-playback review remains separate.",
+    "controls": "Both textbook entries × both languages, initial variant, real keyboard range update, watch/explore persistence, every view, each meter stage and reveal exercised.",
+    "speech": "Root-generated measured duration 226.5s; all 12 independently transcribed word-time files reviewed; director calibrated per locale. No subjective listening claimed.",
+    "implementation": "Frozen; root owns all product files after handoff."
+  },
+  "uiTranslations": {
+    "固定电极": "Fixed electrodes",
+    "质量块": "Proof mass",
+    "间隙": "Gaps",
+    "同一轿厢、同一手机": "Same cabin, same phone",
+    "芯片藏在这里": "The chip is inside",
+    "同一时刻的两种输出": "Two outputs, one clock",
+    "f − g，固定朝向": "f − g, fixed orientation",
+    "同一重物，稳定示数": "Same mass, settled readings",
+    "加速": "Speeding",
+    "制动": "Braking",
+    "等幅加减速": "Equal acceleration magnitudes",
+    "托住，静止": "Supported, at rest",
+    "自由下落": "Free fall",
+    "接住，减速": "Catch and slow",
+    "上行加速": "Rising, speeding",
+    "上行匀速": "Rising, steady",
+    "上行减速": "Rising, braking",
+    "静止": "At rest",
+    "响应慢镜头": "Response slowed",
+    "稳定阶段取样": "Settled-stage samples",
+    "外壳、悬挂质量块与同一时刻的加速度计输出": "Casing, suspended proof mass and the sensor output at one instant",
+    "仍在上行，加速度朝哪边？": "Still rising. Which way is a?",
+    "方向不同，并不矛盾": "Different directions are possible",
+    "传感器读数": "Sensor signal",
+    "校正信号": "Corrected signal",
+    "弹力 / 重力": "Elastic / gravity",
+    "竖直速度": "Vertical velocity",
+    "运动情境": "Motion",
+    "释放与接住": "Release and catch",
+    "电梯": "Lift",
+    "观察对象": "View",
+    "传感器内部": "Inside the sensor",
+    "外部运动": "External motion",
+    "同刻曲线": "Same-time traces",
+    "测力计": "Force meter",
+    "稳定阶段": "Settled stage",
+    "匀速": "Cruising",
+    "回到测力计": "Return to meter",
+    "不知道质量，能求加速度吗？": "Can two readings eliminate mass?",
+    "运动时刻": "Physical time",
+    "查看释放响应": "Inspect release response",
+    "这个等效模型如何计算？": "How is this equivalent model calculated?",
+    "微米位移已放大；示意单轴悬挂质量块与差动电容，不对应某款手机的实际芯片。弹力箭头只表示弹性项，阻尼另计；阻尼会使瞬时悬挂合力与位移读数不同。": "Micrometre displacement is magnified. This single-axis spring and differential capacitor represent a mechanism, not a particular phone chip. The elastic arrow excludes damping; total suspension force and displacement signal differ during a transient.",
+    "悬挂合力 / 质量": "Total suspension / mass",
+    "向上为正，朝向固定。动态读数 f = −ω²q，校正读数为 f − g；只有稳定后才接近外壳的运动加速度。忽略质量块对外壳的反作用、旋转和噪声。": "Upward is positive and orientation stays fixed. The dynamic signal is f = −ω²q; its corrected signal is f − g and approaches casing acceleration only after settling. Proof-mass back-reaction, rotation and noise are omitted.",
+    "测力计只比较稳定阶段。用两读数消去质量还要求加速和制动的加速度大小相等。": "The force meter compares settled stages. Eliminating mass with two readings also requires equal acceleration and braking magnitudes.",
+    "接住后的毫秒响应": "Catch response, enlarged",
+    "上行制动": "Rising, braking",
+    "质量 m 未知": "Mass m is unknown",
+    "同一重物，略去初始振动": "Same mass; omit initial vibration"
+  },
+  "measuredSpeechDirector": {
+    "unit": "chapter-relative seconds, including 0.45 s cue lead-in",
+    "source": "src/models/phone-accelerometer-lab.ts: PHONE_SPEECH_EVENTS and phoneCausalShot",
+    "chapterStarts": [0, 30.5, 64, 103.5, 139, 175.5],
+    "duration": 226.5,
+    "audio": {
+      "zh": "phone-accelerometer-lab-zh-1540d99864d6.mp3",
+      "en": "phone-accelerometer-lab-en-179e5376e3c3.mp3"
+    },
+    "timedASR": "artifacts/teaching-principles/batch-3-timed-speech/phone-accelerometer-lab-{zh,en}-{0..5}.json",
+    "changes": [
+      "Separate locale event times keep spoken referents visible; same shared chapter timeline.",
+      "Release preserves the support-withdrawal, zero-time inertia and slowly relaxing relative displacement before returning to the world clock.",
+      "Catch shows contact, millisecond sensor response, same-instant opposite v/a, then recorded trace samples at rest/freefall/catch; a 3.5 ms inset resolves actual lag.",
+      "Phone lift view shows the cabin while narration names cabin motion, then the internal mass while narration names deflection. Desktop retains both.",
+      "Braking sign prediction holds until the actual numeric answer.",
+      "Three settled meter readings stay together during enumeration; known-mass equation then unknown-mass sum, difference, ratio and answer reveal follow the voice. English numeric answer is hidden until 45.29 s into chapter 5."
+    ],
+    "limitations": [
+      "Independent ASR timing and author silent keyframes are not subjective listening or full continuous viewing."
+    ]
+  }
+}

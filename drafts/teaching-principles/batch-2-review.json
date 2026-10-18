@@ -1,6 +1,6 @@
 {
   "batch": 2,
-  "status": "reviewed-awaiting-publication",
+  "status": "published-and-live-verified",
   "baselineCommit": "c2df2cc00a85f5379dccb04a836b952980575939",
   "owners": [
     "Codex (/root)",
@@ -145,7 +145,7 @@
       "evidence": "artifacts/teaching-principles/batch-2-continuous/report.json"
     }
   ],
-  "pending": ["Actions production confirmation"],
+  "pending": [],
   "ciPrerequisite": {
     "originalFirstBatchRun": 39125699621,
     "observedFailure": "Iodine exhaustive path test exceeded its 5s timeout twice; collection dictionary test also timed out once. No failed scientific assertion reported.",
@@ -178,7 +178,13 @@
     "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
   },
   "publication": {
-    "status": "pending",
-    "method": "Authorized main push triggers verified Actions publication; no duplicate manual deployment."
+    "status": "passed",
+    "commit": "b06f2c2f12b640ab4bcd6216a47fe686b8c2bfd7",
+    "run": "https://github.com/int64ago/vistep/actions/runs/39128938767",
+    "workerVersion": "fb01d15c-52a6-42d7-a1ce-450caff96e2f",
+    "finishedAt": "2026-10-18T13:11:28.414Z",
+    "evidence": "artifacts/teaching-principles/batch-2-deployment/deployment.json",
+    "rootLiveVerification": "artifacts/teaching-principles/batch-2-live.json",
+    "conditions": "Six bilingual pages HTTP200 and six live narration assets match the local reviewed MP3 SHA256 exactly. Actions published; no manual duplicate deployment."
   }
 }
