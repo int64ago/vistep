@@ -1,0 +1,23 @@
+<h2 id="understand">Statistics turn randomness into a measurement</h2>
+
+An individual lifetime is unpredictable, while an ensemble follows exponential decay. Tracing uses isotope chemistry; dating uses changes in a closed sample. Interpretation must distinguish physics from counting fluctuations, contamination and model assumptions.
+
+<h2 id="try">Repeat the sample and correct the signal</h2>
+
+Change elapsed time and generate another simulated ensemble. Compare fluctuations with the same expectation curve. The phosphorus view follows three compartments. Add modern carbon in the dating view and compare inferred age with model age.
+
+<h2 id="deeper">Calculations and limitations</h2>
+
+<details>
+
+<summary>Decay, compartment transport and mixing</summary>
+
+<div className="formula">N/N₀ = 2^(−t/T½); t = −T½ log₂(N/N₀)</div>
+
+Radon-222 uses a teaching half-life of 3.8235 days. A seeded pseudorandom exponential distribution assigns lifetimes to 160 displayed nuclei. Scrubbing time never resamples them. Dots represent simulated counts; the curve is the expectation. Daughter activity, detector efficiency, dead time and background are omitted.
+
+Phosphorus-32 uses 14.268 days. First-order soil-to-root and root-to-shoot rates are illustrative values of 0.2/day and 0.1/day. All compartments decay at the same rate, and their sum exactly matches the surviving initial tracer population. These rates do not support agricultural dosing advice.
+
+Carbon-14 uses a physical half-life of 5730 years, constant initial ratio and a closed sample. The mixed normalized ratio is (1−f)2^(−t/T½)+f, where f is modern carbon. This is not the conventional 5568-year radiocarbon reporting definition and includes no calendar calibration.
+
+</details>

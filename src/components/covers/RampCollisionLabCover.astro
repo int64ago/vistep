@@ -1,0 +1,50 @@
+---
+import { rampCollisionSetup, rampBallPath } from '../../models/ramp-collision-lab';
+const s = rampCollisionSetup(),
+  S = 240,
+  ox = 145,
+  oy = 51,
+  floor = oy + (s.drop + s.radius) * S,
+  P = (q: { x: number; y: number }) => ({ x: ox + q.x * S, y: oy + q.y * S });
+const paths = [s.v1, s.reference.speed, s.v2].map((v) =>
+  rampBallPath(s, v)
+    .map((q, i) => {
+      const p = P(q);
+      return `${i ? 'L' : 'M'}${p.x} ${p.y}`;
+    })
+    .join(' '),
+);
+const track =
+  s.ramp.trace
+    .map((q, i) => {
+      const slope = (-2 * s.height * q.x) / s.ramp.length ** 2,
+        n = Math.hypot(1, slope),
+        depth = s.radius + 2 / S,
+        p = P({ x: q.x - 2 * s.radius - (depth * slope) / n, y: q.y + depth / n });
+      return `${i ? 'L' : 'M'}${p.x} ${p.y}`;
+    })
+    .join(' ') + `L${ox} ${oy + s.radius * S + 2}`;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><path d={track} stroke="#b8cba4" stroke-width="4" fill="none"></path>{
+    paths.map((d, i) => (
+      <path
+        d={d}
+        stroke={['#b09b72', '#a6b791', '#bdcca9'][i]}
+        stroke-width="1.6"
+        stroke-dasharray={i === 1 ? '4 5' : undefined}
+        fill="none"
+      />
+    ))
+  }<path d={`M${ox} ${oy + 8}V${floor}`} stroke="#aabb9d" stroke-dasharray="3 4"></path><path
+    d={`M130 ${floor}H360v15H130Z`}
+    fill="#ece8d3"
+    stroke="#d8d9bc"></path>{
+    [0, s.M, s.P, s.N].map((x) => <circle cx={ox + x * S} cy={floor} r="2.4" fill="#aabb91" />)
+  }<circle cx={ox - 2 * s.radius * S} cy={oy} r={s.radius * S} fill="#b3a17c"></circle><circle
+    cx={ox}
+    cy={oy}
+    r={s.radius * S}
+    fill="#c9d5b4"></circle></svg
+>

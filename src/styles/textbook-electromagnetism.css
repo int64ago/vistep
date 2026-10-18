@@ -1,0 +1,178 @@
+.textbook-em {
+  --em-green: #608876;
+  --em-copper: #ac8750;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 22px 28px 18px;
+  color: #44594c;
+}
+.textbook-em-state {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 32px;
+  color: #6e7d6c;
+}
+.textbook-em-state span:last-child {
+  font-variant-numeric: tabular-nums;
+  color: #547663;
+}
+.textbook-em-apparatus {
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+  max-height: 360px;
+  margin: 8px auto 0;
+  overflow: visible;
+}
+.textbook-em-apparatus text {
+  font:
+    16px 'Manrope Variable',
+    'Noto Sans SC Variable',
+    sans-serif;
+  fill: #63745e;
+}
+.textbook-em-apparatus text.em-small {
+  font-size: 13px;
+}
+.textbook-em-readout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 50px;
+  padding: 9px 12px;
+  border-top: 1px solid #dfe6d6;
+  font-variant-numeric: tabular-nums;
+}
+.textbook-em-readout strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #4b6b57;
+}
+.textbook-em-controls {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+  padding: 19px 0 5px;
+  border-top: 1px solid #e0e6d9;
+}
+.textbook-em-controls .segmented,
+.textbook-em-controls .textbook-em-tabs {
+  grid-column: 1/-1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.textbook-em-controls .segmented button,
+.textbook-em-controls .textbook-em-tabs button {
+  min-height: 44px;
+  font-size: 16px;
+}
+.textbook-em-controls .control {
+  margin: 0;
+}
+.textbook-em-note {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #77816f;
+}
+.textbook-em-note summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.textbook-em-note summary::before {
+  content: '＋';
+  color: #93a28a;
+}
+.textbook-em-note[open] summary::before {
+  content: '−';
+}
+.textbook-em-note p {
+  margin: 7px 0 0;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.textbook-em-chart {
+  width: 100%;
+  height: auto;
+  max-height: 170px;
+}
+.textbook-em-chart text {
+  font-size: 16px;
+  fill: #6d7c65;
+}
+.textbook-em-twins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.textbook-em-twins > div {
+  min-width: 0;
+}
+.textbook-em-meters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  color: #54725e;
+}
+.textbook-em-meters b {
+  font-weight: 500;
+  color: #304f3a;
+}
+@media (max-width: 600px) {
+  .textbook-em {
+    padding: 13px 12px 10px;
+  }
+  .textbook-em-state {
+    font-size: 16px;
+    flex-wrap: wrap;
+    gap: 3px 10px;
+  }
+  .textbook-em-apparatus {
+    max-height: 295px;
+    margin-top: 6px;
+  }
+  .textbook-em-apparatus text {
+    font-size: 20px;
+  }
+  .textbook-em-apparatus text.em-small {
+    font-size: 17px;
+  }
+  .textbook-em-readout {
+    min-height: 45px;
+    gap: 9px;
+    padding: 8px 0;
+  }
+  .textbook-em-readout strong {
+    font-size: 19px;
+  }
+  .textbook-em-controls {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+  .textbook-em-twins {
+    gap: 8px;
+  }
+  .textbook-em-note {
+    margin-top: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .textbook-em * {
+    transition: none !important;
+  }
+}

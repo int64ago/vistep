@@ -3,11 +3,37 @@ import narration from './narration.json';
 import tracks from './audio-tracks.json';
 import { topics, type Topic } from './topics';
 import { localPath, localizedTopic, type Locale } from '../i18n';
+import {
+  curricula,
+  curriculumLessonPath,
+  curriculumPath,
+  getCurriculum,
+  getCurriculumLessons,
+} from './curricula';
 export const siteOrigin = 'https://vistep.ai';
 const url = (path: string) => new URL(path, siteOrigin).href;
 export const structuredJSON = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
 export function pageSchema(path: string, locale: Locale, source?: Topic) {
   const language = locale === 'zh' ? 'zh-CN' : 'en';
+  const teachingRoute = /^\/(?:en\/)?teaching\/(?:([a-z0-9-]+)\/(?:([a-z0-9-]+)\/)?)?$/.exec(path);
+  const curriculum = teachingRoute?.[1] ? getCurriculum(teachingRoute[1]) : undefined;
+  const context = curriculum
+    ? getCurriculumLessons(curriculum).find((item) => item.lesson.id === teachingRoute?.[2])
+    : undefined;
+  const collection = teachingRoute
+    ? curriculum
+      ? getCurriculumLessons(curriculum).map((item) => ({
+          name: item.lesson.name[locale],
+          url: url(curriculumLessonPath(item, locale)),
+        }))
+      : curricula.map((item) => ({
+          name: item.title[locale],
+          url: url(curriculumPath(item.id, locale)),
+        }))
+    : topics.map((topic) => ({
+        name: localizedTopic(topic, locale).name,
+        url: url(localPath(`/explore/${topic.slug}/`, locale)),
+      }));
   const website = {
     '@type': 'WebSite',
     '@id': url('/#website'),
@@ -32,16 +58,19 @@ export function pageSchema(path: string, locale: Locale, source?: Topic) {
           '@type': 'CollectionPage',
           '@id': url(path),
           url: url(path),
-          name: locale === 'en' ? 'Visual explanations — vistep.ai' : '原理可视化 — vistep.ai',
+          name: teachingRoute
+            ? (curriculum?.title[locale] ?? (locale === 'en' ? 'Learn with textbooks' : '教学专区'))
+            : locale === 'en'
+              ? 'Visual explanations — vistep.ai'
+              : '原理可视化 — vistep.ai',
           inLanguage: language,
           isPartOf: { '@id': url('/#website') },
           mainEntity: {
             '@type': 'ItemList',
-            itemListElement: topics.map((t, i) => ({
+            itemListElement: collection.map((item, i) => ({
               '@type': 'ListItem',
               position: i + 1,
-              name: localizedTopic(t, locale).name,
-              url: url(localPath(`/explore/${t.slug}/`, locale)),
+              ...item,
             })),
           },
         },
@@ -69,12 +98,19 @@ export function pageSchema(path: string, locale: Locale, source?: Topic) {
         description: topic.description,
         inLanguage: language,
         learningResourceType: 'Interactive visual explanation',
-        educationalUse: 'Self-directed learning',
+        educationalUse: context ? 'Classroom demonstration' : 'Self-directed learning',
+        teaches: context?.lesson.goal[locale],
         isAccessibleForFree: true,
         timeRequired: `PT${film.duration}S`,
         image: url(`/social/${topic.slug}.png`),
         publisher: { '@id': url('/#publisher') },
-        isPartOf: { '@id': url('/#website') },
+        isPartOf: context
+          ? {
+              '@type': 'Course',
+              name: context.curriculum.title[locale],
+              url: url(curriculumPath(context.curriculum.id, locale)),
+            }
+          : { '@id': url('/#website') },
         citation: topic.sources.map((s) => s.url),
         audio: audio
           ? {
@@ -103,7 +139,23 @@ export function pageSchema(path: string, locale: Locale, source?: Topic) {
             name: 'vistep.ai',
             item: url(localPath('/', locale)),
           },
-          { '@type': 'ListItem', position: 2, name: topic.name, item: url(path) },
+          ...(context
+            ? [
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: locale === 'en' ? 'Learn' : '教学专区',
+                  item: url(localPath('/teaching/', locale)),
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: context.curriculum.title[locale],
+                  item: url(curriculumPath(context.curriculum.id, locale)),
+                },
+              ]
+            : []),
+          { '@type': 'ListItem', position: context ? 4 : 2, name: topic.name, item: url(path) },
         ],
       },
     ],

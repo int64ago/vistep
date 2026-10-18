@@ -1,0 +1,195 @@
+{
+  "topic": {
+    "slug": "thermal-process-lab",
+    "name": "电热、冷却与热辐射",
+    "title": "温度的变化，揭示了怎样的能量过程？",
+    "question": "温度的变化，揭示了怎样的能量过程？",
+    "description": "从电阻量热、热鸡蛋冷却到铁块发光，分别追踪电热、能量转移与辐射光谱。",
+    "color": "#c6c7ab",
+    "tag": "能量 · 温度 · 辐射",
+    "related": ["heat-radiation", "battery-emf-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Electrical Energy and Power",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power"
+      },
+      {
+        "title": "OpenStax — Calorimetry",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      },
+      {
+        "title": "OpenStax — Blackbody Radiation",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["电热、冷却与热辐射", "焦耳定律", "热鸡蛋", "铁块发光", "量热器"],
+      "en": [
+        "Heating, Cooling and Thermal Radiation",
+        "Joule heating",
+        "egg cooling",
+        "glowing iron",
+        "calorimetry"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ThermalProcessLab.tsx",
+  "cover": "src/components/covers/ThermalProcessLabCover.astro",
+  "translations": {
+    "电热、冷却与热辐射": "Heating, Cooling and Thermal Radiation",
+    "温度的变化，揭示了怎样的能量过程？": "What energy processes do temperature changes reveal?",
+    "从电阻量热、热鸡蛋冷却到铁块发光，分别追踪电热、能量转移与辐射光谱。": "Track resistive heating, egg cooling and glowing iron through distinct calorimetry, energy-transfer and radiation apparatus.",
+    "能量 · 温度 · 辐射": "Energy · Temperature · Radiation",
+    "两套相同的水量热器、电阻丝、温度计和独立直流供电": "Two identical water calorimeters with resistors, thermometers and independent DC supplies",
+    "相同时间": "Equal duration",
+    "现代量热示意，用于解释焦耳定律；不复原历史仪器": "Modern calorimetry illustrates Joule’s law; it does not reconstruct historical apparatus",
+    "热鸡蛋浸在冷水中，两个温度随能量交换趋同": "A hot egg immersed in cold water approaches the same temperature through energy exchange",
+    "鸡蛋": "Egg",
+    "水": "Water",
+    "能量转移": "Transferred energy",
+    "同温时没有净传热，也不会自发重新分成冷热两部分": "Equal temperatures give no net heat transfer or spontaneous hot–cold separation",
+    "鸡蛋降温所失的能量，等于水升温所获的能量": "Energy lost by the cooling egg equals energy gained by the warming water",
+    "炉膛内铁块随温度升高发光，下方光谱显示波长分布": "Iron glows as its temperature rises; the spectrum below shows wavelength distribution",
+    "按峰值归一化的热辐射光谱，可见区以浅色标示": "Thermal spectrum normalized to its peak, with the visible band shaded",
+    "可见辐射占比": "Visible radiation fraction",
+    "横轴波长 µm；曲线各自归一化，只比较形状。屏幕亮色是曝光示意。": "Horizontal axis: wavelength in µm. Curves are separately normalized for shape comparison. Bright display colors illustrate exposure.",
+    "电流相同，比较不同电阻产生的热量": "At equal current, compare heat from different resistances",
+    "电阻相同，电流加倍使发热变为四倍": "At fixed resistance, doubling current gives four times the heating",
+    "能量守恒，还需要过程方向的条件": "Energy conservation also needs a direction-of-process condition",
+    "热鸡蛋把能量传给冷水": "The hot egg transfers energy to cold water",
+    "没有可见辉光，不代表没有热辐射": "No visible glow does not mean no thermal radiation",
+    "温度越高，可见波段的辐射越强": "Higher temperature strengthens visible radiation",
+    "选择热过程": "Choose a thermal process",
+    "电阻量热": "Resistive calorimetry",
+    "鸡蛋与水": "Egg and water",
+    "铁块热辐射": "Glowing iron",
+    "右侧电流": "Right-hand current",
+    "右侧电阻": "Right-hand resistance",
+    "共同通电时间": "Shared heating duration",
+    "接触后时间": "Time after contact",
+    "水的质量": "Water mass",
+    "初始温度条件": "Initial temperatures",
+    "热鸡蛋与冷水": "Hot egg and cold water",
+    "从同温开始": "Start at equal temperatures",
+    "铁块绝对温度": "Iron absolute temperature",
+    "三个装置的计算边界": "Limits of the three apparatus models",
+    "量热器用相同热容量和环境散热系数，电热 Q = I²Rt 与储能、散热守恒。鸡蛋与水各取均匀温度，只交换能量，忽略杯子与环境；实际鸡蛋内部存在温差。铁块用发射率 0.8 的灰体普朗克光谱，温度上限保持在铁熔点以下；色彩与光晕只是固定曝光下的屏幕示意，不标定实物颜色。炉温是输入，不模拟炉子升温过程。": "Both calorimeters share heat capacity and environmental conductance; Q = I²Rt equals stored energy plus losses. Egg and water each have uniform temperature and exchange energy, neglecting the cup and environment; real eggs have internal gradients. Iron uses an emissivity-0.8 greybody Planck spectrum below its melting point. Color and glow illustrate fixed display exposure, not calibrated real color. Furnace temperature is prescribed, not a heating-dynamics simulation.",
+    "分别改变电流和电阻，比较同时间发热": "Vary current and resistance separately; compare heating over equal time"
+  },
+  "narration": {
+    "duration": 174,
+    "cues": [
+      {
+        "id": "joule-current",
+        "title": "电流加倍的量热对照",
+        "titleEn": "Double the current",
+        "caption": "相同电阻、相同时间，比较四倍发热。",
+        "captionEn": "Same resistance and time: compare four times the heating.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先看两套相同的量热器。电阻都相同，右侧电流是左侧的两倍，同时开始通电。相同时间后，右侧输入的热量是四倍。温度计记录的是量热器升温，部分能量同时散向环境。这套现代示意装置用于理解焦耳定律，不冒充焦耳当年的原始仪器。",
+        "en": "Compare two identical calorimeters with equal resistance. The right current is twice the left, and both run for the same duration. Right-hand input energy is four times greater. Thermometers record warming while some energy escapes to the environment. This modern teaching apparatus explains Joule’s law; it is not Joule’s original instrument."
+      },
+      {
+        "id": "joule-resistance",
+        "title": "电阻加倍的对照",
+        "titleEn": "Double the resistance",
+        "caption": "保持电流相同，热量与电阻成正比。",
+        "captionEn": "At equal current, heating is proportional to resistance.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "这一次让两侧电流相同，把右侧电阻改为两倍。相同通电时间内，右侧输入热量变为两倍。电流、电阻和时间必须分开控制，才能判断各自的关系。对这里的纯电阻，电功转化为内能；不能把所有用电器的总功率都直接当成电阻发热功率。",
+        "en": "This time keep both currents equal and double the right-hand resistance. For the same duration, its input energy doubles. Current, resistance and time need separate control to identify each relation. Here a pure resistor converts electrical work to internal energy; not every appliance converts all input power into resistive heating."
+      },
+      {
+        "id": "egg-cooling",
+        "title": "热鸡蛋放入冷水",
+        "titleEn": "A hot egg enters cold water",
+        "caption": "鸡蛋降温、水升温，共同趋于平衡。",
+        "captionEn": "The egg cools and the water warms toward equilibrium.",
+        "seconds": 26,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "把刚煮好的热鸡蛋放入冷水。鸡蛋温度下降，水温上升，能量从较热的一侧传向较冷的一侧。在这个理想隔热模型里，鸡蛋失去的能量正好等于水获得的能量。共同温度由两者的热容量决定，不一定是起始温度的简单平均。",
+        "en": "Place a freshly cooked hot egg in cold water. The egg cools while the water warms: energy moves from hotter to colder. In this ideal insulated model, the egg’s energy loss equals the water’s gain. Their shared equilibrium temperature depends on both heat capacities, not necessarily the arithmetic mean of initial temperatures."
+      },
+      {
+        "id": "egg-equal-start",
+        "title": "从相同温度开始",
+        "titleEn": "Start at equal temperatures",
+        "caption": "能量守恒并不保证任意过程都能自发发生。",
+        "captionEn": "Energy conservation does not make every process spontaneous.",
+        "seconds": 24,
+        "chapterAt": 74,
+        "at": 74.4,
+        "zh": "现在重新设置一组同温的鸡蛋和水。没有温差，就没有净传热，也不会过一会自动变成热鸡蛋和冷水。假想的反向过程未必违反能量守恒，却不会自发发生。这正是教材用鸡蛋冷却讨论的另一层条件：宏观热过程具有方向性。",
+        "en": "Now reset the egg and water to the same temperature. Without a temperature difference, there is no net heat transfer and no spontaneous separation into hot egg and cold water. That imagined reverse process need not violate energy conservation, yet it does not occur spontaneously. Macroscopic thermal processes also have directionality."
+      },
+      {
+        "id": "iron-infrared",
+        "title": "不发可见光也有辐射",
+        "titleEn": "Radiation without visible glow",
+        "caption": "室温辐射以红外为主。",
+        "captionEn": "Room-temperature thermal radiation is mainly infrared.",
+        "seconds": 24,
+        "chapterAt": 98,
+        "at": 98.4,
+        "zh": "换到炉膛中的铁块。室温时看不到它自己发出的可见辉光，但它仍在辐射电磁波，主要分布在红外波段。下方光谱的浅色区域表示可见光，峰值在更长的波长处。我们平常看到冷铁块，主要依靠它反射的环境光。",
+        "en": "Move to an iron block in a furnace. At room temperature it has no visible self-emitted glow, yet it radiates electromagnetic energy, mainly infrared. The shaded spectrum band marks visible wavelengths; the peak lies farther out. Ordinary viewing of a cool block depends mainly on reflected environmental light."
+      },
+      {
+        "id": "iron-red-glow",
+        "title": "可见辐射增强",
+        "titleEn": "Visible radiation grows",
+        "caption": "温度升高，短波部分显著增强。",
+        "captionEn": "Heating strengthens the shorter-wavelength portion.",
+        "seconds": 26,
+        "chapterAt": 122,
+        "at": 122.4,
+        "zh": "逐渐提高铁块温度。可见波段的辐射越来越强，铁块开始出现暗红的辉光。光谱峰值向较短波长移动，但出现可见光并不意味着峰值已经进入可见区。曲线分别按峰值归一化，只用来比较形状；相同曲线高度不代表相同的总辐射功率。",
+        "en": "Raise the iron’s temperature. Visible radiation strengthens and a dim red glow appears. The spectral peak shifts toward shorter wavelengths, but visible emission does not mean the peak has entered the visible band. Curves are individually normalized to compare shape; equal plotted peak heights do not mean equal total emitted power."
+      },
+      {
+        "id": "iron-bright-glow",
+        "title": "更热的铁块",
+        "titleEn": "Hotter iron",
+        "caption": "可见占比继续增加，屏幕颜色不是温度计。",
+        "captionEn": "Visible fraction rises; screen color is not a thermometer.",
+        "seconds": 26,
+        "chapterAt": 148,
+        "at": 148.4,
+        "zh": "继续升温，可见辐射显著增强，屏幕上的亮部逐渐饱和。教材描述了由暗红到更明亮颜色的变化，但实物颜色还受表面、环境和观察曝光影响。这里保持在铁熔点以下，光谱峰值仍在红外。用波长分布解释现象，比把颜色直接对应一个精确温度更可靠。",
+        "en": "At higher temperature, visible radiation strengthens and bright display channels approach saturation. The textbook describes the progression from dark red to brighter colors, but real appearance also depends on surface, surroundings and exposure. This model stays below iron’s melting point, with an infrared spectral peak. Use the spectrum rather than treating color as an exact thermometer."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-joule-heating-history": {
+      "chapterIds": ["joule-current", "joule-resistance"],
+      "label": {
+        "zh": "焦耳定律的现代量热解释",
+        "en": "Modern calorimetry explaining Joule’s law"
+      }
+    },
+    "r3-egg-cooling": {
+      "chapterIds": ["egg-cooling", "egg-equal-start"],
+      "label": {
+        "zh": "热鸡蛋冷却与方向性",
+        "en": "Egg cooling and thermal directionality"
+      }
+    },
+    "r3-thermal-glow": {
+      "chapterIds": ["iron-infrared", "iron-red-glow", "iron-bright-glow"],
+      "label": {
+        "zh": "铁块从发热到发光",
+        "en": "From warm iron to glowing iron"
+      }
+    }
+  }
+}

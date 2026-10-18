@@ -1,0 +1,188 @@
+.phone-accel-lab {
+  max-width: 760px;
+  margin: auto;
+  color: #58705a;
+  padding: 0 16px;
+}
+.phone-accel-lab header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dce4d4;
+  font-size: 16px;
+}
+.phone-accel-lab header p {
+  margin: 0;
+  font-size: 18px;
+}
+.phone-accel-causal {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.phone-accel-causal > svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+.phone-accel-readouts p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+.phone-accel-readouts strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 450;
+  font-variant-numeric: tabular-nums;
+}
+.phone-accel-readouts strong span {
+  font-size: 16px;
+  color: #819278;
+}
+.phone-accel-readouts i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.phone-raw {
+  background: #6e927b;
+}
+.phone-corrected {
+  background: #bd9b63;
+}
+.phone-accel-trace {
+  max-width: 500px;
+  margin: auto;
+}
+.phone-accel-trace > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.phone-accel-trace svg {
+  display: block;
+  width: 100%;
+  height: 142px;
+}
+.phone-accel-equation {
+  font-size: 16px;
+  text-align: center;
+  margin: 15px 0;
+}
+.phone-accel-controls {
+  display: grid;
+  gap: 20px;
+  margin: 25px auto;
+}
+.phone-accel-lab details {
+  font-size: 16px;
+  color: #7b8d72;
+}
+.phone-accel-lab summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+}
+.phone-accel-lab details p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.phone-accel-controls .segmented {
+  flex-wrap: wrap;
+}
+@media (max-width: 760px) {
+  .phone-accel-lab {
+    padding: 0 5px;
+  }
+  .phone-accel-lab header {
+    display: block;
+    text-align: center;
+  }
+  .phone-accel-lab header p {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .phone-accel-causal {
+    display: block;
+  }
+  .phone-accel-causal > svg {
+    height: 156px;
+  }
+  .phone-accel-readouts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .phone-accel-readouts p {
+    font-size: 16px;
+    margin: 2px 0 12px;
+  }
+  .phone-accel-readouts strong {
+    font-size: 25px;
+    margin-top: 4px;
+  }
+  .phone-accel-readouts strong span {
+    display: block;
+    font-size: 16px;
+  }
+  .phone-accel-trace svg {
+    height: 128px;
+  }
+  .phone-accel-equation {
+    font-size: 16px;
+    text-align: left;
+  }
+  .phone-accel-lab details {
+    margin-top: 6px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .phone-accel-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .phone-accel-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .phone-accel-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .phone-accel-lab > header > span,
+  .showcase[data-mode='watch'] .phone-accel-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .phone-accel-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .phone-accel-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .phone-accel-equation,
+  .showcase[data-mode='watch'] .phone-accel-lab > details {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .phone-accel-readouts strong {
+    font-size: 21px;
+  }
+  .showcase[data-mode='watch'] .phone-accel-readouts strong span {
+    display: inline;
+  }
+  .showcase[data-mode='watch'] .phone-accel-readouts p {
+    margin: 2px 0 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .phone-accel-lab > header,
+  .showcase[data-mode='watch'] .phone-accel-trace > div:first-child > span:first-child {
+    display: none;
+  }
+}

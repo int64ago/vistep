@@ -1,0 +1,174 @@
+{
+  "topic": {
+    "slug": "total-reflection-lab",
+    "name": "沿界面追踪全反射",
+    "title": "光为什么能沿弯棒和水流前进？",
+    "question": "光为什么能沿弯棒和水流前进？",
+    "description": "从半圆玻璃块到弯棒、水流与软木塞，逐次计算反射和漏光。",
+    "color": "#aebfa8",
+    "tag": "几何光学",
+    "related": ["total-internal-reflection", "geometric-optics-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Total internal reflection",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/1-4-total-internal-reflection"
+      },
+      {
+        "title": "OpenStax — Bernoulli equation",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation"
+      }
+    ]
+  },
+  "component": "src/components/experiments/TotalReflectionLab.tsx",
+  "cover": "src/components/covers/TotalReflectionLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["沿界面追踪全反射", "光为什么能沿弯棒和水流前进？", "教材光学实验"],
+      "en": [
+        "Trace total reflection at boundaries",
+        "How can light follow a curved rod or water jet?",
+        "textbook optics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "沿界面追踪全反射": "Trace total reflection at boundaries",
+    "光为什么能沿弯棒和水流前进？": "How can light follow a curved rod or water jet?",
+    "从半圆玻璃块到弯棒、水流与软木塞，逐次计算反射和漏光。": "Trace reflection and leakage through a semicircular block, curved rod, water jet and cork experiment.",
+    "近代物理": "Modern physics",
+    "几何光学": "Geometrical optics"
+  },
+  "narration": {
+    "duration": 224,
+    "cues": [
+      {
+        "id": "semicircle-refract",
+        "title": "沿半径入射，看平面的分光",
+        "titleEn": "Enter radially and watch the flat face",
+        "caption": "反射光增强，透射光逐渐贴近界面。",
+        "captionEn": "Reflection grows while transmission approaches the interface.",
+        "zh": "光先沿半径进入半圆玻璃块，在曲面处不改变方向。到达平面后，入射角逐渐增大，出射光离法线越来越远。图中两条光的亮度由菲涅耳公式计算，反射与透射功率之和保持为一。射线加粗便于观察，不代表束宽或绝对亮度。",
+        "en": "Light enters the semicircular block radially, so the curved face does not change its direction. At the flat face, increasing incidence bends the transmitted ray farther from the normal. Fresnel equations determine both branch powers; they sum to one. Enlarged rays indicate direction rather than actual beam width.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "semicircle-critical",
+        "title": "越过临界角",
+        "titleEn": "Cross the critical angle",
+        "caption": "透射光消失，能量留在反射光中。",
+        "captionEn": "Transmission vanishes and the reflected beam retains the power.",
+        "zh": "玻璃折射率取一点五，射向空气的临界角约为四十一点八度。越过这个角，平面界面没有传播到空气中的透射光，出现全反射。这个结论有方向条件：必须从折射率较大的介质射向较小的介质。模型忽略吸收，也不画界面外不携带法向净能流的倏逝场。",
+        "en": "For glass of index one point five into air, the critical angle is about forty-one point eight degrees. Beyond it, no propagating transmitted beam crosses the flat interface. This requires travel from higher to lower refractive index. Absorption and the evanescent field outside the interface are omitted.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "rod-reflections",
+        "title": "逐次追踪弯棒中的光",
+        "titleEn": "Trace successive reflections inside a curved rod",
+        "caption": "每段光路是直线，每次转向发生在边界。",
+        "captionEn": "Each segment is straight; direction changes occur at the boundary.",
+        "zh": "光进入弯曲有机玻璃棒后，在两侧界面间多次反射。边界处的局部法线由实际几何计算，不是让光沿棒的中心线自动拐弯。缓弯时，各次入射满足全反射条件，光可以沿棒传到另一端。逐段显现只用于追踪路径，不把这段动画的播放速度当作真实光速。",
+        "en": "Inside the acrylic rod, light reflects repeatedly between its boundaries. Each local normal comes from the actual geometry; the beam does not simply follow the centerline. A gentle bend can preserve total reflection along the route. Progressive drawing reveals the path, not the physical speed of light.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "rod-bend-loss",
+        "title": "弯得太急，光会漏出",
+        "titleEn": "A tight bend can leak light",
+        "caption": "曲率改变入射角，漏光由同一光路计算。",
+        "captionEn": "Curvature changes incidence; the traced path determines leakage.",
+        "zh": "现在保持棒宽不变，逐渐减小弯曲半径。边界法线改变，一些入射角降到临界角以下，部分光透射到外面，后续反射光相应变暗。因此能导光不等于任意弯曲都没有损耗。这里计算二维光线与理想光滑界面，未加入真实材料的散射、吸收和表面粗糙。",
+        "en": "Now reduce the bend radius while retaining the rod width. Some incidence angles fall below critical, allowing light to escape and weakening later reflections. Guiding does not guarantee lossless transmission through every bend. The two-dimensional smooth-interface model excludes material scattering, absorption and surface roughness.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "jet-guide",
+        "title": "用弯曲水流引导光",
+        "titleEn": "Guide light through a falling water jet",
+        "caption": "重力弯曲水流，界面反射改变光的方向。",
+        "captionEn": "Gravity bends the jet; boundary reflections redirect the light.",
+        "zh": "水从侧孔水平射出后，在重力作用下向下弯曲。激光从对面沿孔口方向进入水流，在水与空气的界面反射。模型先计算水流抛物线和随流速变化的宽度，再逐次求光线与边界的交点。水流中的光路仍是一段段直线，不能把它画成与水完全相同的连续曲线。",
+        "en": "Water exits the side hole horizontally and falls under gravity. A beam enters from the opposite side and reflects at water–air boundaries. The model first computes the ballistic jet and its changing width, then intersects each light ray with that boundary. Light follows straight segments, not the water’s smooth curve.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "jet-head",
+        "title": "改变水头，比较导光路径",
+        "titleEn": "Change water head and compare the guide",
+        "caption": "水头决定流速，流速改变水形与反射位置。",
+        "captionEn": "Water head sets outlet speed and changes the jet and reflection points.",
+        "zh": "水头升高时，孔口流速增大，同一水平距离内下落得更少。水柱几何改变后，反射位置和漏光也随之改变。每一停帧表示理想恒定水头下的准稳态，动画并非一个排空瓶子的全过程。忽略黏性、收缩和破碎；实际水流过细或变成液滴时，连续导光模型就不再适用。",
+        "en": "Higher water head increases outlet speed, reducing the fall over a given horizontal distance. Reflection points and leakage change with the jet. Each frame represents a quasi-steady ideal constant-head state, not a draining-bottle history. Viscosity, outlet contraction and breakup are omitted; droplets do not form this continuous guide.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "cork-block",
+        "title": "让软木塞挡住小角度光",
+        "titleEn": "Let the cork block small-angle rays",
+        "caption": "从针尖到塞缘的光，决定最小可出射角。",
+        "captionEn": "The tip-to-rim ray sets the smallest unblocked incidence.",
+        "zh": "把针垂直穿过圆软木塞，针尖位于水下。塞子挡住朝上、小角度入射的光。能够从塞子外到达水面的光，其最小入射角由针尖、塞缘和法线构成的直角三角形决定。较深时仍有部分光折射出水，观察者可在合适方向看到针尖。",
+        "en": "A vertical pin passes through a circular floating cork with its tip underwater. The cork blocks near-normal upward rays. The triangle from tip to cork rim determines the minimum unblocked incidence angle. When the tip is deep, some rays still emerge outside the cork and can reach a suitably placed observer.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "cork-index",
+        "title": "找出刚好看不见的临界深度",
+        "titleEn": "Find the disappearance threshold",
+        "caption": "只有刚好消失时，几何比值才给出折射率。",
+        "captionEn": "The geometric ratio gives the index only at disappearance.",
+        "zh": "逐渐减小针尖深度，塞缘外光线的最小入射角增大。刚好达到临界角时，更外侧光线也全反射，针尖从水面上方消失。记录这一临界深度和塞子半径，可求折射率。任意深度下页面显示的试算值不是测量结果；必须先找到刚好消失的边界。",
+        "en": "Reduce tip depth until the minimum unblocked incidence reaches the critical angle. Every farther ray also reflects internally, hiding the tip from above. The threshold depth and cork radius determine index. The displayed trial ratio at an arbitrary depth is not a measurement: first locate the disappearance boundary.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-semicircle-total-reflection": {
+      "chapterIds": ["semicircle-refract", "semicircle-critical"],
+      "label": {
+        "zh": "半圆玻璃块",
+        "en": "Semicircular block"
+      }
+    },
+    "e1-curved-acrylic-guide": {
+      "chapterIds": ["rod-reflections", "rod-bend-loss"],
+      "label": {
+        "zh": "弯曲有机玻璃",
+        "en": "Curved acrylic rod"
+      }
+    },
+    "e1-water-jet-light": {
+      "chapterIds": ["jet-guide", "jet-head"],
+      "label": {
+        "zh": "水流导光",
+        "en": "Water-jet light guide"
+      }
+    },
+    "e1-liquid-index-total-reflection": {
+      "chapterIds": ["cork-block", "cork-index"],
+      "label": {
+        "zh": "软木塞测折射率",
+        "en": "Cork refractive index"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+---
+const outline =
+  Array.from({ length: 97 }, (_, i) => {
+    const a = (i / 96) * Math.PI * 2,
+      r = 77 * (1 + 0.1 * Math.sin(a * 3) + 0.06 * Math.cos(a * 5));
+    return `${i ? 'L' : 'M'}${180 + r * Math.cos(a)} ${143 + r * Math.sin(a)}`;
+  }).join(' ') + 'Z';
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <rect
+    x="30"
+    y="35"
+    width="300"
+    height="205"
+    rx="22"
+    fill="#d9e7d5"
+    stroke="#aec4a3"
+    stroke-width="3"></rect>
+  <path d={outline} fill="#ead9a7" stroke="#b79f68"></path>
+  {
+    Array.from({ length: 29 }, (_, i) => (
+      <path d={`M${40 + i * 10} 40V235`} stroke="#b1c29e" stroke-width=".7" />
+    ))
+  }
+  {
+    Array.from({ length: 20 }, (_, i) => (
+      <path d={`M35 ${45 + i * 10}H325`} stroke="#b1c29e" stroke-width=".7" />
+    ))
+  }
+</svg>

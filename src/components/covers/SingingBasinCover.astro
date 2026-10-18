@@ -1,0 +1,69 @@
+---
+import {
+  BASIN_DEFAULT,
+  basinAntinodes,
+  basinDroplets,
+  basinRimPath,
+  basinState,
+} from '../../models/singing-basin';
+const state = basinState(9),
+  rim = basinRimPath(2, state.amplitude, state.visualPhase),
+  points = basinAntinodes(2),
+  drops = basinDroplets(9, BASIN_DEFAULT);
+---
+
+<svg viewBox="0 55 360 210" fill="none" aria-hidden="true">
+  <ellipse cx="180" cy="242" rx="130" ry="15" fill="#b3bba1" opacity=".13"></ellipse>
+  <path
+    d="M56 144Q61 217 110 235Q180 258 250 235Q299 217 304 144Z"
+    fill="#b9a976"
+    stroke="#998a60"
+    stroke-width="1.5"></path>
+  <path d="M78 183Q95 226 137 237M83 182Q102 226 147 238" stroke="#dbcda0" opacity=".6"></path>
+  <path d={rim} fill="#cbbc8b" stroke="#988a60" stroke-width="2"></path>
+  <ellipse cx="180" cy="146" rx="114" ry="54" fill="#b2aa80" stroke="#dfd3a8" stroke-width="2"
+  ></ellipse>
+  <ellipse cx="180" cy="162" rx="92.5" ry="44.4" fill="#c6d8c7" stroke="#a0bba9"></ellipse>
+  {
+    points.map((point) => (
+      <g>
+        {[5, 10, 15].map((r) => (
+          <ellipse
+            cx={180 + 0.77 * 92.5 * Math.cos(point.theta)}
+            cy={162 + 0.77 * 92.5 * 0.48 * Math.sin(point.theta)}
+            rx={r}
+            ry={r * 0.48}
+            stroke="#edf1d9"
+            opacity=".8"
+          />
+        ))}
+      </g>
+    ))
+  }
+  {
+    drops.map((drop) => (
+      <circle
+        cx={180 + 0.77 * 92.5 * Math.cos(drop.theta)}
+        cy={162 + 0.77 * 92.5 * 0.48 * Math.sin(drop.theta) - drop.height * 600}
+        r="1.7"
+        fill="#7ea793"
+      />
+    ))
+  }
+  <path d={rim} stroke="#dfd2a2" stroke-width="3"></path>
+  {
+    [false, true].map((right) => (
+      <g transform={right ? 'translate(360 0) scale(-1 1)' : undefined}>
+        <path d="M62 133H34Q17 133 17 148Q17 163 34 163H61" stroke="#897e54" stroke-width="11" />
+        <path d="M62 131H34Q20 131 20 146Q20 159 34 159H61" stroke="#ccbc87" stroke-width="7" />
+        <path
+          d="M2 83Q12 86 24 100L38 124Q43 137 34 140Q26 142 21 131L13 115L0 108Z"
+          fill="#dfc9a7"
+          stroke="#b49c79"
+        />
+        <path d="M19 114L31 133M24 111L37 130" stroke="#c0a883" />
+        <path d="M2 83L0 107" stroke="#eae1ca" stroke-width="7" />
+      </g>
+    ))
+  }
+</svg>

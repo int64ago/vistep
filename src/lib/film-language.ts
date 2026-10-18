@@ -12,8 +12,14 @@ type Handoff = FilmLanguageState & {
   createdAt: number;
 };
 const route = (url: URL) => {
-  const match = /^\/(en\/)?explore\/([a-z0-9-]+)\/?$/.exec(url.pathname);
-  return match ? { slug: match[2], locale: match[1] ? 'en' : 'zh' } : null;
+  const match = /^\/(en\/)?(?:explore|teaching\/[a-z0-9-]+)\/([a-z0-9-]+)\/?$/.exec(url.pathname);
+  return match
+    ? {
+        slug: match[2],
+        locale: match[1] ? 'en' : 'zh',
+        lessonPath: url.pathname.replace(/^\/en\//, '/').replace(/\/$/, ''),
+      }
+    : null;
 };
 const navigationAddress = (href: string) => {
   const url = new URL(href);
@@ -46,11 +52,11 @@ function attachFilmState(link: HTMLAnchorElement) {
     !from ||
     !to ||
     current.origin !== destination.origin ||
-    from.slug !== to.slug ||
+    from.lessonPath !== to.lessonPath ||
     from.locale === to.locale
   )
     return;
-  const request: Request = { slug: from.slug };
+  const request: Request = { slug: link.dataset.sceneSlug || from.slug };
   window.dispatchEvent(new CustomEvent<Request>(REQUEST, { detail: request }));
   if (!validState(request.state)) return;
 
@@ -67,7 +73,7 @@ function attachFilmState(link: HTMLAnchorElement) {
     destination.searchParams.set(MARKER, token);
     const handoff: Handoff = {
       ...request.state,
-      slug: from.slug,
+      slug: request.slug,
       destination: destination.href,
       token,
       createdAt: Date.now(),
@@ -89,7 +95,8 @@ export function manualLanguageClick(this: HTMLAnchorElement, event: MouseEvent) 
     destination = new URL(this.href, current);
   const from = route(current),
     to = route(destination);
-  const sameTopic = from && to && current.origin === destination.origin && from.slug === to.slug;
+  const sameTopic =
+    from && to && current.origin === destination.origin && from.lessonPath === to.lessonPath;
   if (location.hash && (!from || sameTopic)) this.hash = location.hash;
   if (sameTopic) {
     // A canceled earlier click must not leave a replayable token on a later new-tab link.
@@ -129,7 +136,7 @@ export function consumeFilmLanguageState(slug: string, duration: number): FilmLa
     if (
       !validState(handoff) ||
       handoff.slug !== slug ||
-      route(current)?.slug !== slug ||
+      !route(current) ||
       navigationAddress(handoff.destination) !== navigationAddress(destination) ||
       !Number.isFinite(age) ||
       age < 0 ||

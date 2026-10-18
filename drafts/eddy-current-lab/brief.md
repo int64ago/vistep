@@ -1,0 +1,7 @@
+# Five electromagnetic damping apparatuses
+
+10 chapters / planned220s. Each textbook experiment has a contiguous two-chapter range, identified in packet. Apparatuses have separately calculated motion: moving-coil meter, aluminium frame inside a rotating horseshoe field, freely slowing copper disc, falling magnet in complete/slit aluminium tube, spring magnet above open/closed winding.
+
+Misconception: magnets slow nonferromagnetic metal by static attraction; all motion is merely animation. Model includes closed-form under/over/critical damping, actual freely changing disc speed, gravity/drag tube fall with catch boundary, and driven-frame slip torque. Independent energy derivatives checked against dissipation; reversal, zero-field baseline, identical initial disturbances and slit boundary cases covered. Coefficients are declared effective low-speed approximations, not fitted experimental results. Frame is a projected mechanical schematic, with rotor inside pole clearance. Scientific source OpenStax University Physics2 §13.5; framework references mechanics energy balance.
+
+Phone gets one chosen apparatus plus HTML state/readouts; only meter/spring add comparison traces. Full visual playback, real phone performance, source geometry review, audio synthesis/listening and fallback checks remain not-run; integrator acceptance needed. Author numerical tests are separate from visual evidence.

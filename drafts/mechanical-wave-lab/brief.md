@@ -1,0 +1,7 @@
+# Mechanical waves
+
+Owner teaching_shell. Seven ×24s chapters. e1-rope-wave=rope-up/down/train; e1-human-wave=human-delay/track; e1-spring-longitudinal-wave=spring-compression/track. Full textbook pages62–64 reviewed, including both upward and downward pulses, continuous driving, linked hands and a spring on a smooth plane.
+
+Distinct apparatus: a hand physically gripping the driven rope endpoint; a linked row whose feet remain fixed while knees bend; a continuous helix derived from axial displacement, with tracked material coil and local magnification. Rope red marker fixed material x, hollow mark follows a full-amplitude phase. Source F(t-x/v) is shared by geometry and readouts. Only outgoing waves before remote reflections return. Small-slope rope and vertical amplification disclosed; spring pitch remains positive; human response is an analogy, not force modelling.
+
+Desktop and mobile 360-wide arrangement: central rope/spring with lower tracking inset, human figures fixed ground points; explanatory text in HTML, short labels in diagram. Sources: OpenStax travelling-wave and wave-mathematics chapters. Checks: causal source delay, wave equation finite-difference benchmark, coil identity and positive pitch, fixed human positions. Four targeted model tests and packet dry-run passed. Browser full playback, stills, text fit, resource failure, bilingual listening and real-device performance not-run by worker. Author numerical review only; root integrates and verifies.

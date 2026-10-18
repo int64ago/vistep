@@ -1,0 +1,135 @@
+{
+  "topic": {
+    "slug": "atomic-scattering-lab",
+    "name": "微观散射实验",
+    "title": "看不见的内部，怎样由偏转留下证据？",
+    "question": "看不见的内部，怎样由偏转留下证据？",
+    "description": "比较α粒子的偏转与X射线的波长改变，区分核结构证据和光子动量证据。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["atomic-spectrum-lab", "nuclear-evidence-lab"],
+    "sources": [
+      {
+        "title": "Fermilab — Rutherford and the nucleus",
+        "url": "https://www.fnal.gov/pub/inquiring/timeline/03.html"
+      },
+      {
+        "title": "OpenStax — The Compton Effect",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/6-3-the-compton-effect"
+      }
+    ]
+  },
+  "component": "src/components/experiments/AtomicScatteringLab.tsx",
+  "cover": "src/components/covers/AtomicScatteringLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["微观散射实验", "看不见的内部，怎样由偏转留下证据？", "近代物理实验"],
+      "en": [
+        "Microscopic scattering experiments",
+        "How does scattering reveal an invisible interior?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "微观散射实验": "Microscopic scattering experiments",
+    "看不见的内部，怎样由偏转留下证据？": "How does scattering reveal an invisible interior?",
+    "比较α粒子的偏转与X射线的波长改变，区分核结构证据和光子动量证据。": "Compare alpha-particle deflection with X-ray wavelength shifts to distinguish evidence for nuclei from evidence for photon momentum.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "foil",
+        "title": "让粒子穿过薄金箔",
+        "titleEn": "Send particles through a thin foil",
+        "caption": "绝大多数粒子近乎直行；图中放大展示不同入射偏距。",
+        "captionEn": "Most particles pass nearly straight; enlarged paths compare impact parameters.",
+        "zh": "α粒子从窄束射向很薄的金箔，周围的探测屏记录散射。真实实验中绝大多数粒子近乎直行。这里把一个原子核附近的相遇放大，四条轨迹只是挑出的对照，不代表四种轨迹一样常见。先追踪离原子核较远的那一条。",
+        "en": "A narrow alpha-particle beam strikes a thin gold foil, and a surrounding screen detects scattering. Most particles pass almost straight. The view enlarges encounters near one nucleus. Its four selected paths are comparisons, not equally probable outcomes. First follow the most distant encounter.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "close",
+        "title": "把入射偏距逐渐减小",
+        "titleEn": "Compare closer encounters",
+        "caption": "越接近集中的正电荷，库仑斥力造成的偏转越大。",
+        "captionEn": "Closer encounters with concentrated positive charge produce stronger deflection.",
+        "zh": "把注意力移到更靠近原子核的轨迹。带正电的α粒子受到斥力，运动方向连续改变；入射偏距越小，最终偏转越明显。轨迹来自同一个库仑力模型，不能用粒子碰到金箔就随机拐弯来解释这个实验。",
+        "en": "Now compare paths that pass closer to the nucleus. Repulsion continuously changes the direction of the positively charged alpha particle. A smaller impact parameter gives a larger final deflection. These paths follow one Coulomb-force model rather than random turns at the foil.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "backscatter",
+        "title": "解释少量大角度散射",
+        "titleEn": "Explain rare large-angle events",
+        "caption": "少量大角度散射要求正电荷和大部分质量集中在很小区域。",
+        "captionEn": "Rare large deflections reveal concentrated positive charge and mass.",
+        "zh": "最靠近的相遇甚至可以让粒子向后返回。少量这样的大角度事件，难以用弥散的正电荷解释，却符合很小、很重、带正电的原子核。结合大量近乎直行的事件，才能形成核式结构图景。仅看四条示意轨迹，不能读出真实计数比例。",
+        "en": "The closest encounter can turn a particle backward. Rare large-angle events are difficult to explain with diffuse positive charge but fit a small, massive positive nucleus. Combine them with the many nearly straight tracks to infer atomic structure. These four paths do not provide measured count ratios.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "compton-forward",
+        "title": "测量散射后的X射线",
+        "titleEn": "Measure scattered X-rays",
+        "caption": "固定入射波长，在不同散射角度比较谱线位置。",
+        "captionEn": "Keep incident wavelength fixed and compare spectral lines at different angles.",
+        "zh": "换一套装置：X射线照射石墨，探测器围绕样品改变观察角度。我们测量的是散射光谱的波长，不是α粒子的偏转角。先看近乎向前的方向，散射线与入射参考线几乎重合。曲线的横坐标表示波长。",
+        "en": "Switch apparatus: X-rays illuminate graphite, and a detector changes its observation angle around the target. We now measure wavelength, not alpha-particle deflection. In the nearly forward direction, the shifted line almost coincides with the incident reference. The graph’s horizontal coordinate is wavelength.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "compton-angle",
+        "title": "增大散射角度",
+        "titleEn": "Increase the scattering angle",
+        "caption": "散射角增大，散射峰向长波移动；电子获得反冲动量。",
+        "captionEn": "A larger angle shifts the peak toward longer wavelengths and gives the electron recoil momentum.",
+        "zh": "逐渐增大散射角。暖色的散射峰向长波一侧移动，入射参考线留在原处。光子把部分能量和动量交给电子，电子沿虚线方向反冲。根据能量和动量守恒，波长的增加由散射角决定，不是把光强调暗造成的。",
+        "en": "As the angle increases, the warm-colored shifted peak moves toward longer wavelengths while the incident reference stays fixed. The photon transfers energy and momentum to an electron, whose recoil direction is dashed. Energy and momentum conservation link the wavelength shift to angle, not to dimmer illumination.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "compton-back",
+        "title": "比较最大波长改变",
+        "titleEn": "Compare the largest wavelength shift",
+        "caption": "反向散射的波长增加最大；峰位遵循同一守恒关系。",
+        "captionEn": "Backscattering gives the largest wavelength increase under the same conservation law.",
+        "zh": "探测器继续转向反向散射位置，波长增加达到最大值。康普顿效应支持光具有动量的粒子性描述。图中散射峰的宽度和高度只是为了辨认，真正计算的是峰的位置以及电子的反冲方向；真实物质中还会出现未移位的散射成分。",
+        "en": "Continue toward backscattering, where the wavelength increase is greatest. The Compton effect supports a particle description of light carrying momentum. Peak widths and heights are illustrative; peak positions and electron recoil directions are calculated. Real materials can also produce an unshifted scattering component.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-rutherford-scattering": {
+      "chapterIds": ["foil", "close", "backscatter"],
+      "label": {
+        "zh": "α粒子散射",
+        "en": "Alpha-particle scattering"
+      }
+    },
+    "e3-compton-scattering": {
+      "chapterIds": ["compton-forward", "compton-angle", "compton-back"],
+      "label": {
+        "zh": "康普顿散射",
+        "en": "Compton scattering"
+      }
+    }
+  }
+}

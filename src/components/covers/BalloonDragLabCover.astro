@@ -1,0 +1,37 @@
+---
+import { BALLOON_DATA, balloonFit } from '../../models/balloon-drag-lab';
+const fit = balloonFit(1);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <defs
+    ><radialGradient id="balloon-drag-cover"
+      ><stop stop-color="#e9d9b3"></stop><stop offset="1" stop-color="#c8bc91"
+      ></stop></radialGradient
+    ></defs
+  >
+  <circle cx="106" cy="85" r="38" fill="url(#balloon-drag-cover)"></circle>
+  <path d="M82 65Q92 53 107 53" stroke="#f4ead0" stroke-width="3" stroke-linecap="round"
+  ></path><path d="M103 122l3 7 3-7" fill="#b6a779"></path>
+  <path d="M106 129V164" stroke="#95a587" stroke-width="2"></path><rect
+    x="97"
+    y="164"
+    width="18"
+    height="10"
+    rx="2"
+    fill="#99ad8d"></rect>
+  <path d="M160 36V194" stroke="#d6d9be" stroke-width="14"></path>{
+    Array.from({ length: 15 }, (_, i) => (
+      <path d={`M154 ${44 + i * 10}h${i % 5 ? 5 : 10}`} stroke="#9eaf8b" />
+    ))
+  }
+  <path d="M218 50V187H362" stroke="#c4d0b1"></path><path
+    d={`M218 187L358 ${187 - fit.coefficient * 35 * 1100}`}
+    stroke="#9aac82"
+    stroke-width="2"></path>
+  {
+    BALLOON_DATA.map((q) => (
+      <circle cx={218 + q.stepCm * 4} cy={187 - q.weight * 1100} r="3" fill="#aa9468" />
+    ))
+  }
+</svg>

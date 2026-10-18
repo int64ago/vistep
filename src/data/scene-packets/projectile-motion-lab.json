@@ -1,0 +1,207 @@
+{
+  "topic": {
+    "slug": "projectile-motion-lab",
+    "name": "平抛运动实验",
+    "title": "怎样从不同测量方法确认平抛的两个分运动？",
+    "question": "怎样从不同测量方法确认平抛的两个分运动？",
+    "description": "从频闪、同时释放、复写纸与双接收器测距获得轨迹，再用木板和墙面变式检验规律、测出初速度。",
+    "color": "#b9c8aa",
+    "tag": "平抛 · 描迹 · 测量",
+    "related": ["wax-motion-composition", "motion-sensor-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Projectile Motion",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion"
+      },
+      {
+        "title": "Vernier — How does a Motion Detector work?",
+        "url": "https://www.vernier.com/til/2961"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["平抛运动实验", "平抛描迹", "同时落地", "复写纸", "测初速度"],
+      "en": [
+        "Horizontal projectile experiments",
+        "projectile tracing",
+        "paired release",
+        "carbon paper",
+        "launch velocity"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ProjectileMotionLab.tsx",
+  "cover": "src/components/covers/ProjectileMotionLabCover.astro",
+  "translations": {
+    "平抛运动实验": "Horizontal projectile experiments",
+    "怎样从不同测量方法确认平抛的两个分运动？": "How do different measurements reveal the two parts of horizontal projectile motion?",
+    "从频闪、同时释放、复写纸与双接收器测距获得轨迹，再用木板和墙面变式检验规律、测出初速度。": "Use strobe records, paired release, carbon-paper traces and two-receiver ranging; compare board and wall variants, test the parabola and infer launch speed.",
+    "平抛 · 描迹 · 测量": "Horizontal launch · Tracing · Measurement",
+    "相同时间间隔，水平等距，竖直间距递增": "Equal time intervals: equal horizontal spacing, increasing vertical spacing",
+    "同高同时释放，平抛与直落同时触地": "Same height and release time: horizontal launch and free drop land together",
+    "逐次改变挡板高度，留下轨迹点": "Change catcher height between trials to record trajectory points",
+    "两个接收器测距，交会确定平面位置": "Two receiver ranges determine a point in the plane",
+    "同一释放位置，改变接球木板高度": "Keep the release point and change the catching board height",
+    "移动带复写纸的墙面，记录不同位置": "Move the carbon-paper wall to record different points",
+    "用坐标检验轨迹，不能只看它像不像": "Test coordinates rather than judging the curve by appearance",
+    "测出高度和水平距离，反求离桌速度": "Measure height and horizontal range to recover launch speed",
+    "平抛实验 · 同一初始条件": "Horizontal projectile lab · Common initial conditions",
+    "弹性金属片同时抛出一球并释放另一球": "A spring strip launches one ball horizontally while releasing another",
+    "运动发射器与两个固定红外超声接收器确定二维位置": "A moving emitter and two fixed infrared–ultrasonic receivers locate a point in two dimensions",
+    "水平末端斜槽、钢球与对应的轨迹测量装置": "A horizontally ending ramp, steel ball and the selected tracing apparatus",
+    "取抛出点球心为原点，检验y/x²": "Use the ball centre at launch as origin and test y/x²",
+    "交会坐标": "Recovered coordinates",
+    "离开装置后的时间": "Time since launch",
+    "水平位移": "Horizontal displacement",
+    "下落位移": "Vertical drop",
+    "水平初速度改变落点，不改变同高度的下落时间。": "Horizontal speed changes range, not fall time from the same height.",
+    "每次都从斜槽同一位置静止释放；不同轨迹点才属于同一条抛物线。": "Release from rest at the same ramp point each time so all marks belong to one trajectory.",
+    "两个距离有两个镜像交点；已知小球在接收器右侧，才能选定唯一位置。": "Two ranges have two mirror intersections; knowing the ball lies right of the receivers selects one.",
+    "比值近似恒定支持二次关系；原点必须正确，不能用0/0。": "An approximately constant ratio supports a quadratic relation; use the correct origin and exclude 0/0.",
+    "高度给出飞行时间，水平距离除以时间得到初速度。": "Height determines flight time; horizontal range divided by that time gives launch speed.",
+    "等时间水平位移相同；竖直位移与时间的平方对应。": "Equal times give equal horizontal travel; vertical drop follows time squared.",
+    "测量路径": "Measurement method",
+    "频闪记录": "Strobe record",
+    "同时释放": "Paired release",
+    "实验描迹": "Carbon tracing",
+    "双接收器": "Two receivers",
+    "木板落点": "Catching board",
+    "墙面落点": "Wall impacts",
+    "抛物线检验": "Parabola check",
+    "测初速度": "Launch speed",
+    "斜槽释放高度": "Ramp release height",
+    "墙面水平距离": "Horizontal wall distance",
+    "桌面距地面高度": "Table height above floor",
+    "接球面下落距离": "Drop to catching surface",
+    "模型时间": "Model time",
+    "理想无气阻；钢球在槽内纯滚动，末端水平。数值是模型数据；描迹按球心位置校正，首次接触接球面即停帧。": "Ideal drag-free flight; the ball rolls without slipping to a horizontal exit. Values are model data; marks are corrected to ball-centre positions and motion freezes at first contact.",
+    "水平投射速度": "Horizontal launch speed"
+  },
+  "narration": {
+    "duration": 223,
+    "cues": [
+      {
+        "id": "strobe",
+        "title": "等时间记录位置",
+        "titleEn": "Record equal-time positions",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "水平间距相同，竖直间距逐步增大。",
+        "captionEn": "Horizontal gaps are equal; vertical gaps grow.",
+        "zh": "先用频闪或逐帧视频记录小球的位置。本例每零点零五秒留下一个位置点。把抛出点的球心作为原点，向右和向下建立坐标。相同时间内，水平位移相同，竖直位移却逐次增大。这些位置记录让我们分别研究两个方向，而不是仅仅凭一条弯曲的外形猜测运动规律。",
+        "en": "Begin with strobe photography or video frames. This example records a point every 0.05 seconds. Use the ball centre at launch as the origin, with axes right and down. Equal intervals have equal horizontal travel but increasing vertical travel. Position records let us study each direction separately rather than guessing a law from the curve’s appearance."
+      },
+      {
+        "id": "paired",
+        "title": "比较同时释放的两球",
+        "titleEn": "Compare simultaneously released balls",
+        "seconds": 28,
+        "chapterAt": 27,
+        "at": 27.3,
+        "caption": "同高度、同起始时刻、竖直初速度均为零。",
+        "captionEn": "Same height and release instant, with zero initial vertical velocity.",
+        "zh": "教材的弹性金属片同时完成两件事：把一球水平抛出，并释放另一球自由下落。两球起始高度相同，竖直初速度都为零。虽然水平位置越来越远，它们的高度始终相同，并且同时触地。改变水平投射强度会改变落点，却不改变同高度的下落时间；这为平抛的竖直分运动提供了直接对照。",
+        "en": "The spring-strip apparatus launches one ball horizontally while releasing another vertically. Both start at the same height and instant, with zero vertical velocity. Their horizontal positions separate, but their heights match and they land together. Changing horizontal launch strength changes range, not fall time from the same height. This directly tests the vertical component."
+      },
+      {
+        "id": "carbon",
+        "title": "用复写纸逐点描迹",
+        "titleEn": "Trace successive carbon-paper marks",
+        "seconds": 29,
+        "chapterAt": 55,
+        "at": 55.3,
+        "caption": "每次从同一位置释放，只调整挡板。",
+        "captionEn": "Keep release conditions fixed and adjust only the catcher.",
+        "zh": "让钢球从斜槽同一位置静止滚下，槽的末端保持水平。球落到可调的倾斜挡板上，通过复写纸在背板白纸上留下印迹。改变挡板高度，再次从同一点释放，逐渐得到一组轨迹点。不同次的点要属于同一条轨迹，就必须保持初速度和抛出位置一致，并按球心位置处理有限大小造成的偏差。",
+        "en": "Roll the ball from rest at the same point on a ramp with a horizontal exit. An adjustable inclined catcher produces a carbon-paper mark on the backing sheet. Change catcher height and repeat to accumulate trajectory points. Combining marks from separate trials requires the same launch speed and origin, with finite ball size corrected to the ball centre."
+      },
+      {
+        "id": "receivers",
+        "title": "用两次测距定位",
+        "titleEn": "Locate the ball from two ranges",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3,
+        "caption": "红外同步起点，两个超声距离确定位置。",
+        "captionEn": "Infrared supplies timing references; two acoustic ranges locate the ball.",
+        "zh": "还可以让运动物体同时发射红外和超声脉冲，由两个位置已知的接收器分别测距。一个距离只能把物体限制在一个圆上，两个距离的交会给出两个镜像候选点。再利用小球位于接收器哪一侧的信息，选出实际位置。连续记录这些坐标，计算机便能描出轨迹；这里保留了教材这套二维装置的定位原理。",
+        "en": "A moving object can emit infrared and ultrasound together, while two receivers at known positions independently measure range. One range constrains it to a circle; two circles give mirror candidate points. Knowing which side contains the object selects the physical position. Repeated coordinates trace the trajectory. This preserves the textbook’s two-dimensional ranging principle."
+      },
+      {
+        "id": "home-board",
+        "title": "用木板记录落点",
+        "titleEn": "Record marks on a catching board",
+        "seconds": 27,
+        "chapterAt": 113,
+        "at": 113.3,
+        "caption": "移动接球高度，把不同时间的落点留下。",
+        "captionEn": "Change the catching height to preserve positions at different flight times.",
+        "zh": "家庭实验变式把白纸和复写纸放在水平木板上，用支架调节木板高度。钢球从同一斜面位置滚下，沿水平桌面飞出，在木板上留下落点。竖直下落距离给出对应的飞行时间，再比较水平位移与时间。这里改变的是接球装置的位置，不能同时改变释放点，否则不同落点就不能直接组成同一运动的证据。",
+        "en": "The home variant places paper and carbon paper on a horizontal board supported at adjustable heights. A ball rolls from the same ramp point, leaves the horizontal tabletop, and marks the board. Vertical drop gives flight time for comparison with horizontal travel. Change the catcher location while preserving the release point; otherwise the marks no longer describe one common launch."
+      },
+      {
+        "id": "home-wall",
+        "title": "换成墙面再测量",
+        "titleEn": "Use a wall for the alternative measurement",
+        "seconds": 27,
+        "chapterAt": 140,
+        "at": 140.3,
+        "caption": "固定纸面方向，改变桌边到墙的距离。",
+        "captionEn": "Keep paper on a vertical wall and vary its distance from the table edge.",
+        "zh": "另一种变式把复写纸和白纸固定在墙上，改变桌边到墙的水平距离。每次记录球击中墙面的高度，就得到不同的坐标点。此时要测量的是水平间距和竖直下降量，而不是把墙面落点误当成同一高度的落地距离。图中到达墙面就停帧，落点位置由同一平抛方程计算。",
+        "en": "Another variant fixes paper and carbon paper to a wall and varies its distance from the table edge. Each impact height supplies another coordinate pair. Measure horizontal separation and vertical drop; do not mistake a wall mark for a landing range at one common height. The scene freezes at wall contact, with every mark computed from the same horizontal-launch equations."
+      },
+      {
+        "id": "parabola",
+        "title": "检验是否为抛物线",
+        "titleEn": "Test the parabolic relation",
+        "seconds": 28,
+        "chapterAt": 167,
+        "at": 167.3,
+        "caption": "非零点的y/x²近似相同，支持y与x²成正比。",
+        "captionEn": "A common y/x² at nonzero points supports proportionality to x².",
+        "zh": "进入下一节的检验任务，重新使用得到的轨迹坐标。原点必须选在抛出点球心，竖直轴向下。对几个非零位置计算竖直位移除以水平位移的平方，若比值在误差范围内近似相同，就支持二次函数关系。原点本身不能参与这个比值，因为零除以零没有意义。本例没有加入测量噪声，实际实验还需要考虑读数误差。",
+        "en": "For the following section’s check, reuse the trajectory coordinates. Put the origin at the launch centre with downward vertical positive. Compute vertical displacement divided by horizontal displacement squared for several nonzero points. A common value within uncertainty supports a quadratic relation. Exclude the origin because zero divided by zero is undefined. This ideal dataset has no added measurement noise."
+      },
+      {
+        "id": "speed",
+        "title": "用一把尺反求初速度",
+        "titleEn": "Infer launch speed using a ruler",
+        "seconds": 28,
+        "chapterAt": 195,
+        "at": 195.3,
+        "caption": "高度决定飞行时间，水平距离给出速度。",
+        "captionEn": "Height determines flight time; range then gives speed.",
+        "zh": "最后把接球面放到地面，测量桌面高度和抛出点正下方到落点的水平距离。球离桌时竖直速度为零，飞行时间由两倍高度除以重力加速度后开方得到。水平距离除以这个时间，就得到离桌的初速度。这项测量用的是平抛规律，不需要预先知道斜槽摩擦或用释放高度猜初速度。",
+        "en": "Finally catch the ball at floor level. Measure tabletop height and horizontal distance from directly below the launch point to impact. Zero initial vertical velocity gives flight time as the square root of twice the height divided by gravity. Divide horizontal range by that time for launch speed. This measurement uses flight geometry rather than assuming the ramp’s friction or inferring speed from release height."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-horizontal-projectile": {
+      "chapterIds": ["strobe", "paired", "carbon", "receivers", "home-board", "home-wall"],
+      "label": {
+        "zh": "探究平抛运动的特点",
+        "en": "Investigate horizontal projectile motion"
+      }
+    },
+    "required-2-parabola-check": {
+      "chapterIds": ["parabola"],
+      "label": {
+        "zh": "检验平抛轨迹是不是抛物线",
+        "en": "Check the parabolic trajectory"
+      }
+    },
+    "required-2-launch-speed": {
+      "chapterIds": ["speed"],
+      "label": {
+        "zh": "用刻度尺测量平抛初速度",
+        "en": "Measure launch speed using a ruler"
+      }
+    }
+  }
+}

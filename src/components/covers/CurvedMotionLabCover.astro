@@ -1,0 +1,18 @@
+---
+import { arcExit } from '../../models/curved-motion-lab';
+const path = Array.from({ length: 70 }, (_, i) => arcExit((i * 3) / 69))
+  .map((s, i) => `${i ? 'L' : 'M'}${110 + s.x * 110} ${130 - s.y * 110}`)
+  .join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M110 207A77 77 0 0 0 187 130" stroke="#bdcbb2" stroke-width="17"></path>
+  <path d={path} stroke="#c49b83" stroke-width="2"></path><circle
+    cx="187"
+    cy="52"
+    r="6"
+    fill="#a3bba1"></circle>
+  <path d="M187 40V24m-5 7 5-7 5 7" stroke="#91a980" stroke-width="2"></path>
+  <path d="M263 172Q302 138 337 186" stroke="#c2cdb1" stroke-width="2"></path>
+  <path d="M295 147l26 6m-24-4-7-6 1 8" stroke="#b59b71" stroke-width="2"></path>
+</svg>

@@ -1,0 +1,115 @@
+.mc-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #6d815f;
+}
+.mc-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.mc-apparatus {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  margin: auto;
+}
+.mc-apparatus text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #7d8e69;
+}
+.mc-readings,
+.mc-audit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  font-size: 16px;
+  color: #99825b;
+  padding: 8px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.mc-audit {
+  color: #7e916a;
+}
+.mc-note {
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 8px 16px;
+  color: #8c9c78;
+}
+.mc-table {
+  border-collapse: collapse;
+  width: calc(100% - 24px);
+  margin: 12px auto;
+  font-size: 16px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.mc-table th {
+  font-weight: 500;
+  color: #9aa989;
+  font-size: 16px;
+}
+.mc-table td,
+.mc-table th {
+  padding: 8px 3px;
+  border-bottom: 1px solid #dce5cf;
+}
+.mc-table .is-active {
+  background: #e5edd9;
+  color: #98835c;
+}
+.mc-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.mc-controls button {
+  min-height: 44px;
+}
+.mc-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.mc-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.mc-details p {
+  color: #7e9072;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .mc-controls {
+    padding: 18px 14px;
+  }
+  .mc-apparatus text {
+    font-size: 25px;
+  }
+  .mc-table th {
+    font-size: 16px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.mc-film[data-watch] > .mc-kicker,
+.mc-film[data-watch] > .mc-caption,
+.mc-film[data-watch] > details {
+  display: none;
+}
+.mc-film[data-watch] .mc-note {
+  display: none;
+}
+.mc-film[data-watch] .mc-readings,
+.mc-film[data-watch] .mc-audit {
+  padding: 5px 10px;
+  gap: 5px 12px;
+}

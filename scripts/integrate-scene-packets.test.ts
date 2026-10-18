@@ -37,6 +37,20 @@ function fixture(duration: number | null = 90) {
   write('src/i18n/en.json', '{}\n');
   write('src/data/narration.json', JSON.stringify({ existing: { duration: 180, cues: [] } }));
   write(
+    'src/data/film-timeline.json',
+    JSON.stringify({ existing: { duration: 180, chapters: [] } }),
+  );
+  write(
+    'src/data/curriculum-variants.json',
+    JSON.stringify({
+      'existing-experiment': {
+        sceneSlug: 'existing',
+        chapterIds: ['existing-step'],
+        label: { zh: '已有实验', en: 'Existing experiment' },
+      },
+    }),
+  );
+  write(
     'src/components/experiments/ShortExplanation.tsx',
     'export default function ShortExplanation() { return null; }\n',
   );
@@ -69,6 +83,12 @@ function fixture(duration: number | null = 90) {
       keywords: {
         zh: ['短片', '实验', '观察'],
         en: ['Short explanation', 'experiment', 'observation'],
+      },
+    },
+    curriculumVariants: {
+      'short-textbook-experiment': {
+        chapterIds: ['step-0', 'step-1'],
+        label: { zh: '短实验', en: 'Short experiment' },
       },
     },
     narration: {
@@ -107,6 +127,8 @@ describe('short explanation integration', () => {
       'src/i18n/en.json',
       'src/data/narration.json',
       'src/data/discovery-metadata.ts',
+      'src/data/film-timeline.json',
+      'src/data/curriculum-variants.json',
     ];
     const before = registryPaths.map((path) => readFileSync(join(root, path), 'utf8'));
     const dry = run();
@@ -127,6 +149,28 @@ describe('short explanation integration', () => {
     expect(readFileSync(join(root, 'src/data/discovery-metadata.ts'), 'utf8')).toContain(
       '"short-explanation"',
     );
+    const timeline = JSON.parse(readFileSync(join(root, 'src/data/film-timeline.json'), 'utf8'));
+    expect(timeline.existing).toEqual({ duration: 180, chapters: [] });
+    expect(timeline['short-explanation']).toMatchObject({
+      duration: 90,
+      chapters: [
+        { id: 'step-0', at: 0 },
+        { id: 'step-1', at: 45 },
+      ],
+    });
+    const variants = JSON.parse(
+      readFileSync(join(root, 'src/data/curriculum-variants.json'), 'utf8'),
+    );
+    expect(variants['existing-experiment']).toEqual({
+      sceneSlug: 'existing',
+      chapterIds: ['existing-step'],
+      label: { zh: '已有实验', en: 'Existing experiment' },
+    });
+    expect(variants['short-textbook-experiment']).toEqual({
+      sceneSlug: 'short-explanation',
+      chapterIds: ['step-0', 'step-1'],
+      label: { zh: '短实验', en: 'Short experiment' },
+    });
   });
 
   it.each([0, -1, 300.01, null])(
@@ -170,4 +214,25 @@ describe('short explanation integration', () => {
     expect(result.status).not.toBe(0);
     expect(result.stderr).toContain('exact Chinese and English topic names');
   });
+
+  it.each([['step-1', 'step-0'], ['step-0', 'step-0'], ['missing']])(
+    'rejects an invalid textbook chapter window %j without writing its timeline or mapping',
+    (...chapterIds) => {
+      const { root, run } = fixture();
+      const packetPath = join(root, 'src/data/scene-packets/short-explanation.json');
+      const packet = JSON.parse(readFileSync(packetPath, 'utf8'));
+      packet.curriculumVariants['short-textbook-experiment'].chapterIds = chapterIds;
+      writeFileSync(packetPath, JSON.stringify(packet));
+      const paths = [
+        'src/data/topics.ts',
+        'src/data/film-timeline.json',
+        'src/data/curriculum-variants.json',
+      ];
+      const before = paths.map((path) => readFileSync(join(root, path), 'utf8'));
+      const result = run('--apply');
+      expect(result.status).not.toBe(0);
+      expect(result.stderr).toContain('curriculum chapters must exist in consecutive order');
+      expect(paths.map((path) => readFileSync(join(root, path), 'utf8'))).toEqual(before);
+    },
+  );
 });

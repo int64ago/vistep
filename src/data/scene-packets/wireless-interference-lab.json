@@ -1,0 +1,158 @@
+{
+  "topic": {
+    "slug": "wireless-interference-lab",
+    "name": "Wi-Fi与蓝牙干扰实验",
+    "title": "连接蓝牙以后，Wi-Fi一定会变慢吗？",
+    "question": "连接蓝牙以后，Wi-Fi一定会变慢吗？",
+    "description": "把频率重叠、传输时间、自适应跳频与真实重复测速区分开。",
+    "color": "#799066",
+    "tag": "频段与受控对照",
+    "related": ["packet-routing", "network"],
+    "sources": [
+      {
+        "title": "Bluetooth SIG — Adaptive frequency hopping",
+        "url": "https://www.bluetooth.com/blog/how-bluetooth-technology-uses-adaptive-frequency-hopping-to-overcome-packet-interference/"
+      },
+      {
+        "title": "Silicon Labs — Wi-Fi coexistence fundamentals",
+        "url": "https://www.silabs.com/documents/public/user-guides/ug103-17-wi-fi-coexistence-fundamentals.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/WirelessInterferenceLab.tsx",
+  "cover": "src/components/covers/WirelessInterferenceLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["Wi-Fi与蓝牙干扰实验", "无线干扰", "蓝牙", "跳频", "Wi-Fi", "网速"],
+      "en": [
+        "Wi-Fi and Bluetooth interference",
+        "wireless coexistence",
+        "adaptive frequency hopping",
+        "network speed"
+      ]
+    }
+  },
+  "translations": {
+    "Wi-Fi与蓝牙干扰实验": "Wi-Fi and Bluetooth interference",
+    "连接蓝牙以后，Wi-Fi一定会变慢吗？": "Does connecting Bluetooth always slow Wi-Fi?",
+    "把频率重叠、传输时间、自适应跳频与真实重复测速区分开。": "Separate frequency overlap, transmission timing, adaptive hopping and repeated real measurements.",
+    "频段与受控对照": "Spectrum and controlled comparisons",
+    "先记录无蓝牙传输的基线": "Record a baseline without Bluetooth traffic",
+    "同频同时间，才可能发生碰撞": "Collision requires overlap in frequency and time",
+    "自适应跳频避开拥挤频点": "Adaptive hopping avoids occupied frequencies",
+    "改用5GHz，分开频段": "Separate the bands with 5 GHz Wi-Fi",
+    "回到真实手机，做重复对照": "Return to the phone for repeated comparisons",
+    "示意调度，不是网速测量": "Illustrative scheduling, not a speed test",
+    "Wi-Fi宽信道与蓝牙跳频在时间和频率上的交叠": "Time-frequency overlap of a wide Wi-Fi channel and Bluetooth hopping",
+    "时间向下": "Time downward",
+    "已模拟数据包": "Simulated packets",
+    "需重传": "Require retry",
+    "首次送达": "First-attempt delivery",
+    "同地点、同服务器、相近时段，交替测量蓝牙传输前后；保留多次结果，检查平均值与波动。": "Keep place, server and timing comparable. Alternate measurements before and during Bluetooth traffic, retaining repeated results to inspect averages and variation.",
+    "选择无线对照": "Choose a wireless comparison",
+    "蓝牙无传输": "No Bluetooth traffic",
+    "共享2.4GHz": "Shared 2.4 GHz",
+    "自适应跳频": "Adaptive hopping",
+    "Wi-Fi改用5GHz": "Wi-Fi on 5 GHz",
+    "记录实际测量": "Record real measurements",
+    "蓝牙占用时隙比例": "Bluetooth slot occupancy",
+    "输入实际重复测速值，以逗号分隔": "Enter repeated real speed measurements, comma-separated",
+    "均值": "Mean",
+    "样本标准差": "Sample standard deviation",
+    "尚未输入实测数据": "No real measurements entered",
+    "这项实验能说明什么": "What this experiment can establish",
+    "这是确定性时频调度示意，采用经典蓝牙式79个1兆赫信道和20兆赫Wi-Fi信道，不完整模拟协议、射频功率或重传吞吐。标出的首次送达率不是设备网速预测。自适应跳频与设备共存机制可以减轻干扰；5GHz仅消除这里画出的同频碰撞。真实测速还受服务器、信号、负载和设备实现影响，单次差异不能直接证明因果。": "This deterministic schedule uses Classic-like 79 one-megahertz channels and a twenty-megahertz Wi-Fi channel, without full protocols, RF power or retry throughput. First-attempt delivery is not a device-speed prediction. Adaptive hopping and coexistence can reduce interference. 5 GHz removes only the depicted frequency overlap. Servers, signal, load and implementation also affect real tests; one difference does not prove causation.",
+    "先有可重复基线": "Establish a repeatable baseline",
+    "先固定频段、信号和传输条件。": "Fix the band, signal and traffic conditions first.",
+    "同频与同时": "Overlap in time and frequency",
+    "只有交叠的数据包才满足碰撞条件。": "Only overlapping packets meet the collision condition.",
+    "避开拥挤频点": "Avoid occupied frequencies",
+    "跳频策略可以减少同频碰撞。": "Adaptive hopping can reduce frequency collisions.",
+    "把Wi-Fi移到另一频段": "Move Wi-Fi to another band",
+    "频段分开，消除这个模型中的同频碰撞。": "Separate bands remove this model’s frequency collisions.",
+    "回到手机做重复对照": "Run repeated phone comparisons",
+    "多次交替测量，区分效应与波动。": "Alternate repeated measurements to distinguish effect from variation."
+  },
+  "narration": {
+    "duration": 130,
+    "cues": [
+      {
+        "id": "wireless-baseline",
+        "title": "先有可重复基线",
+        "titleEn": "Establish a repeatable baseline",
+        "caption": "先固定频段、信号和传输条件。",
+        "captionEn": "Fix the band, signal and traffic conditions first.",
+        "zh": "开始之前，先区分连接蓝牙和蓝牙正在持续传输。这个基线没有蓝牙流量，宽条表示同一个Wi-Fi信道的传输时隙。接下来的对照保持同一套输入，只改变我们要研究的条件。",
+        "en": "Distinguish being connected to Bluetooth from actively transmitting. This baseline has no Bluetooth traffic. Wide marks show transmission slots in the same Wi-Fi channel. The next comparisons preserve the inputs and change one selected condition.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "wireless-overlap",
+        "title": "同频与同时",
+        "titleEn": "Overlap in time and frequency",
+        "caption": "只有交叠的数据包才满足碰撞条件。",
+        "captionEn": "Only overlapping packets meet the collision condition.",
+        "zh": "加入蓝牙传输。窄点在频率之间跳动，只有同时落在Wi-Fi占用范围内的活动被标成碰撞。即使共享二点四吉赫频段，也不是每个数据包都相撞。这里的首次送达率是模型结果，不是真实网速。",
+        "en": "Add Bluetooth traffic. Narrow marks hop between frequencies. Only simultaneous marks within the Wi-Fi allocation are flagged as collisions. Sharing 2.4 GHz does not make every packet collide. The first-attempt delivery rate is a model result, not measured speed.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "wireless-adaptive",
+        "title": "避开拥挤频点",
+        "titleEn": "Avoid occupied frequencies",
+        "caption": "跳频策略可以减少同频碰撞。",
+        "captionEn": "Adaptive hopping can reduce frequency collisions.",
+        "zh": "开启示意的自适应跳频，把正在被Wi-Fi占用的频点排除。蓝牙仍在传输，但更多活动离开冲突区域。真实设备还可能协调两种无线电的工作时间，所以干扰程度取决于具体实现。",
+        "en": "Enable illustrative adaptive hopping and exclude occupied Wi-Fi frequencies. Bluetooth continues transmitting, but activity moves outside the conflict region. Real devices may also coordinate radio timing, so interference depends on implementation.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "wireless-five",
+        "title": "把Wi-Fi移到另一频段",
+        "titleEn": "Move Wi-Fi to another band",
+        "caption": "频段分开，消除这个模型中的同频碰撞。",
+        "captionEn": "Separate bands remove this model’s frequency collisions.",
+        "zh": "把Wi-Fi改到五吉赫频段，蓝牙仍留在二点四吉赫。这里画出的同频碰撞不再出现。不过这并不保证实际测速必定更快，信号衰减、设备和网络负载仍然重要。",
+        "en": "Move Wi-Fi to 5 GHz while Bluetooth remains at 2.4 GHz. The frequency collisions shown here disappear. That does not guarantee a faster real speed test: propagation, hardware and network load still matter.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "wireless-study",
+        "title": "回到手机做重复对照",
+        "titleEn": "Run repeated phone comparisons",
+        "caption": "多次交替测量，区分效应与波动。",
+        "captionEn": "Alternate repeated measurements to distinguish effect from variation.",
+        "zh": "回到真实手机，固定地点和测速服务器，在蓝牙传输前后交替测量多次。保留原始结果，再比较平均值和波动。自由探索可以输入自己的测速数据，但不会自动访问你的网络，也不会把模拟值冒充实测。",
+        "en": "On the real phone, keep position and test server fixed and alternate repeated measurements before and during Bluetooth transfer. Retain the raw results and compare averages and variation. Exploration accepts your measurements; it does not access your network or pass simulated values off as observations.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-wifi-bluetooth-interference": {
+      "chapterIds": [
+        "wireless-baseline",
+        "wireless-overlap",
+        "wireless-adaptive",
+        "wireless-five",
+        "wireless-study"
+      ],
+      "label": {
+        "zh": "Wi-Fi与蓝牙干扰的对照实验",
+        "en": "Controlled Wi-Fi and Bluetooth comparison"
+      }
+    }
+  }
+}

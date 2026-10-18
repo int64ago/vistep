@@ -1,0 +1,125 @@
+{
+  "topic": {
+    "slug": "force-resultant-lab",
+    "name": "力的合成与分解实验",
+    "title": "两个斜着拉的力，怎样换成一个力？",
+    "question": "两个斜着拉的力，怎样换成一个力？",
+    "description": "保留橡皮条同一形变，从双测力计与单测力计的等效替换建立矢量合成，再反向研究分解。",
+    "color": "#b2bf9e",
+    "tag": "同效 · 替换 · 矢量",
+    "related": ["force-pairs-lab", "elasticity-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Scalars and Vectors",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/2-1-scalars-and-vectors"
+      },
+      {
+        "title": "OpenStax — Conditions for Static Equilibrium",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["力的合成与分解实验", "平行四边形定则", "等效替换", "橡皮条"],
+      "en": [
+        "Force composition laboratory",
+        "parallelogram rule",
+        "equivalent force",
+        "force resolution"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ForceResultantLab.tsx",
+  "cover": "src/components/covers/ForceResultantLabCover.astro",
+  "translations": {
+    "力的合成与分解实验": "Force composition laboratory",
+    "两个斜着拉的力，怎样换成一个力？": "How can two angled pulls be replaced by one?",
+    "保留橡皮条同一形变，从双测力计与单测力计的等效替换建立矢量合成，再反向研究分解。": "Restore the same elastic-strip deformation with two or one force meters, then reverse the procedure to investigate resolution.",
+    "同效 · 替换 · 矢量": "Match · Replace · Add vectors",
+    "改用一个力，仍把圆环拉到同一个标记": "Replace with one force and restore the same mark",
+    "从同一个点画矢量，比较平行四边形对角线": "Draw vectors from one point and compare the diagonal",
+    "从一个力出发，找一组等效的两个力": "Start with one force and find an equivalent pair",
+    "两个方向一起拉，把圆环停在O点": "Pull in two directions and hold the ring at O",
+    "同一橡皮条 · 同一O点": "Same elastic strip · Same point O",
+    "固定橡皮条连接圆环，双测力计与单测力计把圆环拉到相同位置": "A fixed elastic strip holds a ring; two meters and one meter restore the same position",
+    "左侧力": "Left force",
+    "右侧力": "Right force",
+    "等效单力": "Equivalent single force",
+    "同一个O点意味着橡皮条的伸长和方向相同。": "The same point O preserves strip extension and direction.",
+    "等效合力是对角线；不是把两个读数直接相加。": "The equivalent resultant is the diagonal, not the sum of the two readings.",
+    "保留O点与两条方向记录，才能进行等效替换。": "Keep O and both direction records to test equivalent replacement.",
+    "观察步骤": "Observation step",
+    "两个力": "Two forces",
+    "一个力": "One force",
+    "矢量记录": "Vector record",
+    "左侧偏离竖直的角度": "Left angle from vertical",
+    "右侧偏离竖直的角度": "Right angle from vertical",
+    "橡皮条拉伸后长度": "Stretched strip length",
+    "合力表示等效替代，不是又增加一个实际拉力。橡皮条取线性弹性近似，所有状态均为静止平衡。": "The resultant replaces the pair; it is not an extra physical pull. The strip is approximately linear elastic and all states are equilibria."
+  },
+  "narration": {
+    "duration": 112,
+    "cues": [
+      {
+        "id": "two",
+        "title": "记录两个力的共同效果",
+        "titleEn": "Record the effect of two forces",
+        "caption": "记住O点、两条方向和两个读数。",
+        "captionEn": "Record O, two directions and both readings.",
+        "zh": "把橡皮条固定一端，另一端接小圆环。用两只测力计沿不同方向拉，让圆环停在O点。现在要记录三类信息：O点的位置、两条拉力方向和两个读数。仅仅记下两个数字还不够，因为方向也是力的一部分。橡皮条此时的伸长与方向，给接下来的替换提供了共同的效果标准。",
+        "en": "Fix one end of an elastic strip and attach a ring to the other. Pull in two directions with force meters until the ring rests at O. Record the position, both force directions and both readings. Two numbers alone are insufficient because direction matters. The strip extension and orientation establish the effect the replacement must reproduce.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "one",
+        "title": "单力恢复同一O点",
+        "titleEn": "Restore O with one force",
+        "caption": "同一位置，使橡皮条对圆环的力相同。",
+        "captionEn": "The same position restores the same strip force.",
+        "zh": "改用一只测力计，沿合适方向把圆环拉回刚才的O点。固定端没动，O点也没动，橡皮条的伸长和方向就恢复原样。因此这个单独的力，与原来的两个力产生相同效果。注意这里比较的是同一个位置，不能只凭看起来差不多，也不能先把两个读数直接相加再当成答案。",
+        "en": "Replace the pair with a single meter and bring the ring back to O. The fixed anchor and ring position are unchanged, restoring the same extension and orientation. This single force reproduces the original pair’s effect. Restore the actual point rather than relying on a visual approximation or assuming the two numerical readings should simply be added.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "vectors",
+        "title": "比较矢量记录",
+        "titleEn": "Compare the vector record",
+        "caption": "两个力作邻边，等效单力对应对角线。",
+        "captionEn": "The pair forms adjacent sides; the single force matches the diagonal.",
+        "zh": "把器材暂时退到背景，看留在纸上的矢量记录。两个力从同一个O点出发，用相同标度画出大小和方向，再补成平行四边形。它的对角线与单力的大小和方向吻合。对角线是等效合力，不是又多加了第三个实际拉力；如果把三个箭头都当作同时存在的拉力，就改变了原实验。",
+        "en": "Read the vector record separately from the apparatus. Draw both forces from O using one scale, then complete the parallelogram. Its diagonal matches the single force in magnitude and direction. This is an equivalent resultant, not an additional third pull. Treating all three arrows as simultaneous physical forces would describe a different experiment.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "reverse",
+        "title": "交换操作研究分解",
+        "titleEn": "Reverse the procedure",
+        "caption": "同一合力可由不同方向的一对分力实现。",
+        "captionEn": "Different directed pairs can reproduce the same resultant.",
+        "zh": "最后交换操作顺序。先用一个力确定O点，再用两个力把圆环恢复到这里，就是研究力的分解。改变两条方向，各自读数会改变，但橡皮条的同一效果可以保持。只有合力还不够，通常还需要规定分力的方向才能确定一组答案。自由探索中再改变O点高度，你会看到此时连等效单力也必须改变。",
+        "en": "Reverse the order: establish O with one force, then restore it with two. This investigates resolution. Changing the directions changes the individual readings while preserving the same strip effect. A resultant alone usually needs additional direction constraints to identify a pair. In exploration, changing O itself also changes the required equivalent single force.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-force-resultant": {
+      "chapterIds": ["two", "one", "vectors", "reverse"],
+      "label": {
+        "zh": "力的合成与分解",
+        "en": "Force composition and resolution"
+      }
+    }
+  }
+}

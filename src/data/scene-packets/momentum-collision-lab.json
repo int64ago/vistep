@@ -1,0 +1,215 @@
+{
+  "topic": {
+    "slug": "momentum-collision-lab",
+    "name": "碰撞中的不变量",
+    "title": "碰撞前后，究竟什么量保持不变？",
+    "question": "碰撞前后，究竟什么量保持不变？",
+    "description": "从不同质量悬球到粘连小车和气垫导轨，用真实教材数据与可追踪测速分别检验动量和动能。",
+    "color": "#bdc9ae",
+    "tag": "碰撞 · 动量 · 测量",
+    "related": ["elastic-collision", "pendulum"],
+    "sources": [
+      {
+        "title": "OpenStax — Types of Collisions",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["碰撞中的不变量", "动量守恒", "气垫导轨", "悬球碰撞", "粘连小车"],
+      "en": [
+        "Invariants in Collisions",
+        "momentum conservation",
+        "air track",
+        "hanging-ball collision",
+        "sticking carts"
+      ]
+    }
+  },
+  "component": "src/components/experiments/MomentumCollisionLab.tsx",
+  "cover": "src/components/covers/MomentumCollisionLabCover.astro",
+  "translations": {
+    "碰撞中的不变量": "Invariants in Collisions",
+    "碰撞前后，究竟什么量保持不变？": "What remains unchanged through a collision?",
+    "从不同质量悬球到粘连小车和气垫导轨，用真实教材数据与可追踪测速分别检验动量和动能。": "Move from hanging balls to sticking carts and air-track gliders, using printed data and traceable timing to audit momentum and kinetic energy.",
+    "碰撞 · 动量 · 测量": "Collisions · Momentum · Measurement",
+    "等长悬线上的同大小球体，左球质量可改变，碰后摆起高度可比较": "Equal-length strings suspend equal-size balls; changing left mass changes post-collision height",
+    "左球释放高度": "Left release height",
+    "右球最大高度": "Right maximum height",
+    "虚线是左球释放高度；比较碰撞紧邻前后的速度，不把整个摆动当作水平动量守恒。": "The dashed line marks left release height. Compare velocities immediately around impact; horizontal momentum is not conserved throughout swinging.",
+    "水平导轨上的两滑块、真实碰撞附件、遮光片与两个光电门": "Two gliders on a horizontal track with physical collision attachments, flags and photogates",
+    "教材原始表格；保留实验偏差，不改成完美守恒数据": "Original textbook table: retain experimental residuals rather than imposing perfect conservation",
+    "展开纸带的两段：每五次打点取一计数点，间隔 0.10 s": "Two expanded tape sections: every fifth dot forms a0.10 s counting interval",
+    "碰前": "Before collision",
+    "碰后": "After collision",
+    "遮光片宽 20 mm；速度大小由宽度除以遮光时间，正负由运动方向判断": "The flag is20 mm wide; width/transit time gives speed, while motion supplies its sign",
+    "等质量时交换速度，还不能推广到所有碰撞": "Equal masses exchange velocity, but this does not generalize to every collision",
+    "同样大小但质量不同，速度之和不再守恒": "Equal size with unequal mass: the velocity sum is not conserved",
+    "从教材实测数据比较不同的候选量": "Compare candidate invariants using printed measurements",
+    "弹簧弹性势能转为动能，两个滑块动量方向相反": "Elastic potential energy becomes kinetic energy with opposite glider momenta",
+    "选稳定运动的纸带段，避开碰撞发生区间": "Use steady-motion tape sections; avoid the impact interval",
+    "动量与动能要分别核对": "Audit momentum and kinetic energy separately",
+    "先读遮光时间，再带方向计算动量": "Read transit time first, then calculate signed momentum",
+    "选择碰撞装置与路径": "Choose a collision apparatus and path",
+    "悬球": "Hanging balls",
+    "教材小车数据": "Printed cart data",
+    "弹性碰撞架": "Elastic frames",
+    "撞针与橡皮泥": "Pin and putty",
+    "压缩弹簧分离": "Compressed-spring release",
+    "纸带测速": "Paper-tape timing",
+    "左球与右球质量": "Left and right ball masses",
+    "相同质量": "Equal masses",
+    "左球两倍质量": "Double left mass",
+    "教材数据组": "Textbook dataset index",
+    "入射速度": "Incident speed",
+    "逐帧观察实验": "Scrub the experiment",
+    "碰撞边界与测量模型": "Collision boundaries and timing model",
+    "理想导轨忽略外力冲量；弹性与粘连按同一动量方程和不同恢复系数计算。碰撞视为瞬时，不虚构碰撞力曲线。光电门只在遮光片完整通过后显示计时；方向来自可见运动。悬球用非线性单摆方程求轨迹，但只在碰撞紧邻前后比较水平动量。教材三组数据保留原始误差；弹簧分离核对弹性势能与动能总量。": "The ideal track neglects external impulse; elastic and sticking collisions share momentum equations with different restitution. Impact is instantaneous, without a fabricated force curve. Photogate readings appear after complete flag transit; visible motion supplies direction. Hanging balls follow nonlinear pendulum trajectories, with horizontal momentum compared only immediately around impact. The three printed trials retain their original residuals; spring release audits elastic plus kinetic energy."
+  },
+  "narration": {
+    "duration": 222,
+    "cues": [
+      {
+        "id": "hanging-equal",
+        "title": "等质量悬球",
+        "titleEn": "Equal hanging balls",
+        "caption": "一个特殊现象，先不要直接推广。",
+        "captionEn": "Observe the special case before generalizing.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先让两个等质量的小球并排悬挂。拉起左球，再释放，理想弹性碰撞后左球停下，右球以相同速度离开，最终摆到原来的释放高度。看起来像是速度从一个球传给了另一个球。但要找普遍规律，还需要改变质量再试。",
+        "en": "Suspend two equal-mass balls side by side. Release the left ball: after ideal elastic impact it stops, while the right leaves at the same speed and rises to the original height. Velocity appears to transfer between balls. A general law needs another comparison with changed mass."
+      },
+      {
+        "id": "hanging-unequal",
+        "title": "同大小，不同质量",
+        "titleEn": "Same size, unequal masses",
+        "caption": "较重入射球可使轻球摆得更高。",
+        "captionEn": "A heavier incident ball can send the lighter one higher.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "把左球换成同样大小、质量更大的球，仍从相同高度释放。碰后左球继续运动，右球获得更大的速度，摆到更高的位置。速度之和已经不再与碰前相同。因此不能只看一个等质量案例就宣布速度守恒，需要把质量也纳入候选量。",
+        "en": "Replace the left ball with a heavier ball of the same size and release it from the same height. It keeps moving after impact, while the lighter ball leaves faster and rises higher. The velocity sum is no longer unchanged. Mass must enter the search for an invariant."
+      },
+      {
+        "id": "printed-sticky-data",
+        "title": "保留教材实测值",
+        "titleEn": "Preserve the printed measurements",
+        "caption": "动量近似相同，动能明显减少。",
+        "captionEn": "Momentum is approximately unchanged while kinetic energy decreases.",
+        "seconds": 26,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "再看教材给出的三组小车粘连数据。两车碰后共同运动，速度并不是原来速度的简单复制。按原值计算，质量与速度乘积之和近似不变，而动能明显减少。第一组的动量偏差约百分之二点二，画面保留这个偏差，不把实验数据改成完美守恒。",
+        "en": "Now examine the textbook’s three sticking-cart trials. The carts move together after impact, with a speed different from the incident speed. Using the printed values, total mass-times-velocity is approximately unchanged while kinetic energy decreases. The first momentum residual is about2.2 percent; it is retained rather than replaced by perfect conservation."
+      },
+      {
+        "id": "air-elastic",
+        "title": "弹性架与光电门",
+        "titleEn": "Elastic frames and photogates",
+        "caption": "从完整遮光时间得到带方向的速度。",
+        "captionEn": "Use full flag transit and visible direction to obtain velocity.",
+        "seconds": 26,
+        "chapterAt": 74,
+        "at": 74.4,
+        "zh": "在调平的气垫导轨上安装弹性碰撞架。两个滑块接触后分开，较轻的左滑块反弹。光电门记录遮光片完整通过的时间，片宽除以时间给出速度大小；反弹方向让左滑块的碰后速度带负号。把这些有向速度乘以各自质量，再比较总动量。",
+        "en": "Fit elastic frames on a level air track. The gliders separate after contact, with the lighter left glider rebounding. Photogates record full flag transit time; width divided by time gives speed. Rebound makes the left final velocity negative. Multiply signed velocities by their masses and compare total momentum."
+      },
+      {
+        "id": "air-sticking",
+        "title": "撞针插入橡皮泥",
+        "titleEn": "A pin enters putty",
+        "caption": "粘连后，两滑块保持共同速度。",
+        "captionEn": "After sticking, both gliders share a velocity.",
+        "seconds": 24,
+        "chapterAt": 100,
+        "at": 100.4,
+        "zh": "换下弹性架，装上撞针与橡皮泥。碰撞后两滑块连成一体，间距保持不变，以共同速度继续前进。系统的水平动量仍守恒，却不意味着两个滑块的动能也守恒。装置中能看到的粘连，正对应模型中的完全非弹性碰撞。",
+        "en": "Replace the elastic frames with a pin and putty. After impact the gliders remain connected at fixed spacing and move with a shared velocity. Horizontal system momentum remains conserved, but kinetic energy need not. The visible sticking corresponds to the perfectly inelastic model."
+      },
+      {
+        "id": "air-spring-release",
+        "title": "由静止弹开",
+        "titleEn": "Separate from rest",
+        "caption": "动量相反，动能来自弹性势能。",
+        "captionEn": "Opposite momenta draw kinetic energy from the spring.",
+        "seconds": 26,
+        "chapterAt": 124,
+        "at": 124.4,
+        "zh": "把轻弹簧压在两个静止滑块之间，释放约束。两滑块向相反方向运动，较轻的一块速度更大，两个动量大小相等、方向相反。弹簧伸到自然长度后脱离并落下。滑块获得的动能来自弹簧原先的弹性势能，整个过程不能只检查动能一项。",
+        "en": "Compress a light spring between stationary gliders and release the constraint. They move oppositely, with the lighter glider faster and equal opposite momenta. At natural length the spring detaches and falls. The gliders’ kinetic energy comes from stored elastic potential energy, so kinetic energy alone is not the complete energy account."
+      },
+      {
+        "id": "tape-velocity",
+        "title": "用纸带读速度",
+        "titleEn": "Read speed from paper tape",
+        "caption": "选取碰撞前后各自稳定的点距。",
+        "captionEn": "Select steady spacing before and after impact.",
+        "seconds": 24,
+        "chapterAt": 150,
+        "at": 150.4,
+        "zh": "换成小车和打点纸带，记录粘连碰撞。这里每五次打点取一个计数点，相邻计数点相隔零点一秒。碰前点距较大，碰后点距较小。测速必须选各自稳定的一段，不能把跨越碰撞过程的区间当成碰前或碰后的瞬时速度。",
+        "en": "Use carts and ticker tape to record a sticking collision. Every fifth dot gives counting points0.1 seconds apart. Spacing is larger before impact and smaller afterward. Choose stable sections on each side; an interval spanning the collision cannot represent either immediate pre- or post-collision velocity."
+      },
+      {
+        "id": "energy-elastic",
+        "title": "分别核对动量与动能",
+        "titleEn": "Audit momentum and kinetic energy",
+        "caption": "理想弹性碰撞保持两种总量。",
+        "captionEn": "Ideal elastic impact conserves both totals.",
+        "seconds": 24,
+        "chapterAt": 174,
+        "at": 174.4,
+        "zh": "最后回到弹性碰撞架，分别计算总动量和总动能。两滑块的速度和方向都可能改变，但是理想弹性碰撞使这两个总量保持不变。动量是有方向的代数和，动能由速度平方计算；它们不是同一个量，也不能互相替代。",
+        "en": "Return to elastic frames and calculate total momentum and kinetic energy separately. Speeds and directions can change, but ideal elastic impact conserves both totals. Momentum is a signed sum, whereas kinetic energy depends on squared speed. They describe different quantities and cannot replace each other."
+      },
+      {
+        "id": "energy-sticking",
+        "title": "粘连时动能去哪了",
+        "titleEn": "Where sticking-collision energy goes",
+        "caption": "动量守恒不等于动能守恒。",
+        "captionEn": "Momentum conservation is not kinetic-energy conservation.",
+        "seconds": 24,
+        "chapterAt": 198,
+        "at": 198.4,
+        "zh": "再改为粘连，保持入射条件相同。总动量仍然相等，总动能却降低了。减少的机械能进入形变、内能等过程，能量并没有消失。真实弹性架也会有损耗，所以理想模型与实验测量应分开比较，并检查外力冲量是否足够小。",
+        "en": "Switch to sticking with the same incident conditions. Total momentum remains equal but total kinetic energy decreases. Mechanical energy goes into deformation, internal energy and other processes; it does not disappear. Real elastic frames also have losses, so distinguish ideal predictions from measurements and check that external impulse is negligible."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-hanging-ball-collision": {
+      "chapterIds": ["hanging-equal", "hanging-unequal"],
+      "label": {
+        "zh": "不同质量悬球的碰撞",
+        "en": "Hanging-ball collisions with different masses"
+      }
+    },
+    "e1-sticky-cart-invariant": {
+      "chapterIds": ["printed-sticky-data"],
+      "label": {
+        "zh": "寻找粘连小车的不变量",
+        "en": "Find an invariant in sticking-cart data"
+      }
+    },
+    "e1-air-track-momentum": {
+      "chapterIds": ["air-elastic", "air-sticking", "air-spring-release", "tape-velocity"],
+      "label": {
+        "zh": "气垫导轨与纸带验证动量守恒",
+        "en": "Verify momentum using air tracks and tape"
+      }
+    },
+    "e1-collision-energy": {
+      "chapterIds": ["energy-elastic", "energy-sticking"],
+      "label": {
+        "zh": "研究碰撞前后动能变化",
+        "en": "Investigate kinetic-energy changes in collisions"
+      }
+    }
+  }
+}

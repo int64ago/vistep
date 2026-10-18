@@ -1,0 +1,145 @@
+{
+  "topic": {
+    "slug": "mutual-induction-lab",
+    "name": "互感实验室",
+    "title": "两组导线没有接通，信号怎样传过去？",
+    "question": "两组导线没有接通，信号怎样传过去？",
+    "description": "在铁环与套入线圈中，追踪原电流、共享磁通和副线圈电动势。",
+    "color": "#799066",
+    "tag": "共享的变化磁通",
+    "related": ["transformer-electric", "inductor-transient"],
+    "sources": [
+      {
+        "title": "OpenStax — Mutual inductance",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/14-1-mutual-inductance"
+      }
+    ]
+  },
+  "component": "src/components/experiments/MutualInductionLab.tsx",
+  "cover": "src/components/covers/MutualInductionLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["互感实验室", "法拉第铁环", "互感", "套入线圈", "音频信号"],
+      "en": [
+        "Mutual-induction experiments",
+        "Faraday iron ring",
+        "mutual inductance",
+        "nested coils"
+      ]
+    }
+  },
+  "translations": {
+    "互感实验室": "Mutual-induction experiments",
+    "两组导线没有接通，信号怎样传过去？": "How does a signal cross between unconnected circuits?",
+    "在铁环与套入线圈中，追踪原电流、共享磁通和副线圈电动势。": "Track primary current, shared flux and secondary emf in an iron ring and nested coils.",
+    "共享的变化磁通": "Shared changing flux",
+    "法拉第铁环": "Faraday’s iron ring",
+    "套入线圈的音频信号": "Nested audio coils",
+    "接通电源": "Close the switch",
+    "保持直流": "Steady direct current",
+    "断开电源": "Open the switch",
+    "彼此绝缘的两套电路通过变化的磁通传递信号": "Two insulated circuits transfer a signal through changing magnetic flux",
+    "原线圈电流与副线圈电动势的波形": "Primary-current and secondary-emf waveforms",
+    "选择互感装置": "Choose a mutual-induction apparatus",
+    "电源状态": "Source state",
+    "开关动作后的时间": "Time after switching",
+    "线圈套入程度": "Coil insertion",
+    "信号频率": "Signal frequency",
+    "信号相位": "Signal phase",
+    "互感模型与慢放": "Mutual-induction model and slow motion",
+    "副线圈采用高阻测量，忽略它对原线圈的反作用。铁环电流按0.12秒时间常数变化，电动势由同一电流的导数计算。音频波形被慢放，套入程度决定静态耦合系数；比较的是停止移动后的信号，不计移动线圈产生的附加电动势。绕组仅绘代表匝，铁芯不计饱和与磁滞。": "The high-impedance secondary neglects back reaction. Ring current changes with a 0.12-second time constant; emf comes from its derivative. Audio is shown in slow motion. Insertion sets static coupling, comparing signals after motion stops and excluding motional emf. Windings are representative; saturation and hysteresis are omitted.",
+    "接通的瞬间": "Closing the switch",
+    "原线圈电流变化，副线圈才响应。": "The secondary responds while the primary current changes.",
+    "电流稳定以后": "After current settles",
+    "有磁场，不等于持续产生电动势。": "A magnetic field alone does not sustain an emf.",
+    "断开后反向": "Opening reverses the response",
+    "磁通减小，感应电动势方向反转。": "Decreasing flux reverses the induced emf.",
+    "连续传送音频信号": "A continuous audio signal",
+    "变化的原电流，不需要电接触就能传递信号。": "Changing primary current transfers a signal without electrical contact.",
+    "抽出以后比较": "Compare after withdrawal",
+    "相同信号源，更小的耦合带来更弱的接收信号。": "The same source produces a weaker signal with less coupling."
+  },
+  "narration": {
+    "duration": 130,
+    "cues": [
+      {
+        "id": "ring-close",
+        "title": "接通的瞬间",
+        "titleEn": "Closing the switch",
+        "caption": "原线圈电流变化，副线圈才响应。",
+        "captionEn": "The secondary responds while the primary current changes.",
+        "zh": "沿着铁环认出两组导线：它们彼此绝缘。合上开关，原线圈的电流开始建立，穿过副线圈的磁通也随之改变。留意电流计的偏转，以及两条波形不同的形状。",
+        "en": "Follow the two insulated windings around the iron ring. Closing the switch builds the primary current and changes the flux linking the secondary. Notice the meter response and the different shapes of the two traces.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "ring-steady",
+        "title": "电流稳定以后",
+        "titleEn": "After current settles",
+        "caption": "有磁场，不等于持续产生电动势。",
+        "captionEn": "A magnetic field alone does not sustain an emf.",
+        "zh": "电源仍然接通，原线圈仍有电流，铁环里的磁通也没有消失。但副线圈的电动势已经归零。互感响应的是磁通的变化，而不是磁通本身有多大。",
+        "en": "The source remains connected. Primary current and magnetic flux remain present, yet the secondary emf is zero. Mutual induction responds to changing flux, not simply to the amount of flux present.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "ring-open",
+        "title": "断开后反向",
+        "titleEn": "Opening reverses the response",
+        "caption": "磁通减小，感应电动势方向反转。",
+        "captionEn": "Decreasing flux reverses the induced emf.",
+        "zh": "现在断开电源。原线圈电流衰减，磁通随之减小。电流计向另一侧偏转。比较接通和断开：原电流并没有反向，改变的是它增加还是减少。",
+        "en": "Open the switch. Primary current decays and the linked flux decreases. The meter deflects the other way. The primary current has not reversed; its rate of change has.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "audio-nested",
+        "title": "连续传送音频信号",
+        "titleEn": "A continuous audio signal",
+        "caption": "变化的原电流，不需要电接触就能传递信号。",
+        "captionEn": "Changing primary current transfers a signal without electrical contact.",
+        "zh": "换成套在一起的两个线圈。内线圈接音频信号源，外线圈接接收装置。画面慢放几个周期：每当原电流变化最快，副线圈电动势最大；在原电流达到峰值的瞬间，电动势反而经过零。",
+        "en": "Now nest one coil inside another. The inner winding receives an audio-frequency signal and the outer winding feeds a receiver. In slow motion, the secondary emf peaks when primary current changes fastest. At the current peak, emf crosses zero.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "audio-withdraw",
+        "title": "抽出以后比较",
+        "titleEn": "Compare after withdrawal",
+        "caption": "相同信号源，更小的耦合带来更弱的接收信号。",
+        "captionEn": "The same source produces a weaker signal with less coupling.",
+        "zh": "把内线圈抽出一些，并在新的位置停稳。保持原信号的频率和幅度，观察副线圈电动势减小。不是电子跨过了间隙，而是两线圈共享的变化磁通减少了。",
+        "en": "Withdraw the inner coil and let it stop at the new position. Keep the source frequency and amplitude unchanged. The secondary emf is smaller because less changing flux links both coils; electrons do not jump across the gap.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-faraday-ring": {
+      "chapterIds": ["ring-close", "ring-steady", "ring-open"],
+      "label": {
+        "zh": "法拉第铁环实验",
+        "en": "Faraday’s iron-ring experiment"
+      }
+    },
+    "e2-mutual-induction-audio": {
+      "chapterIds": ["audio-nested", "audio-withdraw"],
+      "label": {
+        "zh": "互感音频实验",
+        "en": "Audio mutual-induction experiment"
+      }
+    }
+  }
+}

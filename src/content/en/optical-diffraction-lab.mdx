@@ -1,0 +1,20 @@
+<h2 id="understand">Apertures and obstacles determine the field</h2>
+
+Slit width, aperture radius and disk geometry enter the calculation. A narrower slit usually broadens the far-field center while reducing throughput. The disk’s bright spot follows from complex-field addition, not an exception painted onto a geometric shadow.
+
+<h2 id="try">Compare the textbook apparatus</h2>
+
+Vary adjustable jaws, then compare white light, a circular aperture, paired pencils and calipers. Switch to the Poisson spot and change disk radius. Pencil and caliper views unfold the eye’s angular observation onto a one-meter equivalent screen.
+
+<h2 id="deeper">Finite-distance propagation</h2>
+
+<details>
+<summary>Scalar Fresnel integrals and Babinet’s principle</summary>
+
+The slit integrates exp[iπ(x−u)²/(λz)] across its opening, divides by √(λz), then squares the magnitude. Width is 30–800 μm, wavelength 450–650 nm and z=1 m. Composite Simpson quadrature uses 192 subintervals. Wide slits retain finite-distance effects instead of being forced into a far-field sinc² formula. Screen extent is ±15 mm. The curve is normalized to its peak, with peak intensity relative to the incident wave displayed separately. The fringe image retains fixed nonlinear exposure.
+
+The circular kernel is ρJ₀(2πrρ/(λz))exp[iπρ²/(λz)]. Subtracting the aperture field from the unobstructed plane wave yields the opaque-disk field. Disk radius is 0.3–1 mm, aperture radius 0.1–0.4 mm, and the radial image extends to 2.3 mm independently of apparatus scale. The disk’s axial I/I₀=1 is checked against the analytic result and quadrature convergence. Edge-vector effects, supports, finite coherence and noise are omitted.
+
+White light uses independent intensity channels at 650, 530 and 460 nm, not calibrated colorimetry. Pencil and jaw gaps are enlarged ideal straight edges. Eye optics and vernier graduations are not simulated. Film timing scans parameters rather than representing actual light travel time.
+
+</details>

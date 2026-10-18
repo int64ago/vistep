@@ -1,0 +1,50 @@
+.wireless-study {
+  margin: 12px auto 0;
+  max-width: 440px;
+}
+.wireless-study > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 125px;
+}
+.wireless-trials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 2px 0 0;
+}
+.wireless-trials > div {
+  display: grid;
+  gap: 9px;
+}
+.wireless-trials span {
+  min-height: 48px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.wireless-trials i {
+  display: block;
+  height: 1px;
+  margin: 0 8px;
+  border-bottom: 1px dashed #c5ceb6;
+}
+.wireless-study > p {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #89937b;
+  margin: 12px 0 3px;
+}
+@media (max-width: 600px) {
+  .wireless-study {
+    margin-top: 4px;
+  }
+  .wireless-study > svg {
+    max-height: 90px;
+  }
+  .wireless-trials {
+    gap: 16px;
+  }
+}

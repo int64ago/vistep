@@ -1,0 +1,29 @@
+---
+import { apparentMotion } from '../../models/apparent-weight-lab';
+const points = Array.from({ length: 101 }, (_, i) => apparentMotion('squat', i * 0.048));
+const curve = points
+  .map((s, i) => `${i ? 'L' : 'M'}${205 + s.time * 31} ${122 - s.a * 29}`)
+  .join(' ');
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  <path d="M55 201H175" stroke="#d0d8c1" stroke-width="4"></path>
+  <rect x="74" y="184" width="82" height="17" rx="6" fill="#b8c7a9"></rect>
+  <path
+    d="M109 126L139 155L111 181M99 126L126 155L99 181"
+    stroke="#9eaf92"
+    stroke-width="11"
+    stroke-linejoin="round"
+    stroke-linecap="round"></path>
+  <path d="M91 79Q108 73 120 82L123 126Q109 135 91 126Z" fill="#cad4ba"></path>
+  <ellipse cx="106" cy="56" rx="14" ry="18" fill="#d7c4a4"></ellipse>
+  <path
+    d="M97 85L80 105L109 112M117 86L139 106L156 90"
+    stroke="#c0ceb1"
+    stroke-width="9"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path d="M205 122H354" stroke="#b8aa87" stroke-dasharray="4 5"></path>
+  <path d={curve} stroke="#8eaa7f" stroke-width="2.5"></path>
+  <path d="M204 60V174H355" stroke="#d0dac1"></path>
+</svg>

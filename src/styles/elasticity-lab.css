@@ -1,0 +1,177 @@
+.elastic-lab {
+  max-width: 830px;
+  margin: auto;
+  padding: 0 15px;
+  color: #627953;
+  font-size: 16px;
+}
+.elastic-lab header {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+.elastic-lab header p {
+  margin: 0;
+  font-size: 18px;
+}
+.elastic-lab header span {
+  color: #899775;
+}
+.elastic-workbench {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.elastic-apparatus svg {
+  display: block;
+  width: 100%;
+  height: 320px;
+}
+.elastic-readings {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  line-height: 1.5;
+}
+.elastic-readings span {
+  display: flex;
+  flex-direction: column;
+}
+.elastic-readings strong {
+  font-size: 21px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.elastic-graph > p {
+  text-align: center;
+  margin: 12px 0;
+  font-size: 16px;
+}
+.elastic-graph svg {
+  width: 100%;
+  max-height: 290px;
+  display: block;
+}
+.elastic-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  font-size: 16px;
+}
+.elastic-observation {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+.elastic-controls {
+  display: grid;
+  gap: 22px;
+}
+.elastic-note {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #82916f;
+}
+.elastic-controls .segmented {
+  flex-wrap: wrap;
+}
+@media (max-width: 760px) {
+  .elastic-lab {
+    padding: 0 4px;
+  }
+  .elastic-lab header {
+    display: block;
+    text-align: center;
+  }
+  .elastic-lab header p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .elastic-workbench {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .elastic-apparatus,
+  .elastic-graph {
+    width: 100%;
+  }
+  .elastic-apparatus svg {
+    height: 275px;
+  }
+  .elastic-graph svg {
+    max-height: 245px;
+  }
+  .elastic-readings {
+    gap: 40px;
+  }
+  .elastic-readings strong {
+    font-size: 19px;
+  }
+  .elastic-observation {
+    font-size: 16px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .elastic-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .elastic-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .elastic-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .elastic-lab > header > span,
+  .showcase[data-mode='watch'] .elastic-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .elastic-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .elastic-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .elastic-workbench {
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .elastic-apparatus svg {
+    height: 165px;
+  }
+  .showcase[data-mode='watch'] .elastic-readings {
+    gap: 16px;
+  }
+  .showcase[data-mode='watch'] .elastic-readings span {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .elastic-readings strong {
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .elastic-graph > p {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .elastic-graph svg {
+    height: 170px;
+  }
+  .showcase[data-mode='watch'] .elastic-graph svg text {
+    font-size: 24px;
+  }
+  .showcase[data-mode='watch'] .elastic-legend {
+    gap: 4px 10px;
+  }
+}
+
+/* The current film caption already supplies this step's explanation. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .elastic-lab > header {
+    display: none;
+  }
+}

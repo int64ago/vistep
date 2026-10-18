@@ -1,0 +1,132 @@
+{
+  "topic": {
+    "slug": "cosmology-observations",
+    "name": "星系红移与微波天空",
+    "title": "宇宙的历史，怎样藏在收到的光里？",
+    "question": "宇宙的历史，怎样藏在收到的光里？",
+    "description": "比较谱线红移与距离，再追踪微波背景的校准和全天温差图。",
+    "color": "#94a9b5",
+    "tag": "宇宙观测",
+    "related": ["atomic-spectrum-lab", "celestial-observations"],
+    "sources": [
+      {
+        "title": "NASA — Cosmological redshift",
+        "url": "https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/"
+      },
+      {
+        "title": "NASA — Hubble’s original relation",
+        "url": "https://imagine.gsfc.nasa.gov/features/yba/M31_velocity/hubble_law/hubble_meaning.html"
+      },
+      {
+        "title": "ESA — Planck and the cosmic microwave background",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background"
+      },
+      {
+        "title": "Penzias — Commentary on the original antenna-temperature measurement",
+        "url": "https://garfield.library.upenn.edu/classics1981/A1981LL57400001.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/CosmologyObservations.tsx",
+  "cover": "src/components/covers/CosmologyObservationsCover.astro",
+  "discovery": {
+    "category": "nature",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["星系红移与微波天空", "宇宙的历史，怎样藏在收到的光里？", "近代物理实验"],
+      "en": [
+        "Galaxy redshifts and the microwave sky",
+        "How does received light reveal cosmic history?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "星系红移与微波天空": "Galaxy redshifts and the microwave sky",
+    "宇宙的历史，怎样藏在收到的光里？": "How does received light reveal cosmic history?",
+    "比较谱线红移与距离，再追踪微波背景的校准和全天温差图。": "Compare spectral shifts with distance, then follow microwave calibration and sky temperature differences.",
+    "近代物理": "Modern physics",
+    "宇宙观测": "Cosmological observation"
+  },
+  "narration": {
+    "duration": 140,
+    "cues": [
+      {
+        "id": "redshift-spectrum",
+        "title": "先辨认同一组谱线",
+        "titleEn": "Identify the same pattern of spectral lines",
+        "caption": "整组谱线按相同比例移向长波，给出红移量。",
+        "captionEn": "A common wavelength scaling across spectral lines gives the redshift.",
+        "zh": "把远方星系的光展开成光谱，再与实验室已知谱线对照。不是只看星系显得红不红，而是识别同一组线如何整体移动。画面使用氢的三条示例谱线，统一乘以一加红移。宇宙学红移与空间膨胀有关，不能一概当成物体在静止空间中的普通多普勒运动。",
+        "en": "Disperse galaxy light and compare identifiable lines with laboratory wavelengths. Redshift is not simply whether a galaxy looks red; it is a shared scaling of a known line pattern. Three illustrative hydrogen lines are multiplied by one plus redshift. Cosmological redshift concerns expanding space, not merely ordinary motion through static space.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "distance-relation",
+        "title": "把红移与独立距离比较",
+        "titleEn": "Compare redshift with independent distance",
+        "caption": "近距离范围内，退行速度与距离近似成正比。",
+        "captionEn": "At low redshift, recession speed is approximately proportional to distance.",
+        "zh": "哈勃把星系红移相关的速度与独立估计的距离相比较，发现近似线性关系。这里的点按教学模型计算，不是他的原始数据；拖动距离可以追踪同一星系的谱线和图中位置。示例哈勃参数为每百万秒差距每秒七十千米，仅为演示选值，不代表今天没有测量不确定性。",
+        "en": "Hubble compared redshift-related velocities with independently estimated distances and found an approximate linear relation. These points are calculated teaching samples, not his original data. Changing distance links one spectrum with its plot position. Seventy kilometres per second per megaparsec is an illustrative parameter, not a claim of uncertainty-free modern measurement.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "antenna-background",
+        "title": "先识别天线接收的不同分量",
+        "titleEn": "Identify contributions to an antenna reading",
+        "caption": "接收机、大气和天空共同构成原始信号。",
+        "captionEn": "Receiver noise, atmosphere and sky all contribute to the raw signal.",
+        "zh": "彭齐亚斯和威尔逊面对的并不是一眼就能认出的宇宙图像，而是微波天线中多出来的信号。必须检查仪器和环境，才能判断来源。这里把接收机、大气和天空分成教学分量；改变仰角，大气穿行路径改变，读数也随之变化。参数不复原一九六五年的测量。",
+        "en": "Penzias and Wilson encountered an unexplained microwave signal, not an immediately recognizable cosmic picture. Instrument and environmental contributions had to be checked. This model separates receiver, atmosphere and sky terms. Elevation changes the atmospheric path and raw reading. Its parameters do not reproduce the nineteen-sixty-five measurement.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "antenna-calibration",
+        "title": "逐项校准，解释剩余信号",
+        "titleEn": "Calibrate contributions and interpret the remainder",
+        "caption": "扣除已知背景后，几乎各向同性的天空分量仍在。",
+        "captionEn": "After known backgrounds are removed, a nearly isotropic sky component remains.",
+        "zh": "保持天线方向不变，逐步扣除本例已知的接收机和大气分量，天空信号仍然存在。真实校准要靠独立测量，不能凭希望得到的结果任意相减。这里采用现代背景温度约二点七二五开尔文作为模型输入，不能把这个精确数值归到早期论文的原始测量上。",
+        "en": "With direction fixed, subtract the known receiver and atmospheric terms in this example. A sky component remains. Real calibration requires independent measurements, not arbitrary subtraction to obtain a desired answer. The model uses the modern approximate background temperature of two-point-seven-two-five kelvin, not the precision of the early paper.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "sky-map",
+        "title": "在近乎均匀的背景中寻找微小温差",
+        "titleEn": "Find tiny differences in an almost uniform background",
+        "caption": "全天图的颜色放大的是微开尔文级温差。",
+        "captionEn": "Full-sky colors magnify temperature differences measured in microkelvin.",
+        "zh": "后续卫星测量把天空展开成全天图，研究平均背景之上极微小的温度起伏。颜色不能理解成天空本来就有这么大的冷热差。页面用几个角向模式合成一幅示意图，并明确标注它不是普朗克卫星数据；移动选点，显示同一个温差场的微开尔文值和实际温度。",
+        "en": "Later satellites mapped tiny temperature differences across the full sky. The colors greatly exaggerate deviations from an almost uniform background. This illustration combines a few angular modes and explicitly is not Planck data. Moving the selected point reports the same field in microkelvin and as an actual temperature.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-hubble": {
+      "chapterIds": ["redshift-spectrum", "distance-relation"],
+      "label": {
+        "zh": "哈勃观测",
+        "en": "Hubble observations"
+      }
+    },
+    "required-2-cmb": {
+      "chapterIds": ["antenna-background", "antenna-calibration", "sky-map"],
+      "label": {
+        "zh": "宇宙微波背景",
+        "en": "Cosmic microwave background"
+      }
+    }
+  }
+}

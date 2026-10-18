@@ -1,0 +1,138 @@
+.coulomb-film {
+  --coulomb-ink: #4e5c49;
+  width: min(100%, 700px);
+  margin: auto;
+  color: var(--coulomb-ink);
+}
+.coulomb-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.6;
+  margin: 0 14px 8px;
+}
+.coulomb-film > svg {
+  display: block;
+  width: min(100%, 600px);
+  height: auto;
+  margin: auto;
+  overflow: visible;
+}
+.coulomb-film svg text {
+  fill: #617055;
+  font: 18px var(--font-sans, sans-serif);
+}
+.coulomb-readout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 28px;
+  padding: 4px 14px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.coulomb-readout span {
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+}
+.coulomb-readout b {
+  font-size: 20px;
+  font-weight: 500;
+  color: #726143;
+}
+.coulomb-condition {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 16px;
+  font-size: 16px;
+  text-align: center;
+}
+.coulomb-condition i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c4a577;
+}
+.coulomb-condition i[data-null='true'] {
+  background: #8da786;
+}
+.coulomb-model-note {
+  text-align: center;
+  color: #7e8777;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 20px;
+}
+.coulomb-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  margin: 20px 0;
+  background: #ecf0e5;
+  border-radius: 24px;
+}
+.coulomb-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.coulomb-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.coulomb-details p {
+  margin: 0 0 16px;
+  color: #697760;
+}
+.coulomb-controls button {
+  min-height: 44px;
+}
+@media (max-width: 480px) {
+  .coulomb-film > svg {
+    width: 100%;
+  }
+  .coulomb-film svg text {
+    font-size: 24px;
+  }
+  .coulomb-controls {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+  .coulomb-readout {
+    gap: 8px 18px;
+  }
+  .coulomb-readout b {
+    font-size: 18px;
+  }
+  .coulomb-model-note {
+    margin: 8px 12px;
+  }
+  .coulomb-condition {
+    padding: 8px 10px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.coulomb-film[data-watch] > .coulomb-kicker,
+.coulomb-film[data-watch] > .coulomb-caption,
+.coulomb-film[data-watch] > details {
+  display: none;
+}
+.coulomb-film[data-watch] .coulomb-model-note {
+  display: none;
+}
+.coulomb-film[data-watch] .coulomb-condition {
+  min-height: 0;
+  padding: 6px 10px;
+  gap: 6px;
+}
+@media (max-width: 480px) {
+  .coulomb-film svg text {
+    font-size: 27px;
+  }
+}

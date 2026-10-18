@@ -1,0 +1,39 @@
+---
+import { centripetalRig } from '../../models/centripetal-force-lab';
+const a = centripetalRig(),
+  b = centripetalRig(0.04, 0.15, 12);
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M35 169H365l-22 20H17Z" fill="#dae1cf" stroke="#bdcbb0"></path>
+  {
+    [a, b].map((s, i) => (
+      <g>
+        <path d={`M${100 + i * 195} 55V164`} stroke="#a5b798" stroke-width="5" />
+        {Array.from({ length: 8 }, (_, j) => (
+          <path
+            d={`M${96 + i * 195} ${82 + j * 4}h8`}
+            stroke={j % 2 ? '#e9ecd9' : '#bf9c7a'}
+            stroke-width="3"
+          />
+        ))}
+        <path
+          d={`M${100 + i * 195} ${82 + s.lever.extension * 300}v48`}
+          stroke="#8fa685"
+          stroke-width="13"
+          stroke-linecap="round"
+        />
+        <>
+          <path d={`M${75 + i * 195} 146H${154 + i * 195}`} stroke="#b3c4a3" stroke-width="8" />
+          <circle cx={139 + i * 195} cy="137" r="7" fill="#b4c7a8" stroke="#8fa883" />
+          <path
+            d={`M${147 + i * 195} 142V124L${100 + i * 195} ${100 + s.lever.extension * 300}`}
+            stroke="#9bae8a"
+            stroke-width="3"
+          />
+        </>
+      </g>
+    ))
+  }
+  <path d="M100 155L295 155M100 173L295 173" stroke="#a5b38f" stroke-width="2"></path>
+</svg>

@@ -1,0 +1,220 @@
+.galileo-lab {
+  max-width: 800px;
+  margin: auto;
+  padding: 0 16px;
+  color: #667b57;
+  font-size: 16px;
+}
+.galileo-lab header {
+  display: flex;
+  gap: 22px;
+  justify-content: space-between;
+}
+.galileo-lab header p {
+  font-size: 18px;
+  margin: 0;
+}
+.galileo-lab header span {
+  color: #879773;
+}
+.galileo-timing {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  align-items: center;
+  gap: 20px;
+}
+.galileo-timing > svg {
+  width: 100%;
+  display: block;
+  min-height: 250px;
+}
+.galileo-water {
+  text-align: center;
+}
+.galileo-water svg {
+  width: 150px;
+  display: block;
+  margin: auto;
+}
+.galileo-water span {
+  display: block;
+  font-size: 16px;
+}
+.galileo-water strong {
+  font-size: 21px;
+  font-weight: 500;
+}
+.galileo-values {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.galileo-cause {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+.galileo-double {
+  display: block;
+  width: 100%;
+  height: 320px;
+}
+.galileo-energy {
+  max-width: 550px;
+  margin: 22px auto;
+}
+.galileo-energy-bar {
+  height: 12px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e4e6d5;
+}
+.galileo-energy-bar i:first-child {
+  background: #b49a6b;
+}
+.galileo-energy-bar i:last-child {
+  background: #87a48d;
+}
+.galileo-energy p {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 16px;
+}
+.galileo-controls {
+  display: grid;
+  gap: 22px;
+}
+.galileo-controls .segmented {
+  flex-wrap: wrap;
+}
+.galileo-note {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #849573;
+}
+@media (max-width: 760px) {
+  .galileo-lab {
+    padding: 0 4px;
+  }
+  .galileo-lab header {
+    display: block;
+    text-align: center;
+  }
+  .galileo-lab header p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .galileo-timing {
+    display: block;
+  }
+  .galileo-timing > svg {
+    height: 185px;
+    min-height: 0;
+  }
+  .galileo-water {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .galileo-water svg {
+    width: 110px;
+    margin: 0;
+  }
+  .galileo-water span {
+    max-width: 140px;
+  }
+  .galileo-water strong {
+    display: block;
+    font-size: 21px;
+  }
+  .galileo-values {
+    gap: 13px;
+  }
+  .galileo-cause {
+    font-size: 16px;
+  }
+  .galileo-double {
+    height: 260px;
+  }
+  .galileo-energy p {
+    display: block;
+    text-align: center;
+  }
+  .galileo-energy p span {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+.galileo-records {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 420px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.galileo-records strong {
+  display: block;
+  font-weight: 500;
+  line-height: 1.8;
+  color: #9d815c;
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .galileo-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .galileo-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .galileo-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .galileo-lab > header > span,
+  .showcase[data-mode='watch'] .galileo-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .galileo-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .galileo-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .galileo-timing > svg {
+    height: 140px;
+  }
+  .showcase[data-mode='watch'] .galileo-water svg {
+    width: 85px;
+  }
+  .showcase[data-mode='watch'] .galileo-records {
+    margin: 7px 0;
+    gap: 4px;
+  }
+  .showcase[data-mode='watch'] .galileo-double {
+    height: 245px;
+  }
+  .showcase[data-mode='watch'] .galileo-energy {
+    margin: 9px 0;
+  }
+  .showcase[data-mode='watch'] .galileo-energy p {
+    margin: 7px 0;
+  }
+}
+
+/* The current film caption already supplies this step's explanation. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .galileo-lab > header {
+    display: none;
+  }
+}

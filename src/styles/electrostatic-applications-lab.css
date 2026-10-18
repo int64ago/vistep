@@ -1,0 +1,101 @@
+.ea-film {
+  width: min(100%, 700px);
+  margin: auto;
+  color: #667c62;
+}
+.ea-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.ea-apparatus {
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+  margin: auto;
+}
+.ea-apparatus text {
+  font: 23px var(--font-sans, sans-serif);
+  fill: #9d8f69;
+}
+.ea-apparatus .ea-negative {
+  fill: #809b88;
+}
+.ea-apparatus .ea-positive {
+  fill: #af966c;
+}
+.ea-result,
+.ea-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 8px 14px;
+  color: #7e9275;
+}
+.ea-counts {
+  display: flex;
+  justify-content: center;
+  gap: 8px 24px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.ea-counts b {
+  font-weight: 500;
+  color: #a18b62;
+  margin-left: 6px;
+}
+.ea-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  background: #edf2e5;
+  border-radius: 24px;
+  margin: 22px 0;
+}
+.ea-controls button {
+  min-height: 44px;
+}
+.ea-controls > button {
+  border: 1px solid #cad2b7;
+  background: #f4f4e8;
+  color: #738263;
+  border-radius: 16px;
+  padding: 10px 18px;
+  font: inherit;
+}
+.ea-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.ea-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.ea-details p {
+  color: #7b8d71;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .ea-controls {
+    padding: 18px 14px;
+  }
+  .ea-apparatus text {
+    font-size: 26px;
+  }
+  .ea-counts {
+    gap: 7px 16px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.ea-film[data-watch] > .ea-kicker,
+.ea-film[data-watch] > .ea-caption,
+.ea-film[data-watch] > details {
+  display: none;
+}
+.ea-film[data-watch] .ea-result {
+  display: none;
+}

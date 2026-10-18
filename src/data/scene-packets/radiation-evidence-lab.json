@@ -1,0 +1,216 @@
+{
+  "topic": {
+    "slug": "radiation-evidence-lab",
+    "name": "发现看不见的射线",
+    "title": "感光、电离与径迹，怎样成为看不见粒子的证据？",
+    "question": "感光、电离与径迹，怎样成为看不见粒子的证据？",
+    "description": "重建天然放射性、居里测量、磁偏转、膨胀云室与X射线的证据链。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["nuclear-evidence-lab", "decay-measurement-lab"],
+    "sources": [
+      {
+        "title": "Henri Becquerel — Nobel lecture",
+        "url": "https://www.nobelprize.org/uploads/2018/06/becquerel-lecture.pdf"
+      },
+      {
+        "title": "Marie Curie — Nobel lecture",
+        "url": "https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/lecture/"
+      },
+      {
+        "title": "Ernest Rutherford — Nobel lecture",
+        "url": "https://www.nobelprize.org/prizes/chemistry/1908/rutherford/lecture/"
+      },
+      {
+        "title": "Nobel Prize — The Wilson expansion chamber",
+        "url": "https://educationalgames.nobelprize.org/educational/physics/observing/cloud-1.html"
+      },
+      {
+        "title": "Charles Wilson — Nobel lecture",
+        "url": "https://www.nobelprize.org/uploads/2018/06/wilson-lecture.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/RadiationEvidenceLab.tsx",
+  "cover": "src/components/covers/RadiationEvidenceLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["发现看不见的射线", "感光、电离与径迹，怎样成为看不见粒子的证据？", "近代物理实验"],
+      "en": [
+        "Detecting invisible radiation",
+        "How do plates, ionization and tracks reveal invisible radiation?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "发现看不见的射线": "Detecting invisible radiation",
+    "感光、电离与径迹，怎样成为看不见粒子的证据？": "How do plates, ionization and tracks reveal invisible radiation?",
+    "重建天然放射性、居里测量、磁偏转、膨胀云室与X射线的证据链。": "Follow photographic, electrical and track evidence for radiation.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 280,
+    "cues": [
+      {
+        "id": "plate-light",
+        "title": "遮光纸后的感光板",
+        "titleEn": "A plate behind opaque paper",
+        "caption": "铀盐附近的感光板变暗，说明有能穿过遮光纸的作用。",
+        "captionEn": "A plate near uranium darkens despite its opaque wrapping.",
+        "zh": "贝克勒尔把铀盐放在包着黑纸的感光板附近。显影后，板上仍出现影像，说明某种作用能够穿过挡住可见光的包裹。中间的金属形状改变了透过强度。起初，这还不能区分它来自日照激发，还是物质本身。",
+        "en": "Becquerel placed uranium salts near a photographic plate wrapped in opaque paper. An image still developed, revealing an influence that could pass through the wrapping. A metal shape changed its transmission. This observation alone did not establish whether sunlight excited the emission or the material emitted spontaneously.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "plate-dark",
+        "title": "撤去日照，信号仍在",
+        "titleEn": "Remove sunlight and compare",
+        "caption": "没有日照激发，铀盐仍能使感光板留下信号。",
+        "captionEn": "Without sunlight, uranium still leaves a photographic signal.",
+        "zh": "把日照关掉，保留铀盐和遮光板。感光作用仍然出现，排除了必须先吸收阳光才能发射的解释。这一对照支持天然放射性是物质自身的性质。画面只重建证据关系；黑化程度使用教学响应函数，不是历史照片或放射强度标定。",
+        "en": "Remove sunlight while keeping the sample and wrapped plate. The signal persists, ruling out a requirement for prior illumination. This comparison supports spontaneous radioactivity as a property of the material. The plate darkness follows an illustrative response function, not a historical photograph or calibrated radiation measurement.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "curie-current",
+        "title": "把看不见的射线变成电流",
+        "titleEn": "Measure radiation through ionization",
+        "caption": "射线使空气电离，微弱电流成为可比较的信号。",
+        "captionEn": "Radiation ionizes air, producing a measurable weak current.",
+        "zh": "居里夫人使用电离测量，把放射作用变成可以比较的微弱电流。样品放在电极附近，射线使空气产生离子，在电场中形成电流。比较不同物质时，必须同时考虑样品质量和测量条件，不能仅凭某次指针偏转较大就宣布发现新元素。",
+        "en": "Curie used ionization measurements to compare radiation quantitatively. Radiation from a sample creates ions in air; an electric field collects them as a weak current. Comparisons require controlled geometry and sample mass. A larger pointer deflection alone does not identify a new element.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "curie-separate",
+        "title": "跟随活度寻找成分",
+        "titleEn": "Follow activity through separation",
+        "caption": "分离后某些组分的单位质量活度升高，指导后续化学鉴定。",
+        "captionEn": "Increased activity per mass in a fraction guides further chemical identification.",
+        "zh": "对矿物反复进行化学分离，再测各个组分。某些很少量的组分仍保留强烈活度，单位质量的信号因此升高。这条线索与化学性质、光谱等证据结合，才支持钋和镭的发现。这里用示例富集程度说明比较方法，不模拟具体化学配方或历史产率。",
+        "en": "Separate mineral fractions and compare their activity again. A small fraction can retain substantial activity, increasing signal per unit mass. Combined with chemical behavior and other evidence, this guided the discoveries of polonium and radium. The displayed enrichment is illustrative, without a chemical recipe or historical yield claim.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "rays-field",
+        "title": "用磁场分开三种射线",
+        "titleEn": "Separate radiation in a magnetic field",
+        "caption": "α与β⁻向相反方向弯曲，γ保持直行。",
+        "captionEn": "Alpha and beta-minus bend oppositely; gamma continues straight.",
+        "zh": "三种射线进入同一个垂直画面的磁场。正电的阿尔法粒子与负电的贝塔电子弯向相反方向，不带电的伽马光子不受洛伦兹磁力。画面采用示例能量计算动量与曲率，所以阿尔法轨迹的弯曲很小，并没有为了对称美观把两条曲线画成一样。",
+        "en": "Three kinds of radiation enter the same perpendicular magnetic field. Positive alpha particles and negative beta electrons bend oppositely, while neutral gamma photons experience no Lorentz magnetic force. Example energies determine momentum and curvature. Alpha curvature is small; the two charged paths are not made artificially symmetric.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "rays-reverse",
+        "title": "反转磁场再检验",
+        "titleEn": "Reverse the field",
+        "caption": "磁场反向，带电轨迹的弯曲方向互换，γ仍不偏转。",
+        "captionEn": "Reversing the field reverses charged curvature but leaves gamma unchanged.",
+        "zh": "把磁场反向，带电粒子的弯曲方向随之交换，伽马射线仍然直行。比较时还要记住，曲率同时取决于电荷、动量和磁场，不能只凭弯得更厉害判断质量更小。轨迹是帮助观察的计算线，真实装置通过感光、计数或径迹等方法记录信号。",
+        "en": "Reverse the field and the charged paths reverse their curvature. Gamma remains straight. Curvature depends jointly on charge, momentum and field; stronger bending alone is not a mass measurement. The drawn paths are calculated guides. Actual observations require photographic, counting or track detectors.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "cloud-expand",
+        "title": "先让气体膨胀冷却",
+        "titleEn": "Expand and cool the chamber",
+        "caption": "膨胀降温使水汽达到过饱和，电离路径成为凝结线索。",
+        "captionEn": "Expansion cooling creates supersaturation, allowing ionization paths to seed droplets.",
+        "zh": "威耳逊膨胀云室用活塞迅速增加气体体积。气体做功、温度下降，水汽可能进入过饱和状态。此时穿过的带电粒子沿途造成电离，离子有利于小液滴凝结。没有合适的过饱和条件，粒子即使经过，也不一定留下可见的云迹。",
+        "en": "A Wilson expansion chamber rapidly increases gas volume with a piston. Work done by the gas lowers its temperature and can make water vapor supersaturated. A charged particle ionizes the gas along its path, helping droplets condense. Without suitable supersaturation, a passing particle need not leave a visible track.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "cloud-track",
+        "title": "看见液滴，追踪粒子",
+        "titleEn": "Read droplets as evidence of a path",
+        "caption": "径迹由许多液滴组成，不是放大的实体粒子。",
+        "captionEn": "A track consists of droplets, not an enlarged material particle.",
+        "zh": "现在凝结的液滴把路径显现出来。粗而较直的轨迹与细而较曲折的轨迹，提示不同粒子的电离能力和散射行为。形状仅作代表性说明，不能靠这张示意图鉴定未知粒子。图中的液滴和轨迹尺寸都被放大，粒子本身仍远小于可见结构。",
+        "en": "Condensed droplets reveal the paths. A relatively dense, straight track and a finer irregular track illustrate differing ionization and scattering. These are representative shapes, not a method for identifying an unknown particle from this picture alone. Droplets and track dimensions are enlarged; the particles themselves remain far smaller.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      },
+      {
+        "id": "xray-source",
+        "title": "电子在靶上产生X射线",
+        "titleEn": "Generate X-rays at a target",
+        "caption": "高速电子在靶中减速，可产生穿透性X射线。",
+        "captionEn": "Fast electrons decelerating in a target can produce penetrating X-rays.",
+        "zh": "伦琴研究放电管时发现新的穿透性辐射。这里用现代简化管示意它的来源：电子从阴极加速，撞到靶后产生包括制动辐射在内的X射线。射线穿过不同物质后留下强弱不同的透射信号。装置解释的是原理，不是伦琴原管的逐部件复原。",
+        "en": "Röntgen discovered penetrating radiation while studying discharge tubes. A simplified modern tube illustrates its origin: accelerated electrons strike a target and produce X-rays, including bremsstrahlung. Different materials transmit different fractions. This apparatus explains the principle rather than reconstructing every part of Röntgen’s original tube.",
+        "seconds": 28,
+        "chapterAt": 224,
+        "at": 224.3
+      },
+      {
+        "id": "xray-contrast",
+        "title": "比较透过与阻挡",
+        "titleEn": "Compare transmission and contrast",
+        "caption": "不同衰减形成影像；提高能量不等于所有细节都更清楚。",
+        "captionEn": "Differential attenuation forms an image; higher energy does not guarantee clearer detail.",
+        "zh": "比较软组织与较密骨性结构的示意透射。较强的衰减留下不同的影像对比。提高示例管电压，最短可能波长变短，穿透能力也会改变。本模型用单一代表能量和示意衰减系数，不模拟真实连续谱、剂量或医学成像质量。",
+        "en": "Compare illustrative transmission through soft tissue and denser bone-like structure. Different attenuation creates contrast. Raising the example tube voltage shortens the minimum possible wavelength and changes penetration. A representative photon energy and illustrative coefficients are used, not a full spectrum, dose calculation or medical image-quality model.",
+        "seconds": 28,
+        "chapterAt": 252,
+        "at": 252.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-becquerel-radioactivity": {
+      "chapterIds": ["plate-light", "plate-dark"],
+      "label": {
+        "zh": "感光板",
+        "en": "Photographic plate"
+      }
+    },
+    "e3-curie-radium-polonium": {
+      "chapterIds": ["curie-current", "curie-separate"],
+      "label": {
+        "zh": "电离测量",
+        "en": "Ionization measurement"
+      }
+    },
+    "e3-radioactive-ray-deflection": {
+      "chapterIds": ["rays-field", "rays-reverse"],
+      "label": {
+        "zh": "射线偏转",
+        "en": "Ray deflection"
+      }
+    },
+    "e3-wilson-cloud-chamber": {
+      "chapterIds": ["cloud-expand", "cloud-track"],
+      "label": {
+        "zh": "膨胀云室",
+        "en": "Expansion chamber"
+      }
+    },
+    "e3-rontgen-xrays": {
+      "chapterIds": ["xray-source", "xray-contrast"],
+      "label": {
+        "zh": "X射线",
+        "en": "X-rays"
+      }
+    }
+  }
+}

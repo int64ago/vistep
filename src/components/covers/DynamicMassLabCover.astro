@@ -1,0 +1,41 @@
+---
+import { foldingSupport } from '../../models/dynamic-mass-lab';
+const d = 0.53,
+  a = foldingSupport(d),
+  bx = 72 + d * 300;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  <path d="M42 22H65V208H42Z" fill="#dfe5da"></path>
+  <path
+    d={`M72 112L${72 + a.midpoint * 300} ${112 - a.rise * 300}L${bx} 112L${72 + a.midpoint * 300} ${112 + a.rise * 300}Z`}
+    stroke="#a4b69c"
+    stroke-width="7"
+    stroke-linejoin="round"></path>
+  <path d={`M72 112H${bx}`} stroke="#b39d73" stroke-width="2"></path><circle
+    cx="72"
+    cy="112"
+    r="12"
+    fill="#b5c6a7"></circle>
+  <path d={`M${bx} 60V180`} stroke="#8ea28c" stroke-width="9" stroke-linecap="round"></path>
+  <g transform={`translate(${bx} 0)`}
+    ><ellipse cx="27" cy="62" rx="16" ry="19" fill="#d5c5aa"></ellipse><path
+      d="M9 90Q29 78 44 94L47 139Q28 151 10 138Z"
+      fill="#c6d4bb"></path><path
+      d="M17 141L35 169L63 179M38 139L56 160L81 168M17 96L38 118L60 108"
+      stroke="#c1d1b7"
+      stroke-width="14"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path><path
+      d="M9 90L43 135M42 91L10 136"
+      stroke="#a89471"
+      stroke-width="4"></path><path d="M0 177V204" stroke="#8fa18b" stroke-width="3"></path><rect
+      x="-7"
+      y="198"
+      width="14"
+      height="12"
+      rx="3"
+      fill="#b1c393"></rect></g
+  >
+  <path d="M181 216H269" stroke="#d4d7be" stroke-width="8"></path>
+</svg>

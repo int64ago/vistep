@@ -1,0 +1,54 @@
+{
+  "owner": "teaching_shell",
+  "reviewerRole": "author self-review",
+  "sourceCommit": "8be5cc71f8154a539f932cb65becf23d78d32c1b",
+  "files": {
+    "src/models/singing-basin.ts": "f25224980f62333d640aef796fd5a387f6f3dd5845d65a62714560e057ff6e70",
+    "src/models/singing-basin.test.ts": "efcb1c8ca5116bce9b4bdc00840b17249442c02546b674577e77b4a81df2d524",
+    "src/components/experiments/SingingBasin.tsx": "2339ef2a58040254984c718d81f2e1bffc7cee6b9891d59e6caab8aa941e8dac",
+    "src/components/experiments/SingingBasin.test.tsx": "8530892b4c5cf6255c46143bd06b9b3ee100033d1fa07f830099a7a3a3d2bd46",
+    "src/components/covers/SingingBasinCover.astro": "e20dc08a76a2ba01422be7b321dab2391ab05b8e8e2384898cbcc28dcb63ea2c",
+    "src/styles/singing-basin.css": "77e388cfe82618d04ba9735fce1499ef1bf635d28021859f5f2f7878636c4ef8",
+    "src/content/singing-basin.mdx": "01250f20cf92e4820c304c94170f05b412dc52f417facf3f561a32d2b11fd53a",
+    "src/content/en/singing-basin.mdx": "0c060de9f9854a29045e468e00d23415c21bdbcfac643ec95a33b6960030e22a",
+    "src/data/scene-packets/singing-basin.json": "a23a4c152188647f4ff6fe7a48be4832b64cea39f910bc1c900623098aca42cc"
+  },
+  "checks": [
+    {
+      "kind": "model",
+      "status": "passed",
+      "evidence": "5 vitest tests: numerical energy integration, gain threshold, finite saturation, exact release, spatial nodes, water mass and dry basin"
+    },
+    {
+      "kind": "interaction-state",
+      "status": "passed",
+      "evidence": "2 react-test-renderer tests: all modal sites persist at release; control changes and directed-state restoration"
+    },
+    {
+      "kind": "author-static-art",
+      "status": "passed",
+      "conditions": "server-rendered SVG, 720px raster; inspected chapter 0, 2, 3, 4 stills",
+      "evidence": "artifacts/pep-curriculum/author/singing-basin-chapter-*.png"
+    },
+    {
+      "kind": "packet-mdx-syntax",
+      "status": "passed",
+      "evidence": "dry-run integration; both MDX compile; TSX syntax transpilation"
+    },
+    {
+      "kind": "browser-visual-full-player",
+      "status": "not-run",
+      "reason": "Parent owns browser acceptance at 1440/390/320 in both languages"
+    },
+    {
+      "kind": "full-playback-and-narration-listening",
+      "status": "not-run",
+      "reason": "Parent owns synthesis and audiovisual acceptance"
+    },
+    {
+      "kind": "physical-phone-performance-and-failures",
+      "status": "not-run",
+      "reason": "No device or browser acceptance run by this worker"
+    }
+  ]
+}

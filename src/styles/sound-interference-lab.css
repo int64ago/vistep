@@ -1,0 +1,43 @@
+.sound-field-visual {
+  position: relative;
+  width: min(100%, 380px);
+  margin: 8px auto 0;
+  aspect-ratio: 360/310;
+}
+.sound-field-visual canvas {
+  position: absolute;
+  left: 15.277778%;
+  top: 21.935484%;
+  width: 69.444444%;
+  height: 58.064516%;
+  border-radius: 12px;
+}
+.sound-field-visual svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.sound-field-visual text {
+  font:
+    16px 'Manrope Variable',
+    'Noto Sans SC Variable',
+    sans-serif;
+  fill: #63745e;
+}
+.sound-field-visual .em-small {
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .sound-interference-lab {
+    padding-top: 8px;
+    padding-bottom: 6px;
+  }
+  .sound-field-visual text {
+    font-size: 18px;
+  }
+  .sound-field-visual .em-small {
+    font-size: 15px;
+  }
+}

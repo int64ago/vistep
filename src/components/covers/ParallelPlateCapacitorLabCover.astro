@@ -1,0 +1,50 @@
+---
+import {
+  plateCapacitor,
+  plateProjection,
+  PLATE_SIDE,
+} from '../../models/parallel-plate-capacitor-lab';
+const s = plateCapacitor(0.01, 0.65, 1);
+const poly = (normal: number, z: number) =>
+  [
+    [normal, 0, z],
+    [normal, PLATE_SIDE, z],
+    [normal, PLATE_SIDE, z + PLATE_SIDE],
+    [normal, 0, z + PLATE_SIDE],
+  ]
+    .map((p) => {
+      const q = plateProjection(...(p as [number, number, number]));
+      return `${q.x},${q.y}`;
+    })
+    .join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><defs
+    ><linearGradient id="ppl-metal"
+      ><stop stop-color="#b2bca7"></stop><stop offset=".5" stop-color="#f0edd3"></stop><stop
+        offset="1"
+        stop-color="#a4b397"></stop></linearGradient
+    ></defs
+  ><g transform="translate(0 -85)"
+    ><path d="M190 297V332M166 335H214" stroke="#a7b998" stroke-width="8" stroke-linecap="round"
+    ></path><polygon
+      points={poly(0.005, 0)}
+      fill="url(#ppl-metal)"
+      stroke="#8c9f81"
+      stroke-width="2"></polygon><polygon
+      points={poly(-0.005, s.shift)}
+      fill="url(#ppl-metal)"
+      fill-opacity=".8"
+      stroke="#8c9f81"
+      stroke-width="2"></polygon><path
+      d="M131 144H103V302H310M250 248H370V300H340"
+      stroke="#a0b08f"
+      stroke-width="2"></path><circle cx="326" cy="256" r="40" fill="#e8edda" stroke="#afbc9f"
+    ></circle><circle cx="326" cy="256" r="33" fill="#f8f5dc"></circle><path
+      d={`M326 256l${28 * Math.sin(s.meterAngle)} ${-28 * Math.cos(s.meterAngle)}`}
+      stroke="#a28b53"
+      stroke-width="2.5"
+      stroke-linecap="round"></path><circle cx="326" cy="256" r="3" fill="#a8b390"></circle></g
+  ></svg
+>

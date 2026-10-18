@@ -1,0 +1,32 @@
+---
+import { receiverIndication } from '../../models/electromagnetic-wave-receiver';
+const s = receiverIndication(90, 8),
+  angle = -0.85 + (s.response / 0.65) * 1.7;
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true"
+  ><path
+    d="M40 58h150m20 0h150M40 195h132m56 0h132"
+    stroke="#bca16f"
+    stroke-width="8"
+    stroke-linecap="round"></path><path
+    d="M191 58l5-3 5 6 5-6 4 3"
+    stroke="#d5bc7f"
+    stroke-width="2"></path><path
+    d="M85 62v25m230-25v25M85 200v30m230-30v30"
+    stroke="#b7c7a9"
+    stroke-width="4"></path><circle cx="200" cy="195" r="28" fill="#edf1df" stroke="#b0bea0"
+  ></circle><path
+    d={`M200 203L${200 + 23 * Math.sin(angle)} ${203 - 23 * Math.cos(angle)}`}
+    stroke="#aa9164"
+    stroke-width="2.2"></path>{
+    [0, 1, 2, 3, 4, 5].map((i) => (
+      <path
+        d={`M${200 - 20 * Math.sin(i)} ${100 + i * 12}h${40 * Math.sin(i)}`}
+        stroke="#9dae8d"
+        stroke-width="2"
+        opacity=".7"
+      />
+    ))
+  }</svg
+>

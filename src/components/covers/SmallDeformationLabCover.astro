@@ -1,0 +1,55 @@
+---
+import { opticalLever } from '../../models/small-deformation-lab';
+const s = opticalLever(60);
+const xy = (p: { x: number; y: number }) => ({ x: 55 + 235 * p.x, y: 181 - 235 * p.y });
+const line = (a: { x: number; y: number }, b: { x: number; y: number }) => {
+  const p = xy(a),
+    q = xy(b);
+  return `M${p.x} ${p.y}L${q.x} ${q.y}`;
+};
+const exit = { x: 1.23, y: s.p2.y + ((1.23 - s.p2.x) * s.d2.y) / s.d2.x };
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  <path d="M45 181H301V192H45Z" fill="#d5c2a4"></path><path
+    d="M58 192V214M286 192V214"
+    stroke="#bba889"
+    stroke-width="8"
+    stroke-linecap="round"></path>
+  {
+    [s.m, s.n].map((m) => (
+      <g>
+        <>
+          <path d={line(m.base, m.center)} stroke="#a4b3a7" stroke-width="5" />
+          <path
+            d={line(
+              {
+                x: m.center.x - 0.07 * Math.cos(m.angle),
+                y: m.center.y - 0.07 * Math.sin(m.angle),
+              },
+              {
+                x: m.center.x + 0.07 * Math.cos(m.angle),
+                y: m.center.y + 0.07 * Math.sin(m.angle),
+              },
+            )}
+            stroke="#819e9a"
+            stroke-width="4"
+          />
+        </>
+      </g>
+    ))
+  }
+  <path
+    d={`${line(s.source, s.p1)}${line(s.p1, s.p2)}${line(s.p2, exit)}`}
+    stroke="#b68264"
+    stroke-width="1.8"></path>
+  <path d="M173 137V172M168 166L173 173L178 166" stroke="#a67f5d" stroke-width="2"></path>
+  <path d="M358 71V162" stroke="#aeba9d"></path>
+  {[0, 1, 2, 3, 4, 5, 6].map((i) => <path d={`M354 ${74 + i * 14}H363`} stroke="#9dab8c" />)}
+  <circle cx="342" cy="106" r="4" stroke="#b5bda4"></circle><circle
+    cx="342"
+    cy="129"
+    r="11"
+    fill="#bd8862"
+    opacity=".13"></circle><circle cx="342" cy="129" r="3.4" fill="#b7805e"></circle>
+</svg>

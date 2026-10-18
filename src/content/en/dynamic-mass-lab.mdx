@@ -1,0 +1,40 @@
+---
+name: Measuring mass in microgravity
+title: How can an astronaut be weighed without weight?
+---
+
+<section id="understand">
+
+Weightlessness changes the working conditions of an ordinary scale, but does not remove inertial mass. Apply a known force and measure acceleration: m = F/a still gives mass.
+
+PEP Required Book 1, Chapter 4 §3 (printed page 98), describes the 2013 Chinese space lesson: a folding support holds the astronaut, a constant force pulls the support, and optical timing provides acceleration. This scene reconstructs that principle rather than the complete flight hardware.
+
+</section>
+<section id="try">
+
+Watch equal distances on the fixed grating. The accelerating reader crosses them in progressively shorter intervals. Divide each distance by its interval, then compare the velocities. Measurement remains blank until sufficient crossings have occurred.
+
+In exploration, increase body mass while keeping force fixed. Acceleration decreases and the same travel takes longer. Remember that F/a measures the total moving mass; subtract this example’s 6 kg translating platform.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Acceleration from optical timing</summary>
+
+For constant acceleration, an interval’s average velocity equals instantaneous velocity at its midpoint time. With equal spacing d, v̄ᵢ = d/(tᵢ₊₁ − tᵢ) corresponds to (tᵢ + tᵢ₊₁)/2. Divide the velocity difference by the midpoint-time difference to recover acceleration. Positions and crossing times come from the same x = at²/2 model; no fabricated measurement noise is added.
+
+</details>
+
+<details>
+
+<summary>Model boundaries</summary>
+
+The example uses a 25 N constant force, a default body mass of 62 kg, and a 6 kg translating platform. Links are massless; friction, vibration, and station recoil are neglected. Real massive links require fuller dynamics and calibration. An ordinary extension spring is not presented as a constant-force mechanism.
+
+The model uses a local frame falling with the station and neglects tidal differences; Earth’s gravity has not disappeared. Motion freezes at the 0.25 m measurement endpoint, which is not a prediction of a natural stop. NASA’s SLAMMD also uses known force and acceleration, but is distinct from the Chinese apparatus described in the textbook.
+
+</details>
+
+</section>

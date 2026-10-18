@@ -1,0 +1,23 @@
+<h2 id="understand">Image position follows ray direction</h2>
+
+Pin alignment reconstructs a ray. A chopstick inside a cylindrical cup and text beneath glass require backward extensions of emerging rays. Their distinct interfaces cannot all be replaced by one flat boundary.
+
+<h2 id="try">Align pins, move the chopstick and vary viewing angle</h2>
+
+Align C in the eye inset, then change incidence to check the inferred index. Moving the chopstick updates both its traced rays and side appearance. Compare viewing angle and index with apparent depth through the plate.
+
+<h2 id="deeper">Calculations and idealizations</h2>
+
+<details>
+
+<summary>Use the local normal at every interface</summary>
+
+<div className="formula">n₁ sin i = n₂ sin r; dimage = d·tan r / tan i; paraxially dimage≈d/n</div>
+
+The pin model uses parallel faces, thickness 75 drawing units, incidence 20–60 degrees and index 1.3–1.8. Pin C’s lateral offset determines its angular projection. A, B and D lie on the theoretical alignment path; pin diameter and full moving-eye parallax are not simulated.
+
+The cup has normalized inner radius 1 and outer radius 1.06, with water index 1.333, glass 1.5 and air 1. The object lies at x=−0.35 and the observer at x=3. Two rays from each point reach y=±0.025 near the observer; numerical shooting solves exact circular intersections and Snell directions. Backward extensions determine a local virtual image, then projection onto the object’s transverse plane compares angular widths. Chopstick diameter is 0.05 and lateral offset stays within ±0.3. The local horizontal slice does not model the base, meniscus or full-field aberration.
+
+The plate is 80 mm thick with text flush against its lower face. Exact depth comes from two symmetric rays up to a 50-degree air angle; it is not an aberration-free image over a wide field. Ray widths, pinheads and material colors are illustrative.
+
+</details>

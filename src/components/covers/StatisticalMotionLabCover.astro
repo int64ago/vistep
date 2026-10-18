@@ -1,0 +1,24 @@
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <path d="M79 31V247H281V31" fill="#edf2e4" stroke="#b4c7a4" stroke-width="3"></path>
+  {
+    Array.from({ length: 8 }, (_, r) =>
+      Array.from({ length: r + 1 }, (_, j) => (
+        <circle cx={180 + (j * 2 - r) * 10} cy={47 + r * 16} r="2.5" fill="#a1b58e" />
+      )),
+    )
+  }
+  {Array.from({ length: 10 }, (_, j) => <path d={`M${90 + j * 20} 181V244`} stroke="#a9bd99" />)}
+  {
+    [1, 4, 10, 22, 31, 22, 10, 4, 1].map((n, j) =>
+      Array.from({ length: n }, (_, i) => (
+        <circle
+          cx={100 + j * 20 + ((i % 3) - 1) * 5}
+          cy={239 - Math.floor(i / 3) * 5}
+          r="2.3"
+          fill="#b79b62"
+        />
+      )),
+    )
+  }
+  <path d="M169 16l11 17 11-17" stroke="#a1b58e" stroke-width="2"></path>
+</svg>

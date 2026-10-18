@@ -1,0 +1,104 @@
+---
+import {
+  balloonRecoil,
+  waterRotorTrajectory,
+  sampleRotor,
+  ROTOR,
+  waterParcel,
+} from '../../models/recoil-lab';
+const b = balloonRecoil(0.3),
+  path = waterRotorTrajectory(),
+  s = sampleRotor(path, 1.8),
+  r = b.radius * 450,
+  P = (x: number, y: number, z: number) => ({
+    x: 286 + 400 * x + 130 * y,
+    y: 192 + 100 * y - 400 * z,
+  }),
+  line = (q: { x: number; y: number; z: number }[]) =>
+    q
+      .map((v, i) => {
+        const p = P(v.x, v.y, v.z);
+        return `${i ? 'L' : 'M'}${p.x} ${p.y}`;
+      })
+      .join(' '),
+  ring = (rr: number, z: number) =>
+    line(
+      Array.from({ length: 49 }, (_, i) => ({
+        x: rr * Math.cos((i / 48) * Math.PI * 2),
+        y: rr * Math.sin((i / 48) * Math.PI * 2),
+        z,
+      })),
+    ),
+  rot = (x: number, y: number, a: number) => ({
+    x: x * Math.cos(a) - y * Math.sin(a),
+    y: x * Math.sin(a) + y * Math.cos(a),
+    z: ROTOR.nozzleHeight,
+  });
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><ellipse cx="83" cy="104" rx={r} ry={r * 0.9} fill="#c9d7ab" stroke="#acbf96"></ellipse><path
+    d={`M${83 - r} 104l-9 -3v6Z`}
+    fill="#b3c59a"></path><path
+    d={`M${83 - r - 12} 104H12`}
+    stroke="#abc2c4"
+    stroke-width="3"
+    stroke-dasharray="3 7"></path><path
+    d="M125 104h35m-5-4l5 4-5 4"
+    stroke="#9eb48a"
+    stroke-width="1.7"
+    fill="none"></path><path
+    d={line([
+      { x: -0.09, y: 0, z: 0.25 },
+      { x: 0, y: 0, z: 0 },
+      { x: 0.09, y: 0, z: 0.25 },
+    ]) + 'Z'}
+    fill="#e4e6c8"
+    fill-opacity=".55"
+    stroke="#bfc9a8"></path><path
+    d={line([
+      { x: -s.edgeRadius, y: 0, z: s.edgeHeight },
+      { x: 0, y: 0, z: 0 },
+      { x: s.edgeRadius, y: 0, z: s.edgeHeight },
+    ]) + 'Z'}
+    fill="#b9d0bd"
+    fill-opacity=".65"></path><path
+    d={ring(s.edgeRadius, s.edgeHeight)}
+    fill="#cadccc"
+    stroke="#abc5b0"></path>{
+    [0, 1].map((i) => {
+      const a = s.angle + i * Math.PI,
+        pts = [
+          rot(0.00767, 0.01, a),
+          rot(0.13, 0.01, a),
+          ...Array.from({ length: 13 }, (_, j) =>
+            rot(
+              0.13 + 0.01 * Math.sin(((j / 12) * Math.PI) / 2),
+              0.01 * Math.cos(((j / 12) * Math.PI) / 2),
+              a,
+            ),
+          ),
+        ];
+      return (
+        <g>
+          <path d={line(pts)} stroke="#b4c3a2" stroke-width="4" fill="none" />
+          {Array.from({ length: 11 }, (_, j) => {
+            const q = waterParcel(path, 1.8 - j * 0.008, 1.8, i),
+              p = P(q.x, q.y, q.z);
+            return <circle cx={p.x} cy={p.y} r="1.7" fill="#9bbcb4" />;
+          })}
+        </g>
+      );
+    })
+  }<path d={ring(0.09, 0.25)} stroke="#b2c3a0" fill="none"></path>{
+    [0, 1, 2].map((i) => {
+      const q = P(
+        0.09 * Math.cos(s.angle + (i * 2 * Math.PI) / 3),
+        0.09 * Math.sin(s.angle + (i * 2 * Math.PI) / 3),
+        0.25,
+      );
+      return <path d={`M286 51L${q.x} ${q.y}`} stroke="#b8a784" />;
+    })
+  }<path d="M252 43h68m-34 0v8" stroke="#a9bc9b" stroke-width="4" stroke-linecap="round"
+  ></path></svg
+>

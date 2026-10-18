@@ -1,0 +1,28 @@
+---
+import { rodInduction, inductionProjection as P } from '../../models/induction-conditions-lab';
+const s = rodInduction('cutting', 3),
+  a = P(s.x, 0.09, 0),
+  b = P(s.x, -0.09, 0);
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true"
+  ><g transform="translate(0 -47)">
+    <path
+      d={`M${P(0.33, 0.09, 0)}L${P(0, 0.09, 0)}L${P(0, -0.09, 0)}L${P(0.33, -0.09, 0)}`}
+      stroke="#a4b598"
+      stroke-width="4"
+      stroke-linecap="round"></path>
+    <path d={`M${P(0, 0.09, 0)}L${a}L${b}L${P(0, -0.09, 0)}Z`} fill="#c9d8b8" opacity=".22"></path>
+    {
+      Array.from({ length: 12 }, (_, i) => {
+        const q = P(0.04 + 0.07 * (i % 4), -0.06 + 0.06 * Math.floor(i / 4), 0);
+        return <path d={`M${q}l11-8m-3 7 3-7-8 1`} stroke="#b3c3a5" stroke-width="1.4" />;
+      })
+    }
+    <path d={`M${a}L${b}`} stroke="#bb9f6a" stroke-width="7" stroke-linecap="round"></path>
+    <circle cx="55" cy="205" r="28" fill="#edf1df" stroke="#b4c2a0"></circle><path
+      d="M55 214L40 190"
+      stroke="#ab9165"
+      stroke-width="2"></path>
+  </g></svg
+>

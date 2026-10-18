@@ -1,0 +1,82 @@
+.ms-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #657b5e;
+}
+.ms-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 10px;
+}
+.ms-apparatus {
+  display: block;
+  width: min(100%, 450px);
+  height: auto;
+  margin: auto;
+}
+.ms-apparatus text {
+  font: 21px var(--font-sans, sans-serif);
+  fill: #7e8e6c;
+}
+.ms-readout {
+  display: flex;
+  justify-content: center;
+  gap: 8px 22px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #95815a;
+  padding: 6px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.ms-view {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+  margin: 8px 14px;
+  color: #809273;
+}
+.ms-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e5;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.ms-controls button {
+  min-height: 44px;
+}
+.ms-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.ms-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.ms-details p {
+  margin: 0 0 16px;
+  color: #7f9173;
+}
+@media (max-width: 480px) {
+  .ms-controls {
+    padding: 18px 14px;
+  }
+  .ms-apparatus text {
+    font-size: 25px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.ms-film[data-watch] > .ms-kicker,
+.ms-film[data-watch] > .ms-caption,
+.ms-film[data-watch] > details {
+  display: none;
+}
+.ms-film[data-watch] .ms-view {
+  margin: 5px 12px;
+  line-height: 1.4;
+}

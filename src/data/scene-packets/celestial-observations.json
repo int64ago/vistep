@@ -1,0 +1,189 @@
+{
+  "topic": {
+    "slug": "celestial-observations",
+    "name": "从观测到天体预言",
+    "title": "天空中的光点，怎样成为可检验的证据？",
+    "question": "天空中的光点，怎样成为可检验的证据？",
+    "description": "联系第谷的位置记录、木星卫星、海王星摄动与哈雷彗星回归。",
+    "color": "#94a9b5",
+    "tag": "天文观测",
+    "related": ["kepler-orbits", "telescope"],
+    "sources": [
+      {
+        "title": "NASA — Galileo discovers Jupiter’s moons",
+        "url": "https://www.nasa.gov/history/410-years-ago-galileo-discovers-jupiters-moons/"
+      },
+      {
+        "title": "JPL — Planetary discovery circumstances",
+        "url": "https://ssd.jpl.nasa.gov/planets/discovery.html"
+      },
+      {
+        "title": "NASA — 1P/Halley",
+        "url": "https://science.nasa.gov/solar-system/comets/1p-halley/"
+      },
+      {
+        "title": "NASA — Halley’s return and its history",
+        "url": "https://www.nasa.gov/history/955-years-ago-halleys-comet-and-the-battle-of-hastings/"
+      }
+    ]
+  },
+  "component": "src/components/experiments/CelestialObservations.tsx",
+  "cover": "src/components/covers/CelestialObservationsCover.astro",
+  "discovery": {
+    "category": "nature",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["从观测到天体预言", "天空中的光点，怎样成为可检验的证据？", "近代物理实验"],
+      "en": [
+        "From observations to celestial predictions",
+        "How do points in the sky become testable evidence?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "从观测到天体预言": "From observations to celestial predictions",
+    "天空中的光点，怎样成为可检验的证据？": "How do points in the sky become testable evidence?",
+    "联系第谷的位置记录、木星卫星、海王星摄动与哈雷彗星回归。": "Connect angular records, Jupiter’s moons, Neptune’s perturbation and Halley’s return.",
+    "近代物理": "Modern physics",
+    "天文观测": "Astronomical observation"
+  },
+  "narration": {
+    "duration": 224,
+    "cues": [
+      {
+        "id": "position-records",
+        "title": "把位置记录下来",
+        "titleEn": "Record celestial positions",
+        "caption": "稳定的角度记录，让轨道理论接受检验。",
+        "captionEn": "Consistent angular records put orbital theories to the test.",
+        "zh": "第谷在望远镜出现以前，用大型角度仪器积累了精密的行星位置记录。这里把观察方向和角度读数连起来。上方是简化地球、火星轨道算出的视方向，仪器只是角度观测的功能示意，不复刻第谷的实测表。",
+        "en": "Before telescopes, Tycho used large angular instruments to build precise planetary records. Here a viewing direction is linked to an angular reading. The upper direction comes from simplified Earth and Mars orbits. The instrument illustrates angular observation, not an original historical data table.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "orbit-residuals",
+        "title": "比较预测和位置",
+        "titleEn": "Compare prediction with position",
+        "caption": "系统偏差不能靠多记几位小数消除。",
+        "captionEn": "A systematic discrepancy cannot be removed by extra decimal places.",
+        "zh": "同一时刻，比较椭圆轨道与简单圆轨道算出的方向，差值画在右侧。真实的第谷资料使开普勒能够检验并改进轨道模型。这里两条轨道只说明残差的含义，不是对历史模型的拟合，也不能把示例差值当成著名的八角分偏差。",
+        "en": "Compare directions calculated from an ellipse and a simple circle at the same time. Their difference is plotted at the right. Tycho’s actual records enabled Kepler to test orbital models. This example explains residuals; it is not a historical fit or the famous eight-arcminute discrepancy.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "galilean-telescope",
+        "title": "让望远镜延伸视线",
+        "titleEn": "Extend vision with a telescope",
+        "caption": "凸物镜与凹目镜把远方光束送入眼睛。",
+        "captionEn": "A positive objective and negative eyepiece deliver distant light to the eye.",
+        "zh": "伽利略式望远镜使用凸物镜和凹目镜。下方追踪平行入射光束，物镜使它趋向会聚，凹目镜在焦点之前让光束重新平行。上方呈现木星附近的光点。光学剖面取理想近轴模型，放大率为五；观察窗口另放大，不能当成真实视场大小。",
+        "en": "A Galilean telescope combines a positive objective and negative eyepiece. The objective converges incoming parallel rays; before they reach the focus, the eyepiece makes them parallel again. The paraxial diagram has magnification five. The upper observation window is enlarged independently and is not a true field-of-view scale.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "moon-records",
+        "title": "连续记录光点换位",
+        "titleEn": "Record changing moon positions",
+        "caption": "反复围绕木星换位的光点，支持卫星解释。",
+        "captionEn": "Points repeatedly changing position around Jupiter support the moon interpretation.",
+        "zh": "一次看到几个光点还不够。连续观察，光点反复出现在木星两侧，远近次序改变，有时被木星遮住。下方把五个相邻日期并排成记录。四颗卫星采用近似圆轨道和各自周期；初始相位为教学选值，不是伽利略一六一零年的原始观测复原。",
+        "en": "One glimpse is insufficient. Repeated observations show points on both sides of Jupiter, changing order and occasionally disappearing behind it. Five adjacent dates are recorded below. The four moons use approximate circular orbits and their distinct periods. Initial phases are illustrative, not a reconstruction of Galileo’s original observations.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "uranus-residual",
+        "title": "从轨道偏差提出假设",
+        "titleEn": "Form a hypothesis from an orbital discrepancy",
+        "caption": "额外引力会使天王星方向偏离简单预测。",
+        "captionEn": "An additional gravitational pull shifts Uranus from a simpler prediction.",
+        "zh": "天王星的运动与当时预测存在偏差。远方还有行星的假设，把这个偏差转为可计算的问题。页面积分太阳、天王星和示例海王星的引力关系，画出与不加摄动时的方向差。模型包含太阳也受到摄动的修正，但初始轨道经过简化，不能用于复算一八四六年的预言。",
+        "en": "Uranus differed from contemporary predictions. A further planet offered a testable cause. The model integrates a simplified Sun–Uranus–Neptune system, including acceleration of the Sun, and plots the angular difference from an unperturbed orbit. Idealized initial conditions do not reproduce the historical eighteen-forty-six prediction.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "neptune-check",
+        "title": "让独立观测检验预言",
+        "titleEn": "Test a prediction by independent observation",
+        "caption": "算出位置以后，还要到天空中寻找和复查。",
+        "captionEn": "A calculated location must still be searched and checked in the sky.",
+        "zh": "勒维耶把预测位置交给观测者，伽勒与同伴利用星图寻找，随后确认了海王星。右侧把模型中的远方行星方向投影到小窗，强调计算和观察必须对应。这里没有反演历史观测来预测位置，画面不能替代那项计算；自由探索可改变摄动质量，检查残差如何响应。",
+        "en": "Le Verrier sent a predicted position to observers; Galle and his colleague compared the sky with a chart and identified Neptune. The small window projects the model planet’s direction. It does not solve the historical inverse problem. Exploration changes the perturbing mass to test its effect on the residual.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "comet-records",
+        "title": "把多次彗星记录联系起来",
+        "titleEn": "Connect records of a returning comet",
+        "caption": "相似轨道使多次出现可以被解释为同一天体。",
+        "captionEn": "Similar orbital records can connect separate appearances to one body.",
+        "zh": "哈雷把历史上的几次彗星记录联系起来，提出它们可能是同一颗彗星的反复回归。图中太阳位于椭圆焦点，彗星靠近太阳时更快，远离时更慢。时间等速推进，运动速度由开普勒方程决定，不沿椭圆均匀移动；尾巴方向背离太阳，是简化方向提示。",
+        "en": "Halley connected several comet records as possible returns of one body. The Sun lies at an ellipse’s focus. The comet moves faster nearby and slower far away. Time advances uniformly while Kepler’s equation determines position, rather than uniform motion along the ellipse. The tail only indicates the antisolar direction.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "comet-return",
+        "title": "用未来回归检验判断",
+        "titleEn": "Test the judgment with a future return",
+        "caption": "预测的回归到来，才为判断增加新的证据。",
+        "captionEn": "A later observed return adds new evidence for the prediction.",
+        "zh": "从一五三一、一六零七和一六八二年的记录出发，哈雷预言彗星再次回归；一七五八年它果然被重新发现。下方列出这些历史年份。模型取固定的七十五点三年周期，只演示重复轨道；真实回归日期受其他行星摄动，不能靠这个固定周期逐次外推。",
+        "en": "Records from fifteen thirty-one, sixteen oh-seven and sixteen eighty-two led Halley to predict another return. The comet was rediscovered in seventeen fifty-eight. These historical dates appear below. The fixed seventy-five-point-three-year model illustrates recurrence; actual return dates depend on perturbations and cannot be extrapolated from this fixed period.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-tycho-observations": {
+      "chapterIds": ["position-records", "orbit-residuals"],
+      "label": {
+        "zh": "第谷观测",
+        "en": "Tycho’s observations"
+      }
+    },
+    "required-2-jupiter-moons": {
+      "chapterIds": ["galilean-telescope", "moon-records"],
+      "label": {
+        "zh": "木星卫星",
+        "en": "Jupiter’s moons"
+      }
+    },
+    "required-1-galileo-telescope": {
+      "chapterIds": ["galilean-telescope", "moon-records"],
+      "label": {
+        "zh": "木星卫星",
+        "en": "Jupiter’s moons"
+      }
+    },
+    "required-2-neptune": {
+      "chapterIds": ["uranus-residual", "neptune-check"],
+      "label": {
+        "zh": "海王星预测",
+        "en": "Neptune prediction"
+      }
+    },
+    "required-2-halley": {
+      "chapterIds": ["comet-records", "comet-return"],
+      "label": {
+        "zh": "哈雷回归",
+        "en": "Halley’s return"
+      }
+    }
+  }
+}

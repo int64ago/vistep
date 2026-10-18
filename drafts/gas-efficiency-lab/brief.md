@@ -1,0 +1,9 @@
+# Gas efficiency research
+
+Owner teaching_shell. Seven ×26s chapters. e3-gas-stove-efficiency: stove-paths/cooling/low-temperature/strategies. e3-gas-water-heater-efficiency: heater-38/50/compare. Real separate kettle/stove/gas-meter, cooling graph and heater internal heat exchanger/flow/bucket apparatus.
+
+Primary data transcribed and verified from full textbook pages 132–135, including original 101.9°C, all 17 cooling samples and all five meter before/after readings. No invented Q1/Q2 magnitudes, heating durations or measured continuous traces; progress/temperature diagrams explicitly illustrative. Table3 demonstrates the medium-then-high strategy's 11.21% lower consumption than all-high for that particular setup, not a universal optimum. Cooling equal-time drop ratio 11.9/2=5.95.
+
+Water-heater research supplies no results in textbook: gas entries remain empty, efficiency unavailable until filled. Editable 10 kg/20°C/35 MJ m^-3 are labeled examples, not readings. Equal mass with different outlet temperatures means different useful energies; mixing hot and cold does not establish efficiency. Flow marker positions derived from the actual connected serpentine. Distinct cold inlet, hot outlet, gas meter/burner and collecting bucket.
+
+Model checks: exact meter differences, original data points, energy calculations, missing data and >100% diagnostic, mixing-energy conservation and connected flow geometry. Packet dry-run passed; 4 targeted model tests passed. Desktop and phone use 360-wide apparatus, no external diagrams to crop; data tables sit in article and exploratory inputs wrap. Browser playback/stills, bilingual text fit/listening, resource failure and physical-device performance not-run by worker. Author numerical inspection only. Integrator handles shared registry and voice assets.

@@ -1,0 +1,26 @@
+<h2 id="understand">From voltage polarity to electric and magnetic energy</h2>
+
+Connect the oscilloscope first to a battery and then to an AC teaching supply. Direct voltage keeps one polarity; sinusoidal alternating voltage crosses zero. Two antiparallel LEDs connected to a teaching generator reveal opposite current directions. Slip rings maintain contact without rectifying the output.
+
+With a coil in series, the lamp is dimmer on AC than DC at equal source RMS voltage because inductive reactance further limits current. A series capacitor passes a charging transient on DC, then blocks steady current. AC repeatedly charges and discharges it; electrons do not cross the dielectric.
+
+Switch a charged capacitor onto a coil. Electric energy becomes magnetic energy and then returns as opposite capacitor charge. Real circuit resistance makes the measured oscillation decay.
+
+<h2 id="try">Preserve the comparison conditions</h2>
+
+- Compare a series coil on DC and AC using the same three-volt RMS supply.
+- Hold capacitance fixed and raise frequency, then hold frequency fixed and increase capacitance.
+- Pause as the LEDs alternate and inspect the current sign.
+- Set LC resistance to zero to preserve total electromagnetic energy, then add loss.
+
+<h2 id="deeper">Steady AC and switching transients use separate solutions</h2>
+
+<div className="formula">X_L = 2πfL; X_C = 1/(2πfC); I_rms = U_rms/√(R²+X²)</div>
+
+The lamp is a fixed six-ohm resistance, with AC brightness mapped from average power. The coil has two-ohm winding resistance. DC capacitor mode solves its RC charging transient separately. LEDs use a 1.8-volt threshold and a 100-ohm limiter. Generator phase and voltage share one sinusoidal model, shown in slow motion.
+
+<div className="formula">Lq″ + Rq′ + q/C = 0; W = q²/(2C) + LI²/2</div>
+
+The LC circuit uses 0.2 henry, 1000 microfarads, five-volt initial charge and adjustable series resistance. Its analytical damped solution computes both field energies and loss. The changeover switch disconnects the source during free oscillation. Displayed traces are model output, not claimed measurements.
+
+Sources: [OpenStax: Simple AC circuits](https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits), [LC oscillations](https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit). Textbook: Elective Book Two, pages 49–50, 56–57 and 71–72.

@@ -1,0 +1,145 @@
+{
+  "topic": {
+    "slug": "diamagnetic-levitation-lab",
+    "name": "水滴与青蛙的抗磁悬浮",
+    "title": "没有磁铁的水滴，为什么也能悬浮？",
+    "question": "没有磁铁的水滴，为什么也能悬浮？",
+    "description": "在强磁体的竖直孔中追踪水滴受力，区分磁场强度、空间梯度与稳定平衡。",
+    "color": "#8a9c70",
+    "tag": "强场还要有梯度",
+    "related": ["hall-effect", "solid-structure-lab"],
+    "sources": [
+      {
+        "title": "Berry and Geim (1997) — Of flying frogs and levitrons",
+        "url": "https://www.physics.umd.edu/grt/taj/411c/FlyingFrogs.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/DiamagneticLevitationLab.tsx",
+  "cover": "src/components/covers/DiamagneticLevitationLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["水滴与青蛙的抗磁悬浮", "抗磁性", "青蛙悬浮", "水滴悬浮", "强磁场", "磁场梯度"],
+      "en": [
+        "Diamagnetic levitation of water and a frog",
+        "diamagnetism",
+        "levitating frog",
+        "water levitation",
+        "field gradient"
+      ]
+    }
+  },
+  "translations": {
+    "水滴与青蛙的抗磁悬浮": "Diamagnetic levitation of water and a frog",
+    "没有磁铁的水滴，为什么也能悬浮？": "How can a water drop levitate without being a magnet?",
+    "在强磁体的竖直孔中追踪水滴受力，区分磁场强度、空间梯度与稳定平衡。": "Track a water drop inside a strong magnet and distinguish field strength, spatial gradient and stable equilibrium.",
+    "强场还要有梯度": "A strong field needs a gradient",
+    "青蛙悬浮的水体近似": "Water-based model of frog levitation",
+    "强磁场中的水滴": "A water drop in a strong field",
+    "竖直强磁体孔中抗磁物体的受力与稳定位置": "Forces and equilibrium of a diamagnetic object in a vertical magnet bore",
+    "磁力与重力比": "Magnetic force / weight",
+    "竖直位置": "Vertical position",
+    "磁场峰值": "Peak magnetic field",
+    "磁场分布": "Field distribution",
+    "非均匀磁场": "Nonuniform field",
+    "均匀磁场": "Uniform field",
+    "观察对象": "Sample",
+    "水滴": "Water drop",
+    "青蛙示意": "Frog illustration",
+    "释放后进度": "Progress after release",
+    "强度、梯度与简化": "Strength, gradient and simplifications",
+    "水的体积磁化率取−9.05×10⁻⁶，密度取1000千克每立方米；磁场沿轴用宽度5厘米的高斯分布近似，只计算竖直运动与线性阻尼，不据此证明三维稳定。青蛙形状用于科学史说明，其整体按水的参数近似；不是对真实动物的精确生物模型。": "Water uses volume susceptibility −9.05×10⁻⁶ and density 1000 kg/m³. The axial field is a Gaussian of width 5 cm. Only vertical motion and linear damping are calculated, not full three-dimensional stability. The frog illustrates the historical experiment using water-like parameters, not a detailed biological model.",
+    "水滴仍受重力": "The drop still has weight",
+    "没有向上支持力，水滴会落下。": "Without an upward supporting force, the drop falls.",
+    "强场本身还不够": "Field strength alone is insufficient",
+    "理想均匀磁场没有产生所需的净平移磁力。": "An ideal uniform field supplies no net translational lift here.",
+    "非均匀强磁场提供升力": "A field gradient supplies lift",
+    "抗磁物体趋向较弱场区，升力可以平衡重力。": "Diamagnetic material moves toward weaker field and can balance gravity.",
+    "偏离后能否回来": "Does a displaced drop return?",
+    "稳定位置附近，偏离会产生恢复作用。": "Near a stable position, displacement produces a restoring response.",
+    "从水滴到科学史中的青蛙": "From water to the historical frog",
+    "生物组织的抗磁性让强场悬浮成为可能。": "Diamagnetism of biological tissue allows strong-field levitation."
+  },
+  "narration": {
+    "duration": 130,
+    "cues": [
+      {
+        "id": "drop-gravity",
+        "title": "水滴仍受重力",
+        "titleEn": "The drop still has weight",
+        "caption": "没有向上支持力，水滴会落下。",
+        "captionEn": "Without an upward supporting force, the drop falls.",
+        "zh": "先关闭磁场，观察水滴释放后落到支撑位置。它并没有失去重力。所谓悬浮，需要另一种向上的力与重量平衡，不能只因为装置里没有看见支架就叫失重。",
+        "en": "Start with the field off: the released water drop falls onto a support. Gravity has not vanished. Levitation requires another upward force to balance weight; the absence of a visible support does not remove gravity.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "drop-uniform",
+        "title": "强场本身还不够",
+        "titleEn": "Field strength alone is insufficient",
+        "caption": "理想均匀磁场没有产生所需的净平移磁力。",
+        "captionEn": "An ideal uniform field supplies no net translational lift here.",
+        "zh": "把理想磁场强度设为十六特斯拉，但让它处处相同。水具有微弱抗磁性，却仍不会因此向上悬浮。平移磁力取决于磁场在空间的变化，只有强度这一项不够。",
+        "en": "Set an ideal field to sixteen tesla but make it uniform. Water is weakly diamagnetic, yet this alone does not lift it. Translational force depends on spatial variation of the field; strength by itself is insufficient.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "drop-gradient",
+        "title": "非均匀强磁场提供升力",
+        "titleEn": "A field gradient supplies lift",
+        "caption": "抗磁物体趋向较弱场区，升力可以平衡重力。",
+        "captionEn": "Diamagnetic material moves toward weaker field and can balance gravity.",
+        "zh": "换成沿高度变化的强磁场。水滴受到指向较弱磁场区域的力，在这里方向向上。观察两根受力箭头：在一定高度，向上磁力与向下重力相等，水滴就能停留。",
+        "en": "Now let the strong field vary with height. The drop is pushed toward weaker field, upward in this region. Compare the force arrows: at one height, upward magnetic force equals downward weight and the drop can remain suspended.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "drop-restore",
+        "title": "偏离后能否回来",
+        "titleEn": "Does a displaced drop return?",
+        "caption": "稳定位置附近，偏离会产生恢复作用。",
+        "captionEn": "Near a stable position, displacement produces a restoring response.",
+        "zh": "让水滴受到一次很小的扰动。往下偏一点，磁力大于重量；往上偏一点，磁力小于重量。它在阻尼下回到平衡附近。这里只检验竖直稳定，真实装置还必须满足横向稳定条件。",
+        "en": "Give the drop a small disturbance. Slightly below equilibrium, magnetic force exceeds weight; slightly above, it is smaller. Damping brings it back. This model tests only vertical stability; the real apparatus must also provide transverse stability.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "frog-history",
+        "title": "从水滴到科学史中的青蛙",
+        "titleEn": "From water to the historical frog",
+        "caption": "生物组织的抗磁性让强场悬浮成为可能。",
+        "captionEn": "Diamagnetism of biological tissue allows strong-field levitation.",
+        "zh": "科学史上的研究把这一原理用于含水的生物体，曾在约十六特斯拉磁场中使青蛙悬浮。画面以水的参数近似其整体响应，强调相同的受力原理；它不是精确的动物组织或三维磁场计算。",
+        "en": "The historical experiment extended this principle to water-rich organisms, including a frog levitated in a field of about sixteen tesla. This illustration uses water-like properties to explain the same force balance, not a detailed tissue or three-dimensional magnet calculation.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-diamagnetic-levitation": {
+      "chapterIds": [
+        "drop-gravity",
+        "drop-uniform",
+        "drop-gradient",
+        "drop-restore",
+        "frog-history"
+      ],
+      "label": {
+        "zh": "用强磁场使水滴和青蛙悬浮",
+        "en": "Levitating water and a frog in a strong field"
+      }
+    }
+  }
+}

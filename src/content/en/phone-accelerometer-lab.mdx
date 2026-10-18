@@ -1,0 +1,41 @@
+<h2 id="understand">Why can one falling phone report both zero and minusg?</h2>
+
+First identify the output. A raw accelerometer measures **specific force**: nongravitational contact or support force per unit mass. Place the phone flat with its screen-normalz axis pointing upward. At supported rest, the raw reading is approximately+g. During free fall, it is approximately zero.
+
+An app may also provide “linear acceleration” or an output with gravity removed. It estimates the gravity reference, often using orientation information, and subtracts it. With the phone’s orientation fixed here, that output is zero at rest,−g during free fall, and positive during the catch.
+
+The textbook’s falling-phone graph on printed pages49–50 uses the latter output meaning. The word “acceleration” in an app’s name does not guarantee that every mode displays the same quantity.
+
+<h2 id="try">Check the meaning in two situations</h2>
+
+**Hold, release, catch:** pause at0.20 s. The phone is stationary: raw acceleration is9.8 m/s² and gravity-corrected acceleration is zero. At0.55 s it is in free fall, giving zero and−9.8 m/s² respectively. During the catch, the phone is still moving down while slowing, so its coordinate acceleration points up.
+
+**An upward lift journey:** observe starting, cruising and braking. The raw reading is greater thang during the start, equal tog at constant speed, and less thang while braking. All three stages can involve upward motion. Direction of travel alone does not determine the reading. The gravity-corrected output shows the acceleration along the selected vertical coordinate.
+
+**Force-meter alternative:** switch instruments in the lift situation. With a0.20 kg hanging mass, infera = F/m − g from the measured tensionF. This mode neglects the spring’s transient vibration and compares steady readings within each constant-acceleration or constant-velocity segment. The instrument does not directly measure acceleration.
+
+The drawing keeps the same phone orientation. Its position, curves and numbers derive from one motion record, so scrubbing time changes the physical state as well as the labels.
+
+<h2 id="deeper">What the sensor measures</h2>
+
+<details>
+<summary>The fixed-orientation relationship</summary>
+
+Upward is positive here, so the vertical gravitational acceleration is−g. The ideal raw accelerometer output is:
+
+<div className="formula">f = a − (−g) = a + g；a = f − g</div>
+
+At rest,a is zero andf equalsg. In free fall,a equals−g andf is zero. If the phone rotates, gravity’s components along all three sensor axes change. One cannot simply subtract9.8 from an arbitrary axis. Real apps combine orientation estimates and filtering, with possible errors and delay.
+
+</details>
+
+<details>
+<summary>The teaching trajectories</summary>
+
+The drop holds the phone still for0.4 s, allows0.3 s of free fall, then uses0.16 s of constant upward acceleration to bring its downward velocity to zero. The phone remains at its final height. Abrupt acceleration changes make the segments clear; a real catch is smoother and can include vibration.
+
+The lift waits, accelerates upward at1 m/s² for two seconds, cruises at2 m/s for two seconds, and brakes at−1 m/s² for two seconds before resting. It rises eight metres. Both outputs and the position are derived from this trajectory; noise, saturation and sensor range limits are omitted.
+
+This is a visualization of the sensor principle, not a request to drop a real phone. For physical data collection, establish the axes and output mode and protect the device.
+
+</details>

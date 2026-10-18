@@ -1,0 +1,227 @@
+{
+  "topic": {
+    "slug": "pendulum-measurement-lab",
+    "name": "单摆的记录与测量",
+    "title": "怎样从摆动的记录中测出长度、周期和重力？",
+    "question": "怎样从摆动的记录中测出长度、周期和重力？",
+    "description": "把滴墨记录、累计计时、误差检验和倾斜杆线摆连接成完整测量路径。",
+    "color": "#c1ccaf",
+    "tag": "单摆 · 计时 · 等效重力",
+    "related": ["pendulum", "spring-oscillation-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Pendulums",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["单摆的记录与测量", "单摆测重力", "杆线摆", "滴墨摆"],
+      "en": [
+        "Recording and Measuring Pendulums",
+        "pendulum gravity measurement",
+        "inclined pendulum",
+        "ink pendulum"
+      ]
+    }
+  },
+  "component": "src/components/experiments/PendulumMeasurementLab.tsx",
+  "cover": "src/components/covers/PendulumMeasurementLabCover.astro",
+  "translations": {
+    "单摆的记录与测量": "Recording and Measuring Pendulums",
+    "怎样从摆动的记录中测出长度、周期和重力？": "How do pendulum records reveal length, period and gravity?",
+    "把滴墨记录、累计计时、误差检验和倾斜杆线摆连接成完整测量路径。": "Connect ink records, accumulated timing, error tests and an inclined rod-and-string pendulum into complete measurement paths.",
+    "单摆 · 计时 · 等效重力": "Pendulum · Timing · Effective gravity",
+    "滴墨摆沿一个方向摆动，木板沿垂直方向匀速移动": "The ink pendulum swings in one direction while the board moves uniformly perpendicular to it",
+    "改变摆长并累计计时，再比较 T² 与 L 的关系": "Change length, time complete cycles, then compare T² with L",
+    "测支点至球心的距离；从同向过零开始数全振动": "Measure pivot to centre; count full cycles between same-direction crossings",
+    "杆线摆绕倾斜转轴转动，等效重力为 g sin θ": "The rod-and-string pendulum rotates about a tilted axis, with effective gravity g sin θ",
+    "装墨汁的注射器摆动，墨滴带着离开时的速度下落到匀速木板上": "A swinging ink syringe releases drops retaining their initial velocity onto a uniformly moving board",
+    "木板速度 10 cm/s": "Board speed 10 cm/s",
+    "按实际落墨时刻标定时间的墨迹；包括落下延迟和切向初速度": "Ink marks calibrated by actual landing times, including flight delay and tangential velocity",
+    "倾斜立柱上有两个同轴转动连接，轻杆和细线把球约束在垂直于转轴的倾斜平面": "Two coaxial joints on the tilted support connect a light rod and string, constraining the bob to a plane normal to the axis",
+    "教材原始六组周期与等效重力数据，保留相对拟合直线的偏差": "Six original textbook period and effective-gravity rows retain their deviations from the fitted line",
+    "从多组累计计时得到的周期平方与摆长图像": "Period squared against length from multiple complete-cycle timings",
+    "标尺从固定支点量至球心，旁边放大示意摆线长度加上小球半径": "A ruler measures fixed pivot to bob centre, with a magnified inset showing string length plus radius",
+    "模型时间": "Model time",
+    "教材原始数据": "Original textbook data",
+    "选择单摆实验": "Choose a pendulum experiment",
+    "滴墨记录": "Ink recording",
+    "摆长与周期": "Length and period",
+    "测量重力加速度": "Measure gravitational acceleration",
+    "倾斜杆线摆": "Inclined rod-and-string pendulum",
+    "真实摆长": "Actual pendulum length",
+    "初始偏角": "Initial angular displacement",
+    "平面倾角": "Plane inclination",
+    "长度读到哪里": "Length endpoint",
+    "支点到球心": "Pivot to centre",
+    "只量摆线": "String only",
+    "长度读数误差": "Length reading error",
+    "累计计时误差": "Total timing error",
+    "观察进度": "Observation progress",
+    "保存本次计时": "Save this timing",
+    "回到装置": "Return to apparatus",
+    "查看记录图像": "View recorded graph",
+    "测量、原始数据与模型边界": "Measurement, original data and model limits",
+    "普通单摆按非线性方程计算，因此大偏角会让小角度反演的重力值偏低。主装置按尺度画球，球径局部图另行放大。滴墨保留离开针尖时的切向速度和有限下落时间，墨迹不等于摆球空间路径。杆线摆用轻杆和细线保持固定几何，忽略轴承摩擦；平面水平时等效重力为零，不发生这种回复振动。": "The ordinary pendulum follows nonlinear dynamics, so large angles bias a small-angle gravity inference downward. The main bob is to scale; a separate diameter inset is enlarged. Ink retains needle-tip tangential velocity and finite flight time, so its trace differs from the bob’s spatial path. A light rod and string preserve the inclined pendulum geometry, neglecting bearing friction. A horizontal plane has zero effective gravity and no such restoring oscillation.",
+    "摆长研究表为模型计时数据；杆线摆的六组 θ、T、a、1/√a 是教材第119页原始数据，拟合保留偏差。模型装置的长度并不反推成教材未给出的实测长度。": "Length-study rows are model timings. The six θ, T, a and 1/√a rows are original page-119 textbook data, retaining fit residuals. The model apparatus length is not presented as an undocumented measured textbook length."
+  },
+  "narration": {
+    "duration": 256,
+    "cues": [
+      {
+        "id": "ink-apparatus",
+        "title": "滴墨摆与木板",
+        "titleEn": "Ink pendulum and board",
+        "caption": "滴墨摆与木板。",
+        "captionEn": "Ink pendulum and board.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "用细线悬挂装有墨汁的注射器，让它来回摆动。木板沿着垂直于摆动的方向匀速移动，于是不同落墨时刻在板上对应不同的位置。墨滴离开针尖时还带有切向速度，经过一小段飞行才落下，所以画面把这些速度和延迟也算在里面。",
+        "en": "Suspend an ink-filled syringe and let it swing. The board moves uniformly perpendicular to the swing, giving different landing times different positions on the board. Drops retain the needle’s tangential velocity and take time to fall, so the scene calculates both the initial velocity and the flight delay."
+      },
+      {
+        "id": "ink-time-trace",
+        "title": "墨迹与时间轴",
+        "titleEn": "Ink marks and time",
+        "caption": "墨迹与时间轴。",
+        "captionEn": "Ink marks and time.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "木板速度保持每秒十厘米，板上的距离便可以标成时间。注意，这条曲线不是摆球走过的路径，而是墨滴落点随时间的记录。真实实验还要保持滴墨连续、木板匀速，并让注射器的运动尽量稳定；图像的形状不能脱离记录装置来解释。",
+        "en": "At a constant ten centimetres per second, board distance can be calibrated as time. This curve is not the bob’s spatial trajectory; it records ink landings over time. A physical experiment also needs consistent ink flow, uniform board motion and stable syringe motion. Interpret the graph together with the apparatus that produced it."
+      },
+      {
+        "id": "length-timing",
+        "title": "不同摆长累计计时",
+        "titleEn": "Time different lengths",
+        "caption": "不同摆长累计计时。",
+        "captionEn": "Time different lengths.",
+        "seconds": 26,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "分别选取零点四、零点七和一米的摆长，每组都保持小偏角，计满五个全振动。计时从过零开始，下一次同向经过零位才算完成一次。完整计时后才得到这一组的周期。三组记录来自同一个非线性运动模型，这里明确标作模型计时。",
+        "en": "Choose lengths of zero point four, zero point seven and one metre. Retain a small angle and time five full oscillations for each. Start at equilibrium; the next crossing in the same direction completes one cycle. Obtain each period only after timing finishes. All three rows come from the same nonlinear trajectory and are explicitly model timings."
+      },
+      {
+        "id": "length-plot",
+        "title": "比较周期平方与摆长",
+        "titleEn": "Compare period squared and length",
+        "caption": "比较周期平方与摆长。",
+        "captionEn": "Compare period squared and length.",
+        "seconds": 26,
+        "chapterAt": 74,
+        "at": 74.4,
+        "zh": "将不同摆长对应的周期平方画在纵轴，摆长画在横轴。小偏角下，这些点接近一条过原点的直线，支持周期平方与摆长成正比。用真实器材实验时，应先测量和作图，再用理论关系核对结果，而不是把公式计算值当成自己的实验数据。",
+        "en": "Plot period squared vertically and pendulum length horizontally. At small angles the points lie close to a line through the origin, supporting proportionality between period squared and length. With physical equipment, measure and plot first, then compare with theory; calculated values are not your own experimental measurements."
+      },
+      {
+        "id": "gravity-length",
+        "title": "把长度量到球心",
+        "titleEn": "Measure to the centre",
+        "caption": "把长度量到球心。",
+        "captionEn": "Measure to the centre.",
+        "seconds": 26,
+        "chapterAt": 100,
+        "at": 100.4,
+        "zh": "要用单摆测重力，首先把支点固定清楚，再量到球心。摆长等于摆线长度加上小球半径。右边放大图说明这一点，但主装置中的摆球保持比例。只量到小球上端会少算半径，后面代入周期公式时，就会让测得的重力加速度偏小。",
+        "en": "To measure gravity, establish a fixed pivot and measure to the bob centre. Pendulum length equals string length plus bob radius. The enlarged inset explains the radius while the main apparatus keeps scale. Measuring only to the top of the bob omits the radius and biases the inferred gravitational acceleration downward."
+      },
+      {
+        "id": "gravity-timing",
+        "title": "计二十个全振动",
+        "titleEn": "Time twenty full oscillations",
+        "caption": "计二十个全振动。",
+        "captionEn": "Time twenty full oscillations.",
+        "seconds": 26,
+        "chapterAt": 126,
+        "at": 126.4,
+        "zh": "保持小偏角，从摆球经过平衡位置开始计时，数二十个完整往返。总时间除以二十得到周期，再和支点到球心的长度一起计算重力加速度。教材提到惠更斯用过这种方法；这里展示的是模型测量过程，不把本页数值声称为巴黎的历史记录。",
+        "en": "Keep a small angle, start at equilibrium and count twenty full oscillations. Divide total time by twenty to obtain the period, then combine it with pivot-to-centre length to infer gravity. The textbook notes that Huygens used this method. These model measurements are not presented as historical records from Paris."
+      },
+      {
+        "id": "gravity-error",
+        "title": "检查半径与计时误差",
+        "titleEn": "Audit radius and timing error",
+        "caption": "检查半径与计时误差。",
+        "captionEn": "Audit radius and timing error.",
+        "seconds": 26,
+        "chapterAt": 152,
+        "at": 152.4,
+        "zh": "先看只量摆线时的结果，再把小球半径补上，比较重力反演值怎样改变。这里还保留零点三秒的累计启停误差，除以二十后，对单个周期的影响变小了。增加次数能减小这一项误差，却不能修正长度端点量错的问题。",
+        "en": "Compare the estimate using string length alone with the result after adding the bob radius. This example also retains a total start-stop timing error of zero point three seconds; dividing by twenty reduces its contribution to one period. Counting more cycles reduces this timing contribution but cannot correct a wrong length endpoint."
+      },
+      {
+        "id": "rod-plane",
+        "title": "用杆线限制倾斜平面",
+        "titleEn": "Constrain an inclined plane",
+        "caption": "用杆线限制倾斜平面。",
+        "captionEn": "Constrain an inclined plane.",
+        "seconds": 26,
+        "chapterAt": 178,
+        "at": 178.4,
+        "zh": "最后看教材的杆线摆：轻杆和细线连接到同一转轴上的两个位置，共同约束摆球的运动平面。倾斜立柱，平面便相对水平面倾斜。铅垂线提供角度参照，静止杆与铅垂线的夹角为贝塔，平面倾角就是九十度减贝塔。",
+        "en": "The textbook’s rod-and-string pendulum connects a light rod and a string to two points on the same axis, constraining the bob’s motion plane. Tilting the support inclines that plane above horizontal. A plumb line provides the angle reference. If beta is the angle between the resting rod and vertical, plane inclination is ninety degrees minus beta."
+      },
+      {
+        "id": "rod-angle-timing",
+        "title": "计时检验等效重力",
+        "titleEn": "Time effective-gravity motion",
+        "caption": "计时检验等效重力。",
+        "captionEn": "Time effective-gravity motion.",
+        "seconds": 26,
+        "chapterAt": 204,
+        "at": 204.4,
+        "zh": "沿倾斜平面的重力分量提供回复作用，对应的等效重力加速度是重力加速度乘倾角的正弦。固定杆长，仍计二十个全振动。改变倾角就能在地面上改变等效重力，而不必假装真的改变了当地重力。若平面完全水平，这种重力回复作用就消失了。",
+        "en": "The gravity component within the inclined plane supplies restoring acceleration, equal to gravity times the sine of the inclination. Keep rod length fixed and time twenty full oscillations. Changing inclination varies effective gravity on Earth without changing local gravity itself. A fully horizontal plane removes this gravitational restoring action."
+      },
+      {
+        "id": "textbook-effective-data",
+        "title": "核对教材六组原始数据",
+        "titleEn": "Audit six printed data rows",
+        "caption": "核对教材六组原始数据。",
+        "captionEn": "Audit six printed data rows.",
+        "seconds": 26,
+        "chapterAt": 230,
+        "at": 230.4,
+        "zh": "这张图使用教材第一百一十九页的六组原始数据，纵轴是周期，横轴是等效重力加速度平方根的倒数。数据点靠近一条过原点的直线，但并不精确落在线上，原来的偏差全部保留。它们支持反平方根关系，同时提醒我们区分真实记录、拟合直线和理想模型。",
+        "en": "This plot uses the six original rows on textbook page one hundred and nineteen. Period is plotted against the reciprocal square root of effective gravity. The points lie near a line through the origin rather than exactly on it, and their residuals are retained. They support the inverse-square-root relation while distinguishing recorded evidence, a fitted line and an ideal model."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-ink-pendulum": {
+      "chapterIds": ["ink-apparatus", "ink-time-trace"],
+      "label": {
+        "zh": "用滴墨摆记录单摆的振动图像",
+        "en": "Record a pendulum with ink"
+      }
+    },
+    "e1-pendulum-length-period": {
+      "chapterIds": ["length-timing", "length-plot"],
+      "label": {
+        "zh": "探究单摆周期与摆长之间的关系",
+        "en": "Investigate period versus length"
+      }
+    },
+    "e1-pendulum-gravity": {
+      "chapterIds": ["gravity-length", "gravity-timing", "gravity-error"],
+      "label": {
+        "zh": "用单摆测量重力加速度",
+        "en": "Measure gravity with a pendulum"
+      }
+    },
+    "e1-effective-gravity-pendulum": {
+      "chapterIds": ["rod-plane", "rod-angle-timing", "textbook-effective-data"],
+      "label": {
+        "zh": "单摆周期与重力加速度定量关系的实验研究",
+        "en": "Investigate period versus effective gravity"
+      }
+    }
+  }
+}

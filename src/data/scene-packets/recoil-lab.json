@@ -1,0 +1,171 @@
+{
+  "topic": {
+    "slug": "recoil-lab",
+    "name": "气球与喷水容器的反冲",
+    "title": "喷出去的东西，怎样改变自身运动？",
+    "question": "喷出去的东西，怎样改变自身运动？",
+    "description": "从自由气球喷气到悬挂圆锥容器喷水，分别追踪平动动量和绕轴角动量。",
+    "color": "#c3d0b0",
+    "tag": "喷气反冲 · 角动量流 · 排水",
+    "related": ["force-pairs-lab", "centripetal-force-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Rocket Propulsion",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/9-7-rocket-propulsion"
+      },
+      {
+        "title": "MIT — Rotating lawn sprinkler control-volume problem",
+        "url": "https://ocw.mit.edu/ans7870/2/2.25/assignments/sec5/5-26/index.html"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["气球与喷水容器的反冲", "反冲气球", "喷水旋转容器", "弯管喷水"],
+      "en": [
+        "Recoil of balloons and water rotors",
+        "balloon recoil",
+        "rotating water vessel",
+        "tangential jets"
+      ]
+    }
+  },
+  "component": "src/components/experiments/RecoilLab.tsx",
+  "cover": "src/components/covers/RecoilLabCover.astro",
+  "translations": {
+    "气球与喷水容器的反冲": "Recoil of balloons and water rotors",
+    "喷出去的东西，怎样改变自身运动？": "How does expelled material change the source’s motion?",
+    "从自由气球喷气到悬挂圆锥容器喷水，分别追踪平动动量和绕轴角动量。": "Follow linear momentum in a releasing balloon and angular momentum in a suspended conical water rotor.",
+    "喷气反冲 · 角动量流 · 排水": "Jet recoil · Angular-momentum flux · Drainage",
+    "气球口向后喷出气体，剩余气球向前加速；形状按剩余气体体积缩小": "Gas leaves the neck backward as the remaining balloon accelerates forward and shrinks with gas volume",
+    "悬挂的圆锥盛水容器通过两根弯管向相反切向喷水，容器反向旋转，水位连续下降": "A suspended conical vessel ejects opposing tangential jets through two bent pipes, rotating oppositely as water level falls",
+    "把弯管反过来，容器转向也反过来": "Reverse the bends and the container reverses direction",
+    "喷水带走角动量，容器朝相反方向转": "Jets carry angular momentum; the container turns oppositely",
+    "相同时刻，大喷口排出更多气体": "At the same time, a larger nozzle has expelled more gas",
+    "气体向后喷，剩余气球向前走": "Gas goes backward and the remaining balloon goes forward",
+    "可旋转圆锥水容器 · 准稳态模型": "Rotating conical water vessel · Quasisteady model",
+    "理想一维喷气 · 不代表真实气球的完整轨迹": "Ideal one-axis jet · Not a complete real-balloon trajectory",
+    "中心水深": "Center water depth",
+    "角速度": "Angular speed",
+    "流出质量率": "Outflow mass rate",
+    "剩余气体": "Remaining gas",
+    "气球模型速度": "Model balloon speed",
+    "气球模型位移": "Model balloon travel",
+    "模型时间": "Model time",
+    "绕竖直轴的角动量": "Angular momentum about the vertical axis",
+    "沿喷口方向的动量": "Momentum along the nozzle axis",
+    "容器与剩余水": "Container and remaining water",
+    "气球与剩余气体": "Envelope and remaining gas",
+    "已喷出的水": "Expelled water",
+    "已喷出的气体": "Expelled gas",
+    "两个喷口的平动效果相互抵消，绕轴的反冲力矩却同向相加。": "The outlets cancel net translation while their recoil torques add about the axis.",
+    "压差相同，喷口面积加倍使初始质量流率和推力加倍。": "At equal pressure excess, doubling nozzle area doubles initial mass flow and thrust.",
+    "喷出的气体也属于系统；气球单独是质量不断变化的开放部分。": "Expelled gas belongs to the complete system; the balloon alone is an open part with changing mass.",
+    "镜头跟随气球，地面刻度继续后移。": "The camera follows the balloon while ground marks move backward.",
+    "反冲实验": "Recoil experiment",
+    "喷气气球": "Releasing balloon",
+    "喷水容器": "Water rotor",
+    "每个水喷口半径": "Radius of each water outlet",
+    "弯管方向": "Bend direction",
+    "方向一": "First direction",
+    "反向弯管": "Reverse bends",
+    "气球喷口面积": "Balloon nozzle area",
+    "水与容器共同转动，水面随旋转略呈抛物面；计入剩余水转动惯量变化与出口绝对速度，忽略轴承力矩。": "Water co-rotates with a slightly parabolic surface. Changing water inertia and absolute exit velocity are included; bearing torque is omitted.",
+    "固定喷口朝向、恒定小压差与密度近似；忽略空气阻力和竖直运动。真实气球会摆动，压力也会随形变改变。": "Fixed nozzle direction, constant small pressure excess and approximate density; drag and vertical motion are omitted. Real balloons wobble and change pressure as they deform."
+  },
+  "narration": {
+    "duration": 170,
+    "cues": [
+      {
+        "id": "balloon",
+        "title": "松开气口",
+        "titleEn": "Release the balloon neck",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "气体向后喷，气球向前加速。",
+        "captionEn": "Backward gas flow accelerates the balloon forward.",
+        "zh": "把气球吹起来，捏住通气口，再松开。气体从开口喷出，剩余气球朝相反方向运动。画面保留喷口方向上的理想运动，镜头随后跟随气球，地面刻度继续向后移动。真实气球会摆动，压力也会变化；这里固定朝向、忽略阻力，只用来辨认喷出气体与气球之间的动量交换。",
+        "en": "Inflate a balloon, pinch its neck, then release it. Escaping gas sends the remaining balloon in the opposite direction. The illustration isolates motion along the nozzle axis; a following camera keeps the balloon visible as ground marks move backward. Real balloons wobble and change pressure. Fixed orientation and omitted drag here isolate momentum exchange, rather than predict a full trajectory."
+      },
+      {
+        "id": "gas",
+        "title": "把喷出的气体算进系统",
+        "titleEn": "Include the expelled gas",
+        "seconds": 29,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "气球本身质量改变，完整系统动量仍平衡。",
+        "captionEn": "Balloon mass changes while complete-system momentum balances.",
+        "zh": "随着气体离开，气球体积和剩余质量都减小。只看气球，会发现它的动量增加；把已经喷出的气体也算进来，两部分的动量变化互相对应。气体离开时的对地速度，需要用气球速度减去相对喷口的排气速度。模型按照每份气体的释放时刻累加动量，不能把它们都当作以同一个对地速度离开。",
+        "en": "Gas loss reduces volume and remaining mass. The balloon alone gains momentum; including all expelled gas restores the balance. Each parcel’s ground-relative exit velocity is balloon velocity minus exhaust speed relative to the neck. Momentum accounting uses each parcel’s own release time, rather than assigning all expelled gas one common ground-relative velocity."
+      },
+      {
+        "id": "area",
+        "title": "在同一时刻比较喷口",
+        "titleEn": "Compare nozzle sizes at one time",
+        "seconds": 28,
+        "chapterAt": 57,
+        "at": 57.3,
+        "caption": "同压差，面积加倍，初始推力加倍。",
+        "captionEn": "Same pressure excess, twice the area, twice the initial thrust.",
+        "zh": "现在比较两只初始条件相同的理想气球，只把其中一只的喷口面积加倍。压差相同时，相对排气速度相同，但较大喷口每秒排出的气体更多，初始质量流率和推力都加倍。两幅画面使用相同的时间与长度尺度，所以位移可以直接比较。这不是说喷口越大，最终一定飞得更远；实际压力、阻力与姿态还会影响过程。",
+        "en": "Compare identical ideal balloons, changing only one nozzle to twice the area. Equal pressure excess gives the same relative exhaust speed, but the larger opening passes more gas per second, doubling initial mass flow and thrust. Both views share time and distance scales. This does not establish that a larger opening always gives a longer real flight; pressure evolution, drag and orientation also matter."
+      },
+      {
+        "id": "water",
+        "title": "让盛水容器自由转动",
+        "titleEn": "Let the water vessel rotate freely",
+        "seconds": 28,
+        "chapterAt": 85,
+        "at": 85.3,
+        "caption": "弯管沿切向喷水，容器绕悬点转动。",
+        "captionEn": "Bent pipes eject tangential jets and rotate the suspended vessel.",
+        "zh": "换成教材中的可旋转盛水容器。水从下部两根弯管喷出，喷口朝向相反的切向，容器开始朝相反方向转动。两个喷口的平动效果相互抵消，但对竖直轴的力矩同向相加。跟踪同一根弯管，它的出口位置和水流方向一起转动，水滴离开后则按当时的绝对速度飞出并下落。",
+        "en": "Switch to the freely rotating water vessel. Two low bent pipes eject opposing tangential jets, turning the container oppositely. Net translation cancels while torques about the vertical axis add. Follow one pipe: its outlet position and direction rotate together. A released droplet keeps the outlet’s absolute velocity and then falls under gravity."
+      },
+      {
+        "id": "reverse",
+        "title": "换一组反向弯管",
+        "titleEn": "Try the opposite bends",
+        "seconds": 28,
+        "chapterAt": 113,
+        "at": 113.3,
+        "caption": "重新从静止开始，喷流和转向一起反向。",
+        "captionEn": "Start again from rest; reversing the jets reverses rotation.",
+        "zh": "把两根弯管换成相反朝向，重新从静止开始这次试验。水位与孔径保持相同，喷出水携带的角动量方向改变，容器转向也随之反过来。水持续流出，剩余水量和转动惯量不断变化。容器转起来之后，水面略呈抛物面，这些变化都参与模型计算，不是只让外壳按固定速度旋转。",
+        "en": "Reverse both bends and start a new trial from rest. Keep water level and hole size unchanged. The expelled water’s angular momentum changes sign, so container rotation reverses. Continuous drainage changes remaining water and inertia. Rotation also makes the free surface slightly parabolic. These effects enter the calculation instead of merely spinning a decorative shell at fixed speed."
+      },
+      {
+        "id": "angular",
+        "title": "看角动量怎样流出",
+        "titleEn": "Track angular-momentum outflow",
+        "seconds": 29,
+        "chapterAt": 141,
+        "at": 141.3,
+        "caption": "出口绝对速度包含容器的转动速度。",
+        "captionEn": "Absolute exit velocity includes transport by container rotation.",
+        "zh": "最后把容器与剩余水、已经喷出的水分开记账。绕竖直轴，它们的角动量变化彼此相反。出口相对流速还要加上容器旋转带来的速度，才能求出每秒带走多少角动量。这里同时更新排水量和转动惯量，并忽略轴承力矩。它与气球反冲有共同的动量交换思想，但转动装置不能直接套用一维火箭速度公式。",
+        "en": "Account separately for the container with remaining water and the water already expelled. Their angular-momentum changes about the vertical axis oppose each other. Relative jet speed must be combined with rotational transport to determine outgoing angular momentum per second. The model updates drainage and inertia while omitting bearing torque. The exchange idea resembles balloon recoil, but the one-dimensional rocket formula does not describe this rotating apparatus."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-air-balloon-recoil": {
+      "chapterIds": ["balloon", "gas", "area"],
+      "label": {
+        "zh": "用喷气气球观察反冲",
+        "en": "Observe recoil with a releasing balloon"
+      }
+    },
+    "e1-water-rotor-recoil": {
+      "chapterIds": ["water", "reverse", "angular"],
+      "label": {
+        "zh": "用喷水旋转容器观察反冲",
+        "en": "Observe recoil in a rotating water container"
+      }
+    }
+  }
+}

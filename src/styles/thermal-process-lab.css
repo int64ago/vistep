@@ -1,0 +1,102 @@
+.tp-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #6d815f;
+}
+.tp-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.tp-apparatus,
+.tp-spectrum {
+  display: block;
+  width: min(100%, 510px);
+  height: auto;
+  margin: auto;
+}
+.tp-apparatus text {
+  font: 22px var(--font-sans, sans-serif);
+  fill: #7d8e69;
+}
+.tp-spectrum text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #839471;
+}
+.tp-readings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  font-size: 16px;
+  color: #99825b;
+  padding: 8px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.tp-subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 8px 16px;
+  color: #8c9c78;
+}
+.tp-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.tp-controls button {
+  min-height: 44px;
+}
+.tp-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.tp-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.tp-details p {
+  color: #7e9072;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .tp-controls {
+    padding: 18px 14px;
+  }
+  .tp-apparatus text {
+    font-size: 25px;
+  }
+  .tp-spectrum text {
+    font-size: 23px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.tp-film[data-watch] > .tp-kicker,
+.tp-film[data-watch] > .tp-caption,
+.tp-film[data-watch] > details {
+  display: none;
+}
+@media (max-width: 480px) {
+  .tp-spectrum text {
+    font-size: 25px;
+  }
+}
+
+.tp-spectrum-key {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 2px 12px;
+  color: #839471;
+}
+.tp-film[data-watch] .tp-subtitle {
+  display: none;
+}

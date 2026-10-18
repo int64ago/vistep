@@ -1,0 +1,132 @@
+{
+  "topic": {
+    "slug": "franklin-electricity-evidence",
+    "name": "富兰克林的电学证据",
+    "title": "雷电与摩擦电，怎样建立实验上的联系？",
+    "question": "雷电与摩擦电，怎样建立实验上的联系？",
+    "description": "比较储存、带电指示与放电的共同表现，理解富兰克林历史研究中的证据逻辑。",
+    "color": "#bbcbb2",
+    "tag": "电学 · 历史 · 证据",
+    "related": ["electrostatic-induction", "parallel-plate-capacitor-lab"],
+    "sources": [
+      {
+        "title": "The Papers of Benjamin Franklin — The Kite Experiment, 19 October 1752",
+        "url": "https://franklinpapers.org/framedVolumes.jsp?vol=4&page=360a"
+      },
+      {
+        "title": "Franklin’s 1752 statement — primary text reprint",
+        "url": "https://ushistory.org/historic-personages/franklin/science/kite2"
+      },
+      {
+        "title": "OpenStax — Capacitors and Capacitance",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["富兰克林的电学证据", "富兰克林", "雷电与摩擦电", "历史实验", "电学证据"],
+      "en": [
+        "Franklin’s Electrical Evidence",
+        "Franklin",
+        "lightning electricity",
+        "historical experiments",
+        "electrical evidence"
+      ]
+    }
+  },
+  "component": "src/components/experiments/FranklinElectricityEvidence.tsx",
+  "cover": "src/components/covers/FranklinElectricityEvidenceCover.astro",
+  "translations": {
+    "富兰克林的电学证据": "Franklin’s Electrical Evidence",
+    "雷电与摩擦电，怎样建立实验上的联系？": "How can experiments link lightning with frictional electricity?",
+    "比较储存、带电指示与放电的共同表现，理解富兰克林历史研究中的证据逻辑。": "Compare storage, charge indication and discharge to understand the evidence behind Franklin’s historical investigation.",
+    "电学 · 历史 · 证据": "Electricity · History · Evidence",
+    "摩擦来源：先建立可重复的实验参照": "Frictional source: establish a repeatable reference",
+    "历史报告：云中来源也能使电荷储存和响应": "Historical report: electricity from clouds also stores and produces effects",
+    "共同现象支持电学联系，不要求同电量、同符号": "Shared effects support an electrical connection, not equal charge or sign",
+    "隔离来源，接入支路释放储存的电荷": "Isolate the sources and connect branches to release stored charge",
+    "隔离来源，接入支路比较释放过程": "Isolate the sources and compare release through connected branches",
+    "使用相同探测装置，比较不同来源": "Use the same detectors to compare different sources",
+    "摩擦来源": "Frictional source",
+    "云中来源 · 历史报告": "Cloud source · historical report",
+    "两路来源进入相同电容瓶与带电指示器的证据结构示意": "Evidence diagram: two sources, identical storage jars and charge indicators",
+    "可储存电荷": "Stores charge",
+    "能使指示器张开": "Opens the indicator",
+    "隔离后仍可放电": "Discharges after isolation",
+    "现代等效模型展示证据关系；不是风筝装置复原，也不是历史实测数值。": "A modern equivalent model shows the evidence relationship, not a kite reconstruction or historical measurements.",
+    "比较阶段": "Comparison phase",
+    "积累电荷": "Accumulate charge",
+    "比较储存": "Compare storage",
+    "隔离后释放": "Release after isolation",
+    "两路示意电源电压幅值": "Illustrative voltage magnitude for both sources",
+    "云中来源模型的符号": "Sign of the modeled cloud source",
+    "模型经过时间": "Model elapsed time",
+    "历史材料与现代模型的边界": "Historical sources and modern model limits",
+    "1752 年的历史报告把云中取得的电与摩擦玻璃产生的电作比较，其中提到储存到瓶中并重复电学现象。本册只概述这一联系。此图用相同电容与带电指示器表示比较逻辑，不声称这就是原实验的全部装置。正负电荷都能使指示器张开，因此单凭张开不能判断符号。云的符号并非固定；模型参数是教学设定。雷暴取电不是课堂操作，本图不提供户外复现实验步骤。": "The 1752 report compares electricity obtained from clouds with electricity from rubbed glass, including storage in a phial and repeated electrical effects. This textbook briefly states that connection. Identical capacitors and indicators here illustrate the comparison logic, not the complete original apparatus. Either charge sign opens an indicator, so opening alone cannot reveal sign. Cloud polarity is not fixed; parameters are teaching choices. Collecting storm electricity is not a classroom activity; no outdoor replication procedure is given."
+  },
+  "narration": {
+    "duration": 96,
+    "cues": [
+      {
+        "id": "friction-reference",
+        "title": "先建立实验参照",
+        "titleEn": "Establish a reference",
+        "caption": "摩擦电可以储存，也能使带电指示器响应。",
+        "captionEn": "Frictional electricity can be stored and produce an indicator response.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先看摩擦来源这一侧。电荷逐渐积累到储存装置，连接的带电指示器随之张开。画面用现代等效模型把这种关系放大：电荷能被转移和储存，也能产生可重复的电学现象。这为比较另一个来源建立了参照。",
+        "en": "Start with the frictional source. Charge accumulates in storage and the connected indicator opens. This modern equivalent model enlarges that relationship: charge can be transferred and stored, producing repeatable electrical effects. That establishes a reference for comparing another source."
+      },
+      {
+        "id": "cloud-report",
+        "title": "比较历史报告",
+        "titleEn": "Compare the historical report",
+        "caption": "云中来源也能用于储存与同类电学实验。",
+        "captionEn": "The reported cloud source also supported storage and similar electrical effects.",
+        "seconds": 24,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "富兰克林一七五二年的报告提到，云中取得的电可以存入瓶中，并重复通常由摩擦玻璃产生的电学现象。现在用相同的模型装置表现这条证据。教材本页没有给出风筝装置，这里也没有把示意图说成历史现场的精确复原。",
+        "en": "Franklin’s 1752 report describes electricity obtained from clouds being stored in a phial and used for electrical effects normally produced with rubbed glass. The same model apparatus now represents that evidence. This textbook passage gives no kite apparatus, and our diagram is not presented as a precise reconstruction of the historical event."
+      },
+      {
+        "id": "shared-effects",
+        "title": "相同性质，不等于相同数值",
+        "titleEn": "Shared properties, not identical numbers",
+        "caption": "正负两种电荷都可能使指示器张开。",
+        "captionEn": "Either charge sign can open an indicator.",
+        "seconds": 26,
+        "chapterAt": 46,
+        "at": 46.4,
+        "zh": "两侧都能储存电荷、使指示器张开，但注意正负符号并不相同。张开程度不能单独判定电荷的种类，更不能证明两次实验有完全相同的电量。历史推断关注的是可重复的共同电学性质，而不是要求所有细节和数值相等。",
+        "en": "Both sides store charge and open an indicator, but their signs differ. Opening alone cannot identify charge type or establish exactly equal quantities. The historical inference concerns repeatable shared electrical properties, not a requirement that every detail and numerical value match."
+      },
+      {
+        "id": "stored-release",
+        "title": "断开来源后仍能释放",
+        "titleEn": "Release after disconnecting the source",
+        "caption": "接入释放支路，两路储存电荷都逐渐减少。",
+        "captionEn": "Connect release paths and both stored charges decrease.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72.4,
+        "zh": "最后隔离两路来源，再接通释放支路。指示器逐渐合拢，说明之前储存的电荷正在释放。这样的共同性质把来源不同的现象联系起来。现代图只是帮助理解历史证据；它既不是历史测量记录，也不是在雷暴天气复现实验的操作指南。",
+        "en": "Finally isolate both sources and connect the release paths. The indicators close as stored charge is released. Shared properties connect phenomena with different origins. This modern diagram helps explain the historical evidence; it is neither a historical measurement record nor a guide to recreating a storm experiment."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-franklin-electricity": {
+      "chapterIds": ["friction-reference", "cloud-report", "shared-effects", "stored-release"],
+      "label": {
+        "zh": "富兰克林研究雷电与摩擦电",
+        "en": "Franklin links lightning and frictional electricity"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<h2 id="understand">Measure the sensitive element before controlling a load</h2>
+
+A reed switch converts magnetic field into contact closure. A nearby magnet magnetizes two soft magnetic reeds, closing a normally open contact. Mounted on a door frame and connected to a relay, it can light an indicator with the door shut and sound an alarm when opened.
+
+A photoresistor changes resistance with illumination. Shade, room light and stronger light form controlled comparisons, while an ordinary resistor stays fixed in this model. An NTC thermistor decreases resistance as it warms. Hand warmth and cold water provide an initial comparison; an insulated probe in a water bath, paired with a thermometer and resistance meter, supports quantitative characterization.
+
+Light control requires amplification and an actuator. A divider drives a transistor, which amplifies small base current. The LED branch is current-limited. A relay branch switches a separate lamp path and includes a reverse diode across its winding for current release.
+
+<h2 id="try">Test the conversion and comparison conditions</h2>
+
+- Compare the photoresistor and ordinary resistor under the same illumination change.
+- Adjust the divider resistance and observe the light-control threshold.
+- Move the door magnet away and trace the relay's normally closed and normally open paths.
+- Cross sixty degrees and inspect how closing the temperature contact turns heating off.
+- Add hook masses while retaining the initial fixture load; compare slopes across the pressure response.
+
+<h2 id="deeper">Component models, textbook observations and local approximations</h2>
+
+<div className="formula">R_NTC = R₂₅ exp[B(1/T − 1/298.15)]</div>
+
+This representative NTC has ten-kilohm resistance at 25°C and a 3950-kelvin B value. Temperature in the formula is kelvin. Not every temperature sensor decreases resistance. The photoresistor uses a power-law approximation; the reference resistor remains ten kilohms. The reed model uses a distance-dependent field threshold and omits hysteresis and contact dynamics.
+
+Light control includes base loading, transistor gain and output limits, with idealized diode and relay operation. The bimetal approximation assumes equal layer thickness and elastic modulus and enlarges deflection. Its sensing contact closes at 60°C, energizing a relay whose normally closed contact opens the heater path.
+
+The sixteen pressure observations come directly from textbook page 112. Linear interpolation supplies intermediate values and local secant slopes, not fresh measurements or the textbook's smoothed tangent fit. Fixtures initially load the sensor by 0.5 newton; each hook mass adds 0.5 newton using g = 10 m/s². Apple sorting illustrates threshold control while omitting detailed holding-circuit electronics.
+
+Sources: [TDK: NTC thermistor technical information](https://www.tdk-electronics.tdk.com/download/531116/19643b7ea798d7c4670141a88cd993f9/pdf-general-technical-information.pdf), [Littelfuse: Magnetic sensing and reed switches](https://www.littelfuse.com/assetdocs/sensing-products-selection-guide?assetguid=7fff98e7-9335-445a-831e-992b4f1fb8a5). Textbook: Elective Book Two, pages 91, 97–99, 103–107 and 111–114.

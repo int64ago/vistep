@@ -1,0 +1,170 @@
+{
+  "topic": {
+    "slug": "galileo-inclines",
+    "name": "伽利略斜面研究",
+    "title": "把运动变慢，怎样看出自由落体与惯性的线索？",
+    "question": "把运动变慢，怎样看出自由落体与惯性的线索？",
+    "description": "从缓坡流水计时到双斜面理想推理，区分历史实验、滚动模型与后续机械能观察。",
+    "color": "#b8b596",
+    "tag": "计时 · 理想化 · 守恒",
+    "related": ["free-fall-activities", "inclined-plane"],
+    "sources": [
+      {
+        "title": "Museo Galileo — Inclined Plane",
+        "url": "https://catalogue.museogalileo.it/object/InclinedPlane.html"
+      },
+      {
+        "title": "OpenStax — Rolling Motion",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion"
+      },
+      {
+        "title": "Rice University — Inclined Plane Reconstruction",
+        "url": "https://galileo.library.rice.edu/lib/student_work/experiment95/inclined_plane.html"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["伽利略斜面研究", "流水计时", "双斜面理想实验", "滚动与惯性"],
+      "en": ["Galileo’s incline studies", "water clock", "ideal double incline", "rolling inertia"]
+    }
+  },
+  "component": "src/components/experiments/GalileoInclines.tsx",
+  "cover": "src/components/covers/GalileoInclinesCover.astro",
+  "translations": {
+    "伽利略斜面研究": "Galileo’s incline studies",
+    "把运动变慢，怎样看出自由落体与惯性的线索？": "How can slower motion reveal clues about falling and inertia?",
+    "从缓坡流水计时到双斜面理想推理，区分历史实验、滚动模型与后续机械能观察。": "Move from timed shallow ramps to ideal double inclines, distinguishing historical reconstruction, rolling and later energy analysis.",
+    "计时 · 理想化 · 守恒": "Time · Idealize · Conserve",
+    "斜面把下落问题变慢，但滚动不是自由落体": "An incline slows the study, but rolling is not free fall",
+    "让铜球沿缓坡滚下，用流水比较时间": "Roll a ball down a gentle slope and compare time with water",
+    "高度与速度互换，理想总机械能保持不变": "Height and speed exchange while ideal mechanical energy stays fixed",
+    "右侧变成水平：理想小球继续前进": "With a horizontal continuation, the ideal ball keeps moving",
+    "同样释放高度，右坡更缓，需要走得更远": "At the same release height, a gentler return slope requires more distance",
+    "历史实验的物理重建": "Physical reconstruction of a historical experiment",
+    "理想实验 · 忽略耗散": "Ideal experiment · No dissipation",
+    "铜球沿斜面滚动，流水收集量随计时时间增加": "A ball rolls down an incline while collected water grows with elapsed time",
+    "收集的水质量": "Collected water mass",
+    "滚动距离": "Rolling distance",
+    "模型时间": "Model time",
+    "等时间间隔的记录": "Equal-time interval records",
+    "实心球还需要转动能量，不能把滚动加速度直接当作g。": "A solid ball also needs rotational energy; rolling acceleration is not directly g.",
+    "稳定水流下，收集水量与时间成正比；距离与时间平方成正比。": "At constant flow, collected water is proportional to time; rolling distance grows with time squared.",
+    "平滑连接的双斜面上小球滚动，释放高度与回升高度对照": "A ball rolls on smoothly joined inclines with starting and return heights compared",
+    "右坡角度": "Right incline angle",
+    "当前高度": "Current height",
+    "重力势能": "Gravitational potential",
+    "平动与转动动能": "Translation and rotation",
+    "滚动的动能包含平动和转动；无耗散时两者一起计入。": "Rolling kinetic energy includes translation and rotation; both belong in the loss-free total.",
+    "水平延伸无法靠升高消耗速度；无阻力的极限是继续匀速前进。": "A horizontal path cannot trade speed for height; the ideal limit continues at constant speed.",
+    "越缓的上坡，需要更长路程才能回到同样高度。": "A gentler return incline takes more distance to regain the same height.",
+    "研究路径": "Study path",
+    "斜面计时": "Timed incline",
+    "双斜面理想实验": "Ideal double incline",
+    "机械能观察": "Energy observation",
+    "斜面角度": "Incline angle",
+    "均匀实心球无滑动滚动，忽略耗散；缓坡计时在终点定格。模拟重建不是伽利略原始测量记录。": "A uniform solid sphere rolls without slipping or dissipation; timed runs freeze at the endpoint. This reconstruction is not Galileo’s original data."
+  },
+  "narration": {
+    "duration": 167,
+    "cues": [
+      {
+        "id": "slow",
+        "title": "用缓坡把运动变慢",
+        "titleEn": "Slow motion with a shallow slope",
+        "caption": "缓坡延长可测时间，流水提供计时参照。",
+        "captionEn": "A shallow slope lengthens the measurable time; water gives a reference.",
+        "zh": "自由下落很快，怎样在计时工具有限时研究它？让铜球沿缓坡从静止滚下，运动就慢了下来。这里重建一种流水计时的思路：放球时开始接水，到测量终点停止。只要流水足够稳定，收集的水量就与时间成正比。画面到终点后定格，展示这一次已经取得的记录。",
+        "en": "Falling is fast. How can it be studied with limited timekeeping? Release a ball from rest on a shallow ramp to slow the motion. This reconstruction uses collected water as a timer: begin collecting at release and stop at the endpoint. With stable flow, collected mass is proportional to time. The endpoint freezes to show the completed record.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "square",
+        "title": "比较等时间记录",
+        "titleEn": "Compare equal-time records",
+        "caption": "时间翻倍，路程变为四倍。",
+        "captionEn": "Doubling time produces four times the distance.",
+        "zh": "在相同倾角下，比较从静止开始的一组记录。等时间间隔里，小球走过的路程越来越大。把总时间取成两倍，距离成为四倍；取成三倍，距离成为九倍。流水把时间变成能够比较的水量，而距离记录帮助我们检查平方关系。真正实验还需要重复测量，并检查水流与释放条件是否一致。",
+        "en": "At one fixed angle, compare records from release at rest. The ball travels farther during each equal-time interval. Twice the elapsed time gives four times the distance; three times gives nine times. Water provides a measurable time proxy, while distance records test the square relationship. Physical experiments require repeated runs and consistent flow and release conditions.",
+        "seconds": 27,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "limits",
+        "title": "分清滚动与自由落体",
+        "titleEn": "Distinguish rolling from free fall",
+        "caption": "历史外推需要推理，滚动系数不能直接当作g。",
+        "captionEn": "Historical extrapolation needs reasoning; the rolling coefficient is not g.",
+        "zh": "斜面实验使缓慢运动的规律能够被测量，再与数学推理和外推结合，研究下落问题。不过，这个重建中的铜球还在转动，部分运动能量用于自转，因此滚动加速度并不就是自由落体加速度。不能把实心球的滚动公式一路推到竖直角度，就当作测得了g。实验、模型和推理各自的边界，需要保留清楚。",
+        "en": "An incline makes slower motion measurable, supporting mathematical reasoning about falling. But this reconstructed ball also rotates, so rolling acceleration is not free-fall acceleration. Extending a solid-sphere rolling formula to a vertical angle does not directly measure g. Keep the experimental observation, the model and the historical inference distinct.",
+        "seconds": 28,
+        "chapterAt": 55,
+        "at": 55.3
+      },
+      {
+        "id": "return",
+        "title": "在另一坡回到原高度",
+        "titleEn": "Regain the release height",
+        "caption": "忽略耗散，回升最高点与释放高度相同。",
+        "captionEn": "Without losses, the return peak matches the release height.",
+        "zh": "现在换一个问题：小球沿一边滚下，再沿另一边升高。保持同样的释放位置，在忽略损耗的理想条件下，它能够回到同样高度。真实轨道有阻力，回升会低一些，所以这里明确标为理想实验。中间的平滑过渡让小球连续转向，不通过一个尖角碰撞来偷偷改变它的运动。",
+        "en": "Ask a different question: a ball rolls down one side and rises on the other. From the same release position, it can regain the original height in the ideal absence of losses. Real resistance lowers the return peak, so the scene is explicitly idealized. A smooth joining curve turns the ball continuously without an unmodeled corner collision.",
+        "seconds": 27,
+        "chapterAt": 83,
+        "at": 83.3
+      },
+      {
+        "id": "horizontal",
+        "title": "把右坡逐次放缓",
+        "titleEn": "Flatten the return incline",
+        "caption": "更缓需要更远；水平极限继续匀速。",
+        "captionEn": "A gentler slope requires more distance; the horizontal limit continues uniformly.",
+        "zh": "依次改变右边的坡度，每次都从同样高度重新释放。右坡越缓，小球就要走更远，才能升回原来的高度。若右侧变成水平延伸，沿途不再升高，在忽略阻力的极限中，小球就会继续前进。这个结论来自理想化推理，不是声称已经做出一条无限长、完全没有损耗的真实轨道。",
+        "en": "Change the return slope in separate releases from the same height. A gentler incline requires a longer journey to regain that height. If it becomes a horizontal continuation, the ball no longer rises and continues moving in the ideal absence of resistance. This is a limiting argument, not a claim that an infinite, completely loss-free track has been built.",
+        "seconds": 29,
+        "chapterAt": 110,
+        "at": 110.3
+      },
+      {
+        "id": "energy",
+        "title": "后续：寻找守恒量",
+        "titleEn": "Later: seek a conserved quantity",
+        "caption": "势能与滚动动能此消彼长，总量不变。",
+        "captionEn": "Potential and rolling kinetic energy exchange while their total stays fixed.",
+        "zh": "到机械能这一章，再用同一装置寻找守恒量。下坡时高度降低，速度增加；上坡时相反。能量条把这两部分合在一起，理想总量保持不变。因为这里是滚动球，动能既包含整体前进，也包含自身转动，不能漏掉后一部分。这个能量解释补充了先前的理想实验，而不改变同高释放与回升的观察条件。",
+        "en": "In the later energy chapter, revisit the same apparatus. Going downhill trades height for speed; uphill reverses the exchange. The energy strip shows their fixed ideal total. A rolling sphere has both translational and rotational kinetic energy, so neither can be omitted. This later explanation supplements the earlier ideal experiment while keeping its release and return conditions unchanged.",
+        "seconds": 28,
+        "chapterAt": 139,
+        "at": 139.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-galileo-incline": {
+      "chapterIds": ["slow", "square", "limits"],
+      "label": {
+        "zh": "伽利略斜面计时",
+        "en": "Timed incline"
+      }
+    },
+    "required-1-double-incline": {
+      "chapterIds": ["return", "horizontal"],
+      "label": {
+        "zh": "双斜面理想实验",
+        "en": "Ideal double incline"
+      }
+    },
+    "required-2-double-incline-energy": {
+      "chapterIds": ["energy"],
+      "label": {
+        "zh": "双斜面寻找守恒量",
+        "en": "A conserved quantity"
+      }
+    }
+  }
+}

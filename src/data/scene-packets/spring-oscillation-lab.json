@@ -1,0 +1,220 @@
+{
+  "topic": {
+    "slug": "spring-oscillation-lab",
+    "name": "弹簧振动的记录与测量",
+    "title": "怎样把来回运动变成可比较的实验记录？",
+    "question": "怎样把来回运动变成可比较的实验记录？",
+    "description": "从频闪与录像到拖纸、计时和变量控制，让每一种记录对应真实装置。",
+    "color": "#bbc8aa",
+    "tag": "记录 · 周期 · 相位",
+    "related": ["pendulum", "resonance"],
+    "sources": [
+      {
+        "title": "OpenStax — Simple Harmonic Motion",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/15-1-simple-harmonic-motion"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["弹簧振动的记录与测量", "简谐运动", "周期测量", "相位", "频闪照片"],
+      "en": [
+        "Recording and Measuring Spring Oscillations",
+        "simple harmonic motion",
+        "period measurement",
+        "phase",
+        "strobe recording"
+      ]
+    }
+  },
+  "component": "src/components/experiments/SpringOscillationLab.tsx",
+  "cover": "src/components/covers/SpringOscillationLabCover.astro",
+  "translations": {
+    "弹簧振动的记录与测量": "Recording and Measuring Spring Oscillations",
+    "怎样把来回运动变成可比较的实验记录？": "How can repeated motion become comparable experimental records?",
+    "从频闪与录像到拖纸、计时和变量控制，让每一种记录对应真实装置。": "Connect strobe images, video, moving paper, timing and controlled variables to their actual apparatus.",
+    "记录 · 周期 · 相位": "Recording · Period · Phase",
+    "每隔 0.05 秒留下一个位置，再把位置放回时间轴": "Record a position every 0.05 seconds, then place it on the time axis",
+    "画面上端对齐，每隔 0.04 秒取钢球中心的位置": "Align the frame tops and locate the ball centre every 0.04 seconds",
+    "笔尖只上下振动；纸张匀速横移，把时间变成距离": "The pen oscillates vertically; uniform paper motion converts time into distance",
+    "从同一状态计满十个周期，再把振幅减半比较": "Time ten cycles from the same state, then compare at half amplitude",
+    "第二球被托住到释放时刻；之后两球周期相同，步调可以不同": "The second ball is supported until release; equal periods can have different phases",
+    "保持同一根弹簧，只改变悬挂质量": "Retain the same spring and change only the hanging mass",
+    "取同一根均匀弹簧的不同长度：越短，劲度系数越大": "Select lengths of one uniform spring: shorter segments are stiffer",
+    "笔尖沿竖直方向振动，纸张向左匀速运动，纸上留下波形": "A vertically moving pencil leaves a trace on paper moving uniformly left",
+    "弹簧的真实长度由静态伸长和瞬时位移共同确定，球心位置对应记录点": "Spring length combines static extension and instantaneous displacement; ball centres define recorded points",
+    "相同位置样本绘成的位移时间图；曲线不是小球在空间里的路径": "The same position samples form a displacement-time graph, not the ball’s spatial path",
+    "模型时间": "Model time",
+    "理想模型计时数据；不是实体实验测得的结果": "Ideal model timing data, not measurements from physical equipment",
+    "选择记录与对照实验": "Choose a recording or comparison",
+    "水平频闪": "Horizontal strobe",
+    "竖直录像": "Vertical video",
+    "铅笔拖纸": "Pencil and paper",
+    "振幅与周期": "Amplitude and period",
+    "延迟释放": "Delayed release",
+    "改变质量": "Change the mass",
+    "改变弹簧长度": "Change spring length",
+    "振幅": "Amplitude",
+    "第二球释放延迟": "Second-ball release delay",
+    "纸张速度": "Paper speed",
+    "悬挂质量": "Hanging mass",
+    "保留的弹簧长度比例": "Retained spring-length fraction",
+    "累计计时误差": "Total timing error",
+    "逐帧观察实验": "Scrub the experiment",
+    "保存本次计时": "Save this timing",
+    "记录方法与模型边界": "Recording methods and model limits",
+    "忽略弹簧质量与阻力，采用线性胡克定律。竖直装置的原点是悬挂后静止的球心，不是弹簧原长末端。均匀弹簧截短时有效圈数随长度变化，劲度系数与所取长度成反比。照片、计时和曲线均来自同一轨迹；真实记录仍有标尺、帧率、视差与启停误差。": "The model uses a light Hookean spring without damping. The vertical origin is the loaded equilibrium centre, not the unstretched spring end. For a uniform spring, active coil count changes with length and stiffness is inversely proportional to the selected length. Frames, timings and curves share one trajectory; physical recording still has scale, frame-rate, parallax and start/stop errors."
+  },
+  "narration": {
+    "duration": 218,
+    "cues": [
+      {
+        "id": "horizontal-frames",
+        "title": "水平频闪记录",
+        "titleEn": "Horizontal strobe recording",
+        "caption": "水平频闪记录。",
+        "captionEn": "Horizontal strobe recording.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "把带孔的小球套在光滑水平杆上，连接轻弹簧。每隔零点零五秒取一次位置，下面的记录保留相同的时间间隔。把球心相对平衡位置的位移放到时间轴上，就得到振动图像。小球实际仍沿直线来回运动，图上的曲线不是它在空间中的运动路径。",
+        "en": "A light spring moves a pierced ball along a smooth horizontal rod. Record its position every zero point zero five seconds. The frames retain equal time intervals. Place displacement from equilibrium against each sampling time to obtain the oscillation graph. The ball still travels along a straight line; the curve is not its spatial path."
+      },
+      {
+        "id": "vertical-frames",
+        "title": "竖直录像记录",
+        "titleEn": "Vertical video recording",
+        "caption": "竖直录像记录。",
+        "captionEn": "Vertical video recording.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "换成竖直悬挂的钢球，向上托起后释放。相机每隔零点零四秒拍一帧，把照片上端对齐，再比较钢球中心的位置。零位是钢球悬挂后静止的位置。重力已经让弹簧静态伸长，因此不能把弹簧原长的末端当成振动的零位。",
+        "en": "Hang a steel ball vertically, lift it and release. The camera takes a frame every zero point zero four seconds. Align the top edges and locate each ball centre. The origin is the loaded equilibrium position. Gravity has already stretched the spring, so its unstretched end is not the displacement origin."
+      },
+      {
+        "id": "pencil-trace",
+        "title": "铅笔与匀速拖纸",
+        "titleEn": "Pencil and moving paper",
+        "caption": "铅笔与匀速拖纸。",
+        "captionEn": "Pencil and moving paper.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "笔尖只沿竖直方向往复运动，另一个人把纸向左匀速拉动，纸上便留下波形。这里纸速是每秒五厘米，所以纸面横向五厘米对应一秒。改变纸速会拉长或压缩图像的横向尺度，但不会改变笔尖本身振动的周期。",
+        "en": "The pencil moves only vertically while a second person pulls the paper left at constant speed, leaving a trace. At five centimetres per second, five centimetres along the paper represents one second. Changing paper speed stretches or compresses the horizontal scale without changing the pencil’s oscillation period."
+      },
+      {
+        "id": "amplitude-full",
+        "title": "累计十次计时",
+        "titleEn": "Time ten oscillations",
+        "caption": "累计十次计时。",
+        "captionEn": "Time ten oscillations.",
+        "seconds": 22,
+        "chapterAt": 72,
+        "at": 72.4,
+        "zh": "把钢球从向下拉开的位置释放，从同一个运动状态开始计时，计满十个全振动。完整往返才算一次，不能把每次经过零位都算成一个周期。累计时间除以十，得到本次周期。较长的累计时间有助于减小启停反应对单个周期的影响。",
+        "en": "Pull the ball down, release it, and time ten complete oscillations from the same motion state. A full return counts once; every passage through equilibrium is not a complete period. Divide total time by ten. Timing more cycles reduces the effect of start and stop reactions on one period."
+      },
+      {
+        "id": "amplitude-half",
+        "title": "振幅减半",
+        "titleEn": "Halve the amplitude",
+        "caption": "振幅减半。",
+        "captionEn": "Halve the amplitude.",
+        "seconds": 22,
+        "chapterAt": 94,
+        "at": 94.4,
+        "zh": "保持钢球质量和同一根弹簧不变，把初始振幅减半，再计十次。你会看到运动范围缩小，计得的周期保持相同。这一结论适用于线性回复力的简谐运动。真实弹簧在大变形时可能偏离胡克定律，因此实验还需要检查适用范围。",
+        "en": "Retain the mass and spring, halve the initial amplitude, and time another ten cycles. The range becomes smaller while the period stays the same. This result applies to simple harmonic motion with a linear restoring force. Real springs can depart from Hooke’s law at large deformations, so experiments must check that range."
+      },
+      {
+        "id": "phase-together",
+        "title": "同时释放",
+        "titleEn": "Paired release",
+        "caption": "同时释放。",
+        "captionEn": "Release together.",
+        "seconds": 22,
+        "chapterAt": 116,
+        "at": 116.4,
+        "zh": "把两个相同弹簧上的小球拉到同一高度，同时释放。它们一起到达端点、一起经过平衡位置，而且运动方向也相同。相同频率说明重复运动的快慢相同；此时连运动步调也一致，因此两球具有相同的相位。",
+        "en": "Pull two identical spring-mounted balls to the same height and release them together. They reach turning points together, cross equilibrium together and travel in the same direction. Equal frequency describes how often the motion repeats. Here the timing within each cycle also agrees, so their phases match."
+      },
+      {
+        "id": "phase-delay",
+        "title": "延迟四分之一周期",
+        "titleEn": "Delay by a quarter-period",
+        "caption": "延迟四分之一周期。",
+        "captionEn": "Delay by a quarter-period.",
+        "seconds": 24,
+        "chapterAt": 138,
+        "at": 138.4,
+        "zh": "这次先释放左球，右球仍被托住。等左球第一次到达平衡位置，再释放右球，间隔正好是四分之一周期。之后两球的周期仍然相同，但端点和过零时刻都错开。右球的振动落后四分之一周期，不能因为频率相同就说相位也相同。",
+        "en": "Release the left ball while the right remains supported. Release the right when the left first reaches equilibrium, one quarter-period later. Both still have the same period, but their turning points and equilibrium crossings differ. The right oscillator lags by a quarter-cycle; equal frequency does not require equal phase."
+      },
+      {
+        "id": "mass-research",
+        "title": "保持弹簧改变质量",
+        "titleEn": "Change mass with one spring",
+        "caption": "保持弹簧改变质量。",
+        "captionEn": "Change mass with one spring.",
+        "seconds": 28,
+        "chapterAt": 162,
+        "at": 162.4,
+        "zh": "进入课题研究，先保留同一根弹簧，依次改变悬挂质量。每组都重新确定平衡位置，计十个全振动，完成后才把结果写入表格。质量增加时，周期变长，周期的平方与质量成正比。这里显示的是理想模型计时数据，真正实验需要称量负载，并记录自己的测量结果。",
+        "en": "For the research project, retain one spring and change only the hanging mass. Establish the new equilibrium, time ten complete oscillations, and enter the result after timing finishes. Increasing mass lengthens the period; period squared is proportional to mass. These are ideal model timings. A physical experiment requires weighing the load and recording independent measurements."
+      },
+      {
+        "id": "length-research",
+        "title": "保持质量改变弹簧长度",
+        "titleEn": "Change spring length at fixed mass",
+        "caption": "保持质量改变弹簧长度。",
+        "captionEn": "Change spring length at fixed mass.",
+        "seconds": 28,
+        "chapterAt": 190,
+        "at": 190.4,
+        "zh": "保持负载质量不变，取同一根均匀弹簧的不同长度。较短的一段有效圈数较少，因此劲度系数更大，振动周期更短。每一组仍然从完整计时得到周期，不把计算公式直接当成测量。这个模型忽略弹簧自身质量，实际研究还要用静态拉伸校准各段的劲度系数。",
+        "en": "Retain the load mass and select different lengths of the same uniform spring. A shorter segment has fewer active coils, greater stiffness and a shorter period. Each row still comes from complete timing, rather than treating a formula as a measurement. The model neglects spring mass; real research should also calibrate each segment’s stiffness using static extension."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-spring-motion-recording": {
+      "chapterIds": ["horizontal-frames", "vertical-frames"],
+      "label": {
+        "zh": "记录弹簧振子的位移—时间图像",
+        "en": "Record spring displacement against time"
+      }
+    },
+    "e1-pencil-trace": {
+      "chapterIds": ["pencil-trace"],
+      "label": {
+        "zh": "用铅笔与匀速拖纸记录振动图像",
+        "en": "Record oscillation with moving paper"
+      }
+    },
+    "e1-spring-period-amplitude": {
+      "chapterIds": ["amplitude-full", "amplitude-half"],
+      "label": {
+        "zh": "测量小球振动的周期",
+        "en": "Measure an oscillator period"
+      }
+    },
+    "e1-oscillator-phase": {
+      "chapterIds": ["phase-together", "phase-delay"],
+      "label": {
+        "zh": "观察两个小球的振动情况",
+        "en": "Compare oscillator phase"
+      }
+    },
+    "e1-spring-period-research": {
+      "chapterIds": ["mass-research", "length-research"],
+      "label": {
+        "zh": "弹簧振子运动周期的实验研究",
+        "en": "Research spring oscillator periods"
+      }
+    }
+  }
+}

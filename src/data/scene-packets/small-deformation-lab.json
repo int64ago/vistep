@@ -1,0 +1,116 @@
+{
+  "topic": {
+    "slug": "small-deformation-lab",
+    "name": "微小形变观察",
+    "title": "桌面几乎看不出弯曲，光点为什么动了？",
+    "question": "桌面几乎看不出弯曲，光点为什么动了？",
+    "description": "让两面镜与同一条弹性梁联动，用真实反射光路把微小转角转成远处光点的位移。",
+    "color": "#b8ba9e",
+    "tag": "形变 · 反射 · 放大",
+    "related": ["retroreflector", "suspension-center-of-gravity"],
+    "sources": [
+      {
+        "title": "University of Wisconsin — Optical Lever",
+        "url": "https://www.physics.wisc.edu/instructional/phys109/yoshi/physlab/testing/working207.pdf"
+      },
+      {
+        "title": "Purdue University — Beam Formulas",
+        "url": "https://engineering.purdue.edu/~ce474/Docs/DA6-BeamFormulas.pdf"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["微小形变观察", "双平面镜", "桌面形变", "光杠杆"],
+      "en": ["Seeing small deformations", "two mirrors", "optical lever", "beam deflection"]
+    }
+  },
+  "component": "src/components/experiments/SmallDeformationLab.tsx",
+  "cover": "src/components/covers/SmallDeformationLabCover.astro",
+  "translations": {
+    "微小形变观察": "Seeing small deformations",
+    "桌面几乎看不出弯曲，光点为什么动了？": "Why does the light spot move when the tabletop barely bends?",
+    "让两面镜与同一条弹性梁联动，用真实反射光路把微小转角转成远处光点的位移。": "Couple two mirrors to one elastic beam and trace reflections that turn tiny tilts into a visible spot displacement.",
+    "形变 · 反射 · 放大": "Deform · Reflect · Amplify",
+    "先记下没有按压时的光点位置": "Record the unloaded light spot",
+    "桌面略微弯曲，光点离开原位": "A tiny bend moves the light spot",
+    "把墙移远，光点变化更明显": "Move the wall farther to enlarge the signal",
+    "松开压力，光点回到原位": "Release the force and return to zero",
+    "双镜光路 · 微小形变": "Two mirrors · Tiny deformations",
+    "同一束光先到右镜，再到左镜，最后射向远处墙面": "One ray reaches the right mirror, the left mirror, then the distant wall",
+    "按压力": "Press force",
+    "连续光路通向墙面": "The optical path continues to the wall",
+    "墙上光点 · 局部放大": "Wall spot · Close view",
+    "光点相对未受力零位的毫米位移": "Spot displacement in millimetres from the unloaded zero",
+    "墙的位置": "Wall position",
+    "桌面形变剖面 · 纵向放大500倍": "Beam profile · Vertical deformation ×500",
+    "中央下沉": "Central deflection",
+    "零位记录未受力状态；看不出变化不等于不会变形。": "The zero records the unloaded state; an invisible change can still be real.",
+    "微小转角改变反射方向，长光程把角度变化变成可见位移。": "Tiny tilts change the reflected direction; a long path turns angle into visible displacement.",
+    "桌面简化为中央受力的弹性梁；镜面与光线按同一几何求交，数值为教学设定。": "The table is an elastic beam under a central load. Rays meet the computed mirrors; numerical parameters are illustrative."
+  },
+  "narration": {
+    "duration": 110,
+    "cues": [
+      {
+        "id": "zero",
+        "title": "先记录光点零位",
+        "titleEn": "Record the zero",
+        "caption": "没有按压时，记录光点最初的位置。",
+        "captionEn": "Record the initial unloaded spot.",
+        "zh": "桌面看起来很坚固，受到按压时却仍可能发生微小形变。先不要施力，观察这束光的完整路线：从光源到右侧镜面，再折回左侧镜面，最后射向远处的墙。在墙上记录光点的初始位置。有了这个零位，之后的变化才有可靠的比较基准，而不是只凭印象判断。",
+        "en": "A tabletop looks rigid, yet pressure may deform it slightly. Begin without pressing. Follow one continuous ray from the source to the right mirror, back to the left mirror, then toward the distant wall. Record its initial spot. This zero gives later changes a reliable reference instead of relying on memory.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "press",
+        "title": "按压两镜之间",
+        "titleEn": "Press between the mirrors",
+        "caption": "桌面局部倾斜，使反射方向发生变化。",
+        "captionEn": "Local table slopes change the reflected direction.",
+        "zh": "现在缓慢按压两面镜之间的桌面。主图里的弯曲很难直接看见，但镜架会跟随桌面的局部方向略微倾斜。这一点转角改变了反射光的方向，墙上光点开始离开零位。下方把纵向形变明确放大五百倍，帮助你看见原因；它不是桌面真的弯出了图中那么大的幅度。",
+        "en": "Press gently between the mirrors. The bend is difficult to see in the main view, but the mirror supports tilt with the local tabletop slope. This small rotation changes the reflected direction and moves the spot from zero. The lower profile explicitly magnifies vertical deformation five hundred times to reveal the cause; that is not the actual bending amplitude.",
+        "seconds": 28,
+        "chapterAt": 26,
+        "at": 26.3
+      },
+      {
+        "id": "distance",
+        "title": "让光走得更远",
+        "titleEn": "Lengthen the optical path",
+        "caption": "按压力不变，墙移远后光点偏移更大。",
+        "captionEn": "At fixed force, a farther wall gives a larger spot displacement.",
+        "zh": "保持按压力不变，单独把观察墙移远。桌面的下沉量没有增加，两面镜的方向也没有继续改变，但光点相对零位的偏移更大了。这说明放大来自观察几何：微小角度经过更长的路程，就能形成更容易分辨的位移。我们放大的是读数信号，不是被研究物体本身的形变。",
+        "en": "Keep the force fixed and move only the wall farther away. The table does not sink farther and the mirrors do not tilt more, but the displacement from zero increases. The amplification comes from observation geometry: a tiny angular difference accumulates over a longer path. We enlarge the measurable signal, not the deformation of the object.",
+        "seconds": 28,
+        "chapterAt": 54,
+        "at": 54.3
+      },
+      {
+        "id": "release",
+        "title": "松手检验恢复",
+        "titleEn": "Release and check recovery",
+        "caption": "弹性范围内，卸载后回到初始状态。",
+        "captionEn": "Within the elastic model, unloading restores the initial state.",
+        "zh": "最后松开按压力。桌面恢复，镜面回到原来的方向，光点也回到零位。重复加载和卸载，可以检查变化是否能够恢复。这里把桌面简化为弹性梁，数值只是教学设定。教材同页还介绍有机玻璃的光学花纹法，那是另一种显示内部受力的方法，不能把它和两面镜的反射放大混为一谈。",
+        "en": "Release the pressure. The table recovers, the mirrors return to their original orientations, and the spot returns to zero. Repeated loading checks reversibility. This scene uses an illustrative elastic beam model. The textbook also mentions optical patterns in loaded acrylic: a different way to display internal stress, distinct from the two-mirror amplification shown here.",
+        "seconds": 28,
+        "chapterAt": 82,
+        "at": 82.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-small-deformation": {
+      "chapterIds": ["zero", "press", "distance", "release"],
+      "label": {
+        "zh": "观察物体的微小形变",
+        "en": "Observe small deformations"
+      }
+    }
+  }
+}

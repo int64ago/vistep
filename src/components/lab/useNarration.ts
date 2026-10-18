@@ -11,6 +11,7 @@ export function useNarration(
   run: number,
   onEnded: () => void,
   track?: Soundtrack,
+  startTime = 0,
 ) {
   const audio = useRef<HTMLAudioElement | null>(null);
   const source = useRef<ReturnType<typeof narrationSource> | null>(null);
@@ -23,7 +24,7 @@ export function useNarration(
   const [blocked, setBlocked] = useState(false);
   const alive = useRef(true);
   const desired = useRef(false);
-  const targetTime = useRef(0);
+  const targetTime = useRef(startTime);
   const makeAudio = () => {
     if (audio.current || !track) return audio.current;
     const a = new Audio(track.src);
@@ -152,8 +153,8 @@ export function useNarration(
     };
   }, [slug]);
   useEffect(() => {
-    seek(0);
-  }, [run]);
+    seek(startTime);
+  }, [run, startTime]);
   useEffect(() => {
     const a = audio.current;
     if (!a) return;

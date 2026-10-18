@@ -1,0 +1,193 @@
+.arm-motion-lab {
+  max-width: 970px;
+  padding: clamp(18px, 4vw, 40px);
+  margin: auto;
+  color: #657957;
+}
+.arm-motion-lab header {
+  text-align: center;
+}
+.arm-motion-lab header p {
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 9px;
+}
+.arm-motion-lab header > span {
+  font-size: 16px;
+  color: #8d997d;
+}
+.arm-motion-stage {
+  max-width: 590px;
+  margin: 12px auto;
+}
+.arm-motion-stage svg {
+  width: 100%;
+  display: block;
+}
+.arm-motion-source {
+  max-width: 780px;
+  margin: 15px auto;
+  text-align: center;
+}
+.arm-motion-source p {
+  font-size: clamp(19px, 2.4vw, 25px);
+  line-height: 1.6;
+  color: #9b8763;
+  overflow-wrap: anywhere;
+  margin: 12px 0;
+}
+.arm-motion-source > span {
+  font-size: 16px;
+  line-height: 1.7;
+  display: block;
+}
+.arm-motion-readings {
+  max-width: 760px;
+  display: flex;
+  justify-content: center;
+  gap: 14px 24px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin: 16px auto;
+}
+.arm-motion-readings span {
+  display: flex;
+  gap: 10px;
+}
+.arm-motion-readings b {
+  font-weight: 400;
+  color: #a08c66;
+}
+.arm-motion-readings > p {
+  flex-basis: 100%;
+  text-align: center;
+  margin: 8px 0;
+  color: #929b80;
+  line-height: 1.65;
+}
+.arm-motion-cause,
+.arm-motion-note {
+  max-width: 760px;
+  margin: 24px auto;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.arm-motion-note {
+  font-size: 16px;
+  color: #8f997d;
+  margin-bottom: 0;
+}
+.arm-motion-vectors {
+  max-width: 540px;
+  margin: 16px auto;
+}
+.arm-motion-vectors p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.6;
+}
+.arm-motion-vectors svg {
+  display: block;
+  width: 100%;
+}
+.arm-motion-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 24px auto;
+}
+.arm-motion-controls > .segmented:first-child {
+  grid-column: 1/-1;
+}
+.arm-motion-controls .segmented {
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-self: center;
+}
+@media (max-width: 640px) {
+  .arm-motion-lab {
+    padding: 20px 12px;
+  }
+  .arm-motion-stage {
+    margin: 12px -7px;
+  }
+  .arm-motion-readings {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .arm-motion-readings span {
+    justify-content: space-between;
+  }
+  .arm-motion-controls {
+    grid-template-columns: 1fr;
+  }
+  .arm-motion-source p {
+    font-size: 20px;
+  }
+  .arm-motion-cause {
+    font-size: 17px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .arm-motion-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .arm-motion-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .arm-motion-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .arm-motion-lab > header > span,
+  .showcase[data-mode='watch'] .arm-motion-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .arm-motion-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .arm-motion-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .arm-motion-stage {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .arm-motion-stage svg {
+    max-height: 235px;
+  }
+  .showcase[data-mode='watch'] .arm-motion-readings {
+    margin: 7px auto;
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .arm-motion-readings > p,
+  .showcase[data-mode='watch'] .arm-motion-source > span {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .arm-motion-source {
+    margin: 6px auto;
+  }
+  .showcase[data-mode='watch'] .arm-motion-source p {
+    font-size: 16px;
+    margin: 5px 0;
+    line-height: 1.4;
+  }
+  .showcase[data-mode='watch'] .arm-motion-vectors {
+    margin: 5px 0;
+  }
+  .showcase[data-mode='watch'] .arm-motion-vectors > p {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .arm-motion-vectors svg {
+    max-height: 110px;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .arm-motion-stage svg text {
+    font-size: 28px;
+  }
+}

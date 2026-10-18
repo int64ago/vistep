@@ -1,0 +1,7 @@
+# Textbook sensors and control
+
+Twelve chapters264s; eight textbook mappings include shared thermistor bath range. Actual measurement elements: LDR comb surface with light/shade and ordinary-resistor control, NTC with coldwater/hand and insulated waterbath/thermometer, reed insideglass; actual control stages: door relay with NC alarm/NO LED, loaded transistor divider with LED currentlimit or relay/flyback/lampload, bimetal sensingcontact driving NC heaterrelay; pressure fixture/cylinder/pad/hooks and downstream sorter.
+
+Sources: textbook111–114 pressure dataset16 rows (data transcribed exactly), TDK NTC technical note B equation, Littelfuse reed operation. All component parameters representative. LDR powerlaw, staticreedthreshold without hysteresis, NTC10k at25C B3950, loadedBJT approximatebeta120, fixedLEDthreshold1.8V. Bimetal equal thickness/modulus approximation curvature1.5DeltaAlphaDeltaT/h, enlarged displacement calibratedcontactat60C mechanicalstop. Pressure uses linear interpolation with local secants rather than textbook's smoothed tangent fit. Initialfixture0.5N included. Sorterholding electronics omittedexplicitly.
+
+Models tested for referencevalue, controls, reversealarm logic constituent, photoresponse counterexample, pressuredatapreservation andsensitivity trend. View one apparatus at a time; optional chart only for quantitativebath/pressure. Full visual, apparatus wiring crossreview, audio listening and physicalphone remain not-run and parent acceptance. No shared registry or audio writes.

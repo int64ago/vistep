@@ -1,0 +1,44 @@
+---
+import { BUZZER_DEFAULT, buzzerFronts, buzzerObservation } from '../../models/doppler-lab';
+const time = 0.035,
+  fronts = buzzerFronts(time),
+  s = buzzerObservation(time),
+  px = (x: number) => 100 + 40 * x,
+  py = (y: number) => 140 + 40 * y;
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <svg x="18" y="28" width="324" height="214" viewBox="18 28 324 214" overflow="hidden">
+    <rect x="18" y="28" width="324" height="214" rx="14" fill="#edf0df"></rect>
+    {
+      fronts.map((f) => (
+        <circle cx={px(f.x)} cy={py(f.y)} r={f.radius * 40} stroke="#a2b48c" opacity=".5" />
+      ))
+    }
+    <circle cx="100" cy="140" r={BUZZER_DEFAULT.radius * 40} stroke="#b6c3a5" stroke-dasharray="3 5"
+    ></circle>
+    <circle cx="100" cy="140" r="13" fill="#bdcca9" stroke="#95ac7e"></circle>
+    <path
+      d={`M100 140L${px(s.current.x)} ${py(s.current.y)}`}
+      stroke="#ac9566"
+      stroke-width="5"
+      stroke-linecap="round"></path>
+    <rect
+      x={px(s.current.x) - 15}
+      y={py(s.current.y) - 7}
+      width="18"
+      height="14"
+      rx="3"
+      fill="#cbbd96"
+      stroke="#9c8b64"></rect>
+    <circle
+      cx={px(s.current.x)}
+      cy={py(s.current.y)}
+      r="8"
+      fill="#90a879"
+      stroke="#6f8a5f"
+      stroke-width="2"></circle>
+    <circle cx="300" cy="140" r="8" fill="#e6d2ab" stroke="#ab9367"></circle>
+    <path d="M289 156q11-8 22 0" stroke="#b69d72" stroke-width="6" stroke-linecap="round"></path>
+  </svg>
+</svg>

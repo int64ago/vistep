@@ -1,0 +1,81 @@
+.fo-film {
+  width: min(100%, 700px);
+  margin: auto;
+  color: #81977f;
+}
+.fo-caption {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  text-align: center;
+  margin: 0 16px 8px;
+}
+.fo-apparatus,
+.fo-plot {
+  width: min(100%, 520px);
+  height: auto;
+  display: block;
+  margin: auto;
+}
+.fo-apparatus text,
+.fo-plot text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #8c9d82;
+}
+.fo-reading {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-size: 16px;
+  padding: 8px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.fo-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 8px 14px;
+}
+.fo-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  background: #edf2e8;
+  border-radius: 24px;
+  margin: 22px 0;
+}
+.fo-controls button {
+  min-height: 44px;
+}
+.fo-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 18px 14px;
+}
+.fo-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .fo-controls {
+    padding: 18px 14px;
+  }
+  .fo-apparatus text,
+  .fo-plot text {
+    font-size: 25px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.fo-film[data-watch] > .fo-kicker,
+.fo-film[data-watch] > .fo-caption,
+.fo-film[data-watch] > details {
+  display: none;
+}
+.fo-film[data-watch] .fo-note {
+  display: none;
+}
+.fo-film[data-watch] .fo-reading {
+  padding: 5px 10px;
+}

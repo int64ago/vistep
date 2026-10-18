@@ -1,0 +1,193 @@
+{
+  "topic": {
+    "slug": "atomic-spectrum-lab",
+    "name": "光谱中的原子证据",
+    "title": "把光展开，怎样认出物质与理论的细小偏差？",
+    "question": "把光展开，怎样认出物质与理论的细小偏差？",
+    "description": "从食盐焰色、氢线光谱和太阳暗线，走到精密测量发现的能级差。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["photoelectric-lab", "prism-dispersion"],
+    "sources": [
+      {
+        "title": "NIST — Strong lines of sodium",
+        "url": "https://www.physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm"
+      },
+      {
+        "title": "NIST — Critical compilation of hydrogen spectral data",
+        "url": "https://www.nist.gov/publications/critical-compilation-experimental-data-spectral-lines-and-energy-levels-hydrogen"
+      },
+      {
+        "title": "Lamb and Retherford — Fine structure of the hydrogen atom (1947)",
+        "url": "https://web.mit.edu/8.13/8.13c/references-fall/spectroscopy/lamb-1947.pdf"
+      },
+      {
+        "title": "Willis Lamb — Nobel lecture",
+        "url": "https://www.nobelprize.org/uploads/2018/06/lamb-lecture.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/AtomicSpectrumLab.tsx",
+  "cover": "src/components/covers/AtomicSpectrumLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["光谱中的原子证据", "把光展开，怎样认出物质与理论的细小偏差？", "近代物理实验"],
+      "en": [
+        "Atomic evidence in spectra",
+        "What can a spectrum reveal about matter and theory?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "光谱中的原子证据": "Atomic evidence in spectra",
+    "把光展开，怎样认出物质与理论的细小偏差？": "What can a spectrum reveal about matter and theory?",
+    "从食盐焰色、氢线光谱和太阳暗线，走到精密测量发现的能级差。": "Follow sodium flames, hydrogen lines and solar absorption into precision spectroscopy.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 252,
+    "cues": [
+      {
+        "id": "flame",
+        "title": "先看火焰的颜色",
+        "titleEn": "Observe the flame",
+        "caption": "钠原子发出的强黄光，让食盐焰色显得鲜明。",
+        "captionEn": "Strong yellow emission from sodium gives the flame its characteristic color.",
+        "zh": "把少量食盐放入火焰，受激的钠原子发出显著的黄光。颜色是第一条线索，但肉眼把许多波长混合在一起。画面从火焰取出一束光，经过狭缝再进入分光装置；这才把颜色观察变成波长的比较。",
+        "en": "A small amount of salt gives a flame a strong yellow color as excited sodium atoms emit light. Color provides a clue, but the eye combines wavelengths. A slit selects light from the flame and sends it through the spectroscope, turning a color impression into a wavelength comparison.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "doublet",
+        "title": "把黄光再展开",
+        "titleEn": "Resolve the yellow doublet",
+        "caption": "放大黄色区域，两条相邻的钠谱线才被分开。",
+        "captionEn": "Enlarge the yellow region to separate two nearby sodium lines.",
+        "zh": "展开黄色附近的波长刻度，原来的一束黄光分成两条邻近的谱线。这里采用钠的两条可见强线，空气中的波长约为五百八十九点零和五百八十九点六纳米。光谱线位置可以识别元素；线宽和相对亮度只作教学显示，不是火焰的实测结果。",
+        "en": "Expand the wavelength scale around yellow. Two nearby sodium lines become distinguishable, at about five hundred eighty-nine point zero and five hundred eighty-nine point six nanometers in air. Their positions help identify the element. Displayed widths and relative brightness are illustrative rather than measured flame data.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "hydrogen-lines",
+        "title": "氢灯只留下几条亮线",
+        "titleEn": "Hydrogen leaves separate bright lines",
+        "caption": "可见的巴耳末谱线，来自不同高能级向同一低能级的跃迁。",
+        "captionEn": "Visible Balmer lines correspond to transitions ending at the same lower level.",
+        "zh": "换成低压氢放电灯，分光后不再是连续的彩带，而是几条分立亮线。这里展示巴耳末系中四条可见谱线，都以第二能级为终点。画面以不同的入射颜色表示各条谱线，并不表示氢原子内存在这些彩色轨道。",
+        "en": "Replace the flame with a low-pressure hydrogen discharge lamp. The spectrum contains separate bright lines rather than a continuous band. Four visible Balmer lines are shown, all ending at the second energy level. Their colors identify wavelengths; they do not depict colored orbits inside the atom.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "hydrogen-series",
+        "title": "用共同规律比较谱线",
+        "titleEn": "Compare lines through one relation",
+        "caption": "改变初始能级，谱线位置按同一里德伯关系变化。",
+        "captionEn": "Changing the upper level moves the selected line according to one Rydberg relation.",
+        "zh": "依次选择第三到第六能级，观察被选中的谱线位置。能级越高，相邻谱线越密，逐渐趋向谱系极限。数值由同一个里德伯公式计算，使用真空波长；它忽略精细结构等小修正，因此不能拿来解释下一段的精密谱线差异。",
+        "en": "Select upper levels three through six and follow the highlighted wavelength. Successive lines approach one another toward the series limit. One Rydberg relation calculates the vacuum wavelengths. This approximation omits fine structure and smaller corrections, so it cannot explain the precision discrepancy examined later.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "solar-dark",
+        "title": "连续光谱里缺了哪些颜色",
+        "titleEn": "Find the missing wavelengths",
+        "caption": "太阳光谱中的暗线，是特定波长被较冷气体吸收的结果。",
+        "captionEn": "Dark solar lines mark wavelengths absorbed by cooler gas.",
+        "zh": "太阳的可见光近似形成连续背景，穿过外层较冷的气体后，某些波长被吸收，形成夫琅禾费暗线。这里突出显示与氢的巴耳末谱线对应的位置，真实太阳光谱还有大量其他元素的谱线。暗线不是光完全消失，而是相对邻近波长变弱。",
+        "en": "Sunlight forms an approximately continuous visible background. Cooler gas in the outer layers absorbs selected wavelengths, producing Fraunhofer lines. This view highlights positions corresponding to hydrogen Balmer lines; the real solar spectrum includes many other elements. A dark line is reduced intensity relative to nearby wavelengths, not necessarily zero light.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "solar-match",
+        "title": "把实验室亮线叠上去",
+        "titleEn": "Compare laboratory emission",
+        "caption": "同一元素的发射线与吸收线，在相应跃迁波长处对齐。",
+        "captionEn": "Emission and absorption from the same transition align in wavelength.",
+        "zh": "把实验室氢灯的谱线叠在太阳暗线之上，相同跃迁对应的位置对齐。这样就能从远处的光推断物质组成，不必把太阳物质带回实验室。实际分析还需要校准、线形以及多种元素的比对，本页只保留位置匹配这一证据链。",
+        "en": "Overlay the laboratory hydrogen lines on the selected solar absorption lines. Matching transitions align in wavelength, allowing composition to be inferred from distant light. Real analysis also requires calibration, line profiles and comparisons among many elements. This demonstration isolates the evidence provided by matching positions.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "precision",
+        "title": "精密测量暴露小偏差",
+        "titleEn": "Precision reveals a discrepancy",
+        "caption": "早期精密氢光谱发现的偏差，超出了简单能级公式。",
+        "captionEn": "Early precision measurements revealed departures from simple level formulas.",
+        "zh": "教材提到谢玉铭与休斯敦在一九三三年对氢光谱的精密研究。更细的测量暴露出已有理论未充分解释的差异。这里先比较简化理论中重合的能级与后来确认的微小分裂；这张能级图是教学整理，不冒充当年原始光谱。",
+        "en": "The textbook mentions the precision hydrogen measurements by Houston and Hsieh in nineteen thirty-three. Such measurements exposed discrepancies beyond the existing description. We first compare coincident levels in a simplified prediction with the small separation later established. This teaching diagram is not a reproduction of their original optical data.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "lamb-scan",
+        "title": "后来用微波直接比较能级",
+        "titleEn": "Later probe the levels with microwaves",
+        "caption": "扫描微波频率，亚稳态氢原子的存活信号在共振附近下降。",
+        "captionEn": "A microwave scan reduces the surviving metastable-atom signal near resonance.",
+        "zh": "到一九四七年，兰姆与雷瑟福采用微波方法研究氢能级。亚稳态原子经过微波场，共振会把它们转到迅速衰变的状态，下游探测到的亚稳态信号减弱。扫描频率时出现的凹口，提供了两个能级之间差值的证据。这与早期光学实验是不同装置。",
+        "en": "In nineteen forty-seven, Lamb and Retherford studied hydrogen with microwaves. Resonant radiation transfers metastable atoms into a rapidly decaying state, reducing the surviving metastable signal downstream. A dip during the frequency scan identifies the energy separation. This is a different apparatus from the earlier optical measurements.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      },
+      {
+        "id": "lamb-gap",
+        "title": "频率差对应能量差",
+        "titleEn": "Convert frequency to energy separation",
+        "caption": "共振频率约为1058 MHz；曲线宽度与深度在这里仅作示意。",
+        "captionEn": "The separation is about 1058 MHz; this curve’s width and depth are illustrative.",
+        "zh": "把频率停在共振附近，亚稳态探测信号最低。频率约为一千零五十八兆赫，通过普朗克关系对应很小的能量差。页面用洛伦兹形曲线说明扫描方法，宽度和深度不是历史测量数据。精密实验的价值，正是让原本隐藏在近似之下的差别成为可以检验的证据。",
+        "en": "Stop near resonance, where the metastable signal is lowest. A frequency of about one thousand fifty-eight megahertz corresponds through Planck’s relation to a small energy separation. The Lorentzian width and depth are illustrative, not historical data. Precision measurements make differences hidden by an approximation experimentally testable.",
+        "seconds": 28,
+        "chapterAt": 224,
+        "at": 224.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-salt-flame": {
+      "chapterIds": ["flame", "doublet"],
+      "label": {
+        "zh": "食盐焰色",
+        "en": "Sodium flame"
+      }
+    },
+    "e3-hydrogen-spectrum": {
+      "chapterIds": ["hydrogen-lines", "hydrogen-series"],
+      "label": {
+        "zh": "氢线光谱",
+        "en": "Hydrogen spectrum"
+      }
+    },
+    "e3-fraunhofer-spectral-analysis": {
+      "chapterIds": ["solar-dark", "solar-match"],
+      "label": {
+        "zh": "太阳暗线",
+        "en": "Solar absorption"
+      }
+    },
+    "e3-precision-hydrogen-spectrum": {
+      "chapterIds": ["precision", "lamb-scan", "lamb-gap"],
+      "label": {
+        "zh": "精密氢光谱",
+        "en": "Precision hydrogen spectroscopy"
+      }
+    }
+  }
+}

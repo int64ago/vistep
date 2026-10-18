@@ -1,0 +1,28 @@
+---
+import { hangingCollision } from '../../models/momentum-collision-lab';
+const s = hangingCollision(0.9, 2),
+  ax = 182 + 200 * Math.sin(s.a.angle),
+  ay = 17 + 200 * Math.cos(s.a.angle),
+  bx = 218 + 200 * Math.sin(s.b.angle),
+  by = 17 + 200 * Math.cos(s.b.angle);
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true"
+  ><path
+    d="M62 17h277M75 17v218m251-218v218"
+    stroke="#b9c6a9"
+    stroke-width="4"
+    stroke-linecap="round"></path><path
+    d={`M182 17L${ax} ${ay}M218 17L${bx} ${by}`}
+    stroke="#9fb18f"
+    stroke-width="1.6"></path><path
+    d={`M64 ${217 - 400 * s.initialHeight}H365`}
+    stroke="#bba578"
+    stroke-dasharray="4 5"
+    opacity=".55"></path><circle cx={ax} cy={ay} r="18" fill="#b6c4a5"></circle><circle
+    cx={ax}
+    cy={ay}
+    r="13"
+    stroke="#b59b6e"
+    stroke-width="2"></circle><circle cx={bx} cy={by} r="18" fill="#b6c4a5"></circle></svg
+>

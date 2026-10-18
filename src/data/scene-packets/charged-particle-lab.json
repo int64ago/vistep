@@ -1,0 +1,205 @@
+{
+  "topic": {
+    "slug": "charged-particle-lab",
+    "name": "带电粒子实验室",
+    "title": "一条弯曲轨迹，能告诉我们什么？",
+    "question": "一条弯曲轨迹，能告诉我们什么？",
+    "description": "用电子束、质谱落点和铅板两侧径迹，把磁力方向变成可核对的证据。",
+    "color": "#608575",
+    "tag": "磁场中的粒子",
+    "related": ["hall-effect", "magnetic-force-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Charged particles in magnetic fields",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field"
+      },
+      {
+        "title": "OpenStax — Mass spectrometry",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/11-7-applications-of-magnetic-forces-and-fields"
+      },
+      {
+        "title": "Anderson — Nobel lecture",
+        "url": "https://www.nobelprize.org/uploads/2018/06/anderson-lecture.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/ChargedParticleLab.tsx",
+  "cover": "src/components/covers/ChargedParticleLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["带电粒子实验室", "洛伦兹力", "质谱仪", "正电子", "阴极射线"],
+      "en": ["Charged-particle experiments", "Lorentz force", "mass spectrometer", "positron"]
+    }
+  },
+  "translations": {
+    "带电粒子实验室": "Charged-particle experiments",
+    "一条弯曲轨迹，能告诉我们什么？": "What can a curved particle track tell us?",
+    "用电子束、质谱落点和铅板两侧径迹，把磁力方向变成可核对的证据。": "Use electron beams, isotope detection positions and tracks across a lead plate as checkable evidence of magnetic force.",
+    "磁场中的粒子": "Particles in magnetic fields",
+    "阴极射线束": "Cathode-ray beam",
+    "电子轨迹": "Electron trajectories",
+    "质谱仪": "Mass spectrometer",
+    "正电子径迹": "Positron track",
+    "铅板前后，曲率不同": "Different curvature across the lead plate",
+    "由洛伦兹运动方程计算的电子束、同位素或正电子轨迹": "Electron, isotope or positron tracks calculated from Lorentz motion",
+    "斜向入射：绕轴前进": "Oblique entry: turning while advancing",
+    "无磁场：保持直线": "Field off: straight motion",
+    "磁力转向，不改变速率": "Force turns the path, not the speed",
+    "同电压加速 · 相同电荷": "Equal accelerating voltage and charge",
+    "向上运动 + 正电荷": "Upward motion + positive charge",
+    "反事实：同方向的负电荷": "Counterfactual: negative charge, same motion",
+    "两条径迹半径": "Two track radii",
+    "穿板后动量下降": "Momentum decreases after passage",
+    "磁场与轨迹半径": "Field and trajectory radius",
+    "选择粒子实验": "Choose a particle experiment",
+    "电子加速电压": "Electron accelerating voltage",
+    "磁场强度与方向": "Magnetic-field strength and direction",
+    "速度与磁场夹角": "Angle between velocity and field",
+    "电荷假设": "Charge hypothesis",
+    "正电荷": "Positive charge",
+    "负电荷": "Negative charge",
+    "观察轨迹进度": "Track progress",
+    "轨迹、时间与历史证据": "Tracks, time and historical evidence",
+    "电子束按低速洛伦兹方程计算，显示慢放；螺旋视图的轴向与横向分别缩放。质谱示例是同电压加速的单电荷氖离子。正电子采用相对论动量，6与3MeV只是教学对照，不是历史照片拟合；铅板能量损失预设，未模拟散射。确认正电子还需结合电离与穿透证据，不能只凭曲率断言粒子种类。": "Electron beams use the nonrelativistic Lorentz solution in slow motion. Helices scale axial and transverse distances separately. The mass spectrometer uses singly charged neon ions at equal accelerating voltage. Positron momentum is relativistic;6and3MeV are illustrative, not historical fits. Plate loss is prescribed and scattering omitted. Positron identification also requires ionization and penetration evidence."
+  },
+  "narration": {
+    "duration": 224,
+    "cues": [
+      {
+        "id": "beam-straight",
+        "title": "先看没有磁场的电子束",
+        "titleEn": "Start with the field off",
+        "caption": "无磁场，电子束保持直线。",
+        "captionEn": "With the field off, the beam stays straight.",
+        "zh": "先看电子枪发出的束。加速电压给了电子初速度。现在没有横向磁场，束沿直线前进。荧光让我们看见束经过的区域；图上的移动亮点是追踪提示，并不是一颗能被肉眼直接看见的电子。",
+        "en": "First follow the beam from the electron gun. The accelerating voltage gives the electrons their initial speed. With no transverse magnetic field, the beam travels straight. The moving highlight is a tracking aid, not a visible individual electron.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.6
+      },
+      {
+        "id": "beam-bend",
+        "title": "反转磁场，反转偏转",
+        "titleEn": "Reverse the field and the bend",
+        "caption": "电子带负电，磁场反向，偏转也反向。",
+        "captionEn": "The negative electron reverses its bend when the field reverses.",
+        "zh": "加入磁场，电子束弯曲了。接着反转磁场，弯曲方向也反转。这个对照保留了同样的加速电压。注意电子带负电，判断受力时必须把电荷符号算进去，不能只看速度箭头。",
+        "en": "Apply the field and the electron beam bends. Reverse the field and the bend reverses, while the accelerating voltage stays the same. The electron is negative: charge sign matters as well as the direction of velocity.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.6
+      },
+      {
+        "id": "orbit-radius",
+        "title": "用磁场改变半径",
+        "titleEn": "Use the field to change the radius",
+        "caption": "磁力持续转向，速率保持。",
+        "captionEn": "Magnetic force changes direction, not speed.",
+        "zh": "在均匀磁场中，垂直入射的电子绕出圆轨迹。每一点的磁力都垂直于速度，所以它只改变方向。读数给出磁场和半径。加强磁场，转弯更急，但这并不意味着电子被磁场减速。",
+        "en": "An electron entering a uniform field perpendicularly follows a circle. At every point, force is perpendicular to velocity: direction changes, but speed does not. A stronger field makes a tighter turn without braking the electron.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.6
+      },
+      {
+        "id": "orbit-helix",
+        "title": "斜着进入，沿轴前进",
+        "titleEn": "Enter obliquely and advance along the axis",
+        "caption": "沿磁场的速度分量保留，圆周运动叠加成螺旋。",
+        "captionEn": "Motion along the field combines with circular motion into a helix.",
+        "zh": "让入射方向逐渐倾斜。垂直磁场的速度分量仍使电子转圈，沿磁场的分量则让它继续前进。于是出现螺旋。这个视图把轴向和横向分别缩放，以便看清两种运动，不能直接用画面量螺距。",
+        "en": "Tilt the entry direction. The perpendicular velocity component still produces turning, while the parallel component carries the electron along the field. Together they form a helix. This view scales axial and transverse distances separately for clarity.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.6
+      },
+      {
+        "id": "mass-tracks",
+        "title": "让同位素走不同的弯路",
+        "titleEn": "Give isotopes different curved paths",
+        "caption": "同电压、同电荷，较重同位素半径更大。",
+        "captionEn": "At equal voltage and charge, the heavier isotope has a larger radius.",
+        "zh": "现在换成质谱装置。氖二十和氖二十二都带一个正电荷，也经过相同电压加速。它们的速度不同，进入磁场后形成两条相近的弧线。较重同位素的轨迹半径更大，最后落在不同位置。",
+        "en": "Now use the mass spectrometer. Neon-twenty and neon-twenty-two each carry one positive charge and cross the same accelerating voltage. Their speeds differ. In the magnetic field, the heavier isotope follows the larger arc and reaches a different position.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.6
+      },
+      {
+        "id": "mass-inference",
+        "title": "从落点回到质量",
+        "titleEn": "Read mass from detector position",
+        "caption": "固定加速电压时，半径随质量平方根变化。",
+        "captionEn": "At fixed accelerating voltage, radius scales with the square root of mass.",
+        "zh": "对照两条弧线和探测位置。这里固定的是电压，不是速度，因此半径与质量的平方根成正比。真正做测量时，还要知道电荷和磁场，并校准尺寸。只看两条彩线的间距，不能独立得到一个绝对质量。",
+        "en": "Compare the arcs and detection positions. This apparatus fixes voltage, not speed, so radius scales with the square root of mass. A real measurement also needs the charge, field and calibrated geometry; coloured-track spacing alone is not an absolute mass measurement.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.6
+      },
+      {
+        "id": "positron-direction",
+        "title": "铅板告诉我们运动方向",
+        "titleEn": "The lead plate reveals travel direction",
+        "caption": "穿板损失动量，之后的弯曲更急。",
+        "captionEn": "Momentum loss makes the track bend more tightly after the plate.",
+        "zh": "最后看正电子的历史判断。仅凭一条弯曲径迹，向上走的正电荷和向下走的负电荷都可能说得通。铅板打破了这个歧义：粒子穿过铅板损失动量，之后弯得更急。比较两侧曲率，才能先确定运动方向。",
+        "en": "A curved track alone can fit a positive particle moving one way or a negative particle moving the other. The lead plate removes that ambiguity. Passage reduces momentum, making the outgoing track curve more tightly. Compare both sides before inferring the travel direction.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.6
+      },
+      {
+        "id": "positron-charge",
+        "title": "再用磁场判断电荷",
+        "titleEn": "Then infer the charge from the field",
+        "caption": "先确定运动方向，再由弯曲方向判断电荷。",
+        "captionEn": "Determine motion first, then infer charge from the bend.",
+        "zh": "保持向上的运动方向，先画负电荷会走的路，再换成正电荷。只有一个方向与观察相符。安德森还比较了电离和穿透能力，排除了普通质子的解释。我们显示的是教学轨迹，不是对历史照片的逐点复刻。",
+        "en": "Keep upward motion fixed. Compare the negative-charge prediction with the positive-charge prediction: only one bend agrees. Anderson also used ionization and penetration evidence to reject an ordinary proton. This is an explanatory track, not a point-by-point copy of the historical photograph.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.6
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-electron-beam-deflection": {
+      "chapterIds": ["beam-straight", "beam-bend"],
+      "label": {
+        "zh": "观察电子束在磁场中的偏转",
+        "en": "Electron-beam deflection"
+      }
+    },
+    "e2-electron-orbit": {
+      "chapterIds": ["orbit-radius", "orbit-helix"],
+      "label": {
+        "zh": "观察带电粒子的运动径迹",
+        "en": "Charged-particle trajectories"
+      }
+    },
+    "e2-mass-spectrometer": {
+      "chapterIds": ["mass-tracks", "mass-inference"],
+      "label": {
+        "zh": "用质谱仪分离同位素、测量比荷",
+        "en": "Mass spectrometry"
+      }
+    },
+    "e2-positron-cloud-chamber": {
+      "chapterIds": ["positron-direction", "positron-charge"],
+      "label": {
+        "zh": "用云室发现正电子",
+        "en": "Discovering the positron"
+      }
+    },
+    "e3-positron-discovery-reference": {
+      "chapterIds": ["positron-direction", "positron-charge"],
+      "label": {
+        "zh": "安德森发现正电子",
+        "en": "Anderson’s positron discovery"
+      }
+    }
+  }
+}

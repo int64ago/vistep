@@ -1,0 +1,104 @@
+{
+  "topic": {
+    "slug": "blackbody-lab",
+    "name": "黑体辐射测量",
+    "title": "升温时，辐射曲线的峰值为什么向短波移动？",
+    "question": "升温时，辐射曲线的峰值为什么向短波移动？",
+    "description": "从热腔小孔到分光测量，在同一强度刻度下比较不同温度的辐射光谱。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["photoelectric-lab", "thermal-process-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Blackbody Radiation",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation"
+      },
+      {
+        "title": "NIST — SI constants",
+        "url": "https://www.nist.gov/si-redefinition/meet-constants"
+      }
+    ]
+  },
+  "component": "src/components/experiments/BlackbodyLab.tsx",
+  "cover": "src/components/covers/BlackbodyLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["黑体辐射测量", "升温时，辐射曲线的峰值为什么向短波移动？", "近代物理实验"],
+      "en": [
+        "Measuring blackbody radiation",
+        "Why does a hotter radiator peak at a shorter wavelength?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "黑体辐射测量": "Measuring blackbody radiation",
+    "升温时，辐射曲线的峰值为什么向短波移动？": "Why does a hotter radiator peak at a shorter wavelength?",
+    "从热腔小孔到分光测量，在同一强度刻度下比较不同温度的辐射光谱。": "Follow cavity radiation through a spectrometer and compare temperatures on one intensity scale.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 112,
+    "cues": [
+      {
+        "id": "cavity",
+        "title": "从小孔观察热腔",
+        "titleEn": "Observe a heated cavity",
+        "caption": "小孔近似黑体；分光后可比较不同波长的辐射。",
+        "captionEn": "A small cavity aperture approximates a blackbody; dispersion separates wavelengths.",
+        "zh": "想比较热辐射，先找一个接近理想黑体的光源。一个加热的空腔开一个小孔，从孔中射出的辐射近似黑体辐射。分光装置把不同波长分开，探测器逐段测量。图中的曲线按波长表示，不是肉眼看见的颜色亮度。",
+        "en": "Begin with an approximately ideal source: a small hole in a heated cavity. Radiation leaving the hole approximates blackbody radiation. A spectrometer separates wavelengths and a detector samples the spectrum. The graph shows spectral radiance per wavelength, not perceived color brightness.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "heat",
+        "title": "升高炉温",
+        "titleEn": "Raise the temperature",
+        "caption": "温度提高，曲线整体升高，峰值向更短波长移动。",
+        "captionEn": "Heating raises the spectrum and shifts its peak toward shorter wavelengths.",
+        "zh": "现在提高炉温。注意曲线发生两种变化：辐射增强，峰值也向较短的波长移动。两条浅色曲线保留三千开尔文和五千开尔文的参照，所有曲线使用同一个纵轴刻度，因此曲线高度可以直接比较。",
+        "en": "Raise the furnace temperature. Two changes occur: radiation strengthens and the peak moves toward shorter wavelengths. Pale curves retain the reference spectra at three thousand and five thousand kelvin. All curves share one vertical scale, so their heights can be compared directly.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "peak",
+        "title": "追踪同一条曲线的峰值",
+        "titleEn": "Track the spectral peak",
+        "caption": "峰值波长与温度的乘积近似为常量。",
+        "captionEn": "Peak wavelength times temperature is approximately constant.",
+        "zh": "暂停在这个温度，沿着峰值标记读出对应的波长。再与低温参照比较，就会发现温度越高，峰值波长越短。这里显示的是以波长为横轴的谱；如果改用频率为横轴，不能直接把峰值位置简单取倒数。",
+        "en": "Hold the temperature and read the wavelength at the peak marker. Compare it with the cooler references: higher temperature gives a shorter peak wavelength. This is a wavelength spectrum. A frequency spectrum has a different density, so its peak is not obtained by simply taking the reciprocal.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "quantum",
+        "title": "用同一条定律描述各温度",
+        "titleEn": "One law for different temperatures",
+        "caption": "普朗克分布在短波端下降，避免经典预测的发散。",
+        "captionEn": "Planck’s distribution falls at short wavelengths instead of diverging.",
+        "zh": "继续加热，峰值移动，但短波一侧始终下降。普朗克辐射定律能够同时描述这些温度下的光谱，这是能量量子化的重要历史线索。当前曲线由该定律计算；真实实验还需要校准探测器对不同波长的响应，才能与理论作定量比较。",
+        "en": "Continue heating. The peak moves, but the short-wavelength side still falls. Planck’s radiation law describes these spectra across temperatures, a key historical clue to energy quantization. These curves are calculated. A real experiment must calibrate detector response before comparing measured intensities with theory.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-blackbody-spectrum-measurement": {
+      "chapterIds": ["cavity", "heat", "peak", "quantum"],
+      "label": {
+        "zh": "黑体辐射",
+        "en": "Blackbody radiation"
+      }
+    }
+  }
+}

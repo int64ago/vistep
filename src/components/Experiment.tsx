@@ -2,7 +2,7 @@ import { t } from '../i18n';
 import { Component, lazy, Suspense, type ReactNode } from 'react';
 import Showcase from './lab/Showcase';
 import { experimentLoaders, type ExperimentSlug } from '../data/experiments';
-import type { Film, Soundtrack } from '../lib/film';
+import type { Film, FilmSelection, Soundtrack } from '../lib/film';
 const experiments = Object.fromEntries(
   Object.entries(experimentLoaders).map(([slug, load]) => [slug, lazy(load)]),
 );
@@ -36,10 +36,12 @@ export default function Experiment({
   slug,
   film,
   track,
+  selection,
 }: {
   slug: ExperimentSlug;
   film: Film;
   track?: Soundtrack;
+  selection?: FilmSelection;
 }) {
   // The inline gate in Base.astro marked this browser; do not load an engine that cannot run.
   if (document.documentElement.hasAttribute('data-unsupported')) return null;
@@ -53,7 +55,7 @@ export default function Experiment({
           </div>
         }
       >
-        <Showcase slug={slug} film={film} track={track}>
+        <Showcase slug={slug} film={film} track={track} selection={selection}>
           <Scene />
         </Showcase>
       </Suspense>

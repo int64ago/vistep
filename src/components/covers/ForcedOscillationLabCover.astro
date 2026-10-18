@@ -1,0 +1,31 @@
+---
+import { coupledPendulumTrajectory, sampleCoupled } from '../../models/forced-oscillation-lab';
+const p = coupledPendulumTrajectory(0.35, 0.015, 28),
+  s = sampleCoupled(p, 28);
+---
+
+<svg viewBox="0 0 300 220" aria-hidden="true"
+  ><path d="M20 36H280" stroke="#adbe98" stroke-width="7" stroke-linecap="round"></path>{
+    s.angles.map((a, i) => {
+      const x = 30 + 40 * i,
+        L = p.L[i] * 270;
+      return (
+        <g>
+          <>
+            <path
+              d={`M${x} 36L${x + L * Math.sin(a)} ${36 + L * Math.cos(a)}`}
+              stroke="#a1b38f"
+              stroke-width="2"
+            />
+            <circle
+              cx={x + L * Math.sin(a)}
+              cy={36 + L * Math.cos(a)}
+              r={i === 3 ? 12 : 6}
+              fill={i === 3 ? '#bea271' : '#9bb484'}
+            />
+          </>
+        </g>
+      );
+    })
+  }</svg
+>

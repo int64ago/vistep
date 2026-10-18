@@ -1,0 +1,46 @@
+<h2 id="understand">Compare useful energy with gas consumption</h2>
+
+Fuel energy increases the water’s internal energy, while hot water and the flame also heat the surroundings. The textbook neglects vessel and stove heat capacity and investigates these two loss paths separately. Diagram arrows show paths, not unmeasured energy proportions.
+
+<h2 id="try">Read the original measurements</h2>
+
+The cooling trial uses 4.0 kg of water in a 26°C room. Its recorded initial temperature of 101.9°C is preserved, rather than silently corrected. Real measurements require attention to instruments and conditions.
+
+| Time/min | 0     | 10   | 20   | 40   | 60   | 80   | 100  | 120  | 140  |
+| -------- | ----- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Water/°C | 101.9 | 94.8 | 90.0 | 81.0 | 73.5 | 66.5 | 61.5 | 57.5 | 53.5 |
+
+| Time/min | 160  | 180  | 200  | 220  | 240  | 260  | 280  | 300  |
+| -------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Water/°C | 50.5 | 47.5 | 45.5 | 43.7 | 42.0 | 40.8 | 39.8 | 38.8 |
+
+The first twenty minutes lose 11.9°C, versus 2.0°C during minutes 180–200: about 5.95 times the heat loss over equal times. Connecting lines and interpolated animation assist reading; they are not continuous measured traces.
+
+Heating 4.0 kg from 26°C to 50°C:
+
+| Flame  | Initial gas meter/m³ | Final/m³ | Consumption/m³ |
+| ------ | -------------------- | -------- | -------------- |
+| High   | 995.5985             | 995.6438 | 0.0453         |
+| Medium | 995.6438             | 995.6716 | 0.0278         |
+
+Equal water amounts and initial temperatures, each ending at boiling:
+
+| Strategy          | Initial gas meter/m³ | Final/m³ | Consumption/m³ |
+| ----------------- | -------------------- | -------- | -------------- |
+| High throughout   | 995.9725             | 996.0608 | 0.0883         |
+| Medium throughout | 996.0608             | 996.1453 | 0.0845         |
+| Medium, then high | 996.1453             | 996.2237 | 0.0784         |
+
+The last strategy uses about 11.2% less gas than high throughout for this setup. The table gives neither heating durations nor exact boiling temperatures, so progress and kettle temperatures are illustrative. These measurements do not establish a universal best flame setting.
+
+<h2 id="deeper">The water-heater project needs new data</h2>
+
+Page 135 proposes collecting the same amount of water at 38°C and 50°C, measuring inlet temperature and gas consumption for each trial. It supplies no results. The initial 10 kg, 20°C and 35 MJ/m³ here are editable examples; gas-consumption fields remain blank. Replace the heating value with local fuel information and use a consistent heating-value convention.
+
+<div className="formula">
+  Useful energy = mc(Tout − Tin); efficiency = useful energy/(gas volume × volumetric heating value)
+</div>
+
+The 50°C trial has a greater temperature rise, so consumption alone does not determine efficiency. Mixing hotter water with cold water increases the amount at a comfortable temperature, but does not itself prove better heater efficiency. Specific heat is approximated as 4180 J/(kg·K). A calculated result above 100% prompts a measurement/unit check rather than silently modifying it.
+
+Data: PEP Physics, Selective Compulsory Book 3, research projects, pages 132–135. Energy relation: [OpenStax specific heat and calorimetry](https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry).

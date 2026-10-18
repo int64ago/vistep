@@ -1,0 +1,54 @@
+---
+import { inductionProtocol, foilAngle } from '../../models/electrostatic-induction';
+const s = inductionProtocol(2.4),
+  angle = foilAngle(s.a),
+  dx = 34 * Math.sin(angle),
+  dy = 34 * Math.cos(angle);
+---
+
+<svg viewBox="0 0 400 230" width="400" height="230" aria-hidden="true">
+  <defs
+    ><linearGradient id="electrostatic-cover-metal" x1="0" y1="0" x2="0" y2="1"
+      ><stop stop-color="#9aafa8"></stop><stop offset=".4" stop-color="#eff0d9"></stop><stop
+        offset="1"
+        stop-color="#819b91"></stop></linearGradient
+    ></defs
+  >
+  <ellipse cx="220" cy="206" rx="125" ry="7" fill="#526759" opacity=".08"></ellipse>
+  {
+    [154, 284].map((x, i) => (
+      <g>
+        <rect x={x - 4} y="118" width="8" height="76" rx="3" fill="#cbd5bb" />
+        <rect x={x - 24} y="191" width="48" height="7" rx="3.5" fill="#82958a" />
+        <rect
+          x={x - 52}
+          y="73"
+          width="104"
+          height="48"
+          rx="24"
+          fill="url(#electrostatic-cover-metal)"
+          stroke="#99ada1"
+          stroke-width="1"
+        />
+        <path
+          d={`M${x} 124v18m0 0l${-dx} ${dy}m${dx} ${-dy}l${dx} ${dy}`}
+          fill="none"
+          stroke="#c2ac70"
+          stroke-width="4"
+        />
+        {Array.from({ length: 5 }, (_, j) => (
+          <g>
+            <circle cx={x - 28 + j * 14} cy="97" r="5.5" fill={i === 0 ? '#7296a2' : '#b79265'} />
+            <path
+              d={`M${x - 31 + j * 14} 97h6${i === 1 ? `m-3 -3v6` : ''}`}
+              stroke="#fffbea"
+              stroke-width="1.2"
+            />
+          </g>
+        ))}
+      </g>
+    ))
+  }
+  <path d="M53 62V130" stroke="#d8ba8e" stroke-width="17" stroke-linecap="round"></path>
+  {[74, 97, 120].map((y) => <path d={`M49 ${y}h8m-4 -4v8`} stroke="#a48255" stroke-width="1.7" />)}
+</svg>

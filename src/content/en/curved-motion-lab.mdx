@@ -1,0 +1,40 @@
+---
+name: Velocity directions in curved motion
+title: Which way does an object go when it leaves a curve?
+---
+
+<section id="understand">
+
+PEP Required Book 2 §5.1 uses an inked steel ball leaving a segmented arc (pages 2–3), a magnet placed ahead or beside a rolling ball (page 4), and a finned dart (page 4). These remain three separate experimental paths.
+
+Instantaneous velocity is tangent to the trajectory. A net-force component perpendicular to current velocity changes direction; a parallel component changes speed. Force does not automatically imply turning.
+
+</section>
+<section id="try">
+
+Remove the last track segment and compare red traces. Speed is the same but exit tangents differ. Then move the magnet from directly ahead to one side and compare force and velocity directions.
+
+Change the dart’s launch angle and pause during ascent, at the apex, or on descent. Its shaft approximately indicates velocity while gravity always points down. This is a model demonstration, not an instruction to construct or throw a pointed object.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Track and magnetic models</summary>
+
+Arc speed is fixed, with continuous position and tangent velocity at exit, followed by uniform straight motion. Ink traces come from the same position function. Horizontal rolling resistance is neglected.
+
+The magnetic example uses a qualitative induced-dipole far field: potential U is proportional to −B² and force is its negative gradient. The ball is not a magnetic monopole and field lines are not trajectories. A point dipole approximates a bar magnet, without instrument calibration. Solid-sphere rotational inertia makes translational acceleration equal to applied magnetic force divided by 1.4 times mass. RK4 integration stops at a 0.27 m near-field boundary; contact, hysteresis and saturation are omitted.
+
+</details>
+
+<details>
+
+<summary>Dart orientation approximation</summary>
+
+Translation follows an ideal drag-free projectile. Tail action is represented only by rapid, quasi-static alignment with velocity. Real angular lag and air drag mean the shaft need not exactly match the tangent at every instant. No detailed aerodynamic prediction is inferred from drawn fins. Flight ends at the first tip contact with the ground.
+
+</details>
+
+</section>

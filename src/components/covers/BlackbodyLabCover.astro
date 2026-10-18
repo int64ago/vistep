@@ -1,0 +1,9 @@
+---
+import { ModernLabArtwork } from '../experiments/ModernLab';
+import StaticArtworkCover from './StaticArtworkCover.astro';
+---
+
+<StaticArtworkCover
+  artwork={ModernLabArtwork}
+  options={{ kind: 'blackbody', value: 0.7, progress: 0.7, cover: true }}
+/>

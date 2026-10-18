@@ -1,0 +1,171 @@
+{
+  "topic": {
+    "slug": "optical-diffraction-lab",
+    "name": "从狭缝到阴影中的亮点",
+    "title": "缝变窄，光为什么反而铺得更开？",
+    "question": "缝变窄，光为什么反而铺得更开？",
+    "description": "把可调狭缝、圆孔、铅笔、卡尺与泊松亮斑放回各自装置。",
+    "color": "#aebfa8",
+    "tag": "波动光学",
+    "related": ["diffraction", "double-slit"],
+    "sources": [
+      {
+        "title": "Richard Fitzpatrick, University of Texas — Diffraction from a circular disk",
+        "url": "https://farside.ph.utexas.edu/teaching/315/Waves/node106.html"
+      },
+      {
+        "title": "Richard Fitzpatrick, University of Texas — Circular aperture diffraction",
+        "url": "https://farside.ph.utexas.edu/teaching/315/Waves/node105.html"
+      },
+      {
+        "title": "OpenStax — Single-slit diffraction",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/4-1-single-slit-diffraction"
+      }
+    ]
+  },
+  "component": "src/components/experiments/OpticalDiffractionLab.tsx",
+  "cover": "src/components/covers/OpticalDiffractionLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["从狭缝到阴影中的亮点", "缝变窄，光为什么反而铺得更开？", "教材光学实验"],
+      "en": [
+        "From a slit to light inside a shadow",
+        "Why does a narrower gap spread light farther?",
+        "textbook optics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "从狭缝到阴影中的亮点": "From a slit to light inside a shadow",
+    "缝变窄，光为什么反而铺得更开？": "Why does a narrower gap spread light farther?",
+    "把可调狭缝、圆孔、铅笔、卡尺与泊松亮斑放回各自装置。": "Compare adjustable slits, circular apertures, pencils, calipers and the Poisson spot.",
+    "近代物理": "Modern physics",
+    "波动光学": "Wave optics"
+  },
+  "narration": {
+    "duration": 224,
+    "cues": [
+      {
+        "id": "slit-wide",
+        "title": "从较宽的狭缝开始",
+        "titleEn": "Start with a wider slit",
+        "caption": "缩小几何开口，屏上的分布不只是同比缩小。",
+        "captionEn": "A smaller opening does not simply shrink the screen pattern.",
+        "zh": "平行单色光照向挡板狭缝，后方一米处放屏。开口较宽时，几何光学可以给出大致轮廓，但边缘仍有衍射。页面从有限距离的菲涅耳积分计算强度，因此不是在某个宽度突然换成另一张图。器材缝隙为便于观察被放大，下方屏幕坐标使用毫米。",
+        "en": "Parallel monochromatic light illuminates a slit with a screen one meter behind it. A wide opening roughly follows geometric expectations but still diffracts at its edges. A finite-distance Fresnel integral calculates the pattern continuously rather than switching pictures at a threshold. Apparatus gaps are enlarged; screen coordinates are in millimeters.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "slit-narrow",
+        "title": "缝更窄，中央条纹更宽",
+        "titleEn": "Narrow the slit and broaden the central band",
+        "caption": "传播范围变宽，同时透过的光更少。",
+        "captionEn": "Light spreads farther while total transmitted power falls.",
+        "zh": "继续收窄狭缝，进入明显的远场衍射状态。中央亮纹变宽，旁边出现较弱的条纹；与此同时，开口减少，透过的光也减少。这里用固定显示曝光保留亮度变化，避免把每一帧都拉成同样亮。下方曲线是相对入射强度，不是光子行进的轨迹。",
+        "en": "As the slit narrows, the far-field pattern broadens into a central band and weaker side fringes. Less light also passes through the smaller opening. Fixed display exposure preserves this brightness change instead of normalizing every frame to the same peak. The lower curve shows relative intensity, not photon trajectories.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "slit-white",
+        "title": "把不同波长的图样叠加",
+        "titleEn": "Superpose patterns from different wavelengths",
+        "caption": "中央各色重合，旁侧条纹随波长分开。",
+        "captionEn": "Colors overlap centrally and separate toward the sides.",
+        "zh": "白光包含许多波长，它们彼此不相干，应该把强度相加，而不是把不同颜色的振幅当成同一列波。中央位置各波长重合，旁侧条纹的位置不同，出现颜色分离。画面用三个波长近似颜色，保留波长依赖的传播计算，不声称精确再现真实白光光谱。",
+        "en": "White light contains mutually incoherent wavelengths, so their intensities add rather than their amplitudes. They overlap centrally but have different side-fringe positions. Three sampled wavelengths illustrate color while retaining wavelength-dependent propagation; this is not a calibrated reproduction of a real white-light spectrum.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "circular-aperture",
+        "title": "换成圆孔，观察圆形图样",
+        "titleEn": "Change to a circular aperture",
+        "caption": "圆对称开口需要圆对称波场积分。",
+        "captionEn": "A circular opening requires a radially symmetric field integral.",
+        "zh": "教材还比较小圆孔的衍射。圆孔与狭缝的形状不同，不能把单缝曲线简单旋转就当成结果。这里对圆形开口积分，得到中央区域和周围环纹。孔变小时传播范围扩大。画面仍计算有限距离；只有充分满足远场条件时，才得到通常所说的艾里斑近似。",
+        "en": "A circular aperture differs from a slit: its pattern cannot be obtained by simply rotating the slit curve. Integrating over the circular opening gives a central region and surrounding rings. Smaller holes spread light farther. This remains a finite-distance calculation; the familiar Airy approximation requires the far-field limit.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "pencil-gap",
+        "title": "用两支铅笔形成狭缝",
+        "titleEn": "Form a slit with two pencils",
+        "caption": "改变缝隙，比较线光源的衍射展开。",
+        "captionEn": "Change the gap and compare how a line source spreads.",
+        "zh": "把两支铅笔并排，利用中间细缝观察线状光源，缓慢改变间隙，比较中央条纹宽度。页面用相同开口宽度驱动传播计算，让生活器材与实验挡板建立联系。真实观察由眼睛晶状体形成角分布，这里用一米等效屏展开，未加入眼睛像差和铅笔边缘不平整。",
+        "en": "Place two pencils side by side and view a line source through their narrow gap. Varying the gap changes the central diffraction width. The same aperture width drives the model. The eye normally maps angles through its lens; this display uses a one-meter equivalent screen and omits eye aberrations and rough pencil edges.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "caliper-gap",
+        "title": "用卡脚控制狭缝宽度",
+        "titleEn": "Control the gap with caliper jaws",
+        "caption": "同一宽度对应同一理想衍射分布。",
+        "captionEn": "The same ideal gap width produces the same diffraction distribution.",
+        "zh": "游标卡尺的两卡脚也能构成较易控制的狭缝。改变开口后，图样按同一个波动模型变化；这能比较器材差异与物理规律。卡脚只画局部结构，读数直接显示微米，不模拟具体卡尺的分度。保持开口方向一致，才能把宽度变化和条纹展开方向对应起来。",
+        "en": "Caliper jaws provide a controllable slit. Changing their gap updates the same wave model, separating apparatus choice from the physical rule. The close-up omits instrument-specific graduations and gives width directly in micrometers. Keeping the slit orientation fixed relates gap width to the direction of spreading.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "poisson-shadow",
+        "title": "小圆盘阴影中也会有亮点",
+        "titleEn": "Find a bright spot inside a disk shadow",
+        "caption": "圆周绕射的场在轴线上相长叠加。",
+        "captionEn": "The diffracted field adds constructively on the axis.",
+        "zh": "把狭缝换成不透明小圆盘，波动理论预言几何阴影中央会有亮点。页面先计算互补圆孔的复振幅，再利用巴比涅原理求圆盘后的场。中央亮点自然出现在结果里，没有额外叠一个装饰亮点。轴对称、相干平行光和理想圆边缘都是这幅图样的重要条件。",
+        "en": "Replace the opening with an opaque circular disk. Wave theory predicts a central bright spot inside its geometric shadow. The model calculates the complementary aperture’s complex field and uses Babinet’s principle. The axial spot emerges from that calculation without an added graphic. Symmetry, coherent plane illumination and a circular edge are essential.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "poisson-size",
+        "title": "改变圆盘尺寸，比较亮点尺度",
+        "titleEn": "Change disk size and compare the spot",
+        "caption": "理想轴上强度不随盘径消失，周围结构却改变。",
+        "captionEn": "Ideal axial intensity persists while surrounding structure changes.",
+        "zh": "改变圆盘半径，中央亮区和环纹的空间尺度随之变化。理想平面波模型中，轴上强度等于没有圆盘时的入射强度，但这不意味着整个阴影区都一样亮。真实光源大小、偏心、支架和探测分辨率会降低亮点可见度；本页不把理想强度当成真实仪器的保证。",
+        "en": "Changing disk radius alters the central spot and ring scales. In the ideal plane-wave model, axial intensity equals the unobstructed incident intensity, although the rest of the shadow is not equally bright. Finite sources, misalignment, supports and detector resolution can reduce visibility; the ideal result is not an instrument guarantee.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-single-slit-diffraction": {
+      "chapterIds": [
+        "slit-wide",
+        "slit-narrow",
+        "slit-white",
+        "circular-aperture",
+        "pencil-gap",
+        "caliper-gap"
+      ],
+      "label": {
+        "zh": "单缝及小孔衍射",
+        "en": "Slit and aperture diffraction"
+      }
+    },
+    "e1-poisson-spot": {
+      "chapterIds": ["poisson-shadow", "poisson-size"],
+      "label": {
+        "zh": "泊松亮斑",
+        "en": "Poisson spot"
+      }
+    }
+  }
+}

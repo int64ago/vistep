@@ -1,0 +1,39 @@
+<h2 id="understand">Control conditions before comparing motion</h2>
+
+The apparatus contains a cart, paper tape, ticker timer, fixed pulley and hanging masses. First adjust the track tilt without a hanging mass. The cart should move approximately uniformly with its tape attached. Gravity along the incline compensates resistance, including tape drag.
+
+For one cart mass, change the hanging load and use tape records to compare pull and acceleration. Then change cart mass under approximately unchanged pulling conditions and examine acceleration against inverse mass. Data points come from differences of equal-time positions, sharing the same state as both moving bodies.
+
+The alternative textbook method uses two carts released and stopped together from rest. With equal durations and constant accelerations, displacement ratio equals acceleration ratio. A common clamp controls both trailing strings; stacked tracks are a layout variant of the same method.
+
+<h2 id="try">Test the weight-as-tension approximation</h2>
+
+- Remove the hanging load in the compensation path and change tilt. A slightly raised board is not sufficient evidence; check for equal tape spacings.
+- Hold cart mass fixed and increase the hanger. Compare actual string tension with tape-derived acceleration.
+- Keep the hanging mass while changing cart mass. Its weight stays fixed, but its tension still changes slightly with the system acceleration.
+- Increase the hanging mass substantially. Observe why treating its weight as tension works better when it is much lighter than the cart.
+- In the paired path, compare a common time interval. If either cart reaches its measurement endpoint first, both records end together.
+
+<h2 id="deeper">Retain the hanging mass's own acceleration</h2>
+
+<details>
+
+<summary>Exact compensated equations</summary>
+
+Let cart mass be M and hanging mass m. The string is inextensible, with negligible pulley mass and friction. When slope gravity exactly compensates cart resistance:
+
+<div className="formula">a = mg / (M + m); T = Ma = m(g − a)</div>
+
+Actual tension T is below mg. Substituting mg overestimates the true tension by the fraction m/M. The approximation is good only when m is much smaller than M. A fixed-hanger acceleration-versus-inverse-cart-mass graph is consequently approximate, not forced to be perfectly straight at every mass ratio.
+
+</details>
+
+<details>
+
+<summary>Incomplete compensation and tape differences</summary>
+
+For track angleθ and resistanceμMg cosθ, moving acceleration is [mg + Mg(sinθ − μ cosθ)] / (M + m). The defaultμ is0.025 and compensation requires tanθ = μ. An initially stationary cart with insufficient drive can remain static, rather than being falsely launched backward.
+
+Equal-time positions give a = (sᵢ₊₁ − 2sᵢ + sᵢ₋₁) / Δt². The displayed0.10 s counting points represent fixed-interval selections from denser dots, not a10 Hz power supply. Measurement freezes at its endpoint without modeling a stop collision.
+
+</details>

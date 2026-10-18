@@ -1,0 +1,9 @@
+# Frequency and propagation measurements
+
+Owner teaching_shell. Six ×26s=156s. e1-sound-wave-recording → sound-record-do/record-sol/count; e1-geneva-lake-sound → lake-flash/delay/speed. Full textbook pages40–41,82 read. Important exact values: textbook tuning do264Hz and sol396Hz, ten versus fifteen cycles in one 37.8788ms window. Lake14km/10s is explicitly a simulated exercise, not historic readings; museum dates measurement1826, dissertation1827, result1435m/s. Source cited.
+
+Distinct monitor/microphone/waveform apparatus and lake boat/flash/bell/horn arrangement. Field time axis is not a spatial sound path. Actual optional microphone acquisition on explicit click, stable fundamental autocorrelation80–1000Hz, uncertain pitch left empty, captured sample preserved locally. User-initiated0.9s preview loop. Stop tracks/context/timer on capture completion, switching, unmount, document hidden and offscreen IntersectionObserver. No automatically requested microphone and no uploaded audio. Vertical waveform normalization disclosed. Synthetic examples explicitly labeled.
+
+Lake front reaches submerged horn at textbook delay; screen distance compressed relative to depth. Light travel correction computed independently and small enough to neglect in main reading. Receiving stopwatch starts at flash and stops at sound. Source horn connection and receiver location follow same front contact geometry.
+
+Four model tests passed: recover both harmonic-rich frequencies, reject silence/noise, stable window bounds, textbook speed/light correction. Packet dry-run passed. Worker author numerical review only; microphone permission/capture/preview/lifecycle, browser playback and phone states, bilingual listening, resource failures and real-device performance not-run. Root owns integration and acceptance.

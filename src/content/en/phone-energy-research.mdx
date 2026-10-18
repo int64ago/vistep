@@ -1,0 +1,28 @@
+<h2 id="understand">Decide what a difference can be attributed to</h2>
+
+PEP Required Book3 page135 asks students to design a study of brightness, volume and application use. This scene practices controlled comparisons with two runs of the same model phone. Every power and energy value is synthetic teaching data, not a measurement of any brand or device.
+
+To compare brightness, use identical content, volume, network load and duration. Volume comparisons also need the same audible content. When comparing browsing, chat, calling, video, audio playback and games, hold other conditions fixed. Changing brightness and network load together prevents attributing the energy difference to brightness alone.
+
+<h2 id="try">Record a comparison you can explain</h2>
+
+Run A uses video,30% brightness,20% volume and1× network load. Exploration changes run B. Check the changed-factor count before recording the synthetic comparison. Records preserve task, duration and settings for inspection. This page does not collect data from a real phone.
+
+Component powers respond to model settings, and total energy integrates power over time. Equal observation duration matters. The battery icon rounds to integer percentage: two short runs may consume different energies while displaying the same percentage, so the icon is not a precision energy meter.
+
+A real study should control device, content, network, temperature and initial state, repeat measurements, and record background work and uncertainty. Hardware, software, content and connectivity can change outcomes; these task parameters are not a universal battery-use ranking.
+
+<h2 id="deeper">How the synthetic power profile generates energy</h2>
+
+<details>
+<summary>Illustrative model and measurement limits</summary>
+
+Power is divided into idle, display, processor, radio and audio contributions. Display power is a monotonic function of brightness. Processor and radio use20 s and35 s periodic loads. Only tasks with audible output respond to volume. All parameters are authored teaching examples; Android’s sample currents are not presented as measurements of a phone.
+
+Component functions are integrated analytically to joules, then divided by3600 forWh. Assumed battery capacity is15 Wh, initially80%. The0–900 s model illustrates energy accounting, not voltage dynamics, aging, thermal throttling or battery-estimation algorithms. The device drawing decomposes components; it is neither a specific teardown nor a complete supply schematic.
+
+Android power-profile documentation describes component estimates for displays, CPUs, radios and audio/video, with device-specific measurement. It supports this study’s component-based reasoning, not its synthetic numerical values.
+
+</details>
+
+Source: [Android Open Source Project: measuring power-profile values](https://source.android.com/docs/core/power/values).

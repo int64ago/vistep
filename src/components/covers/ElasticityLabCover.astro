@@ -1,0 +1,41 @@
+---
+import { springExtension, springWire, rubberResponse } from '../../models/elasticity-lab';
+const s = springExtension(0.25);
+const wire = springWire(s.length * 500)
+  .map((p, i) => `${i ? 'L' : 'M'}${123 + p.x} ${35 + p.y}`)
+  .join(' ');
+const y = 35 + s.length * 500;
+const curve = (branch: 'loading' | 'unloading') =>
+  Array.from({ length: 61 }, (_, i) => {
+    const x = (0.12 * i) / 60;
+    return `${i ? 'L' : 'M'}${230 + (x / 0.12) * 130} ${190 - (rubberResponse(x, branch).force / 8) * 135}`;
+  }).join(' ');
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  <path d="M44 215H183M64 215V20H123V35" stroke="#b4bfa5" stroke-width="5" stroke-linecap="round"
+  ></path>
+  <path d={wire} stroke="#8ea086" stroke-width="2.5"></path>
+  <path d={`M123 ${y}V${y + 10}M102 ${y + 11}H144`} stroke="#8fa182" stroke-width="2"></path>
+  {
+    [0, 1, 2, 3].map((i) => (
+      <rect
+        x="104"
+        y={y + 13 + i * 6}
+        width="38"
+        height="6"
+        rx="2"
+        fill={i % 2 ? '#a5b495' : '#bdc7ac'}
+      />
+    ))
+  }
+  <path d="M171 40V195" stroke="#d5cfb8" stroke-width="8"></path><path
+    d="M142 115H183"
+    stroke="#b4bda3"
+    stroke-dasharray="3 4"></path>
+  <path d="M230 35V190H373" stroke="#c1cbb1"></path><path
+    d={curve('loading')}
+    stroke="#b18d61"
+    stroke-width="2.4"></path><path d={curve('unloading')} stroke="#7a9a8b" stroke-width="2.4"
+  ></path>
+</svg>

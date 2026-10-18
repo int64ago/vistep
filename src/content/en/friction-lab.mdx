@@ -1,0 +1,36 @@
+<h2 id="understand">When does a force-meter reading equal friction?</h2>
+
+A block pulled horizontally at constant speed has zero acceleration. If pull and friction are its only horizontal forces, the reading equals sliding friction. Keep the contact materials and pulling method unchanged, add masses, and compare the normal load. Pressing a hand harder against a table while moving it offers a related tactile observation.
+
+Starting from rest is a different experiment. As pull increases without motion, static friction adjusts with it; it is not always at its maximum. Once sliding begins, the reading typically falls. A small paper marker preserves the maximum reading, while a force sensor records the whole force–time history.
+
+<h2 id="try">Separate load comparisons from breakaway</h2>
+
+- Compare 0.5 and 1.0 kg in steady motion. Doubling normal load doubles sliding friction in this model.
+- Change added pressure in the hand path. These are simulated forces illustrating the tactile comparison, not measurements of a viewer's sensation.
+- Pause the paper-marker or sensor path before 2 s. The block is stationary even though pull and static friction are nonzero.
+- Pass the breakaway instant. While the block accelerates, pull is not yet equal to sliding friction; equality is approached as speed settles.
+
+The camera follows the block or hand. Backward-moving table marks show sliding. The peak marker and current pointer carry different information, so the peak must survive a later falling reading.
+
+<h2 id="deeper">Model contact and pulling separately</h2>
+
+<details>
+
+<summary>Friction and normal load</summary>
+
+Normal load is N = mg + P, with P an extra downward pressure. Static friction satisfies 0 ≤ fₛ ≤ μₛN and takes the value required for horizontal balance while stationary. Sliding friction is fₖ = μₖN. Here μₛ = 0.45, μₖ = 0.30 and g = 9.8 m/s² are teaching parameters, not measurements of particular wood or skin. The hand illustration uses an effective weight corresponding to 0.5 kg.
+
+Real contact can depend on speed, temperature, surface condition and history. This dry-friction approximation does not predict lubrication, adhesion or wear.
+
+</details>
+
+<details>
+
+<summary>The falling reading comes from a trajectory</summary>
+
+During the first 2 s the block remains still as pull rises linearly to the static threshold. After breakaway, a controlled trajectory approaches 0.18 m/s smoothly. Its acceleration gives the reading through F = fₖ + ma. Position, velocity and pull are continuous at breakaway; friction switches from the static maximum to its lower sliding value, allowing acceleration.
+
+The force meter has stiffness 100 N/m, so extension is F / 100. Spring connections, housing position, current pointer and retained paper peak share the same force state. The accelerating transient is never incorrectly treated as F = fₖ.
+
+</details>

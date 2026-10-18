@@ -1,0 +1,136 @@
+{
+  "topic": {
+    "slug": "impulse-contact-lab",
+    "name": "接住与停下的力",
+    "title": "同样停下来，为什么感觉到的力不同？",
+    "question": "同样停下来，为什么感觉到的力不同？",
+    "description": "比较充气与放气气球，再分开车辆和理想乘员的停止过程。",
+    "color": "#aebfa8",
+    "tag": "动量与冲量",
+    "related": ["elastic-collision", "force-pairs-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Impulse and collisions",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions"
+      },
+      {
+        "title": "NHTSA — Vehicle safety ratings and testing",
+        "url": "https://www.nhtsa.gov/ratings"
+      }
+    ]
+  },
+  "component": "src/components/experiments/ImpulseContactLab.tsx",
+  "cover": "src/components/covers/ImpulseContactLabCover.astro",
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["接住与停下的力", "同样停下来，为什么感觉到的力不同？", "近代物理实验"],
+      "en": [
+        "Forces in catching and stopping",
+        "Why can stopping produce different forces?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "接住与停下的力": "Forces in catching and stopping",
+    "同样停下来，为什么感觉到的力不同？": "Why can stopping produce different forces?",
+    "比较充气与放气气球，再分开车辆和理想乘员的停止过程。": "Compare inflated and deflated balloons, then separate a vehicle stop from an ideal occupant response.",
+    "近代物理": "Modern physics",
+    "动量与冲量": "Momentum and impulse"
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "balloon-filled",
+        "title": "接住直径约一米的气球",
+        "titleEn": "Catch an approximately one-meter balloon",
+        "caption": "封闭空气也随气球运动，不能只算乳胶质量。",
+        "captionEn": "Enclosed air moves with the balloon and contributes inertia.",
+        "zh": "教材要求接住一个充到直径约一米的大气球，再与同一乳胶放气后的情况比较。气球内空气并非没有质量：按球形体积和示例空气密度估算，内部空气约六百多克。这里从接触前速度相同开始比较，把乳胶与空气都计入动量；数值是教学估算，并非教材实测。",
+        "en": "The textbook compares catching an approximately one-meter inflated balloon with the same deflated latex. Its enclosed air has mass: spherical volume and an illustrative density give a little over six hundred grams. Starting from equal contact speed, the model includes both latex and air momentum. These numbers are teaching estimates, not measured textbook data.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "balloon-empty",
+        "title": "放气后，用相同速度比较",
+        "titleEn": "Compare the deflated balloon at equal speed",
+        "caption": "减少质量会减少需要改变的动量。",
+        "captionEn": "Less mass means a smaller momentum change to stop.",
+        "zh": "放掉空气后，保留同一份乳胶。为了分开质量和接触时间的影响，先规定两次接触前速度和停止时间相同，所需冲量与力便随质量减小。真实投接还会受到空气阻力、形状和手的退让影响，因此只说充气气球更大，不能直接推出每次接球的力一定多大。",
+        "en": "Deflation retains the same latex. First prescribe equal incoming speed and stopping time so reduced mass lowers both impulse and force. Real catches also depend on drag, shape and hand motion. Size alone therefore cannot determine the exact force experienced in every catch.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "balloon-time",
+        "title": "保持动量变化，延长停止时间",
+        "titleEn": "Keep momentum change fixed and lengthen the stop",
+        "caption": "冲量相同，平均力和峰值力可以改变。",
+        "captionEn": "The same impulse can accompany different average and peak forces.",
+        "zh": "现在保持充气质量和初速度，改变接住它所用的时间。总动量变化保持不变，力作用得更久时，平均力减小。图中采用同一半正弦力脉冲，峰值也相应下降。气球外形只作保持体积的接触示意，未求解乳胶弹性、气压与手部组织的完整耦合。",
+        "en": "Hold inflated mass and incoming speed fixed while changing stopping duration. Momentum change stays constant while a longer stop lowers average force. The prescribed half-sine pulse also lowers its peak. Balloon deformation preserves volume as a contact illustration, not a coupled model of latex, pressure and hand tissue.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "car-stop",
+        "title": "跟踪车辆在刚性壁障前的停止",
+        "titleEn": "Track a vehicle stopping at a rigid barrier",
+        "caption": "车体位移、减速度与受力来自同一停止过程。",
+        "captionEn": "Vehicle motion, deceleration and force follow one stopping history.",
+        "zh": "教材介绍约每小时五十千米的整车碰撞试验。这里以一千千克示例车的半余弦速度曲线示意，积分得到车体前进距离，求导得到减速度和合力。前端逐渐缩短表示压溃空间；这个过程没有真实材料和结构参数，不能冒充某辆车的碰撞测试。",
+        "en": "The textbook discusses vehicle impacts at about fifty kilometers per hour. A one-thousand-kilogram example uses a half-cosine velocity history. Integration gives displacement and differentiation gives acceleration and net force. Front shortening indicates crush space, without real structural or material parameters; it is not a specific vehicle test.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "car-duration",
+        "title": "比较不同停止时间的力脉冲",
+        "titleEn": "Compare force pulses for different stop durations",
+        "caption": "相同车速与质量给出相同总冲量，脉冲形状尺度不同。",
+        "captionEn": "Equal speed and mass give equal total impulse with different pulse scales.",
+        "zh": "改变车辆停止时间，比较完整力曲线。车最终都停下，所以力对时间的积分相同；时间越短，峰值越高，同时停止距离更小。黄色线固定在同一观察时刻，用于比较不同输入。页面仅展示这种力学关系，不能据此完成乘员保护、车身完整性或碰撞安全等级评价。",
+        "en": "Changing stopping time changes the force pulse. Every vehicle ends at rest, so the integrated impulse is the same, while shorter duration gives a higher peak and shorter distance. The yellow line holds one observation time for comparison. This relation alone cannot evaluate occupant protection, structural integrity or crash ratings.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "occupant-restraint",
+        "title": "分开车辆受力与乘员受力",
+        "titleEn": "Separate vehicle force from occupant force",
+        "caption": "乘员相对车体的运动由约束模型另行计算。",
+        "captionEn": "A separate restraint model determines occupant motion relative to the vehicle.",
+        "zh": "乘员不是车体合力除以人数。示意乘员用七十千克集中质量，通过理想弹簧和阻尼与座椅连接，随车辆减速产生相对位移和约束力。上方读乘员约束力，下方仍画车辆合力，二者不能混用。真实试验要测头部、胸部等多处响应；本模型不预测伤害，也没有模拟气囊展开。",
+        "en": "An occupant’s force is not vehicle force divided by passenger count. A seventy-kilogram point mass couples to the seat through an ideal spring and damper. Its relative motion produces a separate restraint force. The upper readout shows that force; the lower plot remains vehicle force. Real tests measure multiple body responses. Injury and airbag deployment are not modeled.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-balloon-inertia": {
+      "chapterIds": ["balloon-filled", "balloon-empty", "balloon-time"],
+      "label": {
+        "zh": "投接气球",
+        "en": "Catching a balloon"
+      }
+    },
+    "e1-car-crash-test": {
+      "chapterIds": ["car-stop", "car-duration", "occupant-restraint"],
+      "label": {
+        "zh": "汽车碰撞试验",
+        "en": "Vehicle crash experiment"
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+---
+import { paperDrop, type DropObject } from '../../models/free-fall-activities';
+const objects: DropObject[] = ['sheet', 'paper-ball', 'eraser'];
+const frames = objects.map((kind, i) => ({
+  kind,
+  x: 80 + i * 120,
+  y: 22 + (paperDrop(kind, 0.51).distance / 1.4) * 169,
+}));
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <path d="M40 36H360" stroke="#b8c7a7" stroke-dasharray="4 6"></path>
+  <path d="M35 205H365" stroke="#a4b995" stroke-width="2"></path>
+  {
+    frames.map(({ kind, x, y }) => (
+      <g>
+        <path d={`M${x} 22V${y}`} stroke="#c8d3b9" stroke-dasharray="2 6" />
+        <g transform={`translate(${x} ${y})`}>
+          {kind === 'sheet' && (
+            <g>
+              <path d="M-28 -7L21 -14 30 8-20 14Z" fill="#eee6cb" stroke="#beac80" />
+              <path d="M-16 -2L14 -7M-13 5L17 0" stroke="#cbbd97" />
+            </g>
+          )}
+          {kind === 'paper-ball' && (
+            <g>
+              <path
+                d="M-13 -5L-7 -14 5 -13 14 -5 12 8 3 14-10 9Z"
+                fill="#dfd2b1"
+                stroke="#b3a079"
+              />
+              <path
+                d="M-7 -14L-2 -2 14 -5M-2 -2L3 14M-13 -5L-2 -2-10 9"
+                fill="none"
+                stroke="#bba77d"
+              />
+            </g>
+          )}
+          {kind === 'eraser' && (
+            <g>
+              <path d="M-17 -9L9 -14 18 -6 18 10-9 14-17 7Z" fill="#90a79a" stroke="#6d8876" />
+              <path d="M-17 -9L-9 -1 18 -6M-9 -1V14" fill="none" stroke="#c1ceba" />
+            </g>
+          )}
+        </g>
+      </g>
+    ))
+  }
+</svg>

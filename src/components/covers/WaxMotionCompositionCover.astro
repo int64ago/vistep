@@ -1,0 +1,25 @@
+---
+const x = 252,
+  y = 95;
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <rect x="45" y="24" width="312" height="183" rx="14" fill="#e2e8d7" fill-opacity=".6"></rect>
+  <path d="M77 39V181H332" stroke="#afc09d"></path>
+  <path d="M77 181L252 95" stroke="#b79175" stroke-width="2"></path>
+  <path
+    d={`M${x - 13} 193V39Q${x - 13} 30 ${x} 30Q${x + 13} 30 ${x + 13} 39V193Z`}
+    fill="#e8f0e2"
+    fill-opacity=".5"
+    stroke="#a2b99a"
+    stroke-width="1.5"></path>
+  <rect x={x - 15} y="191" width="30" height="8" rx="2" fill="#b4a988"></rect>
+  <path d={`M${x - 8} ${y - 4}v9q8 5 16 0v-9Z`} fill="#be967d"></path><ellipse
+    cx={x}
+    cy={y - 4}
+    rx="8"
+    ry="3"
+    fill="#d6ad91"></ellipse>
+  <path d={`M77 ${y}H${x}V181`} stroke="#b4c6a1" stroke-dasharray="4 5"></path>
+  <path d={`M${x} ${y}l38-20`} stroke="#8ea578" stroke-width="2"></path>
+</svg>

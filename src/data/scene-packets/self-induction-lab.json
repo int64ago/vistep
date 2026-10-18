@@ -1,0 +1,174 @@
+{
+  "topic": {
+    "slug": "self-induction-lab",
+    "name": "自感与两灯实验",
+    "title": "断开电源以后，灯泡为什么还会亮？",
+    "question": "断开电源以后，灯泡为什么还会亮？",
+    "description": "比较两种真实接线，跟踪通电延迟、断电反向与有条件的闪亮。",
+    "color": "#799066",
+    "tag": "电流的连续变化",
+    "related": ["inductor-transient", "transformer-electric"],
+    "sources": [
+      {
+        "title": "OpenStax — Inductance",
+        "url": "https://openstax.org/books/college-physics-2e/pages/23-9-inductance"
+      }
+    ]
+  },
+  "component": "src/components/experiments/SelfInductionLab.tsx",
+  "cover": "src/components/covers/SelfInductionLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["自感与两灯实验", "自感", "通电延迟", "断电闪亮", "电流反向", "电流传感器"],
+      "en": [
+        "Self-induction lamp experiments",
+        "self inductance",
+        "lamp flash",
+        "RL circuit",
+        "current reversal"
+      ]
+    }
+  },
+  "translations": {
+    "自感与两灯实验": "Self-induction lamp experiments",
+    "断开电源以后，灯泡为什么还会亮？": "Why can a lamp shine after the source is disconnected?",
+    "比较两种真实接线，跟踪通电延迟、断电反向与有条件的闪亮。": "Compare two real circuits to follow delayed rise, reversed current and a conditional flash.",
+    "电流的连续变化": "Current continuity",
+    "通电时的两灯对照": "Two lamps at switch-on",
+    "断电后的闭合回路": "The closed loop after opening",
+    "自感线圈与灯泡的真实连接和电流方向": "Coil and lamp connections with current directions",
+    "电源接通，电流已稳定": "Source connected; current settled",
+    "电源断开，线圈与灯泡仍闭合": "Source removed; coil–lamp loop remains",
+    "电流传感器的有符号测量曲线": "Signed current-sensor traces",
+    "选择自感电路": "Choose a self-induction circuit",
+    "观察方式": "View",
+    "观察灯泡": "Watch the lamps",
+    "电流传感器": "Current sensor",
+    "开关动作后的时间": "Time after switching",
+    "线圈自感系数": "Coil inductance",
+    "线圈直流电阻": "Winding resistance",
+    "灯泡简化与能量去向": "Lamp approximation and energy transfer",
+    "灯泡以6欧固定电阻近似，亮度由电功率映射，不模拟灯丝温度滞后。通电对照的线圈电阻与可调电阻均为2欧，公共电阻1欧，已调至稳态等亮。断电电路中线圈电流连续，灯泡电流反向；只有线圈电阻足够小时才会闪亮。储存的磁场能最终耗散在线圈和灯泡中。": "Lamps are fixed six-ohm resistors; brightness follows power without thermal lag. The on-circuit has two-ohm winding and comparison resistances and a one-ohm common resistor, calibrated for equal steady brightness. Opening preserves coil current but reverses lamp current. A flash requires sufficiently low winding resistance. Magnetic energy dissipates in both resistances.",
+    "先调至稳态等亮": "Calibrate equal steady light",
+    "控制稳态电流，才有可比较的两盏灯。": "Match steady current before comparing the lamps.",
+    "重新接通": "Reconnect the source",
+    "线圈支路电流逐渐增加。": "Current in the inductive branch rises gradually.",
+    "传感器显示上升过程": "Measure the rising current",
+    "保持总电阻相同，比较有无电感。": "Keep total resistance fixed when removing inductance.",
+    "断开后的通路": "Trace the surviving loop",
+    "电源退出，线圈与灯泡仍然闭合。": "The source leaves, but the coil–lamp loop stays closed.",
+    "低电阻线圈的闪亮": "A low-resistance winding flashes",
+    "断开前线圈电流更大，才可能暂时更亮。": "A larger initial coil current permits a brighter flash.",
+    "不是每次都会闪亮": "Opening need not produce a flash",
+    "增大线圈电阻，反向仍在，闪亮消失。": "Higher winding resistance removes the flash, not reversal.",
+    "测出电流反向": "Measure current reversal",
+    "电流传感器保留电流的正负号。": "The current sensor preserves the sign."
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "on-calibrate",
+        "title": "先调至稳态等亮",
+        "titleEn": "Calibrate equal steady light",
+        "caption": "控制稳态电流，才有可比较的两盏灯。",
+        "captionEn": "Match steady current before comparing the lamps.",
+        "zh": "先让开关保持闭合，调节对照支路，使两盏同规格灯泡一样亮。线圈除了自感也有电阻，所以不能直接拿没有匹配电阻的另一盏灯比较。现在两条支路稳态电流相同。",
+        "en": "Keep the source connected and adjust the reference branch until identical lamps have equal brightness. A coil has resistance as well as inductance, so the resistive reference must be matched. Both steady branch currents now agree.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "on-rise",
+        "title": "重新接通",
+        "titleEn": "Reconnect the source",
+        "caption": "线圈支路电流逐渐增加。",
+        "captionEn": "Current in the inductive branch rises gradually.",
+        "zh": "重新接通电源。对照灯很快亮起，串有线圈的灯泡逐渐变亮。变化的电流在线圈自身产生电动势，阻碍这次增加。最终电流稳定，两盏灯又回到相同亮度。",
+        "en": "Reconnect the source. The reference lamp responds promptly while the coil-branch lamp brightens gradually. Changing current induces an emf in the coil that opposes this increase. At steady current, equal brightness returns.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24
+      },
+      {
+        "id": "on-sensor",
+        "title": "传感器显示上升过程",
+        "titleEn": "Measure the rising current",
+        "caption": "保持总电阻相同，比较有无电感。",
+        "captionEn": "Keep total resistance fixed when removing inductance.",
+        "zh": "把灯光换成电流传感器的曲线。绿色曲线显示串有线圈时的电流，浅色虚线是总电阻相同的纯电阻对照。自感改变达到稳态的过程；相同电源和总电阻仍然给出相同的最终电流。",
+        "en": "Replace the light observation with a current sensor. The green trace includes the coil; the pale reference removes inductance while preserving total resistance. Inductance changes the approach to steady current, while the same source and resistance determine the final value.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48
+      },
+      {
+        "id": "off-loop",
+        "title": "断开后的通路",
+        "titleEn": "Trace the surviving loop",
+        "caption": "电源退出，线圈与灯泡仍然闭合。",
+        "captionEn": "The source leaves, but the coil–lamp loop stays closed.",
+        "zh": "注意这次接线已经不同：线圈与灯泡并联，开关只切断电源支路。开关断开后，沿着导线追踪，线圈和灯泡仍组成闭合回路。线圈电流保持原方向，经过灯泡时却与原来方向相反。",
+        "en": "This circuit is different: the coil and lamp are parallel, and the switch opens only the source branch. Follow the wires after opening. A closed coil–lamp loop survives. Coil current keeps its direction, but it passes through the lamp opposite to the previous lamp current.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72
+      },
+      {
+        "id": "off-flash",
+        "title": "低电阻线圈的闪亮",
+        "titleEn": "A low-resistance winding flashes",
+        "caption": "断开前线圈电流更大，才可能暂时更亮。",
+        "captionEn": "A larger initial coil current permits a brighter flash.",
+        "zh": "线圈电阻只有两欧，低于灯泡的六欧。电源断开前，线圈中储存的电流比灯泡原来的电流大。它转入灯泡，功率短时增加，然后随着磁场能耗散而衰减。能量来自原来储存在磁场中的能量。",
+        "en": "The two-ohm winding has less resistance than the six-ohm lamp. Before opening, it carries more current than the lamp. That current enters the lamp and briefly raises its power, then decays as stored magnetic energy dissipates.",
+        "seconds": 24,
+        "chapterAt": 96,
+        "at": 96
+      },
+      {
+        "id": "off-no-flash",
+        "title": "不是每次都会闪亮",
+        "titleEn": "Opening need not produce a flash",
+        "caption": "增大线圈电阻，反向仍在，闪亮消失。",
+        "captionEn": "Higher winding resistance removes the flash, not reversal.",
+        "zh": "把线圈电阻增加到十欧，再重复同样步骤。原线圈电流更小，断开后灯泡不会比原来更亮。这个反例提醒我们：自感保证电流不能突变，并不保证每次断电都会看见闪亮。",
+        "en": "Increase winding resistance to ten ohms and repeat. The initial coil current is smaller, so the lamp does not become brighter on opening. This counterexample separates continuity of current from a flash: self-induction does not guarantee brighter light.",
+        "seconds": 24,
+        "chapterAt": 120,
+        "at": 120
+      },
+      {
+        "id": "off-sensor",
+        "title": "测出电流反向",
+        "titleEn": "Measure current reversal",
+        "caption": "电流传感器保留电流的正负号。",
+        "captionEn": "The current sensor preserves the sign.",
+        "zh": "最后用电阻和电流传感器替代灯泡观察。开关断开以前规定电阻电流为正方向，断开后的曲线落到负值，再逐渐回到零。曲线直接显示亮度无法区分的方向变化。",
+        "en": "Finally observe a resistor with a current sensor. Define the original resistor current as positive. After opening, the trace is negative and gradually returns to zero. The signed measurement exposes a reversal that brightness alone cannot show.",
+        "seconds": 24,
+        "chapterAt": 144,
+        "at": 144
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-self-induction-switch-on": {
+      "chapterIds": ["on-calibrate", "on-rise", "on-sensor"],
+      "label": {
+        "zh": "通电自感与两灯对照",
+        "en": "Switch-on induction and two lamps"
+      }
+    },
+    "e2-self-induction-switch-off": {
+      "chapterIds": ["off-loop", "off-flash", "off-no-flash", "off-sensor"],
+      "label": {
+        "zh": "断电自感与电流反向",
+        "en": "Switch-off induction and current reversal"
+      }
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "topic": {
+    "slug": "sound-measurement-lab",
+    "name": "声音的频率与传播测量",
+    "title": "从一段波形到一湖钟声，怎样测量声音？",
+    "question": "从一段波形到一湖钟声，怎样测量声音？",
+    "description": "按相同时间窗比较do与sol的频率，主动采集自己的声音，再用闪光和水下钟声复现教材测速。",
+    "color": "#92a286",
+    "tag": "把次数和时间真正对齐",
+    "related": ["mechanical-wave-lab", "ultrasound"],
+    "sources": [
+      {
+        "title": "Geneva Science History Museum — Jean-Daniel Colladon",
+        "url": "https://institutions.ville-geneve.ch/fileadmin/user_upload/mhn/documents/Musee_histoire_des_sciences/8_Colladon_Angl_2.pdf"
+      },
+      {
+        "title": "MDN — Time-domain audio samples",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatTimeDomainData"
+      },
+      {
+        "title": "OpenStax — Sound waves",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/17-1-sound-waves"
+      }
+    ]
+  },
+  "component": "src/components/experiments/SoundMeasurementLab.tsx",
+  "cover": "src/components/covers/SoundMeasurementLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": [
+        "声音的频率与传播测量",
+        "录音波形",
+        "do sol",
+        "频率比",
+        "日内瓦湖",
+        "水中声速",
+        "听音器"
+      ],
+      "en": [
+        "Measuring sound frequency and propagation",
+        "recorded waveform",
+        "do sol",
+        "frequency ratio",
+        "Lake Geneva",
+        "underwater sound",
+        "listening horn"
+      ]
+    }
+  },
+  "translations": {
+    "声音的频率与传播测量": "Measuring sound frequency and propagation",
+    "从一段波形到一湖钟声，怎样测量声音？": "How do waveforms and a bell across a lake reveal sound?",
+    "按相同时间窗比较do与sol的频率，主动采集自己的声音，再用闪光和水下钟声复现教材测速。": "Compare do and sol over the same time window, capture your own sound, and reproduce the textbook’s flash-and-underwater-bell timing experiment.",
+    "把次数和时间真正对齐": "Align the counts and the time",
+    "湖上闪光与水下钟声": "A flash and an underwater bell",
+    "同一时间窗比较两段声音": "Compare sounds over equal time",
+    "教材模拟：14千米、10秒": "Textbook simulation: 14 km, 10 s",
+    "合成do、sol示例": "Synthetic do and sol examples",
+    "麦克风采集与示例": "Microphone clips and examples",
+    "计算机显示等时长声音波形，或两船用闪光和水下钟声计时": "Equal-duration sound waveforms on a computer, or two boats timing a flash and an underwater bell",
+    "共同时间窗": "Shared time window",
+    "听到水下钟声，停止计时": "Hear the bell; stop the clock",
+    "看到闪光，开始计时": "See the flash; start the clock",
+    "同窗周期数": "Cycles in the same window",
+    "声音波形比较": "Compare waveforms",
+    "水中声速测量": "Measure underwater sound speed",
+    "第一段包含的周期数": "Cycles of the first sound",
+    "时间窗缩放": "Time-window scale",
+    "采集声音A": "Capture sound A",
+    "采集声音B": "Capture sound B",
+    "试听A": "Listen to A",
+    "试听B": "Listen to B",
+    "恢复教材合成示例": "Restore textbook synthetic examples",
+    "点击后才请求麦克风；短片段仅保存在当前页面。": "The microphone is requested only after your click. Short clips remain in this page.",
+    "等待麦克风，随后采集短片段": "Waiting for microphone access before capturing a short clip",
+    "正在采集，请保持一个音": "Capturing; hold one steady note",
+    "采集完成，波形保存在本页": "Captured; the waveform stays in this page",
+    "未识别稳定音高，仍可观察实际波形": "No stable pitch detected; the actual waveform is still shown",
+    "麦克风不可用，可继续使用合成示例": "Microphone unavailable; synthetic examples remain available",
+    "声音播放不可用，波形仍可观察": "Audio playback unavailable; the waveform remains visible",
+    "船间距离": "Distance between boats",
+    "看到光后等候声音": "Sound delay after seeing the light",
+    "计时进度": "Elapsed time",
+    "示例、实测与历史数据": "Examples, measurements and history",
+    "波形示例使用教材某乐律中的264与396赫兹，频率比为3比2；它们是合成信号，不是假称录音。麦克风片段以自相关估计80至1000赫兹的稳定基频，无稳定周期时不填写频率。湖上14千米、10秒来自教材模拟题，并非原历史实测记录；装置与横纵比例为示意。光传播时间约47微秒，对本题近似可忽略。": "The synthetic waveform examples use the textbook tuning’s 264 and 396 Hz, a 3:2 ratio; they are not presented as recordings. Autocorrelation estimates stable microphone fundamentals from 80 to 1000 Hz, leaving pitch blank when none is detected. The 14 km and 10 s lake values come from the textbook’s simulated exercise, not the original historical measurements. Apparatus and horizontal/vertical scales are illustrative. Light travel takes about 47 microseconds, negligible for this exercise.",
+    "先保存一个do音": "Start with a do example",
+    "这条图线是同一测量位置的信号随时间变化。": "The trace shows a signal at one measuring point changing over time.",
+    "并排保存一个sol音": "Add a sol example",
+    "同样的时间宽度里，sol完成更多次振动。": "Over the same duration, sol completes more oscillations.",
+    "框住do的十个周期": "Frame ten do cycles",
+    "同一窗口中do有10个周期，sol有15个周期。": "The same window contains ten do cycles and fifteen sol cycles.",
+    "同时发出光与水下钟声": "Emit a flash and underwater sound together",
+    "接收船看到闪光后立即开始计时。": "The receiving boat starts timing when it sees the flash.",
+    "等待水下声音到达": "Wait for the underwater sound",
+    "钟声在水中传播，计时器记录两次接收之间的延迟。": "Sound travels through water while the clock measures the arrival delay.",
+    "用路程除以传播时间": "Divide distance by travel time",
+    "14千米除以10秒，得到约1400米每秒。": "Fourteen kilometres divided by ten seconds gives about 1400 metres per second."
+  },
+  "narration": {
+    "duration": 156,
+    "cues": [
+      {
+        "id": "sound-record-do",
+        "title": "先保存一个do音",
+        "titleEn": "Start with a do example",
+        "caption": "这条图线是同一测量位置的信号随时间变化。",
+        "captionEn": "The trace shows a signal at one measuring point changing over time.",
+        "zh": "教材建议录下两个乐音，再暂停观察振动图像。先看这里明确标注的合成do示例，频率是二百六十四赫兹。横轴是时间，曲线不是声音在空间中走过的道路。自由探索可以真正采集自己的短片段。",
+        "en": "The textbook suggests recording two notes and pausing their waveforms. Begin with this explicitly synthetic do example at two hundred sixty-four hertz. The horizontal axis is time: the curve is not the sound’s path through space. Exploration can capture a real short microphone clip.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "sound-record-sol",
+        "title": "并排保存一个sol音",
+        "titleEn": "Add a sol example",
+        "caption": "同样的时间宽度里，sol完成更多次振动。",
+        "captionEn": "Over the same duration, sol completes more oscillations.",
+        "zh": "再加入三百九十六赫兹的sol示例。两条图使用完全相同的时间宽度，因此可以比较周期的长短。sol在同样时间里完成的振动更多，说明频率更高；不要把波形在竖直方向的高低当成音调。",
+        "en": "Add the sol example at three hundred ninety-six hertz. Both traces share exactly the same time width, allowing a fair period comparison. More sol oscillations fit into that duration, showing a higher frequency. Vertical amplitude should not be mistaken for pitch.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "sound-count",
+        "title": "框住do的十个周期",
+        "titleEn": "Frame ten do cycles",
+        "caption": "同一窗口中do有10个周期，sol有15个周期。",
+        "captionEn": "The same window contains ten do cycles and fifteen sol cycles.",
+        "zh": "把矩形时间窗设成do的十个完整周期，约三十七点八八毫秒。在同一时间内，sol完成十五个周期，所以频率比是十五比十，也就是三比二。这采用教材列出的某种乐律数值，不把它说成所有调律都完全相同。",
+        "en": "Set the rectangular window to ten complete do cycles, about thirty-seven point eight eight milliseconds. Fifteen sol cycles fit into that same interval, giving a frequency ratio of three to two. These are the textbook’s particular tuning values, not a claim about every tuning system.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "lake-flash",
+        "title": "同时发出光与水下钟声",
+        "titleEn": "Emit a flash and underwater sound together",
+        "caption": "接收船看到闪光后立即开始计时。",
+        "captionEn": "The receiving boat starts timing when it sees the flash.",
+        "zh": "换成教材模拟的湖上实验。两条船相距十四千米，发射船敲响水下钟，同时发出闪光。另一船通过水下听音器接收钟声，并在看到光时开始计时。光的传播时间相对于十秒的声延迟很小。",
+        "en": "Now use the textbook’s simulated lake experiment. Two boats are fourteen kilometres apart. Strike the submerged bell and emit a flash together. The receiving boat listens through an underwater horn and starts its clock on seeing the light, whose travel time is tiny compared with the sound delay.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "lake-delay",
+        "title": "等待水下声音到达",
+        "titleEn": "Wait for the underwater sound",
+        "caption": "钟声在水中传播，计时器记录两次接收之间的延迟。",
+        "captionEn": "Sound travels through water while the clock measures the arrival delay.",
+        "zh": "观察水下波前向听音器靠近。画面压缩了船间的巨大距离，纵向水深也不是同比例。计时器显示的是模拟的实际秒数。钟声到达听音器时停止计时，教材给出的等待时间是十秒。",
+        "en": "Watch the underwater front approach the listening horn. The drawing compresses the large boat separation and uses a different vertical scale. The clock shows the simulated elapsed seconds. Stop when the bell is heard; the textbook gives a ten-second delay.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "lake-speed",
+        "title": "用路程除以传播时间",
+        "titleEn": "Divide distance by travel time",
+        "caption": "14千米除以10秒，得到约1400米每秒。",
+        "captionEn": "Fourteen kilometres divided by ten seconds gives about 1400 metres per second.",
+        "zh": "忽略约四十七微秒的光程，十四千米除以十秒得到约每秒一千四百米。这里复现的是教材模拟数据，不是把它当作当年原始记录。自由探索可改变距离与接收延迟，检查计算中千米和米是否统一。",
+        "en": "Neglecting about forty-seven microseconds of light travel, divide fourteen kilometres by ten seconds to obtain about fourteen hundred metres per second. These are the textbook’s simulated values, not the historical raw record. Change distance and delay in exploration while keeping the units consistent.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-sound-wave-recording": {
+      "chapterIds": ["sound-record-do", "sound-record-sol", "sound-count"],
+      "label": {
+        "zh": "用计算机呈现声音的振动图像",
+        "en": "Display recorded sound waveforms with a computer"
+      }
+    },
+    "e1-geneva-lake-sound": {
+      "chapterIds": ["lake-flash", "lake-delay", "lake-speed"],
+      "label": {
+        "zh": "复现湖上水中声速测量",
+        "en": "Reproduce the textbook lake sound-speed measurement"
+      }
+    }
+  }
+}

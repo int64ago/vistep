@@ -1,0 +1,27 @@
+---
+import { newtonCart } from '../../models/newton-second-law-lab';
+const s = newtonCart(0.6, { cartMass: 0.6, hangerMass: 0.02 });
+const x = 236 - s.position * 350;
+const weightY = 138 + s.position * 350;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  <path d="M64 124L333 112L347 129L75 143Z" fill="#d9cfb2" stroke="#c6bea2"></path>
+  <path d="M78 141V205M327 130V190" stroke="#b6b49a" stroke-width="6"></path>
+  <path d={`M${x + 25} 109L321 103L329 108L${x + 25} 116Z`} fill="#f2eddd"></path>
+  <rect x="310" y="91" width="25" height="21" rx="4" fill="#9fb195"></rect>
+  <circle cx={x - 12} cy="122" r="6" fill="#839e79"></circle><circle
+    cx={x + 19}
+    cy="120"
+    r="6"
+    fill="#839e79"></circle>
+  <path
+    d={`M${x - 22} 101L${x + 20} 98L${x + 31} 108L${x - 14} 113Z`}
+    fill="#c8d9b3"
+    stroke="#9eb58b"></path>
+  <path d={`M${x - 14} 113L${x + 31} 108V119L${x - 14} 123Z`} fill="#a7c094"></path>
+  <path d={`M${x - 22} 109L66 113A8 8 0 0 0 58 121V${weightY}`} stroke="#9f9272" stroke-width="1.5"
+  ></path>
+  <circle cx="66" cy="121" r="8" stroke="#8fa380" fill="#c7d0b1"></circle>
+  <rect x="50" y={weightY} width="16" height="18" fill="#b69b71"></rect>
+</svg>

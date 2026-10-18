@@ -1,0 +1,22 @@
+<h2 id="understand">Separate mass, speed and stopping time</h2>
+
+Enclosed air contributes to balloon inertia. Even a fixed momentum change can correspond to different average forces when stopping time changes. Vehicle experiments also require separate dynamics for the body and occupant.
+
+<h2 id="try">Compare controlled conditions</h2>
+
+Compare inflation at equal speed and contact duration, then vary duration. Keep the vehicle at 50 km/h with its illustrative mass while changing the stop. Inspect occupant displacement and restraint force independently, and pause at any observation time.
+
+<h2 id="deeper">Model assumptions</h2>
+
+<details>
+<summary>Prescribed stopping history and independent occupant dynamics</summary>
+
+<div className="formula">v=v₀[1+cos(πt/T)]/2; F=−mπv₀ sin(πt/T)/(2T); J=−mv₀</div>
+
+These apply for 0≤t≤T, followed by rest. Stopping distance is v₀T/2. The textbook specifies an approximately 1 m balloon; latex mass 0.100 kg and air density 1.2 kg/m³ are illustrative assumptions, giving enclosed air mass ρπD³/6≈0.628 kg. Only contact is modeled, excluding flight drag, surrounding-air added mass and vertical buoyancy. An equal-volume ellipsoid illustrates contact without solving material deformation.
+
+The example vehicle is 1000 kg at 50 km/h with T=0.04–0.16 s. Prescribed deceleration drives both chassis displacement and front shortening on one geometric scale. The occupant has mass 70 kg, k=18000 N/m and c=2√(mk). Relative displacement obeys m q″+c q′+kq=−m acar. Midpoint integration uses 0.5 ms steps to 0.6 s. The upper force is −kq−cq′; the lower plot is vehicle force 1000acar. A bidirectional linear spring-damper represents an equivalent seat/restraint system, not a tension-only seatbelt.
+
+Multiple body parts, airbags, plastic deformation, structural failure and actual test protocols are excluded. This distinguishes impulse, force histories and separate systems; it does not predict injury or assign safety ratings.
+
+</details>

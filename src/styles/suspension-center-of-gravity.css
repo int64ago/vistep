@@ -1,0 +1,117 @@
+.suspension-lab {
+  max-width: 740px;
+  margin: auto;
+  padding: 0 16px;
+  color: #617851;
+}
+.suspension-lab header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 16px;
+  border-bottom: 1px solid #dde5d3;
+  padding-bottom: 12px;
+}
+.suspension-lab header p {
+  font-size: 18px;
+  margin: 0;
+}
+.suspension-object {
+  display: block;
+  width: 100%;
+  height: 330px;
+}
+.suspension-key {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 16px;
+}
+.suspension-key span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.suspension-key i {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #b17f56;
+}
+.suspension-key span + span i {
+  background: #5e846c;
+}
+.suspension-result {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 18px 0 0;
+}
+.suspension-controls {
+  display: grid;
+  gap: 22px;
+  margin: 24px auto;
+}
+.suspension-note {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #7e8e70;
+}
+.suspension-controls .segmented {
+  flex-wrap: wrap;
+}
+@media (max-width: 760px) {
+  .suspension-lab {
+    padding: 0 5px;
+  }
+  .suspension-lab header {
+    display: block;
+    text-align: center;
+  }
+  .suspension-lab header p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .suspension-object {
+    height: 285px;
+  }
+  .suspension-key {
+    gap: 16px;
+    font-size: 16px;
+  }
+  .suspension-key i {
+    width: 16px;
+  }
+  .suspension-result {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .suspension-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .suspension-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .suspension-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .suspension-lab > header > span,
+  .showcase[data-mode='watch'] .suspension-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .suspension-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .suspension-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .suspension-result {
+    display: none;
+  }
+}

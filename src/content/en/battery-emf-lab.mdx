@@ -1,0 +1,31 @@
+<h2 id="understand">Terminal voltage changes with load</h2>
+
+Within a specified operating range, a source can be represented by EMF E and internal resistance r. More current increases internal drop Ir, reducing terminal voltage U = E − Ir. Adding parallel lamps to one battery can therefore reduce the voltage across each lamp. An ideal zero-resistance source is the counterexample: this dimming would not occur.
+
+The dry-cell circuit measures U and I directly. The pear cell uses a voltmeter and known resistance box to infer I = U/R. The orange-juice cell instead uses a microammeter and box, calculating box voltage U = IR. That last fit includes the meter’s 100 Ω resistance in the slope; subtract it to infer the cell alone.
+
+<h2 id="try">Follow the distinct apparatus</h2>
+
+- Parallel lamps: compare zero and nonzero source resistance.
+- Dry cell: move the rheostat contact, collect several points and magnify voltage changes. A truncated axis still requires the actual coordinates when calculating slope.
+- Fruit cells: change electrode immersion and spacing to observe a qualitative output trend. Pear and orange juice retain different voltmeter and microammeter connections.
+- Power bank: compare measured load ranges, charge states and current limiting. A regulated output behaves differently from a bare lithium cell.
+
+Power-bank gold points at 100%, 80% and 60% charge are transcribed from textbook pages 132–133. Optional curves at 40%, 20% and 5% are reconstructed from its parameter tables and labeled accordingly. The six-state comparison uses textbook table 3. These findings describe this example over its studied range, not every bank at every load.
+
+<h2 id="deeper">Models, loading and evidence limits</h2>
+
+<details>
+<summary>Which readings are modeled and which are textbook data?</summary>
+
+The dry-cell model has E = 1.5 V and r = 1 Ω, with a 10 kΩ voltmeter and 0.1 Ω ammeter. Finite voltmeter loading slightly reduces the fitted intercept and slope when load current is used: both are divided by 1 + r/Rᵥ. Lamps are fixed 6 Ω resistances; brightness represents relative electrical power.
+
+The pear-cell value E = 0.95 V is illustrative. Spacing divided by immersion represents only a resistance trend; electrochemistry, polarization and time drift are omitted. Its voltmeter is 10 MΩ. Orange-cell gold points come from textbook page 92; green points use approximate E = 0.95 V and r = 1200 Ω. The textbook fit must still have the 100 Ω microammeter contribution removed.
+
+A power-bank output line is an operating-range equivalent, not a direct measurement of chemical EMF. The separate 2 A current-limit demonstration is a model counterexample, not a specification of the textbook device or extra measured data. Displayed external resistance includes the protection resistor.
+
+The plot uses mathematical extrapolation; it does not measure the intercept by shorting a source.
+
+</details>
+
+Technical sources: [OpenStax electromotive force](https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force) and [TI power-bank limiting and protection reference design](https://www.ti.com/tool/PMP9776). Textbook: required volume 3, pages 83, 89–92 and 131–135.

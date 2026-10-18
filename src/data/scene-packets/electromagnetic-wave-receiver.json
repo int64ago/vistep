@@ -1,0 +1,112 @@
+{
+  "topic": {
+    "slug": "electromagnetic-wave-receiver",
+    "name": "捕捉电磁波",
+    "title": "放电之后，远处为什么有了响应？",
+    "question": "放电之后，远处为什么有了响应？",
+    "description": "保留教材的平行铜管天线，追踪发射波包、传播延迟、距离变化与接收检波。",
+    "color": "#bdc9ae",
+    "tag": "电磁波 · 天线 · 接收",
+    "related": ["induction-conditions-lab", "magnetic-field-survey"],
+    "sources": [
+      {
+        "title": "OpenStax — Plane Electromagnetic Waves",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/16-2-plane-electromagnetic-waves"
+      },
+      {
+        "title": "OpenStax — Energy Carried by Electromagnetic Waves",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/16-3-energy-carried-by-electromagnetic-waves"
+      },
+      {
+        "title": "Analog Devices — Square-law RF detection",
+        "url": "https://www.analog.com/en/resources/technical-articles/max22058212detecting-high-peaktoaverage-ratio-signals.html"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["捕捉电磁波", "电磁波接收", "铜管天线", "射频检波"],
+      "en": [
+        "Detecting Electromagnetic Waves",
+        "RF reception",
+        "copper-tube antennas",
+        "RF detector"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ElectromagneticWaveReceiver.tsx",
+  "cover": "src/components/covers/ElectromagneticWaveReceiverCover.astro",
+  "translations": {
+    "捕捉电磁波": "Detecting Electromagnetic Waves",
+    "放电之后，远处为什么有了响应？": "Why does a distant receiver respond after a discharge?",
+    "保留教材的平行铜管天线，追踪发射波包、传播延迟、距离变化与接收检波。": "Follow a finite RF packet through the textbook’s parallel copper-tube antennas, propagation delay, distance changes and detection.",
+    "电磁波 · 天线 · 接收": "Electromagnetic waves · Antennas · Reception",
+    "发射变化先发生，接收响应要等待传播": "Emission happens first; reception waits for propagation",
+    "对齐同一脉冲时刻，距离越远响应越弱": "Compare the same packet phase: greater distance weakens reception",
+    "源停止放电后，已发出的波仍继续传播": "After emission stops, the outgoing wave keeps traveling",
+    "改变距离或观察时刻，追踪同一个发射脉冲": "Change distance or observation time to follow one emitted packet",
+    "两组平行铜管组成发射和接收天线，接收表含整流检波示意": "Parallel copper-tube pairs transmit and receive; the receiver assumes RF detection",
+    "传播延迟": "Propagation delay",
+    "检波相对示数": "Relative detected response",
+    "时间放慢；铜管与间距分别放大。场线段显示极性与到达，不按真实振幅缩放。": "Time is slowed and antenna size and spacing magnified separately. Field strokes show polarity and arrival, not true amplitude to scale.",
+    "两天线距离": "Antenna separation",
+    "发射后的观察时刻": "Observation time after emission",
+    "是否发射这个脉冲": "Emit this packet",
+    "发射脉冲": "Emit packet",
+    "无发射对照": "No-emission control",
+    "接收仪表与远场模型": "Receiver and far-field model",
+    "教材没有给出电流表内部结构。这里用平方律检波与平滑响应解释相对示数，不能把裸直流表当成能直接读出高频交变电流的仪器。保持两天线平行，只在理想辐射远场比较 E 随 1/r、检波示数随 1/r² 的变化；忽略近场、反射、多径、频率响应和天线失谐。火花用有限时长的示意射频波包代替，不声称复原赫兹的历史仪器。": "The textbook does not specify the meter internals. Square-law detection and smoothing explain the relative indication; a bare DC meter cannot directly read high-frequency AC this way. Parallel antennas are compared only in an ideal radiative far field, with E proportional to1/r and detected response to1/r². Near fields, reflections, multipath, frequency response and detuning are omitted. A finite illustrative RF packet represents the spark; this is not a reconstruction of Hertz’s historical apparatus."
+  },
+  "narration": {
+    "duration": 76,
+    "cues": [
+      {
+        "id": "packet-arrival",
+        "title": "发射与到达",
+        "titleEn": "Emission and arrival",
+        "caption": "电磁波传播需要时间。",
+        "captionEn": "Propagation takes time.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "教材的两组铜管分别组成发射和接收天线。发射端间隙放电后，变化向外传播，接收端要等波到达才有响应。这里把纳秒过程极度放慢。场的线段表示极性和到达顺序，不是空气或电荷从发射管一路流到接收管。",
+        "en": "The textbook’s copper-tube pairs form transmitting and receiving antennas. After a discharge at the transmitter gap, the disturbance travels outward and the receiver responds only after arrival. Nanosecond events are greatly slowed here. Field strokes indicate polarity and arrival, not air or electric charges flowing all the way between antennas."
+      },
+      {
+        "id": "receiver-distance",
+        "title": "改变天线距离",
+        "titleEn": "Change antenna separation",
+        "caption": "对齐同一波包阶段，再比较响应。",
+        "captionEn": "Align the packet phase before comparing response.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26.4,
+        "zh": "保持两组铜管平行，逐渐增大距离。为了公平比较，画面对齐同一脉冲到达后的相同时刻。理想远场的电场振幅随距离减小，平方律检波后的相对响应下降得更快。实际房间里还会有反射和近场影响，不能把这里的精确比例直接当成实测结果。",
+        "en": "Keep both antenna pairs parallel and increase separation. For a fair comparison, observations use the same time after packet arrival. Ideal far-field electric amplitude falls with distance, and square-law detected response falls faster. Reflections and near-field effects can alter classroom measurements; the model’s exact ratio is not claimed as measured data."
+      },
+      {
+        "id": "packet-after-source",
+        "title": "发射停止之后",
+        "titleEn": "After emission stops",
+        "caption": "在途电磁波继续前进，接收响应随后衰减。",
+        "captionEn": "The wave continues in transit; the detected response then decays.",
+        "seconds": 24,
+        "chapterAt": 52,
+        "at": 52.4,
+        "zh": "发射端的这一次放电已经结束，正在途中传播的波却不会立刻消失。波包继续到达接收天线，随后接收指示逐渐衰减。这里使用带检波与平滑的射频指示模型，因为普通直流表不能直接把高频交变电流读成稳定示数。教材没有给出表内电路，所以这项假设单独说明。",
+        "en": "Emission has ended, but the wave already in transit does not vanish instantly. The packet continues to the receiver, followed by a decaying indication. This model includes RF detection and smoothing because a bare DC meter cannot directly display stable high-frequency AC strength. The textbook does not specify its internal circuit, so that assumption is explicit."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-electromagnetic-wave-receiver": {
+      "chapterIds": ["packet-arrival", "receiver-distance", "packet-after-source"],
+      "label": {
+        "zh": "捕捉电磁波",
+        "en": "Detecting electromagnetic waves"
+      }
+    }
+  }
+}

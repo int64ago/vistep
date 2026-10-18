@@ -1,0 +1,47 @@
+---
+import {
+  fieldAt,
+  fieldFragments,
+  fragmentAngle,
+  fieldSources,
+} from '../../models/electric-field-mapping';
+const sx = (v: number) => 200 + 900 * v,
+  sy = (v: number) => 115 - 720 * v;
+const rods = fieldFragments
+  .map((p) => {
+    const f = fieldAt('dipole', p.x, p.y);
+    return { ...p, f, a: fragmentAngle(p.initial, f.ex, f.ey, 120) };
+  })
+  .filter(
+    (p) =>
+      p.f.valid && !fieldSources('dipole').some((s) => Math.hypot(p.x - s.x, p.y - s.y) < 0.024),
+  );
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><defs
+    ><radialGradient id="efm-oil"
+      ><stop stop-color="#f5edc6"></stop><stop offset="1" stop-color="#dddcb6" stop-opacity=".5"
+      ></stop></radialGradient
+    ></defs
+  ><rect x="23" y="12" width="354" height="206" rx="45" fill="url(#efm-oil)" stroke="#c5cdad"
+  ></rect><path d="M36 71Q36 25 82 25H321" stroke="#fffdf2" stroke-width="3" opacity=".8"></path>{
+    rods.map((p) => (
+      <path
+        d={`M${sx(p.x - 0.004 * Math.cos(p.a))} ${sy(p.y - 0.004 * Math.sin(p.a))}L${sx(p.x + 0.004 * Math.cos(p.a))} ${sy(p.y + 0.004 * Math.sin(p.a))}`}
+        stroke="#827c50"
+        stroke-width="2.3"
+        stroke-linecap="round"
+        opacity=".7"
+      />
+    ))
+  }<circle cx={sx(-0.07)} cy="115" r="14" fill="#dfd0aa" stroke="#b99c6a"></circle><circle
+    cx={sx(0.07)}
+    cy="115"
+    r="14"
+    fill="#c2d0c3"
+    stroke="#91a9a7"></circle><path
+    d={`M${sx(-0.07) - 4} 115h8m-4-4v8M${sx(0.07) - 4} 115h8`}
+    stroke="#8c8365"
+    stroke-width="1.5"></path></svg
+>

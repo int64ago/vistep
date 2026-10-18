@@ -1,0 +1,52 @@
+---
+import { bicycleCircular } from '../../models/bicycle-circular-motion';
+import { sprocketOutline } from '../../models/mechanisms';
+const s = bicycleCircular(0.32),
+  c = s.chain;
+const points = Array.from({ length: c.count }, (_, i) => c.sample(i + s.phase));
+---
+
+<svg viewBox="-.36 -.2 .7 .4" aria-hidden="true" fill="none">
+  <g transform="scale(1,-1)">
+    {
+      [
+        [40, -c.distance / 2, s.frontAngle],
+        [20, c.distance / 2, s.rearAngle],
+      ].map(([n, x, a]) => (
+        <g transform={`translate(${x} 0) rotate(${(a * 180) / Math.PI})`}>
+          <>
+            <path
+              d={
+                sprocketOutline(n, c.pitch)
+                  .map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`)
+                  .join(' ') + 'Z'
+              }
+              fill={n === 40 ? '#bbcbae' : '#c8bc98'}
+              stroke="#99ad8b"
+              stroke-width=".0012"
+            />
+            <circle r=".011" fill="#8ea580" />
+          </>
+        </g>
+      ))
+    }
+    {
+      points.map((a, i) => {
+        const b = points[(i + 1) % points.length];
+        return (
+          <g>
+            <>
+              <path
+                d={`M${a.x} ${a.y}L${b.x} ${b.y}`}
+                stroke={i === 0 ? '#b3945c' : '#8c9f7e'}
+                stroke-width=".004"
+                stroke-linecap="round"
+              />
+              <circle cx={a.x} cy={a.y} r=".0018" fill="#e1e8d4" />
+            </>
+          </g>
+        );
+      })
+    }
+  </g>
+</svg>

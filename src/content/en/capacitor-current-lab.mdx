@@ -1,0 +1,27 @@
+<h2 id="understand">The area under current records transferred charge</h2>
+
+Current is charge transferred per unit time. Over a short interval the charge is approximately IΔt. Adding these small areas gives the transferred total. A current sensor records the capacitor's discharge as an I–t curve; its area corresponds to Q.
+
+In an ideal RC discharge, current starts at its maximum and then declines. At every finite time some charge remains. Shaded area represents the released portion, not automatically the entire initial charge. The model independently checks the integral against C(U₀−U).
+
+A second comparison connects charged capacitor A to an identical empty capacitor B. After they reach a common voltage and are disconnected, each has half the original charge and voltage. Connect A to a new empty capacitor C and A halves again. The previous B has been removed and retains its first share.
+
+<h2 id="try">Track both area and the destination of charge</h2>
+
+- Change discharge time and compare released charge plus remaining charge.
+- Increasing resistance lowers initial current and slows discharge. Increasing capacitance leaves initial current unchanged but also slows discharge.
+- Follow the switch during sharing. Before connection the new capacitor stays empty; after disconnection each retains its charge.
+- Select the second round and verify that the receiving capacitor is a new empty C, not the already charged B.
+
+These follow the current-sensor discharge experiment on page 39 and charge-sharing experiment on page 40, chapter 10, section 4 of PEP Required Book 3. Samples are ideal-model data, not claimed physical sensor records.
+
+<h2 id="deeper">Conserved charge does not mean conserved field energy</h2>
+
+<details>
+<summary>Integration accuracy and connection losses</summary>
+
+Discharge uses I = (U₀/R) exp(−t/RC). Samples at 0.05-second intervals give a trapezoidal charge estimate; the analytic expression Q = C(U₀−U) provides an independent comparison. A real sensor introduces offsets, sampling limitations, resistance and noise.
+
+When identical capacitors redistribute charge, total charge is unchanged but electric-field energy decreases. Energy is transferred through connection resistance and other losses. The sharing model represents relaxation through a small connection resistance, omitting radiation details, leakage and dielectric absorption. The colored strip is a charge cue, not a changing liquid level inside the capacitor.
+
+</details>

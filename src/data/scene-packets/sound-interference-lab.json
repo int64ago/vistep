@@ -1,0 +1,131 @@
+{
+  "topic": {
+    "slug": "sound-interference-lab",
+    "name": "双扬声器的声音干涉",
+    "title": "同样两个扬声器，为什么换个位置就变安静？",
+    "question": "同样两个扬声器，为什么换个位置就变安静？",
+    "description": "由同一个信号源驱动双扬声器，移动接收点并寻找学生白旗、黑旗标出的稳定强弱区域。",
+    "color": "#a3b38c",
+    "tag": "路程差改变叠加结果",
+    "related": ["wave-interference", "noise"],
+    "sources": [
+      {
+        "title": "OpenStax — Interference of waves",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves"
+      }
+    ]
+  },
+  "component": "src/components/experiments/SoundInterferenceLab.tsx",
+  "cover": "src/components/covers/SoundInterferenceLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["双扬声器的声音干涉", "相干", "扬声器", "声音干涉", "路程差", "强弱分布"],
+      "en": [
+        "Sound interference from two speakers",
+        "coherent speakers",
+        "sound interference",
+        "path difference",
+        "loud quiet regions"
+      ]
+    }
+  },
+  "translations": {
+    "双扬声器的声音干涉": "Sound interference from two speakers",
+    "同样两个扬声器，为什么换个位置就变安静？": "Why can the same two speakers sound quieter at another position?",
+    "由同一个信号源驱动双扬声器，移动接收点并寻找学生白旗、黑旗标出的稳定强弱区域。": "Drive two speakers from one signal source, move a receiver, and find stable loud and quiet locations marked by students’ white and dark flags.",
+    "路程差改变叠加结果": "Path difference changes the sum",
+    "同一信号源的两个扬声器": "Two speakers from one signal source",
+    "颜色表示相对声强": "Colour shows relative intensity",
+    "同源双扬声器、移动接收点与学生举起的强弱标旗": "Coherent speakers, a moving receiver and students marking loud and quiet locations",
+    "保留旧旗位，再改变频率": "Keep old flags; change frequency",
+    "白旗：强处 · 黑旗：弱处": "White: loud · dark: quiet",
+    "沿同一条线移动接收点": "Move the receiver along one line",
+    "相对声强": "Relative intensity",
+    "同源频率": "Shared source frequency",
+    "接收点横向位置": "Receiver horizontal position",
+    "接收点纵向位置": "Receiver vertical position",
+    "显示学生的强弱标旗": "Show students’ loud/quiet flags",
+    "停止接收点试听": "Stop the receiver preview",
+    "试听接收点的合成声音": "Listen to the synthetic receiver sound",
+    "声音不可用，声强图与读数仍可观察。": "Audio is unavailable; intensity and readings remain visible.",
+    "相干声源与简化声场": "Coherent sources and the field approximation",
+    "两个理想同相点声源相距4米，声速340米每秒。用传播路程和1/r振幅衰减叠加，不计房间反射与扬声器方向性。相对声强以中点同相增强为1；弱处振幅不完全相等时不会归零。标旗位置来自每位学生附近的实际场值搜索，最后一幕保留原旗位检验频率改变。可选试听只模拟该接收点的合成幅度，不是实际房间的测量。": "Two ideal in-phase point sources are 4 m apart with sound speed 340 m/s. Propagation phase and 1/r amplitude decay are summed, omitting room reflections and speaker directivity. Midpoint constructive intensity is the reference value 1. Unequal local amplitudes prevent perfect cancellation. Flag positions come from local field searches; the last shot retains old flags when frequency changes. Optional listening synthesizes the calculated receiver amplitude rather than measuring a real room.",
+    "同一个信号源带动两只扬声器": "Drive both speakers together",
+    "频率相同、相位关系稳定，才有稳定的强弱分布。": "A common frequency and stable phase relation support a stable pattern.",
+    "移动一个接收点": "Move one receiver",
+    "接收点经过强弱区，声音并非处处一样。": "A moving receiver passes through alternating loud and quiet regions.",
+    "两组同学寻找强弱位置": "Students find loud and quiet positions",
+    "白旗标出附近强处，黑旗标出附近弱处。": "White flags mark nearby loud locations and dark flags mark quiet ones.",
+    "保留旗位，再改变频率": "Keep the flags and change frequency",
+    "波长改变后，原来的强弱位置不再保持。": "Changing wavelength changes which fixed positions are loud or quiet."
+  },
+  "narration": {
+    "duration": 104,
+    "cues": [
+      {
+        "id": "speakers-common",
+        "title": "同一个信号源带动两只扬声器",
+        "titleEn": "Drive both speakers together",
+        "caption": "频率相同、相位关系稳定，才有稳定的强弱分布。",
+        "captionEn": "A common frequency and stable phase relation support a stable pattern.",
+        "zh": "两只相同扬声器连到同一个信号源，同相发声。即使接收点到达的两个声音频率相同，传播路程也可能不同。因此它们到达时的相位关系要由路程共同决定，不能只看扬声器是否同时振动。",
+        "en": "Connect two identical speakers to one signal source so they emit in phase. The received sounds share a frequency, but their travel distances can differ. Their relative arrival phase therefore depends on both paths, not only on whether the speakers move together.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "speakers-receiver",
+        "title": "移动一个接收点",
+        "titleEn": "Move one receiver",
+        "caption": "接收点经过强弱区，声音并非处处一样。",
+        "captionEn": "A moving receiver passes through alternating loud and quiet regions.",
+        "zh": "沿一条线缓慢移动接收点，观察下方声强条与路程差。某些位置两个声音相互加强，另一些位置相互减弱。这里声源到接收点的距离不同，振幅也可能不同，所以弱处不一定完全无声。",
+        "en": "Move the receiver slowly along a line while watching intensity and path difference. Some positions reinforce the two sounds, while others weaken them. Different source distances can also mean unequal amplitudes, so a quiet position need not be perfectly silent.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "speakers-flags",
+        "title": "两组同学寻找强弱位置",
+        "titleEn": "Students find loud and quiet positions",
+        "caption": "白旗标出附近强处，黑旗标出附近弱处。",
+        "captionEn": "White flags mark nearby loud locations and dark flags mark quiet ones.",
+        "zh": "按教材分成两组，同学们在附近小范围移动。白旗组寻找较强的位置，黑旗组寻找较弱的位置，找到后举旗。标旗的位置由同一个声场模型计算，保留下来就能看到空间中稳定的强弱分布。",
+        "en": "Divide students into the textbook’s two groups and let them move within a small neighbourhood. White flags seek louder positions and dark flags seek quieter ones. Once found, the flags are raised. These positions come from the same calculated sound field, revealing its stable spatial pattern.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "speakers-frequency",
+        "title": "保留旗位，再改变频率",
+        "titleEn": "Keep the flags and change frequency",
+        "caption": "波长改变后，原来的强弱位置不再保持。",
+        "captionEn": "Changing wavelength changes which fixed positions are loud or quiet.",
+        "zh": "最后保留原来的标旗，只改变共同频率。两只扬声器仍然相干，但波长改变，同一条路程差对应的相位差也改变。原来的黑旗位置可能不再安静。这说明标旗不是器材固定的属性，而取决于当前声场。",
+        "en": "Leave the flags at their old positions and change the shared frequency. The speakers remain coherent, but wavelength changes, so the same path difference gives a different phase difference. A former quiet location may become loud. The pattern belongs to the current field, not permanently to the room’s positions.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-sound-interference": {
+      "chapterIds": [
+        "speakers-common",
+        "speakers-receiver",
+        "speakers-flags",
+        "speakers-frequency"
+      ],
+      "label": {
+        "zh": "声音的干涉",
+        "en": "Sound interference"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# Four paths to resistance and resistivity
+
+PEP Required3 §11.2 pp57–59 and §11.3 pp65–67. Tracked object depends on the real experiment: one uniform wire during U–I sampling; four series specimens during controlled comparisons; a separately heated exposed filament plus indicator lamp; the same clipped wire during resistivity inference. These have separate topology and geometry, with contiguous curriculum chapter ranges.
+
+The common-current board reproduces textbook a/b/c/d differences: b has twice the length, c twice the area (only √2 diameter), d a different material. Four ideal voltmeters read each segment. Wire measurement draws the effective clip separation and a disconnected remaining tail, not a misleading full-wire length. Internal/external ammeter connection changes actual voltage lead endpoints and the solved circuit. Entered dimensions affect inferred rho only; they do not silently change the specimen.
+
+Model: uniform wire R=rho L/A; PEP20°C approximate material values; exact finite-meter network with RA0.2Ω/RV1kΩ; fit through five U–I samples. A heated tungsten filament uses a qualitative linear alpha model, and the indicator uses fixed-resistance electrical power rather than a claimed incandescent thermal/spectral calculation. Self-heating, contact resistance and random sensor noise are omitted and disclosed.
+
+Sources: OpenStax UP2 §9.3 (material/temperature relationships) and §10.4 (meter connections), local PEP apparatus and values. Independent benchmark:1m copper at1mm² gives0.017Ω. Equal-current voltage ratios2,0.5,2 match geometry/material changes. Boundary tests independently check external parallel resistance, internal series bias, charge-current accounting and the21% rho effect of a10% diameter overestimate. Six target tests passed; packet validation (7 contiguous chapters, 160 planned seconds) and TSX syntax passed. Desktop/mobile rendered observations, full playback and listening remain not run until root integration.

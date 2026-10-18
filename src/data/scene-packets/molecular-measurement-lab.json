@@ -1,0 +1,214 @@
+{
+  "topic": {
+    "slug": "molecular-measurement-lab",
+    "name": "分子的间接观察与测量",
+    "title": "看不见分子，怎样测出它的尺度？",
+    "question": "看不见分子，怎样测出它的尺度？",
+    "description": "用炭粒运动、量筒混合和单分子油膜，把可见观察连接到微观解释。",
+    "color": "#799066",
+    "tag": "从宏观估测微观",
+    "related": ["brownian-motion", "diffusion"],
+    "sources": [
+      {
+        "title": "NIST — Dynamic light scattering",
+        "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=854412"
+      },
+      {
+        "title": "University of Göttingen — Ethanol and water",
+        "url": "https://www.unterrichtsmaterialien-chemie.uni-goettingen.de/exp_neu.php?id=765"
+      },
+      {
+        "title": "UMass — Oleic-acid thin films",
+        "url": "https://www.umass.edu/agriculture-food-environment/sites/ag.umass.edu/files/pdf-doc-ppt/2009_oleic_acid_thin_films.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/MolecularMeasurementLab.tsx",
+  "cover": "src/components/covers/MolecularMeasurementLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["分子的间接观察与测量", "布朗运动", "炭粒", "油膜法", "油酸分子", "酒精体积"],
+      "en": [
+        "Indirect observation and measurement of molecules",
+        "Brownian motion",
+        "carbon particles",
+        "oleic acid film",
+        "volume contraction"
+      ]
+    }
+  },
+  "translations": {
+    "分子的间接观察与测量": "Indirect observation and measurement of molecules",
+    "看不见分子，怎样测出它的尺度？": "How can we estimate a molecule too small to see?",
+    "用炭粒运动、量筒混合和单分子油膜，把可见观察连接到微观解释。": "Connect carbon-particle motion, mixed liquid volumes and a monolayer film to microscopic explanations.",
+    "从宏观估测微观": "Macroscopic evidence for microscopic scales",
+    "显微镜下的炭粒": "Carbon particles under a microscope",
+    "水与酒精的体积对照": "Water–ethanol volume comparison",
+    "单分子油膜的间接测量": "Indirect measurement with a monolayer",
+    "可见炭粒、量筒与油膜面积的三种实验装置": "Three apparatuses: carbon tracers, measuring cylinders and oil-film area",
+    "水": "Water",
+    "混合液": "Mixture",
+    "酒精": "Ethanol",
+    "虚线：直接相加的100毫升": "Dashed: 100 mL",
+    "每小格1平方厘米，边界按半格估计": "Grid: 1 cm² per cell",
+    "局部放大：单层铺展": "Monolayer close-up",
+    "总质量不变": "Total mass unchanged",
+    "选择分子实验": "Choose a molecular experiment",
+    "悬浊液温度": "Suspension temperature",
+    "等效炭粒半径": "Effective carbon-particle radius",
+    "观察时间": "Observation time",
+    "倒入并待混合稳定的进度": "Pouring and settling progress",
+    "油膜实验步骤": "Oil-film steps",
+    "校准滴数": "Calibrate drops",
+    "油膜展开": "Spread the film",
+    "方格测面积": "Measure area with a grid",
+    "计算厚度": "Calculate thickness",
+    "1毫升溶液的滴数读数": "Drop count for one millilitre",
+    "配液稀释倍数读数": "Dilution-factor reading",
+    "油膜面积读数": "Oil-film area reading",
+    "间接观察与估测边界": "Limits of indirect observation and estimation",
+    "显微镜看见的是炭粒，不是水分子；采用无对流二维布朗扩散与水的黏度近似，形状按等效水动力半径计算。轨迹每30秒连点，不代表期间真实路径。水醇50加50约96毫升是近室温代表值，收缩来自混合后的相互作用与堆积，不能只理解成刚性球填空隙。油膜固定示意面积200平方厘米，探索中的滴数、稀释和面积是测量读数，用于分析误差；单层均匀铺展是估测前提。": "The microscope shows carbon particles, not water molecules. The 2D diffusion model omits convection and uses effective hydrodynamic radius and approximate water viscosity. Thirty-second links are not actual intervening paths. The representative 50+50≈96 mL mixture contracts through interactions and packing, not merely rigid spheres filling gaps. The illustrated film stays 200 cm²; exploration varies measurement readings to study error. A uniform monolayer is assumed.",
+    "追踪可见的炭粒": "Track a visible carbon particle",
+    "炭粒运动是分子热运动的间接证据。": "Tracer motion indirectly reveals molecular thermal motion.",
+    "同一炭粒与更高温度": "The same tracer at higher temperature",
+    "保持粒径，比较温度对运动的影响。": "Keep particle size fixed when comparing temperature.",
+    "分别量取两种液体": "Measure the liquids separately",
+    "两只量筒各有50毫升。": "Each cylinder begins with 50 millilitres.",
+    "混合后的体积收缩": "Volume contracts after mixing",
+    "总体积小于直接相加，质量仍然守恒。": "Volume is smaller than the sum while mass is conserved.",
+    "先校准每滴体积": "Calibrate the drop volume",
+    "用总量除以滴数，再乘油酸比例。": "Divide total volume by drop count, then apply dilution.",
+    "油膜在水面铺展": "Spread the film over water",
+    "溶剂处理以后，观察单层膜的稳定边界。": "Observe the stabilized monolayer boundary.",
+    "用方格估计面积": "Estimate area with a grid",
+    "统一边界计数规则，得到膜面积。": "Apply a consistent boundary-cell rule.",
+    "由体积与面积估测尺度": "Estimate a scale from volume and area",
+    "单层近似下，厚度等于体积除以面积。": "For a uniform monolayer, thickness is volume divided by area."
+  },
+  "narration": {
+    "duration": 208,
+    "cues": [
+      {
+        "id": "carbon-observe",
+        "title": "追踪可见的炭粒",
+        "titleEn": "Track a visible carbon particle",
+        "caption": "炭粒运动是分子热运动的间接证据。",
+        "captionEn": "Tracer motion indirectly reveals molecular thermal motion.",
+        "zh": "在显微镜视野中认出一颗炭粒。它不断改变运动方向，并不是自己有生命。水分子无法在这个画面中逐个看见，它们的不均衡撞击使可见炭粒运动。记录位置的连线也不是两次观察之间的真实路径。",
+        "en": "Pick out one carbon particle in the microscope field. Its direction changes continually, without requiring life. Individual water molecules are not visible here; their unbalanced impacts move the tracer. Lines between recorded positions are not the true intervening path.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "carbon-temperature",
+        "title": "同一炭粒与更高温度",
+        "titleEn": "The same tracer at higher temperature",
+        "caption": "保持粒径，比较温度对运动的影响。",
+        "captionEn": "Keep particle size fixed when comparing temperature.",
+        "zh": "保持炭粒大小和同一组随机输入，升高水温。扩散更明显，水的黏度变化也被计入。自由探索还可以改变等效粒径，比较更小颗粒的运动，而不是把显微镜中的颗粒误认成分子本身。",
+        "en": "Keep tracer size and random inputs fixed, then warm the water. Diffusion increases, including the effect of changing viscosity. Exploration also varies effective particle radius. The visible particles remain tracers, not individual molecules.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "mixture-measure",
+        "title": "分别量取两种液体",
+        "titleEn": "Measure the liquids separately",
+        "caption": "两只量筒各有50毫升。",
+        "captionEn": "Each cylinder begins with 50 millilitres.",
+        "zh": "先在两个量筒中分别量取五十毫升水和五十毫升酒精。记录初始体积，再作出直接相加会到一百毫升的预测。比较必须使用相同的刻度和接近室温的条件。",
+        "en": "Measure fifty millilitres each of water and ethanol in separate cylinders. Record their initial volumes and predict the one-hundred-millilitre sum. Use consistent graduations and comparable near-room-temperature conditions.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "mixture-contract",
+        "title": "混合后的体积收缩",
+        "titleEn": "Volume contracts after mixing",
+        "caption": "总体积小于直接相加，质量仍然守恒。",
+        "captionEn": "Volume is smaller than the sum while mass is conserved.",
+        "zh": "把水转入酒精量筒，再等混合稳定。代表性的最终体积约为九十六毫升，低于虚线的一百毫升。没有液体凭空消失：分子相互作用与混合结构改变了体积，总质量仍守恒。",
+        "en": "Transfer the water into the ethanol cylinder and let the mixture settle. A representative final volume is about ninety-six millilitres, below the dashed sum. Liquid has not vanished: interactions and mixed structure change volume while total mass remains conserved.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "oil-drops",
+        "title": "先校准每滴体积",
+        "titleEn": "Calibrate the drop volume",
+        "caption": "用总量除以滴数，再乘油酸比例。",
+        "captionEn": "Divide total volume by drop count, then apply dilution.",
+        "zh": "先用一毫升稀释液数出液滴总数。总量除以滴数，得到每滴溶液体积，再除以稀释倍数，才是一滴里的纯油酸体积。不要把整滴酒精溶液都当成油酸。",
+        "en": "Count the drops in one millilitre of diluted solution. Total volume divided by count gives each solution drop. Applying the dilution factor gives its pure oleic-acid volume. The entire solvent drop is not oil.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "oil-spread",
+        "title": "油膜在水面铺展",
+        "titleEn": "Spread the film over water",
+        "caption": "溶剂处理以后，观察单层膜的稳定边界。",
+        "captionEn": "Observe the stabilized monolayer boundary.",
+        "zh": "在水面撒少量粉末帮助看清边界，滴入稀释液。油酸铺展把粉末推开，溶剂溶入水中并挥发。等待边界稳定，再开始面积测量；均匀单层是后续估算的关键前提。",
+        "en": "Dust the water surface lightly to reveal the boundary, then add a diluted drop. Spreading oil displaces the powder while the solvent dissolves and evaporates. Wait for a stable outline before measuring area. A uniform monolayer is the key assumption.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      },
+      {
+        "id": "oil-area",
+        "title": "用方格估计面积",
+        "titleEn": "Estimate area with a grid",
+        "caption": "统一边界计数规则，得到膜面积。",
+        "captionEn": "Apply a consistent boundary-cell rule.",
+        "zh": "把方格板放在油膜上方，描出轮廓。完整方格直接计数，边界附近按半格规则估计。这里示意的面积是二百平方厘米。面积和体积必须先换成一致的单位才能相除。",
+        "en": "Place a grid over the film and trace its outline. Count complete cells and estimate boundary cells consistently. This illustrated area is two hundred square centimetres. Convert volume and area to compatible units before dividing.",
+        "seconds": 26,
+        "chapterAt": 156,
+        "at": 156
+      },
+      {
+        "id": "oil-thickness",
+        "title": "由体积与面积估测尺度",
+        "titleEn": "Estimate a scale from volume and area",
+        "caption": "单层近似下，厚度等于体积除以面积。",
+        "captionEn": "For a uniform monolayer, thickness is volume divided by area.",
+        "zh": "看局部放大的单层结构。纯油酸体积除以面积，给出约二纳米的厚度尺度。油酸分子并非真正的球体，这只是有前提的估测。自由探索改变测量读数，可以检查滴数、稀释或面积误差怎样改变结果。",
+        "en": "Inspect the enlarged monolayer section. Pure oil volume divided by area gives a thickness scale of about two nanometres. Molecules are not literal spheres; this is an assumption-dependent estimate. Vary measurement readings to inspect drop-count, dilution and area errors.",
+        "seconds": 26,
+        "chapterAt": 182,
+        "at": 182
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-brownian-carbon-particles": {
+      "chapterIds": ["carbon-observe", "carbon-temperature"],
+      "label": {
+        "zh": "显微镜观察炭粒运动",
+        "en": "Carbon-particle Brownian motion"
+      }
+    },
+    "e3-water-alcohol-volume": {
+      "chapterIds": ["mixture-measure", "mixture-contract"],
+      "label": {
+        "zh": "水与酒精混合体积",
+        "en": "Water–ethanol mixing volume"
+      }
+    },
+    "e3-oleic-acid-film": {
+      "chapterIds": ["oil-drops", "oil-spread", "oil-area", "oil-thickness"],
+      "label": {
+        "zh": "油膜法估测分子大小",
+        "en": "Oleic-film molecular size estimate"
+      }
+    }
+  }
+}

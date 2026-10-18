@@ -1,0 +1,154 @@
+{
+  "topic": {
+    "slug": "photoelectric-lab",
+    "name": "光电效应实验室",
+    "title": "更亮的光，为什么仍打不出电子？",
+    "question": "更亮的光，为什么仍打不出电子？",
+    "description": "从锌板验电器到光电管，分别改变频率、光强与电压，读懂光电子的能量。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["blackbody-lab", "atomic-spectrum-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Photoelectric Effect",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect"
+      },
+      {
+        "title": "NIST — Historical determinations of constants",
+        "url": "https://physics.nist.gov/cuu/Constants/historical1.html"
+      }
+    ]
+  },
+  "component": "src/components/experiments/PhotoelectricLab.tsx",
+  "cover": "src/components/covers/PhotoelectricLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["光电效应实验室", "更亮的光，为什么仍打不出电子？", "近代物理实验"],
+      "en": [
+        "Photoelectric-effect laboratory",
+        "Why can brighter light still fail to release electrons?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "光电效应实验室": "Photoelectric-effect laboratory",
+    "更亮的光，为什么仍打不出电子？": "Why can brighter light still fail to release electrons?",
+    "从锌板验电器到光电管，分别改变频率、光强与电压，读懂光电子的能量。": "Follow a zinc electroscope and a photocell while controlling frequency, intensity and voltage.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 196,
+    "cues": [
+      {
+        "id": "zinc-visible",
+        "title": "先照可见光",
+        "titleEn": "Start with visible light",
+        "caption": "负电锌板的箔片保持张开：单个光子的能量还不够。",
+        "captionEn": "The charged leaves remain open: each photon has too little energy.",
+        "zh": "先看带负电的锌板。连着它的金属箔片因为同种电荷相斥而张开。现在照上可见光，箔片没有明显合拢。这个模型里，入射光的频率还没有达到锌的截止频率。判断能否打出电子，首先要看单个光子的能量。",
+        "en": "The zinc plate starts negatively charged, so the leaves repel one another. Visible light does not close them in this model. Its frequency is below the zinc threshold. Whether electrons escape depends first on the energy carried by each photon.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "zinc-ultraviolet",
+        "title": "换成紫外光",
+        "titleEn": "Switch to ultraviolet",
+        "caption": "电子逸出，锌板失去部分负电，箔片逐渐合拢。",
+        "captionEn": "Escaping electrons reduce the negative charge and the leaves close.",
+        "zh": "换成足够高频的紫外光。电子开始从锌板逸出，原有负电荷减少，箔片逐渐合拢。这只是把现象看出来。要研究逸出电子的能量，还需要让电子进入一个可以调节电压、测量电流的装置。",
+        "en": "With sufficiently high-frequency ultraviolet light, electrons escape. The plate loses negative charge and the leaves close. This reveals the phenomenon, but measuring electron energy needs another apparatus: a photocell with controlled voltage and a current meter.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "threshold",
+        "title": "扫描光的频率",
+        "titleEn": "Scan the light frequency",
+        "caption": "达到截止频率后，阴极才开始发射光电子。",
+        "captionEn": "Photoelectrons appear only above the threshold frequency.",
+        "zh": "光电管里，光照在弯曲的阴极上。先保持光强不变，逐渐提高频率。低于截止频率时，光电流为零。超过截止频率，电子能够逸出并被另一个电极收集。图中的电子被放大了，电表读数来自相同的发射和收集模型。",
+        "en": "Light strikes the curved photocathode. Keep intensity fixed and raise frequency. Below threshold there is no photocurrent. Above threshold, electrons escape and can reach the collecting electrode. The enlarged particles and the meter use the same emission and collection model.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "intensity",
+        "title": "只改变光强",
+        "titleEn": "Change intensity alone",
+        "caption": "光更强，发射的电子更多；最大初动能保持不变。",
+        "captionEn": "Brighter light releases more electrons without raising their maximum energy.",
+        "zh": "现在把频率固定在截止频率以上，只增加光强。光电流随之增大，表示每秒被收集的电子更多。注意上面的遏止电压没有变：更强的光增加光子的数量，却不改变每个光子的能量。把光强和频率分开控制，才能看清这个区别。",
+        "en": "Fix frequency above threshold and increase intensity. The photocurrent rises because more electrons are collected each second. The stopping voltage stays unchanged. More intense light supplies more photons, but each photon still carries the same energy.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "stopping",
+        "title": "用反向电压拦住电子",
+        "titleEn": "Stop electrons with a retarding voltage",
+        "caption": "反向电压达到遏止电压时，最快的电子也不能到达阳极。",
+        "captionEn": "At the stopping voltage, even the most energetic electrons cannot reach the collector.",
+        "zh": "接着逐渐加大反向电压。能量较小的电子先被推回，电流逐渐减小。当反向电压达到遏止电压，最快的电子也无法到达阳极，电流降为零。用元电荷乘以遏止电压，就得到光电子的最大初动能。",
+        "en": "Increase the retarding voltage. Lower-energy electrons turn back first and the current falls. At the stopping voltage, even the most energetic electrons cannot reach the collector. The elementary charge times that voltage gives their maximum initial kinetic energy.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "planck-points",
+        "title": "换频率，再测遏止电压",
+        "titleEn": "Repeat at several frequencies",
+        "caption": "同一种阴极材料下，记录多组频率与遏止电压。",
+        "captionEn": "Keep the cathode material fixed and collect frequency–stopping-voltage pairs.",
+        "zh": "同一种阴极材料，换几种已知频率的光，每次都找到电流刚好消失时的电压。把这些频率和遏止电压组成数据点。演示中的点来自理想模型；实际测量还要处理暗电流、接触电势以及电压读数的不确定性。",
+        "en": "Use the same cathode with several known frequencies. For each, find the voltage at which the current disappears, then plot the pair. These points are ideal-model values. Real measurements must account for dark current, contact potentials and voltage uncertainty.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "planck-slope",
+        "title": "从斜率得到 h/e",
+        "titleEn": "Read h/e from the slope",
+        "caption": "遏止电压对频率的斜率为 h/e；横轴截距对应截止频率。",
+        "captionEn": "The stopping-voltage slope is h/e; the horizontal intercept is the threshold frequency.",
+        "zh": "数据点排成直线，但这条直线不经过原点。逸出电子要先付出金属的逸出功，剩下的能量才变成动能。直线斜率是普朗克常量与元电荷的比，横轴截距对应截止频率。这就把光的量子解释变成了可以测量的关系。",
+        "en": "The points form a line that does not pass through the origin. An electron must first overcome the work function; the remaining energy becomes kinetic energy. The slope is Planck’s constant divided by elementary charge, and the horizontal intercept gives threshold frequency.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-photoelectric-zinc": {
+      "chapterIds": ["zinc-visible", "zinc-ultraviolet"],
+      "label": {
+        "zh": "锌板验电器",
+        "en": "Zinc electroscope"
+      }
+    },
+    "e3-photoelectric-cell": {
+      "chapterIds": ["threshold", "intensity", "stopping"],
+      "label": {
+        "zh": "光电管",
+        "en": "Photocell"
+      }
+    },
+    "e3-photoelectric-planck-measurement": {
+      "chapterIds": ["planck-points", "planck-slope"],
+      "label": {
+        "zh": "测量普朗克常量",
+        "en": "Measuring Planck’s constant"
+      }
+    }
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "topic": {
+    "slug": "surface-tension-lab",
+    "name": "液体表面张力实验",
+    "title": "水面怎样托住针，又怎样拉动一根线？",
+    "question": "水面怎样托住针，又怎样拉动一根线？",
+    "description": "用满杯加针、肥皂膜棉线、浸润水滴和纸托缝衣针，追踪表面张力改变形状与支持物体的过程。",
+    "color": "#8d9f75",
+    "tag": "从界面形状读出力",
+    "related": ["capillary", "molecular-measurement-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Surface tension and capillary action",
+        "url": "https://openstax.org/books/college-physics-2e/pages/11-8-cohesion-and-adhesion-in-liquids-surface-tension-and-capillary-action"
+      },
+      {
+        "title": "MIT 18.357 — Interfacial phenomena lectures",
+        "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/SurfaceTensionLab.tsx",
+  "cover": "src/components/covers/SurfaceTensionLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["液体表面张力实验", "曲别针满杯", "肥皂膜棉线", "浸润", "接触角", "浮针"],
+      "en": [
+        "Liquid surface-tension experiments",
+        "brim full glass",
+        "soap film thread",
+        "wetting",
+        "contact angle",
+        "floating needle"
+      ]
+    }
+  },
+  "translations": {
+    "液体表面张力实验": "Liquid surface-tension experiments",
+    "水面怎样托住针，又怎样拉动一根线？": "How does a water surface support a needle and pull a thread?",
+    "用满杯加针、肥皂膜棉线、浸润水滴和纸托缝衣针，追踪表面张力改变形状与支持物体的过程。": "Follow brim-full water, soap-film threads, wetting drops and a tissue-supported needle to reveal surface tension.",
+    "从界面形状读出力": "Read forces from interface shape",
+    "满杯水与曲别针": "Brim-full water and clips",
+    "肥皂膜与棉线": "Soap film and cotton thread",
+    "玻璃与蜡面上的水滴": "Drops on glass and wax",
+    "浮在水面的缝衣针": "A needle on the water surface",
+    "枚": "clips",
+    "闭合线圈": "Closed thread loop",
+    "两端固定的线": "Fixed-end thread",
+    "水面隆起、肥皂膜、浸润与浮针四种表面张力实验": "Four surface-tension experiments: raised water, soap films, wetting and a floating needle",
+    "水面近景：纵向放大": "Surface detail: vertical zoom",
+    "剩余薄膜牵拉棉线": "Remaining film pulls the thread",
+    "两侧薄膜作用相互平衡": "Film pulls balance on both sides",
+    "涂蜡玻璃": "Waxed glass",
+    "洁净玻璃": "Clean glass",
+    "针的横截面示意，尺度放大": "Needle cross-section, enlarged",
+    "水面最高隆起": "Maximum surface rise",
+    "已溢出体积": "Spilled volume",
+    "棉线总长度保持不变": "The thread length stays fixed",
+    "相同水滴体积，不同接触角": "Equal drop volume, different contact angle",
+    "界面张力的竖直分量支持针": "Vertical surface-tension components support the needle",
+    "完全没入水后，浮力小于重力": "Once submerged, buoyancy is smaller than weight",
+    "选择液体实验": "Choose a liquid experiment",
+    "沉入水中的曲别针数": "Clips submerged in the glass",
+    "蜡面接触角": "Wax contact angle",
+    "观察进度": "Observation progress",
+    "薄膜状态": "Film state",
+    "针与界面": "Needle and interface",
+    "完整薄膜": "Intact film",
+    "停在水面": "On the surface",
+    "刺破一侧": "Puncture one side",
+    "按入水下": "Push under water",
+    "棉线形式": "Thread arrangement",
+    "表面张力模型与边界": "Surface-tension model limits",
+    "杯口采用小斜率轴对称毛细方程，边缘固定，示例脱钉角20度；杯子材质、清洁度与振动会改变真实极限。棉线形变保持长度，但不求解流体瞬态。水滴用忽略重力的小球冠近似。浮针模型突出表面张力，浮在界面时忽略较小浮力；完全没入后另算浮力和阻尼下沉，不能把两种状态混用。": "The brim uses a small-slope axisymmetric capillary equation with a pinned edge and illustrative 20° depinning slope. Material, cleanliness and vibration change real limits. Thread length is conserved without solving fluid transients. Drops are small spherical caps neglecting gravity. Floating-needle support emphasizes surface tension and omits its smaller buoyancy; after complete submersion, buoyancy and damped sinking are computed separately.",
+    "沉入曲别针，水面隆起": "Submerged clips raise the surface",
+    "曲别针排开的水形成杯口上方的微小隆起。": "Water displaced by submerged clips raises the surface above the brim.",
+    "表面张力也有极限": "Surface support has a limit",
+    "边缘不能继续固定液面时，更多水会溢出。": "When edge pinning fails, additional displaced water spills.",
+    "完整薄膜中的松弛棉线": "A slack thread in intact film",
+    "两侧都有薄膜时，牵拉可以相互平衡。": "With film on both sides, the pulls can balance.",
+    "刺破棉线一侧薄膜": "Puncture film on one side",
+    "剩余薄膜把固定长度的棉线拉成弧线。": "The remaining film pulls the fixed-length thread into an arc.",
+    "换成闭合棉线圈": "Use a closed thread loop",
+    "线圈内外都有薄膜时，形状可以不规则。": "With film both inside and outside, the loop can remain irregular.",
+    "刺破圈内薄膜": "Puncture the film inside the loop",
+    "同样长度的线圈张成圆形，外侧膜面积减少。": "A fixed-length loop becomes circular and reduces outer film area.",
+    "洁净玻璃上的水滴": "A drop on clean glass",
+    "水滴摊开时，体积保持相同。": "The drop spreads while keeping its volume.",
+    "涂蜡表面的同体积水滴": "The same volume on wax",
+    "较大接触角对应更收拢的水滴。": "A larger contact angle gives a more compact drop.",
+    "用纸托住缝衣针": "Place the needle with tissue",
+    "纸湿后下沉，针仍可由界面支持。": "The tissue sinks after wetting, while the interface can support the needle.",
+    "把针完全按入水下": "Push the needle completely underwater",
+    "界面支持消失后，针的浮力不足以平衡重力。": "After interface support disappears, buoyancy cannot balance its weight."
+  },
+  "narration": {
+    "duration": 240,
+    "cues": [
+      {
+        "id": "glass-clips",
+        "title": "沉入曲别针，水面隆起",
+        "titleEn": "Submerged clips raise the surface",
+        "caption": "曲别针排开的水形成杯口上方的微小隆起。",
+        "captionEn": "Water displaced by submerged clips raises the surface above the brim.",
+        "zh": "先把杯子盛满，再让曲别针一枚枚沉入。曲别针排开水，却不一定立刻溢出：杯口固定住液面边缘，表面张力让上方保留小小的隆起。下方近景只放大纵向变化。",
+        "en": "Fill the glass to its brim, then submerge paper clips one by one. Their displaced water need not spill immediately: the rim pins the interface while surface tension supports a small rise. The detail view enlarges only the vertical change.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "glass-overflow",
+        "title": "表面张力也有极限",
+        "titleEn": "Surface support has a limit",
+        "caption": "边缘不能继续固定液面时，更多水会溢出。",
+        "captionEn": "When edge pinning fails, additional displaced water spills.",
+        "zh": "继续加入曲别针。达到示例设定的边缘斜率后，液面不能再无限抬高，新增排水量转为溢出。实际能放多少枚还取决于杯口、清洁度、曲别针体积和操作扰动，并不是固定常数。",
+        "en": "Add more clips. At the model’s limiting rim slope, the surface cannot rise indefinitely and additional displacement becomes spillage. The real count depends on rim shape, cleanliness, clip volume and disturbances; it is not a universal constant.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24
+      },
+      {
+        "id": "thread-balanced",
+        "title": "完整薄膜中的松弛棉线",
+        "titleEn": "A slack thread in intact film",
+        "caption": "两侧都有薄膜时，牵拉可以相互平衡。",
+        "captionEn": "With film on both sides, the pulls can balance.",
+        "zh": "把略微松弛的棉线两端系在铁丝环两侧，再形成完整肥皂膜。棉线两边都有薄膜，牵拉可以相互抵消，因此它不必立刻变成圆弧。先记住这条线的长度和两个固定端点。",
+        "en": "Tie a slightly slack cotton thread across a wire ring and form an intact soap film. Film on both sides can exert balancing pulls, so the thread need not immediately form an arc. Note its fixed length and endpoints.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48
+      },
+      {
+        "id": "thread-puncture",
+        "title": "刺破棉线一侧薄膜",
+        "titleEn": "Puncture film on one side",
+        "caption": "剩余薄膜把固定长度的棉线拉成弧线。",
+        "captionEn": "The remaining film pulls the fixed-length thread into an arc.",
+        "zh": "刺破棉线上方的薄膜，另一侧仍然存在。剩余薄膜沿界面牵拉棉线，使它向薄膜一侧弯曲。注意端点没有移动，线也没有变长；变的是它的形状与剩余膜的面积。",
+        "en": "Puncture the film above the thread while leaving the other side intact. The remaining film pulls the thread toward itself. Endpoints stay fixed and the thread does not lengthen: its shape and the remaining film area change.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72
+      },
+      {
+        "id": "loop-balanced",
+        "title": "换成闭合棉线圈",
+        "titleEn": "Use a closed thread loop",
+        "caption": "线圈内外都有薄膜时，形状可以不规则。",
+        "captionEn": "With film both inside and outside, the loop can remain irregular.",
+        "zh": "再换一个装置：把闭合棉线圈系在铁丝环上，让线圈内外都覆盖薄膜。两侧牵拉平衡时，线圈可以保持不规则的形状。这与跨接两端的棉线是两种不同约束。",
+        "en": "Use a different arrangement: attach a closed thread loop to the ring, with film both inside and outside. Balanced pulls allow an irregular loop. Its constraint differs from the thread tied between two fixed endpoints.",
+        "seconds": 24,
+        "chapterAt": 96,
+        "at": 96
+      },
+      {
+        "id": "loop-puncture",
+        "title": "刺破圈内薄膜",
+        "titleEn": "Puncture the film inside the loop",
+        "caption": "同样长度的线圈张成圆形，外侧膜面积减少。",
+        "captionEn": "A fixed-length loop becomes circular and reduces outer film area.",
+        "zh": "刺破线圈内部的薄膜，外侧薄膜把线圈向外拉开。在长度相同的闭合曲线中，圆形围成的面积最大，因此外侧剩余膜面积较小。这里线长保持不变，不是棉线被拉伸了。",
+        "en": "Puncture the film inside the loop. The outside film pulls it outward. Among closed curves of the same length, a circle encloses the greatest area, reducing the remaining outer film area. The thread length stays fixed; it is not stretched.",
+        "seconds": 24,
+        "chapterAt": 120,
+        "at": 120
+      },
+      {
+        "id": "drop-glass",
+        "title": "洁净玻璃上的水滴",
+        "titleEn": "A drop on clean glass",
+        "caption": "水滴摊开时，体积保持相同。",
+        "captionEn": "The drop spreads while keeping its volume.",
+        "zh": "把一小滴水放在洁净玻璃上。界面的相互作用使它更容易铺展，接触角较小。演示保持水滴体积不变，所以横向变宽时，高度会相应降低。",
+        "en": "Place a small water drop on clean glass. Interfacial interactions favor spreading and a smaller contact angle. The model keeps its volume fixed, so a wider footprint is accompanied by lower height.",
+        "seconds": 24,
+        "chapterAt": 144,
+        "at": 144
+      },
+      {
+        "id": "drop-wax",
+        "title": "涂蜡表面的同体积水滴",
+        "titleEn": "The same volume on wax",
+        "caption": "较大接触角对应更收拢的水滴。",
+        "captionEn": "A larger contact angle gives a more compact drop.",
+        "zh": "在涂蜡玻璃上比较相同体积的水滴。它不易铺展，接触角较大，看起来更收拢。真实角度受表面处理和污染影响，画面中的数值是为了比较形状选取的示例。",
+        "en": "Compare an equal-volume drop on waxed glass. It spreads less and has a larger contact angle, appearing more compact. Real angles depend on treatment and contamination; the values here are illustrative choices for the comparison.",
+        "seconds": 24,
+        "chapterAt": 168,
+        "at": 168
+      },
+      {
+        "id": "needle-paper",
+        "title": "用纸托住缝衣针",
+        "titleEn": "Place the needle with tissue",
+        "caption": "纸湿后下沉，针仍可由界面支持。",
+        "captionEn": "The tissue sinks after wetting, while the interface can support the needle.",
+        "zh": "用一小片纸把针轻放在水面。纸吸水后逐渐下沉，针却可能留在界面。放大的横截面显示水面在针旁下凹，沿界面的张力具有向上的分量，能够支持针的重量。",
+        "en": "Use a small tissue to place a needle gently on water. The wetted tissue sinks while the needle can remain at the interface. In the enlarged cross-section, the depressed surface gives tension an upward component that can support the needle’s weight.",
+        "seconds": 24,
+        "chapterAt": 192,
+        "at": 192
+      },
+      {
+        "id": "needle-submerge",
+        "title": "把针完全按入水下",
+        "titleEn": "Push the needle completely underwater",
+        "caption": "界面支持消失后，针的浮力不足以平衡重力。",
+        "captionEn": "After interface support disappears, buoyancy cannot balance its weight.",
+        "zh": "把针完全按入水下，界面对针的支持随之消失。钢针排开水产生的浮力小于它的重量，因此继续下沉。不能因为它曾停在水面，就认为钢的密度变小或者针在水里也能浮起来。",
+        "en": "Push the needle fully underwater and its interface support disappears. The buoyancy of the displaced water is less than the steel needle’s weight, so it sinks. Its earlier surface support does not mean steel became less dense or can float when submerged.",
+        "seconds": 24,
+        "chapterAt": 216,
+        "at": 216
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-full-glass-paperclips": {
+      "chapterIds": ["glass-clips", "glass-overflow"],
+      "label": {
+        "zh": "满杯清水中放入曲别针",
+        "en": "Add clips to a brim-full glass"
+      }
+    },
+    "e3-soap-film-thread": {
+      "chapterIds": ["thread-balanced", "thread-puncture", "loop-balanced", "loop-puncture"],
+      "label": {
+        "zh": "观察肥皂膜和棉线的变化",
+        "en": "Observe soap films and cotton threads"
+      }
+    },
+    "e3-wetting-droplets": {
+      "chapterIds": ["drop-glass", "drop-wax"],
+      "label": {
+        "zh": "玻璃面和蜡面上的水滴",
+        "en": "Drops on glass and wax"
+      }
+    },
+    "e3-floating-needle": {
+      "chapterIds": ["needle-paper", "needle-submerge"],
+      "label": {
+        "zh": "纸托缝衣针停在水面",
+        "en": "A tissue-supported needle on water"
+      }
+    }
+  }
+}

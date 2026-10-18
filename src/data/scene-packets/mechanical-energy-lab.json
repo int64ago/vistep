@@ -1,0 +1,194 @@
+{
+  "topic": {
+    "slug": "mechanical-energy-lab",
+    "name": "验证机械能守恒",
+    "title": "减少的重力势能，都变成动能了吗？",
+    "question": "减少的重力势能，都变成动能了吗？",
+    "description": "从纸带、光电门与气垫导轨出发，独立测量高度和速度，并正确选择研究系统。",
+    "color": "#b9c9aa",
+    "tag": "位置测量 · 能量比较 · 误差",
+    "related": ["ticker-tape-lab", "newton-second-law-lab", "pendulum"],
+    "sources": [
+      {
+        "title": "Vernier — Photogate User Manual",
+        "url": "https://www.vernier.com/manuals/vpg-btd"
+      },
+      {
+        "title": "OpenStax — Conservation of Energy",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["验证机械能守恒", "纸带机械能", "气垫导轨", "光电门"],
+      "en": [
+        "Testing mechanical-energy conservation",
+        "ticker tape energy",
+        "air track",
+        "photogate"
+      ]
+    }
+  },
+  "component": "src/components/experiments/MechanicalEnergyLab.tsx",
+  "cover": "src/components/covers/MechanicalEnergyLabCover.astro",
+  "translations": {
+    "验证机械能守恒": "Testing mechanical-energy conservation",
+    "减少的重力势能，都变成动能了吗？": "Does every loss of gravitational energy become kinetic energy?",
+    "从纸带、光电门与气垫导轨出发，独立测量高度和速度，并正确选择研究系统。": "Use tape, photogates and air tracks to obtain height and speed independently and define the measured system correctly.",
+    "位置测量 · 能量比较 · 误差": "Position measurement · Energy comparison · Error",
+    "水平气垫导轨、滑块、定滑轮与悬挂砝码组成同一系统": "Horizontal air track, slider, fixed pulley and hanging masses form one system",
+    "倾斜气垫导轨上的滑块依次穿过两个光电门": "A slider on an inclined air track passes through two photogates",
+    "从纸带位置，独立求出速度和高度": "Obtain speed and height independently from tape positions",
+    "用两道光电门测量下滑前后": "Measure before and after descent with two photogates",
+    "悬挂物失去的势能，去了哪里？": "Where does the hanging load’s lost potential energy go?",
+    "把摆动作为另一种实验方案": "Consider a pendulum as another experimental design",
+    "模型生成的示例读数 · 不是实测数据": "Model-generated example readings · Not recorded data",
+    "等时纸带点按实际位移分布，分别选取两组相邻三点测速度": "Equal-time dots follow computed positions; two neighboring triplets provide velocities",
+    "重物带着纸带穿过固定的打点计时器，下落位置按等时间隔留下墨点": "A falling load pulls tape through a fixed timer, recording positions at equal time intervals",
+    "小球绕固定支点摆动，绳长固定，动能与势能从独立运动方程计算": "A bob swings on a fixed-length string; energy is calculated from independently integrated motion",
+    "总机械能": "Total mechanical energy",
+    "重力势能减少": "Gravitational energy lost",
+    "动能": "Kinetic",
+    "动能增加": "Kinetic energy gained",
+    "剩余重力势能": "Remaining gravitational energy",
+    "两者之差": "Difference",
+    "阻力做负功：减少的重力势能，不再全部变为动能。": "Resistance does negative work: gravitational energy loss no longer all becomes kinetic energy.",
+    "纸带同时提供高度差与速度；两种能量从各自测量量计算。": "Tape provides height difference and velocities; each energy is calculated from its own measured quantities.",
+    "挡光宽度除以挡光时间，给出过门期间的平均速度。": "Flag width divided by blocking time gives mean speed during gate passage.",
+    "系统包括滑块、遮光条、托盘和砝码；两部分都有动能。": "The system includes slider, flag, tray and masses; both moving parts have kinetic energy.",
+    "摆动方案：张力与瞬时位移垂直，不做功；仍需实际测量高度和速度。": "Pendulum proposal: tension is perpendicular to displacement and does no work; height and speed still need real measurements.",
+    "只算滑块会漏掉悬挂物动能": "Counting only the slider misses the hanging load’s kinetic energy",
+    "实验方案": "Experimental design",
+    "自由下落纸带": "Falling ticker tape",
+    "倾斜气垫导轨": "Inclined air track",
+    "水平气轨与悬挂物": "Horizontal track and hanging load",
+    "摆动方案": "Pendulum proposal",
+    "等效向上阻力": "Equivalent upward resistance",
+    "导轨摩擦系数": "Track friction coefficient",
+    "遮光条宽度": "Flag width",
+    "模型时间": "Model time",
+    "纸带忽略打点扰动；气轨忽略转动惯量。有限遮光宽度带来小的速度近似误差，可在探索中改变宽度查看。": "Tape ignores marking disturbances and the air-track model omits rotational inertia. Finite flag width causes a small speed approximation error; change width in exploration to inspect it."
+  },
+  "narration": {
+    "duration": 226,
+    "cues": [
+      {
+        "id": "fall",
+        "title": "让下落留下位置记录",
+        "titleEn": "Record positions during a fall",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "先通电，再释放；等时间隔打点。",
+        "captionEn": "Start the timer before release; dots mark equal time intervals.",
+        "zh": "先接通打点计时器，再让重物带着纸带自由下落。点与点的时间间隔相同，但间距逐渐增大。纸带首先记录的是位置，不是直接记录能量。量出两点的距离，就得到重物下降的高度差；接下来还要独立求速度。画面是按运动方程生成的示例记录，用来说明测量方法，并非某次真实实验的数据。",
+        "en": "Start the ticker timer before releasing the load. Equal time intervals produce growing dot spacing. The tape records positions, not energy directly. Distance between selected dots gives the drop in height; speed must also be obtained independently. These example records are generated from motion equations to explain the method, not taken from a physical experiment."
+      },
+      {
+        "id": "tape",
+        "title": "用相邻三点求速度",
+        "titleEn": "Find speed from neighboring dots",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "中间时刻速度等于前后两点间平均速度。",
+        "captionEn": "Middle-time speed equals the average across its two neighboring dots.",
+        "zh": "在两处各选相邻三个点。计时器每零点零二秒打一个点，因此前后两点相隔零点零四秒。用这段距离除以时间，就得到中间时刻速度；对于匀变速运动，这个关系严格成立。再分别计算单位质量的势能减少和动能增加。质量会在等式两边约掉，所以这套比较可以不另测重物质量。",
+        "en": "Choose neighboring triplets at two locations. At fifty dots per second, the outside dots are separated by forty milliseconds. Their displacement divided by that interval gives the middle-time speed exactly for constant acceleration. Calculate potential and kinetic changes per unit mass separately. Mass cancels from both sides, so this comparison does not require weighing the load."
+      },
+      {
+        "id": "resistance",
+        "title": "保留不相等的结果",
+        "titleEn": "Keep the unequal result",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3,
+        "caption": "阻力使机械能减少，不把差值强行归零。",
+        "captionEn": "Resistance removes mechanical energy; do not force the difference to zero.",
+        "zh": "现在加入一个小的向上阻力，重新生成纸带。速度仍从位置点算出，但重力势能的减少大于动能的增加。两者之差对应阻力做的负功。真实装置中的空气阻力、纸带摩擦和测量误差都值得检查，不能为了验证定律而把差值改成零。这里的恒定阻力只是帮助辨认影响的教学模型。",
+        "en": "Add a small upward resistance and generate a new tape. Speeds still come from positions, but gravitational energy lost now exceeds kinetic energy gained. The difference corresponds to negative work by resistance. Air drag, tape friction and measurement errors deserve investigation in real apparatus; the difference must not be edited away. Constant resistance here is an illustrative model."
+      },
+      {
+        "id": "track",
+        "title": "让空气层减小阻力",
+        "titleEn": "Reduce resistance with an air layer",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3,
+        "caption": "滑块和遮光条一起沿倾斜气轨运动。",
+        "captionEn": "The slider and flag move together along the inclined air track.",
+        "zh": "第二种方案把气垫导轨略微倾斜。气泵通过小孔送出空气，在滑块和导轨之间形成薄空气层，减小接触阻力。滑块经过两道光电门时，遮光条依次挡住光束。测量滑块连同遮光条的质量、两次测量位置的高度差以及两个速度，就能比较这段过程的机械能变化。",
+        "en": "The second design slightly tilts an air track. A pump feeds holes that form a thin air layer beneath the slider, reducing contact resistance. Its flag blocks each photogate in turn. Measure the slider and flag together, the vertical separation of the two measurement positions, and the two speeds to compare mechanical-energy changes during the descent."
+      },
+      {
+        "id": "gates",
+        "title": "挡光时间怎样变成速度",
+        "titleEn": "Convert blocking time to speed",
+        "seconds": 29,
+        "chapterAt": 112,
+        "at": 112.3,
+        "caption": "d/Δt 是过门平均速度，窄条才近似瞬时速度。",
+        "captionEn": "d/Δt is a passage average; a narrow flag approximates instantaneous speed.",
+        "zh": "数字计时器记录的是光束被挡住的时间。遮光条宽度除以这段时间，得到通过光电门期间的平均速度。当遮光条很窄时，才把它近似当作门处的瞬时速度。模型按前后边缘实际到达的时刻计时，因此即使没有阻力，也保留有限宽度造成的小偏差。自由探索可以改变遮光宽度，检查偏差怎样缩小。",
+        "en": "The timer records how long the beam is blocked. Flag width divided by this interval is the mean speed during passage. Only a sufficiently narrow flag makes this a good approximation to instantaneous speed at the gate. The model computes actual edge arrival times, retaining a small finite-width bias even without resistance. Change flag width to see that bias shrink."
+      },
+      {
+        "id": "hanger",
+        "title": "先选对研究系统",
+        "titleEn": "Choose the full system",
+        "seconds": 28,
+        "chapterAt": 141,
+        "at": 141.3,
+        "caption": "滑块与悬挂物通过同一根不可伸长的绳相连。",
+        "captionEn": "Slider and hanging load share one inextensible cord.",
+        "zh": "练习中的装置把气轨调成水平，由托盘和砝码拉动滑块。滑块本身不降低高度，失去重力势能的是悬挂物。但悬挂物和滑块都在加速，不能只计算滑块的动能。绳长不变，两端移动相同距离，速率也相同。画面用同一位移驱动两端，并用光电门记录通过速度。",
+        "en": "The exercise levels the air track and drives the slider with a hanging tray and masses. The slider loses no height; the hanging assembly supplies gravitational energy. Both accelerate, so both acquire kinetic energy. An inextensible cord gives equal travel and speed at both ends. One displacement drives the connected apparatus while the photogate records passage speed."
+      },
+      {
+        "id": "system",
+        "title": "把两部分动能相加",
+        "titleEn": "Add both kinetic energies",
+        "seconds": 28,
+        "chapterAt": 169,
+        "at": 169.3,
+        "caption": "势能看悬挂质量；动能看全部运动质量。",
+        "captionEn": "Potential loss uses hanging mass; kinetic gain uses all moving mass.",
+        "zh": "从静止释放到遮光条中心到达光电门，悬挂物下降的距离等于滑块的行程。势能减少用悬挂物总质量乘重力加速度和下降高度。动能却要用滑块、遮光条、托盘和砝码的总质量。只算滑块，会出现明显缺口；把悬挂物动能补齐后，理想模型只剩有限遮光宽度的小近似误差。",
+        "en": "From release to the flag center reaching the gate, the hanging assembly descends by the slider’s travel. Potential loss uses hanging mass times gravity and that distance. Kinetic gain uses the total mass of slider, flag, tray and weights. Counting only the slider leaves a visible gap. Including the hanging assembly leaves only the small finite-flag approximation error in this ideal model."
+      },
+      {
+        "id": "pendulum",
+        "title": "把摆动保留为可检验方案",
+        "titleEn": "Keep the pendulum as a testable proposal",
+        "seconds": 29,
+        "chapterAt": 197,
+        "at": 197.3,
+        "caption": "理想摆动说明条件，实际验证仍需测量。",
+        "captionEn": "An ideal pendulum illustrates conditions; verification still requires measurement.",
+        "zh": "教材还提出用细线悬挂的小球作为方案。固定支点下，张力与瞬时运动方向垂直，不做功；忽略阻力时，重力势能和动能相互转化。这里从摆动方程求出位置和速度，再分别计算两种能量。但要完成真实实验，还必须设计高度和速度的测量，减小阻力，估计误差。不能把播放理想动画当成完成验证。",
+        "en": "The textbook also proposes a suspended bob. With a fixed pivot, tension stays perpendicular to motion and does no work. Ignoring resistance, potential and kinetic energies exchange. Here the pendulum equation supplies position and speed before energies are calculated. A physical test still needs height and speed measurements, resistance reduction and uncertainty estimates. Ideal animation is not experimental verification."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-mechanical-energy": {
+      "chapterIds": [
+        "fall",
+        "tape",
+        "resistance",
+        "track",
+        "gates",
+        "hanger",
+        "system",
+        "pendulum"
+      ],
+      "label": {
+        "zh": "实验：验证机械能守恒定律",
+        "en": "Experiment: test mechanical-energy conservation"
+      }
+    }
+  }
+}

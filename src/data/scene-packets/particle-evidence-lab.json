@@ -1,0 +1,262 @@
+{
+  "topic": {
+    "slug": "particle-evidence-lab",
+    "name": "粒子发现的证据链",
+    "title": "看不见的新粒子，怎样从信号里被认出来？",
+    "question": "看不见的新粒子，怎样从信号里被认出来？",
+    "description": "比较质量谱、反常吸收、核反冲、关联径迹与宇称检验。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["nuclear-evidence-lab", "cathode-ray-lab"],
+    "sources": [
+      {
+        "title": "CERN — How the Higgs boson was discovered",
+        "url": "https://home.cern/science/physics/higgs-boson/how/"
+      },
+      {
+        "title": "NIST — The reversal of parity law",
+        "url": "https://www.nist.gov/pml/fall-parity/reversal-parity-law-nuclear-physics"
+      },
+      {
+        "title": "Brookhaven — Discovery of the J particle",
+        "url": "https://www.bnl.gov/bnlweb/history/nobel/1976.php"
+      },
+      {
+        "title": "Nobel Prize — The two J/psi experiments",
+        "url": "https://www.nobelprize.org/prizes/physics/1976/press-release/"
+      },
+      {
+        "title": "清华大学 — 王淦昌的实验工作",
+        "url": "https://xsg.tsinghua.edu.cn/info/1004/2187.htm"
+      },
+      {
+        "title": "中国科学院高能所 — 泡室事例与反超子",
+        "url": "https://ihep.cas.cn/kxcb/kpcg/lztt/kpyd_yzsx/kpyd_ihepyzx/200909/t20090914_2482174.html"
+      },
+      {
+        "title": "BeEST — Electron-capture recoil spectroscopy",
+        "url": "https://beest.mines.edu/wp-content/uploads/sites/345/2022/07/BeEST_v1_KimPoster.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/ParticleEvidenceLab.tsx",
+  "cover": "src/components/covers/ParticleEvidenceLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["粒子发现的证据链", "看不见的新粒子，怎样从信号里被认出来？", "近代物理实验"],
+      "en": [
+        "Evidence behind particle discoveries",
+        "How can signals reveal an unseen new particle?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "粒子发现的证据链": "Evidence behind particle discoveries",
+    "看不见的新粒子，怎样从信号里被认出来？": "How can signals reveal an unseen new particle?",
+    "比较质量谱、反常吸收、核反冲、关联径迹与宇称检验。": "Compare mass spectra, anomalous absorption, nuclear recoil, linked tracks and parity tests.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 288,
+    "cues": [
+      {
+        "id": "higgs-event",
+        "title": "先重建衰变产物",
+        "titleEn": "Reconstruct the decay products",
+        "caption": "从两个光子的能量和夹角，可以重建候选母粒子的质量。",
+        "captionEn": "Two photon energies and their angle reconstruct a candidate parent mass.",
+        "zh": "希格斯玻色子很快衰变，探测器记录的是它可能留下的产物。这里选双光子通道，用两个光子的能量和夹角重建不变质量。光子在内层不留下带电轨迹，在量能器中形成能量沉积。单个候选事件仍可能来自其他过程。",
+        "en": "The Higgs decays rapidly, so detectors record possible decay products. In the two-photon channel, energies and opening angle reconstruct invariant mass. Photons leave no charged inner track but deposit energy in the calorimeter. One candidate event may still arise from another process.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "higgs-spectrum",
+        "title": "让许多事件形成分布",
+        "titleEn": "Build a distribution from many events",
+        "caption": "在背景之上稳定出现的质量峰，需要跨数据和通道检验。",
+        "captionEn": "A mass excess above background requires checks across data and channels.",
+        "zh": "把许多候选事件放入质量分布，寻找背景之上的额外峰。二零一二年，两个独立实验合作组报告了与希格斯一致的新粒子。这里的峰约在一百二十五吉电子伏，是教学期望谱，不是实验数据，也不能从它计算发现显著性。",
+        "en": "Many candidates form a mass distribution to compare with background. In twenty twelve, two independent collaborations reported a new particle consistent with the Higgs. This illustrative expectation peaks near one hundred twenty-five gigaelectron-volts. It is not experimental data and supports no discovery-significance calculation.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.3
+      },
+      {
+        "id": "gamma-anomaly",
+        "title": "先看到额外吸收",
+        "titleEn": "First observe extra absorption",
+        "caption": "某些高能γ射线的透过信号，比简单基线预期更弱。",
+        "captionEn": "Some energetic gamma-ray transmission is weaker than a simple baseline predicts.",
+        "zh": "赵忠尧的早期研究发现伽马射线的反常吸收和额外散射。先比较透射信号与原有解释的预期：异常是一条需要进一步核查的线索。页面用简化基线与附加吸收作对照，不声称复原当年的吸收系数或原始数据。",
+        "en": "Chao’s early work found anomalous gamma absorption and additional scattering. Compare transmission with an existing expectation: an anomaly is evidence requiring further investigation. The baseline and added absorption here are illustrative, not reconstructed historical coefficients or data.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48.3
+      },
+      {
+        "id": "gamma-pair",
+        "title": "后来用成对产生解释线索",
+        "titleEn": "Later interpret the clue through pair creation",
+        "caption": "超过能量阈值后，光子可在核场中产生电子与正电子。",
+        "captionEn": "Above threshold, a photon can create an electron–positron pair in a nuclear field.",
+        "zh": "后来建立的理论把这些线索与电子、正电子的成对产生和湮灭联系起来。产生一对粒子至少需要两份电子静能，核的反冲参与动量收支。不能把早期异常直接说成已经看到了正电子。画面下方是后来的过程解释。",
+        "en": "Later theory connected such clues with electron–positron pair creation and annihilation. Creating the pair requires at least two electron rest energies; nuclear recoil participates in momentum balance. The early anomaly was not direct observation of a positron. The lower view is a later process interpretation.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72.3
+      },
+      {
+        "id": "capture-momentum",
+        "title": "K俘获后，核为什么反冲",
+        "titleEn": "Why does the nucleus recoil after electron capture?",
+        "caption": "捕获内层电子后，发出的中微子带走动量，子核反向运动。",
+        "captionEn": "After inner-electron capture, a neutrino carries momentum and the daughter recoils.",
+        "zh": "王淦昌提出利用K俘获后的核反冲检验中微子。以铍七为例，核捕获内层电子后变成锂七，并发出中微子。若中微子带走动量，子核就应反向反冲。虚线表示不可见粒子的推断方向，不代表探测器直接抓到了它。",
+        "en": "Wang proposed testing neutrinos through recoil following K capture. Beryllium seven captures an inner electron, producing lithium seven and a neutrino. Momentum carried away implies opposite nuclear recoil. The dashed direction is inferred; the detector does not directly capture the neutrino.",
+        "seconds": 24,
+        "chapterAt": 96,
+        "at": 96.3
+      },
+      {
+        "id": "capture-retarding",
+        "title": "用阻挡电势读出反冲尺度",
+        "titleEn": "Probe recoil with a retarding potential",
+        "caption": "反冲离子能否越过电势门槛，提供动能的信息。",
+        "captionEn": "Whether recoil ions cross a retarding barrier constrains their kinetic energy.",
+        "zh": "后续反冲实验把微小动能转为可测的离子信号。升高阻挡电势，能通过的离子减少。所选基态支的反冲能约五十七电子伏。这里是假设单电荷离子和理想平面电场的补充模型，忽略原子退激发、其他衰变支和表面效应。",
+        "en": "Later experiments turned small recoil energies into measurable ion signals. A higher retarding potential transmits fewer ions. The selected ground-state branch gives about fifty-seven electron-volts. This supplementary model assumes singly charged ions and a planar field, omitting atomic relaxation, other branches and surface effects.",
+        "seconds": 24,
+        "chapterAt": 120,
+        "at": 120.3
+      },
+      {
+        "id": "anti-production",
+        "title": "从产生点追踪带电轨迹",
+        "titleEn": "Follow a charged track from its production vertex",
+        "caption": "产生点与后续衰变点之间的轨迹，是事件分析的第一段。",
+        "captionEn": "A track from production to decay is one part of the event evidence.",
+        "zh": "王淦昌团队在大量泡室照片中寻找罕见事例。先从产生点出发，追踪一条带电粒子的轨迹，定位它的衰变点。仅有一条弯曲线还不能确定反超子，需要结合动量、衰变产物和其他关联信号。这里画的是拓扑示例，不是原照片描摹。",
+        "en": "Wang’s team searched many bubble-chamber photographs for rare events. Follow a charged path from production to its decay point. A curved line alone cannot identify an antihyperon; momentum, decay products and correlated signals matter. This is an illustrative topology, not a tracing of the original photograph.",
+        "seconds": 24,
+        "chapterAt": 144,
+        "at": 144.3
+      },
+      {
+        "id": "anti-linked",
+        "title": "把衰变和湮灭联系起来",
+        "titleEn": "Link decay to an annihilation vertex",
+        "caption": "带电π介子与不可见反中子的后续信号，共同约束解释。",
+        "captionEn": "A charged pion and subsequent antineutron evidence jointly constrain the interpretation.",
+        "zh": "在衰变点，一条带电介子轨迹继续，另一条中性路径没有直接气泡径迹。后面的湮灭星提供新的位置约束，把产生、衰变和湮灭联系起来。这种关联比单独形状更有说服力。图中反中子的虚线是推断连线，示例角度不用于真实质量重建。",
+        "en": "At the decay point a charged pion continues, while a neutral path leaves no direct bubble track. A later annihilation star supplies another position constraint. Linking production, decay and annihilation strengthens the interpretation. The antineutron’s dashed line is inferred; illustrative angles are not used for mass reconstruction.",
+        "seconds": 24,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "wu-asymmetry",
+        "title": "先建立核自旋方向",
+        "titleEn": "Establish the nuclear-spin direction",
+        "caption": "低温极化后，沿自旋与反自旋方向的β计数不再相同。",
+        "captionEn": "After polarization, beta counts along and opposite nuclear spin differ.",
+        "zh": "吴健雄与合作者在低温条件下极化钴六十核，建立可比较的自旋方向。比较沿自旋与反方向的贝塔电子计数，发现不对称。极化消失时，这种方向差异也消失。页面用归一化角分布表达规律，不模拟低温装置的热学过程。",
+        "en": "Wu and collaborators polarized cobalt-sixty nuclei at low temperature. Beta counts along and opposite the spin direction were unequal. Removing polarization removes the directional asymmetry. A normalized angular model illustrates the result without simulating the cryogenic apparatus or reproducing its measured counting efficiency.",
+        "seconds": 24,
+        "chapterAt": 192,
+        "at": 192.3
+      },
+      {
+        "id": "wu-parity",
+        "title": "比较整个过程的空间反演",
+        "titleEn": "Compare the spatially inverted process",
+        "caption": "空间反演改变电子动量方向，自旋方向保持不变。",
+        "captionEn": "Spatial inversion reverses electron momentum while leaving spin unchanged.",
+        "zh": "把整个过程作空间反演。电子动量反向，但自旋是轴矢量，在空间反演下不变。如果两种过程完全等价，沿自旋与反方向就不应有这种偏好。实验的不对称表明这一弱相互作用过程不守恒宇称，不是说所有物理过程都失去镜像对称。",
+        "en": "Under spatial inversion, electron momentum reverses but axial-vector spin does not. Equivalent reflected processes would not show this directional preference. The observed asymmetry demonstrates parity violation in this weak process. It does not claim that every physical interaction lacks reflection symmetry.",
+        "seconds": 24,
+        "chapterAt": 216,
+        "at": 216.3
+      },
+      {
+        "id": "j-fixed",
+        "title": "从固定靶中的电子对重建质量",
+        "titleEn": "Reconstruct pairs from a fixed target",
+        "caption": "丁肇中团队从电子与正电子对的质量分布发现窄峰。",
+        "captionEn": "Ting’s team found a narrow peak in electron–positron pair mass.",
+        "zh": "丁肇中团队用质子轰击固定靶，测量产物中的电子和正电子。磁谱仪分别分析两条带电路径，再把能量与动量合成母粒子的不变质量。大量背景之上出现约三点一吉电子伏的窄峰，成为新粒子的证据。图中谱线宽度为教学选值。",
+        "en": "Ting’s team bombarded a fixed target with protons and analyzed electron–positron pairs. A magnetic spectrometer measured the charged products for invariant-mass reconstruction. A narrow excess near three-point-one gigaelectron-volts supplied evidence for a new particle. Displayed resolution is an illustrative choice.",
+        "seconds": 24,
+        "chapterAt": 240,
+        "at": 240.3
+      },
+      {
+        "id": "j-collider",
+        "title": "在对撞机中扫描能量",
+        "titleEn": "Scan collision energy in a collider",
+        "caption": "里克特团队通过对撞能量附近的产额增强，得到互补证据。",
+        "captionEn": "Richter’s team found a strong production enhancement during a collision-energy scan.",
+        "zh": "里克特团队采用正负电子对撞机，扫描质心能量，在同一能量附近看到很强的产额增强。这与固定靶的电子对质量测量是不同方法，两组独立结果对应同一个J和派赛粒子。下方横轴在这一段改为对撞质心能量，不能和上一段的重建质量混淆。",
+        "en": "Richter’s team scanned electron–positron collision energy and found a strong production enhancement near the same scale. This differs from fixed-target pair-mass reconstruction. Both independent observations corresponded to the J/psi. The horizontal axis here is collision center-of-mass energy, not the previous reconstructed pair mass.",
+        "seconds": 24,
+        "chapterAt": 264,
+        "at": 264.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-higgs-discovery": {
+      "chapterIds": ["higgs-event", "higgs-spectrum"],
+      "label": {
+        "zh": "希格斯证据",
+        "en": "Higgs evidence"
+      }
+    },
+    "e3-gamma-anomalous-absorption": {
+      "chapterIds": ["gamma-anomaly", "gamma-pair"],
+      "label": {
+        "zh": "反常吸收",
+        "en": "Anomalous absorption"
+      }
+    },
+    "e3-electron-capture-recoil": {
+      "chapterIds": ["capture-momentum", "capture-retarding"],
+      "label": {
+        "zh": "K俘获反冲",
+        "en": "Electron-capture recoil"
+      }
+    },
+    "e3-antisigma-event": {
+      "chapterIds": ["anti-production", "anti-linked"],
+      "label": {
+        "zh": "反超子事件",
+        "en": "Antihyperon event"
+      }
+    },
+    "e3-wu-parity": {
+      "chapterIds": ["wu-asymmetry", "wu-parity"],
+      "label": {
+        "zh": "宇称检验",
+        "en": "Parity test"
+      }
+    },
+    "e3-jpsi-discovery": {
+      "chapterIds": ["j-fixed", "j-collider"],
+      "label": {
+        "zh": "J/Ψ发现",
+        "en": "J/psi discovery"
+      }
+    },
+    "required-1-wu-parity": {
+      "chapterIds": ["wu-asymmetry", "wu-parity"],
+      "label": {
+        "zh": "宇称检验",
+        "en": "Parity test"
+      }
+    }
+  }
+}

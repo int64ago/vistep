@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import reactRenderer from '@astrojs/react/server.js';
 import { Resvg } from '@resvg/resvg-js';
 import { resolve } from 'node:path';
 import TopicCover from '../../components/TopicCover.astro';
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 
 export const GET: APIRoute = async ({ params }) => {
   const container = await AstroContainer.create();
+  container.addServerRenderer({ name: '@astrojs/react', renderer: reactRenderer });
   const topic = getTopic(params.slug!);
   const svg = await container.renderToString(TopicCover, {
     props: { slug: topic.slug, color: topic.color },

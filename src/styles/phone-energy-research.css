@@ -1,0 +1,161 @@
+.pe-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #6d815f;
+}
+.pe-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.pe-synthetic {
+  font-size: 16px;
+  text-align: center;
+  color: #a28b64;
+  margin: 7px 12px;
+}
+.pe-apparatus {
+  display: block;
+  width: min(100%, 440px);
+  height: auto;
+  margin: auto;
+}
+.pe-apparatus text {
+  font: 22px var(--font-sans, sans-serif);
+  fill: #7d8e69;
+}
+.pe-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 8px 20px;
+}
+.pe-comparison > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+  font-size: 16px;
+}
+.pe-comparison strong {
+  font-size: 24px;
+  color: #99825b;
+  font-weight: 500;
+}
+.pe-comparison b {
+  font-weight: 500;
+  color: #a5b28c;
+}
+.pe-comparison small {
+  font-size: 16px;
+  color: #8b9c76;
+}
+.pe-caption,
+.pe-conclusion {
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 8px 16px;
+  color: #8c9c78;
+}
+.pe-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.pe-controls button {
+  min-height: 44px;
+}
+.pe-controls > button {
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: #dce5cb;
+  border: 1px solid #c6d2b4;
+  color: #71835f;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pe-controls > button:hover {
+  background: #d1ddbd;
+}
+.pe-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.pe-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.pe-details p {
+  color: #7e9072;
+  margin: 0 0 16px;
+}
+.pe-records {
+  list-style: none;
+  margin: 20px 14px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.pe-records li {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dce4cf;
+}
+@media (max-width: 480px) {
+  .pe-controls {
+    padding: 18px 14px;
+  }
+  .pe-apparatus text {
+    font-size: 25px;
+  }
+  .pe-comparison {
+    gap: 12px;
+    margin-inline: 10px;
+  }
+}
+
+.pe-power {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  font-size: 16px;
+  color: #879972;
+  margin: 6px 12px 20px;
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.pe-film[data-watch] > .pe-kicker,
+.pe-film[data-watch] > .pe-caption,
+.pe-film[data-watch] > details {
+  display: none;
+}
+.pe-film[data-watch] .pe-power,
+.pe-film[data-watch] .pe-caption,
+.pe-film[data-watch] .pe-comparison small {
+  display: none;
+}
+.pe-film[data-watch] .pe-comparison {
+  margin: 4px 10px;
+  gap: 10px;
+}
+.pe-film[data-watch] .pe-comparison > div {
+  gap: 3px;
+}
+.pe-film[data-watch] .pe-comparison strong {
+  font-size: 20px;
+}
+.pe-film[data-watch] .pe-conclusion,
+.pe-film[data-watch] .pe-synthetic {
+  margin: 5px 10px;
+  line-height: 1.4;
+}

@@ -1,0 +1,139 @@
+{
+  "topic": {
+    "slug": "cathode-ray-lab",
+    "name": "阴极射线与电子",
+    "title": "一束看不见的射线，怎样显露电荷与质量？",
+    "question": "一束看不见的射线，怎样显露电荷与质量？",
+    "description": "对照电场、磁场与薄金属窗中的电子束，区分可观察证据与历史推断。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["oil-drop-lab", "charged-particle-lab"],
+    "sources": [
+      {
+        "title": "Nobel Prize — Thomson’s cathode-ray apparatus",
+        "url": "https://educationalgames.nobelprize.org/educational/physics/vacuum/experiment-2.html"
+      },
+      {
+        "title": "Nobel Prize — Lenard’s metal window",
+        "url": "https://educationalgames.nobelprize.org/educational/physics/vacuum/tube-3.html"
+      },
+      {
+        "title": "NIST — Fundamental-constant experiments",
+        "url": "https://physics.nist.gov/cuu/Constants/histindex.html"
+      }
+    ]
+  },
+  "component": "src/components/experiments/CathodeRayLab.tsx",
+  "cover": "src/components/covers/CathodeRayLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["阴极射线与电子", "一束看不见的射线，怎样显露电荷与质量？", "近代物理实验"],
+      "en": [
+        "Cathode rays and electrons",
+        "How can a beam reveal its charge and mass?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "阴极射线与电子": "Cathode rays and electrons",
+    "一束看不见的射线，怎样显露电荷与质量？": "How can a beam reveal its charge and mass?",
+    "对照电场、磁场与薄金属窗中的电子束，区分可观察证据与历史推断。": "Compare cathode rays in electric fields, magnetic fields and a thin metal window.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "electric",
+        "title": "先用电场偏转",
+        "titleEn": "Begin with electric deflection",
+        "caption": "电子向电场的反方向偏转，显示射线带负电。",
+        "captionEn": "The beam deflects opposite the electric field, indicating negative charge.",
+        "zh": "放电管中的阴极射线在荧光屏上留下亮斑。加入电场，电子朝电场的反方向偏转，显示它们带负电。这里的亮线是帮助追踪的轨迹，荧光屏上的光点才代表可观察的位置。极板之间受力，离开极板后继续沿切线前进。",
+        "en": "Cathode rays produce a spot on a fluorescent screen. An electric field deflects the beam opposite the field direction, indicating negative charge. The drawn line helps us track motion; the screen spot represents the observation. After leaving the plates, particles drift along the outgoing tangent.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "magnetic",
+        "title": "换成磁场",
+        "titleEn": "Use a magnetic field",
+        "caption": "磁场改变运动方向，轨迹弯曲；所受力与速度垂直。",
+        "captionEn": "A magnetic field bends the beam with a force perpendicular to velocity.",
+        "zh": "关掉电场，只保留指向画面外的磁场。负电电子向另一侧偏转，磁场中的轨迹弯曲。改变磁场强度，光点的位置随之改变。磁力本身不做功，改变的是速度方向。装置的尺寸和粒子运动已放大、放慢，以便看清过程。",
+        "en": "Turn off the electric field and keep a magnetic field pointing out of the picture. The negative electrons bend the other way. Changing field strength moves the screen spot. Magnetic force does no work: it changes direction rather than speed. The apparatus and motion are displayed at teaching scales.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "balance",
+        "title": "让两种偏转抵消",
+        "titleEn": "Balance the two deflections",
+        "caption": "电场力与磁场力抵消时，电子束恢复直线。",
+        "captionEn": "When electric and magnetic forces balance, the beam becomes straight.",
+        "zh": "同时打开电场和磁场，让两个力大小相等、方向相反。电子束恢复直线时，电子速度等于电场强度除以磁感应强度。再结合单独磁场中的弯曲半径，就能求出电荷量与质量的比。画面用同一运动方程计算三种情况，没有另外画一条直线替代平衡结果。",
+        "en": "Apply both fields and balance their opposite forces. For an undeflected beam, speed equals electric field divided by magnetic flux density. Combining that speed with magnetic curvature gives charge-to-mass ratio. One equation of motion generates all three views, including the straight balanced trajectory.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "universal",
+        "title": "把比荷与电荷量区分开",
+        "titleEn": "Separate charge-to-mass ratio from charge",
+        "caption": "偏转测量先给出比荷；结合元电荷才可求电子质量。",
+        "captionEn": "Deflection first gives charge-to-mass ratio; elementary charge is needed to infer mass.",
+        "zh": "汤姆孙比较不同阴极材料和管内气体，得到相同的比荷，支持电子是普遍存在的组成部分。偏转测量本身给出的是比荷，不能单独分出电荷与质量。后来结合元电荷的测量，才可以确定电子质量。当前模拟采用已知电子常量，是对方法的重建。",
+        "en": "Thomson found the same charge-to-mass ratio using different cathode materials and gases, supporting electrons as common constituents of matter. Deflection measures a ratio, not charge and mass separately. Combining it with elementary-charge measurements determines mass. This reconstruction uses the known electron constants.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "window",
+        "title": "让射线穿过金属窗",
+        "titleEn": "Transmit rays through a metal window",
+        "caption": "薄金属窗维持管内真空，同时允许一部分电子穿出。",
+        "captionEn": "A thin metal window preserves the vacuum while transmitting some electrons.",
+        "zh": "勒纳德在管壁设置很薄的金属窗。薄膜仍隔开管内与外部环境，却能让一部分阴极射线穿出，外面的观察屏也出现信号。这使研究者能够改变射线穿过的介质。这里用示意观察室表示窗外空间，不能把它理解为电子在空气中永远无损地直线传播。",
+        "en": "Lenard used a thin metal window in the tube wall. It separated the tube from the outside while transmitting some cathode rays to an external observation screen. That enabled studies in different media. The external chamber is schematic; electrons do not travel indefinitely through air without scattering or energy loss.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "thickness",
+        "title": "比较薄膜的阻挡",
+        "titleEn": "Compare the foil’s attenuation",
+        "caption": "加厚示意薄膜，透过信号减弱；原子并非不可穿透的实心球。",
+        "captionEn": "A thicker foil weakens transmission; atoms are not impenetrable solid spheres.",
+        "zh": "逐渐增加薄膜的相对厚度，透过的信号减弱。电子能够穿透一定厚度的物质，为认识原子的内部空间提供了线索。不过只凭穿透现象，还不能确定核式结构；那需要进一步的散射证据。透过率采用教学衰减模型，不是勒纳德历史数据的拟合。",
+        "en": "Increase the relative foil thickness and transmission weakens. Penetration provided clues that atoms were not impenetrable solid spheres, but did not by itself establish the nuclear model. Scattering supplied further evidence. Transmission here uses an illustrative attenuation model rather than a fit to Lenard’s historical data.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-thomson-electron": {
+      "chapterIds": ["electric", "magnetic", "balance", "universal"],
+      "label": {
+        "zh": "偏转与比荷",
+        "en": "Deflection and charge-to-mass ratio"
+      }
+    },
+    "e3-lenard-electron-foil": {
+      "chapterIds": ["window", "thickness"],
+      "label": {
+        "zh": "勒纳德金属窗",
+        "en": "Lenard’s metal window"
+      }
+    }
+  }
+}

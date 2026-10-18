@@ -1,0 +1,38 @@
+---
+name: Position and velocity with sensors
+title: How does a sensor turn a sound pulse into velocity?
+---
+
+<section id="understand">
+
+PEP Required Book 1 §1.3 (page25) introduces two arrangements. In the first, a moving object emits infrared and ultrasound together. A fixed receiver starts timing when infrared arrives and stops when sound arrives. Neglecting the tiny infrared travel time gives x ≈ cΔt.
+
+The second uses one fixed ultrasonic transducer. Sound reaches the object and returns, so x = cΔt/2. The paths differ; the same factor cannot be applied to both.
+
+</section>
+<section id="try">
+
+Pause a pulse halfway and compare it with the cart. Once emitted, sound is not dragged by its moving source. In reflection mode, pulse and target must meet at the reflection instant.
+
+Repeated measurements produce positions over time. Position difference divided by the matching time difference gives average velocity. The textbook uses short intervals around0.02 s to approximate instantaneous velocity. Here the cart is uniform, so both coincide. Exploration changes signed velocity and pulse progress.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Motion during propagation</summary>
+
+The model uses343 m/s sound in stationary air and vacuum light speed for the infrared approximation. One-way timing retains infrared’s tiny travel time while the interface shows the textbook approximation. Reflected timing solves the interception of a uniformly moving target, then the return flight. Thus cΔt/2 belongs to the reflection instant. Successive reflection times are used when reconstructing velocity.
+
+</details>
+
+<details>
+
+<summary>Real-instrument limits</summary>
+
+Air temperature changes sound speed. Transducers have a brief post-transmission blind period; small or tilted targets may return weak echoes, and multiple reflections can confuse range. Only a clean single path is shown. Pulse propagation is greatly slowed, but millisecond readings retain physical model time. Green strokes visualize sound-pulse position, not visible light.
+
+</details>
+
+</section>

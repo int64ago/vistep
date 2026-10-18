@@ -1,0 +1,143 @@
+.platecap-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #58674e;
+}
+.platecap-kicker {
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 14px;
+}
+.platecap-film > svg {
+  display: block;
+  width: min(100%, 500px);
+  height: auto;
+  margin: -16px auto 0;
+}
+.platecap-condition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  padding: 4px 12px;
+}
+.platecap-condition span {
+  color: #6d8265;
+  background: #e9efdf;
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+.platecap-condition span[data-connected='true'] {
+  background: #eee7cd;
+  color: #8b7a4f;
+}
+.platecap-condition b {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.platecap-readout {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  padding: 14px 12px;
+  font-size: 16px;
+}
+.platecap-readout span {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.platecap-readout b {
+  font-size: 23px;
+  font-weight: 500;
+  color: #8a7951;
+  font-variant-numeric: tabular-nums;
+}
+.platecap-geometry {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  color: #7c8870;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.platecap-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  margin: 24px 0;
+  background: #edf1e3;
+  border-radius: 24px;
+}
+.platecap-switch {
+  min-height: 44px;
+  padding: 10px 16px;
+  background: #dde7cf;
+  border: 1px solid #bdcda9;
+  border-radius: 22px;
+  color: #637c52;
+  font-size: 16px;
+}
+.platecap-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.platecap-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.platecap-details p {
+  margin: 0 0 16px;
+  color: #738268;
+}
+.platecap-controls button {
+  min-height: 44px;
+}
+@media (max-width: 480px) {
+  .platecap-film > svg {
+    margin: -2px auto 0;
+  }
+  .platecap-controls {
+    padding: 18px 14px;
+  }
+  .platecap-readout {
+    gap: 20px;
+    padding: 12px;
+  }
+  .platecap-readout b {
+    font-size: 20px;
+  }
+  .platecap-condition {
+    gap: 8px 14px;
+  }
+  .platecap-geometry {
+    gap: 6px 16px;
+  }
+}
+
+.platecap-overrange {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: #947d51;
+  margin: 4px 14px 12px;
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.platecap-film[data-watch] > .platecap-kicker,
+.platecap-film[data-watch] > .platecap-caption,
+.platecap-film[data-watch] > details {
+  display: none;
+}
+.platecap-film[data-watch] .platecap-condition,
+.platecap-film[data-watch] .platecap-geometry {
+  margin: 5px 10px;
+  padding: 4px 8px;
+  gap: 5px 12px;
+}

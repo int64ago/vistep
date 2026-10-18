@@ -1,0 +1,167 @@
+{
+  "topic": {
+    "slug": "phone-accelerometer-lab",
+    "name": "手机加速度实验",
+    "title": "自由下落时，手机为什么可能读出零？",
+    "question": "自由下落时，手机为什么可能读出零？",
+    "description": "同一次托住、释放、接住与电梯上行，分清原始加速度计和去重力输出。",
+    "color": "#abbca0",
+    "tag": "传感器 · 加速度",
+    "related": ["newton-tube", "gyroscope"],
+    "sources": [
+      {
+        "title": "phyphox — Acceleration with g",
+        "url": "https://phyphox.org/experiment/acceleration-with-g/"
+      },
+      {
+        "title": "Android Sensors — Motion sensors",
+        "url": "https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["手机加速度实验", "自由落体", "加速度传感器", "电梯加速度", "比力", "去重力"],
+      "en": [
+        "Phone accelerometer experiments",
+        "specific force",
+        "free fall",
+        "lift acceleration",
+        "gravity correction"
+      ]
+    }
+  },
+  "component": "src/components/experiments/PhoneAccelerometerLab.tsx",
+  "cover": "src/components/covers/PhoneAccelerometerLabCover.astro",
+  "translations": {
+    "手机加速度实验": "Phone accelerometer experiments",
+    "自由下落时，手机为什么可能读出零？": "Why can a falling phone read zero?",
+    "同一次托住、释放、接住与电梯上行，分清原始加速度计和去重力输出。": "Follow a hold–drop–catch and a lift journey to distinguish raw accelerometer readings from gravity-corrected motion.",
+    "传感器 · 加速度": "Sensors · Acceleration",
+    "手掌托住": "Held by the hand",
+    "脱离支撑，自由下落": "Unsupported free fall",
+    "接住，向上减速": "Caught: downward motion slows",
+    "上行，加速": "Rising and speeding up",
+    "上行，匀速": "Rising at constant speed",
+    "上行，减速": "Rising and slowing down",
+    "恢复静止": "At rest again",
+    "向上为正": "Upward is positive",
+    "平放手机的竖直运动与支撑状态，向上为正轴": "Vertical motion and support of a flat phone, with upward positive",
+    "原始加速度计": "Raw accelerometer",
+    "去重力后的加速度": "Gravity-corrected acceleration",
+    "同一次运动，两种输出": "One motion, two outputs",
+    "原始加速度计与去重力输出的时间曲线": "Raw and gravity-corrected acceleration versus time",
+    "原始读数 = 运动加速度 + g（本片坐标）": "Raw reading = motion acceleration + g (these axes)",
+    "测量情境": "Measurement situation",
+    "托住、释放、接住": "Hold, release, catch",
+    "电梯上行": "Upward lift journey",
+    "运动时刻": "Physical time",
+    "曲线显示": "Visible traces",
+    "两种输出": "Both outputs",
+    "原始输出": "Raw output",
+    "去重力输出": "Gravity-corrected output",
+    "为什么教材的自由下落曲线是−g？": "Why does the textbook’s free-fall trace show−g?",
+    "手机加速度计测比力：支撑、接触等非引力作用造成的单位质量受力。平放并取向上为正，静止原始读数约+g，自由落体约0；应用程序去除重力分量后，静止显示0，自由落体显示−g。先核对应用的输出模式和坐标轴。本片保持手机方向不变，忽略旋转、滤波和传感器噪声。": "A raw accelerometer measures specific force from support and contact. With a flat phone and upward positive, it reads about+g at rest and zero in free fall. A gravity-corrected output reads zero at rest and−g in free fall. Check the app’s output and axes. This model holds orientation fixed and omits rotation, filtering and sensor noise.",
+    "测力计示数": "Force-meter reading",
+    "拉力除以质量，与运动加速度比较": "Compare force per mass with motion acceleration",
+    "a = F/m − g；悬挂质量0.20 kg，忽略弹簧振动": "a = F/m − g; hanging mass0.20 kg; spring oscillations omitted",
+    "测量仪器": "Measuring instrument",
+    "手机传感器": "Phone sensor",
+    "弹簧测力计": "Spring force meter"
+  },
+  "narration": {
+    "duration": 166,
+    "cues": [
+      {
+        "id": "supported",
+        "title": "先看静止的手机",
+        "titleEn": "Start with a supported phone",
+        "caption": "静止时，原始加速度计仍可读出+g。",
+        "captionEn": "At rest, the raw accelerometer can still read+g.",
+        "zh": "手机平放在手掌上，明明没有运动，原始加速度计却显示约九点八。先别把它当成故障。传感器感受到的是手掌提供的支撑，这种单位质量的非引力作用叫比力。这里固定手机方向，取垂直屏幕向上为正；运动加速度为零，并不意味着原始传感器读数也为零。",
+        "en": "The phone rests flat on a hand, yet its raw accelerometer reads about nine point eight. That is not a malfunction. It senses the support from the hand: nongravitational force per unit mass, called specific force. Keep the phone orientation fixed and take upward as positive. Zero motion acceleration does not imply a zero raw reading.",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "fall",
+        "title": "脱离支撑",
+        "titleEn": "Remove the support",
+        "caption": "自由落体时，原始加速度计的读数近似为0。",
+        "captionEn": "In free fall, the raw accelerometer reads approximately zero.",
+        "zh": "松开支撑，让手机自由下落。它向下加速，原始曲线反而降到了零。原因是手机和传感器内部的敏感部件一起受重力下落，原来的支撑消失了。这个零读数不表示重力消失，也不表示手机没有加速度，而是告诉我们它现在几乎没有受到非引力支撑。",
+        "en": "Remove the support and let the phone fall. It accelerates downward, yet the raw trace drops to zero. The phone and the sensor’s internal test element are falling together; the previous support has disappeared. Zero does not mean gravity is absent or that motion is unaccelerated. It means there is almost no nongravitational support.",
+        "seconds": 27,
+        "chapterAt": 27,
+        "at": 27.3
+      },
+      {
+        "id": "corrected",
+        "title": "接住与去重力输出",
+        "titleEn": "Catch it and distinguish the corrected output",
+        "caption": "去重力后：静止为0，自由落体为−g。",
+        "captionEn": "After gravity correction: zero at rest,−g in free fall.",
+        "zh": "接住手机时，向下的速度迅速减小，所以运动加速度向上，曲线出现一个峰。再比较两种输出：应用扣除重力参考分量后，静止显示零，自由下落显示负九点八。教材展示的就是这种含义。真正做实验前，要先核对软件模式和轴向，不能只看曲线的名字。",
+        "en": "During the catch, downward velocity decreases quickly, so motion acceleration points upward and produces a peak. Now compare the outputs. After subtracting the gravity reference, an app shows zero at rest and minus nine point eight during free fall. That is the meaning of the textbook’s trace. Establish the output mode and axes before interpreting real data.",
+        "seconds": 28,
+        "chapterAt": 54,
+        "at": 54.3
+      },
+      {
+        "id": "lift",
+        "title": "把手机带入电梯",
+        "titleEn": "Take the phone into a lift",
+        "caption": "上行过程中，启动、匀速和制动的读数不同。",
+        "captionEn": "An upward journey has different readings at start, cruise and braking.",
+        "zh": "把手机保持平放，随电梯向上运行。启动时速度向上增加，支撑比静止时更大，原始读数超过九点八。匀速阶段回到九点八。快到目的层时，电梯还在上升，但速度减小，所需支撑减小，原始读数低于九点八。方向相同，读数却可以不同。",
+        "en": "Keep the phone flat during an upward lift journey. While it speeds up, greater support is needed and the raw reading exceeds nine point eight. During the cruise it returns to that value. Near the destination the lift is still rising but slowing, so support and the raw reading decrease. The same travel direction can produce different readings.",
+        "seconds": 28,
+        "chapterAt": 82,
+        "at": 82.3
+      },
+      {
+        "id": "lift-correction",
+        "title": "从读数还原加速度",
+        "titleEn": "Recover motion acceleration",
+        "caption": "在固定朝向下，原始读数减g得到运动加速度。",
+        "captionEn": "At fixed orientation, subtractg to recover motion acceleration.",
+        "zh": "现在把两条曲线一起看。在这个固定朝向和向上为正的坐标里，原始读数减去九点八，就是运动加速度：启动为正，匀速为零，制动为负。手机如果转动，重力会分配到不同轴上，就不能照搬这个简单减法。测量要先说清仪器报告的究竟是什么。",
+        "en": "Look at both traces together. With this fixed orientation and upward-positive axis, subtracting nine point eight from the raw reading gives motion acceleration: positive at the start, zero during cruising and negative during braking. Rotation would redistribute gravity among the axes, so this simple subtraction would no longer apply. Always identify the quantity the instrument actually reports.",
+        "seconds": 28,
+        "chapterAt": 110,
+        "at": 110.3
+      },
+      {
+        "id": "spring-meter",
+        "title": "用测力计交叉测量",
+        "titleEn": "Cross-check with a spring force meter",
+        "caption": "测出拉力，再由a = F/m − g求电梯加速度。",
+        "captionEn": "Measure tension, then infer lift acceleration froma = F/m − g.",
+        "zh": "不用手机，也可以在电梯里悬挂一只弹簧测力计。它测的是拉力，不是加速度。先知道重物质量，再把读数除以质量，减去重力加速度，就能得到电梯的加速度。启动时示数大，匀速时回到重力，制动时示数小。这里忽略弹簧振动，比较的是各阶段的稳定读数。",
+        "en": "A hanging spring force meter provides another method. It measures tension, not acceleration. Divide its reading by the known hanging mass, then subtract gravitational acceleration to infer the lift’s acceleration. The reading rises during the start, returns to the weight during cruising, and falls during braking. Here we neglect spring oscillations and compare the steady readings within each stage.",
+        "seconds": 28,
+        "chapterAt": 138,
+        "at": 138.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-phone-free-fall": {
+      "chapterIds": ["supported", "fall", "corrected"],
+      "label": {
+        "zh": "手机测自由落体",
+        "en": "Phone free-fall measurement"
+      }
+    },
+    "required-1-elevator-acceleration": {
+      "chapterIds": ["lift", "lift-correction", "spring-meter"],
+      "label": {
+        "zh": "测量电梯加速度",
+        "en": "Measuring lift acceleration"
+      }
+    }
+  }
+}

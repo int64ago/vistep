@@ -1,0 +1,44 @@
+---
+name: Testing mechanical-energy conservation
+title: Does every loss of gravitational energy become kinetic energy?
+---
+
+<section id="understand">
+
+Required Book 2, Chapter 8 §5 (pages 95–98), first considers possible designs, then presents falling ticker tape and an inclined air track. An exercise adds a horizontal air-track slider connected to a hanging load. The pendulum remains a proposed design here, rather than a substitute for measurement.
+
+Obtain height changes from position differences and speeds from tape or photogates, then calculate each energy change independently. Displayed example readings come from a separate motion model. They illustrate the method, are not recorded measurements, and do not themselves constitute experimental verification of a law.
+
+</section>
+<section id="try">
+
+The tape has 50 Hz dots. Compare states at 0.12 and 0.34 seconds, obtaining each speed from its neighboring dots over 0.04 seconds. Constant acceleration makes this equal to the middle-time instantaneous speed. Comparing gΔh with (v₂²−v₁²)/2 cancels mass, so a separate mass measurement is unnecessary.
+
+Flag width d divided by blocking time Δt gives average speed during passage through a photogate. A narrow flag approximates instantaneous speed at the gate. Change its width to inspect the approximation, or add resistance to expose mechanical-energy loss.
+
+The horizontal air-track system includes the slider, flag, tray and hanging masses. If slider plus flag has mass M and the hanging assembly has mass m, gravitational energy lost over travel l is mgl. Both moving parts contribute kinetic energy, approximately (M+m)(d/Δt)²/2. Counting the slider alone misses the hanging load’s kinetic energy.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Motion, finite flag width and errors</summary>
+
+The falling model uses constant upward resistance R, giving a = g−R/m. R = 0 is ideal; nonzero resistance removes mechanical energy RΔh. This is a teaching counterexample, not a claim that aerodynamic drag stays constant at every speed.
+
+The inclined track has a 12° slope and a = g(sinθ−μcosθ). Leading- and trailing-edge arrival times are computed directly before evaluating d/Δt. The mean speed equals speed at the time midpoint, which generally differs from the instant when the flag center reaches the gate. Finite flag width therefore causes a small systematic bias. Timer quantization and random errors are not simulated.
+
+For the horizontal track a = mg/(M+m). An inextensible cord and massless pulley give equal travel and speed at both ends. Rotational kinetic energy is omitted; the slider and flag form one translating rigid body.
+
+</details>
+
+<details>
+
+<summary>Why the pendulum is a proposal</summary>
+
+The nonlinear equation θ″ = −(g/L)sinθ is integrated independently. Potential and kinetic energies are then calculated from the resulting position and velocity. With a fixed pivot and inextensible string, tension is perpendicular to motion and does no work. An actual verification still needs height and speed measurements, resistance reduction and uncertainty analysis. Watching an ideal pendulum is not a completed experiment.
+
+</details>
+
+</section>

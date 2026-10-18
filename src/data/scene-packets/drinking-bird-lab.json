@@ -1,0 +1,158 @@
+{
+  "topic": {
+    "slug": "drinking-bird-lab",
+    "name": "饮水鸭的热机循环",
+    "title": "饮水鸭为何会不断点头？",
+    "question": "饮水鸭为何会不断点头？",
+    "description": "追踪湿头蒸发、压强差、液柱上升与倾倒排液，解释一个由环境热量驱动的小热机。",
+    "color": "#92aa95",
+    "tag": "湿头降温，液体搬家",
+    "related": ["thermal-measurement-lab", "thermodynamic-work-lab"],
+    "sources": [
+      {
+        "title": "Exploratorium — The Dipping Bird",
+        "url": "https://annex.exploratorium.edu/wsw/progress_snacks/dippingbird/"
+      },
+      {
+        "title": "University of Colorado — Drinking Bird",
+        "url": "https://www.colorado.edu/lab/lecture-demo-manual/g440-evaporation-and-expansion-drinking-bird"
+      }
+    ]
+  },
+  "component": "src/components/experiments/DrinkingBirdLab.tsx",
+  "cover": "src/components/covers/DrinkingBirdLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["饮水鸭的热机循环", "饮水鸟", "蒸发", "蒸气压", "热机"],
+      "en": [
+        "The drinking bird heat engine",
+        "dipping bird",
+        "evaporation",
+        "vapour pressure",
+        "heat engine"
+      ]
+    }
+  },
+  "translations": {
+    "饮水鸭的热机循环": "The drinking bird heat engine",
+    "饮水鸭为何会不断点头？": "Why does a drinking bird keep dipping?",
+    "追踪湿头蒸发、压强差、液柱上升与倾倒排液，解释一个由环境热量驱动的小热机。": "Follow evaporation, pressure difference, rising liquid and gravity-driven reset in a small heat engine.",
+    "湿头降温，液体搬家": "A cool head lifts the liquid",
+    "蒸发驱动的饮水鸭": "An evaporation-driven bird",
+    "湿润的头部": "Wet head",
+    "干燥的头部": "Dry head",
+    "湿润头部降温、液柱上升与饮水鸭倾倒复位": "Evaporative head cooling, a rising liquid column, and the tipping and resetting bird",
+    "没有蒸发降温": "No evaporative cooling",
+    "管口露出，压强均衡": "Tube exposed; pressures equalize",
+    "液体上移，鸭身倾倒": "Liquid rises; the bird tips",
+    "头部冷却，液柱上升": "Head cools; liquid rises",
+    "外部清水": "External water",
+    "密封工作液": "Sealed working fluid",
+    "头部降温": "Head cooling",
+    "液柱长度": "Column length",
+    "环境相对湿度": "Relative humidity",
+    "经过时间": "Elapsed time",
+    "机制模型与能源": "Mechanism and energy source",
+    "外部清水只湿润绒布，不流入密封鸭身。模型连接蒸发冷却、代表性挥发液的蒸气压、液柱、重力矩与管口露出后的排液；参数用来说明机制，不预测某一实物的周期或效率。湿头模式假定外部水分持续补充，热源来自环境；饱和空气或干头不会启动。": "External water wets the felt without entering the sealed body. This reduced model connects evaporative cooling, representative vapour pressure, a liquid column, gravitational torque and drainage after the tube opening emerges. Its parameters explain the mechanism rather than predicting a particular toy’s period or efficiency. Wet-head mode maintains the external water supply, with heat supplied by the environment; a dry head or saturated air does not start the engine.",
+    "干头为什么不动": "A dry head stays still",
+    "头身温度相同，没有驱动液柱的压强差。": "At equal head and body temperatures, no pressure difference lifts the liquid.",
+    "湿头蒸发带走热量": "Evaporation cools the wet head",
+    "头部外面的水蒸发，内部蒸气压下降。": "External water evaporates; the head’s internal vapour pressure falls.",
+    "压强差抬升液体": "Pressure lifts the liquid",
+    "身体内较高的蒸气压推动液体上升。": "Higher vapour pressure in the body pushes liquid up the neck.",
+    "质量上移后倾倒": "The raised mass tips the bird",
+    "液体分布改变重力矩，鸟喙接触清水。": "The new mass distribution changes gravitational torque and tips the beak into water.",
+    "管口露出后复位": "An exposed tube resets the cycle",
+    "管口离开液面，两端连通，液体回落。": "The tube opening emerges, pressure equalizes and the liquid drains.",
+    "环境维持的循环": "A cycle powered by the environment",
+    "持续蒸发才有循环；它不是永动机。": "Continued evaporation sustains the cycle; this is not perpetual motion."
+  },
+  "narration": {
+    "duration": 156,
+    "cues": [
+      {
+        "id": "bird-dry",
+        "title": "干头为什么不动",
+        "titleEn": "A dry head stays still",
+        "caption": "头身温度相同，没有驱动液柱的压强差。",
+        "captionEn": "At equal head and body temperatures, no pressure difference lifts the liquid.",
+        "zh": "先看干燥的饮水鸭。鸭身密封，里面装着易挥发的工作液。头和身体温度相同时，液柱不会自己持续上升。杯里的水也不是供鸭子喝进身体的燃料。",
+        "en": "Begin with the dry bird. A volatile working liquid is sealed inside its body. Equal head and body temperatures give no sustained pressure difference to lift that liquid. Water in the cup is not a fuel that the bird drinks into its body.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "bird-cool",
+        "title": "湿头蒸发带走热量",
+        "titleEn": "Evaporation cools the wet head",
+        "caption": "头部外面的水蒸发，内部蒸气压下降。",
+        "captionEn": "External water evaporates; the head’s internal vapour pressure falls.",
+        "zh": "把头部绒布湿润，外面的水蒸发吸热，头部逐渐降温。内部工作液的部分蒸气凝结，头部蒸气压随之下降。注意清水仍在外面，与密封工作液分开。",
+        "en": "Wet the felt on the head. Evaporation removes heat and cools it. Some internal vapour condenses, reducing vapour pressure in the head. The external water remains separate from the sealed working liquid.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "bird-rise",
+        "title": "压强差抬升液体",
+        "titleEn": "Pressure lifts the liquid",
+        "caption": "身体内较高的蒸气压推动液体上升。",
+        "captionEn": "Higher vapour pressure in the body pushes liquid up the neck.",
+        "zh": "身体接近室温，蒸气压比冷却后的头部高。这个压强差推动工作液沿细管上升。追踪红色液柱，身体中的液体减少，质量逐渐转移到支点上方。",
+        "en": "The body stays near room temperature, with higher vapour pressure than the cooled head. That pressure difference pushes liquid up the narrow neck. Track the red column as liquid leaves the lower bulb and mass shifts above the pivot.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "bird-tip",
+        "title": "质量上移后倾倒",
+        "titleEn": "The raised mass tips the bird",
+        "caption": "液体分布改变重力矩，鸟喙接触清水。",
+        "captionEn": "The new mass distribution changes gravitational torque and tips the beak into water.",
+        "zh": "随着液体上移，绕支点的重力作用不再把鸭子扶正。鸭身向前倾斜，鸟喙接触杯中的清水，为绒布补水。倾倒角度和液柱来自同一个运动模型。",
+        "en": "As liquid rises, gravity no longer restores the bird upright. It tips forward until the beak touches the water and rewets the felt. The liquid column and tipping angle are coupled in the same motion model.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "bird-reset",
+        "title": "管口露出后复位",
+        "titleEn": "An exposed tube resets the cycle",
+        "caption": "管口离开液面，两端连通，液体回落。",
+        "captionEn": "The tube opening emerges, pressure equalizes and the liquid drains.",
+        "zh": "倾倒时，细管下端露出身体里的液面，头身蒸气得以连通。压强差消失，工作液回落到身体，重心降低，鸭子重新直立。留意管口与水平液面的相对位置。",
+        "en": "When the bird tips, the bottom of the tube emerges above the liquid surface. Vapour connects the two bulbs and their pressure difference collapses. Liquid drains into the lower bulb and gravity restores the bird. Watch the tube opening relative to the horizontal liquid surface.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "bird-cycle",
+        "title": "环境维持的循环",
+        "titleEn": "A cycle powered by the environment",
+        "caption": "持续蒸发才有循环；它不是永动机。",
+        "captionEn": "Continued evaporation sustains the cycle; this is not perpetual motion.",
+        "zh": "湿头继续蒸发，循环再次开始。它把环境提供的一部分热量转成机械运动。自由探索把相对湿度调到百分之百，或换成干头，没有蒸发降温就不能启动；模型没有把时间周期当成真实产品的测量值。",
+        "en": "Evaporation resumes and another cycle begins. Part of the heat supplied by the environment becomes mechanical motion. In exploration, select a dry head or saturated air: without evaporative cooling the engine does not start. The model explains the cycle rather than measuring a commercial toy’s timing.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-drinking-bird": {
+      "chapterIds": ["bird-dry", "bird-cool", "bird-rise", "bird-tip", "bird-reset", "bird-cycle"],
+      "label": {
+        "zh": "饮水鸭",
+        "en": "The drinking bird"
+      }
+    }
+  }
+}

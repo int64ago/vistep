@@ -1,0 +1,272 @@
+.apparent-weight-lab {
+  max-width: 1050px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #526e58;
+}
+.apparent-weight-lab header {
+  text-align: center;
+}
+.apparent-weight-lab header p {
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.apparent-weight-lab header > span {
+  font-size: 16px;
+  color: #849174;
+}
+.apparent-weight-composition {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  margin: 25px 0;
+}
+.apparent-weight-person,
+.apparent-weight-analysis {
+  min-width: 0;
+}
+.apparent-weight-person svg,
+.apparent-weight-analysis svg,
+.apparent-weight-bottle svg {
+  width: 100%;
+  display: block;
+}
+.apparent-weight-reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+}
+.apparent-weight-reading strong {
+  font-size: 36px;
+  font-weight: 400;
+  color: #8b9e73;
+}
+.apparent-weight-reading small {
+  font-size: 18px;
+}
+.apparent-weight-kinematics {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  font-size: 18px;
+}
+.apparent-weight-kinematics span {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+}
+.apparent-weight-kinematics b {
+  font-size: 20px;
+  font-weight: 400;
+}
+.apparent-weight-analysis > p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.apparent-weight-analysis > p span {
+  font-size: 16px;
+  color: #91896e;
+}
+.apparent-weight-analysis .apparent-weight-law {
+  display: block;
+  text-align: center;
+  font-size: 27px;
+  margin: 16px 0;
+}
+.apparent-weight-axis {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #849274;
+}
+.apparent-weight-cause {
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 730px;
+  margin: 25px auto;
+}
+.apparent-weight-note {
+  font-size: 16px;
+  color: #849174;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 760px;
+  margin: 20px auto 0;
+}
+.apparent-weight-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.apparent-weight-controls > .segmented:first-child {
+  grid-column: 1/-1;
+  justify-self: center;
+  flex-wrap: wrap;
+}
+.apparent-weight-controls .segmented {
+  flex-wrap: wrap;
+}
+.apparent-weight-measure {
+  font-size: 17px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.apparent-weight-measure p {
+  margin: 18px 0 6px;
+}
+.apparent-weight-measure > strong {
+  font-size: 38px;
+  font-weight: 400;
+  color: #9e966f;
+  margin-bottom: 16px;
+}
+.apparent-weight-measure small {
+  font-size: 18px;
+}
+.apparent-weight-measure b {
+  font-weight: 400;
+  font-size: 23px;
+}
+.apparent-weight-measure > span {
+  font-size: 16px;
+  color: #839777;
+}
+.apparent-weight-bottle {
+  max-width: 450px;
+}
+@media (max-width: 640px) {
+  .apparent-weight-lab {
+    padding: 20px 12px;
+  }
+  .apparent-weight-composition {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 16px 0;
+  }
+  .apparent-weight-person,
+  .apparent-weight-analysis {
+    width: 100%;
+  }
+  .apparent-weight-person svg {
+    max-height: 330px;
+  }
+  .apparent-weight-analysis {
+    border-top: 1px solid #dae2cd;
+    padding-top: 22px;
+  }
+  .apparent-weight-controls {
+    grid-template-columns: 1fr;
+  }
+  .apparent-weight-kinematics {
+    justify-content: space-around;
+  }
+  .apparent-weight-measure {
+    align-items: center;
+    text-align: center;
+  }
+  .apparent-weight-bottle {
+    width: 100%;
+    max-width: 330px;
+  }
+  .apparent-weight-composition.is-bottle {
+    gap: 0;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .apparent-weight-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-lab > header > span,
+  .showcase[data-mode='watch'] .apparent-weight-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .apparent-weight-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .apparent-weight-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .apparent-weight-composition {
+    margin: 6px 0;
+    gap: 10px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-person svg {
+    height: 190px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-reading {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px 12px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-reading strong {
+    font-size: 25px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-reading > span:last-child {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-analysis {
+    border: 0;
+    padding: 0;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-analysis > p,
+  .showcase[data-mode='watch'] .apparent-weight-analysis > svg,
+  .showcase[data-mode='watch'] .apparent-weight-axis {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-kinematics span {
+    flex-direction: row;
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-kinematics,
+  .showcase[data-mode='watch'] .apparent-weight-kinematics b {
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-bottle svg {
+    height: 235px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-measure {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 5px 12px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-measure p {
+    margin: 0;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-measure > strong {
+    margin: 0;
+    font-size: 25px;
+  }
+  .showcase[data-mode='watch'] .apparent-weight-measure > span,
+  .showcase[data-mode='watch'] .apparent-weight-measure > p:not(:first-child),
+  .showcase[data-mode='watch'] .apparent-weight-measure > b {
+    display: none;
+  }
+}

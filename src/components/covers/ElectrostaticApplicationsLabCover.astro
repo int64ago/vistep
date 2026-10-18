@@ -1,0 +1,52 @@
+---
+import { shieldingState } from '../../models/electrostatic-applications-lab';
+const bare = shieldingState(0.23, 20e-9, 'none');
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true">
+  {
+    [135, 315].map((x, i) => {
+      const angle = i ? 0 : bare.angle,
+        a = 25 * Math.sin(angle),
+        b = 25 * Math.cos(angle);
+      return (
+        <g>
+          <>
+            <circle cx={x - 100} cy="103" r="14" fill="#c7c5a0" stroke="#a7b08d" />
+            <path d={`M${x - 106} 103h12m-6-6v12`} stroke="#9c8d63" stroke-width="2" />
+            <path d={`M${x - 100} 117v63`} stroke="#bbae87" stroke-width="6" />
+          </>
+          <>
+            <rect
+              x={x - 28}
+              y="117"
+              width="56"
+              height="75"
+              rx="16"
+              fill="#e3ead8"
+              stroke="#bac8ab"
+            />
+            <path
+              d={`M${x} 99v43m0 0l${-a} ${b}m${a} ${-b}l${a} ${b}`}
+              stroke="#b1a273"
+              stroke-width="3"
+            />
+            <circle cx={x} cy="99" r="9" fill="#b9c4a3" />
+          </>
+          {i === 1 && (
+            <g stroke="#92ac95">
+              <circle cx={x} cy="129" r="76" />
+              {[17, 35, 53].map((rx) => (
+                <ellipse cx={x} cy="129" rx={rx} ry="76" opacity=".5" />
+              ))}
+              {[-50, -25, 0, 25, 50].map((d) => {
+                const h = Math.sqrt(76 * 76 - d * d);
+                return <path d={`M${x - h} ${129 + d}h${2 * h}`} opacity=".5" />;
+              })}
+            </g>
+          )}
+        </g>
+      );
+    })
+  }
+</svg>

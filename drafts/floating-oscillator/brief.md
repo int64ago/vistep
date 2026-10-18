@@ -1,0 +1,5 @@
+# Floating rod
+
+4 chapters/92s, e1-floating-chopstick, Elective1 p45. Upright uniform wood rod with real finite immersion, bottom wire ballast and a large cup. Bottom ballast remains submerged throughout all controls; cup depth clears the undamped large-amplitude trajectory. Rod thickness is enlarged and labelled. Equilibrium includes displaced iron volume and iron mass. Force arrows show buoyancy and weight; net numeric force also includes drag, and graph is explicitly hydrostatic force alone.
+
+Independent RK4 model integrates clipped immersion buoyancy with optional linear drag. Linear restoring force only in the partial-immersion range. At complete submersion the hydrostatic force plateaus. This boundary counterexample is an actual nonlinear state, not a decorative warning. Four tests passed: equilibrium with iron volume, linear/saturated force, analytic small-amplitude period and energy across saturation, damping/domain guards. Final TypeScript syntactic + semantic diagnostics for the component: zero. Literal translation coverage and packet validation-only 297 passed. Root owns actual browser, fullwatch, narrow screen, audio and performance review.

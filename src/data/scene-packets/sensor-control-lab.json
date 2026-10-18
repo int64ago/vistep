@@ -1,0 +1,319 @@
+{
+  "topic": {
+    "slug": "sensor-control-lab",
+    "name": "传感器测量与自动控制",
+    "title": "怎样让光、温度和压力控制一盏灯？",
+    "question": "怎样让光、温度和压力控制一盏灯？",
+    "description": "从电表读数到晶体管和继电器，逐项还原教材中的传感与控制实验。",
+    "color": "#799066",
+    "tag": "测量、放大与执行",
+    "related": ["hall-effect", "relay"],
+    "sources": [
+      {
+        "title": "TDK — NTC thermistor technical information",
+        "url": "https://www.tdk-electronics.tdk.com/download/531116/19643b7ea798d7c4670141a88cd993f9/pdf-general-technical-information.pdf"
+      },
+      {
+        "title": "Littelfuse — Magnetic sensing",
+        "url": "https://www.littelfuse.com/assetdocs/sensing-products-selection-guide?assetguid=7fff98e7-9335-445a-831e-992b4f1fb8a5"
+      }
+    ]
+  },
+  "component": "src/components/experiments/SensorControlLab.tsx",
+  "cover": "src/components/covers/SensorControlLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": [
+        "传感器测量与自动控制",
+        "干簧管",
+        "光敏电阻",
+        "热敏电阻",
+        "压力传感器",
+        "继电器",
+        "双金属片"
+      ],
+      "en": [
+        "Sensor measurement and automatic control",
+        "reed switch",
+        "photoresistor",
+        "NTC thermistor",
+        "pressure sensor",
+        "relay"
+      ]
+    }
+  },
+  "translations": {
+    "传感器测量与自动控制": "Sensor measurement and automatic control",
+    "怎样让光、温度和压力控制一盏灯？": "How can light, temperature and pressure control a lamp?",
+    "从电表读数到晶体管和继电器，逐项还原教材中的传感与控制实验。": "Reconstruct textbook sensing and control from meter readings to transistors and relays.",
+    "测量、放大与执行": "Measure, amplify and actuate",
+    "磁控干簧管": "Magnetic reed switch",
+    "光敏电阻测量": "Photoresistor measurement",
+    "热敏电阻与水浴": "Thermistor and water bath",
+    "门窗报警继电器": "Door-alarm relay",
+    "光控晶体管与继电器": "Light-controlled transistor and relay",
+    "双金属温度开关": "Bimetal temperature switch",
+    "薄膜压力传感器研究": "Film pressure-sensor study",
+    "从敏感元件到电表、放大器与执行装置的实际连接": "Connections from sensitive elements to meters, amplifiers and actuators",
+    "门关闭": "Door closed",
+    "门开启：报警": "Door open: alarm",
+    "普通电阻对照": "Ordinary resistor reference",
+    "梳状电极光敏面": "Photosensitive face with comb electrodes",
+    "绝缘探头水浴测量": "Insulated probe in a water bath",
+    "冷水与手温的对照": "Cold water and hand warmth",
+    "常闭触点给加热器供电": "Normally closed contact powers the heater",
+    "达到60℃，继电器切断加热": "At 60°C the relay interrupts heating",
+    "均匀加载到敏感面": "Load the sensitive area uniformly",
+    "大苹果进入下通道": "Large apple enters the lower path",
+    "小苹果进入上通道": "Small apple enters the upper path",
+    "磁场": "Magnetic field",
+    "感温触点闭合": "Temperature contact closed",
+    "感温触点断开": "Temperature contact open",
+    "传感器特性曲线与当前工作点": "Sensor response curve and current operating point",
+    "选择传感器实验": "Choose a sensor experiment",
+    "磁体与干簧管距离": "Magnet-to-reed distance",
+    "照度": "Illuminance",
+    "元件对照": "Component comparison",
+    "光敏电阻": "Photoresistor",
+    "执行装置": "Actuator",
+    "继电器与灯泡": "Relay and lamp",
+    "分压上臂电阻": "Upper divider resistance",
+    "温度": "Temperature",
+    "包括框架的总压力": "Total force including the fixture",
+    "参数与数据来源": "Parameters and data provenance",
+    "光敏电阻用照度的幂律近似，普通电阻保持不变；NTC采用25℃时10千欧、B值3950开尔文的模型，不代表所有热敏电阻。干簧管使用简化阈值，忽略回差。光控电路计入基极负载、晶体管电流放大与输出限流；双金属形变放大显示，60℃感温触点驱动常闭加热回路。压力图的16个点来自教材第112页，点间线性插值，只比较相邻区间斜率，不冒充新测量。": "The photoresistor uses an illumination power law; the reference is fixed. The representative NTC is 10 kΩ at 25°C with B = 3950 K. The reed threshold omits hysteresis. Light control includes base loading, transistor gain and output limits. Enlarged bimetal deflection closes a 60°C contact controlling a normally closed heater path. Sixteen pressure observations come from textbook page 112; linear interpolation compares local secants and is not a new measurement.",
+    "磁场控制接触": "A magnetic field closes the contact",
+    "磁体靠近，软磁簧片相吸接通。": "A nearby magnet magnetizes the reeds and closes them.",
+    "光敏电阻的明暗对照": "Compare light and shade",
+    "遮光使电阻增大，强光使电阻减小。": "Shade raises resistance; stronger light lowers it.",
+    "换成普通电阻": "Use an ordinary resistor",
+    "相同照度变化，不应让所有电阻都同样响应。": "The same illumination change need not affect every resistor.",
+    "手温与冷水": "Hand warmth and cold water",
+    "这种NTC升温时降阻，降温时增阻。": "This NTC decreases resistance when warmed.",
+    "水浴建立特性曲线": "Measure a water-bath response",
+    "温度和电阻同时记录，建立对应关系。": "Record temperature and resistance together.",
+    "开门改变继电器输出": "Opening the door changes relay output",
+    "干簧管控制线圈，继电器选择指示或报警。": "The reed controls the coil; relay contacts select indication or alarm.",
+    "微小信号控制LED": "A small signal controls an LED",
+    "分压与晶体管放大共同决定点亮条件。": "Divider loading and transistor gain determine the light threshold.",
+    "用继电器控制灯泡": "Use a relay to control a lamp",
+    "传感回路与执行触点承担不同任务。": "The sensing circuit and load contacts serve different roles.",
+    "形变控制加热": "Bending controls heating",
+    "感温触点接通，可让常闭加热回路断开。": "Closing the sensing contact can open the heater path.",
+    "逐级均匀加载": "Apply uniform loads in steps",
+    "框架初始载荷也必须计入总压力。": "Include the fixture in the total applied force.",
+    "比较不同工作区间": "Compare operating ranges",
+    "相同力变化，在不同区间产生不同电阻变化。": "Equal force changes produce different resistance changes.",
+    "把测量用于分拣": "Use the measurement for sorting",
+    "压力阈值驱动通道选择。": "A pressure threshold selects the sorting path."
+  },
+  "narration": {
+    "duration": 264,
+    "cues": [
+      {
+        "id": "reed-contact",
+        "title": "磁场控制接触",
+        "titleEn": "A magnetic field closes the contact",
+        "caption": "磁体靠近，软磁簧片相吸接通。",
+        "captionEn": "A nearby magnet magnetizes the reeds and closes them.",
+        "zh": "观察玻璃管内的两片簧片。磁体靠近时，它们被磁化而相互吸引，触点闭合，灯泡回路接通。磁体离开，簧片弹开。这里转换的是磁场与电路通断，不需要外露的机械按钮。",
+        "en": "Look inside the glass tube. A nearby magnet magnetizes the two reeds so they attract and close the lamp circuit. Moving the magnet away lets them spring apart. Magnetic field controls electrical contact without an exposed push button.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "photoresistor-shade",
+        "title": "光敏电阻的明暗对照",
+        "titleEn": "Compare light and shade",
+        "caption": "遮光使电阻增大，强光使电阻减小。",
+        "captionEn": "Shade raises resistance; stronger light lowers it.",
+        "zh": "把光敏电阻接到电表电阻挡。依次比较强光、自然光和遮光，跟随同一敏感面的照度与电阻读数。光照改变材料中的载流子状况，因此它能把光学量转换成电学量。",
+        "en": "Connect the photoresistor to the resistance meter. Compare stronger light, room light and shade on the same sensitive surface. Illumination changes carrier availability, converting an optical input into an electrical resistance.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22
+      },
+      {
+        "id": "photoresistor-reference",
+        "title": "换成普通电阻",
+        "titleEn": "Use an ordinary resistor",
+        "caption": "相同照度变化，不应让所有电阻都同样响应。",
+        "captionEn": "The same illumination change need not affect every resistor.",
+        "zh": "保持相同照度变化，把敏感元件换成普通电阻。这个对照的电阻读数不随遮光明显改变。区别来自材料的光敏性质，不能把看见光就降阻当作所有电阻的共同特征。",
+        "en": "Keep the illumination comparison and substitute an ordinary resistor. Its resistance stays essentially fixed in this model. The contrast comes from the photosensitive material; light does not lower every resistor’s resistance in the same way.",
+        "seconds": 22,
+        "chapterAt": 44,
+        "at": 44
+      },
+      {
+        "id": "thermistor-touch",
+        "title": "手温与冷水",
+        "titleEn": "Hand warmth and cold water",
+        "caption": "这种NTC升温时降阻，降温时增阻。",
+        "captionEn": "This NTC decreases resistance when warmed.",
+        "zh": "把热敏电阻接到电表，比较冷水和手温。这里选用负温度系数的NTC元件，温度升高时电阻减小，冷却后电阻增大。金属热电阻可能具有相反趋势，所以先说明元件类型。",
+        "en": "Connect the thermistor to the meter and compare cold water with hand warmth. This is an NTC device: warming lowers its resistance, while cooling raises it. A metal resistance thermometer can behave oppositely, so the component type matters.",
+        "seconds": 22,
+        "chapterAt": 66,
+        "at": 66
+      },
+      {
+        "id": "thermistor-bath",
+        "title": "水浴建立特性曲线",
+        "titleEn": "Measure a water-bath response",
+        "caption": "温度和电阻同时记录，建立对应关系。",
+        "captionEn": "Record temperature and resistance together.",
+        "zh": "进一步把绝缘探头浸入水浴，改变水温，同时读取温度计和电阻表。把每个温度与电阻配对，才能建立定量曲线。演示采用指定NTC参数，并不是所有热敏电阻都具有同一条曲线。",
+        "en": "Place an insulated probe in a water bath. Change water temperature and read both thermometer and resistance meter. Paired observations establish a quantitative curve. The demonstration uses stated NTC parameters; other devices need their own characterization.",
+        "seconds": 22,
+        "chapterAt": 88,
+        "at": 88
+      },
+      {
+        "id": "door-alarm",
+        "title": "开门改变继电器输出",
+        "titleEn": "Opening the door changes relay output",
+        "caption": "干簧管控制线圈，继电器选择指示或报警。",
+        "captionEn": "The reed controls the coil; relay contacts select indication or alarm.",
+        "zh": "门关闭时，磁体靠近干簧管，继电器线圈通电，触点接到指示灯。门打开，磁体移开，继电器释放到常闭端，报警器工作。沿着传感、线圈和触点三个环节分别追踪。",
+        "en": "With the door shut, the magnet closes the reed and energizes the relay, selecting the indicator. Opening the door removes the magnet and releases the relay to its normally closed alarm contact. Track sensor, winding and switched output separately.",
+        "seconds": 22,
+        "chapterAt": 110,
+        "at": 110
+      },
+      {
+        "id": "light-transistor",
+        "title": "微小信号控制LED",
+        "titleEn": "A small signal controls an LED",
+        "caption": "分压与晶体管放大共同决定点亮条件。",
+        "captionEn": "Divider loading and transistor gain determine the light threshold.",
+        "zh": "光敏电阻与可调电阻构成分压器。环境变暗，光敏电阻增大，基极获得足够电流，晶体管导通并点亮LED。调节上臂电阻，可以改变点亮阈值；输出支路的电阻限制LED电流。",
+        "en": "The photoresistor and adjustable resistor form a divider. Darkness raises photoresistance, providing enough base current to turn the transistor on and light the LED. The upper resistor adjusts the threshold, while an output resistor limits LED current.",
+        "seconds": 22,
+        "chapterAt": 132,
+        "at": 132
+      },
+      {
+        "id": "light-relay",
+        "title": "用继电器控制灯泡",
+        "titleEn": "Use a relay to control a lamp",
+        "caption": "传感回路与执行触点承担不同任务。",
+        "captionEn": "The sensing circuit and load contacts serve different roles.",
+        "zh": "把LED输出换成继电器线圈，让触点控制另一条灯泡通路。光敏元件不直接承受灯泡的工作电流。线圈旁反向并联的二极管，为关断时的自感电流提供释放通路，保护晶体管。",
+        "en": "Replace the LED output with a relay winding and use its contacts to control the lamp path. The sensitive element does not carry lamp current. A reverse diode across the coil provides a release path for inductive current when the transistor turns off.",
+        "seconds": 22,
+        "chapterAt": 154,
+        "at": 154
+      },
+      {
+        "id": "bimetal-thermostat",
+        "title": "形变控制加热",
+        "titleEn": "Bending controls heating",
+        "caption": "感温触点接通，可让常闭加热回路断开。",
+        "captionEn": "Closing the sensing contact can open the heater path.",
+        "zh": "两层金属的热膨胀系数不同，升温后贴合的金属片弯曲。调到六十摄氏度时接触，继电器线圈通电，常闭加热触点反而断开。区分感温触点与执行触点，才能正确解释自动停热。",
+        "en": "Bonded metals expand by different amounts, bending as temperature rises. At the calibrated sixty-degree contact, the relay energizes and opens its normally closed heater path. Distinguish the sensing contact from the actuator contact to explain heating cutoff.",
+        "seconds": 22,
+        "chapterAt": 176,
+        "at": 176
+      },
+      {
+        "id": "pressure-loading",
+        "title": "逐级均匀加载",
+        "titleEn": "Apply uniform loads in steps",
+        "caption": "框架初始载荷也必须计入总压力。",
+        "captionEn": "Include the fixture in the total applied force.",
+        "zh": "圆柱体通过垫片把力均匀传到薄膜敏感面。框架、垫片和圆柱体先提供零点五牛，每增加一个钩码再加零点五牛。电表与曲线使用教材给出的十六组数据，不是假装现场产生的新测量。",
+        "en": "The cylinder and pad distribute force across the sensitive film. Fixture, pad and cylinder initially apply half a newton; each hook mass adds another half. Meter values and plotted points come from the textbook’s sixteen observations, not invented live measurements.",
+        "seconds": 22,
+        "chapterAt": 198,
+        "at": 198
+      },
+      {
+        "id": "pressure-sensitivity",
+        "title": "比较不同工作区间",
+        "titleEn": "Compare operating ranges",
+        "caption": "相同力变化，在不同区间产生不同电阻变化。",
+        "captionEn": "Equal force changes produce different resistance changes.",
+        "zh": "比较约一牛和五牛附近的数据。低压力区间的曲线更陡，单位力变化对应更大的电阻变化。这里读出的是相邻数据的割线斜率，帮助理解灵敏度，并不冒充光滑拟合曲线的精确切线。",
+        "en": "Compare observations near one and five newtons. The lower-force region is steeper: a given force change produces a larger resistance change. The displayed local secant slope illustrates sensitivity without pretending to be an exact tangent to a fitted curve.",
+        "seconds": 22,
+        "chapterAt": 220,
+        "at": 220
+      },
+      {
+        "id": "pressure-sorting",
+        "title": "把测量用于分拣",
+        "titleEn": "Use the measurement for sorting",
+        "caption": "压力阈值驱动通道选择。",
+        "captionEn": "A pressure threshold selects the sorting path.",
+        "zh": "最后把压力信号用于苹果分拣。小苹果的压力不足以触发，沿上通道通过；大苹果达到阈值，继电器改变通道。真实装置还需要保持电路，让苹果经过挡板期间维持动作。",
+        "en": "Finally use pressure to sort apples. A small apple stays below the threshold and follows the upper path. A larger apple triggers the relay and enters the lower path. A real implementation also needs a holding circuit to retain the action while the apple passes.",
+        "seconds": 22,
+        "chapterAt": 242,
+        "at": 242
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-reed-switch-lamp": {
+      "chapterIds": ["reed-contact"],
+      "label": {
+        "zh": "干簧管磁控灯",
+        "en": "Reed-switch lamp"
+      }
+    },
+    "e2-photoresistor-measurement": {
+      "chapterIds": ["photoresistor-shade", "photoresistor-reference"],
+      "label": {
+        "zh": "观察光敏电阻特性",
+        "en": "Photoresistor characterization"
+      }
+    },
+    "e2-thermistor-measurement": {
+      "chapterIds": ["thermistor-touch", "thermistor-bath"],
+      "label": {
+        "zh": "热敏电阻特性",
+        "en": "Thermistor characterization"
+      }
+    },
+    "e2-thermistor-water-bath-study": {
+      "chapterIds": ["thermistor-bath"],
+      "label": {
+        "zh": "热敏电阻水浴研究",
+        "en": "Thermistor water-bath study"
+      }
+    },
+    "e2-reed-switch-alarm": {
+      "chapterIds": ["door-alarm"],
+      "label": {
+        "zh": "门窗防盗报警",
+        "en": "Door-alarm experiment"
+      }
+    },
+    "e2-light-controlled-switch": {
+      "chapterIds": ["light-transistor", "light-relay"],
+      "label": {
+        "zh": "两种光控开关",
+        "en": "Two light-controlled switches"
+      }
+    },
+    "e2-bimetal-temperature-switch": {
+      "chapterIds": ["bimetal-thermostat"],
+      "label": {
+        "zh": "双金属温度控制",
+        "en": "Bimetal temperature control"
+      }
+    },
+    "e2-film-pressure-sensor-study": {
+      "chapterIds": ["pressure-loading", "pressure-sensitivity", "pressure-sorting"],
+      "label": {
+        "zh": "薄膜压力传感器研究",
+        "en": "Film pressure-sensor study"
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+.pair-lab {
+  max-width: 780px;
+  margin: auto;
+  padding: 0 16px;
+  color: #647a55;
+  font-size: 16px;
+}
+.pair-lab header {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+}
+.pair-lab header p {
+  font-size: 18px;
+  margin: 0;
+}
+.pair-lab header span {
+  color: #82946f;
+}
+.pair-instruments {
+  display: block;
+  width: 100%;
+  height: 275px;
+}
+.pair-readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  text-align: center;
+}
+.pair-readings span {
+  display: block;
+  font-size: 16px;
+}
+.pair-readings strong {
+  font-size: 28px;
+  font-weight: 500;
+  display: block;
+  line-height: 1.8;
+  font-variant-numeric: tabular-nums;
+}
+.pair-readings > div:first-child {
+  color: #9a805b;
+}
+.pair-readings > div:last-child {
+  color: #718b7d;
+}
+.pair-extension {
+  text-align: center;
+  font-size: 17px;
+  margin-top: 12px;
+}
+.pair-extension span {
+  margin: 0 16px;
+}
+.pair-traces {
+  max-width: 440px;
+  margin: auto;
+  text-align: center;
+}
+.pair-traces p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.pair-traces svg {
+  width: 100%;
+  height: 195px;
+  display: block;
+}
+.pair-cause {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+.pair-controls {
+  display: grid;
+  gap: 22px;
+}
+.pair-controls .segmented {
+  flex-wrap: wrap;
+}
+.pair-note {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #849471;
+}
+@media (max-width: 760px) {
+  .pair-lab {
+    padding: 0 4px;
+  }
+  .pair-lab header {
+    display: block;
+    text-align: center;
+  }
+  .pair-lab header p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .pair-instruments {
+    height: 230px;
+  }
+  .pair-readings {
+    gap: 16px;
+  }
+  .pair-readings strong {
+    font-size: 24px;
+  }
+  .pair-extension {
+    font-size: 16px;
+  }
+  .pair-extension span {
+    margin: 0 8px;
+  }
+  .pair-traces svg {
+    height: 185px;
+  }
+  .pair-cause {
+    font-size: 16px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .pair-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .pair-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .pair-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .pair-lab > header > span,
+  .showcase[data-mode='watch'] .pair-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .pair-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .pair-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .pair-instruments {
+    height: 170px;
+  }
+  .showcase[data-mode='watch'] .pair-instruments text {
+    font-size: 25px;
+  }
+  .showcase[data-mode='watch'] .pair-readings {
+    gap: 12px;
+  }
+  .showcase[data-mode='watch'] .pair-readings strong {
+    font-size: 21px;
+    line-height: 1.4;
+  }
+  .showcase[data-mode='watch'] .pair-traces > p {
+    display: none;
+  }
+  .showcase[data-mode='watch'] .pair-traces svg {
+    height: 140px;
+    overflow: visible;
+  }
+  .showcase[data-mode='watch'] .pair-traces svg text {
+    font-size: 24px;
+  }
+  .showcase[data-mode='watch'] .pair-extension {
+    margin: 7px 0;
+  }
+}

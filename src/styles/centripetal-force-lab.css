@@ -1,0 +1,147 @@
+.centripetal-force-lab {
+  max-width: 1080px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #536c51;
+}
+.centripetal-force-lab header {
+  text-align: center;
+}
+.centripetal-force-lab header p {
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.centripetal-force-lab header > span {
+  font-size: 16px;
+  color: #879675;
+}
+.centripetal-force-stage {
+  max-width: 700px;
+  margin: 24px auto;
+}
+.centripetal-force-stage svg {
+  display: block;
+  width: 100%;
+}
+.centripetal-force-readings {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  font-size: 16px;
+}
+.centripetal-force-readings span {
+  display: flex;
+  gap: 10px;
+}
+.centripetal-force-readings b {
+  font-weight: 400;
+  color: #9e8d63;
+}
+.centripetal-force-conditions {
+  font-size: 22px;
+  text-align: center;
+  margin: 24px auto;
+  color: #8c9d72;
+  line-height: 1.6;
+}
+.centripetal-force-conditions span {
+  padding: 0 14px;
+  color: #c0cbb1;
+}
+.centripetal-force-cause {
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 26px auto;
+}
+.centripetal-force-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: #879675;
+  max-width: 760px;
+  margin: 20px auto;
+}
+.centripetal-force-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.centripetal-force-controls .segmented {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.centripetal-force-controls > .segmented:first-child {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+@media (max-width: 640px) {
+  .centripetal-force-lab {
+    padding: 20px 12px;
+  }
+  .centripetal-force-stage {
+    margin: 14px -7px;
+  }
+  .centripetal-force-controls {
+    grid-template-columns: 1fr;
+  }
+  .centripetal-force-readings {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .centripetal-force-readings span {
+    justify-content: space-between;
+  }
+  .centripetal-force-conditions {
+    font-size: 18px;
+  }
+  .centripetal-force-conditions span {
+    padding: 0 7px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .centripetal-force-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-lab > header > span,
+  .showcase[data-mode='watch'] .centripetal-force-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .centripetal-force-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .centripetal-force-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .centripetal-force-stage {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-stage svg {
+    max-height: 240px;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-readings {
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-conditions {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 8px 0;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-conditions span {
+    padding: 0 3px;
+  }
+}

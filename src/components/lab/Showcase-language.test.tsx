@@ -6,6 +6,7 @@ import { manualLanguageClick } from '../../lib/film-language';
 import { films } from '../../data/films';
 import tracks from '../../data/audio-tracks.json';
 import { t } from '../../i18n';
+import type { FilmSelection } from '../../lib/film';
 import { NARRATION_WAIT_TIMEOUT_MS } from './narration-source';
 
 function store() {
@@ -139,13 +140,14 @@ function Probe() {
     />
   );
 }
-async function mount(slug = 'rainbow', strict = false) {
+async function mount(slug = 'rainbow', strict = false, selection?: FilmSelection) {
   let tree!: ReactTestRenderer;
   await act(async () => {
     const child = (
       <Showcase
         slug={slug}
         film={films[slug]}
+        selection={selection}
         track={
           tracks[slug as keyof typeof tracks][
             document.documentElement.lang.startsWith('en') ? 'en' : 'zh'
@@ -199,6 +201,42 @@ afterEach(() => {
 });
 
 describe('actual Showcase + useNarration + narrationSource language lifecycle (controlled media/events)', () => {
+  it('keeps textbook playback, audio, replay and seeking inside the authored chapter selection', async () => {
+    const env = environment();
+    env.navigate('https://vistep.ai/teaching/pep-high-school-physics/selected-experiment/');
+    const film = films.rainbow;
+    const selection = {
+      chapterIds: film.chapters.slice(1, 3).map((c) => c.id),
+      variant: 'selected-experiment',
+    };
+    const start = film.chapters[1].at,
+      end = film.chapters[3].at;
+    const tree = await mount('rainbow', false, selection);
+    const audio = env.audios.at(-1)!;
+    expect(probe(tree)['data-time']).toBe(start);
+    expect(audio.playTimes.every((time) => time >= start)).toBe(true);
+    expect(tree.root.findByType('input').props.min).toBe(start);
+    expect(tree.root.findByType('input').props.max).toBe(end);
+    await setTime(tree, 0);
+    expect(probe(tree)['data-time']).toBe(start);
+    await setTime(tree, film.duration);
+    expect(probe(tree)['data-time']).toBe(end);
+    expect(probe(tree)['data-chapter']).toBe(2);
+    await act(() => button(tree, 'replay').props.onClick());
+    expect(audio.currentTime).toBe(start);
+    expect(probe(tree)['data-playing']).toBe(true);
+    await act(() => {
+      audio.currentTime = end + 1;
+      env.tick(100);
+      env.tick(140);
+    });
+    expect(probe(tree)['data-time']).toBe(end);
+    expect(probe(tree)['data-playing']).toBe(false);
+    expect(audio.paused).toBe(true);
+    expect(probe(tree)['data-chapter']).toBe(2);
+    await unmount(tree);
+  });
+
   it('returns a transcript selection to the film, including the already selected hash', async () => {
     environment();
     const tree = await mount();

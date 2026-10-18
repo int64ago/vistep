@@ -1,0 +1,35 @@
+---
+import { approachMagnet } from '../../models/induction-coil-lab';
+const s = approachMagnet(0.32);
+const coil = Array.from({ length: 481 }, (_, i) => {
+  const p = i / 480;
+  return `${i ? 'L' : 'M'}${166 + 52 * Math.cos(p * 2 * Math.PI * 12)} ${114 + 55 * p + 10 * Math.sin(p * 2 * Math.PI * 12)}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <path
+    d="M91 206H232M112 206V166M216 206V166"
+    fill="none"
+    stroke="#aab99d"
+    stroke-width="5"
+    stroke-linecap="round"></path>
+  <rect x="111" y="106" width="111" height="66" rx="14" fill="#e0e8d6" stroke="#b7c8a8"></rect>
+  <g transform={`translate(166 ${142 - s.z * 800})`}
+    ><rect x="-15" y="-34" width="30" height="68" rx="4" fill="#8eaf98" stroke="#719577"
+    ></rect><path d="M-15 0h30v30q0 4-4 4H-11q-4 0-4-4Z" fill="#c4a368"></path></g
+  >
+  <path d={coil} fill="none" stroke="#b38e56" stroke-width="2.7"></path>
+  <path d="M218 114H300V141M218 170H259V181H300" fill="none" stroke="#7c9479" stroke-width="2"
+  ></path>
+  <circle cx="300" cy="161" r="25" fill="#f1f4e7" stroke="#afc0a2" stroke-width="2"></circle><path
+    d="M282 169Q300 132 318 169"
+    stroke="#bac9ad"
+    fill="none"></path>
+  <path d="M300 175l-11-26" stroke="#b28f54" stroke-width="2"></path><circle
+    cx="300"
+    cy="175"
+    r="3"
+    fill="#83977a"></circle>
+  <path d="M89 53v35l-5-7m5 7 5-7" stroke="#799b7c" stroke-width="2" fill="none"></path>
+</svg>

@@ -1,0 +1,326 @@
+---
+import Base from '../../layouts/Base.astro';
+import {
+  type Curriculum,
+  curriculumLessonPath,
+  curriculumSectionId,
+  curriculumSectionNumber,
+  getCurriculumLessons,
+} from '../../data/curricula';
+import { localPath, type Locale } from '../../i18n';
+import '../../styles/teaching.css';
+interface Props {
+  curriculum: Curriculum;
+  locale?: Locale;
+}
+const { curriculum, locale = 'zh' } = Astro.props;
+const lessons = getCurriculumLessons(curriculum);
+const books = [...curriculum.books].sort((a, b) => a.order - b.order);
+const copy = {
+  zh: {
+    teaching: '教学专区',
+    intro: '实验跟着章节走，理解跟着观察来。',
+    guide: '教材目录',
+    guideHint: '按教材学习顺序',
+    available: `${books.length} 册 · ${lessons.length} 个学习位置`,
+    published: '当前收录',
+    chapter: (order: number) =>
+      `第${['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'][order] ?? order}章`,
+    section: (order: number) => `第 ${order} 节`,
+    page: (page: number) => `教材第 ${page} 页`,
+    textbook: '教材原名',
+    watch: '走进实验',
+    note: '目录按教材正文的学习顺序排列，包含演示、学生实验、动手活动与历史实验。同一装置可在不同章节承担不同的观察任务。',
+    target: '这一节，先看清',
+  },
+  en: {
+    teaching: 'Learn',
+    intro: 'Experiments in chapter order. Understanding through observation.',
+    guide: 'Chapter guide',
+    guideHint: 'In textbook order',
+    available: `${books.length} books · ${lessons.length} learning entries`,
+    published: 'Available now',
+    chapter: (order: number) => `Chapter ${order}`,
+    section: (order: number) => `Section ${order}`,
+    page: (page: number) => `Textbook page ${page}`,
+    textbook: 'Textbook title',
+    watch: 'Enter the experiment',
+    note: 'Entries follow the textbook sequence, including demonstrations, student experiments, activities and historical investigations. A shared apparatus may serve different learning goals.',
+    target: 'In this section, observe',
+  },
+}[locale];
+---
+
+<Base
+  locale={locale}
+  title={`${curriculum.title[locale]} — ${copy.teaching} | vistep.ai`}
+  description={curriculum.description[locale]}
+  languageSwitchPath={`/teaching/${curriculum.id}/`}
+>
+  <main id="main" class="teaching-wrap teaching-curriculum">
+    <nav class="teaching-breadcrumbs" aria-label={locale === 'zh' ? '当前位置' : 'Breadcrumb'}>
+      <a href={localPath('/teaching/', locale)}>{copy.teaching}</a><span aria-hidden="true">/</span
+      ><span>{curriculum.title[locale]}</span>
+    </nav>
+    <header class="teaching-curriculum-heading">
+      <div>
+        <p class="teaching-eyebrow">
+          <span></span>{curriculum.stage[locale]} · {curriculum.subject[locale]}
+        </p>
+        <h1>{curriculum.title[locale]}</h1>
+        <p>{copy.intro}</p>
+      </div>
+      <span class="teaching-available"
+        ><span class="teaching-status-dot"></span>{copy.available}</span
+      >
+    </header>
+
+    <nav class="teaching-book-switch" aria-label={locale === 'zh' ? '选择册次' : 'Choose a book'}>
+      {
+        books.map((book) => (
+          <a href={`#book-${book.id}`} data-book-choice={book.id}>
+            {book.title[locale]}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="teaching-search">
+      <label for="teaching-search">{locale === 'zh' ? '查找实验' : 'Find an experiment'}</label>
+      <input
+        id="teaching-search"
+        type="search"
+        placeholder={locale === 'zh' ? '实验名称、装置或章节' : 'Experiment, apparatus or chapter'}
+        autocomplete="off"
+      />
+      <span class="teaching-search-result" aria-live="polite" data-locale={locale}></span>
+    </div>
+    <div class="teaching-curriculum-layout">
+      <aside class="teaching-directory" aria-label={copy.guide}>
+        <details open>
+          <summary
+            ><span>{copy.guide}</span><span class="teaching-directory-toggle" aria-hidden="true"
+              >⌄</span
+            ></summary
+          >
+          <div class="teaching-directory-content">
+            <p class="teaching-directory-hint">{copy.guideHint}</p>
+            {
+              books.map((book) => (
+                <div class="teaching-directory-book" data-directory-book={book.id}>
+                  <h2>{book.title[locale]}</h2>
+                  <ul>
+                    {[...book.chapters]
+                      .sort((a, b) => a.order - b.order)
+                      .map((chapter) => (
+                        <li>
+                          <span class="teaching-directory-chapter">
+                            {chapter.order > 0 && chapter.order < 99
+                              ? copy.chapter(chapter.order)
+                              : ''}
+                            <strong>{chapter.title[locale]}</strong>
+                          </span>
+                          <ul>
+                            {[...chapter.sections]
+                              .sort((a, b) => a.order - b.order)
+                              .map((section) => {
+                                const context = lessons.find(
+                                  (item) =>
+                                    item.book.id === book.id &&
+                                    item.chapter.id === chapter.id &&
+                                    item.section.id === section.id,
+                                )!;
+                                return (
+                                  <li>
+                                    <a href={`#${curriculumSectionId(context)}`}>
+                                      <span>{curriculumSectionNumber({ chapter, section })}</span>
+                                      {section.title[locale]}
+                                      <span class="teaching-directory-count">
+                                        {section.lessons.length}
+                                      </span>
+                                    </a>
+                                  </li>
+                                );
+                              })}
+                          </ul>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </details>
+      </aside>
+
+      <div class="teaching-chapters">
+        {
+          books.map((book) => (
+            <section
+              class="teaching-book-section"
+              id={`book-${book.id}`}
+              data-book={book.id}
+              aria-label={book.title[locale]}
+            >
+              <div class="teaching-book-label">
+                <>
+                  <span>{book.title[locale]}</span>
+                  <span>{copy.published}</span>
+                </>
+              </div>
+              {[...book.chapters]
+                .sort((a, b) => a.order - b.order)
+                .map((chapter) => (
+                  <section class="teaching-chapter-section">
+                    <header class="teaching-chapter-heading">
+                      <span>
+                        {chapter.order > 0 && chapter.order < 99 ? copy.chapter(chapter.order) : ''}
+                      </span>
+                      <h2>{chapter.title[locale]}</h2>
+                    </header>
+                    {[...chapter.sections]
+                      .sort((a, b) => a.order - b.order)
+                      .map((section) => {
+                        const sectionLessons = lessons.filter(
+                          (item) =>
+                            item.book.id === book.id &&
+                            item.chapter.id === chapter.id &&
+                            item.section.id === section.id,
+                        );
+                        return (
+                          <section
+                            class="teaching-section"
+                            id={curriculumSectionId(sectionLessons[0])}
+                          >
+                            <div class="teaching-section-heading">
+                              <span class="teaching-section-number">
+                                {curriculumSectionNumber({ chapter, section })}
+                              </span>
+                              <h3>{section.title[locale]}</h3>
+                            </div>
+                            <div class="teaching-section-goal">
+                              <span>{copy.target}</span>
+                              <p>{sectionLessons[0].lesson.goal[locale]}</p>
+                            </div>
+                            <ol class="teaching-experiment-list">
+                              {sectionLessons.map((context) => (
+                                <li
+                                  data-searchable={`${context.lesson.name[locale]} ${context.lesson.textbookTitle[locale]} ${section.title[locale]} ${context.lesson.kind[locale]}`}
+                                >
+                                  <a
+                                    class="teaching-experiment-row"
+                                    href={curriculumLessonPath(context, locale)}
+                                  >
+                                    <div class="teaching-experiment-visual">
+                                      <img
+                                        src={`/covers/${context.lesson.sceneSlug}.png`}
+                                        width="480"
+                                        height="320"
+                                        loading="lazy"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <div class="teaching-experiment-copy">
+                                      <div class="teaching-experiment-meta">
+                                        <span>{context.lesson.kind[locale]}</span>
+                                        <span>{copy.page(context.lesson.page)}</span>
+                                      </div>
+                                      <h4>{context.lesson.name[locale]}</h4>
+                                      <p>{context.lesson.goal[locale]}</p>
+                                      <span class="teaching-experiment-enter">
+                                        {copy.watch}
+                                        <span aria-hidden="true">↗</span>
+                                      </span>
+                                    </div>
+                                  </a>
+                                </li>
+                              ))}
+                            </ol>
+                          </section>
+                        );
+                      })}
+                  </section>
+                ))}
+            </section>
+          ))
+        }
+        <p class="teaching-catalog-note">{copy.note}</p>
+      </div>
+    </div>
+  </main>
+</Base>
+
+<script>
+  const directory = document.querySelector<HTMLDetailsElement>('.teaching-directory details');
+  const narrowScreen = window.matchMedia('(max-width: 760px)');
+  const updateDirectory = () => {
+    if (directory) directory.open = !narrowScreen.matches;
+  };
+  updateDirectory();
+  narrowScreen.addEventListener('change', updateDirectory);
+  const bookSections = [...document.querySelectorAll<HTMLElement>('[data-book]')];
+  const bookChoices = [...document.querySelectorAll<HTMLAnchorElement>('[data-book-choice]')];
+  const search = document.querySelector<HTMLInputElement>('#teaching-search')!;
+  const result = document.querySelector<HTMLElement>('.teaching-search-result')!;
+  let selectedBook = bookSections[0]?.dataset.book;
+  const normalized = (value: string) => value.normalize('NFKC').toLocaleLowerCase().trim();
+  const apply = () => {
+    const query = normalized(search.value);
+    let count = 0;
+    for (const book of bookSections) {
+      for (const entry of book.querySelectorAll<HTMLElement>('[data-searchable]')) {
+        entry.hidden =
+          Boolean(query) && !normalized(entry.dataset.searchable ?? '').includes(query);
+        if (!entry.hidden && (query || book.dataset.book === selectedBook)) count++;
+      }
+      for (const section of book.querySelectorAll<HTMLElement>('.teaching-section')) {
+        section.hidden = ![...section.querySelectorAll<HTMLElement>('[data-searchable]')].some(
+          (e) => !e.hidden,
+        );
+      }
+      for (const chapter of book.querySelectorAll<HTMLElement>('.teaching-chapter-section')) {
+        chapter.hidden = ![...chapter.querySelectorAll<HTMLElement>('.teaching-section')].some(
+          (e) => !e.hidden,
+        );
+      }
+      book.hidden = query
+        ? ![...book.querySelectorAll<HTMLElement>('[data-searchable]')].some((e) => !e.hidden)
+        : book.dataset.book !== selectedBook;
+    }
+    for (const choice of bookChoices) {
+      if (!query && choice.dataset.bookChoice === selectedBook)
+        choice.setAttribute('aria-current', 'true');
+      else choice.removeAttribute('aria-current');
+    }
+    for (const item of document.querySelectorAll<HTMLElement>('[data-directory-book]')) {
+      item.hidden = Boolean(query) || item.dataset.directoryBook !== selectedBook;
+    }
+    result.textContent =
+      result.dataset.locale === 'en'
+        ? `${count} ${query ? 'matches' : 'entries in this book'}`
+        : query
+          ? `找到 ${count} 项`
+          : `本册 ${count} 项`;
+  };
+  const restoreHash = () => {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    const book = target?.closest<HTMLElement>('[data-book]');
+    if (book) selectedBook = book.dataset.book;
+    apply();
+    if (target && book) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  bookChoices.forEach((choice) =>
+    choice.addEventListener('click', () => {
+      selectedBook = choice.dataset.bookChoice;
+      search.value = '';
+      apply();
+    }),
+  );
+  search.addEventListener('input', apply);
+  window.addEventListener('hashchange', restoreHash);
+  restoreHash();
+  directory?.querySelectorAll('a').forEach((link) =>
+    link.addEventListener('click', () => {
+      if (narrowScreen.matches) directory.open = false;
+    }),
+  );
+</script>

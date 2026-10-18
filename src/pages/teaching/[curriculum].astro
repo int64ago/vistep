@@ -1,0 +1,13 @@
+---
+import CurriculumPage from '../../components/teaching/CurriculumPage.astro';
+import { curricula } from '../../data/curricula';
+export function getStaticPaths() {
+  return curricula.map((curriculum) => ({
+    params: { curriculum: curriculum.id },
+    props: { curriculum },
+  }));
+}
+const { curriculum } = Astro.props;
+---
+
+<CurriculumPage curriculum={curriculum} locale="zh" />

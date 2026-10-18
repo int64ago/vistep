@@ -1,0 +1,188 @@
+{
+  "topic": {
+    "slug": "statistical-motion-lab",
+    "name": "随机事件与统计实验",
+    "title": "每次结果不确定，为什么整体有规律？",
+    "question": "每次结果不确定，为什么整体有规律？",
+    "description": "通过伽尔顿板、四枚硬币与落豆台秤，区分随机结果、统计分布和平均撞击。",
+    "color": "#799066",
+    "tag": "单次与整体",
+    "related": ["brownian-motion", "ideal-gas"],
+    "sources": [
+      {
+        "title": "OpenStax — Binomial distribution",
+        "url": "https://openstax.org/books/introductory-statistics-2e/pages/4-3-binomial-distribution"
+      },
+      {
+        "title": "OpenStax — Molecular model of an ideal gas",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/2-1-molecular-model-of-an-ideal-gas"
+      }
+    ]
+  },
+  "component": "src/components/experiments/StatisticalMotionLab.tsx",
+  "cover": "src/components/covers/StatisticalMotionLabCover.astro",
+  "discovery": {
+    "category": "math-systems",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["随机事件与统计实验", "伽尔顿板", "四枚硬币", "抛硬币", "落豆", "统计规律"],
+      "en": [
+        "Random events and statistical experiments",
+        "Galton board",
+        "four coins",
+        "binomial distribution",
+        "bean pressure analogy"
+      ]
+    }
+  },
+  "translations": {
+    "随机事件与统计实验": "Random events and statistical experiments",
+    "每次结果不确定，为什么整体有规律？": "How can uncertain outcomes form a predictable pattern?",
+    "通过伽尔顿板、四枚硬币与落豆台秤，区分随机结果、统计分布和平均撞击。": "Use a Galton board, four coins and falling beans to distinguish outcomes, distributions and averaged impacts.",
+    "单次与整体": "Individuals and ensembles",
+    "伽尔顿板": "Galton board",
+    "四枚硬币的统计": "Four-coin statistics",
+    "豆粒撞击台秤": "Beans striking a scale",
+    "小球、四枚硬币和落豆三种统计实验": "Three statistical apparatuses: balls, four coins and falling beans",
+    "正": "H",
+    "反": "T",
+    "正面朝上的枚数": "Number of heads",
+    "撞击贡献": "Impact contribution",
+    "积累重量": "Accumulated weight",
+    "一次去向随机，多次出现稳定分布": "Uncertain landings, a repeatable distribution",
+    "虚线是四枚公平硬币的理论比例": "Dashed: fair-coin probabilities",
+    "选择统计实验": "Choose a statistical experiment",
+    "累计试验次数": "Accumulated trials",
+    "观察进度": "Observation progress",
+    "落豆高度": "Bean release height",
+    "每秒落下豆粒数": "Beans released per second",
+    "统计模型与类比边界": "Statistical models and analogy limits",
+    "伽尔顿板每层采用等概率左右选择，描绘绕过钉子的路径，不求解真实碰撞；硬币也使用独立公平试验。固定种子保证暂停与跳转一致。豆粒落下后停在秤盘，冲量取mv，另计积累重量，台秤响应时间取0.08秒。它说明多次撞击的平均效应，但不等同于气体分子弹性反弹的2mv冲量。": "Each Galton row chooses left or right equally and draws a path around its peg, without solving real collisions. Coins are independent and fair. Fixed seeds make seeking consistent. Beans stop on the pan with impulse mv; accumulated weight is separate and scale response is 0.08 s. The analogy is averaged impact, not the 2mv impulse of an elastically rebounding gas particle.",
+    "追踪一颗小球": "Follow one ball",
+    "每次左右偏转，都改变最后的落槽。": "Each left or right choice changes the final bin.",
+    "累计大量小球": "Accumulate many balls",
+    "中央落槽对应更多可能路径。": "Central bins can be reached by more paths.",
+    "四枚硬币投十次": "Toss four coins ten times",
+    "五种正面数不是等可能的。": "The five possible head counts are not equally likely.",
+    "汇集更多实验数据": "Pool more trials",
+    "更大样本通常减小比例的波动。": "Larger samples usually reduce proportion fluctuations.",
+    "一颗豆子的撞击": "One bean strikes the pan",
+    "短时冲量与落下后的重量要分开。": "Separate the brief impulse from the later weight.",
+    "连续落下许多豆粒": "Release a continuous stream",
+    "许多离散撞击形成更平稳的平均作用。": "Many separate impacts form a smoother average effect.",
+    "只增加释放高度": "Increase only the release height",
+    "更高落速带来更大的单次动量变化。": "Higher arrival speed transfers more momentum per bean."
+  },
+  "narration": {
+    "duration": 182,
+    "cues": [
+      {
+        "id": "galton-one",
+        "title": "追踪一颗小球",
+        "titleEn": "Follow one ball",
+        "caption": "每次左右偏转，都改变最后的落槽。",
+        "captionEn": "Each left or right choice changes the final bin.",
+        "zh": "先只跟随一颗小球。经过一层钉子，它可能偏向左边，也可能偏向右边。把整条路径连起来，最后的落槽取决于这些选择的总结果。一次结果没有告诉我们全部统计规律。",
+        "en": "Follow a single ball. At each row it can deflect left or right. Its complete sequence of choices determines the final bin. One outcome alone does not reveal the whole statistical pattern.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "galton-many",
+        "title": "累计大量小球",
+        "titleEn": "Accumulate many balls",
+        "caption": "中央落槽对应更多可能路径。",
+        "captionEn": "Central bins can be reached by more paths.",
+        "zh": "让大量小球依次落下。靠近中间的槽通常积累更多小球，因为通向这些槽的左右组合更多。分布还会波动，但随机的单次选择与整体的统计规律并不矛盾。",
+        "en": "Release many balls. Central bins usually collect more because more left–right combinations lead there. Counts still fluctuate. Random individual choices and a regular overall distribution are compatible.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "coins-ten",
+        "title": "四枚硬币投十次",
+        "titleEn": "Toss four coins ten times",
+        "caption": "五种正面数不是等可能的。",
+        "captionEn": "The five possible head counts are not equally likely.",
+        "zh": "每次同时投掷四枚公平硬币，记录正面数。零到四这五个类别并不等可能：恰好两枚正面有六种排列，全正面只有一种。十次投掷仍然可能偏离理论比例很多。",
+        "en": "Toss four fair coins together and record the head count. The five categories are not equally likely: exactly two heads has six arrangements, while all heads has one. Ten trials can still differ substantially from theory.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "coins-pool",
+        "title": "汇集更多实验数据",
+        "titleEn": "Pool more trials",
+        "caption": "更大样本通常减小比例的波动。",
+        "captionEn": "Larger samples usually reduce proportion fluctuations.",
+        "zh": "汇集更多同学的试验，相当于增大样本。柱形的比例通常更靠近虚线给出的理论值。注意不是每新增一次都一定更接近，统计规律描述的是大样本的整体行为。",
+        "en": "Pool more classmates’ trials to increase the sample. Relative bar heights usually move closer to the theoretical dashed marks. Every new trial need not improve agreement; the law concerns overall behaviour at large sample size.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "beans-one",
+        "title": "一颗豆子的撞击",
+        "titleEn": "One bean strikes the pan",
+        "caption": "短时冲量与落下后的重量要分开。",
+        "captionEn": "Separate the brief impulse from the later weight.",
+        "zh": "把一颗豆子从二十厘米高度释放。它在秤盘上停止，短时间把动量传给台秤，指针出现响应。随后撞击贡献消失，但豆子留在盘中，它的重量仍然存在。",
+        "en": "Release one bean from twenty centimetres. Stopping on the pan transfers momentum briefly and the pointer responds. The impact contribution then vanishes, while the bean’s retained weight remains.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "beans-stream",
+        "title": "连续落下许多豆粒",
+        "titleEn": "Release a continuous stream",
+        "caption": "许多离散撞击形成更平稳的平均作用。",
+        "captionEn": "Many separate impacts form a smoother average effect.",
+        "zh": "从同一高度连续、均匀地落下许多豆粒。一个个撞击的响应叠加，动态作用更平稳。读数同时包含积累重量，所以模型把两部分分开，避免把越来越重误当成气体压强的全部原因。",
+        "en": "Release many beans uniformly from the same height. Individual impact responses overlap into a smoother dynamic effect. The scale also carries growing retained weight, so the model separates these contributions rather than mistaking increasing load for the whole pressure analogy.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      },
+      {
+        "id": "beans-height",
+        "title": "只增加释放高度",
+        "titleEn": "Increase only the release height",
+        "caption": "更高落速带来更大的单次动量变化。",
+        "captionEn": "Higher arrival speed transfers more momentum per bean.",
+        "zh": "保持豆粒质量和每秒数量，只提高释放高度。落速增大，每次停止时传递的动量也更大，平均撞击贡献随之增加。气体分子撞墙会反弹而不是留下，这个类比必须保留差别。",
+        "en": "Keep bean mass and release rate fixed, then increase height. Higher impact speed transfers more momentum when each bean stops, raising the average impact contribution. Gas particles rebound rather than remain on a wall, so retain that distinction.",
+        "seconds": 26,
+        "chapterAt": 156,
+        "at": 156
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-galton-board": {
+      "chapterIds": ["galton-one", "galton-many"],
+      "label": {
+        "zh": "伽尔顿板统计规律",
+        "en": "Galton-board statistics"
+      }
+    },
+    "e3-coin-statistics": {
+      "chapterIds": ["coins-ten", "coins-pool"],
+      "label": {
+        "zh": "四枚硬币统计实验",
+        "en": "Four-coin statistics"
+      }
+    },
+    "e3-beans-pressure-model": {
+      "chapterIds": ["beans-one", "beans-stream", "beans-height"],
+      "label": {
+        "zh": "落豆模拟压强",
+        "en": "Falling beans and pressure analogy"
+      }
+    }
+  }
+}

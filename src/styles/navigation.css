@@ -1,0 +1,81 @@
+.site-header .primary-navigation {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.site-header .primary-navigation a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  white-space: nowrap;
+  color: #737a71;
+  transition: color 180ms ease;
+}
+.site-header .primary-navigation a:hover,
+.site-header .primary-navigation a[aria-current] {
+  color: #405d4b;
+}
+.site-header .primary-navigation a[aria-current]::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: #78917c;
+  content: '';
+}
+@media (max-width: 1000px) {
+  .site-header nav {
+    gap: 20px;
+  }
+  .site-header .name-link {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .site-header.site-header,
+  body:has(.lesson-wrap) .site-header.site-header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0 10px;
+    height: auto;
+    min-height: 116px;
+    padding: 10px 20px 0;
+  }
+  .site-header nav {
+    display: contents;
+  }
+  .site-header .wordmark {
+    align-self: center;
+  }
+  .site-header .language-switch {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .site-header .github-link {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .site-header .primary-navigation {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-content: center;
+    gap: 0;
+    align-self: end;
+  }
+  .site-header .primary-navigation a {
+    justify-content: center;
+    width: 50%;
+    min-height: 46px;
+  }
+  .site-header .primary-navigation a[aria-current]::after {
+    right: 30%;
+    left: 30%;
+  }
+  .site-header .primary-navigation .nav-count {
+    display: none;
+  }
+}

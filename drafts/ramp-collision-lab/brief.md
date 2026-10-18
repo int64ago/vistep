@@ -1,0 +1,5 @@
+# Ramp momentum measurement
+
+Elective1 pp19–20, actual 1-based PDF24–25. Sixchap170s. Real equal-size balls, heavier incident, curved rolling approach, horizontal lip and outlet, plumb O, paper M/P/N. Normal-offset ramp surface preserves sphere contact; finite centers touch at ±R separation, post-impact incident traverses frictionless lip to shared outlet. Flight times equal although launch times differ. 3x contact inset uses exact center coordinates. Mobile CSS labels and reordered measurements remain 16px.
+
+Independent model uses validated rolling approach, restitution+momentum and projectile flights. Controlled changed-height counterexample breaks reference comparison without breaking true momentum. Ideal model records explicitly labeled; no fake scatter. Sixfocused tests pass: mass weighted equality, mismatched baseline, mass/restitution boundaries, contact/shared outlet, flight/landing positions, path endpoints. Author self-review only; parent owns visual/full playback, voices/listening, global checks/publication.

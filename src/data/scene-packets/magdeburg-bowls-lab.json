@@ -1,0 +1,125 @@
+{
+  "topic": {
+    "slug": "magdeburg-bowls-lab",
+    "name": "钢碗中的马德堡实验",
+    "title": "两只冷却后的钢碗，为什么难以拉开？",
+    "question": "两只冷却后的钢碗，为什么难以拉开？",
+    "description": "由密封气体的等容冷却计算内外压强差，比较钢碗的吸合力与两侧拉力。",
+    "color": "#8e9d77",
+    "tag": "外面的空气在压紧",
+    "related": ["ideal-gas", "thermal-measurement-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Pressure",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/14-1-fluids-density-and-pressure"
+      },
+      {
+        "title": "OpenStax — Ideal gas law",
+        "url": "https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law"
+      }
+    ]
+  },
+  "component": "src/components/experiments/MagdeburgBowlsLab.tsx",
+  "cover": "src/components/covers/MagdeburgBowlsLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["钢碗中的马德堡实验", "马德堡半球", "钢碗", "气体等容变化", "大气压"],
+      "en": [
+        "The Magdeburg experiment with steel bowls",
+        "Magdeburg hemispheres",
+        "steel bowls",
+        "atmospheric pressure",
+        "constant volume cooling"
+      ]
+    }
+  },
+  "translations": {
+    "钢碗中的马德堡实验": "The Magdeburg experiment with steel bowls",
+    "两只冷却后的钢碗，为什么难以拉开？": "Why are two cooled steel bowls difficult to pull apart?",
+    "由密封气体的等容冷却计算内外压强差，比较钢碗的吸合力与两侧拉力。": "Follow constant-volume cooling of sealed gas and compare pressure-difference forces with equal pulls on both sides.",
+    "外面的空气在压紧": "Outside air presses inward",
+    "不锈钢碗的马德堡实验": "Magdeburg bowls",
+    "密封热碗冷却后的内外压强与两侧拉力": "Inside and outside pressure and pulling forces after sealed hot bowls cool",
+    "空气进入，内外压强相同": "Air enters; pressures equalize",
+    "冷却使内部气体压强下降": "Cooling lowers inside pressure",
+    "加热后合拢两只碗": "Seal the heated bowls",
+    "两边各拉同样大小的力": "Equal pulls on both sides",
+    "内": "inside",
+    "每侧拉力": "Pull on each side",
+    "密封后气体温度": "Gas temperature after sealing",
+    "密封与估算条件": "Sealing and estimation assumptions",
+    "按教材假定密封后气体量与体积不变、不漏气，外压为100千帕，碗口直径20厘米。忽略燃烧改变成分及冷凝等影响。五人每人200牛是每一侧约1000牛，不把两侧相加为2000牛。自由探索每次改值表示一次重新密封的独立试验。": "Following the textbook idealization, gas amount and volume stay fixed after sealing, without leaks. External pressure is 100 kPa and bowl diameter 20 cm. Combustion chemistry and condensation are omitted. Five people at 200 N each mean about 1000 N on each side, not 2000 N summed. Each exploration change represents an independent resealed trial.",
+    "把热气体封在碗内": "Seal the hot gas",
+    "刚合拢时，内部压强近似等于大气压。": "At sealing, inside pressure is approximately atmospheric.",
+    "外部浇水冷却": "Cool the outside",
+    "温度降低，内部压强下降，外界空气压紧钢碗。": "Cooling lowers internal pressure and outside air presses the bowls together.",
+    "逐渐增加两侧拉力": "Increase equal opposing pulls",
+    "比较每侧拉力与压强差乘碗口面积。": "Compare each side’s pull with pressure difference times opening area.",
+    "空气进入后容易分开": "Air entry removes the holding force",
+    "内外压强恢复相同，压强差支持消失。": "Equalized pressure removes the pressure-difference holding force."
+  },
+  "narration": {
+    "duration": 104,
+    "cues": [
+      {
+        "id": "bowls-seal",
+        "title": "把热气体封在碗内",
+        "titleEn": "Seal the hot gas",
+        "caption": "刚合拢时，内部压强近似等于大气压。",
+        "captionEn": "At sealing, inside pressure is approximately atmospheric.",
+        "zh": "教材用纸燃烧加热碗内空气，再迅速合拢两个钢碗。这里按照题设，把刚密封的内部压强近似取为大气压。随后保持气体量和容积不变，观察冷却造成的变化。",
+        "en": "The textbook heats the bowl’s air by burning paper, then closes the two bowls. Following its assumptions, pressure at sealing is approximately atmospheric. Hold gas amount and volume fixed, then observe what cooling changes.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "bowls-cool",
+        "title": "外部浇水冷却",
+        "titleEn": "Cool the outside",
+        "caption": "温度降低，内部压强下降，外界空气压紧钢碗。",
+        "captionEn": "Cooling lowers internal pressure and outside air presses the bowls together.",
+        "zh": "从外部浇水使钢碗冷却到环境温度。在等容近似下，内部压强随开尔文温度降低。外面的大气压更大，作用在碗口投影面积上的压强差形成吸合效果。",
+        "en": "Cool the bowls toward room temperature by cooling their exterior. At fixed volume, internal pressure falls with Kelvin temperature. Higher atmospheric pressure outside produces the holding force over the projected opening area.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "bowls-pull",
+        "title": "逐渐增加两侧拉力",
+        "titleEn": "Increase equal opposing pulls",
+        "caption": "比较每侧拉力与压强差乘碗口面积。",
+        "captionEn": "Compare each side’s pull with pressure difference times opening area.",
+        "zh": "现在两侧同时增加拉力。每侧五人，每人约二百牛，对应每侧约一千牛。要把它与压强差乘碗口面积比较，不能把左右两边的力相加。超过吸合条件时，密封边缘开始分开。",
+        "en": "Increase the equal opposing pulls. Five people at about two hundred newtons each provide roughly one thousand newtons on each side. Compare that single-side pull with pressure difference times opening area; do not add both sides together. Once the seal yields, the rims separate.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "bowls-air",
+        "title": "空气进入后容易分开",
+        "titleEn": "Air entry removes the holding force",
+        "caption": "内外压强恢复相同，压强差支持消失。",
+        "captionEn": "Equalized pressure removes the pressure-difference holding force.",
+        "zh": "碗口出现缝隙后，外界空气进入，内外压强很快趋同，继续分开就容易了。真正压紧钢碗的是外部空气与内部气体的压强差，不是里面有一种额外的吸力物质。",
+        "en": "Once a gap opens, outside air enters and pressures quickly equalize, making separation easier. The bowls were held together by the pressure difference between outside air and enclosed gas, not an extra substance producing suction.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-magdeburg-bowls": {
+      "chapterIds": ["bowls-seal", "bowls-cool", "bowls-pull", "bowls-air"],
+      "label": {
+        "zh": "用钢碗模拟马德堡半球实验",
+        "en": "A Magdeburg experiment with steel bowls"
+      }
+    }
+  }
+}

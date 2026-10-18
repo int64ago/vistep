@@ -1,0 +1,113 @@
+---
+import {
+  newtonPair,
+  NEWTON_HEIGHT,
+  NEWTON_FEATHER_PATH,
+  NEWTON_FEATHER_SHAFT,
+  NEWTON_FEATHER_BARBS,
+} from '../../models/newton-tube';
+const views = [
+  { x: 130, density: 1.225 },
+  { x: 270, density: 0 },
+];
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <defs>
+    <linearGradient id="newton-cover-glass">
+      <stop stop-color="#b9cec1" stop-opacity=".6"></stop>
+      <stop offset=".23" stop-color="#f9faf3" stop-opacity=".8"></stop>
+      <stop offset=".7" stop-color="#d6e1d1" stop-opacity=".15"></stop>
+      <stop offset="1" stop-color="#a1bda9" stop-opacity=".6"></stop>
+    </linearGradient>
+    <linearGradient id="newton-cover-cap">
+      <stop stop-color="#829984"></stop>
+      <stop offset=".35" stop-color="#d9e2cb"></stop>
+      <stop offset="1" stop-color="#93aa8b"></stop>
+    </linearGradient>
+  </defs>
+  {
+    views.map(({ x, density }) => {
+      const pair = newtonPair(0.47, density),
+        y = (d: number) => 44 + (d / NEWTON_HEIGHT) * 139;
+      return (
+        <g>
+          <ellipse cx={x} cy="211" rx="49" ry="5" fill="#6c876c" opacity=".08" />
+          <path
+            d={`M${x - 36} 24Q${x} 17 ${x + 36} 24V198Q${x} 205 ${x - 36} 198Z`}
+            fill="url(#newton-cover-glass)"
+            stroke="#a6bba0"
+          />
+          <path d={`M${x - 30} 34V190`} stroke="#fffdf3" stroke-width="2" opacity=".8" />
+          <path
+            d={`M${x - 34} 57H${x + 34}M${x - 34} 197H${x + 34}`}
+            stroke="#99ad94"
+            stroke-dasharray="2 3"
+            opacity=".5"
+          />
+          {density > 0 &&
+            Array.from({ length: 18 }, (_, i) => (
+              <circle
+                cx={x - 28 + ((i * 19) % 56)}
+                cy={40 + ((i * 31) % 145)}
+                r=".8"
+                fill="#b6a179"
+                opacity=".4"
+              />
+            ))}
+          {[0.12, 0.24, 0.36].map((time) => {
+            const past = newtonPair(time, density);
+            return (
+              <>
+                <circle
+                  cx={x - 17}
+                  cy={y(past.iron.distance)}
+                  r="2.5"
+                  fill="#7c9395"
+                  opacity=".25"
+                />
+                <circle
+                  cx={x + 17}
+                  cy={y(past.feather.distance)}
+                  r="2.5"
+                  fill="#bd9e66"
+                  opacity=".3"
+                />
+              </>
+            );
+          })}
+          <g transform={`translate(${x - 17} ${y(pair.iron.distance)}) scale(.68)`}>
+            <path d="M-7 -19H7V19H-7Z" fill="#71888d" stroke="#526e72" />
+            <path d="M-4 -17V16" stroke="#becbc8" stroke-width="2" />
+          </g>
+          <g transform={`translate(${x + 17} ${y(pair.feather.distance)}) scale(.68)`}>
+            <path d={NEWTON_FEATHER_PATH} fill="#d6be87" stroke="#aa905e" />
+            <path d={NEWTON_FEATHER_SHAFT} fill="none" stroke="#8d7751" />
+            {NEWTON_FEATHER_BARBS.map((d) => (
+              <path d={d} stroke="#f3e2b8" fill="none" stroke-width=".8" />
+            ))}
+          </g>
+          <path
+            d={`M${x - 39} 22Q${x} 16 ${x + 39} 22V32Q${x} 38 ${x - 39} 32Z`}
+            fill="url(#newton-cover-cap)"
+            stroke="#97ac90"
+          />
+          <ellipse cx={x} cy="22" rx="39" ry="5" fill="#dae2cb" stroke="#aebfa0" />
+          <path
+            d={`M${x - 36} 197Q${x} 204 ${x + 36} 197V205Q${x} 212 ${x - 36} 205Z`}
+            fill="url(#newton-cover-cap)"
+            stroke="#9db293"
+          />
+          <path
+            d={`M${x} 17V10H${x + 47}`}
+            stroke="#92a88d"
+            stroke-width="3"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <path d={`M${x + 25} 6V14`} stroke="#6e8a6f" stroke-width="2.5" stroke-linecap="round" />
+        </g>
+      );
+    })
+  }
+</svg>

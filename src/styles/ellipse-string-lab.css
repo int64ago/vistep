@@ -1,0 +1,163 @@
+.ellipse-string-lab {
+  max-width: 920px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 38px);
+  color: #657858;
+}
+.ellipse-string-lab header {
+  text-align: center;
+}
+.ellipse-string-lab header p {
+  font-size: clamp(21px, 2.6vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 9px;
+}
+.ellipse-string-lab header span {
+  font-size: 16px;
+  color: #8b9475;
+}
+.ellipse-string-board {
+  max-width: 530px;
+  margin: 8px auto;
+}
+.ellipse-string-board svg {
+  width: 100%;
+  display: block;
+}
+.ellipse-string-lengths {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.ellipse-string-lengths span {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ellipse-string-lengths b {
+  font-weight: 400;
+  color: #9c8964;
+}
+.ellipse-string-lengths i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a98e60;
+}
+.ellipse-string-lengths span:nth-child(3) i {
+  background: #b9ab7c;
+}
+.ellipse-string-ribbon {
+  max-width: 510px;
+  display: flex;
+  height: 5px;
+  margin: 16px auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.ellipse-string-ribbon i {
+  background: #a98e60;
+}
+.ellipse-string-ribbon i + i {
+  background: #b9ab7c;
+}
+.ellipse-string-cause {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 24px auto 18px;
+  max-width: 650px;
+}
+.ellipse-string-measures {
+  display: flex;
+  justify-content: center;
+  gap: 16px 26px;
+  font-size: 16px;
+  flex-wrap: wrap;
+}
+.ellipse-string-measures b {
+  font-weight: 400;
+}
+.ellipse-string-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 28px auto;
+  max-width: 680px;
+}
+.ellipse-string-note {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #8a9478;
+  max-width: 700px;
+  margin: 24px auto 0;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .ellipse-string-lab {
+    padding: 18px 12px;
+  }
+  .ellipse-string-board {
+    margin: 10px -4px;
+  }
+  .ellipse-string-lengths {
+    gap: 7px;
+    align-items: center;
+  }
+  .ellipse-string-lengths span {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .ellipse-string-lengths i {
+    display: none;
+  }
+  .ellipse-string-controls {
+    grid-template-columns: 1fr;
+  }
+  .ellipse-string-measures {
+    gap: 12px 22px;
+  }
+  .ellipse-string-cause {
+    font-size: 17px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .ellipse-string-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lab > header > span,
+  .showcase[data-mode='watch'] .ellipse-string-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .ellipse-string-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .ellipse-string-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .ellipse-string-board {
+    margin: 5px 0;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-board svg {
+    max-height: 265px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-ribbon {
+    margin: 8px auto;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-measures {
+    gap: 6px 14px;
+  }
+}

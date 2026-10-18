@@ -1,0 +1,33 @@
+---
+import { paperBall } from '../../models/inertial-frames-lab';
+const s = paperBall(0.22);
+const frames = [
+  { y: 82, offset: 0 },
+  { y: 164, offset: s.paper.position },
+];
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  {
+    frames.map((f) => (
+      <g>
+        <>
+          <path d={`M45 ${f.y}H355`} stroke="#c8b693" stroke-width="8" stroke-linecap="round" />
+          <path
+            d={`M${190 + (s.paper.position - f.offset - 0.3) * 230} ${f.y - 4}h138`}
+            stroke="#f2eddf"
+            stroke-width="3"
+          />
+          <circle cx={190 + (s.position - f.offset) * 230} cy={f.y - 13} r="8" fill="#8fa69a" />
+          <path
+            d={`M190 ${f.y + 29}H${190 + (s.position - f.offset) * 230}`}
+            stroke={f.offset ? '#ac9066' : '#8da17c'}
+            stroke-width="2"
+          />
+        </>
+      </g>
+    ))
+  }
+  <path d="M291 41H334m-7-5l7 5-7 5" stroke="#b3c09d" stroke-width="1.6"></path>
+  <path d="M153 127H112m7-5l-7 5 7 5" stroke="#c1ac8b" stroke-width="1.6"></path>
+</svg>

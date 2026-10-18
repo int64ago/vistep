@@ -1,0 +1,178 @@
+import { createElement, type ComponentType } from 'react';
+import { act, create, type ReactTestRenderer } from 'react-test-renderer';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import CelestialObservations, { CelestialArtwork } from './CelestialObservations';
+import GravityMeasurements, { GravityArtwork } from './GravityMeasurements';
+import RelativityExperiments, { RelativityArtwork } from './RelativityExperiments';
+import GravitationalWaveLab, { GravitationalArtwork } from './GravitationalWaveLab';
+import CosmologyObservations, { CosmologyArtwork } from './CosmologyObservations';
+import ImpulseContactLab from './ImpulseContactLab';
+
+const film = vi.hoisted(() => ({ watch: true, chapter: 0, chapterProgress: 0.63, variant: '' }));
+vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
+vi.mock('../../i18n', () => ({ browserLocale: () => 'en' }));
+vi.mock('../lab/Controls', () => ({
+  Range: (props: { label: string; value: number; onChange: (value: number) => void }) =>
+    createElement('input', { ...props, 'aria-label': props.label }),
+}));
+(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+const mounted: ReactTestRenderer[] = [];
+afterEach(async () => {
+  for (const view of mounted.splice(0)) await act(() => view.unmount());
+});
+
+const cases: {
+  Scene: ComponentType;
+  variant: string;
+  chapter: number;
+  input?: string;
+  value?: number;
+  button?: string;
+}[] = [
+  {
+    Scene: CelestialObservations,
+    variant: 'required-2-neptune',
+    chapter: 4,
+    input: 'Perturber mass / example Neptune mass',
+    value: 0,
+  },
+  {
+    Scene: GravityMeasurements,
+    variant: 'required-2-cavendish',
+    chapter: 2,
+    input: 'Attractor mass / kg',
+    value: 79,
+  },
+  {
+    Scene: RelativityExperiments,
+    variant: 'required-2-muons',
+    chapter: 4,
+    input: 'Muon speed / c',
+    value: 0.9,
+  },
+  {
+    Scene: RelativityExperiments,
+    variant: 'required-2-atomic-clocks',
+    chapter: 6,
+    input: 'Flight altitude / m',
+    value: 0,
+  },
+  {
+    Scene: GravitationalWaveLab,
+    variant: 'required-1-weber-bar',
+    chapter: 1,
+    button: 'Compare: remove common signal',
+  },
+  {
+    Scene: CosmologyObservations,
+    variant: 'required-2-hubble',
+    chapter: 1,
+    input: 'Example H₀ / (km/s)/Mpc',
+    value: 90,
+  },
+  {
+    Scene: ImpulseContactLab,
+    variant: 'e1-balloon-inertia',
+    chapter: 0,
+    input: 'Speed before contact / m/s',
+    value: 4,
+  },
+];
+describe('authored astronomy and impulse films remain deterministic after exploration', () => {
+  for (const c of cases)
+    it(`${c.Scene.name} restores ${c.variant}`, async () => {
+      Object.assign(film, {
+        watch: true,
+        chapter: c.chapter,
+        chapterProgress: 0.63,
+        variant: c.variant,
+      });
+      let view!: ReactTestRenderer;
+      await act(() => {
+        view = create(createElement(c.Scene));
+      });
+      mounted.push(view);
+      const authored = view.toJSON();
+      film.watch = false;
+      await act(() => view.update(createElement(c.Scene)));
+      if (c.input) {
+        const control = view.root
+          .findAllByType('input')
+          .find((n) => n.props['aria-label'] === c.input)!;
+        await act(() => control.props.onChange(c.value));
+      } else {
+        const control = view.root
+          .findAllByType('button')
+          .find((n) => n.children.join('') === c.button)!;
+        await act(() => control.props.onClick());
+      }
+      film.watch = true;
+      await act(() => view.update(createElement(c.Scene)));
+      expect(view.toJSON()).toEqual(authored);
+    });
+});
+
+describe('actual apparatus geometry preserves the model', () => {
+  it('extends one LIGO arm while contracting the perpendicular arm, with mirrors at their endpoints', () => {
+    const svg = renderToStaticMarkup(createElement(GravitationalArtwork, { mode: 2, value: 0.23 }));
+    const light = /M46 149H138V([\d.e+-]+)M138 149H([\d.e+-]+)M138 149V207/.exec(svg)!;
+    const top = Number(light[1]),
+      right = Number(light[2]);
+    expect((42 - top) * (right - 285)).toBeLessThan(0);
+    expect(svg).toContain(`M122 ${top}H154M${right} 133V165`);
+  });
+  it('points the flying-clock aircraft along its actual east or west trajectory', () => {
+    for (const direction of [-1, 1])
+      for (const value of [0, 0.25, 0.6]) {
+        const svg = renderToStaticMarkup(
+          createElement(RelativityArtwork, { mode: 3, direction, value }),
+        );
+        const transform = /translate\(([\d.e+-]+) ([\d.e+-]+)\) rotate\(([\d.e+-]+)\)/.exec(svg)!;
+        const a = direction * value * 2 * Math.PI;
+        const rotation = (Number(transform[3]) * Math.PI) / 180;
+        // The SVG nose points locally upward. Rotate that vector, then compare with dr/dt.
+        const nose = { x: Math.sin(rotation), y: -Math.cos(rotation) };
+        const velocity = { x: -direction * Math.sin(a), y: -direction * Math.cos(a) };
+        expect(nose.x * velocity.x + nose.y * velocity.y).toBeCloseTo(1, 10);
+      }
+  });
+  it('aims the horn at the same 30–90 degree elevation used by its atmospheric model', () => {
+    for (const value of [0, 0.5, 1]) {
+      const svg = renderToStaticMarkup(
+        createElement(CosmologyArtwork, { mode: 1, phase: 0, value }),
+      );
+      expect(svg).toContain(`rotate(${30 + 60 * value} 142 120)`);
+      expect(svg).toContain('M49 66L186 100V140L49 174Z');
+      expect(svg).toContain('TΣ');
+    }
+    const calibration = renderToStaticMarkup(
+      createElement(CosmologyArtwork, { mode: 1, phase: 1, value: 1 }),
+    );
+    expect(calibration).toContain('rotate(60 142 120)');
+  });
+  it('keeps the enlarged torsion pointer inside its fixed scale at both mass bounds and signs', () => {
+    for (const mass of [79, 158, 200])
+      for (const side of [-1, 1])
+        for (const value of [0, 0.05, 0.125, 0.25, 0.5, 1]) {
+          const svg = renderToStaticMarkup(
+            createElement(GravityArtwork, { mode: 1, mass, side, value }),
+          );
+          const x = Number(/M([\d.e+-]+) 250v27/.exec(svg)![1]);
+          expect(x).toBeGreaterThanOrEqual(75);
+          expect(x).toBeLessThanOrEqual(265);
+        }
+  });
+  it('shows a larger Neptune perturbation as a larger residual instead of rescaling it away', () => {
+    const endpoint = (mass: number) => {
+      const svg = renderToStaticMarkup(
+        createElement(CelestialArtwork, { mode: 2, phase: 0, value: 1, mass }),
+      );
+      const d = /<path d="([^"]+)" stroke="#c2ae83"/.exec(svg)![1];
+      return Math.abs(Number(/L[\d.e+-]+ ([\d.e+-]+)$/.exec(d)![1]) - 235);
+    };
+    expect(endpoint(2) / endpoint(1)).toBeGreaterThan(1.9);
+    // The integrator drift stays well below one tenth of a displayed pixel.
+    expect(endpoint(0)).toBeLessThan(0.1);
+  });
+});

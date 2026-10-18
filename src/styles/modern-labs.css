@@ -1,0 +1,146 @@
+.modern-lab {
+  width: min(100%, 940px);
+  margin: auto;
+  padding: 12px 16px 0;
+  color: #54685e;
+  box-sizing: border-box;
+}
+.modern-observation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid #dce2d8;
+  padding: 0 8px 14px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.modern-observation > span {
+  color: #829183;
+  max-width: 27ch;
+}
+.modern-observation p {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.modern-apparatus {
+  display: block;
+  width: 100%;
+  height: 326px;
+  margin: 14px auto 4px;
+  overflow: visible;
+}
+.modern-key {
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+  margin: 10px auto 14px;
+  max-width: 70ch;
+  min-height: 27px;
+}
+.modern-explore {
+  max-width: 660px;
+  margin: 22px auto 0;
+  padding: 22px 0;
+  border-top: 1px solid #dce2d8;
+}
+.modern-explore .control {
+  margin: 14px 0;
+}
+.modern-explore > p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.modern-lab-blackbody .modern-apparatus {
+  background: radial-gradient(ellipse at 35% 25%, #eee1ca33, transparent 60%);
+}
+.modern-lab-hydrogen .modern-apparatus,
+.modern-lab-solar .modern-apparatus,
+.modern-lab-electron-diffraction .modern-apparatus {
+  background: radial-gradient(ellipse at 70% 50%, #dbe6df30, transparent 65%);
+}
+@media (max-width: 760px) {
+  .modern-lab {
+    padding: 4px 6px 0;
+  }
+  .modern-observation {
+    display: block;
+    text-align: center;
+    padding: 0 2px 9px;
+    line-height: 1.45;
+  }
+  .modern-observation > span {
+    display: none;
+  }
+  .modern-observation p {
+    font-size: 16px;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modern-apparatus {
+    height: 250px;
+    margin: 4px auto;
+  }
+  .modern-key {
+    font-size: 16px;
+    margin: 8px 4px 10px;
+    line-height: 1.5;
+    min-height: 48px;
+  }
+  .showcase[data-mode='watch'] .modern-key {
+    display: none;
+  }
+  .modern-explore {
+    padding: 12px 8px;
+    margin-top: 14px;
+  }
+  html:has(.modern-lab) {
+    scroll-padding-top: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .modern-lab * {
+    scroll-behavior: auto;
+  }
+}
+.modern-paths {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+}
+.modern-paths button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #d9e2d6;
+  background: #f5f7ef;
+  color: #526d5a;
+  border-radius: 22px;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+.modern-paths button[aria-pressed='true'] {
+  background: #dce7d4;
+  border-color: #aec2a5;
+}
+.modern-readout {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-bottom: 1px solid #dce2d8;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 380px) {
+  .modern-lab svg text {
+    font-size: 22px;
+  }
+}

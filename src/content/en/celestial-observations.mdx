@@ -1,0 +1,25 @@
+<h2 id="understand">Record, calculate, observe again</h2>
+
+Tycho’s angular records, changing moons around Jupiter, Neptune’s prediction and Halley’s return represent different chains of evidence. Computed positions are distinct from historical observations.
+
+<h2 id="try">Change time and compare perturbations</h2>
+
+Inspect directions, moon positions and comet speed. Changing the perturber’s mass changes Uranus’s calculated residual. At zero mass only integration error remains. The residual plot rescales automatically, so do not compare curve heights without comparing parameters.
+
+<h2 id="deeper">Scope of the models</h2>
+
+<details>
+
+<summary>Orbital and instrumental simplifications</summary>
+
+<div className="formula">M = E − e sin E; x = a(cos E − e); y = a√(1−e²) sin E</div>
+
+Mars uses a=1.5237 AU, e=0.0934 and T=686.98 d; Earth uses a 365.25-day circular orbit with illustrative phases. The residual compares an ellipse against a circle of the same semimajor axis. It does not reproduce the historical eight-arcminute discrepancy. The angular instrument is a functional diagram.
+
+Jupiter’s moons use coplanar circular orbits seen edge-on, with periods 1.769, 3.551, 7.155 and 16.689 d. Light time, mutual occultations and oblateness are omitted. The telescope is an ideal paraxial positive-objective, negative-eyepiece system with magnification five.
+
+The heliocentric restricted Neptune model includes the Sun’s indirect acceleration. Uranus and Neptune begin on ideal circular orbits at 19.2 and 30.1 AU; the mass ratio is 5.15×10⁻⁵. A 0.01-year step covers 80 years. Residuals and the small directional projection are heliocentric, not observed ecliptic longitudes or a historical inverse solution.
+
+Halley uses e=0.967, T=75.3 years and a=T^(2/3) AU in a planar two-body model. The tail is a directional visual cue, not gas or dust dynamics. Historical dates are not fitted with this fixed period.
+
+</details>

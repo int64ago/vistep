@@ -1,0 +1,17 @@
+---
+import { createElement, type ComponentType } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+interface Props {
+  artwork: ComponentType<any>;
+  options?: Record<string, unknown>;
+}
+const { artwork, options = {} } = Astro.props;
+// Covers communicate through the apparatus; explanatory labels live in the page.
+// Removing text also keeps a single illustration usable in both catalog languages.
+const markup = renderToStaticMarkup(createElement(artwork, options)).replace(
+  /<text\b[^>]*>[\s\S]*?<\/text>/g,
+  '',
+);
+---
+
+<Fragment set:html={markup} />

@@ -1,0 +1,35 @@
+---
+import { sensorSamples } from '../../models/capacitor-current-lab';
+const samples = sensorSamples(7).samples;
+const path = samples
+  .map((s, i) => `${i ? 'L' : 'M'}${180 + s.time * 25} ${182 - s.current * 38000}`)
+  .join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><defs
+    ><linearGradient id="cc-can"
+      ><stop stop-color="#91aca0"></stop><stop offset=".5" stop-color="#bdd1b8"></stop><stop
+        offset="1"
+        stop-color="#7e9c90"></stop></linearGradient
+    ></defs
+  ><path d="M71 159H37V63H139V174H95V159" stroke="#9cae92" stroke-width="2.5"></path><path
+    d="M57 99V150A26 8 0 0 0 109 150V99"
+    fill="url(#cc-can)"
+    stroke="#8d9f8c"></path><ellipse cx="83" cy="99" rx="26" ry="8" fill="#c2cdb6" stroke="#8d9f8c"
+  ></ellipse><path d="M71 151V164M95 151V164" stroke="#94a38e" stroke-width="3"></path><path
+    d="M94 103V149"
+    stroke="#d9dcbb"
+    stroke-width="6"></path><rect
+    x="112"
+    y="47"
+    width="39"
+    height="32"
+    rx="8"
+    fill="#e6ecd6"
+    stroke="#a0b291"></rect><circle cx="132" cy="63" r="10" fill="#f7f5dc"></circle><path
+    d="M180 42V182H370"
+    stroke="#c0cbb1"
+    stroke-width="1.5"></path><path d={`${path}L355 182H180Z`} fill="#dfcea2" opacity=".5"
+  ></path><path d={path} stroke="#85a28c" stroke-width="3" stroke-linecap="round"></path></svg
+>

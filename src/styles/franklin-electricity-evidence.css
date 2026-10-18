@@ -1,0 +1,105 @@
+.fee-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #687d62;
+}
+.fee-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 12px;
+}
+.fee-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 520px;
+  margin: auto;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0 12px;
+}
+.fee-apparatus {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: auto;
+}
+.fee-apparatus text {
+  font: 23px var(--font-sans, sans-serif);
+  fill: #a58e61;
+}
+.fee-apparatus .fee-outer-sign {
+  fill: #8ea27d;
+}
+.fee-evidence {
+  display: flex;
+  justify-content: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  padding: 4px 14px;
+}
+.fee-evidence span {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccd3bd;
+}
+.fee-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 13px 16px;
+  color: #809173;
+}
+.fee-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf1e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.fee-controls button {
+  min-height: 44px;
+}
+.fee-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.fee-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.fee-details p {
+  color: #7e8e73;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .fee-controls {
+    padding: 18px 14px;
+  }
+  .fee-apparatus text {
+    font-size: 27px;
+  }
+  .fee-labels {
+    gap: 5px;
+    padding: 0 8px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.fee-film[data-watch] > .fee-kicker,
+.fee-film[data-watch] > .fee-caption,
+.fee-film[data-watch] > details {
+  display: none;
+}
+.fee-film[data-watch] .fee-evidence {
+  display: none;
+}
+.fee-film[data-watch] .fee-note {
+  line-height: 1.4;
+  margin: 6px 12px;
+}

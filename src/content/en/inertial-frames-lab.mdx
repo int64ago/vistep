@@ -1,0 +1,36 @@
+<h2 id="understand">One ball, two descriptions of motion</h2>
+
+Place a steel ball on paper and pull the paper quickly. From the table, the paper travels far while the ball may move only slightly. In a view following the paper, the ball moves backward relative to it. Both views come from the same physical calculation.
+
+Over this short experiment the table is approximately an inertial frame. The accelerating paper is not. Even if horizontal contact force is ideally removed, a ball at rest relative to the table has a changing relative velocity in the accelerating paper frame. A coordinate change does not create a new real interaction.
+
+Real paper exerts friction, so the ball is not exactly stationary. That small motion is retained here, with a separate zero-friction comparison isolating the reference-frame effect.
+
+<h2 id="try">Change friction and pulling time separately</h2>
+
+- Set paper friction to zero. The ball stays at its table position while its paper coordinate changes.
+- Keep friction and compare fast and slow pulls. Measure the actual ball displacement instead of assuming every pull leaves it unmoved.
+- Pause and compare the two positions with paper displacement. Paper coordinates equal table coordinates minus the paper position.
+- Watch the contact status. When the paper edge passes the ball, contact changes to the bare table and so does its friction law.
+
+<h2 id="deeper">One contact model, two coordinate views</h2>
+
+<details>
+
+<summary>Coordinate and acceleration relations</summary>
+
+If the ball has table coordinate x and paper displacement X, then x′ = x − X. Similarly v′ = v − V and a′ = a − A. When the paper accelerates, a′ can be nonzero even with zero true horizontal acceleration a.
+
+Applying Newton’s law in the inertial frame does not require inventing an extra physical interaction when the camera changes. Equations written in an accelerating frame need explicitly identified frame-dependent inertial terms, distinct from contact forces.
+
+</details>
+
+<details>
+
+<summary>The steel sphere can rotate</summary>
+
+A smooth half-cosine pull carries the paper 0.50 m from rest back to rest. The uniform solid sphere has I = 2mr²/5 and radius0.03 m. Friction changes translation and rotation together. Each small time step checks whether contact can stick to the moving paper; if the required impulse exceeds the static threshold, sliding friction is used.
+
+The default paper kinetic coefficient is0.03, with a static limit1.3 times larger. Bare-table kinetic friction is0.10. Paper thickness is ignored, so the edge does not cause a vertical fall. These are teaching parameters, not measured material data. A slowly pulled sphere may roll on the paper; it is not automatically glued to it.
+
+</details>

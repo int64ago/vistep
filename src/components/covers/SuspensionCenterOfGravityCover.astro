@@ -1,0 +1,44 @@
+---
+import {
+  LAMINA_SHAPES,
+  suspensionState,
+  plumbTrace,
+  suspensionHoles,
+} from '../../models/suspension-center-of-gravity';
+const points = LAMINA_SHAPES.irregular;
+const s = suspensionState(points, 2);
+const holes = suspensionHoles(points);
+const outline = points.map((p) => `${p.x},${p.y}`).join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <defs><clipPath id="suspension-cover-clip"><polygon points={outline}></polygon></clipPath></defs>
+  <path d="M74 210H329M97 210V18H203V29" stroke="#c2cdb3" stroke-width="5" stroke-linecap="round"
+  ></path>
+  <g
+    transform={`translate(203 29) scale(.88) rotate(${(s.angle * 180) / Math.PI}) translate(${-s.pivot.x} ${-s.pivot.y})`}
+  >
+    <polygon points={outline} fill="#dcc69d" stroke="#bca67b"></polygon>
+    <g clip-path="url(#suspension-cover-clip)">
+      {
+        [0, 2].map((j, i) => {
+          const l = plumbTrace(holes[j], s.center);
+          return (
+            <path
+              d={`M${l[0].x} ${l[0].y}L${l[1].x} ${l[1].y}`}
+              stroke={i ? '#668b70' : '#b38b63'}
+              stroke-width="2"
+              stroke-dasharray={i ? 'none' : '5 4'}
+            />
+          );
+        })
+      }
+    </g>
+    {holes.map((p) => <circle cx={p.x} cy={p.y} r="2.8" fill="#faf4e5" />)}
+    <circle cx={s.center.x} cy={s.center.y} r="5" fill="#628268"></circle>
+    <circle cx={s.center.x} cy={s.center.y} r="11" stroke="#628268" opacity=".5"></circle>
+  </g>
+  <path d="M203 29V204" stroke="#6c856d" stroke-width="1.4"></path>
+  <path d="M203 191L196 207H210Z" fill="#82977b"></path>
+  <circle cx="203" cy="29" r="4" fill="#748a6e"></circle>
+</svg>

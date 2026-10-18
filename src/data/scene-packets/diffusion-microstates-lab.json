@@ -1,0 +1,169 @@
+{
+  "topic": {
+    "slug": "diffusion-microstates-lab",
+    "name": "扩散与微观状态",
+    "title": "混匀的颜料为什么不会自行聚回一滴？",
+    "question": "混匀的颜料为什么不会自行聚回一滴？",
+    "description": "从水中颜料的持续随机运动，到四个气体粒子的16种分布，区分微观运动与宏观不可逆性。",
+    "color": "#ac8d7d",
+    "tag": "均匀状态拥有更多可能",
+    "related": ["diffusion", "statistical-motion-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Molecular transport and diffusion",
+        "url": "https://openstax.org/books/college-physics-2e/pages/12-7-molecular-transport-phenomena-diffusion-osmosis-and-related-processes"
+      },
+      {
+        "title": "OpenStax — Entropy on a microscopic scale",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/4-7-entropy-on-a-microscopic-scale"
+      }
+    ]
+  },
+  "component": "src/components/experiments/DiffusionMicrostatesLab.tsx",
+  "cover": "src/components/covers/DiffusionMicrostatesLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["扩散与微观状态", "颜料", "自由扩散", "气体隔板", "熵", "热力学第二定律"],
+      "en": [
+        "Diffusion and microstates",
+        "dye",
+        "gas expansion",
+        "partition",
+        "entropy",
+        "irreversibility"
+      ]
+    }
+  },
+  "translations": {
+    "扩散与微观状态": "Diffusion and microstates",
+    "混匀的颜料为什么不会自行聚回一滴？": "Why does mixed dye not gather back into one drop?",
+    "从水中颜料的持续随机运动，到四个气体粒子的16种分布，区分微观运动与宏观不可逆性。": "Connect dye’s continuing random motion with sixteen arrangements of four gas particles, separating microscopic motion from macroscopic irreversibility.",
+    "均匀状态拥有更多可能": "Many more ways to be spread out",
+    "一滴红色颜料": "One drop of red dye",
+    "撤去气体隔板": "Removing a gas partition",
+    "四个粒子的十六种状态": "Sixteen four-particle states",
+    "观察粒子，不追随流体": "Follow individual tracers",
+    "染料扩散、气体自由扩散与全部十六种左右分布": "Dye diffusion, gas free expansion and all sixteen left/right arrangements",
+    "分布变均匀，粒子仍在运动": "Mixed particles keep moving",
+    "隔板封闭，B内无气体": "Partition closed; B is empty",
+    "撤去隔板，粒子进入B": "Partition removed; particles enter B",
+    "示踪粒子": "Tracers",
+    "上半杯比例": "Upper-half fraction",
+    "全部在A的概率": "Probability of all in A",
+    "红色颜料": "Red dye",
+    "气体隔板": "Gas partition",
+    "微观态": "Microstates",
+    "模拟进度": "Simulation progress",
+    "A内的粒子数": "Particles in A",
+    "比较总粒子数": "Total particle count to compare",
+    "放大、时间与等可能假设": "Magnification, time and equal probabilities",
+    "染料用放大的示踪点和反射随机游走表现纯扩散，时间加速，不模拟实际水中的对流、溶解速度或分子尺寸。四粒子图只枚举左右归属，省略位置与动量细节；在相等体积、独立粒子和平衡等可能假设下，16种归属各占1/16。宏观复原概率极小，不等于数学上的零。": "Magnified tracers and reflected random walks represent diffusion with accelerated time, omitting convection, dissolution rates and molecular scale. The four-particle diagrams enumerate side assignments, not full position and momentum states. For equal volumes and independent particles at equilibrium, the sixteen assignments are equally probable. A macroscopic return is extremely unlikely rather than mathematically impossible.",
+    "在清水中滴入颜料": "Add one drop of dye",
+    "颜料起初集中，个体运动没有统一方向。": "Dye starts concentrated; individual motion has no common direction.",
+    "均匀并不意味着静止": "Uniform does not mean still",
+    "粒子持续运动，统计分布逐渐均匀。": "Particles keep moving while their statistical distribution becomes more uniform.",
+    "先用隔板限制气体": "Start with a closed partition",
+    "四个有颜色编号的粒子都在A内，B为空。": "Four identified particles occupy A while B is empty.",
+    "撤去隔板后进入另一半": "Release the partition",
+    "粒子进入更大的空间，能量无需凭空增加。": "Particles gain access to more space without an extra energy input.",
+    "逐一列出十六种归属": "Enumerate all sixteen assignments",
+    "每个粒子可在A或B，共有2的4次方种归属。": "Each particle may be in A or B, giving two to the fourth assignments.",
+    "少量起伏与宏观概率": "Fluctuations and macroscopic probability",
+    "全部回到A的概率是2的负N次方，随粒子数迅速下降。": "The probability that all return to A is two to the minus N."
+  },
+  "narration": {
+    "duration": 156,
+    "cues": [
+      {
+        "id": "dye-drop",
+        "title": "在清水中滴入颜料",
+        "titleEn": "Add one drop of dye",
+        "caption": "颜料起初集中，个体运动没有统一方向。",
+        "captionEn": "Dye starts concentrated; individual motion has no common direction.",
+        "zh": "一滴红色颜料进入水中，起初只占很小一块区域。放大的示踪点各自作随机运动，圈出的粒子也不会知道哪里更稀。这里加速显示纯扩散，实际水中的对流另当别论。",
+        "en": "A drop of dye initially occupies a small region. Each magnified tracer moves randomly; the highlighted particle does not know where concentration is lower. This accelerated model isolates diffusion, leaving real-water convection aside.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "dye-spread",
+        "title": "均匀并不意味着静止",
+        "titleEn": "Uniform does not mean still",
+        "caption": "粒子持续运动，统计分布逐渐均匀。",
+        "captionEn": "Particles keep moving while their statistical distribution becomes more uniform.",
+        "zh": "有颜色的粒子逐渐进入原来清澈的区域。浓处有更多粒子可向外运动，因此整体看起来从浓处扩散到稀处。即使颜色已经较均匀，粒子仍不停运动；把画面停住只是暂停观察。",
+        "en": "Dye spreads into regions that were initially clear. More particles can leave a concentrated region, producing net spreading without directed individual motion. Even when concentration is roughly uniform, particles keep moving; pausing the display only pauses our observation.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "gas-partition",
+        "title": "先用隔板限制气体",
+        "titleEn": "Start with a closed partition",
+        "caption": "四个有颜色编号的粒子都在A内，B为空。",
+        "captionEn": "Four identified particles occupy A while B is empty.",
+        "zh": "换成教材的隔板思想实验。四个颜色不同的粒子都在A室，B室空着。粒子碰壁反弹，隔板限制了它们能到达的空间。颜色用于跟踪身份，不表示四种不同气体。",
+        "en": "Now consider the textbook’s partition thought experiment. Four identifiable particles occupy chamber A; chamber B is empty. Reflecting walls, including the partition, restrict their accessible space. Colours identify particles rather than different gases.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "gas-release",
+        "title": "撤去隔板后进入另一半",
+        "titleEn": "Release the partition",
+        "caption": "粒子进入更大的空间，能量无需凭空增加。",
+        "captionEn": "Particles gain access to more space without an extra energy input.",
+        "zh": "撤去隔板后，原来的粒子延续运动，进入B室。图中没有加热，也没有向外推动活塞。四个粒子仍会出现数量起伏；不要用这一瞬间的左右数量判断大量气体的平衡分布。",
+        "en": "After removing the partition, the same particles continue into B. No heater or moving piston supplies extra energy here. Four particles show large number fluctuations; a single instantaneous count is not the equilibrium behaviour of a macroscopic gas.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "gas-enumerate",
+        "title": "逐一列出十六种归属",
+        "titleEn": "Enumerate all sixteen assignments",
+        "caption": "每个粒子可在A或B，共有2的4次方种归属。",
+        "captionEn": "Each particle may be in A or B, giving two to the fourth assignments.",
+        "zh": "把每个粒子只记作在A或在B，四个粒子就有十六种归属。每张小图上排是A，下排是B，同一种颜色始终代表同一粒子。逐张计数，会发现两边各两个粒子有六种归属。",
+        "en": "Record only whether each particle is in A or B. Four particles give sixteen assignments. In every small diagram, the upper row is A and the lower row is B; colours preserve particle identity. Count the diagrams with two particles in each half: there are six.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "gas-probability",
+        "title": "少量起伏与宏观概率",
+        "titleEn": "Fluctuations and macroscopic probability",
+        "caption": "全部回到A的概率是2的负N次方，随粒子数迅速下降。",
+        "captionEn": "The probability that all return to A is two to the minus N.",
+        "zh": "在平衡、等体积、独立粒子的假设下，十六种归属等可能。四个全在A的概率是十六分之一，不能说绝不发生。增加粒子数后，全部回到A的概率按二的负N次方下降。极小的概率解释宏观复原为何难以观察。",
+        "en": "For equal-volume halves and independent particles at equilibrium, the sixteen assignments are equally likely. All four in A has probability one sixteenth, so it is not forbidden. As particle count grows, all-in-A probability falls as two to the minus N, making macroscopic returns unobservable in practice.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-dye-in-water": {
+      "chapterIds": ["dye-drop", "dye-spread"],
+      "label": {
+        "zh": "红色颜料在水中的扩散",
+        "en": "Red dye spreading in water"
+      }
+    },
+    "e3-gas-microstates": {
+      "chapterIds": ["gas-partition", "gas-release", "gas-enumerate", "gas-probability"],
+      "label": {
+        "zh": "撤去隔板后的气体分布与微观态",
+        "en": "Gas expansion and microstates"
+      }
+    }
+  }
+}

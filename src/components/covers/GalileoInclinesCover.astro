@@ -1,0 +1,25 @@
+---
+import { doubleInclineGeometry, doubleInclineState } from '../../models/galileo-inclines';
+const g = doubleInclineGeometry(20),
+  s = doubleInclineState(1.25, 20),
+  a = g.at(0),
+  b = g.at(g.length),
+  scale = 330 / (b.x - a.x);
+const project = (x: number, y: number) => ({ x: 35 + (x - a.x) * scale, y: 185 - y * scale });
+const rail = Array.from({ length: 101 }, (_, i) => {
+  const q = g.at((g.length * i) / 100),
+    p = project(q.x + 0.065 * Math.sin(q.angle), q.y - 0.065 * Math.cos(q.angle));
+  return `${i ? 'L' : 'M'}${p.x} ${p.y}`;
+}).join(' ');
+const ball = project(s.x, s.y),
+  start = project(a.x, a.y);
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  <path d={`M35 ${start.y}H366`} stroke="#bbc4a5" stroke-dasharray="4 5"></path>
+  <path d={rail} stroke="#c3ab83" stroke-width="7" stroke-linecap="round"></path>
+  <path d={rail} stroke="#e1cfad" stroke-width="1.4"></path>
+  <circle cx={start.x} cy={start.y} r={0.065 * scale} stroke="#b7bea0"></circle>
+  <circle cx={ball.x} cy={ball.y} r={0.065 * scale} fill="#b4996d"></circle>
+  <path d="M70 212H332" stroke="#e2e5d5" stroke-width="2" stroke-linecap="round"></path>
+</svg>

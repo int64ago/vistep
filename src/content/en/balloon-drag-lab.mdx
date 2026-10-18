@@ -1,0 +1,42 @@
+---
+name: Investigating balloon air drag
+title: 'Measure first: what relationship does the drag data support?'
+---
+
+<section id="understand">
+
+The project on pages 117–119 of PEP Required Book 1 uses one balloon of approximately fixed volume, changes the suspended load, and records a steady falling segment beside a ruler. Establish terminal motion before inferring drag from force balance.
+
+The seven original page 118 weights are 4.5, 5.5, 6.5, 7.5, 8.5, 9.5 and 10.5 in 10⁻² N. Corresponding mean frame displacements are 13.6, 16.3, 19.8, 23.8, 26.6, 28.8 and 32.8 cm. The source does not supply the frame interval T₀ in seconds, so speed is expressed in cm/T₀.
+
+</section>
+<section id="try">
+
+Check equally spaced positions in successive frames. Divide displacement from frame 0 to frame n by n to recover mean displacement per frame. Changing load leaves balloon size fixed.
+
+Compare origin-constrained linear and quadratic least-squares fits. With the textbook’s zero-buoyancy approximation, root-mean-square errors are about 0.154 and 1.692 in 10⁻² N respectively. A linear relation better describes this limited dataset. Selecting a fit shows residuals between its curve and each measurement.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Separate data from reconstruction</summary>
+
+The seven pairs are textbook data, not invented results. The terminal-motion scene reconstructs their displacements without pretending to be original footage. The accelerating comparison is explicitly illustrative: speed approaches a terminal value exponentially. It is excluded from the measurement table and fits.
+
+Both F = kv and F = kv² are fitted through the origin by least squares. Error bars are absent because the source gives no uncertainty estimates, not because experiments are exact. Unknown T₀ also prevents interpreting the coefficient directly as an SI drag constant.
+
+</details>
+
+<details>
+
+<summary>Limits of the inference</summary>
+
+With downward positive, mg − B − Fdrag = ma. Only negligible acceleration and buoyancy justify Fdrag ≈ mg. At terminal speed with known buoyancy, use Fdrag = mg − B. The buoyancy slider is a hypothetical sensitivity analysis, not a measured correction for the textbook balloon.
+
+Sphere drag coefficients depend on Reynolds number and other conditions; balloons can also deform and sway. Neither a universal sphere law nor the low-Reynolds-number rigid-sphere Stokes law follows from these seven points alone. Fuller research needs frame rate, scale, air conditions, volume, buoyancy, posture and uncertainty.
+
+</details>
+
+</section>

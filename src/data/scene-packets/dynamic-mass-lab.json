@@ -1,0 +1,124 @@
+{
+  "topic": {
+    "slug": "dynamic-mass-lab",
+    "name": "太空测质量",
+    "title": "失重时，怎样测出宇航员的质量？",
+    "question": "失重时，怎样测出宇航员的质量？",
+    "description": "用恒定拉力和光栅计时重建加速度，扣除随动平台的质量，理解失重仍有惯性。",
+    "color": "#b8c7ac",
+    "tag": "恒力 · 光栅 · 惯性",
+    "related": ["newton-second-law-lab", "phone-accelerometer-lab"],
+    "sources": [
+      {
+        "title": "中国载人航天 — 质量测量（2013太空授课）",
+        "url": "https://en-conference2018.cmse.gov.cn/ztbd/xwzt/tksk/sysp/201306/t20130620_43137.html"
+      },
+      {
+        "title": "NASA — Space Linear Acceleration Mass Measurement Device",
+        "url": "https://www.nasa.gov/image-article/astronaut-shannon-walker-works-columbus-laboratory-module/"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["太空测质量", "失重", "惯性质量", "光栅计时"],
+      "en": [
+        "Measuring mass in microgravity",
+        "mass in space",
+        "microgravity",
+        "inertial mass",
+        "optical timing"
+      ]
+    }
+  },
+  "component": "src/components/experiments/DynamicMassLab.tsx",
+  "cover": "src/components/covers/DynamicMassLabCover.astro",
+  "translations": {
+    "太空测质量": "Measuring mass in microgravity",
+    "失重时，怎样测出宇航员的质量？": "How can an astronaut be weighed without weight?",
+    "用恒定拉力和光栅计时重建加速度，扣除随动平台的质量，理解失重仍有惯性。": "Reconstruct acceleration from a constant force and optical timing, subtract the moving platform mass, and distinguish weightlessness from inertia.",
+    "恒力 · 光栅 · 惯性": "Constant force · Optical timing · Inertia",
+    "失重时，质量仍然可以通过加速度测量": "In weightlessness, acceleration can still reveal mass",
+    "相同光栅间距，经过的时间越来越短": "Equal grating spacing, progressively shorter intervals",
+    "施加已知恒力，记录支架的加速运动": "Apply a known constant force and record the accelerating support",
+    "太空测质量 · 原理重建": "Mass in space · Principle reconstruction",
+    "宇航员固定在折叠支架上，恒力绳牵引支架，固定光栅记录位移": "An astronaut on a folding support is pulled by a constant force; a fixed optical grating records displacement",
+    "已知恒力": "Known constant force",
+    "模型时间": "Model time",
+    "光栅记录": "Optical grating record",
+    "间距": "Spacing",
+    "每过相同距离记录一个时刻，速度随时间上升": "Record a time at every equal distance; velocity rises with time",
+    "由记录求加速度": "Acceleration from the record",
+    "扣除随动平台质量": "Subtract the moving platform mass",
+    "先记录至少三个位置时刻": "First record times at three or more positions",
+    "恒力相同，质量较大时加速度较小；失重不等于没有惯性。": "Under the same force, greater mass accelerates less; weightlessness does not remove inertia.",
+    "相同距离除以各段时间，先得到平均速度，再从速度的变化求加速度。": "Divide equal distances by their intervals to obtain average velocities, then obtain acceleration from the velocity changes.",
+    "人体质量": "Person’s mass",
+    "恒定拉力": "Constant pull",
+    "支架原理示意；连杆质量忽略，平台等效质量6 kg。测量终点停帧，影片按模型秒慢放。": "Support principle diagram; links are massless and the translating platform has an effective mass of 6 kg. Freeze at the measurement endpoint; displayed model seconds run slowly."
+  },
+  "narration": {
+    "duration": 113,
+    "cues": [
+      {
+        "id": "weightless",
+        "title": "失重仍有惯性",
+        "titleEn": "Weightless but still inertial",
+        "caption": "不依赖重力读数，改测已知力引起的加速度。",
+        "captionEn": "Replace a weight reading with acceleration under a known force.",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.3,
+        "zh": "空间站和宇航员一起绕地球自由下落，普通体重秤不能像地面上一样给出体重。但失重不等于质量消失。教材介绍的太空测质量装置，把宇航员固定在折叠支架上，向指定方向施加已知的恒定拉力。我们要观察的是他有多难被加速，而不是他在支架上压得有多重。",
+        "en": "The station and astronaut fall together around Earth, so an ordinary scale does not work as it does on the ground. Weightlessness does not erase mass. The textbook’s apparatus fixes the astronaut to a folding support and applies a known constant pull. We measure resistance to acceleration rather than pressure on a weighing scale."
+      },
+      {
+        "id": "pull",
+        "title": "恒力牵引支架",
+        "titleEn": "Pull the support with constant force",
+        "caption": "从静止释放，同一根绳带动平台和人体。",
+        "captionEn": "Released from rest, one cable accelerates the platform and person.",
+        "seconds": 28,
+        "chapterAt": 27,
+        "at": 27.3,
+        "zh": "从规定位置静止释放，拉绳收回，支架折叠，宇航员和随动平台一起加速。画面中的连杆保持长度不变，光栅读取头也固定在平台上。这里用二十五牛的恒定拉力作教学示例，不能把它理解为普通弹簧越拉越长、拉力随伸长增加的过程。装置和读数必须对应同一段运动。",
+        "en": "Release from rest at a specified position. The cable retracts, the support folds, and the person accelerates with the moving platform. Rigid links keep their lengths and the grating reader stays attached to the platform. This example uses a constant twenty-five-newton force, not an ordinary spring whose force increases with extension. Apparatus motion and readings describe the same trajectory."
+      },
+      {
+        "id": "grating",
+        "title": "把位置转成加速度",
+        "titleEn": "Turn positions into acceleration",
+        "caption": "同样的距离，越来越短的时间，形成上升的速度记录。",
+        "captionEn": "Equal distances in shorter times produce rising velocity readings.",
+        "seconds": 29,
+        "chapterAt": 55,
+        "at": 55.3,
+        "zh": "光栅的相邻标记相隔两厘米。读取头经过每个位置，都留下一个时间记录。随着运动加快，同样距离花费的时间越来越短。先用距离除以时间求出每一小段的平均速度；对这里的匀加速运动，这个平均速度等于该段中间时刻的瞬时速度。再比较两个速度和对应时刻，就能求出加速度。",
+        "en": "Adjacent grating marks are two centimetres apart. Passing each position records a time. As motion speeds up, the same distance takes less time. Divide distance by each interval to obtain an average velocity. For this constant-acceleration motion, that average equals the instantaneous velocity at the interval’s midpoint. Comparing velocities and their midpoint times gives acceleration."
+      },
+      {
+        "id": "mass",
+        "title": "从整体质量到人体质量",
+        "titleEn": "From total moving mass to body mass",
+        "caption": "先算F/a，再扣除平台；同样的力，较大质量加速较小。",
+        "captionEn": "Compute F/a and subtract the platform; greater mass accelerates less.",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3,
+        "zh": "用恒定拉力除以测得的加速度，得到的是全部随动部分的质量。我们的示例还要扣除六千克的平台质量，才得到人体质量。随后换成质量较大的人，同样的力使他加速得更慢，光栅记录也更疏。真实装置需要校准、控制振动并处理误差；这个原理重建说明，测质量可以依靠惯性，并不一定依靠重量。",
+        "en": "Force divided by measured acceleration gives the mass of everything moving together. Subtract this example’s six-kilogram platform to obtain body mass. Repeating with a heavier person gives less acceleration under the same force, and more widely spaced timing pulses. Real equipment requires calibration and vibration control. This reconstruction shows that mass can be measured through inertia without relying on weight."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-space-mass": {
+      "chapterIds": ["weightless", "pull", "grating", "mass"],
+      "label": {
+        "zh": "太空测质量",
+        "en": "Measuring mass in microgravity"
+      }
+    }
+  }
+}

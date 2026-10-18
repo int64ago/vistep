@@ -1,0 +1,200 @@
+{
+  "topic": {
+    "slug": "arm-motion-lab",
+    "name": "甩手与投掷的运动研究",
+    "title": "指尖为什么能获得很大的速度？",
+    "question": "指尖为什么能获得很大的速度？",
+    "description": "从视频比例标定、关节速度合成到手机交叉测量，保留教材原始估算与标枪研究提案。",
+    "color": "#c4c5a5",
+    "tag": "关节运动 · 视频测量 · 速度合成",
+    "related": ["wax-motion-composition", "phone-accelerometer-lab", "centripetal-force-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Relative Motion in One and Two Dimensions",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions"
+      },
+      {
+        "title": "Android Developers — Motion sensors",
+        "url": "https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["甩手与投掷的运动研究", "甩手水滴", "标枪课题", "手机加速度"],
+      "en": [
+        "Studying arm flicks and throwing",
+        "hand flick",
+        "javelin research",
+        "phone acceleration"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ArmMotionLab.tsx",
+  "cover": "src/components/covers/ArmMotionLabCover.astro",
+  "translations": {
+    "甩手与投掷的运动研究": "Studying arm flicks and throwing",
+    "指尖为什么能获得很大的速度？": "Why can a fingertip reach a high speed?",
+    "从视频比例标定、关节速度合成到手机交叉测量，保留教材原始估算与标枪研究提案。": "From video scaling and joint-velocity composition to phone cross-checks, distinguish textbook estimates from a javelin research proposal.",
+    "关节运动 · 视频测量 · 速度合成": "Articulated motion · Video measurement · Velocity composition",
+    "从真实尺寸与帧间隔开始": "Start with physical dimensions and frame intervals",
+    "教材怎样估算指尖的向心加速度？": "How does the textbook estimate fingertip normal acceleration?",
+    "两种估算接近，但精度不能凭空提高": "Similar estimates do not create extra precision",
+    "先弄清手机在测哪一个点": "Establish which point the phone measures",
+    "把助跑与手臂运动放在同一参考系": "Put run-up and arm motion in one reference frame",
+    "肩、肘、腕的运动，一起到达指尖": "Shoulder, elbow and wrist motion combine at the fingertip",
+    "教材数值重算 · 示意图并非原始照片": "Recalculated textbook values · Diagrams are not original photographs",
+    "参考课题 · 构型示意，不是动作指导": "Research proposal · Illustrative configuration, not technique instruction",
+    "独立关节运动示意 · 不是教材照片的拟合": "Independent joint illustration · Not fitted to textbook photographs",
+    "分别呈现帧间位移与局部转弯半径的教材测量示意": "Separate diagrams show textbook frame displacement and local turning radius",
+    "上臂、前臂和手掌保持长度不变，关节运动与指尖轨迹来自同一个运动模型": "Rigid upper-arm, forearm and hand segments share one model for joint motion and fingertip trajectory",
+    "65厘米用于照片比例标定；26厘米是相邻帧指尖位移。": "65 cm calibrates photograph scale; 26 cm is fingertip displacement between adjacent frames.",
+    "教材采用末段局部圆周近似；一般关节运动须完整计算矢量加速度。": "The textbook approximates local circular motion near the end; general articulated motion requires full vector acceleration.",
+    "沿前臂原始读数": "Raw reading along the forearm",
+    "去除重力后的同轴读数": "Gravity-corrected reading on the same axis",
+    "以上是模型读数；教材另一次手腕测量给出约32 m/s²。": "These are model readings; the textbook reports about 32 m/s² from a separate wrist measurement.",
+    "助跑贡献": "Run-up contribution",
+    "手相对肩的速率": "Hand speed relative to shoulder",
+    "合速度大小": "Resultant speed",
+    "指尖模型速率": "Model fingertip speed",
+    "模型时间": "Model time",
+    "每一段贡献都是矢量，方向也参与相加。": "Each contribution is a vector; direction matters in the sum.",
+    "三段运动的速度贡献首尾相接，合矢量从起点连到终点": "Three velocity contributions join head to tail; the resultant connects first and last points",
+    "水滴脱离后沿当时速度飞出，随后受重力改变方向。": "A detached drop retains its release velocity and then changes direction under gravity.",
+    "手机测在手腕，腕关节保持不转；坐标轴会随前臂转动。": "The phone measures the wrist with wrist rotation suppressed; its axes turn with the forearm.",
+    "速度按矢量相加，速率不能直接相加；还需测量出手方向与动作时序。": "Velocities add as vectors, not speed magnitudes; release direction and timing also require measurement.",
+    "这些数值属于教材中的一次研究，不是所有人、所有动作的固定结果。": "These values belong to one textbook study, not every person or movement.",
+    "指尖速度来自肩、肘、腕共同运动；不是只看最末一段。": "Fingertip velocity depends on shoulder, elbow and wrist motion together.",
+    "研究步骤": "Research step",
+    "甩手轨迹": "Flick trajectory",
+    "速度合成": "Velocity composition",
+    "照片测量": "Photograph measurement",
+    "局部估算": "Local estimate",
+    "手机测量": "Phone measurement",
+    "交叉比较": "Cross-check",
+    "标枪课题": "Javelin proposal",
+    "腕关节": "Wrist joint",
+    "参与转动": "Allow rotation",
+    "保持固定": "Keep fixed",
+    "关节角度是示意输入，未使用肌肉动力学。水滴释放时刻预先指定，不把任意动作与25g绑定；标枪不模拟离手后的空气动力。": "Joint angles are illustrative inputs without muscle dynamics. Drop release time is prescribed, and 25g is not assigned to arbitrary movements. Javelin post-release aerodynamics are omitted."
+  },
+  "narration": {
+    "duration": 228,
+    "cues": [
+      {
+        "id": "flick",
+        "title": "先跟踪指尖和水滴",
+        "titleEn": "Track the fingertip and drop",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "关节相连，水滴脱离后继承释放速度。",
+        "captionEn": "Connected joints move together; a detached drop keeps release velocity.",
+        "zh": "把一次甩手动作慢下来，跟踪肩、肘、腕和指尖。上臂、前臂与手掌都有自己的转动，但指尖同时继承这些运动。水滴脱离后不再跟着手指拐弯，而是沿脱离时的速度运动，再受重力改变方向。这里用独立关节模型解释过程，释放时刻预先指定，不能把它当作对液滴何时甩脱的预测。",
+        "en": "Slow a flick and follow shoulder, elbow, wrist and fingertip. Upper arm, forearm and hand all rotate, and the fingertip inherits their combined motion. Once detached, a drop no longer follows the hand’s turn. It keeps release velocity before gravity changes its path. This independent joint model prescribes detachment time; it does not predict an adhesion threshold."
+      },
+      {
+        "id": "vectors",
+        "title": "速度方向也要相加",
+        "titleEn": "Add directions as well as magnitudes",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "把每一段速度贡献首尾相接。",
+        "captionEn": "Join each velocity contribution head to tail.",
+        "zh": "把上臂、前臂和手掌的速度贡献画成箭头，再首尾相接。合速度从第一个箭头的起点指向最后一个箭头的终点。即使几个贡献都很大，方向不同也不能直接相加速率。自由探索固定腕关节后，指尖轨迹和速度都会改变。模型中的分段长度与角度是教学示意，不是从教材原始照片拟合得到。",
+        "en": "Represent each link’s contribution as a velocity arrow and join the arrows head to tail. The resultant runs from the first start to the final endpoint. Large contributions with different directions cannot be combined by simply adding their magnitudes. Locking the wrist changes both fingertip path and speed. The illustrated lengths and angles are not fitted to the textbook photographs."
+      },
+      {
+        "id": "video",
+        "title": "从照片读出速度",
+        "titleEn": "Read speed from photographs",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3,
+        "caption": "实际长度标定比例，帧率给出时间。",
+        "captionEn": "A physical length calibrates scale; frame rate supplies time.",
+        "zh": "现在回到教材实际给出的数据。先测肩膀到指尖的自然下垂长度，为六十五厘米，用它标定照片与实物的比例。视频每秒二十五帧，相邻两帧相隔零点零四秒。最后阶段指尖相邻位置相距二十六厘米，除以时间，得到平均速度六点五米每秒。画面只是把这组数据重新标明，并非原始照片。",
+        "en": "Return to the textbook’s reported data. A measured shoulder-to-fingertip length of sixty-five centimetres calibrates the photograph. Twenty-five frames per second gives forty milliseconds between frames. A final fingertip displacement of twenty-six centimetres then gives an average speed of six point five metres per second. The diagram restates these values rather than reproducing the original photograph."
+      },
+      {
+        "id": "radius",
+        "title": "局部圆周近似得到25g",
+        "titleEn": "A local circular estimate gives 25g",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3,
+        "caption": "6.5²/0.17 约为249 m/s²。",
+        "captionEn": "6.5²/0.17 is about 249 m/s².",
+        "zh": "教材把运动末段近似为绕腕关节的圆周运动，测得腕到指尖约十七厘米。将六点五米每秒的速度平方除以这个半径，得到约二百四十九米每二次方秒，约为重力加速度的二十五倍。这是局部近似。一般情况下腕关节也在加速，严格的法向加速度需要从整个指尖轨迹求得，不能总把手掌长度当作曲率半径。",
+        "en": "The textbook approximates the final segment as circular motion about the wrist, with a measured radius of seventeen centimetres. Squared speed divided by that radius gives about two hundred forty-nine metres per second squared, roughly twenty-five g. This is a local approximation. A moving wrist can also accelerate, so exact normal acceleration requires the full fingertip trajectory, whose curvature radius need not equal hand length."
+      },
+      {
+        "id": "phone",
+        "title": "手机测的是手腕",
+        "titleEn": "The phone measures the wrist",
+        "seconds": 29,
+        "chapterAt": 113,
+        "at": 113.3,
+        "caption": "先确认测点、坐标轴和重力处理。",
+        "captionEn": "Establish measurement point, axes and gravity handling.",
+        "zh": "手机不方便固定在指尖，教材改测手腕，并要求腕关节保持不转，手机长边与前臂平行。读数必须结合传感器位置、坐标轴和应用的处理方式理解。原始加速度计包含重力相关贡献，静止时也可能读到一个重力加速度；去除重力后的运动加速度才为零。画面比较这两种模型读数，不把它们伪装成教材的实测曲线。",
+        "en": "A phone is difficult to attach at the fingertip, so the textbook measures the wrist with wrist rotation suppressed and the phone aligned to the forearm. Interpretation needs sensor position, axes and app processing. A raw accelerometer includes a gravity-related contribution and reads about one g while stationary; gravity-corrected motion acceleration is zero. These displayed model readings are not the textbook’s recorded trace."
+      },
+      {
+        "id": "crosscheck",
+        "title": "用手腕测量作量级检验",
+        "titleEn": "Cross-check the order of magnitude",
+        "seconds": 29,
+        "chapterAt": 142,
+        "at": 142.3,
+        "caption": "约8×32，与约249量级接近。",
+        "captionEn": "About 8×32 is comparable to about 249.",
+        "zh": "教材的另一次手腕测量给出约三十二米每二次方秒。照片估计指尖速率约为手腕的二点二倍，局部运动半径约为五分之三。按相同圆周近似，向心加速度比约为八，于是指尖约为二百五十六米每二次方秒，与前面的估算接近。这是带有共同假设的量级检验，不能因此忽略切向加速度、测量误差或增加有效数字。",
+        "en": "A separate textbook wrist measurement gives about thirty-two metres per second squared. Photographs suggest fingertip speed is about two point two times wrist speed, with a local radius about three-fifths as large. Under the same circular approximation, the acceleration ratio is about eight, giving roughly two hundred fifty-six. This is an order-of-magnitude cross-check with shared assumptions, not permission to ignore tangential acceleration or measurement error."
+      },
+      {
+        "id": "javelin",
+        "title": "把问题延伸到投掷",
+        "titleEn": "Extend the question to throwing",
+        "seconds": 28,
+        "chapterAt": 171,
+        "at": 171.3,
+        "caption": "先跟踪出手前的手和枪，不虚构飞行数据。",
+        "captionEn": "Track the hand and spear before release without inventing flight data.",
+        "zh": "书后把掷标枪列为参考研究选题。可以把助跑、躯干带动肩部，以及肘腕的运动分别记录，再讨论它们怎样影响出手速度。画面先固定肩的位置，观察手臂相对肩部的速度贡献。枪身与手保持连接，位置随关节计算。这只是用来组织研究问题的构型示意，并非运动员动作复现或训练指导。",
+        "en": "The book proposes javelin throwing as a further research topic. Record run-up, trunk and shoulder transport, and elbow and wrist motion before asking how they influence release velocity. First hold shoulder position fixed and inspect the hand’s relative velocity. The spear stays connected to the computed hand. This configuration organizes a research question; it is not an athlete reconstruction or coaching advice."
+      },
+      {
+        "id": "runup",
+        "title": "加入向前运动并提出测量",
+        "titleEn": "Add forward motion and define measurements",
+        "seconds": 29,
+        "chapterAt": 199,
+        "at": 199.3,
+        "caption": "同一关节动作，加上肩部平移速度。",
+        "captionEn": "Add shoulder translation to the same joint motion.",
+        "zh": "保持同样的关节构型和相对运动，逐渐加入肩部向前的速度。手对地面的速度是相对肩部的速度加上肩部平移速度，两支箭头仍按矢量相加，方向也会改变。真实标枪研究还需测出出手方向、动作时序以及各段相互影响，不能只凭速率较大就宣称投得更远。本片到出手速度为止，不模拟离手后的空气动力。",
+        "en": "Keep joint configuration and relative motion unchanged while adding forward shoulder velocity. Ground-relative hand velocity is the vector sum of relative hand velocity and shoulder translation; the direction can change as well. A real javelin study must measure release direction, timing and segment interactions. Greater speed alone does not establish a longer throw. The model stops at release velocity and omits post-release aerodynamics."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-hand-flick": {
+      "chapterIds": ["flick", "vectors", "video", "radius", "phone", "crosscheck"],
+      "label": {
+        "zh": "关于甩手动作的物理原理研究",
+        "en": "Investigate the physics of an arm flick"
+      }
+    },
+    "required-2-javelin": {
+      "chapterIds": ["javelin", "runup"],
+      "label": {
+        "zh": "掷标枪动作的物理原理研究",
+        "en": "Investigate javelin throwing"
+      }
+    }
+  }
+}

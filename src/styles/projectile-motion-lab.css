@@ -1,0 +1,195 @@
+.projectile-motion-lab {
+  max-width: 1040px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #526d53;
+}
+.projectile-motion-lab header {
+  text-align: center;
+}
+.projectile-motion-lab header p {
+  font-size: clamp(21px, 2.5vw, 28px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.projectile-motion-lab header > span {
+  font-size: 16px;
+  color: #829572;
+}
+.projectile-motion-stage {
+  max-width: 650px;
+  margin: 20px auto;
+}
+.projectile-motion-stage svg {
+  display: block;
+  width: 100%;
+}
+.projectile-motion-readings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 26px;
+  font-size: 16px;
+}
+.projectile-motion-readings span {
+  display: flex;
+  gap: 9px;
+}
+.projectile-motion-readings b {
+  font-weight: 400;
+  color: #9b8b62;
+}
+.projectile-motion-cause {
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 730px;
+  margin: 25px auto;
+  text-align: center;
+}
+.projectile-motion-note {
+  font-size: 16px;
+  color: #849374;
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 20px auto;
+  text-align: center;
+}
+.projectile-motion-analysis {
+  max-width: 520px;
+  margin: 22px auto;
+}
+.projectile-motion-analysis > p {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.projectile-motion-analysis table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 16px;
+}
+.projectile-motion-analysis th {
+  font-weight: 400;
+  padding: 8px;
+  border-bottom: 1px solid #d9e1cc;
+}
+.projectile-motion-analysis td {
+  padding: 6px 8px;
+  color: #8d9d77;
+}
+.projectile-motion-speed {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.projectile-motion-speed strong {
+  font-size: 25px;
+  color: #8c9f73;
+  font-weight: 400;
+}
+.projectile-motion-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.projectile-motion-controls > .segmented {
+  grid-column: 1/-1;
+  justify-self: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+.projectile-motion-controls .segmented button {
+  min-height: 44px;
+  font-size: 16px;
+}
+.projectile-motion-controls .segment-selection {
+  display: none;
+}
+@media (max-width: 640px) {
+  .projectile-motion-lab {
+    padding: 20px 12px;
+  }
+  .projectile-motion-stage {
+    margin: 16px -5px;
+  }
+  .projectile-motion-readings {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .projectile-motion-readings span {
+    justify-content: space-between;
+  }
+  .projectile-motion-controls {
+    grid-template-columns: 1fr;
+  }
+  .projectile-motion-controls > .segmented {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .projectile-motion-controls .segmented button {
+    min-width: 0;
+    white-space: normal;
+    padding: 10px 8px;
+    line-height: 1.4;
+  }
+  .projectile-motion-speed strong {
+    font-size: 21px;
+  }
+  .projectile-motion-analysis table {
+    font-size: 16px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .projectile-motion-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-lab > header > span,
+  .showcase[data-mode='watch'] .projectile-motion-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .projectile-motion-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .projectile-motion-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .projectile-motion-stage {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-stage svg {
+    max-height: 230px;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-readings {
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-analysis {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-analysis > p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-analysis th,
+  .showcase[data-mode='watch'] .projectile-motion-analysis td {
+    padding: 3px 6px;
+  }
+  .showcase[data-mode='watch'] .projectile-motion-speed {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 6px 0;
+  }
+}

@@ -1,0 +1,21 @@
+---
+import LessonPage from '../../../components/pages/LessonPage.astro';
+import { curricula, getCurriculumLessons } from '../../../data/curricula';
+import { getTopic } from '../../../data/topics';
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob<{ Content: any }>('../../../content/*.mdx');
+  return Promise.all(
+    curricula.flatMap(getCurriculumLessons).map(async (context) => {
+      const topic = getTopic(context.lesson.sceneSlug);
+      const mod = await modules[`../../../content/${topic.slug}.mdx`]();
+      return {
+        params: { curriculum: context.curriculum.id, lesson: context.lesson.id },
+        props: { topic, Content: mod.Content, curriculumContext: context },
+      };
+    }),
+  );
+}
+---
+
+<LessonPage {...Astro.props} locale="zh" />

@@ -19,6 +19,7 @@ cache = ROOT / '.voice-cache'; cache.mkdir(exist_ok=True)
 out = ROOT / 'public/narration'; out.mkdir(exist_ok=True)
 script_path = ROOT/'src/data/narration.json'
 scripts = json.loads(script_path.read_text())
+original_scripts = json.loads(script_path.read_text())
 selected = set(args.only or scripts)
 unknown = selected - scripts.keys()
 if unknown: raise SystemExit('Unknown topics: '+', '.join(sorted(unknown)))
@@ -52,10 +53,27 @@ async def main():
                     except Exception:
                         if attempt == 3: raise
                         await asyncio.sleep(2 ** (attempt + 1))
+            if trimmed.exists():
+                try:
+                    valid_cache = 2 <= duration(trimmed) <= 120
+                except (wave.Error, EOFError):
+                    valid_cache = False
+                if not valid_cache:
+                    trimmed.unlink()
             if not trimmed.exists():
-                await asyncio.to_thread(command, '-i', raw, '-af',
-                    'silenceremove=start_periods=1:start_duration=0.02:start_threshold=-48dB,areverse,silenceremove=start_periods=1:start_duration=0.02:start_threshold=-48dB,areverse,loudnorm=I=-18:TP=-2:LRA=7',
-                    '-ar', RATE, '-ac', 1, '-c:a', 'pcm_s16le', trimmed)
+                normalized_temp = trimmed.with_suffix('.part.wav')
+                trim_temp = trimmed.with_suffix('.trim.wav')
+                await asyncio.to_thread(command, '-filter_threads', 1, '-i', raw, '-af',
+                    'silenceremove=start_periods=1:start_duration=0.02:start_threshold=-48dB,areverse,silenceremove=start_periods=1:start_duration=0.02:start_threshold=-48dB,areverse',
+                    '-ar', RATE, '-ac', 1, '-c:a', 'pcm_s16le', trim_temp)
+                # Separate the reverse/trim graph from loudnorm: some FFmpeg builds
+                # abort when the buffered reverse frames end during loudnorm flushing.
+                await asyncio.to_thread(command, '-filter_threads', 1, '-i', trim_temp,
+                    '-af', 'loudnorm=I=-18:TP=-2:LRA=7',
+                    '-ar', RATE, '-ac', 1, '-c:a', 'pcm_s16le', normalized_temp)
+                if not 2 <= duration(normalized_temp) <= 120:
+                    raise RuntimeError(f'{slug}/{locale}/{index}: invalid normalized speech duration')
+                normalized_temp.replace(trimmed)
             seconds = duration(trimmed)
             if seconds < 2: raise RuntimeError(f'{slug}/{locale}/{index}: implausibly short speech')
             print(f'{slug}/{locale}/{index+1}: {seconds:.2f}s', flush=True)
@@ -94,6 +112,18 @@ async def main():
             command('-i', wav, '-codec:a', 'libmp3lame', '-b:a', '128k', out/filename)
             manifest[slug][locale] = {'src':'/narration/'+filename,'duration':at,'voice':voice,'provider':'Microsoft Edge online speech via edge-tts','sampleRate':RATE,'cues':cues}
             print(f'Assembled {filename}: {at:.1f}s', flush=True)
+    # Integrators may register unrelated scenes while synthesis is in flight.
+    # Preserve those additions, but never attach old recordings to changed selected scripts.
+    latest_scripts = json.loads(script_path.read_text())
+    for slug in selected:
+        if latest_scripts.get(slug) != original_scripts[slug]:
+            raise RuntimeError(f'{slug}: script changed during synthesis; review and rerun before committing metadata.')
+        latest_scripts[slug] = scripts[slug]
+    scripts.clear(); scripts.update(latest_scripts)
+    latest_manifest = json.loads(manifest_path.read_text())
+    for slug in selected:
+        latest_manifest[slug] = manifest[slug]
+    manifest.clear(); manifest.update(latest_manifest)
     # Commit all metadata only after every selected track has been assembled successfully.
     for path, value in [(script_path,scripts),(manifest_path,manifest)]:
         temporary = path.with_suffix('.json.tmp')

@@ -1,0 +1,254 @@
+{
+  "topic": {
+    "slug": "thermodynamic-work-lab",
+    "name": "功、热与内能实验",
+    "title": "做功为什么能升温，膨胀又为什么会降温？",
+    "question": "做功为什么能升温，膨胀又为什么会降温？",
+    "description": "追踪压缩引火、焦耳机械和电热量热、瓶中起雾与伦福德镗孔中的能量转化。",
+    "color": "#899b70",
+    "tag": "同一能量，不同路径",
+    "related": ["thermal-measurement-lab", "ideal-gas"],
+    "sources": [
+      {
+        "title": "OpenStax — Adiabatic processes for an ideal gas",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/3-6-adiabatic-processes-for-an-ideal-gas"
+      },
+      {
+        "title": "OpenStax — Calorimetry and Joule’s experiment",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      },
+      {
+        "title": "Royal Society — Rumford and the original 1798 paper",
+        "url": "https://royalsociety.org/blog/2015/03/rumford-the-colourful-count/"
+      }
+    ]
+  },
+  "component": "src/components/experiments/ThermodynamicWorkLab.tsx",
+  "cover": "src/components/covers/ThermodynamicWorkLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["功、热与内能实验", "压缩引火", "焦耳实验", "搅水", "热功当量", "瓶中云", "伦福德"],
+      "en": [
+        "Work, heat and internal-energy experiments",
+        "fire piston",
+        "Joule calorimeter",
+        "mechanical equivalent of heat",
+        "cloud in a bottle",
+        "Rumford"
+      ]
+    }
+  },
+  "translations": {
+    "功、热与内能实验": "Work, heat and internal-energy experiments",
+    "做功为什么能升温，膨胀又为什么会降温？": "Why can work heat a system while expansion cools it?",
+    "追踪压缩引火、焦耳机械和电热量热、瓶中起雾与伦福德镗孔中的能量转化。": "Follow energy through compression ignition, Joule’s mechanical and electrical calorimetry, bottle clouds and Rumford’s boring experiment.",
+    "同一能量，不同路径": "One energy balance, different paths",
+    "压缩引火": "Compression ignition",
+    "重物搅水": "Falling weights stir water",
+    "发电机电热量热": "Generator calorimetry",
+    "瓶中膨胀起雾": "Cloud from depressurization",
+    "伦福德镗孔": "Rumford’s boring experiment",
+    "压缩、机械量热、电热量热、瓶中云与摩擦生热五套装置": "Five apparatuses for compression, mechanical and electrical calorimetry, bottle clouds and frictional heating",
+    "快速压缩：做功使气体升温": "Fast compression heats the gas",
+    "缓慢压缩：向环境传热": "Slow compression releases heat",
+    "发电机": "Electric generator",
+    "少量水使瓶内空气湿润": "Water moistens the air",
+    "压强降低，水汽发生凝结": "Lower pressure promotes fog",
+    "炮筒剖面：接触处持续摩擦": "Barrel section: frictional contact",
+    "理想化降压温度": "Ideal blowdown temperature",
+    "选择功与热实验": "Choose a work-and-heat experiment",
+    "演示进度": "Demonstration progress",
+    "压缩过程": "Compression process",
+    "快速绝热": "Fast, adiabatic",
+    "缓慢等温": "Slow, isothermal",
+    "重物总质量": "Total falling mass",
+    "重物下降高度": "Drop height",
+    "完整下降所用时间": "Full descent time",
+    "能量模型与演示边界": "Energy models and limits",
+    "压缩用理想空气比热比1.4，500开尔文仅为点燃的示意阈值，忽略燃烧反馈。焦耳装置理想地把重物势能全部转为水与杯的内能，忽略轴承和发电机损耗。瓶中降压按理想绝热排气近似，气体量减少，雾滴只表示凝结趋势，未计潜热反馈。伦福德示例按恒定摩擦功率计能量，转动放慢显示，不是原始实验数据。": "Compression uses ideal air with heat-capacity ratio 1.4; 500 K is only an illustrative ignition trigger and combustion feedback is omitted. Joule apparatuses ideally transfer falling potential energy to water and cup, neglecting bearing and generator losses. Bottle depressurization is ideal adiabatic blowdown with decreasing gas amount; fog indicates condensation tendency without latent-heat feedback. Rumford’s example uses constant frictional power and slowed rotation, not original measurements.",
+    "快速压缩气体": "Compress the gas rapidly",
+    "来不及向外传热，外界做功使气体升温。": "With little time for heat loss, work raises gas temperature.",
+    "同样压缩，改变传热条件": "Compress with time for heat exchange",
+    "缓慢等温近似中，做功的能量传给环境。": "In the slow isothermal limit, work is transferred to the surroundings as heat.",
+    "重物下降带动叶片": "Falling weights drive the paddles",
+    "重力势能经搅拌转为水与容器的内能。": "Potential energy becomes internal energy through stirring.",
+    "换质量和高度，保持功相同": "Change mass and height, retain equal work",
+    "质量减半、落高加倍，最终温升相同。": "Half the mass and twice the drop give the same final rise.",
+    "把机械功先转为电功": "Convert mechanical work into electrical work",
+    "重物驱动发电机，闭合电路中的电阻丝加热水。": "The weight drives a generator and the closed heater circuit warms water.",
+    "电流与时间可以不同": "Current and duration may differ",
+    "较小电流持续更久，也能传入相同电能。": "A smaller current for longer can deliver equal electrical energy.",
+    "先准备湿润的压缩空气": "Prepare moist compressed air",
+    "少量水提供水汽，瓶中压强升高。": "A little water supplies vapor while pressure rises.",
+    "塞子跳出，瓶内起雾": "The stopper leaves and fog forms",
+    "快速降压使剩余气体降温，水汽可凝结成小滴。": "Rapid blowdown cools the remaining gas and can condense vapor.",
+    "炮筒加工持续生热": "Boring produces sustained heating",
+    "接触处摩擦把外界机械功转为内能。": "Contact friction converts supplied mechanical work into internal energy.",
+    "刀具变钝，仍然生热": "A blunt tool still produces heat",
+    "热量不只来自切下的碎屑，持续做功能持续供能。": "Heating is not limited to removed chips; continued work supplies energy."
+  },
+  "narration": {
+    "duration": 260,
+    "cues": [
+      {
+        "id": "compress-fast",
+        "title": "快速压缩气体",
+        "titleEn": "Compress the gas rapidly",
+        "caption": "来不及向外传热，外界做功使气体升温。",
+        "captionEn": "With little time for heat loss, work raises gas temperature.",
+        "zh": "迅速压下引火仪的活塞，气体体积减小。来不及向外传热时，外界做功主要增加气体内能，温度迅速升高，底部少量易燃物可能被点燃。这里升温的起因是压缩做功，不是从外部火焰传热。",
+        "en": "Push the fire-piston plunger rapidly. Gas volume decreases. With little time for heat to escape, work increases internal energy and temperature can become high enough to ignite the small material at the bottom. Compression, not an external flame, causes the initial heating.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "compress-slow",
+        "title": "同样压缩，改变传热条件",
+        "titleEn": "Compress with time for heat exchange",
+        "caption": "缓慢等温近似中，做功的能量传给环境。",
+        "captionEn": "In the slow isothermal limit, work is transferred to the surroundings as heat.",
+        "zh": "用相同的体积变化作缓慢压缩对照。若气体能充分与环境交换热量，温度就近似不变。外界仍然做了功，但这些能量传给环境，不能把所有压缩都看成同样的绝热升温。",
+        "en": "Compare the same volume change performed slowly. If the gas exchanges heat sufficiently with its surroundings, temperature stays nearly constant. Work is still done, but that energy leaves as heat. Not every compression produces the same adiabatic temperature rise.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "joule-paddles",
+        "title": "重物下降带动叶片",
+        "titleEn": "Falling weights drive the paddles",
+        "caption": "重力势能经搅拌转为水与容器的内能。",
+        "captionEn": "Potential energy becomes internal energy through stirring.",
+        "zh": "跟随两侧重物和连接绳：重物下降，带动中间轴与水中的叶片转动。流体中的运动逐渐耗散，水与杯升温。理想隔热时，减少的重力势能等于这套量热系统增加的内能。",
+        "en": "Follow the two weights and ropes. Their descent turns the central shaft and submerged paddles. Fluid motion dissipates and warms water and cup. In the ideal insulated model, lost gravitational potential energy equals the calorimeter’s internal-energy increase.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "joule-same-work",
+        "title": "换质量和高度，保持功相同",
+        "titleEn": "Change mass and height, retain equal work",
+        "caption": "质量减半、落高加倍，最终温升相同。",
+        "captionEn": "Half the mass and twice the drop give the same final rise.",
+        "zh": "把重物总质量减半，同时把下降高度加倍。运动路程改变了，但质量乘重力加速度再乘高度保持相同。最终温升也相同，显示状态变化取决于传入的功，而不是选用了哪一组质量和高度。",
+        "en": "Halve the total falling mass and double its descent. The motion changes, but mass times gravity times height stays equal. The same final temperature rise shows that the energy delivered matters, not the particular mass and height combination.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "joule-generator",
+        "title": "把机械功先转为电功",
+        "titleEn": "Convert mechanical work into electrical work",
+        "caption": "重物驱动发电机，闭合电路中的电阻丝加热水。",
+        "captionEn": "The weight drives a generator and the closed heater circuit warms water.",
+        "zh": "现在保留下降重物，但让它带动发电机。沿两根导线追踪闭合电路，电流通过浸在水里的电阻丝，把能量传入量热系统。理想情况下，同样的重力势能损失仍对应同样的最终温升。",
+        "en": "Keep the falling weight, but let it drive a generator. Trace the two wires through a closed circuit and the immersed resistor. Electrical work transfers energy to the calorimeter. Ideally, the same potential-energy loss gives the same final temperature rise.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "joule-current-time",
+        "title": "电流与时间可以不同",
+        "titleEn": "Current and duration may differ",
+        "caption": "较小电流持续更久，也能传入相同电能。",
+        "captionEn": "A smaller current for longer can deliver equal electrical energy.",
+        "zh": "让同一重物用更长时间下降。发电功率降低，电流也较小，但通电时间更长。比较电流平方乘电阻再乘时间，累计电能相同，最终温升仍相同；真实损耗会使实验偏离这个理想结果。",
+        "en": "Let the same weight descend more slowly. Generator power and current decrease, but current flows longer. Current squared times resistance times duration gives the same accumulated energy and final temperature rise. Real losses can cause departures from this ideal comparison.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      },
+      {
+        "id": "cloud-pressurize",
+        "title": "先准备湿润的压缩空气",
+        "titleEn": "Prepare moist compressed air",
+        "caption": "少量水提供水汽，瓶中压强升高。",
+        "captionEn": "A little water supplies vapor while pressure rises.",
+        "zh": "透明瓶中保留少量水，使空气含有水汽。通过带气门的塞子向瓶内打气，压强升高。这里把较慢准备阶段近似看作室温，随后观察短时间释放时会发生什么。",
+        "en": "Leave a little water in the transparent bottle to moisten its air. Pump through the valve in the stopper to raise pressure. The slower preparation stage is approximated at room temperature; next observe a rapid release.",
+        "seconds": 26,
+        "chapterAt": 156,
+        "at": 156
+      },
+      {
+        "id": "cloud-release",
+        "title": "塞子跳出，瓶内起雾",
+        "titleEn": "The stopper leaves and fog forms",
+        "caption": "快速降压使剩余气体降温，水汽可凝结成小滴。",
+        "captionEn": "Rapid blowdown cools the remaining gas and can condense vapor.",
+        "zh": "塞子跳出后，气体快速排出，剩余气体温度降低。较冷空气容纳的饱和水汽压更低，水汽可能凝结成细小液滴，形成白雾。瓶子已经是开口系统，不能还把气体质量当成不变。",
+        "en": "When the stopper leaves, gas escapes rapidly and the remaining gas cools. Saturation vapor pressure falls, allowing vapor to condense into fine droplets and form fog. The bottle is now an open system; its gas mass is not constant.",
+        "seconds": 26,
+        "chapterAt": 182,
+        "at": 182
+      },
+      {
+        "id": "rumford-contact",
+        "title": "炮筒加工持续生热",
+        "titleEn": "Boring produces sustained heating",
+        "caption": "接触处摩擦把外界机械功转为内能。",
+        "captionEn": "Contact friction converts supplied mechanical work into internal energy.",
+        "zh": "伦福德观察炮筒加工时，注意到摩擦能使周围的水明显升温。剖面中追踪固定刀具与转动炮筒的接触位置。持续输入的机械功在接触处转为内能，随后传给周围的金属与水。",
+        "en": "Rumford observed water warming during cannon boring. In the cutaway, track contact between the fixed tool and rotating barrel. Continuing mechanical work becomes internal energy at the contact, then spreads into surrounding metal and water.",
+        "seconds": 26,
+        "chapterAt": 208,
+        "at": 208
+      },
+      {
+        "id": "rumford-blunt",
+        "title": "刀具变钝，仍然生热",
+        "titleEn": "A blunt tool still produces heat",
+        "caption": "热量不只来自切下的碎屑，持续做功能持续供能。",
+        "captionEn": "Heating is not limited to removed chips; continued work supplies energy.",
+        "zh": "刀具变钝、切下的碎屑减少时，摩擦仍能不断生热。这个观察挑战了把热看作有限储存流质的解释。画面继续累计机械功，水达到沸点后，后续能量主要用于汽化，而不是无限升温。",
+        "en": "Even with a blunt tool producing fewer chips, friction continues heating. That challenged the idea of heat as a finite stored fluid. The model keeps accumulating mechanical work; after water reaches its boiling point, further energy mainly drives vaporization instead of unlimited temperature rise.",
+        "seconds": 26,
+        "chapterAt": 234,
+        "at": 234
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-compression-ignition": {
+      "chapterIds": ["compress-fast", "compress-slow"],
+      "label": {
+        "zh": "空气压缩引火仪",
+        "en": "Air-compression ignition"
+      }
+    },
+    "e3-joule-paddle-calorimeter": {
+      "chapterIds": ["joule-paddles", "joule-same-work"],
+      "label": {
+        "zh": "焦耳重物搅水实验",
+        "en": "Joule’s paddle calorimeter"
+      }
+    },
+    "e3-joule-electrical-calorimeter": {
+      "chapterIds": ["joule-generator", "joule-current-time"],
+      "label": {
+        "zh": "焦耳电热量热实验",
+        "en": "Joule’s electrical calorimeter"
+      }
+    },
+    "e3-expansion-cloud-bottle": {
+      "chapterIds": ["cloud-pressurize", "cloud-release"],
+      "label": {
+        "zh": "观察橡胶塞跳出时瓶内的变化",
+        "en": "Fog after a bottle stopper ejects"
+      }
+    },
+    "e3-rumford-boring": {
+      "chapterIds": ["rumford-contact", "rumford-blunt"],
+      "label": {
+        "zh": "伦福德炮筒镗孔实验",
+        "en": "Rumford’s cannon-boring experiment"
+      }
+    }
+  }
+}

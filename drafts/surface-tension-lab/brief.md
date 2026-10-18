@@ -1,0 +1,7 @@
+# Surface tension
+
+10chapters240s; contiguous variants glass0–1,soapthreads2–5,wetting6–7,needle8–9. Fourapparatuses,including BOTH textbooksoapthreadarrangements. Track submergedclipdisplacement (notfloatingclips), constantarc-lengththreadshape, fixedvolumecontactanglecaps, tissueplacement→needlesupport→submergedsinking. Threadlooparea growswhileouterfilmshrinks. Interfaceforcevectors appliedtangentqualitatively.
+
+Independentmodels: linearizedaxisymmetricpinnedbrim withBesselI0/I1 exactvolumeintegral and20degreeillustrativedepinning; constant230px chordthreadand80π loopperimeter; sphericalcap5uL; steelneedle2γLsinα=mg leadingorder thenfullysubmergedbuoyancyandlineardamping. DeclaredsimplificationsandnonuniformgraphicmagnificationinMDX/notes. Testsvolumeaccountingandrim,threadlengthinvariant,dropvolume,needlebuoyancyboundary. SourcesOpenStaxandMIT18.357.
+
+Authorcode/sourcechecks only; desktop/mobilekeyframes/fullplay, spokenlistening andrealphoneperformance not-run byworker. Integratorownsacceptance. No capillaryduplicate; existingcapillarysceneused separately.

@@ -1,0 +1,170 @@
+.rho-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #566e55;
+}
+.rho-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.6;
+  margin: 0 14px 6px;
+}
+.rho-apparatus {
+  display: block;
+  width: min(100%, 530px);
+  height: auto;
+  margin: auto;
+}
+.rho-apparatus text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #6f8462;
+}
+.rho-readout,
+.rho-comparison {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: 16px;
+  padding: 6px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.rho-readout b,
+.rho-comparison b {
+  font-size: 19px;
+  font-weight: 500;
+  color: #958051;
+  margin-left: 7px;
+}
+.rho-comparison strong {
+  font-size: 19px;
+  font-weight: 500;
+  color: #9a8152;
+}
+.rho-condition,
+.rho-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: #7d8d70;
+  margin: 10px 14px;
+}
+.rho-plot {
+  width: min(100%, 550px);
+  margin: 10px auto 0;
+}
+.rho-plot > span {
+  font-size: 16px;
+  margin-left: 12%;
+  color: #7b8c70;
+}
+.rho-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -10px;
+}
+.rho-plot text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #7e8d73;
+}
+.rho-plot-unit {
+  font-size: 16px;
+  text-align: right;
+  margin: -12px 12% 6px;
+  color: #7b8c70;
+}
+.rho-inference {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  padding: 10px 14px;
+}
+.rho-inference strong {
+  font-size: 21px;
+  font-weight: 500;
+  color: #9b8154;
+}
+.rho-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  margin: 22px 0;
+  background: #edf2e3;
+  border-radius: 24px;
+}
+.rho-controls button {
+  min-height: 44px;
+}
+.rho-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #7a8b6d;
+  margin: 0;
+}
+.rho-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.rho-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.rho-details p {
+  margin: 0 0 16px;
+  color: #738769;
+}
+@media (max-width: 480px) {
+  .rho-controls {
+    padding: 18px 14px;
+  }
+  .rho-apparatus text,
+  .rho-plot text {
+    font-size: 26px;
+  }
+  .rho-readout,
+  .rho-comparison {
+    gap: 6px 16px;
+  }
+  .rho-readout b,
+  .rho-comparison b,
+  .rho-comparison strong {
+    font-size: 18px;
+  }
+  .rho-inference strong {
+    font-size: 19px;
+  }
+  .rho-condition {
+    margin: 8px 12px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.rho-film[data-watch] > .rho-kicker,
+.rho-film[data-watch] > .rho-caption,
+.rho-film[data-watch] > details {
+  display: none;
+}
+.rho-film[data-watch][data-chapter='5'] .rho-plot,
+.rho-film[data-watch][data-chapter='6'] .rho-plot {
+  display: none;
+}
+.rho-film[data-watch] .rho-inference {
+  margin: 5px 12px;
+  padding: 5px 0;
+  gap: 5px;
+}
+.rho-film[data-watch] .rho-note {
+  margin: 5px 12px;
+  line-height: 1.4;
+}
+.rho-film[data-watch] .rho-inference > span:last-child {
+  display: none;
+}

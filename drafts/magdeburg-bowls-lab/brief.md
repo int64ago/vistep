@@ -1,0 +1,3 @@
+# Magdeburg steel bowls
+
+4chapters104s. e3-magdeburg-bowls. Actualtwohemisphericalbowlswithrimseal,externalhooksandopposingropes; heatedopen→sealedcooling→fivepersons'equalpulls→airentry/pressureequalization. IdealtextbookconstantnV p/T law,projectedπr² force; checksingle-sidepullnotdoubling. Default149.5C→15C gives~1000Nfor20cmdiameter,100kPaambient. Openingquickequalizationillustrative,notfluidtransientsorcombustionchemistry. Threeunitchecks: equaltemperature/ventboundary, inverse1000N/5peoplebenchmark,r²scalingandimpossibleinverse. Bilingualarticles/labels/sourceconditionscomplete. Browserkeyframes/fullplay,phonefit,listening,realdevice not-run byworker; integratorownsacceptance.

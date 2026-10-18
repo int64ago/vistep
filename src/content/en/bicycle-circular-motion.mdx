@@ -1,0 +1,40 @@
+---
+name: Circular motion on a bicycle
+title: 'Which is faster: the large sprocket or the small one?'
+---
+
+<section id="understand">
+
+PEP Required Book 2 §6.1 (pages 23–24) raises a bicycle’s rear wheel and turns the pedals to compare sprocket rims and different radii on one wheel. First specify whether “faster” means linear or angular speed.
+
+Both sprockets transport the same chain length. In a continuous pitch-circle approximation, peripheral speeds match while angular speeds vary inversely with radius. Points on one rigid wheel share angular speed, with linear speed v = ωr increasing with radius.
+
+</section>
+<section id="try">
+
+Follow the gold link around the entire closed loop. One revolution of the 40-tooth front sprocket passes 40 pitches, requiring two turns of the 20-tooth rear sprocket. Change rear tooth count and compare angular speed with chain transport.
+
+Then compare a rear-wheel rim point with a halfway point. Equal angles give twice the arc travel at the rim. The wheel is raised: rotation does not imply bicycle translation.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Loop closure and engagement</summary>
+
+The renderer reuses validated roller-chain geometry at 12.7 mm pitch. Wrap angles, common tangents, even integer link count and axle spacing are solved together. Both sprocket seat phases derive from one chain phase. The rear sprocket and wheel are coaxial, with the freewheel assumed engaged during driven pedalling.
+
+</details>
+
+<details>
+
+<summary>Continuous approximation and polygonal action</summary>
+
+Real roller chains wrap polygonally, producing small cyclic instantaneous-speed variation. Readings use mean transport per revolution: vchain = Np·n and effective radius reff = Np/(2π), so vchain = ωreff. Drawn roller-seat radius is p/[2sin(π/N)], slightly different from the continuous effective radius.
+
+This explicitly average-speed interpretation does not claim perfectly constant instantaneous motion of discrete links. Rim and half-radius points on a rigid rear wheel directly satisfy v = ωr. Chain elasticity, efficiency, coasting freewheel operation and bearing resistance are omitted.
+
+</details>
+
+</section>

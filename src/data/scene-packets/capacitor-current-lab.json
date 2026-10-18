@@ -1,0 +1,141 @@
+{
+  "topic": {
+    "slug": "capacitor-current-lab",
+    "name": "从电流面积测电荷",
+    "title": "一条下降的电流曲线，怎样告诉我们放出了多少电？",
+    "question": "一条下降的电流曲线，怎样告诉我们放出了多少电？",
+    "description": "观察电容放电的 I–t 曲线，从面积求电荷，再用相同空电容器逐次分电作对照。",
+    "color": "#a9bea4",
+    "tag": "电流积分 · 电荷守恒",
+    "related": ["rc-circuit", "parallel-plate-capacitor-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — RC Circuits",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits"
+      },
+      {
+        "title": "OpenStax — Energy Stored in a Capacitor",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["从电流面积测电荷", "电流传感器", "电容放电", "电流时间曲线", "电荷分配"],
+      "en": [
+        "Charge from Current Area",
+        "current sensor",
+        "capacitor discharge",
+        "current time area",
+        "charge sharing"
+      ]
+    }
+  },
+  "component": "src/components/experiments/CapacitorCurrentLab.tsx",
+  "cover": "src/components/covers/CapacitorCurrentLabCover.astro",
+  "translations": {
+    "已充电的电容器经过开关、电流传感器与电阻放电": "A charged capacitor discharges through a switch, current sensor and resistor",
+    "传感器电流": "Sensor current",
+    "电流随时间下降的曲线，阴影面积等于释放的电荷": "A declining current-time curve; shaded area represents released charge",
+    "曲线下面积": "Area under the curve",
+    "仍留在电容器中": "Still in the capacitor",
+    "两个相同电容器通过开关并联分电，第二次换入新的空电容器": "Identical capacitors share charge through a switch; the second round uses a new empty capacitor",
+    "开关闭合，电荷重新分配": "Switch closed: charge redistributes",
+    "开关断开，各自保留电荷": "Switch open: each retains its charge",
+    "上一只 B 已移走": "The previous B has been removed",
+    "这次接入新的空电容器 C": "A new empty capacitor C is connected this time",
+    "每一小条电流面积，都是流过的一小份电荷": "Each small area represents a small transferred charge",
+    "开关闭合后，跟踪同一次放电": "Follow one discharge after the switch closes",
+    "把同一只电容器，依次接到新的空电容器上": "Connect the same capacitor to successive empty capacitors",
+    "有限时间后仍有电荷留下；曲线尾部继续趋近零。": "Some charge remains at finite time; the tail continues toward zero.",
+    "两个电容器相同；电荷守恒，但电场能不守恒。": "The capacitors are identical: charge is conserved, field energy is not.",
+    "选择电容测量实验": "Choose a capacitor measurement",
+    "电流与面积": "Current and area",
+    "依次分电": "Successive sharing",
+    "放电时间": "Discharge time",
+    "电容": "Capacitance",
+    "放电电阻": "Discharge resistance",
+    "显示电流积分面积": "Show integrated-current area",
+    "分电轮次": "Sharing round",
+    "第一次：A 接 B": "First: A connects to B",
+    "第二次：A 接 C": "Second: A connects to C",
+    "闭合 → 平衡 → 断开": "Close → equilibrate → open",
+    "传感器、积分和分电的条件": "Sensor, integration and sharing conditions",
+    "放电采用理想 RC 指数模型，传感器内阻忽略。面积用每 0.05 秒采样的梯形积分计算，并与 CΔU 独立对照。分电使用相同电容器和微小连接电阻，最后电压相同；少掉的电场能转为连接过程中的热等能量。色带与示数是模型辅助，忽略漏电、介质吸收和仪器误差。": "Discharge follows an ideal RC exponential, neglecting sensor resistance. Trapezoidal integration uses 0.05-second samples and is independently checked against CΔU. Sharing uses identical capacitors and a small connection resistance until voltages match; lost field energy becomes heat and other transferred energy. The strip and readings are model aids. Leakage, dielectric absorption and instrument errors are omitted.",
+    "从电流面积测电荷": "Charge from Current Area",
+    "一条下降的电流曲线，怎样告诉我们放出了多少电？": "How does a declining current curve reveal released charge?",
+    "观察电容放电的 I–t 曲线，从面积求电荷，再用相同空电容器逐次分电作对照。": "Record a capacitor’s I–t discharge, find charge from area, and compare successive sharing with identical empty capacitors.",
+    "电流积分 · 电荷守恒": "Current integration · Charge conservation"
+  },
+  "narration": {
+    "duration": 96,
+    "cues": [
+      {
+        "id": "sensor-discharge",
+        "title": "记录同一次放电",
+        "titleEn": "Record one discharge",
+        "caption": "电流逐渐减小，电容器两端电压同时降低。",
+        "captionEn": "Current declines as the capacitor voltage falls.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "看已经充电的电容器。开关闭合，电荷经过传感器和电阻流动，传感器留下电流随时间变化的曲线。开始时电压较高，电流较大。随着电荷减少，电压降低，电流也逐渐变小。曲线尾部趋近零，但有限时间后仍有少量电荷留下。",
+        "en": "Watch the charged capacitor. When the switch closes, charge passes through the sensor and resistor, producing a current-time record. Initial voltage and current are high. As charge decreases, voltage falls and current declines. The tail approaches zero, but some charge remains at every finite time."
+      },
+      {
+        "id": "integrate-current",
+        "title": "把面积加起来",
+        "titleEn": "Add the area",
+        "caption": "曲线下面积给出已释放电荷，剩余部分仍在电容器中。",
+        "captionEn": "The area gives released charge; the rest remains in the capacitor.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "重新看同一次放电，这次关注曲线下面的阴影。一个很短的时间内，电流乘以时间就是流过的电荷。把所有小面积相加，得到已经放出的电荷量。下面同时保留剩余电荷的读数，两部分合起来，才是开始时储存的总量。",
+        "en": "Replay the discharge and watch the shaded area. Over a short interval, current times time gives transferred charge. Adding the small areas gives the charge already released. The remaining-charge reading stays visible too. Released and remaining portions together make the initial total."
+      },
+      {
+        "id": "share-first",
+        "title": "接到相同的空电容器",
+        "titleEn": "Connect an identical empty capacitor",
+        "caption": "达到共同电压后，电荷与电压都各减半。",
+        "captionEn": "At a common voltage, each has half the original charge and voltage.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "换一种方法观察电荷与电压。A 原先带电，B 是相同的空电容器。闭合连接开关，电荷重新分配，直到两端电压相同。再断开连接，A 和 B 各得到一半电荷，电压也都是原来的一半。电荷守恒，但连接过程中会损失一部分电场能。",
+        "en": "Now compare charge and voltage another way. A is charged and B is an identical empty capacitor. Close the switch and charge redistributes until their voltages match. Disconnect them: each retains half the original charge and half the voltage. Charge is conserved, but some field energy is lost during connection."
+      },
+      {
+        "id": "share-again",
+        "title": "再换一只新的空电容器",
+        "titleEn": "Use another empty capacitor",
+        "caption": "B 保留自己的电荷，A 接到新 C 后再次减半。",
+        "captionEn": "B retains its share; connecting A to a new C halves A again.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72.4,
+        "zh": "把上一只 B 移走，它仍然保留自己的电荷。现在拿来一只新的空电容器 C，接到同一只 A 上。达到共同电压后再断开，A 的电荷与电压又减半。关键是每次接入的电容器都相同，而且原先没有充电，不能把已经带电的 B 当作新的空电容器。",
+        "en": "Remove the previous B; it still holds its share. Bring in a new empty capacitor C and connect it to the same A. After they reach a common voltage, disconnect them. A’s charge and voltage halve again. Each receiving capacitor must be identical and initially uncharged; the already charged B is not a fresh empty capacitor."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-capacitor-current-sensor": {
+      "chapterIds": ["sensor-discharge", "integrate-current"],
+      "label": {
+        "zh": "用传感器观察电容器的放电过程",
+        "en": "Observe capacitor discharge with a sensor"
+      }
+    },
+    "r3-capacitor-charge-sharing": {
+      "chapterIds": ["share-first", "share-again"],
+      "label": {
+        "zh": "电容器电势差与电荷量的关系",
+        "en": "Relate capacitor voltage to charge"
+      }
+    }
+  }
+}

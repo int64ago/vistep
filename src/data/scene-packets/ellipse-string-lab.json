@@ -1,0 +1,114 @@
+{
+  "topic": {
+    "slug": "ellipse-string-lab",
+    "name": "细绳绘制椭圆",
+    "title": "为什么拉紧一根绳，就能画出椭圆？",
+    "question": "为什么拉紧一根绳，就能画出椭圆？",
+    "description": "两枚图钉、一根不可伸长的细绳和一支铅笔，观察距离和不变与焦点靠近时的形状变化。",
+    "color": "#c7bea1",
+    "tag": "几何约束 · 焦点 · 恒定绳长",
+    "related": ["kepler-orbits", "orbital-transfer"],
+    "sources": [
+      {
+        "title": "OpenStax — The Ellipse",
+        "url": "https://openstax.org/books/precalculus-2e/pages/10-1-the-ellipse"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "math-systems",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["细绳绘制椭圆", "椭圆焦点", "细绳作图", "开普勒轨道"],
+      "en": [
+        "Drawing an ellipse with string",
+        "ellipse foci",
+        "string construction",
+        "Kepler orbit"
+      ]
+    }
+  },
+  "component": "src/components/experiments/EllipseStringLab.tsx",
+  "cover": "src/components/covers/EllipseStringLabCover.astro",
+  "translations": {
+    "细绳绘制椭圆": "Drawing an ellipse with string",
+    "为什么拉紧一根绳，就能画出椭圆？": "Why does a taut thread trace an ellipse?",
+    "两枚图钉、一根不可伸长的细绳和一支铅笔，观察距离和不变与焦点靠近时的形状变化。": "Two pins, an inextensible thread and a pencil reveal a constant distance sum and how approaching foci reshape the curve.",
+    "几何约束 · 焦点 · 恒定绳长": "Geometry · Foci · Fixed thread length",
+    "绳长不变，让两个焦点靠近": "Keep thread length fixed and bring the foci closer",
+    "用同一根绳，留下一条椭圆": "One thread traces an ellipse",
+    "两端分别系在图钉上，铅笔始终绷紧细绳": "Pin the two ends separately and keep the thread taut",
+    "木板上的两枚图钉系住细绳两端，铅笔撑紧细绳并画出椭圆": "Two pins hold the thread ends on a board; a pencil keeps it taut and traces an ellipse",
+    "第一段": "First segment",
+    "第二段": "Second segment",
+    "绳长": "String length",
+    "焦点重合，椭圆成为圆；半长轴就是圆半径。": "Coincident foci give a circle; the semimajor axis becomes its radius.",
+    "焦点靠近，短轴变长；长轴始终等于绳长。": "Closer foci increase the minor axis; the major axis stays equal to thread length.",
+    "两段长度此消彼长，总和始终不变。": "One segment lengthens as the other shortens; their sum stays fixed.",
+    "两焦点间距": "Distance between foci",
+    "绘制进度": "Drawing progress",
+    "铅笔和图钉按点处理，细绳不可伸长。绘图速度不代表行星沿轨道运行的速度。": "Pins and pencil are ideal points and the thread does not stretch. Drawing speed does not represent planetary orbital speed."
+  },
+  "narration": {
+    "duration": 113,
+    "cues": [
+      {
+        "id": "pins",
+        "title": "把细绳的两端固定",
+        "titleEn": "Fix the two thread ends",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "绳长必须大于两个图钉的距离。",
+        "captionEn": "Thread length must exceed pin separation.",
+        "zh": "把白纸铺在木板上，按上两枚图钉，再把同一根细绳的两端分别系在图钉上。铅笔顶住绳子，使它始终张紧。注意这里的细绳只有从第一个图钉到笔尖、再到第二个图钉的两段，没有沿两图钉之间再绕一段。绳长要大于图钉间距，笔尖才能围出一条闭合曲线。",
+        "en": "Place paper on a board and attach the two ends of one thread to two pins. Push a pencil against the thread to keep it taut. The thread runs from the first pin to the pencil and then to the second pin; no extra segment joins the pins. Its length must exceed their separation so the pencil can trace a closed curve."
+      },
+      {
+        "id": "sum",
+        "title": "两段长度相加",
+        "titleEn": "Add the two segment lengths",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "一段变长，另一段相应变短。",
+        "captionEn": "As one segment grows, the other shortens.",
+        "zh": "移动铅笔，观察两段绳长。靠近一个图钉时，这一段变短，另一段就变长。画面下方把两段长度接成同一条长度带，它们的总和始终等于细绳长度。正是这个约束决定笔尖能到哪些位置。两枚图钉的位置叫作焦点，椭圆的中心则在两个焦点的中点。",
+        "en": "Move the pencil and watch both thread segments. Approaching one pin shortens that segment while lengthening the other. The length ribbon joins both contributions, keeping their sum equal to the thread length. This constraint determines every reachable pencil position. The pins are the foci; the center lies halfway between them."
+      },
+      {
+        "id": "trace",
+        "title": "留下完整轨迹",
+        "titleEn": "Trace the complete curve",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3,
+        "caption": "到两焦点距离之和不变，形成椭圆。",
+        "captionEn": "A constant sum of distances to two foci traces an ellipse.",
+        "zh": "让铅笔绕着两个图钉走完一周，始终保持细绳张紧。每一个留下的点都满足同样的距离和条件，因此形成椭圆。经过长轴端点时，两段绳长相加正好等于长轴长度。所以绳长的一半就是半长轴。这个作图帮助理解教材中的椭圆形状，但没有给出天体运行的动力学。",
+        "en": "Guide the pencil once around both pins without letting the thread slacken. Every drawn point has the same sum of distances to the foci, producing an ellipse. At a major-axis endpoint, the two segments sum to the full major-axis length. Half the thread length is therefore the semimajor axis. This construction explains the geometry, without supplying planetary dynamics."
+      },
+      {
+        "id": "circle",
+        "title": "让焦点逐渐靠近",
+        "titleEn": "Bring the foci together",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3,
+        "caption": "保持绳长，焦点重合时得到圆。",
+        "captionEn": "With fixed thread length, coincident foci give a circle.",
+        "zh": "现在仍用同样长的绳，把两个图钉逐渐向中心移近。长轴没有改变，短轴却逐渐变长，椭圆越来越圆。最后两个焦点重合，两段绳都从同一个位置到达笔尖，长度相同，各占总绳长的一半。此时半长轴成为圆的半径。自由探索可以改变焦点距离，检查每种形状是否仍满足同一个距离和。",
+        "en": "Keep the same thread and move the pins toward the center. The major axis stays fixed while the minor axis grows, making the curve rounder. When both foci coincide, the two segments run from the same point to the pencil and have equal length. Each is half the total thread, and the semimajor axis becomes the circle radius. Explore other separations and check the same distance sum."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-draw-ellipse": {
+      "chapterIds": ["pins", "sum", "trace", "circle"],
+      "label": {
+        "zh": "绘制椭圆",
+        "en": "Draw an ellipse"
+      }
+    }
+  }
+}

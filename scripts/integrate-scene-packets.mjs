@@ -19,6 +19,8 @@ const paths = {
   translations: 'src/i18n/en.json',
   narration: 'src/data/narration.json',
   discovery: 'src/data/discovery-metadata.ts',
+  variants: 'src/data/curriculum-variants.json',
+  timeline: 'src/data/film-timeline.json',
 };
 const source = Object.fromEntries(
   await Promise.all(
@@ -34,6 +36,8 @@ const categoryIds = new Set(
 );
 const translations = JSON.parse(source.translations),
   narration = JSON.parse(source.narration);
+const variants = JSON.parse(source.variants);
+const timeline = JSON.parse(source.timeline);
 const available = new Set([...Object.keys(narration), ...slugs]);
 let nextNumber =
   Math.max(
@@ -126,6 +130,16 @@ for (const slug of slugs) {
   if (!packet.translations || typeof packet.translations !== 'object')
     throw new Error(`${slug}: missing translations.`);
   const words = { ...packet.translations };
+  for (const [id, variant] of Object.entries(packet.curriculumVariants ?? {})) {
+    const indices = variant.chapterIds?.map((chapterId) =>
+      film.cues.findIndex((cue) => cue.id === chapterId),
+    );
+    if (!indices?.length || indices.some((n, i) => n < 0 || (i && n !== indices[i - 1] + 1)))
+      throw new Error(`${slug}/${id}: curriculum chapters must exist in consecutive order.`);
+    if (variants[id] && variants[id].sceneSlug !== slug)
+      throw new Error(`${id}: a different scene already owns this textbook entry.`);
+    variants[id] = { sceneSlug: slug, chapterIds: variant.chapterIds, label: variant.label };
+  }
   if (new Set(film.cues.map((cue) => cue.id)).size !== film.cues.length)
     throw new Error(`${slug}: duplicate chapter identity.`);
   film.cues.forEach((cue, i) => {
@@ -184,6 +198,19 @@ for (const slug of slugs) {
   if (end < 0) throw new Error('Could not find the cover viewport.');
   source.cover = source.cover.slice(0, end) + newCover + '\n' + source.cover.slice(end);
   narration[slug] = film;
+  // Planned windows allow visual direction before voices are frozen. Synthesis replaces them
+  // with the measured bilingual windows; audio-contract checks still require real recordings.
+  timeline[slug] = {
+    duration: film.duration,
+    chapters: film.cues.map((cue) => ({
+      id: cue.id,
+      title: cue.title,
+      titleEn: cue.titleEn,
+      caption: cue.caption,
+      captionEn: cue.captionEn,
+      at: cue.chapterAt,
+    })),
+  };
   source.discovery = prepend(
     source.discovery,
     'export const discoveryMetadata: Record<string, DiscoveryMetadata> = {\n',
@@ -195,6 +222,8 @@ if (checks.length)
   throw new Error('Resolve translation conflicts before integration:\n' + checks.join('\n'));
 source.translations = JSON.stringify(translations, null, 2) + '\n';
 source.narration = JSON.stringify(narration, null, 2) + '\n';
+source.variants = JSON.stringify(variants, null, 2) + '\n';
+source.timeline = JSON.stringify(timeline, null, 2) + '\n';
 console.log(additions.join('\n'));
 if (!apply) {
   console.log('Validation only; no shared files changed.');

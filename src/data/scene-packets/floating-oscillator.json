@@ -1,0 +1,114 @@
+{
+  "topic": {
+    "slug": "floating-oscillator",
+    "name": "浮筷的上下振动",
+    "title": "一根浮在水中的木筷，为什么会来回振动？",
+    "question": "一根浮在水中的木筷，为什么会来回振动？",
+    "description": "从浸入长度计算浮力，比较小振动、阻力衰减与完全浸没的边界。",
+    "color": "#b7cdbd",
+    "tag": "浮力 · 回复力 · 振动",
+    "related": ["buoyancy", "spring-oscillation-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Archimedes’ Principle and Buoyancy",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["浮筷的上下振动", "浮力", "回复力", "简谐运动"],
+      "en": ["A Floating Chopstick Oscillator", "buoyancy", "restoring force", "harmonic motion"]
+    }
+  },
+  "component": "src/components/experiments/FloatingOscillator.tsx",
+  "cover": "src/components/covers/FloatingOscillatorCover.astro",
+  "translations": {
+    "浮筷的上下振动": "A Floating Chopstick Oscillator",
+    "一根浮在水中的木筷，为什么会来回振动？": "Why does a floating chopstick oscillate?",
+    "从浸入长度计算浮力，比较小振动、阻力衰减与完全浸没的边界。": "Calculate buoyancy from immersion and compare small oscillations, damping and complete submersion.",
+    "浮力 · 回复力 · 振动": "Buoyancy · Restoring force · Oscillation",
+    "下端绕铁丝的均匀木筷，提起后在水中上下振动": "Lift a uniform wooden rod with iron ballast and observe its vertical oscillation",
+    "水面切过等截面木筷时，浸入长度的变化给出线性回复力": "While the waterline cuts a uniform section, changing immersion gives a linear restoring force",
+    "加入阻力后振幅逐渐减小，不能把真实运动永远画成等振幅": "Damping reduces the amplitude; real oscillations need not remain constant",
+    "整根木筷浸没后，排水体积不再随位移增加，线性关系失效": "Once the rod is submerged, displaced volume stops increasing and linearity fails",
+    "比较木筷的位置、排水体积和合力": "Compare rod position, displaced volume and net force",
+    "带铁丝配重的木筷在水杯中竖直浮动，水面与浸入长度共同确定浮力": "An iron-weighted chopstick floats vertically; waterline and immersion determine buoyancy",
+    "木筷直径与铁丝已放大": "Rod and wire thickness enlarged",
+    "回复力位移关系在部分浸没区为直线，完全浸没后变平": "Restoring force is linear during partial immersion and plateaus after full submersion",
+    "水面仍切过木筷：浮力变化量与位移成正比": "The waterline cuts the rod: buoyancy change is proportional to displacement",
+    "木筷已完全浸没：浮力达到平台，不能继续使用 −kx": "The rod is submerged: buoyancy plateaus and −kx no longer applies",
+    "观察内容": "Observation",
+    "只看运动": "Motion only",
+    "比较受力": "Compare forces",
+    "向上提起的距离": "Initial upward lift",
+    "线性阻力系数": "Linear damping coefficient",
+    "模型时间": "Model time",
+    "浮力模型与边界": "Buoyancy model and limits",
+    "木筷长 24 cm、半径 3 mm、密度 500 kg/m³，下端铁丝质量 1 g。铁丝保持浸没并计入排水体积。只计算竖直运动，忽略液体附加质量、涟漪和转动；配重稳定性作为装置条件。阻力取线性教学近似。完全浸没时按有限体积截断浮力，杯底始终未接触。": "The rod is 24 cm long, with radius 3 mm and density 500 kg/m³; the iron ballast is 1 g. Submerged iron volume contributes to buoyancy. Motion is vertical, omitting fluid added mass, ripples and rotation; upright stability is an apparatus condition. Drag is a linear teaching approximation. Buoyancy is capped at full volume and the rod never touches the glass bottom."
+  },
+  "narration": {
+    "duration": 92,
+    "cues": [
+      {
+        "id": "lift-release",
+        "title": "提起后释放",
+        "titleEn": "Lift and release",
+        "caption": "提起后释放。",
+        "captionEn": "Lift and release.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "在均匀木筷的下端绕上铁丝，让它竖直浮在水中。向上提起一小段后释放，木筷开始上下振动。先只观察位置：高于平衡位置时，它会加速向下；低于平衡位置时，又会加速向上。接下来要用排水体积解释这种回复趋势。",
+        "en": "Wind iron wire around the lower end of a uniform wooden rod and float it upright. Lift it slightly and release. Above equilibrium it accelerates down; below equilibrium it accelerates up. First observe the motion, then explain this restoring tendency through displaced water."
+      },
+      {
+        "id": "immersion-restoring",
+        "title": "浸入长度与回复力",
+        "titleEn": "Immersion and restoring force",
+        "caption": "浸入长度与回复力。",
+        "captionEn": "Immersion and restoring force.",
+        "seconds": 24,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "木筷向上移动时，浸入长度变短，排水体积减少，浮力小于重力。向下移动时则相反。只要水面仍切过均匀的横截面，浮力的变化与位移成正比、方向相反。平衡位置的浮力已经抵消重力，所以这个变化量正是静水回复力。",
+        "en": "Upward motion reduces immersion and displaced volume, making buoyancy smaller than weight. Downward motion does the reverse. While the waterline cuts the uniform cross section, buoyancy changes proportionally and oppositely to displacement. Equilibrium buoyancy already cancels weight, leaving this change as the hydrostatic restoring force."
+      },
+      {
+        "id": "damping",
+        "title": "阻力与衰减",
+        "titleEn": "Damping and decay",
+        "caption": "阻力与衰减。",
+        "captionEn": "Damping and decay.",
+        "seconds": 22,
+        "chapterAt": 46,
+        "at": 46.4,
+        "zh": "真实水中运动会损失机械能。加入线性阻力后，木筷仍然来回运动，但每次到达的最高点和最低点越来越靠近平衡位置。图中的曲线只表示浮力减重力；合力读数还包含阻力。这个近似用来解释衰减，不模拟水花和复杂涡流。",
+        "en": "Motion in water loses mechanical energy. With linear drag, the rod continues oscillating but its extrema approach equilibrium. The graph shows buoyancy minus weight, while the net-force reading also includes drag. This approximation explains decay without simulating splashes or complex vortices."
+      },
+      {
+        "id": "submerged-boundary",
+        "title": "完全浸没的边界",
+        "titleEn": "The submersion boundary",
+        "caption": "完全浸没的边界。",
+        "captionEn": "The submersion boundary.",
+        "seconds": 24,
+        "chapterAt": 68,
+        "at": 68.4,
+        "zh": "增大初始提起距离，让木筷在向下运动时完全浸没。此时排水体积已经达到整根木筷的体积，再往下移动也不会继续增加。回复力图像变成平台，不能继续套用负的劲度系数乘位移。这个反例说明，简谐近似需要水面始终切过木筷的均匀截面。",
+        "en": "Increase the initial lift until the downward motion fully submerges the rod. Displaced volume then equals the entire rod volume and cannot increase with further depth. The restoring-force graph becomes flat, so a linear negative stiffness-times-displacement law fails. Harmonic behaviour requires the waterline to keep cutting the uniform rod section."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-floating-chopstick": {
+      "chapterIds": ["lift-release", "immersion-restoring", "damping", "submerged-boundary"],
+      "label": {
+        "zh": "观察浮筷的上下振动",
+        "en": "Observe a floating chopstick oscillating vertically"
+      }
+    }
+  }
+}

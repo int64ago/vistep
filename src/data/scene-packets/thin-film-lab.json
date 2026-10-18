@@ -1,0 +1,120 @@
+{
+  "topic": {
+    "slug": "thin-film-lab",
+    "name": "膜厚写出的明暗",
+    "title": "肥皂膜与劈尖的条纹为什么移动？",
+    "question": "肥皂膜与劈尖的条纹为什么移动？",
+    "description": "保留黄光灯、肥皂膜和纸片劈尖，计算反射相位与条纹。",
+    "color": "#aebfa8",
+    "tag": "波动光学",
+    "related": ["thin-film-interference", "double-slit"],
+    "sources": [
+      {
+        "title": "OpenStax — Interference in thin films",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films"
+      }
+    ]
+  },
+  "component": "src/components/experiments/ThinFilmLab.tsx",
+  "cover": "src/components/covers/ThinFilmLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["膜厚写出的明暗", "肥皂膜与劈尖的条纹为什么移动？", "教材光学实验"],
+      "en": [
+        "Brightness written by film thickness",
+        "Why do soap-film and wedge fringes move?",
+        "textbook optics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "膜厚写出的明暗": "Brightness written by film thickness",
+    "肥皂膜与劈尖的条纹为什么移动？": "Why do soap-film and wedge fringes move?",
+    "保留黄光灯、肥皂膜和纸片劈尖，计算反射相位与条纹。": "Follow reflected phase through a yellow-lit soap film and a paper-spaced air wedge.",
+    "近代物理": "Modern physics",
+    "波动光学": "Wave optics"
+  },
+  "narration": {
+    "duration": 140,
+    "cues": [
+      {
+        "id": "soap-yellow",
+        "title": "先用黄光看膜的反射像",
+        "titleEn": "Start with yellow reflected light",
+        "caption": "同一膜上的不同厚度，对同一波长给出不同明暗。",
+        "captionEn": "Different thicknesses produce different brightness for the same wavelength.",
+        "zh": "教材先在酒精灯灯芯撒盐，用黄色火焰照明，把肥皂膜当作镜面观察反射像。膜前后两面反射的光会叠加，因此同一片膜上出现明暗条纹。画面把正视反射像展开；左侧灯和铁丝圈表示装置关系，并不是严格的成像透视图。下方比较两束反射光的相位。",
+        "en": "The textbook starts with a salt-yellowed alcohol flame reflected by a soap film. Light reflected from both film surfaces interferes, producing bright and dark bands. The front-facing film display unfolds the reflected view; the lamp and wire loop identify the apparatus rather than a perspective image. Below, compare the reflected phases.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "soap-drain",
+        "title": "膜变薄，条纹会移动",
+        "titleEn": "Thinning moves the fringes",
+        "caption": "位置改变的是等光程差的厚度轮廓。",
+        "captionEn": "Contours of equal optical path difference move as thickness changes.",
+        "zh": "重力排液会让竖直肥皂膜的厚度随高度和时间变化。页面改变一个简化的厚度分布，看同一明条纹移到新的位置。前表面反射还会发生半周相位变化，所以膜厚趋近零时反射变暗。厚度的变化是教学输入，不是完整求解肥皂液流动；真实膜还会受表面活性剂和空气扰动影响。",
+        "en": "Drainage changes a vertical soap film’s thickness with height and time. Vary a prescribed thickness profile and watch equal-phase contours move. The front reflection adds a half-cycle shift, making a nearly zero-thickness film dark. Thickness evolution is a teaching input, not a fluid simulation including surfactants and air disturbances.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "soap-white",
+        "title": "换成白光，比较不同波长",
+        "titleEn": "Compare wavelengths in white light",
+        "caption": "不同波长的明条纹不在同一位置。",
+        "captionEn": "Different wavelengths brighten at different positions.",
+        "zh": "换成白光后，不同波长在同一厚度处有不同的相位差。某些颜色增强，另一些颜色减弱，于是出现彩色条纹。画面只用红绿蓝三个采样波长近似显示颜色，不把这些颜色当作真实光谱测量。自由探索中可以回到单色光，改变波长并追踪条纹的位置。",
+        "en": "Under white illumination, different wavelengths have different phase differences at the same thickness. Some strengthen while others weaken, producing color. Three sampled wavelengths provide an illustrative display, not a measured spectrum or calibrated color prediction. Exploration returns to monochromatic light so you can move the fringes by changing wavelength.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "wedge-two",
+        "title": "用两张纸片支起空气劈尖",
+        "titleEn": "Support an air wedge with two sheets",
+        "caption": "等厚度位置形成平行条纹，接触端为暗纹。",
+        "captionEn": "Equal-thickness contours form parallel bands; the contact is dark.",
+        "zh": "两块平玻璃一端接触，另一端夹入两张相同纸片，形成线性变厚的空气层。来自空气层上下边界的反射光叠加，接触端出现暗纹。侧视图把夹角放大，上方只展开靠近接触端的前四毫米，这样能看清条纹；它不是整块玻璃上的条纹总数。",
+        "en": "Two glass plates touch at one end and are separated by two identical paper sheets at the other. Reflection from the air-gap boundaries forms parallel fringes, with a dark contact. The side-view angle is enlarged. Above, only the first four millimeters near contact are shown, not all fringes across the entire plate.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "wedge-one",
+        "title": "抽掉一张，条纹间距加倍",
+        "titleEn": "Remove one sheet to double fringe spacing",
+        "caption": "空气层厚度斜率减半，同一厚度差需要两倍距离。",
+        "captionEn": "Half the thickness gradient requires twice the distance for the same thickness change.",
+        "zh": "抽去一张纸片后，支撑厚度减半，玻璃长度不变。相邻同类条纹对应的厚度差仍然是半个空气中波长，因此水平间距加倍。模型只比较支撑后的静态状态，过渡表示上板落到新的位置，不计算纸片抽动和玻璃弹性。改变支撑不会把波长也改变。",
+        "en": "After removing one sheet, support thickness halves while plate length remains fixed. Neighboring like fringes still differ in thickness by half a wavelength in air, so their horizontal spacing doubles. The model compares static supported states; the transition indicates settling, not paper friction or glass elasticity. Wavelength does not change.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-soap-film-interference": {
+      "chapterIds": ["soap-yellow", "soap-drain", "soap-white"],
+      "label": {
+        "zh": "肥皂膜干涉",
+        "en": "Soap-film interference"
+      }
+    },
+    "e1-wedge-interference": {
+      "chapterIds": ["wedge-two", "wedge-one"],
+      "label": {
+        "zh": "空气劈尖",
+        "en": "Air-wedge interference"
+      }
+    }
+  }
+}

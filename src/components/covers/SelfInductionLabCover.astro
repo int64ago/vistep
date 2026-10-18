@@ -1,0 +1,26 @@
+---
+const coil = Array.from({ length: 241 }, (_, i) => {
+  const q = i / 240;
+  return `${i ? 'L' : 'M'}${87 + 80 * q + 4 * Math.cos(q * 16 * Math.PI)} ${100 + 20 * Math.sin(q * 16 * Math.PI)}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 360 270" aria-hidden="true" fill="none">
+  <path
+    d="M45 100H91M171 100H222M258 100H305V224H183M151 224H45V100M45 168H91M171 168H222M258 168H305"
+    stroke="#98aa8e"
+    stroke-width="2.5"></path>
+  <path d={coil} stroke="#b4935a" stroke-width="3"></path>
+  <rect x="91" y="156" width="80" height="24" rx="5" fill="#d7dfca" stroke="#adbc99"></rect>
+  <circle cx="240" cy="100" r="24" fill="#eee3b9" opacity=".4"></circle>
+  <circle cx="240" cy="100" r="18" fill="#ece8d5" stroke="#b8ac80"></circle>
+  <circle cx="240" cy="168" r="31" fill="#f1d98a" opacity=".28"></circle>
+  <circle cx="240" cy="168" r="18" fill="#f6e2a6" stroke="#b8ac80"></circle>
+  <path d="M231 91l18 18m-18 0 18-18m-18 68 18 18m-18 0 18-18" stroke="#b49b62" stroke-width="2"
+  ></path>
+  <path d="M151 214v20m8-16v12m0-6h24" stroke="#9b956e" stroke-width="3"></path>
+  <path d="M74 248q43-62 99-61" stroke="#7f9e78" stroke-width="2"></path><path
+    d="M74 190H173"
+    stroke="#b8c4a6"
+    stroke-dasharray="4 5"></path>
+</svg>

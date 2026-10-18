@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "slug": "battery-emf-lab",
+    "name": "电源电动势与内阻实验",
+    "title": "电源有电，为什么接上负载电压就变了？",
+    "question": "电源有电，为什么接上负载电压就变了？",
+    "description": "从并联灯泡到干电池、水果电池和充电宝，沿不同测量电路追踪电源的输出变化。",
+    "color": "#b8c7a3",
+    "tag": "电源 · 电动势 · 内阻",
+    "related": ["resistivity-lab", "multimeter-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Electromotive Force",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force"
+      },
+      {
+        "title": "Texas Instruments — Power-bank output current sensing and limiting reference design",
+        "url": "https://www.ti.com/tool/PMP9776"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["电源电动势与内阻实验", "干电池", "水果电池", "橙汁电池", "充电宝", "电动势测量"],
+      "en": [
+        "Source EMF and Internal Resistance",
+        "battery emf",
+        "internal resistance",
+        "fruit battery",
+        "power bank",
+        "load curve"
+      ]
+    }
+  },
+  "component": "src/components/experiments/BatteryEmfLab.tsx",
+  "cover": "src/components/covers/BatteryEmfLabCover.astro",
+  "translations": {
+    "电源电动势与内阻实验": "Source EMF and Internal Resistance",
+    "电源有电，为什么接上负载电压就变了？": "Why does source voltage change when a load is connected?",
+    "从并联灯泡到干电池、水果电池和充电宝，沿不同测量电路追踪电源的输出变化。": "Follow parallel lamps, dry and fruit cells, and a power bank through their distinct source-measurement circuits.",
+    "电源 · 电动势 · 内阻": "Sources · EMF · Internal resistance",
+    "同一电池连接一到四只并联灯泡": "The same battery with one to four parallel lamps",
+    "电动势": "EMF",
+    "铜锌电极插入梨，电阻箱和电压表接入电路": "Copper and zinc electrodes in a pear, with a resistance box and voltmeter",
+    "橙汁中的铜锌电极、电阻箱与串联微安表": "Copper and zinc electrodes in orange juice, resistance box and series microammeter",
+    "充电宝、串联保护电阻与可变负载，电压表跨接输出端": "Power bank, series protection resistor and variable load, with a voltmeter across the output",
+    "干电池、串联电流表、滑动变阻器与并联电压表": "Dry cell, series ammeter, rheostat and parallel voltmeter",
+    "电压对电流图像，点的位置与电表共用同一计算": "Voltage-current plot derived from the same model as the meters",
+    "教材样例的充电宝输出端与内部锂电池电动势随电量变化": "Textbook power-bank output and lithium-cell EMF versus charge level",
+    "充电宝输出端": "Power-bank output",
+    "锂电池": "Lithium cell",
+    "内阻为零的理想电源，不会出现同样的变暗": "An ideal zero-resistance source would not dim the lamps this way",
+    "增加并联支路，每只灯泡的路端电压反而下降": "Adding parallel branches lowers the voltage across each lamp",
+    "直线截距给出电动势，斜率大小给出内阻": "The intercept gives EMF; slope magnitude gives internal resistance",
+    "改变外电阻，同步记录电压和电流": "Vary the load and record voltage and current together",
+    "铜锌电极组成电源，用已知电阻推得电流": "Copper and zinc form a source; infer current from a known resistance",
+    "只有微安表：用 I × R 算电阻箱两端电压": "With a microammeter only, calculate box voltage as I × R",
+    "教材样例：稳压输出与内部电芯变化不同": "Textbook example: regulated output and the cell change differently",
+    "超出拟合范围，稳压和限流会改变输出曲线": "Beyond the fit range, regulation and current limiting change the output curve",
+    "先研究输出端的 U–I 关系，再谈等效参数": "Study the output U–I relation before assigning equivalent parameters",
+    "微安表内阻 100 Ω；斜率大小还包含它。": "The slope also includes the microammeter’s 100 Ω resistance.",
+    "金色点为教材样例数据；绿色点为示意模型，不能外推为所有产品。": "Gold points are textbook data; green is an illustrative model, not a rule for every product.",
+    "此电量曲线由教材参数重建，图点不是原始测量记录。": "This charge-level curve is reconstructed from textbook parameters, not original measurements.",
+    "金色点为教材橙汁电池数据；绿色点为近似模型。": "Gold points are textbook orange-cell data; green is an approximate model.",
+    "图点和表读数来自教学模型，不是实测记录。": "Points and meter readings are teaching-model outputs, not physical records.",
+    "选择电源实验": "Choose a source experiment",
+    "并联灯泡": "Parallel lamps",
+    "干电池": "Dry cell",
+    "梨电池": "Pear cell",
+    "橙汁电池": "Orange-juice cell",
+    "充电宝": "Power bank",
+    "并联灯泡数": "Parallel lamp count",
+    "电源内阻": "Source internal resistance",
+    "外部负载电阻": "External load resistance",
+    "电极插入深度": "Electrode immersion",
+    "电极间距模型": "Electrode-spacing model",
+    "研究视角": "Research view",
+    "负载曲线": "Load curve",
+    "电量对比": "Charge comparison",
+    "拟合边界": "Fit limits",
+    "教材电量状态": "Textbook charge state",
+    "恢复纵轴零点": "Restore zero on the vertical axis",
+    "放大电压变化": "Magnify voltage changes",
+    "电源模型与测量边界": "Source models and measurement limits",
+    "干电池采用 E − Ir 模型，计入 10 kΩ 电压表和 0.1 Ω 电流表；梨电池电压表取 10 MΩ。水果几何只用间距除以插入深度表示内阻趋势，不拟合真实电化学过程。橙汁方案的 U 是电阻箱电压，斜率包含 100 Ω 微安表内阻。金色样例点转录自教材；充电宝在限流区采用另行标明的示意模型，输出端的拟合参数不等于内部锂电池参数。": "The dry cell uses E − Ir with a 10 kΩ voltmeter and 0.1 Ω ammeter; the pear cell uses a 10 MΩ voltmeter. Fruit geometry uses spacing divided by immersion only to illustrate a resistance trend, not real electrochemistry. Orange-cell voltage is across the resistance box, so the slope includes the 100 Ω microammeter. Gold sample points are transcribed from the textbook. The bank’s current-limited region uses a separately identified illustrative model; output-fit parameters are not internal lithium-cell parameters."
+  },
+  "narration": {
+    "duration": 246,
+    "cues": [
+      {
+        "id": "parallel-lamps",
+        "title": "多接灯泡，反而变暗",
+        "titleEn": "More lamps, less brightness",
+        "caption": "相同电源增加并联负载，路端电压降低。",
+        "captionEn": "Adding parallel loads to the same source lowers terminal voltage.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先用同一节电池点亮一只灯泡，再逐个接入相同的并联灯泡。支路增多，总电流增大，但电池内部也有电阻。内部的电压降增大，留给每只灯泡的路端电压反而降低，所以它们一起变暗。",
+        "en": "Start with one lamp, then connect identical lamps in parallel to the same source. More branches draw more total current. But the source has internal resistance. Its internal voltage drop grows, leaving less terminal voltage across each lamp, so they become dimmer together."
+      },
+      {
+        "id": "internal-drop",
+        "title": "比较理想电源",
+        "titleEn": "Compare an ideal source",
+        "caption": "只有内阻参与，才能解释这里的电压下降。",
+        "captionEn": "Internal resistance explains this terminal-voltage decrease.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "保持四只灯泡，先把电源内阻设为零。即使总电流较大，灯泡两端仍有完整的三伏。再逐渐加入内阻，下面的电压条把三伏分成路端电压和内阻压降。灯泡变暗的原因是电源实际输出发生了变化。",
+        "en": "Keep four lamps and first set internal resistance to zero. Even with substantial current, each lamp receives the full three volts. Gradually add internal resistance. The bar divides that three volts into terminal voltage and internal drop. Dimming comes from a change in the source’s actual output."
+      },
+      {
+        "id": "dry-cell-load",
+        "title": "改变负载，记录点",
+        "titleEn": "Change the load, collect points",
+        "caption": "每次同时记录 U 和 I。",
+        "captionEn": "Record U and I together at each load.",
+        "seconds": 24,
+        "chapterAt": 44,
+        "at": 44.4,
+        "zh": "换成干电池的测量装置。电流表串联，电压表跨接电源两端。移动滑动变阻器触点，外部电阻减小，电流增大，而路端电压下降。用多个负载取得一组数据，比只凭两次读数求解更有利于检查趋势。",
+        "en": "Switch to the dry-cell measurement apparatus: an ammeter in series and voltmeter across the source. Move the rheostat contact to reduce the load resistance. Current rises while terminal voltage falls. Multiple loads provide a set of points, helping reveal the trend beyond a calculation from only two readings."
+      },
+      {
+        "id": "dry-cell-fit",
+        "title": "从直线求参数",
+        "titleEn": "Read parameters from a line",
+        "caption": "U = E − Ir；截距是 E，斜率是 −r。",
+        "captionEn": "U = E − Ir: intercept E, slope −r.",
+        "seconds": 28,
+        "chapterAt": 68,
+        "at": 68.4,
+        "zh": "把电压放在纵轴、电流放在横轴。近似直线延伸到电流为零处，其电压截距给出电动势；斜率的绝对值给出内阻。再放大电压轴，原来挤在一起的变化更容易比较。坐标轴从非零值开始时，要看清截断标记，不能把图框边缘当作零电压。",
+        "en": "Plot voltage vertically against current horizontally. Extending the near-straight line to zero current gives the EMF intercept; the slope’s magnitude gives internal resistance. Magnifying the voltage axis makes small changes easier to compare. When that axis starts above zero, notice the break mark: the frame edge no longer represents zero voltage."
+      },
+      {
+        "id": "fruit-electrodes",
+        "title": "铜锌插入梨",
+        "titleEn": "Copper and zinc in a pear",
+        "caption": "水果电池是电源，几何改变也会影响内阻。",
+        "captionEn": "The fruit cell is a source whose geometry affects internal resistance.",
+        "seconds": 22,
+        "chapterAt": 96,
+        "at": 96.4,
+        "zh": "把铜片和锌片插入梨中，形成一个简单电源。铜片是正极，锌片是负极。观察电极插得更深时的模型变化：有效接触增加，内阻减小，带负载时的电压提高。真实水果还受成分、极化和时间影响，不能只靠几何公式精确预测。",
+        "en": "Insert copper and zinc electrodes into a pear to form a simple source. Copper is positive and zinc negative. Deeper insertion increases effective contact in this model, reducing internal resistance and raising loaded voltage. Real fruit also depends on composition, polarization and time, so geometry alone cannot predict it precisely."
+      },
+      {
+        "id": "fruit-resistance-box",
+        "title": "用已知电阻推电流",
+        "titleEn": "Infer current from a known load",
+        "caption": "电阻箱 R 和电压 U，给出 I = U/R。",
+        "captionEn": "Known box resistance R and voltage U give I = U/R.",
+        "seconds": 24,
+        "chapterAt": 118,
+        "at": 118.4,
+        "zh": "这次只有电压表和电阻箱，没有串联电流表。每次设定已知电阻，读出电压，就能用电压除以电阻求出负载电流，再画出电压电流图像。水果电池的内阻可能随时间变化，所以同一组测量要在条件相对稳定时完成。",
+        "en": "Here there is a voltmeter and resistance box but no series ammeter. Set a known resistance, read the voltage and divide voltage by resistance to infer load current. Those pairs form the voltage-current plot. Fruit-cell resistance can drift with time, so one data set requires reasonably stable conditions."
+      },
+      {
+        "id": "orange-microammeter",
+        "title": "另一条测量路径",
+        "titleEn": "A different measurement path",
+        "caption": "U = IR；拟合斜率还包含微安表内阻。",
+        "captionEn": "U = IR; the fitted slope also includes microammeter resistance.",
+        "seconds": 28,
+        "chapterAt": 142,
+        "at": 142.4,
+        "zh": "橙汁电池换成另一条路径：只有微安表和电阻箱。用电流乘以电阻箱阻值得到它两端的电压。金色点来自教材数据。注意，电流表的一百欧姆内阻也串在回路中，所以直线斜率的大小等于电池内阻加上这一百欧姆，求电池内阻时还要减去它。",
+        "en": "The orange-juice cell uses a different path: a microammeter and resistance box. Multiply measured current by box resistance to obtain the box voltage. Gold points are textbook data. The meter’s one hundred ohms is also in series, so the slope magnitude includes both cell resistance and meter resistance. Subtract the meter contribution to infer the cell alone."
+      },
+      {
+        "id": "bank-load",
+        "title": "先测充电宝输出端",
+        "titleEn": "Measure the bank’s output",
+        "caption": "教材样例的输出曲线在所测范围内近似直线。",
+        "captionEn": "The textbook output curve is nearly linear over its measured range.",
+        "seconds": 24,
+        "chapterAt": 170,
+        "at": 170.4,
+        "zh": "充电宝内部还有升压和稳压电路，不能直接把输出口当成裸锂电池。先按教材方案改变外部负载，保护电阻保留在回路中。这里的金色点是教材百分之百电量时的数据。在这段测量范围内，它们近似成直线，可以定义输出端的等效参数。",
+        "en": "A power bank includes boost and regulation circuits, so its output is not a bare lithium cell. Vary the external load while retaining the series protection resistor. Gold points reproduce the textbook’s full-charge data. They are nearly linear over this measured range, allowing equivalent parameters for the output terminals."
+      },
+      {
+        "id": "bank-charge",
+        "title": "电量变化，输出不同",
+        "titleEn": "Charge state and output differ",
+        "caption": "比较教材同一研究中的六种电量。",
+        "captionEn": "Compare six charge states from the same textbook study.",
+        "seconds": 26,
+        "chapterAt": 194,
+        "at": 194.4,
+        "zh": "再看教材研究的六种电量。内部锂电池的电动势随剩余电量下降，而充电宝输出端的拟合截距仍在五伏附近。这是稳压电路作用后的外部表现。两条曲线来自同一教材样例，不是所有产品的保证，也不能用输出端的斜率直接代替电芯内阻。",
+        "en": "Compare six charge levels from the textbook study. The lithium cell’s EMF decreases with remaining charge, while the fitted power-bank output intercept stays near five volts. That is the external behavior after regulation. These curves describe this study, not every product, and the output slope is not the bare cell’s internal resistance."
+      },
+      {
+        "id": "bank-model-limit",
+        "title": "直线有适用范围",
+        "titleEn": "A line has a valid range",
+        "caption": "限流后的示意曲线不能继续用同一条直线描述。",
+        "captionEn": "The illustrative current-limited curve no longer follows that line.",
+        "seconds": 26,
+        "chapterAt": 220,
+        "at": 220.4,
+        "zh": "最后做一个模型边界检查。继续减小示意负载，电源进入设定的限流区：电流不再按原来直线增长，输出电压明显下降。这里是另行设定的调节器示意，不是教材追加的实测数据。测到一段近似直线，只能支持那段工作范围内的等效模型。",
+        "en": "Finally test a model boundary. Reduce the illustrative load until the source reaches its imposed current limit. Current stops following the original line and output voltage drops. This is a separately specified regulator demonstration, not extra textbook measurements. A nearly straight measured segment supports an equivalent model only within that operating range."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-parallel-lamp-brightness": {
+      "chapterIds": ["parallel-lamps", "internal-drop"],
+      "label": {
+        "zh": "并联灯泡亮度变化",
+        "en": "Parallel-lamp brightness"
+      }
+    },
+    "r3-dry-cell-emf": {
+      "chapterIds": ["dry-cell-load", "dry-cell-fit"],
+      "label": {
+        "zh": "测量干电池电动势和内阻",
+        "en": "Measure a dry cell"
+      }
+    },
+    "r3-fruit-cell-emf": {
+      "chapterIds": ["fruit-electrodes", "fruit-resistance-box", "orange-microammeter"],
+      "label": {
+        "zh": "水果电池的两种测量路径",
+        "en": "Two fruit-cell measurement paths"
+      }
+    },
+    "r3-power-bank-research": {
+      "chapterIds": ["bank-load", "bank-charge", "bank-model-limit"],
+      "label": {
+        "zh": "充电宝不同电量研究",
+        "en": "Power-bank charge-state research"
+      }
+    }
+  }
+}

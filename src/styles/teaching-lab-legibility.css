@@ -1,0 +1,66 @@
+/* These scenes all use 360-unit SVGs. The narrowest reviewed stage is 254px:
+   23 × 254 / 360 = 16.23 CSS px. Long prose is separate wrapping HTML. */
+.lab-apparatus-caption {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  color: #63745e;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.lab-apparatus-caption:empty {
+  display: none;
+}
+.lab-inline-legend {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+.lab-inline-legend > span {
+  min-width: 0;
+  flex: 1;
+}
+@media (max-width: 600px) {
+  .textbook-em:is(.doppler-lab, .drinking-bird-lab) {
+    padding-top: 6px;
+    padding-bottom: 4px;
+  }
+  .textbook-em:is(.doppler-lab, .drinking-bird-lab) .textbook-em-apparatus {
+    margin-top: 0;
+  }
+  .textbook-em:is(
+      .self-induction-lab,
+      .statistical-motion-lab,
+      .thermodynamic-work-lab,
+      .wireless-interference-lab,
+      .surface-tension-lab,
+      .sensor-control-lab,
+      .magdeburg-bowls-lab,
+      .mutual-induction-lab,
+      .molecular-measurement-lab,
+      .gas-efficiency-lab,
+      .thermal-measurement-lab,
+      .eddy-current-lab,
+      .diamagnetic-levitation-lab,
+      .sound-interference-lab,
+      .mechanical-wave-lab,
+      .charged-particle-lab,
+      .diffusion-microstates-lab,
+      .magnetic-force-lab,
+      .solid-structure-lab,
+      .drinking-bird-lab,
+      .hertz-wave-lab,
+      .sound-measurement-lab,
+      .ripple-tank-lab,
+      .doppler-lab,
+      .ac-circuit-lab,
+      .induction-coil-lab
+    )
+    svg
+    text {
+    font-size: 23px;
+  }
+}

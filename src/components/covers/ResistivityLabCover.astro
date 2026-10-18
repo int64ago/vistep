@@ -1,0 +1,50 @@
+---
+import { seriesWireComparison } from '../../models/resistivity-lab';
+const s = seriesWireComparison(),
+  parts = [
+    [35, 85],
+    [96, 196],
+    [207, 257],
+    [268, 318],
+  ];
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><path
+    d="M35 103V187H155M196 187H250M297 187H359V103H318M85 103H96M196 103H207M257 103H268"
+    stroke="#9eb292"
+    stroke-width="2.5"></path>{
+    parts.map(([a, b], i) => (
+      <g>
+        <>
+          <path
+            d={`M${a} 103V57H${(a + b) / 2 - 16}M${(a + b) / 2 + 16} 57H${b}V103`}
+            stroke="#bdc19a"
+            stroke-width="1.5"
+          />
+          <circle cx={(a + b) / 2} cy="57" r="17" fill="#eaf0d8" stroke="#b2c3a1" />
+          <path
+            d={`M${(a + b) / 2} 60l${12 * Math.sin(-0.95 + (1.9 * s.wires[i].voltage) / 2)} ${-12 * Math.cos(-0.95 + (1.9 * s.wires[i].voltage) / 2)}`}
+            stroke="#ac945d"
+            stroke-width="1.7"
+          />
+          <path
+            d={`M${a} 103H${b}`}
+            stroke={i === 3 ? '#8aa29b' : '#a8af8b'}
+            stroke-width={i === 2 ? 7 : 5}
+          />
+        </>
+      </g>
+    ))
+  }<rect x="155" y="172" width="41" height="30" rx="7" fill="#c5d2ad" stroke="#a9bc93"></rect><path
+    d="M163 187h8m-4-4v8M183 187h7"
+    stroke="#8c9f78"></path><rect
+    x="250"
+    y="180"
+    width="47"
+    height="14"
+    rx="4"
+    fill="#d5c79e"
+    stroke="#b6a97e"></rect><path d="M273 165V180m-4-4 4 4 4-4" stroke="#a6996f" stroke-width="1.5"
+  ></path></svg
+>

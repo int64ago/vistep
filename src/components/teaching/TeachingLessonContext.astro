@@ -1,0 +1,72 @@
+---
+import {
+  type CurriculumContext,
+  curriculumSectionPath,
+  curriculumSectionNumber,
+  curriculumNeighbors,
+  curriculumLessonPath,
+} from '../../data/curricula';
+import type { Locale } from '../../i18n';
+import '../../styles/teaching.css';
+interface Props {
+  context: CurriculumContext;
+  locale?: Locale;
+}
+const { context, locale = 'zh' } = Astro.props;
+const { section, lesson } = context;
+const { previous, next } = curriculumNeighbors(context);
+---
+
+<div class="teaching-lesson-context">
+  <div class="teaching-lesson-location">
+    <a href={curriculumSectionPath(context, locale)}>
+      <span aria-hidden="true">←</span>
+      <span>{curriculumSectionNumber(context)} {section.title[locale]}</span>
+    </a>
+    <span>{locale === 'zh' ? `教材第 ${lesson.page} 页` : `Textbook page ${lesson.page}`}</span>
+  </div>
+  <div class="teaching-lesson-purpose">
+    <p><span>{locale === 'zh' ? '本节目标' : 'Learning goal'}</span>{lesson.goal[locale]}</p>
+    <p class="teaching-lesson-original">
+      <span
+        >{
+          lesson.titleIsOriginal === false
+            ? locale === 'zh'
+              ? '教材对应内容'
+              : 'Textbook context'
+            : locale === 'zh'
+              ? '教材原名'
+              : 'Textbook title'
+        }</span
+      >{lesson.textbookTitle[locale]}
+    </p>
+  </div>
+</div>
+
+<nav
+  class="teaching-lesson-neighbors"
+  aria-label={locale === 'zh' ? '按教材继续学习' : 'Continue in textbook order'}
+>
+  {
+    previous ? (
+      <a href={curriculumLessonPath(previous, locale)}>
+        <>
+          <span>{locale === 'zh' ? '← 上一项' : '← Previous'}</span>
+          <strong>{previous.lesson.name[locale]}</strong>
+        </>
+      </a>
+    ) : (
+      <span />
+    )
+  }
+  {
+    next && (
+      <a href={curriculumLessonPath(next, locale)}>
+        <>
+          <span>{locale === 'zh' ? '下一项 →' : 'Next →'}</span>
+          <strong>{next.lesson.name[locale]}</strong>
+        </>
+      </a>
+    )
+  }
+</nav>

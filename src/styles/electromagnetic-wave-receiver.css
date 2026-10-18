@@ -1,0 +1,85 @@
+.er-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #6d815f;
+}
+.er-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.er-apparatus {
+  display: block;
+  width: min(100%, 510px);
+  height: auto;
+  margin: auto;
+}
+.er-apparatus text {
+  font: 21px var(--font-sans, sans-serif);
+  fill: #7d8e69;
+}
+.er-readings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  font-size: 16px;
+  color: #99825b;
+  padding: 8px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.er-subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 8px 16px;
+  color: #8c9c78;
+}
+.er-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.er-controls button {
+  min-height: 44px;
+}
+.er-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.er-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.er-details p {
+  color: #7e9072;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .er-controls {
+    padding: 18px 14px;
+  }
+  .er-apparatus text {
+    font-size: 25px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.er-film[data-watch] > .er-kicker,
+.er-film[data-watch] > .er-caption,
+.er-film[data-watch] > details {
+  display: none;
+}
+.er-film[data-watch] .er-subtitle {
+  display: none;
+}
+.er-film[data-watch] .er-readings {
+  gap: 6px 12px;
+  padding: 6px 10px;
+}

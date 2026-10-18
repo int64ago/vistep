@@ -1,0 +1,20 @@
+<h2 id="understand">Sharing a band does not guarantee interference every time</h2>
+
+Bluetooth and 2.4 GHz Wi-Fi can overlap in frequency and time. If a receiver cannot recover its intended signal, packets may be lost and retried. Frequency hopping, adaptive avoidance and device coexistence mechanisms can reduce that effect. Switching Bluetooth on therefore does not guarantee a slower connection.
+
+Frequency runs horizontally and time moves downward. Wide marks represent a Wi-Fi channel, while narrow marks show Bluetooth hopping activity. Only simultaneous overlapping activity meets this model's collision condition. Moving Wi-Fi to 5 GHz removes this particular overlap, not every possible performance limit.
+
+<h2 id="try">Separate the model from phone measurements</h2>
+
+- Establish a baseline without Bluetooth traffic, then add it under the same schedule.
+- Enable adaptive hopping and inspect the excluded frequencies.
+- On a real phone, keep position, test server and timing comparable; alternate repeated observations before and during Bluetooth transfer.
+- Enter your own repeated measurements in exploration to calculate a mean and sample standard deviation. Model delivery rate is not measured network speed.
+
+<h2 id="deeper">The model answers only whether time and frequency overlap</h2>
+
+The deterministic schedule uses Classic-like Bluetooth channels—79 channels one megahertz wide, 625-microsecond slots—and a simplified twenty-megahertz Wi-Fi allocation. Fixed random inputs make comparisons repeatable. It does not implement actual hopping algorithms, coding, RF power, capture effects, backoff or retransmission protocols. First-attempt delivery cannot be translated directly into a phone's download speed.
+
+Real observations can vary with background activity, server load, distance, antenna coexistence and whether Bluetooth carries idle mouse traffic or continuous audio.
+
+Sources: [Bluetooth SIG: Adaptive hopping and packet interference](https://www.bluetooth.com/blog/how-bluetooth-technology-uses-adaptive-frequency-hopping-to-overcome-packet-interference/), [Silicon Labs: Wi-Fi coexistence fundamentals](https://www.silabs.com/documents/public/user-guides/ug103-17-wi-fi-coexistence-fundamentals.pdf). Textbook: Elective Book Two, page 84.

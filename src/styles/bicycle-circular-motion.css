@@ -1,0 +1,149 @@
+.bicycle-circular-lab {
+  max-width: 1040px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #536d52;
+}
+.bicycle-circular-lab header {
+  text-align: center;
+}
+.bicycle-circular-lab header p {
+  font-size: clamp(21px, 2.5vw, 28px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.bicycle-circular-lab header > span {
+  font-size: 16px;
+  color: #849575;
+}
+.bicycle-circular-stage {
+  max-width: 650px;
+  margin: 20px auto;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+}
+.bicycle-circular-stage svg {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+}
+.bicycle-circular-stage.is-close {
+  max-width: 760px;
+  margin: 35px auto;
+}
+.bicycle-circular-readings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  justify-content: center;
+  font-size: 16px;
+}
+.bicycle-circular-readings span {
+  display: flex;
+  gap: 10px;
+}
+.bicycle-circular-readings b {
+  font-weight: 400;
+  color: #9c8b62;
+}
+.bicycle-circular-angle {
+  text-align: center;
+  font-size: 23px;
+  color: #a18d61;
+  margin: 24px auto;
+}
+.bicycle-circular-angle span {
+  padding: 0 16px;
+  color: #bec7ad;
+}
+.bicycle-circular-cause {
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 26px auto;
+  max-width: 730px;
+}
+.bicycle-circular-note {
+  font-size: 16px;
+  color: #899678;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 760px;
+  margin: 20px auto;
+}
+.bicycle-circular-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.bicycle-circular-controls .segmented {
+  flex-wrap: wrap;
+  justify-self: center;
+}
+@media (max-width: 640px) {
+  .bicycle-circular-lab {
+    padding: 20px 12px;
+  }
+  .bicycle-circular-stage {
+    margin: 16px -5px;
+    min-height: 0;
+  }
+  .bicycle-circular-stage.is-close {
+    margin: 30px -5px;
+  }
+  .bicycle-circular-controls {
+    grid-template-columns: 1fr;
+  }
+  .bicycle-circular-readings {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bicycle-circular-readings span {
+    justify-content: space-between;
+  }
+  .bicycle-circular-angle {
+    font-size: 20px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .bicycle-circular-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-lab > header > span,
+  .showcase[data-mode='watch'] .bicycle-circular-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .bicycle-circular-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .bicycle-circular-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .bicycle-circular-stage,
+  .showcase[data-mode='watch'] .bicycle-circular-stage.is-close {
+    margin: 7px 0;
+    min-height: 0;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-stage svg {
+    max-height: 245px;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-readings {
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-angle {
+    font-size: 16px;
+    margin: 8px auto;
+  }
+}

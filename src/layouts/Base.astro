@@ -5,6 +5,7 @@ import '../styles/interaction.css';
 import '../styles/showcase.css';
 import '../styles/language.css';
 import '../styles/longform.css';
+import '../styles/navigation.css';
 import '../i18n/english';
 import { translate, localPath, type Locale } from '../i18n';
 import { pageSchema, structuredJSON } from '../data/seo';
@@ -28,6 +29,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(`/social/${Astro.props.topic?.slug ?? 'home'}.png`, Astro.site);
 const schema = pageSchema(Astro.url.pathname, locale, Astro.props.topic);
 const home = localPath('/', locale);
+const teaching = /\/teaching(?:\/|$)/.test(Astro.url.pathname);
 const alternate = localPath(
   Astro.props.languageSwitchPath ?? Astro.url.pathname,
   locale === 'en' ? 'zh' : 'en',
@@ -134,14 +136,21 @@ const alternate = localPath(
         ><span class="wordmark-name">vistep<span class="wordmark-ai">.ai</span></span></a
       >
       <nav aria-label={tr('主导航')}>
-        <a href={`${home}#collection`}
-          >{tr('全部探索')} <span class="nav-count">{topics.length}</span></a
-        >
+        <div class="primary-navigation">
+          <a href={`${home}#collection`} aria-current={!teaching ? 'true' : undefined}
+            >{locale === 'en' ? 'Explore' : '自由探索'}
+            <span class="nav-count">{topics.length}</span></a
+          >
+          <a href={localPath('/teaching/', locale)} aria-current={teaching ? 'true' : undefined}
+            >{locale === 'en' ? 'Learn' : '教学专区'}</a
+          >
+        </div>
         <a href={`${home}#name`} class="name-link"
           >{tr('关于 vistep')} <span aria-hidden="true">↗</span></a
         >
         <a
           class="language-switch"
+          data-scene-slug={Astro.props.topic?.slug}
           href={alternate}
           lang={locale === 'en' ? 'zh-CN' : 'en'}
           hreflang={locale === 'en' ? 'zh-CN' : 'en'}

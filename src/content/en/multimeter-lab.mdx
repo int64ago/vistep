@@ -1,0 +1,30 @@
+<h2 id="understand">Connections, ranges and scales change together</h2>
+
+One pointer can serve several measurements only when the **connection, range and scale agree**. Follow the circuit path before reading the pointer.
+
+- Voltage: connect across the target and convert the linear scale using the selected range.
+- Current: insert the meter in series; its internal resistance also changes current.
+- Resistance: isolate the specimen from external power. Short and zero the probes before measuring, and check again after changing the multiplier. The ohm scale is nonlinear, with zero on the right.
+
+The sequence covers a fixed resistor, cold filament, hand contact and diode. Diode readings depend on direction and instrument conditions; they are not a fixed material resistance. This example follows the cited HIOKI analog meter: its black probe is internally positive on the resistance function. Other instruments require their own manual.
+
+<h2 id="try">Follow the probes to diagnose faults</h2>
+
+The fault sequence starts with an unlit lamp and checks the battery, switch, wire and outer socket terminals. **Voltage across a section does not guarantee normal operating current through it.** Diagnosis is restricted to four specified single faults. Other real possibilities, including a broken filament, remain outside this set.
+
+<h2 id="deeper">Model and measurement limits</h2>
+
+<details>
+<summary>Model, readings and limits</summary>
+
+The voltmeter has finite input resistance at 20 kΩ/V; the ammeter adds 0.5 Ω. Resistance mode combines a 1.5 V internal supply, adjustable internal resistance and current movement:
+
+f = I / Iₘ; R = Rₘ (1/f − 1).
+
+After calibration, Rₘ = 20m Ω, where m is the multiplier. A change in internal resistance represents zero error. The diode solution intersects an exponential junction curve with the instrument load line; reverse leakage is approximated without breakdown. Hands use an equivalent contact resistance. The DC lamp uses fixed resistance rather than a complete thermal model. Faulty contacts use very high finite resistance; the whole network is recalculated when the voltmeter is connected.
+
+Images and data are teaching-model outputs, not physical measurements.
+
+</details>
+
+Sources: [HIOKI 3007 manual](https://www.hioki.com/download/29783), [analog meter input resistance](https://www.hioki.com/us-en/support/faq/detail/id_121), and [OpenStax electrical measuring instruments](https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments).

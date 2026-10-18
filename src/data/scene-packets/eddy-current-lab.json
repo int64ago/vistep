@@ -1,0 +1,243 @@
+{
+  "topic": {
+    "slug": "eddy-current-lab",
+    "name": "涡流与电磁阻尼",
+    "title": "没有接触，磁体怎样让运动慢下来？",
+    "question": "没有接触，磁体怎样让运动慢下来？",
+    "description": "分别追踪指针、铝框、铜盘、落磁和弹簧振子的机械能去向。",
+    "color": "#799066",
+    "tag": "阻尼与驱动",
+    "related": ["eddy-current-brake", "induction-motor"],
+    "sources": [
+      {
+        "title": "OpenStax — Eddy currents",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents"
+      }
+    ]
+  },
+  "component": "src/components/experiments/EddyCurrentLab.tsx",
+  "cover": "src/components/covers/EddyCurrentLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["涡流与电磁阻尼", "涡流", "电磁阻尼", "电磁驱动", "落磁", "铝管", "铜盘"],
+      "en": [
+        "Eddy currents and magnetic damping",
+        "magnetic braking",
+        "falling magnet",
+        "slit tube",
+        "copper disc"
+      ]
+    }
+  },
+  "translations": {
+    "涡流与电磁阻尼": "Eddy currents and magnetic damping",
+    "没有接触，磁体怎样让运动慢下来？": "How can a magnet slow motion without contact?",
+    "分别追踪指针、铝框、铜盘、落磁和弹簧振子的机械能去向。": "Follow energy in a meter, rotating frame, copper disc, falling magnet and spring oscillator.",
+    "阻尼与驱动": "Damping and drive",
+    "微安表的阻尼": "Damping a sensitive meter",
+    "旋转磁体驱动铝框": "A rotating magnet drives the frame",
+    "铜盘的磁制动": "Braking a copper disc",
+    "磁体穿过铝管": "A magnet in an aluminium tube",
+    "弹簧磁体与闭合线圈": "A spring magnet and a closed coil",
+    "纵向开缝": "Longitudinal slit",
+    "完整铝管": "Complete aluminium tube",
+    "磁极靠近边缘": "Poles near the edge",
+    "磁体移开": "Magnet removed",
+    "磁体正向转动": "Magnet rotates forward",
+    "磁体反向转动": "Magnet rotates backward",
+    "回路闭合": "Circuit closed",
+    "回路断开": "Circuit open",
+    "由感应电流计算阻尼与驱动力的五种装置": "Five apparatuses with induction-driven damping and torque",
+    "磁极不接触铜盘": "Poles do not touch the disc",
+    "相同初始扰动下闭合与断开的振动比较": "Open and closed circuits with the same initial disturbance",
+    "选择阻尼装置": "Choose a damping apparatus",
+    "转动方向": "Rotation direction",
+    "实验条件": "Experimental condition",
+    "释放后的时间": "Time after release",
+    "有效阻尼模型的范围": "Limits of the effective damping models",
+    "各装置分别求解自己的运动方程，采用低速近似的速度阻尼，不把磁吸力当作制动。参数用于说明机制，不拟合实测器材。铝管开缝保留少量局部涡流；弹簧在平衡位置附近线性化；铝框采用平均转矩与转差关系。图中电流环只示意可流通路径，不是场的精确数值解。": "Each apparatus solves its own motion equation with effective low-speed drag. Braking is not magnetic attraction. Parameters illustrate mechanisms rather than measured instruments. A slit retains weak local eddies; spring motion is linearized; frame torque uses average slip. Current loops show possible paths, not a numerical field solution.",
+    "断开的微安表": "An open meter",
+    "相同初始偏转下，指针来回摆动。": "The same initial deflection produces oscillation.",
+    "短接两个接线柱": "Short the terminals",
+    "感应电流的转矩加快稳定。": "Induced-current torque makes the pointer settle sooner.",
+    "相对转动产生电流，转矩带动铝框。": "Relative rotation induces current and drives the frame.",
+    "反转驱动与转差": "Reverse the drive and inspect slip",
+    "驱动方向反转，铝框跟随但保留转差。": "The frame follows the reversed drive with remaining slip.",
+    "先让铜盘自由转动": "Let the copper disc coast",
+    "同样的初始角速度，先记录自然减速。": "Record natural deceleration at a fixed initial speed.",
+    "把磁极放到边缘": "Place the poles near the edge",
+    "磁极不接触铜盘，涡流仍然耗散转动能。": "Without contact, eddy currents dissipate rotational energy.",
+    "完整铝管中的落磁": "A magnet in a complete tube",
+    "闭合环流把重力释放的能量转成热。": "Closed eddies turn released gravitational energy into heat.",
+    "切断大范围环流": "Interrupt the large current loops",
+    "纵向开缝后，同一磁体下落更快。": "A longitudinal slit lets the same magnet fall faster.",
+    "弹簧磁体自由振动": "A spring magnet oscillates",
+    "断开线圈，先保留同一初始位移。": "Start with the coil open and the same displacement.",
+    "闭合线圈后的衰减": "Closing the coil damps motion",
+    "振动能经感应电流耗散，衰减加快。": "Induced current dissipates oscillation energy more quickly."
+  },
+  "narration": {
+    "duration": 220,
+    "cues": [
+      {
+        "id": "meter-open",
+        "title": "断开的微安表",
+        "titleEn": "An open meter",
+        "caption": "相同初始偏转下，指针来回摆动。",
+        "captionEn": "The same initial deflection produces oscillation.",
+        "zh": "先晃动微安表，使内部运动部分偏离平衡。接线柱断开时，指针来回摆动，只有较弱的机械耗散。浅色曲线记录同一次初始偏转，接下来只改变电路是否闭合。",
+        "en": "Disturb the sensitive meter so its moving system leaves equilibrium. With terminals open, the pointer oscillates with weak mechanical damping. The pale trace records this initial disturbance; the next comparison changes only the electrical connection.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "meter-short",
+        "title": "短接两个接线柱",
+        "titleEn": "Short the terminals",
+        "caption": "感应电流的转矩加快稳定。",
+        "captionEn": "Induced-current torque makes the pointer settle sooner.",
+        "zh": "用导线连起两个接线柱，再给出相同的初始偏转。线圈运动时产生电流，磁力转矩阻碍运动，指针更快稳定。短接没有输入电能；被耗散的是最初摆动的机械能。",
+        "en": "Join the terminals and repeat the same initial deflection. Motion now induces current in a closed circuit, producing an opposing torque. The pointer settles sooner. Shorting supplies no electrical energy; initial mechanical energy is dissipated.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22
+      },
+      {
+        "id": "frame-forward",
+        "title": "旋转磁体驱动铝框",
+        "titleEn": "A rotating magnet drives the frame",
+        "caption": "相对转动产生电流，转矩带动铝框。",
+        "captionEn": "Relative rotation induces current and drives the frame.",
+        "zh": "换到可以自由转动的铝框。外部转动蹄形磁体，变化的磁通产生感应电流，铝框随之转动。追踪磁体和铝框各自的角度，铝框并不是被固定在磁体上一起转。",
+        "en": "Switch to a freely rotating aluminium frame. An external drive rotates the horseshoe magnet, changing flux and inducing current. Torque starts the frame turning. Track the two angles separately: the frame is not mechanically attached to the magnet.",
+        "seconds": 22,
+        "chapterAt": 44,
+        "at": 44
+      },
+      {
+        "id": "frame-reverse",
+        "title": "反转驱动与转差",
+        "titleEn": "Reverse the drive and inspect slip",
+        "caption": "驱动方向反转，铝框跟随但保留转差。",
+        "captionEn": "The frame follows the reversed drive with remaining slip.",
+        "zh": "现在让磁体向相反方向转动。铝框的运动方向也改变，但它的速度仍略低于磁场转速。这个差值叫转差：有相对运动才有持续感应。外部输入的功率一部分带动铝框，一部分成为电阻热。",
+        "en": "Reverse the magnet rotation. The frame turns the other way but remains slower than the field. This difference is slip, which maintains induction. External mechanical power is divided between driving the frame and electrical heating.",
+        "seconds": 22,
+        "chapterAt": 66,
+        "at": 66
+      },
+      {
+        "id": "disc-free",
+        "title": "先让铜盘自由转动",
+        "titleEn": "Let the copper disc coast",
+        "caption": "同样的初始角速度，先记录自然减速。",
+        "captionEn": "Record natural deceleration at a fixed initial speed.",
+        "zh": "轻轻拨动铜盘，让它以相同的初始角速度开始转动。先把磁体移开，铜盘只受到较弱的阻力，会转动较长时间。圆盘上的标记帮助我们追踪真实的角位移。",
+        "en": "Give the copper disc the same initial angular speed and keep the magnet away. Weak drag lets it coast for a long time. The mark on the disc tracks its calculated angular position.",
+        "seconds": 22,
+        "chapterAt": 88,
+        "at": 88
+      },
+      {
+        "id": "disc-brake",
+        "title": "把磁极放到边缘",
+        "titleEn": "Place the poles near the edge",
+        "caption": "磁极不接触铜盘，涡流仍然耗散转动能。",
+        "captionEn": "Without contact, eddy currents dissipate rotational energy.",
+        "zh": "把蹄形磁体的磁极放在铜盘边缘附近，保持没有接触。铜盘转动时经过局部磁场，产生涡流和反向转矩。转速越低，制动力也越弱；不是磁体把铜盘吸住了。",
+        "en": "Bring the poles near the disc edge without touching it. Rotation through the localized field creates eddy currents and opposing torque. As speed falls, braking weakens. The magnet is not holding the disc by attraction.",
+        "seconds": 22,
+        "chapterAt": 110,
+        "at": 110
+      },
+      {
+        "id": "tube-complete",
+        "title": "完整铝管中的落磁",
+        "titleEn": "A magnet in a complete tube",
+        "caption": "闭合环流把重力释放的能量转成热。",
+        "captionEn": "Closed eddies turn released gravitational energy into heat.",
+        "zh": "同一枚磁体从一米铝管上端释放。它没有贴住管壁，却下落得很慢。磁体运动改变管壁中的磁通，环流产生向上的阻力。达到近似稳定速度以后，重力持续释放的能量主要变成电阻热。",
+        "en": "Release the magnet into a one-metre aluminium tube. It falls slowly without sticking to the wall. Changing flux induces circulating currents and an upward drag. Near steady speed, released gravitational energy is mainly converted into electrical heating.",
+        "seconds": 22,
+        "chapterAt": 132,
+        "at": 132
+      },
+      {
+        "id": "tube-slit",
+        "title": "切断大范围环流",
+        "titleEn": "Interrupt the large current loops",
+        "caption": "纵向开缝后，同一磁体下落更快。",
+        "captionEn": "A longitudinal slit lets the same magnet fall faster.",
+        "zh": "换成纵向开缝的铝管。大范围环流路径被切断，制动明显减弱，同一磁体下落更快。开缝并不意味着所有局部涡流严格为零，因此模型仍保留少量残余阻尼。",
+        "en": "Replace the tube with a longitudinally slit one. Large circulating paths are interrupted, weakening the brake, and the same magnet falls faster. The slit does not eliminate every local eddy, so the model retains weak residual damping.",
+        "seconds": 22,
+        "chapterAt": 154,
+        "at": 154
+      },
+      {
+        "id": "spring-open",
+        "title": "弹簧磁体自由振动",
+        "titleEn": "A spring magnet oscillates",
+        "caption": "断开线圈，先保留同一初始位移。",
+        "captionEn": "Start with the coil open and the same displacement.",
+        "zh": "弹簧下端悬挂磁体，下面放着线圈。先断开线圈，从固定初始位置释放磁体。它在平衡位置附近反复振动。浅色曲线保留这次对照，便于比较闭合以后发生的变化。",
+        "en": "Suspend the magnet from a spring above a coil. Open the coil and release from a fixed displacement. The magnet oscillates around equilibrium. The pale trace preserves this reference for the closed-circuit comparison.",
+        "seconds": 22,
+        "chapterAt": 176,
+        "at": 176
+      },
+      {
+        "id": "spring-closed",
+        "title": "闭合线圈后的衰减",
+        "titleEn": "Closing the coil damps motion",
+        "caption": "振动能经感应电流耗散，衰减加快。",
+        "captionEn": "Induced current dissipates oscillation energy more quickly.",
+        "zh": "保持弹簧和初始位置不变，只闭合线圈。磁体上下运动使磁通反复变化，感应电流的作用始终阻碍运动，因此振幅更快减小。不同装置中的制动，最终都能用能量去向来检验。",
+        "en": "Keep the spring and initial displacement unchanged, then close the coil. Up-and-down motion changes the flux repeatedly. The induced response opposes motion in either direction, reducing amplitude faster. Energy accounting unites these different damping apparatuses.",
+        "seconds": 22,
+        "chapterAt": 198,
+        "at": 198
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-galvanometer-damping": {
+      "chapterIds": ["meter-open", "meter-short"],
+      "label": {
+        "zh": "微安表阻尼",
+        "en": "Meter damping"
+      }
+    },
+    "e2-aluminium-frame-drive": {
+      "chapterIds": ["frame-forward", "frame-reverse"],
+      "label": {
+        "zh": "铝框电磁驱动",
+        "en": "Aluminium-frame drive"
+      }
+    },
+    "e2-copper-disc-brake": {
+      "chapterIds": ["disc-free", "disc-brake"],
+      "label": {
+        "zh": "铜盘磁制动",
+        "en": "Copper-disc braking"
+      }
+    },
+    "e2-magnet-falling-tube": {
+      "chapterIds": ["tube-complete", "tube-slit"],
+      "label": {
+        "zh": "完整与开缝铝管落磁",
+        "en": "Magnet falling through complete and slit tubes"
+      }
+    },
+    "e2-magnet-coil-damping": {
+      "chapterIds": ["spring-open", "spring-closed"],
+      "label": {
+        "zh": "弹簧磁体与线圈阻尼",
+        "en": "Spring-magnet coil damping"
+      }
+    }
+  }
+}

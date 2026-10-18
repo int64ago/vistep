@@ -1,0 +1,158 @@
+{
+  "topic": {
+    "slug": "newton-second-law-lab",
+    "name": "小车力与加速度实验",
+    "title": "改变拉力或质量，怎样让实验回答同一个问题？",
+    "question": "改变拉力或质量，怎样让实验回答同一个问题？",
+    "description": "从阻力补偿、纸带差分到双车位移比，保留槽码与小车的共同加速度，检验牵引近似的边界。",
+    "color": "#b3be9b",
+    "tag": "控制变量 · 纸带 · 位移比",
+    "related": ["ticker-tape-lab", "force-pairs-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Applying Newton’s Laws",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["小车力与加速度实验", "牛顿第二定律", "阻力补偿", "双车位移比"],
+      "en": [
+        "Cart force and acceleration",
+        "Newton second law",
+        "resistance compensation",
+        "paired cart ratio"
+      ]
+    }
+  },
+  "component": "src/components/experiments/NewtonSecondLawLab.tsx",
+  "cover": "src/components/covers/NewtonSecondLawLabCover.astro",
+  "translations": {
+    "小车力与加速度实验": "Cart force and acceleration",
+    "改变拉力或质量，怎样让实验回答同一个问题？": "How can force and mass be varied in a controlled experiment?",
+    "从阻力补偿、纸带差分到双车位移比，保留槽码与小车的共同加速度，检验牵引近似的边界。": "Combine resistance compensation, tape differences and paired-cart displacement ratios while retaining the dynamics of the hanging mass.",
+    "控制变量 · 纸带 · 位移比": "Control variables · Tape · Displacement ratio",
+    "两辆小车各由槽码牵引，共同夹具同时启停": "Two carts are pulled by hanging masses and share a release-and-stop clamp",
+    "小车、纸带、定滑轮与槽码由连续绳线连接": "A cart, tape, fixed pulley and hanging mass form a connected apparatus",
+    "先平衡阻力：不挂槽码，小车应近似匀速": "Compensate resistance: without the hanger, the cart should move uniformly",
+    "两车同时开始、同时停止，比较位移": "Start and stop both carts together to compare displacement",
+    "保持槽码，增加小车质量": "Keep the hanger and increase cart mass",
+    "槽码较重时，重力不能直接代替绳中拉力": "A heavy hanger’s weight cannot directly stand for string tension",
+    "同一小车，改变牵引，记录加速度": "Keep one cart, change the pull and record acceleration",
+    "双车位移比法": "Paired-cart displacement ratio",
+    "单车纸带法": "Single-cart tape method",
+    "小车质量": "Cart mass",
+    "绳中拉力": "String tension",
+    "运动段加速度": "Acceleration during motion",
+    "同一测量时长，从静止开始": "Same duration, both released from rest",
+    "位移比": "Displacement ratio",
+    "纸带记录 · 相邻计数点间隔0.10秒": "Tape record · Counting points0.10 s apart",
+    "按实际等时间位置画出的纸带计数点": "Tape counting points drawn from actual equal-time positions",
+    "槽码重力": "Hanger weight",
+    "把重力当拉力的相对高估": "Relative overestimate when weight is used as tension",
+    "固定小车质量，检查a—F关系": "Fixed cart mass: examine a versus F",
+    "固定槽码，检查a—1/M的近似关系": "Fixed hanger: examine the approximate a versus1/M relation",
+    "从纸带重建的加速度与对应控制变量的数据点": "Tape-reconstructed accelerations plotted against their controlled variable",
+    "把纸带的阻力也计入补偿；匀速检验比只看倾角可靠。": "Include tape resistance in compensation; uniform-motion checks matter more than tilt alone.",
+    "相同初速度为零、相同时间，位移之比才等于加速度之比。": "With zero initial speeds and equal durations, displacement ratio equals acceleration ratio.",
+    "槽码相同只是近似相同拉力；精确拉力还随整个系统的加速度改变。": "The same hanger gives only approximately equal pulls; exact tension changes with system acceleration.",
+    "精确模型同时计算小车与槽码；拉力与加速度始终保持同一力学关系。": "The exact model includes cart and hanger, keeping tension and acceleration dynamically consistent.",
+    "实验方法": "Experiment method",
+    "单车纸带": "Single-cart tape",
+    "两车同时启停": "Paired start and stop",
+    "阻力补偿": "Resistance compensation",
+    "槽码质量": "Hanging mass",
+    "木板倾角": "Track tilt",
+    "模型时间": "Model time",
+    "绳与滑轮质量忽略，滑轮无摩擦；到测量终点后定格。补偿阻力按恒定系数近似。": "String and pulley mass and pulley friction are neglected. Measurements freeze at their endpoint; resistance uses a constant coefficient."
+  },
+  "narration": {
+    "duration": 170,
+    "cues": [
+      {
+        "id": "compensate",
+        "title": "先补偿阻力",
+        "titleEn": "Compensate resistance",
+        "caption": "不挂槽码，让带纸带的小车近似匀速。",
+        "captionEn": "Without a hanger, the cart and tape should move nearly uniformly.",
+        "zh": "先把槽码取下，保留小车和纸带。略微垫高木板一端，让沿板的重力分量补偿阻力，再给小车一个初速度。纸带点间距近似相等，才说明这段运动接近匀速。纸带本身也会带来阻力，所以调试时不能把它拿掉。实验条件的检查，应依靠运动记录，而不只是看木板有没有倾斜。",
+        "en": "Remove the hanging mass while keeping the cart and tape. Raise one end slightly so slope gravity compensates resistance, then give the cart an initial speed. Nearly equal dot spacings indicate nearly uniform motion. Keep the tape attached because it adds resistance. Verify the setup from motion records rather than tilt alone.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "tape",
+        "title": "用纸带求加速度",
+        "titleEn": "Infer acceleration from tape",
+        "caption": "等时间位置的二次差分给出加速度。",
+        "captionEn": "Second differences of equal-time positions give acceleration.",
+        "zh": "接上槽码，让它通过定滑轮牵引小车。小车移动的距离与槽码下降的距离相同，绳路始终连接。计时器留下等时间点，画面按固定间隔选择计数点，再比较相邻段距离的增加量。因为这些时间间隔相同，距离的二次差分可以换算成加速度，而不是只看某一段纸带长不长。",
+        "en": "Attach the hanging mass through the fixed pulley. Cart travel and hanger descent match along one connected string. The timer marks equal-time dots; counting points are selected at a fixed interval. Compare how successive distances increase. Their second difference, divided by the interval squared, gives acceleration rather than judging a single long section.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "force",
+        "title": "同质量，改变拉力",
+        "titleEn": "Same mass, different pull",
+        "caption": "把每次真实拉力与纸带加速度配成一点。",
+        "captionEn": "Pair each actual tension with its tape-derived acceleration.",
+        "zh": "保持同一小车质量，逐次改变槽码，重新释放和记录。把每次的绳中拉力与纸带加速度放在同一张图上，检查两者的关系。在补偿成立时，小车的加速度与它受到的拉力成正比。这里始终使用同一小车，不能一边加大牵引，一边又随意改变小车质量，那样就混入了另一个变量。",
+        "en": "Keep cart mass fixed and change the hanger in separate releases. Pair actual string tension with tape-derived acceleration on one graph. With resistance compensated, cart acceleration is proportional to its pull. Do not change cart mass at the same time as increasing the drive, or the comparison mixes two variables.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "mass",
+        "title": "改变质量，检查近似",
+        "titleEn": "Change mass and check the approximation",
+        "caption": "固定槽码不完全等于固定拉力。",
+        "captionEn": "A fixed hanger does not mean exactly fixed tension.",
+        "zh": "再保持槽码不变，给小车增加质量。小车越重，加速度越小，可以考察加速度与质量倒数的关系。但这里有一个实验近似：同一个槽码只保证重力不变，绳中拉力还会随系统加速度略微改变。槽码远轻于小车时，这种差别较小；模型保留真实差别，不把所有记录强行画成完美直线。",
+        "en": "Keep the hanger while adding cart mass. Acceleration falls, motivating a graph against inverse mass. But a fixed hanger guarantees fixed weight, not exactly fixed tension; tension changes slightly with system acceleration. The difference is small when the hanger is much lighter than the cart. The model retains it instead of forcing every point onto a perfect line.",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "paired",
+        "title": "两车同时启停",
+        "titleEn": "Start and stop two carts together",
+        "caption": "相同时间、零初速度，使位移比等于加速度比。",
+        "captionEn": "Equal durations from rest make displacement ratio equal acceleration ratio.",
+        "zh": "另一种方法同时观察两辆小车。共同夹具松开两根后绳，两车从静止开始，再一起夹紧结束测量。因为时间相同，且运动段加速度保持不变，位移之比就等于加速度之比。双层轨道只是布局改变，关键仍是同时开始、同时停止；如果拿不同时长的距离相比，这个推断就不成立。",
+        "en": "An alternative observes two carts. A shared clamp releases both trailing strings from rest and stops them together. Equal durations with constant accelerations make displacement ratio equal acceleration ratio. Stacked tracks only change the layout. Simultaneous start and stop remain essential; distances from unequal durations cannot be used in this way.",
+        "seconds": 28,
+        "chapterAt": 113,
+        "at": 113.3
+      },
+      {
+        "id": "boundary",
+        "title": "槽码重时会怎样",
+        "titleEn": "Test a heavier hanger",
+        "caption": "槽码也在加速，绳中拉力小于它的重力。",
+        "captionEn": "The hanger accelerates too, so its tension is below its weight.",
+        "zh": "最后把槽码加重，专门检查近似的边界。槽码向下加速，它的重力必须大于绳向上的拉力，两者之差推动槽码自身运动。于是槽码重力不能直接当成小车受到的拉力。画面同时列出这两个量及高估程度。保留整个系统的运动关系，才能分清模型的精确计算与实验中方便使用的近似。",
+        "en": "Increase the hanger to test the approximation. It accelerates downward, so its weight exceeds the upward tension; the difference accelerates the hanger itself. Its weight therefore cannot directly represent the cart’s pull. Compare both quantities and the resulting overestimate. Including both bodies distinguishes exact dynamics from a convenient experimental approximation.",
+        "seconds": 29,
+        "chapterAt": 141,
+        "at": 141.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-newton-second-law": {
+      "chapterIds": ["compensate", "tape", "force", "mass", "paired", "boundary"],
+      "label": {
+        "zh": "加速度与力、质量",
+        "en": "Acceleration, force and mass"
+      }
+    }
+  }
+}

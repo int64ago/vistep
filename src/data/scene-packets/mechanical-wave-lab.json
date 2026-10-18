@@ -1,0 +1,197 @@
+{
+  "topic": {
+    "slug": "mechanical-wave-lab",
+    "name": "绳波、人浪与弹簧波",
+    "title": "波向前传播时，介质去了哪里？",
+    "question": "波向前传播时，介质去了哪里？",
+    "description": "跟踪绳上的红色标记、原地起蹲的学生和往复移动的弹簧圈，比较横波与纵波的状态传播。",
+    "color": "#9dab7d",
+    "tag": "运动状态向前，介质局部往复",
+    "related": ["wave-interference", "seismic-waves"],
+    "sources": [
+      {
+        "title": "OpenStax — Travelling waves",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves"
+      },
+      {
+        "title": "OpenStax — Mathematics of waves",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      }
+    ]
+  },
+  "component": "src/components/experiments/MechanicalWaveLab.tsx",
+  "cover": "src/components/covers/MechanicalWaveLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["绳波、人浪与弹簧波", "机械波", "横波", "纵波", "绳波", "人浪", "疏密波"],
+      "en": [
+        "Ropes, human waves and spring waves",
+        "mechanical waves",
+        "transverse",
+        "longitudinal",
+        "rope pulse",
+        "human wave",
+        "compression"
+      ]
+    }
+  },
+  "translations": {
+    "绳波、人浪与弹簧波": "Ropes, human waves and spring waves",
+    "波向前传播时，介质去了哪里？": "When a wave travels forward, where does the medium go?",
+    "跟踪绳上的红色标记、原地起蹲的学生和往复移动的弹簧圈，比较横波与纵波的状态传播。": "Track a rope marker, students standing in place and oscillating spring coils to compare transverse and longitudinal propagation.",
+    "运动状态向前，介质局部往复": "The pattern travels; the medium oscillates locally",
+    "软绳上的红色标记": "A red marker on a soft rope",
+    "手挽手的人浪": "A linked human wave",
+    "光滑平面上的软弹簧": "A soft spring on a smooth surface",
+    "纵向振动": "Longitudinal motion",
+    "横向振动": "Transverse motion",
+    "跟踪绳、学生和弹簧圈的局部运动与传播状态": "Track local motion and propagating states in a rope, people and spring coils",
+    "振动状态向前传播": "The oscillation pattern travels",
+    "标记没有沿绳移动": "The marker stays along the rope",
+    "竖直振幅放大显示": "Vertical amplitude magnified",
+    "每个人的脚仍在原位": "Each person keeps their place",
+    "标记圈局部放大": "Marked coil, magnified",
+    "介质标记的位移": "Marked element displacement",
+    "原地起蹲": "Standing and crouching in place",
+    "波形传播": "Pattern travel",
+    "绳波": "Rope",
+    "人浪": "Human wave",
+    "弹簧纵波": "Spring",
+    "向上抖一次": "One upward motion",
+    "向下抖一次": "One downward motion",
+    "连续抖动": "Continuous oscillation",
+    "观察时间": "Observation time",
+    "振源频率": "Source frequency",
+    "单次动作时长": "Single-motion duration",
+    "传播模型与类比范围": "Propagation model and analogy limits",
+    "绳和弹簧使用同一振源历史延迟x/v后的行波解，速度示例为2米每秒，只观察边界反射返回前的传播。软绳采用小斜率横波近似，竖直振幅放大；弹簧圈的位置从轴向位移推导，线圈不互相穿越。人浪表现延迟起蹲与固定脚位，是状态传播的类比，并不把人体当作绳的弹性模型。": "The rope and spring use a travelling solution equal to source history delayed by x/v, with example speed 2 m/s, before boundary reflections return. The rope uses a small-slope transverse approximation with magnified vertical displacement. Spring geometry derives from axial displacement, with positive pitch. The human wave illustrates delayed actions at fixed positions, not a mechanical model of people as an elastic rope.",
+    "向上抖动一次": "One upward motion",
+    "一个凸起向前传播，红色标记只上下运动。": "A raised pulse travels while the red marker moves vertically.",
+    "向下抖动一次": "One downward motion",
+    "向下的位移也向前传播，波的方向不随上下改变。": "A downward displacement also travels forward.",
+    "连续振动形成波列": "Continuous driving makes a wave train",
+    "后面的绳段重复前面的动作，但开始得更晚。": "Each later segment repeats the source motion after a delay.",
+    "同学依次起蹲": "Students respond in sequence",
+    "相邻同学稍迟重复动作，形成移动的人浪。": "Delayed standing and crouching form a travelling human wave.",
+    "只看红衣同学": "Track one student",
+    "红衣同学没有沿队列走动，传播的是动作状态。": "The highlighted student stays in place while the action pattern travels.",
+    "沿弹簧轴向推拉": "Push and pull along the spring",
+    "疏密交替向前传播，弹簧圈沿轴线往复。": "Compressions and rarefactions travel while coils oscillate along the axis.",
+    "跟踪同一个弹簧圈": "Follow the same spring coil",
+    "放大的红色标记往复回到原位，并不随密部迁移。": "The magnified marker oscillates around its original position, rather than following a compression."
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "rope-up",
+        "title": "向上抖动一次",
+        "titleEn": "One upward motion",
+        "caption": "一个凸起向前传播，红色标记只上下运动。",
+        "captionEn": "A raised pulse travels while the red marker moves vertically.",
+        "zh": "握住长绳的一端，向上抖动一次。形成的凸起沿绳传播，红色标记却停留在同一段绳上，只在波到来时向上再回落。空心圆跟随凸起，与红色的物质标记区别开。",
+        "en": "Move one end of the rope upward once. The raised pulse travels along it, but the red marker remains on the same material segment, rising and returning as the pulse arrives. The hollow circle follows the pulse rather than a piece of rope.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "rope-down",
+        "title": "向下抖动一次",
+        "titleEn": "One downward motion",
+        "caption": "向下的位移也向前传播，波的方向不随上下改变。",
+        "captionEn": "A downward displacement also travels forward.",
+        "zh": "现在向下抖动一次，凹下的波形仍向绳的另一端传播。上下是绳上质点的运动方向，向前是波形的传播方向。把这两个方向分开，才不会以为波谷是在向下传播。",
+        "en": "Now make one downward motion. The depression still travels toward the other end. Up and down describe material displacement; forward describes propagation. Separating these directions prevents mistaking a downward displacement for a downward-travelling wave.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24
+      },
+      {
+        "id": "rope-train",
+        "title": "连续振动形成波列",
+        "titleEn": "Continuous driving makes a wave train",
+        "caption": "后面的绳段重复前面的动作，但开始得更晚。",
+        "captionEn": "Each later segment repeats the source motion after a delay.",
+        "zh": "连续上下抖动，形成一列凹凸相间的波。每一段绳重复振源的动作，距离越远，开始得越晚。暂停后看红色标记的位置，再推进一小段时间，区分一个点的振动与整条绳的波形。",
+        "en": "Drive the end continuously to form a wave train. Every rope segment repeats the source motion with a delay that grows with distance. Pause and inspect the red marker, then advance slightly to distinguish one point’s oscillation from the rope’s overall shape.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48
+      },
+      {
+        "id": "human-delay",
+        "title": "同学依次起蹲",
+        "titleEn": "Students respond in sequence",
+        "caption": "相邻同学稍迟重复动作，形成移动的人浪。",
+        "captionEn": "Delayed standing and crouching form a travelling human wave.",
+        "zh": "一排同学手挽手，从第一位开始起立、下蹲。后一位稍迟重复前一位的动作。凹凸相间的轮廓沿队伍移动，每个人却仍在自己的位置上。这个活动让传播延迟变得直接可见。",
+        "en": "Students link hands and begin standing and crouching in sequence. Each responds slightly later than the neighbour. The rising-and-falling outline travels along the row while every student keeps their place, making propagation delay visible.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72
+      },
+      {
+        "id": "human-track",
+        "title": "只看红衣同学",
+        "titleEn": "Track one student",
+        "caption": "红衣同学没有沿队列走动，传播的是动作状态。",
+        "captionEn": "The highlighted student stays in place while the action pattern travels.",
+        "zh": "现在只盯住红衣同学和脚下的短线。动作继续，脚位没有向队伍前方移动。人浪是状态传播的类比，帮助我们观察先后关系；它不意味着人体和绳子的弹性运动机制完全相同。",
+        "en": "Focus on the highlighted student and the short mark beneath their feet. The action continues without movement along the row. This is an analogy for a travelling state and its delay, not a claim that people follow the same elastic dynamics as a rope.",
+        "seconds": 24,
+        "chapterAt": 96,
+        "at": 96
+      },
+      {
+        "id": "spring-compression",
+        "title": "沿弹簧轴向推拉",
+        "titleEn": "Push and pull along the spring",
+        "caption": "疏密交替向前传播，弹簧圈沿轴线往复。",
+        "captionEn": "Compressions and rarefactions travel while coils oscillate along the axis.",
+        "zh": "把长而软的弹簧放在光滑平面上，沿轴线推拉一端。相邻线圈的间距交替减小、增大，形成传播的密部和疏部。每个线圈的运动方向与波传播方向平行，所以这是纵波。",
+        "en": "Place a long soft spring on a smooth surface and push and pull one end along its axis. Neighbouring coil spacing alternately decreases and increases, forming travelling compression and rarefaction. Coil motion is parallel to propagation: a longitudinal wave.",
+        "seconds": 24,
+        "chapterAt": 120,
+        "at": 120
+      },
+      {
+        "id": "spring-track",
+        "title": "跟踪同一个弹簧圈",
+        "titleEn": "Follow the same spring coil",
+        "caption": "放大的红色标记往复回到原位，并不随密部迁移。",
+        "captionEn": "The magnified marker oscillates around its original position, rather than following a compression.",
+        "zh": "最后追踪红色标记所在的线圈。局部放大显示它向前、向后往复，随后回到同一个平衡位置。传播出去的是压缩和伸展的状态，不是这个弹簧圈一路向前。横波和纵波都要区分物质运动与波的传播。",
+        "en": "Follow the marked coil. The magnified local view shows it moving forward and backward around the same equilibrium position. Compression and stretching travel onward, rather than carrying that coil along. Both transverse and longitudinal waves require this distinction between material motion and propagation.",
+        "seconds": 24,
+        "chapterAt": 144,
+        "at": 144
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-rope-wave": {
+      "chapterIds": ["rope-up", "rope-down", "rope-train"],
+      "label": {
+        "zh": "观察绳波的产生和传播",
+        "en": "Rope-wave generation and propagation"
+      }
+    },
+    "e1-human-wave": {
+      "chapterIds": ["human-delay", "human-track"],
+      "label": {
+        "zh": "用人浪模拟波的传播",
+        "en": "A human-wave analogy"
+      }
+    },
+    "e1-spring-longitudinal-wave": {
+      "chapterIds": ["spring-compression", "spring-track"],
+      "label": {
+        "zh": "观察弹簧形成的波",
+        "en": "Longitudinal waves in a spring"
+      }
+    }
+  }
+}

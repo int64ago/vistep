@@ -1,0 +1,182 @@
+{
+  "topic": {
+    "slug": "relativity-experiments",
+    "name": "光、事件与时钟",
+    "title": "相对论怎样接受实验检验？",
+    "question": "相对论怎样接受实验检验？",
+    "description": "从转动干涉仪到μ子计数和飞行原子钟，比较可以观察的差异。",
+    "color": "#94a9b5",
+    "tag": "相对论",
+    "related": ["gravity-measurements", "celestial-observations"],
+    "sources": [
+      {
+        "title": "OpenStax — Relativity of simultaneity",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/5-2-relativity-of-simultaneity"
+      },
+      {
+        "title": "OpenStax — Time dilation and muons",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/5-3-time-dilation"
+      },
+      {
+        "title": "NIST — Relativity and optical clocks",
+        "url": "https://www.nist.gov/publications/relativity-and-optical-clocks"
+      },
+      {
+        "title": "NIST — Time and reference frames on rotating Earth",
+        "url": "https://tf.nist.gov/general/pdf/711.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/RelativityExperiments.tsx",
+  "cover": "src/components/covers/RelativityExperimentsCover.astro",
+  "discovery": {
+    "category": "nature",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["光、事件与时钟", "相对论怎样接受实验检验？", "近代物理实验"],
+      "en": [
+        "Light, events and clocks",
+        "How is relativity tested experimentally?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "光、事件与时钟": "Light, events and clocks",
+    "相对论怎样接受实验检验？": "How is relativity tested experimentally?",
+    "从转动干涉仪到μ子计数和飞行原子钟，比较可以观察的差异。": "Compare observable differences in rotating interferometers, muon counts and flying clocks.",
+    "近代物理": "Modern physics",
+    "相对论": "Relativity"
+  },
+  "narration": {
+    "duration": 224,
+    "cues": [
+      {
+        "id": "ether-prediction",
+        "title": "先算出可以被检验的预期",
+        "titleEn": "Calculate a testable expectation",
+        "caption": "假设有以太风，转动等臂干涉仪应改变两束光的相位差。",
+        "captionEn": "An ether wind would change the phase difference when an equal-arm interferometer rotates.",
+        "zh": "光在分束片分成两路，分别沿互相垂直的臂往返，再合并到探测端。假如地球穿过静止以太，沿风和横风的往返时间应不同。转动仪器，假设模型预期条纹会移动。上栏条纹由这个历史假设的往返时间计算，不能当成真实观察结果。",
+        "en": "A beam splitter sends light along perpendicular arms and recombines the returning beams. A stationary-ether hypothesis predicts different round-trip times along and across Earth’s motion. Rotating the apparatus should move the fringes. The upper strip calculates that historical hypothesis, not an actual observation.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "null-result",
+        "title": "把预期与实验结果比较",
+        "titleEn": "Compare the expectation with the result",
+        "caption": "预期的条纹移动没有出现，简单的以太风解释受到挑战。",
+        "captionEn": "The predicted fringe shift was absent, challenging the simple ether-wind explanation.",
+        "zh": "迈克耳孙和莫雷没有观察到预期大小的条纹变化。下栏用理想不移动条纹示意这个零结果，不伪造原始噪声或误差条。它对当时的解释构成重要约束，但不能单凭一幅理想图就推导出完整相对论。光程取十一米的等效单臂长度，图形折叠被简化。",
+        "en": "Michelson and Morley did not observe the expected fringe change. The lower stationary strip illustrates an ideal null result without inventing historical noise or error bars. It constrained contemporary explanations, but one ideal image does not derive all of relativity. Each effective arm is eleven metres; optical folding is simplified.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "train-reception",
+        "title": "先区分发出和接收",
+        "titleEn": "Distinguish emission from reception",
+        "caption": "地面同时发出的光，先后到达向右运动的乘客。",
+        "captionEn": "Light emitted simultaneously on the ground reaches the right-moving passenger at different times.",
+        "zh": "地面上的A、B两点同时发光，乘客向右运动。两束光在地面系中速率相同，但乘客迎向右侧光、远离左侧光，所以右侧光先到。先后接收本身还不是同时性的完整论证：判断发出时刻时，还必须扣除本参考系中的传播时间。",
+        "en": "Two ground points emit simultaneously while a passenger moves right. Both rays have the same ground-frame speed, but the passenger approaches the right ray and recedes from the left. Receiving them at different times is not the whole simultaneity argument: emission times require accounting for propagation in the chosen frame.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "train-events",
+        "title": "变换同一对发光事件",
+        "titleEn": "Transform the same two emission events",
+        "caption": "洛伦兹变换后，两次发光在车厢系中的时间不同。",
+        "captionEn": "The Lorentz transformation assigns different train-frame times to the emissions.",
+        "zh": "把同一对发光事件的时间和位置代入洛伦兹变换。地面系的两个发出时刻都为零，车厢系中B先于A。下方时间轴显示这对事件的变换后坐标，单位取两点距离除以光速。乘客速度为零点六倍光速，图中不是在比较不同位置的两次接收事件。",
+        "en": "Apply the Lorentz transformation to the same emission events. Both ground-frame times are zero, but B precedes A in the train frame. The lower axis shows transformed emission coordinates in units of separation divided by light speed. The passenger travels at point-six c; these are not two reception events at different positions.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "muon-survival",
+        "title": "用固有寿命预测计数",
+        "titleEn": "Predict counts from proper lifetime",
+        "caption": "高速μ子经历的固有时间较短，存活到地面的比例更大。",
+        "captionEn": "Fast muons experience less proper time, increasing survival to the ground.",
+        "zh": "高空产生的μ子会衰变。若直接用地面飞行时间代入静止寿命，几乎没有μ子能跨越这里的一万米。相对论计算要使用μ子经历的固有时间，得到更高的存活比例。右侧点阵显示期望比例，不是每个粒子的真实随机记录；能量损失和速度分布被省略。",
+        "en": "Atmospheric muons decay. Using the laboratory flight time with the rest lifetime would leave almost none after this ten-kilometre path. Relativity uses the muon’s proper time and predicts much greater survival. The dots show an expected fraction, not recorded random decays. Energy loss and the velocity distribution are omitted.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "muon-frames",
+        "title": "从μ子参考系得到相同结论",
+        "titleEn": "Reach the same conclusion in the muon frame",
+        "caption": "地面系的时间膨胀，与μ子系的距离收缩相互一致。",
+        "captionEn": "Time dilation in the ground frame agrees with distance contraction in the muon frame.",
+        "zh": "换到μ子瞬时惯性参考系，它仍按自己的固有寿命衰变，但大气层经过的长度收缩。用收缩后的路程除以相对速度，得到同一段固有时间。底部显示收缩后的距离；竖直装置仍按地面坐标画出，避免把两套坐标混在一张几何图里。",
+        "en": "In the muon’s inertial frame, decay follows its proper lifetime while the atmospheric path is contracted. Contracted distance divided by relative speed gives the same proper flight time. The lower value shows that distance; the vertical apparatus remains in ground coordinates rather than mixing two coordinate systems geometrically.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "clock-east",
+        "title": "向东飞行：合并两项贡献",
+        "titleEn": "Eastbound flight: combine two contributions",
+        "caption": "运动让飞行钟相对变慢，较高引力势让它相对变快。",
+        "captionEn": "Motion slows the flying clock relative to the ground, while higher potential speeds it up.",
+        "zh": "原子钟登机前与地面钟比较，飞行后再比较。向东飞行时，飞机在地心非转动系中的速度通常比地面钟更大，运动项使飞行钟少走；较高位置的引力势又使它多走。下方分别累计两项，再给出总差。这是赤道、定高度与定速模型，不是原飞行路线的数据。",
+        "en": "Atomic clocks are compared before and after flight. Eastbound, the aircraft usually moves faster than the ground in a nonrotating geocentric frame, reducing elapsed proper time. Higher gravitational potential increases it. The bars accumulate both terms and their sum. This constant-altitude equatorial model is not the historical flight dataset.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "clock-west",
+        "title": "向西飞行：地球自转改变比较",
+        "titleEn": "Westbound flight: Earth’s rotation changes the comparison",
+        "caption": "向西飞行的运动项可以反向，不能只说“飞机上的钟更慢”。",
+        "captionEn": "Westbound motion can reverse the kinematic contribution; flying clocks are not simply always slower.",
+        "zh": "向西飞行时，飞机相对地面的速度方向与地球自转相反，在地心非转动系中可能比地面钟更慢。因此运动项可以使飞行钟相对多走，与高度项相加。这里取四十小时、相对地面每秒二百五十米；真实哈费勒—基廷实验必须逐段积分实际航线，不能用本例代替。",
+        "en": "Westbound motion opposes Earth’s rotation, so the aircraft can move more slowly than the ground in the geocentric frame. The kinematic term may then increase elapsed proper time and add to the altitude term. This example uses forty hours and two hundred fifty metres per second relative to the ground, not the actual Hafele–Keating flight integrals.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-michelson-morley": {
+      "chapterIds": ["ether-prediction", "null-result"],
+      "label": {
+        "zh": "迈克耳孙—莫雷实验",
+        "en": "Michelson–Morley test"
+      }
+    },
+    "required-2-simultaneity": {
+      "chapterIds": ["train-reception", "train-events"],
+      "label": {
+        "zh": "同时性思想实验",
+        "en": "Simultaneity thought experiment"
+      }
+    },
+    "required-2-muons": {
+      "chapterIds": ["muon-survival", "muon-frames"],
+      "label": {
+        "zh": "μ子实验",
+        "en": "Muon experiment"
+      }
+    },
+    "required-2-atomic-clocks": {
+      "chapterIds": ["clock-east", "clock-west"],
+      "label": {
+        "zh": "飞行原子钟",
+        "en": "Flying atomic clocks"
+      }
+    }
+  }
+}

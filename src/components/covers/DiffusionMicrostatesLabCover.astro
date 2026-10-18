@@ -1,0 +1,26 @@
+---
+const points = Array.from({ length: 120 }, (_, i) => ({
+  x: 51 + ((i * 73) % 123),
+  y: 81 + ((i * 41) % 137),
+}));
+const colors = ['#ac756d', '#7f9e8f', '#bba36c', '#928ba3'];
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <path d="M41 65V220Q111 240 181 220V65" fill="#e7eee3" stroke="#a6baa4" stroke-width="2"
+  ></path><ellipse cx="111" cy="76" rx="70" ry="12" fill="#edf3e9" stroke="#b6c9b3"></ellipse>
+  {points.map((p) => <circle cx={p.x} cy={p.y} r="2" fill="#b47a72" opacity=".6" />)}
+  <path d="M100 19H122L118 54H104Z" fill="#d6e0cb" stroke="#a1b391"></path><path
+    d="M104 54H118L115 67H107Z"
+    fill="#b17b71"></path>
+  {
+    [0, 1, 2, 3].map((mask) => (
+      <g transform={`translate(${211 + (mask % 2) * 62} ${94 + Math.floor(mask / 2) * 62})`}>
+        <path d="M25 2V48" stroke="#c0cdae" />
+        {colors.map((c, i) => (
+          <circle cx={(mask >> i) & 1 ? 36 : 14} cy={10 + i * 10} r="3.5" fill={c} />
+        ))}
+      </g>
+    ))
+  }
+</svg>

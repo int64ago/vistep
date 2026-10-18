@@ -1,0 +1,53 @@
+---
+import { torsionState } from '../../models/coulomb-torsion';
+const s = torsionState(0.08, 1, 1);
+const a = s.topAngle;
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><defs
+    ><linearGradient id="ctc-glass"
+      ><stop stop-color="#dbe3cf" stop-opacity=".7"></stop><stop
+        offset=".6"
+        stop-color="#fafbf1"
+        stop-opacity=".1"></stop><stop offset="1" stop-color="#b6c5aa" stop-opacity=".4"
+      ></stop></linearGradient
+    ><radialGradient id="ctc-ball" cx=".3" cy=".2"
+      ><stop stop-color="#fff1cc"></stop><stop offset="1" stop-color="#aaa983"
+      ></stop></radialGradient
+    ></defs
+  ><ellipse cx="197" cy="198" rx="123" ry="22" fill="#a6b793" opacity=".18"></ellipse><path
+    d="M74 78V194Q197 235 320 194V78"
+    fill="url(#ctc-glass)"
+    stroke="#b8c5aa"></path><ellipse
+    cx="197"
+    cy="78"
+    rx="123"
+    ry="23"
+    fill="#e5ebd8"
+    fill-opacity=".4"
+    stroke="#b8c5aa"></ellipse><path d="M197 40V151" stroke="#8b987e"></path><path
+    d="M151 151H258"
+    stroke="#918d6c"
+    stroke-width="4"></path><path d="M258 114V189" stroke="#b7c6a6" stroke-width="7"></path><circle
+    cx="151"
+    cy="151"
+    r="9"
+    fill="#a6ab8b"></circle><circle cx="258" cy="151" r="12" fill="url(#ctc-ball)" stroke="#a2a383"
+  ></circle><circle cx="258" cy="111" r="12" fill="url(#ctc-ball)" stroke="#a2a383"></circle><path
+    d="M254 151h8m-4-4v8M254 111h8m-4-4v8"
+    stroke="#977347"></path><path d="M281 111v40m-4-40h8m-8 40h8" stroke="#b0a67d"></path><circle
+    cx="197"
+    cy="33"
+    r="20"
+    fill="#dddcc1"
+    stroke="#a6b092"></circle><path
+    d={`M197 33l${14 * Math.sin(a)} ${-14 * Math.cos(a)}`}
+    stroke="#9d7c50"
+    stroke-width="3"
+    stroke-linecap="round"></path><path
+    d="M86 98V181"
+    stroke="#fffef3"
+    stroke-width="4"
+    opacity=".75"></path></svg
+>

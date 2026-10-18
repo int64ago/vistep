@@ -1,0 +1,277 @@
+{
+  "topic": {
+    "slug": "ac-circuit-lab",
+    "name": "交流电与LC振荡实验",
+    "title": "电流换方向时，灯泡与线圈怎样响应？",
+    "question": "电流换方向时，灯泡与线圈怎样响应？",
+    "description": "用示波器、反并联LED、交流元件和LC回路逐步比较变化的电流。",
+    "color": "#799066",
+    "tag": "交流与储能交换",
+    "related": ["transformer-electric", "inductor-transient"],
+    "sources": [
+      {
+        "title": "OpenStax — Simple AC circuits",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits"
+      },
+      {
+        "title": "OpenStax — LC oscillations",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit"
+      }
+    ]
+  },
+  "component": "src/components/experiments/AcCircuitLab.tsx",
+  "cover": "src/components/covers/AcCircuitLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["交流电与LC振荡实验", "交变电流", "示波器", "发电机", "感抗", "容抗", "LC振荡"],
+      "en": [
+        "AC and LC oscillation experiments",
+        "alternating current",
+        "oscilloscope",
+        "inductive reactance",
+        "capacitive reactance"
+      ]
+    }
+  },
+  "translations": {
+    "交流电与LC振荡实验": "AC and LC oscillation experiments",
+    "电流换方向时，灯泡与线圈怎样响应？": "How do lamps and coils respond when current reverses?",
+    "用示波器、反并联LED、交流元件和LC回路逐步比较变化的电流。": "Compare changing current through oscilloscopes, antiparallel LEDs, reactive components and an LC loop.",
+    "交流与储能交换": "AC and stored energy",
+    "电源与示波器": "Supply and oscilloscope",
+    "手摇发电机与双色LED": "Hand generator and two LEDs",
+    "线圈与交流灯泡": "A coil and an AC lamp",
+    "电容与交流灯泡": "A capacitor and an AC lamp",
+    "LC振荡与电压传感器": "LC oscillation and voltage sensing",
+    "两个方向分别发光": "Opposite directions light different LEDs",
+    "电源、元件和测量电路与同一波形同步": "Source, components and measurement circuit share the same waveform",
+    "滑环保持两端独立连接": "Slip rings keep the two terminals connected separately",
+    "充电结束后，电流趋于零": "Current tends to zero after charging",
+    "电源给电容充电": "The source charges the capacitor",
+    "切至线圈，电源退出振荡": "Switch to the coil; the source leaves the loop",
+    "剩余电磁能": "Remaining field energy",
+    "有正负刻度的电压波形": "Voltage waveform with positive and negative values",
+    "选择交流实验": "Choose an AC experiment",
+    "电源类型": "Source type",
+    "信号频率": "Signal frequency",
+    "线圈自感系数": "Coil inductance",
+    "电容量": "Capacitance",
+    "振荡经过的周期数": "Elapsed oscillation periods",
+    "振荡回路电阻": "Oscillating-loop resistance",
+    "信号相位": "Signal phase",
+    "有效值、瞬态与慢放": "RMS, transients and slow motion",
+    "交流与直流比较使用相同3伏有效值。灯泡是固定6欧电阻，交流亮度采用平均功率；感抗含2欧绕组电阻，电容直流模式单独显示充电暂态。LED使用1.8伏阈值与100欧限流，滑环不是换向器。LC用0.2亨、1000微法和可调串联损耗解析求解；图示慢放，不是实际示波器采样。": "AC/DC comparisons use the same three-volt RMS supply. Lamps are fixed six-ohm resistors with average AC power. The coil includes two-ohm winding resistance; capacitor DC mode shows its charging transient. LEDs use a 1.8-volt threshold and 100-ohm limiter; slip rings do not rectify. LC uses 0.2 H, 1000 μF and adjustable series loss, solved analytically. Views are slow-motion model traces, not sampled measurements.",
+    "先观察电池": "Observe a battery",
+    "直流电压保持同一极性。": "Direct voltage keeps one polarity.",
+    "换成交流电源": "Switch to an AC supply",
+    "周期性跨过零，意味着电压极性反转。": "Crossing zero periodically reverses voltage polarity.",
+    "发电机的一半周期": "One half-cycle of the generator",
+    "一个方向的电流点亮一只LED。": "One current direction lights one LED.",
+    "另一半周期": "The opposite half-cycle",
+    "电流反向，另一只LED发光。": "Reversed current lights the other LED.",
+    "线圈接直流": "A coil on steady DC",
+    "稳态直流由电阻限制。": "Resistance limits steady direct current.",
+    "保持有效值，改接交流": "Apply equal-RMS AC",
+    "变化电流带来感抗，灯泡变暗。": "Inductive reactance makes the lamp dimmer.",
+    "直流充电暂态": "The DC charging transient",
+    "短暂充电以后，电流趋于零。": "A brief charging current tends to zero.",
+    "交流反复充放电": "Repeated charging on AC",
+    "外电路持续有电流，电子不穿过介质。": "External current continues without electrons crossing the dielectric.",
+    "提高交流频率": "Increase AC frequency",
+    "电容不变，频率越高，容抗越小。": "At fixed capacitance, higher frequency lowers reactance.",
+    "先给电容充电": "Charge the capacitor first",
+    "开关先接电源，建立初始电场能。": "The switch first stores electric energy in the capacitor.",
+    "切换到线圈": "Switch onto the coil",
+    "电场能与磁场能交替交换。": "Electric and magnetic energies exchange.",
+    "真实振荡会衰减": "Real oscillations decay",
+    "电阻耗散使振幅和电磁能逐渐减小。": "Resistive loss reduces amplitude and field energy."
+  },
+  "narration": {
+    "duration": 264,
+    "cues": [
+      {
+        "id": "scope-dc",
+        "title": "先观察电池",
+        "titleEn": "Observe a battery",
+        "caption": "直流电压保持同一极性。",
+        "captionEn": "Direct voltage keeps one polarity.",
+        "zh": "把示波器接在电池两端，观察电压随时间的记录。曲线停留在零线上方，表示这个理想电池的电压保持同一极性和大小。注意波形的纵轴，不要只把它看成一条线。",
+        "en": "Connect the oscilloscope across a battery. Its trace stays above zero, representing a constant voltage with one polarity. Read the vertical axis: the line records a physical quantity over time.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "scope-ac",
+        "title": "换成交流电源",
+        "titleEn": "Switch to an AC supply",
+        "caption": "周期性跨过零，意味着电压极性反转。",
+        "captionEn": "Crossing zero periodically reverses voltage polarity.",
+        "zh": "换接学生电源的交流输出。电压周期性跨过零，上下两部分分别代表相反的极性。这里交流有效值仍是三伏，但峰值更大。有效值相同，不等于每一瞬间的电压相同。",
+        "en": "Switch to the teaching supply’s AC output. Voltage crosses zero periodically, so the two halves represent opposite polarities. Its RMS value is still three volts, while its peak is larger. Equal RMS values do not imply equal instantaneous voltages.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22
+      },
+      {
+        "id": "led-forward",
+        "title": "发电机的一半周期",
+        "titleEn": "One half-cycle of the generator",
+        "caption": "一个方向的电流点亮一只LED。",
+        "captionEn": "One current direction lights one LED.",
+        "zh": "转动教学发电机，跟随磁极之间的线圈。滑环使两个线圈端点各自保持连接。两个LED反向并联，电流朝一个方向时只有对应的LED导通并发光。",
+        "en": "Turn the teaching generator and follow its coil between the poles. Separate slip rings preserve contact with both winding ends. The LEDs are antiparallel: a given current direction lights only the appropriately oriented LED.",
+        "seconds": 22,
+        "chapterAt": 44,
+        "at": 44
+      },
+      {
+        "id": "led-reverse",
+        "title": "另一半周期",
+        "titleEn": "The opposite half-cycle",
+        "caption": "电流反向，另一只LED发光。",
+        "captionEn": "Reversed current lights the other LED.",
+        "zh": "继续转动，线圈中感应电动势反向，另一只LED亮起。对照电流读数的正负号，两个发光方向与同一转子相位对应。滑环只是保持连接，并没有把交流变成直流。",
+        "en": "Continue turning. The induced emf reverses and the other LED lights. Compare the signed current readout with the shared rotor phase. Slip rings maintain electrical contact; they do not turn this AC output into DC.",
+        "seconds": 22,
+        "chapterAt": 66,
+        "at": 66
+      },
+      {
+        "id": "inductor-dc",
+        "title": "线圈接直流",
+        "titleEn": "A coil on steady DC",
+        "caption": "稳态直流由电阻限制。",
+        "captionEn": "Resistance limits steady direct current.",
+        "zh": "将灯泡与带电阻的线圈串联，接三伏直流电源。等待接通暂态结束，电流不再变化，线圈的自感电动势归零。此时限制电流的是灯泡与绕组的总电阻。",
+        "en": "Connect the lamp and resistive coil in series to three-volt DC. After the switching transient, current stops changing and the self-induced emf is zero. Lamp and winding resistances now determine current.",
+        "seconds": 22,
+        "chapterAt": 88,
+        "at": 88
+      },
+      {
+        "id": "inductor-ac",
+        "title": "保持有效值，改接交流",
+        "titleEn": "Apply equal-RMS AC",
+        "caption": "变化电流带来感抗，灯泡变暗。",
+        "captionEn": "Inductive reactance makes the lamp dimmer.",
+        "zh": "保持电源有效值相同，改接交流。电流不断变化，线圈的感抗进一步限制电流，灯泡平均功率减小。提高频率或增加自感系数，感抗还会增大。",
+        "en": "Keep source RMS voltage unchanged and switch to AC. Continuously changing current introduces inductive reactance, reducing lamp power. Raising frequency or inductance increases that reactance.",
+        "seconds": 22,
+        "chapterAt": 110,
+        "at": 110
+      },
+      {
+        "id": "capacitor-dc",
+        "title": "直流充电暂态",
+        "titleEn": "The DC charging transient",
+        "caption": "短暂充电以后，电流趋于零。",
+        "captionEn": "A brief charging current tends to zero.",
+        "zh": "把串联元件换成电容。刚接直流时电容充电，电流逐渐减小；充电结束，电流趋于零。因此直流不通过电容说的是稳态，不能抹掉刚接通时的充电过程。",
+        "en": "Replace the series component with a capacitor. On connection to DC, it charges and current decays toward zero. Blocking DC describes the steady state; it does not erase the initial charging transient.",
+        "seconds": 22,
+        "chapterAt": 132,
+        "at": 132
+      },
+      {
+        "id": "capacitor-ac",
+        "title": "交流反复充放电",
+        "titleEn": "Repeated charging on AC",
+        "caption": "外电路持续有电流，电子不穿过介质。",
+        "captionEn": "External current continues without electrons crossing the dielectric.",
+        "zh": "改接交流后，电容反复充电与放电，外电路持续有变化的电流，灯泡可以发光。极板间的绝缘介质没有因此变成导线。相同有效值下，容抗仍会限制电流。",
+        "en": "On AC, repeated charging and discharging sustains changing current in the external circuit, allowing the lamp to glow. The dielectric does not become a conducting wire. Capacitive reactance still limits current at the same RMS voltage.",
+        "seconds": 22,
+        "chapterAt": 154,
+        "at": 154
+      },
+      {
+        "id": "capacitor-frequency",
+        "title": "提高交流频率",
+        "titleEn": "Increase AC frequency",
+        "caption": "电容不变，频率越高，容抗越小。",
+        "captionEn": "At fixed capacitance, higher frequency lowers reactance.",
+        "zh": "保持同一个电容和相同电源有效值，把频率提高。容抗降低，电流有效值和灯泡平均功率增加。这个趋势与线圈的感抗正好相反，不能把所有元件都当作固定电阻。",
+        "en": "Keep capacitance and source RMS voltage fixed, then raise frequency. Capacitive reactance falls, increasing RMS current and average lamp power. The trend is opposite to inductive reactance; reactive components are not fixed resistors.",
+        "seconds": 22,
+        "chapterAt": 176,
+        "at": 176
+      },
+      {
+        "id": "lc-charge",
+        "title": "先给电容充电",
+        "titleEn": "Charge the capacitor first",
+        "caption": "开关先接电源，建立初始电场能。",
+        "captionEn": "The switch first stores electric energy in the capacitor.",
+        "zh": "把单刀双掷开关接向电源，让电容充到五伏。此时线圈不在充电回路中，能量主要储存在电容电场里。电压传感器始终接在两极板之间，准备记录接下来的变化。",
+        "en": "Set the changeover switch toward the source and charge the capacitor to five volts. The coil is outside this charging circuit. Initial energy is stored in the capacitor’s electric field, while the sensor remains connected across its plates.",
+        "seconds": 22,
+        "chapterAt": 198,
+        "at": 198
+      },
+      {
+        "id": "lc-exchange",
+        "title": "切换到线圈",
+        "titleEn": "Switch onto the coil",
+        "caption": "电场能与磁场能交替交换。",
+        "captionEn": "Electric and magnetic energies exchange.",
+        "zh": "把开关切向线圈，电源退出。电容放电，线圈电流增加；电容电压经过零时，电流并不立刻停止，而是继续给电容反向充电。传感器记录出跨越正负的振荡。",
+        "en": "Switch onto the coil, removing the source. Capacitor discharge builds coil current. When capacitor voltage crosses zero, current continues and charges it with opposite polarity. The sensor records the alternating voltage.",
+        "seconds": 22,
+        "chapterAt": 220,
+        "at": 220
+      },
+      {
+        "id": "lc-loss",
+        "title": "真实振荡会衰减",
+        "titleEn": "Real oscillations decay",
+        "caption": "电阻耗散使振幅和电磁能逐渐减小。",
+        "captionEn": "Resistive loss reduces amplitude and field energy.",
+        "zh": "把观察时间拉长。回路电阻不断把部分电磁能变成热，电压峰值逐渐减小。自由探索中把损耗降为零，可以得到理想的持续振荡；那是有明确条件的模型极限。",
+        "en": "Extend the observation. Circuit resistance converts some electromagnetic energy into heat each cycle, reducing voltage peaks. In exploration, zero resistance gives ideal sustained oscillation—a model limit with an explicit condition.",
+        "seconds": 22,
+        "chapterAt": 242,
+        "at": 242
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-ac-dc-oscilloscope": {
+      "chapterIds": ["scope-dc", "scope-ac"],
+      "label": {
+        "zh": "交流与直流波形",
+        "en": "AC and DC waveforms"
+      }
+    },
+    "e2-ac-led-direction": {
+      "chapterIds": ["led-forward", "led-reverse"],
+      "label": {
+        "zh": "交变电流方向",
+        "en": "Alternating-current direction"
+      }
+    },
+    "e2-inductive-reactance-lamp": {
+      "chapterIds": ["inductor-dc", "inductor-ac"],
+      "label": {
+        "zh": "电感器对交流的作用",
+        "en": "Inductive reactance"
+      }
+    },
+    "e2-capacitive-reactance-lamp": {
+      "chapterIds": ["capacitor-dc", "capacitor-ac", "capacitor-frequency"],
+      "label": {
+        "zh": "电容器对交流的作用",
+        "en": "Capacitive reactance"
+      }
+    },
+    "e2-lc-oscillation-measurement": {
+      "chapterIds": ["lc-charge", "lc-exchange", "lc-loss"],
+      "label": {
+        "zh": "LC振荡电压测量",
+        "en": "LC voltage measurement"
+      }
+    }
+  }
+}

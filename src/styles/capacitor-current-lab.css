@@ -1,0 +1,188 @@
+.capcurrent-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #526b59;
+}
+.capcurrent-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.6;
+  margin: 0 14px 6px;
+}
+.capcurrent-apparatus {
+  display: block;
+  width: min(100%, 510px);
+  height: auto;
+  margin: auto;
+}
+.capcurrent-apparatus text {
+  font: 500 22px var(--font-sans, sans-serif);
+  fill: #647960;
+}
+.capcurrent-readout,
+.capcurrent-charge {
+  display: flex;
+  justify-content: center;
+  gap: 12px 28px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  padding: 6px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.capcurrent-readout b,
+.capcurrent-charge b {
+  font-weight: 500;
+  font-size: 20px;
+  color: #8d7d50;
+  margin-left: 8px;
+}
+.capcurrent-plot {
+  width: min(100%, 550px);
+  margin: 12px auto 0;
+}
+.capcurrent-axis-title {
+  font-size: 16px;
+  margin-left: 12%;
+  color: #6c8067;
+}
+.capcurrent-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -12px;
+}
+.capcurrent-plot text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #7f8d73;
+}
+.capcurrent-integral {
+  display: flex;
+  justify-content: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 0 14px;
+}
+.capcurrent-integral strong {
+  font-size: 20px;
+  font-weight: 500;
+  color: #a48a53;
+  font-variant-numeric: tabular-nums;
+}
+.capcurrent-sharing-state,
+.capcurrent-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 14px 16px;
+  color: #7a896f;
+}
+.capcurrent-previous {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #edf1e3;
+  border-radius: 22px;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 16px 14px;
+}
+.capcurrent-previous b {
+  font-weight: 500;
+  color: #8c815c;
+}
+.capcurrent-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  margin: 22px 0;
+  background: #ecf1e3;
+  border-radius: 24px;
+}
+.capcurrent-controls > button {
+  font-size: 16px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  border: 1px solid #bfceb0;
+  background: #dfe9d1;
+  color: #647b55;
+}
+.capcurrent-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.capcurrent-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.capcurrent-details p {
+  margin: 0 0 16px;
+  color: #718367;
+}
+.capcurrent-controls button {
+  min-height: 44px;
+}
+@media (max-width: 480px) {
+  .capcurrent-controls {
+    padding: 18px 14px;
+  }
+  .capcurrent-apparatus text {
+    font-size: 26px;
+  }
+  .capcurrent-plot text {
+    font-size: 24px;
+  }
+  .capcurrent-integral {
+    gap: 4px 12px;
+  }
+  .capcurrent-integral strong {
+    font-size: 18px;
+  }
+  .capcurrent-readout,
+  .capcurrent-charge {
+    gap: 8px 18px;
+  }
+  .capcurrent-readout b,
+  .capcurrent-charge b {
+    font-size: 18px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.capcurrent-film[data-watch] > .capcurrent-kicker,
+.capcurrent-film[data-watch] > .capcurrent-caption,
+.capcurrent-film[data-watch] > details {
+  display: none;
+}
+.capcurrent-film[data-watch] .capcurrent-note,
+.capcurrent-film[data-watch] .capcurrent-sharing-state {
+  display: none;
+}
+.capcurrent-film[data-watch] .capcurrent-previous {
+  margin: 4px 10px;
+  padding: 9px 12px;
+  gap: 4px 12px;
+  line-height: 1.4;
+}
+.capcurrent-film[data-watch] .capcurrent-previous span:last-child {
+  display: none;
+}
+.capcurrent-film[data-watch] .capcurrent-readout,
+.capcurrent-film[data-watch] .capcurrent-charge {
+  padding: 5px 10px;
+  gap: 6px 12px;
+}
+.capcurrent-film[data-watch][data-chapter='0'] .capcurrent-plot {
+  display: none;
+}
+.capcurrent-film[data-watch][data-chapter='1'] .capcurrent-apparatus {
+  display: none;
+}

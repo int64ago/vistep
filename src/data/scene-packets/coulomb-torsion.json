@@ -1,0 +1,129 @@
+{
+  "topic": {
+    "slug": "coulomb-torsion",
+    "name": "库仑扭秤",
+    "title": "怎样把微小的静电力变成可比较的扭角？",
+    "question": "怎样把微小的静电力变成可比较的扭角？",
+    "description": "从悬球偏转到扭秤回零，控制球心距离与电荷，检验平方反比关系。",
+    "color": "#b6bc91",
+    "tag": "静电力 · 控制变量",
+    "related": ["electrostatic-induction", "capacitor-fields"],
+    "sources": [
+      {
+        "title": "OpenStax — Coulomb’s Law",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/5-3-coulombs-law"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["库仑扭秤", "库仑定律", "扭秤", "控制变量", "平方反比"],
+      "en": [
+        "Coulomb’s Torsion Balance",
+        "Coulomb torsion balance",
+        "inverse square",
+        "electric force",
+        "null method"
+      ]
+    }
+  },
+  "component": "src/components/experiments/CoulombTorsion.tsx",
+  "cover": "src/components/covers/CoulombTorsionCover.astro",
+  "translations": {
+    "带电球与丝线悬挂的小球，偏角由静电力和重力共同决定": "A charged sphere and a suspended sphere, with deflection determined by electric force and gravity",
+    "球心距离": "Centre separation",
+    "悬线偏角": "String deflection",
+    "透明罩内的扭秤，旋转上端旋钮使带电小球回到参考位置": "A torsion balance in a transparent enclosure; turn the upper dial to return the charged sphere to its reference position",
+    "上端扭角": "Upper-end twist",
+    "A 已回到参考线，可比较扭角": "A is back at the reference line; twists can be compared",
+    "先调上端，让 A 回到参考线": "Adjust the upper end to return A to the reference line",
+    "先看偏角，再问力由什么决定": "Observe the deflection, then ask what determines the force",
+    "把小球调回原位，距离才得到控制": "Return the sphere to its reference position to control separation",
+    "球体为便于观察放大；距离按球心计算。": "Spheres are enlarged for visibility; distances use their centres.",
+    "选择带电小球实验": "Choose a charged-sphere experiment",
+    "悬球比较": "Suspended spheres",
+    "扭秤测力": "Torsion balance",
+    "接触分电": "Charge sharing",
+    "未偏转时的球心距离": "Centre separation at the reference position",
+    "相同小球靠近 → 接触 → 分开": "Identical sphere: approach → touch → separate",
+    "A 球电荷": "Charge on A",
+    "上端回零调节": "Upper-end null adjustment",
+    "扭秤模型与实验条件": "Torsion model and experimental conditions",
+    "球心间库仑力、悬线回复力矩与摆臂几何共同决定平衡。回零后 κφ = LF；不回零时，距离和力臂都已改变。小球近似点电荷，忽略漏电、空气阻力与导体表面电荷重排。接触分电用两个相同孤立小球的理想等分近似；演示调节的是准静态平衡，不表示真实振动速度。": "Coulomb force, suspension torque and arm geometry jointly determine equilibrium. At null, κφ = LF; away from null, separation and lever arm change. Spheres are point charges. Leakage, drag and surface redistribution are omitted. Identical isolated spheres approximate equal charge sharing. Motion follows quasi-static equilibria, not actual oscillation speed.",
+    "库仑扭秤": "Coulomb’s Torsion Balance",
+    "怎样把微小的静电力变成可比较的扭角？": "How can a tiny electric force become a comparable twist?",
+    "从悬球偏转到扭秤回零，控制球心距离与电荷，检验平方反比关系。": "From suspended-sphere deflection to torsion-balance nulling, control separation and charge to test the inverse-square relationship.",
+    "静电力 · 控制变量": "Electric force · Controlled variables"
+  },
+  "narration": {
+    "duration": 100,
+    "cues": [
+      {
+        "id": "hanging-sphere",
+        "title": "先看到排斥",
+        "titleEn": "First observe repulsion",
+        "caption": "距离变近，悬球偏转；最终距离也随之改变。",
+        "captionEn": "As the source moves nearer, the suspended sphere deflects and changes the final separation.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先看丝线下的小球。另一个同号带电球慢慢移近，小球受到排斥，偏角增大。可是它也向外移动了，所以最终的球心距离并不是支架间的距离。这能帮助我们发现力与距离有关，要精确比较，还需要更严格地控制位置。",
+        "en": "Watch the suspended sphere. As another like-charged sphere moves nearer, repulsion increases its deflection. But the sphere also moves outward, so its final separation is not simply the spacing between supports. This reveals a distance dependence; a precise comparison needs tighter position control."
+      },
+      {
+        "id": "null-balance",
+        "title": "先回零，再比较",
+        "titleEn": "Null before comparing",
+        "caption": "转动悬丝上端，使 A 球回到原位。",
+        "captionEn": "Rotate the upper suspension until A returns to its reference position.",
+        "seconds": 28,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "现在换成扭秤。A 球受到 C 球排斥，绝缘摆臂转开。我们缓慢旋转悬丝上端，使 A 回到虚线标出的原位。此时距离与力臂重新确定，悬丝回复力矩平衡静电力矩。上端扭角越大，所平衡的静电力也越大。",
+        "en": "Now use a torsion balance. C repels A and turns the insulating arm. Slowly rotate the upper end of the suspension until A returns to the dashed reference line. Separation and lever arm are now controlled. The suspension torque balances electric torque, and a larger upper twist represents a larger force."
+      },
+      {
+        "id": "distance-law",
+        "title": "距离减半，力怎样变？",
+        "titleEn": "What happens when separation halves?",
+        "caption": "保持电荷和回零状态，距离减半，力变为四倍。",
+        "captionEn": "Keep charges fixed and maintain null: halving separation gives four times the force.",
+        "seconds": 24,
+        "chapterAt": 52,
+        "at": 52.4,
+        "zh": "保持两球电荷不变，也保持 A 在原位。把 C 移近，让球心距离从十二厘米减到六厘米。看力和扭角的变化：它们都增大到原来的四倍。这里比较的是距离的平方反比关系，而不是简单地距离减半、力就加倍。",
+        "en": "Keep both charges fixed and A at its reference position. Bring C closer, reducing the centre separation from twelve to six centimetres. Force and twist both grow to four times their original values. The comparison is inverse-square: halving separation does not merely double the force."
+      },
+      {
+        "id": "charge-sharing",
+        "title": "相同小球分走一半电荷",
+        "titleEn": "Share charge with an identical sphere",
+        "caption": "中性球接触后分开，A 的电荷与回零扭角都减半。",
+        "captionEn": "After contact and separation, A retains half its charge and needs half the nulling twist.",
+        "seconds": 24,
+        "chapterAt": 76,
+        "at": 76.4,
+        "zh": "距离不变，这次让同样大小的中性球 D 接触 A，再把 D 移开。在相同孤立导体的近似下，电荷平分，A 留下一半。重新回零时，需要的扭角也减半。接触分电的结论依赖小球相同且外界影响足够小，真实装置还要处理漏电等误差。",
+        "en": "Keep separation fixed. Touch A with an identical neutral sphere D, then move D away. In the identical isolated-conductor approximation, charge divides equally and A retains half. Returning to null now needs half the twist. Equal sharing depends on identical spheres and weak external influence; real apparatus also faces leakage and other errors."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-charge-force-comparison": {
+      "chapterIds": ["hanging-sphere"],
+      "label": {
+        "zh": "比较电荷间的作用力",
+        "en": "Compare forces between charges"
+      }
+    },
+    "r3-coulomb-balance": {
+      "chapterIds": ["null-balance", "distance-law", "charge-sharing"],
+      "label": {
+        "zh": "库仑扭秤实验",
+        "en": "Coulomb torsion-balance experiment"
+      }
+    }
+  }
+}

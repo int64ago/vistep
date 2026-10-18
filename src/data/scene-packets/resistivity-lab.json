@@ -1,0 +1,203 @@
+{
+  "topic": {
+    "slug": "resistivity-lab",
+    "name": "电阻与电阻率实验",
+    "title": "电阻变化，究竟是哪一个条件变了？",
+    "question": "电阻变化，究竟是哪一个条件变了？",
+    "description": "从 U–I 图像到四段导体的控制变量比较，再追踪加热与电表接法，测出金属丝的电阻率。",
+    "color": "#b6c2a1",
+    "tag": "电阻 · 电阻率 · 测量",
+    "related": ["length-instruments", "rc-circuit"],
+    "sources": [
+      {
+        "title": "OpenStax — Resistivity and Resistance",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance"
+      },
+      {
+        "title": "OpenStax — Electrical Measuring Instruments",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["电阻与电阻率实验", "导体电阻", "控制变量", "电阻率测量", "伏安法", "电表内阻"],
+      "en": [
+        "Resistance and Resistivity Experiments",
+        "wire resistance",
+        "resistivity measurement",
+        "controlled variables",
+        "meter loading"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ResistivityLab.tsx",
+  "cover": "src/components/covers/ResistivityLabCover.astro",
+  "translations": {
+    "有效电阻丝、串联电流表、并联电压表与滑动变阻器": "Active resistance wire, series ammeter, parallel voltmeter and variable resistor",
+    "U–I 图像的斜率给出由电表示数求得的电阻": "The U–I slope gives resistance inferred from meter readings",
+    "四段导体串联，各段并联电压表；每次只改变一种因素": "Four series wires with parallel voltmeters; change only one factor at a time",
+    "b 只有长度加倍，横截面积和材料相同": "Only b's length doubles; area and material stay the same",
+    "c 只有横截面积加倍，长度和材料相同": "Only c's area doubles; length and material stay the same",
+    "d 只有材料不同，长度和横截面积相同": "Only d's material changes; length and area stay the same",
+    "四段电流相同": "All four carry the same current",
+    "酒精灯加热一段灯丝，与它串联的小灯泡变暗": "A burner heats a filament, dimming the separate series indicator lamp",
+    "被加热灯丝": "Heated filament",
+    "指示灯相对电功率": "Relative indicator-lamp power",
+    "温度不变时，改变的是电流与电压": "At fixed temperature, current and voltage change together",
+    "让四段导体流过同一电流": "Send the same current through all four wires",
+    "只加热串联灯丝，观察另一只灯泡": "Heat the series filament and observe the other lamp",
+    "先测电阻，再加入有效长度与直径": "Measure resistance, then add active length and diameter",
+    "外接：电流表包含电压表支路电流": "External: the ammeter includes voltmeter-branch current",
+    "内接：电压表包含电流表两端电压": "Internal: the voltmeter includes the ammeter voltage drop",
+    "读数与图点来自教学模型；不是实测数据。": "Readings and plotted points are teaching-model data, not physical measurements.",
+    "选择电阻实验": "Choose a resistance experiment",
+    "电压与电流": "Voltage and current",
+    "控制变量": "Controlled variables",
+    "温度影响": "Temperature effect",
+    "测电阻率": "Measure resistivity",
+    "比较哪一段": "Choose a comparison",
+    "长度 b": "Length b",
+    "面积 c": "Area c",
+    "材料 d": "Material d",
+    "加热灯丝温度": "Heated-filament temperature",
+    "电源电压": "Source voltage",
+    "导体材料": "Wire material",
+    "铜": "Copper",
+    "镍铜合金": "Copper–nickel alloy",
+    "镍铬合金": "Nichrome alloy",
+    "电流表接法": "Ammeter connection",
+    "外接": "External",
+    "内接": "Internal",
+    "录入的有效长度": "Entered active length",
+    "录入的直径": "Entered diameter",
+    "改变录入值只改变分析结果，不会改变正在测量的导线。": "Changing entered dimensions alters the analysis, not the wire being measured.",
+    "电阻率模型与电表误差": "Resistivity model and meter errors",
+    "均匀导线采用 R = ρl/S，材料值取教材 20 °C 近似。控制变量实验的电压表视为理想；测电阻率模式计入电流表 0.2 Ω、电压表 1 kΩ 的负载。加热灯丝用线性温度系数的定性模型，指示灯用电功率显示相对明暗，不声称计算真实光谱或灯丝温度。忽略接触电阻和被测导线自热。": "Uniform wires use R = ρl/S with approximate textbook values at 20 °C. The controlled comparison has ideal voltmeters; resistivity mode includes a 0.2 Ω ammeter and 1 kΩ voltmeter. Filament heating uses a qualitative linear temperature model; indicator brightness represents relative electrical power, not a computed spectrum or filament temperature. Contact resistance and specimen self-heating are omitted.",
+    "电阻与电阻率实验": "Resistance and Resistivity Experiments",
+    "电阻变化，究竟是哪一个条件变了？": "When resistance changes, which condition changed?",
+    "从 U–I 图像到四段导体的控制变量比较，再追踪加热与电表接法，测出金属丝的电阻率。": "Follow U–I slopes, four-wire comparisons, filament heating and meter connections to infer a wire’s resistivity.",
+    "电阻 · 电阻率 · 测量": "Resistance · Resistivity · Measurement"
+  },
+  "narration": {
+    "duration": 160,
+    "cues": [
+      {
+        "id": "voltage-current",
+        "title": "同一导体的一条直线",
+        "titleEn": "One line for one conductor",
+        "caption": "温度不变时，U–I 图像的斜率表示电阻。",
+        "captionEn": "At fixed temperature, the U–I slope represents resistance.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "保持同一根导体和近似不变的温度，慢慢改变电源电压。电流表和电压表同时变化，记录点落在一条过原点的直线上。电压除以电流保持不变，这个比值就是电阻。换一种材料，斜率可以改变；单纯改变电源，并不会改变同一导体的电阻。",
+        "en": "Keep the same conductor at approximately constant temperature and vary source voltage. Both meters change, and recorded points lie on a line through the origin. Voltage divided by current stays constant: that ratio is resistance. A different material can change the slope; changing the source alone does not change this conductor’s resistance."
+      },
+      {
+        "id": "wire-length",
+        "title": "只改变长度",
+        "titleEn": "Change only length",
+        "caption": "b 的长度加倍，电压与电阻都加倍。",
+        "captionEn": "Doubling b’s length doubles its voltage and resistance.",
+        "seconds": 20,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "现在把四段导体串联。它们流过同一电流，电压之比就等于电阻之比。先比较 a 和 b：材料与粗细相同，只有 b 的长度是两倍。观察各自的电压表，b 的电压也为两倍，说明电阻随长度成正比。",
+        "en": "Connect four wires in series. They carry equal current, so voltage ratios equal resistance ratios. Compare a and b first: material and thickness match, but b is twice as long. Its voltage is also twice as large, revealing resistance proportional to length."
+      },
+      {
+        "id": "wire-area",
+        "title": "只改变横截面积",
+        "titleEn": "Change only area",
+        "caption": "c 的横截面积加倍，电压与电阻减半。",
+        "captionEn": "Doubling c’s cross-sectional area halves voltage and resistance.",
+        "seconds": 20,
+        "chapterAt": 44,
+        "at": 44.4,
+        "zh": "再比较 a 和 c。两段长度、材料相同，c 的横截面积是两倍，它的直径只是根号二倍。相同电流下，c 两端电压减半，电阻也减半。这里比较的是面积，不要把直径加倍误认为面积也只加倍。",
+        "en": "Compare a with c. Length and material match, while c has twice the cross-sectional area, meaning only the square root of two times the diameter. At equal current its voltage and resistance are halved. The comparison concerns area; doubling diameter would quadruple area."
+      },
+      {
+        "id": "wire-material",
+        "title": "只更换材料",
+        "titleEn": "Change only material",
+        "caption": "长度和面积相同，不同材料仍有不同电阻。",
+        "captionEn": "Equal length and area can still give different resistance for different materials.",
+        "seconds": 20,
+        "chapterAt": 64,
+        "at": 64.4,
+        "zh": "最后比较 a 和 d。长度和横截面积都相同，只更换材料，电压表仍给出不同的读数。我们用电阻率描述这种材料差异。在同一温度下，把材料、电阻、长度与横截面积联系起来，就得到电阻率的测量方法。",
+        "en": "Finally compare a and d. They have equal length and area but different materials, and their voltage readings differ. Resistivity describes this material dependence. At a specified temperature, combining resistance with length and cross-sectional area gives a way to measure resistivity."
+      },
+      {
+        "id": "heated-filament",
+        "title": "只加热另一段灯丝",
+        "titleEn": "Heat the separate filament",
+        "caption": "被加热灯丝电阻增大，串联指示灯变暗。",
+        "captionEn": "The heated filament’s resistance rises and the series indicator dims.",
+        "seconds": 24,
+        "chapterAt": 84,
+        "at": 84.4,
+        "zh": "换成两段串联的用电器。酒精灯加热的是裸露灯丝，旁边的小灯泡只用来显示电流变化。被加热灯丝温度升高，电阻增大，整个电路电流减小，所以指示灯变暗。材料电阻率表必须注明温度，不能忽略这个实验条件。",
+        "en": "Now use two series devices. The burner heats the exposed filament; the separate lamp indicates current changes. Heating raises the filament’s resistance, reducing current through the whole circuit and dimming the indicator. A resistivity table must specify temperature because this condition matters."
+      },
+      {
+        "id": "measure-resistivity",
+        "title": "测电阻，再测几何",
+        "titleEn": "Measure resistance and geometry",
+        "caption": "由图像斜率、有效长度与平均直径求电阻率。",
+        "captionEn": "Infer resistivity from slope, active length and mean diameter.",
+        "seconds": 28,
+        "chapterAt": 108,
+        "at": 108.4,
+        "zh": "回到金属丝测量。改变电源，取得多组电压和电流，用图像斜率求电阻。再量两接线夹之间的有效长度，而不是整根线的总长；在不同位置量直径并取平均。把这些量代入公式，得到电阻率。直径要平方，因此它的读数误差需要特别留意。",
+        "en": "Return to the wire measurement. Vary the source, collect voltage-current pairs and obtain resistance from their slope. Measure the active length between the clips, not the entire wire, and average diameter readings from several positions. These determine resistivity. Diameter is squared, making its reading error particularly important."
+      },
+      {
+        "id": "meter-loading",
+        "title": "电表也改变了测量",
+        "titleEn": "Meters affect the measurement",
+        "caption": "外接包含电压表电流，内接包含电流表压降。",
+        "captionEn": "External placement includes voltmeter current; internal placement includes ammeter drop.",
+        "seconds": 24,
+        "chapterAt": 136,
+        "at": 136.4,
+        "zh": "最后检查接法。电流表外接时，它测到导线电流和电压表支路电流之和，用电压除以这个电流，电阻偏小。改为内接，电压表又把电流表两端的压降算了进去，电阻偏大。实际实验要结合电表内阻与被测电阻，判断哪一种误差更小。",
+        "en": "Check the meter connection. With external placement, the ammeter includes both wire and voltmeter currents, so voltage divided by its reading underestimates resistance. With internal placement, the voltmeter includes the ammeter’s voltage drop, overestimating resistance. The better choice depends on meter resistances and the specimen."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-conductor-voltage-current": {
+      "chapterIds": ["voltage-current"],
+      "label": {
+        "zh": "研究导体的电压—电流关系",
+        "en": "Study the voltage–current relationship"
+      }
+    },
+    "r3-resistance-factors": {
+      "chapterIds": ["wire-length", "wire-area", "wire-material"],
+      "label": {
+        "zh": "研究影响导体电阻的因素",
+        "en": "Study factors affecting resistance"
+      }
+    },
+    "r3-resistivity-temperature": {
+      "chapterIds": ["heated-filament"],
+      "label": {
+        "zh": "电阻率与温度的关系",
+        "en": "Resistivity and temperature"
+      }
+    },
+    "r3-wire-resistivity": {
+      "chapterIds": ["measure-resistivity", "meter-loading"],
+      "label": {
+        "zh": "金属丝电阻率的测量",
+        "en": "Measure wire resistivity"
+      }
+    }
+  }
+}

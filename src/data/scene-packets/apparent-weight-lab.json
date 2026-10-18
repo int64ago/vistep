@@ -1,0 +1,178 @@
+{
+  "topic": {
+    "slug": "apparent-weight-lab",
+    "name": "超重与失重实验",
+    "title": "身体没变重，体重计为何忽高忽低？",
+    "question": "身体没变重，体重计为何忽高忽低？",
+    "description": "从蹲起和电梯中的支持力，走到自由下落水瓶的压差，分清加速度、重力与测量读数。",
+    "color": "#b7c5a6",
+    "tag": "支持力 · 加速度 · 压差",
+    "related": ["phone-accelerometer-lab", "dynamic-mass-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Solving Problems with Newton’s Laws",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws"
+      },
+      {
+        "title": "OpenStax — Bernoulli’s Equation",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["超重与失重实验", "蹲起", "体重计", "漏水瓶"],
+      "en": ["Apparent-weight experiments", "normal force", "squat", "falling bottle"]
+    }
+  },
+  "component": "src/components/experiments/ApparentWeightLab.tsx",
+  "cover": "src/components/covers/ApparentWeightLabCover.astro",
+  "translations": {
+    "超重与失重实验": "Apparent-weight experiments",
+    "身体没变重，体重计为何忽高忽低？": "Why does a scale change when body mass stays the same?",
+    "从蹲起和电梯中的支持力，走到自由下落水瓶的压差，分清加速度、重力与测量读数。": "Follow support forces during squats and lift journeys, then pressure in a falling bottle, to separate acceleration, gravity and instrument readings.",
+    "支持力 · 加速度 · 压差": "Support force · Acceleration · Pressure",
+    "读数等于静止值": "Equal to the rest reading",
+    "读数高于静止值": "Above the rest reading",
+    "读数低于静止值": "Below the rest reading",
+    "瓶与水一起自由下落，持续水流消失": "Bottle and water fall together; the sustained jet stops",
+    "静止时，水的压力差推动水流": "At rest, a pressure difference drives the jet",
+    "下蹲与站起，体重计读数为何改变？": "Why does the scale change during a squat and rise?",
+    "看加速度，不能只看电梯向哪走": "Watch acceleration, not just lift direction",
+    "漏水瓶 · 完全失重": "Leaking bottle · Complete weightlessness",
+    "身体运动 · 支持力": "Body motion · Support force",
+    "升降机 · 支持力": "Lift motion · Support force",
+    "通气水瓶释放后，瓶和水一起下落，旧水滴继续飞行": "After releasing the vented bottle, water and bottle fall together while earlier droplets keep flying",
+    "孔口内外压差": "Pressure difference across the hole",
+    "新水流停止，已喷出的水滴继续运动": "The new jet stops; earlier droplets continue moving",
+    "水面与空气相通，水头12 cm": "Vented surface; 12 cm water head",
+    "瓶的加速度": "Bottle acceleration",
+    "有效重力": "Effective gravity",
+    "足部停在秤面，关节随下蹲弯曲，质心与支持力对应": "Feet remain on the scale as knees bend; centre-of-mass acceleration determines support force",
+    "电梯里的人站在秤面，井道刻线显示电梯运动": "The passenger stands on a scale; shaft marks reveal lift motion",
+    "力传感器示数": "Force-platform reading",
+    "体重计示数": "Bathroom-scale reading",
+    "支持力记录": "Support-force record",
+    "虚线：静止时mg": "Dashed line: mg at rest",
+    "支持力相对于重力基线变化，曲线只显示已经发生的时刻": "Support force varies around the gravitational baseline; only elapsed samples are shown",
+    "竖直向上为正；人体质量与重力保持不变": "Upward is positive; body mass and gravity stay constant",
+    "水流来自压力差；自由下落减小这个压力差，地球引力仍然存在。": "Pressure drives the jet; free fall removes the hydrostatic difference while Earth’s gravity remains.",
+    "读数改变的是支持力。正在下降的人，减速时也可能超重。": "The changing reading is support force. A descending person can read heavier while slowing down.",
+    "实验路径": "Experiment path",
+    "蹲起": "Squat and rise",
+    "电梯": "Lift",
+    "漏水瓶": "Leaking bottle",
+    "人体质量": "Person’s mass",
+    "电梯方向": "Lift direction",
+    "向上": "Up",
+    "向下": "Down",
+    "测量仪器": "Measuring instrument",
+    "体重计": "Bathroom scale",
+    "力传感器": "Force sensor",
+    "模型时间": "Model time",
+    "开口通气、短时水位近似不变；忽略释放瞬间的流体惯性、表面张力与空气阻力。": "Vented bottle with nearly fixed level over this short interval; release transients, surface tension and air drag are omitted.",
+    "人体用规定的平滑质心轨迹近似；仪表瞬时响应，未模拟人体自然晃动和仪表滤波。": "A prescribed smooth centre-of-mass trajectory represents the person; instruments respond instantly, without body sway or filtering."
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "squat",
+        "title": "下蹲时先轻后重",
+        "titleEn": "Lighter, then heavier while lowering",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "两段都向下，支持力却一小一大。",
+        "captionEn": "Both stages move down, but support force first falls and then rises.",
+        "zh": "站在体重计上缓慢下蹲。开始向下加速时，秤的支持力小于重力，读数变小。接近蹲下的终点，人仍然向下运动，却开始减速，加速度已经朝上，读数反而变大。最后停稳，读数回到原来的值。判断超重还是失重，不能只看人正在向上走还是向下走。",
+        "en": "Stand on a scale and squat. At first, downward acceleration requires support force smaller than gravity, lowering the reading. Near the bottom, you are still moving down but slowing; acceleration is upward and the reading rises. Once stationary, the original reading returns. Direction of travel alone cannot determine apparent weight."
+      },
+      {
+        "id": "platform",
+        "title": "力平台记录蹲起",
+        "titleEn": "Record the full squat and rise",
+        "seconds": 29,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "仪器记录支持力；质量与重力未改变。",
+        "captionEn": "The instrument records support force; mass and gravity do not change.",
+        "zh": "把体重计换成力传感器，记录完整的下蹲和站起过程。曲线的虚线是静止时的重力，绿色曲线是支持力。站起时先向上加速，支持力大于重力；接近站稳时向上减速，支持力小于重力。这里的曲线来自一个平滑的示例动作，真实人体的晃动和仪表滤波会让细节不同，但受力关系不变。",
+        "en": "Replace the scale with a force platform and record a complete squat and rise. The dashed baseline is weight at rest; the green trace is support force. Rising begins with upward acceleration and greater support, then upward braking and smaller support. This smooth example is not a recorded human trial. Real sway and filtering change details but not the force relationship."
+      },
+      {
+        "id": "lift-up",
+        "title": "电梯上升的三个阶段",
+        "titleEn": "Three stages of an upward journey",
+        "seconds": 28,
+        "chapterAt": 57,
+        "at": 57.3,
+        "caption": "上升启动偏重，匀速恢复，上升制动偏轻。",
+        "captionEn": "Heavier at upward start, normal at cruise, lighter while braking.",
+        "zh": "现在人保持站立，让电梯完成运动。上升启动时，电梯、人和秤一起向上加速，读数高于静止值。进入匀速段，加速度为零，读数恢复正常，即使电梯仍在上升。制动时加速度向下，读数变小。井道刻线显示运动方向，速度和加速度分开显示，帮助你把三种状态对应到同一条曲线。",
+        "en": "Keep the passenger standing while the lift moves. At upward start, lift, person and scale accelerate upward together and the reading exceeds its rest value. During constant speed, acceleration is zero and the normal reading returns despite continued ascent. Braking has downward acceleration and a smaller reading. Shaft marks reveal travel, while separate velocity and acceleration readings explain the trace."
+      },
+      {
+        "id": "lift-down",
+        "title": "换成下降再检验",
+        "titleEn": "Reverse the journey",
+        "seconds": 27,
+        "chapterAt": 85,
+        "at": 85.3,
+        "caption": "下降减速时，加速度向上，仍然超重。",
+        "captionEn": "A descending lift is heavier while braking upward.",
+        "zh": "换成下降过程。启动向下加速，读数变小；匀速下降，读数正常；向下减速时，加速度向上，读数变大。用向上为正方向，支持力减去重力就等于质量乘加速度。体重计上标着千克，是把支持力除以标定的重力加速度后的显示，不代表运动过程中人的真实质量发生变化。",
+        "en": "Reverse the journey. Downward acceleration lowers the reading; steady descent restores it; downward braking raises it because acceleration points up. With upward positive, support minus weight equals mass times acceleration. A scale labelled in kilograms divides support force by its calibration gravity. That display does not mean the person’s actual mass changes during motion."
+      },
+      {
+        "id": "bottle-held",
+        "title": "静止水瓶为什么漏水",
+        "titleEn": "Why the stationary bottle leaks",
+        "seconds": 27,
+        "chapterAt": 112,
+        "at": 112.3,
+        "caption": "水面通气，孔口处的压差驱动水流。",
+        "captionEn": "A vented surface permits a pressure difference that drives the jet.",
+        "zh": "在通气的水瓶侧壁开小孔，静止时水会流出。小孔上方的水柱形成压力差，推动水从孔口喷出，再受重力作用沿弯曲路径下落。本例把短时间内的水位变化忽略，先建立静止时的对照。请注意水滴离开瓶子以后已经是独立运动的物体，瓶子的后续动作不会让旧水滴凭空消失。",
+        "en": "Make a small side hole in a vented bottle. At rest, the water head produces a pressure difference and drives an outward jet, which then curves downward under gravity. Over this short comparison, level change is neglected. Once a droplet leaves, it moves independently: later bottle motion cannot erase water that has already been emitted."
+      },
+      {
+        "id": "bottle-fall",
+        "title": "瓶和水一起自由落下",
+        "titleEn": "Let bottle and water fall together",
+        "seconds": 29,
+        "chapterAt": 139,
+        "at": 139.3,
+        "caption": "持续压差消失；旧水滴仍按原来的速度和重力运动。",
+        "captionEn": "Sustained pressure vanishes; earlier droplets retain their motion under gravity.",
+        "zh": "释放水瓶，瓶和水一起以重力加速度下落。相对于瓶子，维持原来水柱压差的有效重力降为零，持续喷流因而消失。已经喷出的水滴仍继续飞行。这里忽略刚释放时很短的流体惯性过程，所以停止新水流是理想化处理。完全失重说的是支持或压迫作用消失，绝不是地球的引力突然消失。",
+        "en": "Release the bottle. It and the water accelerate downward at g. Relative to the bottle, effective gravity sustaining the original pressure head becomes zero, so the sustained jet ceases. Earlier droplets keep flying. The brief fluid-inertia transient at release is omitted, so the cutoff is idealized. Complete weightlessness means loss of support or pressure effects, not disappearance of Earth’s gravity."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-squat-scale": {
+      "chapterIds": ["squat", "platform"],
+      "label": {
+        "zh": "蹲起时的支持力",
+        "en": "Support force during squatting"
+      }
+    },
+    "required-1-elevator-scale": {
+      "chapterIds": ["lift-up", "lift-down"],
+      "label": {
+        "zh": "电梯中的体重计",
+        "en": "Scale readings in a lift"
+      }
+    },
+    "required-1-falling-bottle": {
+      "chapterIds": ["bottle-held", "bottle-fall"],
+      "label": {
+        "zh": "自由下落的漏水瓶",
+        "en": "A leaking bottle in free fall"
+      }
+    }
+  }
+}

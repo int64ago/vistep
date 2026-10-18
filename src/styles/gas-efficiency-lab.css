@@ -1,0 +1,36 @@
+.gas-efficiency-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+.gas-efficiency-inputs label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 16px;
+}
+.gas-efficiency-inputs input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #bac7ab;
+  border-radius: 10px;
+  background: #f8f8ed;
+  padding: 0.5rem 0.7rem;
+  font: inherit;
+  color: inherit;
+  box-sizing: border-box;
+}
+.gas-efficiency-result {
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 600px) {
+  .gas-efficiency-lab {
+    padding-top: 5px;
+    padding-bottom: 3px;
+  }
+  .gas-efficiency-lab .lab-apparatus-caption {
+    margin-bottom: 5px;
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "topic": {
+    "slug": "balloon-drag-lab",
+    "name": "气球空气阻力研究",
+    "title": "先测出数据，再决定阻力与速度是什么关系",
+    "question": "先测出数据，再决定阻力与速度是什么关系",
+    "description": "保留教材七组气球数据，从视频等间距帧判断终端运动，比较线性与平方拟合，并检查浮力与适用范围。",
+    "color": "#c9c299",
+    "tag": "视频 · 终端速度 · 拟合",
+    "related": ["newton-tube", "stokes-drag"],
+    "sources": [
+      {
+        "title": "人教版普通高中物理必修第一册（2019）课题研究，117—119页",
+        "url": "https://jc.pep.com.cn/"
+      },
+      {
+        "title": "NASA — Drag of a Sphere",
+        "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/drag-of-a-sphere/"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["气球空气阻力研究", "气球终端速度", "阻力拟合", "视频分析"],
+      "en": [
+        "Investigating balloon air drag",
+        "terminal speed",
+        "drag fitting",
+        "video measurements"
+      ]
+    }
+  },
+  "component": "src/components/experiments/BalloonDragLab.tsx",
+  "cover": "src/components/covers/BalloonDragLabCover.astro",
+  "translations": {
+    "气球空气阻力研究": "Investigating balloon air drag",
+    "先测出数据，再决定阻力与速度是什么关系": "Measure first: what relationship does the drag data support?",
+    "保留教材七组气球数据，从视频等间距帧判断终端运动，比较线性与平方拟合，并检查浮力与适用范围。": "Use the textbook’s seven balloon measurements, test terminal motion from equal frame spacing, compare linear and quadratic fits, and examine buoyancy and scope.",
+    "视频 · 终端速度 · 拟合": "Video · Terminal velocity · Fitting",
+    "先检查测量条件，再扩大结论": "Check measurement conditions before extending the conclusion",
+    "这七组数据更接近哪一种关系？": "Which relationship better describes these seven measurements?",
+    "同一个气球，只改变悬挂重物": "Keep one balloon and change only the suspended load",
+    "先确认等时间里的位移近似相同": "First check for equal displacement in equal time",
+    "教材研究样例 · 数据重建": "Textbook research example · Data reconstruction",
+    "同一个球形气球挂铁丝和重物，旁边刻度尺记录重物下沿位置": "One spherical balloon carries a rigid wire and load; a nearby ruler records the load’s lower edge",
+    "加速段示意，不能作为终端数据": "Illustrative acceleration; not terminal-speed data",
+    "按教材终端段数据重建": "Reconstructed from textbook terminal segments",
+    "总重力": "Total weight",
+    "已记录间隔": "Recorded intervals",
+    "平均每帧位移": "Mean displacement per frame",
+    "间距仍在变大：速度还没有稳定": "Growing spacing: speed has not settled",
+    "间距近似相等，才可选择这个测量段": "Select a measurement segment only when spacing is nearly equal",
+    "假设浮力校正：F阻 = G − B": "Hypothetical buoyancy correction: Fdrag = G − B",
+    "按教材近似：F阻 ≈ G": "Textbook approximation: Fdrag ≈ G",
+    "教材七组点与过原点线性、平方关系拟合": "Seven textbook measurements with origin-constrained linear and quadratic fits",
+    "线性拟合误差": "Linear-fit error",
+    "平方拟合误差": "Quadratic-fit error",
+    "教材原始表格 · 必修一118页": "Original textbook table · Required Book 1, page118",
+    "这是这组数据在有限范围内的经验关系，不能直接推广到所有球形物体。": "This is an empirical relation over a limited dataset, not a universal law for every sphere.",
+    "T₀是相邻视频帧的时间；教材未给帧率，保留cm/T₀，不能擅自换成m/s。": "T₀ is the frame interval. The textbook gives no frame rate, so retain cm/T₀ rather than inventing m/s.",
+    "研究步骤": "Research step",
+    "终端帧": "Terminal frames",
+    "加速反例": "Accelerating comparison",
+    "数据拟合": "Fit the data",
+    "拟合形式": "Fit form",
+    "线性": "Linear",
+    "平方": "Quadratic",
+    "假设浮力": "Hypothetical buoyancy",
+    "教材数据组": "Textbook dataset index",
+    "视频帧序号": "Video frame index",
+    "画面是数据的可视化重建，不是原始录像。气球体积固定；拟合与浮力校正只处理这些点，不将结论预设为普遍定律。": "The scene reconstructs data, not original footage. Balloon volume is fixed; fits and hypothetical buoyancy corrections process these points without presuming a universal law."
+  },
+  "narration": {
+    "duration": 144,
+    "cues": [
+      {
+        "id": "apparatus",
+        "title": "同一气球控制条件",
+        "titleEn": "Control conditions with one balloon",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "体积和形状尽量不变，铁丝让重物便于读数。",
+        "captionEn": "Keep volume and shape fixed; wire makes the load easier to track.",
+        "zh": "研究阻力怎样随速率变化，先把其他条件控制好。教材使用同一个近似球形的气球，在气嘴下面连接硬铁丝和重物，旁边固定刻度尺，用相机记录下落。读数追踪重物的同一个位置。我们保留气球的大小，只改变悬挂负载；画面根据教材数据重建，不是原始实验录像。",
+        "en": "To investigate drag against speed, first control other conditions. The textbook uses one roughly spherical balloon, a rigid wire and hanging load, a fixed ruler, and video of the fall. Track the same point on the load. This reconstruction keeps balloon size fixed while changing load; it is not the original experimental footage."
+      },
+      {
+        "id": "terminal",
+        "title": "先找等间距帧",
+        "titleEn": "Find equally spaced frames first",
+        "seconds": 29,
+        "chapterAt": 27,
+        "at": 27.3,
+        "caption": "相邻帧时间相同，位移相近才支持匀速判断。",
+        "captionEn": "Equal frame times and nearly equal displacements support steady motion.",
+        "zh": "不能刚释放就把阻力当作重力。先检查相邻视频帧：它们的时间间隔相同，只有重物的位移也近似相同，才能把这段运动看作匀速。选择起止两帧，用总位移除以间隔数，得到平均每帧位移。本片把已选出的终端段逐帧重建；自由探索还可以切到加速反例，观察间距仍然增大的情况。",
+        "en": "Do not equate drag with weight immediately after release. Check successive frames: equal time intervals must also have nearly equal displacements before treating the segment as steady. Divide displacement between two selected frames by the number of intervals for mean displacement per frame. The scene reconstructs a selected terminal segment; exploration also offers an explicitly illustrative accelerating comparison."
+      },
+      {
+        "id": "loads",
+        "title": "改变负载重复记录",
+        "titleEn": "Repeat with different loads",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3,
+        "caption": "七组总重力与每帧位移，来自教材原表。",
+        "captionEn": "Seven weights and frame displacements come from the textbook table.",
+        "zh": "现在改变悬挂重物，用原气球重复实验，得到七组总重力和每帧位移。不同负载对应不同的匀速下落速率。教材表格没有给出视频帧率，所以横坐标保留厘米每T零，不能随意补一个帧率再写成米每秒。只要同一次研究使用相同帧间隔，这样的单位仍可以比较速率与阻力之间的关系。",
+        "en": "Change the hanging load and repeat with the same balloon, producing seven weight and frame-displacement pairs. Different loads yield different terminal speeds. The source table gives no frame rate, so the horizontal axis remains centimetres per T-zero. Do not invent a frame rate and report metres per second. A common frame interval still allows the speed–drag relationship to be compared."
+      },
+      {
+        "id": "fit",
+        "title": "让数据选择关系",
+        "titleEn": "Let the measurements choose a relation",
+        "seconds": 30,
+        "chapterAt": 84,
+        "at": 84.3,
+        "caption": "本组数据的过原点线性拟合明显优于平方拟合。",
+        "captionEn": "An origin-constrained linear fit describes this dataset much better than a quadratic fit.",
+        "zh": "按教材忽略浮力的近似，匀速时阻力约等于总重力。把这七组点画出来，再分别拟合过原点的直线和平方曲线。直线与这些点更接近，均方根误差也更小。这支持教材在这组范围内得到的近似线性关系，而不是先认定阻力必须与速度平方成正比，再让数据迁就预设答案。",
+        "en": "Using the textbook’s approximation that neglects buoyancy, steady drag is approximately total weight. Plot the seven points and fit both a line and a quadratic through the origin. The line lies closer and has a smaller root-mean-square error. This supports the textbook’s approximate linear relation over this range; the data should not be forced to follow a preselected square-speed law."
+      },
+      {
+        "id": "limits",
+        "title": "检验遗漏的条件",
+        "titleEn": "Check omitted conditions",
+        "seconds": 30,
+        "chapterAt": 114,
+        "at": 114.3,
+        "caption": "匀速、浮力、气球姿态与速度范围共同限制结论。",
+        "captionEn": "Steady motion, buoyancy, posture and speed range limit the inference.",
+        "zh": "最后检查结论的边界。如果气球仍在加速，阻力就不能直接用重力代替；如果浮力不可忽略，匀速时阻力应等于重力减去浮力。画面给出一个假设浮力校正，让你看到同一组数据的纵坐标会怎样改变，但并不声称教材已经测出了这个浮力。气球姿态、形状和速度范围也需要控制，不能把七个点直接推广成所有球形物体的普遍定律。",
+        "en": "Finally examine the limits. If the balloon is accelerating, weight alone cannot determine drag. With appreciable buoyancy, steady drag equals weight minus buoyancy. A hypothetical correction shows how the same points shift vertically; it is not a claimed textbook buoyancy measurement. Posture, shape and speed range also matter. Seven measurements cannot establish a universal law for every spherical object."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-balloon-drag": {
+      "chapterIds": ["apparatus", "terminal", "loads", "fit", "limits"],
+      "label": {
+        "zh": "球形物体空气阻力大小与速率关系的研究",
+        "en": "Investigate a spherical object’s drag versus speed"
+      }
+    }
+  }
+}

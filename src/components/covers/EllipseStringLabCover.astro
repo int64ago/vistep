@@ -1,0 +1,34 @@
+---
+import { stringEllipse, ellipseTrace } from '../../models/ellipse-string-lab';
+const s = stringEllipse(4.9),
+  p = ellipseTrace(0.78),
+  x = 200 + s.x * 210,
+  y = 123 - s.y * 210;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><rect x="33" y="13" width="334" height="204" rx="12" fill="#d3c3a5"></rect><path
+    d="M40 18H359L361 207H40Z"
+    fill="#f2f0df"></path><path
+    d={p.map((v, i) => `${i ? 'L' : 'M'}${200 + v.x * 210} ${123 - v.y * 210}`).join(' ')}
+    fill="none"
+    stroke="#8a9f79"
+    stroke-width="2"></path><path
+    d={`M137 123L${x} ${y}L263 123`}
+    fill="none"
+    stroke="#b19b6b"
+    stroke-width="1.8"></path>{
+    [137, 263].map((cx) => (
+      <g>
+        <>
+          <path d={`M${cx} 123v-7`} stroke="#9d8967" />
+          <ellipse cx={cx} cy="115" rx="6" ry="3" fill="#b49c71" />
+        </>
+      </g>
+    ))
+  }<g transform={`translate(${x} ${y}) rotate(23)`}
+    ><path d="M0 0L-4 -14V-50H4V-14Z" fill="#c8b17a"></path><path
+      d="M-4 -14L0 0L4 -14"
+      fill="#e0cda4"></path><path d="M-1 -4L0 0L1 -4" fill="#6c7562"></path></g
+  ></svg
+>

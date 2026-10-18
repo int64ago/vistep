@@ -1,0 +1,99 @@
+{
+  "topic": {
+    "slug": "oil-drop-lab",
+    "name": "油滴与元电荷",
+    "title": "怎样用一个油滴，量出电荷的最小单位？",
+    "question": "怎样用一个油滴，量出电荷的最小单位？",
+    "description": "跟踪同一滴油的下降、悬停和带电变化，把力平衡变成电荷测量。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["cathode-ray-lab", "electric-field-mapping"],
+    "sources": [
+      {
+        "title": "NIST — Millikan and the fundamental constants",
+        "url": "https://physics.nist.gov/cuu/Constants/historical1.html"
+      },
+      {
+        "title": "University of Toronto — Millikan experiment manual",
+        "url": "https://www.physics.utoronto.ca/~phy224_324/LabManuals/MillikanExperiment.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/OilDropLab.tsx",
+  "cover": "src/components/covers/OilDropLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["油滴与元电荷", "怎样用一个油滴，量出电荷的最小单位？", "近代物理实验"],
+      "en": [
+        "Oil drops and elementary charge",
+        "How can one oil drop reveal the unit of electric charge?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "油滴与元电荷": "Oil drops and elementary charge",
+    "怎样用一个油滴，量出电荷的最小单位？": "How can one oil drop reveal the unit of electric charge?",
+    "跟踪同一滴油的下降、悬停和带电变化，把力平衡变成电荷测量。": "Track one drop as it falls, balances and changes charge to connect forces with charge measurement.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 84,
+    "cues": [
+      {
+        "id": "fall",
+        "title": "先测无电场时的下降",
+        "titleEn": "Measure the fall without a field",
+        "caption": "稳定下降时，空气黏滞阻力平衡扣除浮力后的重力。",
+        "captionEn": "At terminal speed, viscous drag balances the effective weight.",
+        "zh": "先关掉极板间的电场，跟踪一颗被照亮的油滴。它下落很慢，达到稳定速度时，空气的黏滞阻力平衡扣除浮力后的重力。知道油的密度和空气黏度，就可以用这个下降速度估计油滴半径，再求它的有效重量。",
+        "en": "Turn off the electric field and follow one illuminated drop. It falls slowly. At terminal speed, viscous drag balances its weight after buoyancy is subtracted. With oil density and air viscosity known, the fall speed estimates the radius and then the effective weight.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "balance",
+        "title": "调电压，让油滴悬停",
+        "titleEn": "Adjust voltage until the drop balances",
+        "caption": "负电油滴受到向上的电场力；悬停时两力平衡。",
+        "captionEn": "The negatively charged drop feels an upward electric force; at rest the forces balance.",
+        "zh": "把上极板接高电势，下极板接低电势，使电场向下。带负电的油滴受到向上的电场力。逐渐增加电压，下降变慢，最终悬停。此时没有运动造成的黏滞阻力，用已知的有效重量除以电场强度，就能求出油滴所带电荷的大小。",
+        "en": "Set the field downward by making the upper plate more positive. The negatively charged drop feels an upward electric force. Increase voltage until its descent slows to a stop. With no viscous drag at rest, divide effective weight by field strength to obtain the magnitude of charge.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "quantization",
+        "title": "改变电荷，重复平衡",
+        "titleEn": "Change the charge and balance again",
+        "caption": "多次测得的电荷大小是同一个基本量的整数倍。",
+        "captionEn": "Repeated charge measurements lie at integer multiples of one common unit.",
+        "zh": "再看同样大小的油滴带上不同数量的电子。为了让它悬停，所需电压会改变；算出的电荷量却按整数倍排列。这是电荷量子化的关键证据。演示已把整数个电子写进模型，帮助理解测量方法；历史实验的证据来自实际数据及误差分析。",
+        "en": "Let an equally sized drop carry different numbers of electrons. Its balancing voltage changes, while the inferred charges follow integer multiples of a common unit. This illustrates charge quantization. The model assumes integer electron counts; the historical evidence came from real measurements and their uncertainties.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-millikan-charge": {
+      "chapterIds": ["fall", "balance", "quantization"],
+      "label": {
+        "zh": "油滴测量",
+        "en": "Oil-drop measurement"
+      }
+    },
+    "e3-millikan-oil-drop": {
+      "chapterIds": ["fall", "balance", "quantization"],
+      "label": {
+        "zh": "油滴测量",
+        "en": "Oil-drop measurement"
+      }
+    }
+  }
+}

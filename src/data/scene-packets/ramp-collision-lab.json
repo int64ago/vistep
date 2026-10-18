@@ -1,0 +1,148 @@
+{
+  "topic": {
+    "slug": "ramp-collision-lab",
+    "name": "斜槽小球碰撞实验",
+    "title": "不直接测速度，怎样检验动量守恒？",
+    "question": "不直接测速度，怎样检验动量守恒？",
+    "description": "同直径、不同质量的两球在水平斜槽末端碰撞，用铅垂原点和三组落点比较质量加权射程。",
+    "color": "#c3c5a1",
+    "tag": "正碰 · 平抛测量 · 动量守恒",
+    "related": ["projectile-motion-lab", "elastic-collision"],
+    "sources": [
+      {
+        "title": "OpenStax — Types of Collisions",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions"
+      },
+      {
+        "title": "OpenStax — Projectile Motion",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["斜槽小球碰撞实验", "斜槽动量守恒", "平抛碰撞", "落点法"],
+      "en": [
+        "Ball collisions at a ramp outlet",
+        "ramp momentum",
+        "projectile collision",
+        "landing distances"
+      ]
+    }
+  },
+  "component": "src/components/experiments/RampCollisionLab.tsx",
+  "cover": "src/components/covers/RampCollisionLabCover.astro",
+  "translations": {
+    "斜槽小球碰撞实验": "Ball collisions at a ramp outlet",
+    "不直接测速度，怎样检验动量守恒？": "How can landing distances test momentum conservation?",
+    "同直径、不同质量的两球在水平斜槽末端碰撞，用铅垂原点和三组落点比较质量加权射程。": "Collide equal-diameter balls of unequal mass at a horizontal outlet, using a plumb origin and three landing positions to compare mass-weighted ranges.",
+    "正碰 · 平抛测量 · 动量守恒": "Head-on impact · Projectile measurement · Momentum",
+    "释放高度变了，比较就失去同一基准": "A changed release height breaks the shared baseline",
+    "先拿走靶球，记录入射球的落点P": "Remove the target and record the incident ball’s landing P",
+    "用同一铅垂原点，比较三个水平距离": "Compare three horizontal distances from one plumb origin",
+    "同样大小的两球，在水平出口发生正碰": "Equal-size balls collide head-on at a horizontal outlet",
+    "深色入射球40g · 浅色靶球更轻 · 模型示例记录": "Dark incident ball: 40 g · Pale target: lighter · Model records",
+    "重球沿斜槽滚下，与同直径轻球碰撞；铅垂线确定O点，地面纸张记录M、P、N落点": "A heavy ball rolls down and strikes an equal-diameter lighter ball; a plumb line locates O and paper records M, P and N",
+    "单球释放高度": "Single-ball release height",
+    "碰撞释放高度": "Collision release height",
+    "两次释放高度不同，P已不能代表本次碰撞前速度；真实碰撞动量仍守恒。": "With unequal release heights, P no longer represents this collision’s incident speed; actual momentum still conserves.",
+    "从同一高度反复释放，P记录碰撞前的水平速度基准。": "Repeated release from one height makes P the incident horizontal-speed baseline.",
+    "相同下落高度、相同初始竖直速度，飞行时间相同；射程可以替代速度比。": "Equal drops and initial vertical velocities give equal flight times, letting ranges represent speed ratios.",
+    "操作步骤": "Procedure",
+    "拿走靶球": "Remove target",
+    "放回靶球": "Replace target",
+    "比较落点": "Compare landings",
+    "靶球质量": "Target mass",
+    "恢复系数": "Restitution",
+    "模型时间": "Model time",
+    "接触时球心相距一个直径；入射球随后经过极短水平托口，两球从同一出口起飞。忽略托口摩擦、空气阻力和碰撞时的外部水平冲量。": "Centers touch one diameter apart. The incident ball then crosses a short horizontal lip, so both launch at one outlet. Lip friction, air drag and external horizontal impulse during impact are omitted."
+  },
+  "narration": {
+    "duration": 170,
+    "cues": [
+      {
+        "id": "setup",
+        "title": "先把几何条件固定",
+        "titleEn": "Fix the geometry first",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "同直径、重球入射、出口水平。",
+        "captionEn": "Equal diameters, heavier incident ball, horizontal outlet.",
+        "zh": "先选大小相同、质量不同的两球，让较重的一球作为入射球。把斜槽末端调成水平，用铅垂线在地面标出原点O。相同直径使碰撞时两球心处于同一高度，速度沿水平方向交换。画面中球真正接触时，球心相距一个直径，而不是让两个球重叠在同一点。",
+        "en": "Choose equal-size balls with different masses, using the heavier one as the incident ball. Level the outlet and use a plumb line to mark O on the floor. Equal diameters put the centers at the same height for horizontal head-on impact. At contact, the centers remain one diameter apart instead of overlapping at a single point."
+      },
+      {
+        "id": "reference",
+        "title": "拿走靶球，留下P",
+        "titleEn": "Remove the target and record P",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "标记释放位置，建立碰前速度基准。",
+        "captionEn": "Mark the release point to establish the incident-speed baseline.",
+        "zh": "先拿走靶球，让入射球从标记位置由静止滚下。它离开水平出口后做平抛运动，在纸面留下P。真实实验应多次释放，找出落点的代表位置并估计误差。这一次不需要知道具体速度，只要记录从铅垂原点O到P的水平距离。以后碰撞前的速度，必须与这一次保持相同。",
+        "en": "Remove the target and release the incident ball from rest at a marked point. It leaves horizontally and lands at P. A physical experiment repeats releases to find a representative landing position and estimate uncertainty. For now, record horizontal distance OP without calculating speed. The later collision must use the same incident speed as this baseline."
+      },
+      {
+        "id": "collision",
+        "title": "放回靶球，记录M和N",
+        "titleEn": "Replace the target and record M and N",
+        "seconds": 29,
+        "chapterAt": 56,
+        "at": 56.3,
+        "caption": "仍从同一高度释放，分别跟踪两球。",
+        "captionEn": "Release from the same height and track both balls separately.",
+        "zh": "把轻球放回出口，仍从原标记高度释放重球。发生碰撞后，入射球速度减小，靶球向前飞出。镜头放大接触附近，两球的球心保持真实间距。入射球随后经过很短的水平托口，也从同一个出口飞出。两球起飞时刻略有先后，但从出口到地面的下落高度与初始竖直速度相同。",
+        "en": "Replace the lighter target and release the heavier ball from the same mark. The incident ball slows and the target flies forward. The contact detail preserves finite ball separation. The incident ball then crosses a very short horizontal lip before leaving from the same outlet. Launch times differ slightly, but both have equal drops and zero initial vertical velocity."
+      },
+      {
+        "id": "ranges",
+        "title": "把速度比换成射程比",
+        "titleEn": "Replace speed ratios with range ratios",
+        "seconds": 28,
+        "chapterAt": 85,
+        "at": 85.3,
+        "caption": "同样的飞行时间，是换算成立的关键。",
+        "captionEn": "Equal flight time is the key to the substitution.",
+        "zh": "把三组轨迹叠在同一个装置上。O是出口的铅垂投影，M和N是碰后两球的落点，P来自没有靶球的基准试次。三次飞行的竖直条件相同，所以飞行时间相同。水平距离等于水平速度乘飞行时间，于是三个距离可以按相同比例代表碰前和碰后的三个速度。",
+        "en": "Overlay the three paths on one apparatus. O is the outlet’s vertical projection; M and N are post-collision landings, while P comes from the target-free baseline. Equal vertical conditions give equal flight times. Since horizontal distance equals horizontal speed times flight time, the three distances represent the three velocities on one common scale."
+      },
+      {
+        "id": "momentum",
+        "title": "比较质量加权距离",
+        "titleEn": "Compare mass-weighted distances",
+        "seconds": 28,
+        "chapterAt": 113,
+        "at": 113.3,
+        "caption": "m₁·OP 对应 m₁·OM + m₂·ON。",
+        "captionEn": "Compare m₁·OP with m₁·OM + m₂·ON.",
+        "zh": "把入射球质量乘OP，与入射球质量乘OM、靶球质量乘ON的和比较。这些量是质量乘距离，除以共同的飞行时间后才是动量。理想模型中两边相等。改变恢复系数，会改变速度分配和动能损失，却不改变水平方向动量守恒。真实测量应比较误差范围，不能强行把落点改到等式成立。",
+        "en": "Compare incident mass times OP with the sum of incident mass times OM and target mass times ON. These are mass-distance quantities; dividing by the common flight time gives momentum. The ideal model balances them. Restitution changes speed sharing and kinetic-energy loss without changing horizontal momentum conservation. Real measurements must be assessed with uncertainty, not adjusted to force equality."
+      },
+      {
+        "id": "height",
+        "title": "故意改变一次释放高度",
+        "titleEn": "Deliberately change one release height",
+        "seconds": 29,
+        "chapterAt": 141,
+        "at": 141.3,
+        "caption": "基准不匹配，不能据此否定动量守恒。",
+        "captionEn": "A mismatched baseline cannot disprove momentum conservation.",
+        "zh": "现在保留原来的P，却把碰撞试次的释放位置降低。两球碰后的射程都变短，质量加权距离之和也减小，看起来与原基准不相等。真正的碰撞仍满足动量守恒，问题出在P代表的速度已经不是本次碰前速度。每次比较都要保留相同释放位置、水平出口和相同落高，这些实验条件正是推理的一部分。",
+        "en": "Retain the old P but lower the release point for the collision trial. Both post-impact ranges shrink, reducing their mass-weighted sum relative to the old baseline. The actual collision still conserves momentum. The problem is that P no longer represents this trial’s incident speed. Matching release position, horizontal outlet and drop height is part of the experimental reasoning."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-ramp-ball-momentum": {
+      "chapterIds": ["setup", "reference", "collision", "ranges", "momentum", "height"],
+      "label": {
+        "zh": "研究斜槽末端小球碰撞时的动量守恒",
+        "en": "Investigate momentum in collisions at a ramp outlet"
+      }
+    }
+  }
+}

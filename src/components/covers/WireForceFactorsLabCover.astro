@@ -1,0 +1,48 @@
+---
+import { wireForceFactors, wireForceProjection as P } from '../../models/wire-force-factors-lab';
+const s = wireForceFactors(2),
+  left = P(-0.24, s.rise, s.z),
+  right = P(0.24, s.rise, s.z);
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true">
+  <g transform="translate(0 -12)">
+    <path
+      d="M30 246V40H370V246"
+      stroke="#bcc7ad"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+    {
+      [-0.08, 0, 0.08].map((x) => (
+        <g>
+          <>
+            <path
+              d={`M${P(x - 0.034, -0.04, -0.13)}L${P(x - 0.034, -0.04, 0.14)}L${P(x + 0.034, -0.04, 0.14)}L${P(x + 0.034, -0.04, -0.13)}Z`}
+              fill="#c0aa7d"
+            />
+            <path
+              d={`M${P(x - 0.034, 0.04, -0.13)}L${P(x - 0.034, 0.04, 0.14)}L${P(x + 0.034, 0.04, 0.14)}L${P(x + 0.034, 0.04, -0.13)}Z`}
+              fill="#a5bca8"
+            />
+          </>
+        </g>
+      ))
+    }
+    <path
+      d={`M${P(-0.24, 0.25, 0)}L${left}M${P(0.24, 0.25, 0)}L${right}`}
+      stroke="#a4b795"
+      stroke-width="1.7"></path>
+    <path d={`M${left}L${right}`} stroke="#a6b49a" stroke-width="4.3" stroke-linecap="round"></path>
+    <path
+      d={`M${P(s.left, s.rise, s.z)}L${P(s.right, s.rise, s.z)}`}
+      stroke="#cba464"
+      stroke-width="5.4"
+      stroke-linecap="round"></path>
+    {
+      [-0.12, -0.04, 0.04, 0.12].map((x) => (
+        <circle cx={P(x, s.rise, s.z)[0]} cy={P(x, s.rise, s.z)[1]} r="5" fill="#a68b5d" />
+      ))
+    }
+  </g></svg
+>

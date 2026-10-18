@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { discoveryMetadata, discoverySearchKeywords } from '../data/discovery-metadata';
+import {
+  discoveryCategories,
+  discoveryMetadata,
+  discoverySearchKeywords,
+} from '../data/discovery-metadata';
 import { films, filmRunningTime } from '../data/films';
 import { topics } from '../data/topics';
 import { localizedTopic } from '../i18n';
@@ -102,6 +106,48 @@ describe('catalog discovery', () => {
       expect(matchingScenes([scene], { ...emptyFilters(), length: 'long' })).toEqual([scene]);
     }
     expect(filmRunningTime(180)).toBe('3:00');
+  });
+  it.each(
+    discoveryCategories.flatMap((category) =>
+      Object.values(category.label).map((query) => ({ category: category.id, query })),
+    ),
+  )('finds exactly the subject for its complete label $query', ({ category, query }) => {
+    expect(
+      matchingScenes(catalog, { ...emptyFilters(), query })
+        .map((scene) => scene.slug)
+        .sort(),
+    ).toEqual(
+      catalog
+        .filter((scene) => scene.category === category)
+        .map((scene) => scene.slug)
+        .sort(),
+    );
+  });
+  it('intersects subject-label searches with explicit filters while keeping ordinary terms cross-subject', () => {
+    expect(
+      matchingScenes(catalog, { ...emptyFilters(), query: '电与磁', category: 'matter' }),
+    ).toEqual([]);
+    expect(
+      matchingScenes(catalog, {
+        ...emptyFilters(),
+        query: 'Electricity & magnetism',
+        age: 12,
+        length: 'short',
+      })
+        .map((scene) => scene.slug)
+        .sort(),
+    ).toEqual(
+      catalog
+        .filter(
+          (scene) =>
+            scene.category === 'electricity' && scene.minAge <= 12 && scene.duration <= 180,
+        )
+        .map((scene) => scene.slug)
+        .sort(),
+    );
+    expect(
+      matchingScenes(catalog, { ...emptyFilters(), query: '电场 磁场' }).map((scene) => scene.slug),
+    ).toContain('cathode-ray-lab');
   });
   it('treats short Latin acronyms as words rather than matching inside unrelated names', () => {
     const examples = [

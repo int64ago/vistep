@@ -1,0 +1,178 @@
+.emf-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #65785d;
+}
+.emf-kicker {
+  font-size: clamp(16px, 2vw, 19px);
+  text-align: center;
+  line-height: 1.6;
+  margin: 0 12px 5px;
+}
+.emf-apparatus {
+  display: block;
+  width: min(100%, 410px);
+  height: auto;
+  margin: auto;
+}
+.emf-apparatus text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #758765;
+}
+.emf-readings,
+.emf-fit {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 7px 20px;
+  padding: 7px 12px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.emf-readings b {
+  font-size: 21px;
+  font-weight: 500;
+  color: #a0885e;
+  margin-left: 6px;
+}
+.emf-fit {
+  color: #9f875f;
+}
+.emf-drop {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0 16px;
+  display: grid;
+  gap: 9px;
+  text-align: center;
+  font-size: 16px;
+}
+.emf-drop > div {
+  display: flex;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.emf-drop i:first-child {
+  background: #a4b391;
+}
+.emf-drop i:last-child {
+  background: #c5b38d;
+}
+.emf-plot,
+.emf-charge {
+  display: block;
+  width: min(100%, 440px);
+  height: auto;
+  margin: 6px auto 0;
+}
+.emf-plot text,
+.emf-charge text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #829171;
+}
+.emf-charge svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.emf-charge p {
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+}
+.emf-charge span:first-child {
+  color: #7d966c;
+}
+.emf-charge span:last-child {
+  color: #af9266;
+}
+.emf-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: #819171;
+  margin: 8px 14px;
+}
+.emf-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  background: #edf1e3;
+  border-radius: 24px;
+  margin: 22px 0;
+}
+.emf-controls button {
+  min-height: 44px;
+}
+.emf-controls > button {
+  border: 1px solid #cad2b7;
+  background: #f4f4e8;
+  color: #738263;
+  border-radius: 16px;
+  padding: 10px 18px;
+  font: inherit;
+}
+.emf-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.emf-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.emf-details p {
+  color: #7c8e70;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .emf-controls {
+    padding: 18px 14px;
+  }
+  .emf-apparatus text,
+  .emf-plot text,
+  .emf-charge text {
+    font-size: 24px;
+  }
+  .emf-readings b {
+    font-size: 19px;
+  }
+  .emf-plot,
+  .emf-charge {
+    margin-top: 2px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.emf-film[data-watch] > .emf-kicker,
+.emf-film[data-watch] > .emf-caption,
+.emf-film[data-watch] > details {
+  display: none;
+}
+.emf-film[data-watch][data-focus='plot'] > .emf-apparatus {
+  display: none;
+}
+.emf-film[data-watch][data-focus='apparatus'] > .emf-plot,
+.emf-film[data-watch][data-focus='apparatus'] > .emf-fit {
+  display: none;
+}
+.emf-film[data-watch] .emf-note {
+  margin: 6px 12px;
+  line-height: 1.45;
+}
+.emf-film[data-watch] .emf-readings,
+.emf-film[data-watch] .emf-fit {
+  padding: 5px 10px;
+}
+@media (max-width: 480px) {
+  .emf-plot text,
+  .emf-charge text {
+    font-size: 27px;
+  }
+  .emf-film[data-watch] .emf-readings b {
+    font-size: 18px;
+  }
+}

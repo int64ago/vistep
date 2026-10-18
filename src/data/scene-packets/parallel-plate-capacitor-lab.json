@@ -1,0 +1,121 @@
+{
+  "topic": {
+    "slug": "parallel-plate-capacitor-lab",
+    "name": "平行板电容的控制变量",
+    "title": "电压变了，是电荷变了，还是电容变了？",
+    "question": "电压变了，是电荷变了，还是电容变了？",
+    "description": "先隔离电源，再改变板距、正对面积与介质，用静电计观察固定电荷下的电容变化。",
+    "color": "#b6c0a0",
+    "tag": "电容 · 控制变量",
+    "related": ["capacitor-fields", "electric-field-mapping"],
+    "sources": [
+      {
+        "title": "OpenStax — Capacitors and Capacitance",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance"
+      },
+      {
+        "title": "OpenStax — Capacitor with a Dielectric",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["平行板电容的控制变量", "平行板电容器", "静电计", "固定电荷", "介质"],
+      "en": [
+        "Controlling Parallel-Plate Capacitance",
+        "parallel plate",
+        "electrometer",
+        "dielectric",
+        "fixed charge"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ParallelPlateCapacitorLab.tsx",
+  "cover": "src/components/covers/ParallelPlateCapacitorLabCover.astro",
+  "translations": {
+    "接着电源，电压由电源维持": "With the source connected, it maintains the voltage",
+    "断开电源，先保持同一份电荷": "Disconnect the source to preserve the same charge",
+    "可调平行板电容器与静电计，电源通过开关接入": "Adjustable parallel plates and an electrometer, connected to a source through a switch",
+    "电源已接通": "Source connected",
+    "电源已隔离": "Source isolated",
+    "断开电源，保留当前电荷": "Disconnect and preserve the present charge",
+    "接回电源，保持 100 V": "Reconnect the source at 100 V",
+    "极板距离": "Plate separation",
+    "正对面积比例": "Overlap fraction",
+    "插入介质": "Insert dielectric",
+    "空气": "Air",
+    "介质插入比例": "Insertion fraction",
+    "固定电荷与静电计的近似": "Fixed charge and electrometer approximations",
+    "极板距离、正对面积与介质共同决定电容。隔离后 Q 保持不变，U = Q/C；接电源时 U 不变而 Q 改变。静电计采用高输入阻抗与可忽略附加电容近似，指针表示随电压平方变化的静电力矩。忽略漏电、边缘场和介质损耗。间距方向为观察而放大，数值仍按模型计算。": "Separation, overlap and dielectric determine capacitance. Isolated plates retain Q and U = Q/C; a connected source fixes U while Q changes. The electrometer has ideal high impedance and negligible added capacitance; its pointer represents electric torque proportional to voltage squared. Leakage, fringing and dielectric loss are omitted. Separation is visually enlarged; readings use model geometry.",
+    "平行板电容的控制变量": "Controlling Parallel-Plate Capacitance",
+    "电压变了，是电荷变了，还是电容变了？": "When voltage changes, did charge or capacitance change?",
+    "先隔离电源，再改变板距、正对面积与介质，用静电计观察固定电荷下的电容变化。": "Isolate the source, then change separation, overlap and dielectric while an electrometer observes voltage at fixed charge.",
+    "电容 · 控制变量": "Capacitance · Controlled variables",
+    "指针已超量程；电压为模型计算值。": "The pointer is beyond its range; voltage is a model calculation."
+  },
+  "narration": {
+    "duration": 94,
+    "cues": [
+      {
+        "id": "isolate-charge",
+        "title": "先充电，再隔离",
+        "titleEn": "Charge, then isolate",
+        "caption": "开关断开后，极板保留原来的电荷。",
+        "captionEn": "Opening the switch preserves charge on the isolated plates.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先给平行板电容器充电，让静电计显示电压。现在断开电源，注意开关的缺口。忽略漏电，极板保留同一份电荷。接下来的比较，都要守住这个条件。电压发生变化时，才能据此判断电容怎样改变。",
+        "en": "First charge the parallel plates and observe the electrometer voltage. Now open the switch; notice the gap. Neglecting leakage, the isolated plates retain the same charge. Keep that condition for the following comparisons, so a voltage change can reveal a capacitance change."
+      },
+      {
+        "id": "plate-gap",
+        "title": "只减小板距",
+        "titleEn": "Reduce only the separation",
+        "caption": "电荷不变；板距减半，电容加倍，电压减半。",
+        "captionEn": "At fixed charge, halving separation doubles capacitance and halves voltage.",
+        "seconds": 24,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "先只改变两板之间的距离。把板距从十毫米减到五毫米，正对面积和介质保持不变。电容增大到两倍，原来的电荷只需要一半电压。静电计指针回落。这个结论来自断开电源后的固定电荷条件。",
+        "en": "Change only the distance between the plates, from ten to five millimetres. Keep overlap and material unchanged. Capacitance doubles, so the original charge now needs only half the voltage, and the pointer falls. This conclusion depends on charge remaining fixed after disconnection."
+      },
+      {
+        "id": "plate-overlap",
+        "title": "只减小正对面积",
+        "titleEn": "Reduce only the overlap",
+        "caption": "错开一块板，电容减小，电压升高。",
+        "captionEn": "Offset one plate: capacitance falls and voltage rises.",
+        "seconds": 24,
+        "chapterAt": 46,
+        "at": 46.4,
+        "zh": "恢复原来的板距。这次把一块板向上错开，注意两块板仍然一样大，变小的只是彼此正对的面积。当正对面积减到一半，电容也减半。同一份电荷对应的电压升到两倍，静电计指针张开得更大。",
+        "en": "Restore the original separation. This time offset one plate upward. Both plates remain the same size; only their facing area shrinks. At half the overlap, capacitance is halved. The same charge then produces twice the voltage, and the electrometer pointer opens farther."
+      },
+      {
+        "id": "insert-dielectric",
+        "title": "再插入介质",
+        "titleEn": "Insert a dielectric",
+        "caption": "几何不变；介质使电容增大，电压降低。",
+        "captionEn": "With geometry unchanged, dielectric insertion raises capacitance and lowers voltage.",
+        "seconds": 24,
+        "chapterAt": 70,
+        "at": 70.4,
+        "zh": "把两板重新对齐，保持原来的距离。将介质板插入两板之间。随着介质覆盖更多正对面积，电容逐渐增大，电压降低。三个比较分别改变板距、面积和介质。自由探索时也可以接回电源，看看固定电压的情形为什么不同。",
+        "en": "Realign the plates and keep their original separation. Insert a dielectric sheet. As it fills more of the overlapping area, capacitance increases and voltage falls. The three comparisons separately changed separation, overlap and material. In exploration, reconnect the source to see why fixed-voltage conditions differ."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-parallel-plate-capacitance": {
+      "chapterIds": ["isolate-charge", "plate-gap", "plate-overlap", "insert-dielectric"],
+      "label": {
+        "zh": "探究影响平行板电容器电容的因素",
+        "en": "Explore factors affecting parallel-plate capacitance"
+      }
+    }
+  }
+}

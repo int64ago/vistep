@@ -1,0 +1,130 @@
+{
+  "topic": {
+    "slug": "motion-sensor-lab",
+    "name": "传感器测位置与速度",
+    "title": "传感器如何把一次声波变成速度？",
+    "question": "传感器如何把一次声波变成速度？",
+    "description": "对照红外同步的单程超声与往返反射超声，从飞行时间得到位置，再从连续位置得到速度。",
+    "color": "#bac7a8",
+    "tag": "超声 · 计时 · 测速",
+    "related": ["ticker-tape-lab", "ultrasound"],
+    "sources": [
+      {
+        "title": "Vernier — How does a Motion Detector work?",
+        "url": "https://www.vernier.com/til/2961"
+      },
+      {
+        "title": "Vernier — Motion Detector User Manual",
+        "url": "https://www.vernier.com/manuals/md-btd/"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["传感器测位置与速度", "位移传感器", "超声测速", "红外同步"],
+      "en": [
+        "Position and velocity with sensors",
+        "ultrasonic motion detector",
+        "infrared reference",
+        "time of flight"
+      ]
+    }
+  },
+  "component": "src/components/experiments/MotionSensorLab.tsx",
+  "cover": "src/components/covers/MotionSensorLabCover.astro",
+  "translations": {
+    "传感器测位置与速度": "Position and velocity with sensors",
+    "传感器如何把一次声波变成速度？": "How does a sensor turn a sound pulse into velocity?",
+    "对照红外同步的单程超声与往返反射超声，从飞行时间得到位置，再从连续位置得到速度。": "Compare infrared-referenced one-way ultrasound with a reflected round trip; derive position from flight time and velocity from successive positions.",
+    "超声 · 计时 · 测速": "Ultrasound · Timing · Velocity",
+    "连续测位置，再用位移除以时间": "Measure positions repeatedly, then divide displacement by time",
+    "红外线先到，超声波后到": "Infrared arrives first; ultrasound follows",
+    "同一个探头发射，再等待回声": "One transducer transmits, then waits for an echo",
+    "移动发射器 A · 固定接收器 B": "Moving emitter A · Fixed receiver B",
+    "固定收发器 C · 移动反射物 D": "Fixed transducer C · Moving reflector D",
+    "小车上的发射器同时发射红外与超声，固定接收器连到计算机": "The cart emits infrared and ultrasound together; a fixed receiver connects to the computer",
+    "固定探头发出超声，波在移动小车上反射后返回同一探头": "A fixed transducer emits ultrasound; the moving cart reflects it back",
+    "超声脉冲": "Ultrasonic pulse",
+    "红外计时参考": "Infrared timing reference",
+    "脉冲传播显著慢放": "Pulse propagation greatly slowed",
+    "计算机记录：采样间隔0.02 s": "Computer record: 0.02 s sampling interval",
+    "每次测距转成位置点，连续两点求得平均速度": "Each range becomes a position; two successive positions give average velocity",
+    "红外到达后计时": "Time after infrared arrival",
+    "从发射开始计时": "Time since transmission",
+    "本次距离": "Measured range",
+    "等待超声到达": "Waiting for ultrasound",
+    "两次位置的差除以采样时间，得到该小段平均速度。": "Divide the position difference by the sampling interval to obtain average velocity.",
+    "超声只走单程；红外传播时间相对很小。": "Ultrasound travels one way; infrared travel time is comparatively tiny.",
+    "超声走了一个来回；距离计算必须除以二。": "Ultrasound makes a round trip; divide its travelled distance by two.",
+    "传感器类型": "Sensor arrangement",
+    "发射器与接收器": "Emitter and receiver",
+    "反射式": "Reflected echo",
+    "小车速度": "Cart velocity",
+    "一次脉冲的进度": "Single-pulse progress",
+    "声速示例343 m/s；小车在波传播期间继续运动。反射式距离对应反射时刻，空气温度与多次回声误差未模拟。": "Example sound speed: 343 m/s. The cart keeps moving during flight; reflected range belongs to reflection time. Temperature variation and multiple echoes are omitted."
+  },
+  "narration": {
+    "duration": 113,
+    "cues": [
+      {
+        "id": "reference",
+        "title": "同时发射两种信号",
+        "titleEn": "Transmit two signals together",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "红外提供起点，超声提供可测的延迟。",
+        "captionEn": "Infrared supplies the reference; ultrasound supplies a measurable delay.",
+        "zh": "把发射器固定在小车上，接收器留在轨道端，并连接计算机。发射器同时发出红外脉冲和超声脉冲。红外传播极快，先到达接收器，启动计时；超声传播慢得多，随后到达。教材用这两种信号的时间差来测距离。单次测量首先给出位置，速度还需要另一次位置记录。",
+        "en": "Fix the emitter to the cart and connect a stationary receiver to the computer. Infrared and ultrasound are emitted together. Infrared arrives first and starts the timer; much slower ultrasound follows. The textbook uses their arrival-time difference to measure range. One measurement gives position; velocity requires a second position record."
+      },
+      {
+        "id": "one-way",
+        "title": "一次单程测距",
+        "titleEn": "Measure the one-way range",
+        "seconds": 28,
+        "chapterAt": 27,
+        "at": 27.3,
+        "caption": "x约等于声速乘时差，不需要除以二。",
+        "captionEn": "Range is approximately sound speed times delay, without a factor of two.",
+        "zh": "把短暂的传播过程放慢，跟着超声脉冲走到接收器。小车仍在运动，但这一脉冲从发射时的位置出发，之后在空气中独立传播。超声到达后，距离才显示出来。由于红外传播时间远小于声传播时间，教材近似用声速乘以这段时差。这里声波只走了一程，不能再除以二。",
+        "en": "Slow the propagation and follow the ultrasonic pulse to the receiver. The cart keeps moving, but the pulse starts at the emission position and then travels independently through the air. Range appears only after arrival. Infrared travel time is tiny compared with sound, so the textbook multiplies the delay by sound speed. This is a one-way path; do not divide by two."
+      },
+      {
+        "id": "samples",
+        "title": "连续位置生成速度",
+        "titleEn": "Generate velocity from successive positions",
+        "seconds": 29,
+        "chapterAt": 55,
+        "at": 55.3,
+        "caption": "0.02秒一次测距，位移除以对应时间。",
+        "captionEn": "Sample every 0.02 seconds and divide displacement by the matching interval.",
+        "zh": "让传感器每隔零点零二秒重复测量，屏幕上逐步出现位置点。比较相邻两个点，位置差是这小段时间里的位移，位移除以时间就是平均速度。对于匀速小车，这个结果就是它的速度；对于变速运动，足够短的区间平均速度才可近似瞬时速度。计算机不会跳过位置信息，直接凭空知道速度。",
+        "en": "Repeat the measurement every 0.02 seconds. Position points accumulate on the screen. The difference between two positions is displacement; divide by their interval for average velocity. For this constant-speed cart the result is exact. During changing motion, a sufficiently short interval average only approximates instantaneous velocity. The computer derives velocity from positions rather than knowing it independently."
+      },
+      {
+        "id": "reflection",
+        "title": "改为发射与接收同一探头",
+        "titleEn": "Use one transducer for the round trip",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3,
+        "caption": "超声碰到反射面后返回，路程约为两倍距离。",
+        "captionEn": "Ultrasound reflects from the target and returns along a two-way path.",
+        "zh": "换成反射式传感器，固定探头发射超声，小车上的反射面把它送回同一个探头。现在计时包含去程和回程，声速乘总时间给出往返路程，所以距离计算要除以二。运动目标的位置在反射时刻确定；本模型也保留了传播期间的微小移动。两种装置都能连续测速，但计时起点和声波路径不同，计算式不能混用。",
+        "en": "Switch to a reflected-echo sensor. A fixed transducer sends ultrasound to the cart and receives its return. Timing includes both outbound and inbound legs, so sound speed times total time gives a round-trip distance; divide by two. Range belongs to the reflection instant, and the model retains the cart’s small motion during flight. Both arrangements measure velocity repeatedly, but their timing references and paths differ."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-sensor-speed": {
+      "chapterIds": ["reference", "one-way", "samples", "reflection"],
+      "label": {
+        "zh": "借助传感器与计算机测速度",
+        "en": "Measure velocity with sensors and a computer"
+      }
+    }
+  }
+}

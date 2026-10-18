@@ -1,0 +1,45 @@
+---
+import { vernierReading } from '../../models/length-instruments';
+const s = vernierReading(23.7);
+---
+
+<svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg"
+  ><defs
+    ><linearGradient id="li-steel"
+      ><stop stop-color="#a6b6a8"></stop><stop offset=".4" stop-color="#edf0da"></stop><stop
+        offset="1"
+        stop-color="#9cae9a"></stop></linearGradient
+    ></defs
+  ><circle cx="114" cy="158" r="47" fill="url(#li-steel)" stroke="#9dac92"></circle><rect
+    x="52"
+    y="54"
+    width="310"
+    height="26"
+    rx="4"
+    fill="url(#li-steel)"
+    stroke="#99aa90"></rect><path
+    d="M52 54V210Q67 210 67 193V80M161 80V194L176 210V54"
+    fill="url(#li-steel)"
+    stroke="#99aa90"></path><rect
+    x="155"
+    y="48"
+    width="85"
+    height="46"
+    rx="6"
+    fill="#c1d0b1"
+    stroke="#97aa88"></rect><g transform="translate(190 104)"
+    ><rect width="184" height="92" rx="12" fill="#f1f1dc" stroke="#c5ceb4"></rect>{
+      Array.from({ length: 11 }, (_, i) => (
+        <path
+          d={`M${12 + i * 15} 18V42M${12 + s.fraction * 15 + i * 0.9 * 15} 47V${i === s.aligned ? 78 : 66}`}
+          stroke={i === s.aligned ? '#b39358' : '#9aa98b'}
+          stroke-width={i === s.aligned ? 2 : 1.3}
+        />
+      ))
+    }<path
+      d={`M${12 + (s.fraction + s.aligned * 0.9) * 15} 16V80`}
+      stroke="#d5bb7a"
+      opacity=".35"
+      stroke-width="5"></path></g
+  ></svg
+>

@@ -5,6 +5,9 @@ import { resolve, join, basename } from 'node:path';
 const directory = resolve(process.argv[2] || 'dist');
 const preview = process.argv.includes('--preview');
 const origin = 'https://vistep.ai';
+const narration = JSON.parse(
+  readFileSync(new URL('../src/data/narration.json', import.meta.url), 'utf8'),
+);
 const headers = readFileSync(join(directory, '_headers'), 'utf8');
 assert.equal(
   /X-Robots-Tag:.*noindex/i.test(headers),
@@ -92,7 +95,18 @@ for (const entry of urls) {
   if (url.pathname.includes('/explore/')) {
     const resource = graph.find((n) => n['@type'] === 'LearningResource');
     assert(resource, `LearningResource: ${entry}`);
-    assert(resource.audio.transcript.length > 400);
+    const slug = url.pathname.split('/').filter(Boolean).at(-1);
+    const locale = url.pathname.startsWith('/en/') ? 'en' : 'zh';
+    const cues = narration[slug]?.cues;
+    assert(
+      cues?.length && cues.every((cue) => cue[locale].trim().length > 30),
+      `Narration chapters: ${entry}`,
+    );
+    assert.equal(
+      resource.audio.transcript,
+      cues.map((cue) => cue[locale]).join('\n\n'),
+      `Complete recorded transcript: ${entry}`,
+    );
     assert(existsSync(join(directory, new URL(resource.audio.contentUrl).pathname)));
     const transcript = html.match(
       /<details\b(?=[^>]*\bclass="[^"]*\blesson-transcript\b[^"]*")[^>]*>([\s\S]*?)<\/details>/,

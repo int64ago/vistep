@@ -1,0 +1,43 @@
+---
+import { inclinedEnergy } from '../../models/mechanical-energy-lab';
+const s = inclinedEnergy(0.65),
+  a = (s.angle * 180) / Math.PI,
+  x = 53 + s.x * Math.cos(s.angle) * 250,
+  y = 103 + s.x * Math.sin(s.angle) * 250;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><path d="M45 107L352 172" stroke="#b8c9ac" stroke-width="16" stroke-linecap="round"></path><path
+    d="M45 100L352 165"
+    stroke="#e0e6d1"
+    stroke-width="4"></path><path
+    d="M76 117v76m-16 0h32M314 168v25m-16 0h32"
+    stroke="#aab99b"
+    stroke-width="5"
+    fill="none"></path>{
+    [0.3, 0.9].map((u) => (
+      <g
+        transform={`translate(${53 + u * Math.cos(s.angle) * 250} ${103 + u * Math.sin(s.angle) * 250})`}
+      >
+        <>
+          <path d="M-7 10v-54q9-9 18 0v54" fill="none" stroke="#a9bb9a" stroke-width="6" />
+          <path d="M-5 -29h13" stroke="#c4ac7a" />
+        </>
+      </g>
+    ))
+  }<g transform={`translate(${x} ${y}) rotate(${a})`}
+    ><path d="M-22 -3L-18 -18h36l5 15Z" fill="#c6d2b2" stroke="#a4b78d"></path><path
+      d="M-3 -18v-24h6v24Z"
+      fill="#b49b70"></path></g
+  ><path d="M50 115Q15 184 84 196" stroke="#a7b7a4" stroke-width="4" fill="none"></path><rect
+    x="79"
+    y="182"
+    width="45"
+    height="23"
+    rx="8"
+    fill="#c3d0b0"></rect><path
+    d="M248 200h88m-88 9h88"
+    stroke="#c4b28b"
+    stroke-width="3"
+    stroke-linecap="round"></path></svg
+>

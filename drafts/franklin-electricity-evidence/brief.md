@@ -1,0 +1,13 @@
+# Franklin electrical evidence — independent historical path
+
+Own slug replaces r3-franklin-electricity’s old context-only friction mapping. Do not edit electrostatic-induction frozen files. Four chapters / 96 s. Textbook required 3 printed2 is history-brief; no kite apparatus is specified there.
+
+Primary source: 19 Oct1752 report in The Papers of Benjamin Franklin https://franklinpapers.org/framedVolumes.jsp?vol=4&page=360a and original-text reprint https://ushistory.org/historic-personages/franklin/science/kite2. Its comparison of cloud-derived electricity with rubbed-glass experiments supports storage and repeated electrical effects. We paraphrase, not quote procedures. Scientific model support OpenStax8.1 https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance.
+
+Not a historical reconstruction: two modern equivalent capacitors and charge indicators make an evidence comparison visible. Left source is frictional, right source is explicitly the historical report. Dashed incoming marks are conceptual links, not a rendered outdoor circuit. No kite, lightning interception or outdoor instructions. The cloud sign can reverse; leaf opening alone cannot identify charge sign. Storage and release are visible real model changes, not a friction clip with renamed captions.
+
+Art direction: paired translucent jars and actual connected charge indicators; return conductors remain separate from inner foils. A normally open resistive branch becomes connected only in release. Modern-equivalent label stays visible. On phones the paired composition remains because matching apparatus is the causal comparison; 27px SVG labels maintain readability at320width.
+
+Model:1nF capacitor; charge1s/discharge0.8s time constants; grounded return conductor provides equal opposite charge; small-foil equilibrium from Coulomb repulsion versus gravity; indicator loading omitted. Model voltage is a teaching choice, not inferred historical measurement. Discharge starts from prior 5s charged state (not snapped to full equilibrium). Independent equation benchmark and zero/opposite-sign boundaries in4 author tests.
+
+Author checks: 4 targeted model tests passed; TSX syntax zero diagnostics and complete Chinese-literal translation coverage. Packet validation currently blocked only by prior ownership of r3-franklin-electricity in electrostatic-induction; root must replace that context-only mapping. Owned files formatted. No browser, full watch, screenshots, listening or physical-device performance claimed; root retains those acceptance checks and source mapping override.

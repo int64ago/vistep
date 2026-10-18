@@ -1,0 +1,27 @@
+---
+import { horizontalProjectile } from '../../models/projectile-motion-lab';
+const dots = Array.from({ length: 8 }, (_, i) => horizontalProjectile(i * 0.05));
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M40 39Q77 80 126 80H140" stroke="#bdc9ae" stroke-width="8"></path><path
+    d="M40 39Q77 80 126 80H140"
+    stroke="#e0e6d0"
+    stroke-width="3"></path>
+  <path d="M140 80V213M140 80H350" stroke="#c6d2b6"></path>
+  {
+    dots.map((q) => (
+      <g>
+        <>
+          <path
+            d={`M${140 + q.x * 320} 80V${80 + q.y * 180}H140`}
+            stroke="#d9e0ca"
+            stroke-dasharray="3 5"
+          />
+          <circle cx={140 + q.x * 320} cy={80 + q.y * 180} r="4" fill="#a6b99a" />
+        </>
+      </g>
+    ))
+  }
+  <path d="M130 203H354l-13 10H119Z" fill="#d3c9ab" stroke="#bbc3a6"></path>
+</svg>

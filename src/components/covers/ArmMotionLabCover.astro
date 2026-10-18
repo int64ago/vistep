@@ -1,0 +1,32 @@
+---
+import { armKinematics } from '../../models/arm-motion-lab';
+const s = armKinematics(0.31),
+  P = (p: { x: number; y: number }) => ({ x: 157 + p.x * 265, y: 185 - p.y * 265 }),
+  points = s.points.map(P),
+  history = Array.from({ length: 16 }, (_, i) => P(armKinematics(i * 0.02).tip));
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><path d="M155 179Q126 165 110 181L104 228H154Z" fill="#dbe2ca"></path><ellipse
+    cx="128"
+    cy="149"
+    rx="15"
+    ry="18"
+    fill="#d4c09e"></ellipse>{
+    history.map((p) => <circle cx={p.x} cy={p.y} r="2" fill="#b2c2a3" />)
+  }{
+    [0, 1, 2].map((i) => (
+      <g>
+        <>
+          <path
+            d={`M${points[i].x} ${points[i].y}L${points[i + 1].x} ${points[i + 1].y}`}
+            stroke={['#b8c8a5', '#cbb895', '#d8c7a8'][i]}
+            stroke-width={[18, 13, 9][i]}
+            stroke-linecap="round"
+          />
+          <circle cx={points[i].x} cy={points[i].y} r="4" fill="#f2efdc" stroke="#91a17b" />
+        </>
+      </g>
+    ))
+  }<circle cx={points[3].x} cy={points[3].y} r="3" fill="#a9bfcb"></circle></svg
+>

@@ -1,0 +1,166 @@
+{
+  "topic": {
+    "slug": "hertz-wave-lab",
+    "name": "赫兹与电磁波实验",
+    "title": "两处没有相连的间隙，为什么都出现火花？",
+    "question": "两处没有相连的间隙，为什么都出现火花？",
+    "description": "从火花发射与接收，逐项观察反射干涉、折射、偏振和衍射的证据。",
+    "color": "#799066",
+    "tag": "波动的多重证据",
+    "related": ["polarization", "wave-interference"],
+    "sources": [
+      {
+        "title": "OpenStax — Electromagnetic waves",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/16-1-maxwells-equations-and-electromagnetic-waves"
+      }
+    ]
+  },
+  "component": "src/components/experiments/HertzWaveLab.tsx",
+  "cover": "src/components/covers/HertzWaveLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["赫兹与电磁波实验", "赫兹", "电磁波", "火花", "偏振", "衍射"],
+      "en": [
+        "Hertz and electromagnetic-wave experiments",
+        "spark gap",
+        "radio waves",
+        "polarization",
+        "diffraction"
+      ]
+    }
+  },
+  "translations": {
+    "赫兹与电磁波实验": "Hertz and electromagnetic-wave experiments",
+    "两处没有相连的间隙，为什么都出现火花？": "Why can two unconnected gaps both produce sparks?",
+    "从火花发射与接收，逐项观察反射干涉、折射、偏振和衍射的证据。": "Connect spark emission and reception with reflection, interference, refraction, polarization and diffraction.",
+    "波动的多重证据": "Several kinds of wave evidence",
+    "火花发射与传播": "Spark emission and propagation",
+    "开口环接收": "Reception by a gapped loop",
+    "反射与干涉": "Reflection and interference",
+    "介质中的折射": "Refraction in a medium",
+    "接收方向与偏振": "Orientation and polarization",
+    "狭缝后的衍射": "Diffraction beyond a slit",
+    "赫兹发射接收装置与电磁波性质的逐项对照": "Hertz transmitter and receiver with individual wave-property comparisons",
+    "发射间隙": "Transmitter gap",
+    "接收间隙": "Receiver gap",
+    "入射波与反射波叠加出驻波": "Incident and reflected waves form a standing wave",
+    "向法线偏折，频率保持不变": "Bends toward the normal at unchanged frequency",
+    "狭缝变窄，主瓣展开": "Narrower slit, broader central lobe",
+    "相对接收功率": "Relative received power",
+    "中央强度归一": "Normalized central intensity",
+    "选择电磁波证据": "Choose wave evidence",
+    "传播时间": "Propagation time",
+    "接收环法线与磁场夹角": "Loop-normal angle to magnetic field",
+    "入射角": "Incidence angle",
+    "狭缝宽度与波长之比": "Slit width divided by wavelength",
+    "历史装置与演示模型": "Historical apparatus and explanatory model",
+    "火花装置为结构示意，响应按100兆赫阻尼波包和有限传播延迟计算；可见火花亮度仅表示响应强弱，不计算空气击穿阈值。极化比较采用接收环磁通投影，反射用一维理想导体边界，折射用平面界面，衍射用远场单缝近似。空间与纳秒时间均放大显示，未复原赫兹器材的全部尺寸。": "The spark apparatus is schematic. A damped 100 MHz packet includes finite travel time; visible sparks indicate response without an air-breakdown model. Orientation uses loop-flux projection, reflection an ideal conductor, refraction a planar interface and diffraction a far-field slit. Space and nanosecond time are enlarged, without reconstructing every historical dimension.",
+    "发射与传播": "Emission and propagation",
+    "迅速变化的电磁场带走能量。": "Rapidly changing fields carry energy outward.",
+    "另一处间隙响应": "The other gap responds",
+    "接收环在传播延迟之后响应。": "The loop responds after the travel delay.",
+    "反射产生干涉": "Reflection produces interference",
+    "同一空间出现固定的强弱位置。": "Fixed nodes and antinodes appear in space.",
+    "进入另一种介质": "Enter another medium",
+    "传播方向改变，满足折射关系。": "The direction changes according to refraction.",
+    "转动接收环": "Rotate the receiving loop",
+    "接收响应取决于方向投影。": "Reception depends on directional projection.",
+    "通过有限狭缝": "Pass through a finite slit",
+    "波长相同，狭缝越窄，衍射展开越明显。": "At fixed wavelength, a narrower slit spreads the wave more."
+  },
+  "narration": {
+    "duration": 156,
+    "cues": [
+      {
+        "id": "spark-emission",
+        "title": "发射与传播",
+        "titleEn": "Emission and propagation",
+        "caption": "迅速变化的电磁场带走能量。",
+        "captionEn": "Rapidly changing fields carry energy outward.",
+        "zh": "先看发射间隙。高压放电激起快速变化的电磁场，能量向外传播。画面把纳秒级过程大幅放慢，波前不是空气中的实体圆环，而是帮助追踪传播位置的标记。",
+        "en": "Watch the transmitter gap. A discharge excites rapidly varying electromagnetic fields that carry energy outward. Nanosecond motion is greatly slowed. The drawn fronts track propagation; they are not physical rings in the air.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "spark-reception",
+        "title": "另一处间隙响应",
+        "titleEn": "The other gap responds",
+        "caption": "接收环在传播延迟之后响应。",
+        "captionEn": "The loop responds after the travel delay.",
+        "zh": "跟随波到达另一个开口导线环。变化的磁通激起电动势，间隙出现响应。注意没有导线连接两套装置，而且接收不能早于传播时间。真实火花阈值很复杂，这里只用亮度提示响应强弱。",
+        "en": "Follow the wave to the separate gapped loop. Changing linked flux induces an emf and a response at its gap. No wire connects the devices, and reception cannot precede travel time. Brightness here indicates response rather than a detailed spark-breakdown threshold.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "wave-reflection",
+        "title": "反射产生干涉",
+        "titleEn": "Reflection produces interference",
+        "caption": "同一空间出现固定的强弱位置。",
+        "captionEn": "Fixed nodes and antinodes appear in space.",
+        "zh": "加入金属反射面，入射波与反射波叠加。有些位置始终很弱，邻近位置振幅很大，形成驻波。这样的空间干涉结构，把接收到电信号进一步连接到可测量的波长。",
+        "en": "Add a metal reflector. Incident and reflected waves combine into a standing pattern with fixed nodes and antinodes. This spatial interference links electrical reception to a measurable wavelength.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "wave-refraction",
+        "title": "进入另一种介质",
+        "titleEn": "Enter another medium",
+        "caption": "传播方向改变，满足折射关系。",
+        "captionEn": "The direction changes according to refraction.",
+        "zh": "让电磁波进入另一种介质。保持同一频率，传播速度和波长改变，方向向法线偏折。这里用平面界面简化折射装置，改变入射角仍能检验同一个折射关系。",
+        "en": "Let the wave enter another medium. Frequency stays the same while speed and wavelength change, and the direction bends toward the normal. This planar-interface model isolates refraction and lets different incidence angles test the same relation.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "wave-polarization",
+        "title": "转动接收环",
+        "titleEn": "Rotate the receiving loop",
+        "caption": "接收响应取决于方向投影。",
+        "captionEn": "Reception depends on directional projection.",
+        "zh": "回到发射器与接收环。改变接收环法线相对磁场的方向，穿过环的变化磁通减小，接收响应也减弱。方向选择性说明电磁波具有偏振性质，而不只是任意方向都相同的扰动。",
+        "en": "Return to the transmitter and loop. Rotate the loop normal relative to the magnetic field. Less changing flux links the loop, weakening its response. This directional selectivity reveals polarization rather than a disturbance identical in every orientation.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "wave-diffraction",
+        "title": "通过有限狭缝",
+        "titleEn": "Pass through a finite slit",
+        "caption": "波长相同，狭缝越窄，衍射展开越明显。",
+        "captionEn": "At fixed wavelength, a narrower slit spreads the wave more.",
+        "zh": "最后让波通过有限宽度的狭缝。观察归一化接收强度：狭缝相对波长变窄，中央主瓣展开得更明显。反射、干涉、折射、偏振与衍射共同构成了电磁波的证据链。",
+        "en": "Finally pass the wave through a finite slit. In the normalized intensity profile, a slit narrower relative to wavelength produces a broader central lobe. Reflection, interference, refraction, polarization and diffraction form a connected body of wave evidence.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-hertz-electromagnetic-waves": {
+      "chapterIds": [
+        "spark-emission",
+        "spark-reception",
+        "wave-reflection",
+        "wave-refraction",
+        "wave-polarization",
+        "wave-diffraction"
+      ],
+      "label": {
+        "zh": "赫兹电磁波实验",
+        "en": "Hertz electromagnetic-wave experiments"
+      }
+    }
+  }
+}

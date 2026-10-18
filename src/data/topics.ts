@@ -12,6 +12,2193 @@ export type Topic = {
 };
 export const topics: Topic[] = [
   {
+    slug: 'singing-basin',
+    name: '摩擦铜盆的振动与水花',
+    title: '慢慢摩擦盆耳，为什么会出现水花？',
+    question: '慢慢摩擦盆耳，为什么会出现水花？',
+    description: '从摩擦供能到振幅增长，比较四处与六处水花对应的盆水耦合模态。',
+    color: '#b5a16e',
+    tag: '手很慢，盆却振得很快',
+    related: ['resonance', 'mechanical-wave-lab'],
+    sources: [
+      {
+        title:
+          'Liu et al. (1995) — Self-excited vibration of the shell-liquid coupled system induced by dry friction',
+        url: 'https://pubs-en.cstam.org.cn/article/id/ams_128837',
+      },
+      {
+        title:
+          'Acta Mechanica Sinica (1998) — Self-excited vibration caused by dry friction between two elastic structures',
+        url: 'https://pubs-en.cstam.org.cn/article/id/ams_128878',
+      },
+      {
+        title:
+          'Wang (2005) — Modern Scientific Information Hidden in Ancient Chinese Science and Technology, Section 3',
+        url: 'https://journals.ub.ovgu.de/index.php/techmech/article/download/890/866/2444',
+      },
+    ],
+    number: '301',
+  },
+  {
+    slug: 'pendulum-measurement-lab',
+    name: '单摆的记录与测量',
+    title: '怎样从摆动的记录中测出长度、周期和重力？',
+    question: '怎样从摆动的记录中测出长度、周期和重力？',
+    description: '把滴墨记录、累计计时、误差检验和倾斜杆线摆连接成完整测量路径。',
+    color: '#c1ccaf',
+    tag: '单摆 · 计时 · 等效重力',
+    related: ['pendulum', 'spring-oscillation-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Pendulums',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums',
+      },
+    ],
+    number: '300',
+  },
+  {
+    slug: 'forced-oscillation-lab',
+    name: '电机驱动与共振摆',
+    title: '为什么不同的振子会跟随同一个频率？',
+    question: '为什么不同的振子会跟随同一个频率？',
+    description: '用实际电机滑槽和公共横梁，区分受迫稳态、共振响应与有限能量交换。',
+    color: '#c0caae',
+    tag: '受迫振动 · 共振 · 耦合',
+    related: ['resonance', 'spring-oscillation-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Forced Oscillations',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations',
+      },
+    ],
+    number: '299',
+  },
+  {
+    slug: 'recoil-lab',
+    name: '气球与喷水容器的反冲',
+    title: '喷出去的东西，怎样改变自身运动？',
+    question: '喷出去的东西，怎样改变自身运动？',
+    description: '从自由气球喷气到悬挂圆锥容器喷水，分别追踪平动动量和绕轴角动量。',
+    color: '#c3d0b0',
+    tag: '喷气反冲 · 角动量流 · 排水',
+    related: ['force-pairs-lab', 'centripetal-force-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Rocket Propulsion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-7-rocket-propulsion',
+      },
+      {
+        title: 'MIT — Rotating lawn sprinkler control-volume problem',
+        url: 'https://ocw.mit.edu/ans7870/2/2.25/assignments/sec5/5-26/index.html',
+      },
+    ],
+    number: '298',
+  },
+  {
+    slug: 'floating-oscillator',
+    name: '浮筷的上下振动',
+    title: '一根浮在水中的木筷，为什么会来回振动？',
+    question: '一根浮在水中的木筷，为什么会来回振动？',
+    description: '从浸入长度计算浮力，比较小振动、阻力衰减与完全浸没的边界。',
+    color: '#b7cdbd',
+    tag: '浮力 · 回复力 · 振动',
+    related: ['buoyancy', 'spring-oscillation-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Archimedes’ Principle and Buoyancy',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy',
+      },
+    ],
+    number: '297',
+  },
+  {
+    slug: 'doppler-lab',
+    name: '旋转蜂鸣器与行进队列',
+    title: '声源没改音调，听到的频率为什么会变？',
+    question: '声源没改音调，听到的频率为什么会变？',
+    description:
+      '用竹竿端蜂鸣器的旋转与路旁观察者的行走，分别追踪声源运动和接收者运动改变波峰到达频率的过程。',
+    color: '#a6b58f',
+    tag: '每次到达都来自一次发出',
+    related: ['doppler', 'wave-interference'],
+    sources: [
+      {
+        title: 'OpenStax — The Doppler Effect',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/17-7-the-doppler-effect',
+      },
+    ],
+    number: '296',
+  },
+  {
+    slug: 'spring-oscillation-lab',
+    name: '弹簧振动的记录与测量',
+    title: '怎样把来回运动变成可比较的实验记录？',
+    question: '怎样把来回运动变成可比较的实验记录？',
+    description: '从频闪与录像到拖纸、计时和变量控制，让每一种记录对应真实装置。',
+    color: '#bbc8aa',
+    tag: '记录 · 周期 · 相位',
+    related: ['pendulum', 'resonance'],
+    sources: [
+      {
+        title: 'OpenStax — Simple Harmonic Motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/15-1-simple-harmonic-motion',
+      },
+    ],
+    number: '295',
+  },
+  {
+    slug: 'ramp-collision-lab',
+    name: '斜槽小球碰撞实验',
+    title: '不直接测速度，怎样检验动量守恒？',
+    question: '不直接测速度，怎样检验动量守恒？',
+    description: '同直径、不同质量的两球在水平斜槽末端碰撞，用铅垂原点和三组落点比较质量加权射程。',
+    color: '#c3c5a1',
+    tag: '正碰 · 平抛测量 · 动量守恒',
+    related: ['projectile-motion-lab', 'elastic-collision'],
+    sources: [
+      {
+        title: 'OpenStax — Types of Collisions',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions',
+      },
+      {
+        title: 'OpenStax — Projectile Motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion',
+      },
+    ],
+    number: '294',
+  },
+  {
+    slug: 'momentum-collision-lab',
+    name: '碰撞中的不变量',
+    title: '碰撞前后，究竟什么量保持不变？',
+    question: '碰撞前后，究竟什么量保持不变？',
+    description:
+      '从不同质量悬球到粘连小车和气垫导轨，用真实教材数据与可追踪测速分别检验动量和动能。',
+    color: '#bdc9ae',
+    tag: '碰撞 · 动量 · 测量',
+    related: ['elastic-collision', 'pendulum'],
+    sources: [
+      {
+        title: 'OpenStax — Types of Collisions',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions',
+      },
+    ],
+    number: '293',
+  },
+  {
+    slug: 'sound-interference-lab',
+    name: '双扬声器的声音干涉',
+    title: '同样两个扬声器，为什么换个位置就变安静？',
+    question: '同样两个扬声器，为什么换个位置就变安静？',
+    description: '由同一个信号源驱动双扬声器，移动接收点并寻找学生白旗、黑旗标出的稳定强弱区域。',
+    color: '#a3b38c',
+    tag: '路程差改变叠加结果',
+    related: ['wave-interference', 'noise'],
+    sources: [
+      {
+        title: 'OpenStax — Interference of waves',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves',
+      },
+    ],
+    number: '292',
+  },
+  {
+    slug: 'sound-measurement-lab',
+    name: '声音的频率与传播测量',
+    title: '从一段波形到一湖钟声，怎样测量声音？',
+    question: '从一段波形到一湖钟声，怎样测量声音？',
+    description:
+      '按相同时间窗比较do与sol的频率，主动采集自己的声音，再用闪光和水下钟声复现教材测速。',
+    color: '#92a286',
+    tag: '把次数和时间真正对齐',
+    related: ['mechanical-wave-lab', 'ultrasound'],
+    sources: [
+      {
+        title: 'Geneva Science History Museum — Jean-Daniel Colladon',
+        url: 'https://institutions.ville-geneve.ch/fileadmin/user_upload/mhn/documents/Musee_histoire_des_sciences/8_Colladon_Angl_2.pdf',
+      },
+      {
+        title: 'MDN — Time-domain audio samples',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatTimeDomainData',
+      },
+      {
+        title: 'OpenStax — Sound waves',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/17-1-sound-waves',
+      },
+    ],
+    number: '291',
+  },
+  {
+    slug: 'arm-motion-lab',
+    name: '甩手与投掷的运动研究',
+    title: '指尖为什么能获得很大的速度？',
+    question: '指尖为什么能获得很大的速度？',
+    description: '从视频比例标定、关节速度合成到手机交叉测量，保留教材原始估算与标枪研究提案。',
+    color: '#c4c5a5',
+    tag: '关节运动 · 视频测量 · 速度合成',
+    related: ['wax-motion-composition', 'phone-accelerometer-lab', 'centripetal-force-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Relative Motion in One and Two Dimensions',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions',
+      },
+      {
+        title: 'Android Developers — Motion sensors',
+        url: 'https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion',
+      },
+    ],
+    number: '290',
+  },
+  {
+    slug: 'impulse-contact-lab',
+    name: '接住与停下的力',
+    title: '同样停下来，为什么感觉到的力不同？',
+    question: '同样停下来，为什么感觉到的力不同？',
+    description: '比较充气与放气气球，再分开车辆和理想乘员的停止过程。',
+    color: '#aebfa8',
+    tag: '动量与冲量',
+    related: ['elastic-collision', 'force-pairs-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Impulse and collisions',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions',
+      },
+      {
+        title: 'NHTSA — Vehicle safety ratings and testing',
+        url: 'https://www.nhtsa.gov/ratings',
+      },
+    ],
+    number: '289',
+  },
+  {
+    slug: 'ripple-tank-lab',
+    name: '水波槽中的传播与叠加',
+    title: '同一片水面，为什么会出现不同的波纹？',
+    question: '同一片水面，为什么会出现不同的波纹？',
+    description: '从漂浮纸屑到反射、折射、衍射、双源干涉与移动波源，逐一更换真实器材观察水波。',
+    color: '#91aa8a',
+    tag: '让每道波纹都有来处',
+    related: ['surface-waves', 'wave-interference', 'doppler'],
+    sources: [
+      {
+        title: 'MIT — Wave propagation lecture notes',
+        url: 'https://ocw.mit.edu/courses/2-062j-wave-propagation-spring-2017/pages/lecture-notes/',
+      },
+      {
+        title: 'OpenStax — Huygens principle and diffraction',
+        url: 'https://openstax.org/books/college-physics-2e/pages/27-2-huygenss-principle-diffraction',
+      },
+      {
+        title: 'OpenStax — Interference of waves',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves',
+      },
+    ],
+    number: '288',
+  },
+  {
+    slug: 'mechanical-energy-lab',
+    name: '验证机械能守恒',
+    title: '减少的重力势能，都变成动能了吗？',
+    question: '减少的重力势能，都变成动能了吗？',
+    description: '从纸带、光电门与气垫导轨出发，独立测量高度和速度，并正确选择研究系统。',
+    color: '#b9c9aa',
+    tag: '位置测量 · 能量比较 · 误差',
+    related: ['ticker-tape-lab', 'newton-second-law-lab', 'pendulum'],
+    sources: [
+      {
+        title: 'Vernier — Photogate User Manual',
+        url: 'https://www.vernier.com/manuals/vpg-btd',
+      },
+      {
+        title: 'OpenStax — Conservation of Energy',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy',
+      },
+    ],
+    number: '287',
+  },
+  {
+    slug: 'ellipse-string-lab',
+    name: '细绳绘制椭圆',
+    title: '为什么拉紧一根绳，就能画出椭圆？',
+    question: '为什么拉紧一根绳，就能画出椭圆？',
+    description: '两枚图钉、一根不可伸长的细绳和一支铅笔，观察距离和不变与焦点靠近时的形状变化。',
+    color: '#c7bea1',
+    tag: '几何约束 · 焦点 · 恒定绳长',
+    related: ['kepler-orbits', 'orbital-transfer'],
+    sources: [
+      {
+        title: 'OpenStax — The Ellipse',
+        url: 'https://openstax.org/books/precalculus-2e/pages/10-1-the-ellipse',
+      },
+    ],
+    number: '286',
+  },
+  {
+    slug: 'centripetal-force-lab',
+    name: '向心力实验',
+    title: '是什么力让物体不断转弯？',
+    question: '是什么力让物体不断转弯？',
+    description: '剪绳、旋转沙袋、双球向心力演示器与玻璃漏斗，从不同装置辨认向心合力并控制变量。',
+    color: '#b9c8a7',
+    tag: '向心合力 · 控制变量 · 测力',
+    related: ['bicycle-circular-motion', 'force-pairs-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Uniform and Nonuniform Circular Motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion',
+      },
+      {
+        title: 'OpenStax — Solving Problems with Newton’s Laws',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws',
+      },
+    ],
+    number: '285',
+  },
+  {
+    slug: 'phone-energy-research',
+    name: '手机耗电因素研究',
+    title: '耗电不同，怎样判断是哪一个因素造成的？',
+    question: '耗电不同，怎样判断是哪一个因素造成的？',
+    description: '用同一模型手机设计亮度、音量、任务与网络的对照，记录合成数据并识别混杂因素。',
+    color: '#bdc9ae',
+    tag: '研究设计 · 功率 · 能量',
+    related: ['battery-emf-lab', 'thermal-process-lab'],
+    sources: [
+      {
+        title: 'Android Open Source Project — Measure power values',
+        url: 'https://source.android.com/docs/core/power/values',
+      },
+    ],
+    number: '284',
+  },
+  {
+    slug: 'electromagnetic-wave-receiver',
+    name: '捕捉电磁波',
+    title: '放电之后，远处为什么有了响应？',
+    question: '放电之后，远处为什么有了响应？',
+    description: '保留教材的平行铜管天线，追踪发射波包、传播延迟、距离变化与接收检波。',
+    color: '#bdc9ae',
+    tag: '电磁波 · 天线 · 接收',
+    related: ['induction-conditions-lab', 'magnetic-field-survey'],
+    sources: [
+      {
+        title: 'OpenStax — Plane Electromagnetic Waves',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/16-2-plane-electromagnetic-waves',
+      },
+      {
+        title: 'OpenStax — Energy Carried by Electromagnetic Waves',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/16-3-energy-carried-by-electromagnetic-waves',
+      },
+      {
+        title: 'Analog Devices — Square-law RF detection',
+        url: 'https://www.analog.com/en/resources/technical-articles/max22058212detecting-high-peaktoaverage-ratio-signals.html',
+      },
+    ],
+    number: '283',
+  },
+  {
+    slug: 'thermal-process-lab',
+    name: '电热、冷却与热辐射',
+    title: '温度的变化，揭示了怎样的能量过程？',
+    question: '温度的变化，揭示了怎样的能量过程？',
+    description: '从电阻量热、热鸡蛋冷却到铁块发光，分别追踪电热、能量转移与辐射光谱。',
+    color: '#c6c7ab',
+    tag: '能量 · 温度 · 辐射',
+    related: ['heat-radiation', 'battery-emf-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Electrical Energy and Power',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power',
+      },
+      {
+        title: 'OpenStax — Calorimetry',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry',
+      },
+      {
+        title: 'OpenStax — Blackbody Radiation',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation',
+      },
+    ],
+    number: '282',
+  },
+  {
+    slug: 'mechanical-wave-lab',
+    name: '绳波、人浪与弹簧波',
+    title: '波向前传播时，介质去了哪里？',
+    question: '波向前传播时，介质去了哪里？',
+    description: '跟踪绳上的红色标记、原地起蹲的学生和往复移动的弹簧圈，比较横波与纵波的状态传播。',
+    color: '#9dab7d',
+    tag: '运动状态向前，介质局部往复',
+    related: ['wave-interference', 'seismic-waves', 'sound-measurement-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Travelling waves',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves',
+      },
+      {
+        title: 'OpenStax — Mathematics of waves',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves',
+      },
+    ],
+    number: '281',
+  },
+  {
+    slug: 'polarization-evidence-lab',
+    name: '从绳的方向到光的偏振',
+    title: '转动一道狭缝，能筛选什么？',
+    question: '转动一道狭缝，能筛选什么？',
+    description: '比较绳与弹簧，再观察窗中自然光、玻璃、桌面和液晶屏。',
+    color: '#aebfa8',
+    tag: '波动光学',
+    related: ['polarization', 'wave-interference'],
+    sources: [
+      {
+        title: 'OpenStax — Polarization',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization',
+      },
+      {
+        title: 'TU Delft — Polarisation',
+        url: 'https://interactivetextbooks.tudelft.nl/tn2421/content/Chap4_Polarisation/Polarization_2022_01Clean.html',
+      },
+    ],
+    number: '280',
+  },
+  {
+    slug: 'optical-diffraction-lab',
+    name: '从狭缝到阴影中的亮点',
+    title: '缝变窄，光为什么反而铺得更开？',
+    question: '缝变窄，光为什么反而铺得更开？',
+    description: '把可调狭缝、圆孔、铅笔、卡尺与泊松亮斑放回各自装置。',
+    color: '#aebfa8',
+    tag: '波动光学',
+    related: ['diffraction', 'double-slit', 'matter-wave-lab'],
+    sources: [
+      {
+        title: 'Richard Fitzpatrick, University of Texas — Diffraction from a circular disk',
+        url: 'https://farside.ph.utexas.edu/teaching/315/Waves/node106.html',
+      },
+      {
+        title: 'Richard Fitzpatrick, University of Texas — Circular aperture diffraction',
+        url: 'https://farside.ph.utexas.edu/teaching/315/Waves/node105.html',
+      },
+      {
+        title: 'OpenStax — Single-slit diffraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/4-1-single-slit-diffraction',
+      },
+    ],
+    number: '279',
+  },
+  {
+    slug: 'double-slit-measurement-lab',
+    name: '把干涉条纹变成测量',
+    title: '如何从几个亮纹读出光的波长？',
+    question: '如何从几个亮纹读出光的波长？',
+    description: '在光具座记录多条亮纹，用固定线阵读取强度，再比较洛埃镜。',
+    color: '#aebfa8',
+    tag: '波动光学',
+    related: ['double-slit', 'thin-film-interference'],
+    sources: [
+      {
+        title: 'OpenStax — Young’s double slit',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/3-1-youngs-double-slit-experiment',
+      },
+      {
+        title: 'TU Delft — Interference and coherence',
+        url: 'https://interactivetextbooks.tudelft.nl/tn2421/content/Chap5_Interference/InterferenceCoherence_2022_01Clean.html',
+      },
+    ],
+    number: '278',
+  },
+  {
+    slug: 'thin-film-lab',
+    name: '膜厚写出的明暗',
+    title: '肥皂膜与劈尖的条纹为什么移动？',
+    question: '肥皂膜与劈尖的条纹为什么移动？',
+    description: '保留黄光灯、肥皂膜和纸片劈尖，计算反射相位与条纹。',
+    color: '#aebfa8',
+    tag: '波动光学',
+    related: ['thin-film-interference', 'double-slit'],
+    sources: [
+      {
+        title: 'OpenStax — Interference in thin films',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films',
+      },
+    ],
+    number: '277',
+  },
+  {
+    slug: 'induction-conditions-lab',
+    name: '感应电流的产生条件',
+    title: '有磁场，为什么还没有电流？',
+    question: '有磁场，为什么还没有电流？',
+    description: '用闭合滑杆与内外线圈逐项比较：静止、沿场运动、切割、开关、变阻器和插拔。',
+    color: '#b7c7ad',
+    tag: '磁通量 · 感应 · 对照',
+    related: ['magnetic-field-survey', 'magnetic-force-lab', 'electromagnetic-wave-receiver'],
+    sources: [
+      {
+        title: 'OpenStax — Faraday’s Law',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law',
+      },
+      {
+        title: 'OpenStax — Motional Emf',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf',
+      },
+      {
+        title: 'OpenStax — Mutual Inductance',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/14-1-mutual-inductance',
+      },
+    ],
+    number: '276',
+  },
+  {
+    slug: 'total-reflection-lab',
+    name: '沿界面追踪全反射',
+    title: '光为什么能沿弯棒和水流前进？',
+    question: '光为什么能沿弯棒和水流前进？',
+    description: '从半圆玻璃块到弯棒、水流与软木塞，逐次计算反射和漏光。',
+    color: '#aebfa8',
+    tag: '几何光学',
+    related: ['total-internal-reflection', 'geometric-optics-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Total internal reflection',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-4-total-internal-reflection',
+      },
+      {
+        title: 'OpenStax — Bernoulli equation',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation',
+      },
+    ],
+    number: '275',
+  },
+  {
+    slug: 'gas-efficiency-lab',
+    name: '燃气加热的效率研究',
+    title: '大火、中火与高温出水，怎样公平比较效率？',
+    question: '大火、中火与高温出水，怎样公平比较效率？',
+    description: '重读教材的真实耗气和冷却记录，再用等水量、温升与实测耗气量设计热水器效率实验。',
+    color: '#b5a273',
+    tag: '先量清楚，再谈省气',
+    related: ['thermal-measurement-lab', 'thermodynamic-work-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Heat transfer, specific heat and calorimetry',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry',
+      },
+    ],
+    number: '274',
+  },
+  {
+    slug: 'bicycle-circular-motion',
+    name: '自行车上的圆周运动',
+    title: '大齿轮和小齿轮，到底哪个更快？',
+    question: '大齿轮和小齿轮，到底哪个更快？',
+    description:
+      '用架起后轮的自行车比较链传动的共同线速度、不同角速度，以及同轴车轮不同半径处的速度。',
+    color: '#bccaa8',
+    tag: '链传动 · 线速度 · 角速度',
+    related: ['bicycle', 'curved-motion-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Rotational Variables',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/10-1-rotational-variables',
+      },
+      {
+        title: 'Renold — Chain Designer Guide: Polygonal Effect',
+        url: 'https://www.renold.com/media/165418/transmission-i-and-m-ren12-eng-10-10.pdf',
+      },
+    ],
+    number: '273',
+  },
+  {
+    slug: 'wire-force-factors-lab',
+    name: '通电导线受力因素',
+    title: '导线更长，受力一定更大吗？',
+    question: '导线更长，受力一定更大吗？',
+    description: '切换四个接点，比较电流、有效浸场长度和磁感应强度怎样决定悬线偏转。',
+    color: '#b7c7ad',
+    tag: '磁力 · 有效长度 · 控制变量',
+    related: ['magnetic-force-lab', 'magnetic-field-survey'],
+    sources: [
+      {
+        title: 'OpenStax — Magnetic Force on a Current-Carrying Conductor',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor',
+      },
+    ],
+    number: '272',
+  },
+  {
+    slug: 'diffusion-microstates-lab',
+    name: '扩散与微观状态',
+    title: '混匀的颜料为什么不会自行聚回一滴？',
+    question: '混匀的颜料为什么不会自行聚回一滴？',
+    description: '从水中颜料的持续随机运动，到四个气体粒子的16种分布，区分微观运动与宏观不可逆性。',
+    color: '#ac8d7d',
+    tag: '均匀状态拥有更多可能',
+    related: ['diffusion', 'statistical-motion-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Molecular transport and diffusion',
+        url: 'https://openstax.org/books/college-physics-2e/pages/12-7-molecular-transport-phenomena-diffusion-osmosis-and-related-processes',
+      },
+      {
+        title: 'OpenStax — Entropy on a microscopic scale',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/4-7-entropy-on-a-microscopic-scale',
+      },
+    ],
+    number: '271',
+  },
+  {
+    slug: 'projectile-motion-lab',
+    name: '平抛运动实验',
+    title: '怎样从不同测量方法确认平抛的两个分运动？',
+    question: '怎样从不同测量方法确认平抛的两个分运动？',
+    description:
+      '从频闪、同时释放、复写纸与双接收器测距获得轨迹，再用木板和墙面变式检验规律、测出初速度。',
+    color: '#b9c8aa',
+    tag: '平抛 · 描迹 · 测量',
+    related: ['wax-motion-composition', 'motion-sensor-lab', 'ramp-collision-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Projectile Motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion',
+      },
+      {
+        title: 'Vernier — How does a Motion Detector work?',
+        url: 'https://www.vernier.com/til/2961',
+      },
+    ],
+    number: '270',
+  },
+  {
+    slug: 'drinking-bird-lab',
+    name: '饮水鸭的热机循环',
+    title: '饮水鸭为何会不断点头？',
+    question: '饮水鸭为何会不断点头？',
+    description: '追踪湿头蒸发、压强差、液柱上升与倾倒排液，解释一个由环境热量驱动的小热机。',
+    color: '#92aa95',
+    tag: '湿头降温，液体搬家',
+    related: ['thermal-measurement-lab', 'thermodynamic-work-lab'],
+    sources: [
+      {
+        title: 'Exploratorium — The Dipping Bird',
+        url: 'https://annex.exploratorium.edu/wsw/progress_snacks/dippingbird/',
+      },
+      {
+        title: 'University of Colorado — Drinking Bird',
+        url: 'https://www.colorado.edu/lab/lecture-demo-manual/g440-evaporation-and-expansion-drinking-bird',
+      },
+    ],
+    number: '269',
+  },
+  {
+    slug: 'geometric-optics-lab',
+    name: '从光路重建折射与像',
+    title: '看到的针、筷子和文字，在哪里？',
+    question: '看到的针、筷子和文字，在哪里？',
+    description: '用插针测量折射率，追踪圆柱水杯与厚玻璃板的成像。',
+    color: '#aebfa8',
+    tag: '几何光学',
+    related: ['refraction', 'total-internal-reflection'],
+    sources: [
+      {
+        title: 'OpenStax — Images formed by refraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/2-3-images-formed-by-refraction',
+      },
+      {
+        title: 'OpenStax — Snell refraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction',
+      },
+      {
+        title: 'The Physics Classroom — Refraction and sight through a glass',
+        url: 'https://www.physicsclassroom.com/mmedia/optics/bp.cfm',
+      },
+    ],
+    number: '268',
+  },
+  {
+    slug: 'magnetic-field-survey',
+    name: '电流与磁场分布',
+    title: '看不见的磁场，怎样让它的方向显现？',
+    question: '看不见的磁场，怎样让它的方向显现？',
+    description: '从奥斯特磁针到铁屑分布，比较条形、蹄形磁体与直线、环形、螺线管电流的磁场。',
+    color: '#b7c7ad',
+    tag: '磁场 · 电流 · 探测',
+    related: ['magnetic-force-lab', 'electrostatic-applications-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Magnetic Field Due to a Thin Straight Wire',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/12-2-magnetic-field-due-to-a-thin-straight-wire',
+      },
+      {
+        title: 'OpenStax — Magnetic Field of a Current Loop',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/12-4-magnetic-field-of-a-current-loop',
+      },
+      {
+        title: 'OpenStax — Solenoids and Toroids',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/12-6-solenoids-and-toroids',
+      },
+    ],
+    number: '267',
+  },
+  {
+    slug: 'wax-motion-composition',
+    name: '蜡块运动的合成与分解',
+    title: '蜡块向上，玻璃管向右，合起来往哪里走？',
+    question: '蜡块向上，玻璃管向右，合起来往哪里走？',
+    description:
+      '密封水管中的红蜡块与横向移管使用同一个时钟，对比两个匀速分运动与横向加速时的轨迹。',
+    color: '#c3ceb3',
+    tag: '分运动 · 同时性 · 合成',
+    related: ['curved-motion-lab', 'ticker-tape-lab', 'arm-motion-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Displacement and Velocity Vectors',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-1-displacement-and-velocity-vectors',
+      },
+    ],
+    number: '266',
+  },
+  {
+    slug: 'thermodynamic-work-lab',
+    name: '功、热与内能实验',
+    title: '做功为什么能升温，膨胀又为什么会降温？',
+    question: '做功为什么能升温，膨胀又为什么会降温？',
+    description: '追踪压缩引火、焦耳机械和电热量热、瓶中起雾与伦福德镗孔中的能量转化。',
+    color: '#899b70',
+    tag: '同一能量，不同路径',
+    related: ['thermal-measurement-lab', 'ideal-gas'],
+    sources: [
+      {
+        title: 'OpenStax — Adiabatic processes for an ideal gas',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/3-6-adiabatic-processes-for-an-ideal-gas',
+      },
+      {
+        title: 'OpenStax — Calorimetry and Joule’s experiment',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry',
+      },
+      {
+        title: 'Royal Society — Rumford and the original 1798 paper',
+        url: 'https://royalsociety.org/blog/2015/03/rumford-the-colourful-count/',
+      },
+    ],
+    number: '265',
+  },
+  {
+    slug: 'curved-motion-lab',
+    name: '曲线运动的速度方向',
+    title: '离开弯道的一瞬间，物体会朝哪里走？',
+    question: '离开弯道的一瞬间，物体会朝哪里走？',
+    description:
+      '弧形轨道的红色印迹、磁铁改变的钢球轨迹与带尾翼飞镖，分别展示切线方向和转弯的条件。',
+    color: '#bdcbb0',
+    tag: '切线 · 合力 · 轨迹',
+    related: ['galileo-inclines', 'newton-second-law-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Motion in Two and Three Dimensions',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-summary',
+      },
+      {
+        title: 'MIT — Magnetization force densities',
+        url: 'https://web.mit.edu/6.013_book/www/chapter9/9.8.html',
+      },
+    ],
+    number: '264',
+  },
+  {
+    slug: 'cosmology-observations',
+    name: '星系红移与微波天空',
+    title: '宇宙的历史，怎样藏在收到的光里？',
+    question: '宇宙的历史，怎样藏在收到的光里？',
+    description: '比较谱线红移与距离，再追踪微波背景的校准和全天温差图。',
+    color: '#94a9b5',
+    tag: '宇宙观测',
+    related: ['atomic-spectrum-lab', 'celestial-observations'],
+    sources: [
+      {
+        title: 'NASA — Cosmological redshift',
+        url: 'https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-cosmological-redshift/',
+      },
+      {
+        title: 'NASA — Hubble’s original relation',
+        url: 'https://imagine.gsfc.nasa.gov/features/yba/M31_velocity/hubble_law/hubble_meaning.html',
+      },
+      {
+        title: 'ESA — Planck and the cosmic microwave background',
+        url: 'https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background',
+      },
+      {
+        title: 'Penzias — Commentary on the original antenna-temperature measurement',
+        url: 'https://garfield.library.upenn.edu/classics1981/A1981LL57400001.pdf',
+      },
+    ],
+    number: '263',
+  },
+  {
+    slug: 'electrostatic-applications-lab',
+    name: '静电应用实验',
+    title: '同样的电荷，怎样既屏蔽干扰又收集烟尘？',
+    question: '同样的电荷，怎样既屏蔽干扰又收集烟尘？',
+    description: '先比较金属网罩与绝缘网，再追踪烟粒荷电、迁移和沉积，看到两种不同的静电应用。',
+    color: '#b9cbb4',
+    tag: '静电 · 屏蔽 · 除尘',
+    related: ['electrostatic-induction', 'electric-field-mapping'],
+    sources: [
+      {
+        title: 'OpenStax — Conductors in Electrostatic Equilibrium',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/6-4-conductors-in-electrostatic-equilibrium',
+      },
+      {
+        title: 'US EPA — Electrostatic Precipitators',
+        url: 'https://www.epa.gov/air-emissions-monitoring-knowledge-base/monitoring-control-technique-electrostatic-precipitators',
+      },
+      {
+        title: 'US EPA — Electrostatic Precipitator Training Manual',
+        url: 'https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P1000G9Q.TXT',
+      },
+    ],
+    number: '262',
+  },
+  {
+    slug: 'gravitational-wave-lab',
+    name: '引力波证据的三条路径',
+    title: '极微小的时空变化，怎样被辨认？',
+    question: '极微小的时空变化，怎样被辨认？',
+    description: '比较共振棒的响应、双星脉冲计时与两站激光干涉信号。',
+    color: '#94a9b5',
+    tag: '引力波',
+    related: ['gravity-measurements', 'relativity-experiments'],
+    sources: [
+      {
+        title: 'LIGO — Review of gravitational-wave detectors and Weber claims',
+        url: 'https://labcit.ligo.caltech.edu/~ajw/gwaves_review.pdf',
+      },
+      {
+        title: 'LIGO — Binary-pulsar evidence',
+        url: 'https://www.ligo.caltech.edu/LA/page/faq',
+      },
+      {
+        title: 'LIGO and Virgo — First binary-black-hole observation',
+        url: 'https://arxiv.org/abs/1602.03837',
+      },
+      {
+        title: 'Nobel Prize — Hulse and Taylor',
+        url: 'https://www.nobelprize.org/prizes/physics/1993/summary/',
+      },
+    ],
+    number: '261',
+  },
+  {
+    slug: 'balloon-drag-lab',
+    name: '气球空气阻力研究',
+    title: '先测出数据，再决定阻力与速度是什么关系',
+    question: '先测出数据，再决定阻力与速度是什么关系',
+    description:
+      '保留教材七组气球数据，从视频等间距帧判断终端运动，比较线性与平方拟合，并检查浮力与适用范围。',
+    color: '#c9c299',
+    tag: '视频 · 终端速度 · 拟合',
+    related: ['newton-tube', 'stokes-drag'],
+    sources: [
+      {
+        title: '人教版普通高中物理必修第一册（2019）课题研究，117—119页',
+        url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'NASA — Drag of a Sphere',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/drag-of-a-sphere/',
+      },
+    ],
+    number: '260',
+  },
+  {
+    slug: 'magdeburg-bowls-lab',
+    name: '钢碗中的马德堡实验',
+    title: '两只冷却后的钢碗，为什么难以拉开？',
+    question: '两只冷却后的钢碗，为什么难以拉开？',
+    description: '由密封气体的等容冷却计算内外压强差，比较钢碗的吸合力与两侧拉力。',
+    color: '#8e9d77',
+    tag: '外面的空气在压紧',
+    related: ['ideal-gas', 'thermal-measurement-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Pressure',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-1-fluids-density-and-pressure',
+      },
+      {
+        title: 'OpenStax — Ideal gas law',
+        url: 'https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law',
+      },
+    ],
+    number: '259',
+  },
+  {
+    slug: 'surface-tension-lab',
+    name: '液体表面张力实验',
+    title: '水面怎样托住针，又怎样拉动一根线？',
+    question: '水面怎样托住针，又怎样拉动一根线？',
+    description:
+      '用满杯加针、肥皂膜棉线、浸润水滴和纸托缝衣针，追踪表面张力改变形状与支持物体的过程。',
+    color: '#8d9f75',
+    tag: '从界面形状读出力',
+    related: ['capillary', 'molecular-measurement-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Surface tension and capillary action',
+        url: 'https://openstax.org/books/college-physics-2e/pages/11-8-cohesion-and-adhesion-in-liquids-surface-tension-and-capillary-action',
+      },
+      {
+        title: 'MIT 18.357 — Interfacial phenomena lectures',
+        url: 'https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf',
+      },
+    ],
+    number: '258',
+  },
+  {
+    slug: 'relativity-experiments',
+    name: '光、事件与时钟',
+    title: '相对论怎样接受实验检验？',
+    question: '相对论怎样接受实验检验？',
+    description: '从转动干涉仪到μ子计数和飞行原子钟，比较可以观察的差异。',
+    color: '#94a9b5',
+    tag: '相对论',
+    related: ['gravity-measurements', 'celestial-observations'],
+    sources: [
+      {
+        title: 'OpenStax — Relativity of simultaneity',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/5-2-relativity-of-simultaneity',
+      },
+      {
+        title: 'OpenStax — Time dilation and muons',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/5-3-time-dilation',
+      },
+      {
+        title: 'NIST — Relativity and optical clocks',
+        url: 'https://www.nist.gov/publications/relativity-and-optical-clocks',
+      },
+      {
+        title: 'NIST — Time and reference frames on rotating Earth',
+        url: 'https://tf.nist.gov/general/pdf/711.pdf',
+      },
+    ],
+    number: '257',
+  },
+  {
+    slug: 'motion-sensor-lab',
+    name: '传感器测位置与速度',
+    title: '传感器如何把一次声波变成速度？',
+    question: '传感器如何把一次声波变成速度？',
+    description: '对照红外同步的单程超声与往返反射超声，从飞行时间得到位置，再从连续位置得到速度。',
+    color: '#bac7a8',
+    tag: '超声 · 计时 · 测速',
+    related: ['ticker-tape-lab', 'ultrasound'],
+    sources: [
+      {
+        title: 'Vernier — How does a Motion Detector work?',
+        url: 'https://www.vernier.com/til/2961',
+      },
+      {
+        title: 'Vernier — Motion Detector User Manual',
+        url: 'https://www.vernier.com/manuals/md-btd/',
+      },
+    ],
+    number: '256',
+  },
+  {
+    slug: 'gravity-measurements',
+    name: '从月地检验到扭秤',
+    title: '微弱的引力，怎样成为可测量的量？',
+    question: '微弱的引力，怎样成为可测量的量？',
+    description: '比较月球加速度、扭秤的微小转角和牛顿大炮的绕地轨迹。',
+    color: '#94a9b5',
+    tag: '万有引力',
+    related: ['kepler-orbits', 'celestial-observations', 'gravitational-wave-lab'],
+    sources: [
+      {
+        title: 'The Royal Society — Cavendish’s original paper',
+        url: 'https://makingscience.royalsociety.org/items/l-and-p_11_68/paper-experiments-to-determine-the-density-of-the-earth-by-henry-cavendish',
+      },
+      {
+        title: 'OpenStax — Newton’s universal law of gravitation',
+        url: 'https://openstax.org/books/college-physics-2e/pages/6-5-newtons-universal-law-of-gravitation',
+      },
+      {
+        title: 'NASA — Gravity and Newton’s cannon',
+        url: 'https://science.nasa.gov/learn/basics-of-space-flight/chapter3-4/',
+      },
+    ],
+    number: '255',
+  },
+  {
+    slug: 'franklin-electricity-evidence',
+    name: '富兰克林的电学证据',
+    title: '雷电与摩擦电，怎样建立实验上的联系？',
+    question: '雷电与摩擦电，怎样建立实验上的联系？',
+    description: '比较储存、带电指示与放电的共同表现，理解富兰克林历史研究中的证据逻辑。',
+    color: '#bbcbb2',
+    tag: '电学 · 历史 · 证据',
+    related: ['electrostatic-induction', 'parallel-plate-capacitor-lab'],
+    sources: [
+      {
+        title: 'The Papers of Benjamin Franklin — The Kite Experiment, 19 October 1752',
+        url: 'https://franklinpapers.org/framedVolumes.jsp?vol=4&page=360a',
+      },
+      {
+        title: 'Franklin’s 1752 statement — primary text reprint',
+        url: 'https://ushistory.org/historic-personages/franklin/science/kite2',
+      },
+      {
+        title: 'OpenStax — Capacitors and Capacitance',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance',
+      },
+    ],
+    number: '254',
+  },
+  {
+    slug: 'celestial-observations',
+    name: '从观测到天体预言',
+    title: '天空中的光点，怎样成为可检验的证据？',
+    question: '天空中的光点，怎样成为可检验的证据？',
+    description: '联系第谷的位置记录、木星卫星、海王星摄动与哈雷彗星回归。',
+    color: '#94a9b5',
+    tag: '天文观测',
+    related: ['kepler-orbits', 'telescope'],
+    sources: [
+      {
+        title: 'NASA — Galileo discovers Jupiter’s moons',
+        url: 'https://www.nasa.gov/history/410-years-ago-galileo-discovers-jupiters-moons/',
+      },
+      {
+        title: 'JPL — Planetary discovery circumstances',
+        url: 'https://ssd.jpl.nasa.gov/planets/discovery.html',
+      },
+      {
+        title: 'NASA — 1P/Halley',
+        url: 'https://science.nasa.gov/solar-system/comets/1p-halley/',
+      },
+      {
+        title: 'NASA — Halley’s return and its history',
+        url: 'https://www.nasa.gov/history/955-years-ago-halleys-comet-and-the-battle-of-hastings/',
+      },
+    ],
+    number: '253',
+  },
+  {
+    slug: 'apparent-weight-lab',
+    name: '超重与失重实验',
+    title: '身体没变重，体重计为何忽高忽低？',
+    question: '身体没变重，体重计为何忽高忽低？',
+    description: '从蹲起和电梯中的支持力，走到自由下落水瓶的压差，分清加速度、重力与测量读数。',
+    color: '#b7c5a6',
+    tag: '支持力 · 加速度 · 压差',
+    related: ['phone-accelerometer-lab', 'dynamic-mass-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Solving Problems with Newton’s Laws',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws',
+      },
+      {
+        title: 'OpenStax — Bernoulli’s Equation',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation',
+      },
+    ],
+    number: '252',
+  },
+  {
+    slug: 'diamagnetic-levitation-lab',
+    name: '水滴与青蛙的抗磁悬浮',
+    title: '没有磁铁的水滴，为什么也能悬浮？',
+    question: '没有磁铁的水滴，为什么也能悬浮？',
+    description: '在强磁体的竖直孔中追踪水滴受力，区分磁场强度、空间梯度与稳定平衡。',
+    color: '#8a9c70',
+    tag: '强场还要有梯度',
+    related: ['hall-effect', 'solid-structure-lab'],
+    sources: [
+      {
+        title: 'Berry and Geim (1997) — Of flying frogs and levitrons',
+        url: 'https://www.physics.umd.edu/grt/taj/411c/FlyingFrogs.pdf',
+      },
+    ],
+    number: '251',
+  },
+  {
+    slug: 'battery-emf-lab',
+    name: '电源电动势与内阻实验',
+    title: '电源有电，为什么接上负载电压就变了？',
+    question: '电源有电，为什么接上负载电压就变了？',
+    description: '从并联灯泡到干电池、水果电池和充电宝，沿不同测量电路追踪电源的输出变化。',
+    color: '#b8c7a3',
+    tag: '电源 · 电动势 · 内阻',
+    related: ['resistivity-lab', 'multimeter-lab', 'phone-energy-research'],
+    sources: [
+      {
+        title: 'OpenStax — Electromotive Force',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force',
+      },
+      {
+        title:
+          'Texas Instruments — Power-bank output current sensing and limiting reference design',
+        url: 'https://www.ti.com/tool/PMP9776',
+      },
+    ],
+    number: '250',
+  },
+  {
+    slug: 'solid-structure-lab',
+    name: '晶体结构与各向异性实验',
+    title: '外形和导热方向，怎样透露固体的结构？',
+    question: '外形和导热方向，怎样透露固体的结构？',
+    description: '观察盐与松香、玻璃和云母上的石蜡熔化边界，并追踪胶带剥离石墨薄层。',
+    color: '#87996d',
+    tag: '从外形到原子层',
+    related: ['thermal-expansion', 'thermal-measurement-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Lattice structures in crystalline solids',
+        url: 'https://openstax.org/books/chemistry-2e/pages/10-6-lattice-structures-in-crystalline-solids',
+      },
+      {
+        title: 'Nobel Prize 2010 — Pencil, paper and sticky tape',
+        url: 'https://www.nobelprize.org/uploads/2018/06/popular-physicsprize2010.pdf',
+      },
+      {
+        title: 'Stokes — On the conduction of heat in crystals',
+        url: 'https://www.cambridge.org/core/books/abs/mathematical-and-physical-papers/on-the-conduction-of-heat-in-crystals/F4E775EEA87AE93B831348544302F9A7',
+      },
+    ],
+    number: '249',
+  },
+  {
+    slug: 'dynamic-mass-lab',
+    name: '太空测质量',
+    title: '失重时，怎样测出宇航员的质量？',
+    question: '失重时，怎样测出宇航员的质量？',
+    description: '用恒定拉力和光栅计时重建加速度，扣除随动平台的质量，理解失重仍有惯性。',
+    color: '#b8c7ac',
+    tag: '恒力 · 光栅 · 惯性',
+    related: ['newton-second-law-lab', 'phone-accelerometer-lab'],
+    sources: [
+      {
+        title: '中国载人航天 — 质量测量（2013太空授课）',
+        url: 'https://en-conference2018.cmse.gov.cn/ztbd/xwzt/tksk/sysp/201306/t20130620_43137.html',
+      },
+      {
+        title: 'NASA — Space Linear Acceleration Mass Measurement Device',
+        url: 'https://www.nasa.gov/image-article/astronaut-shannon-walker-works-columbus-laboratory-module/',
+      },
+    ],
+    number: '248',
+  },
+  {
+    slug: 'thermal-measurement-lab',
+    name: '热平衡与气体定律实验',
+    title: '怎样把温度、压强和体积联系起来？',
+    question: '怎样把温度、压强和体积联系起来？',
+    description: '通过混合法量热、注射器等温实验和烧瓶水柱实验，控制条件并读取同一模型的测量结果。',
+    color: '#85986d',
+    tag: '控制条件，再读数据',
+    related: ['ideal-gas', 'thermal-expansion', 'gas-efficiency-lab', 'drinking-bird-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Heat transfer, specific heat and calorimetry',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry',
+      },
+      {
+        title: 'OpenStax — Ideal gas law',
+        url: 'https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law',
+      },
+    ],
+    number: '247',
+  },
+  {
+    slug: 'particle-evidence-lab',
+    name: '粒子发现的证据链',
+    title: '看不见的新粒子，怎样从信号里被认出来？',
+    question: '看不见的新粒子，怎样从信号里被认出来？',
+    description: '比较质量谱、反常吸收、核反冲、关联径迹与宇称检验。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['nuclear-evidence-lab', 'cathode-ray-lab'],
+    sources: [
+      {
+        title: 'CERN — How the Higgs boson was discovered',
+        url: 'https://home.cern/science/physics/higgs-boson/how/',
+      },
+      {
+        title: 'NIST — The reversal of parity law',
+        url: 'https://www.nist.gov/pml/fall-parity/reversal-parity-law-nuclear-physics',
+      },
+      {
+        title: 'Brookhaven — Discovery of the J particle',
+        url: 'https://www.bnl.gov/bnlweb/history/nobel/1976.php',
+      },
+      {
+        title: 'Nobel Prize — The two J/psi experiments',
+        url: 'https://www.nobelprize.org/prizes/physics/1976/press-release/',
+      },
+      {
+        title: '清华大学 — 王淦昌的实验工作',
+        url: 'https://xsg.tsinghua.edu.cn/info/1004/2187.htm',
+      },
+      {
+        title: '中国科学院高能所 — 泡室事例与反超子',
+        url: 'https://ihep.cas.cn/kxcb/kpcg/lztt/kpyd_yzsx/kpyd_ihepyzx/200909/t20090914_2482174.html',
+      },
+      {
+        title: 'BeEST — Electron-capture recoil spectroscopy',
+        url: 'https://beest.mines.edu/wp-content/uploads/sites/345/2022/07/BeEST_v1_KimPoster.pdf',
+      },
+    ],
+    number: '246',
+  },
+  {
+    slug: 'newton-second-law-lab',
+    name: '小车力与加速度实验',
+    title: '改变拉力或质量，怎样让实验回答同一个问题？',
+    question: '改变拉力或质量，怎样让实验回答同一个问题？',
+    description:
+      '从阻力补偿、纸带差分到双车位移比，保留槽码与小车的共同加速度，检验牵引近似的边界。',
+    color: '#b3be9b',
+    tag: '控制变量 · 纸带 · 位移比',
+    related: ['ticker-tape-lab', 'force-pairs-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Applying Newton’s Laws',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws',
+      },
+    ],
+    number: '245',
+  },
+  {
+    slug: 'multimeter-lab',
+    name: '多用电表实验',
+    title: '同一根指针，为什么要换接法、换刻度？',
+    question: '同一根指针，为什么要换接法、换刻度？',
+    description: '跟随模拟式多用电表的真实接线，区分电压、电流、欧姆测量与故障定位。',
+    color: '#c4cbb0',
+    tag: '测量 · 电表 · 故障',
+    related: ['resistivity-lab', 'length-instruments'],
+    sources: [
+      {
+        title: 'HIOKI — 3007 Analog Multimeter Instruction Manual',
+        url: 'https://www.hioki.com/download/29783',
+      },
+      {
+        title: 'HIOKI — Analog voltmeter sensitivity and input resistance',
+        url: 'https://www.hioki.com/us-en/support/faq/detail/id_121',
+      },
+      {
+        title: 'OpenStax — Electrical Measuring Instruments',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments',
+      },
+    ],
+    number: '244',
+  },
+  {
+    slug: 'statistical-motion-lab',
+    name: '随机事件与统计实验',
+    title: '每次结果不确定，为什么整体有规律？',
+    question: '每次结果不确定，为什么整体有规律？',
+    description: '通过伽尔顿板、四枚硬币与落豆台秤，区分随机结果、统计分布和平均撞击。',
+    color: '#799066',
+    tag: '单次与整体',
+    related: ['brownian-motion', 'ideal-gas'],
+    sources: [
+      {
+        title: 'OpenStax — Binomial distribution',
+        url: 'https://openstax.org/books/introductory-statistics-2e/pages/4-3-binomial-distribution',
+      },
+      {
+        title: 'OpenStax — Molecular model of an ideal gas',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/2-1-molecular-model-of-an-ideal-gas',
+      },
+    ],
+    number: '243',
+  },
+  {
+    slug: 'nuclear-evidence-lab',
+    name: '核反应的实验线索',
+    title: '一个核发生了什么，怎样从产物和径迹判断？',
+    question: '一个核发生了什么，怎样从产物和径迹判断？',
+    description: '从氮核轰击和中子反冲，到裂变产物、多碎片径迹与可控链式反应。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['atomic-scattering-lab', 'particle-evidence-lab'],
+    sources: [
+      {
+        title: 'Patrick Blackett — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/blackett-lecture.pdf',
+      },
+      {
+        title: 'James Chadwick — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/chadwick-lecture.pdf',
+      },
+      {
+        title: 'Meitner and Frisch — A new type of nuclear reaction',
+        url: 'https://www.nature.com/articles/143233a0',
+      },
+      {
+        title: '中国科学院高能所 — 核乳胶',
+        url: 'https://www.ihep.ac.cn/kxcb/kpcg/lztcq/201004/t20100415_2822448.html',
+      },
+      {
+        title: 'IAEA — Fermi and uranium fission',
+        url: 'https://www.iaea.org/sites/default/files/publications/magazines/bulletin/bull4-0/04004700911su.pdf',
+      },
+    ],
+    number: '242',
+  },
+  {
+    slug: 'molecular-measurement-lab',
+    name: '分子的间接观察与测量',
+    title: '看不见分子，怎样测出它的尺度？',
+    question: '看不见分子，怎样测出它的尺度？',
+    description: '用炭粒运动、量筒混合和单分子油膜，把可见观察连接到微观解释。',
+    color: '#799066',
+    tag: '从宏观估测微观',
+    related: ['brownian-motion', 'diffusion'],
+    sources: [
+      {
+        title: 'NIST — Dynamic light scattering',
+        url: 'https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=854412',
+      },
+      {
+        title: 'University of Göttingen — Ethanol and water',
+        url: 'https://www.unterrichtsmaterialien-chemie.uni-goettingen.de/exp_neu.php?id=765',
+      },
+      {
+        title: 'UMass — Oleic-acid thin films',
+        url: 'https://www.umass.edu/agriculture-food-environment/sites/ag.umass.edu/files/pdf-doc-ppt/2009_oleic_acid_thin_films.pdf',
+      },
+    ],
+    number: '241',
+  },
+  {
+    slug: 'inertial-frames-lab',
+    name: '抽纸与参考系',
+    title: '球几乎没动，为什么纸上的观察者看到它后退？',
+    question: '球几乎没动，为什么纸上的观察者看到它后退？',
+    description: '同一颗钢球和同一段抽纸过程，在桌面与纸面坐标中对照，分清真实摩擦和参考系效应。',
+    color: '#b7c0a5',
+    tag: '抽纸 · 坐标 · 惯性',
+    related: ['galileo-inclines', 'friction-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Newton’s First Law',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/5-2-newtons-first-law',
+      },
+      {
+        title: 'OpenStax — Rolling Motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion',
+      },
+    ],
+    number: '240',
+  },
+  {
+    slug: 'decay-measurement-lab',
+    name: '衰变的统计与用途',
+    title: '不确定的单次衰变，怎样成为可测的时间与路径？',
+    question: '不确定的单次衰变，怎样成为可测的时间与路径？',
+    description: '从氡的半衰期计数，理解磷示踪和碳14理想测年的信号与偏差。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['radiation-evidence-lab', 'nuclear-evidence-lab'],
+    sources: [
+      {
+        title: 'NIST — Radon-222 emanation standard',
+        url: 'https://tsapps.nist.gov/srmext/certificates/archives/4973.pdf',
+      },
+      {
+        title: 'IAEA — Phosphorus isotope tracer techniques',
+        url: 'https://www-pub.iaea.org/MTCD/Publications/PDF/TE1805web.pdf',
+      },
+      {
+        title: 'IAEA — Nuclear techniques for cultural heritage',
+        url: 'https://www-pub.iaea.org/MTCD/publications/PDF/p1501CD/PDF/Pub_1501.pdf',
+      },
+      {
+        title: 'IAEA — Accelerator mass spectrometry applications',
+        url: 'https://nucleus.iaea.org/sites/accelerators/AMS/SitePages/AMS-applications.aspx',
+      },
+    ],
+    number: '239',
+  },
+  {
+    slug: 'resistivity-lab',
+    name: '电阻与电阻率实验',
+    title: '电阻变化，究竟是哪一个条件变了？',
+    question: '电阻变化，究竟是哪一个条件变了？',
+    description: '从 U–I 图像到四段导体的控制变量比较，再追踪加热与电表接法，测出金属丝的电阻率。',
+    color: '#b6c2a1',
+    tag: '电阻 · 电阻率 · 测量',
+    related: ['length-instruments', 'rc-circuit'],
+    sources: [
+      {
+        title: 'OpenStax — Resistivity and Resistance',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance',
+      },
+      {
+        title: 'OpenStax — Electrical Measuring Instruments',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments',
+      },
+    ],
+    number: '238',
+  },
+  {
+    slug: 'radiation-evidence-lab',
+    name: '发现看不见的射线',
+    title: '感光、电离与径迹，怎样成为看不见粒子的证据？',
+    question: '感光、电离与径迹，怎样成为看不见粒子的证据？',
+    description: '重建天然放射性、居里测量、磁偏转、膨胀云室与X射线的证据链。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['nuclear-evidence-lab', 'decay-measurement-lab'],
+    sources: [
+      {
+        title: 'Henri Becquerel — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/becquerel-lecture.pdf',
+      },
+      {
+        title: 'Marie Curie — Nobel lecture',
+        url: 'https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/lecture/',
+      },
+      {
+        title: 'Ernest Rutherford — Nobel lecture',
+        url: 'https://www.nobelprize.org/prizes/chemistry/1908/rutherford/lecture/',
+      },
+      {
+        title: 'Nobel Prize — The Wilson expansion chamber',
+        url: 'https://educationalgames.nobelprize.org/educational/physics/observing/cloud-1.html',
+      },
+      {
+        title: 'Charles Wilson — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/wilson-lecture.pdf',
+      },
+    ],
+    number: '237',
+  },
+  {
+    slug: 'galileo-inclines',
+    name: '伽利略斜面研究',
+    title: '把运动变慢，怎样看出自由落体与惯性的线索？',
+    question: '把运动变慢，怎样看出自由落体与惯性的线索？',
+    description: '从缓坡流水计时到双斜面理想推理，区分历史实验、滚动模型与后续机械能观察。',
+    color: '#b8b596',
+    tag: '计时 · 理想化 · 守恒',
+    related: ['free-fall-activities', 'inclined-plane', 'inertial-frames-lab'],
+    sources: [
+      {
+        title: 'Museo Galileo — Inclined Plane',
+        url: 'https://catalogue.museogalileo.it/object/InclinedPlane.html',
+      },
+      {
+        title: 'OpenStax — Rolling Motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion',
+      },
+      {
+        title: 'Rice University — Inclined Plane Reconstruction',
+        url: 'https://galileo.library.rice.edu/lib/student_work/experiment95/inclined_plane.html',
+      },
+    ],
+    number: '236',
+  },
+  {
+    slug: 'sensor-control-lab',
+    name: '传感器测量与自动控制',
+    title: '怎样让光、温度和压力控制一盏灯？',
+    question: '怎样让光、温度和压力控制一盏灯？',
+    description: '从电表读数到晶体管和继电器，逐项还原教材中的传感与控制实验。',
+    color: '#799066',
+    tag: '测量、放大与执行',
+    related: ['hall-effect', 'relay'],
+    sources: [
+      {
+        title: 'TDK — NTC thermistor technical information',
+        url: 'https://www.tdk-electronics.tdk.com/download/531116/19643b7ea798d7c4670141a88cd993f9/pdf-general-technical-information.pdf',
+      },
+      {
+        title: 'Littelfuse — Magnetic sensing',
+        url: 'https://www.littelfuse.com/assetdocs/sensing-products-selection-guide?assetguid=7fff98e7-9335-445a-831e-992b4f1fb8a5',
+      },
+    ],
+    number: '235',
+  },
+  {
+    slug: 'matter-wave-lab',
+    name: '电子与晶体衍射',
+    title: '粒子留下的图样，为什么像波？',
+    question: '粒子留下的图样，为什么像波？',
+    description: '比较单晶反射、薄膜衍射环、电子干涉与X射线晶体斑点。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['optical-diffraction-lab', 'double-slit'],
+    sources: [
+      {
+        title: 'Clinton Davisson — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/davisson-lecture.pdf',
+      },
+      {
+        title: 'Louis de Broglie — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2016/04/broglie-lecture.pdf',
+      },
+      {
+        title: 'IUCr — Laue equations',
+        url: 'https://dictionary.iucr.org/Laue_equations',
+      },
+      {
+        title: 'IUCr — The reciprocal lattice',
+        url: 'https://www.iucr.org/what-we-do/education/pamphlets/reciprocal-lattice',
+      },
+    ],
+    number: '234',
+  },
+  {
+    slug: 'force-resultant-lab',
+    name: '力的合成与分解实验',
+    title: '两个斜着拉的力，怎样换成一个力？',
+    question: '两个斜着拉的力，怎样换成一个力？',
+    description: '保留橡皮条同一形变，从双测力计与单测力计的等效替换建立矢量合成，再反向研究分解。',
+    color: '#b2bf9e',
+    tag: '同效 · 替换 · 矢量',
+    related: ['force-pairs-lab', 'elasticity-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Scalars and Vectors',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/2-1-scalars-and-vectors',
+      },
+      {
+        title: 'OpenStax — Conditions for Static Equilibrium',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium',
+      },
+    ],
+    number: '233',
+  },
+  {
+    slug: 'length-instruments',
+    name: '长度测量与精细读数',
+    title: '怎样把看不清的小长度，变成可靠的读数？',
+    question: '怎样把看不清的小长度，变成可靠的读数？',
+    description: '用真实刻度差、螺纹位移与密绕累积，练习卡尺、测微器和铜丝直径测量。',
+    color: '#b6c2a2',
+    tag: '测量 · 刻度 · 误差',
+    related: ['coulomb-torsion', 'lever'],
+    sources: [
+      {
+        title: 'Mitutoyo — Caliper scale reading and measurement applications',
+        url: 'https://www.mitutoyo.com/webfoo/wp-content/uploads/D_section.pdf',
+      },
+      {
+        title: 'Mitutoyo — Micrometer quick guide',
+        url: 'https://www2.mitutoyo.co.jp/eng/products/menu/QuickGuide_Micrometers.pdf',
+      },
+    ],
+    number: '232',
+  },
+  {
+    slug: 'wireless-interference-lab',
+    name: 'Wi-Fi与蓝牙干扰实验',
+    title: '连接蓝牙以后，Wi-Fi一定会变慢吗？',
+    question: '连接蓝牙以后，Wi-Fi一定会变慢吗？',
+    description: '把频率重叠、传输时间、自适应跳频与真实重复测速区分开。',
+    color: '#799066',
+    tag: '频段与受控对照',
+    related: ['packet-routing', 'network'],
+    sources: [
+      {
+        title: 'Bluetooth SIG — Adaptive frequency hopping',
+        url: 'https://www.bluetooth.com/blog/how-bluetooth-technology-uses-adaptive-frequency-hopping-to-overcome-packet-interference/',
+      },
+      {
+        title: 'Silicon Labs — Wi-Fi coexistence fundamentals',
+        url: 'https://www.silabs.com/documents/public/user-guides/ug103-17-wi-fi-coexistence-fundamentals.pdf',
+      },
+    ],
+    number: '231',
+  },
+  {
+    slug: 'atomic-spectrum-lab',
+    name: '光谱中的原子证据',
+    title: '把光展开，怎样认出物质与理论的细小偏差？',
+    question: '把光展开，怎样认出物质与理论的细小偏差？',
+    description: '从食盐焰色、氢线光谱和太阳暗线，走到精密测量发现的能级差。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['photoelectric-lab', 'prism-dispersion', 'cosmology-observations'],
+    sources: [
+      {
+        title: 'NIST — Strong lines of sodium',
+        url: 'https://www.physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm',
+      },
+      {
+        title: 'NIST — Critical compilation of hydrogen spectral data',
+        url: 'https://www.nist.gov/publications/critical-compilation-experimental-data-spectral-lines-and-energy-levels-hydrogen',
+      },
+      {
+        title: 'Lamb and Retherford — Fine structure of the hydrogen atom (1947)',
+        url: 'https://web.mit.edu/8.13/8.13c/references-fall/spectroscopy/lamb-1947.pdf',
+      },
+      {
+        title: 'Willis Lamb — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/lamb-lecture.pdf',
+      },
+    ],
+    number: '230',
+  },
+  {
+    slug: 'hertz-wave-lab',
+    name: '赫兹与电磁波实验',
+    title: '两处没有相连的间隙，为什么都出现火花？',
+    question: '两处没有相连的间隙，为什么都出现火花？',
+    description: '从火花发射与接收，逐项观察反射干涉、折射、偏振和衍射的证据。',
+    color: '#799066',
+    tag: '波动的多重证据',
+    related: ['polarization', 'wave-interference'],
+    sources: [
+      {
+        title: 'OpenStax — Electromagnetic waves',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/16-1-maxwells-equations-and-electromagnetic-waves',
+      },
+    ],
+    number: '229',
+  },
+  {
+    slug: 'force-pairs-lab',
+    name: '作用力与反作用力实验',
+    title: '谁拉谁，两只测力计会给出不同答案吗？',
+    question: '谁拉谁，两只测力计会给出不同答案吗？',
+    description:
+      '连接两只测力计或传感器，改变伸长、劲度与位置，按同一时刻辨认作用在不同对象上的力。',
+    color: '#b1bca2',
+    tag: '连接 · 配对 · 同时',
+    related: ['elasticity-lab', 'friction-lab', 'force-resultant-lab', 'recoil-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Newton’s Third Law',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/5-5-newtons-third-law',
+      },
+    ],
+    number: '228',
+  },
+  {
+    slug: 'ac-circuit-lab',
+    name: '交流电与LC振荡实验',
+    title: '电流换方向时，灯泡与线圈怎样响应？',
+    question: '电流换方向时，灯泡与线圈怎样响应？',
+    description: '用示波器、反并联LED、交流元件和LC回路逐步比较变化的电流。',
+    color: '#799066',
+    tag: '交流与储能交换',
+    related: ['transformer-electric', 'inductor-transient'],
+    sources: [
+      {
+        title: 'OpenStax — Simple AC circuits',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits',
+      },
+      {
+        title: 'OpenStax — LC oscillations',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit',
+      },
+    ],
+    number: '227',
+  },
+  {
+    slug: 'friction-lab',
+    name: '摩擦力测量实验',
+    title: '木块还没动，摩擦力为什么已经变了？',
+    question: '木块还没动，摩擦力为什么已经变了？',
+    description: '匀速拖动比较压力，再用纸团峰值和力传感器跟踪静止到滑动的全过程。',
+    color: '#b8bd9b',
+    tag: '静止 · 起滑 · 匀速',
+    related: ['elasticity-lab', 'inclined-plane'],
+    sources: [
+      {
+        title: 'OpenStax — Friction',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/6-2-friction',
+      },
+    ],
+    number: '226',
+  },
+  {
+    slug: 'capacitor-current-lab',
+    name: '从电流面积测电荷',
+    title: '一条下降的电流曲线，怎样告诉我们放出了多少电？',
+    question: '一条下降的电流曲线，怎样告诉我们放出了多少电？',
+    description: '观察电容放电的 I–t 曲线，从面积求电荷，再用相同空电容器逐次分电作对照。',
+    color: '#a9bea4',
+    tag: '电流积分 · 电荷守恒',
+    related: ['rc-circuit', 'parallel-plate-capacitor-lab'],
+    sources: [
+      {
+        title: 'OpenStax — RC Circuits',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits',
+      },
+      {
+        title: 'OpenStax — Energy Stored in a Capacitor',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor',
+      },
+    ],
+    number: '225',
+  },
+  {
+    slug: 'eddy-current-lab',
+    name: '涡流与电磁阻尼',
+    title: '没有接触，磁体怎样让运动慢下来？',
+    question: '没有接触，磁体怎样让运动慢下来？',
+    description: '分别追踪指针、铝框、铜盘、落磁和弹簧振子的机械能去向。',
+    color: '#799066',
+    tag: '阻尼与驱动',
+    related: ['eddy-current-brake', 'induction-motor'],
+    sources: [
+      {
+        title: 'OpenStax — Eddy currents',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents',
+      },
+    ],
+    number: '224',
+  },
+  {
+    slug: 'cathode-ray-lab',
+    name: '阴极射线与电子',
+    title: '一束看不见的射线，怎样显露电荷与质量？',
+    question: '一束看不见的射线，怎样显露电荷与质量？',
+    description: '对照电场、磁场与薄金属窗中的电子束，区分可观察证据与历史推断。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['oil-drop-lab', 'charged-particle-lab'],
+    sources: [
+      {
+        title: 'Nobel Prize — Thomson’s cathode-ray apparatus',
+        url: 'https://educationalgames.nobelprize.org/educational/physics/vacuum/experiment-2.html',
+      },
+      {
+        title: 'Nobel Prize — Lenard’s metal window',
+        url: 'https://educationalgames.nobelprize.org/educational/physics/vacuum/tube-3.html',
+      },
+      {
+        title: 'NIST — Fundamental-constant experiments',
+        url: 'https://physics.nist.gov/cuu/Constants/histindex.html',
+      },
+    ],
+    number: '223',
+  },
+  {
+    slug: 'elasticity-lab',
+    name: '弹性测量实验',
+    title: '伸长一倍，拉力一定增加一倍吗？',
+    question: '伸长一倍，拉力一定增加一倍吗？',
+    description: '从原长、砝码和记录点建立弹簧关系，再沿橡皮筋的加载、卸载与重复循环检验边界。',
+    color: '#b7bc98',
+    tag: '伸长 · 加载 · 滞回',
+    related: ['pendulum', 'suspension-center-of-gravity'],
+    sources: [
+      {
+        title: 'OpenStax — Elasticity and Plasticity',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity',
+      },
+      {
+        title: 'Penn State — Rubber Band Elastic Hysteresis',
+        url: 'https://phys23p.sl.psu.edu/~mrg3/interactives/EJSS_mrg/ejss_model_Bungee_Hysteresis_Thermal_V2/ElasticHysteresisIntroduction.html',
+      },
+    ],
+    number: '222',
+  },
+  {
+    slug: 'parallel-plate-capacitor-lab',
+    name: '平行板电容的控制变量',
+    title: '电压变了，是电荷变了，还是电容变了？',
+    question: '电压变了，是电荷变了，还是电容变了？',
+    description: '先隔离电源，再改变板距、正对面积与介质，用静电计观察固定电荷下的电容变化。',
+    color: '#b6c0a0',
+    tag: '电容 · 控制变量',
+    related: ['capacitor-fields', 'electric-field-mapping'],
+    sources: [
+      {
+        title: 'OpenStax — Capacitors and Capacitance',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance',
+      },
+      {
+        title: 'OpenStax — Capacitor with a Dielectric',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric',
+      },
+    ],
+    number: '221',
+  },
+  {
+    slug: 'self-induction-lab',
+    name: '自感与两灯实验',
+    title: '断开电源以后，灯泡为什么还会亮？',
+    question: '断开电源以后，灯泡为什么还会亮？',
+    description: '比较两种真实接线，跟踪通电延迟、断电反向与有条件的闪亮。',
+    color: '#799066',
+    tag: '电流的连续变化',
+    related: ['inductor-transient', 'transformer-electric'],
+    sources: [
+      {
+        title: 'OpenStax — Inductance',
+        url: 'https://openstax.org/books/college-physics-2e/pages/23-9-inductance',
+      },
+    ],
+    number: '220',
+  },
+  {
+    slug: 'small-deformation-lab',
+    name: '微小形变观察',
+    title: '桌面几乎看不出弯曲，光点为什么动了？',
+    question: '桌面几乎看不出弯曲，光点为什么动了？',
+    description: '让两面镜与同一条弹性梁联动，用真实反射光路把微小转角转成远处光点的位移。',
+    color: '#b8ba9e',
+    tag: '形变 · 反射 · 放大',
+    related: ['retroreflector', 'suspension-center-of-gravity'],
+    sources: [
+      {
+        title: 'University of Wisconsin — Optical Lever',
+        url: 'https://www.physics.wisc.edu/instructional/phys109/yoshi/physlab/testing/working207.pdf',
+      },
+      {
+        title: 'Purdue University — Beam Formulas',
+        url: 'https://engineering.purdue.edu/~ce474/Docs/DA6-BeamFormulas.pdf',
+      },
+    ],
+    number: '219',
+  },
+  {
+    slug: 'atomic-scattering-lab',
+    name: '微观散射实验',
+    title: '看不见的内部，怎样由偏转留下证据？',
+    question: '看不见的内部，怎样由偏转留下证据？',
+    description: '比较α粒子的偏转与X射线的波长改变，区分核结构证据和光子动量证据。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['atomic-spectrum-lab', 'nuclear-evidence-lab'],
+    sources: [
+      {
+        title: 'Fermilab — Rutherford and the nucleus',
+        url: 'https://www.fnal.gov/pub/inquiring/timeline/03.html',
+      },
+      {
+        title: 'OpenStax — The Compton Effect',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/6-3-the-compton-effect',
+      },
+    ],
+    number: '218',
+  },
+  {
+    slug: 'oil-drop-lab',
+    name: '油滴与元电荷',
+    title: '怎样用一个油滴，量出电荷的最小单位？',
+    question: '怎样用一个油滴，量出电荷的最小单位？',
+    description: '跟踪同一滴油的下降、悬停和带电变化，把力平衡变成电荷测量。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['cathode-ray-lab', 'electric-field-mapping'],
+    sources: [
+      {
+        title: 'NIST — Millikan and the fundamental constants',
+        url: 'https://physics.nist.gov/cuu/Constants/historical1.html',
+      },
+      {
+        title: 'University of Toronto — Millikan experiment manual',
+        url: 'https://www.physics.utoronto.ca/~phy224_324/LabManuals/MillikanExperiment.pdf',
+      },
+    ],
+    number: '217',
+  },
+  {
+    slug: 'mutual-induction-lab',
+    name: '互感实验室',
+    title: '两组导线没有接通，信号怎样传过去？',
+    question: '两组导线没有接通，信号怎样传过去？',
+    description: '在铁环与套入线圈中，追踪原电流、共享磁通和副线圈电动势。',
+    color: '#799066',
+    tag: '共享的变化磁通',
+    related: ['transformer-electric', 'inductor-transient'],
+    sources: [
+      {
+        title: 'OpenStax — Mutual inductance',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/14-1-mutual-inductance',
+      },
+    ],
+    number: '216',
+  },
+  {
+    slug: 'electric-field-mapping',
+    name: '油盘中的电场图样',
+    title: '没有箭头的碎屑，能告诉我们怎样的电场？',
+    question: '没有箭头的碎屑，能告诉我们怎样的电场？',
+    description: '从油中头发碎屑的取向出发，比较单电荷、双电荷和平行板，区分观察图样与计算电场线。',
+    color: '#c6c69b',
+    tag: '电场图样 · 叠加',
+    related: ['coulomb-torsion', 'capacitor-fields'],
+    sources: [
+      {
+        title: 'OpenStax — Electric Field Lines',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/5-6-electric-field-lines',
+      },
+      {
+        title: 'OpenStax — Electric Dipoles',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/5-7-electric-dipoles',
+      },
+    ],
+    number: '215',
+  },
+  {
+    slug: 'suspension-center-of-gravity',
+    name: '悬挂法找重心',
+    title: '两次悬挂，怎样找到薄板的同一个点？',
+    question: '两次悬挂，怎样找到薄板的同一个点？',
+    description: '让铅垂线留在薄板上，再换一个悬点；从不规则薄板到三角形中线，检验重心与质量分布。',
+    color: '#b2bd9d',
+    tag: '悬挂 · 交点 · 重心',
+    related: ['center-of-mass', 'pendulum'],
+    sources: [
+      {
+        title: 'Simon Fraser University — Centre of Mass L',
+        url: 'https://www.sfu.ca/physics/demos/demos-experiments/centre-of-mass-l-burnaby.html',
+      },
+      {
+        title: 'OpenStax — Conditions for Static Equilibrium',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium',
+      },
+    ],
+    number: '214',
+  },
+  {
+    slug: 'induction-coil-lab',
+    name: '电磁感应实验室',
+    title: '磁体不动时，为什么没有感应电流？',
+    question: '磁体不动时，为什么没有感应电流？',
+    description: '从插拔磁体到圆盘发电机，把磁通变化、环流与机械作用逐一对上。',
+    color: '#799066',
+    tag: '磁通与电动势',
+    related: ['transformer-electric', 'eddy-current-brake'],
+    sources: [
+      {
+        title: 'OpenStax — Faraday and Lenz laws',
+        url: 'https://openstax.org/books/college-physics/pages/23-2-faradays-law-of-induction-lenzs-law',
+      },
+      {
+        title: 'OpenStax — Electromagnetic induction',
+        url: 'https://openstax.org/books/physics/pages/20-3-electromagnetic-induction',
+      },
+    ],
+    number: '213',
+  },
+  {
+    slug: 'coulomb-torsion',
+    name: '库仑扭秤',
+    title: '怎样把微小的静电力变成可比较的扭角？',
+    question: '怎样把微小的静电力变成可比较的扭角？',
+    description: '从悬球偏转到扭秤回零，控制球心距离与电荷，检验平方反比关系。',
+    color: '#b6bc91',
+    tag: '静电力 · 控制变量',
+    related: ['electrostatic-induction', 'capacitor-fields'],
+    sources: [
+      {
+        title: 'OpenStax — Coulomb’s Law',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/5-3-coulombs-law',
+      },
+    ],
+    number: '212',
+  },
+  {
+    slug: 'free-fall-activities',
+    name: '自由落体小实验',
+    title: '一张纸、一对石头、一把尺，分别能回答什么？',
+    question: '一张纸、一对石头、一把尺，分别能回答什么？',
+    description: '从纸片与纸团的受控比较，到两石反证与反应尺，区分观察、推理和测量。',
+    color: '#aab992',
+    tag: '观察 · 推理 · 测量',
+    related: ['newton-tube', 'ticker-tape-lab'],
+    sources: [
+      {
+        title: 'NASA Glenn — Falling Object with Air Resistance',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/falling-object-with-air-resistance/',
+      },
+      {
+        title: 'OpenStax University Physics — Free Fall',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/3-5-free-fall',
+      },
+    ],
+    number: '211',
+  },
+  {
+    slug: 'blackbody-lab',
+    name: '黑体辐射测量',
+    title: '升温时，辐射曲线的峰值为什么向短波移动？',
+    question: '升温时，辐射曲线的峰值为什么向短波移动？',
+    description: '从热腔小孔到分光测量，在同一强度刻度下比较不同温度的辐射光谱。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['photoelectric-lab', 'thermal-process-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Blackbody Radiation',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation',
+      },
+      {
+        title: 'NIST — SI constants',
+        url: 'https://www.nist.gov/si-redefinition/meet-constants',
+      },
+    ],
+    number: '210',
+  },
+  {
+    slug: 'photoelectric-lab',
+    name: '光电效应实验室',
+    title: '更亮的光，为什么仍打不出电子？',
+    question: '更亮的光，为什么仍打不出电子？',
+    description: '从锌板验电器到光电管，分别改变频率、光强与电压，读懂光电子的能量。',
+    color: '#aebfa8',
+    tag: '近代物理',
+    related: ['blackbody-lab', 'atomic-spectrum-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Photoelectric Effect',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect',
+      },
+      {
+        title: 'NIST — Historical determinations of constants',
+        url: 'https://physics.nist.gov/cuu/Constants/historical1.html',
+      },
+    ],
+    number: '209',
+  },
+  {
+    slug: 'charged-particle-lab',
+    name: '带电粒子实验室',
+    title: '一条弯曲轨迹，能告诉我们什么？',
+    question: '一条弯曲轨迹，能告诉我们什么？',
+    description: '用电子束、质谱落点和铅板两侧径迹，把磁力方向变成可核对的证据。',
+    color: '#608575',
+    tag: '磁场中的粒子',
+    related: ['hall-effect', 'magnetic-force-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Charged particles in magnetic fields',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field',
+      },
+      {
+        title: 'OpenStax — Mass spectrometry',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/11-7-applications-of-magnetic-forces-and-fields',
+      },
+      {
+        title: 'Anderson — Nobel lecture',
+        url: 'https://www.nobelprize.org/uploads/2018/06/anderson-lecture.pdf',
+      },
+    ],
+    number: '208',
+  },
+  {
+    slug: 'electrostatic-induction',
+    name: '静电起电与验电器',
+    title: '不接触，怎样让两个导体带上相反的电？',
+    question: '不接触，怎样让两个导体带上相反的电？',
+    description: '从玻璃棒和丝绸到双导体、验电器与带电细丝，跟踪电子的去向和始终守恒的电荷。',
+    color: '#afbd9b',
+    tag: '电荷转移 · 等势',
+    related: ['capacitor-fields', 'diode-junction', 'franklin-electricity-evidence'],
+    sources: [
+      {
+        title: 'OpenStax — Conductors, Insulators, and Charging by Induction',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction',
+      },
+      {
+        title: 'OpenStax — Conductors and Insulators: the electroscope',
+        url: 'https://openstax.org/books/college-physics-2e/pages/18-2-conductors-and-insulators',
+      },
+    ],
+    number: '207',
+  },
+  {
+    slug: 'phone-accelerometer-lab',
+    name: '手机加速度实验',
+    title: '自由下落时，手机为什么可能读出零？',
+    question: '自由下落时，手机为什么可能读出零？',
+    description: '同一次托住、释放、接住与电梯上行，分清原始加速度计和去重力输出。',
+    color: '#abbca0',
+    tag: '传感器 · 加速度',
+    related: ['newton-tube', 'gyroscope', 'apparent-weight-lab'],
+    sources: [
+      {
+        title: 'phyphox — Acceleration with g',
+        url: 'https://phyphox.org/experiment/acceleration-with-g/',
+      },
+      {
+        title: 'Android Sensors — Motion sensors',
+        url: 'https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion',
+      },
+    ],
+    number: '206',
+  },
+  {
+    slug: 'magnetic-force-lab',
+    name: '磁力实验室',
+    title: '电流方向变了，受力怎样跟着变？',
+    question: '电流方向变了，受力怎样跟着变？',
+    description: '从悬挂导体棒到通电弹簧，用真实装置对照追踪电流、磁场与受力。',
+    color: '#64826a',
+    tag: '磁场与电流',
+    related: ['hall-effect', 'induction-motor', 'wire-force-factors-lab'],
+    sources: [
+      {
+        title: 'OpenStax — Force on a current-carrying conductor',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor',
+      },
+      {
+        title: 'OpenStax — Force between parallel currents',
+        url: 'https://openstax.org/books/university-physics-volume-2/pages/12-3-magnetic-force-between-two-parallel-currents',
+      },
+    ],
+    number: '205',
+  },
+  {
+    slug: 'ticker-tape-lab',
+    name: '纸带运动实验室',
+    title: '纸带上的点，怎样变成速度和加速度？',
+    question: '纸带上的点，怎样变成速度和加速度？',
+    description: '从固定打点周期到纸带读数，沿四条教材实验路径学会记录时间、测量速度和研究加速度。',
+    color: '#a5b88e',
+    tag: '运动测量',
+    related: ['newton-tube', 'sampling-aliasing', 'mechanical-energy-lab'],
+    sources: [
+      {
+        title: 'OpenStax University Physics — Instantaneous Velocity and Speed',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/3-2-instantaneous-velocity-and-speed',
+      },
+      {
+        title: 'OpenStax University Physics — Average and Instantaneous Acceleration',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/3-3-average-and-instantaneous-acceleration',
+      },
+    ],
+    number: '204',
+  },
+  {
+    slug: 'newton-tube',
+    name: '牛顿管实验',
+    title: '羽毛落得慢，是因为比较轻吗？',
+    question: '羽毛落得慢，是因为比较轻吗？',
+    description:
+      '同一片铁片和羽毛，先在空气中下落，再抽去空气。只改变一个条件，看见自由落体的共同规律。',
+    color: '#859d76',
+    tag: '自由落体 · 控制变量',
+    related: ['pendulum', 'stokes-drag', 'balloon-drag-lab'],
+    sources: [
+      {
+        title: 'NASA Glenn — Motion of Free Falling Object',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/motion-of-free-falling-object/',
+      },
+      {
+        title: 'NASA — The Apollo 15 Hammer-Feather Drop',
+        url: 'https://science.nasa.gov/resource/the-apollo-15-hammer-feather-drop/',
+      },
+      {
+        title: 'NASA Glenn — Modern Drag Equation',
+        url: 'https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/modern-drag-equation/',
+      },
+    ],
+    number: '203',
+  },
+  {
     slug: 'electric-fuse',
     name: '保险丝',
     title: '相同峰值电流，为什么有时熔化、有时不熔化？',
@@ -358,7 +2545,7 @@ export const topics: Topic[] = [
     description: '从闭合电流、磁力与焦耳热，观察局部磁场和绝缘切缝如何改变制动。',
     color: '#b6c2a7',
     tag: '闭合涡流',
-    related: ['hall-effect', 'induction-motor', 'inductor-transient'],
+    related: ['hall-effect', 'induction-motor', 'inductor-transient', 'eddy-current-lab'],
     sources: [
       {
         title: 'OpenStax · Eddy currents',
@@ -383,7 +2570,7 @@ export const topics: Topic[] = [
     description: '跟住有限水深重力波中的水质点，比较深水圆轨道、浅水扁椭圆与两波叠加的包络速度。',
     tag: '波动与水深',
     color: '#59818d',
-    related: ['wave-interference', 'vortex-ring', 'hydrostatic-pressure'],
+    related: ['wave-interference', 'vortex-ring', 'hydrostatic-pressure', 'ripple-tank-lab'],
     sources: [
       {
         title:
@@ -493,7 +2680,14 @@ export const topics: Topic[] = [
     description: '固定电流、磁场与表笔方向，观察漂移、横向力平衡和载流子密度。',
     color: '#b6c1a2',
     tag: '横向电压',
-    related: ['eddy-current-brake', 'diode-junction', 'capacitor-fields', 'induction-motor'],
+    related: [
+      'eddy-current-brake',
+      'diode-junction',
+      'capacitor-fields',
+      'induction-motor',
+      'diamagnetic-levitation-lab',
+      'sensor-control-lab',
+    ],
     sources: [
       {
         title: 'OpenStax · The Hall effect',
@@ -744,7 +2938,7 @@ export const topics: Topic[] = [
       '追踪真实浸没高度与上下压力差，从定位下放、放手上浮到加重下沉，再比较不同液体中的平衡吃水。',
     tag: '排液与平衡',
     color: '#85a59a',
-    related: ['convection', 'hydraulic-brake', 'water-hammer'],
+    related: ['convection', 'hydraulic-brake', 'water-hammer', 'floating-oscillator'],
     sources: [
       {
         title: 'OpenStax University Physics 1, §14.4 Archimedes principle and buoyancy',
@@ -804,7 +2998,13 @@ export const topics: Topic[] = [
     description: '沿真实续流回路观察电流连续、钳位电压与磁能释放。',
     color: '#b6b69a',
     tag: '电流与磁能',
-    related: ['relay', 'rc-circuit', 'capacitor-fields', 'transformer-electric'],
+    related: [
+      'relay',
+      'rc-circuit',
+      'capacitor-fields',
+      'transformer-electric',
+      'self-induction-lab',
+    ],
     sources: [
       {
         title: 'OpenStax · RL circuits',
@@ -846,7 +3046,13 @@ export const topics: Topic[] = [
     description: '用三维弹性反射轨迹累计壁面冲量，逐项比较温度、容积、粒子数量、表压与原子质量。',
     tag: '粒子与压强',
     color: '#8da69a',
-    related: ['thermal-expansion', 'brownian-motion', 'heat-conduction', 'adiabatic-compression'],
+    related: [
+      'thermal-expansion',
+      'brownian-motion',
+      'heat-conduction',
+      'adiabatic-compression',
+      'magdeburg-bowls-lab',
+    ],
     sources: [
       {
         title: 'OpenStax University Physics 2, §2.1 Molecular model of an ideal gas',
@@ -1051,7 +3257,14 @@ export const topics: Topic[] = [
     description: '近看两车弹簧压缩与回弹，追踪动量、暂存能量、质量差异和质心参考系。',
     color: '#afba92',
     tag: '碰撞与储能',
-    related: ['angular-momentum', 'flywheel', 'lever', 'center-of-mass'],
+    related: [
+      'angular-momentum',
+      'flywheel',
+      'lever',
+      'center-of-mass',
+      'momentum-collision-lab',
+      'impulse-contact-lab',
+    ],
     sources: [
       {
         title: 'OpenStax · Types of collisions',
@@ -1583,7 +3796,12 @@ export const topics: Topic[] = [
       '逐次追踪有限直角镜中的真实碰撞，比较一面、两面、三面反射，并观察横向偏移和入口边界。',
     tag: '三维反射与追迹',
     color: '#5f8581',
-    related: ['total-internal-reflection', 'lidar-ranging', 'polarization'],
+    related: [
+      'total-internal-reflection',
+      'lidar-ranging',
+      'polarization',
+      'small-deformation-lab',
+    ],
     sources: [
       {
         title: 'Ansys Optics: How to model corner-cube retroreflectors',
@@ -1785,7 +4003,7 @@ export const topics: Topic[] = [
     description: '固定同一界面追踪临界角、反射功率和外侧消逝场，分别改变入射角、折射率与传播方向。',
     color: '#6a99a2',
     tag: '光学与边界',
-    related: ['refraction', 'optical-fiber', 'polarization'],
+    related: ['refraction', 'optical-fiber', 'polarization', 'total-reflection-lab'],
     sources: [
       {
         title: 'OpenStax University Physics 3, §1.4 Total Internal Reflection',
@@ -1973,7 +4191,7 @@ export const topics: Topic[] = [
       '从圆到椭圆，固定焦点并同步生长两块等时面积；改变偏心率与半长轴，看速度和周期分别受谁控制。',
     color: '#7da6b3',
     tag: '焦点 · 等时面积 · 轨道周期',
-    related: ['seasons', 'moon-phases', 'gps', 'orbital-transfer'],
+    related: ['seasons', 'moon-phases', 'gps', 'orbital-transfer', 'ellipse-string-lab'],
     sources: [
       {
         title: 'NASA — Orbits and Kepler’s Laws',
@@ -2034,7 +4252,13 @@ export const topics: Topic[] = [
     description: '跟踪电容的连续电压，比较电阻、电容、充放电方向与能量去向。',
     color: '#9d87b2',
     tag: '瞬态与储能',
-    related: ['piezoelectricity', 'rectifier', 'buck-converter', 'lithium-battery'],
+    related: [
+      'piezoelectricity',
+      'rectifier',
+      'buck-converter',
+      'lithium-battery',
+      'capacitor-current-lab',
+    ],
     sources: [
       {
         title: 'OpenStax · RC Circuits',
@@ -2138,7 +4362,7 @@ export const topics: Topic[] = [
       '追踪表面与底面的反射，把往返光程与反射相位分开，再比较空气背面和玻璃背面的亮暗条件。',
     tag: '光学与相位',
     color: '#739eab',
-    related: ['wave-interference', 'double-slit', 'polarization'],
+    related: ['wave-interference', 'double-slit', 'polarization', 'thin-film-lab'],
     sources: [
       {
         title: 'OpenStax University Physics 3, §3.4 Interference in Thin Films',
@@ -2352,7 +4576,7 @@ export const topics: Topic[] = [
     description: '从接触线的表面张力出发，解释细管液柱、接触角与毛细下降。',
     color: '#7b9e82',
     tag: '接触线与液柱',
-    related: ['osmosis', 'siphon'],
+    related: ['osmosis', 'siphon', 'surface-tension-lab'],
     sources: [
       {
         title: 'OpenStax · Cohesion, Adhesion and Capillary Action',
@@ -2538,7 +4762,7 @@ export const topics: Topic[] = [
     description: '跟住弹簧上的质量块，观察节拍、相位与能量怎样建立共振。',
     color: '#4b826b',
     tag: '节拍与能量',
-    related: ['standing-wave', 'beats'],
+    related: ['standing-wave', 'beats', 'singing-basin', 'forced-oscillation-lab'],
     sources: [
       {
         title: 'OpenStax · Forced Oscillations',
@@ -3281,7 +5505,13 @@ export const topics: Topic[] = [
     color: '#85d8cd',
     number: '64',
     tag: '光 · 相位',
-    related: ['diffraction', 'wave-interference', 'polarization', 'diffraction-grating'],
+    related: [
+      'diffraction',
+      'wave-interference',
+      'polarization',
+      'diffraction-grating',
+      'double-slit-measurement-lab',
+    ],
     sources: [
       {
         title: 'OpenStax University Physics, Volume 3, 4.3 — Double-Slit Diffraction',
@@ -3407,7 +5637,13 @@ export const topics: Topic[] = [
     description: '跟随同一批分组，观察最短路径、排队、TTL、故障收敛与接收重排。',
     color: '#79b7ad',
     tag: '网络 · 路由与队列',
-    related: ['tcp-reliability', 'network', 'mobile-roaming', 'dijkstra'],
+    related: [
+      'tcp-reliability',
+      'network',
+      'mobile-roaming',
+      'dijkstra',
+      'wireless-interference-lab',
+    ],
     sources: [
       {
         title: 'RFC 2328: OSPF Version 2 — flooding and shortest-path calculation',
@@ -3432,7 +5668,13 @@ export const topics: Topic[] = [
     description: '从浓度曲线计算净通量、局部收支和扩散宽度，比较扩散系数、长度与边界。',
     color: '#6eafd0',
     tag: '浓度与通量',
-    related: ['brownian-motion', 'osmosis', 'capillary', 'random-walk'],
+    related: [
+      'brownian-motion',
+      'osmosis',
+      'capillary',
+      'random-walk',
+      'diffusion-microstates-lab',
+    ],
     sources: [
       {
         title: 'MIT — Conceptual Model for Diffusion',
@@ -4137,7 +6379,7 @@ export const topics: Topic[] = [
       '追踪每个波峰的发射位置与到达时刻，分开理解移动声源、移动接收者和离轴经过时的声学多普勒效应。',
     color: '#7591a0',
     tag: '声学 · 波峰与到达时刻',
-    related: ['radar-ranging', 'lidar-ranging', 'ultrasound'],
+    related: ['radar-ranging', 'lidar-ranging', 'ultrasound', 'doppler-lab'],
     sources: [
       {
         title: 'OpenStax · The Doppler Effect (University Physics, 17.7)',
@@ -4187,7 +6429,7 @@ export const topics: Topic[] = [
     description: '跟随绳上的一个点，看脉冲相消又穿过，再从相位与振幅走到驻波和能量流。',
     color: '#87cbd6',
     tag: '波动 · 叠加与能量',
-    related: ['surface-waves', 'beats', 'standing-wave', 'double-slit'],
+    related: ['surface-waves', 'beats', 'standing-wave', 'double-slit', 'sound-interference-lab'],
     sources: [
       {
         title: 'Caltech · The Feynman Lectures, I–49: Modes',
@@ -4467,7 +6709,13 @@ export const topics: Topic[] = [
     description: '跟随电场穿过三片滤光片，连接偏振方向、马吕斯定律与每一步的能量去向。',
     color: '#88aaa9',
     tag: '光学 · 电场与投影',
-    related: ['optical-fiber', 'camera-lens', 'noise'],
+    related: [
+      'optical-fiber',
+      'camera-lens',
+      'noise',
+      'polarization-evidence-lab',
+      'hertz-wave-lab',
+    ],
     sources: [
       {
         title: 'The Feynman Lectures on Physics · Polarization, §33–4',
@@ -4514,7 +6762,15 @@ export const topics: Topic[] = [
     description: '跟随闭合铁芯里的变化磁通，理解感应电压、匝数比、负载电流和损耗。',
     color: '#b17b52',
     tag: '电磁 · 变化与传递',
-    related: ['ground-fault-breaker', 'rectifier', 'wireless-charging', 'nfc'],
+    related: [
+      'ground-fault-breaker',
+      'rectifier',
+      'wireless-charging',
+      'nfc',
+      'ac-circuit-lab',
+      'mutual-induction-lab',
+      'induction-coil-lab',
+    ],
     sources: [
       {
         title: 'MIT 8.02 · Mutual inductance and transformers',
@@ -4903,7 +7159,7 @@ export const topics: Topic[] = [
     color: '#d89837',
     number: '10',
     tag: '释放 · 能量与周期',
-    related: ['bicycle', 'noise'],
+    related: ['bicycle', 'noise', 'newton-tube', 'pendulum-measurement-lab'],
     sources: [
       {
         title: 'OpenStax · University Physics: Pendulums',

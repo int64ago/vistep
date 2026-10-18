@@ -8,10 +8,27 @@ import '../../styles/experiments.css';
 import narration from '../../data/narration.json';
 import tracks from '../../data/audio-tracks.json';
 import { films, filmDuration, filmRunningTime } from '../../data/films';
+import { filmWindow } from '../../lib/film';
 import { nextLearningStep } from '../../data/learning-paths';
 import { discoveryCategories, discoveryMetadata } from '../../data/discovery-metadata';
-import { translate, localPath, localizedTopic } from '../../i18n';
-const { topic: originalTopic, Content, locale = 'zh' } = Astro.props;
+import { translate, localPath, localizedTopic, type Locale } from '../../i18n';
+import TeachingLessonContext from '../teaching/TeachingLessonContext.astro';
+import {
+  curriculumPath,
+  curriculumSectionPath,
+  curriculumSectionNumber,
+  type CurriculumContext,
+} from '../../data/curricula';
+const { topic: originalTopic, Content, curriculumContext } = Astro.props;
+const locale = (Astro.props.locale ?? 'zh') as Locale;
+const context = curriculumContext as CurriculumContext | undefined;
+const selection = context?.lesson.chapterIds?.length
+  ? {
+      chapterIds: context.lesson.chapterIds,
+      variant: context.lesson.experimentId ?? context.lesson.id,
+    }
+  : undefined;
+const selectedWindow = filmWindow(films[originalTopic.slug], selection);
 const topic = localizedTopic(originalTopic, locale);
 const tr = (s: string) => translate(s, locale);
 const href = (p: string) => localPath(p, locale);
@@ -24,32 +41,77 @@ const ageLabel =
 <Base
   locale={locale}
   topic={originalTopic}
-  title={`${topic.name} — ${topic.title} | vistep.ai`}
-  description={topic.description}
+  title={context
+    ? `${context.lesson.name[locale]} · ${context.book.title[locale]} | vistep.ai`
+    : `${topic.name} — ${topic.title} | vistep.ai`}
+  description={context ? context.lesson.goal[locale] : topic.description}
 >
-  <main id="main" class={`lesson-wrap lesson-${topic.slug}`} style={`--topic:${topic.color}`}>
-    <div class="breadcrumbs">
-      <a href={href('/#collection')}>{tr('全部探索')}</a><span>/</span><a
-        href={href(`/?category=${category.id}#collection`)}
-        >{category.label[locale as 'zh' | 'en']}</a
-      ><span>/</span><span>{topic.name}</span>
-    </div>
+  <main
+    id="main"
+    class={`lesson-wrap lesson-${topic.slug}${context ? ' curriculum-lesson' : ''}`}
+    style={`--topic:${topic.color}`}
+  >
+    {
+      context ? (
+        <nav
+          class="curriculum-breadcrumbs"
+          aria-label={locale === 'en' ? 'Textbook location' : '教材位置'}
+        >
+          <a href={href('/teaching/')}>{locale === 'en' ? 'Learn' : '教学专区'}</a>
+          <span aria-hidden="true">/</span>
+          <a href={curriculumPath(context.curriculum.id, locale)}>
+            {context.curriculum.title[locale]}
+          </a>
+          <span aria-hidden="true">/</span>
+          <span>{context.book.title[locale]}</span>
+        </nav>
+      ) : (
+        <div class="breadcrumbs">
+          <>
+            <a href={href('/#collection')}>{tr('全部探索')}</a>
+            <span>/</span>
+            <a href={href(`/?category=${category.id}#collection`)}>
+              {category.label[locale as 'zh' | 'en']}
+            </a>
+            <span>/</span>
+            <span>{topic.name}</span>
+          </>
+        </div>
+      )
+    }
     <header class="lesson-heading">
       <div>
         <div class="lesson-kicker">
-          <span class="mono">EXPLORATION {topic.number}</span><span>·</span><span>{topic.tag}</span>
+          {
+            context ? (
+              <a href={curriculumSectionPath(context, locale)}>
+                {curriculumSectionNumber(context)} {context.section.title[locale]}
+              </a>
+            ) : (
+              <>
+                <>
+                  <span class="mono">EXPLORATION {topic.number}</span>
+                  <span>·</span>
+                  <span>{topic.tag}</span>
+                </>
+              </>
+            )
+          }
         </div><h1>
           {
-            topic.title.split(locale === 'zh' ? '，' : '\u0000').map((phrase, i, parts) => (
-              <span class="title-phrase">
-                {phrase}
-                {i === parts.length - 1 ? '' : '，'}
-              </span>
-            ))
+            (context ? context.lesson.name[locale] : topic.title)
+              .split(locale === 'zh' ? '，' : '\u0000')
+              .map((phrase, i, parts) => (
+                <span class="title-phrase">
+                  {phrase}
+                  {i === parts.length - 1 ? '' : '，'}
+                </span>
+              ))
           }
-        </h1><p>{topic.description}</p>
+        </h1><p>{context ? context.lesson.goal[locale] : topic.description}</p>
       </div><div class="lesson-viewing">
-        <span class="lesson-time">{filmRunningTime(films[topic.slug].duration)} {tr('演示')}</span
+        <span class="lesson-time"
+          >{filmRunningTime(selectedWindow.end - selectedWindow.start)} {tr('演示')}</span
         ><a class="lesson-age" href={href(`/?age=${discovery.minAge}#collection`)}>{ageLabel}</a>
       </div>
     </header>
@@ -61,6 +123,7 @@ const ageLabel =
             dictionary={islandDictionary('experiment', topic.slug)}
             slug={topic.slug as any}
             film={films[topic.slug]}
+            selection={selection}
             track={tracks[topic.slug as keyof typeof tracks]?.[locale as 'zh' | 'en']}
             client:only="react"
           >
@@ -72,6 +135,7 @@ const ageLabel =
           <Experiment
             slug={topic.slug as any}
             film={films[topic.slug]}
+            selection={selection}
             track={tracks[topic.slug as keyof typeof tracks]?.[locale as 'zh' | 'en']}
             client:only="react"
           >
@@ -86,19 +150,24 @@ const ageLabel =
         </div></noscript
       >
     </section>
+    {context && <TeachingLessonContext context={context} locale={locale} />}
     <details class="lesson-transcript">
       <summary>{tr('分段讲解')}<span>{tr('阅读讲解，或回到某一步')} ＋</span></summary>
       <ol>
         {
-          narration[topic.slug as keyof typeof narration].cues.map((cue) => (
-            <li>
-              <a href={`#t=${cue.chapterAt}`} data-film-seek>
-                <time>{filmDuration(cue.chapterAt)}</time>
-                {locale === 'zh' ? cue.title : cue.titleEn}
-              </a>
-              <p lang={locale === 'zh' ? 'zh-CN' : 'en'}>{cue[locale as 'zh' | 'en']}</p>
-            </li>
-          ))
+          narration[topic.slug as keyof typeof narration].cues
+            .filter(
+              (cue) => cue.chapterAt >= selectedWindow.start && cue.chapterAt < selectedWindow.end,
+            )
+            .map((cue) => (
+              <li>
+                <a href={`#t=${cue.chapterAt}`} data-film-seek>
+                  <time>{filmDuration(cue.chapterAt - selectedWindow.start)}</time>
+                  {locale === 'zh' ? cue.title : cue.titleEn}
+                </a>
+                <p lang={locale === 'zh' ? 'zh-CN' : 'en'}>{cue[locale as 'zh' | 'en']}</p>
+              </li>
+            ))
         }
       </ol>
     </details>
@@ -167,6 +236,50 @@ const ageLabel =
 </Base>
 
 <style>
+  .curriculum-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 12px;
+    padding-top: 22px;
+    color: #6b756c;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .curriculum-breadcrumbs a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .curriculum-breadcrumbs a:hover {
+    color: #405d4b;
+  }
+  .curriculum-lesson .lesson-heading {
+    padding-top: 12px;
+  }
+  .curriculum-lesson .lesson-kicker {
+    font-size: 16px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .curriculum-lesson .lesson-kicker a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .curriculum-lesson .lesson-heading h1 {
+    margin-top: 0;
+  }
+  .curriculum-lesson .lesson-heading p {
+    display: block;
+    margin: 12px 0 0;
+    font-size: 18px;
+    line-height: 1.65;
+    color: #68736a;
+  }
+  .curriculum-lesson .lesson-time {
+    font-size: 16px;
+  }
   .related-reason {
     margin: 12px 0 0;
     font-size: 16px;

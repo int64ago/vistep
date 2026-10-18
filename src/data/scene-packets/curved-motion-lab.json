@@ -1,0 +1,175 @@
+{
+  "topic": {
+    "slug": "curved-motion-lab",
+    "name": "曲线运动的速度方向",
+    "title": "离开弯道的一瞬间，物体会朝哪里走？",
+    "question": "离开弯道的一瞬间，物体会朝哪里走？",
+    "description": "弧形轨道的红色印迹、磁铁改变的钢球轨迹与带尾翼飞镖，分别展示切线方向和转弯的条件。",
+    "color": "#bdcbb0",
+    "tag": "切线 · 合力 · 轨迹",
+    "related": ["galileo-inclines", "newton-second-law-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Motion in Two and Three Dimensions",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/4-summary"
+      },
+      {
+        "title": "MIT — Magnetization force densities",
+        "url": "https://web.mit.edu/6.013_book/www/chapter9/9.8.html"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["曲线运动的速度方向", "曲线切线", "弧形轨道", "磁铁钢球", "飞镖"],
+      "en": [
+        "Velocity directions in curved motion",
+        "tangent",
+        "arc track",
+        "magnetic deflection",
+        "finned dart"
+      ]
+    }
+  },
+  "component": "src/components/experiments/CurvedMotionLab.tsx",
+  "cover": "src/components/covers/CurvedMotionLabCover.astro",
+  "translations": {
+    "曲线运动的速度方向": "Velocity directions in curved motion",
+    "离开弯道的一瞬间，物体会朝哪里走？": "Which way does an object go when it leaves a curve?",
+    "弧形轨道的红色印迹、磁铁改变的钢球轨迹与带尾翼飞镖，分别展示切线方向和转弯的条件。": "Ink traces from an arc track, a magnet-deflected steel ball and a finned dart reveal tangent velocity and the conditions for changing direction.",
+    "切线 · 合力 · 轨迹": "Tangent · Net force · Trajectory",
+    "离开轨道后，印迹沿出口切线延伸": "After the track, the ink trace follows the exit tangent",
+    "让沾有印泥的钢球沿弧形轨道滚动": "Roll an inked steel ball along the curved track",
+    "把磁铁移到侧面，速度方向也发生变化": "Move the magnet to one side and velocity changes direction",
+    "磁铁在正前方，球加速却仍沿直线": "A magnet directly ahead speeds the ball up along a straight line",
+    "飞镖的指向帮助追踪瞬时速度方向": "The dart’s orientation helps trace instantaneous velocity",
+    "水平俯视 · 印迹实验": "Horizontal top view · Ink-trace experiment",
+    "水平俯视 · 磁铁与钢球": "Horizontal top view · Magnet and steel ball",
+    "侧视 · 带尾翼飞镖": "Side view · Finned dart",
+    "分段弧形轨道约束钢球，出口外的红色印迹沿切线": "A segmented arc constrains the ball; the red trace beyond the exit follows its tangent",
+    "磁铁位置改变钢球受力方向，轨迹由力学模型积分": "Magnet position changes the force direction; the trajectory is integrated from dynamics",
+    "带纸翼的飞镖沿抛物线飞行，杆轴随速度方向转动": "A paper-finned dart follows a parabola with its shaft aligned to velocity",
+    "速度方向": "Velocity direction",
+    "合力方向": "Net-force direction",
+    "模型时间": "Model time",
+    "更换出口，飞出的方向随该点的切线改变。": "Change the exit and departure follows the new point’s tangent.",
+    "合力与速度不共线时，速度的方向才会改变。": "A force component perpendicular to velocity changes its direction.",
+    "理想尾翼迅速对齐速度，杆轴近似沿轨迹切线；不是沿着合力方向。": "An ideal rapidly stabilizing tail aligns the shaft approximately with the tangent, not with net force.",
+    "实验路径": "Experiment path",
+    "弧形轨道": "Arc track",
+    "磁铁与钢球": "Magnet and ball",
+    "飞镖": "Finned dart",
+    "轨道出口": "Track exit",
+    "完整轨道": "Full track",
+    "拆去末段": "Remove final segment",
+    "磁铁位置": "Magnet location",
+    "正前方": "Directly ahead",
+    "侧面": "To the side",
+    "投射角": "Launch angle",
+    "磁力采用诱导偶极远场示意，接近磁铁时停止记录；不模拟吸附碰撞，也不把力线当轨迹。": "An illustrative induced-dipole far field is used; recording stops near the magnet. Capture and collision are omitted, and field lines are not treated as trajectories.",
+    "飞镖平动忽略气阻，方向采用尾翼快速稳定的教学近似；不模拟真实转动滞后。": "Dart translation neglects drag and orientation assumes rapid tail stabilization; real angular lag is omitted.",
+    "水平面上忽略滚动阻力，出口位置与瞬时速度连续；印迹由真实计算轨迹生成。": "Rolling resistance is neglected on the horizontal plane. Exit position and velocity are continuous; the ink trace comes from the computed trajectory."
+  },
+  "narration": {
+    "duration": 165,
+    "cues": [
+      {
+        "id": "arc",
+        "title": "从弧形轨道滚出",
+        "titleEn": "Roll out of a curved track",
+        "seconds": 27,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "出口后的印迹沿该点切线，而不是沿半径。",
+        "captionEn": "The trace beyond the exit follows the tangent, not the radius.",
+        "zh": "在白纸上摆好分段弧形轨道，让沾有红色印泥的钢球从一端滚入。轨道持续改变小球的速度方向。到了出口，约束消失，水平面上又没有显著阻力，球便沿离开瞬间的速度方向前进。红色印迹把这个方向留下来，它与出口处的曲线相切，并不朝向圆心或沿半径飞出。",
+        "en": "Place a segmented curved track on paper and roll an inked steel ball into it. The track continually changes velocity direction. At the exit, constraint ends; with negligible horizontal resistance the ball continues with its departure velocity. The red trace preserves that direction: tangent to the curve at the exit, rather than toward the centre or radially outward."
+      },
+      {
+        "id": "short-track",
+        "title": "拆去一段再比较",
+        "titleEn": "Remove a segment and compare",
+        "seconds": 27,
+        "chapterAt": 27,
+        "at": 27.3,
+        "caption": "新出口的位置改变，切线方向随之改变。",
+        "captionEn": "A new exit location has a new tangent direction.",
+        "zh": "拆去最后一段轨道，让钢球更早离开。球的速率保持同样的示例值，出口后的直线方向却改变了。比较两次记录，决定飞出方向的是离开那一点的瞬时速度。轨迹是许多位置的集合，速度则是每一点的局部方向；要理解曲线运动，需要沿着轨迹逐点看，而不是把整条弯道当成一个方向。",
+        "en": "Remove the final segment so the ball leaves earlier. Its example speed stays the same, but its outgoing straight-line direction changes. Departure is determined by instantaneous velocity at that particular point. A trajectory collects many positions, while velocity has a local direction at each. Follow the curve point by point rather than assigning one direction to the whole bend."
+      },
+      {
+        "id": "magnet-front",
+        "title": "磁铁放在正前方",
+        "titleEn": "Put the magnet directly ahead",
+        "seconds": 27,
+        "chapterAt": 54,
+        "at": 54.3,
+        "caption": "力与速度共线，速度大小改变，路径仍直。",
+        "captionEn": "Collinear force changes speed while the path remains straight.",
+        "zh": "让钢球沿水平面运动，把磁铁放在它运动路线的正前方。磁力沿前进方向拉动钢球，球越来越快，但轨迹仍然是一条直线。可见，有力、有加速度，并不自动意味着轨迹弯曲。判断转弯时，还要看这个力相对于当前速度的方向，而不只是判断合力是否为零。",
+        "en": "Roll the steel ball horizontally and place the magnet directly ahead. Attraction acts along its forward motion, increasing speed while the path stays straight. A force and acceleration do not automatically imply a curved trajectory. To judge turning, compare force direction with the current velocity, rather than merely asking whether net force is zero."
+      },
+      {
+        "id": "magnet-side",
+        "title": "把磁铁移到旁边",
+        "titleEn": "Move the magnet to the side",
+        "seconds": 28,
+        "chapterAt": 81,
+        "at": 81.3,
+        "caption": "力有垂直于速度的分量，速度方向改变。",
+        "captionEn": "A component perpendicular to velocity changes its direction.",
+        "zh": "把磁铁移到旁边，钢球逐渐偏离原来的直线。速度方向沿当前轨迹，合力方向由磁铁的作用决定，二者不在同一条直线上。合力中垂直于速度的部分改变速度方向，轨迹因此弯曲。本模型从力积分出运动，而不是预先画好一条曲线让球照着走；接近磁铁时停止展示，避免把远场近似用于吸附碰撞。",
+        "en": "Move the magnet aside and the ball bends away from its original line. Velocity follows the local trajectory; force follows the magnetic interaction, so they are not collinear. The perpendicular force component changes velocity direction. The model integrates motion from force rather than prescribing a drawn path. It stops near the magnet before its far-field approximation would be used for capture or collision."
+      },
+      {
+        "id": "dart",
+        "title": "用尾翼显示方向",
+        "titleEn": "Use a tail to reveal direction",
+        "seconds": 28,
+        "chapterAt": 109,
+        "at": 109.3,
+        "caption": "飞镖上升与下降时，杆轴都近似沿轨迹切线。",
+        "captionEn": "During ascent and descent, the shaft approximately follows the trajectory tangent.",
+        "zh": "教材还提出用带铁钉和尾翼的细杆做飞镖，观察曲线运动的速度方向。这里用模型观察同一原理：尾翼使杆轴趋向对齐运动方向，上升时指向斜上方，越过最高点后逐渐指向斜下方。重力一直向下，飞镖却不会全程竖直朝下；速度方向和合力方向是两个不同的量。",
+        "en": "The textbook suggests a shaft with a nail and tail fins to reveal velocity direction. In this model, tail stabilization aligns the shaft approximately with motion: upward during ascent, then progressively downward after the apex. Gravity always points down, but the dart does not point straight down throughout. Velocity and net-force direction are distinct quantities."
+      },
+      {
+        "id": "dart-angle",
+        "title": "改变投射角再观察",
+        "titleEn": "Change launch angle and observe again",
+        "seconds": 28,
+        "chapterAt": 137,
+        "at": 137.3,
+        "caption": "轨迹改变，瞬时速度沿切线这一点不变。",
+        "captionEn": "The trajectory changes; the tangent-velocity relationship does not.",
+        "zh": "把投射角调大，飞镖上升得更高，最高点和落地位置都改变。暂停在任意一点，看杆轴与附近轨迹的关系。模型把尾翼对齐视为快速完成，忽略真实空气动力造成的转动滞后；落地时以尖端首次接触地面为止。即使改变发射条件，瞬时速度沿轨迹切线这个结论仍然适用。",
+        "en": "Increase launch angle. The dart rises higher and its apex and landing position change. Pause anywhere to compare its shaft with the nearby path. Orientation assumes rapid tail stabilization and omits real aerodynamic angular lag. Flight ends at first tip contact with the ground. Changing launch conditions does not alter the tangent relationship of instantaneous velocity."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-curve-tangent": {
+      "chapterIds": ["arc", "short-track"],
+      "label": {
+        "zh": "弧形轨道与速度切线",
+        "en": "Arc track and tangent velocity"
+      }
+    },
+    "required-2-magnetic-path": {
+      "chapterIds": ["magnet-front", "magnet-side"],
+      "label": {
+        "zh": "磁铁改变钢球轨迹",
+        "en": "Magnetic deflection of a steel ball"
+      }
+    },
+    "required-2-dart-direction": {
+      "chapterIds": ["dart", "dart-angle"],
+      "label": {
+        "zh": "飞镖显示速度方向",
+        "en": "Dart orientation and velocity"
+      }
+    }
+  }
+}

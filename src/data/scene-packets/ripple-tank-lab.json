@@ -1,0 +1,305 @@
+{
+  "topic": {
+    "slug": "ripple-tank-lab",
+    "name": "水波槽中的传播与叠加",
+    "title": "同一片水面，为什么会出现不同的波纹？",
+    "question": "同一片水面，为什么会出现不同的波纹？",
+    "description": "从漂浮纸屑到反射、折射、衍射、双源干涉与移动波源，逐一更换真实器材观察水波。",
+    "color": "#91aa8a",
+    "tag": "让每道波纹都有来处",
+    "related": ["surface-waves", "wave-interference", "doppler"],
+    "sources": [
+      {
+        "title": "MIT — Wave propagation lecture notes",
+        "url": "https://ocw.mit.edu/courses/2-062j-wave-propagation-spring-2017/pages/lecture-notes/"
+      },
+      {
+        "title": "OpenStax — Huygens principle and diffraction",
+        "url": "https://openstax.org/books/college-physics-2e/pages/27-2-huygenss-principle-diffraction"
+      },
+      {
+        "title": "OpenStax — Interference of waves",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves"
+      }
+    ]
+  },
+  "component": "src/components/experiments/RippleTankLab.tsx",
+  "cover": "src/components/covers/RippleTankLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["水波槽中的传播与叠加", "纸屑", "反射", "折射", "衍射", "相干", "水波多普勒"],
+      "en": [
+        "Propagation and superposition in a ripple tank",
+        "floating paper",
+        "reflection",
+        "refraction",
+        "diffraction",
+        "coherence",
+        "moving ripple source"
+      ]
+    }
+  },
+  "translations": {
+    "水波槽中的传播与叠加": "Propagation and superposition in a ripple tank",
+    "同一片水面，为什么会出现不同的波纹？": "Why does the same water surface form different wave patterns?",
+    "从漂浮纸屑到反射、折射、衍射、双源干涉与移动波源，逐一更换真实器材观察水波。": "Change real apparatus to observe floating paper, reflection, refraction, diffraction, interference and a moving ripple source.",
+    "让每道波纹都有来处": "Every crest has a source",
+    "水面纸屑": "Floating paper",
+    "反射挡板": "Reflecting barrier",
+    "深浅水域": "Different depths",
+    "狭缝衍射": "Gap diffraction",
+    "双源干涉": "Two-source interference",
+    "移动波源": "Moving source",
+    "波峰轨迹": "Crest trajectories",
+    "局部运动与向外传播": "Local motion; outward propagation",
+    "俯视波场：颜色表示位移": "Top view: colour shows displacement",
+    "不同水波实验的真实挡板、浅水板、振源与漂浮纸屑": "Barriers, a shallow-water plate, sources and floating paper in distinct water-wave experiments",
+    "周期性轻点同一处": "Tap the same point periodically",
+    "笔尖轻点一次": "Tap once with a pen",
+    "侧面放大": "Magnified side view",
+    "斜向入射与挡板反射": "Oblique waves reflect",
+    "浅水板改变传播速度": "A shallow plate changes speed",
+    "固定波长，改变缝宽": "Fixed wavelength; vary the gap",
+    "固定缝宽，改变波长": "Fixed gap; vary wavelength",
+    "同一振动片带动两根细杆": "One driver, two dipping rods",
+    "分开驱动，比较相位与频率": "Separate drives: phase/frequency",
+    "静止振源发出同心波峰": "A still source makes concentric crests",
+    "每个波峰从发射位置向外走": "Crests expand from emission points",
+    "M、N是固定观察位置": "M and N are fixed probes",
+    "圆心记住发射时的位置": "Each centre stays where emitted",
+    "显示线性波的建立后状态": "Established linear wave field",
+    "波场颜色不可用，仍可查看装置与正文。": "Wave-field colour is unavailable; the apparatus and article remain accessible.",
+    "纸屑相对原位": "Paper relative to its mean position",
+    "前": "ahead",
+    "后": "behind",
+    "观察时间": "Observation time",
+    "入射角": "Incidence angle",
+    "浅水与深水的深度比": "Shallow/deep depth ratio",
+    "狭缝宽度": "Slit width",
+    "波长": "Wavelength",
+    "两振源相位差": "Source phase difference",
+    "两振源频率差": "Source frequency difference",
+    "波源移动速度": "Source speed",
+    "水波模型与颜色含义": "Wave models and colour",
+    "水槽采用线性重力波与长波近似，常规基准水深8毫米，衍射采用1毫米浅水，速度为√gh；忽略黏性、表面张力和槽边回波。反射与折射匹配边界条件；衍射用狭缝次波积分表示方向展开，近缝区域与绝对振幅不作精密预测。颜色表示瞬时高低，不是水流方向或能量。纸屑局部运动采用小振幅近似并放大侧面起伏，移动振源的每个波峰保留各自发射圆心。": "Linear gravity-wave and long-wave approximations use an 8 mm reference depth, or 1 mm for diffraction, with speed √gh. Viscosity, surface tension and tank-edge echoes are omitted. Reflection and refraction match boundary conditions. An aperture-wavelet integral models diffraction direction, without precise near-gap or absolute-amplitude predictions. Colour shows instantaneous height, not flow or energy. Paper motion uses a small-amplitude approximation with magnified side-view height; moving-source crests retain their emission centres.",
+    "笔尖轻点水面": "Tap the water once",
+    "波纹向外，纸屑在原位附近运动。": "Ripples travel outward while paper moves near its mean position.",
+    "重复轻点同一处": "Tap the same point repeatedly",
+    "振源不断产生波纹，纸屑仍只作局部运动。": "Repeated waves do not carry the paper along with each crest.",
+    "平面波遇到挡板": "Plane waves meet a barrier",
+    "反射改变传播方向，入射角等于反射角。": "Reflection changes direction, with equal incident and reflected angles.",
+    "改变入射方向": "Change the incidence angle",
+    "入射方向改变，反射方向按相同角度响应。": "The reflected direction responds by the same angle.",
+    "波进入较浅水域": "Enter shallower water",
+    "频率不变，波速和波长减小，传播方向偏折。": "Frequency stays fixed while speed, wavelength and direction change.",
+    "对比深度差": "Compare depth differences",
+    "深度差越小，方向和波长的变化也越小。": "Smaller depth contrast produces smaller changes in direction and wavelength.",
+    "固定波长，改变狭缝": "Vary the gap at fixed wavelength",
+    "狭缝与波长接近时，缝后的展开更明显。": "Spreading becomes more pronounced when gap width approaches wavelength.",
+    "固定狭缝，改变波长": "Vary wavelength at fixed gap",
+    "决定明显程度的是缝宽与波长的相对大小。": "Relative gap width and wavelength determine the visible spreading.",
+    "同一振动片带动双源": "Drive two rods together",
+    "固定相位差的双源形成稳定强弱区。": "A fixed phase relationship creates stable reinforcement and cancellation regions.",
+    "分开驱动作对照": "Compare independently driven sources",
+    "改变相位会移动强弱区；频率不同则不再保持稳定图样。": "Changing phase moves the pattern; different frequencies prevent a fixed pattern.",
+    "先观察静止振源": "Start with a stationary source",
+    "相同周期发出的波峰有相同的圆心。": "Crests emitted periodically by a still source share a centre.",
+    "再让振源移动": "Move the source",
+    "前方波峰更密，后方波峰更疏。": "Crests are closer ahead and farther apart behind."
+  },
+  "narration": {
+    "duration": 288,
+    "cues": [
+      {
+        "id": "paper-tap",
+        "title": "笔尖轻点水面",
+        "titleEn": "Tap the water once",
+        "caption": "波纹向外，纸屑在原位附近运动。",
+        "captionEn": "Ripples travel outward while paper moves near its mean position.",
+        "zh": "先在水面放一片小纸屑，用笔尖轻点水面。波纹从接触位置向外传播，纸屑在波经过时局部起伏。下面放大的侧面显示这次起伏；纸屑不会一直跟着某一道波峰走向盆边。",
+        "en": "Place a small piece of paper on the water and tap once with a pen. Ripples move outward while the paper responds locally as they pass. The magnified side view reveals that motion: the paper does not keep following one crest to the rim.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "paper-periodic",
+        "title": "重复轻点同一处",
+        "titleEn": "Tap the same point repeatedly",
+        "caption": "振源不断产生波纹，纸屑仍只作局部运动。",
+        "captionEn": "Repeated waves do not carry the paper along with each crest.",
+        "zh": "让笔尖周期性轻点同一位置。新的波纹不断产生，纸屑仍在同一片区域附近运动。这里保留小幅水平往复，并放大竖直起伏，不把真实水面运动简单画成永远只上下移动。",
+        "en": "Tap the same point periodically. New crests keep appearing while the paper remains near its mean position. The model retains small horizontal motion and magnifies vertical movement rather than claiming that real surface particles only move straight up and down.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24
+      },
+      {
+        "id": "water-reflect",
+        "title": "平面波遇到挡板",
+        "titleEn": "Plane waves meet a barrier",
+        "caption": "反射改变传播方向，入射角等于反射角。",
+        "captionEn": "Reflection changes direction, with equal incident and reflected angles.",
+        "zh": "换成发波水槽。平板产生的平面波斜向到达挡板，再向另一方向传播。图中的短线表示法线，两条传播线分居法线两侧。角度都要从法线量起，不能从挡板表面量起。",
+        "en": "Now use a ripple tank. A plate produces plane waves that meet a barrier obliquely and reflect. The dashed line is the normal; the incident and reflected directions lie on its two sides. Both angles are measured from that normal, not from the barrier surface.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48
+      },
+      {
+        "id": "water-reflect-angle",
+        "title": "改变入射方向",
+        "titleEn": "Change the incidence angle",
+        "caption": "入射方向改变，反射方向按相同角度响应。",
+        "captionEn": "The reflected direction responds by the same angle.",
+        "zh": "逐次改变入射方向，再比较两侧角度。建立后的波场由入射波与反射波叠加，表面高低在变化，但反射角始终等于入射角。自由探索可以停在任一角度检查传播线和波面。",
+        "en": "Change the incidence angle between trials. The established field contains incident and reflected waves together, so surface height changes in time. The reflected angle nevertheless remains equal to the incident angle. Pause to compare the rays and wavefronts.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72
+      },
+      {
+        "id": "water-refract",
+        "title": "波进入较浅水域",
+        "titleEn": "Enter shallower water",
+        "caption": "频率不变，波速和波长减小，传播方向偏折。",
+        "captionEn": "Frequency stays fixed while speed, wavelength and direction change.",
+        "zh": "水槽一侧放入浅水板，让水波跨越深浅交界。浅水侧的波速较小，波长也变短，斜向入射时方向向法线偏折。振源没有换频率，改变的是介质条件。",
+        "en": "A submerged plate makes one side shallower. Across the depth boundary, wave speed and wavelength decrease, and an oblique wave bends toward the normal. The source frequency stays unchanged; the medium has changed.",
+        "seconds": 24,
+        "chapterAt": 96,
+        "at": 96
+      },
+      {
+        "id": "water-depth",
+        "title": "对比深度差",
+        "titleEn": "Compare depth differences",
+        "caption": "深度差越小，方向和波长的变化也越小。",
+        "captionEn": "Smaller depth contrast produces smaller changes in direction and wavelength.",
+        "zh": "改变浅水板上方的水深，每次都比较建立后的波场。深浅差别减小，传播方向和波长的差别也减小。在这里使用的长波近似下，波速与水深平方根成正比。",
+        "en": "Change the water depth above the plate and compare established fields. A smaller depth contrast produces smaller changes in direction and wavelength. In this long-wave approximation, speed is proportional to the square root of depth.",
+        "seconds": 24,
+        "chapterAt": 120,
+        "at": 120
+      },
+      {
+        "id": "water-gap",
+        "title": "固定波长，改变狭缝",
+        "titleEn": "Vary the gap at fixed wavelength",
+        "caption": "狭缝与波长接近时，缝后的展开更明显。",
+        "captionEn": "Spreading becomes more pronounced when gap width approaches wavelength.",
+        "zh": "放入两块挡板，中间留下狭缝。保持波长不变，逐渐缩小缝宽。缝后波面向两侧展开得更明显，不能只按原来的直线传播方向猜测阴影区。这里比较方向展开，不用颜色强度比较能量。",
+        "en": "Place two barriers around a gap. Keep wavelength fixed and narrow the opening. The transmitted wave spreads more strongly to the sides, beyond a straight-line shadow prediction. Compare angular spreading here, not energy from colour intensity.",
+        "seconds": 24,
+        "chapterAt": 144,
+        "at": 144
+      },
+      {
+        "id": "water-wavelength",
+        "title": "固定狭缝，改变波长",
+        "titleEn": "Vary wavelength at fixed gap",
+        "caption": "决定明显程度的是缝宽与波长的相对大小。",
+        "captionEn": "Relative gap width and wavelength determine the visible spreading.",
+        "zh": "这次保持狭缝不动，只改变波长。较短的波长使传播更接近直行，较长的波长让横向展开更明显。两条操作路径共同检验的是缝宽与波长的比值，而不是单独看缝有多宽。",
+        "en": "Keep the gap fixed and vary wavelength instead. Shorter wavelengths travel more nearly straight; longer ones spread more visibly sideways. Together these two trials test the ratio of gap width to wavelength, rather than gap width alone.",
+        "seconds": 24,
+        "chapterAt": 168,
+        "at": 168
+      },
+      {
+        "id": "water-coherent",
+        "title": "同一振动片带动双源",
+        "titleEn": "Drive two rods together",
+        "caption": "固定相位差的双源形成稳定强弱区。",
+        "captionEn": "A fixed phase relationship creates stable reinforcement and cancellation regions.",
+        "zh": "两根细杆连在同一振动片上，同步触动水面。颜色显示两列波相加后的瞬时高低。固定的M处起伏明显，N处相对平静。减弱不必完全静止，完全抵消还要求两列波在该点的振幅相等。",
+        "en": "Two rods attached to one driver dip together. Colour shows the instantaneous sum of both waves. The fixed M probe oscillates strongly, while N remains relatively quiet. Weakening need not mean perfect cancellation, which also requires equal amplitudes at that point.",
+        "seconds": 24,
+        "chapterAt": 192,
+        "at": 192
+      },
+      {
+        "id": "water-detune",
+        "title": "分开驱动作对照",
+        "titleEn": "Compare independently driven sources",
+        "caption": "改变相位会移动强弱区；频率不同则不再保持稳定图样。",
+        "captionEn": "Changing phase moves the pattern; different frequencies prevent a fixed pattern.",
+        "zh": "将两根杆改为独立驱动。先改变固定相位差，强弱区的位置改变；再让频率略有不同，原先安静的N处开始随时间变化。不能让连接在同一刚性振动片上的杆凭空具有不同频率，所以装置也随对照更换。",
+        "en": "Use separate drivers for the comparison. A changed fixed phase difference shifts reinforcement and cancellation regions. A slight frequency mismatch makes the formerly quiet N probe vary with time. Independent frequencies require independent driving, so the apparatus changes too.",
+        "seconds": 24,
+        "chapterAt": 216,
+        "at": 216
+      },
+      {
+        "id": "water-source-still",
+        "title": "先观察静止振源",
+        "titleEn": "Start with a stationary source",
+        "caption": "相同周期发出的波峰有相同的圆心。",
+        "captionEn": "Crests emitted periodically by a still source share a centre.",
+        "zh": "先让振源留在原位，周期性触动水面。每一道波峰都从同一个位置出发，在相同时间内传播相同距离，因此前后波峰间距相同。圆圈表示波峰，不表示一圈水同时向外搬走。",
+        "en": "Start with a source that stays in place. Every crest begins at the same point and travels the same distance in equal time, giving equal spacing ahead and behind. Circles mark crests, not rings of water moving bodily outward.",
+        "seconds": 24,
+        "chapterAt": 240,
+        "at": 240
+      },
+      {
+        "id": "water-source-move",
+        "title": "再让振源移动",
+        "titleEn": "Move the source",
+        "caption": "前方波峰更密，后方波峰更疏。",
+        "captionEn": "Crests are closer ahead and farther apart behind.",
+        "zh": "振源边振动边移动，每个新波峰的出发位置都不同。已经发出的波峰仍以各自的发射位置为圆心向外传播，不会跟着振源改圆心。于是前方间距变短、后方变长，这与水质点的局部运动是不同的事情。",
+        "en": "Move the vibrating source. Each new crest starts from a different position, while earlier crests continue expanding about their original emission centres. They do not follow the moving source. Spacing contracts ahead and expands behind, a separate idea from local water-particle motion.",
+        "seconds": 24,
+        "chapterAt": 264,
+        "at": 264
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-water-wave-paper": {
+      "chapterIds": ["paper-tap", "paper-periodic"],
+      "label": {
+        "zh": "观察水波与纸屑的运动",
+        "en": "Water waves and floating paper"
+      }
+    },
+    "e1-water-reflection": {
+      "chapterIds": ["water-reflect", "water-reflect-angle"],
+      "label": {
+        "zh": "水波的反射",
+        "en": "Water-wave reflection"
+      }
+    },
+    "e1-water-refraction": {
+      "chapterIds": ["water-refract", "water-depth"],
+      "label": {
+        "zh": "水波的折射",
+        "en": "Water-wave refraction"
+      }
+    },
+    "e1-water-diffraction": {
+      "chapterIds": ["water-gap", "water-wavelength"],
+      "label": {
+        "zh": "水波的衍射",
+        "en": "Water-wave diffraction"
+      }
+    },
+    "e1-water-interference": {
+      "chapterIds": ["water-coherent", "water-detune"],
+      "label": {
+        "zh": "观察水波的干涉",
+        "en": "Water-wave interference"
+      }
+    },
+    "e1-moving-water-source": {
+      "chapterIds": ["water-source-still", "water-source-move"],
+      "label": {
+        "zh": "观察移动水波源的波纹",
+        "en": "Ripples from a moving source"
+      }
+    }
+  }
+}

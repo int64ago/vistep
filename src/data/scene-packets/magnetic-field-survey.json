@@ -1,0 +1,192 @@
+{
+  "topic": {
+    "slug": "magnetic-field-survey",
+    "name": "电流与磁场分布",
+    "title": "看不见的磁场，怎样让它的方向显现？",
+    "question": "看不见的磁场，怎样让它的方向显现？",
+    "description": "从奥斯特磁针到铁屑分布，比较条形、蹄形磁体与直线、环形、螺线管电流的磁场。",
+    "color": "#b7c7ad",
+    "tag": "磁场 · 电流 · 探测",
+    "related": ["magnetic-force-lab", "electrostatic-applications-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Magnetic Field Due to a Thin Straight Wire",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/12-2-magnetic-field-due-to-a-thin-straight-wire"
+      },
+      {
+        "title": "OpenStax — Magnetic Field of a Current Loop",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/12-4-magnetic-field-of-a-current-loop"
+      },
+      {
+        "title": "OpenStax — Solenoids and Toroids",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/12-6-solenoids-and-toroids"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["电流与磁场分布", "奥斯特实验", "铁屑磁场", "小磁针", "环形电流", "螺线管"],
+      "en": [
+        "Current and Magnetic-Field Patterns",
+        "Oersted experiment",
+        "iron filings",
+        "compass",
+        "current loop",
+        "solenoid"
+      ]
+    }
+  },
+  "component": "src/components/experiments/MagneticFieldSurvey.tsx",
+  "cover": "src/components/covers/MagneticFieldSurveyCover.astro",
+  "translations": {
+    "电流与磁场分布": "Current and Magnetic-Field Patterns",
+    "看不见的磁场，怎样让它的方向显现？": "How can an invisible magnetic field reveal its direction?",
+    "从奥斯特磁针到铁屑分布，比较条形、蹄形磁体与直线、环形、螺线管电流的磁场。": "Move from Oersted’s compass to filings around bar and horseshoe magnets, straight wires, loops and solenoids.",
+    "磁场 · 电流 · 探测": "Magnetic fields · Current · Probes",
+    "南北方向导线位于磁针上方，通断或反转电流改变磁针方向": "A north–south wire above a compass changes its direction when current is switched or reversed",
+    "磁针偏角": "Compass deflection",
+    "玻璃观察平面上的铁屑按计算磁场排列，小磁针显示方向": "Filings on an observation plane align with the computed field; a compass reveals direction",
+    "观察平面位于磁体外；棕色端表示小磁针 N 极": "The observation plane samples outside the magnet; brown marks compass north",
+    "导线垂直穿过观察平面；圆点向外，叉号向内": "The wire crosses the observation plane: dot outward, cross inward",
+    "观察平面经过线圈轴线；圆点向外，叉号向内": "The observation plane contains the coil axis: dot outward, cross inward",
+    "永磁体示意模型": "Illustrative permanent-magnet model",
+    "探针处": "At the probe",
+    "磁针跟随导线磁场与地磁场的合场": "The compass follows the combined wire and Earth fields",
+    "轻敲后铁屑排列；小磁针补上方向信息": "Tapping aligns filings; the compass supplies direction information",
+    "蹄形磁体的两极之间，磁场从 N 指向 S": "Between horseshoe poles, the field points from N to S",
+    "反向电流改变磁针方向，不改变铁屑排列轴线": "Reversing current changes compass direction, not the filing axes",
+    "环形电流的轴向磁场，由同一电流几何决定": "The loop’s axial field follows its current geometry",
+    "多匝环形电流叠加，形成螺线管磁场": "Several current loops combine into a solenoid field",
+    "选择磁场实验": "Choose a magnetic-field experiment",
+    "奥斯特实验": "Oersted experiment",
+    "磁场分布": "Field distribution",
+    "磁场来源": "Field source",
+    "条形磁体": "Bar magnet",
+    "蹄形磁体": "Horseshoe magnet",
+    "直导线": "Straight wire",
+    "环形电流": "Current loop",
+    "螺线管": "Solenoid",
+    "电流及方向": "Current and direction",
+    "导线距磁针高度": "Wire height above compass",
+    "轻敲后的排列进度": "Alignment after tapping",
+    "移动小磁针": "Move the compass",
+    "磁源左上方": "Upper left of source",
+    "磁源上方": "Above source",
+    "磁源右上方": "Upper right of source",
+    "磁场和铁屑模型的范围": "Field and filing model limits",
+    "奥斯特装置把导线近似为长直导线，并叠加 25 µT 的水平地磁场；针位给出静态平衡，不模拟真实阻尼振荡。磁场观察图省略地磁场，突出磁源本身。线圈按毕奥—萨伐尔积分，螺线管由七个环叠加；永磁体用沿磁化方向分布的磁偶极近似，不能据此标定实物强度。铁屑只显示轴线，小磁针棕色 N 极显示有向磁场；线圈供电回路不在观察切面中显示。": "The Oersted wire is approximated as long and straight, with a 25 µT horizontal Earth field added. Needle position is static equilibrium, not realistic damped oscillation. Pattern views omit Earth’s field to isolate the source. Loops use Biot–Savart integration; seven loops approximate the solenoid. Permanent magnets use distributed dipoles along magnetization and do not calibrate real strengths. Filings indicate axes; the compass’s brown north tip indicates direction. External coil supply wiring is outside the observation section."
+  },
+  "narration": {
+    "duration": 164,
+    "cues": [
+      {
+        "id": "oersted-switch",
+        "title": "导线使磁针偏转",
+        "titleEn": "A wire deflects the compass",
+        "caption": "通电前指南北，通电后跟随合场。",
+        "captionEn": "Before current it points north–south; afterward it follows the combined field.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先让直导线沿南北方向，放在小磁针上方。未通电时，小磁针沿地磁场方向；闭合电路后，它向一侧偏转。导线没有碰到磁针，偏转来自电流产生的磁场。画面保留地磁场，所以磁针并不一定恰好转过九十度。",
+        "en": "Place a north–south wire above a compass. Without current, the needle follows Earth’s field. Closing the circuit deflects it to one side. The wire does not touch the needle: current produces the magnetic influence. Earth’s field remains in the model, so the needle need not turn exactly ninety degrees."
+      },
+      {
+        "id": "oersted-reverse",
+        "title": "断电，再反向通电",
+        "titleEn": "Switch off, then reverse",
+        "caption": "电流方向反转，磁针向另一侧偏转。",
+        "captionEn": "Reversing current deflects the needle to the other side.",
+        "seconds": 24,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "先断开电路，磁针回到地磁场方向。再反接电源，让导线中的电流反向，磁针转向另一侧。这一对照说明，偏转不是导线本身的位置造成的，而与电流有关。自由探索中还可以增大导线高度，观察同样电流的影响为什么变弱。",
+        "en": "Open the circuit and the compass returns to Earth’s field direction. Reverse the source connection and current, and the needle deflects to the other side. The comparison links the effect to current rather than the wire’s mere presence. In exploration, raise the wire and observe why the same current has a weaker influence."
+      },
+      {
+        "id": "bar-filings",
+        "title": "条形磁体上的铁屑",
+        "titleEn": "Filings around a bar magnet",
+        "caption": "排列给出轴线，小磁针给出有向信息。",
+        "captionEn": "Filings give local axes; a compass supplies directional information.",
+        "seconds": 22,
+        "chapterAt": 46,
+        "at": 46.4,
+        "zh": "换到撒有细铁屑的观察平面。轻敲后，铁屑沿局部磁场排列，组成条形磁体周围的纹理。但一条铁屑没有标出哪个方向是北。加入小磁针，棕色的北极端才告诉我们磁场方向。这里显示的是磁体外部的场。",
+        "en": "Now examine a plane sprinkled with iron filings. Tapping lets the filings align with local field axes around the bar magnet. A filing alone does not label which way is north. A small compass adds that information through its brown north tip. This view samples the field outside the magnet."
+      },
+      {
+        "id": "horseshoe-gap",
+        "title": "蹄形磁体的间隙",
+        "titleEn": "The horseshoe gap",
+        "caption": "把两极靠近，观察间隙中的场。",
+        "captionEn": "Bring the poles near each other and inspect their gap.",
+        "seconds": 20,
+        "chapterAt": 68,
+        "at": 68.4,
+        "zh": "蹄形磁体把两极放得较近。观察开口之间的铁屑与小磁针，磁场从北极一侧指向南极一侧。装置形状变了，探测方法没有变。图中偶极分布只用来表现整体方向，不把示意数值当成实际磁体的测量结果。",
+        "en": "A horseshoe magnet brings its poles closer. Filings and a compass show the field across the opening directed from the north pole toward the south. The source shape changes, but the probing method remains. The dipole model illustrates the overall pattern; its values are not measurements of a real magnet."
+      },
+      {
+        "id": "straight-wire-pattern",
+        "title": "直导线周围的环绕",
+        "titleEn": "Circles around a straight wire",
+        "caption": "反向电流使方向反转，环绕形状保留。",
+        "captionEn": "Current reversal reverses direction while preserving the circular pattern.",
+        "seconds": 26,
+        "chapterAt": 88,
+        "at": 88.4,
+        "zh": "让直导线垂直穿过观察平面。铁屑沿同心圆的切线排列，小磁针沿圆周指向。圆点表示电流朝向我们，叉号表示背向我们。反向电流后，磁针北极反转，但铁屑的排列轴线几乎不变。这就是为什么判断方向还需要小磁针或右手定则。",
+        "en": "Pass a straight wire perpendicularly through the observation plane. Filings align tangentially to circles and the compass points around them. A dot means current toward us; a cross means away. Reverse current: the compass north end reverses, while filing axes remain almost unchanged. Direction therefore needs a compass or the right-hand rule."
+      },
+      {
+        "id": "single-loop-pattern",
+        "title": "环形电流的轴线",
+        "titleEn": "The axis of a current loop",
+        "caption": "观察切面经过线圈轴线，电流方向决定轴向磁场。",
+        "captionEn": "The section contains the loop axis; current determines the axial field.",
+        "seconds": 24,
+        "chapterAt": 114,
+        "at": 114.4,
+        "zh": "现在弯成一个圆环，观察平面经过圆环轴线。圆点和叉号表示导线穿过这个切面的两处方向。各段电流的磁场在轴线上相加，形成清晰的轴向方向；外部又绕回。线圈形状和场的计算来自同一几何，不是另外画一组装饰曲线。",
+        "en": "Bend the wire into a loop and observe a plane containing its axis. Dot and cross mark the two current directions through that section. Fields from the wire segments add along the axis and return around the outside. The source geometry and field calculation agree; the pattern is not a separate decorative set of curves."
+      },
+      {
+        "id": "solenoid-pattern",
+        "title": "多匝电流的叠加",
+        "titleEn": "Superpose several turns",
+        "caption": "多匝线圈的场叠加，外部形态类似条形磁体。",
+        "captionEn": "Several turns superpose into an external pattern resembling a bar magnet.",
+        "seconds": 26,
+        "chapterAt": 138,
+        "at": 138.4,
+        "zh": "把多个环形电流沿轴线排在一起，就得到螺线管的近似模型。内部各匝贡献沿相近方向叠加，外部场的整体形态像条形磁体。反向电流，轴向磁场也反转。这里把螺旋导线近似成七个圆环，保留有限长度的边缘变化，并没有把整个内部都强行设成完全均匀。",
+        "en": "Arrange current loops along one axis to approximate a solenoid. Their interior contributions reinforce one another, while the external pattern resembles a bar magnet. Reverse current and the axial field reverses too. Seven circular turns approximate the helical wire, retaining finite-length edge variation rather than imposing a perfectly uniform field everywhere inside."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-oersted": {
+      "chapterIds": ["oersted-switch", "oersted-reverse"],
+      "label": {
+        "zh": "奥斯特实验",
+        "en": "Oersted experiment"
+      }
+    },
+    "r3-magnetic-field-patterns": {
+      "chapterIds": [
+        "bar-filings",
+        "horseshoe-gap",
+        "straight-wire-pattern",
+        "single-loop-pattern",
+        "solenoid-pattern"
+      ],
+      "label": {
+        "zh": "观察常见磁场的分布",
+        "en": "Observe common magnetic-field patterns"
+      }
+    }
+  }
+}

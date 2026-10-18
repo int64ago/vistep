@@ -1,0 +1,35 @@
+---
+import { frictionPull } from '../../models/friction-lab';
+const trace = Array.from({ length: 81 }, (_, i) => {
+  const seconds = (4.4 * i) / 80;
+  const x = 75 + (seconds / 4.4) * 250;
+  const y = 204 - frictionPull(seconds).pull * 21;
+  return `${i ? 'L' : 'M'}${x} ${y}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <rect x="37" y="119" width="321" height="11" rx="4" fill="#d7cfb7"></rect>
+  <rect x="59" y="77" width="73" height="42" rx="5" fill="#ccb18b"></rect><rect
+    x="74"
+    y="64"
+    width="45"
+    height="13"
+    rx="3"
+    fill="#a6b696"></rect>
+  <path d="M132 98H188" stroke="#96a686" stroke-width="2"></path>
+  <rect x="165" y="80" width="145" height="37" rx="9" fill="#e3e9db" stroke="#b0bd9e"></rect>
+  <path
+    d="M187 98l6-5 6 10 6-10 6 10 6-10 6 10 6-10 6 10 6-10 6 10 6-10 6 10 6-10 6 5H298"
+    stroke="#8f9e81"
+    stroke-width="1.5"></path>
+  <path d="M187 86V108" stroke="#a7835d" stroke-width="2"></path><path
+    d="M180 76l6 2v10h-6Z"
+    fill="#c1a47b"></path>
+  <path d="M310 98H334" stroke="#93a482" stroke-width="3"></path>
+  <path d="M75 148V204H330" stroke="#c4cdb5"></path><path
+    d={trace}
+    stroke="#a0805c"
+    stroke-width="2.4"></path>
+  <path d="M75 158H325" stroke="#c4b191" stroke-dasharray="4 5"></path>
+</svg>

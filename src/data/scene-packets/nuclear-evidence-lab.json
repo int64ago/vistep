@@ -1,0 +1,216 @@
+{
+  "topic": {
+    "slug": "nuclear-evidence-lab",
+    "name": "核反应的实验线索",
+    "title": "一个核发生了什么，怎样从产物和径迹判断？",
+    "question": "一个核发生了什么，怎样从产物和径迹判断？",
+    "description": "从氮核轰击和中子反冲，到裂变产物、多碎片径迹与可控链式反应。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["atomic-scattering-lab", "particle-evidence-lab"],
+    "sources": [
+      {
+        "title": "Patrick Blackett — Nobel lecture",
+        "url": "https://www.nobelprize.org/uploads/2018/06/blackett-lecture.pdf"
+      },
+      {
+        "title": "James Chadwick — Nobel lecture",
+        "url": "https://www.nobelprize.org/uploads/2018/06/chadwick-lecture.pdf"
+      },
+      {
+        "title": "Meitner and Frisch — A new type of nuclear reaction",
+        "url": "https://www.nature.com/articles/143233a0"
+      },
+      {
+        "title": "中国科学院高能所 — 核乳胶",
+        "url": "https://www.ihep.ac.cn/kxcb/kpcg/lztcq/201004/t20100415_2822448.html"
+      },
+      {
+        "title": "IAEA — Fermi and uranium fission",
+        "url": "https://www.iaea.org/sites/default/files/publications/magazines/bulletin/bull4-0/04004700911su.pdf"
+      }
+    ]
+  },
+  "component": "src/components/experiments/NuclearEvidenceLab.tsx",
+  "cover": "src/components/covers/NuclearEvidenceLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["核反应的实验线索", "一个核发生了什么，怎样从产物和径迹判断？", "近代物理实验"],
+      "en": [
+        "Experimental clues to nuclear reactions",
+        "How do products and tracks reveal a nuclear reaction?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "核反应的实验线索": "Experimental clues to nuclear reactions",
+    "一个核发生了什么，怎样从产物和径迹判断？": "How do products and tracks reveal a nuclear reaction?",
+    "从氮核轰击和中子反冲，到裂变产物、多碎片径迹与可控链式反应。": "Follow nitrogen bombardment, neutron recoil, fission products and controlled chain reactions.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 280,
+    "cues": [
+      {
+        "id": "nitrogen-flashes",
+        "title": "从远处的闪烁发现异常",
+        "titleEn": "Notice scintillations beyond the usual range",
+        "caption": "α粒子进入氮气后，出现可归因于氢核的长射程信号。",
+        "captionEn": "Alpha bombardment of nitrogen produces long-range signals attributable to hydrogen nuclei.",
+        "zh": "卢瑟福用阿尔法粒子轰击氮，观察到超出原有阿尔法粒子射程的闪烁信号。结合吸收、射程等比较，这些信号被归因于氢核。画面上方用气体室、吸收层与闪烁屏说明观察方法，下方才是后来建立的核反应解释。我们不是直接看见氮核内部裂开。",
+        "en": "Rutherford bombarded nitrogen with alpha particles and observed scintillations beyond the usual alpha range. Comparisons of absorption and range attributed them to hydrogen nuclei. The upper apparatus illustrates the observation; the lower view is a later reaction interpretation. It is not a direct view inside a nitrogen nucleus.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "nitrogen-balance",
+        "title": "把产物放进守恒关系",
+        "titleEn": "Check the product bookkeeping",
+        "caption": "氮14与α粒子反应，形成氧17并放出质子。",
+        "captionEn": "Nitrogen fourteen captures an alpha particle and emits a proton, leaving oxygen seventeen.",
+        "zh": "后来的云室研究补充了反应路径的证据。反应不是简单从氮核中拿走一个质子：阿尔法粒子参与形成氧十七，另一颗质子飞出。比较上下标，可以核对核子数和电荷数。下方所选事件还满足二维动量与能量关系，出射角改变时，两种产物的运动共同改变。",
+        "en": "Later cloud-chamber work supplied further evidence for the reaction path. It is not simply removal of one proton from nitrogen: the alpha particle participates in forming oxygen seventeen while a proton emerges. Nucleon number and charge balance. The selected event also conserves two-dimensional momentum and energy as its emission angle changes.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "neutron-recoil",
+        "title": "让看不见的中性辐射撞击石蜡",
+        "titleEn": "Use paraffin to reveal neutral radiation",
+        "caption": "铍产生的中性辐射能打出质子，电离信号随之增加。",
+        "captionEn": "Neutral radiation from beryllium ejects protons and increases the ionization signal.",
+        "zh": "阿尔法粒子打到铍后，产生很有穿透力的中性辐射。把含氢的石蜡放在它前面，可以打出高速质子，使后方电离探测器信号增加。虚线表示推断出的中性传播路径，不是云室里直接看见的中子径迹。查德威克进一步比较不同靶核的反冲。",
+        "en": "Alpha bombardment of beryllium produces penetrating neutral radiation. Paraffin supplies hydrogen nuclei that can recoil as fast protons, increasing the downstream ionization signal. The dashed neutral path is inferred, not a directly visible neutron track. Chadwick extended the comparison to recoil from different target nuclei.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "neutron-mass",
+        "title": "用不同靶核检验质量",
+        "titleEn": "Compare recoil from different masses",
+        "caption": "与质子质量接近的中性粒子，能够有效传递动能。",
+        "captionEn": "A neutral particle with mass near the proton’s can transfer substantial kinetic energy.",
+        "zh": "把靶核从氢换成较重的氮，最大反冲能量比例显著降低。弹性碰撞关系显示，质量相近时最容易传递较大比例的动能。这类跨靶核证据支持质量接近质子的中性粒子解释。图中使用正碰上限，不把所有真实碰撞都画成最大能量传递。",
+        "en": "Replace hydrogen with a heavier nitrogen target. The maximum recoil-energy fraction falls. Elastic-collision kinematics shows that similar masses permit efficient energy transfer. Comparisons across targets supported a neutral particle with mass near the proton’s. The bars show head-on upper bounds, not the energy of every real collision.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "barium-product",
+        "title": "先在产物中认出钡",
+        "titleEn": "First identify barium among the products",
+        "caption": "中子轰击铀后的化学鉴定，发现远轻于铀的产物。",
+        "captionEn": "Chemical analysis after neutron bombardment identifies a product much lighter than uranium.",
+        "zh": "哈恩与施特拉斯曼研究中子轰击铀后的产物，通过化学分离鉴定出钡。这个结果不同于只在铀附近得到新元素的预期。随后迈特纳与弗里施给出核裂变解释。画面先呈现产物鉴定，再转到核模型，避免把后来理解的过程当成当时肉眼所见。",
+        "en": "Hahn and Strassmann chemically separated products of neutron-irradiated uranium and identified barium. The result challenged expectations of products near uranium in the periodic table. Meitner and Frisch then interpreted nuclear fission. We show identification before the nuclear model, separating the observed evidence from its later explanation.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "fission-channel",
+        "title": "核裂变不只有一个通道",
+        "titleEn": "Inspect one possible fission channel",
+        "caption": "所选通道的核子数与电荷数守恒，还放出中子。",
+        "captionEn": "One selected channel conserves nucleon number and charge while releasing neutrons.",
+        "zh": "用一个教材常用的反应通道检查账目：铀二三五吸收一个中子后，产生钡一四一、氪九十二和三个中子。左右核子数都是二百三十六，电荷数也相同。真实裂变存在多种产物组合，不是每次都得到这一对核。释放的中子又为后续反应提供了可能。",
+        "en": "Consider one common teaching channel: uranium two-thirty-five absorbs a neutron and produces barium one-forty-one, krypton ninety-two and three neutrons. Nucleon number totals two hundred thirty-six on each side, with equal charge. Real fission has many product channels. Released neutrons make further reactions possible.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "ternary-tracks",
+        "title": "在重径迹之外寻找轻碎片",
+        "titleEn": "Look beyond the two heavy tracks",
+        "caption": "同一顶点伸出的第三条较细径迹，提示额外带电碎片。",
+        "captionEn": "A finer third track from the same vertex indicates an additional charged fragment.",
+        "zh": "钱三强、何泽慧等用核乳胶研究裂变径迹。常见事件有两条重碎片径迹；少数事件还出现来自同一顶点的轻带电碎片。要检查共同顶点、方向与深度，排除无关径迹的偶然交叉。图中三条线是有意放大的示例，不是原始照片，也不表示三块等大的碎片。",
+        "en": "Qian Sanqiang, He Zehui and collaborators studied fission tracks in nuclear emulsions. Alongside the usual two heavy tracks, rare events contain an additional light charged fragment from the same vertex. Vertex, direction and depth help exclude accidental crossings. These enlarged example tracks are not an original photograph or three equal fragments.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "quaternary-tracks",
+        "title": "进一步检查四条相关径迹",
+        "titleEn": "Inspect four correlated tracks",
+        "caption": "多碎片证据来自相关径迹，而不是把普通分叉任意命名。",
+        "captionEn": "Multiple-fragment evidence requires correlated tracks, not arbitrary branching.",
+        "zh": "切换到四条带电碎片径迹的教学例子。两条较粗轨迹与两条较细轨迹从共同位置出发。动量向量在示意事件中闭合，但真实鉴定还需要三维显微观察、射程和电离密度等信息。这里保留三分裂、四分裂的历史意义，不用示意图给出发生概率或具体核素分支。",
+        "en": "Switch to an illustrative four-track event. Two heavier and two lighter tracks share one origin. The example momentum vectors close, but real identification also needs three-dimensional microscopy, ranges and ionization density. The scene preserves the historical distinction without assigning event probabilities or specific nuclide branches from this drawing.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      },
+      {
+        "id": "chain-generations",
+        "title": "比较相邻两代的规模",
+        "titleEn": "Compare successive generations",
+        "caption": "每代平均引发的下一代事件数，决定规模增长还是减少。",
+        "captionEn": "The mean reproduction per generation determines growth or decline.",
+        "zh": "裂变放出的中子可能引发新的裂变，也可能被吸收或逃逸。把这些结果汇总成平均再生数：大于一时，下一代的平均规模增长；小于一时减少。页面用同一纵轴比较各代期望计数，避免把缩放变化误当成稳定。它不是具体反应堆的设计计算。",
+        "en": "Fission neutrons may trigger another fission, be absorbed or escape. Summarize those outcomes with a mean reproduction factor. Above one, average generation size grows; below one, it falls. The bars share a vertical scale, so rescaling cannot create apparent stability. This is not a reactor-design calculation.",
+        "seconds": 28,
+        "chapterAt": 224,
+        "at": 224.3
+      },
+      {
+        "id": "controlled-chain",
+        "title": "让平均规模保持稳定",
+        "titleEn": "Keep the average scale steady",
+        "caption": "平均再生数接近1时，各代期望规模相近。",
+        "captionEn": "Near a reproduction factor of one, successive generations have similar expected size.",
+        "zh": "费米团队实现可控自持链式反应，关键是把过程维持在可控制的状态。图中把平均再生数调到一，各代期望计数保持一致。真实系统还有时间延迟、反馈和随机起伏，稳定平均值不意味着每一颗中子的经历相同。这里的方块只提示实验堆的概念外形，不给出实际结构参数。",
+        "en": "Fermi’s team achieved a controlled self-sustaining chain reaction. Set the mean reproduction factor to one and expected generation counts remain equal. Real systems include delays, feedback and fluctuations; a stable mean does not imply identical neutron histories. The blocks evoke a pile conceptually without specifying an actual physical design.",
+        "seconds": 28,
+        "chapterAt": 252,
+        "at": 252.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-rutherford-proton": {
+      "chapterIds": ["nitrogen-flashes", "nitrogen-balance"],
+      "label": {
+        "zh": "质子证据",
+        "en": "Proton evidence"
+      }
+    },
+    "e3-chadwick-neutron": {
+      "chapterIds": ["neutron-recoil", "neutron-mass"],
+      "label": {
+        "zh": "中子证据",
+        "en": "Neutron evidence"
+      }
+    },
+    "e3-uranium-fission-discovery": {
+      "chapterIds": ["barium-product", "fission-channel"],
+      "label": {
+        "zh": "裂变发现",
+        "en": "Fission discovery"
+      }
+    },
+    "e3-uranium-multifragment-fission": {
+      "chapterIds": ["ternary-tracks", "quaternary-tracks"],
+      "label": {
+        "zh": "多碎片径迹",
+        "en": "Multiple-fragment tracks"
+      }
+    },
+    "e3-fermi-controlled-chain-reaction": {
+      "chapterIds": ["chain-generations", "controlled-chain"],
+      "label": {
+        "zh": "可控链式反应",
+        "en": "Controlled chain reaction"
+      }
+    }
+  }
+}

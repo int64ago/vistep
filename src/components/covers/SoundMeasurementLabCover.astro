@@ -1,0 +1,37 @@
+---
+const wave = (cycles: number, y: number) =>
+  Array.from(
+    { length: 401 },
+    (_, i) => `${55 + (i / 400) * 250},${y - 20 * Math.sin((i / 400) * cycles * Math.PI * 2)}`,
+  );
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <rect
+    x="35"
+    y="36"
+    width="290"
+    height="180"
+    rx="14"
+    fill="#cbd6bd"
+    stroke="#96ab8b"
+    stroke-width="3"></rect><rect x="48" y="49" width="264" height="153" rx="6" fill="#f0f3e4"
+  ></rect>
+  <rect x="55" y="65" width="250" height="122" fill="#dfe9ce"></rect><path
+    d="M55 94H305M55 158H305"
+    stroke="#c1d2b0"></path>
+  <polyline points={wave(10, 94).join(' ')} stroke="#ad9563" stroke-width="1.7"></polyline><polyline
+    points={wave(15, 158).join(' ')}
+    stroke="#7d9f91"
+    stroke-width="1.7"></polyline>
+  <path
+    d="M166 218V239H194V218M140 247H220"
+    stroke="#a2b392"
+    stroke-width="7"
+    stroke-linecap="round"></path>
+  <path
+    d="M20 176v35q0 13 16 13M20 204q-9 0-9-10v-24q0-8 9-8t9 8v24q0 10-9 10Z"
+    fill="#c2cfae"
+    stroke="#9faf8c"
+    stroke-width="2"></path>
+</svg>

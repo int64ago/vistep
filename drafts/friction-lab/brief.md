@@ -1,0 +1,5 @@
+# Friction measurement
+
+Required1 §3.2, printed63/65/66/67. Paths: steady block + added load; hand pressure experience; spring meter with paper peak marker; force sensor time history. Five film chapters split3+2 to preserve textbook order. A camera following the contact object makes the surface move only when actual model velocity is nonzero. The authentic dynamometer shell/needle/coil/retained marker share F/k geometry. Separate sensor hardware keeps instrument variants visible.
+
+Coulomb contact + prescribed smooth hand trajectory gives continuous position, velocity and pull at breakaway, with correct acceleration while pull falls toward kinetic friction. This avoids falsely claiming F equals friction during acceleration. Finite mass/normal controls; dry-contact simplifications explicit. Focused tests cover static adaptation, instantaneous force balance, onset continuity, numerical derivative cross-check, normal scaling, peak retention. Parent to inspect actual desktop/phone frames and voices.

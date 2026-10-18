@@ -1,0 +1,46 @@
+---
+name: Recoil of balloons and water rotors
+title: How does expelled material change the source’s motion?
+---
+
+<section id="understand">
+
+Two activities in Elective Book 1, Chapter 1 §6 (page 26), release an inflated balloon’s neck and install bent outlets near the bottom of a freely rotating water container.
+
+A balloon exchanges linear momentum with its gas. A water rotor’s symmetric outlets cancel net translation while their torques add. Its motion requires angular momentum about the vertical axis, not the one-dimensional rocket-speed formula.
+
+</section>
+<section id="try">
+
+Watch gas move backward as the balloon advances. Envelope and remaining gas form an open subsystem; including expelled gas completes the system. Their momentum changes correspond. At equal pressure excess, doubling nozzle area doubles initial mass flow and thrust. The comparison shows both balloons at the same elapsed time.
+
+A conical container’s draining water changes both level and moment of inertia. Outlet velocity includes transport by the rotating container, so absolute jet velocity differs from velocity relative to the nozzle. Reverse both bends to reverse rotation. Changing hole radius changes computed flow, water level and angular speed.
+
+</section>
+<section id="deeper">
+
+<details>
+
+<summary>Balloon idealization</summary>
+
+The model keeps only motion along a fixed nozzle direction, omitting drag, orientation changes and vertical gravity/buoyancy effects. It uses constant 300 Pa pressure excess, approximate gas density 1.2 kg/m³, a 4 g envelope and 3 g of initial gas. At small pressure excess, u = √(2Δp/ρ) and mass flow q = ρAu. Exit pressure equals ambient pressure, giving thrust qu.
+
+Remaining mass is m = m₀−qt and v = uln(m₀/m). Position is the integral of velocity. Gas volume equals remaining gas mass divided by density, setting a volume-equivalent visual radius. Expelled-gas momentum integrates each parcel’s absolute release velocity v−u. Playback stops after 90% of the initial gas has escaped, before the constant-pressure approximation reaches a fully collapsed balloon.
+
+Real elasticity, pressure and orientation change. These ideal speeds and distances do not predict a real balloon trajectory. A following camera keeps the balloon visible while the computed travel remains in the readout.
+
+</details>
+
+<details>
+
+<summary>Angular momentum of the conical water container</summary>
+
+The wall is z = r/k with k = 0.36 and height 0.25 m. Two outlets lie at radius R = 0.14 m and height z₀ = 0.035 m. Dry-container inertia is 0.006 kg·m². Water is assumed to co-rotate in quasisteady motion, giving free surface z = zcenter + ω²r²/(2g). Its intersection with the cone determines volume and axial inertia, both updated as the water drains.
+
+Rotating-frame ideal Bernoulli flow gives relative exit speed u² = 2g(zcenter−z₀)+ω²R². Total mass flow is q = 2ρAu. Absolute tangential exit velocity is vtan = ωR−su, where s specifies bend direction. The balance d(Iω)/dt = −qR·vtan includes changing inertia; expelled water carries the opposite accumulated angular momentum. This is not a fixed-mass point-particle model.
+
+Bearing torque, pipe-fluid storage inertia, flow losses and transient surface waves are omitted. The model stays within a regime with no overflow and a center surface above the outlets. Released droplets inherit absolute outlet velocity and then fall under gravity. Results are ideal calculations, not calibration curves for the textbook apparatus.
+
+</details>
+
+</section>

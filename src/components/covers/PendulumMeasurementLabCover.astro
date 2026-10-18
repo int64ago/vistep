@@ -1,0 +1,24 @@
+---
+import { rodGeometry } from '../../models/pendulum-measurement-lab';
+const g = rodGeometry(24, 0.1),
+  P = (p: number[]) => [105 + 340 * p[0] + 200 * p[1], 240 - 330 * p[2] + 60 * p[1]],
+  path = (a: number[], b: number[]) => `M${P(a).join(' ')}L${P(b).join(' ')}`;
+---
+
+<svg viewBox="0 0 300 220" aria-hidden="true"
+  ><path
+    d={path(
+      g.base,
+      g.upper.map((v, i) => v + 0.03 * g.n[i]),
+    )}
+    stroke="#a3b68f"
+    stroke-width="6"
+    stroke-linecap="round"></path><path d={path(g.pivot, g.bob)} stroke="#829972" stroke-width="5"
+  ></path><path d={path(g.upper, g.bob)} stroke="#c1cdae" stroke-width="2"></path><path
+    d={path(g.upper, [g.upper[0], 0, 0.04])}
+    stroke="#b6a47f"
+    stroke-dasharray="3 5"></path><circle cx={P(g.bob)[0]} cy={P(g.bob)[1]} r="10" fill="#bda171"
+  ></circle>{
+    [g.pivot, g.upper].map((p) => <circle cx={P(p)[0]} cy={P(p)[1]} r="4" fill="#bccca5" />)
+  }<path d="M63 213h186" stroke="#c5d0b7" stroke-width="3"></path></svg
+>

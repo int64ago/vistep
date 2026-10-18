@@ -1,0 +1,238 @@
+{
+  "topic": {
+    "slug": "multimeter-lab",
+    "name": "多用电表实验",
+    "title": "同一根指针，为什么要换接法、换刻度？",
+    "question": "同一根指针，为什么要换接法、换刻度？",
+    "description": "跟随模拟式多用电表的真实接线，区分电压、电流、欧姆测量与故障定位。",
+    "color": "#c4cbb0",
+    "tag": "测量 · 电表 · 故障",
+    "related": ["resistivity-lab", "length-instruments"],
+    "sources": [
+      {
+        "title": "HIOKI — 3007 Analog Multimeter Instruction Manual",
+        "url": "https://www.hioki.com/download/29783"
+      },
+      {
+        "title": "HIOKI — Analog voltmeter sensitivity and input resistance",
+        "url": "https://www.hioki.com/us-en/support/faq/detail/id_121"
+      },
+      {
+        "title": "OpenStax — Electrical Measuring Instruments",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["多用电表实验", "多用电表", "欧姆调零", "二极管", "故障检测"],
+      "en": ["Multimeter Experiments", "analog multimeter", "ohm zero", "diode", "circuit faults"]
+    }
+  },
+  "component": "src/components/experiments/MultimeterLab.tsx",
+  "cover": "src/components/covers/MultimeterLabCover.astro",
+  "translations": {
+    "多用电表实验": "Multimeter Experiments",
+    "同一根指针，为什么要换接法、换刻度？": "One pointer: why change connections and scales?",
+    "跟随模拟式多用电表的真实接线，区分电压、电流、欧姆测量与故障定位。": "Trace an analog multimeter’s actual connections for voltage, current, resistance and fault diagnosis.",
+    "测量 · 电表 · 故障": "Measurement · Meters · Diagnosis",
+    "测电压：表笔跨接小灯泡两端": "Voltage: connect the probes across the lamp",
+    "测电流：断开一处，把电表串入电路": "Current: open the circuit and insert the meter in series",
+    "灯不亮，沿真实接线寻找电压降": "An unlit lamp: follow the wiring to find the voltage drop",
+    "先短接表笔，把指针调到右侧零欧姆": "Short the probes first; adjust the pointer to zero ohms on the right",
+    "本示例的模拟式欧姆挡：黑表笔为内部正极": "This analog ohmmeter uses the black probe as its internal positive terminal",
+    "手部接触与皮肤条件改变测得电阻": "Hand contact and skin conditions change measured resistance",
+    "断电后的冷灯丝，与发光时电阻不同": "A disconnected, cold filament differs from its glowing state",
+    "从非均匀欧姆刻度读数，再乘挡位倍率": "Read the nonlinear ohm scale, then apply the range multiplier",
+    "指针式多用电表、表笔与实际测量接线": "Analog multimeter, probes and actual measurement connections",
+    "已短接调零": "Zero adjusted with probes shorted",
+    "先短接调零，当前读数有偏差": "Short and zero first; this reading is biased",
+    "量程": "Range",
+    "超过量程：换用更大挡位": "Over range: select a higher range",
+    "反向偏转：交换两表笔": "Reverse deflection: swap the probes",
+    "被检部位": "Probed section",
+    "电池两端": "Battery terminals",
+    "导线两端": "Wire ends",
+    "开关两端": "Switch terminals",
+    "灯座外侧两端": "External lamp-socket terminals",
+    "选择测量": "Choose a measurement",
+    "电压": "Voltage",
+    "电流": "Current",
+    "电阻": "Resistance",
+    "故障定位": "Fault diagnosis",
+    "待测物": "Test specimen",
+    "定值电阻": "Fixed resistor",
+    "冷灯丝": "Cold filament",
+    "手部接触": "Hand contact",
+    "二极管": "Diode",
+    "欧姆倍率": "Ohm multiplier",
+    "接回待测物": "Reconnect specimen",
+    "短接两表笔": "Short the probes",
+    "欧姆调零": "Ohm-zero adjustment",
+    "接触电阻模型": "Contact-resistance model",
+    "交换两表笔": "Swap probes",
+    "模拟故障": "Simulated fault",
+    "电池耗尽": "Depleted battery",
+    "导线断路": "Broken wire",
+    "开关接触不良": "Bad switch contact",
+    "灯座接触不良": "Bad socket contact",
+    "表笔测哪里": "Probe location",
+    "电池": "Battery",
+    "导线": "Wire",
+    "开关": "Switch",
+    "灯座": "Lamp socket",
+    "电表模型与诊断范围": "Meter model and diagnostic scope",
+    "模拟式电表采用 20 kΩ/V 的电压灵敏度，欧姆挡含 1.5 V 内部电源；黑表笔的内部正极约定来自所引仪表说明书，不代表所有电表。电阻测量对象已与外部电源分离。人体只用可变接触电阻表示，二极管采用理想指数结模型。故障模式只比较给定四种单一故障，不能据此排除灯丝断裂等其他原因。读数来自模型，不是实测数据。": "The analog meter has 20 kΩ/V voltage sensitivity and a 1.5 V internal ohmmeter supply. Its black-positive ohm convention follows the cited instrument manual, not every meter. Resistance specimens are isolated from external power. Hands use a variable contact-resistance model; the diode uses an ideal exponential junction model. Diagnosis compares only four specified single faults and cannot exclude a broken filament or other causes. Readings are model outputs, not physical measurements."
+  },
+  "narration": {
+    "duration": 232,
+    "cues": [
+      {
+        "id": "voltage-parallel",
+        "title": "电压要并联",
+        "titleEn": "Voltage goes in parallel",
+        "caption": "跨接同一只灯泡的两端，读电压挡。",
+        "captionEn": "Probe both lamp terminals and read the voltage scale.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先看两根表笔。它们分别接在小灯泡两端，没有把原来的导线断开。电压表和灯泡并联，读数表示灯泡两端的电势差。选择五伏量程后，线性刻度的满偏转才代表五伏，而不是刻度上印出的数字十。",
+        "en": "Watch the two probes. They touch opposite lamp terminals without interrupting the original wire. The voltmeter is parallel to the lamp and reads its potential difference. On the five-volt range, full-scale deflection means five volts, even though the printed linear scale ends at ten."
+      },
+      {
+        "id": "current-series",
+        "title": "电流要串联",
+        "titleEn": "Current goes in series",
+        "caption": "打开一处导线，让该支路电流经过电表。",
+        "captionEn": "Open a wire so the branch current passes through the meter.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "测电流时，接法变了。断开灯泡所在支路的一处，把电表接进这个缺口，让经过灯泡的电流也经过电表。现在读电流挡。电流表自身也有小电阻，所以加入它之后，电路电流会有一点变化。",
+        "en": "Current measurement changes the connection. Open the lamp branch and bridge that gap with the meter, so lamp current also flows through it. Read the current range now. The ammeter itself has a small resistance, so inserting it changes circuit current slightly."
+      },
+      {
+        "id": "ohm-zero",
+        "title": "右端是零欧姆",
+        "titleEn": "Zero ohms is on the right",
+        "caption": "短接表笔，调零；换倍率后要重新检查。",
+        "captionEn": "Short and zero the probes; check again after changing the multiplier.",
+        "seconds": 22,
+        "chapterAt": 44,
+        "at": 44.4,
+        "zh": "转到电阻测量，待测物已经与外部电源分离。欧姆挡用表内电池送出小电流，电阻越小，指针越向右。先短接两根表笔，再转动欧姆调零旋钮，让指针到达右端零欧姆。更换倍率后，这一步还要重新检查。",
+        "en": "For resistance, the specimen is isolated from external power. The ohmmeter sends a small current from its own battery. Lower resistance moves the pointer farther right. Short the probes and adjust ohm zero until the pointer reaches the right-hand zero mark. Check this again whenever the multiplier changes."
+      },
+      {
+        "id": "fixed-resistor",
+        "title": "非均匀的刻度",
+        "titleEn": "A nonlinear scale",
+        "caption": "先读欧姆刻度，再乘倍率。",
+        "captionEn": "Read the ohm scale, then multiply by the selected factor.",
+        "seconds": 22,
+        "chapterAt": 66,
+        "at": 66.4,
+        "zh": "把短接的表笔移到定值电阻两端。欧姆刻度左边密、右边疏，不能照搬电压刻度的等分读法。此时选乘十挡，刻度数还要乘十，才得到四百七十欧姆。自由探索里可以换挡，观察指针为什么应该尽量落在刻度中部。",
+        "en": "Move the shorted probes onto the resistor. Ohm divisions are compressed on one side and spread out on the other, so they cannot be read like the linear voltage scale. With the times-ten multiplier, the scale reading becomes four hundred seventy ohms. Try other ranges and see why the middle of the scale is easier to read."
+      },
+      {
+        "id": "cold-filament",
+        "title": "灯丝也能测电阻",
+        "titleEn": "Measure a cold filament",
+        "caption": "测得的是此时的冷态电阻。",
+        "captionEn": "This reading is the filament’s present cold resistance.",
+        "seconds": 20,
+        "chapterAt": 88,
+        "at": 88.4,
+        "zh": "换成一只没有接通外部电源的小灯泡。表内的小电流经过灯丝，仍能测到电阻，但它不会像正常工作时那样发光。这里得到的是冷态电阻，不能直接拿它代替灯泡发光、温度很高时的电阻。",
+        "en": "Replace the resistor with a lamp disconnected from external power. A small meter current passes through the filament and measures resistance without making it glow normally. This is cold resistance; it should not be substituted for the resistance of a hot, operating filament."
+      },
+      {
+        "id": "hand-contact",
+        "title": "接触条件也重要",
+        "titleEn": "Contact conditions matter",
+        "caption": "同一个人，接触方式改变，读数也会改变。",
+        "captionEn": "Changing hand contact can change the reading for the same person.",
+        "seconds": 20,
+        "chapterAt": 108,
+        "at": 108.4,
+        "zh": "再观察手部接触的示意。两只手分别接触表笔，欧姆挡测到的是这条接触路径的等效电阻。接触面积、压力和皮肤状态都会影响结果。因此这不是一个人的固定常数。画面只用可调电阻表示这种差异，不用它判断健康状态。",
+        "en": "Now consider the hand-contact diagram. Each hand touches a probe, and the meter reads the equivalent resistance of that contact path. Area, pressure and skin conditions affect the result, so it is not a fixed personal constant. This diagram uses a variable resistor to represent that variation, not to assess health."
+      },
+      {
+        "id": "diode-direction",
+        "title": "交换表笔，读数变了",
+        "titleEn": "Swap probes, change the reading",
+        "caption": "本模拟式欧姆挡中，黑表笔向外供给正电势。",
+        "captionEn": "This modeled analog ohmmeter supplies positive potential at the black probe.",
+        "seconds": 28,
+        "chapterAt": 128,
+        "at": 128.4,
+        "zh": "换成二极管，先认清带色环的一端是阴极。这个模拟式欧姆挡的黑表笔接表内电源正极：黑接阳极，红接阴极，正向电流较大。交换表笔后，电流很小，指针靠近无穷大。二极管不是固定电阻，读数还会随表内电源和倍率变化，也不要把这种极性约定套到所有数字表上。",
+        "en": "The band marks the diode’s cathode. In this particular analog ohmmeter, the black lead is connected to the internal positive supply. Black on anode and red on cathode produces more forward current. Swap them, and very little current flows, moving the pointer toward infinity. A diode is not a fixed resistor: its apparent resistance depends on the meter and range. Other meters can use different polarity conventions."
+      },
+      {
+        "id": "fault-battery",
+        "title": "灯不亮，先检查电源",
+        "titleEn": "First check the source",
+        "caption": "电池两端接近零，与有电压但断路不同。",
+        "captionEn": "Near-zero battery voltage differs from a powered open circuit.",
+        "seconds": 24,
+        "chapterAt": 156,
+        "at": 156.4,
+        "zh": "现在是故障电路：开关已经闭合，灯却不亮。先用二点五伏电压挡跨接电池。电池耗尽时，读数接近零。换成有电但别处接触不良的情形，灯仍不亮，电池两端却有电压。相同现象，不一定有相同原因。",
+        "en": "The switch is closed, but the lamp is dark. Begin by probing the battery on the two-point-five-volt range. A depleted source reads near zero. With an energized battery and a bad contact elsewhere, the lamp stays dark but battery voltage remains. The same visible symptom can have different causes."
+      },
+      {
+        "id": "fault-switch-wire",
+        "title": "寻找异常电压降",
+        "titleEn": "Find the unusual voltage drop",
+        "caption": "开关或导线断路时，其两端可能承担大部分电压。",
+        "captionEn": "An open switch or wire can carry most of the circuit voltage.",
+        "seconds": 24,
+        "chapterAt": 180,
+        "at": 180.4,
+        "zh": "把表笔移到开关两端。正常闭合触点两端的电压很小；如果触点几乎断开，大部分电压反而落在这里。接着换成导线断路的情形，沿同样的电路路径检查导线两端。表笔移动改变的是测量位置，电表也已经参与了这个电路。",
+        "en": "Move the probes to the switch. A good closed contact has little voltage across it; a nearly open contact can carry most of the source voltage. Next consider a broken wire and test its two ends along the same circuit path. Moving the probes changes the measured section, and the voltmeter itself is part of the circuit."
+      },
+      {
+        "id": "fault-socket",
+        "title": "有电压，仍可能不发光",
+        "titleEn": "Voltage without light",
+        "caption": "灯座外侧有电压，不能单凭这一点认定灯丝正常。",
+        "captionEn": "Voltage outside the socket does not by itself prove the filament is intact.",
+        "seconds": 28,
+        "chapterAt": 204,
+        "at": 204.4,
+        "zh": "最后换成灯座接触不良。检查开关，两端电压很小；把表笔移到灯座外侧，电压却接近电源电压，但灯仍不亮。题目限定的几个故障中，这支持灯座接触不良。真实维修还有灯丝断裂等其他可能，单凭这个读数不能把它们一概排除。",
+        "en": "Finally use a bad lamp-socket contact. The closed switch shows little voltage, but probing the outer socket terminals gives almost the source voltage while the lamp remains dark. Among the specified candidate faults, this supports a bad socket contact. In real diagnosis a broken filament and other possibilities remain; this reading alone cannot exclude them."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-multimeter-practice": {
+      "chapterIds": [
+        "voltage-parallel",
+        "current-series",
+        "ohm-zero",
+        "fixed-resistor",
+        "cold-filament",
+        "hand-contact",
+        "diode-direction"
+      ],
+      "label": {
+        "zh": "练习使用多用电表",
+        "en": "Practice using a multimeter"
+      }
+    },
+    "r3-multimeter-faults": {
+      "chapterIds": ["fault-battery", "fault-switch-wire", "fault-socket"],
+      "label": {
+        "zh": "用多用电表检查电路故障",
+        "en": "Diagnose circuit faults with a multimeter"
+      }
+    }
+  }
+}

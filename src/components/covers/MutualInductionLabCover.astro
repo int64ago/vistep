@@ -1,0 +1,24 @@
+---
+const { compact = false } = Astro.props;
+const winding = (x: number) =>
+  Array.from({ length: 325 }, (_, i) => {
+    const q = i / 324;
+    return `${i ? 'L' : 'M'}${x + 31 * q + 7 * Math.cos(q * 18 * Math.PI)} ${112 + 43 * Math.sin(q * 18 * Math.PI)}`;
+  }).join(' ');
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true" data-compact={compact}>
+  <circle cx="180" cy="112" r="63" stroke="#bdcab5" stroke-width="29"></circle>
+  <circle cx="180" cy="112" r="63" stroke="#8da285" stroke-width="2" stroke-dasharray="6 8"
+  ></circle>
+  <path d={winding(100)} stroke="#b2925c" stroke-width="3"></path>
+  <path d={winding(229)} stroke="#75957c" stroke-width="3"></path>
+  <path
+    d="M107 112H40V195M136 112V225H40V209M224 112H205V225H261M267 112H320V225H299"
+    stroke="#9cab8c"
+    stroke-width="2"></path>
+  <path d="M29 196H51M34 207H46" stroke="#b1945c" stroke-width="3"></path>
+  <circle cx="280" cy="225" r="20" fill="#f4f6e9" stroke="#a5b89b"></circle>
+  <path d="M280 238l-10-26" stroke="#ac8c54" stroke-width="2"></path>
+  <path d="M166 95q24-17 28 8m-6-3 6 3 1-8" stroke="#829e78" stroke-width="2"></path>
+</svg>

@@ -1,0 +1,196 @@
+{
+  "topic": {
+    "slug": "gas-efficiency-lab",
+    "name": "燃气加热的效率研究",
+    "title": "大火、中火与高温出水，怎样公平比较效率？",
+    "question": "大火、中火与高温出水，怎样公平比较效率？",
+    "description": "重读教材的真实耗气和冷却记录，再用等水量、温升与实测耗气量设计热水器效率实验。",
+    "color": "#b5a273",
+    "tag": "先量清楚，再谈省气",
+    "related": ["thermal-measurement-lab", "thermodynamic-work-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Heat transfer, specific heat and calorimetry",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      }
+    ]
+  },
+  "component": "src/components/experiments/GasEfficiencyLab.tsx",
+  "cover": "src/components/covers/GasEfficiencyLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["燃气加热的效率研究", "燃气灶", "火力", "燃气表", "热水器", "热效率"],
+      "en": [
+        "Investigating gas-heating efficiency",
+        "gas stove",
+        "flame setting",
+        "gas meter",
+        "water heater",
+        "thermal efficiency"
+      ]
+    }
+  },
+  "translations": {
+    "燃气加热的效率研究": "Investigating gas-heating efficiency",
+    "大火、中火与高温出水，怎样公平比较效率？": "How can we fairly compare flame settings and hot-water temperatures?",
+    "重读教材的真实耗气和冷却记录，再用等水量、温升与实测耗气量设计热水器效率实验。": "Read the textbook’s cooling and gas-meter data, then compare water-heater efficiency using equal water amounts, temperature rise and measured gas consumption.",
+    "先量清楚，再谈省气": "Measure before comparing fuel use",
+    "能量去向": "Energy paths",
+    "冷却记录": "Cooling records",
+    "低温加热": "Heating to 50°C",
+    "烧开策略": "Heating strategies",
+    "热水器测量": "Water-heater trial",
+    "始终大火": "High throughout",
+    "始终中火": "Medium throughout",
+    "先中火后大火": "Medium, then high",
+    "热水器的对比测量": "Comparing water-heater trials",
+    "示例条件，耗气待测": "Example conditions; gas unmeasured",
+    "教材原始数据": "Original textbook data",
+    "燃气灶的量热、冷却数据与热水器的等水量对比": "Stove calorimetry, cooling data and equal-water-amount heater comparisons",
+    "燃气表": "Gas meter",
+    "4.0 kg，室温26°C": "4.0 kg; room at 26°C",
+    "大火加热到50°C": "High flame to 50°C",
+    "中火加热到50°C": "Medium flame to 50°C",
+    "终点：沸腾": "Endpoint: boiling",
+    "收集同样水量": "Equal collected water",
+    "待实测耗气量": "Gas measurement needed",
+    "大火耗气": "High-flame gas",
+    "中火耗气": "Medium-flame gas",
+    "三种方案耗气": "Gas for three strategies",
+    "比全程大火少用": "Less than high throughout",
+    "流向示意，箭头不表示能量比例": "Arrows show paths, not energy proportions",
+    "大火": "High flame",
+    "中火": "Medium flame",
+    "冷却过程进度": "Cooling progress",
+    "过程进度": "Process progress",
+    "收集水的质量": "Collected water mass",
+    "进水温度": "Inlet temperature",
+    "燃气热值，示例初值35 MJ/m³": "Gas heating value; initial example 35 MJ/m³",
+    "38°C实测耗气量": "Measured gas use at 38°C",
+    "50°C实测耗气量": "Measured gas use at 50°C",
+    "结果超过100%，请核对水量、温差、燃气体积及热值的单位与测量。": "The result exceeds 100%. Check measured water amount, temperature rise, gas volume, heating value and their units.",
+    "原始数据与可推断范围": "Original data and valid inferences",
+    "燃气灶的冷却点、燃气表读数与耗气量来自教材第133—134页。101.9°C保留为原记录，不擅自校正；连线与表盘动画只帮助读表，不是连续实测曲线。锅具吸热按教材忽略。热水器第135页仅提出研究方法，没有实测结果；默认10千克、20°C为可更改示例，耗气量留空，热值须按当地燃气资料填写。": "Cooling points and gas readings reproduce textbook pages 133–134. The recorded 101.9°C is preserved without correction. Lines and meter animations assist reading, rather than claiming measured time traces. Vessel heating is omitted as in the textbook. Page 135 proposes a water-heater investigation without measured results: 10 kg and 20°C are editable example conditions, gas use is blank, and heating value must come from local gas information.",
+    "把两条散热途径分开": "Separate the two heat-loss paths",
+    "水的升温是有用部分，热水和火焰还会向环境散热。": "Water heating is useful output; hot water and flames also heat the surroundings.",
+    "读取原始冷却记录": "Read the original cooling record",
+    "相同二十分钟，高温段散热约为低温段的六倍。": "Over equal twenty-minute intervals, the hotter water loses about six times as much heat.",
+    "同样从26°C加热到50°C": "Compare the same temperature rise",
+    "相同水量和温升，中火耗气少于大火。": "For equal water amounts and temperature rise, medium flame uses less gas in these measurements.",
+    "检验三种烧开策略": "Test three heating strategies",
+    "教材这组条件下，先中火后大火耗气最少。": "For this textbook setup, medium then high uses the least gas.",
+    "第一次收集38°C出水": "Collect the first trial at 38°C",
+    "记录进水温度、相同水量与燃气表前后读数。": "Record inlet temperature, collected water amount and both gas-meter readings.",
+    "第二次收集相同水量": "Repeat with the same water amount",
+    "出水升到50°C时，有用能量也随温升增加。": "At 50°C, the useful energy increases with the temperature rise.",
+    "用实测量计算效率": "Calculate efficiency from measurements",
+    "效率等于水吸收的能量除以燃气提供的能量。": "Efficiency is useful water heating divided by fuel energy."
+  },
+  "narration": {
+    "duration": 182,
+    "cues": [
+      {
+        "id": "stove-paths",
+        "title": "把两条散热途径分开",
+        "titleEn": "Separate the two heat-loss paths",
+        "caption": "水的升温是有用部分，热水和火焰还会向环境散热。",
+        "captionEn": "Water heating is useful output; hot water and flames also heat the surroundings.",
+        "zh": "先看水壶和火焰。燃气提供的能量，一部分增加水的内能，一部分由热水散给空气，另一部分直接由火焰加热周围空气。箭头只说明流向，没有用未经测量的宽度假装能量比例。",
+        "en": "Follow the kettle and flame. Some fuel energy increases the water’s internal energy. Other energy leaves the hot water or heats the surrounding air directly from the flame. These arrows identify paths; their widths do not pretend to show unmeasured energy proportions.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "stove-cooling",
+        "title": "读取原始冷却记录",
+        "titleEn": "Read the original cooling record",
+        "caption": "相同二十分钟，高温段散热约为低温段的六倍。",
+        "captionEn": "Over equal twenty-minute intervals, the hotter water loses about six times as much heat.",
+        "zh": "教材记录四千克水在二十六摄氏度环境中冷却。零到二十分钟降温十一点九度，一百八十到二百分钟降温两度。相同水量、相同时长，前者散热接近六倍。初始一百零一点九度是原始记录，页面保留而不擅自改写。",
+        "en": "The textbook records four kilograms of water cooling in a room at twenty-six degrees. In the first twenty minutes it cools by eleven point nine degrees, versus two degrees between minutes one hundred eighty and two hundred. Equal mass and time make the first heat loss nearly six times larger. The original initial reading is preserved.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "stove-low-temperature",
+        "title": "同样从26°C加热到50°C",
+        "titleEn": "Compare the same temperature rise",
+        "caption": "相同水量和温升，中火耗气少于大火。",
+        "captionEn": "For equal water amounts and temperature rise, medium flame uses less gas in these measurements.",
+        "zh": "接着比较同样四千克水从二十六度升到五十度。燃气表的终值减去初值，大火用零点零四五三立方米，中火用零点零二七八立方米。这个温区的实测对照支持减少过大火焰造成的浪费，不意味着所有条件下火越小越好。",
+        "en": "Next compare four kilograms heated from twenty-six to fifty degrees. Subtract each initial gas reading from its final value. High flame uses zero point zero four five three cubic metres, and medium flame zero point zero two seven eight. This measured comparison supports avoiding oversized flames here, not making every flame as small as possible.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "stove-strategies",
+        "title": "检验三种烧开策略",
+        "titleEn": "Test three heating strategies",
+        "caption": "教材这组条件下，先中火后大火耗气最少。",
+        "captionEn": "For this textbook setup, medium then high uses the least gas.",
+        "zh": "三种方案保持水量、初温和沸腾终点相同。全程大火、全程中火、先中火后大火的耗气分别是零点零八八三、零点零八四五和零点零七八四立方米。第三种比全程大火少约百分之十一点二。这是该组实验证据，不是所有灶具的通用最优设置。",
+        "en": "Compare three strategies with the same water amount, initial temperature and boiling endpoint. Their measured gas volumes are shown below. Medium followed by high uses about eleven point two percent less gas than high throughout. That is evidence for this experimental setup, not a universal optimum for every stove.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "heater-38",
+        "title": "第一次收集38°C出水",
+        "titleEn": "Collect the first trial at 38°C",
+        "caption": "记录进水温度、相同水量与燃气表前后读数。",
+        "captionEn": "Record inlet temperature, collected water amount and both gas-meter readings.",
+        "zh": "热水器研究换一套装置。先测进水温度，把出水调到三十八度，收集一定水量，并记录燃气表前后读数。这里用十千克水、二十度进水示范记录方法；教材没有给耗气结果，因此表盘保留问号。",
+        "en": "The water-heater investigation uses a different apparatus. Measure the inlet temperature, set the outlet to thirty-eight degrees, collect a fixed water amount and record both gas-meter readings. Ten kilograms with a twenty-degree inlet are example conditions. The textbook supplies no consumption result, so the meter remains unknown.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "heater-50",
+        "title": "第二次收集相同水量",
+        "titleEn": "Repeat with the same water amount",
+        "caption": "出水升到50°C时，有用能量也随温升增加。",
+        "captionEn": "At 50°C, the useful energy increases with the temperature rise.",
+        "zh": "第二次把出水设为五十度，收集相同水量，保持相同进水温度，并重新测量耗气。水量相同不等于有用能量相同，因为温升变大。不能只凭第二次燃气用得更多，就判断效率更低。",
+        "en": "For the second trial, set the outlet to fifty degrees, collect the same water amount and retain the same inlet temperature. Measure gas again. Equal water mass does not mean equal useful energy: the temperature rise is larger. Greater gas consumption alone does not establish lower efficiency.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      },
+      {
+        "id": "heater-compare",
+        "title": "用实测量计算效率",
+        "titleEn": "Calculate efficiency from measurements",
+        "caption": "效率等于水吸收的能量除以燃气提供的能量。",
+        "captionEn": "Efficiency is useful water heating divided by fuel energy.",
+        "zh": "把两次实测耗气填入自由探索，再使用当地燃气热值，分别计算水的内能增量与燃气提供的能量。缺少耗气量时，页面不会替你生成结论。五十度热水兑冷水可以增加适温水量，但这个混水事实本身并不能证明热水器效率提高。",
+        "en": "Enter both measured gas consumptions in exploration and use the local fuel’s heating value. Compare each water-energy increase with fuel energy. Missing consumption data produces no invented efficiency. Mixing fifty-degree water with cold water yields more usable warm water, but that mixing fact alone does not prove a more efficient heater.",
+        "seconds": 26,
+        "chapterAt": 156,
+        "at": 156
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-gas-stove-efficiency": {
+      "chapterIds": ["stove-paths", "stove-cooling", "stove-low-temperature", "stove-strategies"],
+      "label": {
+        "zh": "燃气灶火力对烧水效率的影响",
+        "en": "Stove flame settings and heating efficiency"
+      }
+    },
+    "e3-gas-water-heater-efficiency": {
+      "chapterIds": ["heater-38", "heater-50", "heater-compare"],
+      "label": {
+        "zh": "家用燃气热水器不同加热温度时的热效率研究",
+        "en": "Water-heater efficiency at different outlet temperatures"
+      }
+    }
+  }
+}

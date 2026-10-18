@@ -1,0 +1,87 @@
+.ic-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #6d815f;
+}
+.ic-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.ic-apparatus {
+  display: block;
+  width: min(100%, 510px);
+  height: auto;
+  margin: auto;
+}
+.ic-apparatus text {
+  font: 21px var(--font-sans, sans-serif);
+  fill: #7d8e69;
+}
+.ic-apparatus text:last-child {
+  font-size: 20px;
+}
+.ic-readings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  font-size: 16px;
+  color: #99825b;
+  padding: 6px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.ic-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.ic-controls button {
+  min-height: 44px;
+}
+.ic-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.ic-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.ic-details p {
+  color: #7e9072;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .ic-controls {
+    padding: 18px 14px;
+  }
+  .ic-apparatus text {
+    font-size: 25px;
+  }
+  .ic-apparatus text:last-child {
+    font-size: 25px;
+  }
+}
+
+.ic-subtitle {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 16px 12px;
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.ic-film[data-watch] > .ic-kicker,
+.ic-film[data-watch] > .ic-caption,
+.ic-film[data-watch] > details {
+  display: none;
+}
+.ic-film[data-watch] .ic-subtitle {
+  display: none;
+}

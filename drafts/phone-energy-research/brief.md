@@ -1,0 +1,9 @@
+# Phone energy research
+
+Required3 printed135 research project. Four chapters102s: brightness, volume, task, confounds/resolution. r3-phone-energy-research maps all4. Always-visible synthetic-data label prevents fabricated empirical authority. No actual device metrics or universal task ranking claimed. Android component-power-profile documentation supports decomposition only; example values are not reused as real measurements.
+
+One model phone decomposes screen, CPU, radio, speaker and battery. Power-specific markers follow actual component watts; comparison A/B uses same device with parameters listed, same duration and a changed-factor count. Browser/chat/call/video/audio/game profiles distinct. Audio slider has no effect for unaudible browsing/chat (explicit boundary). Display changes only display energy; radio-load confound explicit. Record button stores up to5 synthetic paired trials with settings, duration and energy difference.
+
+Independent model uses fixed illustrative idle/display/audio and sinusoidal20s CPU/35s radio activity. Analytic time integration vs numerical quadrature checked.15Wh battery starts80%, rounds integer percentage to demonstrate resolution limits; duration constrained0–900s. No aging/voltage/thermal throttling or real operating-system battery estimation simulated. Phone drawing is component decomposition, not specific teardown or complete supply wiring.
+
+4 model tests passed: energy integration; brightness isolation; silent-task volume no-effect; confounds/zero-duration/quantized-percent counterexample. Original soft phone composition and wrapping HTML comparisons. Actual fullwatch, narrow-screen review, narration/listening and device acceptance remain root-owned. TSX transpile0 diagnostics, complete Chinese literal translation coverage, and batch packet validation with thermal-process-lab passed at278. Owned files formatted. Related thermal-process-lab must be integrated first or in same batch.

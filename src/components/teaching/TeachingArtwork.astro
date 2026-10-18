@@ -1,0 +1,132 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+const suffix = compact ? 'compact' : 'hero';
+---
+
+<svg
+  class:list={['teaching-artwork', { 'is-compact': compact }]}
+  viewBox="0 0 460 330"
+  fill="none"
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient
+      id={`teaching-page-${suffix}`}
+      x1="80"
+      y1="40"
+      x2="390"
+      y2="310"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#fffef8"></stop><stop offset="1" stop-color="#e7eadd"></stop>
+    </linearGradient>
+    <linearGradient
+      id={`teaching-glass-${suffix}`}
+      x1="190"
+      y1="65"
+      x2="270"
+      y2="65"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#d6e4db" stop-opacity=".8"></stop><stop
+        offset=".28"
+        stop-color="#fff"
+        stop-opacity=".8"></stop><stop offset=".6" stop-color="#e4ede5" stop-opacity=".1"
+      ></stop><stop offset="1" stop-color="#a6bcad" stop-opacity=".5"></stop>
+    </linearGradient>
+    <filter id={`teaching-shadow-${suffix}`} x="-30%" y="-30%" width="180%" height="190%">
+      <feGaussianBlur stdDeviation="12"></feGaussianBlur>
+    </filter>
+  </defs>
+  <ellipse
+    cx="236"
+    cy="288"
+    rx="155"
+    ry="15"
+    fill="#75836c"
+    opacity=".12"
+    filter={`url(#teaching-shadow-${suffix})`}></ellipse>
+  <g transform="rotate(-7 230 170)">
+    <rect x="99" y="38" width="265" height="263" rx="12" fill="#d8dece"></rect>
+    <path
+      d="M111 34h239a10 10 0 0 1 10 10v237a9 9 0 0 1-9 9H112a11 11 0 0 1-11-11V44a10 10 0 0 1 10-10Z"
+      fill={`url(#teaching-page-${suffix})`}
+      stroke="#dce1d3"></path>
+    <path d="M124 35v253" stroke="#d4dccd"></path>
+    <path
+      d="M144 63h60M144 76h38M144 254h29M144 264h46"
+      stroke="#bac7b6"
+      stroke-width="3"
+      stroke-linecap="round"></path>
+    <path
+      d="M294 63h37M294 76h22M288 254h43M305 264h26"
+      stroke="#cad3c1"
+      stroke-width="3"
+      stroke-linecap="round"></path>
+    <path d="M277 34v41l11-7 11 7V34" fill="#b9c7b0"></path>
+  </g>
+  <g transform="rotate(7 230 170)">
+    <rect
+      x="201"
+      y="53"
+      width="69"
+      height="231"
+      rx="24"
+      fill={`url(#teaching-glass-${suffix})`}
+      stroke="#9bb09f"
+      stroke-width="1.5"></rect>
+    <path d="M210 78v180" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"></path>
+    <path d="M260 78v180" stroke="#a8b9aa" stroke-width="1.2" stroke-linecap="round" opacity=".5"
+    ></path>
+    <rect x="199" y="50" width="73" height="18" rx="7" fill="#657966"></rect>
+    <rect x="199" y="270" width="73" height="18" rx="7" fill="#657966"></rect>
+    <path d="M208 57h55M208 277h55" stroke="#b8c6b6" stroke-linecap="round" opacity=".5"></path>
+    <rect x="231" y="37" width="9" height="14" rx="3" fill="#9b9275"></rect><path
+      d="M224 37h23"
+      stroke="#897e5e"
+      stroke-width="5"
+      stroke-linecap="round"></path>
+    <path
+      d="M220 102v74M247 102v74"
+      stroke="#7c937d"
+      stroke-dasharray="2 7"
+      stroke-linecap="round"
+      opacity=".48"></path>
+    <path
+      d="m217 169 3 7 3-7m21 0 3 7 3-7"
+      stroke="#7c937d"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity=".48"></path>
+    <path
+      d="M222 188c-14 7-16 24-7 34 12-6 17-22 7-34Z"
+      fill="#c6b68d"
+      stroke="#a9986f"
+      stroke-width="1.2"></path>
+    <path
+      d="m223 194-10 35m5-20-5-5m8-4 4-3m-8 18 6-4"
+      stroke="#887e5d"
+      stroke-width="1.2"
+      stroke-linecap="round"></path>
+    <rect
+      x="242"
+      y="202"
+      width="13"
+      height="20"
+      rx="3"
+      transform="rotate(-11 248.5 212)"
+      fill="#7d8986"
+      stroke="#626e6b"></rect>
+    <path d="m246 205 5-.8" stroke="#c9d4ce" stroke-width="1.5" stroke-linecap="round"></path>
+  </g>
+  <circle cx="349" cy="161" r="22" fill="#eef1e6" stroke="#d4ddcc"></circle>
+  <path
+    d="m342 161 5 5 9-11"
+    stroke="#688165"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>

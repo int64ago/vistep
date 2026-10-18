@@ -1,0 +1,115 @@
+{
+  "topic": {
+    "slug": "wire-force-factors-lab",
+    "name": "通电导线受力因素",
+    "title": "导线更长，受力一定更大吗？",
+    "question": "导线更长，受力一定更大吗？",
+    "description": "切换四个接点，比较电流、有效浸场长度和磁感应强度怎样决定悬线偏转。",
+    "color": "#b7c7ad",
+    "tag": "磁力 · 有效长度 · 控制变量",
+    "related": ["magnetic-force-lab", "magnetic-field-survey"],
+    "sources": [
+      {
+        "title": "OpenStax — Magnetic Force on a Current-Carrying Conductor",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["通电导线受力因素", "安培力", "有效长度", "磁感应强度"],
+      "en": [
+        "Factors in Magnetic Force on a Wire",
+        "magnetic force",
+        "effective length",
+        "magnetic flux density"
+      ]
+    }
+  },
+  "component": "src/components/experiments/WireForceFactorsLab.tsx",
+  "cover": "src/components/covers/WireForceFactorsLabCover.astro",
+  "translations": {
+    "通电导线受力因素": "Factors in Magnetic Force on a Wire",
+    "导线更长，受力一定更大吗？": "Does a longer wire always feel a greater force?",
+    "切换四个接点，比较电流、有效浸场长度和磁感应强度怎样决定悬线偏转。": "Switch four contacts to compare how current, effective immersed length and field strength determine wire deflection.",
+    "磁力 · 有效长度 · 控制变量": "Magnetic force · Effective length · Controlled comparisons",
+    "接点不变，只增加电流": "Keep the contacts fixed; increase only current",
+    "同一磁场，接点 2–3 改为 1–4": "In the same field, change contacts from 2–3 to 1–4",
+    "把部分通电导线移出磁区，有效长度减小": "Move part of the live wire outside the field: effective length decreases",
+    "磁场改变时，相同 Iℓ 产生不同受力": "Changing the field changes force at the same Iℓ",
+    "只计入通电且位于磁区内的导线": "Count only current-carrying wire inside the field",
+    "三个并排蹄形磁体、悬挂直导线、四个可切换接点和闭合供电线路": "Three horseshoe magnets, a suspended wire, four switchable contacts and a closed supply circuit",
+    "导线接点": "Wire contacts",
+    "接点 2–3": "Contacts 2–3",
+    "接点 1–4": "Contacts 1–4",
+    "导线电流": "Wire current",
+    "导线横向偏移": "Lateral wire offset",
+    "相同磁体的磁感应强度": "Magnetic flux density at the wire",
+    "有效长度与悬线模型": "Effective length and suspension model",
+    "三个相同磁体在导线处近似提供同一匀强场；改变接点不改变 B。有效长度取通电区间与固定磁区的交集，受力按 IℓB 计算。悬线平衡满足 tanθ = F/(mg)，位置由同一悬线长度推导。忽略边缘场、供电软线受力和过渡振荡。改变 B 的对照表示换用另一组场强，不能误认为增加磁体数会提高同一位置的 B。": "Three identical magnets approximate the same uniform field at the wire; changing contacts does not change B. Effective length is the overlap of the live interval and fixed field region, giving force IℓB. Equilibrium satisfies tanθ = F/(mg), with position derived from the same suspension length. Fringe fields, flexible-lead forces and transient oscillation are omitted. Changing B represents another field strength, not adding magnets to increase B at the same point."
+  },
+  "narration": {
+    "duration": 96,
+    "cues": [
+      {
+        "id": "current-factor",
+        "title": "只增加电流",
+        "titleEn": "Increase only current",
+        "caption": "接点和磁场不变，比较偏转。",
+        "captionEn": "Keep contacts and field fixed; compare deflection.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "看悬线上的直导线。三个相同磁体在导线处近似给出同一个匀强场，四个接点让我们选择通电区间。先保持外侧接点不变，逐渐增加电流。磁力随电流增大，导线的平衡偏转也增大。这里先固定长度和场强，只考察电流。",
+        "en": "Look at the suspended straight wire. Three identical magnets approximate one uniform field, while four contacts select the live interval. Keep the outer contacts fixed and gradually increase current. Magnetic force and equilibrium deflection grow together. Length and field strength remain fixed, isolating the current dependence."
+      },
+      {
+        "id": "contact-length",
+        "title": "改变通电长度",
+        "titleEn": "Change the live length",
+        "caption": "接点 2–3 与 1–4 使用相同电流。",
+        "captionEn": "Both contact pairs carry the same current.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "保持电流不变，先接中间的二、三接点，再换成外侧的一、四接点。金色部分是既通电又处在磁区内的导线。它的长度变为原来的三倍，磁力也变为三倍。三个磁体并排提供更宽的磁区，不能把磁体个数直接当成场强倍数。",
+        "en": "Keep current unchanged. First use contacts two and three, then the outer pair, one and four. Gold marks wire that carries current inside the field. Its length triples and the force triples. Side-by-side magnets extend the field region; their number is not a multiplier for field strength."
+      },
+      {
+        "id": "effective-overlap",
+        "title": "区分总长与有效长",
+        "titleEn": "Separate total and effective length",
+        "caption": "接点间距没变，浸场长度可以减小。",
+        "captionEn": "Contact spacing can stay fixed while immersed length decreases.",
+        "seconds": 24,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "现在保持外侧接点，慢慢把导线横向移出一部分磁区。两个接点之间仍是原来的长度，但是只有与磁区重叠的通电部分参与这里的受力。读数中的有效长度减小，磁力也随之减小。因此公式里的长度，不能直接拿整根导线的长度代替。",
+        "en": "Keep the outer contacts and shift the wire partly outside the field. Their spacing is unchanged, but only the live portion overlapping the field contributes to this force. Effective length and force decrease together. The length in the equation is therefore not necessarily the full wire length."
+      },
+      {
+        "id": "field-factor",
+        "title": "比较不同场强",
+        "titleEn": "Compare field strengths",
+        "caption": "相同 Iℓ 下，受力比值给出 B。",
+        "captionEn": "At fixed Iℓ, the force ratio gives B.",
+        "seconds": 24,
+        "chapterAt": 72,
+        "at": 72.4,
+        "zh": "最后保持电流和有效长度不变，比较两种磁场强度。场越强，同一段通电导线的受力越大。把磁力除以电流与有效长度的乘积，就得到磁感应强度。自由探索中可以反向或关断电流，检查受力反向与零电流这两个边界。",
+        "en": "Finally hold current and effective length fixed while comparing two field strengths. A stronger field exerts more force on the same live segment. Dividing force by current times effective length gives magnetic flux density. In exploration, reverse or stop the current to check opposite-force and zero-current limits."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-wire-force-factors": {
+      "chapterIds": ["current-factor", "contact-length", "effective-overlap", "field-factor"],
+      "label": {
+        "zh": "探究通电导线受力因素",
+        "en": "Investigate force factors for a live wire"
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "topic": {
+    "slug": "inertial-frames-lab",
+    "name": "抽纸与参考系",
+    "title": "球几乎没动，为什么纸上的观察者看到它后退？",
+    "question": "球几乎没动，为什么纸上的观察者看到它后退？",
+    "description": "同一颗钢球和同一段抽纸过程，在桌面与纸面坐标中对照，分清真实摩擦和参考系效应。",
+    "color": "#b7c0a5",
+    "tag": "抽纸 · 坐标 · 惯性",
+    "related": ["galileo-inclines", "friction-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Newton’s First Law",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/5-2-newtons-first-law"
+      },
+      {
+        "title": "OpenStax — Rolling Motion",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["抽纸与参考系", "惯性参考系", "钢球抽纸", "非惯性系"],
+      "en": [
+        "Paper pull and reference frames",
+        "inertial frame",
+        "steel ball",
+        "accelerating coordinates"
+      ]
+    }
+  },
+  "component": "src/components/experiments/InertialFramesLab.tsx",
+  "cover": "src/components/covers/InertialFramesLabCover.astro",
+  "translations": {
+    "抽纸与参考系": "Paper pull and reference frames",
+    "球几乎没动，为什么纸上的观察者看到它后退？": "Why does a nearly stationary ball move backward in the paper frame?",
+    "同一颗钢球和同一段抽纸过程，在桌面与纸面坐标中对照，分清真实摩擦和参考系效应。": "Compare one steel ball and one paper pull in table and paper coordinates, separating real friction from frame effects.",
+    "抽纸 · 坐标 · 惯性": "Pull paper · Change coordinates · Inertia",
+    "从桌面观察：纸抽走，球只移动很少": "From the table: the paper moves far, the ball only slightly",
+    "从纸面观察：球看起来向后运动": "From the paper: the ball appears to move backward",
+    "把摩擦设为零，单独检查参考系效应": "Set friction to zero and isolate the frame effect",
+    "慢慢抽纸，球与纸的相互作用更明显": "Pull slowly to reveal the ball–paper interaction",
+    "同一过程 · 两个参考系": "One process · Two reference frames",
+    "桌面参考系": "Table frame",
+    "纸面参考系": "Paper frame",
+    "静止桌面上，纸张向右抽动，钢球的位移较小": "In the stationary table frame, paper moves right and the steel ball moves little",
+    "跟随纸张的视角中，桌面和钢球相对纸面向后移动": "Following the paper, the table and ball move backward relative to it",
+    "相对起点位移": "Displacement from start",
+    "模型时间": "Model time",
+    "纸的位移": "Paper displacement",
+    "接触位置": "Contact surface",
+    "仍在纸上": "On paper",
+    "已到桌面": "On table",
+    "球没有水平加速度，但加速纸面中的相对运动仍会改变。": "The ball has no horizontal acceleration, yet its motion relative to accelerating paper changes.",
+    "换参考系不会新增真实相互作用；摩擦存在时，球也会有小的真实运动。": "Changing frames creates no new real interaction; friction can still cause a small true ball motion.",
+    "抽纸持续时间": "Pull duration",
+    "纸面滑动摩擦因数": "Paper kinetic friction coefficient",
+    "薄纸厚度忽略；钢球包含转动与接触摩擦。纸面加速阶段不是惯性参考系，影片按模型秒慢放。": "Paper thickness is neglected; the sphere includes rotation and contact friction. Accelerating paper is noninertial; displayed model seconds are slowed for the film."
+  },
+  "narration": {
+    "duration": 113,
+    "cues": [
+      {
+        "id": "table",
+        "title": "从桌面看抽纸",
+        "titleEn": "Watch from the table",
+        "caption": "纸的位移很大，钢球只有较小真实位移。",
+        "captionEn": "The paper travels far while the ball moves only slightly.",
+        "zh": "把钢球放在纸上，较快地抽动纸张。先从桌面的参考系观察：纸向右移动了很远，钢球只产生很小的位移。这里没有强行把球锁在原地，摩擦仍然会改变它的平动和转动。所谓球近似保持原位，是对这组快速抽纸条件的观察，不能替代对实际接触作用的分析。",
+        "en": "Place a steel ball on paper and pull quickly. From the table frame, the paper travels far right while the ball moves only slightly. The ball is not artificially fixed: friction changes translation and rotation. Approximate rest is an observation for this rapid pull, not a replacement for analyzing actual contact forces.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "paper",
+        "title": "跟随纸张再看",
+        "titleEn": "Follow the paper",
+        "caption": "同一状态换坐标，钢球相对纸面后退。",
+        "captionEn": "The same state in new coordinates moves backward relative to paper.",
+        "zh": "现在把观察位置移到纸面上，重看同一个过程。纸面坐标不动，桌面纹理向后移动，钢球也相对纸面后退。两个画面并不矛盾，因为它们使用不同的参考系。纸面读数等于球的桌面坐标减去纸张坐标。比较运动之前，必须先说明位置和速度是相对于谁测量的。",
+        "en": "Follow the paper and replay the same process. Paper coordinates remain fixed while the table marks and ball move backward. The views do not contradict each other; their reference frames differ. Subtract paper position from the ball’s table position to obtain its paper coordinate. State the reference before comparing positions or velocities.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "ideal",
+        "title": "去掉摩擦看边界",
+        "titleEn": "Remove friction for the ideal comparison",
+        "caption": "无水平力时，桌面系静止，加速纸面系仍有相对变化。",
+        "captionEn": "With no horizontal force, the ball rests in the table frame but changes motion relative to accelerating paper.",
+        "zh": "把纸面摩擦设为零，单独检查参考系效应。钢球在桌面系中真正保持静止，但纸面正在加速或减速时，球的相对速度仍会改变。纸面加速阶段不是惯性参考系，不能把这样的相对加速度直接当作某个真实力的证据。只是换了观看坐标，并没有凭空出现另一只手去推球。",
+        "en": "Set paper friction to zero to isolate the frame effect. The ball truly remains at rest relative to the table, yet its relative velocity changes as the paper accelerates or slows. Accelerating paper is not an inertial frame. Its observed relative acceleration is not by itself evidence of a new real force; changing coordinates does not create another hand pushing the ball.",
+        "seconds": 29,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "slow",
+        "title": "慢拉检验接触作用",
+        "titleEn": "Test contact with a slow pull",
+        "caption": "抽纸方式和摩擦改变真实运动，换镜头不会。",
+        "captionEn": "Pulling conditions and friction change true motion; the camera does not.",
+        "zh": "最后保留摩擦，把抽纸过程放慢。钢球与纸面的作用持续更久，球的实际移动与滚动也更明显。纸边经过球以后，接触面还会改成桌面。这个比较把两类变化分开：改变摩擦和抽纸方式，改变真实运动；更换参考系，只改变同一运动的描述。理解惯性参考系，要始终保留这条区别。",
+        "en": "Keep friction and pull more slowly. Contact acts longer and the sphere’s actual movement and rolling become clearer. Once the paper edge passes, contact changes to the table. This separates two changes: friction and pulling conditions alter the physical motion; a new reference frame changes the description of that same motion.",
+        "seconds": 28,
+        "chapterAt": 85,
+        "at": 85.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-paper-frame": {
+      "chapterIds": ["table", "paper", "ideal", "slow"],
+      "label": {
+        "zh": "抽纸观察钢球与惯性参考系",
+        "en": "Paper pull and inertial frames"
+      }
+    }
+  }
+}

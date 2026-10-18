@@ -1,0 +1,168 @@
+.length-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #566951;
+}
+.length-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.6;
+  margin: 0 14px 6px;
+}
+.length-apparatus {
+  display: block;
+  width: min(100%, 540px);
+  height: auto;
+  margin: auto;
+}
+.length-apparatus text {
+  font: 22px var(--font-sans, sans-serif);
+  fill: #7e8669;
+}
+.length-contact {
+  text-align: center;
+  font-size: 16px;
+  color: #7b8b6c;
+  line-height: 1.5;
+  margin: 0 14px 12px;
+}
+.length-scale {
+  width: min(100%, 570px);
+  margin: 8px auto;
+}
+.length-scale > p {
+  text-align: center;
+  color: #778a6a;
+  font-size: 16px;
+  margin: 0 12px 4px;
+}
+.length-scale svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.length-scale svg text {
+  font: 22px var(--font-sans, sans-serif);
+  fill: #6e805f;
+}
+.length-result {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 16px;
+  padding: 10px 12px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.length-result b {
+  font-weight: 400;
+  color: #a7ae94;
+}
+.length-result strong {
+  font-size: 20px;
+  font-weight: 500;
+  color: #9c8050;
+}
+.length-zero,
+.length-error {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 8px 14px;
+  color: #8c7f59;
+}
+.length-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #7b886e;
+  margin: 12px 14px;
+}
+.length-close {
+  width: min(100%, 490px);
+  margin: -30px auto 8px;
+  position: relative;
+}
+.length-close > span {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  color: #869375;
+}
+.length-close svg {
+  width: 100%;
+  display: block;
+}
+.length-micrometer {
+  margin-top: -5px;
+}
+.length-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  margin: 22px 0;
+  background: #edf1e3;
+  border-radius: 24px;
+}
+.length-controls button {
+  min-height: 44px;
+}
+.length-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.length-details summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 8px 0;
+}
+.length-details p {
+  color: #738569;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .length-scale svg text,
+  .length-apparatus text {
+    font-size: 26px;
+  }
+  .length-controls {
+    padding: 18px 14px;
+  }
+  .length-result {
+    gap: 4px 10px;
+  }
+  .length-result strong {
+    font-size: 18px;
+  }
+  .length-close {
+    margin-top: -12px;
+  }
+  .length-contact {
+    margin: 0 12px 10px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.length-film[data-watch] > .length-kicker,
+.length-film[data-watch] > .length-caption,
+.length-film[data-watch] > details {
+  display: none;
+}
+.length-film[data-watch] .length-note,
+.length-film[data-watch] .length-error,
+.length-film[data-watch] .length-scale > p {
+  display: none;
+}
+.length-film[data-watch] .length-contact {
+  margin: 5px 12px;
+}
+.length-film[data-watch] .length-close {
+  margin: 4px 12px;
+}
+.length-film[data-watch] .length-result {
+  padding: 4px 10px;
+  gap: 5px 10px;
+}

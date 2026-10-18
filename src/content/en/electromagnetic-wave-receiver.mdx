@@ -1,0 +1,26 @@
+<h2 id="understand">Reception waits for propagation</h2>
+
+PEP Required Book3 page120 uses two pairs of copper tubes as parallel transmitting and receiving antennas, changing distance while observing a receiving indication. This scene retains that modern classroom arrangement: a high-voltage source excites the transmitter gap, and the receiver connects to an RF indicator. It is not a reconstruction of Hertz’s original apparatus.
+
+Rapid electrical changes produce an outward-propagating electromagnetic wave. The receiving antenna responds after arrival; greater distance also means longer delay. Stopping the source does not erase waves already traveling through space.
+
+<h2 id="try">Compare the same packet phase</h2>
+
+Change distance or scrub time after emission. The distance chapter aligns observations to the same retarded-time point within the packet, avoiding confusion between attenuation and different packet phases.
+
+An ideal radiative far field has electric amplitude proportional to1/r. This square-law detector’s response therefore scales as1/r². This is not an exact fit for every classroom distance: near fields, reflections, multipath, resonance and instrument response affect actual measurements.
+
+<h2 id="deeper">The instrument needs a model too</h2>
+
+<details>
+<summary>Why an RF detector is included</summary>
+
+The textbook does not specify the meter’s internal circuit. High-frequency alternating current can have zero average; a bare DC ammeter cannot directly give the displayed stable RF-strength indication. This scene explicitly assumes square-law detection and smoothing, without claiming the textbook uses a particular circuit.
+
+The illustrative spark packet has a120 ns sine-squared envelope and50 MHz carrier, not a measured spark spectrum. The field uses retarded time t−r/c, with magnetic field in phase and B=E/c. Detector drive is proportional to squared envelope, followed by a40 ns response. The needle directly shows that response, not mechanical meter inertia. Readings are relative units.
+
+Quantitative amplitudes are limited to an ideal4–12 m far-field comparison. Spatial strokes illustrate polarity, envelope and arrival, not field strength to scale. Antennas and separation are magnified separately. Motion is greatly slowed; actual delays are nanoseconds.
+
+</details>
+
+Sources: [electromagnetic-wave production and reception](https://openstax.org/books/university-physics-volume-2/pages/16-2-plane-electromagnetic-waves), [wave energy](https://openstax.org/books/university-physics-volume-2/pages/16-3-energy-carried-by-electromagnetic-waves), and [Analog Devices on square-law detection](https://www.analog.com/en/resources/technical-articles/max22058212detecting-high-peaktoaverage-ratio-signals.html).

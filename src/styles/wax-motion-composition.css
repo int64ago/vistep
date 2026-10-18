@@ -1,0 +1,145 @@
+.wax-motion-lab {
+  max-width: 1000px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #566e53;
+}
+.wax-motion-lab header {
+  text-align: center;
+}
+.wax-motion-lab header p {
+  font-size: clamp(21px, 2.6vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.wax-motion-lab header > span {
+  font-size: 16px;
+  color: #879675;
+}
+.wax-motion-board {
+  max-width: 610px;
+  margin: 20px auto;
+}
+.wax-motion-board svg {
+  display: block;
+  width: 100%;
+}
+.wax-motion-readings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  justify-content: center;
+  font-size: 16px;
+}
+.wax-motion-readings span {
+  display: flex;
+  gap: 10px;
+}
+.wax-motion-readings b {
+  font-weight: 400;
+  color: #a08d64;
+}
+.wax-motion-equation {
+  display: flex;
+  gap: 20px 35px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 28px auto;
+  font-size: 24px;
+  color: #829a70;
+}
+.wax-motion-cause {
+  max-width: 730px;
+  margin: 22px auto;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.wax-motion-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.wax-motion-controls > .segmented {
+  grid-column: 1/-1;
+  justify-self: center;
+  flex-wrap: wrap;
+}
+.wax-motion-note {
+  font-size: 16px;
+  color: #879575;
+  line-height: 1.6;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 760px;
+}
+@media (max-width: 640px) {
+  .wax-motion-lab {
+    padding: 20px 12px;
+  }
+  .wax-motion-board {
+    margin: 16px -5px;
+  }
+  .wax-motion-controls {
+    grid-template-columns: 1fr;
+  }
+  .wax-motion-readings {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .wax-motion-readings span {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .wax-motion-equation {
+    font-size: 22px;
+    gap: 16px 22px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .wax-motion-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .wax-motion-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .wax-motion-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .wax-motion-lab > header > span,
+  .showcase[data-mode='watch'] .wax-motion-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .wax-motion-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .wax-motion-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .wax-motion-board {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .wax-motion-board svg {
+    max-height: 240px;
+  }
+  .showcase[data-mode='watch'] .wax-motion-readings {
+    gap: 5px;
+  }
+  .showcase[data-mode='watch'] .wax-motion-equation {
+    font-size: 18px;
+    margin: 8px auto;
+    gap: 6px 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .wax-motion-board svg text {
+    font-size: 25px;
+  }
+}

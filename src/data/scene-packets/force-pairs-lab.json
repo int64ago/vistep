@@ -1,0 +1,117 @@
+{
+  "topic": {
+    "slug": "force-pairs-lab",
+    "name": "作用力与反作用力实验",
+    "title": "谁拉谁，两只测力计会给出不同答案吗？",
+    "question": "谁拉谁，两只测力计会给出不同答案吗？",
+    "description": "连接两只测力计或传感器，改变伸长、劲度与位置，按同一时刻辨认作用在不同对象上的力。",
+    "color": "#b1bca2",
+    "tag": "连接 · 配对 · 同时",
+    "related": ["elasticity-lab", "friction-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Newton’s Third Law",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/5-5-newtons-third-law"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["作用力与反作用力实验", "牛顿第三定律", "相互作用力", "双测力计"],
+      "en": ["Action and reaction laboratory", "Newton third law", "force pair", "spring balances"]
+    }
+  },
+  "component": "src/components/experiments/ForcePairsLab.tsx",
+  "cover": "src/components/covers/ForcePairsLabCover.astro",
+  "translations": {
+    "作用力与反作用力实验": "Action and reaction laboratory",
+    "谁拉谁，两只测力计会给出不同答案吗？": "Can two linked force meters disagree about who pulls whom?",
+    "连接两只测力计或传感器，改变伸长、劲度与位置，按同一时刻辨认作用在不同对象上的力。": "Connect two balances or sensors, change extension and position, and compare simultaneous forces on different objects.",
+    "连接 · 配对 · 同时": "Connect · Pair · Synchronize",
+    "慢慢拉开，两只表一起变化": "Pull slowly and watch both meters change",
+    "弹簧伸长不同，力的大小仍相等": "Different extensions can measure equal forces",
+    "给两个方向统一正负号": "Use one sign convention for both directions",
+    "改变两端位置，比较同一时刻的两个力": "Move both endpoints and compare simultaneous forces",
+    "两只弹簧测力计": "Two spring balances",
+    "两只力传感器": "Two force sensors",
+    "两个相连仪器在共同挂钩处相互作用，读数大小相等方向相反": "Two linked instruments interact at a common hook with equal opposite force readings",
+    "B作用于A · 向右": "B on A · Rightward",
+    "A作用于B · 向左": "A on B · Leftward",
+    "统一向右为正，同一时刻读取两条曲线": "Take rightward as positive and compare the same instant",
+    "两个传感器的力曲线相对于零线镜像": "The two force records mirror each other about zero",
+    "A伸长": "A extension",
+    "B伸长": "B extension",
+    "这一对力作用在不同对象上，不能作为同一个物体的平衡力相互抵消。": "These forces act on different objects; they are not balanced forces canceling on one object.",
+    "测量仪器": "Measuring instrument",
+    "弹簧测力计": "Spring force meter",
+    "力传感器": "Force sensor",
+    "两端距离": "Endpoint separation",
+    "B仪器等效劲度系数": "B equivalent stiffness",
+    "整体平移": "Translate apparatus",
+    "仪器内部按准静态弹性模型，忽略仪器自重和惯性；相互作用力相等反向不依赖物体是否运动。": "Instrument internals are quasistatic, neglecting weight and inertia. Equal opposite interaction does not depend on objects being at rest."
+  },
+  "narration": {
+    "duration": 111,
+    "cues": [
+      {
+        "id": "balances",
+        "title": "把两只挂钩相连",
+        "titleEn": "Connect both hooks",
+        "caption": "两只表同时变化，读数大小相等。",
+        "captionEn": "Both readings change together with equal magnitude.",
+        "zh": "把两只弹簧测力计的挂钩相连，缓慢拉动右端。左边仪器受到右边的拉力，右边仪器也受到左边的拉力。两表读数一起增大，大小相等。先把每个力的受力对象说清楚，就不会只凭谁主动拉、谁看起来没有动，来猜测哪一个力更大。这是一对同时存在的相互作用。",
+        "en": "Connect the hooks of two spring balances and pull the right end slowly. The right instrument pulls the left, and the left pulls the right. Their readings rise together with equal magnitude. Identify the recipient of each force before judging from who initiates the pull or appears to remain still. These forces are one simultaneous interaction.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "stiffness",
+        "title": "伸长不同不是力不同",
+        "titleEn": "Unequal stretch is not unequal force",
+        "caption": "分别标定的刻度，把不同伸长换成相同力值。",
+        "captionEn": "Separate calibrations turn unequal extensions into equal forces.",
+        "zh": "换一只劲度系数不同的仪器。现在两根弹簧可以伸长得不一样，读出的力却仍然一样大。因为测力计刻度按各自的弹性关系标定，伸长量不是力本身。画面把作用在A上的力和作用在B上的力分开标出：它们方向相反，作用对象不同，不能在同一个物体的受力图里直接相互抵消。",
+        "en": "Use a balance with different stiffness. Its spring can extend by a different amount while measuring the same force. Each scale follows its own calibration; extension is not force itself. The arrows distinguish the force on A from the force on B. They point oppositely but act on different objects, so they are not a balanced pair on one free-body diagram.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "sensors",
+        "title": "统一符号再记录",
+        "titleEn": "Record with a common sign",
+        "caption": "以向右为正，两条记录关于零线对称。",
+        "captionEn": "With rightward positive, the traces mirror about zero.",
+        "zh": "再换成力传感器，保留整个变化过程。为了比较方向，我们把向右统一规定为正，所以B对A的力在零线上方，A对B的力在零线下方。要配对的是同一时刻的两个值，不是任意找两个峰值。实际仪器还要检查零点、安装方向和采样同步，才能把记录正确放到一起。",
+        "en": "Force sensors retain the full history. Define rightward as positive for both: B’s force on A lies above zero, and A’s force on B below it. Compare values at the same instant, not arbitrary peaks. Real instruments also require zeroing, mounting-direction checks and synchronized sampling before their records can be compared.",
+        "seconds": 27,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "moving",
+        "title": "两端都动仍然配对",
+        "titleEn": "Both endpoints can move",
+        "caption": "移动状态不会改变作用力与反作用力的配对。",
+        "captionEn": "Motion does not remove the action–reaction pairing.",
+        "zh": "最后让两端都改变位置。装置不必静止，两个相互作用力仍然同时相等、方向相反。这里为了清楚显示仪器内部，用的是忽略内部惯性的准静态近似；这不表示第三定律只在慢速或静止时成立。判断一个物体怎样运动，还要继续把它受到的其他力一起列出，而不是只看这一对分属于两个对象的力。",
+        "en": "Now move both endpoints. Rest is not required: the interaction forces remain simultaneous, equal and opposite. The instrument internals use a quasistatic approximation that neglects their inertia; this does not limit the third law to slow or stationary motion. To predict one object’s motion, include all its other forces as well, not just this pair acting on two different objects.",
+        "seconds": 28,
+        "chapterAt": 83,
+        "at": 83.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-third-law": {
+      "chapterIds": ["balances", "stiffness", "sensors", "moving"],
+      "label": {
+        "zh": "作用力和反作用力",
+        "en": "Action and reaction forces"
+      }
+    }
+  }
+}

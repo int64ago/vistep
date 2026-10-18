@@ -1,0 +1,5 @@
+# Galileo incline family
+
+Required1 timed incline (§2.4), ideal double incline (§4.1), Required2 conservation question (§8.4). Six chapters partition3/2/1 so early curriculum never depends on later energy language. Distinct timed shallow ramp/water apparatus versus smoothly joined double incline. Fixed physical clock, constant-flow collection, revealed equal-time marks, transparent endpoint freeze. No fabricated historical measurements. Solid-sphere rolling uses5g sinθ/7; it is explicitly NOT extrapolated into g at90°. Double geometry uses tangent circular joins, offset rail under finite ball, no sharp-corner impulse. RK4 timestep≤0.5ms, independent energy checks include rotation.
+
+Mobile stacks water apparatus below track; ideal slope stage changes scale to retain the complete track as slope changes. Model speed displayed separately from film pace. Six focused tests cover known rolling acceleration, quadratic displacement, join continuity, energy tolerance, horizontal continuation and increasing return distance. Browser and voice review remain parent work.

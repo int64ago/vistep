@@ -1,0 +1,118 @@
+{
+  "topic": {
+    "slug": "suspension-center-of-gravity",
+    "name": "悬挂法找重心",
+    "title": "两次悬挂，怎样找到薄板的同一个点？",
+    "question": "两次悬挂，怎样找到薄板的同一个点？",
+    "description": "让铅垂线留在薄板上，再换一个悬点；从不规则薄板到三角形中线，检验重心与质量分布。",
+    "color": "#b2bd9d",
+    "tag": "悬挂 · 交点 · 重心",
+    "related": ["center-of-mass", "pendulum"],
+    "sources": [
+      {
+        "title": "Simon Fraser University — Centre of Mass L",
+        "url": "https://www.sfu.ca/physics/demos/demos-experiments/centre-of-mass-l-burnaby.html"
+      },
+      {
+        "title": "OpenStax — Conditions for Static Equilibrium",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["悬挂法找重心", "铅垂线", "三角形中线", "重心"],
+      "en": ["Finding the center of gravity", "plumb line", "triangular lamina", "centroid"]
+    }
+  },
+  "component": "src/components/experiments/SuspensionCenterOfGravity.tsx",
+  "cover": "src/components/covers/SuspensionCenterOfGravityCover.astro",
+  "translations": {
+    "悬挂法找重心": "Finding the center of gravity",
+    "两次悬挂，怎样找到薄板的同一个点？": "How do two suspensions locate the same point?",
+    "让铅垂线留在薄板上，再换一个悬点；从不规则薄板到三角形中线，检验重心与质量分布。": "Record plumb lines on a hanging sheet, change the support, and test how shape and mass distribution locate its center.",
+    "悬挂 · 交点 · 重心": "Suspend · Intersect · Locate",
+    "让薄板自由转动，直到停稳": "Let the sheet turn and settle",
+    "沿悬线画出第一条铅垂线": "Record the first plumb line",
+    "换一个悬点，再画一条线": "Change the support and record again",
+    "换一种形状，检查同一条平衡规则": "Try another shape with the same equilibrium rule",
+    "附加配重后，重心会改变": "Added mass shifts the center of gravity",
+    "均匀薄板 · 自由悬挂": "Uniform sheet · Free suspension",
+    "薄板以不同悬点转到平衡，两条记录在板上的铅垂线交于重心": "A sheet rotates to equilibrium from different supports; the recorded plumb lines intersect at its center of gravity",
+    "第一次留下的线": "First recorded line",
+    "第二次留下的线": "Second recorded line",
+    "一条悬线只能确定重心所在的直线。": "One plumb line locates a line containing the center.",
+    "两条悬线仍交于重心，但不再与几何中心重合。": "The plumb lines still locate the center of gravity, now shifted from the geometric centroid.",
+    "两次悬挂的铅垂线，指向同一个板上位置。": "Both suspension records pass through the same material point.",
+    "薄板形状": "Sheet shape",
+    "不规则薄板": "Irregular sheet",
+    "三角形纸板": "Triangular card",
+    "悬挂孔位置": "Suspension hole",
+    "附加质量与板质量之比": "Added mass / sheet mass",
+    "小角度摆动采用阻尼近似；画线取停稳位置，忽略线重和悬点摩擦。": "Small swings use a damping approximation; lines are recorded at equilibrium, neglecting string mass and pivot friction."
+  },
+  "narration": {
+    "duration": 113,
+    "cues": [
+      {
+        "id": "settle",
+        "title": "让薄板停稳",
+        "titleEn": "Let the sheet settle",
+        "caption": "先停稳，再沿悬线画线。",
+        "captionEn": "Wait for equilibrium before marking.",
+        "zh": "把薄板挂在一个小孔上，让它能够自由转动。开头的轻微摆动逐渐减小，最后重心落在悬点的正下方。此时铅垂线给出一条竖直方向，但我们还不能只凭这一条线确定重心是哪一个点。实验首先要等板停稳，不能沿着摆动中的位置匆忙画线。",
+        "en": "Hang the sheet from a small hole that allows it to turn freely. Its small swings die away until the center of gravity is below the support. The plumb line now gives a vertical direction, but this single line cannot identify one unique point. Wait for equilibrium before recording it; a swinging snapshot is not a valid mark.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "first",
+        "title": "留下一条材料记录",
+        "titleEn": "Keep the first record",
+        "caption": "第一条线画在板上，随板一起转。",
+        "captionEn": "The first line belongs to the sheet and turns with it.",
+        "zh": "沿着悬线在板上画出第一条线。棕色虚线现在是一条留在材料上的记录，而不是屏幕里永远竖直的参考线。它经过重心，但线上还有许多候选位置。接下来要保留这条记录，只改变悬挂的小孔，让同一块板提供另一条独立的信息。",
+        "en": "Trace the first plumb line onto the sheet. The brown dashed line is now a record on the material, not a reference that must stay vertical on the screen. It passes through the center, but many candidate points remain. Keep the record and change only the suspension hole to obtain independent information from the same sheet.",
+        "seconds": 27,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "second",
+        "title": "换孔得到交点",
+        "titleEn": "Find the intersection",
+        "caption": "第二条线与第一条线交于重心。",
+        "captionEn": "The second record intersects the first at the center.",
+        "zh": "换一个孔，薄板转到新的平衡方向。注意第一条线也随板转动，它不会继续保持竖直。现在沿新的悬线画第二条线，两条记录的交点就是重心。我们找的是板上同一个材料位置，不是每次悬挂时重新产生一个重心。多换一个合适的孔，还可以检验记录是否一致。",
+        "en": "A different hole brings the sheet to a new equilibrium orientation. The first line rotates with it and no longer stays vertical. Record the new plumb line. Their intersection locates the center of gravity: the same material point through both suspensions. A third suitable hole can check whether the records agree.",
+        "seconds": 29,
+        "chapterAt": 55,
+        "at": 55.3
+      },
+      {
+        "id": "triangle",
+        "title": "用三角形核验",
+        "titleEn": "Check a uniform triangle",
+        "caption": "均匀时中线交点吻合；添加配重后分离。",
+        "captionEn": "Medians agree for a uniform sheet; added mass breaks that match.",
+        "zh": "最后换成均匀三角形纸板。先画中线，再看悬挂得到的交点，两种方法在同一位置相遇。这里的均匀是重要条件。进入自由探索后，给一侧添加配重，外轮廓和中线没有改变，重心却向配重移动。悬挂法仍然有效，几何中心则不能继续代替整个组合的重心。",
+        "en": "Switch to a uniform triangular card. Its geometric medians predict the same point found by suspension. Uniformity is the crucial condition. In exploration, add a weight on one side. The outline and medians remain unchanged, but the center moves toward the weight. Suspension still works; the geometric centroid no longer represents the whole combination.",
+        "seconds": 29,
+        "chapterAt": 84,
+        "at": 84.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-suspension-center": {
+      "chapterIds": ["settle", "first", "second", "triangle"],
+      "label": {
+        "zh": "悬挂法找重心",
+        "en": "Suspension method"
+      }
+    }
+  }
+}

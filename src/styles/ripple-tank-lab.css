@@ -1,0 +1,43 @@
+.ripple-visual {
+  position: relative;
+  width: min(100%, 380px);
+  margin: 8px auto 0;
+  aspect-ratio: 360/340;
+}
+.ripple-visual canvas {
+  position: absolute;
+  left: 8.333333%;
+  top: 16.17647%;
+  width: 83.333333%;
+  height: 64.70588%;
+  border-radius: 9px;
+  image-rendering: auto;
+}
+.ripple-visual canvas.ripple-round {
+  border-radius: 50%;
+}
+.ripple-overlay {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ripple-overlay text {
+  font:
+    16px 'Manrope Variable',
+    'Noto Sans SC Variable',
+    sans-serif;
+  fill: #63745e;
+}
+.ripple-overlay .em-small {
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .ripple-overlay text {
+    font-size: 18px;
+  }
+  .ripple-overlay .em-small {
+    font-size: 15px;
+  }
+}

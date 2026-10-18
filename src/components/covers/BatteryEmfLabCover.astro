@@ -1,0 +1,30 @@
+---
+import { drySamples, fitSource } from '../../models/battery-emf-lab';
+const samples = drySamples();
+const fit = fitSource(samples);
+const px = (i: number) => 235 + (i / 0.4) * 125;
+const py = (u: number) => 201 - ((u - 1.05) / 0.5) * 130;
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true">
+  <path d="M80 163H35V61H84M146 61H191V163H153" stroke="#a4b694" stroke-width="2.5"></path>
+  <rect x="84" y="51" width="62" height="20" rx="7" fill="#c5b792"></rect><path
+    d="M110 29V51m-5-5 5 5 5-5"
+    stroke="#9a885c"
+    stroke-width="2"></path><path d="M110 29H191V163" stroke="#a4b694" stroke-width="2.5"></path>
+  <circle cx="35" cy="110" r="21" fill="#ecf0dc" stroke="#aabb98"></circle><path
+    d="M35 116l7-18"
+    stroke="#ad9060"
+    stroke-width="2"></path>
+  <rect x="80" y="141" width="73" height="44" rx="12" fill="#c1cfae" stroke="#a5b693"></rect><path
+    d="M91 142v42"
+    stroke="#dfdfbc"
+    stroke-width="8"></path><path d="M104 161h10m-5-5v10m25-5h9" stroke="#8e9f7b" stroke-width="2"
+  ></path>
+  <path d="M235 61V201H370" stroke="#b4c0a4"></path>
+  <path
+    d={`M${px(0)} ${py(fit.emf)}L${px(0.4)} ${py(fit.emf - 0.4 * fit.internal)}`}
+    stroke="#b29d75"
+    stroke-width="2"></path>
+  {samples.map((s) => <circle cx={px(s.current)} cy={py(s.voltage)} r="4" fill="#8eaa7d" />)}
+</svg>

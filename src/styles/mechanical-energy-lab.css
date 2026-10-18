@@ -1,0 +1,190 @@
+.mechanical-energy-lab {
+  max-width: 960px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 40px);
+  color: #617658;
+}
+.mechanical-energy-lab header {
+  text-align: center;
+}
+.mechanical-energy-lab header p {
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 9px;
+}
+.mechanical-energy-lab header > span {
+  font-size: 16px;
+  color: #929b80;
+}
+.mechanical-energy-stage {
+  max-width: 610px;
+  margin: 15px auto;
+}
+.mechanical-energy-stage svg {
+  display: block;
+  width: 100%;
+}
+.mechanical-energy-stage.is-tape {
+  max-width: 730px;
+}
+.mechanical-energy-record {
+  display: flex;
+  justify-content: center;
+  gap: 14px 24px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #8b9374;
+}
+.mechanical-energy-record p {
+  width: 100%;
+  text-align: center;
+  font-size: 21px;
+  margin: 8px 0;
+}
+.mechanical-energy-balance {
+  max-width: 630px;
+  margin: 25px auto;
+}
+.mechanical-energy-balance > div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 45px;
+  padding-bottom: 13px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.mechanical-energy-balance b {
+  font-weight: 400;
+  color: #a38c65;
+  white-space: nowrap;
+}
+.mechanical-energy-balance i {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  height: 4px;
+  background: #b5c49f;
+  border-radius: 3px;
+}
+.mechanical-energy-balance > div:nth-child(2) i {
+  background: #c3ae83;
+}
+.mechanical-energy-balance > p {
+  text-align: right;
+  font-size: 16px;
+}
+.mechanical-energy-cause,
+.mechanical-energy-system {
+  max-width: 760px;
+  margin: 22px auto;
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.7;
+}
+.mechanical-energy-note {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #909a7f;
+  max-width: 750px;
+  margin: 22px auto 0;
+  text-align: center;
+}
+.mechanical-energy-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  padding: 20px 0;
+}
+.mechanical-energy-controls > .segmented {
+  grid-column: 1/-1;
+  justify-self: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 640px) {
+  .mechanical-energy-lab {
+    padding: 20px 12px;
+  }
+  .mechanical-energy-stage {
+    margin: 12px -7px;
+  }
+  .mechanical-energy-controls {
+    grid-template-columns: 1fr;
+  }
+  .mechanical-energy-record {
+    gap: 12px 20px;
+  }
+  .mechanical-energy-balance {
+    margin: 18px 0;
+  }
+  .mechanical-energy-balance > div {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mechanical-energy-balance > p {
+    text-align: center;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .mechanical-energy-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-lab > header > span,
+  .showcase[data-mode='watch'] .mechanical-energy-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .mechanical-energy-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .mechanical-energy-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .mechanical-energy-stage {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-stage svg {
+    max-height: 225px;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-record {
+    gap: 5px 12px;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-record p {
+    font-size: 16px;
+    margin: 4px 0;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-balance {
+    margin: 9px 0;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-balance > div {
+    min-height: 0;
+    margin: 5px 0;
+    padding-bottom: 10px;
+    gap: 4px 8px;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-balance > p {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .mechanical-energy-system {
+    margin: 6px 0;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .mechanical-energy-stage svg text {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "topic": {
+    "slug": "geometric-optics-lab",
+    "name": "从光路重建折射与像",
+    "title": "看到的针、筷子和文字，在哪里？",
+    "question": "看到的针、筷子和文字，在哪里？",
+    "description": "用插针测量折射率，追踪圆柱水杯与厚玻璃板的成像。",
+    "color": "#aebfa8",
+    "tag": "几何光学",
+    "related": ["refraction", "total-internal-reflection"],
+    "sources": [
+      {
+        "title": "OpenStax — Images formed by refraction",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/2-3-images-formed-by-refraction"
+      },
+      {
+        "title": "OpenStax — Snell refraction",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction"
+      },
+      {
+        "title": "The Physics Classroom — Refraction and sight through a glass",
+        "url": "https://www.physicsclassroom.com/mmedia/optics/bp.cfm"
+      }
+    ]
+  },
+  "component": "src/components/experiments/GeometricOpticsLab.tsx",
+  "cover": "src/components/covers/GeometricOpticsLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["从光路重建折射与像", "看到的针、筷子和文字，在哪里？", "教材光学实验"],
+      "en": [
+        "Reconstruct refraction and images from rays",
+        "Where are the pins, chopstick and text that we see?",
+        "textbook optics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "从光路重建折射与像": "Reconstruct refraction and images from rays",
+    "看到的针、筷子和文字，在哪里？": "Where are the pins, chopstick and text that we see?",
+    "用插针测量折射率，追踪圆柱水杯与厚玻璃板的成像。": "Measure index with pins and trace images through a cylindrical water glass and a thick plate.",
+    "近代物理": "Modern physics",
+    "几何光学": "Geometrical optics"
+  },
+  "narration": {
+    "duration": 196,
+    "cues": [
+      {
+        "id": "pins-faces",
+        "title": "描边界，确定入射光线",
+        "titleEn": "Trace the faces and incident ray",
+        "caption": "两个针的位置确定入射方向，玻璃边界确定入射点。",
+        "captionEn": "Two pins set the incident direction and the block face sets the entry point.",
+        "zh": "在纸上描出玻璃砖的两条平行边，在一侧插入A、B两根针。两针连线与第一条边相交，确定入射点。俯视图里的光线用于分析，不意味着空气中能直接看见这束光。实验应以针的位置和观察到的针像为依据，避免挪动玻璃砖后丢失原来的边界。",
+        "en": "Trace both parallel faces on paper and place pins A and B on one side. Their line meets the first face at the entry point. The top-view ray is an analysis aid, not visible light in air. The experiment relies on pin positions and images; moving the block would lose the traced boundaries.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "pins-align",
+        "title": "让第三根针遮住前面的针像",
+        "titleEn": "Align the third pin with the earlier images",
+        "caption": "C针偏离时，眼端视图中不能完全重合。",
+        "captionEn": "An offset pin C fails to overlap the earlier images in the eye view.",
+        "zh": "从另一侧观察，让第三根针C遮住前面的针像，再用D针确定出射方向。右上角把眼端的对准状态展开，C的横向偏离逐渐减小，直到重合。模型保留固定眼位，投影偏差由C针的实际位置算出；真实操作还要轻移视线排查视差，并让针保持竖直。",
+        "en": "From the other side, align pin C with the earlier images and use D to establish the outgoing direction. The eye-view inset shows the error shrinking as C moves into alignment. The fixed-eye model calculates its angular offset from position. Real alignment also checks parallax with small eye movements and keeps pins vertical.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "pins-index",
+        "title": "连接两个界面上的交点",
+        "titleEn": "Connect the intersections on both faces",
+        "caption": "砖内光线由入射点与出射点连接，再测角求折射率。",
+        "captionEn": "Connect the entry and exit points, then measure angles to infer index.",
+        "zh": "入射线和出射线分别与玻璃边界相交，连接这两个点，重建砖内光线。角度都从法线量起，用入射角正弦除以折射角正弦求折射率。改变入射角，光路侧移变化，但同一玻璃的推算折射率不变。这里没有随机测量误差，不能把显示的小数位当成实验精度。",
+        "en": "Intersect the incoming and outgoing lines with their faces and connect those points to reconstruct the internal ray. Measure both angles from the normal and divide their sines. Changing incidence changes lateral displacement while the inferred index stays fixed. The model has no random measurement error; displayed decimals are not experimental precision.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "cup-interfaces",
+        "title": "沿圆柱杯的曲面追踪光线",
+        "titleEn": "Trace rays through curved cup interfaces",
+        "caption": "水、玻璃与空气的两个弯曲界面共同改变出射方向。",
+        "captionEn": "Curved water–glass and glass–air interfaces jointly change the outgoing direction.",
+        "zh": "水平看水中的筷子，需要考虑杯子的弯曲侧壁。上方取水平横截面，从筷子上的一点发出两条光线，依次穿过水到玻璃、玻璃到空气的界面，最后进入观察者附近。虚线是出射光的反向延长，它们交会的位置给出这小束光对应的虚像。",
+        "en": "A horizontal view through a cup must account for its curved sidewall. The upper horizontal slice traces two rays from one chopstick point through water–glass and glass–air interfaces to the observer. Dashed backward extensions locate the virtual image associated with this small ray bundle.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "cup-width",
+        "title": "移动筷子，看侧移与宽度一起变化",
+        "titleEn": "Move the chopstick and compare shift with width",
+        "caption": "筷子两侧边缘分别成像，得到侧移和局部放大。",
+        "captionEn": "Images of both edges determine displacement and local magnification.",
+        "zh": "分别追踪筷子两侧边缘，再比较它们在观察方向上的间隔，就得到下方看起来的宽度。移动筷子，侧移和放大一起变化，而不是把原来的图形随意拉宽。这里用理想同心圆柱杯壁和窄观察光束，忽略色散、散射、杯口与底部；较大视场会出现不能用单一像点描述的像差。",
+        "en": "Trace both chopstick edges and compare their separation in the viewing direction. Moving the chopstick changes apparent displacement and width together rather than stretching an image arbitrarily. The model uses concentric cylindrical walls and a narrow bundle, omitting dispersion, scattering, rim and base. Wider fields introduce aberrations beyond one image point.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "plate-image",
+        "title": "反向延长出射光，找到浅一些的像",
+        "titleEn": "Extend outgoing rays backward to find a shallower image",
+        "caption": "透过玻璃看到的字，似乎比真实位置更靠近上表面。",
+        "captionEn": "Text seen through glass appears closer to the upper surface.",
+        "zh": "把厚玻璃板压在字上，从上方看。来自字的两条光在上表面折射，进入空气后离法线更远。沿出射方向反向延长，它们在真实字的上方相交，因此字看起来变浅。深色表示实际位置，浅棕色表示这对光线的虚像；虚线不是额外传播的光。",
+        "en": "Place a thick glass plate on printed text and look from above. Rays refract away from the normal at the upper face. Their backward extensions meet above the actual text, so it appears shallower. Dark text marks the object and pale text the virtual image for this ray pair. Dashed extensions are not additional propagating light.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "plate-angle",
+        "title": "把近轴公式与较大角度比较",
+        "titleEn": "Compare the paraxial formula with larger angles",
+        "caption": "接近正视时，像深约为厚度除以折射率。",
+        "captionEn": "Near normal viewing, apparent depth is approximately thickness divided by index.",
+        "zh": "接近法线观察时，像深约等于实际深度除以折射率。角度变大后，用精确折射角求交点，会偏离这个近轴公式。页面把两种结果并列显示，强调公式的适用条件。玻璃下表面与文字视为贴合，真实纸面间隙、有限瞳孔和多次反射都没有加入。",
+        "en": "Near normal viewing, apparent depth is approximately real depth divided by index. At larger angles, exact Snell refraction gives a different ray intersection. Both results are displayed to show the approximation’s limits. Text is assumed flush with the lower glass face; paper gaps, finite-pupil blur and multiple reflections are omitted.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-refractive-index-pins": {
+      "chapterIds": ["pins-faces", "pins-align", "pins-index"],
+      "label": {
+        "zh": "插针测折射率",
+        "en": "Refractive index with pins"
+      }
+    },
+    "e1-water-chopstick-image": {
+      "chapterIds": ["cup-interfaces", "cup-width"],
+      "label": {
+        "zh": "水中筷子",
+        "en": "Chopstick in water"
+      }
+    },
+    "e1-glass-apparent-depth": {
+      "chapterIds": ["plate-image", "plate-angle"],
+      "label": {
+        "zh": "厚玻璃板视深",
+        "en": "Apparent depth through glass"
+      }
+    }
+  }
+}

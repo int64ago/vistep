@@ -1,4 +1,6 @@
 /** Small, deterministic catalog queries. This module contains no experiment engines. */
+import { discoveryCategories } from '../data/discovery-metadata';
+
 export type DiscoveryFilters = {
   query: string;
   category: string;
@@ -28,6 +30,13 @@ export function normalizeSearch(value: string) {
     .replace(/\s+/g, ' ')
     .trim();
 }
+// A complete subject label denotes that subject. Segmenting 电与磁 into
+// 电 / 与 / 磁 must not turn the label into an unrelated cross-subject match.
+const categoryQueries = new Map(
+  discoveryCategories.flatMap((category) =>
+    Object.values(category.label).map((label) => [normalizeSearch(label), category.id] as const),
+  ),
+);
 // Segment only the query: a Chinese compound such as 相机传感器 should find
 // the separate everyday/technical aliases 相机 and 拜耳传感器. Keep Latin
 // acronym boundaries intact (AI must still not match rainbow).
@@ -73,6 +82,8 @@ export function writeFilters(url: URL, filters: DiscoveryFilters): URL {
 }
 export function sceneScore(scene: SearchableScene, filters: DiscoveryFilters): number {
   if (filters.category !== 'all' && scene.category !== filters.category) return -1;
+  const queryCategory = categoryQueries.get(normalizeSearch(filters.query));
+  if (queryCategory && scene.category !== queryCategory) return -1;
   if (filters.age !== null && scene.minAge > filters.age) return -1;
   if (filters.length === 'short' && scene.duration > 180) return -1;
   if (filters.length === 'long' && scene.duration <= 180) return -1;

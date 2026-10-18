@@ -1,0 +1,28 @@
+---
+const wave = [127, 134, 141];
+---
+
+<svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
+  <path d="M37 170H363M37 177H363" stroke="#c3cfb4" stroke-width="3"></path>
+  <rect x="48" y="91" width="27" height="73" rx="6" fill="#bdcba9"></rect>
+  <ellipse cx="75" cy="121" rx="4" ry="15" fill="#d8e2c8" stroke="#96ad89"></ellipse>
+  <rect x="274" y="91" width="27" height="63" rx="5" fill="#becbae"></rect>
+  <rect x="266" y="151" width="59" height="15" rx="5" fill="#cbd6b9"></rect>
+  <circle cx="279" cy="169" r="7" fill="#9eaf8c"></circle><circle
+    cx="313"
+    cy="169"
+    r="7"
+    fill="#9eaf8c"></circle>
+  <path d="M75 104H274" stroke="#bda174" stroke-dasharray="4 6"></path>
+  {
+    wave.map((x) => (
+      <path d={`M${x} 106Q${x - 9} 121 ${x} 136`} stroke="#94b396" stroke-width="2" />
+    ))
+  }
+  <path d="M75 68V62H274V68" stroke="#b5c3a4"></path>
+  <path d="M50 148Q26 196 79 199H127" stroke="#acb99d" stroke-width="2"></path>
+  <path d="M127 190H190V216H127Z" fill="#e0e7d3" stroke="#adbd9e"></path><path
+    d="M122 219H196"
+    stroke="#a7b79b"
+    stroke-width="3"></path>
+</svg>

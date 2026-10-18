@@ -1,0 +1,162 @@
+{
+  "topic": {
+    "slug": "ticker-tape-lab",
+    "name": "纸带运动实验室",
+    "title": "纸带上的点，怎样变成速度和加速度？",
+    "question": "纸带上的点，怎样变成速度和加速度？",
+    "description": "从固定打点周期到纸带读数，沿四条教材实验路径学会记录时间、测量速度和研究加速度。",
+    "color": "#a5b88e",
+    "tag": "运动测量",
+    "related": ["newton-tube", "sampling-aliasing"],
+    "sources": [
+      {
+        "title": "OpenStax University Physics — Instantaneous Velocity and Speed",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/3-2-instantaneous-velocity-and-speed"
+      },
+      {
+        "title": "OpenStax University Physics — Average and Instantaneous Acceleration",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/3-3-average-and-instantaneous-acceleration"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["纸带运动实验室", "打点计时器", "瞬时速度", "加速度", "纸带", "自由落体"],
+      "en": [
+        "Ticker-tape laboratory",
+        "ticker timer",
+        "instantaneous velocity",
+        "acceleration",
+        "falling tape"
+      ]
+    }
+  },
+  "component": "src/components/experiments/TickerTapeLab.tsx",
+  "cover": "src/components/covers/TickerTapeLabCover.astro",
+  "translations": {
+    "纸带运动实验室": "Ticker-tape laboratory",
+    "纸带上的点，怎样变成速度和加速度？": "How do dots on a tape become velocity and acceleration?",
+    "从固定打点周期到纸带读数，沿四条教材实验路径学会记录时间、测量速度和研究加速度。": "Follow four textbook paths from periodic dots to tape measurements, velocity and acceleration.",
+    "运动测量": "Measuring motion",
+    "先让时间留下等间隔的点": "Let a regular clock mark the tape",
+    "选一段纸带，读出这一段的平均速度": "Select a tape interval and measure its average velocity",
+    "把纸带速度逐点放回时间轴": "Place tape velocities on their time axis",
+    "同样的计时器，换成竖直下落的重物": "Use the same timer for a falling mass",
+    "每相邻两点": "Between neighboring dots",
+    "计时器固定，纸带跟随小车或下落重物移动，按真实采样时刻留下点": "The fixed timer marks a moving tape at actual sample times",
+    "取下的纸带 · 按时间排列": "Removed tape · Early to late",
+    "按实际位移绘制的纸带点迹与所选时间区间": "Recorded tape dots and a selected time interval",
+    "平均速度": "Average velocity",
+    "由相邻采样间隔测得的速度与时间图像": "Velocity versus time from neighboring samples",
+    "由点迹估计的加速度": "Acceleration estimated from dots",
+    "实验路径": "Experiment path",
+    "使用计时器": "Use the timer",
+    "测量速度": "Measure velocity",
+    "小车加速": "Accelerating cart",
+    "自由落体": "Free fall",
+    "记录到的时刻": "Recorded physical time",
+    "测速时间间隔": "Velocity measurement window",
+    "小车加速度": "Cart acceleration",
+    "计时器形式": "Timer mechanism",
+    "电磁打点": "Electromagnetic timer",
+    "电火花打点": "Spark timer",
+    "点是计时记录，不是物体每一瞬间的位置。图示慢放；读数使用真实秒数。": "Dots are timed samples, not every instant of motion. The view is slowed; readings use physical seconds."
+  },
+  "narration": {
+    "duration": 132,
+    "cues": [
+      {
+        "id": "timer",
+        "title": "让时间打点",
+        "titleEn": "Mark regular time",
+        "caption": "五个间隔是0.10秒，需要数六个点。",
+        "captionEn": "Five intervals are0.10 seconds: count six dots.",
+        "zh": "计时器先工作，再拉动纸带。它每隔相同的时间留下一个点；这里每秒打五十次，所以相邻两点间隔零点零二秒。注意数的是间隔，五个间隔需要六个点。纸带走得快，点距就大；走得慢，点距就小。时间的节拍没有改变。",
+        "en": "Start the timer before pulling the tape. It marks at regular intervals: fifty marks per second here, so neighboring dots are separated by two hundredths of a second. Count the gaps. Five intervals need six dots. A faster tape leaves wider gaps, but the timing rhythm stays the same.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "average",
+        "title": "读出一段平均速度",
+        "titleEn": "Read an interval-average velocity",
+        "caption": "位移差除以时间差，得到这一段的平均速度。",
+        "captionEn": "Displacement difference divided by time difference gives the interval average.",
+        "zh": "取下纸带，按时间先后排好。现在选出两个点：尺子告诉我们这一段走了多远，点的间隔数告诉我们用了多久。把位移除以时间，就是这段时间的平均速度。它概括整段运动，不能直接说成第一个点或最后一个点的速度。",
+        "en": "Remove the tape and arrange it from earlier to later times. Choose two dots. Their separation gives displacement, while the number of gaps gives elapsed time. Divide one by the other to obtain average velocity for that interval. It describes the whole interval, not automatically the velocity at either endpoint.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26.3
+      },
+      {
+        "id": "instant",
+        "title": "把测速区间缩短",
+        "titleEn": "Shorten the measurement window",
+        "caption": "区间缩短，平均速度逐步接近所选时刻的瞬时速度。",
+        "captionEn": "A shrinking interval brings the average toward instantaneous velocity.",
+        "zh": "固定起点，把终点逐渐移近。纸带上测量的距离变短，所用时间也变短，平均速度越来越接近起点那一瞬间的速度。真实测量不能无限缩短：距离太小，读尺误差就显得很大。选区间，需要在接近瞬时状态和容易读准之间作取舍。",
+        "en": "Keep the starting dot fixed and move the endpoint closer. Both displacement and elapsed time shrink, and the average approaches the velocity at the starting instant. A real measurement cannot shrink indefinitely: ruler uncertainty matters more when the distance is tiny. The interval must balance temporal detail against measurement uncertainty.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52.3
+      },
+      {
+        "id": "cart",
+        "title": "从纸带到速度图像",
+        "titleEn": "From tape to a velocity graph",
+        "caption": "等时间测速得到一列速度；图线斜率反映加速度。",
+        "captionEn": "Equal-time measurements give velocities; the graph slope reveals acceleration.",
+        "zh": "换成重物牵引的小车。连续的等时间间隔中，点距逐渐增大。把各段测出的速度放回它们对应的时间，散点排成一条近似直线。这说明小车速度随时间均匀变化。直线的斜率，就是速度变化量与所用时间的比，也就是加速度。",
+        "en": "Now let a hanging load pull the cart. Dot spacing grows across successive equal-time intervals. Put each measured velocity back at its corresponding time. A near-straight line shows that velocity changes uniformly with time. Its slope is the velocity change divided by elapsed time: the acceleration.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78.3
+      },
+      {
+        "id": "fall",
+        "title": "用纸带研究自由落体",
+        "titleEn": "Study free fall with tape",
+        "caption": "改成竖直下落装置，由等时间位移差估计加速度。",
+        "captionEn": "Use a vertical falling-mass rig and equal-time displacement differences.",
+        "zh": "最后，把纸带接到竖直下落的重物上。计时规则没有变，装置和研究问题变了。相邻等时间段的位移差，可以用来估计加速度。这个忽略阻力的模型给出九点八米每二次方秒。真实实验还要检查纸带阻力、点迹清晰度和读尺误差，再比较不同质量的结果。",
+        "en": "Finally, attach the tape to a vertically falling mass. The clock is unchanged, but the apparatus and question are different. Differences between successive equal-time displacements estimate acceleration. The drag-free model gives nine point eight metres per second squared. Real measurements must examine tape resistance, unclear dots and ruler uncertainty before comparing masses.",
+        "seconds": 28,
+        "chapterAt": 104,
+        "at": 104.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-ticker-timer": {
+      "chapterIds": ["timer"],
+      "label": {
+        "zh": "使用打点计时器",
+        "en": "Using the ticker timer"
+      }
+    },
+    "required-1-tape-speed": {
+      "chapterIds": ["average", "instant"],
+      "label": {
+        "zh": "纸带测速度",
+        "en": "Velocity from tape"
+      }
+    },
+    "required-1-cart-velocity": {
+      "chapterIds": ["cart"],
+      "label": {
+        "zh": "小车速度随时间变化",
+        "en": "Cart velocity over time"
+      }
+    },
+    "required-1-free-fall-tape": {
+      "chapterIds": ["fall"],
+      "label": {
+        "zh": "纸带研究自由落体",
+        "en": "Free-fall tape"
+      }
+    }
+  }
+}

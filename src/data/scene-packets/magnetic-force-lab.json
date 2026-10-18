@@ -1,0 +1,179 @@
+{
+  "topic": {
+    "slug": "magnetic-force-lab",
+    "name": "磁力实验室",
+    "title": "电流方向变了，受力怎样跟着变？",
+    "question": "电流方向变了，受力怎样跟着变？",
+    "description": "从悬挂导体棒到通电弹簧，用真实装置对照追踪电流、磁场与受力。",
+    "color": "#64826a",
+    "tag": "磁场与电流",
+    "related": ["hall-effect", "induction-motor"],
+    "sources": [
+      {
+        "title": "OpenStax — Force on a current-carrying conductor",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor"
+      },
+      {
+        "title": "OpenStax — Force between parallel currents",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/12-3-magnetic-force-between-two-parallel-currents"
+      }
+    ]
+  },
+  "component": "src/components/experiments/MagneticForceLab.tsx",
+  "cover": "src/components/covers/MagneticForceLabCover.astro",
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["磁力实验室", "安培力", "通电导线", "螺线管", "通电弹簧"],
+      "en": ["Magnetic-force experiments", "Ampere force", "solenoid", "parallel currents"]
+    }
+  },
+  "translations": {
+    "磁力实验室": "Magnetic-force experiments",
+    "电流方向变了，受力怎样跟着变？": "How does force respond when current reverses?",
+    "从悬挂导体棒到通电弹簧，用真实装置对照追踪电流、磁场与受力。": "From a suspended wire to an oscillating spring, track current, field and force through distinct apparatuses.",
+    "磁场与电流": "Magnetic fields and currents",
+    "悬挂导体棒": "Suspended wire",
+    "螺线管与铁钉": "Solenoid and nail",
+    "平行导线": "Parallel wires",
+    "通电弹簧": "Current-carrying spring",
+    "触点接通": "Contact closed",
+    "触点断开": "Contact open",
+    "磁场、电流与受力由同一模型计算的实验装置": "Apparatus with field, current and force derived from one model",
+    "反转电流，铁钉仍被吸引": "Current reverses; the nail remains attracted",
+    "同向电流：相吸": "Same direction: attraction",
+    "反向电流：相斥": "Opposite directions: repulsion",
+    "历史接点装置 · 虚拟观察": "Historical contact · virtual observation",
+    "导体棒受力": "Force on the wire",
+    "单位长度相互作用力": "Force per unit length",
+    "线圈实际电流": "Actual coil current",
+    "线圈中心磁场": "Field at the coil centre",
+    "选择磁力实验": "Choose a magnetic-force experiment",
+    "导线电流": "Wire current",
+    "外部磁场": "External magnetic field",
+    "另一根导线电流": "Other wire current",
+    "实验经过时间": "Elapsed trial time",
+    "模型与观察尺度": "Model and observation scale",
+    "导体棒使用小位移弹性支承；平行导线按长直导线计算，形变放大。螺线管铁钉采用线性诱导磁矩近似，位移只示意吸引方向。弹簧为带接触迟滞的集总模型，磁力系数是教学参数；历史水银接点不作为现实操作建议。": "The wire has a small-displacement elastic support. Parallel-wire deformation is enlarged. The nail uses a linear induced-dipole approximation, with displacement indicating attraction only. The spring uses a lumped contact-hysteresis model and an illustrative force coefficient. The mercury contact is historical, not a practical recommendation."
+  },
+  "narration": {
+    "duration": 210,
+    "cues": [
+      {
+        "id": "wire-forward",
+        "title": "跟着导体棒看受力",
+        "titleEn": "Follow the force on the wire",
+        "caption": "电流、磁场与受力互相垂直。",
+        "captionEn": "Current, field and force are perpendicular.",
+        "zh": "先看悬挂的导体棒。电流沿棒通过，磁场穿过画面，棒向一个方向移动。金色箭头标记电流，绿色箭头标记受力。棒不是被磁体直接吸住，而是通电导体在外磁场中受到力。",
+        "en": "Follow the suspended wire. Current runs along it while the magnetic field crosses the view. The wire moves. The gold arrow marks current and the green arrow marks force. The external field acts on the current-carrying conductor.",
+        "seconds": 30,
+        "chapterAt": 0,
+        "at": 0.6
+      },
+      {
+        "id": "wire-reverse-current",
+        "title": "只反转电流",
+        "titleEn": "Reverse only the current",
+        "caption": "磁场不变，电流反向，受力反向。",
+        "captionEn": "Keep the field fixed: reversing current reverses force.",
+        "zh": "保持磁场不动，只调换电流方向。导体棒现在向相反方向移动。若把电流调到零，磁力也消失。这个对照把电流的作用从磁场的存在中分离出来。",
+        "en": "Keep the magnetic field fixed and reverse only the current. The wire now moves the other way. With zero current the magnetic force vanishes. This controlled comparison separates the effect of current from the mere presence of a field.",
+        "seconds": 30,
+        "chapterAt": 30,
+        "at": 30.6
+      },
+      {
+        "id": "wire-reverse-field",
+        "title": "再反转磁场",
+        "titleEn": "Reverse the magnetic field",
+        "caption": "只反转磁场，也会反转受力。",
+        "captionEn": "Reversing only the field also reverses the force.",
+        "zh": "把电流恢复原方向，再反转磁场。小圆点换成叉号，表示磁场由穿出画面变成穿入画面。导体棒的受力再次反向。判断方向时，电流和磁场必须一起看。",
+        "en": "Restore the original current and reverse the field. Dots become crosses: the field now points into the view. Force reverses again. To predict its direction, track both the current and the field.",
+        "seconds": 30,
+        "chapterAt": 60,
+        "at": 60.6
+      },
+      {
+        "id": "solenoid-attract",
+        "title": "铜线圈也能吸铁钉",
+        "titleEn": "A copper coil can attract iron",
+        "caption": "通电螺线管建立磁场，使软铁钉被吸引。",
+        "captionEn": "The coil field magnetizes and attracts the soft iron nail.",
+        "zh": "把导线绕成螺线管。虽然线圈本身是铜，通电以后仍能吸引铁钉。磁场使软铁磁化，铁钉被拉向较强的磁场区域。线圈中心的磁场读数来自实际匝数与几何。",
+        "en": "Wind the wire into a solenoid. Although the winding is copper, current makes it attract an iron nail. The field magnetizes the soft iron and draws it toward the stronger field region. The central field readout follows the winding geometry.",
+        "seconds": 30,
+        "chapterAt": 90,
+        "at": 90.6
+      },
+      {
+        "id": "solenoid-reverse",
+        "title": "反向后为何仍然吸引",
+        "titleEn": "Why attraction survives reversal",
+        "caption": "磁极反转，软铁磁化也反转，吸引保持。",
+        "captionEn": "The poles and induced magnetization reverse together.",
+        "zh": "现在反转线圈电流。线圈的磁极交换，铁钉仍然靠近。软铁的磁化方向也跟着变化，所以不能把它当成一个方向固定的永久小磁针。零电流时，这个简化模型的吸引力归零。",
+        "en": "Reverse the coil current. The poles exchange, but the nail is still attracted. Its induced magnetization changes with the field. It is not a permanent magnet with a fixed orientation. At zero current, attraction vanishes in this simplified model.",
+        "seconds": 30,
+        "chapterAt": 120,
+        "at": 120.6
+      },
+      {
+        "id": "parallel-wires",
+        "title": "相邻电流怎样相互作用",
+        "titleEn": "How neighbouring currents interact",
+        "caption": "同向相吸，反向相斥。",
+        "captionEn": "Parallel currents attract; opposite currents repel.",
+        "zh": "看两根平行导线。开始时电流同向，两根线互相靠近。随后只反转一根线的电流，作用变成排斥。每根导线既产生磁场，也受到另一根导线磁场的作用。形变已放大，数值按长直导线计算。",
+        "en": "Watch the two parallel wires. With currents in the same direction, they attract. Reverse one current and they repel. Each wire creates a field and experiences the other’s field. Deformation is enlarged; the force follows the long-wire approximation.",
+        "seconds": 30,
+        "chapterAt": 150,
+        "at": 150.6
+      },
+      {
+        "id": "spring-contact",
+        "title": "把吸引变成接触循环",
+        "titleEn": "Turning attraction into a contact cycle",
+        "caption": "线圈吸引、接点断开、弹簧复位，循环重来。",
+        "captionEn": "Attraction opens the contact; elastic return closes it again.",
+        "zh": "最后看历史通电弹簧装置。相邻线圈电流同向，吸引使弹簧缩短，下端离开接点。电流切断后吸引消失，弹簧回落并重新接通。请停在接点处，核对每次通断与实际电流。这是虚拟历史演示，不是水银接点制作任务。",
+        "en": "The historical spring has neighbouring turns carrying current in the same direction. Attraction shortens it and lifts its end from the contact. Current stops, the spring returns and the contact closes again. Pause at the contact and check the current readout. This is a virtual historical demonstration.",
+        "seconds": 30,
+        "chapterAt": 180,
+        "at": 180.6
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-ampere-wire-force": {
+      "chapterIds": ["wire-forward", "wire-reverse-current", "wire-reverse-field"],
+      "label": {
+        "zh": "安培力的方向",
+        "en": "Magnetic force direction"
+      }
+    },
+    "e2-solenoid-nail-attraction": {
+      "chapterIds": ["solenoid-attract", "solenoid-reverse"],
+      "label": {
+        "zh": "通电螺线管吸引小铁钉",
+        "en": "Solenoid attraction"
+      }
+    },
+    "e2-parallel-current-force": {
+      "chapterIds": ["parallel-wires"],
+      "label": {
+        "zh": "通电平行导线间的相互作用",
+        "en": "Forces between parallel currents"
+      }
+    },
+    "e2-current-spring-oscillation": {
+      "chapterIds": ["spring-contact"],
+      "label": {
+        "zh": "通电弹簧的振动",
+        "en": "Current-carrying spring"
+      }
+    }
+  }
+}

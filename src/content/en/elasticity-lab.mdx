@@ -1,0 +1,37 @@
+<h2 id="understand">Build a relationship from records</h2>
+
+Measure the unloaded spring length L₀, then add masses one at a time. After each settles, record total length L and calculate extension x = L − L₀. At rest, the spring force matches the load's weight mg. Collect several loads before examining the force–extension graph.
+
+Within the ideal spring's linear range, the graph passes through the origin and its slope is the spring constant. Total length is not extension. One point alone cannot establish proportionality across every load.
+
+The textbook's rubber-band research topic asks further questions: do loading and unloading follow the same curve, and does repeated cycling change the response? This scene gives rubber a separate nonlinear, hysteretic and cycle-softening model rather than recoloring the spring.
+
+<h2 id="try">Keep loading, unloading and cycle records separate</h2>
+
+- Compare spring loads of 0.15 and 0.30 kg. Extensions are 4.9 and 9.8 cm; total length has not doubled.
+- For rubber, hold extension fixed and switch loading branches to compare the required force. The hanging container represents a continuously adjustable load; its empty mass is neglected.
+- Change completed cycles and compare the initial dashed loading curve with the current one. These are quasistatic records, not a simulation of rapid stretching vibrations.
+
+Apparatus and graph use one shared state. Automatic loading reveals only the measured portion of a curve; exploration displays complete branches for comparison.
+
+<h2 id="deeper">Assumptions and experimental limits</h2>
+
+<details>
+<summary>Spring model</summary>
+
+The natural length is 0.16 m, stiffness is 30 N/m, and gravity is 9.8 m/s². Spring and pan masses are neglected; every reading is an equilibrium state. The spring keeps the same number of turns, with endpoints connected to support and load.
+
+<div className="formula">F = mg = kx; L = L₀ + x</div>
+
+Exploration stays within the chosen linear range. The equation is not extended to plastic deformation or breakage. A physical experiment also checks alignment, parallax, zero and repeatability.
+
+</details>
+
+<details>
+<summary>Illustrative rubber constitutive law</summary>
+
+Using metres, with maximum extension xₘ = 0.12 m, loading follows F = s(30x + 2200x³). Unloading subtracts 200x(xₘ − x). The cycle-softening factor is s = 1 − 0.12(1 − exp(−n/2)), where n counts previously completed cycles. Branches join at both endpoints; unloading returns less work, with loop area 200xₘ³/6.
+
+These are explicit phenomenological teaching parameters, not a fit to a measured band or a universal rubber law. Temperature, stretching speed, formulation and fatigue affect real results. Width decreases according to approximate volume conservation, linking stretching to thinning.
+
+</details>

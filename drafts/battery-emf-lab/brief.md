@@ -1,0 +1,13 @@
+# Source EMF group — author handoff
+
+Four textbook positions, five apparatus: parallel lamps, dry-cell U–I measurement, pear-cell voltmeter/resistance box, orange-juice microammeter/resistance box, power-bank output investigation. Printed PEP required 3 pages 83, 89–92, 131–135. Ten chapters / 246 s. Curriculum segments contiguous and exploration selects the matching apparatus from variant.
+
+Misconception: terminal voltage is always EMF; meter arrangements are interchangeable; a regulated output is a bare lithium cell with a globally constant resistance. Track load contact, source terminals, and measured point. Opening: connected lamp branches change power. Turning point: actual U–I slope reconstructs hidden source behavior. Result: power-bank regulator creates an explicit counterexample to unrestricted straight-line extrapolation.
+
+Visual direction: lamps remain a true parallel network with open inactive branch contacts. Dry-cell rheostat uses a physically connected moving wiper; fruit cells show copper/zinc contacts and their distinct instruments; power-bank cutaway separates storage from regulating circuit. One vertical apparatus and compact plot stack fits narrow composition; desktop retains readable apparatus width. SVG label sizing increases on narrow screens. This is author layout reasoning, not observed browser acceptance.
+
+Science/source: OpenStax 10.1 https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force supports E−Ir; TI PMP9776 https://www.ti.com/tool/PMP9776 demonstrates boost regulation, current limit and protections. Textbook original tables preserve orange-cell page92 data and power-bank pages132–133. 100/80/60 bank load series are original textbook points; 40/20/5 optional curves are explicitly reconstructed from textbook parameter tables. No universal product specification inferred.
+
+Benchmark: analytic loaded-source fit E/(1+r/Rv), r/(1+r/Rv); energy identity. Orange fitted slope includes and then subtracts 100 Ω meter resistance. Counterexamples: zero-r source does not dim parallel lamps; current limit violates extrapolated line; repeated current values cannot yield a fitted slope. Fruit spacing/depth model is deliberately qualitative and does not claim electrochemistry prediction.
+
+Author checks: 7 targeted model tests passed, TSX syntax has zero diagnostics, every Chinese renderer literal has a bilingual packet key, packet validation passed (250 at validation), and owned files formatted. Fruit insertion chapter holds the load fixed while depth changes. Browser full watch, narrow screenshots, audio listening, reduced motion, actual phone performance remain root acceptance; no such evidence claimed here. Root owns shared registration and voice production after freeze.

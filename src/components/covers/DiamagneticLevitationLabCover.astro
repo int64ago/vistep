@@ -1,0 +1,34 @@
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  {
+    [66, 248].map((x) => (
+      <g>
+        <rect
+          x={x}
+          y="45"
+          width="46"
+          height="183"
+          rx="9"
+          fill="#ceba8c"
+          stroke="#aa915f"
+          stroke-width="2"
+        />
+        {Array.from({ length: 18 }, (_, i) => (
+          <path d={`M${x + 2} ${52 + i * 9.6}h42`} stroke="#ad9562" />
+        ))}
+      </g>
+    ))
+  }
+  {
+    [-2, -1, 0, 1, 2].map((i) => (
+      <path
+        d={`M${180 + i * 26} 31Q${180 + i * 7} 132 ${180 + i * 17} 235`}
+        stroke="#aac098"
+        stroke-width="1.5"
+      />
+    ))
+  }
+  <circle cx="180" cy="119" r="19" fill="#accdc0" stroke="#80a897" stroke-width="2"
+  ></circle><ellipse cx="173" cy="110" rx="5" ry="7" fill="#deebdc"></ellipse>
+  <path d="M144 132V71m-5 7 5-7 5 7" stroke="#789663" stroke-width="3"></path>
+  <path d="M217 106v61m-5-7 5 7 5-7" stroke="#b5975d" stroke-width="3"></path>
+</svg>

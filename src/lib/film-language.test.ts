@@ -54,6 +54,37 @@ afterEach(() => {
 });
 
 describe('one-navigation film/language bridge', () => {
+  it('preserves a teaching lesson and its live frame across language changes', () => {
+    page('https://vistep.ai/teaching/pep-high-school-physics/newton-tube/#t=12');
+    const stop = registerFilmLanguageState('newton-tube', () => ({ time: 42.5, playing: true }));
+    const anchor = link('https://vistep.ai/en/teaching/pep-high-school-physics/newton-tube/');
+    click(anchor);
+    navigate(anchor);
+    expect(consumeFilmLanguageState('newton-tube', 110)).toEqual({ time: 42.5, playing: true });
+    expect(location.href).toBe(
+      'https://vistep.ai/en/teaching/pep-high-school-physics/newton-tube/#t=42.5',
+    );
+    stop();
+  });
+  it('uses the shared scene identity when a textbook gives its lesson a different URL', () => {
+    page('https://vistep.ai/teaching/pep-high-school-physics/free-fall-demo/');
+    const stop = registerFilmLanguageState('newton-tube', () => ({ time: 23, playing: false }));
+    const anchor = link('https://vistep.ai/en/teaching/pep-high-school-physics/free-fall-demo/');
+    anchor.dataset.sceneSlug = 'newton-tube';
+    click(anchor);
+    navigate(anchor);
+    expect(consumeFilmLanguageState('newton-tube', 110)).toEqual({ time: 23, playing: false });
+    stop();
+  });
+  it('does not carry classroom progress to a different curriculum with the same scene', () => {
+    const env = page('https://vistep.ai/teaching/first-book/newton-tube/');
+    const stop = registerFilmLanguageState('newton-tube', () => ({ time: 23, playing: true }));
+    const anchor = link('https://vistep.ai/en/teaching/another-book/newton-tube/');
+    anchor.dataset.sceneSlug = 'newton-tube';
+    click(anchor);
+    expect(env.session.setItem).not.toHaveBeenCalled();
+    stop();
+  });
   it.each([false, true])(
     'takes the live149.5 frame instead of stale121.75 hash and restores playing=%s once',
     (playing) => {

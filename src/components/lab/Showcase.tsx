@@ -2,7 +2,14 @@ import { t } from '../../i18n';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useSimulation } from './useSimulation';
 import { useNarration } from './useNarration';
-import { filmDuration, filmRunningTime, type Film, type Soundtrack } from '../../lib/film';
+import {
+  filmDuration,
+  filmRunningTime,
+  filmWindow,
+  type Film,
+  type FilmSelection,
+  type Soundtrack,
+} from '../../lib/film';
 import { FilmContext } from './FilmContext';
 export { FilmContext, useShowcase, ramp, ease } from './FilmContext';
 import {
@@ -15,23 +22,29 @@ export default function Showcase({
   film,
   track,
   children,
+  selection,
 }: {
   slug: string;
   film: Film;
   track?: Soundtrack;
   children: ReactNode;
+  selection?: FilmSelection;
 }) {
+  const playbackWindow = filmWindow(film, selection);
+  const start = playbackWindow.start,
+    end = playbackWindow.end,
+    duration = end - start;
   const [watch, setWatch] = useState(true),
     [visible, setVisible] = useState(false),
     [playing, setPlaying] = useState(false),
-    [time, setTime] = useState(0),
+    [time, setTime] = useState(start),
     [run, setRun] = useState(0),
     [switching, setSwitching] = useState(false),
     [quickControl, setQuickControl] = useState(false),
     [promptDismissed, setPromptDismissed] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null),
     transportRef = useRef<HTMLDivElement>(null);
-  const clock = useRef(0),
+  const clock = useRef(start),
     refresh = useRef(0),
     switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const languagePlaying = useRef(false),
@@ -51,24 +64,25 @@ export default function Showcase({
     visible,
     run,
     () => {
-      clock.current = film.duration;
-      setTime(film.duration);
+      clock.current = end;
+      setTime(end);
       setPlaying(false);
     },
     track,
+    start,
   );
   const advancing = watch && playing && visible && (!voice.enabled || !voice.waiting);
   const host = useSimulation((dt) => {
     clock.current = Math.min(
-      film.duration,
-      voice.enabled ? voice.currentTime() : clock.current + dt,
+      end,
+      Math.max(start, voice.enabled ? voice.currentTime() : clock.current + dt),
     );
     refresh.current += dt;
-    if (refresh.current >= 1 / 30 || clock.current === film.duration) {
+    if (refresh.current >= 1 / 30 || clock.current === end) {
       setTime(clock.current);
       refresh.current = 0;
     }
-    if (clock.current >= film.duration) setPlaying(false);
+    if (clock.current >= end) setPlaying(false);
   }, advancing);
   useEffect(() => {
     let intersecting = false;
@@ -126,33 +140,33 @@ export default function Showcase({
   }, []);
   const chapter = Math.max(
     0,
-    film.chapters.findLastIndex((c) => time >= c.at),
+    film.chapters.findLastIndex((c) => Math.min(time, end - 1e-7) >= c.at),
   );
   const replay = () => {
     if (switchTimer.current) clearTimeout(switchTimer.current);
     setSwitching(false);
-    clock.current = 0;
+    clock.current = start;
     refresh.current = 0;
-    setTime(0);
+    setTime(start);
     setRun((n) => n + 1);
     setWatch(true);
     setPlaying(true);
   };
   // Starting sound must happen inside the user's tap; the film keeps its place unless it ended.
   const startVoice = () => {
-    const restart = !watch || time >= film.duration;
+    const restart = !watch || time >= end;
     if (restart) replay();
     else setPlaying(true);
-    voice.enable(restart ? 0 : time);
+    voice.enable(restart ? start : time);
   };
   const seek = (value: number, play = false) => {
-    const next = Math.max(0, Math.min(film.duration, value));
+    const next = Math.max(start, Math.min(end, value));
     clock.current = next;
     refresh.current = 0;
     setTime(next);
     setWatch(true);
     voice.seek(next);
-    setPlaying(play && next < film.duration);
+    setPlaying(play && next < end);
   };
   useEffect(() => {
     const followChapterLink = () => {
@@ -169,7 +183,11 @@ export default function Showcase({
         restored.time,
         restored.playing && !matchMedia('(prefers-reduced-motion: reduce)').matches,
       );
-    else followChapterLink();
+    else {
+      const requested = new URLSearchParams(location.hash.slice(1)).get('t');
+      if (requested !== null) followChapterLink();
+      else if (selection) seek(start, !matchMedia('(prefers-reduced-motion: reduce)').matches);
+    }
     window.addEventListener('hashchange', followChapterLink);
     const returnToFilm = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('[data-film-seek]');
@@ -216,6 +234,7 @@ export default function Showcase({
         chapterTime,
         chapterProgress,
         narrating: voice.enabled && advancing,
+        variant: selection?.variant,
       }}
     >
       <div
@@ -257,14 +276,14 @@ export default function Showcase({
         </div>
         <div className="film-caption">
           <span className="film-chapter">
-            {String(chapter + 1).padStart(2, '0')}
-            <i> / {String(film.chapters.length).padStart(2, '0')}</i>
+            {String(chapter - playbackWindow.firstIndex + 1).padStart(2, '0')}
+            <i> / {String(playbackWindow.chapters.length).padStart(2, '0')}</i>
           </span>
           <div className="film-caption-copy">
             <p key={`${watch}-${chapter}`}>
               {watch ? t(film.chapters[chapter].caption) : t('自由探索，按自己的节奏观察。')}
             </p>
-            {film.chapters.map((item) => (
+            {playbackWindow.chapters.map((item) => (
               <p key={item.at} className="film-caption-measure" aria-hidden="true">
                 {t(item.caption)}
               </p>
@@ -275,10 +294,10 @@ export default function Showcase({
           <button
             type="button"
             className="film-quick-control"
-            onClick={() => (time >= film.duration ? replay() : setPlaying(!playing))}
+            onClick={() => (time >= end ? replay() : setPlaying(!playing))}
           >
             <span aria-hidden="true">{playing ? 'Ⅱ' : '▷'}</span>
-            {playing ? t('暂停演示') : time >= film.duration ? t('重播演示') : t('播放演示')}
+            {playing ? t('暂停演示') : time >= end ? t('重播演示') : t('播放演示')}
           </button>
         )}
         <div className="film-transport" ref={transportRef}>
@@ -286,14 +305,10 @@ export default function Showcase({
             className="film-play"
             disabled={switching}
             aria-label={
-              playing && watch
-                ? t('暂停演示')
-                : time >= film.duration
-                  ? t('重播演示')
-                  : t('播放演示')
+              playing && watch ? t('暂停演示') : time >= end ? t('重播演示') : t('播放演示')
             }
             onClick={() => {
-              if (!watch || time >= film.duration) replay();
+              if (!watch || time >= end) replay();
               else {
                 setWatch(true);
                 setPlaying(!playing);
@@ -311,23 +326,23 @@ export default function Showcase({
             )}
           </button>
           <div className="film-timeline">
-            <span style={{ width: `${(time / film.duration) * 100}%` }} />
-            {film.chapters.slice(1).map((c) => (
-              <i key={c.at} style={{ left: `${(c.at / film.duration) * 100}%` }} />
+            <span style={{ width: `${((time - start) / duration) * 100}%` }} />
+            {playbackWindow.chapters.slice(1).map((c) => (
+              <i key={c.at} style={{ left: `${((c.at - start) / duration) * 100}%` }} />
             ))}
             <input
               type="range"
-              min={0}
-              max={film.duration}
+              min={start}
+              max={end}
               step={0.1}
               value={time}
               aria-label={t('自动演示进度')}
-              aria-valuetext={`${filmDuration(time)} / ${filmRunningTime(film.duration)}`}
+              aria-valuetext={`${filmDuration(time - start)} / ${filmRunningTime(duration)}`}
               onChange={(e) => seek(Number(e.target.value))}
             />
           </div>
           <span className="film-time">
-            {filmDuration(time)} / {filmRunningTime(film.duration)}
+            {filmDuration(time - start)} / {filmRunningTime(duration)}
           </span>
           <button className="film-replay" aria-label={t('从头重播')} onClick={replay}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -389,13 +404,13 @@ export default function Showcase({
             <i aria-hidden="true">＋</i>
           </summary>
           <ol>
-            {film.chapters.map((item, i) => (
+            {playbackWindow.chapters.map((item, i) => (
               <li key={item.id}>
                 <button
                   onClick={() => seek(item.at, true)}
-                  aria-current={i === chapter ? 'step' : undefined}
+                  aria-current={i + playbackWindow.firstIndex === chapter ? 'step' : undefined}
                 >
-                  <time>{filmDuration(item.at)}</time>
+                  <time>{filmDuration(item.at - start)}</time>
                   <span>{t(item.title)}</span>
                 </button>
               </li>

@@ -1,0 +1,28 @@
+---
+import { springState } from '../../models/spring-oscillation-lab';
+const points = Array.from({ length: 50 }, (_, i) => {
+  const s = springState(i * 0.04);
+  return `${i ? 'L' : 'M'}${25 + i * 4.7},${151 - s.x * 600}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 300 220" aria-hidden="true"
+  ><path d="M45 34h210" stroke="#9dae8e" stroke-width="7" stroke-linecap="round"></path>{
+    [80, 150, 220].map((x, i) => (
+      <g>
+        <>
+          <path
+            d={`M${x} 34v8${Array.from({ length: 9 }, (_, j) => `l${j % 2 ? 12 : -12} ${5 + i}`).join('')}L${x} ${103 + i * 9}`}
+            fill="none"
+            stroke="#b8c7a7"
+            stroke-width="3"
+          />
+          <circle cx={x} cy={114 + i * 9} r="13" fill={i === 1 ? '#bda172' : '#93a880'} />
+        </>
+      </g>
+    ))
+  }<path d={points} fill="none" stroke="#bba174" stroke-width="3"></path><path
+    d="M25 151H270"
+    stroke="#a2b293"
+    stroke-dasharray="3 6"></path></svg
+>

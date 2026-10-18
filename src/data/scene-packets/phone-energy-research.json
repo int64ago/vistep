@@ -1,0 +1,135 @@
+{
+  "topic": {
+    "slug": "phone-energy-research",
+    "name": "手机耗电因素研究",
+    "title": "耗电不同，怎样判断是哪一个因素造成的？",
+    "question": "耗电不同，怎样判断是哪一个因素造成的？",
+    "description": "用同一模型手机设计亮度、音量、任务与网络的对照，记录合成数据并识别混杂因素。",
+    "color": "#bdc9ae",
+    "tag": "研究设计 · 功率 · 能量",
+    "related": ["battery-emf-lab", "thermal-process-lab"],
+    "sources": [
+      {
+        "title": "Android Open Source Project — Measure power values",
+        "url": "https://source.android.com/docs/core/power/values"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["手机耗电因素研究", "手机耗电", "控制变量", "能量积分", "课题研究"],
+      "en": [
+        "Researching Phone Energy Use",
+        "phone energy use",
+        "controlled variables",
+        "energy integration",
+        "research design"
+      ]
+    }
+  },
+  "component": "src/components/experiments/PhoneEnergyResearch.tsx",
+  "cover": "src/components/covers/PhoneEnergyResearchCover.astro",
+  "translations": {
+    "手机耗电因素研究": "Researching Phone Energy Use",
+    "耗电不同，怎样判断是哪一个因素造成的？": "How can we identify which factor changed energy use?",
+    "用同一模型手机设计亮度、音量、任务与网络的对照，记录合成数据并识别混杂因素。": "Design brightness, volume, task and network comparisons on one model phone; record synthetic data and identify confounds.",
+    "研究设计 · 功率 · 能量": "Study design · Power · Energy",
+    "上网浏览": "Web browsing",
+    "网络聊天": "Online chat",
+    "主叫电话": "Outgoing call",
+    "视频播放": "Video playback",
+    "录音重放": "Audio playback",
+    "网络游戏": "Online game",
+    "只改变屏幕亮度，保持内容与时间相同": "Change only brightness, keeping content and duration equal",
+    "音量对照需要相同的有声内容": "Volume comparisons need the same audible content",
+    "比较应用任务时，固定亮度、音量和网络条件": "Compare tasks at fixed brightness, volume and network conditions",
+    "亮度和网络同时改变，差异不能只归因于亮度": "Changing brightness and network together prevents a brightness-only conclusion",
+    "先检查改变了几个因素，再解释能量差": "Count changed factors before explaining the energy difference",
+    "合成教学数据 · 不代表任何实际手机": "Synthetic teaching data · Not measurements of a real phone",
+    "同一部模型手机的组件分解：屏幕、处理器、无线电、扬声器和电池": "Component decomposition of one model phone: display, processor, radio, speaker and battery",
+    "屏幕": "Display",
+    "处理器": "Processor",
+    "无线电": "Radio",
+    "声音": "Sound",
+    "依次为亮度、音量、网络负载倍率；同一手机、同一时长": "Brightness, volume and network-load multiplier; same phone and duration",
+    "改变因素数": "Changed factors",
+    "B 次实验任务": "Run B task",
+    "B 次屏幕亮度": "Run B brightness",
+    "B 次音量": "Run B volume",
+    "B 次网络负载倍率": "Run B network-load multiplier",
+    "两次相同测量时长": "Equal measurement duration",
+    "记录这次合成对照": "Record this synthetic comparison",
+    "亮度 / 音量 / 网络": "Brightness / Volume / Network",
+    "从演示转成真实研究": "From demonstration to a real study",
+    "本片功率档案全部为合成教学参数，应用任务不是实测耗电排名。真实研究应固定同一设备、相同内容与时长、网络和起始状态，分次只改变一个因素，再重复比较；耗能由功率随时间积分。整数电量百分比会掩盖小差异，不能把它当作精确能量计。处理器与无线电用周期性负载示意，容量取 15 Wh，组件布局不是某型号拆机图。": "Power profiles are synthetic teaching parameters, not a measured ranking of applications. A real study should control device, content, duration, network and initial state, change one factor per comparison, and repeat measurements. Energy integrates power over time. Integer battery percentages can hide small differences and are not precise energy measurements. Processor and radio use illustrative periodic loads; assumed capacity is15 Wh. The component layout is not a specific phone teardown."
+  },
+  "narration": {
+    "duration": 102,
+    "cues": [
+      {
+        "id": "brightness-control",
+        "title": "只改变亮度",
+        "titleEn": "Change only brightness",
+        "caption": "相同内容与时间，分开比较一个因素。",
+        "captionEn": "Hold content and duration fixed to isolate one factor.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "把同一部模型手机分两次测试。两次播放相同视频，音量和网络条件也一样，只改变屏幕亮度。画面的组件功率随设置变化，耗能则随时间累积。所有数值是合成教学数据，用来练习研究设计，不代表任何一款手机的实际耗电。",
+        "en": "Test the same model phone in two runs. Both play the same video at equal volume and network conditions; only brightness changes. Component power responds to settings while energy accumulates over time. All values are synthetic teaching data for study design, not actual energy use of a particular phone."
+      },
+      {
+        "id": "volume-control",
+        "title": "只改变音量",
+        "titleEn": "Change only volume",
+        "caption": "有声内容保持相同，才是音量对照。",
+        "captionEn": "Keep audible content identical for a volume comparison.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "恢复相同亮度，这次只改变音量。两次必须播放同一段有声内容，不能一边静音浏览，一边播放音乐。在模型里，没有声音输出的浏览任务不会因为音量设置改变就增加音频功率。控制变量不仅是滑块数值相同，也要保证实际执行的内容相同。",
+        "en": "Restore equal brightness and change only volume. Both runs must play the same audible content; silent browsing versus music is not a volume-only comparison. In this model, a browsing task without sound does not gain audio power merely from changing volume. Controlled settings must also correspond to identical actual content."
+      },
+      {
+        "id": "task-control",
+        "title": "比较不同任务",
+        "titleEn": "Compare application tasks",
+        "caption": "固定设置与时长，再观察任务差异。",
+        "captionEn": "Fix settings and duration before comparing tasks.",
+        "seconds": 26,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "比较浏览、聊天、电话、视频、录音重放或游戏时，保持亮度、音量和网络条件一致，并使用相同测量时长。处理器、无线通信和音频的工作情况不同，组件贡献也不同。这里的任务档案是示例，不能把演示中的顺序当作所有手机通用的耗电排名。",
+        "en": "When comparing browsing, chat, calls, video, audio playback or games, keep brightness, volume, connectivity and duration fixed. Processor, radio and audio activity differ, changing component contributions. These task profiles are examples; their order is not a universal energy-use ranking for all phones."
+      },
+      {
+        "id": "confounds-resolution",
+        "title": "识别混杂与读数限制",
+        "titleEn": "Identify confounds and resolution limits",
+        "caption": "同时改变多个条件，就不能做单一归因。",
+        "captionEn": "Multiple changed conditions prevent a single-factor conclusion.",
+        "seconds": 28,
+        "chapterAt": 74,
+        "at": 74.4,
+        "zh": "现在把亮度和网络负载同时提高。即使耗能变多，也不能说全部差异来自亮度。短时间内，两次电池图标还可能显示同一个整数百分比，掩盖真实的能量差。真实研究需要足够分辨率的测量、相同初始状态和重复比较；记录设置与不确定度，才能给出有边界的结论。",
+        "en": "Now increase brightness and network load together. Higher energy use cannot all be attributed to brightness. Over short durations, both battery icons may show the same integer percentage despite different energies. A real study needs adequate measurement resolution, equal initial states and repeated comparisons. Record settings and uncertainty to support a conclusion with clear limits."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-phone-energy-research": {
+      "chapterIds": [
+        "brightness-control",
+        "volume-control",
+        "task-control",
+        "confounds-resolution"
+      ],
+      "label": {
+        "zh": "手机耗电因素的研究",
+        "en": "Investigate factors in phone energy use"
+      }
+    }
+  }
+}

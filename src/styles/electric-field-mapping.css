@@ -1,0 +1,160 @@
+.fieldmap-film {
+  width: min(100%, 700px);
+  margin: auto;
+  color: #58644d;
+}
+.fieldmap-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.6;
+  margin: 0 12px 4px;
+}
+.fieldmap-tray {
+  width: min(100%, 570px);
+  margin: auto;
+}
+.fieldmap-tray svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: pan-y;
+}
+.fieldmap-tray text {
+  font: 500 20px var(--font-sans, sans-serif);
+}
+.fieldmap-key {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+.fieldmap-key i {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 3px;
+  background: #77734e;
+  border-radius: 3px;
+  transform: rotate(-30deg);
+}
+.fieldmap-line-note {
+  font-size: 16px;
+  text-align: center;
+  color: #7e8870;
+  margin: 4px 12px;
+  line-height: 1.6;
+}
+.fieldmap-probe {
+  margin: 18px auto;
+  padding: 16px 20px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 16px;
+  background: #eff2e5;
+  border-radius: 22px;
+  outline-offset: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.fieldmap-probe strong {
+  font-size: 20px;
+  font-weight: 500;
+  color: #6e826a;
+}
+.fieldmap-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  margin: 20px 0;
+  background: #edf0e3;
+  border-radius: 24px;
+}
+.fieldmap-controls p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #75806a;
+}
+.fieldmap-toggles {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.fieldmap-toggles button {
+  border: 1px solid #cbd3bb;
+  background: #f5f6ed;
+  color: #6c785e;
+  border-radius: 20px;
+  min-height: 44px;
+  padding: 9px 16px;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+.fieldmap-toggles button[aria-pressed='true'] {
+  background: #dce5cc;
+  border-color: #b2c39f;
+}
+.fieldmap-details {
+  margin: 20px 14px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.fieldmap-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.fieldmap-details p {
+  margin: 0 0 16px;
+  color: #75806a;
+}
+.fieldmap-controls button {
+  min-height: 44px;
+}
+@media (max-width: 480px) {
+  .fieldmap-tray {
+    width: 100%;
+  }
+  .fieldmap-tray text {
+    font-size: 25px;
+  }
+  .fieldmap-controls {
+    padding: 18px 14px;
+  }
+  .fieldmap-probe {
+    gap: 10px 16px;
+    padding: 14px;
+  }
+  .fieldmap-toggles button {
+    flex: 1;
+  }
+  .fieldmap-line-note {
+    margin: 6px 14px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.fieldmap-film[data-watch] > .fieldmap-kicker,
+.fieldmap-film[data-watch] > .fieldmap-caption,
+.fieldmap-film[data-watch] > details {
+  display: none;
+}
+.fieldmap-film[data-watch] .fieldmap-key {
+  display: none;
+}
+.fieldmap-film[data-watch] .fieldmap-line-note {
+  margin: 6px 12px;
+  line-height: 1.4;
+}
+@media (max-width: 480px) {
+  .fieldmap-tray svg text {
+    font-size: 28px;
+  }
+}

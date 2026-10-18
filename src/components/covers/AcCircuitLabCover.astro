@@ -1,0 +1,21 @@
+---
+const wave = Array.from(
+  { length: 161 },
+  (_, i) => `${i ? 'L' : 'M'}${53 + i * 1.6} ${112 - 40 * Math.sin((i / 160) * 4 * Math.PI)}`,
+).join(' ');
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <rect x="29" y="44" width="302" height="165" rx="20" fill="#cbdac2" stroke="#a8bd9c"></rect>
+  <rect x="45" y="58" width="270" height="112" rx="9" fill="#f2f5e8"></rect>
+  <path d="M53 112H309M179 65V164" stroke="#d3dfc6"></path>
+  <path d={wave} stroke="#73956d" stroke-width="2.5"></path>
+  <circle cx="64" cy="190" r="6" fill="#a5b995"></circle><circle
+    cx="87"
+    cy="190"
+    r="6"
+    fill="#a5b995"></circle>
+  <path d="M226 209V247H134M265 209V229H134" stroke="#9caf8b" stroke-width="2"></path>
+  <path d="M134 219V258M121 219V258" stroke="#8ea57e" stroke-width="3"></path>
+  <path d="M121 229H71V247H121" stroke="#9caf8b" stroke-width="2"></path>
+</svg>

@@ -1,0 +1,22 @@
+<h2 id="understand">Measurement needs positions, interval count and geometry</h2>
+
+Six bright centers span five intervals. An eyepiece records two positions, while a fixed sensor array captures the spatial distribution. Lloyd’s mirror replaces one route with a reflected path and requires an additional reflection phase.
+
+<h2 id="try">Record your own readings</h2>
+
+Align and record the first and last bright centers, then enter the number included. The reticle does not snap to peaks, so alignment error remains visible. Changing wavelength or slit separation clears the readings. Sensor exploration selects fixed elements without moving the detector.
+
+<h2 id="deeper">Paraxial fringes and finite pixels</h2>
+
+<details>
+<summary>Equations, dimensions and idealizations</summary>
+
+<div className="formula">Δx = λL/d; λ = d|x₂−x₁|/[L(N−1)]</div>
+
+Screen distance is 1.2 m, slit separation 0.18 or 0.36 mm, wavelength 450–650 nm, and displayed positions ±20 mm. Ideal narrow coherent slits give normalized paraxial far-field I=cos²(πx/Δx), without a finite-slit envelope. Bench distances are compressed and the lens is not an imaging simulation.
+
+The 160-element linear array spans 40 mm. Each 0.25 mm pixel analytically averages cos² intensity over its width. The readout highlight is not a moving probe. A downward beam follows the textbook apparatus. Noise, saturation, bandwidth and reduced coherence are omitted.
+
+Lloyd’s mirror uses the exact real-source and virtual-source path difference plus phase π. Their separation is 2h and the reflection point is x=Lh/(h+y). Horizontal and vertical scales differ but each axis uses one consistent scale. An ideal infinite mirror, equal amplitudes and grazing reflection phase demonstrate the central dark fringe; this is not universal across materials, polarization or angles. The lower inset independently displays theoretical fringes over 0–10 mm.
+
+</details>

@@ -1,0 +1,92 @@
+.fr-film {
+  width: min(100%, 720px);
+  margin: auto;
+  color: #829677;
+}
+.fr-caption {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  text-align: center;
+  margin: 0 14px 8px;
+}
+.fr-apparatus {
+  width: min(100%, 610px);
+  height: auto;
+  display: block;
+  margin: auto;
+}
+.fr-apparatus text {
+  font: 20px var(--font-sans, sans-serif);
+  fill: #8c9c7a;
+}
+.fr-inset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  margin: 8px 12px;
+  color: #a48f68;
+}
+.fr-inset svg {
+  width: 260px;
+  max-width: 100%;
+  height: 45px;
+}
+.fr-readings {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-size: 16px;
+  padding: 10px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.fr-note {
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 8px 14px;
+}
+.fr-controls {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  background: #edf2e5;
+  border-radius: 24px;
+  margin: 22px 0;
+}
+.fr-controls button {
+  min-height: 44px;
+}
+.fr-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 18px 14px;
+}
+.fr-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .fr-controls {
+    padding: 18px 14px;
+  }
+  .fr-apparatus text {
+    font-size: 25px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.fr-film[data-watch] > .fr-kicker,
+.fr-film[data-watch] > .fr-caption,
+.fr-film[data-watch] > details {
+  display: none;
+}
+.fr-film[data-watch] .fr-note {
+  display: none;
+}
+.fr-film[data-watch] .fr-readings {
+  padding: 5px 10px;
+  gap: 5px 12px;
+}

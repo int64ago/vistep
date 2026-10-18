@@ -1,0 +1,150 @@
+{
+  "topic": {
+    "slug": "decay-measurement-lab",
+    "name": "衰变的统计与用途",
+    "title": "不确定的单次衰变，怎样成为可测的时间与路径？",
+    "question": "不确定的单次衰变，怎样成为可测的时间与路径？",
+    "description": "从氡的半衰期计数，理解磷示踪和碳14理想测年的信号与偏差。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["radiation-evidence-lab", "nuclear-evidence-lab"],
+    "sources": [
+      {
+        "title": "NIST — Radon-222 emanation standard",
+        "url": "https://tsapps.nist.gov/srmext/certificates/archives/4973.pdf"
+      },
+      {
+        "title": "IAEA — Phosphorus isotope tracer techniques",
+        "url": "https://www-pub.iaea.org/MTCD/Publications/PDF/TE1805web.pdf"
+      },
+      {
+        "title": "IAEA — Nuclear techniques for cultural heritage",
+        "url": "https://www-pub.iaea.org/MTCD/publications/PDF/p1501CD/PDF/Pub_1501.pdf"
+      },
+      {
+        "title": "IAEA — Accelerator mass spectrometry applications",
+        "url": "https://nucleus.iaea.org/sites/accelerators/AMS/SitePages/AMS-applications.aspx"
+      }
+    ]
+  },
+  "component": "src/components/experiments/DecayMeasurementLab.tsx",
+  "cover": "src/components/covers/DecayMeasurementLabCover.astro",
+  "discovery": {
+    "category": "matter",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["衰变的统计与用途", "不确定的单次衰变，怎样成为可测的时间与路径？", "近代物理实验"],
+      "en": [
+        "Decay statistics and applications",
+        "How can unpredictable decays measure time and transport?",
+        "modern physics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "衰变的统计与用途": "Decay statistics and applications",
+    "不确定的单次衰变，怎样成为可测的时间与路径？": "How can unpredictable decays measure time and transport?",
+    "从氡的半衰期计数，理解磷示踪和碳14理想测年的信号与偏差。": "Connect radon counting with phosphorus tracing and ideal carbon dating.",
+    "近代物理": "Modern physics"
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "random-nuclei",
+        "title": "先看一组核的变化",
+        "titleEn": "Follow one ensemble",
+        "caption": "不能预报哪个核先衰变，但可以统计剩余数量。",
+        "captionEn": "The next nucleus to decay is unpredictable, but the remaining number can be counted.",
+        "zh": "把视线放到一组氡原子核。各个核的衰变时刻不相同，不能提前指出下一个是谁。固定同一组模拟原子，观察剩余数量逐渐下降。经过大约一个半衰期，预期剩余一半；小样本的实际剩余数可以偏离这个比例，半衰期不是每个核的寿命。",
+        "en": "Follow one ensemble of radon nuclei. Individual decay times differ; the next event cannot be predicted. Keep the same simulated ensemble and count the survivors. After one half-life, half are expected to remain, but a small sample may differ. A half-life is not the lifetime of every nucleus.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "ensemble-law",
+        "title": "把计数与期望曲线比较",
+        "titleEn": "Compare counts with the expectation",
+        "caption": "每经过同样的半衰期，剩余数量的期望再减半。",
+        "captionEn": "Each equal half-life halves the expected remaining population.",
+        "zh": "延长观察时间，把离散计数与平滑的期望曲线放在一起。经过两个半衰期，预期剩下四分之一；三个半衰期，剩下八分之一。换一组原子，细小起伏会改变，统计规律仍然相同。本页用氡二二二约三点八天的半衰期作教学时间标尺，忽略后续子体的计数贡献。",
+        "en": "Extend the observation and compare discrete counts with the smooth expectation. Two half-lives leave one quarter on average, and three leave one eighth. Another ensemble changes the fluctuations but retains the law. Radon two-twenty-two’s roughly three-point-eight-day half-life sets the teaching timescale; daughter contributions are omitted.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "tracer-path",
+        "title": "给磷的迁移加上标记",
+        "titleEn": "Trace phosphorus transport",
+        "caption": "放射性磷随磷的化学过程迁移，探测信号显示它到达哪里。",
+        "captionEn": "Radioactive phosphorus follows phosphorus chemistry and reveals where it travels.",
+        "zh": "教材用放射性磷研究棉花吸收磷肥。示踪原子随土壤中的磷进入根，再迁移到茎叶。我们比较各部分信号，而不是把整株植物画成可见发光。右侧比例采用分区迁移模型；它说明示踪思路，不代表某种棉花在真实土壤中的吸收速率。",
+        "en": "The textbook uses radioactive phosphorus to investigate fertilizer uptake by cotton. Tracer atoms move from soil into roots and then shoots. Measurements compare signals in the compartments; the plant does not visibly glow. A compartment model illustrates tracing, without claiming a measured uptake rate for a crop or soil.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "tracer-decay",
+        "title": "迁移之外，还要校正衰变",
+        "titleEn": "Correct for decay during transport",
+        "caption": "各部位总信号会随衰变减少，不能把减少全当成养分流失。",
+        "captionEn": "Total signal decreases through decay as well as movement between compartments.",
+        "zh": "观察右侧三部分的总和，它会随着放射性衰变下降。某一部位的信号减少，既可能因为迁移，也可能因为核已经衰变。把同一时刻的各部位作归一化比较，才能分清这两个原因。模型把磷三十二的衰变与土壤、根、茎叶之间的迁移同时计算。",
+        "en": "The sum of the three signals decreases as the tracer decays. A falling signal in one compartment can reflect transport or radioactive decay. Comparing normalized compartment fractions at the same time separates these effects. The model calculates phosphorus thirty-two decay together with transport among soil, roots and shoots.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "carbon-clock",
+        "title": "停止交换以后，比例下降",
+        "titleEn": "After exchange stops, the ratio falls",
+        "caption": "古木与环境停止交换碳后，碳14相对含量逐渐降低。",
+        "captionEn": "After a wood sample stops exchanging carbon, its relative carbon-fourteen content decreases.",
+        "zh": "活着的植物与环境交换碳。死亡后，理想封闭样品不再补充新的碳十四，而原有的碳十四继续衰变。比较样品与参考的同位素比例，就可以在这个理想模型中反推经过的时间。木头的年轮只是样品外形，页面计算使用同位素比例，并不是数年轮。",
+        "en": "Living plants exchange carbon with their environment. After death, an ideally closed sample receives no replacement carbon fourteen while its original carbon fourteen decays. Its isotope ratio relative to a reference gives elapsed time in this ideal model. The wood rings depict the sample; the calculation uses isotope ratios, not ring counting.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "carbon-bias",
+        "title": "加入一点现代碳，再算一次",
+        "titleEn": "Add modern carbon and recalculate",
+        "caption": "现代碳提高测得的碳14比例，使理想推断年龄偏年轻。",
+        "captionEn": "Modern carbon raises the measured carbon-fourteen ratio and biases the inferred age younger.",
+        "zh": "保持古木的真实模型年龄不变，逐渐混入少量现代碳。测得的碳十四比例升高，按纯样品公式推断的年龄就偏年轻。真实测年还要处理初始比例变化、储库效应和校准。本页的年数是简化衰变年龄，不是经过校准的考古年代。",
+        "en": "Keep the sample’s true model age fixed and mix in a small modern-carbon fraction. The measured carbon-fourteen ratio rises, so a pure-sample inversion gives a younger age. Real dating also addresses changing initial ratios, reservoir effects and calibration. These displayed years are ideal decay ages, not calibrated archaeological dates.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-radon-half-life": {
+      "chapterIds": ["random-nuclei", "ensemble-law"],
+      "label": {
+        "zh": "氡衰变",
+        "en": "Radon decay"
+      }
+    },
+    "e3-phosphorus-tracer": {
+      "chapterIds": ["tracer-path", "tracer-decay"],
+      "label": {
+        "zh": "磷示踪",
+        "en": "Phosphorus tracing"
+      }
+    },
+    "e3-radiocarbon-dating": {
+      "chapterIds": ["carbon-clock", "carbon-bias"],
+      "label": {
+        "zh": "碳14测年",
+        "en": "Carbon dating"
+      }
+    }
+  }
+}

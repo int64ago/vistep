@@ -1,0 +1,122 @@
+{
+  "topic": {
+    "slug": "bicycle-circular-motion",
+    "name": "自行车上的圆周运动",
+    "title": "大齿轮和小齿轮，到底哪个更快？",
+    "question": "大齿轮和小齿轮，到底哪个更快？",
+    "description": "用架起后轮的自行车比较链传动的共同线速度、不同角速度，以及同轴车轮不同半径处的速度。",
+    "color": "#bccaa8",
+    "tag": "链传动 · 线速度 · 角速度",
+    "related": ["bicycle", "curved-motion-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Rotational Variables",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/10-1-rotational-variables"
+      },
+      {
+        "title": "Renold — Chain Designer Guide: Polygonal Effect",
+        "url": "https://www.renold.com/media/165418/transmission-i-and-m-ren12-eng-10-10.pdf"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["自行车上的圆周运动", "链条", "角速度", "同轴线速度"],
+      "en": ["Circular motion on a bicycle", "chain drive", "angular velocity", "tangential speed"]
+    }
+  },
+  "component": "src/components/experiments/BicycleCircularMotion.tsx",
+  "cover": "src/components/covers/BicycleCircularMotionCover.astro",
+  "translations": {
+    "自行车上的圆周运动": "Circular motion on a bicycle",
+    "大齿轮和小齿轮，到底哪个更快？": "Which is faster: the large sprocket or the small one?",
+    "用架起后轮的自行车比较链传动的共同线速度、不同角速度，以及同轴车轮不同半径处的速度。": "Raise the rear wheel to compare shared chain speed, different sprocket angular speeds, and different point speeds on one wheel.",
+    "链传动 · 线速度 · 角速度": "Chain drive · Linear speed · Angular speed",
+    "同一车轮上，转角相同，外圈走得更远": "On one wheel, equal angles carry outer points farther",
+    "同一段链条通过，小齿轮转过更大角度": "The same passing chain length turns the smaller sprocket farther",
+    "两个齿轮转得不同快，链条却只有一个速度": "The sprockets turn at different rates but share one chain speed",
+    "同轴比较 · 角速度相同": "Coaxial comparison · Equal angular speed",
+    "架起后轮 · 链传动": "Raised rear wheel · Chain drive",
+    "车轮半径和半半径的两个标记同步转动": "Two markers at full and half wheel radius rotate together",
+    "闭合链条与两齿轮同节距啮合，后轮架空由后齿轮带动": "A closed chain meshes at one pitch with both sprockets and drives the raised rear wheel",
+    "共同角速度": "Common angular speed",
+    "轮缘线速度": "Rim speed",
+    "半径中点线速度": "Speed at half radius",
+    "链条平均速度": "Mean chain speed",
+    "大齿轮角速度": "Large-sprocket angular speed",
+    "小齿轮角速度": "Small-sprocket angular speed",
+    "同轴角速度相同，线速度与到转轴的距离成正比。": "Coaxial points share angular speed; linear speed is proportional to radius.",
+    "相同链长通过时，齿数较少的齿轮转得更快；用线速度和角速度回答不同的问题。": "For the same passing chain length, fewer teeth give faster rotation; linear and angular speed answer different questions.",
+    "比较对象": "Compare",
+    "两个齿轮": "Two sprockets",
+    "同一车轮": "One wheel",
+    "后齿轮齿数": "Rear sprocket teeth",
+    "踩踏转速": "Pedal cadence",
+    "模型时间": "Model time",
+    "链节节距12.7 mm，齿相位与闭合链路同源；读数采用每转链长的平均速度，忽略实际链传动的微小多边形效应。": "Chain pitch is 12.7 mm, with tooth phases tied to the closed loop. Readings use mean chain transport per revolution and omit small polygonal speed variations."
+  },
+  "narration": {
+    "duration": 114,
+    "cues": [
+      {
+        "id": "raised-wheel",
+        "title": "先让后轮离地",
+        "titleEn": "Raise the rear wheel",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3,
+        "caption": "观察同一个传动过程，先区分两种快慢。",
+        "captionEn": "Observe one drive and distinguish two meanings of speed.",
+        "zh": "把自行车后轮架起，转动脚踏板，观察大齿轮、小齿轮和后轮。它们确实一起运动，但问哪个更快之前，要先说明比较什么。每秒绕轴转过多少角度，和齿轮边缘每秒走过多少路程，是两种不同的快慢。教材用这个熟悉的装置，把角速度和线速度的区别变得可以观察。",
+        "en": "Raise the rear wheel and turn the pedals. The large sprocket, small sprocket and rear wheel all move together. Before asking which is faster, specify what is compared: angle turned per second and distance travelled along a rim per second are different quantities. This familiar apparatus makes the distinction between angular and linear speed observable."
+      },
+      {
+        "id": "chain-speed",
+        "title": "跟随同一段链条",
+        "titleEn": "Follow a single chain segment",
+        "seconds": 29,
+        "chapterAt": 28,
+        "at": 28.3,
+        "caption": "无滑动传动中，两轮传递同一段链长。",
+        "captionEn": "Without slipping, both sprockets transport the same chain length.",
+        "zh": "靠近链传动，跟着标记链节走一圈。闭合链条不能在一处积起来、另一处缺一段，因此大、小齿轮每秒输送的链长相同。在教材采用的连续节圆近似下，这对应两个齿轮边缘相同的线速度。小齿轮转得快，并不意味着链条到它那里就突然加速；两处描述的是同一条传动路径。",
+        "en": "Move closer and follow the marked link around the closed loop. Chain cannot accumulate at one sprocket and vanish at the other, so both transport the same chain length per second. In the textbook’s continuous pitch-circle approximation, their peripheral linear speeds match. Faster rotation of the small sprocket does not mean the chain suddenly accelerates there; it is one transmission path."
+      },
+      {
+        "id": "angles",
+        "title": "比较同一时间的转角",
+        "titleEn": "Compare angles over the same interval",
+        "seconds": 28,
+        "chapterAt": 57,
+        "at": 57.3,
+        "caption": "齿数之比决定角速度的反比。",
+        "captionEn": "Tooth counts set the inverse angular-speed ratio.",
+        "zh": "在同样短的一段时间里，大齿轮转过较小角度，小齿轮转过较大角度。本例前面四十齿，后面二十齿，大齿轮转一圈输送四十个节距，小齿轮就必须转两圈。相同线速度下，半径较小的轮子角速度更大。改变后齿轮齿数时，角速度比和后轮转速会一起改变，链条的几何与啮合相位也同步更新。",
+        "en": "Over the same short interval, the large sprocket turns through a smaller angle. Here forty front teeth feed forty pitches per revolution, so the twenty-tooth rear sprocket makes two revolutions. For equal transport speed, smaller effective radius means greater angular speed. Changing rear tooth count updates the ratio, rear-wheel rotation, chain geometry and engagement phase together."
+      },
+      {
+        "id": "same-wheel",
+        "title": "比较同轴的两个点",
+        "titleEn": "Compare two points on one wheel",
+        "seconds": 29,
+        "chapterAt": 85,
+        "at": 85.3,
+        "caption": "同一角速度，半径加倍，线速度加倍。",
+        "captionEn": "At a common angular speed, twice the radius means twice the linear speed.",
+        "zh": "最后只看同一只后轮。轮缘的点和半径中点固定在同一个轮子上，所以它们每秒转过的角度相同，角速度相同。轮缘的半径是另一点的两倍，每圈走过的路程也是两倍，线速度便是两倍。链传动中比较的是相同线速度下的不同角速度；同轴车轮比较的是相同角速度下的不同线速度，都符合速度等于角速度乘半径。",
+        "en": "Now compare two points on the same rear wheel. A rim point and a halfway point are fixed to one wheel, so they sweep the same angle each second and share angular speed. The rim has twice the radius and twice the distance per revolution, hence twice the linear speed. Chain transmission compares different angular speeds at common transport speed; one wheel compares different linear speeds at common angular speed. Both follow v equals omega r."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-2-bicycle-speeds": {
+      "chapterIds": ["raised-wheel", "chain-speed", "angles", "same-wheel"],
+      "label": {
+        "zh": "观察自行车齿轮的线速度和角速度",
+        "en": "Compare linear and angular speeds on a bicycle"
+      }
+    }
+  }
+}

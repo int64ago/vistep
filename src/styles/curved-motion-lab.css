@@ -1,0 +1,124 @@
+.curved-motion-lab {
+  max-width: 1000px;
+  margin: auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #526e55;
+}
+.curved-motion-lab header {
+  text-align: center;
+}
+.curved-motion-lab header p {
+  font-size: clamp(21px, 2.6vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.curved-motion-lab header > span {
+  font-size: 16px;
+  color: #849577;
+}
+.curved-motion-stage {
+  max-width: 620px;
+  margin: 14px auto;
+}
+.curved-motion-stage svg {
+  width: 100%;
+  display: block;
+}
+.curved-motion-legend {
+  display: flex;
+  gap: 12px 26px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+.curved-motion-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.curved-motion-legend i {
+  width: 18px;
+  height: 3px;
+  background: #90a981;
+  border-radius: 2px;
+}
+.curved-motion-legend > span:nth-child(2) i {
+  background: #b49b73;
+}
+.curved-motion-cause {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 730px;
+  margin: 25px auto;
+}
+.curved-motion-note {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 740px;
+  margin: 20px auto;
+  color: #879677;
+}
+.curved-motion-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.curved-motion-controls .segmented {
+  flex-wrap: wrap;
+}
+.curved-motion-controls > .segmented:first-child {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+@media (max-width: 640px) {
+  .curved-motion-lab {
+    padding: 20px 12px;
+  }
+  .curved-motion-stage {
+    margin: 10px -4px;
+  }
+  .curved-motion-controls {
+    grid-template-columns: 1fr;
+  }
+  .curved-motion-cause {
+    font-size: 17px;
+    margin: 18px auto;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .curved-motion-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .curved-motion-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .curved-motion-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .curved-motion-lab > header > span,
+  .showcase[data-mode='watch'] .curved-motion-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .curved-motion-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .curved-motion-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .curved-motion-stage {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .curved-motion-stage svg {
+    max-height: 270px;
+  }
+  .showcase[data-mode='watch'] .curved-motion-legend {
+    gap: 5px 12px;
+  }
+}

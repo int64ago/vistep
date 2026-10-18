@@ -1,0 +1,27 @@
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <rect x="43" y="36" width="274" height="204" rx="14" fill="#f1f5e8" stroke="#ceddc0"></rect>
+  <rect x="139" y="36" width="70" height="204" fill="#d5e2ca"></rect>
+  {
+    Array.from({ length: 24 }, (_, i) => (
+      <g>
+        <>
+          <path d={`M139 ${43 + i * 8}H209`} stroke="#a5bf98" stroke-width="3" opacity=".65" />
+          <rect
+            x={52 + ((i * 47) % 252)}
+            y={42 + i * 8}
+            width="7"
+            height="5"
+            rx="2"
+            fill={
+              52 + ((i * 47) % 252) > 139 && 52 + ((i * 47) % 252) < 209 ? '#b79661' : '#83a087'
+            }
+          />
+        </>
+      </g>
+    ))
+  }
+  <path d="M43 250H317" stroke="#a7b99c"></path><path
+    d="M25 36V240m-5-7 5 7 5-7"
+    stroke="#a7b99c"
+    stroke-width="2"></path>
+</svg>

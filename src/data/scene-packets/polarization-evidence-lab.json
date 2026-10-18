@@ -1,0 +1,148 @@
+{
+  "topic": {
+    "slug": "polarization-evidence-lab",
+    "name": "从绳的方向到光的偏振",
+    "title": "转动一道狭缝，能筛选什么？",
+    "question": "转动一道狭缝，能筛选什么？",
+    "description": "比较绳与弹簧，再观察窗中自然光、玻璃、桌面和液晶屏。",
+    "color": "#aebfa8",
+    "tag": "波动光学",
+    "related": ["polarization", "wave-interference"],
+    "sources": [
+      {
+        "title": "OpenStax — Polarization",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization"
+      },
+      {
+        "title": "TU Delft — Polarisation",
+        "url": "https://interactivetextbooks.tudelft.nl/tn2421/content/Chap4_Polarisation/Polarization_2022_01Clean.html"
+      }
+    ]
+  },
+  "component": "src/components/experiments/PolarizationEvidenceLab.tsx",
+  "cover": "src/components/covers/PolarizationEvidenceLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["从绳的方向到光的偏振", "转动一道狭缝，能筛选什么？", "教材光学实验"],
+      "en": [
+        "From rope motion to optical polarization",
+        "What can a rotating slit select?",
+        "textbook optics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "从绳的方向到光的偏振": "From rope motion to optical polarization",
+    "转动一道狭缝，能筛选什么？": "What can a rotating slit select?",
+    "比较绳与弹簧，再观察窗中自然光、玻璃、桌面和液晶屏。": "Compare rope and spring waves, then window light, glass, glossy tables and an LCD.",
+    "近代物理": "Modern physics",
+    "波动光学": "Wave optics"
+  },
+  "narration": {
+    "duration": 196,
+    "cues": [
+      {
+        "id": "rope-parallel",
+        "title": "让绳的振动沿狭缝通过",
+        "titleEn": "Align transverse motion with the slit",
+        "caption": "横波的振动方向在传播方向的垂直平面内。",
+        "captionEn": "Transverse motion lies in the plane perpendicular to propagation.",
+        "zh": "绳上的波沿水平方向传播，绳元上下振动。把木板狭缝竖直放置，这个振动方向可以通过。画面保留连续的绳路，下方是沿传播方向看过去的端视图。这里把狭缝理想化为允许一个横向分量的约束，不模拟木板摩擦和绳的有限直径。",
+        "en": "A wave travels horizontally along the rope while its elements move vertically. A vertical slit permits that transverse direction. The rope remains connected and the lower diagram looks along propagation. The slit is idealized as a one-direction constraint, omitting board friction and finite rope diameter.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "rope-rotate",
+        "title": "旋转狭缝，分开透过和反射",
+        "titleEn": "Rotate the slit to separate transmission and reflection",
+        "caption": "与狭缝垂直的分量不能通过。",
+        "captionEn": "The component perpendicular to the slit is blocked.",
+        "zh": "逐渐转动狭缝，绳的振动在狭缝方向上的分量变小。被挡住的分量反射回去，与入射波叠加；因此左侧不再只是一列简单前进波。转到垂直时，透过振动消失。页面用同一个向量投影计算右侧运动和左侧反射，确保约束处绳路连续。",
+        "en": "Rotating the slit reduces the component along its permitted direction. The blocked component reflects and interferes with the incident wave on the left. At perpendicular alignment, transmission vanishes. One vector-projection model determines both transmitted and reflected motion and preserves continuity at the constraint.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "spring-longitudinal",
+        "title": "换成弹簧纵波",
+        "titleEn": "Compare a longitudinal spring wave",
+        "caption": "沿轴的位移不随横向狭缝的方向改变。",
+        "captionEn": "Axial displacement does not depend on transverse slit orientation.",
+        "zh": "在弹簧中沿轴向推拉，疏密变化沿弹簧传播，线圈位移也沿同一轴。转动狭缝不会像横波那样筛掉这个方向。图中的螺旋线连续连接，各圈的轴向位置来自同一个纵向位移场。假设开口允许线圈沿轴运动，不能把真实装置卡住弹簧的机械阻挡当成偏振。",
+        "en": "Push and pull the spring axially. Compression travels along it and each coil also moves along that axis. Rotating a transverse slit does not select this direction as it does transverse motion. A continuous helix follows one displacement field. The opening is assumed to allow axial motion; physically jamming a spring is not polarization.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "window-light",
+        "title": "先看窗中自然光",
+        "titleEn": "Start with natural light through a window",
+        "caption": "转动一片理想偏振片，平均亮度不变。",
+        "captionEn": "Rotating one ideal analyzer leaves average unpolarized brightness unchanged.",
+        "zh": "先通过偏振片看从窗户进入的自然光，再缓慢转动片子。理想自然光在各横向方向的平均强度相同，所以一片偏振片始终透过一半，转动不会出现周期明暗。这里取未偏振入射；实际窗玻璃的反射和斜向透射可能带来偏振，观察结果要结合具体方向。",
+        "en": "View natural window light through one rotating analyzer. Ideal unpolarized light has equal average transverse components, so an ideal analyzer always transmits half. This comparison assumes unpolarized incidence. Real window reflection and oblique transmission can introduce polarization, making viewing geometry relevant.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "glass-reflection",
+        "title": "观察玻璃表面反光",
+        "titleEn": "Observe reflection from glass",
+        "caption": "玻璃对两个偏振分量的反射率不同。",
+        "captionEn": "Glass reflects the two polarization components differently.",
+        "zh": "再看玻璃表面的反光。对同一个入射角，垂直和平行入射面的偏振分量有不同反射率，因此转动偏振片会看到明暗变化。示例接近布儒斯特角，理想玻璃的一种反射分量消失，对比特别明显。探索中改变入射角，反光的偏振程度与透过亮度都会重新计算。",
+        "en": "Glass reflects the polarization components perpendicular and parallel to the incidence plane differently. Rotating an analyzer therefore changes brightness. Near Brewster incidence, one ideal reflected component vanishes and contrast is strong. Exploration recalculates both polarization and analyzer transmission when incidence changes.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "table-reflection",
+        "title": "比较光滑桌面",
+        "titleEn": "Compare a glossy tabletop",
+        "caption": "未偏振的漫反射成分会留下不能完全消掉的亮度。",
+        "captionEn": "An unpolarized diffuse component leaves residual brightness.",
+        "zh": "光滑桌面也可能显示随偏振片转动的反光变化，但不一定完全变黑。页面用光滑介质反射，加上一小部分未偏振漫反射作对照，展示残余亮度从哪里来。这些材料参数是教学示例，不是任意桌面的实测值。粗糙度、涂层和观察方向都会改变结果。",
+        "en": "A glossy tabletop can also vary with analyzer rotation without becoming completely dark. The example combines dielectric reflection with a small unpolarized diffuse contribution to explain residual brightness. These are illustrative parameters, not measurements of every table. Roughness, coatings and viewing direction matter.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "lcd-light",
+        "title": "转向液晶屏，跟踪文字亮度",
+        "titleEn": "Observe text on an LCD",
+        "caption": "出射光有固定偏振方向，文字和背景一起变化。",
+        "captionEn": "A preferred output polarization makes text and background dim together.",
+        "zh": "液晶显示器的出射光常有很强的偏振。透过旋转的偏振片看文字，会出现明显明暗变化。图中预设一个显示器偏振方向，并保留少量漏光，所以最暗时仍不严格为零。实际手机可能使用不同显示技术、补偿膜和偏振结构，不能用这一理想液晶例子判断所有屏幕。",
+        "en": "LCD output is often strongly polarized. Viewing text through a rotating analyzer produces pronounced brightness changes. This example assigns an output axis and a small leakage component, so the minimum is not exactly zero. Real phones use different display technologies and optical films; this LCD example does not characterize every screen.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-wave-slit-polarization": {
+      "chapterIds": ["rope-parallel", "rope-rotate", "spring-longitudinal"],
+      "label": {
+        "zh": "机械波的偏振对照",
+        "en": "Mechanical polarization comparison"
+      }
+    },
+    "e1-polarization-real-sources": {
+      "chapterIds": ["window-light", "glass-reflection", "table-reflection", "lcd-light"],
+      "label": {
+        "zh": "生活光源的偏振",
+        "en": "Everyday polarization evidence"
+      }
+    }
+  }
+}

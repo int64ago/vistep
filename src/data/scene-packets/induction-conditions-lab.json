@@ -1,0 +1,181 @@
+{
+  "topic": {
+    "slug": "induction-conditions-lab",
+    "name": "感应电流的产生条件",
+    "title": "有磁场，为什么还没有电流？",
+    "question": "有磁场，为什么还没有电流？",
+    "description": "用闭合滑杆与内外线圈逐项比较：静止、沿场运动、切割、开关、变阻器和插拔。",
+    "color": "#b7c7ad",
+    "tag": "磁通量 · 感应 · 对照",
+    "related": ["magnetic-field-survey", "magnetic-force-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Faraday’s Law",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law"
+      },
+      {
+        "title": "OpenStax — Motional Emf",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf"
+      },
+      {
+        "title": "OpenStax — Mutual Inductance",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/14-1-mutual-inductance"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["感应电流的产生条件", "电磁感应", "滑杆", "磁通量", "内外线圈"],
+      "en": [
+        "Conditions for Induced Current",
+        "electromagnetic induction",
+        "sliding rod",
+        "magnetic flux",
+        "nested coils"
+      ]
+    }
+  },
+  "component": "src/components/experiments/InductionConditionsLab.tsx",
+  "cover": "src/components/covers/InductionConditionsLabCover.astro",
+  "translations": {
+    "感应电流的产生条件": "Conditions for Induced Current",
+    "有磁场，为什么还没有电流？": "Why can a magnetic field exist without induced current?",
+    "用闭合滑杆与内外线圈逐项比较：静止、沿场运动、切割、开关、变阻器和插拔。": "Compare a closed sliding-rod loop and nested coils through stationary, parallel, cutting, switching, rheostat and insertion paths.",
+    "磁通量 · 感应 · 对照": "Magnetic flux · Induction · Comparisons",
+    "闭合导轨回路与滑杆，沿磁场整体平移时接触保持闭合": "A closed rail loop and sliding rod retain contact when translated together along the field",
+    "整个闭合回路沿 B 平移": "Translate the closed loop along B",
+    "滑杆改变回路面积": "The rod changes loop area",
+    "滑杆静止，磁通量不变": "Stationary rod: constant flux",
+    "线圈 A 通过电源开关变阻器供电，线圈 B 独立接灵敏电流表": "Coil A connects to a source, switch and rheostat; coil B independently connects to a sensitive current meter",
+    "静止": "Stationary",
+    "沿磁场运动": "Move along the field",
+    "切割磁场": "Cut across the field",
+    "闭合开关": "Close the switch",
+    "断开开关": "Open the switch",
+    "移动变阻器滑片": "Move the rheostat slider",
+    "插入与拔出线圈": "Insert and withdraw the coil",
+    "静止时没有磁通量变化": "At rest, magnetic flux does not change",
+    "沿 B 平移，面积和磁通量保持不变": "Translation along B preserves area and flux",
+    "切割磁场，改变回路面积": "Cutting across B changes loop area",
+    "电流增长时偏转，稳定后归零": "Deflect during current growth; return to zero when steady",
+    "电流减小时，感应方向相反": "Decreasing current reverses induction",
+    "滑片移动改变电流，停下后不再感应": "Moving the slider changes current; induction stops when it rests",
+    "供电电流不变，插拔仍改变磁通量": "At constant primary current, insertion still changes flux",
+    "选择感应装置": "Choose an induction apparatus",
+    "滑杆回路": "Sliding-rod loop",
+    "内外线圈": "Nested coils",
+    "滑杆运动路径": "Rod motion path",
+    "线圈实验路径": "Coil experiment path",
+    "观察路径时间": "Path time",
+    "动作速度倍率": "Action speed",
+    "磁通量与示意时间的边界": "Flux model and illustrative time limits",
+    "滑杆沿磁场对照中，整个导轨回路一起平移以保持接触闭合；切割时只有杆沿轨滑动。线圈采用小半径内线圈对外螺线管轴向场的平均近似，绘出的匝数为代表匝。开关电流变化窗口被平滑放慢，不重建真实开断火花、自感瞬态或电流表机械振荡。其余数值由 ε = −d(NΦ)/dt 与 I₂ = ε/R₂ 计算，不能把大磁通量本身当成感应条件。": "The along-field comparison translates the whole rail assembly to keep contacts closed; cutting moves only the rod along the rails. The small-radius inner winding samples the outer solenoid’s axial field, with representative turns drawn. Switching-current changes are smoothed and slowed, not a reconstruction of contact arcing, self-inductive transients or meter mechanics. Values follow ε = −d(NΦ)/dt and I₂ = ε/R₂. Large flux alone is not the induction condition."
+  },
+  "narration": {
+    "duration": 170,
+    "cues": [
+      {
+        "id": "rod-still",
+        "title": "滑杆静止",
+        "titleEn": "Stationary rod",
+        "caption": "磁通量存在，但没有变化。",
+        "captionEn": "Flux exists, but does not change.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "先看闭合的导轨回路。金属杆停在匀强磁场中，穿过回路的磁通量并不是零，但是灵敏电流表指在零位。这个现象提醒我们，不能把有磁场或有磁通量，直接当成产生感应电流的条件。接下来只改变运动方式。",
+        "en": "Begin with the closed rail loop. The metal rod rests in a uniform magnetic field. Magnetic flux through the loop is not zero, yet the sensitive meter reads zero. A field or a flux alone is therefore insufficient to induce current. Next, change only the motion."
+      },
+      {
+        "id": "rod-parallel",
+        "title": "沿磁场平移",
+        "titleEn": "Translate along the field",
+        "caption": "整个回路保持闭合，面积与磁通量不变。",
+        "captionEn": "The loop stays closed with unchanged area and flux.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22.4,
+        "zh": "让导轨和金属杆一起沿磁场方向平移，保持所有接触闭合。回路确实运动了，但面积、方向和场强都没有变化，所以磁通量保持不变，电流表仍在零位。这是为保持接触而安排的整体平移对照，不能把任何运动都叫作切割磁场。",
+        "en": "Translate the rails and rod together along the field, preserving every electrical contact. The loop moves, but its area, orientation and field strength remain unchanged. Flux stays constant and the meter remains at zero. Moving the whole assembly preserves contact: motion alone is not necessarily cutting across a field."
+      },
+      {
+        "id": "rod-cutting",
+        "title": "改变回路面积",
+        "titleEn": "Change the loop area",
+        "caption": "滑杆前进与返回，电流方向相反。",
+        "captionEn": "Outward and return strokes give opposite current directions.",
+        "seconds": 26,
+        "chapterAt": 44,
+        "at": 44.4,
+        "zh": "现在让金属杆沿着导轨横向滑动，回路的面积随位置改变。电流表在运动时偏转，停下时回到零。杆返回时，面积变化方向反过来，感应电流也反向。这里磁场始终不变，变化的是穿过闭合回路的磁通量。",
+        "en": "Now slide the rod along the rails. The enclosed area changes with its position. The meter deflects during motion and returns to zero at rest. On the return stroke, area changes in the opposite sense and the current reverses. The field remains constant; the changing quantity is flux through the closed loop."
+      },
+      {
+        "id": "coil-switch-close",
+        "title": "闭合线圈开关",
+        "titleEn": "Close the coil switch",
+        "caption": "初级电流增长，次级出现短暂感应。",
+        "captionEn": "Primary current growth briefly induces a secondary current.",
+        "seconds": 24,
+        "chapterAt": 70,
+        "at": 70.4,
+        "zh": "换到两个互相套入的线圈。内线圈连接电源、开关和变阻器，外线圈单独连接灵敏电流表。闭合开关时，内线圈电流从无到有，外线圈的磁通量随之改变，出现短暂感应。电流稳定后，磁场仍在，但感应电流回到零。",
+        "en": "Switch to nested coils. The inner coil connects to a source, switch and rheostat; the outer coil separately connects to the sensitive meter. Closing the switch builds primary current and changes flux through the outer coil, briefly inducing current. Once primary current is steady, the field remains but induction returns to zero."
+      },
+      {
+        "id": "coil-switch-open",
+        "title": "断开线圈开关",
+        "titleEn": "Open the coil switch",
+        "caption": "同一装置，磁通量减小使感应方向反转。",
+        "captionEn": "Decreasing flux reverses induction in the same apparatus.",
+        "seconds": 24,
+        "chapterAt": 94,
+        "at": 94.4,
+        "zh": "再看断开开关的过程。内线圈的电流减小，穿过外线圈的磁通量也减小，电流表向相反方向偏转。为了看清变化窗口，画面把电流变化平滑放慢；它不重建真实触点火花和自感瞬态。要比较的是变化前、变化中和变化后的条件。",
+        "en": "Now open the switch. Primary current and the outer coil’s flux decrease, so the meter deflects in the opposite direction. The current-change window is smoothed and slowed for observation; this does not reconstruct actual contact arcing or self-inductive transients. Compare conditions before, during and after the change."
+      },
+      {
+        "id": "coil-rheostat",
+        "title": "移动变阻器滑片",
+        "titleEn": "Move the rheostat slider",
+        "caption": "开关保持闭合，滑片动作改变电流。",
+        "captionEn": "The switch stays closed while the slider changes current.",
+        "seconds": 26,
+        "chapterAt": 118,
+        "at": 118.4,
+        "zh": "保持开关闭合，移动变阻器滑片。电阻改变，内线圈的电流改变，外线圈出现感应。滑片停下后，电流稳定，感应再次消失。把滑片移回去，电流变化方向相反，感应方向也反转。关键不是开关这个动作本身，而是穿过外回路的磁通量是否改变。",
+        "en": "Keep the switch closed and move the rheostat slider. Resistance changes primary current, producing induction in the outer coil. Stop the slider: current becomes steady and induction vanishes. Moving it back reverses the current change and the induced direction. Switching itself is not essential; changing flux through the outer circuit is."
+      },
+      {
+        "id": "coil-insertion",
+        "title": "电流不变，插拔线圈",
+        "titleEn": "Insert at constant current",
+        "caption": "相对位置改变，也能改变磁通量。",
+        "captionEn": "Relative position can change flux too.",
+        "seconds": 26,
+        "chapterAt": 144,
+        "at": 144.4,
+        "zh": "最后保持内线圈的供电电流不变，把它插入外线圈，再拔出来。电流没有变化，两线圈的位置关系却改变了，穿过外线圈的磁通量仍会变化。插入与拔出的感应方向相反，停留时归零。这一补充对照把电流变化与几何耦合变化分开。",
+        "en": "Finally hold primary current constant while inserting the inner coil and withdrawing it again. Current is unchanged, but relative position changes how much magnetic flux links the outer coil. Insertion and withdrawal give opposite currents; holding still gives zero. This added comparison separates changing current from changing geometric coupling."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-motional-induction": {
+      "chapterIds": ["rod-still", "rod-parallel", "rod-cutting"],
+      "label": {
+        "zh": "滑杆产生感应电流的条件",
+        "en": "Conditions for induction in a sliding rod"
+      }
+    },
+    "r3-induced-current-conditions": {
+      "chapterIds": ["coil-switch-close", "coil-switch-open", "coil-rheostat", "coil-insertion"],
+      "label": {
+        "zh": "探究内外线圈感应电流的条件",
+        "en": "Investigate induction in nested coils"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+---
+import { evidenceCharge } from '../../models/franklin-electricity-evidence';
+const state = evidenceCharge(800, 3),
+  a = 22 * Math.sin(state.angle),
+  b = 22 * Math.cos(state.angle);
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true">
+  <path d="M48 36h78" stroke="#c5b18a" stroke-width="11" stroke-linecap="round"></path><path
+    d="M74 20l26 7-5 28-27-8z"
+    fill="#bfceae"></path>
+  <path d="M275 31q-6-18 11-21q15-12 27 1q25-1 25 19q22 13 3 23h-56q-23-5-10-22" fill="#ccd8c7"
+  ></path>
+  {
+    [90, 300].map((x, i) => (
+      <g transform={`translate(${x} 0)`}>
+        <path d="M0 63v24" stroke="#afbf9f" stroke-dasharray="4 4" />
+        <rect x="-40" y="103" width="80" height="111" rx="23" fill="#e1e9d8" stroke="#b5c5a9" />
+        <path d="M-31 129v61q0 14 14 14h34q14 0 14-14v-61" fill="#c3c7a6" />
+        <path d="M-24 131v55q0 12 12 12h24q12 0 12-12v-55" fill="#e5e7cc" />
+        <rect x="-24" y="97" width="48" height="14" rx="5" fill="#cdc2a0" />
+        <path d="M0 89v109M0 91h51v91" stroke="#aa9f79" stroke-width="2" />
+        <path d={`M51 182l${-a} ${b}M51 182l${a} ${b}`} stroke="#b7a175" stroke-width="3" />
+        {[145, 165, 185].map((y) => (
+          <path d={`M-16 ${y}h10${i ? '' : `m-5-5v10`}`} stroke="#a38f65" stroke-width="2" />
+        ))}
+      </g>
+    ))
+  }
+</svg>

@@ -1,0 +1,9 @@
+# Wire force factors
+
+PEP Required3 printed109–110; r3-wire-force-factors; four chapters/96s. Tracks gold current-carrying overlap, not a generic force arrow. Actual apparatus: three adjacent horseshoe magnets, suspended straight wire, four selectable contacts, DC supply and series ammeter. Compare current, contact length, offset and independent field strength. Three identical magnets extend a region; no claim their count multiplies local B.
+
+Independent model intersects the live interval with fixed24cm field region, F=IℓB. Mass12g and suspension25cm yield tanθ=F/mg and shared rise/displacement geometry. Contact spacing8/24cm gives3:1 force. Offset changes immersed length without changing contact spacing. Signed current reverses z deflection. Uniform field, neglected fringe/lead forces and equilibrium-only transitions explicitly disclosed. Quantities are illustrative model values.
+
+Visual construction: shared projection for magnet boxes, four wire contacts, supply lead endpoints, suspension endpoints and overlap bracket. Full beam48cm keeps suspension clear of pole blocks at allowed offsets; maximum equilibrium rise stays below upper pole. One continuous400px apparatus composition and responsive label scale. Actual browser viewing, phone composition, audio/listening and performance are root-owned acceptance, not claimed here.
+
+Primary source: OpenStax11.4 https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor; original textbook pp109–110 independently read. Benchmarks include length ratio, overlap limit, suspension constraint, current reversal and zero current. Author validation:4 model tests passed; TSX transpile0 diagnostics; packet translation coverage complete; packet validation passed at270. All owned files formatted. No actual fullwatch/audio/phone acceptance claimed.

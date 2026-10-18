@@ -1,0 +1,226 @@
+{
+  "topic": {
+    "slug": "thermal-measurement-lab",
+    "name": "热平衡与气体定律实验",
+    "title": "怎样把温度、压强和体积联系起来？",
+    "question": "怎样把温度、压强和体积联系起来？",
+    "description": "通过混合法量热、注射器等温实验和烧瓶水柱实验，控制条件并读取同一模型的测量结果。",
+    "color": "#85986d",
+    "tag": "控制条件，再读数据",
+    "related": ["ideal-gas", "thermal-expansion"],
+    "sources": [
+      {
+        "title": "OpenStax — Heat transfer, specific heat and calorimetry",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      },
+      {
+        "title": "OpenStax — Ideal gas law",
+        "url": "https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law"
+      }
+    ]
+  },
+  "component": "src/components/experiments/ThermalMeasurementLab.tsx",
+  "cover": "src/components/covers/ThermalMeasurementLabCover.astro",
+  "discovery": {
+    "category": "thermal-fluids",
+    "minAge": 14,
+    "keywords": {
+      "zh": [
+        "热平衡与气体定律实验",
+        "混合法",
+        "量热杯",
+        "玻意耳定律",
+        "注射器",
+        "气体等温变化",
+        "烧瓶水柱"
+      ],
+      "en": [
+        "Thermal equilibrium and gas-law experiments",
+        "calorimetry",
+        "Boyle law",
+        "syringe gas experiment",
+        "constant pressure expansion"
+      ]
+    }
+  },
+  "translations": {
+    "热平衡与气体定律实验": "Thermal equilibrium and gas-law experiments",
+    "怎样把温度、压强和体积联系起来？": "How do temperature, pressure and volume connect?",
+    "通过混合法量热、注射器等温实验和烧瓶水柱实验，控制条件并读取同一模型的测量结果。": "Control conditions in mixing calorimetry, an isothermal syringe and a flask with a liquid plug.",
+    "控制条件，再读数据": "Control conditions, then measure",
+    "混合法量热": "Mixing calorimetry",
+    "注射器研究等温变化": "Isothermal syringe",
+    "烧瓶与水柱": "Flask and liquid plug",
+    "量热杯、注射器与烧瓶三种热学测量装置": "Three thermal measurement apparatuses: calorimeter, syringe and flask",
+    "保温量热杯": "Insulated calorimeter",
+    "绝对压强": "Absolute pressure",
+    "向外": "Outward",
+    "轻小水柱": "Light water plug",
+    "水柱自由移动，压强近似不变": "Free plug, nearly constant p",
+    "杯的热容": "Cup heat capacity",
+    "平衡温度": "Equilibrium temperature",
+    "选择热学测量": "Choose a thermal measurement",
+    "热交换进度": "Heat exchange progress",
+    "注射器刻度体积": "Syringe marked volume",
+    "过程近似": "Process approximation",
+    "缓慢等温": "Slow, isothermal",
+    "快速绝热": "Fast, adiabatic",
+    "烧瓶温度": "Flask temperature",
+    "测量条件与模型": "Measurement conditions and model",
+    "量热模型忽略向环境散热，分别计算金属与水杯的热容；注射器用绝对压强，并计入1毫升连接管体积。快速压缩采用空气绝热指数1.4。烧瓶按理想气体等压膨胀计算，水柱摩擦、蒸发和两侧毛细压差忽略，管截面积为0.5平方厘米。": "Calorimetry neglects environmental heat loss and includes metal, water and cup heat capacities. The syringe uses absolute pressure and a 1 mL connection volume. Rapid compression uses the air adiabatic exponent 1.4. The flask follows constant-pressure ideal-gas expansion, neglecting plug friction, evaporation and net capillary pressure; tube area is 0.5 cm².",
+    "先让金属与沸水平衡": "Equilibrate metal in boiling water",
+    "沸水充分加热后，金属的初温才可取100摄氏度。": "After equilibration, metal starts at 100 °C.",
+    "转入量热杯": "Transfer into the calorimeter",
+    "热量从金属传向水和杯，两个温度逐渐靠近。": "Energy passes from metal to water and cup until temperatures agree.",
+    "量热杯也吸收能量": "Include the cup heat capacity",
+    "同样的金属和水，杯的热容会改变平衡温度。": "Cup heat capacity changes the final temperature.",
+    "缓慢改变封闭气体体积": "Change volume slowly",
+    "温度近似不变时，总体积减小，绝对压强增大。": "At constant temperature, reducing total volume raises absolute pressure.",
+    "用体积倒数检验": "Plot against reciprocal volume",
+    "同一批状态在p与1/V图上排成直线。": "The same states form a straight line when plotting p against 1/V.",
+    "快速压缩会升温": "Rapid compression heats the gas",
+    "绝热近似下，压强比等温预测更高。": "An adiabatic compression gives higher pressure than the isothermal prediction.",
+    "水柱封住一定量气体": "A plug seals a fixed gas amount",
+    "水柱可移动，让内外压强近似平衡。": "The movable plug keeps inside and outside pressure nearly balanced.",
+    "手捂烧瓶": "Warm the flask by hand",
+    "气体升温膨胀，水柱向外移动。": "Warming expands the gas and moves the plug outward.",
+    "冷却回到原状态": "Cool toward the original state",
+    "温度降低，体积缩小，水柱回移。": "Cooling contracts the gas and returns the plug."
+  },
+  "narration": {
+    "duration": 234,
+    "cues": [
+      {
+        "id": "mix-prepare",
+        "title": "先让金属与沸水平衡",
+        "titleEn": "Equilibrate metal in boiling water",
+        "caption": "沸水充分加热后，金属的初温才可取100摄氏度。",
+        "captionEn": "After equilibration, metal starts at 100 °C.",
+        "zh": "先把已知质量的金属浸在沸水里。这里假定当地气压下水的沸点是一百摄氏度，并留足热交换时间。金属只有与沸水达到热平衡，才能把水温作为金属的初始温度。",
+        "en": "Immerse a known metal mass in boiling water. Assume its local boiling temperature is one hundred degrees Celsius and allow sufficient time. Only after thermal equilibrium can the water temperature stand for the metal’s initial temperature.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "mix-equilibrate",
+        "title": "转入量热杯",
+        "titleEn": "Transfer into the calorimeter",
+        "caption": "热量从金属传向水和杯，两个温度逐渐靠近。",
+        "captionEn": "Energy passes from metal to water and cup until temperatures agree.",
+        "zh": "迅速把热金属放入已知质量的冷水。金属降温，水与杯一起升温。温度计逐渐稳定时，读到的共同温度对应热平衡；模型同时计算两边的能量变化。",
+        "en": "Transfer the hot metal quickly into a known mass of cool water. The metal cools while water and cup warm together. When the thermometer stabilizes, the common temperature marks equilibrium; the model balances energy on both sides.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "mix-cup",
+        "title": "量热杯也吸收能量",
+        "titleEn": "Include the cup heat capacity",
+        "caption": "同样的金属和水，杯的热容会改变平衡温度。",
+        "captionEn": "Cup heat capacity changes the final temperature.",
+        "zh": "比较忽略杯与计入杯的两种计算。同样的热金属和冷水，有热容的杯也需要能量，最终温度会更低。如果把这些能量全部遗漏，就会低估金属的比热容。",
+        "en": "Compare calculations with and without cup heat capacity. The same hot metal and cool water finish at a lower temperature when the cup also needs energy. Omitting that energy would underestimate the metal’s specific heat capacity.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "boyle-slow",
+        "title": "缓慢改变封闭气体体积",
+        "titleEn": "Change volume slowly",
+        "caption": "温度近似不变时，总体积减小，绝对压强增大。",
+        "captionEn": "At constant temperature, reducing total volume raises absolute pressure.",
+        "zh": "换成封闭的注射器。缓慢推拉柱塞，让气体有时间与环境交换热量，温度近似不变。读取体积和绝对压强，并计入与压力表相连的一毫升管路体积。",
+        "en": "Now use a sealed syringe. Move the plunger slowly so gas can exchange heat with the surroundings and stay nearly isothermal. Read volume and absolute pressure, including the one-millilitre connection volume leading to the pressure gauge.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "boyle-reciprocal",
+        "title": "用体积倒数检验",
+        "titleEn": "Plot against reciprocal volume",
+        "caption": "同一批状态在p与1/V图上排成直线。",
+        "captionEn": "The same states form a straight line when plotting p against 1/V.",
+        "zh": "压强与体积的曲线弯曲，并不直接证明反比。把横轴改为总体积的倒数，观察这些状态排成直线。固定气体量和温度时，压强乘总体积保持相同。",
+        "en": "A curved pressure–volume graph alone does not prove inverse proportionality. Replace the horizontal axis with reciprocal total volume: the same states lie on a straight line. With fixed gas amount and temperature, pressure times total volume stays constant.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      },
+      {
+        "id": "boyle-fast",
+        "title": "快速压缩会升温",
+        "titleEn": "Rapid compression heats the gas",
+        "caption": "绝热近似下，压强比等温预测更高。",
+        "captionEn": "An adiabatic compression gives higher pressure than the isothermal prediction.",
+        "zh": "现在改为快速压缩的理想化比较。来不及向外传热时，外界做功使气体升温，压强比等温预测更高。这个反例说明，检验玻意耳定律必须先维持温度条件。",
+        "en": "Switch to an idealized rapid compression. With little time for heat to escape, work raises gas temperature and pressure exceeds the isothermal prediction. This counterexample shows why temperature control is essential when testing Boyle’s law.",
+        "seconds": 26,
+        "chapterAt": 130,
+        "at": 130
+      },
+      {
+        "id": "flask-seal",
+        "title": "水柱封住一定量气体",
+        "titleEn": "A plug seals a fixed gas amount",
+        "caption": "水柱可移动，让内外压强近似平衡。",
+        "captionEn": "The movable plug keeps inside and outside pressure nearly balanced.",
+        "zh": "烧瓶通过塞子连接一根水平玻璃管，小水柱封住一定量空气。水柱轻且能自由移动时，内外压强近似相同。先记录室温下的初始位置，作为体积变化的参照。",
+        "en": "A stoppered flask connects to a horizontal glass tube. A small water plug seals a fixed amount of air. When the plug moves freely, inside and outside pressures remain nearly equal. Mark its room-temperature starting position as a volume reference.",
+        "seconds": 26,
+        "chapterAt": 156,
+        "at": 156
+      },
+      {
+        "id": "flask-warm",
+        "title": "手捂烧瓶",
+        "titleEn": "Warm the flask by hand",
+        "caption": "气体升温膨胀，水柱向外移动。",
+        "captionEn": "Warming expands the gas and moves the plug outward.",
+        "zh": "用手捂住烧瓶，气体逐渐升温并推动水柱向外。增大的体积等于管截面积乘水柱位移。等压关系使用开尔文温度，不能把摄氏温度直接代入体积比。",
+        "en": "Warm the flask by hand. Gas expands and pushes the plug outward. The volume increase equals tube area times plug displacement. The constant-pressure relation uses Kelvin temperature, not a ratio of Celsius readings.",
+        "seconds": 26,
+        "chapterAt": 182,
+        "at": 182
+      },
+      {
+        "id": "flask-cool",
+        "title": "冷却回到原状态",
+        "titleEn": "Cool toward the original state",
+        "caption": "温度降低，体积缩小，水柱回移。",
+        "captionEn": "Cooling contracts the gas and returns the plug.",
+        "zh": "移开热源，让烧瓶回到室温。气体体积减小，水柱向内回移。只要没有漏气，且摩擦和蒸发可忽略，回到相同温度与压强时也应回到相同体积。",
+        "en": "Remove the warming source and return the flask to room temperature. Gas contracts and the plug moves inward. Without leakage, and neglecting friction and evaporation, the same temperature and pressure recover the same volume.",
+        "seconds": 26,
+        "chapterAt": 208,
+        "at": 208
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e3-mixing-calorimetry": {
+      "chapterIds": ["mix-prepare", "mix-equilibrate", "mix-cup"],
+      "label": {
+        "zh": "混合法测定金属比热容",
+        "en": "Metal specific heat by mixing"
+      }
+    },
+    "e3-boyle-syringe": {
+      "chapterIds": ["boyle-slow", "boyle-reciprocal", "boyle-fast"],
+      "label": {
+        "zh": "探究气体等温变化的规律",
+        "en": "Investigate isothermal gas changes"
+      }
+    },
+    "e3-isobaric-flask-expansion": {
+      "chapterIds": ["flask-seal", "flask-warm", "flask-cool"],
+      "label": {
+        "zh": "手捂烧瓶观察气体膨胀",
+        "en": "Warm a flask and observe expansion"
+      }
+    }
+  }
+}

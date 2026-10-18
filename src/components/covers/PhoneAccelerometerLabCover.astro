@@ -1,0 +1,30 @@
+---
+import { phoneSamples } from '../../models/phone-accelerometer-lab';
+const samples = phoneSamples('drop', 100),
+  path = (key: 'raw' | 'corrected') =>
+    samples
+      .map((s, i) => `${i ? 'L' : 'M'}${36 + (s.t / 1.2) * 328} ${179 - (s[key] / 30) * 71}`)
+      .join(' ');
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true"
+  ><path d="M121 28H240L273 72 144 73Z" fill="#5f7868" stroke="#4d6858" stroke-width="2"
+  ></path><path d="M121 28V36L144 82 273 81V72" fill="#889f87"></path><path
+    d="M135 35H234L258 64 149 65Z"
+    fill="#d7e3c9"></path><path
+    d="M150 47H177l10-6 10 17 12-11h27"
+    stroke="#8aa279"
+    stroke-width="2"
+    fill="none"></path><path d="M38 108V208H365" fill="none" stroke="#bacbb0"></path><path
+    d="M38 179H365"
+    stroke="#bacbb0"
+    stroke-dasharray="3 4"></path><path
+    d={path('raw')}
+    fill="none"
+    stroke="#6e927b"
+    stroke-width="3"></path><path
+    d={path('corrected')}
+    fill="none"
+    stroke="#bd9b63"
+    stroke-width="3"></path></svg
+>

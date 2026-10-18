@@ -1,0 +1,198 @@
+{
+  "topic": {
+    "slug": "electrostatic-induction",
+    "name": "静电起电与验电器",
+    "title": "不接触，怎样让两个导体带上相反的电？",
+    "question": "不接触，怎样让两个导体带上相反的电？",
+    "description": "从玻璃棒和丝绸到双导体、验电器与带电细丝，跟踪电子的去向和始终守恒的电荷。",
+    "color": "#afbd9b",
+    "tag": "电荷转移 · 等势",
+    "related": ["capacitor-fields", "diode-junction"],
+    "sources": [
+      {
+        "title": "OpenStax — Conductors, Insulators, and Charging by Induction",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction"
+      },
+      {
+        "title": "OpenStax — Conductors and Insulators: the electroscope",
+        "url": "https://openstax.org/books/college-physics-2e/pages/18-2-conductors-and-insulators"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["静电起电与验电器", "摩擦起电", "静电感应", "金属箔", "电荷守恒", "人教版物理"],
+      "en": [
+        "Charging and the Electroscope",
+        "electrostatic induction",
+        "electroscope",
+        "charge conservation",
+        "friction"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ElectrostaticInduction.tsx",
+  "cover": "src/components/covers/ElectrostaticInductionCover.astro",
+  "translations": {
+    "静电起电与验电器": "Charging and the Electroscope",
+    "不接触，怎样让两个导体带上相反的电？": "How can two conductors acquire opposite charges without contact?",
+    "从玻璃棒和丝绸到双导体、验电器与带电细丝，跟踪电子的去向和始终守恒的电荷。": "Follow charge from glass and silk to paired conductors, an electroscope and charged filaments, keeping track of conservation.",
+    "电荷转移 · 等势": "Charge transfer · Equal potential",
+    "绝缘支柱上的两个导体、外部带电棒与电荷转移": "Two conductors on insulating pillars, an external charged rod and charge transfer",
+    "两导体相连": "Conductors connected",
+    "两导体已分开": "Conductors separated",
+    "玻璃瓶验电器的金属球、导杆和两片金属箔": "A glass-jar electroscope with a metal knob, stem and two foil leaves",
+    "验电器总电荷": "Total electroscope charge",
+    "箔片半张角": "Leaf half-angle",
+    "玻璃棒与丝绸之间的电子转移": "Electron transfer between glass and silk",
+    "玻璃棒": "Glass rod",
+    "丝绸": "Silk",
+    "同号带电细丝在排斥力与弹性作用下张开": "Like-charged filaments spread against elastic restoring forces",
+    "同种电荷互相排斥": "Like charges repel",
+    "细丝电荷": "Filament charge",
+    "追踪同一组导体中的电荷": "Follow charge in the same conductors",
+    "张开不等于净电荷增加": "Opening does not mean added net charge",
+    "电荷转移，电荷总量不变": "Charge moves; the total stays constant",
+    "电荷相同，细丝向外张开": "Like-charged filaments spread apart",
+    "正电荷：缺少电子": "Positive: electron deficit",
+    "负电荷：多余电子": "Negative: excess electrons",
+    "选择静电实验": "Choose an electrostatic experiment",
+    "摩擦起电": "Charging by friction",
+    "感应起电": "Charging by induction",
+    "验电器": "Electroscope",
+    "带电细丝": "Charged filaments",
+    "外部带电体": "External charged object",
+    "带正电": "Positive charge",
+    "带负电": "Negative charge",
+    "验电器预先带电": "Initial electroscope charge",
+    "原先中性": "Initially neutral",
+    "预先带正电": "Initially positive",
+    "预先带负电": "Initially negative",
+    "移近 → 分开 → 移走 → 重接": "Approach → separate → withdraw → reconnect",
+    "带电棒靠近程度": "Rod proximity",
+    "电荷转移程度": "Charge-transfer progress",
+    "静电模型与实验条件": "Electrostatic model and experimental conditions",
+    "图示中的正负号表示净电荷，不是完整的原子图。两导体使用等势与电荷守恒近似求解；金属箔用尖端电荷与重力平衡估算张角，细丝计入静电排斥和弹性回复。忽略漏电、空气击穿及真实表面电荷细节，读数是教学参数，不是器材标定。": "Signs indicate net charge, not complete atoms. Equal potential and conservation determine the conductor charges. Foil angles balance tip-charge repulsion and gravity; filaments include repulsion and elasticity. Leakage, breakdown and detailed surface distributions are omitted. Readings are teaching parameters, not instrument calibration."
+  },
+  "narration": {
+    "duration": 166,
+    "cues": [
+      {
+        "id": "friction",
+        "title": "摩擦只转移电荷",
+        "titleEn": "Friction transfers charge",
+        "caption": "玻璃棒与丝绸得到等量异号电荷。",
+        "captionEn": "Glass and silk acquire equal and opposite charges.",
+        "seconds": 24,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "看玻璃棒和丝绸接触的位置。这里转移的是电子：玻璃棒失去一些电子，留下正的净电荷；丝绸得到这些电子，带上等量负电荷。两边合在一起，电荷总量没有改变。不同材料的转移方向可能不同，摩擦并不是凭空制造电荷。",
+        "en": "Watch the glass and silk where they meet. Electrons transfer between them. The glass loses electrons and becomes positive; the silk gains the same charge and becomes negative. The combined charge has not changed. Other material pairs may transfer charge in another direction. Rubbing does not create charge."
+      },
+      {
+        "id": "approach",
+        "title": "先让两个导体接触",
+        "titleEn": "Begin with connected conductors",
+        "caption": "带正电的物体靠近，电子移向较近的导体。",
+        "captionEn": "A positive object approaches and draws electrons toward the nearer conductor.",
+        "seconds": 24,
+        "chapterAt": 24,
+        "at": 24.4,
+        "zh": "现在换成绝缘支柱上的两个金属导体。它们先连在一起。把正电棒靠近导体 A，但不要接触。金属里的自由电子受到吸引，向 A 一侧重新分布。A 带负的净电荷，B 带正的净电荷，两片金属箔随之张开。注意下面，两者的总电荷仍然为零。",
+        "en": "Now use two metal conductors on insulating supports. Start with them connected. Bring a positive rod near A without touching it. Mobile electrons redistribute toward A. A becomes net negative and B net positive, and the foil indicators open. Their combined charge remains zero."
+      },
+      {
+        "id": "separate",
+        "title": "先分开，再移走",
+        "titleEn": "Separate before withdrawing",
+        "caption": "分开后，两导体保留等量异号电荷。",
+        "captionEn": "After separation, the conductors retain equal and opposite charges.",
+        "seconds": 28,
+        "chapterAt": 48,
+        "at": 48.4,
+        "zh": "保持正电棒在原处，先把两个导体分开。导体之间的通路断开了，电子不能再自由地来回交换。接着移走正电棒，金属箔仍然张开，两个导体各自保留净电荷。先分开、后移走，这个顺序正是感应起电的关键。",
+        "en": "Keep the charged rod in place while separating the conductors. Their conducting path is broken, so electrons can no longer pass between them. Now withdraw the rod. The leaves remain open and each conductor retains its net charge. Separating before withdrawing is the crucial order."
+      },
+      {
+        "id": "reconnect",
+        "title": "重新接触",
+        "titleEn": "Reconnect the conductors",
+        "caption": "通路恢复，电子重新分布，两者恢复中性。",
+        "captionEn": "Reconnection lets electrons redistribute and restores neutrality.",
+        "seconds": 18,
+        "chapterAt": 76,
+        "at": 76.4,
+        "zh": "最后，让两个导体重新接触。通路恢复后，多余电子可以重新分布，正负净电荷相互抵消，金属箔合拢。整个过程中，电荷只是从一处移到另一处，从来没有被创造出来。",
+        "en": "Reconnect the conductors. Once a conducting path is restored, excess electrons redistribute, the opposite net charges cancel, and the leaves close. Throughout the experiment, charge changed location; it was never created."
+      },
+      {
+        "id": "electroscope-neutral",
+        "title": "验电器张开了，净电荷变了吗？",
+        "titleEn": "Do open leaves imply added charge?",
+        "caption": "靠近可以使箔片张开，但验电器仍可整体中性。",
+        "captionEn": "An approaching rod can open the leaves while total charge stays zero.",
+        "seconds": 24,
+        "chapterAt": 94,
+        "at": 94.4,
+        "zh": "看玻璃瓶里的验电器。金属球、导杆和两片金属箔相连。正电棒靠近时，电子向上聚集，下面两片箔留下同号电荷而互相排斥。可是验电器的总电荷仍然为零。把棒移远，电荷重新分布，箔片又合上了。",
+        "en": "The knob, stem and foil leaves form one conductor. As a positive rod approaches, electrons redistribute upward. Both leaves are left with like charge and repel. Yet the electroscope's total charge remains zero. Withdraw the rod and the distribution relaxes; the leaves close."
+      },
+      {
+        "id": "electroscope-sign",
+        "title": "用已知电荷作比较",
+        "titleEn": "Compare with a known initial charge",
+        "caption": "预先带负电时，正电棒移近可先使张角减小。",
+        "captionEn": "For a negatively precharged instrument, an approaching positive rod can first reduce the opening.",
+        "seconds": 24,
+        "chapterAt": 118,
+        "at": 118.4,
+        "zh": "这次先让验电器带少量负电。正电棒靠近，电子由箔片移向金属球，箔片的净电荷先减少，所以张角变小。继续靠近，箔片还可能变成正电而再次张开。判断电性，要观察变化过程，不能只凭一次张开。",
+        "en": "This time the electroscope begins with a small negative charge. A positive rod draws electrons from the leaves toward the knob, so their opening first decreases. With further approach, the leaves can become positive and open again. To infer charge sign, follow the change rather than one final opening."
+      },
+      {
+        "id": "charged-filaments",
+        "title": "把排斥看成张开的细丝",
+        "titleEn": "See repulsion through spreading filaments",
+        "caption": "同号电荷的排斥与弹性回复共同决定细丝形状。",
+        "captionEn": "Repulsion and elastic restoring forces together determine filament shape.",
+        "seconds": 24,
+        "chapterAt": 142,
+        "at": 142.4,
+        "zh": "教材还让我们观察人体带电后头发散开的现象。这里用一组带同号电荷的弹性细丝作虚拟对照。电荷增多，静电排斥增强，细丝向外张开；减小电荷，它们又靠拢。真实头发的形状和湿度更复杂，但同号电荷排斥的方向没有改变。",
+        "en": "The textbook also observes hair spreading after a person is charged. Here elastic filaments provide a virtual comparison. More like charge strengthens repulsion and spreads them apart; reducing charge lets them come closer. Real hair and humidity are more complex, but the direction of like-charge repulsion is the same."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "r3-friction-charging": {
+      "chapterIds": ["friction"],
+      "label": {
+        "zh": "观察摩擦起电",
+        "en": "Observe charging by friction"
+      }
+    },
+    "r3-static-induction": {
+      "chapterIds": ["approach", "separate", "reconnect"],
+      "label": {
+        "zh": "观察静电感应现象",
+        "en": "Observe electrostatic induction"
+      }
+    },
+    "r3-electroscope": {
+      "chapterIds": ["electroscope-neutral", "electroscope-sign"],
+      "label": {
+        "zh": "制作并使用验电器",
+        "en": "Build and use an electroscope"
+      }
+    },
+    "r3-charged-hair": {
+      "chapterIds": ["charged-filaments"],
+      "label": {
+        "zh": "观察带电头发现象",
+        "en": "Observe charged hair spreading"
+      }
+    }
+  }
+}

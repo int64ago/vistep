@@ -1,0 +1,80 @@
+.wf-film {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #667b5f;
+}
+.wf-kicker {
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.6;
+  margin: 0 12px 8px;
+}
+.wf-apparatus {
+  display: block;
+  width: min(100%, 510px);
+  height: auto;
+  margin: auto;
+}
+.wf-apparatus text {
+  font: 21px var(--font-sans, sans-serif);
+  fill: #798a68;
+}
+.wf-readings {
+  display: flex;
+  justify-content: center;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #99815a;
+  padding: 6px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.wf-relation {
+  text-align: center;
+  font-size: 19px;
+  color: #8a9c77;
+  margin: 8px 14px;
+}
+.wf-controls {
+  display: grid;
+  gap: 20px;
+  background: #edf2e4;
+  border-radius: 24px;
+  margin: 22px 0;
+  padding: 24px;
+}
+.wf-controls button {
+  min-height: 44px;
+}
+.wf-details {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 20px 14px;
+}
+.wf-details summary {
+  min-height: 44px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.wf-details p {
+  color: #7e9072;
+  margin: 0 0 16px;
+}
+@media (max-width: 480px) {
+  .wf-controls {
+    padding: 18px 14px;
+  }
+  .wf-apparatus text {
+    font-size: 25px;
+  }
+  .wf-relation {
+    font-size: 18px;
+  }
+}
+
+/* Automatic film uses the player caption; expanded reading stays in exploration. */
+.wf-film[data-watch] > .wf-kicker,
+.wf-film[data-watch] > .wf-caption,
+.wf-film[data-watch] > details {
+  display: none;
+}

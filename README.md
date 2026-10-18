@@ -28,7 +28,7 @@ vistep.ai explains everyday mechanisms, science and computation through short vi
 - **Find your next question.** Search in either language; narrow by interest, running time and suggested starting age.
 - **English and Chinese.** Authored narration, captions and transcripts. Experiments run in your browser without an account, API key or live AI service.
 
-**Collection:** **102 registered scenes**. The latest twenty (83–102) span waves, imaging, information systems, rotating frames and solar eclipses. Their [review record](docs/qa-twenty-explorations.md) separates scientific checks, browser observations, recorded speech and missing native-listening or physical-device evidence. Production publishes verified `main` builds through [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain). Earlier delivery is preserved in the [scene review records](docs/README.md#review-records).
+**Collection:** **301 registered scenes**. The teaching area now follows all six PEP high-school physics books, with 271 ordered learning positions linked to 109 scene groups. The [curriculum review record](docs/qa-pep-curriculum.md) distinguishes implementation, model checks, browser observations, speech transcription and remaining listening/device evidence. Production publishes verified `main` builds through [GitHub Actions](https://github.com/int64ago/vistep/actions/workflows/ci.yml?query=branch%3Amain).
 
 ## Start exploring
 

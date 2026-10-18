@@ -1,0 +1,140 @@
+{
+  "topic": {
+    "slug": "forced-oscillation-lab",
+    "name": "电机驱动与共振摆",
+    "title": "为什么不同的振子会跟随同一个频率？",
+    "question": "为什么不同的振子会跟随同一个频率？",
+    "description": "用实际电机滑槽和公共横梁，区分受迫稳态、共振响应与有限能量交换。",
+    "color": "#c0caae",
+    "tag": "受迫振动 · 共振 · 耦合",
+    "related": ["resonance", "spring-oscillation-lab"],
+    "sources": [
+      {
+        "title": "OpenStax — Forced Oscillations",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["电机驱动与共振摆", "受迫振动", "共振", "共振摆"],
+      "en": [
+        "Motor Drive and Resonance Pendulums",
+        "forced oscillation",
+        "resonance",
+        "coupled pendulums"
+      ]
+    }
+  },
+  "component": "src/components/experiments/ForcedOscillationLab.tsx",
+  "cover": "src/components/covers/ForcedOscillationLabCover.astro",
+  "translations": {
+    "电机驱动与共振摆": "Motor Drive and Resonance Pendulums",
+    "为什么不同的振子会跟随同一个频率？": "Why can different oscillators follow one frequency?",
+    "用实际电机滑槽和公共横梁，区分受迫稳态、共振响应与有限能量交换。": "Use an actual motor yoke and shared support to distinguish forced steady motion, resonance and finite energy exchange.",
+    "受迫振动 · 共振 · 耦合": "Forced oscillation · Resonance · Coupling",
+    "电机带动同一个滑槽横梁，两个弹簧的暂态响应不同": "One motor drives a shared yoke; the two springs have different startup transients",
+    "暂态衰减后，两组不同弹簧都跟随电机频率": "After transients decay, both unlike springs follow the motor frequency",
+    "缩短重摆 D 后，响应较强的轻摆随之改变": "Shortening heavy pendulum D changes which light pendulum responds strongly",
+    "重摆通过同一横梁传递能量，同长轻摆在观察窗口内响应较强": "The heavy pendulum transfers energy through a shared support; equal-length pendulums respond strongly in this window",
+    "电机曲柄的销钉在横槽中滑动，横梁上下移动并驱动两组不同的弹簧钩码": "The motor pin slides in a horizontal yoke, moving the support and driving two unlike spring-weight systems",
+    "A 至 G 七个摆共用可微移的横梁，D 为重摆，摆长相同者响应较强": "Pendulums A through G share a slightly movable support; D is heavy and matching lengths respond strongly",
+    "摆长 / cm · D 为重摆": "Length / cm · D is heavy",
+    "横梁微动放大 20 倍": "Support displacement enlarged ×20",
+    "放大的横梁水平位移": "Magnified horizontal support displacement",
+    "模型时间": "Model time",
+    "稳态测频": "Settled frequency",
+    "系统机械能": "System mechanical energy",
+    "重摆释放后没有持续补能；能量会交换并衰减，不把暂态当作永久稳态。": "The released driver receives no continuous energy input; energy exchanges and decays rather than forming a permanent steady state.",
+    "选择驱动装置": "Choose a driving apparatus",
+    "电机与弹簧": "Motor and springs",
+    "共振摆": "Resonance pendulums",
+    "电机频率": "Motor frequency",
+    "重摆 D 的长度": "Heavy pendulum D length",
+    "驱动、耦合与边界": "Driving, coupling and limits",
+    "电机通过滑槽横梁给弹簧上端规定周期位移；计算包含起动暂态与阻尼，稳态频率由后段实际过零时刻读取。共振摆采用小角度、可水平微移的公共横梁，联立求解全部七个摆和横梁，包含重摆反作用与能量交换。轻摆并非独立接收一条预设正弦波。横梁局部图放大位移，主图保留统一尺度。": "A motor yoke prescribes periodic spring-support displacement. The calculation includes startup and damping, with settled frequency measured from later zero crossings. Seven small-angle pendulums and their horizontally compliant support are solved together, including driver back reaction and energy exchange. Light pendulums do not independently receive a prescribed sine wave. The support inset magnifies displacement while the main view keeps one scale."
+  },
+  "narration": {
+    "duration": 128,
+    "cues": [
+      {
+        "id": "motor-start",
+        "title": "电机驱动两组弹簧",
+        "titleEn": "One motor drives two springs",
+        "caption": "电机驱动两组弹簧。",
+        "captionEn": "One motor drives two springs.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0.4,
+        "zh": "电机曲柄上的销钉在横槽中滑动，让横梁上下运动。两组劲度不同的弹簧连接同一个横梁，下端钩码因此受到周期驱动。起动时，两组运动还混有各自的暂态响应。经过阻尼衰减后，它们都跟随电机频率，但振幅和相位可以不同。",
+        "en": "The crank pin slides inside a horizontal slot, moving the support vertically. Two springs with different stiffnesses connect to this shared support, driving the hanging weights periodically. Startup includes each system’s transient response. After damping removes those transients, both follow the motor frequency, although amplitude and phase can differ."
+      },
+      {
+        "id": "motor-frequency",
+        "title": "改变电机转速",
+        "titleEn": "Change motor speed",
+        "caption": "改变电机转速。",
+        "captionEn": "Change motor speed.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26.4,
+        "zh": "提高电机转速，观察两组钩码都按新的频率振动。下面的测频来自后段运动实际经过零位的时刻间隔。两组弹簧的固有频率并不相同，但稳定受迫振动的频率都等于驱动频率。接近某一组的固有频率时，那一组的响应还可能明显增强。",
+        "en": "Increase motor speed and both weight systems follow the new frequency. The displayed measurements use later equilibrium-crossing intervals. The two springs have different natural frequencies, yet their settled forced frequency equals the drive frequency. A system’s response can also become stronger as the drive approaches its natural frequency."
+      },
+      {
+        "id": "beam-transfer",
+        "title": "重摆经横梁传能",
+        "titleEn": "A heavy pendulum drives the support",
+        "caption": "重摆经横梁传能。",
+        "captionEn": "A heavy pendulum drives the support.",
+        "seconds": 24,
+        "chapterAt": 52,
+        "at": 52.4,
+        "zh": "换成共用横梁的七个摆，D 的摆球较重。把 D 拉开后释放，其他摆起初静止，随后通过横梁的微小运动获得能量。局部图把横梁位移放大二十倍，主图仍保留统一尺度。这里所有摆与横梁一起计算，所以轻摆的运动也会反过来影响重摆。",
+        "en": "Now use seven pendulums on a shared support, with a heavier bob at D. Release D while the others start at rest. Small support motions transfer energy to them. The inset enlarges support displacement twentyfold while the main view retains one scale. All pendulums and the support are solved together, including back reaction on the driver."
+      },
+      {
+        "id": "beam-matching",
+        "title": "同长轻摆响应",
+        "titleEn": "Matching-length pendulums respond",
+        "caption": "同长轻摆响应。",
+        "captionEn": "Matching-length pendulums respond.",
+        "seconds": 26,
+        "chapterAt": 76,
+        "at": 76.4,
+        "zh": "A、D、G 的摆长相同，固有频率接近。观察一段时间，A 和 G 的响应比其他轻摆更明显。这个装置展示了频率接近时的能量传递。重摆释放后没有持续补能，能量会在各部分之间交换并逐渐损失，不能把某个瞬间的最大振幅理解成永久稳态。",
+        "en": "A, D and G have equal lengths and similar natural frequencies. Over the observation window, A and G respond more strongly than the other light pendulums. This demonstrates energy transfer between nearby frequencies. The released heavy pendulum receives no continuing energy input; energy exchanges and dissipates, so a momentary maximum is not a permanent steady state."
+      },
+      {
+        "id": "beam-retune",
+        "title": "改变重摆长度",
+        "titleEn": "Retune the heavy pendulum",
+        "caption": "改变重摆长度。",
+        "captionEn": "Retune the heavy pendulum.",
+        "seconds": 26,
+        "chapterAt": 102,
+        "at": 102.4,
+        "zh": "将重摆 D 缩短到与 B 相同的摆长，再重新释放。响应较强的轻摆也随之改变。判断共振时，不能只看摆球是否在动，而要控制驱动条件，比较一段时间内的振幅。真实装置的峰值还受阻尼和耦合影响，教材的同频最强是弱阻尼条件下的近似。",
+        "en": "Shorten heavy pendulum D to match B and release it again. The strongest responding light pendulum changes. To assess resonance, control the drive and compare amplitudes over a time window rather than merely checking whether a bob moves. Real peak response also depends on damping and coupling; the textbook’s matching-frequency rule is a weak-damping approximation."
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-forced-frequency": {
+      "chapterIds": ["motor-start", "motor-frequency"],
+      "label": {
+        "zh": "研究受迫振动的频率",
+        "en": "Investigate forced oscillation frequency"
+      }
+    },
+    "e1-resonance-pendulums": {
+      "chapterIds": ["beam-transfer", "beam-matching", "beam-retune"],
+      "label": {
+        "zh": "观察共振摆的振幅变化",
+        "en": "Observe resonance pendulum amplitudes"
+      }
+    }
+  }
+}

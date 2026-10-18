@@ -1,0 +1,203 @@
+.motion-sensor-lab {
+  max-width: 960px;
+  padding: clamp(18px, 4vw, 40px);
+  margin: auto;
+  color: #526c54;
+}
+.motion-sensor-lab header {
+  text-align: center;
+}
+.motion-sensor-lab header p {
+  font-size: clamp(21px, 2.6vw, 29px);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.motion-sensor-lab header > span {
+  font-size: 16px;
+  color: #829274;
+}
+.motion-sensor-apparatus {
+  max-width: 620px;
+  margin: 18px auto 0;
+}
+.motion-sensor-apparatus > svg {
+  display: block;
+  width: 100%;
+}
+.motion-sensor-key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.motion-sensor-key span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.motion-sensor-key i {
+  width: 17px;
+  height: 3px;
+  background: #95b39b;
+  border-radius: 4px;
+}
+.motion-sensor-key span:nth-child(2) i {
+  background: #bea174;
+}
+.motion-sensor-timing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 4vw, 60px);
+  margin: 30px 0;
+}
+.motion-sensor-timing > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+}
+.motion-sensor-timing strong {
+  font-size: 30px;
+  font-weight: 400;
+  color: #8b9e73;
+}
+.motion-sensor-timing small {
+  font-size: 17px;
+}
+.motion-sensor-timing p {
+  font-size: 26px;
+  margin: 0;
+  color: #9e8d67;
+}
+.motion-sensor-cause,
+.motion-sensor-note {
+  text-align: center;
+  line-height: 1.7;
+  font-size: 17px;
+  max-width: 750px;
+  margin: 20px auto;
+}
+.motion-sensor-note {
+  font-size: 16px;
+  color: #869477;
+}
+.motion-sensor-samples {
+  max-width: 650px;
+  margin: 28px auto;
+}
+.motion-sensor-samples > p {
+  text-align: center;
+  font-size: 17px;
+}
+.motion-sensor-samples svg {
+  width: 100%;
+  display: block;
+  max-width: 500px;
+  margin: auto;
+}
+.motion-sensor-samples .motion-sensor-value {
+  font-size: 24px;
+  color: #869b72;
+}
+.motion-sensor-value b {
+  font-weight: 400;
+}
+.motion-sensor-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 0;
+}
+.motion-sensor-controls > .segmented {
+  grid-column: 1/-1;
+  justify-self: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 640px) {
+  .motion-sensor-lab {
+    padding: 20px 12px;
+  }
+  .motion-sensor-timing {
+    flex-wrap: wrap;
+    gap: 20px 30px;
+  }
+  .motion-sensor-timing p {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .motion-sensor-timing > div {
+    align-items: center;
+    flex: 1;
+    min-width: 120px;
+  }
+  .motion-sensor-controls {
+    grid-template-columns: 1fr;
+  }
+  .motion-sensor-key {
+    gap: 8px 16px;
+  }
+  .motion-sensor-samples .motion-sensor-value {
+    font-size: 22px;
+  }
+}
+
+/* The film caption carries the current explanation; longer notes remain in exploration. */
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .motion-sensor-lab {
+    padding: 12px 8px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-lab > header {
+    display: block;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-lab > header p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-lab > header > span,
+  .showcase[data-mode='watch'] .motion-sensor-lab > p[class$='-note'],
+  .showcase[data-mode='watch'] .motion-sensor-lab > p[class$='-cause'],
+  .showcase[data-mode='watch'] .motion-sensor-lab > p[class$='-observation'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase[data-mode='watch'] .motion-sensor-apparatus {
+    margin: 5px auto;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-apparatus svg {
+    max-height: 195px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-key {
+    gap: 4px 12px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing {
+    gap: 5px 12px;
+    margin: 8px 0;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing > div {
+    gap: 4px;
+    min-width: 105px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing strong {
+    font-size: 22px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-timing p {
+    font-size: 20px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-samples {
+    margin: 6px 0;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-samples > p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .motion-sensor-samples svg text {
+    font-size: 24px;
+  }
+}

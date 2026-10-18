@@ -1,0 +1,159 @@
+{
+  "topic": {
+    "slug": "elasticity-lab",
+    "name": "弹性测量实验",
+    "title": "伸长一倍，拉力一定增加一倍吗？",
+    "question": "伸长一倍，拉力一定增加一倍吗？",
+    "description": "从原长、砝码和记录点建立弹簧关系，再沿橡皮筋的加载、卸载与重复循环检验边界。",
+    "color": "#b7bc98",
+    "tag": "伸长 · 加载 · 滞回",
+    "related": ["pendulum", "suspension-center-of-gravity"],
+    "sources": [
+      {
+        "title": "OpenStax — Elasticity and Plasticity",
+        "url": "https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity"
+      },
+      {
+        "title": "Penn State — Rubber Band Elastic Hysteresis",
+        "url": "https://phys23p.sl.psu.edu/~mrg3/interactives/EJSS_mrg/ejss_model_Bungee_Hysteresis_Thermal_V2/ElasticHysteresisIntroduction.html"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "mechanisms",
+    "minAge": 12,
+    "keywords": {
+      "zh": ["弹性测量实验", "胡克定律", "弹簧伸长", "橡皮筋滞回"],
+      "en": ["Elasticity laboratory", "Hooke law", "spring extension", "rubber hysteresis"]
+    }
+  },
+  "component": "src/components/experiments/ElasticityLab.tsx",
+  "cover": "src/components/covers/ElasticityLabCover.astro",
+  "translations": {
+    "弹性测量实验": "Elasticity laboratory",
+    "伸长一倍，拉力一定增加一倍吗？": "Does twice the extension always require twice the force?",
+    "从原长、砝码和记录点建立弹簧关系，再沿橡皮筋的加载、卸载与重复循环检验边界。": "Build a spring relation from lengths and loads, then investigate rubber through loading, unloading and repeated cycles.",
+    "伸长 · 加载 · 滞回": "Extension · Loading · Hysteresis",
+    "先测原长，再读伸长量": "Measure the natural length before extension",
+    "每次加砝码，等停稳后记录长度": "Add a mass, wait for rest, then record length",
+    "橡皮筋的曲线不必是一条直线": "A rubber-band curve need not be straight",
+    "重复加载，检查曲线是否保持不变": "Repeat loading and check whether the curve changes",
+    "同一伸长量，加载与卸载可能不同": "The same extension can require different loading and unloading forces",
+    "弹簧 · 弹性范围内": "Spring · Within its elastic range",
+    "橡皮筋 · 示意本构关系": "Rubber · Illustrative constitutive law",
+    "固定支架上悬挂弹性物体和载荷，尺子以原长位置为伸长零点": "An elastic element carries a load beneath a fixed stand; the ruler uses natural length as the extension zero",
+    "伸长量": "Extension",
+    "弹力": "Elastic force",
+    "记录点组成力—伸长图像": "Recorded force–extension points",
+    "弹力与伸长量图像，标记当前实验状态": "Force–extension graph marking the current experiment state",
+    "棕：加载": "Brown: loading",
+    "绿：卸载": "Green: unloading",
+    "循环次数": "Cycle number",
+    "伸长量从原长算起，不是弹簧总长度。": "Extension is measured from natural length, not total spring length.",
+    "重复曲线有变化，是需要测量的现象，不能预先当成常数。": "Changes across cycles must be measured rather than assumed constant.",
+    "卸载曲线不重合时，不能用一个固定劲度系数概括全过程。": "When unloading differs, one fixed spring constant cannot describe the whole process.",
+    "实验材料": "Test material",
+    "弹簧": "Spring",
+    "橡皮筋": "Rubber band",
+    "砝码总质量": "Total load mass",
+    "加载路径": "Loading branch",
+    "加载": "Loading",
+    "卸载": "Unloading",
+    "已完成循环": "Completed cycles",
+    "静止时用砝码重力代表弹力；忽略弹簧自重，不模拟超出弹性限度。": "At rest, load weight equals elastic force. Spring mass is neglected; the elastic limit is not exceeded.",
+    "橡皮筋采用非线性、滞回与循环软化的示意模型；并非所有橡胶的实测规律。": "Rubber uses illustrative nonlinearity, hysteresis and cycle softening, not a measured universal law."
+  },
+  "narration": {
+    "duration": 157,
+    "cues": [
+      {
+        "id": "natural",
+        "title": "先找到伸长零点",
+        "titleEn": "Locate the extension zero",
+        "caption": "伸长量等于总长度减去原长。",
+        "captionEn": "Extension is total length minus natural length.",
+        "zh": "研究弹簧时，第一步不是加很多砝码，而是先测没有载荷时的原长。图中的虚线保留这个位置。加上载荷后，尺子读到的是总长度；我们要研究的伸长量，是总长度减去原长。若把这两个量混在一起，后面的图像即使画得很整齐，也不能正确说明弹力关系。",
+        "en": "Begin a spring experiment by measuring its unloaded natural length. The dashed line preserves that reference. With a load attached, the ruler gives total length; extension is total length minus natural length. Confusing these quantities would invalidate the interpretation, however tidy the graph looks.",
+        "seconds": 25,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "masses",
+        "title": "逐次加挂砝码",
+        "titleEn": "Add masses in steps",
+        "caption": "每次静止后，才用重力代表弹力。",
+        "captionEn": "Use load weight as spring force only after it settles.",
+        "zh": "现在逐次增加砝码。每一次都等到静止，再记录伸长量。静止时砝码的重力和弹簧拉力大小相等，所以质量乘以重力加速度，就得到这一点的弹力。图上的点随实验记录逐个出现。我们在比较多次测量，而不是用一个点就宣布整个关系必然成立。",
+        "en": "Add masses in steps and wait for rest before recording each extension. At equilibrium, the spring force equals the load weight, so mass times gravitational acceleration gives the corresponding force. Points appear as records are taken. Several measurements are needed to investigate the relationship rather than declaring a rule from one point.",
+        "seconds": 27,
+        "chapterAt": 25,
+        "at": 25.3
+      },
+      {
+        "id": "line",
+        "title": "检查比例关系",
+        "titleEn": "Test proportionality",
+        "caption": "线性范围内，伸长翻倍，弹力翻倍。",
+        "captionEn": "In the linear range, doubling extension doubles force.",
+        "zh": "把这些记录放在力与伸长量的坐标中，可以看到直线通过原点。这里弹力与伸长量成正比，直线的斜率表示劲度系数。载荷翻倍时，伸长量翻倍，但弹簧总长度并不翻倍。这个结论有适用范围，不能继续外推到弹簧已经发生永久形变或断裂的情况。",
+        "en": "The records form a straight line through the origin: force is proportional to extension, and the slope gives stiffness. Doubling the load doubles extension, not total length. This conclusion has a range of validity; it cannot simply be extended to permanent deformation or breakage.",
+        "seconds": 25,
+        "chapterAt": 52,
+        "at": 52.3
+      },
+      {
+        "id": "rubber-load",
+        "title": "换材料，重新测",
+        "titleEn": "Change the material and measure again",
+        "caption": "橡皮筋的加载曲线可以是弯曲的。",
+        "captionEn": "Rubber can have a curved loading relation.",
+        "zh": "换成橡皮筋，保留测原长、加荷载、读长度的思路。下方容器代表可连续调整的载荷。随着伸长增加，所需拉力的增长不一定均匀，记录可能组成一条弯曲的线。这里的曲线是示意模型，不是某根橡皮筋的实测数据；材料改变后，关系需要重新检查。",
+        "en": "Replace the spring with rubber while keeping the same measurement logic. The vessel represents a continuously adjustable load. As extension increases, force need not grow uniformly, and the records can form a curve. This is an illustrative constitutive model, not measured data from a particular band. Changing material requires a fresh investigation.",
+        "seconds": 27,
+        "chapterAt": 77,
+        "at": 77.3
+      },
+      {
+        "id": "rubber-unload",
+        "title": "沿卸载路径返回",
+        "titleEn": "Return along the unloading branch",
+        "caption": "相同伸长处，卸载力可以小于加载力。",
+        "captionEn": "At the same extension, unloading force can be lower.",
+        "zh": "不要马上取下橡皮筋，而是逐渐减小载荷，同时记录返回过程。在同一伸长量处，卸载时需要的力可能和加载时不同，两条曲线不再重合。这种路径依赖叫滞回。它提醒我们，除了当前伸长量，还要知道材料经历过什么过程，不能只用一个固定劲度系数概括全部行为。",
+        "en": "Reduce the load gradually and record the return path. At the same extension, unloading may require a different force, so the curves do not coincide. This path dependence is hysteresis. Besides the current extension, the material history matters; one fixed spring constant cannot summarize the entire response.",
+        "seconds": 27,
+        "chapterAt": 104,
+        "at": 104.3
+      },
+      {
+        "id": "cycles",
+        "title": "重复以后再比较",
+        "titleEn": "Compare repeated cycles",
+        "caption": "比较各轮记录，检查软化与重复性。",
+        "captionEn": "Compare cycles to check softening and repeatability.",
+        "zh": "最后比较多次完整循环之后的记录。虚线保留第一次的加载曲线，当前曲线显示这一示意材料的循环软化。真实橡皮筋还会受到温度、拉伸速度和疲劳影响，并不保证每根都会按同样方式变化。课题研究要把这些条件记录下来，再用重复实验区分稳定规律和偶然差异。",
+        "en": "Compare records after repeated complete cycles. The dashed curve preserves the first loading trace; the current curve illustrates cycle softening. Real rubber also depends on temperature, speed and fatigue, and different bands need not change in the same way. Record these conditions and repeat measurements to distinguish a stable trend from variation.",
+        "seconds": 26,
+        "chapterAt": 131,
+        "at": 131.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "required-1-spring-elasticity": {
+      "chapterIds": ["natural", "masses", "line"],
+      "label": {
+        "zh": "弹簧弹力与形变量",
+        "en": "Spring force and extension"
+      }
+    },
+    "required-1-rubber-elasticity": {
+      "chapterIds": ["rubber-load", "rubber-unload", "cycles"],
+      "label": {
+        "zh": "橡皮筋弹力研究",
+        "en": "Rubber-band research"
+      }
+    }
+  }
+}

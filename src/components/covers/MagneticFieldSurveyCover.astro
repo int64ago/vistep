@@ -1,0 +1,33 @@
+---
+import { surveyField, surveyInsideSource } from '../../models/magnetic-field-survey';
+const filings = Array.from({ length: 13 * 8 }, (_, id) => {
+  const x = -0.24 + (id % 13) * 0.04,
+    y = -0.15 + Math.floor(id / 13) * 0.043,
+    b = surveyField('bar', x, y);
+  return {
+    x: 200 + x * 640,
+    y: 125 - y * 640,
+    angle: Math.atan2(b.by, b.bx),
+    visible: !surveyInsideSource('bar', x, y),
+  };
+});
+---
+
+<svg viewBox="0 0 400 250" fill="none" aria-hidden="true">
+  <rect x="23" y="16" width="354" height="215" rx="25" fill="#e8eedf" fill-opacity=".4"></rect>
+  {
+    filings
+      .filter((f) => f.visible)
+      .map((f) => (
+        <path
+          d={`M${f.x - 5 * Math.cos(f.angle)} ${f.y + 5 * Math.sin(f.angle)}l${10 * Math.cos(f.angle)} ${-10 * Math.sin(f.angle)}`}
+          stroke="#91a38b"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      ))
+  }
+  <rect x="136" y="111" width="128" height="28" rx="8" fill="#b6c8af"></rect><path
+    d="M200 111h56q8 0 8 8v12q0 8-8 8h-56z"
+    fill="#bea982"></path>
+</svg>

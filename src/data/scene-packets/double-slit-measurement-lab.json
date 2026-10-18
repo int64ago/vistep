@@ -1,0 +1,167 @@
+{
+  "topic": {
+    "slug": "double-slit-measurement-lab",
+    "name": "把干涉条纹变成测量",
+    "title": "如何从几个亮纹读出光的波长？",
+    "question": "如何从几个亮纹读出光的波长？",
+    "description": "在光具座记录多条亮纹，用固定线阵读取强度，再比较洛埃镜。",
+    "color": "#aebfa8",
+    "tag": "波动光学",
+    "related": ["double-slit", "thin-film-interference"],
+    "sources": [
+      {
+        "title": "OpenStax — Young’s double slit",
+        "url": "https://openstax.org/books/university-physics-volume-3/pages/3-1-youngs-double-slit-experiment"
+      },
+      {
+        "title": "TU Delft — Interference and coherence",
+        "url": "https://interactivetextbooks.tudelft.nl/tn2421/content/Chap5_Interference/InterferenceCoherence_2022_01Clean.html"
+      }
+    ]
+  },
+  "component": "src/components/experiments/DoubleSlitMeasurementLab.tsx",
+  "cover": "src/components/covers/DoubleSlitMeasurementLabCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["把干涉条纹变成测量", "如何从几个亮纹读出光的波长？", "教材光学实验"],
+      "en": [
+        "Measure with interference fringes",
+        "How can a few bright fringes reveal wavelength?",
+        "textbook optics experiment"
+      ]
+    }
+  },
+  "translations": {
+    "把干涉条纹变成测量": "Measure with interference fringes",
+    "如何从几个亮纹读出光的波长？": "How can a few bright fringes reveal wavelength?",
+    "在光具座记录多条亮纹，用固定线阵读取强度，再比较洛埃镜。": "Record multiple fringes at an eyepiece, read a fixed detector array and compare Lloyd’s mirror.",
+    "近代物理": "Modern physics",
+    "波动光学": "Wave optics"
+  },
+  "narration": {
+    "duration": 224,
+    "cues": [
+      {
+        "id": "bench-align",
+        "title": "沿遮光筒轴线对准器件",
+        "titleEn": "Align the optical bench",
+        "caption": "光源、透镜、滤片、单缝、双缝与屏依次连接。",
+        "captionEn": "Align the source, lens, filter, single slit, double slit and screen.",
+        "zh": "先让光束沿遮光筒轴线照亮屏，再放入互相平行的单缝与双缝。透镜使光更集中，滤片选出窄波段，单缝为双缝提供相干照明。上方显示装置顺序，下方展开测量头视野。器件纵向距离经过压缩，双缝到屏的实际计算距离为一点二米。",
+        "en": "First illuminate the screen along the tube axis, then align parallel single and double slits. A lens concentrates light, the filter selects a narrow band, and the single slit supplies coherent illumination. The lower circle unfolds the measuring eyepiece. Bench distances are compressed visually; the calculation uses a slit-to-screen distance of one point two meters.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.3
+      },
+      {
+        "id": "reticle-first",
+        "title": "把分划线对准第一条亮纹",
+        "titleEn": "Align the reticle with the first bright center",
+        "caption": "记录亮纹中心，而不是亮暗交界。",
+        "captionEn": "Record the bright center, not a bright–dark boundary.",
+        "zh": "转动测量头手轮，让分划线对准选定亮纹的中心，记下第一读数。示意采用连续位移读数，省去不同型号手轮的刻度结构；分划线的位置真实改变，不是自动贴到条纹上。自由探索时可以主动记录，所以偏离中心也会产生相应的测量偏差。",
+        "en": "Move the eyepiece reticle onto a chosen bright center and record its position. A continuous position readout replaces model-specific handwheel graduations. The reticle actually moves and does not automatically snap to a fringe. In exploration, recording an off-center position produces a corresponding measurement error.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.3
+      },
+      {
+        "id": "reticle-six",
+        "title": "跨过五个间隔，记录第六条",
+        "titleEn": "Span five intervals to the sixth center",
+        "caption": "总距离除以五，得到平均条纹间距。",
+        "captionEn": "Divide the total distance by five to obtain mean fringe spacing.",
+        "zh": "从第一条数到第六条亮纹，实际跨过五个间隔。保持同一方向转动，记录最后读数，用总距离除以五求平均间距，再由缝距和屏距反推波长。多间隔测量减小单次对准误差的相对影响，但不能消除刻度或距离的系统误差。",
+        "en": "The first through sixth bright centers span five intervals. Continue in one direction, record the final position and divide the distance by five. Combine mean spacing with known slit separation and screen distance to infer wavelength. Multiple intervals reduce relative alignment error but do not eliminate systematic calibration errors.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.3
+      },
+      {
+        "id": "filter-color",
+        "title": "换滤片，比较条纹间距",
+        "titleEn": "Compare filters and fringe spacing",
+        "caption": "较长波长形成更大的间距；换缝距也会改变间距。",
+        "captionEn": "Longer wavelengths give wider spacing; slit separation also matters.",
+        "zh": "保持装置距离不变，逐渐从短波长比较到长波长，条纹间距增大。探索中还可把双缝间距从零点一八毫米改为零点三六毫米，间距就减半。每次更换波长或缝距会清除先前读数，避免用不同配置的数据拼成一个测量。画面亮度是归一化值，不是光源功率。",
+        "en": "With the apparatus distances fixed, longer wavelengths produce wider fringes. Doubling slit separation from point one eight to point three six millimeters halves spacing. Exploration clears recorded positions whenever wavelength or separation changes. Display brightness is normalized rather than a prediction of lamp power.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.3
+      },
+      {
+        "id": "sensor-array",
+        "title": "让光照到固定的光敏阵列",
+        "titleEn": "Illuminate a fixed detector array",
+        "caption": "教材的光路自上而下，各光敏单元同时接光。",
+        "captionEn": "The textbook uses a downward beam and simultaneously illuminated detector elements.",
+        "zh": "教材把光源放在支架上端，双缝在中间，线阵光传感器在下面。长条区域分布许多光敏单元，它们同时接收到不同位置的光。这里没有移动探头：曲线上的高亮点只是逐个查看固定单元的读数。每个单元记录自己有限宽度内的平均强度。",
+        "en": "The textbook places the source above the double slit and a linear sensor below. Many photosensitive elements receive light at their fixed positions simultaneously. No probe moves: the highlighted graph point reads successive fixed elements. Each detector value averages intensity over its finite active width.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.3
+      },
+      {
+        "id": "sensor-profile",
+        "title": "从强度曲线读取空间周期",
+        "titleEn": "Read spatial period from the intensity curve",
+        "caption": "亮纹中心对应峰值，读数受像元宽度限制。",
+        "captionEn": "Bright centers correspond to peaks; finite pixels limit resolution.",
+        "zh": "把各单元的位置和强度依次排成曲线，明暗条纹就成为周期起伏。传感器既能找间距，也能显示各点的强度。若条纹过密，有限像元会把峰谷平均得更平，不能只凭曲线光滑就宣称测量准确。模型采用一百六十个等宽单元，未加入噪声、饱和与校准误差。",
+        "en": "Plotting detector position against intensity reveals the fringe period and local brightness. Finite pixels smooth closely spaced peaks and valleys, so a smooth curve does not prove accuracy. This model uses one hundred sixty equal-width elements and excludes noise, saturation and calibration errors.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.3
+      },
+      {
+        "id": "lloyd-paths",
+        "title": "用单面镜得到第二条路径",
+        "titleEn": "Create a second path with one mirror",
+        "caption": "实源直达与经镜反射的光相遇，镜像只是构图工具。",
+        "captionEn": "Direct and reflected light meet; the virtual source constructs the reflected path.",
+        "zh": "单色光源一部分光直接到屏，另一部分经平面镜反射后到达同一位置。把反射光反向延长，会指向镜后的虚像，因此可以用实源和虚像分析两条路径。图中的反射点由源高与接收位置计算；虚线不表示镜后有真实光传播。",
+        "en": "Some source light reaches the screen directly while another part reflects from a plane mirror. Backward extension points to a virtual source, which helps compare paths. The reflection point is calculated from source height and receiver position. Dashed lines behind the mirror are constructions, not real propagation.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.3
+      },
+      {
+        "id": "lloyd-phase",
+        "title": "计入反射相位，比较条纹",
+        "titleEn": "Include reflection phase in the fringe pattern",
+        "caption": "零路程差处为暗纹，源与虚像距离决定间距。",
+        "captionEn": "Zero path difference is dark; source–image separation sets spacing.",
+        "zh": "理想掠入射镜面反射给这条路径增加半周相位，因此零路程差附近出现暗纹，而不是直接照搬双缝中心亮纹。改变光源离镜面的高度，实源与虚像间距改变，条纹间距随之变化。模型取相等振幅和理想反射相位；真实镜面的材料、偏振和有限长度会影响对比度与重叠范围。",
+        "en": "Ideal grazing reflection adds half a cycle, making zero path difference dark rather than copying the double-slit central bright fringe. Changing source height changes source–image separation and fringe spacing. Equal amplitudes and ideal reflection phase are assumed; real mirror material, polarization and length affect contrast and overlap.",
+        "seconds": 28,
+        "chapterAt": 196,
+        "at": 196.3
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-double-slit-wavelength": {
+      "chapterIds": ["bench-align", "reticle-first", "reticle-six", "filter-color"],
+      "label": {
+        "zh": "双缝测波长",
+        "en": "Double-slit wavelength"
+      }
+    },
+    "e1-double-slit-light-sensor": {
+      "chapterIds": ["sensor-array", "sensor-profile"],
+      "label": {
+        "zh": "线阵光传感器",
+        "en": "Linear light sensor"
+      }
+    },
+    "e1-lloyd-mirror": {
+      "chapterIds": ["lloyd-paths", "lloyd-phase"],
+      "label": {
+        "zh": "洛埃镜",
+        "en": "Lloyd mirror"
+      }
+    }
+  }
+}

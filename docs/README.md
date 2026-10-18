@@ -36,6 +36,7 @@
 
 ## Review records
 
+- [PEP physics curriculum review](qa-pep-curriculum.md): six-book coverage, independent repairs, ASR and sampled browser evidence, and remaining acceptance gaps.
 - [Twenty-exploration review](qa-twenty-explorations.md): scenes 83–102, independent source repairs, recordings and separate browser/device evidence.
 
 Records describe particular revisions and conditions. They are not guarantees for later changes. Historical speech transport checks did not establish Chinese intelligibility; see the retrospective. Some recorded commit IDs predate history rewrites and may not resolve in a fresh clone; the [production record](expansion-50.md) explains how to read the original Actions and deployment references.

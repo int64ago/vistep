@@ -12,9 +12,11 @@ export type DiscoveryCategory =
   | 'thermal-fluids'
   | 'computing'
   | 'nature'
+  | 'matter'
   | 'math-systems'
   | 'weapons-safety';
 export const discoveryCategories: { id: DiscoveryCategory; label: { zh: string; en: string } }[] = [
+  { id: 'matter', label: { zh: '原子与物质', en: 'Atoms & matter' } },
   {
     id: 'mechanisms',
     label: {
@@ -95,6 +97,1302 @@ export function discoverySearchKeywords(slug: string): string {
 }
 
 export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
+  'singing-basin': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['摩擦铜盆的振动与水花', '龙洗', '铜盆喷水', '摩擦盆耳', '自激振动', '模态', '振动腹'],
+      en: [
+        'The singing bronze basin',
+        'dragon washbasin',
+        'friction excitation',
+        'self-excited vibration',
+        'water fountains',
+        'antinodes',
+      ],
+    },
+  },
+  'pendulum-measurement-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['单摆的记录与测量', '单摆测重力', '杆线摆', '滴墨摆'],
+      en: [
+        'Recording and Measuring Pendulums',
+        'pendulum gravity measurement',
+        'inclined pendulum',
+        'ink pendulum',
+      ],
+    },
+  },
+  'forced-oscillation-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['电机驱动与共振摆', '受迫振动', '共振', '共振摆'],
+      en: [
+        'Motor Drive and Resonance Pendulums',
+        'forced oscillation',
+        'resonance',
+        'coupled pendulums',
+      ],
+    },
+  },
+  'recoil-lab': {
+    category: 'thermal-fluids',
+    minAge: 12,
+    keywords: {
+      zh: ['气球与喷水容器的反冲', '反冲气球', '喷水旋转容器', '弯管喷水'],
+      en: [
+        'Recoil of balloons and water rotors',
+        'balloon recoil',
+        'rotating water vessel',
+        'tangential jets',
+      ],
+    },
+  },
+  'floating-oscillator': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['浮筷的上下振动', '浮力', '回复力', '简谐运动'],
+      en: ['A Floating Chopstick Oscillator', 'buoyancy', 'restoring force', 'harmonic motion'],
+    },
+  },
+  'doppler-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '旋转蜂鸣器与行进队列',
+        '旋转蜂鸣器',
+        '竹竿',
+        '多普勒效应',
+        '行进队列',
+        '接收频率',
+        '波峰',
+      ],
+      en: [
+        'Rotating buzzer and marching queue',
+        'rotating buzzer',
+        'bamboo rod',
+        'Doppler effect',
+        'marching queue',
+        'received frequency',
+        'wave crests',
+      ],
+    },
+  },
+  'spring-oscillation-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['弹簧振动的记录与测量', '简谐运动', '周期测量', '相位', '频闪照片'],
+      en: [
+        'Recording and Measuring Spring Oscillations',
+        'simple harmonic motion',
+        'period measurement',
+        'phase',
+        'strobe recording',
+      ],
+    },
+  },
+  'ramp-collision-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['斜槽小球碰撞实验', '斜槽动量守恒', '平抛碰撞', '落点法'],
+      en: [
+        'Ball collisions at a ramp outlet',
+        'ramp momentum',
+        'projectile collision',
+        'landing distances',
+      ],
+    },
+  },
+  'momentum-collision-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['碰撞中的不变量', '动量守恒', '气垫导轨', '悬球碰撞', '粘连小车'],
+      en: [
+        'Invariants in Collisions',
+        'momentum conservation',
+        'air track',
+        'hanging-ball collision',
+        'sticking carts',
+      ],
+    },
+  },
+  'sound-interference-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['双扬声器的声音干涉', '相干', '扬声器', '声音干涉', '路程差', '强弱分布'],
+      en: [
+        'Sound interference from two speakers',
+        'coherent speakers',
+        'sound interference',
+        'path difference',
+        'loud quiet regions',
+      ],
+    },
+  },
+  'sound-measurement-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '声音的频率与传播测量',
+        '录音波形',
+        'do sol',
+        '频率比',
+        '日内瓦湖',
+        '水中声速',
+        '听音器',
+      ],
+      en: [
+        'Measuring sound frequency and propagation',
+        'recorded waveform',
+        'do sol',
+        'frequency ratio',
+        'Lake Geneva',
+        'underwater sound',
+        'listening horn',
+      ],
+    },
+  },
+  'arm-motion-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['甩手与投掷的运动研究', '甩手水滴', '标枪课题', '手机加速度'],
+      en: [
+        'Studying arm flicks and throwing',
+        'hand flick',
+        'javelin research',
+        'phone acceleration',
+      ],
+    },
+  },
+  'impulse-contact-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['接住与停下的力', '同样停下来，为什么感觉到的力不同？', '近代物理实验'],
+      en: [
+        'Forces in catching and stopping',
+        'Why can stopping produce different forces?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'ripple-tank-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['水波槽中的传播与叠加', '纸屑', '反射', '折射', '衍射', '相干', '水波多普勒'],
+      en: [
+        'Propagation and superposition in a ripple tank',
+        'floating paper',
+        'reflection',
+        'refraction',
+        'diffraction',
+        'coherence',
+        'moving ripple source',
+      ],
+    },
+  },
+  'mechanical-energy-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['验证机械能守恒', '纸带机械能', '气垫导轨', '光电门'],
+      en: [
+        'Testing mechanical-energy conservation',
+        'ticker tape energy',
+        'air track',
+        'photogate',
+      ],
+    },
+  },
+  'ellipse-string-lab': {
+    category: 'math-systems',
+    minAge: 12,
+    keywords: {
+      zh: ['细绳绘制椭圆', '椭圆焦点', '细绳作图', '开普勒轨道'],
+      en: ['Drawing an ellipse with string', 'ellipse foci', 'string construction', 'Kepler orbit'],
+    },
+  },
+  'centripetal-force-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['向心力实验', '向心力演示器', '沙袋', '漏斗小球'],
+      en: [
+        'Centripetal-force experiments',
+        'centripetal demonstrator',
+        'conical pendulum',
+        'funnel orbit',
+      ],
+    },
+  },
+  'phone-energy-research': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['手机耗电因素研究', '手机耗电', '控制变量', '能量积分', '课题研究'],
+      en: [
+        'Researching Phone Energy Use',
+        'phone energy use',
+        'controlled variables',
+        'energy integration',
+        'research design',
+      ],
+    },
+  },
+  'electromagnetic-wave-receiver': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['捕捉电磁波', '电磁波接收', '铜管天线', '射频检波'],
+      en: [
+        'Detecting Electromagnetic Waves',
+        'RF reception',
+        'copper-tube antennas',
+        'RF detector',
+      ],
+    },
+  },
+  'thermal-process-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['电热、冷却与热辐射', '焦耳定律', '热鸡蛋', '铁块发光', '量热器'],
+      en: [
+        'Heating, Cooling and Thermal Radiation',
+        'Joule heating',
+        'egg cooling',
+        'glowing iron',
+        'calorimetry',
+      ],
+    },
+  },
+  'mechanical-wave-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['绳波、人浪与弹簧波', '机械波', '横波', '纵波', '绳波', '人浪', '疏密波'],
+      en: [
+        'Ropes, human waves and spring waves',
+        'mechanical waves',
+        'transverse',
+        'longitudinal',
+        'rope pulse',
+        'human wave',
+        'compression',
+      ],
+    },
+  },
+  'polarization-evidence-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['从绳的方向到光的偏振', '转动一道狭缝，能筛选什么？', '教材光学实验'],
+      en: [
+        'From rope motion to optical polarization',
+        'What can a rotating slit select?',
+        'textbook optics experiment',
+      ],
+    },
+  },
+  'optical-diffraction-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['从狭缝到阴影中的亮点', '缝变窄，光为什么反而铺得更开？', '教材光学实验'],
+      en: [
+        'From a slit to light inside a shadow',
+        'Why does a narrower gap spread light farther?',
+        'textbook optics experiment',
+      ],
+    },
+  },
+  'double-slit-measurement-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['把干涉条纹变成测量', '如何从几个亮纹读出光的波长？', '教材光学实验'],
+      en: [
+        'Measure with interference fringes',
+        'How can a few bright fringes reveal wavelength?',
+        'textbook optics experiment',
+      ],
+    },
+  },
+  'thin-film-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['膜厚写出的明暗', '肥皂膜与劈尖的条纹为什么移动？', '教材光学实验'],
+      en: [
+        'Brightness written by film thickness',
+        'Why do soap-film and wedge fringes move?',
+        'textbook optics experiment',
+      ],
+    },
+  },
+  'induction-conditions-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['感应电流的产生条件', '电磁感应', '滑杆', '磁通量', '内外线圈'],
+      en: [
+        'Conditions for Induced Current',
+        'electromagnetic induction',
+        'sliding rod',
+        'magnetic flux',
+        'nested coils',
+      ],
+    },
+  },
+  'total-reflection-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['沿界面追踪全反射', '光为什么能沿弯棒和水流前进？', '教材光学实验'],
+      en: [
+        'Trace total reflection at boundaries',
+        'How can light follow a curved rod or water jet?',
+        'textbook optics experiment',
+      ],
+    },
+  },
+  'gas-efficiency-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['燃气加热的效率研究', '燃气灶', '火力', '燃气表', '热水器', '热效率'],
+      en: [
+        'Investigating gas-heating efficiency',
+        'gas stove',
+        'flame setting',
+        'gas meter',
+        'water heater',
+        'thermal efficiency',
+      ],
+    },
+  },
+  'bicycle-circular-motion': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['自行车上的圆周运动', '链条', '角速度', '同轴线速度'],
+      en: ['Circular motion on a bicycle', 'chain drive', 'angular velocity', 'tangential speed'],
+    },
+  },
+  'wire-force-factors-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['通电导线受力因素', '安培力', '有效长度', '磁感应强度'],
+      en: [
+        'Factors in Magnetic Force on a Wire',
+        'magnetic force',
+        'effective length',
+        'magnetic flux density',
+      ],
+    },
+  },
+  'diffusion-microstates-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['扩散与微观状态', '颜料', '自由扩散', '气体隔板', '熵', '热力学第二定律'],
+      en: [
+        'Diffusion and microstates',
+        'dye',
+        'gas expansion',
+        'partition',
+        'entropy',
+        'irreversibility',
+      ],
+    },
+  },
+  'projectile-motion-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['平抛运动实验', '平抛描迹', '同时落地', '复写纸', '测初速度'],
+      en: [
+        'Horizontal projectile experiments',
+        'projectile tracing',
+        'paired release',
+        'carbon paper',
+        'launch velocity',
+      ],
+    },
+  },
+  'drinking-bird-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['饮水鸭的热机循环', '饮水鸟', '蒸发', '蒸气压', '热机'],
+      en: [
+        'The drinking bird heat engine',
+        'dipping bird',
+        'evaporation',
+        'vapour pressure',
+        'heat engine',
+      ],
+    },
+  },
+  'geometric-optics-lab': {
+    category: 'light-sound',
+    minAge: 14,
+    keywords: {
+      zh: ['从光路重建折射与像', '看到的针、筷子和文字，在哪里？', '教材光学实验'],
+      en: [
+        'Reconstruct refraction and images from rays',
+        'Where are the pins, chopstick and text that we see?',
+        'textbook optics experiment',
+      ],
+    },
+  },
+  'magnetic-field-survey': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电流与磁场分布', '奥斯特实验', '铁屑磁场', '小磁针', '环形电流', '螺线管'],
+      en: [
+        'Current and Magnetic-Field Patterns',
+        'Oersted experiment',
+        'iron filings',
+        'compass',
+        'current loop',
+        'solenoid',
+      ],
+    },
+  },
+  'wax-motion-composition': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['蜡块运动的合成与分解', '蜡块', '运动合成', '分运动'],
+      en: [
+        'Composing the motion of a wax float',
+        'wax float',
+        'motion composition',
+        'velocity vectors',
+      ],
+    },
+  },
+  'thermodynamic-work-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['功、热与内能实验', '压缩引火', '焦耳实验', '搅水', '热功当量', '瓶中云', '伦福德'],
+      en: [
+        'Work, heat and internal-energy experiments',
+        'fire piston',
+        'Joule calorimeter',
+        'mechanical equivalent of heat',
+        'cloud in a bottle',
+        'Rumford',
+      ],
+    },
+  },
+  'curved-motion-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['曲线运动的速度方向', '曲线切线', '弧形轨道', '磁铁钢球', '飞镖'],
+      en: [
+        'Velocity directions in curved motion',
+        'tangent',
+        'arc track',
+        'magnetic deflection',
+        'finned dart',
+      ],
+    },
+  },
+  'cosmology-observations': {
+    category: 'nature',
+    minAge: 14,
+    keywords: {
+      zh: ['星系红移与微波天空', '宇宙的历史，怎样藏在收到的光里？', '近代物理实验'],
+      en: [
+        'Galaxy redshifts and the microwave sky',
+        'How does received light reveal cosmic history?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'electrostatic-applications-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['静电应用实验', '静电屏蔽', '金属网罩', '静电除尘', '烟粒荷电'],
+      en: [
+        'Electrostatic Applications',
+        'Faraday cage',
+        'electrostatic shielding',
+        'electrostatic precipitator',
+        'charged smoke',
+      ],
+    },
+  },
+  'gravitational-wave-lab': {
+    category: 'nature',
+    minAge: 14,
+    keywords: {
+      zh: ['引力波证据的三条路径', '极微小的时空变化，怎样被辨认？', '近代物理实验'],
+      en: [
+        'Three paths to gravitational-wave evidence',
+        'How can extremely small spacetime changes be identified?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'balloon-drag-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['气球空气阻力研究', '气球终端速度', '阻力拟合', '视频分析'],
+      en: [
+        'Investigating balloon air drag',
+        'terminal speed',
+        'drag fitting',
+        'video measurements',
+      ],
+    },
+  },
+  'magdeburg-bowls-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['钢碗中的马德堡实验', '马德堡半球', '钢碗', '气体等容变化', '大气压'],
+      en: [
+        'The Magdeburg experiment with steel bowls',
+        'Magdeburg hemispheres',
+        'steel bowls',
+        'atmospheric pressure',
+        'constant volume cooling',
+      ],
+    },
+  },
+  'surface-tension-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['液体表面张力实验', '曲别针满杯', '肥皂膜棉线', '浸润', '接触角', '浮针'],
+      en: [
+        'Liquid surface-tension experiments',
+        'brim full glass',
+        'soap film thread',
+        'wetting',
+        'contact angle',
+        'floating needle',
+      ],
+    },
+  },
+  'relativity-experiments': {
+    category: 'nature',
+    minAge: 14,
+    keywords: {
+      zh: ['光、事件与时钟', '相对论怎样接受实验检验？', '近代物理实验'],
+      en: [
+        'Light, events and clocks',
+        'How is relativity tested experimentally?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'motion-sensor-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['传感器测位置与速度', '位移传感器', '超声测速', '红外同步'],
+      en: [
+        'Position and velocity with sensors',
+        'ultrasonic motion detector',
+        'infrared reference',
+        'time of flight',
+      ],
+    },
+  },
+  'gravity-measurements': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['从月地检验到扭秤', '微弱的引力，怎样成为可测量的量？', '近代物理实验'],
+      en: [
+        'From the Moon–Earth test to the torsion balance',
+        'How can weak gravitation become measurable?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'franklin-electricity-evidence': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['富兰克林的电学证据', '富兰克林', '雷电与摩擦电', '历史实验', '电学证据'],
+      en: [
+        'Franklin’s Electrical Evidence',
+        'Franklin',
+        'lightning electricity',
+        'historical experiments',
+        'electrical evidence',
+      ],
+    },
+  },
+  'celestial-observations': {
+    category: 'nature',
+    minAge: 14,
+    keywords: {
+      zh: ['从观测到天体预言', '天空中的光点，怎样成为可检验的证据？', '近代物理实验'],
+      en: [
+        'From observations to celestial predictions',
+        'How do points in the sky become testable evidence?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'apparent-weight-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['超重与失重实验', '蹲起', '体重计', '漏水瓶'],
+      en: ['Apparent-weight experiments', 'normal force', 'squat', 'falling bottle'],
+    },
+  },
+  'diamagnetic-levitation-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['水滴与青蛙的抗磁悬浮', '抗磁性', '青蛙悬浮', '水滴悬浮', '强磁场', '磁场梯度'],
+      en: [
+        'Diamagnetic levitation of water and a frog',
+        'diamagnetism',
+        'levitating frog',
+        'water levitation',
+        'field gradient',
+      ],
+    },
+  },
+  'battery-emf-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电源电动势与内阻实验', '干电池', '水果电池', '橙汁电池', '充电宝', '电动势测量'],
+      en: [
+        'Source EMF and Internal Resistance',
+        'battery emf',
+        'internal resistance',
+        'fruit battery',
+        'power bank',
+        'load curve',
+      ],
+    },
+  },
+  'solid-structure-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '晶体结构与各向异性实验',
+        '食盐松香',
+        '晶体非晶体',
+        '云母',
+        '各向异性',
+        '石墨烯',
+        '胶带剥离',
+      ],
+      en: [
+        'Crystal structure and anisotropy experiments',
+        'crystals',
+        'amorphous rosin',
+        'mica anisotropy',
+        'graphene',
+        'tape exfoliation',
+      ],
+    },
+  },
+  'dynamic-mass-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['太空测质量', '失重', '惯性质量', '光栅计时'],
+      en: [
+        'Measuring mass in microgravity',
+        'mass in space',
+        'microgravity',
+        'inertial mass',
+        'optical timing',
+      ],
+    },
+  },
+  'thermal-measurement-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '热平衡与气体定律实验',
+        '混合法',
+        '量热杯',
+        '玻意耳定律',
+        '注射器',
+        '气体等温变化',
+        '烧瓶水柱',
+      ],
+      en: [
+        'Thermal equilibrium and gas-law experiments',
+        'calorimetry',
+        'Boyle law',
+        'syringe gas experiment',
+        'constant pressure expansion',
+      ],
+    },
+  },
+  'particle-evidence-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['粒子发现的证据链', '看不见的新粒子，怎样从信号里被认出来？', '近代物理实验'],
+      en: [
+        'Evidence behind particle discoveries',
+        'How can signals reveal an unseen new particle?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'newton-second-law-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['小车力与加速度实验', '牛顿第二定律', '阻力补偿', '双车位移比'],
+      en: [
+        'Cart force and acceleration',
+        'Newton second law',
+        'resistance compensation',
+        'paired cart ratio',
+      ],
+    },
+  },
+  'multimeter-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['多用电表实验', '多用电表', '欧姆调零', '二极管', '故障检测'],
+      en: ['Multimeter Experiments', 'analog multimeter', 'ohm zero', 'diode', 'circuit faults'],
+    },
+  },
+  'statistical-motion-lab': {
+    category: 'math-systems',
+    minAge: 14,
+    keywords: {
+      zh: ['随机事件与统计实验', '伽尔顿板', '四枚硬币', '抛硬币', '落豆', '统计规律'],
+      en: [
+        'Random events and statistical experiments',
+        'Galton board',
+        'four coins',
+        'binomial distribution',
+        'bean pressure analogy',
+      ],
+    },
+  },
+  'nuclear-evidence-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['核反应的实验线索', '一个核发生了什么，怎样从产物和径迹判断？', '近代物理实验'],
+      en: [
+        'Experimental clues to nuclear reactions',
+        'How do products and tracks reveal a nuclear reaction?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'molecular-measurement-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['分子的间接观察与测量', '布朗运动', '炭粒', '油膜法', '油酸分子', '酒精体积'],
+      en: [
+        'Indirect observation and measurement of molecules',
+        'Brownian motion',
+        'carbon particles',
+        'oleic acid film',
+        'volume contraction',
+      ],
+    },
+  },
+  'inertial-frames-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['抽纸与参考系', '惯性参考系', '钢球抽纸', '非惯性系'],
+      en: [
+        'Paper pull and reference frames',
+        'inertial frame',
+        'steel ball',
+        'accelerating coordinates',
+      ],
+    },
+  },
+  'decay-measurement-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['衰变的统计与用途', '不确定的单次衰变，怎样成为可测的时间与路径？', '近代物理实验'],
+      en: [
+        'Decay statistics and applications',
+        'How can unpredictable decays measure time and transport?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'resistivity-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电阻与电阻率实验', '导体电阻', '控制变量', '电阻率测量', '伏安法', '电表内阻'],
+      en: [
+        'Resistance and Resistivity Experiments',
+        'wire resistance',
+        'resistivity measurement',
+        'controlled variables',
+        'meter loading',
+      ],
+    },
+  },
+  'radiation-evidence-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['发现看不见的射线', '感光、电离与径迹，怎样成为看不见粒子的证据？', '近代物理实验'],
+      en: [
+        'Detecting invisible radiation',
+        'How do plates, ionization and tracks reveal invisible radiation?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'galileo-inclines': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['伽利略斜面研究', '流水计时', '双斜面理想实验', '滚动与惯性'],
+      en: ['Galileo’s incline studies', 'water clock', 'ideal double incline', 'rolling inertia'],
+    },
+  },
+  'sensor-control-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: [
+        '传感器测量与自动控制',
+        '干簧管',
+        '光敏电阻',
+        '热敏电阻',
+        '压力传感器',
+        '继电器',
+        '双金属片',
+      ],
+      en: [
+        'Sensor measurement and automatic control',
+        'reed switch',
+        'photoresistor',
+        'NTC thermistor',
+        'pressure sensor',
+        'relay',
+      ],
+    },
+  },
+  'matter-wave-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['电子与晶体衍射', '粒子留下的图样，为什么像波？', '近代物理实验'],
+      en: [
+        'Electron and crystal diffraction',
+        'Why do particles leave wave-like patterns?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'force-resultant-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['力的合成与分解实验', '平行四边形定则', '等效替换', '橡皮条'],
+      en: [
+        'Force composition laboratory',
+        'parallelogram rule',
+        'equivalent force',
+        'force resolution',
+      ],
+    },
+  },
+  'length-instruments': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['长度测量与精细读数', '游标卡尺', '螺旋测微器', '累积法', '铜丝直径', '有效数字'],
+      en: [
+        'Length Instruments and Fine Readings',
+        'vernier caliper',
+        'micrometer',
+        'wire diameter',
+        'measurement uncertainty',
+      ],
+    },
+  },
+  'wireless-interference-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['Wi-Fi与蓝牙干扰实验', '无线干扰', '蓝牙', '跳频', 'Wi-Fi', '网速'],
+      en: [
+        'Wi-Fi and Bluetooth interference',
+        'wireless coexistence',
+        'adaptive frequency hopping',
+        'network speed',
+      ],
+    },
+  },
+  'atomic-spectrum-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['光谱中的原子证据', '把光展开，怎样认出物质与理论的细小偏差？', '近代物理实验'],
+      en: [
+        'Atomic evidence in spectra',
+        'What can a spectrum reveal about matter and theory?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'hertz-wave-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['赫兹与电磁波实验', '赫兹', '电磁波', '火花', '偏振', '衍射'],
+      en: [
+        'Hertz and electromagnetic-wave experiments',
+        'spark gap',
+        'radio waves',
+        'polarization',
+        'diffraction',
+      ],
+    },
+  },
+  'force-pairs-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['作用力与反作用力实验', '牛顿第三定律', '相互作用力', '双测力计'],
+      en: ['Action and reaction laboratory', 'Newton third law', 'force pair', 'spring balances'],
+    },
+  },
+  'ac-circuit-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['交流电与LC振荡实验', '交变电流', '示波器', '发电机', '感抗', '容抗', 'LC振荡'],
+      en: [
+        'AC and LC oscillation experiments',
+        'alternating current',
+        'oscilloscope',
+        'inductive reactance',
+        'capacitive reactance',
+      ],
+    },
+  },
+  'friction-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['摩擦力测量实验', '静摩擦峰值', '滑动摩擦', '纸团标记'],
+      en: ['Friction laboratory', 'static friction peak', 'kinetic friction', 'force sensor'],
+    },
+  },
+  'capacitor-current-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['从电流面积测电荷', '电流传感器', '电容放电', '电流时间曲线', '电荷分配'],
+      en: [
+        'Charge from Current Area',
+        'current sensor',
+        'capacitor discharge',
+        'current time area',
+        'charge sharing',
+      ],
+    },
+  },
+  'eddy-current-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['涡流与电磁阻尼', '涡流', '电磁阻尼', '电磁驱动', '落磁', '铝管', '铜盘'],
+      en: [
+        'Eddy currents and magnetic damping',
+        'magnetic braking',
+        'falling magnet',
+        'slit tube',
+        'copper disc',
+      ],
+    },
+  },
+  'cathode-ray-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['阴极射线与电子', '一束看不见的射线，怎样显露电荷与质量？', '近代物理实验'],
+      en: [
+        'Cathode rays and electrons',
+        'How can a beam reveal its charge and mass?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'elasticity-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['弹性测量实验', '胡克定律', '弹簧伸长', '橡皮筋滞回'],
+      en: ['Elasticity laboratory', 'Hooke law', 'spring extension', 'rubber hysteresis'],
+    },
+  },
+  'parallel-plate-capacitor-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['平行板电容的控制变量', '平行板电容器', '静电计', '固定电荷', '介质'],
+      en: [
+        'Controlling Parallel-Plate Capacitance',
+        'parallel plate',
+        'electrometer',
+        'dielectric',
+        'fixed charge',
+      ],
+    },
+  },
+  'self-induction-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['自感与两灯实验', '自感', '通电延迟', '断电闪亮', '电流反向', '电流传感器'],
+      en: [
+        'Self-induction lamp experiments',
+        'self inductance',
+        'lamp flash',
+        'RL circuit',
+        'current reversal',
+      ],
+    },
+  },
+  'small-deformation-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['微小形变观察', '双平面镜', '桌面形变', '光杠杆'],
+      en: ['Seeing small deformations', 'two mirrors', 'optical lever', 'beam deflection'],
+    },
+  },
+  'atomic-scattering-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['微观散射实验', '看不见的内部，怎样由偏转留下证据？', '近代物理实验'],
+      en: [
+        'Microscopic scattering experiments',
+        'How does scattering reveal an invisible interior?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'oil-drop-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['油滴与元电荷', '怎样用一个油滴，量出电荷的最小单位？', '近代物理实验'],
+      en: [
+        'Oil drops and elementary charge',
+        'How can one oil drop reveal the unit of electric charge?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'mutual-induction-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['互感实验室', '法拉第铁环', '互感', '套入线圈', '音频信号'],
+      en: [
+        'Mutual-induction experiments',
+        'Faraday iron ring',
+        'mutual inductance',
+        'nested coils',
+      ],
+    },
+  },
+  'electric-field-mapping': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['油盘中的电场图样', '模拟电场线', '蓖麻油', '头发碎屑', '等势线'],
+      en: [
+        'Electric Field Patterns in Oil',
+        'electric field',
+        'hair fragments',
+        'castor oil',
+        'equipotential',
+      ],
+    },
+  },
+  'suspension-center-of-gravity': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['悬挂法找重心', '铅垂线', '三角形中线', '重心'],
+      en: ['Finding the center of gravity', 'plumb line', 'triangular lamina', 'centroid'],
+    },
+  },
+  'induction-coil-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['电磁感应实验室', '楞次定律', '法拉第定律', '闭合铝环', '圆盘发电机'],
+      en: [
+        'Electromagnetic-induction experiments',
+        'Lenz law',
+        'Faraday law',
+        'homopolar generator',
+      ],
+    },
+  },
+  'coulomb-torsion': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['库仑扭秤', '库仑定律', '扭秤', '控制变量', '平方反比'],
+      en: [
+        'Coulomb’s Torsion Balance',
+        'Coulomb torsion balance',
+        'inverse square',
+        'electric force',
+        'null method',
+      ],
+    },
+  },
+  'free-fall-activities': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['自由落体小实验', '纸片纸团', '两石反证', '反应时间尺', '伽利略'],
+      en: ['Free-fall activities', 'crumpled paper', 'tied stones', 'reaction ruler', 'Galileo'],
+    },
+  },
+  'blackbody-lab': {
+    category: 'thermal-fluids',
+    minAge: 14,
+    keywords: {
+      zh: ['黑体辐射测量', '升温时，辐射曲线的峰值为什么向短波移动？', '近代物理实验'],
+      en: [
+        'Measuring blackbody radiation',
+        'Why does a hotter radiator peak at a shorter wavelength?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'photoelectric-lab': {
+    category: 'matter',
+    minAge: 14,
+    keywords: {
+      zh: ['光电效应实验室', '更亮的光，为什么仍打不出电子？', '近代物理实验'],
+      en: [
+        'Photoelectric-effect laboratory',
+        'Why can brighter light still fail to release electrons?',
+        'modern physics experiment',
+      ],
+    },
+  },
+  'charged-particle-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['带电粒子实验室', '洛伦兹力', '质谱仪', '正电子', '阴极射线'],
+      en: ['Charged-particle experiments', 'Lorentz force', 'mass spectrometer', 'positron'],
+    },
+  },
+  'electrostatic-induction': {
+    category: 'electricity',
+    minAge: 12,
+    keywords: {
+      zh: ['静电起电与验电器', '摩擦起电', '静电感应', '金属箔', '电荷守恒', '人教版物理'],
+      en: [
+        'Charging and the Electroscope',
+        'electrostatic induction',
+        'electroscope',
+        'charge conservation',
+        'friction',
+      ],
+    },
+  },
+  'phone-accelerometer-lab': {
+    category: 'mechanisms',
+    minAge: 14,
+    keywords: {
+      zh: ['手机加速度实验', '自由落体', '加速度传感器', '电梯加速度', '比力', '去重力'],
+      en: [
+        'Phone accelerometer experiments',
+        'specific force',
+        'free fall',
+        'lift acceleration',
+        'gravity correction',
+      ],
+    },
+  },
+  'magnetic-force-lab': {
+    category: 'electricity',
+    minAge: 14,
+    keywords: {
+      zh: ['磁力实验室', '安培力', '通电导线', '螺线管', '通电弹簧'],
+      en: ['Magnetic-force experiments', 'Ampere force', 'solenoid', 'parallel currents'],
+    },
+  },
+  'ticker-tape-lab': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['纸带运动实验室', '打点计时器', '瞬时速度', '加速度', '纸带', '自由落体'],
+      en: [
+        'Ticker-tape laboratory',
+        'ticker timer',
+        'instantaneous velocity',
+        'acceleration',
+        'falling tape',
+      ],
+    },
+  },
+  'newton-tube': {
+    category: 'mechanisms',
+    minAge: 12,
+    keywords: {
+      zh: ['牛顿管实验', '自由落体', '羽毛和铁片', '空气阻力', '人教版高中物理', '控制变量'],
+      en: [
+        'Newton Tube',
+        'free fall',
+        'feather and iron',
+        'air resistance',
+        'PEP physics',
+        'controlled comparison',
+      ],
+    },
+  },
   'electric-fuse': {
     category: 'electricity',
     minAge: 12,

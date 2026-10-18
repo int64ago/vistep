@@ -1,0 +1,27 @@
+---
+const rope = Array.from({ length: 301 }, (_, i) => `${30 + i},${100 - 24 * Math.sin(i / 25)}`);
+const spring = Array.from(
+  { length: 1001 },
+  (_, i) =>
+    `${30 + i * 0.3 + 7 * Math.sin(i / 90)},${190 + 19 * Math.sin((i / 1000) * Math.PI * 80)}`,
+);
+---
+
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <path d="M30 100H330M180 64V137" stroke="#cad6b9" stroke-dasharray="4 5"></path>
+  <polyline points={rope.join(' ')} stroke="#b5a17b" stroke-width="4" stroke-linecap="round"
+  ></polyline><circle
+    cx="180"
+    cy={100 - 24 * Math.sin(6)}
+    r="6"
+    fill="#b37b6f"
+    stroke="#f1f0df"
+    stroke-width="2"></circle>
+  <polyline points={spring.join(' ')} stroke="#9fac89" stroke-width="1.8"></polyline><circle
+    cx={180 + 7 * Math.sin(500 / 90)}
+    cy="190"
+    r="5"
+    fill="#b37b6f"></circle>
+  <path d="M85 39H266m-7-5 7 5-7 5" stroke="#96a67e" stroke-width="2"></path>
+  <path d="M26 217H334" stroke="#c5d0b0" stroke-width="4" stroke-linecap="round"></path>
+</svg>

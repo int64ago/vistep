@@ -1,0 +1,48 @@
+---
+import { pairedBalances } from '../../models/force-pairs-lab';
+import { springWire } from '../../models/elasticity-lab';
+const s = pairedBalances(0.5);
+const left = 200 + s.left * 500;
+const right = 200 + s.right * 500;
+const joint = 200 + s.joint * 500;
+const wires = [
+  { anchor: left, side: 1, extension: s.leftExtension, color: '#aa8c64' },
+  { anchor: right, side: -1, extension: s.rightExtension, color: '#789888' },
+];
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true" fill="none">
+  {
+    wires.map((w) => (
+      <g>
+        <>
+          <rect
+            x={w.side > 0 ? w.anchor : w.anchor - 90}
+            y="99"
+            width="90"
+            height="39"
+            rx="10"
+            fill="#e9eddf"
+            stroke={w.color}
+          />
+          <path
+            d={springWire(20 + w.extension * 500, 8, 5)
+              .map((p, i) => `${i ? 'L' : 'M'}${w.anchor + w.side * (10 + p.y)} ${119 + p.x}`)
+              .join(' ')}
+            stroke={w.color}
+            stroke-width="1.7"
+          />
+          <path
+            d={`M${w.anchor + w.side * (30 + w.extension * 500)} 119H${joint - w.side * 5}`}
+            stroke={w.color}
+            stroke-width="2"
+          />
+        </>
+      </g>
+    ))
+  }
+  <circle cx={joint} cy="119" r="6" stroke="#a7b595" stroke-width="2"></circle>
+  <path d={`M${joint - 5} 75h46m-7-5l7 5-7 5`} stroke="#aa8c64" stroke-width="2"></path>
+  <path d={`M${joint + 5} 163h-46m7-5l-7 5 7 5`} stroke="#789888" stroke-width="2"></path>
+  <path d="M98 195H178M223 195H303" stroke="#c7cdb8" stroke-width="2" stroke-linecap="round"></path>
+</svg>

@@ -1,0 +1,5 @@
+# Measure mechanical energy
+
+Book2 §8.5 pp95–98. Eightchap226s: falling apparatus, independent tape velocity, resistance counterexample, inclined air track, finite photogate width, horizontal track+hanger, whole-system energy, pendulum design proposal. Film variants retain textbook context; optional selector provides actual distinct apparatus. SVG physical devices and enlarged raw tape differ by path; CSS labels remain legible on phones.
+
+Independent models integrate dynamics before energy calculation. Photogate durations come from actual flag edge arrivals, never from energy equality. Slider/hanger string uses identical display scale and equal travel. Pendulum nonlinear RK4 is independent of conservation lookup. Controlled omissions explicit; all records model-generated and labeled, no fake physical measurements. Eightfocused tests passed (tape midpoint estimator, friction work, edge times, finite-width limit/correction, inclined losses, complete hanging system, nonlinear pendulum energy/constraint, apparatus bounds). Numerical/self-review only; browser keyframes/full playback, voices/listening, global verification and publication remain parent-owned.

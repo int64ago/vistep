@@ -1,0 +1,43 @@
+---
+import { suspendedWire } from '../../models/magnetic-force-lab';
+const state = suspendedWire(2, 0.18, 2.4);
+const y = 155 + state.displacement * 500;
+---
+
+<svg viewBox="0 0 400 230" aria-hidden="true">
+  <rect x="74" y="39" width="252" height="166" rx="24" fill="#e4ebda"></rect>
+  {
+    Array.from({ length: 20 }, (_, i) => (
+      <g opacity=".45">
+        <>
+          <circle
+            cx={98 + (i % 5) * 50}
+            cy={66 + Math.floor(i / 5) * 36}
+            r="5"
+            stroke="#78977b"
+            fill="none"
+          />
+          <circle cx={98 + (i % 5) * 50} cy={66 + Math.floor(i / 5) * 36} r="1.6" fill="#78977b" />
+        </>
+      </g>
+    ))
+  }
+  <path
+    d="M88 28H312M94 28V211M306 28V211M79 212h30m182 0h30"
+    stroke="#aab89a"
+    stroke-width="5"
+    fill="none"
+    stroke-linecap="round"></path>
+  <path
+    d={`M122 31Q117 90 128 ${y}M278 31Q283 90 272 ${y}`}
+    stroke="#70826b"
+    stroke-width="2"
+    fill="none"></path>
+  <path d={`M127 ${y}H273`} stroke="#be9a5f" stroke-width="13" stroke-linecap="round"></path>
+  <path d={`M130 ${y - 3}H270`} stroke="#edd8ac" stroke-width="2" stroke-linecap="round"></path>
+  <path
+    d={`M175 ${y - 15}h50l-7-5m7 5-7 5M200 ${y - 8}v-34l-5 7m5-7 5 7`}
+    stroke="#6e8f75"
+    stroke-width="2.5"
+    fill="none"></path>
+</svg>

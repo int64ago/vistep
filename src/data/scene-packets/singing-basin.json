@@ -1,0 +1,162 @@
+{
+  "topic": {
+    "slug": "singing-basin",
+    "name": "摩擦铜盆的振动与水花",
+    "title": "慢慢摩擦盆耳，为什么会出现水花？",
+    "question": "慢慢摩擦盆耳，为什么会出现水花？",
+    "description": "从摩擦供能到振幅增长，比较四处与六处水花对应的盆水耦合模态。",
+    "color": "#b5a16e",
+    "tag": "手很慢，盆却振得很快",
+    "related": ["resonance", "mechanical-wave-lab"],
+    "sources": [
+      {
+        "title": "Liu et al. (1995) — Self-excited vibration of the shell-liquid coupled system induced by dry friction",
+        "url": "https://pubs-en.cstam.org.cn/article/id/ams_128837"
+      },
+      {
+        "title": "Acta Mechanica Sinica (1998) — Self-excited vibration caused by dry friction between two elastic structures",
+        "url": "https://pubs-en.cstam.org.cn/article/id/ams_128878"
+      },
+      {
+        "title": "Wang (2005) — Modern Scientific Information Hidden in Ancient Chinese Science and Technology, Section 3",
+        "url": "https://journals.ub.ovgu.de/index.php/techmech/article/download/890/866/2444"
+      }
+    ]
+  },
+  "component": "src/components/experiments/SingingBasin.tsx",
+  "cover": "src/components/covers/SingingBasinCover.astro",
+  "discovery": {
+    "category": "light-sound",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["摩擦铜盆的振动与水花", "龙洗", "铜盆喷水", "摩擦盆耳", "自激振动", "模态", "振动腹"],
+      "en": [
+        "The singing bronze basin",
+        "dragon washbasin",
+        "friction excitation",
+        "self-excited vibration",
+        "water fountains",
+        "antinodes"
+      ]
+    }
+  },
+  "translations": {
+    "摩擦铜盆的振动与水花": "The singing bronze basin",
+    "慢慢摩擦盆耳，为什么会出现水花？": "Why does rubbing a basin make fountains?",
+    "从摩擦供能到振幅增长，比较四处与六处水花对应的盆水耦合模态。": "Follow frictional energy input and growing vibration, then compare four- and six-fountain modes of a bronze basin.",
+    "手很慢，盆却振得很快": "Slow hands, fast vibration",
+    "摩擦供能停止": "Friction input stopped",
+    "供能超过耗散": "Input exceeds losses",
+    "供能与耗散平衡": "Input balances losses",
+    "铜盆 · 盆耳 · 清水": "Bronze basin and water",
+    "振动放慢并放大": "Motion slowed and enlarged",
+    "手掌摩擦两侧盆耳，铜盆模态振动在水面四处或六处形成强烈响应": "Hands rub the two handles; basin vibration creates four or six strong response regions on the water",
+    "四处振动腹": "Four antinodes",
+    "六处振动腹": "Six antinodes",
+    "盆中无水": "No water in basin",
+    "水花出现": "Spray appears",
+    "水花尚未形成": "No spray yet",
+    "相对振动能量": "Relative vibrational energy",
+    "振动能量": "Vibration energy",
+    "相对值": "Relative",
+    "还未摩擦盆耳，水面接近平静。": "Before rubbing, the water is nearly still.",
+    "切换模态，比较水花位置；这不是加快手的往复。": "Compare another mode, not faster hand strokes.",
+    "停止供能后，已有振动仍继续衰减。": "With the input removed, existing vibration decays.",
+    "摩擦持续供能，水花响应盆与水的耦合振动。": "Rubbing supplies energy to the coupled basin and water.",
+    "四腹模态": "Four-antinode mode",
+    "六腹模态": "Six-antinode mode",
+    "摩擦8秒后放开": "Release after 8 seconds",
+    "持续摩擦": "Keep rubbing",
+    "有效摩擦供能": "Effective friction input",
+    "相对水量": "Relative water load",
+    "演示经过时间": "Model elapsed time",
+    "代表性模态频率": "Illustrative modal frequency",
+    "自激机制与模型范围": "Self-excitation and model limits",
+    "摩擦引起的负阻尼可使微小扰动增长，非线性耗散使振幅稳定。这里选择四腹或六腹模态作对照，并未模拟手部弹性如何选模。包络时间、相对能量、100/300赫兹示例和喷水阈值均为教学参数，不预测某个铜盆。虚线是所选盆壁模态的节线投影；水面的实际细波与破碎更复杂。画面放慢并放大盆壁振动，水花只标示强响应区域。": "Friction-induced negative damping can amplify a small disturbance; nonlinear losses limit its amplitude. Four- and six-antinode modes are selected for comparison; elastic hand dynamics and mode selection are not simulated. Envelope timing, relative energy, the 100/300 Hz examples and spray threshold are illustrative, not predictions for a particular basin. Dashed lines project shell-mode nodes; real surface waves and breakup are more complex. Shell motion is slowed and enlarged, and spray marks regions of strong response.",
+    "慢动作与快振动": "Slow rubbing, rapid vibration",
+    "手掌动作缓慢，不能把它的往复频率当成盆的声音频率。": "Slow hand strokes are not the basin’s sound frequency.",
+    "摩擦使微扰增长": "Friction builds the vibration",
+    "摩擦供能超过耗散时，小扰动逐渐变成明显振动。": "A disturbance grows when friction supplies more energy than is lost.",
+    "四处强响应": "Four strong response regions",
+    "盆壁模态决定强弱分布，水花集中在四处强响应区。": "The shell mode organizes four regions of strong water response.",
+    "对照六腹模态": "Compare six antinodes",
+    "另一种耦合模态出现六处强响应，不等于加快手的往复。": "Another coupled mode gives six regions, not simply faster hand strokes.",
+    "放开后逐渐衰减": "Release and decay",
+    "摩擦停止，供能归零，已有振动与水花逐渐消退。": "Rubbing stops; stored vibration and spray gradually fade.",
+    "供能不足以抵消耗散": "Input is below losses"
+  },
+  "narration": {
+    "duration": 130,
+    "cues": [
+      {
+        "id": "basin-still",
+        "title": "慢动作与快振动",
+        "titleEn": "Slow rubbing, rapid vibration",
+        "caption": "手掌动作缓慢，不能把它的往复频率当成盆的声音频率。",
+        "captionEn": "Slow hand strokes are not the basin’s sound frequency.",
+        "zh": "盆中倒入清水，两侧盆耳等待手掌摩擦。教材用这个古老器物提出问题：手动得很慢，为什么盆会嗡嗡作响，甚至喷水？先记住，手的往复频率，不能直接当作盆体的发声频率。",
+        "en": "Water sits in a bronze basin with a handle on each side. The textbook asks why slowly rubbing those handles can produce a hum and fountains. Keep one distinction in mind: the slow rate of hand strokes is not the frequency of the vibrating basin.",
+        "seconds": 26,
+        "chapterAt": 0,
+        "at": 0
+      },
+      {
+        "id": "basin-growth",
+        "title": "摩擦使微扰增长",
+        "titleEn": "Friction builds the vibration",
+        "caption": "摩擦供能超过耗散时，小扰动逐渐变成明显振动。",
+        "captionEn": "A disturbance grows when friction supplies more energy than is lost.",
+        "zh": "开始摩擦。注意能量条先缓慢上升，盆壁的振动也逐渐明显。适当的摩擦反馈可以给振动供能，这叫自激振动。非线性耗散限制继续增长，所以振幅不会无限增大。盆壁运动已经放慢并放大。",
+        "en": "Begin rubbing and watch the energy bar rise. Initially small wall motion becomes visible. Suitable frictional feedback supplies energy to the vibration: this is self-excitation. Nonlinear losses eventually limit its amplitude. The wall motion is deliberately slowed and enlarged so you can follow it.",
+        "seconds": 26,
+        "chapterAt": 26,
+        "at": 26
+      },
+      {
+        "id": "basin-four",
+        "title": "四处强响应",
+        "titleEn": "Four strong response regions",
+        "caption": "盆壁模态决定强弱分布，水花集中在四处强响应区。",
+        "captionEn": "The shell mode organizes four regions of strong water response.",
+        "zh": "保持同一个铜盆，追踪水面四处增强的波纹。所选盆壁模态有四个振动腹，虚线投影标出它的节线。真实水面还有更细的波动；这里的水花只突出强响应的位置，不把喷水高度当成实测值。",
+        "en": "Track the four regions where the surface response strengthens. The selected shell mode has four antinodes; dashed lines project its nodal lines onto the water. Real surface motion contains finer waves too. These spray markers identify strong-response regions; their heights are not measured predictions.",
+        "seconds": 26,
+        "chapterAt": 52,
+        "at": 52
+      },
+      {
+        "id": "basin-six",
+        "title": "对照六腹模态",
+        "titleEn": "Compare six antinodes",
+        "caption": "另一种耦合模态出现六处强响应，不等于加快手的往复。",
+        "captionEn": "Another coupled mode gives six regions, not simply faster hand strokes.",
+        "zh": "现在切换所选模态。强响应区变成六处，空间分布随之改变。研究确实观察到不同数量的水花，也发现手部弹性会参与选模。这个按钮用于对照模态，不表示把手摩擦得更快，就一定会出现六处喷水。",
+        "en": "Now select another mode. Six regions replace the previous four. Experiments have observed different fountain counts and found that elastic hand dynamics can influence mode selection. This controlled comparison does not mean that merely moving your hands faster will reliably produce six fountains.",
+        "seconds": 26,
+        "chapterAt": 78,
+        "at": 78
+      },
+      {
+        "id": "basin-release",
+        "title": "放开后逐渐衰减",
+        "titleEn": "Release and decay",
+        "caption": "摩擦停止，供能归零，已有振动与水花逐渐消退。",
+        "captionEn": "Rubbing stops; stored vibration and spray gradually fade.",
+        "zh": "停止摩擦，手掌不再继续供能。盆和水已经储存的振动能量不会瞬间消失，而是通过耗散逐渐减少。水花先变弱，随后不再形成。自由探索可以降低摩擦供能，检验弱供能无法让小扰动持续增长的边界。",
+        "en": "Stop rubbing. The energy already stored in the basin and water does not disappear instantly; losses gradually remove it. Spray weakens and ceases. In exploration, reduce the friction input and check the boundary: an input below the losses cannot sustain the growth of a small disturbance.",
+        "seconds": 26,
+        "chapterAt": 104,
+        "at": 104
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e1-water-spraying-basin": {
+      "chapterIds": ["basin-still", "basin-growth", "basin-four", "basin-six", "basin-release"],
+      "label": {
+        "zh": "摩擦铜盆盆耳观察振动与水花",
+        "en": "Observe vibration and splashing in a rubbed bronze basin"
+      }
+    }
+  }
+}

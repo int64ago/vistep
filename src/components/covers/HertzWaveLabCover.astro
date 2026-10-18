@@ -1,0 +1,25 @@
+<svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
+  <path d="M67 45V119M67 148V223" stroke="#9cb393" stroke-width="5" stroke-linecap="round"></path>
+  <circle cx="67" cy="124" r="10" fill="#c9b583"></circle><circle
+    cx="67"
+    cy="145"
+    r="10"
+    fill="#c9b583"></circle>
+  <path d="M63 130l9 5-8 4 6 6" stroke="#d9b766" stroke-width="3"></path>
+  {
+    [45, 80, 115, 150].map((r) => (
+      <path
+        d={`M${67 + r * 0.5} ${135 - r * 0.866}A${r} ${r} 0 0 1 ${67 + r * 0.5} ${135 + r * 0.866}`}
+        stroke="#a9c1a1"
+        stroke-width="1.5"
+      />
+    ))
+  }
+  <path d="M294 183A49 49 0 1 0 276 183" stroke="#b69b65" stroke-width="4"></path>
+  <circle cx="276" cy="183" r="5" fill="#c8b583"></circle><circle
+    cx="294"
+    cy="183"
+    r="5"
+    fill="#c8b583"></circle>
+  <path d="M280 183l5-3 1 6 5-3" stroke="#dabd69" stroke-width="2.5"></path>
+</svg>
