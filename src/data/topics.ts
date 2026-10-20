@@ -735,9 +735,9 @@ export const topics: Topic[] = [
   {
     slug: 'chem-reaction-rates',
     name: '怎样比较化学反应的快慢',
-    title: '气泡多，就一定反应快吗？',
-    question: '气泡多，就一定反应快吗？',
-    description: '用同条件试管、同体积气体终点和原子连续轨迹，分清速率、产量与有效碰撞。',
+    title: '反应更快，是相遇更多还是更容易成功？',
+    question: '反应更快，是相遇更多还是更容易成功？',
+    description: '从固定教材条件与同一观测标准，追踪相遇、能量门槛和催化路径，再检验新条件的预测。',
     color: '#c8d9c5',
     tag: '反应速率 · 控制变量 · 有效碰撞',
     related: ['chem-galvanic-cells', 'bio-enzyme-investigations', 'chem-equilibrium-response'],
@@ -747,16 +747,24 @@ export const topics: Topic[] = [
         url: 'https://edu.rsc.org/cpd/monitoring-reactions-teaching-practical-science/3009854.article',
       },
       {
-        title: 'RSC — Effect of temperature on reaction rate',
+        title: 'RSC — temperature reaction-rate experiment',
         url: 'https://edu.rsc.org/experiments/the-effect-of-temperature-on-reaction-rate/448.article',
       },
       {
-        title: 'IUPAC Gold Book — Catalyst',
+        title: 'IUPAC Gold Book — catalyst',
         url: 'https://goldbook.iupac.org/terms/view/C00876',
       },
       {
         title: 'IUPAC Gold Book — Activation energy',
         url: 'https://goldbook.iupac.org/terms/view/A00102',
+      },
+      {
+        title: 'IUPAC Gold Book — activation energy',
+        url: 'https://old.goldbook.iupac.org/html/A/A00102.html',
+      },
+      {
+        title: 'RSC — teacher notes',
+        url: 'https://edu.rsc.org/download?ac=523271',
       },
     ],
     number: '409',
@@ -1758,9 +1766,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-evolution-evidence',
     name: '进化证据与种群变化',
-    title: '证据相互支持，种群逐代改变',
-    question: '环境筛选的是谁，真正改变的又是什么？',
-    description: '连接共同祖先的四类证据、教材自然选择计算、虚拟抑菌圈与隔离的独立判据。',
+    title: '不同证据，怎样指向共同由来？',
+    question: '不同证据，怎样指向共同由来？',
+    description: '从化石与前肢连接，走到等位基因计数、克隆选择和生殖检验。',
     color: '#94a57b',
     tag: '生物学',
     related: ['bio-mutation-evidence', 'bio-linked-inheritance'],
@@ -1778,7 +1786,8 @@ export const topics: Topic[] = [
         url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3564725/',
       },
       {
-        title: 'Cook et al. (2012): selective bird predation on peppered moths',
+        title:
+          'Cook et al. (2012), Selective bird predation on the peppered moth: the last experiment of Michael Majerus',
         url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3391436/',
       },
       {
@@ -1788,6 +1797,21 @@ export const topics: Topic[] = [
       {
         title: 'UC Berkeley: mechanisms of speciation',
         url: 'https://ib.berkeley.edu/courses/bio1b/evolutionspring11/pdfs/MoritzNotes9.pdf',
+      },
+      {
+        title:
+          'Hu et al. (2009), A pre-Archaeopteryx troodontid theropod from China with long feathers on the metatarsus',
+        url: 'https://www.ivpp.ac.cn/sourcedb/zw/rck/yjy/200908/P020140313545720736756.pdf',
+      },
+      {
+        title:
+          'Lederberg & Lederberg (1952), Replica plating and indirect selection of bacterial mutants',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC169282/',
+      },
+      {
+        title:
+          'Richardson et al. (1997), There is no highly conserved embryonic stage in the vertebrates',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/9278154/',
       },
     ],
     number: '374',
@@ -4271,16 +4295,20 @@ export const topics: Topic[] = [
   {
     slug: 'sound-interference-lab',
     name: '双扬声器的声音干涉',
-    title: '同样两个扬声器，为什么换个位置就变安静？',
-    question: '同样两个扬声器，为什么换个位置就变安静？',
-    description: '由同一个信号源驱动双扬声器，移动接收点并寻找学生白旗、黑旗标出的稳定强弱区域。',
+    title: '多开一个扬声器，为什么有些地方反而更安静？',
+    question: '多开一个扬声器，为什么有些地方反而更安静？',
+    description: '追踪两条传播路径，在同一个点把声压逐时相加，再预测固定弱点遇到新频率会怎样。',
     color: '#a3b38c',
     tag: '路程差改变叠加结果',
     related: ['wave-interference', 'noise'],
     sources: [
       {
-        title: 'OpenStax — Interference of waves',
+        title: 'University Physics Vol. 1 — 16.5 Interference of Waves',
         url: 'https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves',
+      },
+      {
+        title: 'Brüel & Kjær — Sound Intensity (BR0476), pp.3–9',
+        url: 'https://www.bksv.com/doc/br0476.pdf',
       },
     ],
     number: '292',

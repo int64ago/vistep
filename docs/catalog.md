@@ -60,7 +60,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [What changes before equilibrium shifts?](../src/content/en/chem-equilibrium-response.mdx)          | 4:26 | Why do reactions continue when equilibrium looks still?                       |
 | [Chirality, crystals and optical evidence](../src/content/en/chem-chirality-evidence.mdx)           | 3:27 | How does failed superposition connect to Pasteur’s experimental conclusion?   |
 | [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                     | 4:22 | Where is the ester collected, and how does it hydrolyse?                      |
-| [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                          | 3:35 | Do more bubbles always mean a faster reaction?                                |
+| [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                          | 4:24 | Does a faster reaction mean more encounters or more success?                  |
 | [Hydrogen bonds and the open structure of ice](../src/content/en/chem-hydrogen-bond-network.mdx)    | 2:27 | Why does ice occupy more space than liquid water?                             |
 | [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                    | 2:51 | Why does copper turn black and then return?                                   |
 | [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                       | 2:48 | Where in ethanol does the released hydrogen come from?                        |
@@ -130,7 +130,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:02 | What do culture, screening and nuclear transfer each change?                     |
 | [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 3:44 | How can a tissue regenerate a plant and two cells form a hybrid?                 |
 | [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:04 | What can one colony establish, and what remains uncertain?                       |
-| [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:40 | What does the environment select, and what changes across generations?           |
+| [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:45 | How do different clues reveal shared ancestry?                                   |
 | [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:03 | Why do some fermentations limit air while others need it?                        |
 | [Evidence for environmental conservation](../src/content/en/bio-conservation-evidence.mdx)        | 4:13 | How can an observation lead to a conservation plan?                              |
 | [Variation and experimental evidence](../src/content/en/bio-mutation-evidence.mdx)                | 4:37 | How do mutation, chromosome changes and association differ?                      |
@@ -307,7 +307,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | ------------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | [The singing bronze basin](../src/content/en/singing-basin.mdx)                             | 2:10 | Why does rubbing a basin make fountains?                                     |
 | [Rotating buzzer and marching queue](../src/content/en/doppler-lab.mdx)                     | 2:36 | Why does received pitch change when the source tone stays the same?          |
-| [Sound interference from two speakers](../src/content/en/sound-interference-lab.mdx)        | 1:44 | Why can the same two speakers sound quieter at another position?             |
+| [Sound interference from two speakers](../src/content/en/sound-interference-lab.mdx)        | 1:56 | Why can adding a speaker make one place quieter?                             |
 | [Measuring sound frequency and propagation](../src/content/en/sound-measurement-lab.mdx)    | 2:36 | How do waveforms and a bell across a lake reveal sound?                      |
 | [Propagation and superposition in a ripple tank](../src/content/en/ripple-tank-lab.mdx)     | 4:48 | Why does the same water surface form different wave patterns?                |
 | [Ropes, human waves and spring waves](../src/content/en/mechanical-wave-lab.mdx)            | 2:48 | When a wave travels forward, where does the medium go?                       |

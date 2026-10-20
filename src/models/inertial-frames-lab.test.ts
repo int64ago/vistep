@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { movingPaper, paperBall } from './inertial-frames-lab';
+import { movingPaper, paperBall, inertiaDirector, inertiaGeometry } from './inertial-frames-lab';
 describe('paper pull in two frames', () => {
   it('paper starts and ends at rest with half a metre displacement', () => {
     expect(movingPaper(0).position).toBe(0);
@@ -31,5 +31,37 @@ describe('paper pull in two frames', () => {
     const s = paperBall(0.18, 0.35, 0.03);
     expect(s.position).toBeGreaterThan(0);
     expect(s.acceleration).toBeCloseTo(0.03 * 9.8, 8);
+  });
+});
+
+describe('contact, replay and accepted finite domain', () => {
+  it('uses the current contact region and a common tangent plane in both coordinate views', () => {
+    for (const time of [0.1995, 0.2, 0.2001, 0.25, 0.55, 1, 2.2]) {
+      const s = paperBall(time);
+      expect(s.onPaper).toBe(
+        s.position >= s.paper.position - 0.3 && s.position <= s.paper.position + 0.3,
+      );
+      for (const frame of ['lab', 'paper'] as const) {
+        const g = inertiaGeometry(s, frame, 288);
+        expect(g.ballY + g.ballRadius).toBeCloseTo(g.surfaceY, 12);
+        expect(g.paperWidth / g.scale).toBeCloseTo(0.6, 12);
+      }
+    }
+  });
+  it('retains the same physical history when changing camera and remains continuous on a solver boundary', () => {
+    expect(inertiaDirector(0, 0, (0.45 + 10.05) / 2).time).toBeCloseTo(
+      inertiaDirector(1, 0, (4.79 + 10.8) / 2).time,
+      12,
+    );
+    const a = paperBall(0.18049999),
+      b = paperBall(0.18050001);
+    expect(Math.abs(a.position - b.position)).toBeLessThan(1e-8);
+    expect(Math.abs(a.velocity - b.velocity)).toBeLessThan(1e-7);
+  });
+  it('rejects nonfinite or excessively small pull time and bounds director states', () => {
+    for (const d of [NaN, Infinity, 0, 1e-100, 6]) expect(() => paperBall(0.2, d)).toThrow();
+    for (const t of [NaN, Infinity, -1, 6]) expect(() => paperBall(t)).toThrow();
+    expect(inertiaDirector(NaN, Infinity).time).toBe(0);
+    expect(() => inertiaGeometry(paperBall(0.2), 'lab', NaN)).toThrow();
   });
 });

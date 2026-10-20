@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { beamDeflection, opticalLever, reflectedDirection } from './small-deformation-lab';
+import {
+  beamDeflection,
+  opticalLever,
+  reflectedDirection,
+  deformationDirector,
+} from './small-deformation-lab';
 describe('two-mirror deformation amplifier', () => {
   it('recovers simply-supported central-load reference and symmetry', () => {
     expect(beamDeflection(0.5, 80).down).toBeCloseTo(80 / (48 * 20000), 12);
@@ -40,5 +45,24 @@ describe('two-mirror deformation amplifier', () => {
         expect(Math.hypot(p.x - m.center.x, p.y - m.center.y)).toBeLessThan(0.075);
       }
     }
+  });
+});
+
+describe('continuous retained film and model limits', () => {
+  it('keeps the same wall and force across distance to release and returns to that wall zero', () => {
+    const a = deformationDirector(2, 1),
+      b = deformationDirector(3, 0),
+      end = deformationDirector(3, 1);
+    expect(a.wallX).toBe(b.wallX);
+    expect(a.force).toBe(b.force);
+    expect(end.wallX).toBe(4);
+    expect(opticalLever(end.force, end.wallX).shift).toBeCloseTo(0, 12);
+  });
+  it('rejects nonfinite or unsupported physical input rather than producing invalid SVG', () => {
+    for (const x of [NaN, Infinity, -1, 81]) expect(() => opticalLever(x)).toThrow();
+    expect(() => reflectedDirection({ x: NaN, y: 0 }, 0)).toThrow();
+    expect(() => reflectedDirection({ x: 1e308, y: 1e308 }, Math.PI / 4)).toThrow();
+    expect(() => beamDeflection(1, 1, 1, 1e200)).toThrow();
+    expect(deformationDirector(NaN, Infinity).force).toBe(0);
   });
 });

@@ -1,43 +1,156 @@
-.sound-field-visual {
-  position: relative;
-  width: min(100%, 380px);
-  margin: 8px auto 0;
-  aspect-ratio: 360/310;
+.sil-lab {
+  width: min(100%, 680px);
+  margin: auto;
+  color: #3b4c49;
+  font-size: 16px;
+  line-height: 1.45;
+  min-width: 0;
 }
-.sound-field-visual canvas {
-  position: absolute;
-  left: 15.277778%;
-  top: 21.935484%;
-  width: 69.444444%;
-  height: 58.064516%;
-  border-radius: 12px;
+.sil-heading {
+  min-height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12px;
+  text-align: center;
+  font-size: 16px;
 }
-.sound-field-visual svg {
-  position: relative;
+.sil-heading strong {
+  font-weight: 550;
+}
+.sil-stage {
+  width: 100%;
+  min-width: 0;
+  background: radial-gradient(ellipse at 50% 50%, #f8f7ee, #f3f4e9);
+  border-radius: 18px;
+}
+.sil-art {
   display: block;
   width: 100%;
-  height: auto;
+  height: 204px;
   overflow: visible;
+  font-family: inherit;
 }
-.sound-field-visual text {
-  font:
-    16px 'Manrope Variable',
-    'Noto Sans SC Variable',
-    sans-serif;
-  fill: #63745e;
+.sil-art text {
+  font-family: inherit;
+  font-size: 16px;
 }
-.sound-field-visual .em-small {
-  font-size: 13px;
+.sil-reading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 10px 0;
+  font-size: 16px;
 }
-@media (max-width: 600px) {
-  .sound-interference-lab {
-    padding-top: 8px;
-    padding-bottom: 6px;
+.sil-reading b {
+  font-variant-numeric: tabular-nums;
+  font-weight: 550;
+}
+.sil-bar {
+  flex: 1;
+  min-width: 32px;
+  max-width: 140px;
+  height: 7px;
+  background: #e1e7d6;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.sil-bar i {
+  display: block;
+  height: 100%;
+  background: #91a780;
+  border-radius: inherit;
+}
+.sil-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+  min-width: 0;
+}
+.sil-controls .control {
+  min-width: 0;
+  font-size: 16px;
+  display: block;
+}
+.sil-controls .control-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.sil-controls input[type='range'] {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  box-sizing: border-box;
+}
+.sil-segments {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sil-segments button,
+.sil-note summary {
+  font: inherit;
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+}
+.sil-segments button {
+  padding: 8px 12px;
+  background: #f0f2e7;
+  border: 1px solid #ccd5c1;
+  color: #415448;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.sil-segments button[aria-pressed='true'] {
+  background: #dfe8d2;
+  border-color: #8ea57f;
+}
+.sil-segments button:focus-visible {
+  outline: 2px solid #68867b;
+  outline-offset: 3px;
+}
+.sil-note {
+  border-top: 1px solid #dce3d5;
+  padding-top: 8px;
+  font-size: 16px;
+}
+.sil-note summary {
+  cursor: pointer;
+  padding: 10px 0;
+}
+.sil-note p,
+.sil-controls p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 560px) {
+  .sil-heading {
+    padding: 0 3px;
+    min-height: 44px;
   }
-  .sound-field-visual text {
-    font-size: 18px;
+  .sil-reading {
+    margin-inline: 4px;
+    gap: 8px;
   }
-  .sound-field-visual .em-small {
-    font-size: 15px;
+  .sil-bar {
+    max-width: 70px;
+  }
+  .sil-stage {
+    border-radius: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sil-segments button {
+    transition: none;
   }
 }

@@ -1,213 +1,368 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
-import { Range } from '../lab/Controls';
+import { Range, Segments } from '../lab/Controls';
+import { useSignalWidth } from '../lab/SignalFigure';
 import {
   opticalLever,
   beamDeflection,
+  deformationDirector,
+  type DeformationView,
   type OpticalPoint,
 } from '../../models/small-deformation-lab';
 import '../../styles/small-deformation-lab.css';
-const smooth = (v: number) => {
-  const x = Math.max(0, Math.min(1, v));
-  return x * x * (3 - 2 * x);
-};
+
+function Apparatus({
+  state,
+  force,
+  width,
+  full,
+  id,
+}: {
+  state: ReturnType<typeof opticalLever>;
+  force: number;
+  width: number;
+  full: boolean;
+  id: string;
+}) {
+  const height = full ? 180 : 126,
+    scale = full ? (width - 48) / 5.3 : Math.min((width - 38) / 1.4, 210);
+  const project = (p: OpticalPoint) => ({
+    x: (full ? 18 : (width - 1.4 * scale) / 2) + (p.x + 0.2) * scale,
+    y: (full ? 116 : 96) - p.y * scale,
+  });
+  const path = (points: OpticalPoint[]) =>
+    points
+      .map((p, i) => {
+        const q = project(p);
+        return `${i ? 'L' : 'M'}${q.x} ${q.y}`;
+      })
+      .join(' ');
+  const exit = full
+    ? state.wall
+    : { x: 1.18, y: state.p2.y + ((1.18 - state.p2.x) * state.d2.y) / state.d2.x };
+  const zero = project({ x: state.wall.x, y: state.baseline });
+  return (
+    <svg
+      className="sd16-art"
+      viewBox={`0 0 ${width} ${height}`}
+      role="img"
+      aria-label={t('同一束光先到右镜，再到左镜，最后射向远处墙面')}
+      data-optical-view={full ? 'path' : 'bench'}
+    >
+      <defs>
+        <linearGradient id={`${id}wood`} gradientUnits="userSpaceOnUse" x1="0" x2={width}>
+          <stop stopColor="#dfceb5" />
+          <stop offset="1" stopColor="#bda98c" />
+        </linearGradient>
+      </defs>
+      <path
+        data-table-surface="beam"
+        d={
+          path([
+            ...Array.from({ length: 31 }, (_, i) => ({
+              x: i / 30,
+              y: -beamDeflection(i / 30, force).down,
+            })),
+            ...Array.from({ length: 31 }, (_, i) => ({
+              x: 1 - i / 30,
+              y: -beamDeflection(1 - i / 30, force).down - 0.07,
+            })),
+          ]) + 'Z'
+        }
+        fill={`url(#${id}wood)`}
+      />
+      {[0, 1].map((x) => (
+        <path
+          key={x}
+          d={path([
+            { x, y: -0.07 },
+            { x, y: full ? -0.25 : -0.13 },
+          ])}
+          stroke="#bca88b"
+          strokeWidth={full ? 5 : 8}
+          strokeLinecap="round"
+        />
+      ))}
+      {force > 0.01 && (
+        <g data-applied-force={force}>
+          <path
+            d={path([
+              { x: 0.5, y: 0.5 },
+              { x: 0.5, y: 0.06 },
+            ])}
+            stroke="#ab7959"
+            strokeWidth="1.7"
+          />
+          <path
+            d={path([
+              { x: 0.46, y: 0.12 },
+              { x: 0.5, y: 0.06 },
+              { x: 0.54, y: 0.12 },
+            ])}
+            stroke="#ab7959"
+            strokeWidth="1.7"
+            fill="none"
+          />
+        </g>
+      )}
+      {[state.m, state.n].map((mirror, i) => {
+        const a = {
+            x: mirror.center.x - 0.075 * Math.cos(mirror.angle),
+            y: mirror.center.y - 0.075 * Math.sin(mirror.angle),
+          },
+          b = {
+            x: mirror.center.x + 0.075 * Math.cos(mirror.angle),
+            y: mirror.center.y + 0.075 * Math.sin(mirror.angle),
+          };
+        const q = project(mirror.center);
+        return (
+          <g key={i} data-material-mirror={i === 0 ? 'M' : 'N'}>
+            <path
+              d={path([mirror.base, mirror.center])}
+              stroke="#93a39b"
+              strokeWidth={full ? 3 : 5}
+            />
+            <path
+              data-mirror-line={i === 0 ? 'M' : 'N'}
+              d={path([a, b])}
+              stroke="#6b8e96"
+              strokeWidth={full ? 3 : 5}
+            />
+            <path d={path([a, b])} stroke="#edf0e8" strokeWidth="1" />
+            <text x={q.x} y={q.y - (full ? 16 : 24)} textAnchor="middle">
+              {i === 0 ? 'M' : 'N'}
+            </text>
+          </g>
+        );
+      })}
+      <path
+        data-optical-route="source-M-N-wall"
+        d={path([state.source, state.p1, state.p2, exit])}
+        stroke="#ad7755"
+        strokeWidth="1.7"
+        fill="none"
+      />
+      <circle
+        cx={project(state.source).x}
+        cy={project(state.source).y}
+        r={full ? 4 : 6}
+        fill="#7d9483"
+      />
+      {full && (
+        <>
+          <path
+            data-optical-wall="true"
+            d={path([
+              { x: state.wall.x, y: 0 },
+              { x: state.wall.x, y: 0.72 },
+            ])}
+            stroke="#a7b698"
+            strokeWidth="4"
+          />
+          <circle cx={zero.x} cy={zero.y} r="4" fill="none" stroke="#718762" />
+          <circle cx={project(state.wall).x} cy={project(state.wall).y} r="2.5" fill="#ac7047" />
+          <text x={width - 8} y="28" textAnchor="end">
+            {t('墙的位置')} {state.wall.x.toFixed(1)} m
+          </text>
+          <path
+            d={path([
+              { x: 0, y: -0.42 },
+              { x: state.wall.x, y: -0.42 },
+            ])}
+            stroke="#bec8b1"
+            strokeDasharray="3 4"
+          />
+          <text x={width / 2} y="171" textAnchor="middle">
+            {t('未放大角度的完整光路')}
+          </text>
+        </>
+      )}
+      {!full && (
+        <path
+          d={`M${width - 17} ${project(exit).y - 5}l7 5-7 5`}
+          fill="none"
+          stroke="#ad7755"
+          strokeWidth="1.6"
+        />
+      )}
+    </svg>
+  );
+}
+function MiniSpot({ state, width }: { state: ReturnType<typeof opticalLever>; width: number }) {
+  const y = 52 - state.shift * 1000 * 18;
+  return (
+    <svg
+      className="sd16-art"
+      viewBox={`0 0 ${width} 126`}
+      role="img"
+      aria-label={t('墙上光点 · 局部放大')}
+    >
+      <text x={width / 2} y="18" textAnchor="middle">
+        {t('光点')}
+      </text>
+      <path d={`M8 52H${width - 8}`} stroke="#b0bda2" strokeDasharray="3 3" />
+      <circle cx={width / 2} cy="52" r="5" fill="none" stroke="#8fa17e" />
+      <circle data-wall-spot="true" cx={width / 2} cy={y} r="3.5" fill="#b4794e" />
+      <text x={width / 2} y="120" textAnchor="middle">
+        {(Math.abs(state.shift) < 5e-7 ? 0 : state.shift * 1000).toFixed(2)} mm
+      </text>
+    </svg>
+  );
+}
+function Profile({ force, width }: { force: number; width: number }) {
+  const scale = width - 32,
+    y = (x: number) => 28 + beamDeflection(x, force).down * 500 * scale;
+  return (
+    <svg
+      className="sd16-art"
+      viewBox={`0 0 ${width} 92`}
+      role="img"
+      aria-label={t('桌面形变剖面 · 纵向放大500倍')}
+      data-deformation-profile="500"
+    >
+      <text x={width / 2} y="17" textAnchor="middle">
+        {t('剖面：纵向 ×500')}
+      </text>
+      <path d={`M16 28H${width - 16}`} stroke="#afbea0" strokeDasharray="4 4" />
+      <path
+        d={Array.from(
+          { length: 61 },
+          (_, i) => `${i ? 'L' : 'M'}${16 + (i / 60) * scale} ${y(i / 60)}`,
+        ).join(' ')}
+        fill="none"
+        stroke="#ad8060"
+        strokeWidth="2.4"
+      />
+      <path d={`M16 29l-6 11h12ZM${width - 16} 29l-6 11h12Z`} fill="#a7b89a" />
+      <text x={width / 2} y="78" textAnchor="middle">
+        δ = {(beamDeflection(0.5, force).down * 1000).toFixed(3)} mm
+      </text>
+    </svg>
+  );
+}
+function Spot({ state, width }: { state: ReturnType<typeof opticalLever>; width: number }) {
+  const x = width * 0.55,
+    zeroY = 87,
+    spotY = zeroY - state.shift * 1000 * 22;
+  return (
+    <svg
+      className="sd16-art"
+      viewBox={`0 0 ${width} 212`}
+      role="img"
+      aria-label={t('光点相对未受力零位的毫米位移')}
+      data-optical-view="spot"
+    >
+      <text x={width / 2} y="20" textAnchor="middle">
+        {t('墙上光点 · 局部放大')}
+      </text>
+      <path d={`M${x - 52} 39V190`} stroke="#a9b79a" />
+      {[-4, -2, 0, 2].map((mm) => (
+        <g key={mm}>
+          <path d={`M${x - 57} ${zeroY - mm * 22}h10`} stroke="#90a280" />
+          <text x={x - 65} y={zeroY - mm * 22 + 5} textAnchor="end">
+            {mm}
+          </text>
+        </g>
+      ))}
+      <path d={`M${x - 40} ${zeroY}H${x + 12}`} stroke="#a8b89b" strokeDasharray="4 5" />
+      <circle data-spot-zero="true" cx={x} cy={zeroY} r="5" stroke="#8b9e7a" fill="none" />
+      <circle data-wall-spot="true" cx={x} cy={spotY} r="12" fill="#b77e50" opacity=".12" />
+      <circle cx={x} cy={spotY} r="3.5" fill="#ad754b" />
+      <text x={x + 22} y={Math.min(184, Math.max(46, spotY + 5))}>
+        {(Math.abs(state.shift) < 5e-7 ? 0 : state.shift * 1000).toFixed(2)}
+      </text>
+      <text x={width / 2} y="202" textAnchor="middle">
+        {t('相对零位')} / mm
+      </text>
+    </svg>
+  );
+}
 export default function SmallDeformationLab() {
   const film = useShowcase(),
+    { host, width } = useSignalWidth(),
     id = useId().replaceAll(':', '');
-  const [load, setLoad] = useState(60),
-    [distance, setDistance] = useState(2.3);
-  const c = film.watch ? film.chapter : 2,
-    p = film.chapterProgress;
-  const force = film.watch
-    ? c === 0
-      ? 0
-      : c === 1
-        ? 60 * smooth(p * 2)
-        : c === 2
-          ? 60
-          : 60 * (1 - smooth(p * 2))
-    : load;
-  const wallX = film.watch ? (c === 2 ? 2.3 + 1.7 * smooth(p * 1.5) : 2.3) : distance,
-    s = opticalLever(force, wallX);
-  const project = (v: OpticalPoint) => ({ x: 65 + 240 * v.x, y: 220 - 240 * v.y });
-  const line = (a: OpticalPoint, b: OpticalPoint) => {
-    const u = project(a),
-      v = project(b);
-    return `M${u.x} ${u.y}L${v.x} ${v.y}`;
-  };
-  const exit = { x: 1.18, y: s.p2.y + ((1.18 - s.p2.x) * s.d2.y) / s.d2.x };
-  const shiftMM = s.shift * 1000,
-    spotY = 95 - shiftMM * 14;
+  const authored = deformationDirector(
+    film.chapter,
+    film.chapterProgress,
+    film.chapterTime,
+    browserLocale(),
+  );
+  const [manual, setManual] = useState<{
+    force: number;
+    wallX: number;
+    view: DeformationView;
+  } | null>(null);
+  const selected = film.watch ? authored : (manual ?? authored),
+    state = opticalLever(selected.force, selected.wallX);
+  const update = (changes: Partial<NonNullable<typeof manual>>) =>
+    setManual({ ...selected, ...changes });
+  const twin = selected.view === 'profile' || selected.view === 'bench';
   return (
-    <section className="deform-lab">
-      <header>
-        <p>
-          {t(
-            c === 0
-              ? '先记下没有按压时的光点位置'
-              : c === 1
-                ? '桌面略微弯曲，光点离开原位'
-                : c === 2
-                  ? '把墙移远，光点变化更明显'
-                  : '松开压力，光点回到原位',
-          )}
-        </p>
-        <span>{t('双镜光路 · 微小形变')}</span>
-      </header>
-      <div className="deform-composition">
-        <div className="deform-bench">
-          <svg
-            viewBox="0 0 360 280"
-            role="img"
-            aria-label={t('同一束光先到右镜，再到左镜，最后射向远处墙面')}
-          >
-            <defs>
-              <linearGradient id={`${id}table`}>
-                <stop stopColor="#dbc8ac" />
-                <stop offset="1" stopColor="#c0ad91" />
-              </linearGradient>
-              <marker
-                id={`${id}arrow`}
-                markerWidth="7"
-                markerHeight="7"
-                refX="6"
-                refY="3.5"
-                orient="auto"
-              >
-                <path d="M0 0L7 3.5L0 7Z" fill="#ad8061" />
-              </marker>
-            </defs>
-            <path
-              d="M65 228V265M305 228V265"
-              stroke="#bfac8d"
-              strokeWidth="9"
-              strokeLinecap="round"
-            />
-            <path d="M52 220H318V231H52Z" fill={`url(#${id}table)`} />
-            {[s.m, s.n].map((mirror, i) => {
-              const a = {
-                  x: mirror.center.x - 0.075 * Math.cos(mirror.angle),
-                  y: mirror.center.y - 0.075 * Math.sin(mirror.angle),
-                },
-                b = {
-                  x: mirror.center.x + 0.075 * Math.cos(mirror.angle),
-                  y: mirror.center.y + 0.075 * Math.sin(mirror.angle),
-                };
-              return (
-                <g key={i}>
-                  <path d={line(mirror.base, mirror.center)} stroke="#a5b1aa" strokeWidth="5" />
-                  <path d={line(a, b)} stroke="#76949a" strokeWidth="4" />
-                  <path d={line(a, b)} stroke="#d3e0dd" strokeWidth="1" />
-                </g>
-              );
-            })}
-            <path
-              d={`${line(s.source, s.p1)}${line(s.p1, s.p2)}${line(s.p2, exit)}`}
-              stroke="#b98265"
-              strokeWidth="1.6"
-              fill="none"
-            />
-            <circle cx={project(s.p1).x} cy={project(s.p1).y} r="3" fill="#dbb695" />
-            <circle cx={project(s.p2).x} cy={project(s.p2).y} r="3" fill="#dbb695" />
-            <g
-              transform={`translate(${project(s.source).x - 10} ${project(s.source).y - 6}) rotate(-1.2)`}
-            >
-              <rect width="21" height="12" rx="4" fill="#84988b" />
-              <path d="M18 2V10" stroke="#c5d2bc" strokeWidth="2" />
-            </g>
-            {force > 0 && (
-              <path
-                d={`M185 ${185 - force * 0.25}V214`}
-                stroke="#ad8061"
-                strokeWidth="2.5"
-                markerEnd={`url(#${id}arrow)`}
-              />
-            )}
-            <path d="M340 144L349 150L340 156" fill="none" stroke="#b98265" strokeWidth="1.6" />
-          </svg>
-          <div className="deform-apparatus-caption">
-            <span>
-              {t('按压力')} {force.toFixed(0)} N
-            </span>
-            <span>{t('连续光路通向墙面')} →</span>
-          </div>
-        </div>
-        <div className="deform-wall">
-          <p>{t('墙上光点 · 局部放大')}</p>
-          <svg viewBox="0 0 180 210" aria-label={t('光点相对未受力零位的毫米位移')} role="img">
-            <defs>
-              <radialGradient id={`${id}spot`}>
-                <stop stopColor="#b66f45" stopOpacity=".8" />
-                <stop offset="1" stopColor="#b66f45" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <path d="M70 14V190" stroke="#c6cdbb" />
-            {[-6, -4, -2, 0, 2, 4].map((mm) => (
-              <g key={mm}>
-                <path d={`M66 ${95 - mm * 14}H79`} stroke="#a5b397" />
-                <text x="58" y={101 - mm * 14} textAnchor="end" fill="#71845f" fontSize="16">
-                  {mm}
-                </text>
-              </g>
-            ))}
-            <path d="M85 95H151" stroke="#b4bca8" strokeDasharray="3 4" />
-            <circle cx="116" cy="95" r="5" fill="none" stroke="#9aa98c" />
-            <circle cx="116" cy={spotY} r="14" fill={`url(#${id}spot)`} />
-            <circle cx="116" cy={spotY} r="3" fill="#af754e" />
-            <text x="115" y="205" textAnchor="middle" fill="#71845f" fontSize="16">
-              mm
-            </text>
-          </svg>
-          <output>{shiftMM.toFixed(2)} mm</output>
-          <span>
-            {t('墙的位置')} {wallX.toFixed(1)} m
-          </span>
-        </div>
-      </div>
-      <div className="deform-profile">
-        <p>{t('桌面形变剖面 · 纵向放大500倍')}</p>
-        <svg viewBox="0 0 320 64" aria-hidden="true">
-          <path d="M15 19H305" stroke="#bdc6b0" strokeDasharray="4 5" />
-          <path
-            d={Array.from({ length: 41 }, (_, i) => {
-              const x = i / 40;
-              return `${i ? 'L' : 'M'}${15 + x * 290} ${19 + beamDeflection(x, force).down * 500 * 290}`;
-            }).join(' ')}
-            fill="none"
-            stroke="#ad8968"
-            strokeWidth="2.4"
-          />
-          <path d="M15 22L8 34H22ZM305 22L298 34H312Z" fill="#adba9d" />
-        </svg>
+    <section
+      className="sd16-lab"
+      ref={host}
+      data-deform-force={selected.force}
+      data-deform-wall={selected.wallX}
+      data-deform-view={selected.view}
+    >
+      <div className="sd16-readout">
+        <span>F = {selected.force.toFixed(0)} N</span>
         <span>
-          {t('中央下沉')} {(s.deflection * 1000).toFixed(3)} mm
+          {t('墙的位置')} {selected.wallX.toFixed(1)} m
         </span>
       </div>
-      <p className="deform-cause">
-        {t(
-          force < 1
-            ? '零位记录未受力状态；看不出变化不等于不会变形。'
-            : '微小转角改变反射方向，长光程把角度变化变成可见位移。',
-        )}
-      </p>
+      {twin ? (
+        <div className="sd16-twin">
+          <div className="sd16-bench-pair">
+            <Apparatus
+              state={state}
+              force={selected.force}
+              width={width * 0.65}
+              full={false}
+              id={id}
+            />
+            <MiniSpot state={state} width={width * 0.35} />
+          </div>
+          <Profile force={selected.force} width={width} />
+        </div>
+      ) : selected.view === 'path' ? (
+        <Apparatus state={state} force={selected.force} width={width} full id={id} />
+      ) : (
+        <Spot state={state} width={width} />
+      )}
       {!film.watch && (
-        <div className="deform-controls">
-          <Range label={t('按压力')} value={load} min={0} max={80} unit="N" onChange={setLoad} />
+        <div className="sd16-controls">
+          <Segments
+            label={t('观察视图')}
+            value={selected.view}
+            options={[
+              { value: 'path', label: t('完整光路') },
+              { value: 'profile', label: t('双镜与形变') },
+              { value: 'spot', label: t('光点零位') },
+            ]}
+            onChange={(view) => update({ view })}
+          />
+          <Range
+            label={t('按压力')}
+            value={selected.force}
+            min={0}
+            max={80}
+            unit="N"
+            onChange={(force) => update({ force })}
+          />
           <Range
             label={t('墙的位置')}
-            value={distance}
+            value={selected.wallX}
             min={1.2}
-            max={4}
+            max={4.5}
             step={0.1}
             unit="m"
-            onChange={setDistance}
+            onChange={(wallX) => update({ wallX })}
           />
+          <p>{t('简支弹性梁教学模型；剖面只放大形变，真实光路不放大角度。')}</p>
         </div>
       )}
-      <p className="deform-note">
-        {t('桌面简化为中央受力的弹性梁；镜面与光线按同一几何求交，数值为教学设定。')}
-      </p>
     </section>
   );
 }

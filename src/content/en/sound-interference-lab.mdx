@@ -1,22 +1,35 @@
-<h2 id="understand">The same sounds travel different paths</h2>
+<h2 id="understand">Why can a second speaker make one place quieter?</h2>
 
-Two identical speakers driven by one signal source emit at the same frequency with a fixed phase relationship. Different travel distances change their relative arrival phase, creating stable regions of reinforcement and weakening.
+The speakers emit in phase, but their sounds travel different distances. At one receiver and one instant, a pressure increase from one source can partly cancel a pressure decrease from the other. With both speakers on, the pressure amplitude at that location can be smaller than with only one.
 
-The textbook divides students into two groups. Each moves within a small neighbourhood: white flags mark louder positions and dark flags mark quieter ones. The displayed flag positions are found from the actual calculated intensity field.
+The film follows both paths, then magnifies the receiver’s signals. Three traces share one clock and one pressure scale: source one, source two, and their sum. Their horizontal axis is one deliberately slowed period, not the transverse motion of air particles.
 
-<h2 id="try">Move the receiver, then change wavelength</h2>
+At 680 Hz and a sound speed of 340 m/s, the wavelength is 0.5 m. At the model location x=0.125 m, y=0, the path lengths are 2.125 m and 1.875 m: half a wavelength apart. Arrival phases are opposite, but the unequal distances give unequal amplitudes. A small pressure residual remains.
 
-- Move horizontally or vertically and compare path difference with relative intensity.
-- Show the two flag groups and inspect local reinforcement and weakening.
-- Change the shared speaker frequency and watch the spatial pattern change.
-- Explicitly start the optional receiver preview to hear its calculated amplitude. The visual does not require audio.
+<h2 id="try">Keep the old location and test a new condition</h2>
 
-<h2 id="deeper">Quiet does not always mean silent</h2>
+- In Pressure sum, move the slowed clock. Do the first two values on the cursor add to the third?
+- At the half-wavelength location, switch source two off and back on. Is an extra source always louder?
+- With both sources on, reverse source two’s phase. Why does cancellation become reinforcement even though the paths have not changed?
+- Keep the 680 Hz flags, then halve the shared frequency. The path difference stays fixed while the wavelength doubles. The phase difference becomes roughly a quarter of a cycle, so mean-square pressure should rise.
 
-<div className="formula">Phase difference = 2π(r₂−r₁)/λ; I ∝ A₁² + A₂² + 2A₁A₂cosΔφ</div>
+The textbook asks students to move locally, listen, raise flags and compare the spatial pattern. Here, twelve model students search within 0.16 m to either side of their starting points. These flags are calculated demonstrations, not observations from a student survey. Their old positions stay fixed when frequency changes.
 
-Ideal point sources are 4 m apart with sound speed 340 m/s. Each amplitude decreases as 1/r and phase follows propagation distance. Opposite phases cancel completely only when local amplitudes are equal. Relative intensity is normalized to the constructive midpoint; it is neither decibels nor a calibrated sound-meter reading.
+<h2 id="deeper">Add pressure, and identify the readout correctly</h2>
 
-The model omits room reflections, background noise and speaker directivity. The last automatic shot leaves the original 680 Hz flags fixed before changing frequency; exploration recalculates flags for the current frequency. Optional sound synthesizes the model receiver signal and stops offscreen or on leaving the page.
+<div className="formula">pᵢ(t) = Aᵢ cos(ωt − krᵢ + φᵢ), p = p₁ + p₂</div>
 
-Source: [OpenStax wave interference](https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves). Textbook page 77, Selective Compulsory Book 1.
+The two in-phase point sources are at x=−2 m and x=2 m. Amplitude varies as 1/r. The mean-square indicator is normalized to the in-phase midpoint’s cycle mean, giving A₁²+A₂²+2A₁A₂cosΔφ. Instantaneous pressure can be positive or negative; its mean square cannot. The path close-up uses equal-height waves to show phase and labels the arriving amplitudes separately. The three receiver traces show their actual relative amplitudes.
+
+Mean-square pressure is neither perceived loudness nor net energy flux. Acoustic intensity depends on the time average of pressure multiplied by particle velocity, including direction. Oppositely travelling waves can have large pressure variations with little net energy transfer. This scalar indicator is therefore not labelled W/m² or decibels. [Brüel & Kjær’s sound-intensity guide](https://www.bksv.com/doc/br0476.pdf)
+
+<details>
+<summary>Practical setup and model boundaries</summary>
+
+Use identical speakers driven from the same signal source and compare nearby locations at a moderate level. Reflections, background noise and speaker directivity affect real rooms and are omitted here. Predictions near the sources are excluded; the exploration receiver stays at least 0.8 m from either source.
+
+The optional model tone starts only after a click. It synthesizes amplitude, not a recorded room measurement, and stops offscreen or on returning to the film. Hearing sensitivity also changes with frequency, so perceived loudness cannot be used to recover the numerical readout. The explanation remains available with audio off.
+
+</details>
+
+Textbook context: PEP High School Physics, Elective Book 1, pp.74–76 on superposition and interference, and p.77, Sound interference. The adjacent active-noise-control discussion applies cancellation to sound. Wave addition: [OpenStax University Physics, Section 16.5](https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves).

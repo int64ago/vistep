@@ -1,0 +1,160 @@
+{
+  "scene": "sound-interference-lab",
+  "stage": "frozen isolated candidate",
+  "owner": "physics scene author / teaching_subject_fit",
+  "baselineCommit": "e387df5dbb628699867062b12ea40b9f88cd77bd",
+  "productSourceWritten": false,
+  "globalBuildRun": false,
+  "sourceScope": "Entire relevant textbookP74–78 + actualP77image; original B&K guide relevant3–9; OpenStax linear superposition. No empirical student-position dataset claimed.",
+  "implementation": {
+    "chapterIdsPreserved": true,
+    "windowIds": ["e1-sound-interference"],
+    "pageOrderPreserved": true,
+    "spokenRetained": ["speakers-common", "speakers-flags", "speakers-frequency"],
+    "spokenReplaced": ["speakers-receiver"],
+    "provisionalSeconds": 116
+  },
+  "checks": [
+    {
+      "type": "scoped model/component/cover emission tests",
+      "status": "passed",
+      "count": 12,
+      "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-16-staging/physics/checks/vitest.config.ts"
+    },
+    {
+      "type": "strict TypeScript with actual Astro options",
+      "status": "passed",
+      "evidence": "checks/strict-types.json",
+      "scope": "Owned model,modeltest,component,componenttest and resolved imports; not globalcheck."
+    },
+    {
+      "type": "actual Astro MDX compiler",
+      "status": "passed",
+      "count": 2,
+      "evidence": "checks/mdx-parse.json"
+    },
+    {
+      "type": "candidate native Showcase keyframes",
+      "status": "passed",
+      "count": 60,
+      "evidence": "checks/native-review-05/report.json",
+      "viewports": [
+        [320, 568],
+        [1100, 850]
+      ],
+      "wholePlayer": {
+        "zh": {
+          "viewport": [320, 568],
+          "top": 16,
+          "maxHeight": 519.1875,
+          "maxBottom": 535.1875,
+          "minSVGFont": 16,
+          "minButtonWidth": 44,
+          "minButtonHeight": 44
+        },
+        "en": {
+          "viewport": [320, 568],
+          "top": 16,
+          "maxHeight": 533.1875,
+          "maxBottom": 549.1875,
+          "minSVGFont": 16,
+          "minButtonWidth": 44,
+          "minButtonHeight": 44
+        }
+      }
+    },
+    {
+      "type": "candidate true React controls",
+      "status": "passed",
+      "exploreStates": 48,
+      "languageCases": 4,
+      "evidence": "checks/native-review-05/report.json",
+      "behaviors": [
+        "freshExplore follows current view/source state",
+        "explicit prediction test vs authoredwatch separation",
+        "on/off and phase reversal change actual sum",
+        "fixed680Hzflags preserve12 IDs/positions",
+        "receiver marker follows controls in flag view",
+        "optionalAudioContext failure preserves visualcontrol"
+      ]
+    },
+    {
+      "type": "independent numeric science review",
+      "status": "passed",
+      "assertions": 99076,
+      "evidence": "artifacts/teaching-principles/batch-16-cross-review/chemistry-review-sound.json",
+      "sourceHash": "a36e618e714c6e37469de18cb0cb9bbe13656321e392656c3f933a0258eda8ec",
+      "scope": "Independent direct function execution only. Fixed pressure convention, same-clock integration, path-end phase, source-off/reversal, fixed680Hz weak-point340Hz counterexample. No UI, author narration, raw source or sound listening review."
+    },
+    {
+      "type": "author actual visual inspection",
+      "status": "performed",
+      "images": [
+        "checks/sources/textbook-p77.png",
+        "checks/native-review-03/en-320-c0-t12.png",
+        "checks/native-review-04/en-320-c1-t27.png",
+        "checks/native-review-04/en-1100-c1-t27.png",
+        "checks/native-review-04/en-controls-fixed-flags.png",
+        "checks/native-review-03/zh-320-c3-t10.png",
+        "checks/native-review-03/en-320-c3-t24.png",
+        "checks/native-review-05/en-320-c0-t2.png",
+        "checks/native-review-05/en-320-c0-t7.png",
+        "checks/cover-review/card-final.png",
+        "checks/cover-review/white-final.png"
+      ],
+      "notIndependent": true
+    },
+    {
+      "type": "cover artwork",
+      "status": "candidate views inspected",
+      "scope": "Same actual exported React artwork asStaticArtworkCover, card-size and white background; not integratedcatalog/social consumers."
+    }
+  ],
+  "failureHistory": [
+    {
+      "evidence": "checks/native-review-01/report.json",
+      "issue": "24 repeated cycle-axis label bounds failures; isolatedENcaption missingtranslation was also seen in actual screenshots.",
+      "resolution": "Compressed local SVGgeometry rather thanfontscale; added real bilingualcaption/title dictionary."
+    },
+    {
+      "evidence": "checks/native-review-02/en-320-c0-t12.png",
+      "issue": "Path source labels too close to heading/amplitude labels despite bounding-box pass.",
+      "resolution": "Moved S1/S2 labels alongside their ray axes; actual images rereviewed."
+    },
+    {
+      "evidence": "checks/native-review-03",
+      "issue": "In flag view, receiver marker needed to remain present under manualcoordinate changes.",
+      "resolution": "Added visible controlledreceiver in flag view, selectedflag remains conditionalonmatchingcoordinates."
+    }
+  ],
+  "nativePlayback": {
+    "status": "auxiliary pre-final run; see checks/native-playback/report.json",
+    "scope": "Started before opening one-source/two-source visual addition. This validates shared silent clock/transport only, not final-source uninterrupted acceptance. Root will run final static/fullspeech playback."
+  },
+  "notRun": [
+    "ActualAstro routes/SSRanchors and finalcurriculum integration",
+    "Final measurednarration and locale word-time calibration",
+    "Full finalstatic uninterruptedplayback",
+    "Subjective listening",
+    "Physical-phone performance",
+    "Global pnpmverify/buildpreview",
+    "Publication"
+  ],
+  "rootNext": [
+    "Copy only the regular files inmanifest; sharedmetadata/translation/timeline/profile proposals are inpacket.",
+    "Keep all4IDs/all4chapter window/P77originaltitle; add shortscreen .lesson-sound-interference-lab rule if needed.",
+    "Generate/measure only changed spoken pair plus necessary packaging; threepairs retained exactly.",
+    "Recalibrate cuts to actualwords; current116s and events are provisional.",
+    "Run actualroute/completeplayer/control/cover/static native acceptance andglobalchecks."
+  ],
+  "rootIntegration": {
+    "batch": 16,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-16-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

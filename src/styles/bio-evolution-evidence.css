@@ -1,313 +1,477 @@
-.bio-evolution-scene {
-  max-width: 900px;
+.bee16 {
+  max-width: 860px;
   margin: auto;
-  color: #596b59;
-}
-.bio-evolution-stage {
-  min-height: 350px;
-  border-radius: 25px;
-  background: radial-gradient(ellipse at 45% 35%, #f7f5e8, #e8ecda);
-  padding: 20px 24px;
-}
-.bio-evolution-stage b,
-.bio-evolution-stage p,
-.bio-evolution-stage small,
-.bio-evolution-stage span {
+  color: #526851;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
-.bio-evolution-stage small {
-  display: block;
-  margin-top: 12px;
+.bee16 * {
+  box-sizing: border-box;
 }
-.bio-evolution-fossil {
-  max-width: 570px;
+.bee16-stage {
+  padding: 14px 24px;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 45% 30%, #f8f6e9, #e8ecdd);
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+}
+.bee16-stage > div {
+  width: 100%;
+  max-width: 560px;
   text-align: center;
+}
+.bee16 svg {
+  display: block;
+  width: 100%;
   margin: auto;
 }
-.bio-evolution-fossil svg {
-  width: 100%;
+.bee16 svg text {
+  font:
+    22px 'Noto Sans SC',
+    sans-serif;
+  fill: #536a54;
+}
+.bee16 p,
+.bee16 b,
+.bee16 span,
+.bee16 output {
+  font-size: 16px;
+}
+.bee16-note {
+  margin: 8px 0 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.bee16-qualifier {
   display: block;
+  font-size: 16px;
+  margin-top: 5px;
+  color: #6c7865;
 }
-.bio-evolution-anatomy {
-  max-width: 570px;
-  margin: auto;
+.bee16-evidence-id {
+  font-size: 16px;
+  margin: 4px 0 8px;
+  color: #69775e;
 }
-.bio-evolution-limbs {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  gap: 30px;
+.bee16-fossil svg {
+  max-width: 410px;
+  height: 280px;
 }
-.bio-evolution-limbs > div {
-  width: 50%;
-}
-.bio-evolution-limbs svg {
-  width: 100%;
-  height: 285px;
-  display: block;
-}
-.bio-evolution-bone-key {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  justify-content: center;
-  margin-top: 13px;
-}
-.bio-evolution-bone-key span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.bio-evolution-bone-key i {
-  width: 13px;
-  height: 13px;
-  border-radius: 4px;
-}
-.bio-evolution-embryos {
+.bee16-limbs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  text-align: center;
-  max-width: 500px;
-  margin: auto;
+  gap: 30px;
 }
-.bio-evolution-embryos svg {
-  width: 100%;
+.bee16-limbs svg {
   height: 270px;
+}
+.bee16-limbs b {
   display: block;
 }
-.bio-evolution-embryos small {
-  grid-column: 1/-1;
-}
-.bio-evolution-molecular {
-  max-width: 570px;
-  margin: auto;
-}
-.bio-evolution-molecular > div {
-  display: grid;
-  grid-template-columns: 90px 1fr 35px;
-  align-items: center;
-  gap: 10px;
-  margin-top: 5px;
-  padding: 3px 8px;
-  border-radius: 8px;
-}
-.bio-evolution-molecular > div.active {
-  background: #dce3cd;
-}
-.bio-evolution-molecular > div > div {
-  height: 17px;
-  background: #e0e5d6;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.bio-evolution-molecular i {
-  display: block;
-  height: 100%;
-  background: #8aa17c;
-  border-radius: 5px;
-}
-.bio-evolution-molecular output {
-  text-align: right;
-  font-size: 16px;
-}
-.bio-evolution-moths,
-.bio-evolution-frequency,
-.bio-evolution-isolation {
-  max-width: 530px;
-  margin: auto;
-  text-align: center;
-}
-.bio-evolution-moths svg,
-.bio-evolution-frequency svg,
-.bio-evolution-isolation > svg {
-  width: 100%;
-  display: block;
-}
-.bio-evolution-moths p {
-  margin: 8px 0;
-}
-.bio-evolution-gene-readout {
+.bee16-bone-key {
   display: flex;
-  gap: 17px;
-  justify-content: center;
   flex-wrap: wrap;
-  margin: 10px 0;
-}
-.bio-evolution-gene-readout span {
-  font-variant-numeric: tabular-nums;
-}
-.bio-evolution-genotypes {
-  display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 5px 14px;
+  margin-top: 8px;
 }
-.bio-evolution-genotypes span {
-  display: grid;
+.bee16-bone-key span {
+  display: flex;
+  align-items: center;
   gap: 5px;
 }
-.bio-evolution-antibiotic {
-  max-width: 540px;
-  margin: auto;
+.bee16-bone-key i {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.bee16-embryos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.bee16-embryos svg {
+  height: 255px;
+}
+.bee16-embryos > p {
+  grid-column: 1/-1;
+}
+.bee16-molecular {
+  text-align: left !important;
+  min-height: 275px;
+}
+.bee16-molecular b {
+  display: block;
   text-align: center;
 }
-.bio-evolution-antibiotic > svg {
-  width: 100%;
-  max-width: 330px;
+.bee16-scale {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0 5px 112px;
+  color: #7a856d;
+}
+.bee16-molecular-row {
+  display: grid;
+  grid-template-columns: 106px 1fr 28px;
+  gap: 7px;
+  align-items: center;
+  min-height: 36px;
+}
+.bee16-molecular-row > div {
+  height: 16px;
+  background: #dde4d4;
+  border-radius: 5px;
+}
+.bee16-molecular-row i {
   display: block;
-  margin: auto;
+  height: 100%;
+  background: #86a087;
+  border-radius: 5px;
 }
-.bio-evolution-disc-legend,
-.bio-evolution-diameters {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  font-size: 16px;
+.bee16-molecular output {
+  text-align: right;
 }
-.bio-evolution-transfer {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
+.bee16-moths svg {
+  height: 260px;
 }
-.bio-evolution-transfer > div {
+.bee16-counts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  padding: 8px 0;
+}
+.bee16-counts > div {
+  display: grid;
+  gap: 7px;
+  justify-items: center;
+}
+.bee16-counts b {
+  font-size: 21px;
+}
+.bee16-alleles {
   display: flex;
-  align-items: center;
   gap: 7px;
 }
-.bio-evolution-transfer > div > svg {
-  width: 65px;
-  height: 50px;
-}
-.bio-evolution-transfer > svg {
-  width: 100px;
-}
-.bio-evolution-transfer > b {
-  max-width: 125px;
-}
-.bio-evolution-antibiotic p {
-  margin: 8px 0;
-}
-.bio-evolution-reunion > div {
-  border-radius: 17px;
-  margin-top: 10px;
-  padding: 7px;
-  background: #e8ecdf;
-}
-.bio-evolution-reunion > div.active {
-  background: #d5dec7;
-}
-.bio-evolution-reunion svg {
-  width: 100%;
-  max-width: 380px;
-  display: block;
-  margin: auto;
-}
-.bio-evolution-reunion p {
-  margin: 0 0 12px;
-}
-.bio-evolution-controls {
+.bee16-alleles span {
   display: grid;
-  gap: 14px;
-  margin-top: 18px;
+  place-items: center;
+  width: 30px;
+  height: 40px;
+  border-radius: 12px;
+  background: #d9ccae;
+  border: 1px solid #bca77c;
 }
-.bio-evolution-controls label {
+.bee16-alleles .dominant {
+  background: #c0d3c5;
+  border-color: #8cae9c;
+}
+.bee16-equation {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+.bee16-equation > span,
+.bee16-equation > b {
+  font-size: 23px;
+}
+.bee16-fraction {
   display: grid;
-  gap: 8px;
+  min-width: 54px;
+}
+.bee16-fraction > span:first-child {
+  border-bottom: 1px solid #6f826c;
+}
+.bee16-fraction > span {
+  font-size: 21px;
+}
+.bee16-curve {
+  height: 195px;
+}
+.bee16-antibiotic > svg {
+  height: 280px;
+  width: auto;
+  max-width: 100%;
+}
+.bee16-disc-legend {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 5px 0;
+}
+.bee16-disc-closeup svg {
+  height: 265px;
+}
+.bee16-clone svg {
+  height: 255px;
+}
+.bee16-plate-titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.bee16-plate-titles b {
+  font-weight: 500;
+}
+.bee16-isolation svg {
+  height: 255px;
+}
+.bee16-gene-readout {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  margin-top: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.bee16-reunion > div {
+  border-radius: 15px;
+  padding: 9px;
+  background: #e4e9da;
+  margin-top: 8px;
+}
+.bee16-reunion > div.active {
+  background: #d8e3d0;
+}
+.bee16-reunion svg {
+  height: 76px;
+}
+.bee16-family-generations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   font-size: 16px;
 }
-.bio-evolution-controls button,
-.bio-evolution-controls select {
-  min-height: 44px;
-  padding: 9px 13px;
-  border-radius: 12px;
-  border: 1px solid #c7d0ba;
-  background: #f1f3e5;
-  font: inherit;
-  color: inherit;
+.bee16-reunion b {
+  font-weight: 500;
 }
-.bio-evolution-controls select {
+.bee16-controls {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+.bee16-controls label {
+  display: grid;
+  gap: 8px;
+}
+.bee16-controls button,
+.bee16-controls select {
+  min-height: 44px;
+  font: inherit;
+  font-size: 16px;
+  border: 1px solid #c1cfba;
+  border-radius: 12px;
+  background: #f3f5e9;
+  color: inherit;
+  padding: 9px 12px;
+}
+.bee16-controls select {
   width: 100%;
+  min-width: 0;
+}
+.bee16-controls button:focus-visible,
+.bee16-controls select:focus-visible {
+  outline: 2px solid #6c987d;
+  outline-offset: 3px;
+}
+.bee16-controls .bee16-note {
+  margin-top: 20px;
+}
+.bee16-controls .segmented {
+  flex-wrap: wrap;
+}
+.bee16-controls .segmented button {
+  min-width: 44px;
 }
 @media (max-width: 600px) {
-  .bio-evolution-stage {
-    padding: 14px 8px;
-    min-height: 320px;
-    border-radius: 19px;
+  .bee16-stage {
+    padding: 10px 8px;
+    min-height: 254px;
+    border-radius: 18px;
   }
-  .bio-evolution-limbs {
-    gap: 3px;
+  .bee16-fossil svg {
+    height: 175px;
   }
-  .bio-evolution-limbs svg {
-    height: 240px;
+  .bee16-limbs {
+    gap: 8px;
   }
-  .bio-evolution-bone-key {
-    gap: 6px 13px;
+  .bee16-limbs svg {
+    height: 155px;
   }
-  .bio-evolution-embryos {
-    gap: 4px;
+  .bee16-bone-key {
+    gap: 3px 10px;
+    margin-top: 6px;
   }
-  .bio-evolution-embryos svg {
-    height: 210px;
-  }
-  .bio-evolution-molecular > div {
-    grid-template-columns: 114px 1fr 24px;
-    gap: 4px;
-    margin-top: 0;
-    padding: 1px 4px;
-  }
-  .bio-evolution-genotypes {
-    gap: 20px;
-  }
-  .bio-evolution-antibiotic > svg {
-    max-width: 275px;
-  }
-  .bio-evolution-antibiotic:has(.bio-evolution-transfer) > svg {
-    max-width: 180px;
-  }
-  .bio-evolution-antibiotic:has(.bio-evolution-transfer) > svg text {
-    font-size: 27px;
-  }
-  .bio-evolution-diameters {
-    gap: 2px 12px;
-    margin-top: 4px;
-  }
-  .bio-evolution-scene.is-watch .bio-evolution-diameters span:not(:first-child) {
-    display: none;
-  }
-  .bio-evolution-transfer {
-    gap: 6px;
-  }
-  .bio-evolution-transfer > div {
-    gap: 3px;
-  }
-  .bio-evolution-transfer > div > svg {
-    width: 43px;
-  }
-  .bio-evolution-transfer > svg {
-    width: 65px;
-  }
-  .bio-evolution-transfer > b {
-    max-width: 110px;
-  }
-  .bio-evolution-transfer b {
+  .bee16-bone-key span {
     font-size: 16px;
   }
-  .bio-evolution-disc-legend {
-    gap: 5px 12px;
+  .bee16-anatomy .bee16-note {
+    margin-top: 6px;
   }
-  .bio-evolution-gene-readout {
-    gap: 8px 15px;
+  .bee16-embryos svg {
+    height: 174px;
   }
-  .bio-evolution-stage small {
-    margin-top: 8px;
-    line-height: 1.45;
+  .bee16-molecular {
+    min-height: 248px;
+  }
+  .bee16-molecular-row {
+    grid-template-columns: 112px 1fr 26px;
+    gap: 4px;
+    min-height: 34px;
+  }
+  .bee16-scale {
+    margin: 9px 0 4px 116px;
+  }
+  .bee16-scale span {
+    font-size: 16px;
+  }
+  .bee16-moths svg {
+    height: 188px;
+  }
+  .bee16-counts {
+    gap: 4px;
+  }
+  .bee16-counts > div {
+    gap: 4px;
+  }
+  .bee16-equation {
+    margin: 7px 0;
+  }
+  .bee16-curve {
+    height: 152px;
+  }
+  .bee16-antibiotic > svg {
+    height: 185px;
+  }
+  .bee16-antibiotic > svg text {
+    font-size: 27px;
+  }
+  .bee16-disc-legend {
+    gap: 12px;
+  }
+  .bee16-disc-closeup svg {
+    height: auto;
+  }
+  .bee16-clone svg {
+    height: auto;
+  }
+  .bee16-isolation svg {
+    height: 190px;
+  }
+  .bee16-isolation svg text {
+    font-size: 26px;
+  }
+  .bee16-reunion > div {
+    padding: 6px;
+    margin-top: 6px;
+  }
+  .bee16-reunion svg {
+    height: 58px;
+  }
+  .bee16-note {
+    margin-top: 6px;
+  }
+  .bee16-qualifier {
+    margin-top: 4px;
+  }
+  .bee16-stage {
+    min-width: 0;
   }
 }
-.bio-evolution-scene.is-watch .bio-evolution-moths > p,
-.bio-evolution-scene.is-watch .bio-evolution-antibiotic > p {
-  display: none;
+@media (max-width: 360px) {
+  .bee16-stage {
+    padding: 8px;
+  }
+  .bee16-fossil svg {
+    height: 161px;
+  }
+  .bee16-limbs svg {
+    height: 145px;
+  }
+  .bee16-embryos svg {
+    height: 160px;
+  }
+  .bee16-moths svg {
+    height: 180px;
+  }
+  .bee16-isolation svg {
+    height: 175px;
+  }
+  .bee16-antibiotic > svg {
+    height: 175px;
+  }
+  .bee16-stage .bee16-clone svg text,
+  .bee16-stage .bee16-disc-closeup svg text {
+    font-size: 22px;
+  }
+}
+.bee16-diameters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 5px;
+}
+.bee16-diameters span {
+  font-size: 16px;
+}
+.bee16-antibiotic:has(.bee16-diameters) > svg {
+  height: 250px;
+}
+@media (max-width: 600px) {
+  .bee16-antibiotic:has(.bee16-diameters) > svg {
+    height: 165px;
+  }
+  .bee16-antibiotic:has(.bee16-diameters) > svg text {
+    font-size: 30px;
+  }
+}
+.bee16-limbs svg text {
+  font-size: 42px;
+}
+.bee16-stage .bee16-moths svg text {
+  font-size: 25px;
+}
+.bee16-stage .bee16-antibiotic > svg text {
+  font-size: 28px;
+}
+@media (max-width: 600px) {
+  .bee16.is-watch .bee16-bone-key {
+    display: none;
+  }
+  .bee16-stage .bee16-antibiotic:has(.bee16-diameters) > svg text {
+    font-size: 30px;
+  }
+  .bee16-counts {
+    padding: 4px 0;
+  }
+  .bee16-equation {
+    margin: 5px 0;
+  }
+  .bee16-molecular {
+    min-height: 240px;
+  }
+}
+@media (max-width: 600px) {
+  .bee16-curve {
+    height: 130px;
+  }
+  .bee16-molecular .bee16-note {
+    font-weight: 400;
+  }
+}
+
+/* Preserve a stable amount-comparison row while each spoken contribution is revealed. */
+.bee16 .bee16-equation {
+  min-height: 58px;
+}
+.bee16 .bee16-equation > .bee16-count-sum {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Keep the full film on short phones without reducing specimen or text size. */
+@media (max-width: 360px) and (max-height: 650px) {
+  .showcase:has(.bee16) .film-caption {
+    padding-top: 8px;
+  }
 }

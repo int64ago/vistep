@@ -1,0 +1,283 @@
+{
+  "sceneSlug": "bio-evolution-evidence",
+  "batch": 16,
+  "owner": "biology scene author",
+  "status": "ignored candidate frozen; root integration and measured speech pending",
+  "createdAt": "2026-10-18T21:22:21.736Z",
+  "sourceCommit": "e387df5dbb628699867062b12ea40b9f88cd77bd",
+  "scope": "Eleven regular owned files only; no actual src/drafts/shared/audio/index or dist writes.",
+  "preservation": {
+    "chapterIds": [
+      "fossil",
+      "anatomy",
+      "embryo",
+      "molecular",
+      "moths",
+      "frequency",
+      "discs",
+      "selection",
+      "barrier",
+      "reunion"
+    ],
+    "windows": {
+      "bio-required-2-101-1": ["fossil", "anatomy", "embryo", "molecular"],
+      "bio-required-2-112-1": ["moths", "frequency"],
+      "bio-required-2-115-1": ["discs", "selection"],
+      "bio-required-2-mechanism-13": ["barrier", "reunion"]
+    },
+    "retainedSpokenStrings": 16,
+    "changedSpoken": [
+      {
+        "id": "fossil",
+        "locale": "zh"
+      },
+      {
+        "id": "fossil",
+        "locale": "en"
+      },
+      {
+        "id": "anatomy",
+        "locale": "zh"
+      },
+      {
+        "id": "anatomy",
+        "locale": "en"
+      }
+    ],
+    "plannedSeconds": 280,
+    "measuredSeconds": null
+  },
+  "sourceReview": [
+    {
+      "title": "人教版高中生物学必修2，第6章 P100–118",
+      "url": null,
+      "read": "全文提取；实际查看P101、102、103、113、115、116",
+      "kind": "textbook"
+    },
+    {
+      "title": "Hu et al. (2009), A pre-Archaeopteryx troodontid theropod from China with long feathers on the metatarsus",
+      "url": "https://www.ivpp.ac.cn/sourcedb/zw/rck/yjy/200908/P020140313545720736756.pdf",
+      "doi": "10.1038/nature08322",
+      "read": "Full primary PDF core text pp640–642; Fig2/3 actually rendered and read. Same LPM-B00169; diagram not measured trace."
+    },
+    {
+      "title": "Cook et al. (2012), Selective bird predation on the peppered moth: the last experiment of Michael Majerus",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3391436/",
+      "doi": "10.1098/rsbl.2011.1136",
+      "read": "Full primary body via EuropePMC XML; no field numbers imported into textbook annual ±10% model."
+    },
+    {
+      "title": "Lederberg & Lederberg (1952), Replica plating and indirect selection of bacterial mutants",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC169282/",
+      "doi": "10.1128/jb.63.3.399-406.1952",
+      "read": "Original scanned printed p405 summary actually read. NLM mirror PDF failed, not used. Do not claim complete article review."
+    },
+    {
+      "title": "Richardson et al. (1997), There is no highly conserved embryonic stage in the vertebrates",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9278154/",
+      "doi": "10.1007/s004290050082",
+      "read": "Primary abstract only; attempted author PDF denied. Supports narrow nonidentical-embryos qualification, not detailed morphology."
+    }
+  ],
+  "authorAutomated": {
+    "strictTS": {
+      "passed": true,
+      "diagnostics": 0,
+      "report": "checks/strict-types.json",
+      "includes": "component/model plus both test files and imported actual contracts"
+    },
+    "modelAndReact": {
+      "tests": 18,
+      "passed": true,
+      "report": "checks/disc-fix-tests.json"
+    },
+    "nativeControls": {
+      "checks": 92,
+      "failed": 0,
+      "errors": [],
+      "report": "checks/native-controls/report.json"
+    },
+    "windowEnds": {
+      "checks": 8,
+      "passed": true,
+      "report": "checks/native-window-ends.json"
+    },
+    "frames": {
+      "count": 100,
+      "failed": 0,
+      "errors": [],
+      "max320WholePlayer": 535.953125,
+      "minSceneSvgFont": 16.333333333333336,
+      "sceneHtmlBodyFont": 16,
+      "conditions": "Real Showcase plus candidate in isolated Vite bundle; ZH/EN,320×568 and1100×900, all10chapters; body padding16; reduced motion; whole player including caption/transport/chapters",
+      "report": "checks/frozen-native-frames/report.json"
+    },
+    "silentNativeFullTraversal": {
+      "results": [
+        {
+          "lang": "zh",
+          "passed": true,
+          "end": {
+            "time": 280,
+            "playing": "false"
+          },
+          "chapters": 10
+        },
+        {
+          "lang": "en",
+          "passed": true,
+          "end": {
+            "time": 280,
+            "playing": "false"
+          },
+          "chapters": 10
+        }
+      ],
+      "report": "checks/native-continuous/report.json",
+      "versionLimit": "This 280s traversal predates the final explicit S-0 counterexample cut and exact .69/.82 birth boundary correction. It verifies native clock through all10chapters, not final source whole-film acceptance. The changed full selection chapter is independently rerun below."
+    },
+    "finalSelectionNative": {
+      "results": [
+        {
+          "lang": "zh",
+          "passed": true,
+          "end": {
+            "time": 225,
+            "playing": "false"
+          },
+          "samples": 8
+        },
+        {
+          "lang": "en",
+          "passed": true,
+          "end": {
+            "time": 225,
+            "playing": "false"
+          },
+          "samples": 8
+        }
+      ],
+      "source": {
+        "scope": "Isolated Vite candidate bundle; no Astro build or production assets",
+        "builtAt": "2026-10-18T21:20:49.776Z",
+        "files": {
+          "src/models/bio-evolution-evidence.ts": "237735bd3ebee45d18067b13c6854c149d3ad5bb46910f792e67197ea47303be",
+          "src/components/experiments/BioEvolutionEvidence.tsx": "b6017660bb7dc5eebee745122eb49183e8ee97f67c17815627539700ba923be0",
+          "src/styles/bio-evolution-evidence.css": "f437559c619a6e20ff8d9363a438128113154044e8a49ea4bec0b2a01f96b18d",
+          "drafts/bio-evolution-evidence/principle-first-packet.json": "17e510894219f45294bd358f03c62b278bcb8fac373c90988cce00649d1c99e5"
+        }
+      },
+      "report": "checks/frozen-selection-native/report.json",
+      "scope": "Final entire29s chapter, real clock, R-3 and separate S-0 controls, 8 captured samples/language, not natural-language listening"
+    },
+    "mdx": {
+      "passed": 2,
+      "report": "checks/mdx-compile.json"
+    },
+    "cover": {
+      "rendered": true,
+      "source": "src/components/covers/BioEvolutionEvidenceCover.astro",
+      "image": "checks/cover.png",
+      "consumerRoutesTested": false
+    }
+  },
+  "authorVisual": {
+    "status": "Actually opened these images and inspected decisive evidence, labels, identities, geometry and cropping. Not every automatic capture is claimed manually viewed.",
+    "paths": [
+      "checks/frozen-native-frames/en-320-7-transfer.png",
+      "checks/frozen-native-frames/en-320-7-descendants.png",
+      "checks/frozen-native-frames/en-320-7-ordinary-transfer.png",
+      "checks/frozen-native-frames/en-320-7-ordinary-descendants.png",
+      "checks/frozen-native-frames/en-320-4-dark.png",
+      "checks/frozen-native-frames/zh-1100-7-ordinary-descendants.png",
+      "checks/frozen-native-frames/en-1100-0-feathers.png",
+      "checks/frozen-native-frames/en-1100-1-reveal.png",
+      "checks/frozen-native-frames/en-1100-2-pharynx.png",
+      "checks/frozen-native-frames/en-1100-3-records1.png",
+      "checks/frozen-native-frames/en-1100-5-second-counts.png",
+      "checks/frozen-native-frames/en-1100-9-fertility.png",
+      "checks/third-native-frames/en-320-0-feathers.png",
+      "checks/third-native-frames/en-320-2-tail.png",
+      "checks/third-native-frames/en-320-4-dark.png",
+      "checks/third-native-frames/en-320-8-barrier.png",
+      "checks/third-native-frames/zh-320-3-records2.png",
+      "checks/third-native-frames/zh-320-6-diameters.png",
+      "checks/second-native-frames/en-320-1-reveal.png",
+      "checks/second-native-frames/en-320-5-second-counts.png",
+      "checks/second-native-frames/en-320-6-threshold.png",
+      "checks/second-native-frames/en-320-9-fertility.png",
+      "checks/native-controls/zh-explore.png",
+      "checks/native-controls/en-explore.png",
+      "checks/cover.png"
+    ],
+    "findingsResolved": [
+      "Phone long labels compressed while preserving16px text; graph axis labels separated.",
+      "Three genotype labels made high contrast against dark bark; decorative bark texture clipped to the trunk.",
+      "Ordinary S-0 previously sampled at r32 where concentration exceeded its threshold; moved to r45 in the same field, including arrival.",
+      "Daughter marker chords could cross the inhibited center; changed to parent-derived viable annular paths with unchanged thresholds.",
+      "Exact .69/.82 generation boundaries no longer suffer floor-rounding delay; daughters are born at parent positions.",
+      "The unchanged selection voice refers to removing the preset clone; automatic film now shows a distinct S-0 counterexample instead of requiring exploration.",
+      "Initial fault harness omitted a Soundtrack prop and therefore tested missing metadata rather than media fetch. Final explicit fault mode supplies the original manifest track then aborts its actual request; no old audio was played."
+    ]
+  },
+  "independentPeer": {
+    "report": "artifacts/teaching-principles/batch-16-cross-review/chemistry-review-evolution.json",
+    "assertions": 5212,
+    "scope": "Finite allele/clone/threshold/fertility function checks; not original-source, UI or voice acceptance.",
+    "versionLimit": "Peer source 5c4d670d; after that only exact clone-birth boundary comparisons and the chapter director counterexample cut changed. Both are covered by additional author tests and final native chapter review."
+  },
+  "notRun": [
+    "Candidate integrated Astro textbook routes and SSR anchor under the real site header",
+    "Global pnpm verify or build:preview (root-owned)",
+    "New TTS or ASR; retained speech actual word-time synchronization",
+    "Natural voice listening in either language",
+    "Uninterrupted human viewing of the final whole film",
+    "Physical phone performance",
+    "Production cover/social consumer routes or deployment"
+  ],
+  "rootRemaining": [
+    "Review candidate objects, evidence and source limits; preserve4 precise windows.",
+    "Review four changed spoken strings; generate at natural speed and confirm total<300s.",
+    "Align every critical scene event with measured bilingual word times, including retained16spoken strings.",
+    "Run integrated static whole-player, source/audio faults, native continuous playback and actual cover consumers."
+  ],
+  "limitedAmendment": {
+    "reason": "Root-authorized independent peer counterexample: zero source displayed 24 diagram units of extra no-growth band beyond the visible paper edge.",
+    "changedProductFiles": [
+      "src/components/experiments/BioEvolutionEvidence.tsx",
+      "src/components/experiments/BioEvolutionEvidence.test.tsx"
+    ],
+    "unchanged": "Scientific concentration/threshold functions, all spoken/captions, chapter durations, curriculum windows and other scenes.",
+    "fix": "Paper edge, no-growth band start/end, profile samples and threshold marker now use one radialX(distance) mapping. The paper spans center r0 to r8 in this radial section. No band exists beyond paper when inhibitionRadius=8. Clamped thresholds no longer show a false external crossing.",
+    "oldFailure": {
+      "source": 0,
+      "modelRadius": 8,
+      "oldHaloRight": 71,
+      "oldPaperRight": 47,
+      "unjustifiedExternalBand": 24,
+      "oldComponentSha": "b6017660bb7dc5eebee745122eb49183e8ee97f67c17815627539700ba923be0"
+    },
+    "verification": {
+      "strictTypes": "checks/strict-types.json",
+      "tests": "checks/disc-fix-tests.json",
+      "nativeFrameReport": "checks/disc-geometry-fix/report.json",
+      "framesActuallyOpened": [
+        "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/batch-16-staging/biology/checks/disc-geometry-fix/en-320-source-0.png",
+        "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/batch-16-staging/biology/checks/disc-geometry-fix/en-320-source-1.png",
+        "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/batch-16-staging/biology/checks/disc-geometry-fix/en-1100-source-0.png",
+        "/Users/int64ago/workspace/vistep/artifacts/teaching-principles/batch-16-staging/biology/checks/disc-geometry-fix/en-1100-source-1.png"
+      ],
+      "scope": "Four static English native isolated Explore frames (320×568/1100×900; source0/1), not full-film/audio/actual-site acceptance."
+    }
+  },
+  "rootIntegration": {
+    "batch": 16,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-16-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

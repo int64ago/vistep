@@ -1,0 +1,155 @@
+{
+  "status": "candidate-frozen-for-root-integration",
+  "scope": "Ignored candidate only. Actual React Showcase and shared CSS/fonts in isolated native browser harness; not an integrated route/static-build acceptance.",
+  "actualSourceEdited": false,
+  "spoken": "All 16 combined zh/en spoken fields retained byte-identically to canonical; no new audio generated.",
+  "checks": {
+    "scopedTests": {
+      "file": "checks/tests-final.log",
+      "files": 4,
+      "tests": 19,
+      "status": "passed"
+    },
+    "strictTypes": {
+      "file": "checks/strict-types.json",
+      "diagnostics": 0,
+      "status": "passed",
+      "scope": "Candidate models/components/tests using current Astro strict options; not whole repository check"
+    },
+    "mdx": {
+      "file": "checks/mdx-parse.json",
+      "files": 4,
+      "status": "compiled",
+      "scope": "Actual installed MDX compiler; not full Astro build"
+    },
+    "arithmeticAndGeometry": {
+      "file": "checks/model-probes.json",
+      "checks": 14042,
+      "status": "passed",
+      "scope": "Author independent equations and geometry probes, not external peer review"
+    },
+    "keyframes": {
+      "file": "checks/native-review-03/report.json",
+      "frames": 160,
+      "failures": 0,
+      "viewports": [
+        [320, 568],
+        [1100, 850]
+      ],
+      "locales": ["zh", "en"]
+    },
+    "nativeControls": {
+      "file": "checks/native-controls-final/report.json",
+      "cases": 12,
+      "exploreStates": 26,
+      "failures": 0
+    },
+    "finalLabelFrames": {
+      "file": "checks/native-label-final/report.json",
+      "frames": 32,
+      "controlCases": 6,
+      "exploreStates": 12,
+      "failures": 0,
+      "scope": "Inertia-only after final Paper mu clarification"
+    },
+    "silentNativeClock": {
+      "file": "checks/native-playback/report.json",
+      "runs": 4,
+      "status": "passed",
+      "scope": "Auxiliary isolated silent native clock and lifecycle evidence; run started before final Paper mu label, unchanged physics/director. Not exact-final-source full acceptance or subjective full watching/listening."
+    },
+    "covers": {
+      "file": "checks/covers/report.json",
+      "status": "rendered and card/white images personally inspected",
+      "scope": "Candidate Astro cover components through compiler/container. Unused generated metadata removed for stand-alone runtime compatibility; no geometric change. Not actual catalog/social production pipeline."
+    }
+  },
+  "failureHistory": [
+    {
+      "file": "checks/native-review-01/report.json",
+      "finding": "126 failed frame/state assertions shared a few layout causes: phone player too tall and SVG bottom labels clipped. Fixed local composition and captions without shrinking 16px text or changing spoken."
+    },
+    {
+      "finding": "One early test incorrectly compared equal normalized progress in different spoken chapters. Replaced with same-physical-event timing assertions; measured replay deliberately differs by locale and chapter."
+    },
+    {
+      "finding": "Strict type check caught missing force prop while implementing table geometry; repaired before final matrix."
+    },
+    {
+      "finding": "Zero-height gradient stroke made table top invisible; replaced by model-derived polygon and user-space gradient."
+    },
+    {
+      "finding": "After review-03, unqualified mu header could imply bare-table coefficient. Changed only to Paper mu and repeated 32 final bilingual frames plus controls."
+    }
+  ],
+  "notPerformed": [
+    "Whole pnpm verify/build:preview",
+    "Integrated actual product routes and first-fragment SSR",
+    "Final static native recorded playback",
+    "Subjective audio listening",
+    "Physical-phone performance measurement",
+    "Root independent final acceptance"
+  ],
+  "peerReview": "Requested; no completed retained-physics peer result received at freeze time. Do not count request as pass.",
+  "sourceEvidence": {
+    "textbook": "artifacts/teaching-principles/physics-audit/textbooks/required-1.txt",
+    "personallyViewedPageImages": [
+      "checks/sources/required1-p59.png",
+      "checks/sources/required1-p86.png",
+      "checks/sources/required1-p87.png"
+    ],
+    "primaryReferencesRead": [
+      "OpenStax University Physics vol3 1.2 Law of Reflection",
+      "OpenStax University Physics vol1 4.5 Relative Motion",
+      "OpenStax University Physics vol1 11.1 Rolling Motion",
+      "MIT 1.050 pset04_11 general simply-supported point load; read PDF text, not a separately rendered MIT page image"
+    ]
+  },
+  "runner": {
+    "keyframesAndControls": "checks/native-review.mjs",
+    "actualUse": "REVIEW_ORIGIN=http://127.0.0.1:63305 REVIEW_OUT=<new-directory> node <candidateRoot>/checks/native-review.mjs",
+    "isolatedUse": "Without REVIEW_ORIGIN, builds and starts isolated candidate harness; report actualRoute=false",
+    "controlsOnly": "CONTROLS_ONLY=1",
+    "silentLifecycle": "checks/native-playback.mjs (isolated only)"
+  },
+  "freezeBaseHead": "6fc8f36612f16c11b721688ff1bcb510a866bbfa",
+  "slug": "inertial-frames-lab",
+  "modelSha256": "2302988af4ae5a24193e2bbb3890bea8c704dad307a2c6767047d6060ac4ee18",
+  "director": {
+    "status": "measured against unchanged recorded tracks",
+    "wordTimeRoot": "artifacts/teaching-principles/batch-16-retained-timed-speech",
+    "offset": 0.45,
+    "chapters": [
+      "table: one same physical event; model0→.55s maps onto chapter.45→ZH10.05 / EN8.43s",
+      "paper: replay same event in both frames; model0→.55 maps ZH4.79→10.8 / EN3.27→8.5s",
+      "ideal: μ0; model0→.55 maps ZH4.69→12.61 / EN3.87→11.29s; v′ changes while x stays0",
+      "slow: model0→2.2 maps chapter.45→ZH13.8 / EN12.7s; actual paper→table crossing ZH9.41 / EN8.67s"
+    ]
+  },
+  "personallyViewed": [
+    "checks/native-review-03/inertial-frames-lab-en-320-c0-t6.png",
+    "checks/native-review-03/inertial-frames-lab-en-320-c2-t6.png",
+    "checks/native-label-final/inertial-frames-lab-en-320-c3-t12.png",
+    "checks/covers/inertial-frames-lab-card.png",
+    "checks/covers/inertial-frames-lab-white.png"
+  ],
+  "wholePlayer": {
+    "viewport": [320, 568],
+    "top": 16,
+    "maximumHeight": 532,
+    "maximumBottom": 548,
+    "fontMinimum": 16,
+    "mainTargetMinimum": 44,
+    "scope": "Final candidate captions, complete visible player including transport; no recording played"
+  },
+  "rootIntegration": {
+    "batch": 16,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-16-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

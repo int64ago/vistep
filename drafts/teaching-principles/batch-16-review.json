@@ -1,0 +1,185 @@
+{
+  "batch": 16,
+  "status": "validated-awaiting-publication",
+  "scenes": [
+    "sound-interference-lab",
+    "chem-reaction-rates",
+    "bio-evolution-evidence",
+    "small-deformation-lab",
+    "inertial-frames-lab"
+  ],
+  "chapters": 33,
+  "teachingWindows": 11,
+  "direction": "Phenomenon → evidence → mechanism/theory → prediction; preserve original textbook order and full causal playback windows.",
+  "integrationReport": "artifacts/teaching-principles/batch-16-integration-proposal/report.json",
+  "integrationReportSHA256": "55aba07ac82c691ca0f45107fd5abc1b30abe6dde343e7d5258defe874342520",
+  "rootInitialContentReview": "artifacts/teaching-principles/batch-16-root-content-review-in-progress.json",
+  "checks": [
+    {
+      "kind": "keyframes",
+      "count": 396,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/keyframes/report.json",
+      "finalBiologyCSSRerun": "artifacts/teaching-principles/batch-16-final-static-02/keyframes/report.json",
+      "scope": "Unchanged source uses original passing cases; final biology CSS cases replace original biology only. Original failures preserved."
+    },
+    {
+      "kind": "anchors",
+      "count": 32,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/anchors/report.json",
+      "finalBiologyCSSRerun": "artifacts/teaching-principles/batch-16-final-static-02/anchors/report.json",
+      "scope": "Unchanged source uses original passing cases; final biology CSS cases replace original biology only. Original failures preserved."
+    },
+    {
+      "kind": "entries",
+      "count": 22,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/entries/report.json",
+      "finalBiologyCSSRerun": "artifacts/teaching-principles/batch-16-final-static-02/entries/report.json",
+      "scope": "Unchanged source uses original passing cases; final biology CSS cases replace original biology only. Original failures preserved."
+    },
+    {
+      "kind": "teaching",
+      "count": 12,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/teaching/report.json",
+      "finalBiologyCSSRerun": null,
+      "scope": "Unchanged source uses original passing cases; final biology CSS cases replace original biology only. Original failures preserved."
+    },
+    {
+      "kind": "faults",
+      "count": 10,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/faults/report.json",
+      "finalBiologyCSSRerun": null,
+      "scope": "Unchanged source uses original passing cases; final biology CSS cases replace original biology only. Original failures preserved."
+    },
+    {
+      "kind": "native-controls",
+      "scene": "sound-interference-lab",
+      "count": 80,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/physics/sound-interference-lab/report.json"
+    },
+    {
+      "kind": "native-controls",
+      "scene": "chem-reaction-rates",
+      "count": 254,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/chemistry/chem-reaction-rates/report.json"
+    },
+    {
+      "kind": "native-controls",
+      "scene": "bio-evolution-evidence",
+      "count": 104,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-02/biology/bio-evolution-evidence/report.json"
+    },
+    {
+      "kind": "native-controls",
+      "scene": "small-deformation-lab",
+      "count": 32,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/retained/small-deformation-lab/report.json"
+    },
+    {
+      "kind": "native-controls",
+      "scene": "inertial-frames-lab",
+      "count": 30,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/retained/inertial-frames-lab/report.json"
+    },
+    {
+      "kind": "catalog",
+      "count": 12,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/catalog/report.json"
+    },
+    {
+      "kind": "covers",
+      "count": 10,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-static-01/covers/report.json"
+    },
+    {
+      "kind": "native-uninterrupted-audio-film-playback",
+      "status": "passed",
+      "films": 10,
+      "chapters": 66,
+      "concurrency": 10,
+      "evidence": "artifacts/teaching-principles/batch-16-final-continuous-01/continuous/report.json",
+      "scope": "Actual native audio and wall clock at normal speed; no seeking after start; screenshots every10seconds. Browser muted. Separate from subjective listening and continuous human watching."
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "testFiles": 605,
+      "tests": 4566,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-16-verify-02.log",
+      "scope": "Full verify before one final CSS-only correction; final builds/audits and all affected biology visual/control checks follow.",
+      "previousFailure": "verify01 selected unrelated range outputs in the specimen-count test; corrected selector and cross-mode initial-state behavior, then full verification rerun."
+    },
+    {
+      "kind": "production-build-and-audit",
+      "status": "passed",
+      "pages": 2134,
+      "canonicalPages": 2133,
+      "evidence": [
+        "artifacts/teaching-principles/batch-16-final-build.log",
+        "artifacts/teaching-principles/batch-16-final-build-audit.log"
+      ]
+    },
+    {
+      "kind": "preview-build-and-noindex-audit",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-16-final-preview.log"
+    },
+    {
+      "kind": "independent-no-hint-ASR",
+      "status": "passed",
+      "segments": 66,
+      "evidence": "artifacts/teaching-principles/batch-16-final-transcription-review.json",
+      "scope": "Final PCM identity checked for all66 segments, all transcripts and relevant word timings read by root. Not subjective listening."
+    }
+  ],
+  "pending": ["Authorized Actions publication and live asset checks"],
+  "notClaimed": [
+    "Subjective narration audition",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ],
+  "speech": {
+    "status": "assembled; final PCM/text identity and independent transcript screening verified",
+    "segments": 66,
+    "changedSpokenFields": 20,
+    "retainedSpokenFields": 46,
+    "evidence": "artifacts/teaching-principles/batch-16-final-transcription-review.json",
+    "subjectiveListening": "not-run"
+  },
+  "measuredDirectors": [
+    "artifacts/teaching-principles/batch-16-physics-measured-integration.json",
+    "artifacts/teaching-principles/batch-16-chemistry-measured-integration.json",
+    "artifacts/teaching-principles/batch-16-biology-measured-integration.json",
+    "artifacts/teaching-principles/batch-16-biology-mode-defaults-integration.json"
+  ],
+  "finalSource": {
+    "commit": "bc5590b671c24d8a439078f31546f759dca84728",
+    "treeHash": "cd00aa3fa331f0cb004ca29a750534e47b8ff15f15667c9bc4191769afebda82",
+    "gitDiffHash": "439abf909b9f5323575888722967dc1db8413f7c3a8610fe225c966b7c7e8cf0",
+    "fileCount": 5336,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "rootActualViews": "artifacts/teaching-principles/batch-16-root-actual-views.json",
+  "contributors": {
+    "model": "gpt-6-astra",
+    "roles": [
+      "root integration, actual review and release",
+      "teaching_subject_fit physics author/reviewer",
+      "chemistry_inventory chemistry author/reviewer",
+      "biology_inventory biology author/reviewer"
+    ]
+  }
+}

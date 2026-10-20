@@ -1948,5 +1948,80 @@
         "en": "The subsequent-fission fraction falls, making k<1 and generation averages decline. This is abstract probability accounting, not a reactor-parameter calculation."
       }
     }
+  },
+  "e1-sound-interference": {
+    "sceneSlug": "sound-interference-lab",
+    "question": {
+      "zh": "多开一个扬声器，为什么有些地方反而更安静？",
+      "en": "Why can adding a speaker make one place quieter?"
+    },
+    "lead": {
+      "zh": "跟着同一个接收点，看两路声压在每个时刻相加，再用固定旗位检验改变频率的预测。",
+      "en": "Follow one receiver, add the two pressures at each instant, then test a frequency change at fixed flags."
+    },
+    "principle": {
+      "zh": "相干声源的路程差决定到达相位差。相位相反时两路声压相消；只有振幅相等才会完全抵消。",
+      "en": "For coherent sources, path difference sets arrival-phase difference. Opposite pressures cancel; complete cancellation also requires equal amplitudes."
+    },
+    "transfer": {
+      "question": {
+        "zh": "某个固定位置在680Hz时的路程差约为半个波长。频率减半，那里还应当同样安静吗？",
+        "en": "A fixed location has about half a wavelength of path difference at 680 Hz. Should it stay equally quiet if frequency is halved?"
+      },
+      "explanation": {
+        "zh": "不应。路程差不变、波长加倍，相位差由约π变为约π/2；相消变弱，声压均方增大。旧旗位必须保留才能检验这个预测；真实房间还会受到反射等因素影响。",
+        "en": "No. The path difference stays fixed while wavelength doubles, changing the phase difference from about π to π/2. Cancellation weakens and mean-square pressure increases. Keep the old flags to test this prediction; room reflections can modify the real result."
+      }
+    }
+  },
+  "required-1-small-deformation": {
+    "sceneSlug": "small-deformation-lab",
+    "question": {
+      "zh": "看不见桌面弯曲，怎样发现它在变形？",
+      "en": "How can you detect a tabletop bend too small to see?"
+    },
+    "lead": {
+      "zh": "追踪同一束光和未受力零位，分别改变按压力与墙的距离。",
+      "en": "Follow one ray and its unloaded zero; change force and wall distance separately."
+    },
+    "principle": {
+      "zh": "桌面的局部倾斜带动镜面转动，反射方向随之改变；长光程放大光点偏移，不增加形变本身。",
+      "en": "Local table slopes rotate the mirrors and redirect the ray. A longer path enlarges spot displacement without increasing deformation."
+    },
+    "transfer": {
+      "question": {
+        "zh": "压力不变，把墙移远；桌面会弯得更多吗？",
+        "en": "At fixed force, does moving the wall farther make the table bend more?"
+      },
+      "explanation": {
+        "zh": "不会。梁的下沉量与镜面方向不变，光点相对该墙未受力零位的偏移增大。松手时应在同一墙位置检验恢复。",
+        "en": "No. Deflection and mirror orientations stay fixed; the spot moves farther from the unloaded zero on that wall. Check recovery without moving the wall again."
+      }
+    }
+  },
+  "required-1-paper-frame": {
+    "sceneSlug": "inertial-frames-lab",
+    "question": {
+      "zh": "同一颗钢球，为什么从桌面看和从纸面看不一样？",
+      "en": "Why does the same steel ball look different from the table and the paper?"
+    },
+    "lead": {
+      "zh": "对同一个运动状态换坐标，再去掉摩擦、放慢抽纸，分开检验坐标与真实作用。",
+      "en": "Change coordinates for the same event, then remove friction and slow the pull to separate frames from physical forces."
+    },
+    "principle": {
+      "zh": "纸面坐标等于桌面坐标减去纸的位移。加速参考系中的相对加速度，不自动表示增加了真实相互作用。",
+      "en": "The paper coordinate is the table coordinate minus paper displacement. Relative acceleration in an accelerating frame does not automatically imply an extra physical interaction."
+    },
+    "transfer": {
+      "question": {
+        "zh": "纸面摩擦为零时，纸在加速，球相对纸的速度还能变化吗？",
+        "en": "With zero paper friction, can the ball’s velocity relative to accelerating paper still change?"
+      },
+      "explanation": {
+        "zh": "能。球在桌面系保持静止，但v′=v−V，纸的速度V改变使v′改变。保留摩擦、慢慢抽纸则会改变球的真实平动与转动，这属于另一种变化。",
+        "en": "Yes. The ball stays at rest in the table frame, but v′=v−V changes when the paper velocity V changes. Friction during a slower pull instead changes real translation and rotation."
+      }
+    }
   }
 }

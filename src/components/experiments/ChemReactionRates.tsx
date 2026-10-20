@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
@@ -10,603 +10,887 @@ import {
   zincGas,
   observedRate,
   collision,
-  collisionTrial,
   energyProfile,
   syringeGeometry,
+  RATE_IDS,
+  rateFilm,
+  thermalTrials,
+  encounterWindow,
+  opticalCriterion,
+  ratePrediction,
 } from '../../models/chem-reaction-rates';
 import '../../styles/chem-reaction-rates.css';
-export default function ChemReactionRates() {
-  const f = useShowcase(),
-    { host, width: w } = useSignalWidth(),
-    s = (z: string, e: string) => (browserLocale() === 'en' ? e : z);
-  const variants = [
-    'chem-required-2-inquiry-p43',
-    'chem-required-2-activity-7',
-    'chem-elective-1-inquiry-p26',
-    'chem-elective-1-model-p28',
-  ];
-  const [mode0, setMode] = useState(Math.max(0, variants.indexOf(f.variant ?? ''))),
-    [view, setView] = useState(0),
-    [progress, setProgress] = useState(0.6),
-    [temp, setTemp] = useState(50),
-    [surface, setSurface] = useState(1),
-    [acid, setAcid] = useState(1),
-    [leak, setLeak] = useState(0),
-    [energy, setEnergy] = useState(true),
-    [orientation, setOrientation] = useState(true),
-    [time1, setTime1] = useState(''),
-    [time4, setTime4] = useState(''),
-    [notes, setNotes] = useState('');
-  const mode = f.watch ? (f.chapter < 2 ? 0 : f.chapter < 5 ? 1 : f.chapter < 8 ? 2 : 3) : mode0,
-    starts = [0, 2, 5, 8],
-    local = f.watch ? f.chapter - starts[mode] : view,
-    p = clamp(f.watch ? f.chapterProgress : progress),
-    cx = w / 2;
-  const titles = [
-    s('控制一个因素', 'Change one factor'),
-    s('比较三个因素', 'Three controlled comparisons'),
-    s('用气体体积计时', 'Time a gas volume'),
-    s('碰撞与反应路径', 'Collisions and pathways'),
-  ];
-  const views = [
-    [
-      s('温度与分解', 'Temperature and decomposition'),
-      s('浓度与接触面积', 'Concentration and surface area'),
-    ],
-    [
-      s('浓度：总体积相同', 'Concentration: equal total volume'),
-      s('温度：配方相同', 'Temperature: same recipe'),
-      s('催化剂与空白', 'Catalysts and blank'),
-    ],
-    [
-      s('定性方案中的对照', 'Controls in a qualitative design'),
-      s('到达同一气体终点', 'Reach the same gas endpoint'),
-      s('时间、漏气与记录', 'Time, leaks and records'),
-    ],
-    [
-      s('碰撞的能量条件', 'Collision energy'),
-      s('碰撞的取向条件', 'Collision orientation'),
-      s('催化改变反应路径', 'Catalysis changes the pathway'),
-    ],
-  ];
-  const aTemp = f.watch ? 50 : temp,
-    seconds = p * 40,
-    thio = (mode === 1 && local < 2) || (mode === 2 && local === 0),
-    catalysts = mode === 1 && local === 2,
-    marbleView = mode === 0 && local === 1,
-    tubeView = mode < 2 || (mode === 2 && local === 0);
-  const stagedCollision = collisionTrial(p),
-    trial = f.watch ? stagedCollision.trial : 1,
-    cp = f.watch ? stagedCollision.progress : p,
-    enough = f.watch ? (local === 0 ? trial === 1 : true) : energy,
-    oriented = f.watch ? (local === 1 ? trial === 1 : true) : orientation,
-    coll = collision(w, cp, enough, oriented);
-  const acidNow = f.watch ? (p < 0.5 ? 1 : 4) : acid,
-    gasP = f.watch ? clamp(p < 0.5 ? p * 2 : (p - 0.5) * 2) : p,
-    gas = zincGas(0, acidNow, f.watch ? 0 : leak),
-    gasTime = (gas.endpoint ?? 40) * gasP,
-    gasState = zincGas(gasTime, acidNow, f.watch ? 0 : leak),
-    g = syringeGeometry(w, gasState.volumeMl);
-  const count = catalysts ? 3 : 2;
-  const tubes = Array.from({ length: count }, (_, i) => {
-    const x = catalysts ? ((i + 0.5) * w) / 3 : cx + (i ? 1 : -1) * Math.min(80, w * 0.23),
-      temperature = (thio && local === 0) || catalysts || marbleView ? 25 : i ? aTemp : 20;
-    const stock = thio && local === 0 && i === 1 ? 1 : 2,
-      catalyst = catalysts ? (['none', 'Mn', 'Fe'] as const)[i] : 'Fe';
-    const h = peroxide(seconds, temperature, catalyst, catalysts ? 10 : 5),
-      m = marble(seconds, i ? 1 : 0.1, f.watch ? 1 : surface),
-      t = turbidity(seconds, stock, temperature);
-    const rate = marbleView ? m.rate : h.rate,
-      n = Math.min(14, Math.ceil(rate * 200000));
-    return { x, temperature, stock, catalyst, h, m, t, n };
-  });
-  const tt = (
-    x: number,
-    y: number,
-    value: string,
-    anchor: 'middle' | 'start' | 'end' = 'middle',
-  ) => (
+type Say = (zh: string, en: string) => string;
+const names = [
+  ['温度', 'Temperature'],
+  ['浓度与表面', 'Concentration / surface'],
+  ['稀释', 'Dilution'],
+  ['温度与浑浊', 'Temperature / cloudiness'],
+  ['催化剂', 'Catalysts'],
+  ['相同标准', 'Same criterion'],
+  ['气体终点', 'Gas endpoint'],
+  ['曲线与漏气', 'Curves / leaks'],
+  ['能量条件', 'Energy'],
+  ['取向条件', 'Orientation'],
+  ['反应路径', 'Pathway'],
+];
+const palette = ['#688f85', '#bb835e', '#8e7d9c'];
+function Label({
+  x,
+  y,
+  children,
+  anchor = 'middle',
+}: {
+  x: number;
+  y: number;
+  children: React.ReactNode;
+  anchor?: 'start' | 'middle' | 'end';
+}) {
+  return (
     <text x={x} y={y} textAnchor={anchor}>
-      {value}
+      {children}
     </text>
   );
+}
+function Tubes({
+  w,
+  ch,
+  p,
+  temp,
+  surface,
+  stockMl,
+  say,
+}: {
+  w: number;
+  ch: number;
+  p: number;
+  temp: number;
+  surface: number;
+  stockMl: number;
+  say: Say;
+}) {
+  const n = ch === 4 ? 3 : 2,
+    dilution = ch === 2 || ch === 5,
+    thio = ch === 2 || ch === 3 || ch === 5,
+    seconds = p * 24;
   return (
-    <div className="chem-rates" ref={host}>
-      <div className="chem-rates-head">{views[mode][local]}</div>
-      <svg viewBox={`0 0 ${w} 332`} role="img" aria-label={views[mode][local]}>
-        {tubeView ? (
-          <>
-            {tubes.map((a, i) => (
-              <g key={i}>
-                {tt(
-                  a.x,
-                  29,
-                  thio
-                    ? local === 0
-                      ? `${a.stock} mL`
-                      : `${a.temperature} °C`
-                    : catalysts
-                      ? ['—', 'MnO₂', 'FeCl₃'][i]
-                      : marbleView
-                        ? `${i ? 1 : 0.1} M`
-                        : `${a.temperature} °C`,
-                )}
-                {tt(
-                  a.x,
-                  52,
-                  thio
-                    ? local === 0
-                      ? s('原液', 'stock')
-                      : s('相同配方', 'same recipe')
-                    : catalysts
-                      ? '10%'
-                      : marbleView
-                        ? 'HCl'
-                        : '5% H₂O₂',
-                )}
-                {!marbleView && !catalysts && !(thio && local === 0) && (
-                  <>
-                    <path
-                      d={`M${a.x - 38} 160V270Q${a.x - 38} 282 ${a.x - 28} 282H${a.x + 28}Q${a.x + 38} 282 ${a.x + 38} 270V160`}
-                      fill={a.temperature > 30 ? '#f3d7bf' : '#c9dfe7'}
-                      fillOpacity=".6"
-                      stroke="#b3c6c4"
-                    />
-                    <path d={`M${a.x - 37} 177H${a.x + 37}`} stroke="#a9c8cd" />
-                  </>
-                )}
-                <path
-                  d={`M${a.x - 20} 83V246Q${a.x - 20} 265 ${a.x} 265Q${a.x + 20} 265 ${a.x + 20} 246V83`}
-                  fill="#f4f8f0"
-                  fillOpacity=".55"
-                  stroke="#a2b8b1"
-                  strokeWidth="2"
-                />
-                {thio && (
-                  <path
-                    d={`M${a.x - 10} 211l20 20m0 -20l-20 20`}
-                    stroke="#52645d"
-                    strokeWidth="4"
-                    opacity={a.t.transmission}
-                  />
-                )}
-                <path
-                  d={`M${a.x - 18} 155V246Q${a.x - 18} 263 ${a.x} 263Q${a.x + 18} 263 ${a.x + 18} 246V155Z`}
-                  fill={
-                    thio ? '#f5edc8' : a.catalyst === 'Fe' && !marbleView ? '#e1d6a0' : '#c6dfd9'
-                  }
-                  fillOpacity={thio ? 1 - a.t.transmission : 0.6}
-                />
-                <path
-                  d={`M${a.x - 18} 155Q${a.x} 162 ${a.x + 18} 155`}
-                  fill="none"
-                  stroke="#9dbbb0"
-                />
-                {marbleView ? (
-                  <>
-                    {Array.from({ length: f.watch || surface === 1 ? 1 : 8 }, (_, j) => {
-                      const fragmented = !f.watch && surface > 1,
-                        rad = (fragmented ? 4 : 8) * Math.cbrt(a.m.solidLeft / 0.001),
-                        x = a.x + (fragmented ? ((j % 4) - 1.5) * 8 : 0),
-                        y = fragmented ? 251 - Math.floor(j / 4) * 8 : 253;
-                      return (
-                        <circle key={j} cx={x} cy={y} r={rad} fill="#ddd9c7" stroke="#bcb8aa" />
-                      );
-                    })}
-                  </>
-                ) : a.catalyst === 'Mn' ? (
-                  Array.from({ length: 7 }, (_, j) => (
+    <g data-view="apparatus">
+      {Array.from({ length: n }, (_, i) => {
+        const x = ((i + 0.5) * w) / n,
+          t = ch === 0 || ch === 3 ? (i ? temp : 20) : 25,
+          stock = (ch === 2 || ch === 5) && i ? stockMl : 2,
+          catalyst = ch === 4 ? (['none', 'Mn', 'Fe'] as const)[i] : 'Fe',
+          h = peroxide(seconds, t, catalyst, ch === 4 ? 10 : 5),
+          m = marble(seconds, i ? 1 : 0.1, surface),
+          a = turbidity(seconds, stock, t),
+          flux = ch === 1 ? m.rate : h.rate,
+          bubbles = Math.min(9, Math.ceil(flux * 120000));
+        const top =
+          ch === 4
+            ? ['—', 'MnO₂', 'FeCl₃'][i]
+            : ch === 1
+              ? `${i ? 1 : 0.1} M`
+              : dilution
+                ? `${stock} mL ${say('原液', 'stock')}`
+                : `${t} °C`;
+        return (
+          <g key={i} data-sample={i}>
+            <Label x={x} y={22}>
+              {top}
+            </Label>
+            {dilution && (
+              <Label x={x} y={45}>
+                {2 - stock} mL H₂O
+              </Label>
+            )}
+            {(ch === 0 || ch === 3) && (
+              <path
+                d={`M${x - 38} 94V178Q${x - 38} 185 ${x - 30} 185H${x + 30}Q${x + 38} 185 ${x + 38} 178V94`}
+                fill={t > 30 ? '#efd5ba' : '#d1e4e7'}
+                stroke="#b1c4bd"
+              />
+            )}
+            <path
+              d={`M${x - 21} ${dilution ? 59 : 44}V158Q${x - 21} 178 ${x} 178Q${x + 21} 178 ${x + 21} 158V${dilution ? 59 : 44}`}
+              fill="#f7f8ef"
+              stroke="#a6b8ac"
+              strokeWidth="2"
+            />
+            {thio && (
+              <path
+                d={`M${x - 10} 123l20 20m0-20l-20 20`}
+                stroke="#52736b"
+                strokeWidth="4"
+                opacity={a.transmission}
+              />
+            )}
+            <path
+              d={`M${x - 19} 87V158Q${x - 19} 176 ${x} 176Q${x + 19} 176 ${x + 19} 158V87Z`}
+              fill={thio ? '#eee3b0' : catalyst === 'Fe' && ch !== 1 ? '#dfd4a1' : '#c5dcd4'}
+              opacity={thio ? 1 - a.transmission : 0.62}
+            />
+            <path d={`M${x - 19} 87Q${x} 91 ${x + 19} 87`} fill="none" stroke="#9fb6aa" />
+            {ch === 1
+              ? Array.from({ length: surface === 1 ? 1 : 8 }, (_, j) => {
+                  const r = (surface === 1 ? 11 : 5.5) * Math.cbrt(m.solidLeft / 0.001);
+                  return (
                     <circle
                       key={j}
-                      cx={a.x - 12 + j * 4}
-                      cy={255 + (j % 2) * 2}
-                      r="2.8"
-                      fill="#65675e"
+                      cx={x + (surface === 1 ? 0 : ((j % 4) - 1.5) * 8)}
+                      cy={164 - (surface === 1 ? 0 : Math.floor(j / 4) * 8)}
+                      r={r}
+                      fill="#d1cdb9"
+                      stroke="#b7b09d"
+                    />
+                  );
+                })
+              : ch === 4 && i === 1
+                ? Array.from({ length: 6 }, (_, j) => (
+                    <circle
+                      key={j}
+                      cx={x - 12 + j * 5}
+                      cy={169 - (j % 2) * 2}
+                      r="3"
+                      fill="#77786b"
                     />
                   ))
-                ) : null}
-                {!thio &&
-                  Array.from({ length: a.n }, (_, j) => {
-                    const phase = (seconds * (0.04 + a.n * 0.003) + j / a.n) % 1,
-                      x = a.x + ((j * 7) % 23) - 11,
-                      y = 247 - phase * 87;
-                    return (
-                      <circle
-                        key={j}
-                        cx={x}
-                        cy={y}
-                        r={2 + phase}
-                        fill="#f6fbf1"
-                        stroke="#9eb7af"
-                        opacity={1 - clamp((phase - 0.8) / 0.2)}
-                      />
-                    );
-                  })}
-                {thio
-                  ? tt(a.x, 301, `${Math.round((1 - a.t.transmission) * 100)}%`)
-                  : catalysts
-                    ? tt(a.x, 301, i ? s('加催化剂', 'catalyst') : s('空白', 'blank'))
-                    : tt(
-                        a.x,
-                        301,
-                        marbleView
-                          ? `${a.m.volume.toFixed(1)} mL`
-                          : `${a.h.oxygenMl.toFixed(1)} mL`,
-                      )}
-              </g>
-            ))}
-            {tt(
-              cx,
-              329,
-              thio
-                ? s('遮光比例 · 教学模型', 'Light blocked · teaching model')
-                : s(
-                    `t = ${seconds.toFixed(0)} s · 示意气泡`,
-                    `t = ${seconds.toFixed(0)} s · schematic bubbles`,
-                  ),
-            )}
-          </>
-        ) : mode === 2 && local === 1 ? (
-          <>
-            {tt(cx, 23, `${acidNow} M H₂SO₄ · 40 mL`)}
-            <rect
-              x={g.x0 - 1}
-              y="62"
-              width={g.span + 2}
-              height="24"
-              rx="3"
-              fill="#eff5e9"
-              stroke="#a2b6aa"
-              strokeWidth="2"
-            />
-            <rect x={g.x0} y="64" width={Math.max(0, g.piston - g.x0)} height="20" fill="#d0dfba" />
-            <rect x={g.piston - 2} y="63" width="4" height="22" rx="1" fill="#879f94" />
-            <path
-              d={`M${g.piston + 2} 74H${g.piston + 47}m0 -10v20`}
-              stroke="#a1b6aa"
-              strokeWidth="3"
-            />
-            {[0, 10, 20].map((v) => (
-              <g key={v}>
-                <path d={`M${g.x0 + (g.span * v) / 20} 61V54`} stroke="#91a69b" />
-                {tt(g.x0 + (g.span * v) / 20, 48, String(v))}
-              </g>
-            ))}
-            {tt(cx, 109, s('气体注射器 / mL', 'Gas syringe / mL'))}
-            <path
-              d={`M${cx - 10} 180V126H${g.x0 - 17}V74H${g.x0}`}
-              fill="none"
-              stroke="#a4bab4"
-              strokeWidth="7"
-            />
-            <path
-              d={`M${cx - 10} 180V126H${g.x0 - 17}V74H${g.x0}`}
-              fill="none"
-              stroke="#e5eece"
-              strokeWidth="3"
-            />
-            <path
-              d={`M${cx - 17} 164V193L${cx - 62} 269Q${cx - 66} 279 ${cx - 54} 279H${cx + 54}Q${cx + 66} 279 ${cx + 62} 269L${cx + 17} 193V164Z`}
-              fill="#eff6ed"
-              fillOpacity=".6"
-              stroke="#9eb6ad"
-              strokeWidth="2"
-            />
-            <path
-              d={`M${cx - 35} 225L${cx - 60} 270Q${cx - 61} 277 ${cx - 53} 277H${cx + 53}Q${cx + 61} 277 ${cx + 60} 270L${cx + 35} 225Z`}
-              fill="#c4dcd2"
-              fillOpacity=".8"
-            />
-            <rect x={cx - 18} y="162" width="36" height="10" rx="3" fill="#bda88d" />
-            <path
-              d={`M${cx - 6} 117H${cx + 22}L${cx + 8} 141V184`}
-              fill="#f1f5ed"
-              fillOpacity=".8"
-              stroke="#a3b7ae"
-              strokeWidth="2"
-            />
-            <path d={`M${cx + 1} 153h14`} stroke="#8b9d8f" strokeWidth="3" />
-            {Array.from({ length: 6 }, (_, j) => (
-              <ellipse
-                key={j}
-                cx={cx - 25 + j * 10}
-                cy={271 - (j % 2) * 3}
-                rx={4 * Math.cbrt(1 - gasState.produced / (2 / 65.38))}
-                ry={3 * Math.cbrt(1 - gasState.produced / (2 / 65.38))}
-                fill="#99a8a1"
-              />
-            ))}
-            {Array.from({ length: 5 }, (_, j) => {
-              const q = (gasTime * 0.2 + j / 5) % 1;
-              return (
-                <circle
-                  key={j}
-                  cx={cx - 14 + j * 6}
-                  cy={263 - q * 34}
-                  r="2.5"
-                  fill="#f9fcf3"
-                  stroke="#9db7ae"
-                  opacity={gasState.produced > 0 ? 1 : 0}
-                />
-              );
-            })}
-            {tt(cx, 205, 'Zn · 2 g')}
-            {tt(cx, 307, `${gasState.volumeMl.toFixed(1)} mL · ${gasTime.toFixed(1)} s`)}
-          </>
-        ) : mode === 2 ? (
-          <>
-            {tt(cx, 28, s('同一终点：10 mL', 'Same endpoint: 10 mL'))}
-            <path d={`M38 55V263H${w - 22}`} fill="none" stroke="#a3b4ab" />
-            {[10, 20, 30, 40].map((v) => (
-              <g key={v}>
-                <path
-                  d={`M38 ${263 - v * 5}H${w - 22}`}
-                  stroke="#dce5d9"
-                  strokeDasharray={v === 10 ? '5 5' : undefined}
-                />
-                {tt(32, 268 - v * 5, String(v), 'end')}
-              </g>
-            ))}
-            {[1, 4].map((c, i) => {
-              const maxTime = p * 30;
-              const pts = Array.from({ length: 61 }, (_, j) => {
-                const t = (maxTime * j) / 60;
-                return `${38 + (t / 30) * (w - 60)},${263 - Math.min(40, zincGas(t, c, f.watch ? 0 : leak).volumeMl) * 5}`;
-              }).join(' ');
-              return (
-                <g key={c}>
-                  <polyline
-                    points={pts}
-                    fill="none"
-                    stroke={i ? '#b99166' : '#759e8c'}
-                    strokeWidth="3"
-                  />
-                  <text
-                    x={52 + (i * (w - 100)) / 2}
-                    y="291"
-                    textAnchor="middle"
-                    style={{ fill: i ? '#9d754a' : '#5d8b78' }}
-                  >
-                    {c} M
-                  </text>
-                </g>
-              );
-            })}
-            {tt(cx, 321, s('时间 / s · 模型曲线', 'Time / s · model curves'))}
-            {tt(w - 24, 282, '30', 'end')}
-            {tt(39, 47, 'mL', 'start')}
-          </>
-        ) : local < 2 ? (
-          <>
-            {tt(cx, 29, enough ? 'E ≥ Eₐ' : 'E < Eₐ')}
-            {tt(
-              cx,
-              54,
-              oriented
-                ? s('氢端相向', 'H ends face each other')
-                : s('取向未满足', 'Unfavorable orientation'),
-            )}
-            {(
-              [
-                [0, 1, coll.hi],
-                [2, 3, coll.hi],
-                [0, 2, coll.hh],
-                [1, 3, coll.ii],
-              ] as [number, number, boolean][]
-            ).map(
-              ([a, b, visible], i) =>
-                visible && (
-                  <line
-                    key={i}
-                    x1={coll.atoms[a].x}
-                    y1={coll.atoms[a].y}
-                    x2={coll.atoms[b].x}
-                    y2={coll.atoms[b].y}
-                    stroke="#98a59c"
-                    strokeWidth="4"
-                  />
-                ),
-            )}
-            {coll.atoms.map((a) => (
-              <g key={a.id}>
-                <circle
-                  cx={a.x}
-                  cy={a.y}
-                  r={a.r}
-                  fill={a.element === 'H' ? '#e1dfbf' : '#b49cbd'}
-                  stroke={a.element === 'H' ? '#b9b899' : '#99829f'}
-                />
-                {a.element === 'I' && (
-                  <text x={a.x} y={a.y + 6} textAnchor="middle">
-                    I
-                  </text>
-                )}
-              </g>
-            ))}
-            {tt(cx, 254, coll.hi ? '2 HI' : coll.ii ? 'H₂ + I₂' : 'H₂ + 2 I·')}
-            {tt(cx, 292, s('小球 H · 大球 I', 'Small: H · large: I'))}
-          </>
-        ) : (
-          <>
-            {tt(cx, 25, s('同一反应的两条路径', 'Two paths, same reaction'))}
-            <text x={cx - 56} y={52} textAnchor="middle" style={{ fill: '#b99166' }}>
-              {s('无催化', 'Uncatalyzed')}
-            </text>
-            <text x={cx + 56} y={52} textAnchor="middle" style={{ fill: '#759f8a' }}>
-              {s('有催化', 'Catalyzed')}
-            </text>
-            <path d={`M35 55V260H${w - 20}`} stroke="#a0b2a8" fill="none" />
-            {[false, true].map((c, i) => {
-              const pts = Array.from({ length: 101 }, (_, j) => {
-                const q = j / 100;
-                return `${40 + q * (w - 65)},${205 - energyProfile(q, c) * 2}`;
-              }).join(' ');
-              const q = p;
-              return (
-                <g key={i}>
-                  <polyline
-                    points={pts}
-                    stroke={c ? '#759f8a' : '#bc936d'}
-                    strokeWidth="3"
-                    fill="none"
-                  />
+                : null}
+            {!thio &&
+              Array.from({ length: bubbles }, (_, j) => {
+                const q = (seconds * 0.16 + j / bubbles) % 1;
+                return (
                   <circle
-                    cx={40 + q * (w - 65)}
-                    cy={205 - energyProfile(q, c) * 2}
-                    r="5"
-                    fill={c ? '#759f8a' : '#bc936d'}
+                    key={j}
+                    cx={x - 12 + ((j * 7) % 24)}
+                    cy={161 - q * 70}
+                    r={2 + q * 1.8}
+                    fill="#f8fbf2"
+                    stroke="#a9beb2"
+                    opacity={1 - clamp((q - 0.8) / 0.2)}
                   />
-                </g>
+                );
+              })}
+            <Label x={x} y={208}>
+              {thio
+                ? `${Math.round(a.transmission * 100)}% ${say('透光', 'light')}`
+                : ch === 4
+                  ? i
+                    ? say('有催化', 'catalyst')
+                    : say('空白', 'blank')
+                  : `${(ch === 1 ? m.volume : h.oxygenMl).toFixed(1)} mL`}
+            </Label>
+          </g>
+        );
+      })}
+      <Label x={w / 2} y={238}>
+        {dilution
+          ? say('模型 · 均加入2mL酸', 'Model · +2mL acid each')
+          : say('示例计算 · 非实测记录', 'Illustration · not measurements')}
+      </Label>
+    </g>
+  );
+}
+function Thermal({ w, temp, p, say }: { w: number; temp: number; p: number; say: Say }) {
+  const trials = thermalTrials(temp, p),
+    x = (e: number) => 52 + ((e - 27) * (w - 70)) / 17,
+    barrier = x(35);
+  return (
+    <g data-view="thermal">
+      <Label x={w / 2} y={20}>
+        20 → {(20 + (temp - 20) * p).toFixed(0)} °C
+      </Label>
+      <Label x={barrier} y={42}>
+        35 kJ/mol
+      </Label>
+      <path d={`M${barrier} 48V207`} stroke="#bc8362" strokeDasharray="4 4" />
+      {trials.map((a, i) => (
+        <g key={a.id} data-trial={a.id} data-eligible={a.eligible} data-energy={a.energy}>
+          <Label x={12} y={63 + i * 20} anchor="start">
+            {a.id}
+          </Label>
+          <path
+            d={`M${x(29 + i)} ${58 + i * 20}H${x(a.energy)}`}
+            stroke={a.eligible ? '#719a86' : '#b7b7a0'}
+            strokeWidth="4"
+          />
+          <circle
+            cx={x(a.energy)}
+            cy={58 + i * 20}
+            r="6"
+            fill={a.eligible ? '#729b85' : '#c4c6b6'}
+            stroke="#f7f8ee"
+          />
+          {a.id === 'E6' && (
+            <circle cx={x(a.energy)} cy={58 + i * 20} r="10" fill="none" stroke="#be8d63" />
+          )}
+        </g>
+      ))}
+      <Label x={w / 2} y={237}>
+        {say('选取近门槛个案 · 机制示意', 'Selected near-threshold cases')}
+      </Label>
+    </g>
+  );
+}
+function Encounters({ w, p, say }: { w: number; p: number; say: Say }) {
+  return (
+    <g data-view="encounters">
+      <Label x={w / 2} y={20}>
+        {say('同样时间、同样判据', 'Same interval, same criterion')}
+      </Label>
+      {[1, 2].map((c, i) => {
+        const a = encounterWindow(c as 1 | 2, p),
+          y = 58 + i * 95;
+        return (
+          <g key={c} data-encounter-lane={c} data-effective={a.effective}>
+            <Label x={12} y={y} anchor="start">
+              {c}×
+            </Label>
+            <path
+              d={`M42 ${y + 22}H${w - 15}`}
+              stroke="#e0e5d7"
+              strokeWidth="29"
+              strokeLinecap="round"
+            />
+            <path d={`M${w - 65} ${y + 3}v38`} stroke="#9cae9c" strokeDasharray="4 3" />
+            {a.events.map((e, j) => {
+              const x =
+                44 +
+                (w - 65 - 44) * Math.min(e.phase * 2, 1) +
+                (e.phase > 0.5 ? (e.eligible ? 1 : -1) * (e.phase - 0.5) * 55 : 0);
+              return (
+                <circle
+                  key={e.id}
+                  data-event={`${c}-${e.id}`}
+                  cx={x}
+                  cy={y + 22 + ((j % 3) - 1) * 7}
+                  r="4"
+                  fill={e.arrived ? (e.eligible ? '#709985' : '#b4b6a4') : '#acbba9'}
+                  stroke={j === 0 ? '#b47e53' : 'none'}
+                  strokeWidth={j === 0 ? 2 : 0}
+                  opacity={e.phase === 0 ? 0.15 : 1}
+                />
               );
             })}
-            {tt(43, 192, 'R', 'start')}
-            {tt(w - 23, 266, 'P', 'end')}
-            {tt(cx, 286, s('ΔH 相同 · 能垒降低', 'Same ΔH · lower barrier'))}
-            {tt(cx, 317, s('通用能量图 · 非实测', 'Generic profile · not measured'))}
-          </>
+            <Label x={w - 12} y={y + 61} anchor="end">
+              {a.effective} / {a.arrived} {say('有效', 'effective')}
+            </Label>
+          </g>
+        );
+      })}
+      <Label x={w / 2} y={239}>
+        {say('代表性相遇 · 不推定反应级数', 'Generic encounter model')}
+      </Label>
+    </g>
+  );
+}
+function Pathway({ w, p, say }: { w: number; p: number; say: Say }) {
+  const y = (e: number) => 157 - e * 1.6,
+    x = (q: number) => 32 + q * (w - 62);
+  return (
+    <g data-view="pathway">
+      <Label x={w / 2} y={21}>
+        {say('改变路径，不移动起终点', 'New pathway; same endpoints')}
+      </Label>
+      <text x={w * 0.25} y={45} textAnchor="middle" style={{ fill: palette[0] }}>
+        {say('无催化', 'Uncatalyzed')}
+      </text>
+      <text x={w * 0.75} y={45} textAnchor="middle" style={{ fill: palette[1] }}>
+        {say('有催化', 'Catalyzed')}
+      </text>
+      <path d={`M28 44V198H${w - 18}`} fill="none" stroke="#a9baad" />
+      {[false, true].map((c, i) => (
+        <g key={i}>
+          <polyline
+            points={Array.from(
+              { length: 81 },
+              (_, j) => `${x(j / 80)},${y(energyProfile(j / 80, c))}`,
+            ).join(' ')}
+            fill="none"
+            stroke={palette[i]}
+            strokeWidth="3"
+          />
+          <circle cx={x(p)} cy={y(energyProfile(p, c))} r="6" fill={palette[i]} />
+        </g>
+      ))}
+      <Label x={33} y={180} anchor="start">
+        R
+      </Label>
+      <Label x={w - 27} y={216} anchor="end">
+        P
+      </Label>
+      <Label x={w / 2} y={238}>
+        {say('通用能量图 · 同一 ΔH', 'Generic energy profile · same ΔH')}
+      </Label>
+    </g>
+  );
+}
+function Prediction({ w, ch, reveal, say }: { w: number; ch: number; reveal: boolean; say: Say }) {
+  const result = ratePrediction(ch),
+    questions = [
+      say('更热，最终氧气也更多吗？', 'Warmer: more final oxygen?'),
+      say('磨碎后，最终气量会增加吗？', 'Crush it: more final gas?'),
+      say('再稀十倍，还会遮住靶吗？', 'Tenfold dilution: will it obscure?'),
+      say('升温需要降低门槛吗？', 'Must warming lower the barrier?'),
+      say('催化后，氧气总量更多吗？', 'Catalyst: more final oxygen?'),
+    ],
+    answer = [
+      say('相同初始量，极限产量相同', 'Same starting amount; same limit'),
+      say('面积改变快慢，不增加物料', 'More area, no extra reactant'),
+      say('硫的上限不足以达到阈值', 'Too little sulfur for this threshold'),
+      say('门槛不动，更多个案越过', 'Same barrier; more cases cross'),
+      say('改变路径，不增加氧原子', 'New pathway, no extra oxygen'),
+    ];
+  return (
+    <g data-view="prediction" data-revealed={reveal}>
+      <foreignObject x="8" y="8" width={w - 16} height="58">
+        <div className="crr16-question">{questions[ch]}</div>
+      </foreignObject>
+      {ch === 2 ? (
+        <>
+          <path d={`M36 170H${w - 30}`} stroke="#bcc8b7" />
+          <path d={`M36 150H${w - 30}`} stroke="#bc8564" strokeDasharray="5 4" />
+          <Label x={w / 2} y={138}>
+            {say('共同遮光阈值', 'Common optical threshold')}
+          </Label>
+          {reveal && (
+            <>
+              <rect x={w / 2 - 22} y="164" width="44" height="6" fill="#c5b878" />
+              <Label x={w / 2} y={197}>
+                {'maximum' in result ? result.maximum.toFixed(4) : '—'} &lt;{' '}
+                {'target' in result ? result.target.toFixed(4) : '—'} M
+              </Label>
+            </>
+          )}
+        </>
+      ) : ch === 3 ? (
+        <>
+          <path d={`M${w / 2} 75V178`} stroke="#bb8565" strokeWidth="3" />
+          <circle cx={w / 2 - 40} cy="110" r="10" fill="#b4c3b5" />
+          <circle cx={reveal ? w / 2 + 40 : w / 2 - 40} cy="155" r="10" fill="#739784" />
+          <Label x={w / 2} y={207}>
+            {reveal ? 'Eₐ = Eₐ' : '?'}
+          </Label>
+        </>
+      ) : (
+        <>
+          {[0, 1].map((i) => (
+            <g key={i}>
+              <rect
+                x={w * (i ? 0.7 : 0.3) - 24}
+                y={reveal ? 110 : 149}
+                width="48"
+                height={reveal ? 65 : 26}
+                rx="9"
+                fill={palette[i]}
+                opacity={reveal ? 0.75 : 0.18}
+              />
+              <Label x={w * (i ? 0.7 : 0.3)} y={203}>
+                {reveal && 'a' in result ? `${result[i ? 'b' : 'a']!.toFixed(1)} mL` : '?'}
+              </Label>
+            </g>
+          ))}
+        </>
+      )}
+      {reveal && (
+        <foreignObject x="6" y="213" width={w - 12} height="42">
+          <div className="crr16-answer">{answer[ch]}</div>
+        </foreignObject>
+      )}
+    </g>
+  );
+}
+function Syringe({
+  w,
+  p,
+  acid,
+  leak,
+  say,
+}: {
+  w: number;
+  p: number;
+  acid: number;
+  leak: number;
+  say: Say;
+}) {
+  const endpoint = zincGas(0, acid, leak).endpoint,
+    time = (endpoint ?? 30) * p,
+    a = zincGas(time, acid, leak),
+    g = syringeGeometry(w, a.volumeMl),
+    cx = w / 2;
+  return (
+    <g data-view="syringe" data-volume={a.volumeMl}>
+      <Label x={cx} y={20}>
+        {acid} M H₂SO₄ · 40 mL
+      </Label>
+      <rect x={g.x0} y="49" width="90" height="22" rx="3" fill="#eff4e7" stroke="#9eb5aa" />
+      <rect x={g.x0} y="51" width={g.piston - g.x0} height="18" fill="#d4dfbb" />
+      <path d={`M${g.piston} 49V71m0-11h44m0-9v18`} stroke="#78978a" strokeWidth="3" />
+      {[0, 10, 20].map((v) => (
+        <g key={v}>
+          <path d={`M${g.x0 + v * 4.5} 48V43`} stroke="#8b9f91" />
+          <Label x={g.x0 + v * 4.5} y={39}>
+            {v}
+          </Label>
+        </g>
+      ))}
+      <path
+        d={`M${g.x0} 60H${g.x0 - 15}V99H${cx - 9}V128`}
+        fill="none"
+        stroke="#a9bdb2"
+        strokeWidth="7"
+      />
+      <path
+        d={`M${g.x0} 60H${g.x0 - 15}V99H${cx - 9}V128`}
+        fill="none"
+        stroke="#eef5e5"
+        strokeWidth="3"
+      />
+      <path
+        d={`M${cx - 17} 111V137L${cx - 56} 191Q${cx - 60} 201 ${cx - 50} 201H${cx + 50}Q${cx + 60} 201 ${cx + 56} 191L${cx + 17} 137V111Z`}
+        fill="#f0f5e9"
+        stroke="#a1b7ac"
+        strokeWidth="2"
+      />
+      <path
+        d={`M${cx - 36} 167L${cx - 53} 194Q${cx - 55} 198 ${cx - 48} 198H${cx + 48}Q${cx + 55} 198 ${cx + 53} 194L${cx + 36} 167Z`}
+        fill="#c4dbcd"
+      />
+      <rect x={cx - 18} y="109" width="36" height="9" rx="3" fill="#b5a487" />
+      <path
+        d={`M${cx + 1} 82H${cx + 23}L${cx + 10} 97V134`}
+        fill="#f4f6eb"
+        stroke="#a1b5a7"
+        strokeWidth="2"
+      />
+      <path d={`M${cx + 3} 103h14`} stroke="#809b8c" strokeWidth="3" />
+      {Array.from({ length: 6 }, (_, j) => (
+        <ellipse key={j} cx={cx - 23 + j * 9} cy={194 - (j % 2) * 2} rx="4" ry="3" fill="#93a6a0" />
+      ))}
+      <Label x={cx} y={157}>
+        Zn · 2 g
+      </Label>
+      <Label x={cx} y={226}>
+        {a.volumeMl.toFixed(1)} mL · {time.toFixed(1)} s
+      </Label>
+      <Label x={cx} y={247}>
+        {say('模型时钟，非教材实测', 'Model clock, not book data')}
+      </Label>
+    </g>
+  );
+}
+function Curves({ w, p, leak, say }: { w: number; p: number; leak: number; say: Say }) {
+  const xx = (t: number) => 35 + (t * (w - 62)) / 30,
+    yy = (v: number) => 185 - v * 3.5;
+  return (
+    <g data-view="curves">
+      <Label x={w / 2} y={21}>
+        {say('生成量 ≠ 收集量', 'Produced ≠ collected')}
+      </Label>
+      <path d={`M35 42V185H${w - 18}`} fill="none" stroke="#a7b6a4" />
+      {[10, 20, 30, 40].map((v) => (
+        <g key={v}>
+          <path
+            d={`M35 ${yy(v)}H${w - 18}`}
+            stroke="#d6dece"
+            strokeDasharray={v === 10 ? '5 4' : undefined}
+          />
+          <Label x={29} y={yy(v) + 5} anchor="end">
+            {v}
+          </Label>
+        </g>
+      ))}
+      {[1, 4].map((acid, i) => (
+        <g key={acid}>
+          {[0, leak].map((l, j) => (
+            <polyline
+              key={j}
+              data-curve={`${acid}-${j}`}
+              points={Array.from({ length: 61 }, (_, k) => {
+                const t = (p * 30 * k) / 60;
+                return `${xx(t)},${yy(Math.min(40, zincGas(t, acid, l).volumeMl))}`;
+              }).join(' ')}
+              fill="none"
+              stroke={palette[i]}
+              strokeWidth="2.5"
+              strokeDasharray={j ? '5 4' : undefined}
+            />
+          ))}
+          <Label x={w * (i ? 0.75 : 0.25)} y={216}>
+            {acid} M
+          </Label>
+        </g>
+      ))}
+      <Label x={w - 19} y={201} anchor="end">
+        30 s
+      </Label>
+      <Label x={w / 2} y={244}>
+        {say('实线生成 · 虚线收集', 'Solid: produced · dash: collected')}
+      </Label>
+    </g>
+  );
+}
+function Collision({
+  w,
+  p,
+  enough,
+  orientation,
+  say,
+}: {
+  w: number;
+  p: number;
+  enough: boolean;
+  orientation: boolean;
+  say: Say;
+}) {
+  const c = collision(w, p, enough, orientation);
+  return (
+    <g data-view="collision">
+      <Label x={w / 2} y={21}>
+        {enough ? say('E ≥ 门槛', 'E ≥ threshold') : say('E < 门槛', 'E < threshold')}
+      </Label>
+      <Label x={w / 2} y={45}>
+        {orientation
+          ? say('氢端相向', 'H ends facing')
+          : say('取向不合适', 'Unfavorable orientation')}
+      </Label>
+      {(
+        [
+          [0, 1, c.hi],
+          [2, 3, c.hi],
+          [0, 2, c.hh],
+          [1, 3, c.ii],
+        ] as [number, number, boolean][]
+      ).map(
+        ([a, b, show], i) =>
+          show && (
+            <line
+              key={i}
+              x1={c.atoms[a].x}
+              y1={c.atoms[a].y}
+              x2={c.atoms[b].x}
+              y2={c.atoms[b].y}
+              stroke="#a29e9d"
+              strokeWidth="4"
+            />
+          ),
+      )}
+      {c.atoms.map((a) => (
+        <g key={a.id} data-atom={a.id}>
+          <circle
+            cx={a.x}
+            cy={a.y}
+            r={a.r}
+            fill={a.element === 'H' ? '#dbd6b3' : '#a591b5'}
+            stroke="#9d9b9a"
+          />
+          {a.element === 'I' && (
+            <Label x={a.x} y={a.y + 6}>
+              I
+            </Label>
+          )}
+        </g>
+      ))}
+      <Label x={w / 2} y={221}>
+        {c.hi ? '2 HI' : c.ii ? 'H₂ + I₂' : 'H₂ + 2 I·'}
+      </Label>
+      <Label x={w / 2} y={246}>
+        {say('教材两步示意 · 保留四原子', 'Book pathway · four stable atoms')}
+      </Label>
+    </g>
+  );
+}
+export default function ChemReactionRates() {
+  const f = useShowcase(),
+    { host, width } = useSignalWidth(),
+    w = clamp(width, 240, 800),
+    locale = browserLocale() === 'en' ? 'en' : 'zh',
+    say: Say = (z, e) => (locale === 'en' ? e : z);
+  type Exploration = {
+    chapter: number;
+    p: number;
+    shot: string;
+    reveal: boolean;
+    temp: number;
+    surface: number;
+    stock: number;
+    acid: number;
+    leak: number;
+    enough: boolean;
+    orientation: boolean;
+  };
+  const auto = rateFilm(f.chapter, f.chapterTime, locale);
+  const watchState: Exploration = {
+    chapter: auto.chapter,
+    p: auto.shot === 'collision' ? auto.trialProgress : auto.progress,
+    shot: auto.shot,
+    reveal: auto.reveal,
+    temp: 50,
+    surface: 1,
+    stock: 1,
+    acid: auto.shot === 'syringe' ? auto.syringeAcid : 1,
+    leak: auto.shot === 'leak' ? auto.progress * 0.5 : 0,
+    enough: auto.chapter !== 8 || auto.trial === 1,
+    orientation: auto.chapter !== 9 || auto.trial === 1,
+  };
+  const lastWatch = useRef(watchState);
+  if (f.watch) lastWatch.current = watchState;
+  const [manual, setManual] = useState<Exploration | null>(null),
+    [time1, setTime1] = useState(''),
+    [time4, setTime4] = useState('');
+  const state = f.watch ? watchState : (manual ?? lastWatch.current);
+  const change = (patch: Partial<Exploration>) => setManual({ ...state, ...patch });
+  const { chapter, p, shot, reveal, temp, surface, stock, acid, leak, enough, orientation } = state;
+  const q = p,
+    t = temp,
+    sp = surface,
+    cp = p,
+    energy = enough,
+    orient = orientation,
+    mechanism = ['thermal', 'encounters', 'pathway'].includes(shot);
+  const setP = (p: number) => change({ p }),
+    setTemp = (temp: number) => change({ temp }),
+    setStock = (stock: number) => change({ stock }),
+    setLeak = (leak: number) => change({ leak });
+  const titles: { [key: string]: string } = {
+    observation: say('看同一段时间', 'Compare the same interval'),
+    thermal: say('追踪能量改变', 'Track the energy change'),
+    encounters: say('相遇变多，判据不变', 'More encounters, same rule'),
+    prediction: say('先预测，再揭晓', 'Predict, then reveal'),
+    design: say('把观察标准固定', 'Fix the viewing criterion'),
+    syringe: say('同一气体体积', 'The same gas volume'),
+    curves: say('读曲线，不数气泡', 'Read the curve'),
+    leak: say('气体去了哪里？', 'Where did the gas go?'),
+    collision: say('追踪同样四个原子', 'Track the same four atoms'),
+    pathway: say('同一起点和终点', 'Same start and finish'),
+  };
+  const questionVisible = shot === 'prediction',
+    isRevealed = reveal;
+  const range = (
+    id: string,
+    label: string,
+    value: number,
+    min: number,
+    max: number,
+    step: number,
+    on: (v: number) => void,
+  ) => (
+    <label htmlFor={id}>
+      {label}
+      <input
+        id={id}
+        aria-label={label}
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => on(+e.target.value)}
+      />
+    </label>
+  );
+  return (
+    <div
+      className="crr16"
+      ref={host}
+      data-chapter={RATE_IDS[chapter]}
+      data-watch={f.watch}
+      data-shot={shot}
+      data-reveal={isRevealed}
+      data-progress={q}
+      data-enough={energy}
+      data-orientation={orient}
+    >
+      <div className="crr16-head">{titles[shot]}</div>
+      <svg viewBox={`0 0 ${w} 255`} role="img" aria-label={titles[shot]}>
+        {shot === 'observation' || shot === 'design' ? (
+          <Tubes w={w} ch={chapter} p={q} temp={t} surface={sp} stockMl={stock} say={say} />
+        ) : shot === 'thermal' ? (
+          <Thermal w={w} temp={t} p={q} say={say} />
+        ) : shot === 'encounters' ? (
+          <Encounters w={w} p={q} say={say} />
+        ) : questionVisible ? (
+          <Prediction w={w} ch={chapter} reveal={isRevealed} say={say} />
+        ) : shot === 'pathway' ? (
+          <Pathway w={w} p={q} say={say} />
+        ) : shot === 'syringe' ? (
+          <Syringe w={w} p={q} acid={acid} leak={leak} say={say} />
+        ) : shot === 'curves' || shot === 'leak' ? (
+          <Curves w={w} p={shot === 'leak' ? 1 : q} leak={leak} say={say} />
+        ) : (
+          <Collision w={w} p={cp} enough={energy} orientation={orient} say={say} />
         )}
       </svg>
       {!f.watch && (
-        <div className="chem-rates-controls">
-          <div className="chem-rates-buttons">
-            {titles.map((t, i) => (
-              <button
-                key={t}
-                aria-pressed={mode === i}
-                onClick={() => {
-                  setMode(i);
-                  setView(0);
-                }}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <label>
-            {s('观察位置', 'View')}
-            <select value={view} onChange={(e) => setView(+e.target.value)}>
-              {views[mode].map((t, i) => (
-                <option key={t} value={i}>
-                  {t}
+        <div className="crr16-controls">
+          <label htmlFor="crr16-scene">
+            {say('学习位置', 'Learning view')}
+            <select
+              id="crr16-scene"
+              aria-label={say('学习位置', 'Learning view')}
+              value={chapter}
+              onChange={(e) => {
+                const chapter = +e.target.value;
+                change({
+                  chapter,
+                  p: 0.75,
+                  reveal: false,
+                  temp: 50,
+                  surface: 1,
+                  stock: 1,
+                  acid: 1,
+                  leak: 0,
+                  enough: true,
+                  orientation: true,
+                  shot:
+                    chapter < 5
+                      ? 'observation'
+                      : chapter === 5
+                        ? 'design'
+                        : chapter === 6
+                          ? 'syringe'
+                          : chapter === 7
+                            ? 'curves'
+                            : chapter < 10
+                              ? 'collision'
+                              : 'pathway',
+                });
+              }}
+            >
+              {names.map(([z, e], i) => (
+                <option key={i} value={i}>
+                  {say(z, e)}
                 </option>
               ))}
             </select>
           </label>
-          <label>
-            {s('过程进度', 'Progress')}
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step=".005"
-              value={progress}
-              onChange={(e) => setProgress(+e.target.value)}
-            />
-          </label>
-          {(mode === 0 && local === 0) || (mode === 1 && local === 1) ? (
-            <label>
-              {s('第二组温度', 'Second group temperature')} · {temp} °C
-              <input
-                type="range"
-                min="20"
-                max="60"
-                step="5"
-                value={temp}
-                onChange={(e) => setTemp(+e.target.value)}
-              />
-            </label>
-          ) : null}
-          {marbleView && (
-            <label>
-              {s(
-                '两组接触面积倍率（固体总量相同）',
-                'Surface factor in both groups (same total solid)',
-              )}
-              <select value={surface} onChange={(e) => setSurface(+e.target.value)}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-            </label>
+          {range('crr16-progress', say('过程进度', 'Event progress'), p, 0, 1, 0.005, setP)}
+          {chapter < 5 && (
+            <div className="crr16-buttons">
+              <button
+                aria-pressed={shot === 'observation'}
+                onClick={() => {
+                  change({ shot: 'observation', reveal: false });
+                }}
+              >
+                {say('观察', 'Observation')}
+              </button>
+              <button
+                aria-pressed={mechanism}
+                onClick={() => {
+                  change({
+                    shot: ['thermal', 'encounters', 'encounters', 'thermal', 'pathway'][chapter],
+                    reveal: false,
+                  });
+                }}
+              >
+                {say('机制', 'Mechanism')}
+              </button>
+              <button
+                aria-pressed={reveal}
+                onClick={() =>
+                  change({ shot: 'prediction', reveal: shot === 'prediction' ? !reveal : true })
+                }
+              >
+                {say('检验预测', 'Test prediction')}
+              </button>
+            </div>
           )}
-          {mode === 2 && local > 0 && (
+          {(chapter === 0 || chapter === 3) &&
+            range(
+              'crr16-temperature',
+              `${say('第二组温度', 'Second temperature')} / °C`,
+              temp,
+              20,
+              60,
+              5,
+              setTemp,
+            )}
+          {chapter === 1 && (
+            <button
+              aria-pressed={surface === 2}
+              onClick={() => change({ surface: surface === 1 ? 2 : 1 })}
+            >
+              {say('同量固体磨碎', 'Crush equal solid')}: {surface}×
+            </button>
+          )}
+          {(chapter === 2 || chapter === 5) && (
             <>
-              <label>
-                {s('硫酸浓度', 'Sulfuric acid concentration')}
-                <select value={acid} onChange={(e) => setAcid(+e.target.value)}>
+              {range(
+                'crr16-stock',
+                `${say('原液体积', 'Stock volume')} / mL`,
+                stock,
+                0.1,
+                2,
+                0.1,
+                setStock,
+              )}
+              <p data-optical-reachable={opticalCriterion(stock, 25).reachable}>
+                {say('固定光程下，模型到半透光', 'Model time to half transmission')}:{' '}
+                {opticalCriterion(stock, 25).time?.toFixed(1) ?? say('达不到', 'unreachable')}{' '}
+                {opticalCriterion(stock, 25).time !== null ? 's' : ''}
+              </p>
+            </>
+          )}
+          {(chapter === 6 || chapter === 7) && (
+            <>
+              <label htmlFor="crr16-acid">
+                {say('硫酸浓度', 'Sulfuric acid concentration')}
+                <select
+                  id="crr16-acid"
+                  value={acid}
+                  onChange={(e) => change({ acid: +e.target.value })}
+                >
                   <option value="1">1 M</option>
                   <option value="4">4 M</option>
                 </select>
               </label>
-              <label>
-                {s('未收集比例：漏气', 'Uncollected fraction: leak')} · {Math.round(leak * 100)}%
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step=".1"
-                  value={leak}
-                  onChange={(e) => setLeak(+e.target.value)}
-                />
-              </label>
+              {range('crr16-leak', say('漏气比例', 'Leak fraction'), leak, 0, 1, 0.1, setLeak)}
               <p>
-                {s('模型到 10 mL 的时间', 'Model time to 10 mL')}：
-                {gas.endpoint === null
-                  ? s('无法达到', 'not reached')
-                  : `${gas.endpoint.toFixed(1)} s`}
+                {say('模型至10mL', 'Model time to 10mL')}:{' '}
+                {zincGas(0, acid, leak).endpoint?.toFixed(1) ?? say('达不到', 'unreachable')}
               </p>
-              <label>
-                {s('实测：1 M 收集 10 mL 的秒数', 'Measured seconds to 10 mL, 1 M')}
-                <input
-                  inputMode="decimal"
-                  value={time1}
-                  onChange={(e) => setTime1(e.target.value)}
-                />
-              </label>
-              <label>
-                {s('实测：4 M 收集 10 mL 的秒数', 'Measured seconds to 10 mL, 4 M')}
-                <input
-                  inputMode="decimal"
-                  value={time4}
-                  onChange={(e) => setTime4(e.target.value)}
-                />
-              </label>
+              {[time1, time4].map((v, i) => (
+                <label key={i} htmlFor={`crr16-time${i}`}>
+                  {say('自己的实测秒数', 'Your measured seconds')} · {i ? 4 : 1} M
+                  <input
+                    id={`crr16-time${i}`}
+                    inputMode="decimal"
+                    value={v}
+                    onChange={(e) => (i ? setTime4 : setTime1)(e.target.value)}
+                  />
+                </label>
+              ))}
               <p>
-                {s('实测平均收集速率', 'Measured average collection rate')}：
                 {observedRate(time1)?.toFixed(3) ?? '—'} / {observedRate(time4)?.toFixed(3) ?? '—'}{' '}
                 mL/s
               </p>
             </>
           )}
-          {mode === 3 && local < 2 && (
-            <div className="chem-rates-buttons">
-              <button aria-pressed={energy} onClick={() => setEnergy(!energy)}>
-                {s('达到能量条件', 'Enough energy')}: {energy ? s('是', 'yes') : s('否', 'no')}
+          {(chapter === 8 || chapter === 9) && (
+            <div className="crr16-buttons">
+              <button aria-pressed={enough} onClick={() => change({ enough: !enough })}>
+                {say('达到能量条件', 'Enough energy')}
               </button>
-              <button aria-pressed={orientation} onClick={() => setOrientation(!orientation)}>
-                {s('有利取向', 'Favorable orientation')}:{' '}
-                {orientation ? s('是', 'yes') : s('否', 'no')}
+              <button
+                aria-pressed={orientation}
+                onClick={() => change({ orientation: !orientation })}
+              >
+                {say('有利取向', 'Favorable orientation')}
               </button>
             </div>
           )}
-          <label>
-            {s(
-              '自己的条件、观察和证据（初始为空）',
-              'Your conditions, observations and evidence (initially blank)',
-            )}
-            <textarea value={notes} onChange={(e) => setNotes(e.target.value)} />
-          </label>
           <details>
-            <summary>{s('模型条件与读数口径', 'Model conditions and readouts')}</summary>
+            <summary>{say('模型与教材证据', 'Model and textbook evidence')}</summary>
             <p>
-              {s(
-                '所有时间和曲线是教学参数，不是教材实测结果。气体按 25 ℃、101.325 kPa 的干气近似计算；锌实验从加液结束的共同基线计时，忽略混合、加液排气和活塞摩擦。气泡仅提示产气强弱，数量不代表分子数。',
-                'All times and curves use teaching parameters, not textbook measurements. Gas uses a dry-gas approximation at 25 °C and 101.325 kPa. Zinc runs start at a common post-addition baseline, neglecting mixing, displaced air and piston friction. Bubbles indicate gas evolution, not molecule counts.',
+              {say(
+                '教材给出配方与定性结论，原始时间格为空。曲线、秒数和能量个案是教学构造，不是实测。选取近门槛个案只展示可能跨过门槛，不代表总体分子计数，也不据此拟合宏观速率。',
+                'The book supplies recipes and qualitative conclusions; its time cells are blank. Curves, times and selected energy cases are teaching constructions. Near-threshold cases do not represent population counts or fit macroscopic rates.',
               )}
             </p>
             <p>
-              {s(
-                '硫代硫酸钠原液为 0.1 M，总液量 4 mL：2 或 1 mL 原液用水补足至 2 mL，再加 2 mL 0.1 M 硫酸。遮光比例由生成硫和固定光程计算，十字仅是添加的观察靶。催化剂两组使用相同示意速率常数，不能据此比较催化效率。',
-                'The 0.1 M thiosulfate stock is diluted to 2 mL, then mixed with 2 mL of 0.1 M sulfuric acid: 4 mL total. The cross is an added viewing target; attenuation depends on sulfur and a fixed path length. Both catalyst runs use the same illustrative rate constant, so their efficiencies cannot be ranked.',
+              {say(
+                '通用相遇图不冒充过氧化氢或酸化硫代硫酸盐的完整机理。气泡仅提示通量。两种催化剂使用相同示意常数，不建立真实效率排名。',
+                'The generic encounter view is not a complete peroxide or acidified-thiosulfate mechanism. Bubbles indicate flux. Equal illustrative catalyst constants do not rank their real efficiencies.',
               )}
             </p>
           </details>

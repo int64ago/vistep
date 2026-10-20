@@ -1,31 +1,6 @@
 ---
-import { soundInterferencePoint } from '../../models/sound-interference-lab';
-const cells = Array.from({ length: 48 * 28 }, (_, i) => {
-  const x = (((i % 48) + 0.5) / 48) * 3.47 - 1.735,
-    y = ((Math.floor(i / 48) + 0.5) / 28) * 2.5 - 1.25;
-  return {
-    x: 55 + ((i % 48) * 250) / 48,
-    y: 70 + (Math.floor(i / 48) * 180) / 28,
-    a: Math.min(0.7, Math.sqrt(soundInterferencePoint(x, y).intensity) * 0.5),
-  };
-});
+import { SoundInterferenceCoverArtwork } from '../experiments/SoundInterferenceLab';
+import StaticArtworkCover from './StaticArtworkCover.astro';
 ---
 
-<svg viewBox="0 0 360 270" fill="none" aria-hidden="true"
-  ><rect x="55" y="70" width="250" height="180" rx="10" fill="#e9eedb"></rect>{
-    cells.map((c) => <rect x={c.x} y={c.y} width="5.3" height="6.5" fill="#9db18a" opacity={c.a} />)
-  }
-  <rect x="145" y="24" width="70" height="30" rx="7" fill="#ccd8b8" stroke="#96aa7e"></rect><path
-    d="M145 39H36V145M215 39H324V145"
-    stroke="#a2b18a"
-    stroke-width="2"></path>
-  <path d="M13 142H36V193H13Z" fill="#b8c9a4" stroke="#93a87e"></path><path
-    d="M23 156L36 148V187L23 179Z"
-    fill="#dce5cc"
-    stroke="#93a87e"></path>
-  <path d="M347 142H324V193H347Z" fill="#b8c9a4" stroke="#93a87e"></path><path
-    d="M337 156L324 148V187L337 179Z"
-    fill="#dce5cc"
-    stroke="#93a87e"></path>
-  <circle cx="189" cy="160" r="8" fill="#f4e7bf" stroke="#b89a64" stroke-width="2"></circle>
-</svg>
+<StaticArtworkCover artwork={SoundInterferenceCoverArtwork} />

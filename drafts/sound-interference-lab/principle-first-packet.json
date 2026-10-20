@@ -1,0 +1,278 @@
+{
+  "slug": "sound-interference-lab",
+  "status": "integrated; measured narration; product review in progress",
+  "scope": {
+    "chapterIds": ["speakers-common", "speakers-receiver", "speakers-flags", "speakers-frequency"],
+    "textbookEntries": ["e1-sound-interference"],
+    "expectedDuration": 116,
+    "retainedSpokenIds": ["speakers-common", "speakers-flags", "speakers-frequency"],
+    "changedSpokenIds": ["speakers-receiver"],
+    "retainedScope": "Only zh/en spoken fields of three cues are byte-identical; screen titles/captions and visual director are revised. No audio synthesized."
+  },
+  "topic": {
+    "title": {
+      "zh": "多开一个扬声器，为什么有些地方反而更安静？",
+      "en": "Why can adding a speaker make one place quieter?"
+    },
+    "description": {
+      "zh": "追踪两条传播路径，在同一个点把声压逐时相加，再预测固定弱点遇到新频率会怎样。",
+      "en": "Track both paths, add the pressures at one point, then predict a new frequency at an old quiet location."
+    }
+  },
+  "narration": {
+    "duration": 116.0,
+    "cues": [
+      {
+        "id": "speakers-common",
+        "title": "相同发声，不同到达相位",
+        "titleEn": "Same emission, different arrival phase",
+        "caption": "到达相位还取决于传播路程。",
+        "captionEn": "Arrival phase also depends on path length.",
+        "seconds": 26,
+        "zh": "两只相同扬声器连到同一个信号源，同相发声。即使接收点到达的两个声音频率相同，传播路程也可能不同。因此它们到达时的相位关系要由路程共同决定，不能只看扬声器是否同时振动。",
+        "en": "Connect two identical speakers to one signal source so they emit in phase. The received sounds share a frequency, but their travel distances can differ. Their relative arrival phase therefore depends on both paths, not only on whether the speakers move together.",
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "speakers-receiver",
+        "title": "同一点，两路声压相加",
+        "titleEn": "Two pressures at one point",
+        "caption": "相反相位能抵消；振幅不等会留下残余。",
+        "captionEn": "Opposite phases cancel; unequal amplitudes leave a residual.",
+        "seconds": 34,
+        "zh": "接收点从中央稍稍移开，声音就明显减弱。放大同一个点，三条曲线共用一个时钟：第一路声压、第二路声压，以及它们的和。一边增压、另一边减压时，合声压变小。路程差为半个波长，两路相位相反。但距离不同，振幅不等，所以不能完全抵消。下方比较声压均方，不是声能的净流量。",
+        "en": "Move the receiver a little away from the centre: the sound weakens. Now zoom in on that same point. Three traces share one clock: pressure from source one, pressure from source two, and their sum. A pressure increase and a decrease partly cancel. A half-wavelength path difference puts them in opposite phase. Unequal distances mean unequal amplitudes, so a small residual remains. The indicator compares mean-square pressure, not net energy flow.",
+        "chapterAt": 26.0,
+        "at": 26.45
+      },
+      {
+        "id": "speakers-flags",
+        "title": "标出模型中的强弱位置",
+        "titleEn": "Mark the model’s loud and quiet points",
+        "caption": "小范围寻位后，保留相同的标旗。",
+        "captionEn": "Search nearby, then preserve the same flags.",
+        "seconds": 26,
+        "zh": "按教材分成两组，同学们在附近小范围移动。白旗组寻找较强的位置，黑旗组寻找较弱的位置，找到后举旗。标旗的位置由同一个声场模型计算，保留下来就能看到空间中稳定的强弱分布。",
+        "en": "Divide students into the textbook’s two groups and let them move within a small neighbourhood. White flags seek louder positions and dark flags seek quieter ones. Once found, the flags are raised. These positions come from the same calculated sound field, revealing its stable spatial pattern.",
+        "chapterAt": 60.0,
+        "at": 60.45
+      },
+      {
+        "id": "speakers-frequency",
+        "title": "旧弱点还能保持安静吗？",
+        "titleEn": "Will the old quiet point stay quiet?",
+        "caption": "位置不动，波长改变会改变到达相位差。",
+        "captionEn": "At a fixed point, wavelength changes the phase difference.",
+        "seconds": 30,
+        "zh": "最后保留原来的标旗，只改变共同频率。两只扬声器仍然相干，但波长改变，同一条路程差对应的相位差也改变。原来的黑旗位置可能不再安静。这说明标旗不是器材固定的属性，而取决于当前声场。",
+        "en": "Leave the flags at their old positions and change the shared frequency. The speakers remain coherent, but wavelength changes, so the same path difference gives a different phase difference. A former quiet location may become loud. The pattern belongs to the current field, not permanently to the room’s positions.",
+        "chapterAt": 86.0,
+        "at": 86.45
+      }
+    ]
+  },
+  "translations": {
+    "白旗较强 · 黑旗较弱": "White: louder · Dark: quieter",
+    "两个传播路程": "Two propagation paths",
+    "频率减半，旧弱点还弱吗？": "Half the frequency: still quiet?",
+    "旧旗不动，当前声场已变": "Old flags stay; the field changes",
+    "模型寻位，非实测记录": "Model search, not measured data",
+    "声压分布模型": "Modelled pressure field",
+    "同一时刻 · 同一米尺": "One instant · one distance scale",
+    "同一接收点 · 同一时钟": "One receiver · one clock",
+    "这一刻的声压": "Pressure now",
+    "1周期（慢放）": "1 cycle (slowed)",
+    "同源双声压的传播与叠加": "Propagation and addition of two coherent pressures",
+    "相对声压均方": "Mean-square pressure",
+    "两路声压，逐时相加": "Two pressures add at each instant",
+    "路程改变到达相位": "Path length changes arrival phase",
+    "同一声场，强弱相间": "One field, alternating loud and quiet",
+    "检验340Hz": "Test 340 Hz",
+    "声波视图": "Sound views",
+    "声场": "Field",
+    "传播路程": "Paths",
+    "声压相加": "Pressure sum",
+    "同源频率": "Shared frequency",
+    "接收点横向位置": "Receiver x",
+    "接收点纵向位置": "Receiver y",
+    "慢放周期位置": "Slowed cycle position",
+    "第二扬声器": "Second speaker",
+    "开": "On",
+    "关": "Off",
+    "第二源反相": "Reverse source 2",
+    "保留680Hz旗位": "Keep 680 Hz flags",
+    "停止模型试听": "Stop model tone",
+    "试听模型接收点": "Hear model receiver",
+    "声音不可用，声压与图像仍可观察。": "Audio unavailable; pressure and images still work.",
+    "模型与试听的边界": "Model and audio limits",
+    "相距4米的理想相干点声源，声速340米每秒，振幅按1/r变化。曲线是同一接收点的声压，不是空气沿横波起伏。声压均方以同相中点为1；它不是分贝、主观响度或对向声场的净能流。忽略墙壁反射与扬声器方向性，近源区不作预测。旗位来自680Hz模型的局部搜索；开关或调频不会改写这些旧位置。试听为合成幅度，非实测录音；改变频率也改变听觉敏感度，不能按响度反求图中数值。": "Ideal coherent point sources are 4 m apart, with sound speed 340 m/s and amplitude proportional to 1/r. Curves show pressure at one receiver, not transverse air motion. Mean-square pressure is normalized to the in-phase midpoint. It is not decibels, perceived loudness or net energy flux. Reflections, directivity and the near-source region are excluded. Old flags come from a local search at 680 Hz and stay fixed under the controls. The optional tone synthesizes amplitude, not a recording; hearing sensitivity also varies with frequency.",
+    "相同发声，不同到达相位": "Same emission, different arrival phase",
+    "到达相位还取决于传播路程。": "Arrival phase also depends on path length.",
+    "同一点，两路声压相加": "Two pressures at one point",
+    "相反相位能抵消；振幅不等会留下残余。": "Opposite phases cancel; unequal amplitudes leave a residual.",
+    "标出模型中的强弱位置": "Mark the model’s loud and quiet points",
+    "小范围寻位后，保留相同的标旗。": "Search nearby, then preserve the same flags.",
+    "旧弱点还能保持安静吗？": "Will the old quiet point stay quiet?",
+    "位置不动，波长改变会改变到达相位差。": "At a fixed point, wavelength changes the phase difference.",
+    "稳态比较：加入第二只": "Steady fields: add source two",
+    "稳态比较：只开第一只": "Steady field: source one only"
+  },
+  "teachingProfiles": {
+    "e1-sound-interference": {
+      "sceneSlug": "sound-interference-lab",
+      "question": {
+        "zh": "多开一个扬声器，为什么有些地方反而更安静？",
+        "en": "Why can adding a speaker make one place quieter?"
+      },
+      "lead": {
+        "zh": "跟着同一个接收点，看两路声压在每个时刻相加，再用固定旗位检验改变频率的预测。",
+        "en": "Follow one receiver, add the two pressures at each instant, then test a frequency change at fixed flags."
+      },
+      "principle": {
+        "zh": "相干声源的路程差决定到达相位差。相位相反时两路声压相消；只有振幅相等才会完全抵消。",
+        "en": "For coherent sources, path difference sets arrival-phase difference. Opposite pressures cancel; complete cancellation also requires equal amplitudes."
+      },
+      "transfer": {
+        "question": {
+          "zh": "某个固定位置在680Hz时的路程差约为半个波长。频率减半，那里还应当同样安静吗？",
+          "en": "A fixed location has about half a wavelength of path difference at 680 Hz. Should it stay equally quiet if frequency is halved?"
+        },
+        "explanation": {
+          "zh": "不应。路程差不变、波长加倍，相位差由约π变为约π/2；相消变弱，声压均方增大。旧旗位必须保留才能检验这个预测；真实房间还会受到反射等因素影响。",
+          "en": "No. The path difference stays fixed while wavelength doubles, changing the phase difference from about π to π/2. Cancellation weakens and mean-square pressure increases. Keep the old flags to test this prediction; room reflections can modify the real result."
+        }
+      }
+    }
+  },
+  "curriculumVariants": {
+    "e1-sound-interference": {
+      "sceneSlug": "sound-interference-lab",
+      "chapterIds": [
+        "speakers-common",
+        "speakers-receiver",
+        "speakers-flags",
+        "speakers-frequency"
+      ],
+      "label": {
+        "zh": "声音的干涉",
+        "en": "Sound interference"
+      }
+    }
+  },
+  "sharedProposals": {
+    "preserveTextbookTitlePageOrder": true,
+    "shortScreenSelector": ".lesson-sound-interference-lab",
+    "soundDefault": "Narration policy unchanged. Synthetic test tone remains separately opt-in in Explore."
+  },
+  "sources": [
+    {
+      "id": "pep",
+      "title": "普通高中教科书 物理 选择性必修第一册（人教版），P74–77",
+      "url": null,
+      "local": "/Users/int64ago/Downloads/人教版高中物理-选择性必修第一册.pdf",
+      "used": "Full relevant P74–78 read, including P78 silencer/path-difference exercise; printed77/PDF82 page image personally inspected. P79 begins a separate Doppler section."
+    },
+    {
+      "id": "openstax",
+      "title": "University Physics Vol. 1 — 16.5 Interference of Waves",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves",
+      "used": "Linear addition, coherent constructive/destructive phase conditions."
+    },
+    {
+      "id": "bk",
+      "title": "Brüel & Kjær — Sound Intensity (BR0476), pp.3–9",
+      "url": "https://www.bksv.com/doc/br0476.pdf",
+      "used": "Pressure at the receiver versus vector mean energy flux; pressure/particle velocity and reactive standing fields."
+    }
+  ],
+  "scientificLimits": [
+    "Ideal coherent point pressure sources 4m apart; c=340m/s; 1/r amplitude; source neighbourhood <.15m regularized and excluded from claims; UI receivers ≥.8m away.",
+    "The scalar indicator is normalized cycle-mean pressure squared, not W/m², dB or psychophysical loudness.",
+    "Flags are deterministic local model searches, not historical or student observational measurements; 680Hz identities/positions never change under current controls.",
+    "One displayed cycle is a deliberately slowed acoustic period. Pressure traces are not transverse displacement of air.",
+    "No reflection/directivity/background-noise model; optional synthesized tone not a room recording. Frequency changes also change hearing sensitivity.",
+    "Each selected frequency is a steady-field comparison. The animated frequency transition is not a turn-on transient; cone vibration is an illustrative common-phase cue."
+  ],
+  "director": {
+    "status": "Replaced by measured locale-specific director; final product verification pending.",
+    "chapters": [
+      {
+        "id": "speakers-common",
+        "newEvidence": "Same receiver one-source versus two-source steady fields: adding the second coherent source reduces pressure. Connected common generator, then distance-scaled ray phases."
+      },
+      {
+        "id": "speakers-receiver",
+        "newEvidence": "At one receiver three same-scale curves, common time cursor, residual sum."
+      },
+      {
+        "id": "speakers-flags",
+        "newEvidence": "12 fixed student identities search ±.16m, flags rise at their calculated local extrema."
+      },
+      {
+        "id": "speakers-frequency",
+        "newEvidence": "680Hz flag identities fixed; selected quiet point stays fixed; 340Hz endpoint and updated Δr/λ/mean-square test the prediction.",
+        "exploration": "Fresh Explore preserves the authored question. Explicit Test340Hz or manual inputs change the real model; returning to watch reconstructs the authored prediction hold."
+      }
+    ],
+    "source": "src/models/sound-interference-lab.ts",
+    "measuredIntegration": "artifacts/teaching-principles/batch-16-physics-measured-integration.json"
+  },
+  "acceptance": {
+    "candidateOnly": true,
+    "globalVerify": "root integration pending",
+    "recordings": "not generated",
+    "listening": "not performed",
+    "physicalPhone": "not tested",
+    "authorCandidateKeyframes": "checks/native-review-05/report.json:60 native candidate frames,48 explore endpoints,0 failures",
+    "independentModel": "batch-16-cross-review/chemistry-review-sound.json; scope limited to pressure functions"
+  },
+  "spokenChanges": [
+    {
+      "id": "speakers-common",
+      "locale": "zh",
+      "retained": true
+    },
+    {
+      "id": "speakers-common",
+      "locale": "en",
+      "retained": true
+    },
+    {
+      "id": "speakers-receiver",
+      "locale": "zh",
+      "retained": false
+    },
+    {
+      "id": "speakers-receiver",
+      "locale": "en",
+      "retained": false
+    },
+    {
+      "id": "speakers-flags",
+      "locale": "zh",
+      "retained": true
+    },
+    {
+      "id": "speakers-flags",
+      "locale": "en",
+      "retained": true
+    },
+    {
+      "id": "speakers-frequency",
+      "locale": "zh",
+      "retained": true
+    },
+    {
+      "id": "speakers-frequency",
+      "locale": "en",
+      "retained": true
+    }
+  ],
+  "rootMeasuredNarration": {
+    "status": "assembled-and-transcribed",
+    "duration": 116.0,
+    "evidence": "artifacts/teaching-principles/batch-16-final-transcription-review.json",
+    "subjectiveListening": "not-run"
+  }
+}

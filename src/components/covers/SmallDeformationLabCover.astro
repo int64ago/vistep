@@ -48,8 +48,9 @@ const exit = { x: 1.23, y: s.p2.y + ((1.23 - s.p2.x) * s.d2.y) / s.d2.x };
   {[0, 1, 2, 3, 4, 5, 6].map((i) => <path d={`M354 ${74 + i * 14}H363`} stroke="#9dab8c" />)}
   <circle cx="342" cy="106" r="4" stroke="#b5bda4"></circle><circle
     cx="342"
-    cy="129"
+    cy={106 - s.shift * 1000 * 18}
     r="11"
     fill="#bd8862"
-    opacity=".13"></circle><circle cx="342" cy="129" r="3.4" fill="#b7805e"></circle>
+    opacity=".13"></circle><circle cx="342" cy={106 - s.shift * 1000 * 18} r="3.4" fill="#b7805e"
+  ></circle>
 </svg>

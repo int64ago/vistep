@@ -60,7 +60,7 @@
 | [平衡改变之前，颜色先发生了什么](../../src/content/chem-equilibrium-response.mdx) | 4:26 | 平衡不动，为什么反应还在继续？                       |
 | [手性、晶体与旋光证据](../../src/content/chem-chirality-evidence.mdx)             | 3:27 | 从不能重合的基团排列，怎样走到巴斯德的实验结论？     |
 | [乙酸乙酯的制备与水解](../../src/content/chem-ester-reaction.mdx)                 | 4:22 | 酯从哪里收集，又怎样水解？                           |
-| [怎样比较化学反应的快慢](../../src/content/chem-reaction-rates.mdx)               | 3:35 | 气泡多，就一定反应快吗？                             |
+| [怎样比较化学反应的快慢](../../src/content/chem-reaction-rates.mdx)               | 4:24 | 反应更快，是相遇更多还是更容易成功？                 |
 | [氢键与冰的开放结构](../../src/content/chem-hydrogen-bond-network.mdx)            | 2:27 | 冰为什么比液态水更疏松？                             |
 | [乙醇的两种氧化](../../src/content/chem-alcohol-oxidation.mdx)                    | 2:51 | 铜丝为什么变黑又变红？                               |
 | [钠与乙醇的证据链](../../src/content/chem-sodium-alcohol.mdx)                     | 2:48 | 气泡里的氢来自乙醇的哪里？                           |
@@ -130,7 +130,7 @@
 | [动物细胞的培养与工程](../../src/content/bio-animal-cell-engineering.mdx)     | 4:02 | 培养、筛选和核移植，分别改变了什么？           |
 | [植物细胞的再生与融合](../../src/content/bio-plant-cell-engineering.mdx)      | 3:44 | 一段组织怎样长成植株，两枚细胞怎样成为杂种？   |
 | [从分散菌体到培养证据](../../src/content/bio-microbial-culture.mdx)           | 4:04 | 一个菌落能告诉我们多少，又不能告诉我们什么？   |
-| [进化证据与种群变化](../../src/content/bio-evolution-evidence.mdx)            | 4:40 | 环境筛选的是谁，真正改变的又是什么？           |
+| [进化证据与种群变化](../../src/content/bio-evolution-evidence.mdx)            | 4:45 | 不同证据，怎样指向共同由来？                   |
 | [发酵的容器与条件](../../src/content/bio-fermentation-pathways.mdx)           | 4:03 | 同样是发酵，为什么有的隔绝空气，有的持续通气？ |
 | [环境调查与生态保护证据](../../src/content/bio-conservation-evidence.mdx)     | 4:13 | 从一次观察，怎样走到保护方案？                 |
 | [变异与实验判据](../../src/content/bio-mutation-evidence.mdx)                 | 4:37 | 突变、染色体变化与相关性证据，怎样分清？       |
@@ -307,7 +307,7 @@
 | ----------------------------------------------------------------------- | ---- | -------------------------------------------- |
 | [摩擦铜盆的振动与水花](../../src/content/singing-basin.mdx)             | 2:10 | 慢慢摩擦盆耳，为什么会出现水花？             |
 | [旋转蜂鸣器与行进队列](../../src/content/doppler-lab.mdx)               | 2:36 | 声源没改音调，听到的频率为什么会变？         |
-| [双扬声器的声音干涉](../../src/content/sound-interference-lab.mdx)      | 1:44 | 同样两个扬声器，为什么换个位置就变安静？     |
+| [双扬声器的声音干涉](../../src/content/sound-interference-lab.mdx)      | 1:56 | 多开一个扬声器，为什么有些地方反而更安静？   |
 | [声音的频率与传播测量](../../src/content/sound-measurement-lab.mdx)     | 2:36 | 从一段波形到一湖钟声，怎样测量声音？         |
 | [水波槽中的传播与叠加](../../src/content/ripple-tank-lab.mdx)           | 4:48 | 同一片水面，为什么会出现不同的波纹？         |
 | [绳波、人浪与弹簧波](../../src/content/mechanical-wave-lab.mdx)         | 2:48 | 波向前传播时，介质去了哪里？                 |
