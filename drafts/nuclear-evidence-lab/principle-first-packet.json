@@ -1,0 +1,704 @@
+{
+  "status": "integrated-measured-final-validation-pending",
+  "topic": {
+    "slug": "nuclear-evidence-lab",
+    "name": "核反应的实验线索",
+    "title": "看不见核内部，怎样从产物判断发生了什么？",
+    "question": "看不见核内部，怎样从产物判断发生了什么？",
+    "description": "从闪烁、反冲和化学分离，到共同顶点与中子去向，让固定证据约束核模型和下一步预测。",
+    "color": "#aebfa8",
+    "tag": "近代物理",
+    "related": ["atomic-scattering-lab", "particle-evidence-lab"],
+    "sources": [
+      {
+        "title": "Blackett — Cloud chamber researches (1948 Nobel lecture)",
+        "url": "https://www.nobelprize.org/uploads/2018/06/blackett-lecture.pdf"
+      },
+      {
+        "title": "Chadwick — The neutron and its properties (1935 Nobel lecture)",
+        "url": "https://www.nobelprize.org/uploads/2018/06/chadwick-lecture.pdf"
+      },
+      {
+        "title": "Hahn — From the natural transmutations of uranium to its artificial fission (Nobel lecture)",
+        "url": "https://www.nobelprize.org/uploads/2018/06/hahn-lecture.pdf"
+      },
+      {
+        "title": "Meitner and Frisch — Disintegration of Uranium by Neutrons: a New Type of Nuclear Reaction (1939)",
+        "url": "https://www.nature.com/articles/143239a0"
+      },
+      {
+        "title": "Tsien, Ho, Vigneron and Chastel — Ternary and Quaternary Fission of Uranium Nuclei (1947)",
+        "url": "https://www.nature.com/articles/159773a0"
+      },
+      {
+        "title": "National Archives — Notebook recording the first controlled self-sustaining chain reaction (1942)",
+        "url": "https://www.archives.gov/milestone-documents/manhattan-project-notebook"
+      }
+    ]
+  },
+  "component": "src/components/experiments/NuclearEvidenceLab.tsx",
+  "cover": "src/components/covers/NuclearEvidenceLabCover.astro",
+  "translations": {
+    "核反应的实验线索": "Experimental clues to nuclear reactions",
+    "一个核发生了什么，怎样从产物和径迹判断？": "How do products and tracks reveal a nuclear reaction?",
+    "从氮核轰击和中子反冲，到裂变产物、多碎片径迹与可控链式反应。": "Follow nitrogen bombardment, neutron recoil, fission products and controlled chain reactions.",
+    "近代物理": "Modern physics",
+    "质子证据": "Proton",
+    "中子反冲": "Neutron",
+    "裂变鉴定": "Fission",
+    "相关径迹": "Tracks",
+    "中子代际": "Generations",
+    "观察装置": "Apparatus",
+    "守恒解释": "Conservation",
+    "碰撞模型": "Collision",
+    "固定证据": "Fixed evidence",
+    "分离对照": "Separation",
+    "核反应账目": "Reaction ledger",
+    "焦平面": "Focus",
+    "动量闭合": "Momentum",
+    "中子去向": "Neutron paths",
+    "期望计数": "Expected counts",
+    "核反应证据": "Nuclear evidence",
+    "观察视图": "Observation view",
+    "质子出射角": "Proton emission angle",
+    "候选入射粒子质量": "Candidate incident mass",
+    "反冲靶": "Recoil target",
+    "固定记录来源": "Fixed record source",
+    "教材练习": "Textbook",
+    "1935原讲稿": "1935 lecture",
+    "带电径迹数": "Charged-track count",
+    "顶点对照": "Vertex comparison",
+    "同一深度": "Same depth",
+    "投影交叉": "Projected crossing",
+    "示意焦平面": "Illustrative focus depth",
+    "抽象逃逸份额": "Abstract escape fraction",
+    "抽象非裂变吸收份额": "Abstract non-fission absorption",
+    "观察进度": "Observation progress",
+    "模型与历史证据边界": "Model and historical limits",
+    "固定史料不随控件改变；轨迹、分离标记与中子路径是明确的教学示意。代际图是平均期望，不是随机事件记录；未由实际材料或几何计算再生数。": "Source records do not change with controls. Tracks, separation marks and neutron routes are explicit teaching diagrams. Generation bars are expectations, not random observations; reproduction is not derived from real materials or geometry.",
+    "从远处的闪烁发现异常": "Notice scintillations beyond the usual range",
+    "信号能告诉我们什么，不能告诉什么？": "What does the signal establish?",
+    "把产物放进守恒关系": "Check the product bookkeeping",
+    "两种产物，必须同时满足守恒。": "Both products must conserve momentum and energy.",
+    "让看不见的中性辐射撞击石蜡": "Use paraffin to reveal neutral radiation",
+    "看不见的入射粒子，由带电反冲显现。": "Charged recoil reveals the neutral projectile.",
+    "用不同靶核检验质量": "Compare recoil from different masses",
+    "用固定反冲记录检验候选质量。": "Test a candidate mass against fixed recoil records.",
+    "先在产物中认出钡": "First identify barium among the products",
+    "同一分离方法，为什么它不像已知的镭？": "Why does the unknown behave differently from radium?",
+    "核裂变不只有一个通道": "Inspect one possible fission channel",
+    "留下未知碎片，先用两本账预测。": "Predict the missing fragment from two ledgers.",
+    "在重径迹之外寻找轻碎片": "Look beyond the two heavy tracks",
+    "投影相交，还要检查深度。": "A projected crossing also needs a depth check.",
+    "进一步检查四条相关径迹": "Inspect four correlated tracks",
+    "共同顶点与动量闭合，约束同一事件。": "A common vertex and momentum closure constrain one event.",
+    "比较相邻两代的规模": "Compare successive generations",
+    "去向不同，中子仍各有自己的身份。": "Follow each neutron to its own outcome.",
+    "让平均规模保持稳定": "Keep the average scale steady",
+    "先预测下一代，再揭晓期望计数。": "Predict the next generations before revealing them.",
+    "看不见核内部，怎样从产物判断发生了什么？": "How do products reveal a reaction inside an unseen nucleus?",
+    "从闪烁、反冲和化学分离，到共同顶点与中子去向，让固定证据约束核模型和下一步预测。": "Use flashes, recoil, separation, shared vertices and neutron outcomes to constrain nuclear models and predictions."
+  },
+  "narration": {
+    "duration": 280.0,
+    "cues": [
+      {
+        "id": "nitrogen-flashes",
+        "title": "从远处的闪烁发现异常",
+        "titleEn": "Notice scintillations beyond the usual range",
+        "caption": "信号能告诉我们什么，不能告诉什么？",
+        "captionEn": "What does the signal establish?",
+        "seconds": 28,
+        "zh": "卢瑟福用阿尔法粒子轰击氮，观察到超出原有阿尔法粒子射程的闪烁信号。结合吸收、射程等比较，这些信号被归因于氢核。画面上方用气体室、吸收层与闪烁屏说明观察方法，下方才是后来建立的核反应解释。我们不是直接看见氮核内部裂开。",
+        "en": "Rutherford bombarded nitrogen with alpha particles and observed scintillations beyond the usual alpha range. Comparisons of absorption and range attributed them to hydrogen nuclei. The upper apparatus illustrates the observation; the lower view is a later reaction interpretation. It is not a direct view inside a nitrogen nucleus.",
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "nitrogen-balance",
+        "title": "把产物放进守恒关系",
+        "titleEn": "Check the product bookkeeping",
+        "caption": "两种产物，必须同时满足守恒。",
+        "captionEn": "Both products must conserve momentum and energy.",
+        "seconds": 28,
+        "zh": "后来的云室研究补充了反应路径的证据。反应不是简单从氮核中拿走一个质子：阿尔法粒子参与形成氧十七，另一颗质子飞出。比较上下标，可以核对核子数和电荷数。下方所选事件还满足二维动量与能量关系，出射角改变时，两种产物的运动共同改变。",
+        "en": "Later cloud-chamber work supplied further evidence for the reaction path. It is not simply removal of one proton from nitrogen: the alpha particle participates in forming oxygen seventeen while a proton emerges. Nucleon number and charge balance. The selected event also conserves two-dimensional momentum and energy as its emission angle changes.",
+        "chapterAt": 28.0,
+        "at": 28.45
+      },
+      {
+        "id": "neutron-recoil",
+        "title": "让看不见的中性辐射撞击石蜡",
+        "titleEn": "Use paraffin to reveal neutral radiation",
+        "caption": "看不见的入射粒子，由带电反冲显现。",
+        "captionEn": "Charged recoil reveals the neutral projectile.",
+        "seconds": 28,
+        "zh": "阿尔法粒子打到铍后，产生很有穿透力的中性辐射。把含氢的石蜡放在它前面，可以打出高速质子，使后方电离探测器信号增加。虚线表示推断出的中性传播路径，不是云室里直接看见的中子径迹。查德威克进一步比较不同靶核的反冲。",
+        "en": "Alpha bombardment of beryllium produces penetrating neutral radiation. Paraffin supplies hydrogen nuclei that can recoil as fast protons, increasing the downstream ionization signal. The dashed neutral path is inferred, not a directly visible neutron track. Chadwick extended the comparison to recoil from different target nuclei.",
+        "chapterAt": 56.0,
+        "at": 56.45
+      },
+      {
+        "id": "neutron-mass",
+        "title": "用不同靶核检验质量",
+        "titleEn": "Compare recoil from different masses",
+        "caption": "用固定反冲记录检验候选质量。",
+        "captionEn": "Test a candidate mass against fixed recoil records.",
+        "seconds": 28,
+        "zh": "把靶核从氢换成较重的氮，最大反冲能量比例显著降低。弹性碰撞关系显示，质量相近时最容易传递较大比例的动能。这类跨靶核证据支持质量接近质子的中性粒子解释。图中使用正碰上限，不把所有真实碰撞都画成最大能量传递。",
+        "en": "Replace hydrogen with a heavier nitrogen target. The maximum recoil-energy fraction falls. Elastic-collision kinematics shows that similar masses permit efficient energy transfer. Comparisons across targets supported a neutral particle with mass near the proton’s. The bars show head-on upper bounds, not the energy of every real collision.",
+        "chapterAt": 84.0,
+        "at": 84.45
+      },
+      {
+        "id": "barium-product",
+        "title": "先在产物中认出钡",
+        "titleEn": "First identify barium among the products",
+        "caption": "同一分离方法，为什么它不像已知的镭？",
+        "captionEn": "Why does the unknown behave differently from radium?",
+        "seconds": 28,
+        "zh": "哈恩与施特拉斯曼研究中子轰击铀后的产物，通过化学分离鉴定出钡。这个结果不同于只在铀附近得到新元素的预期。随后迈特纳与弗里施给出核裂变解释。画面先呈现产物鉴定，再转到核模型，避免把后来理解的过程当成当时肉眼所见。",
+        "en": "Hahn and Strassmann chemically separated products of neutron-irradiated uranium and identified barium. The result challenged expectations of products near uranium in the periodic table. Meitner and Frisch then interpreted nuclear fission. We show identification before the nuclear model, separating the observed evidence from its later explanation.",
+        "chapterAt": 112.0,
+        "at": 112.45
+      },
+      {
+        "id": "fission-channel",
+        "title": "核裂变不只有一个通道",
+        "titleEn": "Inspect one possible fission channel",
+        "caption": "留下未知碎片，先用两本账预测。",
+        "captionEn": "Predict the missing fragment from two ledgers.",
+        "seconds": 28,
+        "zh": "用教材这一条反应检查账目：铀二三五吸收一个中子后，形成钡一四四、另一碎片和三个中子。先用核子数与电荷数预测未知碎片，再揭晓：质量数八十九，电荷数三十六，所以是氪。真实裂变有多种产物组合，不是每次都走这条通道。释放的中子还可能引发后续反应。",
+        "en": "Check the textbook channel: uranium two-thirty-five captures a neutron and forms barium one-forty-four, an unknown fragment and three neutrons. Predict that fragment from nucleon and charge accounting. Then reveal mass number eighty-nine and charge thirty-six: krypton. Real fission has many channels. The released neutrons can initiate further reactions.",
+        "chapterAt": 140.0,
+        "at": 140.45
+      },
+      {
+        "id": "ternary-tracks",
+        "title": "在重径迹之外寻找轻碎片",
+        "titleEn": "Look beyond the two heavy tracks",
+        "caption": "投影相交，还要检查深度。",
+        "captionEn": "A projected crossing also needs a depth check.",
+        "seconds": 28,
+        "zh": "钱三强、何泽慧等用核乳胶研究裂变径迹。常见事件有两条重碎片径迹；少数事件还出现来自同一顶点的轻带电碎片。要检查共同顶点、方向与深度，排除无关径迹的偶然交叉。图中三条线是有意放大的示例，不是原始照片，也不表示三块等大的碎片。",
+        "en": "Qian Sanqiang, He Zehui and collaborators studied fission tracks in nuclear emulsions. Alongside the usual two heavy tracks, rare events contain an additional light charged fragment from the same vertex. Vertex, direction and depth help exclude accidental crossings. These enlarged example tracks are not an original photograph or three equal fragments.",
+        "chapterAt": 168.0,
+        "at": 168.45
+      },
+      {
+        "id": "quaternary-tracks",
+        "title": "进一步检查四条相关径迹",
+        "titleEn": "Inspect four correlated tracks",
+        "caption": "共同顶点与动量闭合，约束同一事件。",
+        "captionEn": "A common vertex and momentum closure constrain one event.",
+        "seconds": 28,
+        "zh": "切换到四条带电碎片径迹的教学例子。两条较粗轨迹与两条较细轨迹从共同位置出发。动量向量在示意事件中闭合，但真实鉴定还需要三维显微观察、射程和电离密度等信息。这里保留三分裂、四分裂的历史意义，不用示意图给出发生概率或具体核素分支。",
+        "en": "Switch to an illustrative four-track event. Two heavier and two lighter tracks share one origin. The example momentum vectors close, but real identification also needs three-dimensional microscopy, ranges and ionization density. The scene preserves the historical distinction without assigning event probabilities or specific nuclide branches from this drawing.",
+        "chapterAt": 196.0,
+        "at": 196.45
+      },
+      {
+        "id": "chain-generations",
+        "title": "比较相邻两代的规模",
+        "titleEn": "Compare successive generations",
+        "caption": "去向不同，中子仍各有自己的身份。",
+        "captionEn": "Follow each neutron to its own outcome.",
+        "seconds": 28,
+        "zh": "裂变放出的中子可能引发新的裂变，也可能被吸收或逃逸。把这些结果汇总成平均再生数：大于一时，下一代的平均规模增长；小于一时减少。页面用同一纵轴比较各代期望计数，避免把缩放变化误当成稳定。它不是具体反应堆的设计计算。",
+        "en": "Fission neutrons may trigger another fission, be absorbed or escape. Summarize those outcomes with a mean reproduction factor. Above one, average generation size grows; below one, it falls. The bars share a vertical scale, so rescaling cannot create apparent stability. This is not a reactor-design calculation.",
+        "chapterAt": 224.0,
+        "at": 224.45
+      },
+      {
+        "id": "controlled-chain",
+        "title": "让平均规模保持稳定",
+        "titleEn": "Keep the average scale steady",
+        "caption": "先预测下一代，再揭晓期望计数。",
+        "captionEn": "Predict the next generations before revealing them.",
+        "seconds": 28,
+        "zh": "费米团队实现可控自持链式反应，关键是把过程维持在可控制的状态。图中把平均再生数调到一，各代期望计数保持一致。真实系统还有时间延迟、反馈和随机起伏，稳定平均值不意味着每一颗中子的经历相同。这里的方块只提示实验堆的概念外形，不给出实际结构参数。",
+        "en": "Fermi’s team achieved a controlled self-sustaining chain reaction. Set the mean reproduction factor to one and expected generation counts remain equal. Real systems include delays, feedback and fluctuations; a stable mean does not imply identical neutron histories. The blocks evoke a pile conceptually without specifying an actual physical design.",
+        "chapterAt": 252.0,
+        "at": 252.45
+      }
+    ]
+  },
+  "teachingProfiles": {
+    "e1-chadwick-reference": {
+      "sceneSlug": "nuclear-evidence-lab",
+      "question": {
+        "zh": "看不见入射粒子，怎样从反冲判断它的质量？",
+        "en": "How can recoil reveal an unseen projectile’s mass?"
+      },
+      "lead": {
+        "zh": "先看石蜡增加的电离，再比较氢、氮两种固定反冲记录与弹性碰撞候选。",
+        "en": "Observe the ionization increase with paraffin, then compare fixed hydrogen and nitrogen recoil records with elastic-collision candidates."
+      },
+      "principle": {
+        "zh": "同一入射速度上限下，两种靶的反冲速度比消去未知速度，约束入射粒子的质量；中性路径是推断，非带电径迹。",
+        "en": "For a common incident speed limit, the ratio of target recoil speeds removes unknown speed and constrains projectile mass. The neutral path is inferred, not a charged track."
+      },
+      "transfer": {
+        "question": {
+          "zh": "教材数据给出m=mH。换成质量4mH的静止靶，正碰速度上限是多少？",
+          "en": "The textbook pair gives m=mH. What upper recoil speed is predicted for a stationary target of mass 4mH?"
+        },
+        "explanation": {
+          "zh": "用同一入射速度3.3×10⁷ m/s，上限为2/(1+4)倍，得到1.32×10⁷ m/s。这是模型预测，不是第三条历史记录。",
+          "en": "At the same incident speed 3.3×10⁷ m/s, the upper recoil speed is 2/(1+4) times that, or 1.32×10⁷ m/s. This is a model prediction, not a third historical record."
+        }
+      }
+    },
+    "e3-chadwick-neutron": {
+      "sceneSlug": "nuclear-evidence-lab",
+      "question": {
+        "zh": "看不见入射粒子，怎样从反冲判断它的质量？",
+        "en": "How can recoil reveal an unseen projectile’s mass?"
+      },
+      "lead": {
+        "zh": "先看石蜡增加的电离，再比较氢、氮两种固定反冲记录与弹性碰撞候选。",
+        "en": "Observe the ionization increase with paraffin, then compare fixed hydrogen and nitrogen recoil records with elastic-collision candidates."
+      },
+      "principle": {
+        "zh": "同一入射速度上限下，两种靶的反冲速度比消去未知速度，约束入射粒子的质量；中性路径是推断，非带电径迹。",
+        "en": "For a common incident speed limit, the ratio of target recoil speeds removes unknown speed and constrains projectile mass. The neutral path is inferred, not a charged track."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保持中子入射能量，靶从氢换成氮，最大可传递能量会怎样？",
+          "en": "At fixed incident neutron energy, how does replacing hydrogen with nitrogen change maximum transfer?"
+        },
+        "explanation": {
+          "zh": "等质量的氢靶可取得全部入射动能；质量14倍的氮靶正碰上限为56/225，约24.9%。真实非正碰通常更低。",
+          "en": "An equal-mass hydrogen target can receive all incident kinetic energy. For a 14-times-heavier nitrogen target the head-on upper fraction is 56/225, about 24.9%; other collisions generally transfer less."
+        }
+      }
+    },
+    "e3-rutherford-proton": {
+      "sceneSlug": "nuclear-evidence-lab",
+      "question": {
+        "zh": "只看到远处闪烁，怎样再知道α粒子去了哪里？",
+        "en": "How can a distant flash be followed by evidence of the alpha’s fate?"
+      },
+      "lead": {
+        "zh": "将闪烁证据与后来的两条出射径迹分开，再看一个同时满足动量和能量的所选反应。",
+        "en": "Separate scintillation evidence from later two-track forks, then inspect a selected reaction conserving momentum and energy."
+      },
+      "principle": {
+        "zh": "产物鉴定与径迹拓扑支持α俘获形成氧17和质子；改变一个产物方向，另一产物必须补足总动量。",
+        "en": "Particle identification and track topology support alpha capture into oxygen 17 and a proton. Changing one outgoing direction requires the other product to balance total momentum."
+      },
+      "transfer": {
+        "question": {
+          "zh": "质子改为向后偏转，氧核的动量能保持原样吗？",
+          "en": "If the proton turns farther backward, can oxygen retain its old momentum?"
+        },
+        "explanation": {
+          "zh": "不能。氧核动量等于固定入射α动量减去质子动量，方向和大小必须共同调整，能量也须包含Q。",
+          "en": "No. Oxygen momentum equals the fixed incident alpha momentum minus proton momentum; its direction and magnitude must adjust, with Q included in energy accounting."
+        }
+      }
+    },
+    "e3-uranium-fission-discovery": {
+      "sceneSlug": "nuclear-evidence-lab",
+      "question": {
+        "zh": "为什么分离产物会迫使人们重新理解铀核？",
+        "en": "Why did chemical separation challenge the old uranium picture?"
+      },
+      "lead": {
+        "zh": "先比较未知产物和已知镭示踪物随钡载体的行为，再用本教材通道核对未知碎片。",
+        "en": "Compare the unknown and known radium tracers with barium carrier, then infer a missing fragment in the textbook channel."
+      },
+      "principle": {
+        "zh": "固定化学对照支持钡的身份；核裂变是对这项证据的物理解释。所选通道分别守恒核子数与电荷。",
+        "en": "Fixed chemical comparisons support barium’s identity; fission interprets that evidence physically. The selected channel separately conserves nucleon number and charge."
+      },
+      "transfer": {
+        "question": {
+          "zh": "若同样得到钡144，但只释放两个中子，守恒账目要求另一碎片是什么？",
+          "en": "If barium 144 is retained but only two neutrons emerge, what other fragment would the ledgers require?"
+        },
+        "explanation": {
+          "zh": "质量数为236−144−2=90，电荷数为92−56=36，即氪90。账目允许不等于已证实该通道的产额。",
+          "en": "Mass number 236−144−2=90 and charge 92−56=36 require krypton 90. A balanced ledger does not establish a channel’s yield."
+        }
+      }
+    },
+    "e3-uranium-multifragment-fission": {
+      "sceneSlug": "nuclear-evidence-lab",
+      "question": {
+        "zh": "多出一条细线，就能算一次多碎片裂变吗？",
+        "en": "Does one extra fine line establish a multi-fragment event?"
+      },
+      "lead": {
+        "zh": "保持径迹身份，改变焦平面，区分共同三维顶点与二维偶然交叉。",
+        "en": "Keep track identities while changing focus to distinguish a common 3D origin from a projected crossing."
+      },
+      "principle": {
+        "zh": "相关的起点、深度和动量关系共同约束事件；构造径迹和闭合向量不能代替真实粒子鉴定。",
+        "en": "Origin, depth and momentum jointly constrain an event. Constructed tracks and closed vectors do not replace particle identification."
+      },
+      "transfer": {
+        "question": {
+          "zh": "三条线投影相交，但细线只在另一深度清楚，这说明什么？",
+          "en": "Three projected lines cross, but the fine line focuses at another depth. What follows?"
+        },
+        "explanation": {
+          "zh": "它们不能仅凭投影交点归为同一核反应。还需检查三维位置等证据；这正是此反例要排除的误判。",
+          "en": "The projected crossing alone cannot group them into one reaction. Their 3D positions need checking; that is the false inference this comparison excludes."
+        }
+      }
+    },
+    "e3-fermi-controlled-chain-reaction": {
+      "sceneSlug": "nuclear-evidence-lab",
+      "question": {
+        "zh": "一次裂变放出多个中子，为什么下一代还可能变少？",
+        "en": "Why can the next generation shrink even when one fission emits several neutrons?"
+      },
+      "lead": {
+        "zh": "先跟踪中子的逃逸、吸收和下一次裂变，再从这些份额计算平均再生数和代际期望。",
+        "en": "Follow escape, absorption and subsequent fission, then calculate reproduction and generation expectations from those fractions."
+      },
+      "principle": {
+        "zh": "并非每颗中子都引发裂变。抽象模型中k=3(1−逃逸−吸收)，k≈1给出稳定期望，不代表每次事件相同。",
+        "en": "Not every neutron triggers fission. The abstract model uses k=3(1−escape−absorption); k≈1 gives a stable expectation, not identical events."
+      },
+      "transfer": {
+        "question": {
+          "zh": "在原本k=1的模型里，只提高非裂变吸收份额，后续期望如何改变？",
+          "en": "From k=1, increase only non-fission absorption. What happens to later expectations?"
+        },
+        "explanation": {
+          "zh": "可引发下一次裂变的份额下降，k低于1，平均规模逐代衰减。这是抽象概率账目，不是反应堆参数计算。",
+          "en": "The subsequent-fission fraction falls, making k<1 and generation averages decline. This is abstract probability accounting, not a reactor-parameter calculation."
+        }
+      }
+    }
+  },
+  "curriculumVariants": {
+    "e3-rutherford-proton": {
+      "chapterIds": ["nitrogen-flashes", "nitrogen-balance"],
+      "label": {
+        "zh": "质子证据",
+        "en": "Proton evidence"
+      }
+    },
+    "e3-chadwick-neutron": {
+      "chapterIds": ["neutron-recoil", "neutron-mass"],
+      "label": {
+        "zh": "中子证据",
+        "en": "Neutron evidence"
+      }
+    },
+    "e3-uranium-fission-discovery": {
+      "chapterIds": ["barium-product", "fission-channel"],
+      "label": {
+        "zh": "裂变发现",
+        "en": "Fission discovery"
+      }
+    },
+    "e3-uranium-multifragment-fission": {
+      "chapterIds": ["ternary-tracks", "quaternary-tracks"],
+      "label": {
+        "zh": "多碎片径迹",
+        "en": "Multiple-fragment tracks"
+      }
+    },
+    "e3-fermi-controlled-chain-reaction": {
+      "chapterIds": ["chain-generations", "controlled-chain"],
+      "label": {
+        "zh": "可控链式反应",
+        "en": "Controlled chain reaction"
+      }
+    },
+    "e1-chadwick-reference": {
+      "chapterIds": ["neutron-recoil", "neutron-mass"],
+      "sceneVariant": "e3-chadwick-neutron",
+      "label": {
+        "zh": "中子反冲",
+        "en": "Neutron recoil"
+      }
+    }
+  },
+  "scope": {
+    "ids": [
+      "nitrogen-flashes",
+      "nitrogen-balance",
+      "neutron-recoil",
+      "neutron-mass",
+      "barium-product",
+      "fission-channel",
+      "ternary-tracks",
+      "quaternary-tracks",
+      "chain-generations",
+      "controlled-chain"
+    ],
+    "entries": 6,
+    "distinctWindows": 5,
+    "preservedSpokenPairs": 9,
+    "changedSpokenIds": ["fission-channel"],
+    "retainedSpokenHash": "49bf7a16f107a9015f259a9b162157836428206aa5d96221b914a498af128496",
+    "nominalSeconds": 280,
+    "exactTiming": "Canonical existing280s. One replaced pair needs synthesis/measurement by root; other9 pairs byte-identical.",
+    "productSourceUntouched": true,
+    "retainedContract": "Nine spoken zh/en pairs are byte-identical to current canonical. Screen captions changed; no claim that all narration fields are unchanged."
+  },
+  "sourceCorrections": [
+    "Old topic attribution used Nature143233a0 for Meitner/Frisch; that URL is a different news item. Correct original letter is143239a0.",
+    "Selected textbook channel is144Ba+89Kr, not old141Ba+92Kr; both balance but only the former is printed on pp119–120.",
+    "PEP recoil pair3.3e7/4.4e6m/s is rounded textbook exercise; Chadwick lecture range-derived estimates3.7e7/4.7e6m/s are separate."
+  ],
+  "scientificBoundaries": [
+    "Fixed source records never depend on controls.",
+    "PEP recoil pair is a rounded exercise; Chadwick’s lecture pair is approximate inference from measured ranges, not raw timing data.",
+    "Hahn observations are qualitative; no fabricated fraction counts or partition yields. Completed indicator/cycle evidence was not all present at the first January1939 report.",
+    "Nitrogen uses nonrelativistic integer masses and Q, not an exact microscopic movie.",
+    "Fission channel144Ba/89Kr follows the printed textbook; conservation alone does not provide yield.",
+    "Track examples have arbitrary scale and illustrative focus, not reconstructed historical photos or calibrated optics.",
+    "Chain paths are selected illustrative histories; separate expectations derive from abstract fractions under exactly3 emitted neutrons per fission. No physical reactor geometry/material/calibration.",
+    "Generation plot uses one fixed log10(1+N) scale across settings; exact expectations are retained."
+  ],
+  "director": {
+    "status": "provisional, actual audio word cuts pending",
+    "chapters": [
+      {
+        "id": "nitrogen-flashes",
+        "window": [0, 28],
+        "visibleEvidence": "Range contrast then later reaction interpretation"
+      },
+      {
+        "id": "nitrogen-balance",
+        "window": [28, 56],
+        "visibleEvidence": "Fixed two-outgoing record then common-scale momentum"
+      },
+      {
+        "id": "neutron-recoil",
+        "window": [56, 84],
+        "visibleEvidence": "Paraffin before/after with separate neutron/proton identities"
+      },
+      {
+        "id": "neutron-mass",
+        "window": [84, 112],
+        "visibleEvidence": "Head-on transfer; fixed pairs and candidate; helium prediction"
+      },
+      {
+        "id": "barium-product",
+        "window": [112, 140],
+        "visibleEvidence": "Unknown vs weak known-Ra separation; reveal Ba inference"
+      },
+      {
+        "id": "fission-channel",
+        "window": [140, 168],
+        "visibleEvidence": "Capture/compound/split; hide then infer missing fragment"
+      },
+      {
+        "id": "ternary-tracks",
+        "window": [168, 196],
+        "visibleEvidence": "Shared vertex vs different-depth fine track"
+      },
+      {
+        "id": "quaternary-tracks",
+        "window": [196, 224],
+        "visibleEvidence": "Four tracks then a closed momentum polygon"
+      },
+      {
+        "id": "chain-generations",
+        "window": [224, 252],
+        "visibleEvidence": "Identity-preserving loss paths then generation expectation"
+      },
+      {
+        "id": "controlled-chain",
+        "window": [252, 280],
+        "visibleEvidence": "Stable average; hold future generations before reveal"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "nitrogen-flashes",
+        "cutsSeconds": [10, 20],
+        "events": ["range comparison", "signal", "later interpretation"]
+      },
+      {
+        "id": "nitrogen-balance",
+        "cutsSeconds": [6, 13],
+        "events": ["fixed two-outgoing observation", "selected40deg model", "100deg counterfactual"]
+      },
+      {
+        "id": "neutron-recoil",
+        "cutsSeconds": [8],
+        "events": ["no paraffin", "distinct neutral and charged-recoil identities"]
+      },
+      {
+        "id": "neutron-mass",
+        "cutsSeconds": [5, 10, 17, 22],
+        "events": [
+          "H target",
+          "N target",
+          "fixed record/candidate",
+          "fitted mass",
+          "helium prediction"
+        ]
+      },
+      {
+        "id": "barium-product",
+        "cutsSeconds": [8, 18],
+        "events": ["question", "source comparison", "Ba inference"]
+      },
+      {
+        "id": "fission-channel",
+        "cutsSeconds": [3, 6.2, 11, 17, 19],
+        "events": [
+          "incoming neutron",
+          "compound nucleus",
+          "split with unknown",
+          "ledger reveal",
+          "hold end"
+        ]
+      },
+      {
+        "id": "ternary-tracks",
+        "cutsSeconds": [8, 17, 22],
+        "events": ["tracks accumulated", "unrelated-depth counterexample", "focus other depth"]
+      },
+      {
+        "id": "quaternary-tracks",
+        "cutsSeconds": [8, 17],
+        "events": ["four tracks", "momentum closure"]
+      },
+      {
+        "id": "chain-generations",
+        "cutsSeconds": [10, 12, 20],
+        "events": ["path endpoints", "growing expectation", "higher-loss decreasing expectation"]
+      },
+      {
+        "id": "controlled-chain",
+        "cutsSeconds": [10, 12, 20],
+        "events": ["distinct neutron histories", "hold future generations", "stable-mean reveal"]
+      }
+    ]
+  },
+  "acceptance": {
+    "models": "19 scoped tests passed; final formatted rerun recorded in checks/final-checks.log",
+    "strictTypes": "Actual Astro strict TS options passed for candidate import graph",
+    "mdx": "Both articles compiled with actual installed Astro MDX compiler",
+    "sourceReview": "Primary PDFs/book images personally inspected; independent Hahn source and 448-assertion numerical peer reports retained",
+    "candidateScreens": "160 final full-Showcase paused states in native-review-04; 102 mode/view/range-endpoint states, two semantic control scenarios and 12 entry-language initializations; final helium-binding change rechecked in native-controls-05",
+    "wholePlayer": {
+      "environment": "Actual shared Showcase/CSS/fonts inside ignored candidate harness; no actual product route or site header",
+      "viewport": "320x568 desktop Chromium emulation",
+      "zhHeight": 492,
+      "enHeight": 506,
+      "top": 16,
+      "maxBottom": 522,
+      "fonts": "All SVG labels rendered16px; exploration buttons16px; native range targets280x44; visible buttons≥44px"
+    },
+    "cover": "Actual cover renderer with text removal personally viewed at card-like and white sizes; actual catalog/social consumers pending",
+    "audio": "Nine retained pairs; one changed pair not synthesized. No listening/word-time/native sound certification",
+    "rootReview": "pending; exact regular-file SHA manifest supplies source identity",
+    "productIntegration": "not run; no actual/src/shared edits",
+    "physicalPhonePerformance": "not run",
+    "continuousVisualPlayback": "not run; paused states and directed control actions only",
+    "globalVerifyBuild": "root responsibility after integration"
+  },
+  "rootIntegrationNotes": [
+    "Copy only regular-file manifest products, not checks or source downloads.",
+    "Preserve10 chapter IDs,6 entries and original source labels/pages.",
+    "Use explicit Chadwick alias sceneVariant for e1-chadwick-reference or retain component alias handling.",
+    "Correct Meitner/Frisch URL to Nature143239a0.",
+    "Only fission-channel spoken changes; measure that cue before fitting to<300s.",
+    "Read both retained voices word timings before final director alignment: provisional28s cuts are not a sync pass.",
+    "Actual site entry/SSR anchor/static consumer/native playback/global verify remain unrun here."
+  ],
+  "rootIntegration": {
+    "status": "integrated; final static validation pending",
+    "baseCommit": "6fc8f36612f16c11b721688ff1bcb510a866bbfa",
+    "editorialEdits": "artifacts/teaching-principles/batch-15-root-editorial-edits.json",
+    "measuredFinalAudio": true
+  },
+  "canonicalTiming": {
+    "duration": 280.0,
+    "chapters": [
+      {
+        "id": "nitrogen-flashes",
+        "title": "从远处的闪烁发现异常",
+        "titleEn": "Notice scintillations beyond the usual range",
+        "caption": "信号能告诉我们什么，不能告诉什么？",
+        "captionEn": "What does the signal establish?",
+        "at": 0
+      },
+      {
+        "id": "nitrogen-balance",
+        "title": "把产物放进守恒关系",
+        "titleEn": "Check the product bookkeeping",
+        "caption": "两种产物，必须同时满足守恒。",
+        "captionEn": "Both products must conserve momentum and energy.",
+        "at": 28.0
+      },
+      {
+        "id": "neutron-recoil",
+        "title": "让看不见的中性辐射撞击石蜡",
+        "titleEn": "Use paraffin to reveal neutral radiation",
+        "caption": "看不见的入射粒子，由带电反冲显现。",
+        "captionEn": "Charged recoil reveals the neutral projectile.",
+        "at": 56.0
+      },
+      {
+        "id": "neutron-mass",
+        "title": "用不同靶核检验质量",
+        "titleEn": "Compare recoil from different masses",
+        "caption": "用固定反冲记录检验候选质量。",
+        "captionEn": "Test a candidate mass against fixed recoil records.",
+        "at": 84.0
+      },
+      {
+        "id": "barium-product",
+        "title": "先在产物中认出钡",
+        "titleEn": "First identify barium among the products",
+        "caption": "同一分离方法，为什么它不像已知的镭？",
+        "captionEn": "Why does the unknown behave differently from radium?",
+        "at": 112.0
+      },
+      {
+        "id": "fission-channel",
+        "title": "核裂变不只有一个通道",
+        "titleEn": "Inspect one possible fission channel",
+        "caption": "留下未知碎片，先用两本账预测。",
+        "captionEn": "Predict the missing fragment from two ledgers.",
+        "at": 140.0
+      },
+      {
+        "id": "ternary-tracks",
+        "title": "在重径迹之外寻找轻碎片",
+        "titleEn": "Look beyond the two heavy tracks",
+        "caption": "投影相交，还要检查深度。",
+        "captionEn": "A projected crossing also needs a depth check.",
+        "at": 168.0
+      },
+      {
+        "id": "quaternary-tracks",
+        "title": "进一步检查四条相关径迹",
+        "titleEn": "Inspect four correlated tracks",
+        "caption": "共同顶点与动量闭合，约束同一事件。",
+        "captionEn": "A common vertex and momentum closure constrain one event.",
+        "at": 196.0
+      },
+      {
+        "id": "chain-generations",
+        "title": "比较相邻两代的规模",
+        "titleEn": "Compare successive generations",
+        "caption": "去向不同，中子仍各有自己的身份。",
+        "captionEn": "Follow each neutron to its own outcome.",
+        "at": 224.0
+      },
+      {
+        "id": "controlled-chain",
+        "title": "让平均规模保持稳定",
+        "titleEn": "Keep the average scale steady",
+        "caption": "先预测下一代，再揭晓期望计数。",
+        "captionEn": "Predict the next generations before revealing them.",
+        "at": 252.0
+      }
+    ]
+  }
+}

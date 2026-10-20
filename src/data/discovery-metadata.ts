@@ -898,6 +898,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         '铜',
         '浓硫酸',
         '硫化亚铁',
+        '换个伙伴，硫的电子去了哪里？',
       ],
       en: [
         'Sulfur across oxidation states',
@@ -908,6 +909,7 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
         'copper',
         'sulfuric acid',
         'iron sulfide',
+        'Change the partner: where do sulfur’s electrons go?',
       ],
     },
   },
@@ -1383,8 +1385,20 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['孟德尔的豌豆杂交', '细胞', '生物实验'],
-      en: ['Mendel’s pea crosses', 'cell biology', 'biology experiments'],
+      zh: [
+        '孟德尔的豌豆杂交',
+        '细胞',
+        '生物实验',
+        '子一代都是高茎，矮茎的遗传因子去了哪里？',
+        '消失的矮茎，为什么又回来了？',
+      ],
+      en: [
+        'Mendel’s pea crosses',
+        'cell biology',
+        'biology experiments',
+        'If every F1 plant is tall, where did the short factor go?',
+        'Why do short plants return after disappearing?',
+      ],
     },
   },
   'chem-iron-hydroxides': {
@@ -2968,11 +2982,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'matter',
     minAge: 14,
     keywords: {
-      zh: ['核反应的实验线索', '一个核发生了什么，怎样从产物和径迹判断？', '近代物理实验'],
+      zh: [
+        '核反应的实验线索',
+        '一个核发生了什么，怎样从产物和径迹判断？',
+        '近代物理实验',
+        '看不见核内部，怎样从产物判断发生了什么？',
+      ],
       en: [
         'Experimental clues to nuclear reactions',
         'How do products and tracks reveal a nuclear reaction?',
         'modern physics experiment',
+        'How do products reveal a reaction inside an unseen nucleus?',
       ],
     },
   },

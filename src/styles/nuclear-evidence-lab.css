@@ -1,0 +1,70 @@
+.nel-lab {
+  width: 100%;
+  max-width: 680px;
+  min-width: 0;
+  margin-inline: auto;
+  color: #405e52;
+}
+.nel-art {
+  display: block;
+  width: 100%;
+  height: 252px;
+  overflow: visible;
+}
+.nel-art text {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.nel-controls {
+  display: grid;
+  gap: 18px;
+  padding: 14px 4px 6px;
+  min-width: 0;
+}
+.nel-controls .segmented {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.nel-lab .nel-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+}
+.nel-controls label,
+.nel-controls p,
+.nel-controls summary {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.nel-controls details {
+  border-top: 1px solid #b4c2af66;
+  padding-top: 12px;
+}
+.nel-controls summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.nel-controls input[type='range'] {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin-inline: 0;
+}
+.nel-lab[data-watch='true'] {
+  padding: 0;
+}
+.nel-controls .range-control {
+  min-width: 0;
+}
+@media (min-width: 760px) {
+  .nel-art {
+    height: 252px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nel-lab * {
+    scroll-behavior: auto;
+  }
+}

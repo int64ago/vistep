@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
@@ -13,14 +13,23 @@ export default function ChemChlorineBleaching() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
     say = (a: string, b: string) => (en ? b : a);
-  const [view, setView] = useState('paper'),
-    [extent, setExtent] = useState(1),
-    [water, setWater] = useState(true);
+  const [chosenView, setView] = useState<string | null>(null),
+    [chosenExtent, setExtent] = useState<number | null>(null),
+    [water, setWater] = useState(true),
+    [gas, setGas] = useState(true);
+  const directed = bleachingDirector(
+    film.chapter,
+    film.chapterProgress,
+    film.chapterTime,
+    en ? 'en' : 'zh',
+  );
+  const view = chosenView ?? ['paper', 'flower', 'micro'][Math.max(0, Math.min(2, film.chapter))],
+    extent = chosenExtent ?? directed.extent;
   const d = film.watch
-    ? bleachingDirector(film.chapter, film.chapterProgress)
-    : { flower: view === 'flower', micro: view === 'micro', extent, water };
+    ? directed
+    : { flower: view === 'flower', micro: view === 'micro', extent, water, gas };
   const jar = (specimen: BleachSpecimen) => {
-    const m = chlorineBleaching(specimen, d.extent);
+    const m = chlorineBleaching(specimen, d.extent, d.gas);
     return (
       <svg
         viewBox="0 0 260 300"
@@ -44,7 +53,11 @@ export default function ChemChlorineBleaching() {
           stroke="#91a184"
           strokeWidth="2"
         />
-        <path d="M53 104H207V258Q207 269 195 269H65Q53 269 53 258Z" fill="#c3cd79" opacity=".15" />
+        <path
+          d="M53 104H207V258Q207 269 195 269H65Q53 269 53 258Z"
+          fill="#c3cd79"
+          opacity={d.gas ? 0.15 : 0}
+        />
         <ellipse cx="130" cy="51" rx="62" ry="8" fill="#d6ddcf" stroke="#8d9d80" />
         {specimen === 'flower' ? (
           <>
@@ -91,31 +104,48 @@ export default function ChemChlorineBleaching() {
     );
   };
   return (
-    <section className="chem-chlorine-bleaching" data-watch={film.watch}>
+    <section
+      className="chem-chlorine-bleaching"
+      data-watch={film.watch}
+      data-view={d.micro ? 'micro' : d.flower ? 'flower' : 'paper'}
+      data-water={d.water}
+      data-gas={d.gas}
+      data-extent={d.extent}
+    >
       {d.micro ? (
         <div className="chem-bleach-micro">
           <div className="chem-bleach-water">
-            <span>Cl₂</span>
+            <span>{d.gas ? 'Cl₂' : say('无氯气', 'No chlorine')}</span>
             <i>+</i>
             <span>{d.water ? 'H₂O' : say('干燥纸条', 'Dry paper')}</span>
-            <i>{d.water ? '⇌' : '→'}</i>
-            <span>
-              {d.water ? 'HCl + HClO' : say('本对照中不褪色', 'Colour retained in this control')}
-            </span>
+            <i>{d.water && d.gas ? '⇌' : '→'}</i>
+            <span>{d.water && d.gas ? 'HCl + HClO' : say('保留颜色', 'Colour retained')}</span>
           </div>
           <div className="chem-bleach-sites">
-            {chlorineBleaching(d.water ? 'wet-paper' : 'dry-paper', d.extent).units.map((u) => (
-              <div key={u.index} className={u.oxidized ? 'is-changed' : ''}>
-                <i />
-                <i />
-                <i />
-              </div>
-            ))}
+            {chlorineBleaching(d.water ? 'wet-paper' : 'dry-paper', d.extent, d.gas).units.map(
+              (u) => (
+                <div
+                  key={u.index}
+                  data-site-id={u.index}
+                  data-change={u.change}
+                  style={
+                    {
+                      '--bleach-change': u.change,
+                      '--bleach-colour': bleachColour(1 - u.change),
+                    } as CSSProperties
+                  }
+                >
+                  <i />
+                  <i />
+                  <i />
+                </div>
+              ),
+            )}
           </div>
           <div className="chem-bleach-key">
             <span>
               <i />
-              {say('原有着色结构', 'Original colour-bearing structure')}
+              {say('原着色结构', 'Original structure')}
             </span>
             <span>
               <i />
@@ -147,7 +177,9 @@ export default function ChemChlorineBleaching() {
             </>
           )}
           <div className="chem-bleach-gas">
-            {say('相同的干燥氯气', 'The same dry chlorine gas')}
+            {d.gas
+              ? say('相同的干燥氯气', 'Same dry chlorine')
+              : say('对照：无氯气', 'Control: no chlorine')}
           </div>
         </div>
       )}
@@ -162,6 +194,15 @@ export default function ChemChlorineBleaching() {
               { value: 'micro', label: say('水的作用', 'Water role') },
             ]}
             onChange={setView}
+          />
+          <Segments
+            label={say('氯气条件', 'Chlorine')}
+            value={gas ? 'present' : 'absent'}
+            options={[
+              { value: 'present', label: say('有氯气', 'Present') },
+              { value: 'absent', label: say('无氯气', 'Absent') },
+            ]}
+            onChange={(v) => setGas(v === 'present')}
           />
           {view !== 'flower' && (
             <Segments

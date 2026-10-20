@@ -1,54 +1,202 @@
 {
-  "slug": "chem-sulfur-transformations",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "reviewedAt": "2026-10-18T14:59:07.033374",
-  "files": {
-    "src/models/chem-sulfur-transformations.ts": "89ab91d73192ece807842a98a62105e6eb134526fb099234134a307c6a994175",
-    "src/models/chem-sulfur-transformations.test.ts": "4c72e1881be1f45c08b03dfb1397955dc87e424e7ee845c00e8c8a56de6eee4d",
-    "src/components/experiments/ChemSulfurTransformations.tsx": "7ca7c208869b42d7d770e988c364a531135881d2de0683af184748db9cb5e316",
-    "src/styles/chem-sulfur-transformations.css": "cbc2f0ba0b1ca71b3fb24936788b392bf23708a59817fa7b99050d1532cdf1f4",
-    "src/components/covers/ChemSulfurTransformationsCover.astro": "1095185d963b5af4838d3155a5bffa1fd26af2442ea5a65e907b94d1e4b87635",
-    "src/content/chem-sulfur-transformations.mdx": "d85c9ae81ef08e25afc10f55ce50b7717e977c6376c70450cd1ecb9e0e5aa2fd",
-    "src/content/en/chem-sulfur-transformations.mdx": "c33fd823d270a65e46b584ad67c892844fb537176e8fcc3d0c44adffbcb53d15",
-    "src/data/scene-packets/chem-sulfur-transformations.json": "f339e292f79f158016da41678bd2aa9bcdf0b4bae9a932c2ab006a3bc7650393"
+  "sceneSlug": "chem-sulfur-transformations",
+  "status": "frozen ignored candidate, root review/integration pending",
+  "kind": "Author self-review; independent net science separately attributed",
+  "sourceCommit": "b77c626ffcd0df30602337d9b03ea4e0e143b6de",
+  "checks": {
+    "tests": {
+      "status": "passed",
+      "total": 17,
+      "path": "artifacts/teaching-principles/batch-15-staging/chemistry/tests.json"
+    },
+    "strictTypecheck": {
+      "status": "passed",
+      "diagnostics": 0,
+      "path": "artifacts/teaching-principles/batch-15-staging/chemistry/typecheck.json"
+    },
+    "scopedFormat": {
+      "status": "passed",
+      "scope": [
+        "src/models/chem-sulfur-transformations.ts",
+        "src/models/chem-sulfur-transformations.test.ts",
+        "src/components/experiments/ChemSulfurTransformations.tsx",
+        "src/components/experiments/ChemSulfurTransformations.exploration.test.tsx",
+        "src/styles/chem-sulfur-transformations.css",
+        "src/components/covers/ChemSulfurTransformationsCover.astro",
+        "src/content/chem-sulfur-transformations.mdx",
+        "src/content/en/chem-sulfur-transformations.mdx",
+        "drafts/chem-sulfur-transformations/brief.md",
+        "drafts/chem-sulfur-transformations/principle-first-packet.json",
+        "drafts/chem-sulfur-transformations/review.json"
+      ],
+      "command": "pnpm exec prettier --ignore-path /dev/null --check <exact11owned>"
+    },
+    "sources": {
+      "status": "read within source-ledger limits",
+      "ledger": "artifacts/teaching-principles/batch-15-staging/chemistry/sources/source-ledger.json",
+      "textbookPages": "P1–9/P30–31 full extracted text; P5/P8/P30 page images actually inspected",
+      "unavailable": "RSC full paper and direct IUPAC page unavailable; abstract/indexed definition only"
+    },
+    "independentScience": {
+      "reviewer": "biology_inventory",
+      "assertions": 789,
+      "path": "artifacts/teaching-principles/batch-15-cross-review/biology-sulfur-review.json",
+      "scope": "Persistent atom IDs, formal electron-transit accounts, limiting Cu/acid, two acidic Mn endpoint budgets and H/O/charge; no UI or original research rereading"
+    },
+    "simpleHarness": {
+      "frames": 92,
+      "controls": 116,
+      "scope": "Earlier isolated component with surrogate captions/controls and Arial; not full player"
+    },
+    "sharedPlayer": {
+      "status": "passed measured bounds and selected manual stills",
+      "frames": 56,
+      "windows": [
+        {
+          "entry": "chem-required-2-experiment-5-3",
+          "chapterCount": 3,
+          "firstScene": "copper-gas-evidence"
+        },
+        {
+          "entry": "chem-required-2-inquiry-p8",
+          "chapterCount": 9,
+          "firstScene": "sulfur-state-map"
+        },
+        {
+          "entry": "chem-required-2-activity-5",
+          "chapterCount": 8,
+          "firstScene": "sulfide-sulfurIV"
+        }
+      ],
+      "viewports": [
+        [320, 568],
+        [1100, 568]
+      ],
+      "locales": ["en", "zh"],
+      "font": "Real repository Manrope/Noto Sans SC loaded by editorial CSS",
+      "maxHeight": 546.1875,
+      "maxBottom": 562.1875,
+      "minSvgFont": 16,
+      "report": "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/report.json",
+      "manualFrames": [
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/en-320-mn-answer.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/en-320-atom-motion.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/en-320-atom-end.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/en-1100-gas.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/zh-320-mass.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/zh-320-front.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/en-320-front.png",
+        "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/zh-320-electrons.png"
+      ],
+      "limitation": "Actual Showcase component and repository CSS/fonts, but isolated candidate assembly with provisional film, not published routes; not every auto-captured frame was manually inspected."
+    },
+    "nativeControls": {
+      "status": "passed",
+      "states": 42,
+      "report": "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/controls.json",
+      "scope": "Actual shared Showcase chapter navigation/play/pause/explore/return in three isolated windows, both languages, plus candidate atom controls"
+    },
+    "cover": {
+      "status": "Astro source compiled, rendered and manually inspected in isolation",
+      "image": "artifacts/teaching-principles/batch-15-staging/chemistry/candidate-stage/cover.png",
+      "consumerSource": "Existing TopicCover.astro import and slug branch verified read-only",
+      "actualConsumers": "root pending"
+    },
+    "fullPlayback": {
+      "status": "not run; short play/pause checks only"
+    },
+    "newVoice": {
+      "status": "not generated"
+    },
+    "measuredSynchronization": {
+      "status": "not measured; provisional chapterTime only"
+    },
+    "physicalDevicePerformance": {
+      "status": "not run"
+    },
+    "globalVerifyBuild": {
+      "status": "root-owned, not run"
+    }
   },
-  "modelTests": {
-    "status": "passed",
-    "count": 4
-  },
-  "ownedTypeScriptDiagnostics": 0,
-  "packetValidation": "passed",
-  "scopedPrettier": "passed",
-  "viewport": "320x844 emulated Chromium, reduced motion, muted, paused chapter seeks",
-  "visual": {
-    "initialSweep": "English chapters 1–8 passed; chapter0 transient navigation-context failure passed on retry. Chinese selected chapters 1,3,5,6,7 passed.",
-    "revisions": "Corrected cooled transfer mouth/stream geometry; final chapter now shows computed Fe excess and oxygen branches; refined withdrawal state label.",
-    "finalChecks": "Changed chapters 5,6,8 passed in both languages; active thermal front inspected at 25% chapter7. Updated English chapter title rechecked after isolated dictionary refresh.",
-    "practicalVariant": "Two author-fixture cases forcing practical=true in isolated snapshot for chapters3,4 passed. Actual curriculum route still root acceptance. Fixture restored.",
-    "actuallyInspectedImages": [
-      "sulfide tube",
-      "copper wire gas apparatus",
-      "copper piece variant",
-      "corrected cooled solution transfer",
-      "local ignition",
-      "active travelling front",
-      "cooled strip",
-      "Fe excess and oxygen boundary"
+  "resolvedFindings": [
+    {
+      "kind": "actual layout",
+      "issue": "Long EN heat-model limitation extended outside320viewport",
+      "fix": "Short main-view limitation, full explanation in article/details"
+    },
+    {
+      "kind": "actual layout",
+      "issue": "Real shared-player EN budget bottom exceeded568 by0.34px",
+      "fix": "Shorter assumed-endpoints note; removed unused8px atom viewBox space to retain16px top"
+    },
+    {
+      "kind": "scientific UI clarity",
+      "issue": "An arrow from MnO4 to10electrons could suggest emission",
+      "fix": "Explicitly states MnO4 accepts electron units"
+    },
+    {
+      "kind": "state wording",
+      "issue": "Manual stopping view always claimed contact ended",
+      "fix": "Current event vs stoppingpoint now controls both geometry and wording"
+    },
+    {
+      "kind": "source-label clarity",
+      "issue": "Moving atoms left frames still labelled complete H2SO4",
+      "fix": "Intermediate frames labelled OriginA/B; initial and final full-composition labels remain"
+    }
+  ],
+  "harnessFindings": [
+    {
+      "issue": "First whole-player runner used obsolete .film-progress selector",
+      "classification": "harness timeout, not product failure"
+    },
+    {
+      "issue": "First full-player harness omitted showcase/language CSS and displayed hidden caption-measure copies",
+      "evidence": "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/incomplete-css-report.json",
+      "classification": "harness setup, repaired before valid measurements"
+    },
+    {
+      "issue": "Control script assumed Return was paused though native replay resumes",
+      "evidence": "artifacts/teaching-principles/batch-15-staging/chemistry/whole-player/controls-initial-toggle-assumption.json",
+      "classification": "harness expectation, explicit play/pause tested after correction"
+    }
+  ],
+  "handoff": {
+    "ownedFiles": 11,
+    "retainedIds": [
+      "sulfur-state-map",
+      "sulfide-sulfurIV",
+      "sulfide-permanganate",
+      "copper-gas-evidence",
+      "stop-and-cool",
+      "copper-solution-evidence",
+      "iron-sulfur-ignition",
+      "iron-sulfur-front",
+      "evidence-and-boundaries"
     ],
-    "evidenceDirectories": [
-      "artifacts/chemistry-inventory/review-sulfur-transformations",
-      "artifacts/chemistry-inventory/review-sulfur-transformations-zh",
-      "artifacts/chemistry-inventory/review-sulfur-front",
-      "artifacts/chemistry-inventory/review-sulfur-final",
-      "artifacts/chemistry-inventory/review-sulfur-final-zh",
-      "artifacts/chemistry-inventory/review-sulfur-practical",
-      "artifacts/chemistry-inventory/review-sulfur-final-label"
-    ]
+    "retainedEntries": [
+      "chem-required-2-experiment-5-3",
+      "chem-required-2-inquiry-p8",
+      "chem-required-2-activity-5"
+    ],
+    "preservedCues": [3, 4, 6, 7],
+    "changedCues": [0, 1, 2, 5, 8],
+    "plannedDuration": 259.5,
+    "actualWrites": false,
+    "sharedWrites": false,
+    "tts": false,
+    "commit": false
   },
-  "notRun": [
-    "continuous real-time full viewing",
-    "native listening (root synthesizes)",
-    "physical phone",
-    "root independent desktop / exploration / curriculum route review"
-  ]
+  "modelSHA": "ef695f1b23b4fddfc831d26825a6e9b992bcd257a1bb1bbdf11b6d7ec572e907",
+  "componentSHA": "7ca65a97e44df60bc13e97c21fdd60d43835eabb3e354547409a98b4127a058f",
+  "rootIntegration": {
+    "batch": 15,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-15-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
 }

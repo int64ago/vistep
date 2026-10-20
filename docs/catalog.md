@@ -20,7 +20,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | Exploration                                                                           | Film | Question                                                         |
 | ------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | [Evidence behind particle discoveries](../src/content/en/particle-evidence-lab.mdx)   | 4:54 | How do unseen particles leave measurable traces?                 |
-| [Experimental clues to nuclear reactions](../src/content/en/nuclear-evidence-lab.mdx) | 4:40 | How do products and tracks reveal a nuclear reaction?            |
+| [Experimental clues to nuclear reactions](../src/content/en/nuclear-evidence-lab.mdx) | 4:40 | How do products reveal a reaction inside an unseen nucleus?      |
 | [Decay statistics and applications](../src/content/en/decay-measurement-lab.mdx)      | 2:48 | How can unpredictable decays measure time and transport?         |
 | [Detecting invisible radiation](../src/content/en/radiation-evidence-lab.mdx)         | 4:40 | How do plates, ionization and tracks reveal invisible radiation? |
 | [Electron and crystal diffraction](../src/content/en/matter-wave-lab.mdx)             | 3:16 | Why do particles leave wave-like patterns?                       |
@@ -89,7 +89,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Same composition, different structures](../src/content/en/chem-wohler-isomers.mdx)                 | 3:07 | Does a formula tell us how atoms connect?                                     |
 | [The ammonia fountain](../src/content/en/chem-ammonia-fountain.mdx)                                 | 2:16 | Why does water fountain upward into the flask?                                |
 | [Nitrogen oxides: colour and fate](../src/content/en/chem-nitrogen-oxides.mdx)                      | 3:08 | Has a gas disappeared when its colour fades?                                  |
-| [Sulfur across oxidation states](../src/content/en/chem-sulfur-transformations.mdx)                 | 3:57 | How does sulfur move between oxidation states?                                |
+| [Sulfur across oxidation states](../src/content/en/chem-sulfur-transformations.mdx)                 | 4:23 | Change the partner: where do sulfur’s electrons go?                           |
 | [Sucrose dehydration and expansion](../src/content/en/chem-sugar-carbonization.mdx)                 | 2:14 | Does an expanding black column contain more carbon?                           |
 | [Following sulfur dioxide](../src/content/en/chem-sulfur-dioxide.mdx)                               | 2:14 | Can a vanished colour return?                                                 |
 | [Molecular shapes](../src/content/en/chem-molecular-shapes.mdx)                                     | 4:11 | Do polar bonds always make a polar molecule?                                  |
@@ -149,7 +149,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Meiosis and chromosome transmission](../src/content/en/bio-meiosis.mdx)                          | 3:37 | How do one replication and two divisions produce distinct single sets?           |
 | [Population surveys and sampling](../src/content/en/bio-population-sampling.mdx)                  | 4:19 | How can a partial observation estimate a whole population?                       |
 | [Environmental sensing in plants](../src/content/en/bio-plant-environment.mdx)                    | 3:24 | How do plants turn light, temperature and gravity into growth signals?           |
-| [Mendel’s pea crosses](../src/content/en/bio-mendel-crosses.mdx)                                  | 3:39 | Track inherited factors from controlled pollination to quantitative tests.       |
+| [Mendel’s pea crosses](../src/content/en/bio-mendel-crosses.mdx)                                  | 4:09 | If every F1 plant is tall, where did the short factor go?                        |
 | [Differentiation, senescence and cell death](../src/content/en/bio-cell-fates.mdx)                | 3:16 | Cell fates: information, origins and execution                                   |
 | [Investigating plant growth regulators](../src/content/en/bio-plant-growth-regulators.mdx)        | 3:05 | How do comparisons reveal effects on growth, roots and ripening?                 |
 | [Cell division and fixed specimens](../src/content/en/bio-cell-division.mdx)                      | 3:16 | Cell division: shape, order and counting                                         |

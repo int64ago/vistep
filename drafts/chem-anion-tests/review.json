@@ -1,0 +1,136 @@
+{
+  "sceneSlug": "chem-anion-tests",
+  "status": "frozen candidate, pending root integration and final static acceptance",
+  "owner": "biology_inventory (author self-review)",
+  "sourceCommit": "e387df5dbb628699867062b12ea40b9f88cd77bd",
+  "recordedAt": "2026-10-18T20:58:21.348206+00:00",
+  "ownedProductHashes": {
+    "src/models/chem-anion-tests.ts": "b40906b06aec96ce0b4327f63f1620d07b8040fd1ba431a845fe1e25c82c39eb",
+    "src/models/chem-anion-tests.test.ts": "78bb3f22c03d5e787953d25bf749321918edefd13e743f7eefebe489dcc6d92b",
+    "src/components/experiments/ChemAnionTests.tsx": "c7b3c7ed5a135b9d22ca37aded2d4fc908a5e199be9d21f6d6b1d0008758c775",
+    "src/styles/chem-anion-tests.css": "e45e5719185e323f1f6dceac0c572f7ac39b75a0653cb9d44e12a3a5b410d0d4",
+    "src/components/covers/ChemAnionTestsCover.astro": "6e458b67c6939b97d730b0c92e1cc848b947f610b2fd756f96fcaeea1cb15bac",
+    "src/content/chem-anion-tests.mdx": "4a07abf3efa56a812f5f931ed75c00d5916e28c32d92bf26d0a870885c1636d3",
+    "src/content/en/chem-anion-tests.mdx": "c726c16c5d06434b96b347b7546731f0e1a263a192fc930541b2882c9f7b9a08"
+  },
+  "originalActualProductHashes": {
+    "src/models/chem-anion-tests.ts": "3518ab0568e54d27dd7c73ef7e2067890c5f295dffdce43b0a458111add4ba6c",
+    "src/models/chem-anion-tests.test.ts": "5ac97a5c6e66b6a7ec7a7e06a4d77c3a378ce6fc15c9edf55d21cbe22da68229",
+    "src/components/experiments/ChemAnionTests.tsx": "ae1f88214b4a8861a6c08069bb10f253a1ee536e1eabf7760cac534615b475c3",
+    "src/styles/chem-anion-tests.css": "ecd2c4756ac09653bf6fde6e7a4ee36d2bd572be395f4351ec523c7e93ff0e60",
+    "src/components/covers/ChemAnionTestsCover.astro": "efb159e0d39880cbb717c6de0c3537c5144d3f4eb0642d909d5d9371acd4b260",
+    "src/content/chem-anion-tests.mdx": "4a2b0f2b2ceda40a7841903d20a5f831821f7707e410fd908559b0856b723b91",
+    "src/content/en/chem-anion-tests.mdx": "599f5c12f314532ef9465874e193e7697a2dec6a52cbcdb78171335521349c83"
+  },
+  "scope": "Only ignored retained mirror modified. Actual src/drafts/shared/audio/index untouched by this owner.",
+  "checks": {
+    "strictTypeScript": {
+      "status": "passed",
+      "report": "typecheck.json"
+    },
+    "modelTests": {
+      "status": "passed",
+      "countAcrossBothScenes": 15,
+      "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-15-staging/retained/vitest.config.mjs",
+      "coverage": "independent endpoint expectations, conservation, bounded inputs, no-gas/no-water controls, continuous persistent site IDs, monotone finite carbon routes and recorded speech anchors"
+    },
+    "mdx": {
+      "status": "passed",
+      "countAcrossBothScenes": 4,
+      "renderer": "Installed Satteri MDX compiler used by Astro7",
+      "report": "checks/mdx-compile.json"
+    },
+    "wholePlayerAutomation": {
+      "status": "passed",
+      "uniqueCasesThisScene": 72,
+      "viewportCases": ["zh1100x900", "en1100x900", "zh320x568", "en320x568"],
+      "maximumPhoneBottom": 558.84375,
+      "reports": ["checks/whole-player-final/report.json", "checks/metal-fate-final/report.json"],
+      "scope": "Settled real player, native chapterTime via seek, short captions plus dictionary proposal. HTML scene text16px, scaled SVG text checked, transport targets44px. This is not complete playback."
+    },
+    "nativeReactControls": {
+      "status": "passed",
+      "countAcrossBothScenes": 88,
+      "report": "checks/controls-final/report.json",
+      "scope": "Current-chapter default, manual choice persistence, watch isolation, all zero/partial/full chemistry inputs, finite gas end, 16px buttons/44px targets, focus spacing."
+    },
+    "textbookEntries": {
+      "status": "passed",
+      "countAcrossBothScenes": 18,
+      "report": "checks/entry-review-ssr/report.json",
+      "scope": "Three windows × two languages. Actual min/max/initial apparatus and fresh #experiment fit. Requires the precise SSR CSS proposal in packet."
+    },
+    "nativePlayer": {
+      "status": "passed",
+      "countAcrossBothScenes": 36,
+      "report": "checks/native-player/report.json",
+      "scope": "Actual chapter buttons, seek/replay bounded to entry, deliberately blocked MP3 produces retry message and preserves SVG. Not complete playback/listening."
+    },
+    "ASR": {
+      "status": "reviewed; one root-authorized bounded exception",
+      "countAcrossBothScenes": 18,
+      "report": "checks/transcription.json",
+      "secondDecodes": [
+        "checks/second-asr-zh-3.json",
+        "checks/second-asr-zh-5.json",
+        "checks/second-asr-en-5.json"
+      ],
+      "findings": "All18 full transcripts read. Mandarin scientific homophones (钡→碑/贝/被; 稀→锡; 检出限→减出线) recorded. English final-cue blanks→blinks persisted in both independent decoders; proposal changes that last sentence only. No listening claim."
+    },
+    "servedCovers": {
+      "status": "author actually viewed",
+      "files": ["checks/bleach-served-cover-final.png", "checks/anion-served-cover-final.png"],
+      "fix": "Nested cover viewBox now matches actual400:230consumer ratio, removing unintended transparent side strips. Actual Astro /covers/*.png route rendered against candidate models."
+    },
+    "peerReview": {
+      "status": "bounded conceptual/source reading only; no independent candidate execution",
+      "reviewer": "chemistry_inventory",
+      "scope": "Peer read original anion functions/voice and agreed net-budget limits; busy with own final native player so did not execute candidate tests."
+    },
+    "globalVerify": "not run by owner; root required",
+    "fullNativePlayback": "not run; root final static required",
+    "naturalBilingualListening": "not run",
+    "physicalPhonePerformance": "not run",
+    "finalProductionSocialCatalog": "not run; root integration required"
+  },
+  "authorVisualReview": {
+    "status": "actually opened selected original-resolution desktop/320phone frames; not all132 screenshot files manually watched",
+    "examples": [
+      "checks/whole-player-final/chem-anion-tests-en-320-0-0.05.png",
+      "checks/whole-player-final/chem-anion-tests-en-320-4-0.18.png",
+      "checks/whole-player-final/chem-anion-tests-zh-1100-4-0.18.png",
+      "checks/metal-fate-final/chem-anion-tests-en-320-2-0.5.png",
+      "checks/metal-fate-final/chem-anion-tests-zh-320-5-0.5.png",
+      "checks/controls-second/en-focused-controls.png",
+      "checks/anion-served-cover-final.png"
+    ]
+  },
+  "retainedFailedEvidence": [
+    "checks/whole-player-first: overflow findings",
+    "checks/whole-player-second: new English captions missing dictionary overlay; excluded from final English validation",
+    "checks/controls-first: harness rejected malformed range string .5; corrected to0.5, no product defect",
+    "checks/entry-review: original90px anchor overflow; exact SSR proposal validated in entry-review-ssr"
+  ],
+  "boundedNarrationExceptions": [
+    {
+      "id": "sulfate-evidence",
+      "locale": "en"
+    }
+  ],
+  "sourceReviewFile": "drafts/chem-anion-tests/source-review.json",
+  "remainingRootWork": [
+    "Integrate exact owned files and shared packet proposals.",
+    "Generate only anion EN sulfate-evidence replacement, then independently decode and remeasure final timing; do not overwrite other17spoken strings.",
+    "Global verification, static build, final complete native playback, independent visual acceptance and authorized release."
+  ],
+  "rootIntegration": {
+    "batch": 15,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-15-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "sceneSlug": "bio-mendel-crosses",
+  "batch": 15,
+  "owner": "biology scene author",
+  "status": "ignored candidate frozen; root integration pending",
+  "createdAt": "2026-10-18T20:41:53.078155+00:00",
+  "sourceCommit": "b77c626ffcd0df30602337d9b03ea4e0e143b6de",
+  "scope": "Only ten regular files in ignored mirror are handed off. No actual src/drafts/shared/audio/index/build writes.",
+  "preservation": {
+    "chapterIds": [
+      "pollination",
+      "parents",
+      "self",
+      "sampling",
+      "test",
+      "diParents",
+      "diSelf",
+      "diTest"
+    ],
+    "windows": {
+      "bio-required-2-003-1": ["pollination", "parents", "self"],
+      "bio-required-2-006-1": ["sampling"],
+      "bio-required-2-007-1": ["test"],
+      "bio-required-2-009-1": ["diParents", "diSelf"],
+      "bio-required-2-011-1": ["diTest"]
+    },
+    "retainedSpokenCues": ["sampling", "test", "diParents", "diTest"],
+    "unchangedSpokenStringsVerified": 8,
+    "newSpokenCues": ["pollination", "parents", "self", "diSelf"],
+    "plannedSeconds": 248,
+    "measuredSeconds": null
+  },
+  "sourceReview": {
+    "textbook": "Required2 complete P1–17; actual P7/P11 rendered-page inspection",
+    "primary": "Relevant original translated Mendel sections2,4–6,8–9; no scanned German original independently read",
+    "ledger": "sources/source-review.json",
+    "disclosedAdaptations": [
+      "87/79 are original multi-trait stem-height marginal counts, following textbook simplification",
+      "P11 last male count26 in textbook versus27 in consulted original translation; no silent correction"
+    ]
+  },
+  "authorAutomated": {
+    "strictTypeScript": {
+      "passed": true,
+      "errors": 0,
+      "report": "typecheck.json"
+    },
+    "modelTests": {
+      "passed": 9,
+      "config": "owned-vitest.config.mjs"
+    },
+    "actualReactControls": {
+      "checks": 60,
+      "failures": 0,
+      "errors": [],
+      "report": "native-controls/report.json",
+      "conditions": "ZH/EN320×568; native buttons/select/keyboard ranges in isolated Vite React harness; watch/explore separation, default theme, persistent explicit choice, fixed records, counterfactual, counts and factor IDs",
+      "notWholePlayer": true
+    },
+    "isolatedKeyframes": {
+      "count": 88,
+      "overflows": 0,
+      "fontFailures": 0,
+      "minMeasuredHTMLFont": 16,
+      "minMeasuredSVGFont": 16,
+      "phoneMaxStageHeight": 322.75,
+      "report": "handoff-keyframes/report.json",
+      "conditions": "ZH/EN320×568 and1100×900, system font fallback, reduced motion, fixed seeks; stage only"
+    },
+    "mdx": {
+      "passed": 2,
+      "report": "mdx-compile.json",
+      "renderer": "Actual installed Astro7 satteri MDX renderer"
+    },
+    "cover": {
+      "compiledRendered": true,
+      "script": "render-cover.mjs",
+      "image": "candidate-stage/cover.png",
+      "productionConsumersTested": false
+    }
+  },
+  "authorVisual": {
+    "status": "Actually inspected decisive images for all8chapters, phone and desktop; not all88 images claimed manually inspected. Not a full film or shared player.",
+    "paths": [
+      "handoff-keyframes/zh-320-1-observation.png",
+      "second-keyframes/en-320-0-chosen.png",
+      "second-keyframes/en-320-1-transmitted.png",
+      "final-reviewed-keyframes/en-320-2-matrix.png",
+      "final-reviewed-keyframes/en-320-3-return.png",
+      "second-keyframes/zh-320-4-test-transfer.png",
+      "second-keyframes/en-320-5-di-transfer.png",
+      "first-keyframes/en-320-6-di-gametes.png",
+      "second-keyframes/en-320-6-di-matrix.png",
+      "second-keyframes/en-320-6-di-predict.png",
+      "second-keyframes/zh-320-7-di-test-record.png",
+      "final-reviewed-keyframes/en-1100-1-f1.png",
+      "second-keyframes/en-1100-7-di-test-record.png",
+      "native-controls/en-320-explore.png",
+      "candidate-stage/cover.png"
+    ],
+    "findingsResolved": [
+      "Phone prediction shortened365→323px while retaining four class images and probabilities",
+      "Final transmission outcome hidden until joining; test chapter no longer changes factor identity mid-flight",
+      "Same cell matrix explicitly shows both heterozygous cells, computed1:2:1 genotype summary and3:1 phenotypes",
+      "SVG auto margins corrected for cohesive centered result/F1 groups",
+      "Random-sample harness initially assumed any new seed must change counts; seeds17/18 legitimately have equal counts. Harness corrected to compare multiple seeds; failed report preserved as initial-harness-failure.json"
+    ],
+    "finalAutomatedCaptureDirectory": "handoff-keyframes",
+    "versionNote": "Earlier named files are the actual personally opened images. Later capture includes final genotype labels, cohesive F1/result spacing and shortened sample note; affected changed states were personally re-opened. Automated capture alone is not manual review."
+  },
+  "independentPeer": {
+    "status": "bounded pass, not scene acceptance",
+    "checks": 1896,
+    "modelSha256": "f3eb34a5423c9482b379ce49dac99d5ccee13e9fba614f325c7bb183361d8a32",
+    "report": "artifacts/teaching-principles/batch-15-cross-review/chemistry-review-mendel.json",
+    "scope": "Independent bounded execution of candidate functions; no UI, narration, full paper or botanical linkage assertion. Parental-only comparison applies to specified coupling YR/yr with zero recombination.",
+    "findings": []
+  },
+  "pendingRoot": [
+    "Actual8chapter and5learning-window routes",
+    "Shared packet integration and final bundled-font whole320×568player",
+    "Changed4cue TTS and retained4cue measured sync",
+    "Independent scientific-term ASR and full naturalness listening recorded separately",
+    "Measured word-time director calibration",
+    "Native static uninterrupted playback/seek/replay/endpoints and audio failure/retry",
+    "Physical phone performance",
+    "Scene check/full verify/preview build/catalog and social cover consumers"
+  ],
+  "publication": {
+    "ttsGenerated": false,
+    "gitCommitted": false,
+    "deployed": false
+  },
+  "rootIntegration": {
+    "batch": 15,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-15-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

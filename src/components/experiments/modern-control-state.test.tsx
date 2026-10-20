@@ -27,7 +27,8 @@ const film = vi.hoisted(() => ({
 }));
 vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
 vi.mock('../../i18n', () => ({ browserLocale: () => 'en' }));
-vi.mock('../lab/Controls', () => ({
+vi.mock('../lab/Controls', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../lab/Controls')>()),
   Range: (props: {
     label: string;
     onChange: (n: number) => void;
@@ -112,8 +113,15 @@ describe('modern-physics film state is independent of exploration', () => {
           (b) =>
             !['modern-paths'].includes(b.parent?.props.className) ||
             /Background|ensemble|sample|Sun|sun|phase|Field|Reverse/i.test(b.children.join('')),
-        );
-      for (const toggle of toggles) await act(() => toggle.props.onClick());
+        )
+        // Snapshot actions before apparatus changes unmount their original buttons.
+        .map((button) => button.props.onClick as () => void);
+      for (const toggle of toggles) await act(() => toggle());
+      if (name === 'nuclear reaction') {
+        // Exercise the real segmented buttons as well as the numeric ranges.
+        expect(input(view, 'Observation progress').props.value).toBe(1);
+        expect(view.root.findByType(Artwork).props).not.toEqual(baseline);
+      }
       film.watch = true;
       await act(() => view.update(createElement(Component)));
       expect(view.root.findByType(Artwork).props).toEqual(baseline);

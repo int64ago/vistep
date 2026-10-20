@@ -1,6 +1,10 @@
 ---
 import { NuclearArtwork } from '../experiments/NuclearEvidenceLab';
 import StaticArtworkCover from './StaticArtworkCover.astro';
+import { nuclearDirector } from '../../models/nuclear-evidence';
 ---
 
-<StaticArtworkCover artwork={NuclearArtwork} options={{ mode: 1, value: 0.6, progress: 0.7 }} />
+<StaticArtworkCover
+  artwork={NuclearArtwork}
+  options={{ shot: nuclearDirector(6, 0.4, 11), width: 340 }}
+/>

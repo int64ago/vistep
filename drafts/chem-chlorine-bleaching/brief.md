@@ -7,3 +7,11 @@
 源：本地必修一46—47页全文；RSC氯气与水原始教学实验；JACS Au原始研究只支持HOCl可漂白实际染料。限制：干湿对照条件下的结论，不推断所有干燥有机物都不反应；归一化进程不是剂量或时间。
 
 验证：4项模型测试、packet只读检查通过。手机/桌面实际浏览器停帧、连续观看、配音试听、真机仍待主agent独立验收。watch与explore隔离，全部中文说明至少16px、操作目标44px；封面同模型取最终干湿差异。
+
+## Batch 15 retained-content correction
+
+The original causal explanation and chapter sequence remain. The candidate fixes measured visual timing, current-chapter exploration defaults with persistent manual choices, finite and zero inputs, and a separately composed phone player. Caption-only shortening keeps the complete reasoning in the recording and article. Textbook windows and original entry names remain fixed.
+
+The same 24 schematic colour-bearing units now change continuously without losing IDs. Removing chlorine and removing water independently preserve the original state. No reaction rate or specific pigment product is inferred. The flower remains a tissue-with-water counterexample, not a contradiction of the dry-gas comparison. All six spoken strings are retained.
+
+The complete-player candidate is reviewed through an isolated Astro overlay. This is real React/player interaction, but not final static integration or a complete native listening review. The first overlay omitted new caption translations; that failed evidence is retained separately. The final runtime proposal includes both caption sources and the dictionary, plus the same SSR short-screen anchor rule already used by other topics.

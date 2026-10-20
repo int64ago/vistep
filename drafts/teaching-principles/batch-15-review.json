@@ -1,0 +1,191 @@
+{
+  "batch": 15,
+  "status": "validated-awaiting-publication",
+  "scenes": [
+    "nuclear-evidence-lab",
+    "chem-sulfur-transformations",
+    "bio-mendel-crosses",
+    "chem-chlorine-bleaching",
+    "chem-anion-tests"
+  ],
+  "chapters": 36,
+  "teachingWindows": 17,
+  "direction": "Phenomenon → independent evidence → mechanism/theory → prediction. Preserve original textbook order.",
+  "durations": {
+    "nuclear-evidence-lab": 280.0,
+    "chem-sulfur-transformations": 262.5,
+    "bio-mendel-crosses": 249,
+    "chem-chlorine-bleaching": 89,
+    "chem-anion-tests": 158.5
+  },
+  "integrationReport": "artifacts/teaching-principles/batch-15-integration-proposal/report.json",
+  "integrationReportSHA256": "f5d135bfedae586d6eea2008369e39678be986e1a170778f87a54c404df12dd9",
+  "sourceAudit": "artifacts/teaching-principles/batch-15-source-entry-audit.json",
+  "rootInitialContentReview": "artifacts/teaching-principles/batch-15-root-content-review-in-progress.json",
+  "checks": [
+    {
+      "kind": "keyframes",
+      "status": "passed",
+      "count": 432,
+      "unchangedSceneEvidence": "artifacts/teaching-principles/batch-15-final-static-01/keyframes/report.json",
+      "finalCSSAffectedSceneEvidence": "artifacts/teaching-principles/batch-15-final-static-02/keyframes/report.json",
+      "scope": "Final combined coverage. Earlier failed sulfur/Mendel records are preserved and superseded only by the final CSS affected-scene rerun."
+    },
+    {
+      "kind": "anchors",
+      "status": "passed",
+      "count": 44,
+      "unchangedSceneEvidence": "artifacts/teaching-principles/batch-15-final-static-01/anchors/report.json",
+      "finalCSSAffectedSceneEvidence": "artifacts/teaching-principles/batch-15-final-static-02/anchors/report.json",
+      "scope": "Final combined coverage. Earlier failed sulfur/Mendel records are preserved and superseded only by the final CSS affected-scene rerun."
+    },
+    {
+      "kind": "entries",
+      "status": "passed",
+      "count": 34,
+      "unchangedSceneEvidence": "artifacts/teaching-principles/batch-15-final-static-01/entries/report.json",
+      "finalCSSAffectedSceneEvidence": "artifacts/teaching-principles/batch-15-final-static-02/entries/report.json",
+      "scope": "Final combined coverage. Earlier failed sulfur/Mendel records are preserved and superseded only by the final CSS affected-scene rerun."
+    },
+    {
+      "kind": "native-controls",
+      "scene": "nuclear-evidence-lab",
+      "count": 50,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/physics/nuclear-evidence-lab/report.json",
+      "scope": "Model and director unchanged after this check; final changes only short-screen margins/caption padding."
+    },
+    {
+      "kind": "native-controls",
+      "scene": "bio-mendel-crosses",
+      "count": 52,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/biology/bio-mendel-crosses/report.json",
+      "scope": "Model and director unchanged after this check; final changes only short-screen margins/caption padding."
+    },
+    {
+      "kind": "native-controls",
+      "scene": "chem-sulfur-transformations",
+      "count": 52,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/chemistry/chem-sulfur-transformations/report.json",
+      "scope": "Model and director unchanged after this check; final changes only short-screen margins/caption padding."
+    },
+    {
+      "kind": "native-controls",
+      "scene": "chem-chlorine-bleaching",
+      "count": 24,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/retained/chem-chlorine-bleaching/report.json",
+      "scope": "Model and director unchanged after this check; final changes only short-screen margins/caption padding."
+    },
+    {
+      "kind": "native-controls",
+      "scene": "chem-anion-tests",
+      "count": 54,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/retained/chem-anion-tests/report.json",
+      "scope": "Model and director unchanged after this check; final changes only short-screen margins/caption padding."
+    },
+    {
+      "kind": "catalog",
+      "count": 12,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/catalog/report.json"
+    },
+    {
+      "kind": "covers",
+      "count": 10,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/covers/report.json"
+    },
+    {
+      "kind": "teaching",
+      "count": 12,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/teaching/report.json"
+    },
+    {
+      "kind": "faults",
+      "count": 10,
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-static-01/faults/report.json"
+    },
+    {
+      "kind": "native-uninterrupted-audio-film-playback",
+      "status": "passed",
+      "films": 10,
+      "chapters": 72,
+      "concurrency": 10,
+      "evidence": "artifacts/teaching-principles/batch-15-final-continuous-01/continuous/report.json",
+      "scope": "Actual native audio and wall clock at normal speed; no seeking after start; screenshots every10seconds. Browser muted. Separate from subjective listening and continuous human watching."
+    },
+    {
+      "kind": "full-verify",
+      "status": "passed",
+      "testFiles": 601,
+      "tests": 4514,
+      "typeErrors": 0,
+      "typeWarnings": 0,
+      "evidence": "artifacts/teaching-principles/batch-15-verify-02.log",
+      "scope": "Full verification before final two CSS-only corrections; final builds/audits and affected visual checks follow those corrections."
+    },
+    {
+      "kind": "final-production-build-and-audit",
+      "status": "passed",
+      "pages": 2134,
+      "canonicalPages": 2133,
+      "evidence": [
+        "artifacts/teaching-principles/batch-15-final-build.log",
+        "artifacts/teaching-principles/batch-15-final-build-audit.log"
+      ]
+    },
+    {
+      "kind": "final-preview-build-and-noindex-audit",
+      "status": "passed",
+      "evidence": "artifacts/teaching-principles/batch-15-final-preview.log"
+    },
+    {
+      "kind": "independent-no-hint-ASR",
+      "status": "passed",
+      "segments": 72,
+      "evidence": "artifacts/teaching-principles/batch-15-final-transcription-review.json",
+      "rootReview": "artifacts/teaching-principles/batch-15-root-speech-review.json",
+      "scope": "All final transcripts and relevant word timings read by root; ASR is not subjective listening."
+    }
+  ],
+  "pending": ["Authorized Actions publication and live asset checks"],
+  "notClaimed": [
+    "Subjective narration audition",
+    "Physical-phone performance",
+    "Continuous human visual watching"
+  ],
+  "measuredSpeechReview": "artifacts/teaching-principles/batch-15-root-speech-review.json",
+  "measuredIntegrations": [
+    "artifacts/teaching-principles/batch-15-nuclear-measured-integration.json",
+    "artifacts/teaching-principles/batch-15-chemistry-measured-integration.json",
+    "artifacts/teaching-principles/batch-15-biology-measured-integration.json"
+  ],
+  "regressionFollowup": "First full verify found6legacy test/translation coverage failures; preserved in batch-15-verify-01.log. Local candidate checks did not replace whole-repository verification.",
+  "finalSource": {
+    "commit": "6fc8f36612f16c11b721688ff1bcb510a866bbfa",
+    "treeHash": "bc1eccae67ddbb5020d7964aac142817e9302ac5d673e4df41cf0fcffc7cf7b8",
+    "gitDiffHash": "75273a04d4bbd01b17e567ec1dc4d845a89a6b868e7759c0847203201c30cb6d",
+    "fileCount": 5322,
+    "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+  },
+  "rootActualViews": "artifacts/teaching-principles/batch-15-root-actual-views.json",
+  "resolved": [
+    "Independent evidence/hidden predictions and stable object identities rebuilt through the actual measured directors.",
+    "Two final short-screen CSS corrections: contain sulfur first-shot margins and reduce its stop-shot caption padding; reduce Mendel initial-parent vertical margins. Models, voiced scripts and timings unchanged. All affected final keyframes/anchors/entries pass. Original failures remain archived."
+  ],
+  "contributors": {
+    "model": "gpt-6-astra",
+    "roles": [
+      "root integration, actual review and release",
+      "teaching_subject_fit physics author/reviewer",
+      "chemistry_inventory chemistry author/reviewer",
+      "biology_inventory biology author/reviewer"
+    ]
+  }
+}

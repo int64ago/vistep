@@ -1,11 +1,33 @@
-# Sulfur transformations
+# Sulfur transformations: evidence before the electron account
 
-Targets 39, 41, 50. Source bodies required 2 PDF 10 (copper wire), 13 (design inquiry), 35 (two sulfide tests, copper piece, Fe/S strip). Full source read. Preserve copper wire versus piece via sceneVariant, and source identity of added explanation: copper dilution belongs to preceding numbered experiment and is borrowed as interpretive evidence in the activity variant.
+The candidate begins with different visible observations and asks how they belong on one sulfur map. It then follows persistent sulfur centres, finite electron budgets and the two different sulfur destinations in the copper reaction. The ending tests whether a black product must be pure, using the textbook's initial masses rather than colour as a quantitative assay.
 
-Nine chapters, 232 seconds: oxidation-state route; sulfide plus sulfur(IV); acidic permanganate comparison; copper gas / fuchsin; stop and cool with wire/piece variant; cooled copper solution; local glass-rod ignition; autonomous thermal front; computed Fe excess plus air/purity limits. Target39 cues 3–5, target41 all, target50 cues 1–8, consecutive.
+## Contract and teaching increment
 
-Independent models: copper/acid stoichiometry and two sulfur destinations; sulfur comproportionation total/electrons; two explicitly hypothetical sulfide endpoints and Mn(VII)→Mn(II) electron balance, not condition-to-product kinetic inference. Copper stage stops new gas after lifting while retaining previously formed material. Illustrative colour/extent, no concentration or rate claim.
+All nine chapter IDs and their original order remain. P5 experiment 5-3 keeps chapters `copper-gas-evidence`, `stop-and-cool`, `copper-solution-evidence`; P8 inquiry keeps all nine; P30 activity 5 keeps the last eight. `copper-acid`, `sulfur-inquiry` and `sulfur-practical` variants remain. The practical entry has a copper piece and identifies the cooled-solution explanation as evidence borrowed from P5. No original textbook source record is edited.
 
-Fe/S 36-cell reaction-diffusion model: dt .01, diffusion 4, loss .15, threshold .5, reaction rate 5, heat release 1.4, ignition first 2 cells for .7 time units, 20 model-time duration. Precomputed deterministic snapshots, linear interpolation on shared clock, no wall-clock timers. Watch uses ratio 1.15; exploration can remove ignition/change limiting iron. Heat feedback supports propagation after external pulse; no heat feedback fails to propagate. All parameters dimensionless, not measured ignition temperatures or speeds; air side chemistry discussed but not computed.
+The new bridges are three persistent sulfur centres sharing four electron units; the same two Mn centres accepting ten electron units for two different assumed sulfur endpoints; fifteen persistent atoms dividing into CuSO4, SO2 and two waters; and the source-mass counterexample leaving iron after the main FeS reaction. Each prediction hides its numerical answer before disclosure. Local ignition and the reaction-diffusion front already explained a mechanism and remain, now followed by the Fe/S electron account.
 
-SVG apparatus independently composed for reagent tubes, connected copper gas path, cooled sample transfer and ceramic-supported powder strip. Iron stage gets a tighter phone crop; all labels at least 16 px and controls 44 px. Original cover derives from thermal model. Four scoped tests pass: copper/S balances and condition boundaries; sulfide electron inventories; thermal front vs no ignition / no heat; limiting iron and variant geometry. Owned TS diagnostics 0 before final authoring. Packet/format passed. Actual 320 paused-frame checks cover all nine chapters, selected Chinese and changed chapters in both languages; active heat-front frame and two practical copper-piece fixture frames checked. A first dev navigation-context failure passed on retry. Corrected the cooled transfer mouth/stream connection before final frames. No continuous-view claim. Root owns continuous viewing, native listening and real phone acceptance.
+The provisional film is 259.5 seconds. Canonical eight fields of cues 3, 4, 6 and 7 (zero-based) are unchanged, preserving their recordings. Cues 0, 1, 2, 5 and 8 request new narration. The 23-second archived cue 4 uses its already measured 23.5-second visual window; planned windows are not a claim of new voice synchronization. Root must retain cached voices and calibrate changed speech after measurement.
+
+## Models and limits
+
+Independent scene functions provide electron packet identities and an explicit in-transit account, copper finite-reagent composition, the fifteen-atom net allocation, alternative acidic permanganate budgets, and ideal FeS mass predictions. Formal electron packets do not depict solvated electrons or measured reaction paths. The sulfur(IV)/sulfide comparison is a sulfur/electron subinventory, not a complete aqueous mechanism. The Cu/O/H mapping is one admissible net allocation, not isotope tracing. Dashed composition groups are not isolated salt molecules.
+
+The Mn budget assumes excess protons and the selected MnII endpoint. Changing assumed S or sulfate endpoints changes electron demand; the model does not select real products from fading purple colour. Atomic and charge checks use the acidic H2S form with explicit proton and water terms. The textbook Na2S solution's complete speciation and competing pathways are outside the model.
+
+The original 36-cell thermal model retains local ignition, neighbouring heat transfer, reaction heat and cooling. Parameters and time are dimensionless. Exploration can remove ignition, remove reaction heat or reduce available iron. The visual director spends time on propagation before showing cooling, but this is not a measured time scale. Air oxidation/combustion are explicitly outside the FeS mass prediction. Stopping contact preserves products; the copper-piece cooling state does not imply that removing heat instantly stops chemistry.
+
+## Sources read
+
+The textbook Required Book 2 P1–9 and P30–31 text was read in full; original page images P5, P8 and P30 were inspected. The source ledger records file names, page offsets and reading limits. No source PDF was copied into tracked files.
+
+The full University of Wisconsin iron/sulfur demonstration and OpenStax redox chapter were read. The IUPAC oxidation-state definition was read through its publisher-indexed text; direct access returned 403. The RSC 2020 sulfide-oxidation abstract was read, but the full article was unavailable; no numerical rates/yields were adopted from it. Links and precise limits are in the packet and bilingual articles.
+
+## Evidence and handoff boundary
+
+Scoped model/component tests, strict TypeScript, actual isolated React controls and bilingual 320/1100 pixel stills are recorded in review.json. A separate biology reviewer executed 789 bounded net-account assertions; that independent scope does not cover UI, audio or original-study rereading.
+
+The candidate was also mounted inside the real shared Showcase component with the repository's editorial, showcase and language CSS and fonts. All three textbook windows were exercised. This is an isolated assembly, not production route acceptance. The earlier simple caption/control surrogate is retained as an earlier layout record and is not substituted for the shared-player check. Initial harness failures (missing shared CSS, wrong selector, a return-to-watch playback assumption) remain documented separately from the small real layout correction.
+
+Root still owns integration, actual route/cover consumers, audio generation for five changed cues, per-locale measured word timing, complete continuous playback, native listening, global verify/build and deployment. No actual src/drafts/shared/audio file was written and no commit or deployment was performed for this candidate.

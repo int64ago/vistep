@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { FilmContext, type Director } from '../lab/FilmContext';
 import { curriculumFilmSelection, getCurriculumLessons } from '../../data/curricula';
 import timeline from '../../data/film-timeline.json';
-import NuclearEvidenceLab from './NuclearEvidenceLab';
+import NuclearEvidenceLab, { NuclearArtwork } from './NuclearEvidenceLab';
 import ParticleEvidenceLab from './ParticleEvidenceLab';
 import GalileoInclines from './GalileoInclines';
 
@@ -21,7 +21,7 @@ afterEach(() => {
 
 describe('reused textbook apparatus', () => {
   it.each([
-    ['e1-chadwick-reference', NuclearEvidenceLab, '中子证据', '质子证据'],
+    ['e1-chadwick-reference', NuclearEvidenceLab, '中子反冲', '质子证据'],
     ['required-1-wu-parity', ParticleEvidenceLab, '宇称检验', '希格斯'],
     ['required-2-double-incline-energy', GalileoInclines, '机械能观察', '斜面计时'],
   ] as const)(
@@ -53,7 +53,14 @@ describe('reused textbook apparatus', () => {
       act(() => {
         renderer = create(tree(true));
       });
+      const nuclearBaseline =
+        id === 'e1-chadwick-reference' ? renderer!.root.findByType(NuclearArtwork).props : null;
       act(() => renderer!.update(tree(false)));
+      if (nuclearBaseline) {
+        // Apparatus selection must also preserve the actual current subview and calculation.
+        expect(renderer!.root.findByType(NuclearArtwork).props).toEqual(nuclearBaseline);
+        expect(nuclearBaseline.shot.mode).toBe('neutron');
+      }
       const button = (name: string) =>
         renderer!.root.findAllByType('button').find((n) => n.children.join('') === name)!;
       expect(button(selected).props['aria-pressed']).toBe(true);
@@ -63,7 +70,13 @@ describe('reused textbook apparatus', () => {
       }
       act(() => button(alternate).props.onClick());
       act(() => renderer!.update(tree(true)));
+      if (nuclearBaseline) {
+        expect(renderer!.root.findByType(NuclearArtwork).props).toEqual(nuclearBaseline);
+      }
       act(() => renderer!.update(tree(false)));
+      if (nuclearBaseline) {
+        expect(renderer!.root.findByType(NuclearArtwork).props.shot.mode).toBe('nitrogen');
+      }
       expect(button(alternate).props['aria-pressed']).toBe(true);
     },
   );

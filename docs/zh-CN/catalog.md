@@ -20,7 +20,7 @@
 | 专题                                                             | 演示 | 问题                                         |
 | ---------------------------------------------------------------- | ---- | -------------------------------------------- |
 | [粒子发现的证据链](../../src/content/particle-evidence-lab.mdx)  | 4:54 | 看不见的粒子，怎样留下可测的痕迹？           |
-| [核反应的实验线索](../../src/content/nuclear-evidence-lab.mdx)   | 4:40 | 一个核发生了什么，怎样从产物和径迹判断？     |
+| [核反应的实验线索](../../src/content/nuclear-evidence-lab.mdx)   | 4:40 | 看不见核内部，怎样从产物判断发生了什么？     |
 | [衰变的统计与用途](../../src/content/decay-measurement-lab.mdx)  | 2:48 | 不确定的单次衰变，怎样成为可测的时间与路径？ |
 | [发现看不见的射线](../../src/content/radiation-evidence-lab.mdx) | 4:40 | 感光、电离与径迹，怎样成为看不见粒子的证据？ |
 | [电子与晶体衍射](../../src/content/matter-wave-lab.mdx)          | 3:16 | 粒子留下的图样，为什么像波？                 |
@@ -89,7 +89,7 @@
 | [组成相同，结构不同](../../src/content/chem-wohler-isomers.mdx)                   | 3:07 | 分子式能告诉我们怎样连接吗？                         |
 | [氨的喷泉](../../src/content/chem-ammonia-fountain.mdx)                           | 2:16 | 水为什么会向上喷入烧瓶？                             |
 | [氮氧化物的颜色与去向](../../src/content/chem-nitrogen-oxides.mdx)                | 3:08 | 气体变回无色，就已经消失了吗？                       |
-| [不同价态硫的转化](../../src/content/chem-sulfur-transformations.mdx)             | 3:57 | 硫怎样从一个价态走向另一个？                         |
+| [不同价态硫的转化](../../src/content/chem-sulfur-transformations.mdx)             | 4:23 | 换个伙伴，硫的电子去了哪里？                         |
 | [蔗糖的脱水与膨胀](../../src/content/chem-sugar-carbonization.mdx)                | 2:14 | 黑色柱体变大，是碳变多了吗？                         |
 | [二氧化硫的连续观察](../../src/content/chem-sulfur-dioxide.mdx)                   | 2:14 | 颜色消失了，还能回来吗？                             |
 | [分子的空间形状](../../src/content/chem-molecular-shapes.mdx)                     | 4:11 | 有极性键，分子就一定有极性吗？                       |
@@ -149,7 +149,7 @@
 | [减数分裂与染色体传递](../../src/content/bio-meiosis.mdx)                     | 3:37 | 一次复制、两次分裂，怎样留下各不相同的一套？   |
 | [种群调查与取样](../../src/content/bio-population-sampling.mdx)               | 4:19 | 只看见一部分，怎样估计整个种群？               |
 | [植物的环境感知](../../src/content/bio-plant-environment.mdx)                 | 3:24 | 植物怎样把光、温度和重力变成生长信号？         |
-| [孟德尔的豌豆杂交](../../src/content/bio-mendel-crosses.mdx)                  | 3:39 | 从控制花粉到检验比例，追踪遗传因子怎样传递。   |
+| [孟德尔的豌豆杂交](../../src/content/bio-mendel-crosses.mdx)                  | 4:09 | 子一代都是高茎，矮茎的遗传因子去了哪里？       |
 | [细胞的分化、衰老与凋亡](../../src/content/bio-cell-fates.mdx)                | 3:16 | 细胞命运：信息、来源与执行                     |
 | [植物生长调节剂的探究](../../src/content/bio-plant-growth-regulators.mdx)     | 3:05 | 植物变长、生根或成熟，怎样确定处理的作用？     |
 | [细胞分裂与固定观察](../../src/content/bio-cell-division.mdx)                 | 3:16 | 细胞分裂：形态、顺序与计数                     |

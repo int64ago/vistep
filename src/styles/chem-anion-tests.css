@@ -149,3 +149,85 @@
     padding-top: 8px;
   }
 }
+.chem-anion-controls button {
+  font-size: 16px;
+  min-width: 44px;
+  line-height: 1.35;
+}
+.chem-anion-controls p {
+  margin-top: 16px;
+}
+.chem-anion-reason small {
+  font-size: 16px;
+  color: #617568;
+}
+@media (max-width: 560px) {
+  .chem-anion-tests {
+    padding: 6px 2px 8px;
+  }
+  .chem-anion-reagents {
+    margin: 0 0 8px;
+    gap: 10px;
+  }
+  .chem-anion-reagents span {
+    padding: 5px 9px;
+  }
+  .chem-anion-rack figcaption {
+    min-height: 46px;
+    gap: 3px;
+    line-height: 1.35;
+  }
+  .chem-anion-rack svg {
+    height: 127px;
+  }
+  .chem-anion-result {
+    min-height: 44px;
+    gap: 2px;
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+  .chem-anion-reason {
+    gap: 3px;
+    padding-top: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+}
+@media (max-width: 560px) {
+  .showcase:has(.chem-anion-tests) .film-caption {
+    padding: 8px;
+    min-height: 68px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .chem-anion-tests[data-ledger='true'] .chem-anion-rack figcaption {
+    min-height: 24px;
+  }
+  .chem-anion-tests[data-ledger='true'] .chem-anion-rack figcaption span {
+    display: none;
+  }
+  .chem-anion-tests[data-ledger='true'] .chem-anion-rack svg {
+    height: 110px;
+  }
+}
+.chem-anion-carbon-equation {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.chem-anion-budget {
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+}
+@media (max-width: 560px) {
+  .chem-anion-carbon-equation {
+    display: grid;
+    gap: 0;
+  }
+  .chem-anion-tests[data-watch='true'][data-ledger='true'] .chem-anion-rack svg {
+    height: 88px;
+  }
+}

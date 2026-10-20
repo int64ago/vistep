@@ -1,20 +1,44 @@
-# Mendel crosses production brief
+# 孟德尔：让遗传假说提出新预测
 
-Read Required 2 P2–15, especially the full five target positions P3–7 and P9–11. Mendel's public-domain original in annotated Brown University translation verified; Smithsonian original digitization metadata checked. Historical numbers remain explicitly textbook observations; model results and pseudo-random simulated draws remain distinct.
+候选仅位于 ignored Batch 15 镜像。本篇真实产品、共享登记和声音仍由 root 保持锁定。保留 URL、8 个章节 ID 与 5 个教材窗口，学习顺序不变。
 
-Eight causal chapters: floral removal/bagging/pollination/rebagging, pure parents, F1 selfing, draws with replacement, one-trait test, two-trait pure parents, double-hybrid self, reciprocal two-trait test. The flower keeps a pistil and tracks pollen from donor anthers to recipient stigma; 10 stamens are removed before pollen application. Removal and bagging controls change whether intended parentage can be guaranteed.
+## 从现象出发
 
-Independent model enumerates and aggregates gametes by locus, combines parental alleles and derives phenotype probabilities. 3:1, 1:1, 9:3:3:1 and 1:1:1:1 are benchmarks, not hard-coded drawings. Seed outline derives from computed phenotype; tall and short plants share scale. Exact observed count orders are preserved, especially swapped middle categories in the dihybrid table. Both reciprocal test-cross datasets are accessible.
+问题是：矮茎为什么消失一代又回来，黄色与圆粒为什么能拆出新组合？先给固定教材记录，再让遗传因子假说承担解释与新预测。P3 窗口以 Dd×dd 的 1∶1 预测收束；P9 窗口以双隐性测交四类等概率预测收束。后续 P7/P11 独立窗口再揭晓固定记录。
 
-Bucket renderer draws 20 identified balls per bucket, removes the chosen visible ball from its static position and continuously returns it to that same position. Seeded draws preserve prefixes and allow random sequences with coincident aggregate counts. Three tests verify independent benchmarks, recessive boundary, conservation, reproducibility, individual ball return, and failed pollination controls.
+保留原来成立的球身份与放回抽样、独立概率计算、种子轮廓、花粉来源控制。重新安排证据先后，新增同一来源因子传递、分离支路、受精行列交点、固定资料与可变模型的明确分离。探索的“只保留亲本组合”反例指定 YR/yr 相位且无重组，不能解释观察到的新组合。
 
-Root review pending: full floral procedure and exact pollen/stigma contact, all matrix states, phenotype outlines and source labels, two-language complete playback, 320/390 layouts and actual phone performance. No global build, audio or publication was run by the worker.
+## 教材与一级资料
 
-## Acceptance evidence
+完整读取人教版必修 2 P1–17 正文及相邻练习；P7/P11 另行渲染并实际看图。图文对应 PDF 页码为印刷页加 9。原教材文件名为“人教版高中生物学-必修2-遗传与进化.pdf”，原件不复制进 Git。
 
-Implementation owner: bio-foundations. Source textbooks remain local; the reviewed inventory supplies print and PDF pages. Model tests are separate from visual or listening acceptance.
+核读 [MendelWeb 的原论文英译本](https://cs.brown.edu/people/rblumber/MendelWeb/Mendel.html)中株高、杂种后代、两性状及测交段落。这是大学托管的原文译本；未独立取得并核验德文扫描原稿。
 
-- Automated scoped model tests: pending at authorship; see batch report.
-- Browser playback, desktop and 320/390 layouts: pending root review.
-- Both complete recorded voices: pending root synthesis and listening.
-- Physical phone performance: not run.
+原文与教材不强行混为一张表：87/79 是原多性状实验的株高边际统计；P11 F₁ 作父本最后一项，教材为 26，所核原文译本为 27。保留教材数字，双语文章明确说明。没有用拟合、模拟或先验理论比例替换固定观察。
+
+## 可见的因果链
+
+1. `pollination`：自身与外来花粉是替代来源；移动同一组未成熟雄蕊并保留雌蕊，隔离限制外来花粉，指定父本花粉抵达柱头后重新隔离。
+2. `parents`：先看两亲本与 F₁ 表型，再以“传递模型”标识字母假说；同一母/父来源副本进入配子并在后代成对。F₁ 显性表现不能单独证明 d 还在。
+3. `self`：先固定 787/277，再显示 D/d 分离、4 个等可能结合。矩阵同时显示基因型及其 1∶2∶1 汇总、对应表型 3∶1；末镜提出不同交配的新预测。
+4. `sampling`：第一个球的完整取出与归还留足观察时间；完成周期后才计数。后续 29 次加快，频率与理论区分。
+5. `test`：只追踪一组完整的 d 与 d 来源，避免飞行中换身份；显示两类概率，再切独立 87/79 记录。
+6. `diParents`：每个配子对每个位点各带一份；颜色与形状不混成一个因子。
+7. `diSelf`：先新组合的固定观察，再四种配子与 4×4 行列结合；比例由概率汇总。末镜提出四类测交新预测。
+8. `diTest`：追踪 yR 与 yr 的同一份来源，显示四类预期，再看固定测交记录；探索可以切换真实的正反交资料。
+
+## 独立模型与边界
+
+`mendelCross` 从配子概率计算所有受精组合并按基因型/表型聚合。`crossTransmission` 保留每位点、每亲本的来源 ID，源参照不消失；这是因子副本的假说图，不是减数分裂录像。真实亲本未被画成丢失自身基因。
+
+`mendelObservations` 及子数组冻结，不受自定义亲本、随机种子或组合假设改变。`sampleFrame` 只统计已完成的放回周期。有限样本不必准确符合比值，每一个新增样本也不保证缩小偏差。有限全高样本不能绝对证明 DD。
+
+主模型要求完全显性、等概率配子、随机受精、相近存活率；两性状还要求独立分配。教材记录是来源数据，模型概率是条件化推导，两者不共用生成函数。
+
+## 视觉、控制与声音
+
+独立 SVG/HTML 信息图，以源因子、植物/种子、配子支路与计算交点承担主要表达。桌面传递图宽展，手机明确分为来源、配子、后代三行；双性状预测桌面四列、手机两列。所有可见文字按实际浏览器缩放测量，正文至少 16px；原生控件至少 44px。
+
+8 章计划 248 秒，留有 TTS 实测余量。完整双语稿、76 UI 译项、5 个标准 `teachingProfiles`、每章 provisional 分镜在 `principle-first-packet.json`。保留 sampling、test、diParents、diTest 四章双语口播原文；其他四章为新稿。实际录音尚未生成，director 仅计划时点；root 合成后必须按逐词时间校准，不将当前候选静帧称为声画验收。
+
+候选测试使用隔离 Vite/React 页面，可操作真实按钮、select 和键盘滑块；并不是正式完整播放器。正文、封面用独立 Astro 编译/渲染检验。root 接管后仍需真实播放器、所有教学入口、整片静态播放、最终声音与资源失败验收。

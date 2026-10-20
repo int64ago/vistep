@@ -1855,24 +1855,32 @@ export const topics: Topic[] = [
   {
     slug: 'chem-sulfur-transformations',
     name: '不同价态硫的转化',
-    title: '硫怎样从一个价态走向另一个？',
-    question: '硫怎样从一个价态走向另一个？',
-    description: '用硫化物试管、铜与浓硫酸导气装置、铁硫热传播对照价态与实验现象。',
+    title: '换个伙伴，硫的电子去了哪里？',
+    question: '换个伙伴，硫的电子去了哪里？',
+    description: '从实验现象追到同一批硫与电子，比较硫酸中的两条硫去向、有限氧化剂和铁硫热前沿。',
     color: '#b2bc92',
     tag: '氧化还原 · 连续证据 · 热传播',
     related: ['chem-sulfur-dioxide', 'chem-electron-transfer', 'chem-nitrogen-oxides'],
     sources: [
       {
-        title: 'University of Wisconsin — reaction of iron and sulfur',
+        title: 'University of Wisconsin — Reaction of iron and sulfur',
         url: 'https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/02atomsmolpage/reaction_of_iron_and_sulfu.htm',
       },
       {
-        title: 'OpenStax — balancing redox chemistry',
+        title: 'OpenStax Chemistry 2e — 17.1 Redox chemistry',
         url: 'https://openstax.org/books/chemistry-2e/pages/17-1-review-of-redox-chemistry',
       },
       {
         title: '人教版必修第二册5、8、30页',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'IUPAC Gold Book — Oxidation state',
+        url: 'https://goldbook.iupac.org/terms/view/O04365',
+      },
+      {
+        title: 'A comparative study on sulfide removal by HClO and KMnO4 in drinking water',
+        url: 'https://pubs.rsc.org/en/content/articlelanding/2020/ew/d0ew00629g',
       },
     ],
     number: '371',
@@ -2788,15 +2796,16 @@ export const topics: Topic[] = [
   {
     slug: 'bio-mendel-crosses',
     name: '孟德尔的豌豆杂交',
-    title: '消失的性状，为什么又出现了',
-    question: '从控制花粉到检验比例，追踪遗传因子怎样传递。',
-    description: '重建单性状与双性状杂交、放回抽样和测交，分开概率预测与教材实测记录。',
+    title: '消失的矮茎，为什么又回来了？',
+    question: '子一代都是高茎，矮茎的遗传因子去了哪里？',
+    description: '固定教材记录、遗传因子身份与独立概率计算，区分解释已有结果和预测新组合。',
     color: '#a8b68b',
     tag: '生物学',
     related: ['bio-cell-division', 'bio-engineered-genomes'],
     sources: [
       {
-        title: 'Mendel 1866, Experiments in Plant Hybridization: annotated English translation',
+        title:
+          'Mendel (1866), Experiments in Plant Hybridization — original text in English translation',
         url: 'https://cs.brown.edu/people/rblumber/MendelWeb/Mendel.html',
       },
       {
@@ -5520,24 +5529,20 @@ export const topics: Topic[] = [
   {
     slug: 'nuclear-evidence-lab',
     name: '核反应的实验线索',
-    title: '一个核发生了什么，怎样从产物和径迹判断？',
-    question: '一个核发生了什么，怎样从产物和径迹判断？',
-    description: '从氮核轰击和中子反冲，到裂变产物、多碎片径迹与可控链式反应。',
+    title: '看不见核内部，怎样从产物判断发生了什么？',
+    question: '看不见核内部，怎样从产物判断发生了什么？',
+    description: '从闪烁、反冲和化学分离，到共同顶点与中子去向，让固定证据约束核模型和下一步预测。',
     color: '#aebfa8',
     tag: '近代物理',
     related: ['atomic-scattering-lab', 'particle-evidence-lab'],
     sources: [
       {
-        title: 'Patrick Blackett — Nobel lecture',
+        title: 'Blackett — Cloud chamber researches (1948 Nobel lecture)',
         url: 'https://www.nobelprize.org/uploads/2018/06/blackett-lecture.pdf',
       },
       {
-        title: 'James Chadwick — Nobel lecture',
+        title: 'Chadwick — The neutron and its properties (1935 Nobel lecture)',
         url: 'https://www.nobelprize.org/uploads/2018/06/chadwick-lecture.pdf',
-      },
-      {
-        title: 'Meitner and Frisch — A new type of nuclear reaction',
-        url: 'https://www.nature.com/articles/143233a0',
       },
       {
         title: '中国科学院高能所 — 核乳胶',
@@ -5546,6 +5551,26 @@ export const topics: Topic[] = [
       {
         title: 'IAEA — Fermi and uranium fission',
         url: 'https://www.iaea.org/sites/default/files/publications/magazines/bulletin/bull4-0/04004700911su.pdf',
+      },
+      {
+        title:
+          'Hahn — From the natural transmutations of uranium to its artificial fission (Nobel lecture)',
+        url: 'https://www.nobelprize.org/uploads/2018/06/hahn-lecture.pdf',
+      },
+      {
+        title:
+          'Meitner and Frisch — Disintegration of Uranium by Neutrons: a New Type of Nuclear Reaction (1939)',
+        url: 'https://www.nature.com/articles/143239a0',
+      },
+      {
+        title:
+          'Tsien, Ho, Vigneron and Chastel — Ternary and Quaternary Fission of Uranium Nuclei (1947)',
+        url: 'https://www.nature.com/articles/159773a0',
+      },
+      {
+        title:
+          'National Archives — Notebook recording the first controlled self-sustaining chain reaction (1942)',
+        url: 'https://www.archives.gov/milestone-documents/manhattan-project-notebook',
       },
     ],
     number: '242',

@@ -1,0 +1,128 @@
+{
+  "sceneSlug": "chem-chlorine-bleaching",
+  "status": "frozen candidate, pending root integration and final static acceptance",
+  "owner": "biology_inventory (author self-review)",
+  "sourceCommit": "e387df5dbb628699867062b12ea40b9f88cd77bd",
+  "recordedAt": "2026-10-18T20:58:21.326533+00:00",
+  "ownedProductHashes": {
+    "src/models/chem-chlorine-bleaching.ts": "f00faa12493590e1ee37c51a067168ff574e567f6e609c65098d0a559969197d",
+    "src/models/chem-chlorine-bleaching.test.ts": "649a99f942bf61c4e905a5d66151e8b19cc34773d44b1784931d5df4d418759b",
+    "src/components/experiments/ChemChlorineBleaching.tsx": "16d4fc8f97b5590c1e881c7066da7ed4a98bfc7a5be02dd371015c631e510d07",
+    "src/styles/chem-chlorine-bleaching.css": "8719f0037d90f9bc5b130c409785c20497697604462b7669c21a5ea3860e49e2",
+    "src/components/covers/ChemChlorineBleachingCover.astro": "5cb77bc52bedff59edacc6bfc84783efbb06c2a100fb11a102d92b3b537f2c87",
+    "src/content/chem-chlorine-bleaching.mdx": "2d8644a58ad52f9297d333f0c97db883c939d366d002bc588eae7c6ba2af6178",
+    "src/content/en/chem-chlorine-bleaching.mdx": "bc7e310d1c0cbdf8fca5d8cab47ed5fab7b86c04e83466d91dcb055284453e08"
+  },
+  "originalActualProductHashes": {
+    "src/models/chem-chlorine-bleaching.ts": "efc9c6dde24c0d5fa7cf0f49d598cab3d9345ac93ce420f1f21f9f6404b59bf5",
+    "src/models/chem-chlorine-bleaching.test.ts": "ce9d74ddc8527e5f45c08e136f36a9ffd121b4964a26fec57f20c5fd4d7c5d7f",
+    "src/components/experiments/ChemChlorineBleaching.tsx": "6eb9bfcffc04d0ecb41ec6c8467e52920d0319672fbbd0a5f18ec6bb10ddd788",
+    "src/styles/chem-chlorine-bleaching.css": "76e72bcd9ede5ff0fc59b4743eeef9ca6f61fce4eb81910e6a7e82c616803f74",
+    "src/components/covers/ChemChlorineBleachingCover.astro": "636864cdf358137b7a1e016e2b06794f1e19820d5d0e6c3543ffc21dbd23a30d",
+    "src/content/chem-chlorine-bleaching.mdx": "41207f8a90e0f9fb5627bc3efec03309ce74b59ab9ad950d6ea9cbff928f6b8a",
+    "src/content/en/chem-chlorine-bleaching.mdx": "170cbeba927a23f012275848851946e1e09f81e38f3521c17639cd13f3a43270"
+  },
+  "scope": "Only ignored retained mirror modified. Actual src/drafts/shared/audio/index untouched by this owner.",
+  "checks": {
+    "strictTypeScript": {
+      "status": "passed",
+      "report": "typecheck.json"
+    },
+    "modelTests": {
+      "status": "passed",
+      "countAcrossBothScenes": 15,
+      "command": "pnpm exec vitest run --config artifacts/teaching-principles/batch-15-staging/retained/vitest.config.mjs",
+      "coverage": "independent endpoint expectations, conservation, bounded inputs, no-gas/no-water controls, continuous persistent site IDs, monotone finite carbon routes and recorded speech anchors"
+    },
+    "mdx": {
+      "status": "passed",
+      "countAcrossBothScenes": 4,
+      "renderer": "Installed Satteri MDX compiler used by Astro7",
+      "report": "checks/mdx-compile.json"
+    },
+    "wholePlayerAutomation": {
+      "status": "passed",
+      "uniqueCasesThisScene": 36,
+      "viewportCases": ["zh1100x900", "en1100x900", "zh320x568", "en320x568"],
+      "maximumPhoneBottom": 514.78125,
+      "reports": ["checks/whole-player-final/report.json"],
+      "scope": "Settled real player, native chapterTime via seek, short captions plus dictionary proposal. HTML scene text16px, scaled SVG text checked, transport targets44px. This is not complete playback."
+    },
+    "nativeReactControls": {
+      "status": "passed",
+      "countAcrossBothScenes": 88,
+      "report": "checks/controls-final/report.json",
+      "scope": "Current-chapter default, manual choice persistence, watch isolation, all zero/partial/full chemistry inputs, finite gas end, 16px buttons/44px targets, focus spacing."
+    },
+    "textbookEntries": {
+      "status": "passed",
+      "countAcrossBothScenes": 18,
+      "report": "checks/entry-review-ssr/report.json",
+      "scope": "Three windows × two languages. Actual min/max/initial apparatus and fresh #experiment fit. Requires the precise SSR CSS proposal in packet."
+    },
+    "nativePlayer": {
+      "status": "passed",
+      "countAcrossBothScenes": 36,
+      "report": "checks/native-player/report.json",
+      "scope": "Actual chapter buttons, seek/replay bounded to entry, deliberately blocked MP3 produces retry message and preserves SVG. Not complete playback/listening."
+    },
+    "ASR": {
+      "status": "reviewed; one root-authorized bounded exception",
+      "countAcrossBothScenes": 18,
+      "report": "checks/transcription.json",
+      "secondDecodes": [
+        "checks/second-asr-zh-3.json",
+        "checks/second-asr-zh-5.json",
+        "checks/second-asr-en-5.json"
+      ],
+      "findings": "All18 full transcripts read. Mandarin scientific homophones (钡→碑/贝/被; 稀→锡; 检出限→减出线) recorded. English final-cue blanks→blinks persisted in both independent decoders; proposal changes that last sentence only. No listening claim."
+    },
+    "servedCovers": {
+      "status": "author actually viewed",
+      "files": ["checks/bleach-served-cover-final.png", "checks/anion-served-cover-final.png"],
+      "fix": "Nested cover viewBox now matches actual400:230consumer ratio, removing unintended transparent side strips. Actual Astro /covers/*.png route rendered against candidate models."
+    },
+    "peerReview": {
+      "status": "bounded conceptual/source reading only; no independent candidate execution",
+      "reviewer": "chemistry_inventory",
+      "scope": "Peer read original anion functions/voice and agreed net-budget limits; busy with own final native player so did not execute candidate tests."
+    },
+    "globalVerify": "not run by owner; root required",
+    "fullNativePlayback": "not run; root final static required",
+    "naturalBilingualListening": "not run",
+    "physicalPhonePerformance": "not run",
+    "finalProductionSocialCatalog": "not run; root integration required"
+  },
+  "authorVisualReview": {
+    "status": "actually opened selected original-resolution desktop/320phone frames; not all132 screenshot files manually watched",
+    "examples": [
+      "checks/whole-player-final/chem-chlorine-bleaching-en-320-1-0.7.png",
+      "checks/whole-player-final/chem-chlorine-bleaching-en-320-2-0.39.png",
+      "checks/controls-second/en-no-chlorine.png",
+      "checks/bleach-served-cover-final.png"
+    ]
+  },
+  "retainedFailedEvidence": [
+    "checks/whole-player-first: overflow findings",
+    "checks/whole-player-second: new English captions missing dictionary overlay; excluded from final English validation",
+    "checks/controls-first: harness rejected malformed range string .5; corrected to0.5, no product defect",
+    "checks/entry-review: original90px anchor overflow; exact SSR proposal validated in entry-review-ssr"
+  ],
+  "boundedNarrationExceptions": [],
+  "sourceReviewFile": "drafts/chem-chlorine-bleaching/source-review.json",
+  "remainingRootWork": [
+    "Integrate exact owned files and shared packet proposals.",
+    "Generate only anion EN sulfate-evidence replacement, then independently decode and remeasure final timing; do not overwrite other17spoken strings.",
+    "Global verification, static build, final complete native playback, independent visual acceptance and authorized release."
+  ],
+  "rootIntegration": {
+    "batch": 15,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-15-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}
