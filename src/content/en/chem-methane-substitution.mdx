@@ -1,40 +1,46 @@
 ---
-name: 'Light-induced methane substitution'
-title: 'Why does one tube fade, form droplets and draw liquid upward?'
+name: 'How does light start methane substitution?'
+title: 'Why can the reaction continue after initiation?'
 ---
 
 <section id="understand">
 
-Experiment 7-1 on pages 64–65 of Compulsory Book 2 compares two fresh, identical gas mixtures. The illuminated mixture fades, oily droplets appear on its walls and the liquid level rises. Together these observations support chemical change; colour alone does not identify every product.
+Experiment 7-1 on pages 64–65 of Compulsory Book 2 compares identical methane–chlorine mixtures in light and darkness. The illuminated sample fades, forms wall droplets and draws liquid upward. The fresh dark sample does not show the same changes. These observations distinguish the conditions; colour alone does not identify all products.
 
-Each net substitution replaces one organic H by Cl, consumes one Cl₂ and forms one HCl. Methane can proceed through CH₃Cl, CH₂Cl₂, CHCl₃ and CCl₄. The animation tracks atoms rather than claiming a simultaneous elementary exchange. Initiation, propagation, termination and multiple substitution are described in [the author’s OpenStax textbook](https://openstax.org/books/organic-chemistry/pages/10-2-preparing-alkyl-halides-from-alkanes-radical-halogenation).
+Absorbed light can split Cl—Cl, leaving an unpaired electron on each chlorine. In propagation, one Cl· is consumed and another is produced. The carrier type is regenerated, rather than necessarily the same chlorine atom. [McMurry’s textbook](https://openstax.org/books/organic-chemistry/pages/10-2-preparing-alkyl-halides-from-alkanes-radical-halogenation) distinguishes initiation, propagation and termination. [IUPAC’s chain-reaction definition](https://goldbook.iupac.org/terms/view/C00960) also uses methane chlorination as its example.
 
-Chloromethane is gaseous at room temperature: [NIST boiling-point data](https://webbook.nist.gov/cgi/cbook.cgi?ID=C74873&Type=TBOIL) place its normal boiling point near 249 K. Wall droplets must therefore not simply be labelled CH₃Cl. Higher chlorinated products contribute to droplets, while transfer of HCl into the aqueous phase helps explain gas removal and liquid rise.
+The film retains one C, four H and six Cl identities along a selected chain. After two substitutions, two chlorine radicals combine, transferring released energy to the surroundings. The final account contains CH₂Cl₂, two HCl and one remaining Cl₂. It does not require one new photon for every substitution.
+
+Transfer of HCl into water helps explain gas removal. Further substitution can produce liquids, but chloromethane itself is gaseous at room temperature: its [NIST normal boiling-point values](https://webbook.nist.gov/cgi/cbook.cgi?ID=C74873&Type=TBOIL) are near 249 K. An oily drop is therefore not labelled CH₃Cl.
 
 </section>
 <section id="try">
 
-Choose a fresh illuminated or dark sample. This resets the starting condition rather than switching off an already initiated chain. Change progress and available chlorine to explore coexistence and repeated substitution. Atom totals stay conserved over the full control range.
+Choose initiation or the chain, then step through the connections. “Pulse then dark” allows the selected events to continue with carriers already present. “Fresh dark sample” lacks that initiation. This comparison does not calculate how quickly a real reaction decays after the light is removed.
 
-This is a visual explanation, not a home gas-generation or irradiation procedure. The textbook explicitly excludes direct sunlight.
+In the distribution view, hold Cl₂ at 8 units and increase methane from 8 to 32. Should the same substitutions be spread over more carbons? Each tile keeps its carbon identity; four dots record its original hydrogen sites. Rewinding revisits the same fixed sample, without drawing a new favourable outcome.
 
 </section>
 <section id="deeper">
 
 <details>
-<summary>Conservation without a fabricated yield prediction</summary>
+<summary>A fixed sample and an independent expectation</summary>
 
-Eight methane units follow a chosen illustrative substitution order, with no carbon receiving more than four chlorine atoms. The order shows how one carbon can undergo repeated substitution; it is neither a kinetic model nor a measured product distribution. Continuous progress represents bulk amounts and visual interpolation, not a molecule replacing half a hydrogen.
+A reproducible site ordering supplies one illustrative realization. Separately, exact finite combinatorics compute a mean. With N methane units there are 4N initial C—H sites. If m completed substitutions select distinct sites with equal likelihood, a given carbon has k selected sites with probability
 
-Each event removes one organic H, adds one organic Cl and one HCl, and consumes one Cl₂. Carbon, hydrogen and chlorine totals are exact. Colour follows relative remaining Cl₂ without a spectral calculation. Liquid rise is driven qualitatively by HCl and higher-product formation; vapour pressure, saltwater solubility, hydrostatic balance and transfer rates are not calculated. Droplets represent a mixture, without a conversion from drop count to yield.
+`P(k) = C(4,k) C(4N−4,m−k) / C(4N,m)`.
+
+The mean count is `N P(k)`. Summing counts gives N carbons; weighting by k gives m substitutions. Each net substitution consumes one Cl₂ and produces one HCl, preserving the full H and Cl inventory.
+
+The equal-site assumption is a teaching counterfactual, not a fitted product yield. Real chlorinated species differ in reactivity. No rate constant, irradiance, transport parameter or guarantee of a single pure product is supplied.
 
 </details>
 <details>
-<summary>Control and mechanism</summary>
+<summary>What the microscopic scene does not measure</summary>
 
-A fresh dark mixture remaining visibly unchanged does not imply that an established chain stops instantaneously when illumination ceases. In propagation, a chlorine radical abstracts H to form HCl and an organic radical. That radical reacts with Cl₂, regenerating a chlorine radical. Radical encounters can terminate the chain. Chain length, quantum yield and explosions are outside this model.
+Atom paths interpolate the connectivity of selected reaction endpoints. They are not collision trajectories or transition-state calculations; fading bonds are presentation transitions rather than measured fractional bonds. Screen seconds do not represent reaction times, radical lifetimes, chain lengths or quantum yields.
 
-The apparatus retains the inverted tube, submerged mouth, liquid reservoir and supporting clamp. Foil is partly cut away to show the control interior. Colours are adjusted for teaching legibility.
+The drawing describes connectivity rather than methane bond angles. The apparatus retains submerged tube mouths, reservoirs and clamps, with a foil cutaway. Colour, droplet count and liquid level show qualitative textbook observations. They do not determine composition or solve vapour–liquid equilibrium.
 
 </details>
 

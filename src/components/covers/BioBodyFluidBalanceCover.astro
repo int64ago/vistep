@@ -1,37 +1,68 @@
 ---
-import { extracellularTracer } from '../../models/bio-body-fluid-balance';
-const state = extracellularTracer(14);
+import { aqpInsertion, waterMarkers } from '../../models/bio-body-fluid-balance';
+const g = aqpInsertion(1, 400);
+const waters = waterMarkers(0.53, 1, 400);
 ---
 
 <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <rect width="400" height="230" fill="#f0f3e9"></rect>
-  <rect x="24" y="31" width="352" height="36" rx="18" fill="#e5c9c2" stroke="#bc9d92"></rect>
-  <rect x="24" y="177" width="352" height="30" rx="15" fill="#dbe4c2" stroke="#a6b68c"></rect>
+  <rect x="20" y="24" width={g.apical - 20} height="182" rx="18" fill="#d9e8eb"></rect>
+  <rect x={g.apical} y="24" width={g.basal - g.apical} height="182" fill="#ecdfc2"></rect>
+  <rect x={g.basal} y="24" width={380 - g.basal} height="182" rx="18" fill="#d9e5ce"></rect>
+  <path
+    d={`M${g.apical} 24V121M${g.apical} 143V206M${g.basal} 24V121M${g.basal} 143V206`}
+    fill="none"
+    stroke="#b49a6e"
+    stroke-width="6"></path>
   {
-    [80, 190, 300].map((x, i) => (
-      <g>
-        <>
-          <ellipse cx={x} cy={110 + (i % 2) * 20} rx="38" ry="26" fill="#cbdabb" stroke="#a5b796" />
-          <ellipse cx={x + 7} cy={110 + (i % 2) * 20} rx="10" ry="8" fill="#a8bf9c" />
-        </>
-      </g>
+    [g.apical, g.basal].map((x) => (
+      <path
+        d={`M${x - 6} 111V123M${x + 6} 111V123M${x - 6} 141V153M${x + 6} 141V153`}
+        stroke="#60898c"
+        stroke-width="7"
+        stroke-linecap="round"
+        fill="none"
+      />
     ))
   }
   {
-    state.amount.map((amount, i) =>
-      Array.from({ length: Math.round(amount * 45) }, (_, j) => (
-        <circle
-          cx={40 + ((j * 37) % 320)}
-          cy={i === 0 ? 43 + (j % 2) * 12 : i === 1 ? 155 + (j % 2) * 8 : 186 + (j % 2) * 9}
-          r="2.8"
-          fill="#987b50"
+    [0, 1].map((region) =>
+      Array.from({ length: region ? 6 : 2 }, (_, i) => (
+        <rect
+          x={(region ? g.basal + 24 : 40) + (i % 2) * 18}
+          y={48 + Math.floor(i / 2) * 18}
+          width="5"
+          height="5"
+          rx="1.5"
+          fill="#a58b61"
         />
       )),
     )
   }
+  {
+    waters.map((v, i) => (
+      <circle
+        cx={v.x}
+        cy={v.y}
+        r="6"
+        fill={i ? '#e6f1f4' : '#81a8bf'}
+        stroke="#4f7c93"
+        stroke-width="2"
+      />
+    ))
+  }
+  <text
+    x={g.apical}
+    y="101"
+    text-anchor="middle"
+    font-family="sans-serif"
+    font-size="18"
+    fill="#566b64">AQP2</text
+  >
   <path
-    d="M135 73v70m-5-7 5 7 5-7M350 147V75m-5 7 5-7 5 7M228 157v15m-5-7 5 7 5-7"
+    d="M158 57H243m-8-6 8 6-8 6M243 77H158m8-6-8 6 8 6"
     fill="none"
-    stroke="#9aad7f"
-    stroke-width="2"></path>
+    stroke="#7c9cac"
+    stroke-width="2"
+    stroke-linecap="round"></path>
 </svg>

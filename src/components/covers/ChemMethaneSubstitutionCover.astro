@@ -1,26 +1,51 @@
-<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-  ><rect width="640" height="420" fill="#f4f5eb"></rect><path
-    d="M128 256V346H511V256"
-    fill="#e0e9dc"
-    stroke="#bbc7af"
-    stroke-width="3"></path><path
-    d="M177 307V97Q177 60 215 60T253 97V307"
-    fill="#bdc6b3"
-    stroke="#9fac90"
-    stroke-width="3"></path><path
-    d="M181 106Q181 65 215 65T249 106V257H181Z"
-    fill="#b7c07b"
-    opacity=".6"></path><path
-    d="M377 307V97Q377 60 415 60T453 97V307"
-    fill="#e8eee1"
-    stroke="#acbba1"
-    stroke-width="3"></path><path d="M381 181H449V308H381Z" fill="#bdd6c6"></path><path
-    d="M185 82L199 68V270L185 280Z"
-    fill="#dfe4d6"></path><path
-    d="M476 92l-14 8m19 14-17 1m15 18-17-9"
-    stroke="#d4ba82"
-    stroke-width="4"
-    stroke-linecap="round"></path><path
-    d="M389 109q-8 12 0 16 8-4 0-16ZM438 138q-8 12 0 16 8-4 0-16Z"
-    fill="#c7d1a1"></path></svg
->
+---
+import { methaneChain } from '../../models/chem-methane-substitution';
+const s = methaneChain(3, 1, 580, 'pulse');
+---
+
+<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="420" fill="#f5f6ef"></rect>
+  <path d="M54 57q12-14 24 0t24 0t24 0" stroke="#c7a468" stroke-width="3" opacity=".8"></path>
+  <g transform="translate(30 100)">
+    {
+      s.bonds.map((b) => {
+        const a = s.atoms.find((x) => x.id === b.a)!,
+          z = s.atoms.find((x) => x.id === b.b)!;
+        return (
+          <line
+            x1={a.x}
+            y1={a.y}
+            x2={z.x}
+            y2={z.y}
+            stroke="#adbaa4"
+            stroke-width="4"
+            opacity={b.opacity}
+          />
+        );
+      })
+    }
+    {
+      s.atoms.map((a) => (
+        <g>
+          <circle
+            cx={a.x}
+            cy={a.y}
+            r={a.element === 'H' ? 12 : 17}
+            fill={a.element === 'C' ? '#8c9d82' : a.element === 'Cl' ? '#c1cc91' : '#eff0e8'}
+            stroke="#a5b69f"
+          />
+          <text
+            x={a.x}
+            y={a.y + 5.5}
+            text-anchor="middle"
+            font-size="16"
+            fill={a.element === 'C' ? '#fff' : '#52694e'}
+          >
+            {a.element}
+          </text>
+          {a.radical ? <circle cx={a.x + 17} cy={a.y - 15} r="3.2" fill="#aa784d" /> : null}
+        </g>
+      ))
+    }
+  </g>
+</svg>

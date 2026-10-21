@@ -1006,22 +1006,26 @@ export const topics: Topic[] = [
     name: '甲烷的光照取代',
     title: '为什么一侧褪色、出现液滴并抬高液面？',
     question: '为什么一侧褪色、出现液滴并抬高液面？',
-    description: '比较甲烷与氯气的光照和遮光样本，追踪原子取代与多种可见证据。',
+    description: '从明暗对照追踪氯自由基、连续两次取代与有限配比预测。',
     color: '#bdc59f',
     tag: '对照 · 取代 · 产物混合物',
     related: ['chem-carbon-frameworks', 'chem-hydrogen-chlorine', 'chem-unsaturated-hydrocarbons'],
     sources: [
       {
-        title: 'OpenStax — Radical halogenation, original author textbook',
+        title: 'McMurry / OpenStax Organic Chemistry 10.2',
         url: 'https://openstax.org/books/organic-chemistry/pages/10-2-preparing-alkyl-halides-from-alkanes-radical-halogenation',
       },
       {
-        title: 'NIST — Chloromethane boiling point',
+        title: 'NIST Chemistry WebBook Chloromethane normal boiling point',
         url: 'https://webbook.nist.gov/cgi/cbook.cgi?ID=C74873&Type=TBOIL',
       },
       {
         title: '人教版必修第二册第64—65页实验7-1',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'IUPAC Gold Book chain reaction',
+        url: 'https://goldbook.iupac.org/terms/view/C00960',
       },
     ],
     number: '400',
@@ -3580,9 +3584,10 @@ export const topics: Topic[] = [
   {
     slug: 'bio-body-fluid-balance',
     name: '体液交换与稳态记录',
-    title: '环境不断变化，细胞如何仍生活在稳定范围？',
-    question: '环境不断变化，细胞如何仍生活在稳定范围？',
-    description: '在体液路径中核对示踪量，编辑家庭体温调查记录，再比较热量、水和钠的反馈收支。',
+    title: '激素发出信号，水和钠怎样真正回到体内？',
+    question: '激素发出信号，水和钠怎样真正回到体内？',
+    description:
+      '沿体液通路核对总量，保留真实观察的边界，再看水通道和钠钾泵怎样把反馈变成物质回收。',
     color: '#b4c7a2',
     tag: '体液联系 · 调查记录 · 稳态',
     related: ['osmosis', 'diffusion', 'bio-buffer-comparison'],
@@ -3598,6 +3603,22 @@ export const topics: Topic[] = [
       {
         title: 'OpenStax — Regulation of Body Processes',
         url: 'https://openstax.org/books/biology-2e/pages/37-3-regulation-of-body-processes',
+      },
+      {
+        title: 'Nielsen et al. (1995), Vasopressin increases water permeability…',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC42627/',
+      },
+      {
+        title: 'Wang et al. (2014), Sodium transport and ENaC–Na,K-ATPase cross-talk',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3904566/',
+      },
+      {
+        title: 'OpenStax Anatomy & Physiology 2e, Hormonal control of osmoregulatory functions',
+        url: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/25-8-endocrine-regulation-of-kidney-function',
+      },
+      {
+        title: 'IUBMB EC 7.2.2.13: Na+/K+-exchanging ATPase',
+        url: 'https://iubmb.qmul.ac.uk/enzyme/EC7/2/2/13.html',
       },
     ],
     number: '318',
@@ -4623,16 +4644,20 @@ export const topics: Topic[] = [
   {
     slug: 'thin-film-lab',
     name: '膜厚写出的明暗',
-    title: '肥皂膜与劈尖的条纹为什么移动？',
-    question: '肥皂膜与劈尖的条纹为什么移动？',
-    description: '保留黄光灯、肥皂膜和纸片劈尖，计算反射相位与条纹。',
+    title: '薄膜的厚度，怎样变成明暗与颜色？',
+    question: '薄膜的厚度，怎样变成明暗与颜色？',
+    description: '让两路反射接上相位和总场，再用同一厚度规律预测肥皂膜与空气劈尖的条纹。',
     color: '#aebfa8',
     tag: '波动光学',
     related: ['thin-film-interference', 'double-slit'],
     sources: [
       {
-        title: 'OpenStax — Interference in thin films',
+        title: 'OpenStax University Physics Volume 3, 3.4 Interference in Thin Films',
         url: 'https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films',
+      },
+      {
+        title: 'MIT 6.974 Fundamentals of Photonics, Chapter 2, §§2.2.3 and2.3.8–9',
+        url: 'https://www.ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/8e54d1625e9e71eb5b4e4998e6967e4e_chapter2.pdf',
       },
     ],
     number: '277',

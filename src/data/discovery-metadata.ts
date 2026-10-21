@@ -1781,11 +1781,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'life',
     minAge: 14,
     keywords: {
-      zh: ['体液交换与稳态记录', '体液联系 · 调查记录 · 稳态', '人教版高中生物'],
+      zh: [
+        '体液交换与稳态记录',
+        '体液联系 · 调查记录 · 稳态',
+        '人教版高中生物',
+        '激素发出信号，水和钠怎样真正回到体内？',
+      ],
       en: [
         'Fluid exchange and homeostasis records',
         'Fluid connections · records · homeostasis',
         'PEP high school biology',
+        'How do hormone signals actually return water and sodium to the body?',
       ],
     },
   },
@@ -2445,11 +2451,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'light-sound',
     minAge: 14,
     keywords: {
-      zh: ['膜厚写出的明暗', '肥皂膜与劈尖的条纹为什么移动？', '教材光学实验'],
+      zh: [
+        '膜厚写出的明暗',
+        '肥皂膜与劈尖的条纹为什么移动？',
+        '教材光学实验',
+        '薄膜的厚度，怎样变成明暗与颜色？',
+      ],
       en: [
         'Brightness written by film thickness',
         'Why do soap-film and wedge fringes move?',
         'textbook optics experiment',
+        'How does film thickness become brightness and color?',
       ],
     },
   },

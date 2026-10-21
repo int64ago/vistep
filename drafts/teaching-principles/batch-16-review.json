@@ -1,6 +1,6 @@
 {
   "batch": 16,
-  "status": "validated-awaiting-publication",
+  "status": "published; targeted live checks passed; full live-audit retry pending",
   "scenes": [
     "sound-interference-lab",
     "chem-reaction-rates",
@@ -145,7 +145,9 @@
       "scope": "Final PCM identity checked for all66 segments, all transcripts and relevant word timings read by root. Not subjective listening."
     }
   ],
-  "pending": ["Authorized Actions publication and live asset checks"],
+  "pending": [
+    "Read-only full audit against exact Actions production artifact, if completed before the next release"
+  ],
   "notClaimed": [
     "Subjective narration audition",
     "Physical-phone performance",
@@ -181,5 +183,19 @@
       "chemistry_inventory chemistry author/reviewer",
       "biology_inventory biology author/reviewer"
     ]
+  },
+  "publication": {
+    "commit": "a71fd8b425f22beb408573203e5124c949601d85",
+    "actionsRun": 39453172627,
+    "actionsURL": "https://github.com/int64ago/vistep/actions/runs/39453172627",
+    "actionsConclusion": "failure during post-publication live audit; verify/build/upload succeeded",
+    "deploymentId": "7be49f9c-8751-4233-be72-2fa0c39a6a18",
+    "workerVersion": "738e5b5c-a612-4b46-a3b9-a54a4f1584b2",
+    "liveEvidence": "artifacts/teaching-principles/batch-16-live.json",
+    "targetedBilingualPages": 10,
+    "exactRecordingChecks": 10,
+    "originalFailure": "Existing Tycho textbook URL timed out in the post-deploy audit; separate retry returned HTTP200.",
+    "tychoRetryEvidence": "artifacts/teaching-principles/batch-16-tycho-live.html",
+    "fullAuditRetry": "Exact Actions artifact download still in progress; not claimed passed."
   }
 }

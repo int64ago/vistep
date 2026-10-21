@@ -69,7 +69,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Evidence from ethene and ethyne](../src/content/en/chem-unsaturated-hydrocarbons.mdx)              | 3:46 | Why do two colour changes need different explanations?                        |
 | [Infrared absorption and structural evidence](../src/content/en/chem-infrared-structure.mdx)        | 2:23 | How does infrared absorption reveal a molecular functional group?             |
 | [Evidence behind noble-gas discoveries](../src/content/en/chem-noble-gas-evidence.mdx)              | 2:50 | How did subtle differences reveal elements and revise the idea of inertness?  |
-| [Light-induced methane substitution](../src/content/en/chem-methane-substitution.mdx)               | 2:28 | Why does one tube fade, form droplets and draw liquid upward?                 |
+| [Light-induced methane substitution](../src/content/en/chem-methane-substitution.mdx)               | 3:15 | Why does one tube fade, form droplets and draw liquid upward?                 |
 | [Polymer links and absorbing networks](../src/content/en/chem-polymer-networks.mdx)                 | 3:22 | Why can a polymer network take up water while remaining connected?            |
 | [Temperature-rise and ice calorimetry](../src/content/en/chem-calorimetry.mdx)                      | 3:25 | How can reaction heat become a measurable reading?                            |
 | [Bond-energy accounts and Hess paths](../src/content/en/chem-bond-energy.mdx)                       | 2:53 | If breaking bonds takes energy, how can a reaction release heat?              |
@@ -162,7 +162,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Neural research and clinical evidence](../src/content/en/bio-neural-evidence.mdx)                | 2:38 | What can a response, a stimulation and a case each establish?                    |
 | [Seven lines of evidence about the nucleus](../src/content/en/bio-nuclear-evidence.mdx)           | 2:47 | What evidence distinguishes nucleus, cytoplasm and developmental environment?    |
 | [Controlled evidence for hormone action](../src/content/en/bio-endocrine-evidence.mdx)            | 4:30 | What can removing and restoring a signal establish?                              |
-| [Fluid exchange and homeostasis records](../src/content/en/bio-body-fluid-balance.mdx)            | 2:40 | How can cells remain within a stable range while conditions change?              |
+| [Fluid exchange and homeostasis records](../src/content/en/bio-body-fluid-balance.mdx)            | 3:29 | How do hormone signals actually return water and sodium to the body?             |
 | [Synthetic genomes and living cells](../src/content/en/bio-engineered-genomes.mdx)                | 2:36 | Why does synthesizing DNA not mean synthesizing a whole cell?                    |
 | [The cellular secretion route](../src/content/en/bio-cellular-logistics.mdx)                      | 2:50 | Without filming the whole journey, how can we infer the route of a protein?      |
 | [Protein connections and function](../src/content/en/bio-protein-machines.mdx)                    | 2:27 | Do matching counts and appearance establish a working protein?                   |
@@ -314,7 +314,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [From rope motion to optical polarization](../src/content/en/polarization-evidence-lab.mdx) | 3:16 | What can a rotating slit select?                                             |
 | [From a slit to light inside a shadow](../src/content/en/optical-diffraction-lab.mdx)       | 3:44 | Why does a narrower gap spread light farther?                                |
 | [Measure with interference fringes](../src/content/en/double-slit-measurement-lab.mdx)      | 3:44 | How can a few bright fringes reveal wavelength?                              |
-| [Brightness written by film thickness](../src/content/en/thin-film-lab.mdx)                 | 2:20 | Why do soap-film and wedge fringes move?                                     |
+| [Brightness written by film thickness](../src/content/en/thin-film-lab.mdx)                 | 2:54 | How does film thickness become brightness and color?                         |
 | [Trace total reflection at boundaries](../src/content/en/total-reflection-lab.mdx)          | 3:44 | How can light follow a curved rod or water jet?                              |
 | [Reconstruct refraction and images from rays](../src/content/en/geometric-optics-lab.mdx)   | 3:16 | Where are the pins, chopstick and text that we see?                          |
 | [Helmholtz resonator](../src/content/en/helmholtz-resonator.mdx)                            | 2:30 | How can a short air neck resonate with an entire cavity?                     |

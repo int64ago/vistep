@@ -69,7 +69,7 @@
 | [乙烯与乙炔的性质证据](../../src/content/chem-unsaturated-hydrocarbons.mdx)       | 3:46 | 两次褪色，解释为什么不同？                           |
 | [红外吸收与结构证据](../../src/content/chem-infrared-structure.mdx)               | 2:23 | 怎样从一段红外吸收推断分子里的官能团？               |
 | [稀有气体的发现证据](../../src/content/chem-noble-gas-evidence.mdx)               | 2:50 | 科学家如何从微小差别发现元素，再修正“惰性”的判断？   |
-| [甲烷的光照取代](../../src/content/chem-methane-substitution.mdx)                 | 2:28 | 为什么一侧褪色、出现液滴并抬高液面？                 |
+| [甲烷的光照取代](../../src/content/chem-methane-substitution.mdx)                 | 3:15 | 为什么一侧褪色、出现液滴并抬高液面？                 |
 | [聚合物连接与吸水网络](../../src/content/chem-polymer-networks.mdx)               | 3:22 | 为什么连成网络的树脂能吸水，却不会像小分子一样散开？ |
 | [温差与融冰量热](../../src/content/chem-calorimetry.mdx)                          | 3:25 | 怎样把反应热变成可测量的读数？                       |
 | [键能账本与盖斯路径](../../src/content/chem-bond-energy.mdx)                      | 2:53 | 断键吸能，反应为什么仍能放热？                       |
@@ -162,7 +162,7 @@
 | [神经研究与病例证据](../../src/content/bio-neural-evidence.mdx)               | 2:38 | 一次反应、一次刺激、一个病例，各能说明什么？   |
 | [细胞核的七组证据](../../src/content/bio-nuclear-evidence.mdx)                | 2:47 | 核、细胞质与发育环境，各自留下什么证据？       |
 | [激素研究的对照证据](../../src/content/bio-endocrine-evidence.mdx)            | 4:30 | 拿走一种信号，再补回来，能说明什么？           |
-| [体液交换与稳态记录](../../src/content/bio-body-fluid-balance.mdx)            | 2:40 | 环境不断变化，细胞如何仍生活在稳定范围？       |
+| [体液交换与稳态记录](../../src/content/bio-body-fluid-balance.mdx)            | 3:29 | 激素发出信号，水和钠怎样真正回到体内？         |
 | [合成基因组与活细胞](../../src/content/bio-engineered-genomes.mdx)            | 2:36 | 合成了DNA，为什么还不能说合成了整个细胞？      |
 | [细胞里的分泌路线](../../src/content/bio-cellular-logistics.mdx)              | 2:50 | 没有拍到全过程，怎样知道蛋白质走过哪里？       |
 | [蛋白质的连接与功能](../../src/content/bio-protein-machines.mdx)              | 2:27 | 数量和外形都对了，蛋白质就一定能工作吗？       |
@@ -314,7 +314,7 @@
 | [从绳的方向到光的偏振](../../src/content/polarization-evidence-lab.mdx) | 3:16 | 转动一道狭缝，能筛选什么？                   |
 | [从狭缝到阴影中的亮点](../../src/content/optical-diffraction-lab.mdx)   | 3:44 | 缝变窄，光为什么反而铺得更开？               |
 | [把干涉条纹变成测量](../../src/content/double-slit-measurement-lab.mdx) | 3:44 | 如何从几个亮纹读出光的波长？                 |
-| [膜厚写出的明暗](../../src/content/thin-film-lab.mdx)                   | 2:20 | 肥皂膜与劈尖的条纹为什么移动？               |
+| [膜厚写出的明暗](../../src/content/thin-film-lab.mdx)                   | 2:54 | 薄膜的厚度，怎样变成明暗与颜色？             |
 | [沿界面追踪全反射](../../src/content/total-reflection-lab.mdx)          | 3:44 | 光为什么能沿弯棒和水流前进？                 |
 | [从光路重建折射与像](../../src/content/geometric-optics-lab.mdx)        | 3:16 | 看到的针、筷子和文字，在哪里？               |
 | [亥姆霍兹共鸣器](../../src/content/helmholtz-resonator.mdx)             | 2:30 | 颈部的一小段空气，怎样与整腔空气一起共鸣？   |

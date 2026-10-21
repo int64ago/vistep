@@ -1,26 +1,71 @@
-.thin-film-art {
-  display: block;
+.tf17-lab {
+  max-width: 680px;
+  margin: 0 auto;
   width: 100%;
-  height: 385px;
-  margin: 10px auto;
-  overflow: visible;
-}
-.thin-film-lab .modern-readout {
-  font-variant-numeric: tabular-nums;
-}
-.thin-film-comparison {
-  display: grid;
-}
-.thin-film-comparison > div {
-  grid-area: 1 / 1;
+  color: var(--ink);
   min-width: 0;
 }
-@media (max-width: 760px) {
-  .thin-film-art {
-    height: 330px;
-    margin: 4px auto;
-  }
-  .thin-film-art text {
-    font-size: 20px;
+.tf17-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-variant-numeric: tabular-nums;
+}
+.tf17-controls {
+  display: grid;
+  gap: 14px;
+  padding: 12px 0 5px;
+  min-width: 0;
+}
+.tf17-controls .segmented {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tf17-lab .tf17-controls button,
+.tf17-lab .tf17-controls .segmented button {
+  min-width: 44px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 16px;
+  border: 1px solid #bdcbbb;
+  border-radius: 14px;
+  background: #e7ecdf;
+  color: #405d50;
+  padding: 8px 12px;
+  transition: background 0.16s;
+}
+.tf17-controls button[aria-pressed='true'] {
+  background: #cad9ca;
+}
+.tf17-controls input[type='range'] {
+  min-width: 0;
+  width: 100%;
+  height: 44px;
+  font: inherit;
+  font-size: 16px;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+.tf17-controls label,
+.tf17-controls summary,
+.tf17-controls p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.tf17-controls details {
+  border-top: 1px solid #d3dccf;
+  padding-top: 10px;
+}
+.tf17-controls summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tf17-lab .tf17-controls button,
+  .tf17-lab .tf17-controls .segmented button {
+    transition: none;
   }
 }

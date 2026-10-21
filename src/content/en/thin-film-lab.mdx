@@ -1,22 +1,57 @@
-<h2 id="understand">Two reflections create one set of fringes</h2>
+<h2 id="understand">How does thickness become brightness and color?</h2>
 
-Both soap films and air wedges combine reflections from their boundaries. Propagation and reflection phase must be counted together. The textbook first observes a soap film in salt-yellowed flame light, then compares colors.
+A soap film does not emit its own yellow stripes. Light reflects from its boundaries, and the returning electric fields add at the same location. Some thicknesses reinforce the return; others suppress it. Follow one location through a section and the fields at one instant to connect the bands to thickness.
 
-<h2 id="try">Change thickness and compare one sheet with two</h2>
+## Compare phases at the same wavefront
 
-Follow monochromatic fringes as thickness varies, then switch to a three-color approximation. Compare the paper supports and fringe spacing within the first 4 mm of the wedge.
+At the air-to-film boundary, the reflected field reverses by half a cycle. Light entering the film returns from its rear boundary without that reflection reversal, but propagation adds phase. Comparing both paths at the same outgoing wavefront gives
 
-<h2 id="deeper">Calculation assumptions</h2>
+<div className="formula">Δ = 2nd cos θ₁</div>
+
+where d is thickness, n the film index, and θ₁ the internal angle. At oblique incidence, the two internal lengths alone are insufficient: subtract the exterior reference path traveled by the front reflection. The dashed section line joins the same outgoing wavefront; π and 0 label the interface phase changes.
+
+As thickness tends to zero, the returning fields cancel and reflection becomes dark. At normal incidence, the first bright condition is d = λ/(4n). Like neighboring fringes differ by λ/(2n) of thickness. Change wavelength and the same position generally changes brightness.
+
+## Follow a fringe, then change the illumination
+
+The film uses a prescribed thickness profile that increases downward. Reducing that profile moves the marker for one fixed interference order. Its new location still meets the same bright condition. This is not a fluid simulation or an observational drainage record.
+
+One thickness reflects different wavelengths by different amounts. White light therefore produces colors. The image samples 650, 530 and 460 nm, and the bars use the same calculation at the selected thickness. The color closeup places that thickness at the central marker; adjusting it changes this local patch and its color. This three-wavelength encoding is not a measured spectrum or calibrated colorimetry.
+
+<h2 id="try">Predict the air-wedge spacing</h2>
+
+Two paper sheets separate two glass plates. The air gap grows from contact toward the spacer. Glass-to-air reflection has no phase reversal; air-to-glass reflection has a half-cycle reversal. The contact end is consequently dark in reflection.
+
+For the fringe comparison, return to normal incidence. Like neighboring fringes differ by λ/2 of air-gap thickness. With spacer thickness h and plate length L, the small-angle profile is d = hx/L, giving
+
+<div className="formula">Δx = λL / (2h)</div>
+
+Remove one identical sheet: h halves while L and λ stay fixed, so spacing doubles. Watch the upper plate settle, predict, then reveal the new fringes. Doubling wavelength at fixed geometry also doubles spacing, through a different controlled change.
+
+<h2 id="deeper">Model and sources</h2>
 
 <details>
-<summary>Normal incidence in a symmetric lossless film</summary>
+<summary>Multiple returns and model limits</summary>
 
-<div className="formula">
-  δ = 4πnd/λ; R = 4r²sin²(δ/2) / [(1−r²)²+4r²sin²(δ/2)]; wedge Δx = λ/(2α)
-</div>
+The section follows the first two reflected paths. The amber waveform instead combines every internal return. For front-boundary field coefficient r and propagation phase β = 4πnd cos θ₁ / λ, the symmetric lossless film gives
 
-Here r is the amplitude reflection coefficient from the outer medium to the film. Soap index is 1.333 between air; the air wedge has index 1 between glass of index 1.5. R sums multiple reflections analytically. The two drawn waves compare only the first reflected phases, not the full field amplitude. Incidence is near normal; dispersion and absorption are omitted. Color samples 650, 530 and 460 nm and is not calibrated colorimetry.
+<div className="formula">r_film = r(1 − exp(iβ)) / (1 − r²exp(iβ))；R = |r_film|²</div>
 
-Soap thickness is d=(30+1250y)D nm, with normalized downward position y and adjustable teaching parameter D. It is not a fluid-dynamics solution. Sheets are 40 μm thick and plates 80 mm long; gap d=x·40N/80 μm. The side-view angle is enlarged and the fringe inset covers only the first 4 mm. Spacer removal interpolates static geometries rather than modeling mechanics.
+The three traces show one shared, slowed period. A vertical cursor samples the same instant on all three; the lower field equals the sum of the upper two.
+
+This includes the complete internal-reflection series. Its exact reflectance must not be labeled a first-two-ray approximation. The calculation conserves power, R + T = 1. Incident and exit media are identical, indices are constant, and oblique views use s polarization below total internal reflection. Evanescent-film propagation is excluded. The displayed optical clock is deliberately slowed.
+
+Drainage is a prescribed thickness change. The wedge uses 40 μm per paper sheet and 80 mm plate length as teaching inputs. The upper strip shows only the first 4 mm from contact. Section thickness and angle are enlarged; settling interpolates supported geometry rather than solving friction, glass elasticity or paper compression.
+
+</details>
+
+<details>
+<summary>Textbook procedure and sources</summary>
+
+Textbook page 98 uses a salted alcohol-lamp wick to illuminate a wire loop carrying a soap film. Page 100 asks how air-wedge fringes change when one spacer sheet is removed. The original names, pages and learning order remain intact; preparation follows the explanation rather than replacing it.
+
+- PEP, High School Physics, Elective 1, pp. 94–101, especially 98–100.
+- [OpenStax: Interference in Thin Films](https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films), for interface reversal and interference conditions.
+- [MIT 6.974, Chapter 2: Mirrors, Interferometers and Thin-Film Structures](https://www.ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/8e54d1625e9e71eb5b4e4998e6967e4e_chapter2.pdf), for Fresnel fields and the complete return series, particularly equation 2.191.
 
 </details>

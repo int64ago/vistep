@@ -246,3 +246,87 @@
     white-space: nowrap;
   }
 }
+
+@media (max-width: 600px) and (max-height: 650px) {
+  .chem-solution-preparation[data-watch='true'] {
+    padding: 0;
+    display: flow-root;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-ledger {
+    padding: 3px 0;
+    gap: 6px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-ledger b {
+    padding-bottom: 2px;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-main svg {
+    height: 175px;
+  }
+  .chem-solution-preparation[data-watch='true'][data-mode='mixing'] .chem-prep-main svg {
+    height: 190px;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-main figcaption {
+    display: none;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-apparatus {
+    gap: 5px;
+  }
+  .chem-solution-preparation[data-watch='true'][data-mode='meniscus'] .chem-prep-main {
+    display: none;
+  }
+  .chem-solution-preparation[data-watch='true'][data-mode='meniscus'] .chem-prep-detail {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .chem-solution-preparation[data-watch='true'][data-mode='meniscus'] .chem-prep-detail svg {
+    height: 145px;
+    grid-area: auto;
+  }
+  .chem-solution-preparation[data-watch='true'][data-mode='meniscus'] .chem-prep-detail p {
+    grid-area: auto;
+    margin: 0;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-concentration {
+    padding: 0;
+    border: 0;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    grid-area: auto;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-concentration strong {
+    font-size: 18px;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-balance strong {
+    font-size: 18px;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-balance {
+    gap: 5px;
+  }
+  .chem-solution-preparation[data-watch='true'] .chem-prep-balance > div {
+    gap: 2px;
+  }
+  .chem-solution-preparation[data-watch='true']:is([data-mode='mixing'], [data-mode='dilution'])
+    .chem-prep-detail {
+    display: block;
+  }
+  .chem-solution-preparation[data-watch='true']:is([data-mode='mixing'], [data-mode='dilution'])
+    .chem-prep-balance {
+    display: none;
+  }
+  .showcase:has(.chem-solution-preparation[data-watch='true']) .film-caption {
+    padding: 8px 14px 4px;
+    gap: 10px;
+    min-height: 0;
+  }
+  .showcase:has(.chem-solution-preparation[data-watch='true']) .film-caption p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+}
+.chem-prep-controls :is(button, label, output) {
+  font-size: 16px;
+}

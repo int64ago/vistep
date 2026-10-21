@@ -1,0 +1,143 @@
+{
+  "slug": "thin-film-lab",
+  "status": "candidate-frozen",
+  "scope": "Isolated candidate using actual Showcase and all Base CSS. No canonical route, production file, audio, shared registration or dist-preview modification.",
+  "sources": {
+    "report": "checks/sources/source-review.json",
+    "context": "Full textbook printed P94–101 read; actual P98/P99/P100 page images viewed. OpenStax and MIT primary instructional sources checked.",
+    "recordIdentity": "No historical observation records created. Drainage profile, spacers and three spectral samples are explicit explanatory inputs."
+  },
+  "preservation": {
+    "chapterIds": ["soap-yellow", "soap-drain", "soap-white", "wedge-two", "wedge-one"],
+    "windows": ["e1-soap-film-interference", "e1-wedge-interference"],
+    "retainedSpokenPairs": ["soap-drain", "soap-white", "wedge-one"],
+    "changedSpokenPairs": ["soap-yellow", "wedge-two"],
+    "cueFieldDiff": "All eight shared fields are separately compared in packet.spokenDiff; spoken retention does not claim identical titles or captions.",
+    "duration": "168 seconds provisional; no new speech measured yet."
+  },
+  "science": {
+    "contract": "Lossless symmetric s-polarized Fresnel model; Snell geometry; exact total internal-return sum; same outgoing-wavefront optical path; R+T=1; matched-index and zero-thickness cancellation; explicitly bounded propagating domain.",
+    "limitations": [
+      "Prescribed drainage is not a hydrodynamic solution.",
+      "Three-wavelength display is not measured white-light colorimetry.",
+      "Wedge settling is a geometric interpolation, not a mechanical simulation.",
+      "Absorption, dispersion, total internal reflection and frustrated transmission are excluded."
+    ],
+    "independentPeer": {
+      "report": "artifacts/teaching-principles/batch-17-cross-review/chemistry-review-thin-film.json",
+      "assertions": 1022,
+      "scope": "Independent Airy expression, energy, field sum, same-wavefront OPD, matched indices and invalid/TIR boundaries; no UI or speech claim."
+    }
+  },
+  "executed": {
+    "scopedTests": {
+      "files": 3,
+      "tests": 15,
+      "passed": true,
+      "report": "checks/tests-final.log"
+    },
+    "strictTypes": {
+      "diagnostics": 0,
+      "report": "checks/strict-types.json"
+    },
+    "mdx": {
+      "articles": 2,
+      "compiler": "Installed Astro Satteri",
+      "report": "checks/mdx-parse.json"
+    },
+    "native": {
+      "frames": 84,
+      "exploreBoundaryStates": 64,
+      "controlGroups": 2,
+      "failures": 0,
+      "errors": 0,
+      "report": "checks/native-review-04/report.json",
+      "watch320": {
+        "top": 16,
+        "maxBottom": 522,
+        "viewportHeight": 568,
+        "minSvgFont": 16
+      },
+      "explore": "Expanded Explore uses normal page scrolling; no claim that all expanded controls fit one screen."
+    },
+    "geometryResources": {
+      "checks": 252,
+      "report": "checks/geometry-resource-review/report.json",
+      "scope": "Pre-final-color source: continuous path endpoints, common-clock field sums, sheet/plate nonintersection, failed fonts and failed audio, finite drawings and usable controls.",
+      "fontFallbackMaxBottom": 546
+    },
+    "articleLayout": {
+      "report": "checks/article-review/report.json",
+      "scope": "Both compiled articles rendered under Base CSS; not complete Astro route acceptance."
+    },
+    "covers": {
+      "paths": ["checks/cover-review/card.png", "checks/cover-review/white.png"],
+      "scope": "Candidate static cover consumer render; canonical generated social assets/catalog integration pending."
+    },
+    "technicalPlayback": {
+      "report": "checks/native-playback-final/report.json",
+      "languages": 2,
+      "secondsEach": 168,
+      "normalSpeed": true,
+      "muted": true,
+      "scope": "Whole-film technical clock/end and transport behavior ran on the source before the final color-local-thickness binding fix. This is not uninterrupted human watching, subjective listening, final audio synchronization or physical-phone performance."
+    },
+    "finalChangedChapter": {
+      "report": "checks/color-final-review/report.json",
+      "languages": 2,
+      "secondsEach": 28,
+      "normalSpeed": true,
+      "muted": true,
+      "controls": 2,
+      "scope": "Exact final bundle: complete color chapter plus thin-drainage to high-local-thickness cross-view counterexample. Final full canonical static run remains required."
+    }
+  },
+  "actualVisualReview": {
+    "authorViewed": [
+      "checks/author-sheets/sheet-01.png",
+      "checks/author-sheets/sheet-02.png",
+      "checks/author-sheets/sheet-03.png",
+      "checks/author-sheets/sheet-04.png",
+      "checks/author-sheets/sheet-05.png",
+      "checks/native-review-04/en-320-c2-t20.png",
+      "checks/color-final-review/en-thin-drain-high-local.png",
+      "checks/color-final-review/zh-thin-drain-high-local.png",
+      "checks/cover-review/card.png",
+      "checks/cover-review/white.png"
+    ],
+    "rootCandidateViews": "artifacts/teaching-principles/batch-17-root-early-physics-views.json",
+    "classification": "Author keyframes/contact sheets and root early candidate views are separate from automatic frame checks, continuous playback and subjective listening."
+  },
+  "failureHistory": [
+    {
+      "evidence": "checks/native-review-01/report.json",
+      "issue": "Base segmented CSS reduced labels to 10px.",
+      "fix": "Scene-scoped stronger 16px/44px rule; later 64 control boundary states pass."
+    },
+    {
+      "issue": "Author observed sum waveform and rear-interface phase label/readout collisions.",
+      "fix": "Common physical waveform scale, independent label bands and phase placement; corrected frames personally viewed."
+    },
+    {
+      "issue": "Cross-view thin drainage could put the selected local color marker off the film and carry monochromatic illumination.",
+      "fix": "Color view is explicitly white three-sample, normal incidence, selected thickness at fixed center. Independent React regression, final 84-frame/64-control rerun and final 28s/language chapter replay pass."
+    }
+  ],
+  "pending": [
+    "Root canonical integration and translations.",
+    "Actual retained/new speech generation and word-time calibration.",
+    "Final actual-route and frozen static full player/continuous playback.",
+    "Global pnpm verify and pnpm build:preview.",
+    "Subjective audio listening and physical-phone performance remain unperformed."
+  ],
+  "rootIntegration": {
+    "batch": 17,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-17-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

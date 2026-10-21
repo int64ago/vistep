@@ -1,0 +1,365 @@
+{
+  "sceneSlug": "bio-body-fluid-balance",
+  "batch": 17,
+  "status": "frozen ignored candidate; not integrated or root accepted",
+  "owner": "biology author",
+  "at": "2026-10-18T22:02:32.776Z",
+  "sourceCommit": "6fc8f36612f16c11b721688ff1bcb510a866bbfa",
+  "scope": "Eleven regular owned files. No actual src/drafts/shared/audio/index/build/deploy writes.",
+  "preservation": {
+    "chapterIds": [
+      "plasma-tissue",
+      "lymph-return",
+      "temperature-record",
+      "temperature-compare",
+      "heat-balance",
+      "water-adh",
+      "sodium-aldosterone"
+    ],
+    "windows": {
+      "bio-elective-1-mechanism-14": {
+        "sceneSlug": "bio-body-fluid-balance",
+        "chapterIds": ["plasma-tissue", "lymph-return"],
+        "label": "血浆、组织液与淋巴液的联系",
+        "sceneVariant": "bio-elective-1-mechanism-14"
+      },
+      "bio-elective-1-012-1": {
+        "sceneSlug": "bio-body-fluid-balance",
+        "chapterIds": ["temperature-record", "temperature-compare"],
+        "label": "调查体温的日变化规律",
+        "sceneVariant": "bio-elective-1-012-1"
+      },
+      "bio-elective-1-mechanism-17": {
+        "sceneSlug": "bio-body-fluid-balance",
+        "chapterIds": ["heat-balance", "water-adh", "sodium-aldosterone"],
+        "label": "体温与水盐平衡调节",
+        "sceneVariant": "bio-elective-1-mechanism-17"
+      }
+    },
+    "spoken": [
+      {
+        "index": 0,
+        "id": "plasma-tissue",
+        "locale": "zh",
+        "preserved": true
+      },
+      {
+        "index": 0,
+        "id": "plasma-tissue",
+        "locale": "en",
+        "preserved": true
+      },
+      {
+        "index": 1,
+        "id": "lymph-return",
+        "locale": "zh",
+        "preserved": true
+      },
+      {
+        "index": 1,
+        "id": "lymph-return",
+        "locale": "en",
+        "preserved": true
+      },
+      {
+        "index": 2,
+        "id": "temperature-record",
+        "locale": "zh",
+        "preserved": true
+      },
+      {
+        "index": 2,
+        "id": "temperature-record",
+        "locale": "en",
+        "preserved": true
+      },
+      {
+        "index": 3,
+        "id": "temperature-compare",
+        "locale": "zh",
+        "preserved": true
+      },
+      {
+        "index": 3,
+        "id": "temperature-compare",
+        "locale": "en",
+        "preserved": true
+      },
+      {
+        "index": 4,
+        "id": "heat-balance",
+        "locale": "zh",
+        "preserved": true
+      },
+      {
+        "index": 4,
+        "id": "heat-balance",
+        "locale": "en",
+        "preserved": true
+      },
+      {
+        "index": 5,
+        "id": "water-adh",
+        "locale": "zh",
+        "preserved": false
+      },
+      {
+        "index": 5,
+        "id": "water-adh",
+        "locale": "en",
+        "preserved": false
+      },
+      {
+        "index": 6,
+        "id": "sodium-aldosterone",
+        "locale": "zh",
+        "preserved": false
+      },
+      {
+        "index": 6,
+        "id": "sodium-aldosterone",
+        "locale": "en",
+        "preserved": false
+      }
+    ],
+    "plannedDuration": 209,
+    "measuredExistingSpans": [22, 22, 23, 23.5, 24.5],
+    "provisionalNewSpans": [48, 46]
+  },
+  "sourceReview": {
+    "scope": "Author source review, separate from model tests and visual review",
+    "textbook": {
+      "file": "人教版高中生物学-选择性必修1-稳态与调节.pdf",
+      "fullRelevantContextRead": ["printed 1–12, PDF 10–21", "printed 57–62, PDF 66–71"],
+      "imagesActuallyViewed": [
+        "printed3 / PDF12",
+        "printed12 / PDF21",
+        "printed60 / PDF69",
+        "printed61 / PDF70"
+      ],
+      "originalWindowsPreserved": {
+        "bio-elective-1-mechanism-14": ["plasma-tissue", "lymph-return"],
+        "bio-elective-1-012-1": ["temperature-record", "temperature-compare"],
+        "bio-elective-1-mechanism-17": ["heat-balance", "water-adh", "sodium-aldosterone"]
+      },
+      "constraints": [
+        "P12 asks household axillary observations, one decimal and separate ambient comparison. Practice data never promoted to real observations.",
+        "P60 water-balance totals are conditional textbook reference, not universal measurements; not used to calibrate this model.",
+        "P61 water and sodium regulation are coupled; independent ledgers isolate variables."
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC42627/",
+        "doi": "10.1073/pnas.92.4.1013",
+        "read": "All five original page images, printed1013–1017. HTML abstract and image links also inspected.",
+        "local": "checks/sources/nielsen-pnas01482-0086.png through -0090.png",
+        "facts": [
+          "Isolated rat inner medullary collecting ducts with maintained bath-to-lumen osmotic difference; separate terminal EM groups.",
+          "Permeability and apical AQP2 localization increase after vasopressin; washout reverses the trend.",
+          "Final localization is fixed-sample evidence, not the same tagged vesicle movie."
+        ],
+        "limits": "No literal copying of experimental image or fitting the toy feedback ODE to study values."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3904566/",
+        "doi": "10.1681/ASN.2013040429",
+        "read": "Main full article results through Figure6 read during initial research; metadata independently rechecked via PubMed24179170. Later PMC tool reload returned challenge.",
+        "facts": [
+          "ENaC apical sodium entry and Na,K-ATPase basolateral extrusion/cross-talk.",
+          "Hormone-clamped experiments cannot independently establish every aldosterone effect."
+        ]
+      },
+      {
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-8-endocrine-regulation-of-kidney-function",
+        "read": "Whole short section, technical corroboration. No images or prose copied.",
+        "facts": [
+          "Adrenal cortex aldosterone; angiotensin II and potassium regulation.",
+          "ADH AQP insertion, osmotic water transport and return from renal interstitium."
+        ]
+      },
+      {
+        "url": "https://iubmb.qmul.ac.uk/enzyme/EC7/2/2/13.html",
+        "read": "Official full short enzyme entry/net reaction",
+        "facts": [
+          "3 Na out and 2 K in per ATP hydrolysed; net energy-coupled transport, not bond-breaking-alone energy."
+        ]
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/4228075/",
+        "doi": "10.1113/jphysiol.1967.sp008297",
+        "read": "Full abstract only; PMC returned challenge; not used as a quantitative fixed dataset.",
+        "facts": [
+          "Original red-cell-ghost sodium/ATP measurements support about3 Na per ATP; abstract also describes Na/K flux measurement caveats."
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1074/jbc.M107165200",
+        "read": "Abstract only; publisher full text unavailable. Not used as a plotted dataset."
+      }
+    ],
+    "failuresRetained": [
+      "nielsen1995-failed-pdf-response.html is an HTML challenge, not a PDF; five public PMC page-image alternatives actually read.",
+      "EuropePMC XML/PDF requests failed; not counted as successful reads."
+    ],
+    "modelBoundaries": [
+      "The terminal-nephron delivery is an internal circulation flux, not new intake.",
+      "Signal persists when target response fails. Zero gradient causes net water recovery0 even with channels; ordinary microscopic exchange remains possible.",
+      "Sodium deficit signal is a regulatory proxy; no direct adrenal total-sodium sensor is claimed.",
+      "Sodium one-cycle geometry and continuous normalized organ balance are separate explanatory levels.",
+      "The pump figure omits K secretion, electrical gradients and detailed protein conformations; it does not imply whole-body K retention.",
+      "The salt-loss bars represent relative amount, not metallic sodium inside water."
+    ]
+  },
+  "authorAutomated": {
+    "strictTypes": {
+      "passed": true,
+      "report": "checks/strict-types.json"
+    },
+    "tests": {
+      "passed": 17,
+      "failed": 0,
+      "report": "checks/model-tests.json"
+    },
+    "mdx": {
+      "compiled": 2,
+      "report": "checks/mdx-compile.json"
+    },
+    "frames": {
+      "count": 84,
+      "failures": 0,
+      "errors": [],
+      "maxPhonePlayerHeight": 521.59375,
+      "minRenderedSceneSvgText": 16,
+      "viewports": ["320×568", "1100×900"],
+      "scope": "Isolated Vite candidate using actual Base CSS and Showcase; ZH/EN all seven chapters. Not actual Astro/header/route integration.",
+      "report": "checks/final-native-frames/report.json"
+    },
+    "nativeControls": {
+      "passed": 96,
+      "errors": [],
+      "report": "checks/native-controls/report.json",
+      "scope": "Real keyboard/click controls, watch/explore isolation, per-topic response and driver state, record missing/reset, zero disturbance, channel driver/pump off, three exact windows/chapter/seek/replay, actual Audio request aborted in explicit fault mode. No new narration played."
+    },
+    "silentNativeFullTraversal": {
+      "results": [
+        {
+          "lang": "zh",
+          "passed": true,
+          "chapters": 7,
+          "end": {
+            "time": 209,
+            "playing": "false"
+          },
+          "errors": []
+        },
+        {
+          "lang": "en",
+          "passed": true,
+          "chapters": 7,
+          "end": {
+            "time": 209,
+            "playing": "false"
+          },
+          "errors": []
+        }
+      ],
+      "source": {
+        "scope": "Isolated Vite candidate bundle; no Astro build or production assets",
+        "builtAt": "2026-10-18T21:58:46.796Z",
+        "files": {
+          "src/models/bio-body-fluid-balance.ts": "11e8f9db701a433ae3f4e1a235865b74ab1173d85d0856f19c11fc40d6fcd901",
+          "src/components/experiments/BioBodyFluidBalance.tsx": "364848bb5b3bd9b748f1dfb45ccd041018d75279c1fd0458cf99710f3e7f0279",
+          "src/styles/bio-body-fluid-balance.css": "88771b8dba3e4b7f7bf45ddd52a83e201a6ff049e33c93923414e45ec4e02dee",
+          "drafts/bio-body-fluid-balance/principle-first-packet.json": "0d64c0ca582bf380b96d36f89f89c4e9e3d5276f01305ff896f4c2e2c7462914"
+        }
+      },
+      "report": "checks/native-continuous/report.json",
+      "scope": "Real requestAnimationFrame and native Showcase clock, final reviewed bundle; no synthetic time or audio. Automated sampled screenshots, not uninterrupted human watching."
+    },
+    "oldSpeech": {
+      "report": "checks/retained-speech-review.json",
+      "count": 10,
+      "transcriptsActuallyRead": 10,
+      "decoder": "MLX large-v3-turbo with no reference or language hint",
+      "subjectiveListening": false,
+      "newCuesGenerated": false
+    },
+    "cover": {
+      "rendered": true,
+      "image": "checks/cover.png",
+      "actualConsumers": false
+    }
+  },
+  "authorVisual": {
+    "status": "Decisive final frames actually opened; do not claim all84 captures manually viewed.",
+    "finalFramePaths": [
+      "checks/final-native-frames/en-320-0-distributed.png",
+      "checks/final-native-frames/en-320-3-compare.png",
+      "checks/final-native-frames/zh-320-6-salt-loss.png",
+      "checks/final-native-frames/en-320-6-pump-off.png",
+      "checks/final-native-frames/zh-320-5-water-budget.png",
+      "checks/final-native-frames/en-320-4-heat-recovery.png",
+      "checks/final-native-frames/en-320-5-vesicle.png",
+      "checks/final-native-frames/en-320-5-water-pass.png",
+      "checks/final-native-frames/en-320-5-no-gradient.png",
+      "checks/final-native-frames/en-320-6-potassium.png",
+      "checks/final-native-frames/zh-1100-5-water-budget.png"
+    ],
+    "otherActuallyViewed": [
+      "checks/native-controls/en-explore.png",
+      "checks/native-controls/zh-explore.png",
+      "checks/cover.png"
+    ],
+    "earlierRounds": "First/second/third frame folders retained; earlier arterial/lymph, signal source, water loss, pump and ion scenes inspected. Final short-screen frames supersede layout metrics.",
+    "resolvedFindings": [
+      "Water net arrows previously crossed membranes away from channels; relocated outside membrane diagram, selected water paths pass only through open channels.",
+      "Equal-area visible density now derives from amount/compartment volume, not amount alone.",
+      "Selected opposing water IDs have fixed trace speeds; gradient changes the separate net partition, avoiding concentration-aware particle motion.",
+      "Zero-gradient counterexample begins with already-inserted channels.",
+      "First-five cuts now follow actual preserved word timings; missing household data remains absent.",
+      "Temperature extreme-input labels remain clear of axis captions.",
+      "Sodium deficit uses quantity bars, not a solid-metal or aquarium metaphor.",
+      "Signal readout correctly labels the ADH signal rather than solute concentration.",
+      "Explore water and sodium drivers/responses are independent; hand selections persist and never alter watch state.",
+      "Native fault harness records an actual failed Audio request with visual fallback; it does not claim a newly synchronized track."
+    ]
+  },
+  "independentPeer": {
+    "report": "artifacts/teaching-principles/batch-17-cross-review/chemistry-review-fluid.json",
+    "assertions": 4433,
+    "modelSha256": "11e8f9db701a433ae3f4e1a235865b74ab1173d85d0856f19c11fc40d6fcd901",
+    "scope": "Renal partition, body/tubular two ledgers, positive stock at domain extremes, selected3Na/2K/1ATP identity and pump off; not source/physiology/UI/director or listening acceptance."
+  },
+  "notRun": [
+    "Actual site Astro SSR anchors and integrated textbook routes",
+    "Root global verify/build:preview and publication",
+    "New two-chapter TTS and word-time calibration",
+    "Subjective listening in either language",
+    "Uninterrupted human watching of the final entire film",
+    "Physical-phone performance",
+    "Actual catalog/social cover consumers"
+  ],
+  "rootRemaining": [
+    "Review causal frames and scientific boundaries.",
+    "Integrate exact seven IDs and three preserved windows; retain first-five measured spans.",
+    "Generate only new water-adh and sodium-aldosterone ZH/EN spoken fields at natural speed, then calibrate only their directors.",
+    "Validate integrated whole-player, entry anchors, native media playback, assets/faults and actual cover consumers."
+  ],
+  "freezeMetadata": {
+    "packetStatusOnlyChangedAfterReviewedBundle": true,
+    "reviewedPacketSha256": "0d64c0ca582bf380b96d36f89f89c4e9e3d5276f01305ff896f4c2e2c7462914",
+    "runtimeProjectionSha256": "31e90ee3988c32aaa9ea88f77c7b6cfa908a74d21544546ecbef3bfe78179a58",
+    "scope": "No presentation/narration/translation/variant changed after final native review."
+  },
+  "rootIntegration": {
+    "batch": 17,
+    "status": "validated-awaiting-publication",
+    "review": "drafts/teaching-principles/batch-17-review.json",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

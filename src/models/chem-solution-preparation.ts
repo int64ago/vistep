@@ -91,7 +91,7 @@ export function mixingLayers(concentration: number, mixed: number) {
   );
 }
 export type PreparationMode = 'solid' | 'transfer' | 'meniscus' | 'mixing' | 'dilution';
-export function preparationDirector(chapter: number, progress: number) {
+function originalPreparationDirector(chapter: number, progress: number) {
   const p = bounded(progress, 0, 1);
   return {
     mode: (['solid', 'transfer', 'transfer', 'meniscus', 'mixing', 'dilution'][chapter] ||
@@ -112,5 +112,89 @@ export function preparationDirector(chapter: number, progress: number) {
     mixed: chapter === 4 ? p : 1,
     progress: p,
     stage: chapter === 2 ? 'rinse' : chapter === 0 ? 'dissolve' : 'normal',
+  };
+}
+
+/** Measured existing voice windows; seconds are presentation time, not laboratory rates. */
+export function preparationDirector(
+  chapter: number,
+  progress: number,
+  time?: number,
+  locale = 'zh',
+) {
+  if (time === undefined) return originalPreparationDirector(chapter, progress);
+  const c = Math.round(bounded(chapter, 0, 5)),
+    t = bounded(time, 0, 300),
+    en = locale === 'en',
+    r = (a: number, z: number) => {
+      const p = bounded((t - a) / (z - a), 0, 1);
+      return p * p * (3 - 2 * p);
+    };
+  let p = bounded(progress, 0, 1),
+    q = originalPreparationDirector(c, p);
+  if (c === 0) {
+    p = r(en ? 17.55 : 14.99, en ? 23.17 : 21.29);
+    q = { ...q, progress: p };
+  }
+  if (c === 1) {
+    p = r(0.5, en ? 9.8 : 10.7);
+    q = { ...q, recovery: 0.95 * p, volume: Math.max(1, 40 * p), progress: p };
+  }
+  if (c === 2) {
+    p = r(en ? 6.3 : 6.9, en ? 12.2 : 13.5);
+    q = { ...q, recovery: 0.95 + 0.05 * p, volume: 40 + 15 * p, progress: p };
+  }
+  if (c === 3) {
+    p = r(en ? 9.95 : 9.55, en ? 14.67 : 13.37);
+    let volume = 98.8 + 1.2 * p;
+    const high = en ? 20.65 : 19.65,
+      low = en ? 23.9 : 23.81;
+    if (t >= high) volume = 100 + 0.8 * r(high, high + 0.8);
+    if (t >= low) volume = 100.8 - 1.6 * r(low, low + 0.8);
+    q = {
+      ...q,
+      volume,
+      progress: p,
+      stage: t >= low ? 'low-volume-case' : t >= high ? 'high-volume-case' : 'normal',
+    };
+  }
+  if (c === 4) {
+    p = r(en ? 4.6 : 4, en ? 8.55 : 9.79);
+    q = { ...q, mixed: p, progress: p };
+  }
+  if (c === 5) {
+    p = r(en ? 12.23 : 9.93, en ? 16.99 : 13.73);
+    q = { ...q, volume: 50 + 50 * p, progress: p };
+  }
+  return q;
+}
+
+/** One selected qualitative residue marker, not a fixed number of ions or a measured parcel. */
+export function preparationTracer(recovery: number, volumeMl: number) {
+  const p = bounded((recovery - 0.95) / 0.05, 0, 1),
+    a = (-25 * Math.PI) / 180;
+  const source = {
+    x: 116 + (35 - 60) * Math.cos(a) - (88 - 70) * Math.sin(a),
+    y: 65 + (35 - 60) * Math.sin(a) + (88 - 70) * Math.cos(a),
+  };
+  const lip = {
+    x: 116 + (112 - 60) * Math.cos(a) - (25 - 70) * Math.sin(a),
+    y: 65 + (112 - 60) * Math.sin(a) + (25 - 70) * Math.cos(a),
+  };
+  const level = flaskLevel(volumeMl),
+    end = { x: 185, y: level + (327 - level) * 0.72 };
+  const points = [source, lip, { x: 187, y: 65 }, { x: 190, y: 145 }, end],
+    segment = Math.min(3, Math.floor(p * 4)),
+    q = p === 1 ? 1 : p * 4 - segment,
+    t = q * q * (3 - 2 * q),
+    from = points[segment],
+    to = points[segment + 1];
+  return {
+    id: 'prep-residue-tracer',
+    progress: p,
+    x: from.x + (to.x - from.x) * t,
+    y: from.y + (to.y - from.y) * t,
+    phase: p === 0 ? 'source' : p === 1 ? 'flask' : 'transfer',
+    points,
   };
 }

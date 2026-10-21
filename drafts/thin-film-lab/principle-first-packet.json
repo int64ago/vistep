@@ -1,0 +1,517 @@
+{
+  "slug": "thin-film-lab",
+  "status": "candidate-frozen-ready-for-root-review",
+  "scope": {
+    "chapterIds": ["soap-yellow", "soap-drain", "soap-white", "wedge-two", "wedge-one"],
+    "textbookEntries": ["e1-soap-film-interference", "e1-wedge-interference"],
+    "expectedDuration": 168,
+    "retainedSpokenIds": ["soap-drain", "soap-white", "wedge-one"],
+    "changedSpokenIds": ["soap-yellow", "wedge-two"],
+    "retainedScope": "Only the zh/en spoken pairs of three cues are byte-identical. All screen captions/titles and the causal director are reviewed separately. No new audio generated."
+  },
+  "topic": {
+    "title": {
+      "zh": "薄膜的厚度，怎样变成明暗与颜色？",
+      "en": "How does film thickness become brightness and color?"
+    },
+    "description": {
+      "zh": "让两路反射接上相位和总场，再用同一厚度规律预测肥皂膜与空气劈尖的条纹。",
+      "en": "Connect reflected paths to phase and total field, then predict soap-film and air-wedge fringes from the same thickness rule."
+    }
+  },
+  "narration": {
+    "duration": 168,
+    "cues": [
+      {
+        "id": "soap-yellow",
+        "title": "同一束光，为什么有明暗？",
+        "titleEn": "Why does one source make bands?",
+        "caption": "传播光程与界面反射共同决定相位差。",
+        "captionEn": "Path length and reflection set the phase difference.",
+        "zh": "同一束黄光照在肥皂膜上，为什么有亮纹也有暗纹？跟住一个位置，放大膜的剖面。一路在前界面反射，另一路进入薄膜，在后界面反射后返回。前一路反射时翻转半周，后一路还多走一段光程。比较同一波面的光，两路的相位差才有意义。现在看同一时刻的场：前界面反射，加上膜内返回，得到总场；总场的强弱决定反射亮暗。先猜一猜，厚度趋近零会怎样？这时两路抵消，反射变暗。剖面放大了路径，计算包含后续的多次返回。",
+        "en": "Why does one yellow source make both bright and dark bands on a soap film? Follow one location and enlarge the section. One part reflects at the front boundary. Another enters the film, reflects at the back, and returns. The front reflection reverses by half a cycle; the returning light also travels an extra optical path. Compare them at the same wavefront. Now add the fields at one instant: the front reflection plus the internal returns gives the total field. Its strength sets the reflected brightness. Predict what happens as thickness approaches zero. The fields cancel and reflection becomes dark. Paths are enlarged; the calculation includes later internal returns.",
+        "seconds": 44,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "soap-drain",
+        "title": "跟住一条亮纹",
+        "titleEn": "Follow one bright fringe",
+        "caption": "同一亮纹对应的膜厚，在新的位置出现。",
+        "captionEn": "The same bright-fringe thickness moves to a new position.",
+        "zh": "重力排液会让竖直肥皂膜的厚度随高度和时间变化。页面改变一个简化的厚度分布，看同一明条纹移到新的位置。前表面反射还会发生半周相位变化，所以膜厚趋近零时反射变暗。厚度的变化是教学输入，不是完整求解肥皂液流动；真实膜还会受表面活性剂和空气扰动影响。",
+        "en": "Drainage changes a vertical soap film’s thickness with height and time. Vary a prescribed thickness profile and watch equal-phase contours move. The front reflection adds a half-cycle shift, making a nearly zero-thickness film dark. Thickness evolution is a teaching input, not a fluid simulation including surfactants and air disturbances.",
+        "seconds": 28,
+        "chapterAt": 44,
+        "at": 44.45
+      },
+      {
+        "id": "soap-white",
+        "title": "同一厚度，不同波长",
+        "titleEn": "One thickness, different wavelengths",
+        "caption": "不同波长的反射率不同，形成颜色。",
+        "captionEn": "Different reflectances across wavelengths create color.",
+        "zh": "换成白光后，不同波长在同一厚度处有不同的相位差。某些颜色增强，另一些颜色减弱，于是出现彩色条纹。画面只用红绿蓝三个采样波长近似显示颜色，不把这些颜色当作真实光谱测量。自由探索中可以回到单色光，改变波长并追踪条纹的位置。",
+        "en": "Under white illumination, different wavelengths have different phase differences at the same thickness. Some strengthen while others weaken, producing color. Three sampled wavelengths provide an illustrative display, not a measured spectrum or calibrated color prediction. Exploration returns to monochromatic light so you can move the fringes by changing wavelength.",
+        "seconds": 28,
+        "chapterAt": 72,
+        "at": 72.45
+      },
+      {
+        "id": "wedge-two",
+        "title": "空气劈尖的暗纹",
+        "titleEn": "Dark fringes in an air wedge",
+        "caption": "相邻同类条纹的厚度差是半个波长。",
+        "captionEn": "Like neighboring fringes differ by half a wavelength of gap thickness.",
+        "zh": "两块玻璃夹着两张纸，接触端的空气膜最薄，向纸片一端逐渐增厚。先斜着看清两路反射：从玻璃到空气的前路不翻相，空气到玻璃的后路翻转半周。两路相差仍随空气膜厚度改变。回到垂直入射，在接触端两路抵消，出现暗纹。沿劈尖前进，膜厚每增加半个波长，就回到下一个同类条纹。上图只展开接触端起的四毫米，下图夹角放大。纸片厚度减半、玻璃长度不变，先用这个规律预测新间距。",
+        "en": "Two glass plates are separated by two paper sheets. The air gap is thinnest at contact and grows toward the spacer. First use an oblique section to distinguish the reflections: glass to air gives no phase reversal; air to glass gives a half-cycle reversal. Their phase difference also depends on gap thickness. Return to normal incidence. At contact the fields cancel, making a dark fringe. Each additional half-wavelength of gap thickness gives the next like fringe. Above, only the first four millimeters are displayed; below, the wedge angle is enlarged. If spacer thickness halves while plate length stays fixed, predict the new spacing.",
+        "seconds": 40,
+        "chapterAt": 100,
+        "at": 100.45
+      },
+      {
+        "id": "wedge-one",
+        "title": "少一张纸，条纹怎样变？",
+        "titleEn": "One sheet fewer: what changes?",
+        "caption": "纸片少一张，同样的厚度差要走多远？",
+        "captionEn": "With one sheet fewer, how far to gain the same gap thickness?",
+        "zh": "抽去一张纸片后，支撑厚度减半，玻璃长度不变。相邻同类条纹对应的厚度差仍然是半个空气中波长，因此水平间距加倍。模型只比较支撑后的静态状态，过渡表示上板落到新的位置，不计算纸片抽动和玻璃弹性。改变支撑不会把波长也改变。",
+        "en": "After removing one sheet, support thickness halves while plate length remains fixed. Neighboring like fringes still differ in thickness by half a wavelength in air, so their horizontal spacing doubles. The model compares static supported states; the transition indicates settling, not paper friction or glass elasticity. Wavelength does not change.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.45
+      }
+    ]
+  },
+  "translations": {
+    "追踪条纹": "Follow fringes",
+    "两路反射": "Two paths",
+    "相位相加": "Add fields",
+    "三波长": "Three wavelengths",
+    "劈尖条纹": "Wedge fringes",
+    "薄膜装置": "Film apparatus",
+    "肥皂膜": "Soap film",
+    "空气劈尖": "Air wedge",
+    "观察视图": "Observation view",
+    "相对膜厚": "Relative thickness",
+    "局部膜厚 / nm": "Local thickness / nm",
+    "入射角 / °": "Incidence angle / °",
+    "支撑纸片": "Spacer sheets",
+    "两张": "Two",
+    "一张": "One",
+    "波长 / nm": "Wavelength / nm",
+    "揭晓条纹": "Reveal fringes",
+    "计算范围": "Model scope",
+    "无损对称膜；斜入射只计算s偏振。角度不进入全反射区。反射率包含全部内部返回，剖面只追踪最先两路。": "Lossless symmetric film; oblique incidence uses s polarization below total internal reflection. Reflectance includes every internal return; the section traces the first two paths.",
+    "同一束黄光，为什么有明暗？": "One wavelength, alternating bands",
+    "追踪同一条亮纹": "Follow one bright contour",
+    "玻璃 → 空气 → 玻璃": "Glass → air → glass",
+    "空气 → 膜 → 空气": "Air → film → air",
+    "光程差": "OPD",
+    "d → 0，会亮还是会暗？": "d → 0: bright or dark?",
+    "计算反射率": "Reflected fraction",
+    "同一厚度": "One thickness",
+    "三波长示意，并非实测光谱": "Three-color model samples",
+    "从接触端起，前4 mm": "First 4 mm from contact",
+    "先预测新间距": "Predict the new spacing",
+    "夹角放大 · L = 80 mm": "Gap angle enlarged · L = 80 mm",
+    "薄膜反射、相位与干涉": "Film reflections, phase and interference",
+    "前界面反射": "Front boundary",
+    "膜内全部返回": "All internal returns",
+    "相加后的场": "Sum of the fields",
+    "同一束光，为什么有明暗？": "Why does one source make bands?",
+    "传播光程与界面反射共同决定相位差。": "Path length and reflection set the phase difference.",
+    "跟住一条亮纹": "Follow one bright fringe",
+    "同一亮纹对应的膜厚，在新的位置出现。": "The same bright-fringe thickness moves to a new position.",
+    "同一厚度，不同波长": "One thickness, different wavelengths",
+    "不同波长的反射率不同，形成颜色。": "Different reflectances across wavelengths create color.",
+    "空气劈尖的暗纹": "Dark fringes in an air wedge",
+    "相邻同类条纹的厚度差是半个波长。": "Like neighboring fringes differ by half a wavelength of gap thickness.",
+    "少一张纸，条纹怎样变？": "One sheet fewer: what changes?",
+    "纸片少一张，同样的厚度差要走多远？": "With one sheet fewer, how far to gain the same gap thickness?"
+  },
+  "teachingProfiles": {
+    "e1-soap-film-interference": {
+      "sceneSlug": "thin-film-lab",
+      "question": {
+        "zh": "同一盏黄光，为什么肥皂膜上有明有暗？",
+        "en": "Why does one yellow lamp make bright and dark soap-film bands?"
+      },
+      "lead": {
+        "zh": "追踪同一个膜厚位置，把两路反射接到相位和总场，再预测薄膜趋近零时的变化。",
+        "en": "Trace one film location through the reflected paths, phase and total field, then predict the zero-thickness limit."
+      },
+      "principle": {
+        "zh": "传播光程和界面相位共同决定返回光的叠加；不同位置或波长可得到不同的反射率。",
+        "en": "Optical path and interface phase determine the reflected sum; thickness and wavelength change its reflectance."
+      },
+      "transfer": {
+        "question": {
+          "zh": "膜厚不变而改用另一波长，原来同一位置的亮暗一定保持不变吗？",
+          "en": "If wavelength changes at fixed thickness, must the same point keep its brightness?"
+        },
+        "explanation": {
+          "zh": "不一定。往返传播相位与光程差除以波长成正比，界面反相仍在，但总相位差改变，所以原来的亮纹可能变暗。白光的不同波长在同一厚度处也因此产生不同反射率。",
+          "en": "No. Propagation phase depends on optical path divided by wavelength. The interface reversal remains, but total phase changes, so a bright point can become darker. This also gives different reflectances across white-light wavelengths."
+        }
+      }
+    },
+    "e1-wedge-interference": {
+      "sceneSlug": "thin-film-lab",
+      "question": {
+        "zh": "抽去一张纸，为什么空气劈尖条纹变宽？",
+        "en": "Why do air-wedge fringes spread out when one paper sheet is removed?"
+      },
+      "lead": {
+        "zh": "从两界面反相到同类条纹的厚度差，先预测，再揭开新条纹。",
+        "en": "Connect the two interface reflections to the thickness increment between like fringes, predict, then reveal the new pattern."
+      },
+      "principle": {
+        "zh": "垂直入射时，相邻同类反射条纹的空气膜厚度差为λ/2；同样的厚度差在更缓的劈尖上需要更长距离。",
+        "en": "At normal incidence, like reflected fringes differ by λ/2 of air-gap thickness. A shallower wedge takes a longer distance to gain that thickness."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保持两张纸和玻璃长度不变，只把波长加倍，条纹间距怎样变？",
+          "en": "With spacer and plate length fixed, how does doubling wavelength change fringe spacing?"
+        },
+        "explanation": {
+          "zh": "间距也加倍：Δx=λL/(2h)。这与抽去一张纸一样都能扩大间距，但前者改变波长，后者改变厚度梯度，不能混成同一种操作。",
+          "en": "It doubles: Δx=λL/(2h). Removing one of two sheets also doubles spacing, but by changing the thickness gradient rather than wavelength."
+        }
+      }
+    }
+  },
+  "curriculumVariants": {
+    "e1-soap-film-interference": {
+      "sceneSlug": "thin-film-lab",
+      "chapterIds": ["soap-yellow", "soap-drain", "soap-white"],
+      "label": {
+        "zh": "肥皂膜干涉",
+        "en": "Soap-film interference"
+      }
+    },
+    "e1-wedge-interference": {
+      "sceneSlug": "thin-film-lab",
+      "chapterIds": ["wedge-two", "wedge-one"],
+      "label": {
+        "zh": "空气劈尖",
+        "en": "Air-wedge interference"
+      }
+    }
+  },
+  "sharedProposals": {
+    "shortScreenSelector": ".lesson-thin-film-lab",
+    "preserveTextbookTitlePageOrder": true
+  },
+  "sources": [
+    {
+      "id": "pep",
+      "title": "普通高中教科书 物理 选择性必修第一册（人教版），P94–101，实验P98、练习P100",
+      "local": "/Users/int64ago/Downloads/人教版高中物理-选择性必修第一册.pdf",
+      "url": null,
+      "used": "Full surrounding interference context read; printed98/99/100 actual page images inspected. Preserve source IDs and page order."
+    },
+    {
+      "id": "openstax",
+      "title": "OpenStax University Physics Volume 3, 3.4 Interference in Thin Films",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films",
+      "used": "Interface phase reversal, soap-film zero limit and air-gap interference."
+    },
+    {
+      "id": "mit",
+      "title": "MIT 6.974 Fundamentals of Photonics, Chapter 2, §§2.2.3 and2.3.8–9",
+      "url": "https://www.ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/8e54d1625e9e71eb5b4e4998e6967e4e_chapter2.pdf",
+      "used": "Fresnel fields, full internal-return series and symmetric-film energy balance; actual printed79 Eq2.191 page inspected."
+    }
+  ],
+  "scientificLimits": [
+    "Ideal lossless film with identical incident and exit media, constant refractive indices. Oblique views use s polarization, below total internal reflection. No evanescent-film/TIR calculation is claimed.",
+    "Two first reflected paths explain the geometry; the amber field is the SUM of all internal returns and reflectance includes the full geometric series. It is not mislabeled as an exact first-two-ray power.",
+    "The same outgoing wavefront removes the exterior reference path: OPD=2nd cosθ₁, not2nd/cosθ₁. Wave plots use a common slowed clock, not true optical-period playback.",
+    "Prescribed draining thickness, not a fluid simulation or measured record. Three wavelengths with display encoding illustrate colors, not colorimetry or historical spectra.",
+    "Air-wedge strip uses normal incidence and small-angle d=hx/L. The oblique section is a separately labeled explanatory view. Spacer thickness40μm per sheet and L80mm are model inputs, not measurements from the textbook.",
+    "Plate angle is enlarged, and settling is a geometric interpolation between supported states, not an elastic/friction simulation."
+  ],
+  "director": {
+    "status": "provisional local seconds; root measured-voice calibration pending",
+    "cuts": [
+      {
+        "id": "soap-yellow",
+        "observation": 0,
+        "section": 8,
+        "sum": 23,
+        "predict": 32,
+        "reveal": 36,
+        "zero": 40
+      },
+      {
+        "id": "soap-drain",
+        "drain": [3, 13],
+        "zero": [17, 21]
+      },
+      {
+        "id": "soap-white",
+        "colorSamples": 0
+      },
+      {
+        "id": "wedge-two",
+        "wedge": 0,
+        "obliqueSection": 7,
+        "normalFringes": 23
+      },
+      {
+        "id": "wedge-one",
+        "withdraw": [0.45, 2],
+        "settle": [2, 6],
+        "predictUntil": 14,
+        "reveal": 14
+      }
+    ]
+  },
+  "spokenDiff": [
+    {
+      "id": "soap-yellow",
+      "fields": {
+        "title": {
+          "old": "先用黄光看膜的反射像",
+          "new": "同一束光，为什么有明暗？",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Start with yellow reflected light",
+          "new": "Why does one source make bands?",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "同一膜上的不同厚度，对同一波长给出不同明暗。",
+          "new": "传播光程与界面反射共同决定相位差。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Different thicknesses produce different brightness for the same wavelength.",
+          "new": "Path length and reflection set the phase difference.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 44,
+          "unchanged": false
+        },
+        "at": {
+          "old": 0.45,
+          "new": 0.45,
+          "unchanged": true
+        },
+        "zh": {
+          "old": "教材先在酒精灯灯芯撒盐，用黄色火焰照明，把肥皂膜当作镜面观察反射像。膜前后两面反射的光会叠加，因此同一片膜上出现明暗条纹。画面把正视反射像展开；左侧灯和铁丝圈表示装置关系，并不是严格的成像透视图。下方比较两束反射光的相位。",
+          "new": "同一束黄光照在肥皂膜上，为什么有亮纹也有暗纹？跟住一个位置，放大膜的剖面。一路在前界面反射，另一路进入薄膜，在后界面反射后返回。前一路反射时翻转半周，后一路还多走一段光程。比较同一波面的光，两路的相位差才有意义。现在看同一时刻的场：前界面反射，加上膜内返回，得到总场；总场的强弱决定反射亮暗。先猜一猜，厚度趋近零会怎样？这时两路抵消，反射变暗。剖面放大了路径，计算包含后续的多次返回。",
+          "unchanged": false
+        },
+        "en": {
+          "old": "The textbook starts with a salt-yellowed alcohol flame reflected by a soap film. Light reflected from both film surfaces interferes, producing bright and dark bands. The front-facing film display unfolds the reflected view; the lamp and wire loop identify the apparatus rather than a perspective image. Below, compare the reflected phases.",
+          "new": "Why does one yellow source make both bright and dark bands on a soap film? Follow one location and enlarge the section. One part reflects at the front boundary. Another enters the film, reflects at the back, and returns. The front reflection reverses by half a cycle; the returning light also travels an extra optical path. Compare them at the same wavefront. Now add the fields at one instant: the front reflection plus the internal returns gives the total field. Its strength sets the reflected brightness. Predict what happens as thickness approaches zero. The fields cancel and reflection becomes dark. Paths are enlarged; the calculation includes later internal returns.",
+          "unchanged": false
+        }
+      }
+    },
+    {
+      "id": "soap-drain",
+      "fields": {
+        "title": {
+          "old": "膜变薄，条纹会移动",
+          "new": "跟住一条亮纹",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Thinning moves the fringes",
+          "new": "Follow one bright fringe",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "位置改变的是等光程差的厚度轮廓。",
+          "new": "同一亮纹对应的膜厚，在新的位置出现。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Contours of equal optical path difference move as thickness changes.",
+          "new": "The same bright-fringe thickness moves to a new position.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 28.45,
+          "new": 44.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "重力排液会让竖直肥皂膜的厚度随高度和时间变化。页面改变一个简化的厚度分布，看同一明条纹移到新的位置。前表面反射还会发生半周相位变化，所以膜厚趋近零时反射变暗。厚度的变化是教学输入，不是完整求解肥皂液流动；真实膜还会受表面活性剂和空气扰动影响。",
+          "new": "重力排液会让竖直肥皂膜的厚度随高度和时间变化。页面改变一个简化的厚度分布，看同一明条纹移到新的位置。前表面反射还会发生半周相位变化，所以膜厚趋近零时反射变暗。厚度的变化是教学输入，不是完整求解肥皂液流动；真实膜还会受表面活性剂和空气扰动影响。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "Drainage changes a vertical soap film’s thickness with height and time. Vary a prescribed thickness profile and watch equal-phase contours move. The front reflection adds a half-cycle shift, making a nearly zero-thickness film dark. Thickness evolution is a teaching input, not a fluid simulation including surfactants and air disturbances.",
+          "new": "Drainage changes a vertical soap film’s thickness with height and time. Vary a prescribed thickness profile and watch equal-phase contours move. The front reflection adds a half-cycle shift, making a nearly zero-thickness film dark. Thickness evolution is a teaching input, not a fluid simulation including surfactants and air disturbances.",
+          "unchanged": true
+        }
+      }
+    },
+    {
+      "id": "soap-white",
+      "fields": {
+        "title": {
+          "old": "换成白光，比较不同波长",
+          "new": "同一厚度，不同波长",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Compare wavelengths in white light",
+          "new": "One thickness, different wavelengths",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "不同波长的明条纹不在同一位置。",
+          "new": "不同波长的反射率不同，形成颜色。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Different wavelengths brighten at different positions.",
+          "new": "Different reflectances across wavelengths create color.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 56.45,
+          "new": 72.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "换成白光后，不同波长在同一厚度处有不同的相位差。某些颜色增强，另一些颜色减弱，于是出现彩色条纹。画面只用红绿蓝三个采样波长近似显示颜色，不把这些颜色当作真实光谱测量。自由探索中可以回到单色光，改变波长并追踪条纹的位置。",
+          "new": "换成白光后，不同波长在同一厚度处有不同的相位差。某些颜色增强，另一些颜色减弱，于是出现彩色条纹。画面只用红绿蓝三个采样波长近似显示颜色，不把这些颜色当作真实光谱测量。自由探索中可以回到单色光，改变波长并追踪条纹的位置。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "Under white illumination, different wavelengths have different phase differences at the same thickness. Some strengthen while others weaken, producing color. Three sampled wavelengths provide an illustrative display, not a measured spectrum or calibrated color prediction. Exploration returns to monochromatic light so you can move the fringes by changing wavelength.",
+          "new": "Under white illumination, different wavelengths have different phase differences at the same thickness. Some strengthen while others weaken, producing color. Three sampled wavelengths provide an illustrative display, not a measured spectrum or calibrated color prediction. Exploration returns to monochromatic light so you can move the fringes by changing wavelength.",
+          "unchanged": true
+        }
+      }
+    },
+    {
+      "id": "wedge-two",
+      "fields": {
+        "title": {
+          "old": "用两张纸片支起空气劈尖",
+          "new": "空气劈尖的暗纹",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Support an air wedge with two sheets",
+          "new": "Dark fringes in an air wedge",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "等厚度位置形成平行条纹，接触端为暗纹。",
+          "new": "相邻同类条纹的厚度差是半个波长。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Equal-thickness contours form parallel bands; the contact is dark.",
+          "new": "Like neighboring fringes differ by half a wavelength of gap thickness.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 40,
+          "unchanged": false
+        },
+        "at": {
+          "old": 84.45,
+          "new": 100.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "两块平玻璃一端接触，另一端夹入两张相同纸片，形成线性变厚的空气层。来自空气层上下边界的反射光叠加，接触端出现暗纹。侧视图把夹角放大，上方只展开靠近接触端的前四毫米，这样能看清条纹；它不是整块玻璃上的条纹总数。",
+          "new": "两块玻璃夹着两张纸，接触端的空气膜最薄，向纸片一端逐渐增厚。先斜着看清两路反射：从玻璃到空气的前路不翻相，空气到玻璃的后路翻转半周。两路相差仍随空气膜厚度改变。回到垂直入射，在接触端两路抵消，出现暗纹。沿劈尖前进，膜厚每增加半个波长，就回到下一个同类条纹。上图只展开接触端起的四毫米，下图夹角放大。纸片厚度减半、玻璃长度不变，先用这个规律预测新间距。",
+          "unchanged": false
+        },
+        "en": {
+          "old": "Two glass plates touch at one end and are separated by two identical paper sheets at the other. Reflection from the air-gap boundaries forms parallel fringes, with a dark contact. The side-view angle is enlarged. Above, only the first four millimeters near contact are shown, not all fringes across the entire plate.",
+          "new": "Two glass plates are separated by two paper sheets. The air gap is thinnest at contact and grows toward the spacer. First use an oblique section to distinguish the reflections: glass to air gives no phase reversal; air to glass gives a half-cycle reversal. Their phase difference also depends on gap thickness. Return to normal incidence. At contact the fields cancel, making a dark fringe. Each additional half-wavelength of gap thickness gives the next like fringe. Above, only the first four millimeters are displayed; below, the wedge angle is enlarged. If spacer thickness halves while plate length stays fixed, predict the new spacing.",
+          "unchanged": false
+        }
+      }
+    },
+    {
+      "id": "wedge-one",
+      "fields": {
+        "title": {
+          "old": "抽掉一张，条纹间距加倍",
+          "new": "少一张纸，条纹怎样变？",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Remove one sheet to double fringe spacing",
+          "new": "One sheet fewer: what changes?",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "空气层厚度斜率减半，同一厚度差需要两倍距离。",
+          "new": "纸片少一张，同样的厚度差要走多远？",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Half the thickness gradient requires twice the distance for the same thickness change.",
+          "new": "With one sheet fewer, how far to gain the same gap thickness?",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 112.45,
+          "new": 140.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "抽去一张纸片后，支撑厚度减半，玻璃长度不变。相邻同类条纹对应的厚度差仍然是半个空气中波长，因此水平间距加倍。模型只比较支撑后的静态状态，过渡表示上板落到新的位置，不计算纸片抽动和玻璃弹性。改变支撑不会把波长也改变。",
+          "new": "抽去一张纸片后，支撑厚度减半，玻璃长度不变。相邻同类条纹对应的厚度差仍然是半个空气中波长，因此水平间距加倍。模型只比较支撑后的静态状态，过渡表示上板落到新的位置，不计算纸片抽动和玻璃弹性。改变支撑不会把波长也改变。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "After removing one sheet, support thickness halves while plate length remains fixed. Neighboring like fringes still differ in thickness by half a wavelength in air, so their horizontal spacing doubles. The model compares static supported states; the transition indicates settling, not paper friction or glass elasticity. Wavelength does not change.",
+          "new": "After removing one sheet, support thickness halves while plate length remains fixed. Neighboring like fringes still differ in thickness by half a wavelength in air, so their horizontal spacing doubles. The model compares static supported states; the transition indicates settling, not paper friction or glass elasticity. Wavelength does not change.",
+          "unchanged": true
+        }
+      }
+    }
+  ],
+  "acceptance": {
+    "candidateOnly": true,
+    "sourceReview": "checks/sources/source-review.json",
+    "scopedTests": {
+      "files": 3,
+      "passed": 15,
+      "report": "checks/tests-final.log"
+    },
+    "strictTypes": "checks/strict-types.json",
+    "mdxCompilation": "checks/mdx-parse.json",
+    "nativeKeyframes": "checks/native-review-04/report.json",
+    "actualFinalColorChapter": "checks/color-final-review/report.json",
+    "recordings": "No new audio; final recorded-word calibration is pending root integration.",
+    "globalVerify": "Root canonical integration and global verify/build pending.",
+    "listening": "Not performed.",
+    "physicalPhone": "Not tested."
+  }
+}

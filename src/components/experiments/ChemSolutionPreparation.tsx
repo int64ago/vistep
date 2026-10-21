@@ -9,6 +9,7 @@ import {
   flaskProfile,
   mixingLayers,
   preparationDirector,
+  preparationTracer,
   type PreparationMode,
 } from '../../models/chem-solution-preparation';
 import '../../styles/chem-solution-preparation.css';
@@ -18,26 +19,51 @@ export default function ChemSolutionPreparation() {
     id = useId().replace(/:/g, ''),
     en = browserLocale() === 'en',
     say = (a: string, b: string) => (en ? b : a);
-  const [mode, setMode] = useState<PreparationMode>(
-      film.variant === 'dilution' ? 'dilution' : 'solid',
-    ),
-    [mass, setMass] = useState(5.85),
-    [recovery, setRecovery] = useState(1),
-    [volume, setVolume] = useState(100),
-    [stockMl, setStockMl] = useState(50),
-    [mixed, setMixed] = useState(1);
+  const [mode, setMode] = useState<PreparationMode | null>(null),
+    [mass, setMass] = useState<number | null>(null),
+    [recovery, setRecovery] = useState<number | null>(null),
+    [volume, setVolume] = useState<number | null>(null),
+    [stockMl, setStockMl] = useState<number | null>(null),
+    [mixed, setMixed] = useState<number | null>(null);
+  const base = preparationDirector(
+    film.chapter,
+    film.chapterProgress,
+    film.chapterTime,
+    en ? 'en' : 'zh',
+  );
   const d = film.watch
-    ? preparationDirector(film.chapter, film.chapterProgress)
-    : { mode, mass, recovery, volume, stockMl, mixed, progress: 1, stage: 'normal' };
+    ? base
+    : {
+        ...base,
+        mode: mode ?? base.mode,
+        mass: mass ?? base.mass,
+        recovery: recovery ?? base.recovery,
+        volume: volume ?? base.volume,
+        stockMl: stockMl ?? base.stockMl,
+        mixed: mixed ?? base.mixed,
+      };
   const dilution = d.mode === 'dilution',
     m = solutionPreparation(d.mass, d.recovery, d.volume, dilution ? d.stockMl : null),
     level = flaskLevel(d.volume),
     layers = mixingLayers(m.concentration, d.mixed),
     transfer = d.mode === 'transfer',
-    weigh = d.mode === 'solid';
+    weigh = d.mode === 'solid',
+    tracer = preparationTracer(d.recovery, d.volume);
   const concentrationReady = !film.watch || ['meniscus', 'mixing', 'dilution'].includes(d.mode);
   return (
-    <section ref={host} className="chem-solution-preparation" data-watch={film.watch}>
+    <section
+      ref={host}
+      className="chem-solution-preparation"
+      data-watch={film.watch}
+      data-mode={d.mode}
+      data-stage={d.stage}
+      data-volume={d.volume}
+      data-recovery={d.recovery}
+      data-mixed={d.mixed}
+      data-input-moles={m.inputMoles}
+      data-delivered-moles={m.deliveredMoles}
+      data-concentration={m.concentration}
+    >
       <div className="chem-prep-ledger">
         <span>
           {dilution
@@ -51,11 +77,13 @@ export default function ChemSolutionPreparation() {
           <svg
             viewBox={
               compact
-                ? weigh
-                  ? '40 95 310 215'
-                  : transfer
-                    ? '0 0 290 345'
-                    : '100 0 180 345'
+                ? d.mode === 'mixing'
+                  ? '0 0 380 370'
+                  : weigh
+                    ? '40 95 310 215'
+                    : transfer
+                      ? '0 0 290 345'
+                      : '100 0 180 345'
                 : '0 0 380 370'
             }
             role="img"
@@ -163,10 +191,10 @@ export default function ChemSolutionPreparation() {
                     })}
                   </g>
                   <line x1="171" y1="100" x2="209" y2="100" stroke="#9b7c59" strokeWidth="2" />
-                  <text x="190" y="242" fontSize="32" textAnchor="middle" fill="#3e5a49">
+                  <text x="190" y="242" fontSize="34" textAnchor="middle" fill="#3e5a49">
                     100 mL
                   </text>
-                  <text x="190" y="278" fontSize="32" textAnchor="middle" fill="#3e5a49">
+                  <text x="190" y="278" fontSize="34" textAnchor="middle" fill="#3e5a49">
                     20 °C
                   </text>
                   {d.mode === 'mixing' && (
@@ -182,7 +210,7 @@ export default function ChemSolutionPreparation() {
                         fill="#b1cbb9"
                         opacity=".3"
                       />
-                      {Array.from({ length: 9 }, (_, i) => (
+                      {Array.from({ length: 8 }, (_, i) => (
                         <circle
                           key={i}
                           cx={22 + i * 7}
@@ -233,6 +261,18 @@ export default function ChemSolutionPreparation() {
                 )}
               </>
             )}
+            {transfer && (
+              <circle
+                data-tracer-id={tracer.id}
+                data-tracer-phase={tracer.phase}
+                cx={tracer.x}
+                cy={tracer.y}
+                r="5"
+                fill="#9d7b3b"
+                stroke="#fffaf0"
+                strokeWidth="1.5"
+              />
+            )}
           </svg>
           <figcaption>
             {weigh
@@ -278,7 +318,13 @@ export default function ChemSolutionPreparation() {
                 <circle cx="239" cy="100" r="5" fill="#657b65" />
                 <path d="M215 100H135" stroke="#657b65" strokeDasharray="3 5" />
               </svg>
-              <p>{say('最低点与刻度线相切', 'Bottom of the meniscus meets the line')}</p>
+              <p>
+                {film.watch && d.stage === 'high-volume-case'
+                  ? say('另一份配液 · 偏高', 'Separate sample · too high')
+                  : film.watch && d.stage === 'low-volume-case'
+                    ? say('另一份配液 · 偏低', 'Separate sample · too low')
+                    : '100 mL · 20 °C'}
+              </p>
             </>
           ) : (
             <div className="chem-prep-balance">
@@ -306,7 +352,7 @@ export default function ChemSolutionPreparation() {
         <div className="chem-prep-controls">
           <Segments
             label={say('观察环节', 'Observe')}
-            value={mode}
+            value={d.mode}
             options={[
               { value: 'solid', label: say('称量', 'Weigh') },
               { value: 'transfer', label: say('转移', 'Transfer') },
@@ -314,12 +360,15 @@ export default function ChemSolutionPreparation() {
               { value: 'mixing', label: say('混匀', 'Mix') },
               { value: 'dilution', label: say('稀释', 'Dilute') },
             ]}
-            onChange={setMode}
+            onChange={(v) => {
+              setMode(v as PreparationMode);
+              setVolume(v === 'transfer' ? 40 : 100);
+            }}
           />
           {dilution ? (
             <Range
               label={say('1.00 mol/L母液体积', 'Volume of 1.00 mol/L stock')}
-              value={stockMl}
+              value={d.stockMl}
               min={10}
               max={90}
               step={1}
@@ -329,7 +378,7 @@ export default function ChemSolutionPreparation() {
           ) : (
             <Range
               label={say('称取NaCl质量', 'NaCl mass weighed')}
-              value={mass}
+              value={d.mass}
               min={5.5}
               max={6.2}
               step={0.01}
@@ -339,8 +388,8 @@ export default function ChemSolutionPreparation() {
           )}
           <Range
             label={say('溶质转移回收率', 'Solute recovery')}
-            value={recovery * 100}
-            min={90}
+            value={d.recovery * 100}
+            min={0}
             max={100}
             step={0.1}
             unit="%"
@@ -348,17 +397,17 @@ export default function ChemSolutionPreparation() {
           />
           <Range
             label={say('最终溶液体积', 'Final solution volume')}
-            value={volume}
-            min={98.8}
+            value={d.volume}
+            min={d.mode === 'transfer' || d.mode === 'dilution' ? 1 : 98.8}
             max={101.2}
             step={0.02}
             unit="mL"
             onChange={setVolume}
           />
-          {mode === 'mixing' && (
+          {d.mode === 'mixing' && (
             <Range
               label={say('混匀程度', 'Mixing progress')}
-              value={mixed}
+              value={d.mixed}
               min={0}
               max={1}
               step={0.01}

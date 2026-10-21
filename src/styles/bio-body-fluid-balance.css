@@ -1,103 +1,143 @@
-.bio-fluid {
+.bbf17 {
   width: 100%;
-  color: #475c59;
-  padding: 10px 12px 0;
+  max-width: 600px;
+  margin: auto;
+  color: #475347;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.bbf17 * {
   box-sizing: border-box;
 }
-.bio-fluid svg {
+.bbf17-scene {
+  min-height: 278px;
+}
+.bbf17 svg {
   display: block;
   width: 100%;
   height: auto;
+  overflow: visible;
 }
-.bio-fluid svg text {
-  font: 16px var(--font-body, sans-serif);
-  fill: #4a615d;
+.bbf17 svg text {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  fill: #475347;
 }
-.bio-fluid-heading {
-  font-size: 17px;
-  min-height: 44px;
+.bbf17 svg path:not([fill]) {
+  fill: none;
+}
+.bbf17-kicker {
+  min-height: 24px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+  padding: 0 4px;
+}
+.bbf17-foot {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.35;
+  padding: 0 8px;
 }
-.bio-fluid-note,
-.bio-fluid details {
+.bbf17-columns {
+  display: grid;
+  grid-template-columns: 27% 45% 28%;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.25;
+  min-height: 22px;
+}
+.bbf17-controls {
+  padding: 20px 0 4px;
+  display: grid;
+  gap: 16px;
+}
+.bbf17 .segmented {
+  flex-wrap: wrap;
+}
+.bbf17 .segmented button,
+.bbf17 button {
+  font-size: 16px;
+  line-height: 1.3;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 12px;
+}
+.bbf17-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bbf17-buttons button,
+.bbf17-controls > button {
+  padding: 9px 12px;
+  border: 1px solid #b7c0ae;
+  background: #f4f4ec;
+  color: #475347;
+  cursor: pointer;
+}
+.bbf17 button[aria-pressed='true'] {
+  background: #e2ebd9;
+  border-color: #839a74;
+}
+.bbf17 input[type='range'] {
+  min-height: 44px;
+}
+.bbf17 .control {
+  margin: 0;
+}
+.bbf17 .control-top,
+.bbf17 .control output {
+  font-size: 16px;
+}
+.bbf17 details {
+  margin-top: 20px;
+  font-size: 16px;
+}
+.bbf17 summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.bbf17 details p {
   font-size: 16px;
   line-height: 1.6;
 }
-.bio-fluid-controls {
-  display: grid;
-  gap: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #dce6df;
+.showcase[data-mode='watch']:has(.bbf17) .showcase-stage {
+  padding: 12px 10px 8px;
 }
-.bio-fluid-buttons {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.bio-fluid button {
-  min-height: 44px;
-  border: 1px solid #c9d7cf;
-  border-radius: 22px;
-  background: #f5faf7;
-  color: inherit;
-  font: inherit;
-  padding: 8px 15px;
-}
-.bio-fluid button[aria-pressed='true'] {
-  background: #dcebe3;
-  border-color: #8da99b;
-}
-.bio-fluid label {
+.showcase:has(.bbf17) .showcase-caption {
   font-size: 16px;
-  display: grid;
-  gap: 8px;
+  line-height: 1.4;
+  padding: 8px 12px;
 }
-.bio-fluid input {
-  min-height: 44px;
-  width: 100%;
-  accent-color: #749786;
+.bbf17 button:focus-visible,
+.bbf17 input:focus-visible,
+.bbf17 summary:focus-visible {
+  outline: 2px solid #748b67;
+  outline-offset: 4px;
 }
-.bio-fluid table {
-  width: 100%;
-  font-size: 16px;
-  border-collapse: collapse;
-}
-.bio-fluid th,
-.bio-fluid td {
-  padding: 10px 3px;
-  text-align: center;
-  border-bottom: 1px solid #dce5df;
-}
-.bio-fluid th {
-  font-weight: 500;
-}
-.bio-fluid summary {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-}
-.bio-fluid summary::after {
-  content: '+';
-  margin-left: auto;
-  padding-left: 8px;
-}
-.bio-fluid details[open] summary::after {
-  content: '−';
-}
-.bio-fluid button:focus-visible,
-.bio-fluid input:focus-visible {
-  outline: 2px solid #709688;
-  outline-offset: 3px;
-}
-
-@media (max-width: 600px) {
-  .bio-fluid {
-    padding-top: 6px;
+@media (min-width: 600px) {
+  .bbf17-scene {
+    margin: auto;
   }
-  .bio-fluid th,
-  .bio-fluid td {
-    padding: 6px 3px;
+  .bbf17-kicker {
+    margin-bottom: 6px;
+  }
+}
+@media (max-width: 360px) {
+  .bbf17-scene {
+    min-height: 278px;
+  }
+  .bbf17-columns {
+    font-size: 16px;
+  }
+  .bbf17-kicker {
+    line-height: 1.3;
+  }
+  .bbf17-foot {
+    padding: 0 2px;
   }
 }

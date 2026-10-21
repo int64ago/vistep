@@ -1,127 +1,328 @@
 import { useState } from 'react';
 import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
+import { useSignalWidth } from '../lab/SignalFigure';
 import { Range, Segments } from '../lab/Controls';
-import { methaneSubstitution, methaneDirector } from '../../models/chem-methane-substitution';
+import {
+  methaneSubstitution,
+  methaneDirector,
+  methaneChain,
+  methaneDistribution,
+  methanePopulation,
+  METHANE_IDS,
+  METHANE_FORMULAS,
+  type LightCondition,
+} from '../../models/chem-methane-substitution';
 import '../../styles/chem-methane-substitution.css';
 export default function ChemMethaneSubstitution() {
   const film = useShowcase(),
-    en = browserLocale() === 'en',
-    say = (a: string, b: string) => (en ? b : a);
-  const [view, setView] = useState('vessels'),
-    [light, setLight] = useState('light'),
-    [progress, setProgress] = useState(1),
+    locale = browserLocale(),
+    en = locale === 'en',
+    say = (zh: string, enText: string) => (en ? enText : zh),
+    { host, width } = useSignalWidth();
+  const [chosen, setChosen] = useState<number | null>(null),
+    [light, setLight] = useState<LightCondition | null>(null),
+    [progress, setProgress] = useState<number | null>(null),
+    [selectedStep, setStep] = useState<number | null>(null),
+    [methane, setMethane] = useState(8),
     [chlorine, setChlorine] = useState(8);
-  const d = film.watch
-    ? methaneDirector(film.chapter, film.chapterProgress)
-    : {
-        chapter: view === 'vessels' ? 2 : 4,
-        progress,
-        reactionProgress: progress,
-        replacement: 0,
-        substitutionPhase: 0,
-      };
-  const m = methaneSubstitution(
-    d.reactionProgress,
-    film.watch || light === 'light',
-    film.watch ? 8 : chlorine,
-  );
-  const names = [
-    ['相同气体，只改变光照', 'Same gases, different light'],
-    ['颜色在光照侧变浅', 'The illuminated gas fades'],
-    ['液滴与上升的液面', 'Droplets and a rising liquid level'],
-    ['一个氢被一个氯替代', 'One chlorine replaces one hydrogen'],
-    ['取代还可以继续', 'Substitution can continue'],
+  const mode = film.watch ? film.chapter : (chosen ?? film.chapter),
+    d = methaneDirector(mode, film.chapterProgress, film.chapterTime, locale),
+    condition = film.watch ? d.condition : (light ?? d.condition),
+    p = film.watch ? d.event : (progress ?? d.event),
+    step = film.watch ? d.step : (selectedStep ?? d.step),
+    chain = methaneChain(step, p, width, condition),
+    fresh = condition !== 'dark',
+    m = methaneSubstitution(
+      film.watch ? d.reactionProgress : (progress ?? d.reactionProgress),
+      fresh,
+      film.watch ? 8 : chlorine,
+    );
+  const chainView = mode === 3 || (mode === 1 && (!film.watch || d.shot !== 'fading')),
+    showPrediction = mode === 4 && (film.watch ? d.ratioQuestion : false),
+    reveal = film.watch ? d.ratioReveal : true,
+    pop = methanePopulation(
+      film.watch ? 8 : methane,
+      film.watch ? 8 : chlorine,
+      film.watch ? d.event : (progress ?? d.event),
+      fresh,
+    );
+  const stepNames = [
+    ['反应前', 'Before reaction'],
+    ['光使Cl—Cl断裂', 'Light breaks Cl—Cl'],
+    ['Cl·夺取一个H', 'Cl· takes one H'],
+    ['碳自由基与Cl₂反应', 'Carbon radical meets Cl₂'],
+    ['剩下的C—H再次参与', 'A remaining C—H reacts'],
+    ['新的Cl·出现', 'A new Cl· appears'],
+    ['两个Cl·结合，链终止', 'Two Cl· combine: termination'],
   ];
-  const formulas = ['CH₄', 'CH₃Cl', 'CH₂Cl₂', 'CHCl₃', 'CCl₄'];
   return (
-    <section className="chem-methane">
-      <div className="chem-methane-heading">{say(names[d.chapter][0], names[d.chapter][1])}</div>
-      {d.chapter < 3 ? (
+    <section
+      className="mcs17"
+      ref={host}
+      data-mode={mode}
+      data-chapter={METHANE_IDS[mode]}
+      data-shot={d.shot}
+      data-light={condition}
+      data-step={step}
+      data-reveal={reveal}
+    >
+      {mode < 3 && !chainView ? (
         <>
-          <div className="chem-methane-pair">
+          <div className="mcs17-vessels">
             <Vessel m={methaneSubstitution(0, false, film.watch ? 8 : chlorine)} dark en={en} />
             <Vessel m={m} dark={false} en={en} />
           </div>
-          <div className="chem-methane-reservoir">
-            {say('饱和NaCl溶液', 'Saturated NaCl solution')}
-          </div>
-          {d.chapter === 2 ? (
-            <div className="chem-methane-evidence">
-              <span>{say('HCl → 水相', 'HCl → aqueous phase')}</span>
-            </div>
-          ) : (
-            <div className="chem-methane-initial">CH₄ + Cl₂</div>
-          )}
-          <div className="chem-methane-note">
-            {say('液面与液滴仅示趋势', 'Qualitative levels and drops')}
+          <div className="mcs17-short">
+            {mode === 2
+              ? say('HCl → 水相 · 油滴≠CH₃Cl', 'HCl → water · droplets ≠ CH₃Cl')
+              : say('相同CH₄/Cl₂ · 仅改变光照', 'Same CH₄/Cl₂ · change only light')}
           </div>
         </>
-      ) : d.chapter === 3 ? (
+      ) : chainView ? (
         <>
-          <MolecularStep replacement={d.replacement} phase={d.substitutionPhase} en={en} />
-          <div className="chem-methane-equation">
-            {formulas[d.replacement]} + Cl₂
-            <br />→ {formulas[d.replacement + 1]} + HCl
+          <div className="mcs17-title">{say(...(stepNames[chain.step] as [string, string]))}</div>
+          <svg
+            viewBox={`0 0 ${chain.width} 215`}
+            role="img"
+            aria-label={say(
+              '同一组11个原子依次经历光引发、两轮链传播与终止；圆点表示未成对电子。',
+              'The same eleven atoms pass through initiation, two propagation cycles and termination. Dots mark unpaired electrons.',
+            )}
+            data-chain-stage={chain.ledgerStage}
+          >
+            {chain.photonVisible ? (
+              <path
+                d={`M${chain.width * 0.6 - 60} 25q8-8 16 0t16 0t16 0`}
+                stroke="#c29b57"
+                strokeWidth="2"
+                fill="none"
+                opacity={1 - p}
+              />
+            ) : null}
+            {chain.bonds.map((b) => {
+              const a = chain.atoms.find((x) => x.id === b.a)!,
+                z = chain.atoms.find((x) => x.id === b.b)!;
+              return (
+                <line
+                  key={b.a + b.b}
+                  x1={a.x}
+                  y1={a.y}
+                  x2={z.x}
+                  y2={z.y}
+                  stroke="#a5b69f"
+                  strokeWidth="3"
+                  opacity={b.opacity}
+                />
+              );
+            })}
+            {chain.atoms.map((a) => (
+              <g key={a.id} data-atom-id={a.id} data-element={a.element} data-radical={a.radical}>
+                <circle
+                  cx={a.x}
+                  cy={a.y}
+                  r={a.element === 'H' ? 12 : 17}
+                  fill={a.element === 'C' ? '#8c9d82' : a.element === 'Cl' ? '#c1cc91' : '#eff0e8'}
+                  stroke="#a5b69f"
+                />
+                <text
+                  x={a.x}
+                  y={a.y + 5.5}
+                  textAnchor="middle"
+                  fill={a.element === 'C' ? '#fff' : '#52694e'}
+                  fontSize="16"
+                >
+                  {a.element}
+                </text>
+                {a.radical ? <circle cx={a.x + 17} cy={a.y - 15} r="3.2" fill="#aa784d" /> : null}
+              </g>
+            ))}
+          </svg>
+          <div className="mcs17-account">
+            <span>C 1 · H 4 · Cl 6</span>
+            <span>
+              {chain.transition
+                ? say('连接转场', 'Transition')
+                : say(`自由基 ${chain.radicalCount}`, `Radicals ${chain.radicalCount}`)}
+            </span>
           </div>
-          <div className="chem-methane-note">{say('净反应记账', 'Net reaction account')}</div>
+          <div className="mcs17-short" data-lamp-on={chain.lampOn}>
+            {film.watch && mode === 1 && d.shot === 'dark-control' ? (
+              <span
+                data-control-sample="fresh-dark"
+                aria-label={say(
+                  '独立的新鲜暗样本：Cl—Cl仍连接，没有自由基',
+                  'Separate fresh dark sample: Cl—Cl stays bonded, without radicals',
+                )}
+              >
+                {say('另一个暗样本：Cl—Cl', 'Other dark sample: Cl—Cl')}
+              </span>
+            ) : condition === 'dark' ? (
+              say('新鲜暗样本：尚无链载体', 'Fresh dark sample: no chain carriers')
+            ) : chain.lampOn ? (
+              say('启动光存在', 'Initiating light present')
+            ) : (
+              say('此后没有新光', 'No new light')
+            )}
+          </div>
         </>
       ) : (
         <>
-          <div className="chem-methane-products">
-            {formulas.map((f, i) => (
-              <div key={f}>
-                <strong>{f}</strong>
-                <div>
-                  <i style={{ width: `${(m.products[i] / 8) * 100}%` }} />
-                </div>
+          {!showPrediction ? (
+            <>
+              <div className="mcs17-title">
+                {say('同一批碳，可能再次被选中', 'The same carbon can be selected again')}
               </div>
-            ))}
-          </div>
-          <div className="chem-methane-note">
-            {say('示例分布 · 非产率', 'Illustrative mix · not yield')}
-          </div>
+              <div className="mcs17-carbon-grid" data-completed={pop.completed}>
+                {pop.carbons.map((c) => (
+                  <div key={c.id} data-carbon-id={c.id} data-substitutions={c.count}>
+                    <span>{METHANE_FORMULAS[c.count]}</span>
+                    <div>
+                      {c.sites.map((s) => (
+                        <i key={s.id} data-site-id={s.id} data-replaced={s.replaced} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mcs17-account">
+                <span>
+                  {say('完成取代', 'Completed')} {pop.completed}
+                </span>
+                <span>
+                  HCl {pop.hcl} · Cl₂ {pop.remainingChlorine}
+                </span>
+              </div>
+              <div className="mcs17-short">
+                {say('固定一次抽样 · 非实验产率', 'One fixed sample · not measured yield')}
+              </div>
+            </>
+          ) : (
+            <Prediction en={en} reveal={reveal} />
+          )}
         </>
       )}
       {!film.watch ? (
-        <div className="chem-methane-controls">
+        <div className="mcs17-controls">
           <Segments
             label={say('观察层次', 'View')}
-            value={view}
-            onChange={setView}
+            value={String(mode)}
+            onChange={(s) => {
+              setChosen(Number(s));
+              setProgress(null);
+              setStep(null);
+            }}
             options={[
-              { value: 'vessels', label: say('装置现象', 'Apparatus') },
-              { value: 'products', label: say('产物类别', 'Products') },
-            ]}
+              [0, '装置', 'Apparatus'],
+              [1, '光启动', 'Initiation'],
+              [3, '链传播', 'Chain'],
+              [4, '分布', 'Distribution'],
+            ].map(([value, zh, english]) => ({
+              value: String(value),
+              label: say(String(zh), String(english)),
+            }))}
           />
           <Segments
-            label={say('新一组对照', 'Fresh comparison')}
-            value={light}
-            onChange={setLight}
+            label={say('光照条件', 'Light condition')}
+            value={condition}
+            onChange={(s) => setLight(s as LightCondition)}
             options={[
-              { value: 'light', label: say('光照组', 'Illuminated') },
-              { value: 'dark', label: say('遮光组', 'Dark') },
+              { value: 'light', label: say('有光', 'Light') },
+              { value: 'pulse', label: say('启动后无新光', 'Pulse then dark') },
+              { value: 'dark', label: say('新鲜暗样本', 'Fresh dark sample') },
             ]}
           />
+          {chainView ? (
+            <Range
+              label={say('选定链步骤', 'Selected chain step')}
+              value={step}
+              min={0}
+              max={6}
+              step={1}
+              onChange={(s) => {
+                setStep(s);
+                setProgress(1);
+              }}
+            />
+          ) : null}
           <Range
-            label={say('过程进度', 'Progress')}
-            value={progress}
+            label={say('镜头进度', 'Presentation progress')}
+            value={progress ?? (chainView ? d.event : mode === 4 ? d.event : d.reactionProgress)}
             min={0}
             max={1}
             step={0.01}
             onChange={setProgress}
           />
-          <Range
-            label={say('每8份甲烷的Cl₂示意份数', 'Cl₂ units per 8 methane units')}
-            value={chlorine}
-            min={0}
-            max={32}
-            step={1}
-            onChange={setChlorine}
-          />
+          {mode === 4 ? (
+            <>
+              <Range
+                label={say('甲烷份数', 'Methane units')}
+                value={methane}
+                min={8}
+                max={32}
+                step={8}
+                onChange={setMethane}
+              />
+              <Range
+                label={say('Cl₂净取代份数', 'Cl₂ net substitution units')}
+                value={chlorine}
+                min={0}
+                max={32}
+                step={1}
+                onChange={setChlorine}
+              />
+              <div className="mcs17-expectation">
+                <span>{say('等概率模型平均多取代', 'Equal-site mean: multiply substituted')}</span>
+                <strong>
+                  {methaneDistribution(methane, fresh ? chlorine : 0).multiple.toFixed(2)}
+                </strong>
+              </div>
+            </>
+          ) : null}
+          <details>
+            <summary>{say('模型的边界', 'Model boundaries')}</summary>
+            <p>
+              {say(
+                '原子位置是反应前后连接的转场，不是实测分子轨迹。一次光引发可以启动链，但影片不计算链长或停止用时。分布假设所有剩余C—H等概率；真实氯代物反应性不同，图示数值不是实验产率。',
+                'Atom paths interpolate connectivity, not measured trajectories. Initiation can start a chain; its length and decay time are not calculated. The distribution assumes equally likely remaining C—H sites. Real reactivities differ, so these numbers are not experimental yields.',
+              )}
+            </p>
+          </details>
         </div>
       ) : null}
     </section>
+  );
+}
+function Prediction({ en, reveal }: { en: boolean; reveal: boolean }) {
+  const a = methaneDistribution(8, 8),
+    b = methaneDistribution(32, 8),
+    say = (x: string, y: string) => (en ? y : x);
+  return (
+    <div className="mcs17-prediction">
+      <div className="mcs17-title">
+        {reveal
+          ? say('同样8份Cl₂ · 多取代平均份数', 'Same 8 Cl₂ · multiply substituted')
+          : say('Cl₂仍是8份，甲烷多4倍呢？', 'Same 8 Cl₂ units; four times the methane?')}
+      </div>
+      <div className="mcs17-compare">
+        {[a, b].map((d) => (
+          <div key={d.methane}>
+            <span>{d.methane} CH₄</span>
+            <strong data-multiple={reveal ? d.multiple.toFixed(2) : 'hidden'}>
+              {reveal ? d.multiple.toFixed(2) : '?'}
+            </strong>
+          </div>
+        ))}
+      </div>
+      <div className="mcs17-short">
+        {reveal
+          ? say('更多未取代位点，重复选中更少', 'More untouched sites; fewer repeat selections')
+          : say('哪组会有更少的多取代分子？', 'Which has fewer multiply substituted molecules?')}
+      </div>
+      <div className="mcs17-short">
+        {say('等概率模型的平均份数 · 非产率', 'Equal-site mean amounts · not yields')}
+      </div>
+    </div>
   );
 }
 function Vessel({
@@ -215,87 +416,5 @@ function Vessel({
         ) : null}
       </svg>
     </div>
-  );
-}
-function MolecularStep({
-  replacement,
-  phase,
-  en,
-}: {
-  replacement: number;
-  phase: number;
-  en: boolean;
-}) {
-  const targets = [
-      [135, 38],
-      [205, 110],
-      [135, 182],
-      [65, 110],
-    ],
-    q = Math.max(0, Math.min(1, (phase - 0.15) / 0.7));
-  const mix = (a: number, b: number) => a + (b - a) * q,
-    chosen = targets[replacement];
-  const h = [mix(chosen[0], 244), mix(chosen[1], 205)],
-    incoming = [mix(267, chosen[0]), mix(53, chosen[1])],
-    partner = [mix(267, 285), mix(109, 205)];
-  const atom = (x: number, y: number, element: string, key: string) => (
-    <g key={key}>
-      <circle
-        cx={x}
-        cy={y}
-        r={element === 'H' ? 15 : 20}
-        fill={element === 'H' ? '#e2e9da' : '#b9c99f'}
-      />
-      <text x={x} y={y + 6} textAnchor="middle" fontSize="20" fill="#77896a">
-        {element}
-      </text>
-    </g>
-  );
-  return (
-    <svg
-      className="chem-methane-molecule"
-      viewBox="0 0 320 245"
-      role="img"
-      aria-label={
-        en
-          ? 'The same hydrogen atom moves to HCl; one chlorine bonds to carbon and the second to that hydrogen. Net substitution bookkeeping, not an elementary reaction.'
-          : '同一个氢原子移到HCl；一个氯连到碳，另一个连到这个氢。净取代反应记账，并非基元反应。'
-      }
-    >
-      {targets.map(([x, y], i) =>
-        i !== replacement ? (
-          <g key={i}>
-            <path d={`M135 110L${x} ${y}`} stroke="#b3c1ac" strokeWidth="4" strokeLinecap="round" />
-            {atom(x, y, i < replacement ? 'Cl' : 'H', String(i))}
-          </g>
-        ) : null,
-      )}
-      <path d={`M135 110L${h[0]} ${h[1]}`} stroke="#b3c1ac" strokeWidth="4" opacity={1 - q} />
-      <path
-        d={`M135 110L${incoming[0]} ${incoming[1]}`}
-        stroke="#b3c1ac"
-        strokeWidth="4"
-        opacity={q}
-      />
-      <path
-        d={`M${incoming[0]} ${incoming[1]}L${partner[0]} ${partner[1]}`}
-        stroke="#b3c1ac"
-        strokeWidth="4"
-        opacity={1 - q}
-      />
-      <path
-        d={`M${h[0]} ${h[1]}L${partner[0]} ${partner[1]}`}
-        stroke="#b3c1ac"
-        strokeWidth="4"
-        opacity={q}
-      />
-      <circle cx="135" cy="110" r="23" fill="#a9b9a0" />
-      <text x="135" y="117" textAnchor="middle" fontSize="21" fill="#f6f7ef">
-        C
-      </text>
-      {atom(h[0], h[1], 'H', 'tracked-h')}
-      {atom(incoming[0], incoming[1], 'Cl', 'incoming-cl')}
-      {atom(partner[0], partner[1], 'Cl', 'partner-cl')}
-    </svg>
   );
 }

@@ -6,20 +6,37 @@ import {
   ironHydroxides,
   hydroxideColour,
   hydroxideDirector,
+  hydroxideIronSlots,
+  hydroxideSectorPath,
 } from '../../models/chem-iron-hydroxides';
 import '../../styles/chem-iron-hydroxides.css';
 export default function ChemIronHydroxides() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
     say = (a: string, b: string) => (en ? b : a);
-  const [oh, setOh] = useState(3),
-    [oxygen, setOxygen] = useState(0.25),
-    [extent, setExtent] = useState(0.6),
-    [view, setView] = useState('tubes');
+  const [oh, setOh] = useState<number | null>(null),
+    [oxygen, setOxygen] = useState<number | null>(null),
+    [extent, setExtent] = useState<number | null>(null),
+    [view, setView] = useState<string | null>(null);
+  const base = hydroxideDirector(
+    film.chapter,
+    film.chapterProgress,
+    film.chapterTime,
+    en ? 'en' : 'zh',
+  );
   const d = film.watch
-    ? hydroxideDirector(film.chapter, film.chapterProgress)
-    : { oh, oxygen, extent, add: 1, micro: view === 'micro', compare: false, progress: extent };
+    ? base
+    : {
+        ...base,
+        oh: oh ?? base.oh * base.add,
+        oxygen: oxygen ?? base.oxygen,
+        extent: extent ?? base.extent,
+        add: 1,
+        micro: view === null ? base.micro : view === 'micro',
+        compare: view === null ? base.compare : false,
+      };
   const m = ironHydroxides(d.oh, d.oxygen, d.extent, d.add);
+  const slots = hydroxideIronSlots(d.oh, d.oxygen, d.extent, d.add);
   const tube = (ferric: boolean, control = false) => {
     const amount = ferric ? m.ferricSolid : m.ferrousRemaining + m.oxidized,
       fraction = ferric ? 1 : control ? 0 : m.fraction;
@@ -102,47 +119,91 @@ export default function ChemIronHydroxides() {
     );
   };
   return (
-    <section className="chem-iron-hydroxides">
+    <section
+      className="chem-iron-hydroxides"
+      data-watch={film.watch}
+      data-micro={d.micro}
+      data-compare={d.compare}
+      data-comparison={d.comparison}
+      data-oh={m.hydroxide}
+      data-oxidized={m.oxidized}
+      data-oxygen={d.oxygen}
+      data-oxygen-used={m.oxygenUsed}
+      data-extent={d.extent}
+    >
       {d.micro ? (
         <div className="chem-hydroxide-micro">
-          <div className="chem-hydroxide-oxygen">O₂ + 2H₂O</div>
+          <div className="chem-hydroxide-oxygen">
+            {m.ferrousRemaining + m.oxidized === 0
+              ? say('没有先生成沉淀', 'No precipitate formed')
+              : d.comparison === 'limited-oxygen' && film.watch
+                ? say('新对照 · ½ O₂', 'New case · ½ O₂')
+                : 'O₂ + 2H₂O'}
+            <div className="chem-hydroxide-share-label">
+              {say('4份 × 0.25 mmol Fe', '4 shares × 0.25 mmol Fe')}
+            </div>
+          </div>
           <svg
-            viewBox="0 0 320 205"
+            viewBox="0 -18 320 223"
             role="img"
             aria-label={say(
-              '四个铁中心从二价变为三价，铁原子数保持四个',
-              'Four iron centres change from Fe(II) to Fe(III), conserving four iron atoms',
+              '四个等份保留总铁1 mmol；扇区表示水相二价铁、二价沉淀和三价沉淀的物质的量',
+              'Four equal shares retain 1 mmol total iron; sectors show aqueous Fe(II), solid Fe(II) and solid Fe(III) amounts',
             )}
           >
-            {[0, 1, 2, 3].map((i) => {
-              const changed = m.fraction > (i + 0.5) / 4;
+            {slots.map((slot, i) => {
+              const present = slot.solidII + slot.solidIII,
+                changed = slot.solidIII >= slot.capacity - 1e-12,
+                pureII = slot.solidII >= slot.capacity - 1e-12,
+                mixed = slot.solidIII > 1e-12 && !changed;
               return (
                 <g
                   key={i}
+                  data-iron-id={`Fe-${i}`}
+                  data-solid={present > 0}
+                  data-solid-amount={present}
+                  data-solid-iii={slot.solidIII}
+                  data-solid-ii={slot.solidII}
+                  data-aqueous-ii={slot.aqueousII}
                   transform={`translate(${50 + (i % 2) * 150} ${45 + Math.floor(i / 2) * 100})`}
                 >
-                  <circle r="24" fill={changed ? '#a15e3c' : '#d9e2ce'} stroke="#8f9a7f" />
+                  <circle r="24" fill="#d7e4e5" stroke="#8f9a7f" />
+                  {slot.sectors.map((sector) => (
+                    <path
+                      key={sector.phase}
+                      data-phase={sector.phase}
+                      data-amount={sector.amount}
+                      d={hydroxideSectorPath(sector.start, sector.end)}
+                      fill={
+                        sector.phase === 'solidIII'
+                          ? '#a15e3c'
+                          : sector.phase === 'solidII'
+                            ? '#d9e2ce'
+                            : '#d7e4e5'
+                      }
+                    />
+                  ))}
                   <text
                     y="6"
                     textAnchor="middle"
                     fontSize="26"
                     fill={changed ? '#fff7e8' : '#536149'}
                   >
-                    {changed ? 'Fe³⁺' : 'Fe²⁺'}
+                    {changed ? 'Fe³⁺' : mixed ? 'Fe' : 'Fe²⁺'}
                   </text>
-                  {[0, 1, 2].slice(0, changed ? 3 : 2).map((j) => (
+                  {[0, 1, 2].slice(0, changed ? 3 : pureII ? 2 : 0).map((j) => (
                     <g key={j}>
                       <circle
                         cx={36 * Math.cos(j * 2.1 - 1.57)}
                         cy={36 * Math.sin(j * 2.1 - 1.57)}
-                        r="11"
+                        r="14"
                         fill="#b9c8b1"
                       />
                       <text
                         x={36 * Math.cos(j * 2.1 - 1.57)}
                         y={36 * Math.sin(j * 2.1 - 1.57) + 4}
                         textAnchor="middle"
-                        fontSize="20"
+                        fontSize="24"
                         fill="#4e5e48"
                       >
                         OH
@@ -153,8 +214,20 @@ export default function ChemIronHydroxides() {
               );
             })}
           </svg>
-          <div className="chem-hydroxide-micro-note">
-            {say('计量示意 · 非真实晶体结构', 'Stoichiometric diagram · not a crystal structure')}
+          <div
+            className="chem-hydroxide-ledger"
+            aria-label={say('总初始铁1 mmol的分配', 'Distribution of 1 mmol initial iron')}
+          >
+            {[
+              { id: 'aqueousII', label: 'Fe²⁺(aq)', amount: m.ferrousDissolved },
+              { id: 'solidII', label: 'Fe(OH)₂', amount: m.ferrousRemaining },
+              { id: 'solidIII', label: 'Fe(OH)₃', amount: m.oxidized },
+            ].map((row) => (
+              <div key={row.id} data-inventory={row.id} data-amount={row.amount}>
+                <span>{row.label}</span>
+                <strong>{Number(row.amount.toPrecision(3))} mmol</strong>
+              </div>
+            ))}
           </div>
         </div>
       ) : (
@@ -172,7 +245,7 @@ export default function ChemIronHydroxides() {
         <div className="chem-hydroxide-controls">
           <Segments
             label={say('观察层次', 'Observation')}
-            value={view}
+            value={d.micro ? 'micro' : 'tubes'}
             options={[
               { value: 'tubes', label: say('试管', 'Test tubes') },
               { value: 'micro', label: say('铁的去向', 'Follow iron') },
@@ -181,7 +254,7 @@ export default function ChemIronHydroxides() {
           />
           <Range
             label={say('加入OH⁻（每管初始1 mmol铁）', 'OH⁻ added (1 mmol initial iron per tube)')}
-            value={oh}
+            value={d.oh}
             min={0}
             max={4}
             step={0.1}
@@ -190,21 +263,29 @@ export default function ChemIronHydroxides() {
           />
           <Range
             label={say('可参与反应的O₂', 'O₂ available to react')}
-            value={oxygen}
+            value={d.oxygen}
             min={0}
             max={0.25}
-            step={0.01}
+            step={0.005}
             unit="mmol"
             onChange={setOxygen}
           />
           <Range
             label={say('氧化完成比例', 'Oxidation extent')}
-            value={extent}
+            value={d.extent}
             min={0}
             max={1}
             step={0.01}
             onChange={setExtent}
           />
+          {d.micro && (
+            <p>
+              {say(
+                '扇区按物质的量分账，并非把一个原子切开；水相未沉淀的铁另计。OH组只标注整份为同一固相时的净组成，不表示晶体结构。',
+                'Sectors allocate amounts, not pieces of one atom. Unprecipitated aqueous iron remains separate. OH groups mark net composition only for a share entirely in one solid phase, not crystal structure.',
+              )}
+            </p>
+          )}
           <p>
             Fe²⁺ → Fe³⁺: {m.oxidized.toFixed(2)} mmol · O₂: {m.oxygenUsed.toFixed(3)} mmol
           </p>
