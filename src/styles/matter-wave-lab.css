@@ -1,0 +1,95 @@
+.mw19-lab {
+  width: 100%;
+  max-width: 740px;
+  margin-inline: auto;
+  min-width: 0;
+  color: #405e52;
+}
+.mw19-art {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+.mw19-art text {
+  font-size: 16px;
+  font-family: inherit;
+}
+.mw19-controls {
+  display: grid;
+  gap: 14px;
+  margin: 18px 8px 0;
+  min-width: 0;
+}
+.mw19-controls .segmented {
+  flex-wrap: wrap;
+}
+.mw19-controls button,
+.mw19-controls summary {
+  min-height: 44px;
+  min-width: 44px;
+  font-size: 16px;
+}
+.mw19-controls button {
+  border-radius: 12px;
+}
+.mw19-controls label,
+.mw19-controls p {
+  font-size: 16px;
+  line-height: 1.55;
+  min-width: 0;
+}
+.mw19-controls input[type='range'] {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-inline: 0;
+}
+.mw19-controls details {
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: #edf1e9;
+}
+.mw19-controls summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.mw19-controls p {
+  margin: 8px 0;
+}
+.showcase[data-slug='matter-wave-lab'] .showcase-film {
+  padding: 8px 10px;
+}
+.showcase[data-slug='matter-wave-lab'] .film-caption {
+  line-height: 1.4;
+}
+@media (max-width: 430px) {
+  .showcase[data-slug='matter-wave-lab'] .showcase-film {
+    padding: 5px 4px;
+  }
+  .showcase[data-slug='matter-wave-lab'] .film-caption {
+    margin-top: 5px;
+  }
+  .mw19-controls {
+    margin-inline: 5px;
+  }
+}
+.showcase[data-slug='matter-wave-lab'] .mw19-controls .segmented button {
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1.3;
+  padding: 8px 10px;
+  color: #405e52;
+}
+.showcase[data-slug='matter-wave-lab'] .mw19-controls .segmented {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+@media (max-width: 430px) {
+  .showcase[data-slug='matter-wave-lab'] .showcase-film {
+    padding-block: 1px;
+  }
+}

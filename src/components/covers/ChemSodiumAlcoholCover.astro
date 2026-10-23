@@ -1,27 +1,61 @@
-<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-  ><rect width="640" height="420" fill="#f3f5eb"></rect><path
-    d="M153 159V313Q153 349 196 349T239 313V159"
+---
+import { protonExchangeGeometry } from '../../models/chem-sodium-alcohol';
+const g = protonExchangeGeometry(0.5);
+---
+
+<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="420" rx="12" fill="#f3f5eb"></rect>
+  <path
+    d="M121 157V313Q121 349 164 349T207 313V157"
     fill="#edf1e5"
     stroke="#afbf9f"
-    stroke-width="3"></path><path d="M157 240H235V312Q235 344 196 344T157 312Z" fill="#d2e2c8"
-  ></path><rect x="146" y="146" width="101" height="20" rx="5" fill="#a8b797"></rect><path
-    d="M191 181V98l5-13 5 13v83"
-    fill="#e9f0e1"
-    stroke="#a9b99b"
-    stroke-width="3"></path><path d="M196 85q-18-25 2-54 1 23 13 32 6 17-15 22Z" fill="#b8cbd2"
-  ></path><rect x="185" y="321" width="22" height="12" rx="3" fill="#a6b19b"></rect><path
-    d="M394 215H460"
-    stroke="#b8c8a6"
-    stroke-width="5"></path><circle cx="386" cy="215" r="27" fill="#c5b09a"></circle><circle
-    cx="478"
-    cy="215"
-    r="21"
-    fill="#e0e9d2"></circle><circle cx="516" cy="215" r="21" fill="#e0e9d2"></circle><path
-    d="M478 215H516"
-    stroke="#b3c49f"
-    stroke-width="5"></path><circle cx="194" cy="292" r="6" stroke="#b9d0ad"></circle><circle
-    cx="200"
+    stroke-width="3"></path>
+  <path d="M125 238H203V312Q203 344 164 344T125 312Z" fill="#d2e2c8"></path>
+  <rect x="114" y="144" width="101" height="20" rx="5" fill="#a8b797"></rect>
+  <path d="M159 180V98l5-13 5 13v82" fill="#e9f0e1" stroke="#a9b99b" stroke-width="3"></path>
+  <path d="M164 85q-18-25 2-54 1 23 13 32 6 17-15 22Z" fill="#b8cbd2"></path>
+  <rect x="152" y="321" width="24" height="12" rx="3" fill="#a6b19b"></rect>
+  <circle cx="162" cy="292" r="6" stroke="#b9d0ad"></circle><circle
+    cx="168"
     cy="270"
     r="5"
-    stroke="#b9d0ad"></circle></svg
->
+    stroke="#b9d0ad"></circle>
+  <path d="M79 353V159M69 353H109M79 197H119" stroke="#a3b198" stroke-width="3"></path>
+  <g transform="translate(290 120)">
+    <text x="28" y="94" text-anchor="middle" font-size="22" fill="#66806e">C₂H₅</text>
+    <path d="M49 88H71" stroke="#a6ad9d" stroke-width="3"></path>
+    <line x1={g.atoms[1].x} y1="88" x2={g.atoms[3].x} y2="140" stroke="#a6ad9d" stroke-width="3"
+    ></line>
+    {
+      g.atoms.map((a) => (
+        <g>
+          <circle
+            cx={a.x}
+            cy={a.y}
+            r={a.element === 'O' ? 23 : 17}
+            fill={a.element === 'O' ? '#c5ab99' : '#d5e4d1'}
+          />
+          <text x={a.x} y={a.y + 7} text-anchor="middle" font-size="22" fill="#536c5b">
+            {a.element}
+          </text>
+          {a.charge !== 0 && (
+            <text x={a.x + 21} y={a.y - 19} font-size="22" fill="#66806e">
+              {a.charge > 0 ? '+' : '−'}
+            </text>
+          )}
+        </g>
+      ))
+    }
+    {
+      g.pairs.map((p, i) => (
+        <g fill={i ? '#6d80af' : '#b07d46'}>
+          <>
+            <circle cx={p.x - 3} cy={p.y} r="3" />
+            <circle cx={p.x + 3} cy={p.y} r="3" />
+          </>
+        </g>
+      ))
+    }
+  </g>
+  <path d="M324 316H565" stroke="#c7d3bb" stroke-width="2"></path>
+</svg>

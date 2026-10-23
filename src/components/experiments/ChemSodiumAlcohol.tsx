@@ -6,33 +6,45 @@ import {
   sodiumProtic,
   compareSodium,
   hydrogenProductTest,
-  sodiumAlcoholDirector,
+  alcoholFilmState,
+  protonExchange,
+  protonExchangeGeometry,
+  DMSO_ACIDITY,
 } from '../../models/chem-sodium-alcohol';
 import '../../styles/chem-sodium-alcohol.css';
 export default function ChemSodiumAlcohol() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
     say = (a: string, b: string) => (en ? b : a);
-  const [view, setView] = useState(
-      film.variant === 'water-ethanol-comparison' ? 'compare' : 'ethanol',
-    ),
-    [progress, setProgress] = useState(0.55),
+  const [selected, setSelected] = useState<string | null>(null),
+    [selectedProgress, setProgress] = useState<number | null>(null),
     [sodium, setSodium] = useState(2),
-    [donors, setDonors] = useState(2);
+    [donors, setDonors] = useState(2),
+    [water, setWater] = useState<number | null>(null),
+    [answer, setAnswer] = useState<boolean | null>(null);
+  const current = alcoholFilmState(film.chapter, film.chapterTime, en ? 'en' : 'zh');
+  const mode = selected === null ? current.chapter : Number(selected);
+  const progress = selectedProgress ?? current.progress;
+  const explore = alcoholFilmState(
+    mode,
+    progress * [25, 29, 26, 30, 29, 64][mode],
+    en ? 'en' : 'zh',
+  );
   const d = film.watch
-    ? sodiumAlcoholDirector(film.chapter, film.chapterProgress)
+    ? current
     : {
-        chapter: view === 'compare' ? 4 : view === 'structure' ? 3 : 0,
-        progress,
-        reactionProgress: progress,
-        burnProgress: 0,
-        compareTime: progress,
+        ...explore,
+        question: answer === null ? explore.question : !answer,
+        reveal: answer === null ? explore.reveal : answer,
+        addedWater: water ?? explore.addedWater,
+        reverse: water === null ? explore.reverse : false,
       };
+  const view = d.chapter;
   const m = sodiumProtic(
       'ethanol',
       d.reactionProgress,
-      film.watch || view === 'structure' ? 2 : sodium,
-      film.watch || view === 'structure' ? 2 : donors,
+      film.watch || view === 3 ? 2 : sodium,
+      film.watch || view === 3 ? 2 : donors,
     ),
     comparison = compareSodium(d.compareTime, film.watch ? 2 : sodium, film.watch ? 2 : donors),
     burn = hydrogenProductTest(m.hydrogen, d.burnProgress);
@@ -42,14 +54,22 @@ export default function ChemSodiumAlcohol() {
     ['石灰水保持澄清', 'Limewater remains clear'],
     ['氢来自羟基', 'The hydrogen comes from O—H'],
     ['相同钠样，比较两种液体', 'Compare equal sodium samples'],
-    ['基团改变反应表现', 'The surrounding group matters'],
+    ['独立质子交换 · DMSO', 'Proton exchange · DMSO'],
   ];
   return (
-    <section className="chem-na-alcohol">
+    <section
+      className="chem-na-alcohol"
+      data-alcohol-chapter={d.chapter}
+      data-watch={film.watch}
+      data-hydrogen={m.hydrogen}
+      data-sodium-left={m.sodiumRemaining}
+      data-water-hydrogen={comparison.water.hydrogen}
+      data-ethanol-hydrogen={comparison.ethanol.hydrogen}
+    >
       <div className="chem-na-heading">{say(titles[d.chapter][0], titles[d.chapter][1])}</div>
       {d.chapter === 0 || d.chapter === 1 ? (
         <>
-          <AlcoholTube model={m} burn={burn} collecting={d.chapter === 1} p={d.progress} />
+          <AlcoholTube model={m} burn={burn} collecting={d.chapter === 1} p={d.progress} en={en} />
           <div className="chem-na-label">
             {d.chapter === 0 ? 'C₂H₅OH + Na' : say('燃烧生成的水', 'Water formed by combustion')}
           </div>
@@ -91,7 +111,7 @@ export default function ChemSodiumAlcohol() {
                 fill="#c2d5c5"
               />
             ))}
-            <text x="160" y="182" fontSize="21" textAnchor="middle" fill="#879b7a">
+            <text x="160" y="182" fontSize="23" textAnchor="middle" fill="#879b7a">
               Ca(OH)₂(aq)
             </text>
           </svg>
@@ -103,13 +123,13 @@ export default function ChemSodiumAlcohol() {
       ) : null}
       {d.chapter === 3 ? (
         <>
-          <HydroxylHydrogens p={d.progress} />
+          <HydroxylHydrogens p={d.progress} en={en} />
           <div className="chem-na-equation">
             2C₂H₅OH + 2Na
             <br />→ 2C₂H₅ONa + H₂↑
           </div>
           <div className="chem-na-note">
-            {say('乙氧基与Na⁺为离子记账', 'Ethoxide and Na⁺ are accounted as ions')}
+            {say('EtO⁻与Na⁺ · 离子产物', 'EtO⁻ + Na⁺ · ionic products')}
           </div>
         </>
       ) : null}
@@ -117,21 +137,21 @@ export default function ChemSodiumAlcohol() {
         <>
           <div className="chem-na-comparison">
             <div>
-              <ReactionBeaker model={comparison.water} p={d.compareTime} />
+              <ReactionBeaker model={comparison.water} p={d.compareTime} en={en} />
               <span>H₂O</span>
             </div>
             <div>
-              <ReactionBeaker model={comparison.ethanol} p={d.compareTime} />
+              <ReactionBeaker model={comparison.ethanol} p={d.compareTime} en={en} />
               <span>C₂H₅OH</span>
             </div>
           </div>
           <div className="chem-na-two">
             <div>
-              <span>{say('水中已生成H₂', 'H₂ formed in water')}</span>
+              <span>H₂</span>
               <b>{comparison.water.hydrogen.toFixed(2)}</b>
             </div>
             <div>
-              <span>{say('乙醇中已生成H₂', 'H₂ formed in ethanol')}</span>
+              <span>H₂</span>
               <b>{comparison.ethanol.hydrogen.toFixed(2)}</b>
             </div>
           </div>
@@ -140,38 +160,17 @@ export default function ChemSodiumAlcohol() {
           </div>
         </>
       ) : null}
-      {d.chapter === 5 ? (
-        <>
-          <div className="chem-na-groups">
-            <div>
-              <span>H—O—H</span>
-              <b>{say('水', 'Water')}</b>
-            </div>
-            <div>
-              <span>C₂H₅—O—H</span>
-              <b>{say('乙醇', 'Ethanol')}</b>
-            </div>
-          </div>
-          <div className="chem-na-causality">
-            <span>{say('同样大小的Na', 'Equal sodium samples')}</span>
-            <i>↓</i>
-            <span>{say('反应表现不同', 'Different observed behaviour')}</span>
-            <i>↓</i>
-            <span>{say('比较O—H所处环境', 'Compare the O—H environments')}</span>
-          </div>
-        </>
-      ) : null}
+      {d.chapter === 5 ? <ProtonExchangeView d={d} en={en} watch={film.watch} /> : null}
       {!film.watch ? (
         <div className="chem-na-controls">
           <Segments
             label={say('观察', 'View')}
-            value={view}
-            onChange={setView}
-            options={[
-              { value: 'ethanol', label: say('乙醇反应', 'Ethanol') },
-              { value: 'compare', label: say('水与乙醇', 'Comparison') },
-              { value: 'structure', label: say('氢的来源', 'Hydrogen source') },
-            ]}
+            value={String(mode)}
+            onChange={setSelected}
+            options={titles.map((pair, index) => ({
+              value: String(index),
+              label: say(pair[0], pair[1]),
+            }))}
           />
           <Range
             label={say('过程进度', 'Progress')}
@@ -181,7 +180,7 @@ export default function ChemSodiumAlcohol() {
             step={0.01}
             onChange={setProgress}
           />
-          {view !== 'structure' ? (
+          {view === 0 || view === 4 ? (
             <>
               <Range
                 label={say('起始Na示意份数', 'Initial Na model units')}
@@ -194,17 +193,34 @@ export default function ChemSodiumAlcohol() {
               <Range
                 label={say('可反应O—H示意份数', 'Available O—H donor units')}
                 value={donors}
-                min={1}
+                min={0}
                 max={4}
                 step={0.2}
                 onChange={setDonors}
               />
-              {view === 'ethanol' ? (
+              {view === 0 ? (
                 <div className="chem-na-label">
                   H₂: {m.hydrogen.toFixed(2)} · Na{say('剩余', ' left')}:{' '}
                   {m.sodiumRemaining.toFixed(2)}
                 </div>
               ) : null}
+            </>
+          ) : null}
+          {view === 5 ? (
+            <>
+              <Range
+                label={say('加入产物水的份数', 'Added product-water units')}
+                value={water ?? d.addedWater}
+                min={0}
+                max={8}
+                step={1}
+                onChange={setWater}
+              />
+              <button className="chem-na-reveal" onClick={() => setAnswer((v) => !(v ?? d.reveal))}>
+                {(answer ?? d.reveal)
+                  ? say('重新预测', 'Predict again')
+                  : say('检验预测', 'Test the prediction')}
+              </button>
             </>
           ) : null}
         </div>
@@ -217,11 +233,13 @@ function AlcoholTube({
   burn,
   collecting,
   p,
+  en,
 }: {
   model: ReturnType<typeof sodiumProtic>;
   burn: ReturnType<typeof hydrogenProductTest>;
   collecting: boolean;
   p: number;
+  en: boolean;
 }) {
   const radius = m.initialSodium ? 10 * Math.cbrt(m.sodiumRemaining / 2) : 0;
   return (
@@ -231,8 +249,12 @@ function AlcoholTube({
       role="img"
       aria-label={
         collecting
-          ? 'Hydrogen from sodium and ethanol burns at the outlet; an inverted collector receives water droplets'
-          : 'Sodium at the bottom of an ethanol tube releases gas through a stopper and glass nozzle'
+          ? en
+            ? 'Hydrogen from sodium and ethanol burns at the outlet; an inverted collector receives water droplets'
+            : '钠与乙醇生成的氢气在出口燃烧，倒扣的收集杯内出现水滴'
+          : en
+            ? 'Sodium at the bottom of an ethanol tube releases gas through a stopper and glass nozzle'
+            : '试管底部的钠与乙醇反应，气体经过塞子和玻璃导管排出'
       }
     >
       <path
@@ -299,18 +321,30 @@ function AlcoholTube({
     </svg>
   );
 }
-function ReactionBeaker({ model: m, p }: { model: ReturnType<typeof sodiumProtic>; p: number }) {
+function ReactionBeaker({
+  model: m,
+  p,
+  en,
+}: {
+  model: ReturnType<typeof sodiumProtic>;
+  p: number;
+  en: boolean;
+}) {
   const r = 10 * Math.cbrt(m.sodiumRemaining / 2),
     x = 80 + (m.floats ? Math.sin(p * 18) * 24 : 0),
     y = m.floats ? 107 : 192;
   return (
     <svg
-      viewBox="0 0 155 225"
+      viewBox="0 34 155 181"
       role="img"
       aria-label={
         m.floats
-          ? 'Sodium floats at the water surface and reacts faster in this qualitative comparison'
-          : 'Sodium lies below the ethanol surface and reacts more slowly in this qualitative comparison'
+          ? en
+            ? 'Sodium floats at the water surface and reacts faster in this qualitative comparison'
+            : '钠浮在水面，本定性比较中反应较快'
+          : en
+            ? 'Sodium lies below the ethanol surface and reacts more slowly in this qualitative comparison'
+            : '钠位于乙醇液面下，本定性比较中反应较慢'
       }
     >
       <path
@@ -341,14 +375,18 @@ function ReactionBeaker({ model: m, p }: { model: ReturnType<typeof sodiumProtic
     </svg>
   );
 }
-function HydroxylHydrogens({ p }: { p: number }) {
+function HydroxylHydrogens({ p, en }: { p: number; en: boolean }) {
   const q = Math.max(0, Math.min(1, (p - 0.1) / 0.75));
   return (
     <svg
       className="chem-na-atoms"
       viewBox="0 0 320 240"
       role="img"
-      aria-label="Two hydroxyl hydrogens form H2; ethanol carbon-hydrogen groups remain unchanged; sodium gives Na+ counterions"
+      aria-label={
+        en
+          ? 'Two hydroxyl hydrogens form H2; ethanol carbon-hydrogen groups remain unchanged; sodium gives Na+ counterions'
+          : '两个羟基氢组成氢气，乙基中的碳氢连接保持不变，钠成为平衡电荷的钠离子'
+      }
     >
       {[55, 155].map((y, i) => {
         const hx = 220 + (263 - 220) * q,
@@ -385,5 +423,206 @@ function HydroxylHydrogens({ p }: { p: number }) {
         2Na → 2Na⁺ + 2e⁻
       </text>
     </svg>
+  );
+}
+
+function ProtonExchangeView({
+  d,
+  en,
+  watch,
+}: {
+  d: ReturnType<typeof alcoholFilmState>;
+  en: boolean;
+  watch: boolean;
+}) {
+  const say = (zh: string, english: string) => (en ? english : zh);
+  const reversed = Boolean(d.reverse && d.reveal);
+  const geometry = protonExchangeGeometry(reversed ? (d.reverseProgress ?? 1) : d.exchangeProgress);
+  const m = protonExchange(d.addedWater),
+    baseline = protonExchange(0);
+  const molecules = !d.showRecords || reversed;
+  return (
+    <div
+      className="chem-na-exchange"
+      data-proton-phase={geometry.transfer}
+      data-question={d.question}
+      data-added-water={m.water0}
+      data-reversed={reversed}
+    >
+      {d.showStructures ? (
+        <div className="chem-na-environments" data-proton-view="structures">
+          {[
+            ['H', 'H₂O'],
+            ['C₂H₅', 'C₂H₅OH'],
+          ].map(([group, label]) => (
+            <div key={label}>
+              <span>{label}</span>
+              <strong>
+                <i>{group}</i>—O—<em>H</em>
+              </strong>
+            </div>
+          ))}
+          <p>{say('同一类O—H，不同的邻居', 'An O—H group, a different neighbour')}</p>
+        </div>
+      ) : null}
+      <div hidden={Boolean(d.showStructures || !molecules)}>
+        <svg
+          viewBox="0 0 320 176"
+          className="chem-na-transfer"
+          role="img"
+          aria-label={say(
+            '独立质子交换：旧电子对留在乙醇氧，受体电子对组成新键；氢仍为正一价',
+            'Separate proton exchange: the old pair stays with ethanol oxygen, the receiving pair forms the new bond; hydrogen stays plus one',
+          )}
+        >
+          <path d="M48 88H72" stroke="#9f9c8d" strokeWidth="3" />
+          <text x="31" y="94" fontSize="20" textAnchor="middle" fill="#667d6c">
+            C₂H₅
+          </text>
+          <line
+            x1={geometry.atoms[0].x}
+            y1={88}
+            x2={geometry.atoms[2].x}
+            y2={geometry.atoms[2].y}
+            stroke="#aaac9e"
+            strokeWidth="3"
+            opacity={geometry.donorBond}
+          />
+          <line
+            x1={geometry.atoms[1].x}
+            y1={88}
+            x2={geometry.atoms[2].x}
+            y2={geometry.atoms[2].y}
+            stroke="#aaac9e"
+            strokeWidth="3"
+            opacity={geometry.acceptorBond}
+          />
+          <line
+            x1={geometry.atoms[1].x}
+            y1={88}
+            x2={geometry.atoms[3].x}
+            y2={140}
+            stroke="#aaac9e"
+            strokeWidth="3"
+          />
+          {geometry.atoms.map((a) => (
+            <g key={a.id} data-proton-atom={a.id} data-formal-charge={a.charge}>
+              <circle
+                cx={a.x}
+                cy={a.y}
+                r={a.element === 'O' ? 20 : 15}
+                fill={a.element === 'O' ? '#c5ab99' : '#d8e5d5'}
+              />
+              <text x={a.x} y={a.y + 7} fontSize="21" textAnchor="middle" fill="#4c6555">
+                {a.element}
+              </text>
+              {a.charge !== 0 ? (
+                <text x={a.x + 19} y={a.y - 17} fontSize="20" fill="#4d7060">
+                  {a.charge > 0 ? '+' : '−'}
+                </text>
+              ) : null}
+            </g>
+          ))}
+          {geometry.pairs.map((pair, index) => (
+            <g
+              key={pair.id}
+              data-electron-pair={pair.id}
+              data-pair-focus={d.pairFocus === (index ? 'new' : 'old')}
+              fill={index ? '#6b7db5' : '#b47c40'}
+            >
+              {d.pairFocus === (index ? 'new' : 'old') && (
+                <circle
+                  cx={pair.x}
+                  cy={pair.y}
+                  r="11"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  opacity=".65"
+                />
+              )}
+              <circle cx={pair.x - 3} cy={pair.y} r="3" />
+              <circle cx={pair.x + 3} cy={pair.y} r="3" />
+            </g>
+          ))}
+          <text x="90" y="174" fontSize="19" textAnchor="middle" fill="#657360">
+            {say('原电子对留下', 'Old pair stays')}
+          </text>
+          <text x="245" y="174" fontSize="19" textAnchor="middle" fill="#657360">
+            {say('新键用受体电子', 'Receiver’s pair')}
+          </text>
+        </svg>
+        <div className="chem-na-pair-key">
+          <span>● {say('原O—H电子对', 'Original O—H pair')}</span>
+          <span>● {say('受体电子对', 'Receiving pair')}</span>
+        </div>
+        <div className="chem-na-short-evidence">
+          {reversed
+            ? say('反向成键记账', 'Reverse bond account')
+            : say('形式记账 · 没有H₂', 'Formal account · no H₂')}
+        </div>
+      </div>
+      <div hidden={Boolean(d.showStructures || molecules)}>
+        <div className="chem-na-records" data-fixed-record="DMSO-1980">
+          <div>
+            <span>C₂H₅OH</span>
+            <b>{DMSO_ACIDITY.ethanol.toFixed(1)}</b>
+          </div>
+          <div>
+            <span>H₂O</span>
+            <b>{DMSO_ACIDITY.water.toFixed(1)}</b>
+          </div>
+        </div>
+        <div className="chem-na-record-label">
+          {say('1980记录 · 同介质pKₐ', '1980 records · same-medium pKₐ')}
+        </div>
+        <div className="chem-na-record-label">
+          {say('pKₐ更小，酸性更强', 'Lower pKₐ: stronger acid')}
+        </div>
+        {d.showBalance ? (
+          <div className="chem-na-balance" data-ethoxide={d.question ? 'hidden' : m.ethoxide}>
+            <div className="chem-na-net">EtOH + OH⁻ ⇌ EtO⁻ + H₂O</div>
+            {d.question ? (
+              <div className="chem-na-prediction">
+                {say('补入产物水，会往哪边？', 'Add product water. Which way?')}
+              </div>
+            ) : (
+              <>
+                <div className="chem-na-share">
+                  <i style={{ width: `${m.ethoxide * 100}%` }} />
+                  <span>EtO⁻ {m.ethoxide.toFixed(2)}</span>
+                </div>
+                <div className="chem-na-record-label">
+                  {d.reveal
+                    ? m.water0 === 0
+                      ? say('未补水，平衡不变', 'No added water; no shift')
+                      : say('乙氧根变少，乙醇变多', 'Less ethoxide, more ethanol')
+                    : say('每份初始乙醇 · 模型份额', 'Per initial ethanol unit')}
+                </div>
+              </>
+            )}
+          </div>
+        ) : null}
+      </div>
+      {!watch && d.reveal ? (
+        <div
+          className="chem-na-controls-result"
+          data-baseline={baseline.ethoxide}
+          data-equilibrium={m.ethoxide}
+        >
+          EtO⁻ {baseline.ethoxide.toFixed(2)} → {m.ethoxide.toFixed(2)} ·{' '}
+          {say('理想稀溶液', 'Ideal dilute model')}
+        </div>
+      ) : null}
+      <details className="chem-na-boundary">
+        <summary>{say('模型的适用范围', 'Model limits')}</summary>
+        <p>
+          {say(
+            '共同溶剂DMSO中的独立酸碱比较，不是钠的反应机理。原子和负电荷守恒；一对电子仍随各自的氧。平衡数值采用理想稀溶液近似，不用于预测金属钠的反应速度。',
+            'A separate acid–base comparison in DMSO, not the mechanism of sodium reaction. Atoms and negative charge balance; each electron pair stays with its oxygen. Ideal dilute equilibrium amounts do not predict the rate of reaction with sodium metal.',
+          )}
+        </p>
+      </details>
+    </div>
   );
 }

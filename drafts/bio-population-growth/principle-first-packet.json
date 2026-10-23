@@ -1,0 +1,674 @@
+{
+  "slug": "bio-population-growth",
+  "status": "frozen-candidate-awaiting-root-voice-and-site-acceptance",
+  "narration": {
+    "duration": 276.5,
+    "cues": [
+      {
+        "id": "binary-lineage",
+        "title": "每一代怎样得到下一代",
+        "titleEn": "From one generation to the next",
+        "caption": "亮色是当前一代。",
+        "captionEn": "Only the highlighted generation is current.",
+        "zh": "从一个细菌开始，假定每二十分钟同步分裂一次。沿分支看一变二、二变四，每一代都由上一代推出来。亮色表示当前一代，上面的节点是谱系记录，不能再加进当前总数。这个规则还隐含资源无限、没有死亡和分裂周期相同等理想条件。",
+        "en": "Start with one bacterium and assume synchronous division every twenty minutes. Follow the branches from one to two, then four. The highlighted row is the current generation; ancestral nodes are history, not additional living cells. The rule assumes unlimited resources, no deaths and identical division times.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "binary-predict",
+        "title": "把规则写成预测",
+        "titleEn": "Turn the rule into a prediction",
+        "caption": "极大外推值，提醒我们检查条件。",
+        "captionEn": "A huge extrapolation asks us to check conditions.",
+        "zh": "把逐代倍增写成初始数量乘二的代数次方。一小时对应三代，所以是八个。若把同一假设直接延伸到七十二小时，就得到二的二百一十六次方。这个极大的结果提醒我们检查条件，而不是宣布真实培养液一定达到这样的数量。模型需要与观察比较，再修正。",
+        "en": "Initial abundance times two to the generation number gives the prediction. One hour contains three generations, producing eight cells. Extending the same assumptions for seventy-two hours gives two to the power of two hundred sixteen. This enormous prediction asks us to check assumptions, compare observations and revise the model.",
+        "seconds": 22,
+        "chapterAt": 23.5,
+        "at": 23.95
+      },
+      {
+        "id": "gause-observation",
+        "title": "先读历史培养观察",
+        "titleEn": "Read the historical culture evidence",
+        "caption": "0.5 mL：从 5 个到约 375 个。",
+        "captionEn": "In 0.5 mL: from 5 to about 375.",
+        "zh": "高斯将五个大草履虫放入零点五毫升培养液，随后定时计数。教材描述约第五天后数量趋于三百七十五个左右。这里重建开始和后期两个观察状态，后期数值是近似量。没有逐日原始表，就不补造中间测量点。先分清记录了什么，再讨论怎样建模。",
+        "en": "Gause began with five Paramecium in half a milliliter of culture and counted at regular intervals. The textbook describes a plateau around three hundred seventy-five after roughly five days. These reconstructed snapshots preserve the approximate evidence. Intermediate measurements are not invented when the raw daily table is unavailable.",
+        "seconds": 22,
+        "chapterAt": 48.5,
+        "at": 48.95
+      },
+      {
+        "id": "logistic-model",
+        "title": "让限制进入增长模型",
+        "titleEn": "Introduce a growth limit",
+        "caption": "总数稳定，个体仍可更新。",
+        "captionEn": "Stable numbers can conceal turnover.",
+        "zh": "曲线只描述增长慢下来。看同样的有限供给，被更多个体分享，平均份额就减少。现在提出一个可检验的模型：密度增加，平均到每个个体的出生率降低，死亡率升高。看两条速率接近，净增长就减小。两率相等时，总数稳定，生命活动却没有停止。这个可能的片段中，一只分裂，另一只死亡，四只仍是四只。现在改善环境：数量不会瞬间跳高，而是增减速率先变，再逐步趋向新的水平。这里的速率和个体片段是模型，不是高斯的原始录像。",
+        "en": "The curve describes a slowdown. Share the same finite supply among more individuals: the mean share falls. Now propose a testable model. Increasing density lowers births per individual and raises deaths. As the two rates converge, net growth shrinks. Equal rates can stabilize the total without stopping turnover. In this possible interval, one individual divides and another dies: four remain four. Improve the environment next. The count cannot jump instantly. Rates change first, followed by growth toward a new level. These rates and tracked individuals are a model, not a recording of Gause’s experiment.",
+        "seconds": 43,
+        "chapterAt": 74,
+        "at": 74.45
+      },
+      {
+        "id": "yeast-mix",
+        "title": "先把培养液混匀",
+        "titleEn": "Mix the culture before sampling",
+        "caption": "同一批细胞混匀，再取小样。",
+        "captionEn": "Mix the same cells, then sample.",
+        "zh": "酵母实验要先得到可解释的小样。观察同一批示踪细胞从底部重新分散，细胞身份没有凭空增加。轻轻混匀后再取样，才能减少只取到上清液或底部沉积的偏差。画中的三十二个细胞用于显示混匀，不代表十毫升培养液的真实总数。",
+        "en": "The yeast investigation begins with a meaningful aliquot. Follow the same tracer cells dispersing from the bottom without creating new identities. Gentle mixing before sampling reduces bias from taking only supernatant or sediment. The thirty-two tracers illustrate mixing rather than claiming to count every cell in the ten-milliliter culture.",
+        "seconds": 22,
+        "chapterAt": 117,
+        "at": 117.45
+      },
+      {
+        "id": "yeast-load",
+        "title": "盖片到位，再充液",
+        "titleEn": "Place the coverslip, then load",
+        "caption": "已知面积与室深，才能换算浓度。",
+        "captionEn": "Known area and depth let us infer concentration.",
+        "zh": "先放好盖玻片，再把小样加到边缘，让液体依靠毛细作用进入计数室。侧视图特意放大间隙；实际室深为零点一毫米。液滴不能靠压盖片硬挤进去。待细胞沉降后观察，若太密而无法辨认，应先按记录的倍数稀释，再重新装样计数。",
+        "en": "Place the coverslip before adding an aliquot at its edge. Capillary action fills the chamber. This magnified side view shows the gap, whose actual depth is one tenth of a millimeter. Do not force liquid under a pressed coverslip. Let cells settle; if they overlap excessively, dilute by a recorded factor and reload.",
+        "seconds": 22,
+        "chapterAt": 140.5,
+        "at": 140.95
+      },
+      {
+        "id": "yeast-count",
+        "title": "由数格子换算浓度",
+        "titleEn": "Convert a counted volume to concentration",
+        "caption": "统一边界计数，再按体积换算。",
+        "captionEn": "Use one edge rule, then convert by volume.",
+        "zh": "放大零点二乘零点二毫米的计数范围，按细胞中心计上边和左边，不计下边和右边。深度零点一毫米，所以体积是四乘十的负六次方毫升。把实际计数乘稀释倍数，再除这个体积，才得到每毫升数量。换另一种格子，换算因子也必须跟着面积改变。",
+        "en": "Inspect a square measuring zero point two millimeters on each side. Include cell centers on the top and left, excluding bottom and right. With a depth of zero point one millimeter, its volume is four millionths of a milliliter. Multiply the count by dilution and divide by that volume; another grid area requires another factor.",
+        "seconds": 22,
+        "chapterAt": 164.5,
+        "at": 164.95
+      },
+      {
+        "id": "yeast-record",
+        "title": "先有计数，再看变化",
+        "titleEn": "Counts first, pattern second",
+        "caption": "记录变化，再用对照检验。",
+        "captionEn": "Record changes; test explanations.",
+        "zh": "先把每天三个重复分别换算，再求平均，得到这组练习记录。缺测保留空白，总计数也不等于活细胞数。增长慢下来，能直接断定营养耗尽吗？把同一培养液分成两份，一份补充营养，另一份加入等量对照液，其他条件保持一致。如果缺营养是限制，这个假说预测补给组会恢复更多出芽；图中是待检验的预测，不是测得结果。再比较活性和后续增量，才能判断这个解释是否站得住。",
+        "en": "Convert each of three daily samples before averaging to obtain these practice records. Missing is not zero, and total counts do not establish viability. Does slower growth prove nutrient exhaustion? Split the same culture. Add nutrients to one portion and an equal volume of control liquid to the other, keeping other conditions matched. If nutrients are limiting, the hypothesis predicts more budding after supplementation. This is a prediction to test, not a measured result. Compare viability and subsequent increases to evaluate the explanation.",
+        "seconds": 37,
+        "chapterAt": 189.5,
+        "at": 189.95
+      },
+      {
+        "id": "canopy-evidence",
+        "title": "不同植物的调查响应",
+        "titleEn": "Different survey responses",
+        "caption": "同一郁闭度，不同物种响应不同。",
+        "captionEn": "Different species respond differently.",
+        "zh": "切换三种植物，读取教材原有的郁闭度调查数据。前两种随郁闭度增加总体减少，刺儿菜却在中等郁闭度处较多。每个点是对应条件下的平均株数，不是由通用增长公式画出来的。比较物种之间的差别，才不会把所有植物都概括成同一个方向。",
+        "en": "Switch among the three plants using the textbook’s canopy survey values. The first two generally decline as closure increases, while thistle peaks at intermediate closure. Points represent mean plants per square meter, not a generic growth equation. Comparing species prevents assigning every plant the same response.",
+        "seconds": 22,
+        "chapterAt": 226.5,
+        "at": 226.95
+      },
+      {
+        "id": "environment-cause",
+        "title": "相关线索还要检验",
+        "titleEn": "Test the causal interpretation",
+        "caption": "相关提供线索，对照检验因果。",
+        "captionEn": "Association suggests; comparisons test.",
+        "zh": "调查发现的关联为解释提供线索，却没有自动排除其他因素。同一季节里，降水、温度和日长可能一起改变，还会影响资源、出生与死亡。图中是定性因果路径，没有捏造降水测量点。要判断某一因素的作用，还需要控制条件、重复调查，或者能区分其他解释的证据。",
+        "en": "Survey associations suggest explanations without automatically excluding alternatives. Rainfall, temperature and day length may change together, influencing resources, births and deaths. This qualitative diagram does not invent rainfall measurements. Isolating one factor needs controlled comparisons, repeated surveys or evidence that distinguishes competing explanations.",
+        "seconds": 22,
+        "chapterAt": 250,
+        "at": 250.45
+      }
+    ]
+  },
+  "canonicalTiming": {
+    "sourceDuration": 249,
+    "sourceCues": [
+      {
+        "id": "binary-lineage",
+        "title": "每一代怎样得到下一代",
+        "titleEn": "From one generation to the next",
+        "caption": "亮色是当前一代，祖先节点不是额外活细胞。",
+        "captionEn": "The highlighted generation is alive; ancestor nodes are history.",
+        "zh": "从一个细菌开始，假定每二十分钟同步分裂一次。沿分支看一变二、二变四，每一代都由上一代推出来。亮色表示当前一代，上面的节点是谱系记录，不能再加进当前总数。这个规则还隐含资源无限、没有死亡和分裂周期相同等理想条件。",
+        "en": "Start with one bacterium and assume synchronous division every twenty minutes. Follow the branches from one to two, then four. The highlighted row is the current generation; ancestral nodes are history, not additional living cells. The rule assumes unlimited resources, no deaths and identical division times.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "binary-predict",
+        "title": "把规则写成预测",
+        "titleEn": "Turn the rule into a prediction",
+        "caption": "倍增能外推很大数值，仍须用观察验证。",
+        "captionEn": "Doubling extrapolates huge values that still require testing.",
+        "zh": "把逐代倍增写成初始数量乘二的代数次方。一小时对应三代，所以是八个。若把同一假设直接延伸到七十二小时，就得到二的二百一十六次方。这个极大的结果提醒我们检查条件，而不是宣布真实培养液一定达到这样的数量。模型需要与观察比较，再修正。",
+        "en": "Initial abundance times two to the generation number gives the prediction. One hour contains three generations, producing eight cells. Extending the same assumptions for seventy-two hours gives two to the power of two hundred sixteen. This enormous prediction asks us to check assumptions, compare observations and revise the model.",
+        "seconds": 22,
+        "chapterAt": 23.5,
+        "at": 23.95
+      },
+      {
+        "id": "gause-observation",
+        "title": "先读历史培养观察",
+        "titleEn": "Read the historical culture evidence",
+        "caption": "教材描述0.5 mL中从5个增至约375个。",
+        "captionEn": "The textbook describes 5 cells rising to about 375 in 0.5 mL.",
+        "zh": "高斯将五个大草履虫放入零点五毫升培养液，随后定时计数。教材描述约第五天后数量趋于三百七十五个左右。这里重建开始和后期两个观察状态，后期数值是近似量。没有逐日原始表，就不补造中间测量点。先分清记录了什么，再讨论怎样建模。",
+        "en": "Gause began with five Paramecium in half a milliliter of culture and counted at regular intervals. The textbook describes a plateau around three hundred seventy-five after roughly five days. These reconstructed snapshots preserve the approximate evidence. Intermediate measurements are not invented when the raw daily table is unavailable.",
+        "seconds": 22,
+        "chapterAt": 48.5,
+        "at": 48.95
+      },
+      {
+        "id": "logistic-model",
+        "title": "让限制进入增长模型",
+        "titleEn": "Introduce a growth limit",
+        "caption": "曲线是独立模型；K取决于环境条件。",
+        "captionEn": "This curve is a separate model; K depends on conditions.",
+        "zh": "现在用独立的逻辑斯谛模型描述增长受限的思路。数量很少时增长加快，接近环境容纳量时净增长趋缓。曲线采用明确的示意参数，不冒充刚才的原始测量。探索时改变环境容纳量，曲线会重新计算。环境改变，容纳量也可能改变，它不是物种永远不变的常数。",
+        "en": "A separate logistic model illustrates limited growth. Growth accelerates at low abundance and slows near carrying capacity. Its declared parameters are illustrative, not a claim to recover original measurements. Changing carrying capacity recomputes the curve. Carrying capacity depends on conditions rather than being an immutable species constant.",
+        "seconds": 22,
+        "chapterAt": 74,
+        "at": 74.45
+      },
+      {
+        "id": "yeast-mix",
+        "title": "先把培养液混匀",
+        "titleEn": "Mix the culture before sampling",
+        "caption": "固定示踪细胞从沉降状态重新分散。",
+        "captionEn": "The same tracer cells disperse from a settled state.",
+        "zh": "酵母实验要先得到可解释的小样。观察同一批示踪细胞从底部重新分散，细胞身份没有凭空增加。轻轻混匀后再取样，才能减少只取到上清液或底部沉积的偏差。画中的三十二个细胞用于显示混匀，不代表十毫升培养液的真实总数。",
+        "en": "The yeast investigation begins with a meaningful aliquot. Follow the same tracer cells dispersing from the bottom without creating new identities. Gentle mixing before sampling reduces bias from taking only supernatant or sediment. The thirty-two tracers illustrate mixing rather than claiming to count every cell in the ten-milliliter culture.",
+        "seconds": 22,
+        "chapterAt": 100.5,
+        "at": 100.95
+      },
+      {
+        "id": "yeast-load",
+        "title": "盖片到位，再充液",
+        "titleEn": "Place the coverslip, then load",
+        "caption": "小样沿盖片边缘进入已知深度的计数室。",
+        "captionEn": "The aliquot fills a chamber with a known depth.",
+        "zh": "先放好盖玻片，再把小样加到边缘，让液体依靠毛细作用进入计数室。侧视图特意放大间隙；实际室深为零点一毫米。液滴不能靠压盖片硬挤进去。待细胞沉降后观察，若太密而无法辨认，应先按记录的倍数稀释，再重新装样计数。",
+        "en": "Place the coverslip before adding an aliquot at its edge. Capillary action fills the chamber. This magnified side view shows the gap, whose actual depth is one tenth of a millimeter. Do not force liquid under a pressed coverslip. Let cells settle; if they overlap excessively, dilute by a recorded factor and reload.",
+        "seconds": 22,
+        "chapterAt": 124,
+        "at": 124.45
+      },
+      {
+        "id": "yeast-count",
+        "title": "由数格子换算浓度",
+        "titleEn": "Convert a counted volume to concentration",
+        "caption": "计上左、不计下右；倍率来自这块格子的体积。",
+        "captionEn": "Include top and left; derive the factor from this square’s volume.",
+        "zh": "放大零点二乘零点二毫米的计数范围，按细胞中心计上边和左边，不计下边和右边。深度零点一毫米，所以体积是四乘十的负六次方毫升。把实际计数乘稀释倍数，再除这个体积，才得到每毫升数量。换另一种格子，换算因子也必须跟着面积改变。",
+        "en": "Inspect a square measuring zero point two millimeters on each side. Include cell centers on the top and left, excluding bottom and right. With a depth of zero point one millimeter, its volume is four millionths of a milliliter. Multiply the count by dilution and divide by that volume; another grid area requires another factor.",
+        "seconds": 22,
+        "chapterAt": 148,
+        "at": 148.45
+      },
+      {
+        "id": "yeast-record",
+        "title": "先有计数，再看变化",
+        "titleEn": "Counts first, pattern second",
+        "caption": "每天重复计数，缺测保持空白。",
+        "captionEn": "Repeat daily counts; missing observations remain blank.",
+        "zh": "现在把各日三个重复的平均计数换算成浓度，逐点放进记录图。初始记录与随后七天都保留，点的变化来自这组明确标注的练习计数，没有先规定必须出现哪种曲线。自己的记录从空白开始；缺测不是零。这里没有活死染色，显微总计数不能直接等同于活细胞数。",
+        "en": "Convert each day’s three replicate counts to a mean concentration, then add the points. Day zero and seven later days are retained. The pattern comes from labeled practice counts rather than a prescribed curve. Personal records begin blank, and missing is not zero. Without a viability method, total microscopic counts are not automatically live-cell counts.",
+        "seconds": 22,
+        "chapterAt": 173,
+        "at": 173.45
+      },
+      {
+        "id": "canopy-evidence",
+        "title": "不同植物的调查响应",
+        "titleEn": "Different survey responses",
+        "caption": "不同物种对郁闭度的调查响应不同。",
+        "captionEn": "Species respond differently to canopy closure.",
+        "zh": "切换三种植物，读取教材原有的郁闭度调查数据。前两种随郁闭度增加总体减少，刺儿菜却在中等郁闭度处较多。每个点是对应条件下的平均株数，不是由通用增长公式画出来的。比较物种之间的差别，才不会把所有植物都概括成同一个方向。",
+        "en": "Switch among the three plants using the textbook’s canopy survey values. The first two generally decline as closure increases, while thistle peaks at intermediate closure. Points represent mean plants per square meter, not a generic growth equation. Comparing species prevents assigning every plant the same response.",
+        "seconds": 22,
+        "chapterAt": 199,
+        "at": 199.45
+      },
+      {
+        "id": "environment-cause",
+        "title": "相关线索还要检验",
+        "titleEn": "Test the causal interpretation",
+        "caption": "降水、温度和日长可以同时改变。",
+        "captionEn": "Rainfall, temperature and day length can change together.",
+        "zh": "调查发现的关联为解释提供线索，却没有自动排除其他因素。同一季节里，降水、温度和日长可能一起改变，还会影响资源、出生与死亡。图中是定性因果路径，没有捏造降水测量点。要判断某一因素的作用，还需要控制条件、重复调查，或者能区分其他解释的证据。",
+        "en": "Survey associations suggest explanations without automatically excluding alternatives. Rainfall, temperature and day length may change together, influencing resources, births and deaths. This qualitative diagram does not invent rainfall measurements. Isolating one factor needs controlled comparisons, repeated surveys or evidence that distinguishes competing explanations.",
+        "seconds": 22,
+        "chapterAt": 222.5,
+        "at": 222.95
+      }
+    ],
+    "proposalSpans": [23.5, 25, 25.5, 43, 23.5, 24, 25, 37, 23.5, 26.5],
+    "retainedMeasuredWindows": [0, 1, 2, 4, 5, 6, 8, 9],
+    "newSpeechPending": [3, 7]
+  },
+  "spokenDiff": [
+    {
+      "id": "binary-lineage",
+      "index": 0,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "binary-predict",
+      "index": 1,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "gause-observation",
+      "index": 2,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "logistic-model",
+      "index": 3,
+      "zh": "changed",
+      "en": "changed"
+    },
+    {
+      "id": "yeast-mix",
+      "index": 4,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "yeast-load",
+      "index": 5,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "yeast-count",
+      "index": 6,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "yeast-record",
+      "index": 7,
+      "zh": "changed",
+      "en": "changed"
+    },
+    {
+      "id": "canopy-evidence",
+      "index": 8,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    },
+    {
+      "id": "environment-cause",
+      "index": 9,
+      "zh": "verbatim-retained",
+      "en": "verbatim-retained"
+    }
+  ],
+  "curriculumVariants": {
+    "bio-elective-2-007-1": {
+      "sceneSlug": "bio-population-growth",
+      "chapterIds": ["binary-lineage", "binary-predict"],
+      "label": "建立细菌种群增长的数学模型",
+      "sceneVariant": "bio-elective-2-007-1"
+    },
+    "bio-elective-2-009-1": {
+      "sceneSlug": "bio-population-growth",
+      "chapterIds": ["gause-observation", "logistic-model"],
+      "label": "高斯的大草履虫单独培养实验",
+      "sceneVariant": "bio-elective-2-009-1"
+    },
+    "bio-elective-2-011-1": {
+      "sceneSlug": "bio-population-growth",
+      "chapterIds": ["yeast-mix", "yeast-load", "yeast-count", "yeast-record"],
+      "label": "培养液中酵母菌种群数量的变化",
+      "sceneVariant": "bio-elective-2-011-1"
+    },
+    "bio-elective-2-013-1": {
+      "sceneSlug": "bio-population-growth",
+      "chapterIds": ["canopy-evidence", "environment-cause"],
+      "label": "郁闭度、降水与种群数量的调查资料",
+      "sceneVariant": "bio-elective-2-013-1"
+    }
+  },
+  "teachingProfiles": {
+    "bio-elective-2-007-1": {
+      "sceneSlug": "bio-population-growth",
+      "question": {
+        "zh": "一小时能变成八个，为什么不能照算七十二小时？",
+        "en": "If one cell becomes eight in an hour, why question a seventy-two-hour extrapolation?"
+      },
+      "lead": {
+        "zh": "沿同一谱系逐代推算，再检查大数背后的条件。",
+        "en": "Follow one lineage, then check the assumptions behind a large prediction."
+      },
+      "principle": {
+        "zh": "倍增来自每代同样分裂、无死亡等假设；预测必须与实际条件和观察比较。",
+        "en": "Doubling follows repeated division and no mortality; predictions require comparison with actual conditions and observations."
+      },
+      "transfer": {
+        "question": {
+          "zh": "如果每代仍翻倍，但起始数量减半，曲线会怎样变？",
+          "en": "If doubling persists but the initial count halves, how does the curve change?"
+        },
+        "explanation": {
+          "zh": "同一时刻的预测数量减半；它并没有消除资源无限等假设。",
+          "en": "The prediction halves at every matched time. Unlimited resources remain an assumption."
+        }
+      }
+    },
+    "bio-elective-2-009-1": {
+      "sceneSlug": "bio-population-growth",
+      "question": {
+        "zh": "数量停止上升，是否意味着不再出生或死亡？",
+        "en": "Does a plateau mean births and deaths have stopped?"
+      },
+      "lead": {
+        "zh": "固定高斯的教材观察，再让出生、死亡和数量共用同一模型。",
+        "en": "Keep the textbook observations fixed, then connect births, deaths and abundance in one model."
+      },
+      "principle": {
+        "zh": "净增长是出生减死亡。密度反馈可令二者平衡；单凭平台无法唯一确定其原因。",
+        "en": "Net growth is births minus deaths. Density feedback can balance them; a plateau alone does not identify its cause."
+      },
+      "transfer": {
+        "question": {
+          "zh": "改善环境后，原有个体数会立即跳到新的容纳量吗？",
+          "en": "Does improving the environment instantly raise the population to its new capacity?"
+        },
+        "explanation": {
+          "zh": "不会。初始个体数连续，增减速率改变，后续数量才随时间变化。",
+          "en": "No. The count stays continuous, while altered rates change subsequent abundance."
+        }
+      }
+    },
+    "bio-elective-2-011-1": {
+      "sceneSlug": "bio-population-growth",
+      "question": {
+        "zh": "酵母增长慢下来，怎样检验“营养不足”的解释？",
+        "en": "How can we test nutrient limitation when yeast growth slows?"
+      },
+      "lead": {
+        "zh": "从代表性取样和已知计数体积，走到同源分样的预测比较。",
+        "en": "Move from representative sampling and a known volume to predictions for split cultures."
+      },
+      "principle": {
+        "zh": "每次计数须保存体积和稀释信息；记录说明变化，受控干预才有助于区分解释。",
+        "en": "Each count retains its volume and dilution. Records describe change; controlled interventions help distinguish explanations."
+      },
+      "transfer": {
+        "question": {
+          "zh": "补营养后没有恢复，就能断定细胞都死了吗？",
+          "en": "If supplementation fails, does that prove all cells died?"
+        },
+        "explanation": {
+          "zh": "不能。其他限制或抑制可能仍存在，需要独立的活性测量与合适对照。",
+          "en": "No. Other limitations or inhibition may remain. Independent viability measures and suitable controls are needed."
+        }
+      }
+    },
+    "bio-elective-2-013-1": {
+      "sceneSlug": "bio-population-growth",
+      "question": {
+        "zh": "郁闭度相同，三种植物为什么不一定同向变化？",
+        "en": "Why need three plants not respond alike to the same canopy closure?"
+      },
+      "lead": {
+        "zh": "比较教材原调查点，再检查季节中同时变化的因素。",
+        "en": "Compare the textbook survey points, then inspect seasonal covariates."
+      },
+      "principle": {
+        "zh": "调查关联与物种差异提供线索，不能代替排除其他解释的证据。",
+        "en": "Associations and species differences suggest explanations without excluding alternatives."
+      },
+      "transfer": {
+        "question": {
+          "zh": "只在雨多的月份看到数量更多，足以证明降水单独造成变化吗？",
+          "en": "Does greater abundance in rainy months prove rainfall alone caused it?"
+        },
+        "explanation": {
+          "zh": "不足。温度、日长和资源等可能共变，需要能区分它们的比较。",
+          "en": "No. Temperature, day length and resources may covary; comparisons must distinguish their effects."
+        }
+      }
+    }
+  },
+  "translations": {
+    "一代怎样变成下一代？": "How does one generation become the next?",
+    "倍增能一直持续吗？": "Can doubling continue forever?",
+    "增长为什么慢下来？": "Why does growth slow?",
+    "数量稳定，生命活动停止了吗？": "Does a stable count mean no turnover?",
+    "一滴能代表整瓶吗？": "Can one drop represent a flask?",
+    "为什么必须知道室深？": "Why does chamber depth matter?",
+    "看到多少，才能换算多少？": "What does a counted field represent?",
+    "曲线能告诉我们原因吗？": "Does the curve reveal its cause?",
+    "三种植物回答相同吗？": "Do three species respond alike?",
+    "共同变化就是因果吗？": "Does association establish cause?",
+    "曲线描述变化，解释仍需检验。": "Describe first; test the explanation.",
+    "同样供给，更多个体分享。": "Same supply, more consumers.",
+    "密度改变人均出生与死亡。": "Density changes per-capita rates.",
+    "总数不变，个体仍在更新。": "A stable total can conceal turnover.",
+    "环境先改变速率，数量连续。": "Rates change first; count stays continuous.",
+    "这些是计数练习数据。": "These are illustrative count records.",
+    "同源分样，等量加入。": "Same culture; equal additions.",
+    "营养限制假说：补给应恢复出芽。": "If nutrients limit growth: more budding.",
+    "若另有抑制，补营养未必恢复。": "Other inhibition may persist after feeding.",
+    "教材端点，非补造测量。": "Textbook endpoints; no invented data.",
+    "练习样品：稀释十倍。": "Practice sample: diluted ×10.",
+    "调查关联，尚非因果。": "Survey association, not causation.",
+    "用对照区分替代解释。": "Use controls to distinguish causes.",
+    "细菌固定谱系示意": "Fixed bacterial lineage",
+    "每代 20 min；无死亡": "20 min per generation; no deaths",
+    "亮色：当前一代": "Highlighted: current generation",
+    "假设外推，仍须检验": "Extrapolation still needs testing",
+    "高斯原记录的教材端点": "Textbook endpoints of Gause observations",
+    "约第 5 天后": "After ~day 5",
+    "初始": "Initially",
+    "32 个示踪标记": "32 selected tracers",
+    "沉降 → 混匀": "Settled → mixed",
+    "再取小样": "Then sample",
+    "侧面剖视 · 毛细充液": "Side section · capillary filling",
+    "室深": "Depth",
+    "盖片先就位": "Coverslip in place first",
+    "第": "Day ",
+    "天 · 重复": " · repeat ",
+    "个/mL": "cells/mL",
+    "每次记录保留自己的稀释倍数": "Each observation keeps its own dilution",
+    "天 · 输入记录": "days · entered records",
+    "天；每个点 3 次重复": "days; 3 repeats per example",
+    "同源分样的条件预测，不是测得结果": "Conditional prediction for split samples, not measured results",
+    "同源分样 · 条件预测": "Split samples · prediction",
+    "补营养": "Nutrient",
+    "等量对照": "Control",
+    "比较出芽/活性，不能只看总数": "Compare budding or viability",
+    "平均株数/m²": "Mean plants/m²",
+    "郁闭度 · 教材调查": "Canopy closure · textbook survey",
+    "季节": "Season",
+    "降水": "Rain",
+    "温度": "Temperature",
+    "日长": "Day length",
+    "资源 → 出生与死亡": "Resources → births and deaths",
+    "种群数量": "Population size",
+    "观察主题": "View",
+    "过程位置": "Progress",
+    "环境容纳量（模型）": "Capacity (model)",
+    "初始数量（模型）": "Initial count (model)",
+    "观察日": "Observation day",
+    "重复": "Repeat ",
+    "营养限制假说": "Nutrient limitation",
+    "另有抑制假说": "Other inhibition",
+    "使用我的计数记录": "Use my count records",
+    "本次样品稀释倍数": "Current sample dilution",
+    "计数": "Count ",
+    "未记录": "Missing",
+    "有效重复": "Valid repeats",
+    "缺测": "Missing",
+    "10 mL 总量估计": "Estimate in 10 mL",
+    "模型与证据边界": "Model and evidence limits",
+    "高斯教材端点保持不变。期望数量模型把密度作用写成出生/死亡率，不是逐个个体实测，也不能由S形唯一确定原因。四个示踪个体只是同一率模型的一种短时实现。计数练习固定为十倍稀释；个人记录按每次采样的稀释倍数分别换算后求平均，修改当前倍数不会改旧样品。总计数不区分死活。补营养图是条件预测，不是已有实验结果。": "Gause’s textbook endpoints remain fixed. Expected population follows a density-dependent birth/death model, not measured individual histories; an S-shaped curve does not identify a unique cause. Four tracked individuals show one possible short realization of those rates. Practice counts use tenfold dilution. Personal observations retain their own dilution before averaging; changing the current dilution does not rewrite old samples. Total counts do not establish viability. Nutrient addition shows a conditional prediction, not an observed result.",
+    "每一代怎样得到下一代": "From one generation to the next",
+    "亮色是当前一代。": "Only the highlighted generation is current.",
+    "把规则写成预测": "Turn the rule into a prediction",
+    "极大外推值，提醒我们检查条件。": "A huge extrapolation asks us to check conditions.",
+    "先读历史培养观察": "Read the historical culture evidence",
+    "0.5 mL：从 5 个到约 375 个。": "In 0.5 mL: from 5 to about 375.",
+    "让限制进入增长模型": "Introduce a growth limit",
+    "总数稳定，个体仍可更新。": "Stable numbers can conceal turnover.",
+    "先把培养液混匀": "Mix the culture before sampling",
+    "同一批细胞混匀，再取小样。": "Mix the same cells, then sample.",
+    "盖片到位，再充液": "Place the coverslip, then load",
+    "已知面积与室深，才能换算浓度。": "Known area and depth let us infer concentration.",
+    "由数格子换算浓度": "Convert a counted volume to concentration",
+    "统一边界计数，再按体积换算。": "Use one edge rule, then convert by volume.",
+    "先有计数，再看变化": "Counts first, pattern second",
+    "记录变化，再用对照检验。": "Record changes; test explanations.",
+    "不同植物的调查响应": "Different survey responses",
+    "同一郁闭度，不同物种响应不同。": "Different species respond differently.",
+    "相关线索还要检验": "Test the causal interpretation",
+    "相关提供线索，对照检验因果。": "Association suggests; comparisons test.",
+    "本段净增为 0，继续追踪个体。": "Net change is 0; follow the individuals.",
+    "本段出生多于死亡。": "Births exceed deaths in this interval.",
+    "本段死亡多于出生。": "Deaths exceed births in this interval."
+  },
+  "sources": [
+    {
+      "title": "人教版选择性必修2，P7–18，种群数量变化与影响因素",
+      "file": "人教版高中生物学-选择性必修2-生物与环境.pdf",
+      "printedPages": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      "pdfPages": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+    },
+    {
+      "title": "Gause (1934), The Struggle for Existence, Chapter III, pp.36–38",
+      "url": "https://archive.org/download/struggleforexist00gauz/struggleforexist00gauz.pdf",
+      "scope": "Original scan read; Fig.4 endpoint and culture conditions, Table IV calculated fitted values distinguished from observations."
+    },
+    {
+      "title": "Monod (1949), The Growth of Bacterial Cultures, pp.371–385",
+      "url": "https://garcialab.berkeley.edu/courses/papers/Monod1949.pdf",
+      "scope": "Original paper read. Biomass yield, cell number, nutrient concentration and specific rate distinguished."
+    },
+    {
+      "title": "Thermo Fisher, Counting cells in a hemacytometer",
+      "url": "https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/counting-cells-in-a-hemacytometer.html"
+    },
+    {
+      "title": "OpenStax, Population Growth and Regulation",
+      "url": "https://openstax.org/books/concepts-biology/pages/19-2-population-growth-and-regulation"
+    }
+  ],
+  "director": {
+    "kind": "chapterTime",
+    "provisional": true,
+    "newChapters": {
+      "logistic-model": {
+        "curve": [0, 4],
+        "allocation": [4, 12],
+        "rates": [12, 20],
+        "renewal": [20, 28],
+        "predictionQuestion": [28, 31],
+        "prediction": [31, 43]
+      },
+      "yeast-record": {
+        "records": [0, 13],
+        "split": [13, 20],
+        "predictionQuestion": [20, 23],
+        "prediction": [23, 37]
+      }
+    }
+  },
+  "retainedTimingReview": {
+    "method": "Read all 16 retained transcripts and individual word times, local cue times plus 0.45s. ASR is not subjective audition. Two rewritten chapters remain provisional.",
+    "sourceReport": "checks/transcription.json",
+    "retainedSpokenFields": 16,
+    "changedSpokenFields": 4,
+    "newChapterIndices": [3, 7],
+    "changes": [
+      {
+        "chapter": 0,
+        "reason": "Keep one ancestor until spoken one-to-two, then reveal second generation on then-four.",
+        "zh": [6.25, 7.15, 10.7, 12.8, 15],
+        "en": [7.2, 8.05, 11.6, 13.4, 15.2]
+      },
+      {
+        "chapter": 1,
+        "reason": "Eight must be visible by the one-hour statement; do not show 72-hour answer at opening.",
+        "thirdGenerationZh": 5.9,
+        "thirdGenerationEn": 6.8,
+        "extrapolationRevealZh": 11.8,
+        "extrapolationRevealEn": 12
+      },
+      {
+        "chapter": 2,
+        "reason": "Independent late snapshot begins with the textbook plateau statement, not an initial fade from time zero.",
+        "fadeZh": [8.4, 9],
+        "fadeEn": [7.9, 8.5]
+      },
+      {
+        "chapter": 4,
+        "mixing": [3.5, 9.5],
+        "reason": "Retained identities disperse during the sentence naming dispersal, then remain mixed while sampling bias is explained."
+      },
+      {
+        "chapter": 5,
+        "drop": [1.8, 3.6],
+        "fillZh": [3.8, 6.5],
+        "fillEn": [3.8, 5.8],
+        "reason": "Capillary filling completes by the subsequent depth explanation, rather than running most of the chapter."
+      },
+      {
+        "chapter": 6,
+        "volumeZh": 8.2,
+        "volumeEn": 9.2,
+        "conversionZh": 13.4,
+        "conversionEn": 15.2,
+        "resultZh": 17.8,
+        "resultEn": 18.2,
+        "reason": "Display counting field before inference, then dimension, conversion and concentration in spoken order."
+      },
+      {
+        "chapter": 8,
+        "secondSpecies": 5.8,
+        "thirdSpeciesZh": 8.4,
+        "thirdSpeciesEn": 8.7,
+        "reason": "Thistle is visible while the voice identifies its intermediate-closure maximum."
+      },
+      {
+        "chapter": 9,
+        "change": "None. Qualitative covariate diagram remains visible; no time-specific event is asserted."
+      }
+    ],
+    "screening": {
+      "allPass": true,
+      "manuallyReadTranscriptCount": 16,
+      "findings": "Chinese transcript includes homophone spellings for chamber, dilution, lineage and species. The independently transcribed quantitative factors (20 min, 8, 72 h, 216, 0.5 mL, 375, 0.1 mm, 0.2×0.2 mm, 4×10^-6 mL) agree. No audio edit is proposed. Not a subjective naturalness/listening verdict."
+    }
+  },
+  "sharedProposals": {
+    "topic": {
+      "title": "数量不再增加，群体还在变化吗？",
+      "titleEn": "Does a stable population stop changing?",
+      "description": "从草履虫平台到细胞更新，用计数、密度反馈和可检验预测解释种群增长。",
+      "descriptionEn": "From a Paramecium plateau to individual turnover: counts, density feedback and testable predictions."
+    },
+    "ssrSelector": ".lesson-bio-population-growth",
+    "noDirectSharedWrites": true
+  },
+  "limits": [
+    "Rates are illustrative phenomenological expected rates, not fitted Gause birth/death data.",
+    "Four individuals are one seeded possible interval, not an estimate of population rates.",
+    "Practice counts are labeled synthetic observations independent of logistic output.",
+    "Split-sample budding is a conditional prediction; equal added volumes dilute both samples equally, not an instantaneous cell-number change.",
+    "No viability is inferred from total microscopic counts."
+  ]
+}

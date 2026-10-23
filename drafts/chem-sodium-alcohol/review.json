@@ -1,38 +1,320 @@
 {
-  "slug": "chem-sodium-alcohol",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "reviewedAt": "2026-10-18T16:10:55.482193",
-  "files": {
-    "src/models/chem-sodium-alcohol.ts": "7a33c9cbc51e30c90783091c99b4e296fa61f713fa147a19d1351ee4cc5ec7d2",
-    "src/models/chem-sodium-alcohol.test.ts": "f35ddf89e55ef87c22d1edb8c78a07b5f34d28140187f14a77569ffd8c333dad",
-    "src/components/experiments/ChemSodiumAlcohol.tsx": "59f85474663d28d340a3e78120fb894bece2f43808f2463c309ca6c1f5decaa0",
-    "src/components/covers/ChemSodiumAlcoholCover.astro": "57f505bb435dcbfac950408fccd229af6f36658891f06be2b348e70371283709",
-    "src/styles/chem-sodium-alcohol.css": "c99f3d04134050b86c5ef7ec503ecdd553d93fbb51178b05b6ca3d490dc48bbc",
-    "src/content/chem-sodium-alcohol.mdx": "fd2fe4934c1dc3bcdb03ffcb6dffa648420420a76a64eb68650dcdd6fb6f2d7f",
-    "src/content/en/chem-sodium-alcohol.mdx": "a6384d971e1d2312607871dea0b836456e50ad7072a38a5fe81e2e7401a209e8",
-    "src/data/scene-packets/chem-sodium-alcohol.json": "e8fbb6d6abdc4d35adbb0523134d812e59bacea609a9fe49a83d6aea88bfb9fb"
+  "sceneSlug": "chem-sodium-alcohol",
+  "status": "Frozen ignored candidate; root integration and final audio acceptance pending",
+  "author": "GPT-6 Astra",
+  "role": "Author review; not an independent full-scene review",
+  "scope": "Six retained chapter IDs and two retained textbook windows. The first five spoken cues, titles and nominal seconds remain identical. Cue 5 is new; all captions are shortened. Only ignored staging files were edited.",
+  "sourceHashes": {
+    "src/models/chem-sodium-alcohol.ts": "34f00cf5cd345a1c2e414d8603d40805b5ec519eceeea0ee31b1523620994cfb",
+    "src/models/chem-sodium-alcohol.test.ts": "78b6965b7168d4e78bc659d8d0dc3db26a03b4f553017b6522bf72d2b19963bb",
+    "src/components/experiments/ChemSodiumAlcohol.tsx": "b6998f96c20f0d9aede36f6fd68015e90db7efc80f77db5f2c65624191412526",
+    "src/components/experiments/ChemSodiumAlcohol.test.tsx": "fcce82267febdfeec4ab3eeef4bf4b1a5273bfab20a654058249c9c08840343d",
+    "src/styles/chem-sodium-alcohol.css": "a25b70044293f750d8171bfb78caec482195c515aff7527e3d2f74634d84141f",
+    "src/components/covers/ChemSodiumAlcoholCover.astro": "f5428ef54f64ee6255c295cb4b358c05f6053bed39bc6e8edf6bc2c6c1d92df1",
+    "src/content/chem-sodium-alcohol.mdx": "de2822504246c28363d1760655a4d77ecf025ce323442217aaf8f2e18c7a8ad9",
+    "src/content/en/chem-sodium-alcohol.mdx": "6c475aca6a5c8f43a07125a744790c0179f6422164adc0c3da24e3c354a064fc"
   },
-  "modelTests": {
-    "status": "passed",
-    "count": 5
+  "sources": {
+    "ledger": "artifacts/teaching-principles/batch-19-staging/chemistry/sources/source-ledger.json",
+    "textbook": "Complete relevant text from required Book 2 P75–79 and elective Book 3 P5–9 read; complete P77, P78 and P7 images personally inspected.",
+    "primary": "Matched 1980 DMSO data inspected in the Reich/ACS author compilation. Original publisher metadata and publicly indexed abstract were read, but not the inaccessible full publisher article. The original 1988 author review was read from a public copy for solvent and measurement limits; its different rounded/revised entries were not mixed into the 1980 dataset."
   },
-  "ownedTypeScriptDiagnostics": 0,
-  "packetValidation": "passed",
-  "scopedPrettier": "passed",
-  "viewport": "320x844 emulated Chromium; reduced motion; muted paused seeks",
-  "visual": {
-    "sweep": "All six English and Chinese chapters captured. Initial English chapter1 HMR context failure passed retry. English chapter6 overflow fixed by removing duplicate limit note, chapter5 spacing reduced. Final whole-player English bottoms max834.68 with top90.78; Chinese original max782.07, final changes only shrink. Actually inspected chapters2/4/5 and final6: connected gas outlet/collector, tracked hydroxyl hydrogen, equal sodium comparison and group relation.",
-    "evidenceDirectories": [
-      "artifacts/chemistry-inventory/review-sodium-alcohol",
-      "artifacts/chemistry-inventory/review-sodium-alcohol-zh",
-      "artifacts/chemistry-inventory/review-sodium-alcohol-retry",
-      "artifacts/chemistry-inventory/review-sodium-alcohol-final"
-    ]
+  "science": {
+    "fixedEvidence": "DMSO, 1980: ethanol 29.8 and water 31.4 from the same study. Controls never rewrite these values.",
+    "bridge": "Selected proton and owned electron pairs → fixed matched-medium records → ideal mass-action balance → unanswered added-water question → reverse selected exchange and shifted population.",
+    "limits": [
+      "This separate acid–base exchange is not the sodium mechanism. No H₂ forms; H retains oxidation state +1.",
+      "Formal charges and atom paths are bookkeeping, not a free-proton microscopic trajectory.",
+      "The ideal dilute DMSO model omits counterions, ion pairing, homoconjugation and changes of bulk solvent.",
+      "The sodium comparison uses qualitative timing, not a measured rate or direct proof of bond polarity/acidity.",
+      "The selected proton event is distinct from the equilibrium population."
+    ],
+    "independentPeer": {
+      "status": "Pending receipt; not assumed passed"
+    }
   },
-  "notRun": [
-    "continuous full viewing",
-    "native listening (root synthesizes)",
-    "physical phone",
-    "root independent desktop/exploration/curriculum-route review"
-  ]
+  "validation": {
+    "tests": {
+      "passed": true,
+      "count": 15,
+      "report": "artifacts/teaching-principles/batch-19-staging/chemistry/tests-final.json"
+    },
+    "strictTypeScript": {
+      "passed": true,
+      "report": "artifacts/teaching-principles/batch-19-staging/chemistry/types.json"
+    },
+    "pausedFrames": {
+      "count": 56,
+      "failures": [],
+      "errors": [],
+      "maxPhoneBottom": 563.71875,
+      "report": "artifacts/teaching-principles/batch-19-staging/chemistry/frames-frozen/report.json",
+      "scope": "Author rendered full shared Showcase with seven BaseCSS sheets: zh/en, 320×568 and 1100×900, six chapters and provisional 203 s. This is an isolated candidate, not an actual Astro page."
+    },
+    "nativeControls": {
+      "count": 134,
+      "failures": [],
+      "errors": [],
+      "report": "artifacts/teaching-principles/batch-19-staging/chemistry/controls-final/report.json",
+      "scope": "Real DOM buttons and keyboard sliders: current state inheritance, atom and pair IDs, formal charge, fixed records, prediction reveal, finite Na/O—H amounts, and both textbook entry selections. Explicit manual mode persistence is additionally covered by a mounted React test."
+    },
+    "normalSpeedSilent": {
+      "versionBoundary": "Full playback preceded only two short evidence-label clarifications (Formal account / Reverse bond account). No model, geometry, control or timing changed afterward; the final 56 paused frames recheck those labels.",
+      "report": "artifacts/teaching-principles/batch-19-staging/chemistry/normal-play-final/report.json",
+      "cases": [
+        {
+          "lang": "en",
+          "passed": true,
+          "elapsedMs": 203863,
+          "samples": 203,
+          "chapters": ["0", "1", "2", "3", "4", "5"],
+          "final": {
+            "time": 203,
+            "chapter": "5",
+            "hidden": false,
+            "playing": "false",
+            "bottom": 553.109375
+          },
+          "maximumPlayerBottom": 563.71875,
+          "errors": []
+        },
+        {
+          "lang": "zh",
+          "passed": true,
+          "elapsedMs": 203864,
+          "samples": 203,
+          "chapters": ["0", "1", "2", "3", "4", "5"],
+          "final": {
+            "time": 203,
+            "chapter": "5",
+            "hidden": false,
+            "playing": "false",
+            "bottom": 550.484375
+          },
+          "maximumPlayerBottom": 550.484375,
+          "errors": []
+        }
+      ],
+      "scope": "Both native players run at normal speed for 203 s, with screen recording and one-second samples. This is not continuous human watching, subjective listening or final voice synchronization."
+    },
+    "personallyViewed": [
+      "sources/required2-p77.png",
+      "sources/required2-p78.png",
+      "sources/elective3-p7.png",
+      "sources/reich-alcohol-table.png",
+      "sources/reich-inorganic-table.png",
+      "candidate-stage/cover.png",
+      "frames-frozen/en-320-equal-final-yield.png",
+      "frames-compact/en-320-structure.png",
+      "frames-initial/en-320-proton-moving.png",
+      "frames-initial/en-1100-proton-moving.png",
+      "frames-compact/en-320-initial-balance.png",
+      "frames-compact/en-320-water-question.png",
+      "frames-compact/en-320-shifted-balance.png"
+    ],
+    "cover": {
+      "passed": true,
+      "scope": "Actual Astro cover source compiled and rendered in isolation at 640×420. Catalog and social consumers are not tested here."
+    },
+    "format": {
+      "scope": "Only owned candidate paths formatted; MDX parsed. No global format or product build."
+    }
+  },
+  "resolvedFindings": [
+    "The initial chosen port was owned by another server. Only this candidate moved to ports 4417/4418; the other server was not stopped.",
+    "Initial SVG font and short-screen overflow failures remain in frames-initial. The final frames pass after local font, evidence-label and apparatus adjustments.",
+    "The equal-sodium comparison now holds equal final H₂ before leaving cue 4, making the preserved spoken conclusion visible."
+  ],
+  "outstanding": [
+    "Root integration into actual Astro routes, SSR anchors, catalog and cover consumers.",
+    "Root synthesis of cue 5 and measured locale timing. Preserve the first five recorded segments.",
+    "Final static resource/fallback checks and normal native playback with actual audio; subjective Chinese and English listening.",
+    "Physical phone performance was not measured."
+  ],
+  "recommendedFrames": [
+    "frames-frozen/en-320-equal-final-yield.png",
+    "frames-frozen/en-320-proton-moving.png",
+    "frames-frozen/en-320-proton-arrived.png",
+    "frames-frozen/en-320-fixed-records.png",
+    "frames-frozen/en-320-water-question.png",
+    "frames-frozen/en-320-reverse-proton.png",
+    "frames-frozen/en-320-shifted-balance.png",
+    "frames-frozen/zh-320-reverse-proton.png",
+    "frames-frozen/en-1100-proton-moving.png"
+  ],
+  "rootIntegration": {
+    "status": "integrated and reviewed; publication pending",
+    "batch": 19,
+    "acceptanceRecord": "drafts/teaching-principles/batch-19-review.json",
+    "source": {
+      "commit": "42c482e8ea0659953c7326f284fb93f307eb1e47",
+      "treeHash": "d3dbe03222d261c79c7133f712d105d2dd3ac0faec2bcd7cd861d868fc19050e",
+      "gitDiffHash": "0d3c3e9efe00010fa2fe24004a55ac997f5b0d97b6ab6de2ab663fc532ff0f8a",
+      "fileCount": 5379,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "evidenceRevisions": {
+      "finalSource": {
+        "commit": "42c482e8ea0659953c7326f284fb93f307eb1e47",
+        "treeHash": "d3dbe03222d261c79c7133f712d105d2dd3ac0faec2bcd7cd861d868fc19050e",
+        "gitDiffHash": "0d3c3e9efe00010fa2fe24004a55ac997f5b0d97b6ab6de2ab663fc532ff0f8a",
+        "fileCount": 5379,
+        "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+      },
+      "carryForward": {
+        "fromSource": {
+          "commit": "42c482e8ea0659953c7326f284fb93f307eb1e47",
+          "treeHash": "8479f0d86e245209c0e7de5ee2c05dfa9decb1df654edb7f0a5d31631463553f",
+          "gitDiffHash": "612633d01c20f6d508e4b6578a1afa7f632269dad2f2d0043bdc9bd1f340c72b",
+          "fileCount": 5379,
+          "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+        },
+        "toSource": {
+          "commit": "42c482e8ea0659953c7326f284fb93f307eb1e47",
+          "treeHash": "d3dbe03222d261c79c7133f712d105d2dd3ac0faec2bcd7cd861d868fc19050e",
+          "gitDiffHash": "0d3c3e9efe00010fa2fe24004a55ac997f5b0d97b6ab6de2ab663fc532ff0f8a",
+          "fileCount": 5379,
+          "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+        },
+        "delta": [
+          {
+            "path": "src/components/experiments/MatterWaveLab.tsx",
+            "beforeSHA256": "db57ea04d7272240358fdb7b62b68fe03576f3ea7a9ab13d7afcbbd13b44651a",
+            "afterSHA256": "e267d6df46b150f137a4da0f6ed64b1bb28021949890ba876be99362ea8c7625"
+          },
+          {
+            "path": "src/components/experiments/MatterWaveLab.test.tsx",
+            "beforeSHA256": "6358492127bf35cc6ab6101e9374b98fdcb3852856aea1c84a01fdbd8e8800f7",
+            "afterSHA256": "cacc163b599303b89396e5a4d467780773746e03ad0e7409ed062ab67c21b24d"
+          }
+        ],
+        "unchangedProductFiles": 4758,
+        "productFileCount": 4760,
+        "fullSourceEntryCount": 5379,
+        "sourceProof": "Actual source03 full ordered hash map reproduces source03.treeHash; reversing only the two approved file hashes reproduces source02.treeHash. This is a reconstruction proof, not a claim that source02 reports ran on source03.",
+        "schema": "b19-source02-to-source03-v1",
+        "fromFrozenSource": {
+          "path": "artifacts/teaching-principles/batch-19-frozen-source-02.json",
+          "sha256": "80462d83ba5f585e42582e53fe3a651394910900dfda7816b123e897b63e96bf"
+        },
+        "fromFrozenProduct": {
+          "path": "artifacts/teaching-principles/batch-19-frozen-product-files-02.json",
+          "sha256": "e783ec9da0bd5bbdbed69ff453e7849578c06ddf9e2762fbee3ec51a8de2dcff"
+        },
+        "toFrozenSource": {
+          "path": "artifacts/teaching-principles/batch-19-frozen-source-03.json",
+          "sha256": "4424784ee0b7a7b1d646271c0b9b5869aa07f97dbbab122b71dcfdacf963e896"
+        },
+        "toFrozenProduct": {
+          "path": "artifacts/teaching-principles/batch-19-frozen-product-files-03.json",
+          "sha256": "61ad85a6e19ce9c5ceb701cd70658549875233c736bca0ff730418f3f33861ab"
+        },
+        "approvedChangeManifest": {
+          "path": "artifacts/teaching-principles/batch-19-explore-snapshot-proposal/manifest.json",
+          "sha256": "b933ebb00d743ef67259c142647de4c7361f1824101fa3b9876a77d38b00ab53"
+        },
+        "rootDecision": {
+          "path": "artifacts/teaching-principles/batch-19-root-carry-decision.json",
+          "sha256": "b057fe1e2b9ef46ae64f65cced669d6057633ef59b637b0355ecd2601ffce8cb"
+        },
+        "sourceDelta": {
+          "path": "artifacts/teaching-principles/batch-19-source-02-to-03-delta.json",
+          "sha256": "ab6097315f96765cb595910d38a8899b3c0fe68d818d696c2255727089fb77e6"
+        },
+        "carriedReports": [
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/keyframes/report.json",
+            "sha256": "95b1efbf627ad80db3d30e482b11ff03c55316a643e7bc958f5152a6daed3a9a"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/anchors/report.json",
+            "sha256": "d1e55af3a5239020fec96c8f7601ab6c412f74ea9ffdf35147465575a1a92c3e"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/entries/report.json",
+            "sha256": "1bd79b0bc0b568ceecde52b7142bb6e099c3b9d3df413adcb29d5c4bd92f177b"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/catalog/report.json",
+            "sha256": "fbed1a4c82a4b8bb3942bdbc7eaa18124b497ed42a4a002e63aabe1a4fd4e8ad"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/covers/report.json",
+            "sha256": "07bfc542845bb195d75e1c05af731467aa3b6acbe98333a0477c2e50e825cc7d"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/teaching/report.json",
+            "sha256": "8e38f48257403d8110cb845425c98dbe2f5f829091409caf917c68f09fdd1371"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-validation-02/faults/report.json",
+            "sha256": "50e1eb1b3a0a789a6646e2091519d7cfe910a5f112ee0dd9ad462bacb5d585fb"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-continuous-02/continuous/report.json",
+            "sha256": "c3d36efa6339398ebb8dce7c0b37d81832dbcd53bb78ef2542514ceb8f14af58"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-controls-02/chemistry/chem-sodium-alcohol/report.json",
+            "sha256": "cf2a13c73bd672bbe75d5b7d5d9a87e212f8ac9abe3b0260edfba4d2ea6fb566"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-controls-02/biology/bio-population-growth/report.json",
+            "sha256": "1e23758082500fed0dde837106086cc950faed4777577552701779ad88c69c44"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-controls-02/retained/dynamic-mass-lab/report.json",
+            "sha256": "16aa8d3e89fef1c4fcaa41aa7a58c85ae7573045c88ea88e5d244d0e2ab00825"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-final-controls-02/retained/balloon-drag-lab/report.json",
+            "sha256": "b764cc817dd99b3dadcd07d8b504559b1b77fa79c577a5eec4976e56c1644f6d"
+          }
+        ],
+        "carriedRootViews": [
+          {
+            "path": "artifacts/teaching-principles/batch-19-root-actual-views-02.json",
+            "sha256": "f19cb3c9d3d858eb3d188687aad0dda38cb0608c841837b92d99f17620ed339f"
+          },
+          {
+            "path": "artifacts/teaching-principles/batch-19-root-actual-extra-views-02.json",
+            "sha256": "225d0fc54158c9a2cca4fc293838d1a7d2466adb219b2c4970ba6aae51046fa8"
+          }
+        ],
+        "supersededFailure": {
+          "path": "artifacts/teaching-principles/batch-19-final-controls-02/physics/matter-wave-lab/report.json",
+          "sha256": "45fa34f55b177777e2edea830d3805fd186b8f21d9b14f4458c0aee4371d784f"
+        },
+        "replacementPass": {
+          "path": "artifacts/teaching-principles/batch-19-final-focused-03/physics/matter-wave-lab/report.json",
+          "sha256": "91fbff83f36d53e5bcfe3eff2f3ef2eb59efffa3ed917b458e7d075a50f1d08c"
+        },
+        "boundary": "source02 matrix evidence is explicitly carried by root after exact two-file proof; source03 physics controls and root views are fresh. Historical failure remains unchanged. No claim of a complete matrix rerun on source03."
+      },
+      "sceneNativeControls": [
+        {
+          "kind": "native-controls",
+          "count": 270,
+          "status": "passed",
+          "evidence": "artifacts/teaching-principles/batch-19-final-controls-02/chemistry/chem-sodium-alcohol/report.json",
+          "evidenceSHA256": "cf2a13c73bd672bbe75d5b7d5d9a87e212f8ac9abe3b0260edfba4d2ea6fb566",
+          "sourceRevision": "source02-carried",
+          "evidenceSource": {
+            "commit": "42c482e8ea0659953c7326f284fb93f307eb1e47",
+            "treeHash": "8479f0d86e245209c0e7de5ee2c05dfa9decb1df654edb7f0a5d31631463553f",
+            "gitDiffHash": "612633d01c20f6d508e4b6578a1afa7f632269dad2f2d0043bdc9bd1f340c72b",
+            "fileCount": 5379,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "scene": "chem-sodium-alcohol"
+        }
+      ]
+    },
+    "authorEvidenceScope": "Earlier candidate evidence remains dated evidence; the root batch record governs final integrated acceptance."
+  }
 }

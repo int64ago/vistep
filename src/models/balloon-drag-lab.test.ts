@@ -39,3 +39,22 @@ describe('textbook balloon data investigation', () => {
     expect(() => balloonFit(1, 0.05)).toThrow();
   });
 });
+import { balloonFilm } from './balloon-drag-lab';
+it('records stay frozen and invalid runtime fitting powers cannot manufacture another model', () => {
+  expect(Object.isFrozen(BALLOON_DATA)).toBe(true);
+  expect(BALLOON_DATA.every(Object.isFrozen)).toBe(true);
+  for (const p of [0, 3, NaN]) expect(() => balloonFit(p as 1)).toThrow();
+  for (const n of [NaN, Infinity]) expect(() => balloonFilm(0, n)).toThrow();
+});
+it('keeps the fit question before revealing candidates and their residual comparison', () => {
+  expect(balloonFilm(3, 5).showFits).toBe(false);
+  expect(balloonFilm(3, 12).showFits).toBe(true);
+  expect(balloonFilm(3, 10).reveal).toBe(false);
+  expect(balloonFilm(3, 20).reveal).toBe(true);
+  expect(balloonFilm(4, 24).buoyancy).toBe(0.012);
+  expect(balloonFit(1, 0.012).points[2].drag).toBeCloseTo(0.053);
+});
+
+it('rejects force-balance arithmetic overflow', () => {
+  expect(() => balloonBalance(Number.MAX_VALUE, 0, Number.MAX_VALUE)).toThrow();
+});

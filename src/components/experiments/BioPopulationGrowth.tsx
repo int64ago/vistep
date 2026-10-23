@@ -1,577 +1,921 @@
 import { useId, useState } from 'react';
 import { browserLocale } from '../../i18n';
+import { useShowcase } from '../lab/FilmContext';
+import { useSignalWidth } from '../lab/SignalFigure';
 import {
   binaryPopulation,
   logisticPopulation,
-  growthClamp,
+  growthClamp as clamp,
   chamberConcentration,
   yeastCells,
   inCountingSquare,
   flaskCells,
-  chamberFill,
   canopyClosure,
   canopyEvidence,
-  recordedMeans,
-  yeastExampleCounts,
+  foodShareFrame,
+  densityRates,
+  changedCapacity,
+  renewalCohort,
+  concentrationRecord,
+  observation,
+  practiceObservations,
+  nutrientPrediction,
+  populationDirector,
+  type CountObservation,
 } from '../../models/bio-population-growth';
-import { useShowcase } from '../lab/FilmContext';
-import { useSignalWidth } from '../lab/SignalFigure';
 import '../../styles/bio-population-growth.css';
+
+function Paramecium({
+  x,
+  y,
+  split = 0,
+  opacity = 1,
+  label,
+}: {
+  x: number;
+  y: number;
+  split?: number;
+  opacity?: number;
+  label?: string;
+}) {
+  return (
+    <g transform={`translate(${x} ${y})`} opacity={opacity}>
+      {[0, 1].map((j) => (
+        <g
+          key={j}
+          transform={`translate(${(j ? 1 : -1) * split * 13} 0)`}
+          opacity={j === 0 ? 1 : split}
+        >
+          <ellipse
+            rx={11 - 3 * split}
+            ry={21 - 5 * split}
+            fill="#c6d8af"
+            stroke="#6f8c60"
+            strokeWidth="1.4"
+          />
+          <ellipse cx="1" cy="-2" rx="3" ry="5" fill="#829b70" />
+          <path d="M5-9Q-3 0 5 9" fill="none" stroke="#94ad80" />
+          {[-12, -5, 3, 10].map((v, i) => (
+            <path key={i} d={`M-10 ${v}l-4-2M10 ${v}l4-2`} stroke="#829b70" />
+          ))}
+        </g>
+      ))}
+      {label && (
+        <text y="43" textAnchor="middle">
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+function Yeast({
+  x,
+  y,
+  bud = 0,
+  label,
+  dim = false,
+}: {
+  x: number;
+  y: number;
+  bud?: number;
+  label?: string;
+  dim?: boolean;
+}) {
+  return (
+    <g transform={`translate(${x} ${y})`} opacity={dim ? 0.32 : 1}>
+      <ellipse rx="7" ry="9" fill="#d3b985" stroke="#9e8052" />
+      <circle cx="-1" cy="1" r="2" fill="#a78b5d" />
+      {bud > 0 && (
+        <ellipse
+          cx={9 + 5 * bud}
+          cy={-7 - 2 * bud}
+          rx={7 * bud}
+          ry={9 * bud}
+          fill="#d3b985"
+          stroke="#9e8052"
+        />
+      )}
+      {label && (
+        <text y="31" textAnchor="middle">
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+function FoodShare({ w, p, crowded, en }: { w: number; p: number; crowded: boolean; en: boolean }) {
+  const n = crowded ? 12 : 3,
+    m = foodShareFrame(p, n, w);
+  return (
+    <svg
+      viewBox={`0 0 ${w} 222`}
+      role="img"
+      aria-label={
+        en
+          ? 'Same 24 food identities shared among different numbers of consumers'
+          : '同样24份供给由不同数量个体分享'
+      }
+      data-food-total={m.foods.length}
+      data-food-consumers={m.cells.length}
+    >
+      <text x={w / 2} y="23" textAnchor="middle">
+        24 {en ? 'food units' : '份供给'} · {m.cells.length} {en ? 'individuals' : '个体'}
+      </text>
+      <path d={`M${w * 0.4} 48v132`} stroke="#dce3d0" strokeDasharray="3 4" />
+      {m.cells.map((c) => (
+        <g key={c.id} data-consumer={c.id}>
+          <ellipse
+            cx={c.x}
+            cy={c.y}
+            rx={c.rx}
+            ry={c.ry}
+            fill={c.id === 'C1' ? '#d9e6e7' : '#d2dfbd'}
+            stroke={c.id === 'C1' ? '#628b94' : '#91a87a'}
+          />
+          <ellipse cx={c.x + 2} cy={c.y + c.ry - 4} rx="2" ry="3" fill="#a6b88f" />
+        </g>
+      ))}
+      {m.foods.map((f) => (
+        <circle
+          key={f.id}
+          data-food={f.id}
+          data-target={f.consumer}
+          cx={f.x}
+          cy={f.y}
+          r={f.id === 'F1' ? 3 : 2.5}
+          fill={f.id === 'F1' ? '#477d91' : '#b79753'}
+        />
+      ))}
+      <text x={w / 2} y="198" textAnchor="middle">
+        {en ? 'Mean share' : '平均份额'}: 24 ÷ {m.cells.length} ={' '}
+        {m.averageShare.toFixed(m.averageShare % 1 ? 1 : 0)}
+      </text>
+      <text x={w / 2} y="222" textAnchor="middle">
+        {en ? 'Allocation example; not rate data' : '分配示意；不是速率测量'}
+      </text>
+    </svg>
+  );
+}
+function RateView({ w, density, en }: { w: number; density: number; en: boolean }) {
+  const r = densityRates(density * 100, 100),
+    max = 2.3;
+  return (
+    <svg
+      viewBox={`0 0 ${w} 220`}
+      role="img"
+      aria-label={en ? 'Density changes the two expected rates' : '密度改变两种期望率'}
+    >
+      <text x={w / 2} y="24" textAnchor="middle">
+        {en ? 'Same environment' : '同一环境'} · N/K = {density.toFixed(1)}
+      </text>
+      <g transform={`translate(${w * 0.2} 71)`}>
+        {Array.from({ length: Math.round(3 + density * 14) }, (_, i) => (
+          <ellipse
+            key={i}
+            cx={((i % 5) - 2) * 13}
+            cy={Math.floor(i / 5) * 14}
+            rx="4"
+            ry="6"
+            fill="#9bb287"
+          />
+        ))}
+      </g>
+      {[
+        ['出生', 'Births', r.birthRate, '#7d9b6c'],
+        ['死亡', 'Deaths', r.deathRate, '#b4947b'],
+      ].map((a, i) => (
+        <g key={i}>
+          <text x={w * 0.42} y={68 + i * 56}>
+            {en ? a[1] : a[0]}
+          </text>
+          <path
+            d={`M${w * 0.42} ${83 + i * 56}h${(Number(a[2]) / max) * (w * 0.51)}`}
+            stroke={String(a[3])}
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
+          <text x={w - 8} y={68 + i * 56} textAnchor="end">
+            {Number(a[2]).toFixed(2)}
+          </text>
+        </g>
+      ))}
+      <text x={w / 2} y="180" textAnchor="middle">
+        {en ? 'Expected per individual / day' : '每个个体每天的期望率'}
+      </text>
+      <text x={w / 2} y="210" textAnchor="middle">
+        {Math.abs(r.birthRate - r.deathRate) < 1e-9
+          ? en
+            ? 'Births = deaths; net = 0'
+            : '出生 = 死亡；净增为 0'
+          : r.birthRate > r.deathRate
+            ? en
+              ? 'Births exceed deaths'
+              : '出生多于死亡'
+            : en
+              ? 'Deaths exceed births'
+              : '死亡多于出生'}
+      </text>
+    </svg>
+  );
+}
+function LogisticPlot({
+  w,
+  k,
+  initial,
+  days,
+  change = false,
+  reveal = true,
+  en,
+}: {
+  w: number;
+  k: number;
+  initial: number;
+  days: number;
+  change?: boolean;
+  reveal?: boolean;
+  en: boolean;
+}) {
+  const max = 700,
+    px = (t: number) => 38 + (t * (w - 58)) / 9,
+    py = (n: number) => 179 - (n / max) * 140;
+  const state = change
+    ? changedCapacity(days, k, 5, initial)
+    : logisticPopulation(days, initial, k);
+  return (
+    <svg
+      viewBox={`0 0 ${w} 224`}
+      role="img"
+      aria-label={en ? 'Expected population under a stated rate model' : '指定速率模型的期望数量'}
+      data-population={state.value}
+      data-capacity={k}
+    >
+      <text x="38" y="22">
+        {en ? 'Expected count' : '期望数量'} · N ≈ {state.value.toFixed(0)}
+      </text>
+      <path d={`M38 37v142h${w - 58}`} fill="none" stroke="#a6b497" />
+      {[0, 375, 600].map((n) => (
+        <g key={n}>
+          <text x="32" y={py(n) + 5} textAnchor="end">
+            {n}
+          </text>
+          <path d={`M38 ${py(n)}H${w - 20}`} stroke="#dde3d3" />
+        </g>
+      ))}
+      <path
+        d={Array.from({ length: 101 }, (_, i) => {
+          const t = (i / 100) * days,
+            n = change
+              ? changedCapacity(t, k, 5, initial).value
+              : logisticPopulation(t, initial, k).value;
+          return `${i ? 'L' : 'M'}${px(t)} ${py(n)}`;
+        }).join(' ')}
+        fill="none"
+        stroke="#718d60"
+        strokeWidth="3"
+      />
+      <circle cx={px(days)} cy={py(state.value)} r="5" fill="#718d60" />
+      {change && (
+        <>
+          <path d={`M${px(5)} 40v139`} stroke="#bca16d" strokeDasharray="4 4" />
+          <text x={w - 21} y="50" textAnchor="end">
+            K: 375 → {reveal ? k : '?'}
+          </text>
+        </>
+      )}
+      {[0, 3, 6, 9].map((t) => (
+        <text key={t} x={px(t)} y="201" textAnchor="middle">
+          {t}
+        </text>
+      ))}
+      <text x={w - 20} y="223" textAnchor="end">
+        {en ? 'Model days · not observations' : '模型天数 · 非测量点'}
+      </text>
+    </svg>
+  );
+}
+function Renewal({ w, p, density, en }: { w: number; p: number; density: number; en: boolean }) {
+  const m = renewalCohort(p, density);
+  return (
+    <svg
+      viewBox={`0 0 ${w} 216`}
+      role="img"
+      aria-label={
+        en
+          ? 'Persistent individuals in one possible renewal interval'
+          : '一个可能更新片段中的个体身份'
+      }
+      data-cohort-count={m.count}
+    >
+      <text x={w / 2} y="24" textAnchor="middle">
+        {en ? 'One possible short interval' : '一个可能的短时片段'}
+      </text>
+      {m.events.map((e, i) => (
+        <g key={e.parent} data-parent={e.parent} data-event={e.type}>
+          <Paramecium
+            x={(w * (i + 0.5)) / 4}
+            y={100}
+            split={e.type === 'birth' ? e.phase : 0}
+            opacity={e.type === 'death' ? 1 - e.phase : 1}
+          />
+          <text x={(w * (i + 0.5)) / 4} y="159" textAnchor="middle">
+            {e.type === 'birth' && e.phase === 1 ? `${i + 1}a · ${i + 1}b` : e.parent}
+          </text>
+          {e.type === 'death' && e.phase === 1 && (
+            <path d={`M${(w * (i + 0.5)) / 4 - 12} 91l24 18m-24 0l24-18`} stroke="#b4947b" />
+          )}
+        </g>
+      ))}
+      <text x={w / 2} y="204" textAnchor="middle">
+        4 + {m.births} − {m.deaths} = {m.count}
+      </text>
+    </svg>
+  );
+}
 export default function BioPopulationGrowth() {
   const film = useShowcase(),
     { host, width: w, compact } = useSignalWidth(),
     id = useId(),
-    s = (z: string, e: string) => (browserLocale() === 'en' ? e : z);
-  const variants = [
-    'bio-elective-2-007-1',
-    'bio-elective-2-009-1',
-    'bio-elective-2-011-1',
-    'bio-elective-2-013-1',
-  ];
-  const [chosen, setChosen] = useState(Math.max(0, variants.indexOf(film.variant ?? ''))),
-    [phase, setPhase] = useState(1),
-    [view, setView] = useState(0),
-    [capacity, setCapacity] = useState(375),
-    [day, setDay] = useState(3),
+    en = browserLocale() === 'en';
+  const s = (zh: string, english: string) => (en ? english : zh);
+  const [selected, setSelected] = useState<number | null>(null),
+    [times, setTimes] = useState<Record<number, number>>({});
+  const [k, setK] = useState<number | null>(null),
+    [initial, setInitial] = useState<number | null>(null),
+    [cause, setCause] = useState<'nutrient' | 'other'>('nutrient');
+  const [day, setDay] = useState(3),
     [replicate, setReplicate] = useState(1),
     [dilution, setDilution] = useState(10),
-    [own, setOwn] = useState(false),
-    [records, setRecords] = useState<(number | null)[][]>(
-      Array.from({ length: 8 }, () => [null, null, null]),
-    ),
-    [species, setSpecies] = useState(0);
-  const mode = film.watch
-    ? film.chapter < 2
-      ? 0
-      : film.chapter < 4
-        ? 1
-        : film.chapter < 8
-          ? 2
-          : 3
-    : chosen;
-  const local = film.watch ? film.chapter - [0, 2, 4, 8][mode] : Math.min(view, [1, 1, 3, 1][mode]),
-    p = film.watch ? film.chapterProgress : phase;
-  const age = Math.floor(growthClamp(p / 0.78) * 5),
-    days = film.watch ? Math.min(7, Math.floor(p * 9)) : day,
-    currentDay = film.watch ? 3 : day,
-    rep = film.watch ? 1 : replicate,
-    dil = film.watch ? 10 : dilution;
-  const cells = yeastCells(currentDay, rep),
-    count = cells.filter(inCountingSquare).length,
-    concentration = chamberConcentration(count, dil)!,
-    real = !film.watch && own;
-  const means = recordedMeans(real ? records : yeastExampleCounts.map((n) => [n - 1, n, n + 1]));
-  const chartMax = Math.max(
-    100,
-    ...means.map((row) =>
-      row.mean === null
-        ? 0
-        : Math.ceil(chamberConcentration(row.mean, dil)!.cellsPerMl / 1e6 / 50) * 50,
-    ),
+    [own, setOwn] = useState(false);
+  const [records, setRecords] = useState<(CountObservation | null)[][]>(
+    Array.from({ length: 8 }, () => [null, null, null]),
   );
-  const k = film.watch ? 375 : capacity,
-    lx = (t: number) => 44 + (t * (w - 66)) / 7,
-    ly = (n: number) => 237 - (n / 500) * 188;
-  const titles = [
-    s('从分裂规则到预测', 'From division to prediction'),
-    s('历史观察与理想模型', 'Observation and model'),
-    s('取样 · 计数 · 记录', 'Sample · count · record'),
-    s('从调查资料判断', 'Read survey evidence'),
+  const [species, setSpecies] = useState<number | null>(null);
+  const chapter = film.watch ? film.chapter : (selected ?? film.chapter);
+  const inherit = selected === null || selected === film.chapter;
+  const localDuration = Math.max(
+    0.1,
+    (film.chapters[chapter + 1]?.at ?? film.duration) - (film.chapters[chapter]?.at ?? 0),
+  );
+  const time = film.watch
+    ? film.chapterTime
+    : (times[chapter] ?? (inherit ? film.chapterTime : localDuration * 0.7));
+  const d = populationDirector(chapter, time, localDuration, en ? 'en' : 'zh');
+  const activeK = film.watch ? d.capacity : (k ?? (inherit ? d.capacity : 375)),
+    activeInitial = film.watch ? 5 : (initial ?? 5);
+  const activeSpecies = film.watch ? d.species : (species ?? (inherit ? d.species : 0));
+  const title = [
+    s('一代怎样变成下一代？', 'How does one generation become the next?'),
+    s('倍增能一直持续吗？', 'Can doubling continue forever?'),
+    s('增长为什么慢下来？', 'Why does growth slow?'),
+    s('数量稳定，生命活动停止了吗？', 'Does a stable count mean no turnover?'),
+    s('一滴能代表整瓶吗？', 'Can one drop represent a flask?'),
+    s('为什么必须知道室深？', 'Why does chamber depth matter?'),
+    s('看到多少，才能换算多少？', 'What does a counted field represent?'),
+    s('曲线能告诉我们原因吗？', 'Does the curve reveal its cause?'),
+    s('三种植物回答相同吗？', 'Do three species respond alike?'),
+    s('共同变化就是因果吗？', 'Does association establish cause?'),
   ];
-  const yeast = (x: number, y: number, key: number, include = true) => (
-    <g key={key} opacity={include ? 1 : 0.35}>
-      <ellipse
-        cx={x}
-        cy={y}
-        rx="4"
-        ry="5.5"
-        fill={include ? '#c7ad7b' : '#d6cbbb'}
-        stroke="#927d57"
-        strokeWidth="1"
-      />
-      <circle cx={x - 0.8} cy={y} r="1.2" fill="#a18c68" />
-    </g>
-  );
-  const graphAxes = (max: number, label: string) => (
-    <>
-      <path d={`M44 45v192h${w - 66}`} fill="none" stroke="#b2bba6" />
-      {[0, max / 2, max].map((n) => (
-        <g key={n}>
-          <path d={`M40 ${237 - (n / max) * 188}h${w - 62}`} stroke="#dce2d3" />
-          <text x="36" y={242 - (n / max) * 188} textAnchor="end">
-            {n >= 1000 ? n.toExponential(0) : n}
-          </text>
-        </g>
-      ))}
-      <text x="44" y="26">
-        {label}
-      </text>
-    </>
-  );
+  const currentDay = film.watch ? 3 : day,
+    rep = film.watch ? 1 : replicate,
+    cells = yeastCells(currentDay, rep),
+    count = cells.filter(inCountingSquare).length;
+  const c = chamberConcentration(count, 10)!;
+  const rows = concentrationRecord(!film.watch && own ? records : practiceObservations);
+  const chartMax = Math.max(100, ...rows.map((r) => Math.ceil((r.mean ?? 0) / 1e6 / 50) * 50));
+  const renewalState = renewalCohort(d.renewal, 375 / activeK);
+  const renewalNet = renewalState.births - renewalState.deaths;
+  const note =
+    chapter === 3
+      ? d.shot === 'curve'
+        ? s('曲线描述变化，解释仍需检验。', 'Describe first; test the explanation.')
+        : d.shot === 'food'
+          ? s('同样供给，更多个体分享。', 'Same supply, more consumers.')
+          : d.shot === 'rates'
+            ? s('密度改变人均出生与死亡。', 'Density changes per-capita rates.')
+            : d.shot === 'renewal'
+              ? renewalNet === 0
+                ? s('本段净增为 0，继续追踪个体。', 'Net change is 0; follow the individuals.')
+                : renewalNet > 0
+                  ? s('本段出生多于死亡。', 'Births exceed deaths in this interval.')
+                  : s('本段死亡多于出生。', 'Deaths exceed births in this interval.')
+              : s('环境先改变速率，数量连续。', 'Rates change first; count stays continuous.')
+      : chapter === 7
+        ? d.shot === 'record'
+          ? s('这些是计数练习数据。', 'These are illustrative count records.')
+          : d.shot === 'split'
+            ? s('同源分样，等量加入。', 'Same culture; equal additions.')
+            : cause === 'nutrient' || film.watch
+              ? s('营养限制假说：补给应恢复出芽。', 'If nutrients limit growth: more budding.')
+              : s('若另有抑制，补营养未必恢复。', 'Other inhibition may persist after feeding.')
+        : chapter === 2
+          ? s('教材端点，非补造测量。', 'Textbook endpoints; no invented data.')
+          : chapter === 6
+            ? s('练习样品：稀释十倍。', 'Practice sample: diluted ×10.')
+            : chapter === 8
+              ? s('调查关联，尚非因果。', 'Survey association, not causation.')
+              : chapter === 9
+                ? s('用对照区分替代解释。', 'Use controls to distinguish causes.')
+                : '';
   return (
-    <div className="bio-growth" data-watch={film.watch} ref={host}>
-      <div className="bio-growth-head">{titles[mode]}</div>
-      {mode === 0 && local === 0 && (
-        <svg viewBox={`0 0 ${w} 294`} role="img" aria-label={titles[0]}>
-          <text x={w / 2} y="25" textAnchor="middle">
-            {s('谱系示意 · 每代20 min', 'Lineage · 20 min / generation')}
-          </text>
-          {Array.from({ length: 6 }, (_, g) => {
-            const n = 2 ** g,
-              y = 57 + g * 35;
-            return (
-              <g key={g} opacity={g <= age ? 1 : 0.12}>
-                {Array.from({ length: n }, (_, j) => {
-                  const x = 42 + ((j + 0.5) * (w - 80)) / n;
-                  return (
-                    <g key={j}>
-                      {g > 0 && (
-                        <path
-                          d={`M${42 + ((Math.floor(j / 2) + 0.5) * (w - 80)) / (n / 2)} ${y - 28}L${x} ${y - 5}`}
-                          stroke="#acb69c"
-                          fill="none"
+    <div
+      className="bpg19"
+      ref={host}
+      data-watch={film.watch}
+      data-chapter={chapter}
+      data-shot={d.shot}
+    >
+      {!film.watch && <div className="bpg19-heading">{title[chapter]}</div>}
+      <div className="bpg19-scene">
+        {chapter === 0 && (
+          <svg
+            viewBox={`0 0 ${w} 226`}
+            role="img"
+            aria-label={s('细菌固定谱系示意', 'Fixed bacterial lineage')}
+          >
+            <text x={w / 2} y="21" textAnchor="middle">
+              {s('每代 20 min；无死亡', '20 min per generation; no deaths')}
+            </text>
+            {Array.from({ length: 6 }, (_, g) => {
+              const n = 2 ** g,
+                age = d.lineageGeneration,
+                y = 49 + g * 29;
+              return (
+                <g key={g} opacity={g <= age ? 1 : 0.12}>
+                  {Array.from({ length: n }, (_, j) => {
+                    const x = 22 + ((j + 0.5) * (w - 62)) / n;
+                    return (
+                      <g key={j} data-lineage={`${g}-${j}`}>
+                        {g > 0 && (
+                          <path
+                            d={`M${22 + ((Math.floor(j / 2) + 0.5) * (w - 62)) / (n / 2)} ${y - 23}L${x} ${y - 5}`}
+                            stroke="#b7c6a9"
+                            fill="none"
+                          />
+                        )}
+                        <ellipse
+                          cx={x}
+                          cy={y}
+                          rx={Math.min(8, ((w - 62) / n) * 0.32)}
+                          ry="5"
+                          fill={g === age ? '#789b62' : '#c6d4b8'}
                         />
-                      )}
+                      </g>
+                    );
+                  })}
+                  <text x={w - 4} y={y + 5} textAnchor="end">
+                    {n}
+                  </text>
+                </g>
+              );
+            })}
+            <text x={w / 2} y="223" textAnchor="middle">
+              {s('亮色：当前一代', 'Highlighted: current generation')}
+            </text>
+          </svg>
+        )}
+        {chapter === 1 && (
+          <svg viewBox={`0 0 ${w} 226`} role="img" aria-label={title[1]}>
+            <text x={w / 2} y="26" textAnchor="middle">
+              N = N₀ × 2ⁿ
+            </text>
+            {[0, 1, 2, 3, 4].map((g) => (
+              <g key={g} opacity={g <= d.exponentGeneration ? 1 : 0.15}>
+                <text x="12" y={62 + g * 26}>
+                  {20 * g} min
+                </text>
+                <path
+                  d={`M${w * 0.35} ${57 + g * 26}h${(2 ** g / 16) * w * 0.42}`}
+                  stroke="#8da77a"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                />
+                <text x={w - 14} y={62 + g * 26} textAnchor="end">
+                  {binaryPopulation(g * 20).population}
+                </text>
+              </g>
+            ))}
+            <text x={w / 2} y="203" textAnchor="middle">
+              {d.extrapolationReveal ? '72 h → 2²¹⁶ ≈ 1.05 × 10⁶⁵' : '72 h → ?'}
+            </text>
+            <text x={w / 2} y="225" textAnchor="middle">
+              {s('假设外推，仍须检验', 'Extrapolation still needs testing')}
+            </text>
+          </svg>
+        )}
+        {chapter === 2 && (
+          <svg
+            viewBox={`0 0 ${w} 222`}
+            role="img"
+            aria-label={s('高斯原记录的教材端点', 'Textbook endpoints of Gause observations')}
+          >
+            {[5, 375].map((n, j) => {
+              const x = w * (j ? 0.74 : 0.26),
+                vw = Math.min(210, w * 0.43);
+              return (
+                <g key={j} opacity={j ? d.lateObservation : 1}>
+                  <text x={x} y="24" textAnchor="middle">
+                    {j ? s('约第 5 天后', 'After ~day 5') : s('初始', 'Initially')}
+                  </text>
+                  <path
+                    d={`M${x - vw / 2} 43v112q0 13 13 13h${vw - 26}q13 0 13-13V43`}
+                    fill="#e8eedb"
+                    stroke="#a2b290"
+                  />
+                  {Array.from({ length: n }, (_, i) => (
+                    <ellipse
+                      key={i}
+                      cx={
+                        j
+                          ? x - vw / 2 + 7 + ((i % 25) * (vw - 14)) / 24
+                          : x + (i % 2 ? 1 : -1) * vw * 0.18
+                      }
+                      cy={j ? 55 + Math.floor(i / 25) * 7 : 58 + i * 20}
+                      rx={j ? 1.2 : 5}
+                      ry={j ? 2 : 9}
+                      fill="#8ca471"
+                    />
+                  ))}
+                  <text x={x} y="195" textAnchor="middle">
+                    {j ? '≈375' : '5'}
+                  </text>
+                </g>
+              );
+            })}
+            <text x={w / 2} y="221" textAnchor="middle">
+              0.5 mL
+            </text>
+          </svg>
+        )}
+        {chapter === 3 &&
+          (d.shot === 'curve' ? (
+            <LogisticPlot w={w} k={activeK} initial={activeInitial} days={d.growthDay} en={en} />
+          ) : d.shot === 'food' ? (
+            <FoodShare w={w} p={d.foodProgress} crowded={d.foodCrowded} en={en} />
+          ) : d.shot === 'rates' ? (
+            <RateView w={w} density={(375 * d.rateDensity) / activeK} en={en} />
+          ) : d.shot === 'renewal' ? (
+            <Renewal w={w} p={d.renewal} density={375 / activeK} en={en} />
+          ) : (
+            <LogisticPlot
+              w={w}
+              k={activeK}
+              initial={activeInitial}
+              days={5 + d.prediction * 4}
+              change
+              reveal={d.reveal}
+              en={en}
+            />
+          ))}
+        {chapter === 4 && (
+          <svg viewBox={`0 0 ${w} 225`} role="img" aria-label={title[4]}>
+            <text x={w / 2} y="23" textAnchor="middle">
+              10 mL · {s('32 个示踪标记', '32 selected tracers')}
+            </text>
+            <g transform={`translate(${w / 2} -37)`}>
+              <path
+                d="M-16 66v39L-58 240q0 10 12 10h92q12 0 12-10L16 105V66"
+                fill="#eef2e5"
+                stroke="#a1b393"
+                strokeWidth="2"
+              />
+              <path d="M-29.85 150H29.85L56 235q3 12-10 12h-92q-13 0-10-12Z" fill="#dbe6bc" />
+              {flaskCells(d.mixing).map((v) => (
+                <g key={v.id} data-tracer={v.id}>
+                  <ellipse cx={v.x} cy={v.y} rx="3.5" ry="5" fill="#baa675" />
+                </g>
+              ))}
+            </g>
+          </svg>
+        )}
+        {chapter === 5 && (
+          <svg viewBox={`0 0 ${w} 225`} role="img" aria-label={title[5]}>
+            <defs>
+              <linearGradient id={`${id}-glass`} x2="0" y2="1">
+                <stop stopColor="#eef3ed" />
+                <stop offset="1" stopColor="#bdcdbf" />
+              </linearGradient>
+            </defs>
+            <text x={w / 2} y="23" textAnchor="middle">
+              {s('侧面剖视 · 毛细充液', 'Side section · capillary filling')}
+            </text>
+            <rect x="24" y="146" width={w - 48} height="27" rx="5" fill={`url(#${id}-glass)`} />
+            <rect x="56" y="110" width={w - 86} height="16" rx="3" fill={`url(#${id}-glass)`} />
+            <path d={`M${w - 30} 126h-20v20h20`} fill="#bdcec1" />
+            <rect x="56" y="126" width={(w - 106) * d.fill} height="20" fill="#d5d9a0" />
+            <path d="M44 39h12v36l-6 23-6-23Z" fill="#e1e9df" stroke="#98ae98" />
+            <path
+              d={`M50 ${99 + d.drop * 20}q-8 10 0 10q8 0 0-10`}
+              fill="#b7c68e"
+              opacity={time < 3.8 ? 1 : 0}
+            />
+            <path d={`M${w - 15} 126v20m-4-20h8m-8 20h8`} stroke="#8c9f89" />
+            <text x={w / 2} y="197" textAnchor="middle">
+              {s('室深', 'Depth')} 0.1 mm
+            </text>
+            <text x={w / 2} y="224" textAnchor="middle">
+              {s('盖片先就位', 'Coverslip in place first')}
+            </text>
+          </svg>
+        )}
+        {chapter === 6 && (
+          <div className="bpg19-count">
+            <svg viewBox={`0 0 ${w} 154`} role="img" aria-label={title[6]}>
+              <text x={w / 2} y="22" textAnchor="middle">
+                {s('第', 'Day ')}
+                {currentDay}
+                {s('天 · 重复', ' · repeat ')}
+                {rep + 1}
+              </text>
+              {(() => {
+                const size = 105,
+                  x = (w - size) / 2,
+                  y = 35;
+                return (
+                  <>
+                    <rect
+                      x={x - 12}
+                      y={y - 12}
+                      width={size + 24}
+                      height={size + 24}
+                      rx="15"
+                      fill="#f0eddf"
+                    />
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <path
+                        key={i}
+                        d={`M${x + (i * size) / 4} ${y}v${size}M${x} ${y + (i * size) / 4}h${size}`}
+                        stroke={i === 0 ? '#879b6c' : '#cbc6b0'}
+                        strokeWidth={i === 0 ? 2 : 1}
+                      />
+                    ))}
+                    {cells.map((v) => (
                       <ellipse
-                        cx={x}
-                        cy={y}
-                        rx={Math.min(8, ((w - 80) / n) * 0.3)}
+                        key={v.id}
+                        data-cell-id={v.id}
+                        data-counted={inCountingSquare(v)}
+                        cx={x + v.x * size}
+                        cy={y + v.y * size}
+                        rx="3.5"
                         ry="5"
-                        fill={g === age ? '#8ba47b' : '#b9c6a9'}
+                        fill="#bea16f"
+                        opacity={inCountingSquare(v) ? 1 : 0.27}
+                      />
+                    ))}
+                  </>
+                );
+              })()}
+            </svg>
+            <div
+              className="bpg19-equation"
+              style={{ visibility: d.countVolume ? 'visible' : 'hidden' }}
+            >
+              0.2 × 0.2 × 0.1 mm³
+            </div>
+            <div
+              className="bpg19-equation"
+              style={{ visibility: d.countConversion ? 'visible' : 'hidden' }}
+              data-count={count}
+            >
+              {count} × 10 ÷ (4 × 10⁻⁶ mL)
+            </div>
+            <div
+              className="bpg19-equation"
+              style={{ visibility: d.countResult ? 'visible' : 'hidden' }}
+            >
+              {(c.cellsPerMl / 1e6).toFixed(1)} × 10⁶ {s('个/mL', 'cells/mL')}
+            </div>
+          </div>
+        )}
+        {chapter === 7 && d.shot === 'record' && (
+          <svg
+            viewBox={`0 0 ${w} 224`}
+            role="img"
+            aria-label={s('每次记录保留自己的稀释倍数', 'Each observation keeps its own dilution')}
+          >
+            <text x="36" y="22">
+              10⁶ {s('个/mL', 'cells/mL')}
+            </text>
+            <path d={`M36 38v139h${w - 51}`} fill="none" stroke="#a9b599" />
+            {[0, chartMax / 2, chartMax].map((v) => (
+              <text key={v} x="30" y={182 - (v / chartMax) * 125} textAnchor="end">
+                {v > 999 ? v.toExponential(0) : v}
+              </text>
+            ))}
+            {rows.map((r, i) => {
+              const x = 36 + (i * (w - 51)) / 7,
+                y = 177 - ((r.mean ?? 0) / 1e6 / chartMax) * 125;
+              return (
+                <g
+                  key={i}
+                  data-day={i}
+                  data-mean={r.mean ?? 'missing'}
+                  data-repeats={r.n}
+                  opacity={film.watch && i > d.recordDay ? 0 : 1}
+                >
+                  {r.mean !== null && (
+                    <>
+                      <path d={`M${x} 177V${y}`} stroke="#ced5bd" />
+                      <circle cx={x} cy={y} r="5" fill="#8ba572" />
+                    </>
+                  )}
+                  <text x={x} y="199" textAnchor="middle">
+                    {i}
+                  </text>
+                </g>
+              );
+            })}
+            <text x={w - 10} y="223" textAnchor="end">
+              {!film.watch && own
+                ? s('天 · 输入记录', 'days · entered records')
+                : s('天；每个点 3 次重复', 'days; 3 repeats per example')}
+            </text>
+          </svg>
+        )}
+        {chapter === 7 && d.shot !== 'record' && (
+          <svg
+            viewBox={`0 0 ${w} 222`}
+            role="img"
+            aria-label={s(
+              '同源分样的条件预测，不是测得结果',
+              'Conditional prediction for split samples, not measured results',
+            )}
+          >
+            <text x={w / 2} y="22" textAnchor="middle">
+              {s('同源分样 · 条件预测', 'Split samples · prediction')}
+            </text>
+            {[false, true].map((fed, j) => {
+              const x = w * (j ? 0.75 : 0.25),
+                m = nutrientPrediction(fed, film.watch ? 'nutrient' : cause, d.prediction);
+              return (
+                <g key={j} data-fed={fed} data-expected-count={m.count}>
+                  <path
+                    d={`M${x - w * 0.21} 46v115q0 12 12 12h${w * 0.42 - 24}q12 0 12-12V46`}
+                    fill="#efeddd"
+                    stroke="#aeb795"
+                  />
+                  <path d={`M${x - w * 0.21 + 3} 74h${w * 0.42 - 6}`} stroke="#c4ccaf" />
+                  {m.events.map((e, i) => (
+                    <g key={e.id} data-yeast={e.id}>
+                      <Yeast
+                        x={x + (i % 2 ? 1 : -1) * w * 0.068}
+                        y={99 + Math.floor(i / 2) * 39}
+                        bud={e.bud}
                       />
                     </g>
-                  );
-                })}
-                <text x={w - 12} y={y + 5} textAnchor="end">
-                  {n}
-                </text>
-              </g>
-            );
-          })}
-          <text x={w / 2} y="279" textAnchor="middle">
-            {s('亮色为当前一代', 'Highlighted = current generation')}
-          </text>
-        </svg>
-      )}
-      {mode === 0 && local === 1 && (
-        <svg
-          viewBox={`0 0 ${w} 285`}
-          role="img"
-          aria-label={s('离散倍增预测', 'Discrete doubling prediction')}
-        >
-          <text x={w / 2} y="33" textAnchor="middle">
-            N = N₀ × 2ⁿ
-          </text>
-          {[0, 1, 2, 3, 4].map((g) => (
-            <g key={g} opacity={g / 5 <= p ? 1 : 0.2}>
-              <text x={w * 0.24} y={79 + g * 31} textAnchor="middle">
-                {g * 20} min
-              </text>
-              <path
-                d={`M${w * 0.37} ${74 + g * 31}h${Math.max(2, (2 ** g * (w * 0.32)) / 16)}`}
-                stroke="#8da77a"
-                strokeWidth="10"
-                strokeLinecap="round"
-              />
-              <text x={w * 0.83} y={79 + g * 31} textAnchor="end">
-                {binaryPopulation(g * 20).population}
-              </text>
-            </g>
-          ))}
-          <text x={w / 2} y="250" textAnchor="middle">
-            72 h → 2²¹⁶ ≈ 1.05 × 10⁶⁵
-          </text>
-          <text x={w / 2} y="300" textAnchor="middle">
-            {s('假设推演，仍须验证', 'Prediction still needs testing')}
-          </text>
-        </svg>
-      )}
-      {mode === 1 && local === 0 && (
-        <svg
-          viewBox={`0 0 ${w} 288`}
-          role="img"
-          aria-label={s('高斯培养证据重建', 'Reconstructed Gause culture evidence')}
-        >
-          {[5, 375].map((n, j) => {
-            const x = w * (j ? 0.73 : 0.27),
-              vw = Math.min(170, w * 0.39);
-            return (
-              <g key={j} opacity={j === 0 ? 1 : growthClamp(p / 0.45)}>
-                <text x={x} y="31" textAnchor="middle">
-                  {j ? s('约第5天后', 'After ~day 5') : s('开始', 'Start')}
-                </text>
-                <path
-                  d={`M${x - vw / 2} 65v145q0 14 14 14h${vw - 28}q14 0 14-14V65`}
-                  fill="#edf0df"
-                  stroke="#afbda4"
-                  strokeWidth="2"
-                />
-                <path
-                  d={`M${x - vw / 2 + 2} 87h${vw - 4}v122q0 12-12 12h${-(vw - 28)}q-12 0-12-12Z`}
-                  fill="#dbe6d0"
-                />
-                {Array.from({ length: n }, (_, i) => (
-                  <ellipse
-                    key={i}
-                    cx={
-                      j
-                        ? x - vw / 2 + 7 + ((i % 25) * (vw - 14)) / 24
-                        : x + (i % 2 ? 1 : -1) * vw * 0.17
-                    }
-                    cy={j ? 95 + Math.floor(i / 25) * 7.8 : 115 + i * 18}
-                    rx={j ? 1.35 : 6}
-                    ry={j ? 2.6 : 12}
-                    fill="#8d9f72"
-                    transform={
-                      j
-                        ? undefined
-                        : `rotate(${i * 19 - 40} ${x + (i % 2 ? 1 : -1) * vw * 0.17} ${115 + i * 18})`
-                    }
-                  />
-                ))}
-                <text x={x} y="250" textAnchor="middle">
-                  {j ? '≈375' : 5}
-                  {s('个', ' cells')}
-                </text>
-              </g>
-            );
-          })}
-          <text x={w / 2} y="280" textAnchor="middle">
-            {s('0.5 mL · 教材证据重建', '0.5 mL · textbook reconstruction')}
-          </text>
-        </svg>
-      )}
-      {mode === 1 && local === 1 && (
-        <svg
-          viewBox={`0 0 ${w} 285`}
-          role="img"
-          aria-label={s('独立的逻辑斯谛模型', 'Separate logistic model')}
-        >
-          {graphAxes(500, s('数量 / 个（模型）', 'Count (model)'))}
-          <path d={`M44 ${ly(k)}H${w - 22}`} stroke="#c3ac70" strokeDasharray="5 5" />
-          <text x={w - 25} y={ly(k) - 8} textAnchor="end">
-            K = {k}
-          </text>
-          <path
-            d={Array.from({ length: 101 }, (_, i) => {
-              const t = (i / 100) * 7 * growthClamp(p / 0.8);
-              return `${i ? 'L' : 'M'}${lx(t)},${ly(logisticPopulation(t, 5, k).value)}`;
-            }).join(' ')}
-            fill="none"
-            stroke="#82996f"
-            strokeWidth="3"
-          />
-          {[0, 2, 4, 6].map((t) => (
-            <text key={t} x={lx(t)} y="261" textAnchor="middle">
-              {t}
+                  ))}
+                  <text x={x} y="199" textAnchor="middle">
+                    {fed ? s('补营养', 'Nutrient') : s('等量对照', 'Control')}
+                  </text>
+                </g>
+              );
+            })}
+            <text x={w / 2} y="222" textAnchor="middle">
+              {s('比较出芽/活性，不能只看总数', 'Compare budding or viability')}
             </text>
-          ))}
-          <text x={w - 12} y="281" textAnchor="end">
-            {s('天 · 非原始测量点', 'days · illustrative model')}
-          </text>
-        </svg>
-      )}
-      {mode === 2 && local === 0 && (
-        <svg
-          viewBox={`0 0 ${w} 288`}
-          role="img"
-          aria-label={s('取样前轻摇培养液', 'Mix culture before sampling')}
-        >
-          <text x={w / 2} y="30" textAnchor="middle">
-            {s('10 mL 培养液 · 固定示踪细胞', '10 mL culture · fixed cell tracers')}
-          </text>
-          <g transform={`translate(${w / 2} 0)`}>
-            <path
-              d="M-16 66v39L-58 240q0 10 12 10h92q12 0 12-10L16 105V66"
-              stroke="#a0b39c"
-              strokeWidth="2"
-              fill="#eff3e7"
-            />
-            <path d="M-29.85 150H29.85L56 235q3 12-10 12h-92q-13 0-10-12Z" fill="#dbe6bc" />
-            {flaskCells(growthClamp(p / 0.7)).map((c) => yeast(c.x, c.y, c.id))}
-            <path d="M-21 67h42" stroke="#879b81" strokeWidth="4" strokeLinecap="round" />
-            <path
-              d="M-73 177q-20 25 0 48m146-48q20 25 0 48"
-              fill="none"
-              stroke="#b9bc8b"
-              strokeWidth="2"
-              strokeDasharray="6 5"
-              opacity={p > 0.05 && p < 0.7 ? 1 : 0.2}
-            />
-          </g>
-          <text x={w / 2} y="280" textAnchor="middle">
-            {p < 0.7
-              ? s('轻摇混匀', 'Gently mix')
-              : s('再取有代表性的小样', 'Then take a representative aliquot')}
-          </text>
-        </svg>
-      )}
-      {mode === 2 && local === 1 && (
-        <svg
-          viewBox={`0 0 ${w} 278`}
-          role="img"
-          aria-label={s('盖片先放置，再沿边缘加样', 'Place coverslip, then load its edge')}
-        >
-          <defs>
-            <linearGradient id={`${id}-glass`} x2="0" y2="1">
-              <stop stopColor="#eff4ef" />
-              <stop offset="1" stopColor="#b6c8bd" />
-            </linearGradient>
-          </defs>
-          <text x={w / 2} y="30" textAnchor="middle">
-            {s('计数室侧面放大', 'Counting chamber · side section')}
-          </text>
-          <rect x="28" y="181" width={w - 56} height="29" rx="5" fill={`url(#${id}-glass)`} />
-          <rect x="60" y="145" width={w - 92} height="16" rx="3" fill={`url(#${id}-glass)`} />
-          <path d={`M${w - 32} 160h-20v21h20`} fill="#bdcec1" />
-          <rect x="60" y="161" width={(w - 112) * chamberFill(p)} height="20" fill="#d6d8a1" />
-          <path d="M48 53h12v46l-6 25-6-25Z" fill="#d9e4dc" stroke="#93aa9b" />
-          <path d="M52 76h4v23l-2 9-2-9Z" fill="#b3c78f" />
-          <path
-            d={`M54 ${126 + Math.min(1, p / 0.25) * 25}q-8 10 0 10q8 0 0-10`}
-            fill="#b7c68e"
-            opacity={p < 0.3 ? 1 : 0}
-          />
-          <path d="M60 161q-13-13-13-2q1 12 13 12Z" fill="#d6d8a1" opacity={p >= 0.23 ? 1 : 0} />
-          <path d={`M${w - 17} 161v20m-4-20h8m-8 20h8`} stroke="#8c9f89" />
-          <text x={w / 2} y="238" textAnchor="middle">
-            {s('室深 0.1 mm · 毛细充液', 'Depth 0.1 mm · capillary filling')}
-          </text>
-          <text x={w / 2} y="269" textAnchor="middle">
-            {s('盖片已就位；不要将液滴压入', 'Coverslip in place before loading')}
-          </text>
-        </svg>
-      )}
-      {mode === 2 && local === 2 && (
-        <svg
-          viewBox={`0 0 ${w} 338`}
-          role="img"
-          aria-label={s('用已知体积计数', 'Count a known volume')}
-        >
-          <text x={w / 2} y="23" textAnchor="middle">
-            {s('第', 'Day ')}
-            {currentDay}
-            {s('天 · 第', ' · repeat ')}
-            {rep + 1}
-            {s('次', '')}
-          </text>
-          {(() => {
-            const size = Math.min(w - 90, 176),
-              x = (w - size) / 2,
-              y = 53;
-            return (
-              <>
-                <rect
-                  x={x - 14}
-                  y={y - 14}
-                  width={size + 28}
-                  height={size + 28}
-                  rx="18"
-                  fill="#f1eddf"
-                />
-                {Array.from({ length: 5 }, (_, i) => (
-                  <g key={i}>
-                    <path
-                      d={`M${x + (i * size) / 4} ${y}v${size}M${x} ${y + (i * size) / 4}h${size}`}
-                      stroke={i === 0 ? '#8c996f' : '#cac5ae'}
-                      strokeWidth={i === 0 ? 2 : 1}
-                    />
-                  </g>
-                ))}
-                {cells.map((c) => yeast(x + c.x * size, y + c.y * size, c.id, inCountingSquare(c)))}
-                <text x={w / 2} y={y + size + 36} textAnchor="middle">
-                  0.2 × 0.2 × 0.1 mm³
-                </text>
-              </>
-            );
-          })()}
-          <text x={w / 2} y="300" textAnchor="middle">
-            {count}
-            {s('个', ' cells')} × {dil} ÷ (4 × 10⁻⁶ mL)
-          </text>
-          <text x={w / 2} y="328" textAnchor="middle">
-            {(concentration.cellsPerMl / 1e6).toFixed(1)} × 10⁶ {s('个/mL', 'cells/mL')}
-          </text>
-        </svg>
-      )}
-      {mode === 2 && local === 3 && (
-        <svg
-          viewBox={`0 0 ${w} 285`}
-          role="img"
-          aria-label={s('由每日计数形成记录', 'Daily counts become a record')}
-        >
-          {graphAxes(chartMax, s('百万个 / mL', 'Million cells / mL'))}
-          {means.map((row, d) => {
-            const v =
-              row.mean === null ? null : chamberConcentration(row.mean, dil)!.cellsPerMl / 1e6;
-            return (
-              <g key={d}>
-                <text x={lx(d)} y="261" textAnchor="middle">
-                  {d}
-                </text>
-                {v !== null && (!film.watch || d <= days) && (
-                  <>
-                    <path
-                      d={`M${lx(d)} 237V${237 - (v / chartMax) * 188}`}
-                      stroke="#b8c1a4"
-                      strokeDasharray="3 4"
-                    />
-                    <circle cx={lx(d)} cy={237 - (v / chartMax) * 188} r="5" fill="#91a578" />
-                  </>
-                )}
-              </g>
-            );
-          })}
-          <text x={w - 16} y="282" textAnchor="end">
-            {real
-              ? s('天 · 输入记录', 'days · entered records')
-              : s('天 · 计数练习示例', 'days · illustrative counts')}
-          </text>
-        </svg>
-      )}
-      {mode === 3 && local === 0 && (
-        <svg
-          viewBox={`0 0 ${w} 292`}
-          role="img"
-          aria-label={s('教材郁闭度调查资料', 'Textbook canopy survey evidence')}
-        >
-          {(() => {
-            const selected = film.watch ? Math.min(2, Math.floor(p * 3)) : species,
-              data = canopyEvidence[selected],
-              px = (i: number) => 44 + (i * (w - 68)) / 5,
-              py = (v: number) => 230 - (v / 16) * 155;
-            return (
-              <>
-                <text x={w / 2} y="25" textAnchor="middle">
-                  {s(data.zh, data.en)}
-                </text>
-                <text x="44" y="56">
-                  {s('平均株数 / m²', 'Mean plants / m²')}
-                </text>
-                <path d={`M44 69v161h${w - 68}`} stroke="#b4bba7" fill="none" />
-                {[0, 8, 16].map((v) => (
-                  <text key={v} x="35" y={py(v) + 5} textAnchor="end">
+          </svg>
+        )}
+        {chapter === 8 && (
+          <svg viewBox={`0 0 ${w} 228`} role="img" aria-label={title[8]}>
+            <text x={w / 2} y="22" textAnchor="middle">
+              {s(canopyEvidence[activeSpecies].zh, canopyEvidence[activeSpecies].en)}
+            </text>
+            <text x="36" y="47">
+              {s('平均株数/m²', 'Mean plants/m²')}
+            </text>
+            <path d={`M36 61v112h${w - 52}`} fill="none" stroke="#aab59c" />
+            {[0, 8, 16].map((v) => (
+              <text key={v} x="30" y={178 - v * 6.5} textAnchor="end">
+                {v}
+              </text>
+            ))}
+            {canopyEvidence[activeSpecies].values.map((v, i) => {
+              const x = 36 + (i * (w - 52)) / 5,
+                y = 173 - v * 6.5;
+              return (
+                <g key={i}>
+                  <circle cx={x} cy={y} r="5" fill={canopyEvidence[activeSpecies].color} />
+                  <text x={x} y={y - 9} textAnchor="middle">
                     {v}
                   </text>
-                ))}
-                {data.values.map((v, i) => (
-                  <g key={i}>
-                    <path d={`M${px(i)} 230V${py(v)}`} stroke="#d0d6c2" />
-                    <circle cx={px(i)} cy={py(v)} r="5" fill={data.color} />
-                    <text x={px(i)} y={py(v) - 12} textAnchor="middle">
-                      {v}
-                    </text>
-                    <text x={px(i)} y="254" textAnchor="middle">
-                      {canopyClosure[i]}
-                    </text>
-                  </g>
-                ))}
-                <text x={w / 2} y="282" textAnchor="middle">
-                  {s('郁闭度（教材调查数据）', 'Canopy closure (textbook data)')}
-                </text>
-              </>
-            );
-          })()}
-        </svg>
-      )}
-      {mode === 3 && local === 1 && (
-        <svg
-          viewBox={`0 0 ${w} 286`}
-          role="img"
-          aria-label={s('多个因素共同变化', 'Multiple factors change together')}
-        >
-          <text x={w / 2} y="27" textAnchor="middle">
-            {s('季节', 'Season')}
-          </text>
-          {[s('降水', 'Rain'), s('温度', 'Temperature'), s('日长', 'Day length')].map((t, i) => {
-            const x = compact ? w / 2 : (w * (i + 1)) / 4,
-              y = compact ? 65 + i * 34 : 95;
-            return (
-              <g key={i}>
-                <path
-                  d={compact ? `M${w * 0.2} 37V${y - 6}H${x - 60}` : `M${w / 2} 37L${x} 72`}
-                  stroke="#c0c9b2"
-                  fill="none"
-                />
-                <text x={x} y={y} textAnchor="middle">
-                  {t}
-                </text>
-                <path
-                  d={
-                    compact
-                      ? `M${x + 65} ${y - 6}H${w * 0.85}V149L${w / 2} 155`
-                      : `M${x} 106L${w / 2} 155`
-                  }
-                  stroke="#c0c9b2"
-                  fill="none"
-                  strokeDasharray={p < 0.45 ? '4 5' : undefined}
-                />
-              </g>
-            );
-          })}
-          <ellipse cx={w / 2} cy="179" rx={Math.min(w * 0.4, 130)} ry="29" fill="#e0e8d1" />
-          <text x={w / 2} y="185" textAnchor="middle">
-            {s('资源 · 出生 · 死亡', 'Resources · births · deaths')}
-          </text>
-          <path d={`M${w / 2} 208v32`} stroke="#a7b69a" />
-          <text x={w / 2} y="266" textAnchor="middle">
-            {s('种群数量变化', 'Population change')}
-          </text>
-        </svg>
-      )}
+                  <text x={x} y="198" textAnchor="middle">
+                    {canopyClosure[i]}
+                  </text>
+                </g>
+              );
+            })}
+            <text x={w / 2} y="226" textAnchor="middle">
+              {s('郁闭度 · 教材调查', 'Canopy closure · textbook survey')}
+            </text>
+          </svg>
+        )}
+        {chapter === 9 && (
+          <svg viewBox={`0 0 ${w} 226`} role="img" aria-label={title[9]}>
+            <text x={w / 2} y="24" textAnchor="middle">
+              {s('季节', 'Season')}
+            </text>
+            {[s('降水', 'Rain'), s('温度', 'Temperature'), s('日长', 'Day length')].map((v, i) => {
+              const x = compact ? w * 0.46 : (w * (i + 1)) / 4,
+                y = compact ? 57 + i * 31 : 82;
+              return (
+                <g key={i}>
+                  <path
+                    d={compact ? `M${w * 0.18} 31V${y - 6}H${x - 50}` : `M${w / 2} 33L${x} 59`}
+                    fill="none"
+                    stroke="#bdc9b1"
+                  />
+                  <text x={x} y={y} textAnchor="middle">
+                    {v}
+                  </text>
+                  <path
+                    d={
+                      compact
+                        ? `M${x + 63} ${y - 6}H${w * 0.86}V139H${w / 2}`
+                        : `M${x} 90L${w / 2} 139`
+                    }
+                    fill="none"
+                    stroke="#bdc9b1"
+                  />
+                </g>
+              );
+            })}
+            <text x={w / 2} y="166" textAnchor="middle">
+              {s('资源 → 出生与死亡', 'Resources → births and deaths')}
+            </text>
+            <path d={`M${w / 2} 176v20`} stroke="#9eb28e" />
+            <text x={w / 2} y="222" textAnchor="middle">
+              {s('种群数量', 'Population size')}
+            </text>
+          </svg>
+        )}
+      </div>
+      {note && <p className="bpg19-note">{note}</p>}
       {!film.watch && (
-        <div className="bio-growth-controls">
-          <div className="bio-growth-buttons">
-            {titles.map((t, i) => (
-              <button
-                key={i}
-                aria-pressed={mode === i}
-                onClick={() => {
-                  setChosen(i);
-                  setView(0);
-                }}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <div className="bio-growth-buttons">
-            {[...Array([2, 2, 4, 2][mode])].map((_, i) => (
-              <button key={i} aria-pressed={local === i} onClick={() => setView(i)}>
-                {s('观察', 'View ')}
-                {i + 1}
-              </button>
-            ))}
-          </div>
+        <div className="bpg19-controls">
+          <label>
+            {s('观察主题', 'View')}
+            <select
+              aria-label={s('观察主题', 'View')}
+              value={chapter}
+              onChange={(e) => setSelected(+e.target.value)}
+            >
+              {title.map((v, i) => (
+                <option value={i} key={i}>
+                  {i + 1}. {v}
+                </option>
+              ))}
+            </select>
+          </label>
           <label>
             {s('过程位置', 'Progress')}
             <input
+              aria-label={s('过程位置', 'Progress')}
               type="range"
               min="0"
-              max="1"
-              step=".01"
-              value={phase}
-              onChange={(e) => setPhase(+e.target.value)}
+              max={localDuration}
+              step=".1"
+              value={time}
+              onChange={(e) => setTimes((v) => ({ ...v, [chapter]: +e.target.value }))}
             />
           </label>
-          {mode === 1 && local === 1 && (
-            <label>
-              K = {capacity}
-              <input
-                type="range"
-                min="150"
-                max="450"
-                step="25"
-                value={capacity}
-                onChange={(e) => setCapacity(+e.target.value)}
-              />
-            </label>
-          )}
-          {mode === 2 && local >= 2 && (
+          {chapter === 3 && d.shot !== 'food' && (
             <>
               <label>
-                {s('观察日', 'Observation day')} {day}
+                {s('环境容纳量（模型）', 'Capacity (model)')}
+                <output>{activeK}</output>
                 <input
+                  aria-label={s('环境容纳量（模型）', 'Capacity (model)')}
+                  type="range"
+                  min="200"
+                  max="650"
+                  step="25"
+                  value={activeK}
+                  onChange={(e) => setK(+e.target.value)}
+                />
+              </label>
+              {(d.shot === 'curve' || d.shot === 'prediction') && (
+                <label>
+                  {s('初始数量（模型）', 'Initial count (model)')}
+                  <output>{activeInitial}</output>
+                  <input
+                    aria-label={s('初始数量（模型）', 'Initial count (model)')}
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="5"
+                    value={activeInitial}
+                    onChange={(e) => setInitial(+e.target.value)}
+                  />
+                </label>
+              )}
+            </>
+          )}
+          {(chapter === 6 || chapter === 7) && (
+            <>
+              <label>
+                {s('观察日', 'Observation day')}
+                <output>{day}</output>
+                <input
+                  aria-label={s('观察日', 'Observation day')}
                   type="range"
                   min="0"
                   max="7"
@@ -580,77 +924,111 @@ export default function BioPopulationGrowth() {
                   onChange={(e) => setDay(+e.target.value)}
                 />
               </label>
-              <label>
-                {s('重复', 'Repeat')} {replicate + 1}
-                <input
-                  type="range"
-                  min="0"
-                  max="2"
-                  step="1"
-                  value={replicate}
-                  onChange={(e) => setReplicate(+e.target.value)}
-                />
-              </label>
-              <label>
-                {s('稀释倍数', 'Dilution factor')} {dilution}
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  step="1"
-                  value={dilution}
-                  onChange={(e) => setDilution(+e.target.value)}
-                />
-              </label>
-              {local === 3 && (
-                <>
-                  <button aria-pressed={own} onClick={() => setOwn(!own)}>
-                    {s('使用我的计数记录', 'Use my count records')}
+              {chapter === 6 && (
+                <label>
+                  {s('重复', 'Repeat')}
+                  <output>{replicate + 1}</output>
+                  <input
+                    aria-label={s('重复', 'Repeat')}
+                    type="range"
+                    min="0"
+                    max="2"
+                    step="1"
+                    value={replicate}
+                    onChange={(e) => setReplicate(+e.target.value)}
+                  />
+                </label>
+              )}
+            </>
+          )}
+          {chapter === 7 && (
+            <>
+              <div className="bpg19-buttons">
+                {(['nutrient', 'other'] as const).map((v) => (
+                  <button key={v} aria-pressed={cause === v} onClick={() => setCause(v)}>
+                    {v === 'nutrient'
+                      ? s('营养限制假说', 'Nutrient limitation')
+                      : s('另有抑制假说', 'Other inhibition')}
                   </button>
-                  {own && (
-                    <div className="bio-growth-records">
-                      {records[day].map((v, r) => (
-                        <label key={r}>
-                          {s('第', 'Repeat ')}
-                          {r + 1}
-                          {s('次计数', '')}
-                          <input
-                            type="number"
-                            min="0"
-                            value={v ?? ''}
-                            placeholder={s('未记录', 'Not recorded')}
-                            onChange={(e) => {
-                              const next = records.map((row) => [...row]);
-                              next[day][r] =
-                                e.target.value === '' ? null : growthClamp(+e.target.value, 0, 1e6);
-                              setRecords(next);
-                            }}
-                          />
-                        </label>
-                      ))}
-                    </div>
-                  )}
+                ))}
+              </div>
+              <button aria-pressed={own} onClick={() => setOwn(!own)}>
+                {s('使用我的计数记录', 'Use my count records')}
+              </button>
+              {own && (
+                <>
+                  <label>
+                    {s('本次样品稀释倍数', 'Current sample dilution')}
+                    <input
+                      aria-label={s('本次样品稀释倍数', 'Current sample dilution')}
+                      type="number"
+                      min="1"
+                      max="1000"
+                      value={dilution}
+                      onChange={(e) => setDilution(clamp(+e.target.value, 1, 1000))}
+                    />
+                  </label>
+                  <div className="bpg19-records">
+                    {records[day].map((v, r) => (
+                      <label key={r}>
+                        {s('重复', 'Repeat ')} {r + 1}
+                        <input
+                          aria-label={`${s('计数', 'Count ')}${r + 1}`}
+                          type="number"
+                          min="0"
+                          value={v?.count ?? ''}
+                          placeholder={s('未记录', 'Missing')}
+                          onChange={(e) =>
+                            setRecords((old) =>
+                              old.map((row, i) =>
+                                i === day
+                                  ? row.map((item, j) =>
+                                      j === r
+                                        ? e.target.value === ''
+                                          ? null
+                                          : observation(clamp(+e.target.value, 0, 1e6), dilution)
+                                        : item,
+                                    )
+                                  : row,
+                              ),
+                            )
+                          }
+                        />
+                        <span>{v ? `× ${v.dilution}` : '—'}</span>
+                      </label>
+                    ))}
+                  </div>
+                  <p data-record-summary>
+                    {s('有效重复', 'Valid repeats')}: {rows[day].n};{' '}
+                    {rows[day].mean === null
+                      ? s('缺测', 'Missing')
+                      : `${(rows[day].mean! / 1e6).toFixed(2)} × 10⁶ /mL`}
+                  </p>
+                  <p>
+                    {s('10 mL 总量估计', 'Estimate in 10 mL')}:{' '}
+                    {rows[day].cultureCells === null
+                      ? '—'
+                      : rows[day].cultureCells!.toExponential(2)}
+                  </p>
                 </>
               )}
             </>
           )}
-          {mode === 3 && local === 0 && (
-            <div className="bio-growth-buttons">
-              {canopyEvidence.map((d, i) => (
-                <button key={i} aria-pressed={species === i} onClick={() => setSpecies(i)}>
-                  {s(d.zh, d.en)}
+          {chapter === 8 && (
+            <div className="bpg19-buttons">
+              {canopyEvidence.map((v, i) => (
+                <button key={i} aria-pressed={activeSpecies === i} onClick={() => setSpecies(i)}>
+                  {s(v.zh, v.en)}
                 </button>
               ))}
             </div>
           )}
           <details>
-            <summary>
-              {s('模型、计数规则与证据边界', 'Models, counting rules and evidence')}
-            </summary>
+            <summary>{s('模型与证据边界', 'Model and evidence limits')}</summary>
             <p>
               {s(
-                '细菌假设每20分钟同步分裂，资源无限且无死亡。高斯历史观察与独立逻辑斯谛曲线分开：曲线不是补造的原始记录。酵母格为0.2×0.2 mm、深0.1 mm，按细胞中心计上左、不计下右；示例只画单细胞。三个重复先求平均再按稀释倍数换算，计数未区分死活。自己的记录从空白开始；缺测不按零处理。超过可辨数量时应重新稀释计数。',
-                'Bacteria divide synchronously every 20 min with unlimited resources and no mortality. The logistic curve is separate from historical observations, not invented raw data. Count the 0.2 × 0.2 mm square at 0.1 mm depth: include top/left cell centers, exclude bottom/right. Only single cells are shown. Average three repeats and apply dilution. This count does not establish viability. Personal records start blank; missing is not zero. Dilute and recount overcrowded chambers.',
+                '高斯教材端点保持不变。期望数量模型把密度作用写成出生/死亡率，不是逐个个体实测，也不能由S形唯一确定原因。四个示踪个体只是同一率模型的一种短时实现。计数练习固定为十倍稀释；个人记录按每次采样的稀释倍数分别换算后求平均，修改当前倍数不会改旧样品。总计数不区分死活。补营养图是条件预测，不是已有实验结果。',
+                'Gause’s textbook endpoints remain fixed. Expected population follows a density-dependent birth/death model, not measured individual histories; an S-shaped curve does not identify a unique cause. Four tracked individuals show one possible short realization of those rates. Practice counts use tenfold dilution. Personal observations retain their own dilution before averaging; changing the current dilution does not rewrite old samples. Total counts do not establish viability. Nutrient addition shows a conditional prediction, not an observed result.',
               )}
             </p>
           </details>

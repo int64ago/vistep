@@ -820,7 +820,7 @@ export const topics: Topic[] = [
     name: '钠与乙醇的证据链',
     title: '气泡里的氢来自乙醇的哪里？',
     question: '气泡里的氢来自乙醇的哪里？',
-    description: '从气体、燃烧产物和羟基氢追踪钠与乙醇反应，再与钠水反应作相同条件对照。',
+    description: '用教材检验追踪氢，再区分快慢与同介质的酸碱证据。',
     color: '#b6c5a4',
     tag: '羟基 · 气体检验 · 对照',
     related: ['chem-sodium-reactions', 'chem-carbon-frameworks', 'chem-alcohol-oxidation'],
@@ -834,12 +834,25 @@ export const topics: Topic[] = [
         url: 'https://periodic-table.rsc.org/element/11/sodium',
       },
       {
-        title: 'OpenStax — Alcohol and phenol properties, original author text',
+        title: 'McMurry OpenStax17.2: Properties of Alcohols and Phenols',
         url: 'https://openstax.org/books/organic-chemistry/pages/17-2-properties-of-alcohols-and-phenols',
       },
       {
         title: '人教版必修二77—78页、选必三7页',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title:
+          'Olmstead, Margolin & Bordwell (1980), Acidities of water and simple alcohols in dimethyl sulfoxide solution',
+        url: 'https://doi.org/10.1021/jo01304a032',
+      },
+      {
+        title: 'Hans Reich Collection, ACS Organic Division: Alcohol acidity table and reference24',
+        url: 'https://organicchemistrydata.org/hansreich/resources/pka/',
+      },
+      {
+        title: 'Bordwell (1988), Equilibrium acidities in dimethyl sulfoxide solution',
+        url: 'https://doi.org/10.1021/ar00156a004',
       },
     ],
     number: '406',
@@ -2561,14 +2574,14 @@ export const topics: Topic[] = [
   {
     slug: 'bio-population-growth',
     name: '种群增长与培养计数',
-    title: '增长曲线的每一个点从哪里来？',
-    description: '从细菌分裂规则、高斯培养证据到酵母计数室与真实记录，区分模型预测和观察。',
+    title: '数量不再增加，群体还在变化吗？',
+    description: '从草履虫平台到细胞更新，用计数、密度反馈和可检验预测解释种群增长。',
     color: '#c1ccaa',
     tag: '数学模型 · 显微计数 · 调查证据',
     related: ['bio-population-sampling', 'bio-plant-environment', 'bio-community-interactions'],
     sources: [
       {
-        title: 'OpenStax — Population Growth and Regulation',
+        title: 'OpenStax, Population Growth and Regulation',
         url: 'https://openstax.org/books/concepts-biology/pages/19-2-population-growth-and-regulation',
       },
       {
@@ -2579,8 +2592,20 @@ export const topics: Topic[] = [
         title: 'Bio-Rad — Cell Counting with a Hemocytometer',
         url: 'https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_6235.pdf',
       },
+      {
+        title: 'Gause (1934), The Struggle for Existence, Chapter III, pp.36–38',
+        url: 'https://archive.org/download/struggleforexist00gauz/struggleforexist00gauz.pdf',
+      },
+      {
+        title: 'Monod (1949), The Growth of Bacterial Cultures, pp.371–385',
+        url: 'https://garcialab.berkeley.edu/courses/papers/Monod1949.pdf',
+      },
+      {
+        title: 'Thermo Fisher, Counting cells in a hemacytometer',
+        url: 'https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/counting-cells-in-a-hemacytometer.html',
+      },
     ],
-    question: '增长曲线的每一个点从哪里来？',
+    question: '数量不再增加，群体还在变化吗？',
     number: '350',
   },
   {
@@ -5831,9 +5856,10 @@ export const topics: Topic[] = [
   {
     slug: 'matter-wave-lab',
     name: '电子与晶体衍射',
-    title: '粒子留下的图样，为什么像波？',
-    question: '粒子留下的图样，为什么像波？',
-    description: '比较单晶反射、薄膜衍射环、电子干涉与X射线晶体斑点。',
+    title: '晶体怎样挑出电子与X射线的方向？',
+    question: '晶体怎样挑出电子与X射线的方向？',
+    description:
+      '沿两条真实路径量出相位差，解释晶体强度峰、衍射环与三维劳厄斑点，再预测改变电压与晶体方向的结果。',
     color: '#aebfa8',
     tag: '近代物理',
     related: ['optical-diffraction-lab', 'double-slit'],
@@ -5853,6 +5879,23 @@ export const topics: Topic[] = [
       {
         title: 'IUCr — The reciprocal lattice',
         url: 'https://www.iucr.org/what-we-do/education/pamphlets/reciprocal-lattice',
+      },
+      {
+        title: 'S. C. Wallwork, Introduction to the calculation of structure factors (IUCr)',
+        url: 'https://www.iucr.org/what-we-do/education/pamphlets/introduction-calculation-of-structure-factors',
+      },
+      {
+        title:
+          'C. Davisson and L. H. Germer, Diffraction of Electrons by a Crystal of Nickel, Physical Review 30 (1927), 705–740',
+        url: 'https://doi.org/10.1103/PhysRev.30.705',
+      },
+      {
+        title: 'Hitachi Quantum Measurement: Double-slit experiment',
+        url: 'https://www.hitachi.com/rd/research/materials/quantum/doubleslit/index.html',
+      },
+      {
+        title: 'UCSB lecture demonstration 88.12: Electron diffraction',
+        url: 'https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/88.12.html',
       },
     ],
     number: '234',

@@ -23,7 +23,7 @@
 | [核反应的实验线索](../../src/content/nuclear-evidence-lab.mdx)   | 4:40 | 看不见核内部，怎样从产物判断发生了什么？     |
 | [衰变的统计与用途](../../src/content/decay-measurement-lab.mdx)  | 2:48 | 不确定的单次衰变，怎样成为可测的时间与路径？ |
 | [发现看不见的射线](../../src/content/radiation-evidence-lab.mdx) | 4:40 | 感光、电离与径迹，怎样成为看不见粒子的证据？ |
-| [电子与晶体衍射](../../src/content/matter-wave-lab.mdx)          | 3:16 | 粒子留下的图样，为什么像波？                 |
+| [电子与晶体衍射](../../src/content/matter-wave-lab.mdx)          | 3:16 | 晶体怎样挑出电子与X射线的方向？              |
 | [光谱中的原子证据](../../src/content/atomic-spectrum-lab.mdx)    | 4:12 | 把光展开，怎样认出物质与理论的细小偏差？     |
 | [阴极射线与电子](../../src/content/cathode-ray-lab.mdx)          | 2:48 | 一束看不见的射线，怎样显露电荷与质量？       |
 | [微观散射实验](../../src/content/atomic-scattering-lab.mdx)      | 2:48 | 看不见的内部，怎样由偏转留下证据？           |
@@ -63,7 +63,7 @@
 | [怎样比较化学反应的快慢](../../src/content/chem-reaction-rates.mdx)               | 4:24 | 反应更快，是相遇更多还是更容易成功？                 |
 | [氢键与冰的开放结构](../../src/content/chem-hydrogen-bond-network.mdx)            | 2:27 | 冰为什么比液态水更疏松？                             |
 | [乙醇的两种氧化](../../src/content/chem-alcohol-oxidation.mdx)                    | 2:51 | 铜丝为什么变黑又变红？                               |
-| [钠与乙醇的证据链](../../src/content/chem-sodium-alcohol.mdx)                     | 2:48 | 气泡里的氢来自乙醇的哪里？                           |
+| [钠与乙醇的证据链](../../src/content/chem-sodium-alcohol.mdx)                     | 3:23 | 气泡里的氢来自乙醇的哪里？                           |
 | [质谱分离与分子式证据](../../src/content/chem-mass-spectrometry.mdx)              | 3:18 | 最高的峰、最右的峰，哪一个能说明分子质量？           |
 | [原电池中的两条电荷通路](../../src/content/chem-galvanic-cells.mdx)               | 4:47 | 电子绕过溶液，电路怎样闭合？                         |
 | [乙烯与乙炔的性质证据](../../src/content/chem-unsaturated-hydrocarbons.mdx)       | 4:07 | 两次褪色，解释为什么不同？                           |
@@ -145,7 +145,7 @@
 | [遗传物质的三条证据](../../src/content/bio-genetic-material.mdx)              | 3:49 | 是改变了性状，还是找到了传递性状的物质？       |
 | [竞争、捕食与群落](../../src/content/bio-community-interactions.mdx)          | 3:52 | 少一个捕食者，为什么不只是多一些猎物？         |
 | [性连锁、系谱与人群调查](../../src/content/bio-linked-inheritance.mdx)        | 3:46 | 把性别、家系和抽样分母放回遗传证据里。         |
-| [种群增长与培养计数](../../src/content/bio-population-growth.mdx)             | 4:09 | 增长曲线的每一个点从哪里来？                   |
+| [种群增长与培养计数](../../src/content/bio-population-growth.mdx)             | 4:39 | 数量不再增加，群体还在变化吗？                 |
 | [减数分裂与染色体传递](../../src/content/bio-meiosis.mdx)                     | 3:37 | 一次复制、两次分裂，怎样留下各不相同的一套？   |
 | [种群调查与取样](../../src/content/bio-population-sampling.mdx)               | 4:19 | 只看见一部分，怎样估计整个种群？               |
 | [植物的环境感知](../../src/content/bio-plant-environment.mdx)                 | 3:24 | 植物怎样把光、温度和重力变成生长信号？         |

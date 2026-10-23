@@ -1,0 +1,384 @@
+{
+  "slug": "matter-wave-lab",
+  "status": "candidate-frozen-ready-for-root-review",
+  "scope": {
+    "chapterIds": [
+      "electron-reflection",
+      "electron-peak",
+      "foil-rings",
+      "interference",
+      "xray-spots",
+      "plane-phase",
+      "crystal-rotation"
+    ],
+    "duration": 196,
+    "windows": 3,
+    "spokenPreserved": [0, 1, 2, 3, 4, 5, 6],
+    "eightFieldsPreserved": [0, 1, 3, 4, 5],
+    "eightFieldDiff": [
+      {
+        "index": 2,
+        "id": "foil-rings",
+        "field": "caption",
+        "before": "提高加速电压，电子波长缩短，薄膜衍射环收缩。",
+        "after": "改变电子动量，会怎样改变衍射环？"
+      },
+      {
+        "index": 2,
+        "id": "foil-rings",
+        "field": "captionEn",
+        "before": "Higher accelerating voltage shortens electron wavelength and contracts the rings.",
+        "after": "How does changing electron momentum affect the rings?"
+      },
+      {
+        "index": 6,
+        "id": "crystal-rotation",
+        "field": "caption",
+        "before": "晶格方向改变后，能满足衍射条件的波长和方向也改变。",
+        "after": "波段不变，转动晶体会怎样改变斑点？"
+      },
+      {
+        "index": 6,
+        "id": "crystal-rotation",
+        "field": "captionEn",
+        "before": "Crystal rotation changes which wavelengths and directions satisfy diffraction.",
+        "after": "With the spectrum fixed, how does rotation change the spots?"
+      }
+    ],
+    "rootResponsibilities": [
+      "canonical integration",
+      "existing-audio word timing",
+      "full verify/build",
+      "final static/native review",
+      "publication"
+    ],
+    "retainedSpokenIds": [
+      "electron-reflection",
+      "electron-peak",
+      "foil-rings",
+      "interference",
+      "xray-spots",
+      "plane-phase",
+      "crystal-rotation"
+    ],
+    "changedSpokenIds": [],
+    "textbookEntries": [
+      "e1-xray-crystal-diffraction",
+      "e3-xray-crystal-diffraction",
+      "e3-electron-diffraction"
+    ],
+    "textbookPages": {
+      "e1-xray-crystal-diffraction": 106,
+      "e3-xray-crystal-diffraction": 33,
+      "e3-electron-diffraction": 93
+    }
+  },
+  "topic": {
+    "title": {
+      "zh": "晶体怎样挑出电子与X射线的方向？",
+      "en": "How does a crystal select electron and X-ray directions?"
+    },
+    "description": {
+      "zh": "沿两条真实路径量出相位差，解释晶体强度峰、衍射环与三维劳厄斑点，再预测改变电压与晶体方向的结果。",
+      "en": "Measure the path difference behind phase addition, connect it to angular peaks, rings and three-dimensional Laue spots, then predict changes in voltage and crystal orientation."
+    }
+  },
+  "narration": {
+    "duration": 196,
+    "cues": [
+      {
+        "id": "electron-reflection",
+        "title": "晶体让某些方向增强",
+        "titleEn": "A crystal enhances selected directions",
+        "caption": "晶面之间的相位关系，使散射强度随角度出现峰值。",
+        "captionEn": "Phase relationships between planes produce angular intensity peaks.",
+        "zh": "戴维孙和革末研究电子被单晶散射，发现特定方向的信号增强。这里用简化的晶面反射几何说明相干叠加：电子束从晶面散射，探测器接收相应方向的信号。掠射角改变时，晶面间的路程差改变，强度并不均匀。",
+        "en": "Davisson and Germer observed enhanced electron scattering in selected directions from a single crystal. This simplified plane-reflection geometry explains coherent addition. The detector receives the scattered beam while changing grazing angle changes the path difference between planes. The resulting intensity is strongly directional.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "electron-peak",
+        "title": "寻找相长叠加的位置",
+        "titleEn": "Find constructive addition",
+        "caption": "相邻晶面的路程差接近波长的整数倍时，信号增强。",
+        "captionEn": "A path difference near an integer number of wavelengths enhances the signal.",
+        "zh": "继续扫描角度，曲线出现清楚的峰。当相邻晶面的路程差等于波长的整数倍，各部分波同相叠加。电子波长由动量决定。模型采用一百伏加速电压和八个等距晶面，用来解释方法，不能把这些教学参数当成原始镍单晶测量的复刻。",
+        "en": "Scan through the angular peak. Contributions add in phase when adjacent-plane path difference equals an integer number of wavelengths. Electron momentum sets that wavelength. This model uses one hundred volts and eight equally spaced planes to explain the method, not to reproduce the original nickel-crystal apparatus or data.",
+        "seconds": 28,
+        "chapterAt": 28,
+        "at": 28.45
+      },
+      {
+        "id": "foil-rings",
+        "title": "多种晶粒方向形成环",
+        "titleEn": "Many crystal orientations form rings",
+        "caption": "改变电子动量，会怎样改变衍射环？",
+        "captionEn": "How does changing electron momentum affect the rings?",
+        "zh": "汤姆孙让高能电子穿过薄晶体膜。许多不同取向的晶粒，把相同散射角展开为圆锥；屏幕截到圆锥，就出现衍射环。提高加速电压，电子动量增大，波长缩短，环半径随之减小。这里使用两组示例晶面间距，环的位置由同一布拉格关系计算。",
+        "en": "Thomson transmitted energetic electrons through thin crystalline films. Many grain orientations spread a common scattering angle into a cone, whose intersection with the screen forms a ring. Increasing accelerating voltage shortens the wavelength and contracts the rings. Two example plane spacings determine the displayed radii through the same Bragg relation.",
+        "seconds": 28,
+        "chapterAt": 56,
+        "at": 56.45
+      },
+      {
+        "id": "interference",
+        "title": "零散事件积累成条纹",
+        "titleEn": "Individual events accumulate into fringes",
+        "caption": "一次次局域探测，积累后仍呈现干涉概率分布。",
+        "captionEn": "Localized detections accumulate into an interference probability distribution.",
+        "zh": "后来的电子干涉实验进一步显示，探测事件可以逐个出现，而积累的分布具有明暗相间的条纹。这里用电子双棱镜的等效双源模型展示这种区别，不把它说成教材中的原始单晶实验。光点按概率分布作确定性教学采样，既不是真实记录，也不是电子经过仪器时的可见轨道。",
+        "en": "Later interference experiments showed localized electron detections accumulating into alternating fringes. An equivalent two-source model of an electron biprism illustrates this distinction; it is not the original single-crystal experiment. The points are deterministic teaching samples from the probability distribution, not historical records or visible trajectories through the apparatus.",
+        "seconds": 28,
+        "chapterAt": 84,
+        "at": 84.45
+      },
+      {
+        "id": "xray-spots",
+        "title": "用晶体检验X射线",
+        "titleEn": "Probe X-rays with a crystal",
+        "caption": "多色X射线通过规则晶格，只在满足条件的方向形成斑点。",
+        "captionEn": "Polychromatic X-rays form spots in directions allowed by the crystal lattice.",
+        "zh": "劳厄实验把多色X射线射向晶体，在探测板上得到离散斑点。这同时关联了X射线的波动性与晶体内部的规则排列。画面采用简单立方晶格，逐个计算满足弹性散射条件的方向与波长；斑点随晶体转角变化，不是固定装饰纹理。",
+        "en": "Laue diffraction sends polychromatic X-rays into a crystal and records discrete spots. It connects the wave nature of X-rays with regular atomic arrangement. This view uses a simple cubic lattice and calculates allowed directions and wavelengths from elastic scattering. Rotating the crystal changes the spots rather than rotating a decorative texture.",
+        "seconds": 28,
+        "chapterAt": 112,
+        "at": 112.45
+      },
+      {
+        "id": "plane-phase",
+        "title": "把斑点背后的相位展开",
+        "titleEn": "Inspect the phase relation",
+        "caption": "相邻晶面的路程差为2d sinθ；相位相合才持续增强。",
+        "captionEn": "Adjacent-plane path difference is 2d sinθ; matching phases reinforce the signal.",
+        "zh": "放大两层相邻晶面，比较上下两条散射路径。多出的路程由晶面间距和掠射角决定，等于两倍间距乘以掠射角的正弦。当这个路程差正好容纳整数个波长，两个贡献同相。图下方把相位展开比较；这一局部图帮助理解规律，并不替代三维晶格的完整衍射条件。",
+        "en": "Enlarge two adjacent planes and compare their scattering paths. The extra distance equals twice the plane spacing times the sine of the grazing angle. An integer number of wavelengths gives matching phases. The lower traces unfold that phase comparison. This local picture explains the principle but does not replace the full three-dimensional diffraction condition.",
+        "seconds": 28,
+        "chapterAt": 140,
+        "at": 140.45
+      },
+      {
+        "id": "crystal-rotation",
+        "title": "转动晶体，追踪斑点",
+        "titleEn": "Rotate the crystal and track spots",
+        "caption": "波段不变，转动晶体会怎样改变斑点？",
+        "captionEn": "With the spectrum fixed, how does rotation change the spots?",
+        "zh": "回到探测板，慢慢转动晶体，追踪斑点的移动、出现与消失。入射光的波长范围没有改变，改变的是晶格相对于入射方向的位置。模型只计算单原子简单立方结构的允许位置，不计算真实材料的原子散射因子、吸收和多重散射，因此不能把点的亮度用作结构精修数据。",
+        "en": "Return to the detector and rotate the crystal. Spots move, appear and disappear as lattice orientation changes within a fixed wavelength band. The model predicts allowed positions for a one-atom simple cubic structure. It omits atomic form factors, absorption and multiple scattering, so displayed brightness cannot be used for quantitative structure refinement.",
+        "seconds": 28,
+        "chapterAt": 168,
+        "at": 168.45
+      }
+    ]
+  },
+  "translations": {
+    "晶体反射": "Crystal reflection",
+    "八面叠加": "Eight-plane sum",
+    "衍射圆环": "Diffraction rings",
+    "探测积累": "Detection events",
+    "三维劳厄": "3D Laue",
+    "晶面光路": "Plane paths",
+    "物质波视图": "Matter-wave view",
+    "掠射角 / °": "Grazing angle / °",
+    "晶面间距 / pm": "Plane spacing / pm",
+    "波长 / pm": "Wavelength / pm",
+    "加速电压 / V": "Accelerating voltage / V",
+    "检验5000 V": "Test 5000 V",
+    "已积累事件": "Accumulated events",
+    "晶体转角 / °": "Crystal rotation / °",
+    "转动检验": "Test rotation",
+    "模型与记录的区别": "Model and record",
+    "晶体让某些方向增强": "A crystal enhances selected directions",
+    "晶面之间的相位关系，使散射强度随角度出现峰值。": "Phase relationships between planes produce angular intensity peaks.",
+    "寻找相长叠加的位置": "Find constructive addition",
+    "相邻晶面的路程差接近波长的整数倍时，信号增强。": "A path difference near an integer number of wavelengths enhances the signal.",
+    "多种晶粒方向形成环": "Many crystal orientations form rings",
+    "改变电子动量，会怎样改变衍射环？": "How does changing electron momentum affect the rings?",
+    "零散事件积累成条纹": "Individual events accumulate into fringes",
+    "一次次局域探测，积累后仍呈现干涉概率分布。": "Localized detections accumulate into an interference probability distribution.",
+    "用晶体检验X射线": "Probe X-rays with a crystal",
+    "多色X射线通过规则晶格，只在满足条件的方向形成斑点。": "Polychromatic X-rays form spots in directions allowed by the crystal lattice.",
+    "把斑点背后的相位展开": "Inspect the phase relation",
+    "相邻晶面的路程差为2d sinθ；相位相合才持续增强。": "Adjacent-plane path difference is 2d sinθ; matching phases reinforce the signal.",
+    "转动晶体，追踪斑点": "Rotate the crystal and track spots",
+    "波段不变，转动晶体会怎样改变斑点？": "With the spectrum fixed, how does rotation change the spots?"
+  },
+  "curriculumVariants": {
+    "e1-xray-crystal-diffraction": {
+      "chapterIds": ["xray-spots", "plane-phase", "crystal-rotation"]
+    },
+    "e3-xray-crystal-diffraction": {
+      "chapterIds": ["xray-spots", "plane-phase", "crystal-rotation"]
+    },
+    "e3-electron-diffraction": {
+      "chapterIds": ["electron-reflection", "electron-peak", "foil-rings", "interference"]
+    }
+  },
+  "teachingProfiles": {
+    "e1-xray-crystal-diffraction": {
+      "sceneSlug": "matter-wave-lab",
+      "question": {
+        "zh": "为什么晶体把X射线分成离散斑点？",
+        "en": "Why does a crystal split X-rays into discrete spots?"
+      },
+      "lead": {
+        "zh": "先看探测板，再放大两层晶面，追踪多出的两段路程怎样改变相位。",
+        "en": "Start at the detector, then enlarge two planes and track how two extra path segments change phase."
+      },
+      "principle": {
+        "zh": "相邻晶面的光程差为2d sinθ；与波长匹配时增强。完整斑点还必须满足三维晶格与弹性散射条件。",
+        "en": "The adjacent-plane path difference is 2d sinθ. Wavelength matching reinforces scattering, while each full spot must also satisfy the three-dimensional lattice and elastic-scattering conditions."
+      },
+      "transfer": {
+        "question": {
+          "zh": "光谱不变，只转动晶体，原来的斑点会原地不动吗？",
+          "en": "If the spectrum stays fixed and only the crystal rotates, will the original spots stay still?"
+        },
+        "explanation": {
+          "zh": "不会。晶格相对于入射方向改变，允许的波长和散射方向随之改变；斑点会移动、出现或离开探测范围。",
+          "en": "No. Rotation changes the lattice relative to the incident direction, changing allowed wavelengths and scattering directions. Spots move, appear or leave the detector range."
+        }
+      }
+    },
+    "e3-xray-crystal-diffraction": {
+      "sceneSlug": "matter-wave-lab",
+      "question": {
+        "zh": "为什么晶体把X射线分成离散斑点？",
+        "en": "Why does a crystal split X-rays into discrete spots?"
+      },
+      "lead": {
+        "zh": "先看探测板，再放大两层晶面，追踪多出的两段路程怎样改变相位。",
+        "en": "Start at the detector, then enlarge two planes and track how two extra path segments change phase."
+      },
+      "principle": {
+        "zh": "相邻晶面的光程差为2d sinθ；与波长匹配时增强。完整斑点还必须满足三维晶格与弹性散射条件。",
+        "en": "The adjacent-plane path difference is 2d sinθ. Wavelength matching reinforces scattering, while each full spot must also satisfy the three-dimensional lattice and elastic-scattering conditions."
+      },
+      "transfer": {
+        "question": {
+          "zh": "光谱不变，只转动晶体，原来的斑点会原地不动吗？",
+          "en": "If the spectrum stays fixed and only the crystal rotates, will the original spots stay still?"
+        },
+        "explanation": {
+          "zh": "不会。晶格相对于入射方向改变，允许的波长和散射方向随之改变；斑点会移动、出现或离开探测范围。",
+          "en": "No. Rotation changes the lattice relative to the incident direction, changing allowed wavelengths and scattering directions. Spots move, appear or leave the detector range."
+        }
+      }
+    },
+    "e3-electron-diffraction": {
+      "sceneSlug": "matter-wave-lab",
+      "question": {
+        "zh": "电子逐个被探测，为什么会留下衍射环和干涉条纹？",
+        "en": "Why can localized electron detections form diffraction rings and interference fringes?"
+      },
+      "lead": {
+        "zh": "从单晶角分布看相位增强，再用同一波长规律解释圆环收缩与探测事件积累。",
+        "en": "Use the angular signal to inspect phase reinforcement, then follow the same wavelength law into ring contraction and accumulated detections."
+      },
+      "principle": {
+        "zh": "电子波长由动量决定。晶面贡献的相位由路程差决定；同相方向增强，多晶取向展开成环，局域探测积累成概率分布。",
+        "en": "Electron wavelength is set by momentum. Path differences set the phases of plane contributions; matching phases reinforce selected directions, many grain orientations make rings, and localized detections accumulate into a probability pattern."
+      },
+      "transfer": {
+        "question": {
+          "zh": "同一薄膜和屏距下，把电压从2000 V提高到5000 V，圆环会向内还是向外移动？",
+          "en": "For the same foil and screen distance, do rings move inward or outward when voltage rises from 2000 to 5000 V?"
+        },
+        "explanation": {
+          "zh": "向内。动量增大使波长缩短，布拉格角减小；同一屏距下L tan(2θ)变小。",
+          "en": "Inward. Greater momentum shortens wavelength and reduces the Bragg angle, so L tan(2θ) decreases at the same screen distance."
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "title": "人教版高中物理 选择性必修第一册 P104–108；P106 X射线晶体衍射",
+      "path": "/Users/int64ago/Downloads/人教版高中物理-选择性必修第一册.pdf"
+    },
+    {
+      "title": "人教版高中物理 选择性必修第三册 P31–35、P91–95；P33与P93",
+      "path": "/Users/int64ago/Downloads/人教版高中物理-选择性必修第三册.pdf"
+    },
+    {
+      "title": "S. C. Wallwork, Introduction to the calculation of structure factors (IUCr)",
+      "url": "https://www.iucr.org/what-we-do/education/pamphlets/introduction-calculation-of-structure-factors"
+    },
+    {
+      "title": "C. Davisson and L. H. Germer, Diffraction of Electrons by a Crystal of Nickel, Physical Review 30 (1927), 705–740",
+      "url": "https://doi.org/10.1103/PhysRev.30.705"
+    },
+    {
+      "title": "Hitachi Quantum Measurement: Double-slit experiment",
+      "url": "https://www.hitachi.com/rd/research/materials/quantum/doubleslit/index.html"
+    },
+    {
+      "title": "UCSB lecture demonstration 88.12: Electron diffraction",
+      "url": "https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/88.12.html"
+    }
+  ],
+  "scientificBoundaries": [
+    "No computed curve, Laue spot or deterministic electron point is labelled a historical measurement.",
+    "The original textbook aluminum-foil photograph is not fitted by the two example spacings.",
+    "Eight-plane kinematic scattering omits dynamical/multiple scattering and is not a nickel apparatus reconstruction.",
+    "Laue retains the original simple-cubic reciprocal-vector calculation; spot size and brightness are for identification.",
+    "The selected 2D family corresponds to (2,1,-1) at zero crystal rotation. Independent 2D angle changes illustrate phase and do not substitute for the full 3D Laue condition.",
+    "The 2D section uses an angle-dependent uniform display scale; printed values, not cross-frame pixel lengths, carry the pm scale.",
+    "Coincident Laue solutions are merged by the retained display calculation. A labelled wavelength belongs to the selected family and is not a measured spectrum."
+  ],
+  "acceptance": {
+    "candidateOnly": true,
+    "sources": "checks/sources/source-review.json",
+    "modelAndReact": {
+      "files": 4,
+      "tests": 19,
+      "report": "checks/tests-04.log"
+    },
+    "strictTypes": "checks/strict-types.json",
+    "baselineOutputs": "checks/baseline-preservation.json",
+    "nativeFrames": "checks/native-review-04/report.json",
+    "renderedGeometryAndFallbacks": "checks/geometry-resource-review-final/report.json",
+    "nativeControls": "checks/native-review-04/report.json",
+    "fullTechnicalPlayback": "checks/native-playback-final/report.json",
+    "recordings": "All 14 spoken strings and original shared 196-second timing retained. No audio generated. Local cut alignment to recorded word times remains pending root.",
+    "subjectiveListening": "Not performed; muted technical playback is not listening.",
+    "physicalPhone": "Not tested; Chromium viewport emulation only.",
+    "canonicalIntegration": "Root pending: shared captions/profiles/translations, route/anchor/static assets, recorded word timing, full verify/build and final native review."
+  },
+  "spokenDiff": [
+    {
+      "index": 2,
+      "id": "foil-rings",
+      "field": "caption",
+      "before": "提高加速电压，电子波长缩短，薄膜衍射环收缩。",
+      "after": "改变电子动量，会怎样改变衍射环？"
+    },
+    {
+      "index": 2,
+      "id": "foil-rings",
+      "field": "captionEn",
+      "before": "Higher accelerating voltage shortens electron wavelength and contracts the rings.",
+      "after": "How does changing electron momentum affect the rings?"
+    },
+    {
+      "index": 6,
+      "id": "crystal-rotation",
+      "field": "caption",
+      "before": "晶格方向改变后，能满足衍射条件的波长和方向也改变。",
+      "after": "波段不变，转动晶体会怎样改变斑点？"
+    },
+    {
+      "index": 6,
+      "id": "crystal-rotation",
+      "field": "captionEn",
+      "before": "Crystal rotation changes which wavelengths and directions satisfy diffraction.",
+      "after": "With the spectrum fixed, how does rotation change the spots?"
+    }
+  ],
+  "integrationNotes": [
+    "Original narration audio remains unchanged. Root must calibrate local cuts against the existing real bilingual word times after candidate acceptance.",
+    "Root shared regression modern-control-state.test.tsx foil ray test currently locks old canvas coordinates. New data-powder-cone and data-powder-ring expose actual endpoints/radii for equivalent physical assertions.",
+    "Do not copy checks or any node_modules. Only manifest-listed regular files are owned."
+  ]
+}

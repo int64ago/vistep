@@ -1,23 +1,39 @@
-<h2 id="understand">Predictions, historical evidence and personal records have different roles</h2>
+<h2 id="understand">A plateau need not mean inactivity</h2>
 
-Assume synchronous bacterial division every20 minutes, unlimited resources and no deaths. One initial cell becomes8 after60 minutes. Earlier lineage nodes represent ancestors; only the current generation belongs to the present count. Extending this rule for72 hours gives2 to the216th power. It is an extrapolation under assumptions, not a guarantee for a real culture.
+A stable population count can conceal very different processes. Individuals might stop reproducing, or new individuals might continue to appear while others die. A total alone cannot distinguish these explanations. To explain a curve, separate additions from losses.
 
-The textbook describes Gause beginning with5 Paramecium in0.5mL and making regular counts, with abundance near375 after roughly day5. The reconstruction shows initial and later states without inventing intermediate measurements. The separate logistic curve uses initial abundance5, carrying capacity375 and rate1.8/day. These are illustrative parameters, not a statistical fit to an unavailable raw table.
+The textbook describes five Paramecium in 0.5 mL of culture, reaching approximately 375 after about five days. Gause’s Chapter III and Figure 4 support those quantities. The following Table IV contains calculated curve values, not a daily raw-observation table. This film fixes the textbook’s initial and later endpoints, then explicitly switches to a separate teaching model. [Gause, 1934, original pp. 36–38](https://archive.org/download/struggleforexist00gauz/struggleforexist00gauz.pdf)
 
-<h2 id="try">Yeast records begin with a counted sample</h2>
+The model first compares a finite supply: the same 24 food markers are shared among more consumers, reducing the mean share. This illustrates competition; it does not measure Paramecium feeding or derive a birth-rate equation from food dots. We then state a testable summary: increasing density lowers births per individual and raises deaths. Equal rates give **zero net growth** without requiring either rate to vanish. Four identified individuals illustrate one possible short renewal interval, not an estimate of the population’s rates.
 
-Gently mix before taking an aliquot. The32 persistent cell tracers illustrate redistribution rather than claiming the10mL culture contains only32 cells. Place the coverslip first, load the edge by capillary action and allow cells to settle. Overcrowded preparations require a recorded dilution and another count. Incomplete filling, bubbles and overflow can invalidate a count.
+<h2 id="try">Predict what changes first</h2>
 
-The displayed square measures0.2×0.2mm at a depth of0.1mm:0.004mm³ or0.000004mL. Classify cells by their centers, **including top and left edges while excluding bottom and right**. Only isolated cells are illustrated. Real budding cells require a declared, consistent counting convention.
+Changing carrying capacity or the initial count recomputes the model. An improved environment cannot create individuals instantaneously. The count stays continuous at the change, while subsequent rates differ. Carrying capacity depends on conditions rather than being an immutable species constant. With no individuals and no immigration, this model cannot spontaneously start a population.
 
-A count of20 after tenfold dilution gives20×10÷0.000004=50,000,000cells/mL. Multiplying by the10mL culture volume estimates its total. Different grid areas require different factors; a familiar10⁴ factor is not universal. [Chamber procedure and volume-based conversion](https://www.thermofisher.com/be/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/counting-cells-in-a-hemacytometer.html)
+The yeast window connects a meaningful record to a test of its explanation. The same 32 tracer cells disperse before sampling; they do not represent the flask’s entire population. A known counting area and depth allow a local count to become a concentration. The practice square is 0.2 × 0.2 mm at a depth of 0.1 mm, giving 4 × 10⁻⁶ mL. Include centers on the top and left, excluding the bottom and right. Only single cells appear in this exercise. Actual budding cultures require a stated, consistent counting convention. [Counting chambers and volume conversion](https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/counting-cells-in-a-hemacytometer.html)
 
-Average three repeats for each day before conversion. Keep day zero and seven later observations. The practice counts are independent of the logistic equation and can decline later. Personal records start blank: choose a day and enter its repeats. Missing observations remain missing, with no line interpolated across them. No viability staining is performed here, so total microscopic counts do not establish the number of living cells.
+A count of 20 at tenfold dilution gives 20 × 10 ÷ (4 × 10⁻⁶) = 5 × 10⁷ cells/mL, or an estimated 5 × 10⁸ cells in 10 mL. A count of 40 at fivefold dilution gives the same concentration. Each observation retains its own dilution. Convert individual samples before averaging; changing the current dilution never rewrites old samples. Missing observations differ from recorded zeros, and the number of valid repeats remains explicit.
 
-<h2 id="deeper">Check the conditions behind a limit or an environmental explanation</h2>
+Practice points are independent of the growth equation, not a mandatory experimental outcome. Even a later decline in total counts cannot establish that all living cells died; viability needs additional evidence. To test nutrient limitation, split the same culture, supplement one portion and give the other an equal volume of control liquid, matching other conditions. If that nutrient limits reproduction, more budding should resume after supplementation. The animation is a **conditional prediction**, not measured data or a calibrated recovery time. Other inhibition may persist despite supplementation. Equal added volumes dilute both groups equally; compare against their common post-addition baseline rather than treating dilution as an instantaneous loss of cells.
 
-The model isN(t)=K/[1+(K/N₀−1)e⁻ʳᵗ]. With fixed positive parameters, zero andK are equilibria, and net growthrN(1−N/K) reaches its maximum atK/2. Settingr to zero removes growth. These provide independent mathematical benchmarks. Carrying capacity depends on conditions, and real populations may fluctuate, overshoot or encounter abrupt environmental changes. [Growth models and carrying capacity](https://openstax.org/books/concepts-biology/pages/19-2-population-growth-and-regulation)
+<h2 id="deeper">One curve can have several explanations</h2>
 
-The canopy view reproduces the18 values in the supplied textbook survey table. The first two plants generally decline with increasing canopy closure, whereas thistle is more abundant near0.4. Units are mean plants per square meter; the data do not come from the growth formula. The rainfall view is a qualitative causal diagram without invented measurements. Season, temperature, day length and rainfall can change together, alongside resources, births and deaths. Controlled comparisons, repeated surveys and evidence addressing alternatives are needed to evaluate a specific explanation.
+<details>
+<summary>The rate model and the tracked interval</summary>
 
-Curriculum locations: elective biology2, pages7,9,11 and13, with surrounding explanations on pages7–14. See also [Bio-Rad’s counting-chamber technical guide](https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_6235.pdf). This scene provides a teaching model and a recording exercise rather than culture conditions.
+Let N be abundance, K carrying capacity and r a net-growth parameter. The model uses per-individual birth rate b(N) = 0.4 + r − rN/(2K) and death rate d(N) = 0.4 + rN/(2K), both per day. In the displayed N/K ≤ 2 domain, both remain nonnegative and N[b(N) − d(N)] = rN(1 − N/K). The curve uses this net equation’s analytic solution, with default N₀ = 5, K = 375 and r = 1.8 per day. These are illustrative parameters, not a new fit to Gause’s observations. Outside the stated domain, the program clips births to a nonnegative rate without claiming that branch is the same analytic logistic solution.
+
+The four-individual interval freezes density and both rates over a short duration, allowing at most one first event per parent. Event probability is 1 − exp[−(b+d)Δt]; conditional birth probability is b/(b+d). Fixed draws make the example reproducible. It is not an unbiased stochastic simulation of the entire curve. One parent dividing adds one individual, while one death removes one; identities and the count ledger agree.
+
+</details>
+
+<details>
+<summary>Why controlled comparisons remain necessary</summary>
+
+Different combinations of births and deaths can produce the same N(t). An S-shaped record does not uniquely establish nutrient exhaustion. Monod discussed nutrients, inhibitory products and pH, while distinguishing cell numbers, dry-mass increases and growth rates. A biomass yield under a single limiting nutrient is neither this film’s yeast count data nor logistic K. Effects on eventual yield and immediate rate must also be distinguished. [Monod, 1949, original pp. 371–385](https://garcialab.berkeley.edu/courses/papers/Monod1949.pdf)
+
+All 18 textbook canopy-survey values remain fixed when growth parameters change. The first two species generally decline, while thistle peaks at intermediate closure. Associations suggest explanations, but rainfall, temperature and day length may covary with season. A comparison must distinguish alternatives. [Population growth and regulation](https://openstax.org/books/concepts-biology/pages/19-2-population-growth-and-regulation)
+
+</details>
+
+Textbook context: PEP Selective Compulsory 2, pp. 7, 9, 11 and 13, read within pp. 7–18. The four entry windows retain the progression from extrapolation, through historical observations and density models, to yeast sampling and predictions, and survey-based causal inference.

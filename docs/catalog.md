@@ -23,7 +23,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Experimental clues to nuclear reactions](../src/content/en/nuclear-evidence-lab.mdx) | 4:40 | How do products reveal a reaction inside an unseen nucleus?      |
 | [Decay statistics and applications](../src/content/en/decay-measurement-lab.mdx)      | 2:48 | How can unpredictable decays measure time and transport?         |
 | [Detecting invisible radiation](../src/content/en/radiation-evidence-lab.mdx)         | 4:40 | How do plates, ionization and tracks reveal invisible radiation? |
-| [Electron and crystal diffraction](../src/content/en/matter-wave-lab.mdx)             | 3:16 | Why do particles leave wave-like patterns?                       |
+| [Electron and crystal diffraction](../src/content/en/matter-wave-lab.mdx)             | 3:16 | How does a crystal select electron and X-ray directions?         |
 | [Atomic evidence in spectra](../src/content/en/atomic-spectrum-lab.mdx)               | 4:12 | What can a spectrum reveal about matter and theory?              |
 | [Cathode rays and electrons](../src/content/en/cathode-ray-lab.mdx)                   | 2:48 | How can a beam reveal its charge and mass?                       |
 | [Microscopic scattering experiments](../src/content/en/atomic-scattering-lab.mdx)     | 2:48 | How does scattering reveal an invisible interior?                |
@@ -63,7 +63,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                          | 4:24 | Does a faster reaction mean more encounters or more success?                  |
 | [Hydrogen bonds and the open structure of ice](../src/content/en/chem-hydrogen-bond-network.mdx)    | 2:27 | Why does ice occupy more space than liquid water?                             |
 | [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                    | 2:51 | Why does copper turn black and then return?                                   |
-| [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                       | 2:48 | Where in ethanol does the released hydrogen come from?                        |
+| [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                       | 3:23 | Where in ethanol does the released hydrogen come from?                        |
 | [Mass separation and molecular-formula evidence](../src/content/en/chem-mass-spectrometry.mdx)      | 3:18 | Can the tallest or rightmost peak establish molecular mass?                   |
 | [Two charge pathways in a galvanic cell](../src/content/en/chem-galvanic-cells.mdx)                 | 4:47 | If electrons avoid the liquid, how does the circuit close?                    |
 | [Evidence from ethene and ethyne](../src/content/en/chem-unsaturated-hydrocarbons.mdx)              | 4:07 | Why do two colour changes need different explanations?                        |
@@ -145,7 +145,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Three lines of evidence for genetic material](../src/content/en/bio-genetic-material.mdx)        | 3:49 | Did we observe a changed trait, or identify the material that transmits it?      |
 | [Competition, predation and communities](../src/content/en/bio-community-interactions.mdx)        | 3:52 | Why can removing a predator change more than prey abundance?                     |
 | [Sex linkage, pedigrees and population surveys](../src/content/en/bio-linked-inheritance.mdx)     | 3:46 | Restore sex, family relationships and sampling denominators to genetic evidence. |
-| [Population growth and culture counts](../src/content/en/bio-population-growth.mdx)               | 4:09 | Where does each point on a growth curve come from?                               |
+| [Population growth and culture counts](../src/content/en/bio-population-growth.mdx)               | 4:39 | Does a stable population stop changing?                                          |
 | [Meiosis and chromosome transmission](../src/content/en/bio-meiosis.mdx)                          | 3:37 | How do one replication and two divisions produce distinct single sets?           |
 | [Population surveys and sampling](../src/content/en/bio-population-sampling.mdx)                  | 4:19 | How can a partial observation estimate a whole population?                       |
 | [Environmental sensing in plants](../src/content/en/bio-plant-environment.mdx)                    | 3:24 | How do plants turn light, temperature and gravity into growth signals?           |

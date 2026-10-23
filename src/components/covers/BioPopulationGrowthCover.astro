@@ -1,49 +1,38 @@
 ---
-import { yeastCells, inCountingSquare } from '../../models/bio-population-growth';
-const cells = yeastCells(3, 1),
-  side = 150,
-  x = 125,
-  y = 40;
+import { logisticPopulation, densityRates } from '../../models/bio-population-growth';
+const rates = densityRates(375),
+  path = Array.from({ length: 81 }, (_, i) => {
+    const t = (i / 80) * 7;
+    return `${i ? 'L' : 'M'}${28 + (t / 7) * 344} ${173 - (logisticPopulation(t).value / 400) * 123}`;
+  }).join(' ');
 ---
 
 <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="400" height="230" fill="#f0f2e7"></rect><circle
-    cx="200"
-    cy="115"
-    r="98"
-    fill="#e6e5d2"
-    stroke="#c7cdb6"
-    stroke-width="3"></circle>
-  {
-    Array.from({ length: 5 }, (_, i) => (
-      <path
-        d={`M${x + (i * side) / 4} ${y}v${side}M${x} ${y + (i * side) / 4}h${side}`}
-        stroke={i === 0 ? '#8fa07c' : '#c0bfa5'}
-        stroke-width={i === 0 ? 2 : 1}
-        fill="none"
-      />
-    ))
-  }
-  {
-    cells.map((c) => (
-      <g opacity={inCountingSquare(c) ? 1 : 0.3}>
-        <>
-          <ellipse
-            cx={x + c.x * side}
-            cy={y + c.y * side}
-            rx="4"
-            ry="5.5"
-            fill="#c3a972"
-            stroke="#9a8055"
-          />
-          <circle cx={x + c.x * side - 0.8} cy={y + c.y * side} r="1.2" fill="#a18c68" />
-        </>
-      </g>
-    ))
-  }
+  <defs
+    ><linearGradient id="bpg19cover" x2="0" y2="1"
+      ><stop stop-color="#f2f5e9"></stop><stop offset="1" stop-color="#e5ead7"
+      ></stop></linearGradient
+    ></defs
+  >
+  <rect width="400" height="230" fill="url(#bpg19cover)"></rect>
+  <path d="M28 36v137h344" fill="none" stroke="#c2ccb3"></path>
+  <path d={path} fill="none" stroke="#819d6d" stroke-width="4" stroke-linecap="round"></path>
+  <path d="M220 48h152" stroke="#b6c2a7" stroke-dasharray="5 5"></path>
+  <g transform="translate(276 102)">
+    <ellipse cx="-37" rx="10" ry="20" fill="#bbcea5" stroke="#7b9867"></ellipse>
+    <ellipse cx="-8" rx="10" ry="20" fill="#bbcea5" stroke="#7b9867"></ellipse>
+    <ellipse cx="40" rx="10" ry="20" fill="#c5b5a1" stroke="#aa947b" opacity=".45"></ellipse>
+    <path d="M-36-4v8m-4-4h8M36 0h8" stroke="#647b54" stroke-width="2"></path>
+  </g>
   <path
-    d="M51 156v-58m-9 58h18m-18-58h18M344 74v58m-9-58h18m-18 58h18"
-    stroke="#b8c2a4"
-    fill="none"
-    stroke-width="2"></path>
+    d={`M105 199h${rates.birthRate * 55}`}
+    stroke="#7b9867"
+    stroke-width="9"
+    stroke-linecap="round"></path>
+  <path
+    d={`M225 199h${rates.deathRate * 55}`}
+    stroke="#b4967c"
+    stroke-width="9"
+    stroke-linecap="round"></path>
+  <path d="M195 195h10m-10 8h10" stroke="#647253" stroke-width="2"></path>
 </svg>

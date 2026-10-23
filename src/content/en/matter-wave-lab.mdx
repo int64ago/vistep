@@ -1,23 +1,52 @@
-<h2 id="understand">Related wave physics, different experiments</h2>
+<h2 id="understand">Why does a crystal enhance selected directions?</h2>
 
-Single-crystal scattering selects directions; many grain orientations turn scattering cones into rings; electron interference accumulates localized detections into fringes. These are different apparatus and observables. The textbook’s broad electron-diffraction entry is not relabeled as a specific single-electron double-slit experiment.
+The electron-diffraction photograph and X-ray spots in the textbook are experimental evidence. This film uses explicitly identified calculations to explain those phenomena. Its curves, rings and dots are not digitized observations from those photographs.
 
-The X-ray scene uses polychromatic Laue geometry with positions calculated from a three-dimensional lattice. A separate plane view explains path difference. Optical and solid-state textbook entries preserve their respective learning positions.
+Follow two scattering paths. O and A lie on one incoming wavefront; O and C lie on one outgoing wavefront. The lower route therefore travels the two extra segments AB and BC. Each is d sinθ, giving a total of 2d sinθ. Changing plane spacing or grazing angle changes both the measured path difference and the phases of the lower traces. There is no independent phase slider disconnected from the geometry.
 
-<h2 id="try">Change angle, voltage and orientation</h2>
+When the difference contains an integer number of wavelengths, plane contributions reinforce one another. Eight-plane addition explains the angular peak. Electron wavelength depends on momentum: greater accelerating voltage shortens it, contracting the rings for the same foil and screen distance.
 
-Scan grazing angle to find a coherent peak, raise accelerating voltage to contract rings, or rotate the X-ray crystal to follow its spots. The local phase view compares relative phase over one cycle as an explicit teaching-state control.
+<h2 id="try">Keep a reference, then test a change</h2>
 
-<h2 id="deeper">Model limits</h2>
+Predict how raising the voltage from 2000 to 5000 V changes the rings before revealing the result. Dashed rings preserve the original calculated positions. In the interference view, each deterministic detection sample has a fixed identity: seeking backward hides later samples, and seeking forward restores the same points.
+
+The X-ray entry starts with three-dimensional Laue spots, then opens the plane close-up. At zero crystal rotation, the highlighted (2,1,−1) family has the same spacing and wavelength as the local diagram. Return to the detector and rotate the crystal while keeping the 40–220 pm band fixed. Allowed spots move, appear or leave the detector.
+
+<h2 id="deeper">What each figure represents</h2>
 
 <details>
 
-<summary>Phase, wavelength and lattice conditions</summary>
+<summary>Connecting the local paths to a three-dimensional crystal</summary>
 
-<div className="formula">λ = h/√[2meU(1+eU/2mc²)]; 2d sinθ = nλ</div>
+<div className="formula">Δ = 2d sinθ; φ = 2πΔ/λ; I ∝ |Σ exp(inφ)|²</div>
 
-Reflection sums complex amplitudes from eight planes with d=213 pm at U=100 V. Its illustrative scan changes incidence and reception together, not the historical mechanical apparatus. Powder rings use example spacings of 213 and 123 pm, a 100 mm screen distance and radius L tan(2θ). Visible apparatus and particles use display scales.
+The local diagram uses a kinematic approximation for coherent contributions. It omits absorption, multiple scattering and real atomic form factors. The electron-reflection example uses 100 V, 213 pm spacing and eight planes. It does not reconstruct the nickel apparatus, peak positions or measured intensities of Davisson and Germer.
 
-Laue spots use a 400 pm simple cubic lattice and wavelengths from 40 to 220 pm, satisfying s_out=s_in+λG and |s_out|=1. Brightness and spot size are illustrative. Electron interference uses a Gaussian envelope times a squared cosine, neglecting detection efficiency. Deterministic low-discrepancy sampling is not random experimental data.
+The Laue view retains a three-dimensional calculation: a simple cubic lattice with a 400 pm cell, illuminated along z. For each reciprocal vector G it solves s_out=s_in+λG together with |s_out|=1. At zero rotation, (2,1,−1) has d=400/√6 pm, λ=400/3 pm and θ≈24.095°, so the local path difference is one wavelength. Varying the close-up parameters tests phase addition; that alone does not replace the full three-dimensional diffraction condition. The section uses a uniform magnification adjusted to keep its paths in view; pixels from different control states are not a common picometer ruler. Allowed solutions at the same detector position are merged for display. The wavelength label identifies the selected family, not a spectral measurement. Spot size and brightness identify positions and cannot support structure refinement.
+
+</details>
+
+<details>
+
+<summary>Rings, detection points and historical records</summary>
+
+<div className="formula">λ = h/√[2meU(1+eU/2mc²)]; r = L tan(2θ)</div>
+
+Two example spacings, 213 and 123 pm, and a 100 mm screen distance determine the rings. The apparatus side view and enlarged screen share the same computed radii. The textbook photograph on elective volume 3, page 93 identifies aluminum foil; these example spacings are not a fit to that photograph. Many grain orientations spread a common scattering angle into a cone, which intersects the screen as a ring.
+
+The biprism view identifies electrodes and detections without drawing visible electron trajectories. Its dots are deterministic teaching samples from a two-source probability model, not measured counts. They do not model detector efficiency or counting noise. Hitachi's published experiment has its own apparatus, voltage, duration and records, distinct from these teaching parameters.
+
+</details>
+
+<details>
+
+<summary>Textbook context and sources</summary>
+
+People's Education Press: elective volume 1, pages 104–108 (crystal diffraction on page 106); elective volume 3, pages 31–35 (crystal structure on page 33) and 91–95 (matter waves on page 93).
+
+- [IUCr: S. C. Wallwork, structure factors and phase addition](https://www.iucr.org/what-we-do/education/pamphlets/introduction-calculation-of-structure-factors)
+- [Davisson and Germer, the 1927 nickel-crystal diffraction paper](https://doi.org/10.1103/PhysRev.30.705)
+- [Hitachi Quantum Measurement: the electron biprism and localized detections](https://www.hitachi.com/rd/research/materials/quantum/doubleslit/index.html)
+- [UCSB: an actual electron-diffraction apparatus and sample patterns](https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/88.12.html)
 
 </details>

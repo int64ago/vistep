@@ -169,18 +169,32 @@ describe('modern-physics film state is independent of exploration', () => {
   });
 
   it('derives foil exit rays from the same outer-ring model at both voltage endpoints', async () => {
-    for (const value of [0, 1]) {
+    for (const [value, width] of [
+      [0, 280],
+      [1, 280],
+      [0, 640],
+      [1, 640],
+    ]) {
       let view!: ReactTestRenderer;
       await act(() => {
-        view = create(createElement(MatterWaveArtwork, { mode: 1, value }));
+        view = create(createElement(MatterWaveArtwork, { mode: 1, value, width }));
       });
-      const beam = view.root.findAllByType('path').find((p) => p.props.d.startsWith('M94 86H182'))!;
-      const coordinates = beam.props.d
-        .match(/L287 ([\d.-]+)/g)
-        .map((x: string) => Number(x.slice(5)));
-      const expected = (powderRadii(2000 + 5000 * value)[1] / 100) * 105;
-      expect(86 - coordinates[0]).toBeCloseTo(expected, 12);
-      expect(coordinates[1] - 86).toBeCloseTo(expected, 12);
+      const beams = view.root
+        .findAllByType('path')
+        .filter((p) => p.props['data-powder-cone'] !== undefined);
+      expect(beams).toHaveLength(2);
+      const radii = powderRadii(2000 + 5000 * value);
+      for (const beam of beams) {
+        const coordinates = beam.props.d.match(/-?\d+(?:\.\d+)?/g).map(Number);
+        expect(coordinates).toHaveLength(8);
+        const [foilX, axisY, screenX, upperY, lowerFoilX, lowerAxisY, lowerScreenX, lowerY] =
+          coordinates;
+        expect(screenX).toBeGreaterThan(foilX);
+        expect([lowerFoilX, lowerAxisY, lowerScreenX]).toEqual([foilX, axisY, screenX]);
+        const expectedSlope = radii[beam.props['data-powder-cone']]! / 100;
+        expect((axisY - upperY) / (screenX - foilX)).toBeCloseTo(expectedSlope, 12);
+        expect((lowerY - axisY) / (screenX - foilX)).toBeCloseTo(expectedSlope, 12);
+      }
       await act(() => view.unmount());
     }
   });

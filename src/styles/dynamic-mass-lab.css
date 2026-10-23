@@ -1,237 +1,129 @@
 .dynamic-mass-lab {
-  color: #536c5a;
-  max-width: 1040px;
+  max-width: 700px;
   margin: auto;
-  padding: clamp(16px, 4vw, 42px);
-}
-.dynamic-mass-lab header {
-  text-align: center;
-}
-.dynamic-mass-lab header p {
-  font-size: clamp(20px, 2.5vw, 29px);
-  line-height: 1.5;
-  margin: 0 0 8px;
-}
-.dynamic-mass-lab header > span {
+  color: #536c5a;
+  padding: 8px 12px;
   font-size: 16px;
-  color: #7d8d74;
 }
-.dynamic-mass-layout {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  align-items: center;
-  gap: 32px;
-  margin: 28px 0;
-}
-.dynamic-mass-cabin {
-  background: radial-gradient(ellipse at 68% 45%, #edf0e554, transparent 65%);
+.dynamic-mass-stage {
   min-width: 0;
+  height: 246px;
+  position: relative;
 }
-.dynamic-mass-cabin svg {
+.dynamic-mass-stage svg {
   display: block;
   width: 100%;
+  height: 208px;
   overflow: visible;
 }
-.dynamic-mass-caption {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+.dynamic-mass-stage svg text {
   font-size: 16px;
+  fill: currentColor;
 }
-.dynamic-mass-caption b {
-  font-weight: 500;
-  color: #7f8d68;
-}
-.dynamic-mass-record {
-  min-width: 0;
-  border-left: 1px solid #dbe1ce;
-  padding-left: 24px;
-}
-.dynamic-mass-record > p {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 17px;
-}
-.dynamic-mass-record > p span {
-  color: #879375;
+.dynamic-mass-kicker,
+.dynamic-mass-foot {
+  text-align: center;
   font-size: 16px;
+  line-height: 22px;
+  min-height: 22px;
 }
-.dynamic-mass-record svg {
-  display: block;
-  width: 100%;
+.dynamic-mass-cabin svg {
+  height: 200px;
 }
-.dynamic-mass-result,
-.dynamic-mass-equation {
+.dynamic-mass-inference {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin: 16px 0;
+  justify-content: center;
+  height: 240px;
+  gap: 18px;
+}
+.dynamic-mass-inference p {
+  margin: 0;
   font-size: 16px;
 }
-.dynamic-mass-result strong {
-  font-size: 29px;
-  font-weight: 400;
-  color: #82966f;
+.dynamic-mass-inference strong {
+  font-size: 21px;
+  font-weight: 500;
 }
-.dynamic-mass-result small {
-  font-size: 16px;
-  font-weight: 400;
+.dynamic-mass-parts {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
 }
-.dynamic-mass-equation b {
-  font-size: 22px;
-  font-weight: 400;
+.dynamic-mass-parts b {
+  display: block;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 8px;
 }
-.dynamic-mass-equation strong {
-  font-size: 36px;
-  font-weight: 400;
-  color: #9c865e;
-}
-.dynamic-mass-wait {
-  font-size: 16px !important;
-  color: #8a967b;
-}
-.dynamic-mass-cause {
+.dynamic-mass-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
   text-align: center;
-  font-size: 17px;
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 24px auto;
+}
+.dynamic-mass-pair svg {
+  height: 168px;
 }
 .dynamic-mass-controls {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 24px 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 0;
 }
-.dynamic-mass-note {
+.dynamic-mass-controls .segmented {
+  flex-wrap: wrap;
+}
+.dynamic-mass-controls .segmented button,
+.dynamic-mass-controls button {
+  min-height: 44px;
+  min-width: 44px;
+  font-size: 16px;
+}
+.dynamic-mass-controls input[type='range'] {
+  margin-inline: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.dynamic-mass-controls details {
   font-size: 16px;
   line-height: 1.6;
-  color: #84917a;
-  text-align: center;
-  margin: 18px auto 0;
-  max-width: 760px;
 }
-@media (max-width: 640px) {
-  .dynamic-mass-lab {
-    padding: 20px 12px;
-  }
-  .dynamic-mass-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin: 20px 0;
-  }
-  .dynamic-mass-cabin {
-    width: 100%;
-  }
-  .dynamic-mass-caption {
-    gap: 8px 18px;
-  }
-  .dynamic-mass-record {
-    border-left: 0;
-    border-top: 1px solid #dbe1ce;
-    padding: 16px 0 0;
-    width: 100%;
-  }
-  .dynamic-mass-record > p {
-    margin: 0;
-  }
-  .dynamic-mass-result {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .dynamic-mass-equation {
-    align-items: center;
-  }
-  .dynamic-mass-controls {
-    grid-template-columns: 1fr;
-  }
-  .dynamic-mass-cause {
-    margin: 14px auto;
-  }
+.dynamic-mass-controls summary {
+  min-height: 44px;
+  cursor: pointer;
 }
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .dynamic-mass-lab {
-    padding: 12px 8px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-lab > header > span,
-  .showcase[data-mode='watch'] .dynamic-mass-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .dynamic-mass-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .dynamic-mass-lab > p[class$='-observation'] {
-    display: none;
-  }
+.dynamic-mass-controls button {
+  border: 1px solid #d3ddcf;
+  border-radius: 18px;
+  background: #eef2e9;
+  color: inherit;
 }
-
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .dynamic-mass-layout {
-    margin: 6px 0;
-    gap: 5px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-cabin svg {
-    max-height: 175px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-caption {
-    gap: 5px 12px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-record {
-    padding: 5px 0 0;
-    border: 0;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-record > p {
-    display: none;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-record svg {
-    height: 105px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-record svg text {
-    font-size: 24px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-result,
-  .showcase[data-mode='watch'] .dynamic-mass-equation {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: center;
-    gap: 4px 10px;
-    margin: 6px 0;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-result strong,
-  .showcase[data-mode='watch'] .dynamic-mass-equation strong {
-    font-size: 23px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-equation b {
-    font-size: 18px;
-  }
-  .showcase[data-mode='watch'] .dynamic-mass-equation > span {
-    display: none;
-  }
+.dynamic-mass-controls .control {
+  min-width: 0;
 }
-
-/* The current film caption already supplies this step's explanation. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .dynamic-mass-lab > header {
-    display: none;
-  }
+.dynamic-mass-controls .control-top {
+  gap: 12px;
 }
-
+.dynamic-mass-controls .control-top span {
+  min-width: 0;
+}
 @media (max-width: 600px) {
-  .showcase[data-mode='watch'] .dynamic-mass-lab {
-    padding-block: 6px;
+  .dynamic-mass-lab {
+    padding: 6px 12px;
+  }
+  .dynamic-mass-pair {
+    gap: 6px;
+  }
+  .dynamic-mass-pair svg {
+    height: 168px;
+  }
+  .dynamic-mass-inference strong {
+    font-size: 19px;
+  }
+  .dynamic-mass-parts {
+    gap: 16px;
   }
 }
