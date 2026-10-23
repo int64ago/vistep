@@ -48,3 +48,28 @@ it('preserves cells and coats, makes omitted blending a real confound, and retai
   expect(hersheyChaseEvidence.phosphorus.releasedByShear).toBe(0.15);
   expect(hersheyChaseEvidence.sulfur.progeny.operator).toBe('<');
 });
+
+import { materialFilmState } from './bio-genetic-material';
+it('preserves independent samples and reaches each effect while it is named in unchanged speech', () => {
+  for (const locale of ['zh', 'en']) {
+    expect(materialFilmState(0, 3, locale).selected).toBe(0);
+    expect(materialFilmState(0, 16, locale).selected).toBe(3);
+    expect(materialFilmState(3, 10, locale).treatment).toBe('dnase');
+    expect(materialFilmState(3, 14.3, locale).p).toBe(1);
+    expect(materialFilmState(5, 5, locale).isotope).toBe('sulfur');
+    expect(materialFilmState(5, 12, locale)).toMatchObject({ p: 1, isotope: 'phosphorus' });
+    expect(materialFilmState(6, 16, locale)).toMatchObject({
+      p: 1,
+      blended: true,
+      isotope: 'phosphorus',
+    });
+    expect(materialFilmState(6, 28, locale)).toMatchObject({
+      p: 1,
+      blended: false,
+      isotope: 'sulfur',
+      sample: 'fresh-unblended-control',
+    });
+  }
+  expect(phageDnaPoint(3, NaN)).toEqual(phageDnaPoint(3, 0));
+  expect(materialFilmState(2, NaN).p).toBe(0);
+});

@@ -1,27 +1,40 @@
-<h2 id="understand">First identify what the electrodes measure</h2>
+<h2 id="understand">Why can one signal deflect the meter both ways?</h2>
 
-Two electrodes lie on the nerve surface. At rest their potentials match; excitation reaches a before b, producing successive differences with opposite signs. Both deflections result from one traveling excitation, rather than two signals moving in opposite directions.
+Both electrodes sit outside the nerve. The meter subtracts their extracellular potentials. One excitation arrives at a and then b, reversing the sign of that difference. Two deflections do not require two signals traveling in opposite directions.
 
-Membrane voltage is a different quantity: inside relative to outside. Changing ionic permeability contributes to an action potential. The film separates that voltage from the extracellular difference before approaching a synapse. A terminal releases transmitter, which binds receptors and alters postsynaptic channel state. Clearance then reduces the effect.
+Membrane voltage measures something else: inside relative to outside. A thin membrane acts as a capacitor. A small charge imbalance near its surfaces can support a voltage while the bulk fluids remain nearly neutral. Follow the selected sodium and potassium markers: increased sodium conductance favors inward positive charge; stronger potassium outflow then brings voltage down. The two short surface-charge bars and the voltage trace come from the same charge account.
 
-A historical comparison asks whether contraction through a metal bridge uniquely establishes a biological electrical source. It does not. Appropriate tissue contact without metal and interruption of the connection provide additional evidence. The images explain inference; they do not demonstrate animal procedures.
+At a synapse, transmitter passes through a fusion pore into the extracellular cleft. Binding to responsive receptors changes the next membrane's voltage in this excitatory example. The transmitter does not enter that cell. Clearance weakens the response. Two separate controlled trials then distinguish no release from normal release with an unresponsive receptor.
 
-<h2 id="try">Distinguish different kinds of zero</h2>
+The historical comparison asks where the electrical effect originates. Contraction with a metal connection does not by itself exclude a contribution from the metal. Appropriate contact without metal, followed by interrupted contact, constrains the inference. These are reconstructions of evidence logic, not instructions for animal experiments.
 
-Coincident surface electrodes give zero difference even when the nerve is active. Increasing propagation speed changes arrival times without changing this model pulse's amplitude. A zero meter reading therefore need not imply an inactive nerve.
+<h2 id="try">Different ways to obtain zero</h2>
 
-The synapse exploration shows membrane voltage early in the sequence, followed by transmitter release and receptor response. Removing release differs from disabling the receptor: the latter still allows transmitter to reach the other membrane. The historical view separately compares metal contact, tissue contact and a disconnected route.
+Coincident electrodes give zero difference even while local excitation remains. Changing conduction speed changes arrival times without changing the chosen pulse's amplitude.
 
-<h2 id="deeper">Waveforms, receptors and declared approximations</h2>
+Close the sodium pathway to remove the sodium-driven rise in this model. Close potassium to remove the original recovery. With both pathways shut, the membrane retains its initial voltage. A larger capacitance gives a smaller voltage change for the same charge transfer, but the changed voltage also affects subsequent current, so the whole trajectory is recalculated.
 
-The surface record uses a translated negative pulse. Both electrodes sample the same function. The default 20 mm spacing and speed of 20 mm/ms give an independently checkable arrival difference of 1 ms. Amplitude uses relative units; it is not a measured frog compound action potential. A separate membrane waveform represents approximately −70 mV rest, depolarization and recovery without claiming to solve the Hodgkin–Huxley equations.
+At the synapse, leave transmitter present but disable the receptor. Cleft markers remain while the original postsynaptic response disappears. Exploration starts from the current shot and condition. After a manual choice, that choice persists; returning to the demonstration restores the film's independent conditions.
 
-The synapse model has one release, a finite transmission delay, exponential clearance and a saturating binding relation:
+<h2 id="deeper">From current to charge to voltage</h2>
 
-<div className="formula">Bound fraction = C/(Kd + C)</div>
+The modern sign convention is V = potential inside − potential outside. Sodium current inward and potassium current outward are positive:
 
-C is a normalized transmitter signal and Kd = 0.35 is a teaching choice. The voltage response illustrates an excitatory example, not every kind of synapse. Markers indicate identity and route rather than molecular size, number or microscopic diffusion trajectories.
+<div className="formula">I_Na = g_Na(E_Na − V), I_K = g_K(V − E_K); C_m ΔV = Q_Na,in − Q_K,out</div>
 
-Tests independently check coincident electrodes, opposite peaks, propagation delay, absent release versus blocked response, and the disconnected historical comparison. Spatial extracellular currents, thresholds, refractory behavior and many-fiber recruitment in real tissue are outside this pulse illustration.
+Current is integrated and accumulated charge determines voltage. The voltage curve is not prescribed separately. Conductance is in mS/cm², capacitance in μF/cm², time in ms, voltage in mV, and integrated charge in nC/cm². Fixed reservoirs give E_Na = +60 mV and E_K = −90 mV over this short interval. Chosen basal conductances balance at −70 mV. Basal currents are included without drawing every ion.
 
-Sources: [OpenStax, How Neurons Communicate](https://openstax.org/books/biology-2e/pages/35-2-how-neurons-communicate), [Nobel Prize education, Nerve Signaling](https://educationalgames.nobelprize.org/educational/medicine/nerve_signaling/overview/index.php). Textbook location: PEP Biology, Elective 1, pages 27–29 and 32.
+This is a **local teaching model with prescribed gate timing**. It does not solve actual voltage-dependent gating, threshold, refractoriness, or propagation. Disabling a pathway also removes its basal conductance, so disabling sodium alone does not preserve the original resting balance. The same imposed potassium schedule remains, so that intervention is not a complete prediction for a real blocked axon. The two selected markers preserve identity; their illustrative positions follow cumulative passage, rather than measured microscopic paths or total ion counts. Opening size is not a single-channel conductance measurement. No pump resets the recovery curve.
+
+An independent scale estimate helps: a spherical cell of radius 10 μm, specific capacitance 1 μF/cm², and voltage change 100 mV needs about 1.26 pC of net charge. Relative to a monovalent reservoir at 150 mmol/L, this is about 0.0021%. It is the net capacitive charge, not the total of opposing ionic fluxes during an action potential, and is not measured data from this film.
+
+<details>
+<summary>Other limits of the surface and synapse views</summary>
+
+The surface record uses one translated negative pulse, sampled by both electrodes. At the default separation of 20 mm and speed of 20 mm/ms, arrivals differ by 1 ms. Amplitude uses relative units, not a measured frog compound action potential. This traveling pulse and the local charge model explain distinct measurements; neither is a complete spatial solution for the other.
+
+The synapse keeps 18 marker identities and uses one release, a finite transit delay, exponential clearance, and saturating binding C/(Kd + C), with the teaching choice Kd = 0.35. It is one excitatory example, not every synapse, and marker counts are not molecular counts. The historical view compares appropriate contacts; arbitrary tissue contact need not cause contraction.
+
+</details>
+
+Sources: the membrane capacitance and conductance framework in [Hodgkin and Huxley's original 1952 study](https://doi.org/10.1113/jphysiol.1952.sp004764), [readable original PDF](https://materias.df.uba.ar/dnla2019c1/files/2019/03/hodgkin1952.pdf), pp. 500–505; and [OpenStax, How Neurons Communicate](https://openstax.org/books/biology-2e/pages/35-2-how-neurons-communicate). The original paper uses a different voltage sign convention, explicitly converted here. Textbook context: PEP Senior High School Biology, Selective Compulsory 1, pp. 27–29 and 32.

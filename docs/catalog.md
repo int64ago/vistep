@@ -66,7 +66,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                       | 2:48 | Where in ethanol does the released hydrogen come from?                        |
 | [Mass separation and molecular-formula evidence](../src/content/en/chem-mass-spectrometry.mdx)      | 3:18 | Can the tallest or rightmost peak establish molecular mass?                   |
 | [Two charge pathways in a galvanic cell](../src/content/en/chem-galvanic-cells.mdx)                 | 4:47 | If electrons avoid the liquid, how does the circuit close?                    |
-| [Evidence from ethene and ethyne](../src/content/en/chem-unsaturated-hydrocarbons.mdx)              | 3:46 | Why do two colour changes need different explanations?                        |
+| [Evidence from ethene and ethyne](../src/content/en/chem-unsaturated-hydrocarbons.mdx)              | 4:07 | Why do two colour changes need different explanations?                        |
 | [Infrared absorption and structural evidence](../src/content/en/chem-infrared-structure.mdx)        | 2:23 | How does infrared absorption reveal a molecular functional group?             |
 | [Evidence behind noble-gas discoveries](../src/content/en/chem-noble-gas-evidence.mdx)              | 2:50 | How did subtle differences reveal elements and revise the idea of inertness?  |
 | [Light-induced methane substitution](../src/content/en/chem-methane-substitution.mdx)               | 3:15 | Why does one tube fade, form droplets and draw liquid upward?                 |
@@ -312,7 +312,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Propagation and superposition in a ripple tank](../src/content/en/ripple-tank-lab.mdx)     | 4:48 | Why does the same water surface form different wave patterns?                |
 | [Ropes, human waves and spring waves](../src/content/en/mechanical-wave-lab.mdx)            | 2:48 | When a wave travels forward, where does the medium go?                       |
 | [From rope motion to optical polarization](../src/content/en/polarization-evidence-lab.mdx) | 3:16 | What can a rotating slit select?                                             |
-| [From a slit to light inside a shadow](../src/content/en/optical-diffraction-lab.mdx)       | 3:44 | Why does a narrower gap spread light farther?                                |
+| [From a slit to light inside a shadow](../src/content/en/optical-diffraction-lab.mdx)       | 4:17 | Why does a smaller opening spread light farther?                             |
 | [Measure with interference fringes](../src/content/en/double-slit-measurement-lab.mdx)      | 3:44 | How can a few bright fringes reveal wavelength?                              |
 | [Brightness written by film thickness](../src/content/en/thin-film-lab.mdx)                 | 2:54 | How does film thickness become brightness and color?                         |
 | [Trace total reflection at boundaries](../src/content/en/total-reflection-lab.mdx)          | 3:44 | How can light follow a curved rod or water jet?                              |

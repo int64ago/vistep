@@ -77,3 +77,89 @@ describe('neural evidence models', () => {
     expect(bioelectricEvidence('broken', 0.5).contraction).toBe(0);
   });
 });
+
+import {
+  membraneCharge,
+  membraneChargeStep,
+  membraneConductances,
+  membraneMarkers,
+  capacitiveIonFraction,
+  nerveDirector,
+} from './bio-nerve-signals';
+describe('local capacitive membrane teaching patch', () => {
+  it('has an independent analytic constant-conductance benchmark', () => {
+    const s = membraneChargeStep(-70, 1, 2, 0, 1);
+    expect(s.voltage).toBeCloseTo(60 - 130 * Math.exp(-2), 10);
+    expect(s.sodiumIn).toBeCloseTo(s.voltage + 70, 10);
+    expect(s.potassiumOut).toBe(0);
+    expect(membraneChargeStep(-70, 2, 0, 0).voltage).toBe(-70);
+  });
+  it('derives voltage from conserved inner/outer charge in every intervention', () => {
+    for (const sodium of [false, true])
+      for (const potassium of [false, true])
+        for (const capacitance of [0.5, 1, 2])
+          for (let i = 0; i <= 60; i++) {
+            const q = membraneCharge(i / 10, { sodium, potassium, capacitance });
+            expect(q.insideCharge + q.outsideCharge).toBeCloseTo(0, 10);
+            expect(q.voltage).toBeCloseTo(q.insideCharge / capacitance, 10);
+            expect(q.deltaCharge).toBeCloseTo(q.sodiumIn - q.potassiumOut, 10);
+            expect(q.voltage).toBeGreaterThanOrEqual(-90 - 1e-9);
+            expect(q.voltage).toBeLessThanOrEqual(60 + 1e-9);
+            if (!sodium) expect(q.sodiumIn).toBe(0);
+            if (!potassium) expect(q.potassiumOut).toBe(0);
+          }
+  });
+  it('changes the trace when permeability or capacitance changes rather than replaying one wave', () => {
+    expect(membraneCharge(0).voltage).toBe(-70);
+    expect(membraneCharge(1.4).voltage).toBeGreaterThan(30);
+    expect(membraneCharge(6).voltage).toBeGreaterThan(-73);
+    expect(membraneCharge(1.4, { sodium: false }).voltage).toBeLessThan(-70);
+    expect(membraneCharge(6, { potassium: false }).voltage).toBeGreaterThan(0);
+    expect(membraneCharge(1, { capacitance: 2 }).voltage).toBeLessThan(membraneCharge(1).voltage);
+    expect(membraneCharge(6, { sodium: false, potassium: false }).voltage).toBe(-70);
+  });
+  it('preserves selected ion identity and uses each actual channel path', () => {
+    let prior = membraneMarkers(membraneCharge(0), 280);
+    for (let i = 1; i <= 600; i++) {
+      const state = membraneCharge(i / 100),
+        markers = membraneMarkers(state, 280);
+      expect(markers.map((m) => m.id)).toEqual(['Na-selected', 'K-selected']);
+      markers.forEach((m, j) => {
+        expect(m.x).toBeCloseTo(280 * (j === 0 ? 0.32 : 0.68));
+        expect(Math.abs(m.y - prior[j].y)).toBeLessThan(8);
+        expect(m.progress).toBeGreaterThanOrEqual(prior[j].progress);
+      });
+      prior = markers;
+    }
+    expect(membraneMarkers(membraneCharge(6, { sodium: false }), 280)[0].progress).toBe(0);
+  });
+  it('checks small net charge against an independently defined reservoir', () => {
+    const q = capacitiveIonFraction();
+    expect(q.capacitanceFarad).toBeCloseTo(12.566370614e-12, 20);
+    expect(q.chargeCoulomb).toBeCloseTo(1.2566370614e-12, 20);
+    expect(q.fraction).toBeCloseTo(2.072853931e-5, 13);
+    expect(capacitiveIonFraction(20).fraction).toBeCloseTo(q.fraction / 2, 13);
+  });
+  it('keeps finite outputs for clamped limits and null stimulation paths', () => {
+    for (const t of [NaN, -10, Infinity, 1e9]) {
+      const s = membraneCharge(t, { capacitance: NaN });
+      expect(Object.values(s).every(Number.isFinite)).toBe(true);
+    }
+    expect(membraneConductances(0.2).sodiumGate).toBe(0);
+  });
+  it('aligns retained recordings without discontinuously restarting the surface pulse', () => {
+    expect(nerveDirector(0, 22).surfaceTime).toBe(nerveDirector(1, 0).surfaceTime);
+    for (const l of ['zh', 'en'] as const) {
+      expect(nerveDirector(2, 3, l).membraneTime).toBe(0);
+      expect(nerveDirector(2, 14, l).membraneTime).toBe(6);
+      expect(nerveDirector(3, 22, l).synapseProgress).toBe(nerveDirector(4, 0, l).synapseProgress);
+      expect(nerveDirector(4, 16, l).receptorCounterexample).toBe(true);
+    }
+  });
+});
+
+it('retains a finite zero-scale limit when the exact step exponent underflows', () => {
+  const q = membraneChargeStep(-70, Number.MIN_VALUE, 0.001, 0.001);
+  expect(Object.values(q).every(Number.isFinite)).toBe(true);
+  expect(q.voltage).toBe(-70);
+});

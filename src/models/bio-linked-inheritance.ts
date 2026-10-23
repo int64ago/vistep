@@ -172,3 +172,78 @@ export const groupSurveySamples = [
   teachingPopulation.slice(0, 20),
   teachingPopulation.slice(20, 100),
 ];
+
+const finiteUnit = (v: number) => Math.max(0, Math.min(1, Number.isFinite(v) ? v : 0));
+/** Presentation of computed gamete classes. Tokens preserve parental origin within each
+ * selected theoretical combination; none is claimed to be an observed fly or measured count. */
+export function linkedTransmission(mother: XFemale, father: XMale, progress: number, width = 280) {
+  const p = finiteUnit(progress),
+    w = Number.isFinite(width) ? Math.max(240, Math.min(720, width)) : 280;
+  const outcomes = xLinkedCross(mother, father).sort(
+    (a, b) =>
+      Number(a.sex === 'male') - Number(b.sex === 'male') ||
+      Number(a.affected) - Number(b.affected),
+  );
+  const index = Math.min(outcomes.length - 1, Math.floor(p * outcomes.length)),
+    q = p === 1 ? 1 : p * outcomes.length - index;
+  const smooth = q * q * (3 - 2 * q),
+    child = outcomes[index];
+  const tokens = (
+    [
+      ['maternal', child.maternal, 0.27 * w, 0.5 * w - 12],
+      ['paternal', child.paternal, 0.73 * w, 0.5 * w + 12],
+    ] as const
+  ).map(([source, allele, x0, x1]) => ({
+    id: `class-${index}-${source}`,
+    source,
+    allele,
+    x: x0 + (x1 - x0) * smooth,
+    y: 18 + 56 * smooth,
+  }));
+  return {
+    outcomes,
+    index,
+    q,
+    tokens,
+    child,
+    revealed: outcomes.map((_, i) => i < index || (i === index && q >= 0.92)),
+  };
+}
+/** Existing speech, independently decoded. Times are chapter-local seconds including the .45s lead-in. */
+export function linkedFilmState(chapter: number, time: number, locale: 'zh' | 'en' = 'zh') {
+  const t = Math.max(0, Number.isFinite(time) ? time : 0),
+    en = locale === 'en',
+    step = (a: number, b: number) => finiteUnit((t - a) / (b - a));
+  let progress = 0;
+  if (chapter === 0)
+    progress =
+      t < (en ? 12.4 : 10.8)
+        ? 0.5 * step(5.3, en ? 12.3 : 10.7)
+        : 0.5 + 0.5 * step(en ? 12.4 : 10.8, en ? 17.4 : 15.6);
+  if (chapter === 1) progress = step(en ? 7.7 : 6.6, en ? 10.7 : 10.2);
+  if (chapter === 2) progress = step(en ? 8.7 : 8.5, en ? 15.7 : 16.3);
+  if (chapter === 3)
+    progress = t < 8.6 ? 0.5 * step(4.4, 8.3) : 0.5 + 0.5 * step(8.6, en ? 14.1 : 14.6);
+  if (chapter === 4) progress = step(en ? 5.1 : 5.7, en ? 9 : 10.2);
+  if (chapter === 5) progress = step(2, en ? 24 : 25.5);
+  if (chapter === 6) progress = step(en ? 4.7 : 3.6, en ? 8.7 : 9.4);
+  if (chapter === 7) progress = step(0.8, en ? 5 : 5.6);
+  const focus =
+    t < (en ? 5.4 : 5.1)
+      ? 'I-1'
+      : t < (en ? 11.3 : 13.1)
+        ? 'II-3'
+        : t < (en ? 18.8 : 20.3)
+          ? 'III-6'
+          : 'I-2';
+  return {
+    progress,
+    focus,
+    reveal: t >= (en ? 8 : 10),
+    sampleCount: Math.round(progress * 200),
+    candle: progress > 0.5,
+    poolReveal: t >= (en ? 4.8 : 5.4),
+    duplicateReveal: t >= (en ? 10.6 : 12.2),
+    secondGroup: t >= (en ? 2.7 : 3),
+  };
+}

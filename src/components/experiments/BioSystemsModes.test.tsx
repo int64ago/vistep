@@ -5,6 +5,8 @@ import { FilmContext, type Director } from '../lab/FilmContext';
 import BioBufferComparison from './BioBufferComparison';
 import BioNerveSignals from './BioNerveSignals';
 import BioChemicalSignals from './BioChemicalSignals';
+import variants from '../../data/curriculum-variants.json';
+import timeline from '../../data/film-timeline.json';
 vi.mock('../../i18n', () => ({ browserLocale: () => 'zh' }));
 vi.mock('../lab/SignalFigure', () => ({
   useSignalWidth: () => ({ host: { current: null }, width: 320, compact: true }),
@@ -22,6 +24,21 @@ const base: Director = {
 };
 const render = (C: ComponentType, value: Director) =>
   createElement(FilmContext.Provider, { value }, createElement(C));
+function entryDirector(variant: keyof typeof variants): Director {
+  const selected = variants[variant];
+  const film = timeline[selected.sceneSlug as keyof typeof timeline];
+  const chapter = film.chapters.findIndex((c) => c.id === selected.chapterIds[0]);
+  expect(chapter).toBeGreaterThanOrEqual(0);
+  return {
+    ...base,
+    watch: false,
+    variant,
+    chapter,
+    chapterTime: 0,
+    chapterProgress: 0,
+    time: film.chapters[chapter].at,
+  };
+}
 beforeAll(() => {
   (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 });
@@ -49,17 +66,29 @@ describe('biology systems directed and exploration states', () => {
   );
   it.each([
     [BioNerveSignals, 'bio-elective-1-032-1', '金属连接'],
-    [BioNerveSignals, 'bio-elective-1-mechanism-15', '突触前末梢'],
+    [BioNerveSignals, 'bio-elective-1-mechanism-15', '少量电荷差形成电压'],
     [BioChemicalSignals, 'bio-elective-1-045-1', '酸进入小肠'],
   ] as const)(
     'selects the specified apparatus on a direct curriculum visit',
     async (C, variant, expected) => {
       let view!: ReactTestRenderer;
       await act(async () => {
-        view = create(render(C, { ...base, watch: false, variant }));
+        view = create(render(C, entryDirector(variant)));
       });
       expect(JSON.stringify(view.toJSON())).toContain(expected);
+      if (variant === 'bio-elective-1-mechanism-15') {
+        expect(view.root.findByProps({ className: 'bns18' }).props['data-theme']).toBe('membrane');
+      }
       await act(async () => view.unmount());
     },
   );
+  it('keeps later synapse chapters reachable within the membrane-mechanism textbook window', async () => {
+    let view!: ReactTestRenderer;
+    const entry = entryDirector('bio-elective-1-mechanism-15');
+    await act(async () => {
+      view = create(render(BioNerveSignals, { ...entry, chapter: 3, chapterTime: 10 }));
+    });
+    expect(JSON.stringify(view.toJSON())).toContain('突触前后膜');
+    await act(async () => view.unmount());
+  });
 });

@@ -911,17 +911,17 @@ export const topics: Topic[] = [
     name: '乙烯与乙炔的性质证据',
     title: '两次褪色，解释为什么不同？',
     question: '两次褪色，解释为什么不同？',
-    description: '按教材顺序比较燃烧、氧化与加成，再追踪乙炔从发生到净化和性质检验的完整气路。',
+    description: '从乙烯与乙炔的观察追踪锰的电子预算、溴的净加成及净化干扰。',
     color: '#b4c3a4',
     tag: '氧化 · 加成 · 排除干扰',
     related: ['chem-methane-substitution', 'chem-carbon-frameworks', 'chem-petroleum-refining'],
     sources: [
       {
-        title: 'OpenStax — Reactions of alkynes, original author text',
+        title: 'McMurry Organic Chemistry 9.3',
         url: 'https://openstax.org/books/organic-chemistry/pages/9-3-reactions-of-alkynes-addition-of-hx-and-x2',
       },
       {
-        title: 'UW-Madison — Organic chemistry carbide lamp',
+        title: 'UW–Madison Carbide Lamp',
         url: 'https://demolab.chem.wisc.edu/general-chemistry-demonstrations-topic-page/organic-chemistry-carbide-lamp-2/',
       },
       {
@@ -931,6 +931,18 @@ export const topics: Topic[] = [
       {
         title: '人教版必修二67—68页、选必三37—38页',
         url: 'https://jc.pep.com.cn/',
+      },
+      {
+        title: 'OpenStax Chemistry: Atoms First 16.1',
+        url: 'https://openstax.org/books/chemistry-atoms-first/pages/16-1-balancing-oxidation-reduction-reactions',
+      },
+      {
+        title: 'McMurry Organic Chemistry 10.8',
+        url: 'https://openstax.org/books/organic-chemistry/pages/10-8-oxidation-and-reduction-in-organic-chemistry',
+      },
+      {
+        title: 'McMurry Organic Chemistry 8.8',
+        url: 'https://openstax.org/books/organic-chemistry/pages/8-8-oxidation-of-alkenes-cleavage-to-carbonyl-compounds',
       },
     ],
     number: '403',
@@ -4598,9 +4610,9 @@ export const topics: Topic[] = [
   {
     slug: 'optical-diffraction-lab',
     name: '从狭缝到阴影中的亮点',
-    title: '缝变窄，光为什么反而铺得更开？',
-    question: '缝变窄，光为什么反而铺得更开？',
-    description: '把可调狭缝、圆孔、铅笔、卡尺与泊松亮斑放回各自装置。',
+    title: '开口变小，光为什么铺得更宽？',
+    question: '开口变小，光为什么铺得更宽？',
+    description: '追踪同一开口内各带的场如何相加，预测首暗方向，再检验圆盘阴影中的亮点。',
     color: '#aebfa8',
     tag: '波动光学',
     related: ['diffraction', 'double-slit', 'matter-wave-lab'],
@@ -4616,6 +4628,19 @@ export const topics: Topic[] = [
       {
         title: 'OpenStax — Single-slit diffraction',
         url: 'https://openstax.org/books/university-physics-volume-3/pages/4-1-single-slit-diffraction',
+      },
+      {
+        title: 'OpenStax University Physics Volume 3, 4.1–4.2 Single-Slit Diffraction',
+        url: 'https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction',
+      },
+      {
+        title: 'MIT 2.71/2.710 Optics, 2009 Lecture 15: Huygens principle and Fresnel diffraction',
+        url: 'https://ocw.mit.edu/courses/2-71-optics-spring-2009/c5c982b1fe835b982df0090dbd528d39_MIT2_71S09_lec15.pdf',
+      },
+      {
+        title:
+          'Princeton Physics 501 Problem Set 9, Solution 5: Fresnel Diffraction by an Opaque Circular Disk',
+        url: 'https://kirkmcd.princeton.edu/examples/ph501set9.pdf',
       },
     ],
     number: '279',

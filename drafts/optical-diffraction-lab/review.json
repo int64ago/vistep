@@ -1,0 +1,194 @@
+{
+  "slug": "optical-diffraction-lab",
+  "status": "candidate-frozen",
+  "candidateRoot": "artifacts/teaching-principles/batch-18-staging/physics",
+  "sourceCommit": "bc5590b671c24d8a439078f31546f759dca84728",
+  "scope": "11 isolated owned regular files. Actual shared Showcase and full Base CSS in candidate harness; no canonical product/shared/index/audio/dist write.",
+  "sources": {
+    "report": "checks/sources/source-review.json",
+    "context": "Entire textbook P104–107, actual P104–107 page images, and prior interference context. Primary instructional OpenStax/MIT/Princeton sources reviewed.",
+    "identity": "All screen samples are computed model values, not textbook photograph samples or a fabricated historical table."
+  },
+  "preservation": {
+    "chapterIds": [
+      "slit-wide",
+      "slit-narrow",
+      "slit-white",
+      "circular-aperture",
+      "pencil-gap",
+      "caliper-gap",
+      "poisson-shadow",
+      "poisson-size"
+    ],
+    "windows": ["e1-single-slit-diffraction", "e1-poisson-spot"],
+    "retainedSpokenPairs": ["slit-wide", "slit-white", "circular-aperture", "poisson-size"],
+    "changedSpokenPairs": ["slit-narrow", "pencil-gap", "caliper-gap", "poisson-shadow"],
+    "cueDiff": "All eight cue fields compared in packet.spokenDiff.",
+    "duration": "242 seconds provisional, not recorded duration."
+  },
+  "science": {
+    "contract": "Same paraxial kernel for full slit and eight extended bands; independent pair sum and path-length ruler; finite-distance residual retained; scalar circle integral and complex Babinet complement; analytic on-axis field benchmark.",
+    "limits": [
+      "Monochromatic coherent uniform plane illumination; scalar paraxial Fresnel propagation; no vector edge/support/noise model.",
+      "The eight aperture bands are extended intervals integrated with the same kernel, not eight point sources. Pair cancellation and a sinθ=λ are far-field inferences; finite-z screen minima are not asserted exact zeros.",
+      "The axial rim diagram shows equal path/phase by symmetry, not 12 independent emitters used to generate the screen. All radial intensity values come from the full circular aperture integral and Babinet complement.",
+      "Ideal plane-wave on-axis unit intensity is distinct from a finite point-source experiment. Princeton Solution 5 gives a different finite-source configuration and supports the existence/scope of the axial spot, not our normalization.",
+      "Three wavelength channels are illustrative, not calibrated white-light colorimetry. Fixed nonlinear exposure is used: 100 for slit/circular opening and 2.5 for opaque disk; cross-apparatus display brightness is not a photometric comparison. Curves use the same exposure mapping, not a linear intensity ordinate.",
+      "Slit/rim geometry is enlarged with compressed propagation distance. Pencil/jaw ideal openings use an equivalent 1 m screen, not an eye/rough-edge simulation.",
+      "Quantitative first-minimum views allow 50–150 micrometers, keeping the Fresnel number at most 0.05 and the predicted minimum inside the ±15 mm screen. General Fresnel screen remains 30–800 micrometers. No historical dataset or measurement is invented; all displayed numbers are model conditions/results."
+    ],
+    "independentPeer": {
+      "status": "Requested, not yet received; own independent analytic benchmarks do not substitute for an external review."
+    }
+  },
+  "executed": {
+    "scoped": {
+      "files": 3,
+      "tests": 19,
+      "report": "checks/tests-final.log"
+    },
+    "strictTypes": {
+      "diagnostics": 0,
+      "report": "checks/strict-types.json"
+    },
+    "mdx": {
+      "articles": 2,
+      "report": "checks/mdx-parse.json",
+      "compiler": "Actual installed Astro Satteri; not whole route build."
+    },
+    "native": {
+      "states": 112,
+      "exploreBoundaryStates": 92,
+      "groups": 2,
+      "errors": 0,
+      "failures": 0,
+      "report": "checks/native-review-09/report.json",
+      "phone": {
+        "viewport": [320, 568],
+        "top": 16,
+        "maxHeight": 510,
+        "maxBottom": 526,
+        "minSvgFont": 16,
+        "minControlWidth": 54.8125,
+        "minControlHeight": 44
+      },
+      "explore": "Expanded controls scroll normally; not claimed to fit all controls above the fold."
+    },
+    "geometry": {
+      "checks": 182,
+      "fontCases": 20,
+      "report": "checks/geometry-resource-review-final/report.json",
+      "scope": "Candidate native rendered sums/rim identity and unavailable font resources. Narration remains off, so this is not an audio-failure check or recorded-word synchronization."
+    },
+    "articleLayout": {
+      "report": "checks/article-review/report.json",
+      "scope": "Both actual compiled articles rendered under full Base CSS, details expanded; not canonical Astro route."
+    },
+    "covers": {
+      "report": "checks/cover-review/report.json",
+      "scope": "Exact cover options and StaticArtworkCover text removal on card/white backgrounds; final generated assets pending."
+    },
+    "technicalPlayback": {
+      "report": "checks/native-playback-final/report.json",
+      "languages": 2,
+      "secondsEach": 242,
+      "normalSpeed": true,
+      "muted": true,
+      "scope": "Complete native clock/end and transport behavior before the final circular-aperture display-exposure adjustment. Physical field/director/other views unchanged. Not uninterrupted human watching, audio synchronization, listening or device performance."
+    },
+    "finalChangedChapter": {
+      "report": "checks/aperture-final-playback/report.json",
+      "languages": 2,
+      "secondsEach": 28,
+      "normalSpeed": true,
+      "muted": true,
+      "scope": "Final exact candidate: complete circular-aperture chapter after exposure adjustment. Root full final canonical playback remains required."
+    }
+  },
+  "actualVisualReview": {
+    "authorViewed": [
+      "checks/author-sheets/zh-01.png",
+      "checks/author-sheets/zh-02.png",
+      "checks/author-sheets/zh-03.png",
+      "checks/author-sheets/en-01.png",
+      "checks/author-sheets/en-02.png",
+      "checks/author-sheets/en-03.png",
+      "checks/native-review-09/en-320-c1-t10.png",
+      "checks/native-review-09/zh-320-c1-t20.png",
+      "checks/native-review-09/en-320-c1-t39.png",
+      "checks/native-review-09/zh-1100-c1-t39.png",
+      "checks/native-review-09/en-320-c3-t25.png",
+      "checks/native-review-09/en-320-c6-t15.png",
+      "checks/native-review-09/en-320-c6-t29.png",
+      "checks/cover-review/card.png",
+      "checks/cover-review/white.png"
+    ],
+    "classification": "Author stills/contact sheets are separate from automatic geometry scans, technical normal-speed playback and subjective listening. Early root candidate views are root-owned records."
+  },
+  "failureHistory": [
+    {
+      "report": "checks/tests-01.log",
+      "issue": "Quadrature comparison and an overly strict near-field pair residual threshold failed.",
+      "fix": "Extended-band quadrature resolution increased and residual bound derived from finite-distance phase, not forced to zero."
+    },
+    {
+      "report": "checks/native-review-01/report.json",
+      "issue": "Long English SVG footer text clipped.",
+      "fix": "Short labels and separate model limitations; final exact native scan passes."
+    },
+    {
+      "report": "checks/native-review-02/report.json",
+      "issue": "A failed build was followed by an old-bundle runner.",
+      "fix": "Report explicitly invalidated for updated source; subsequent dependency chains use && and new output directories."
+    },
+    {
+      "report": "checks/native-review-03/report.json",
+      "issue": "Path ruler footer descenders exceeded SVG by about 4px.",
+      "fix": "Footer moved within view and personally inspected."
+    },
+    {
+      "report": "checks/native-review-05/report.json",
+      "issue": "Automated geometry passed but personal viewing found weak narrow-slit contrast.",
+      "fix": "Fixed exposure 100 preserves physical intensity and inter-input differences; no per-frame peak normalization."
+    },
+    {
+      "report": "checks/native-review-06/report.json",
+      "issue": "Stronger curve overlapped its label; translucent adjacent color bins produced artificial seams.",
+      "fix": "Independent label band and opaque color bins; final actual views inspected."
+    },
+    {
+      "report": "checks/native-review-08/report.json",
+      "issue": "Small circular aperture became too dim to compare its broadening.",
+      "fix": "A fixed aperture exposure of 100, separate from disk 2.5, is documented; final changed chapter and final matrix repeated."
+    },
+    {
+      "issue": "Author found quantitative far-field prediction controls allowed invalid broad-slit and off-screen small-slit conditions.",
+      "fix": "Prediction/pencil/caliper views constrain widths to 50–150 micrometers with a cross-view clamp; independent physical-domain React regression and final controls cover this."
+    }
+  ],
+  "pending": [
+    "Root canonical integration and exact lesson routes/SSR anchors.",
+    "Recorded speech and actual bilingual word-time calibration.",
+    "Final frozen static whole-film review and generated social assets.",
+    "Global pnpm verify and pnpm build:preview.",
+    "Subjective listening and physical-phone performance are not established."
+  ],
+  "rootIntegration": {
+    "status": "integrated and reviewed; publication pending",
+    "batch": 18,
+    "acceptanceRecord": "drafts/teaching-principles/batch-18-review.json",
+    "source": {
+      "commit": "8563322ea2414ca9fe3bb7c0c0969cb293ff72fc",
+      "treeHash": "0a796951d10279e09dec9904cc966cfb9f1b638ee4829cb352d8aabedbf90094",
+      "gitDiffHash": "c1943f14f6f24113aeaa5ced05c0d2374363f534abc8bccdba8270046c3a1617",
+      "fileCount": 5363,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "authorEvidenceScope": "Earlier author candidate evidence retained as dated evidence; the root batch record governs final integrated QA.",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

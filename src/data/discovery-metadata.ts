@@ -2427,11 +2427,17 @@ export const discoveryMetadata: Record<string, DiscoveryMetadata> = {
     category: 'light-sound',
     minAge: 14,
     keywords: {
-      zh: ['从狭缝到阴影中的亮点', '缝变窄，光为什么反而铺得更开？', '教材光学实验'],
+      zh: [
+        '从狭缝到阴影中的亮点',
+        '缝变窄，光为什么反而铺得更开？',
+        '教材光学实验',
+        '开口变小，光为什么铺得更宽？',
+      ],
       en: [
         'From a slit to light inside a shadow',
         'Why does a narrower gap spread light farther?',
         'textbook optics experiment',
+        'Why does a smaller opening spread light farther?',
       ],
     },
   },

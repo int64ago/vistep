@@ -18,3 +18,11 @@ Implementation owner: bio-foundations. Source textbooks remain local; the review
 - Browser playback, desktop and 320/390 layouts: pending root review.
 - Both complete recorded voices: pending root synthesis and listening.
 - Physical phone performance: not run.
+
+## Batch 18 retained-scene revision
+
+This candidate preserves all eight chapter IDs, three textbook windows, both original spoken tracks and their measured timing. The original causal explanation remains; changes are focused on chapter-local, language-specific presentation cuts, same-state first entry into exploration, independent persistent manual settings, and complete small-screen composition. Root owns actual registration, shared translations and final site acceptance.
+
+All 16 original cue texts for this scene are copied byte-for-byte. Short captions and necessary UI translations are proposed in the packet. Independently decoded words determine cuts, including the 0.45 s cue lead-in; transcription does not establish subjective listening quality. No synthesis or actual/shared source write is part of this candidate.
+
+See `review.json` for version-specific author tests, actual viewed stills, native UI actions, and unperformed integration/listening/device work. Earlier failures remain in ignored evidence rather than being counted as passes.

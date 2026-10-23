@@ -357,3 +357,249 @@
     display: none;
   }
 }
+
+/* Batch 18: preserve the established objects; compose the selected evidence for each screen. */
+.bli18 {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  min-width: 0;
+}
+.bli18[data-watch='true'] .bio-linked-kind {
+  display: none;
+}
+.bli18 p,
+.bli18 span,
+.bli18 button,
+.bli18 select,
+.bli18 label {
+  font-size: 16px;
+}
+.bli18-cross {
+  max-width: 600px;
+  margin: auto;
+}
+.bli18-pair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+}
+.bli18-pair > div {
+  display: grid;
+  justify-items: center;
+  line-height: 1.35;
+}
+.bli18-pair svg {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+.bli18-pair b {
+  font-weight: 400;
+  font-size: 22px;
+}
+.bli18-transmission {
+  display: block;
+  width: 100%;
+  height: 100px;
+  max-width: 350px;
+  margin: auto;
+}
+.bli18-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  min-height: 60px;
+}
+.bli18-selected svg {
+  height: 60px;
+  width: 56px;
+}
+.bli18-selected > div {
+  display: grid;
+  gap: 3px;
+  line-height: 1.35;
+}
+.bli18-selected strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.bli18-classes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.bli18-classes > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  line-height: 1.4;
+  padding: 4px 9px;
+  border-radius: 14px;
+  background: #e8ecdf;
+}
+.bli18-classes > div[data-active='true'] {
+  background: #dbe5ce;
+}
+.bli18-small-note {
+  margin: 7px 0 0;
+  text-align: center;
+  line-height: 1.4;
+  color: #7d886e;
+}
+.bli18 .bio-linked-note {
+  line-height: 1.4;
+  margin-top: 8px;
+}
+.bli18 .bio-linked-controls .segmented button {
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+}
+.bli18 .bio-linked-controls {
+  margin-bottom: 24px;
+}
+.bli18 .bio-linked-controls select {
+  max-width: 100%;
+  min-width: 0;
+}
+@media (max-width: 540px) {
+  .bli18-pair {
+    gap: 30px;
+  }
+  .bli18-pair svg {
+    height: 52px;
+    width: 60px;
+  }
+  .bli18-transmission {
+    height: 90px;
+  }
+  .bli18-selected {
+    min-height: 46px;
+    gap: 16px;
+  }
+  .bli18-selected svg {
+    height: 46px;
+    width: 44px;
+  }
+  .bli18-selected strong {
+    font-size: 16px;
+  }
+  .bli18-classes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .bli18-classes > div {
+    padding: 2px 10px;
+  }
+  .bli18-small-note {
+    margin-top: 5px;
+  }
+  .bli18 .bio-linked-pedigree-small {
+    max-width: 280px;
+  }
+  .bli18 .bio-linked-pedigree-small svg {
+    max-height: 235px;
+  }
+  .bli18 .bio-linked-genotype {
+    gap: 4px 10px;
+    margin: 5px 0 0;
+    line-height: 1.4;
+  }
+  .bli18 .bio-linked-legend {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  .bli18 .bio-linked-flower-observation {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .bli18 .bio-linked-flower-observation svg {
+    height: 200px;
+  }
+  .bli18 .bio-linked-flower-observation dl {
+    display: block;
+    line-height: 1.4;
+    margin: 10px 0 0;
+  }
+  .bli18 .bio-linked-flower-observation dt {
+    margin-top: 10px;
+  }
+  .bli18 .bio-linked-flower-observation dd {
+    margin-top: 4px;
+  }
+  .bli18 .bio-linked-lights {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-start;
+  }
+  .bli18 .bio-linked-population {
+    height: 190px;
+  }
+  .bli18 .bio-linked-survey-result {
+    gap: 5px 12px;
+    font-size: 16px;
+  }
+  .bli18 .bio-linked-pooling {
+    gap: 10px;
+    margin: 12px auto;
+  }
+  .bli18 .bio-linked-pooling > div {
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .bli18 .bio-linked-pooled {
+    padding-top: 12px;
+  }
+  .showcase:has(.bli18) .film-caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+.bli18-pair {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: 106px;
+  margin: auto;
+}
+.bli18-pair > div {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+}
+.bli18-pair > div:first-child {
+  left: 27%;
+}
+.bli18-pair > div:last-child {
+  left: 73%;
+}
+.bli18-pair > b {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 540px) {
+  .bli18-pair {
+    height: 75px;
+  }
+  .bli18-pair > b {
+    top: 24px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bli18 .bli18-transmission {
+    height: 84px;
+  }
+}

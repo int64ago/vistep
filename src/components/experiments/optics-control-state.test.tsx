@@ -7,7 +7,7 @@ import OpticalDiffractionLab, { OpticalDiffractionArtwork } from './OpticalDiffr
 import PolarizationEvidenceLab from './PolarizationEvidenceLab';
 import DoubleSlitMeasurementLab from './DoubleSlitMeasurementLab';
 
-const film = vi.hoisted(() => ({ watch: false, chapter: 0, chapterProgress: 0 }));
+const film = vi.hoisted(() => ({ watch: false, chapter: 0, chapterProgress: 0, chapterTime: 0 }));
 vi.mock('../lab/FilmContext', () => ({
   useShowcase: () => film,
 }));
@@ -20,15 +20,23 @@ vi.mock('../lab/Controls', () => ({
     max: number;
     onChange: (n: number) => void;
   }) => createElement('input', { ...props, 'aria-label': props.label }),
+  Segments: (props: { label: string; value: string; onChange: (v: string) => void }) =>
+    createElement('select', { ...props, 'aria-label': props.label }),
 }));
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
-afterEach(() => Object.assign(film, { watch: false, chapter: 0, chapterProgress: 0 }));
+afterEach(() =>
+  Object.assign(film, { watch: false, chapter: 0, chapterProgress: 0, chapterTime: 0 }),
+);
 
 const input = (view: ReactTestRenderer, name: string) =>
   view.root.findAllByType('input').find((n) => n.props['aria-label'] === name)!;
 async function click(view: ReactTestRenderer, label: string) {
   const button = view.root.findAllByType('button').find((n) => n.children.join('') === label)!;
   await act(() => button.props.onClick());
+}
+async function select(view: ReactTestRenderer, label: string, value: string) {
+  const control = view.root.findAllByType('select').find((n) => n.props['aria-label'] === label)!;
+  await act(() => control.props.onChange(value));
 }
 
 describe('optical experiment controls keep each apparatus in its own domain', () => {
@@ -55,13 +63,13 @@ describe('optical experiment controls keep each apparatus in its own domain', ()
     await act(() => {
       view = create(createElement(OpticalDiffractionLab));
     });
-    await click(view, 'Poisson spot');
+    await select(view, 'Apparatus', '1');
     await act(() => input(view, 'Radius / mm').props.onChange(1));
-    await click(view, 'Slits and apertures');
-    await click(view, 'Hole');
+    await select(view, 'Apparatus', '0');
+    await select(view, 'Close view', 'aperture');
     expect(input(view, 'Radius / mm').props.value).toBe(0.2);
     expect(input(view, 'Radius / mm').props.max).toBe(0.4);
-    await click(view, 'Poisson spot');
+    await select(view, 'Apparatus', '1');
     expect(input(view, 'Radius / mm').props.value).toBe(1);
     await act(() => view.unmount());
   });
@@ -72,9 +80,9 @@ describe('optical experiment controls keep each apparatus in its own domain', ()
       view = create(createElement(OpticalDiffractionLab));
     });
     expect(input(view, 'Wavelength / nm')).toBeTruthy();
-    await click(view, 'White-light comparison');
+    await select(view, 'Close view', 'colors');
     expect(input(view, 'Wavelength / nm')).toBeUndefined();
-    await click(view, 'Hole');
+    await select(view, 'Close view', 'aperture');
     expect(input(view, 'Wavelength / nm')).toBeTruthy();
     await act(() => view.unmount());
   });
@@ -143,18 +151,29 @@ describe('the actual SVG retains physical directions and visible evidence', () =
     }
   });
 
-  it('shows the weak pencil-slit pattern as a labeled peak-normalized curve', () => {
+  it('keeps the faint pencil pattern visible without normalizing away reduced transmission', () => {
     const markup = renderToStaticMarkup(
       createElement(OpticalDiffractionArtwork, { phase: 4, width: 50 }),
     );
-    expect(markup).toContain('I / Imax');
-    expect(markup).toContain('Imax/I₀ = ');
-    const path = [...markup.matchAll(/<path d="([^"]+)"[^>]*stroke="#729577"/g)][0][1];
+    const wider = renderToStaticMarkup(
+      createElement(OpticalDiffractionArtwork, { phase: 4, width: 100 }),
+    );
+    const centralIntensity = (html: string) =>
+      Number(html.match(/data-screen-x="0"[^>]*data-intensity="([^"]+)"/)![1]);
+    // At these small Fresnel numbers, halving the aperture gives about one quarter
+    // of the central intensity; equalized peaks would erase this physical change.
+    expect(centralIntensity(markup)).toBeGreaterThan(0.004);
+    expect(centralIntensity(markup)).toBeLessThan(0.005);
+    expect(centralIntensity(markup) / centralIntensity(wider)).toBeCloseTo(0.25, 2);
+    expect(Number(markup.match(/data-first-prediction="([^"]+)"/)![1])).toBeCloseTo(11, 8);
+    const path = [...markup.matchAll(/<path d="([^"]+)"[^>]*stroke="#769784"/g)].at(-1)![1];
     const coordinates = [...path.matchAll(/[ML]([\d.e+-]+) ([\d.e+-]+)/g)].map((m) => [
       Number(m[1]),
       Number(m[2]),
     ]);
-    expect(Math.min(...coordinates.map((p) => p[1]))).toBeCloseTo(256, 8);
-    expect(Math.max(...coordinates.map((p) => p[1]))).toBeGreaterThan(320);
+    const ys = coordinates.map((p) => p[1]);
+    expect(Math.max(...ys) - Math.min(...ys)).toBeGreaterThan(5);
+    expect(Math.min(...ys)).toBeGreaterThanOrEqual(0);
+    expect(Math.max(...ys)).toBeLessThanOrEqual(256);
   });
 });

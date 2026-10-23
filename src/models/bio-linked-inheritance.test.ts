@@ -44,3 +44,31 @@ it('weights group totals, deduplicates people and changes the denominator with t
   );
   expect(new Set(surveySample(200).map((p) => p.id)).size).toBe(200);
 });
+
+import { linkedTransmission, linkedFilmState } from './bio-linked-inheritance';
+it('tracks each theoretical parental source to the same child without replacing observation counts', () => {
+  for (const mother of ['BB', 'Bb', 'bb'] as const)
+    for (const father of ['BY', 'bY'] as const) {
+      const end = linkedTransmission(mother, father, 1);
+      expect(end.outcomes.reduce((s, c) => s + c.probability, 0)).toBe(1);
+      for (let k = 0; k < 100; k++) {
+        const s = linkedTransmission(mother, father, k / 100);
+        expect(s.tokens.map((x) => x.allele)).toEqual([s.child.maternal, s.child.paternal]);
+        expect(s.tokens.map((x) => x.source)).toEqual(['maternal', 'paternal']);
+        expect(s.tokens.every((x) => Number.isFinite(x.x) && Number.isFinite(x.y))).toBe(true);
+      }
+      expect(linkedTransmission(mother, father, NaN).q).toBe(0);
+      expect(end.tokens.map((x) => x.y)).toEqual([74, 74]);
+    }
+});
+it('cuts follow unchanged recorded references and do not reveal pooling before its spoken sum', () => {
+  for (const locale of ['zh', 'en'] as const) {
+    expect(linkedFilmState(7, 1, locale).poolReveal).toBe(false);
+    expect(linkedFilmState(7, 12, locale).poolReveal).toBe(true);
+    expect(linkedFilmState(5, 3, locale).focus).toBe('I-1');
+    expect(linkedFilmState(5, 9, locale).focus).toBe('II-3');
+    expect(linkedFilmState(5, 21, locale).focus).toBe('I-2');
+    expect(linkedFilmState(6, 0, locale).sampleCount).toBe(0);
+    expect(linkedFilmState(6, 20, locale).sampleCount).toBe(200);
+  }
+});

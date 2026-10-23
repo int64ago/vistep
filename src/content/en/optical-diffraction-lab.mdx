@@ -1,20 +1,41 @@
-<h2 id="understand">Apertures and obstacles determine the field</h2>
+<h2 id="understand">Why do the dark bands move outward?</h2>
 
-Slit width, aperture radius and disk geometry enter the calculation. A narrower slit usually broadens the far-field center while reducing throughput. The disk’s bright spot follows from complex-field addition, not an exception painted onto a geometric shadow.
+A ray-only picture suggests that a narrower opening should make a smaller patch. A narrow slit instead creates a wider central band. One screen position receives a field from the entire opening: add those fields first, then calculate intensity.
 
-<h2 id="try">Compare the textbook apparatus</h2>
+Divide the same slit into eight persistent bands. At the center their fields are nearly in phase. Moving sideways changes their path delays. In the far-field approximation, bands half a slit width apart nearly cancel when their path difference is half a wavelength. Every band has a partner, giving the first-minimum condition.
 
-Vary adjustable jaws, then compare white light, a circular aperture, paired pencils and calipers. Switch to the Poisson spot and change disk radius. Pencil and caliper views unfold the eye’s angular observation onto a one-meter equivalent screen.
+<div className="formula">a sinθ = λ; at small angles, x₁ ≈ λz/a</div>
 
-<h2 id="deeper">Finite-distance propagation</h2>
+For a 100 μm gap, 550 nm light and a one-meter screen, the prediction is about 5.5 mm. Halving the gap approximately doubles this distance. Changing only wavelength to 650 nm predicts about 6.5 mm. The main screen retains the finite-distance integral and does not claim that this approximate minimum is an exact zero. A smaller opening also transmits less total light.
+
+An opaque disk provides another test. Rays predict a dark center. Equal rim-to-axis paths allow coherent diffracted phases, and the complete field predicts an axial bright spot. It is not an extra graphic painted on a shadow. The textbook’s historical observation and this ideal calculation are distinct evidence.
+
+<h2 id="try">Predict before revealing</h2>
+
+Explore begins with the current shot and its inputs. Move the screen point and follow four field pairs from near agreement toward cancellation. When changing width or wavelength, keep the reference, predict the new minimum, then reveal it. Pencils and caliper jaws transfer the same opening law to different apparatus.
+
+Compare a circular opening with a disk using the full radial integral. Ideal axial intensity can persist while the surrounding spatial scale changes. This does not make the entire shadow equally bright or guarantee visibility in an instrument.
+
+<h2 id="deeper">Model, normalization and boundaries</h2>
 
 <details>
-<summary>Scalar Fresnel integrals and Babinet’s principle</summary>
+<summary>How does the opening contribute to the screen?</summary>
 
-The slit integrates exp[iπ(x−u)²/(λz)] across its opening, divides by √(λz), then squares the magnitude. Width is 30–800 μm, wavelength 450–650 nm and z=1 m. Composite Simpson quadrature uses 192 subintervals. Wide slits retain finite-distance effects instead of being forced into a far-field sinc² formula. Screen extent is ±15 mm. The curve is normalized to its peak, with peak intensity relative to the incident wave displayed separately. The fringe image retains fixed nonlinear exposure.
+The slit integrates exp[iπ(x−u)²/(λz)] over its width and divides by √(λz). Eight disjoint intervals use that same kernel; their complex fields sum to the complete slit field. They are extended bands, not eight point emitters substituted for a continuous opening. The paired display removes one phase common to all bands and compares relative fields on one slowed clock. It does not represent the actual optical travel time.
 
-The circular kernel is ρJ₀(2πrρ/(λz))exp[iπρ²/(λz)]. Subtracting the aperture field from the unobstructed plane wave yields the opaque-disk field. Disk radius is 0.3–1 mm, aperture radius 0.1–0.4 mm, and the radial image extends to 2.3 mm independently of apparatus scale. The disk’s axial I/I₀=1 is checked against the analytic result and quadrature convergence. Edge-vector effects, supports, finite coherence and noise are omitted.
-
-White light uses independent intensity channels at 650, 530 and 460 nm, not calibrated colorimetry. Pencil and jaw gaps are enlarged ideal straight edges. Eye optics and vernier graduations are not simulated. Film timing scans parameters rather than representing actual light travel time.
+The first-minimum formula is a far-field approximation. It predicts narrow-slit minima well at the one-meter screen. Wider slits retain Fresnel effects. A fixed nonlinear exposure makes weak fringes visible without renormalizing every input to the same peak. The slit and circular-opening views use exposure 100; the opaque-disk view uses 2.5. Brightness across those two apparatus views is therefore not a photometric comparison; I/I₀ is the physical readout. Three wavelength channels illustrate incoherent intensity addition, not calibrated white-light colorimetry.
 
 </details>
+
+<details>
+<summary>Why not replace the disk by twelve glowing rim points?</summary>
+
+The radial aperture integral contains ρJ₀[2πrρ/(λz)] and the quadratic propagation phase. Subtract the aperture field from the unobstructed plane-wave field to obtain the complementary opaque-disk field. Equal rim paths explain axial symmetry; every screen intensity is still calculated from the full integral. The twelve illustrated points do not generate the screen.
+
+For an ideal coherent plane wave, scalar paraxial propagation and a smooth circular boundary, the axial disk field is exp[iπa²/(λz)], with unit squared magnitude. Finite sources, misalignment, supports and detector resolution can reduce visibility. The symmetric finite-source configuration in the Princeton reference has a different normalization; its intensities cannot simply be substituted here.
+
+Openings are enlarged and propagation distance compressed. Pencils and jaws have ideal straight edges, with a one-meter equivalent screen unfolding the angular view. Eye aberrations, rough edges and particular vernier graduations are omitted. All displayed numbers are model inputs or calculations, not measurements extracted from the textbook photographs.
+
+</details>
+
+Quantitative first-minimum prediction views limit the slit to 50–150 μm: the largest Fresnel number is 0.05, and the predicted first minimum stays within the displayed ±15 mm screen. The general screen view still permits wider near-field openings.

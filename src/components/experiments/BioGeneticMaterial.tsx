@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
+const short = (zh: string, en: string) => (browserLocale() === 'en' ? en : zh);
 import { Range, Segments } from '../lab/Controls';
 import { useShowcase, ease, ramp } from '../lab/FilmContext';
 import {
+  materialFilmState,
   griffithGroups,
   averyState,
   treatments,
@@ -38,6 +40,12 @@ const names = [
   '标记与子代',
 ];
 const groupNames = ['R型活菌', 'S型活菌', '热致死S型', 'R活菌＋热致死S型'];
+const groupShort = [
+  ['活R型', 'Live R'],
+  ['活S型', 'Live S'],
+  ['死S型', 'Killed S'],
+  ['活R＋死S', 'R + killed S'],
+];
 const treatmentNames = ['未加酶', '蛋白酶', 'RNA酶', '酯酶', 'DNA酶'];
 const colors = { DNA: '#748ea9', protein: '#b38b66', RNA: '#a499b4', lipid: '#a9ae79' };
 function Coccus({
@@ -107,15 +115,17 @@ function Griffith({ recovery, p, selected }: { recovery: boolean; p: number; sel
           <Coccus s />
         </g>
       </svg>
-      <p>{t('回收S型活菌 → 继续培养 → S型后代')}</p>
-      <p className="bio-material-note">{t('支持可遗传的转化，尚未鉴定转化因子的化学成分。')}</p>
+      <p>{short('回收活S → 培养 → S型后代', 'Live S → culture → S descendants')}</p>
+      <p className="bio-material-note">
+        {short('性状可遗传，成分仍待检验。', 'Heritable; chemical identity unresolved.')}
+      </p>
     </div>
   ) : (
     <>
       <div className="bio-material-groups">
         {griffithGroups.map((g, i) => (
           <div key={g.id} className={selected === i ? 'is-current' : ''}>
-            <p>{t(groupNames[i])}</p>
+            <p>{short(...(groupShort[i] as [string, string]))}</p>
             <svg viewBox="0 0 150 105" aria-hidden="true">
               <g transform="translate(75 23) scale(.63)">
                 {g.liveR && (
@@ -286,7 +296,14 @@ function Fraction({ p, blended, isotope }: { p: number; blended: boolean; isotop
       <svg
         viewBox="0 0 350 295"
         role="img"
-        aria-label={t('同一批细菌沉降至管底，脱落外壳主要留在上清液')}
+        aria-label={
+          blended
+            ? t('同一批细菌沉降至管底，脱落外壳主要留在上清液')
+            : short(
+                '省略搅拌的新样品：附着外壳随细菌沉降，沉淀信号混合。',
+                'Fresh unblended sample: attached coats settle with bacteria, leaving a mixed pellet signal.',
+              )
+        }
       >
         <path
           d="M92 27V238Q92 280 175 280Q258 280 258 238V27"
@@ -317,18 +334,24 @@ function Fraction({ p, blended, isotope }: { p: number; blended: boolean; isotop
             <Coat color={isotope === 'sulfur' ? '#b38b66' : '#aaa99e'} />
           </g>
         ))}
-        <text x="275" y="80" fontSize="24" fill="#757865">
+        <text x="275" y="80" fontSize="27" fill="#757865">
           {isotope === 'sulfur' ? '³⁵S' : '³²P'}
         </text>
       </svg>
       <div className="bio-material-fraction-key">
         <span>
           {t('上清液')} ·{' '}
-          {t(blended ? (isotope === 'sulfur' ? '信号较高' : '信号较低') : '外壳尚未充分分离')}
+          {p < 0.98
+            ? short('分离中', 'Separating')
+            : t(blended ? (isotope === 'sulfur' ? '信号较高' : '信号较低') : '外壳尚未充分分离')}
         </span>
         <span>
           {t('沉淀物')} ·{' '}
-          {t(blended ? (isotope === 'phosphorus' ? '信号较高' : '信号较低') : '混合信号难以解释')}
+          {p < 0.98
+            ? short('分离中', 'Separating')
+            : t(
+                blended ? (isotope === 'phosphorus' ? '信号较高' : '信号较低') : '混合信号难以解释',
+              )}
         </span>
       </div>
     </div>
@@ -336,41 +359,63 @@ function Fraction({ p, blended, isotope }: { p: number; blended: boolean; isotop
 }
 export default function BioGeneticMaterial() {
   const film = useShowcase();
-  const [chosen, setChosen] = useState<Mode>(() =>
-      modes.includes(film.variant as Mode) ? (film.variant as Mode) : 'controls',
-    ),
-    [progress, setProgress] = useState(0.85),
-    [group, setGroup] = useState(3),
-    [treatment, setTreatment] = useState<Treatment>('dnase'),
-    [recipient, setRecipient] = useState(true),
-    [isotope, setIsotope] = useState<Isotope>('phosphorus'),
-    [blended, setBlended] = useState(true);
-  const mode = film.watch ? modes[Math.min(7, film.chapter)] : chosen;
-  const p = film.watch ? film.chapterProgress : progress;
-  const selected = film.watch ? Math.min(3, Math.floor(p * 4)) : group;
-  const treatmentIndex = Math.min(3, Math.floor(p * 4));
-  const tr = film.watch
-    ? mode === 'extract'
-      ? 'none'
-      : treatments[1 + treatmentIndex]
-    : treatment;
-  const iso = film.watch ? (p < 0.5 ? 'sulfur' : 'phosphorus') : isotope;
-  const local = film.watch ? (p < 0.5 ? p * 2 : (p - 0.5) * 2) : p;
-  const selection = (value: Mode) => {
-    setChosen(value);
-    setProgress(0.85);
+  const [chosen, setChosen] = useState<Mode | null>(null);
+  type Settings = {
+    p: number;
+    group: number;
+    treatment: Treatment;
+    recipient: boolean;
+    isotope: Isotope;
+    blended: boolean;
   };
+  const [manual, setManual] = useState<Partial<Record<Mode, Partial<Settings>>>>({});
+  const directedMode = modes[Math.min(7, film.chapter)];
+  const mode = film.watch ? directedMode : (chosen ?? directedMode);
+  const inherits = mode === directedMode;
+  const d = materialFilmState(
+    modes.indexOf(mode),
+    inherits ? film.chapterTime : 0,
+    browserLocale(),
+  );
+  const defaults: Settings = {
+    p: inherits
+      ? mode === 'separate'
+        ? d.phase === 'detachment'
+          ? d.p * 0.38
+          : 0.38 + d.p * 0.62
+        : d.p
+      : 0.85,
+    group: inherits ? d.selected : 3,
+    treatment: inherits ? d.treatment : mode === 'remove' ? 'dnase' : 'none',
+    recipient: true,
+    isotope: inherits ? d.isotope : 'sulfur',
+    blended: inherits ? d.blended : true,
+  };
+  const active = film.watch ? defaults : { ...defaults, ...manual[mode] };
+  const update = (patch: Partial<Settings>) =>
+    setManual((old) => ({ ...old, [mode]: { ...old[mode], ...patch } }));
+  const { p, group: selected, treatment: tr, recipient, isotope: iso, blended } = active;
+  const separationPhase = film.watch ? d.phase : p < 0.38 ? 'detachment' : 'fractions';
+  const separationP = film.watch
+    ? d.p
+    : separationPhase === 'detachment'
+      ? p / 0.38
+      : (p - 0.38) / 0.62;
   return (
-    <div className="bio-genetic-material" data-watch={film.watch}>
+    <div
+      className="bio-genetic-material bgm18"
+      data-watch={film.watch}
+      data-mode={mode}
+      data-isotope={iso}
+      data-progress={p}
+      data-treatment={tr}
+      data-blended={blended}
+    >
       <p className="bio-material-kind">{t('经典研究重建；器物与细胞示意不按同一比例。')}</p>
       {mode === 'controls' || mode === 'recovery' ? (
         <Griffith recovery={mode === 'recovery'} p={p} selected={selected} />
       ) : mode === 'extract' || mode === 'remove' ? (
-        <Avery
-          treatment={tr}
-          p={film.watch && mode === 'remove' ? p * 4 - treatmentIndex : p}
-          recipient={film.watch || recipient}
-        />
+        <Avery treatment={tr} p={p} recipient={recipient} />
       ) : mode === 'label' ? (
         <div className="bio-material-label">
           <div className="bio-material-host">
@@ -391,7 +436,7 @@ export default function BioGeneticMaterial() {
                 />
               ))}
             </svg>
-            <p>{t('先培养带标记的大肠杆菌')}</p>
+            <p>{short('带标记宿主', 'Labeled host')}</p>
           </div>
           <div className="bio-material-labeled-phage">
             <svg viewBox="0 0 150 150" aria-hidden="true">
@@ -408,36 +453,37 @@ export default function BioGeneticMaterial() {
             <p>{iso === 'sulfur' ? '³⁵S · ' + t('蛋白质外壳') : '³²P · DNA'}</p>
           </div>
           <p className="bio-material-note">
-            {t('噬菌体在带标记的宿主中增殖，再用于感染未标记宿主。')}
+            {short('两批独立培养，再感染新宿主。', 'Separate batches; fresh hosts next.')}
           </p>
         </div>
       ) : mode === 'entry' ? (
         <>
-          <Interface p={ease(ramp(local, 0.05, 0.8))} detach={0} isotope={iso} />
-          <p className="bio-material-note">{t('界面放大：显示主要去向，真实分离并非绝对纯净。')}</p>
+          <Interface p={p} detach={0} isotope={iso} />
+          <p className="bio-material-note">
+            {short('主要路径的解释模型。', 'Model of the dominant pathway.')}
+          </p>
         </>
       ) : mode === 'separate' ? (
         <>
           <div className="bio-material-separation">
-            {local < 0.38 ? (
-              <Interface
-                p={1}
-                detach={film.watch || blended ? ease(local / 0.38) : 0}
-                isotope={iso}
-              />
+            {separationPhase === 'detachment' ? (
+              <Interface p={1} detach={blended ? separationP : 0} isotope={iso} />
             ) : (
-              <Fraction
-                p={ease((local - 0.38) / 0.62)}
-                blended={film.watch || blended}
-                isotope={iso}
-              />
+              <Fraction p={separationP} blended={blended} isotope={iso} />
             )}
           </div>
           <p className="bio-material-note">
-            {t(
-              local < 0.38
-                ? '搅拌使吸附的外壳与细菌分离。'
-                : '离心后检测两部分；这不是放射性染出的肉眼颜色。',
+            {short(
+              !blended
+                ? '新样品：省略搅拌。'
+                : separationPhase === 'detachment'
+                  ? '先把外壳分开。'
+                  : '分离后，分别检测。',
+              !blended
+                ? 'Fresh sample: no blending.'
+                : separationPhase === 'detachment'
+                  ? 'Detach the coats first.'
+                  : 'Separate, then assay each fraction.',
             )}
           </p>
         </>
@@ -451,23 +497,26 @@ export default function BioGeneticMaterial() {
                   <path
                     d="M-9 -50q10 -16 18 0t-18 9t18 9"
                     fill="none"
-                    stroke={iso === 'phosphorus' && i === 1 ? '#748ea9' : '#aaa99e'}
+                    stroke="#aaa99e"
                     strokeWidth="3"
                   />
                 </g>
               ))}
             </svg>
-            <p>{t('子代中检测亲代标记的去向')}</p>
+            <p>{short('子代培养物', 'Progeny culture')}</p>
           </div>
-          <div className="bio-material-evidence">
+          <div
+            className="bio-material-evidence"
+            style={{ visibility: film.watch && !d.reveal ? 'hidden' : 'visible' }}
+          >
             <strong>
               {iso === 'sulfur' ? '³⁵S' : '³²P'} {hersheyChaseEvidence[iso].progeny.operator}{' '}
               {hersheyChaseEvidence[iso].progeny.parentalFraction * 100}%
             </strong>
-            <span>{t('原论文：亲代总放射性中进入子代的比例')}</span>
+            <span>{short('分母：亲代总放射性', 'Denominator: parental radioactivity')}</span>
           </div>
           <p className="bio-material-note">
-            {t('支持DNA具有遗传作用；不能推断一切病毒都以DNA为遗传物质。')}
+            {short('T2证据，不外推到全部病毒。', 'Evidence for T2, not all viruses.')}
           </p>
         </div>
       )}
@@ -475,7 +524,7 @@ export default function BioGeneticMaterial() {
         <div className="bio-material-controls">
           <label>
             {t('观察证据')}
-            <select value={chosen} onChange={(e) => selection(e.target.value as Mode)}>
+            <select value={mode} onChange={(e) => setChosen(e.target.value as Mode)}>
               {modes.map((m, i) => (
                 <option key={m} value={m}>
                   {t(names[i])}
@@ -486,8 +535,8 @@ export default function BioGeneticMaterial() {
           {mode === 'controls' ? (
             <Segments
               label={t('感染组合')}
-              value={String(group)}
-              onChange={(v) => setGroup(Number(v))}
+              value={String(selected)}
+              onChange={(v) => update({ group: Number(v) })}
               options={groupNames.map((name, i) => ({ value: String(i), label: t(name) }))}
             />
           ) : null}
@@ -495,11 +544,11 @@ export default function BioGeneticMaterial() {
             <>
               <Segments
                 label={t('提取物处理')}
-                value={treatment}
-                onChange={(v) => setTreatment(v as Treatment)}
+                value={tr}
+                onChange={(v) => update({ treatment: v as Treatment })}
                 options={treatments.map((v, i) => ({ value: v, label: t(treatmentNames[i]) }))}
               />
-              <button onClick={() => setRecipient(!recipient)}>
+              <button onClick={() => update({ recipient: !recipient })}>
                 {t(recipient ? 'R型活受体：有' : 'R型活受体：无')}
               </button>
             </>
@@ -507,8 +556,8 @@ export default function BioGeneticMaterial() {
           {['label', 'entry', 'separate', 'progeny'].includes(mode) && (
             <Segments
               label={t('同位素批次')}
-              value={isotope}
-              onChange={(v) => setIsotope(v as Isotope)}
+              value={iso}
+              onChange={(v) => update({ isotope: v as Isotope })}
               options={[
                 { value: 'sulfur', label: '³⁵S' },
                 { value: 'phosphorus', label: '³²P' },
@@ -516,7 +565,7 @@ export default function BioGeneticMaterial() {
             />
           )}{' '}
           {mode === 'separate' && (
-            <button onClick={() => setBlended(!blended)}>
+            <button onClick={() => update({ blended: !blended })}>
               {t(blended ? '搅拌：完成' : '搅拌：省略')}
             </button>
           )}
@@ -526,8 +575,8 @@ export default function BioGeneticMaterial() {
               min={0}
               max={1}
               step={0.01}
-              value={progress}
-              onChange={setProgress}
+              value={p}
+              onChange={(v) => update({ p: v })}
             />
           )}
         </div>

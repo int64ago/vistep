@@ -1,16 +1,92 @@
-.optical-diffraction-art {
+.od18-lab {
+  width: 100%;
+  max-width: 700px;
+  margin-inline: auto;
+  min-width: 0;
+  color: #40594e;
+}
+.od18-art {
   display: block;
   width: 100%;
-  height: 380px;
-  margin: 8px auto;
-  overflow: visible;
+  height: 256px;
+  overflow: hidden;
 }
-@media (max-width: 760px) {
-  .optical-diffraction-art {
-    height: 330px;
-    margin: 4px auto;
+.od18-art text {
+  font-size: 16px;
+  font-family: inherit;
+}
+.od18-controls {
+  display: grid;
+  gap: 18px;
+  padding: 12px 0 2px;
+  min-width: 0;
+}
+.od18-controls > *,
+.od18-controls label {
+  min-width: 0;
+}
+.od18-lab .od18-controls .segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.od18-lab .od18-controls .segmented button,
+.od18-reveal {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+  line-height: 1.35;
+  padding: 8px 11px;
+  border: 1px solid #b7c8b9;
+  border-radius: 18px;
+  background: #eef1e8;
+  color: #40594e;
+  white-space: normal;
+}
+.od18-lab .od18-controls .segmented button[aria-pressed='true'] {
+  background: #d6e3d4;
+  border-color: #7c9b82;
+}
+.od18-controls input[type='range'] {
+  margin-inline: 0;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 44px;
+}
+.od18-controls details {
+  border-top: 1px solid #ccd7c9;
+  padding-top: 12px;
+}
+.od18-controls summary {
+  font-size: 16px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.od18-controls p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.od18-reveal {
+  justify-self: start;
+  cursor: pointer;
+}
+.od18-controls button:focus-visible {
+  outline: 2px solid #728b76;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .od18-art {
+    height: 256px;
   }
-  .optical-diffraction-art text {
-    font-size: 20px;
+  .od18-lab {
+    max-width: 100%;
+  }
+}
+@media (min-width: 601px) {
+  .od18-art {
+    height: 256px;
   }
 }

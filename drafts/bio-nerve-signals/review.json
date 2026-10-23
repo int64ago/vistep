@@ -1,0 +1,140 @@
+{
+  "sceneSlug": "bio-nerve-signals",
+  "status": "frozen-candidate-pending-root-integration",
+  "owner": "GPT-6 Astra, biology author",
+  "sourceCommit": "bc5590b671c24d8a439078f31546f759dca84728",
+  "actualSourceModified": false,
+  "sourceReview": "checks/source-review.json",
+  "scope": "Bounded local membrane causal model; existing surface/synapse/history scientific functions retained. Preserved 7 IDs / 3 windows / 14 spoken / 154 s.",
+  "model": {
+    "status": "passed",
+    "passed": 22,
+    "failed": 0,
+    "report": "checks/model-component-tests.json",
+    "independentBenchmark": "Exact fixed-conductance exponential; CΔV charge conservation and equal/opposite surfaces; 10 μm/150 mM net capacitive-charge estimate; pathway/capacitance counterexamples",
+    "strictTypes": {
+      "scope": "Candidate owned imports with actual Astro strict TS options; not global build",
+      "count": 0,
+      "diagnostics": []
+    },
+    "peerReview": {
+      "report": "artifacts/teaching-principles/batch-18-cross-review/chemistry-review-nerve.json",
+      "scope": "Independent RK4 and finite charge/capacitance arithmetic only; not UI or full source review",
+      "assertions": 1667
+    }
+  },
+  "authorVisualReview": {
+    "status": "performed on listed rendered images",
+    "keyframes": [
+      "checks/final-native-frames/en-320-2-na-crossing.png",
+      "checks/final-native-frames/zh-320-2-peak.png",
+      "checks/final-native-frames/en-320-2-late-recovery.png",
+      "checks/final-native-frames/en-320-2-k-pass.png",
+      "checks/final-native-frames/zh-320-2-k-pass.png",
+      "checks/final-native-frames/en-320-4-receptor-off.png",
+      "checks/final-native-frames/en-1100-0-first-electrode.png",
+      "checks/final-native-frames/zh-320-6-broken.png"
+    ],
+    "exploration": [
+      "checks/native-controls/zh-explore.png",
+      "checks/native-controls/en-explore.png"
+    ],
+    "cover": "checks/cover.png",
+    "distinction": "Captured frames/DOM checks are not 64 manually inspected frames; only the listed images were actually opened."
+  },
+  "automatedFrames": {
+    "count": 64,
+    "failures": [],
+    "errors": [],
+    "viewports": ["320×568", "1100×900"],
+    "scope": "Isolated actual BaseCSS + Showcase + candidate scene; no Astro SSR route",
+    "report": "checks/final-native-frames/report.json"
+  },
+  "nativeControls": {
+    "count": 104,
+    "failed": [],
+    "errors": [],
+    "report": "checks/native-controls/report.json",
+    "scope": "Real native UI controls, exact three-window boundaries, pause/replay/chapter/hash links, input effect, watch isolation, preserved manual choices, fresh failure state and explicit Audio request failure"
+  },
+  "automatedSilentTraversal": {
+    "status": "passed",
+    "report": "checks/native-continuous/report.json",
+    "scope": "Normal native clock, no seeking or time acceleration, silent. Automated traversal and sampled screenshots, not human continuous watching or subjective listening."
+  },
+  "speech": {
+    "status": "all 14 original spoken fields retained",
+    "duration": 154,
+    "independentTranscription": "checks/transcription.json + retained-word-times/",
+    "timing": "Director uses chapterTime+locale; word timestamps plus existing0.45s lead-in",
+    "listening": "not-run; ASR does not prove natural voice quality",
+    "newTTS": "not requested"
+  },
+  "closedFindings": [
+    {
+      "issue": "Selecting a different Explore theme could borrow unrelated chapter time/counterexample defaults",
+      "repair": "Only the current directed theme inherits its shot. A newly selected different theme starts its own initial state; explicit manual values persist. Mounted bilingual regression and final native controls cover the separation."
+    },
+    {
+      "issue": "Initial phone membrane height exceeded536px; duplicated labels touched the waveform",
+      "repair": "Shorter current-state header/footer and dedicated phone SVG composition"
+    },
+    {
+      "issue": "Old synapse view overflowed into the header",
+      "repair": "Explicit close-up viewport and inside anchoring; transmitter remains extracellular"
+    },
+    {
+      "issue": "Fresh receptor-off Explore restored an enabled receptor",
+      "repair": "Nullable inherited receptor/release state until hand-selected"
+    },
+    {
+      "issue": "Selected ion crossing geometry initially changed too rapidly",
+      "repair": "Continuous charge-based marker intervals and channel-gate clearance checks"
+    },
+    {
+      "issue": "Still-open Na gate could be named during net voltage fall; late basal recovery looked like the selected gate reopened",
+      "repair": "Current-direction label uses net computed current and distinguishes basal recovery"
+    },
+    {
+      "issue": "Desktop electrode b label overlapped meter",
+      "repair": "Labels sit inside the axon beside their respective contact positions"
+    },
+    {
+      "issue": "Historical result label appeared before visual contraction",
+      "repair": "Initial contact label changes only when computed contraction begins"
+    }
+  ],
+  "harnessFailures": [
+    "checks/controls-first-harness-timeout.json",
+    "checks/controls-invalid-range-harness.json",
+    "checks/controls-svg-harness.json",
+    "checks/controls-end-label-harness.json"
+  ],
+  "notRun": [
+    "Actual integrated Astro routes/SSR anchors and catalog/social cover consumers",
+    "Root independent visual acceptance",
+    "Global pnpm verify / build:preview (root-owned)",
+    "Subjective full-track listening",
+    "Physical-phone performance"
+  ],
+  "sharedMutation": "none; packet proposals only",
+  "manifest": "owned-manifest.json",
+  "rootIntegration": {
+    "status": "integrated and reviewed; publication pending",
+    "batch": 18,
+    "acceptanceRecord": "drafts/teaching-principles/batch-18-review.json",
+    "source": {
+      "commit": "8563322ea2414ca9fe3bb7c0c0969cb293ff72fc",
+      "treeHash": "0a796951d10279e09dec9904cc966cfb9f1b638ee4829cb352d8aabedbf90094",
+      "gitDiffHash": "c1943f14f6f24113aeaa5ced05c0d2374363f534abc8bccdba8270046c3a1617",
+      "fileCount": 5363,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "authorEvidenceScope": "Earlier author candidate evidence retained as dated evidence; the root batch record governs final integrated QA.",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
+}

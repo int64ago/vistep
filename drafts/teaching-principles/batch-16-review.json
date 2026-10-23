@@ -1,6 +1,6 @@
 {
   "batch": 16,
-  "status": "published; targeted live checks passed; full live-audit retry pending",
+  "status": "published; targeted and full live retry passed",
   "scenes": [
     "sound-interference-lab",
     "chem-reaction-rates",
@@ -196,6 +196,12 @@
     "exactRecordingChecks": 10,
     "originalFailure": "Existing Tycho textbook URL timed out in the post-deploy audit; separate retry returned HTTP200.",
     "tychoRetryEvidence": "artifacts/teaching-principles/batch-16-tycho-live.html",
-    "fullAuditRetry": "Exact Actions artifact download still in progress; not claimed passed."
+    "fullAuditRetry": {
+      "status": "passed",
+      "checked": 4574,
+      "evidence": "artifacts/teaching-principles/batch-16-full-live-retry.json",
+      "artifactId": 12281225661,
+      "deploymentRepeated": false
+    }
   }
 }

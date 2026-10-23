@@ -1,38 +1,169 @@
 {
-  "slug": "chem-unsaturated-hydrocarbons",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "reviewedAt": "2026-10-18T16:04:08.073877",
-  "files": {
-    "src/models/chem-unsaturated-hydrocarbons.ts": "80772d83fd28de0a43aa143704b325e7f80c010c209f5372fd2892d9616ea703",
-    "src/models/chem-unsaturated-hydrocarbons.test.ts": "6ac4e016b6b944b78e0fda2e861c0c52156fa74aa6d09f2cb292b93c73b0027e",
-    "src/components/experiments/ChemUnsaturatedHydrocarbons.tsx": "2376c347a055fb0bf2433657fd4bfbbc5261a0536496eacb81d6e1fd5b812a41",
-    "src/components/covers/ChemUnsaturatedHydrocarbonsCover.astro": "9d2409fd89d49519c05d1256587a29282a89c1b966820d963f6048accafdf91d",
-    "src/styles/chem-unsaturated-hydrocarbons.css": "e91f6b273debd9d746d444f81f20d22028b4c75d7340166912a65477ab06b751",
-    "src/content/chem-unsaturated-hydrocarbons.mdx": "dad9c467d484d50d59a5b62162d9731417471ed594e748f68e97ba34bc5a1d0d",
-    "src/content/en/chem-unsaturated-hydrocarbons.mdx": "de0475e312b2c676981755e753c704b9601f7ee1f850f34ed5980462ecd434db",
-    "src/data/scene-packets/chem-unsaturated-hydrocarbons.json": "0436105f3cf94ee0717a73a36e80ec4275f8c166a38a661e92b1e7af22494b4c"
+  "sceneSlug": "chem-unsaturated-hydrocarbons",
+  "status": "Frozen ignored candidate; root integration and final audio acceptance pending",
+  "author": "GPT-6 Astra",
+  "role": "Author review; not an independent full-scene review",
+  "scope": "Eight preserved chapter IDs, three preserved textbook windows, one newly narrated chapter (index 1). Only ignored staging files edited.",
+  "sourceHashes": {
+    "src/models/chem-unsaturated-hydrocarbons.ts": "a2883944a200f5536df9985e9f0e4400fe9dd8027e838fd8236873961b453d49",
+    "src/models/chem-unsaturated-hydrocarbons.test.ts": "477ab7e976a9e75f0cf81d339ca8970237d1abe1dbaef3233606becabbc9467f",
+    "src/components/experiments/ChemUnsaturatedHydrocarbons.tsx": "9409cbbeb4f384ccde7e5a4a76ec6d70562d65b9ec9846414c93cdfa49d2700d",
+    "src/components/experiments/ChemUnsaturatedHydrocarbons.test.tsx": "150f8347aeb793d0047aceddccc795577f570ea0bd26e1b816863429c9157ca0",
+    "src/styles/chem-unsaturated-hydrocarbons.css": "4231cb15e83909420b48182f8c606ce70dea54ce654c41419936eff9544c412e",
+    "src/components/covers/ChemUnsaturatedHydrocarbonsCover.astro": "9ac016cdb71abec77576f5376e4cb96d2b28278db4ff7955eca4afd916e97838",
+    "src/content/chem-unsaturated-hydrocarbons.mdx": "01267dc1720c91b9a34ab412c6af30453c51f470ebfc51292f34db852acf5922",
+    "src/content/en/chem-unsaturated-hydrocarbons.mdx": "21e297ddfa3fbe0c3b4485333a0a845fc5e054e4856b3e4eb88a125fba8f06bb"
   },
-  "modelTests": {
-    "status": "passed",
-    "count": 5
+  "sources": {
+    "ledger": "artifacts/teaching-principles/batch-18-staging/chemistry/sources/source-ledger.json",
+    "textbook": "Full relevant required2 P66–69 and elective3 P35–39 text read; page images P67/P68/P37/P38 personally inspected.",
+    "online": "Primary author/publisher and university pages opened and relevant bodies read; exact scope in packet. No claim to reproduce a measured rate, yield or organic endpoint."
   },
-  "ownedTypeScriptDiagnostics": 0,
-  "packetValidation": "passed",
-  "scopedPrettier": "passed",
-  "viewport": "320x844 emulated Chromium; reduced motion; muted paused seeks",
-  "visual": {
-    "sweep": "All 8 English and Chinese chapters passed. Whole-player correction reduced scrubber zoom and unnecessary test note; final English bottoms 756/825/798/815/827/825/820/784 with top90.78. Changed Chinese4/5/6 rechecked. Actually inspected reagent dip tube, tracked addition, complete generator/scrubber, scrubber close-up, separate tests and final Chinese generator.",
-    "evidenceDirectories": [
-      "artifacts/chemistry-inventory/review-unsaturated",
-      "artifacts/chemistry-inventory/review-unsaturated-zh",
-      "artifacts/chemistry-inventory/review-unsaturated-final",
-      "artifacts/chemistry-inventory/review-unsaturated-final-zh"
+  "science": {
+    "newEvidence": "Qualitative observation -> persistent Mn/O/H and 5 electron-equivalent net account -> unanswered 4 mmol supply question -> .8/.2 mmol result -> bromine connectivity/redox comparison.",
+    "independentPeer": {
+      "report": "artifacts/teaching-principles/batch-18-cross-review/biology-manganese-review.json",
+      "assertions": 3950,
+      "modelSha256": "a2883944a200f5536df9985e9f0e4400fe9dd8027e838fd8236873961b453d49",
+      "scope": "Independent execution of amount, atom, half-charge, ID and finite-boundary assertions. Not UI, collision avoidance, complete mechanism or fresh full-source review."
+    },
+    "limits": [
+      "Sufficient acid and MnII endpoint only; no acidic speciation/kinetics/quantum yield.",
+      "Five tokens are electron equivalents, not free aqueous electrons; organic donor endpoint unspecified.",
+      "Net atom paths are bookkeeping and do not assert an elementary sequence.",
+      "Bromination is both addition and redox; no false redox/non-redox binary.",
+      "Budget fractions are amounts, not fractional atoms or colour-based concentration measurements."
     ]
   },
-  "notRun": [
-    "continuous full viewing",
-    "native listening (root synthesizes)",
-    "physical phone",
-    "root independent desktop/exploration/curriculum-route review"
-  ]
+  "validation": {
+    "tests": {
+      "passed": true,
+      "count": 15,
+      "report": "artifacts/teaching-principles/batch-18-staging/chemistry/tests-final.json"
+    },
+    "strictTypeScript": {
+      "passed": true,
+      "report": "artifacts/teaching-principles/batch-18-staging/chemistry/types.json"
+    },
+    "pausedFrames": {
+      "count": 60,
+      "failures": [],
+      "errors": [],
+      "report": "artifacts/teaching-principles/batch-18-staging/chemistry/frames-frozen/report.json",
+      "scope": "Shared Showcase with all seven BaseCSS sheets in isolated candidate, zh/en at 320×568 and 1100×900. Complete provisional 8 chapter/256.5 s timeline; not actual Astro page."
+    },
+    "nativeControls": {
+      "count": 112,
+      "failures": [],
+      "errors": [],
+      "report": "artifacts/teaching-principles/batch-18-staging/chemistry/controls-frozen/report.json",
+      "scope": "Real DOM buttons/keyboard range changes, fresh current-state Explore, manual persistence/watch isolation, fixed atom IDs, finite reagents, three entry windows."
+    },
+    "normalSpeedSilent": {
+      "report": "artifacts/teaching-principles/batch-18-staging/chemistry/normal-play/report.json",
+      "cases": [
+        {
+          "lang": "en",
+          "passed": true,
+          "elapsedMs": 257090,
+          "samples": 256,
+          "chapters": ["0", "1", "2", "3", "4", "5", "6", "7"],
+          "final": {
+            "time": 256.5,
+            "chapter": "7",
+            "shot": "observation",
+            "hidden": false,
+            "playing": "false",
+            "bottom": 536.1875
+          },
+          "maximumPlayerBottom": 564.375,
+          "errors": []
+        },
+        {
+          "lang": "zh",
+          "passed": true,
+          "elapsedMs": 257089,
+          "samples": 256,
+          "chapters": ["0", "1", "2", "3", "4", "5", "6", "7"],
+          "final": {
+            "time": 256.5,
+            "chapter": "7",
+            "shot": "observation",
+            "hidden": false,
+            "playing": "false",
+            "bottom": 536.1875
+          },
+          "maximumPlayerBottom": 564.375,
+          "errors": []
+        }
+      ],
+      "scope": "Two native shared-player silent runs at normal speed with 1-second samples and recorded videos on isolated static candidate. Both 256.5-second endpoints reached. Built before whitespace-only scoped formatting; no semantic edits after that run. This is not continuous human watching, listening or final actual-site audio acceptance."
+    },
+    "cover": {
+      "compiled": true,
+      "personallyViewed": true,
+      "image": "artifacts/teaching-principles/batch-18-staging/chemistry/candidate-stage/cover.png",
+      "scope": "Independent Astro cover render; all real cover consumers remain root integration QA."
+    },
+    "personallyViewedImages": [
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-frozen/en-320-electron-transfer.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-frozen/en-320-net-end.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-frozen/zh-320-budget-answer.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-frozen/en-1100-two-fades.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-routed/en-320-oxygen-moving.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-routed/en-1100-electron-transfer.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-final/en-320-net-before.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-final/en-320-budget-question.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-final/en-320-generation.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/frames-final/zh-320-separate-tests.png",
+      "artifacts/teaching-principles/batch-18-staging/chemistry/candidate-stage/cover.png"
+    ],
+    "earlierFailures": [
+      {
+        "report": "artifacts/teaching-principles/batch-18-staging/chemistry/frames-initial/report.json",
+        "resolution": "Whole-player short-screen overflow addressed with local 16px caption layout, less duplicate heading, compact per-shot apparatus; no smaller body text."
+      },
+      {
+        "report": "artifacts/teaching-principles/batch-18-staging/chemistry/frames-compact/report.json",
+        "resolution": "Remaining short-screen overflowing shots corrected locally before final60 pass."
+      },
+      {
+        "report": "artifacts/teaching-principles/batch-18-staging/chemistry/frames-final/report.json",
+        "note": "Passed before lower oxygen path routing was refined; superseded by routed and final frozen frames."
+      }
+    ],
+    "audio": {
+      "newSpeechGenerated": false,
+      "subjectiveListening": false,
+      "newCueWordAlignment": false,
+      "preservedCues": [0, 2, 3, 4, 5, 6, 7],
+      "newCue": [1],
+      "reason": "Root owns recordings and measured timing; 58-second new cue window remains provisional."
+    }
+  },
+  "remainingRootAcceptance": [
+    "Copy exact 11-file regular-file manifest, integrate shared packet, preserve seven existing recorded spans.",
+    "Review decisive actual images and sources; generate only new index1 zh/en, then measured locale word-time calibration.",
+    "Check real Astro scene and all three teaching routes, anchors, failures, cover consumers and actual dictionary.",
+    "Run full verify/build:preview and frozen static native audio playback; listening is separately recorded, never inferred from ASR/tests."
+  ],
+  "handoffManifest": "artifacts/teaching-principles/batch-18-staging/chemistry/handoff-manifest.json",
+  "rootIntegration": {
+    "status": "integrated and reviewed; publication pending",
+    "batch": 18,
+    "acceptanceRecord": "drafts/teaching-principles/batch-18-review.json",
+    "source": {
+      "commit": "8563322ea2414ca9fe3bb7c0c0969cb293ff72fc",
+      "treeHash": "0a796951d10279e09dec9904cc966cfb9f1b638ee4829cb352d8aabedbf90094",
+      "gitDiffHash": "c1943f14f6f24113aeaa5ced05c0d2374363f534abc8bccdba8270046c3a1617",
+      "fileCount": 5363,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "authorEvidenceScope": "Earlier author candidate evidence retained as dated evidence; the root batch record governs final integrated QA.",
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ]
+  }
 }

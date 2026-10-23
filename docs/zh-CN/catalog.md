@@ -66,7 +66,7 @@
 | [钠与乙醇的证据链](../../src/content/chem-sodium-alcohol.mdx)                     | 2:48 | 气泡里的氢来自乙醇的哪里？                           |
 | [质谱分离与分子式证据](../../src/content/chem-mass-spectrometry.mdx)              | 3:18 | 最高的峰、最右的峰，哪一个能说明分子质量？           |
 | [原电池中的两条电荷通路](../../src/content/chem-galvanic-cells.mdx)               | 4:47 | 电子绕过溶液，电路怎样闭合？                         |
-| [乙烯与乙炔的性质证据](../../src/content/chem-unsaturated-hydrocarbons.mdx)       | 3:46 | 两次褪色，解释为什么不同？                           |
+| [乙烯与乙炔的性质证据](../../src/content/chem-unsaturated-hydrocarbons.mdx)       | 4:07 | 两次褪色，解释为什么不同？                           |
 | [红外吸收与结构证据](../../src/content/chem-infrared-structure.mdx)               | 2:23 | 怎样从一段红外吸收推断分子里的官能团？               |
 | [稀有气体的发现证据](../../src/content/chem-noble-gas-evidence.mdx)               | 2:50 | 科学家如何从微小差别发现元素，再修正“惰性”的判断？   |
 | [甲烷的光照取代](../../src/content/chem-methane-substitution.mdx)                 | 3:15 | 为什么一侧褪色、出现液滴并抬高液面？                 |
@@ -312,7 +312,7 @@
 | [水波槽中的传播与叠加](../../src/content/ripple-tank-lab.mdx)           | 4:48 | 同一片水面，为什么会出现不同的波纹？         |
 | [绳波、人浪与弹簧波](../../src/content/mechanical-wave-lab.mdx)         | 2:48 | 波向前传播时，介质去了哪里？                 |
 | [从绳的方向到光的偏振](../../src/content/polarization-evidence-lab.mdx) | 3:16 | 转动一道狭缝，能筛选什么？                   |
-| [从狭缝到阴影中的亮点](../../src/content/optical-diffraction-lab.mdx)   | 3:44 | 缝变窄，光为什么反而铺得更开？               |
+| [从狭缝到阴影中的亮点](../../src/content/optical-diffraction-lab.mdx)   | 4:17 | 开口变小，光为什么铺得更宽？                 |
 | [把干涉条纹变成测量](../../src/content/double-slit-measurement-lab.mdx) | 3:44 | 如何从几个亮纹读出光的波长？                 |
 | [膜厚写出的明暗](../../src/content/thin-film-lab.mdx)                   | 2:54 | 薄膜的厚度，怎样变成明暗与颜色？             |
 | [沿界面追踪全反射](../../src/content/total-reflection-lab.mdx)          | 3:44 | 光为什么能沿弯棒和水流前进？                 |

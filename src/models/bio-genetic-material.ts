@@ -1,4 +1,4 @@
-const clamp = (x: number) => Math.max(0, Math.min(1, x));
+const clamp = (x: number) => Math.max(0, Math.min(1, Number.isFinite(x) ? x : 0));
 const smooth = (x: number) => {
   const p = clamp(x);
   return p * p * (3 - 2 * p);
@@ -89,4 +89,79 @@ export function colonyPositions(count = 8) {
     x: 175 + Math.cos(id * 2.39996) * Math.sqrt(id + 1) * 24,
     y: 125 + Math.sin(id * 2.39996) * Math.sqrt(id + 1) * 18,
   }));
+}
+
+/** Presentation cuts follow the unchanged recorded speech; time is local chapter seconds.
+ * Separate samples reset between assays. Geometry remains a reconstruction, not molecular footage. */
+export function materialFilmState(chapter: number, time: number, locale = 'zh') {
+  const c = Math.max(0, Math.min(7, Math.floor(Number.isFinite(chapter) ? chapter : 0)));
+  const t = Math.max(0, Number.isFinite(time) ? time : 0),
+    en = locale === 'en';
+  const span = (a: number, b: number) => clamp((t - a) / (b - a));
+  let p = 0,
+    selected = 0,
+    treatment: Treatment = 'none',
+    isotope: Isotope = 'sulfur';
+  let blended = true,
+    phase: 'process' | 'detachment' | 'fractions' | 'counterexample' = 'process';
+  let sample = 'historical-reconstruction';
+  if (c === 0)
+    selected = t < (en ? 4.9 : 5) ? 0 : t < (en ? 6.2 : 7.5) ? 1 : t < (en ? 8.4 : 11.2) ? 2 : 3;
+  if (c === 1) p = span(en ? 2.2 : 5.8, en ? 6.5 : 11.1);
+  if (c === 2) p = span(en ? 6.4 : 7.1, en ? 9.8 : 12.2);
+  if (c === 3) {
+    const cuts = en ? [2.3, 4.4, 6.3, 9.9] : [2.3, 4.1, 5.8, 9.5];
+    const i = t < cuts[1] ? 0 : t < cuts[2] ? 1 : t < cuts[3] ? 2 : 3;
+    treatment = treatments[i + 1];
+    p = span(
+      cuts[i],
+      i === 3 ? (en ? 14.2 : 14.2) : i === 0 ? cuts[1] : i === 1 ? cuts[2] : en ? 9.3 : 8.8,
+    );
+    sample = `extract-${treatment}`;
+  }
+  if (c === 4) {
+    isotope = t < (en ? 10.5 : 14.45) ? 'sulfur' : 'phosphorus';
+    p = span(en ? 3 : 4.3, en ? 6.6 : 10.7);
+    sample = `label-${isotope}`;
+  }
+  if (c === 5) {
+    isotope = t < (en ? 6.6 : 7.2) ? 'sulfur' : 'phosphorus';
+    p = span(en ? 6.6 : 7.2, en ? 10.1 : 11.2);
+    sample = 'inferred-dominant-path';
+  }
+  if (c === 6) {
+    const counter = t >= (en ? 19.1 : 19.7);
+    if (counter) {
+      blended = false;
+      phase = 'counterexample';
+      p = span(en ? 19.6 : 20.2, en ? 24.7 : 27.3);
+      sample = 'fresh-unblended-control';
+    } else if (t < (en ? 5.8 : 5.6)) {
+      phase = 'detachment';
+      p = span(1.4, en ? 5.3 : 5.5);
+      sample = 'blended-sulfur';
+    } else {
+      phase = 'fractions';
+      p = span(en ? 5.8 : 5.6, en ? 8.7 : 8.5);
+      sample = 'blended-sulfur';
+    }
+    isotope = t < (en ? 11.7 : 11.4) ? 'sulfur' : 'phosphorus';
+    if (counter) isotope = 'sulfur';
+  }
+  if (c === 7) {
+    isotope = t < 8.3 ? 'sulfur' : 'phosphorus';
+    p = span(3, 4.6);
+    sample = `progeny-${isotope}`;
+  }
+  return {
+    chapter: c,
+    p,
+    selected,
+    treatment,
+    isotope,
+    blended,
+    phase,
+    sample,
+    reveal: c !== 7 || t >= 3.4,
+  };
 }

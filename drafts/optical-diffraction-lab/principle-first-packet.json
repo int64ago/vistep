@@ -1,0 +1,735 @@
+{
+  "slug": "optical-diffraction-lab",
+  "status": "candidate-frozen-ready-for-root-review",
+  "scope": {
+    "chapterIds": [
+      "slit-wide",
+      "slit-narrow",
+      "slit-white",
+      "circular-aperture",
+      "pencil-gap",
+      "caliper-gap",
+      "poisson-shadow",
+      "poisson-size"
+    ],
+    "textbookEntries": ["e1-single-slit-diffraction", "e1-poisson-spot"],
+    "expectedDuration": 242,
+    "retainedSpokenIds": ["slit-wide", "slit-white", "circular-aperture", "poisson-size"],
+    "changedSpokenIds": ["slit-narrow", "pencil-gap", "caliper-gap", "poisson-shadow"]
+  },
+  "topic": {
+    "title": {
+      "zh": "开口变小，光为什么铺得更宽？",
+      "en": "Why does a smaller opening spread light farther?"
+    },
+    "description": {
+      "zh": "追踪同一开口内各带的场如何相加，预测首暗方向，再检验圆盘阴影中的亮点。",
+      "en": "Trace how fields across one opening add, predict the first dark direction, then test the bright spot in a disk shadow."
+    }
+  },
+  "narration": {
+    "duration": 242,
+    "cues": [
+      {
+        "id": "slit-wide",
+        "title": "开口缩小，光斑也缩小吗？",
+        "titleEn": "Does a smaller slit make a smaller patch?",
+        "caption": "同一开口连续改变，屏图也由同一波场计算。",
+        "captionEn": "One continuously changing opening, one field calculation.",
+        "zh": "平行单色光照向挡板狭缝，后方一米处放屏。开口较宽时，几何光学可以给出大致轮廓，但边缘仍有衍射。页面从有限距离的菲涅耳积分计算强度，因此不是在某个宽度突然换成另一张图。器材缝隙为便于观察被放大，下方屏幕坐标使用毫米。",
+        "en": "Parallel monochromatic light illuminates a slit with a screen one meter behind it. A wide opening roughly follows geometric expectations but still diffracts at its edges. A finite-distance Fresnel integral calculates the pattern continuously rather than switching pictures at a threshold. Apparatus gaps are enlarged; screen coordinates are in millimeters.",
+        "seconds": 28,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "slit-narrow",
+        "title": "从各带相加到首暗预测",
+        "titleEn": "From band sums to a minimum",
+        "caption": "配对的场会怎样随路径差相加？",
+        "captionEn": "How do paired fields add as path delay changes?",
+        "zh": "为什么缝越窄，光反而铺得越宽？把同一个开口分成八条带，看它们在同一个屏点的场。正中央，各带几乎同相，场相加很强。沿屏幕移开，较远的路径逐渐落后。把相隔半个缝宽的两带配成一对：在远场近似下，如果它们多走半个波长，每一对就近乎抵消，形成首个暗纹。所以首暗方向取决于波长除以缝宽。现在把一百微米的缝减到五十微米，先预测首暗会移近还是移远。再揭开屏图：大约从五点五毫米移到十一毫米。中央亮区更宽，透过的总光却更少。屏图仍用有限距离积分，因此暗处不冒充数学上的严格零。",
+        "en": "Why does a narrower gap spread light farther? Divide the same opening into eight bands and follow their fields at one screen point. At the center they are nearly in phase and add strongly. Move along the screen and path delays grow. Pair bands separated by half the slit width. In the far-field approximation, a half-wavelength path difference makes every pair nearly cancel: the first dark band. Its direction therefore depends on wavelength divided by slit width. Now halve a one-hundred-micrometer slit. Predict whether the first minimum moves inward or outward. Reveal the screen: it moves from about five point five to eleven millimeters. The center broadens while less total light passes. The finite-distance calculation does not pretend this minimum is an exact zero.",
+        "seconds": 48,
+        "chapterAt": 28,
+        "at": 28.45
+      },
+      {
+        "id": "slit-white",
+        "title": "不同波长，分别算强度",
+        "titleEn": "Different wavelengths, separate intensities",
+        "caption": "中央重合，旁侧随波长分开。",
+        "captionEn": "Colors overlap centrally and separate at the sides.",
+        "zh": "白光包含许多波长，它们彼此不相干，应该把强度相加，而不是把不同颜色的振幅当成同一列波。中央位置各波长重合，旁侧条纹的位置不同，出现颜色分离。画面用三个波长近似颜色，保留波长依赖的传播计算，不声称精确再现真实白光光谱。",
+        "en": "White light contains mutually incoherent wavelengths, so their intensities add rather than their amplitudes. They overlap centrally but have different side-fringe positions. Three sampled wavelengths illustrate color while retaining wavelength-dependent propagation; this is not a calibrated reproduction of a real white-light spectrum.",
+        "seconds": 28,
+        "chapterAt": 76,
+        "at": 76.45
+      },
+      {
+        "id": "circular-aperture",
+        "title": "圆孔需要不同的积分",
+        "titleEn": "A circle needs a different integral",
+        "caption": "圆形开口的各处共同决定环纹。",
+        "captionEn": "The whole circular aperture determines its rings.",
+        "zh": "教材还比较小圆孔的衍射。圆孔与狭缝的形状不同，不能把单缝曲线简单旋转就当成结果。这里对圆形开口积分，得到中央区域和周围环纹。孔变小时传播范围扩大。画面仍计算有限距离；只有充分满足远场条件时，才得到通常所说的艾里斑近似。",
+        "en": "A circular aperture differs from a slit: its pattern cannot be obtained by simply rotating the slit curve. Integrating over the circular opening gives a central region and surrounding rings. Smaller holes spread light farther. This remains a finite-distance calculation; the familiar Airy approximation requires the far-field limit.",
+        "seconds": 28,
+        "chapterAt": 104,
+        "at": 104.45
+      },
+      {
+        "id": "pencil-gap",
+        "title": "铅笔缝减半，先预测",
+        "titleEn": "Halve the pencil gap: predict first",
+        "caption": "同一波长下，首暗位置往哪里移？",
+        "captionEn": "At fixed wavelength, where does the minimum move?",
+        "zh": "两支铅笔的细缝也遵守同一规律。先保留一百微米开口的结果，再把理想缝宽减半。不要先看新图，预测暗纹怎样移动。揭晓后，首暗位置约翻倍。这里用一米等效屏展开眼睛看到的角分布；真实铅笔边缘并不完全笔直。",
+        "en": "The gap between two pencils follows the same rule. Keep the one-hundred-micrometer reference, then halve the ideal gap. Predict the new minimum before revealing the screen: its distance approximately doubles. A one-meter equivalent screen unfolds the angular view; real pencil edges are not perfectly straight.",
+        "seconds": 20,
+        "chapterAt": 132,
+        "at": 132.45
+      },
+      {
+        "id": "caliper-gap",
+        "title": "缝不变，只改变波长",
+        "titleEn": "Keep the gap; change wavelength",
+        "caption": "更长波长会把暗纹移向哪里？",
+        "captionEn": "Where does a longer wavelength move the minimum?",
+        "zh": "卡脚固定缝宽，这次只改变光的波长。绿光换成更长波长的红光，首暗位置应往哪边移？先用同一个路径差条件预测，再揭晓：位置向外移，但缝没有变窄。这能区分改变光与改变器材。卡脚只画局部，微米读数是模型输入。",
+        "en": "Keep the caliper gap fixed and change only wavelength. If green light is replaced by longer-wavelength red light, where should the first minimum move? Predict using the same path-difference condition, then reveal it: outward, although the gap never narrowed. This separates a change of light from a change of apparatus. The micrometer readout is a model input.",
+        "seconds": 20,
+        "chapterAt": 152,
+        "at": 152.45
+      },
+      {
+        "id": "poisson-shadow",
+        "title": "圆盘中央一定是暗的吗？",
+        "titleEn": "Must the disk shadow center be dark?",
+        "caption": "先保留几何预测，再比较波场结果。",
+        "captionEn": "Keep the ray prediction, then test the wave result.",
+        "zh": "用不透明小圆盘挡住光，几何光线会预言中央是暗的。先保留这个预测，不急着揭开屏。现在跟踪圆周到轴线上同一点的路径：因为旋转对称，路径一样长，对应的绕射贡献具有相同相位。相同相位说明可以相长，但亮度还得把完整波场相加来算。这里先求互补圆孔的场，再从没有遮挡的场中减去它。揭开结果，几何阴影中央出现亮斑，并不是另画一个亮点。教材中的阿拉果观察支持了这个波动预言；本图是理想相干平面波的计算，不是历史照片。",
+        "en": "An opaque disk blocks the beam. Geometrical rays predict a dark center. Keep that prediction before revealing the screen. Now trace paths from the circular rim to one axial point. Rotational symmetry makes their lengths equal, so the corresponding diffracted contributions share a phase. Equal phase allows constructive addition, but brightness still requires the full field calculation. We calculate the complementary aperture field and subtract it from the unobstructed field. Reveal the result: a bright spot appears inside the geometric shadow without an extra painted dot. Arago’s observation supported this wave prediction; this image is an ideal coherent-plane-wave calculation, not a historical photograph.",
+        "seconds": 42,
+        "chapterAt": 172,
+        "at": 172.45
+      },
+      {
+        "id": "poisson-size",
+        "title": "盘变大，中央亮点会消失吗？",
+        "titleEn": "Does a larger disk remove the axial spot?",
+        "caption": "轴上强度与周围尺度是不同问题。",
+        "captionEn": "Axial intensity and surrounding scale are distinct.",
+        "zh": "改变圆盘半径，中央亮区和环纹的空间尺度随之变化。理想平面波模型中，轴上强度等于没有圆盘时的入射强度，但这不意味着整个阴影区都一样亮。真实光源大小、偏心、支架和探测分辨率会降低亮点可见度；本页不把理想强度当成真实仪器的保证。",
+        "en": "Changing disk radius alters the central spot and ring scales. In the ideal plane-wave model, axial intensity equals the unobstructed incident intensity, although the rest of the shadow is not equally bright. Finite sources, misalignment, supports and detector resolution can reduce visibility; the ideal result is not an instrument guarantee.",
+        "seconds": 28,
+        "chapterAt": 214,
+        "at": 214.45
+      }
+    ]
+  },
+  "translations": {
+    "先预测，再揭晓": "Predict, then reveal",
+    "首暗近似": "First dark ≈",
+    "新暗纹移向哪里？": "Where is the new dark band?",
+    "固定曝光 · 强度图": "Fixed exposure · intensity",
+    "同一屏点": "One screen point",
+    "八带合场": "Eight-band sum",
+    "绿场 + 棕场 → 虚线合场": "Green + amber → dashed sum",
+    "1、5带中心的路径差": "Paths from band centers 1 and 5",
+    "扣去共同路程后": "Common path removed",
+    "傍轴路径；每条带仍积分": "Path centers; bands are integrated",
+    "各色强度相加，不相位相加": "Add intensities across colors",
+    "三波长示意 · 非实测光谱": "Three wavelength samples",
+    "不透明圆盘": "Opaque disk",
+    "圆形开口": "Circular aperture",
+    "完整互补场 · 固定曝光": "Full field · fixed exposure",
+    "圆孔积分，非旋转单缝曲线": "Circular-aperture integral",
+    "圆周到轴点：等程": "Rim to axial point: equal paths",
+    "光被圆盘挡住，中央一定暗？": "Must the shadow center be dark?",
+    "几何阴影": "Geometric shadow",
+    "先保留这个预测": "Keep this prediction for comparison",
+    "同一开口的波场贡献、衍射屏和预测": "Field contributions, diffraction screen and predictions from the same opening",
+    "看屏图": "Screen",
+    "开口贡献": "Contributions",
+    "路径差量尺": "Path difference",
+    "暗纹预测": "Predict a minimum",
+    "不同波长": "Wavelengths",
+    "圆孔": "Round aperture",
+    "铅笔": "Pencils",
+    "卡尺": "Calipers",
+    "几何预测": "Geometric prediction",
+    "圆周等程": "Equal rim paths",
+    "波场结果": "Field result",
+    "观察装置": "Apparatus",
+    "狭缝与圆孔": "Slits and apertures",
+    "圆盘": "Disk",
+    "局部观察": "Close view",
+    "缝宽 / μm": "Slit width / μm",
+    "半径 / mm": "Radius / mm",
+    "屏点 x / mm": "Screen x / mm",
+    "波长 / nm": "Wavelength / nm",
+    "揭晓波场结果": "Reveal the field result",
+    "模型与器材说明": "Model and apparatus",
+    "单缝分区相加使用同一有限距离积分。首暗关系是远场近似，并非有限距离严格零。圆周等程图只解释对称性，屏图仍由完整圆孔互补场计算。颜色为三波长示意。": "The slit bands use the same finite-distance integral. The first-minimum relation is a far-field approximation, not an exact finite-distance zero. Equal rim paths explain symmetry; the screen uses the full complementary aperture field. Colors sample three wavelengths.",
+    "铅笔和卡脚保留理想直边，眼睛的角分布用一米等效屏展开。开口及传播角为便于观察放大，不表示真实光速。": "Pencils and jaws retain ideal straight edges; a one-meter equivalent screen unfolds the angular view. Openings and angles are enlarged, and timing does not represent the speed of light.",
+    "开口缩小，光斑也缩小吗？": "Does a smaller slit make a smaller patch?",
+    "同一开口连续改变，屏图也由同一波场计算。": "One continuously changing opening, one field calculation.",
+    "从各带相加到首暗预测": "From band sums to a minimum",
+    "配对的场会怎样随路径差相加？": "How do paired fields add as path delay changes?",
+    "不同波长，分别算强度": "Different wavelengths, separate intensities",
+    "中央重合，旁侧随波长分开。": "Colors overlap centrally and separate at the sides.",
+    "圆孔需要不同的积分": "A circle needs a different integral",
+    "圆形开口的各处共同决定环纹。": "The whole circular aperture determines its rings.",
+    "铅笔缝减半，先预测": "Halve the pencil gap: predict first",
+    "同一波长下，首暗位置往哪里移？": "At fixed wavelength, where does the minimum move?",
+    "缝不变，只改变波长": "Keep the gap; change wavelength",
+    "更长波长会把暗纹移向哪里？": "Where does a longer wavelength move the minimum?",
+    "圆盘中央一定是暗的吗？": "Must the disk shadow center be dark?",
+    "先保留几何预测，再比较波场结果。": "Keep the ray prediction, then test the wave result.",
+    "盘变大，中央亮点会消失吗？": "Does a larger disk remove the axial spot?",
+    "轴上强度与周围尺度是不同问题。": "Axial intensity and surrounding scale are distinct."
+  },
+  "teachingProfiles": {
+    "e1-single-slit-diffraction": {
+      "sceneSlug": "optical-diffraction-lab",
+      "question": {
+        "zh": "缝变窄了，为什么光却铺得更宽？",
+        "en": "Why does a narrower slit spread light farther?"
+      },
+      "lead": {
+        "zh": "跟踪开口各带在同一屏点的场，找出首暗条件，再预测新缝宽和新波长。",
+        "en": "Follow slit-band fields at one screen point, infer the first minimum, then predict a changed gap and wavelength."
+      },
+      "principle": {
+        "zh": "开口内的场经过不同路径相加；远场首暗近似满足a sinθ=λ，所以减小缝宽或增大波长会使首暗方向外移。",
+        "en": "Fields from the opening add after different path delays. The first far-field minimum satisfies a sinθ=λ, so narrowing the slit or increasing wavelength moves it outward."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保持缝宽不变，把550纳米换成650纳米，首暗位置怎样变？",
+          "en": "At fixed gap width, what happens to the first minimum when 550 nm is replaced by 650 nm?"
+        },
+        "explanation": {
+          "zh": "在同一距离和远场近似下，首暗距离与波长成正比，所以外移为原来的650/550倍。100微米缝、一米等效屏下约从5.5毫米变为6.5毫米；有限距离模型只近似出现这个最小值。",
+          "en": "At the same distance in the far-field approximation, the minimum scales with wavelength: outward by 650/550. A 100 μm gap on a one-meter equivalent screen changes from about 5.5 to 6.5 mm. The finite-distance minimum is only approximately there."
+        }
+      }
+    },
+    "e1-poisson-spot": {
+      "sceneSlug": "optical-diffraction-lab",
+      "question": {
+        "zh": "圆盘挡住了光，阴影中央为什么还能亮？",
+        "en": "Why can the center of an opaque disk’s shadow be bright?"
+      },
+      "lead": {
+        "zh": "先保留直线光路给出的暗心预测，再由圆周等程和完整波场检验它。",
+        "en": "Keep the dark-center ray prediction, then test it using equal rim paths and the full field."
+      },
+      "principle": {
+        "zh": "轴对称使圆周到轴点的路径等长，绕射贡献可同相叠加；完整菲涅耳互补场给出理想平面波下的轴上亮点。",
+        "en": "Rotational symmetry gives equal rim-to-axis paths and coherent diffracted phases; the full complementary Fresnel field yields an axial spot for an ideal plane wave."
+      },
+      "transfer": {
+        "question": {
+          "zh": "理想圆盘半径增大，轴上强度不变，是否意味着整个阴影也一样亮？",
+          "en": "If ideal axial intensity stays unchanged when disk radius increases, is the whole shadow equally bright?"
+        },
+        "explanation": {
+          "zh": "不是。轴值只是一个位置，周围的相位关系和亮区尺度仍随半径改变。真实有限光源、偏心和探测分辨率也会改变可见度；理想轴值不是仪器保证。",
+          "en": "No. The axis is one position; surrounding phase relations and spot scale still change with radius. Finite sources, misalignment and detector resolution also change visibility. The ideal axial result is not an instrument guarantee."
+        }
+      }
+    }
+  },
+  "curriculumVariants": {
+    "e1-single-slit-diffraction": {
+      "sceneSlug": "optical-diffraction-lab",
+      "chapterIds": [
+        "slit-wide",
+        "slit-narrow",
+        "slit-white",
+        "circular-aperture",
+        "pencil-gap",
+        "caliper-gap"
+      ],
+      "label": {
+        "zh": "单缝及小孔衍射",
+        "en": "Slit and aperture diffraction"
+      }
+    },
+    "e1-poisson-spot": {
+      "sceneSlug": "optical-diffraction-lab",
+      "chapterIds": ["poisson-shadow", "poisson-size"],
+      "label": {
+        "zh": "泊松亮斑",
+        "en": "Poisson spot"
+      }
+    }
+  },
+  "sharedProposals": {
+    "shortScreenSelector": ".lesson-optical-diffraction-lab",
+    "preserveTextbookTitlePageOrder": true
+  },
+  "sources": [
+    {
+      "id": "pep",
+      "title": "普通高中教科书 物理 选择性必修第一册（人教版），P104–107 光的衍射",
+      "local": "/Users/int64ago/Downloads/人教版高中物理-选择性必修第一册.pdf",
+      "url": null
+    },
+    {
+      "id": "openstax",
+      "title": "OpenStax University Physics Volume 3, 4.1–4.2 Single-Slit Diffraction",
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction"
+    },
+    {
+      "id": "mit",
+      "title": "MIT 2.71/2.710 Optics, 2009 Lecture 15: Huygens principle and Fresnel diffraction",
+      "url": "https://ocw.mit.edu/courses/2-71-optics-spring-2009/c5c982b1fe835b982df0090dbd528d39_MIT2_71S09_lec15.pdf"
+    },
+    {
+      "id": "princeton",
+      "title": "Princeton Physics 501 Problem Set 9, Solution 5: Fresnel Diffraction by an Opaque Circular Disk",
+      "url": "https://kirkmcd.princeton.edu/examples/ph501set9.pdf"
+    }
+  ],
+  "scientificLimits": [
+    "Monochromatic coherent uniform plane illumination; scalar paraxial Fresnel propagation; no vector edge/support/noise model.",
+    "The eight aperture bands are extended intervals integrated with the same kernel, not eight point sources. Pair cancellation and a sinθ=λ are far-field inferences; finite-z screen minima are not asserted exact zeros.",
+    "The axial rim diagram shows equal path/phase by symmetry, not 12 independent emitters used to generate the screen. All radial intensity values come from the full circular aperture integral and Babinet complement.",
+    "Ideal plane-wave on-axis unit intensity is distinct from a finite point-source experiment. Princeton Solution 5 gives a different finite-source configuration and supports the existence/scope of the axial spot, not our normalization.",
+    "Three wavelength channels are illustrative, not calibrated white-light colorimetry. Fixed nonlinear exposure is used: 100 for slit/circular opening and 2.5 for opaque disk; cross-apparatus display brightness is not a photometric comparison. Curves use the same exposure mapping, not a linear intensity ordinate.",
+    "Slit/rim geometry is enlarged with compressed propagation distance. Pencil/jaw ideal openings use an equivalent 1 m screen, not an eye/rough-edge simulation.",
+    "Quantitative first-minimum views allow 50–150 micrometers, keeping the Fresnel number at most 0.05 and the predicted minimum inside the ±15 mm screen. General Fresnel screen remains 30–800 micrometers. No historical dataset or measurement is invented; all displayed numbers are model conditions/results."
+  ],
+  "director": {
+    "status": "Provisional local seconds; measured voice calibration pending.",
+    "cuts": [
+      {
+        "id": "slit-wide",
+        "widthScan": [3, 21]
+      },
+      {
+        "id": "slit-narrow",
+        "bandView": [
+          [0, 5],
+          [15, 28]
+        ],
+        "pathDifferenceRuler": [5, 15],
+        "screenPointScan": [5, 16],
+        "predict": [28, 35],
+        "reveal": 35
+      },
+      {
+        "id": "slit-white",
+        "colors": 0
+      },
+      {
+        "id": "circular-aperture",
+        "apertureRadiusScan": [5, 18]
+      },
+      {
+        "id": "pencil-gap",
+        "predict": [3, 12],
+        "halfGap": 8,
+        "reveal": 12
+      },
+      {
+        "id": "caliper-gap",
+        "predict": [3, 11],
+        "wavelengthChange": 7,
+        "reveal": 11
+      },
+      {
+        "id": "poisson-shadow",
+        "geometricPrediction": [0, 9],
+        "rim": [9, 26],
+        "fullFieldReveal": 26
+      },
+      {
+        "id": "poisson-size",
+        "radiusScan": [8, 19]
+      }
+    ]
+  },
+  "spokenDiff": [
+    {
+      "id": "slit-wide",
+      "fields": {
+        "title": {
+          "old": "从较宽的狭缝开始",
+          "new": "开口缩小，光斑也缩小吗？",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Start with a wider slit",
+          "new": "Does a smaller slit make a smaller patch?",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "缩小几何开口，屏上的分布不只是同比缩小。",
+          "new": "同一开口连续改变，屏图也由同一波场计算。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "A smaller opening does not simply shrink the screen pattern.",
+          "new": "One continuously changing opening, one field calculation.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 0.45,
+          "new": 0.45,
+          "unchanged": true
+        },
+        "zh": {
+          "old": "平行单色光照向挡板狭缝，后方一米处放屏。开口较宽时，几何光学可以给出大致轮廓，但边缘仍有衍射。页面从有限距离的菲涅耳积分计算强度，因此不是在某个宽度突然换成另一张图。器材缝隙为便于观察被放大，下方屏幕坐标使用毫米。",
+          "new": "平行单色光照向挡板狭缝，后方一米处放屏。开口较宽时，几何光学可以给出大致轮廓，但边缘仍有衍射。页面从有限距离的菲涅耳积分计算强度，因此不是在某个宽度突然换成另一张图。器材缝隙为便于观察被放大，下方屏幕坐标使用毫米。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "Parallel monochromatic light illuminates a slit with a screen one meter behind it. A wide opening roughly follows geometric expectations but still diffracts at its edges. A finite-distance Fresnel integral calculates the pattern continuously rather than switching pictures at a threshold. Apparatus gaps are enlarged; screen coordinates are in millimeters.",
+          "new": "Parallel monochromatic light illuminates a slit with a screen one meter behind it. A wide opening roughly follows geometric expectations but still diffracts at its edges. A finite-distance Fresnel integral calculates the pattern continuously rather than switching pictures at a threshold. Apparatus gaps are enlarged; screen coordinates are in millimeters.",
+          "unchanged": true
+        }
+      }
+    },
+    {
+      "id": "slit-narrow",
+      "fields": {
+        "title": {
+          "old": "缝更窄，中央条纹更宽",
+          "new": "从各带相加到首暗预测",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Narrow the slit and broaden the central band",
+          "new": "From band sums to a minimum",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "传播范围变宽，同时透过的光更少。",
+          "new": "配对的场会怎样随路径差相加？",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Light spreads farther while total transmitted power falls.",
+          "new": "How do paired fields add as path delay changes?",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 48,
+          "unchanged": false
+        },
+        "at": {
+          "old": 28.45,
+          "new": 28.45,
+          "unchanged": true
+        },
+        "zh": {
+          "old": "继续收窄狭缝，进入明显的远场衍射状态。中央亮纹变宽，旁边出现较弱的条纹；与此同时，开口减少，透过的光也减少。这里用固定显示曝光保留亮度变化，避免把每一帧都拉成同样亮。下方曲线是相对入射强度，不是光子行进的轨迹。",
+          "new": "为什么缝越窄，光反而铺得越宽？把同一个开口分成八条带，看它们在同一个屏点的场。正中央，各带几乎同相，场相加很强。沿屏幕移开，较远的路径逐渐落后。把相隔半个缝宽的两带配成一对：在远场近似下，如果它们多走半个波长，每一对就近乎抵消，形成首个暗纹。所以首暗方向取决于波长除以缝宽。现在把一百微米的缝减到五十微米，先预测首暗会移近还是移远。再揭开屏图：大约从五点五毫米移到十一毫米。中央亮区更宽，透过的总光却更少。屏图仍用有限距离积分，因此暗处不冒充数学上的严格零。",
+          "unchanged": false
+        },
+        "en": {
+          "old": "As the slit narrows, the far-field pattern broadens into a central band and weaker side fringes. Less light also passes through the smaller opening. Fixed display exposure preserves this brightness change instead of normalizing every frame to the same peak. The lower curve shows relative intensity, not photon trajectories.",
+          "new": "Why does a narrower gap spread light farther? Divide the same opening into eight bands and follow their fields at one screen point. At the center they are nearly in phase and add strongly. Move along the screen and path delays grow. Pair bands separated by half the slit width. In the far-field approximation, a half-wavelength path difference makes every pair nearly cancel: the first dark band. Its direction therefore depends on wavelength divided by slit width. Now halve a one-hundred-micrometer slit. Predict whether the first minimum moves inward or outward. Reveal the screen: it moves from about five point five to eleven millimeters. The center broadens while less total light passes. The finite-distance calculation does not pretend this minimum is an exact zero.",
+          "unchanged": false
+        }
+      }
+    },
+    {
+      "id": "slit-white",
+      "fields": {
+        "title": {
+          "old": "把不同波长的图样叠加",
+          "new": "不同波长，分别算强度",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Superpose patterns from different wavelengths",
+          "new": "Different wavelengths, separate intensities",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "中央各色重合，旁侧条纹随波长分开。",
+          "new": "中央重合，旁侧随波长分开。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Colors overlap centrally and separate toward the sides.",
+          "new": "Colors overlap centrally and separate at the sides.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 56.45,
+          "new": 76.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "白光包含许多波长，它们彼此不相干，应该把强度相加，而不是把不同颜色的振幅当成同一列波。中央位置各波长重合，旁侧条纹的位置不同，出现颜色分离。画面用三个波长近似颜色，保留波长依赖的传播计算，不声称精确再现真实白光光谱。",
+          "new": "白光包含许多波长，它们彼此不相干，应该把强度相加，而不是把不同颜色的振幅当成同一列波。中央位置各波长重合，旁侧条纹的位置不同，出现颜色分离。画面用三个波长近似颜色，保留波长依赖的传播计算，不声称精确再现真实白光光谱。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "White light contains mutually incoherent wavelengths, so their intensities add rather than their amplitudes. They overlap centrally but have different side-fringe positions. Three sampled wavelengths illustrate color while retaining wavelength-dependent propagation; this is not a calibrated reproduction of a real white-light spectrum.",
+          "new": "White light contains mutually incoherent wavelengths, so their intensities add rather than their amplitudes. They overlap centrally but have different side-fringe positions. Three sampled wavelengths illustrate color while retaining wavelength-dependent propagation; this is not a calibrated reproduction of a real white-light spectrum.",
+          "unchanged": true
+        }
+      }
+    },
+    {
+      "id": "circular-aperture",
+      "fields": {
+        "title": {
+          "old": "换成圆孔，观察圆形图样",
+          "new": "圆孔需要不同的积分",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Change to a circular aperture",
+          "new": "A circle needs a different integral",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "圆对称开口需要圆对称波场积分。",
+          "new": "圆形开口的各处共同决定环纹。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "A circular opening requires a radially symmetric field integral.",
+          "new": "The whole circular aperture determines its rings.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 84.45,
+          "new": 104.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "教材还比较小圆孔的衍射。圆孔与狭缝的形状不同，不能把单缝曲线简单旋转就当成结果。这里对圆形开口积分，得到中央区域和周围环纹。孔变小时传播范围扩大。画面仍计算有限距离；只有充分满足远场条件时，才得到通常所说的艾里斑近似。",
+          "new": "教材还比较小圆孔的衍射。圆孔与狭缝的形状不同，不能把单缝曲线简单旋转就当成结果。这里对圆形开口积分，得到中央区域和周围环纹。孔变小时传播范围扩大。画面仍计算有限距离；只有充分满足远场条件时，才得到通常所说的艾里斑近似。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "A circular aperture differs from a slit: its pattern cannot be obtained by simply rotating the slit curve. Integrating over the circular opening gives a central region and surrounding rings. Smaller holes spread light farther. This remains a finite-distance calculation; the familiar Airy approximation requires the far-field limit.",
+          "new": "A circular aperture differs from a slit: its pattern cannot be obtained by simply rotating the slit curve. Integrating over the circular opening gives a central region and surrounding rings. Smaller holes spread light farther. This remains a finite-distance calculation; the familiar Airy approximation requires the far-field limit.",
+          "unchanged": true
+        }
+      }
+    },
+    {
+      "id": "pencil-gap",
+      "fields": {
+        "title": {
+          "old": "用两支铅笔形成狭缝",
+          "new": "铅笔缝减半，先预测",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Form a slit with two pencils",
+          "new": "Halve the pencil gap: predict first",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "改变缝隙，比较线光源的衍射展开。",
+          "new": "同一波长下，首暗位置往哪里移？",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Change the gap and compare how a line source spreads.",
+          "new": "At fixed wavelength, where does the minimum move?",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 20,
+          "unchanged": false
+        },
+        "at": {
+          "old": 112.45,
+          "new": 132.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "把两支铅笔并排，利用中间细缝观察线状光源，缓慢改变间隙，比较中央条纹宽度。页面用相同开口宽度驱动传播计算，让生活器材与实验挡板建立联系。真实观察由眼睛晶状体形成角分布，这里用一米等效屏展开，未加入眼睛像差和铅笔边缘不平整。",
+          "new": "两支铅笔的细缝也遵守同一规律。先保留一百微米开口的结果，再把理想缝宽减半。不要先看新图，预测暗纹怎样移动。揭晓后，首暗位置约翻倍。这里用一米等效屏展开眼睛看到的角分布；真实铅笔边缘并不完全笔直。",
+          "unchanged": false
+        },
+        "en": {
+          "old": "Place two pencils side by side and view a line source through their narrow gap. Varying the gap changes the central diffraction width. The same aperture width drives the model. The eye normally maps angles through its lens; this display uses a one-meter equivalent screen and omits eye aberrations and rough pencil edges.",
+          "new": "The gap between two pencils follows the same rule. Keep the one-hundred-micrometer reference, then halve the ideal gap. Predict the new minimum before revealing the screen: its distance approximately doubles. A one-meter equivalent screen unfolds the angular view; real pencil edges are not perfectly straight.",
+          "unchanged": false
+        }
+      }
+    },
+    {
+      "id": "caliper-gap",
+      "fields": {
+        "title": {
+          "old": "用卡脚控制狭缝宽度",
+          "new": "缝不变，只改变波长",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Control the gap with caliper jaws",
+          "new": "Keep the gap; change wavelength",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "同一宽度对应同一理想衍射分布。",
+          "new": "更长波长会把暗纹移向哪里？",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "The same ideal gap width produces the same diffraction distribution.",
+          "new": "Where does a longer wavelength move the minimum?",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 20,
+          "unchanged": false
+        },
+        "at": {
+          "old": 140.45,
+          "new": 152.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "游标卡尺的两卡脚也能构成较易控制的狭缝。改变开口后，图样按同一个波动模型变化；这能比较器材差异与物理规律。卡脚只画局部结构，读数直接显示微米，不模拟具体卡尺的分度。保持开口方向一致，才能把宽度变化和条纹展开方向对应起来。",
+          "new": "卡脚固定缝宽，这次只改变光的波长。绿光换成更长波长的红光，首暗位置应往哪边移？先用同一个路径差条件预测，再揭晓：位置向外移，但缝没有变窄。这能区分改变光与改变器材。卡脚只画局部，微米读数是模型输入。",
+          "unchanged": false
+        },
+        "en": {
+          "old": "Caliper jaws provide a controllable slit. Changing their gap updates the same wave model, separating apparatus choice from the physical rule. The close-up omits instrument-specific graduations and gives width directly in micrometers. Keeping the slit orientation fixed relates gap width to the direction of spreading.",
+          "new": "Keep the caliper gap fixed and change only wavelength. If green light is replaced by longer-wavelength red light, where should the first minimum move? Predict using the same path-difference condition, then reveal it: outward, although the gap never narrowed. This separates a change of light from a change of apparatus. The micrometer readout is a model input.",
+          "unchanged": false
+        }
+      }
+    },
+    {
+      "id": "poisson-shadow",
+      "fields": {
+        "title": {
+          "old": "小圆盘阴影中也会有亮点",
+          "new": "圆盘中央一定是暗的吗？",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Find a bright spot inside a disk shadow",
+          "new": "Must the disk shadow center be dark?",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "圆周绕射的场在轴线上相长叠加。",
+          "new": "先保留几何预测，再比较波场结果。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "The diffracted field adds constructively on the axis.",
+          "new": "Keep the ray prediction, then test the wave result.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 42,
+          "unchanged": false
+        },
+        "at": {
+          "old": 168.45,
+          "new": 172.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "把狭缝换成不透明小圆盘，波动理论预言几何阴影中央会有亮点。页面先计算互补圆孔的复振幅，再利用巴比涅原理求圆盘后的场。中央亮点自然出现在结果里，没有额外叠一个装饰亮点。轴对称、相干平行光和理想圆边缘都是这幅图样的重要条件。",
+          "new": "用不透明小圆盘挡住光，几何光线会预言中央是暗的。先保留这个预测，不急着揭开屏。现在跟踪圆周到轴线上同一点的路径：因为旋转对称，路径一样长，对应的绕射贡献具有相同相位。相同相位说明可以相长，但亮度还得把完整波场相加来算。这里先求互补圆孔的场，再从没有遮挡的场中减去它。揭开结果，几何阴影中央出现亮斑，并不是另画一个亮点。教材中的阿拉果观察支持了这个波动预言；本图是理想相干平面波的计算，不是历史照片。",
+          "unchanged": false
+        },
+        "en": {
+          "old": "Replace the opening with an opaque circular disk. Wave theory predicts a central bright spot inside its geometric shadow. The model calculates the complementary aperture’s complex field and uses Babinet’s principle. The axial spot emerges from that calculation without an added graphic. Symmetry, coherent plane illumination and a circular edge are essential.",
+          "new": "An opaque disk blocks the beam. Geometrical rays predict a dark center. Keep that prediction before revealing the screen. Now trace paths from the circular rim to one axial point. Rotational symmetry makes their lengths equal, so the corresponding diffracted contributions share a phase. Equal phase allows constructive addition, but brightness still requires the full field calculation. We calculate the complementary aperture field and subtract it from the unobstructed field. Reveal the result: a bright spot appears inside the geometric shadow without an extra painted dot. Arago’s observation supported this wave prediction; this image is an ideal coherent-plane-wave calculation, not a historical photograph.",
+          "unchanged": false
+        }
+      }
+    },
+    {
+      "id": "poisson-size",
+      "fields": {
+        "title": {
+          "old": "改变圆盘尺寸，比较亮点尺度",
+          "new": "盘变大，中央亮点会消失吗？",
+          "unchanged": false
+        },
+        "titleEn": {
+          "old": "Change disk size and compare the spot",
+          "new": "Does a larger disk remove the axial spot?",
+          "unchanged": false
+        },
+        "caption": {
+          "old": "理想轴上强度不随盘径消失，周围结构却改变。",
+          "new": "轴上强度与周围尺度是不同问题。",
+          "unchanged": false
+        },
+        "captionEn": {
+          "old": "Ideal axial intensity persists while surrounding structure changes.",
+          "new": "Axial intensity and surrounding scale are distinct.",
+          "unchanged": false
+        },
+        "seconds": {
+          "old": 28,
+          "new": 28,
+          "unchanged": true
+        },
+        "at": {
+          "old": 196.45,
+          "new": 214.45,
+          "unchanged": false
+        },
+        "zh": {
+          "old": "改变圆盘半径，中央亮区和环纹的空间尺度随之变化。理想平面波模型中，轴上强度等于没有圆盘时的入射强度，但这不意味着整个阴影区都一样亮。真实光源大小、偏心、支架和探测分辨率会降低亮点可见度；本页不把理想强度当成真实仪器的保证。",
+          "new": "改变圆盘半径，中央亮区和环纹的空间尺度随之变化。理想平面波模型中，轴上强度等于没有圆盘时的入射强度，但这不意味着整个阴影区都一样亮。真实光源大小、偏心、支架和探测分辨率会降低亮点可见度；本页不把理想强度当成真实仪器的保证。",
+          "unchanged": true
+        },
+        "en": {
+          "old": "Changing disk radius alters the central spot and ring scales. In the ideal plane-wave model, axial intensity equals the unobstructed incident intensity, although the rest of the shadow is not equally bright. Finite sources, misalignment, supports and detector resolution can reduce visibility; the ideal result is not an instrument guarantee.",
+          "new": "Changing disk radius alters the central spot and ring scales. In the ideal plane-wave model, axial intensity equals the unobstructed incident intensity, although the rest of the shadow is not equally bright. Finite sources, misalignment, supports and detector resolution can reduce visibility; the ideal result is not an instrument guarantee.",
+          "unchanged": true
+        }
+      }
+    }
+  ],
+  "acceptance": {
+    "candidateOnly": true,
+    "sourceReview": "checks/sources/source-review.json",
+    "scopedTests": {
+      "files": 3,
+      "tests": 19,
+      "report": "checks/tests-final.log"
+    },
+    "strictTypes": "checks/strict-types.json",
+    "nativeFrames": "checks/native-review-09/report.json",
+    "technicalPlayback": "checks/native-playback-final/report.json",
+    "finalChangedChapter": "checks/aperture-final-playback/report.json",
+    "recordings": "No new audio. Measured bilingual word-time calibration is pending root integration.",
+    "globalVerify": "Root canonical integration and whole verify/build pending.",
+    "listening": "Not performed; no ASR or subjective listening claimed.",
+    "physicalPhone": "Not tested."
+  }
+}

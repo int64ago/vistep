@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { t } from '../../i18n';
+import { t, browserLocale } from '../../i18n';
 import { Range, Segments } from '../lab/Controls';
 import { useShowcase, ease, ramp } from '../lab/FilmContext';
 import {
   xLinkedCross,
+  linkedFilmState,
+  linkedTransmission,
   inferTextbookPedigree,
   textbookPedigree,
   pedigreeFamilies,
@@ -115,6 +117,7 @@ function Fly({ male, white }: { male: boolean; white: boolean }) {
     </svg>
   );
 }
+const short = (zh: string, en: string) => (browserLocale() === 'en' ? en : zh);
 const inferred = inferTextbookPedigree();
 function PedigreeNode({
   id,
@@ -182,32 +185,32 @@ function Pedigree({
     const childXs = family.children.map((_, i) => 30 + ((i + 0.5) * 240) / family.children.length);
     return (
       <svg
-        viewBox="0 0 300 275"
+        viewBox="0 0 300 240"
         role="img"
         aria-label={t('保留教材家系关系，实心表示观察到的受影响表型，圆点表示推断携带者')}
       >
         <path
-          d="M103 34H197M150 34V76H100V111M113 124H187M150 124V185"
+          d="M103 28H197M150 28V65H100V88M113 101H187M150 101V161"
           fill="none"
           stroke="#b1b39a"
           strokeWidth="1.5"
         />
         <path
-          d={`M${childXs[0]} 206V185H${childXs.at(-1)}V206`}
+          d={`M${childXs[0]} 182V161H${childXs.at(-1)}V182`}
           fill="none"
           stroke="#b1b39a"
           strokeWidth="1.5"
         />
         {childXs.map((x) => (
-          <path key={x} d={`M${x} 185V206`} stroke="#b1b39a" />
+          <path key={x} d={`M${x} 161V182`} stroke="#b1b39a" />
         ))}
-        <PedigreeNode id="I-1" x={90} y={34} focus={focus} reveal={reveal} labelSize={20} />
-        <PedigreeNode id="I-2" x={210} y={34} focus={focus} reveal={reveal} labelSize={20} />
-        <PedigreeNode id={proband} x={100} y={124} focus={focus} reveal={reveal} labelSize={20} />
+        <PedigreeNode id="I-1" x={90} y={28} focus={focus} reveal={reveal} labelSize={20} />
+        <PedigreeNode id="I-2" x={210} y={28} focus={focus} reveal={reveal} labelSize={20} />
+        <PedigreeNode id={proband} x={100} y={101} focus={focus} reveal={reveal} labelSize={20} />
         <PedigreeNode
           id={proband === family.mother ? family.father : family.mother}
           x={200}
-          y={124}
+          y={101}
           focus={focus}
           reveal={reveal}
           labelSize={20}
@@ -217,14 +220,14 @@ function Pedigree({
             key={id}
             id={id}
             x={childXs[i]}
-            y={220}
+            y={196}
             focus={focus}
             reveal={reveal}
             labelSize={20}
             shortLabel
           />
         ))}
-        <text x="8" y="269" fontSize="20" fill="#858a74">
+        <text x="8" y="235" fontSize="20" fill="#858a74">
           III
         </text>
       </svg>
@@ -289,35 +292,35 @@ function Pedigree({
 }
 export default function BioLinkedInheritance() {
   const f = useShowcase(),
-    [mode, setMode] = useState<Mode>(
-      modes.includes(f.variant as Mode) ? (f.variant as Mode) : 'parents',
-    ),
-    [progress, setProgress] = useState(0.7),
-    [mother, setMother] = useState<XFemale>('Bb'),
-    [father, setFather] = useState<XMale>('BY'),
+    locale = browserLocale();
+  const [mode, setMode] = useState<Mode | null>(null),
+    [progress, setProgress] = useState<Partial<Record<Mode, number>>>({}),
+    [mother, setMother] = useState<XFemale | null>(null),
+    [father, setFather] = useState<XMale | null>(null),
     [custom, setCustom] = useState(false),
-    [person, setPerson] = useState('III-6'),
+    [person, setPerson] = useState<string | null>(null),
     [branch, setBranch] = useState(1),
-    [sampleSize, setSampleSize] = useState(80),
+    [sampleSize, setSampleSize] = useState<number | null>(null),
     [biased, setBiased] = useState(false),
     [seed, setSeed] = useState(23),
     [sex, setSex] = useState<'all' | 'female' | 'male'>('all'),
     [duplicates, setDuplicates] = useState(false);
-  const m = f.watch ? modes[Math.min(7, f.chapter)] : mode,
-    p = f.watch ? ease(ramp(f.chapterProgress, 0.04, 0.9)) : progress,
-    pair = !f.watch && custom ? ([mother, father] as [XFemale, XMale]) : (crosses[m] ?? crosses.f2),
-    outcomes = xLinkedCross(...pair),
-    index = Math.min(outcomes.length - 1, Math.floor(p * outcomes.length)),
-    outcome = outcomes[index],
-    q = p === 1 ? 1 : p * outcomes.length - index,
-    focus = f.watch ? (p < 0.3 ? 'I-1' : p < 0.65 ? 'II-3' : 'III-6') : person,
-    reveal = f.watch ? p > 0.35 : p > 0.35,
+  const directedMode = modes[Math.min(7, f.chapter)],
+    m = f.watch ? directedMode : (mode ?? directedMode),
+    inherits = m === directedMode,
+    d = linkedFilmState(modes.indexOf(m), inherits ? f.chapterTime : 0, locale),
+    p = f.watch ? d.progress : (progress[m] ?? (inherits ? d.progress : 0)),
+    originalPair = crosses[m] ?? crosses.f2,
+    activeMother = mother ?? originalPair[0],
+    activeFather = father ?? originalPair[1],
+    pair = !f.watch && custom ? ([activeMother, activeFather] as [XFemale, XMale]) : originalPair,
+    transmission = linkedTransmission(...pair, p),
+    { outcomes, index, q, child: outcome } = transmission,
+    focus = f.watch ? d.focus : (person ?? (inherits ? d.focus : 'III-6')),
+    reveal = f.watch ? d.reveal : progress[m] === undefined && inherits ? d.reveal : p > 0.35,
     activeBranch = f.watch ? 1 : branch,
-    selection = surveySample(
-      f.watch ? Math.floor(20 + p * 180) : sampleSize,
-      f.watch ? false : biased,
-      f.watch ? 23 : seed,
-    ),
+    n = f.watch ? d.sampleCount : (sampleSize ?? (inherits ? d.sampleCount : 80)),
+    selection = surveySample(n, f.watch ? false : biased, f.watch ? 23 : seed),
     selectedIds = new Set(selection.map((r) => r.id)),
     summary = summarizeSurvey(selection, f.watch ? 'all' : sex),
     pooledRecords = [
@@ -326,11 +329,18 @@ export default function BioLinkedInheritance() {
     ],
     pooled = summarizeSurvey(pooledRecords, f.watch ? 'all' : sex);
   return (
-    <section className="bio-linked" data-watch={f.watch} data-mode={m}>
+    <section
+      className="bio-linked bli18"
+      data-watch={f.watch}
+      data-mode={m}
+      data-progress={p}
+      data-focus={focus}
+      data-reveal={reveal}
+    >
       <p className="bio-linked-kind">{t(names[modes.indexOf(m)])}</p>
       {['parents', 'f2', 'test', 'reciprocal'].includes(m) ? (
-        <>
-          <div className="bio-linked-parents">
+        <div className="bli18-cross" data-class={index}>
+          <div className="bli18-pair">
             <div>
               <Fly male={false} white={pair[0] === 'bb'} />
               <span>♀ {gene(pair[0], true)}</span>
@@ -341,60 +351,87 @@ export default function BioLinkedInheritance() {
               <span>♂ {gene(pair[1], true)}</span>
             </div>
           </div>
-          <div className="bio-linked-transfer">
-            <span>
-              {t('母方配子')} {gene(outcome.maternal, true)}
-            </span>
-            <span>
-              {t('父方配子')} {gene(outcome.paternal, true)}
-            </span>
-          </div>
-          <svg className="bio-linked-gamete-path" viewBox="0 0 330 95" aria-hidden="true">
+          <svg
+            className="bli18-transmission"
+            viewBox="0 0 280 90"
+            aria-label={short(
+              '同一配子类别的母方与父方标记',
+              'Maternal and paternal markers for one gamete class',
+            )}
+          >
             <path
-              d="M85 15Q85 64 149 78M245 15Q245 64 181 78"
+              d="M75.6 18L128 74M204.4 18L152 74"
               fill="none"
               stroke="#c3c3ab"
               strokeWidth="1.5"
             />
-            {[0, 1].map((side) => {
-              const allele = side ? outcome.paternal : outcome.maternal,
-                x = side ? 245 - 64 * ease(q) : 85 + 64 * ease(q),
-                y = 15 + 63 * ease(q);
-              return (
-                <g key={side}>
-                  <path
-                    d={`M${x} ${y - 10}V${y + (allele === 'Y' ? 4 : 10)}`}
-                    stroke={side ? '#8e9f7d' : '#ac869e'}
-                    strokeWidth="5"
-                    strokeLinecap="round"
+            {transmission.tokens.map((token) => (
+              <g
+                key={token.id}
+                data-token={token.id}
+                data-source={token.source}
+                data-allele={token.allele}
+                transform={`translate(${token.x} ${token.y})`}
+              >
+                <path
+                  d={`M0 -9V${token.allele === 'Y' ? 4 : 9}`}
+                  stroke={token.source === 'maternal' ? '#ac869e' : '#8e9f7d'}
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+                {token.allele !== 'Y' && (
+                  <circle
+                    cy="-3"
+                    r="3"
+                    fill={token.allele === 'B' ? '#ad606a' : '#f4ecdb'}
+                    stroke="#9a7d70"
                   />
-                  {allele !== 'Y' && (
-                    <circle
-                      cx={x}
-                      cy={y - 3}
-                      r="3"
-                      fill={allele === 'B' ? '#ad606a' : '#f4ecdb'}
-                      stroke="#9a7d70"
-                    />
-                  )}
-                </g>
-              );
-            })}
+                )}
+              </g>
+            ))}
+            <text x="9" y="24" fontSize="18" fill="#826b7d">
+              {short('母方', 'Mother')}
+            </text>
+            <text x="220" y="24" fontSize="18" fill="#6f8061">
+              {short('父方', 'Father')}
+            </text>
           </svg>
-          <div className="bio-linked-offspring">
+          <div
+            className="bli18-selected"
+            style={{ visibility: q >= 0.92 ? 'visible' : 'hidden' }}
+            data-genotype={outcome.genotype}
+            data-sex={outcome.sex}
+          >
+            <Fly male={outcome.sex === 'male'} white={outcome.affected} />
+            <div>
+              <strong>
+                {outcome.sex === 'male' ? '♂' : '♀'} {gene(outcome.genotype, true)}
+              </strong>
+              <span>
+                {t(outcome.affected ? '白眼' : '红眼')} · {Math.round(outcome.probability * 100)}%
+              </span>
+            </div>
+          </div>
+          <div
+            className="bli18-classes"
+            aria-label={short('理论后代类别', 'Theoretical offspring classes')}
+          >
             {outcomes.map((c, i) => (
               <div key={`${c.maternal}-${c.paternal}`} data-active={i === index}>
-                <Fly male={c.sex === 'male'} white={c.affected} />
                 <span>
-                  {c.sex === 'male' ? '♂' : '♀'} {gene(c.genotype, true)}
+                  {c.sex === 'male' ? '♂' : '♀'}{' '}
+                  {transmission.revealed[i] ? gene(c.genotype, true) : '?'}
                 </span>
-                <strong>{(c.probability * 100).toFixed(0)}%</strong>
-                <span>{t(c.affected ? '白眼' : '红眼')}</span>
+                <span>
+                  {transmission.revealed[i] ? Math.round(c.probability * 100) + '%' : '—'}
+                </span>
               </div>
             ))}
           </div>
-          <p className="bio-linked-note">{t('典型二倍体果蝇的X连锁模型；百分比为理论预测。')}</p>
-        </>
+          <p className="bli18-small-note">
+            {short('模型预测，不是历史计数', 'Predictions, not historical counts')}
+          </p>
+        </div>
       ) : m === 'dalton' ? (
         <>
           <div className="bio-linked-flower-observation">
@@ -432,7 +469,9 @@ export default function BioLinkedInheritance() {
               </dl>
             </div>
           </div>
-          <p className="bio-linked-note">{t('比较历史观察记录；花朵图不模拟某个人的精确色觉。')}</p>
+          <p className="bio-linked-note">
+            {short('观察记录，不模拟个人视觉', 'Reports, not simulated vision')}
+          </p>
         </>
       ) : m === 'pedigree' ? (
         <>
@@ -444,14 +483,21 @@ export default function BioLinkedInheritance() {
           </div>
           <div className="bio-linked-genotype">
             <strong>{focus}</strong>
-            <span>{inferred[focus].map((g) => gene(g)).join(' / ')}</span>
             <span>
-              {t(inferred[focus].length > 1 ? '现有资料不能唯一确定' : '在本模型假设下可确定')}
+              {!reveal && focus !== 'I-1'
+                ? short('先看表型', 'Observe phenotype')
+                : inferred[focus].map((g) => gene(g)).join(' / ')}
+            </span>
+            <span>
+              {short(
+                inferred[focus].length > 1 ? '两种可能' : '模型推断',
+                inferred[focus].length > 1 ? 'Two possibilities' : 'Model inference',
+              )}
             </span>
           </div>
           <div className="bio-linked-legend">
-            <span>■ / ● {t('观察到受影响表型')}</span>
-            <span>⊙ {t('由家系推断携带者')}</span>
+            <span>■ / ● {short('观察表型', 'Observed')}</span>
+            <span>⊙ {short('推断携带者', 'Inferred carrier')}</span>
           </div>
         </>
       ) : m === 'survey' ? (
@@ -494,7 +540,9 @@ export default function BioLinkedInheritance() {
               {summary.proportion === null ? '—' : (summary.proportion * 100).toFixed(2) + '%'}
             </strong>
           </div>
-          <p className="bio-linked-note">{t('200人的合成练习资料，不是任何真实人群的患病率。')}</p>
+          <p className="bio-linked-note">
+            {short('200人的合成练习资料', 'Synthetic population: 200')}
+          </p>
         </>
       ) : (
         <>
@@ -502,7 +550,12 @@ export default function BioLinkedInheritance() {
             {groupSurveySamples.map((sample, i) => {
               const s = summarizeSurvey(sample, f.watch ? 'all' : sex);
               return (
-                <div key={i} style={{ opacity: f.watch && i === 1 ? 0.25 + 0.75 * p : 1 }}>
+                <div
+                  key={i}
+                  style={{
+                    visibility: f.watch && i === 1 && !d.secondGroup ? 'hidden' : 'visible',
+                  }}
+                >
                   <span>{t(i ? '第二组' : '第一组')}</span>
                   <strong>
                     {s.affected} / {s.total}
@@ -511,8 +564,11 @@ export default function BioLinkedInheritance() {
                 </div>
               );
             })}
-            <div className="bio-linked-pooled">
-              <span>{t('合并唯一受访者')}</span>
+            <div
+              className="bio-linked-pooled"
+              style={{ visibility: f.watch && !d.poolReveal ? 'hidden' : 'visible' }}
+            >
+              <span>{short('合并并去重', 'Pooled, unique people')}</span>
               <strong>
                 {pooled.affected} / {pooled.total}
               </strong>
@@ -529,18 +585,18 @@ export default function BioLinkedInheritance() {
         <div className="bio-linked-controls">
           <Segments
             label={t('证据类型')}
-            value={mode}
+            value={m}
             onChange={setMode}
             options={modes.map((value, i) => ({ value, label: t(names[i]) }))}
           />
           {!['survey', 'pooling'].includes(m) && (
             <Range
               label={t('过程进度')}
-              value={progress}
+              value={p}
               min={0}
               max={1}
               step={0.001}
-              onChange={setProgress}
+              onChange={(v) => setProgress((old) => ({ ...old, [m]: v }))}
             />
           )}{' '}
           {['parents', 'f2', 'test', 'reciprocal'].includes(m) && (
@@ -552,7 +608,7 @@ export default function BioLinkedInheritance() {
                 <>
                   <Segments
                     label={t('母本基因型')}
-                    value={mother}
+                    value={activeMother}
                     onChange={setMother}
                     options={(['BB', 'Bb', 'bb'] as const).map((value) => ({
                       value,
@@ -561,7 +617,7 @@ export default function BioLinkedInheritance() {
                   />
                   <Segments
                     label={t('父本基因型')}
-                    value={father}
+                    value={activeFather}
                     onChange={setFather}
                     options={(['BY', 'bY'] as const).map((value) => ({
                       value,
@@ -590,7 +646,7 @@ export default function BioLinkedInheritance() {
               <label>
                 {t('读取个体的可能基因型')}
                 <select
-                  value={person}
+                  value={focus}
                   onChange={(e) => {
                     const id = e.target.value;
                     setPerson(id);
@@ -628,10 +684,10 @@ export default function BioLinkedInheritance() {
             <>
               <Range
                 label={t('抽样人数')}
-                value={sampleSize}
-                min={10}
+                value={n}
+                min={0}
                 max={200}
-                step={10}
+                step={1}
                 onChange={setSampleSize}
               />
               <button type="button" aria-pressed={biased} onClick={() => setBiased(!biased)}>

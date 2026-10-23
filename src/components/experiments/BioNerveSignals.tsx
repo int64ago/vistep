@@ -1,94 +1,128 @@
-import { useId, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { browserLocale } from '../../i18n';
 import {
   bioelectricEvidence,
   nerveSurface,
-  nerveRecordingTime,
   synapseState,
+  nerveDirector,
+  membraneCharge,
+  membraneMarkers,
   type BioelectricCondition,
 } from '../../models/bio-nerve-signals';
 import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import '../../styles/bio-nerve-signals.css';
+type Theme = 'surface' | 'membrane' | 'synapse' | 'history';
+const themeOf = (ch: number): Theme =>
+  ch < 2 ? 'surface' : ch === 2 ? 'membrane' : ch < 5 ? 'synapse' : 'history';
 export default function BioNerveSignals() {
   const film = useShowcase(),
-    { host, width: w, compact } = useSignalWidth(),
+    { host, width } = useSignalWidth(),
+    w = Math.max(240, Math.min(680, width)),
     id = useId(),
     en = browserLocale() === 'en',
     s = (a: string, b: string) => (en ? b : a);
-  const initial =
-    film.variant === 'bio-elective-1-mechanism-15'
-      ? 1
-      : film.variant === 'bio-elective-1-032-1'
-        ? 2
-        : 0;
-  const [chosen, setChosen] = useState(initial),
-    [time, setTime] = useState(2),
+  const [chosen, setChosen] = useState<Theme | null>(null),
+    [manualTime, setTime] = useState<number | null>(null),
     [speed, setSpeed] = useState(20),
     [gap, setGap] = useState(20),
-    [release, setRelease] = useState(true),
-    [receptor, setReceptor] = useState(true),
-    [membraneSelected, setMembraneSelected] = useState(false),
-    [condition, setCondition] = useState<BioelectricCondition>('metal');
-  const mode = film.watch ? (film.chapter < 2 ? 0 : film.chapter < 5 ? 1 : 2) : chosen;
-  const progress = film.watch ? film.chapterProgress : time / 6;
-  const surface = nerveSurface(
-    film.watch ? nerveRecordingTime(film.chapter, progress) : time,
-    film.watch ? 20 : speed,
-    film.watch ? 20 : gap,
+    [release, setRelease] = useState<boolean | null>(null),
+    [receptor, setReceptor] = useState<boolean | null>(null),
+    [condition, setCondition] = useState<BioelectricCondition | null>(null),
+    [sodium, setSodium] = useState(true),
+    [potassium, setPotassium] = useState(true),
+    [capacitance, setCapacitance] = useState(1);
+  const d = nerveDirector(film.chapter, film.chapterTime, en ? 'en' : 'zh'),
+    theme = film.watch ? themeOf(film.chapter) : (chosen ?? themeOf(film.chapter)),
+    inheritsCurrentShot = theme === themeOf(film.chapter),
+    defaults = !inheritsCurrentShot
+      ? 0
+      : theme === 'surface'
+        ? d.surfaceTime
+        : theme === 'membrane'
+          ? d.membraneTime
+          : theme === 'synapse'
+            ? d.synapseProgress * 6
+            : d.historicalProgress * 6,
+    time = film.watch ? defaults : (manualTime ?? defaults);
+  const activeSpeed = film.watch ? 20 : speed,
+    activeGap = film.watch ? 20 : gap,
+    surface = nerveSurface(time, activeSpeed, activeGap),
+    options = {
+      sodium: film.watch ? true : sodium,
+      potassium: film.watch ? true : potassium,
+      capacitance: film.watch ? 1 : capacitance,
+    },
+    mem = membraneCharge(time, options),
+    markers = membraneMarkers(mem, w);
+  const curve = useMemo(
+    () => Array.from({ length: 151 }, (_, i) => membraneCharge(i / 25, options)),
+    [options.sodium, options.potassium, options.capacitance],
   );
-  const sy = synapseState(
-    film.watch
-      ? film.chapter === 2
-        ? progress * 0.25
-        : film.chapter === 3
-          ? progress * 0.65
-          : 0.65 + progress * 0.35
-      : progress,
-    film.watch ? true : release,
-    film.watch ? true : receptor,
-  );
-  const historical = film.watch
-    ? film.chapter === 5
-      ? 'metal'
-      : progress < 0.65
-        ? 'tissue'
-        : 'broken'
-    : condition;
-  const hist = bioelectricEvidence(
-      historical,
-      film.watch && film.chapter === 6
-        ? progress < 0.65
-          ? progress / 0.65
-          : (progress - 0.65) / 0.35
-        : progress,
-    ),
+  const activeRelease = film.watch
+      ? !d.releaseCounterexample
+      : (release ?? (inheritsCurrentShot ? !d.releaseCounterexample : true)),
+    activeReceptor = film.watch
+      ? !d.receptorCounterexample
+      : (receptor ?? (inheritsCurrentShot ? !d.receptorCounterexample : true)),
+    sy = synapseState(time / 6, activeRelease, activeReceptor),
+    historical = film.watch
+      ? d.history
+      : (condition ?? (inheritsCurrentShot ? d.history : 'metal')),
+    hist = bioelectricEvidence(historical, theme === 'history' ? time / 6 : 0),
     left = 28,
     right = w - 28,
-    x = (mm: number) => left + ((right - left) * mm) / 120;
-  const axonY = compact ? 116 : 138;
-  const membraneView = mode === 1 && (film.watch ? film.chapter === 2 : membraneSelected),
-    mem = nerveSurface((film.watch ? progress : time / 6) * 4),
-    vm = mem.membrane(35);
+    x = (mm: number) => left + ((right - left) * mm) / 120,
+    axonY = 95;
   const titles = [
-    s('两个电极，同一束兴奋', 'Two electrodes, one traveling signal'),
-    s('从电信号到化学信号', 'From voltage to transmitter'),
-    s('改变接触，检验解释', 'Change the contact; test the explanation'),
+    s('两个电极，同一束兴奋', 'One signal, two electrodes'),
+    s('膜内相对膜外', 'Inside relative to outside'),
+    s('改变接触，检验解释', 'Change contact; test the source'),
   ];
+  const line =
+    theme === 'membrane'
+      ? mem.sodiumGate > 0.01 && mem.sodiumCurrent - mem.potassiumCurrent > 1
+        ? s('钠流入，电荷增加', 'Na enters; charge rises')
+        : mem.potassiumGate > 0.01 && mem.potassiumCurrent - mem.sodiumCurrent > 1
+          ? s('钾流出，电位回落', 'K exits; voltage falls')
+          : Math.abs(mem.sodiumCurrent - mem.potassiumCurrent) > 1
+            ? s('背景电流恢复', 'Basal currents restore')
+            : s('少量电荷差形成电压', 'A small charge imbalance')
+      : theme === 'synapse'
+        ? film.watch && d.releaseCounterexample
+          ? s('另一对照：不释放', 'New trial: no release')
+          : film.watch && d.receptorCounterexample
+            ? s('另一对照：受体不响应', 'New trial: receptor off')
+            : s('递质跨过间隙', 'Transmitter crosses the cleft')
+        : theme === 'history'
+          ? titles[2]
+          : titles[0];
   return (
-    <div ref={host} className="bio-nerve" data-watch={film.watch}>
-      <div className="bio-nerve-head">
-        <span>{titles[mode]}</span>
-        <b>
-          {mode === 0
-            ? `${surface.timeMs.toFixed(2)} ms`
-            : mode === 1
-              ? `${(membraneView ? vm : sy.voltage).toFixed(1)} mV`
-              : s('历史证据', 'Historical evidence')}
-        </b>
+    <div
+      ref={host}
+      className="bns18"
+      data-watch={film.watch}
+      data-theme={theme}
+      data-counter={
+        film.watch
+          ? d.releaseCounterexample
+            ? 'release'
+            : d.receptorCounterexample
+              ? 'receptor'
+              : 'none'
+          : 'explore'
+      }
+    >
+      <div className="bns18-head">
+        <span>{line}</span>
+        {theme === 'membrane' ? (
+          <b data-voltage>{mem.voltage.toFixed(1)} mV</b>
+        ) : theme === 'synapse' ? (
+          <b>{sy.voltage.toFixed(1)} mV</b>
+        ) : null}
       </div>
-      {mode === 0 && (
-        <svg viewBox={`0 0 ${w} ${compact ? 350 : 390}`} role="img" aria-label={titles[0]}>
+      {theme === 'surface' && (
+        <svg viewBox={`0 0 ${w} 260`} role="img" aria-label={titles[0]}>
           <defs>
             <linearGradient id={`${id}-axon`} x2="0" y2="1">
               <stop stopColor="#eff2dc" />
@@ -133,89 +167,158 @@ export default function BioNerveSignals() {
             stroke="#b06e53"
             strokeWidth="2"
           />
-          <text x={x(surface.a) - 8} y={axonY - 33} textAnchor="end">
+          <text x={x(surface.a) - 8} y={axonY + 7} textAnchor="end">
             a
           </text>
-          <text x={x(surface.b) + 8} y={axonY - 33}>
+          <text x={x(surface.b) + 8} y={axonY + 7}>
             b
           </text>
-          <text x={w / 2} y={axonY + 53} textAnchor="middle">
-            Vₐ − Vᵦ = {surface.difference.toFixed(1)} {s('相对单位', 'relative units')}
+          <text x={w / 2} y={axonY + 42} textAnchor="middle">
+            Vₐ − Vᵦ = {surface.difference.toFixed(1)} {s('相对量', 'relative')}
           </text>
-          <path d={`M28 ${axonY + 115}H${w - 28}`} stroke="#d4dee2" />
+          <path d={`M28 ${axonY + 99}H${w - 28}`} stroke="#d4dee2" />
           <path
             d={Array.from({ length: 181 }, (_, i) => {
               const t = i / 30;
-              return `${i ? 'L' : 'M'}${28 + ((w - 56) * t) / 6},${axonY + 115 - nerveSurface(t, film.watch ? 20 : speed, film.watch ? 20 : gap).difference * 2.8}`;
+              return `${i ? 'L' : 'M'}${28 + ((w - 56) * t) / 6},${axonY + 99 - nerveSurface(t, activeSpeed, activeGap).difference * 2.8}`;
             }).join(' ')}
             fill="none"
             stroke="#7896ab"
             strokeWidth="2.5"
           />
           <path
-            d={`M${28 + ((w - 56) * surface.timeMs) / 6} ${axonY + 75}v80`}
+            d={`M${28 + ((w - 56) * surface.timeMs) / 6} ${axonY + 63}v72`}
             stroke="#c28b67"
             strokeDasharray="3 5"
           />
-          <text x="28" y={axonY + 172}>
+          <text x="28" y={axonY + 151}>
             0 ms
           </text>
-          <text x={w - 28} y={axonY + 172} textAnchor="end">
+          <text x={w - 28} y={axonY + 151} textAnchor="end">
             6 ms
           </text>
         </svg>
       )}
-      {membraneView && (
-        <svg
-          viewBox={`0 0 ${w} 340`}
-          role="img"
-          aria-label={s('局部膜电位变化', 'Local membrane-potential change')}
-        >
-          <rect x="25" y="112" width={w - 50} height="75" rx="30" fill="#e0e8cf" stroke="#a8b993" />
-          <path d={`M25 117H${w - 25}M25 182H${w - 25}`} stroke="#9faf85" strokeWidth="4" />
-          <path
-            d={`M${w * 0.4} 80v58m-7-9 7 9 7-9`}
-            stroke="#7995ae"
-            strokeWidth="3"
-            fill="none"
-            opacity={mem.sodiumEntry(35)}
-          />
-          <path
-            d={`M${w * 0.65} 150v65m-7-9 7 9 7-9`}
-            stroke="#a78e6a"
-            strokeWidth="3"
-            fill="none"
-            opacity={mem.potassiumExit(35)}
-          />
-          <text x={w * 0.4} y="65" textAnchor="middle">
-            Na⁺
-          </text>
-          <text x={w * 0.65} y="238" textAnchor="middle">
-            K⁺
-          </text>
-          <text x={w / 2} y="158" textAnchor="middle">
-            {s('V膜', 'Vₘ')} = {vm.toFixed(1)} mV
-          </text>
-          <path
-            d={Array.from(
-              { length: 101 },
-              (_, i) =>
-                `${i ? 'L' : 'M'}${25 + ((w - 50) * i) / 100},${302 - (nerveSurface(i * 0.04).membrane(35) + 70) * 0.45}`,
-            ).join(' ')}
-            fill="none"
-            stroke="#bd8c63"
-            strokeWidth="2.5"
-          />
-          <circle
-            cx={25 + ((w - 50) * mem.timeMs) / 4}
-            cy={302 - (vm + 70) * 0.45}
-            r="5"
-            fill="#bd8c63"
-          />
-        </svg>
+      {theme === 'membrane' && (
+        <>
+          <svg
+            viewBox={`0 0 ${w} 250`}
+            role="img"
+            aria-label={s('通道、电荷与膜电位', 'Channels, charge and voltage')}
+          >
+            <rect x="12" y="30" width={w - 24} height="68" rx="18" fill="#edf2f2" />
+            <rect x="12" y="116" width={w - 24} height="70" rx="18" fill="#e4ebd8" />
+            <text x="18" y="22">
+              {s('膜外', 'Outside')}
+            </text>
+            <text x="18" y="182">
+              {s('膜内', 'Inside')}
+            </text>
+            {[0, 1, 2, 3].map((i) => (
+              <g key={i} opacity=".4">
+                <text x={22 + i * 13} y="65">
+                  {i % 2 ? '+' : '−'}
+                </text>
+                <text x={w - 22 - i * 13} y="151">
+                  {i % 2 ? '−' : '+'}
+                </text>
+              </g>
+            ))}
+            <path
+              d={`M12 98H${w * 0.32 - 24}M${w * 0.32 + 24} 98H${w * 0.68 - 24}M${w * 0.68 + 24} 98H${w - 12}M12 116H${w * 0.32 - 24}M${w * 0.32 + 24} 116H${w * 0.68 - 24}M${w * 0.68 + 24} 116H${w - 12}`}
+              stroke="#9cad91"
+              strokeWidth="5"
+              fill="none"
+            />
+            {[
+              { x: w * 0.32, open: mem.sodiumGate, enabled: options.sodium, label: 'Na' },
+              { x: w * 0.68, open: mem.potassiumGate, enabled: options.potassium, label: 'K' },
+            ].map((g) => (
+              <g key={g.label} data-channel={g.label} data-open={g.open.toFixed(4)}>
+                <rect x={g.x - 26} y="88" width="8" height="38" rx="5" fill="#7e9ca1" />
+                <rect x={g.x + 18} y="88" width="8" height="38" rx="5" fill="#7e9ca1" />
+                <path
+                  d={`M${g.x - 18} 107H${g.x - 18 * g.open}M${g.x + 18 * g.open} 107H${g.x + 18}`}
+                  stroke="#6d858a"
+                  strokeWidth="6"
+                />
+              </g>
+            ))}
+            {markers.map((m) => (
+              <g
+                key={m.id}
+                data-ion={m.id}
+                data-progress={m.progress.toFixed(5)}
+                transform={`translate(${m.x},${m.y})`}
+              >
+                <circle
+                  r="17"
+                  fill={m.species === 'Na' ? '#dae8ef' : '#e8dcc1'}
+                  stroke={m.species === 'Na' ? '#7496a7' : '#a28e67'}
+                />
+                <text textAnchor="middle" y="5">
+                  {m.species}⁺
+                </text>
+              </g>
+            ))}
+            {[
+              { y: 83, q: mem.outsideCharge },
+              { y: 137, q: mem.insideCharge },
+            ].map(({ y, q }) => (
+              <g key={y} data-surface-charge={q}>
+                <rect
+                  x={w / 2 - 14}
+                  y={y - 5}
+                  width={Math.min(28, Math.abs(q) / 3)}
+                  height="5"
+                  rx="2.5"
+                  fill={q < 0 ? '#7398a8' : '#b68c70'}
+                />
+                <text x={w / 2 + 20} y={y + 2} textAnchor="middle">
+                  {Math.abs(q) < 1 ? '0' : q < 0 ? '−' : '+'}
+                </text>
+              </g>
+            ))}
+            <path d={`M38 226H${w - 22}`} stroke="#b8c2bc" />
+            <path
+              d={curve
+                .map(
+                  (q, i) =>
+                    `${i ? 'L' : 'M'}${38 + ((w - 60) * q.timeMs) / 6},${226 - (q.voltage + 70) * 0.31}`,
+                )
+                .join(' ')}
+              fill="none"
+              stroke="#ae7d5e"
+              strokeWidth="2"
+            />
+            <circle
+              cx={38 + ((w - 60) * mem.timeMs) / 6}
+              cy={226 - (mem.voltage + 70) * 0.31}
+              r="4"
+              fill="#ae7d5e"
+            />
+            <text x="0" y="230">
+              −70
+            </text>
+            <text x="38" y="248">
+              0
+            </text>
+            <text x={w - 22} y="248" textAnchor="end">
+              6 ms
+            </text>
+          </svg>
+          <p className="bns18-state">
+            {s('给定门控，电压由电荷算出', 'Given gating; voltage from charge')}
+          </p>
+        </>
       )}
-      {mode === 1 && !membraneView && (
-        <svg viewBox={`0 0 ${w} ${compact ? 340 : 365}`} role="img" aria-label={titles[1]}>
+      {theme === 'synapse' && (
+        <svg
+          className="bns18-synapse-close"
+          viewBox={`0 34 ${w} 266`}
+          role="img"
+          aria-label={s('突触前后膜', 'Pre- and postsynaptic membranes')}
+        >
           <path
             d={`M${w * 0.19} 0V55Q${w * 0.06} 84 ${w * 0.1} 145Q${w * 0.15} 165 ${w * 0.22} 165H${w * 0.78}Q${w * 0.85} 165 ${w * 0.9} 145Q${w * 0.94} 84 ${w * 0.81} 55V0`}
             fill="#dce5c8"
@@ -232,8 +335,8 @@ export default function BioNerveSignals() {
             stroke="#90afb8"
             strokeWidth="2"
           />
-          <text x={w / 2} y="28" textAnchor="middle">
-            {s('突触前末梢', 'Presynaptic terminal')}
+          <text x={w / 2} y="60" textAnchor="middle">
+            {s('突触前', 'Presynaptic')}
           </text>
           {sy.vesicles.map((v) =>
             v.fused ? (
@@ -277,13 +380,13 @@ export default function BioNerveSignals() {
               )}
             </g>
           ))}
-          <text x={w / 2} y="316" textAnchor="middle">
-            {s('递质受体改变通道状态', 'Receptors alter ion-channel state')}
+          <text x={w / 2} y="292" textAnchor="middle">
+            {s('突触后', 'Postsynaptic')}
           </text>
         </svg>
       )}
-      {mode === 2 && (
-        <svg viewBox={`0 0 ${w} 290`} role="img" aria-label={titles[2]}>
+      {theme === 'history' && (
+        <svg viewBox={`0 0 ${w} 240`} role="img" aria-label={titles[2]}>
           <path
             d={`M35 120Q${w * 0.35} 80 ${w * 0.57} 135`}
             stroke="#b6b987"
@@ -309,7 +412,7 @@ export default function BioNerveSignals() {
             {historical === 'metal'
               ? s('金属连接', 'Metal bridge')
               : historical === 'tissue'
-                ? s('无金属的组织接触', 'Tissue contact without metal')
+                ? s('组织连接', 'Tissue bridge')
                 : s('断开接触', 'Contact interrupted')}
           </text>
           <text x="35" y="202">
@@ -318,124 +421,142 @@ export default function BioNerveSignals() {
           <text x={w - 35} y="202" textAnchor="end">
             {s('肌肉', 'Muscle')}
           </text>
-          <text x={w / 2} y="253" textAnchor="middle">
+          <text x={w / 2} y="232" textAnchor="middle">
             {hist.connected
-              ? s('出现收缩', 'Contraction observed')
-              : s('本条件下不收缩', 'No contraction in this condition')}
+              ? hist.contraction > 0.02
+                ? s('出现收缩', 'Contraction observed')
+                : s('观察接触条件', 'Observe the contact')
+              : s('本条件不收缩', 'No contraction')}
           </text>
         </svg>
       )}
-      <p className="bio-nerve-note">
-        {mode === 0
-          ? s(
-              '表面两点的差值，不等于跨膜电位。',
-              'A surface difference is not a transmembrane voltage.',
-            )
-          : mode === 1
-            ? s(
-                '递质小点表示身份与路径，非真实分子比例。',
-                'Transmitter markers show identity and route, not molecular scale.',
-              )
-            : s(
-                '比较历史条件；画面不演示动物操作步骤。',
-                'Compare historical conditions; animal procedures are not demonstrated.',
-              )}
-      </p>
+
       {!film.watch && (
-        <>
-          <div className="bio-nerve-tabs">
-            {[
-              s('表面电位', 'Surface recording'),
-              s('突触', 'Synapse'),
-              s('生物电证据', 'Bioelectric evidence'),
-            ].map((label, i) => (
-              <button key={label} aria-pressed={chosen === i} onClick={() => setChosen(i)}>
-                {label}
+        <div className="bns18-controls">
+          <div className="bns18-tabs">
+            {(['surface', 'membrane', 'synapse', 'history'] as const).map((t, i) => (
+              <button
+                key={t}
+                aria-pressed={theme === t}
+                onClick={() => {
+                  setChosen(t);
+                  setTime(null);
+                }}
+              >
+                {
+                  [
+                    s('表面记录', 'Surface record'),
+                    s('膜电荷', 'Membrane charge'),
+                    s('突触', 'Synapse'),
+                    s('生物电证据', 'Bioelectric evidence'),
+                  ][i]
+                }
               </button>
             ))}
           </div>
-          <div className="bio-nerve-controls">
-            <label htmlFor={`${id}-time`}>
-              {s('观察时刻', 'Observation time')}
-              <input
-                id={`${id}-time`}
-                type="range"
-                min="0"
-                max="6"
-                step=".02"
-                value={time}
-                onChange={(e) => setTime(+e.target.value)}
-              />
-            </label>
-            {mode === 0 ? (
-              <>
-                <label htmlFor={`${id}-speed`}>
-                  {s('传播速度', 'Conduction speed')} · {speed} mm/ms
-                  <input
-                    id={`${id}-speed`}
-                    type="range"
-                    min="5"
-                    max="40"
-                    value={speed}
-                    onChange={(e) => setSpeed(+e.target.value)}
-                  />
-                </label>
-                <label htmlFor={`${id}-gap`}>
-                  {s('电极间距', 'Electrode separation')} · {gap} mm
-                  <input
-                    id={`${id}-gap`}
-                    type="range"
-                    min="0"
-                    max="45"
-                    value={gap}
-                    onChange={(e) => setGap(+e.target.value)}
-                  />
-                </label>
-              </>
-            ) : mode === 1 ? (
-              <div className="bio-nerve-tabs">
-                <button
-                  aria-pressed={membraneSelected}
-                  onClick={() => setMembraneSelected(!membraneSelected)}
-                >
-                  {membraneSelected
-                    ? s('观察突触', 'Observe synapse')
-                    : s('观察膜电位', 'Observe membrane voltage')}
-                </button>
-                <button aria-pressed={release} onClick={() => setRelease(!release)}>
-                  {s('释放递质', 'Release transmitter')}
-                </button>
-                <button aria-pressed={receptor} onClick={() => setReceptor(!receptor)}>
-                  {s('受体可响应', 'Receptors responsive')}
-                </button>
-              </div>
-            ) : (
-              <div className="bio-nerve-tabs">
-                {(['metal', 'tissue', 'broken'] as const).map((c, i) => (
-                  <button key={c} aria-pressed={c === condition} onClick={() => setCondition(c)}>
-                    {
-                      [
-                        s('金属', 'Metal'),
-                        s('组织接触', 'Tissue contact'),
-                        s('断开', 'Disconnected'),
-                      ][i]
-                    }
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </>
-      )}
-      <details>
-        <summary>{s('模型与证据边界', 'Model and evidence limits')}</summary>
-        <p>
-          {s(
-            '表面负脉冲以固定形状平移，速度和幅度为教学参数，不是蛙神经实测波形。突触使用单次释放、指数清除与饱和受体模型，不计算完整离子通道动力学。历史比较说明金属并非必要条件，不表示所有组织接触均必然引起收缩。',
-            'The translated negative pulse has a chosen teaching shape and speed; it is not a measured frog-nerve trace. A single release, exponential clearance and saturating receptor represent the synapse, without full channel kinetics. Historical comparisons show metal is unnecessary, not that arbitrary tissue contact always contracts muscle.',
+          <label htmlFor={`${id}-time`}>
+            {s('观察时刻', 'Observation time')} · {time.toFixed(2)}
+            <input
+              id={`${id}-time`}
+              type="range"
+              min="0"
+              max="6"
+              step=".02"
+              value={time}
+              onChange={(e) => setTime(+e.target.value)}
+            />
+          </label>
+          {theme === 'surface' && (
+            <>
+              <label htmlFor={`${id}-speed`}>
+                {s('传播速度', 'Conduction speed')} · {speed} mm/ms
+                <input
+                  id={`${id}-speed`}
+                  type="range"
+                  min="5"
+                  max="40"
+                  value={speed}
+                  onChange={(e) => setSpeed(+e.target.value)}
+                />
+              </label>
+              <label htmlFor={`${id}-gap`}>
+                {s('电极间距', 'Electrode separation')} · {gap} mm
+                <input
+                  id={`${id}-gap`}
+                  type="range"
+                  min="0"
+                  max="45"
+                  value={gap}
+                  onChange={(e) => setGap(+e.target.value)}
+                />
+              </label>
+            </>
           )}
-        </p>
-      </details>
+          {theme === 'membrane' && (
+            <>
+              <div className="bns18-tabs">
+                <button aria-pressed={sodium} onClick={() => setSodium(!sodium)}>
+                  {s('钠通路', 'Na pathway')}
+                </button>
+                <button aria-pressed={potassium} onClick={() => setPotassium(!potassium)}>
+                  {s('钾通路', 'K pathway')}
+                </button>
+              </div>
+              <label htmlFor={`${id}-cap`}>
+                {s('膜电容', 'Capacitance')} · {capacitance.toFixed(1)} μF/cm²
+                <input
+                  id={`${id}-cap`}
+                  type="range"
+                  min=".5"
+                  max="2"
+                  step=".1"
+                  value={capacitance}
+                  onChange={(e) => setCapacitance(+e.target.value)}
+                />
+              </label>
+              <p>
+                {s('内侧净电荷', 'Inner charge')} {mem.insideCharge.toFixed(1)} nC/cm²
+                <br />
+                {s('内流 − 外流', 'Inward − outward')} = {mem.deltaCharge.toFixed(1)} nC/cm²
+              </p>
+            </>
+          )}
+          {theme === 'synapse' && (
+            <div className="bns18-tabs">
+              <button aria-pressed={activeRelease} onClick={() => setRelease(!activeRelease)}>
+                {s('释放递质', 'Release transmitter')}
+              </button>
+              <button aria-pressed={activeReceptor} onClick={() => setReceptor(!activeReceptor)}>
+                {s('受体可响应', 'Receptors responsive')}
+              </button>
+            </div>
+          )}
+          {theme === 'history' && (
+            <div className="bns18-tabs">
+              {(['metal', 'tissue', 'broken'] as const).map((c, i) => (
+                <button key={c} aria-pressed={historical === c} onClick={() => setCondition(c)}>
+                  {
+                    [
+                      s('金属', 'Metal'),
+                      s('组织接触', 'Tissue contact'),
+                      s('断开', 'Disconnected'),
+                    ][i]
+                  }
+                </button>
+              ))}
+            </div>
+          )}
+          <details>
+            <summary>{s('模型与证据边界', 'Model and evidence limits')}</summary>
+            <p>
+              {s(
+                '表面脉冲是教学形状，不是实测复合动作电位。局部膜模型给定门控时序，用离子电流积分和膜电容计算电压，不求解完整电压门控、阈值或不应期。两个标记是选定离子，不表示总数；体相仍近似电中性。背景漏流另计，短时浓度库固定，未用泵把波形复位。突触及历史图保持各自证据边界。',
+                'The surface pulse is schematic, not a measured compound action potential. Given gate timing, integrated ionic current and capacitance determine local voltage; full voltage gating, threshold and refractoriness are not solved. Two selected ions do not represent all charge; bulk fluids remain nearly neutral. Basal currents are included separately, reservoirs stay fixed briefly, and no pump resets the wave. Synapse and history retain their separate limits.',
+              )}
+            </p>
+          </details>
+        </div>
+      )}
     </div>
   );
 }

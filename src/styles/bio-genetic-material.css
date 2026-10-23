@@ -250,3 +250,116 @@
     font-size: 25px;
   }
 }
+
+/* Batch 18: compact evidence arrangements; controls stay optional. */
+.bgm18 {
+  padding: 0;
+  background: transparent;
+}
+.bgm18[data-watch='true'] .bio-material-kind {
+  display: none;
+}
+.bgm18 .bio-material-controls .segmented button {
+  font-size: 16px;
+  min-height: 44px;
+}
+.bgm18 .bio-material-note {
+  margin: 8px auto 0;
+  line-height: 1.35;
+}
+.bgm18 .bio-material-groups p {
+  min-height: 23px;
+}
+.bgm18 .bio-material-fraction-key {
+  display: grid;
+  gap: 6px;
+}
+.bgm18 .bio-material-fraction-key span {
+  text-align: center;
+}
+.bgm18 .bio-material-label svg {
+  height: 170px;
+}
+.bgm18 .bio-material-evidence {
+  gap: 4px;
+}
+.showcase:has(.bgm18) .showcase-caption {
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+@media (max-width: 540px) {
+  .bgm18 {
+    padding: 0;
+  }
+  .bgm18 .bio-material-groups {
+    gap: 8px;
+  }
+  .bgm18 .bio-material-groups > div {
+    padding: 4px;
+  }
+  .bgm18 .bio-material-groups svg {
+    height: 65px;
+  }
+  .bgm18 .bio-material-groups p {
+    min-height: 23px;
+    line-height: 1.2;
+  }
+  .bgm18 .bio-material-groups strong {
+    line-height: 1.25;
+  }
+  .bgm18 .bio-material-note {
+    margin-top: 6px;
+  }
+  .bgm18 .bio-material-recovery > svg {
+    height: 180px;
+  }
+  .bgm18 .bio-material-recovery > p {
+    margin: 6px 0;
+    line-height: 1.35;
+  }
+  .bgm18 .bio-material-result {
+    margin: 4px 0;
+    line-height: 1.35;
+  }
+  .bgm18 .bio-material-molecules svg {
+    height: 47px;
+  }
+  .bgm18 .bio-material-culture {
+    height: 133px;
+  }
+  .bgm18 .bio-material-interface {
+    height: 220px;
+  }
+  .bgm18 .bio-material-fraction svg {
+    height: 183px;
+  }
+  .bgm18 .bio-material-fraction-key {
+    font-size: 16px;
+    line-height: 1.25;
+    gap: 4px;
+  }
+  .bgm18 .bio-material-label svg {
+    height: 130px;
+  }
+  .bgm18 .bio-material-label p {
+    min-height: 44px;
+    margin: 4px 0;
+    line-height: 1.25;
+  }
+  .bgm18 .bio-material-label > .bio-material-note {
+    min-height: 0;
+  }
+  .bgm18 .bio-material-children svg {
+    height: 110px;
+  }
+  .bgm18 .bio-material-evidence strong {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 540px) {
+  .bgm18 .bio-material-groups svg {
+    height: 60px;
+  }
+}

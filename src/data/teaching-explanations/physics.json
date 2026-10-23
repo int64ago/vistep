@@ -2073,5 +2073,55 @@
         "en": "It doubles: Δx=λL/(2h). Removing one of two sheets also doubles spacing, but by changing the thickness gradient rather than wavelength."
       }
     }
+  },
+  "e1-single-slit-diffraction": {
+    "sceneSlug": "optical-diffraction-lab",
+    "question": {
+      "zh": "缝变窄了，为什么光却铺得更宽？",
+      "en": "Why does a narrower slit spread light farther?"
+    },
+    "lead": {
+      "zh": "跟踪开口各带在同一屏点的场，找出首暗条件，再预测新缝宽和新波长。",
+      "en": "Follow slit-band fields at one screen point, infer the first minimum, then predict a changed gap and wavelength."
+    },
+    "principle": {
+      "zh": "开口内的场经过不同路径相加；远场首暗近似满足a sinθ=λ，所以减小缝宽或增大波长会使首暗方向外移。",
+      "en": "Fields from the opening add after different path delays. The first far-field minimum satisfies a sinθ=λ, so narrowing the slit or increasing wavelength moves it outward."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持缝宽不变，把550纳米换成650纳米，首暗位置怎样变？",
+        "en": "At fixed gap width, what happens to the first minimum when 550 nm is replaced by 650 nm?"
+      },
+      "explanation": {
+        "zh": "在同一距离和远场近似下，首暗距离与波长成正比，所以外移为原来的650/550倍。100微米缝、一米等效屏下约从5.5毫米变为6.5毫米；有限距离模型只近似出现这个最小值。",
+        "en": "At the same distance in the far-field approximation, the minimum scales with wavelength: outward by 650/550. A 100 μm gap on a one-meter equivalent screen changes from about 5.5 to 6.5 mm. The finite-distance minimum is only approximately there."
+      }
+    }
+  },
+  "e1-poisson-spot": {
+    "sceneSlug": "optical-diffraction-lab",
+    "question": {
+      "zh": "圆盘挡住了光，阴影中央为什么还能亮？",
+      "en": "Why can the center of an opaque disk’s shadow be bright?"
+    },
+    "lead": {
+      "zh": "先保留直线光路给出的暗心预测，再由圆周等程和完整波场检验它。",
+      "en": "Keep the dark-center ray prediction, then test it using equal rim paths and the full field."
+    },
+    "principle": {
+      "zh": "轴对称使圆周到轴点的路径等长，绕射贡献可同相叠加；完整菲涅耳互补场给出理想平面波下的轴上亮点。",
+      "en": "Rotational symmetry gives equal rim-to-axis paths and coherent diffracted phases; the full complementary Fresnel field yields an axial spot for an ideal plane wave."
+    },
+    "transfer": {
+      "question": {
+        "zh": "理想圆盘半径增大，轴上强度不变，是否意味着整个阴影也一样亮？",
+        "en": "If ideal axial intensity stays unchanged when disk radius increases, is the whole shadow equally bright?"
+      },
+      "explanation": {
+        "zh": "不是。轴值只是一个位置，周围的相位关系和亮区尺度仍随半径改变。真实有限光源、偏心和探测分辨率也会改变可见度；理想轴值不是仪器保证。",
+        "en": "No. The axis is one position; surrounding phase relations and spot scale still change with radius. Finite sources, misalignment and detector resolution also change visibility. The ideal axial result is not an instrument guarantee."
+      }
+    }
   }
 }
