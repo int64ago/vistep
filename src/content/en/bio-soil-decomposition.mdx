@@ -1,23 +1,38 @@
-<h2 id="understand">Two reference cases belong to one investigation</h2>
+<h2 id="understand">Less litter does not mean matter disappeared</h2>
 
-The textbook’s investigation of decomposition by soil microbes offers litter and starch as two reference cases. Both require a question, controlled variables, sustained records and interpretation. The animation shows the design and possible model behavior, not completed experimental results.
+Some soil microbes break large organic molecules down outside their cells before taking up suitable small products. Carbon can subsequently enter cell material, metabolites and carbon dioxide. **A shrinking leaf neither destroys carbon nor proves that all its carbon immediately became carbon dioxide.**
 
-The litter comparison uses natural and treated soil. The textbook suggests enclosing soil and treating it at 60°C for 1 h to reduce microbial effects while minimizing physicochemical changes. **This is not a guarantee of complete sterilization.** Residual activity, extracellular enzymes and changed soil properties can complicate interpretation. Match leaf source and amount, approximately 5 cm soil depth, moisture, temperature, time and replication. Organic-matter properties and aeration also matter: wetter is not invariably faster. [USDA soil-respiration guidance](https://www.nrcs.usda.gov/state-offices/illinois/soil-tech-note-17a-soil-respiration)
+C1–C6 are teaching markers for portions of the same organic carbon batch, not six free carbon atoms or fully specified molecules. Broken connections represent outside cleavage. Subsequent enzyme reactions, transport and cell metabolism are grouped. This explains the order of a pathway without simulating complete respiration or assigning each marker to a particular final molecule. Litter is not all starch: cellulose and starch have different linkages and require different enzymes. [IUBMB cellulase definition](https://iubmb.qmul.ac.uk/enzyme/EC3/2/1/4.html), [alpha-amylase definition](https://iubmb.qmul.ac.uk/enzyme/EC3/2/1/1.html).
 
-Leaf holes illustrate structural damage; their geometry does not measure true mass. Practice masses come from an explicit decay model, while personal measurements begin blank. Mass comparisons require consistent drying and removal of adhering soil, with replication to help distinguish decomposition from handling effects.
+The textbook compares untreated soil with treated soil. Its example of 60 °C for 1 h aims to reduce microbial effects; it **does not guarantee sterility or unchanged soil chemistry**. Residual activity, extracellular enzymes and treatment effects can influence the result. Match litter source, soil depth, moisture, temperature, observation times and replication. Holes illustrate appearance; they do not measure mass. Dry-mass comparisons require consistent cleaning and drying.
 
-<h2 id="try">From soil extract to separate chemical tests</h2>
+The moisture function represents one aerobic process limited by dryness or oxygen availability. Its zero-rate endpoints are model boundaries, not a claim that no decomposition occurs in dry or waterlogged soil. Model masses remain examples. Personal observations begin empty, with a genuine zero distinguished from missing data.
 
-Place soil in a beaker lined with thick gauze, add distilled water and mix, then remove the gauze and coarse soil and let the extract settle. Gauze is not a sterilizing membrane. Microbes, soluble compounds, extracellular enzymes and pigments may remain.
+<h2 id="try">Does a negative sugar test mean no breakdown?</h2>
 
-Give A and B equal starch paste. Add 30 mL of soil extract to A and 30 mL of distilled water to B, then incubate at about 20°C for 7 days. For explicit volume accounting, this reconstruction chooses 10 mL of paste per group, giving 40 mL total. That paste volume is a modeling choice, not a textbook requirement. Take 20 mL from each incubation and split it into two 10 mL aliquots, leaving 20 mL. Pipette drawing, movement and delivery remain consistent with the volume ledger.
+Soil extract can contain microbes, extracellular enzymes, reducing substances and pigments. Gauze holds back coarse particles; it is not a sterile filter. Starch may form soluble products that are subsequently used. Thus, the amount remaining at the end differs from the amount formed over the whole process.
 
-Add iodine to A1 and B1 to inspect remaining starch. Add freshly prepared Fehling reagent to A2 and B2 and heat to inspect brick-red precipitate from reducing substances. The reagents test **separate aliquots**. Iodine response depends on starch structure, breakdown and background color; Fehling chemistry is not uniquely specific to glucose. [University of Maryland: hydrolysis assays and background correction](https://user.eng.umd.edu/~nsw/ench485/lab5.htm)
+Compare two pathways for the same carbon batch. Stop later use and the small products can remain. Stop outside cleavage and intact material cannot enter through this pathway. **These are ideal controls for testing causality, not a claim that heating selectively switches off one process in real soil.** Original research with isolated amylase and cellulase added to pretreated soil and minerals demonstrated activity without living cells producing new enzyme. Persistence depended on enzyme and mineral type. [Olagoke et al., 2020](https://doi.org/10.3390/microorganisms8111796).
 
-<h2 id="deeper">An endpoint test is not a recording of the entire process</h2>
+Use independent aliquots. Iodine tests remaining stainable starch; fresh heated Fehling reagent tests reducing products. Adding both reagents to one aliquot would not provide two independent observations. Fehling reagent is not glucose-specific, and iodine color depends on chain structure and background. The animation's intensities and thresholds are illustrative, not a concentration calibration. [University of Maryland starch-hydrolysis exercise](https://user.eng.umd.edu/~nsw/ench485/lab5.htm).
 
-Extracellular enzymes produced by some microbes hydrolyze starch into smaller usable products. Reduced iodine response together with increased reducing activity can support breakdown, without independently identifying a species or enzyme. [Austin Community College starch-hydrolysis laboratory](https://sites.google.com/austincc.edu/microbugz/lab-exercises/differential-tests/starch-hydrolysis)
+Increase product use and compare early sampling with day seven. A late sample can contain little reducing product even after extensive starch breakdown. Initial samples, extract blanks without starch, time series and replicates help distinguish explanations. Preserve real observations when they differ from the animation.
 
-The model tracks carbon equivalents through starch, reducing products and other carbon pools, with a total of one. **It does not equate dry starch mass with hydrated glucose mass.** Faster product consumption can leave both low starch and low reducing products at the endpoint. A negative Fehling result therefore does not establish that hydrolysis never occurred, and a positive day-seven test is not a guaranteed outcome.
+<h2 id="deeper">Three carbon pools, not three pure substances</h2>
 
-Extracts can already contain reducing substances and colored compounds. Existing extracellular enzymes may remain active even when viable-cell activity is reduced. Initial tests, extract blanks without starch, treatment controls and replication strengthen interpretation. Preserve unexpected records and investigate timing, samples, reagents and conditions rather than changing observations to match the animation.
+S, R and U represent starch carbon, soluble-product carbon and other carbon pools. Assume a well-mixed culture, constant coefficients and no new carbon input:
+
+<div className="formula">dS/dt = −kS; dR/dt = kS − uR; dU/dt = uR; S + R + U = 1</div>
+
+U groups cell material, metabolites and mineralized carbon; it is not all carbon dioxide. Conservation refers to carbon equivalents, not equal masses of starch and hydrated hydrolysis products. Percentages come from the equations. The 24 persistent markers are a finite sample governed by the same rates, not exact percentages. Each marker's center crosses a pool boundary at its committed transition time. Smooth motion adds no extra waiting interval.
+
+Uptake is also distinct from mineralization. Hill, Farrar and Jones measured depletion of labeled glucose from agricultural-soil solution separately from labeled carbon dioxide production and reported a delay between the processes. This scene uses that qualitative distinction without importing rates or claiming to reconstruct their experiment. The publisher and institutional abstracts, not the full paper, were checked for this reference. [The 2008 study](https://doi.org/10.1016/j.soilbio.2007.09.008).
+
+<details>
+<summary>Textbook placement and the necessary controls</summary>
+
+People's Education Press, Biology, Selective Compulsory 2: Biology and Environment, Chapter 3, Section 3, Cycling of Matter in Ecosystems. The full context on pp. 61–67 was read; the experiment layouts on pp. 65–66 were viewed. “Do soil microbes cause fallen leaves to decay?” on p. 65 opens the first three chapters. “Investigating microbial starch decomposition in soil” on p. 66 opens the last six. Both belong to one inquiry activity. The textbook leaves the conclusions blank; it does not supply the animation's curves or color results.
+
+In the second example, A receives 30 mL soil extract and B receives 30 mL distilled water, both with equal starch paste, followed by about 7 d at 20 °C. Each culture provides 20 mL split between two tubes. For volume accounting, this reconstruction chooses 10 mL initial paste and 40 mL total culture, then two 10 mL aliquots leaving 20 mL. The 10 mL paste is a reconstruction choice, not a textbook requirement. The pipette rises above the vessel rim before crossing, and fluid is accounted for in the source, pipette and receiving tubes.
+
+</details>

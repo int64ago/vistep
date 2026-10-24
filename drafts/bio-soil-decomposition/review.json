@@ -1,0 +1,250 @@
+{
+  "sceneSlug": "bio-soil-decomposition",
+  "status": "frozen-candidate-only; root integration/recording/final-site review pending",
+  "authorModel": "GPT-6 Astra",
+  "candidateDuration": 250.5,
+  "chapterCount": 9,
+  "windows": ["bio-elective-2-065-1", "bio-elective-2-066-1"],
+  "sourceReview": "checks/source-review.json",
+  "scientificBoundaries": [
+    "All numeric curves/color intensities are illustrative, not textbook measurements.",
+    "C1–C6 are carbon portions, not single atoms/molecules; multiple reactions grouped.",
+    "Other carbon pools are not all CO2: biomass, metabolites and mineralized carbon are not separately solved.",
+    "24 marker histories are a finite sample; analytic mass fractions are independent ensemble expectations.",
+    "60°C for 1h is not claimed sterile or chemically unchanged.",
+    "No new TTS/actual site/subjective listening/physical device evidence in candidate."
+  ],
+  "scope": {
+    "written": "Only ignored candidate mirror; no actual src/shared/audio/index/preview assets changed.",
+    "sources": "Full textbook P61–67 context; rendered P65–66. Olagoke2020 full XML, Hill2008 abstract only, IUBMB entries and university laboratory webpage.",
+    "narration": "12 spoken fields changed (indices 0–4 and 8); six fields retained exactly (indices 5–7). No new speech generated or listened to.",
+    "article": "Both complete bilingual MDX compiled; original titles/pages/order preserved."
+  },
+  "evidence": {
+    "strictTypes": "checks/strict-types.json",
+    "tests": {
+      "path": "checks/model-component-tests-final.json",
+      "passed": 20,
+      "total": 20,
+      "scope": "Independent midpoint integration, closed-form limits, 40 mL fluid ledger, single membrane opening, persistent carbon IDs, non-overlap, marker-event boundary alignment, finite ensemble convergence, real mounted React state isolation."
+    },
+    "nativeControls": {
+      "path": "checks/zero-liquid-final-controls/report.json",
+      "checks": 136,
+      "failed": 0,
+      "scope": "Author isolated real Showcase / BaseCSS using native controls; not actual Astro integration, new speech synchronization, listening or physical-phone testing."
+    },
+    "nativeBehavior": {
+      "path": "checks/native-behavior/report.json",
+      "checks": 7,
+      "scope": "Isolated candidate native controls/IntersectionObserver. Added only an external blank spacer to permit real scrolling, never changed component state/time. No audio playback."
+    },
+    "frames": {
+      "path": "checks/final-native-frames/report.json",
+      "count": 132,
+      "failures": 0,
+      "scope": "Real isolated Showcase with BaseCSS, ZH/EN at 320x568 and1100x900. Whole player height, horizontal overflow and actual SVG text checked. Phone maximum height 529.59375px. All graph labels >=16px."
+    },
+    "finalTargeted": {
+      "path": "checks/zero-liquid-final-targeted/report.json",
+      "count": 16,
+      "scope": "Final formatted source rebuilt; Carbon portions label and A-complete/B-new/B-transfer frames."
+    },
+    "continuous": {
+      "path": "checks/native-continuous/report.json",
+      "languages": [
+        {
+          "lang": "en",
+          "chapters": 9,
+          "end": {
+            "time": 250.5,
+            "playing": "false"
+          },
+          "pass": true
+        },
+        {
+          "lang": "zh",
+          "chapters": 9,
+          "end": {
+            "time": 250.5,
+            "playing": "false"
+          },
+          "pass": true
+        }
+      ],
+      "scope": "Normal-rate silent native-clock traversal, no synthetic clock and no audio track. Automatically captured chapter samples; not uninterrupted human watching or listening."
+    },
+    "cover": {
+      "path": "checks/cover.png",
+      "scope": "Actual candidate Astro cover compiled/rendered in isolation and image manually inspected; site card/social consumers not integrated."
+    },
+    "authorActuallyViewed": [
+      "checks/first-native-frames/zh-320-1-gate.png",
+      "checks/first-native-frames/zh-320-3-puzzle.png",
+      "checks/first-native-frames/zh-320-8-late.png",
+      "checks/second-native-frames/en-320-1-late.png",
+      "checks/second-native-frames/en-320-2-late.png",
+      "checks/second-native-frames/en-320-8-middle.png",
+      "checks/second-native-frames/en-1100-4-uptake.png",
+      "checks/final-native-frames/en-320-1-cut.png",
+      "checks/final-native-frames/en-320-5-middle.png",
+      "checks/final-native-frames/zh-320-3-puzzle.png",
+      "checks/final-native-frames/en-320-7-late.png",
+      "checks/native-controls/en-explore.png",
+      "checks/cover.png",
+      "checks/zero-liquid-final-targeted/en-320-5-B-new-sample.png",
+      "checks/zero-liquid-final-targeted/zh-320-5-B-transfer.png",
+      "checks/final-targeted/en-1100-1-carbon-portions.png"
+    ],
+    "rootSeparateEvidence": [
+      {
+        "path": "artifacts/teaching-principles/batch-20-cross-review/root-soil-initial-model-review.json",
+        "scope": "Independent root RK4/geometry review of an earlier captured model SHA; no automatic claim it verifies later marker changes."
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-20-root-biology-early-views.json",
+        "scope": "Root personally viewed four earlier candidate mechanism frames; not full final-site acceptance."
+      }
+    ]
+  },
+  "retainedFailures": [
+    {
+      "path": "checks/first-marker-ensemble-failure.json",
+      "reason": "Weak one-pass hash exceeded finite-ensemble tolerance. Replaced with stronger deterministic avalanche and passed subsequent tests."
+    },
+    {
+      "path": "checks/first-native-frames/report.json",
+      "reason": "30 initial short-phone height failures, retained before reducing redundant labels and vertical spacing."
+    },
+    {
+      "path": "checks/native-controls/harness-malformed-range.json",
+      "reason": "Harness fill(.5) rejected by browser; corrected to native-valid0.5, then reran134checks."
+    }
+  ],
+  "versionChanges": [
+    "Marker motion now centers each pool crossing on its committed exponential event, avoiding still-polymer markers already inside the soluble band.",
+    "All24 finite sample markers remain distinct; analytical percentages independently represent ensemble expectations.",
+    "A/B aliquot identity is now explicit: complete A transfer, then reset to a separately identified B source. No midway relabeling.",
+    "Visible English labels say carbon portions, not merely carbon model.",
+    "After successful132-frame/134-control/2-clock checks, a zero-volume receiving-tube polygon artifact was found by manually viewing final-targeted/en-320-5-B-new-sample.png. The final renderer omits zero liquid and clips positive fill to the tube interior. Model/timing/voice unchanged;20tests,136native controls and16affected frames rerun. The normal clock record predates this bounded zero-fill geometry correction and is not relabeled as final-source continuous playback."
+  ],
+  "notPerformed": [
+    "No final-source continuous traversal after the bounded zero-liquid SVG correction; prior normal-clock traversal plus final targeted UI evidence are kept separate.",
+    "No actual Astro route/SSR/editorial entry integration or canonical dictionary application.",
+    "No new TTS, ASR, subjective audio listening, or measured new voice alignment.",
+    "No full uninterrupted human watching; selected images were personally viewed.",
+    "No physical phone performance, global pnpm verify/build or production asset export."
+  ],
+  "handoff": {
+    "spoken": "Root must record changed six chapters and calibrate measured words; retained three cues keep existing recorded windows27.5/28/28s.",
+    "shared": "Packet87 translations,2 teachingProfiles,9 short captions,topic description/source links/SSR selector proposals only; existing global translation conflicts require root review.",
+    "guard": "All actual before SHA values rechecked at freeze; only11listed regular files may be copied. Checks/source PDFs/images/bundles are excluded."
+  },
+  "rootIntegration": {
+    "status": "reviewed; authorized publication pending",
+    "batch": 20,
+    "acceptanceRecord": "drafts/teaching-principles/batch-20-review.json",
+    "source": {
+      "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+      "treeHash": "dd4fff68487a7c8079b85c75d3b31eda9658afea387b2c7fa87eee17ce5e9a60",
+      "gitDiffHash": "18ab278ae55b50f66b7cff3fce2081110116f2e28a4320790f42a11d4ab18d36",
+      "fileCount": 5397,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "evidenceRevisions": {
+      "finalSource": {
+        "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+        "treeHash": "dd4fff68487a7c8079b85c75d3b31eda9658afea387b2c7fa87eee17ce5e9a60",
+        "gitDiffHash": "18ab278ae55b50f66b7cff3fce2081110116f2e28a4320790f42a11d4ab18d36",
+        "fileCount": 5397,
+        "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+      },
+      "latestEvidenceSource": "source03",
+      "carryForward": {
+        "source01To02": {
+          "path": "artifacts/teaching-principles/batch-20-resume/source-01-to-02-delta.json",
+          "sha256": "b81e0d562062f3412413b4e6600cfb4790b1db1cfeb8c151da0325b599fd9f6d"
+        },
+        "biologyControlsAndActuallyViewedFrames": {
+          "path": "artifacts/teaching-principles/batch-20-final-validation/biology/source-01-to-02-carry.json",
+          "sha256": "ee64279d0218ec027a0a717a43b7b4dbef56b84c4410c07774d14bf4ebda1116"
+        },
+        "covers": {
+          "path": "artifacts/teaching-principles/batch-20-resume/covers-source-02-carry.json",
+          "sha256": "01bad57ff942f2fd46e0f3565a4e75084cf69ef22800621a6bd3246c50866ae4"
+        },
+        "source02To03": {
+          "status": "accepted; unaffected evidence carried, affected layout directly rechecked",
+          "fromSource": {
+            "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+            "treeHash": "9085a91b1cb11a1c2a518b1367994107883c50aefa6b38f3f2b70b4a2b16b4ba",
+            "gitDiffHash": "29d29742d496435782c2cae849df1f9abf8666c674a204de9038f0a4ca97f920",
+            "fileCount": 5397,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "toSource": {
+            "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+            "treeHash": "dd4fff68487a7c8079b85c75d3b31eda9658afea387b2c7fa87eee17ce5e9a60",
+            "gitDiffHash": "18ab278ae55b50f66b7cff3fce2081110116f2e28a4320790f42a11d4ab18d36",
+            "fileCount": 5397,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "sourceDelta": {
+            "path": "artifacts/teaching-principles/batch-20-resume/source-02-to-03-delta.json",
+            "sha256": "cfe35b35e39d764636f388a8048edc65567c8536ac8179ab57822b9b1199e7d4"
+          },
+          "fromFileMap": {
+            "path": "artifacts/teaching-principles/batch-20-resume/frozen-file-map-02.json",
+            "sha256": "cbd1c0e53dab7c1563f2a7695170c6a31a78769c54a2313bd3df2fc96a990919"
+          },
+          "toFileMap": {
+            "path": "artifacts/teaching-principles/batch-20-resume/frozen-file-map-03.json",
+            "sha256": "7c17c3da6b132dfe448d4f9ce40de0f8ce33e30f69366d4dbf580d04262745cb"
+          },
+          "delta": [
+            {
+              "path": "src/styles/chem-alcohol-oxidation.css",
+              "before": "764e89777beedb66f7371bfc3e9f5bcd10371cbad352de30771655b34c486742",
+              "after": "9e3810c742eb474044f95e6400c0562e6a828fcc198233b52b4f4eb1c1b917bc"
+            }
+          ],
+          "unchangedFullSourceEntries": 5396,
+          "reason": "Only narrow chapter4 chromium count margins changed. Scientific models, audio, controllers, content, DOM and teaching order are unchanged; carry native controls, normal-rate clocks, fault behavior, catalog/teaching, ASR, covers and unaffected frames.",
+          "boundary": "Historical source02 failures remain recorded. All72 chemistry frames,6 anchors and4 entries now pass on source03 and corrected frames were actually viewed. The full matrix and complete clocks were not rerun on source03; exact CSS-only scope supports the explicit carry."
+        }
+      },
+      "sceneNativeControls": [
+        {
+          "kind": "native-controls-biology",
+          "count": 136,
+          "status": "passed",
+          "evidence": "artifacts/teaching-principles/batch-20-final-validation/biology/report.json",
+          "sourceRevision": "source01-carried-to-source02",
+          "passed": 136,
+          "failed": 0,
+          "running": 0,
+          "evidenceSHA256": "d53b4c4bdfdb2011ac4d0bc686c7e77638956d802bd10ea014426239bee53d4c",
+          "evidenceSource": {
+            "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+            "treeHash": "ffb44f462fe7262e9f28cea398d9d67f2a2ab92c5e544f585f4a18878190e51b",
+            "gitDiffHash": "966e7ac52345bd2d1a1e2697a9dfa464ba95ffb81c28bc284eae477d451a0184",
+            "fileCount": 5397,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "carryProof": {
+            "path": "artifacts/teaching-principles/batch-20-final-validation/biology/source-01-to-02-carry.json",
+            "sha256": "ee64279d0218ec027a0a717a43b7b4dbef56b84c4410c07774d14bf4ebda1116"
+          },
+          "finalSourceCarry": "source03 CSS-only scope; unaffected evidence carried, chemistry layout rows require targeted replacement"
+        }
+      ]
+    },
+    "pending": [],
+    "authorEvidenceScope": "Earlier candidate evidence and status remain dated author records. The root batch record governs final integrated acceptance; this addition does not silently promote them."
+  }
+}

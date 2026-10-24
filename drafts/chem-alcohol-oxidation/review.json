@@ -1,38 +1,266 @@
 {
-  "slug": "chem-alcohol-oxidation",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "reviewedAt": "2026-10-18T16:15:53.418108",
-  "files": {
-    "src/models/chem-alcohol-oxidation.ts": "12c60f8181656cb111d31f11fed97de516bfeba79a933fed2e6e6c22b9e02bbc",
-    "src/models/chem-alcohol-oxidation.test.ts": "e24b0ccaf183ca1016e734ae8901d0cda4bc5491a5b6043bf0607600974ef980",
-    "src/components/experiments/ChemAlcoholOxidation.tsx": "a6f99806db9de9dfe27af8bc0f2e23c01de44c3c62cc89a8ab82887086cf730a",
-    "src/components/covers/ChemAlcoholOxidationCover.astro": "87fc1f1bc1bab21161e333d169e4f688da2d99e3e1791fb015aae0d9fa618cdc",
-    "src/styles/chem-alcohol-oxidation.css": "91905b6210f93975d4e5f7077ddf213a5ef24c7758373f726237ed5723c34f3d",
-    "src/content/chem-alcohol-oxidation.mdx": "47c4dd94f0b58a669ead8faee6cc5cf94215e2af256fb7c78038b70391bc1ece",
-    "src/content/en/chem-alcohol-oxidation.mdx": "9ca90b6150bd18c7f916dedee84c0986bf417fc03682d6fdb034e5f1cb1ae13e",
-    "src/data/scene-packets/chem-alcohol-oxidation.json": "de28d223320b1a164d03b43c14107ace32862c1dc2cf1e55e9f01aa77c5e3dba"
+  "sceneSlug": "chem-alcohol-oxidation",
+  "status": "Frozen ignored candidate; root integration and final audio/actual-site acceptance pending",
+  "authorAgent": "/root/chemistry_timing",
+  "scope": "All6 chapter IDs and2 full textbook windows retained. c0/c1/c4 spoken words, titles and26/29/28second spans preserved; c2/c3/c5 rewritten with provisional48/42/45seconds. Total218s.",
+  "sourceHashes": {
+    "src/models/chem-alcohol-oxidation.ts": "79533f12ca8fa7348fe00179fdcdb14150608422322ca09968c187d84a37d7eb",
+    "src/models/chem-alcohol-oxidation.test.ts": "69f40842051fcf8a54ecd00c7d9682d0d2f0e99b0d617599c6cf0caf8fe4650d",
+    "src/components/experiments/ChemAlcoholOxidation.tsx": "f541085cecee0c65fcd4feed558bf87616a60133710895ebc8645890479e4fb4",
+    "src/components/experiments/ChemAlcoholOxidation.test.tsx": "9b15cd8cd261b0c22d41b4d0543930af70cee6a5179875158305921694e587aa",
+    "src/styles/chem-alcohol-oxidation.css": "1a4d7186297659e11162cab70df35adbe3a99cffaf1b5197ef795d9f6bcf6169",
+    "src/components/covers/ChemAlcoholOxidationCover.astro": "222bbae4f4a265af62aa9b59717473f8c96b66cb33299248f10f67e689e5ed99",
+    "src/content/chem-alcohol-oxidation.mdx": "837540e38b3be52f22a21092d38b12c360c3b6c4d40f819954ef9c997b007f75",
+    "src/content/en/chem-alcohol-oxidation.mdx": "4df4c0b886c76694d794c13416777c655dfef1d4a08034338e4a37319336de37",
+    "drafts/chem-alcohol-oxidation/brief.md": "6406dcb0218dac91146bfdd510d60f328ab5ae24ac83ea2f087f80f7fdd4bc45",
+    "drafts/chem-alcohol-oxidation/principle-first-packet.json": "b96f1cb648ce8afde883cead90fd3ae84fc34e7e3eb36bc7a705ba3f7754fe26"
   },
-  "modelTests": {
-    "status": "passed",
-    "count": 5
+  "sources": {
+    "ledger": "artifacts/teaching-principles/batch-20-staging/chemistry/sources/source-ledger.json",
+    "textbook": "Full extracted required2 P77–79 and elective3 P61–64. Complete images P78/P79/P62/P63 personally inspected.",
+    "primary": "Göttingen original teaching experiment observation, interpretation and half equations read. OpenStax author textbook17.7 read for oxidation endpoints. Claims and inferential boundaries in ledger."
   },
-  "ownedTypeScriptDiagnostics": 0,
-  "packetValidation": "passed",
-  "scopedPrettier": "passed",
-  "viewport": "320x844 emulated Chromium; reduced motion; muted paused seeks",
-  "visual": {
-    "sweep": "All six English and Chinese chapters passed after MDX math replaced with native Unicode chemistry notation. Initial English navigation context failure passed retry. Moved ethanol label below coil to remove overlap. Actually inspected restored copper apparatus, atom transfer, chromium tube and corrected label. Whole-player EN max741.35, ZH max702.66 with top90.78/90.5.",
-    "evidenceDirectories": [
-      "artifacts/chemistry-inventory/review-alcohol-oxidation-final",
-      "artifacts/chemistry-inventory/review-alcohol-oxidation-final-zh",
-      "artifacts/chemistry-inventory/review-alcohol-oxidation-retry",
-      "artifacts/chemistry-inventory/review-alcohol-oxidation-label"
+  "science": {
+    "causalBridge": "Colour/odour evidence → Cu/CuO cycle cancellation → finite preloaded oxide prediction → formal2e account and selected atom mapping → separate chromium colour →4/6electron endpoint ratio →limiting-reactant prediction.",
+    "limits": [
+      "O origin is a representative net material route, not established by colour or isotope tracing.",
+      "Electron equivalents and oxidation numbers are formal bookkeeping, not a filmed microscopic trajectory.",
+      "No-air exhaustion applies only to this Cu/CuO oxygen route; no general claim that all anaerobic ethanol dehydrogenation stops.",
+      "Cr colour is qualitative and does not identify instantaneous organic purity.",
+      "Model progress is not kinetics or yield; full-acid stoichiometric endpoint does not predict intermediates."
+    ],
+    "independentPeer": {
+      "report": "artifacts/teaching-principles/batch-20-cross-review/physics-alcohol-review.json",
+      "checks": 4693,
+      "status": "passed",
+      "scope": "Independent bounded actual-function inventory/atom/charge/electron review; read packet c2/c3/c5. No UI, narration timing, primary-source re-review or subjective listening.",
+      "sourceSHA": "79533f12ca8fa7348fe00179fdcdb14150608422322ca09968c187d84a37d7eb"
+    }
+  },
+  "validation": {
+    "tests": {
+      "passed": true,
+      "count": 13,
+      "report": "artifacts/teaching-principles/batch-20-staging/chemistry/checks/tests-final.json"
+    },
+    "strictTypeScript": {
+      "passed": true,
+      "diagnostics": 0,
+      "report": "artifacts/teaching-principles/batch-20-staging/chemistry/types.json"
+    },
+    "contract": {
+      "report": "artifacts/teaching-principles/batch-20-staging/chemistry/checks/contract-final.json",
+      "actualBeforeUnchanged": 11,
+      "preservedSpokenStrings": 6,
+      "preservedCueContractFields": 18,
+      "preservedCueCount": 3,
+      "ids": 6,
+      "windows": 2,
+      "mdxAstroSatteriCompiled": 2,
+      "retainedCopperDefaultStates": 257,
+      "negativeControl": {
+        "expectedPreoxidizedNoAirProduct": 1,
+        "originalActual": 0,
+        "candidateActual": 1,
+        "originalFailsMeaningfulNewBehavior": true
+      }
+    },
+    "pausedFrames": {
+      "count": 56,
+      "failures": [],
+      "errors": [],
+      "report": "artifacts/teaching-principles/batch-20-staging/chemistry/frames-final/report.json",
+      "viewports": ["zh/en 320x568", "zh/en 1440x900"],
+      "minMeasuredFont": 16,
+      "maxPhoneBottom": 567.359375,
+      "scope": "Isolated candidate, actual shared Showcase +7 globalCSS. Paused reduced-motion seeks. Host aligned16px; final actual header/SSR anchor not tested."
+    },
+    "nativeControls": {
+      "count": 106,
+      "failures": [],
+      "errors": [],
+      "sourceStable": true,
+      "report": "artifacts/teaching-principles/batch-20-staging/chemistry/controls-frozen/report.json",
+      "scope": "Native keyboard sliders/buttons; all6freshExplore SVG inheritance; hidden-before-reveal; finiteCuO/ethanol/air; seven atom/group DOM identities; water/carbonyl endpoint; independent acid limit; Watch isolation; both complete textbook windows."
+    },
+    "cover": {
+      "passed": true,
+      "report": "artifacts/teaching-principles/batch-20-staging/chemistry/candidate-stage/cover.png",
+      "scope": "Actual candidate Astro cover compiled and rendered in isolation; consumer pages not tested."
+    },
+    "format": {
+      "scope": "Only owned candidate files formatted. Current installed Astro/Satteri MDX compiler parses both articles. Isolated candidate Vite build only; no global format/build."
+    },
+    "personallyViewed": [
+      "sources/required2-083.png",
+      "sources/required2-084.png",
+      "sources/elective3-067.png",
+      "sources/elective3-068.png",
+      "candidate-stage/cover.png",
+      "frames-final/en-320-copper-return.png",
+      "frames-final/en-320-cancel.png",
+      "frames-final/zh-320-oxygen-exhausted.png",
+      "frames-final/en-320-acid-limited.png",
+      "frames-final/en-1440-water-endpoint.png",
+      "frames-final/zh-320-electron-account.png",
+      "frames-final/zh-320-atoms-moving.png",
+      "frames-final/zh-320-acid-question.png",
+      "frames-final/en-1440-black.png",
+      "frames-final/en-1440-oxygen-question.png"
+    ],
+    "earlierVersionVisualReads": [
+      "frames-initial/en-320-copper-return.png",
+      "frames-initial/en-320-atoms-moving.png",
+      "frames-initial/en-320-acid-question.png",
+      "frames-initial/zh-320-oxygen-question.png",
+      "frames-03/en-320-one-turn.png",
+      "frames-03/en-320-electron-account.png",
+      "frames-03/en-320-water-endpoint.png",
+      "frames-03/en-320-chromium.png",
+      "frames-03/en-1440-twelve-electrons.png"
     ]
   },
-  "notRun": [
-    "continuous full viewing",
-    "native listening (root synthesizes)",
-    "physical phone",
-    "root independent desktop/exploration/curriculum-route review"
-  ]
+  "resolvedFindings": [
+    "Early320x568 overflow led to separate electron/atom shots, a coil inventory close-up, stage-specific mobile layout and shorter labels. All early reports retained; final56frames have no measured failures.",
+    "One early SVG label measured15.8px, corrected to19SVG units before final capture.",
+    "Initial React test helper serialized circular child props; replaced with host geometry attribute comparison. The product assertion was retained and passes.",
+    "An isolated rebuild initially attempted to reuse its own occupied preview port; build helper now starts preview only with --serve. No other server or product configuration changed.",
+    "Initial MDX helper assumed a package absent in current Astro; final check uses the installed Astro/Satteri transform API.",
+    "Freeze-v2 corrects an evidence count label only: 3 preserved bilingual cues mean6 spoken strings;18 counts id/title/titleEn/seconds/zh/en contract fields. Previous manifest/review retained in checks/freeze-v1. Product and packet sources unchanged."
+  ],
+  "outstanding": [
+    "Root integrated actual Astro route, SSR/header whole-player fit and catalog/cover consumers. Candidate maximum phone bottom567.36/568 is not allowance for a real site header.",
+    "Root final narration generation and measured bilingual words for cues2/3/5; director timing remains provisional.",
+    "Final actual resource/fallback checks and normal-speed full playback; continuous human viewing and subjective listening.",
+    "Physical phone performance not measured. Root pnpm verify/build:preview and production acceptance pending."
+  ],
+  "recommendedFrames": [
+    "frames-final/en-320-cancel.png",
+    "frames-final/en-1440-oxygen-question.png",
+    "frames-final/zh-320-oxygen-exhausted.png",
+    "frames-final/zh-320-electron-account.png",
+    "frames-final/zh-320-atoms-moving.png",
+    "frames-final/en-1440-water-endpoint.png",
+    "frames-final/en-320-acid-limited.png"
+  ],
+  "resumedMeasuredReview": {
+    "reviewPath": "artifacts/teaching-principles/batch-20-resume/chemistry/review.json",
+    "reviewSha256": "9b3b5dc4ffde91a69bb3b542daecfd12f74f82f0e3bf3c7545daa2490e6f95d5",
+    "status": "frozen author candidate accepted for root integration; actual Astro final review pending",
+    "checks": {
+      "unitAndReactTests": 19,
+      "typeDiagnostics": 0,
+      "pausedCandidateFrames": 76,
+      "nativeCandidateAssertions": 116,
+      "actuallyViewedScreenshots": 20
+    },
+    "limitations": [
+      "Actual integrated Astro SSR/header/catalog/cover acceptance remains root work; isolated Showcase is not the integrated website.",
+      "No continuous human visual-watching or subjective listening or physical-phone performance claim.",
+      "No global build, tracked edits, synthesis, commit or deployment by this author."
+    ]
+  },
+  "rootIntegration": {
+    "status": "reviewed; authorized publication pending",
+    "batch": 20,
+    "acceptanceRecord": "drafts/teaching-principles/batch-20-review.json",
+    "source": {
+      "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+      "treeHash": "dd4fff68487a7c8079b85c75d3b31eda9658afea387b2c7fa87eee17ce5e9a60",
+      "gitDiffHash": "18ab278ae55b50f66b7cff3fce2081110116f2e28a4320790f42a11d4ab18d36",
+      "fileCount": 5397,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "notClaimed": [
+      "Subjective narration audition",
+      "Physical-phone performance",
+      "Continuous human visual watching"
+    ],
+    "evidenceRevisions": {
+      "finalSource": {
+        "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+        "treeHash": "dd4fff68487a7c8079b85c75d3b31eda9658afea387b2c7fa87eee17ce5e9a60",
+        "gitDiffHash": "18ab278ae55b50f66b7cff3fce2081110116f2e28a4320790f42a11d4ab18d36",
+        "fileCount": 5397,
+        "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+      },
+      "latestEvidenceSource": "source03",
+      "carryForward": {
+        "source01To02": {
+          "path": "artifacts/teaching-principles/batch-20-resume/source-01-to-02-delta.json",
+          "sha256": "b81e0d562062f3412413b4e6600cfb4790b1db1cfeb8c151da0325b599fd9f6d"
+        },
+        "biologyControlsAndActuallyViewedFrames": {
+          "path": "artifacts/teaching-principles/batch-20-final-validation/biology/source-01-to-02-carry.json",
+          "sha256": "ee64279d0218ec027a0a717a43b7b4dbef56b84c4410c07774d14bf4ebda1116"
+        },
+        "covers": {
+          "path": "artifacts/teaching-principles/batch-20-resume/covers-source-02-carry.json",
+          "sha256": "01bad57ff942f2fd46e0f3565a4e75084cf69ef22800621a6bd3246c50866ae4"
+        },
+        "source02To03": {
+          "status": "accepted; unaffected evidence carried, affected layout directly rechecked",
+          "fromSource": {
+            "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+            "treeHash": "9085a91b1cb11a1c2a518b1367994107883c50aefa6b38f3f2b70b4a2b16b4ba",
+            "gitDiffHash": "29d29742d496435782c2cae849df1f9abf8666c674a204de9038f0a4ca97f920",
+            "fileCount": 5397,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "toSource": {
+            "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+            "treeHash": "dd4fff68487a7c8079b85c75d3b31eda9658afea387b2c7fa87eee17ce5e9a60",
+            "gitDiffHash": "18ab278ae55b50f66b7cff3fce2081110116f2e28a4320790f42a11d4ab18d36",
+            "fileCount": 5397,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "sourceDelta": {
+            "path": "artifacts/teaching-principles/batch-20-resume/source-02-to-03-delta.json",
+            "sha256": "cfe35b35e39d764636f388a8048edc65567c8536ac8179ab57822b9b1199e7d4"
+          },
+          "fromFileMap": {
+            "path": "artifacts/teaching-principles/batch-20-resume/frozen-file-map-02.json",
+            "sha256": "cbd1c0e53dab7c1563f2a7695170c6a31a78769c54a2313bd3df2fc96a990919"
+          },
+          "toFileMap": {
+            "path": "artifacts/teaching-principles/batch-20-resume/frozen-file-map-03.json",
+            "sha256": "7c17c3da6b132dfe448d4f9ce40de0f8ce33e30f69366d4dbf580d04262745cb"
+          },
+          "delta": [
+            {
+              "path": "src/styles/chem-alcohol-oxidation.css",
+              "before": "764e89777beedb66f7371bfc3e9f5bcd10371cbad352de30771655b34c486742",
+              "after": "9e3810c742eb474044f95e6400c0562e6a828fcc198233b52b4f4eb1c1b917bc"
+            }
+          ],
+          "unchangedFullSourceEntries": 5396,
+          "reason": "Only narrow chapter4 chromium count margins changed. Scientific models, audio, controllers, content, DOM and teaching order are unchanged; carry native controls, normal-rate clocks, fault behavior, catalog/teaching, ASR, covers and unaffected frames.",
+          "boundary": "Historical source02 failures remain recorded. All72 chemistry frames,6 anchors and4 entries now pass on source03 and corrected frames were actually viewed. The full matrix and complete clocks were not rerun on source03; exact CSS-only scope supports the explicit carry."
+        }
+      },
+      "sceneNativeControls": [
+        {
+          "kind": "native-controls-chemistry",
+          "count": 288,
+          "status": "passed",
+          "evidence": "artifacts/teaching-principles/batch-20-final-validation-02/chemistry/report.json",
+          "sourceRevision": "source02-direct",
+          "passed": 288,
+          "failed": 0,
+          "running": 0,
+          "evidenceSHA256": "f7d763bddd27986b8f715a38836aac276f4475a84512e70b04a596079ef598d1",
+          "evidenceSource": {
+            "commit": "22d7cae2a2ec44b8961547cab399772747abec82",
+            "treeHash": "9085a91b1cb11a1c2a518b1367994107883c50aefa6b38f3f2b70b4a2b16b4ba",
+            "gitDiffHash": "29d29742d496435782c2cae849df1f9abf8666c674a204de9038f0a4ca97f920",
+            "fileCount": 5397,
+            "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+          },
+          "finalSourceCarry": "source03 CSS-only scope; unaffected evidence carried, chemistry layout rows require targeted replacement"
+        }
+      ]
+    },
+    "pending": [],
+    "authorEvidenceScope": "Earlier candidate evidence and status remain dated author records. The root batch record governs final integrated acceptance; this addition does not silently promote them."
+  }
 }

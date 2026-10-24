@@ -1,124 +1,305 @@
-.curved-motion-lab {
-  max-width: 1000px;
-  margin: auto;
-  padding: clamp(18px, 4vw, 42px);
-  color: #526e55;
-}
-.curved-motion-lab header {
-  text-align: center;
-}
-.curved-motion-lab header p {
-  font-size: clamp(21px, 2.6vw, 29px);
-  line-height: 1.5;
-  margin: 0 0 8px;
-}
-.curved-motion-lab header > span {
-  font-size: 16px;
-  color: #849577;
-}
-.curved-motion-stage {
-  max-width: 620px;
-  margin: 14px auto;
-}
-.curved-motion-stage svg {
+.cv20 {
   width: 100%;
-  display: block;
-}
-.curved-motion-legend {
-  display: flex;
-  gap: 12px 26px;
-  justify-content: center;
-  flex-wrap: wrap;
+  max-width: 680px;
+  margin: auto;
+  color: #63766a;
   font-size: 16px;
+  line-height: 1.4;
+  --cv20-line: #d5dfd1;
 }
-.curved-motion-legend > span {
+.cv20-head {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 27px;
+  padding: 0 14px;
 }
-.curved-motion-legend i {
-  width: 18px;
-  height: 3px;
-  background: #90a981;
-  border-radius: 2px;
-}
-.curved-motion-legend > span:nth-child(2) i {
-  background: #b49b73;
-}
-.curved-motion-cause {
-  font-size: 18px;
-  line-height: 1.7;
-  text-align: center;
-  max-width: 730px;
-  margin: 25px auto;
-}
-.curved-motion-note {
+.cv20-head span {
   font-size: 16px;
-  line-height: 1.6;
-  text-align: center;
-  max-width: 740px;
-  margin: 20px auto;
-  color: #879677;
 }
-.curved-motion-controls {
+.cv20-head strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cv20-stage {
+  height: 275px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 20px 0;
+  place-items: center;
+  margin: 5px auto;
+  width: 100%;
 }
-.curved-motion-controls .segmented {
+.cv20-art {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.cv20-art text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #63766a;
+  letter-spacing: 0;
+}
+.cv20-state {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 23px;
+  text-align: center;
+  margin: 4px 12px 0;
+}
+.cv20-energy {
+  width: min(100%, 490px);
+  padding: 6px 16px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 11px;
+}
+.cv20-energy p {
+  margin: 0;
+  font-size: 16px;
+}
+.cv20-energy-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  font-size: 16px;
+}
+.cv20-energy-row strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.cv20-energy-row > div {
+  grid-column: 1/-1;
+  height: 10px;
+  background: #e8ecdf;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cv20-energy-row i {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+}
+.cv20-balance {
+  text-align: center;
+  color: #8a927d;
+}
+.cv20-controls {
+  display: grid;
+  gap: 15px;
+  padding: 14px 12px 4px;
+  min-width: 0;
+}
+.cv20-controls .segmented {
+  display: flex;
   flex-wrap: wrap;
 }
-.curved-motion-controls > .segmented:first-child {
-  grid-column: 1/-1;
-  justify-self: center;
+.cv20-controls button,
+.cv20-reveal {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.cv20-controls label,
+.cv20-controls output,
+.cv20-controls legend {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.cv20-controls input[type='range'] {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-inline: 0;
+}
+.cv20-notes {
+  font-size: 16px;
+  margin: 18px 12px 0;
+}
+.cv20-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.cv20-notes p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.cv20[data-watch='true'] .cv20-notes {
+  display: none;
+}
+.cv20-reveal {
+  border: 1px solid #b7c8aa;
+  background: #e8eedc;
+  color: #54734f;
+  padding: 8px 15px;
+  cursor: pointer;
 }
 @media (max-width: 640px) {
-  .curved-motion-lab {
-    padding: 20px 12px;
+  .cv20 {
+    max-width: 360px;
   }
-  .curved-motion-stage {
-    margin: 10px -4px;
-  }
-  .curved-motion-controls {
-    grid-template-columns: 1fr;
-  }
-  .curved-motion-cause {
-    font-size: 17px;
-    margin: 18px auto;
-  }
-}
-
-/* The film caption carries the current explanation; longer notes remain in exploration. */
-@media (max-width: 640px) {
-  .showcase[data-mode='watch'] .curved-motion-lab {
-    padding: 12px 8px;
-  }
-  .showcase[data-mode='watch'] .curved-motion-lab > header {
+  .cv20-head {
     display: block;
     text-align: center;
+    padding: 0 6px;
+    min-height: 46px;
   }
-  .showcase[data-mode='watch'] .curved-motion-lab > header p {
+  .cv20-head span {
+    display: block;
+    color: #899380;
+  }
+  .cv20-head strong {
+    display: block;
+    margin-top: 1px;
+  }
+  .cv20-stage {
+    height: 252px;
+    margin: 0;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .cv20-state {
+    min-height: 45px;
+    margin: 2px 5px 0;
+  }
+  .cv20-energy {
+    gap: 9px;
+    padding: 7px 3px;
+  }
+  .cv20-energy-row {
     font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
   }
-  .showcase[data-mode='watch'] .curved-motion-lab > header > span,
-  .showcase[data-mode='watch'] .curved-motion-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .curved-motion-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .curved-motion-lab > p[class$='-observation'] {
-    display: none;
+  .cv20-art text {
+    font-size: 17px;
+  }
+  .cv20-controls {
+    padding-inline: 4px;
+  }
+  .cv20-controls .segmented button {
+    flex: 1 1 90px;
+    min-width: 44px;
+  }
+  .cv20-notes {
+    margin-inline: 4px;
+  }
+}
+@media (max-width: 380px) and (max-height: 650px) {
+  .cv20-stage {
+    height: 228px;
+    max-width: 254px;
+  }
+  .cv20-art text {
+    font-size: 18px;
+  }
+  .cv20-head {
+    min-height: 42px;
+  }
+  .cv20-state {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cv20 * {
+    scroll-behavior: auto;
   }
 }
 
+@media (max-width: 380px) and (max-height: 650px) {
+  .showcase[data-slug='curved-motion-lab'] .film-caption {
+    padding-top: 2px;
+    padding-bottom: 4px;
+    min-height: 68px;
+  }
+  .showcase[data-slug='curved-motion-lab'] .film-chapters {
+    margin-top: 0;
+  }
+  .showcase[data-slug='curved-motion-lab'] .film-chapters summary {
+    min-height: 44px;
+  }
+  .showcase[data-slug='curved-motion-lab'] .film-transport {
+    padding-bottom: 7px;
+  }
+}
+.showcase[data-slug='curved-motion-lab'] .cv20-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  min-width: 44px;
+  min-height: 44px;
+  white-space: normal;
+}
+
+.cv20-art {
+  height: 230px;
+  max-width: 560px;
+  margin: auto;
+}
+.cv20-readout {
+  margin: 0 6px;
+  text-align: center;
+  font-size: 16px;
+  min-height: 45px;
+}
+.cv20-note {
+  font-size: 16px;
+  margin: 14px 5px;
+}
+.cv20-note summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.cv20-note p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.cv20[data-watch='true'] .cv20-note {
+  display: none;
+}
 @media (max-width: 640px) {
-  .showcase[data-mode='watch'] .curved-motion-stage {
-    margin: 6px 0;
+  .cv20-art {
+    max-width: 280px;
+    height: 230px;
   }
-  .showcase[data-mode='watch'] .curved-motion-stage svg {
-    max-height: 270px;
+  .cv20-art text {
+    font-size: 18px;
   }
-  .showcase[data-mode='watch'] .curved-motion-legend {
-    gap: 5px 12px;
+  .cv20-head {
+    min-height: 42px;
   }
+}
+@media (max-width: 380px) and (max-height: 650px) {
+  .cv20-art {
+    max-width: 254px;
+    height: 209px;
+  }
+}
+
+.cv20-readout {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 25px;
+}
+.cv20-readout span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.cv20-readout i {
+  display: block;
+  width: 18px;
+  height: 3px;
+  background: #78986f;
+}
+.cv20-readout i.cv20-force {
+  background: #ae8e60;
 }

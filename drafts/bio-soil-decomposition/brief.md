@@ -1,19 +1,27 @@
-# Soil microbial decomposition
+# 土壤分解：物质去了哪里
 
-Owner bio-systems. Targets elective-2-065-1 and066-1: two reference cases inside the same formal探究实践 activity. Full textbook pp64–67 read. Official University of Maryland amylase lab, Austin Community College Microbugz starch-hydrolysis page and USDA soil-respiration sources consulted. No completed laboratory observation claimed.
+候选隔离制作，实际源码、共享资料和录音未改。问题从落叶减少及淀粉/糖双阴性出发。原9章ID、原顺序和P65前三章/P66后六章完整窗口保留。
 
-## Causal direction
+## 决定性因果画面
 
-Nine22s chapters: matched litter and5cmsoil/treatment → decomposition under common conditions → example versus personal records → gauze extraction → equal30mL additions and20°C7d incubation → independent aliquots → iodine at contact → Fehling only after heating → continued consumption counterexample. One focused setup at a time on phones; root verifies complete player independently. Leaf damage derives from remaining-substrate state but is qualitative morphology, not geometric mass measurement. Soil60°C1h reduces effects, not guaranteed sterile or chemically unchanged; residualactivity.12 is explicitassumption.
+- 叶片同源对照先提出碳去向；胞外酶靠近连接、先断接，再让C1—C6同一份额穿过唯一膜入口。多步反应合并，不画碳凭空消失或全部立即成为CO₂。
+- 回到一致干燥下的记录；个人记录空白。只改变共同水分条件，比较同样自然土的干燥与适度湿润预测。真实土壤可能有其他限制与厌氧过程。
+- 后窗口先给模型A1碘液浅色/A2斐林阴性这一疑问；纱布不是无菌滤膜，浸出液同时带入细胞、酶和溶解物。
+- 保留等量原液、40mL账本及两份独立10mL检测。镜头意义是避免把两个处理相互污染后的颜色当独立证据。
+- 末段同一组24碳标记经历S→R→U。每个事件有两个独立指数等待时间，平滑过界时刻与pool/color相同；有限样本与解析百分比分开。快利用模型可在早期有产物、晚期少产物，支持时间序列而非盲目延长培养。
 
-Starch paste10mL is chosen for bookkeeping, not mandated by textbook. A/B receive30mL extract/water, each40mLtotal; withdraw20mL and split10+10, leave20mL. Pipette draws below surface, lifts above150px rims, traverses at120px, dispenses at150px into separate tubes. Source+pipette+tubes40mL throughout. Pipette moves continuously back before the next aliquot. Iodine/Fehling drops reach liquid before color changes, reagentvolume0.3mL illustrative. HeatedCu2Oparticles remain inside roundedtube bottom. Separate aliquots prevent mixedtest confusion. Backgroundsolutes/pigments/extracellularenzymes discussed, not microbialpurityclaim.
+## 科学合同
 
-## Models, benchmarks and boundaries
+完整教材第61–67页文本与65–66页原版面已读。Olagoke 2020原研究全文XML的方法、结果与讨论核读；Hill2008仅核作者机构/出版摘要，不称全文；IUBMB两种酶条目明确落叶≠淀粉，不用α-淀粉酶代表所有纤维素水解。教材没有实测曲线，所有数值、形态和颜色映射标作模型。
 
-Litter exponentialremaining exp(-.065*activity*4m(1-m)*days); analytic10dayexp(-.65), noactivity/dry/saturatedlimits preserve initialsubstrate. Formula describesaerobic illustrativeprocess, not allrealdecomposition. Matchedactivity null yields identicalstates. Blankrecordnull,actualzero allowed, dryingandreplication required.
+S'=−kS，R'=kS−uR，U'=uR，守恒为碳当量。U不是全部CO₂，不固定生物量/呼吸分配。独立中点积分与解析解比对；k=u极限、k/u零、非有限输入、追踪ID和唯一膜通路是模型验收边界。24标记是有限抽样，不与每帧百分比严格相等。初版弱hash采样出现统计偏差的失败证据保留，改为双混合32位hash后再检验。
 
-Starch→reducing→used carbon equivalents analyticsequentialfirstorder k.55,dvariable. S=exp(-kt),R=k/(d-k)*(exp(-kt)-exp(-dt));equalrateR=kt exp(-kt),d0R=1-S. TotalC1 in101states. d1.2after7d leavesS<.03,R<.06,negativeFehling despitehydrolysis. Defaultd.12positive;waterk0 remainsS1. Detectionthreshold.06 is pedagogical,notcalibratedassay. Fehling precipitate requiresreagentcontactandheat;iodine requirescontact. Treatment/interference controlsremain limitations.
+## 导演与讲稿
 
-## Acceptance evidence
+计划250.5s，自然语速候选，尚未录新音。0–4/8共12个中英spoken字段重写；5–7共6字段逐字保留且保留原测得27.5/28/28s窗口。每个导演切点用chapterTime，实际时长由Root新录音后校准，不能把当前计划当最终声画通过。屏幕caption为短解释，操作与限定在探索/文章展开。translations包括所有局部短语，不覆盖全局冲突。
 
-Scoped model/component tests cover independentbenchmarks, mass/volume invariants, 1001 pipettepositions andrim clearance, emptyrecords, all9watchframes independentofexploration. Originalcover uses sameleafmodel. Rootowns packetintegration, actualfullplayback/seek/320/fullplayer, measuredspeech andbothvoicelistening, failuremodes,physicaldevices,globalchecks and release. Noneofthose checks claimedby author.
+## 构图与交互
+
+SVG坐标宽度由实际容器决定，桌面最大760px，手机独立布局，不缩整页。细胞内份额按六个不同终点排布；过程经过上侧通道和内部空走廊，避免覆盖已经进入的份额。收支图手机用短纵向分区而非桌面大图堆叠。真实Showcase、BaseCSS与原生键盘控件做隔离候选验证。
+
+首次探索继承本章时间/当前参数；手动主题用稳定默认进度，逐主题手调持久；watch忽略探索值。用户记录可保留真实零，不伪造测量。无WebGL/Worker依赖。所有最终证据按版本写review，候选播放器不等于实际站SSR/正式录音或真机表现。

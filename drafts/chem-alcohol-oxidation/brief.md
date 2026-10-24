@@ -1,17 +1,37 @@
-# Ethanol oxidation production brief
+# Ethanol oxidation: follow what returns and what is consumed
 
-Targets64 and156; six cues, copper cycle followed by a distinct chromium experiment. The same tracked coil moves between connected spatial contexts rather than swapping anonymous vessels. Phone portrait crops each apparatus independently; shared caption carries the long causal sentence.
+B20 ignored candidate. Root owns canonical/shared integration, final voice measurement, actual-site review and publication. No product files are changed by this author.
 
-## Evidence
+## Question and curriculum scope
 
-Read full local required2 PDF83–84 / printed78–79 and elective3 PDF67–68 / printed62–63. Required2 PDF83 was rendered and visually inspected during sodium-alcohol research; it includes figure7-20 and experiment7-5. Elective3 PDF67 is rendered for this scene. Göttingen university experiment2137 was fully opened and confirms black oxide becoming copper with ethanal/water. OpenStax17.7 was fully opened for alcohol oxidation endpoints. ACS paper search corroborated but direct403, so not relied on. All apparatus and atom graphics original.
+Copper returns to its original colour, yet ethanol has changed. How can a regenerated catalyst still need a continuing oxygen supply? The second textbook window asks whether twice the ethanol produces twice the acid when oxidant and acid are fixed.
 
-## Models and benchmarks
+Read the complete required Book2 P77–79 and elective Book3 P61–64 text. Personally inspect complete P78/P79 and P62/P63 page images. Preserve experiment7-5 and experiment3-3 original names, pages, order, six chapter IDs, and two complete windows. The first window contains evidence, cycle cancellation, finite-oxygen prediction, formal electrons and atom correspondence. The second starts afresh with the separate chromium observation and explains its endpoint and limiting-reactant prediction.
 
-One copper stock conserved; oxygen absorbed equals oxide remaining plus water oxygen. Three complete cycles produce three illustrative aldehyde units and restore copper stock. No air prevents this Cu/CuO loop; no ethanol leaves oxide. This does not exclude other copper-catalysed pathways. Cycle time manually directs observation, not kinetics. Coil colours interpolate surface state.
+## Causal sequence and art direction
 
-Acid endpoint uses 3ethanol +2dichromate +16H+ ->3ethanoic acid +4Cr3+ +11water. Extent limited by all three reactants; C/H/O/Cr/charge and12electrons per extent conserved. Qualitative RGB not spectrometry. Aldehyde intermediate not resolved. Atom view is net correspondence, not simultaneous microscopic bond rupture.
+A warm copper coil against quiet glass is the visible anchor. The same coil moves between air heating and ethanol. Heat and oxygen have separate roles. Colour and supporting odour do not independently identify ethanal.
 
-## Acceptance
+The repeated cycle becomes an aligned material ledger. Copper and CuO are crossed out on both sides; ethanol and oxygen remain. Then the view closes in on the same coil, preloaded with CuO. Hide the product counter while asking what cutting off air will do. Reveal one completed turn and an exhausted oxide inventory. Allow initial oxide, finite ethanol and replenished air to change the actual account.
 
-Independent5tests cover conservation across all stages/limits, missing reagents, endpoint, seeking and invalid inputs. Scoped TypeScript, packet, MDX parsing, all-cue bilingual320 keyframes and wholeplayer bounds before freeze. Root owns complete playback, final voice/listening, independent desktop review and physical-device gaps.
+Formal oxidation numbers connect C −I→+I to Cu +II→0 through two electron equivalents. The arrow is accounting, not a filmed electron path. A separate atom close-up keeps all seven selected atom/group identities while the two chosen hydrogens move to water. Ethanol oxygen stays next to its original carbon; the other oxygen is marked as originating from the displayed oxide route. This is representative net material mapping, not isotope measurement, a unique surface pathway, or an inference available from colour alone.
+
+The acidified-dichromate section shows conserved Cr populations, the two organic oxidation stages, matching 3×4 and 2×6 electron equivalents, and a hidden-before-reveal doubling prediction. The full-acid endpoint balances ethanol, dichromate and H⁺; it does not predict instantaneous organic selectivity. Colour is qualitative.
+
+## Composition
+
+Desktop copper and chromium scenes place apparatus beside the relevant account. Mobile keeps the object large enough to read without shrinking the whole page. Chromium inventory is below the tube on both desktop and phone, matching the retained Chinese spoken reference. Cycle cancellation is its own close view. Electron bookkeeping and atom mapping are successive shots. The phone prediction uses a copper-coil close-up, and the acid prediction removes the already-explained ladder to leave the question and inventory. Actual shared Showcase controls remain visible in the isolated 320×568 candidate.
+
+The cover uses one continuous coil, a black oxide segment, incoming paired oxygen and outgoing water as a conceptual net-account illustration. It is not a molecularly literal surface or a device diagram.
+
+## Implementation and speech contract
+
+Independent model functions retain the original balanced copper and dichromate accounts, extending copper with initial oxide and finite ethanol. Conservation is checked over controls and time. No kinetic constants or measured yields are claimed.
+
+Keep six IDs. Preserve actual spoken fields, titles and spans of cues0,1,4. Cues2,3,5 are rewritten. The final v02 recordings establish shared chapter spans26/29/48.5/42/28/54.5 seconds and total228 seconds. The measured director first adds and then cancels copper equations, holds each prediction until its spoken answer, shows the4e and6e unit accounts before12e pairing, and completes atom mapping at the spoken water cue. Root must inspect the integrated route and exact recorded assets before release. No voice regeneration occurred during resumed candidate QA.
+
+Fresh Explore inherits the current chapter, shot, atom geometry and hidden prediction. User edits remain separate from Watch. Native sliders alter the finite model; changed prediction inputs hide the old answer until explicitly revealed. The existing shared player retains pause/replay/offscreen/reduced-motion behavior.
+
+## Evidence boundaries
+
+See review.json for exact source hashes, tests, frame and native-control records. Early geometry failures remain in versioned directories. This is an isolated candidate with actual shared React Showcase and global styles. It is not a final Astro route, SSR anchor/catalog/cover consumer acceptance, audio synchronization or listening, normal-speed full-film visual acceptance, or physical-phone performance measurement. Root performs final pnpm verify/build:preview and production checks.

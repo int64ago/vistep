@@ -1,51 +1,31 @@
 import { useId, useState } from 'react';
 import { browserLocale } from '../../i18n';
+import { useShowcase } from '../lab/FilmContext';
+import { useSignalWidth } from '../lab/SignalFigure';
+import { Range } from '../lab/Controls';
 import {
   soilClamp,
   litterState,
-  starchState,
+  litterRecord,
+  leafHoles,
   sampleTransfer,
   assayResult,
   reagentDrops,
-  litterRecord,
-  leafHoles,
+  carbonPools,
+  carbonMarker,
+  decomposerPath,
+  soilDirector,
+  soilChapterSeconds,
 } from '../../models/bio-soil-decomposition';
-import { useShowcase } from '../lab/FilmContext';
-import { useSignalWidth } from '../lab/SignalFigure';
 import '../../styles/bio-soil-decomposition.css';
-export default function BioSoilDecomposition() {
-  const f = useShowcase(),
-    { host, width: w } = useSignalWidth(),
-    uid = useId(),
-    s = (z: string, e: string) => (browserLocale() === 'en' ? e : z);
-  const [mode0, setMode] = useState(f.variant === 'bio-elective-2-066-1' ? 1 : 0),
-    [view, setView] = useState(0),
-    [progress, setProgress] = useState(1),
-    [activity, setActivity] = useState(0.12),
-    [moisture, setMoisture] = useState(0.5),
-    [days, setDays] = useState(7),
-    [consume, setConsume] = useState(0.12),
-    [heat, setHeat] = useState(true),
-    [group, setGroup] = useState(0),
-    [records, setRecords] = useState(['', '', '', '']),
-    [notes, setNotes] = useState('');
-  const mode = f.watch ? (f.chapter < 3 ? 0 : 1) : mode0,
-    local = f.watch ? f.chapter - (mode === 0 ? 0 : 3) : Math.min(view, mode === 0 ? 2 : 5),
-    p = f.watch ? f.chapterProgress : progress;
-  const a = f.watch ? 0.12 : activity,
-    m = f.watch ? 0.5 : moisture,
-    d = f.watch ? 7 : days,
-    c = f.watch ? (local === 5 ? 0.12 + 1.08 * p : 0.12) : consume,
-    heated = f.watch || heat,
-    which = f.watch ? Math.min(1, Math.floor(p * 2)) : group,
-    partP = f.watch ? (p === 1 ? 1 : (p * 2) % 1) : p;
-  const transfer = sampleTransfer(partP, w),
-    leafDays = local === 0 ? 0 : p * 28;
-  const leaf = (x: number, y: number, remaining: number, key: string, scale = 1) => (
-    <g transform={`translate(${x} ${y}) scale(${scale})`}>
+type Say = (z: string, e: string) => string;
+const colors = ['#a59659', '#be8b4e', '#6b927c'];
+function Leaf({ x, y, remaining, id }: { x: number; y: number; remaining: number; id: string }) {
+  return (
+    <g transform={`translate(${x} ${y})`}>
       <defs>
-        <mask id={`${uid}-${key}`}>
-          <path d="M0-40Q36-14 0 42Q-32 5 0-40Z" fill="white" />
+        <mask id={id}>
+          <path d="M0-48Q48-12 0 51Q-43 2 0-48Z" fill="white" />
           {leafHoles.map((h) => (
             <circle
               key={h.id}
@@ -57,601 +37,825 @@ export default function BioSoilDecomposition() {
           ))}
         </mask>
       </defs>
-      <path d="M0-40Q36-14 0 42Q-32 5 0-40Z" fill="#a58d59" mask={`url(#${uid}-${key})`} />
+      <path d="M0-48Q48-12 0 51Q-43 2 0-48Z" fill="#a58d59" mask={`url(#${id})`} />
       <path
-        d="M0 42V-34m0 25 10-12M0 9l-10-10m10 20 9-9"
+        d="M0 48V-40m0 22 17-16M0 4-17-13M0 24l14-14"
+        stroke="#d0c28f"
         fill="none"
-        stroke="#c1b17e"
-        strokeWidth="1.5"
+        strokeWidth="2"
       />
     </g>
   );
-  const tube = (x: number, name: string, ml: number, color: string, precip = 0) => (
-    <g>
+}
+function Pots({
+  w,
+  s,
+  days,
+  moisture,
+  activity,
+  question = false,
+  predict = false,
+}: {
+  w: number;
+  s: Say;
+  days: number;
+  moisture: number;
+  activity: number;
+  question?: boolean;
+  predict?: boolean;
+}) {
+  const id = useId();
+  return (
+    <>
+      <div className="bsd20-pair-label">
+        <span>{predict ? s('更干燥', 'Drier') : s('处理土', 'Treated soil')}</span>
+        <span>{predict ? s('适度湿润', 'Moist') : s('自然土', 'Natural soil')}</span>
+      </div>
+      <svg
+        viewBox={`0 20 ${w} 198`}
+        role="img"
+        aria-label={s(
+          '同样的叶片在两份土壤中的模型比较',
+          'Model comparison of matched leaves in two soils',
+        )}
+      >
+        {[activity, 1].map((a, i) => {
+          const x = w * (i === 0 ? 0.25 : 0.75),
+            r = litterState(days, a, predict && i === 1 ? 0.5 : moisture).remaining;
+          return (
+            <g key={i} data-pot={i} data-remaining={r}>
+              <path
+                d={`M${x - 50} 67v122q50 20 100 0V67`}
+                stroke="#9faaa1"
+                fill="#eef1e8"
+                strokeWidth="2"
+              />
+              <path d={`M${x - 48} 119h96v68q-48 17-96 0Z`} fill="#8d7c60" />
+              <ellipse cx={x} cy="119" rx="48" ry="9" fill="#ac997a" />
+              <Leaf x={x} y={85} remaining={r} id={`${id}-${i}`} />
+              <text x={x} y="216" textAnchor="middle">
+                {question ? '?' : `${(100 * r).toFixed(0)}%`}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+      <div className="bsd20-note">
+        {question
+          ? s('落叶减少了，碳去了哪里？', 'The leaf shrinks. Where is its carbon?')
+          : predict
+            ? s('同土同时间 · 模型预测', 'Same soil and time · prediction')
+            : s('模型余量 · 同温同湿', 'Model remainder · matched conditions')}
+      </div>
+    </>
+  );
+}
+function Mechanism({
+  w,
+  s,
+  p,
+  enzyme,
+  uptake,
+  starch = false,
+}: {
+  w: number;
+  s: Say;
+  p: number;
+  enzyme: boolean;
+  uptake: boolean;
+  starch?: boolean;
+}) {
+  const m = decomposerPath(p, w, enzyme, uptake);
+  return (
+    <>
+      <svg
+        viewBox={`0 0 ${w} 242`}
+        role="img"
+        aria-label={s(
+          '胞外切分后，同一批碳标记经入口进入微生物',
+          'Extracellular breakdown followed by entry of the same carbon markers',
+        )}
+        data-enzyme={enzyme}
+        data-uptake={uptake}
+      >
+        <path
+          d={`M${m.gate.x - m.gate.half} 157H50Q28 157 28 181v33q0 23 22 23h${w - 100}q22 0 22-23v-33q0-24-22-24H${m.gate.x + m.gate.half}`}
+          fill="#e1ebe2"
+          stroke="#6e8c76"
+          strokeWidth={m.gate.membraneStroke}
+        />
+        <path
+          data-gate-clear-width={2 * m.gate.half - m.gate.wallStroke}
+          d={`M${m.gate.x - m.gate.half} ${m.gate.top}V${m.gate.bottom}M${m.gate.x + m.gate.half} ${m.gate.top}V${m.gate.bottom}`}
+          stroke="#877b64"
+          strokeWidth={m.gate.wallStroke}
+          strokeLinecap="round"
+        />
+        {m.bonds.map((b) => {
+          const a = m.units.find((x) => x.id === b.a)!,
+            v = m.units.find((x) => x.id === b.b)!;
+          return (
+            <path
+              key={b.id}
+              d={`M${a.x + 13} ${a.y}L${v.x - 13} ${v.y}`}
+              fill="none"
+              stroke="#a79061"
+              strokeWidth="5"
+              opacity={b.intact}
+            />
+          );
+        })}
+        {enzyme && (
+          <g transform={`translate(${m.enzyme.x} ${m.enzyme.y})`}>
+            <path
+              d="M-27-13Q-16-31 0-20Q16-31 27-13L18 1Q0-9-18 1Z"
+              fill="#7b9b86"
+              stroke="#53765e"
+            />
+            <text x="0" y="-29" textAnchor="middle">
+              {s('胞外酶', 'Outside enzyme')}
+            </text>
+          </g>
+        )}
+        {m.units.map((u) => (
+          <g
+            key={u.id}
+            data-carbon-id={u.id}
+            data-inside={u.inside}
+            transform={`translate(${u.x} ${u.y})`}
+          >
+            <rect
+              x={-m.gate.markerHalfWidth}
+              y={-m.gate.markerHalfHeight}
+              width={m.gate.markerHalfWidth * 2}
+              height={m.gate.markerHalfHeight * 2}
+              strokeWidth={m.gate.markerStroke}
+              rx="8"
+              fill={u.inside ? '#c4d6be' : '#e2cea3'}
+              stroke="#9b9475"
+            />
+            <text textAnchor="middle" y="5">
+              {u.id}
+            </text>
+          </g>
+        ))}
+        {p < 0.49 && (
+          <text x={w / 2} y="208" textAnchor="middle">
+            {s('微生物细胞', 'Microbial cell')}
+          </text>
+        )}
+      </svg>
+      <div className="bsd20-note">
+        {!enzyme
+          ? s('新样对照：不切分', 'Fresh sample: no cleavage')
+          : m.further < 0.9
+            ? s('胞外切分 · 碳份额示意', 'Outside cleavage · carbon portions')
+            : !uptake
+              ? s('新样对照：不吸收', 'Fresh sample: no uptake')
+              : s('碳份额示意 · 后续步骤合并', 'Carbon portions · steps grouped')}
+      </div>
+    </>
+  );
+}
+function Tube({
+  x,
+  y = 38,
+  name,
+  fill,
+  precip = 0,
+  ml = 10,
+}: {
+  x: number;
+  y?: number;
+  name: string;
+  fill: string;
+  precip?: number;
+  ml?: number;
+}) {
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <path d="M-20 0v116q0 21 20 21t20-21V0" fill="#edf2ed" stroke="#9aaca7" strokeWidth="2" />
       <path
-        d={`M${x - 16} 101v119q0 18 16 18t16-18V101`}
-        fill="#f1f5e9"
-        stroke="#aab7a0"
-        strokeWidth="2"
+        d={`M-18 ${137 - ml * 8}h36v${Math.max(0, ml * 8 - 21)}q0 19-18 19t-18-19Z`}
+        fill={fill}
       />
-      <path d={`M${x - 14} ${238 - ml * 7.5}h28V220q0 16-14 16t-14-16Z`} fill={color} />
-      <ellipse cx={x} cy="101" rx="16" ry="3" fill="none" stroke="#aab7a0" />
-      {Array.from({ length: 36 }, (_, i) => {
-        const xx = -7.5 + (i % 6) * 3,
-          yy = 228 + Math.floor(i / 6) * 1.1;
-        return (
-          <circle
-            key={i}
-            cx={x + xx}
-            cy={yy}
-            r="1.5"
-            fill="#ad6844"
-            opacity={soilClamp(precip * 36 - i)}
-          />
-        );
-      })}
-      <text x={x} y="282" textAnchor="middle">
+      <ellipse cx="0" cy="0" rx="20" ry="4" fill="none" stroke="#9aaca7" />
+      {Array.from({ length: 30 }, (_, i) => (
+        <circle
+          key={i}
+          cx={-12 + (i % 6) * 4.8}
+          cy={124 + Math.floor(i / 6) * 2}
+          r="2"
+          opacity={soilClamp(precip * 30 - i)}
+          fill="#a85d36"
+        />
+      ))}
+      <text x="0" y="164" textAnchor="middle">
         {name}
       </text>
     </g>
   );
-  const title =
-    mode === 0
-      ? s('落叶与土壤微生物', 'Litter and soil microbes')
-      : s('土壤浸出液与淀粉', 'Soil extract and starch');
+}
+function Tests({
+  w,
+  s,
+  p,
+  day,
+  use,
+  heat,
+  kind,
+  puzzle = false,
+}: {
+  w: number;
+  s: Say;
+  p: number;
+  day: number;
+  use: number;
+  heat: boolean;
+  kind: 'iodine' | 'fehling';
+  puzzle?: boolean;
+}) {
   return (
-    <div ref={host} className="bio-soil" data-watch={f.watch}>
-      <div className="bio-soil-head">{title}</div>
-      {mode === 0 && local < 2 && (
-        <svg
-          viewBox={`0 0 ${w} 302`}
-          role="img"
-          aria-label={s(
-            '相同落叶与土层的处理对照',
-            'Matched litter and soil under contrasting treatments',
-          )}
-        >
-          {[0, 1].map((i) => {
-            const x = w * (i === 0 ? 0.27 : 0.73),
-              r = litterState(leafDays, i === 0 ? a : 1, m).remaining;
-            return (
-              <g key={i}>
-                <path d={`M${x - 43} 112h86v106q-43 18-86 0Z`} fill="#e5dfcb" stroke="#c1b89c" />
-                <path d={`M${x - 41} 163h82v54q-41 15-82 0Z`} fill="#9c8b6b" />
-                <ellipse cx={x} cy="164" rx="41" ry="8" fill="#b0a17e" />
-                {Array.from({ length: 16 }, (_, j) => (
-                  <circle
-                    key={j}
-                    cx={x - 32 + (j % 5) * 15}
-                    cy={178 + Math.floor(j / 5) * 13}
-                    r="1.5"
-                    fill="#c1b291"
-                  />
-                ))}
-                {leaf(x, 142, r, `leaf${i}`, 0.66)}
-                <text x={x} y="255" textAnchor="middle">
-                  {i === 0 ? s('处理土', 'Treated') : s('自然土', 'Natural')}
-                </text>
-                {local === 0 && i === 0 && (
-                  <text x={x} y="281" textAnchor="middle">
-                    60°C · 1 h
-                  </text>
-                )}
-              </g>
-            );
-          })}
-          <text x={w / 2} y="28" textAnchor="middle">
-            {local === 0
-              ? s('相同落叶 · 各5 cm土层', 'Matched litter · 5 cm soil')
-              : s(
-                  `形态示意 · 第${Math.round(leafDays)}天`,
-                  `Illustration · day ${Math.round(leafDays)}`,
-                )}
-          </text>
-          {local === 1 && (
-            <text x={w / 2} y="291" textAnchor="middle">
-              {s('同温同湿 · 处理不等于无菌', 'Matched conditions; not sterile')}
-            </text>
-          )}
-        </svg>
-      )}
-      {mode === 0 && local === 2 && (
-        <svg
-          viewBox={`0 0 ${w} 280`}
-          role="img"
-          aria-label={s(
-            '观察记录与模型示例明确分开',
-            'Separate measured records from model examples',
-          )}
-        >
-          <text x={w / 2} y="25" textAnchor="middle">
-            {f.watch
-              ? s('模型练习记录', 'Illustrative model record')
-              : s('我的干质量记录', 'My dry-mass records')}
-          </text>
-          {[0, 1].map((i) => {
-            const r = litterRecord(records[i * 2], records[i * 2 + 1]);
-            return (
-              <g key={i}>
-                <text x="16" y={70 + i * 102}>
-                  {i === 0 ? s('处理土', 'Treated soil') : s('自然土', 'Natural soil')}
-                </text>
-                <text x="16" y={101 + i * 102}>
-                  {f.watch
-                    ? `2.00 → ${(2 * litterState(28, i === 0 ? 0.12 : 1).remaining).toFixed(2)} g`
-                    : r
-                      ? `${r.initial} → ${r.final} g`
-                      : s('尚未填写', 'No observation yet')}
-                </text>
-                {f.watch && (
-                  <path
-                    d={`M16 ${116 + i * 102}H${16 + (w - 32) * litterState(28, i === 0 ? 0.12 : 1).remaining}`}
-                    stroke="#a2a77e"
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                  />
-                )}
-              </g>
-            );
-          })}
-          <text x={w / 2} y="274" textAnchor="middle">
-            {s('空白≠零 · 统一称量条件', 'Blank ≠ zero · matched drying')}
-          </text>
-        </svg>
-      )}
-      {mode === 1 && local === 0 && (
-        <svg
-          viewBox={`0 0 ${w} 310`}
-          role="img"
-          aria-label={s(
-            '纱布和土壤移出后保留浸出液',
-            'Lift gauze and soil while retaining the extract',
-          )}
-        >
-          <text x={w / 2} y="24" textAnchor="middle">
-            {s('蒸馏水搅拌 → 取出纱布', 'Mix with water → lift gauze')}
-          </text>
+    <>
+      <div className="bsd20-note">
+        {puzzle
+          ? s('模型：淀粉少，糖也少？', 'Model: little starch and little sugar?')
+          : s(
+              kind === 'iodine' ? '等份检测剩余淀粉' : '等份检测还原性产物',
+              kind === 'iodine'
+                ? 'Separate aliquots: remaining starch'
+                : 'Separate aliquots: reducing products',
+            )}
+      </div>
+      <svg
+        viewBox={`0 0 ${w} 226`}
+        role="img"
+        aria-label={s(
+          '相同条件下分别检测A与B的独立样品',
+          'Independent A and B aliquots tested under matched conditions',
+        )}
+      >
+        {kind === 'fehling' && heat && (
           <path
-            d={`M${w / 2 - 64} 118v152h128V118`}
-            fill="#edf2e7"
-            stroke="#abb9a1"
-            strokeWidth="2"
+            d={`M${puzzle ? w * 0.55 : 25} 83H${w - 25}v99H${puzzle ? w * 0.55 : 25}Z`}
+            fill="#dbe7e8"
+            stroke="#a5bfc2"
           />
-          <path d={`M${w / 2 - 62} 174h124v94h-124Z`} fill="#c8ba8b" opacity=".65" />
-          <g transform={`translate(${w / 2} ${-100 * soilClamp((p - 0.45) / 0.5)})`}>
-            <path
-              d="M-47 130q-12 79 47 79t47-79"
-              fill="#e7e0c9"
-              fillOpacity=".5"
-              stroke="#afa98e"
-              strokeWidth="2"
-            />
-            <path d="M-43 156q-7 47 43 47t43-47Z" fill="#9b8963" />
-            {Array.from({ length: 10 }, (_, j) => (
-              <path
-                key={j}
-                d={`M${-45 + j * 10} 133v${70 - Math.abs(-45 + j * 10) * 0.8}`}
-                stroke="#c7c0a6"
-                strokeWidth="1"
+        )}
+        {[true, false].map((active, i) => {
+          const x = w * (i === 0 ? 0.28 : 0.72),
+            r = assayResult(day, puzzle ? true : active, use, heat, p),
+            testKind = puzzle ? (i === 0 ? 'iodine' : 'fehling') : kind,
+            fill =
+              testKind === 'iodine'
+                ? `color-mix(in srgb, #344369 ${r.iodine * 100}%, #e6d5a7)`
+                : '#a9d1d8';
+          return (
+            <g key={i} data-assay={i} data-iodine={r.iodine} data-precipitate={r.precipitate}>
+              <Tube
+                x={x}
+                fill={fill}
+                precip={testKind === 'fehling' ? r.precipitate : 0}
+                name={
+                  puzzle ? `A${i + 1}` : `${i === 0 ? 'A' : 'B'}${kind === 'iodine' ? '1' : '2'}`
+                }
               />
-            ))}
-            <path d="M-46 130l-17-13m109 13 17-13" stroke="#aaa58b" strokeWidth="2" />
-          </g>
-          {p < 0.4 && (
-            <path
-              d={`M${w / 2 + 25 + 8 * Math.sin(p * 45)} 86L${w / 2 + 10 + 8 * Math.sin(p * 45)} 183`}
-              stroke="#a1b5a5"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-          )}
-          {Array.from({ length: 12 }, (_, i) => (
+              {reagentDrops(p).map(
+                (d) =>
+                  d.visible && (
+                    <circle
+                      key={d.id}
+                      cx={x}
+                      cy={8 + 80 * d.phase}
+                      r="4"
+                      fill={kind === 'iodine' ? '#8b6c2f' : '#5f9cb6'}
+                    />
+                  ),
+              )}
+            </g>
+          );
+        })}
+        <text x={w / 2} y="223" textAnchor="middle">
+          {puzzle
+            ? s('A1 碘液 · A2 斐林', 'A1 Iodine · A2 Fehling')
+            : kind === 'fehling'
+              ? heat
+                ? s('同一水浴', 'Same water bath')
+                : s('新样对照：未加热', 'Fresh sample: no heat')
+              : s('A：浸出液 · B：水', 'A: extract · B: water')}
+        </text>
+      </svg>
+    </>
+  );
+}
+function Budget({
+  w,
+  s,
+  day,
+  use,
+  enzyme,
+  uptake,
+}: {
+  w: number;
+  s: Say;
+  day: number;
+  use: number;
+  enzyme: boolean;
+  uptake: boolean;
+}) {
+  const k = enzyme ? 0.55 : 0,
+    d = uptake ? use : 0,
+    a = carbonPools(day, k, d),
+    vals = [a.polymer, a.soluble, a.other];
+  return (
+    <>
+      <div className="bsd20-note">
+        {s('模型碳收支 · 第', 'Model carbon ledger · day ')}
+        {day.toFixed(1)}
+        {s('天', '')}
+      </div>
+      <div className="bsd20-pool-labels">
+        {[s('淀粉', 'Starch'), s('可溶产物', 'Soluble'), s('其他碳库', 'Other pools')].map(
+          (v, i) => (
+            <div key={i}>
+              <span style={{ color: colors[i] }}>{v}</span>
+              <b data-pool={i}>{(vals[i] * 100).toFixed(1)}%</b>
+            </div>
+          ),
+        )}
+      </div>
+      <svg
+        viewBox={`0 0 ${w} 160`}
+        role="img"
+        aria-label={s(
+          '24个选定碳标记由淀粉经过可溶产物进入其他碳库',
+          'Twenty-four selected carbon markers move through polymer, soluble and other pools',
+        )}
+      >
+        {[0, 1, 2].map((a) => (
+          <rect
+            key={a}
+            x="13"
+            y={[12, 92.5, 173.5][a] * 0.65}
+            width={w - 26}
+            height={[80.5, 81, 72.5][a] * 0.65}
+            rx="0"
+            fill={colors[a]}
+            fillOpacity=".09"
+            stroke={colors[a]}
+            strokeOpacity=".35"
+          />
+        ))}
+        {Array.from({ length: 24 }, (_, id) => {
+          const c = carbonMarker(id, day, k, d, w);
+          return (
             <circle
-              key={i}
-              cx={w / 2 - 50 + (i % 6) * 20}
-              cy={228 + Math.floor(i / 6) * 18}
-              r="1.4"
-              fill="#9c9e6c"
-              opacity={soilClamp(p * 3)}
+              key={c.id}
+              data-marker={c.id}
+              data-pool-name={c.pool}
+              cx={c.x}
+              cy={c.y * 0.65}
+              r="3.7"
+              fill={colors[c.pool === 'polymer' ? 0 : c.pool === 'soluble' ? 1 : 2]}
+              stroke="#fff"
+              strokeWidth="1"
             />
-          ))}
-          <text x={w / 2} y="303" textAnchor="middle">
-            {s('浸出液仍可含微生物与可溶物', 'Extract: microbes and solutes')}
-          </text>
-        </svg>
-      )}
-      {mode === 1 && local === 1 && (
-        <svg
-          viewBox={`0 0 ${w} 310`}
-          role="img"
-          aria-label={s(
-            '等量淀粉糊分别加入浸出液或水',
-            'Equal starch paste receives extract or distilled water',
-          )}
-        >
-          <text x={w / 2} y="24" textAnchor="middle">
-            {which === 0
-              ? s('A · 土壤浸出液', 'A · Soil extract')
-              : s('B · 蒸馏水', 'B · Distilled water')}
-          </text>
-          <path d={`M${w / 2 - 15} 40v75l10 10v9h10v-9l10-10V40`} fill="#edf1e5" stroke="#a9b59d" />
-          {partP < 1 && (
+          );
+        })}
+      </svg>
+      <div className="bsd20-note">{s('标记：有限样本', 'Markers: finite sample')}</div>
+    </>
+  );
+}
+function Split({ w, s, p, group }: { w: number; s: Say; p: number; group: number }) {
+  const clipId = useId();
+  const a = sampleTransfer(p, w),
+    g = group === 0 ? 'A' : 'B';
+  return (
+    <>
+      <div className="bsd20-note">{`${g} · ${s('独立样品，两份检测', 'Separate sample, two tests')}`}</div>
+      <svg
+        viewBox={`0 0 ${w} 262`}
+        role="img"
+        aria-label={s(
+          '40毫升分到两个10毫升试管，余20毫升',
+          'Two 10 mL aliquots from 40 mL, leaving 20 mL',
+        )}
+        data-sample={g}
+        data-transfer-progress={p}
+        data-source-ml={a.source}
+        data-pipette-ml={a.pipette}
+        data-aliquots={a.tubes.join(',')}
+      >
+        <path d={`M${w * 0.2 - 24} 155v84h48v-84`} fill="#edf0e7" stroke="#acb5a0" />
+        <path d={`M${w * 0.2 - 22} ${239 - a.source * 1.65}h44V239h-44Z`} fill="#d8cba2" />
+        {a.tubes.map((ml, i) => (
+          <g key={i}>
             <path
-              d={`M${w / 2 - 13} ${115 - 70 * (1 - partP)}h26v3l-9 9h-8l-9-9Z`}
-              fill={which === 0 ? '#c8ba8e' : '#cee1d8'}
+              d={`M${w * (i === 0 ? 0.57 : 0.82) - 16} 145v85q16 15 32 0v-85`}
+              fill="#edf0e7"
+              stroke="#a7b4a5"
             />
-          )}
-          {partP > 0 && partP < 1 && (
-            <path
-              d={`M${w / 2} 134V${250 - (10 + 30 * partP) * 1.8}`}
-              stroke={which === 0 ? '#bcac7b' : '#a8c9bd'}
-              strokeWidth="3"
-            />
-          )}
-          <path d={`M${w / 2 - 52} 155v97h104V155`} fill="none" stroke="#a6b69a" strokeWidth="2" />
-          <path
-            d={`M${w / 2 - 50} ${250 - (10 + 30 * partP) * 1.8}h100V250H${w / 2 - 50}Z`}
-            fill={which === 0 ? '#d7cca5' : '#e5e4ca'}
-          />
-          <text x={w / 2} y="280" textAnchor="middle">
-            {s('等量淀粉糊 + 30 mL', 'Equal paste + 30 mL')}
-          </text>
-          <text x={w / 2} y="306" textAnchor="middle">
-            20°C · 7 d
-          </text>
-        </svg>
-      )}
-      {mode === 1 && local === 2 && (
-        <svg
-          viewBox={`0 0 ${w} 305`}
-          role="img"
-          aria-label={s(
-            '移液管将同一培养液分成两份',
-            'Pipette separate aliquots from the same incubation',
-          )}
-        >
-          <text x={w / 2} y="24" textAnchor="middle">
-            {which === 0 ? 'A' : 'B'} · {s('分开检测，不混加试剂', 'Separate tests')}
-          </text>
-          <path
-            d={`M${w * 0.2 - 27} 150v107h54V150`}
-            fill="none"
-            stroke="#a4b19c"
-            strokeWidth="2"
-          />
-          <path d={`M${w * 0.2 - 25} ${255 - transfer.source * 1.4}h50V255h-50Z`} fill="#d5cba5" />
-          {transfer.tubes.map((v, i) => {
-            const x = w * (i === 0 ? 0.57 : 0.82);
-            return (
-              <g key={i}>
-                <path
-                  d={`M${x - 13} 150v93q0 12 13 12t13-12v-93`}
-                  stroke="#a4b19c"
-                  fill="#f3f6eb"
-                  strokeWidth="2"
-                />
-                {v > 0 && (
-                  <rect
-                    x={x - 11}
-                    y={255 - v * 5}
-                    width="22"
-                    height={v * 5}
-                    fill="#d5cba5"
-                    clipPath={`url(#${uid}-sample${i})`}
-                  />
-                )}
-                <defs>
-                  <clipPath id={`${uid}-sample${i}`}>
-                    <path d={`M${x - 11} 151v92q0 10 11 10t11-10v-92Z`} />
-                  </clipPath>
-                </defs>
-                <text x={x} y="281" textAnchor="middle">
-                  {which === 0 ? 'A' : 'B'}
-                  {i + 1}
-                </text>
-              </g>
-            );
-          })}
-          {transfer.dispensing && (
-            <path
-              d={`M${transfer.x} ${transfer.y}V${255 - transfer.tubes[transfer.part] * 5}`}
-              stroke="#c6b98d"
-              strokeWidth="2"
-            />
-          )}
-          <g transform={`translate(${transfer.x} ${transfer.y})`}>
-            <path d="M-5-65v51l3 9v5h4v-5l3-9v-51" fill="#eef3e6" stroke="#9eae94" />
-            {transfer.pipette > 0 && (
-              <path
-                d={`M-3 ${-14 - transfer.pipette * 4.9}h6v${transfer.pipette * 4.9}l-2 8h-2l-2-8Z`}
-                fill="#b9b38c"
+            <defs>
+              <clipPath id={`${clipId}-${i}`}>
+                <path d={`M${w * (i === 0 ? 0.57 : 0.82) - 14} 147v83q14 13 28 0v-83Z`} />
+              </clipPath>
+            </defs>
+            {ml > 0 && (
+              <rect
+                data-aliquot-liquid={i}
+                x={w * (i === 0 ? 0.57 : 0.82) - 14}
+                y={237 - ml * 7}
+                width="28"
+                height={ml * 7}
+                fill="#d8cba2"
+                clipPath={`url(#${clipId}-${i})`}
               />
             )}
-            <ellipse cy="-72" rx="9" ry="10" fill="#a2b19a" />
+            <text x={w * (i === 0 ? 0.57 : 0.82)} y="261" textAnchor="middle">
+              {g}
+              {i + 1}
+            </text>
           </g>
-          <text x={w * 0.2} y="281" textAnchor="middle">
-            {transfer.source.toFixed(0)} mL
-          </text>
-          <text x={w / 2} y="304" textAnchor="middle">
-            {s('从40 mL中分取两份10 mL', '2 × 10 mL from 40 mL')}
-          </text>
-        </svg>
-      )}
-      {mode === 1 && (local === 3 || local === 4) && (
-        <svg
-          viewBox={`0 0 ${w} 301`}
-          role="img"
-          aria-label={
-            local === 3
-              ? s('碘液检测残留淀粉', 'Iodine tests remaining starch')
-              : s(
-                  '加热的斐林试剂检测还原物质',
-                  'Heated Fehling reagent detects reducing substances',
-                )
-          }
-        >
-          {local === 4 && (
-            <>
-              <path
-                d={`M${w * 0.3 - 29} 166h${w * 0.4 + 58}v86H${w * 0.3 - 29}Z`}
-                fill="#e2ebe1"
-                stroke="#b9c5b0"
-              />
-              <path
-                d={`M${w * 0.3 - 27} 186h${w * 0.4 + 54}v64H${w * 0.3 - 27}Z`}
-                fill={heated && p > 0.5 ? '#e4dfc4' : '#d5e5dd'}
-              />
-              <rect
-                x={w * 0.3 - 35}
-                y="253"
-                width={w * 0.4 + 70}
-                height="10"
-                rx="5"
-                fill={heated && p > 0.5 ? '#c6a274' : '#aeb8a2'}
-              />
-            </>
-          )}
-          {[0, 1].map((i) => {
-            const x = w * (i === 0 ? 0.3 : 0.7),
-              r = assayResult(d, i === 0, c, heated, p),
-              blue = r.iodine,
-              col =
-                local === 3
-                  ? r.reagent === 0
-                    ? '#d5cba5'
-                    : `rgb(${Math.round(202 - 129 * blue)},${Math.round(171 - 100 * blue)},${Math.round(108 + 2 * blue)})`
-                  : r.reagent
-                    ? '#91b7c5'
-                    : '#d5cba5';
-            return (
-              <g key={i}>
-                {tube(
-                  x,
-                  `${i === 0 ? 'A' : 'B'}${local === 3 ? 1 : 2}`,
-                  r.liquidMl,
-                  col,
-                  local === 4 ? r.precipitate : 0,
-                )}
-                <path
-                  d={`M${x - 5} 53v31l3 7h4l3-7V53`}
-                  fill={local === 3 ? '#b79a61' : '#9ab8bf'}
-                  stroke="#929d85"
-                />
-                {reagentDrops(p)
-                  .filter((z) => z.visible)
-                  .map((z) => (
-                    <circle
-                      key={z.id}
-                      cx={x}
-                      cy={91 + (238 - r.liquidMl * 7.5 - 91) * z.phase}
-                      r="2.6"
-                      fill={local === 3 ? '#a98140' : '#77a8ba'}
-                    />
-                  ))}
-                <text x={x} y="31" textAnchor="middle">
-                  {i === 0 ? s('浸出液组', 'Extract') : s('水组', 'Water')}
-                </text>
-              </g>
-            );
-          })}
-          <text x={w / 2} y="298" textAnchor="middle">
-            {local === 3
-              ? s('碘液：观察残留淀粉', 'Iodine: remaining starch')
-              : heated && p > 0.5
-                ? s('水浴加热 → 观察沉淀', 'Heat → inspect precipitate')
-                : s('先加新配斐林试剂', 'Add fresh Fehling reagent')}
-          </text>
-        </svg>
-      )}
-      {mode === 1 && local === 5 && (
-        <svg
-          viewBox={`0 0 ${w} 302`}
-          role="img"
-          aria-label={s(
-            '还原糖生成后仍可能被微生物利用',
-            'Microbes can consume reducing products after hydrolysis',
-          )}
-        >
-          <text x={w / 2} y="25" textAnchor="middle">
-            {s('淀粉 → 还原性产物 → 利用', 'Starch → sugars → use')}
-          </text>
-          {(() => {
-            const r = starchState(d, true, c);
-            return [r.starch, r.reducing, r.used].map((v, i) => (
-              <g key={i}>
-                <text x="16" y={73 + i * 63}>
-                  {
-                    [
-                      s('残留淀粉', 'Starch'),
-                      s('还原性产物', 'Reducing products'),
-                      s('转入其他去向', 'Other carbon pools'),
-                    ][i]
-                  }
-                </text>
-                <rect
-                  x="16"
-                  y={84 + i * 63}
-                  width={(w - 32) * v}
-                  height="17"
-                  rx="8"
-                  fill={['#8a85a3', '#bdad76', '#9eaf8c'][i]}
-                />
-              </g>
-            ));
-          })()}
-          <text x={w / 2} y="273" textAnchor="middle">
-            {s('碳当量模型 · 不是实测曲线', 'Carbon-equivalent model')}
-          </text>
-          <text x={w / 2} y="300" textAnchor="middle">
-            {assayResult(d, true, c).precipitate > 0
-              ? s('此时可出现砖红沉淀', 'Precipitate can form')
-              : s('糖被利用后可能不显阳性', 'Low sugar can test negative')}
-          </text>
-        </svg>
-      )}
-      {!f.watch && (
-        <div className="bio-soil-controls">
-          <div className="bio-soil-buttons">
-            {[s('落叶对照', 'Litter controls'), s('淀粉分解', 'Starch breakdown')].map((t, i) => (
-              <button
-                key={i}
-                aria-pressed={mode === i}
-                onClick={() => {
-                  setMode(i);
-                  setView(0);
-                }}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <div className="bio-soil-buttons">
-            {Array.from({ length: mode === 0 ? 3 : 6 }, (_, i) => (
-              <button key={i} aria-pressed={local === i} onClick={() => setView(i)}>
-                {s('观察', 'View ')}
-                {i + 1}
-              </button>
-            ))}
-          </div>
-          {!(mode === 0 && local === 2) && !(mode === 1 && local === 5) && (
-            <label>
-              {s('过程位置', 'Progress')}
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step=".001"
-                value={progress}
-                onChange={(e) => setProgress(+e.target.value)}
-              />
-            </label>
-          )}
-          {mode === 0 && local < 2 && (
-            <>
-              <label>
-                {s('处理后残留活性（假设）', 'Residual activity assumption')} {activity.toFixed(2)}
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step=".01"
-                  value={activity}
-                  onChange={(e) => setActivity(+e.target.value)}
-                />
-              </label>
-              <label>
-                {s('共同水分条件', 'Shared moisture')}
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step=".01"
-                  value={moisture}
-                  onChange={(e) => setMoisture(+e.target.value)}
-                />
-              </label>
-            </>
-          )}
-          {mode === 0 && local === 2 && (
-            <>
-              <div className="bio-soil-records">
-                {records.map((v, i) => (
-                  <label key={i}>
-                    {
-                      [
-                        s('处理组初始/g', 'Treated initial/g'),
-                        s('处理组末次/g', 'Treated final/g'),
-                        s('自然组初始/g', 'Natural initial/g'),
-                        s('自然组末次/g', 'Natural final/g'),
-                      ][i]
-                    }
-                    <input
-                      type="number"
-                      min="0"
-                      step=".01"
-                      value={v}
-                      placeholder={s('未记录', 'Missing')}
-                      onChange={(e) => {
-                        const n = [...records];
-                        n[i] = e.target.value;
-                        setRecords(n);
+        ))}
+        <path d={`M${a.x - 5} ${a.y - 87}v65l5 22 5-22v-65Z`} stroke="#6e8981" fill="#f3f6ec" />
+        <path
+          d={`M${a.x - 3} ${a.y - 22 - a.pipette * 5}v${a.pipette * 5}h6v-${a.pipette * 5}Z`}
+          fill="#c6ac6d"
+        />
+        {textLabel(w * 0.2, 261, `${g} ${a.source.toFixed(0)} mL`)}
+      </svg>
+    </>
+  );
+}
+const textLabel = (x: number, y: number, t: string) => (
+  <text x={x} y={y} textAnchor="middle">
+    {t}
+  </text>
+);
+type Settings = {
+  time: number;
+  day: number;
+  use: number;
+  moisture: number;
+  activity: number;
+  heat: boolean;
+  enzyme: boolean;
+  uptake: boolean;
+  group: number;
+};
+export default function BioSoilDecomposition() {
+  const f = useShowcase(),
+    { host, width: w } = useSignalWidth(),
+    s: Say = (z, e) => (browserLocale() === 'en' ? e : z);
+  const [mode, setMode] = useState<number | null>(null),
+    [manual, setManual] = useState<Record<number, Partial<Settings>>>({}),
+    [records, setRecords] = useState(['', '', '', '']);
+  const chapter = f.watch ? f.chapter : (mode ?? f.chapter),
+    duration =
+      (f.chapters[chapter + 1]?.at ?? f.duration) - (f.chapters[chapter]?.at ?? 0) ||
+      soilChapterSeconds[chapter],
+    baseTime = mode === null || f.watch ? f.chapterTime : duration * 0.7;
+  const values = f.watch ? {} : (manual[chapter] ?? {}),
+    time = values.time ?? baseTime,
+    d = soilDirector(chapter, time, browserLocale() === 'en' ? 'en' : 'zh'),
+    day = values.day ?? d.day,
+    use = values.use ?? d.use,
+    moisture = values.moisture ?? d.moisture,
+    activity = values.activity ?? 0.12,
+    heat = values.heat ?? d.heat,
+    enzyme = values.enzyme ?? d.enzyme,
+    uptake = values.uptake ?? d.uptake,
+    group = values.group ?? d.group;
+  const set = (key: keyof Settings, value: Settings[keyof Settings]) => {
+    setMode(chapter);
+    // Pin the entire visible condition on first edit; Watch can reset its own clock.
+    setManual((v) => ({
+      ...v,
+      [chapter]: {
+        time,
+        day,
+        use,
+        moisture,
+        activity,
+        heat,
+        enzyme,
+        uptake,
+        group,
+        [key]: value,
+      },
+    }));
+  };
+  const titles = [
+    s('落叶对照', 'Litter comparison'),
+    s('胞外分解', 'Outside breakdown'),
+    s('记录与预测', 'Records and prediction'),
+    s('浸出液疑问', 'An extract puzzle'),
+    s('分解与吸收', 'Breakdown and uptake'),
+    s('独立分样', 'Separate aliquots'),
+    s('碘液证据', 'Iodine evidence'),
+    s('还原性证据', 'Reducing products'),
+    s('迟测的反例', 'A late-test counterexample'),
+  ];
+  return (
+    <div
+      ref={host}
+      className="bsd20"
+      data-watch={f.watch}
+      data-chapter={chapter}
+      data-shot={d.shot}
+      data-time={time}
+      data-use={use}
+      data-day={day}
+    >
+      <div className="bsd20-stage">
+        {(d.shot === 'pots' || d.shot === 'litter-question') && (
+          <Pots
+            w={w}
+            s={s}
+            days={d.shot === 'litter-question' ? 28 : 28 * d.progress}
+            moisture={moisture}
+            activity={activity}
+            question={d.shot === 'litter-question'}
+          />
+        )}
+        {(d.shot === 'mechanism' || d.shot === 'starch-mechanism') && (
+          <Mechanism
+            w={w}
+            s={s}
+            p={d.progress}
+            enzyme={enzyme}
+            uptake={uptake}
+            starch={chapter === 4}
+          />
+        )}
+        {d.shot === 'records' && (
+          <>
+            <div className="bsd20-note">
+              {f.watch
+                ? s('模型示例，非教材实测', 'Model example, not measurements')
+                : s('我的干质量记录', 'My dry-mass records')}
+            </div>
+            <div className="bsd20-records">
+              {[0, 1].map((i) => {
+                const r = litterRecord(records[i * 2], records[i * 2 + 1]);
+                return (
+                  <section key={i}>
+                    <h3>{i === 0 ? s('处理土', 'Treated soil') : s('自然土', 'Natural soil')}</h3>
+                    <strong>
+                      {f.watch
+                        ? `2.00 → ${(2 * litterState(28, i === 0 ? activity : 1, moisture).remaining).toFixed(2)} g`
+                        : r
+                          ? `${r.initial} → ${r.final} g`
+                          : s('尚未填写', 'No observation yet')}
+                    </strong>
+                    <div
+                      className="bsd20-mass"
+                      style={{
+                        width: `${100 * (f.watch ? litterState(28, i === 0 ? activity : 1, moisture).remaining : r ? soilClamp(r.final / r.initial) : 0)}%`,
                       }}
                     />
-                  </label>
+                  </section>
+                );
+              })}
+            </div>
+            <p className="bsd20-note">
+              {s('统一干燥；空白不等于零', 'Match drying; missing ≠ zero')}
+            </p>
+          </>
+        )}
+        {d.shot === 'moisture' && (
+          <>
+            <div className="bsd20-note">{s('更干燥，会更快吗？', 'Faster when dry?')}</div>
+            <Pots w={w} s={s} days={28} moisture={moisture} activity={1} predict />
+          </>
+        )}
+        {(d.shot === 'puzzle' || d.shot === 'predict') && (
+          <>
+            <Tests w={w} s={s} p={1} day={7} use={1.2} heat={true} kind="fehling" puzzle />
+            <div className="bsd20-question">
+              {s('阴性 = 没有分解？', 'Negative = no breakdown?')}
+            </div>
+          </>
+        )}
+        {d.shot === 'extract' && (
+          <>
+            <div className="bsd20-note">
+              {s('纱布不是除菌滤膜', 'Gauze is not a sterile filter')}
+            </div>
+            <svg
+              viewBox={`0 0 ${w} 240`}
+              role="img"
+              aria-label={s(
+                '纱布带走粗土，浸出液中保留微生物和胞外酶',
+                'Gauze removes coarse soil; microbes and enzymes can remain in the extract',
+              )}
+            >
+              <path
+                d={`M${w / 2 - 67} 69v154h134V69`}
+                fill="#e6ece4"
+                stroke="#9cae9f"
+                strokeWidth="2"
+              />
+              <path d={`M${w / 2 - 65} 134h130v87h-130Z`} fill="#d3c299" fillOpacity=".6" />
+              <g transform={`translate(${w / 2} ${-82 * d.progress})`}>
+                <path
+                  d="M-48 86Q-60 163 0 163T48 86"
+                  fill="#dbc9a4"
+                  fillOpacity=".65"
+                  stroke="#9a906f"
+                />
+                <path
+                  d="M-40 100L25 151m-17-63 29 42m-71-8 51 35m-48-12 60-45M-13 157l53-39"
+                  stroke="#a9a285"
+                  fill="none"
+                />
+                {[0, 1, 2].map((i) => (
+                  <circle key={i} cx={-22 + i * 22} cy={128 + (i % 2) * 12} r="12" fill="#8a755a" />
                 ))}
-              </div>
-              <label>
-                {s('时间、温湿度与重复记录', 'Timing, conditions and replicates')}
-                <textarea value={notes} onChange={(e) => setNotes(e.target.value)} />
-              </label>
+              </g>
+              {[0, 1, 2].map((i) => (
+                <g key={i} transform={`translate(${w / 2 - 40 + i * 39} ${182 + (i % 2) * 18})`}>
+                  <rect x="-9" y="-4" width="18" height="8" rx="4" fill="#6d8a73" />
+                  <path d="M-11 15q5-10 11 0l-3 4Z" fill="#be966a" />
+                </g>
+              ))}
+            </svg>
+            <div className="bsd20-note">
+              {s('细胞、胞外酶、溶解物', 'Cells, enzymes and solutes')}
+            </div>
+          </>
+        )}
+        {d.shot === 'pair' && (
+          <>
+            <div className="bsd20-note">
+              {s('等量淀粉 · 同温同时间', 'Equal starch · same time and temperature')}
+            </div>
+            <svg
+              viewBox={`0 0 ${w} 228`}
+              role="img"
+              aria-label={s(
+                'A加入土壤浸出液，B加等体积水',
+                'A receives extract; B receives equal water',
+              )}
+            >
+              {[0, 1].map((i) => {
+                const x = w * (i === 0 ? 0.26 : 0.74);
+                return (
+                  <g key={i}>
+                    <path
+                      d={`M${x - 44} 76v123h88V76`}
+                      fill="#edf1e9"
+                      stroke="#a5b1a1"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d={`M${x - 42} ${197 - (10 + 30 * d.progress) * 2}h84V197h-84Z`}
+                      fill={i === 0 ? '#cfc09a' : '#dce4d7'}
+                    />
+                    <text x={x} y="223" textAnchor="middle">
+                      {i === 0 ? s('A 浸出液', 'A Extract') : s('B 水', 'B Water')}
+                    </text>
+                    <text x={x} y="37" textAnchor="middle">
+                      +30 mL
+                    </text>
+                    {d.progress > 0 && d.progress < 1 && (
+                      <path
+                        d={`M${x} 48V${197 - (10 + 30 * d.progress) * 2}`}
+                        stroke={i === 0 ? '#b9a374' : '#b2ced0'}
+                        strokeWidth="4"
+                        fill="none"
+                      />
+                    )}
+                  </g>
+                );
+              })}
+            </svg>
+          </>
+        )}
+        {d.shot === 'split' && <Split w={w} s={s} p={d.progress} group={group} />}
+        {(d.shot === 'iodine' || d.shot === 'fehling') && (
+          <Tests w={w} s={s} p={d.progress} day={day} use={use} heat={heat} kind={d.shot} />
+        )}
+        {d.shot === 'pools' && (
+          <Budget w={w} s={s} day={day} use={use} enzyme={enzyme} uptake={uptake} />
+        )}
+      </div>
+      {!f.watch && (
+        <div className="bsd20-controls">
+          <label>
+            {s('观察主题', 'View')}
+            <select value={chapter} onChange={(e) => setMode(Number(e.target.value))}>
+              {titles.map((v, i) => (
+                <option key={i} value={i}>
+                  {v}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Range
+            label={s('过程位置', 'Process position')}
+            value={time}
+            min={0}
+            max={duration}
+            step={0.1}
+            onChange={(v) => set('time', v)}
+          />
+          {chapter < 3 && (
+            <>
+              <Range
+                label={s('共同水分条件', 'Shared moisture')}
+                value={moisture}
+                min={0}
+                max={1}
+                step={0.01}
+                onChange={(v) => set('moisture', v)}
+              />
+              <Range
+                label={s('处理后相对活性', 'Treated activity')}
+                value={activity}
+                min={0}
+                max={1}
+                step={0.01}
+                onChange={(v) => set('activity', v)}
+              />
             </>
           )}
-          {mode === 1 && (local === 1 || local === 2) && (
-            <div className="bio-soil-buttons">
+          {(chapter === 1 || chapter === 4 || chapter === 8) && (
+            <div className="bsd20-buttons">
+              <button aria-pressed={enzyme} onClick={() => set('enzyme', !enzyme)}>
+                {s('胞外酶切', 'Outside cleavage')}
+              </button>
+              <button aria-pressed={uptake} onClick={() => set('uptake', !uptake)}>
+                {s('后续利用', 'Further use')}
+              </button>
+            </div>
+          )}
+          {chapter >= 6 && (
+            <>
+              <Range
+                label={s('培养时间/天', 'Incubation days')}
+                value={day}
+                min={0}
+                max={14}
+                step={0.1}
+                onChange={(v) => set('day', v)}
+              />
+              <Range
+                label={s('产物利用系数', 'Product-use coefficient')}
+                value={use}
+                min={0}
+                max={1.2}
+                step={0.01}
+                onChange={(v) => set('use', v)}
+              />
+            </>
+          )}
+          {chapter === 7 && (
+            <button aria-pressed={heat} onClick={() => set('heat', !heat)}>
+              {s('水浴加热', 'Water-bath heating')}
+            </button>
+          )}
+          {chapter === 5 && (
+            <div className="bsd20-buttons">
               {['A', 'B'].map((v, i) => (
-                <button key={i} aria-pressed={group === i} onClick={() => setGroup(i)}>
-                  {v} · {i === 0 ? s('浸出液', 'Extract') : s('蒸馏水', 'Water')}
+                <button key={v} aria-pressed={group === i} onClick={() => set('group', i)}>
+                  {v}
                 </button>
               ))}
             </div>
           )}
-          {mode === 1 && local >= 3 && (
-            <>
-              <label>
-                {s('培养时间/天', 'Incubation days')} {days}
-                <input
-                  type="range"
-                  min="0"
-                  max="14"
-                  step="1"
-                  value={days}
-                  onChange={(e) => setDays(+e.target.value)}
-                />
-              </label>
-              <label>
-                {s('产物利用系数（假设）', 'Product-use coefficient')} {consume.toFixed(2)}
-                <input
-                  type="range"
-                  min="0"
-                  max="1.2"
-                  step=".01"
-                  value={consume}
-                  onChange={(e) => setConsume(+e.target.value)}
-                />
-              </label>
-              {local === 4 && (
-                <button aria-pressed={heat} onClick={() => setHeat(!heat)}>
-                  {s('水浴加热', 'Water-bath heating')}
-                </button>
-              )}
-            </>
+          {chapter === 2 && (
+            <div className="bsd20-record-inputs">
+              {records.map((v, i) => (
+                <label key={i}>
+                  {
+                    [
+                      s('处理土初始/g', 'Treated initial/g'),
+                      s('处理土末次/g', 'Treated final/g'),
+                      s('自然土初始/g', 'Natural initial/g'),
+                      s('自然土末次/g', 'Natural final/g'),
+                    ][i]
+                  }
+                  <input
+                    type="number"
+                    min="0"
+                    step=".01"
+                    value={v}
+                    onChange={(e) =>
+                      setRecords((a) => a.map((x, j) => (j === i ? e.target.value : x)))
+                    }
+                  />
+                </label>
+              ))}
+            </div>
           )}
           <details>
-            <summary>{s('处理、检测与模型限制', 'Treatments, tests and limits')}</summary>
+            <summary>{s('模型与证据的界限', 'Model and evidence limits')}</summary>
             <p>
               {s(
-                '教材示例以60°C处理1h尽可能减弱微生物作用，不能保证无菌或理化性质完全不变。落叶形态与活性参数是假设，不代替长期重复记录。淀粉案例为A加30mL浸出液、B加30mL水，约20°C放7天；此图选等量10mL淀粉糊，总40mL，再各取20mL分成两份10mL。碘液与斐林试剂不加到同一份中；后者新配后加热。浸出液自身色素、还原物质和残留酶也可能干扰，额外空白与初始检测能加强结论。糖可以被继续利用，不保证第7天必显砖红色。',
-                'The textbook’s 60°C, 1 h treatment reduces microbial effects; it does not guarantee sterility or unchanged chemistry. Litter shape and activity parameters are illustrative. A receives 30 mL extract and B 30 mL water at about 20°C for 7 days. This reconstruction chooses 10 mL equal starch paste, then splits 20 mL into separate 10 mL aliquots. Iodine and fresh heated Fehling reagent test separate aliquots. Extract pigments, reducing substances and extracellular enzymes can interfere; blanks and initial tests strengthen inference. Products can be consumed, so day 7 need not yield a positive sugar test.',
+                '所有趋势和色深均为教学模型，不是教材的实测结果。C1—C6为同一批碳份额，不是六个游离碳原子；胞外多步切分和细胞内反应合并，不完整模拟呼吸。其他碳库包含细胞成分、代谢产物和CO₂等，不作固定分配。24标记是有限样本，连续百分比来自独立方程。60°C处理1h不保证无菌，残留酶也可继续作用。水分极端只表示本模型中的好氧限制，不断言自然土壤完全不分解。',
+                'All trends and color intensities are teaching models, not textbook measurements. C1–C6 label carbon portions, not six free atoms. Multiple extracellular and intracellular reactions are grouped; respiration is not simulated in full. Other pools include cell material, metabolites and CO₂ with no fixed allocation. The 24 markers are a finite sample; percentages use independent equations. Treatment at 60°C for 1 h does not guarantee sterility; residual enzymes can remain active. Moisture extremes limit this aerobic model, not all decomposition in real soil.',
               )}
             </p>
           </details>

@@ -1,5 +1,9 @@
-# Curved motion lab
+# Curved-motion evidence — retained content and geometry
 
-Required2 §5.1, three separate paths: segmented arc/ink trace, magnetic steel ball (ahead vs side), finned dart (two angles). Six chapters165s. Horizontal apparatus top view; projectile side view. Scientific model: continuous arc exit tangents; force-integrated induced dipole B² gradient with solid rolling inertia; drag-free projectile with explicitly idealized fast alignment, first tip-contact landing. Magnetic nearfield stops rather than simulating unsupported capture. Six tests include conservative energy, zero-force control, no curvature under collinear force, tangent continuity and tip contact.
+Scope: candidate only, all existing six bilingual cue records, measured chapter starts, duration and textbook windows remain byte-identical. Root owns integration, global/static verification and existing audio.
 
-All own files include packet variants, translations, bilingual MDX, cover. Parent owns global integration, narration and visual/playback QA.
+Track one steel ball through the channel and tangent exit, then compare the removed segment. The channel edges are offset from the centre trajectory with clearance for the rendered radius. Magnetic paths retain the original RK4 potential-gradient dynamics and rolling inertia. Pause before near-field capture to compare force/velocity directions, then advance to the original stopped boundary. Dart shape uses the same length and heading as the independent first-tip-contact model.
+
+Phone: independently mapped280×230 canvas (254×209 visible at320),18px SVG text renders above16px. Desktop560×230 uses separate positions/scales. Scope-specific CSS only, no global changes. Watch follows measured speech; Explore inherits current fields until a user chooses a value, keeps manual choices and never leaks them back to Watch.
+
+Validation: exact original numerical output probes, independent boundary/benchmark tests, real mounted React continuity, complete Showcase/Base CSS native stills and controls. Technical clock traversal, author still inspection, transcript/timing review, final-site acceptance and subjective listening are recorded separately. Sources and actual read page images are in checks/preparation.json and checks/sources.

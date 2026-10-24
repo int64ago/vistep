@@ -1,325 +1,475 @@
-import { useId, useState } from 'react';
-import { t } from '../../i18n';
+import { useEffect, useId, useMemo, useState } from 'react';
+import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
-import { arcExit, magneticRolling, dartFlight } from '../../models/curved-motion-lab';
+import {
+  arcExit,
+  magneticRolling,
+  dartFlight,
+  curvedFilmState,
+  type CurvedState,
+} from '../../models/curved-motion-lab';
 import '../../styles/curved-motion-lab.css';
+function useNarrow() {
+  const [n, set] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const m = window.matchMedia('(max-width:640px)'),
+      u = () => set(m.matches);
+    u();
+    m.addEventListener('change', u);
+    return () => m.removeEventListener('change', u);
+  }, []);
+  return n;
+}
 export default function CurvedMotionLab() {
   const film = useShowcase(),
+    en = browserLocale() === 'en',
+    say = (a: string, b: string) => (en ? b : a),
+    narrow = useNarrow(),
+    w = narrow ? 280 : 560,
+    h = 230,
     id = useId().replace(/:/g, ''),
-    [mode, setMode] = useState(
-      film.variant?.includes('magnetic')
-        ? 'magnet'
-        : film.variant?.includes('dart')
-          ? 'dart'
-          : 'track',
+    authored = curvedFilmState(film.chapter, film.chapterTime, en ? 'en' : 'zh');
+  const [manual, setManual] = useState<Partial<CurvedState>>({});
+  const s = film.watch ? authored : { ...authored, ...manual };
+  const mag = useMemo(
+      () => (s.kind === 'magnet' ? magneticRolling(s.time, s.side, s.strength) : null),
+      [s.kind, s.time, s.side, s.strength],
     ),
-    [time, setTime] = useState(1),
-    [exit, setExit] = useState('A'),
-    [side, setSide] = useState('side'),
-    [angle, setAngle] = useState(36),
-    c = film.chapter,
-    p = film.chapterProgress,
-    kind = film.watch ? (c < 2 ? 'track' : c < 4 ? 'magnet' : 'dart') : mode,
-    exitAngle = (film.watch ? c === 1 : exit === 'B') ? -Math.PI / 6 : 0,
-    lateral = film.watch ? c === 3 : side === 'side',
-    dartAngle = ((film.watch ? (c === 5 ? 55 : 25) : angle) * Math.PI) / 180,
-    physical = film.watch
-      ? kind === 'track'
-        ? Math.min(1, p / 0.78) * 3.15
-        : kind === 'magnet'
-          ? Math.min(1, p / 0.8) * 1.65
-          : Math.min(1, p / 0.8) * dartFlight(0, dartAngle).duration
-      : time,
-    arc = arcExit(physical, exitAngle),
-    mag = kind === 'magnet' ? magneticRolling(physical, lateral) : null,
-    dart = dartFlight(physical, dartAngle);
-  const track = (radius: number, end: number) =>
-    Array.from({ length: 41 }, (_, i) => {
-      const a = -Math.PI / 2 + ((end + Math.PI / 2) * i) / 40;
-      return `${i ? 'L' : 'M'}${105 + radius * Math.cos(a) * 105} ${176 - radius * Math.sin(a) * 105}`;
-    }).join(' ');
-  const ap = { x: 105 + arc.x * 105, y: 176 - arc.y * 105 },
-    dp = { x: 40 + dart.x * 92, y: 270 - dart.y * 92 };
+    arc = arcExit(Math.min(3.15, s.time), s.exitAngle),
+    dart = dartFlight(s.time, s.angle),
+    time = s.kind === 'track' ? arc.time : s.kind === 'magnet' ? mag!.time : dart.time;
+  const set = (v: Partial<CurvedState>) => setManual({ ...s, time, ...v }),
+    maxTime = useMemo(
+      () =>
+        s.kind === 'track'
+          ? 3.15
+          : s.kind === 'magnet'
+            ? magneticRolling(1.65, s.side, s.strength).time
+            : dart.duration,
+      [s.kind, s.side, s.strength, dart.duration],
+    );
+  const sc =
+      s.kind === 'track'
+        ? narrow
+          ? 90
+          : 100
+        : s.kind === 'magnet'
+          ? narrow
+            ? 165
+            : 275
+          : narrow
+            ? 75
+            : 110,
+    ox =
+      s.kind === 'track'
+        ? narrow
+          ? 78
+          : 180
+        : s.kind === 'magnet'
+          ? narrow
+            ? 27
+            : 90
+          : narrow
+            ? 27
+            : 75,
+    oy = s.kind === 'track' ? 125 : s.kind === 'magnet' ? 166 : 205,
+    X = (x: number) => ox + x * sc,
+    Y = (y: number) => oy - y * sc;
+  const track = (radius: number, end: number, start = -Math.PI / 2) =>
+      Array.from({ length: 61 }, (_, i) => {
+        const a = start + ((end - start) * i) / 60;
+        return `${i ? 'L' : 'M'}${X(radius * Math.cos(a))} ${Y(radius * Math.sin(a))}`;
+      }).join(' '),
+    arcTrace = (end: number, t: number) =>
+      Array.from({ length: 81 }, (_, i) => {
+        const a = arcExit((t * i) / 80, end);
+        return `${i ? 'L' : 'M'}${X(a.x)} ${Y(a.y)}`;
+      }).join(' '),
+    dartTrace = (angle: number, t: number) =>
+      Array.from({ length: 81 }, (_, i) => {
+        const a = dartFlight((t * i) / 80, angle);
+        return `${i ? 'L' : 'M'}${X(a.x)} ${Y(a.y)}`;
+      }).join(' ');
+  const Arrow = ({
+    x,
+    y,
+    vx,
+    vy,
+    length,
+    color,
+    label,
+  }: {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    length: number;
+    color: string;
+    label?: string;
+  }) => {
+    const n = Math.hypot(vx, vy);
+    if (n < 1e-12) return null;
+    const dx = (vx / n) * length,
+      dy = (-vy / n) * length;
+    return (
+      <g data-vector={label}>
+        <path d={`M${x} ${y} l${dx} ${dy}`} stroke={color} strokeWidth="2.5" />
+        <path
+          d={`M${x + dx - (5 * dx) / length - (3 * dy) / length} ${y + dy - (5 * dy) / length + (3 * dx) / length} L${x + dx} ${y + dy} L${x + dx - (5 * dx) / length + (3 * dy) / length} ${y + dy - (5 * dy) / length - (3 * dx) / length}`}
+          stroke={color}
+          strokeWidth="2"
+          fill="none"
+        />
+      </g>
+    );
+  };
   return (
-    <section className="curved-motion-lab">
-      <header>
-        <p>
-          {t(
-            kind === 'track'
-              ? arc.released
-                ? '离开轨道后，印迹沿出口切线延伸'
-                : '让沾有印泥的钢球沿弧形轨道滚动'
-              : kind === 'magnet'
-                ? lateral
-                  ? '把磁铁移到侧面，速度方向也发生变化'
-                  : '磁铁在正前方，球加速却仍沿直线'
-                : '飞镖的指向帮助追踪瞬时速度方向',
-          )}
-        </p>
+    <section
+      className="cv20"
+      data-watch={film.watch}
+      data-kind={s.kind}
+      data-time={time}
+      data-requested-time={s.time}
+      data-exit={s.exitAngle}
+      data-side={s.side}
+      data-angle={s.angle}
+      data-strength={s.strength}
+      data-view={s.view}
+    >
+      <header className="cv20-head">
         <span>
-          {t(
-            kind === 'track'
-              ? '水平俯视 · 印迹实验'
-              : kind === 'magnet'
-                ? '水平俯视 · 磁铁与钢球'
-                : '侧视 · 带尾翼飞镖',
+          {say(
+            s.kind === 'track' ? '出口与切线' : s.kind === 'magnet' ? '力与速度' : '飞镖与切线',
+            s.kind === 'track'
+              ? 'Exit and tangent'
+              : s.kind === 'magnet'
+                ? 'Force and velocity'
+                : 'Dart and tangent',
           )}
         </span>
+        <strong>t = {time.toFixed(2)} s</strong>
       </header>
-      <div className="curved-motion-stage">
-        <svg
-          viewBox="0 0 360 315"
-          role="img"
-          aria-label={t(
-            kind === 'track'
-              ? '分段弧形轨道约束钢球，出口外的红色印迹沿切线'
-              : kind === 'magnet'
-                ? '磁铁位置改变钢球受力方向，轨迹由力学模型积分'
-                : '带纸翼的飞镖沿抛物线飞行，杆轴随速度方向转动',
-          )}
-        >
-          <defs>
-            <radialGradient id={`${id}steel`} cx="30%" cy="25%">
-              <stop stopColor="#e4eadc" />
-              <stop offset=".45" stopColor="#b5c8b1" />
-              <stop offset="1" stopColor="#7d9e88" />
-            </radialGradient>
-          </defs>
-          {kind === 'track' ? (
-            <>
-              <rect
-                x="20"
-                y="15"
-                width="320"
-                height="286"
-                rx="18"
-                fill="#f2f0e5"
-                fillOpacity=".65"
-              />
-              <path d={track(0.7, 0)} stroke="#d7dfcc" strokeWidth="12" fill="none" opacity=".35" />
-              {[0, 1, 2]
-                .filter((i) => exitAngle === 0 || i < 2)
-                .map((i) => {
-                  const a0 = -Math.PI / 2 + (i * Math.PI) / 6 + 0.008,
-                    a1 = -Math.PI / 2 + ((i + 1) * Math.PI) / 6 - 0.008;
-                  return (
-                    <path
-                      key={i}
-                      d={Array.from({ length: 17 }, (_, j) => {
-                        const a = a0 + ((a1 - a0) * j) / 16;
-                        return `${j ? 'L' : 'M'}${105 + 0.7 * Math.cos(a) * 105} ${176 - 0.7 * Math.sin(a) * 105}`;
-                      }).join(' ')}
-                      fill="none"
-                      stroke="#bac9b0"
-                      strokeWidth="13"
-                    />
-                  );
-                })}
-              <path d={track(0.65, exitAngle)} stroke="#95ad91" fill="none" strokeWidth="1.5" />
-              <path d={track(0.75, exitAngle)} stroke="#95ad91" fill="none" strokeWidth="1.5" />
+      <svg
+        className="cv20-art"
+        viewBox={`0 0 ${w} ${h}`}
+        role="img"
+        aria-label={say(
+          '同一物体的轨迹、瞬时速度与约束或合力方向',
+          'One object: trajectory, velocity, constraint and force',
+        )}
+      >
+        <defs>
+          <radialGradient id={id + 'steel'} cx="28%" cy="25%">
+            <stop stopColor="#edf1e5" />
+            <stop offset=".45" stopColor="#b6c8b0" />
+            <stop offset="1" stopColor="#7c9c87" />
+          </radialGradient>
+        </defs>
+        {s.kind === 'track' && (
+          <>
+            <rect x="12" y="13" width={w - 24} height="199" rx="18" fill="#f0eee2" opacity=".65" />
+            {s.compare && (
               <path
-                d={Array.from({ length: 75 }, (_, i) => arcExit((physical * i) / 74, exitAngle))
-                  .map((s, i) => `${i ? 'L' : 'M'}${105 + s.x * 105} ${176 - s.y * 105}`)
-                  .join(' ')}
-                stroke="#c59983"
+                d={arcTrace(0, 3.15)}
+                stroke="#c4cabc"
                 strokeWidth="2"
                 fill="none"
+                strokeDasharray="5 5"
               />
-              <circle cx={ap.x} cy={ap.y} r="5.2" fill={`url(#${id}steel)`} />
-              {arc.released && (
-                <path
-                  d={`M${ap.x + (arc.vx / 0.6) * 10} ${ap.y - (arc.vy / 0.6) * 10}l${(arc.vx / 0.6) * 35} ${(-arc.vy / 0.6) * 35}`}
-                  stroke="#8da980"
-                  strokeWidth="2"
-                />
-              )}
-              <circle
-                cx={105 + 0.7 * Math.cos(exitAngle) * 105}
-                cy={176 - 0.7 * Math.sin(exitAngle) * 105}
-                r="10"
-                stroke="#c2b48c"
+            )}
+            <path
+              d={track(0.7, s.exitAngle)}
+              stroke="#c8d4bd"
+              strokeWidth={0.13 * sc}
+              fill="none"
+            />
+            {[0.635, 0.765].map((r) => (
+              <path
+                key={r}
+                d={track(r, s.exitAngle)}
+                stroke="#93ac8b"
+                strokeWidth="1.5"
                 fill="none"
-                strokeDasharray="3 4"
               />
-            </>
-          ) : kind === 'magnet' && mag ? (
-            <>
-              <rect
-                x="20"
-                y="28"
-                width="320"
-                height="252"
-                rx="19"
-                fill="#eff1e7"
-                fillOpacity=".7"
-              />
-              <path d="M40 213H313" stroke="#d6dfc9" strokeDasharray="4 6" />
-              <g transform={`translate(${40 + mag.magnet.x * 210} ${213 - mag.magnet.y * 210})`}>
-                <path d="M-20-11H0V11H-20Q-24 11-24 6V-6Q-24-11-20-11Z" fill="#c5a386" />
-                <path d="M0-11H20Q24-11 24-6V6Q24 11 20 11H0Z" fill="#9fb79d" />
-                <circle
-                  r={0.27 * 210}
-                  stroke="#c7ceb8"
-                  strokeDasharray="2 6"
-                  fill="none"
-                  opacity=".55"
-                />
-              </g>
-              <path
-                d={mag.trace
-                  .map((q, i) => `${i ? 'L' : 'M'}${40 + q.x * 210} ${213 - q.y * 210}`)
-                  .join(' ')}
-                fill="none"
-                stroke="#b69877"
-                strokeWidth="2"
-              />
-              <circle
-                cx={40 + mag.x * 210}
-                cy={213 - mag.y * 210}
-                r="5.5"
-                fill={`url(#${id}steel)`}
-              />
-              <path
-                d={`M${40 + mag.x * 210} ${213 - mag.y * 210}l${(mag.vx / Math.hypot(mag.vx, mag.vy)) * 36} ${(-mag.vy / Math.hypot(mag.vx, mag.vy)) * 36}`}
-                stroke="#8ca77f"
-                strokeWidth="2"
-              />
-              <path
-                d={`M${40 + mag.x * 210} ${213 - mag.y * 210}l${(mag.ax / Math.hypot(mag.ax, mag.ay)) * 28} ${(-mag.ay / Math.hypot(mag.ax, mag.ay)) * 28}`}
-                stroke="#b8996e"
-                strokeWidth="2"
-                strokeDasharray="3 3"
-              />
-            </>
-          ) : (
-            <>
-              <path d="M20 271H340V293H20Z" fill="#d9d3b7" />
-              <path d="M20 271H340" stroke="#b9b891" strokeWidth="2" />
-              <path
-                d={Array.from({ length: 65 }, (_, i) => dartFlight((dart.time * i) / 64, dartAngle))
-                  .map((q, i) => `${i ? 'L' : 'M'}${40 + q.x * 92} ${270 - q.y * 92}`)
-                  .join(' ')}
-                fill="none"
-                stroke="#bbc9aa"
-                strokeWidth="1.8"
-              />
-              {[0.15, 0.35, 0.55, 0.75].map((f, i) =>
-                f * dart.duration < dart.time ? (
-                  <g
+            ))}
+            {[1, 2]
+              .filter((i) => s.exitAngle === 0 || i === 1)
+              .map((i) => {
+                const a = -Math.PI / 2 + (i * Math.PI) / 6;
+                return (
+                  <path
                     key={i}
-                    transform={`translate(${40 + dartFlight(f * dart.duration, dartAngle).x * 92} ${270 - dartFlight(f * dart.duration, dartAngle).y * 92}) rotate(${(-dartFlight(f * dart.duration, dartAngle).heading * 180) / Math.PI})`}
-                    opacity=".23"
-                  >
-                    <path d="M-12 0H12M-11-5l6 5-6 5" stroke="#a59b76" strokeWidth="1.5" />
-                  </g>
-                ) : null,
-              )}
-              <g
-                transform={`translate(${dp.x} ${dp.y}) rotate(${(-dart.heading * 180) / Math.PI})`}
-              >
-                <path d="M-12 0H9" stroke="#b6a27b" strokeWidth="2.7" />
-                <path d="M9-1.5l4 1.5-4 1.5" fill="#8a9f8c" />
-                <path d="M-12 0l-2-7 10 7-10 7Z" fill="#b6c4a3" stroke="#95ab8c" strokeWidth=".7" />
-              </g>
-            </>
-          )}
-        </svg>
-      </div>
-      <div className="curved-motion-legend">
+                    d={`M${X(0.635 * Math.cos(a))} ${Y(0.635 * Math.sin(a))} L${X(0.765 * Math.cos(a))} ${Y(0.765 * Math.sin(a))}`}
+                    stroke="#edf0e5"
+                    strokeWidth="2"
+                  />
+                );
+              })}
+            <path d={arcTrace(s.exitAngle, time)} stroke="#b98d77" strokeWidth="2" fill="none" />
+            <circle data-ball cx={X(arc.x)} cy={Y(arc.y)} r={0.05 * sc} fill={`url(#${id}steel)`} />
+            <Arrow
+              x={X(arc.x)}
+              y={Y(arc.y)}
+              vx={arc.vx}
+              vy={arc.vy}
+              length={33}
+              color="#78986f"
+              label="v"
+            />
+            {s.view === 'vectors' && (
+              <path
+                d={`M${X(0.7 * Math.cos(s.exitAngle))} ${Y(0.7 * Math.sin(s.exitAngle))} L${X(0)} ${Y(0)}`}
+                stroke="#b8c5ad"
+                strokeDasharray="3 5"
+              />
+            )}
+            <text x={X(0.7 * Math.cos(s.exitAngle)) + 13} y={Y(0.7 * Math.sin(s.exitAngle)) + 17}>
+              {s.exitAngle === 0 ? 'A' : 'B'}
+            </text>
+            {s.compare && (
+              <text x="20" y="35">
+                {say('虚线：原记录 A', 'Dashed: prior A')}
+              </text>
+            )}
+            <text x={w - 18} y="221" textAnchor="end">
+              {arc.released
+                ? say('离轨后直行', 'Straight after exit')
+                : say('轨道改变方向', 'Track turns velocity')}
+            </text>
+          </>
+        )}
+        {s.kind === 'magnet' && mag && (
+          <>
+            <rect x="12" y="15" width={w - 24} height="184" rx="18" fill="#eef1e5" />
+            <path d={`M${ox} ${oy} H${w - 22}`} stroke="#cbd6be" strokeDasharray="4 6" />
+            <g transform={`translate(${X(mag.magnet.x)} ${Y(mag.magnet.y)})`}>
+              <path d="M-18 -9 H0 V9 H-18 Q-22 9 -22 5 V-5 Q-22 -9 -18 -9Z" fill="#c2a287" />
+              <path d="M0 -9 H18 Q22 -9 22 -5 V5 Q22 9 18 9 H0Z" fill="#9fb495" />
+              <circle r={0.27 * sc} stroke="#c5ceb8" strokeDasharray="3 6" fill="none" />
+            </g>
+            <path
+              d={mag.trace.map((a, i) => `${i ? 'L' : 'M'}${X(a.x)} ${Y(a.y)}`).join(' ')}
+              stroke="#b29872"
+              strokeWidth="2"
+              fill="none"
+            />
+            <circle data-ball cx={X(mag.x)} cy={Y(mag.y)} r="5" fill={`url(#${id}steel)`} />
+            <Arrow
+              x={X(mag.x)}
+              y={Y(mag.y)}
+              vx={mag.vx}
+              vy={mag.vy}
+              length={34}
+              color="#78986f"
+              label="v"
+            />
+            <Arrow
+              x={X(mag.x)}
+              y={Y(mag.y)}
+              vx={mag.ax}
+              vy={mag.ay}
+              length={27}
+              color="#ae8e60"
+              label="F"
+            />
+            <text x={w / 2} y="221" textAnchor="middle">
+              {s.strength === 0
+                ? 'F = 0'
+                : mag.stopped
+                  ? say('远场边界 · 停止记录', 'Far-field limit · hold')
+                  : say(
+                      s.side ? '力与速度不共线' : '力与速度共线',
+                      s.side ? 'F and v not collinear' : 'F and v collinear',
+                    )}
+            </text>
+          </>
+        )}
+        {s.kind === 'dart' && (
+          <>
+            <path d={`M12 ${oy + 1} H${w - 12} V223 H12 Z`} fill="#ded9c0" />
+            <path data-ground d={`M12 ${oy + 1} H${w - 12}`} stroke="#b4b58f" strokeWidth="2" />
+            {s.compare && (
+              <path
+                d={dartTrace((25 * Math.PI) / 180, dartFlight(0, (25 * Math.PI) / 180).duration)}
+                stroke="#c9d0bc"
+                strokeWidth="1.5"
+                strokeDasharray="5 5"
+                fill="none"
+              />
+            )}
+            <path d={dartTrace(s.angle, time)} stroke="#b4c5a4" strokeWidth="2" fill="none" />
+            {[0.2, 0.4, 0.6, 0.8]
+              .filter((f) => f * dart.duration < time)
+              .map((f) => {
+                const a = dartFlight(f * dart.duration, s.angle),
+                  len = (a.length * sc) / 2;
+                return (
+                  <path
+                    key={f}
+                    d={`M${X(a.x) - len * Math.cos(a.heading)} ${Y(a.y) + len * Math.sin(a.heading)} L${X(a.x) + len * Math.cos(a.heading)} ${Y(a.y) - len * Math.sin(a.heading)}`}
+                    stroke="#b3a07a"
+                    strokeWidth="2"
+                    opacity=".35"
+                  />
+                );
+              })}
+            <g
+              data-dart
+              transform={`translate(${X(dart.x)} ${Y(dart.y)}) rotate(${(-dart.heading * 180) / Math.PI})`}
+            >
+              <path
+                d={`M${(-dart.length * sc) / 2} 0 H${(dart.length * sc) / 2 - 3}`}
+                stroke="#ab966b"
+                strokeWidth="2.8"
+              />
+              <path
+                data-tip
+                d={`M${(dart.length * sc) / 2 - 4} -1.5 L${(dart.length * sc) / 2} 0 L${(dart.length * sc) / 2 - 4} 1.5 Z`}
+                fill="#809a86"
+              />
+              <path
+                d={`M${(-dart.length * sc) / 2} 0 l-2 -6 9 6 -9 6Z`}
+                fill="#b6c6a4"
+                stroke="#92ab89"
+              />
+            </g>
+            {s.view === 'vectors' && !dart.landed && (
+              <>
+                <Arrow
+                  x={X(dart.x)}
+                  y={Y(dart.y)}
+                  vx={dart.vx}
+                  vy={dart.vy}
+                  length={32}
+                  color="#78986f"
+                  label="v"
+                />
+                <Arrow
+                  x={X(dart.x)}
+                  y={Y(dart.y)}
+                  vx={0}
+                  vy={-1}
+                  length={29}
+                  color="#ae8e60"
+                  label="F"
+                />
+              </>
+            )}
+            <text x="18" y="28">
+              α = {((s.angle * 180) / Math.PI).toFixed(0)}°
+            </text>
+            {s.compare && (
+              <text x={w - 17} y="28" textAnchor="end">
+                {say('虚线：25°', 'Dashed:25°')}
+              </text>
+            )}
+          </>
+        )}
+      </svg>
+      <div className="cv20-readout">
         <span>
           <i />
-          {t('速度方向')}
+          {say('速度 v', 'Velocity v')}
         </span>
-        {kind === 'magnet' && (
+        {s.kind !== 'track' && (
           <span>
-            <i />
-            {t('合力方向')}
+            <i className="cv20-force" />
+            {say('合力 F', 'Net force F')}
           </span>
         )}
-        <span>
-          {t('模型时间')}{' '}
-          {(kind === 'magnet' ? mag!.time : kind === 'dart' ? dart.time : physical).toFixed(2)} s
-        </span>
       </div>
-      <p className="curved-motion-cause">
-        {t(
-          kind === 'track'
-            ? '更换出口，飞出的方向随该点的切线改变。'
-            : kind === 'magnet'
-              ? '合力与速度不共线时，速度的方向才会改变。'
-              : '理想尾翼迅速对齐速度，杆轴近似沿轨迹切线；不是沿着合力方向。',
-        )}
-      </p>
       {!film.watch && (
-        <div className="curved-motion-controls">
+        <div className="cv20-controls">
           <Segments
-            label={t('实验路径')}
-            value={mode}
-            onChange={(v) => {
-              setMode(v);
-              setTime(0.4);
-            }}
+            label={say('实验路径', 'Experimental path')}
+            value={s.kind}
+            onChange={(v) =>
+              set({
+                kind: v,
+                time: Math.min(
+                  s.time,
+                  v === 'track' ? 3.15 : v === 'magnet' ? 1.65 : dart.duration,
+                ),
+              })
+            }
             options={[
-              { value: 'track', label: t('弧形轨道') },
-              { value: 'magnet', label: t('磁铁与钢球') },
-              { value: 'dart', label: t('飞镖') },
+              { value: 'track', label: say('弧形轨道', 'Arc track') },
+              { value: 'magnet', label: say('磁铁与钢球', 'Magnet and ball') },
+              { value: 'dart', label: say('飞镖', 'Dart') },
             ]}
           />
-          {kind === 'track' ? (
+          {s.kind === 'track' ? (
             <Segments
-              label={t('轨道出口')}
-              value={exit}
-              onChange={setExit}
+              label={say('轨道出口', 'Track exit')}
+              value={s.exitAngle === 0 ? 'A' : 'B'}
+              onChange={(v) => set({ exitAngle: v === 'A' ? 0 : -Math.PI / 6, compare: v === 'B' })}
               options={[
-                { value: 'A', label: t('完整轨道') },
-                { value: 'B', label: t('拆去末段') },
+                { value: 'A', label: say('完整轨道', 'Complete track') },
+                { value: 'B', label: say('拆去末段', 'Remove last segment') },
               ]}
             />
-          ) : kind === 'magnet' ? (
-            <Segments
-              label={t('磁铁位置')}
-              value={side}
-              onChange={setSide}
-              options={[
-                { value: 'front', label: t('正前方') },
-                { value: 'side', label: t('侧面') },
-              ]}
-            />
+          ) : s.kind === 'magnet' ? (
+            <>
+              <Segments
+                label={say('磁铁位置', 'Magnet position')}
+                value={s.side ? 'side' : 'front'}
+                onChange={(v) => set({ side: v === 'side' })}
+                options={[
+                  { value: 'front', label: say('正前方', 'Directly ahead') },
+                  { value: 'side', label: say('侧面', 'To the side') },
+                ]}
+              />
+              <Range
+                label={say('磁作用示例强度', 'Example magnetic strength')}
+                value={s.strength / 0.00004}
+                min={0}
+                max={1}
+                step={0.1}
+                onChange={(v) => set({ strength: v * 0.00004 })}
+              />
+            </>
           ) : (
             <Range
-              label={t('投射角')}
-              value={angle}
+              label={say('投射角', 'Launch angle')}
+              value={Number(((s.angle * 180) / Math.PI).toFixed(3))}
               min={15}
               max={65}
               step={1}
               unit="°"
-              onChange={setAngle}
+              onChange={(v) => set({ angle: (v * Math.PI) / 180 })}
             />
           )}
           <Range
-            label={t('模型时间')}
-            value={Math.min(
-              time,
-              kind === 'track' ? 3.15 : kind === 'magnet' ? 1.65 : dart.duration,
-            )}
+            label={say('模型时间', 'Model time')}
+            value={time}
             min={0}
-            max={kind === 'track' ? 3.15 : kind === 'magnet' ? 1.65 : dart.duration}
+            max={maxTime}
             step={0.01}
             unit="s"
-            onChange={setTime}
+            onChange={(v) => set({ time: v })}
+          />
+          <Segments
+            label={say('局部矢量', 'Local vectors')}
+            value={s.view}
+            onChange={(v) => set({ view: v })}
+            options={[
+              { value: 'scene', label: say('轨迹', 'Trajectory') },
+              { value: 'vectors', label: say('方向比较', 'Compare directions') },
+            ]}
           />
         </div>
       )}
-      <p className="curved-motion-note">
-        {t(
-          kind === 'magnet'
-            ? '磁力采用诱导偶极远场示意，接近磁铁时停止记录；不模拟吸附碰撞，也不把力线当轨迹。'
-            : kind === 'dart'
-              ? '飞镖平动忽略气阻，方向采用尾翼快速稳定的教学近似；不模拟真实转动滞后。'
-              : '水平面上忽略滚动阻力，出口位置与瞬时速度连续；印迹由真实计算轨迹生成。',
-        )}
-      </p>
+      <details className="cv20-note">
+        <summary>{say('模型与记录的范围', 'Models and record limits')}</summary>
+        <p>
+          {say(
+            '轨道出口的坐标和速度连续，水平面忽略滚动阻力。虚线是同一模型的对照，不是另一次实测。磁力从诱导偶极远场势能求梯度，并计入实心球滚动惯量；接近磁铁时停止记录，不模拟吸附。飞镖平动忽略气阻，尾翼方向迅速对齐速度是教学近似；尖端首次接地时停止。',
+            'Track position and velocity are continuous at release; horizontal rolling resistance is omitted. Dashed traces are model comparisons, not measurements. Magnetic motion integrates an induced-dipole potential gradient with solid-sphere rolling inertia and stops before near-field capture. The dart ignores drag and assumes rapid tail alignment; motion stops at first tip contact.',
+          )}
+        </p>
+      </details>
     </section>
   );
 }

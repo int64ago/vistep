@@ -1,18 +1,48 @@
 ---
 import { arcExit } from '../../models/curved-motion-lab';
-const path = Array.from({ length: 70 }, (_, i) => arcExit((i * 3) / 69))
-  .map((s, i) => `${i ? 'L' : 'M'}${110 + s.x * 110} ${130 - s.y * 110}`)
-  .join(' ');
+const scale = 83,
+  y = 139;
+const panels = [
+  { x: 85, angle: 0, color: '#b89272' },
+  { x: 270, angle: -Math.PI / 6, color: '#8fa57e' },
+].map((p) => {
+  const state = arcExit(3, p.angle);
+  const trace = Array.from({ length: 70 }, (_, i) => arcExit((i * 3) / 69, p.angle))
+    .map((s, i) => `${i ? 'L' : 'M'}${p.x + s.x * scale} ${y - s.y * scale}`)
+    .join(' ');
+  const track = Array.from(
+    { length: 50 },
+    (_, i) => -Math.PI / 2 + ((p.angle + Math.PI / 2) * i) / 49,
+  )
+    .map(
+      (a, i) =>
+        `${i ? 'L' : 'M'}${p.x + 0.7 * Math.cos(a) * scale} ${y - 0.7 * Math.sin(a) * scale}`,
+    )
+    .join(' ');
+  return { ...p, state, trace, track };
+});
 ---
 
 <svg viewBox="0 0 400 230" fill="none" aria-hidden="true">
-  <path d="M110 207A77 77 0 0 0 187 130" stroke="#bdcbb2" stroke-width="17"></path>
-  <path d={path} stroke="#c49b83" stroke-width="2"></path><circle
-    cx="187"
-    cy="52"
-    r="6"
-    fill="#a3bba1"></circle>
-  <path d="M187 40V24m-5 7 5-7 5 7" stroke="#91a980" stroke-width="2"></path>
-  <path d="M263 172Q302 138 337 186" stroke="#c2cdb1" stroke-width="2"></path>
-  <path d="M295 147l26 6m-24-4-7-6 1 8" stroke="#b59b71" stroke-width="2"></path>
+  {
+    panels.map((p) => (
+      <g>
+        <>
+          <path d={p.track} stroke="#bdcbb2" stroke-width="12" />
+          <path d={p.trace} stroke={p.color} stroke-width="2" />
+          <circle cx={p.x + p.state.x * scale} cy={y - p.state.y * scale} r="5" fill={p.color} />
+          <path
+            d={`M${p.x + 0.7 * Math.cos(p.angle) * scale} ${y - 0.7 * Math.sin(p.angle) * scale}L${p.x} ${y}`}
+            stroke="#c3cdb8"
+            stroke-dasharray="4 5"
+          />
+          <path
+            d={`M${p.x + p.state.x * scale} ${y - p.state.y * scale}l${p.state.vx * 20} ${-p.state.vy * 20}`}
+            stroke={p.color}
+            stroke-width="2"
+          />
+        </>
+      </g>
+    ))
+  }
 </svg>

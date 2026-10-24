@@ -1,29 +1,54 @@
+---
+import { discLoop } from '../../models/eddy-current-lab';
+const loops = [discLoop(8, 0.3, 1), discLoop(8, 0.3, -1)];
+---
+
 <svg viewBox="0 0 360 270" fill="none" aria-hidden="true">
-  <path d="M180 144V249M123 249H237" stroke="#a5b899" stroke-width="6" stroke-linecap="round"
+  <defs>
+    <radialGradient id="eddy20-cover-copper"
+      ><stop stop-color="#ecdabb"></stop><stop offset="1" stop-color="#c7a275"
+      ></stop></radialGradient
+    >
+    <linearGradient id="eddy20-cover-magnet"
+      ><stop stop-color="#b9cdbb"></stop><stop offset="1" stop-color="#8ea995"
+      ></stop></linearGradient
+    >
+  </defs>
+  <path d="M165 147V240M118 240H212" stroke="#a3b5a5" stroke-width="6" stroke-linecap="round"
   ></path>
-  <circle cx="180" cy="132" r="92" fill="#caae77" stroke="#ab8c55"></circle>
-  <circle cx="180" cy="132" r="82" stroke="#ddc493"></circle>
+  <ellipse cx="165" cy="139" rx="112" ry="65" fill="#b38d65"></ellipse>
+  <ellipse cx="165" cy="132" rx="112" ry="65" fill="url(#eddy20-cover-copper)" stroke="#ac8961"
+  ></ellipse>
+  <path d="M62 130H267M112 83L216 181M113 181L216 83" stroke="#ead8b8" stroke-width="2"></path>
+  <path d="M247 104H310V159H247V148H296V116H247Z" fill="url(#eddy20-cover-magnet)" stroke="#91aa97"
+  ></path>
+  <rect x="235" y="104" width="38" height="12" rx="4" fill="#8daf9c"></rect>
+  <rect x="235" y="148" width="38" height="11" rx="4" fill="#c6a07c"></rect>
+  <path d="M214 115V148M234 115V148" stroke="#7f9a88" stroke-opacity=".55" stroke-dasharray="3 4"
+  ></path>
   {
-    [0, 60, 120, 180, 240, 300].map((a) => (
-      <path d="M180 132V61" transform={`rotate(${a} 180 132)`} stroke="#eddbb7" stroke-width="2" />
-    ))
+    loops.map((loop, i) => {
+      const x = 194 + i * 52,
+        dx = loop.current > 0 ? -13 : 13;
+      return (
+        <g data-equivalent-current={loop.current}>
+          <>
+            <ellipse cx={x} cy="132" rx="19" ry="23" stroke="#a57955" stroke-width="2.7" />
+            <path
+              d={`M${x - dx / 2} 109h${dx}m${-Math.sign(dx) * 5} -4l${Math.sign(dx) * 5} 4l${-Math.sign(dx) * 5} 4`}
+              stroke="#a57955"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </>
+        </g>
+      );
+    })
   }
-  <circle cx="180" cy="132" r="12" fill="#dbe3cf" stroke="#9aaa8e"></circle>
-  <path d="M256 91H297V172H256V151H275V112H256Z" fill="#a5bea8" stroke="#879e84"></path>
-  <rect x="245" y="91" width="24" height="21" rx="3" fill="#9db9a3"></rect><rect
-    x="245"
-    y="151"
-    width="24"
-    height="21"
-    rx="3"
-    fill="#c2a06b"></rect>
-  <ellipse
-    cx="248"
-    cy="132"
-    rx="10"
-    ry="23"
-    stroke="#8f7950"
-    stroke-width="2"
-    stroke-dasharray="4 4"></ellipse>
-  <path d="M106 49q-29 15-33 46m-4-8 4 8 8-5" stroke="#8da57e" stroke-width="2"></path>
+  <circle cx="165" cy="132" r="8" fill="#b7c8b8"></circle>
+  <path
+    d="M91 70Q56 83 48 112m-3-9 3 9 9-4"
+    stroke="#8ba58e"
+    stroke-width="3"
+    stroke-linecap="round"></path>
 </svg>

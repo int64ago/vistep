@@ -49,3 +49,32 @@ describe('curved motion experimental paths', () => {
     expect(end.vy).toBeLessThan(0);
   });
 });
+import { curvedFilmState } from './curved-motion-lab';
+it('aligns actual release with the spoken exit and preserves the same speed', () => {
+  for (const l of ['zh', 'en'] as const) {
+    const t = l === 'zh' ? 9.97 : 8.23,
+      a = curvedFilmState(0, t - 0.001, l),
+      b = curvedFilmState(0, t + 0.001, l);
+    expect(arcExit(a.time).released).toBe(false);
+    expect(arcExit(b.time).released).toBe(true);
+    expect(Math.hypot(arcExit(a.time).vx, arcExit(a.time).vy)).toBeCloseTo(0.6, 14);
+  }
+});
+it('keeps the dart airborne at its explanatory apex and uses physical first contact', () => {
+  for (const l of ['zh', 'en'] as const) {
+    const s = curvedFilmState(5, 8, l),
+      d = dartFlight(s.time, s.angle);
+    expect(d.vy).toBeCloseTo(0, 12);
+    expect(d.landed).toBe(false);
+    const end = curvedFilmState(5, 26, l);
+    expect(dartFlight(end.time, end.angle).tipY).toBeCloseTo(0, 12);
+  }
+});
+it('rejects nonfinite and numerical-overflow inputs instead of rendering invalid geometry', () => {
+  for (const f of [arcExit, magneticRolling, dartFlight])
+    for (const x of [NaN, Infinity, -Infinity]) expect(() => f(x)).toThrow();
+  expect(() => arcExit(1e308, 0, 1e308, 1)).toThrow();
+  expect(() => magneticRolling(1, true, 1e308)).toThrow();
+  expect(() => dartFlight(1, 0.5, 1e308)).toThrow();
+  expect(() => curvedFilmState(1, NaN)).toThrow();
+});

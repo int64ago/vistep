@@ -1,25 +1,39 @@
-<h2 id="understand">Magnetic fields can brake or drive</h2>
+<h2 id="understand">How can a field change motion without contact?</h2>
 
-Disturb a sensitive meter and its pointer oscillates. Short its terminals: the moving winding becomes a closed circuit, and induced current produces a torque opposing motion. The pointer settles sooner. The energy came from the initial disturbance, not from an added power source.
+A disturbed meter pointer oscillates. Shorting its terminals makes it settle sooner, without adding a power supply: the original mechanical disturbance supplied the energy. A disc slows near magnetic poles, and a magnet falls slowly inside an intact aluminium tube. Both suggest the same account: motion supplies energy, and induced currents turn some of it into heat.
 
-A rotating magnet supplies continuing mechanical input. Induced current creates a torque on the aluminium frame, which begins to follow. Some slip remains between frame and rotating field. Without relative motion, this effective model would have no driving torque.
+Follow one circuit. Having magnetic flux is not sufficient for sustained induction; the flux must change with time. A closed conducting path is also required for the emf to drive current in this resistive approximation. An open circuit can still have induced emf without the additional electromagnetic damping.
 
-A copper disc slowing near magnetic poles, a magnet falling through an aluminium tube, and a spring magnet oscillating above a closed coil each reveal the same energy transfer through a different apparatus. Electrical conduction can convert mechanical energy to heat without magnetic attraction or physical contact.
+<div className="formula">ε = −dΦ/dt, I = ε/R</div>
 
-<h2 id="try">Preserve the initial conditions</h2>
+The disc close-up follows two field edges on the same moving surface. Flux increases at entry and decreases at exit. Opposite local currents together produce braking torque. Reversing the field also reverses the currents, so braking does not become acceleration. As the disc slows, flux changes more slowly, reducing current and braking torque.
 
-- Compare open and shorted meter terminals at the same initial pointer angle.
-- Preserve the disc's initial speed and move the magnet away or near its edge.
-- Compare a complete aluminium tube with a longitudinally slit one.
-- Keep spring displacement fixed and open or close the coil.
-- Reverse the rotating magnet and inspect frame direction and slip.
+<h2 id="try">Predict a changed condition</h2>
 
-<h2 id="deeper">Each apparatus has its own motion equation</h2>
+- **Reverse only the disc's field.** Predict the torque direction, then inspect the current and torque signs.
+- **Cut a longitudinal slit in the pipe.** Complete circulating paths break, so the magnet falls faster. Local return paths can remain beside the slit; not every eddy disappears.
+- **Hold the magnet inside an intact pipe.** External support balances gravity. Flux remains but stops changing. After neglected transients, emf, sustained current and Joule-heating power are zero.
+- **Open only the spring apparatus's coil.** Keep the spring, magnet and initial displacement fixed, then compare additional damping with background losses.
 
-<div className="formula">F = −cv; braking torque τ = −bω; driving torque τ = k(Ω−ω)</div>
+The aluminium frame raises a different question: how can a rotating magnet drive it without contact? Track both angles. Their relative rotation changes flux and produces current and torque. Driving the magnet continually requires external power, divided between mechanical transfer to the frame and slip-related heating. Exact synchronism is an instantaneous counterfactual: no slip means no sustained induced drive. It does not imply permanent synchronous rotation against friction.
 
-These are effective low-speed models. Disc speed follows its torque equation rather than prescribed animation. Reversing the field does not reverse braking. Tube motion balances gravity and velocity drag; the magnet stops at the catch position one metre below. A slit reduces large circulating paths while retaining weak residual damping. The spring model is linearized about equilibrium. The frame uses an average slip-torque relation, separating mechanical output from slip heating.
+<h2 id="deeper">One calculation links current, force and energy</h2>
 
-Coefficients illustrate mechanisms rather than fit particular instruments. The models omit field-mesh solutions, skin effects, saturation and contact friction. Current loops indicate paths, not calculated field contours. Initial oscillation or rotation energy dissipates; the rotating magnet instead receives continuing external mechanical power.
+Use position or angle q as a coordinate, and write the local flux gradient as K = dΦ/dq. The same coupling calculates emf, current and generalized force; the opposing arrow is not assigned independently.
 
-Source: [OpenStax: Eddy currents](https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents). Textbook locations: Elective Book Two, pages 38–39.
+<div className="formula">ε = −Kq̇, I = ε/R, F = KI, Fq̇ = −I²R</div>
+
+For rotation, F represents torque. Two local equivalent disc loops reproduce the disc's low-speed braking coefficient; they are not a solved eddy-current field mesh. The meter uses an effective linear coupling for a moving coil in a radial field; the spring coil is linearized over a limited displacement range. The frame's single-loop flux is instantaneous, whereas its motion and power use cycle averages. They must not be read as the same instantaneous torque.
+
+The intact pipe uses a point-dipole approximation inside a long, thin conducting tube. Drawn rings are fixed samples; A identifies the same ring as the adjacent current readout. These rings are not the integration mesh. The magnet symbol is enlarged for visibility, and its drawn dimensions are not numerical inputs. Integrating ring resistance and flux gradients gives the effective overall drag. Smaller effective damping represents residual local eddies in the slit pipe. Energy lost when the magnet reaches the catch is recorded separately from electrical heating.
+
+<details>
+<summary>Apparatus, assumptions and sources</summary>
+
+The film compares motion before moving closer to currents and energy. Exploration changes the apparatus, view, circuit, field direction and calculation time. First entry inherits the current film state; manual choices persist, while returning to the film restores its independent director.
+
+All values are explanatory, not fitted textbook measurements or data recovered from experimental images. The low-speed quasistatic resistive model omits self-inductance transients, skin effects, magnetic saturation, pipe-end effects and finite-magnet corrections. Zero current describes the sustained state after changing flux stops; a real circuit can have a brief decaying transient.
+
+The original textbook locations remain pages 38–39 of PEP High-School Physics, Selective Compulsory Book 2. Pages 34–40 were read for context; all five textbook entries and their order remain. Technical sources include [MIT's Electromagnetic Fields and Energy §11.5](https://web.mit.edu/6.013_book/www/chapter11/11.5.html), [§11.7](https://web.mit.edu/6.013_book/www/chapter11/11.7.html), [Georgia Tech's falling-magnet theoretical models](https://phys2232.physics.gatech.edu/labs/lab7/models/models.html), and [Donoso, Ladera and Martín's conducting-pipe study](https://doi.org/10.1119/1.3531964). The latter includes finite-magnet and experimental corrections; this point-dipole illustration does not reproduce that experiment's precise fitted results.
+
+</details>

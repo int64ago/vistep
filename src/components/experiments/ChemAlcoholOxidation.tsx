@@ -6,190 +6,567 @@ import {
   copperAlcoholCycle,
   dichromateAlcohol,
   alcoholOxidationDirector,
+  ethanolAtomAccount,
 } from '../../models/chem-alcohol-oxidation';
 import '../../styles/chem-alcohol-oxidation.css';
+type Direction = ReturnType<typeof alcoholOxidationDirector>;
+type Say = (zh: string, en: string) => string;
 export default function ChemAlcoholOxidation() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
-    say = (a: string, b: string) => (en ? b : a);
-  const [view, setView] = useState(film.variant === 'acid-dichromate' ? 'chromium' : 'copper'),
-    [time, setTime] = useState(1.75),
-    [progress, setProgress] = useState(0.65),
-    [ethanol, setEthanol] = useState(3),
-    [oxidant, setOxidant] = useState(2),
-    [air, setAir] = useState('yes');
-  const d = film.watch
-    ? alcoholOxidationDirector(film.chapter, film.chapterProgress)
-    : {
-        chapter: view === 'chromium' ? 4 : view === 'atoms' ? 3 : 2,
-        progress,
-        cycleTime: time,
-        oxidationProgress: progress,
-      };
-  const cu = copperAlcoholCycle(d.cycleTime, film.watch || air === 'yes'),
-    cr = dichromateAlcohol(d.oxidationProgress, film.watch ? 3 : ethanol, film.watch ? 2 : oxidant);
-  const labels = [
-    ['铜表面在空气中变黑', 'Copper blackens in air'],
-    ['黑色表面恢复铜色', 'The copper colour returns'],
-    ['同一份铜反复循环', 'The same copper cycles'],
-    ['两个氢离开，羰基形成', 'Two hydrogens leave'],
-    ['橙色逐渐转为绿色', 'Orange shifts towards green'],
-    ['氧化可继续到羧酸', 'Oxidation can continue'],
+    say: Say = (a, b) => (en ? b : a);
+  const auto = alcoholOxidationDirector(film.chapter, film.chapterProgress, en ? 'en' : 'zh');
+  const [manual, setManual] = useState<Direction | null>(null);
+  const d = film.watch ? auto : (manual ?? auto);
+  const change = (patch: Partial<Direction>) => setManual({ ...d, ...patch });
+  const cu = copperAlcoholCycle(d.cycleTime, d.air, true, d.initialOxide, d.ethanolUnits);
+  const cr = dichromateAlcohol(d.oxidationProgress, d.ethanol, d.oxidant, d.acid);
+  const hidden = d.shot === 'prediction' && !d.answer;
+  const titles = [
+    ['铜在空气中变黑', 'Copper blackens in air'],
+    ['氧化铜变回铜', 'CuO becomes copper'],
+    ['铜循环，氧会用完', 'Copper cycles; oxygen runs out'],
+    ['原子与电子的账', 'Atoms and electrons'],
+    ['铬接受了电子', 'Chromium accepts electrons'],
+    ['继续氧化到乙酸', 'Oxidation to ethanoic acid'],
   ];
   return (
-    <section className="chem-alcox">
-      <div className="chem-alcox-title">{say(labels[d.chapter][0], labels[d.chapter][1])}</div>
-      {d.chapter < 3 ? (
-        <>
-          <CopperBench m={cu} />
-          <div className="chem-alcox-equation">
-            {d.chapter === 0 ? (
-              '2Cu + O₂ → 2CuO'
-            ) : d.chapter === 1 ? (
-              <>
-                C₂H₅OH + CuO
-                <br />→ CH₃CHO + Cu + H₂O
-              </>
+    <section
+      className="chem-alcox"
+      data-alcox-chapter={d.chapter}
+      data-shot={d.shot}
+      data-answer={hidden ? 'hidden' : 'visible'}
+    >
+      <div className="chem-alcox-title">{say(...(titles[d.chapter] as [string, string]))}</div>
+      {d.chapter < 3 && (
+        <div className="chem-alcox-copper-layout">
+          <div className="chem-alcox-apparatus">
+            {d.chapter === 2 && d.shot === 'prediction' ? (
+              <CopperInventory m={cu} say={say} />
             ) : (
+              <CopperBench m={cu} en={en} />
+            )}
+            <div className="chem-alcox-note">
+              {d.chapter === 2 && d.shot === 'prediction'
+                ? `${say('起始CuO', 'Initial CuO')}: ${d.initialOxide.toFixed(2)} · ${d.air ? say('补入空气', 'Fresh air') : say('切断空气', 'No fresh air')}`
+                : d.chapter === 0
+                  ? say('空气：氧 · 灯焰：热', 'Air: oxygen · Flame: heat')
+                  : d.chapter === 1
+                    ? say('气味是辅助观察', 'Odour: supporting evidence')
+                    : say('同一份铜反复使用', 'The same copper cycles')}
+            </div>
+          </div>
+          <div className="chem-alcox-account">
+            {d.chapter === 0 && <div className="chem-alcox-equation">2Cu + O₂ → 2CuO</div>}
+            {d.chapter === 1 && (
+              <div className="chem-alcox-equation">
+                <span>CH₃CH₂OH + CuO</span>
+                <span>→ CH₃CHO + Cu + H₂O</span>
+              </div>
+            )}
+            {d.chapter === 2 && d.shot === 'cancel' && (
+              <CycleLedger cancel={d.ledgerCancelled} say={say} />
+            )}
+            {d.chapter === 2 && d.shot === 'cycle' && (
+              <div className="chem-alcox-equation">Cu ⇄ CuO</div>
+            )}
+            {d.chapter === 2 && d.shot === 'prediction' && (
               <>
-                Cu ⇄ CuO
-                <br />
-                <span>
-                  {say('累计乙醛', 'Cumulative ethanal')}: {cu.aldehyde.toFixed(2)}
-                </span>
+                <div className="chem-alcox-question">
+                  {say(
+                    '这份氧库存，能支持多少乙醛？',
+                    'How much ethanal can this oxygen supply support?',
+                  )}
+                </div>
+                {!hidden && (
+                  <div className="chem-alcox-result" data-copper-yield={cu.aldehyde}>
+                    <span>
+                      {say('乙醛累计', 'Ethanal formed')} <b>{cu.aldehyde.toFixed(2)}</b>
+                    </span>
+                    <span>
+                      {say('CuO剩余', 'CuO left')} <b>{cu.oxide.toFixed(2)}</b>
+                    </span>
+                  </div>
+                )}
+                <div className="chem-alcox-note">
+                  {hidden
+                    ? say('先预测，再看氧的库存', 'Predict first. Then follow the stored oxygen.')
+                    : cu.ethanolRemaining < 0.001
+                      ? say('乙醇用完，产物不再增加', 'Ethanol exhausted; no further product')
+                      : d.air
+                        ? say('补入氧，可再生氧化层', 'Fresh oxygen can restore the oxide')
+                        : cu.oxide < 0.001
+                          ? say('Cu/CuO路径：氧已耗尽', 'Cu/CuO oxygen: exhausted')
+                          : say('氧化层里的氧仍可反应', 'Stored oxide oxygen reacts')}
+                </div>
               </>
             )}
+            {!film.watch && !hidden && d.chapter < 2 && (
+              <div className="chem-alcox-surface" data-copper={cu.copper} data-oxide={cu.oxide}>
+                <span>Cu {cu.copper.toFixed(2)}</span>
+                <span>CuO {cu.oxide.toFixed(2)}</span>
+              </div>
+            )}
+            {d.chapter === 2 && d.shot !== 'prediction' && (
+              <div className="chem-alcox-result" data-copper-yield={cu.aldehyde}>
+                <span>
+                  {say('铜元素', 'Copper total')} <b>1.00</b>
+                </span>
+                <span>
+                  {say('乙醛累计', 'Ethanal formed')} <b>{cu.aldehyde.toFixed(2)}</b>
+                </span>
+              </div>
+            )}
           </div>
+        </div>
+      )}
+      {d.chapter === 3 && (
+        <div className="chem-alcox-atom-layout">
+          {d.shot === 'atoms' && <AlcoholAtoms p={d.atomProgress} say={say} />}
+          {d.shot === 'electrons' && (
+            <div className="chem-alcox-electron-account" data-electron-equivalents="2">
+              <div>
+                <span>CH₃CH₂OH → CH₃CHO</span>
+                <strong>C: −I → +I</strong>
+              </div>
+              <div
+                className="chem-alcox-electron-path"
+                aria-label={say(
+                  '两份电子当量从乙醇计入铜的还原',
+                  'Two electron equivalents link ethanol oxidation to copper reduction',
+                )}
+              >
+                <i />
+                <i />
+                <span>2e⁻ ↓</span>
+              </div>
+              <div>
+                <span>CuO → Cu</span>
+                <strong>Cu: +II → 0</strong>
+              </div>
+            </div>
+          )}
           <div className="chem-alcox-note">
-            {d.chapter === 2
-              ? say('铜总量始终为1示意份', 'Total copper stays at 1 model unit')
-              : d.chapter === 0
-                ? 'Cu → CuO'
-                : 'CuO → Cu'}
+            {d.shot === 'electrons'
+              ? say(
+                  '形式氧化数 · 非微观路径',
+                  'Formal oxidation numbers · not a microscopic pathway',
+                )
+              : say('净原子对应 · 非反应路径', 'Net atom mapping · not a reaction pathway')}
           </div>
-        </>
-      ) : null}
-      {d.chapter === 3 ? (
+        </div>
+      )}
+      {d.chapter === 4 && (
+        <div className="chem-alcox-chromium-layout">
+          <ChromiumTube color={cr.color} p={d.oxidationProgress} en={en} />
+          <div className="chem-alcox-account">
+            <div
+              className="chem-alcox-cr-count"
+              data-chromium-total={2 * cr.dichromate + cr.chromiumIII}
+            >
+              <span>
+                Cr(VI)<b>{(2 * cr.dichromate).toFixed(2)}</b>
+              </span>
+              <span>
+                Cr(III)<b>{cr.chromiumIII.toFixed(2)}</b>
+              </span>
+            </div>
+            <div className="chem-alcox-note">
+              {say('总量4份 · 每个Cr接受3e⁻', 'Total: 4 Cr · 3e⁻ per Cr')}
+            </div>
+            <div className="chem-alcox-note">
+              {say('颜色不能单独鉴定乙酸', 'Colour alone cannot identify the acid')}
+            </div>
+          </div>
+        </div>
+      )}
+      {d.chapter === 5 && (
         <>
-          <AlcoholAtoms p={d.progress} />
-          <div className="chem-alcox-equation">CH₃CH₂OH → CH₃CHO</div>
-          <div className="chem-alcox-note">{say('净原子去向示意', 'Net atom accounting')}</div>
+          {d.shot !== 'prediction' && (
+            <div className="chem-alcox-ladder">
+              {[
+                ['CH₃CH₂OH', '−I'],
+                ['CH₃CHO', '+I'],
+                ['CH₃COOH', '+III'],
+              ].map(([formula, ox], i) => (
+                <div className="chem-alcox-rung" key={formula} data-organic-stage={i}>
+                  {i > 0 && (
+                    <span className="chem-alcox-step">{i === 1 ? '−2H' : '＋O'} · −2e⁻</span>
+                  )}
+                  <strong>{formula}</strong>
+                  <span>C: {ox}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          {d.shot !== 'prediction' ? (
+            <div
+              className="chem-alcox-match"
+              data-total-electrons={d.matchVisible ? '12' : undefined}
+            >
+              {d.matchVisible ? (
+                <>
+                  <span>
+                    3 EtOH × 4e⁻ = <b>12e⁻</b>
+                  </span>
+                  <span>
+                    2 Cr₂O₇²⁻ × 6e⁻ = <b>12e⁻</b>
+                  </span>
+                </>
+              ) : (
+                <>
+                  {d.ethanolEquivalentsVisible && (
+                    <span data-unit-electrons="ethanol">EtOH → {say('给出', 'supplies')} 4e⁻</span>
+                  )}
+                  {d.dichromateEquivalentsVisible && (
+                    <span data-unit-electrons="dichromate">
+                      Cr₂O₇²⁻ → {say('接受', 'accepts')} 6e⁻
+                    </span>
+                  )}
+                </>
+              )}
+            </div>
+          ) : (
+            <div className="chem-alcox-acid-prediction">
+              <div className="chem-alcox-note" data-initial-account="acid">
+                EtOH {d.ethanol.toFixed(2)} · Cr₂O₇²⁻ {d.oxidant.toFixed(2)} · H⁺{' '}
+                {d.acid.toFixed(0)}
+              </div>
+              <div className="chem-alcox-question">
+                {d.ethanol === 6 && d.oxidant === 2 && d.acid === 16
+                  ? say(
+                      '乙醇加倍，氧化剂与酸不变。乙酸也加倍吗？',
+                      'Double the ethanol, keeping oxidant and acid fixed. Twice as much acid product?',
+                    )
+                  : say(
+                      '谁先用完，限制乙酸的总量？',
+                      'Which reactant runs out and limits the acid product?',
+                    )}
+              </div>
+              {hidden ? (
+                <div className="chem-alcox-note">
+                  {say('先用电子配比预测', 'Predict from the electron ratio')}
+                </div>
+              ) : (
+                <div className="chem-alcox-result" data-acid-yield={cr.aceticAcid}>
+                  <span>
+                    {say('乙酸', 'Acid product')} <b>{cr.aceticAcid.toFixed(2)}</b>
+                  </span>
+                  <span>
+                    {say('剩余乙醇', 'Ethanol left')} <b>{cr.ethanol.toFixed(2)}</b>
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+          <div className="chem-alcox-note">{say('净反应模型终点', 'Net reaction endpoint')}</div>
         </>
-      ) : null}
-      {d.chapter === 4 ? (
-        <>
-          <ChromiumTube color={cr.color} p={d.progress} />
-          <div className="chem-alcox-pair">
-            <span>
-              Cr(VI)<b>{(2 * cr.dichromate).toFixed(2)}</b>
-            </span>
-            <span>
-              Cr(III)<b>{cr.chromiumIII.toFixed(2)}</b>
-            </span>
-          </div>
-          <div className="chem-alcox-note">
-            {say('铬原子示意份数', 'Chromium atom model units')}
-          </div>
-        </>
-      ) : null}
-      {d.chapter === 5 ? (
-        <>
-          <div className="chem-alcox-route">
-            <div>CH₃CH₂OH</div>
-            <span>↓ −2H</span>
-            <div>CH₃CHO</div>
-            <span>↓ +O</span>
-            <div>CH₃COOH</div>
-          </div>
-          <div className="chem-alcox-transfer">
-            <span>3C₂H₅OH → 3CH₃COOH</span>
-            <b>12e⁻</b>
-            <span>2Cr₂O₇²⁻ → 4Cr³⁺</span>
-          </div>
-        </>
-      ) : null}
-      {!film.watch ? (
+      )}
+      {!film.watch && (
         <div className="chem-alcox-controls">
           <Segments
             label={say('观察', 'View')}
-            value={view}
-            onChange={setView}
+            value={String(d.chapter)}
+            onChange={(v) => setManual(alcoholOxidationDirector(Number(v), 0.5, en ? 'en' : 'zh'))}
             options={[
-              { value: 'copper', label: say('铜循环', 'Copper cycle') },
-              { value: 'atoms', label: say('原子去向', 'Atoms') },
-              { value: 'chromium', label: say('酸性氧化', 'Acid oxidation') },
+              { value: '2', label: say('铜循环', 'Copper cycle') },
+              { value: '3', label: say('原子与电子', 'Atoms and electrons') },
+              { value: '4', label: say('铬的颜色', 'Chromium colour') },
+              { value: '5', label: say('氧化终点', 'Oxidation endpoint') },
             ]}
           />
-          {view === 'copper' ? (
+          {d.chapter < 3 ? (
             <>
               <Range
                 label={say('循环进度', 'Cycle progress')}
-                value={time}
-                onChange={setTime}
+                value={d.cycleTime}
                 min={0}
                 max={4}
                 step={0.01}
+                onChange={(v) => change({ cycleTime: v, answer: true })}
               />
               <Segments
-                label={say('空气供氧', 'Air oxygen')}
-                value={air}
-                onChange={setAir}
+                label={say('空气补氧', 'Fresh air')}
+                value={d.air ? 'yes' : 'no'}
+                onChange={(v) =>
+                  change({
+                    chapter: 2,
+                    shot: 'prediction',
+                    air: v === 'yes',
+                    answer: false,
+                    cycleTime: 0,
+                  })
+                }
                 options={[
-                  { value: 'yes', label: say('有', 'Present') },
-                  { value: 'no', label: say('无', 'Absent') },
+                  { value: 'yes', label: say('补入', 'Supplied') },
+                  { value: 'no', label: say('切断', 'Cut off') },
                 ]}
               />
+              <Range
+                label={say('起始CuO份数', 'Initial CuO units')}
+                value={d.initialOxide}
+                min={0}
+                max={1}
+                step={0.1}
+                onChange={(v) =>
+                  change({
+                    chapter: 2,
+                    shot: 'prediction',
+                    initialOxide: v,
+                    answer: false,
+                    cycleTime: 0,
+                  })
+                }
+              />
+              <Range
+                label={say('可用乙醇份数', 'Available ethanol units')}
+                value={d.ethanolUnits}
+                min={0}
+                max={4}
+                step={0.25}
+                onChange={(v) =>
+                  change({
+                    chapter: 2,
+                    shot: 'prediction',
+                    ethanolUnits: v,
+                    answer: false,
+                    cycleTime: 0,
+                  })
+                }
+              />
             </>
-          ) : (
+          ) : d.chapter === 3 ? (
             <Range
-              label={say('过程进度', 'Progress')}
-              value={progress}
-              onChange={setProgress}
+              label={say('原子对应进度', 'Atom correspondence')}
+              value={d.atomProgress}
               min={0}
               max={1}
               step={0.01}
+              onChange={(v) => change({ atomProgress: v, shot: 'atoms' })}
             />
-          )}
-          {view === 'chromium' ? (
+          ) : (
             <>
               <Range
-                label={say('乙醇示意份数', 'Ethanol model units')}
-                value={ethanol}
-                onChange={setEthanol}
+                label={say('净反应进度', 'Net reaction progress')}
+                value={d.oxidationProgress}
                 min={0}
-                max={6}
-                step={0.1}
+                max={1}
+                step={0.01}
+                onChange={(v) => change({ oxidationProgress: v, answer: true })}
               />
               <Range
-                label={say('重铬酸根示意份数', 'Dichromate model units')}
-                value={oxidant}
-                onChange={setOxidant}
+                label={say('起始乙醇份数', 'Initial ethanol units')}
+                value={d.ethanol}
+                min={0}
+                max={6}
+                step={0.25}
+                onChange={(v) =>
+                  change({
+                    ethanol: v,
+                    answer: false,
+                    oxidationProgress: 0,
+                    shot: 'prediction',
+                    chapter: 5,
+                  })
+                }
+              />
+              <Range
+                label={say('重铬酸根份数', 'Dichromate units')}
+                value={d.oxidant}
                 min={0}
                 max={4}
-                step={0.1}
+                step={0.25}
+                onChange={(v) =>
+                  change({
+                    oxidant: v,
+                    answer: false,
+                    oxidationProgress: 0,
+                    shot: 'prediction',
+                    chapter: 5,
+                  })
+                }
               />
-              <div>
-                {say('生成乙酸', 'Ethanoic acid formed')}: {cr.aceticAcid.toFixed(2)}
-                <br />
-                {say('乙醇剩余', 'Ethanol remaining')}: {cr.ethanol.toFixed(2)}
-              </div>
+              <Range
+                label={say('氢离子份数', 'Hydrogen ion units')}
+                value={d.acid}
+                min={0}
+                max={32}
+                step={1}
+                onChange={(v) =>
+                  change({
+                    acid: v,
+                    answer: false,
+                    oxidationProgress: 0,
+                    shot: 'prediction',
+                    chapter: 5,
+                  })
+                }
+              />
             </>
-          ) : null}
+          )}
+          {d.shot === 'prediction' && (
+            <button
+              className="chem-alcox-reveal"
+              onClick={() =>
+                change({
+                  answer: !d.answer,
+                  cycleTime: d.answer ? 0 : 4,
+                  oxidationProgress: d.answer ? 0 : 1,
+                })
+              }
+            >
+              {d.answer ? say('重新预测', 'Predict again') : say('检验预测', 'Test the prediction')}
+            </button>
+          )}
+          <details className="chem-alcox-limits">
+            <summary>{say('这份模型说明什么', 'What this model represents')}</summary>
+            <p>
+              {say(
+                '反应进度是导演安排，不是速率或实际产率。铜与氧库存守恒；断空气只检验这条Cu/CuO供氧路径。原子路径与电子当量是净记账，不是基元机理。酸性氧化预设完全到乙酸的总反应；颜色仅定性，不能据此判断瞬时有机产物。',
+                'Progress is directed, not a rate or measured yield. Copper and oxygen inventories balance; cutting off air tests only this Cu/CuO oxygen route. Atom paths and electron equivalents are net accounts, not elementary steps. Acid oxidation assumes the full ethanoic-acid endpoint. Colour is qualitative and cannot identify the instantaneous organic mixture.',
+              )}
+            </p>
+          </details>
         </div>
-      ) : null}
+      )}
     </section>
   );
 }
-function CopperBench({ m }: { m: ReturnType<typeof copperAlcoholCycle> }) {
+function CopperInventory({ m, say }: { m: ReturnType<typeof copperAlcoholCycle>; say: Say }) {
+  return (
+    <svg
+      className="chem-alcox-inventory"
+      viewBox="0 0 280 105"
+      role="img"
+      aria-label={say(
+        '同一根铜丝的氧化层库存近看',
+        'Close view of the oxide inventory on the same coil',
+      )}
+    >
+      <path
+        d="M140 5V20c-43 0-43 16 0 16s43 16 0 16-43 16 0 16 43 16 0 16"
+        fill="none"
+        stroke="#b4805c"
+        strokeWidth="9"
+        strokeLinecap="round"
+        data-copper-id="Cu-coil"
+      />
+      <path
+        d="M140 20c-43 0-43 16 0 16s43 16 0 16-43 16 0 16 43 16 0 16"
+        fill="none"
+        stroke="#505046"
+        strokeWidth="9"
+        strokeLinecap="round"
+        opacity={m.oxide}
+        data-oxide-fraction={m.oxide}
+      />
+      <text x="55" y="54" fontSize="19" textAnchor="middle" fill="#a56944">
+        Cu
+      </text>
+      <text x="225" y="54" fontSize="19" textAnchor="middle" fill="#55554a">
+        CuO
+      </text>
+    </svg>
+  );
+}
+function CycleLedger({ cancel, say }: { cancel: boolean; say: Say }) {
+  return (
+    <div className={`chem-alcox-ledger ${cancel ? 'is-cancelled' : ''}`} data-cancelled={cancel}>
+      <div>
+        <em>Cu</em> + ½O₂ → <em>CuO</em>
+      </div>
+      <div>
+        CH₃CH₂OH + <em>CuO</em>
+        <br />→ CH₃CHO + <em>Cu</em> + H₂O
+      </div>
+      <div className="chem-alcox-net" style={{ opacity: cancel ? 1 : 0 }}>
+        CH₃CH₂OH + ½O₂
+        <br />→ CH₃CHO + H₂O
+      </div>
+      <span>
+        {cancel
+          ? say('约去往返的铜与氧化铜', 'Cancel copper and oxide from both sides')
+          : say('先把两步相加', 'First add the two steps')}
+      </span>
+    </div>
+  );
+}
+function AlcoholAtoms({ p, say }: { p: number; say: Say }) {
+  const m = ethanolAtomAccount(p),
+    q = m.progress;
+  const atom = (id: string) => m.atoms.find((a) => a.id === id)!;
+  const h1 = atom('H-alpha-removed'),
+    h2 = atom('H-hydroxyl'),
+    o = atom('O-oxide');
+  return (
+    <svg
+      className="chem-alcox-atoms"
+      viewBox="0 0 280 240"
+      role="img"
+      aria-label={say(
+        '乙醇氧保留在羰基。两个选定的氢与氧化铜的氧计入水。',
+        'Ethanol oxygen stays in the carbonyl. Two selected hydrogens join oxide oxygen in the water account.',
+      )}
+    >
+      <g stroke="#a69d8c" strokeWidth="3" fill="none" strokeLinecap="round">
+        <path d="M69 84H96M134 84H172M115 104V123" />
+        <path d="M115 43V65M210 84H238" opacity={1 - q} data-bond="departing-H" />
+        <path d="M134 76H172" opacity={q} data-bond="carbonyl" />
+        <path
+          d={`M${o.x} ${o.y}L${h1.x} ${h1.y}M${o.x} ${o.y}L${h2.x} ${h2.y}`}
+          opacity={q}
+          data-bond="water"
+        />
+      </g>
+      {m.atoms.map((a) => (
+        <g
+          key={a.id}
+          data-atom-id={a.id}
+          data-origin={a.origin}
+          transform={`translate(${a.x} ${a.y})`}
+        >
+          {a.element !== 'CH₃' && (
+            <circle
+              r={a.element === 'H' ? 16 : 19}
+              fill={
+                a.origin === 'oxide'
+                  ? '#bdd5d8'
+                  : a.element === 'O'
+                    ? '#e8b698'
+                    : a.element === 'C'
+                      ? '#cfc8b7'
+                      : '#e9e8df'
+              }
+              stroke={a.origin === 'oxide' ? '#50858e' : '#d0c5b6'}
+            />
+          )}
+          <text y="6" textAnchor="middle" fontSize="19" fill="#514c43">
+            {a.element}
+          </text>
+          {a.id === 'O-ethanol' && <circle r="22" stroke="#a96640" strokeWidth="1.5" fill="none" />}
+        </g>
+      ))}
+      <text x="65" y="216" textAnchor="middle" fontSize="19" fill="#537e86">
+        {say('CuO的氧', 'O from CuO')}
+      </text>
+    </svg>
+  );
+}
+function CopperBench({ m, en }: { m: ReturnType<typeof copperAlcoholCycle>; en: boolean }) {
   const copper = [178, 120, 91],
     oxide = [80, 80, 70],
     color = `rgb(${copper.map((c, i) => Math.round(c + (oxide[i] - c) * m.oxide)).join(',')})`;
   return (
     <svg
+      data-copper-surface={m.oxide}
       className="chem-alcox-bench"
       viewBox="0 0 320 270"
       role="img"
-      aria-label="One copper coil travels between heating in air and ethanol. Its oxide layer changes with the same reaction account."
+      aria-label={
+        en
+          ? 'One copper coil moves between heating in air and ethanol; its surface follows the conserved oxide inventory.'
+          : '同一根铜丝在空气加热与乙醇之间移动，表面随守恒的氧化层库存变化。'
+      }
     >
       <path d="M35 253H284" stroke="#d4cbbf" />
       <path
@@ -216,7 +593,7 @@ function CopperBench({ m }: { m: ReturnType<typeof copperAlcoholCycle> }) {
         stroke="#a7b59c"
         strokeWidth="2"
       />
-      <g transform={`translate(${m.x} ${m.y})`}>
+      <g data-copper-id="Cu-coil" transform={`translate(${m.x} ${m.y})`}>
         <path d="M0-65V-20" stroke="#ad795c" strokeWidth="4" />
         <path
           d="M0-20c-22 0-22 8 0 8s22 8 0 8-22 8 0 8 22 8 0 8-22 8 0 8"
@@ -227,75 +604,27 @@ function CopperBench({ m }: { m: ReturnType<typeof copperAlcoholCycle> }) {
         />
         <path d="M-5-65H5" stroke="#8e8b7c" strokeWidth="3" />
       </g>
-      <text x="80" y="32" fontSize="21" textAnchor="middle" fill="#918f7e">
+      <text x="80" y="32" fontSize="26" textAnchor="middle" fill="#918f7e">
         O₂
       </text>
-      <text x="220" y="278" fontSize="21" textAnchor="middle" fill="#918f7e"></text>
-      <text x="220" y="237" textAnchor="middle" fontSize="20" fill="#86967c">
+
+      <text x="220" y="237" textAnchor="middle" fontSize="26" fill="#86967c">
         EtOH
       </text>
     </svg>
   );
 }
-function AlcoholAtoms({ p }: { p: number }) {
-  const t = Math.max(0, Math.min(1, (p - 0.2) / 0.65)),
-    x1 = 125 + (235 - 125) * t,
-    y1 = 35 + 145 * t,
-    x2 = 269 + (285 - 269) * t,
-    y2 = 95 + 85 * t;
-  return (
-    <svg
-      className="chem-alcox-atoms"
-      viewBox="0 0 320 245"
-      role="img"
-      aria-label="Net account: ethanol retains its oxygen in the carbonyl. One O–H and one adjacent C–H hydrogen join oxygen from copper oxide to form water."
-    >
-      <g stroke="#b6b9a3" strokeWidth="3">
-        <path d="M95 95H110M143 95H189M125 113V139" />
-        <path d="M125 51V77M223 95H253" opacity={1 - t} />
-        <path d="M143 87H189" opacity={t} />
-        <path d={`M260 ${225 - 25 * t}L${x1} ${y1}M260 ${225 - 25 * t}L${x2} ${y2}`} opacity={t} />
-      </g>
-      <text x="48" y="102" fontSize="24" fill="#93977d">
-        CH₃
-      </text>
-      <circle cx="125" cy="95" r="18" fill="#ccc6b0" />
-      <text x="125" y="102" textAnchor="middle" fontSize="22" fill="#817d6b">
-        C
-      </text>
-      <circle cx="207" cy="95" r="18" fill="#c6a78f" />
-      <text x="207" y="102" textAnchor="middle" fontSize="22" fill="#8d6f5a">
-        O
-      </text>
-      {[
-        [x1, y1],
-        [x2, y2],
-        [125, 155],
-      ].map(([x, y], i) => (
-        <g key={i}>
-          <circle cx={x} cy={y} r="15" fill="#dce4cc" />
-          <text x={x} y={y + 7} textAnchor="middle" fontSize="21" fill="#95a385">
-            H
-          </text>
-        </g>
-      ))}
-      <circle cx="260" cy={225 - 25 * t} r="18" fill="#b9ccd0" />
-      <text x="260" y={232 - 25 * t} textAnchor="middle" fontSize="22" fill="#7f979a">
-        O
-      </text>
-      <text x="130" y="221" fontSize="21" textAnchor="middle" fill="#889b9c">
-        CuO →
-      </text>
-    </svg>
-  );
-}
-function ChromiumTube({ color, p }: { color: string; p: number }) {
+function ChromiumTube({ color, p, en }: { color: string; p: number; en: boolean }) {
   return (
     <svg
       className="chem-alcox-chromium"
       viewBox="0 0 320 240"
       role="img"
-      aria-label="Acid dichromate solution changes from orange towards green as chromium(VI) is reduced to chromium(III)."
+      aria-label={
+        en
+          ? 'Acid dichromate changes from orange towards green as chromium six is reduced to chromium three.'
+          : '酸性重铬酸根的铬从六价还原到三价，橙色定性转向绿色。'
+      }
     >
       <path
         d="M125 87V193Q125 227 160 227T195 193V87"
@@ -316,7 +645,7 @@ function ChromiumTube({ color, p }: { color: string; p: number }) {
         stroke="#a9b69d"
         strokeWidth="2"
       />
-      <text x="112" y="35" textAnchor="end" fontSize="20" fill="#899778">
+      <text x="112" y="35" textAnchor="end" fontSize="26" fill="#899778">
         EtOH
       </text>
     </svg>

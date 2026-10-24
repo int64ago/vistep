@@ -1,0 +1,676 @@
+{
+  "slug": "eddy-current-lab",
+  "status": "candidate-voice-ready-root-review-pending",
+  "narration": {
+    "duration": 248,
+    "cues": [
+      {
+        "id": "meter-open",
+        "title": "断开的微安表",
+        "titleEn": "An open meter",
+        "caption": "相同初始偏转下，指针来回摆动。",
+        "captionEn": "The same initial deflection produces oscillation.",
+        "zh": "先晃动微安表，使内部运动部分偏离平衡。接线柱断开时，指针来回摆动，只有较弱的机械耗散。浅色曲线记录同一次初始偏转，接下来只改变电路是否闭合。",
+        "en": "Disturb the sensitive meter so its moving system leaves equilibrium. With terminals open, the pointer oscillates with weak mechanical damping. The pale trace records this initial disturbance; the next comparison changes only the electrical connection.",
+        "seconds": 22,
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "meter-short",
+        "title": "短接两个接线柱",
+        "titleEn": "Short the terminals",
+        "caption": "感应电流的转矩加快稳定。",
+        "captionEn": "Induced-current torque makes the pointer settle sooner.",
+        "zh": "用导线连起两个接线柱，再给出相同的初始偏转。线圈运动时产生电流，磁力转矩阻碍运动，指针更快稳定。短接没有输入电能；被耗散的是最初摆动的机械能。",
+        "en": "Join the terminals and repeat the same initial deflection. Motion now induces current in a closed circuit, producing an opposing torque. The pointer settles sooner. Shorting supplies no electrical energy; initial mechanical energy is dissipated.",
+        "seconds": 22,
+        "chapterAt": 22,
+        "at": 22.45
+      },
+      {
+        "id": "frame-forward",
+        "title": "旋转磁体驱动铝框",
+        "titleEn": "A rotating magnet drives the frame",
+        "caption": "相对转动产生电流，转矩带动铝框。",
+        "captionEn": "Relative rotation induces current and drives the frame.",
+        "zh": "换到可以自由转动的铝框。外部转动蹄形磁体，变化的磁通产生感应电流，铝框随之转动。追踪磁体和铝框各自的角度，铝框并不是被固定在磁体上一起转。",
+        "en": "Switch to a freely rotating aluminium frame. An external drive rotates the horseshoe magnet, changing flux and inducing current. Torque starts the frame turning. Track the two angles separately: the frame is not mechanically attached to the magnet.",
+        "seconds": 22,
+        "chapterAt": 44,
+        "at": 44.45
+      },
+      {
+        "id": "frame-reverse",
+        "title": "反转与零转差",
+        "titleEn": "Reversal and zero slip",
+        "caption": "铝框跟随磁体时，能量从哪里来？",
+        "captionEn": "Where does the driven frame get its energy?",
+        "zh": "另一次试验，把磁体的转动方向反过来，铝框也反向跟随。两个角度并不相同；相对转动使穿过铝框的磁通变化。假如让它们完全同步，磁通就不再随时间变化，持续驱动转矩也消失。正常驱动时，外部机械功一部分推动铝框，一部分成为电阻热。",
+        "en": "In a new trial, reverse the magnet. The frame follows in the opposite direction. Their angles differ: relative rotation changes the flux through the frame. Imagine exact synchronism. The flux then stops changing and sustained driving torque vanishes. During normal drive, external mechanical power is divided between mechanical output and electrical heating.",
+        "seconds": 26,
+        "chapterAt": 66,
+        "at": 66.45
+      },
+      {
+        "id": "disc-free",
+        "title": "先让铜盘自由转动",
+        "titleEn": "Let the copper disc coast",
+        "caption": "同样的初始角速度，先记录自然减速。",
+        "captionEn": "Record natural deceleration at a fixed initial speed.",
+        "zh": "轻轻拨动铜盘，让它以相同的初始角速度开始转动。先把磁体移开，铜盘只受到较弱的阻力，会转动较长时间。圆盘上的标记帮助我们追踪真实的角位移。",
+        "en": "Give the copper disc the same initial angular speed and keep the magnet away. Weak drag lets it coast for a long time. The mark on the disc tracks its calculated angular position.",
+        "seconds": 22,
+        "chapterAt": 92,
+        "at": 92.45
+      },
+      {
+        "id": "disc-brake",
+        "title": "涡流怎样制动",
+        "titleEn": "How eddy currents brake",
+        "caption": "同一盘面两处电流，怎样改变运动？",
+        "captionEn": "How do two local currents change the disc’s motion?",
+        "zh": "让磁极靠近铜盘边缘，但不接触。近看同一盘面：进入磁场的局部环磁通增加，离开的局部环磁通减小，两处电流方向相反，合起来却阻碍转动。减少的转动能进入电阻热。预测一下：把磁场反过来，会变成加速吗？电流也反向了，制动转矩仍然反向于运动；速度降低以后，制动也减弱。",
+        "en": "Bring the poles near the disc without contact. On the same moving surface, flux increases at one field edge and decreases at the other. Opposite local currents together oppose rotation. Lost rotational energy becomes electrical heat. Now predict: reverse the field. Will the disc accelerate? The currents also reverse, so the braking torque still opposes motion. Braking weakens as speed falls.",
+        "seconds": 30,
+        "chapterAt": 114,
+        "at": 114.45
+      },
+      {
+        "id": "tube-complete",
+        "title": "管壁里的环流",
+        "titleEn": "Currents in the tube wall",
+        "caption": "磁体靠近或远离同一管环，电流方向改变。",
+        "captionEn": "Approaching or leaving a ring reverses its current.",
+        "zh": "同一枚磁体在完整铝管中慢慢下落，没有贴住管壁。跟着磁体近看：前方管环的磁通增加，后方管环的磁通减小，电流方向因此相反，两边的作用却都阻碍下落。近似稳定后，重力释放的能量主要变成管壁的电阻热。少数画出的环只是取样，整体阻力使用长管的有效近似。",
+        "en": "The magnet falls slowly inside the intact aluminium tube without touching its wall. Follow it closely. Flux increases in rings ahead and decreases in rings behind. Their currents reverse direction, yet both oppose the fall. Near steady speed, gravity supplies mainly electrical heating in the wall. The few visible rings are samples; the overall drag uses a long-pipe approximation.",
+        "seconds": 30,
+        "chapterAt": 144,
+        "at": 144.45
+      },
+      {
+        "id": "tube-slit",
+        "title": "开缝与停住的反例",
+        "titleEn": "A slit and a stationary magnet",
+        "caption": "开缝和停住，怎样改变感应？",
+        "captionEn": "How do a slit and a stop change induction?",
+        "zh": "先预测：在管壁纵向开缝，同一枚磁体会怎样下落？完整环流被切断，磁体落得更快，但缝两侧仍可有局部回流，不能说所有涡流都为零。再看另一个检验：把磁体固定在完整管内。磁通仍然存在，却不再变化，感应电动势和持续电流都归零。因此制动依赖磁通的变化，不是磁体静静吸住铝管。",
+        "en": "Predict the fall after cutting a longitudinal slit. Breaking the large loops makes the same magnet fall faster. Local return paths can remain on either side, so not every eddy is eliminated. Try a different test: hold the magnet still inside an intact tube. Flux remains, but no longer changes. Induced voltage and sustained current become zero. Braking depends on changing flux, not static attraction.",
+        "seconds": 30,
+        "chapterAt": 174,
+        "at": 174.45
+      },
+      {
+        "id": "spring-open",
+        "title": "弹簧磁体自由振动",
+        "titleEn": "A spring magnet oscillates",
+        "caption": "断开线圈，先保留同一初始位移。",
+        "captionEn": "Start with the coil open and the same displacement.",
+        "zh": "弹簧下端悬挂磁体，下面放着线圈。先断开线圈，从固定初始位置释放磁体。它在平衡位置附近反复振动。浅色曲线保留这次对照，便于比较闭合以后发生的变化。",
+        "en": "Suspend the magnet from a spring above a coil. Open the coil and release from a fixed displacement. The magnet oscillates around equilibrium. The pale trace preserves this reference for the closed-circuit comparison.",
+        "seconds": 22,
+        "chapterAt": 204,
+        "at": 204.45
+      },
+      {
+        "id": "spring-closed",
+        "title": "闭合线圈后的衰减",
+        "titleEn": "Closing the coil damps motion",
+        "caption": "振动能经感应电流耗散，衰减加快。",
+        "captionEn": "Induced current dissipates oscillation energy more quickly.",
+        "zh": "保持弹簧和初始位置不变，只闭合线圈。磁体上下运动使磁通反复变化，感应电流的作用始终阻碍运动，因此振幅更快减小。不同装置中的制动，最终都能用能量去向来检验。",
+        "en": "Keep the spring and initial displacement unchanged, then close the coil. Up-and-down motion changes the flux repeatedly. The induced response opposes motion in either direction, reducing amplitude faster. Energy accounting unites these different damping apparatuses.",
+        "seconds": 22,
+        "chapterAt": 226,
+        "at": 226.45
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-galvanometer-damping": {
+      "sceneSlug": "eddy-current-lab",
+      "chapterIds": ["meter-open", "meter-short"],
+      "label": {
+        "zh": "微安表阻尼",
+        "en": "Meter damping"
+      }
+    },
+    "e2-aluminium-frame-drive": {
+      "sceneSlug": "eddy-current-lab",
+      "chapterIds": ["frame-forward", "frame-reverse"],
+      "label": {
+        "zh": "铝框电磁驱动",
+        "en": "Aluminium-frame drive"
+      }
+    },
+    "e2-copper-disc-brake": {
+      "sceneSlug": "eddy-current-lab",
+      "chapterIds": ["disc-free", "disc-brake"],
+      "label": {
+        "zh": "铜盘磁制动",
+        "en": "Copper-disc braking"
+      }
+    },
+    "e2-magnet-falling-tube": {
+      "sceneSlug": "eddy-current-lab",
+      "chapterIds": ["tube-complete", "tube-slit"],
+      "label": {
+        "zh": "完整与开缝铝管落磁",
+        "en": "Magnet falling through complete and slit tubes"
+      }
+    },
+    "e2-magnet-coil-damping": {
+      "sceneSlug": "eddy-current-lab",
+      "chapterIds": ["spring-open", "spring-closed"],
+      "label": {
+        "zh": "弹簧磁体与线圈阻尼",
+        "en": "Spring-magnet coil damping"
+      }
+    }
+  },
+  "teachingProfiles": {
+    "e2-galvanometer-damping": {
+      "sceneSlug": "eddy-current-lab",
+      "question": {
+        "zh": "不接电源，短接为什么让指针更快稳定？",
+        "en": "Why does a short circuit settle the pointer without a supply?"
+      },
+      "lead": {
+        "zh": "保持相同偏转，只改变线圈能否形成闭合电流。",
+        "en": "Keep the deflection fixed and change only the closed current path."
+      },
+      "principle": {
+        "zh": "运动产生电动势，闭合电流产生反向转矩；初始机械能成为热。",
+        "en": "Motion produces emf; closed current produces opposing torque and dissipates initial mechanical energy."
+      },
+      "transfer": {
+        "question": {
+          "zh": "指针静止但仍在磁场里，会持续有制动电流吗？",
+          "en": "Does a stationary pointer in the field maintain a braking current?"
+        },
+        "explanation": {
+          "zh": "不会。在忽略自感暂态的近似下，速度为零使感应电动势和电流为零。",
+          "en": "No. In this resistive approximation, zero motion means zero emf and current after transients."
+        }
+      }
+    },
+    "e2-aluminium-frame-drive": {
+      "sceneSlug": "eddy-current-lab",
+      "question": {
+        "zh": "磁体没碰铝框，怎样把它带动？",
+        "en": "How can a magnet drive a frame without contact?"
+      },
+      "lead": {
+        "zh": "分别追踪磁体和铝框的角度，再检验完全同步的假设。",
+        "en": "Track the magnet and frame separately, then test exact synchronism."
+      },
+      "principle": {
+        "zh": "转差使磁通改变，感应电流与磁场产生驱动转矩；输入功率包含机械输出和电阻热。",
+        "en": "Slip changes flux and creates current and torque; input power feeds mechanical output and Joule heating."
+      },
+      "transfer": {
+        "question": {
+          "zh": "若铝框与磁体完全同步，这一近似还能持续驱动吗？",
+          "en": "Can this approximation sustain torque at exact synchronism?"
+        },
+        "explanation": {
+          "zh": "不能。没有相对转动，磁通不再变化，持续感应电流与驱动转矩都为零。",
+          "en": "No. With no relative rotation, flux stops changing, so sustained current and torque vanish."
+        }
+      }
+    },
+    "e2-copper-disc-brake": {
+      "sceneSlug": "eddy-current-lab",
+      "question": {
+        "zh": "铜盘没有碰到磁极，为何减速？",
+        "en": "Why does the disc slow without touching the poles?"
+      },
+      "lead": {
+        "zh": "从相同初速出发，近看同一盘面的两个磁场边缘。",
+        "en": "Start at the same speed and inspect both field edges on the same surface."
+      },
+      "principle": {
+        "zh": "相反方向的局部电流共同产生反向转矩，损失的转动能进入热。",
+        "en": "Opposite local currents together produce braking torque and transfer rotational energy into heat."
+      },
+      "transfer": {
+        "question": {
+          "zh": "只反转磁场，会把制动改成加速吗？",
+          "en": "Will reversing only the field turn the brake into a drive?"
+        },
+        "explanation": {
+          "zh": "不会。电流随磁场反向，两次符号变化使制动方向不变；低速电阻近似下制动系数正比于磁场平方。",
+          "en": "No. Current also reverses. Both sign changes preserve braking; its coefficient scales with field squared in this low-speed resistive model."
+        }
+      }
+    },
+    "e2-magnet-falling-tube": {
+      "sceneSlug": "eddy-current-lab",
+      "question": {
+        "zh": "铝管不吸住磁体，为什么落得慢？",
+        "en": "Why does the magnet fall slowly if aluminium does not hold it?"
+      },
+      "lead": {
+        "zh": "跟踪磁体经过固定管环，再比较纵向开缝和静止两种反例。",
+        "en": "Follow the magnet through fixed rings, then compare a slit and a stationary magnet."
+      },
+      "principle": {
+        "zh": "磁通变化产生环流，电磁作用阻碍下落；重力供能转为电阻热，静止时持续感应消失。",
+        "en": "Changing flux drives current and drag. Gravitational energy becomes heat, while a stationary magnet sustains no induction."
+      },
+      "transfer": {
+        "question": {
+          "zh": "开缝后能否说电流全为零？固定磁体又怎样？",
+          "en": "Does a slit remove all currents? What if the magnet is held still?"
+        },
+        "explanation": {
+          "zh": "开缝只切断整圈，仍可有局部回流；固定在完整管内则磁通不再变化，忽略暂态后持续电流为零。",
+          "en": "A slit breaks complete loops but permits local returns. Holding the magnet in an intact tube removes changing flux and sustained current after transients."
+        }
+      }
+    },
+    "e2-magnet-coil-damping": {
+      "sceneSlug": "eddy-current-lab",
+      "question": {
+        "zh": "只闭合线圈，弹簧振动为什么更快衰减？",
+        "en": "Why does merely closing the coil damp the spring faster?"
+      },
+      "lead": {
+        "zh": "同一弹簧、同一初始位移，追踪线圈、运动方向和能量。",
+        "en": "Keep the spring and initial displacement fixed; track current, motion and energy."
+      },
+      "principle": {
+        "zh": "变化磁通产生电流，其作用在两种运动方向都阻碍运动；振动能进入电阻热。",
+        "en": "Changing flux induces current whose response opposes either direction of motion, dissipating oscillation energy as heat."
+      },
+      "transfer": {
+        "question": {
+          "zh": "只打开回路、保留磁体和弹簧，会怎样？",
+          "en": "What changes if only the circuit is opened?"
+        },
+        "explanation": {
+          "zh": "感应电动势仍可存在，但没有闭合电流带来的额外阻尼；只剩模型中的背景损耗。",
+          "en": "Induced emf can remain, but the additional closed-current damping disappears, leaving background losses."
+        }
+      }
+    }
+  },
+  "translations": {
+    "局部等效环 · 同一盘面": "Equivalent loops · one surface",
+    "缝两侧仍可有局部回流": "Local returns can remain",
+    "同速瞬间：没有感应驱动": "Equal-speed instant: no induced drive",
+    "外部固定：磁通不再变化": "Externally held: flux stops changing",
+    "支持力平衡重力": "Support balances gravity",
+    "外部输入": "Drive input",
+    "机械功率": "Mechanical power",
+    "重力释放": "Gravity released",
+    "接收盘耗散": "Catch dissipation",
+    "剩余机械能": "Mechanical energy",
+    "其他耗散": "Other dissipation",
+    "周期平均功率": "Cycle-averaged power",
+    "位移 / 初始值": "Displacement / initial",
+    "先预测，再显示另一条曲线": "Predict before revealing the test",
+    "磁体": "Magnet",
+    "完整管": "Intact",
+    "断路": "Open",
+    "铝框": "Frame",
+    "开缝管": "Slit",
+    "闭合": "Closed",
+    "从运动、感应电流到力与能量的同一模型": "One model links motion, induced current, force and energy",
+    "纵向开缝": "Longitudinal slit",
+    "完整管壁": "Intact wall",
+    "假设无转差": "Assume zero slip",
+    "外部转动磁体": "Externally driven magnet",
+    "磁体移开": "Magnet removed",
+    "磁极不接触铜盘": "No pole contact",
+    "回路闭合": "Circuit closed",
+    "回路断开": "Circuit open",
+    "磁通仍在 · ε = 0 · I = 0": "Flux remains · ε = 0 · I = 0",
+    "整圈中断 · 局部残流另计": "Full loop cut · local loss remains",
+    "靠近磁极，转速会怎样？": "Bring the poles closer: what changes?",
+    "反转磁场，会变成加速吗？": "Reverse B: will it accelerate?",
+    "切断整圈，落得更快吗？": "Cut the large loop: faster fall?",
+    "把磁体停住，还持续发热吗？": "Hold the magnet: does heating continue?",
+    "没有转差，还能持续驱动吗？": "With no slip, can torque continue?",
+    "选择阻尼装置": "Choose apparatus",
+    "观察镜头": "View",
+    "驱动方向": "Drive direction",
+    "正转": "Forward",
+    "反转": "Reverse",
+    "相对运动": "Relative motion",
+    "允许转差": "Allow slip",
+    "垂直磁场": "Normal magnetic field",
+    "导电路径": "Conducting path",
+    "磁体状态": "Magnet state",
+    "自由下落": "Falling",
+    "固定在管内": "Held inside tube",
+    "释放后的时间": "Time since release",
+    "检验预测": "Test prediction",
+    "这是什么近似？": "What is approximated?",
+    "低速、准静态电阻模型，忽略自感暂态。图中箭头表示常规电流，不是电子飞行速度。铜盘为两个局部等效环；铝框运动与能量使用周期平均，无转差是受约束的瞬间反事实；管壁以长薄管偶极模型说明方向，磁体符号放大；少数环并非完整离散网格。各系数用于机制比较，不是教材测量数据。": "Low-speed resistive, quasistatic models omit self-inductance transients. Arrows show conventional current, not electron speed. Disc loops are local equivalents; frame motion and power use cycle averages. Zero slip is a constrained instantaneous counterfactual, not sustained motion against friction. The enlarged magnet symbol and selected tube rings illustrate a long, thin, dipole-field model, not a complete mesh. Coefficients are explanatory, not textbook measurements.",
+    "磁体到达接收盘后的动能损失单列为接收耗散，不算电阻热。开缝后的局部回流仅由残余有效阻尼表示；完整环路不跨越裂缝。": "Energy lost at the catch is recorded separately from electrical heating. Residual slit-pipe eddies use an effective loss coefficient; no complete current loop crosses the slit.",
+    "微安表": "Moving-coil meter",
+    "铝框与旋转磁体": "Frame and rotating magnet",
+    "铜盘": "Copper disc",
+    "完整与开缝铝管": "Intact and slit tubes",
+    "弹簧磁体与线圈": "Spring magnet and coil",
+    "追踪物体": "Track motion",
+    "电流近看": "Follow current",
+    "能量去向": "Follow energy",
+    "相同初态": "Same initial state",
+    "焦耳热": "Joule heat",
+    "磁体动能": "Kinetic energy"
+  },
+  "spokenPreservation": {
+    "preservedIndices": [0, 1, 2, 4, 8, 9],
+    "changedIndices": [3, 5, 6, 7],
+    "eightFieldDiff": [
+      {
+        "index": 0,
+        "id": "meter-open",
+        "fields": {}
+      },
+      {
+        "index": 1,
+        "id": "meter-short",
+        "fields": {}
+      },
+      {
+        "index": 2,
+        "id": "frame-forward",
+        "fields": {}
+      },
+      {
+        "index": 3,
+        "id": "frame-reverse",
+        "fields": {
+          "title": {
+            "before": "反转驱动与转差",
+            "after": "反转与零转差"
+          },
+          "titleEn": {
+            "before": "Reverse the drive and inspect slip",
+            "after": "Reversal and zero slip"
+          },
+          "caption": {
+            "before": "驱动方向反转，铝框跟随但保留转差。",
+            "after": "铝框跟随磁体时，能量从哪里来？"
+          },
+          "captionEn": {
+            "before": "The frame follows the reversed drive with remaining slip.",
+            "after": "Where does the driven frame get its energy?"
+          },
+          "seconds": {
+            "before": 22,
+            "after": 26
+          },
+          "zh": {
+            "before": "现在让磁体向相反方向转动。铝框的运动方向也改变，但它的速度仍略低于磁场转速。这个差值叫转差：有相对运动才有持续感应。外部输入的功率一部分带动铝框，一部分成为电阻热。",
+            "after": "另一次试验，把磁体的转动方向反过来，铝框也反向跟随。两个角度并不相同；相对转动使穿过铝框的磁通变化。假如让它们完全同步，磁通就不再随时间变化，持续驱动转矩也消失。正常驱动时，外部机械功一部分推动铝框，一部分成为电阻热。"
+          },
+          "en": {
+            "before": "Reverse the magnet rotation. The frame turns the other way but remains slower than the field. This difference is slip, which maintains induction. External mechanical power is divided between driving the frame and electrical heating.",
+            "after": "In a new trial, reverse the magnet. The frame follows in the opposite direction. Their angles differ: relative rotation changes the flux through the frame. Imagine exact synchronism. The flux then stops changing and sustained driving torque vanishes. During normal drive, external mechanical power is divided between mechanical output and electrical heating."
+          }
+        }
+      },
+      {
+        "index": 4,
+        "id": "disc-free",
+        "fields": {}
+      },
+      {
+        "index": 5,
+        "id": "disc-brake",
+        "fields": {
+          "title": {
+            "before": "把磁极放到边缘",
+            "after": "涡流怎样制动"
+          },
+          "titleEn": {
+            "before": "Place the poles near the edge",
+            "after": "How eddy currents brake"
+          },
+          "caption": {
+            "before": "磁极不接触铜盘，涡流仍然耗散转动能。",
+            "after": "同一盘面两处电流，怎样改变运动？"
+          },
+          "captionEn": {
+            "before": "Without contact, eddy currents dissipate rotational energy.",
+            "after": "How do two local currents change the disc’s motion?"
+          },
+          "seconds": {
+            "before": 22,
+            "after": 30
+          },
+          "zh": {
+            "before": "把蹄形磁体的磁极放在铜盘边缘附近，保持没有接触。铜盘转动时经过局部磁场，产生涡流和反向转矩。转速越低，制动力也越弱；不是磁体把铜盘吸住了。",
+            "after": "让磁极靠近铜盘边缘，但不接触。近看同一盘面：进入磁场的局部环磁通增加，离开的局部环磁通减小，两处电流方向相反，合起来却阻碍转动。减少的转动能进入电阻热。预测一下：把磁场反过来，会变成加速吗？电流也反向了，制动转矩仍然反向于运动；速度降低以后，制动也减弱。"
+          },
+          "en": {
+            "before": "Bring the poles near the disc edge without touching it. Rotation through the localized field creates eddy currents and opposing torque. As speed falls, braking weakens. The magnet is not holding the disc by attraction.",
+            "after": "Bring the poles near the disc without contact. On the same moving surface, flux increases at one field edge and decreases at the other. Opposite local currents together oppose rotation. Lost rotational energy becomes electrical heat. Now predict: reverse the field. Will the disc accelerate? The currents also reverse, so the braking torque still opposes motion. Braking weakens as speed falls."
+          }
+        }
+      },
+      {
+        "index": 6,
+        "id": "tube-complete",
+        "fields": {
+          "title": {
+            "before": "完整铝管中的落磁",
+            "after": "管壁里的环流"
+          },
+          "titleEn": {
+            "before": "A magnet in a complete tube",
+            "after": "Currents in the tube wall"
+          },
+          "caption": {
+            "before": "闭合环流把重力释放的能量转成热。",
+            "after": "磁体靠近或远离同一管环，电流方向改变。"
+          },
+          "captionEn": {
+            "before": "Closed eddies turn released gravitational energy into heat.",
+            "after": "Approaching or leaving a ring reverses its current."
+          },
+          "seconds": {
+            "before": 22,
+            "after": 30
+          },
+          "zh": {
+            "before": "同一枚磁体从一米铝管上端释放。它没有贴住管壁，却下落得很慢。磁体运动改变管壁中的磁通，环流产生向上的阻力。达到近似稳定速度以后，重力持续释放的能量主要变成电阻热。",
+            "after": "同一枚磁体在完整铝管中慢慢下落，没有贴住管壁。跟着磁体近看：前方管环的磁通增加，后方管环的磁通减小，电流方向因此相反，两边的作用却都阻碍下落。近似稳定后，重力释放的能量主要变成管壁的电阻热。少数画出的环只是取样，整体阻力使用长管的有效近似。"
+          },
+          "en": {
+            "before": "Release the magnet into a one-metre aluminium tube. It falls slowly without sticking to the wall. Changing flux induces circulating currents and an upward drag. Near steady speed, released gravitational energy is mainly converted into electrical heating.",
+            "after": "The magnet falls slowly inside the intact aluminium tube without touching its wall. Follow it closely. Flux increases in rings ahead and decreases in rings behind. Their currents reverse direction, yet both oppose the fall. Near steady speed, gravity supplies mainly electrical heating in the wall. The few visible rings are samples; the overall drag uses a long-pipe approximation."
+          }
+        }
+      },
+      {
+        "index": 7,
+        "id": "tube-slit",
+        "fields": {
+          "title": {
+            "before": "切断大范围环流",
+            "after": "开缝与停住的反例"
+          },
+          "titleEn": {
+            "before": "Interrupt the large current loops",
+            "after": "A slit and a stationary magnet"
+          },
+          "caption": {
+            "before": "纵向开缝后，同一磁体下落更快。",
+            "after": "开缝和停住，怎样改变感应？"
+          },
+          "captionEn": {
+            "before": "A longitudinal slit lets the same magnet fall faster.",
+            "after": "How do a slit and a stop change induction?"
+          },
+          "seconds": {
+            "before": 22,
+            "after": 30
+          },
+          "zh": {
+            "before": "换成纵向开缝的铝管。大范围环流路径被切断，制动明显减弱，同一磁体下落更快。开缝并不意味着所有局部涡流严格为零，因此模型仍保留少量残余阻尼。",
+            "after": "先预测：在管壁纵向开缝，同一枚磁体会怎样下落？完整环流被切断，磁体落得更快，但缝两侧仍可有局部回流，不能说所有涡流都为零。再看另一个检验：把磁体固定在完整管内。磁通仍然存在，却不再变化，感应电动势和持续电流都归零。因此制动依赖磁通的变化，不是磁体静静吸住铝管。"
+          },
+          "en": {
+            "before": "Replace the tube with a longitudinally slit one. Large circulating paths are interrupted, weakening the brake, and the same magnet falls faster. The slit does not eliminate every local eddy, so the model retains weak residual damping.",
+            "after": "Predict the fall after cutting a longitudinal slit. Breaking the large loops makes the same magnet fall faster. Local return paths can remain on either side, so not every eddy is eliminated. Try a different test: hold the magnet still inside an intact tube. Flux remains, but no longer changes. Induced voltage and sustained current become zero. Braking depends on changing flux, not static attraction."
+          }
+        }
+      },
+      {
+        "index": 8,
+        "id": "spring-open",
+        "fields": {}
+      },
+      {
+        "index": 9,
+        "id": "spring-closed",
+        "fields": {}
+      }
+    ],
+    "reason": "Preserve already-complete apparatus comparisons; add explicit phase/current/energy causal shots and test field reversal, slit and stationary-flux counterexamples."
+  },
+  "sharedProposals": {
+    "ssrSelector": ".lesson-eddy-current-lab",
+    "topic": {
+      "title": "磁场怎样制动，也怎样驱动？",
+      "titleEn": "How can a field brake motion—or drive it?",
+      "description": "追踪同一物体的运动、局部感应电流与能量，检验开缝、反转和静止的预测。",
+      "descriptionEn": "Track motion, local induced currents and energy, then test a slit, field reversal and a stationary magnet."
+    },
+    "noDirectSharedWrites": true
+  },
+  "sources": [
+    {
+      "title": "人教版高中物理 选择性必修第二册 §2.3",
+      "location": "P35–39; surrounding P34 and P40 read",
+      "local": "/Users/int64ago/Downloads/人教版高中物理-选择性必修第二册.pdf"
+    },
+    {
+      "title": "Georgia Tech Physics 2232, Lab 7 theoretical models",
+      "url": "https://phys2232.physics.gatech.edu/labs/lab7/models/models.html"
+    },
+    {
+      "title": "Haus & Melcher, Electromagnetic Fields and Energy §11.5",
+      "url": "https://web.mit.edu/6.013_book/www/chapter11/11.5.html"
+    },
+    {
+      "title": "Haus & Melcher, Electromagnetic Fields and Energy §11.7",
+      "url": "https://web.mit.edu/6.013_book/www/chapter11/11.7.html"
+    },
+    {
+      "title": "Donoso, Ladera & Martín (2011), Damped fall of magnets inside a conducting pipe",
+      "url": "https://doi.org/10.1119/1.3531964"
+    }
+  ],
+  "limitations": [
+    "All numerical motion is an effective teaching model, not recovered experimental records.",
+    "Quasistatic resistive limit; self-inductance and eddy-current field meshes omitted.",
+    "Frame instantaneous single-loop flux is distinct from cycle-averaged motion and power.",
+    "Tube point-dipole symbols are enlarged; local ring samples are not a finite mesh or finite-magnet fit.",
+    "No new recordings or actual-site integration tested by the author."
+  ],
+  "director": {
+    "status": "provisional-silent-only; calibrate after actual recording",
+    "chapterTimesAreSeconds": true,
+    "sharedDuration": 248,
+    "cuts": [
+      {
+        "id": "meter-open",
+        "cuts": [0, 12, 22],
+        "views": ["apparatus", "same-initial-condition comparison"],
+        "slowModelClock": "t/4"
+      },
+      {
+        "id": "meter-short",
+        "cuts": [0, 5, 14, 22],
+        "views": ["apparatus", "current close-up", "energy"],
+        "slowModelClock": "max(0,t-1)/40"
+      },
+      {
+        "id": "frame-forward",
+        "cuts": [0, 10, 22],
+        "views": ["frame and magnet angles", "one loop flux/current"],
+        "modelClock": "t/5"
+      },
+      {
+        "id": "frame-reverse",
+        "cuts": [0, 9, 16, 18, 22, 26],
+        "views": [
+          "reverse trial",
+          "relative angles",
+          "prediction hold",
+          "zero-slip instantaneous counterfactual",
+          "cycle-average power"
+        ],
+        "prediction": [16, 18]
+      },
+      {
+        "id": "disc-free",
+        "cuts": [0, 14, 18, 22],
+        "views": ["same initial spin", "natural decay reference", "withhold magnetic comparison"],
+        "prediction": [18, 22]
+      },
+      {
+        "id": "disc-brake",
+        "cuts": [0, 5, 15, 18, 21, 26, 30],
+        "views": [
+          "pole proximity",
+          "two same-surface edge loops",
+          "energy",
+          "field-reversal prediction hold",
+          "field and current reversed; same continuing physical clock",
+          "energy"
+        ],
+        "prediction": [18, 21],
+        "continuity": "physical time advances to0.32s, holds during question, then continues without resetting speed"
+      },
+      {
+        "id": "tube-complete",
+        "cuts": [0, 7, 19, 30],
+        "views": [
+          "slow fall",
+          "follow magnet through fixed ring IDs",
+          "gravity/kinetic/Joule account"
+        ]
+      },
+      {
+        "id": "tube-slit",
+        "cuts": [0, 3, 9, 17, 22, 30],
+        "views": [
+          "slit prediction hold",
+          "reveal same-initial-condition faster fall",
+          "broken full loops and qualitative residual returns",
+          "held-magnet question",
+          "visible external support in intact tube; nonzero flux and zero current"
+        ],
+        "prediction": [
+          [0, 3],
+          [17, 22]
+        ]
+      },
+      {
+        "id": "spring-open",
+        "cuts": [0, 12, 22],
+        "views": ["free oscillation", "same-initial-condition comparison"]
+      },
+      {
+        "id": "spring-closed",
+        "cuts": [0, 5, 14, 22],
+        "views": ["closed circuit", "current and motion", "same-energy account"]
+      }
+    ]
+  },
+  "acceptancePlan": {
+    "actualSite": "root pending",
+    "recordingAndMeasuredSync": "root pending",
+    "scope": "Author candidate uses real Showcase/Base CSS with local provisional film, no canonical route or audio.",
+    "predictionCaptionRepair": "Author final still review identified chapter-summary captions revealing three answers before held prediction. Replaced those captions with open questions; all spoken and computed states unchanged.",
+    "finalCaptionEvidence": "checks/native-frames-05-final-caption/report.json and checks/native-final-predictions/report.json"
+  },
+  "evidenceScope": "Ignored isolated candidate; provisional248s, root integration/new8spoken recordings/measured director/final static acceptance pending."
+}

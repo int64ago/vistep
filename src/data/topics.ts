@@ -797,19 +797,19 @@ export const topics: Topic[] = [
   {
     slug: 'chem-alcohol-oxidation',
     name: '乙醇的两种氧化',
-    title: '铜丝为什么变黑又变红？',
-    question: '铜丝为什么变黑又变红？',
-    description: '追踪同一根铜丝的催化循环，再比较酸性重铬酸钾的氧化证据。',
+    title: '铜能回来，氧为什么会用完？',
+    question: '铜能回来，氧为什么会用完？',
+    description: '从颜色追踪原子与电子，再预测氧库存和氧化剂的限制。',
     color: '#b6a07b',
     tag: '有机氧化',
     related: ['chem-sodium-alcohol', 'chem-aldehyde-tests', 'chem-ester-reaction'],
     sources: [
       {
-        title: 'University of Göttingen: ethanal from ethanol',
+        title: 'University Göttingen: Darstellung von Acetaldehyd aus Ethanol',
         url: 'https://unterrichtsmaterialien-chemie.uni-goettingen.de/exp_neu.php?id=2137',
       },
       {
-        title: 'OpenStax: oxidation of alcohols',
+        title: 'McMurry, OpenStax Organic Chemistry 17.7: Oxidation of Alcohols',
         url: 'https://openstax.org/books/organic-chemistry/pages/17-7-oxidation-of-alcohols',
       },
     ],
@@ -2145,9 +2145,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-soil-decomposition',
     name: '土壤微生物的分解作用',
-    title: '落叶与淀粉的变化，怎样成为证据？',
-    question: '落叶与淀粉的变化，怎样成为证据？',
-    description: '比较处理土与自然土，追踪淀粉培养液的分样和显色，并检验产物继续被消耗的反例。',
+    title: '落叶不见了，碳去了哪里？',
+    question: '落叶不见了，碳去了哪里？',
+    description: '沿同一批碳追踪胞外分解与继续利用，解释为什么迟测糖可能得到阴性。',
     color: '#c9c6a7',
     tag: '土壤对照 · 独立分样 · 检测边界',
     related: [
@@ -2162,12 +2162,30 @@ export const topics: Topic[] = [
         url: 'https://www.nrcs.usda.gov/state-offices/illinois/soil-tech-note-17a-soil-respiration',
       },
       {
-        title: 'University of Maryland — Starch Hydrolysis by Amylase',
+        title: 'Nam Sun Wang, University of Maryland — Starch Hydrolysis by Amylase',
         url: 'https://user.eng.umd.edu/~nsw/ench485/lab5.htm',
       },
       {
         title: 'Austin Community College — Starch Hydrolysis',
         url: 'https://sites.google.com/austincc.edu/microbugz/lab-exercises/differential-tests/starch-hydrolysis',
+      },
+      {
+        title:
+          'Olagoke et al. (2020), Persistent Activities of Extracellular Enzymes Adsorbed to Soil Minerals',
+        url: 'https://doi.org/10.3390/microorganisms8111796',
+      },
+      {
+        title:
+          'Hill, Farrar & Jones (2008), Decoupling of microbial glucose uptake and mineralization in soil',
+        url: 'https://doi.org/10.1016/j.soilbio.2007.09.008',
+      },
+      {
+        title: 'IUBMB EC3.2.1.1 — alpha-amylase',
+        url: 'https://iubmb.qmul.ac.uk/enzyme/EC3/2/1/1.html',
+      },
+      {
+        title: 'IUBMB EC3.2.1.4 — cellulase',
+        url: 'https://iubmb.qmul.ac.uk/enzyme/EC3/2/1/4.html',
       },
     ],
     number: '363',
@@ -4997,6 +5015,10 @@ export const topics: Topic[] = [
         title: 'MIT — Magnetization force densities',
         url: 'https://web.mit.edu/6.013_book/www/chapter9/9.8.html',
       },
+      {
+        title: 'OpenStax4.4 Uniform and nonuniform circular motion',
+        url: 'https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion',
+      },
     ],
     number: '264',
   },
@@ -6009,7 +6031,7 @@ export const topics: Topic[] = [
     related: ['polarization', 'wave-interference'],
     sources: [
       {
-        title: 'OpenStax — Electromagnetic waves',
+        title: 'OpenStax16.1 Electromagnetic waves',
         url: 'https://openstax.org/books/university-physics-volume-2/pages/16-1-maxwells-equations-and-electromagnetic-waves',
       },
     ],
@@ -6095,9 +6117,9 @@ export const topics: Topic[] = [
   {
     slug: 'eddy-current-lab',
     name: '涡流与电磁阻尼',
-    title: '没有接触，磁体怎样让运动慢下来？',
-    question: '没有接触，磁体怎样让运动慢下来？',
-    description: '分别追踪指针、铝框、铜盘、落磁和弹簧振子的机械能去向。',
+    title: '磁场怎样制动，也怎样驱动？',
+    question: '磁场怎样制动，也怎样驱动？',
+    description: '追踪同一物体的运动、局部感应电流与能量，检验开缝、反转和静止的预测。',
     color: '#799066',
     tag: '阻尼与驱动',
     related: ['eddy-current-brake', 'induction-motor'],
@@ -6105,6 +6127,22 @@ export const topics: Topic[] = [
       {
         title: 'OpenStax — Eddy currents',
         url: 'https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents',
+      },
+      {
+        title: 'Georgia Tech Physics 2232, Lab 7 theoretical models',
+        url: 'https://phys2232.physics.gatech.edu/labs/lab7/models/models.html',
+      },
+      {
+        title: 'Haus & Melcher, Electromagnetic Fields and Energy §11.5',
+        url: 'https://web.mit.edu/6.013_book/www/chapter11/11.5.html',
+      },
+      {
+        title: 'Haus & Melcher, Electromagnetic Fields and Energy §11.7',
+        url: 'https://web.mit.edu/6.013_book/www/chapter11/11.7.html',
+      },
+      {
+        title: 'Donoso, Ladera & Martín (2011), Damped fall of magnets inside a conducting pipe',
+        url: 'https://doi.org/10.1119/1.3531964',
       },
     ],
     number: '224',

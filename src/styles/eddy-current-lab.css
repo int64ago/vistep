@@ -1,0 +1,237 @@
+.ec20 {
+  width: 100%;
+  max-width: 680px;
+  margin: auto;
+  color: #63766a;
+  font-size: 16px;
+  line-height: 1.4;
+  --ec20-line: #d5dfd1;
+}
+.ec20-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 27px;
+  padding: 0 14px;
+}
+.ec20-head span {
+  font-size: 16px;
+}
+.ec20-head strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ec20-stage {
+  height: 275px;
+  display: grid;
+  place-items: center;
+  margin: 5px auto;
+  width: 100%;
+}
+.ec20-art {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.ec20-art text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #63766a;
+  letter-spacing: 0;
+}
+.ec20-state {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 23px;
+  text-align: center;
+  margin: 4px 12px 0;
+}
+.ec20-energy {
+  width: min(100%, 490px);
+  padding: 6px 16px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 11px;
+}
+.ec20-energy p {
+  margin: 0;
+  font-size: 16px;
+}
+.ec20-energy-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  font-size: 16px;
+}
+.ec20-energy-row strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.ec20-energy-row > div {
+  grid-column: 1/-1;
+  height: 10px;
+  background: #e8ecdf;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.ec20-energy-row i {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+}
+.ec20-balance {
+  text-align: center;
+  color: #8a927d;
+}
+.ec20-controls {
+  display: grid;
+  gap: 15px;
+  padding: 14px 12px 4px;
+  min-width: 0;
+}
+.ec20-controls .segmented {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ec20-controls button,
+.ec20-reveal {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.ec20-controls label,
+.ec20-controls output,
+.ec20-controls legend {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.ec20-controls input[type='range'] {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-inline: 0;
+}
+.ec20-notes {
+  font-size: 16px;
+  margin: 18px 12px 0;
+}
+.ec20-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.ec20-notes p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.ec20[data-watch='true'] .ec20-notes {
+  display: none;
+}
+.ec20-reveal {
+  border: 1px solid #b7c8aa;
+  background: #e8eedc;
+  color: #54734f;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .ec20 {
+    max-width: 360px;
+  }
+  .ec20-head {
+    display: block;
+    text-align: center;
+    padding: 0 6px;
+    min-height: 46px;
+  }
+  .ec20-head span {
+    display: block;
+    color: #899380;
+  }
+  .ec20-head strong {
+    display: block;
+    margin-top: 1px;
+  }
+  .ec20-stage {
+    height: 252px;
+    margin: 0;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .ec20-state {
+    min-height: 45px;
+    margin: 2px 5px 0;
+  }
+  .ec20-energy {
+    gap: 9px;
+    padding: 7px 3px;
+  }
+  .ec20-energy-row {
+    font-size: 16px;
+  }
+  .ec20-art text {
+    font-size: 17px;
+  }
+  .ec20-controls {
+    padding-inline: 4px;
+  }
+  .ec20-controls .segmented button {
+    flex: 1 1 90px;
+    min-width: 44px;
+  }
+  .ec20-notes {
+    margin-inline: 4px;
+  }
+}
+@media (max-width: 380px) and (max-height: 650px) {
+  .ec20-stage {
+    height: 228px;
+    max-width: 254px;
+  }
+  .ec20-art text {
+    font-size: 18px;
+  }
+  .ec20-head {
+    min-height: 42px;
+  }
+  .ec20-state {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ec20 * {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 380px) and (max-height: 650px) {
+  .showcase[data-slug='eddy-current-lab'] .film-caption {
+    padding-top: 2px;
+    padding-bottom: 4px;
+    min-height: 68px;
+  }
+  .showcase[data-slug='eddy-current-lab'] .film-chapters {
+    margin-top: 0;
+  }
+  .showcase[data-slug='eddy-current-lab'] .film-chapters summary {
+    min-height: 44px;
+  }
+  .showcase[data-slug='eddy-current-lab'] .film-transport {
+    padding-bottom: 7px;
+  }
+}
+.showcase[data-slug='eddy-current-lab'] .ec20-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  min-width: 44px;
+  min-height: 44px;
+  white-space: normal;
+}

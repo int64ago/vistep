@@ -62,7 +62,7 @@
 | [乙酸乙酯的制备与水解](../../src/content/chem-ester-reaction.mdx)                 | 4:22 | 酯从哪里收集，又怎样水解？                           |
 | [怎样比较化学反应的快慢](../../src/content/chem-reaction-rates.mdx)               | 4:24 | 反应更快，是相遇更多还是更容易成功？                 |
 | [氢键与冰的开放结构](../../src/content/chem-hydrogen-bond-network.mdx)            | 2:27 | 冰为什么比液态水更疏松？                             |
-| [乙醇的两种氧化](../../src/content/chem-alcohol-oxidation.mdx)                    | 2:51 | 铜丝为什么变黑又变红？                               |
+| [乙醇的两种氧化](../../src/content/chem-alcohol-oxidation.mdx)                    | 3:48 | 铜能回来，氧为什么会用完？                           |
 | [钠与乙醇的证据链](../../src/content/chem-sodium-alcohol.mdx)                     | 3:23 | 气泡里的氢来自乙醇的哪里？                           |
 | [质谱分离与分子式证据](../../src/content/chem-mass-spectrometry.mdx)              | 3:18 | 最高的峰、最右的峰，哪一个能说明分子质量？           |
 | [原电池中的两条电荷通路](../../src/content/chem-galvanic-cells.mdx)               | 4:47 | 电子绕过溶液，电路怎样闭合？                         |
@@ -137,7 +137,7 @@
 | [基因表达与性状证据](../../src/content/bio-gene-expression.mdx)               | 3:26 | DNA相同，为什么细胞与性状仍会不同？            |
 | [信息传递与生态系统稳定性](../../src/content/bio-ecosystem-stability.mdx)     | 4:47 | 一个生态系统怎样回应变化？                     |
 | [遗传密码与蛋白质合成](../../src/content/bio-genetic-code.mdx)                | 3:53 | 一个碱基的位置，怎样改变后面的信息？           |
-| [土壤微生物的分解作用](../../src/content/bio-soil-decomposition.mdx)          | 4:08 | 落叶与淀粉的变化，怎样成为证据？               |
+| [土壤微生物的分解作用](../../src/content/bio-soil-decomposition.mdx)          | 4:23 | 落叶不见了，碳去了哪里？                       |
 | [DNA复制的证据与过程](../../src/content/bio-dna-replication.mdx)              | 3:42 | 一道中间条带，为什么还要再等一代？             |
 | [生态系统的能量与物质](../../src/content/bio-ecosystem-energy.mdx)            | 4:18 | 能量流过以后，物质去了哪里？                   |
 | [DNA结构的约束与模型](../../src/content/bio-dna-structure.mdx)                | 3:19 | DNA的搭档为什么不能随便换？                    |
@@ -260,7 +260,7 @@
 | [赫兹与电磁波实验](../../src/content/hertz-wave-lab.mdx)                   | 2:36 | 两处没有相连的间隙，为什么都出现火花？           |
 | [交流电与LC振荡实验](../../src/content/ac-circuit-lab.mdx)                 | 4:24 | 电流换方向时，灯泡与线圈怎样响应？               |
 | [从电流面积测电荷](../../src/content/capacitor-current-lab.mdx)            | 1:37 | 一条下降的电流曲线，怎样告诉我们放出了多少电？   |
-| [涡流与电磁阻尼](../../src/content/eddy-current-lab.mdx)                   | 3:40 | 没有接触，磁体怎样让运动慢下来？                 |
+| [涡流与电磁阻尼](../../src/content/eddy-current-lab.mdx)                   | 4:08 | 磁场怎样制动，也怎样驱动？                       |
 | [平行板电容的控制变量](../../src/content/parallel-plate-capacitor-lab.mdx) | 1:34 | 电压变了，是电荷变了，还是电容变了？             |
 | [自感与两灯实验](../../src/content/self-induction-lab.mdx)                 | 2:48 | 断开电源以后，灯泡为什么还会亮？                 |
 | [互感实验室](../../src/content/mutual-induction-lab.mdx)                   | 2:10 | 两组导线没有接通，信号怎样传过去？               |

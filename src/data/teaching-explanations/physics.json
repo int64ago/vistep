@@ -2248,5 +2248,255 @@
         "en": "For terminal motion, replace G with G−B, shifting the points downward by the assumed buoyancy. During acceleration, subtract ma as well. Here B is a conditional comparison, not an independently measured textbook value."
       }
     }
+  },
+  "e2-galvanometer-damping": {
+    "sceneSlug": "eddy-current-lab",
+    "question": {
+      "zh": "不接电源，短接为什么让指针更快稳定？",
+      "en": "Why does a short circuit settle the pointer without a supply?"
+    },
+    "lead": {
+      "zh": "保持相同偏转，只改变线圈能否形成闭合电流。",
+      "en": "Keep the deflection fixed and change only the closed current path."
+    },
+    "principle": {
+      "zh": "运动产生电动势，闭合电流产生反向转矩；初始机械能成为热。",
+      "en": "Motion produces emf; closed current produces opposing torque and dissipates initial mechanical energy."
+    },
+    "transfer": {
+      "question": {
+        "zh": "指针静止但仍在磁场里，会持续有制动电流吗？",
+        "en": "Does a stationary pointer in the field maintain a braking current?"
+      },
+      "explanation": {
+        "zh": "不会。在忽略自感暂态的近似下，速度为零使感应电动势和电流为零。",
+        "en": "No. In this resistive approximation, zero motion means zero emf and current after transients."
+      }
+    }
+  },
+  "e2-aluminium-frame-drive": {
+    "sceneSlug": "eddy-current-lab",
+    "question": {
+      "zh": "磁体没碰铝框，怎样把它带动？",
+      "en": "How can a magnet drive a frame without contact?"
+    },
+    "lead": {
+      "zh": "分别追踪磁体和铝框的角度，再检验完全同步的假设。",
+      "en": "Track the magnet and frame separately, then test exact synchronism."
+    },
+    "principle": {
+      "zh": "转差使磁通改变，感应电流与磁场产生驱动转矩；输入功率包含机械输出和电阻热。",
+      "en": "Slip changes flux and creates current and torque; input power feeds mechanical output and Joule heating."
+    },
+    "transfer": {
+      "question": {
+        "zh": "若铝框与磁体完全同步，这一近似还能持续驱动吗？",
+        "en": "Can this approximation sustain torque at exact synchronism?"
+      },
+      "explanation": {
+        "zh": "不能。没有相对转动，磁通不再变化，持续感应电流与驱动转矩都为零。",
+        "en": "No. With no relative rotation, flux stops changing, so sustained current and torque vanish."
+      }
+    }
+  },
+  "e2-copper-disc-brake": {
+    "sceneSlug": "eddy-current-lab",
+    "question": {
+      "zh": "铜盘没有碰到磁极，为何减速？",
+      "en": "Why does the disc slow without touching the poles?"
+    },
+    "lead": {
+      "zh": "从相同初速出发，近看同一盘面的两个磁场边缘。",
+      "en": "Start at the same speed and inspect both field edges on the same surface."
+    },
+    "principle": {
+      "zh": "相反方向的局部电流共同产生反向转矩，损失的转动能进入热。",
+      "en": "Opposite local currents together produce braking torque and transfer rotational energy into heat."
+    },
+    "transfer": {
+      "question": {
+        "zh": "只反转磁场，会把制动改成加速吗？",
+        "en": "Will reversing only the field turn the brake into a drive?"
+      },
+      "explanation": {
+        "zh": "不会。电流随磁场反向，两次符号变化使制动方向不变；低速电阻近似下制动系数正比于磁场平方。",
+        "en": "No. Current also reverses. Both sign changes preserve braking; its coefficient scales with field squared in this low-speed resistive model."
+      }
+    }
+  },
+  "e2-magnet-falling-tube": {
+    "sceneSlug": "eddy-current-lab",
+    "question": {
+      "zh": "铝管不吸住磁体，为什么落得慢？",
+      "en": "Why does the magnet fall slowly if aluminium does not hold it?"
+    },
+    "lead": {
+      "zh": "跟踪磁体经过固定管环，再比较纵向开缝和静止两种反例。",
+      "en": "Follow the magnet through fixed rings, then compare a slit and a stationary magnet."
+    },
+    "principle": {
+      "zh": "磁通变化产生环流，电磁作用阻碍下落；重力供能转为电阻热，静止时持续感应消失。",
+      "en": "Changing flux drives current and drag. Gravitational energy becomes heat, while a stationary magnet sustains no induction."
+    },
+    "transfer": {
+      "question": {
+        "zh": "开缝后能否说电流全为零？固定磁体又怎样？",
+        "en": "Does a slit remove all currents? What if the magnet is held still?"
+      },
+      "explanation": {
+        "zh": "开缝只切断整圈，仍可有局部回流；固定在完整管内则磁通不再变化，忽略暂态后持续电流为零。",
+        "en": "A slit breaks complete loops but permits local returns. Holding the magnet in an intact tube removes changing flux and sustained current after transients."
+      }
+    }
+  },
+  "e2-magnet-coil-damping": {
+    "sceneSlug": "eddy-current-lab",
+    "question": {
+      "zh": "只闭合线圈，弹簧振动为什么更快衰减？",
+      "en": "Why does merely closing the coil damp the spring faster?"
+    },
+    "lead": {
+      "zh": "同一弹簧、同一初始位移，追踪线圈、运动方向和能量。",
+      "en": "Keep the spring and initial displacement fixed; track current, motion and energy."
+    },
+    "principle": {
+      "zh": "变化磁通产生电流，其作用在两种运动方向都阻碍运动；振动能进入电阻热。",
+      "en": "Changing flux induces current whose response opposes either direction of motion, dissipating oscillation energy as heat."
+    },
+    "transfer": {
+      "question": {
+        "zh": "只打开回路、保留磁体和弹簧，会怎样？",
+        "en": "What changes if only the circuit is opened?"
+      },
+      "explanation": {
+        "zh": "感应电动势仍可存在，但没有闭合电流带来的额外阻尼；只剩模型中的背景损耗。",
+        "en": "Induced emf can remain, but the additional closed-current damping disappears, leaving background losses."
+      }
+    }
+  },
+  "required-1-hertz": {
+    "sceneSlug": "hertz-wave-lab",
+    "question": {
+      "zh": "没有连线，另一处为什么也有火花？",
+      "en": "Why does a separate, unwired gap respond?"
+    },
+    "lead": {
+      "zh": "追踪同一波包的传播延迟，再比较驻波、折射、偏振和衍射。",
+      "en": "Track one delayed packet, then compare standing waves, refraction, polarization and diffraction."
+    },
+    "principle": {
+      "zh": "变化的电磁场携带能量传播；接收环的磁通变化产生响应，多种波动现象共同构成证据。",
+      "en": "Changing electromagnetic fields transport energy; changing linked flux produces reception, with several wave properties forming the evidence."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持同一波包时刻，把接收环转过90°，模型会怎样？",
+        "en": "At the same packet instant, what happens if the receiving loop turns 90 degrees?"
+      },
+      "explanation": {
+        "zh": "磁场对环面积的投影趋于零，理想环的响应与相对功率趋于零；这不是波停止传播，也不是自然衰减。",
+        "en": "The projected area tends to zero, so ideal-loop response and normalized power tend to zero; propagation has not stopped, and this is not natural packet decay."
+      }
+    }
+  },
+  "e2-hertz-electromagnetic-waves": {
+    "sceneSlug": "hertz-wave-lab",
+    "question": {
+      "zh": "没有连线，另一处为什么也有火花？",
+      "en": "Why does a separate, unwired gap respond?"
+    },
+    "lead": {
+      "zh": "追踪同一波包的传播延迟，再比较驻波、折射、偏振和衍射。",
+      "en": "Track one delayed packet, then compare standing waves, refraction, polarization and diffraction."
+    },
+    "principle": {
+      "zh": "变化的电磁场携带能量传播；接收环的磁通变化产生响应，多种波动现象共同构成证据。",
+      "en": "Changing electromagnetic fields transport energy; changing linked flux produces reception, with several wave properties forming the evidence."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持同一波包时刻，把接收环转过90°，模型会怎样？",
+        "en": "At the same packet instant, what happens if the receiving loop turns 90 degrees?"
+      },
+      "explanation": {
+        "zh": "磁场对环面积的投影趋于零，理想环的响应与相对功率趋于零；这不是波停止传播，也不是自然衰减。",
+        "en": "The projected area tends to zero, so ideal-loop response and normalized power tend to zero; propagation has not stopped, and this is not natural packet decay."
+      }
+    }
+  },
+  "required-2-curve-tangent": {
+    "sceneSlug": "curved-motion-lab",
+    "question": {
+      "zh": "钢球离开弯轨后，为什么不继续拐弯？",
+      "en": "Why does the ball stop turning after it leaves the track?"
+    },
+    "lead": {
+      "zh": "追踪红色印迹，再拆去最后一段比较新出口。",
+      "en": "Follow the red trace and compare the new exit after removing a segment."
+    },
+    "principle": {
+      "zh": "约束撤去后，忽略水平阻力的钢球保持出口处的速度；该方向是轨迹的切线。",
+      "en": "With constraint removed and negligible horizontal resistance, the ball retains its departure velocity, tangent to the trajectory."
+    },
+    "transfer": {
+      "question": {
+        "zh": "出口提前到B但速率不变，直线印迹怎样变化？",
+        "en": "If exit B is earlier but speed is unchanged, how does the outgoing trace change?"
+      },
+      "explanation": {
+        "zh": "印迹方向跟随B点切线改变，而不是统一沿半径或朝圆心。",
+        "en": "Its direction follows the tangent at B, rather than a universal radial or centreward direction."
+      }
+    }
+  },
+  "required-2-magnetic-path": {
+    "sceneSlug": "curved-motion-lab",
+    "question": {
+      "zh": "有力、有加速度，就一定会转弯吗？",
+      "en": "Do force and acceleration always cause turning?"
+    },
+    "lead": {
+      "zh": "把同一个磁铁放在钢球正前方，再移到侧面。",
+      "en": "Put the same magnet ahead of the ball, then move it aside."
+    },
+    "principle": {
+      "zh": "合力与速度共线时改变速率；垂直于速度的分量改变方向。",
+      "en": "A collinear force changes speed; the perpendicular component changes direction."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把模型磁作用强度调为零，原有运动会怎样？",
+        "en": "What happens if model magnetic strength is set to zero?"
+      },
+      "explanation": {
+        "zh": "球不再受到该磁力，从原初速度开始匀速直行；零力不等于零速度。",
+        "en": "The magnetic force vanishes and the ball moves uniformly with its initial velocity; zero force does not mean zero velocity."
+      }
+    }
+  },
+  "required-2-dart-direction": {
+    "sceneSlug": "curved-motion-lab",
+    "question": {
+      "zh": "重力向下，飞镖为什么不一直竖直朝下？",
+      "en": "With gravity downward, why does the dart not always point down?"
+    },
+    "lead": {
+      "zh": "对照同一飞镖在上升、最高点和下降时的杆轴与轨迹。",
+      "en": "Compare the shaft and trajectory during ascent, at the apex and during descent."
+    },
+    "principle": {
+      "zh": "快速尾翼稳定近似使杆轴对齐速度切线；合力方向与速度方向是两个不同的量。",
+      "en": "Rapid tail stabilization approximately aligns the shaft with tangent velocity; force and velocity are distinct directions."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把投射角从25°调到55°，最高点处杆轴方向会怎样？",
+        "en": "After increasing launch angle from 25 to 55 degrees, how does the shaft point at the apex?"
+      },
+      "explanation": {
+        "zh": "两种情况下竖直速度都在最高点为零，仍有水平速度，杆轴近似水平；最高点的位置和高度改变。",
+        "en": "In both cases vertical velocity is zero at the apex while horizontal velocity remains, so the shaft is approximately horizontal; the apex location and height change."
+      }
+    }
   }
 }

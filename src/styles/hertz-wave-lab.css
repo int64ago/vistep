@@ -1,0 +1,283 @@
+.hz20 {
+  width: 100%;
+  max-width: 680px;
+  margin: auto;
+  color: #63766a;
+  font-size: 16px;
+  line-height: 1.4;
+  --hz20-line: #d5dfd1;
+}
+.hz20-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 27px;
+  padding: 0 14px;
+}
+.hz20-head span {
+  font-size: 16px;
+}
+.hz20-head strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.hz20-stage {
+  height: 275px;
+  display: grid;
+  place-items: center;
+  margin: 5px auto;
+  width: 100%;
+}
+.hz20-art {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.hz20-art text {
+  font: 18px var(--font-sans, sans-serif);
+  fill: #63766a;
+  letter-spacing: 0;
+}
+.hz20-state {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 23px;
+  text-align: center;
+  margin: 4px 12px 0;
+}
+.hz20-energy {
+  width: min(100%, 490px);
+  padding: 6px 16px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 11px;
+}
+.hz20-energy p {
+  margin: 0;
+  font-size: 16px;
+}
+.hz20-energy-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  font-size: 16px;
+}
+.hz20-energy-row strong {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.hz20-energy-row > div {
+  grid-column: 1/-1;
+  height: 10px;
+  background: #e8ecdf;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.hz20-energy-row i {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+}
+.hz20-balance {
+  text-align: center;
+  color: #8a927d;
+}
+.hz20-controls {
+  display: grid;
+  gap: 15px;
+  padding: 14px 12px 4px;
+  min-width: 0;
+}
+.hz20-controls .segmented {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hz20-controls button,
+.hz20-reveal {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+.hz20-controls label,
+.hz20-controls output,
+.hz20-controls legend {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.hz20-controls input[type='range'] {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-inline: 0;
+}
+.hz20-notes {
+  font-size: 16px;
+  margin: 18px 12px 0;
+}
+.hz20-notes summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.hz20-notes p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.hz20[data-watch='true'] .hz20-notes {
+  display: none;
+}
+.hz20-reveal {
+  border: 1px solid #b7c8aa;
+  background: #e8eedc;
+  color: #54734f;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .hz20 {
+    max-width: 360px;
+  }
+  .hz20-head {
+    display: block;
+    text-align: center;
+    padding: 0 6px;
+    min-height: 46px;
+  }
+  .hz20-head span {
+    display: block;
+    color: #899380;
+  }
+  .hz20-head strong {
+    display: block;
+    margin-top: 1px;
+  }
+  .hz20-stage {
+    height: 252px;
+    margin: 0;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .hz20-state {
+    min-height: 45px;
+    margin: 2px 5px 0;
+  }
+  .hz20-energy {
+    gap: 9px;
+    padding: 7px 3px;
+  }
+  .hz20-energy-row {
+    font-size: 16px;
+  }
+  .hz20-art text {
+    font-size: 17px;
+  }
+  .hz20-controls {
+    padding-inline: 4px;
+  }
+  .hz20-controls .segmented button {
+    flex: 1 1 90px;
+    min-width: 44px;
+  }
+  .hz20-notes {
+    margin-inline: 4px;
+  }
+}
+@media (max-width: 380px) and (max-height: 650px) {
+  .hz20-stage {
+    height: 228px;
+    max-width: 254px;
+  }
+  .hz20-art text {
+    font-size: 18px;
+  }
+  .hz20-head {
+    min-height: 42px;
+  }
+  .hz20-state {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz20 * {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 380px) and (max-height: 650px) {
+  .showcase[data-slug='hertz-wave-lab'] .film-caption {
+    padding-top: 2px;
+    padding-bottom: 4px;
+    min-height: 68px;
+  }
+  .showcase[data-slug='hertz-wave-lab'] .film-chapters {
+    margin-top: 0;
+  }
+  .showcase[data-slug='hertz-wave-lab'] .film-chapters summary {
+    min-height: 44px;
+  }
+  .showcase[data-slug='hertz-wave-lab'] .film-transport {
+    padding-bottom: 7px;
+  }
+}
+.showcase[data-slug='hertz-wave-lab'] .hz20-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  min-width: 44px;
+  min-height: 44px;
+  white-space: normal;
+}
+
+.hz20-art {
+  height: 230px;
+  max-width: 560px;
+  margin: auto;
+}
+.hz20-readout {
+  margin: 0 6px;
+  text-align: center;
+  font-size: 16px;
+  min-height: 45px;
+}
+.hz20-note {
+  font-size: 16px;
+  margin: 14px 5px;
+}
+.hz20-note summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.hz20-note p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.hz20[data-watch='true'] .hz20-note {
+  display: none;
+}
+@media (max-width: 640px) {
+  .hz20-art {
+    max-width: 280px;
+    height: 230px;
+  }
+  .hz20-art text {
+    font-size: 18px;
+  }
+  .hz20-head {
+    min-height: 42px;
+  }
+}
+@media (max-width: 380px) and (max-height: 650px) {
+  .hz20-art {
+    max-width: 254px;
+    height: 209px;
+  }
+}

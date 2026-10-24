@@ -62,7 +62,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                     | 4:22 | Where is the ester collected, and how does it hydrolyse?                      |
 | [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                          | 4:24 | Does a faster reaction mean more encounters or more success?                  |
 | [Hydrogen bonds and the open structure of ice](../src/content/en/chem-hydrogen-bond-network.mdx)    | 2:27 | Why does ice occupy more space than liquid water?                             |
-| [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                    | 2:51 | Why does copper turn black and then return?                                   |
+| [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                    | 3:48 | Copper returns. Why can oxygen run out?                                       |
 | [Evidence from sodium and ethanol](../src/content/en/chem-sodium-alcohol.mdx)                       | 3:23 | Where in ethanol does the released hydrogen come from?                        |
 | [Mass separation and molecular-formula evidence](../src/content/en/chem-mass-spectrometry.mdx)      | 3:18 | Can the tallest or rightmost peak establish molecular mass?                   |
 | [Two charge pathways in a galvanic cell](../src/content/en/chem-galvanic-cells.mdx)                 | 4:47 | If electrons avoid the liquid, how does the circuit close?                    |
@@ -137,7 +137,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Gene expression and trait evidence](../src/content/en/bio-gene-expression.mdx)                   | 3:26 | Why can cells and traits differ when their genes remain?                         |
 | [Information and ecosystem stability](../src/content/en/bio-ecosystem-stability.mdx)              | 4:47 | How does an ecosystem respond to change?                                         |
 | [Genetic code and protein synthesis](../src/content/en/bio-genetic-code.mdx)                      | 3:53 | How can one base shift all the information downstream?                           |
-| [Decomposition by soil microbes](../src/content/en/bio-soil-decomposition.mdx)                    | 4:08 | How do changes in leaves and starch become evidence?                             |
+| [Decomposition by soil microbes](../src/content/en/bio-soil-decomposition.mdx)                    | 4:23 | Where does the carbon go when litter disappears?                                 |
 | [Evidence and mechanism of DNA replication](../src/content/en/bio-dna-replication.mdx)            | 3:42 | Why follow an intermediate band for another generation?                          |
 | [Energy and matter in ecosystems](../src/content/en/bio-ecosystem-energy.mdx)                     | 4:18 | After energy flows through, where does matter go?                                |
 | [DNA constraints and structural models](../src/content/en/bio-dna-structure.mdx)                  | 3:19 | Why can DNA bases not take any partner?                                          |
@@ -260,7 +260,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Hertz and electromagnetic-wave experiments](../src/content/en/hertz-wave-lab.mdx)             | 2:36 | Why can two unconnected gaps both produce sparks?                                        |
 | [AC and LC oscillation experiments](../src/content/en/ac-circuit-lab.mdx)                      | 4:24 | How do lamps and coils respond when current reverses?                                    |
 | [Charge from Current Area](../src/content/en/capacitor-current-lab.mdx)                        | 1:37 | How does a declining current curve reveal released charge?                               |
-| [Eddy currents and magnetic damping](../src/content/en/eddy-current-lab.mdx)                   | 3:40 | How can a magnet slow motion without contact?                                            |
+| [Eddy currents and magnetic damping](../src/content/en/eddy-current-lab.mdx)                   | 4:08 | How can a field brake motion—or drive it?                                                |
 | [Controlling Parallel-Plate Capacitance](../src/content/en/parallel-plate-capacitor-lab.mdx)   | 1:34 | When voltage changes, did charge or capacitance change?                                  |
 | [Self-induction lamp experiments](../src/content/en/self-induction-lab.mdx)                    | 2:48 | Why can a lamp shine after the source is disconnected?                                   |
 | [Mutual-induction experiments](../src/content/en/mutual-induction-lab.mdx)                     | 2:10 | How does a signal cross between unconnected circuits?                                    |

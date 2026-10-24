@@ -1,7 +1,9 @@
-# Hertz and wave properties
+# Hertz wave evidence — retained content, readable causal views
 
-Six chapters156s, one contiguous textbook e2-hertz-electromagnetic-waves range. Evidence evolves from causal spark packet to separate gapped loop, conducting wall and standing waves, refraction interface, loop polarization and slit diffraction. Distinct explanatory apparatuses; no claim of reproducing exact historical apparatus dimensions.
+Scope: candidate only, all existing six bilingual cue records, measured chapter starts, duration and textbook windows remain byte-identical. Root owns integration, global/static verification and existing audio.
 
-Misconception: unconnected response is instantaneous, scalar, or sufficient alone. Models: retarded damped100MHz packet, c=299792458m/s, receiver flux projection, ideal conducting-wall standing field, Snell interface and scalar far-field sinc² slit. Visible spark brightness indicates relative response only; no breakdown threshold. Primary reference OpenStax UP2 §16.1. Numerical delay/causality, wallnode, Snell, orthogonal coupling and diffraction-zero tests. Wavefront distance shares scale with3m receiver distance. Smartphone composes chosen single apparatus plus HTML readout.
+Track one delayed packet across separate gaps. The source and receiving loop are not wired together. Signal R is visibly labelled ×4 only for time-shape comparison, while the independent model retains the original 1/(1+r) attenuation. Rotate the receiving loop at the same packet instant; its projected area and cos² normalized power change together. Decompose reflected/incident fields before the resultant standing pattern, use the same Snell angle for rays and changed front spacing, and derive the slit rays/profile from the same scalar sinc² model.
 
-Author model/packet review only. Full visual playback and labels, real-phone performance, audio production/listening and browser failure modes not-run; parent integration owns them.
+Phone: independently mapped280×230 canvas (254×209 visible at320),18px SVG text renders above16px. Desktop560×230 uses separate positions/scales. Scope-specific CSS only, no global changes. Watch follows measured speech; Explore inherits current fields until a user chooses a value, keeps manual choices and never leaks them back to Watch.
+
+Validation: exact original numerical output probes, independent boundary/benchmark tests, real mounted React continuity, complete Showcase/Base CSS native stills and controls. Technical clock traversal, author still inspection, transcript/timing review, final-site acceptance and subjective listening are recorded separately. Sources and actual read page images are in checks/preparation.json and checks/sources.

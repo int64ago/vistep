@@ -1,52 +1,43 @@
 ---
-import { litterState, leafHoles } from '../../models/bio-soil-decomposition';
-const rows = [litterState(28, 0.12), litterState(28, 1)];
+import { carbonPools } from '../../models/bio-soil-decomposition';
+const a = carbonPools(7, 0.55, 1.2);
 ---
 
 <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="400" height="230" fill="#f1efe2"></rect>
+  <rect width="400" height="230" fill="#f0f1e6"></rect>
+  <path d="M69 37Q128 87 72 155Q17 100 69 37Z" fill="#a6935c"></path>
+  <path
+    d="M72 161V48m0 22 21 21M72 101 50 81m22 42 18-18"
+    stroke="#d3c58f"
+    fill="none"
+    stroke-width="3"></path>
+  <path d="M125 101H162m-8-7 8 7-8 7" stroke="#859d82" fill="none" stroke-width="3"></path>
+  <path
+    d="M214 118h-31q-20 0-20 20v28q0 20 20 20h170q20 0 20-20v-28q0-20-20-20h-110"
+    fill="#dce7dc"
+    stroke="#829b83"
+    stroke-width="3"></path>
+  <path d="M214 110v20m29-20v20" stroke="#9a8a67" stroke-width="5"></path>
+  <path d="M182 73h29m10 0h29m10 0h29" stroke="#ba9a61" stroke-width="4"></path>
   {
-    rows.map((r, i) => (
-      <g transform={`translate(${i === 0 ? 110 : 290} 105)`}>
-        <>
-          <path d="M-64-34h128v104q-64 21-128 0Z" fill="#e2ddc9" stroke="#c5bca3" />
-          <path d="M-62 11h124v57q-62 20-124 0Z" fill="#a59673" />
-          <ellipse cy="12" rx="62" ry="12" fill="#b6a682" />
-        </>
-        <>
-          <defs>
-            <mask id={`soil-cover-leaf-${i}`}>
-              <path d="M0-56Q46-18 0 49Q-43 5 0-56Z" fill="white" />
-              {leafHoles.map((h) => (
-                <circle
-                  cx={h.x * 1.25}
-                  cy={h.y * 1.25}
-                  r={h.r * Math.sqrt(1 - r.remaining) * 3.4}
-                  fill="black"
-                />
-              ))}
-            </mask>
-          </defs>
-          <path
-            d="M0-56Q46-18 0 49Q-43 5 0-56Z"
-            fill="#a68d58"
-            mask={`url(#soil-cover-leaf-${i})`}
-          />
-          <path
-            d="M0 49V-48m0 27 16-16M0 2l-15-14m15 33 14-13"
-            stroke="#cab784"
-            stroke-width="2"
-            fill="none"
-          />
-        </>
-        <path
-          d="M-48 39h6m20 15h5m23-22h5m22 22h5"
-          stroke="#c4b390"
-          stroke-width="3"
-          stroke-linecap="round"
-        />
-      </g>
+    [183, 222, 261, 300].map((x, i) => (
+      <rect
+        x={x - 12}
+        y={61 + (i === 1 ? 37 : 0)}
+        width="24"
+        height="24"
+        rx="8"
+        fill="#d8bd7f"
+        stroke="#ac986a"
+      />
     ))
   }
-  <path d="M182 109h36m-7-7 7 7-7 7" stroke="#c2bea2" fill="none" stroke-width="2"></path>
+  <rect x="217" y="148" width="24" height="24" rx="8" fill="#c2d2b6" stroke="#8da182"></rect>
+  <rect x="258" y="148" width="24" height="24" rx="8" fill="#c2d2b6" stroke="#8da182"></rect>
+  <path d="M126 208H374" stroke="#e2dfcc" stroke-width="8" stroke-linecap="round"></path>
+  <path
+    d={`M126 208H${126 + 248 * a.other}`}
+    stroke="#8ba58d"
+    stroke-width="8"
+    stroke-linecap="round"></path>
 </svg>
