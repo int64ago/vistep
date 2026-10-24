@@ -1,0 +1,604 @@
+{
+  "status": "frozen scene-owned source; final root integrated review pending",
+  "topic": {
+    "slug": "ac-circuit-lab",
+    "name": "交流电与LC振荡实验",
+    "title": "电流换方向时，灯泡与线圈怎样响应？",
+    "question": "电流换方向时，灯泡与线圈怎样响应？",
+    "description": "用示波器、反并联LED、交流元件和LC回路逐步比较变化的电流。",
+    "color": "#799066",
+    "tag": "交流与储能交换",
+    "related": ["transformer-electric", "inductor-transient"],
+    "sources": [
+      {
+        "title": "OpenStax — Simple AC circuits",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits"
+      },
+      {
+        "title": "OpenStax — LC oscillations",
+        "url": "https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit"
+      }
+    ]
+  },
+  "discovery": {
+    "category": "electricity",
+    "minAge": 14,
+    "keywords": {
+      "zh": ["交流电与LC振荡实验", "交变电流", "示波器", "发电机", "感抗", "容抗", "LC振荡"],
+      "en": [
+        "AC and LC oscillation experiments",
+        "alternating current",
+        "oscilloscope",
+        "inductive reactance",
+        "capacitive reactance"
+      ]
+    }
+  },
+  "film": {
+    "duration": 286.5,
+    "chapters": [
+      {
+        "id": "scope-dc",
+        "title": "先观察电池",
+        "titleEn": "Observe a battery",
+        "caption": "同一极性，稳定电压。",
+        "captionEn": "One polarity, steady voltage.",
+        "at": 0
+      },
+      {
+        "id": "scope-ac",
+        "title": "换成交流电源",
+        "titleEn": "Switch to an AC supply",
+        "caption": "跨过零线，极性反转。",
+        "captionEn": "Crossing zero reverses polarity.",
+        "at": 22
+      },
+      {
+        "id": "led-forward",
+        "title": "发电机的一半周期",
+        "titleEn": "One half-cycle of the generator",
+        "caption": "电流方向决定哪只LED发光。",
+        "captionEn": "Current direction selects the LED.",
+        "at": 44
+      },
+      {
+        "id": "led-reverse",
+        "title": "另一半周期",
+        "titleEn": "The opposite half-cycle",
+        "caption": "电流反向，另一只LED亮起。",
+        "captionEn": "Reverse current lights the other LED.",
+        "at": 66
+      },
+      {
+        "id": "inductor-dc",
+        "title": "电流为什么不能突变？",
+        "titleEn": "Why does current build gradually?",
+        "caption": "自感阻碍电流的变化。",
+        "captionEn": "Induction opposes changing current.",
+        "at": 88
+      },
+      {
+        "id": "inductor-ac",
+        "title": "频率为什么影响线圈？",
+        "titleEn": "Why does frequency matter to a coil?",
+        "caption": "同有效值，频率越高电流越小。",
+        "captionEn": "Higher frequency lowers the current.",
+        "at": 112.5
+      },
+      {
+        "id": "capacitor-dc",
+        "title": "电荷为什么让电流变小？",
+        "titleEn": "Why does accumulated charge reduce current?",
+        "caption": "电荷积累，充电电流减小。",
+        "captionEn": "Charge builds; current fades.",
+        "at": 135.5
+      },
+      {
+        "id": "capacitor-ac",
+        "title": "绝缘间隙怎样允许外电流？",
+        "titleEn": "How can outside current persist across an insulating gap?",
+        "caption": "极板换号，介质仍然绝缘。",
+        "captionEn": "The dielectric stays insulating.",
+        "at": 160
+      },
+      {
+        "id": "capacitor-frequency",
+        "title": "为什么电容的趋势相反？",
+        "titleEn": "Why is a capacitor’s frequency trend opposite?",
+        "caption": "同有效值，频率越高电流越大。",
+        "captionEn": "Higher frequency raises the current.",
+        "at": 184.5
+      },
+      {
+        "id": "lc-charge",
+        "title": "电容里储存了什么？",
+        "titleEn": "What has the charged capacitor stored?",
+        "caption": "电容已充电，能量在电场中。",
+        "captionEn": "Charge stores electric energy.",
+        "at": 210
+      },
+      {
+        "id": "lc-exchange",
+        "title": "电压为零，电流为何不停？",
+        "titleEn": "Why does current continue at zero voltage?",
+        "caption": "能量往返，电容极性反转。",
+        "captionEn": "Energy swaps; polarity reverses.",
+        "at": 233
+      },
+      {
+        "id": "lc-loss",
+        "title": "衰减的能量去了哪里？",
+        "titleEn": "Where does the lost oscillation energy go?",
+        "caption": "振幅衰减，电磁能转成热。",
+        "captionEn": "Lost field energy becomes heat.",
+        "at": 261
+      }
+    ]
+  },
+  "narration": {
+    "duration": 286.5,
+    "cues": [
+      {
+        "id": "scope-dc",
+        "title": "先观察电池",
+        "titleEn": "Observe a battery",
+        "caption": "同一极性，稳定电压。",
+        "captionEn": "One polarity, steady voltage.",
+        "seconds": 22,
+        "zh": "把示波器接在电池两端，观察电压随时间的记录。曲线停留在零线上方，表示这个理想电池的电压保持同一极性和大小。注意波形的纵轴，不要只把它看成一条线。",
+        "en": "Connect the oscilloscope across a battery. Its trace stays above zero, representing a constant voltage with one polarity. Read the vertical axis: the line records a physical quantity over time.",
+        "chapterAt": 0,
+        "at": 0.45
+      },
+      {
+        "id": "scope-ac",
+        "title": "换成交流电源",
+        "titleEn": "Switch to an AC supply",
+        "caption": "跨过零线，极性反转。",
+        "captionEn": "Crossing zero reverses polarity.",
+        "seconds": 22,
+        "zh": "换接学生电源的交流输出。电压周期性跨过零，上下两部分分别代表相反的极性。这里交流有效值仍是三伏，但峰值更大。有效值相同，不等于每一瞬间的电压相同。",
+        "en": "Switch to the teaching supply’s AC output. Voltage crosses zero periodically, so the two halves represent opposite polarities. Its RMS value is still three volts, while its peak is larger. Equal RMS values do not imply equal instantaneous voltages.",
+        "chapterAt": 22,
+        "at": 22.45
+      },
+      {
+        "id": "led-forward",
+        "title": "发电机的一半周期",
+        "titleEn": "One half-cycle of the generator",
+        "caption": "电流方向决定哪只LED发光。",
+        "captionEn": "Current direction selects the LED.",
+        "seconds": 22,
+        "zh": "转动教学发电机，跟随磁极之间的线圈。滑环使两个线圈端点各自保持连接。两个LED反向并联，电流朝一个方向时只有对应的LED导通并发光。",
+        "en": "Turn the teaching generator and follow its coil between the poles. Separate slip rings preserve contact with both winding ends. The LEDs are antiparallel: a given current direction lights only the appropriately oriented LED.",
+        "chapterAt": 44,
+        "at": 44.45
+      },
+      {
+        "id": "led-reverse",
+        "title": "另一半周期",
+        "titleEn": "The opposite half-cycle",
+        "caption": "电流反向，另一只LED亮起。",
+        "captionEn": "Reverse current lights the other LED.",
+        "seconds": 22,
+        "zh": "继续转动，线圈中感应电动势反向，另一只LED亮起。对照电流读数的正负号，两个发光方向与同一转子相位对应。滑环只是保持连接，并没有把交流变成直流。",
+        "en": "Continue turning. The induced emf reverses and the other LED lights. Compare the signed current readout with the shared rotor phase. Slip rings maintain electrical contact; they do not turn this AC output into DC.",
+        "chapterAt": 66,
+        "at": 66.45
+      },
+      {
+        "id": "inductor-dc",
+        "title": "电流为什么不能突变？",
+        "titleEn": "Why does current build gradually?",
+        "caption": "自感阻碍电流的变化。",
+        "captionEn": "Induction opposes changing current.",
+        "seconds": 24,
+        "zh": "刚接上三伏直流，电流没有立即达到稳态。跟着导线上的箭头看：电流增长时，线圈磁场增强，变化的磁场产生反向自感电动势。等电流稳定，磁场不再变化，自感电动势趋于零。线圈阻碍的是电流的变化；稳态电流仍由总电阻限制。",
+        "en": "Watch the arrows after three-volt DC is connected. Current builds rather than jumping to its final value. The growing magnetic field induces an opposing emf. Once current becomes steady, that induced emf approaches zero. An inductor opposes change in current; lamp and winding resistance still limit the final current.",
+        "chapterAt": 88,
+        "at": 88.45
+      },
+      {
+        "id": "inductor-ac",
+        "title": "频率为什么影响线圈？",
+        "titleEn": "Why does frequency matter to a coil?",
+        "caption": "同有效值，频率越高电流越小。",
+        "captionEn": "Higher frequency lowers the current.",
+        "seconds": 22,
+        "zh": "保持三伏有效值，换成交流。电流不断变化，线圈磁场也随之变化，自感电动势不再一直为零。灯泡的平均功率比稳态直流时小。现在把频率从五十赫兹提高到一百赫兹，变化更快，感抗更大，电流有效值进一步减小。",
+        "en": "At the same three-volt RMS supply, AC keeps changing the current. The coil’s field changes too, so self-induced emf never stays zero. The lamp receives less average power than on steady DC. Now frequency rises from fifty to one hundred hertz. Faster change produces stronger opposition; RMS current falls.",
+        "chapterAt": 112.5,
+        "at": 112.95
+      },
+      {
+        "id": "capacitor-dc",
+        "title": "电荷为什么让电流变小？",
+        "titleEn": "Why does accumulated charge reduce current?",
+        "caption": "电荷积累，充电电流减小。",
+        "captionEn": "Charge builds; current fades.",
+        "seconds": 22,
+        "zh": "盯住电容的两块极板。接上直流后，正负电荷分别积累，电容两端电压升高。留给灯泡的电压越来越小，充电电流便逐渐减小。等电容电压接近电源电压，电流趋于零。电容隔直流，说的是最后的稳态，不能抹掉开始时的充电过程。",
+        "en": "Follow the charges on the capacitor plates. After DC is connected, opposite charges accumulate and capacitor voltage rises. Less voltage remains across the lamp, so charging current falls. When capacitor voltage approaches the supply voltage, current approaches zero. Blocking DC describes this final state, not the initial charging process.",
+        "chapterAt": 135.5,
+        "at": 135.95
+      },
+      {
+        "id": "capacitor-ac",
+        "title": "绝缘间隙怎样允许外电流？",
+        "titleEn": "How can outside current persist across an insulating gap?",
+        "caption": "极板换号，介质仍然绝缘。",
+        "captionEn": "The dielectric stays insulating.",
+        "seconds": 22,
+        "zh": "改接交流，继续跟着同一对极板。电荷多少和正负不断改变，导线中的电流也反向。请看绝缘间隙：没有电荷穿过它。一块极板上增加电荷，同时另一块极板上移走电荷。反复充电、放电，让外电路持续有变化的电流，灯泡获得平均功率。",
+        "en": "Switch to AC and follow the same plates. Their charge and polarity reverse as current in the outside wires reverses. Nothing carries conduction current across the insulating gap. Charge moving onto one plate is accompanied by charge leaving the other. Repeated charging and discharging lets the lamp receive average power.",
+        "chapterAt": 160,
+        "at": 160.45
+      },
+      {
+        "id": "capacitor-frequency",
+        "title": "为什么电容的趋势相反？",
+        "titleEn": "Why is a capacitor’s frequency trend opposite?",
+        "caption": "同有效值，频率越高电流越大。",
+        "captionEn": "Higher frequency raises the current.",
+        "seconds": 22,
+        "zh": "保持同一个电容和三伏电源有效值，把频率从五十赫兹提高到一百赫兹。换向更快，极板电荷也要更快地变化。容抗随频率升高而减小，电流有效值增大，灯泡平均功率增加。线圈阻碍快速变化，而电容更容易在较高频率下维持外电路电流。",
+        "en": "Keep the capacitor and three-volt RMS supply unchanged. Raise frequency from fifty to one hundred hertz. Faster cycling requires plate charge to change more rapidly. Capacitive reactance falls, so RMS current and average lamp power increase. This is the opposite frequency trend to the coil: reactive components cannot all be treated as fixed resistors.",
+        "chapterAt": 184.5,
+        "at": 184.95
+      },
+      {
+        "id": "lc-charge",
+        "title": "电容里储存了什么？",
+        "titleEn": "What has the charged capacitor stored?",
+        "caption": "电容已充电，能量在电场中。",
+        "captionEn": "Charge stores electric energy.",
+        "seconds": 22,
+        "zh": "电容已经充到五伏。两块极板上的相反电荷建立电场，储存十二点五毫焦耳能量。线圈没有电流，也就没有磁场储能。此时开关仍接向电源。接下来提供自由振荡能量的，是这只预先充电的电容，不是持续工作的电源。",
+        "en": "The capacitor has already been charged to five volts. Opposite plate charges store electric-field energy: twelve and a half millijoules. The coil carries no current, so it stores no magnetic energy. The switch still selects the supply. This charged capacitor, not a running power supply, will provide the energy for free oscillation.",
+        "chapterAt": 210,
+        "at": 210.45
+      },
+      {
+        "id": "lc-exchange",
+        "title": "电压为零，电流为何不停？",
+        "titleEn": "Why does current continue at zero voltage?",
+        "caption": "能量往返，电容极性反转。",
+        "captionEn": "Energy swaps; polarity reverses.",
+        "seconds": 28,
+        "zh": "开关切向线圈，电源退出回路。先把电阻设为零。电容放电，电流和磁场能增大。停在电容电压为零的这一刻：电流恰好最大。电流继续流动，使电容反向充电，能量又回到电场。电压为零不代表能量消失，它已经转移到了线圈的磁场中。",
+        "en": "Move the switch onto the coil; the supply is out of the loop. We first set resistance to zero. Discharge builds current and magnetic energy. Pause when capacitor voltage reaches zero: current is at its maximum. It keeps flowing, charges the capacitor with opposite polarity, and returns energy to the electric field. Zero voltage does not mean zero stored energy.",
+        "chapterAt": 233,
+        "at": 233.45
+      },
+      {
+        "id": "lc-loss",
+        "title": "衰减的能量去了哪里？",
+        "titleEn": "Where does the lost oscillation energy go?",
+        "caption": "振幅衰减，电磁能转成热。",
+        "captionEn": "Lost field energy becomes heat.",
+        "seconds": 24,
+        "zh": "现在加入一欧电阻，把观察时间拉长。每当电流通过电阻，就有一部分电磁能转变成热。电场能和磁场能的份额逐渐缩小，热的份额增大，三者总和始终等于初始能量。在自由探索里把电阻降回零，就可以预测：没有电阻耗散，理想振荡将持续下去。",
+        "en": "Now add one ohm of resistance and watch more cycles. Each time current flows, some field energy becomes heat. The electric and magnetic parts shrink while the heat portion grows. Their sum stays equal to the initial energy. Set resistance back to zero in exploration to predict continuing oscillation with no resistive heating.",
+        "chapterAt": 261,
+        "at": 261.45
+      }
+    ]
+  },
+  "curriculumVariants": {
+    "e2-ac-dc-oscilloscope": {
+      "chapterIds": ["scope-dc", "scope-ac"],
+      "label": {
+        "zh": "交流与直流波形",
+        "en": "AC and DC waveforms"
+      }
+    },
+    "e2-ac-led-direction": {
+      "chapterIds": ["led-forward", "led-reverse"],
+      "label": {
+        "zh": "交变电流方向",
+        "en": "Alternating-current direction"
+      }
+    },
+    "e2-inductive-reactance-lamp": {
+      "chapterIds": ["inductor-dc", "inductor-ac"],
+      "label": {
+        "zh": "电感器对交流的作用",
+        "en": "Inductive reactance"
+      }
+    },
+    "e2-capacitive-reactance-lamp": {
+      "chapterIds": ["capacitor-dc", "capacitor-ac", "capacitor-frequency"],
+      "label": {
+        "zh": "电容器对交流的作用",
+        "en": "Capacitive reactance"
+      }
+    },
+    "e2-lc-oscillation-measurement": {
+      "chapterIds": ["lc-charge", "lc-exchange", "lc-loss"],
+      "label": {
+        "zh": "LC振荡电压测量",
+        "en": "LC voltage measurement"
+      }
+    }
+  },
+  "translations": {
+    "交流电与LC振荡实验": "AC and LC oscillation experiments",
+    "电流换方向时，灯泡与线圈怎样响应？": "How do lamps and coils respond when current reverses?",
+    "用示波器、反并联LED、交流元件和LC回路逐步比较变化的电流。": "Compare changing current through oscilloscopes, antiparallel LEDs, reactive components and an LC loop.",
+    "交流与储能交换": "AC and stored energy",
+    "电源与示波器": "Supply and oscilloscope",
+    "手摇发电机与双色LED": "Hand generator and two LEDs",
+    "线圈与交流灯泡": "A coil and an AC lamp",
+    "电容与交流灯泡": "A capacitor and an AC lamp",
+    "LC振荡与电压传感器": "LC oscillation and voltage sensing",
+    "两个方向分别发光": "Opposite directions light different LEDs",
+    "电源、元件和测量电路与同一波形同步": "Source, components and measurement circuit share the same waveform",
+    "滑环保持两端独立连接": "Slip rings keep the two terminals connected separately",
+    "充电结束后，电流趋于零": "Current tends to zero after charging",
+    "电源给电容充电": "The source charges the capacitor",
+    "切至线圈，电源退出振荡": "Switch to the coil; the source leaves the loop",
+    "剩余电磁能": "Remaining field energy",
+    "有正负刻度的电压波形": "Voltage waveform with positive and negative values",
+    "选择交流实验": "Choose an AC experiment",
+    "电源类型": "Source type",
+    "信号频率": "Signal frequency",
+    "线圈自感系数": "Coil inductance",
+    "电容量": "Capacitance",
+    "振荡经过的周期数": "Elapsed oscillation periods",
+    "振荡回路电阻": "Oscillating-loop resistance",
+    "信号相位": "Signal phase",
+    "有效值、瞬态与慢放": "RMS, transients and slow motion",
+    "交流与直流比较使用相同3伏有效值。灯泡是固定6欧电阻，交流亮度采用平均功率；感抗含2欧绕组电阻，电容直流模式单独显示充电暂态。LED使用1.8伏阈值与100欧限流，滑环不是换向器。LC用0.2亨、1000微法和可调串联损耗解析求解；图示慢放，不是实际示波器采样。": "AC/DC comparisons use the same three-volt RMS supply. Lamps are fixed six-ohm resistors with average AC power. The coil includes two-ohm winding resistance; capacitor DC mode shows its charging transient. LEDs use a 1.8-volt threshold and 100-ohm limiter; slip rings do not rectify. LC uses 0.2 H, 1000 μF and adjustable series loss, solved analytically. Views are slow-motion model traces, not sampled measurements.",
+    "先观察电池": "Observe a battery",
+    "直流电压保持同一极性。": "Direct voltage keeps one polarity.",
+    "换成交流电源": "Switch to an AC supply",
+    "周期性跨过零，意味着电压极性反转。": "Crossing zero periodically reverses voltage polarity.",
+    "发电机的一半周期": "One half-cycle of the generator",
+    "一个方向的电流点亮一只LED。": "One current direction lights one LED.",
+    "另一半周期": "The opposite half-cycle",
+    "电流反向，另一只LED发光。": "Reversed current lights the other LED.",
+    "线圈接直流": "A coil on steady DC",
+    "稳态直流由电阻限制。": "Resistance limits steady direct current.",
+    "保持有效值，改接交流": "Apply equal-RMS AC",
+    "变化电流带来感抗，灯泡变暗。": "Inductive reactance makes the lamp dimmer.",
+    "直流充电暂态": "The DC charging transient",
+    "短暂充电以后，电流趋于零。": "A brief charging current tends to zero.",
+    "交流反复充放电": "Repeated charging on AC",
+    "外电路持续有电流，电子不穿过介质。": "External current continues without electrons crossing the dielectric.",
+    "提高交流频率": "Increase AC frequency",
+    "电容不变，频率越高，容抗越小。": "At fixed capacitance, higher frequency lowers reactance.",
+    "先给电容充电": "Charge the capacitor first",
+    "开关先接电源，建立初始电场能。": "The switch first stores electric energy in the capacitor.",
+    "切换到线圈": "Switch onto the coil",
+    "电场能与磁场能交替交换。": "Electric and magnetic energies exchange.",
+    "真实振荡会衰减": "Real oscillations decay",
+    "电阻耗散使振幅和电磁能逐渐减小。": "Resistive loss reduces amplitude and field energy.",
+    "同一极性，稳定电压。": "One polarity, steady voltage.",
+    "跨过零线，极性反转。": "Crossing zero reverses polarity.",
+    "电流方向决定哪只LED发光。": "Current direction selects the LED.",
+    "电流反向，另一只LED亮起。": "Reverse current lights the other LED.",
+    "自感阻碍电流的变化。": "Induction opposes changing current.",
+    "同有效值，频率越高电流越小。": "Higher frequency lowers the current.",
+    "电荷积累，充电电流减小。": "Charge builds; current fades.",
+    "极板换号，介质仍然绝缘。": "The dielectric stays insulating.",
+    "同有效值，频率越高电流越大。": "Higher frequency raises the current.",
+    "电容已充电，能量在电场中。": "Charge stores electric energy.",
+    "电压为零，电流仍可最大。": "Zero voltage, maximum current.",
+    "振幅衰减，电磁能转成热。": "Lost field energy becomes heat.",
+    "电流为什么不能突变？": "Why does current build gradually?",
+    "频率为什么影响线圈？": "Why does frequency matter to a coil?",
+    "电荷为什么让电流变小？": "Why does accumulated charge reduce current?",
+    "绝缘间隙怎样允许外电流？": "How can outside current persist across an insulating gap?",
+    "为什么电容的趋势相反？": "Why is a capacitor’s frequency trend opposite?",
+    "电容里储存了什么？": "What has the charged capacitor stored?",
+    "电压为零，电流为何不停？": "Why does current continue at zero voltage?",
+    "衰减的能量去了哪里？": "Where does the lost oscillation energy go?",
+    "能量往返，电容极性反转。": "Energy swaps; polarity reverses."
+  },
+  "voiceChangeScope": {
+    "preserveSpokenChapterIds": ["scope-dc", "scope-ac", "led-forward", "led-reverse"],
+    "replaceSpokenChapterIds": [
+      "inductor-dc",
+      "inductor-ac",
+      "capacitor-dc",
+      "capacitor-ac",
+      "capacitor-frequency",
+      "lc-charge",
+      "lc-exchange",
+      "lc-loss"
+    ],
+    "captionsOnlyMayChangeAll": true,
+    "freezeStatus": "spoken-frozen-after-desktop-and-320px-decisive-stills"
+  },
+  "slug": "ac-circuit-lab",
+  "spokenFreeze": {
+    "at": "2026-10-24T02:10:32.341935+00:00",
+    "plannedWindowTotal": 274,
+    "speechHashes": {
+      "scope-dc": {
+        "zh": "20a34722ae122b9618b01e6bd054ab5f5ec92d6215dff1d2a747d346cf588d89",
+        "en": "a6bf9935fb4ccc439525379dd0f9235e096c5e812a6888d2d556976256ec0c67"
+      },
+      "scope-ac": {
+        "zh": "2b3b3152c0404c5672f4ef94915d9ff1f4783be715853acc9e3b12d816dfa4e7",
+        "en": "1020e4cb3ac10c86a3a96b5d6bad9a9942d1c9b36ed0650ae5c6cb19701cec2a"
+      },
+      "led-forward": {
+        "zh": "28242671308dcd8bff49a8c27603e904d5351c3ec011fa59100756df73d76395",
+        "en": "e39dd69c383adb9d15efdc271daf6ec0fcb1a0dad0ec2a26b926a21cd24ef9b7"
+      },
+      "led-reverse": {
+        "zh": "115062016470ea6ee2c5c0560f5a9f9f7efdf9a41887a8e2f67a80125164f49b",
+        "en": "138b4a4534432e6c2bffb97843fcc85bfb60929e463dfad7170d6855006ae5b5"
+      },
+      "inductor-dc": {
+        "zh": "da5c18d989b9c280a9e4690dd2cec06c0383da880fba5f92501f7f729f87e74b",
+        "en": "d6165e7f490535e5e081a84d0b2f3f3dddf01c30a470594b08ffed80303c4fbf"
+      },
+      "inductor-ac": {
+        "zh": "5aaaf68894ce92ef6cce011e1c966f25ad9e9045a555e4e61aa1b47af7d7c233",
+        "en": "da87220451465dba56c2184424144dbb7d5078776cbc6d5341d97f55a024acc5"
+      },
+      "capacitor-dc": {
+        "zh": "5f6a85bbd61fbe6b4986cfa990ff58ee10fad6b4a255f44d7c3e47018cbb19ec",
+        "en": "da99c254f783be99d130a3e0425615800dc520c64008a55e41b5545b27f4b311"
+      },
+      "capacitor-ac": {
+        "zh": "038d505018e354017caa9e981d576279486d32dddce81fa38252b502e47a40f8",
+        "en": "a0d87d0e5b3f2756761d3b81d1d8182b8a0df0b50700d91080d80119392fd133"
+      },
+      "capacitor-frequency": {
+        "zh": "946033a38eae99e04eeda5a3d0596a7079242e423a97e7083b3e5a70a5b2662a",
+        "en": "390c58b3da1904368308292df3e993dad9b7ecb5777218b2091d956225d877f8"
+      },
+      "lc-charge": {
+        "zh": "ce7c5092d945393b2c5ad91539407cfced635a26ca4ab068ec1d8ab2963b8b85",
+        "en": "c62d80c3b60656bbb8a4ecf759b34fcfda9254704f1aca708c626294918b1528"
+      },
+      "lc-exchange": {
+        "zh": "4ec254a886f5e457ec27659f2f923702c88aa861b00f3ed9a82769fd5c4ed8e4",
+        "en": "4a90340d086d10c11fc04246fbc3e758cf9a248f9430f48afd2b8c8e483f6c44"
+      },
+      "lc-loss": {
+        "zh": "a57d0ebf27cacbc646051e24a6c3fae1de325f0e72ff6a32cb3c241b7b3522bb",
+        "en": "adfab799b442ea29d967cfcff36afb8f5ae68c172f58735b21f1e24ccd92d966"
+      }
+    },
+    "decisiveEvidence": "artifacts/teaching-principles/batch-21-physics/checks/decisive-final/report.json",
+    "actualViewed": [
+      "native-frames/ac-circuit-lab-zh-1100-c10-t8.80.png",
+      "native-frames-03/ac-circuit-lab-zh-1100-c4-t2.64.png",
+      "native-frames-03/ac-circuit-lab-en-320-c7-t15.40.png",
+      "decisive-final/ac-circuit-lab-en-320-c10-t8.80.png",
+      "decisive-final/ac-circuit-lab-zh-320-c10-t15.40.png"
+    ],
+    "note": "Pure local native Showcase harness, not final integrated routes or audio listening."
+  },
+  "teachingProfiles": {
+    "e2-ac-dc-oscilloscope": {
+      "sceneSlug": "ac-circuit-lab",
+      "question": {
+        "zh": "电压表都能给出一个数，为什么示波器还能区分交流和直流？",
+        "en": "A voltmeter gives one number. How can an oscilloscope distinguish AC from DC?"
+      },
+      "lead": {
+        "zh": "先追踪电池波形，再看正弦波穿过零线：关键证据是同一对端子的电压极性是否随时间反转。",
+        "en": "Follow the battery trace, then the sine wave crossing zero. The key evidence is whether voltage polarity across the same terminals reverses with time."
+      },
+      "principle": {
+        "zh": "直流电压保持同一极性，正弦交流电压周期性反向。有效值描述等效热效应，不能代替瞬时电压，也不能独自显示方向变化。",
+        "en": "DC voltage keeps one polarity; sinusoidal AC reverses periodically. RMS describes equivalent heating, not instantaneous voltage or the history of its direction."
+      },
+      "transfer": {
+        "question": {
+          "zh": "直流和正弦交流都标为 3 V，它们的波形和峰值会相同吗？",
+          "en": "If DC and sinusoidal AC are both labelled 3 V, must their traces and peaks be identical?"
+        },
+        "explanation": {
+          "zh": "不会。3 V 直流是一条不换向的水平线；3 V 有效值的正弦交流峰值约为 4.24 V，并在正负之间往返。",
+          "en": "No. A 3 V DC trace stays level with one polarity. A 3 V RMS sine wave peaks at about 4.24 V and alternates between positive and negative."
+        }
+      }
+    },
+    "e2-ac-led-direction": {
+      "sceneSlug": "ac-circuit-lab",
+      "question": {
+        "zh": "两只方向相反的 LED 为什么轮流亮，而不是同时亮？",
+        "en": "Why do two oppositely connected LEDs light in turn rather than together?"
+      },
+      "lead": {
+        "zh": "把电压正负、外电路电流方向和发光的那只 LED 放在同一个时刻观察，建立可见的换向证据。",
+        "en": "Observe voltage sign, external current direction and the lit LED at the same instant to see the evidence of reversal."
+      },
+      "principle": {
+        "zh": "LED 只在正向电压超过阈值时明显导通。发电机电压每半周反向，反向并联的两只 LED 因而交替导通；接近过零点时两只都不亮。",
+        "en": "An LED conducts appreciably only above its forward threshold. Generator voltage reverses each half-cycle, so antiparallel LEDs conduct alternately; near zero both remain dark."
+      },
+      "transfer": {
+        "question": {
+          "zh": "如果某一时刻两只 LED 都灭了，能否断定电流已经完成一次反向？",
+          "en": "If both LEDs are dark at one instant, does that prove the current has reversed?"
+        },
+        "explanation": {
+          "zh": "不能。模型中电压幅值低于约 1.8 V 时都可能不亮。必须继续追踪电压符号和下一只亮起的 LED，才能判断反向。",
+          "en": "No. Both may be dark whenever the voltage magnitude is below about 1.8 V in this model. Follow the voltage sign and which LED lights next to establish reversal."
+        }
+      }
+    },
+    "e2-inductive-reactance-lamp": {
+      "sceneSlug": "ac-circuit-lab",
+      "question": {
+        "zh": "线圈没有断开电路，为什么交流频率越高，灯却越暗？",
+        "en": "The coil does not break the circuit. Why does the lamp dim as AC frequency rises?"
+      },
+      "lead": {
+        "zh": "先看接通直流后电流缓慢建立、反电动势减弱，再在同为 3 V 有效值时比较交流与直流。",
+        "en": "First watch DC current build while the opposing induced emf fades. Then compare AC and DC at the same 3 V RMS supply."
+      },
+      "principle": {
+        "zh": "线圈反对电流的变化，感应电动势为 −Ldi/dt。直流稳定后这个效应消失；交流不断变化，频率越高感抗越大，电流和灯的平均功率越小。",
+        "en": "A coil opposes changes in current through an induced emf of −Ldi/dt. This effect vanishes after DC settles. AC keeps changing: higher frequency increases inductive reactance and reduces current and average lamp power."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保持电源电压和频率不变，增大电感，会让灯更亮还是更暗？",
+          "en": "At fixed supply voltage and frequency, does increasing inductance brighten or dim the lamp?"
+        },
+        "explanation": {
+          "zh": "交流时更暗，因为感抗 2πfL 增大。直流刚接通时建立得更慢，但在本模型绕组电阻不变的条件下，最终稳态亮度相同。",
+          "en": "It dims under AC because reactance 2πfL increases. DC current builds more slowly, but its final lamp brightness is unchanged when winding resistance stays fixed as in this model."
+        }
+      }
+    },
+    "e2-capacitive-reactance-lamp": {
+      "sceneSlug": "ac-circuit-lab",
+      "question": {
+        "zh": "电容中间是绝缘层，为什么接交流时外电路仍有电流？",
+        "en": "With an insulating gap inside the capacitor, why can external current persist under AC?"
+      },
+      "lead": {
+        "zh": "看直流充电时极板电荷积累、灯渐暗，再看交流中极板电荷反复增减和反号，外导线的电流箭头随之换向。",
+        "en": "Watch plate charge build and the lamp fade on DC. Then follow alternating plate charge and the reversing current arrows in the external wires under AC."
+      },
+      "principle": {
+        "zh": "直流充电让电容电压逐渐接近电源电压，电阻上的电压和电流因此下降。交流持续改变极板电荷，外电路持续充放电；电子没有穿过绝缘层。容抗随频率升高而减小。",
+        "en": "During DC charging, capacitor voltage approaches the supply, reducing resistor voltage and current. AC continually changes plate charge, maintaining external charging and discharging without electrons crossing the dielectric. Capacitive reactance decreases as frequency rises."
+      },
+      "transfer": {
+        "question": {
+          "zh": "保持电压、频率和电阻不变，把电容量增大，交流灯会怎样？直流最终呢？",
+          "en": "At fixed voltage, frequency and resistance, what does a larger capacitance do to the AC lamp and the final DC state?"
+        },
+        "explanation": {
+          "zh": "容抗 1/(2πfC) 减小，交流电流和灯的平均功率增大。直流充电持续更久，但理想电容最终仍无稳态电流。",
+          "en": "Reactance 1/(2πfC) falls, so AC current and average lamp power rise. DC charging lasts longer, but an ideal capacitor still carries no final steady current."
+        }
+      }
+    },
+    "e2-lc-oscillation-measurement": {
+      "sceneSlug": "ac-circuit-lab",
+      "question": {
+        "zh": "电容电压已经降到零，电流为什么还不停下来？",
+        "en": "Why does current keep flowing when capacitor voltage has fallen to zero?"
+      },
+      "lead": {
+        "zh": "先给电容充电并断开电源；在四分之一周期处停住，电压是零而电流最大，能量带全部落在磁场一侧。",
+        "en": "Charge the capacitor, then disconnect the source. Pause at a quarter-cycle: voltage is zero, current is maximal and the energy band is entirely magnetic."
+      },
+      "principle": {
+        "zh": "电场能转移到线圈磁场，线圈的自感使电流不能突变为零，继续给电容反向充电。理想回路中电场能与磁场能往返；有电阻时一部分转为热，振幅逐渐衰减。",
+        "en": "Electric-field energy transfers to the coil’s magnetic field. Self-induction prevents current from dropping abruptly to zero, so it recharges the capacitor with opposite polarity. Ideal field energies exchange; resistance converts part into heat and the amplitude decays."
+      },
+      "transfer": {
+        "question": {
+          "zh": "把电阻降为零后，电容每次电压过零时，储存的能量去了哪里？",
+          "en": "With resistance set to zero, where is the stored energy whenever capacitor voltage crosses zero?"
+        },
+        "explanation": {
+          "zh": "此时电场能为零，初始 12.5 mJ 全部为磁场能，电流幅值最大。加入电阻后，电场能、磁场能和累计热量的总和仍为 12.5 mJ。",
+          "en": "Electric-field energy is zero; all the initial 12.5 mJ is magnetic, and current magnitude is maximal. With resistance added, electric energy, magnetic energy and accumulated heat still total 12.5 mJ."
+        }
+      }
+    }
+  }
+}

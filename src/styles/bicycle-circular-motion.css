@@ -72,6 +72,30 @@
   max-width: 760px;
   margin: 20px auto;
 }
+.showcase[data-mode='watch'] .bicycle-circular-lab {
+  padding: 12px 24px 16px;
+}
+.showcase[data-mode='watch'] .bicycle-circular-lab header p {
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 0;
+}
+.showcase[data-mode='watch'] .bicycle-circular-lab header > span,
+.showcase[data-mode='watch'] .bicycle-circular-cause,
+.showcase[data-mode='watch'] .bicycle-circular-note {
+  display: none;
+}
+.showcase[data-mode='watch'] .bicycle-circular-stage,
+.showcase[data-mode='watch'] .bicycle-circular-stage.is-close {
+  height: 300px;
+  min-height: 0;
+  margin: 10px auto;
+}
+.showcase[data-mode='watch'] .bicycle-circular-stage svg {
+  height: 100%;
+  max-height: none;
+  overflow: visible;
+}
 .bicycle-circular-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -81,6 +105,17 @@
 .bicycle-circular-controls .segmented {
   flex-wrap: wrap;
   justify-self: center;
+}
+.bicycle-circular-controls .segmented button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+  white-space: normal;
+}
+.bicycle-circular-controls .segmented:first-child {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
 }
 @media (max-width: 640px) {
   .bicycle-circular-lab {
@@ -111,7 +146,7 @@
 /* The film caption carries the current explanation; longer notes remain in exploration. */
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .bicycle-circular-lab {
-    padding: 12px 8px;
+    padding: 8px 10px 10px;
   }
   .showcase[data-mode='watch'] .bicycle-circular-lab > header {
     display: block;
@@ -120,7 +155,7 @@
   .showcase[data-mode='watch'] .bicycle-circular-lab > header p {
     font-size: 16px;
     line-height: 1.4;
-    margin: 0 0 8px;
+    margin: 0;
   }
   .showcase[data-mode='watch'] .bicycle-circular-lab > header > span,
   .showcase[data-mode='watch'] .bicycle-circular-lab > p[class$='-note'],
@@ -133,14 +168,23 @@
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .bicycle-circular-stage,
   .showcase[data-mode='watch'] .bicycle-circular-stage.is-close {
-    margin: 7px 0;
+    margin: 6px 0;
     min-height: 0;
+    height: 174px;
   }
   .showcase[data-mode='watch'] .bicycle-circular-stage svg {
-    max-height: 245px;
+    max-height: none;
   }
   .showcase[data-mode='watch'] .bicycle-circular-readings {
-    gap: 5px;
+    gap: 3px;
+    line-height: 1.4;
+  }
+  .showcase[data-mode='watch'] .bicycle-circular-readings span {
+    gap: 8px;
+    align-items: baseline;
+  }
+  .bicycle-circular-readings b {
+    flex-shrink: 0;
   }
   .showcase[data-mode='watch'] .bicycle-circular-angle {
     font-size: 16px;

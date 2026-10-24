@@ -42,3 +42,41 @@ export function bicycleCircular(time: number, rear = 20, cadence = 20) {
     rearSweep: omegaRear * t,
   };
 }
+
+export type BicycleSceneState = {
+  view: 'overview' | 'chain' | 'angles' | 'wheel';
+  time: number;
+  rear: number;
+  cadence: number;
+};
+/** A deterministic presentation of the retained pitch/chain model. */
+export function bicycleFilmState(chapter: number, progress: number): BicycleSceneState {
+  const c = Number.isFinite(chapter) ? Math.max(0, Math.min(3, Math.floor(chapter))) : 0;
+  const p = Number.isFinite(progress) ? Math.min(1, Math.max(0, progress) / 0.82) : 0;
+  // A labelled link must actually return to its origin in the tracking chapter.
+  const loopSeconds = bicycleCircular(0).chain.count / ((20 / 60) * 40);
+  const ease = (x: number) => {
+    const u = Math.min(1, Math.max(0, x));
+    return u * u * (3 - 2 * u);
+  };
+  // Compare a short sweep first, then complete the narrated 40:20 tooth example.
+  const comparisonTime = p <= 0.22 ? 0.25 * ease(p / 0.22) : 0.25 + 2.75 * ease((p - 0.22) / 0.46);
+  return {
+    view: (['overview', 'chain', 'angles', 'wheel'] as const)[c],
+    time: c === 2 ? comparisonTime : p * (c === 1 ? loopSeconds : 1.6),
+    rear: 20,
+    cadence: 20,
+  };
+}
+
+/** Clockwise physical rotation; the SVG flips its y axis only at rendering. */
+export function bicycleWheelVelocity(angle: number, radius: number, omega: number) {
+  if (![angle, radius, omega].every(Number.isFinite) || radius < 0 || omega < 0)
+    throw new RangeError('Finite angle and nonnegative radius/angular speed required');
+  return {
+    x: radius * Math.cos(angle),
+    y: radius * Math.sin(angle),
+    vx: omega * radius * Math.sin(angle),
+    vy: -omega * radius * Math.cos(angle),
+  };
+}

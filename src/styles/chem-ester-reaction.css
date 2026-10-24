@@ -142,3 +142,166 @@
     transition: none !important;
   }
 }
+
+/* B21: a close atom map and a separate closed-system comparison, composed for phones. */
+.chem-ester {
+  color: #566b51;
+  padding: 0 4px;
+}
+.chem-ester-title {
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+.chem-ester-atom-panel,
+.chem-ester-closed {
+  max-width: 400px;
+  margin: auto;
+}
+.chem-ester-atom-context,
+.chem-ester-atom-question,
+.chem-ester-net-limit,
+.chem-ester-closed-result {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.chem-ester-atom-context {
+  color: #668173;
+  margin: 0 0 4px;
+}
+.chem-ester-atom-svg {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin: auto;
+  overflow: visible;
+}
+.chem-ester-atom-question,
+.chem-ester-closed-result {
+  min-height: 22px;
+  color: #4f7166;
+}
+.chem-ester-net-limit {
+  color: #6e7b66;
+  margin-top: 4px;
+}
+.chem-ester-rate-key {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.25;
+  margin: 4px 0 8px;
+}
+.chem-ester-rate-key span:first-child {
+  color: #86694e;
+}
+.chem-ester-rate-key span:last-child {
+  color: #426d66;
+  text-align: right;
+}
+.chem-ester-closed .chem-ester-flux {
+  width: 180px;
+  margin: 0 auto;
+}
+.chem-ester-controls select,
+.chem-ester-reveal {
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+  border: 1px solid #c9d3be;
+  border-radius: 12px;
+  padding: 8px 12px;
+  background: #f7f9f2;
+  color: #50664b;
+}
+.chem-ester-controls label {
+  display: grid;
+  gap: 8px;
+}
+.chem-ester-controls details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.chem-ester-controls summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chem-ester-controls button:focus-visible,
+.chem-ester-controls select:focus-visible {
+  outline: 2px solid #659287;
+  outline-offset: 3px;
+}
+@media (min-width: 650px) {
+  .chem-ester {
+    padding: 8px 24px;
+  }
+  .chem-ester-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .chem-ester-atom-panel,
+  .chem-ester-closed {
+    max-width: 440px;
+  }
+  .chem-ester-atom-svg {
+    max-width: 360px;
+  }
+  .chem-ester-controls {
+    max-width: 540px;
+    margin: 28px auto 0;
+  }
+}
+
+/* Narrow playback keeps the complete causal view, caption and transport in view. */
+@media (max-width: 649px) {
+  .lesson-chem-ester-reaction .showcase[data-mode='watch'] .film-caption {
+    padding-top: 12px;
+    padding-bottom: 6px;
+    min-height: 72px;
+  }
+  .lesson-chem-ester-reaction .showcase[data-mode='watch'] .film-caption p,
+  .lesson-chem-ester-reaction .showcase[data-mode='watch'] .film-caption-measure {
+    line-height: 1.4;
+  }
+  .chem-ester:is([data-ester-chapter='6'], [data-ester-chapter='9']) .chem-ester-svg {
+    max-height: 145px;
+  }
+  .chem-ester-bath-label {
+    margin: 6px 0;
+  }
+  .chem-ester-three {
+    margin: 4px 0;
+  }
+  .chem-ester-three b {
+    margin-top: 2px;
+  }
+  .chem-ester-note {
+    margin-top: 4px;
+  }
+  .chem-ester[data-ester-chapter='8'] .chem-ester-molecules {
+    margin: 14px 0;
+    gap: 10px;
+  }
+  .chem-ester[data-ester-chapter='8'] .chem-ester-salt {
+    margin: 12px auto;
+  }
+}
+
+@media (max-width: 649px) {
+  .chem-ester[data-ester-chapter='5'] .chem-ester-two {
+    margin: 4px 0;
+  }
+}
+
+@media (max-width: 649px) {
+  .chem-ester[data-ester-chapter='8'] .chem-ester-molecules {
+    margin: 10px 0;
+  }
+  .chem-ester[data-ester-chapter='8'] .chem-ester-salt {
+    row-gap: 8px;
+  }
+}

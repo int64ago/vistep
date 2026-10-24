@@ -1,14 +1,211 @@
-.ac-circuit-lab .ac-apparatus-caption {
-  margin: 0 0 12px;
+.ac21 {
+  max-width: 760px;
+  margin: auto;
+  padding: 10px 14px 7px;
+  min-width: 0;
   font-size: 16px;
-  line-height: 1.55;
-  text-align: center;
-  color: #63745e;
-  overflow-wrap: anywhere;
+  color: #546d5b;
+  font-variant-numeric: tabular-nums;
 }
-@media (max-width: 600px) {
-  .ac-circuit-lab .textbook-em-apparatus text,
-  .ac-circuit-lab .textbook-em-chart text {
-    font-size: 23px;
+.ac21-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  line-height: 1.4;
+}
+.ac21-head strong {
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #687b61;
+}
+.ac21-circuit,
+.ac21-legacy {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  margin: 4px auto;
+}
+.ac21-circuit text {
+  font-size: 18px;
+  fill: #617968;
+}
+.ac21-legacy text {
+  font-size: 23px;
+  fill: #617968;
+}
+.ac21-readings {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  line-height: 1.5;
+  margin: 3px auto;
+}
+.ac21-readings b {
+  font-weight: 500;
+  color: #9b7b51;
+  margin-left: 5px;
+}
+.ac21-comparison {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.45;
+  margin: 4px auto;
+  color: #6c7b65;
+}
+.ac21-energy {
+  max-width: 440px;
+  margin: 6px auto 0;
+}
+.ac21-energy-band {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  border-radius: 6px;
+  background: #e9ede3;
+  overflow: hidden;
+}
+.ac21-energy-band > [data-energy='electric'] {
+  background: #94b1a0;
+}
+.ac21-energy-band > [data-energy='magnetic'] {
+  background: #b9a476;
+}
+.ac21-energy-band > [data-energy='heat'] {
+  background: #c8bbb2;
+}
+.ac21-energy-key {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.ac21-energy-key b {
+  font-weight: 500;
+}
+.ac21-trace {
+  display: block;
+  width: 100%;
+  max-height: 58px;
+  margin: 1px auto 0;
+}
+.ac21-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+.ac21-controls > .segmented {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+}
+.ac21-controls .segmented button,
+.ac21-controls input[type='range'] {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 16px;
+}
+.ac21-controls .control-top,
+.ac21-controls .control-top output {
+  font-size: 16px;
+}
+.ac21-controls .control {
+  margin: 0;
+}
+.ac21-note {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #75806d;
+  margin: 12px auto;
+}
+.ac21-note summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  min-height: 44px;
+}
+.ac21-note p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+@media (max-width: 640px) {
+  .ac21 {
+    padding: 5px 7px;
+  }
+  .ac21-head {
+    gap: 6px;
+  }
+  .ac21-circuit {
+    max-height: 220px;
+  }
+  .ac21-lc {
+    max-height: 190px;
+  }
+  .ac21-legacy {
+    max-height: 205px;
+  }
+  .ac21-circuit text {
+    font-size: 19px;
+  }
+  .ac21-energy-key b {
+    display: block;
+  }
+  .ac21-trace {
+    max-height: 46px;
+  }
+  .ac21-controls {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac21 * {
+    transition: none !important;
+  }
+}
+@media (max-width: 640px) {
+  .ac21-lc {
+    max-height: 180px;
+  }
+  .ac21-energy-key {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+  }
+  .ac21-energy-key > span {
+    white-space: nowrap;
+  }
+  .ac21-energy-key b {
+    display: inline;
+  }
+  .showcase[data-slug='ac-circuit-lab'][data-mode='watch'] .film-caption {
+    padding-top: 12px;
+    padding-bottom: 6px;
+    min-height: 72px;
+  }
+  .showcase[data-slug='ac-circuit-lab'][data-mode='watch'] .film-caption p {
+    line-height: 1.4;
+  }
+}
+.ac21-energy-key > span:nth-child(1) {
+  color: #527c67;
+}
+.ac21-energy-key > span:nth-child(2) {
+  color: #92774b;
+}
+.ac21-energy-key > span:nth-child(3) {
+  color: #81766d;
+}
+@media (max-width: 640px) {
+  .ac21[data-apparatus='lc'] {
+    padding-block: 2px;
+  }
+  .ac21-lc {
+    margin-block: 0;
   }
 }

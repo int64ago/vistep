@@ -1,54 +1,68 @@
 import { useId, useState } from 'react';
-import { t } from '../../i18n';
-import { useShowcase, ease } from '../lab/FilmContext';
+import { t, browserLocale } from '../../i18n';
+import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
-import { waxMotion, waxRise, type WaxMode } from '../../models/wax-motion-composition';
+import {
+  waxMotion,
+  waxRise,
+  waxFilmState,
+  type WaxSceneState,
+  type WaxMode,
+} from '../../models/wax-motion-composition';
 import '../../styles/wax-motion-composition.css';
 export default function WaxMotionComposition() {
   const film = useShowcase(),
     id = useId().replace(/:/g, ''),
-    [mode, setMode] = useState<WaxMode>('uniform'),
-    [time, setTime] = useState(3),
-    [vx, setVx] = useState(0.12),
-    [vy, setVy] = useState(0.1),
-    [ax, setAx] = useState(0.08),
-    c = film.chapter,
-    p = film.chapterProgress,
-    trial = film.watch ? (c === 0 ? 'vertical' : c === 3 ? 'accelerated' : 'uniform') : mode,
-    setup = film.watch && c === 0,
-    physical = film.watch
-      ? setup
-        ? Math.max(0, (p - 0.28) / 0.72) * 3
-        : Math.min(1, p / 0.82) * (c === 3 ? 4 : 5)
-      : Math.min(time, trial === 'accelerated' ? 4 : 5),
-    s = waxMotion(
-      physical,
-      trial,
-      film.watch ? 0.12 : vx,
-      film.watch ? 0.1 : vy,
-      film.watch ? 0.08 : ax,
-    ),
-    rise = setup ? waxRise(physical) : null,
+    en = browserLocale() === 'en',
+    say = (zh: string, english: string) => (en ? english : zh),
+    authored = waxFilmState(film.chapter, film.chapterProgress);
+  const [manual, setManual] = useState<WaxSceneState | null>(null);
+  const state = film.watch ? authored : (manual ?? authored),
+    trial = state.mode,
+    setup = state.startup,
+    physical = Math.min(state.time, trial === 'accelerated' ? 4 : 5),
+    s = waxMotion(physical, trial, state.horizontal, state.vertical, state.acceleration),
+    rise = setup ? waxRise(s.time, state.vertical) : null,
     x = setup ? 195 : 65 + s.x * 260,
     y = 300 - (rise?.y ?? s.y) * 260,
-    rotation = setup ? 180 * (1 - ease(Math.min(1, p / 0.24))) : 0,
+    rotation = state.rotation,
     points = Array.from({ length: Math.floor(s.time) + 1 }, (_, i) =>
-      waxMotion(i, trial, film.watch ? 0.12 : vx, film.watch ? 0.1 : vy, film.watch ? 0.08 : ax),
-    );
+      waxMotion(i, trial, state.horizontal, state.vertical, state.acceleration),
+    ),
+    set = (patch: Partial<WaxSceneState>) => setManual({ ...state, time: s.time, ...patch });
   const vectorScale = 185;
   return (
-    <section className="wax-motion-lab">
+    <section
+      className="wax-motion-lab"
+      data-watch={film.watch}
+      data-mode={trial}
+      data-time={s.time}
+      data-startup={setup}
+      data-rotation={rotation}
+      data-horizontal={state.horizontal}
+      data-vertical={state.vertical}
+      data-acceleration={state.acceleration}
+    >
       <header>
-        <p>
-          {t(
+        <span>
+          {say(
             setup
-              ? '倒置密封玻璃管，等蜡块上升趋于稳定'
+              ? '从启动到稳定'
               : trial === 'accelerated'
-                ? '横向加速，纵向匀速，合运动变成曲线'
-                : '两个方向同时匀速，蜡块沿斜直线移动',
+                ? '每秒的间隔'
+                : state.vectors
+                  ? '速度合成'
+                  : '一块蜡，两个方向',
+            setup
+              ? 'From rest to steady rise'
+              : trial === 'accelerated'
+                ? 'One-second gaps'
+                : state.vectors
+                  ? 'Vector sum'
+                  : 'One float, two directions',
           )}
-        </p>
-        <span>{t('玻璃管 · 红蜡块 · 黑板坐标')}</span>
+        </span>
+        <strong>t = {s.time.toFixed(2)} s</strong>
       </header>
       <div className="wax-motion-board">
         <svg
@@ -87,9 +101,9 @@ export default function WaxMotionComposition() {
                   waxMotion(
                     (s.time * i) / 69,
                     trial,
-                    film.watch ? 0.12 : vx,
-                    film.watch ? 0.1 : vy,
-                    film.watch ? 0.08 : ax,
+                    state.horizontal,
+                    state.vertical,
+                    state.acceleration,
                   ),
                 )
                   .map((q, i) => `${i ? 'L' : 'M'}${65 + q.x * 260} ${300 - q.y * 260}`)
@@ -117,7 +131,7 @@ export default function WaxMotionComposition() {
             <path d={`M${x - 8} ${y - 4}v9q8 5 16 0v-9Z`} fill="#c39a83" />
             <ellipse cx={x} cy={y - 4} rx="8" ry="3" fill="#dbb49a" />
           </g>
-          {!setup && (c >= 2 || !film.watch) && (
+          {!setup && (state.vectors || !film.watch) && (
             <>
               <path
                 d={`M${x} ${y}h${s.vx * vectorScale}v${-s.vy * vectorScale}`}
@@ -152,89 +166,120 @@ export default function WaxMotionComposition() {
       </div>
       <div className="wax-motion-readings">
         <span>
-          {t('水平分速度')} <b>{s.vx.toFixed(2)} m/s</b>
+          vₓ <b>{s.vx.toFixed(2)} m/s</b>
         </span>
         <span>
-          {t('竖直分速度')} <b>{(rise?.v ?? s.vy).toFixed(2)} m/s</b>
-        </span>
-        <span>
-          {t('模型时间')} <b>{s.time.toFixed(2)} s</b>
+          vᵧ <b>{(rise?.v ?? s.vy).toFixed(2)} m/s</b>
         </span>
       </div>
-      {!setup && (
+      {!setup && ((state.vectors && trial !== 'accelerated') || !film.watch) && (
         <div className="wax-motion-equation">
           <span>{trial === 'accelerated' ? 'x = ½aₓt²' : 'x = vₓt'}</span>
           <span>y = vᵧt</span>
-          <span>v = √(vₓ² + vᵧ²)</span>
         </div>
       )}
-      <p className="wax-motion-cause">
-        {t(
-          setup
-            ? '刚开始上升会加速；后面的合成分析从近似匀速阶段开始。'
-            : trial === 'accelerated'
-              ? '每秒竖直位移相同，水平位移逐次增大，轨迹随之弯曲。'
-              : '同一时刻把水平和竖直位移合起来，才是蜡块相对黑板的位置。',
-        )}
-      </p>
+      {!setup && trial === 'accelerated' && (
+        <div
+          className="wax-motion-increments"
+          aria-label={say(
+            '各一秒的水平位移，单位厘米',
+            'Horizontal travel per second, in centimetres',
+          )}
+        >
+          <span>Δx / cm</span>
+          {[1, 2, 3, 4].map((second) => {
+            const previous = waxMotion(
+                second - 1,
+                trial,
+                state.horizontal,
+                state.vertical,
+                state.acceleration,
+              ),
+              next = waxMotion(second, trial, state.horizontal, state.vertical, state.acceleration);
+            return (
+              <b
+                key={second}
+                data-reached={s.time >= second}
+                style={{ opacity: s.time >= second ? 1 : 0.3 }}
+              >
+                {Math.round((next.x - previous.x) * 100)}
+              </b>
+            );
+          })}
+        </div>
+      )}
       {!film.watch && (
         <div className="wax-motion-controls">
           <Segments
             label={t('玻璃管的运动')}
-            value={mode}
-            onChange={setMode}
+            value={setup ? 'startup' : trial}
+            onChange={(value) =>
+              set({
+                mode: value === 'startup' ? 'vertical' : (value as WaxMode),
+                startup: value === 'startup',
+                rotation: 0,
+                vectors: true,
+              })
+            }
             options={[
+              { value: 'startup', label: say('启动上升', 'Starting rise') },
               { value: 'vertical', label: t('保持不动') },
               { value: 'uniform', label: t('横向匀速') },
               { value: 'accelerated', label: t('横向加速') },
             ]}
           />
-          {mode === 'accelerated' ? (
+          {trial === 'accelerated' ? (
             <Range
               label={t('水平加速度')}
-              value={ax}
+              value={state.acceleration}
               min={0.02}
               max={0.08}
               step={0.01}
               unit="m/s²"
-              onChange={setAx}
+              onChange={(acceleration) => set({ acceleration })}
             />
           ) : (
             <Range
               label={t('水平分速度')}
-              value={vx}
+              value={state.horizontal}
               min={0}
               max={0.18}
               step={0.01}
               unit="m/s"
-              onChange={setVx}
+              onChange={(horizontal) => set({ horizontal })}
             />
           )}
           <Range
             label={t('竖直上升速度')}
-            value={vy}
+            value={state.vertical}
             min={0.06}
             max={0.16}
             step={0.01}
             unit="m/s"
-            onChange={setVy}
+            onChange={(vertical) => set({ vertical })}
           />
           <Range
             label={t('模型时间')}
-            value={Math.min(time, mode === 'accelerated' ? 4 : s.duration)}
+            value={s.time}
             min={0}
-            max={mode === 'accelerated' ? 4 : s.duration}
+            max={trial === 'accelerated' ? 4 : s.duration}
             step={0.01}
             unit="s"
-            onChange={setTime}
+            onChange={(time) => set({ time, rotation: 0 })}
           />
         </div>
       )}
-      <p className="wax-motion-note">
-        {t(
-          '终端上升速度作为测得的分运动输入；加速移管时按光滑管壁、竖直运动不变的教材理想条件处理。',
-        )}
-      </p>
+      {!film.watch && (
+        <details className="wax-motion-note">
+          <summary>{say('模型条件与速度合成', 'Assumptions and vector speed')}</summary>
+          <p>v = √(vₓ² + vᵧ²)</p>
+          <p>
+            {t(
+              '终端上升速度作为测得的分运动输入；加速移管时按光滑管壁、竖直运动不变的教材理想条件处理。',
+            )}
+          </p>
+        </details>
+      )}
     </section>
   );
 }

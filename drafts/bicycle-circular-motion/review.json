@@ -1,0 +1,67 @@
+{
+  "sceneSlug": "bicycle-circular-motion",
+  "status": "reviewed; authorized publication pending",
+  "owner": "GPT-6 Astra",
+  "scope": "Four complete chapters and the original textbook window; retained narration, independent geometry and stateful exploration.",
+  "preservation": {
+    "chapters": 4,
+    "windows": 1,
+    "spokenSegments": 8,
+    "changedSpoken": 0,
+    "measuredDuration": 116.5,
+    "sourceNamesPagesOrder": "unchanged"
+  },
+  "causalShots": [
+    "Distinguish angular and linear speed on one drivetrain.",
+    "The marked gold link traverses the actual 96-link closed path and returns to its origin.",
+    "Compare a small common interval, then complete one front revolution and two rear revolutions for 40:20 teeth.",
+    "Coaxial half-radius and rim points share angular speed; tangent vectors use the same v=omega*r computation and a common scale."
+  ],
+  "scientificLimits": [
+    "Pitch-length mean transport is distinguished from instantaneous polygonal chain effects.",
+    "Tooth geometry, wrapping, axle distance, chain length and phase share the existing chainLoop solver.",
+    "The film retimes model evolution to inspect intermediate states; displayed speeds are model speeds."
+  ],
+  "evidence": {
+    "scopedTests": "artifacts/teaching-principles/batch-21-resume/bicycle-tests-final.log",
+    "independentNumericalReview": "artifacts/teaching-principles/batch-21-resume/biology/checks/bicycle-independent-review.json",
+    "nativeControls": "Final static run pending; development run reached 66 passing assertions, with a harness-only about:blank localStorage error subsequently corrected.",
+    "developmentFrames": "artifacts/teaching-principles/batch-21-resume/bicycle-dev-frames-03/report.json",
+    "actualRootViews": "artifacts/teaching-principles/batch-21-resume/root-actual-views-01.json"
+  },
+  "failureHistory": [
+    "English narrow captions/readings originally overflowed; shortened visible labels/captions and reserved stage height without shrinking text.",
+    "Gold marker and velocity vectors were too subtle on actual phone-width images; increased contrast and physically derived vector length.",
+    "Same-document hash navigation retained previous manual state in the first controls harness; test now reloads each chapter before checking its first entry.",
+    "Actual exploratory buttons inherited 10px type and narrow number targets; scoped 16px/44px controls repaired."
+  ],
+  "limitations": {
+    "subjectiveListening": "not performed",
+    "physicalPhone": "not performed",
+    "completeHumanWatching": "not claimed; final native clock and sampled actual-image reviews recorded separately"
+  },
+  "authorHandoffBeforeRootIntegration": {
+    "status": "candidate; root final static validation pending"
+  },
+  "notClaimed": [
+    "Subjective audio audition",
+    "Continuous human watching",
+    "Physical-phone performance"
+  ],
+  "integrationReview": {
+    "batch": 21,
+    "record": "../teaching-principles/batch-21-review.json",
+    "source": {
+      "commit": "3e6d542886627d1ee000f408b56faacd3a07ea7b",
+      "treeHash": "cd95b16059727b8e666e7a846bc21929a3536ce9165dc3edcc15d1ddaed4ae93",
+      "gitDiffHash": "aa43a4bc1cf9a31dbfe5516333e611a0c93fa4fead3eb97fb32cf20df815e6c2",
+      "fileCount": 5411,
+      "domain": "tracked + non-ignored untracked source/assets; generated outputs excluded"
+    },
+    "finalRootAcceptance": {
+      "path": "artifacts/teaching-principles/batch-21-resume/source03-root-acceptance.json",
+      "sha256": "c0aa7f5b52454fe4c90522217f1ba958c56cb9a74d4c05457a2fef12e01257cf"
+    },
+    "remaining": "Authorized publication and live delivery check"
+  }
+}

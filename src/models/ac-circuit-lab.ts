@@ -44,6 +44,64 @@ export function capacitorCharging(time: number, capacitance = 0.0001) {
     lampPower: current * current * r,
   };
 }
+/** RL turn-on, with 6 Ω lamp plus 2 Ω winding resistance. */
+export function inductorCharging(time: number, inductance = 0.04) {
+  const L = Math.max(1e-9, inductance),
+    resistance = 8,
+    voltage = 3,
+    tau = L / resistance,
+    decay = Math.exp(-Math.max(0, time) / tau),
+    current = (voltage / resistance) * (1 - decay),
+    derivative = (voltage / L) * decay;
+  return {
+    current,
+    derivative,
+    voltage: voltage * decay,
+    backEmf: -voltage * decay,
+    tau,
+    lampPower: current * current * 6,
+  };
+}
+
+/** Passive-sign component voltage; conventional current enters the capacitor's positive-q plate. */
+export function reactiveCircuitState(
+  kind: 'inductor' | 'capacitor',
+  frequency: number,
+  value: number,
+  phase: number,
+  dc = false,
+  time = 0,
+) {
+  const steady = sinusoidalCircuit(kind, frequency, value, phase, dc),
+    w = Math.max(0, frequency) * 2 * Math.PI,
+    transient =
+      kind === 'inductor' ? inductorCharging(time, value) : capacitorCharging(time, value),
+    current = dc ? transient.current : steady.current,
+    derivative = dc
+      ? kind === 'inductor'
+        ? inductorCharging(time, value).derivative
+        : -current / (6 * Math.max(value, 1e-9))
+      : w * Math.SQRT2 * steady.currentRms * Math.cos(phase - steady.lag),
+    componentVoltage = dc
+      ? transient.voltage
+      : kind === 'inductor'
+        ? value * derivative
+        : w > 0 && value > 0
+          ? (-Math.SQRT2 * steady.currentRms * Math.cos(phase - steady.lag)) / (w * value)
+          : steady.voltage,
+    charge = kind === 'capacitor' ? value * componentVoltage : 0;
+  return {
+    ...steady,
+    current,
+    derivative,
+    componentVoltage,
+    charge,
+    backEmf: kind === 'inductor' ? -componentVoltage : 0,
+    electric: kind === 'capacitor' ? 0.5 * value * componentVoltage ** 2 : 0,
+    magnetic: kind === 'inductor' ? 0.5 * value * current ** 2 : 0,
+    lampPower: dc ? transient.lampPower : steady.lampPower,
+  };
+}
 export function generatorLeds(phase: number) {
   const voltage = 4 * Math.sin(phase),
     threshold = 1.8,
@@ -117,5 +175,75 @@ export function acShot(chapter: number, progress: number) {
     lcTime:
       chapter === 9 ? 0 : p * (chapter === 11 ? 10 : 3) * 2 * Math.PI * Math.sqrt(0.2 * 0.001),
     stage: chapter,
+  };
+}
+
+export type AcSceneState = {
+  apparatus: AcApparatus;
+  dc: boolean;
+  frequency: number;
+  phase: number;
+  inductance: number;
+  capacitance: number;
+  resistance: number;
+  transientTime: number;
+  cycles: number;
+  charging: boolean;
+  chapter: number;
+};
+const smooth = (p: number) => {
+  const x = Math.max(0, Math.min(1, p));
+  return x * x * (3 - 2 * x);
+};
+/** One ideal LC cycle, with inspection holds at zero voltage and reverse maximum charge. */
+export function lcExchangeCycle(progress: number, locale: 'zh' | 'en' = 'zh') {
+  const time = Math.max(0, Math.min(1, progress)) * 28;
+  // Measured bilingual word times. Holds cover each zero-voltage/current-maximum claim.
+  const [start, quarter, leave, reverse, returnStart, returnEnd, finish] =
+    locale === 'en'
+      ? [6.2, 9.8, 14.65, 18.7, 21.3, 22.2, 25]
+      : [5.6, 9.1, 13.3, 16.9, 17.4, 18.5, 24];
+  if (time < start) return 0;
+  if (time < quarter) return 0.25 * smooth((time - start) / (quarter - start));
+  if (time < leave) return 0.25;
+  if (time < reverse) return 0.25 + 0.25 * smooth((time - leave) / (reverse - leave));
+  if (time < returnStart) return 0.5;
+  if (time < returnEnd)
+    return 0.5 + 0.25 * smooth((time - returnStart) / (returnEnd - returnStart));
+  if (time < finish) return 0.75;
+  return 0.75 + 0.25 * smooth((time - finish) / (28 - finish));
+}
+export function acFilmState(
+  chapter: number,
+  progress: number,
+  locale: 'zh' | 'en' = 'zh',
+): AcSceneState {
+  const p = Math.max(0, Math.min(1, progress)),
+    old = acShot(chapter, p),
+    duration = [22, 22, 22, 22, 24.5, 23, 24.5, 24.5, 25.5, 23, 28, 25.5][chapter] ?? 22,
+    time = p * duration,
+    frequencyStart = chapter === 8 ? 3.9 : 14,
+    frequencyEnd = chapter === 8 ? 7 : 17,
+    u = (time - frequencyStart) / (frequencyEnd - frequencyStart),
+    integratedRise = u <= 0 ? 0 : u >= 1 ? u - 0.5 : u ** 3 - 0.5 * u ** 4,
+    changingFrequency = chapter === 5 || chapter === 8,
+    phase =
+      ((2 * Math.PI) / 12) *
+      (time + (changingFrequency ? (frequencyEnd - frequencyStart) * integratedRise : 0));
+  return {
+    apparatus: old.apparatus,
+    dc: old.dc,
+    frequency: changingFrequency ? 50 + 50 * smooth(u) : 50,
+    phase: chapter === 2 || chapter === 3 ? old.phase : phase,
+    inductance: 0.04,
+    capacitance: 0.0001,
+    resistance: chapter === 10 ? 0 : 1,
+    transientTime:
+      (chapter === 4 ? 0.04 / 8 : 6 * 0.0001) *
+      6 *
+      smooth((time - (chapter === 4 ? 3.5 : 2.5)) / 12),
+    cycles: chapter === 9 ? 0 : chapter === 10 ? lcExchangeCycle(p, locale) : p * 10,
+    charging: chapter === 9,
+    chapter,
   };
 }

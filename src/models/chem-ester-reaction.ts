@@ -58,6 +58,7 @@ export function esterPreparation(progress: number, heated = true, catalyst = tru
     rate,
   };
 }
+export const UNCATALYSED_ESTER_RATE = 0.18;
 export type HydrolysisMedium = 'neutral' | 'acid' | 'base';
 export function esterHydrolysis(
   progress: number,
@@ -69,16 +70,17 @@ export function esterHydrolysis(
     temp = 25 + limit(temperature - 25, 55),
     b = limit(base, 3);
   const factor = Math.exp((30000 / 8.314) * (1 / 298.15 - 1 / (temp + 273.15)));
-  let x = 0;
-  const steps = Math.round(p * 1000),
-    dt = 0.005;
-  for (let i = 0; i < steps; i++) {
-    const rate =
-      medium === 'base'
-        ? 0.24 * (1 - x) * (b - x)
-        : (medium === 'acid' ? 0.08 : 0.004) * (((1 - x) * (10 - x)) / 10 - 0.25 * x * x);
-    const max = medium === 'base' ? Math.min(1, b) : 1;
-    x = Math.max(0, Math.min(max, x + rate * factor * dt));
+  // The bath and closed comparison use the SAME reversible material balance.
+  // Only the observation-time/rate coordinate is rescaled; K_ester remains 4.
+  const closedRate = (0.08 / 1.75) * factor * (medium === 'acid' ? 1 : UNCATALYSED_ESTER_RATE);
+  let x = medium === 'base' ? 0 : closedEsterHydrolysis(5 * p, closedRate, 10).extent;
+  if (medium === 'base') {
+    const steps = Math.round(p * 1000),
+      dt = 0.005;
+    for (let i = 0; i < steps; i++) {
+      const rate = 0.24 * (1 - x) * (b - x);
+      x = Math.max(0, Math.min(1, b, x + rate * factor * dt));
+    }
   }
   return {
     medium,
@@ -126,5 +128,214 @@ export function esterDirector(chapter: number, progress: number) {
     progress: p,
     preparation: c === 3 ? p * 0.55 : c === 4 ? 0.55 + 0.45 * p : 1,
     hydrolysis: c === 6 ? p : c === 9 ? p : 1,
+  };
+}
+
+const smooth = (x: number) => {
+  const p = limit(x);
+  return p * p * (3 - 2 * p);
+};
+
+/** Net atom correspondence, NOT a one-collision mechanism or a proton-tracing claim.
+ * CH3/C2H5 are intact groups; every oxygen and both shown hydrogens retains its ID.
+ * The alcohol 18O endpoint is the textbook isotope evidence. Proton relays and
+ * reversible oxygen exchange in real acidic mixtures are outside this diagram. */
+export function esterAtomMap(progress: number) {
+  const u = limit(progress),
+    p = smooth(u / 0.6),
+    bend = Math.sin(Math.PI * p);
+  const points = [
+    { id: 'acid-methyl', label: 'CH₃', atoms: [1, 3, 0], from: [38, 65], to: [36, 65] },
+    { id: 'acyl-carbon', label: 'C', atoms: [1, 0, 0], from: [105, 65], to: [101, 65] },
+    { id: 'carbonyl-oxygen', label: 'O', atoms: [0, 0, 1], from: [105, 24], to: [101, 24] },
+    { id: 'acid-oxygen', label: 'O', atoms: [0, 0, 1], from: [177, 65], to: [155, 160] },
+    { id: 'acid-hydrogen', label: 'H', atoms: [0, 1, 0], from: [237, 65], to: [115, 198] },
+    { id: 'alcohol-hydrogen', label: 'H', atoms: [0, 1, 0], from: [76, 174], to: [195, 198] },
+    { id: 'alcohol-oxygen', label: '¹⁸O', atoms: [0, 0, 1], from: [140, 174], to: [172, 65] },
+    { id: 'ethyl-group', label: 'C₂H₅', atoms: [2, 5, 0], from: [238, 174], to: [260, 65] },
+  ].map((a) => {
+    let x = a.from[0] + (a.to[0] - a.from[0]) * p,
+      y = a.from[1] + (a.to[1] - a.from[1]) * p;
+    // A net correspondence, not a reaction trajectory: move the connected groups
+    // through separate viewing lanes, then bring the remaining H into the water.
+    if (a.id === 'acid-oxygen') {
+      x += 100 * bend;
+      y += 50 * bend;
+    }
+    if (a.id === 'acid-hydrogen') {
+      x += 100 * bend;
+      y += 60 * bend;
+    }
+    if (a.id === 'alcohol-oxygen' || a.id === 'ethyl-group') {
+      x -= 65 * bend;
+      y += 30 * bend;
+    }
+    if (a.id === 'alcohol-hydrogen') {
+      if (u < 0.1) {
+        x = 76 - 46 * smooth(u / 0.1);
+        y = 174;
+      } else if (u < 0.6) {
+        x = 30;
+        y = 174;
+      } else if (u < 0.72) {
+        x = 30;
+        y = 174 - 54 * smooth((u - 0.6) / 0.12);
+      } else if (u < 0.88) {
+        x = 30 + 165 * smooth((u - 0.72) / 0.16);
+        y = 120;
+      } else {
+        x = 195;
+        y = 120 + 78 * smooth((u - 0.88) / 0.12);
+      }
+    }
+    return {
+      ...a,
+      x,
+      y,
+      product: a.id === 'acid-oxygen' || a.id.endsWith('hydrogen') ? 'water' : 'ester',
+    };
+  });
+  const bond = (id: string, a: string, b: string, order: number, opacity: number) => ({
+    id,
+    a,
+    b,
+    order,
+    opacity,
+  });
+  const bonds = [
+    bond('methyl-carbonyl', 'acid-methyl', 'acyl-carbon', 1, 1),
+    bond('carbonyl', 'acyl-carbon', 'carbonyl-oxygen', 2, 1),
+    bond('acid-OH', 'acid-oxygen', 'acid-hydrogen', 1, 1),
+    bond('alcohol-CO', 'alcohol-oxygen', 'ethyl-group', 1, 1),
+    bond('acid-leaving', 'acyl-carbon', 'acid-oxygen', 1, 1 - smooth(u / 0.2)),
+    bond('alcohol-OH', 'alcohol-oxygen', 'alcohol-hydrogen', 1, 1 - smooth(u / 0.2)),
+    bond('ester-link', 'acyl-carbon', 'alcohol-oxygen', 1, smooth((u - 0.5) / 0.1)),
+    bond('water-new-OH', 'acid-oxygen', 'alcohol-hydrogen', 1, smooth((u - 0.94) / 0.06)),
+  ];
+  const total = points.reduce((s, a) => s.map((v, i) => v + a.atoms[i]), [0, 0, 0]);
+  return {
+    progress: limit(progress),
+    atoms: points,
+    bonds,
+    total,
+    isotope: 'alcohol-oxygen',
+    isotopeDestination: 'ester',
+    protonAssignments: 'representative-net-bookkeeping' as const,
+  };
+}
+
+/** Closed, isothermal, ideal mass-action counterfactual: E+W ⇌ A+L.
+ * Chosen illustrative k_h=.175, k_e=.7 => K_ester=4. The multiplier changes BOTH
+ * rates, never equilibrium. Exact Riccati solution avoids a false numerical endpoint.
+ * Time is a model coordinate, not seconds of the laboratory experiment. */
+export function closedEsterHydrolysis(time: number, multiplier = 1, initialWater = 10) {
+  const t = limit(time, 80),
+    speed = limit(multiplier, 8),
+    w = limit(initialWater, 20);
+  const a = 0.525,
+    b = 0.175 * (1 + w),
+    c = 0.175 * w;
+  const disc = Math.sqrt(b * b + 4 * a * c);
+  const equilibrium = c === 0 ? 0 : (2 * c) / (b + disc);
+  const negativeRoot = (-b - disc) / (2 * a);
+  const e = Math.exp(-disc * speed * t);
+  const extent =
+    equilibrium === 0 ? 0 : (equilibrium * (1 - e)) / (1 - (equilibrium / negativeRoot) * e);
+  const ester = 1 - extent,
+    water = w - extent,
+    acid = extent,
+    alcohol = extent;
+  return {
+    time: t,
+    multiplier: speed,
+    initialWater: w,
+    extent,
+    equilibrium,
+    ester,
+    water,
+    acid,
+    alcohol,
+    hydrolysisRate: 0.175 * ester * water * speed,
+    esterificationRate: 0.7 * acid * alcohol * speed,
+    equilibriumConstantEster: 4,
+    catalystInitial: 1,
+    catalystFinal: 1,
+  };
+}
+
+/** Chapter-local seconds from the final c3 voice word timings, including 0.45 s lead-in.
+ * The 50 s window is shared; speech and inspection holds remain locale-specific. */
+export const ESTER_C3_CUTS = {
+  zh: {
+    atoms: 6.31,
+    question: 9.03,
+    result: 13.33,
+    follow: 15.17,
+    moved: 23.71,
+    net: 19.07,
+    water: 20.69,
+    ester: 23.71,
+    limit: 26.25,
+    catalyst: 30.45,
+    collection: 34.05,
+  },
+  en: {
+    atoms: 5.99,
+    question: 9.29,
+    result: 13.55,
+    follow: 15.09,
+    moved: 24.95,
+    net: 19.17,
+    water: 20.65,
+    ester: 24.95,
+    limit: 27.47,
+    catalyst: 32.35,
+    collection: 37.33,
+  },
+} as const;
+export function esterFilmState(chapter: number, progress: number, locale: 'zh' | 'en' = 'zh') {
+  const d = esterDirector(chapter, progress),
+    p = d.progress,
+    seconds = p * 50,
+    cuts = ESTER_C3_CUTS[locale];
+  const atomBeat =
+    seconds >= cuts.collection
+      ? 'collection'
+      : seconds >= cuts.catalyst
+        ? 'catalyst'
+        : seconds >= cuts.limit
+          ? 'limit'
+          : seconds >= cuts.ester
+            ? 'ester'
+            : seconds >= cuts.water
+              ? 'water'
+              : seconds >= cuts.net
+                ? 'net'
+                : seconds >= cuts.follow
+                  ? 'bond'
+                  : 'result';
+  return {
+    ...d,
+    shot:
+      d.chapter === 3
+        ? seconds < cuts.atoms
+          ? 'apparatus'
+          : 'atoms'
+        : d.chapter === 7
+          ? p < 0.3
+            ? 'reverse-atoms'
+            : 'closed-comparison'
+          : 'retained',
+    atomProgress:
+      d.chapter === 7
+        ? 1 - smooth(p / 0.3)
+        : smooth((seconds - cuts.follow) / (cuts.moved - cuts.follow)),
+    atomBeat,
+    question:
+      d.chapter === 3
+        ? seconds >= cuts.question && seconds < cuts.result
+        : d.chapter === 7 && p >= 0.3 && p < 0.54,
+    revealed: d.chapter === 3 ? seconds >= cuts.result : d.chapter === 7 && p >= 0.54,
+    closedTime: p < 0.3 ? 0 : p < 0.54 ? 4 : 4 + 12 * smooth((p - 0.54) / 0.46),
   };
 }

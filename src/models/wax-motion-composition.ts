@@ -45,3 +45,32 @@ export function waxRise(time: number, terminal = 0.1, tau = 0.25) {
     e = Math.exp(-t / tau);
   return { y: terminal * (t - tau * (1 - e)), v: terminal * (1 - e), a: (terminal / tau) * e };
 }
+
+export type WaxSceneState = {
+  mode: WaxMode;
+  time: number;
+  horizontal: number;
+  vertical: number;
+  acceleration: number;
+  startup: boolean;
+  rotation: number;
+  vectors: boolean;
+};
+/** Presentation state only; the retained measured-component models above remain unchanged. */
+export function waxFilmState(chapter: number, progress: number): WaxSceneState {
+  const p = Math.max(0, Math.min(1, progress)),
+    startup = chapter === 0,
+    turn = Math.min(1, p / 0.24);
+  return {
+    mode: startup ? 'vertical' : chapter === 3 ? 'accelerated' : 'uniform',
+    time: startup
+      ? Math.max(0, (p - 0.28) / 0.72) * 3
+      : Math.min(1, p / 0.82) * (chapter === 3 ? 4 : 5),
+    horizontal: 0.12,
+    vertical: 0.1,
+    acceleration: 0.08,
+    startup,
+    rotation: startup ? 180 * (1 - turn * turn * (3 - 2 * turn)) : 0,
+    vectors: chapter >= 2,
+  };
+}

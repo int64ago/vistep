@@ -710,19 +710,19 @@ export const topics: Topic[] = [
   {
     slug: 'chem-ester-reaction',
     name: '乙酸乙酯的制备与水解',
-    title: '酯从哪里收集，又怎样水解？',
-    question: '酯从哪里收集，又怎样水解？',
-    description: '从综合性质证据走进连通的制酯装置，再控制介质与温度比较水解。',
+    title: '酯中的氧，原来在哪里？',
+    question: '酯中的氧，原来在哪里？',
+    description: '从教材的分层与同位素证据追踪同一个氧，连起酯化、水解与催化平衡。',
     color: '#b9b38c',
     tag: '酯化与水解',
     related: ['chem-alcohol-oxidation', 'chem-sodium-alcohol', 'chem-sugar-tests'],
     sources: [
       {
-        title: 'OpenStax: chemistry of esters',
+        title: 'OpenStax Organic Chemistry 21.6',
         url: 'https://openstax.org/books/organic-chemistry/pages/21-6-chemistry-of-esters',
       },
       {
-        title: 'OpenStax: carboxylic-acid reactions',
+        title: 'OpenStax Organic Chemistry 21.3',
         url: 'https://openstax.org/books/organic-chemistry/pages/21-3-reactions-of-carboxylic-acids',
       },
       {
@@ -1873,9 +1873,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-fermentation-pathways',
     name: '发酵的容器与条件',
-    title: '同样是发酵，为什么有的隔绝空气，有的持续通气？',
-    question: '同样是发酵，为什么有的隔绝空气，有的持续通气？',
-    description: '从泡菜水封、亚硝酸盐取样到果酒果醋与工业罐，追踪气液路径和条件调控。',
+    title: '同一坛发酵，为什么结果会随条件和时间改变？',
+    question: '同一坛发酵，为什么结果会随条件和时间改变？',
+    description: '从独立取样记录追到物质去向，比较密封、氧供给与生成和去除的收支。',
     color: '#c8c7a4',
     tag: '水封 · 发酵 · 传质',
     related: [
@@ -1886,21 +1886,28 @@ export const topics: Topic[] = [
     ],
     sources: [
       {
-        title: 'NCHFP — Suitable containers, covers and weights',
+        title: 'NCHFP — Containers and submersion',
         url: 'https://nchfp.uga.edu/how/ferment/general-information-on-fermenting/suitable-containers-covers-and-weights-for-fermenting-food/',
       },
       {
-        title: 'UC Davis — Fermentation management practices',
+        title: 'UC Davis — Fermentation management',
         url: 'https://wine.ucdavis.edu/industry-info/enology/fermentation-management-guides/wine-fermentation/fermentation-management-practices',
       },
       {
-        title: 'UC Davis Food Safety — Vinegar fermentation',
+        title: 'Tan2005 — Vinegar fermentation thesis',
         url: 'https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/inline-files/192137_0.pdf',
       },
       {
-        title:
-          'US EPA — Method 353.2 (aqueous nitrite calibration principles, not food preparation)',
+        title: 'EPA Method353.2 — Nitrite colorimetry',
         url: 'https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P101D1VY.txt',
+      },
+      {
+        title: 'Liu et al.2014 — Nitrite degradation by LCR6013',
+        url: 'https://doi.org/10.1371/journal.pone.0093308',
+      },
+      {
+        title: 'Oh et al.2004 — Nitrite depletion by kimchi isolates',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/15117551/',
       },
     ],
     number: '372',
@@ -4798,8 +4805,7 @@ export const topics: Topic[] = [
     name: '自行车上的圆周运动',
     title: '大齿轮和小齿轮，到底哪个更快？',
     question: '大齿轮和小齿轮，到底哪个更快？',
-    description:
-      '用架起后轮的自行车比较链传动的共同线速度、不同角速度，以及同轴车轮不同半径处的速度。',
+    description: '跟住同一链节，比较齿轮转角，再从同轴两点的路程理解线速度与角速度。',
     color: '#bccaa8',
     tag: '链传动 · 线速度 · 角速度',
     related: ['bicycle', 'curved-motion-lab'],

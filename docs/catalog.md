@@ -59,7 +59,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Sugar tests and hydrolysis](../src/content/en/chem-sugar-tests.mdx)                                | 4:56 | Why do the tests change after hydrolysis?                                     |
 | [What changes before equilibrium shifts?](../src/content/en/chem-equilibrium-response.mdx)          | 4:26 | Why do reactions continue when equilibrium looks still?                       |
 | [Chirality, crystals and optical evidence](../src/content/en/chem-chirality-evidence.mdx)           | 3:27 | How does failed superposition connect to Pasteur’s experimental conclusion?   |
-| [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                     | 4:22 | Where is the ester collected, and how does it hydrolyse?                      |
+| [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                     | 4:47 | Where was the ester oxygen before?                                            |
 | [How to compare reaction rates](../src/content/en/chem-reaction-rates.mdx)                          | 4:24 | Does a faster reaction mean more encounters or more success?                  |
 | [Hydrogen bonds and the open structure of ice](../src/content/en/chem-hydrogen-bond-network.mdx)    | 2:27 | Why does ice occupy more space than liquid water?                             |
 | [Two oxidation routes for ethanol](../src/content/en/chem-alcohol-oxidation.mdx)                    | 3:48 | Copper returns. Why can oxygen run out?                                       |
@@ -131,7 +131,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 3:44 | How can a tissue regenerate a plant and two cells form a hybrid?                 |
 | [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:04 | What can one colony establish, and what remains uncertain?                       |
 | [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:45 | How do different clues reveal shared ancestry?                                   |
-| [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:03 | Why do some fermentations limit air while others need it?                        |
+| [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:32 | Why do fermentation results change with conditions and time?                     |
 | [Evidence for environmental conservation](../src/content/en/bio-conservation-evidence.mdx)        | 4:13 | How can an observation lead to a conservation plan?                              |
 | [Variation and experimental evidence](../src/content/en/bio-mutation-evidence.mdx)                | 4:37 | How do mutation, chromosome changes and association differ?                      |
 | [Gene expression and trait evidence](../src/content/en/bio-gene-expression.mdx)                   | 3:26 | Why can cells and traits differ when their genes remain?                         |
@@ -258,7 +258,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Sensor measurement and automatic control](../src/content/en/sensor-control-lab.mdx)           | 4:24 | How can light, temperature and pressure control a lamp?                                  |
 | [Wi-Fi and Bluetooth interference](../src/content/en/wireless-interference-lab.mdx)            | 2:10 | Does connecting Bluetooth always slow Wi-Fi?                                             |
 | [Hertz and electromagnetic-wave experiments](../src/content/en/hertz-wave-lab.mdx)             | 2:36 | Why can two unconnected gaps both produce sparks?                                        |
-| [AC and LC oscillation experiments](../src/content/en/ac-circuit-lab.mdx)                      | 4:24 | How do lamps and coils respond when current reverses?                                    |
+| [AC and LC oscillation experiments](../src/content/en/ac-circuit-lab.mdx)                      | 4:47 | How do lamps and coils respond when current reverses?                                    |
 | [Charge from Current Area](../src/content/en/capacitor-current-lab.mdx)                        | 1:37 | How does a declining current curve reveal released charge?                               |
 | [Eddy currents and magnetic damping](../src/content/en/eddy-current-lab.mdx)                   | 4:08 | How can a field brake motion—or drive it?                                                |
 | [Controlling Parallel-Plate Capacitance](../src/content/en/parallel-plate-capacitor-lab.mdx)   | 1:34 | When voltage changes, did charge or capacitance change?                                  |

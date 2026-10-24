@@ -11,7 +11,17 @@ import {
   nitriteResult,
   sampleMotion,
   reactorState,
+  vinegarHistory,
+  type ReactorEvent,
   scaleGeometry,
+  nitrogenPercentages,
+  fermentationDirector,
+  nitritePools,
+  nitrogenMarker,
+  nitriteRecord,
+  PICKLE_TEXTBOOK_SERIES,
+  fermentationCarbon,
+  reactorHistory,
 } from '../../models/bio-fermentation-pathways';
 import '../../styles/bio-fermentation-pathways.css';
 export default function BioFermentationPathways() {
@@ -19,74 +29,114 @@ export default function BioFermentationPathways() {
     { host, width: w } = useSignalWidth(),
     uid = useId(),
     s = (zh: string, en: string) => (browserLocale() === 'en' ? en : zh);
-  const variants = [
-    'bio-elective-3-006-1',
-    'bio-elective-3-006-2',
-    'bio-elective-3-007-1',
-    'bio-elective-3-008-1',
-    'bio-elective-3-mechanism-24',
-  ];
-  const [mode0, setMode] = useState(Math.max(0, variants.indexOf(f.variant ?? ''))),
-    [view, setView] = useState(0),
-    [progress, setProgress] = useState(0.65),
-    [sealed, setSealed] = useState(true),
-    [salt, setSalt] = useState(5),
-    [air, setAir] = useState(true),
-    [stir, setStir] = useState(true),
-    [cool, setCool] = useState(true),
-    [scale, setScale] = useState(2),
+  const [manualChapter, setManualChapter] = useState<number | null>(null),
+    [choices, setChoices] = useState<
+      Record<
+        number,
+        Partial<{
+          time: number;
+          sealed: boolean;
+          salt: number;
+          air: boolean;
+          stir: boolean;
+          cool: boolean;
+          scale: number;
+          removal: number;
+          events: ReactorEvent[];
+          vinegarEvents: ReactorEvent[];
+        }>
+      >
+    >({}),
     [absorbance, setAbsorbance] = useState(''),
+    [day, setDay] = useState(''),
+    [dilution, setDilution] = useState(2),
+    [records, setRecords] = useState<NonNullable<ReturnType<typeof nitriteRecord>>[]>([]),
     [journal, setJournal] = useState('');
-  const mode = f.watch
-      ? f.chapter < 2
-        ? 0
-        : f.chapter < 4
-          ? 1
-          : f.chapter < 7
-            ? 2
-            : f.chapter < 9
-              ? 3
-              : 4
-      : mode0,
-    local = f.watch ? f.chapter - [0, 2, 4, 7, 9][mode] : Math.min(view, [1, 1, 2, 1, 2][mode]),
-    p = f.watch ? f.chapterProgress : progress;
-  const seal = f.watch ? true : sealed,
-    oxygen = f.watch ? (mode === 4 && local === 1 ? p < 0.5 : true) : air,
-    mixing = f.watch ? true : stir,
-    cooling = f.watch ? (local === 2 ? p >= 0.5 : true) : cool;
-  const jar = jarGeometry(w),
-    pick = pickleState(p * 14, f.watch ? 5 : salt, seal),
-    wine = fermentationState(local === 0 ? p : 1, local === 2 ? p : 0, oxygen),
-    sample = sampleMotion(p, w),
-    assay = nitriteResult(f.watch ? '.068' : absorbance),
-    reactor = reactorState(p * 20, oxygen ? 1 : 0, mixing ? 1 : 0, cooling),
-    size = scaleGeometry(f.watch ? 1 + p * 3 : scale);
+  const chapter = f.watch ? f.chapter : (manualChapter ?? f.chapter),
+    duration = (f.chapters[chapter + 1]?.at ?? f.duration) - (f.chapters[chapter]?.at ?? 0),
+    own = choices[chapter] ?? {},
+    time = f.watch
+      ? f.chapterTime
+      : (own.time ?? (manualChapter === null ? f.chapterTime : duration * 0.65)),
+    d = fermentationDirector(chapter, time, browserLocale()),
+    mode = d.mode,
+    local = d.local,
+    p = d.p,
+    progress = d.process,
+    put = (value: Partial<typeof own>) => {
+      // The first edit owns the complete visible shot, including its input history.
+      // Watch can then reset its clock without moving this separate exploration.
+      setManualChapter(chapter);
+      setChoices((v) => ({
+        ...v,
+        [chapter]: {
+          time,
+          sealed: seal,
+          salt,
+          air: oxygen,
+          stir: mixing,
+          cool: cooling,
+          scale: Math.cbrt(size.volume),
+          removal,
+          events: activeEvents.map((event) => ({ ...event })),
+          vinegarEvents: vinegarEvents.map((event) => ({ ...event })),
+          ...value,
+        },
+      }));
+    },
+    inherited = manualChapter === null,
+    seal = f.watch ? d.sealed : (own.sealed ?? (inherited ? d.sealed : true)),
+    airChoice = f.watch ? d.oxygen : (own.air ?? (inherited ? d.oxygen : true)),
+    mixChoice = f.watch ? true : (own.stir ?? true),
+    coolChoice = f.watch ? d.cooling : (own.cool ?? (inherited ? d.cooling : true)),
+    salt = f.watch
+      ? d.saltComparison
+        ? 15
+        : 5
+      : (own.salt ?? (inherited && d.saltComparison ? 15 : 5)),
+    removal = f.watch ? d.rate : (own.removal ?? (inherited ? d.rate : 0.48)),
+    jar = jarGeometry(w),
+    pick = pickleState(p * 14, salt, seal),
+    vinegarEvents = f.watch
+      ? [{ at: d.vinegarStopAt, air: 0 }]
+      : (own.vinegarEvents ?? (inherited ? [{ at: d.vinegarStopAt, air: 0 }] : [])),
+    vinegar = vinegarHistory(time, vinegarEvents),
+    wine = fermentationState(1, vinegar.extent, true),
+    sample = sampleMotion(progress, w),
+    assay = nitriteResult(
+      f.watch ? '.068' : absorbance,
+      0.02,
+      0.04,
+      50,
+      10,
+      f.watch ? 2 : dilution,
+    ),
+    presetEvents: ReactorEvent[] =
+      chapter === 10
+        ? [{ at: d.airStopAt, air: 0 }]
+        : chapter === 11
+          ? [
+              { at: 0, cool: false },
+              { at: d.coolingOnAt, cool: true },
+            ]
+          : [],
+    activeEvents = f.watch ? presetEvents : (own.events ?? (inherited ? presetEvents : [])),
+    reactor = reactorHistory(d.reactorTime, { events: activeEvents }),
+    oxygen = mode === 4 ? reactor.air > 0 : chapter === 6 ? vinegar.air > 0 : airChoice,
+    mixing = mode === 4 ? reactor.mix > 0 : mixChoice,
+    cooling = mode === 4 ? reactor.cooling : coolChoice,
+    changeDriver = (event: Omit<ReactorEvent, 'at'>) =>
+      put({
+        events: [
+          ...activeEvents.filter((e) => e.at < time - 1e-9),
+          { at: time, air: reactor.air, mix: reactor.mix, cool: reactor.cooling, ...event },
+        ],
+      }),
+    size = scaleGeometry(f.watch ? d.scale : (own.scale ?? (inherited ? d.scale : 2)));
   const cx = w * 0.46,
     half = Math.min(65, w * 0.24),
     left = cx - half,
     right = cx + half;
-  const titles = [
-    s('泡菜：液面与水封', 'Pickles: brine and seal'),
-    s('亚硝酸盐：取样与校准', 'Nitrite: sample and calibration'),
-    s('果酒 → 果醋', 'Wine → vinegar'),
-    s('从小瓶到生产罐', 'From bottle to production'),
-    s('发酵罐：连接与调控', 'Reactor: paths and control'),
-  ];
-  const labels = [
-    [s('水封剖面', 'Water seal'), s('糖与乳酸', 'Sugar and lactate')],
-    [s('移取提取液', 'Transfer extract'), s('同批标准与空白', 'Standards and blank')],
-    [
-      s('酒精发酵', 'Alcoholic fermentation'),
-      s('留出排气通路', 'Provide a gas outlet'),
-      s('换成有氧条件', 'Supply oxygen'),
-    ],
-    [s('几何放大', 'Geometric scaling'), s('流程调查', 'Process investigation')],
-    [
-      s('通气与搅拌', 'Air and mixing'),
-      s('供氧对照', 'Oxygen comparison'),
-      s('冷却对照', 'Cooling comparison'),
-    ],
-  ];
   const pipe = (d: string, color = '#a7b6b1', width = 9) => (
     <>
       <path d={d} stroke={color} strokeWidth={width} fill="none" strokeLinejoin="round" />
@@ -94,9 +144,21 @@ export default function BioFermentationPathways() {
     </>
   );
   return (
-    <div className="bio-ferment" data-watch={f.watch} ref={host}>
-      <div className="bio-ferment-head">{titles[mode]}</div>
-      {mode === 0 && (
+    <div
+      className="bfp21"
+      data-watch={f.watch}
+      data-chapter={chapter}
+      data-shot={d.shot}
+      data-time={time}
+      data-oxygen={reactor.oxygen}
+      data-temperature={reactor.temp}
+      data-salt={salt}
+      data-lactate={pickleState(10, salt).lactate}
+      data-ethanol={wine.ethanol}
+      data-acetate={wine.acetate}
+      ref={host}
+    >
+      {mode === 0 && local === 0 && (
         <svg
           viewBox={`0 0 ${w} 300`}
           role="img"
@@ -139,122 +201,109 @@ export default function BioFermentationPathways() {
           />
           <path d={`M${jar.cx - 8} 58q0-13 16 0`} fill="none" stroke="#b4a487" strokeWidth="5" />
           <text x={w / 2} y="28" textAnchor="middle">
-            {s('菜料浸没 · 上方留空间', 'Food submerged · headspace')}
+            {s('盐水浸没菜料', 'Vegetables below brine')}
           </text>
           <text x={w / 2} y="282" textAnchor="middle">
             {local === 0
               ? seal
                 ? s('水封完整', 'Water seal present')
-                : s('水槽干涸：增加空气暴露', 'Dry trough: air exposure')
+                : s('水槽干涸', 'Dry sealing trough')
               : s(
                   `示意乳酸转化 ${(pick.lactate * 100).toFixed(0)}%`,
                   `Illustrative conversion ${(pick.lactate * 100).toFixed(0)}%`,
                 )}
           </text>
-          {local === 1 && (
-            <g>
-              <rect
-                x={jar.left + 8}
-                y="244"
-                width={(jar.half * 2 - 16) * (1 - pick.lactate)}
-                height="5"
-                rx="2"
-                fill="#e4c78a"
-              />
-              <rect
-                x={jar.left + 8 + (jar.half * 2 - 16) * (1 - pick.lactate)}
-                y="244"
-                width={(jar.half * 2 - 16) * pick.lactate}
-                height="5"
-                rx="2"
-                fill="#a986a4"
-              />
-            </g>
-          )}
         </svg>
       )}
+      {chapter === 1 && <CarbonPath w={w} p={progress} kind="lactate" s={s} />}
+      {chapter === 1 && (
+        <div className="bfp21-note">
+          {s('固定时间的转化', 'Fixed-time conversion')}:{' '}
+          {Math.round(pickleState(10, salt).lactate * 100)}% · {s('盐', 'salt')} {salt}%
+        </div>
+      )}
       {mode === 1 && (
-        <svg
-          viewBox={`0 0 ${w} ${local === 0 ? 348 : 300}`}
-          role="img"
-          aria-label={s(
-            '提取液移取、同批空白标准和吸光度换算',
-            'Extract transfer, matched blank and standards, and absorbance calculation',
-          )}
-        >
-          {local === 0 ? (
-            <>
-              <text x={w / 2} y="302" textAnchor="middle">
-                {s('提取液的定量移取', 'Transfer a measured aliquot')}
+        <>
+          {d.shot === 'sample' ? (
+            <svg
+              viewBox={`0 0 ${w} 300`}
+              role="img"
+              aria-label={s('独立时点样品的体积收支', 'Volume account of one time-point sample')}
+            >
+              <text x={w / 2} y="270" textAnchor="middle">
+                {s('同一时点样品', 'One time-point sample')}
               </text>
               {[w * 0.24, w * 0.76].map((x, i) => (
                 <g key={i}>
                   <path
-                    d={`M${x - 25} 153V238q25 17 50 0V153`}
+                    d={`M${x - 25} 129V214q25 17 50 0V129`}
                     fill="#f4f4e9"
                     stroke="#b4c2b7"
                     strokeWidth="2"
                   />
-                  <path
-                    d={`M${x - 23} ${i ? 238 - sample.sample * 10 : 238 - sample.source * 1.25}H${x + 23}V237q-23 14-46 0Z`}
-                    fill="#c8d7ae"
-                  />
-                  <text x={x} y="273" textAnchor="middle">
+                  <defs>
+                    <clipPath id={`${uid}-sample-${i}`}>
+                      <path d={`M${x - 23} 130V213q23 14 46 0V130Z`} />
+                    </clipPath>
+                  </defs>
+                  {(i ? sample.sample : sample.source) > 0 && (
+                    <rect
+                      data-sample-liquid={i ? 'receiver' : 'source'}
+                      x={x - 23}
+                      y={i ? 214 - sample.sample * 10 : 214 - sample.source * 1.25}
+                      width="46"
+                      height={11 + (i ? sample.sample * 10 : sample.source * 1.25)}
+                      fill="#c8d7ae"
+                      clipPath={`url(#${uid}-sample-${i})`}
+                    />
+                  )}
+                  <text x={x} y="247" textAnchor="middle">
                     {i ? `${sample.sample.toFixed(1)} mL` : `${sample.source.toFixed(1)} mL`}
                   </text>
                 </g>
               ))}
-              <g transform={`translate(${sample.x} ${sample.y})`}>
+              <g transform={`translate(${sample.x} ${sample.y - 24})`}>
                 <path d="M-4-57v43L0 0l4-14v-43" fill="#f8f9f0" stroke="#aabbb5" strokeWidth="2" />
-                <path
-                  d={`M-2 ${-13 - sample.pipette * 7}v${sample.pipette * 7}l2 9 2-9v${-sample.pipette * 7}Z`}
-                  fill="#afc49d"
-                />
+                {sample.pipette > 0 && (
+                  <path
+                    d={`M-2 ${-13 - sample.pipette * 7}v${sample.pipette * 7}l2 9 2-9v${-sample.pipette * 7}Z`}
+                    fill="#afc49d"
+                  />
+                )}
                 <ellipse cy="-64" rx="8" ry="13" fill="#9fae9c" />
               </g>
-              <text x={w / 2} y="330" textAnchor="middle">
+              {progress > 0.75 && progress < 1 && (
+                <path
+                  d={`M${sample.x} ${sample.y - 24}V${214 - sample.sample * 10}`}
+                  stroke="#afc49d"
+                  strokeWidth="2"
+                  fill="none"
+                />
+              )}
+              <text x={w / 2} y="296" textAnchor="middle">
                 {s('示例：10 g 样品 → 50 mL', 'Example: 10 g → 50 mL')}
               </text>
-            </>
+            </svg>
+          ) : d.shot === 'records' ? (
+            <NitriteRecords w={w} s={s} shown={d.recordsShown} />
+          ) : d.shot === 'calibration' ? (
+            <Calibration w={w} s={s} assay={assay} reading={f.watch ? '.068' : absorbance} />
           ) : (
-            <>
-              <text x={w / 2} y="26" textAnchor="middle">
-                {s('示例标准：以 NO₂⁻ 计', 'Standards as NO₂⁻')}
-              </text>
-              {[0, 2, 4, 6, 10].map((c, i) => {
-                const x = 28 + (i * (w - 56)) / 4;
-                return (
-                  <g key={i}>
-                    <path d={`M${x - 9} 64v82q9 10 18 0V64`} fill="#f6f6ed" stroke="#aab8ad" />
-                    <path
-                      d={`M${x - 7} 95v50q7 7 14 0V95Z`}
-                      fill="#b56d8c"
-                      opacity={0.08 + c * 0.07}
-                    />
-                    <text x={x} y="177" textAnchor="middle">
-                      {c}
-                    </text>
-                  </g>
-                );
-              })}
-              <text x={w / 2} y="204" textAnchor="middle">
-                mg/L · A = 0.020 + 0.040 C
-              </text>
-              <text x={w / 2} y="241" textAnchor="middle">
-                {assay
-                  ? `A ${f.watch ? '0.068' : absorbance} → ${assay.foodMgKg.toFixed(1)} mg/kg`
-                  : s('个人吸光度：尚未记录', 'No personal reading yet')}
-              </text>
-              <text x={w / 2} y="278" textAnchor="middle">
-                {s('提取液另稀释 2 倍', 'Extract additionally diluted ×2')}
-              </text>
-            </>
+            <Nitrogen
+              w={w}
+              s={s}
+              time={d.process * 12}
+              removal={removal}
+              reveal={d.showPrediction}
+              predict={d.shot === 'prediction'}
+            />
           )}
-        </svg>
+        </>
       )}
-      {mode === 2 && (
+      {chapter === 4 && <CarbonPath w={w} p={progress} kind="ethanol" s={s} />}
+      {mode === 2 && local !== 0 && (
         <svg
-          viewBox={`0 0 ${w} 310`}
+          viewBox={`0 0 ${w} 300`}
           role="img"
           aria-label={s(
             '果酒二氧化碳沿瓶颈和排气管逸出；果醋氧气通过纱布进入',
@@ -332,8 +381,10 @@ export default function BioFermentationPathways() {
           )}
           <text x={w / 2} y="27" textAnchor="middle">
             {local === 2
-              ? s('醋酸菌 · 通气', 'Acetic acid bacteria · air')
-              : s('酵母 · 产气并排气', 'Yeast · generate and vent CO₂')}
+              ? oxygen
+                ? s('醋酸菌 · 需氧', 'Acetic bacteria · oxygen')
+                : s('停氧：已生成产物保留', 'Oxygen off · products remain')
+              : s('酵母 · 排出 CO₂', 'Yeast · CO₂ outlet')}
           </text>
           <text x={w / 2} y="278" textAnchor="middle">
             {local === 2
@@ -341,13 +392,10 @@ export default function BioFermentationPathways() {
                   `乙醇 ${wine.ethanol.toFixed(2)} → 乙酸 ${wine.acetate.toFixed(2)}`,
                   `Ethanol ${wine.ethanol.toFixed(2)} → acid ${wine.acetate.toFixed(2)}`,
                 )
-              : s(
-                  `葡萄糖 ${wine.glucose.toFixed(2)} → 乙醇 ${wine.ethanol.toFixed(2)}`,
-                  `Glucose ${wine.glucose.toFixed(2)} → ethanol ${wine.ethanol.toFixed(2)}`,
-                )}
+              : s(`乙醇 2.00 · 二氧化碳 2.00`, `Ethanol 2.00 · CO₂ 2.00`)}
           </text>
-          <text x={w / 2} y="303" textAnchor="middle">
-            {s('物质的量 / mol · 理想反应', 'Amount / mol · ideal reaction')}
+          <text x={w / 2} y="297" textAnchor="middle">
+            {s('净反应 · mol', 'Net reaction · mol')}
           </text>
         </svg>
       )}
@@ -421,7 +469,8 @@ export default function BioFermentationPathways() {
       )}
       {mode === 4 && (
         <svg
-          viewBox={`0 0 ${w} 308`}
+          className="bfp21-reactor"
+          viewBox={`0 0 ${w} 288`}
           role="img"
           aria-label={s(
             '空气从底部散气器进入，电机轴连接叶轮，冷却夹套与培养液分离',
@@ -463,7 +512,7 @@ export default function BioFermentationPathways() {
           {[165, 198].map((y) => (
             <path
               key={y}
-              d={`M${cx - 29 * Math.cos(p * (mixing ? 18 : 0))} ${y - 4}L${cx + 29 * Math.cos(p * (mixing ? 18 : 0))} ${y + 4}`}
+              d={`M${cx - 29 * Math.cos(reactor.shaftPhase)} ${y - 4}L${cx + 29 * Math.cos(reactor.shaftPhase)} ${y + 4}`}
               stroke="#8d9f88"
               strokeWidth="8"
               strokeLinecap="round"
@@ -518,129 +567,565 @@ export default function BioFermentationPathways() {
                 : s('气路、叶轮、夹套各自连通', 'Connected flow paths')}
           </text>
           <text x={w / 2} y="281" textAnchor="middle">
-            DO {reactor.oxygen.toFixed(2)} mg/L · {reactor.temp.toFixed(1)} °C
-          </text>
-          <text x={w / 2} y="305" textAnchor="middle">
-            {s('示意参数 · 非生产设定', 'Illustrative, not process settings')}
+            {local === 2 ? `${reactor.temp.toFixed(1)} °C` : `O₂ ${reactor.oxygen.toFixed(2)} mg/L`}
           </text>
         </svg>
       )}
+      {mode === 4 && (
+        <div
+          className="bfp21-budget"
+          data-transferred={reactor.transferred}
+          data-consumed={reactor.consumed}
+        >
+          {local === 2
+            ? s('产热 − 移出 = 温度变化', 'Heat in − heat out = change')
+            : s('初始 + 传入 − 消耗 = 存量', 'Initial + input − use = stock')}
+        </div>
+      )}
       {!f.watch && (
-        <div className="bio-ferment-controls">
-          <div className="bio-ferment-buttons">
-            {titles.map((t, i) => (
-              <button
-                key={i}
-                aria-pressed={mode === i}
-                onClick={() => {
-                  setMode(i);
-                  setView(0);
-                }}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <div className="bio-ferment-buttons">
-            {labels[mode].map((t, i) => (
-              <button key={i} aria-pressed={local === i} onClick={() => setView(i)}>
-                {t}
-              </button>
-            ))}
-          </div>
+        <div className="bfp21-controls">
           <label>
-            {s('过程位置', 'Process position')}
+            {s('观察主题', 'View')}
+            <select
+              value={chapter}
+              onChange={(e) => {
+                put({});
+                setManualChapter(+e.target.value);
+              }}
+            >
+              {f.chapters.map((c, i) => (
+                <option key={c.id} value={i}>
+                  {browserLocale() === 'en' ? c.titleEn : c.title}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            {s('本章时间', 'Chapter time')}
             <input
-              aria-label={s('过程位置', 'Process position')}
+              aria-label={s('本章时间', 'Chapter time')}
               type="range"
               min="0"
-              max="1"
-              step=".005"
-              value={progress}
-              onChange={(e) => setProgress(+e.target.value)}
+              max={duration}
+              step=".1"
+              value={time}
+              onChange={(e) => put({ time: +e.target.value })}
             />
           </label>
           {mode === 0 && (
             <>
-              <button aria-pressed={sealed} onClick={() => setSealed(!sealed)}>
-                {sealed ? s('水槽有水', 'Trough filled') : s('水槽干涸', 'Trough dry')}
+              <button aria-pressed={seal} onClick={() => put({ sealed: !seal })}>
+                {s('水槽有水', 'Trough filled')}
               </button>
               {local === 1 && (
                 <label>
                   {s('示意盐浓度', 'Illustrative salt')} {salt}%
                   <input
+                    aria-label={s('示意盐浓度', 'Illustrative salt')}
                     type="range"
                     min="5"
                     max="20"
                     step="1"
                     value={salt}
-                    onChange={(e) => setSalt(+e.target.value)}
+                    onChange={(e) => put({ salt: +e.target.value })}
                   />
                 </label>
               )}
             </>
           )}
           {mode === 1 && (
-            <label>
-              {s('个人样品吸光度（空白 0.020）', 'Own sample absorbance (blank 0.020)')}
-              <input
-                type="number"
-                min=".02"
-                max=".42"
-                step=".001"
-                value={absorbance}
-                onChange={(e) => setAbsorbance(e.target.value)}
-                placeholder={s('尚未测量', 'Not measured')}
-              />
-            </label>
+            <>
+              <label>
+                {s('后续去除速率', 'Later removal rate')}
+                <input
+                  aria-label={s('后续去除速率', 'Later removal rate')}
+                  type="range"
+                  min="0"
+                  max="1.2"
+                  step=".02"
+                  value={removal}
+                  onChange={(e) => put({ removal: +e.target.value })}
+                />
+                <output>{removal.toFixed(2)}</output>
+              </label>
+              <details>
+                <summary>{s('自己的分时记录', 'Your time-point records')}</summary>
+                <p>
+                  {s(
+                    '示例不是你的检测结果。每条记录保留自己的稀释倍数。',
+                    'Examples are not your measurements. Each record keeps its own dilution.',
+                  )}
+                </p>
+                <label>
+                  {s('取样日', 'Sampling day')}
+                  <input
+                    type="number"
+                    min="0"
+                    value={day}
+                    onChange={(e) => {
+                      put({});
+                      setDay(e.target.value);
+                    }}
+                  />
+                </label>
+                <label>
+                  {s('吸光度', 'Absorbance')}
+                  <input
+                    type="number"
+                    step=".001"
+                    value={absorbance}
+                    onChange={(e) => {
+                      put({});
+                      setAbsorbance(e.target.value);
+                    }}
+                  />
+                </label>
+                <label>
+                  {s('稀释倍数', 'Dilution factor')}
+                  <input
+                    aria-label={s('稀释倍数', 'Dilution factor')}
+                    type="range"
+                    min="1"
+                    max="10"
+                    step="1"
+                    value={dilution}
+                    onChange={(e) => {
+                      put({});
+                      setDilution(+e.target.value);
+                    }}
+                  />
+                  <output>{dilution}×</output>
+                </label>
+                <button
+                  onClick={() => {
+                    put({});
+                    const r = nitriteRecord(`own-${records.length}`, day, absorbance, dilution);
+                    if (r) setRecords((v) => [...v, r]);
+                  }}
+                >
+                  {s('保存本次记录', 'Save this record')}
+                </button>
+                <ul>
+                  {records.map((r) => (
+                    <li key={r.id} data-record-id={r.id} data-dilution={r.dilution}>
+                      {r.day} d ·{' '}
+                      {r.result === null
+                        ? s('未测或超出校准范围', 'Missing or outside calibration')
+                        : `${r.result.toFixed(1)} mg/kg`}{' '}
+                      · {r.dilution}×
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </>
           )}
           {((mode === 2 && local === 2) || mode === 4) && (
-            <button aria-pressed={air} onClick={() => setAir(!air)}>
-              {air ? s('供氧开启', 'Oxygen on') : s('供氧关闭', 'Oxygen off')}
+            <button
+              aria-pressed={oxygen}
+              onClick={() =>
+                mode === 4
+                  ? changeDriver({ air: Number(!oxygen) })
+                  : put({
+                      vinegarEvents: [
+                        ...vinegarEvents.filter((e) => e.at < time - 1e-9),
+                        { at: time, air: Number(!oxygen) },
+                      ],
+                    })
+              }
+            >
+              {s('供氧开启', 'Oxygen on')}
             </button>
           )}
           {mode === 3 && local === 0 && (
             <label>
-              {s('相似罐线性倍数', 'Linear scale factor')} {scale.toFixed(1)}
+              {s('相似罐线性倍数', 'Linear scale factor')}
               <input
+                aria-label={s('相似罐线性倍数', 'Linear scale factor')}
                 type="range"
                 min="1"
                 max="4"
                 step=".1"
-                value={scale}
-                onChange={(e) => setScale(+e.target.value)}
+                value={size.volume ** (1 / 3)}
+                onChange={(e) => put({ scale: +e.target.value })}
               />
             </label>
           )}
           {mode === 4 && (
-            <div className="bio-ferment-buttons">
-              <button aria-pressed={stir} onClick={() => setStir(!stir)}>
-                {stir ? s('搅拌开启', 'Mixing on') : s('搅拌关闭', 'Mixing off')}
+            <>
+              <p>
+                {s(
+                  '从本时刻改变后续输入；回拨时间可重看。',
+                  'Changes start now; rewind to review history.',
+                )}
+              </p>
+              <button aria-pressed={mixing} onClick={() => changeDriver({ mix: Number(!mixing) })}>
+                {s('搅拌开启', 'Mixing on')}
               </button>
-              <button aria-pressed={cool} onClick={() => setCool(!cool)}>
-                {cool ? s('冷却开启', 'Cooling on') : s('冷却关闭', 'Cooling off')}
+              <button aria-pressed={cooling} onClick={() => changeDriver({ cool: !cooling })}>
+                {s('冷却开启', 'Cooling on')}
               </button>
-            </div>
+            </>
           )}
           <details>
-            <summary>{s('实验条件与个人记录', 'Conditions and own records')}</summary>
+            <summary>{s('模型限定与资料记录', 'Model limits and source notes')}</summary>
             <p>
               {s(
-                '反应计量、比色参数和传质参数是教学简化。果酒图采用可控排气装置示意，教材原图为定期松盖瓶。亚硝酸盐色度校准以 NO₂⁻ 计，示例不等于食品标准方法、真实检测或可食用判断。',
-                'Stoichiometry, color calibration and transport parameters are simplified. The wine view uses an airlock; the textbook uses scheduled cap loosening. Nitrite calibration is expressed as NO₂⁻; this example is neither an official food method nor a measurement or edibility assessment.',
+                '路径与参数为教学简化，不是完整菌群、生产设定或食用判断。硝酸盐到其他含氮物质仅追氮收支；不同菌群与条件需要独立检测。',
+                'Paths and parameters are teaching simplifications, not a full community, process setting or edibility verdict. The nitrate-to-other-products view tracks nitrogen only; organisms and conditions require independent tests.',
               )}
             </p>
             <label>
-              {s('样品、时间、条件、方法与资料出处', 'Sample, date, conditions, method and source')}
+              {s('样品与资料出处', 'Sample and source')}
               <textarea
                 value={journal}
-                onChange={(e) => setJournal(e.target.value)}
-                placeholder={s('自己的记录从这里开始', 'Start your own record here')}
+                onChange={(e) => {
+                  put({});
+                  setJournal(e.target.value);
+                }}
               />
             </label>
           </details>
         </div>
       )}
     </div>
+  );
+}
+
+type Say = (zh: string, en: string) => string;
+function CarbonPath({
+  w,
+  p,
+  kind,
+  s,
+}: {
+  w: number;
+  p: number;
+  kind: 'lactate' | 'ethanol' | 'acetate';
+  s: Say;
+}) {
+  const atoms = fermentationCarbon(kind, p, w),
+    bonds =
+      kind === 'lactate'
+        ? [
+            [0, 1],
+            [1, 2],
+            [3, 4],
+            [4, 5],
+          ]
+        : [
+            [0, 1],
+            [4, 5],
+          ];
+  return (
+    <>
+      <svg
+        viewBox={`0 0 ${w} 238`}
+        role="img"
+        aria-label={s(
+          '同一六个碳的净去向，不是反应中间体',
+          'Net destinations of the same six carbons, not reaction intermediates',
+        )}
+      >
+        <text x={w / 2} y="20" textAnchor="middle">
+          {s('同一批碳', 'The same carbon batch')}
+        </text>
+        {p < 0.15 && (
+          <text x={w / 2} y="129" textAnchor="middle" opacity={1 - p}>
+            {s('葡萄糖', 'Glucose')}
+          </text>
+        )}
+        {(p < 0.15
+          ? [
+              [0, 1],
+              [1, 2],
+              [2, 3],
+              [3, 4],
+              [4, 5],
+            ]
+          : bonds
+        ).map(([a, b]) => (
+          <path
+            key={`${a}-${b}`}
+            d={`M${atoms[a].x} ${atoms[a].y}L${atoms[b].x} ${atoms[b].y}`}
+            stroke="#a18d64"
+            strokeWidth="3"
+            opacity={p < 0.15 ? 1 - p / 0.15 : Math.max(0, (p - 0.7) / 0.3)}
+          />
+        ))}
+        {atoms.map((a) => (
+          <g
+            key={a.id}
+            data-carbon-id={a.id}
+            data-product={a.product}
+            transform={`translate(${a.x} ${a.y})`}
+          >
+            <circle
+              r="13"
+              fill={a.product.startsWith('co2') && p > 0.6 ? '#d1dedb' : '#e2c995'}
+              stroke="#a69370"
+            />
+            <text textAnchor="middle" y="6">
+              {a.n}
+            </text>
+          </g>
+        ))}
+        {p > 0.15 && (
+          <>
+            <text x={w / 2} y="231" textAnchor="middle">
+              {kind === 'lactate'
+                ? s('两份乳酸 · 六个碳', 'Two lactates · six carbons')
+                : s('两份乙醇 · 四个碳', 'Two ethanols · four carbons')}
+            </text>
+            {kind !== 'lactate' && (
+              <text x={w / 2} y="76" textAnchor="middle">
+                2 CO₂
+              </text>
+            )}
+          </>
+        )}
+      </svg>
+      <div className="bfp21-note">
+        {s('净碳图 · 非逐步反应', 'Net carbon map · not reaction steps')}
+      </div>
+    </>
+  );
+}
+function NitriteRecords({ w, s, shown }: { w: number; s: Say; shown: number }) {
+  const left = 42,
+    right = w - 19,
+    top = 28,
+    bottom = 185,
+    X = (d: number) => left + ((d - 3) / 10) * (right - left),
+    Y = (v: number) => bottom - (v / 24) * (bottom - top);
+  return (
+    <>
+      <div className="bfp21-note">
+        {s('教材练习记录 · 读图近似', 'Textbook example · approximate')}
+      </div>
+      <svg
+        viewBox={`0 0 ${w} 235`}
+        role="img"
+        aria-label={s(
+          '第3到13天六个独立时点的亚硝酸盐记录，先升后降',
+          'Six separate nitrite observations, days 3 to 13: a rise and fall',
+        )}
+      >
+        <text x={left} y="18">
+          mg/kg
+        </text>
+        <path d={`M${left} ${top}V${bottom}H${right}`} fill="none" stroke="#a9afa1" />
+        {[0, 12, 24].map((v) => (
+          <g key={v}>
+            <path d={`M${left - 4} ${Y(v)}H${right}`} stroke="#deded2" />
+            <text x={left - 8} y={Y(v) + 6} textAnchor="end">
+              {v}
+            </text>
+          </g>
+        ))}
+        <path
+          d={PICKLE_TEXTBOOK_SERIES.slice(0, shown)
+            .map((a, i) => `${i ? 'L' : 'M'}${X(a.day)} ${Y(a.mgKg)}`)
+            .join(' ')}
+          stroke="#81987b"
+          strokeWidth="2"
+          fill="none"
+        />
+        {PICKLE_TEXTBOOK_SERIES.map((a, i) => (
+          <g key={a.id} data-record-id={a.id} data-day={a.day} data-approx-mgkg={a.mgKg}>
+            <text x={X(a.day)} y="209" textAnchor="middle">
+              {a.day}
+            </text>
+            {i < shown && (
+              <rect x={X(a.day) - 4} y={Y(a.mgKg) - 4} width="8" height="8" fill="#786387" />
+            )}
+          </g>
+        ))}
+        <text x={w / 2} y="233" textAnchor="middle">
+          {s('取样日 / d', 'Sampling day / d')}
+        </text>
+      </svg>
+      <div className="bfp21-note">{s('各时点独立样品', 'Separate time-point samples')}</div>
+    </>
+  );
+}
+function Calibration({
+  w,
+  s,
+  assay,
+  reading,
+}: {
+  w: number;
+  s: Say;
+  assay: ReturnType<typeof nitriteResult>;
+  reading: string;
+}) {
+  return (
+    <>
+      <div className="bfp21-note">{s('独立校准练习', 'Independent calibration exercise')}</div>
+      <svg
+        viewBox={`0 0 ${w} 210`}
+        role="img"
+        aria-label={s(
+          '同批空白与标准，示例读数扣除空白并保留稀释倍数',
+          'Matched blank and standards, blank-corrected example with dilution',
+        )}
+      >
+        <text x={w / 2} y="18" textAnchor="middle">
+          mg/L
+        </text>
+        {[0, 2, 4, 6, 10].map((v, i) => {
+          const x = 24 + (i * (w - 48)) / 4;
+          return (
+            <g key={v}>
+              <path d={`M${x - 9} 30V104q9 10 18 0V30`} fill="#f4f4ea" stroke="#a0b2a5" />
+              <path d={`M${x - 7} 55V103q7 7 14 0V55Z`} fill="#b56d8c" opacity={0.08 + v * 0.07} />
+              <text x={x} y="138" textAnchor="middle">
+                {v}
+              </text>
+            </g>
+          );
+        })}
+        <text x={w / 2} y="168" textAnchor="middle">
+          A → mg/L → mg/kg
+        </text>
+        <text x={w / 2} y="203" textAnchor="middle">
+          {assay
+            ? `${Number(reading).toFixed(3)} → ${assay.extractMgL.toFixed(1)} → ${assay.foodMgKg.toFixed(1)}`
+            : s('尚未测量', 'Not measured')}
+        </text>
+      </svg>
+      <div className="bfp21-note">
+        {s('示例：提取与稀释需计入', 'Account for extraction and dilution')}
+      </div>
+    </>
+  );
+}
+function Nitrogen({
+  w,
+  s,
+  time,
+  removal,
+  reveal,
+  predict,
+}: {
+  w: number;
+  s: Say;
+  time: number;
+  removal: number;
+  reveal: boolean;
+  predict: boolean;
+}) {
+  const m = nitritePools(time, 0.32, removal),
+    percent = nitrogenPercentages(m),
+    ref = nitritePools(time, 0.32, 0.48),
+    labels = [s('硝酸盐', 'Nitrate'), s('亚硝酸盐', 'Nitrite'), s('其他氮', 'Other N')];
+  if (predict)
+    return (
+      <div className="bfp21-predict">
+        {s('如果生成不变，而后续去除更快？', 'Same formation, faster removal?')}
+        <span>{s('先预测亚硝酸盐的积累', 'Predict nitrite accumulation first')}</span>
+      </div>
+    );
+  return (
+    <>
+      <div className="bfp21-note">
+        {reveal
+          ? removal > 0.48
+            ? s('新一轮：更快去除', 'New run: faster removal')
+            : removal < 0.48
+              ? s('新一轮：更慢去除', 'New run: slower removal')
+              : s('新一轮：原去除速率', 'New run: same removal')
+          : s('选定氮份额 · 收支示意', 'Selected N portions · net account')}
+      </div>
+      <svg
+        viewBox={`0 0 ${w} 230`}
+        role="img"
+        aria-label={s(
+          '同一份氮依次进入和离开亚硝酸盐库',
+          'The same nitrogen passes into and out of the nitrite pool',
+        )}
+      >
+        {labels.map((l, i) => (
+          <g key={i}>
+            <text x={w * [0.15, 0.5, 0.85][i]} y="25" textAnchor="middle">
+              {l}
+            </text>
+            <rect
+              x={w * [0.15, 0.5, 0.85][i] - 26}
+              y="47"
+              width="52"
+              height="111"
+              rx="22"
+              fill={['#e8dfc6', '#ead3dc', '#d8e3d8'][i]}
+            />
+          </g>
+        ))}
+        {[m.inRate, m.outRate].map((rate, i) => {
+          const from = w * [0.15, 0.5][i] + 29,
+            to = w * [0.5, 0.85][i] - 29;
+          return (
+            <path
+              key={i}
+              data-nitrogen-flow={i ? 'removal' : 'formation'}
+              data-rate={rate}
+              d={`M${from} 96H${to}${rate > 1e-8 ? `m-5-5 5 5-5 5` : ''}`}
+              fill="none"
+              stroke={i ? '#8ba18c' : '#ac97a3'}
+              strokeWidth={1 + 5 * clamp(rate / 0.32)}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray={rate > 1e-8 ? undefined : '2 4'}
+              opacity={rate > 1e-8 ? 0.85 : 0.35}
+            />
+          );
+        })}
+        {[0, 5, 10].map((id) => {
+          const a = nitrogenMarker(id, time, 0.32, removal, w);
+          return (
+            <g
+              key={a.id}
+              data-nitrogen-id={a.id}
+              data-pool={a.pool}
+              transform={`translate(${a.x} ${58 + (id / 5) * 38})`}
+            >
+              <circle r="12" fill="#c3a574" stroke="#8c7b61" />
+              <text y="6" textAnchor="middle">
+                {id / 5 + 1}
+              </text>
+            </g>
+          );
+        })}
+        {percent.map((v, i) => (
+          <text
+            key={i}
+            data-nitrogen-percent={i}
+            x={w * [0.15, 0.5, 0.85][i]}
+            y="186"
+            textAnchor="middle"
+          >
+            {v}%
+          </text>
+        ))}
+        <text x={w / 2} y="218" textAnchor="middle">
+          {s('连续模型：合计 100%', 'Pool model: total 100%')}
+        </text>
+      </svg>
+      <div
+        className="bfp21-note"
+        data-in-rate={m.inRate}
+        data-out-rate={m.outRate}
+        data-nitrite-comparison={reveal ? true : undefined}
+      >
+        {reveal ? (
+          <>
+            {s('同一时刻', 'Same time')}: {nitrogenPercentages(ref)[1]}% → {percent[1]}%
+          </>
+        ) : m.inRate > m.outRate ? (
+          s('生成较快：存量上升', 'Formation faster: stock rises')
+        ) : (
+          s('去除较快：存量下降', 'Removal faster: stock falls')
+        )}
+      </div>
+    </>
   );
 }

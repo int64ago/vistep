@@ -2,9 +2,11 @@
 
 Connect the oscilloscope first to a battery and then to an AC teaching supply. Direct voltage keeps one polarity; sinusoidal alternating voltage crosses zero. Two antiparallel LEDs connected to a teaching generator reveal opposite current directions. Slip rings maintain contact without rectifying the output.
 
-With a coil in series, the lamp is dimmer on AC than DC at equal source RMS voltage because inductive reactance further limits current. A series capacitor passes a charging transient on DC, then blocks steady current. AC repeatedly charges and discharges it; electrons do not cross the dielectric.
+With a coil in series, first observe the instant DC is connected. Current builds, the magnetic field grows, and that change induces an opposing emf. Once current settles, this induced emf approaches zero. A coil opposes changes in current. At the same three-volt RMS supply, AC keeps changing; raising frequency increases reactance and further reduces average lamp power.
 
-Switch a charged capacitor onto a coil. Electric energy becomes magnetic energy and then returns as opposite capacitor charge. Real circuit resistance makes the measured oscillation decay.
+With a series capacitor, opposite charges accumulate on its plates. Capacitor voltage rises, leaving less voltage across the lamp, so charging current falls. Blocking steady DC does not erase the initial transient. AC repeatedly changes plate charge and sustains external current: arrows follow the wires, and no electrons cross the insulating gap. Raising frequency reduces capacitive reactance, so this lamp becomes brighter.
+
+Switch a charged capacitor onto a coil and disconnect the supply. Set resistance to zero and pause at a quarter-cycle: capacitor voltage is zero, current is maximal and all the initial energy is magnetic. Self-induction prevents current from stopping abruptly. It recharges the capacitor with opposite polarity, returning energy to the electric field. Add resistance and the heat portion of the energy band grows as oscillation amplitude decays.
 
 <h2 id="try">Preserve the comparison conditions</h2>
 
@@ -17,10 +19,10 @@ Switch a charged capacitor onto a coil. Electric energy becomes magnetic energy 
 
 <div className="formula">X_L = 2πfL; X_C = 1/(2πfC); I_rms = U_rms/√(R²+X²)</div>
 
-The lamp is a fixed six-ohm resistance, with AC brightness mapped from average power. The coil has two-ohm winding resistance. DC capacitor mode solves its RC charging transient separately. LEDs use a 1.8-volt threshold and a 100-ohm limiter. Generator phase and voltage share one sinusoidal model, shown in slow motion.
+The lamp is a fixed six-ohm resistance, with AC brightness mapped from average power. The coil has two-ohm winding resistance. DC coil mode solves the RL transient: 3 = 8i + Ldi/dt. Current rises continuously from zero to 3/8 ampere; the opposing self-induced emf is −Ldi/dt. DC capacitor mode separately solves its RC charging transient. LEDs use a 1.8-volt threshold and a 100-ohm limiter. Generator phase and voltage share one sinusoidal model, shown in slow motion.
 
 <div className="formula">Lq″ + Rq′ + q/C = 0; W = q²/(2C) + LI²/2</div>
 
-The LC circuit uses 0.2 henry, 1000 microfarads, five-volt initial charge and adjustable series resistance. Its analytical damped solution computes both field energies and loss. The changeover switch disconnects the source during free oscillation. Displayed traces are model output, not claimed measurements.
+The LC circuit uses 0.2 henry, 1000 microfarads, a five-volt initial capacitor voltage and adjustable series resistance. Positive current leaves the upper plate, so I = −dq/dt. The analytical solution starts with zero current and includes underdamped, critically damped and overdamped cases. Initial electric energy is ½CU² = 12.5 millijoules. Electric energy, magnetic energy and accumulated Joule heat always sum to this initial value; electromagnetic energy decreases at rate RI². The changeover switch disconnects the source during free oscillation. Motion is slowed for observation and field contours are schematic. Displayed traces are model output, not claimed measurements.
 
-Sources: [OpenStax: Simple AC circuits](https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits), [LC oscillations](https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit). Textbook: Elective Book Two, pages 49–50, 56–57 and 71–72.
+Sources: [OpenStax: Simple AC circuits](https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits), [RL transients](https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits), [LC oscillations](https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit). Textbook: Elective Book Two, pages 49–50, 56–57 and 71–72.

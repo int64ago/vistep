@@ -1,17 +1,17 @@
-.bio-ferment {
+.bfp21 {
   color: #62624f;
   font-size: 16px;
 }
-.bio-ferment svg {
+.bfp21 svg {
   width: 100%;
   height: auto;
   display: block;
 }
-.bio-ferment svg text {
+.bfp21 svg text {
   font: 16px var(--font-body, sans-serif);
   fill: #62624f;
 }
-.bio-ferment-head {
+.bfp21-head {
   font-size: 17px;
   line-height: 1.4;
   min-height: 36px;
@@ -21,18 +21,18 @@
   text-align: center;
   padding: 8px 12px;
 }
-.bio-ferment-controls {
+.bfp21-controls {
   display: grid;
   gap: 14px;
   padding-top: 16px;
   border-top: 1px solid #dbd9c7;
 }
-.bio-ferment-buttons {
+.bfp21-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.bio-ferment button {
+.bfp21 button {
   min-height: 44px;
   padding: 8px 15px;
   font: inherit;
@@ -41,17 +41,17 @@
   border: 1px solid #ceceba;
   border-radius: 24px;
 }
-.bio-ferment button[aria-pressed='true'] {
+.bfp21 button[aria-pressed='true'] {
   background: #e8e7d2;
   border-color: #a8ae8a;
 }
-.bio-ferment label {
+.bfp21 label {
   display: grid;
   gap: 8px;
 }
-.bio-ferment input,
-.bio-ferment select,
-.bio-ferment textarea {
+.bfp21 input,
+.bfp21 select,
+.bfp21 textarea {
   font: inherit;
   color: inherit;
   width: 100%;
@@ -59,36 +59,104 @@
   min-height: 44px;
   accent-color: #a5ae83;
 }
-.bio-ferment input[type='number'],
-.bio-ferment select,
-.bio-ferment textarea {
+.bfp21 input[type='number'],
+.bfp21 select,
+.bfp21 textarea {
   padding: 8px;
   border: 1px solid #ceceba;
   border-radius: 12px;
   background: #fcfcf5;
 }
-.bio-ferment textarea {
+.bfp21 textarea {
   min-height: 88px;
 }
-.bio-ferment details,
-.bio-ferment p {
+.bfp21 details,
+.bfp21 p {
   font-size: 16px;
   line-height: 1.6;
 }
-.bio-ferment summary {
+.bfp21 summary {
   min-height: 44px;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.bio-ferment button:focus-visible,
-.bio-ferment input:focus-visible,
-.bio-ferment textarea:focus-visible {
+.bfp21 button:focus-visible,
+.bfp21 input:focus-visible,
+.bfp21 textarea:focus-visible {
   outline: 2px solid #a6af87;
   outline-offset: 3px;
 }
-.bio-ferment-records {
+.bfp21-records {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+}
+
+.bfp21 {
+  max-width: 100%;
+}
+.bfp21 svg {
+  max-height: 300px;
+}
+.bfp21 svg text {
+  font-size: 18px;
+}
+.bfp21-note,
+.bfp21-budget,
+.bfp21-comparison {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 3px 0 7px;
+}
+.bfp21-predict {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  font-size: 20px;
+}
+.bfp21-predict span {
+  font-size: 16px;
+}
+.bfp21 select {
+  padding: 8px;
+  border: 1px solid #ceceba;
+  border-radius: 12px;
+  background: #f9f9f2;
+}
+.bfp21[data-watch='true'] {
+  padding: 0;
+}
+.showcase:has(.bfp21) .film-caption {
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.bfp21 svg {
+  overflow: visible;
+}
+@media (max-width: 600px) {
+  .bfp21 svg {
+    max-height: 270px;
+  }
+  .bfp21-note,
+  .bfp21-budget {
+    margin: 2px 0 5px;
+  }
+  .bfp21 svg text {
+    font-size: 18.2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bfp21 svg.bfp21-reactor {
+    max-height: 258px;
+  }
+}
+.bfp21[data-chapter='1'] .bfp21-note {
+  margin-bottom: 1px;
 }

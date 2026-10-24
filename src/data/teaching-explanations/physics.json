@@ -2498,5 +2498,180 @@
         "en": "In both cases vertical velocity is zero at the apex while horizontal velocity remains, so the shaft is approximately horizontal; the apex location and height change."
       }
     }
+  },
+  "required-2-bicycle-speeds": {
+    "sceneSlug": "bicycle-circular-motion",
+    "question": {
+      "zh": "小齿轮转得更快，链条也变快了吗？",
+      "en": "Does a faster sprocket mean a faster chain?"
+    },
+    "lead": {
+      "zh": "跟住同一链节，再比较两个转角和车轮上的两个点。",
+      "en": "Follow one link, then compare two angles and two points on a wheel."
+    },
+    "principle": {
+      "zh": "闭合链条输送同一链长，齿数越少，角速度越大；同轴点的角速度相同，线速度随半径增大。",
+      "en": "Both sprockets transport one chain length: fewer teeth require greater angular speed. Coaxial points share angular speed, while linear speed grows with radius."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持踩踏转速，后齿轮从20齿换成16齿，哪些速度改变？",
+        "en": "At the same pedalling rate, what changes when the rear sprocket goes from 20 teeth to 16?"
+      },
+      "explanation": {
+        "zh": "平均链速不变；后齿轮和后轮角速度增至原来的20/16倍。同轴两标记的线速度都按相同比例增加，轮缘仍为半径中点的两倍。",
+        "en": "Mean chain speed stays fixed. Rear-sprocket and wheel angular speed rise by 20/16. Both tracked wheel speeds scale equally, and the rim still moves twice as fast as the halfway point."
+      }
+    }
+  },
+  "e2-ac-dc-oscilloscope": {
+    "sceneSlug": "ac-circuit-lab",
+    "question": {
+      "zh": "电压表都能给出一个数，为什么示波器还能区分交流和直流？",
+      "en": "A voltmeter gives one number. How can an oscilloscope distinguish AC from DC?"
+    },
+    "lead": {
+      "zh": "先追踪电池波形，再看正弦波穿过零线：关键证据是同一对端子的电压极性是否随时间反转。",
+      "en": "Follow the battery trace, then the sine wave crossing zero. The key evidence is whether voltage polarity across the same terminals reverses with time."
+    },
+    "principle": {
+      "zh": "直流电压保持同一极性，正弦交流电压周期性反向。有效值描述等效热效应，不能代替瞬时电压，也不能独自显示方向变化。",
+      "en": "DC voltage keeps one polarity; sinusoidal AC reverses periodically. RMS describes equivalent heating, not instantaneous voltage or the history of its direction."
+    },
+    "transfer": {
+      "question": {
+        "zh": "直流和正弦交流都标为 3 V，它们的波形和峰值会相同吗？",
+        "en": "If DC and sinusoidal AC are both labelled 3 V, must their traces and peaks be identical?"
+      },
+      "explanation": {
+        "zh": "不会。3 V 直流是一条不换向的水平线；3 V 有效值的正弦交流峰值约为 4.24 V，并在正负之间往返。",
+        "en": "No. A 3 V DC trace stays level with one polarity. A 3 V RMS sine wave peaks at about 4.24 V and alternates between positive and negative."
+      }
+    }
+  },
+  "e2-ac-led-direction": {
+    "sceneSlug": "ac-circuit-lab",
+    "question": {
+      "zh": "两只方向相反的 LED 为什么轮流亮，而不是同时亮？",
+      "en": "Why do two oppositely connected LEDs light in turn rather than together?"
+    },
+    "lead": {
+      "zh": "把电压正负、外电路电流方向和发光的那只 LED 放在同一个时刻观察，建立可见的换向证据。",
+      "en": "Observe voltage sign, external current direction and the lit LED at the same instant to see the evidence of reversal."
+    },
+    "principle": {
+      "zh": "LED 只在正向电压超过阈值时明显导通。发电机电压每半周反向，反向并联的两只 LED 因而交替导通；接近过零点时两只都不亮。",
+      "en": "An LED conducts appreciably only above its forward threshold. Generator voltage reverses each half-cycle, so antiparallel LEDs conduct alternately; near zero both remain dark."
+    },
+    "transfer": {
+      "question": {
+        "zh": "如果某一时刻两只 LED 都灭了，能否断定电流已经完成一次反向？",
+        "en": "If both LEDs are dark at one instant, does that prove the current has reversed?"
+      },
+      "explanation": {
+        "zh": "不能。模型中电压幅值低于约 1.8 V 时都可能不亮。必须继续追踪电压符号和下一只亮起的 LED，才能判断反向。",
+        "en": "No. Both may be dark whenever the voltage magnitude is below about 1.8 V in this model. Follow the voltage sign and which LED lights next to establish reversal."
+      }
+    }
+  },
+  "e2-inductive-reactance-lamp": {
+    "sceneSlug": "ac-circuit-lab",
+    "question": {
+      "zh": "线圈没有断开电路，为什么交流频率越高，灯却越暗？",
+      "en": "The coil does not break the circuit. Why does the lamp dim as AC frequency rises?"
+    },
+    "lead": {
+      "zh": "先看接通直流后电流缓慢建立、反电动势减弱，再在同为 3 V 有效值时比较交流与直流。",
+      "en": "First watch DC current build while the opposing induced emf fades. Then compare AC and DC at the same 3 V RMS supply."
+    },
+    "principle": {
+      "zh": "线圈反对电流的变化，感应电动势为 −Ldi/dt。直流稳定后这个效应消失；交流不断变化，频率越高感抗越大，电流和灯的平均功率越小。",
+      "en": "A coil opposes changes in current through an induced emf of −Ldi/dt. This effect vanishes after DC settles. AC keeps changing: higher frequency increases inductive reactance and reduces current and average lamp power."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持电源电压和频率不变，增大电感，会让灯更亮还是更暗？",
+        "en": "At fixed supply voltage and frequency, does increasing inductance brighten or dim the lamp?"
+      },
+      "explanation": {
+        "zh": "交流时更暗，因为感抗 2πfL 增大。直流刚接通时建立得更慢，但在本模型绕组电阻不变的条件下，最终稳态亮度相同。",
+        "en": "It dims under AC because reactance 2πfL increases. DC current builds more slowly, but its final lamp brightness is unchanged when winding resistance stays fixed as in this model."
+      }
+    }
+  },
+  "e2-capacitive-reactance-lamp": {
+    "sceneSlug": "ac-circuit-lab",
+    "question": {
+      "zh": "电容中间是绝缘层，为什么接交流时外电路仍有电流？",
+      "en": "With an insulating gap inside the capacitor, why can external current persist under AC?"
+    },
+    "lead": {
+      "zh": "看直流充电时极板电荷积累、灯渐暗，再看交流中极板电荷反复增减和反号，外导线的电流箭头随之换向。",
+      "en": "Watch plate charge build and the lamp fade on DC. Then follow alternating plate charge and the reversing current arrows in the external wires under AC."
+    },
+    "principle": {
+      "zh": "直流充电让电容电压逐渐接近电源电压，电阻上的电压和电流因此下降。交流持续改变极板电荷，外电路持续充放电；电子没有穿过绝缘层。容抗随频率升高而减小。",
+      "en": "During DC charging, capacitor voltage approaches the supply, reducing resistor voltage and current. AC continually changes plate charge, maintaining external charging and discharging without electrons crossing the dielectric. Capacitive reactance decreases as frequency rises."
+    },
+    "transfer": {
+      "question": {
+        "zh": "保持电压、频率和电阻不变，把电容量增大，交流灯会怎样？直流最终呢？",
+        "en": "At fixed voltage, frequency and resistance, what does a larger capacitance do to the AC lamp and the final DC state?"
+      },
+      "explanation": {
+        "zh": "容抗 1/(2πfC) 减小，交流电流和灯的平均功率增大。直流充电持续更久，但理想电容最终仍无稳态电流。",
+        "en": "Reactance 1/(2πfC) falls, so AC current and average lamp power rise. DC charging lasts longer, but an ideal capacitor still carries no final steady current."
+      }
+    }
+  },
+  "e2-lc-oscillation-measurement": {
+    "sceneSlug": "ac-circuit-lab",
+    "question": {
+      "zh": "电容电压已经降到零，电流为什么还不停下来？",
+      "en": "Why does current keep flowing when capacitor voltage has fallen to zero?"
+    },
+    "lead": {
+      "zh": "先给电容充电并断开电源；在四分之一周期处停住，电压是零而电流最大，能量带全部落在磁场一侧。",
+      "en": "Charge the capacitor, then disconnect the source. Pause at a quarter-cycle: voltage is zero, current is maximal and the energy band is entirely magnetic."
+    },
+    "principle": {
+      "zh": "电场能转移到线圈磁场，线圈的自感使电流不能突变为零，继续给电容反向充电。理想回路中电场能与磁场能往返；有电阻时一部分转为热，振幅逐渐衰减。",
+      "en": "Electric-field energy transfers to the coil’s magnetic field. Self-induction prevents current from dropping abruptly to zero, so it recharges the capacitor with opposite polarity. Ideal field energies exchange; resistance converts part into heat and the amplitude decays."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把电阻降为零后，电容每次电压过零时，储存的能量去了哪里？",
+        "en": "With resistance set to zero, where is the stored energy whenever capacitor voltage crosses zero?"
+      },
+      "explanation": {
+        "zh": "此时电场能为零，初始 12.5 mJ 全部为磁场能，电流幅值最大。加入电阻后，电场能、磁场能和累计热量的总和仍为 12.5 mJ。",
+        "en": "Electric-field energy is zero; all the initial 12.5 mJ is magnetic, and current magnitude is maximal. With resistance added, electric energy, magnetic energy and accumulated heat still total 12.5 mJ."
+      }
+    }
+  },
+  "required-2-wax-motion": {
+    "sceneSlug": "wax-motion-composition",
+    "question": {
+      "zh": "蜡块一边上升、一边随玻璃管横移，为什么有时走直线，有时走曲线？",
+      "en": "A wax block rises while its tube moves sideways. Why is its path sometimes straight and sometimes curved?"
+    },
+    "lead": {
+      "zh": "先等蜡块接近稳定上升，再用同一组时刻标记水平和竖直位置；比较两方向的等时间隔，而不是只看轨迹外形。",
+      "en": "Let the wax approach steady rise, then mark horizontal and vertical positions at the same times. Compare equal-time gaps in both directions, not just the shape of the path."
+    },
+    "principle": {
+      "zh": "两个分运动共享同一个时间。水平和竖直速度都恒定时，位移比例不变，合轨迹是直线；若水平加速而竖直保持匀速，水平间隔逐次增大，轨迹弯曲。",
+      "en": "Both components share one clock. Constant horizontal and vertical velocities keep the displacement ratio fixed, producing a straight path. Horizontal acceleration with steady vertical rise creates growing horizontal gaps and a curved path."
+    },
+    "transfer": {
+      "question": {
+        "zh": "竖直每秒上升相同距离，水平每秒分别移动 4、12、20、28 cm，能否仍连成直线？",
+        "en": "If equal vertical rises accompany horizontal one-second gaps of 4, 12, 20 and 28 cm, can the points still form a straight line?"
+      },
+      "explanation": {
+        "zh": "不能。两方向位移比例在变化，说明速度方向也在变化。这组水平间隔每秒增加 8 cm，对应从静止开始、加速度为 0.08 m/s² 的水平匀加速运动。",
+        "en": "No. The component displacement ratio changes, so the velocity direction changes. Each horizontal gap grows by 8 cm per second, matching horizontal motion from rest with constant acceleration 0.08 m/s²."
+      }
+    }
   }
 }
