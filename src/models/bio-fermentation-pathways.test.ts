@@ -128,20 +128,53 @@ it('preserves selected nitrogen identities and continuous positions, not a count
   ])
     for (const id of [0, 5, 10]) {
       let previous = nitrogenMarker(id, 0, ...rates);
+      let samples = 0,
+        failedChecks = 0;
+      let firstViolation:
+        | {
+            condition: string;
+            sample: number;
+            current: ReturnType<typeof nitrogenMarker>;
+            previous: ReturnType<typeof nitrogenMarker>;
+            maxStep: number;
+          }
+        | undefined;
+      const recordViolation = (
+        condition: string,
+        sample: number,
+        current: ReturnType<typeof nitrogenMarker>,
+        before: ReturnType<typeof nitrogenMarker>,
+        maxStep: number,
+      ) => {
+        failedChecks++;
+        firstViolation ??= { condition, sample, current, previous: before, maxStep };
+      };
       for (let i = 0; i <= 12000; i++) {
         const n = nitrogenMarker(id, i / 1000, ...rates);
-        expect(n.id).toBe(previous.id);
         const gap = n.leave - n.enter,
           hin = Number.isFinite(n.enter)
             ? Math.min(0.3, n.enter / 3, Number.isFinite(gap) ? gap / 3 : 0.3)
             : 0.3,
           hout = Number.isFinite(gap) ? Math.min(0.3, gap / 3) : 0.3,
-          maxSpeed = 98 / (2 * Math.min(hin, hout));
-        expect(Math.abs(n.x - previous.x)).toBeLessThanOrEqual(maxSpeed * 0.001 + 1e-8);
-        expect(n.x).toBeGreaterThanOrEqual(42);
-        expect(n.x).toBeLessThanOrEqual(238);
+          maxSpeed = 98 / (2 * Math.min(hin, hout)),
+          maxStep = maxSpeed * 0.001 + 1e-8;
+        // Preserve every matcher condition, including rejection of NaN comparisons.
+        if (!Object.is(n.id, previous.id)) recordViolation('identity', i, n, previous, maxStep);
+        if (!(Math.abs(n.x - previous.x) <= maxStep))
+          recordViolation('continuity', i, n, previous, maxStep);
+        if (!(n.x >= 42)) recordViolation('lower bound', i, n, previous, maxStep);
+        if (!(n.x <= 238)) recordViolation('upper bound', i, n, previous, maxStep);
+        samples++;
         previous = n;
       }
+      expect(
+        { samples, failedChecks, firstViolation },
+        `rates=${rates.join(',')}; id=${id}`,
+      ).toEqual({
+        samples: 12001,
+        failedChecks: 0,
+        firstViolation: undefined,
+      });
     }
 });
 it('records missing independently from measured zero and never reuses a new dilution for an old sample', () => {
