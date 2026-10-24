@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "slug": "molecular-measurement-lab",
+  "baseline": "463fd5129d3ba1b8324243ba1fea1bb1ec2e419a",
+  "owner": "GPT-6 Astra",
+  "reviewType": "author self-review",
+  "implementation": "complete",
+  "measuredFilmSeconds": 210,
+  "scientificChecks": {
+    "status": "passed",
+    "tests": 12,
+    "files": [
+      "src/models/molecular-measurement-lab.test.ts",
+      "src/components/experiments/MolecularMeasurementLab.test.tsx"
+    ],
+    "assertions": [
+      "Independent D/viscosity benchmark; ensemble MSD=4Dt",
+      "Same-seed aggregate-impact direction and reversible seeking",
+      "Water/ethanol species identities, counts and total mass",
+      "Oil SI units and reciprocal measurement errors; zero-oil boundary",
+      "Powder identities move outward from shared polygon",
+      "Every chapter inherits full Explore state; all edited parameters survive Watch reset then Explore",
+      "96mL visible before earliest measured spoken cue",
+      "Unedited first Explore snapshot survives Watch replay and return for all 8 chapters at 4 causal positions"
+    ]
+  },
+  "browserAutomation": {
+    "status": "passed with retained/repaired findings",
+    "scope": "Isolated actual Showcase/full site CSS, reduced-motion paused keyframes; final actual-site route acceptance belongs to integrator",
+    "allChapterFrames": {
+      "cases": 192,
+      "initialFailures": 16,
+      "cause": "Longest English caption reserved one extra line; full player exceeded 320x568 height by 8–11px",
+      "evidence": "artifacts/teaching-principles/batch-22/physics/checks/all-chapters/report.json",
+      "resolvedBy": "Two shorter English captions, unchanged speech",
+      "narrowRecheck": "artifacts/teaching-principles/batch-22/physics/checks/all-chapters-short-caption/report.json",
+      "recheckCases": 64,
+      "recheckFailures": 0
+    },
+    "nativeControls": {
+      "cases": 192,
+      "failures": 0,
+      "evidence": "artifacts/teaching-principles/batch-22/physics/checks/native-controls/report.json",
+      "scope": "8 chapters × 3 Explore points × 2 languages × 2 widths =96; 21 real keyboard/pointer edits and Watch→Replay→Explore ×4=84; 3 complete textbook windows ×4=12",
+      "versionNote": "This prior isolated run predates final c3 timing/powder changes and the newly repaired unedited Explore persistence. Final actual-route runner now explicitly checks first Explore → Watch → native replay → Explore without input for 96 chapter states; it remains prepared, not yet run."
+    },
+    "wordTimedFrames": {
+      "cases": 20,
+      "failures": 0,
+      "evidence": [
+        "artifacts/teaching-principles/batch-22/physics/checks/measured-word-frames/report.json",
+        "artifacts/teaching-principles/batch-22/physics/checks/measured-word-desktop/report.json"
+      ]
+    },
+    "powderFrames": {
+      "cases": 6,
+      "failures": 0,
+      "evidence": "artifacts/teaching-principles/batch-22/physics/checks/powder-final/report.json"
+    }
+  },
+  "actualVisualReview": {
+    "status": "passed",
+    "manifest": "artifacts/teaching-principles/batch-22/physics/actual-view-manifest.json",
+    "chaptersCovered": 8,
+    "conditions": ["desktop1100", "phone viewport320x568", "both languages across causal states"],
+    "findingsResolved": [
+      "Initial English mixture header/readout height",
+      "Longest film caption height",
+      "Final mixture initially clustered ethanol glyphs in one column; dispersed IDs without changing count",
+      "Powder coordinate arithmetic formed an unintended diagonal; deterministic independent positions now scatter and displace outward"
+    ]
+  },
+  "speechSynchronization": {
+    "method": "Independent word timestamps + paused actual pixels, not listening",
+    "c0": "Tracer and separate impact explanation visible before the first reference",
+    "c1": "Both fixed-size temperature traces and legend present from chapter start",
+    "c3": "Pour/settle director 0.2–2.6s; zh 96mL at2.79s and en at4.05s show96",
+    "unchangedOil": "Four cues retain apparatus relationships; spreading continues into the narrated wait and reaches stable boundary before chapter ends"
+  },
+  "notRun": [
+    "Subjective full-track listening",
+    "Human uninterrupted full-film watching",
+    "Physical-phone performance",
+    "Final integrated static and online routes, assets/fallbacks, cover entry points (root coordinated)"
+  ],
+  "openProductFindings": [],
+  "independentReviewFix": {
+    "reviewer": "chemistry scene agent",
+    "issue": "Unedited first Explore did not save authored snapshot across Watch replay",
+    "resolution": "Capture the entire current authored snapshot on first entry into Explore, preserving existing manual state on subsequent entries",
+    "beforeFailure": "artifacts/teaching-principles/batch-22/physics/unmodified-explore-before-fix.log",
+    "afterPass": "artifacts/teaching-principles/batch-22/physics/unmodified-explore-after-fix.log",
+    "sourceScope": [
+      "src/components/experiments/MolecularMeasurementLab.tsx",
+      "src/components/experiments/MolecularMeasurementLab.test.tsx"
+    ],
+    "sharedAudioChanged": false,
+    "actualRouteRecheck": "prepared in integrated-controls.mjs; awaits root static origin"
+  }
+}

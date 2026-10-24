@@ -1,8 +1,7 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
-import { signalPathPoint } from '../../models/bio-chemical-signals';
 import {
   cultureClamp as clamp,
   plateGeometry,
@@ -14,6 +13,11 @@ import {
   screeningWells,
   screeningRank,
   samplingUnits,
+  cultureDirector,
+  nitrogenPathway,
+  nitrogenDisplay,
+  nitrogenTracers,
+  type CultureSnapshot,
 } from '../../models/bio-microbial-culture';
 import '../../styles/bio-microbial-culture.css';
 export default function BioMicrobialCulture() {
@@ -27,50 +31,72 @@ export default function BioMicrobialCulture() {
     'bio-elective-3-018-1',
     'bio-elective-3-020-1',
   ];
-  const [mode0, setMode] = useState(Math.max(0, variants.indexOf(f.variant ?? ''))),
-    [view, setView] = useState(0),
-    [progress, setProgress] = useState(0.7),
-    [sterile, setSterile] = useState(true),
-    [contaminated, setContaminated] = useState(false),
-    [blank, setBlank] = useState(false),
-    [perBiomass, setPerBiomass] = useState(false),
-    [exponent, setExponent] = useState(5),
-    [counts, setCounts] = useState(['', '', '']),
-    [rep, setRep] = useState(0),
-    [medium, setMedium] = useState(0),
-    [kind, setKind] = useState<'air' | 'water' | 'milk' | 'soil'>('air'),
-    [active, setActive] = useState(true),
-    [journal, setJournal] = useState('');
-  const mode = f.watch ? (f.chapter < 3 ? 0 : f.chapter < 5 ? 1 : f.chapter < 9 ? 2 : 3) : mode0,
-    local = f.watch ? f.chapter - [0, 3, 5, 9][mode] : Math.min(view, [2, 1, 3, 2][mode]),
-    p = f.watch ? f.chapterProgress : progress;
-  const st = streakState(p, w, f.watch ? true : sterile),
-    g = plateGeometry(w),
-    isBlank = f.watch ? local === 2 && p > 0.55 : blank,
-    contam = f.watch ? false : contaminated,
-    pure = pureCulture(
-      local === 2 ? clamp(p * 2) : p,
-      w,
-      f.watch ? true : sterile,
-      isBlank,
-      contam,
+  const [manual, setManual] = useState<CultureSnapshot | null>(null);
+  const initialChapter =
+    !f.watch && f.chapter === 0 && f.variant
+      ? [0, 3, 5, 9][Math.max(0, variants.indexOf(f.variant))]
+      : f.chapter;
+  const directed = cultureDirector(
+      initialChapter,
+      f.chapterProgress,
+      browserLocale(),
+      f.chapterTime,
     ),
+    state = f.watch ? directed : (manual ?? directed),
+    put = (patch: Partial<CultureSnapshot>) =>
+      setManual({
+        ...state,
+        counts: [...state.counts],
+        prediction: Object.keys(patch).some((k) => k !== 'journal') ? false : state.prediction,
+        ...patch,
+      }),
+    {
+      chapter,
+      progress,
+      nitrogenProgress,
+      cultureGrowth,
+      sterile,
+      contaminated,
+      blank,
+      perBiomass,
+      exponent,
+      counts,
+      rep,
+      medium,
+      kind,
+      active,
+      journal,
+      hydrolysis,
+      assimilation,
+      compare,
+      prediction,
+    } = state,
+    mode = chapter < 3 ? 0 : chapter < 5 ? 1 : chapter < 9 ? 2 : 3,
+    local = chapter - [0, 3, 5, 9][mode],
+    p = progress,
+    st = streakState(p, w, sterile),
+    g = plateGeometry(w),
+    isBlank = blank,
+    contam = contaminated,
+    pure = pureCulture(cultureGrowth, w, sterile, isBlank, contam),
     dil = dilutionTransfer(p, 3),
-    degree = f.watch ? 5 : exponent,
-    cr = cfuEstimate(f.watch ? ['96', '103', '101'] : counts, degree),
-    current = f.watch ? Math.min(2, Math.floor(p * 3)) : rep,
-    n = f.watch ? [96, 103, 101][current] : counts[current].trim() === '' ? 0 : +counts[current],
-    ranking = screeningRank(local === 1, f.watch ? false : perBiomass);
-  const sampleKind = f.watch ? (local === 0 ? 'air' : local === 1 ? 'water' : 'soil') : kind,
+    degree = exponent,
+    cr = cfuEstimate(counts, degree),
+    current = rep,
+    n = counts[current].trim() === '' ? 0 : +counts[current],
+    ranking = screeningRank(local === 1, perBiomass),
+    sampleKind = kind,
     vol = sampleKind === 'air' ? 100 : sampleKind === 'soil' ? 0.000001 : 0.1,
     count = sampleKind === 'air' ? 12 : sampleKind === 'soil' ? 100 : 80,
-    unit = samplingUnits(
-      sampleKind,
-      count,
-      vol,
-      sampleKind === 'milk' ? 100 : 1,
-      f.watch ? true : active,
-    );
+    unit = samplingUnits(sampleKind, count, vol, sampleKind === 'milk' ? 100 : 1, active),
+    nitrogen = nitrogenPathway(nitrogenProgress, medium, hydrolysis, assimilation),
+    nitrogenLabels = nitrogenDisplay(nitrogen),
+    tracers = nitrogenTracers(nitrogenProgress, medium, hydrolysis, assimilation);
+  useEffect(() => {
+    if (!f.watch && manual === null) {
+      setManual({ ...directed, counts: [...directed.counts] });
+    }
+  }, [f.watch, manual, directed]);
   const titles = [
       s('把细胞分散成菌落', 'From cells to colonies'),
       s('并行筛选，再复筛', 'Screen in parallel, then retest'),
@@ -79,13 +105,13 @@ export default function BioMicrobialCulture() {
     ],
     views = [
       [
-        s('培养基与倒平板', 'Medium and pouring'),
+        s('从细胞到菌落', 'Cells to colonies'),
         s('逐段划线', 'Streaking'),
         s('培养与空白', 'Growth and blank'),
       ],
       [s('初筛', 'Initial screen'), s('重复复筛', 'Replicated retest')],
       [
-        s('选择培养基', 'Selective medium'),
+        s('氮源与生长', 'Nitrogen and growth'),
         s('十倍稀释', 'Tenfold dilution'),
         s('重复平板', 'Replicate plates'),
         s('结果边界', 'Result limits'),
@@ -105,11 +131,28 @@ export default function BioMicrobialCulture() {
     </>
   );
   return (
-    <div className="bio-culture" data-watch={f.watch} ref={host}>
+    <div
+      className="bio-culture"
+      data-watch={f.watch}
+      data-chapter={chapter}
+      data-progress={p}
+      data-blank={isBlank}
+      data-contaminated={contam}
+      data-valid={!(isBlank && contam)}
+      data-medium={medium}
+      data-hydrolysis={hydrolysis}
+      data-assimilation={assimilation}
+      data-comparison={compare}
+      data-prediction={prediction}
+      data-sample={kind}
+      data-active={active}
+      data-snapshot={JSON.stringify(state)}
+      ref={host}
+    >
       <div className="bio-culture-head">{titles[mode]}</div>
       {mode === 0 && (
         <svg
-          viewBox={`0 0 ${w} 304`}
+          viewBox={`0 0 ${w} 292`}
           role="img"
           aria-label={s(
             '培养基倒入平板，冷却接种环逐段划线并与未接种平板比较',
@@ -118,55 +161,47 @@ export default function BioMicrobialCulture() {
         >
           {local === 0 ? (
             <>
-              <defs>
-                <clipPath id={`${uid}-flask`}>
-                  <path
-                    transform={`translate(${w * 0.28} 90) rotate(120)`}
-                    d="M-9-60V-28L-28 10Q-31 20-18 25H18Q31 20 28 10L9-28V-60Z"
-                  />
-                </clipPath>
-              </defs>
-              <path
-                transform={`translate(${w * 0.28} 90) rotate(120)`}
-                d="M-9-60V-28L-28 10Q-31 20-18 25H18Q31 20 28 10L9-28V-60"
-                fill="#f4f3e4"
-                stroke="#aabbab"
-                strokeWidth="2"
-              />
-              <rect
-                clipPath={`url(#${uid}-flask)`}
-                x="0"
-                y={92 + p * 19}
-                width={w}
-                height="70"
-                fill="#d8c685"
-              />
-              <ellipse cx={w / 2} cy="220" rx="76" ry="17" fill="#ede8d1" stroke="#afbaa9" />
-              <path d={`M${w / 2 - 76} 214v8q76 31 152 0v-8`} stroke="#afbaa9" fill="#f5f0dd" />
-              <ellipse
-                cx={w / 2}
-                cy="216"
-                rx={8 + p * 64}
-                ry={2 + p * 11}
-                fill="#d8c685"
-                opacity={clamp(p * 4)}
-              />
-              {p > 0.02 && p < 0.98 && (
-                <path
-                  d={`M${w * 0.28 + 52} 120Q${w / 2 + 15} 153 ${w / 2} 213`}
-                  fill="none"
-                  stroke="#d8c685"
-                  strokeWidth="3"
-                />
-              )}
-              <text x={w / 2} y="28" textAnchor="middle">
-                {s('已灭菌 · 冷却后倒平板', 'Sterilized · cooled medium')}
+              {plate}
+              <text x={w / 2} y="27" textAnchor="middle">
+                {s('生长放大了原来的落点', 'Growth reveals the starting sites')}
               </text>
-              <text x={w / 2} y="273" textAnchor="middle">
-                {s(
-                  `示意转移 ${(15 * p).toFixed(1)} mL`,
-                  `Illustrative transfer ${(15 * p).toFixed(1)} mL`,
-                )}
+              {[
+                { id: 'A', x: -0.42, y: -0.23 },
+                { id: 'B', x: 0.37, y: -0.14 },
+                { id: 'C', x: -0.1, y: 0.42 },
+              ].map((a, i) => {
+                const cx = g.cx + a.x * g.r,
+                  cy = g.cy + a.y * g.r,
+                  growth = clamp((p - 0.12) / 0.68);
+                return (
+                  <g key={a.id} data-lineage={a.id}>
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={3 + 19 * growth}
+                      fill={i === 1 ? '#d6b995' : '#b9c49d'}
+                      opacity=".65"
+                    />
+                    {Array.from({ length: 7 }, (_, j) => (
+                      <ellipse
+                        key={j}
+                        data-cell={`${a.id}-${j}`}
+                        cx={cx + (j ? Math.cos(j * 2.4) * 13 * growth : 0)}
+                        cy={cy + (j ? Math.sin(j * 2.4) * 13 * growth : 0)}
+                        rx="3"
+                        ry="4.5"
+                        fill={i === 1 ? '#b89265' : '#80966c'}
+                        opacity={j ? clamp(growth * 7 - j + 1) : 1}
+                      />
+                    ))}
+                    <text x={cx} y={cy + 40} textAnchor="middle">
+                      {a.id}
+                    </text>
+                  </g>
+                );
+              })}
+              <text x={w / 2} y="277" textAnchor="middle">
+                {s('相同营养、温度与时间', 'Same nutrients, temperature, time')}
               </text>
             </>
           ) : (
@@ -175,6 +210,7 @@ export default function BioMicrobialCulture() {
               {(local === 1 ? st.seeds.filter((a) => a.visible) : pure).map((a) => (
                 <circle
                   key={a.id}
+                  data-colony={a.id}
                   cx={a.x}
                   cy={a.y}
                   r={'r' in a ? a.r : 1.2}
@@ -207,7 +243,7 @@ export default function BioMicrobialCulture() {
                       strokeWidth="2"
                     />
                   </g>
-                  <text x={w / 2} y="292" textAnchor="middle">
+                  <text x={w / 2} y="284" textAnchor="middle">
                     {s('每段先冷却，再带出少量菌体', 'Cool, then take inoculum')}
                   </text>
                 </>
@@ -216,8 +252,8 @@ export default function BioMicrobialCulture() {
                 <text x={w / 2} y="277" textAnchor="middle">
                   {isBlank
                     ? contam
-                      ? s('对照污染：需查明来源', 'Control contaminated')
-                      : s('空白无菌落 · 仍需检查纯度', 'Clear blank · check purity')
+                      ? s('空白长菌：本批判读无效', 'Blank grows: batch invalid')
+                      : s('同条件空白：暂未见菌落', 'Matched blank: no growth yet')
                     : s('单菌落不等于完成菌种鉴定', 'Colony ≠ identification')}
                 </text>
               )}
@@ -227,7 +263,7 @@ export default function BioMicrobialCulture() {
       )}
       {mode === 1 && (
         <svg
-          viewBox={`0 0 ${w} 300`}
+          viewBox={`0 0 ${w} 292`}
           role="img"
           aria-label={s(
             '24孔教学筛选板及同一候选的三次复筛',
@@ -236,7 +272,9 @@ export default function BioMicrobialCulture() {
         >
           <text x={w / 2} y="25" textAnchor="middle">
             {local === 0
-              ? s('24 孔示例 · 指标须一致', '24-well example · same metric')
+              ? perBiomass
+                ? s('单位菌体产量 · A4 领先', 'Per biomass: A4 leads')
+                : s('24 孔示例 · 总产量', '24-well example · total output')
               : s('同一候选，独立重复', 'Same candidate, new replicates')}
           </text>
           {local === 0 ? (
@@ -292,8 +330,15 @@ export default function BioMicrobialCulture() {
                   </g>
                 );
               })}
-              <text x={w / 2} y="272" textAnchor="middle">
-                {s(`初筛首位 ${ranking[0].id}`, `Initial leader ${ranking[0].id}`)}
+              <text x={w / 2} y="261" textAnchor="middle">
+                {perBiomass
+                  ? 'B3: 3.4 / 3.0 = 1.13'
+                  : s('总产量：B3 3.4 · A4 2.1', 'Total: B3 3.4 · A4 2.1')}
+              </text>
+              <text x={w / 2} y="284" textAnchor="middle">
+                {perBiomass
+                  ? 'A4: 2.1 / 0.8 = 2.63'
+                  : s(`初筛首位 ${ranking[0].id}`, `Initial leader ${ranking[0].id}`)}
               </text>
             </>
           ) : (
@@ -323,7 +368,7 @@ export default function BioMicrobialCulture() {
                   </g>
                 );
               })}
-              <text x={w / 2} y="288" textAnchor="middle">
+              <text x={w / 2} y="284" textAnchor="middle">
                 {s(
                   `复筛首位 ${ranking[0].id} · 示例产量`,
                   `Retest leader ${ranking[0].id} · example yield`,
@@ -335,7 +380,7 @@ export default function BioMicrobialCulture() {
       )}
       {mode === 2 && (
         <svg
-          viewBox={`0 0 ${w} 302`}
+          viewBox={`0 0 ${w} 292`}
           role="img"
           aria-label={s(
             '选择培养基、等比稀释、重复计数与CFU单位',
@@ -344,32 +389,162 @@ export default function BioMicrobialCulture() {
         >
           {local === 0 ? (
             <>
-              <text x={w / 2} y="27" textAnchor="middle">
-                {(f.watch ? Math.min(2, Math.floor(p * 3)) : medium) === 0
-                  ? s('尿素为唯一氮源', 'Urea as sole nitrogen source')
-                  : (f.watch ? Math.min(2, Math.floor(p * 3)) : medium) === 1
-                    ? s('普通含氮培养基', 'General nitrogen medium')
-                    : s('无氮源对照', 'No-nitrogen control')}
-              </text>
-              {plate}
-              {Array.from({ length: 18 }, (_, i) => {
-                const a = colonySites(18, w)[i],
-                  m = f.watch ? Math.min(2, Math.floor(p * 3)) : medium,
-                  grows = m === 1 || (m === 0 && i % 3 !== 0);
-                return (
-                  <g key={i}>
-                    <circle
-                      cx={a.x}
-                      cy={a.y}
-                      r={grows ? 5 : 1}
-                      fill={i % 3 ? '#a5b28b' : '#c5a28b'}
-                    />
-                  </g>
-                );
-              })}
-              <text x={w / 2} y="280" textAnchor="middle">
-                {s('生长条件筛选，尚未鉴定', 'Selection ≠ identification')}
-              </text>
+              {prediction ? (
+                <>
+                  <text x={w / 2} y="48" textAnchor="middle">
+                    {s('先用机制预测', 'Predict from the pathway')}
+                  </text>
+                  <ellipse cx={w / 2} cy="111" rx="10" ry="14" fill="#bc9878" />
+                  <text x={w / 2} y="157" textAnchor="middle">
+                    {s('B 不能水解尿素', 'B cannot hydrolyze urea')}
+                  </text>
+                  <text x={w / 2} y="194" textAnchor="middle">
+                    {s('直接供给可用氮，会怎样？', 'Supply usable N: what changes?')}
+                  </text>
+                  <text x={w / 2} y="271" textAnchor="middle">
+                    {s('其他生长条件保持相同', 'Keep other conditions the same')}
+                  </text>
+                </>
+              ) : compare ? (
+                <>
+                  <text x={w / 2} y="25" textAnchor="middle">
+                    {s('同一候选，只换氮源', 'Same candidates, change N')}
+                  </text>
+                  {[s('尿素', 'Urea N'), s('普通氮', 'Other N'), s('无氮', 'No N')].map(
+                    (label, m) => (
+                      <g key={m}>
+                        <text x={((m + 0.5) * w) / 3} y="62" textAnchor="middle">
+                          {label}
+                        </text>
+                        {[true, false].map((hasUrease, i) => {
+                          const a = nitrogenPathway(1, m, hasUrease && hydrolysis, assimilation);
+                          const x = ((m + 0.5) * w) / 3,
+                            y = 119 + i * 91;
+                          return (
+                            <g
+                              key={i}
+                              data-candidate={i ? 'B' : 'A'}
+                              data-n-source={m}
+                              data-growth={a.growth}
+                            >
+                              <circle cx={x} cy={y} r="31" fill="#f3f0df" stroke="#d4d6bd" />
+                              {Array.from({ length: 7 }, (_, j) => (
+                                <ellipse
+                                  key={j}
+                                  data-cell={`${i ? 'B' : 'A'}-${j}`}
+                                  cx={x + (j ? Math.cos(j * 2.4) * 15 : 0)}
+                                  cy={y + (j ? Math.sin(j * 2.4) * 15 : 0)}
+                                  rx="3.5"
+                                  ry="5"
+                                  fill={i ? '#bc9878' : '#879e71'}
+                                  opacity={j ? a.growth : 1}
+                                />
+                              ))}
+                            </g>
+                          );
+                        })}
+                      </g>
+                    ),
+                  )}
+                  <text x={w / 2} y="166" textAnchor="middle">
+                    {hydrolysis
+                      ? s('A · 可水解尿素', 'A · urea hydrolysis')
+                      : s('A · 水解关闭', 'A · hydrolysis disabled')}
+                  </text>
+                  <text x={w / 2} y="257" textAnchor="middle">
+                    {s('B · 不能水解尿素', 'B · no urea hydrolysis')}
+                  </text>
+                  <text x={w / 2} y="284" textAnchor="middle">
+                    {s('示例能力 ≠ 菌种鉴定', 'Model abilities ≠ identification')}
+                  </text>
+                </>
+              ) : (
+                <>
+                  <text x={w / 2} y="25" textAnchor="middle">
+                    {
+                      [
+                        s('尿素供氮的教学路径', 'A model of urea nitrogen'),
+                        s('直接提供可用氮', 'Available N supplied'),
+                        s('无氮源对照', 'No nitrogen supplied'),
+                      ][medium]
+                    }
+                  </text>
+                  <path
+                    d={`M${w * 0.55} 77V213`}
+                    stroke="#d3dac5"
+                    strokeWidth="7"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d={`M${w * 0.55 - 5} 108l5 7 5-7m-10 69 5 7 5-7`}
+                    stroke="#92a080"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+                  <ellipse cx={w * 0.55} cy="71" rx="36" ry="20" fill="#e2d8b9" stroke="#b8ad8c" />
+                  <ellipse cx={w * 0.55} cy="143" rx="36" ry="20" fill="#dce3c8" stroke="#b0bc97" />
+                  <ellipse
+                    cx={w * 0.55}
+                    cy="219"
+                    rx={27 + nitrogen.growth * 13}
+                    ry="23"
+                    fill="#cad8b8"
+                    stroke="#8b9f78"
+                    strokeWidth="2"
+                  />
+                  <text x="8" y="76">
+                    {s('尿素', 'Urea')}
+                  </text>
+                  <text x="8" y="148">
+                    {s('可用氮', 'Usable N')}
+                  </text>
+                  <text x="8" y="224">
+                    {s('菌体', 'Biomass')}
+                  </text>
+                  <text x={w - 5} y="76" textAnchor="end" data-n-pool="urea">
+                    {nitrogenLabels.urea.toFixed(1)} N
+                  </text>
+                  <text x={w - 5} y="148" textAnchor="end" data-n-pool="available">
+                    {nitrogenLabels.available.toFixed(1)} N
+                  </text>
+                  <text x={w - 5} y="224" textAnchor="end" data-n-pool="biomass">
+                    {nitrogenLabels.biomass.toFixed(1)} N
+                  </text>
+                  <text x="8" y="107">
+                    {hydrolysis ? s('脲酶水解', 'Hydrolysis') : s('水解关闭', 'Hydrolysis off')}
+                  </text>
+                  <text x="8" y="181">
+                    {assimilation
+                      ? s('摄取、同化', 'Assimilation')
+                      : s('同化关闭', 'Assimilation off')}
+                  </text>
+                  {tracers
+                    .filter((a) => a.visible)
+                    .map((a, i) => {
+                      const y = 71 + 72 * a.released + 76 * a.incorporated;
+                      return (
+                        <g
+                          key={a.id}
+                          data-tracer={a.id}
+                          data-n-stage={a.stage}
+                          transform={`translate(${w * 0.55 + (i ? 15 : -15)} ${y})`}
+                        >
+                          <circle r="13" fill={i ? '#b2a3c6' : '#d3af73'} stroke="#f8f5e9" />
+                          <text x="0" y="6" textAnchor="middle">
+                            {a.id}
+                          </text>
+                        </g>
+                      );
+                    })}
+                  <text x={w / 2} y="265" textAnchor="middle">
+                    {s('氨 / 铵 → 含氮物质', 'Ammonia / ammonium → cell N')}
+                  </text>
+                  <text x={w / 2} y="284" textAnchor="middle">
+                    {s('碳源、能量等条件充足', 'Carbon, energy, other needs met')}
+                  </text>
+                </>
+              )}
             </>
           ) : local === 1 ? (
             <>
@@ -384,7 +559,7 @@ export default function BioMicrobialCulture() {
                     fill="#c1cba4"
                     opacity={i ? 0.5 : 0.9}
                   />
-                  <text x={x} y="270" textAnchor="middle">
+                  <text x={x} y="260" textAnchor="middle">
                     {(i ? dil.receiverMl : dil.sourceMl).toFixed(1)} mL
                   </text>
                 </g>
@@ -417,7 +592,7 @@ export default function BioMicrobialCulture() {
                   strokeWidth="2"
                 />
               )}
-              <text x={w / 2} y="62" textAnchor="middle">
+              <text x={w / 2} y="284" textAnchor="middle">
                 10⁻³ g/mL → 10⁻⁴ g/mL
               </text>
             </>
@@ -425,19 +600,12 @@ export default function BioMicrobialCulture() {
             <>
               {plate}
               {colonySites(n, w).map((a) => (
-                <circle
-                  key={a.id}
-                  cx={a.x}
-                  cy={a.y}
-                  r="2.1"
-                  fill="#b1a17b"
-                  opacity={f.watch ? 1 : clamp(p * 3)}
-                />
+                <circle key={a.id} cx={a.x} cy={a.y} r="2.1" fill="#b1a17b" opacity="1" />
               ))}
               <text x={w / 2} y="28" textAnchor="middle">
                 {s(
-                  `平板 ${current + 1} · ${f.watch || counts[current].trim() !== '' ? n : '—'} CFU`,
-                  `Plate ${current + 1} · ${f.watch || counts[current].trim() !== '' ? n : '—'} CFU`,
+                  `平板 ${current + 1} · ${counts[current].trim() !== '' ? n : '—'} CFU`,
+                  `Plate ${current + 1} · ${counts[current].trim() !== '' ? n : '—'} CFU`,
                 )}
               </text>
               <text x={w / 2} y="276" textAnchor="middle">
@@ -447,15 +615,20 @@ export default function BioMicrobialCulture() {
           ) : (
             <>
               <text x={w / 2} y="29" textAnchor="middle">
-                {f.watch
+                {counts.join(',') === '96,103,101'
                   ? s('示例：96、103、101 个菌落', 'Example: 96, 103, 101 colonies')
-                  : s('个人重复计数', 'Own replicate counts')}
+                  : s('当前重复计数', 'Current replicate counts')}
               </text>
               <text x={w / 2} y="78" textAnchor="middle">
                 {cr?.acceptable
                   ? `${cr.cfuPerGram.toExponential(2)} CFU/g`
                   : s('个人重复计数尚未完成', 'Own counts missing')}
               </text>
+              {cr?.acceptable && (
+                <text x={w / 2} y="110" textAnchor="middle">
+                  {cr.mean.toFixed(1)} ÷ (0.1 × 10⁻{degree})
+                </text>
+              )}
               <g transform={`translate(${w / 2} 160)`}>
                 {[-5, 5].map((x, i) => (
                   <ellipse key={i} cx={x} rx="8" ry="12" fill="#b6c39c" stroke="#879d7e" />
@@ -479,7 +652,7 @@ export default function BioMicrobialCulture() {
       )}
       {mode === 3 && (
         <svg
-          viewBox={`0 0 ${w} 300`}
+          viewBox={`0 0 ${w} 292`}
           role="img"
           aria-label={s(
             '空气采样体积、水奶接种体积和土壤质量分别对应计数单位',
@@ -494,7 +667,7 @@ export default function BioMicrobialCulture() {
           </text>
           {sampleKind === 'air' ? (
             <>
-              {(f.watch || active) && (
+              {active && (
                 <rect
                   x={w / 2 - 55}
                   y="101"
@@ -505,10 +678,8 @@ export default function BioMicrobialCulture() {
                   stroke="#a3b59e"
                 />
               )}
-              {(f.watch || active) && (
-                <path d={`M${w / 2 - 44} 113h88`} stroke="#8d9c84" strokeWidth="5" />
-              )}
-              {(f.watch || active) &&
+              {active && <path d={`M${w / 2 - 44} 113h88`} stroke="#8d9c84" strokeWidth="5" />}
+              {active &&
                 [0, 1, 2, 3, 4].map((i) => (
                   <circle key={i} cx={w / 2 - 32 + i * 16} cy="113" r="3.1" fill="#f1f2e5" />
                 ))}
@@ -519,7 +690,7 @@ export default function BioMicrobialCulture() {
                   <circle key={i} cx={w / 2 - 32 + (i % 5) * 16} cy={y} r="2" fill="#ad9b79" />
                 );
               })}
-              {(f.watch || active) && (
+              {active && (
                 <path
                   d={`M${w / 2} 166V194H${w / 2 + 70}m-8-6 8 6-8 6`}
                   stroke="#91a99b"
@@ -527,7 +698,7 @@ export default function BioMicrobialCulture() {
                 />
               )}
               <text x={w / 2} y="240" textAnchor="middle">
-                {f.watch || active ? '100 L' : s('沉降：记录面积与时间', 'Settling: area and time')}
+                {active ? '100 L' : s('沉降：记录面积与时间', 'Settling: area and time')}
               </text>
             </>
           ) : sampleKind === 'soil' ? (
@@ -552,7 +723,10 @@ export default function BioMicrobialCulture() {
                 fill={sampleKind === 'milk' ? '#eee5ce' : '#c7dbcf'}
               />
               <text x={w / 2} y="245" textAnchor="middle">
-                {s('记录体积、稀释、培养方法', 'Volume / dilution / method')}
+                {s(
+                  `80 CFU · 0.1 mL · ${sampleKind === 'milk' ? '稀释100倍' : '未稀释'}`,
+                  `80 CFU · 0.1 mL · ${sampleKind === 'milk' ? '1:100' : 'undiluted'}`,
+                )}
               </text>
             </>
           )}
@@ -569,8 +743,7 @@ export default function BioMicrobialCulture() {
                 key={i}
                 aria-pressed={mode === i}
                 onClick={() => {
-                  setMode(i);
-                  setView(0);
+                  put({ chapter: [0, 3, 5, 9][i], kind: 'air' });
                 }}
               >
                 {x}
@@ -583,8 +756,10 @@ export default function BioMicrobialCulture() {
                 key={i}
                 aria-pressed={local === i}
                 onClick={() => {
-                  setView(i);
-                  if (mode === 3) setKind(i === 0 ? 'air' : i === 1 ? 'water' : 'soil');
+                  put({
+                    chapter: [0, 3, 5, 9][mode] + i,
+                    ...(mode === 3 ? { kind: i === 0 ? 'air' : i === 1 ? 'water' : 'soil' } : {}),
+                  });
                 }}
               >
                 {x}
@@ -598,20 +773,26 @@ export default function BioMicrobialCulture() {
               min="0"
               max="1"
               step=".005"
-              value={progress}
-              onChange={(e) => setProgress(+e.target.value)}
+              value={chapter === 5 ? nitrogenProgress : chapter === 2 ? cultureGrowth : progress}
+              onChange={(e) =>
+                put({
+                  progress: +e.target.value,
+                  nitrogenProgress: +e.target.value,
+                  cultureGrowth: +e.target.value,
+                })
+              }
             />
           </label>
           {mode === 0 && local > 0 && (
             <>
-              <button aria-pressed={sterile} onClick={() => setSterile(!sterile)}>
+              <button aria-pressed={sterile} onClick={() => put({ sterile: !sterile })}>
                 {sterile
                   ? s('每段重新处理接种环', 'Treat loop between streaks')
                   : s('不重新处理接种环', 'No treatment between streaks')}
               </button>
               {local === 2 && (
                 <>
-                  <button aria-pressed={blank} onClick={() => setBlank(!blank)}>
+                  <button aria-pressed={blank} onClick={() => put({ blank: !blank })}>
                     {blank
                       ? s('查看未接种对照', 'Show uninoculated control')
                       : s('查看接种平板', 'Show inoculated plate')}
@@ -619,7 +800,7 @@ export default function BioMicrobialCulture() {
                   {blank && (
                     <button
                       aria-pressed={contaminated}
-                      onClick={() => setContaminated(!contaminated)}
+                      onClick={() => put({ contaminated: !contaminated })}
                     >
                       {contaminated
                         ? s('对照出现污染', 'Contaminated control')
@@ -631,7 +812,7 @@ export default function BioMicrobialCulture() {
             </>
           )}
           {mode === 1 && (
-            <button aria-pressed={perBiomass} onClick={() => setPerBiomass(!perBiomass)}>
+            <button aria-pressed={perBiomass} onClick={() => put({ perBiomass: !perBiomass })}>
               {perBiomass
                 ? s('按单位菌体产量排序', 'Rank per biomass')
                 : s('按总产量排序', 'Rank total product')}
@@ -639,9 +820,25 @@ export default function BioMicrobialCulture() {
           )}
           {mode === 2 && local === 0 && (
             <div className="bio-culture-buttons">
+              <button aria-pressed={compare} onClick={() => put({ compare: !compare })}>
+                {compare
+                  ? s('查看氮的去向', 'Trace nitrogen')
+                  : s('比较同条件培养', 'Compare matched cultures')}
+              </button>
+              <button aria-pressed={hydrolysis} onClick={() => put({ hydrolysis: !hydrolysis })}>
+                {hydrolysis ? s('水解开启', 'Hydrolysis on') : s('水解关闭', 'Hydrolysis off')}
+              </button>
+              <button
+                aria-pressed={assimilation}
+                onClick={() => put({ assimilation: !assimilation })}
+              >
+                {assimilation
+                  ? s('同化开启', 'Assimilation on')
+                  : s('同化关闭', 'Assimilation off')}
+              </button>
               {[s('尿素氮源', 'Urea N'), s('普通氮源', 'General N'), s('无氮源', 'No N')].map(
                 (v, i) => (
-                  <button key={i} aria-pressed={medium === i} onClick={() => setMedium(i)}>
+                  <button key={i} aria-pressed={medium === i} onClick={() => put({ medium: i })}>
                     {v}
                   </button>
                 ),
@@ -658,9 +855,18 @@ export default function BioMicrobialCulture() {
                   max="7"
                   step="1"
                   value={exponent}
-                  onChange={(e) => setExponent(+e.target.value)}
+                  onChange={(e) => put({ exponent: +e.target.value })}
                 />
               </label>
+              <p>
+                {s(
+                  '示例可继承；自己的原始记录请另存。',
+                  'Inherited values are examples; keep original records separately.',
+                )}
+              </p>
+              <button onClick={() => put({ counts: ['', '', ''], rep: 0 })}>
+                {s('清空三个计数', 'Clear three counts')}
+              </button>
               <div className="bio-culture-records">
                 {counts.map((v, i) => (
                   <label key={i}>
@@ -671,10 +877,12 @@ export default function BioMicrobialCulture() {
                       max="400"
                       step="1"
                       value={v}
-                      onFocus={() => setRep(i)}
+                      onFocus={() => put({ rep: i })}
                       onChange={(e) => {
-                        setCounts(counts.map((x, j) => (j === i ? e.target.value : x)));
-                        setRep(i);
+                        put({
+                          counts: counts.map((x, j) => (j === i ? e.target.value : x)),
+                          rep: i,
+                        });
                       }}
                     />
                   </label>
@@ -684,7 +892,7 @@ export default function BioMicrobialCulture() {
                 <p>
                   {s(
                     '有平板超出本教材的30—300范围，先核查稀释与数据。',
-                    'A plate is outside the textbook range of30–300; review dilution and records.',
+                    'A plate is outside the textbook range of 30–300; review dilution and records.',
                   )}
                 </p>
               )}
@@ -694,7 +902,7 @@ export default function BioMicrobialCulture() {
             <>
               <div className="bio-culture-buttons">
                 {(['air', 'water', 'milk', 'soil'] as const).map((k) => (
-                  <button key={k} aria-pressed={sampleKind === k} onClick={() => setKind(k)}>
+                  <button key={k} aria-pressed={sampleKind === k} onClick={() => put({ kind: k })}>
                     {s(
                       { air: '空气', water: '水', milk: '牛奶', soil: '土壤' }[k],
                       { air: 'Air', water: 'Water', milk: 'Milk', soil: 'Soil' }[k],
@@ -703,7 +911,7 @@ export default function BioMicrobialCulture() {
                 ))}
               </div>
               {sampleKind === 'air' && (
-                <button aria-pressed={active} onClick={() => setActive(!active)}>
+                <button aria-pressed={active} onClick={() => put({ active: !active })}>
                   {active
                     ? s('已知体积的主动采样', 'Known-volume active sampling')
                     : s('被动沉降平板', 'Passive settle plate')}
@@ -724,7 +932,7 @@ export default function BioMicrobialCulture() {
                 '样品、方法、条件、观察与出处',
                 'Sample, method, conditions, observations and source',
               )}
-              <textarea value={journal} onChange={(e) => setJournal(e.target.value)} />
+              <textarea value={journal} onChange={(e) => put({ journal: e.target.value })} />
             </label>
           </details>
         </div>

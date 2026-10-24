@@ -125,39 +125,64 @@
   }
 }
 
-/* The film caption carries the current explanation; longer notes remain in exploration. */
+/* Keep the physical construction large; move repeated prose out of the directed film. */
+.showcase[data-mode='watch'] .ellipse-string-lab {
+  padding: 14px 18px;
+}
+.showcase[data-mode='watch'] .ellipse-string-lab > header,
+.showcase[data-mode='watch'] .ellipse-string-cause,
+.showcase[data-mode='watch'] .ellipse-string-note {
+  display: none;
+}
+.showcase[data-mode='watch'] .ellipse-string-board {
+  margin: 0 auto 8px;
+  max-width: 360px;
+}
+.showcase[data-mode='watch'] .ellipse-string-board svg {
+  height: 280px;
+  width: 100%;
+}
+.showcase[data-mode='watch'] .ellipse-string-ribbon {
+  margin: 9px auto;
+}
+.showcase[data-mode='watch'] .ellipse-string-measures[data-axes='false'] {
+  display: none;
+}
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .ellipse-string-lab {
-    padding: 12px 8px;
+    padding: 4px 10px 7px;
   }
-  .showcase[data-mode='watch'] .ellipse-string-lab > header {
-    display: block;
-    text-align: center;
-  }
-  .showcase[data-mode='watch'] .ellipse-string-lab > header p {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-  }
-  .showcase[data-mode='watch'] .ellipse-string-lab > header > span,
-  .showcase[data-mode='watch'] .ellipse-string-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .ellipse-string-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .ellipse-string-lab > p[class$='-observation'] {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
   .showcase[data-mode='watch'] .ellipse-string-board {
-    margin: 5px 0;
+    margin: 0 auto 6px;
   }
   .showcase[data-mode='watch'] .ellipse-string-board svg {
-    max-height: 265px;
+    height: 182px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lengths {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 4px;
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lengths span {
+    gap: 2px;
+    text-align: center;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lengths b {
+    white-space: nowrap;
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-lengths span:not(:nth-child(2)):not(:nth-child(4)) {
+    display: flex;
   }
   .showcase[data-mode='watch'] .ellipse-string-ribbon {
-    margin: 8px auto;
+    margin: 6px auto;
   }
   .showcase[data-mode='watch'] .ellipse-string-measures {
-    gap: 6px 14px;
+    gap: 3px 10px;
+    font-size: 16px;
+  }
+  .showcase[data-mode='watch'] .ellipse-string-measures > span:first-child {
+    display: none;
   }
 }

@@ -7,6 +7,8 @@ import {
   sandbagCone,
   centripetalRig,
   funnelOrbit,
+  centripetalFilmState,
+  type CentripetalSceneState,
 } from '../../models/centripetal-force-lab';
 import { pulleyLoop, TAU } from '../../models/mechanisms';
 import '../../styles/centripetal-force-lab.css';
@@ -14,7 +16,7 @@ const P = (x: number, y: number, z: number) => ({
   x: 220 + x * 160 + y * 70,
   y: 262 + y * 45 - z * 220,
 });
-function Rig({ time, comparison }: { time: number; comparison: string }) {
+export function CentripetalRigArtwork({ time, comparison }: { time: number; comparison: string }) {
   const a = centripetalRig(),
     b = centripetalRig(
       comparison === 'mass' ? 0.08 : 0.04,
@@ -46,7 +48,7 @@ function Rig({ time, comparison }: { time: number; comparison: string }) {
     );
   return (
     <svg
-      viewBox="0 0 440 320"
+      viewBox="50 70 340 250"
       role="img"
       aria-label={t('变速塔轮带动两个旋转槽，球压挡板，经杠杆拉动弹簧测力套筒')}
     >
@@ -208,33 +210,21 @@ function Rig({ time, comparison }: { time: number; comparison: string }) {
 export default function CentripetalForceLab() {
   const film = useShowcase(),
     id = useId().replace(/:/g, ''),
-    [mode, setMode] = useState(
-      film.variant?.includes('sandbag')
-        ? 'bag'
-        : film.variant?.includes('funnel')
-          ? 'funnel'
-          : film.variant?.includes('cut-string')
-            ? 'cut'
-            : 'rig',
-    ),
-    [time, setTime] = useState(0.5),
-    [comparison, setComparison] = useState('mass'),
-    [omega, setOmega] = useState(4.5),
-    [length, setLength] = useState(0.8),
-    [radius, setRadius] = useState(0.2),
+    [manual, setManual] = useState<CentripetalSceneState | null>(null),
     c = film.chapter,
     p = film.chapterProgress,
-    kind = film.watch ? (c === 0 ? 'cut' : c === 1 ? 'bag' : c < 6 ? 'rig' : 'funnel') : mode,
-    compare = film.watch
-      ? c === 3
-        ? 'mass'
-        : c === 4
-          ? 'radius'
-          : c === 5
-            ? 'speed'
-            : 'same'
-      : comparison,
-    physical = film.watch ? Math.min(1, p / 0.84) * (kind === 'cut' ? 1.25 : 2) : time,
+    authored = centripetalFilmState(c, p);
+  const [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<CentripetalSceneState>) => setManual({ ...state, ...patch }),
+    { omega, length, radius } = state,
+    kind = state.mode,
+    compare = state.comparison,
+    physical = state.time,
     cut = cutString(physical),
     bag = sandbagCone(physical, 0.08, length, omega),
     funnel = funnelOrbit(physical, radius),
@@ -261,7 +251,15 @@ export default function CentripetalForceLab() {
         return `${i ? 'L' : 'M'}${q.x} ${q.y}`;
       }).join(' ');
   return (
-    <section className="centripetal-force-lab">
+    <section
+      className="centripetal-force-lab"
+      data-view={kind}
+      data-comparison={compare}
+      data-time={physical}
+      data-omega={omega}
+      data-length={length}
+      data-radius={radius}
+    >
       <header>
         <p>
           {t(
@@ -294,10 +292,16 @@ export default function CentripetalForceLab() {
       </header>
       <div className="centripetal-force-stage">
         {kind === 'rig' ? (
-          <Rig time={physical} comparison={compare} />
+          <CentripetalRigArtwork time={physical} comparison={compare} />
         ) : (
           <svg
-            viewBox="0 0 410 325"
+            viewBox={
+              kind === 'funnel'
+                ? '90 140 230 175'
+                : kind === 'bag'
+                  ? '10 45 380 280'
+                  : '0 0 410 325'
+            }
             role="img"
             aria-label={t(
               kind === 'cut'
@@ -308,6 +312,17 @@ export default function CentripetalForceLab() {
             )}
           >
             <defs>
+              <marker
+                id={`${id}-arrow`}
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="4"
+                markerHeight="4"
+                orient="auto"
+              >
+                <path d="M1 1L8 5L1 9" fill="none" stroke="context-stroke" strokeWidth="1.6" />
+              </marker>
               <linearGradient id={`${id}glass`}>
                 <stop stopColor="#d9e9db" stopOpacity=".2" />
                 <stop offset=".5" stopColor="#edf2e5" stopOpacity=".4" />
@@ -341,6 +356,24 @@ export default function CentripetalForceLab() {
                   stroke="#afc39a"
                   strokeWidth="1.6"
                 />
+                <path
+                  data-vector="velocity"
+                  d={`M${205 + cut.x * 160} ${165 - cut.y * 160}l${cut.vx * 25} ${-cut.vy * 25}`}
+                  stroke="#61869a"
+                  strokeWidth="2.6"
+                  fill="none"
+                  markerEnd={`url(#${id}-arrow)`}
+                />
+                {!cut.cut && (
+                  <path
+                    data-vector="tension"
+                    d={`M${205 + cut.x * 160} ${165 - cut.y * 160}l${cut.fx * 140} ${-cut.fy * 140}`}
+                    stroke="#8c6b39"
+                    strokeWidth="2.6"
+                    fill="none"
+                    markerEnd={`url(#${id}-arrow)`}
+                  />
+                )}
                 <circle cx={205 + cut.x * 160} cy={165 - cut.y * 160} r="6" fill="#abc19e" />
                 {physical > 0.55 && (
                   <g transform="translate(232 135) rotate(-40)">
@@ -405,6 +438,59 @@ export default function CentripetalForceLab() {
                   stroke="#a69e77"
                 />
                 <path d={`M${bp.x - 9} ${bp.y - 10}h18`} stroke="#9b9773" strokeWidth="2" />
+                {(() => {
+                  // One force scale for all vectors in this view; the resultant is a sum, not an extra force.
+                  const scale = 0.2,
+                    z = 0.95 - bag.vertical;
+                  const support = F(
+                    bag.x + bag.tensionVector.x * scale,
+                    bag.y + bag.tensionVector.y * scale,
+                    z + bag.tensionVector.z * scale,
+                  );
+                  const radial = F(
+                    bag.x + bag.tensionVector.x * scale,
+                    bag.y + bag.tensionVector.y * scale,
+                    z,
+                  );
+                  const down = F(bag.x, bag.y, z - bag.gravity * scale);
+                  return (
+                    <g opacity={film.watch ? Math.max(0, Math.min(1, (p - 0.12) / 0.12)) : 1}>
+                      <path
+                        data-vector="tension"
+                        d={`M${bp.x} ${bp.y}L${support.x} ${support.y}`}
+                        stroke="#577e4c"
+                        strokeWidth="2.8"
+                        fill="none"
+                        markerEnd={`url(#${id}-arrow)`}
+                      />
+                      <path
+                        data-vector="gravity"
+                        d={`M${bp.x} ${bp.y}L${down.x} ${down.y}`}
+                        stroke="#926b35"
+                        strokeWidth="2.8"
+                        fill="none"
+                        markerEnd={`url(#${id}-arrow)`}
+                      />
+                      <path
+                        d={`M${support.x} ${support.y}L${radial.x} ${radial.y}`}
+                        stroke="#926b35"
+                        strokeWidth="1.8"
+                        strokeDasharray="3 4"
+                      />
+                      {bag.force > 0 && (
+                        <path
+                          data-vector="resultant"
+                          d={`M${bp.x} ${bp.y}L${radial.x} ${radial.y}`}
+                          stroke="#587f91"
+                          strokeWidth="2.6"
+                          strokeDasharray="4 4"
+                          fill="none"
+                          markerEnd={`url(#${id}-arrow)`}
+                        />
+                      )}
+                    </g>
+                  );
+                })()}
               </>
             ) : (
               <>
@@ -441,22 +527,58 @@ export default function CentripetalForceLab() {
                   strokeDasharray="3 5"
                 />
                 <circle cx={fp.x} cy={fp.y} r="5" fill="#b4c5a6" stroke="#8ca283" />
-                {(c === 7 || !film.watch) && (
-                  <>
-                    <path d={`M${fp.x} ${fp.y}v38`} stroke="#b79c70" strokeWidth="2" />
-                    <path
-                      d={`M${fp.x} ${fp.y}L${Q(funnel.x - 0.16 * Math.cos(funnel.angle), funnel.y - 0.16 * Math.sin(funnel.angle), funnel.height + 0.16).x} ${Q(funnel.x - 0.16 * Math.cos(funnel.angle), funnel.y - 0.16 * Math.sin(funnel.angle), funnel.height + 0.16).y}`}
-                      stroke="#8eaa80"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d={`M${fp.x} ${fp.y}L${Q(funnel.x - 0.16 * Math.cos(funnel.angle), funnel.y - 0.16 * Math.sin(funnel.angle), funnel.height).x} ${Q(funnel.x - 0.16 * Math.cos(funnel.angle), funnel.y - 0.16 * Math.sin(funnel.angle), funnel.height).y}`}
-                      stroke="#a9b891"
-                      strokeWidth="2"
-                      strokeDasharray="3 3"
-                    />
-                  </>
-                )}
+                {(() => {
+                  const scale = 0.16 / funnel.gravity;
+                  const radial = Q(
+                    funnel.x - funnel.force * scale * Math.cos(funnel.angle),
+                    funnel.y - funnel.force * scale * Math.sin(funnel.angle),
+                    funnel.height,
+                  );
+                  const support = { x: radial.x, y: radial.y - funnel.gravity * scale * 215 };
+                  return (
+                    <g
+                      opacity={
+                        film.watch && c === 6 ? Math.max(0, Math.min(1, (p - 0.24) / 0.12)) : 1
+                      }
+                    >
+                      <path
+                        data-vector="gravity"
+                        d={`M${fp.x} ${fp.y}v${funnel.gravity * scale * 215}`}
+                        stroke="#926b35"
+                        strokeWidth="2.8"
+                        fill="none"
+                        markerEnd={`url(#${id}-arrow)`}
+                      />
+                      <path
+                        data-vector="support"
+                        d={`M${fp.x} ${fp.y}L${support.x} ${support.y}`}
+                        stroke="#577e4c"
+                        strokeWidth="2.8"
+                        fill="none"
+                        markerEnd={`url(#${id}-arrow)`}
+                      />
+                      {(c === 7 || !film.watch) && (
+                        <>
+                          <path
+                            d={`M${support.x} ${support.y}L${radial.x} ${radial.y}`}
+                            stroke="#926b35"
+                            strokeWidth="1.8"
+                            strokeDasharray="3 4"
+                          />
+                          <path
+                            data-vector="resultant"
+                            d={`M${fp.x} ${fp.y}L${radial.x} ${radial.y}`}
+                            stroke="#587f91"
+                            strokeWidth="2.6"
+                            strokeDasharray="4 4"
+                            fill="none"
+                            markerEnd={`url(#${id}-arrow)`}
+                          />
+                        </>
+                      )}
+                    </g>
+                  );
+                })()}
               </>
             )}
           </svg>
@@ -478,31 +600,40 @@ export default function CentripetalForceLab() {
         ) : kind === 'bag' ? (
           <>
             <span>
+              <i className="centripetal-key is-support" />
               {t('绳张力')} <b>{bag.tension.toFixed(3)} N</b>
             </span>
             <span>
+              <i className="centripetal-key is-resultant" />
               {t('向心合力')} <b>{bag.force.toFixed(3)} N</b>
             </span>
             <span>
-              {t('圆周半径')} <b>{bag.radius.toFixed(3)} m</b>
+              <i className="centripetal-key is-gravity" />
+              {t('重力')} <b>{bag.gravity.toFixed(3)} N</b>
             </span>
           </>
         ) : kind === 'funnel' ? (
           <>
             <span>
+              <i className="centripetal-key is-support" />
               {t('支持力')} <b>{funnel.normal.toFixed(3)} N</b>
             </span>
             <span>
+              <i className="centripetal-key is-gravity" />
               {t('重力')} <b>{funnel.gravity.toFixed(3)} N</b>
             </span>
             <span>
+              <i className="centripetal-key is-resultant" />
               {t('向心合力')} <b>{funnel.force.toFixed(3)} N</b>
             </span>
           </>
         ) : (
-          <span>
-            {t('绳张力')} <b>{cut.tension.toFixed(3)} N</b>
-          </span>
+          <>
+            <span>
+              {t('绳张力')} <b>{cut.tension.toFixed(3)} N</b>
+            </span>
+            <span className="centripetal-velocity-key">{t('蓝箭头：瞬时速度')}</span>
+          </>
         )}
       </div>
       {kind === 'rig' && (
@@ -526,8 +657,13 @@ export default function CentripetalForceLab() {
         <div className="centripetal-force-controls">
           <Segments
             label={t('实验路径')}
-            value={mode}
-            onChange={setMode}
+            value={kind}
+            onChange={(mode) =>
+              change({
+                mode: mode as CentripetalSceneState['mode'],
+                time: Math.min(physical, mode === 'cut' ? 1.25 : 3),
+              })
+            }
             options={[
               { value: 'cut', label: t('剪断细绳') },
               { value: 'bag', label: t('旋转沙袋') },
@@ -538,8 +674,10 @@ export default function CentripetalForceLab() {
           {kind === 'rig' ? (
             <Segments
               label={t('控制变量')}
-              value={comparison}
-              onChange={setComparison}
+              value={compare}
+              onChange={(comparison) =>
+                change({ comparison: comparison as CentripetalSceneState['comparison'] })
+              }
               options={[
                 { value: 'same', label: t('完全相同') },
                 { value: 'mass', label: t('质量加倍') },
@@ -556,16 +694,16 @@ export default function CentripetalForceLab() {
                 max={1}
                 step={0.05}
                 unit="m"
-                onChange={setLength}
+                onChange={(length) => change({ length })}
               />
               <Range
                 label={t('角速度')}
                 value={omega}
-                min={4}
+                min={0}
                 max={6}
                 step={0.1}
                 unit="rad/s"
-                onChange={setOmega}
+                onChange={(omega) => change({ omega })}
               />
             </>
           ) : kind === 'funnel' ? (
@@ -576,17 +714,17 @@ export default function CentripetalForceLab() {
               max={0.26}
               step={0.01}
               unit="m"
-              onChange={setRadius}
+              onChange={(radius) => change({ radius })}
             />
           ) : null}
           <Range
             label={t('模型时间')}
-            value={Math.min(time, kind === 'cut' ? 1.25 : 3)}
+            value={physical}
             min={0}
             max={kind === 'cut' ? 1.25 : 3}
             step={0.01}
             unit="s"
-            onChange={setTime}
+            onChange={(time) => change({ time })}
           />
         </div>
       )}

@@ -2,39 +2,50 @@ import { useId, useState } from 'react';
 import { t } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range } from '../lab/Controls';
-import { stringEllipse, ellipseTrace } from '../../models/ellipse-string-lab';
+import {
+  stringEllipse,
+  ellipseTrace,
+  ellipseFilmState,
+  type EllipseSceneState,
+} from '../../models/ellipse-string-lab';
 import '../../styles/ellipse-string-lab.css';
 export default function EllipseStringLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', ''),
-    [distance, setDistance] = useState(0.6),
-    [trace, setTrace] = useState(0.2),
+    [manual, setManual] = useState<EllipseSceneState | null>(null),
     c = film.chapter,
-    p = Math.min(1, film.chapterProgress * 1.25),
-    d = film.watch ? (c === 3 ? 0.6 * (1 - p) : 0.6) : distance,
-    progress = film.watch
-      ? c === 0
-        ? 0.13
-        : c === 1
-          ? 0.13 + 0.38 * p
-          : c === 2
-            ? p
-            : 0.2 + 0.3 * p
-      : trace,
+    authored = ellipseFilmState(c, film.chapterProgress);
+  const [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<EllipseSceneState>) => setManual({ ...state, ...patch }),
+    d = state.distance,
+    progress = state.trace,
     s = stringEllipse(progress * Math.PI * 2, 1, d),
     P = (x: number, y: number) => ({ x: 220 + x * 280, y: 210 - y * 280 }),
     tip = P(s.x, s.y),
     left = P(-s.c, 0),
     right = P(s.c, 0),
-    points = ellipseTrace(c === 3 && film.watch ? 1 : progress, 1, d),
+    points = ellipseTrace(state.closing ? 1 : progress, 1, d),
     path = points
       .map((v, i) => {
         const q = P(v.x, v.y);
         return `${i ? 'L' : 'M'}${q.x} ${q.y}`;
       })
-      .join(' ');
+      .join(' '),
+    leftMillimetres = Math.round(s.left * 1000),
+    showAxes = state.closing || (c === 2 && progress > 0.85) || !film.watch;
   return (
-    <section className="ellipse-string-lab">
+    <section
+      className="ellipse-string-lab"
+      data-distance={d}
+      data-trace={progress}
+      data-length-sum={s.left + s.right}
+      data-minor-axis={2 * s.b}
+    >
       <header>
         <p>{t(c === 3 && film.watch ? '绳长不变，让两个焦点靠近' : '用同一根绳，留下一条椭圆')}</p>
         <span>{t('两端分别系在图钉上，铅笔始终绷紧细绳')}</span>
@@ -64,8 +75,7 @@ export default function EllipseStringLab() {
             stroke="#dedcc6"
           />
           <path d="M42 210H400M220 55V365" stroke="#bbc7ac" strokeWidth="1" strokeDasharray="3 6" />
-          {film.watch &&
-            c === 3 &&
+          {state.closing &&
             [0.6, 0.4, 0.2].map((dd) => (
               <ellipse
                 key={dd}
@@ -79,6 +89,16 @@ export default function EllipseStringLab() {
               />
             ))}
           <path d={path} stroke="#819c79" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          {showAxes && (
+            <g className="ellipse-string-axes" stroke="#728d68" fill="none">
+              <path d="M80 210H360M80 204V216M360 204V216" strokeWidth="1.8" />
+              <path
+                d={`M220 ${210 - s.b * 280}V${210 + s.b * 280}`}
+                strokeDasharray="4 5"
+                strokeWidth="1.5"
+              />
+            </g>
+          )}
           <path
             d={`M${left.x} ${left.y}L${tip.x} ${tip.y}`}
             stroke="#a98e60"
@@ -117,18 +137,18 @@ export default function EllipseStringLab() {
       <div className="ellipse-string-lengths">
         <span>
           <i />
-          {t('第一段')}
-          <b>{s.left.toFixed(3)} m</b>
+          {t(film.watch ? '绳段 A' : '第一段')}
+          <b>{(leftMillimetres / 1000).toFixed(3)} m</b>
         </span>
         <span>+</span>
         <span>
           <i />
-          {t('第二段')}
-          <b>{s.right.toFixed(3)} m</b>
+          {t(film.watch ? '绳段 B' : '第二段')}
+          <b>{((1000 - leftMillimetres) / 1000).toFixed(3)} m</b>
         </span>
         <span>=</span>
         <span>
-          {t('绳长')}
+          {t(film.watch ? '两段总长' : '绳长')}
           <b>1.000 m</b>
         </span>
       </div>
@@ -145,7 +165,7 @@ export default function EllipseStringLab() {
               : '两段长度此消彼长，总和始终不变。',
         )}
       </p>
-      <div className="ellipse-string-measures">
+      <div className="ellipse-string-measures" data-axes={showAxes}>
         <span>
           {t('两焦点间距')} <b>{d.toFixed(2)} m</b>
         </span>
@@ -156,20 +176,20 @@ export default function EllipseStringLab() {
         <div className="ellipse-string-controls">
           <Range
             label={t('两焦点间距')}
-            value={distance}
+            value={d}
             min={0}
             max={0.9}
             step={0.01}
             unit="m"
-            onChange={setDistance}
+            onChange={(distance) => change({ distance })}
           />
           <Range
             label={t('绘制进度')}
-            value={trace}
+            value={progress}
             min={0}
             max={1}
             step={0.005}
-            onChange={setTrace}
+            onChange={(trace) => change({ trace, closing: false })}
           />
         </div>
       )}

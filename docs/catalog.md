@@ -56,7 +56,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Three kinds of weak-acid evidence](../src/content/en/chem-acid-evidence.mdx)                       | 3:00 | How can a weak acid release the same amount of hydrogen?                      |
 | [Protein salting out and denaturation](../src/content/en/chem-protein-states.mdx)                   | 3:46 | Why do cloudy proteins respond differently to water?                          |
 | [The two transitions of liquid crystals](../src/content/en/chem-liquid-crystal.mdx)                 | 2:37 | Must positional and orientational order disappear together?                   |
-| [Sugar tests and hydrolysis](../src/content/en/chem-sugar-tests.mdx)                                | 4:56 | Why do the tests change after hydrolysis?                                     |
+| [Sugar tests and hydrolysis](../src/content/en/chem-sugar-tests.mdx)                                | 4:55 | Why do sugars give different tests?                                           |
 | [What changes before equilibrium shifts?](../src/content/en/chem-equilibrium-response.mdx)          | 4:26 | Why do reactions continue when equilibrium looks still?                       |
 | [Chirality, crystals and optical evidence](../src/content/en/chem-chirality-evidence.mdx)           | 3:27 | How does failed superposition connect to Pasteur’s experimental conclusion?   |
 | [Preparing and hydrolysing an ester](../src/content/en/chem-ester-reaction.mdx)                     | 4:47 | Where was the ester oxygen before?                                            |
@@ -129,7 +129,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Embryo formation, transfer and splitting](../src/content/en/bio-embryo-engineering.mdx)          | 3:08 | How does an embryo form, transfer and split?                                     |
 | [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:02 | What do culture, screening and nuclear transfer each change?                     |
 | [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 3:44 | How can a tissue regenerate a plant and two cells form a hybrid?                 |
-| [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:04 | What can one colony establish, and what remains uncertain?                       |
+| [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:26 | When does a colony become credible evidence of growth?                           |
 | [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:45 | How do different clues reveal shared ancestry?                                   |
 | [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:32 | Why do fermentation results change with conditions and time?                     |
 | [Evidence for environmental conservation](../src/content/en/bio-conservation-evidence.mdx)        | 4:13 | How can an observation lead to a conservation plan?                              |
@@ -376,7 +376,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Liquid surface-tension experiments](../src/content/en/surface-tension-lab.mdx)                      | 4:00 | How does a water surface support a needle and pull a thread?                                  |
 | [Crystal structure and anisotropy experiments](../src/content/en/solid-structure-lab.mdx)            | 2:36 | How do shape and heat flow reveal a solid’s structure?                                        |
 | [Thermal equilibrium and gas-law experiments](../src/content/en/thermal-measurement-lab.mdx)         | 3:54 | How do temperature, pressure and volume connect?                                              |
-| [Indirect observation and measurement of molecules](../src/content/en/molecular-measurement-lab.mdx) | 3:28 | How can we estimate a molecule too small to see?                                              |
+| [Indirect observation and measurement of molecules](../src/content/en/molecular-measurement-lab.mdx) | 3:30 | What can visible changes reveal about invisible molecules?                                    |
 | [Measuring blackbody radiation](../src/content/en/blackbody-lab.mdx)                                 | 1:52 | Why does a hotter radiator peak at a shorter wavelength?                                      |
 | [Pressure cooker](../src/content/en/pressure-cooker.mdx)                                             | 2:28 | How do a weighted valve, absolute pressure and steam outflow set boiling temperature?         |
 | [Dew point](../src/content/en/dew-point.mdx)                                                         | 2:38 | Are dew point, relative humidity and water content the same thing?                            |

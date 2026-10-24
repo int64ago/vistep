@@ -1,7 +1,7 @@
 ---
-import { stringEllipse, ellipseTrace } from '../../models/ellipse-string-lab';
-const s = stringEllipse(4.9),
-  p = ellipseTrace(0.78),
+import { ellipseTrace } from '../../models/ellipse-string-lab';
+const p = ellipseTrace(0.78),
+  s = p.at(-1)!,
   x = 200 + s.x * 210,
   y = 123 - s.y * 210;
 ---

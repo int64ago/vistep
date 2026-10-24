@@ -3,6 +3,9 @@ import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { Range, Segments } from '../lab/Controls';
 import {
+  glucoseRingOpening,
+  glucoseTestSequence,
+  glucoseOxidationAccount,
   sugarDirector,
   sugarHydrolysis,
   sugarReduction,
@@ -14,22 +17,72 @@ export default function ChemSugarTests() {
   const film = useShowcase(),
     en = browserLocale() === 'en',
     say = (a: string, b: string) => (en ? b : a);
-  const [sample, setSample] = useState<Sugar>(
-      film.variant === 'starch-tests'
-        ? 'starch'
-        : film.variant === 'cellulose-hydrolysis'
-          ? 'cellulose'
-          : film.variant === 'disaccharide-comparison'
-            ? 'sucrose'
-            : 'glucose',
-    ),
-    [hydrolysis, setHydrolysis] = useState(0.5),
-    [progress, setProgress] = useState(0.7),
-    [assay, setAssay] = useState('copper'),
-    [alkaline, setAlkaline] = useState('yes'),
-    [heated, setHeated] = useState('yes'),
-    [amount, setAmount] = useState(1);
-  const d = sugarDirector(film.chapter, film.chapterProgress);
+  const span = (c: number) =>
+    film.chapters.length ? (film.chapters[c + 1]?.at ?? film.duration) - film.chapters[c].at : 23;
+  type Manual = {
+    chapter: number;
+    progress: number;
+    sample: Sugar;
+    hydrolysis: number;
+    assay: string;
+    alkaline: string;
+    heated: string;
+    amount: number;
+    metal: number;
+    view: 'lesson' | 'test';
+    testProgress: number;
+  };
+  const fromFilm = (): Manual => {
+    const shot = sugarDirector(film.chapter, film.chapterProgress);
+    return {
+      chapter: shot.chapter,
+      progress: shot.progress,
+      sample: shot.sugar,
+      hydrolysis: shot.chapter === 5 && shot.progress > 0.72 ? 0.5 : shot.hydrolysis,
+      assay: shot.chapter === 3 ? 'iodine' : shot.test,
+      alkaline:
+        (shot.chapter === 4 && shot.progress < 0.82) ||
+        (shot.chapter === 11 && shot.progress < 0.25)
+          ? 'no'
+          : 'yes',
+      heated: 'yes',
+      amount: 1,
+      metal: 2,
+      view: 'lesson',
+      testProgress:
+        shot.chapter === 1 || shot.chapter === 2
+          ? glucoseTestSequence(
+              shot.progress,
+              shot.chapter === 1,
+              en ? 'en' : 'zh',
+              span(shot.chapter),
+            ).shot === 'observation'
+            ? Math.min(1, shot.progress / 0.13)
+            : glucoseTestSequence(
+                shot.progress,
+                shot.chapter === 1,
+                en ? 'en' : 'zh',
+                span(shot.chapter),
+              ).oxidation
+          : shot.chapter === 5
+            ? Math.min(1, shot.progress / 0.72)
+            : shot.chapter === 7
+              ? Math.max(0, (shot.progress - 0.4) / 0.6)
+              : shot.chapter === 11
+                ? Math.max(0, (shot.progress - 0.4) / 0.6)
+                : shot.progress,
+    };
+  };
+  const [manual, setManual] = useState<Manual | null>(null);
+  const [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(fromFilm());
+  }
+  const state = film.watch ? fromFilm() : (manual ?? fromFilm());
+  const change = (patch: Partial<Manual>) => setManual({ ...state, ...patch });
+  const { sample, hydrolysis, progress, assay, alkaline, heated, amount, metal } = state;
+  const d = sugarDirector(state.chapter, progress);
   const name = (s: Sugar) =>
     ({
       glucose: say('葡萄糖', 'Glucose'),
@@ -40,8 +93,8 @@ export default function ChemSugarTests() {
     })[s];
   const titles = [
     ['先比较固体在水中的变化', 'First observe changes in water'],
-    ['银出现在试管内壁', 'Silver appears on the inner wall'],
-    ['砖红色沉淀留下证据', 'A brick-red precipitate appears'],
+    ['环里的醛基，怎样出现？', 'Glucose opens a reactive end'],
+    ['糖失去的电子，去了哪里？', 'From glucose to copper'],
     ['碘让淀粉显色', 'Iodine reveals starch'],
     ['水解后先改变检验环境', 'Adjust the test after hydrolysis'],
     ['水解前后分别检验', 'Test before and after hydrolysis'],
@@ -55,108 +108,64 @@ export default function ChemSugarTests() {
   const m = sugarReduction(
     sample,
     hydrolysis,
-    progress,
+    state.testProgress,
     assay === 'silver' ? 'silver' : 'copper',
     alkaline === 'yes',
     heated === 'yes',
     amount,
+    metal,
   );
   return (
-    <section className="chem-sugar">
+    <section
+      className="chem-sugar"
+      data-sugar-chapter={d.chapter}
+      data-sugar-progress={d.progress}
+      data-sugar-view={film.watch ? 'lesson' : state.view}
+    >
       <div className="chem-sugar-title">
-        {film.watch ? say(titles[d.chapter][0], titles[d.chapter][1]) : name(sample)}
+        {film.watch || state.view === 'lesson'
+          ? say(titles[d.chapter][0], titles[d.chapter][1])
+          : name(sample)}
       </div>
-      {!film.watch ? (
+      {!film.watch && state.view === 'test' ? (
         <>
           {assay === 'iodine' ? (
-            <IodineTube strength={sugarHydrolysis(sample, hydrolysis).iodine} />
+            <IodineTube strength={amount > 0 ? sugarHydrolysis(sample, hydrolysis).iodine : 0} />
           ) : (
             <TestVessels states={[m]} silver={assay === 'silver'} />
           )}
-          <div className="chem-sugar-note">
+          <div
+            className="chem-sugar-note"
+            data-sugar-extent={m.extent}
+            data-sugar-metal-left={m.metalRemaining}
+            data-sugar-reducing-left={m.remainingReducing}
+          >
             {assay === 'iodine'
-              ? say('另取一份样品作碘检验', 'A separate aliquot for the iodine test')
-              : !m.valid
-                ? say('条件不合适，不能判阴性', 'Invalid conditions, not a negative result')
-                : heated === 'no'
-                  ? say('尚未加热检验', 'Test has not been warmed')
-                  : m.visible
-                    ? say('出现还原性证据', 'Reducing evidence is visible')
-                    : say('未出现明显还原性证据', 'No clear reducing evidence')}
+              ? amount === 0
+                ? say('空白样品，不判断糖的性质', 'Blank sample: no conclusion about a sugar')
+                : say('另取一份样品作碘检验', 'A separate aliquot for the iodine test')
+              : metal === 0
+                ? say('未加入金属试剂，不能判阴性', 'No metal reagent: not a negative test')
+                : amount === 0
+                  ? say('空白样品，不判断糖的性质', 'Blank sample: no conclusion about a sugar')
+                  : !m.valid
+                    ? say('条件不合适，不能判阴性', 'Invalid conditions, not a negative result')
+                    : heated === 'no'
+                      ? say('尚未加热检验', 'Test has not been warmed')
+                      : m.visible
+                        ? say('出现还原性证据', 'Reducing evidence is visible')
+                        : say('未出现明显还原性证据', 'No clear reducing evidence')}
           </div>
-          <div className="chem-sugar-controls">
-            <Segments
-              label={say('样品', 'Sample')}
-              value={sample}
-              onChange={(v) => setSample(v as Sugar)}
-              options={(['glucose', 'sucrose', 'maltose', 'starch', 'cellulose'] as Sugar[]).map(
-                (s) => ({ value: s, label: name(s) }),
-              )}
-            />
-            <Segments
-              label={say('检验', 'Test')}
-              value={assay}
-              onChange={setAssay}
-              options={[
-                { value: 'copper', label: say('铜试剂', 'Copper') },
-                { value: 'silver', label: say('银氨', 'Silver') },
-                { value: 'iodine', label: say('碘', 'Iodine') },
-              ]}
-            />
-            {sample !== 'glucose' ? (
-              <Range
-                label={say('完全水解部分的比例', 'Fully hydrolysed fraction')}
-                value={hydrolysis}
-                onChange={setHydrolysis}
-                min={0}
-                max={1}
-                step={0.01}
-              />
-            ) : null}
-            {assay !== 'iodine' ? (
-              <>
-                <Range
-                  label={say('检验进度', 'Test progress')}
-                  value={progress}
-                  onChange={setProgress}
-                  min={0}
-                  max={1}
-                  step={0.01}
-                />
-                <Range
-                  label={say('样品C₆单元示意份数', 'Sample hexose-unit model amount')}
-                  value={amount}
-                  onChange={setAmount}
-                  min={0}
-                  max={2}
-                  step={0.1}
-                />
-                <Segments
-                  label={say('检验时呈碱性', 'Alkaline during testing')}
-                  value={alkaline}
-                  onChange={setAlkaline}
-                  options={[
-                    { value: 'yes', label: say('是', 'Yes') },
-                    { value: 'no', label: say('否', 'No') },
-                  ]}
-                />
-                <Segments
-                  label={say('已加热', 'Warmed')}
-                  value={heated}
-                  onChange={setHeated}
-                  options={[
-                    { value: 'yes', label: say('是', 'Yes') },
-                    { value: 'no', label: say('否', 'No') },
-                  ]}
-                />
-                <div>
-                  {assay === 'silver' ? 'Ag' : 'Cu₂O'}:{' '}
-                  {(assay === 'silver' ? m.silver : m.copperOxide).toFixed(3)}{' '}
-                  {say('示意份', 'model units')}
-                </div>
-              </>
-            ) : null}
-          </div>
+          {assay !== 'iodine' ? (
+            <div className="chem-sugar-inventory">
+              <span>
+                {say('金属剩余', 'Metal left')}: {m.metalRemaining.toFixed(2)}
+              </span>
+              <span>
+                {say('还原端剩余', 'Reducing ends left')}: {m.remainingReducing.toFixed(2)}
+              </span>
+            </div>
+          ) : null}
         </>
       ) : (
         <>
@@ -176,20 +185,13 @@ export default function ChemSugarTests() {
             </>
           ) : null}
           {d.chapter === 1 || d.chapter === 2 ? (
-            <>
-              <TestVessels
-                states={[sugarReduction('glucose', 0, d.progress, d.test)]}
-                silver={d.chapter === 1}
-              />
-              <div className="chem-sugar-equation">
-                {d.chapter === 1 ? '2Ag⁺ + 2e⁻ → 2Ag' : '2Cu(II) + 2e⁻ → 2Cu(I)'}
-              </div>
-              <div className="chem-sugar-note">
-                {d.chapter === 1
-                  ? say('金属银，不是白色银盐', 'Metallic silver, not a white silver salt')
-                  : say('Cu₂O · 新制铜试剂、碱性、加热', 'Cu₂O · fresh reagent, alkaline, warmed')}
-              </div>
-            </>
+            <GlucoseMechanism
+              p={d.progress}
+              silver={d.chapter === 1}
+              locale={en ? 'en' : 'zh'}
+              duration={span(d.chapter)}
+              say={say}
+            />
           ) : null}
           {d.chapter === 3 ? (
             <>
@@ -216,17 +218,32 @@ export default function ChemSugarTests() {
           {d.chapter === 5 ? (
             <>
               <TestVessels
-                states={[
-                  sugarReduction('starch', 0, d.progress),
-                  sugarReduction('starch', 1, d.progress),
-                ]}
+                iodineFirst={d.progress > 0.72}
+                states={
+                  d.progress > 0.72
+                    ? [sugarReduction('starch', 0.5, 1), sugarReduction('starch', 0.5, 1)]
+                    : [
+                        sugarReduction('starch', 0, d.progress / 0.72),
+                        sugarReduction('starch', 1, d.progress / 0.72),
+                      ]
+                }
               />
               <div className="chem-sugar-two">
-                <span>{say('未水解', 'Before hydrolysis')}</span>
-                <span>{say('水解后', 'After hydrolysis')}</span>
+                <span>
+                  {d.progress > 0.72
+                    ? say('碘检验', 'Iodine test')
+                    : say('未水解', 'Before hydrolysis')}
+                </span>
+                <span>
+                  {d.progress > 0.72
+                    ? say('铜检验 · 加热', 'Copper · warmed')
+                    : say('水解后', 'After hydrolysis')}
+                </span>
               </div>
               <div className="chem-sugar-note">
-                {say('两份样品分别检验', 'Separate sample portions')}
+                {d.progress > 0.72
+                  ? say('部分水解，长链与还原性产物共存', 'Partial hydrolysis: both tests positive')
+                  : say('相同 C₆ 总量，水解后自由端更多', 'Same C₆ total; more free ends')}
               </div>
             </>
           ) : null}
@@ -243,14 +260,11 @@ export default function ChemSugarTests() {
           ) : null}
           {d.chapter === 7 ? (
             <>
-              <div className="chem-sugar-route">
-                <span>{name('sucrose')} + H₂O</span>
-                <i>↓</i>
-                <span>
-                  {name('glucose')} + {say('果糖', 'Fructose')}
-                </span>
-              </div>
-              <TestVessels compact states={[sugarReduction('sucrose', 1, d.progress)]} />
+              <DisaccharideSplit p={Math.min(1, d.progress / 0.4)} say={say} />
+              <TestVessels
+                compact
+                states={[sugarReduction('sucrose', 1, Math.max(0, (d.progress - 0.4) / 0.6))]}
+              />
               <div className="chem-sugar-note">
                 {say('冷却并调至碱性后检验', 'Test after cooling and making alkaline')}
               </div>
@@ -276,9 +290,6 @@ export default function ChemSugarTests() {
           {d.chapter === 9 ? (
             <>
               <LinkageComparison p={d.progress} say={say} />
-              <div className="chem-sugar-note">
-                {say('环形符号仅表示连接关系', 'Ring symbols show linkage only')}
-              </div>
             </>
           ) : null}
           {d.chapter === 10 ? (
@@ -288,7 +299,7 @@ export default function ChemSugarTests() {
                 {name('cellulose')} → {name('glucose')}
               </div>
               <div className="chem-sugar-note">
-                {say('链片段示意 · 不是直接加铜试剂', 'Chain fragment · hydrolysis comes first')}
+                {say('链片段示意 · 不是直接加铜试剂', 'Net chain hydrolysis')}
               </div>
             </>
           ) : null}
@@ -304,6 +315,117 @@ export default function ChemSugarTests() {
           ) : null}
         </>
       )}
+      {!film.watch ? (
+        <div className="chem-sugar-controls">
+          <Segments
+            label={say('观察方式', 'View')}
+            value={state.view}
+            onChange={(view) => change({ view: view as Manual['view'] })}
+            options={[
+              { value: 'lesson', label: say('原理镜头', 'Principle') },
+              { value: 'test', label: say('检验预测', 'Test prediction') },
+            ]}
+          />
+          {state.view === 'lesson' ? (
+            <Range
+              label={say('镜头进度', 'Scene progress')}
+              value={progress}
+              onChange={(progress) => change({ progress })}
+              min={0}
+              max={1}
+              step={0.01}
+            />
+          ) : (
+            <>
+              <Segments
+                label={say('样品', 'Sample')}
+                value={sample}
+                onChange={(v) => change({ sample: v as Sugar })}
+                options={(['glucose', 'sucrose', 'maltose', 'starch', 'cellulose'] as Sugar[]).map(
+                  (s) => ({ value: s, label: name(s) }),
+                )}
+              />
+              <Segments
+                label={say('检验', 'Test')}
+                value={assay}
+                onChange={(assay) => change({ assay })}
+                options={[
+                  { value: 'copper', label: say('铜试剂', 'Copper') },
+                  { value: 'silver', label: say('银氨', 'Silver') },
+                  { value: 'iodine', label: say('碘', 'Iodine') },
+                ]}
+              />
+              {sample !== 'glucose' ? (
+                <Range
+                  label={say('完全水解部分的比例', 'Fully hydrolysed fraction')}
+                  value={hydrolysis}
+                  onChange={(hydrolysis) => change({ hydrolysis })}
+                  min={0}
+                  max={1}
+                  step={0.01}
+                />
+              ) : null}
+              {assay !== 'iodine' ? (
+                <>
+                  <Range
+                    label={say('检验进度', 'Test progress')}
+                    value={state.testProgress}
+                    onChange={(testProgress) => change({ testProgress })}
+                    min={0}
+                    max={1}
+                    step={0.01}
+                  />
+                  <Range
+                    label={say('样品C₆单元示意份数', 'Sample hexose-unit model amount')}
+                    value={amount}
+                    onChange={(amount) => change({ amount })}
+                    min={0}
+                    max={2}
+                    step={0.1}
+                  />
+                  <Range
+                    label={say('金属试剂示意份数', 'Metal reagent model units')}
+                    value={metal}
+                    onChange={(metal) => change({ metal })}
+                    min={0}
+                    max={4}
+                    step={0.1}
+                  />
+                  <div className="chem-sugar-condition">
+                    <span>{say('检验时呈碱性', 'Alkaline during testing')}</span>
+                    <Segments
+                      label={say('检验时呈碱性', 'Alkaline during testing')}
+                      value={alkaline}
+                      onChange={(alkaline) => change({ alkaline })}
+                      options={[
+                        { value: 'yes', label: say('是', 'Yes') },
+                        { value: 'no', label: say('否', 'No') },
+                      ]}
+                    />
+                  </div>
+                  <div className="chem-sugar-condition">
+                    <span>{say('已加热', 'Warmed')}</span>
+                    <Segments
+                      label={say('已加热', 'Warmed')}
+                      value={heated}
+                      onChange={(heated) => change({ heated })}
+                      options={[
+                        { value: 'yes', label: say('是', 'Yes') },
+                        { value: 'no', label: say('否', 'No') },
+                      ]}
+                    />
+                  </div>
+                  <div>
+                    {assay === 'silver' ? 'Ag' : 'Cu₂O'}:{' '}
+                    {(assay === 'silver' ? m.silver : m.copperOxide).toFixed(3)}{' '}
+                    {say('示意份', 'model units')}
+                  </div>
+                </>
+              ) : null}
+            </>
+          )}
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -311,17 +433,19 @@ function TestVessels({
   states,
   silver = false,
   compact = false,
+  iodineFirst = false,
 }: {
   states: ReturnType<typeof sugarReduction>[];
   silver?: boolean;
   compact?: boolean;
+  iodineFirst?: boolean;
 }) {
   const id = useId().replace(/:/g, ''),
     n = states.length;
   return (
     <svg
       className={`chem-sugar-svg ${compact ? 'compact' : ''}`}
-      viewBox="0 0 320 250"
+      viewBox="0 0 320 230"
       role="img"
       aria-label={
         silver
@@ -337,16 +461,19 @@ function TestVessels({
           <stop offset="1" stopColor="#737f80" />
         </linearGradient>
       </defs>
-      <path
-        d="M25 115V222H295V115"
-        stroke="#c0c9bb"
-        fill="#e8eee3"
-        fillOpacity=".7"
-        strokeWidth="2"
-      />
+      {!iodineFirst ? (
+        <path
+          d="M25 115V222H295V115"
+          stroke="#c0c9bb"
+          fill="#e8eee3"
+          fillOpacity=".7"
+          strokeWidth="2"
+        />
+      ) : null}
       {states.map((m, i) => {
         const x = n === 1 ? 160 : 85 + 150 * i,
-          f = m.visible ? m.fraction : 0;
+          f = m.visible ? Math.min(1, m.extent / 2) : 0,
+          iodine = iodineFirst && i === 0;
         return (
           <g key={i}>
             <path
@@ -357,10 +484,10 @@ function TestVessels({
             />
             <path
               d={`M${x - 26} 113H${x + 26}V167Q${x + 26} 199 ${x} 199T${x - 26} 167Z`}
-              fill={silver ? '#dde6da' : '#b6d1d2'}
-              opacity={silver ? 0.6 : 1 - f * 0.55}
+              fill={iodine ? '#8585a7' : silver ? '#dde6da' : '#b6d1d2'}
+              opacity={iodine ? m.sample.iodine : silver ? 0.6 : 1 - f * 0.55}
             />
-            {silver ? (
+            {iodine ? null : silver ? (
               <>
                 <path
                   d={`M${x - 25} ${190 - 90 * f}V168Q${x - 25} 198 ${x} 198T${x + 25} 168V${190 - 90 * f}`}
@@ -412,9 +539,6 @@ function TestVessels({
           </g>
         );
       })}
-      <text x="160" y="246" fontSize="20" textAnchor="middle" fill="#9d9b87">
-        Δ
-      </text>
     </svg>
   );
 }
@@ -541,7 +665,7 @@ function PolymerSplit({ p }: { p: number }) {
           </text>
         </g>
       ))}
-      <text x="160" y="221" fontSize="20" textAnchor="middle" fill="#b4a07b">
+      <text x="160" y="215" fontSize="20" textAnchor="middle" fill="#b4a07b">
         H₂O
       </text>
     </svg>
@@ -591,6 +715,15 @@ function Neutralisation({ p, say }: { p: number; say: (a: string, b: string) => 
   );
 }
 function LinkageComparison({ p, say }: { p: number; say: (a: string, b: string) => string }) {
+  if (p > 0.42)
+    return (
+      <div>
+        <GlucoseStructure opening={Math.min(1, (p - 0.42) / 0.35)} linkedResidue say={say} />
+        <div className="chem-sugar-note">
+          {say('麦芽糖的自由端开环，C₄—O—G 连接保留', 'Free end opens; C₄–O–G stays')}
+        </div>
+      </div>
+    );
   return (
     <svg
       className="chem-sugar-svg"
@@ -598,7 +731,7 @@ function LinkageComparison({ p, say }: { p: number; say: (a: string, b: string) 
       role="img"
       aria-label="Simplified linkages: sucrose connects both anomeric carbons; maltose retains a free anomeric group that can open to an aldehyde."
     >
-      <text x="160" y="20" fontSize="21" textAnchor="middle" fill="#949180">
+      <text x="160" y="26" fontSize="21" textAnchor="middle" fill="#949180">
         {say('蔗糖：两个位点都参与连接', 'Sucrose: both sites linked')}
       </text>
       <path
@@ -642,7 +775,7 @@ function CottonHydrolysis({ p }: { p: number }) {
   return (
     <svg
       className="chem-sugar-svg"
-      viewBox="0 0 320 245"
+      viewBox="0 0 320 235"
       role="img"
       aria-label="Cellulose fibres are treated to hydrolyse their chains; glucose units appear. Neutralisation and testing follow in a separate chapter."
     >
@@ -681,5 +814,365 @@ function CottonHydrolysis({ p }: { p: number }) {
         H⁺, H₂O
       </text>
     </svg>
+  );
+}
+
+function GlucoseMechanism({
+  p,
+  silver,
+  locale,
+  duration,
+  say,
+}: {
+  p: number;
+  silver: boolean;
+  locale: 'zh' | 'en';
+  duration: number;
+  say: (a: string, b: string) => string;
+}) {
+  const d = glucoseTestSequence(p, silver, locale, duration),
+    m = sugarReduction('glucose', 0, d.oxidation, silver ? 'silver' : 'copper');
+  const account = glucoseOxidationAccount(m.extent);
+  return (
+    <div
+      className="chem-sugar-mechanism"
+      data-sugar-shot={d.shot}
+      data-opening={d.opening}
+      data-oxidation={m.extent}
+    >
+      {d.shot === 'observation' ? (
+        <>
+          <TestVessels
+            states={[
+              sugarReduction('glucose', 0, Math.min(1, p / 0.13), silver ? 'silver' : 'copper'),
+            ]}
+            silver={silver}
+          />
+          <div className="chem-sugar-note">
+            {silver
+              ? say('银镜是金属银，电子从哪里来？', 'Silver coats the inner wall')
+              : say('蓝色铜试剂 → 砖红色 Cu₂O', 'Blue copper reagent → brick-red Cu₂O')}
+          </div>
+        </>
+      ) : d.shot === 'prediction' ? (
+        <>
+          {silver ? (
+            <div className="chem-sugar-replenish">
+              <div className="chem-sugar-pool">
+                <span>⬡</span>
+                <span>⬡</span>
+                <span>⬡</span>
+                <span>⬡</span>
+              </div>
+              <div>{say('多数为环状', 'Mostly rings')}</div>
+              <strong style={{ color: d.replenishment > 0.15 ? '#8eaa78' : undefined }}>⇌</strong>
+              <div>
+                —CHO <span className="chem-sugar-c1">C₁</span>
+              </div>
+              <strong style={{ color: d.replenishment > 0.4 ? '#aa986d' : undefined }}>↓</strong>
+              <div>—COO⁻ + 2e⁻</div>
+              <div className="chem-sugar-note">
+                {say('开链被消耗，平衡继续补充', 'Open chains react and are replenished')}
+              </div>
+            </div>
+          ) : (
+            <>
+              <TestVessels
+                states={[
+                  sugarReduction('glucose', 0, 1, 'copper', false),
+                  sugarReduction('glucose', 0, 1),
+                ]}
+              />
+              <div className="chem-sugar-two">
+                <span>
+                  {say('仍呈酸性', 'Still acidic')}
+                  <br />
+                  {say('检验无效', 'Invalid test')}
+                </span>
+                <span>
+                  {say('碱性、加热', 'Alkaline + heat')}
+                  <br />
+                  {say('阳性', 'Positive')}
+                </span>
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <GlucoseStructure opening={d.opening} oxidised={d.product ? 1 : 0} say={say} />
+          {d.shot === 'opening' ? (
+            <div className="chem-sugar-mechanism-caption">
+              {d.opening < 1
+                ? say('追踪 C₁：半缩醛可以开环', 'Follow C₁: the hemiacetal can open')
+                : say('同一个 C₁，现在属于醛端', 'The same C₁ is now an aldehyde end')}
+            </div>
+          ) : (
+            <>
+              <div
+                className="chem-sugar-electron-row"
+                data-electrons={account.electrons}
+                data-metal-reduced={m.metalReduced}
+              >
+                <span className="chem-sugar-c1">C₁: {d.product ? '+3' : '+1'}</span>
+                <svg
+                  viewBox="0 0 210 62"
+                  role="img"
+                  aria-label={say(
+                    '两电子净转移，分别还原两个金属中心；不是微观反应路线。',
+                    'Two-electron net transfer reduces two metal centres; not an elementary pathway.',
+                  )}
+                >
+                  {[0, 1].map((i) => (
+                    <g key={i} data-metal-site={i}>
+                      <path d={`M16 ${17 + i * 30}H144`} stroke="#c2c9b5" strokeWidth="1.5" />
+                      <circle
+                        cx={16 + 128 * d.oxidation}
+                        cy={17 + i * 30}
+                        r="4"
+                        fill="#ac9b78"
+                        opacity={d.oxidation <= 0 || d.product ? 0 : 1}
+                      />
+                      <rect
+                        x="143"
+                        y={2 + i * 30}
+                        width="66"
+                        height="28"
+                        rx="12"
+                        fill={d.product ? '#e0dfcf' : '#e7ece1'}
+                      />
+                      <text
+                        x="176"
+                        y={24 + i * 30}
+                        textAnchor="middle"
+                        fontSize="22"
+                        fill="#8b967f"
+                      >
+                        {silver ? (d.product ? 'Ag' : 'Ag⁺') : d.product ? 'Cu(I)' : 'Cu(II)'}
+                      </text>
+                    </g>
+                  ))}
+                  <text x="73" y="39" textAnchor="middle" fontSize="22" fill="#a89a7c">
+                    2e⁻
+                  </text>
+                </svg>
+              </div>
+              <div className="chem-sugar-note">
+                {silver
+                  ? say('醛端被氧化，金属银留下', 'C₁ oxidation · Ag reduction')
+                  : say('醛端被氧化，Cu₂O 留下', 'C₁ oxidation · Cu(II) reduction')}
+              </div>
+            </>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+function GlucoseStructure({
+  opening,
+  oxidised = 0,
+  linkedResidue = false,
+  say,
+}: {
+  opening: number;
+  oxidised?: number;
+  linkedResidue?: boolean;
+  say: (a: string, b: string) => string;
+}) {
+  const g = glucoseRingOpening(opening),
+    points = Object.fromEntries(g.atoms.map((a) => [a.id, a]));
+  const line = (a: string, b: string, opacity = 1, offset = 0) => {
+    const u = points[a],
+      v = points[b],
+      dx = v.x - u.x,
+      dy = v.y - u.y,
+      l = Math.hypot(dx, dy),
+      ox = (-dy / l) * offset,
+      oy = (dx / l) * offset;
+    return (
+      <line
+        key={`${a}-${b}-${offset}`}
+        data-sugar-bond={`${a}-${b}`}
+        x1={u.x + ox}
+        y1={u.y + oy}
+        x2={v.x + ox}
+        y2={v.y + oy}
+        stroke="#b7bca4"
+        strokeWidth="2.5"
+        opacity={opacity}
+      />
+    );
+  };
+  const oxidisedEnd = oxidised > 0.65;
+  return (
+    <div
+      className="chem-sugar-structure"
+      data-open-progress={g.progress}
+      data-end={oxidisedEnd ? 'carboxylate' : g.progress > 0.9 ? 'aldehyde' : 'hemiacetal'}
+    >
+      <svg
+        className="chem-sugar-svg"
+        viewBox={linkedResidue ? '0 0 320 240' : '0 0 320 190'}
+        role="img"
+        aria-label={say(
+          '同一组碳与氧从环状半缩醛变为开链醛端；只画关键连接，不表示立体结构或微观路径。',
+          'The same carbon and oxygen sites change from a cyclic hemiacetal to an open aldehyde end. Key connectivity, not stereochemistry or an elementary mechanism.',
+        )}
+      >
+        {['C1', 'C2', 'C3', 'C4', 'C5'].map((a, i) => line(a, `C${i + 2}`))}
+        {line('C5', 'O5')}
+        {line('O5', 'C1', g.ringBond)}
+        {line('C1', 'O1')}
+        {line('C1', 'O1', g.carbonyl, 6)}
+        {g.progress > 0.8 ? (
+          <line
+            x1={points.C1.x}
+            y1={points.C1.y}
+            x2="298"
+            y2="110"
+            stroke="#b7bca4"
+            strokeWidth="2.5"
+          />
+        ) : null}
+        {g.atoms.map((a) => (
+          <g key={a.id} data-sugar-atom={a.id}>
+            <circle
+              cx={a.x}
+              cy={a.y}
+              r={a.id === 'C1' ? 18 : a.id.startsWith('O') ? 17 : 14}
+              fill={a.id === 'C1' ? '#eed3a3' : '#f5f4eb'}
+            />
+            <text
+              x={a.x}
+              y={a.y + 7}
+              textAnchor="middle"
+              fontSize="22"
+              fill={a.id === 'C1' ? '#876538' : a.id.startsWith('O') ? '#8b9e81' : '#8c9680'}
+            >
+              {a.id === 'C1'
+                ? 'C₁'
+                : a.id.startsWith('C')
+                  ? a.id.slice(1)
+                  : a.id === 'O5'
+                    ? g.progress > 0.65
+                      ? 'OH'
+                      : 'O'
+                    : g.progress > 0.65
+                      ? 'O'
+                      : 'OH'}
+            </text>
+          </g>
+        ))}
+        {g.progress > 0.8 ? (
+          <g data-sugar-end-group="true">
+            <rect x="278" y="96" width="40" height="27" rx="12" fill="#f5f4eb" />
+            <text
+              x="298"
+              y="118"
+              fontSize="22"
+              textAnchor="middle"
+              fill={oxidisedEnd ? '#8b9e81' : '#9d9176'}
+            >
+              {oxidisedEnd ? 'O⁻' : 'H'}
+            </text>
+          </g>
+        ) : null}
+        {linkedResidue ? (
+          <g data-linked-residue="C4-glycoside">
+            <line
+              x1={points.C4.x}
+              y1={points.C4.y}
+              x2={points.C4.x}
+              y2={points.C4.y + 80}
+              stroke="#b7bca4"
+              strokeWidth="2.5"
+            />
+            <circle cx={points.C4.x} cy={points.C4.y + 40} r="13" fill="#f5f4eb" />
+            <text
+              x={points.C4.x}
+              y={points.C4.y + 47}
+              textAnchor="middle"
+              fontSize="22"
+              fill="#8b9e81"
+            >
+              O
+            </text>
+            <rect
+              x={points.C4.x - 21}
+              y={points.C4.y + 65}
+              width="42"
+              height="30"
+              rx="12"
+              fill="#e2e8d7"
+            />
+            <text
+              x={points.C4.x}
+              y={points.C4.y + 87}
+              fontSize="22"
+              textAnchor="middle"
+              fill="#91a07d"
+            >
+              G
+            </text>
+          </g>
+        ) : null}
+        {!linkedResidue ? (
+          <text
+            x="160"
+            y={linkedResidue ? 225 : 178}
+            textAnchor="middle"
+            fontSize="20"
+            fill="#9aa38e"
+          >
+            {say('其余 H / OH 省略', 'Other H / OH groups omitted')}
+          </text>
+        ) : null}
+      </svg>
+    </div>
+  );
+}
+
+function DisaccharideSplit({ p, say }: { p: number; say: (a: string, b: string) => string }) {
+  const x1 = 137 - 47 * p,
+    x2 = 183 + 47 * p;
+  return (
+    <div className="chem-sugar-disaccharide">
+      <svg
+        viewBox="0 0 320 60"
+        role="img"
+        aria-label={say(
+          '同一个葡萄糖单元和果糖单元在水解后分开；净变化示意。',
+          'The same glucose and fructose units separate after hydrolysis; a net account.',
+        )}
+      >
+        <path d={`M${x1} 29H${x2}`} stroke="#b6ad8c" strokeWidth="3" opacity={1 - p} />
+        {[
+          ['G', x1],
+          ['F', x2],
+        ].map(([id, x]) => (
+          <g key={id} data-sugar-unit={id}>
+            <rect
+              x={Number(x) - 23}
+              y="6"
+              width="46"
+              height="46"
+              rx="18"
+              fill={id === 'G' ? '#e1e7d4' : '#ece4ce'}
+            />
+            <text x={x} y="36" fontSize="23" textAnchor="middle" fill="#96a17f">
+              {id}
+            </text>
+          </g>
+        ))}
+        <text x="160" y="36" fontSize="22" textAnchor="middle" fill="#a9a486" opacity={p}>
+          +
+        </text>
+      </svg>
+      <div>
+        {p < 0.4 ? say('蔗糖 + H₂O', 'Sucrose + H₂O') : say('葡萄糖 + 果糖', 'Glucose + fructose')}
+      </div>
+    </div>
   );
 }

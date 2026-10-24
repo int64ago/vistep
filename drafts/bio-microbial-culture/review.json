@@ -1,0 +1,151 @@
+{
+  "slug": "bio-microbial-culture",
+  "batch": 22,
+  "status": "author-source-frozen-pending-root-integration-review",
+  "causalChain": "growth sites→dispersion→blank invalidation; fixed identity/denominator→replicates; urea-N→usableN→assimilation→matched prediction; dilution→CFU limits→sampling denominators",
+  "science": {
+    "textbookPrintedPages": [12, 13, 15, 16, 18, 19, 20],
+    "sources": [
+      "https://asm.org/protocols/urease-test",
+      "https://pubmed.ncbi.nlm.nih.gov/18438/",
+      "https://asm.org/protocols/the-streak-plate-protocol",
+      "https://www.cdc.gov/infection-control/hcp/environmental-control/environmental-sampling.html"
+    ],
+    "limits": "Net N flow; sufficient carbon/energy; no universal urease location; no fitted rate; no species identification; no cell count implied byCFU; independently controlled count batch."
+  },
+  "checks": {
+    "decisiveCurrent": "artifacts/teaching-principles/batch-22/biology/decisive-06/report.json",
+    "layoutIssue": "Own SVG stage292 CSSpx resolves full-player overflow: pre-measured keyframes01 passed144 cases. Actual viewing then found c6 formula crossing pipette, moved formula tofooter and volume labels to260; final fixed-preview review pending for this final layout.",
+    "historicalHarness": "decisive-01 had incorrect scroll offset; do not treat its apparent issues:[] as acceptance.",
+    "actualViewedDecisive": [
+      "decisive-03/en-320-c5-0.37.png",
+      "decisive-03/zh-1440-c5-0.58.png",
+      "decisive-03/en-320-c3-0.8.png",
+      "decisive-05/zh-320-c5-0.37.png",
+      "decisive-05/zh-320-c5-0.68.png",
+      "decisive-05/zh-320-c5-0.85.png",
+      "decisive-05/zh-1440-c2-0.86.png",
+      "decisive-06/en-320-c5-0.37.png",
+      "decisive-06/en-320-c5-0.68.png",
+      "decisive-06/en-320-c5-0.85.png",
+      "decisive-06/en-320-c2-0.86.png"
+    ],
+    "historicalProductFailure": "English MDX h2 tag accidentally spaced by local copyediting; fixed. Controls01 and decisive04/05 preserve failure, both MDX documents compile via installed Astro renderer and ENrouteHTTP200.",
+    "nativeControls": {
+      "path": "artifacts/teaching-principles/batch-22/biology/controls-02/report.json",
+      "passed": 72,
+      "complete": false,
+      "reason": "Harness used innerText() on SVG, which Playwright rejects. Changed to textContent(); original report retained. Final static rerun pending."
+    },
+    "tests": {
+      "path": "artifacts/teaching-principles/batch-22/biology/tests-unedited-restore.json",
+      "sha256": "396d35a190e36a8c8a4139ae2bb5d92556eeba4afda815dd9a13ebdb3a3120b2",
+      "passed": 20,
+      "failed": 0,
+      "actualSVGUneditedRestorationSamples": 42,
+      "actualSVGEditedRestorationSamples": 42,
+      "roundedBudgetCases": 12012
+    },
+    "strictTypes": {
+      "path": "artifacts/teaching-principles/batch-22/biology/strict-types.json",
+      "diagnostics": 0
+    },
+    "mdxCompile": {
+      "path": "artifacts/teaching-principles/batch-22/biology/mdx-compile.json",
+      "passed": 2
+    },
+    "finalStatic": "pending root frozen origin",
+    "historicalTestHarness": "tests-measured.json retained17pass/1serialization failure: React element owner cycle. Fixed test to compare serialized rendered SVG; tests-measured-02 is18/18.",
+    "stateInheritanceCorrection": {
+      "reason": "Independent reviewer found three true Watch→Explore rendering differences and independently rounded N labels which could sum to1.9/2.1. Old findings retained.",
+      "historicalEvidence": "artifacts/teaching-principles/batch-22/physics/bio-independent-numerics.json",
+      "fix": "Persist effective nitrogenProgress and cultureGrowth; bind both modes identically, use stable replicate opacity and counts-based caption; jointly apportion N label tenths by largest remainder without changing exact pools.",
+      "tests": {
+        "path": "artifacts/teaching-principles/batch-22/biology/tests-unedited-restore.json",
+        "sha256": "396d35a190e36a8c8a4139ae2bb5d92556eeba4afda815dd9a13ebdb3a3120b2",
+        "passed": 20,
+        "failed": 0,
+        "actualSVGUneditedRestorationSamples": 42,
+        "actualSVGEditedRestorationSamples": 42,
+        "roundedBudgetCases": 12012
+      },
+      "native": "Updated runner compares rendered SVG and pool text for nascent blank, moving N tracers, and early replicate plate. Fixed-preview run pending.",
+      "speech": "No audio, word timing, or chapter window change.",
+      "firstEntryCapture": "First Explore now captures the full director state with useEffect before any input. Earlier state-inheritance tests required journal edit before reset and did not cover unedited Explore; that old pass report remains historical incomplete coverage."
+    }
+  },
+  "measured": {
+    "duration": 265.5,
+    "chapterStarts": [0, 21, 45, 69, 90, 110, 143.5, 163.5, 184.5, 204.5, 224.5, 244.5],
+    "scope": "Actual synthesized voice lengths with exactPCM ASR word-time alignment. No subjective human listening claim.",
+    "sourceWordFiles": [
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-zh-0.json",
+        "sha256": "5e7c4b6c416c1afc188fcc9e64c6486157649c58e723eacd9e36473f085a5b6c"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-zh-1.json",
+        "sha256": "683ef9e829c697744bada909916e17e66b49b5f39be52061f7b7c92235f1390e"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-zh-2.json",
+        "sha256": "9934e3edbe4d4d0e8ed1118016f0edd0367286821540e299bee43da2b3eef69e"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-zh-5.json",
+        "sha256": "66c6c0e726aed64ef4bddb4e4c354b79d916c1b699c02342ef8438e4eaba6792"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-en-0.json",
+        "sha256": "8e18fd4674c11fb8cf257a899217bcf8f69c08bc370c68fa231051e034ea40a9"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-en-1.json",
+        "sha256": "39eb0cc3b60decb6d5000fcd082eb0c0b9c01db9566de454c818fddab85f76de"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-en-2.json",
+        "sha256": "846ea88050a1007051a9d8c434370ab71c15334501ced0657813c990f0c3b8fa"
+      },
+      {
+        "path": "artifacts/teaching-principles/batch-22/timed-speech/bio-microbial-culture-en-5.json",
+        "sha256": "872e73904fd15524cb27ef603eb1093ec01965f121da7dbe3651d16d27861c73"
+      }
+    ],
+    "anchors": {
+      "zh": {
+        "blank": 5.55,
+        "anomaly": 10.27,
+        "prediction": 14.69,
+        "compare": 20.25
+      },
+      "en": {
+        "blank": 5.71,
+        "anomaly": 10.53,
+        "prediction": 15.03,
+        "compare": 20.57
+      }
+    },
+    "criticalChapterSeconds": {
+      "0": [3, 10, 14],
+      "2": [3, 8, 11.5, 19],
+      "3": [7, 16],
+      "5": [1, 5.5, 8, 11.5, 17, 21.5, 29],
+      "6": [8, 11, 15],
+      "8": [12],
+      "9": [6, 16],
+      "10": [6, 16]
+    }
+  },
+  "rootIntegration": {
+    "status": "pending",
+    "globalVerify": "pending",
+    "buildPreview": "pending",
+    "fixedFrames": "pending",
+    "nativeControls": "pending",
+    "nativePlayback": "pending",
+    "resourceFaults": "pending",
+    "subjectiveListening": "not performed",
+    "physicalPhonePerformance": "not performed"
+  }
+}

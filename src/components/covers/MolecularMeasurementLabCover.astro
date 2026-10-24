@@ -1,10 +1,9 @@
 ---
+import { oilBoundary } from '../../models/molecular-measurement-lab';
 const outline =
-  Array.from({ length: 97 }, (_, i) => {
-    const a = (i / 96) * Math.PI * 2,
-      r = 77 * (1 + 0.1 * Math.sin(a * 3) + 0.06 * Math.cos(a * 5));
-    return `${i ? 'L' : 'M'}${180 + r * Math.cos(a)} ${143 + r * Math.sin(a)}`;
-  }).join(' ') + 'Z';
+  oilBoundary(200)
+    .map((p, i) => `${i ? 'L' : 'M'}${180 + p.x * 10} ${143 + p.y * 10}`)
+    .join(' ') + 'Z';
 ---
 
 <svg viewBox="0 0 360 270" fill="none" aria-hidden="true">

@@ -619,9 +619,9 @@ export const topics: Topic[] = [
   {
     slug: 'chem-sugar-tests',
     name: '糖类的检验与水解',
-    title: '水解前后，检验为什么会变？',
-    question: '水解前后，检验为什么会变？',
-    description: '分开观察溶解、碘显色、银镜与铜沉淀，追踪水解改变的样品与检验条件。',
+    title: '同样是糖，为什么检验不同？',
+    question: '同样是糖，为什么检验不同？',
+    description: '追踪葡萄糖开环与两电子还原，比较自由端、水解产物和检验条件怎样改变证据。',
     color: '#b7bca3',
     tag: '糖类实验',
     related: ['chem-aldehyde-tests', 'chem-ester-reaction', 'chem-protein-states'],
@@ -637,6 +637,10 @@ export const topics: Topic[] = [
       {
         title: 'RSC: detecting starch in food',
         url: 'https://edu.rsc.org/experiments/detecting-starch-in-food-on-a-microscale/563.article',
+      },
+      {
+        title: 'OpenStax: cyclic structures and ring–chain equilibrium',
+        url: 'https://openstax.org/books/organic-chemistry/pages/25-5-cyclic-structures-of-monosaccharides-anomers',
       },
     ],
     number: '413',
@@ -1761,9 +1765,9 @@ export const topics: Topic[] = [
   {
     slug: 'bio-microbial-culture',
     name: '从分散菌体到培养证据',
-    title: '一个菌落能告诉我们多少，又不能告诉我们什么？',
-    question: '一个菌落能告诉我们多少，又不能告诉我们什么？',
-    description: '跟随接种环、稀释液和微孔板，从纯培养走到选择计数与检测方法调查。',
+    title: '一个菌落，怎样成为可信的生长证据？',
+    question: '一个菌落，怎样成为可信的生长证据？',
+    description: '追踪细胞、氮源与菌落计数，用空白、同条件对照和重复测量判断结论能走多远。',
     color: '#c4cbaa',
     tag: '划线 · CFU · 复筛',
     related: [
@@ -1788,6 +1792,14 @@ export const topics: Topic[] = [
       {
         title: 'CDC — Environmental sampling: air volume and settling',
         url: 'https://www.cdc.gov/infection-control/hcp/environmental-control/environmental-sampling.html',
+      },
+      {
+        title: 'ASM — Urease Test',
+        url: 'https://asm.org/protocols/urease-test',
+      },
+      {
+        title: 'Friedrich & Magasanik (1977): urea-N growth and urease deficiency',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/18438/',
       },
     ],
     number: '375',
@@ -5709,9 +5721,10 @@ export const topics: Topic[] = [
   {
     slug: 'molecular-measurement-lab',
     name: '分子的间接观察与测量',
-    title: '看不见分子，怎样测出它的尺度？',
-    question: '看不见分子，怎样测出它的尺度？',
-    description: '用炭粒运动、量筒混合和单分子油膜，把可见观察连接到微观解释。',
+    title: '看不见分子，宏观现象能告诉我们什么？',
+    question: '看不见分子，宏观现象能告诉我们什么？',
+    description:
+      '从炭粒运动、混合后的体积收缩到单层油膜，追踪可见证据怎样支持分子运动、相互作用与尺度估计。',
     color: '#799066',
     tag: '从宏观估测微观',
     related: ['brownian-motion', 'diffusion'],
@@ -5727,6 +5740,18 @@ export const topics: Topic[] = [
       {
         title: 'UMass — Oleic-acid thin films',
         url: 'https://www.umass.edu/agriculture-food-environment/sites/ag.umass.edu/files/pdf-doc-ppt/2009_oleic_acid_thin_films.pdf',
+      },
+      {
+        title: 'Shimadzu — Solvent mixture ratios',
+        url: 'https://www.shimadzu.eu/service-support/technical-support/liquide-chromatography/essential_knowledge/mixture_ratio.html',
+      },
+      {
+        title: 'Pothoczki et al. — Hydrogen-bonded networks in ethanol–water mixtures',
+        url: 'https://real.mtak.hu/129628/1/2101.12142.pdf',
+      },
+      {
+        title: 'People’s Education Press — Physics, Elective 3, pp. 3–9',
+        url: 'https://jc.pep.com.cn/',
       },
     ],
     number: '241',

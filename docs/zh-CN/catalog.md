@@ -56,7 +56,7 @@
 | [弱酸的三种证据](../../src/content/chem-acid-evidence.mdx)                        | 3:00 | 弱酸为什么也能放出一样多的氢气？                     |
 | [蛋白质的盐析与变性](../../src/content/chem-protein-states.mdx)                   | 3:46 | 同样浑浊，加水后为什么不同？                         |
 | [液晶的两次变化](../../src/content/chem-liquid-crystal.mdx)                       | 2:37 | 位置和方向的有序，必须同时消失吗？                   |
-| [糖类的检验与水解](../../src/content/chem-sugar-tests.mdx)                        | 4:56 | 水解前后，检验为什么会变？                           |
+| [糖类的检验与水解](../../src/content/chem-sugar-tests.mdx)                        | 4:55 | 同样是糖，为什么检验不同？                           |
 | [平衡改变之前，颜色先发生了什么](../../src/content/chem-equilibrium-response.mdx) | 4:26 | 平衡不动，为什么反应还在继续？                       |
 | [手性、晶体与旋光证据](../../src/content/chem-chirality-evidence.mdx)             | 3:27 | 从不能重合的基团排列，怎样走到巴斯德的实验结论？     |
 | [乙酸乙酯的制备与水解](../../src/content/chem-ester-reaction.mdx)                 | 4:47 | 酯中的氧，原来在哪里？                               |
@@ -129,7 +129,7 @@
 | [胚胎的形成、转移与分割](../../src/content/bio-embryo-engineering.mdx)        | 3:08 | 一个胚胎怎样形成，又怎样移植和分割？         |
 | [动物细胞的培养与工程](../../src/content/bio-animal-cell-engineering.mdx)     | 4:02 | 培养、筛选和核移植，分别改变了什么？         |
 | [植物细胞的再生与融合](../../src/content/bio-plant-cell-engineering.mdx)      | 3:44 | 一段组织怎样长成植株，两枚细胞怎样成为杂种？ |
-| [从分散菌体到培养证据](../../src/content/bio-microbial-culture.mdx)           | 4:04 | 一个菌落能告诉我们多少，又不能告诉我们什么？ |
+| [从分散菌体到培养证据](../../src/content/bio-microbial-culture.mdx)           | 4:26 | 一个菌落，怎样成为可信的生长证据？           |
 | [进化证据与种群变化](../../src/content/bio-evolution-evidence.mdx)            | 4:45 | 不同证据，怎样指向共同由来？                 |
 | [发酵的容器与条件](../../src/content/bio-fermentation-pathways.mdx)           | 4:32 | 同一坛发酵，为什么结果会随条件和时间改变？   |
 | [环境调查与生态保护证据](../../src/content/bio-conservation-evidence.mdx)     | 4:13 | 从一次观察，怎样走到保护方案？               |
@@ -376,7 +376,7 @@
 | [液体表面张力实验](../../src/content/surface-tension-lab.mdx)           | 4:00 | 水面怎样托住针，又怎样拉动一根线？                 |
 | [晶体结构与各向异性实验](../../src/content/solid-structure-lab.mdx)     | 2:36 | 外形和导热方向，怎样透露固体的结构？               |
 | [热平衡与气体定律实验](../../src/content/thermal-measurement-lab.mdx)   | 3:54 | 怎样把温度、压强和体积联系起来？                   |
-| [分子的间接观察与测量](../../src/content/molecular-measurement-lab.mdx) | 3:28 | 看不见分子，怎样测出它的尺度？                     |
+| [分子的间接观察与测量](../../src/content/molecular-measurement-lab.mdx) | 3:30 | 看不见分子，宏观现象能告诉我们什么？               |
 | [黑体辐射测量](../../src/content/blackbody-lab.mdx)                     | 1:52 | 升温时，辐射曲线的峰值为什么向短波移动？           |
 | [高压锅](../../src/content/pressure-cooker.mdx)                         | 2:28 | 配重阀、绝对压力和排汽，怎样共同决定沸腾温度？     |
 | [露点](../../src/content/dew-point.mdx)                                 | 2:38 | 露点、相对湿度和水汽多少，是同一件事吗？           |

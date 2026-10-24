@@ -20,6 +20,8 @@ export function cutString(time: number, radius = 0.5, omega = 3, cutAt = 0.8) {
     angle,
     cut: t >= cutAt,
     tension: t < cutAt ? 0.05 * omega * omega * radius : 0,
+    fx: t < cutAt ? -0.05 * omega * omega * radius * Math.cos(angle) : 0,
+    fy: t < cutAt ? -0.05 * omega * omega * radius * Math.sin(angle) : 0,
   };
 }
 export function sandbagCone(time: number, mass = 0.08, length = 0.8, omega = 4.5) {
@@ -41,6 +43,33 @@ export function sandbagCone(time: number, mass = 0.08, length = 0.8, omega = 4.5
     angle,
     x: radius * Math.cos(angle),
     y: radius * Math.sin(angle),
+    tensionVector: {
+      x: -force * Math.cos(angle),
+      y: -force * Math.sin(angle),
+      z: mass * 9.8,
+    },
+  };
+}
+
+export type CentripetalSceneState = {
+  mode: 'cut' | 'bag' | 'rig' | 'funnel';
+  time: number;
+  comparison: 'same' | 'mass' | 'radius' | 'speed';
+  omega: number;
+  length: number;
+  radius: number;
+};
+
+/** Each chapter starts with its prescribed controlled conditions. */
+export function centripetalFilmState(chapter: number, progress: number): CentripetalSceneState {
+  return {
+    mode: chapter === 0 ? 'cut' : chapter === 1 ? 'bag' : chapter < 6 ? 'rig' : 'funnel',
+    time: Math.max(0, Math.min(1, progress / 0.84)) * (chapter === 0 ? 1.25 : 2),
+    comparison:
+      chapter === 3 ? 'mass' : chapter === 4 ? 'radius' : chapter === 5 ? 'speed' : 'same',
+    omega: 4.5,
+    length: 0.8,
+    radius: 0.2,
   };
 }
 /** Rigid lever with horizontal sliding clevis at the vertical spring sleeve. Static calibrated reading. */

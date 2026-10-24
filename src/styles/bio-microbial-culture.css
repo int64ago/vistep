@@ -1,6 +1,8 @@
 .bio-culture {
   color: #62624f;
   font-size: 16px;
+  max-width: 720px;
+  margin-inline: auto;
 }
 .bio-culture svg {
   width: 100%;
@@ -91,4 +93,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+}
+.bio-culture[data-watch='true'] .bio-culture-head {
+  display: none;
+}
+.bio-culture svg [data-tracer] text {
+  fill: #433d35;
+}
+.bio-culture svg [data-lineage] text {
+  font-weight: 600;
+}
+
+.bio-culture[data-chapter='5'] {
+  max-width: 520px;
 }

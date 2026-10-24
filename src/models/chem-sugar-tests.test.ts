@@ -51,3 +51,57 @@ describe('sugar evidence', () => {
     expect(sugarDirector(11, 0).hydrolysis).toBe(1);
   });
 });
+
+import {
+  glucoseRingOpening,
+  glucoseTestSequence,
+  glucoseOxidationAccount,
+} from './chem-sugar-tests';
+describe('traceable glucose principle', () => {
+  it('preserves every carbon/oxygen identity and keeps the six-carbon chain intact', () => {
+    for (let k = 0; k <= 200; k++) {
+      const m = glucoseRingOpening(k / 200);
+      expect(m.atoms.map((a) => a.id)).toEqual(['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'O5', 'O1']);
+      expect(m.formula).toBe('C6H12O6');
+      expect(m.ringBond + m.carbonyl).toBeCloseTo(1);
+      for (let i = 0; i < m.atoms.length; i++)
+        for (let j = 0; j < i; j++) {
+          const a = m.atoms[i],
+            b = m.atoms[j];
+          expect(Math.hypot(a.x - b.x, a.y - b.y)).toBeGreaterThan(35);
+        }
+    }
+    expect(glucoseRingOpening(0).ringBond).toBe(1);
+    expect(glucoseRingOpening(1).ringBond).toBe(0);
+    expect(glucoseRingOpening(1).carbonyl).toBe(1);
+  });
+  it('balances the alkaline half reaction, independently of either metal reagent', () => {
+    for (const x of [0, 0.125, 1, 4]) {
+      const a = glucoseOxidationAccount(x);
+      // RCHO + 3 OH− -> RCOO− + 2 H2O + 2 e−, excluding unchanged R.
+      expect(x + a.hydroxideUsed).toBeCloseTo(2 * a.carboxylate + a.waterProduced); // O
+      expect(x + a.hydroxideUsed).toBeCloseTo(2 * a.waterProduced); // H
+      expect(-a.hydroxideUsed).toBeCloseTo(-a.carboxylate - a.electrons); // charge
+      expect(a.electrons).toBe((a.carbonOxidationAfter - a.carbonOxidationBefore) * x);
+    }
+  });
+  it('predicts reagent limitation and invalid/no-sample counterexamples', () => {
+    const m = sugarReduction('glucose', 0, 1, 'silver', true, true, 2, 1);
+    expect(m.silver).toBe(1);
+    expect(m.remainingReducing).toBe(1.5);
+    expect(sugarReduction('glucose', 0, 1, 'copper', true, true, 0, 2).copperOxide).toBe(0);
+    expect(sugarReduction('glucose', 0, 1, 'copper', true, true, 2, 0).copperOxide).toBe(0);
+    expect(sugarReduction('sucrose', 0, 1, 'copper').extent).toBe(0);
+    expect(sugarReduction('maltose', 0, 1, 'copper').extent).toBe(0.5);
+    expect(sugarReduction('sucrose', 1, 1, 'copper').extent).toBe(1);
+  });
+  it('reconstructs the same storyboard at arbitrary forward/backward seeks', () => {
+    for (const p of [0, 0.24, 0.62, 0.94, 1, 0.62, 0.24, 0]) {
+      const a = glucoseTestSequence(p);
+      expect(a.opening).toBeGreaterThanOrEqual(0);
+      expect(a.opening).toBeLessThanOrEqual(1);
+      if (a.oxidation > 0) expect(a.opening).toBe(1);
+      expect(JSON.stringify(a)).toBe(JSON.stringify(glucoseTestSequence(p)));
+    }
+  });
+});

@@ -1,38 +1,132 @@
 {
   "slug": "chem-sugar-tests",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "reviewedAt": "2026-10-18T16:30:27.159843",
-  "files": {
-    "src/models/chem-sugar-tests.ts": "159a540ce7f9d44bbbf10715f9972c96fdd55af1c27169502d9345cf1608f396",
-    "src/models/chem-sugar-tests.test.ts": "35dc22f4295caaab20e66fe40ae0764c474cda7f512bc90438c95ded2bfab7ff",
-    "src/components/experiments/ChemSugarTests.tsx": "078e3f66a2eccb3ecce09be7b58dfca1f9f4a9ef3aeaa7869076b4ecc3138d8f",
-    "src/components/covers/ChemSugarTestsCover.astro": "e938937a6c21fba8b9c9fc56112ebe9e13fd045a93bc2568d39f259442d5530e",
-    "src/styles/chem-sugar-tests.css": "fca30ddccf57a3d85654ee951831be916b696bad73590a038ce5928df9ddbcf9",
-    "src/content/chem-sugar-tests.mdx": "0fd1c860920311fdc246381ef8d01fab22d697ac45892b0689f3b35ae849240d",
-    "src/content/en/chem-sugar-tests.mdx": "47198508b351fe25add66c6c84db2907a470284f61ceabf99b3775a301744f2d",
-    "src/data/scene-packets/chem-sugar-tests.json": "897ea3e068e6d701a0af89afd62493edb7220457df347f9a86d1a3b48db12649"
+  "batch": 22,
+  "sourceCommit": "463fd5129d3ba1b8324243ba1fea1bb1ec2e419a",
+  "reviewedAt": "2026-10-24T03:46:22.678252+00:00",
+  "reviewer": "scene author self-review",
+  "status": "source-frozen; integrated acceptance pending",
+  "ownedFilesSHA256": {
+    "src/models/chem-sugar-tests.ts": "42cc65dfb1848bf2ea90ba275467aa26d9dd0cc8a8e9da23d9e17bf1128437d5",
+    "src/models/chem-sugar-tests.test.ts": "9c5c447dda99b08bf05abbe0fb313ad6ac4ebd55f8b5691a43ff5ea9031dfe69",
+    "src/components/experiments/ChemSugarTests.tsx": "7c3f4063cb96ec9295754cc4b5ae16dc37d3096195f59e8fcb4fe2e8a98cd5a8",
+    "src/styles/chem-sugar-tests.css": "40904e60cb026cd2ac7f8c1dcd4c870d97e80e4b7f4d7ced920e9891952480d5",
+    "src/components/covers/ChemSugarTestsCover.astro": "60811d2bd0797bd01ac2a81f88f3d291e82f03042d766d3551dda1242090ebfc",
+    "src/content/chem-sugar-tests.mdx": "a49e7867bd316fa66e623f029a8713e5714352e7eae1097508d5c961890b2b6b",
+    "src/content/en/chem-sugar-tests.mdx": "d463af5d0135774a773ab0c8401372a96452a2f05d59fc7dccf341f558d40b49",
+    "drafts/chem-sugar-tests/brief.md": "a53a9cc6abde6dab1e48dc246a2857ff3a3ec8d4a65f905df4260e8010b96cdf",
+    "src/components/experiments/ChemSugarTests.test.tsx": "cf7026fac98ef08e0718f9fddd616a0195d5677a43131acc9d0b0a7b5a5d529e"
   },
-  "modelTests": {
-    "status": "passed",
-    "count": 5
-  },
-  "ownedTypeScriptDiagnostics": 0,
-  "packetValidation": "passed",
-  "scopedPrettier": "passed",
-  "viewport": "320x844 emulated Chromium; reduced motion; muted paused seeks",
-  "visual": {
-    "sweep": "All12English/Chinese chapters passed; extra22%phase tests for cold dissolution/polymer breakup/neutralisation. ENmax791.66,ZH704.46, extra-phase734.63 with top90.78/90.5. Actually inspected silver wall deposition, before/after copper, linkage diagram, early chain/alkaline phases, Chinese sucrose products. Removed duplicated explanatory notes in chapters5/12 and reran changed English shots; geometry only shrinks.",
-    "evidenceDirectories": [
-      "artifacts/chemistry-inventory/review-sugar",
-      "artifacts/chemistry-inventory/review-sugar-zh",
-      "artifacts/chemistry-inventory/review-sugar-phases",
-      "artifacts/chemistry-inventory/review-sugar-final"
-    ]
-  },
-  "notRun": [
-    "continuous full viewing",
-    "native listening (root synthesizes)",
-    "physical phone",
-    "root independent desktop/exploration/curriculum-route review"
-  ]
+  "checks": [
+    {
+      "type": "model/component",
+      "status": "passed",
+      "count": 11,
+      "evidence": "artifacts/teaching-principles/batch-22/chemistry/final-scoped-tests.log",
+      "conditions": "native React state restore including Watch reset; net half-reaction and stock/identity bounds"
+    },
+    {
+      "type": "desktop/narrow developmental geometry",
+      "status": "passed-with-recorded-repairs",
+      "evidence": [
+        "artifacts/teaching-principles/batch-22/chemistry/allchapters-03/report.json",
+        "artifacts/teaching-principles/batch-22/chemistry/decisive-04/report.json",
+        "artifacts/teaching-principles/batch-22/chemistry/measured-director-05/report.json"
+      ],
+      "conditions": "144-chapter-phase sweep before final measured director; targeted48Chinese and24measuredEnglish frames. First sweep1.1px overflow fixed; later English shared MDX500 preserved, targeted final retry24/24 pass."
+    },
+    {
+      "type": "actual visual inspection",
+      "status": "passed-author-review",
+      "evidence": [
+        "artifacts/teaching-principles/batch-22/chemistry/decisive-04/zh-320-c1-p0.24.png",
+        "artifacts/teaching-principles/batch-22/chemistry/decisive-04/zh-1440-c1-p0.74.png",
+        "artifacts/teaching-principles/batch-22/chemistry/decisive-04/zh-320-c9-p0.74.png",
+        "artifacts/teaching-principles/batch-22/chemistry/measured-director-05/en-320-c1-p0.45.png",
+        "artifacts/teaching-principles/batch-22/chemistry/measured-director-05/en-320-c2-p0.53.png",
+        "artifacts/teaching-principles/batch-22/chemistry/cover-dev.png",
+        "artifacts/teaching-principles/batch-22/chemistry/social-dev.png"
+      ]
+    },
+    {
+      "type": "word-time director mapping",
+      "status": "passed-structural-and-keyframe",
+      "evidence": [
+        "artifacts/teaching-principles/batch-22/timed-speech/chem-sugar-tests-zh-1.json",
+        "artifacts/teaching-principles/batch-22/timed-speech/chem-sugar-tests-zh-2.json",
+        "artifacts/teaching-principles/batch-22/timed-speech/chem-sugar-tests-en-1.json",
+        "artifacts/teaching-principles/batch-22/timed-speech/chem-sugar-tests-en-2.json"
+      ],
+      "landmarks": {
+        "zh": {
+          "silver": {
+            "follow": 2.0,
+            "open": 6.3,
+            "opened": 8.0,
+            "redox": 8.4,
+            "loss": 9.1,
+            "gained": 10.85,
+            "prediction": 11.29
+          },
+          "copper": {
+            "follow": 4.8,
+            "open": 4.8,
+            "opened": 6.4,
+            "redox": 6.6,
+            "loss": 6.81,
+            "gained": 11.65,
+            "prediction": 12.5
+          }
+        },
+        "en": {
+          "silver": {
+            "follow": 2.5,
+            "open": 6.3,
+            "opened": 9.03,
+            "redox": 9.2,
+            "loss": 10.15,
+            "gained": 12.35,
+            "prediction": 12.77
+          },
+          "copper": {
+            "follow": 4.1,
+            "open": 4.1,
+            "opened": 5.67,
+            "redox": 5.85,
+            "loss": 5.87,
+            "gained": 11.95,
+            "prediction": 12.3
+          }
+        }
+      },
+      "limits": "ASR word times align visible cause; not listening or continuous visual playback."
+    },
+    {
+      "type": "final static native controls",
+      "status": "not-run"
+    },
+    {
+      "type": "subjective full listening",
+      "status": "not-run"
+    },
+    {
+      "type": "physical phone performance",
+      "status": "not-run"
+    },
+    {
+      "type": "publication",
+      "status": "not-run"
+    }
+  ],
+  "scientificLimits": [
+    "Net connectivity and oxidation, not elementary mechanism or solvent isotope tracking",
+    "Qualitative ring/open population; no quantitative mutarotation or oxidation kinetics",
+    "DP1000 linear endpoint mixture; no intermediate chain kinetics",
+    "Assay requires appropriate conditions; positive response is not glucose-specific or proof of complete hydrolysis"
+  ],
+  "spokenContract": {
+    "changed": 4,
+    "retained": 20,
+    "duration": 295,
+    "transcription": "root24/24passed; Chinese homophone substitutions do not establish exact terminology listening"
+  }
 }

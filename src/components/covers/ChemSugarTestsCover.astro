@@ -1,27 +1,77 @@
-<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-  ><defs
-    ><linearGradient id="sugarmirror"
-      ><stop stop-color="#8e9b9a"></stop><stop offset=".4" stop-color="#faf9ed"></stop><stop
+---
+import { glucoseRingOpening } from '../../models/chem-sugar-tests';
+const structures = [glucoseRingOpening(0), glucoseRingOpening(1)];
+---
+
+<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="sugarmirror">
+      <stop stop-color="#8e9b9a"></stop><stop offset=".4" stop-color="#faf9ed"></stop><stop
         offset="1"
-        stop-color="#9ba9a3"></stop></linearGradient
-    ></defs
-  ><rect width="640" height="420" fill="#f3f3e9"></rect><path
-    d="M160 72V274Q160 331 210 331T260 274V72"
+        stop-color="#9ba9a3"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="#f3f3e9"></rect>
+  {
+    structures.map((m, index) => {
+      const p = Object.fromEntries(m.atoms.map((a) => [a.id, a]));
+      const pairs = [
+        ['C1', 'C2'],
+        ['C2', 'C3'],
+        ['C3', 'C4'],
+        ['C4', 'C5'],
+        ['C5', 'C6'],
+        ['C5', 'O5'],
+        ['C1', 'O1'],
+        ...(index === 0 ? [['O5', 'C1']] : []),
+      ];
+      return (
+        <g transform={`translate(${index === 0 ? 42 : 342} 34) scale(.78)`}>
+          {pairs.map(([a, b]) => (
+            <path
+              d={`M${p[a].x} ${p[a].y}L${p[b].x} ${p[b].y}`}
+              stroke="#b4bea2"
+              stroke-width="3"
+            />
+          ))}
+          {index === 1 ? <path d="M264 67L300 27" stroke="#b4bea2" stroke-width="3" /> : null}
+          {m.atoms.map((a) => (
+            <circle
+              cx={a.x}
+              cy={a.y}
+              r={a.id === 'C1' ? 15 : 7}
+              fill={a.id === 'C1' ? '#d9b77e' : a.id.startsWith('O') ? '#aabf9c' : '#c7ceb5'}
+            />
+          ))}
+        </g>
+      );
+    })
+  }
+  <path
+    d="M298 105H328m-8-6 8 6-8 6"
+    stroke="#b4bba2"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <path
+    d="M241 195V315Q241 352 276 352T311 315V195"
     fill="#edf0e3"
     stroke="#b3bea7"
-    stroke-width="3"></path><path d="M164 190H256V273Q256 327 210 327T164 273Z" fill="#c0d6d3"
-  ></path><path d="M165 284Q210 270 255 284V274Q255 326 210 326T165 274Z" fill="#ba8c71"
-  ></path><path
-    d="M380 72V274Q380 331 430 331T480 274V72"
+    stroke-width="3"></path>
+  <path d="M247 263V314Q247 346 276 346T305 314V263" stroke="url(#sugarmirror)" stroke-width="9"
+  ></path>
+  <path
+    d="M379 195V315Q379 352 414 352T449 315V195"
     fill="#edf0e3"
     stroke="#b3bea7"
-    stroke-width="3"></path><path
-    d="M386 178V275Q386 325 430 325T474 275V178"
-    stroke="url(#sugarmirror)"
-    stroke-width="10"></path><path d="M110 235V366H530V235" stroke="#c0c9b5" stroke-width="3"
-  ></path><path d="M270 57L291 45 312 57V81L291 93 270 81Z" fill="#e0e5cd" stroke="#bec7ad"
-  ></path><path d="M312 69H337" stroke="#b7c0a5" stroke-width="3"></path><path
-    d="M337 57L358 45 379 57V81L358 93 337 81Z"
-    fill="#e0e5cd"
-    stroke="#bec7ad"></path></svg
->
+    stroke-width="3"></path>
+  <path d="M383 263H445V315Q445 348 414 348T383 315Z" fill="#c0d6d3"></path>
+  <path d="M383 319Q414 307 445 319V315Q445 348 414 348T383 315Z" fill="#ba8c71"></path>
+  <path d="M212 289V377H478V289" stroke="#c0c9b5" stroke-width="3" stroke-linejoin="round"></path>
+  <path
+    d="M470 163q-3 17-18 25M452 180v8h8"
+    stroke="#c0c9b5"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>

@@ -51,4 +51,18 @@ describe('centripetal experimental mechanisms', () => {
       s.ballRadius,
     );
   });
+  it('the displayed bag forces produce the independently differentiated orbit acceleration', () => {
+    const h = 0.0001;
+    for (const length of [0.65, 0.8, 1])
+      for (const omega of [0, 2, 4.5, 6])
+        for (const time of [0.2, 0.7, 1.9]) {
+          const s = sandbagCone(time, 0.08, length, omega);
+          const before = sandbagCone(time - h, 0.08, length, omega);
+          const after = sandbagCone(time + h, 0.08, length, omega);
+          expect(s.tensionVector.x / 0.08).toBeCloseTo((after.x - 2 * s.x + before.x) / h ** 2, 5);
+          expect(s.tensionVector.y / 0.08).toBeCloseTo((after.y - 2 * s.y + before.y) / h ** 2, 5);
+          expect(s.tensionVector.z - s.gravity).toBe(0);
+          expect(Math.hypot(...Object.values(s.tensionVector))).toBeCloseTo(s.tension, 12);
+        }
+  });
 });

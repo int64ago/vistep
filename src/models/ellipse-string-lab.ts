@@ -30,3 +30,16 @@ export function ellipseTrace(progress: number, length = 1, separation = 0.6) {
     n = Math.max(1, Math.ceil(end * 32));
   return Array.from({ length: n + 1 }, (_, i) => stringEllipse((end * i) / n, length, separation));
 }
+
+export type EllipseSceneState = { distance: number; trace: number; closing: boolean };
+
+/** Chapter-relative geometry, independent of manual exploration and wall-clock time. */
+export function ellipseFilmState(chapter: number, progress: number): EllipseSceneState {
+  const p = Math.max(0, Math.min(1, progress * 1.25));
+  return {
+    distance: chapter === 3 ? 0.6 * (1 - p) : 0.6,
+    trace:
+      chapter === 0 ? 0.13 : chapter === 1 ? 0.13 + 0.38 * p : chapter === 2 ? p : 0.2 + 0.3 * p,
+    closing: chapter === 3,
+  };
+}

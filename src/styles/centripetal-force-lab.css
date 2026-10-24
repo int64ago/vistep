@@ -75,6 +75,14 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.centripetal-force-controls .segmented button {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 44px;
+  min-width: 0;
+  padding: 10px 12px;
+  white-space: normal;
+}
 .centripetal-force-controls > .segmented:first-child {
   grid-column: 1/-1;
   justify-self: center;
@@ -88,6 +96,11 @@
   }
   .centripetal-force-controls {
     grid-template-columns: 1fr;
+  }
+  .centripetal-force-controls .segmented {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
   }
   .centripetal-force-readings {
     flex-direction: column;
@@ -104,44 +117,86 @@
   }
 }
 
-/* The film caption carries the current explanation; longer notes remain in exploration. */
+.centripetal-key {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 9px;
+  align-self: center;
+}
+.centripetal-key.is-support {
+  background: #577e4c;
+}
+.centripetal-key.is-gravity {
+  background: #926b35;
+}
+.centripetal-key.is-resultant {
+  background: #587f91;
+}
+.centripetal-velocity-key {
+  color: #587f91;
+}
+.showcase[data-mode='watch'] .centripetal-force-lab {
+  padding: 14px 20px;
+}
+.showcase[data-mode='watch'] .centripetal-force-lab > header,
+.showcase[data-mode='watch'] .centripetal-force-cause,
+.showcase[data-mode='watch'] .centripetal-force-note {
+  display: none;
+}
+.showcase[data-mode='watch'] .centripetal-force-stage {
+  margin: 0 auto 8px;
+  max-width: 600px;
+}
+.showcase[data-mode='watch'] .centripetal-force-stage svg {
+  height: 360px;
+  width: 100%;
+}
+.showcase[data-mode='watch'] .centripetal-force-conditions {
+  font-size: 16px;
+  margin: 10px auto 0;
+}
 @media (max-width: 640px) {
   .showcase[data-mode='watch'] .centripetal-force-lab {
-    padding: 12px 8px;
+    padding: 3px 12px 7px;
   }
-  .showcase[data-mode='watch'] .centripetal-force-lab > header {
-    display: block;
-    text-align: center;
+  .showcase[data-mode='watch'] .centripetal-force-stage {
+    margin: 0 0 5px;
   }
-  .showcase[data-mode='watch'] .centripetal-force-lab > header p {
-    font-size: 16px;
+  .showcase[data-mode='watch'] .centripetal-force-stage svg {
+    height: 174px;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-readings {
+    gap: 4px;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-readings span {
+    gap: 7px;
+    align-items: center;
+    line-height: 1.3;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-readings b {
+    margin-left: auto;
+  }
+  .showcase[data-mode='watch'] .centripetal-force-conditions {
     line-height: 1.4;
-    margin: 0 0 8px;
+    margin: 5px 0 0;
   }
-  .showcase[data-mode='watch'] .centripetal-force-lab > header > span,
-  .showcase[data-mode='watch'] .centripetal-force-lab > p[class$='-note'],
-  .showcase[data-mode='watch'] .centripetal-force-lab > p[class$='-cause'],
-  .showcase[data-mode='watch'] .centripetal-force-lab > p[class$='-observation'] {
-    display: none;
+  .showcase[data-mode='watch'] .centripetal-force-conditions span {
+    padding: 0 3px;
   }
 }
 
 @media (max-width: 640px) {
-  .showcase[data-mode='watch'] .centripetal-force-stage {
-    margin: 6px 0;
+  .showcase[data-mode='watch'] .centripetal-force-lab[data-view='rig'] .centripetal-force-readings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 10px;
   }
-  .showcase[data-mode='watch'] .centripetal-force-stage svg {
-    max-height: 240px;
-  }
-  .showcase[data-mode='watch'] .centripetal-force-readings {
-    gap: 5px;
-  }
-  .showcase[data-mode='watch'] .centripetal-force-conditions {
-    font-size: 16px;
-    line-height: 1.4;
-    margin: 8px 0;
-  }
-  .showcase[data-mode='watch'] .centripetal-force-conditions span {
-    padding: 0 3px;
+  .showcase[data-mode='watch']
+    .centripetal-force-lab[data-view='rig']
+    .centripetal-force-readings
+    > span:last-child {
+    grid-column: 1/-1;
   }
 }

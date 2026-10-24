@@ -1,13 +1,37 @@
-# Microbial culture brief
+# 一个菌落，怎样成为可信的生长证据？
 
-Elective3 targets012-1,015-1,018-1,020-1;12 planned240s cues. Source full printed10–21 read;ASM streakplate/morphology, FDAmethodindex, CDCsettlingairvolume principles checked. FDA2026methodexists, notclaimed fullreview oruseditsnumericrange;30–300 is explicitlythistextbook.
+B22：保留12章与4个教材播放窗口；教材原名、页码、学习顺序不变。
 
-Ownstage:agar preparationsection→topviewplate with five realloop trajectories→24wellplate and repeatedcandidatebars→selectivemedia/dilution/CFU→distinctair/liquid/soil sampling objects.16px allSVGtext,44pxcontrols, actualCSSwidthgeometry, no watchparagraphduplicate. Tablet/phonewidthplate radiusbounded88 andlabelsoutsideobject; independentroot320reviewpending.
+从可见现象到推理：固定接种起点繁殖为菌落 → 划线减小新区域接种密度 → 同条件空白先清、后长出一个菌落，撤回本批纯培养判读。筛选保留24孔身份和总产量颜色，总产量/菌体量分母改变导致排序反转，再用独立重复区分偶然领先。尿素以守恒的氮流解释水解、可用氮、摄取同化与生长，先预测B直接得到可用氮的结果，再显示同条件三氮源对照。之后稀释、重复计数、CFU边界与采样分母保留完整推理链。
 
-Criticalcausality:firstpickup from actual culturetube bottomright; laterpickup atpreviousstreakendpoint aftertreatment/cooling. Depositscannotappear beforeloop reachesagar; eachdepositionprogresssharesroute.103 fixedseedIDs onagar become samecolonies, untouchedblankinitiallyempty; noflamecoolskip.5regions64/24/9/4/2 illustrativeorigins vs320 withoutbetween-treatment, notliteral measuredcells.
+## 视觉与身份
 
-Dilution1mL into9: every1001frames19mLtotal and originalsamplemassconserved. Pipetteaspirates submerged, liftsabovebothrims, crosses, descendsandvisibletricklearrivesreceiver.10g+90mL initialnominal1:10 included in exponent.96/103/101 at0.1mL*1e−5g/mL gives1e8CFU/g. Userscountsblanknot0; outof30–300rangeflagged, noapprovedlookingoutput. CFUcellcluster andculturelimits separated.
+c0保留A/B/C接种起点和各自的子细胞身份；c1/2保留103个划线种子/菌落ID。空白异常只有一个明确的blank-contaminant，随后缓慢长大。c3孔号对应固定候选，颜色保留原始总产量。c5 N1/N2沿氮路径连续运动，三个池守恒；A/B能力对照的初始接种物和细胞ID保持固定。净氮流不指定脲酶的通用细胞定位。
 
-24wellfixedcandidateIDs;B3initial3.4 vsretetest.8/.9/.7, A4initial2.1 vs1.9/2/2.1;totalvsperbiomassrank changes mathematically and rawcolorsremainunchanged. Allsynthetic. Air100L12CFU→120CFU/m3;settlingonlyCFU/plate/timewitharea/time retained. Water/milkvolume vssoilmass; actualrecordsblank. Studentexperimentsnotconflatedwithtechnicalprocess or4optionalfieldinvestigations.
+桌面主图约束720px（氮机制520px），手机按实际CSS像素重新布置，不整体缩小。SVG文字16px、原生按钮/输入至少44px。Watch去掉重复场景大标题，主播放器保留一句短字幕。首次Explore继承眼前完整状态；第一次任意编辑保存整个快照，Watch重置后Explore可完全恢复。每次参数切换是从同一起点重算同时间对照，不声称真实培养中即时撤酶。
 
-7independentmodel+2componenttests passed. Packetreadonlyvalidation375passed. Worker hasnotperformed browsercontinuouswatch, screenshots, speechlistening orrealdevice performance;rootownsallthose. Sourcecookbookdetailnotreproduced;localtextbookextractsnotredistributed.
+## 科学模型与边界
+
+新增独立氮收支：U→A→B串联一阶示意，初始总氮当量2；U为尿素氮、A为氨/铵可用氮、B为新增菌体氮。普通氮源直接进A，无氮初始0。假定碳源、能量和其他需求充分；省略储存、运输、定位、酶调控、其他尿素利用途径及交叉供养。示意时间和速率未拟合实验，N标记是路径示意，不逐分子模拟。关水解留下U，关同化累积A，直接供氮能绕过水解。
+
+保留筛选数据B3初筛3.4、菌体量3.0，A4初筛2.1、菌体量0.8；单位菌体分别约1.13与2.63。B3复筛0.8/0.9/0.7，A4为1.9/2.0/2.1，均为合成数。液体稀释保持19mL与样品质量守恒；96/103/101，0.1mL×10⁻⁵g/mL给出10⁸CFU/g。该换算是另一个对照合格的教学批次，不能沿用失败酵母批次。30—300仅为此教材活动范围。
+
+空气主动100L/12CFU与沉降同计数的单位差异在Watch自动出现；水/奶同80CFU但相差100倍稀释，800/80000CFU/mL；不是食品安全判断。土壤保留质量与干湿重范围。个人笔记为空；Explore继承教学数值可用清空三个计数重新开始，空白不当作0。
+
+## 教材与资料核查
+
+本次实际看选择性必修3印刷12、13、15、16、18、19、20页（PDF21、22、24、25、27、28、29），保留全部4窗口。印刷16/18的脲酶供氮基础、19的初筛/鉴定限制、18的CFU细胞团限制相互配套。
+
+核读ASM Urease Test（2019）、ASM streak plate、CDC环境采样；原始研究Friedrich & Magasanik1977的缺脲酶突变株不能以尿素为唯一氮源生长、可用其他氮源救援，支持“氮源能力的限定对照”，不把某一物种结果泛化为所有微生物。引用链接在双语文章与packet中。未宣称完整核读FDA当年全部计数标准；数值范围只来自教材。
+
+## 当前验收口径
+
+定向科学模型和组件测试包含12章重建、首编辑全快照恢复、氮收支与反事实、空白异常、稀释守恒和计数边界。实际浏览器检查和截图记录在artifacts/teaching-principles/batch-22/biology。历史失败保留：decisive-01滚动脚本错误；decisive-02/03旧长字幕真实超高；decisive-04/05及controls-01遭英文MDX标签空格错误，已修复并由安装版Astro MDX处理器核验。最终静态集成、完整正常速度播放、实测声音同步由root统一收束；截图/测试不冒充配音试听或物理手机性能。
+
+## 实测声音冻结
+
+实际影片265.5秒，12章起点0、21、45、69、90、110、143.5、163.5、184.5、204.5、224.5、244.5。仅c0/1/2/5的中英8条新声；其余16条原文未变。c0/1/2/5依确切PCM词时映射，c5中文14.69秒、英文15.03秒进入预测，20.25/20.57秒才显现同条件三氮源结果；空白异常在中文10.27、英文10.53秒出现。首次Explore继承预测画面；任意情境输入开始新对照，笔记编辑保持原预测。最终20项定向测试与严格TS通过。固定产物全章画面、原生控件和完整播放仍待root统一验收。
+
+独立复核后的继承修正：将真实氮过程进度、菌落生长进度收入完整状态；首次Explore不再改变氮池、N1/N2坐标、空白污染菌落半径或计数平板透明度。42个实际SVG样本验证首次继承和Watch重置后恢复。三氮池按共同最大余数分配显示小数，12,012组显示总量守恒检查通过；原始浮点模型不变。固定预览的对应实际控件检查仍待运行。
+
+补充无编辑恢复：首次进入Explore即自动保存完整当前状态，未操作任何控件或笔记，Watch回到c0后再Explore也恢复原图。42个样本分别验证未编辑与编辑后的实际SVG恢复；此前仅验证编辑后恢复的报告保留为不完整覆盖，不当作这一分支的证据。

@@ -2,11 +2,11 @@
   "topic": {
     "slug": "molecular-measurement-lab",
     "name": "分子的间接观察与测量",
-    "title": "看不见分子，怎样测出它的尺度？",
-    "question": "看不见分子，怎样测出它的尺度？",
-    "description": "用炭粒运动、量筒混合和单分子油膜，把可见观察连接到微观解释。",
+    "title": "看不见分子，宏观现象能告诉我们什么？",
+    "question": "看不见分子，宏观现象能告诉我们什么？",
+    "description": "从炭粒运动、混合后的体积收缩到单层油膜，追踪可见证据怎样支持分子运动、相互作用与尺度估计。",
     "color": "#799066",
-    "tag": "从宏观估测微观",
+    "tag": "从可见证据推知分子",
     "related": ["brownian-motion", "diffusion"],
     "sources": [
       {
@@ -14,12 +14,16 @@
         "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=854412"
       },
       {
-        "title": "University of Göttingen — Ethanol and water",
-        "url": "https://www.unterrichtsmaterialien-chemie.uni-goettingen.de/exp_neu.php?id=765"
+        "title": "Shimadzu — Solvent mixture ratios",
+        "url": "https://www.shimadzu.eu/service-support/technical-support/liquide-chromatography/essential_knowledge/mixture_ratio.html"
       },
       {
-        "title": "UMass — Oleic-acid thin films",
-        "url": "https://www.umass.edu/agriculture-food-environment/sites/ag.umass.edu/files/pdf-doc-ppt/2009_oleic_acid_thin_films.pdf"
+        "title": "Pothoczki et al. — Hydrogen-bonded networks in ethanol–water mixtures",
+        "url": "https://real.mtak.hu/129628/1/2101.12142.pdf"
+      },
+      {
+        "title": "People’s Education Press — Physics, Elective 3, pp. 3–9",
+        "url": "https://jc.pep.com.cn/"
       }
     ]
   },
@@ -85,34 +89,66 @@
     "用方格估计面积": "Estimate area with a grid",
     "统一边界计数规则，得到膜面积。": "Apply a consistent boundary-cell rule.",
     "由体积与面积估测尺度": "Estimate a scale from volume and area",
-    "单层近似下，厚度等于体积除以面积。": "For a uniform monolayer, thickness is volume divided by area."
+    "单层近似下，厚度等于体积除以面积。": "For a uniform monolayer, thickness is volume divided by area.",
+    "可见炭粒 → 分子热运动": "Tracer → thermal motion",
+    "体积变了，分子没消失": "Volume changes",
+    "铺成一层，估测尺度": "A layer reveals a scale",
+    "炭粒观察与分子撞击解释的双尺度图": "Carbon tracer observation and a separate molecular-impact model",
+    "量筒读数与保持身份的水醇分子结构图": "Cylinder readings and identity-preserving water–ethanol structure diagrams",
+    "油膜体积、面积与单层厚度的关系图": "Oil volume, film area and monolayer thickness",
+    "撞击不均衡": "Unequal impacts",
+    "纯油酸": "Pure oleic acid",
+    "亲水端朝向水": "Polar ends face water",
+    "青：20°C · 金：当前温度": "Teal: 20°C · gold: current",
+    "分子身份与数量不变": "Same molecules, same counts",
+    "溶液体积 ≠ 纯油酸体积": "Solution volume ≠ oil volume",
+    "撞击图：非显微图，非同比例": "Impact model, not to scale",
+    "结构示意：不代表配比，不预测体积": "Schematic counts and structure",
+    "每格1 cm²；过半计1格，少于半格舍去": "1 cm² cells; count those over half full",
+    "只有均匀单层，厚度才对应分子尺度": "Molecular scale requires a uniform monolayer",
+    "边界稳定后测面积；单层是估测前提": "Stable area; assume one uniform layer",
+    "先数滴，再扣除溶剂所占体积": "Count drops, then exclude the solvent",
+    "炭粒": "Tracer",
+    "水醇": "Mixture",
+    "油膜": "Oil film",
+    "滴数": "Drops",
+    "铺展": "Spread",
+    "面积": "Area",
+    "厚度": "Thickness",
+    "炭粒的30秒连线是位置记录；撞击图只表示不均衡的合效应，不是水分子的真实轨迹或力测量。水醇图保留示意分子身份，颗数不代表配比，连线表示相互作用而非新化学键；约96毫升是近室温代表读数，不由结构图计算。油膜图固定为200平方厘米，探索改变测量读数分析误差。": "Thirty-second links record tracer positions. The impact view shows aggregate imbalance, not actual molecular paths or measured forces. Water–ethanol glyphs preserve identity; their counts are not a composition ratio, and links indicate interactions, not new chemical bonds. About 96 mL is a representative near-room-temperature reading, not computed from the sketch. The oil-film outline stays 200 cm²; exploration changes measurement readings to study errors.",
+    "看不见分子，宏观现象能告诉我们什么？": "What can visible changes reveal about invisible molecules?",
+    "从炭粒运动、混合后的体积收缩到单层油膜，追踪可见证据怎样支持分子运动、相互作用与尺度估计。": "Follow tracers, liquid contraction and monolayer films from visible evidence to molecular motion, interactions and scale.",
+    "从可见证据推知分子": "Visible evidence for invisible molecules",
+    "不均衡的撞击，使炭粒不断改变运动方向。": "Unequal impacts change the tracer’s direction.",
+    "同一粒径与随机输入：升温使扩散更明显。": "Same tracer: warmer water increases diffusion.",
+    "分子身份和数量不变；相互作用与空间排布改变。": "Same molecules and counts; new neighbours."
   },
   "narration": {
-    "duration": 208,
+    "duration": 210,
     "cues": [
       {
         "id": "carbon-observe",
         "title": "追踪可见的炭粒",
         "titleEn": "Track a visible carbon particle",
-        "caption": "炭粒运动是分子热运动的间接证据。",
-        "captionEn": "Tracer motion indirectly reveals molecular thermal motion.",
-        "zh": "在显微镜视野中认出一颗炭粒。它不断改变运动方向，并不是自己有生命。水分子无法在这个画面中逐个看见，它们的不均衡撞击使可见炭粒运动。记录位置的连线也不是两次观察之间的真实路径。",
-        "en": "Pick out one carbon particle in the microscope field. Its direction changes continually, without requiring life. Individual water molecules are not visible here; their unbalanced impacts move the tracer. Lines between recorded positions are not the true intervening path.",
+        "caption": "不均衡的撞击，使炭粒不断改变运动方向。",
+        "captionEn": "Unequal impacts change the tracer’s direction.",
         "seconds": 26,
+        "zh": "盯住金圈里的炭粒，它不断改变方向。旁边不是显微镜放大照片，而是撞击机制的示意：水分子从四周撞来，瞬间的合效应却不均衡。金色箭头与炭粒这一步的方向相联系。可见的是炭粒，推知的才是分子热运动。",
+        "en": "Follow the carbon tracer inside the gold ring. It keeps changing direction. The other view is a mechanism sketch, not a microscope photograph. Water molecules strike from all around, but their combined effect is briefly unbalanced. The gold arrow follows that step’s direction. We see the tracer, and infer molecular thermal motion.",
         "chapterAt": 0,
-        "at": 0
+        "at": 0.45
       },
       {
         "id": "carbon-temperature",
         "title": "同一炭粒与更高温度",
         "titleEn": "The same tracer at higher temperature",
-        "caption": "保持粒径，比较温度对运动的影响。",
-        "captionEn": "Keep particle size fixed when comparing temperature.",
-        "zh": "保持炭粒大小和同一组随机输入，升高水温。扩散更明显，水的黏度变化也被计入。自由探索还可以改变等效粒径，比较更小颗粒的运动，而不是把显微镜中的颗粒误认成分子本身。",
-        "en": "Keep tracer size and random inputs fixed, then warm the water. Diffusion increases, including the effect of changing viscosity. Exploration also varies effective particle radius. The visible particles remain tracers, not individual molecules.",
+        "caption": "同一粒径与随机输入：升温使扩散更明显。",
+        "captionEn": "Same tracer: warmer water increases diffusion.",
         "seconds": 26,
+        "zh": "两次模拟保留相同的粒径与随机输入。青色是二十摄氏度，金色是五十摄氏度。升温后分子运动更剧烈，水的黏度也降低，扩散系数随之增大。三十秒记录点的连线不是期间的真实路径。先预测再试试：减小炭粒半径，运动会怎样改变？",
+        "en": "Both simulations keep the same particle size and random inputs. Teal shows twenty degrees Celsius; gold shows fifty. Warming increases thermal motion and lowers water viscosity, increasing diffusion. The thirty-second position links are not the intervening path. Make a prediction, then explore: what happens when the tracer radius becomes smaller?",
         "chapterAt": 26,
-        "at": 26
+        "at": 26.45
       },
       {
         "id": "mixture-measure",
@@ -120,23 +156,23 @@
         "titleEn": "Measure the liquids separately",
         "caption": "两只量筒各有50毫升。",
         "captionEn": "Each cylinder begins with 50 millilitres.",
+        "seconds": 26,
         "zh": "先在两个量筒中分别量取五十毫升水和五十毫升酒精。记录初始体积，再作出直接相加会到一百毫升的预测。比较必须使用相同的刻度和接近室温的条件。",
         "en": "Measure fifty millilitres each of water and ethanol in separate cylinders. Record their initial volumes and predict the one-hundred-millilitre sum. Use consistent graduations and comparable near-room-temperature conditions.",
-        "seconds": 26,
         "chapterAt": 52,
-        "at": 52
+        "at": 52.45
       },
       {
         "id": "mixture-contract",
         "title": "混合后的体积收缩",
         "titleEn": "Volume contracts after mixing",
-        "caption": "总体积小于直接相加，质量仍然守恒。",
-        "captionEn": "Volume is smaller than the sum while mass is conserved.",
-        "zh": "把水转入酒精量筒，再等混合稳定。代表性的最终体积约为九十六毫升，低于虚线的一百毫升。没有液体凭空消失：分子相互作用与混合结构改变了体积，总质量仍守恒。",
-        "en": "Transfer the water into the ethanol cylinder and let the mixture settle. A representative final volume is about ninety-six millilitres, below the dashed sum. Liquid has not vanished: interactions and mixed structure change volume while total mass remains conserved.",
+        "caption": "分子身份和数量不变；相互作用与空间排布改变。",
+        "captionEn": "Same molecules and counts; new neighbours.",
         "seconds": 26,
+        "zh": "把水倒入酒精，稳定后约九十六毫升，低于一百毫升虚线。追踪结构图：水仍是水，酒精仍是酒精，示意分子一颗没少；改变的是相邻关系和相互作用。液体不是刚性小球的固定空隙。结构重排可以改变总体积，而总质量守恒。这里的结构图不用于计算收缩量。",
+        "en": "Pour the water into ethanol. The settled volume is about ninety-six millilitres, below the dashed sum. Now follow the structure sketch. Water stays water, ethanol stays ethanol, and no molecule disappears. Neighbours and interactions change. A liquid is not a set of rigid balls with fixed gaps. Rearrangement can change volume while mass is conserved. This sketch does not calculate the contraction.",
         "chapterAt": 78,
-        "at": 78
+        "at": 78.45
       },
       {
         "id": "oil-drops",
@@ -144,11 +180,11 @@
         "titleEn": "Calibrate the drop volume",
         "caption": "用总量除以滴数，再乘油酸比例。",
         "captionEn": "Divide total volume by drop count, then apply dilution.",
+        "seconds": 26,
         "zh": "先用一毫升稀释液数出液滴总数。总量除以滴数，得到每滴溶液体积，再除以稀释倍数，才是一滴里的纯油酸体积。不要把整滴酒精溶液都当成油酸。",
         "en": "Count the drops in one millilitre of diluted solution. Total volume divided by count gives each solution drop. Applying the dilution factor gives its pure oleic-acid volume. The entire solvent drop is not oil.",
-        "seconds": 26,
-        "chapterAt": 104,
-        "at": 104
+        "chapterAt": 106,
+        "at": 106.45
       },
       {
         "id": "oil-spread",
@@ -156,11 +192,11 @@
         "titleEn": "Spread the film over water",
         "caption": "溶剂处理以后，观察单层膜的稳定边界。",
         "captionEn": "Observe the stabilized monolayer boundary.",
+        "seconds": 26,
         "zh": "在水面撒少量粉末帮助看清边界，滴入稀释液。油酸铺展把粉末推开，溶剂溶入水中并挥发。等待边界稳定，再开始面积测量；均匀单层是后续估算的关键前提。",
         "en": "Dust the water surface lightly to reveal the boundary, then add a diluted drop. Spreading oil displaces the powder while the solvent dissolves and evaporates. Wait for a stable outline before measuring area. A uniform monolayer is the key assumption.",
-        "seconds": 26,
-        "chapterAt": 130,
-        "at": 130
+        "chapterAt": 132,
+        "at": 132.45
       },
       {
         "id": "oil-area",
@@ -168,11 +204,11 @@
         "titleEn": "Estimate area with a grid",
         "caption": "统一边界计数规则，得到膜面积。",
         "captionEn": "Apply a consistent boundary-cell rule.",
+        "seconds": 26,
         "zh": "把方格板放在油膜上方，描出轮廓。完整方格直接计数，边界附近按半格规则估计。这里示意的面积是二百平方厘米。面积和体积必须先换成一致的单位才能相除。",
         "en": "Place a grid over the film and trace its outline. Count complete cells and estimate boundary cells consistently. This illustrated area is two hundred square centimetres. Convert volume and area to compatible units before dividing.",
-        "seconds": 26,
-        "chapterAt": 156,
-        "at": 156
+        "chapterAt": 158,
+        "at": 158.45
       },
       {
         "id": "oil-thickness",
@@ -180,11 +216,11 @@
         "titleEn": "Estimate a scale from volume and area",
         "caption": "单层近似下，厚度等于体积除以面积。",
         "captionEn": "For a uniform monolayer, thickness is volume divided by area.",
+        "seconds": 26,
         "zh": "看局部放大的单层结构。纯油酸体积除以面积，给出约二纳米的厚度尺度。油酸分子并非真正的球体，这只是有前提的估测。自由探索改变测量读数，可以检查滴数、稀释或面积误差怎样改变结果。",
         "en": "Inspect the enlarged monolayer section. Pure oil volume divided by area gives a thickness scale of about two nanometres. Molecules are not literal spheres; this is an assumption-dependent estimate. Vary measurement readings to inspect drop-count, dilution and area errors.",
-        "seconds": 26,
-        "chapterAt": 182,
-        "at": 182
+        "chapterAt": 184,
+        "at": 184.45
       }
     ]
   },
@@ -208,6 +244,152 @@
       "label": {
         "zh": "油膜法估测分子大小",
         "en": "Oleic-film molecular size estimate"
+      }
+    }
+  },
+  "film": {
+    "duration": 210,
+    "chapters": [
+      {
+        "id": "carbon-observe",
+        "title": "追踪可见的炭粒",
+        "titleEn": "Track a visible carbon particle",
+        "caption": "不均衡的撞击，使炭粒不断改变运动方向。",
+        "captionEn": "Unequal impacts change the tracer’s direction.",
+        "at": 0
+      },
+      {
+        "id": "carbon-temperature",
+        "title": "同一炭粒与更高温度",
+        "titleEn": "The same tracer at higher temperature",
+        "caption": "同一粒径与随机输入：升温使扩散更明显。",
+        "captionEn": "Same tracer: warmer water increases diffusion.",
+        "at": 26
+      },
+      {
+        "id": "mixture-measure",
+        "title": "分别量取两种液体",
+        "titleEn": "Measure the liquids separately",
+        "caption": "两只量筒各有50毫升。",
+        "captionEn": "Each cylinder begins with 50 millilitres.",
+        "at": 52
+      },
+      {
+        "id": "mixture-contract",
+        "title": "混合后的体积收缩",
+        "titleEn": "Volume contracts after mixing",
+        "caption": "分子身份和数量不变；相互作用与空间排布改变。",
+        "captionEn": "Same molecules and counts; new neighbours.",
+        "at": 78
+      },
+      {
+        "id": "oil-drops",
+        "title": "先校准每滴体积",
+        "titleEn": "Calibrate the drop volume",
+        "caption": "用总量除以滴数，再乘油酸比例。",
+        "captionEn": "Divide total volume by drop count, then apply dilution.",
+        "at": 106
+      },
+      {
+        "id": "oil-spread",
+        "title": "油膜在水面铺展",
+        "titleEn": "Spread the film over water",
+        "caption": "溶剂处理以后，观察单层膜的稳定边界。",
+        "captionEn": "Observe the stabilized monolayer boundary.",
+        "at": 132
+      },
+      {
+        "id": "oil-area",
+        "title": "用方格估计面积",
+        "titleEn": "Estimate area with a grid",
+        "caption": "统一边界计数规则，得到膜面积。",
+        "captionEn": "Apply a consistent boundary-cell rule.",
+        "at": 158
+      },
+      {
+        "id": "oil-thickness",
+        "title": "由体积与面积估测尺度",
+        "titleEn": "Estimate a scale from volume and area",
+        "caption": "单层近似下，厚度等于体积除以面积。",
+        "captionEn": "For a uniform monolayer, thickness is volume divided by area.",
+        "at": 184
+      }
+    ]
+  },
+  "teachingProfiles": {
+    "e3-brownian-carbon-particles": {
+      "sceneSlug": "molecular-measurement-lab",
+      "question": {
+        "zh": "炭粒没有生命，为什么会自己不停地变向？",
+        "en": "Why does a lifeless carbon particle keep changing direction?"
+      },
+      "lead": {
+        "zh": "先追踪显微镜里的金圈炭粒，再把位置记录与不同比例的撞击解释图对照；升温时保持粒径与随机输入不变。",
+        "en": "Follow the gold-ringed tracer, then compare its recorded positions with a separate impact model. Keep particle size and random inputs fixed when warming the water."
+      },
+      "principle": {
+        "zh": "炭粒受到四周水分子的持续撞击，短时间合效应不均衡，方向不断改变。可见炭粒的布朗运动是分子热运动的间接证据；水中扩散还取决于温度、黏度与粒径。",
+        "en": "Water molecules continually strike the tracer. Brief imbalances change its direction. Visible Brownian motion indirectly supports molecular thermal motion; diffusion in water also depends on temperature, viscosity and tracer size."
+      },
+      "transfer": {
+        "question": {
+          "zh": "温度不变，把等效半径减半，扩散系数会怎样变化？",
+          "en": "At fixed temperature, what happens to diffusion if effective tracer radius is halved?"
+        },
+        "explanation": {
+          "zh": "在本模型的斯托克斯—爱因斯坦条件下，D与半径成反比，所以D加倍。同一时间的平均平方位移加倍，均方根位移增为原来的√2倍，而非每次位移都加倍。",
+          "en": "Under the Stokes–Einstein assumptions, D is inversely proportional to radius, so it doubles. At the same elapsed time, mean-square displacement doubles and root-mean-square displacement grows by √2; individual steps need not all double."
+        }
+      }
+    },
+    "e3-water-alcohol-volume": {
+      "sceneSlug": "molecular-measurement-lab",
+      "question": {
+        "zh": "50毫升加50毫升，为什么混合后不足100毫升？",
+        "en": "Why can fifty plus fifty millilitres make less than one hundred?"
+      },
+      "lead": {
+        "zh": "先作出直接相加的体积预测，再比对稳定后的量筒读数，并追踪结构图里始终存在的两种分子。",
+        "en": "Predict the sum, compare it with the settled cylinder reading, and track both molecular species through the structure sketch."
+      },
+      "principle": {
+        "zh": "混合前后分子的身份和数量不变，但相邻关系、分子间相互作用和液体结构改变。质量守恒不要求体积可加；约96毫升只是近室温代表读数，不能由刚性球填空隙或示意图算出。",
+        "en": "Molecular identities and counts persist, while neighbours, interactions and liquid structure change. Conserved mass does not require additive volumes. About 96 mL is a representative near-room-temperature reading, not a rigid-ball gap calculation."
+      },
+      "transfer": {
+        "question": {
+          "zh": "总体积减少，能否据此判断有一部分液体质量消失？",
+          "en": "Does a lower total volume mean some liquid mass has disappeared?"
+        },
+        "explanation": {
+          "zh": "不能。在不漏液、不蒸发的条件下，总质量保持不变；体积下降说明混合物的整体密度改变。要预测其它温度或配比的收缩量，需要相应实测数据或状态模型。",
+          "en": "No. Without leakage or evaporation, mass stays constant; lower volume changes the mixture’s bulk density. Predicting contraction at other temperatures or compositions requires measured data or an appropriate state model."
+        }
+      }
+    },
+    "e3-oleic-acid-film": {
+      "sceneSlug": "molecular-measurement-lab",
+      "question": {
+        "zh": "用量筒和方格，怎样估测纳米尺度？",
+        "en": "How can a cylinder and a grid reveal a nanometre scale?"
+      },
+      "lead": {
+        "zh": "把一滴溶液换算成纯油酸体积，等膜稳定后估计面积，再把水面上的膜切到侧面看单层前提。",
+        "en": "Find the pure oleic-acid volume in a solution drop, measure the stable film area, then inspect a side view of the assumed monolayer."
+      },
+      "principle": {
+        "zh": "均匀单层近似下，体积V等于面积S乘厚度d，所以d=V/S。滴数与稀释给出V，方格给出S；本例得约2纳米。只有单层且厚度均匀时，才能把这个厚度视为分子尺度。",
+        "en": "For a uniform monolayer, V=Sd, so d=V/S. Drop calibration and dilution give V; a grid gives S. This example yields about 2 nm. Relating that thickness to molecular scale requires a single uniform layer."
+      },
+      "transfer": {
+        "question": {
+          "zh": "纯油酸体积不变，面积读数偏大10%，估出的厚度会偏大还是偏小？",
+          "en": "With oil volume fixed, how does a 10% overestimate of area affect thickness?"
+        },
+        "explanation": {
+          "zh": "厚度偏小，变成真实值的1/1.1，约小9.1%。自由探索只改变测量读数；若实际膜发生重叠，单层前提失效，不能仅靠更精确的读数解决。",
+          "en": "Thickness is underestimated: it becomes 1/1.1 of the true value, about 9.1% smaller. Exploration changes readings only. An overlapping film violates the monolayer assumption, which more precise readings cannot repair."
+        }
       }
     }
   }

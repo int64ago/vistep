@@ -1,55 +1,63 @@
 ---
 name: 'Sugar tests and hydrolysis'
-title: 'Why do the tests change after hydrolysis?'
+title: 'Why do sugars give different tests?'
 ---
-
-import ChemSugarTests from '../../components/experiments/ChemSugarTests';
 
 <section id="understand">
 
-A sugar’s name is not an experimental result. Dissolution, iodine colour, a silver mirror and a brick-red precipitate answer different questions. Hydrolysis also changes the sample being tested.
+One tube develops a silver mirror, another a brick-red precipitate; sucrose can show neither. Sweetness is not the deciding property. The sample must offer a reactive structure, and the test conditions must support its reaction.
 
-<ChemSugarTests client:visible />
+## A ring has no exposed aldehyde. How can it reduce a reagent?
 
-## Separate the questions
+Follow the gold C₁. Most glucose molecules in water are cyclic hemiacetals, in equilibrium with a small open-chain population. Opening breaks the C₁–O₅ ring connection and exposes an aldehyde at C₁, while the six-carbon backbone remains connected. The drawing omits other H/OH groups, stereochemistry and proton transfers. Its moving labels show net connectivity, not a molecule’s physical trajectory.
 
-Glucose can reduce Ag(I) to metallic silver in an ammoniacal test, and Cu(II) to Cu(I), forming brick-red Cu₂O with fresh copper reagent under alkaline, warmed conditions. These observations support reducing behaviour; neither is a uniquely identifying fingerprint for glucose. Most glucose molecules in water are cyclic, while a small open-chain population reacts and is replenished by equilibrium.
+Oxidation of that aldehyde end supplies electrons to metal centres: Ag(I) becomes metallic silver; Cu(II) becomes Cu(I) in brick-red Cu₂O. The corresponding net glucose oxidation product is shown as gluconate in the alkaline mixture. As open chains react, ring–chain equilibrium can replenish them. A small instantaneous open-chain population therefore need not mean a small final extent of reaction.
 
-The blue iodine–starch response asks whether starch remains. A partly hydrolysed sample may contain both long chains and reducing products, so both tests can be positive. Use separate sample portions rather than combining every reagent into one supposed test.
+The mirror is not a white silver salt, and Cu₂O is not copper metal. These results support reducing behaviour, without uniquely identifying glucose. Fructose can rearrange to reactive aldoses under alkaline conditions, so a positive test does not show that every original molecule already contained an aldehyde.
 
-## Changed composition changes the interpretation
+## Same formula, different result
 
-Untreated sucrose does not give a clear ordinary reducing-sugar test. Maltose retains a free hemiacetal end that can open, whereas sucrose uses both anomeric sites in its glycosidic connection.
+Sucrose uses both anomeric sites in its glycosidic connection. It cannot directly expose an aldehyde through hemiacetal equilibrium under ordinary alkaline test conditions. Maltose retains a free hemiacetal end. Follow that end as it opens: the C₄–O–G connection to the other glucose unit remains. Which positions are occupied matters more than the number of sugar rings.
 
-Sucrose hydrolysis yields glucose and fructose. A positive result afterwards describes the changed sample, not the original sucrose. Fructose can also participate through rearrangement in the alkaline test; a positive result does not mean that every starting molecule already contained an aldehyde group.
+Sucrose hydrolysis releases glucose and fructose. A subsequent positive result belongs to this changed composition; it does not make the original sucrose a reducing sugar.
 
-Long starch and cellulose chains do not usually give a clear positive under these textbook qualitative conditions. They are not absolutely devoid of reducing ends. Hydrolysis increases the number of small reducing units and changes the evidence.
+## How can the iodine and copper tests both be positive?
+
+The blue iodine response is evidence of remaining starch. The reducing-sugar test asks a different question. Long chains have few reducing ends per unit mass and generally show no clear positive under the textbook’s ordinary qualitative conditions. Hydrolysis increases the number of small reactive products. A partially hydrolysed sample can contain both long chains and reducing products. The film tests separate portions, rather than mixing both test reagents in one tube.
+
+The textbook’s specific acid treatment can also release glucose from cellulose. This does not predict the same result in ordinary hot water. Cool an acid hydrolysate and establish suitable alkalinity before interpreting the warmed copper test. An invalid acidic mixture giving no precipitate is not a valid negative result. Nor does a single positive result establish purity or complete hydrolysis.
 
 </section>
 <section id="try">
 
-## Make the conditions matter
+## Predict, then change one condition
 
-Choose partially hydrolysed starch. Use iodine first, then choose copper for a separate portion and observe that both results can be positive. Disable alkaline testing: the display identifies invalid conditions rather than presenting the lack of precipitate as a valid negative.
+Choose Explore during any shot to retain its chapter and progress. Switch to Test prediction to vary the sample, assay and conditions. After returning to the automatic film, entering Explore restores your whole previous selection.
 
-Compare untreated sucrose with maltose, then increase hydrolysis. Silver and copper share a two-electron capacity account. Changing sample amount can make the fixed metal reagent limiting. The film always restores its own curricular conditions independently of exploration.
+Set glucose to the end of the test, with 2 model hexose units and 1 model metal unit. Each reactive end supplies two electrons, whereas each metal centre accepts one. Only 0.5 reducing-end units can react: adding more sugar cannot overcome the reagent limit. This gives 0.5 units of Cu₂O or 1 unit of Ag. These are illustrative stocks, not measured concentrations or yields.
+
+Keep the sample and disable alkalinity. Predict what the absence of precipitate can establish. Compare untreated sucrose and maltose, then set the fully hydrolysed starch fraction to one half and test separate portions with iodine and copper reagent.
 
 </section>
 <section id="deeper">
 
 <details>
-<summary>Model, limits and textbook positions</summary>
+<summary>Net reactions, limitations and textbook positions</summary>
 
-Hydrolysis mixes untreated and fully hydrolysed endpoints, omitting real oligosaccharides, dextrins and stepwise kinetics. Starch/cellulose use a linear chain of degree 1000 with explicit end groups: C₆ₙH₁₀ₙ₊₂O₅ₙ₊₁ consumes n−1 water units to yield n glucose units. The textbook repeat-unit equation omits that end correction. The eight displayed symbols are an abbreviated fragment, not a real chain length or branching topology.
+Let R stand for the unchanged five-carbon residue. The net two-electron oxidation in base is:
 
-Reducing capacity is normalised to equal hexose-unit amounts. One reactive end supplies two electron units; both metal accounts preserve inventory and limiting reagents. Real complexation equilibria, fructose product distributions, nucleation and deposition shape are omitted. A chosen 0.02-unit visibility threshold makes low end-group density undetectable in the model. Colour, mirror coverage and precipitate height are not quantitative measurements; real sensitivity depends on concentration and conditions.
+<div className="formula">R—CHO + 3OH⁻ → R—COO⁻ + 2H₂O + 2e⁻</div>
 
-Cool-water starch dispersion and warm gelatinisation are qualitative states. Acid hydrolysates must be cooled and adjusted to suitable alkalinity for the textbook copper interpretation. Cellulose needs its specified acid treatment; the animation does not imply that ordinary hot water suffices. Practical silver and copper testing is organised by a school laboratory.
+Two Ag(I) or Cu(II) centres each accept one electron. Valence labels omit ligands and the complete reagent composition. Moving electron markers represent the net account, not free electrons travelling this path or a single elementary mechanism. The additional carboxylate oxygen belongs to the net reaction with water/base; the drawing does not turn a hydrogen atom into oxygen or track the isotope identity of solvent oxygen.
 
-Curriculum: required book 2 printed pages 84–85, experiments 7-7/7-8 / PDF 89–90; elective 3 page 103 experiment 4-1 / PDF 108, page 106 disaccharide inquiry / PDF 111, page 108 experiment 4-2 / PDF 113, and page 130 activity 3 / PDF 135. The combined activity covers solubility and before/after hydrolysis tests for glucose, sucrose and starch. The iodine observation belongs to required experiment 7-8 and is an associated, distinct piece of evidence in the film.
+The hydrolysis model mixes unhydrolysed and fully hydrolysed endpoints, omitting intermediate oligosaccharides, dextrins and chain-breaking kinetics. Linear starch/cellulose bookkeeping uses degree 1000 with end groups: C₆ₙH₁₀ₙ₊₂O₅ₙ₊₁ consumes n−1 water units to yield n glucose units. The textbook repeat-unit equation omits this small end correction. Eight drawn units represent an abbreviated fragment, not actual chain length or branching.
+
+Reducing capacity is normalised to equal hexose-unit amounts. Both metal tests conserve stocks and respect reagent limitation. Real complexation equilibria, fructose product proportions, nucleation and deposition morphology are not simulated. The chosen visibility threshold of 0.02 model units is not a laboratory detection limit. Ring opening does not encode actual populations, rates or stereochemistry. Dissolution, dispersion and starch paste are qualitative depictions.
+
+Original positions remain in learning order: required book 2, pages84–85, experiments7-7 and7-8; elective book3, page103 experiment4-1 and the cyclic-structure note on page104; page106 disaccharide inquiry; page108 experiment4-2; page130 activity3. Corresponding PDF pages are89–90,108–109,111,113 and135.
 
 </details>
 
-Scientific checks: [OpenStax monosaccharide reactions](https://openstax.org/books/organic-chemistry/pages/25-6-reactions-of-monosaccharides), [disaccharide structure and properties](https://openstax.org/books/organic-chemistry/pages/25-8-disaccharides), [RSC starch testing in food](https://edu.rsc.org/experiments/detecting-starch-in-food-on-a-microscale/563.article).
+Scientific references: [OpenStax cyclic structures and ring–chain equilibrium](https://openstax.org/books/organic-chemistry/pages/25-5-cyclic-structures-of-monosaccharides-anomers), [monosaccharide oxidation and fructose rearrangement](https://openstax.org/books/organic-chemistry/pages/25-6-reactions-of-monosaccharides), and [disaccharide linkages and free ends](https://openstax.org/books/organic-chemistry/pages/25-8-disaccharides).
 
 </section>
