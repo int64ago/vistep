@@ -30,10 +30,17 @@ beforeAll(() => {
   (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 });
 describe('textbook apparatus modes', () => {
-  it('keeps a newly sealed free-exploration bowl trial independent of the last film chapter', async () => {
+  it('keeps a cooled free-exploration bowl trial independent of the last film chapter', async () => {
     let view!: ReactTestRenderer;
     await act(async () => {
       view = create(scene(MagdeburgBowlsLab, { ...base, watch: false, chapter: 0 }));
+    });
+    expect(view.root.findByProps({ className: 'bowls-lab' }).props['data-pressure']).toBe(100000);
+    await act(async () => {
+      view.root
+        .findAllByType(Range)
+        .find((n) => n.props.label === '密封后气体温度')!
+        .props.onChange(15);
     });
     const early = JSON.stringify(view.toJSON());
     await act(async () =>

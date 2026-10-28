@@ -54,7 +54,7 @@
 | [蛋白质的多级结构](../../src/content/chem-protein-structure.mdx)                  | 2:34 | 同一条链，为什么有不同层次的结构？                   |
 | [晶体从哪里长出来](../../src/content/chem-crystal-growth.mdx)                     | 3:53 | 结晶一定要先把物质溶进水里吗？                       |
 | [弱酸的三种证据](../../src/content/chem-acid-evidence.mdx)                        | 3:00 | 弱酸为什么也能放出一样多的氢气？                     |
-| [蛋白质的盐析与变性](../../src/content/chem-protein-states.mdx)                   | 3:46 | 同样浑浊，加水后为什么不同？                         |
+| [蛋白质的盐析与变性](../../src/content/chem-protein-states.mdx)                   | 4:17 | 看起来都变了，蛋白质改变的是哪一层？                 |
 | [液晶的两次变化](../../src/content/chem-liquid-crystal.mdx)                       | 2:37 | 位置和方向的有序，必须同时消失吗？                   |
 | [糖类的检验与水解](../../src/content/chem-sugar-tests.mdx)                        | 4:55 | 同样是糖，为什么检验不同？                           |
 | [平衡改变之前，颜色先发生了什么](../../src/content/chem-equilibrium-response.mdx) | 4:26 | 平衡不动，为什么反应还在继续？                       |
@@ -128,7 +128,7 @@
 | [从DNA分子到电泳条带](../../src/content/bio-dna-engineering.mdx)              | 4:33 | 剪开、提取、扩增后，怎样判断得到的DNA？      |
 | [胚胎的形成、转移与分割](../../src/content/bio-embryo-engineering.mdx)        | 3:08 | 一个胚胎怎样形成，又怎样移植和分割？         |
 | [动物细胞的培养与工程](../../src/content/bio-animal-cell-engineering.mdx)     | 4:02 | 培养、筛选和核移植，分别改变了什么？         |
-| [植物细胞的再生与融合](../../src/content/bio-plant-cell-engineering.mdx)      | 3:44 | 一段组织怎样长成植株，两枚细胞怎样成为杂种？ |
+| [植物细胞的再生与融合](../../src/content/bio-plant-cell-engineering.mdx)      | 4:08 | 分化改变了遗传信息，还是信息的使用方式？     |
 | [从分散菌体到培养证据](../../src/content/bio-microbial-culture.mdx)           | 4:26 | 一个菌落，怎样成为可信的生长证据？           |
 | [进化证据与种群变化](../../src/content/bio-evolution-evidence.mdx)            | 4:45 | 不同证据，怎样指向共同由来？                 |
 | [发酵的容器与条件](../../src/content/bio-fermentation-pathways.mdx)           | 4:32 | 同一坛发酵，为什么结果会随条件和时间改变？   |
@@ -372,7 +372,7 @@
 | [扩散与微观状态](../../src/content/diffusion-microstates-lab.mdx)       | 2:36 | 混匀的颜料为什么不会自行聚回一滴？                 |
 | [饮水鸭的热机循环](../../src/content/drinking-bird-lab.mdx)             | 2:36 | 饮水鸭为何会不断点头？                             |
 | [功、热与内能实验](../../src/content/thermodynamic-work-lab.mdx)        | 4:20 | 做功为什么能升温，膨胀又为什么会降温？             |
-| [钢碗中的马德堡实验](../../src/content/magdeburg-bowls-lab.mdx)         | 1:44 | 两只冷却后的钢碗，为什么难以拉开？                 |
+| [钢碗中的马德堡实验](../../src/content/magdeburg-bowls-lab.mdx)         | 2:14 | 两只冷却后的钢碗，为什么难以拉开？                 |
 | [液体表面张力实验](../../src/content/surface-tension-lab.mdx)           | 4:00 | 水面怎样托住针，又怎样拉动一根线？                 |
 | [晶体结构与各向异性实验](../../src/content/solid-structure-lab.mdx)     | 2:36 | 外形和导热方向，怎样透露固体的结构？               |
 | [热平衡与气体定律实验](../../src/content/thermal-measurement-lab.mdx)   | 3:54 | 怎样把温度、压强和体积联系起来？                   |

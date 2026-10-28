@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   armKinematics,
+  armFilmState,
   flickDrop,
   ARM_RELEASE,
   textbookFlick,
@@ -62,4 +63,30 @@ describe('articulated arm and measured estimates', () => {
     expect(b.state.velocity.x - a.state.velocity.x).toBeCloseTo(4);
     expect(b.state.velocity.y).toBeCloseTo(a.state.velocity.y);
   });
+});
+
+it('a locked wrist changes the release state without breaking drop continuity', () => {
+  const s = armKinematics(ARM_RELEASE, false),
+    d = flickDrop(ARM_RELEASE, false),
+    held = flickDrop(0.2, false),
+    late = flickDrop(ARM_RELEASE + 0.1, false);
+  expect(held.x).toBe(armKinematics(0.2, false).tip.x);
+  expect(d.x).toBeCloseTo(s.tip.x, 12);
+  expect(d.y).toBeCloseTo(s.tip.y, 12);
+  expect(d.vx).toBeCloseTo(s.velocity.x, 12);
+  expect(d.vy).toBeCloseTo(s.velocity.y, 12);
+  expect(late.x - d.x).toBeCloseTo(s.velocity.x * 0.1, 12);
+  expect(late.y - d.y).toBeCloseTo(s.velocity.y * 0.1 - 0.049, 12);
+  expect(d.x).not.toBeCloseTo(flickDrop(ARM_RELEASE).x, 4);
+});
+
+it('aligns the prescribed detachment with both recorded explanations without a state jump', () => {
+  const before = armFilmState(0, 0.4, 11.7 - 1e-6),
+    at = armFilmState(0, 0.4, 11.7),
+    after = armFilmState(0, 0.4, 11.7 + 1e-6);
+  expect(flickDrop(before.time).released).toBe(false);
+  expect(flickDrop(at.time).released).toBe(true);
+  expect(flickDrop(after.time).released).toBe(true);
+  expect(Math.abs(flickDrop(after.time).x - flickDrop(before.time).x)).toBeLessThan(1e-6);
+  expect(armFilmState(0, 1, 28).time).toBeCloseTo(0.46, 12);
 });

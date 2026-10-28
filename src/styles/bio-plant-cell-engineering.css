@@ -92,3 +92,22 @@
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+.bio-plant-cell {
+  max-width: 720px;
+  margin-inline: auto;
+}
+.bio-plant-cell[data-watch='true'] .bio-plant-cell-head {
+  display: none;
+}
+.bio-plant-cell .pc-question {
+  font-size: 28px;
+  fill: #8b916f;
+}
+.bio-plant-cell-controls p {
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .bio-plant-cell-records {
+    grid-template-columns: 1fr;
+  }
+}

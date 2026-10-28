@@ -54,7 +54,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Levels of protein structure](../src/content/en/chem-protein-structure.mdx)                         | 2:34 | How can one chain have several structural levels?                             |
 | [Where crystals grow from](../src/content/en/chem-crystal-growth.mdx)                               | 3:53 | Does crystallization always require dissolving a material in water?           |
 | [Three kinds of weak-acid evidence](../src/content/en/chem-acid-evidence.mdx)                       | 3:00 | How can a weak acid release the same amount of hydrogen?                      |
-| [Protein salting out and denaturation](../src/content/en/chem-protein-states.mdx)                   | 3:46 | Why do cloudy proteins respond differently to water?                          |
+| [Protein salting out and denaturation](../src/content/en/chem-protein-states.mdx)                   | 4:17 | When a protein changes, what exactly has changed?                             |
 | [The two transitions of liquid crystals](../src/content/en/chem-liquid-crystal.mdx)                 | 2:37 | Must positional and orientational order disappear together?                   |
 | [Sugar tests and hydrolysis](../src/content/en/chem-sugar-tests.mdx)                                | 4:55 | Why do sugars give different tests?                                           |
 | [What changes before equilibrium shifts?](../src/content/en/chem-equilibrium-response.mdx)          | 4:26 | Why do reactions continue when equilibrium looks still?                       |
@@ -128,7 +128,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [From DNA molecules to gel bands](../src/content/en/bio-dna-engineering.mdx)                      | 4:33 | After cutting, extracting and amplifying, how do we identify DNA?                |
 | [Embryo formation, transfer and splitting](../src/content/en/bio-embryo-engineering.mdx)          | 3:08 | How does an embryo form, transfer and split?                                     |
 | [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:02 | What do culture, screening and nuclear transfer each change?                     |
-| [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 3:44 | How can a tissue regenerate a plant and two cells form a hybrid?                 |
+| [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 4:08 | Does differentiation change genetic information or how it is used?               |
 | [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:26 | When does a colony become credible evidence of growth?                           |
 | [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:45 | How do different clues reveal shared ancestry?                                   |
 | [Vessels and conditions in fermentation](../src/content/en/bio-fermentation-pathways.mdx)         | 4:32 | Why do fermentation results change with conditions and time?                     |
@@ -372,7 +372,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Diffusion and microstates](../src/content/en/diffusion-microstates-lab.mdx)                         | 2:36 | Why does mixed dye not gather back into one drop?                                             |
 | [The drinking bird heat engine](../src/content/en/drinking-bird-lab.mdx)                             | 2:36 | Why does a drinking bird keep dipping?                                                        |
 | [Work, heat and internal-energy experiments](../src/content/en/thermodynamic-work-lab.mdx)           | 4:20 | Why can work heat a system while expansion cools it?                                          |
-| [The Magdeburg experiment with steel bowls](../src/content/en/magdeburg-bowls-lab.mdx)               | 1:44 | Why are two cooled steel bowls difficult to pull apart?                                       |
+| [The Magdeburg experiment with steel bowls](../src/content/en/magdeburg-bowls-lab.mdx)               | 2:14 | Why are two cooled steel bowls difficult to pull apart?                                       |
 | [Liquid surface-tension experiments](../src/content/en/surface-tension-lab.mdx)                      | 4:00 | How does a water surface support a needle and pull a thread?                                  |
 | [Crystal structure and anisotropy experiments](../src/content/en/solid-structure-lab.mdx)            | 2:36 | How do shape and heat flow reveal a solid’s structure?                                        |
 | [Thermal equilibrium and gas-law experiments](../src/content/en/thermal-measurement-lab.mdx)         | 3:54 | How do temperature, pressure and volume connect?                                              |

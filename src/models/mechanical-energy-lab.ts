@@ -1,4 +1,36 @@
 export const ENERGY_G = 9.8;
+export type EnergyMode = 'fall' | 'incline' | 'hanger' | 'pendulum';
+export type EnergySceneState = {
+  mode: EnergyMode;
+  resistance: number;
+  width: number;
+  time: number;
+  tape: boolean;
+};
+/** Capture both the physical state and the selected observation, including a tape close-up. */
+export function energyFilmState(chapter: number, progress: number): EnergySceneState {
+  const mode: EnergyMode =
+    chapter < 3 ? 'fall' : chapter < 5 ? 'incline' : chapter < 7 ? 'hanger' : 'pendulum';
+  const resistance = chapter === 2 ? 0.12 : 0;
+  const width = 0.02;
+  const limit =
+    mode === 'fall'
+      ? 0.42
+      : mode === 'incline'
+        ? inclinedEnergy(100, resistance / 3, width).endTime
+        : mode === 'hanger'
+          ? hangerEnergy(100, width).endTime
+          : 3;
+  return {
+    mode,
+    resistance,
+    width,
+    time: [1, 2, 4, 6].includes(chapter)
+      ? limit
+      : limit * Math.min(1, Math.max(0, progress) / 0.76),
+    tape: mode === 'fall' && chapter > 0,
+  };
+}
 function finite(...values: number[]) {
   if (!values.every(Number.isFinite)) throw new RangeError('Finite inputs required');
 }

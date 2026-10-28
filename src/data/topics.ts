@@ -568,9 +568,10 @@ export const topics: Topic[] = [
   {
     slug: 'chem-protein-states',
     name: '蛋白质的盐析与变性',
-    title: '同样浑浊，加水后为什么不同？',
-    question: '同样浑浊，加水后为什么不同？',
-    description: '比较盐析复溶、三种变性处理、铅盐凝聚与硝酸显色，并区分灼烧。',
+    title: '看起来都变了，蛋白质改变的是哪一层？',
+    question: '看起来都变了，蛋白质改变的是哪一层？',
+    description:
+      '追踪盐析与变性的连续肽链、硝酸显色的芳香位点和灼烧产物，用证据区分蛋白质的不同变化。',
     color: '#b9c2a3',
     tag: '蛋白质实验',
     related: [
@@ -589,8 +590,16 @@ export const topics: Topic[] = [
         url: 'https://www.sigmaaldrich.com/CX/en/technical-documents/technical-article/protein-biology/protein-lysis-and-extraction/precipitation-procedures',
       },
       {
-        title: 'OpenStax: proteins',
+        title: 'OpenStax: protein structure and denaturation',
         url: 'https://openstax.org/books/biology-2e/pages/3-4-proteins',
+      },
+      {
+        title: 'King Saud University: General Color Tests for Proteins',
+        url: 'https://faculty.ksu.edu.sa/sites/default/files/CLS%20281%20-%20Exp1.%20General%20Color%20Tests%20for%20Proteins.pdf',
+      },
+      {
+        title: 'Mustansiriyah University: qualitative amino-acid and protein tests, pages 18–20',
+        url: 'https://uomustansiriyah.edu.iq/media/lectures/6/6_2019_02_23%2111_13_25_AM.pdf',
       },
     ],
     number: '415',
@@ -1660,9 +1669,10 @@ export const topics: Topic[] = [
   {
     slug: 'bio-plant-cell-engineering',
     name: '植物细胞的再生与融合',
-    title: '一段组织怎样长成植株，两枚细胞怎样成为杂种？',
-    question: '一段组织怎样长成植株，两枚细胞怎样成为杂种？',
-    description: '追踪同一外植体的再生、原生质体膜与核的融合，以及激素比例和浓度的对照。',
+    title: '分化过的组织，为什么还能长出新器官？',
+    question: '分化改变了遗传信息，还是信息的使用方式？',
+    description:
+      '从组织再生比较信息与表达状态，再用条件改变做预测；继续追踪细胞融合证据与激素对照。',
     color: '#c5d1ad',
     tag: '外植体 · 原生质体 · 再分化',
     related: [
@@ -5208,7 +5218,8 @@ export const topics: Topic[] = [
     name: '钢碗中的马德堡实验',
     title: '两只冷却后的钢碗，为什么难以拉开？',
     question: '两只冷却后的钢碗，为什么难以拉开？',
-    description: '由密封气体的等容冷却计算内外压强差，比较钢碗的吸合力与两侧拉力。',
+    description:
+      '沿钢碗曲面追踪内外压力，用每只半球的受力解释冷却后的压紧，再用同温同拉力的进气对照检验预测。',
     color: '#8e9d77',
     tag: '外面的空气在压紧',
     related: ['ideal-gas', 'thermal-measurement-lab'],

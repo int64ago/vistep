@@ -117,3 +117,169 @@ export const hybridEvidence = {
   potato: { nuclear: ['B'], plastid: 'B' },
   hybrid: { nuclear: ['A', 'B'], plastid: 'one-parent' },
 } as const;
+
+export type PlantCellSnapshot = {
+  chapter: number;
+  progress: number;
+  contaminated: boolean;
+  competence: number;
+  aux: number;
+  cyt: number;
+  prediction: 'none' | 'shoot' | 'root';
+  total: string;
+  shootCount: string;
+  rootCount: string;
+  journal: string;
+};
+/** All visible teaching state is reconstructible and can be inherited by Explore. */
+export function plantCellDirector(chapter: number, progress: number): PlantCellSnapshot {
+  const ch = Math.round(plantCellClamp(chapter, 0, 10));
+  return {
+    chapter: ch,
+    progress: plantCellClamp(progress),
+    contaminated: false,
+    competence: 1,
+    aux: ch === 10 ? 10 : ch === 2 || ch === 3 ? 3 : 0.5,
+    cyt: ch === 10 ? 10 : ch === 2 || ch === 3 ? 0.5 : 3,
+    prediction: 'none',
+    total: '',
+    shootCount: '',
+    rootCount: '',
+    journal: '',
+  };
+}
+/** Map measured spoken landmarks to the same process coordinate Explore stores.
+ * Times include the 0.45 s spoken lead-in. This is film direction, not culture time. */
+export function plantCellMeasuredDirector(
+  chapter: number,
+  progress: number,
+  chapterTime: number,
+  en: boolean,
+): PlantCellSnapshot {
+  const state = plantCellDirector(chapter, progress);
+  if (state.chapter > 3) return state;
+  const landmarks: Array<[number, number]> =
+    state.chapter === 0
+      ? en
+        ? [
+            [0, 0],
+            [2.2, 0.3],
+            [3.8, 0.65],
+            [5.3, 1],
+          ]
+        : [
+            [0, 0],
+            [4.5, 0.3],
+            [5.7, 0.65],
+            [6.3, 1],
+          ]
+      : state.chapter === 1
+        ? en
+          ? [
+              [0, 0],
+              [8.4, 0.35],
+              [10.6, 0.6],
+              [14.9, 0.85],
+              [16, 1],
+            ]
+          : [
+              [0, 0],
+              [7.3, 0.35],
+              [10.2, 0.6],
+              [14.6, 0.85],
+              [16, 1],
+            ]
+        : state.chapter === 2
+          ? en
+            ? [
+                [0, 0],
+                [5.4, 0.1],
+                [11.8, 0.25],
+                [16.8, 1],
+              ]
+            : [
+                [0, 0],
+                [5.9, 0.1],
+                [12.8, 0.25],
+                [18.1, 1],
+              ]
+          : en
+            ? [
+                [0, 0],
+                [7.1, 0.25],
+                [12.4, 0.449],
+                [12.6, 0.45],
+                [17.5, 1],
+              ]
+            : [
+                [0, 0],
+                [7.7, 0.25],
+                [12, 0.449],
+                [12.5, 0.45],
+                [17.8, 1],
+              ];
+  const time = Number.isFinite(chapterTime) ? Math.max(0, chapterTime) : 0;
+  let mapped = 1;
+  for (let i = 1; i < landmarks.length; i++) {
+    const [start, a] = landmarks[i - 1],
+      [end, b] = landmarks[i];
+    if (time <= end) {
+      mapped = a + (b - a) * plantCellClamp((time - start) / (end - start));
+      break;
+    }
+  }
+  return { ...state, progress: mapped };
+}
+const ease = (p: number) => {
+  const t = plantCellClamp(p);
+  return t * t * (3 - 2 * t);
+};
+/** One successful organogenesis route, not a schedule or a claim about every cell. */
+export function regenerationSequence(progress: number, competence = 1) {
+  const p = plantCellClamp(progress),
+    c = plantCellClamp(competence);
+  return {
+    lineage: 'L1',
+    callus: ease(p / 0.3) * c,
+    shoot: ease((p - 0.3) / 0.35) * c,
+    root: ease((p - 0.65) / 0.35) * c,
+    phase: p < 0.3 ? 'callus' : p < 0.65 ? 'shoot' : 'root',
+  };
+}
+/** Information blocks are schematic, not measured genes or expression data. */
+export function regenerationResponse(
+  auxin: number,
+  cytokinin: number,
+  progress = 1,
+  competence = 1,
+) {
+  const r = hormoneResponse(auxin, cytokinin),
+    c = plantCellClamp(competence),
+    amount = ease(progress) * c;
+  return {
+    information: ['I1', 'I2', 'I3'] as const,
+    expression: [0.35 * c, r.shoot * c, r.root * c],
+    shoot: r.shoot * amount,
+    root: r.root * amount,
+    callus: (0.25 + r.callus * 0.65) * c,
+    response: r,
+    responsive: c > 0,
+  };
+}
+
+/** Change induction after shoots exist; a new condition does not erase existing organs. */
+export function regenerationIntervention(
+  auxin: number,
+  cytokinin: number,
+  progress: number,
+  competence = 1,
+) {
+  const initial = regenerationResponse(0.5, 3, 1, 1),
+    next = regenerationResponse(auxin, cytokinin, progress, competence);
+  return {
+    ...next,
+    shoot: initial.shoot + (1 - initial.shoot) * next.shoot,
+    callus: initial.callus,
+    initialShoot: initial.shoot,
+  };
+}

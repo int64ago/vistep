@@ -1,21 +1,27 @@
-<h2 id="understand">Outside air presses the cooled bowls together</h2>
+<h2 id="understand">Both sides push. Which one changes during cooling?</h2>
 
-The textbook heats enclosed air, seals two steel bowls and cools their exterior. If gas amount and volume remain fixed, inside pressure falls with Kelvin temperature. Higher atmospheric pressure outside produces the holding force.
+The textbook models Magdeburg hemispheres with steel bowls: burning paper heats the air, the bowls are closed rapidly, water cools their exterior, and finally five people on each side pull them apart. The question is how a pressure difference becomes a force on each bowl.
 
-Compare each side’s pull with pressure difference acting over the projected opening area. Five people per side pulling at 200 N each mean 1000 N on each side, not 2000 N added. Once a gap opens, air enters and the pressure difference disappears.
+Green arrows show outside air pushing inward, normal to the shell. Brown arrows show enclosed gas pushing outward. Pressures are nearly equal at sealing. During sealed cooling, the textbook holds gas amount and volume fixed: internal pressure falls with Kelvin temperature while outside pressure stays at 100 kPa. Opposite vertical components cancel; the remaining axial gas force pushes each bowl toward the seam.
 
-<h2 id="try">Change temperature and pull</h2>
+The curved surface projects onto the opening area πr². Using the curved area 2πr² would count tilted forces as if they all pointed along the axis. Outside gas supplies about 3142 N axially on each half; at 15 °C, inside gas supplies about 2142 N in the opposite direction. Their difference is the roughly 1000 N holding force. While the rim remains closed under a smaller pull, rim contact supplies the remaining balance. “Gas force” therefore does not mean the total force on the bowl.
 
-- Cool from sealing temperature to 15 °C and observe internal pressure and holding force.
-- Increase the force on each side to locate the separation condition.
-- Compare the sealed state with equalized pressure after air entry.
+<h2 id="try">Keep temperature and pull fixed; change only air entry</h2>
 
-<h2 id="deeper">The textbook’s idealization</h2>
+- At 15 °C and 800 N on each side, sealed bowls stay together. These opposite pulls act on different bowls; they are not a 1600 N pull on either half.
+- Admit air and watch internal pressure rise. Outside air is still there. As the pressure forces cancel, the same 800 N pull can separate the halves.
+- Select “Resealed trial” to restore a sealed comparison at the same temperature and pull. Then change temperature and predict the holding force.
 
-<div className="formula">pᵢₙ = pₒᵤₜ × Tcool/Tseal; F = (pₒᵤₜ − pᵢₙ)πr²</div>
+Five people pulling at 200 N each mean **1000 N on each side**. Isolating one hemisphere gives the correct force for inferring the sealing temperature.
 
-Defaults are external pressure 100 kPa, opening diameter 20 cm and sealing temperature 149.5 °C. Cooling to 15 °C gives about 1000 N holding force. Inverse temperature estimates must use Kelvin.
+<h2 id="deeper">From evidence to the fixed-volume gas relation</h2>
 
-The quantitative model neglects leaks, deformation, combustion chemistry and condensation. Real burning and cooling are more complicated. Each exploration change reconstructs an independent sealed trial; pressure equalization after opening is approximated as rapid.
+<div className="formula">pᵢₙ / pₒᵤₜ = Tcool / Tseal; Fgas = (pₒᵤₜ − pᵢₙ)πr²</div>
 
-Sources: [OpenStax pressure](https://openstax.org/books/university-physics-volume-1/pages/14-1-fluids-density-and-pressure), [ideal-gas relations](https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law). Textbook: PEP Elective 3, p. 42.
+With outside pressure 100 kPa and opening diameter 20 cm, convert 15 °C to 288.15 K. A holding force of about 1000 N on each side implies a sealing temperature near 422.7 K, or 149.5 °C. Temperature ratios require Kelvin.
+
+Fixed gas amount and volume apply only during sealed cooling. Once a gap opens, air enters and gas amount increases. At equal pressure, the two gases exert equal, opposite axial forces on the same hemisphere. A quasi-static equilibration progression illustrates this causal chain; airflow, gap width and separation speed are schematic, not fluid transient calculations. Exploration changes create a new controlled trial, rather than automatically pumping out air that already entered.
+
+The textbook neglects leaks, deformation, combustion chemistry and condensation. Real burning and cooling are more complicated. The model also neglects adhesion and seal friction: a pull exactly equal to the holding force is marginal equilibrium; exceeding it gives a net outward force.
+
+Sources: [OpenStax: pressure and surface-normal forces](https://openstax.org/books/university-physics-volume-1/pages/14-1-fluids-density-and-pressure), [OpenStax: pressure and temperature at fixed gas amount and volume](https://openstax.org/books/chemistry-2e/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law). Original textbook question: PEP Elective 3, p. 42, “Modelling Magdeburg hemispheres with steel bowls.”

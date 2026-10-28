@@ -8,9 +8,11 @@ import {
   inclinedEnergy,
   hangerEnergy,
   energyPendulum,
+  energyFilmState,
+  type EnergySceneState,
+  type EnergyMode,
 } from '../../models/mechanical-energy-lab';
 import '../../styles/mechanical-energy-lab.css';
-type Mode = 'fall' | 'incline' | 'hanger' | 'pendulum';
 function AirTrack({
   time,
   hanger,
@@ -131,6 +133,9 @@ function AirTrack({
       </g>
       {hanger && (
         <>
+          <text x={q.x - 38} y={q.y - 49} fontSize="40" fill="#657e59">
+            M
+          </text>
           <path
             d={`M${q.x + 23} ${pulley.y}H${pulley.x}A10 10 0 0 1 ${pulley.x + 10} ${pulley.y + 10}V${hy}`}
             stroke="#ab9673"
@@ -147,6 +152,9 @@ function AirTrack({
           />
           <path d={`M${pulley.x + 10} ${hy}v10m-12 0h24`} stroke="#a99372" strokeWidth="2" />
           <rect x={pulley.x - 2} y={hy + 6} width="24" height="13" rx="3" fill="#b5a585" />
+          <text x={pulley.x + 29} y={hy + 5} fontSize="40" fill="#917b53">
+            m
+          </text>
         </>
       )}
       <rect x="273" y="282" width="96" height="40" rx="9" fill="#d3dec5" stroke="#b3c5a6" />
@@ -156,23 +164,18 @@ function AirTrack({
 }
 export default function MechanicalEnergyLab() {
   const film = useShowcase(),
-    [mode, setMode] = useState<Mode>('fall'),
-    [resistance, setResistance] = useState(0),
-    [width, setWidth] = useState(0.02),
-    [time, setTime] = useState(0.42),
-    c = film.chapter,
-    p = Math.min(1, film.chapterProgress / 0.76),
-    kind: Mode = film.watch
-      ? c < 3
-        ? 'fall'
-        : c < 5
-          ? 'incline'
-          : c < 7
-            ? 'hanger'
-            : 'pendulum'
-      : mode,
-    r = film.watch ? (c === 2 ? 0.12 : 0) : resistance,
-    w = film.watch ? 0.02 : width,
+    [manual, setManual] = useState<EnergySceneState | null>(null),
+    authored = energyFilmState(film.chapter, film.chapterProgress),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<EnergySceneState>) => setManual({ ...state, ...patch }),
+    kind = state.mode,
+    r = state.resistance,
+    w = state.width,
     limit =
       kind === 'fall'
         ? 0.42
@@ -181,13 +184,13 @@ export default function MechanicalEnergyLab() {
           : kind === 'hanger'
             ? hangerEnergy(100, w).endTime
             : 3,
-    tm = film.watch ? ([1, 2, 4, 6].includes(c) ? limit : limit * p) : Math.min(time, limit),
+    tm = Math.min(state.time, limit),
     fall = fallingEnergy(tm, r),
     tape = tapeEnergy(r),
     inc = inclinedEnergy(tm, r / 3, w),
     hang = hangerEnergy(tm, w),
     pend = energyPendulum(tm),
-    zoom = kind === 'fall' && (film.watch ? c > 0 : false),
+    zoom = kind === 'fall' && state.tape,
     ready =
       kind === 'fall'
         ? tm >= 0.36
@@ -216,7 +219,14 @@ export default function MechanicalEnergyLab() {
     unit = kind === 'fall' ? 'J/kg' : 'J',
     gate = kind === 'incline' ? inc.gates : [hang.gate];
   return (
-    <section className="mechanical-energy-lab">
+    <section
+      className="mechanical-energy-lab"
+      data-view={kind}
+      data-time={tm}
+      data-resistance={r}
+      data-width={w}
+      data-tape={zoom}
+    >
       <header>
         <p>
           {t(
@@ -235,7 +245,7 @@ export default function MechanicalEnergyLab() {
         {kind === 'fall' ? (
           zoom ? (
             <svg
-              viewBox="0 0 440 220"
+              viewBox="0 65 440 115"
               role="img"
               aria-label={t('等时纸带点按实际位移分布，分别选取两组相邻三点测速度')}
             >
@@ -271,9 +281,6 @@ export default function MechanicalEnergyLab() {
                 stroke="#a7b393"
                 strokeWidth="1.5"
               />
-              <text x="220" y="193" textAnchor="middle" fontSize="23" fill="#889d73">
-                Δh = {tape.height.toFixed(3)} m
-              </text>
             </svg>
           ) : (
             <svg
@@ -342,43 +349,51 @@ export default function MechanicalEnergyLab() {
       </div>
       {kind === 'fall' && zoom && (
         <div className="mechanical-energy-record">
+          <span>Δh = {tape.height.toFixed(3)} m</span>
           <span>Δt = 0.020 s</span>
           <span>v₁ = {tape.v1.toFixed(3)} m/s</span>
           <span>v₂ = {tape.v2.toFixed(3)} m/s</span>
           <p>v = (x₊ − x₋) / (2Δt)</p>
         </div>
       )}
-      {(kind === 'incline' || kind === 'hanger') && (
-        <div className="mechanical-energy-record">
-          <span>d = {(w * 1000).toFixed(0)} mm</span>
-          {gate.map((g, i) => (
-            <span key={i}>
-              Δt{i + 1} = {tm >= g.exit ? (g.duration * 1000).toFixed(2) + ' ms' : '—'}
-            </span>
-          ))}
-          {gate.map((g, i) => (
-            <span key={`v${i}`}>
-              v{i + 1} ≈ {tm >= g.exit ? g.meanSpeed.toFixed(3) + ' m/s' : '—'}
-            </span>
-          ))}
-        </div>
-      )}
+      {(kind === 'incline' || kind === 'hanger') &&
+        !(film.watch && kind === 'incline' && film.chapter === 3) && (
+          <div className="mechanical-energy-record">
+            {!(film.watch && kind === 'hanger') && <span>d = {(w * 1000).toFixed(0)} mm</span>}
+            {!(film.watch && kind === 'hanger') &&
+              gate.map((g, i) => (
+                <span key={i}>
+                  Δt{i + 1} = {tm >= g.exit ? (g.duration * 1000).toFixed(2) + ' ms' : '—'}
+                </span>
+              ))}
+            {gate.map((g, i) => (
+              <span key={`v${i}`}>
+                v{i + 1} ≈ {tm >= g.exit ? g.meanSpeed.toFixed(3) + ' m/s' : '—'}
+              </span>
+            ))}
+          </div>
+        )}
       <div className="mechanical-energy-balance" aria-live="off">
         <div>
-          <span>{t(kind === 'pendulum' ? '总机械能' : '重力势能减少')}</span>
+          <span>{t(kind === 'pendulum' ? '总机械能' : '势能减少')}</span>
           <b>
             {ready ? potential.toFixed(4) : '—'} {unit}
           </b>
           <i style={{ width: ready ? '100%' : '0%' }} />
         </div>
         <div>
-          <span>{t(kind === 'pendulum' ? '动能' : '动能增加')}</span>
+          <span>{t(kind === 'pendulum' ? '动能' : '增加的动能')}</span>
           <b>
             {ready ? kinetic.toFixed(4) : '—'} {unit}
           </b>
           <i
             style={{
               width: ready ? `${Math.max(0, Math.min(1, kinetic / potential)) * 100}%` : '0%',
+              ...(kind === 'hanger'
+                ? {
+                    background: `linear-gradient(to right, #a4bc98 ${(hang.cartOnly / hang.kineticGain) * 100}%, #c3ae83 ${(hang.cartOnly / hang.kineticGain) * 100}%)`,
+                  }
+                : {}),
             }}
           />
         </div>
@@ -406,16 +421,16 @@ export default function MechanicalEnergyLab() {
       </p>
       {kind === 'hanger' && ready && (
         <p className="mechanical-energy-system">
-          {t('只算滑块会漏掉悬挂物动能')} · {hang.cartOnly.toFixed(4)} J ≠{' '}
-          {hang.kineticGain.toFixed(4)} J
+          <span aria-label={t('滑块')}>M {hang.cartOnly.toFixed(3)}</span> +{' '}
+          <span aria-label={t('悬挂物')}>m {(hang.kineticGain - hang.cartOnly).toFixed(3)} J</span>
         </p>
       )}
       {!film.watch && (
         <div className="mechanical-energy-controls">
           <Segments
             label={t('实验方案')}
-            value={mode}
-            onChange={setMode}
+            value={kind}
+            onChange={(v) => change({ mode: v as EnergyMode, tape: false, time: 0 })}
             options={[
               { value: 'fall', label: t('自由下落纸带') },
               { value: 'incline', label: t('倾斜气垫导轨') },
@@ -426,34 +441,45 @@ export default function MechanicalEnergyLab() {
           {(kind === 'fall' || kind === 'incline') && (
             <Range
               label={t(kind === 'fall' ? '等效向上阻力' : '导轨摩擦系数')}
-              value={kind === 'fall' ? resistance : resistance / 3}
+              value={kind === 'fall' ? r : r / 3}
               min={0}
               max={kind === 'fall' ? 0.3 : 0.1}
               step={kind === 'fall' ? 0.01 : 0.005}
               unit={kind === 'fall' ? 'N' : ''}
-              onChange={(v) => setResistance(kind === 'fall' ? v : v * 3)}
+              onChange={(v) => change({ resistance: kind === 'fall' ? v : v * 3 })}
             />
           )}{' '}
           {(kind === 'incline' || kind === 'hanger') && (
             <Range
               label={t('遮光条宽度')}
-              value={width}
+              value={w}
               min={0.005}
               max={0.08}
               step={0.005}
               unit="m"
-              onChange={setWidth}
+              onChange={(v) => change({ width: v })}
             />
           )}
           <Range
             label={t('模型时间')}
-            value={Math.min(time, limit)}
+            value={tm}
             min={0}
             max={limit}
             step={0.01}
             unit="s"
-            onChange={setTime}
+            onChange={(v) => change({ time: v })}
           />
+          {kind === 'fall' && (
+            <Segments
+              label={t('观察视图')}
+              value={zoom ? 'tape' : 'apparatus'}
+              onChange={(v) => change({ tape: v === 'tape' })}
+              options={[
+                { value: 'apparatus', label: t('下落装置') },
+                { value: 'tape', label: t('纸带读数') },
+              ]}
+            />
+          )}
         </div>
       )}
       <p className="mechanical-energy-note">

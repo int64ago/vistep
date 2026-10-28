@@ -1,4 +1,46 @@
 export type Vec2 = { x: number; y: number };
+export type ArmMode =
+  'flick' | 'vectors' | 'measure' | 'radius' | 'phone' | 'compare' | 'javelin' | 'research';
+export type ArmSceneState = { mode: ArmMode; time: number; wrist: boolean; run: number };
+export function armFilmState(
+  chapter: number,
+  progress: number,
+  chapterTime = progress * 28,
+): ArmSceneState {
+  const mode = (
+    [
+      'flick',
+      'vectors',
+      'measure',
+      'radius',
+      'phone',
+      'compare',
+      'javelin',
+      'research',
+    ] as ArmMode[]
+  )[Math.min(7, Math.max(0, chapter))];
+  const p = Math.min(1, Math.max(0, progress) / 0.8);
+  return {
+    mode,
+    time:
+      mode === 'vectors'
+        ? 0.12 + 0.24 * p
+        : mode === 'javelin'
+          ? 0.22 + 0.07 * p
+          : mode === 'research'
+            ? 0.29
+            : mode === 'phone'
+              ? 0.1 + 0.28 * p
+              : mode === 'flick'
+                ? // Both measured recordings begin the detached-drop explanation at about 11.7 s.
+                  chapterTime <= 11.7
+                  ? (0.36 * Math.max(0, chapterTime)) / 11.7
+                  : 0.36 + 0.1 * Math.min(1, (chapterTime - 11.7) / 6)
+                : 0.46 * p,
+    wrist: mode !== 'phone',
+    run: mode === 'research' ? 4 * p : 0,
+  };
+}
 const add = (a: Vec2, b: Vec2) => ({ x: a.x + b.x, y: a.y + b.y });
 /** Prescribed illustrative joint motion, not fitted to textbook photographs. */
 function joint(time: number, start: number, end: number, from: number, to: number) {
@@ -68,11 +110,11 @@ export function armKinematics(time: number, wrist = true, shoulderSpeed = 0, ori
   };
 }
 export const ARM_RELEASE = 0.36;
-export function flickDrop(time: number) {
-  const release = armKinematics(ARM_RELEASE),
+export function flickDrop(time: number, wrist = true) {
+  const release = armKinematics(ARM_RELEASE, wrist),
     dt = Math.max(0, time - ARM_RELEASE),
     held = time < ARM_RELEASE,
-    s = held ? armKinematics(time) : release;
+    s = held ? armKinematics(time, wrist) : release;
   return {
     released: !held,
     x: s.tip.x + release.velocity.x * dt,

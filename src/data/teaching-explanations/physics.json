@@ -2873,5 +2873,105 @@
         "en": "No. Without leakage or evaporation, mass stays constant; lower volume changes the mixture’s bulk density. Predicting contraction at other temperatures or compositions requires measured data or an appropriate state model."
       }
     }
+  },
+  "required-2-mechanical-energy": {
+    "sceneSlug": "mechanical-energy-lab",
+    "question": {
+      "zh": "势能减少了，为什么动能有时跟不上？",
+      "en": "Why can kinetic gain fall short of potential energy lost?"
+    },
+    "lead": {
+      "zh": "从同一条纸带独立读出高度和速度，再用阻力与研究系统的对照追查能量差值。",
+      "en": "Read height and speed independently from one tape, then use resistance and system boundaries to investigate an energy gap."
+    },
+    "principle": {
+      "zh": "势能与动能须由各自的观测量计算。阻力的负功会使机械能减少；忽略随动悬挂物的动能也会造成假缺口。",
+      "en": "Compute each energy from its own observations. Negative work by resistance reduces mechanical energy; leaving out a moving hanging mass creates an accounting gap."
+    },
+    "transfer": {
+      "question": {
+        "zh": "把遮光条加宽，读出的速度还严格等于光电门处瞬时速度吗？",
+        "en": "Does a wider flag still give the exact instantaneous speed at the gate?"
+      },
+      "explanation": {
+        "zh": "不严格相等。宽度除以挡光时间给过门平均速度；匀加速时它对应时间中点，而不是遮光条中心到达门处的时刻。缩窄遮光条可减小这项近似偏差，不能把它与真实阻力损耗混为一谈。",
+        "en": "No. Width divided by blocking time gives the passage average. Under constant acceleration this is the speed at the time midpoint, which differs from the instant the flag center reaches the gate. A narrower flag reduces that bias; it does not remove real resistive losses."
+      }
+    }
+  },
+  "required-2-hand-flick": {
+    "sceneSlug": "arm-motion-lab",
+    "question": {
+      "zh": "手腕只转了一点，指尖为什么能这么快？",
+      "en": "How can a small wrist turn contribute to a fast fingertip?"
+    },
+    "lead": {
+      "zh": "追踪肩、肘、腕相连的运动，用速度箭头说明合成，再把教材照片估算与手机读数区分开。",
+      "en": "Track connected shoulder, elbow and wrist motion through velocity arrows, then distinguish photographic estimates from wrist-sensor readings."
+    },
+    "principle": {
+      "zh": "指尖速度由相连各段的运动共同决定，必须按方向合成；水滴离手后保留释放速度。局部圆周近似与传感器读数都有适用条件。",
+      "en": "Connected segments contribute to fingertip velocity as vectors. A detached drop retains its release velocity. Circular estimates and sensor readings each have stated limits."
+    },
+    "transfer": {
+      "question": {
+        "zh": "固定腕关节，水滴还会沿原来的轨迹飞出吗？",
+        "en": "With the wrist locked, will the drop follow the same released path?"
+      },
+      "explanation": {
+        "zh": "通常会改变。保持其余角度输入不变，锁腕改变指尖的位置和速度；按相同预设时刻释放，液滴继承的是这一次的速度。这里仍不预测真实液滴何时克服黏附力。",
+        "en": "Usually not. With other joint inputs fixed, locking the wrist changes fingertip position and velocity. At the same prescribed release time the drop inherits that new velocity. This model does not predict when real adhesion fails."
+      }
+    }
+  },
+  "required-2-javelin": {
+    "sceneSlug": "arm-motion-lab",
+    "question": {
+      "zh": "助跑增加的速度，怎样传到手中的标枪？",
+      "en": "How does forward motion contribute to the spear’s velocity?"
+    },
+    "lead": {
+      "zh": "先固定肩部观察手臂，再保持同一动作加入肩部平移，用首尾相接的箭头预测合速度。",
+      "en": "First hold the shoulder still, then add translation to the same joint motion and predict the velocity sum."
+    },
+    "principle": {
+      "zh": "手对地速度等于手相对肩的速度加肩部平移速度；这是矢量相加，方向也会改变。",
+      "en": "Ground-relative hand velocity is relative hand velocity plus shoulder translation. The vector sum changes direction as well as speed."
+    },
+    "transfer": {
+      "question": {
+        "zh": "助跑速度更大，就能据此断言投得更远吗？",
+        "en": "Does a faster run-up alone establish a longer throw?"
+      },
+      "explanation": {
+        "zh": "不能。这里隔离了速度合成，真实投掷还取决于出手方向、动作时序、各段相互作用与空气动力。当前模型到出手速度为止，不能用它虚构飞行距离。",
+        "en": "No. This comparison isolates velocity addition. A real throw also depends on release direction, timing, segment interactions and aerodynamics. The model ends at release velocity and cannot establish a flight distance."
+      }
+    }
+  },
+  "e3-magdeburg-bowls": {
+    "sceneSlug": "magdeburg-bowls-lab",
+    "question": {
+      "zh": "冷却后的钢碗被谁压住，为什么一进气就容易分开？",
+      "en": "What holds the cooled bowls together, and why does admitting air release them?"
+    },
+    "lead": {
+      "zh": "从烧纸热封、外部冷却到两侧拉开，追踪同一只钢碗上的内外压力、气体合力与每侧拉力，再做同温同拉力的进气对照。",
+      "en": "Follow hot sealing, cooling and opposing pulls. Track pressure forces on one bowl, then admit air while keeping temperature and pull fixed."
+    },
+    "principle": {
+      "zh": "密封且气体量、体积不变时，内压随开尔文温度下降。曲面压力的轴向合力等于压强差乘碗口投影面积πr²；每侧拉力分别与它比较。进气增加气体量，内外均压后压力合力消失。",
+      "en": "At fixed gas amount and volume, cooling lowers inside pressure with Kelvin temperature. Surface forces sum axially to pressure difference times projected opening area πr². Compare each pull with that force. Air entry increases gas amount; equal pressure removes the gas resultant."
+    },
+    "transfer": {
+      "question": {
+        "zh": "15摄氏度、每侧800牛时密封钢碗拉不开；保持这些条件，只让空气进入，能否分开？",
+        "en": "At 15 °C, sealed bowls resist an 800 N pull on each side. Keep those values and admit air. Can they separate?"
+      },
+      "explanation": {
+        "zh": "可以。进气使内压上升，压力差和压紧合力减小。内外均压时外部空气仍存在，但其作用被内部气体平衡，每侧800牛便产生向外的净作用；这不是温度升高或拉力增加造成的。",
+        "en": "Yes. Air entry raises inside pressure and reduces the holding force. At equal pressure, outside air is still present, but inside gas balances its axial force. Each 800 N pull now gives a net outward force, without warming the gas or increasing pull."
+      }
+    }
   }
 }

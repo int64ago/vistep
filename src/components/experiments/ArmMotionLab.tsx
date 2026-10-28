@@ -8,50 +8,33 @@ import {
   textbookFlick,
   wristPhone,
   javelinRelease,
+  armFilmState,
+  type ArmSceneState,
+  type ArmMode,
   type Vec2,
 } from '../../models/arm-motion-lab';
 import '../../styles/arm-motion-lab.css';
-type Mode =
-  'flick' | 'vectors' | 'measure' | 'radius' | 'phone' | 'compare' | 'javelin' | 'research';
 const colors = ['#8aa47e', '#b0a378', '#b58977'];
 export default function ArmMotionLab() {
   const film = useShowcase(),
     id = useId().replaceAll(':', ''),
-    [mode, setMode] = useState<Mode>(film.variant === 'required-2-javelin' ? 'javelin' : 'flick'),
-    [time, setTime] = useState(0.32),
-    [wrist, setWrist] = useState('moving'),
-    [run, setRun] = useState(4),
-    activeWrist = film.watch || wrist === 'moving',
-    c = film.chapter,
-    p = Math.min(1, film.chapterProgress / 0.8),
-    kind: Mode = film.watch
-      ? (
-          [
-            'flick',
-            'vectors',
-            'measure',
-            'radius',
-            'phone',
-            'compare',
-            'javelin',
-            'research',
-          ] as Mode[]
-        )[Math.min(7, c)]
-      : mode,
+    [manual, setManual] = useState<ArmSceneState | null>(null),
+    authored = armFilmState(film.chapter, film.chapterProgress, film.chapterTime),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<ArmSceneState>) => setManual({ ...state, ...patch }),
+    activeWrist = state.wrist,
+    kind = state.mode,
     throwing = kind === 'javelin' || kind === 'research',
     phone = kind === 'phone',
-    throwTime = film.watch && kind === 'javelin' ? 0.22 + 0.07 * p : 0.29,
-    runValue = film.watch ? (kind === 'research' ? 4 * p : 0) : run,
+    throwTime = state.time,
+    runValue = state.run,
     source = kind === 'measure' || kind === 'radius' || kind === 'compare',
-    tm = film.watch
-      ? kind === 'vectors'
-        ? 0.12 + 0.24 * p
-        : throwing
-          ? 0.29
-          : phone
-            ? 0.1 + 0.28 * p
-            : 0.46 * p
-      : Math.min(time, 0.46),
+    tm = state.time,
     a = phone
       ? wristPhone(tm).state
       : throwing
@@ -64,7 +47,7 @@ export default function ArmMotionLab() {
     }),
     pts = a.points.map(P),
     tip = pts[3],
-    drop = flickDrop(tm),
+    drop = flickDrop(tm, activeWrist),
     ds = P(drop),
     data = textbookFlick(),
     sensor = wristPhone(tm),
@@ -85,7 +68,13 @@ export default function ArmMotionLab() {
     );
   };
   return (
-    <section className="arm-motion-lab">
+    <section
+      className="arm-motion-lab"
+      data-view={kind}
+      data-time={tm}
+      data-wrist={activeWrist}
+      data-run={runValue}
+    >
       <header>
         <p>
           {t(
@@ -114,7 +103,7 @@ export default function ArmMotionLab() {
       </header>
       <div className="arm-motion-stage">
         <svg
-          viewBox="0 0 440 370"
+          viewBox={source ? '0 0 440 250' : kind === 'vectors' ? '90 25 300 310' : '0 0 440 370'}
           role="img"
           aria-label={t(
             source
@@ -137,56 +126,61 @@ export default function ArmMotionLab() {
           </defs>
           {source ? (
             <>
-              <path d="M29 26Q220 17 411 26V332Q220 343 29 332Z" fill="#f3efdf" stroke="#e0dfca" />
-              <path d="M55 276h328" stroke="#c5cdb5" />
-              {Array.from({ length: 27 }, (_, i) => (
-                <path
-                  key={i}
-                  d={`M${65 + i * 11.5} 276v${i % 5 === 0 ? 12 : 6}`}
-                  stroke="#b2bea2"
-                />
-              ))}
-              <path d="M110 210H266" stroke="#af9b72" strokeWidth="2" strokeDasharray="4 5" />
-              <circle cx="110" cy="210" r="5" fill="#b19d77" />
-              <circle cx="266" cy="210" r="5" fill="#8ba57b" />
-              <text x="106" y="242" fontSize="24" fill="#8e9e78">
-                A
-              </text>
-              <text x="261" y="242" fontSize="24" fill="#8e9e78">
-                B
-              </text>
-              {kind !== 'measure' ? (
+              <rect x="12" y="8" width="416" height="232" rx="18" fill="#f3efdf" stroke="#e0dfca" />
+              {kind === 'measure' ? (
                 <>
-                  <path d="M266 108V210" stroke="#a6b894" strokeWidth="2" />
-                  <circle cx="266" cy="108" r="5" fill="#adbc99" />
-                  <path
-                    d="M324.5 191.5A102 102 0 0 1 208 191.7"
-                    stroke="#bdc8a7"
-                    fill="none"
-                    strokeWidth="2"
-                  />
-                  <text x="283" y="111" fontSize="24" fill="#8d9e79">
-                    N
+                  <path d="M48 48H392M48 40V56M392 40V56" stroke="#a5b697" strokeWidth="2" />
+                  <text x="220" y="33" textAnchor="middle" fontSize="29" fill="#667d5d">
+                    65 cm
                   </text>
-                  <text x="282" y="163" fontSize="24" fill="#8d9e79">
-                    17 cm
+                  <path d="M100 135H238M100 127V143M238 127V143" stroke="#a18c68" strokeWidth="2" />
+                  <circle cx="100" cy="135" r="5" fill="#b19d77" />
+                  <circle cx="238" cy="135" r="5" fill="#8ba57b" />
+                  <text x="92" y="178" fontSize="29" fill="#667d5d">
+                    A
+                  </text>
+                  <text x="230" y="178" fontSize="29" fill="#667d5d">
+                    B
+                  </text>
+                  <text x="169" y="119" textAnchor="middle" fontSize="29" fill="#806d4d">
+                    26 cm
+                  </text>
+                  <text x="220" y="222" textAnchor="middle" fontSize="29" fill="#667d5d">
+                    25 fps · Δt = 0.04 s
                   </text>
                 </>
               ) : (
                 <>
-                  <text x="190" y="58" textAnchor="middle" fontSize="24" fill="#8c9e76">
-                    65 cm
+                  <path
+                    d="M118 68H265V170"
+                    stroke="#a5b697"
+                    strokeWidth="2"
+                    strokeDasharray="4 5"
+                    fill="none"
+                  />
+                  <path
+                    d="M195 142A102 102 0 0 0 335 142"
+                    stroke="#b5c3a2"
+                    fill="none"
+                    strokeWidth="2"
+                  />
+                  <path d="M265 68V170" stroke="#a18c68" strokeWidth="2" />
+                  <circle cx="265" cy="68" r="5" fill="#adbc99" />
+                  <circle cx="265" cy="170" r="5" fill="#8ba57b" />
+                  <text x="285" y="72" fontSize="29" fill="#667d5d">
+                    N
                   </text>
-                  <path d="M327 48h44v36h-44Z" fill="#d9ddc4" stroke="#b8c4a8" />
-                  <circle cx="349" cy="65" r="9" fill="#b0c0a0" />
+                  <text x="274" y="206" fontSize="29" fill="#667d5d">
+                    B
+                  </text>
+                  <text x="282" y="132" fontSize="29" fill="#806d4d">
+                    17 cm
+                  </text>
+                  <text x="20" y="130" fontSize="29" fill="#667d5d">
+                    v ≈ 6.5 m/s
+                  </text>
                 </>
               )}
-              <text x="188" y="191" textAnchor="middle" fontSize="24" fill="#a18c68">
-                26 cm
-              </text>
-              <text x="220" y="319" textAnchor="middle" fontSize="24" fill="#8e9d79">
-                25 fps · Δt = 0.04 s
-              </text>
             </>
           ) : (
             <>
@@ -273,13 +267,13 @@ export default function ArmMotionLab() {
                   <path d="M129 0l-12 -2v4Z" fill="#a4ad9b" />
                   <path d="M-9 -2h18v4h-18Z" fill="#a08a67" />
                 </g>
-              ) : kind === 'flick' && activeWrist ? (
+              ) : kind === 'flick' ? (
                 <>
                   <path
                     d={Array.from(
                       { length: Math.max(1, Math.floor(Math.max(0, tm - 0.36) / 0.005) + 1) },
                       (_, i) => {
-                        const q = P(flickDrop(0.36 + i * 0.005));
+                        const q = P(flickDrop(0.36 + i * 0.005, activeWrist));
                         return `${i ? 'L' : 'M'}${q.x} ${q.y}`;
                       },
                     ).join(' ')}
@@ -298,6 +292,7 @@ export default function ArmMotionLab() {
                     '#7f9d71',
                     throwing ? 13 : 15,
                   )}
+                  {throwing && arrow(tip, throwState.state.velocity, '#708c9e', 13)}
                   {throwing &&
                     arrow(
                       {
@@ -335,11 +330,11 @@ export default function ArmMotionLab() {
       ) : phone ? (
         <div className="arm-motion-readings">
           <span>
-            {t('沿前臂原始读数')}
+            {t('原始同轴读数')}
             <b>{sensor.rawAlong.toFixed(1)} m/s²</b>
           </span>
           <span>
-            {t('去除重力后的同轴读数')}
+            {t('去除重力后')}
             <b>{sensor.coordinateAlong.toFixed(1)} m/s²</b>
           </span>
           <p>{t('以上是模型读数；教材另一次手腕测量给出约32 m/s²。')}</p>
@@ -375,11 +370,11 @@ export default function ArmMotionLab() {
         <div className="arm-motion-vectors">
           <p>{t('每一段贡献都是矢量，方向也参与相加。')}</p>
           <svg
-            viewBox="0 0 440 220"
+            viewBox="70 25 160 185"
             role="img"
             aria-label={t('三段运动的速度贡献首尾相接，合矢量从起点连到终点')}
           >
-            <path d="M40 80H400M90 15V205" stroke="#d6ddc6" strokeWidth="1" />
+            <path d="M78 80H220M90 32V204" stroke="#d6ddc6" strokeWidth="1" />
             {a.components.map((v, i) => {
               const prev = a.components
                 .slice(0, i)
@@ -396,7 +391,7 @@ export default function ArmMotionLab() {
       )}
       <p className="arm-motion-cause">
         {t(
-          kind === 'flick' && activeWrist
+          kind === 'flick'
             ? '水滴脱离后沿当时速度飞出，随后受重力改变方向。'
             : kind === 'phone'
               ? '手机测在手腕，腕关节保持不转；坐标轴会随前臂转动。'
@@ -411,8 +406,14 @@ export default function ArmMotionLab() {
         <div className="arm-motion-controls">
           <Segments
             label={t('研究步骤')}
-            value={mode}
-            onChange={setMode}
+            value={kind}
+            onChange={(v) =>
+              change({
+                mode: v as ArmMode,
+                time: v === 'javelin' || v === 'research' ? 0.29 : tm,
+                wrist: v === 'phone' ? false : activeWrist,
+              })
+            }
             options={[
               { value: 'flick', label: t('甩手轨迹') },
               { value: 'vectors', label: t('速度合成') },
@@ -421,35 +422,36 @@ export default function ArmMotionLab() {
               { value: 'phone', label: t('手机测量') },
               { value: 'compare', label: t('交叉比较') },
               { value: 'javelin', label: t('标枪课题') },
+              { value: 'research', label: t('助跑合成') },
             ]}
           />
           {throwing ? (
             <Range
               label={t('助跑贡献')}
-              value={run}
+              value={runValue}
               min={0}
               max={7}
               step={0.1}
               unit="m/s"
-              onChange={setRun}
+              onChange={(v) => change({ run: v })}
             />
           ) : (
             !source && (
               <>
                 <Range
                   label={t('模型时间')}
-                  value={time}
+                  value={tm}
                   min={0}
                   max={0.46}
                   step={0.001}
                   unit="s"
-                  onChange={setTime}
+                  onChange={(v) => change({ time: v })}
                 />
                 {!phone && (
                   <Segments
                     label={t('腕关节')}
-                    value={wrist}
-                    onChange={setWrist}
+                    value={activeWrist ? 'moving' : 'fixed'}
+                    onChange={(v) => change({ wrist: v === 'moving' })}
                     options={[
                       { value: 'moving', label: t('参与转动') },
                       { value: 'fixed', label: t('保持固定') },

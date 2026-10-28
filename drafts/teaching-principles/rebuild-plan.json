@@ -1,7 +1,7 @@
 {
   "baselineCommit": "59ab767f60d3e1be5dad3e50bf73ea72ed1db433",
   "direction": "Rebuild the entire teaching collection in reviewed batches: observable question → evidence → causal mechanism and theory → a new prediction. Preserve textbook order and attribution. Retain scenes that already meet this standard after content review; rewrite procedural or causally incomplete films.",
-  "status": "batch-22-implemented-awaiting-publication",
+  "status": "batch-23-implemented-awaiting-final-validation-and-publication",
   "acceptance": [
     "Each learning entry has a precise question and a complete causal explanation within its actual playback window.",
     "The decisive causal step is visible; longer narration or renamed experiment titles alone do not meet the brief.",
@@ -2392,7 +2392,7 @@
     },
     {
       "sceneSlug": "centripetal-force-lab",
-      "status": "batch-22-implemented",
+      "status": "batch-22-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -2520,11 +2520,16 @@
         "contentDecisionUnchanged": true,
         "evidence": "artifacts/teaching-principles/retained-baseline-keyframes/report.json"
       },
-      "reviewRecord": "drafts/teaching-principles/batch-22-review.json"
+      "reviewRecord": "drafts/teaching-principles/batch-22-review.json",
+      "publication": {
+        "commit": "995430dcfb8734e21ea77d8594912e6ca440fbb4",
+        "actionsRun": 40062165315,
+        "evidence": "artifacts/teaching-principles/batch-22-release.json"
+      }
     },
     {
       "sceneSlug": "ellipse-string-lab",
-      "status": "batch-22-implemented",
+      "status": "batch-22-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -2574,7 +2579,12 @@
         "contentDecisionUnchanged": true,
         "evidence": "artifacts/teaching-principles/retained-baseline-keyframes/report.json"
       },
-      "reviewRecord": "drafts/teaching-principles/batch-22-review.json"
+      "reviewRecord": "drafts/teaching-principles/batch-22-review.json",
+      "publication": {
+        "commit": "995430dcfb8734e21ea77d8594912e6ca440fbb4",
+        "actionsRun": 40062165315,
+        "evidence": "artifacts/teaching-principles/batch-22-release.json"
+      }
     },
     {
       "sceneSlug": "gravity-measurements",
@@ -2866,7 +2876,7 @@
     },
     {
       "sceneSlug": "mechanical-energy-lab",
-      "status": "content-reviewed-retain",
+      "status": "batch-23-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -2924,11 +2934,12 @@
         "failedFrames": 8,
         "contentDecisionUnchanged": true,
         "evidence": "artifacts/teaching-principles/retained-baseline-keyframes/report.json"
-      }
+      },
+      "acceptanceRecord": "batch-23-review.json"
     },
     {
       "sceneSlug": "arm-motion-lab",
-      "status": "content-reviewed-retain",
+      "status": "batch-23-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3003,7 +3014,8 @@
         "failedFrames": 8,
         "contentDecisionUnchanged": true,
         "evidence": "artifacts/teaching-principles/retained-baseline-keyframes/report.json"
-      }
+      },
+      "acceptanceRecord": "batch-23-review.json"
     },
     {
       "sceneSlug": "electrostatic-induction",
@@ -8153,7 +8165,7 @@
     },
     {
       "sceneSlug": "molecular-measurement-lab",
-      "status": "batch-22-implemented",
+      "status": "batch-22-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -8246,7 +8258,12 @@
           "needed": "局部增加可见颗粒与不可见分子撞击的双尺度图；水醇采用保分子数、明确非定量结构示意，不用刚性球固定空隙冒充机制。油膜保留。"
         }
       },
-      "reviewRecord": "drafts/teaching-principles/batch-22-review.json"
+      "reviewRecord": "drafts/teaching-principles/batch-22-review.json",
+      "publication": {
+        "commit": "995430dcfb8734e21ea77d8594912e6ca440fbb4",
+        "actionsRun": 40062165315,
+        "evidence": "artifacts/teaching-principles/batch-22-release.json"
+      }
     },
     {
       "sceneSlug": "statistical-motion-lab",
@@ -8808,7 +8825,7 @@
     },
     {
       "sceneSlug": "magdeburg-bowls-lab",
-      "status": "content-reviewed-revise",
+      "status": "batch-23-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -8848,7 +8865,8 @@
           ],
           "needed": "局部补内外压力在两半球上的合力与开缝气流、同状态压力平衡，保留固定n/V近似和真实每侧力。"
         }
-      }
+      },
+      "acceptanceRecord": "batch-23-review.json"
     },
     {
       "sceneSlug": "thermodynamic-work-lab",
@@ -13225,7 +13243,7 @@
     },
     {
       "sceneSlug": "chem-sugar-tests",
-      "status": "batch-22-implemented",
+      "status": "batch-22-published",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -13391,11 +13409,16 @@
           "needed": "给葡萄糖两个短入口补可见环开链—还原试剂过程；其余结构与有效检验条件的镜头保留，避免把所有糖检验推倒。"
         }
       },
-      "reviewRecord": "drafts/teaching-principles/batch-22-review.json"
+      "reviewRecord": "drafts/teaching-principles/batch-22-review.json",
+      "publication": {
+        "commit": "995430dcfb8734e21ea77d8594912e6ca440fbb4",
+        "actionsRun": 40062165315,
+        "evidence": "artifacts/teaching-principles/batch-22-release.json"
+      }
     },
     {
       "sceneSlug": "chem-protein-states",
-      "status": "content-reviewed-revise",
+      "status": "batch-23-implemented",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -13505,7 +13528,8 @@
           ],
           "needed": "补黄色来源的位点示意和不同蛋白质响应预测；必修三性质应按空间状态/化学组成/显色位点组织，不只换试剂。"
         }
-      }
+      },
+      "acceptanceRecord": "batch-23-review.json"
     },
     {
       "sceneSlug": "chem-metal-extraction",
@@ -21063,7 +21087,7 @@
     },
     {
       "sceneSlug": "bio-microbial-culture",
-      "status": "batch-22-implemented",
+      "status": "batch-22-published",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -21171,11 +21195,16 @@
           "needed": "只补尿素水解—可利用氮—生长的限定教学路径，并在 watch 展示一次空白异常如何使本批结论无效；保留筛选与计数模型。"
         }
       },
-      "reviewRecord": "drafts/teaching-principles/batch-22-review.json"
+      "reviewRecord": "drafts/teaching-principles/batch-22-review.json",
+      "publication": {
+        "commit": "995430dcfb8734e21ea77d8594912e6ca440fbb4",
+        "actionsRun": 40062165315,
+        "evidence": "artifacts/teaching-principles/batch-22-release.json"
+      }
     },
     {
       "sceneSlug": "bio-plant-cell-engineering",
-      "status": "content-reviewed-rebuild",
+      "status": "batch-23-implemented",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -21259,7 +21288,8 @@
           ],
           "needed": "重构 tissue 四章为再生现象→分化是否丢失信息的候选解释→条件/表达状态与发育方向→新条件预测；P36 杂交与 P37 比例片保留，不把全能性说成任意细胞随时可成株。"
         }
-      }
+      },
+      "acceptanceRecord": "batch-23-review.json"
     },
     {
       "sceneSlug": "bio-animal-cell-engineering",
@@ -21740,7 +21770,7 @@
       "biology-content-review.json"
     ]
   },
-  "currentBatch": 22,
+  "currentBatch": 23,
   "layoutAudit": {
     "status": "active-follow-up",
     "baselineScenes": 154,
@@ -21756,13 +21786,13 @@
   },
   "pauseAfterBatch": 19,
   "pauseReason": "B19 完成后暂停的历史请求已履行。",
-  "pauseStatus": "B19 pause fulfilled; user explicitly resumed and authorized B22 commit, push and publication on 2026-10-24",
+  "pauseStatus": "B19 pause fulfilled; user explicitly resumed and authorized B23 commit, push and publication on 2026-10-24",
   "pauseDeploymentConfirmed": true,
   "currentBatchScenes": [
-    "molecular-measurement-lab",
-    "chem-sugar-tests",
-    "bio-microbial-culture",
-    "centripetal-force-lab",
-    "ellipse-string-lab"
+    "magdeburg-bowls-lab",
+    "chem-protein-states",
+    "bio-plant-cell-engineering",
+    "mechanical-energy-lab",
+    "arm-motion-lab"
   ]
 }

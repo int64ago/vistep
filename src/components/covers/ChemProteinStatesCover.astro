@@ -1,14 +1,49 @@
-<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-  ><rect width="640" height="420" fill="#f2f3e7"></rect><path
-    d="M82 92V290Q82 328 120 328H252Q290 328 290 290V92M350 92V290Q350 328 388 328H520Q558 328 558 290V92"
-    fill="#e5ecd9"
-    stroke="#b4c0a2"
-    stroke-width="3"></path><path d="M85 191H287M353 145H555" stroke="#c0ccb1" stroke-width="3"
-  ></path><g stroke="#fffdf0" stroke-width="14" stroke-linecap="round"
-    ><path
-      d="M144 250q38-35 43 0t-29 16q-36-18 8-34t36 36M180 273q38-35 43 0t-29 16q-36-18 8-34t36 36M213 247q38-35 43 0t-29 16q-36-18 8-34t36 36"
-    ></path><path
-      d="M384 188q28-27 32 0t-22 12q-28-14 6-26t27 27M464 213q28-27 32 0t-22 12q-28-14 6-26t27 27M405 274q28-27 32 0t-22 12q-28-14 6-26t27 27M490 281q28-27 32 0t-22 12q-28-14 6-26t27 27"
-    ></path></g
-  ><path d="M299 180H339l-9-7M316 165V195" stroke="#b8c3a4" stroke-width="3"></path></svg
->
+---
+import { proteinNitration, proteinSymbol } from '../../models/chem-protein-states';
+const site = proteinNitration(1);
+const ring = site.ring.map(({ x, y }) => `${245 + 1.45 * x},${32 + 1.45 * y}`).join(' ');
+const chains = Array.from({ length: 4 }, (_, i) => proteinSymbol(i, 0.5, 0.6));
+const trackedX = 13 + 0.9 * chains[3].points[9][0];
+const trackedY = 69 + 0.9 * chains[3].points[9][1];
+---
+
+<svg viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="640" height="420" fill="#f2f3e7"></rect>
+  <path
+    d="M66 90V286Q66 316 96 316H248Q278 316 278 286V90"
+    fill="#e6ebda"
+    stroke="#b8c4aa"
+    stroke-width="3"></path>
+  <path d="M69 178H275" stroke="#cad3bd" stroke-width="2"></path>
+  <g transform="translate(13 69) scale(.9)">
+    {
+      chains.map((chain) => (
+        <path
+          d={chain.points.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ')}
+          stroke="#9eae8e"
+          stroke-width="5"
+          stroke-linecap="round"
+        />
+      ))
+    }
+  </g>
+  <circle cx={trackedX} cy={trackedY} r="13" fill="#e8d8a1" stroke="#b4a05f" stroke-width="2"
+  ></circle>
+  <path
+    d={`M${trackedX + 13} ${trackedY}Q293 196 354 187`}
+    stroke="#b6ba9c"
+    stroke-width="2"
+    stroke-dasharray="5 7"></path>
+  <polygon points={ring} fill="#e7d9a1" stroke="#879777" stroke-width="3"></polygon>
+  <circle cx="455.25" cy="188.6" r="40.6" stroke="#a8ae81" stroke-width="2"></circle>
+  <path d="M455.25 119V88M455.25 258.2V280M515.5 153.8L550 131" stroke="#879777" stroke-width="3"
+  ></path>
+  <text x="455.25" y="77" text-anchor="middle" font-size="28" fill="#6f805f">OH</text>
+  <text x="580" y="125" text-anchor="middle" font-size="28" fill="#a28a3e">NO₂</text>
+  <text x="455.25" y="311" text-anchor="middle" font-size="28" fill="#6f805f">CH₂</text>
+  <path
+    d="M455.25 319V338M344 351Q385 325 421 351T491 351T562 351"
+    stroke="#a6b594"
+    stroke-width="6"
+    stroke-linecap="round"></path>
+</svg>
